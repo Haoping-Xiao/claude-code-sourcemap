@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vzi
-// matched 2.1.88 source: src/ink/components/ScrollBox.tsx
-// class=vendor  jaccard=0.0638  score=0.1769  fileCov=0.0908
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: istanbul-reports; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vzi] deps: ink/components/AppContext.ts, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, dn, keybindings/schema.ts, components/PromptInput/PromptInput.tsx, keybindings/defaultBindings.ts

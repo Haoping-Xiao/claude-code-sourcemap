@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QEe
-// matched 2.1.88 source: node_modules/commander/lib/command.js
-// class=vendor  jaccard=0.0168  score=0.3522  fileCov=0.0174
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: commander; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: severTtyInputForRelaunch, execRelaunch

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZXo
-// matched 2.1.88 source: node_modules/node-forge/lib/pkcs7.js
-// class=vendor  jaccard=0.008  score=0.1348  fileCov=0.0084
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function N2c(e, t, n) {

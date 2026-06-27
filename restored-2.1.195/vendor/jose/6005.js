@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module RGc
-// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
-// class=vendor  jaccard=0.0337  score=0.2119  fileCov=0.0385
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 class BQo {

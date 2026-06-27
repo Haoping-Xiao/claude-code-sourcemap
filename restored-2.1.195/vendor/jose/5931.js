@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gJo
-// matched 2.1.88 source: node_modules/eventsource/dist/index.js
-// class=vendor  jaccard=0.0444  score=0.4934  fileCov=0.0465
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ODm = async (e, t, n) => {

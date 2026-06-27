@@ -500,7 +500,9 @@ for (const { name, m } of standalone) {
   if (!r.ok) nParseFail++;
   nRenamed += r.renamed;
   const rel = `${dir}/${idBase}.js`;
-  const h = header({ mod: name, match: m.match, cls, note: (note ? note + "; " : "") + (r.ok ? `${r.renamed} renamed` : r.note) });
+  // 指纹识别的 vendor: 抑制误导性的低置信"2.1.88 匹配"行 (其 nearest 并非真匹配)
+  const headerMatch = (cls === "vendor" && vendorPkg && (!m.match || m.match.jaccard < 0.25)) ? null : m.match;
+  const h = header({ mod: name, match: headerMatch, cls, note: (note ? note + "; " : "") + (r.ok ? `${r.renamed} renamed` : r.note) });
   writeOut(rel, h + r.code);
   if (++processed % 500 === 0) console.log(`[06] processed ${processed} total...`);
   outManifest.files.push({ module: name, out: rel, class: m.class, vendor: m.vendor, match: m.match });

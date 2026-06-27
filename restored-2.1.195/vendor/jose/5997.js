@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Gc
-// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
-// class=vendor  jaccard=0.0194  score=0.1633  fileCov=0.0216
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function bGc(e, t, n) {

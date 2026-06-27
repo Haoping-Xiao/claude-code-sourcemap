@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ann
-// matched 2.1.88 source: node_modules/jsonwebtoken/sign.js
-// class=vendor  jaccard=0.0263  score=0.1838  fileCov=0.0298
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bDm = (e, t) => {

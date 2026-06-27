@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yjc
-// matched 2.1.88 source: node_modules/follow-redirects/index.js
-// class=vendor  jaccard=0.0198  score=0.1293  fileCov=0.0229
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yjc] deps: @mixmark-io/domino/lib/NavigatorID.js, services/PromptSuggestion/promptSuggestion.ts, eventsource/dist/index.js

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aJo
-// matched 2.1.88 source: node_modules/@mixmark-io/domino/lib/style_parser.js
-// class=vendor  jaccard=0.125  score=1  fileCov=0.125
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aJo]

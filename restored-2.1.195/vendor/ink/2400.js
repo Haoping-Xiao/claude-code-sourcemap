@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Tne
-// matched 2.1.88 source: src/ink/Ansi.tsx
-// class=vendor  jaccard=0.0894  score=0.4309  fileCov=0.1014
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Tne] deps: ink/screen.ts

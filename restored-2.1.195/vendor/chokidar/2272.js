@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ece
-// matched 2.1.88 source: src/services/analytics/firstPartyEventLoggingExporter.ts
-// class=vendor  jaccard=0.0123  score=1  fileCov=0.0123
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: chokidar; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ece] deps: readdirp/esm/index.js, chokidar/esm/handler.js

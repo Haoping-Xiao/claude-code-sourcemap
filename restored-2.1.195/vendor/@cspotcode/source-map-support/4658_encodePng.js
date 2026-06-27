@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xOl
-// matched 2.1.88 source: src/upstreamproxy/relay.ts
-// class=vendor  jaccard=0.0374  score=0.1483  fileCov=0.0476
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @cspotcode/source-map-support; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: glyphFor, encodePng, blitGlyph, ansiToPng, GLYPH_W, GLYPH_H

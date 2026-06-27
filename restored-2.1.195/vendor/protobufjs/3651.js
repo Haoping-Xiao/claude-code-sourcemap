@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rbo
-// matched 2.1.88 source: node_modules/protobufjs/src/tokenize.js
-// class=vendor  jaccard=0.1196  score=0.1784  fileCov=0.2661
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: protobufjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module Rbo] (exports=DS_, module=q3a)

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m2c
-// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/util.mjs
-// class=vendor  jaccard=0.0258  score=0.1135  fileCov=0.0323
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function mDm(e, t) {

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module c2l
-// matched 2.1.88 source: src/utils/stats.ts
-// class=vendor  jaccard=0.0476  score=0.7935  fileCov=0.0482
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: svgo; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function* d2l(e) {

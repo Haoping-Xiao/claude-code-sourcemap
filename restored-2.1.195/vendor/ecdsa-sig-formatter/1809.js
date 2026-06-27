@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module c5r
-// matched 2.1.88 source: node_modules/jws/lib/sign-stream.js
-// class=vendor  jaccard=0.052  score=1  fileCov=0.052
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: ecdsa-sig-formatter; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module c5r] (exports=ikh, module=uyi)

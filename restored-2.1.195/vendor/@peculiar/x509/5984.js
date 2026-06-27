@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q3c
-// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=vendor  jaccard=0.0248  score=0.268  fileCov=0.0266
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @peculiar/x509; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function znn(e, t) {

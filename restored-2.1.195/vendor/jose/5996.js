@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DQo
-// matched 2.1.88 source: node_modules/eventsource/dist/index.js
-// class=vendor  jaccard=0.0237  score=0.0575  fileCov=0.0386
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function yGc(e, t, n) {

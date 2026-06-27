@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ojc
-// matched 2.1.88 source: node_modules/react/cjs/react.production.js
-// class=vendor  jaccard=0.012  score=0.4878  fileCov=0.0122
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 class J7e {

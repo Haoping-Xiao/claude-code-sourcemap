@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fUs
-// matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js
-// class=vendor  jaccard=0.0723  score=1  fileCov=0.0723
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @aws-sdk/client-s3; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var mUs = e => {

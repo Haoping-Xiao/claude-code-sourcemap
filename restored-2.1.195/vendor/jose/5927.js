@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sjc
-// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/GrowthBook.mjs
-// class=vendor  jaccard=0.0077  score=0.2803  fileCov=0.0079
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sjc] deps: @growthbook/growthbook/dist/esm/GrowthBook.mjs, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/util.js, cgr

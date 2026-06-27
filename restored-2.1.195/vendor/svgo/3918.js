@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dht
-// matched 2.1.88 source: src/commands/insights.ts
-// class=vendor  jaccard=0.0129  score=0.6456  fileCov=0.013
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: svgo; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function XPe(e, ...t) {

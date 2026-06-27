@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jR
-// matched 2.1.88 source: node_modules/@aws-sdk/client-bedrock-runtime/dist-cjs/index.js
-// class=vendor  jaccard=0.0277  score=1  fileCov=0.0277
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @aws-sdk/client-s3; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jR] deps: @aws-sdk/client-bedrock/dist-cjs/auth/httpAuthSchemeProvider.js, @aws-sdk/client-bedrock-runtime/dist-cjs/index.js, @aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js, @smithy/protocol-http/dist-cjs/index.js, QGs

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module njc
-// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
-// class=vendor  jaccard=0.0387  score=0.1903  fileCov=0.0464
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module njc] deps: @growthbook/growthbook/dist/esm/util.mjs, pkce-challenge/dist/index.node.js, node-forge/lib/rsa.js

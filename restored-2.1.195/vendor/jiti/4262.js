@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qYn
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/typescript.js
-// class=vendor  jaccard=0.0302  score=0.0394  fileCov=0.1152
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jiti; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module qYn] (exports=WYn, module=aml)

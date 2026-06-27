@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module O2c
-// matched 2.1.88 source: node_modules/@azure/core-client/dist/esm/serializer.js
-// class=vendor  jaccard=0.0112  score=0.1941  fileCov=0.0118
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module O2c] deps: node-forge/lib/rsa.js, GXo, node-forge/lib/rsa.js, @smithy/eventstream-codec/dist-cjs/index.js, sB, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/pem.js, jsonwebtoken/sign.js, node-forge/lib/aes.js, node-forge/lib/rsa.js

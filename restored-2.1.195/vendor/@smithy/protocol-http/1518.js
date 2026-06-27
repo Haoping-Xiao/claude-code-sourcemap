@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gai
-// matched 2.1.88 source: node_modules/@smithy/protocol-http/dist-cjs/index.js
-// class=vendor  jaccard=0.2059  score=1  fileCov=0.2059
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @smithy/protocol-http; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Wai = () => {};

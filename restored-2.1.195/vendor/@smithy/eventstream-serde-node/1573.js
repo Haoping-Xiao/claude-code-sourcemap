@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Mui
-// matched 2.1.88 source: node_modules/@smithy/eventstream-serde-node/dist-cjs/index.js
-// class=vendor  jaccard=0.2278  score=0.7951  fileCov=0.242
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @smithy/eventstream-serde-node; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function* $ui(e) {

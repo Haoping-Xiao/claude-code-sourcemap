@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tJo
-// matched 2.1.88 source: node_modules/node-forge/lib/pkcs7.js
-// class=vendor  jaccard=0.0105  score=0.0568  fileCov=0.0127
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tJo] deps: node-forge/lib/rsa.js, GXo, node-forge/lib/rsa.js, @smithy/eventstream-codec/dist-cjs/index.js, sB, node-forge/lib/pem.js, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/rsa.js, node-forge/lib/aes.js, node-forge/lib/rsa.js

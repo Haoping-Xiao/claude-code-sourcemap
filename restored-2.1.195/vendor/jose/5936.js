@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Sjc
-// matched 2.1.88 source: node_modules/node-forge/lib/util.js
-// class=vendor  jaccard=0.0113  score=0.1683  fileCov=0.012
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function Ejc(e) {

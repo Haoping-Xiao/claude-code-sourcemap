@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module EGc
-// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
-// class=vendor  jaccard=0.0466  score=0.1595  fileCov=0.0617
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function AGc(e, t, n) {

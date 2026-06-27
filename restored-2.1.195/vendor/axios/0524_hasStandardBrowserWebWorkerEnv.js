@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fys
-// matched 2.1.88 source: node_modules/axios/lib/platform/node/index.js
-// class=vendor  jaccard=0.2082  score=0.2944  fileCov=0.4156
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: axios; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: origin, navigator, hasStandardBrowserWebWorkerEnv, hasStandardBrowserEnv, hasBrowserEnv

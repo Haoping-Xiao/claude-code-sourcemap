@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QXo
-// matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
-// class=vendor  jaccard=0.0159  score=0.0458  fileCov=0.0238
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QXo]

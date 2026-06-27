@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Iyi
-// matched 2.1.88 source: node_modules/jws/lib/sign-stream.js
-// class=vendor  jaccard=0.1237  score=1  fileCov=0.1237
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jws; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module Iyi] (exports=ukh, module=Cyi)

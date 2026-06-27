@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B2c
-// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=vendor  jaccard=0.0084  score=0.2852  fileCov=0.0085
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var IDm = async e => {

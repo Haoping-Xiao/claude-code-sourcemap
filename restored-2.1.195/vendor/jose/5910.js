@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q2c
-// matched 2.1.88 source: node_modules/node-forge/lib/x509.js
-// class=vendor  jaccard=0.0045  score=0.2881  fileCov=0.0045
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function wnn(e, t) {

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xGc
-// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/feature-repository.mjs
-// class=vendor  jaccard=0.0106  score=0.1372  fileCov=0.0113
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function OQo(e, t, n) {

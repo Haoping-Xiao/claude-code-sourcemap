@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oBe
-// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=vendor  jaccard=0.0223  score=0.235  fileCov=0.024
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @peculiar/x509; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oBe] deps: node-forge/lib/rsa.js

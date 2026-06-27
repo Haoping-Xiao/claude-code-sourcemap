@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Z4e
-// matched 2.1.88 source: node_modules/undici/lib/web/fetch/util.js
-// class=vendor  jaccard=0.0265  score=0.3345  fileCov=0.0279
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: axios; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z4e] deps: utils/browser.ts, @modelcontextprotocol/sdk/dist/esm/shared/auth.js, @mixmark-io/domino/lib/htmlelts.js, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, utils/platform.ts, utils/proxy.ts, utils/errors.ts, utils/settings/settings.ts, utils/fsOperations.ts, dn, services/mcp/oauthPort.ts, services/mcp/xaaIdpLogin.ts

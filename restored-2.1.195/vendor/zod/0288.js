@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nls
-// matched 2.1.88 source: node_modules/zod/v4/locales/ru.js
-// class=vendor  jaccard=0.2256  score=0.3486  fileCov=0.3899
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: zod; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function rls(e, t, n, r) {

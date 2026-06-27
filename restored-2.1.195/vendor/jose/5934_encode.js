@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _jc
-// matched 2.1.88 source: node_modules/node-forge/lib/util.js
-// class=vendor  jaccard=0.0203  score=0.383  fileCov=0.021
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: encode, decode

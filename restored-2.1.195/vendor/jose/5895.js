@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k2c
-// matched 2.1.88 source: node_modules/yaml/dist/parse/lexer.js
-// class=vendor  jaccard=0.0264  score=0.1226  fileCov=0.0325
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module k2c] deps: pkce-challenge/dist/index.node.js, services/PromptSuggestion/promptSuggestion.ts, sB

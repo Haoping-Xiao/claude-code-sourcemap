@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module EYa
-// matched 2.1.88 source: node_modules/@mixmark-io/domino/lib/impl.js
-// class=vendor  jaccard=0.1684  score=0.3175  fileCov=0.2639
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: globals; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module EYa] (exports=zy)

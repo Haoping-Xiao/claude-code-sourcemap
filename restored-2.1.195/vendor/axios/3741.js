@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TVa
-// matched 2.1.88 source: node_modules/axios/lib/utils.js
-// class=vendor  jaccard=0.1094  score=0.9111  fileCov=0.1106
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: axios; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module TVa] (exports=q5n)

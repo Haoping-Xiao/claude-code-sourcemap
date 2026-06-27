@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KBt
-// matched 2.1.88 source: src/ink/dom.ts
-// class=vendor  jaccard=0.1233  score=0.5363  fileCov=0.138
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: ink; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KBt] deps: utils/debug.ts, ink/terminal.ts, hWi, utils/signal.ts, ink/squash-text-nodes.ts, components/ScrollKeybindingHandler.tsx, ink/selection.ts, ink/render-node-to-output.ts, ink/parse-keypress.ts, ink/tabstops.ts, ink/output.ts, ink/dom.ts

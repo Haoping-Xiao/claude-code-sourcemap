@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eT
-// matched 2.1.88 source: node_modules/@aws-sdk/core/dist-cjs/index.js
-// class=vendor  jaccard=0.2349  score=0.9792  fileCov=0.2361
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @aws-sdk/core; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module eT] (exports=fm)

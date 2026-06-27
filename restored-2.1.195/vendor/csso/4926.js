@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b2o
-// matched 2.1.88 source: src/ink/render-node-to-output.ts
-// class=vendor  jaccard=0.0942  score=0.2895  fileCov=0.1225
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: csso; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module b2o] deps: ink/Ansi.tsx

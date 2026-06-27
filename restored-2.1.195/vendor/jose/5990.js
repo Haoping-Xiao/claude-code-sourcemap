@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kQo
-// matched 2.1.88 source: node_modules/jwa/index.js
-// class=vendor  jaccard=0.0389  score=0.2213  fileCov=0.045
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function oGc(e) {

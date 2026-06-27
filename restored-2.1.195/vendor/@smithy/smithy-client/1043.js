@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WOr
-// matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
-// class=vendor  jaccard=0.0479  score=0.7577  fileCov=0.0486
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @smithy/smithy-client; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WOr]

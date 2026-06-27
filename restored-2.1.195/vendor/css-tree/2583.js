@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kzi
-// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
-// class=vendor  jaccard=0.0072  score=0.449  fileCov=0.0073
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: css-tree; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kzi] deps: ink/styles.ts, hooks/useTerminalSize.ts, utils/debug.ts, utils/fsOperations.ts, components/PromptInput/PromptInput.tsx

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gM
-// matched 2.1.88 source: src/utils/teleport.tsx
-// class=vendor  jaccard=0.0067  score=0.2719  fileCov=0.0068
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: meow; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gM] deps: ree, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debugFilter.ts, utils/fsOperations.ts, utils/git.ts, utils/git/gitFilesystem.ts, utils/git/gitFilesystem.ts, utils/git/gitFilesystem.ts

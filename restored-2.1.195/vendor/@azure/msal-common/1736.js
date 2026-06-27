@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zrt
-// matched 2.1.88 source: node_modules/@azure/msal-common/dist/cache/CacheManager.mjs
-// class=vendor  jaccard=0.0493  score=0.9632  fileCov=0.0494
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @azure/msal-common; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function xgi(e, t) {

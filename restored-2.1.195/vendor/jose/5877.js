@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ynn
-// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/internal/utils/uuid.mjs
-// class=vendor  jaccard=0.0821  score=0.101  fileCov=0.3047
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ynn] deps: pkce-challenge/dist/index.node.js

@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gZs
-// matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js
-// class=vendor  jaccard=0.204  score=0.8758  fileCov=0.21
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: @aws-sdk/nested-clients; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var vEn,

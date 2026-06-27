@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bTi
-// matched 2.1.88 source: src/cli/print.ts
-// class=vendor  jaccard=0.0035  score=0.0668  fileCov=0.0037
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: google-auth-library; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module bTi] (exports=j9)

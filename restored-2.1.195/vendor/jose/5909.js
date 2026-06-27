@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ogr
-// matched 2.1.88 source: node_modules/node-forge/lib/pkcs7.js
-// class=vendor  jaccard=0.0156  score=0.0828  fileCov=0.0189
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ogr] deps: sB, qrcode/lib/core/polynomial.js, FXo, Vmr, node-forge/lib/pkcs7.js, services/PromptSuggestion/promptSuggestion.ts, lodash.isplainobject/index.js, node-forge/lib/util.js, pretty-bytes/index.js

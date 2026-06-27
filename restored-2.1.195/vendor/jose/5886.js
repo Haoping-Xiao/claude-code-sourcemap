@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jXo
-// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=vendor  jaccard=0.0181  score=0.3057  fileCov=0.0189
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jXo]

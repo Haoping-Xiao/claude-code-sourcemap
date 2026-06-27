@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bls
-// matched 2.1.88 source: node_modules/zod/v4/classic/schemas.js
-// class=vendor  jaccard=0.0332  score=0.7666  fileCov=0.0335
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: zod; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bls] deps: aM, aM, zod/v4/core/util.js

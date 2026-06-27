@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xmr
-// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=vendor  jaccard=0.0184  score=0.3971  fileCov=0.019
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jose; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function Jmr(e, t, n, r, o = new Uint8Array(0), s = new Uint8Array(0)) {

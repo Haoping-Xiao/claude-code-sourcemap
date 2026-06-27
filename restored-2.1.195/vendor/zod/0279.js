@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zas
-// matched 2.1.88 source: node_modules/zod/v4/locales/en.js
-// class=vendor  jaccard=0.2419  score=0.3346  fileCov=0.4661
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: zod; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function eTr() {

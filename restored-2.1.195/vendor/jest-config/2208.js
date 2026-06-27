@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Uh
-// matched 2.1.88 source: src/services/analytics/metadata.ts
-// class=vendor  jaccard=0.0206  score=0.4792  fileCov=0.021
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: jest-config; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Uh] deps: lodash-es/memoize.js, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, services/analytics/growthbook.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/git.ts, utils/file.ts, utils/worktree.ts, utils/settings/settings.ts, utils/words.ts

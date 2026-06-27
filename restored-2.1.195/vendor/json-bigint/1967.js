@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rHi
-// matched 2.1.88 source: node_modules/bignumber.js/bignumber.js
-// class=vendor  jaccard=0.028  score=0.2633  fileCov=0.0303
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: json-bigint; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module rHi] (exports=kOh, module=nHi)

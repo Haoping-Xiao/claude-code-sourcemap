@@ -1,7 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s4c
-// matched 2.1.88 source: node_modules/protobufjs/src/namespace.js
-// class=vendor  jaccard=0.0485  score=0.1931  fileCov=0.0608
+// class=vendor  (no 2.1.88 match)
 // note: identified by fingerprint: tar; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module s4c] (exports=gzH, module=o4c)
