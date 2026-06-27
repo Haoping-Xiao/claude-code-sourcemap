@@ -14,9 +14,9 @@ async function detectMacosTerminal() {
         command: n.app,
       };
   }
-  let t = process.env.TERM_PROGRAM;
-  if (t) {
-    let n = t.replace(/\.app$/i, "").toLowerCase(),
+  let termProgram = process.env.TERM_PROGRAM;
+  if (termProgram) {
+    let n = termProgram.replace(/\.app$/i, "").toLowerCase(),
       r = Smr.find(
         (o) =>
           o.app.toLowerCase() === n ||

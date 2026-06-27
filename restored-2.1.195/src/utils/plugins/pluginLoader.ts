@@ -1412,7 +1412,7 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
     o = [],
     s = [],
     i = [],
-    a = Object.entries(r).filter(([S, A]) => {
+    marketplacePluginEntries = Object.entries(r).filter(([S, A]) => {
       if (!s2e().safeParse(S).success || A === void 0) return !1;
       let { marketplace: C } = Qo(S);
       return C !== JGe && !U0(C);
@@ -1421,7 +1421,7 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
     c = _5(),
     u = xGt(),
     d = c !== null || (u !== null && u.some((S) => S.source !== "skills-dir")),
-    p = new Set(a.map(([S]) => Qo(S).marketplace).filter((S) => !!S)),
+    p = new Set(marketplacePluginEntries.map(([S]) => Qo(S).marketplace).filter((S) => !!S)),
     marketplaceCatalogs = new Map();
   await Promise.all(
     [...p].map(async (S) => {
@@ -1429,9 +1429,9 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
     }),
   );
   let m = [],
-    g = new Set(a.map(([S]) => S)),
+    g = new Set(marketplacePluginEntries.map(([S]) => S)),
     h = new Map(),
-    y = a.flatMap(([S, A]) => {
+    y = marketplacePluginEntries.flatMap(([S, A]) => {
       let { name: v, marketplace: C } = Qo(S),
         x = C ? marketplaceCatalogs.get(C) : null,
         I = C ? l[C] : void 0;
@@ -1511,7 +1511,7 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
       });
     }
   let b = MYt(),
-    _ = await Promise.allSettled(
+    results = await Promise.allSettled(
       y.map(async ([S, A]) => {
         let { name: v, marketplace: C } = Qo(S),
           x = l[C];
@@ -1627,7 +1627,7 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
         return P;
       }),
     );
-  for (let [S, A] of _.entries())
+  for (let [S, A] of results.entries())
     if (A.status === "fulfilled" && A.value) o.push(A.value);
     else if (A.status === "rejected") {
       let v = Zr(A.reason),
@@ -2766,15 +2766,15 @@ async function assemblePluginLoadResult(marketplaceLoader, t) {
     { demoted: g, errors: h } = qKi(allPlugins);
   for (let b of allPlugins) if (g.has(b.source)) b.enabled = !1;
   f.push(...h);
-  let y = allPlugins.filter((b) => b.enabled);
+  let enabledPlugins = allPlugins.filter((b) => b.enabled);
   if (
     (T(
-      `Found ${allPlugins.length} plugins (${y.length} enabled, ${allPlugins.length - y.length} disabled)`,
+      `Found ${allPlugins.length} plugins (${enabledPlugins.length} enabled, ${allPlugins.length - enabledPlugins.length} disabled)`,
     ),
     t?.preview)
   );
   else if (n === yr()) {
-    let b = new Set(y.map((_) => _.source));
+    let b = new Set(enabledPlugins.map((_) => _.source));
     for (let _ of OPn())
       if (b.has(_.pluginId))
         m.push({
@@ -2782,7 +2782,11 @@ async function assemblePluginLoadResult(marketplaceLoader, t) {
           source: _.pluginId,
           overriddenBy: _.overriddenBy,
         });
-    if ((Dxf(y), cachePluginSettings(y), f.length > 0 && allPlugins.length === 0))
+    if (
+      (Dxf(enabledPlugins),
+      cachePluginSettings(enabledPlugins),
+      f.length > 0 && allPlugins.length === 0)
+    )
       Le("plugin_load_all", "plugin_load_total_failure");
     else if (f.length > 0) It("plugin_load_all", "plugin_load_partial_failures");
     else xe("plugin_load_all");
@@ -2791,7 +2795,7 @@ async function assemblePluginLoadResult(marketplaceLoader, t) {
       "assemblePluginLoadResult: originalCwd changed mid-scan; skipping side-effects (stale early-kick)",
     );
   return {
-    enabled: y,
+    enabled: enabledPlugins,
     disabled: allPlugins.filter((b) => !b.enabled),
     errors: f,
     warnings: m,

@@ -32,7 +32,7 @@ function TreeSelect(t0) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((S = new Set()), (t[0] = S));
   else S = t[0];
   let [A, v] = aJt.useState(S),
-    C = aJt.useRef(false),
+    isProgrammaticFocusRef = aJt.useRef(false),
     x = aJt.useRef(null),
     I;
   if (t[1] !== A || t[2] !== d)
@@ -143,7 +143,9 @@ function TreeSelect(t0) {
       else if (me.key === "left") {
         if (pe.hasChildren && pe.isExpanded) (me.preventDefault(), J(i, false));
         else if (pe.parentId !== void 0) {
-          if ((me.preventDefault(), (C.current = true), J(pe.parentId, false), s)) {
+          if (
+            (me.preventDefault(), (isProgrammaticFocusRef.current = true), J(pe.parentId, false), s)
+          ) {
             let ge = Y.get(pe.parentId);
             if (ge) s(ge);
           }
@@ -174,8 +176,8 @@ function TreeSelect(t0) {
     ce;
   if (t[31] !== Y || t[32] !== s)
     ((ce = (me) => {
-      if (C.current) {
-        C.current = false;
+      if (isProgrammaticFocusRef.current) {
+        isProgrammaticFocusRef.current = false;
         return;
       }
       if (x.current === me) return;

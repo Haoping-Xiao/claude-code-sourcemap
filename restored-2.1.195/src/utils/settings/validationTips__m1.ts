@@ -5,10 +5,10 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function getValidationTip(context) {
-  let t = f1u.find((r) => r.matches(context));
-  if (!t) return null;
+  let matcher = f1u.find((r) => r.matches(context));
+  if (!matcher) return null;
   let tip = {
-    ...t.tip,
+    ...matcher.tip,
   };
   if (context.code === "invalid_value" && context.enumValues && !tip.suggestion)
     tip.suggestion = `Valid values: ${context.enumValues.map((r) => `"${r}"`).join(", ")}`;

@@ -201,8 +201,8 @@ async function checkOutTeleportedSessionBranch(branch) {
 async function validateSessionRepository(sessionData) {
   let currentParsed = await $O(),
     n = currentParsed ? `${currentParsed.owner}/${currentParsed.name}` : null,
-    r = sessionData.session_context.sources.find((c) => c.type === "git_repository");
-  if (!r?.url)
+    gitSource = sessionData.session_context.sources.find((c) => c.type === "git_repository");
+  if (!gitSource?.url)
     return (
       T(
         n
@@ -213,8 +213,8 @@ async function validateSessionRepository(sessionData) {
         status: "no_repo_required",
       }
     );
-  let o = Dae(r.url),
-    s = o ? `${o.owner}/${o.name}` : zFe(r.url);
+  let o = Dae(gitSource.url),
+    s = o ? `${o.owner}/${o.name}` : zFe(gitSource.url);
   if (!s)
     return {
       status: "no_repo_required",

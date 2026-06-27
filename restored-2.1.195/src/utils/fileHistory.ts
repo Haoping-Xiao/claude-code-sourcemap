@@ -252,13 +252,13 @@ function fileHistoryCanRestore(e, t) {
 }
 async function fileHistoryGetDiffStats(state, messageId) {
   if (!fileHistoryEnabled()) return;
-  let n = state.snapshots.findLast((a) => a.messageId === messageId);
-  if (!n) return;
+  let targetSnapshot = state.snapshots.findLast((a) => a.messageId === messageId);
+  if (!targetSnapshot) return;
   let r = await Promise.all(
       Array.from(state.trackedFiles, async (a) => {
         try {
           let l = YVt(a),
-            c = n.trackedFileBackups[a],
+            c = targetSnapshot.trackedFileBackups[a],
             u = c ? c.backupFileName : lTo(a, state);
           if (u === void 0)
             return (

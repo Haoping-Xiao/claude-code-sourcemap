@@ -268,7 +268,7 @@ async function zbt(e, t) {
       for (let u in c) if (c[u] === !1 && u.endsWith(a)) s.add(u.slice(0, -a.length));
     }
   }
-  let i = await Promise.all(
+  let results = await Promise.all(
     r.map(async (a) => {
       try {
         if (!a.isDirectory() && !a.isSymbolicLink()) return null;
@@ -363,7 +363,7 @@ async function zbt(e, t) {
   );
   if (o) Le("skill_load_dir", o);
   else xe("skill_load_dir");
-  return i.filter((a) => a !== null).sort((a, l) => a.skill.name.localeCompare(l.skill.name));
+  return results.filter((a) => a !== null).sort((a, l) => a.skill.name.localeCompare(l.skill.name));
 }
 function dDo(e) {
   return /^skill\.md$/i.test(rm.basename(e));
@@ -572,10 +572,10 @@ async function addSkillDirectories(dirs) {
   }
   if (dirs.length === 0) return;
   let previousSkillNamesForLogging = new Set(yq().dynamicSkills.keys()),
-    n = await Promise.all(dirs.map((o) => zbt(o, "projectSettings")));
-  for (let o of n)
+    loadedSkills = await Promise.all(dirs.map((o) => zbt(o, "projectSettings")));
+  for (let o of loadedSkills)
     for (let { skill: s } of o) if (s.type === "prompt") yq().dynamicSkills.set(QTl(s), s);
-  let r = n.flat().length;
+  let r = loadedSkills.flat().length;
   if (r > 0) {
     let o = [...yq().dynamicSkills.keys()].filter((s) => !previousSkillNamesForLogging.has(s));
     if (

@@ -144,10 +144,10 @@ async function discoverOidc(idpIssuer) {
   return parsed.data;
 }
 function jwtExp(jwt) {
-  let t = jwt.split(".");
-  if (t.length !== 3) return;
+  let parts = jwt.split(".");
+  if (parts.length !== 3) return;
   try {
-    let n = Ft(Buffer.from(t[1], "base64url").toString("utf-8"));
+    let n = Ft(Buffer.from(parts[1], "base64url").toString("utf-8"));
     return typeof n.exp === "number" ? n.exp : void 0;
   } catch {
     return;

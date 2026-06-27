@@ -116,7 +116,7 @@ function Config({
     [, l] = na(),
     c = Fke(),
     [globalConfig, d] = Em.useState(sEt),
-    p = Em.useRef(globalConfig),
+    initialConfig = Em.useRef(globalConfig),
     [f, m] = Em.useState(Dr()),
     g = Em.useRef(Dr()),
     [h, y] = Em.useState(f?.outputStyle || uP),
@@ -258,7 +258,7 @@ function Config({
           ),
         ),
         Te = nv() ? void 0 : process.env.ANTHROPIC_API_KEY,
-        Re = Boolean(Te && p.current.customApiKeyResponses?.approved?.includes(KB(Te))),
+        Re = Boolean(Te && initialConfig.current.customApiKeyResponses?.approved?.includes(KB(Te))),
         Ne = Boolean(Te && globalConfig.customApiKeyResponses?.approved?.includes(KB(Te)));
       if (Re !== Ne)
         (fe.push(`${Ne ? "Enabled" : "Disabled"} custom API key`),
@@ -267,59 +267,61 @@ function Config({
             setting: We("env.ANTHROPIC_API_KEY"),
             value: Ne,
           }));
-      if (globalConfig.theme !== p.current.theme)
+      if (globalConfig.theme !== initialConfig.current.theme)
         fe.push(`Set theme to ${wt.bold(globalConfig.theme)}`);
-      if (globalConfig.preferredNotifChannel !== p.current.preferredNotifChannel)
+      if (globalConfig.preferredNotifChannel !== initialConfig.current.preferredNotifChannel)
         fe.push(`Set notifications to ${wt.bold(globalConfig.preferredNotifChannel)}`);
       if (h !== b.current) fe.push(`Set output style to ${wt.bold(h)}`);
       if (A !== C.current) fe.push(`Set response language to ${wt.bold(A ?? "Default (English)")}`);
-      if (globalConfig.editorMode !== p.current.editorMode)
+      if (globalConfig.editorMode !== initialConfig.current.editorMode)
         fe.push(`Set editor mode to ${wt.bold(globalConfig.editorMode || "emacs")}`);
-      if (globalConfig.diffTool !== p.current.diffTool)
+      if (globalConfig.diffTool !== initialConfig.current.diffTool)
         fe.push(`Set diff tool to ${wt.bold(globalConfig.diffTool)}`);
-      if (globalConfig.autoConnectIde !== p.current.autoConnectIde)
+      if (globalConfig.autoConnectIde !== initialConfig.current.autoConnectIde)
         fe.push(`${globalConfig.autoConnectIde ? "Enabled" : "Disabled"} auto-connect to IDE`);
-      if (globalConfig.autoInstallIdeExtension !== p.current.autoInstallIdeExtension)
+      if (globalConfig.autoInstallIdeExtension !== initialConfig.current.autoInstallIdeExtension)
         fe.push(
           `${globalConfig.autoInstallIdeExtension ? "Enabled" : "Disabled"} auto-install IDE extension`,
         );
-      if (globalConfig.autoCompactEnabled !== p.current.autoCompactEnabled)
+      if (globalConfig.autoCompactEnabled !== initialConfig.current.autoCompactEnabled)
         fe.push(`${globalConfig.autoCompactEnabled ? "Enabled" : "Disabled"} auto-compact`);
-      if (globalConfig.autoScrollEnabled !== p.current.autoScrollEnabled)
+      if (globalConfig.autoScrollEnabled !== initialConfig.current.autoScrollEnabled)
         fe.push(`${globalConfig.autoScrollEnabled ? "Enabled" : "Disabled"} auto-scroll`);
-      if (globalConfig.respectGitignore !== p.current.respectGitignore)
+      if (globalConfig.respectGitignore !== initialConfig.current.respectGitignore)
         fe.push(
           `${globalConfig.respectGitignore ? "Enabled" : "Disabled"} respect .gitignore in file picker`,
         );
-      if (globalConfig.copyFullResponse !== p.current.copyFullResponse)
+      if (globalConfig.copyFullResponse !== initialConfig.current.copyFullResponse)
         fe.push(
           `${globalConfig.copyFullResponse ? "Enabled" : "Disabled"} always copy full response`,
         );
-      if (globalConfig.copyOnSelect !== p.current.copyOnSelect)
+      if (globalConfig.copyOnSelect !== initialConfig.current.copyOnSelect)
         fe.push(`${globalConfig.copyOnSelect ? "Enabled" : "Disabled"} copy on select`);
-      if (globalConfig.leftArrowOpensAgents !== p.current.leftArrowOpensAgents)
+      if (globalConfig.leftArrowOpensAgents !== initialConfig.current.leftArrowOpensAgents)
         fe.push(
           `${(globalConfig.leftArrowOpensAgents ?? true) ? "Enabled" : "Disabled"} ${CG} opens agents`,
         );
-      if (globalConfig.defaultToAgentsView !== p.current.defaultToAgentsView)
+      if (globalConfig.defaultToAgentsView !== initialConfig.current.defaultToAgentsView)
         fe.push(
           `${globalConfig.defaultToAgentsView ? "Enabled" : "Disabled"} open agents view by default`,
         );
-      if (globalConfig.terminalProgressBarEnabled !== p.current.terminalProgressBarEnabled)
+      if (
+        globalConfig.terminalProgressBarEnabled !== initialConfig.current.terminalProgressBarEnabled
+      )
         fe.push(
           `${globalConfig.terminalProgressBarEnabled ? "Enabled" : "Disabled"} terminal progress bar`,
         );
-      if (globalConfig.showStatusInTerminalTab !== p.current.showStatusInTerminalTab)
+      if (globalConfig.showStatusInTerminalTab !== initialConfig.current.showStatusInTerminalTab)
         fe.push(
           `${globalConfig.showStatusInTerminalTab ? "Enabled" : "Disabled"} terminal tab status`,
         );
-      if (globalConfig.showTurnDuration !== p.current.showTurnDuration)
+      if (globalConfig.showTurnDuration !== initialConfig.current.showTurnDuration)
         fe.push(`${globalConfig.showTurnDuration ? "Enabled" : "Disabled"} turn duration`);
-      if (globalConfig.showMessageTimestamps !== p.current.showMessageTimestamps)
+      if (globalConfig.showMessageTimestamps !== initialConfig.current.showMessageTimestamps)
         fe.push(
           `${globalConfig.showMessageTimestamps ? "Enabled" : "Disabled"} message timestamps`,
         );
-      if (globalConfig.remoteControlAtStartup !== p.current.remoteControlAtStartup) {
+      if (globalConfig.remoteControlAtStartup !== initialConfig.current.remoteControlAtStartup) {
         let it =
           globalConfig.remoteControlAtStartup === void 0
             ? "Reset Remote Control to default"

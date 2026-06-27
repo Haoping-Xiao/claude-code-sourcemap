@@ -190,10 +190,10 @@ async function bashToolCheckCommandOperatorPermissions(
   o,
   s,
 ) {
-  let i = parsed.getTreeSitterAnalysis();
+  let tsAnalysis = parsed.getTreeSitterAnalysis();
   if (
-    i
-      ? i.compoundStructure.hasSubshell || i.compoundStructure.hasCommandGroup
+    tsAnalysis
+      ? tsAnalysis.compoundStructure.hasSubshell || tsAnalysis.compoundStructure.hasCommandGroup
       : By(input.command).length > 1
   ) {
     let u = {

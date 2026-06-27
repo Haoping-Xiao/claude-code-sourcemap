@@ -5,8 +5,8 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function registerMcpXaaIdpCommand(mcp) {
-  let t = mcp.command("xaa").description("Manage the XAA (SEP-990) IdP connection");
-  (t
+  let xaaIdp = mcp.command("xaa").description("Manage the XAA (SEP-990) IdP connection");
+  (xaaIdp
     .command("setup")
     .description("Configure the IdP connection (one-time setup for all XAA-enabled servers)")
     .requiredOption("--issuer <url>", "IdP issuer URL (OIDC discovery)")
@@ -61,7 +61,7 @@ function registerMcpXaaIdpCommand(mcp) {
       }
       _R(`XAA IdP connection configured for ${n.issuer}`);
     }),
-    t
+    xaaIdp
       .command("login")
       .description(
         "Cache an IdP id_token so XAA-enabled MCP servers authenticate silently. Default: run the OIDC browser login. With --id-token: write a pre-obtained JWT directly (used by conformance/e2e tests where the mock IdP does not serve /authorize).",
@@ -108,7 +108,7 @@ function registerMcpXaaIdpCommand(mcp) {
           ws(`IdP login failed: ${be(s)}`);
         }
       }),
-    t
+    xaaIdp
       .command("show")
       .description("Show the current IdP connection config")
       .action(async () => {
@@ -133,7 +133,7 @@ function registerMcpXaaIdpCommand(mcp) {
 `),
           _R());
       }),
-    t
+    xaaIdp
       .command("clear")
       .description("Clear the IdP connection config and cached id_token")
       .action(async () => {

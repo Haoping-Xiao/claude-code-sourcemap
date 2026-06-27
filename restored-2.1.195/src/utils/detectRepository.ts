@@ -55,8 +55,8 @@ function isCachedGitHubRepo() {
   return !!t && $m(t.host);
 }
 function parseGitRemote(e) {
-  let t = e.trim(),
-    n = t.match(/^git@([^:]+):([^/]+)\/([^/]+?)(?:\.git)?$/);
+  let trimmed = e.trim(),
+    n = trimmed.match(/^git@([^:]+):([^/]+)\/([^/]+?)(?:\.git)?$/);
   if (n?.[1] && n[2] && n[3]) {
     if (!UTs(n[1])) return null;
     if (!get(n[2]) || !get(n[3])) return null;
@@ -66,7 +66,7 @@ function parseGitRemote(e) {
       name: n[3],
     };
   }
-  let r = t.match(
+  let r = trimmed.match(
     /^(https?|ssh|git):\/\/(?:[^@]+@)?([^/:]+(?::\d+)?)\/([^/]+)\/([^/]+?)(?:\.git)?$/,
   );
   if (r?.[1] && r[2] && r[3] && r[4]) {

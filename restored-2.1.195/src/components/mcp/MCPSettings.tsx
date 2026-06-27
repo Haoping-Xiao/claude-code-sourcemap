@@ -11,7 +11,7 @@ function MCPSettings(t0) {
     { onComplete: n } = t0,
     mcp = Ht(rNf),
     o = Ht(nNf),
-    s = mcp.clients,
+    mcpClients = mcp.clients,
     i;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((i = {
@@ -30,7 +30,8 @@ function MCPSettings(t0) {
   else m = t[3];
   let g = m,
     h;
-  if (t[4] !== s) ((h = s.filter(tNf).sort(eNf)), (t[4] = s), (t[5] = h));
+  if (t[4] !== mcpClients)
+    ((h = mcpClients.filter(tNf).sort(eNf)), (t[4] = mcpClients), (t[5] = h));
   else h = t[5];
   let filteredClients = h,
     b;

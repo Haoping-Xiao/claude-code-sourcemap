@@ -12,19 +12,19 @@ function $_m(e) {
 }
 async function extractPrefixFromElement(cmd) {
   if (cmd.nameType === "application") return null;
-  let t = cmd.name;
-  if (!t) return null;
-  if (!/^[A-Za-z0-9_+-]+$/.test(t)) return null;
-  if (aTl.has(t.toLowerCase())) return null;
-  if (cmd.nameType === "cmdlet") return t;
+  let name = cmd.name;
+  if (!name) return null;
+  if (!/^[A-Za-z0-9_+-]+$/.test(name)) return null;
+  if (aTl.has(name.toLowerCase())) return null;
+  if (cmd.nameType === "cmdlet") return name;
   if (cmd.elementTypes?.[0] !== "StringConstant") return null;
   for (let i = 0; i < cmd.args.length; i++) {
     let a = cmd.elementTypes[i + 1];
     if (a !== "StringConstant" && a !== "Parameter") return null;
   }
-  let n = t.toLowerCase(),
+  let n = name.toLowerCase(),
     r = await DDe(n),
-    prefix = await q2n(t, cmd.args, r),
+    prefix = await q2n(name, cmd.args, r),
     s = 0;
   for (let i of prefix.split(" ").slice(1)) {
     if (i.includes("\\")) return null;

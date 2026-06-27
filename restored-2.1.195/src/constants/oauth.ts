@@ -129,9 +129,9 @@ function getOauthConfig() {
           return Oms;
       }
     })(),
-    t = process.env.CLAUDE_CODE_CUSTOM_OAUTH_URL;
-  if (t) {
-    let r = t.replace(/\/$/, "");
+    oauthBaseUrl = process.env.CLAUDE_CODE_CUSTOM_OAUTH_URL;
+  if (oauthBaseUrl) {
+    let r = oauthBaseUrl.replace(/\/$/, "");
     if (!ALLOWED_OAUTH_BASE_URLS.includes(r))
       throw Error("CLAUDE_CODE_CUSTOM_OAUTH_URL is not an approved endpoint.");
     e = {

@@ -258,7 +258,7 @@ function getSessionSpecificGuidanceSection(enabledTools, skillToolCommands, n, r
       hC() && enabledTools.has(Co)
         ? `\`find\` or \`grep\` via the ${Co} tool`
         : `the ${wu} or ${qc}`,
-    c = [
+    items = [
       Ir()
         ? null
         : "If you need the user to run a shell command themselves (e.g., an interactive login like `gcloud auth login`), suggest they type `! <command>` in the prompt \u2014 the `!` prefix runs the command in this session so its output lands directly in the conversation.",
@@ -285,8 +285,8 @@ function getSessionSpecificGuidanceSection(enabledTools, skillToolCommands, n, r
         ? 'If the user asks about "ultrareview" or how to run it, explain that /code-review ultra launches a multi-agent cloud review of the current branch (or /code-review ultra <PR#> for a GitHub PR); /ultrareview is a deprecated alias for the same command. It is user-triggered and billed; you cannot launch it yourself, so do not attempt to via Bash or otherwise. It needs a git repository (offer to "git init" if not in one); the no-arg form bundles the local branch and does not need a GitHub remote.'
         : null,
     ].filter((u) => u !== null);
-  if (c.length === 0) return null;
-  return ["# Session-specific guidance", ...oz(c)].join(`
+  if (items.length === 0) return null;
+  return ["# Session-specific guidance", ...oz(items)].join(`
 `);
 }
 function getSimpleToneAndStyleSection() {

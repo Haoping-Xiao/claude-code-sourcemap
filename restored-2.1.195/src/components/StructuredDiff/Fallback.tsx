@@ -220,8 +220,8 @@ function formatDiff(lines, startingLineNumber, width, dim, overrideTheme) {
     i = transformLinesToObjects(lines),
     a = s_p(i),
     ls = c_p(a, startingLineNumber),
-    c = Math.max(...ls.map(({ i: d }) => d), 0),
-    u = Math.max(c.toString().length + 1, 0);
+    maxLineNumber = Math.max(...ls.map(({ i: d }) => d), 0),
+    u = Math.max(maxLineNumber.toString().length + 1, 0);
   return ls.flatMap((d) => {
     let { type: p, code: f, i: m, wordDiff: g, matchedLine: h } = d;
     if (g && h) {

@@ -82,12 +82,12 @@ function installAsciicastRecorder() {
       mode: 384,
     },
   );
-  let s = Promise.resolve(),
+  let pendingWrite = Promise.resolve(),
     writer = SJe({
       writeFn(c) {
         let u = Zz.filePath;
         if (!u) return;
-        s = s.then(() => apr.appendFile(u, c)).catch(() => {});
+        pendingWrite = pendingWrite.then(() => apr.appendFile(u, c)).catch(() => {});
       },
       flushIntervalMs: 500,
       maxBufferSize: 50,
@@ -120,11 +120,11 @@ function installAsciicastRecorder() {
   (process.stdout.on("resize", l),
     (Yen = {
       async flush() {
-        (writer.flush(), await s);
+        (writer.flush(), await pendingWrite);
       },
       async dispose() {
         (writer.dispose(),
-          await s,
+          await pendingWrite,
           process.stdout.removeListener("resize", l),
           (process.stdout.write = a));
       },

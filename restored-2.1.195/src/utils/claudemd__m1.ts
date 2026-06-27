@@ -189,15 +189,15 @@ function Uip(e, t) {
 }
 function jip(e, t) {
   if (t !== "User" && t !== "Project" && t !== "Local") return false;
-  let n = Dr().claudeMdExcludes;
-  if (!n || n.length === 0) return false;
+  let patterns = Dr().claudeMdExcludes;
+  if (!patterns || patterns.length === 0) return false;
   let r = {
       dot: true,
     },
     o = e.replaceAll("\\", "/"),
-    s = Gip(n).filter((i) => i.length > 0);
-  if (s.length === 0) return false;
-  return Lsa.default.isMatch(o, s, r);
+    expandedPatterns = Gip(patterns).filter((i) => i.length > 0);
+  if (expandedPatterns.length === 0) return false;
+  return Lsa.default.isMatch(o, expandedPatterns, r);
 }
 function Gip(e) {
   let t = qt(),

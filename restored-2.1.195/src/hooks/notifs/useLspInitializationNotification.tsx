@@ -13,13 +13,13 @@ function useLspInitializationNotification() {
     o;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((o = new Set()), (e[0] = o));
   else o = e[0];
-  let s = pvt.useRef(o),
+  let notifiedErrorsRef = pvt.useRef(o),
     i;
   if (e[1] !== t)
     ((i = (m, g) => {
       let h = `${m}:${g}`;
-      if (s.current.has(h)) return;
-      (s.current.add(h),
+      if (notifiedErrorsRef.current.has(h)) return;
+      (notifiedErrorsRef.current.add(h),
         T(`LSP error: ${m} - ${g}`),
         t((y) => {
           let b = new Set(y.plugins.errors.map(nCm)),

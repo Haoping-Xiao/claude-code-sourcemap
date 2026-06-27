@@ -61,11 +61,11 @@ function redactGitRemoteCredentials(e) {
   return e == null ? e : e.replace(/:\/\/[^/]*@/, "://***@");
 }
 function normalizeGitRemoteUrl(url) {
-  let t = url.trim();
-  if (!t) return null;
-  let n = t.match(/^git@([^:]+):(.+?)(?:\.git)?$/);
+  let trimmed = url.trim();
+  if (!trimmed) return null;
+  let n = trimmed.match(/^git@([^:]+):(.+?)(?:\.git)?$/);
   if (n && n[1] && n[2]) return `${n[1]}/${n[2]}`.toLowerCase();
-  let r = t.match(/^(?:https?|ssh):\/\/(?:[^@]+@)?([^/]+)\/(.+?)(?:\.git)?$/);
+  let r = trimmed.match(/^(?:https?|ssh):\/\/(?:[^@]+@)?([^/]+)\/(.+?)(?:\.git)?$/);
   if (r && r[1] && r[2]) {
     let o = r[1],
       s = r[2];
@@ -167,9 +167,9 @@ async function captureUntrackedFiles() {
   let { stdout: e, code: t } = await $n(gitExe(), ["ls-files", "--others", "--exclude-standard"], {
       preserveOutputOnError: !1,
     }),
-    n = e.trim();
-  if (t !== 0 || !n) return [];
-  let r = n
+    trimmed = e.trim();
+  if (t !== 0 || !trimmed) return [];
+  let r = trimmed
       .split(
         `
 `,

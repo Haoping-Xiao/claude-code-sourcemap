@@ -39,12 +39,12 @@ function NotifChannelLabel(t0) {
     I = FL.useContext(Xj),
     k = elt(),
     D = bPn(),
-    P = FL.useRef(null),
+    initialConfig = FL.useRef(null),
     [O, L] = FL.useState(0),
     M;
   if (t[0] !== O)
     ((M = () => {
-      let nn = P.current ? tX(P.current).height : 0;
+      let nn = initialConfig.current ? tX(initialConfig.current).height : 0;
       if (nn !== O) L(nn);
     }),
       (t[0] = O),
@@ -254,7 +254,7 @@ function NotifChannelLabel(t0) {
     ((jt =
       u != null &&
       GN.jsx(U, {
-        ref: P,
+        ref: initialConfig,
         flexDirection: "column",
         flexShrink: 0,
         children: u,

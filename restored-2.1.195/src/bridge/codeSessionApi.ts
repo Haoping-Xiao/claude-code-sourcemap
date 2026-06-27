@@ -51,19 +51,19 @@ async function createCodeSession(baseUrl, accessToken, title, timeoutMs, tags, s
     let p = _J(response.data);
     return (T(`[code-session] Session create failed ${response.status}${p ? `: ${p}` : ""}`), null);
   }
-  let d = response.data;
+  let data = response.data;
   if (
-    !d ||
-    typeof d !== "object" ||
-    !("session" in d) ||
-    !d.session ||
-    typeof d.session !== "object" ||
-    !("id" in d.session) ||
-    typeof d.session.id !== "string" ||
-    !d.session.id.startsWith("cse_")
+    !data ||
+    typeof data !== "object" ||
+    !("session" in data) ||
+    !data.session ||
+    typeof data.session !== "object" ||
+    !("id" in data.session) ||
+    typeof data.session.id !== "string" ||
+    !data.session.id.startsWith("cse_")
   )
-    return (T(`[code-session] No session.id (cse_*) in response: ${De(d).slice(0, 200)}`), null);
-  return d.session.id;
+    return (T(`[code-session] No session.id (cse_*) in response: ${De(data).slice(0, 200)}`), null);
+  return data.session.id;
 }
 function HTt(e) {
   return e !== null && "terminal" in e;

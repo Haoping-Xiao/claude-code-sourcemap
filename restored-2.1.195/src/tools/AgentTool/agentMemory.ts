@@ -87,11 +87,14 @@ function loadAgentMemoryPrompt(agentType, scope) {
   }
   let r = getAgentMemoryDir(agentType, scope);
   Pke(r);
-  let o = process.env.CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES;
+  let coworkExtraGuidelines = process.env.CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES;
   return UNi({
     displayName: "Persistent Agent Memory",
     memoryDir: r,
-    extraGuidelines: o && o.trim().length > 0 ? [n, o] : [n],
+    extraGuidelines:
+      coworkExtraGuidelines && coworkExtraGuidelines.trim().length > 0
+        ? [n, coworkExtraGuidelines]
+        : [n],
   });
 }
 var SI;

@@ -379,8 +379,8 @@ function ErrorsTabContent(t0) {
       (t[2] = y));
   else ((h = t[1]), (y = t[2]));
   UT.useEffect(h, y);
-  let b = a.marketplaces.filter(tUf),
-    _ = new Set(b.map(eUf)),
+  let failedMarketplaces = a.marketplaces.filter(tUf),
+    _ = new Set(failedMarketplaces.map(eUf)),
     S = s.filter(Irr),
     A = s.filter(
       (ee) =>
@@ -393,7 +393,7 @@ function ErrorsTabContent(t0) {
     v = s.filter(ZBf),
     C = s.filter(QBf),
     x = Ese(),
-    rows = buildErrorRows(b, A, v, C, m, S, i, x),
+    rows = buildErrorRows(failedMarketplaces, A, v, C, m, S, i, x),
     k;
   if (t[3] !== n)
     ((k = () => {

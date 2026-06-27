@@ -9,18 +9,19 @@
 function LspRecommendationMenu(e) {
   let t = tDc.c(36),
     { pluginName: n, pluginDescription: r, fileExtension: o, onResponse: s } = e,
-    i = Mfr.useRef(s),
+    onResponseRef = Mfr.useRef(s),
     a;
   if (t[0] !== s)
     ((a = () => {
-      i.current = s;
+      onResponseRef.current = s;
     }),
       (t[0] = s),
       (t[1] = a));
   else a = t[1];
   Mfr.useEffect(a);
   let l;
-  if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((l = () => i.current("no")), (t[2] = l));
+  if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+    ((l = () => onResponseRef.current("no")), (t[2] = l));
   else l = t[2];
   let c;
   if (t[3] === Symbol.for("react.memo_cache_sentinel")) ((c = []), (t[3] = c));

@@ -211,18 +211,18 @@ function trackGitOperations(command, exitCode, stdout) {
       operation: We("push"),
     }),
       tVe.emit());
-  let o = pOa.find((l) => l.re.test(command));
-  if (o)
+  let prHit = pOa.find((l) => l.re.test(command));
+  if (prHit)
     (G("tengu_git_operation", {
-      operation: o.op,
+      operation: prHit.op,
     }),
       tVe.emit());
   if (
-    (o?.action === "merged" && !/(?:--auto|--disable-auto)\b/.test(command)) ||
-    o?.action === "closed"
+    (prHit?.action === "merged" && !/(?:--auto|--disable-auto)\b/.test(command)) ||
+    prHit?.action === "closed"
   )
     Wbr(true);
-  if (o?.action === "created") {
+  if (prHit?.action === "created") {
     if ((YBe()?.add(1), stdout)) {
       let l = Ljn(stdout);
       if (l) Djn(l);
@@ -230,7 +230,7 @@ function trackGitOperations(command, exitCode, stdout) {
   }
   let s = command.match(ADp);
   if (s?.[1]) uOa(s[1]).catch(() => {});
-  else if (Pjn.test(command) && !o) uOa().catch(() => {});
+  else if (Pjn.test(command) && !prHit) uOa().catch(() => {});
   if (command.match(/\bglab\s+mr\s+create\b/)) {
     if (
       (G("tengu_git_operation", {

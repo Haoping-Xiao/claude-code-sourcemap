@@ -31,10 +31,10 @@ function formatContextAsMarkdownTable(data, t) {
 `),
     (m += `
 `));
-  let g = categories.filter(
+  let visibleCategories = categories.filter(
     (h) => h.tokens > 0 && h.name !== "Free space" && h.name !== "Autocompact buffer",
   );
-  if (g.length > 0) {
+  if (visibleCategories.length > 0) {
     ((m += `### Estimated usage by category
 
 `),
@@ -42,7 +42,7 @@ function formatContextAsMarkdownTable(data, t) {
 `),
       (m += `|----------|--------|------------|
 `));
-    for (let b of g) {
+    for (let b of visibleCategories) {
       let _ = ((b.tokens / o) * 100).toFixed(1);
       m += `| ${b.name} | ${gl(b.tokens)} | ${_}% |
 `;

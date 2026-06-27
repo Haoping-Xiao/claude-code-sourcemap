@@ -7,7 +7,7 @@
 // [unwrapped __esm module its]
 sts = d9c;
 function p9c(e, t) {
-  var n = e.__data__;
-  return sts(t) ? n[typeof t == "string" ? "string" : "hash"] : n.map;
+  var data = e.__data__;
+  return sts(t) ? data[typeof t == "string" ? "string" : "hash"] : data.map;
 }
 var Ove;

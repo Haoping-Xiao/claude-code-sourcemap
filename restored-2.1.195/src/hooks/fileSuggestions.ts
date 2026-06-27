@@ -107,9 +107,9 @@ async function loadRipgrepIgnorePatterns(repoRoot, cwd, n) {
     i = Uo([cwd, n]),
     a = qDl.default(),
     l = !1,
-    c = i.flatMap((p) => s.map((f) => jN.join(p, f))),
-    u = await Promise.all(
-      c.map((p) =>
+    paths = i.flatMap((p) => s.map((f) => jN.join(p, f))),
+    contents = await Promise.all(
+      paths.map((p) =>
         o
           .readFile(p, {
             encoding: "utf8",
@@ -117,9 +117,9 @@ async function loadRipgrepIgnorePatterns(repoRoot, cwd, n) {
           .catch(() => null),
       ),
     );
-  for (let [p, f] of u.entries()) {
+  for (let [p, f] of contents.entries()) {
     if (f === null) continue;
-    (a.add(f), (l = !0), T(`[FileIndex] loaded ignore patterns from ${c[p]}`));
+    (a.add(f), (l = !0), T(`[FileIndex] loaded ignore patterns from ${paths[p]}`));
   }
   let d = l ? a : null;
   return ((repoRoot.ignorePatternsCache = d), (repoRoot.ignorePatternsCacheKey = r), d);
@@ -300,15 +300,15 @@ async function getProjectFiles(abortSignal, respectGitignore, n) {
     if (!n) u.push("--no-ignore-vcs");
     a = await Aue(u, s, respectGitignore);
   }
-  let l = a.map((u) => jN.relative(s, u)),
+  let relativePaths = a.map((u) => jN.relative(s, u)),
     c = Date.now() - o;
   return (
-    T(`[FileIndex] ripgrep: ${l.length} files in ${c}ms`),
+    T(`[FileIndex] ripgrep: ${relativePaths.length} files in ${c}ms`),
     G("tengu_file_suggestions_ripgrep", {
-      file_count: l.length,
+      file_count: relativePaths.length,
       duration_ms: c,
     }),
-    l
+    relativePaths
   );
 }
 async function getPathsForSuggestions(e) {

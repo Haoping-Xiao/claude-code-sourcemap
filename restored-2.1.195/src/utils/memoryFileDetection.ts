@@ -21,8 +21,11 @@ function detectSessionFileType(filePath) {
   return null;
 }
 function detectSessionPatternType(pattern) {
-  let t = pattern.split(q$e.win32.sep).join(q$e.posix.sep);
-  if (t.includes(".jsonl") || (t.includes("projects") && t.includes("*.jsonl")))
+  let normalized = pattern.split(q$e.win32.sep).join(q$e.posix.sep);
+  if (
+    normalized.includes(".jsonl") ||
+    (normalized.includes("projects") && normalized.includes("*.jsonl"))
+  )
     return "session_transcript";
   return null;
 }

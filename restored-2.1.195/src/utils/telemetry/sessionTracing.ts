@@ -177,28 +177,28 @@ function startLLMRequestSpan(model, newContext, messagesForAPI, fastMode, o) {
       "llm_request.context": l ? "tool" : Jdt(hDe) ? "interaction" : "standalone",
       speed: o ? "fast" : "normal",
     }),
-    u = a.startSpan(
+    span = a.startSpan(
       "claude_code.llm_request",
       {
         attributes: c,
       },
       i,
     );
-  if (messagesForAPI?.querySource) u.setAttribute("query_source", messagesForAPI.querySource);
+  if (messagesForAPI?.querySource) span.setAttribute("query_source", messagesForAPI.querySource);
   if (newContext && !YY(newContext)) {
-    if (newContext.agentId) u.setAttribute("agent_id", newContext.agentId);
-    if (newContext.parentAgentId) u.setAttribute("parent_agent_id", newContext.parentAgentId);
+    if (newContext.agentId) span.setAttribute("agent_id", newContext.agentId);
+    if (newContext.parentAgentId) span.setAttribute("parent_agent_id", newContext.parentAgentId);
   }
   return (
-    Lxa(u, messagesForAPI, fastMode),
-    yDe.set(u, {
-      span: u,
+    Lxa(span, messagesForAPI, fastMode),
+    yDe.set(span, {
+      span: span,
       startTime: performance.now(),
       attributes: c,
       perfettoSpanId: s,
       priorContext: i,
     }),
-    u
+    span
   );
 }
 function rka(e, { attempt: t, clientRequestId: n }) {

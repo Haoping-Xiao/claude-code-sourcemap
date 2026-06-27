@@ -33,9 +33,9 @@ function COf(e, t, n) {
 function openFileInExternalEditor(filePath, line) {
   let n = $q();
   if (!n) return false;
-  let r = n.split(" "),
-    o = r[0] ?? n,
-    s = r.slice(1),
+  let parts = n.split(" "),
+    o = parts[0] ?? n,
+    s = parts.slice(1),
     i = QNo(n);
   if (i) {
     let c = COf(i, filePath, line),

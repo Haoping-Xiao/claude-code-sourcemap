@@ -79,8 +79,8 @@ function buildIDEProperties(mcpClients, ideInstallationStatus = null, theme) {
   return [];
 }
 function buildMcpProperties(e = [], theme) {
-  let n = e.filter((s) => s.name !== "ide");
-  if (!n.length) return [];
+  let servers = e.filter((s) => s.name !== "ide");
+  if (!servers.length) return [];
   let byState = {
     connected: 0,
     pending: 0,
@@ -88,7 +88,7 @@ function buildMcpProperties(e = [], theme) {
     disabled: 0,
     failed: 0,
   };
-  for (let s of n)
+  for (let s of servers)
     switch (s.type) {
       case "connected":
         byState.connected++;

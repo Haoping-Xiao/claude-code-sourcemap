@@ -111,9 +111,9 @@ function cop(e, t) {
 }
 function cronToHuman(cron, opts) {
   let n = opts?.utc ?? false,
-    r = cron.trim().split(/\s+/);
-  if (r.length !== 5) return cron;
-  let [o, s, i, a, l] = r;
+    parts = cron.trim().split(/\s+/);
+  if (parts.length !== 5) return cron;
+  let [o, s, i, a, l] = parts;
   if (s === "*" && i === "*" && a === "*" && l === "*") {
     if (o === "*") return "Every minute";
     let f = o.match(/^\*\/(\d+)$/);

@@ -99,13 +99,15 @@ function ltn(e) {
   });
 }
 function generateShellSuggestionsLabel(suggestions, shellToolName, commandTransform) {
-  let r = suggestions.filter((p) => p.type === "addRules").flatMap((p) => p.rules || []),
-    o = r.filter((p) => p.toolName === "Read"),
-    s = r.filter((p) => p.toolName === shellToolName),
-    i = suggestions.filter((p) => p.type === "addDirectories").flatMap((p) => p.directories || []),
-    a = o.map((p) => p.ruleContent?.replace("/**", "") || "").filter((p) => p),
+  let allRules = suggestions.filter((p) => p.type === "addRules").flatMap((p) => p.rules || []),
+    readRules = allRules.filter((p) => p.toolName === "Read"),
+    shellRules = allRules.filter((p) => p.toolName === shellToolName),
+    directories = suggestions
+      .filter((p) => p.type === "addDirectories")
+      .flatMap((p) => p.directories || []),
+    readPaths = readRules.map((p) => p.ruleContent?.replace("/**", "") || "").filter((p) => p),
     l = Uo(
-      s.flatMap((p) => {
+      shellRules.flatMap((p) => {
         if (!p.ruleContent) return [];
         let f =
           p.ruleContent.endsWith(":*") || p.ruleContent.endsWith(" *")
@@ -114,12 +116,12 @@ function generateShellSuggestionsLabel(suggestions, shellToolName, commandTransf
         return commandTransform ? commandTransform(f) : f;
       }),
     ),
-    c = i.length > 0,
-    u = a.length > 0,
+    c = directories.length > 0,
+    u = readPaths.length > 0,
     d = l.length > 0;
   if (u && !c && !d) {
-    if (a.length === 1) {
-      let p = a[0],
+    if (readPaths.length === 1) {
+      let p = readPaths[0],
         f = DZ.basename(p) || p;
       return IA.jsxs(w, {
         children: [
@@ -134,12 +136,12 @@ function generateShellSuggestionsLabel(suggestions, shellToolName, commandTransf
       });
     }
     return IA.jsxs(w, {
-      children: ["Yes, allow reading from ", ltn(a), " from this project"],
+      children: ["Yes, allow reading from ", ltn(readPaths), " from this project"],
     });
   }
   if (c && !u && !d) {
-    if (i.length === 1) {
-      let p = i[0],
+    if (directories.length === 1) {
+      let p = directories[0],
         f = DZ.basename(p) || p;
       return IA.jsxs(w, {
         children: [
@@ -154,7 +156,7 @@ function generateShellSuggestionsLabel(suggestions, shellToolName, commandTransf
       });
     }
     return IA.jsxs(w, {
-      children: ["Yes, and always allow access to ", ltn(i), " from this project"],
+      children: ["Yes, and always allow access to ", ltn(directories), " from this project"],
     });
   }
   if (d && !c && !u)
@@ -171,14 +173,14 @@ function generateShellSuggestionsLabel(suggestions, shellToolName, commandTransf
       ],
     });
   if ((c || u) && !d) {
-    let p = [...i, ...a];
+    let p = [...directories, ...readPaths];
     if (c && u)
       return IA.jsxs(w, {
         children: ["Yes, and always allow access to ", ltn(p), " from this project"],
       });
   }
   if ((c || u) && d) {
-    let p = [...i, ...a];
+    let p = [...directories, ...readPaths];
     if (p.length === 1 && l.length === 1)
       return IA.jsxs(w, {
         children: ["Yes, and allow access to ", ltn(p), " and", " ", Jzo(l), " commands"],

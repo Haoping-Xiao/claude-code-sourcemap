@@ -136,19 +136,19 @@ function NKf(e) {
   return t || n || QEs(e) || void 0;
 }
 function createFork(customTitle, t, n, r) {
-  let o = customTitle.transcript.filter((p) => !p.isSidechain);
-  if (o.length === 0) throw Error(`Session ${t} has no messages to fork`);
+  let mainConversationEntries = customTitle.transcript.filter((p) => !p.isSidechain);
+  if (mainConversationEntries.length === 0) throw Error(`Session ${t} has no messages to fork`);
   if (n.upToMessageId) {
-    let p = o.findIndex((f) => f.uuid === n.upToMessageId);
+    let p = mainConversationEntries.findIndex((f) => f.uuid === n.upToMessageId);
     if (p === -1) throw Error(`Message ${n.upToMessageId} not found in session ${t}`);
-    o = o.slice(0, p + 1);
+    mainConversationEntries = mainConversationEntries.slice(0, p + 1);
   }
   let s = new Map();
-  for (let p of o) s.set(p.uuid, zJt.randomUUID());
-  let i = o.filter((p) => p.type !== "progress");
+  for (let p of mainConversationEntries) s.set(p.uuid, zJt.randomUUID());
+  let i = mainConversationEntries.filter((p) => p.type !== "progress");
   if (i.length === 0) throw Error(`Session ${t} has no messages to fork`);
   let a = new Map();
-  for (let p of o) a.set(p.uuid, p);
+  for (let p of mainConversationEntries) a.set(p.uuid, p);
   let l = zJt.randomUUID(),
     c = new Date().toISOString(),
     u = [];

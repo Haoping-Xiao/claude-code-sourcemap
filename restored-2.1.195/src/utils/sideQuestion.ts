@@ -158,10 +158,10 @@ function extractSideQuestionResponse(messages) {
         synthetic: true,
       };
   }
-  let n = messages.find(KLl);
-  if (n)
+  let apiErr = messages.find(KLl);
+  if (apiErr)
     return {
-      response: `(API error: ${n.error.formatted})`,
+      response: `(API error: ${apiErr.error.formatted})`,
       synthetic: true,
     };
   return {

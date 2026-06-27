@@ -278,14 +278,14 @@ function finalizeAgentTool(
     } = metadata,
     lastAssistantMessage = MI(agentMessages);
   if (lastAssistantMessage === void 0) throw Error("No assistant messages found");
-  let m = lastAssistantMessage.message.content.filter((_) => _.type === "text");
-  if (m.length === 0)
+  let content = lastAssistantMessage.message.content.filter((_) => _.type === "text");
+  if (content.length === 0)
     for (let _ = agentMessages.length - 1; _ >= 0; _--) {
       let S = agentMessages[_];
       if (S.type !== "assistant") continue;
       let A = S.message.content.filter((v) => v.type === "text");
       if (A.length > 0) {
-        m = A;
+        content = A;
         break;
       }
     }
@@ -299,7 +299,7 @@ function finalizeAgentTool(
       agent_type: l,
       model: s,
       prompt_char_count: o.length,
-      response_char_count: m.reduce((C, x) => C + x.text.length, 0),
+      response_char_count: content.reduce((C, x) => C + x.text.length, 0),
       assistant_message_count: b.size,
       total_tool_uses: h,
       duration_ms: y,
@@ -336,7 +336,7 @@ function finalizeAgentTool(
   return {
     agentId: agentId,
     agentType: l,
-    content: m,
+    content: content,
     resolvedModel: s,
     totalDurationMs: Date.now() - a,
     totalTokens: g,

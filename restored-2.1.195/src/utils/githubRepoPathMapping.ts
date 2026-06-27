@@ -105,13 +105,13 @@ function removePathFromRepo(repo, pathToRemove) {
   let n = Dt(),
     r = repo.toLowerCase(),
     existingPaths = n.githubRepoPaths?.[r] ?? [],
-    s = existingPaths.filter((a) => a !== pathToRemove);
-  if (s.length === existingPaths.length) return;
+    updatedPaths = existingPaths.filter((a) => a !== pathToRemove);
+  if (updatedPaths.length === existingPaths.length) return;
   let i = {
     ...n.githubRepoPaths,
   };
-  if (s.length === 0) delete i[r];
-  else i[r] = s;
+  if (updatedPaths.length === 0) delete i[r];
+  else i[r] = updatedPaths;
   (gn((a) => ({
     ...a,
     githubRepoPaths: i,

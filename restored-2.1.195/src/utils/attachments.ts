@@ -56,7 +56,7 @@ async function getAttachments(
           ),
         ]
       : [],
-    f = await Promise.all(p),
+    userAttachmentResults = await Promise.all(p),
     m = (() => {
       let _;
       return () => (_ ??= EH() ? gIf(messages, toolUseContext) : fIf(messages, toolUseContext));
@@ -174,7 +174,9 @@ async function getAttachments(
     [y, b] = await Promise.all([Promise.all(g), Promise.all(h)]);
   return (
     clearTimeout(c),
-    [...f.flat(), ...y.flat(), ...b.flat()].filter((_) => _ !== void 0 && _ !== null)
+    [...userAttachmentResults.flat(), ...y.flat(), ...b.flat()].filter(
+      (_) => _ !== void 0 && _ !== null,
+    )
   );
 }
 async function maybe(label, t) {
@@ -210,9 +212,9 @@ async function maybe(label, t) {
 }
 async function getQueuedCommandAttachments(queuedCommands, t) {
   if (!queuedCommands) return [];
-  let n = queuedCommands.filter((r) => BCf.has(r.mode));
+  let filtered = queuedCommands.filter((r) => BCf.has(r.mode));
   return Promise.all(
-    n.map(async (r) => {
+    filtered.map(async (r) => {
       let o = await FCf(r.pastedContents, t),
         s = r.value;
       if (o.length > 0)
@@ -1011,12 +1013,12 @@ async function getRelevantMemoryAttachments(
   alreadySurfaced,
   i,
 ) {
-  let a = extractAgentMentions(input).flatMap((h) => {
+  let memoryDirs = extractAgentMentions(input).flatMap((h) => {
       let y = h.replace("agent-", ""),
         b = agents.find((_) => _.agentType === y);
       return b?.memory ? [cit(y, b.memory)] : [];
     }),
-    l = a.length > 0 ? a : [mm()],
+    l = memoryDirs.length > 0 ? memoryDirs : [mm()],
     c = iIf(i, signal),
     u = Promise.resolve([]);
   await dwl(signal);
@@ -1121,7 +1123,7 @@ function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
       },
       forkContextMessages: [...messages],
     },
-    d = getRelevantMemoryAttachments(
+    promise = getRelevantMemoryAttachments(
       i,
       toolUseContext.options.agentDefinitions.activeAgents,
       o,
@@ -1134,7 +1136,7 @@ function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
       return [];
     }),
     handle = {
-      promise: d,
+      promise: promise,
       settledAt: null,
       consumedOnIteration: -1,
       [Symbol.dispose]() {
@@ -1151,7 +1153,7 @@ function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
       },
     };
   return (
-    d.finally(() => {
+    promise.finally(() => {
       handle.settledAt = Date.now();
     }),
     handle
@@ -1823,7 +1825,7 @@ async function getAsyncHookResponseAttachments() {
   let responses = await p0l();
   if (responses.length === 0) return [];
   T(`Hooks: getAsyncHookResponseAttachments found ${responses.length} responses`);
-  let t = responses.map(
+  let attachments = responses.map(
     ({
       processId: n,
       response: r,
@@ -1854,7 +1856,10 @@ async function getAsyncHookResponseAttachments() {
     let n = responses.map((r) => r.processId);
     (f0l(n), T(`Hooks: Removed ${n.length} delivered hooks from registry`));
   }
-  return (T(`Hooks: getAsyncHookResponseAttachments found ${t.length} attachments`), t);
+  return (
+    T(`Hooks: getAsyncHookResponseAttachments found ${attachments.length} attachments`),
+    attachments
+  );
 }
 async function bIf(e) {
   if (!el()) return [];

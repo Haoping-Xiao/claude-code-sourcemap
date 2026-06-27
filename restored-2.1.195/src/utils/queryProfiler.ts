@@ -73,18 +73,18 @@ function getSlowWarning(deltaMs, name) {
 }
 function getQueryProfileReport() {
   if (!FKt) return "Query profiling not enabled (set CLAUDE_CODE_PROFILE_QUERY=1)";
-  let t = oG().getEntriesByType("mark");
-  if (t.length === 0) return "No query profiling checkpoints recorded";
+  let marks = oG().getEntriesByType("mark");
+  if (marks.length === 0) return "No query profiling checkpoints recorded";
   let lines = [];
   (lines.push("=".repeat(80)),
     lines.push(`QUERY PROFILING REPORT - Query #${bIl}`),
     lines.push("=".repeat(80)),
     lines.push(""));
-  let r = t[0]?.startTime ?? 0,
+  let r = marks[0]?.startTime ?? 0,
     o = r,
     s = 0,
     i = 0;
-  for (let c of t) {
+  for (let c of marks) {
     let u = c.startTime - r,
       d = c.startTime - o;
     if (
@@ -95,7 +95,7 @@ function getQueryProfileReport() {
     if (c.name === "query_first_chunk_received") i = u;
     o = c.startTime;
   }
-  let a = t.at(-1),
+  let a = marks.at(-1),
     l = a ? a.startTime - r : 0;
   if ((lines.push(""), lines.push("-".repeat(80)), i > 0)) {
     let c = s,
@@ -107,7 +107,7 @@ function getQueryProfileReport() {
       lines.push(`  - Network latency: ${gee(u)}ms (${p}%)`));
   } else lines.push(`Total time: ${gee(l)}ms`);
   return (
-    lines.push(getPhaseSummary(t, r)),
+    lines.push(getPhaseSummary(marks, r)),
     lines.push("=".repeat(80)),
     lines.join(`
 `)

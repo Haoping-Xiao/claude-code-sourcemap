@@ -1241,7 +1241,7 @@ async function streamCompactSummary({
 }
 async function createPostCompactFileAttachments(readFileState, toolUseContext, maxFiles, r = []) {
   let o = collectReadToolFilePaths(r),
-    s = Object.entries(readFileState)
+    recentFiles = Object.entries(readFileState)
       .map(([l, c]) => ({
         filename: l,
         ...c,
@@ -1249,8 +1249,8 @@ async function createPostCompactFileAttachments(readFileState, toolUseContext, m
       .filter((l) => !Lwf(l.filename, toolUseContext.agentId) && !o.has(ds(l.filename)))
       .sort((l, c) => c.timestamp - l.timestamp)
       .slice(0, maxFiles),
-    i = await Promise.all(
-      s.map(async (l) => {
+    results = await Promise.all(
+      recentFiles.map(async (l) => {
         let c = await dZn(
           l.filename,
           {
@@ -1267,7 +1267,7 @@ async function createPostCompactFileAttachments(readFileState, toolUseContext, m
       }),
     ),
     a = 0;
-  return i.filter((l) => {
+  return results.filter((l) => {
     if (l === null) return false;
     let c = If(De(l));
     if (a + c <= Awf) return ((a += c), true);
@@ -1323,8 +1323,8 @@ async function _Qn(e) {
   });
 }
 async function createAsyncAgentAttachmentsIfNeeded(context) {
-  let t = context.getAppState();
-  return Object.values(t.tasks)
+  let appState = context.getAppState();
+  return Object.values(appState.tasks)
     .filter((r) => r.type === "local_agent")
     .flatMap((r) => {
       if (r.retrieved || r.status === "pending" || r.agentId === context.agentId) return [];

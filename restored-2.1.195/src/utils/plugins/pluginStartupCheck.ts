@@ -86,8 +86,8 @@ async function getInstalledPlugins() {
     else ke(n);
   });
   let e = MYt(),
-    t = Object.keys(e.plugins);
-  return (T(`Found ${t.length} installed plugins`), t);
+    installed = Object.keys(e.plugins);
+  return (T(`Found ${installed.length} installed plugins`), installed);
 }
 async function findMissingPlugins(enabledPlugins) {
   try {

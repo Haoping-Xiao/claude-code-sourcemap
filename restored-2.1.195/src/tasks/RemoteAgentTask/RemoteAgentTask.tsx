@@ -280,13 +280,15 @@ function ZQp(e) {
   return extractTodoListFromLog(e);
 }
 function extractTodoListFromLog(log) {
-  let t = log.findLast(
+  let todoListMessage = log.findLast(
     (o) =>
       o.type === "assistant" &&
       o.message.content.some((s) => s.type === "tool_use" && s.name === qDe.name),
   );
-  if (!t) return [];
-  let n = t.message.content.find((o) => o.type === "tool_use" && o.name === qDe.name)?.input;
+  if (!todoListMessage) return [];
+  let n = todoListMessage.message.content.find(
+    (o) => o.type === "tool_use" && o.name === qDe.name,
+  )?.input;
   if (!n) return [];
   let parsedInput = qDe.inputSchema.safeParse(n);
   if (!parsedInput.success) return [];

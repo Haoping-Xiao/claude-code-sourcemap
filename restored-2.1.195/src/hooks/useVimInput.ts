@@ -17,7 +17,7 @@ function useVimInput(props) {
       onHistoryDown: c,
       inputFilter: u,
     } = props,
-    d = GQ.useRef(null),
+    vimStateRef = GQ.useRef(null),
     p = GQ.useRef(I$l()),
     [f, m] = GQ.useState("INSERT"),
     [g, h] = GQ.useState(null),
@@ -32,7 +32,7 @@ function useVimInput(props) {
   }
   let _ = GQ.useCallback(
       (P) => {
-        if (P !== void 0) d.current?.setOffset(P);
+        if (P !== void 0) vimStateRef.current?.setOffset(P);
         ((p.current = {
           mode: "INSERT",
           insertedText: "",
@@ -59,7 +59,7 @@ function useVimInput(props) {
             type: "insert",
             text: P.insertedText,
           };
-        let L = d.current;
+        let L = vimStateRef.current;
         if (L) {
           let M = L.offset;
           if (
@@ -179,7 +179,7 @@ function useVimInput(props) {
   }
   function x() {
     let P = y.current.lastChange,
-      O = d.current;
+      O = vimStateRef.current;
     if (!P || !O) return;
     let L = Ul.fromText(t, r, O.offset);
     C(P, L, v(L, O, true));
@@ -259,7 +259,7 @@ function useVimInput(props) {
     }
   }
   function k(P) {
-    let O = d.current;
+    let O = vimStateRef.current;
     if (!O) return;
     let L = p.current,
       M = Ul.fromText(t, r, O.offset),
@@ -492,7 +492,7 @@ function useVimInput(props) {
           h(null));
       else {
         let O = P === "VISUAL LINE" ? "line" : "char",
-          L = d.current?.offset ?? 0;
+          L = vimStateRef.current?.offset ?? 0;
         ((p.current = {
           mode: "VISUAL",
           kind: O,
@@ -512,7 +512,7 @@ function useVimInput(props) {
     mode: f,
     setMode: D,
     visualAnchor: g,
-    baseRef: d,
+    baseRef: vimStateRef,
     recordInsertedText: b,
   };
 }

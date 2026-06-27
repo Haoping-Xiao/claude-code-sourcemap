@@ -1039,7 +1039,7 @@ Instruct a worker to use this skill by including "Use the /${command.name} skill
       command: command,
     };
   }
-  let a = await command.getPromptForCommand(args, context),
+  let result = await command.getPromptForCommand(args, context),
     l = !VE("hooks") || L_e(command.source);
   if (command.hooks && l) {
     let b = Rt();
@@ -1052,7 +1052,7 @@ Instruct a worker to use this skill by including "Use the /${command.name} skill
     );
   }
   let c = command.source ? `${command.source}:${command.name}` : command.name,
-    u = a.filter((b) => b.type === "text").map((b) => b.text).join(`
+    u = result.filter((b) => b.type === "text").map((b) => b.text).join(`
 
 `);
   PCt(command.name, c, u, context.agentId ?? null);
@@ -1067,10 +1067,10 @@ Instruct a worker to use this skill by including "Use the /${command.name} skill
     f = wN(command.allowedTools ?? []),
     m = wN(command.disallowedTools ?? []);
   if (m.length > 0) yKn(context.setToolPermissionContext, m, "union");
-  let g = o.length > 0 || r.length > 0 ? [...o, ...r, ...a] : a,
+  let g = o.length > 0 || r.length > 0 ? [...o, ...r, ...result] : result,
     h = await mKn(
       g6e(
-        a
+        result
           .filter((b) => b.type === "text")
           .map((b) => b.text)
           .join(" "),

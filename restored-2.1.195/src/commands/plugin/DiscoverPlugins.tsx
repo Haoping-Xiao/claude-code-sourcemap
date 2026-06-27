@@ -45,7 +45,7 @@ function DiscoverPlugins({
     bA.useEffect(() => () => i(!1), [i]));
   let N = Pg(),
     { columns: B } = br(),
-    $ = bA.useMemo(() => {
+    detailsMenuOptions = bA.useMemo(() => {
       if (!I) return availablePlugins;
       let ue = I.toLowerCase();
       return availablePlugins.filter(
@@ -60,7 +60,7 @@ function DiscoverPlugins({
     [selectedForInstall, Y] = bA.useState(new Set()),
     [z, K] = bA.useState(new Set()),
     pagination = FEt({
-      totalItems: $.length,
+      totalItems: detailsMenuOptions.length,
       selectedIndex: q,
     });
   bA.useEffect(() => {
@@ -316,11 +316,11 @@ function DiscoverPlugins({
         } else pagination.handleSelectionChange(q - 1, W);
       },
       "select:next": () => {
-        if (q < $.length - 1) pagination.handleSelectionChange(q + 1, W);
+        if (q < detailsMenuOptions.length - 1) pagination.handleSelectionChange(q + 1, W);
       },
       "select:accept": () => {
-        if (q < $.length) {
-          let ue = $[q];
+        if (q < detailsMenuOptions.length) {
+          let ue = detailsMenuOptions[q];
           if (ue)
             if (ue.isInstalled)
               o({
@@ -340,8 +340,8 @@ function DiscoverPlugins({
     No(
       {
         "plugin:toggle": () => {
-          if (q < $.length) {
-            let ue = $[q];
+          if (q < detailsMenuOptions.length) {
+            let ue = detailsMenuOptions[q];
             if (ue && !ue.isInstalled) {
               let we = new Set(selectedForInstall);
               if (we.has(ue.pluginId)) we.delete(ue.pluginId);
@@ -569,7 +569,7 @@ function DiscoverPlugins({
         }),
       ],
     });
-  let visiblePlugins = pagination.getVisibleItems($);
+  let visiblePlugins = pagination.getVisibleItems(detailsMenuOptions);
   return pi.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
@@ -617,7 +617,7 @@ function DiscoverPlugins({
             children: ae,
           }),
         }),
-      $.length === 0 &&
+      detailsMenuOptions.length === 0 &&
         I &&
         pi.jsx(U, {
           marginBottom: 1,
@@ -703,8 +703,8 @@ function DiscoverPlugins({
         }),
       pi.jsx(DiscoverPluginsKeyHint, {
         hasSelection: selectedForInstall.size > 0,
-        canToggle: q < $.length && !$[q]?.isInstalled,
-        canView: q < $.length,
+        canToggle: q < detailsMenuOptions.length && !detailsMenuOptions[q]?.isInstalled,
+        canView: q < detailsMenuOptions.length,
       }),
     ],
   });

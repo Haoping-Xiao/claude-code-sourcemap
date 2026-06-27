@@ -771,19 +771,19 @@ function validateComponentFile(filePath, content, fileType) {
         message: "allowed-tools array must contain only strings.",
       });
   }
-  let u = fm.shell;
-  if (u !== void 0 && u !== null)
-    if (typeof u !== "string")
+  let sh = fm.shell;
+  if (sh !== void 0 && sh !== null)
+    if (typeof sh !== "string")
       errors.push({
         path: "shell",
-        message: `shell must be a string, got ${typeof u}.`,
+        message: `shell must be a string, got ${typeof sh}.`,
       });
     else {
-      let d = u.trim().toLowerCase();
+      let d = sh.trim().toLowerCase();
       if (d !== "bash" && d !== "powershell")
         errors.push({
           path: "shell",
-          message: `shell must be 'bash' or 'powershell', got '${u}'.`,
+          message: `shell must be 'bash' or 'powershell', got '${sh}'.`,
         });
     }
   return {

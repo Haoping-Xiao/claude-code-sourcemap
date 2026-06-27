@@ -7,13 +7,13 @@
 // [unwrapped __esm module j9o] deps: dn, utils/debug.ts, services/mcp/auth.ts, services/mcp/utils.ts, tools/McpAuthTool/McpAuthTool.ts, services/mcp/config.ts, services/mcp/client.ts, services/mcp/utils.ts, components/MCPServerDialogCopy.tsx, utils/http.ts, @mixmark-io/domino/lib/htmlelts.js, Kke, utils/errors.ts, context/stats.tsx, utils/status.tsx, main.tsx, I9o
 mpc = require("readline");
 function run(e) {
-  let t = e
+  let program = e
     .command("mcp")
     .description("Configure and manage MCP servers")
     .configureHelp(LTe())
     .enablePositionalOptions();
   if (
-    (t
+    (program
       .command("serve")
       .description("Start the Claude Code MCP server")
       .option("-d, --debug", "Enable debug mode", () => true)
@@ -25,11 +25,11 @@ function run(e) {
           verbose: r,
         });
       }),
-    ldc(t),
+    ldc(program),
     y7())
   )
-    udc(t);
-  (t
+    udc(program);
+  (program
     .command("remove <name>")
     .description("Remove an MCP server")
     .option(
@@ -43,7 +43,7 @@ function run(e) {
       ]);
       return (await o(await s(), n, r), nV());
     }),
-    t
+    program
       .command("list")
       .description(
         "List configured MCP servers. Unapproved .mcp.json servers are shown as \u23F8 Pending approval and not connected to; approved servers are health-checked.",
@@ -55,7 +55,7 @@ function run(e) {
         ]);
         await n(await r());
       }),
-    t
+    program
       .command("get <name>")
       .description(
         "Get details about an MCP server. Unapproved .mcp.json servers are shown as \u23F8 Pending approval and not connected to; approved servers are health-checked.",
@@ -67,7 +67,7 @@ function run(e) {
         ]);
         await r(await o(), n);
       }),
-    t
+    program
       .command("login <name>")
       .description("Authenticate with an MCP server (HTTP, SSE, or claude.ai connector)")
       .option(
@@ -78,14 +78,14 @@ function run(e) {
         let { mcpLoginHandler: o } = await Promise.resolve().then(() => (j9o(), F9o));
         await o(n, r);
       }),
-    t
+    program
       .command("logout <name>")
       .description("Clear stored OAuth credentials for an MCP server")
       .action(async (n) => {
         let { mcpLogoutHandler: r } = await Promise.resolve().then(() => (j9o(), F9o));
         await r(n);
       }),
-    t
+    program
       .command("add-json <name> <json>")
       .description("Add an MCP server (stdio or SSE) with a JSON string")
       .option("-s, --scope <scope>", "Configuration scope (local, user, or project)", "local")
@@ -100,7 +100,7 @@ function run(e) {
         ]);
         return (await s(await i(), n, r, o), nV());
       }),
-    t
+    program
       .command("add-from-claude-desktop")
       .description("Import MCP servers from Claude Desktop (Mac and WSL only)")
       .option("-s, --scope <scope>", "Configuration scope (local, user, or project)", "local")
@@ -108,7 +108,7 @@ function run(e) {
         let { mcpAddFromDesktopHandler: r } = await Promise.resolve().then(() => (cNe(), lNe));
         await r(n);
       }),
-    t
+    program
       .command("reset-project-choices")
       .description(
         "Reset all approved and rejected project-scoped (.mcp.json) servers within this project",

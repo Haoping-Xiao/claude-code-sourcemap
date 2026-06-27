@@ -201,8 +201,8 @@ async function generateSuggestion(abortController, promptId, cacheSafeParams) {
       skipTranscript: true,
       skipCacheWrite: true,
     }),
-    i = s.messages.find((l) => l.type === "assistant"),
-    a = i?.type === "assistant" ? (i.requestId ?? null) : null;
+    firstAssistantMsg = s.messages.find((l) => l.type === "assistant"),
+    a = firstAssistantMsg?.type === "assistant" ? (firstAssistantMsg.requestId ?? null) : null;
   for (let l of s.messages) {
     if (l.type !== "assistant") continue;
     let c = l.message.content.find((u) => u.type === "text");
@@ -237,29 +237,29 @@ async function generateSuggestion(abortController, promptId, cacheSafeParams) {
 }
 function shouldFilterSuggestion(suggestion, promptId, source) {
   if (!suggestion) return (logSuggestionSuppressed("empty", void 0, promptId, source), true);
-  let r = suggestion.toLowerCase(),
+  let lower = suggestion.toLowerCase(),
     o = suggestion.trim().split(/\s+/).length,
     s = [
-      ["done", () => r === "done"],
+      ["done", () => lower === "done"],
       [
         "meta_text",
         () =>
-          r === "nothing found" ||
-          r === "nothing found." ||
-          r.startsWith("nothing to suggest") ||
-          r.startsWith("no suggestion") ||
-          /\bsilence is\b|\bstay(s|ing)? silent\b/.test(r) ||
-          /^\W*silence\W*$/.test(r),
+          lower === "nothing found" ||
+          lower === "nothing found." ||
+          lower.startsWith("nothing to suggest") ||
+          lower.startsWith("no suggestion") ||
+          /\bsilence is\b|\bstay(s|ing)? silent\b/.test(lower) ||
+          /^\W*silence\W*$/.test(lower),
       ],
       ["meta_wrapped", () => /^\(.*\)$|^\[.*\]$/.test(suggestion)],
       [
         "error_message",
         () =>
-          r.startsWith("api error:") ||
-          r.startsWith("prompt is too long") ||
-          r.startsWith("request timed out") ||
-          r.startsWith("invalid api key") ||
-          r.startsWith("image was too large"),
+          lower.startsWith("api error:") ||
+          lower.startsWith("prompt is too long") ||
+          lower.startsWith("request timed out") ||
+          lower.startsWith("invalid api key") ||
+          lower.startsWith("image was too large"),
       ],
       ["prefixed_label", () => /^\w+:\s/.test(suggestion)],
       [
@@ -285,7 +285,7 @@ function shouldFilterSuggestion(suggestion, promptId, source) {
             "exit",
             "quit",
             "no",
-          ]).has(r);
+          ]).has(lower);
         },
       ],
       ["too_many_words", () => o > 12],
@@ -296,7 +296,7 @@ function shouldFilterSuggestion(suggestion, promptId, source) {
         "evaluative",
         () =>
           /thanks|thank you|looks good|sounds good|that works|that worked|that's all|nice|great|perfect|makes sense|awesome|excellent/.test(
-            r,
+            lower,
           ),
       ],
       [

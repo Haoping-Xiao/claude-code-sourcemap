@@ -105,9 +105,11 @@ async function prepareForkedCommandContext(command, args, context) {
           ]),
     ],
     c = command.agent ?? "general-purpose",
-    u = context.options.agentDefinitions.activeAgents,
+    agents = context.options.agentDefinitions.activeAgents,
     d =
-      u.find((f) => f.agentType === c) ?? u.find((f) => f.agentType === "general-purpose") ?? u[0];
+      agents.find((f) => f.agentType === c) ??
+      agents.find((f) => f.agentType === "general-purpose") ??
+      agents[0];
   if (!d) throw Error("No agent available for forked execution");
   let p = [
     Rn({

@@ -101,7 +101,7 @@ function PluginOptionsFlow({ plugin: e, pluginId: t, onDone: n }) {
       return u;
     }),
     [o, s] = t1e.useState(0),
-    i = t1e.useRef(false),
+    onDoneRef = t1e.useRef(false),
     a = t1e.useRef(n);
   if (
     ((a.current = n),
@@ -116,13 +116,13 @@ function PluginOptionsFlow({ plugin: e, pluginId: t, onDone: n }) {
     try {
       await current.save(u);
     } catch (p) {
-      n("error", be(p), i.current);
+      n("error", be(p), onDoneRef.current);
       return;
     }
-    if (Object.keys(u).length > 0) i.current = true;
+    if (Object.keys(u).length > 0) onDoneRef.current = true;
     let d = o + 1;
     if (d < r.length) s(d);
-    else n("configured", void 0, i.current);
+    else n("configured", void 0, onDoneRef.current);
   }
   return qBo.jsx(
     fXt,
@@ -132,7 +132,7 @@ function PluginOptionsFlow({ plugin: e, pluginId: t, onDone: n }) {
       configSchema: current.schema,
       initialValues: current.load(),
       onSave: c,
-      onCancel: () => n("skipped", void 0, i.current),
+      onCancel: () => n("skipped", void 0, onDoneRef.current),
     },
     current.key,
   );

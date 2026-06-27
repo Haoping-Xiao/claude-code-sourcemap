@@ -593,7 +593,7 @@ function REPL({
     [en, Dn] = mn.useState(false),
     [nn, Ln] = mn.useState(false),
     [Hn, kr] = mn.useState(""),
-    Mr = mn.useRef(0),
+    userInputBaselineRef = mn.useRef(0),
     fe = mn.useRef(void 0),
     Te = mn.useRef(false),
     { addNotification: Re, removeNotification: Ne } = Li(),
@@ -4637,9 +4637,9 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
     if (yt.key === "v") {
       if ((yt.preventDefault(), Ln(false), Te.current)) return;
       Te.current = true;
-      let hn = Mr.current,
+      let hn = userInputBaselineRef.current,
         Or = (qr) => {
-          if (hn !== Mr.current) return;
+          if (hn !== userInputBaselineRef.current) return;
           (fe.current?.(), kr(qr));
         };
       (Or(`rendering ${Mn.messages.length} messages\u2026`),
@@ -4659,7 +4659,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
           } catch (qr) {
             Or(`render failed: ${qr instanceof Error ? qr.message : String(qr)}`);
           }
-          if (((Te.current = false), hn !== Mr.current)) return;
+          if (((Te.current = false), hn !== userInputBaselineRef.current)) return;
           fe.current = $.setTimeout(() => kr(""), 4000);
         })());
     }
@@ -4671,7 +4671,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
         hXe(0),
         yXe(0),
         Ave(false),
-        Mr.current++,
+        userInputBaselineRef.current++,
         fe.current?.(),
         Dn(false),
         Ln(false),

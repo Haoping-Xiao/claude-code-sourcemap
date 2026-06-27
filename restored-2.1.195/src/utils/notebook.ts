@@ -143,11 +143,11 @@ async function readNotebook(notebookPath, cellId) {
   return notebook.cells.map((a, l) => processCell(a, l, i, false));
 }
 function Zel(e, t) {
-  let n = e.flatMap(KZp);
+  let allResults = e.flatMap(KZp);
   return {
     tool_use_id: t,
     type: "tool_result",
-    content: n.reduce((r, o) => {
+    content: allResults.reduce((r, o) => {
       if (r.length === 0) return [o];
       let s = r.at(-1);
       if (s && s.type === "text" && o.type === "text")

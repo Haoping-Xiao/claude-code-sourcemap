@@ -180,10 +180,10 @@ async function getAllSessionFiles() {
     if (wn(s)) return [];
     throw s;
   }
-  let r = n.filter((s) => s.isDirectory()).map((s) => $fe.join(e, s.name));
+  let projectDirs = n.filter((s) => s.isDirectory()).map((s) => $fe.join(e, s.name));
   return (
     await Promise.all(
-      r.map(async (s) => {
+      projectDirs.map(async (s) => {
         try {
           let i = await t.readdir(s),
             a = i

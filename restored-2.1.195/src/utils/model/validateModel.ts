@@ -8,28 +8,28 @@ function asl() {
   lCo.clear();
 }
 async function validateModel(model, t) {
-  let n = model.trim();
-  if (!n)
+  let normalizedModel = model.trim();
+  if (!normalizedModel)
     return {
       valid: false,
       error: "Model name cannot be empty",
     };
-  if (!xa(n))
+  if (!xa(normalizedModel))
     return {
       valid: false,
-      error: `Model '${n}' is not in the list of available models`,
+      error: `Model '${normalizedModel}' is not in the list of available models`,
     };
   if (!t?.forceServerProbe) {
-    let r = n.toLowerCase();
+    let r = normalizedModel.toLowerCase();
     if (hye.includes(r))
       return {
         valid: true,
       };
-    if (n === process.env.ANTHROPIC_CUSTOM_MODEL_OPTION)
+    if (normalizedModel === process.env.ANTHROPIC_CUSTOM_MODEL_OPTION)
       return {
         valid: true,
       };
-    if (lCo.has(n))
+    if (lCo.has(normalizedModel))
       return {
         valid: true,
       };
@@ -37,7 +37,7 @@ async function validateModel(model, t) {
   try {
     return (
       await yN({
-        model: n,
+        model: normalizedModel,
         max_tokens: 1,
         maxRetries: 0,
         querySource: "model_validation",
@@ -56,13 +56,13 @@ async function validateModel(model, t) {
           },
         ],
       }),
-      lCo.set(n, true),
+      lCo.set(normalizedModel, true),
       {
         valid: true,
       }
     );
   } catch (r) {
-    return handleValidationError(r, n);
+    return handleValidationError(r, normalizedModel);
   }
 }
 function handleValidationError(error, modelName) {
@@ -113,15 +113,15 @@ function handleValidationError(error, modelName) {
 }
 function get3PFallbackSuggestion(model) {
   if (td()) return;
-  let t = model.toLowerCase();
-  if (t.includes("fable-5") || t.includes("fable_5"))
+  let lowerModel = model.toLowerCase();
+  if (lowerModel.includes("fable-5") || lowerModel.includes("fable_5"))
     return Oe.ANTHROPIC_DEFAULT_OPUS_MODEL ?? Vp().opus48;
-  if (t.includes("opus-4-8") || t.includes("opus_4_8")) return Vp().opus47;
-  if (t.includes("opus-4-7") || t.includes("opus_4_7")) return Vp().opus46;
-  if (t.includes("opus-4-6") || t.includes("opus_4_6")) return Vp().opus45;
-  if (t.includes("opus-4-5") || t.includes("opus_4_5")) return Vp().opus41;
-  if (t.includes("sonnet-4-6") || t.includes("sonnet_4_6")) return Vp().sonnet45;
-  if (t.includes("sonnet-4-5") || t.includes("sonnet_4_5")) return Vp().sonnet40;
+  if (lowerModel.includes("opus-4-8") || lowerModel.includes("opus_4_8")) return Vp().opus47;
+  if (lowerModel.includes("opus-4-7") || lowerModel.includes("opus_4_7")) return Vp().opus46;
+  if (lowerModel.includes("opus-4-6") || lowerModel.includes("opus_4_6")) return Vp().opus45;
+  if (lowerModel.includes("opus-4-5") || lowerModel.includes("opus_4_5")) return Vp().opus41;
+  if (lowerModel.includes("sonnet-4-6") || lowerModel.includes("sonnet_4_6")) return Vp().sonnet45;
+  if (lowerModel.includes("sonnet-4-5") || lowerModel.includes("sonnet_4_5")) return Vp().sonnet40;
   return;
 }
 var lCo;

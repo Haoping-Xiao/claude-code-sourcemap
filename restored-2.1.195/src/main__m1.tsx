@@ -8,12 +8,12 @@
 ((iur = R(lt(), 1)), (Uz = require("path")), (fNe = R(rt(), 1)), (Jp = R(se(), 1)));
 function run(e) {
   let t = () => new Ec("--cowork", "Use cowork_plugins directory").hideHelp(),
-    n = e
+    auth = e
       .command("plugin")
       .alias("plugins")
       .description("Manage Claude Code plugins")
       .configureHelp(LTe());
-  (n
+  (auth
     .command("init <name>")
     .alias("new")
     .description(
@@ -31,7 +31,7 @@ function run(e) {
       ]);
       await a(await l(), s, i);
     }),
-    n
+    auth
       .command("validate <path>")
       .description("Validate a plugin or marketplace manifest")
       .option(
@@ -46,7 +46,7 @@ function run(e) {
         ]);
         await a(await l(), s, i);
       }),
-    n
+    auth
       .command("tag [path]")
       .description(
         "Create a {name}--v{version} git tag for a plugin release, validating that plugin.json and any enclosing marketplace entry agree",
@@ -63,7 +63,7 @@ function run(e) {
         ]);
         await a(await l(), s, i);
       }),
-    n
+    auth
       .command("list")
       .description("List installed plugins")
       .option("--json", "Output as JSON")
@@ -76,7 +76,7 @@ function run(e) {
         ]);
         (await i(a, s), _R());
       }),
-    n
+    auth
       .command("details <name>")
       .description("Show a plugin's component inventory and projected token cost")
       .addOption(t())
@@ -87,7 +87,7 @@ function run(e) {
         ]);
         (await a(l, s, i), _R());
       }));
-  let o = n
+  let o = auth
     .command("marketplace")
     .description("Manage Claude Code marketplaces")
     .configureHelp(LTe());
@@ -149,7 +149,7 @@ function run(e) {
         ]);
         await a(await l(), s, i);
       }),
-    n
+    auth
       .command("install <plugin>")
       .alias("i")
       .description(
@@ -169,7 +169,7 @@ function run(e) {
         ]);
         await a(await l(), s, i);
       }),
-    n
+    auth
       .command("uninstall <plugin>")
       .alias("remove")
       .alias("rm")
@@ -195,7 +195,7 @@ function run(e) {
         ]);
         await a(await l(), s, i);
       }),
-    n
+    auth
       .command("prune")
       .alias("autoremove")
       .description("Remove auto-installed dependencies that are no longer needed")
@@ -213,7 +213,7 @@ function run(e) {
         ]);
         await i(await a(), s);
       }),
-    n
+    auth
       .command("enable <plugin>")
       .description("Enable a disabled plugin")
       .option("-s, --scope <scope>", `Installation scope: ${JL.join(", ")} (default: auto-detect)`)
@@ -225,7 +225,7 @@ function run(e) {
         ]);
         (await a(await l(), s, i), _R());
       }),
-    n
+    auth
       .command("disable [plugin]")
       .description("Disable an enabled plugin")
       .option("-a, --all", "Disable all enabled plugins")
@@ -238,7 +238,7 @@ function run(e) {
         ]);
         await a(await l(), s, i);
       }),
-    n
+    auth
       .command("update <plugin>")
       .description("Update a plugin to the latest version (restart required to apply)")
       .option("-s, --scope <scope>", `Installation scope: ${UKe.join(", ")} (default: user)`)

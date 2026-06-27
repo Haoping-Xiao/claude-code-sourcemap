@@ -176,11 +176,11 @@ function getDeferredToolsDelta(tools, messages, scanContext, r) {
     for (let v of S.attachment.removedNames) announced.delete(v);
     if (S.attachment.pendingMcpServers !== void 0) i = S.attachment.pendingMcpServers;
   }
-  let u = tools.filter(y4),
-    d = new Set(u.map((S) => S.name)),
+  let deferred = tools.filter(y4),
+    d = new Set(deferred.map((S) => S.name)),
     p = new Set(tools.map((S) => S.name)),
-    f = u.filter((S) => !announced.has(S.name)),
-    added = u.filter((S) => !s.has(S.name)),
+    f = deferred.filter((S) => !announced.has(S.name)),
+    added = deferred.filter((S) => !s.has(S.name)),
     g = f.filter((S) => s.has(S.name)).map((S) => S.name),
     removed = [];
   for (let S of announced) {

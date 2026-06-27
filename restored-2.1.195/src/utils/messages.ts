@@ -718,8 +718,8 @@ function buildMessageLookups(normalizedMessages, messages) {
     for (let [S, A] of b) _.set(S, A.size);
     m.set(y, _);
   }
-  let g = messages.at(-1),
-    h = g?.type === "assistant" ? g.message.id : void 0;
+  let lastMsg = messages.at(-1),
+    h = lastMsg?.type === "assistant" ? lastMsg.message.id : void 0;
   for (let y of normalizedMessages) {
     if (y.type !== "assistant") continue;
     if (y.message.id === h) continue;
@@ -1643,10 +1643,10 @@ function mergeUserContentBlocks(e, t) {
     }
     return [...e, ...t];
   }
-  let r = t.filter((i) => i.type !== "tool_result"),
+  let toSmoosh = t.filter((i) => i.type !== "tool_result"),
     o = t.filter((i) => i.type === "tool_result");
-  if (r.length === 0) return [...e, ...t];
-  let s = tVo(n, r);
+  if (toSmoosh.length === 0) return [...e, ...t];
+  let s = tVo(n, toSmoosh);
   if (s === null) return [...e, ...t];
   return [...e.slice(0, -1), s, ...o];
 }

@@ -25,13 +25,13 @@ function Hgl(e) {
   return false;
 }
 function Fpf(e) {
-  let t = e.toLowerCase();
-  if (t === "::1") return false;
-  if (t === "::") return true;
-  let n = Gpf(t);
+  let lower = e.toLowerCase();
+  if (lower === "::1") return false;
+  if (lower === "::") return true;
+  let n = Gpf(lower);
   if (n !== null) return Hgl(n);
-  if (t.startsWith("fc") || t.startsWith("fd")) return true;
-  let r = bi(t, ":");
+  if (lower.startsWith("fc") || lower.startsWith("fd")) return true;
+  let r = bi(lower, ":");
   if (r && r.length === 4 && r >= "fe80" && r <= "febf") return true;
   return false;
 }

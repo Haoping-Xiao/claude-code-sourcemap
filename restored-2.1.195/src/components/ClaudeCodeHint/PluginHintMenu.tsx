@@ -15,18 +15,19 @@ function PluginHintMenu(e) {
       sourceCommand: s,
       onResponse: i,
     } = e,
-    a = Ofr.useRef(i),
+    onResponseRef = Ofr.useRef(i),
     l;
   if (t[0] !== i)
     ((l = () => {
-      a.current = i;
+      onResponseRef.current = i;
     }),
       (t[0] = i),
       (t[1] = l));
   else l = t[1];
   Ofr.useEffect(l);
   let c;
-  if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((c = () => a.current("no")), (t[2] = c));
+  if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+    ((c = () => onResponseRef.current("no")), (t[2] = c));
   else c = t[2];
   let u;
   if (t[3] === Symbol.for("react.memo_cache_sentinel")) ((u = []), (t[3] = u));

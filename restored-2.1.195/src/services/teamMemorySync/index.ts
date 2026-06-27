@@ -330,14 +330,14 @@ async function yAf(e, t) {
   return n;
 }
 function batchDeltaByBytes(delta) {
-  let t = Object.keys(delta).sort();
-  if (t.length === 0) return [];
+  let keys = Object.keys(delta).sort();
+  if (keys.length === 0) return [];
   let n = Buffer.byteLength('{"entries":{}}', "utf8"),
     r = (a, l) => Buffer.byteLength(De(a), "utf8") + Buffer.byteLength(De(l), "utf8") + 2,
     o = [],
     s = {},
     i = n;
-  for (let a of t) {
+  for (let a of keys) {
     let l = r(a, delta[a]);
     if (i + l > mAf && Object.keys(s).length > 0) (o.push(s), (s = {}), (i = n));
     ((s[a] = delta[a]), (i += l));

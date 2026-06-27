@@ -101,8 +101,8 @@ function zgl(e) {
   return z6t.has(e);
 }
 function processSandboxPermissionResponse(params) {
-  let t = z6t.get(params.requestId);
-  if (!t)
+  let callback = z6t.get(params.requestId);
+  if (!callback)
     return (
       T(`[SwarmPermissionPoller] No sandbox callback registered for request ${params.requestId}`),
       false
@@ -112,7 +112,7 @@ function processSandboxPermissionResponse(params) {
       `[SwarmPermissionPoller] Processing sandbox response for request ${params.requestId}: allow=${params.allow}`,
     ),
     z6t.delete(params.requestId),
-    t.resolve(params.allow),
+    callback.resolve(params.allow),
     true
   );
 }

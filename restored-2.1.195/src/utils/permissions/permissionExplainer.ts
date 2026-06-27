@@ -13,10 +13,10 @@ function p_m(e) {
   }
 }
 function f_m(e, t = 1000) {
-  let n = e.filter((s) => s.type === "assistant").slice(-3),
+  let assistantMessages = e.filter((s) => s.type === "assistant").slice(-3),
     contextParts = [],
     o = 0;
-  for (let s of n.reverse()) {
+  for (let s of assistantMessages.reverse()) {
     let i = s.message.content
       .filter((a) => a.type === "text")
       .map((a) => ("text" in a ? a.text : ""))

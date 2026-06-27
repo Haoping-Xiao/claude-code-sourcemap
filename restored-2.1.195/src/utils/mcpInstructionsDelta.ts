@@ -25,10 +25,10 @@ function getMcpInstructionsDelta(mcpClients, messages, clientSideInstructions) {
     for (let p of d.attachment.addedNames) announced.add(p);
     for (let p of d.attachment.removedNames) announced.delete(p);
   }
-  let i = mcpClients.filter((d) => d.type === "connected"),
-    a = new Set(i.map((d) => d.name)),
+  let connected = mcpClients.filter((d) => d.type === "connected"),
+    a = new Set(connected.map((d) => d.name)),
     blocks = new Map();
-  for (let d of i)
+  for (let d of connected)
     if (d.instructions)
       blocks.set(
         d.name,

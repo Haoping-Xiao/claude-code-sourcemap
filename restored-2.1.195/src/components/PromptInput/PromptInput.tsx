@@ -59,9 +59,9 @@ function PromptInput({
     ae = pbe() || J,
     [de, Ee] = Po.useState(z ?? "INSERT");
   Po.useEffect(() => K?.(de), [de, K]);
-  let me = Po.useRef(false),
+  let lastInternalInputRef = Po.useRef(false),
     pe = Po.useCallback((Ot) => {
-      ((me.current = false), Ee(Ot));
+      ((lastInternalInputRef.current = false), Ee(Ot));
     }, []),
     ge = V$(),
     [he, ie] = Po.useState(false),
@@ -691,11 +691,11 @@ function PromptInput({
     }),
     Qm = Po.useCallback(
       (Ot, Mn, Eo, wa) => {
-        let pc = !wa?.continuesGesture && ge && (de !== "INSERT" || !me.current);
+        let pc = !wa?.continuesGesture && ge && (de !== "INSERT" || !lastInternalInputRef.current);
         (qa(Ot, Mn, Eo, {
           immediate: pc,
         }),
-          (me.current = ge));
+          (lastInternalInputRef.current = ge));
       },
       [qa, de, ge],
     );

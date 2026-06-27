@@ -412,11 +412,11 @@ function OverviewTab({
   isLoading: o,
 }) {
   let { columns: s } = br(),
-    i = Object.entries(stats.modelUsage).sort(
+    modelEntries = Object.entries(stats.modelUsage).sort(
       ([, p], [, f]) => f.inputTokens + f.outputTokens - (p.inputTokens + p.outputTokens),
     ),
-    a = i[0],
-    l = i.reduce((p, [, f]) => p + f.inputTokens + f.outputTokens, 0),
+    a = modelEntries[0],
+    l = modelEntries.reduce((p, [, f]) => p + f.inputTokens + f.outputTokens, 0),
     c = JF.useMemo(() => generateFunFactoid(stats, l), [stats, l]),
     u = r === "7d" ? 7 : r === "30d" ? 30 : stats.totalDays,
     shotStatsData = null;
@@ -1263,11 +1263,11 @@ function renderOverviewToAnsi(stats, t) {
       }),
     ),
       n.push(""));
-  let c = Object.entries(stats.modelUsage).sort(
+  let modelEntries = Object.entries(stats.modelUsage).sort(
       ([, y], [, b]) => b.inputTokens + b.outputTokens - (y.inputTokens + y.outputTokens),
     ),
-    u = c[0],
-    d = c.reduce((y, [, b]) => y + b.inputTokens + b.outputTokens, 0);
+    u = modelEntries[0],
+    d = modelEntries.reduce((y, [, b]) => y + b.inputTokens + b.outputTokens, 0);
   if (u) n.push(l("Favorite model", wp(u[0]), "Total tokens", ou(d)));
   (n.push(""),
     n.push(

@@ -13,7 +13,7 @@ function useLspPluginRecommendation() {
     r;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((r = new Set()), (e[0] = r));
   else r = e[0];
-  let o = Pfr.useRef(r),
+  let checkedFilesRef = Pfr.useRef(r),
     { recommendation: s, clearRecommendation: i, tryResolve: a } = Rfr(),
     l,
     c;
@@ -22,7 +22,8 @@ function useLspPluginRecommendation() {
       a(async () => {
         if (Ybr()) return null;
         let f = [];
-        for (let m of t) if (!o.current.has(m)) (o.current.add(m), f.push(m));
+        for (let m of t)
+          if (!checkedFilesRef.current.has(m)) (checkedFilesRef.current.add(m), f.push(m));
         for (let m of f)
           try {
             let h = (await zLc(m))[0];

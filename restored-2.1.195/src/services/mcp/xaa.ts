@@ -209,9 +209,11 @@ async function performCrossAppAccess(serverUrl, config, n = "xaa", abortSignal) 
       `XAA: no authorization server supports jwt-bearer. Tried: ${asErrors.join("; ")}`,
       `XAA: no authorization server supports jwt-bearer (tried ${prm.authorization_servers.length})`,
     );
-  let l = asMeta.token_endpoint_auth_methods_supported,
+  let authMethods = asMeta.token_endpoint_auth_methods_supported,
     c =
-      l && !l.includes("client_secret_basic") && l.includes("client_secret_post")
+      authMethods &&
+      !authMethods.includes("client_secret_basic") &&
+      authMethods.includes("client_secret_post")
         ? "client_secret_post"
         : "client_secret_basic";
   (sn(

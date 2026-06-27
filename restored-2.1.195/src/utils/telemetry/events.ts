@@ -49,8 +49,8 @@ async function logOTelEvent(eventName, t = {}) {
     },
     r = FCt();
   if (r) attributes["prompt.id"] = r;
-  let o = process.env.CLAUDE_CODE_WORKSPACE_HOST_PATHS;
-  if (o) attributes["workspace.host_paths"] = o.split("|");
+  let workspaceDir = process.env.CLAUDE_CODE_WORKSPACE_HOST_PATHS;
+  if (workspaceDir) attributes["workspace.host_paths"] = workspaceDir.split("|");
   for (let [l, c] of Object.entries(t)) if (c !== void 0) attributes[l] = c;
   let s = new Date(),
     i = {

@@ -60,6 +60,20 @@ function extractFunctions(ast) {
             if (prop && prop.length >= 2) bindings.get(o.name).add("." + prop);
           }
         },
+        // 绑定的初始化来源: let X = something.prop / X = obj.method(...) -> 记 prop/method (跨版本稳定)
+        VariableDeclarator(p) {
+          if (p.node.id.type !== "Identifier" || !bindings.has(p.node.id.name) || !p.node.init) return;
+          let init = p.node.init;
+          if (init.type === "AwaitExpression") init = init.argument;
+          let mem = null;
+          if (init.type === "CallExpression" && init.callee.type === "MemberExpression") mem = init.callee;
+          else if (init.type === "MemberExpression") mem = init;
+          if (mem && !mem.computed && mem.property && mem.property.name && mem.property.name.length >= 2) {
+            bindings.get(p.node.id.name).add("init:" + mem.property.name);
+          }
+          // 初始化里的可辨识字符串
+          if (init.type === "StringLiteral" && init.value.length >= 6) bindings.get(p.node.id.name).add("s:" + init.value);
+        },
       });
       funcs.push({ name, bindings, bodyStrings });
     },

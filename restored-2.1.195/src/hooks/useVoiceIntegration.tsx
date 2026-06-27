@@ -124,7 +124,7 @@ function useVoiceIntegration({
       },
       [e, t, n, i, r, m, g],
     ),
-    _ = Cbm.useVoice({
+    voice = Cbm.useVoice({
       onTranscript: b,
       onError: (A) => {
         s({
@@ -155,8 +155,8 @@ function useVoiceIntegration({
   return {
     stripTrailing: d,
     resetAnchor: p,
-    handleKeyEvent: _.handleKeyEvent,
-    cancelRecording: _.cancelRecording,
+    handleKeyEvent: voice.handleKeyEvent,
+    cancelRecording: voice.cancelRecording,
     interimRange: S,
   };
 }

@@ -205,8 +205,11 @@ Find sessions whose transcript content matches the query by grepping the .jsonl 
     let y = qg(h);
     if (y) m.set(y, h);
   }
-  let g = f.map((h) => m.get(h)).filter((h) => h !== void 0);
-  return (T(`Agentic search found ${g.length}/${f.length} resumable sessions`), g);
+  let matchingLogs = f.map((h) => m.get(h)).filter((h) => h !== void 0);
+  return (
+    T(`Agentic search found ${matchingLogs.length}/${f.length} resumable sessions`),
+    matchingLogs
+  );
 }
 var Wor,
   $Gf = 20,

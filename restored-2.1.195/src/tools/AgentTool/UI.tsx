@@ -755,13 +755,13 @@ function extractLastToolInfo(progressMessages, tools) {
     } else break;
   }
   if (r + o >= 2) return pKn(r, o, true);
-  let s = progressMessages.findLast((i) => {
+  let lastToolResult = progressMessages.findLast((i) => {
     if (!hasProgressMessage(i.data)) return false;
     let a = i.data.message;
     return a.type === "user" && a.message.content.some((l) => l.type === "tool_result");
   });
-  if (s?.data.message.type === "user") {
-    let i = s.data.message.message.content.find((a) => a.type === "tool_result");
+  if (lastToolResult?.data.message.type === "user") {
+    let i = lastToolResult.data.message.message.content.find((a) => a.type === "tool_result");
     if (i?.type === "tool_result") {
       let a = toolUseByID.get(i.tool_use_id);
       if (a) {

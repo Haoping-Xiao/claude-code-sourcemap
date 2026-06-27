@@ -243,8 +243,8 @@ async function persistHookOutput(e, t, n, r = zca) {
   );
 }
 function parseHookOutput(stdout) {
-  let t = stdout.trim();
-  if (!t.startsWith("{"))
+  let trimmed = stdout.trim();
+  if (!trimmed.startsWith("{"))
     return (
       T("Hook output does not start with {, treating as plain text"),
       {
@@ -252,7 +252,7 @@ function parseHookOutput(stdout) {
       }
     );
   try {
-    let n = validateHookJson(t);
+    let n = validateHookJson(trimmed);
     if ("json" in n) return n;
     let r = `${n.validationError}
 
@@ -1373,17 +1373,17 @@ async function* executeHooks({
     matchingHooks = await getMatchingHooks(f, m, d, hookInput, i?.options?.tools);
   if (matchingHooks.length === 0) return;
   if (o?.aborted) return;
-  let h = matchingHooks.filter(($) => !Wic($));
-  if (h.length > 0) {
+  let userHooks = matchingHooks.filter(($) => !Wic($));
+  if (userHooks.length > 0) {
     if (!u) {
-      let $ = getPluginHookCounts(h),
-        q = zic(h),
-        W = On(h, (V) => V.matcherIsMatchAll);
+      let $ = getPluginHookCounts(userHooks),
+        q = zic(userHooks),
+        W = On(userHooks, (V) => V.matcherIsMatchAll);
       G("tengu_run_hook", {
         hookName: p,
-        numCommands: h.length,
+        numCommands: userHooks.length,
         numMatchAllMatchers: W,
-        numSpecificMatchers: h.length - W,
+        numSpecificMatchers: userHooks.length - W,
         hookTypeCounts: De(q),
         ...($ && {
           pluginHookCounts: De($),
@@ -2452,16 +2452,16 @@ async function executeHooksOutsideREPL({
     matchingHooks = await getMatchingHooks(a, l, s, t);
   if (matchingHooks.length === 0) return [];
   if (r?.aborted) return [];
-  let u = matchingHooks.filter((g) => !Wic(g));
-  if (u.length > 0) {
-    let g = getPluginHookCounts(u),
-      h = zic(u),
-      y = On(u, (b) => b.matcherIsMatchAll);
+  let userHooks = matchingHooks.filter((g) => !Wic(g));
+  if (userHooks.length > 0) {
+    let g = getPluginHookCounts(userHooks),
+      h = zic(userHooks),
+      y = On(userHooks, (b) => b.matcherIsMatchAll);
     G("tengu_run_hook", {
       hookName: i,
-      numCommands: u.length,
+      numCommands: userHooks.length,
       numMatchAllMatchers: y,
-      numSpecificMatchers: u.length - y,
+      numSpecificMatchers: userHooks.length - y,
       hookTypeCounts: De(h),
       ...(g && {
         pluginHookCounts: De(g),

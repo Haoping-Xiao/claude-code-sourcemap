@@ -148,12 +148,12 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
         }),
       ],
     });
-  let C = sessions.map((L) => ({
+  let sessionMetadata = sessions.map((L) => ({
       ...L,
       timeString: oae(new Date(L.updated_at)),
     })),
-    x = Math.max(c6l.length, ...C.map((L) => L.timeString.length)),
-    I = C.map(({ timeString: L, title: M, id: N }) => ({
+    x = Math.max(c6l.length, ...sessionMetadata.map((L) => L.timeString.length)),
+    options = sessionMetadata.map(({ timeString: L, title: M, id: N }) => ({
       label: `${L.padEnd(x, " ")}  ${M}`,
       value: N,
     })),
@@ -203,13 +203,13 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
           }),
           Hm.jsx(Sr, {
             visibleOptionCount: D,
-            options: I,
+            options: options,
             onChange: (L) => {
               let M = sessions.find((N) => N.id === L);
               if (M) e(M);
             },
             onFocus: (L) => {
-              let M = I.findIndex((N) => N.value === L);
+              let M = options.findIndex((N) => N.value === L);
               if (M >= 0) y(M + 1);
             },
           }),
@@ -243,20 +243,26 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
   });
 }
 function determineErrorType(errorMessage) {
-  let t = errorMessage.toLowerCase();
-  if (t.includes("fetch") || t.includes("network") || t.includes("timeout")) return "network";
+  let message = errorMessage.toLowerCase();
+  if (message.includes("fetch") || message.includes("network") || message.includes("timeout"))
+    return "network";
   if (
-    t.includes("auth") ||
-    t.includes("token") ||
-    t.includes("permission") ||
-    t.includes("oauth") ||
-    t.includes("not authenticated") ||
-    t.includes("/login") ||
-    t.includes("console account") ||
-    t.includes("403")
+    message.includes("auth") ||
+    message.includes("token") ||
+    message.includes("permission") ||
+    message.includes("oauth") ||
+    message.includes("not authenticated") ||
+    message.includes("/login") ||
+    message.includes("console account") ||
+    message.includes("403")
   )
     return "auth";
-  if (t.includes("api") || t.includes("rate limit") || t.includes("500") || t.includes("529"))
+  if (
+    message.includes("api") ||
+    message.includes("rate limit") ||
+    message.includes("500") ||
+    message.includes("529")
+  )
     return "api";
   return "other";
 }

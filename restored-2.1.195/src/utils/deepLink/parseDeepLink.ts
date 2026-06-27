@@ -61,12 +61,12 @@ function parseDeepLink(uri) {
   if (url.hostname !== "open") throw Error(`Unknown deep link action: "${url.hostname}"`);
   let r = url.searchParams.get("cwd") ?? void 0,
     o = url.searchParams.get("repo") ?? void 0,
-    s = url.searchParams.get("q");
+    rawQuery = url.searchParams.get("q");
   if (r) hzo(r);
   if (o && !qgm.test(o))
     throw Error(`Invalid repo in deep link: expected "owner/repo", got "${o}"`);
   let i;
-  if (s && s.trim().length > 0) i = yzo(s.trim());
+  if (rawQuery && rawQuery.trim().length > 0) i = yzo(rawQuery.trim());
   return {
     query: i,
     cwd: r,

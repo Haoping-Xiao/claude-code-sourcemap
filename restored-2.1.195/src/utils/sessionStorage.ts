@@ -2248,10 +2248,10 @@ function NZf(e, t, n) {
   return o;
 }
 function recoverOrphanedParallelToolResults(messages, chain, seen) {
-  let r = chain.filter((d) => d.type === "assistant");
-  if (r.length === 0) return chain;
+  let chainAssistants = chain.filter((d) => d.type === "assistant");
+  if (chainAssistants.length === 0) return chain;
   let anchorByMsgId = new Map();
-  for (let d of r) if (d.message.id) anchorByMsgId.set(d.message.id, d);
+  for (let d of chainAssistants) if (d.message.id) anchorByMsgId.set(d.message.id, d);
   let s = new Map(),
     i = new Map();
   for (let d of messages.values())
@@ -2272,7 +2272,7 @@ function recoverOrphanedParallelToolResults(messages, chain, seen) {
   let a = new Set(),
     l = new Map(),
     c = 0;
-  for (let d of r) {
+  for (let d of chainAssistants) {
     let p = d.message.id;
     if (!p || a.has(p)) continue;
     a.add(p);
@@ -3118,13 +3118,13 @@ function Rsc(e, t, n) {
   return n.at(-1);
 }
 function walkChainBeforeParse(buf) {
-  let o = Buffer.from('{"parentUuid":'),
+  let PARENT_PREFIX = Buffer.from('{"parentUuid":'),
     s = Buffer.from('"uuid":"'),
     i = Buffer.from('"isSidechain":true'),
     a = 36,
     l = Buffer.from('","timestamp":"'),
     c = l.length,
-    u = o.length,
+    u = PARENT_PREFIX.length,
     d = s.length,
     msgIdx = [],
     f = [],
@@ -3134,7 +3134,7 @@ function walkChainBeforeParse(buf) {
   while (g < h) {
     let x = buf.indexOf(10, g),
       I = x === -1 ? h : x + 1;
-    if (I - g > u && buf[g] === 123 && buf.compare(o, 0, u, g, g + u) === 0) {
+    if (I - g > u && buf[g] === 123 && buf.compare(PARENT_PREFIX, 0, u, g, g + u) === 0) {
       let k = buf[g + u] === 34 ? g + u + 1 : -1,
         D = -1,
         P = -1,
@@ -3863,14 +3863,14 @@ async function getStatOnlyLogsForWorktrees(worktreePaths, limit) {
     return A;
   }
   let u = !1,
-    d = worktreePaths.map((S) => {
+    indexed = worktreePaths.map((S) => {
       let A = LE(S);
       return {
         path: S,
         prefix: u ? A.toLowerCase() : A,
       };
     });
-  d.sort((S, A) => A.prefix.length - S.prefix.length);
+  indexed.sort((S, A) => A.prefix.length - S.prefix.length);
   let seenDirs = new Set(),
     f;
   try {
@@ -3897,7 +3897,7 @@ async function getStatOnlyLogsForWorktrees(worktreePaths, limit) {
     if (!S.isDirectory()) continue;
     let A = u ? S.name.toLowerCase() : S.name;
     if (seenDirs.has(A)) continue;
-    for (let { path: v, prefix: C } of d)
+    for (let { path: v, prefix: C } of indexed)
       if (A === C || A.startsWith(C + "-")) {
         (seenDirs.add(A),
           m.push({

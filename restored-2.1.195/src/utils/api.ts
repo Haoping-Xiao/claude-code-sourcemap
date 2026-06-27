@@ -328,8 +328,8 @@ async function logContextMetrics(mcpConfigs, toolPermissionContext) {
     g = 0,
     h = 0,
     y = 0,
-    b = r.filter((S) => !S.isMcp);
-  ((f = n.length), (h = b.length));
+    nonMcpTools = r.filter((S) => !S.isMcp);
+  ((f = n.length), (h = nonMcpTools.length));
   let serverNames = new Set();
   for (let S of n) {
     let A = S.name.split("__");
@@ -340,7 +340,7 @@ async function logContextMetrics(mcpConfigs, toolPermissionContext) {
     let v = "inputJSONSchema" in S && S.inputJSONSchema ? S.inputJSONSchema : aOe(S.inputSchema);
     g += If(De(v));
   }
-  for (let S of b) {
+  for (let S of nonMcpTools) {
     let A = "inputJSONSchema" in S && S.inputJSONSchema ? S.inputJSONSchema : aOe(S.inputSchema);
     y += If(De(A));
   }

@@ -60,7 +60,7 @@ function buildCCRv2SdkUrl(apiBaseUrl, sessionId) {
   return `${apiBaseUrl.replace(/\/+$/, "")}/v1/code/sessions/${sessionId}`;
 }
 async function registerWorker(sessionUrl, accessToken) {
-  let n = await po.post(
+  let response = await po.post(
       `${sessionUrl}/worker/register`,
       {},
       {
@@ -72,9 +72,9 @@ async function registerWorker(sessionUrl, accessToken) {
         timeout: 10000 /* 1e4 */,
       },
     ),
-    r = n.data?.worker_epoch,
+    r = response.data?.worker_epoch,
     o = typeof r === "string" ? Number(r) : r;
   if (typeof o !== "number" || !Number.isFinite(o) || !Number.isSafeInteger(o))
-    throw Error(`registerWorker: invalid worker_epoch in response: ${De(n.data)}`);
+    throw Error(`registerWorker: invalid worker_epoch in response: ${De(response.data)}`);
   return o;
 }

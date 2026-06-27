@@ -18,8 +18,8 @@ function rSa(e, { verbose: t }) {
     .join(", ");
 }
 function renderToolUseProgressMessage(progressMessagesForMessage) {
-  let t = progressMessagesForMessage.at(-1);
-  if (!t?.data)
+  let lastProgress = progressMessagesForMessage.at(-1);
+  if (!lastProgress?.data)
     return pS.jsx(qn, {
       height: 1,
       children: pS.jsx(w, {
@@ -27,7 +27,7 @@ function renderToolUseProgressMessage(progressMessagesForMessage) {
         children: "Running\u2026",
       }),
     });
-  let { progress: n, total: r, progressMessage: o } = t.data;
+  let { progress: n, total: r, progressMessage: o } = lastProgress.data;
   if (n === void 0)
     return pS.jsx(qn, {
       height: 1,

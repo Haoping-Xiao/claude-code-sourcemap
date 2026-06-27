@@ -31,8 +31,8 @@ function $Xn(e) {
   return Oh() || (wf() ? "teammate" : Hd);
 }
 async function handleMessage(recipientName, content, summary, context) {
-  let o = context.getAppState(),
-    s = rp(o.teamContext);
+  let appState = context.getAppState(),
+    s = rp(appState.teamContext);
   if (!s)
     return {
       data: {
@@ -41,7 +41,9 @@ async function handleMessage(recipientName, content, summary, context) {
       },
     };
   if (recipientName !== Hd) {
-    if (!Object.values(o.teamContext?.teammates ?? {}).some((u) => u.name === recipientName)) {
+    if (
+      !Object.values(appState.teamContext?.teammates ?? {}).some((u) => u.name === recipientName)
+    ) {
       let u = await hoe(s);
       if (u !== null && !u.members.some((d) => d.name === recipientName))
         return {
@@ -65,7 +67,7 @@ async function handleMessage(recipientName, content, summary, context) {
     },
     s,
   );
-  let l = Iyf(o, recipientName);
+  let l = Iyf(appState, recipientName);
   return {
     data: {
       success: true,
@@ -82,8 +84,8 @@ async function handleMessage(recipientName, content, summary, context) {
   };
 }
 async function handleShutdownRequest(targetName, reason, context) {
-  let r = context.getAppState(),
-    o = rp(r.teamContext),
+  let appState = context.getAppState(),
+    o = rp(appState.teamContext),
     s = $Xn(context),
     i = nrt("shutdown", targetName),
     a = jht({
@@ -210,9 +212,9 @@ async function handleShutdownRejection(requestId, reason) {
   );
 }
 async function handlePlanApproval(recipientName, requestId, context, r) {
-  let o = r.getAppState(),
-    s = o.teamContext?.teamName;
-  if (!wM(o.teamContext))
+  let appState = r.getAppState(),
+    s = appState.teamContext?.teamName;
+  if (!wM(appState.teamContext))
     throw new SendMessagePreconditionError(
       "Only the team lead can approve plans. Teammates cannot approve their own or other plans.",
     );
@@ -248,9 +250,9 @@ async function handlePlanApproval(recipientName, requestId, context, r) {
   );
 }
 async function handlePlanRejection(recipientName, requestId, feedback, context) {
-  let o = context.getAppState(),
-    s = o.teamContext?.teamName;
-  if (!wM(o.teamContext))
+  let appState = context.getAppState(),
+    s = appState.teamContext?.teamName;
+  if (!wM(appState.teamContext))
     throw new SendMessagePreconditionError(
       "Only the team lead can reject plans. Teammates cannot reject their own or other plans.",
     );

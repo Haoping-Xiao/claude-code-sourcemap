@@ -43,7 +43,7 @@ function extractClaudeCodeHints(output, command) {
     };
   let n = Ykp(command),
     hints = [],
-    o = output.replace(aPa, (i) => {
+    stripped = output.replace(aPa, (i) => {
       let a = Kkp(i),
         l = Number(a.v),
         c = a.type,
@@ -63,14 +63,14 @@ function extractClaudeCodeHints(output, command) {
       );
     }),
     s =
-      hints.length > 0 || o !== output
-        ? o.replace(
+      hints.length > 0 || stripped !== output
+        ? stripped.replace(
             /\n{3,}/g,
             `
 
 `,
           )
-        : o;
+        : stripped;
   return {
     hints: hints,
     stripped: s,

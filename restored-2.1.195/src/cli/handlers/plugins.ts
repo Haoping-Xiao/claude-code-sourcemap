@@ -258,7 +258,7 @@ async function pluginListHandler(options, t) {
     pluginIds = Object.keys(n.plugins),
     { enabled: i, disabled: a, errors: l, warnings: c } = await OT(),
     allLoadedPlugins = [...i, ...a],
-    d = allLoadedPlugins.filter((A) => A.source.endsWith("@inline")),
+    inlinePlugins = allLoadedPlugins.filter((A) => A.source.endsWith("@inline")),
     inlineLoadErrors = l.filter(
       (A) => A.source.endsWith("@inline") || A.source.startsWith("inline["),
     ),
@@ -300,7 +300,7 @@ async function pluginListHandler(options, t) {
         });
       }
     }
-    for (let x of d) {
+    for (let x of inlinePlugins) {
       let I = x.mcpServers || (await wre(x)),
         k = inlineLoadErrors
           .filter((P) => P.source === x.source || ("plugin" in P && P.plugin === x.name))
@@ -405,7 +405,7 @@ async function pluginListHandler(options, t) {
     return;
   }
   let b = [];
-  if (pluginIds.length === 0 && d.length === 0 && m.length === 0) {
+  if (pluginIds.length === 0 && inlinePlugins.length === 0 && m.length === 0) {
     if (inlineLoadErrors.length === 0 && g.length === 0 && h.length === 0)
       b.push("No plugins installed. Use `claude plugin install` to install a plugin.");
   }
@@ -435,9 +435,9 @@ async function pluginListHandler(options, t) {
       b.push("");
     }
   }
-  if (d.length > 0 || inlineLoadErrors.length > 0) {
+  if (inlinePlugins.length > 0 || inlineLoadErrors.length > 0) {
     b.push("Session-only plugins (--plugin-dir / --plugin-url):", "");
-    for (let A of d) {
+    for (let A of inlinePlugins) {
       let v = inlineLoadErrors.filter(
           (I) => I.source === A.source || ("plugin" in I && I.plugin === A.name),
         ),

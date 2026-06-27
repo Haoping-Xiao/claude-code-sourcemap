@@ -46,7 +46,7 @@ async function runBridgeLoop(
     signal.addEventListener("abort", () => controller.abort(), {
       once: true,
     });
-  let p = controller.signal,
+  let loopSignal = controller.signal,
     activeSessions = new Map(),
     m = new Map(),
     g = new Map(),
@@ -63,7 +63,7 @@ async function runBridgeLoop(
   if (I && u) x.set(I, new Set([u]));
   let k = 0,
     D = new Map(),
-    capacityWake = utc(p);
+    capacityWake = utc(loopSignal);
   async function O() {
     let me = false,
       pe = false,
@@ -227,7 +227,7 @@ async function runBridgeLoop(
           logger.logSessionComplete(me, He);
           break;
         case "failed":
-          if (!p.aborted)
+          if (!loopSignal.aborted)
             if (
               ((ue = ye ?? "Process exited with error"),
               logger.logSessionFailed(me, ue),
@@ -245,7 +245,7 @@ async function runBridgeLoop(
       if (he !== "interrupted" && ie)
         (completedWorkIds.add(ie),
           $(stopWorkWithRetry(api, environmentId, ie, logger, backoffConfig.stopWorkBaseDelayMs)));
-      let we = he === "failed" && !p.aborted && !J;
+      let we = he === "failed" && !loopSignal.aborted && !J;
       if (we) A.add(me);
       let Ce = sessionWorktrees.get(me);
       if (Ce)
@@ -256,7 +256,7 @@ async function runBridgeLoop(
           )
             v.push(Ce.worktreePath);
         } else $(uGo(Ce, logger));
-      if (he !== "interrupted" && !p.aborted)
+      if (he !== "interrupted" && !loopSignal.aborted)
         if (config.spawnMode !== "single-session") {
           if (he === "completed")
             $(
@@ -270,7 +270,7 @@ async function runBridgeLoop(
             controller.abort());
           return;
         }
-      if (!p.aborted) oe();
+      if (!loopSignal.aborted) oe();
     };
   }
   if (!initialSessionId) oe();
@@ -286,10 +286,15 @@ async function runBridgeLoop(
       logger.logStatus(`Your work is safe \u2014 worktrees kept: ${pe.join(", ")}`);
     logger.logStatus("Run `claude remote-control` to start a fresh environment.");
   }
-  while (!p.aborted) {
+  while (!loopSignal.aborted) {
     let me = U1e();
     try {
-      let pe = await api.pollForWork(environmentId, environmentSecret, p, me.reclaim_older_than_ms);
+      let pe = await api.pollForWork(
+        environmentId,
+        environmentSecret,
+        loopSignal,
+        me.reclaim_older_than_ms,
+      );
       if (V !== null || Y !== null) {
         let ye = Date.now() - (V ?? Y ?? Date.now());
         (logger.logReconnected(ye),
@@ -311,7 +316,7 @@ async function runBridgeLoop(
               Ce = "ok",
               Ie = 0;
             while (
-              !p.aborted &&
+              !loopSignal.aborted &&
               activeSessions.size >= config.maxSessions &&
               (we === null || Date.now() < we)
             ) {
@@ -327,7 +332,7 @@ async function runBridgeLoop(
             let Ve =
               Ce === "auth_failed" || Ce === "fatal"
                 ? Ce
-                : p.aborted
+                : loopSignal.aborted
                   ? "shutdown"
                   : activeSessions.size < config.maxSessions
                     ? "capacity_changed"
@@ -359,7 +364,7 @@ async function runBridgeLoop(
             activeSessions.size > 0
               ? me.multisession_poll_interval_ms_partial_capacity
               : me.multisession_poll_interval_ms_not_at_capacity;
-          await Nn(ue, p);
+          await Nn(ue, loopSignal);
         }
         continue;
       }
@@ -372,7 +377,7 @@ async function runBridgeLoop(
           else if (me.multisession_poll_interval_ms_at_capacity > 0)
             await Nn(me.multisession_poll_interval_ms_at_capacity, ye.signal);
           ye.cleanup();
-        } else await Nn(1000, p);
+        } else await Nn(1000, loopSignal);
         continue;
       }
       let ie;
@@ -461,8 +466,8 @@ async function runBridgeLoop(
                     (T(
                       `[bridge:session] CCR v2: registerWorker attempt ${st} failed, retrying: ${vt}`,
                     ),
-                    await Nn(2000, p),
-                    p.aborted)
+                    await Nn(2000, loopSignal),
+                    loopSignal.aborted)
                   )
                     break;
                   continue;
@@ -665,7 +670,7 @@ async function runBridgeLoop(
         ye.cleanup();
       }
     } catch (pe) {
-      if (p.aborted) break;
+      if (loopSignal.aborted) break;
       if (pe instanceof Qq) {
         if (((J = true), pe.status !== 401 && ZJt(pe.errorType))) logger.logStatus(Atc(pe.message));
         else if (tGo(pe)) T(`[bridge:work] Suppressed 403 error: ${pe.message}`);
@@ -726,7 +731,7 @@ async function runBridgeLoop(
           U1e().non_exclusive_heartbeat_interval_ms > 0)
         )
           await O();
-        await Nn(le, p);
+        await Nn(le, loopSignal);
       } else {
         let he = Date.now();
         if (z !== null && he - z > Stc(backoffConfig))
@@ -767,7 +772,7 @@ async function runBridgeLoop(
           U1e().non_exclusive_heartbeat_interval_ms > 0)
         )
           await O();
-        await Nn(le, p);
+        await Nn(le, loopSignal);
       }
     }
   }

@@ -394,23 +394,23 @@ async function callInner(
   );
 }
 async function readImageWithTokenBudget(filePath, t = jSe().maxTokens, maxBytes, r) {
-  let o = await qt().readFileBytes(filePath, maxBytes),
-    s = o.length;
+  let imageBuffer = await qt().readFileBytes(filePath, maxBytes),
+    s = imageBuffer.length;
   if (s === 0) throw new mi(`Image file is empty: ${filePath}`, "Image file is empty");
-  let i = oX(o);
+  let i = oX(imageBuffer);
   if (i === null)
     throw new mi(
-      `File has an image extension but its content is not a valid PNG/JPEG/GIF/WebP. Detected: ${K9i(o)}. This usually means a download saved an error/login page instead of the image. Use \`file "${filePath}"\` to confirm, or read it as text with ${Co} (e.g. \`head -c 500\`).`,
+      `File has an image extension but its content is not a valid PNG/JPEG/GIF/WebP. Detected: ${K9i(imageBuffer)}. This usually means a download saved an error/login page instead of the image. Use \`file "${filePath}"\` to confirm, or read it as text with ${Co} (e.g. \`head -c 500\`).`,
       "Image extension but invalid magic bytes",
     );
   let a = i.split("/")[1] || "png",
     l;
   try {
-    let f = await x0e(o, s, a, r);
+    let f = await x0e(imageBuffer, s, a, r);
     l = createImageResponse(f.buffer, f.mediaType, s, f.dimensions);
   } catch (f) {
     if (f instanceof NU) throw f;
-    (ke(f), (l = createImageResponse(o, a, s)));
+    (ke(f), (l = createImageResponse(imageBuffer, a, s)));
   }
   let c = l.file.dimensions,
     u = c?.displayWidth,
@@ -418,12 +418,12 @@ async function readImageWithTokenBudget(filePath, t = jSe().maxTokens, maxBytes,
     p;
   if (u && d) p = vDn(u, d);
   else {
-    let f = RGe(o);
+    let f = RGe(imageBuffer);
     p = f ? vDn(f.width, f.height) : vDn(r.maxWidth, r.maxHeight);
   }
   if (p > t)
     try {
-      let f = await p8i(o, t, i);
+      let f = await p8i(imageBuffer, t, i);
       return {
         type: "image",
         file: {
@@ -439,7 +439,7 @@ async function readImageWithTokenBudget(filePath, t = jSe().maxTokens, maxBytes,
       try {
         let g = await (
           await lbe()
-        )(o)
+        )(imageBuffer)
           .resize(400, 400, {
             fit: "inside",
             withoutEnlargement: true,
@@ -457,7 +457,7 @@ async function readImageWithTokenBudget(filePath, t = jSe().maxTokens, maxBytes,
               level: "error",
             },
           ),
-          createImageResponse(o, a, s)
+          createImageResponse(imageBuffer, a, s)
         );
       }
     }

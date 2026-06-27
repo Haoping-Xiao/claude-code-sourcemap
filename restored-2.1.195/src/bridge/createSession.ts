@@ -95,14 +95,19 @@ async function createBridgeSession({
       null
     );
   }
-  let D = response.data;
-  if (!D || typeof D !== "object" || !("id" in D) || typeof D.id !== "string")
+  let sessionData = response.data;
+  if (
+    !sessionData ||
+    typeof sessionData !== "object" ||
+    !("id" in sessionData) ||
+    typeof sessionData.id !== "string"
+  )
     return (
       T("[bridge] No session ID in response"),
       Le("bridge_session_create", "bridge_session_create_bad_response"),
       null
     );
-  return (xe("bridge_session_create"), D.id);
+  return (xe("bridge_session_create"), sessionData.id);
 }
 async function getBridgeSession(sessionId, opts) {
   let { getClaudeAIOAuthTokens: n } = await Promise.resolve().then(() => (oo(), pU)),

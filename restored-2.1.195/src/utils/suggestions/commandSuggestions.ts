@@ -349,7 +349,7 @@ function generateCommandSuggestions(input, commands) {
   let o = (d) => xu(d).toLowerCase() === n || d.name.toLowerCase() === n,
     s = commands.find((d) => d.isHidden && o(d));
   if (s && commands.some((d) => !d.isHidden && o(d))) s = void 0;
-  let u = getCommandFuse(commands)
+  let fuseSuggestions = getCommandFuse(commands)
     .search(n)
     .filter((d) => !Poe(d.item.command))
     .map((d) => {
@@ -404,9 +404,10 @@ function generateCommandSuggestions(input, commands) {
     });
   if (s) {
     let d = getCommandId(s);
-    if (!u.some((p) => p.id === d)) return [createCommandSuggestionItem(s, r, void 0, n), ...u];
+    if (!fuseSuggestions.some((p) => p.id === d))
+      return [createCommandSuggestionItem(s, r, void 0, n), ...fuseSuggestions];
   }
-  return u;
+  return fuseSuggestions;
 }
 function applyCommandSuggestion(
   suggestion,

@@ -40,10 +40,11 @@ function validateAgent(agent, availableTools, existingAgents) {
     if (i.unavailableTools.length > 0)
       o.push(`Not available to subagents: ${i.unavailableTools.join(", ")}`);
   }
-  let s = agent.getSystemPrompt();
-  if (!s) errors.push("System prompt is required");
-  else if (s.length < 20) errors.push("System prompt is too short (minimum 20 characters)");
-  else if (s.length > 10000 /* 1e4 */)
+  let systemPrompt = agent.getSystemPrompt();
+  if (!systemPrompt) errors.push("System prompt is required");
+  else if (systemPrompt.length < 20)
+    errors.push("System prompt is too short (minimum 20 characters)");
+  else if (systemPrompt.length > 10000 /* 1e4 */)
     o.push("System prompt is very long (over 10,000 characters)");
   return {
     isValid: errors.length === 0,

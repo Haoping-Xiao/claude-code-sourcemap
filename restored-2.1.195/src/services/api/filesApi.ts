@@ -132,10 +132,11 @@ function buildDownloadPath(basePath, sessionId, relativePath) {
       null
     );
   let o = K5.join(basePath, sessionId, "uploads"),
-    i = [K5.join(basePath, sessionId, "uploads") + K5.sep, K5.sep + "uploads" + K5.sep].find((l) =>
-      normalized.startsWith(l),
-    ),
-    a = i ? normalized.slice(i.length) : normalized;
+    matchedPrefix = [
+      K5.join(basePath, sessionId, "uploads") + K5.sep,
+      K5.sep + "uploads" + K5.sep,
+    ].find((l) => normalized.startsWith(l)),
+    a = matchedPrefix ? normalized.slice(matchedPrefix.length) : normalized;
   return K5.join(o, a);
 }
 async function downloadAndSaveFile(attachment, config) {
@@ -266,15 +267,15 @@ user_data\r
       Buffer.from(`--${c}--\r
 `),
     ));
-  let p = Buffer.concat(d);
+  let body = Buffer.concat(d);
   try {
     return await retryWithBackoff(`Upload file ${relativePath}`, async () => {
       try {
-        let f = await po.post(s, p, {
+        let f = await po.post(s, body, {
           headers: {
             ...i,
             "Content-Type": `multipart/form-data; boundary=${c}`,
-            "Content-Length": p.length.toString(),
+            "Content-Length": body.length.toString(),
           },
           timeout: 120000,
           signal: opts?.signal,

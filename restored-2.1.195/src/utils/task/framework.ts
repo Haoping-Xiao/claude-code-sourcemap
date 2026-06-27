@@ -222,15 +222,15 @@ async function generateTaskAttachments(state) {
   };
 }
 function applyTaskOffsetsAndEvictions(setAppState, updatedTaskOffsets, evictedTaskIds) {
-  let r = Object.keys(updatedTaskOffsets);
-  if (r.length === 0 && evictedTaskIds.length === 0) return;
+  let offsetIds = Object.keys(updatedTaskOffsets);
+  if (offsetIds.length === 0 && evictedTaskIds.length === 0) return;
   let o = [];
   setAppState((s) => {
     let i = false,
       a = {
         ...s.tasks,
       };
-    for (let u of r) {
+    for (let u of offsetIds) {
       let d = a[u];
       if (d?.status === "running")
         ((a[u] = {

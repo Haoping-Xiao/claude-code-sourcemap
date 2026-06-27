@@ -198,7 +198,7 @@ ${n.trim()}`
     );
   }
   let r = at("tengu_moth_copse", !1),
-    o = process.env.CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES,
+    coworkExtraGuidelines = process.env.CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES,
     s = t ? await wNi() : [],
     i = SNd(),
     a = new Set((i ?? []).filter((d) => d.mode === "ro").map((d) => d.mount)),
@@ -217,7 +217,12 @@ ${n.trim()}`
       ].join(`
 `);
     }),
-    c = [...(o && o.trim().length > 0 ? [o] : []), ...l],
+    c = [
+      ...(coworkExtraGuidelines && coworkExtraGuidelines.trim().length > 0
+        ? [coworkExtraGuidelines]
+        : []),
+      ...l,
+    ],
     u = c.length > 0 ? c : void 0;
   if (t && ph(e)) {
     let d = mm(),

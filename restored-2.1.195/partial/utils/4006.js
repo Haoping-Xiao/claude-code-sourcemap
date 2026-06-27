@@ -13,17 +13,17 @@ function parseSedEditCommand(command) {
   if (r.length !== 1 || r[0].type !== "command" || r[0].children.some(_ => !ZZp.has(_.type))) return null;
   let o = oA(t);
   if (o[0] !== "sed") return null;
-  let s = o.slice(1),
+  let rest = o.slice(1),
     i = false,
     a = false,
     trimmed = null,
     c = null,
     u = 0;
-  while (u < s.length) {
-    let _ = s[u];
+  while (u < rest.length) {
+    let _ = rest[u];
     if (_ === "-i" || _ === "--in-place") {
-      if (i = true, u++, u < s.length) {
-        let S = s[u];
+      if (i = true, u++, u < rest.length) {
+        let S = rest[u];
         if (typeof S === "string" && !S.startsWith("-") && (S === "" || S.startsWith("."))) u++;
       }
       continue;
@@ -37,9 +37,9 @@ function parseSedEditCommand(command) {
       continue;
     }
     if (_ === "-e" || _ === "--expression") {
-      if (u + 1 < s.length && typeof s[u + 1] === "string") {
+      if (u + 1 < rest.length && typeof rest[u + 1] === "string") {
         if (trimmed !== null) return null;
-        trimmed = s[u + 1], u += 2;
+        trimmed = rest[u + 1], u += 2;
         continue;
       }
       return null;

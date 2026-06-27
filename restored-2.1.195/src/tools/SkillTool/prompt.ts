@@ -16,11 +16,11 @@ function formatCommandDescription(cmd) {
     T(`Skill prompt: showing "${cmd.name}" (userFacingName="${t}")`);
   return `- ${cmd.name}: ${Hoo(cmd)}`;
 }
-function formatCommandsWithinBudget(fullEntries, contextWindowTokens, n, r) {
-  if (fullEntries.length === 0) return "";
+function formatCommandsWithinBudget(commands, contextWindowTokens, n, r) {
+  if (commands.length === 0) return "";
   let o = qWe(contextWindowTokens, r),
     bundledIndices = new Set(),
-    i = fullEntries.map((h, y) => {
+    fullEntries = commands.map((h, y) => {
       if (Zbe(h) === "name-only")
         return (
           bundledIndices.add(y),
@@ -34,53 +34,53 @@ function formatCommandsWithinBudget(fullEntries, contextWindowTokens, n, r) {
         full: formatCommandDescription(h),
       };
     }),
-    a = i.reduce((h, y) => h + rn(y.full), 0) + (i.length - 1);
+    a = fullEntries.reduce((h, y) => h + rn(y.full), 0) + (fullEntries.length - 1);
   if (a <= o)
-    return i.map((h) => h.full).join(`
+    return fullEntries.map((h) => h.full).join(`
 `);
   T(
-    `Skill listing over budget: ${fullEntries.length} skills, ${a} chars > ${o} budget \u2014 descriptions will be truncated. Run /doctor for details.`,
+    `Skill listing over budget: ${commands.length} skills, ${a} chars > ${o} budget \u2014 descriptions will be truncated. Run /doctor for details.`,
     {
       level: "warn",
     },
   );
   let l = new Set(bundledIndices),
     restCommands = [];
-  for (let h = 0; h < fullEntries.length; h++) {
-    let y = fullEntries[h];
+  for (let h = 0; h < commands.length; h++) {
+    let y = commands[h];
     if (y.type === "prompt" && y.source === "bundled") l.add(h);
     else if (!bundledIndices.has(h)) restCommands.push(y);
   }
-  let u = i.reduce((h, y, b) => (l.has(b) ? h + rn(y.full) + 1 : h), 0),
+  let u = fullEntries.reduce((h, y, b) => (l.has(b) ? h + rn(y.full) + 1 : h), 0),
     d = o - u;
   if (restCommands.length === 0)
-    return i.map((h) => h.full).join(`
+    return fullEntries.map((h) => h.full).join(`
 `);
   if (n) {
-    let h = fullEntries.map((C, x) => x).filter((C) => !l.has(C)),
-      y = (C) => rn(fullEntries[C].name) + 2,
-      b = (C) => rn(i[C].full),
-      _ =
-        fullEntries.reduce((C, x, I) => C + (l.has(I) ? b(I) : y(I)), 0) + (fullEntries.length - 1),
+    let h = commands.map((C, x) => x).filter((C) => !l.has(C)),
+      y = (C) => rn(commands[C].name) + 2,
+      b = (C) => rn(fullEntries[C].full),
+      _ = commands.reduce((C, x, I) => C + (l.has(I) ? b(I) : y(I)), 0) + (commands.length - 1),
       S = o - _,
       A = new Set(),
-      v = h.slice().sort((C, x) => n(fullEntries[x]) - n(fullEntries[C]));
+      v = h.slice().sort((C, x) => n(commands[x]) - n(commands[C]));
     for (let C of v) {
       let x = b(C) - y(C);
       if (x <= S) (A.add(C), (S -= x));
     }
-    return fullEntries.map((C, x) => (l.has(x) || A.has(x) ? i[x].full : `- ${C.name}`)).join(`
+    return commands.map((C, x) => (l.has(x) || A.has(x) ? fullEntries[x].full : `- ${C.name}`))
+      .join(`
 `);
   }
   let p = restCommands.reduce((h, y) => h + rn(y.name) + 4, 0) + (restCommands.length - 1),
     f = d - p,
     m = Math.floor(f / restCommands.length);
   if (m < Aoo)
-    return fullEntries.map((h, y) => (l.has(y) ? i[y].full : `- ${h.name}`)).join(`
+    return commands.map((h, y) => (l.has(y) ? fullEntries[y].full : `- ${h.name}`)).join(`
 `);
   let g = On(restCommands, (h) => rn(Hoo(h)) > m);
-  return fullEntries.map((h, y) => {
-    if (l.has(y)) return i[y].full;
+  return commands.map((h, y) => {
+    if (l.has(y)) return fullEntries[y].full;
     let b = Hoo(h);
     return `- ${h.name}: ${$a(b, m)}`;
   }).join(`

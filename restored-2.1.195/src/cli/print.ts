@@ -1230,7 +1230,7 @@ function runHeadlessStreaming(
       cr = mutableMessages.slice(Gn).filter((Lt) => Lt.type === "user" || Lt.type === "assistant");
     if (((xt = mutableMessages.length), cr.length > 0)) bridgeHandle.writeMessages(cr);
   }
-  let jt = Promise.resolve({
+  let mcpChangesPromise = Promise.resolve({
     response: {
       added: [],
       removed: [],
@@ -1326,7 +1326,7 @@ function runHeadlessStreaming(
                 xn
               );
             };
-          jt = jt.then(Fi, Fi);
+          mcpChangesPromise = mcpChangesPromise.then(Fi, Fi);
         });
       if (fo.sdkServersChanged) {
         let cs = new Set(sdkClients.map((la) => la.name)),
@@ -1348,7 +1348,7 @@ function runHeadlessStreaming(
         sdkServersChanged: fo.sdkServersChanged,
       };
     };
-    return ((jt = jt.then(Sn, Sn)), jt);
+    return ((mcpChangesPromise = mcpChangesPromise.then(Sn, Sn)), mcpChangesPromise);
   }
   function Dn() {
     let Gn = getAppState(),

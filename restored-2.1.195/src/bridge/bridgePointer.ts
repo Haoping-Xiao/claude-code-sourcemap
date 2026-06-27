@@ -71,9 +71,9 @@ async function readBridgePointerAcrossWorktrees(dir) {
       null
     );
   let r = LE(dir),
-    o = worktrees.filter((a) => LE(a) !== r),
+    candidates = worktrees.filter((a) => LE(a) !== r),
     s = await Promise.all(
-      o.map(async (a) => {
+      candidates.map(async (a) => {
         let l = await readBridgePointer(a);
         return l
           ? {

@@ -22,10 +22,10 @@ function dUr(e) {
   return n > 0 ? `${t}m ${n}s` : `${t}m`;
 }
 function decodeJwtPayload(token) {
-  let n = (token.startsWith("sk-ant-si-") ? token.slice(10) : token).split(".");
-  if (n.length !== 3 || !n[1]) return null;
+  let parts = (token.startsWith("sk-ant-si-") ? token.slice(10) : token).split(".");
+  if (parts.length !== 3 || !parts[1]) return null;
   try {
-    return Ft(Buffer.from(n[1], "base64url").toString("utf8"));
+    return Ft(Buffer.from(parts[1], "base64url").toString("utf8"));
   } catch {
     return null;
   }

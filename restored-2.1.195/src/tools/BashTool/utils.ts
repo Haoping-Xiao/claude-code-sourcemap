@@ -56,9 +56,9 @@ async function resizeShellImageOutput(stdout, outputFilePath, outputFileSize, r)
   }
   let parsed = Yel(o);
   if (!parsed) return null;
-  let i = Buffer.from(parsed.data, "base64"),
+  let buf = Buffer.from(parsed.data, "base64"),
     a = parsed.mediaType.split("/")[1] || "png",
-    resized = await x0e(i, i.length, a, r);
+    resized = await x0e(buf, buf.length, a, r);
   return `data:image/${resized.mediaType};base64,${resized.buffer.toString("base64")}`;
 }
 function formatOutput(content) {

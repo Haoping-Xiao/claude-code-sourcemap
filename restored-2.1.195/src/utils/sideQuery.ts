@@ -7,12 +7,12 @@
 // [unwrapped __esm module IHo]
 jXa = require("crypto");
 function Q7p(e) {
-  let t = e.find((o) => o.role === "user");
-  if (!t) return "";
-  let n = t.content;
-  if (typeof n === "string") return n;
-  let r = n.find((o) => o.type === "text");
-  return r?.type === "text" ? r.text : "";
+  let firstUserMessage = e.find((o) => o.role === "user");
+  if (!firstUserMessage) return "";
+  let content = firstUserMessage.content;
+  if (typeof content === "string") return content;
+  let textBlock = content.find((o) => o.type === "text");
+  return textBlock?.type === "text" ? textBlock.text : "";
 }
 async function sideQuery(opts) {
   let {

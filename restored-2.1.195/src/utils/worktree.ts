@@ -404,16 +404,16 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
     },
   );
   if (gitignored.code !== 0 || !gitignored.stdout.trim()) return [];
-  let s = gitignored.stdout
+  let entries = gitignored.stdout
       .trim()
       .split(
         `
 `,
       )
       .filter(Boolean),
-    i = Qic.default().add(n),
-    a = s.filter((p) => p.endsWith("/")),
-    l = s.filter((p) => !p.endsWith("/") && i.ignores(p)),
+    matcher = Qic.default().add(n),
+    a = entries.filter((p) => p.endsWith("/")),
+    files = entries.filter((p) => !p.endsWith("/") && matcher.ignores(p)),
     c = a.filter((p) => {
       if (
         patterns.some((f) => {
@@ -428,7 +428,7 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
         })
       )
         return !0;
-      if (i.ignores(p.slice(0, -1))) return !0;
+      if (matcher.ignores(p.slice(0, -1))) return !0;
       return !1;
     });
   if (c.length > 0) {
@@ -447,7 +447,7 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
 `,
         )
         .filter(Boolean))
-        if (i.ignores(f)) l.push(f);
+        if (matcher.ignores(f)) files.push(f);
     }
   }
   let copied = [],
@@ -462,7 +462,7 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
       copied
     );
   }
-  for (let p of l) {
+  for (let p of files) {
     let f = Bd.join(repoRoot, p),
       m = Bd.join(worktreePath, p);
     try {

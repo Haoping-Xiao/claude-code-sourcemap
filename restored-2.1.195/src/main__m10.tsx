@@ -40,9 +40,9 @@ function initializeEntrypoint(isNonInteractive) {
       process.env.CLAUDE_CODE_ENTRYPOINT = "sdk-cli";
     return;
   }
-  let t = process.argv.slice(2),
-    n = t.indexOf("mcp");
-  if (n !== -1 && t[n + 1] === "serve") {
+  let cliArgs = process.argv.slice(2),
+    n = cliArgs.indexOf("mcp");
+  if (n !== -1 && cliArgs[n + 1] === "serve") {
     process.env.CLAUDE_CODE_ENTRYPOINT = "mcp";
     return;
   }

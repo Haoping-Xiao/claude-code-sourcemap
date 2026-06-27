@@ -18,14 +18,20 @@ async function zmo(e) {
   }
 }
 async function findSuitableShell() {
-  let e = process.env.CLAUDE_CODE_SHELL;
-  if (e)
-    if ((e.includes("bash") || e.includes("zsh")) && (await zmo(e)))
-      return (T(`Using shell override: ${e}`), e);
-    else T(`CLAUDE_CODE_SHELL="${e}" is not a valid bash/zsh path, falling back to detection`);
-  let t = process.env.SHELL,
-    n = t && (t.includes("bash") || t.includes("zsh")),
-    r = t?.includes("bash"),
+  let shellOverride = process.env.CLAUDE_CODE_SHELL;
+  if (shellOverride)
+    if (
+      (shellOverride.includes("bash") || shellOverride.includes("zsh")) &&
+      (await zmo(shellOverride))
+    )
+      return (T(`Using shell override: ${shellOverride}`), shellOverride);
+    else
+      T(
+        `CLAUDE_CODE_SHELL="${shellOverride}" is not a valid bash/zsh path, falling back to detection`,
+      );
+  let env_shell = process.env.SHELL,
+    n = env_shell && (env_shell.includes("bash") || env_shell.includes("zsh")),
+    r = env_shell?.includes("bash"),
     [o, s] = await Promise.all([Gf("zsh"), Gf("bash")]),
     i = ["/bin", "/usr/bin", "/usr/local/bin", "/opt/homebrew/bin"],
     supportedShells = (r ? ["bash", "zsh"] : ["zsh", "bash"]).flatMap((u) =>
@@ -38,7 +44,7 @@ async function findSuitableShell() {
     if (o) supportedShells.unshift(o);
     if (s) supportedShells.push(s);
   }
-  if (n && (await zmo(t))) supportedShells.unshift(t);
+  if (n && (await zmo(env_shell))) supportedShells.unshift(env_shell);
   let c;
   for (let u of supportedShells)
     if (u && (await zmo(u))) {

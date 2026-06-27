@@ -75,7 +75,9 @@ function formatZodValidationError(toolName, error) {
   let missingParams = error.issues
       .filter((a) => a.code === "invalid_type" && a.message.includes("received undefined"))
       .map((a) => jyl(a.path)),
-    r = error.issues.filter((a) => a.code === "unrecognized_keys").flatMap((a) => a.keys),
+    unexpectedParams = error.issues
+      .filter((a) => a.code === "unrecognized_keys")
+      .flatMap((a) => a.keys),
     o = error.issues
       .filter((a) => a.code === "invalid_type" && !a.message.includes("received undefined"))
       .map((a) => {
@@ -94,8 +96,8 @@ function formatZodValidationError(toolName, error) {
     let a = missingParams.map((l) => `The required parameter \`${l}\` is missing`);
     errorParts.push(...a);
   }
-  if (r.length > 0) {
-    let a = r.map((l) => `An unexpected parameter \`${l}\` was provided`);
+  if (unexpectedParams.length > 0) {
+    let a = unexpectedParams.map((l) => `An unexpected parameter \`${l}\` was provided`);
     errorParts.push(...a);
   }
   if (o.length > 0) {

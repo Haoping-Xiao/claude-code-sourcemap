@@ -161,7 +161,7 @@ function Passes({ onDone: e }) {
       }),
     });
   let m = On(r, (h) => h.isAvailable),
-    g = [...r].sort((h, y) => +y.isAvailable - +h.isAvailable);
+    sortedPasses = [...r].sort((h, y) => +y.isAvailable - +h.isAvailable);
   return bf.jsx(Fu, {
     children: bf.jsxs(U, {
       flexDirection: "column",
@@ -177,7 +177,7 @@ function Passes({ onDone: e }) {
         bf.jsx(U, {
           flexDirection: "row",
           marginLeft: 2,
-          children: g.slice(0, 3).map((h) =>
+          children: sortedPasses.slice(0, 3).map((h) =>
             bf.jsx(
               eVf,
               {

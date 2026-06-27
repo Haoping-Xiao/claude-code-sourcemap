@@ -87,9 +87,11 @@ async function refreshActivePlugins(setAppState) {
   );
 }
 function mergePluginErrors(existing, fresh) {
-  let n = existing.filter((s) => s.source === "lsp-manager" || s.source.startsWith("plugin:")),
+  let preserved = existing.filter(
+      (s) => s.source === "lsp-manager" || s.source.startsWith("plugin:"),
+    ),
     r = new Set(fresh.map(errorKey));
-  return [...n.filter((s) => !r.has(errorKey(s))), ...fresh];
+  return [...preserved.filter((s) => !r.has(errorKey(s))), ...fresh];
 }
 function errorKey(e) {
   return e.type === "generic-error"

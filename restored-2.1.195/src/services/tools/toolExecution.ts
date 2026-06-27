@@ -189,35 +189,35 @@ function d_f(e, t) {
   return t.find((r) => hc(r.name) === n.serverName);
 }
 async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext, o) {
-  let s = toolUse.name,
-    tool = _l(toolUseContext.options.tools, s, toolUseContext.options.toolAliases);
+  let toolName = toolUse.name,
+    tool = _l(toolUseContext.options.tools, toolName, toolUseContext.options.toolAliases);
   if (!tool) {
-    let h = _l(c3(), s);
-    if (h && h.aliases?.includes(s)) tool = h;
+    let h = _l(c3(), toolName);
+    if (h && h.aliases?.includes(toolName)) tool = h;
   }
   let a = assistantMessage.message.id,
     l = assistantMessage.requestId,
-    c = d_f(s, toolUseContext.options.mcpClients),
+    c = d_f(toolName, toolUseContext.options.mcpClients),
     u = c?.type === "connected" ? c : void 0,
     d = u ? (u.config.type ?? "stdio") : void 0,
     p = u ? dke(u.config) : void 0,
-    f = fke(fkn(s)?.serverName ?? "", u?.config);
+    f = fke(fkn(toolName)?.serverName ?? "", u?.config);
   if (!tool) {
-    let h = Ui(s),
+    let h = Ui(toolName),
       y = vLo(
-        s,
+        toolName,
         toolUseContext.options.tools,
         toolUseContext.agentId,
         toolUseContext.options.mainLoopModel,
       );
-    (T(`Unknown tool ${s}: ${toolUse.id}`),
-      Le(TLo(s), "tool_not_found"),
+    (T(`Unknown tool ${toolName}: ${toolUse.id}`),
+      Le(TLo(toolName), "tool_not_found"),
       G("tengu_tool_use_error", {
         error: `No such tool available: ${h}`,
         errorCode: We("NO_SUCH_TOOL"),
         toolName: h,
         toolUseID: toolUse.id,
-        isMcp: s.startsWith("mcp__"),
+        isMcp: toolName.startsWith("mcp__"),
         ...rje(toolUseContext.agentContext),
         queryChainId: Hr(toolUseContext.queryTracking?.chainId),
         queryDepth: toolUseContext.queryTracking?.depth,
@@ -233,19 +233,19 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
         ...(l && {
           requestId: Hr(l),
         }),
-        ...lW(s, f),
+        ...lW(toolName, f),
       }),
       yield {
         message: Rn({
           content: [
             {
               type: "tool_result",
-              content: `<tool_use_error>Error: No such tool available: ${s}${y}</tool_use_error>`,
+              content: `<tool_use_error>Error: No such tool available: ${toolName}${y}</tool_use_error>`,
               is_error: !0,
               tool_use_id: toolUse.id,
             },
           ],
-          toolUseResult: `Error: No such tool available: ${s}${y}`,
+          toolUseResult: `Error: No such tool available: ${toolName}${y}`,
           sourceToolAssistantUUID: assistantMessage.uuid,
           now: o,
         }),

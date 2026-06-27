@@ -230,9 +230,9 @@ async function extractMcpbContents(unzipped, extractPath, modes, onProgress) {
   if (onProgress) onProgress("Extracting files...");
   await qt().mkdir(extractPath);
   let o = 0,
-    s = Object.entries(unzipped).filter(([a]) => !a.endsWith("/")),
-    i = s.length;
-  for (let [a, l] of s) {
+    entries = Object.entries(unzipped).filter(([a]) => !a.endsWith("/")),
+    i = entries.length;
+  for (let [a, l] of entries) {
     let c = Hre.join(extractPath, a),
       u = Hre.dirname(c);
     if (u !== extractPath) await qt().mkdir(u);

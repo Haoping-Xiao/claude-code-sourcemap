@@ -527,17 +527,17 @@ async function acceptSpeculation(state, setAppState, cleanMessageCount) {
       suggestionLength: l,
       isPipelined: c,
     } = state,
-    u = o.current,
+    messages = o.current,
     d = getOverlayPath(r),
     p = Date.now();
   if ((i(), cleanMessageCount > 0)) await copyOverlayToMain(d, s.current, CK());
   oKt(d);
-  let f = state.boundary,
-    m = Math.min(p, f?.completedAt ?? 1 / 0) - a;
+  let boundary = state.boundary,
+    m = Math.min(p, boundary?.completedAt ?? 1 / 0) - a;
   if (
     (setAppState((g) => {
       if (g.speculation.status === "active" && g.speculation.boundary)
-        ((f = g.speculation.boundary), (m = Math.min(p, f.completedAt ?? 1 / 0) - a));
+        ((boundary = g.speculation.boundary), (m = Math.min(p, boundary.completedAt ?? 1 / 0) - a));
       return {
         ...g,
         speculation: FDe,
@@ -545,12 +545,12 @@ async function acceptSpeculation(state, setAppState, cleanMessageCount) {
       };
     }),
     T(
-      f === null
-        ? `[Speculation] Accept ${r}: still running, using ${u.length} messages`
+      boundary === null
+        ? `[Speculation] Accept ${r}: still running, using ${messages.length} messages`
         : `[Speculation] Accept ${r}: already complete`,
     ),
-    logSpeculation(r, "accepted", a, l, u, f, {
-      message_count: u.length,
+    logSpeculation(r, "accepted", a, l, messages, boundary, {
+      message_count: messages.length,
       time_saved_ms: m,
       is_pipelined: c,
     }),
@@ -580,8 +580,8 @@ async function acceptSpeculation(state, setAppState, cleanMessageCount) {
   return (
     xe("prompt_suggestion_speculate"),
     {
-      messages: u,
-      boundary: f,
+      messages: messages,
+      boundary: boundary,
       timeSavedMs: m,
     }
   );

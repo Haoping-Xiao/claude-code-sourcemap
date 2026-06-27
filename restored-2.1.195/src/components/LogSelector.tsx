@@ -90,7 +90,7 @@ function LogSelector({
     [ae, de] = Ou.useState(1),
     [Ee, me] = Ou.useState(a ? "search" : "list"),
     [pe, ge] = Ou.useState(null),
-    he = Ou.useRef(null),
+    prevFocusedIdRef = Ou.useRef(null),
     [agenticSearchState, le] = Ou.useState({
       status: "idle",
     }),
@@ -428,8 +428,8 @@ function LogSelector({
       (Pn) => {
         let lr = parseInt(Pn, 10),
           eo = displayedLogs[lr];
-        if (!eo || he.current === lr.toString()) return;
-        ((he.current = lr.toString()),
+        if (!eo || prevFocusedIdRef.current === lr.toString()) return;
+        ((prevFocusedIdRef.current = lr.toString()),
           ce({
             id: lr.toString(),
             value: {

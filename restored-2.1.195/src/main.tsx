@@ -3274,9 +3274,9 @@ Usage: claude --cloud "your task description"`,
       }
     }),
     ypc(program));
-  let o = program.command("auth").description("Manage authentication").configureHelp(LTe());
+  let auth = program.command("auth").description("Manage authentication").configureHelp(LTe());
   if (
-    (o
+    (auth
       .command("login")
       .description("Sign in to your Anthropic account")
       .option("--email <email>", "Pre-populate email address on the login page")
@@ -3295,7 +3295,7 @@ Usage: claude --cloud "your task description"`,
           claudeai: c,
         });
       }),
-    o
+    auth
       .command("status")
       .description("Show authentication status")
       .option("--json", "Output as JSON (default)")
@@ -3307,7 +3307,7 @@ Usage: claude --cloud "your task description"`,
         ]);
         await a(await l(), i);
       }),
-    o
+    auth
       .command("logout")
       .description("Log out from your Anthropic account")
       .action(async () => {

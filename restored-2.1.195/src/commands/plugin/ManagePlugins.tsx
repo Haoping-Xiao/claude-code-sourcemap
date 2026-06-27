@@ -2323,7 +2323,7 @@ function ManagePlugins({
         }),
     });
   }
-  let Er = pagination.getVisibleItems(Ke);
+  let visibleItems = pagination.getVisibleItems(Ke);
   return vr.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
@@ -2381,7 +2381,7 @@ function ManagePlugins({
             children: [" ", nt.arrowUp, " more above"],
           }),
         }),
-      Er.map((pt, ln) => {
+      visibleItems.map((pt, ln) => {
         let pn = pagination.toActualIndex(ln),
           ir = pn === ct && !m;
         switch (pt.kind) {

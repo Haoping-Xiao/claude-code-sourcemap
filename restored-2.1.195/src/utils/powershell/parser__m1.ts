@@ -348,18 +348,18 @@ async function parsePowerShellCommandImpl(command) {
       T(`PowerShell parser: pwsh exited with code ${u}, stderr: ${c}`),
       RDe(command, `pwsh exited with code ${u}: ${c}`, "PwshError")
     );
-  let f = l.trim();
-  if (!f)
+  let trimmed = l.trim();
+  if (!trimmed)
     return (
       T("PowerShell parser: empty stdout from pwsh"),
       RDe(command, "No output from PowerShell parser", "EmptyOutput")
     );
   try {
-    let m = Ft(f);
+    let m = Ft(trimmed);
     return y0p(m);
   } catch {
     return (
-      T(`PowerShell parser: invalid JSON output: ${f.slice(0, 200)}`),
+      T(`PowerShell parser: invalid JSON output: ${trimmed.slice(0, 200)}`),
       RDe(command, "Invalid JSON from PowerShell parser", "InvalidJson")
     );
   }

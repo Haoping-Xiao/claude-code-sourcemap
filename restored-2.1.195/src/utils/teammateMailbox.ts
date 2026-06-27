@@ -54,10 +54,10 @@ async function readMailbox(agentName, teamName) {
 }
 async function readUnreadMessages(agentName, teamName) {
   let messages = await readMailbox(agentName, teamName),
-    r = messages.filter((o) => !o.read);
+    unread = messages.filter((o) => !o.read);
   return (
-    T(`[TeammateMailbox] readUnreadMessages: ${r.length} unread of ${messages.length} total`),
-    r
+    T(`[TeammateMailbox] readUnreadMessages: ${unread.length} unread of ${messages.length} total`),
+    unread
   );
 }
 async function writeToMailbox(recipientName, message, teamName) {

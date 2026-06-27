@@ -5,12 +5,12 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function J7p(e) {
-  let t = e.find((r) => r.type === "user" && !r.isMeta);
-  if (!t) return "";
-  let n = t.message.content;
-  if (typeof n === "string") return n;
-  if (Array.isArray(n)) {
-    let r = n.find((o) => o.type === "text");
+  let firstUserMessage = e.find((r) => r.type === "user" && !r.isMeta);
+  if (!firstUserMessage) return "";
+  let content = firstUserMessage.message.content;
+  if (typeof content === "string") return content;
+  if (Array.isArray(content)) {
+    let r = content.find((o) => o.type === "text");
     if (r && r.type === "text") return r.text;
   }
   return "";

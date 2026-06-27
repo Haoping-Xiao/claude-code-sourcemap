@@ -64,11 +64,11 @@ async function resolveInboundAttachments(attachments) {
   if (attachments.length === 0) return "";
   if ((debug(`resolving ${attachments.length} attachment(s)`), !LN()))
     return (debug("skip: no oauth token"), It("bridge_attachment_resolve", "no_token"), "");
-  let n = (await Promise.all(attachments.map(resolveOne))).filter((r) => r !== void 0);
-  if (n.length === 0) return (Le("bridge_attachment_resolve", "all_failed"), "");
-  if (n.length < attachments.length) It("bridge_attachment_resolve", "partial_failed");
+  let ok = (await Promise.all(attachments.map(resolveOne))).filter((r) => r !== void 0);
+  if (ok.length === 0) return (Le("bridge_attachment_resolve", "all_failed"), "");
+  if (ok.length < attachments.length) It("bridge_attachment_resolve", "partial_failed");
   else xe("bridge_attachment_resolve");
-  return n.map((r) => `@"${r}"`).join(" ") + " ";
+  return ok.map((r) => `@"${r}"`).join(" ") + " ";
 }
 function prependPathRefs(content, t) {
   if (!t) return content;

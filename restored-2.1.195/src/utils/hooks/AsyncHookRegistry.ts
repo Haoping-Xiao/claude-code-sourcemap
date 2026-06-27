@@ -76,9 +76,9 @@ async function checkForAsyncHookResponses() {
   let responses = [],
     t = Afe.size;
   T(`Hooks: Found ${t} total hooks in registry`);
-  let n = Array.from(Afe.values()),
+  let hooks = Array.from(Afe.values()),
     r = await Promise.allSettled(
-      n.map(async (s) => {
+      hooks.map(async (s) => {
         let i = (await s.shellCommand?.taskOutput.getStdout()) ?? "",
           a = s.shellCommand?.taskOutput.getStderr() ?? "";
         if (
@@ -198,9 +198,9 @@ function removeDeliveredAsyncHooks(processIds) {
   }
 }
 async function finalizePendingAsyncHooks() {
-  let e = Array.from(Afe.values());
+  let hooks = Array.from(Afe.values());
   (await Promise.all(
-    e.map(async (t) => {
+    hooks.map(async (t) => {
       if (t.shellCommand?.status === "completed") {
         let n = await t.shellCommand.result;
         await zMo(t, n.code, n.code === 0 ? "success" : "error");

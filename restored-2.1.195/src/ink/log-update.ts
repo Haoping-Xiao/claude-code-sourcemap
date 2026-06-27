@@ -387,34 +387,34 @@ function writeCellWithStyleStr(screen, cell, styleStr) {
     let l = cell.char.length > 2 ? s : s + 1;
     if (o + r >= l) return false;
   }
-  let i = screen.diff;
+  let diff = screen.diff;
   if (styleStr.length > 0)
-    i.push({
+    diff.push({
       type: "styleStr",
       str: styleStr,
     });
   let a = r >= 3 || (r === 2 && CGd(cell.char));
   if (a && o + 1 < s)
-    (i.push({
+    (diff.push({
       type: "cursorTo",
       col: o + 2,
     }),
-      i.push({
+      diff.push({
         type: "stdout",
         content: Ff(" ", r - 1),
       }),
-      i.push({
+      diff.push({
         type: "cursorTo",
         col: o + 1,
       }));
   if (
-    (i.push({
+    (diff.push({
       type: "stdout",
       content: cell.char,
     }),
     a)
   )
-    i.push({
+    diff.push({
       type: "cursorTo",
       col: o + r + 1,
     });

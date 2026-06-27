@@ -25,12 +25,12 @@ function headlessProfilerCheckpoint(name) {
 function logHeadlessProfilerTurn() {
   if (!Ir()) return;
   if (!SPo) return;
-  let n = oG()
+  let marks = oG()
     .getEntriesByType("mark")
     .filter((u) => u.name.startsWith(MARK_PREFIX));
-  if (n.length === 0) return;
+  if (marks.length === 0) return;
   let checkpointTimes = new Map();
-  for (let u of n) {
+  for (let u of marks) {
     let d = u.name.slice(MARK_PREFIX.length);
     checkpointTimes.set(d, u.startTime);
   }
@@ -58,7 +58,7 @@ function logHeadlessProfilerTurn() {
   if (l !== void 0) metadata.time_to_first_response_ms = Math.round(l - o);
   let c = checkpointTimes.get("api_request_sent");
   if (a !== void 0 && c !== void 0) metadata.query_overhead_ms = Math.round(c - a);
-  if (((metadata.checkpoint_count = n.length), process.env.CLAUDE_CODE_ENTRYPOINT))
+  if (((metadata.checkpoint_count = marks.length), process.env.CLAUDE_CODE_ENTRYPOINT))
     metadata.entrypoint = process.env.CLAUDE_CODE_ENTRYPOINT;
   if (rIl) G("tengu_headless_latency", metadata);
   if (SQn) T(`[headlessProfiler] Turn ${cSt} metrics: ${De(metadata)}`);

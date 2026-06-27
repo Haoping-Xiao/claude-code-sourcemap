@@ -45,7 +45,7 @@ function BrowseMarketplace({
     J_.useEffect(() => () => i(false), [i]));
   let B = Pg(),
     { columns: $ } = br(),
-    q = J_.useMemo(() => {
+    detailsMenuOptions = J_.useMemo(() => {
       if (!k) return availablePlugins;
       let ue = k.toLowerCase();
       return availablePlugins.filter(
@@ -59,7 +59,7 @@ function BrowseMarketplace({
     [selectedForInstall, z] = J_.useState(new Set()),
     [K, Z] = J_.useState(new Set()),
     pagination = FEt({
-      totalItems: q.length,
+      totalItems: detailsMenuOptions.length,
       selectedIndex: W,
     });
   J_.useEffect(() => {
@@ -348,11 +348,11 @@ function BrowseMarketplace({
         } else pagination.handleSelectionChange(W - 1, V);
       },
       "select:next": () => {
-        if (W < q.length - 1) pagination.handleSelectionChange(W + 1, V);
+        if (W < detailsMenuOptions.length - 1) pagination.handleSelectionChange(W + 1, V);
       },
       "select:accept": () => {
-        if (W < q.length) {
-          let ue = q[W];
+        if (W < detailsMenuOptions.length) {
+          let ue = detailsMenuOptions[W];
           if (ue)
             if (ue.isInstalled)
               o({
@@ -372,8 +372,8 @@ function BrowseMarketplace({
     No(
       {
         "plugin:toggle": () => {
-          if (W < q.length) {
-            let ue = q[W];
+          if (W < detailsMenuOptions.length) {
+            let ue = detailsMenuOptions[W];
             if (ue && !ue.isInstalled) {
               let we = new Set(selectedForInstall);
               if (we.has(ue.pluginId)) we.delete(ue.pluginId);
@@ -715,7 +715,7 @@ function BrowseMarketplace({
         }),
       ],
     });
-  let ye = pagination.getVisibleItems(q);
+  let visiblePlugins = pagination.getVisibleItems(detailsMenuOptions);
   return hi.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
@@ -755,7 +755,7 @@ function BrowseMarketplace({
           onFocus: () => x(true),
         }),
       }),
-      q.length === 0 &&
+      detailsMenuOptions.length === 0 &&
         k &&
         hi.jsx(U, {
           marginBottom: 1,
@@ -770,12 +770,12 @@ function BrowseMarketplace({
             children: [" ", nt.arrowUp, " more above"],
           }),
         }),
-      ye.map((ue, we) => {
+      visiblePlugins.map((ue, we) => {
         let Ce = pagination.toActualIndex(we),
           Ie = W === Ce,
           Ve = selectedForInstall.has(ue.pluginId),
           Ze = K.has(ue.pluginId),
-          Be = we === ye.length - 1,
+          Be = we === visiblePlugins.length - 1,
           Me = A?.get(ue.pluginId);
         return hi.jsxs(
           U,
@@ -862,8 +862,8 @@ function BrowseMarketplace({
         }),
       hi.jsx(P2l, {
         hasSelection: selectedForInstall.size > 0,
-        canToggle: W < q.length && !q[W]?.isInstalled,
-        canView: W < q.length,
+        canToggle: W < detailsMenuOptions.length && !detailsMenuOptions[W]?.isInstalled,
+        canView: W < detailsMenuOptions.length,
       }),
     ],
   });

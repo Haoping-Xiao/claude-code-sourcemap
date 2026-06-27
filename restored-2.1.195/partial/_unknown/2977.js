@@ -33,8 +33,8 @@ function Rfp(hljs) {
         begin: hljs.NUMBER_RE
       }]
     },
-    n = hljs.COMMENT();
-  n.variants = [{
+    COMMENTS = hljs.COMMENT();
+  COMMENTS.variants = [{
     begin: /;/,
     end: /$/
   }, {
@@ -75,7 +75,7 @@ function Rfp(hljs) {
     i = {
       begin: /\[/,
       end: /\]/,
-      contains: [n, o, r, s, t, "self"],
+      contains: [COMMENTS, o, r, s, t, "self"],
       relevance: 0
     },
     u = kfp(/[A-Za-z0-9_-]+/, /"(\\"|[^"])*"/, /'[^']*'/),
@@ -85,7 +85,7 @@ function Rfp(hljs) {
     aliases: ["toml"],
     case_insensitive: true,
     illegal: /\S/,
-    contains: [n, {
+    contains: [COMMENTS, {
       className: "section",
       begin: /\[+/,
       end: /\]+/
@@ -94,7 +94,7 @@ function Rfp(hljs) {
       className: "attr",
       starts: {
         end: /$/,
-        contains: [n, i, o, r, s, t]
+        contains: [COMMENTS, i, o, r, s, t]
       }
     }]
   };

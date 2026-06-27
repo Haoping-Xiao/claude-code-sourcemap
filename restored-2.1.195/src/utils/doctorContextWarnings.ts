@@ -38,13 +38,13 @@ async function checkAgentDescriptions(agentInfo) {
         };
       })
       .sort((o, s) => s.tokens - o.tokens),
-    r = agentTokens.slice(0, 5).map((o) => `${o.name}: ~${o.tokens.toLocaleString()} tokens`);
-  if (agentTokens.length > 5) r.push(`(${agentTokens.length - 5} more custom agents)`);
+    details = agentTokens.slice(0, 5).map((o) => `${o.name}: ~${o.tokens.toLocaleString()} tokens`);
+  if (agentTokens.length > 5) details.push(`(${agentTokens.length - 5} more custom agents)`);
   return {
     type: "agent_descriptions",
     severity: "warning",
     message: `Large agent descriptions (~${t.toLocaleString()} tokens > ${xKe.toLocaleString()})`,
-    details: r,
+    details: details,
     currentValue: t,
     threshold: xKe,
   };

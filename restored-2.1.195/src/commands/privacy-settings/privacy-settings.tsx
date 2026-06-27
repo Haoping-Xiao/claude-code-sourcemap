@@ -11,7 +11,7 @@ async function call(onDone) {
   if (!(await Tft())) return (onDone(FALLBACK_MESSAGE), null);
   let [settingsResult, r] = await Promise.all([Fre(), JDe()]);
   if (!settingsResult.success) return (onDone(FALLBACK_MESSAGE), null);
-  let o = settingsResult.data,
+  let settings = settingsResult.data,
     s = r.success ? r.data : null;
   async function i(l) {
     if (l === "escape" || l === "defer") {
@@ -34,16 +34,16 @@ async function call(onDone) {
       u = c.grove_enabled ? "true" : "false";
     if (
       (onDone(`"Help improve our AI models" set to ${u}.`),
-      o.grove_enabled !== null && o.grove_enabled !== c.grove_enabled)
+      settings.grove_enabled !== null && settings.grove_enabled !== c.grove_enabled)
     )
       G("tengu_grove_policy_toggled", {
         state: c.grove_enabled,
         location: We("settings"),
       });
   }
-  if (o.grove_enabled !== null)
+  if (settings.grove_enabled !== null)
     return Xjo.jsx(Kjo, {
-      settings: o,
+      settings: settings,
       domainExcluded: s?.domain_excluded,
       onDone: a,
     });

@@ -660,7 +660,7 @@ async function analyzeContextUsage(
     he = f >= 1000000 /* 1e6 */ ? (ge ? 5 : 20) : ge ? 5 : 10,
     ie = f >= 1000000 /* 1e6 */ ? 10 : ge ? 5 : 10,
     le = he * ie,
-    ye = cats
+    categorySquares = cats
       .filter((Et) => !Et.isDeferred)
       .map((Et) => ({
         ...Et,
@@ -690,10 +690,10 @@ async function analyzeContextUsage(
     return ct;
   }
   let gridSquares = [],
-    Ce = ye.find(
+    reservedCategory = categorySquares.find(
       (Et) => Et.name === RESERVED_CATEGORY_NAME || Et.name === MANUAL_COMPACT_BUFFER_NAME,
     ),
-    Ie = ye.filter(
+    Ie = categorySquares.filter(
       (Et) =>
         Et.name !== RESERVED_CATEGORY_NAME &&
         Et.name !== MANUAL_COMPACT_BUFFER_NAME &&
@@ -703,20 +703,20 @@ async function analyzeContextUsage(
     let ct = ue(Et);
     for (let Je of ct) if (gridSquares.length < le) gridSquares.push(Je);
   }
-  let Ve = Ce ? Ce.squares : 0,
-    Ze = cats.find((Et) => Et.name === "Free space"),
+  let Ve = reservedCategory ? reservedCategory.squares : 0,
+    freeSpaceCat = cats.find((Et) => Et.name === "Free space"),
     Be = le - Ve;
   while (gridSquares.length < Be)
     gridSquares.push({
       color: "promptBorder",
       isFilled: true,
       categoryName: "Free space",
-      tokens: Ze?.tokens || 0,
-      percentage: Ze ? Math.round((Ze.tokens / f) * 100) : 0,
+      tokens: freeSpaceCat?.tokens || 0,
+      percentage: freeSpaceCat ? Math.round((freeSpaceCat.tokens / f) * 100) : 0,
       squareFullness: 1,
     });
-  if (Ce) {
-    let Et = ue(Ce);
+  if (reservedCategory) {
+    let Et = ue(reservedCategory);
     for (let ct of Et) if (gridSquares.length < le) gridSquares.push(ct);
   }
   let Me = [];

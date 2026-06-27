@@ -45,10 +45,10 @@ function q0p() {
       snippet: createArgv0ShellFunction("rg", rgCommand.argv0),
     };
   let t = ja([rgCommand.rgPath]),
-    n = rgCommand.rgArgs.map((o) => ja([o]));
+    quotedArgs = rgCommand.rgArgs.map((o) => ja([o]));
   return {
     type: "alias",
-    snippet: rgCommand.rgArgs.length > 0 ? `${t} ${n.join(" ")}` : t,
+    snippet: rgCommand.rgArgs.length > 0 ? `${t} ${quotedArgs.join(" ")}` : t,
   };
 }
 function createFindGrepShellIntegration() {

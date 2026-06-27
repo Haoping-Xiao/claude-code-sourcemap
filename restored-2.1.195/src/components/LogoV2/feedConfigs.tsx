@@ -7,19 +7,19 @@
 // [unwrapped __esm module ZWl] deps: hooks/useTerminalSize.ts, ink/components/Box.tsx, components/LogoV2/FeedColumn.tsx
 ((XWl = R(lt(), 1)), (JWl = R(rt(), 1)), (mAt = R(se(), 1)));
 function createWhatsNewFeed(releaseNotes) {
-  let t = releaseNotes.map((r) => ({
+  let lines = releaseNotes.map((r) => ({
       text: r,
     })),
     n = "Check the Claude Code changelog for updates";
   return {
     title: "What's new",
-    lines: t,
-    footer: t.length > 0 ? "/release-notes for more" : void 0,
+    lines: lines,
+    footer: lines.length > 0 ? "/release-notes for more" : void 0,
     emptyMessage: "Check the Claude Code changelog for updates",
   };
 }
 function createProjectOnboardingFeed(steps) {
-  let n = steps
+  let lines = steps
       .filter(({ isEnabled: o }) => o)
       .sort((o, s) => Number(o.isComplete) - Number(s.isComplete))
       .map(({ text: o, isComplete: s }) => ({
@@ -30,12 +30,12 @@ function createProjectOnboardingFeed(steps) {
         ? "Note: You have launched claude in your home directory. For the best experience, launch it in a project directory instead."
         : void 0;
   if (r)
-    n.push({
+    lines.push({
       text: r,
     });
   return {
     title: "Tips for getting started",
-    lines: n,
+    lines: lines,
   };
 }
 var e5l;

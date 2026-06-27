@@ -72,9 +72,11 @@ async function buildSideQuestionFallbackParams({
       cacheBreakerPhrase: p.cacheBreakerPhrase,
     }),
     y = Sc([...(typeof a === "string" ? [a] : Array.isArray(a) ? a : m), ...(l ? [l] : [])]),
-    b = messages.at(-1),
+    last = messages.at(-1),
     _ =
-      b?.type === "assistant" && b.message.stop_reason === null ? messages.slice(0, -1) : messages,
+      last?.type === "assistant" && last.message.stop_reason === null
+        ? messages.slice(0, -1)
+        : messages,
     S = {
       messageQueue: Ug,
       agentContext: of(),

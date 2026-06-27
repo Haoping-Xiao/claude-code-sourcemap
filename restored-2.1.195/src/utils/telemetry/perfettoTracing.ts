@@ -144,7 +144,7 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
     f =
       c !== void 0 && s !== void 0 && s > 0 ? Math.round((c / s) * 10000 /* 1e4 */) / 100 : void 0,
     m = metadata.requestSetupMs,
-    g = metadata.attemptStartTimes,
+    attemptStartTimes = metadata.attemptStartTimes,
     h = {
       ...pending.args,
       ttft_ms: i,
@@ -177,15 +177,15 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
         tid: pending.agentInfo.threadId,
         args: {
           request_setup_ms: m,
-          attempt_count: g?.length ?? 1,
+          attempt_count: attemptStartTimes?.length ?? 1,
         },
       }),
-      g && g.length > 1)
+      attemptStartTimes && attemptStartTimes.length > 1)
     ) {
-      let _ = g[0];
-      for (let S = 0; S < g.length - 1; S++) {
-        let A = pending.startTime + (g[S] - _) * 1000,
-          v = pending.startTime + (g[S + 1] - _) * 1000;
+      let _ = attemptStartTimes[0];
+      for (let S = 0; S < attemptStartTimes.length - 1; S++) {
+        let A = pending.startTime + (attemptStartTimes[S] - _) * 1000,
+          v = pending.startTime + (attemptStartTimes[S + 1] - _) * 1000;
         (tN.push({
           name: `Attempt ${S + 1} (retry)`,
           cat: "api,retry",

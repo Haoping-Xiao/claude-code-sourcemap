@@ -320,7 +320,7 @@ async function formatTranscriptWithSummarization(log) {
   let n = 25000,
     chunks = [];
   for (let a = 0; a < fullTranscript.length; a += n) chunks.push(fullTranscript.slice(a, a + n));
-  let o = await Promise.all(chunks.map(UQf)),
+  let summaries = await Promise.all(chunks.map(UQf)),
     meta = logToSessionMeta(log);
   return (
     [
@@ -332,7 +332,7 @@ async function formatTranscriptWithSummarization(log) {
       "",
     ].join(`
 `) +
-    o.join(`
+    summaries.join(`
 
 ---
 
@@ -888,12 +888,12 @@ function generateTimeOfDayChart(messageHours) {
     ],
     n = {};
   for (let i of messageHours) n[i] = (n[i] || 0) + 1;
-  let r = t.map((i) => ({
+  let periodCounts = t.map((i) => ({
       label: i.label,
       count: i.range.reduce((a, l) => a + (n[l] || 0), 0),
     })),
-    o = Math.max(...r.map((i) => i.count)) || 1;
-  return `<div id="hour-histogram">${r.map(
+    o = Math.max(...periodCounts.map((i) => i.count)) || 1;
+  return `<div id="hour-histogram">${periodCounts.map(
     (i) => `
       <div class="bar-row">
         <div class="bar-label">${i.label}</div>
