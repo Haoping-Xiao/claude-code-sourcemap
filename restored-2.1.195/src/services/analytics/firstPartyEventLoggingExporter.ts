@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Du
 // matched 2.1.88 source: src/services/analytics/firstPartyEventLoggingExporter.ts
 // class=modified  jaccard=0.2478  score=0.5883  fileCov=0.2998
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Du] deps: Qi, wr, Q9, TM, Vw, Ao, ft, fn, Ist, Tzr, S_e, Yle, kst, QH, oo, Ld, sa, Is, og, Jt, Mp, pke, fb
 ((_Oi = require("path")),
@@ -139,7 +139,7 @@ K$d = new Set([
     heapUsed: 0,
     external: 0,
   }));
-function oNt() {
+function getStorageDir() {
   return gkn.join(tr(), "telemetry");
 }
 class FirstPartyEventLoggingExporter {
@@ -186,7 +186,7 @@ class FirstPartyEventLoggingExporter {
     return (await this.loadEventsFromCurrentBatch()).length;
   }
   getCurrentBatchFilePath() {
-    return gkn.join(oNt(), `${FILE_PREFIX}${Rt()}.${vOi}.json`);
+    return gkn.join(getStorageDir(), `${FILE_PREFIX}${Rt()}.${vOi}.json`);
   }
   async loadEventsFromFile(e) {
     try {
@@ -205,7 +205,7 @@ class FirstPartyEventLoggingExporter {
           await E7.unlink(e);
         } catch {}
       else {
-        await E7.mkdir(oNt(), {
+        await E7.mkdir(getStorageDir(), {
           recursive: true,
         });
         let n =
@@ -224,7 +224,7 @@ class FirstPartyEventLoggingExporter {
   async appendEventsToFile(e, t) {
     if (t.length === 0) return;
     try {
-      await E7.mkdir(oNt(), {
+      await E7.mkdir(getStorageDir(), {
         recursive: true,
       });
       let n =
@@ -249,7 +249,7 @@ class FirstPartyEventLoggingExporter {
       let e = `${FILE_PREFIX}${Rt()}.`,
         t;
       try {
-        t = (await E7.readdir(oNt()))
+        t = (await E7.readdir(getStorageDir()))
           .filter((n) => n.startsWith(e) && n.endsWith(".json"))
           .filter((n) => !n.includes(vOi));
       } catch (n) {
@@ -257,7 +257,7 @@ class FirstPartyEventLoggingExporter {
         throw n;
       }
       for (let n of t) {
-        let r = gkn.join(oNt(), n);
+        let r = gkn.join(getStorageDir(), n);
         this.retryFileInBackground(r);
       }
     } catch (e) {

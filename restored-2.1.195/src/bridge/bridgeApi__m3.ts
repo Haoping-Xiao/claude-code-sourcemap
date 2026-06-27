@@ -47,7 +47,7 @@ async function startProTrial() {
     );
   });
 }
-function shouldAutoOpenProTrialExpired() {
+function isExpiredErrorType() {
   if (getProTrialState().status !== "expired") return false;
   return Dt().cachedExtraUsageDisabledReason !== null;
 }

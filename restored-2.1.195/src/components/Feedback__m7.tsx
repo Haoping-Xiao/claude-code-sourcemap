@@ -18,7 +18,7 @@ var Zjn = 78,
 function dPp() {
   return parseInt(process.env.CLAUDE_CODE_DD_ERROR_TRACKING_FLUSH_INTERVAL_MS || "", 10) || lPp;
 }
-async function submitFeedback(e) {
+async function GITHUB_ISSUES_REPO_URL(e) {
   let t = De(e),
     n = new URLSearchParams({
       ddsource: "browser",
@@ -56,7 +56,7 @@ async function submitFeedback(e) {
 async function flushErrorTracking() {
   if (YDe.length === 0) return;
   let e = YDe;
-  ((YDe = []), await submitFeedback(e));
+  ((YDe = []), await GITHUB_ISSUES_REPO_URL(e));
 }
 function fPp() {
   if (EJ) return;

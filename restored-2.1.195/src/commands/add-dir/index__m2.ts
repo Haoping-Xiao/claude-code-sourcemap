@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Le
 // matched 2.1.88 source: src/commands/add-dir/index.ts
 // class=modified (alt of src/commands/add-dir/index.ts)  jaccard=0.0246  score=0.0282  fileCov=0.1638
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Lcp(e) {
   let t = e,
@@ -50,7 +50,7 @@ function qcp(e) {
     )
     .replace(/\b[\w.-]+\.(?:ant\.dev|anthropic\.com)\b[^\s"')\]]*/gi, "<url>");
 }
-function Vcp(e) {
+function addDir(e) {
   return e
     .replace(/\b(E[A-Z0-9]+: [^,'\n]{1,80}, [a-z]\w{0,31} ')[^]*/g, "$1<path>'")
     .replace(/~[\\/][^"'\n]*/g, "~/<path>")
@@ -82,7 +82,7 @@ function H4(e) {
       .replace(/:\/\/[^\s/]*@(?=[^@\s]*(?:[/:\s]|$))/g, "://<userinfo>@")
       .replace(/\b[\w][\w.+-]*@[\w.-]+:[^\s"')\]]*(?:\/[^\s"')\]]*|\.git\b)/gi, "<url>"),
     r = Ycp(jcp(Wcp(Ncp(Pcp(Lcp(n))))));
-  return Vcp(qcp(Kcp(r)));
+  return addDir(qcp(Kcp(r)));
 }
 var Hca,
   Dcp,

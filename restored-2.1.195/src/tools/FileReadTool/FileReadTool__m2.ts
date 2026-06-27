@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Bpc
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0135  score=0.173  fileCov=0.0145
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function Wpc(e, t) {
+async function isBlockedDevicePath(e, t) {
   let n = await mlm(e, t);
   if (n.startsWith("<")) return n;
   let r = await glm(n);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bCe
 // matched 2.1.88 source: src/utils/plugins/schemas.ts
 // class=modified (alt of src/utils/plugins/schemas.ts)  jaccard=0.0434  score=0.4161  fileCov=0.0462
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bCe] deps: Xr
 ((WRr = ve(() =>
@@ -170,15 +170,15 @@ function validateOfficialNameSource(e, t) {
   if (!QRr.has(n)) return null;
   if (t.source === "github") {
     let r = t.repo || "";
-    if (!r.toLowerCase().startsWith(`${Yfn}/`) || r.split("/").includes(".."))
-      return `The name '${e}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${Yfn}/' can use this name.`;
+    if (!r.toLowerCase().startsWith(`${OFFICIAL_GITHUB_ORG}/`) || r.split("/").includes(".."))
+      return `The name '${e}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${OFFICIAL_GITHUB_ORG}/' can use this name.`;
     return null;
   }
   if (t.source === "git" && t.url) {
     if (kOu(t.url)) return null;
-    return `The name '${e}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${Yfn}/' can use this name.`;
+    return `The name '${e}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${OFFICIAL_GITHUB_ORG}/' can use this name.`;
   }
-  return `The name '${e}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${Yfn}' organization.`;
+  return `The name '${e}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${OFFICIAL_GITHUB_ORG}' organization.`;
 }
 function eLt(e) {
   return typeof e === "string" && e.startsWith("./");
@@ -222,7 +222,7 @@ var JRt,
   vOu,
   wOu,
   COu,
-  Yfn = "anthropics",
+  OFFICIAL_GITHUB_ORG = "anthropics",
   xOu,
   o9,
   r2e,

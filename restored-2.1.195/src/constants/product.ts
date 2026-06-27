@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mua
 // matched 2.1.88 source: src/constants/product.ts
 // class=modified  jaccard=0.4499  score=0.6299  fileCov=0.6115
-// note: deminified; 8 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toInfraSessionId, toCompatSessionId, setCseShimGate, remoteRowId
 // [unwrapped __esm module Mua] deps: UIt, Dua
@@ -35,7 +35,7 @@ function CLAUDE_AI_BASE_URL(e, t) {
   if (isRemoteSessionStaging(e, t)) return "https://claude-ai.staging.ant.dev";
   return "https://claude.ai";
 }
-function dS(e, t, n) {
+function getRemoteSessionUrl(e, t, n) {
   let { toCompatSessionId: r } = ro($ua),
     o = r(e),
     i = `${CLAUDE_AI_BASE_URL(o, t)}/code/${o}`;

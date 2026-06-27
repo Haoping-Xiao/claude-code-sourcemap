@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module IAo
 // matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
 // class=modified  jaccard=0.4171  score=0.679  fileCov=0.5196
-// note: deminified; 22 identifiers renamed (exports/displayName/curated)
+// note: deminified; 23 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IAo] deps: Pw, je, fn, At, ys, YS, vn, Jt
 Qqt = require("path");
-function aoe() {
+function getPlatform() {
   let e = Oe.platform,
     t = "x64";
   if (!t) {
@@ -29,7 +29,7 @@ function getBinaryName(e) {
   return e.startsWith("win32") ? "claude.exe" : "claude";
 }
 function getBaseDirectories() {
-  let e = aoe(),
+  let e = getPlatform(),
     t = getBinaryName(e);
   return {
     versions: Df.join(Ore(), "claude", "versions"),
@@ -250,7 +250,7 @@ async function installVersionFromPackage(e, t) {
 }
 async function installVersionFromBinary(e, t) {
   try {
-    let n = aoe(),
+    let n = getPlatform(),
       r = getBinaryName(n),
       o = Df.join(e, r);
     try {
@@ -512,7 +512,7 @@ async function removeDirectoryIfEmpty(e) {
   }
 }
 async function updateSymlink(e, t) {
-  if (aoe().startsWith("win32"))
+  if (getPlatform().startsWith("win32"))
     try {
       let i = Df.dirname(e);
       await Ic.mkdir(i, {
@@ -606,7 +606,7 @@ async function checkInstall(e = false) {
     i = [],
     a = Df.dirname(o.executable),
     l = Df.resolve(a),
-    u = aoe().startsWith("win32");
+    u = getPlatform().startsWith("win32");
   try {
     await Ic.access(a);
   } catch {
@@ -830,7 +830,7 @@ async function cleanupOldVersions() {
   await Promise.resolve();
   let e = getBaseDirectories(),
     t = Date.now() - 3600000;
-  if (aoe().startsWith("win32")) {
+  if (getPlatform().startsWith("win32")) {
     let s = Df.dirname(e.executable);
     try {
       let i = await Ic.readdir(s),
@@ -926,7 +926,7 @@ async function cleanupOldVersions() {
     if (s && s.includes(e.versions)) i.add(Df.resolve(s));
     let a = await _Kp(e.executable);
     if (a) i.add(a);
-    else if (aoe().startsWith("win32"))
+    else if (getPlatform().startsWith("win32"))
       try {
         let f = await Ic.stat(e.executable);
         for (let m of r) if (m.size === f.size) i.add(m.resolvedPath);
@@ -1080,7 +1080,7 @@ async function manualRemoveNpmPackage(e) {
         return false;
       }
     }
-    if (aoe().startsWith("win32")) {
+    if (getPlatform().startsWith("win32")) {
       let s = Df.join(n, "claude.cmd"),
         i = Df.join(n, "claude.ps1"),
         a = Df.join(n, "claude");
@@ -1093,7 +1093,7 @@ async function manualRemoveNpmPackage(e) {
     }
     if (r) {
       T(`Successfully removed ${e} manually`);
-      let s = aoe().startsWith("win32")
+      let s = getPlatform().startsWith("win32")
         ? Df.join(n, "node_modules", e)
         : Df.join(n, "lib", "node_modules", e);
       return {

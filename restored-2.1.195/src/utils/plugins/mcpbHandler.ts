@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aCa
 // matched 2.1.88 source: src/utils/plugins/mcpbHandler.ts
 // class=modified  jaccard=0.6852  score=0.9369  fileCov=0.7184
-// note: deminified; 11 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aCa] deps: je, Is
 ((sCa = require("os")), (tqe = require("path")));
@@ -15,7 +15,7 @@ function isUrl(e) {
 function rTp(e) {
   return SUn.createHash("sha256").update(e).digest("hex").substring(0, 16);
 }
-function cCa(e) {
+function getMcpbCacheDir(e) {
   return Hre.join(e, ".mcpb-cache");
 }
 function getMetadataPath(e, t) {
@@ -256,7 +256,7 @@ async function extractMcpbContents(e, t, n, r) {
 }
 async function checkMcpbChanged(e, t) {
   let n = qt(),
-    r = cCa(t),
+    r = getMcpbCacheDir(t),
     o = await loadCacheMetadata(r, e);
   if (!o) return true;
   try {
@@ -296,7 +296,7 @@ async function checkMcpbChanged(e, t) {
 }
 async function loadMcpbFile(e, t, n, r, o, s) {
   let i = qt(),
-    a = cCa(t);
+    a = getMcpbCacheDir(t);
   (await i.mkdir(a), T(`Loading MCPB from source: ${e}`));
   let l = await loadCacheMetadata(a, e);
   if (l && !(await checkMcpbChanged(e, t))) {

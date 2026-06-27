@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module har
 // matched 2.1.88 source: src/upstreamproxy/upstreamproxy.ts
 // class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0308  score=0.1086  fileCov=0.0412
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module har] deps: Un, Is
 irc = require("os");
@@ -13,7 +13,7 @@ function mJf(e) {
     r = typeof n?.fd === "number" ? n.fd : -1;
   if (r < 0) return null;
   try {
-    return t === "macos" ? hJf(r) : gJf(r);
+    return t === "macos" ? hJf(r) : setNonDumpable(r);
   } catch (o) {
     return (
       T(`[daemon] peer uid lookup failed: ${o instanceof Error ? o.message : String(o)}`, {
@@ -37,7 +37,7 @@ function lrc(e, t = mJf) {
     o
   );
 }
-function gJf(e) {
+function setNonDumpable(e) {
   if (yar === void 0)
     yar =
       crc("libc.so.6", {

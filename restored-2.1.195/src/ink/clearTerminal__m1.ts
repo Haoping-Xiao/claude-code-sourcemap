@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bBt
 // matched 2.1.88 source: src/ink/clearTerminal.ts
 // class=modified (alt of src/ink/clearTerminal.ts)  jaccard=0.042  score=0.0479  fileCov=0.252
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bBt] deps: one, OM
 m4d = /^\[M[\x60-\x7f][\x20-\uffff]?$/;
@@ -81,14 +81,14 @@ function H4i(e) {
   if (!e) return [];
   return e.split(";").map((t) => parseInt(t, 10));
 }
-function v4d(e, t) {
+function isMintty(e, t) {
   let n = t.CLAUDE_CODE_BS_AS_CTRL_BACKSPACE;
   if (ut(n)) return true;
   if (ml(n)) return false;
   return e === "win32" && t.TERM_PROGRAM !== "mintty" && t.TERM !== "cygwin";
 }
 function V7r() {
-  return v4d("linux", process.env);
+  return isMintty("linux", process.env);
 }
 function w4d(e, t) {
   let n = e.CLAUDE_CODE_ALTGR_AS_TEXT;

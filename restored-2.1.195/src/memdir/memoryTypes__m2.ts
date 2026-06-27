@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CNi
 // matched 2.1.88 source: src/memdir/memoryTypes.ts
 // class=modified (alt of src/memdir/memoryTypes.ts)  jaccard=0.0203  score=0.1255  fileCov=0.0236
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 var uH = "MEMORY.md",
   D7 = 200,
@@ -37,7 +37,7 @@ ${Pkn(r)}---
 
 ${o}`;
 }
-function kNi(e) {
+function MEMORY_FRONTMATTER_EXAMPLE(e) {
   return [
     "```markdown",
     "---",

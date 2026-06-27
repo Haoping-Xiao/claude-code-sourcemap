@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S_e
 // matched 2.1.88 source: src/services/mcp/config.ts
 // class=modified (alt of src/services/mcp/config.ts)  jaccard=0.0044  score=0.0598  fileCov=0.0047
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S_e] deps: wr
 $$d = {
@@ -36,7 +36,7 @@ function ukn(e) {
     return false;
   return wzr.some((s) => n.pathname.includes(s));
 }
-function mOi(e) {
+function unwrapCcrProxyUrl(e) {
   if (!ukn(e)) return false;
   let t;
   try {

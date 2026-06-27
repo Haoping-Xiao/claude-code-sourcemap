@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qir
 // matched 2.1.88 source: src/commands/bridge-kick.ts
 // class=modified (alt of src/commands/bridge-kick.ts)  jaccard=0.0183  score=0.0339  fileCov=0.0381
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startParentWatchdog, runDaemonWorker, registerShutdownHandlers, isShutdownSentinel, httpStatusOf, heartbeatWorkerSchema, WORKER_KINDS
 // [unwrapped __esm module Qir] deps: IB, Xr, wQ, dn, NB, T3o
@@ -18,7 +18,7 @@ gGo = ve(() =>
     createSessionOnStart: H.boolean().default(false),
   }).strict(),
 );
-async function p7f(e, t, n, r) {
+async function call(e, t, n, r) {
   let { intervalSeconds: o } = heartbeatWorkerSchema().parse(e);
   n(`heartbeat worker started (interval=${o}s)`);
   while (!t.aborted) if ((await Nn(o * 1000, t), !t.aborted)) n("heartbeat");

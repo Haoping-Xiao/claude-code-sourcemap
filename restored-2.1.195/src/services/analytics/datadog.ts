@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Zo
 // matched 2.1.88 source: src/services/analytics/datadog.ts
 // class=modified  jaccard=0.0106  score=0.0362  fileCov=0.0147
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function qWc(e, t, n, r = null, o) {
   if (!e.body || e.status >= 400) return e;
@@ -55,11 +55,11 @@ function hOm(e, t, n) {
         });
         let u = a.split(yOm);
         a = u.pop() ?? "";
-        for (let d of u) GWc(l, d);
+        for (let d of u) trackDatadogEvent(l, d);
         if (a.length > jWc) a = "";
       },
       async usage() {
-        if (a !== "") (GWc(l, a), (a = ""));
+        if (a !== "") (trackDatadogEvent(l, a), (a = ""));
         return SOm(l);
       },
     };
@@ -98,7 +98,7 @@ function bOm() {
     sawOutputTokens: false,
   };
 }
-function GWc(e, t) {
+function trackDatadogEvent(e, t) {
   let n = bZo(t, "event:"),
     r = n ? t.slice(n[0], n[1]).trim() : null;
   if (r === "content_block_delta") {

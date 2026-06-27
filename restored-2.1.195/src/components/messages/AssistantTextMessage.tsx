@@ -47,7 +47,7 @@ function InvalidApiKeyMessage() {
   else n = e[1];
   return n;
 }
-function AssistantTextMessage(e) {
+function RCo(e) {
   let t = D8t.c(32),
     { param: n, addMargin: r, shouldShowDot: o, verbose: s, onOpenRateLimitOptions: i } = e,
     { text: a } = n;
@@ -275,7 +275,7 @@ function AssistantTextMessage(e) {
       if (K1(a)) {
         let p;
         if (t[20] !== r || t[21] !== a || t[22] !== s)
-          ((p = ld.jsx(iof, {
+          ((p = ld.jsx(AssistantTextMessage, {
             text: a,
             verbose: s,
             addMargin: r,
@@ -333,7 +333,7 @@ function AssistantTextMessage(e) {
     }
   }
 }
-function iof(e) {
+function AssistantTextMessage(e) {
   let t = D8t.c(23),
     { text: n, verbose: r, addMargin: o } = e,
     { columns: s } = br(),

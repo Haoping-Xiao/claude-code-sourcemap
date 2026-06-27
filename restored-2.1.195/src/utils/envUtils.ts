@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Prs
 // matched 2.1.88 source: src/utils/envUtils.ts
 // class=modified  jaccard=0.1194  score=0.2983  fileCov=0.1661
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Prs] deps: Qi
 Lrs = Cn((e) => {
@@ -73,7 +73,7 @@ function parseEnvVars(e) {
     }
   return t;
 }
-function Osn() {
+function getDefaultVertexRegion() {
   return process.env.CLOUD_ML_REGION || "us-east5";
 }
 function HJe(e) {
@@ -105,8 +105,8 @@ function Urs() {
 function Yie(e) {
   if (e) {
     let t = Lzc.find(([n]) => e.startsWith(n));
-    if (t) return process.env[t[1]] || Osn();
+    if (t) return process.env[t[1]] || getDefaultVertexRegion();
   }
-  return Osn();
+  return getDefaultVertexRegion();
 }
 var Mrs, hSr, tr, ySr, Lzc;

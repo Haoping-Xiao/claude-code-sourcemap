@@ -49,10 +49,10 @@ function rRf(e, t) {
   return t.find((r) => r.id.toLowerCase() === n);
 }
 function applyConfigShorthand(e, t, n) {
-  let { settings: r } = iEt(Config(t, n));
-  return e.map(({ key: o, raw: s }) => sRf(o, s, r));
+  let { settings: r } = iEt(a1o(t, n));
+  return e.map(({ key: o, raw: s }) => Config(o, s, r));
 }
-function sRf(e, t, n) {
+function Config(e, t, n) {
   let r = rRf(e, n);
   if (
     (G("tengu_config_shorthand", {
@@ -124,7 +124,7 @@ function sRf(e, t, n) {
   }
 }
 function listConfigKeys(e) {
-  let { settings: t } = iEt(Config(e));
+  let { settings: t } = iEt(a1o(e));
   return t
     .flatMap((n) => {
       if (n.consentGated) return [];
@@ -183,7 +183,7 @@ function aRf() {
         mcpClients: [],
       },
     },
-    { settings: t } = iEt(Config(e));
+    { settings: t } = iEt(a1o(e));
   return (
     (E7t = t.flatMap((n) => {
       if (n.consentGated) return [];
@@ -205,7 +205,7 @@ function aRf() {
 function lRf() {
   E7t = void 0;
 }
-function Config(e, t) {
+function a1o(e, t) {
   let n = e.getAppState(),
     r = Dr(),
     o = sEt(),

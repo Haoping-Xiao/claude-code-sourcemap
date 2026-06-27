@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CWo
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0205  score=0.114  fileCov=0.0243
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CWo] deps: YS, mFn, jqe
 $ar = require("fs/promises");
@@ -36,7 +36,7 @@ function aoc() {
   return !Oe.CLAUDE_DISABLE_ADOPT;
 }
 async function Bar(e) {
-  let t = NYe(e),
+  let t = extractAgentIdsFromMessages(e),
     n = Object.values(e).filter((u) => dQf(u, t)),
     r = Object.values(e).filter((u) => pQf(u, t)),
     o = Object.values(e).filter((u) => fQf(u, t)),
@@ -249,7 +249,7 @@ async function loc(e) {
     await DC.unlink(n).catch(() => {});
   }
 }
-async function coc(e) {
+async function getAgentMetadataPath(e) {
   if (!e.transcriptPath) return;
   let t = uk(Bu(e.agentId));
   if (t === e.transcriptPath) return;
@@ -332,7 +332,7 @@ function moc(e) {
   let t = new Set(Hw().map((n) => n.id));
   for (let n of e) if (!t.has(n.id)) (Rge(n), t.add(n.id));
 }
-function NYe(e) {
+function extractAgentIdsFromMessages(e) {
   let t = new Map();
   if (!aoc()) return t;
   let n = (i) => (El(i) ? i.parentAgentId : "agentId" in i ? i.agentId : void 0),
@@ -399,10 +399,10 @@ function fQf(e, t) {
 function BQt(e, t) {
   return t.get(e.id) ?? false;
 }
-function UQt(e, t = NYe(e)) {
+function UQt(e, t = extractAgentIdsFromMessages(e)) {
   return On(Object.values(e), (n) => BQt(n, t)) + On(Hw(), (n) => $Ht(n, t));
 }
-function Gar(e, t = NYe(e)) {
+function Gar(e, t = extractAgentIdsFromMessages(e)) {
   return sKe(e).count - UQt(e, t);
 }
 function War(e) {

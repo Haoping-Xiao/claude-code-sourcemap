@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Dgo
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0049  score=0.0339  fileCov=0.0057
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Dgo] deps: Xr, ft, kt, ii, je, Ao, IX
 ((VLp = ve(() =>
@@ -181,13 +181,13 @@ function rft(e, t) {
 async function W$a(e) {
   let t = Pgo.get(e);
   if (t !== void 0) return t;
-  let n = await KLp(e);
+  let n = await GH_READ_ONLY_COMMANDS(e);
   return (Pgo.set(e, n), n);
 }
 function Mgo(e) {
   Pgo.delete(e);
 }
-async function KLp(e) {
+async function GH_READ_ONLY_COMMANDS(e) {
   let t = $m(e)
     ? process.env.GH_TOKEN || process.env.GITHUB_TOKEN
     : gfn(process.env.GH_HOST, e)

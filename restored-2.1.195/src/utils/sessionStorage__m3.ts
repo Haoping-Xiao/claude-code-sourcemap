@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xec
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0212  score=0.0882  fileCov=0.0272
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tool, tagSession, startup, resolveSettings, renameSession, query, parseDirectConnectUrl, listSubagents, listSessions, importSessionToStore, getSubagentMessages, getSessionMessages, getSessionInfo, forkSession, foldSessionSummary, filterEscalatingDefaultMode, deleteSession, createSdkMcpServer, SYSTEM_PROMPT_DYNAMIC_BOUNDARY, InMemorySessionStore, HOOK_EVENTS, EXIT_REASONS, DirectConnectTransport, DirectConnectError, AbortError
 // [unwrapped __esm module xec] deps: ys, RCe, Sx, ICe
@@ -46,7 +46,7 @@ async function tYf(e, t) {
 function nYf() {
   return Promise.resolve(void 0);
 }
-async function Nec(e, t, n, r, o = 60000) {
+async function getAgentMetadataPath(e, t, n, r, o = 60000) {
   if (!FS(t)) return;
   let s = pZ(n),
     i = await vc(
@@ -481,7 +481,7 @@ function query({ prompt: e, options: t }) {
             .slice()
             .sort((g, h) => h.mtime - g.mtime)[0]?.sessionId;
         if (!p) return;
-        return Nec(u, p, c, t.env, t.loadTimeoutMs);
+        return getAgentMetadataPath(u, p, c, t.env, t.loadTimeoutMs);
       })()
         .then((m) => {
           if (m) {
@@ -529,7 +529,7 @@ async function startup({ options: e, initializeTimeoutMs: t = 60000 } = {}) {
         .slice()
         .sort((u, d) => d.mtime - u.mtime)[0]?.sessionId;
     }
-    if (r) n = await Nec(e.sessionStore, r, a, e.env, e.loadTimeoutMs);
+    if (r) n = await getAgentMetadataPath(e.sessionStore, r, a, e.env, e.loadTimeoutMs);
   }
   let o, s, i;
   try {

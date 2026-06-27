@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bke
 // matched 2.1.88 source: src/ink/termio/osc.ts
 // class=modified  jaccard=0.2961  score=0.4815  fileCov=0.4348
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bke]
 E1 = new kUi();
@@ -79,7 +79,7 @@ function z0n(e) {
   if (!E1.hasOsc52ClipboardUtf8Bug() || !OBd(e)) return null;
   return "VS Code 1.123/1.124 will mojibake this paste \u2014 update to \u22651.125";
 }
-async function NBd(e) {
+async function tmuxLoadBuffer(e) {
   if (!process.env.TMUX) return false;
   let t = {
       input: e,
@@ -99,7 +99,7 @@ async function NBd(e) {
 async function setClipboard(e) {
   let t = OYr.Buffer.from(e, "utf8").toString("base64");
   if (!XNt()) copyNative(e);
-  await NBd(e);
+  await tmuxLoadBuffer(e);
   let n = BYr(),
     r = XNt(),
     o = `${l8}]52;c;${t}${$M}`,

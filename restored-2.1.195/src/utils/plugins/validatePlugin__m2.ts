@@ -49,7 +49,7 @@ function pBf(e) {
       return false;
   }
 }
-function Ljl(e, t) {
+function validatePluginManifest(e, t) {
   if (t === "policy" || t === "flag") return e;
   if (t === "author") return e === "off" ? "user-invocable-only" : "off";
   let n = uUo.indexOf(e);
@@ -69,7 +69,7 @@ function dUo(e) {
     e.everConnected === false
   );
 }
-function validatePluginManifest(
+function Djl(
   e,
   { searchQuery: t, favoriteIds: n, showDisabled: r, disusedDays: o, keepInPlaceIds: s },
 ) {

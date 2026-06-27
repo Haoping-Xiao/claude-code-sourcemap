@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X6l] deps: je, At, Is
 K6l = require("path");
-async function run(e = {}) {
+async function main(e = {}) {
   let { cmd: t, prefixArgs: n } = e.launcher ?? CF(),
     r = ML(),
     o = e.extraArgs ?? [],

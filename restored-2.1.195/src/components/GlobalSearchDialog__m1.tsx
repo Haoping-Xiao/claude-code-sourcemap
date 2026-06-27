@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mjo
 // matched 2.1.88 source: src/components/GlobalSearchDialog.tsx
 // class=modified (alt of src/components/GlobalSearchDialog.tsx)  jaccard=0.0222  score=0.0297  fileCov=0.081
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: computeVisibleWindow, buildAgentDetailLines, agentDisplayStatus, WorkflowDetailDialog, PhaseScrollIndicator
 // [unwrapped __esm module mjo] deps: _i, Ye, ps, U8l, $7, Lo, Bs, vi, f_, Ko, Mg
@@ -130,7 +130,7 @@ function W8l(e, t, n, r) {
     },
   ];
 }
-function GlobalSearchDialog(e) {
+function ome(e) {
   let t = sme.c(9),
     { segs: n, contentWidth: r } = e,
     o = n.reduce(T5f, 0),
@@ -274,7 +274,7 @@ function v5f(e) {
       let D;
       if (t[24] !== s || t[25] !== k)
         ((D = aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: s,
             segs: k,
@@ -306,7 +306,7 @@ function v5f(e) {
       let C;
       if (t[32] !== s || t[33] !== v)
         ((C = aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: s,
             segs: v,
@@ -328,7 +328,7 @@ function v5f(e) {
       let k;
       if (t[37] !== s || t[38] !== I)
         ((k = aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: s,
             segs: I,
@@ -352,7 +352,7 @@ function v5f(e) {
       let P;
       if (t[41] !== s)
         ((P = aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: s,
             segs: D,
@@ -383,7 +383,7 @@ function v5f(e) {
       let C;
       if (t[48] !== s || t[49] !== v)
         ((C = aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: s,
             segs: v,
@@ -406,7 +406,7 @@ function v5f(e) {
           O = Math.max(0, s - (A + 5));
         m.push(
           aa.jsx(
-            GlobalSearchDialog,
+            ome,
             {
               contentWidth: s,
               segs: [
@@ -444,7 +444,7 @@ function v5f(e) {
     for (let A = S; A < i; A++)
       m.push(
         aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: s,
             segs: [
@@ -1068,7 +1068,7 @@ function yjo(e, t) {
   }
   return n;
 }
-function buildAgentDetailLines({
+function GlobalSearchDialog({
   agent: e,
   status: t,
   transcript: n,
@@ -1539,7 +1539,7 @@ function O5f(e) {
     let C;
     if (t[22] !== i || t[23] !== v)
       ((C = aa.jsx(
-        GlobalSearchDialog,
+        ome,
         {
           contentWidth: i,
           segs: v,
@@ -1554,7 +1554,7 @@ function O5f(e) {
     for (let x = g; x < h; x++)
       p.push(
         aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: i,
             segs: o[x],
@@ -1565,7 +1565,7 @@ function O5f(e) {
     for (let x = h - g; x < a; x++)
       p.push(
         aa.jsx(
-          GlobalSearchDialog,
+          ome,
           {
             contentWidth: i,
             segs: [
@@ -1794,7 +1794,7 @@ function WorkflowDetailDialog({
     Be = OP.useMemo(
       () =>
         S === "agent" && pe && ge
-          ? buildAgentDetailLines({
+          ? GlobalSearchDialog({
               agent: pe,
               status: ge,
               transcript: Ie,

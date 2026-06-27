@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zf
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified  jaccard=0.2224  score=0.3996  fileCov=0.3341
-// note: deminified; 149 identifiers renamed (exports/displayName/curated)
+// note: deminified; 150 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeRemoteAgentMetadata, writeAgentMetadata, worktreeStateSignal, updateCCRTipFromAckedBatch, transcriptCursorEnd, trackSessionWrite, touchSessionTranscript, subscribeSessionTitleChanged, subscribeSessionAgentNameChanged, snapshotSessionMetadata, setSessionFileForTesting, setRemoteIngressUrlForTesting, setInternalEventWriter, setInternalEventReader, sessionIdExists, searchSessionsByCustomTitle, saveWorktreeState, savePermissionMode, saveMode, saveIsolationLatch, saveCustomTitle …
 // [unwrapped __esm module Zf] deps: fn, PLl, WLl, VLl, uDl, dDl, LDl, UDl, rPl, cPl, HPl, UOo, VPl, YPl, nMl, s1l, f1l, v1l, sNl, lBl, xBl, LBl, VBl, rUl, sUl, aUl, gUl, AUl, TUl, wUl, vFl, kFl, RFl, u4l, _Gl, SGl, $Gl, KGl, oWl, VVl, JVl, n9l, X2o, k9l, L9l, P9l, W9l, e8l, s8l, s6l, E6l, T6l, w6l, I6l, sYe, N6l, z6l, ozl, lH, Ire, Dzl, Ozl, Vzl, Zzl, oKl, DKl, jKl, WKl, KKl, H7l, k7l, N7l, F7l, W7l, J7l, Z7l, tXl, rXl, oXl, iXl, lXl, uXl, vXl, DXl, $Xl, BXl, VXl, KXl, vn, At, LMe, je, II, dn, rq, a8t, X4, AA, glt, vYt, Qi, ft, oo, Ls, JXl, rir, EJl, xJl, KJl, iQl, o3o, qyt, hQl, TQl, wQl, UQl, VQl, KQl, XQl, QQl, eZl, vf, dr
@@ -374,11 +374,11 @@ function getTranscriptPathForSession(e) {
   let t = Jh(yr());
   return vh.join(t, `${e}.jsonl`);
 }
-function msc(e) {
+function getAgentMetadataPath(e) {
   return uk(e).replace(/\.jsonl$/, ".meta.json");
 }
 async function writeAgentMetadata(e, t) {
-  let n = msc(e);
+  let n = getAgentMetadataPath(e);
   (await Hl.mkdir(vh.dirname(n), {
     recursive: !0,
   }),
@@ -443,7 +443,7 @@ async function writeAgentMetadata(e, t) {
   ]);
 }
 async function readAgentMetadata(e) {
-  let t = msc(e);
+  let t = getAgentMetadataPath(e);
   try {
     let n = await Hl.readFile(t, "utf-8");
     return Ft(n);

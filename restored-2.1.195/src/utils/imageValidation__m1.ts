@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UX
 // matched 2.1.88 source: src/utils/imageValidation.ts
 // class=modified (alt of src/utils/imageValidation.ts)  jaccard=0.2325  score=0.5653  fileCov=0.2831
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UX] deps: ft, wr, Rd, k0, Oot, Ao, c5e, Ls, Fh
 Jct = `Send feedback with /feedback or learn more: ${u5e}`;
@@ -19,7 +19,7 @@ function Yap(e) {
   if (!("type" in e) || e.type !== "tool_result") return false;
   return "content" in e && Array.isArray(e.content);
 }
-function Aaa(e, t, n, r) {
+function validateImagesForAPI(e, t, n, r) {
   let o = e.source.data.length;
   if (o > n)
     (G("tengu_image_api_validation_failed", {
@@ -42,11 +42,11 @@ function Cjt(e, t) {
     if (!("content" in s) || !Array.isArray(s.content)) continue;
     for (let i of s.content) {
       if (isBase64ImageBlock(i)) {
-        Aaa(i, ++r, t, n);
+        validateImagesForAPI(i, ++r, t, n);
         continue;
       }
       if (Yap(i)) {
-        for (let a of i.content) if (isBase64ImageBlock(a)) Aaa(a, ++r, t, n);
+        for (let a of i.content) if (isBase64ImageBlock(a)) validateImagesForAPI(a, ++r, t, n);
       }
     }
   }

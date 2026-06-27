@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rpo
 // matched 2.1.88 source: src/utils/telemetry/perfettoTracing.ts
 // class=modified  jaccard=0.3618  score=0.9278  fileCov=0.3723
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rpo]
 (($xa = R(qi(), 1)), (Oxa = require("async_hooks")));
@@ -97,7 +97,7 @@ function _qe(e) {
   if (!s6) return;
   (yFn.delete(e), ipo.delete(e));
 }
-function Gxa(e) {
+function startLLMRequestPerfettoSpan(e) {
   if (!s6) return "";
   let t = _Fn(),
     n = P3t();

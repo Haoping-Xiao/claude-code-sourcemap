@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wmc
 // matched 2.1.88 source: src/services/preventSleep.ts
 // class=modified  jaccard=0.145  score=0.4001  fileCov=0.1852
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wmc] deps: Ye, Un, er, fn, es, mE, vi
 ((Hmc = R(lt(), 1)), (STt = R(se(), 1)));
@@ -24,13 +24,13 @@ function $cm() {
   if (((r7e = 0), zse !== null)) (clearTimeout(zse), (zse = null));
   (Lmc(), H8o());
 }
-function Rmc() {
+function spawnCaffeinate() {
   let e = String(Dcm);
   if (Vt() === "macos") return ["caffeinate", ["-i", "-t", e]];
   return null;
 }
 function Ocm() {
-  if (Rmc() === null) return;
+  if (spawnCaffeinate() === null) return;
   if (ETt !== null) return;
   ((ETt = setInterval(() => {
     if (r7e > 0 || zse !== null)
@@ -42,7 +42,7 @@ function Lmc() {
   if (ETt !== null) (clearInterval(ETt), (ETt = null));
 }
 function Dmc() {
-  let e = Rmc();
+  let e = spawnCaffeinate();
   if (e === null) return;
   if (iV !== null) return;
   if (!Cmc)

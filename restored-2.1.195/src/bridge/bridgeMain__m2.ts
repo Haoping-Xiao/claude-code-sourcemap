@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DJi
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
 // class=modified (alt of src/bridge/bridgeMain.ts)  jaccard=0.0032  score=0.0332  fileCov=0.0036
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DJi] deps: RFt, SWe
 ((CJi = R(Uto(), 1)), (IJi = require("child_process")), (Rbe = R(require("path"))));
@@ -69,7 +69,7 @@ function Yto() {
     `srt-win.exe not found. Set SRT_WIN_PATH or build with \`cargo build --release --manifest-path vendor/srt-win-src/Cargo.toml\`. Looked in: ${[e, ...r].filter(Boolean).join(", ")}`,
   );
 }
-function BJi(e) {
+function parseArgs(e) {
   if (e.groupSid) return ["--group-sid", e.groupSid];
   return ["--name", e.groupName ?? e$n];
 }
@@ -99,7 +99,7 @@ function UJi(e) {
   }
 }
 function OQd(e) {
-  return UJi(["group", "status", ...BJi(e)]);
+  return UJi(["group", "status", ...parseArgs(e)]);
 }
 function NQd(e = {}) {
   let t = ["wfp", "status"];
@@ -114,7 +114,7 @@ function NQd(e = {}) {
   };
 }
 function FJi(e) {
-  let n = [Yto(), "exec", ...BJi(e.group)];
+  let n = [Yto(), "exec", ...parseArgs(e.group)];
   if (e.sublayerGuid) n.push("--sublayer-guid", e.sublayerGuid);
   n.push("--");
   let r = process.env.SystemRoot ?? "C:\\Windows",

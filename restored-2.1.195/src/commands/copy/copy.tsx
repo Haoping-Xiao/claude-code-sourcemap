@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cPl
 // matched 2.1.88 source: src/commands/copy/copy.tsx
 // class=modified  jaccard=0.4284  score=0.6095  fileCov=0.5904
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tableTokenToMarkdown, normalizeTablesInMarkdown, fileExtension, collectRecentAssistantTexts, call
 // [unwrapped __esm module cPl] deps: IL
@@ -200,7 +200,7 @@ function CopyPicker(e) {
       if (D === "full" || D === "always")
         return {
           text: n,
-          filename: gPl,
+          filename: RESPONSE_FILENAME,
         };
       let P = r[D];
       return {
@@ -397,7 +397,7 @@ var dPl,
   fPl,
   mPl,
   UQ,
-  gPl = "response.md",
+  RESPONSE_FILENAME = "response.md",
   S0f = 20,
   call = async (e, t, n) => {
     let r = collectRecentAssistantTexts(t.messages);
@@ -426,7 +426,7 @@ var dPl,
         block_count: a.length,
         message_age: o,
       });
-      let c = await copyOrWriteToFile(i, gPl);
+      let c = await copyOrWriteToFile(i, RESPONSE_FILENAME);
       return (e(c), null);
     }
     return UQ.jsx(CopyPicker, {

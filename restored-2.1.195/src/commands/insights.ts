@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module voc
 // matched 2.1.88 source: src/commands/insights.ts
 // class=modified  jaccard=0.4668  score=0.9259  fileCov=0.485
-// note: deminified; 23 identifiers renamed (exports/displayName/curated)
+// note: deminified; 25 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: normalizeSessionMeta, generateUsageReport, extractToolStats, detectMultiClauding, default, deduplicateSessionBranches, buildInsightsResponsePrompt, buildExportData, aggregateData
 // [unwrapped __esm module voc] deps: Ld
@@ -29,14 +29,14 @@ function Coc() {
 function RQf() {
   return O_();
 }
-function GQt() {
+function getDataDir() {
   return Rz.join(tr(), "usage-data");
 }
-function Jar() {
-  return Rz.join(GQt(), "facets");
+function getFacetsDir() {
+  return Rz.join(getDataDir(), "facets");
 }
 function getSessionMetaDir() {
-  return Rz.join(GQt(), "session-meta");
+  return Rz.join(getDataDir(), "session-meta");
 }
 function MQf(e) {
   let t = Rz.extname(e).toLowerCase();
@@ -340,7 +340,7 @@ async function formatTranscriptWithSummarization(e) {
   );
 }
 async function jQf(e) {
-  let t = Rz.join(Jar(), `${e}.json`);
+  let t = Rz.join(getFacetsDir(), `${e}.json`);
   try {
     let n = await l2.readFile(t, {
         encoding: "utf-8",
@@ -359,11 +359,11 @@ async function jQf(e) {
 }
 async function GQf(e) {
   try {
-    await l2.mkdir(Jar(), {
+    await l2.mkdir(getFacetsDir(), {
       recursive: true,
     });
   } catch {}
-  let t = Rz.join(Jar(), `${e.session_id}.json`);
+  let t = Rz.join(getFacetsDir(), `${e.session_id}.json`);
   await l2.writeFile(t, De(e, null, 2), {
     encoding: "utf-8",
     mode: 384,
@@ -1875,15 +1875,15 @@ async function generateUsageReport(e) {
   let x = await generateParallelInsights(C, g),
     I = generateHtmlReport(C, x);
   try {
-    await l2.mkdir(GQt(), {
+    await l2.mkdir(getDataDir(), {
       recursive: true,
     });
   } catch {}
   let k = new Date(),
     D = (M) => String(M).padStart(2, "0"),
     P = `${k.getFullYear()}-${D(k.getMonth() + 1)}-${D(k.getDate())}-${D(k.getHours())}${D(k.getMinutes())}${D(k.getSeconds())}`,
-    O = Rz.join(GQt(), `report-${P}.html`),
-    L = Rz.join(GQt(), "report.html");
+    O = Rz.join(getDataDir(), `report-${P}.html`),
+    L = Rz.join(getDataDir(), "report.html");
   return (
     await l2.writeFile(O, I, {
       encoding: "utf-8",

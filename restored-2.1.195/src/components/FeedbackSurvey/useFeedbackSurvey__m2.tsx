@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/FeedbackSurvey/useFeedbackSurvey.tsx)  jaccard=0.1646  score=0.7633  fileCov=0.1734
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function kUc() {
+function useFeedbackSurvey() {
   if (!at("tengu_vscode_feedback_survey", false)) return;
   if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return;
   if (Fte()) return;
@@ -17,9 +17,9 @@ function kUc() {
   };
 }
 function RUc(e) {
-  if (useFeedbackSurvey(e)) SLm(e);
+  if (dXo(e)) SLm(e);
 }
-function useFeedbackSurvey(e) {
+function dXo(e) {
   if (!Us("allow_product_feedback")) return false;
   if (Fte() || Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return false;
   return (

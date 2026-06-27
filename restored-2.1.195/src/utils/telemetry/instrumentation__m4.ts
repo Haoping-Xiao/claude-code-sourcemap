@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module XWc
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.0082  score=0.0494  fileCov=0.0097
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function JWc(e, t, n, r) {
+function getOtlpReaders(e, t, n, r) {
   let o = t?.payload.settings ?? {},
     s = e.telemetry.forward_to.length > 0 && e.listen.public_url;
   return {

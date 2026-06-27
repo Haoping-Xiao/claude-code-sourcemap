@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module SPc
 // matched 2.1.88 source: src/commands/sandbox-toggle/sandbox-toggle.tsx
 // class=modified (alt of src/commands/sandbox-toggle/sandbox-toggle.tsx)  jaccard=0.0297  score=0.1375  fileCov=0.0365
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SPc]
 ((gvt = R(rt(), 1)), (YCm = R(se(), 1)));
 KCm = gvt.createContext(null);
-async function HPc(e) {
+async function call(e) {
   if (APc.has(e)) return;
   APc.add(e);
   try {

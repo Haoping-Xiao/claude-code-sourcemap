@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module M8t
 // matched 2.1.88 source: src/utils/memoryFileDetection.ts
 // class=modified  jaccard=0.2591  score=0.786  fileCov=0.2787
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function nEf(e) {
   return e.split(q$e.win32.sep).join(q$e.posix.sep);
@@ -29,7 +29,7 @@ function Sze(e) {
   if (lu()) return C7(e);
   return false;
 }
-function mvl(e) {
+function memoryScopeForPath(e) {
   if (P7(e)) return "team";
   if (Sze(e)) return "personal";
   return null;

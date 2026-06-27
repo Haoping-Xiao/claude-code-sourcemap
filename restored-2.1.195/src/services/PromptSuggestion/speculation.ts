@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module y6e
 // matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
 // class=modified  jaccard=0.5102  score=0.7923  fileCov=0.589
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module y6e] deps: Gst, ft, lze, dHl, ii, u_, lf, nC, Il, je, fn, At, oc, PB, ik, co, Hu, $I, _a, CLo
 rKt = new Map();
@@ -18,7 +18,7 @@ function oKt(e) {
     () => {},
   );
 }
-function eJn(e) {
+function getOverlayPath(e) {
   return HP.join(YU(), "speculation", String(process.pid), e);
 }
 function Nbt(e, t) {
@@ -255,7 +255,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
     c = {
       current: new Set(),
     },
-    u = eJn(s),
+    u = getOverlayPath(s),
     d = CK();
   try {
     await PN.mkdir(u, {
@@ -516,7 +516,7 @@ async function acceptSpeculation(e, t, n) {
       isPipelined: c,
     } = e,
     u = o.current,
-    d = eJn(r),
+    d = getOverlayPath(r),
     p = Date.now();
   if ((i(), n > 0)) await copyOverlayToMain(d, s.current, CK());
   oKt(d);
@@ -593,7 +593,7 @@ function abortSpeculation(e, t = "user_typed") {
         is_pipelined: c,
       }),
       o(),
-      oKt(eJn(r)),
+      oKt(getOverlayPath(r)),
       {
         ...n,
         speculation: FDe,
@@ -685,7 +685,7 @@ async function handleSpeculationAccept(e, t, n, r, o) {
         },
       ),
       Le("prompt_suggestion_speculate", "accept_failed"),
-      oKt(eJn(e.id)),
+      oKt(getOverlayPath(e.id)),
       ILo(n),
       {
         queryRequired: !0,

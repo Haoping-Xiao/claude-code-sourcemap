@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gst
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0069  score=0.1562  fileCov=0.0072
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Gst]
 EU = LOd;
@@ -13,7 +13,7 @@ var wrapCommandText = "A message arrived from ",
   ENt = " After completing your current task, decide whether/how to respond.";
 var zw = "(no content)",
   NO_RESPONSE_REQUESTED = "No response requested.",
-  _I = "<synthetic>",
+  SYNTHETIC_MODEL = "<synthetic>",
   d1i = "Auto Mode Active";
 function uKr() {
   let { env: e } = cKr.default,

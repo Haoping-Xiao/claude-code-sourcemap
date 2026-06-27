@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q8
 // matched 2.1.88 source: src/utils/pdf.ts
 // class=modified  jaccard=0.4127  score=0.5579  fileCov=0.6133
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function pCf(e) {
   let { firstPage: t, lastPage: n } = e ?? {};
@@ -62,7 +62,7 @@ async function readPDF(e) {
     };
   }
 }
-async function TZn(e) {
+async function getPDFPageCount(e) {
   let { code: t, stdout: n } = await $n("pdfinfo", [e], {
     timeout: 10000 /* 1e4 */,
     useCwd: false,
@@ -77,7 +77,7 @@ function fCf(e) {
   let t = e === "win32" ? 0 : ($Mo.constants.O_NONBLOCK ?? 0);
   return $Mo.constants.O_RDONLY | t;
 }
-async function mCf() {
+async function isPdftoppmAvailable() {
   if (HZn !== void 0) return HZn;
   let { code: e, stderr: t } = await $n("pdftoppm", ["-v"], {
     timeout: 5000,
@@ -114,7 +114,7 @@ async function extractPDFPages(e, t) {
           message: `PDF file exceeds maximum allowed size for text extraction (${Ra(FQr)}).`,
         },
       };
-    if (!(await mCf()))
+    if (!(await isPdftoppmAvailable()))
       return {
         success: false,
         error: {

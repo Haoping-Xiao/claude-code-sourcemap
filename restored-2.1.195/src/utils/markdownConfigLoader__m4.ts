@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module N8l
 // matched 2.1.88 source: src/utils/markdownConfigLoader.ts
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0263  score=0.1764  fileCov=0.03
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N8l] deps: je, Rd, co, _a, Jt, i$, D6e, Gko
 $8l = require("path");
-function S5f(e, t) {
+function CLAUDE_CONFIG_DIRECTORIES(e, t) {
   if (e === "user") return gJt.join(tr(), "workflows");
   let n = Tu(t);
   if (n === null) return gJt.join(t, ".claude", "workflows");
@@ -16,7 +16,7 @@ function S5f(e, t) {
 }
 async function B8l(e) {
   let t = N_e(e.name),
-    n = S5f(e.scope, e.cwd),
+    n = CLAUDE_CONFIG_DIRECTORIES(e.scope, e.cwd),
     r = gJt.join(n, `${t}.js`);
   await dsr.mkdir(n, {
     recursive: true,

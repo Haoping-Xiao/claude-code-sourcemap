@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module p0c
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0076  score=0.3937  fileCov=0.0077
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p0c] deps: ft, GF, LQt, xar, ag, Un, kt, fd, je, RE, At, vn, bJt, Y9, _a, aR, qar, IWo, l0c
 ((c0c = require("crypto")), (rvt = require("fs/promises")), (u0c = require("path")));
@@ -28,15 +28,15 @@ function m0c() {
   let e = M2() ?? aj(yr());
   return ovt.join(e, Rt(), "mcp-tasks");
 }
-function g0c(e) {
+function getAgentMetadataPath(e) {
   return ovt.join(m0c(), `mcp-task-${e}.meta.json`);
 }
 async function h0c(e, t) {
-  let n = g0c(e);
+  let n = getAgentMetadataPath(e);
   (await qs().mkdir(ovt.dirname(n)), await qs().write(n, De(t)));
 }
 async function y0c(e) {
-  let t = g0c(e);
+  let t = getAgentMetadataPath(e);
   try {
     await qs().delete(t);
   } catch (n) {

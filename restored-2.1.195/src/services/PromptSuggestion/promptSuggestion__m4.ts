@@ -7,7 +7,7 @@
 // module exports: call
 // [unwrapped __esm module Enc] deps: dn, _nc, Lze
 Snc = R(se(), 1);
-var call = async (e, t) => {
+var shouldFilterSuggestion = async (e, t) => {
   let n = e.trim();
   if (n === "") {
     let o = t.options.activeGoal;

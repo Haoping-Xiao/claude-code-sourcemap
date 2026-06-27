@@ -2,10 +2,10 @@
 // restored from claude-code 2.1.195 (deminified) — module Dfc
 // matched 2.1.88 source: src/utils/imageStore.ts
 // class=modified  jaccard=0.4355  score=0.9204  fileCov=0.4525
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Mfc() {
-  return XZt.join(tr(), Pfc, Rt());
+  return XZt.join(tr(), IMAGE_STORE_DIR, Rt());
 }
 async function mcm() {
   let e = Mfc();
@@ -90,7 +90,7 @@ function Ufc(e, t, n) {
 }
 async function cleanupOldImageCaches() {
   let e = qt(),
-    t = XZt.join(tr(), Pfc),
+    t = XZt.join(tr(), IMAGE_STORE_DIR),
     n = Rt();
   try {
     let r;
@@ -117,5 +117,5 @@ async function cleanupOldImageCaches() {
 }
 var fur,
   XZt,
-  Pfc = "image-cache",
+  IMAGE_STORE_DIR = "image-cache",
   fcm = 200;

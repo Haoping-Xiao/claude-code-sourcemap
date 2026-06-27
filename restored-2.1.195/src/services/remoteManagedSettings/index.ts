@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mNa
 // matched 2.1.88 source: src/services/remoteManagedSettings/index.ts
 // class=modified  jaccard=0.2877  score=0.4751  fileCov=0.4216
-// note: deminified; 9 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mNa] deps: Xr
 fNa = ve(() =>
@@ -443,7 +443,7 @@ async function ryo(e) {
     message: mMp,
   };
 }
-async function gMp() {
+async function pollRemoteSettings() {
   if (!HJ()) return;
   let e = xhe(),
     t = e ? De(e) : null;
@@ -459,7 +459,7 @@ async function gMp() {
 function ENa() {
   if (UWt !== null) return;
   if (!HJ()) return;
-  ((UWt = Dkn(() => void gMp(), lMp, {
+  ((UWt = Dkn(() => void pollRemoteSettings(), lMp, {
     unref: !0,
   })),
     Ci(UWt));

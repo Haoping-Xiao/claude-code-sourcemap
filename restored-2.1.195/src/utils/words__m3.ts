@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module oRc
 // matched 2.1.88 source: src/utils/words.ts
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0018  score=0.0313  fileCov=0.002
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oRc] deps: aW, Un, kt, jc, wr, co, aS, xtn
 ((nRc = R(lt(), 1)), (UNe = R(rt(), 1)));
-function iwm(e) {
+function ADJECTIVES(e) {
   return e === "instruction_following" ? "instruction_following" : "generic";
 }
 function awm(e) {
@@ -96,7 +96,7 @@ function iRc(e, t, n, r, o, s) {
   if (i[6] !== d)
     ((M = () => {
       if (!d) return;
-      (m(awm(at(nwm, ""))), h(iwm(at(rwm, ""))));
+      (m(awm(at(nwm, ""))), h(ADJECTIVES(at(rwm, ""))));
     }),
       (N = [d]),
       (i[6] = d),

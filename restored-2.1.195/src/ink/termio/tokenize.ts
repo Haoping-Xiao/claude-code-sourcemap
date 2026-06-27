@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module URn
 // matched 2.1.88 source: src/ink/termio/tokenize.ts
 // class=modified  jaccard=0.4335  score=0.8369  fileCov=0.4735
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Qke(e) {
+function createTokenizer(e) {
   let t = "ground",
     n = "",
     r = e?.x10Mouse ?? false,

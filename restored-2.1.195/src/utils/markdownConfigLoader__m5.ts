@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u_
 // matched 2.1.88 source: src/utils/markdownConfigLoader.ts
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0178  score=0.101  fileCov=0.0211
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module u_]
 O_e = class O_e extends Error {
@@ -19,14 +19,14 @@ function N_e(e) {
       .replace(/^-+|-+$/g, "") || "workflow"
   );
 }
-function b0n() {
+function CLAUDE_CONFIG_DIRECTORIES() {
   return uit.join(aj($t()), Rt(), "workflows", "scripts") + uit.sep;
 }
 function ENd(e, t) {
-  return `${b0n()}${N_e(e)}-${t}.js`;
+  return `${CLAUDE_CONFIG_DIRECTORIES()}${N_e(e)}-${t}.js`;
 }
 function VNi(e, t, n) {
-  let r = b0n(),
+  let r = CLAUDE_CONFIG_DIRECTORIES(),
     o = ENd(e, t);
   return (
     (async () => {

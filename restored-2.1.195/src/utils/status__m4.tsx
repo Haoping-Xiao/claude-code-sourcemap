@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lOl
 // matched 2.1.88 source: src/utils/status.tsx
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0102  score=0.0381  fileCov=0.0138
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lOl] deps: G1o, Ye, uo, Ao, sr
 ((_Df = R(lt(), 1)), (aOl = R(se(), 1)));
@@ -48,7 +48,7 @@ function SDf(e) {
   if (t[2] !== n || t[3] !== r)
     ((a = pu.jsx(SKe.Suspense, {
       fallback: i,
-      children: pu.jsx(HDf, {
+      children: pu.jsx(buildMcpProperties, {
         maxWidth: n,
         scanPromise: r,
       }),
@@ -80,7 +80,7 @@ function Btr(e) {
     e.agents.length > 0 || e.skills.length > 0 || e.plugins.length > 0 || e.mcpServers.length > 0
   );
 }
-function HDf(e) {
+function buildMcpProperties(e) {
   let t = UOe.c(35),
     { maxWidth: n, scanPromise: r } = e,
     o = SKe.use(r),

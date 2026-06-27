@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oWe
 // matched 2.1.88 source: src/utils/plugins/fetchTelemetry.ts
 // class=modified  jaccard=0.3026  score=0.8175  fileCov=0.3245
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oWe]
 Alt = {
@@ -22,14 +22,14 @@ function KKd(e) {
   let r = t.toLowerCase();
   return zKd.has(r) ? r : "other";
 }
-function YKd(e) {
+function isOfficialRepo(e) {
   return e.includes(`anthropics/${xI}`);
 }
 function logPluginFetch(e, t, n, r, o) {
   G("tengu_plugin_remote_fetch", {
     source: $e(e),
     host: t ? KKd(t) : "unknown",
-    is_official: e === "plugin_catalog" || (t ? YKd(t) : false),
+    is_official: e === "plugin_catalog" || (t ? isOfficialRepo(t) : false),
     outcome: $e(n),
     duration_ms: Math.round(r),
     ...(o && {

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module uzn
 // matched 2.1.88 source: src/ink/selection.ts
 // class=modified (alt of src/ink/selection.ts)  jaccard=0.0353  score=0.5927  fileCov=0.0362
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function rCo(e) {
+function findPlainTextUrlAt(e) {
   while (e.length > 0) {
     let t = e.at(-1);
     if (".,;:!?".includes(t)) {
@@ -31,7 +31,7 @@ function Q8e(e) {
     s = [];
     let a = 0;
     for (let c of n.matchAll(srf)) {
-      let u = rCo(c[0]);
+      let u = findPlainTextUrlAt(c[0]);
       if (c.index > a) s.push(n.slice(a, c.index));
       (s.push(
         nCo.jsx(

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ofc
 // matched 2.1.88 source: src/tools/PowerShellTool/powershellSecurity.ts
 // class=modified (alt of src/tools/PowerShellTool/powershellSecurity.ts)  jaccard=0.0057  score=0.012  fileCov=0.0107
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ofc] deps: dn, je, u9, Mh, Jt, sr, qpc
 Elm = {
@@ -24,7 +24,7 @@ function lfc(e, t) {
   let r = `-Djavax.net.ssl.trustStore=${e} -Djavax.net.ssl.trustStorePassword=${VZt} -Djavax.net.ssl.trustStoreType=PKCS12`;
   return n ? `${r} ${n}` : r;
 }
-async function cfc(e) {
+async function checkDownloadUtilities(e) {
   let t = [],
     n = {
       failureCodes: t,

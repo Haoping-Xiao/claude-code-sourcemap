@@ -11,7 +11,7 @@ ine = qBd();
 function XBd() {
   J0n = void 0;
 }
-function watchSystemTheme(e, t, n) {
+function run(e, t, n) {
   let r = false,
     o = false,
     s = n?.muxTimeoutMs ?? YBd,

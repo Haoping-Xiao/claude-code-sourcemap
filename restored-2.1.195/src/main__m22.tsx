@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module QGo
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0024  score=0.0619  fileCov=0.0024
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QGo] deps: lH, kt, er, wr, VQ, zOe, YOe, kYe
 Src = require("readline");
-function Erc(e) {
+function main(e) {
   let t = "--cloud",
     n =
       "\nTo reattach to a cloud session, pass its id: `claude --cloud <session-id>` (find IDs at claude.ai/code).";

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Ykl
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.1201  score=0.306  fileCov=0.1651
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ykl] deps: co, E5, vMe, ql, Ye, oc, es, KI, bH
 X_ = R(se(), 1);
-function yCf(e) {
+function isBlockedDevicePath(e) {
   if (hCf.has(e)) return true;
   if (e.startsWith("/proc/") && (e.endsWith("/fd/0") || e.endsWith("/fd/1") || e.endsWith("/fd/2")))
     return true;

@@ -18,7 +18,7 @@ function axl() {
   if (FPo === void 0) delete process.env.BROWSER;
   else process.env.BROWSER = FPo;
 }
-async function startRendezvousServer() {
+async function call() {
   let e = Oe.CLAUDE_BG_RENDEZVOUS_SOCK;
   if (!e || uHe) return;
   ((FPo = Oe.BROWSER),

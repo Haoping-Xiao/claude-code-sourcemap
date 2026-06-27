@@ -12,7 +12,7 @@ async function cym() {
   for (let n of e) t.set(n.name, n.type === "prompt" ? (n.contentHash ?? "") : "");
   return t;
 }
-function initialize(e) {
+function handleChange(e) {
   let t = e?.stabilityThreshold ?? nym,
     n = e?.pollInterval ?? rym,
     r = e?.reloadDebounce ?? oym,

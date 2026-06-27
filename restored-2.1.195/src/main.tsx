@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F5c
 // matched 2.1.88 source: src/main.tsx
 // class=modified  jaccard=0.2757  score=0.4843  fileCov=0.3903
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startDeferredPrefetches, main
 // [unwrapped __esm module F5c] deps: SGo, Lne, eqe, fn, xW, jS, Jt, HO, JN
@@ -19,7 +19,7 @@ function logManagedSettings() {
     }
   } catch {}
 }
-function I1m() {
+function isBeingDebugged() {
   let e = gG(),
     t = process.execArgv.some((r) => {
       if (e) return /--inspect(-brk)?/.test(r);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kRc
 // matched 2.1.88 source: src/services/tips/tipRegistry.ts
 // class=modified (alt of src/services/tips/tipRegistry.ts)  jaccard=0.0295  score=0.2519  fileCov=0.0324
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kRc] deps: Un
 vwm = {
@@ -90,7 +90,7 @@ function EYo(e) {
 function AYo(e) {
   return Iwm.some((t) => t !== e && Spe(t) < xwm);
 }
-function Rwm() {
+function getCustomTips() {
   let t = Dr().spinnerTipsOverride;
   if (!t?.tips?.length) return [];
   return t.tips.map((n, r) => ({
@@ -102,7 +102,7 @@ function Rwm() {
 }
 async function yfr(e) {
   let t = Dr(),
-    n = Rwm();
+    n = getCustomTips();
   if (zPe(t.spinnerTipsOverride)) return n;
   let r = [...MRc, ...kwm, ...(await HYo())],
     s = fr() !== "firstParty" || !_u() ? r.filter((l) => l.providerAgnostic) : r,

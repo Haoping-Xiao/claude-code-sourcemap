@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wFe
 // matched 2.1.88 source: src/constants/xml.ts
 // class=modified  jaccard=0.621  score=0.7426  fileCov=0.7913
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wFe] deps: Qi, wr
 VSs = new Map();
@@ -49,10 +49,10 @@ var COMMAND_NAME_TAG = "command-name",
   KSs,
   Cae = "tick",
   TASK_NOTIFICATION_TAG = "task-notification",
-  Dp = "task-id",
-  YC = "tool-use-id",
-  Qwe = "task-type",
-  pM = "output-file",
+  TASK_ID_TAG = "task-id",
+  TOOL_USE_ID_TAG = "tool-use-id",
+  TASK_TYPE_TAG = "task-type",
+  OUTPUT_FILE_TAG = "output-file",
   up = "status",
   Zu = "summary",
   Mkr = "worktree",

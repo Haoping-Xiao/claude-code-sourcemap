@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fd
 // matched 2.1.88 source: src/utils/debugFilter.ts
 // class=modified  jaccard=0.2493  score=0.4286  fileCov=0.3735
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fd]
 krs = class krs {
@@ -29,7 +29,7 @@ krs = class krs {
   }
 };
 Rrs = new krs();
-function kzc(e) {
+function extractDebugCategories(e) {
   let t = [],
     n = e.match(/^MCP server ["']([^"']+)["']/);
   if (n && n[1]) (t.push("mcp"), t.push(n[1].toLowerCase()));
@@ -55,7 +55,7 @@ function Rzc(e, t) {
 }
 function Drs(e, t) {
   if (!t) return true;
-  let n = kzc(e);
+  let n = extractDebugCategories(e);
   return Rzc(n, t);
 }
 var Lrs;

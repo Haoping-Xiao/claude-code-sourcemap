@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sA
 // matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
 // class=modified  jaccard=0.5673  score=0.8278  fileCov=0.6432
-// note: deminified; 8 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function _jn() {
   return "user_intent";
@@ -81,7 +81,7 @@ async function tryGenerateSuggestion(e, t, n, r, o) {
   let i = MI(t);
   if (i?.isApiErrorMessage)
     return (logSuggestionSuppressed("last_response_error", void 0, void 0, o), null);
-  let a = PRp(i);
+  let a = getParentCacheSuppressReason(i);
   if (a) return (logSuggestionSuppressed(a, void 0, void 0, o), null);
   let l = n(),
     c = getSuggestionSuppressReason(l);
@@ -149,7 +149,7 @@ async function LRp(e, t) {
     suggestedReply: e,
   });
 }
-function PRp(e) {
+function getParentCacheSuppressReason(e) {
   if (!e) return null;
   let t = e.message.usage,
     n = t.input_tokens ?? 0,

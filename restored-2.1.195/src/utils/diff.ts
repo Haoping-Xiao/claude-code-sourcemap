@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RF
 // matched 2.1.88 source: src/utils/diff.ts
 // class=modified  jaccard=0.4422  score=0.7556  fileCov=0.5161
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function q8n(e, t) {
   if (t === 0) return e;
@@ -59,7 +59,12 @@ function yMe({
     lines: l.lines.map(Eel),
   }));
 }
-function j6({ filePath: e, fileContents: t, edits: n, ignoreWhitespace: r = false }) {
+function getPatchForDisplay({
+  filePath: e,
+  fileContents: t,
+  edits: n,
+  ignoreWhitespace: r = false,
+}) {
   let o = M9t(dY(t)),
     s = but(
       e,

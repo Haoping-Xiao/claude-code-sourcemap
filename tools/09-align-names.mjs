@@ -20,6 +20,11 @@ const OUT = process.env.AUTO_RENAMES || `work/${VERSION}/auto-renames.json`;
 const MINLEN = 6;
 
 const report = JSON.parse(readFileSync(REPORT, "utf-8")).report;
+// 全局 df (来自参照索引): 用于判断共享字符串是否全局唯一 (df==1 => 强证据)
+let DF = {};
+const REF_INDEX = process.env.REF_INDEX || `work/${VERSION}/ref-2.1.88.index.json`;
+if (existsSync(REF_INDEX)) { try { DF = JSON.parse(readFileSync(REF_INDEX, "utf-8")).df || {}; } catch {} }
+const isGlobalUnique = (s) => DF["str:" + s] === 1;
 
 function collectStrings(node, set) {
   if (!node || typeof node !== "object") return;
@@ -104,19 +109,19 @@ for (const [modVar, m] of Object.entries(report)) {
 
   // 计算共享字符串得分
   function shared(a, b) {
-    let c = 0, longHit = false;
-    for (const s of a.strings) if (b.strings.has(s)) { c++; if (s.length >= 12) longHit = true; }
-    return { c, longHit };
+    let c = 0, longHit = false, uniqHit = false;
+    for (const s of a.strings) if (b.strings.has(s)) { c++; if (s.length >= 12) longHit = true; if (isGlobalUnique(s)) uniqHit = true; }
+    return { c, longHit, uniqHit };
   }
   // 每个 mod decl 的最佳 orig; 每个 orig decl 的最佳 mod (互为最佳判定)
   const bestForMod = new Map();
   for (const md of modDecls) {
     let best = null;
     for (const od of origDecls) {
-      const { c, longHit } = shared(md, od);
+      const { c, longHit, uniqHit } = shared(md, od);
       if (c === 0) continue;
-      const score = c + (longHit ? 0.5 : 0);
-      if (!best || score > best.score) best = { od, c, longHit, score };
+      const score = c + (longHit ? 0.5 : 0) + (uniqHit ? 1 : 0);
+      if (!best || score > best.score) best = { od, c, longHit, uniqHit, score };
     }
     if (best) bestForMod.set(md, best);
   }
@@ -124,9 +129,9 @@ for (const [modVar, m] of Object.entries(report)) {
   for (const od of origDecls) {
     let best = null;
     for (const md of modDecls) {
-      const { c, longHit } = shared(md, od);
+      const { c, longHit, uniqHit } = shared(md, od);
       if (c === 0) continue;
-      const score = c + (longHit ? 0.5 : 0);
+      const score = c + (longHit ? 0.5 : 0) + (uniqHit ? 1 : 0);
       if (!best || score > best.score) best = { md, score };
     }
     if (best) bestForOrig.set(od, best);
@@ -138,7 +143,7 @@ for (const [modVar, m] of Object.entries(report)) {
     const od = best.od;
     // 互为最佳 + (>=2 共享 或 (>=1 且 有长串))
     const mutual = bestForOrig.get(od)?.md === md;
-    const strong = best.c >= 2 || (best.c >= 1 && best.longHit);
+    const strong = best.c >= 2 || (best.c >= 1 && (best.longHit || best.uniqHit));
     if (!mutual || !strong) continue;
     if (md.name === od.name || !isValidName(od.name)) continue;
     if (usedTargets.has(od.name)) continue;

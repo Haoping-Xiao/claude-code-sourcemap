@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K$e
 // matched 2.1.88 source: src/utils/attribution.ts
 // class=modified  jaccard=0.3393  score=0.677  fileCov=0.4049
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function sCl() {
   if (Oe.CLAUDE_CODE_SUPPRESS_SESSION_ATTRIBUTION) return null;
@@ -112,7 +112,7 @@ function countUserPromptsInMessages(e) {
   }
   return t;
 }
-function rHf(e) {
+function countUserPromptsFromEntries(e) {
   let t = e.filter(
     (n) =>
       n.type === "user" &&
@@ -158,7 +158,7 @@ async function getTranscriptStats() {
       ),
       i = s >= 0 ? o.slice(s + 1) : o;
     return {
-      promptCount: rHf(i),
+      promptCount: countUserPromptsFromEntries(i),
       memoryAccessCount: countMemoryFileAccessFromEntries(i),
     };
   } catch {

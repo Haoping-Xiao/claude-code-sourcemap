@@ -133,7 +133,7 @@ function zT(e) {
 `,
   );
 }
-function getDebugFilePath(e, t) {
+function isDebugMode(e, t) {
   let n = [];
   for (let r = 0; r < e.length; r++) {
     let o = e[r];
@@ -184,7 +184,7 @@ async function daemonMain(e) {
   if (wNm.has(a) && !lce()) return bke(`daemon ${a}`);
   switch ((_kn(), a)) {
     case "list": {
-      getDebugFilePath(i, ["--json"]);
+      isDebugMode(i, ["--json"]);
       let { handleListAllKinds: l } = await Promise.resolve().then(() => (ZZo(), QZo));
       await l(i.includes("--json"), n);
       return;
@@ -196,7 +196,7 @@ async function daemonMain(e) {
       return;
     }
     case "hub": {
-      if ((getDebugFilePath(i, []), !process.stdin.isTTY || !process.stdout.isTTY)) {
+      if ((isDebugMode(i, []), !process.stdin.isTTY || !process.stdout.isTTY)) {
         Qy("Interactive hub requires a TTY. See `claude daemon --help`.");
         return;
       }
@@ -250,7 +250,7 @@ async function daemonMain(e) {
       return hV(g);
     }
     case "install": {
-      if ((getDebugFilePath(i, []), !_ke()))
+      if ((isDebugMode(i, []), !_ke()))
         return (
           zT(
             `\`claude daemon ${a}\` is disabled in this version \u2014 the daemon runs on demand and exits when the last client disconnects.`,
@@ -314,7 +314,7 @@ async function daemonMain(e) {
     }
     case "start":
     case "restart": {
-      if ((getDebugFilePath(i, []), !_ke()))
+      if ((isDebugMode(i, []), !_ke()))
         return (
           zT(
             `\`claude daemon ${a}\` is disabled in this version \u2014 the daemon runs on demand and exits when the last client disconnects.`,
@@ -370,7 +370,7 @@ async function daemonMain(e) {
       return hV(l.ok ? 0 : 1);
     }
     case "uninstall": {
-      getDebugFilePath(i, []);
+      isDebugMode(i, []);
       let l = await AEt();
       if (
         (await yU("tengu_daemon_control", {
@@ -387,7 +387,7 @@ async function daemonMain(e) {
     }
     case "stop": {
       let l = i.includes("--keep-workers");
-      getDebugFilePath(i, ["--keep-workers", "--any"]);
+      isDebugMode(i, ["--keep-workers", "--any"]);
       let c = (h) =>
           l || h === 0 ? "stopped" : `stopped (terminated ${h} ${bn(h, "background session")})`,
         u = async (h, y) => {
@@ -467,7 +467,7 @@ async function daemonMain(e) {
       return u(true, g);
     }
     case "status": {
-      getDebugFilePath(i, []);
+      isDebugMode(i, []);
       let l = await uR();
       if (!l) {
         Qy("not running");
@@ -538,7 +538,7 @@ async function daemonMain(e) {
     }
     case "logs":
     case "log": {
-      (getDebugFilePath(i, []), await tailLog(r));
+      (isDebugMode(i, []), await tailLog(r));
       return;
     }
     default:

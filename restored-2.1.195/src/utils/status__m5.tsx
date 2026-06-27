@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module FJa
 // matched 2.1.88 source: src/utils/status.tsx
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.01  score=0.0602  fileCov=0.0119
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FJa] deps: Ye, ps, sr, Cc, Vl, Bs, f_, Ko, CH, Mg, wb, vH, NJa, H9n
 ((qHo = R(lt(), 1)), (nMe = R(rt(), 1)), (eR = R(se(), 1)));
-function GJa() {
+function buildAPIProviderProperties() {
   let e = jJa.c(17),
     { goBack: t, goNext: n, updateWizardData: r, wizardData: o } = Eu(),
     [s, i] = K9n.useState(o.region ?? "us-east-1"),

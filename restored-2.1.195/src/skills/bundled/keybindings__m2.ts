@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VAt] deps: hY, ty, Lo, fn, At, Iv, ys, sYl
 ((qAt = require("fs/promises")), (Lse = require("path")));
-function inferContextFromAction(e) {
+function generateContextsTable(e) {
   let t = s4o.c(48),
     { agent: n, tools: r, onBack: o } = e,
     s;

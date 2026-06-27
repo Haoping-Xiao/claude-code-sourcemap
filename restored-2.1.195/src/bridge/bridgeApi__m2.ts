@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module e1
 // matched 2.1.88 source: src/bridge/bridgeApi.ts
 // class=modified (alt of src/bridge/bridgeApi.ts)  jaccard=0.0118  score=0.2603  fileCov=0.0122
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function I7s() {
   return null;
@@ -33,7 +33,7 @@ function mUr() {
 function A0() {
   return null;
 }
-function gUr() {
+function isExpiredErrorType() {
   return null;
   switch (e) {
     case "not-started":

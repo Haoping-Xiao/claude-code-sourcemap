@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J1c
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceGcs.ts
 // class=modified (alt of src/utils/plugins/officialMarketplaceGcs.ts)  jaccard=0.0226  score=0.0382  fileCov=0.0525
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module J1c] deps: zb, Mm, Lx, At, Jt, c_
 ((z1c = require("fs/promises")),
@@ -66,7 +66,7 @@ async function fkm(e) {
   }),
     await eg(aNc(), De(e, null, 2)));
 }
-function M7o() {
+function fetchOfficialMarketplaceFromGcs() {
   return rD.join(tnn(), ".staging");
 }
 function vvt(e) {
@@ -171,7 +171,7 @@ function gkm(e) {
 }
 async function Z1c(e) {
   let t = vvt(e.name),
-    n = rD.join(M7o(), rD.relative(tnn(), t)),
+    n = rD.join(fetchOfficialMarketplaceFromGcs(), rD.relative(tnn(), t)),
     r = rD.join(vU(), `claude-skill-${process.pid}-${Math.random().toString(36).slice(2)}.zip`);
   try {
     if (
@@ -184,7 +184,7 @@ async function Z1c(e) {
       recursive: true,
       force: true,
     }),
-      await A2.mkdir(M7o(), {
+      await A2.mkdir(fetchOfficialMarketplaceFromGcs(), {
         recursive: true,
       }),
       await uOe(r, n));
@@ -273,7 +273,7 @@ async function _km() {
           });
         } catch {}
       };
-    await A2.rm(M7o(), {
+    await A2.rm(fetchOfficialMarketplaceFromGcs(), {
       recursive: true,
       force: true,
     }).catch(() => {});

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lmn
 // matched 2.1.88 source: src/utils/settings/types.ts
 // class=modified  jaccard=0.1713  score=0.2628  fileCov=0.3299
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lmn] deps: Xr, Ox, QH, sr, xws
 ((cLr = ve(() => Lws())), (Rws = ve(() => Lws("allow"))));
@@ -969,13 +969,13 @@ function dLr(e) {
       })
   );
 }
-function $et(e) {
+function isMcpServerNameEntry(e) {
   return "serverName" in e && e.serverName !== void 0;
 }
 function isMcpServerCommandEntry(e) {
   return "serverCommand" in e && e.serverCommand !== void 0;
 }
-function pmn(e) {
+function isMcpServerUrlEntry(e) {
   return "serverUrl" in e && e.serverUrl !== void 0;
 }
 var c1u, agg, u1u, cmn, umn, d1u, TCe, Dws, p1u, _M, Pws;

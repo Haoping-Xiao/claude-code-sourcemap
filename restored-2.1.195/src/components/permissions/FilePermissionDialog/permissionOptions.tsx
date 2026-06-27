@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module gHc
 // matched 2.1.88 source: src/components/permissions/FilePermissionDialog/permissionOptions.tsx
 // class=modified  jaccard=0.4504  score=0.6724  fileCov=0.577
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gHc] deps: ft, Fy, X0, Ye, kt, uo
 ((fHc = R(lt(), 1)), (x3 = R(se(), 1)));
-function v_m(e) {
+function isInClaudeFolder(e) {
   let t = ds(e),
     n = ds(`${yr()}/.claude`),
     r = ym(t),
@@ -52,7 +52,7 @@ function getFilePermissionOptions({
       },
     });
   let c = JU(e, t),
-    u = v_m(e),
+    u = isInClaudeFolder(e),
     d = w_m(e);
   if ((u || d) && n !== "read")
     a.push({

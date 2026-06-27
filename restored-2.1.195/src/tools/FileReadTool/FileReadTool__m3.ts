@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LQt
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0116  score=0.1172  fileCov=0.0127
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LQt] deps: iu, jGo, QGo, Gfe, kYe, WL, q$, kLn, FAe, xar, VGe, xHt, ag, pWo, Lar, dn, kt, _F, jc, ty, Rm, er, Lo, je, At, Is, ED, Vke, dr, sj, Yrc, lH, JN
 ((Xrc = require("crypto")),
@@ -36,7 +36,7 @@ class vWo {
       if ((process.kill(this.#e, 0), this.#t !== void 0)) {
         if (!(await bv(this.#e, this.#t))) e = false;
       } else if (this.#n !== void 0) {
-        let t = await Oar(this.#e);
+        let t = await isBlockedDevicePath(this.#e);
         if (t !== null && t !== this.#n) e = false;
       }
     } catch {
@@ -88,7 +88,7 @@ ${n}
     return this.#e;
   }
 }
-async function Oar(e) {
+async function isBlockedDevicePath(e) {
   try {
     let t = await $ar.readFile(`/proc/${e}/stat`, "utf-8"),
       n = t.lastIndexOf(")"),
@@ -108,7 +108,7 @@ async function wWo(e, t, n) {
     )
       return;
   } else if (t !== void 0) {
-    if ((await Oar(e)) !== t) return;
+    if ((await isBlockedDevicePath(e)) !== t) return;
   } else return;
   await L3t(e, "SIGTERM").catch(() => {});
 }

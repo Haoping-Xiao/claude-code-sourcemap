@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DSn
 // matched 2.1.88 source: src/utils/model/bedrock.ts
 // class=modified (alt of src/utils/model/bedrock.ts)  jaccard=0.1231  score=0.5049  fileCov=0.14
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function G2e(e, t, n) {
   if (n) {
@@ -89,7 +89,7 @@ async function h7s() {
   }
   return new e(r);
 }
-function YBr(e) {
+function isFoundationModel(e) {
   return e.startsWith("anthropic.");
 }
 function hld(e) {
@@ -98,15 +98,15 @@ function hld(e) {
   if (t === -1) return e;
   return e.substring(t + 1);
 }
-function PSn(e) {
+function getBedrockRegionPrefix(e) {
   let t = hld(e);
   for (let n of bDt) if (t.startsWith(`${n}.anthropic.`)) return n;
   return;
 }
 function PIe(e, t) {
-  let n = PSn(e);
+  let n = getBedrockRegionPrefix(e);
   if (n) return e.replace(`${n}.`, `${t}.`);
-  if (YBr(e)) return `${t}.${e}`;
+  if (isFoundationModel(e)) return `${t}.${e}`;
   return e;
 }
 function nle(e) {

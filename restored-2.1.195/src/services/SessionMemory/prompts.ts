@@ -7,7 +7,7 @@
 // module exports: registerRunSkillGeneratorSkill
 // [unwrapped __esm module HKo] deps: Yxc, Jxc
 ((rTm = Xxc), (oTm = Qxc));
-function registerRunSkillGeneratorSkill() {
+function loadSessionMemoryTemplate() {
   Nd({
     name: "run-skill-generator",
     menuDescription: "Create a skill that knows how to run this project\u2019s app",

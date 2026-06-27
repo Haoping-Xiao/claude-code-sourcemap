@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module OKt
 // matched 2.1.88 source: src/services/api/errors.ts
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0153  score=0.0665  fileCov=0.0194
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OKt] deps: ft, kt, je, fn, Jin, Jt
 ((SQn = ut(process.env.CLAUDE_CODE_PROFILE_STARTUP)),
   (rIl = Math.random() < ETf),
   (SPo = SQn || rIl));
-function HQn(e) {
+function getErrorMessageIfRefusal(e) {
   return e === "refusal" || e === "sticky";
 }
 function HTf(e) {
@@ -199,7 +199,7 @@ function uIl(e) {
 }
 function dIl(e, t) {
   let n = e.discardedMessages.some((s) => s.message.content.some((i) => i.type === "tool_use")),
-    r = HQn(e.reason),
+    r = getErrorMessageIfRefusal(e.reason),
     o = r && t.isMainThread;
   return {
     telemetry: {

@@ -16,7 +16,7 @@ function bootstrapTelemetry() {
     !process.env.OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE)
   )
     process.env.OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE = "delta";
-  if (mC() && !Cge()) initializeBetaTracing();
+  if (mC() && !Cge()) Y6a();
 }
 function K6a() {
   let e = J_r();
@@ -56,7 +56,7 @@ function K6a() {
     p = r.merge(o).merge(a).merge(d).merge(NJ.resourceFromAttributes(l));
   return (Q_r(p), p);
 }
-function initializeBetaTracing() {
+function Y6a() {
   let e = K6a(),
     t = new Oyo(),
     n = new DVe(t, {
@@ -96,13 +96,13 @@ function initializeBetaTracing() {
     process.on("exit", () => {
       (s.forceFlush().catch(() => {}), r.forceFlush().catch(() => {}));
     }),
-    _zp(t, o).catch((a) =>
+    initializeBetaTracing(t, o).catch((a) =>
       T(`Beta tracing exporter wiring failed: ${a}`, {
         level: "error",
       }),
     ));
 }
-async function _zp(e, t) {
+async function initializeBetaTracing(e, t) {
   let n = process.env.BETA_TRACING_ENDPOINT;
   if (!n) return;
   let [{ OTLPTraceExporter: r }, { OTLPLogExporter: o }] = await Promise.all([
@@ -306,7 +306,7 @@ async function initializeTelemetry() {
   if (isBigQueryMetricsEnabled()) e.push(Ezp());
   let n = K6a();
   if (mC()) {
-    if (!Cge()) initializeBetaTracing();
+    if (!Cge()) Y6a();
     let s = new kPe.MeterProvider({
       resource: n,
       views: [],

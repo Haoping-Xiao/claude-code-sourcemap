@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lNn
 // matched 2.1.88 source: src/utils/sessionEnvironment.ts
 // class=modified  jaccard=0.4595  score=1  fileCov=0.4595
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lNn] deps: u_, lf, nC, EI, lC, TX, Rct, je, _m, Jt, dn, kt, mLe, U1, hut
 Hcp = new Set([Ds, ...W1, qc, wu, GW, Sb, ka, Wc]);
@@ -10,7 +10,7 @@ async function yao() {
   let e = Fjt.join(tr(), "session-env", Rt());
   return (await qt().mkdir(e), e);
 }
-async function fca(e, t) {
+async function getHookEnvFilePath(e, t) {
   let n = e.toLowerCase();
   return Fjt.join(await yao(), `${n}-hook-${t}.sh`);
 }

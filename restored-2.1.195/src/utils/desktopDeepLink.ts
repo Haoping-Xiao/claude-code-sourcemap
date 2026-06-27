@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m7t
 // matched 2.1.88 source: src/utils/desktopDeepLink.ts
 // class=modified  jaccard=0.4437  score=0.8111  fileCov=0.4948
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function isDevMode() {
   let e = [process.argv[1] || "", process.execPath || ""],
@@ -72,7 +72,7 @@ async function openDeepLink(e) {
   }
   return false;
 }
-async function MPl() {
+async function openCurrentSessionInDesktop() {
   let e = Rt(),
     t = await getDesktopInstallStatus();
   if (t.status === "not-installed")

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q9
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0093  score=0.0431  fileCov=0.0118
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Q9] deps: Qi, wr, Bi, YS
 ((W$i = require("fs/promises")),
@@ -69,7 +69,7 @@ function skn(e, t) {
   (Z$i++,
     Cst.set(t, {
       kind: e,
-      peakRssBytes: tOi(t) ?? 0,
+      peakRssBytes: isBlockedDevicePath(t) ?? 0,
       dead: false,
     }));
 }
@@ -81,12 +81,12 @@ function hzr() {
   if (Cst.size === 0) return;
   for (let [e, t] of Cst) {
     if (t.dead) continue;
-    let n = tOi(e);
+    let n = isBlockedDevicePath(e);
     if (n === void 0) t.dead = true;
     else if (n > t.peakRssBytes) t.peakRssBytes = n;
   }
 }
-function tOi(e) {
+function isBlockedDevicePath(e) {
   try {
     let t = mzr.readFileSync(`/proc/${e}/statm`, "utf8"),
       n = Number(t.split(" ")[1]);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module G9o
 // matched 2.1.88 source: src/utils/plugins/lspPluginIntegration.ts
 // class=modified (alt of src/utils/plugins/lspPluginIntegration.ts)  jaccard=0.0297  score=0.0563  fileCov=0.0592
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module G9o] deps: si, ghe, je, fn, At, Yp, vn, vq, vbe, _k, o8, vdt, $g, vfe, Xh, i5, ED, sr, II, dn, kt, XEt
 bpc = require("readline");
@@ -13,7 +13,7 @@ function xpc(e) {
     return 'Plugin name cannot contain path separators (/ or \\), ".." sequences, or be "."';
   return null;
 }
-function kpc(e) {
+function loadPluginLspServers(e) {
   let { name: t, description: n, author: r } = e,
     o = e.with ?? [],
     s = [],

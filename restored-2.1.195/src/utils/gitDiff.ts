@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a6n
 // matched 2.1.88 source: src/utils/gitDiff.ts
 // class=modified  jaccard=0.4907  score=0.7785  fileCov=0.5703
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module a6n] deps: kt
 Dvo = require("crypto");
@@ -316,7 +316,7 @@ async function fetchSingleFileGitDiff(e) {
       repository: r,
     };
   }
-  let s = await hef(n, e);
+  let s = await generateSyntheticDiff(n, e);
   if (!s) return null;
   return {
     ...s,
@@ -358,7 +358,7 @@ async function gef(e) {
   if (s === 0 && o.trim()) return o.trim();
   return "HEAD";
 }
-async function hef(e, t) {
+async function generateSyntheticDiff(e, t) {
   try {
     if (!Xpn(t, ptl)) return null;
     let r = (await l6n.readFile(t, "utf-8")).split(`

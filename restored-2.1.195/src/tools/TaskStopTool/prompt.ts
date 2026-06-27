@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tSe
 // matched 2.1.88 source: src/tools/TaskStopTool/prompt.ts
 // class=modified  jaccard=0.0537  score=0.0537  fileCov=1
-// note: deminified; 16 identifiers renamed (exports/displayName/curated)
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveLoopFileFire, resolveLoopDefaultFire, resolveAutonomousLoopFire, resetAutonomousLoopDelivered, readLoopFile, logAutonomousLoopActivation, isLoopPersistentPreambleEnabled, isLoopFileSentinel, isLoopDefaultSentinel, isLoopDefaultPromptEnabled, isAutonomousLoopSentinel, getAutonomousLoopPreamble, LOOP_FILE_SENTINEL, LOOP_FILE_DYNAMIC_SENTINEL, AUTONOMOUS_LOOP_PREAMBLE
 // [unwrapped __esm module tSe]
@@ -32,7 +32,7 @@ The runtime clamps to [60, 3600], so you don't need to clamp yourself.
 One short sentence on what you chose and why. Goes to telemetry and is shown back to the user. "watching CI run" beats "waiting." The user reads this to understand what you're doing without having to predict your cadence in advance \u2014 make it specific.
 `;
 var yL = "TaskList";
-var QD = "TaskStop",
+var TASK_STOP_TOOL_NAME = "TaskStop",
   DESCRIPTION = `
 - Stops a running background task by its ID
 - Takes a task_id parameter identifying the task to stop

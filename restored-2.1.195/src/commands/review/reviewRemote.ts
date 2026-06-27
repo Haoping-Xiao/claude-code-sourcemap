@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F2o
 // matched 2.1.88 source: src/commands/review/reviewRemote.ts
 // class=modified  jaccard=0.2031  score=0.2551  fileCov=0.4991
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runUltrareviewHeadless, precheckLaunchScope, parseUltrareviewArgs, launchRemoteReview, getReviewDurationNote, getReviewCostNote, confirmOverage, checkOverageGate, _resetOverageConfirmedForTests
 function confirmOverage() {
@@ -200,7 +200,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
     },
   };
 }
-async function checkOverageGate() {
+async function Jor() {
   let e = await o9l();
   if (!e)
     return {
@@ -424,7 +424,7 @@ Scope: ${g}`
     ],
   };
 }
-async function runUltrareviewHeadless(e, t) {
+async function checkOverageGate(e, t) {
   if (!W6())
     return {
       status: "error",
@@ -436,7 +436,7 @@ async function runUltrareviewHeadless(e, t) {
       status: "error",
       message: n.error,
     };
-  let r = await checkOverageGate();
+  let r = await Jor();
   if (r.kind === "blocked")
     return (
       G("tengu_review_overage_blocked", {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nec
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0304  score=0.93  fileCov=0.0305
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nec] deps: db, BFe, jS, Jt
 ((zJt = require("crypto")), (Pir = require("path")));
@@ -76,7 +76,7 @@ async function sec(e, t) {
   if (!n) return [];
   return (await getAgentTranscriptPath(n)).map((o) => o.agentId);
 }
-async function iec(e, t, n) {
+async function getAgentMetadataPath(e, t, n) {
   if (!FS(e)) return [];
   if (!t) return [];
   let r = await rec(e, n?.dir);

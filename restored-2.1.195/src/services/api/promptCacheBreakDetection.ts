@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b5e
 // matched 2.1.88 source: src/services/api/promptCacheBreakDetection.ts
 // class=modified  jaccard=0.4509  score=0.5934  fileCov=0.6526
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function tca() {
   return process.env.CLAUDE_CODE_ENTRYPOINT === "claude-desktop";
@@ -156,7 +156,7 @@ function ycp(e) {
     return typeof o === "bigint" ? Number(o & 0xffffffffn) : o;
   });
 }
-function _cp(e, t) {
+function computePerToolHashes(e, t) {
   let n = {};
   for (let r = 0; r < e.length; r++) n[t[r] ?? `__idx_${r}`] = Sut(e[r]);
   return n;
@@ -223,7 +223,7 @@ function recordPromptState(e) {
         t.filter((de) => !Qla(de)).map((de) => ("cache_control" in de ? de.cache_control : null)),
       ),
       C = n.map((de) => ("name" in de ? de.name : "unknown")),
-      x = () => _cp(_, C),
+      x = () => computePerToolHashes(_, C),
       I = () => b.map((de) => Sut(de)),
       k = () => b.map((de) => mao(de)?.length ?? 0),
       D = bcp(b),

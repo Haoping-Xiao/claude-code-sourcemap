@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FDn
 // matched 2.1.88 source: src/utils/pasteStore.ts
 // class=modified  jaccard=0.3682  score=0.6874  fileCov=0.4423
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FDn]
 ((zat = R(rt(), 1)),
@@ -28,7 +28,7 @@ function y6d(e, t) {
   }
 }
 function sZr() {
-  return GDn.join(tr(), m6d);
+  return GDn.join(tr(), PASTE_STORE_DIR);
 }
 function F8i(e) {
   return U8i.createHash("sha256").update(e).digest("hex").slice(0, 16);
@@ -88,7 +88,7 @@ async function cleanupOldPastes(e) {
 }
 var U8i,
   GDn,
-  m6d = "paste-cache",
+  PASTE_STORE_DIR = "paste-cache",
   jDn,
   Vce,
   wUt = 0,

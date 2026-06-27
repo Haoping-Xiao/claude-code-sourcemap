@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gSe
 // matched 2.1.88 source: src/services/api/errors.ts
 // class=modified  jaccard=0.1275  score=0.2816  fileCov=0.189
-// note: deminified; 25 identifiers renamed (exports/displayName/curated)
+// note: deminified; 26 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gSe]
 ((dlp = new Set([
@@ -38,7 +38,10 @@
   ])),
   (que = new Set(["ECONNRESET", "EPIPE", "ConnectionClosed", "StreamSuspended"])));
 function startsWithApiErrorPrefix(e) {
-  return e.startsWith(Eb) || e.startsWith(`Please run /login \xB7 ${Eb}`);
+  return (
+    e.startsWith(API_ERROR_MESSAGE_PREFIX) ||
+    e.startsWith(`Please run /login \xB7 ${API_ERROR_MESSAGE_PREFIX}`)
+  );
 }
 function hSe(e) {
   if (!e.isApiErrorMessage) return !1;
@@ -169,7 +172,7 @@ function lut(e) {
     n = Ir()
       ? "Re-read the file with a different approach if you still need it."
       : "Double press esc to edit your message, or re-read the file if you still need it.";
-  return `${Eb}: ${t} in the conversation could not be processed and was removed. ${n}`;
+  return `${API_ERROR_MESSAGE_PREFIX}: ${t} in the conversation could not be processed and was removed. ${n}`;
 }
 function getTokenRevokedErrorMessage() {
   return Ir()
@@ -474,7 +477,7 @@ function getAssistantMessageFromError(e, t, n) {
         ? "turn on usage credits at claude.ai/settings/usage, or use --model to switch to standard context"
         : "run /usage-credits to turn them on, or /model to switch to standard context";
       return jl({
-        content: `${Eb}: Usage credits required for 1M context \xB7 ${m}`,
+        content: `${API_ERROR_MESSAGE_PREFIX}: Usage credits required for 1M context \xB7 ${m}`,
         error: "rate_limit",
         errorDetails: e.message,
       });
@@ -497,7 +500,7 @@ function getAssistantMessageFromError(e, t, n) {
         : "Request rejected (429)",
       f = `this may be a temporary capacity issue.${Baa()}`;
     return jl({
-      content: `${Eb}: ${p} \xB7 ${d || f}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${p} \xB7 ${d || f}`,
       error: "rate_limit",
     });
   }
@@ -554,7 +557,7 @@ function getAssistantMessageFromError(e, t, n) {
       ? "change or unset the advisorModel setting (or the --advisor flag)"
       : "run /advisor to change or disable the advisor";
     return jl({
-      content: `${Eb}: ${e.message.replace(/^400\s+/, "")} \xB7 The configured advisor model is not compatible with this request model \u2014 ${s}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${e.message.replace(/^400\s+/, "")} \xB7 The configured advisor model is not compatible with this request model \u2014 ${s}`,
       error: "invalid_request",
       errorDetails: e.message,
     });
@@ -713,7 +716,9 @@ function getAssistantMessageFromError(e, t, n) {
     let s = sut(e);
     return jl({
       error: "authentication_failed",
-      content: Ir() ? `Failed to authenticate. ${Eb}: ${s}` : `Please run /login \xB7 ${Eb}: ${s}`,
+      content: Ir()
+        ? `Failed to authenticate. ${API_ERROR_MESSAGE_PREFIX}: ${s}`
+        : `Please run /login \xB7 ${API_ERROR_MESSAGE_PREFIX}: ${s}`,
     });
   }
   if (
@@ -725,8 +730,8 @@ function getAssistantMessageFromError(e, t, n) {
       i = get3PModelFallbackSuggestion(t);
     return jl({
       content: i
-        ? `${Eb} (${t}): ${e.message}.${s ? ` Try ${s} to switch to ${i}.` : ` Try switching to ${i}.`}`
-        : `${Eb} (${t}): ${e.message}.${s ? ` Run ${s} to pick a different model.` : ""}`,
+        ? `${API_ERROR_MESSAGE_PREFIX} (${t}): ${e.message}.${s ? ` Try ${s} to switch to ${i}.` : ` Try switching to ${i}.`}`
+        : `${API_ERROR_MESSAGE_PREFIX} (${t}): ${e.message}.${s ? ` Run ${s} to pick a different model.` : ""}`,
       error: "model_not_found",
     });
   }
@@ -743,39 +748,39 @@ function getAssistantMessageFromError(e, t, n) {
   let r = Baa();
   if (e instanceof Error && e.message.includes(REPEATED_529_ERROR_MESSAGE))
     return jl({
-      content: `${Eb}: ${REPEATED_529_ERROR_MESSAGE}. The API is at capacity \u2014 this is usually temporary. Try again in a moment.${r}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${REPEATED_529_ERROR_MESSAGE}. The API is at capacity \u2014 this is usually temporary. Try again in a moment.${r}`,
       error: "server_error",
     });
   if (e instanceof Fo && typeof e.status === "number" && e.status >= 500) {
     let s = sut(e).replace(/[.!?\u2026]+$/, "");
     return jl({
-      content: `${Eb}: ${s}. This is a server-side issue, usually temporary \u2014 try again in a moment.${r}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${s}. This is a server-side issue, usually temporary \u2014 try again in a moment.${r}`,
       error: "server_error",
     });
   }
   if (e instanceof Hx)
     return jl({
-      content: `${Eb}: ${sut(e)}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${sut(e)}`,
       error: "server_error",
     });
   if (e instanceof Fo)
     return jl({
-      content: `${Eb}: ${sut(e)}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${sut(e)}`,
       error: "unknown",
     });
   let o = tF(e);
   if (o && (que.has(o.code) || out.has(o.code)))
     return jl({
-      content: `${Eb}: Connection to the API was lost (${o.code}). This is usually temporary \u2014 try again.`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: Connection to the API was lost (${o.code}). This is usually temporary \u2014 try again.`,
       error: "server_error",
     });
   if (e instanceof Error)
     return jl({
-      content: `${Eb}: ${e.message}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${e.message}`,
       error: "unknown",
     });
   return jl({
-    content: Eb,
+    content: API_ERROR_MESSAGE_PREFIX,
     error: "unknown",
   });
 }
@@ -990,7 +995,7 @@ function getErrorMessageIfRefusal(e, t, n, r) {
       g = Qct(t?.category)
         ? `${l}'s safeguards flagged this message (https://www.anthropic.com/legal/aup). ${daa}`
         : `${l}'s safeguards flagged this message (https://www.anthropic.com/legal/aup). This sometimes happens with safe, normal conversations.`;
-    c = `${Eb}: ${g} Claude Code can't respond to this request with ${l}.
+    c = `${API_ERROR_MESSAGE_PREFIX}: ${g} Claude Code can't respond to this request with ${l}.
 
 ${f}
 
@@ -1004,14 +1009,14 @@ ${m}`;
     if (t?.category === "cyber" && td()) {
       let g = p ? `Learn more: ${u5e}` : Jct,
         h = r != null ? wp(r) : "This model";
-      c = `${Eb}: ${h}'s safeguards flagged this message for a cybersecurity topic. If your work requires this access, you can apply for an exemption: ${laa(t.explanation)}
+      c = `${API_ERROR_MESSAGE_PREFIX}: ${h}'s safeguards flagged this message for a cybersecurity topic. If your work requires this access, you can apply for an exemption: ${laa(t.explanation)}
 
 ${f}
 
 ${g}`;
     } else if (m === "military_weapons") {
       let g = r != null ? wp(r) : "This model";
-      c = `${Eb}: ${g} has added safeguards for weapons-related content, which blocked this request. Not weapons-related? This may be a false positive.
+      c = `${API_ERROR_MESSAGE_PREFIX}: ${g} has added safeguards for weapons-related content, which blocked this request. Not weapons-related? This may be a false positive.
 
 ${f}${
         p
@@ -1022,7 +1027,7 @@ If you believe this was flagged in error, send feedback with /feedback.`
       }`;
     } else
       c =
-        `${Eb}: Claude Code is unable to respond to this request, which appears to violate our Usage Policy (https://www.anthropic.com/legal/aup).${a} ` +
+        `${API_ERROR_MESSAGE_PREFIX}: Claude Code is unable to respond to this request, which appears to violate our Usage Policy (https://www.anthropic.com/legal/aup).${a} ` +
         f;
   }
   let u = n
@@ -1078,7 +1083,7 @@ function Mio(e) {
 function Kaa(e) {
   return cJe() && e.isApiErrorMessage === !0 && e.errorDetails !== void 0 && Mio(e.errorDetails);
 }
-var Eb = "API Error",
+var API_ERROR_MESSAGE_PREFIX = "API Error",
   PROMPT_TOO_LONG_ERROR_MESSAGE = "Prompt is too long",
   ylp = 0.8,
   blp,

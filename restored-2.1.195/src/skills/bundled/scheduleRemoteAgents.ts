@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $wc
 // matched 2.1.88 source: src/skills/bundled/scheduleRemoteAgents.ts
 // class=modified  jaccard=0.2586  score=0.3908  fileCov=0.4333
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerScheduleRemoteAgentsSkill
 // [unwrapped __esm module $wc] deps: ft, rSe, Un, jc, G1, wX, sre, WW, tSe, Ld, fn, AA
@@ -23,7 +23,7 @@ Examples:
   /loop 1h /standup 1
   /loop check the deploy          (defaults to ${ZTt})
   /loop check the deploy every 20m`;
-function rAm(e) {
+function taggedIdToUUID(e) {
   if (!e.startsWith("mcpsrv_")) return null;
   let r = e.slice(7).slice(2),
     o = 0n;
@@ -40,7 +40,7 @@ function getConnectedClaudeAIConnectors(e) {
   for (let n of e) {
     if (n.type !== "connected") continue;
     if (n.config.type !== "claudeai-proxy") continue;
-    let r = rAm(n.config.id);
+    let r = taggedIdToUUID(n.config.id);
     if (!r) continue;
     t.push({
       uuid: r,

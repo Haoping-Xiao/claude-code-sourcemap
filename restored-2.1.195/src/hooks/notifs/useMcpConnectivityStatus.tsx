@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eXn
 // matched 2.1.88 source: src/hooks/notifs/useMcpConnectivityStatus.tsx
 // class=modified  jaccard=0.0271  score=0.0729  fileCov=0.0414
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function C$e(e = null, t) {
   if (e) t?.(e);
@@ -23,7 +23,7 @@ function qyl(e, t) {
   }
   e.exemptServers = n;
 }
-function Vyl(e, t, n) {
+function useMcpConnectivityStatus(e, t, n) {
   if (e === GW || e === Sb) return "web";
   if (e === ide || e === aJ || e === Kue) return "connectors";
   if (t) {
@@ -36,7 +36,7 @@ function Vyl(e, t, n) {
   return null;
 }
 function zyl(e, t = nRo) {
-  return Vyl(e.name, iDe(e), t);
+  return useMcpConnectivityStatus(e.name, iDe(e), t);
 }
 function Azt(e, t, n = nRo) {
   if (!at(Wyl, false)) return null;
@@ -50,7 +50,11 @@ function Azt(e, t, n = nRo) {
       let a = r.get(i.name),
         l = a
           ? zyl(a, n)
-          : Vyl(i.name, i.name.startsWith("mcp__") ? i.name.split("__")[1] : void 0, n);
+          : useMcpConnectivityStatus(
+              i.name,
+              i.name.startsWith("mcp__") ? i.name.split("__")[1] : void 0,
+              n,
+            );
       if (l !== null) return l;
     }
   }

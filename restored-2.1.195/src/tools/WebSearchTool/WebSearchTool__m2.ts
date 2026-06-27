@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yje
 // matched 2.1.88 source: src/tools/WebSearchTool/WebSearchTool.ts
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.0248  score=0.1984  fileCov=0.0276
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yje] deps: tIt, Zsn, Ksn, uee, je, At, vn, dn, xnt, wjr, tIt, Zsn, Ksn, uee, xnt, wjr
 hje = new Set();
@@ -18,7 +18,7 @@ function Ljr(e) {
   let t = e.replace(/\[(1|2)m\]/gi, "");
   return `${Rjr() ?? "unknown-foundry-resource"}::${t}`;
 }
-function nii(e) {
+function makeToolSchema(e) {
   let t = e.match(vfd)?.[1];
   if (t) {
     let r = t.split(",").map((o) => o.trim());
@@ -50,19 +50,19 @@ function gle(e, t) {
   if (n.size === 0) return true;
   return !n.get(Ljr(e))?.has(t);
 }
-function WebSearchTool(e) {
+function Pjr(e) {
   if (fr() !== "foundry") return null;
   if (!(e instanceof Fo) || e.status !== 400) return null;
   let t = e.error;
   if (t && typeof t === "object" && "error" in t) {
     let n = t.error;
     if (n && typeof n === "object" && "message" in n && typeof n.message === "string")
-      return nii(n.message);
+      return makeToolSchema(n.message);
   }
-  return nii(e.message ?? "");
+  return makeToolSchema(e.message ?? "");
 }
-function sHn(e, t, n) {
-  let r = WebSearchTool(e);
+function WebSearchTool(e, t, n) {
+  let r = Pjr(e);
   if (!r) return null;
   if ((Djr(t, r), n === "web_search_tool")) return aMt;
   if (r.some((o) => Ifd.has(o))) return `retry:foundry-capability-strip:${r.join(",")}`;

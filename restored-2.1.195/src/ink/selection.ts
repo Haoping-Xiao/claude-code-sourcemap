@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bW
 // matched 2.1.88 source: src/ink/selection.ts
 // class=modified  jaccard=0.1836  score=0.4465  fileCov=0.2377
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bW] deps: jit, je, Rit, m8, one, OXr
 ((z3i = {
@@ -209,7 +209,7 @@ function VXr(e, t) {
     end: r !== 0 ? r >>> 16 : e.width,
   };
 }
-function cGi(e, t, n) {
+function findPlainTextUrlAt(e, t, n) {
   if (n < 0 || n >= e.height) return;
   let r = e.width,
     o = t;

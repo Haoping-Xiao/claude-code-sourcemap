@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ygc
 // matched 2.1.88 source: src/utils/mcp/elicitationValidation.ts
 // class=modified  jaccard=0.3327  score=0.6868  fileCov=0.3922
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function c7e(e) {
   return (
@@ -32,14 +32,14 @@ function wTt(e) {
   if ("enum" in e) return e.enum;
   return [];
 }
-function Xum(e) {
+function getEnumLabels(e) {
   if ("oneOf" in e) return e.oneOf.map((t) => t.title);
   if ("enum" in e) return ("enumNames" in e ? e.enumNames : void 0) ?? e.enum;
   return [];
 }
 function Hen(e, t) {
   let n = wTt(e).indexOf(t);
-  return n >= 0 ? (Xum(e)[n] ?? t) : t;
+  return n >= 0 ? (getEnumLabels(e)[n] ?? t) : t;
 }
 function getZodSchema(e) {
   if (Pme(e)) {

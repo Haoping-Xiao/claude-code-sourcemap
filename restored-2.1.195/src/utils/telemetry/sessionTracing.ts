@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xdt
 // matched 2.1.88 source: src/utils/telemetry/sessionTracing.ts
 // class=modified  jaccard=0.3075  score=0.5006  fileCov=0.4435
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xdt] deps: ft, fd, je, fn, At, Jt, Mp
 ((opo = []), (tN = []), (SL = new Map()), (yFn = new Map()), (ipo = new Map()));
@@ -54,7 +54,7 @@ function bDe(e, t) {
   if (((t.ended = true), e === hDe && $3t?.getValue(e) === t)) $3t = void 0;
   if (dF().getValue(e) === t) qSe.enterWith(t.priorContext);
 }
-function Eqe(e, t = {}) {
+function createSpanAttributes(e, t = {}) {
   return {
     ...QGe(),
     "span.type": e,
@@ -85,7 +85,7 @@ function startInteractionSpan(e) {
   let r = getTracer(),
     s = ut(process.env.OTEL_LOG_USER_PROMPTS) ? e : "<REDACTED>";
   Qxa++;
-  let i = Eqe("interaction", {
+  let i = createSpanAttributes("interaction", {
       user_prompt: s,
       user_prompt_length: e.length,
       "interaction.sequence": Qxa,
@@ -170,7 +170,7 @@ function startLLMRequestSpan(e, t, n, r, o) {
   }
   let a = getTracer(),
     l = dF().getValue(bqe),
-    c = Eqe("llm_request", {
+    c = createSpanAttributes("llm_request", {
       model: e,
       "gen_ai.system": "anthropic",
       "gen_ai.request.model": e,
@@ -303,7 +303,7 @@ function startToolSpan(e, t, n, r, o) {
     return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
   let a = getTracer(),
-    l = Eqe("tool", {
+    l = createSpanAttributes("tool", {
       tool_name: e,
       ...n,
     }),
@@ -352,7 +352,7 @@ function startToolBlockedOnUserSpan() {
     return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
   let n = getTracer(),
-    r = Eqe("tool.blocked_on_user"),
+    r = createSpanAttributes("tool.blocked_on_user"),
     o = n.startSpan(
       "claude_code.tool.blocked_on_user",
       {
@@ -394,7 +394,7 @@ function startToolExecutionSpan(e) {
   let t = dF();
   if (!f5()) return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   let n = getTracer(),
-    r = Eqe("tool.execution"),
+    r = createSpanAttributes("tool.execution"),
     o = n.startSpan(
       "claude_code.tool.execution",
       {
@@ -514,7 +514,7 @@ async function lka(e, t, n) {
 function cka(e) {
   if (!ude()) return;
   let t = dF(),
-    n = Eqe("subagent.spawn", {
+    n = createSpanAttributes("subagent.spawn", {
       agent_id: e.agentId,
       agent_type: e.agentType,
       ...(e.parentAgentId && {
@@ -554,7 +554,7 @@ function startHookSpan(e, t, n, r) {
   let o = getTracer(),
     s = dF(),
     { content: i } = iP(r),
-    a = Eqe("hook", {
+    a = createSpanAttributes("hook", {
       hook_event: e,
       hook_name: t,
       num_hooks: n,

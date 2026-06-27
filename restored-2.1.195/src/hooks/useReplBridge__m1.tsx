@@ -49,7 +49,7 @@ function v9n(e, t) {
     after: c,
   };
 }
-function useReplBridge({ error: e, connected: t, sessionActive: n, reconnecting: r }) {
+function w9n({ error: e, connected: t, sessionActive: n, reconnecting: r }) {
   if (e)
     return {
       label: "/rc failed",
@@ -80,7 +80,7 @@ function HXa(e, t) {
   return `\x1B]8;;${t}\x07${e}\x1B]8;;\x07`;
 }
 var _Xa = 30000,
-  z5 = "bridge-failed",
+  useReplBridge = "bridge-failed",
   rht = "disabled after repeated failures \xB7 restart to retry",
   bXa = 150,
   EXa = "Run /remote-control to retry",

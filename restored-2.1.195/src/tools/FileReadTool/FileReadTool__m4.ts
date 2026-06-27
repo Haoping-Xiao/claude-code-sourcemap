@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ANo
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0094  score=0.1272  fileCov=0.01
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Nfe() {
   return HNo.join(tr(), uNl);
@@ -88,7 +88,7 @@ async function fNl() {
     if (!wn(e)) throw e;
   }
 }
-async function TNo(e) {
+async function isBlockedDevicePath(e) {
   let t;
   try {
     t = await z$.readFile(`/proc/${e}/cmdline`, "utf8");
@@ -106,7 +106,7 @@ async function uR() {
   } catch {
     return null;
   }
-  if (!(await TNo(e.pid))) return null;
+  if (!(await isBlockedDevicePath(e.pid))) return null;
   if (!(await bv(e.pid, e.procStart))) return null;
   return e;
 }

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eis
 // matched 2.1.88 source: src/utils/slowOperations.ts
 // class=modified  jaccard=0.2325  score=0.8511  fileCov=0.2424
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eis] deps: Owt, lss, UIt, uss, hss, DEr, PEr, Ass, Tss, Pyr, xin, qwt, wss, $ss, OEr, P2, Uwt, Wss, D2, Yss, OBe, FJe
 VH = {};
@@ -83,7 +83,7 @@ var Wge,
   C8m,
   f7c,
   gy,
-  Ft = (e, t) => {
+  jsonParse = (e, t) => {
     using n = gy`JSON.parse(${e})`;
     return typeof t > "u" ? JSON.parse(e) : JSON.parse(e, t);
   };

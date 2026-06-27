@@ -62,7 +62,7 @@ function getAllPolicyTierSettings() {
   return Vws(cj());
 }
 function getInitialSettings() {
-  return getSettingsWithErrors().settings || {};
+  return loadSettingsFromDisk().settings || {};
 }
 function getSettingsWithSources() {
   n_();
@@ -88,7 +88,7 @@ function getEffectiveSettingSource(e) {
   }
   return null;
 }
-function getSettingsWithErrors() {
+function loadSettingsFromDisk() {
   let e = a0();
   if (e !== null) return e;
   pa("loadSettingsFromDisk_start");
@@ -304,7 +304,7 @@ function updateSettingsForSource(e, t) {
     );
   }
   try {
-    getSettingsWithErrors();
+    loadSettingsFromDisk();
   } catch (r) {
     ke(r);
   }
@@ -377,7 +377,7 @@ function getSettingsAfterPluginLoad(e) {
     G("tengu_plugin_settings_premature_read", {
       key: e,
     });
-  let { settings: t } = getSettingsWithErrors();
+  let { settings: t } = loadSettingsFromDisk();
   return (t || {})[e];
 }
 function getSecuritySensitiveSetting(e) {

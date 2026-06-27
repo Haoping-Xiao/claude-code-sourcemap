@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OM
 // matched 2.1.88 source: src/ink/clearTerminal.ts
 // class=modified  jaccard=0.2092  score=0.2376  fileCov=0.6359
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OM] deps: one
 ((PYr = l8 + String.fromCharCode(gW.CSI)),
@@ -93,7 +93,7 @@ dH = mh("H");
   (Tce = mh("<u")),
   (xUi = mh(">4;2m")),
   (G_e = mh(">4m")));
-class kUi {
+class isMintty {
   proc;
   constructor(e = process) {
     this.proc = e;

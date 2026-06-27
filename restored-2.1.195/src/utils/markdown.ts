@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rnl
 // matched 2.1.88 source: src/utils/markdown.ts
 // class=modified  jaccard=0.3274  score=0.6019  fileCov=0.4179
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rnl]
 iwo = class iwo extends Error {
@@ -206,13 +206,13 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
       if (o?.type === "list_item") {
         let l = e.tokens
             ? e.tokens.map((p) => formatToken(p, t, n, r, e, s, true, a)).join("")
-            : Pnl(awo(e.text, t, a)),
+            : Pnl(linkifyIssueReferences(e.text, t, a)),
           c = r === null ? "-" : `${dtf(n, r)}.`,
           u = o.tokens?.[0] === e,
           d = o.task && u ? `[${o.checked ? "x" : " "}] ` : "";
         return `${c} ${d}${l}${SP}`;
       }
-      return i ? Pnl(awo(e.text, t, a)) : awo(e.text, t, a);
+      return i ? Pnl(linkifyIssueReferences(e.text, t, a)) : linkifyIssueReferences(e.text, t, a);
     case "table": {
       let c = function (p) {
           return Ja(p?.map((f) => formatToken(f, t, 0, null, null, s, false, a)).join("") ?? "");
@@ -356,7 +356,7 @@ function atf(e) {
   if (n.length > 0 && !n.at(-1)?.trim()) n.pop();
   return n;
 }
-function awo(e, t, n = vI()) {
+function linkifyIssueReferences(e, t, n = vI()) {
   if (!n) return e;
   let r = sRr(),
     o = r && !ntf.has(r) ? r : JH;

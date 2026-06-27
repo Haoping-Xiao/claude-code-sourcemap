@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Lcl
 // matched 2.1.88 source: src/bridge/sessionIdCompat.ts
 // class=modified  jaccard=0.0513  score=0.0609  fileCov=0.2464
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lcl] deps: ql, Ye, es
 J6 = R(se(), 1);
-function Z8t() {
+function toCompatSessionId() {
   let e = Oe.CLAUDE_CODE_SESSION_ID;
   if (e && (e.startsWith("cse_") || e.startsWith("session_"))) return e;
   return;
@@ -14,10 +14,10 @@ function Z8t() {
 function Dcl() {
   if (fr() !== "firstParty") return false;
   if (!Oe.CLAUDE_CODE_WEBFETCH_USE_CCR_PROXY) return false;
-  return !!Z8t();
+  return !!toCompatSessionId();
 }
 function haf() {
-  return `${(Oe.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/+$/, "")}/v1/code/sessions/${encodeURIComponent(Z8t())}/worker/web-fetch`;
+  return `${(Oe.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/+$/, "")}/v1/code/sessions/${encodeURIComponent(toCompatSessionId())}/worker/web-fetch`;
 }
 async function Pcl(e, t) {
   let n = cke(),

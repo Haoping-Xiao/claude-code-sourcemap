@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module gqc
 // matched 2.1.88 source: src/commands/bridge-kick.ts
 // class=modified (alt of src/commands/bridge-kick.ts)  jaccard=0.0214  score=0.0449  fileCov=0.0394
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gqc] deps: dn, kt, At, Is, QEe, Jt
 ((fqc = require("child_process")), (KZo = require("readline")));
-function hqc(e) {
+function call(e) {
   return e === "heartbeat" || lce();
 }
 function aNm(e) {
@@ -35,7 +35,7 @@ async function yqc(e) {
   await o.ready;
   let u = 0;
   for (let h of Object.keys(fZ)) {
-    if (!hqc(h)) continue;
+    if (!call(h)) continue;
     let y = a[h] ?? [];
     for (let b = 0; b < y.length; b++) {
       let _ = `${h}:${b}`,
@@ -65,7 +65,7 @@ async function yqc(e) {
       }
       let b = 0;
       for (let { id: _, kind: S, config: A } of y.start) {
-        if (!hqc(S)) continue;
+        if (!call(S)) continue;
         let v = new hhr(_, S, A, n, r, o, l);
         (i.set(_, v), v.start(b++ * YZo), r.write("supervisor", `spawned ${_}`));
       }

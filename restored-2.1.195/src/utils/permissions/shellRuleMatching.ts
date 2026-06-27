@@ -28,7 +28,7 @@ function Wca(e) {
   while (r >= 0 && t[r] === "\\") (n++, r--);
   return n % 2 === 0;
 }
-function ESCAPED_STAR_PLACEHOLDER(e, t, n = false, r = false) {
+function matchWildcardPattern(e, t, n = false, r = false) {
   let o = e.trim(),
     s = r ? o.replace(/[ \t]+/g, " ") : o,
     i = r ? t.replace(/[ \t]+/g, " ") : t,
