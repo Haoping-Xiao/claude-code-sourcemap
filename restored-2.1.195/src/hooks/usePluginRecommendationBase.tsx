@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.262  score=0.4226  fileCov=0.4082
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XLc] deps: GLc, er, je, _k, lE, WI, ZC
+// [unwrapped __esm module XLc] deps: utils/plugins/lspRecommendation.ts, utils/config.ts, utils/debug.ts, utils/generatedFiles.ts, utils/plugins/installedPluginsManager.ts, commands/plugin/ManagePlugins.tsx, utils/plugins/schemas.ts
 VLc = require("path");
 function usePluginRecommendationBase() {
   let e = JLc.c(6),

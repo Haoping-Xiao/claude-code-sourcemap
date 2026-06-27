@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0478  score=0.7418  fileCov=0.0486
 // note: nearest: src/tools/AgentTool/UI.tsx (0.0478); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rll] deps: Lyt, ql
+// [unwrapped __esm module rll] deps: native-ts/yoga-layout/index.ts, commands/add-dir/validation.ts
 tll = R(lt(), 1), yIo = R(se(), 1);
 function sll(e) {
   let t = oll.c(13),

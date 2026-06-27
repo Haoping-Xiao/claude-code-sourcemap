@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/nativeInstaller/packageManagers.ts)  jaccard=0.0707  score=0.1095  fileCov=0.1666
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module IVn] deps: Qi, je, Bi, Is
+// [unwrapped __esm module IVn] deps: lodash-es/memoize.js, utils/debug.ts, constants/files.ts, utils/platform.ts
 (($za = require("fs/promises")),
   (wVn = Cn(async () => {
     try {

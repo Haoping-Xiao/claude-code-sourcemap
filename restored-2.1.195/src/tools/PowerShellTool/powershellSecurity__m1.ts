@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/PowerShellTool/powershellSecurity.ts)  jaccard=0.0057  score=0.012  fileCov=0.0107
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ofc] deps: dn, je, u9, Mh, Jt, sr, qpc
+// [unwrapped __esm module ofc] deps: dn, utils/debug.ts, utils/mtls.ts, utils/proxy.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, upstreamproxy/relay.ts
 Elm = {
   openTimeoutMs: 10000 /* 1e4 */,
   openMaxAttempts: 3,

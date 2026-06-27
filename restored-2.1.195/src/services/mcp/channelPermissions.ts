@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4174  score=0.6723  fileCov=0.524
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I6e] deps: Xr, ft, np, oo, je, Ls, $g, dr, OI, j_t
+// [unwrapped __esm module I6e] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, env-paths/index.js, utils/http.ts, utils/debug.ts, utils/status.tsx, utils/plugins/pluginIdentifier.ts, utils/settings/settings.ts, fast-xml-parser/lib/fxp.cjs, services/mcp/channelNotification.ts
 ((G_t = ve(() =>
   H.object({
     method: H.literal("notifications/claude/channel"),

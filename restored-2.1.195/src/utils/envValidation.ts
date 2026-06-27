@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4324  score=0.6106  fileCov=0.597
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iia] deps: wr, fn, Fh, Un
+// [unwrapped __esm module iia] deps: main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, components/Settings/Config.tsx, services/analytics/growthbook.ts
 eap = new Set(["prompt_suggestion", "away_summary", "agent_summary", "memdir_aki_extract"]);
 function validateBoundedIntEnvVar(name, value, defaultValue, upperLimit) {
   if (!value)

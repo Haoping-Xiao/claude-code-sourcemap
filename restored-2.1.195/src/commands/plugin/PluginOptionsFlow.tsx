@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3237  score=0.5258  fileCov=0.4571
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GBo] deps: TVt, fn
+// [unwrapped __esm module GBo] deps: commands/plugin/PluginOptionsDialog.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((x2l = R(lt(), 1)), (k2l = R(rt(), 1)), (R2l = R(se(), 1)));
 async function mXt(e) {
   let { enabled: t, disabled: n } = await OT();

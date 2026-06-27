@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.307  score=0.5249  fileCov=0.4251
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qdt] deps: Un, kt, db, fh, uDe, je, At, es, sr, K0
+// [unwrapped __esm module qdt] deps: services/analytics/growthbook.ts, utils/debug.ts, utils/authFileDescriptor.ts, commands/insights.ts, utils/toolResultStorage.ts, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, utils/mcpOutputStorage.ts
 HIa = require("path");
 function renderToolUseMessage(input) {
   if (!input.uri || !input.server) return null;

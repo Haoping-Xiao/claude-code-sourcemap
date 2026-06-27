@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/tips/tipRegistry.ts)  jaccard=0.0295  score=0.2519  fileCov=0.0324
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kRc] deps: Un
+// [unwrapped __esm module kRc] deps: services/analytics/growthbook.ts
 vwm = {
   enable_shortcut_tip: false,
   enable_contextual_tip: false,

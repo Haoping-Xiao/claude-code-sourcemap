@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1284  score=0.6338  fileCov=0.1386
 // note: low-confidence suggestion: node_modules/lodash-es/_Stack.js; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nts] deps: zes, Yes, Jes, Zes, tts
+// [unwrapped __esm module nts] deps: lodash-es/_hashDelete.js, lodash-es/_setCacheAdd.js, lodash-es/_hashHas.js, lodash-es/_hashGet.js, lodash-es/_Hash.js
 jXe.prototype.clear = Ves;
 jXe.prototype.delete = Kes;
 jXe.prototype.get = Xes;

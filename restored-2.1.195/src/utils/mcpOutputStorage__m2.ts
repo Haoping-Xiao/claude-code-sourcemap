@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/mcpOutputStorage.ts)  jaccard=0.0319  score=0.0596  fileCov=0.0644
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RFn] deps: Xr, fn, vn, Jt
+// [unwrapped __esm module RFn] deps: @modelcontextprotocol/sdk/dist/esm/types.js, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/sequential.ts, utils/fsOperations.ts
 ((jka = require("crypto")),
   (YSe = require("fs/promises")),
   (fde = require("path")),

@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: readClaudeDesktopMcpServers, getClaudeDesktopConfigPath
-// [unwrapped __esm module jdc] deps: l0t, jun, Vb, rq, jDe, X2o, ii, uDe, LL, fp, og, CAt, je, At, ik, P2o, vn, bm, co, Ao, Gy, _$, Jt, IAt, Gor, mzt, yZn
+// [unwrapped __esm module jdc] deps: @modelcontextprotocol/sdk/dist/esm/server/index.js, lodash-es/_baseUnset.js, @modelcontextprotocol/sdk/dist/esm/types.js, skills/loadSkillsDir.ts, tools/BashTool/sedValidation.ts, commands/review.ts, services/mockRateLimits.ts, utils/toolResultStorage.ts, utils/sessionActivity.ts, screens/REPL.tsx, utils/teammateContext.ts, CAt, utils/debug.ts, utils/errors.ts, utils/claudemd.ts, @growthbook/growthbook/dist/esm/core.mjs, utils/sequential.ts, utils/messageQueueManager.ts, utils/messages.ts, utils/agentContext.ts, utils/permissions/permissionSetup.ts, utils/Shell.ts, utils/fsOperations.ts, @smithy/eventstream-serde-config-resolver/dist-cjs/index.js, utils/agenticSessionSearch.ts, services/tools/toolHooks.ts, utils/toolSearch.ts
 Zim = [rsr];
 async function getClaudeDesktopConfigPath() {
   let e = Vt();

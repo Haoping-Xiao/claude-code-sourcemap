@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3457  score=0.512  fileCov=0.5156
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Eor] deps: Un, wr
+// [unwrapped __esm module Eor] deps: services/analytics/growthbook.ts, main.tsx
 yAt = {
   heading: "Learn the moves",
   body:

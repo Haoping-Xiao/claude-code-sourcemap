@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2644  score=0.3291  fileCov=0.5735
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eVe] deps: iu, eco
+// [unwrapped __esm module eVe] deps: @mixmark-io/domino/lib/Document.js, native-ts/color-diff/index.ts
 ((P$a = require("path")),
   ($Lp = {
     keyword: wt.blue,

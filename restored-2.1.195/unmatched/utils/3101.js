@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module w4t] deps: Hp, CZe, Hp
+// [unwrapped __esm module w4t] deps: axios/lib/axios.js, utils/nativeInstaller/download.ts, axios/lib/axios.js
 A_p = /^([a-z][a-z\d+\-.]*:)?\/\//i;
 kSe = {
   get(e, t) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3624  score=0.7481  fileCov=0.4128
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ULc] deps: ft, Ye, id, yde, uo, je, fn, gz
+// [unwrapped __esm module ULc] deps: services/analytics/index.ts, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/nativeInstaller/installer.ts, context/notifications.tsx, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, hooks/notifs/useSettingsErrors.tsx
 ((NLc = R(lt(), 1)), (pvt = R(rt(), 1)));
 async function isBinaryInstalled(command) {
   if (!command || !command.trim())

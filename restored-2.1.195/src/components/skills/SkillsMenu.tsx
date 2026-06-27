@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1237  score=0.1623  fileCov=0.3423
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module W9l] deps: ft, Bke, wr, uf
+// [unwrapped __esm module W9l] deps: services/analytics/index.ts, ink/termio/osc.ts, main.tsx, main.tsx
 ((XWf = {
   type: "local-jsx",
   name: "scroll-speed",

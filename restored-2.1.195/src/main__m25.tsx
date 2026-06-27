@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: watchSystemTheme, _resetInitialProbeForTesting
-// [unwrapped __esm module uf] deps: ft, Un, je, Lx, wr, fn, Bi, Is, QZe, Y9, dr
+// [unwrapped __esm module uf] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, main.tsx, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, constants/files.ts, utils/platform.ts, utils/windowsPaths.ts, utils/plugins/loadPluginAgents.ts, utils/settings/settings.ts
 VUi = require("child_process");
 ine = qBd();
 function XBd() {

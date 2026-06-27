@@ -4,7 +4,7 @@
 // class=modified (alt of src/keybindings/reservedShortcuts.ts)  jaccard=0.0141  score=0.0247  fileCov=0.0319
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module PBl] deps: Zf, Ye, es, Vl, B_, kP
+// [unwrapped __esm module PBl] deps: utils/sessionStorage.ts, hooks/useTerminalSize.ts, utils/profilerBase.ts, keybindings/useShortcutDisplay.ts, components/PromptInput/PromptInputFooterSuggestions.tsx, components/design-system/Tabs.tsx
 ((DBl = R(lt(), 1)), (qfe = R(se(), 1)));
 function MBl(e) {
   return e.replaceAll("+", " + ");

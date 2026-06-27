@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/TeleportRepoMismatchDialog.tsx)  jaccard=0.127  score=0.2671  fileCov=0.195
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aOc] deps: _i, ft, CH, D2o, RF, jpr, jLn, jh, Ye, dn, kt, uo, $S, M2o, b7o, Jen, Ld, wpe, O2o, wr, At, uf, vn, co, I7e, _a, YYo
+// [unwrapped __esm module aOc] deps: components/design-system/Ratchet.tsx, services/analytics/index.ts, @smithy/types/dist-cjs/index.js, tools/SendMessageTool/SendMessageTool.ts, utils/diff.ts, tools/PowerShellTool/readOnlyValidation.ts, react/cjs/react.production.js, utils/env.ts, hooks/useTerminalSize.ts, dn, utils/debug.ts, context/notifications.tsx, google-auth-library/build/src/crypto/node/crypto.js, utils/crossProjectResume.ts, commands/resume/resume.tsx, skills/loadSkillsDir.ts, utils/concurrentSessions.ts, services/api/filesApi.ts, commands/resume/resume.tsx, main.tsx, utils/errors.ts, main.tsx, utils/sequential.ts, utils/messages.ts, cli/print.ts, utils/plans.ts, screens/REPL.tsx
 ((ymr = R(lt(), 1)), (rOc = require("path")), (dx = R(rt(), 1)), (yw = R(se(), 1)));
 async function lOc(e, t) {
   let { InvalidSettingsDialog: n } = await Promise.resolve().then(() => (Q$c(), J$c));

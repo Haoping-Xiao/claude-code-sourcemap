@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nJe] deps: Ans
+// [unwrapped __esm module nJe] deps: lodash-es/_objectToString.js
 Bie = B6c;
 function U6c(e, t) {
   if (Ub(e)) return e;

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.379  score=0.6645  fileCov=0.4687
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module i5] deps: Qi, Gwe, ft, je, At, SG, R9, dr, vdt, B1
+// [unwrapped __esm module i5] deps: lodash-es/memoize.js, lodash-es/_arrayPush.js, services/analytics/index.ts, utils/debug.ts, utils/errors.ts, screens/REPL.tsx, utils/errors.ts, utils/settings/settings.ts, utils/plugins/pluginOptionsStorage.ts, tools/SkillTool/prompt.ts
 ((m$ = Cn((e) => {
   let n = jo().pluginConfigs?.[e]?.options ?? {},
     o = wl().read()?.pluginSecrets?.[e] ?? {};

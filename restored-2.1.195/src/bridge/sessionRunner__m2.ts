@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/sessionRunner.ts)  jaccard=0.0394  score=0.1206  fileCov=0.0552
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Wec] deps: fp, Rm, LZl, MZl, OZl, NZl, cDe, Jt, $3o, O7n, VZl, JZl, nec, aec, je, At, S9, jS, zRt, Sec, qee, GRr, zRt, Tec, xec
+// [unwrapped __esm module Wec] deps: screens/REPL.tsx, @grpc/grpc-js/build/src/server.js, main.tsx, MZl, cli/print.ts, utils/sessionStorage.ts, tools/ReadMcpResourceTool/prompt.ts, utils/fsOperations.ts, utils/listSessionsImpl.ts, services/autoDream/consolidationLock.ts, utils/sessionStorage.ts, commands/branch/branch.ts, utils/sessionStorage.ts, jsonwebtoken/decode.js, utils/debug.ts, utils/errors.ts, utils/secureStorage/macOsKeychainHelpers.ts, utils/path.ts, utils/sessionStorage.ts, main.tsx, qee, GRr, utils/sessionStorage.ts, server/directConnectManager.ts, utils/sessionStorage.ts
 ((Pec = require("child_process")),
   (Oir = require("crypto")),
   (Nir = require("fs")),

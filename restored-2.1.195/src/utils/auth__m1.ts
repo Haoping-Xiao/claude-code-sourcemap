@@ -5,7 +5,7 @@
 // note: deminified; 48 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: USE_STAGING_OAUTH, USE_LOCAL_OAUTH, MCP_XAA_IDP_CLIENT_SECRET, MCP_CLIENT_SECRET, ENVIRONMENT_SERVICE_KEY, CLAUDE_TRUSTED_DEVICE_TOKEN, CLAUDE_SESSION_INGRESS_TOKEN_FILE, CLAUDE_LOCAL_OAUTH_CONSOLE_BASE, CLAUDE_LOCAL_OAUTH_APPS_BASE, CLAUDE_LOCAL_OAUTH_API_BASE, CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR, CLAUDE_CODE_USER_EMAIL, CLAUDE_CODE_SUBSCRIPTION_TYPE, CLAUDE_CODE_SKIP_VERTEX_AUTH, CLAUDE_CODE_SKIP_MANTLE_AUTH, CLAUDE_CODE_SKIP_FOUNDRY_AUTH, CLAUDE_CODE_SKIP_BEDROCK_AUTH, …
-// [unwrapped __esm module Eae] deps: zb, fn
+// [unwrapped __esm module Eae] deps: zod/v4/classic/schemas.js, @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((Mmu = ve(() => dt.preprocess(y0t, dt.string().optional().transform(Pmu)))),
   ($mu = ve(() =>
     dt.preprocess(

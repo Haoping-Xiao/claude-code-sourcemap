@@ -4,7 +4,7 @@
 // class=new  jaccard=0.016  score=0.2099  fileCov=0.017
 // note: nearest: src/services/teamMemorySync/secretScanner.ts (0.016); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Wso] deps: je, At, Jt, Fso, Gso
+// [unwrapped __esm module Wso] deps: utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, bridge/remoteBridgeCore.ts, screens/REPL.tsx
 Yip = {
   gdrive: "Google Drive",
   github: "GitHub",

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/loadPluginAgents.ts)  jaccard=0.1864  score=0.7863  fileCov=0.1963
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eer] deps: Qi, Uh, dn, M7, u_, lf, nC, w8, je, Cp, Iv, ys, pq, Xh, i5, zZn
+// [unwrapped __esm module eer] deps: lodash-es/memoize.js, services/analytics/metadata.ts, dn, tools/FileEditTool/constants.ts, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, p-map/index.js, utils/debug.ts, utils/tempfile.ts, hooks/useSettings.ts, utils/fsOperations.ts, utils/markdownConfigLoader.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/mcpPluginIntegration.ts, utils/plugins/loadPluginCommands.ts
 ((fLl = require("path")), (dLl = ["user", "project", "local"]));
 FYt = Cn(async () => {
   let { enabled: e, errors: t } = await mp();

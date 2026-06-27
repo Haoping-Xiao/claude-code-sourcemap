@@ -4,7 +4,7 @@
 // class=new  jaccard=0.022  score=0.3818  fileCov=0.0228
 // note: nearest: src/ink/components/Box.tsx (0.022); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qel] deps: Ye, eVe, je, oc
+// [unwrapped __esm module qel] deps: hooks/useTerminalSize.ts, hooks/toolPermission/permissionLogging.ts, utils/debug.ts, utils/nativeInstaller/download.ts
 Cvo = R(lt(), 1), Gel = require("path"), Qht = R(se(), 1), H8e = new Map();
 function NZp(e) {
   let t = Ivo.c(13),

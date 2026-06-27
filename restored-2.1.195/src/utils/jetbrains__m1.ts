@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/jetbrains.ts)  jaccard=0.3061  score=0.9748  fileCov=0.3086
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sFn] deps: nJe, XIa
+// [unwrapped __esm module sFn] deps: nJe, zod-to-json-schema/dist/esm/parsers/string.js
 mqe = iwp;
 function buildCommonPluginDirectoryPaths(ideName) {
   let t = x3t.homedir(),

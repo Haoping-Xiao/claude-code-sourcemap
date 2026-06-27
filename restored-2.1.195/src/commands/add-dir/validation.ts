@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4637  score=0.6161  fileCov=0.652
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ql] deps: Ye, WLn
+// [unwrapped __esm module ql] deps: hooks/useTerminalSize.ts, ink/styles.ts
 ((qJr = R(lt(), 1)), (X5i = R(rt(), 1)), (VJr = R(rt(), 1)), (tbe = R(se(), 1)));
 zJr = X5i.createContext(false);
 async function validateDirectoryForWorkspace(directoryPath, permissionContext) {

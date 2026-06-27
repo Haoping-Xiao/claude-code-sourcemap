@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1677  score=0.6464  fileCov=0.1846
 // note: low-confidence suggestion: src/tools/BashTool/sedEditParser.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ntl] deps: Ye, Rm, Lo, Dpe, ys, Rd, s6n, sr, R6, AMe, Kut
+// [unwrapped __esm module ntl] deps: hooks/useTerminalSize.ts, @grpc/grpc-js/build/src/server.js, utils/fsOperations.ts, utils/fileReadCache.ts, utils/fsOperations.ts, utils/settings/constants.ts, components/permissions/NotebookEditPermissionRequest/NotebookEditToolDiff.tsx, services/teamMemorySync/secretScanner.ts, components/AwsAuthStatusBox.tsx, components/permissions/FileWritePermissionRequest/FileWriteToolDiff.tsx, components/StructuredDiff.tsx
 Rvo = R(lt(), 1), etl = require("path"), i6n = R(rt(), 1), bN = R(se(), 1);
 function parseSedEditCommand(command) {
   let t = command.trim();

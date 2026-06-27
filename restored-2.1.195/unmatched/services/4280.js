@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zml] deps: Xa
+// [unwrapped __esm module zml] deps: @xmldom/xmldom/lib/entities.js
 Jko = `Execute a workflow script that orchestrates multiple subagents deterministically. Workflows run in the background \u2014 this tool returns immediately with a task ID, and a <task-notification> arrives when the workflow completes. Use /workflows to watch live progress.
 
 A workflow structures work across many agents \u2014 to be comprehensive (decompose and cover in parallel), to be confident (independent perspectives and adversarial checks before committing), or to take on scale one context can't hold (migrations, audits, broad sweeps). The script is where you encode that structure: what fans out, what verifies, what synthesizes.

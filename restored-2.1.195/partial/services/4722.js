@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0909  score=0.2886  fileCov=0.1171
 // note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> services; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LBl] deps: ft, Uh
+// [unwrapped __esm module LBl] deps: services/analytics/index.ts, services/analytics/metadata.ts
 NOf = {
   type: "local",
   name: "pause-memory",

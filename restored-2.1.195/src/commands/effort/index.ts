@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initialQuietIndexFor, initialIndexFor, call
-// [unwrapped __esm module UQl] deps: Cp, Isr, Ao
+// [unwrapped __esm module UQl] deps: utils/tempfile.ts, components/FastIcon.tsx, utils/agentContext.ts
 ((Rzf = {
   type: "local-jsx",
   name: "effort",

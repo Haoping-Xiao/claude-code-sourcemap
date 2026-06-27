@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0255  score=0.3308  fileCov=0.0269
 // note: nearest: src/ink/styles.ts (0.0255); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WLn] deps: _i, eUt, Ye
+// [unwrapped __esm module WLn] deps: components/design-system/Ratchet.tsx, components/VirtualMessageList.tsx, hooks/useTerminalSize.ts
 Y5i = R(lt(), 1), HGe = R(rt(), 1), WJr = R(se(), 1);
 function qn(e) {
   let t = qJr.c(11),

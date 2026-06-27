@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.01  score=0.0964  fileCov=0.0111
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module u5l] deps: HN, _i, Tc, Ye, hAt, uo, Cp, wr, es, uf, GXt, Ao, lEe, bCo, x8t, gor
+// [unwrapped __esm module u5l] deps: utils/plugins/pluginPolicy.ts, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, components/messages/AttachmentMessage.tsx, context/notifications.tsx, utils/tempfile.ts, main.tsx, utils/profilerBase.ts, main.tsx, components/LogoV2/feedConfigs.tsx, utils/agentContext.ts, components/shell/ShellTimeDisplay.tsx, components/LogoV2/AnimatedClawd.tsx, components/LogoV2/AnimatedClawd.tsx, bridge/bridgeApi.ts
 ((l5l = R(lt(), 1)), (yE = R(se(), 1)));
 function GITHUB_ISSUES_REPO_URL() {
   let e = d5l.c(63),

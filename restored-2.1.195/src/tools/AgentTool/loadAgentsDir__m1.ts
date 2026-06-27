@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module ty] deps: Qi, Xr, Uh, ANt, kt, MPn, bCe, gb, je, Cp, Iv, vn, pq, DE, eer, L7, lj, Jt, II, u_, lf, nC, IL, M7, gLl, wer
+// [unwrapped __esm module ty] deps: lodash-es/memoize.js, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/metadata.ts, outputStyles/loadOutputStylesDir.ts, utils/debug.ts, tools/FileWriteTool/prompt.ts, utils/plugins/schemas.ts, utils/plugins/schemas.ts, utils/debug.ts, utils/tempfile.ts, hooks/useSettings.ts, utils/sequential.ts, utils/markdownConfigLoader.ts, utils/permissions/PermissionMode.ts, utils/plugins/loadPluginAgents.ts, utils/hooks/hooksConfigSnapshot.ts, utils/settings/types.ts, utils/fsOperations.ts, utils/plugins/addDirPluginSettings.ts, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, tools/AgentTool/agentColorManager.ts, tools/FileEditTool/constants.ts, tools/AgentTool/built-in/claudeCodeGuideAgent.ts, tools/AgentTool/loadAgentsDir.ts
 ((vLl = require("path")), (wLl = ve(() => H.union([H.string(), H.record(H.string(), Nae())]))));
 ((CLl = ve(() =>
   H.object({

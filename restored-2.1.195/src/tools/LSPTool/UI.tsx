@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3817  score=0.5442  fileCov=0.5611
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lbl] deps: Q8, E5, ql, Ye, oc, co, nbl
+// [unwrapped __esm module lbl] deps: react/cjs/react.production.js, components/VirtualMessageList.tsx, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, utils/messages.ts, tools/LSPTool/UI.tsx
 ((rbl = R(lt(), 1)),
   (Lk = R(se(), 1)),
   (Mgf = {

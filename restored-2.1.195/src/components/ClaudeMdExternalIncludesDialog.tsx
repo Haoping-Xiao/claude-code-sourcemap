@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: recordExternalIncludesDecision, ClaudeMdExternalIncludesDialog
-// [unwrapped __esm module ptr] deps: sFn, v5, kt, NE, Xa, Ye, ps, uo, Cp, rle, Ao, LMl, c5e, dr, Cc, mE, Bs, Ko, zX, eE, m1o
+// [unwrapped __esm module ptr] deps: utils/jetbrains.ts, components/permissions/PermissionRequestTitle.tsx, utils/debug.ts, utils/modelCost.ts, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/notifications.tsx, utils/tempfile.ts, utils/model/bedrock.ts, utils/agentContext.ts, components/PromptInput/PromptInput.tsx, query.ts, utils/settings/settings.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, utils/terminal.ts, components/design-system/Dialog.tsx, components/ModelPicker.tsx
 ((h1o = R(lt(), 1)), ($Oe = R(rt(), 1)), (Xg = R(se(), 1)));
 function recordExternalIncludesDecision(e, t) {
   (pH((n) => ({

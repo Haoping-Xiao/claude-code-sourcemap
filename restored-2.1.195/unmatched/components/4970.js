@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.003); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Y9l] deps: si, Zf, fH, O0, dse, _i, m8, Ye, ps, nk, rq, fn, es, vf, dr, sr, Cc, vi, B_, nUo, Pfe
+// [unwrapped __esm module Y9l] deps: @xmldom/xmldom/lib/entities.js, utils/sessionStorage.ts, react/cjs/react.production.js, commander/lib/command.js, hooks/useSearchInput.ts, components/design-system/Ratchet.tsx, m8, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, nk, skills/loadSkillsDir.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/profilerBase.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, react/cjs/react.production.js, components/Settings/Config.tsx
 V9l = R(lt(), 1), r2 = R(rt(), 1), ix = R(se(), 1), Z2o = ["on", "name-only", "user-invocable-only", "off"], JWf = {
   on: {
     glyph: nt.tick,

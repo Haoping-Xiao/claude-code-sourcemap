@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0036  score=0.0858  fileCov=0.0037
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zCo] deps: Mce, AW, Ye, uo, ql
+// [unwrapped __esm module zCo] deps: ink/termio/types.ts, ink/supports-hyperlinks.ts, hooks/useTerminalSize.ts, context/notifications.tsx, commands/add-dir/validation.ts
 ((hil = R(lt(), 1)), (yil = require("url")), (CAe = R(se(), 1)));
 function jzn(e) {
   if (e.startsWith(`<${DB} `)) return true;

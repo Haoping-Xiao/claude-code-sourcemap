@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3094  score=0.6033  fileCov=0.3883
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zMc] deps: kt, R0e, O0, Ye, ps, dn, oo, Rnt, er, wr, fn, LMc, p7o, WVt, Bs, Fy, hse, Ko, FZt, OMc, utr, GMc
+// [unwrapped __esm module zMc] deps: utils/debug.ts, commands/terminalSetup/terminalSetup.tsx, commander/lib/command.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, dn, utils/http.ts, @smithy/smithy-client/dist-cjs/index.js, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, components/ApproveApiKey.tsx, components/permissions/PermissionDialog.tsx, components/TeleportStash.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ValidationErrorsList.tsx, components/ConfigurableShortcutHint.tsx, screens/REPL.tsx, components/ui/OrderedListItem.tsx, keybindings/validate.ts, components/Onboarding.tsx
 ((WMc = R(lt(), 1)), (MZ = R(rt(), 1)), (vm = R(se(), 1)));
 function KMc(e) {
   if (e === null) return false;

@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: performLogout, fleetHostLogout, clearAuthRelatedCaches, call
-// [unwrapped __esm module nAo] deps: X6r, rzr, NUa, Gwe, ft, oo, Is, Vet, fd, je, fn, At, peo, drt, u9, qd, Mh, dr, Jt, sG, WSe, GUa, rpo, KUa, XUa, Xdt, m5
+// [unwrapped __esm module nAo] deps: @opentelemetry/sdk-logs/build/src/LogRecordImpl.js, utils/managedEnv.ts, services/api/metricsOptOut.ts, lodash-es/_arrayPush.js, services/analytics/index.ts, utils/http.ts, utils/platform.ts, utils/caCerts.ts, utils/debugFilter.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/telemetryAttributes.ts, utils/sleep.ts, utils/mtls.ts, utils/log.ts, utils/proxy.ts, utils/settings/settings.ts, utils/fsOperations.ts, @ant/claude-for-chrome-mcp/src/mcpSocketClient.ts, follow-redirects/index.js, @opentelemetry/otlp-exporter-base/build/src/otlp-export-delegate.js, utils/telemetry/perfettoTracing.ts, utils/telemetry/logger.ts, XUa, utils/telemetry/sessionTracing.ts, @smithy/core/dist-cjs/submodules/cbor/index.js
 ((ioe = R(qi(), 1)),
   (F6a = R(Nh(), 1)),
   (NJ = R(Hst(), 1)),

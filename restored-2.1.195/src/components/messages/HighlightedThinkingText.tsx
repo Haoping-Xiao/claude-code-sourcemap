@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1743  score=0.2431  fileCov=0.3811
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oIo] deps: m0, sr
+// [unwrapped __esm module oIo] deps: ink/line-width-cache.ts, services/teamMemorySync/secretScanner.ts
 ((Xof = {
   hour: "numeric",
   minute: "2-digit",

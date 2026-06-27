@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5923  score=0.8163  fileCov=0.6834
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gAe] deps: Xr, ii, Lo, At, oc, ys, Hu, Yf, w5e, q9t, tre, PDe, Gpt, sr, lC, Il, jtl
+// [unwrapped __esm module gAe] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/fsOperations.ts, utils/errors.ts, utils/nativeInstaller/download.ts, utils/fsOperations.ts, utils/file.ts, utils/task/diskOutput.ts, services/mcp/vscodeSdkMcp.ts, utils/glob.ts, utils/ripgrep.ts, utils/semanticNumber.ts, components/FallbackToolUseErrorMessage.tsx, services/teamMemorySync/secretScanner.ts, tools/PowerShellTool/PowerShellTool.tsx, Il, tools/GrepTool/GrepTool.ts
 ((Mef = ve(() =>
   H.strictObject({
     pattern: H.string().describe("The regular expression pattern to search for in file contents"),

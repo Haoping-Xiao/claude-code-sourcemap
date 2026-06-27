@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: spawnBackgroundFork, deriveBackgroundSeed, call
-// [unwrapped __esm module qar] deps: zb, ft, np, dn, kt, S_, tfe, D6e, $S, CWo, Pw, Rm, je, wr, At, iKe, ys, YS, bm, Yf, y_, _a, Jt, OI
+// [unwrapped __esm module qar] deps: zod/v4/classic/schemas.js, services/analytics/index.ts, env-paths/index.js, dn, utils/debug.ts, tasks/LocalShellTask/LocalShellTask.tsx, @aws-sdk/client-bedrock/dist-cjs/index.js, tools/AgentTool/loadAgentsDir.ts, google-auth-library/build/src/crypto/node/crypto.js, utils/sessionStorage.ts, utils/fileRead.ts, @grpc/grpc-js/build/src/server.js, utils/debug.ts, main.tsx, utils/errors.ts, Task.ts, utils/fsOperations.ts, utils/teammateContext.ts, utils/messageQueueManager.ts, utils/task/diskOutput.ts, utils/stats.ts, utils/plans.ts, utils/fsOperations.ts, fast-xml-parser/lib/fxp.cjs
 ((soc = require("crypto")),
   (DC = require("fs/promises")),
   (Fse = require("path")),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3296  score=1  fileCov=0.3296
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lpt] deps: Un, GY, oo, fn
+// [unwrapped __esm module lpt] deps: services/analytics/growthbook.ts, utils/signal.ts, utils/http.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 fRa = {
   enabled: false,
   pixelValidation: false,

@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PrivacySettingsDialog, GroveDialog
-// [unwrapped __esm module Zzl] deps: ZKe
+// [unwrapped __esm module Zzl] deps: components/LogoV2/GuestPassesUpsell.tsx
 Vjo = {
   type: "local-jsx",
   name: "passes",

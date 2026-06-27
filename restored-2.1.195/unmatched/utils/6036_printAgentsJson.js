@@ -5,7 +5,7 @@
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0093); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: printAgentsJson
-// [unwrapped __esm module S5c] deps: ft, mE, Ye, S6, dn, C5, Pw, er, fn, At, sa, Hu, jS, Jt, bk, JN
+// [unwrapped __esm module S5c] deps: services/analytics/index.ts, components/ThemePicker.tsx, hooks/useTerminalSize.ts, utils/mailbox.ts, dn, utils/renderOptions.ts, utils/fileRead.ts, utils/config.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/git.ts, utils/file.ts, utils/path.ts, utils/fsOperations.ts, utils/tasks.ts, main.tsx
 xZo = require("fs"), dve = require("fs/promises"), pO = require("path"), ihr = require("readline"), cXe = R(se(), 1), zOm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 async function printAgentsJson(e, t) {
   let n = e ? await jA(cwt.resolve(e)) : void 0;

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1266  score=0.1672  fileCov=0.3426
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module PHl] deps: PLo
+// [unwrapped __esm module PHl] deps: tools/PowerShellTool/PowerShellTool.tsx
 B_f = new Map([
   ["grep", MLo],
   ["rg", MLo],

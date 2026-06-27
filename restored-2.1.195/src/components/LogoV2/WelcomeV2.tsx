@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4482  score=0.5552  fileCov=0.6994
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cNe] deps: si, ZUt, mdc, inr, Ye, S6, dn, a4n, kt, Cre, BI, Kv, Apo, Ox, cTt, g$, w9o, C5, er, je, At, Yp, Rd, Is, zH, Dgt, L7, dr, LPe, JN, I9o
+// [unwrapped __esm module cNe] deps: @xmldom/xmldom/lib/entities.js, tools/SkillTool/SkillTool.ts, services/mcp/config.ts, utils/auth.ts, hooks/useTerminalSize.ts, utils/mailbox.ts, dn, a4n, utils/debug.ts, services/mcp/auth.ts, services/mcp/client.ts, services/mcp/utils.ts, services/mcp/SdkControlTransport.ts, Ox, components/MCPServerDialogCopy.tsx, services/mcp/xaa.ts, utils/plugins/pluginBlocklist.ts, utils/renderOptions.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/gracefulShutdown.ts, utils/settings/constants.ts, utils/platform.ts, services/teamMemorySync/secretScanner.ts, utils/status.tsx, utils/hooks/hooksConfigSnapshot.ts, utils/settings/settings.ts, utils/localInstaller.ts, main.tsx, I9o
 ((Kdc = R(lt(), 1)),
   (Ydc = require("fs/promises")),
   (Xdc = require("process")),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1512  score=0.4222  fileCov=0.1907
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ahc] deps: Shc, Ye, es
+// [unwrapped __esm module Ahc] deps: node-forge/lib/x509.js, hooks/useTerminalSize.ts, utils/profilerBase.ts
 Xur = R(se(), 1);
 function TokenWarning(t0) {
   let t = Hhc.c(13),

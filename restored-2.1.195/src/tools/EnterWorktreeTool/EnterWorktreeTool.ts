@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2828  score=0.402  fileCov=0.4883
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ebl] deps: Xr, ft, GF, Izt, kt, ii, dC, Lo, je, At, gM, sa, KI, _$, _a, aR, _bl
+// [unwrapped __esm module Ebl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, constants/systemPromptSections.ts, tools/EnterWorktreeTool/EnterWorktreeTool.ts, utils/debug.ts, services/mockRateLimits.ts, utils/claudemd.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/teleport.tsx, utils/git.ts, utils/permissions/filesystem.ts, utils/Shell.ts, utils/plans.ts, constants/prompts.ts, _bl
 ((bbl = require("path")),
   (Kgf = ve(() =>
     H.strictObject({

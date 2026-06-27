@@ -5,7 +5,7 @@
 // note: deminified; 26 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stripHtmlComments, shouldShowClaudeMdExternalIncludesWarning, resetGetMemoryFilesCache, processMemoryFile, processMdRules, processConditionedMdRules, isSyntheticMemoryPath, isMemoryFilePath, hasExternalClaudeMdIncludes, getMemoryFilesForNestedDirectory, getMemoryFiles, getMaxMemoryCharacterCount, getManagedAndUserConditionalRules, getLargeMemoryFiles, getExternalClaudeMdIncludes, getConditionalRulesForCwdLevelDirectory, getClaudeMds, getAllMemoryFilePaths, filterInjectedMemoryFi …
-// [unwrapped __esm module ik] deps: YZe
+// [unwrapped __esm module ik] deps: lru-cache/dist/esm/index.js
 fjt = require("path");
 function isSyntheticMemoryPath(e) {
   return e === RLr || e === MANAGED_SETTINGS_CLAUDEMD_PATH;

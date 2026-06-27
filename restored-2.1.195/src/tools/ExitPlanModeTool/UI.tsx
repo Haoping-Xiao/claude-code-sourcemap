@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1009  score=0.1971  fileCov=0.1714
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lwo] deps: AN, ql, Ye
+// [unwrapped __esm module lwo] deps: ink/styles.ts, commands/add-dir/validation.ts, hooks/useTerminalSize.ts
 ((Gnl = R(lt(), 1)), (k8e = R(se(), 1)));
 function Wnl() {
   return null;

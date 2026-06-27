@@ -4,7 +4,7 @@
 // class=modified (alt of src/constants/oauth.ts)  jaccard=0.2315  score=0.7815  fileCov=0.2475
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Rc] deps: fn
+// [unwrapped __esm module Rc] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((Bms = [Bhu, qwe]),
   (Aae = [qwe, xB, "user:sessions:claude_code", "user:mcp_servers", "user:file_upload", ...[]]),
   (FIr = Uo([...Bms, ...Aae])),

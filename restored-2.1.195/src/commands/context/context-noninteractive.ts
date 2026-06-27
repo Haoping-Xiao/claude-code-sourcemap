@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3083  score=0.7559  fileCov=0.3424
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A1l] deps: Ye, y1l, oc, es, Ao, vf, sr, S1l, xoe
+// [unwrapped __esm module A1l] deps: hooks/useTerminalSize.ts, components/ContextSuggestions.tsx, utils/nativeInstaller/download.ts, utils/profilerBase.ts, utils/agentContext.ts, utils/settings/changeDetector.ts, services/teamMemorySync/secretScanner.ts, components/ContextVisualization.tsx, components/AgentProgressLine.tsx
 ((Xtr = R(lt(), 1)), (Pi = R(se(), 1)));
 zPf = ["Project", "User", "Managed", "Plugin", "MCP", "Built-in"];
 function formatContextAsMarkdownTable(data, t) {

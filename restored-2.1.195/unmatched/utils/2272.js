@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0123  score=1  fileCov=0.0123
 // note: nearest: src/services/analytics/firstPartyEventLoggingExporter.ts (0.0123); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ece] deps: MBi, FBi
+// [unwrapped __esm module Ece] deps: readdirp/esm/index.js, chokidar/esm/handler.js
 zBi = require("fs"), M0n = require("fs/promises"), KBi = require("events"), Dg = R(require("path")); /*! chokidar - MIT License (c) 2012 Paul Miller (paulmillr.com) */
 lBd = /\\/g, jBi = /\/\//, cBd = /\..*\.(sw[px])$|~$|\.subl.*\.tmp/, uBd = /^\.[/\\]/;
 gBd = Object.freeze(new Set());

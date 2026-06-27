@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3226  score=0.4399  fileCov=0.5476
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module d$o] deps: zb, Pw, fd, je, At, YS, Rd, Jt, B1
+// [unwrapped __esm module d$o] deps: zod/v4/classic/schemas.js, utils/fileRead.ts, utils/debugFilter.ts, utils/debug.ts, utils/errors.ts, utils/teammateContext.ts, utils/settings/constants.ts, utils/fsOperations.ts, tools/SkillTool/prompt.ts
 ((iz = require("fs/promises")),
   (LSt = require("path")),
   (CIf = ve(() =>

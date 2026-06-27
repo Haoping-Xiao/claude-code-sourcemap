@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4625  score=0.8447  fileCov=0.5054
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ist] deps: kt, fd, Lx, fn
+// [unwrapped __esm module Ist] deps: utils/debug.ts, utils/debugFilter.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((mzr = require("fs")), (Q$i = new Map()));
 ((T$d = ["bash_shell", "mcp_stdio", "lsp", "other"]), (Cst = new Map()));
 function getTokenFromFileDescriptor() {

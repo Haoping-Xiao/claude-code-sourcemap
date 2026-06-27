@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3542  score=0.5079  fileCov=0.5392
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module G4] deps: si, Qi, Nlc, gb, Lo, je, YZn, dr, II
+// [unwrapped __esm module G4] deps: @xmldom/xmldom/lib/entities.js, lodash-es/memoize.js, outputStyles/loadOutputStylesDir.ts, utils/plugins/schemas.ts, utils/fsOperations.ts, utils/debug.ts, utils/plugins/zipCache.ts, utils/settings/settings.ts, utils/plugins/addDirPluginSettings.ts
 ((Blc = `
 ## Insights
 In order to encourage learning, before and after writing code, always provide brief educational explanations about implementation choices using (with backticks):

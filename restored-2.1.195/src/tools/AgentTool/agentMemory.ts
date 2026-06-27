@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4486  score=0.9266  fileCov=0.4651
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GNt] deps: dn, Un, kt, iit, CNi, je, fn, At, es, ys, k0, dr, LNi, UNt, Uh, MM, NNi
+// [unwrapped __esm module GNt] deps: dn, services/analytics/growthbook.ts, utils/debug.ts, utils/plugins/schemas.ts, memdir/memoryTypes.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/profilerBase.ts, utils/fsOperations.ts, k0, utils/settings/settings.ts, memdir/memoryTypes.ts, memdir/memoryTypes.ts, services/analytics/metadata.ts, memdir/teamMemPrompts.ts, memdir/memdir.ts
 BNi = require("path");
 function WNi(e) {
   let t = e.replace(/[^a-zA-Z0-9\-_]/g, "-");

@@ -5,7 +5,7 @@
 // note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setHasFormattedOutput, resetDebugLogRotationForTest, resetDebugCaches, maybeRotateDebugLog, logForDebugging, logAntError, isDebugToStdErr, isDebugMode, getMinDebugLogLevel, getHasFormattedOutput, getDebugLogPath, getDebugFilter, getDebugFilePath, flushDebugLogs, enableDebugLogging
-// [unwrapped __esm module zH] deps: sr
+// [unwrapped __esm module zH] deps: services/teamMemorySync/secretScanner.ts
 ((gis =
   /api[_-]?key|secret|token|password|passwd|credential|bearer|authorization|auth[_-]?header|cookie|session[_-]?(?:id|key)|connection[_-]?string|(?:private|ssh|encryption|signing|access|deploy|master|license)[_-]?key|client[_-]?secret/i),
   (b7c = `[^\\s-]{0,4}${his}['"\`]?`),

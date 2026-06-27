@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.0093  score=0.0588  fileCov=0.0109
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uXa] deps: Ye, Vl, wb, vH, H9n
+// [unwrapped __esm module uXa] deps: hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts, @ant/computer-use-mcp/src/toolCalls.ts, vH, @modelcontextprotocol/sdk/dist/esm/client/auth.js
 ((lXa = R(lt(), 1)), (nht = R(se(), 1)));
 function InstallGitHubApp() {
   let e = dXa.c(17),

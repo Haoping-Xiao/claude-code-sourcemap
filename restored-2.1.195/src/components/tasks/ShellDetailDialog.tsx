@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3145  score=0.4269  fileCov=0.5444
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module djo] deps: si, Xa, Yyt, Ye, JJ, fh, G1, vy, At, es, H1e, co, sr, gP, Vl, Bs, Fy, vi, Ko, gm, d_t, ljo
+// [unwrapped __esm module djo] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, components/messages/CollapsedReadSearchContent.tsx, hooks/useTerminalSize.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, commands/insights.ts, tools/AskUserQuestionTool/prompt.ts, @mixmark-io/domino/lib/htmlelts.js, utils/errors.ts, utils/profilerBase.ts, components/tasks/RemoteSessionDetailDialog.tsx, utils/messages.ts, services/teamMemorySync/secretScanner.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, undici/lib/mock/mock-agent.js, tools/AgentTool/built-in/generalPurposeAgent.ts, components/tasks/ShellProgress.tsx
 ((usr = R(lt(), 1)), (R8l = R(rt(), 1)), (aYe = R(rt(), 1)), (fa = R(se(), 1)));
 ((d5f = {
   needs_input: "input required",

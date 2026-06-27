@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0316  score=0.0477  fileCov=0.0855
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module z6o] deps: si, uo, SC, loe, W_c, fzn, q6o, _i, Ye, Un, atr, JFo, Ko, eKn
+// [unwrapped __esm module z6o] deps: @xmldom/xmldom/lib/entities.js, context/notifications.tsx, utils/config.ts, utils/swarm/constants.ts, hooks/useIdeConnectionStatus.ts, components/Settings/Config.tsx, @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, components/PackageManagerAutoUpdater.tsx, memdir/paths.ts, components/ConfigurableShortcutHint.tsx, components/messages/teamMemCollapsed.tsx
 ((kdr = R(lt(), 1)),
   (V_c = require("path")),
   (z_c = R(rt(), 1)),

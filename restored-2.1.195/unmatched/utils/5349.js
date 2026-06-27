@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0397  score=0.1922  fileCov=0.0477
 // note: nearest: src/components/messageActions.tsx (0.0397); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ycr] deps: IB, dn, vy, je, At, sr, g0
+// [unwrapped __esm module Ycr] deps: constants/keys.ts, dn, @mixmark-io/domino/lib/htmlelts.js, utils/debug.ts, utils/errors.ts, services/teamMemorySync/secretScanner.ts, utils/format.ts
 wdc = UZt * 4, Tdc = wdc * 10;
 Rim = Cn(e => {
   T(`[footerLinks] skipping a 'regex' entry with non-string fields (pattern/url/label types: ${e}); the entry is preserved in settings`, {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0116  score=0.2128  fileCov=0.0121
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0116); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FAe] deps: zb, Jt
+// [unwrapped __esm module FAe] deps: zod/v4/classic/schemas.js, utils/fsOperations.ts
 idf = ve(() => dt.object({
   state: dt.string().nullish(),
   detail: dt.string().nullish(),

@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startMdmRawRead, getMdmRawReadPromise, fireRawRead
-// [unwrapped __esm module ICe] deps: xpn, kvs, ORt, je, Mm, fn, At, PB, ys, Rd, Is, Jt, vf, hY, mCe, Sx, lj, oLt
+// [unwrapped __esm module ICe] deps: utils/cwd.ts, services/remoteManagedSettings/syncCacheState.ts, ORt, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/platform.ts, utils/fsOperations.ts, utils/settings/constants.ts, utils/platform.ts, utils/fsOperations.ts, utils/settings/changeDetector.ts, utils/settings/managedPath.ts, mCe, Sx, utils/settings/types.ts, utils/settings/settings.ts
 qO = require("path");
 function Xws(e, t) {
   return new Promise((n) => {

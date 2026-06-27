@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.47  score=0.6214  fileCov=0.6586
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eJl] deps: fH, _i, Ye, kt, uf, Vl, vi, zX
+// [unwrapped __esm module eJl] deps: react/cjs/react.production.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/debug.ts, main.tsx, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, utils/terminal.ts
 ((QXl = R(lt(), 1)), (aTe = R(se(), 1)));
 function rJl() {
   return (_a(), ro(nVe));

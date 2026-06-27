@@ -4,7 +4,7 @@
 // class=new  jaccard=0.009  score=0.3082  fileCov=0.0092
 // note: nearest: src/cli/print.ts (0.009); dir inferred from dep-graph -> context; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module g_c] deps: si, uo, iKn, Ye, YHe
+// [unwrapped __esm module g_c] deps: @xmldom/xmldom/lib/entities.js, context/notifications.tsx, tasks/LocalAgentTask/LocalAgentTask.tsx, hooks/useTerminalSize.ts, components/tasks/AsyncAgentDetailDialog.tsx
 $6o = R(lt(), 1), m_c = R(rt(), 1), FTe = R(se(), 1);
 function y_c(e, t) {
   let n = new Set();

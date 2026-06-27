@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.008  score=0.0373  fileCov=0.0101
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Smn] deps: ih
+// [unwrapped __esm module Smn] deps: bootstrap/state.ts
 Fet = Mi();
 async function Emn(e, t) {
   if (sCs) return null;

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.317  score=0.6621  fileCov=0.3782
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vYt] deps: Qi, ft, dn, rq, iDo, w8, wGt, Il, gb, je, Cp, At, Iv, ys, pq, Ao, hze, lj, sDo, Xh, i5, zZn
+// [unwrapped __esm module vYt] deps: lodash-es/memoize.js, services/analytics/index.ts, dn, skills/loadSkillsDir.ts, iDo, p-map/index.js, utils/plugins/marketplaceHelpers.ts, Il, utils/plugins/schemas.ts, utils/debug.ts, utils/tempfile.ts, utils/errors.ts, hooks/useSettings.ts, utils/fsOperations.ts, utils/markdownConfigLoader.ts, utils/agentContext.ts, utils/promptShellExecution.ts, utils/settings/types.ts, sDo, utils/plugins/loadPluginAgents.ts, utils/plugins/mcpPluginIntegration.ts, utils/plugins/loadPluginCommands.ts
 ((X0l = require("fs/promises")), (Bk = require("path")));
 Vze = Cn(async () => {
   if (

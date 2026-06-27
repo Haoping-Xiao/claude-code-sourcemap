@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sharp, getNativeModule, default
-// [unwrapped __esm module kne] deps: kt, xne, H0e
+// [unwrapped __esm module kne] deps: utils/debug.ts, utils/debug.ts, keybindings/defaultBindings.ts
 Tqi = new Set();
 function getNativeModule() {
   if (vqi) return sDn;

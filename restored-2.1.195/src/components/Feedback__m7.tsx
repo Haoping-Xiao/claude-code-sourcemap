@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shutdownErrorTracking, isErrorTrackingCapReached, flushErrorTracking, enqueueErrorLog, _resetForTesting, DD_BROWSER_INTAKE
-// [unwrapped __esm module SJ] deps: Hp, Qi, Rc, dn, Un, je, At, Ls, Is, qd, R9, Jt, sVe
+// [unwrapped __esm module SJ] deps: axios/lib/axios.js, lodash-es/memoize.js, constants/oauth.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, utils/errors.ts, utils/status.tsx, utils/platform.ts, utils/log.ts, utils/errors.ts, utils/fsOperations.ts, bridge/trustedDevice.ts
 UOa = require("os");
 KDe = Cn(async () => {
   let e = process.env.CLAUDE_TRUSTED_DEVICE_TOKEN;

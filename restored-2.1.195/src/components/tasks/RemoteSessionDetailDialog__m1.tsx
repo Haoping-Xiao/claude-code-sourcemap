@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/tasks/RemoteSessionDetailDialog.tsx)  jaccard=0.0232  score=0.1814  fileCov=0.0259
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yYo] deps: Ye, uRc, pfr
+// [unwrapped __esm module yYo] deps: hooks/useTerminalSize.ts, components/PromptInput/PromptInput.tsx, components/FeedbackSurvey/FeedbackSurveyView.tsx
 ((hRc = R(lt(), 1)),
   (FNe = R(se(), 1)),
   (fRc = {

@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/debugUtils.ts)  jaccard=0.1228  score=0.2007  fileCov=0.2405
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cde] deps: kt, je, At, Jt
+// [unwrapped __esm module Cde] deps: utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts
 ((IDp = ["session_ingress_token", "environment_secret", "access_token", "secret", "token"]),
   (xDp = new RegExp(`"(${IDp.join("|")})"\\s*:\\s*"([^"]*)"`, "g")));
 function describeAxiosError(err) {

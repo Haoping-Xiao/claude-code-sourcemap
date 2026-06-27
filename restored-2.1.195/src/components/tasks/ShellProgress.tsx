@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.359  score=0.5879  fileCov=0.4798
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ljo] deps: Xa, w4, Ye, Mne, m1, Ko
+// [unwrapped __esm module ljo] deps: @xmldom/xmldom/lib/entities.js, highlight.js/lib/languages/reasonml.js, hooks/useTerminalSize.ts, components/TextInput.tsx, utils/thinking.ts, components/ConfigurableShortcutHint.tsx
 ((lsr = R(lt(), 1)), (ijo = R(rt(), 1)), ($H = R(se(), 1)));
 function TaskStatusText(t0) {
   let t = cjo.c(4),

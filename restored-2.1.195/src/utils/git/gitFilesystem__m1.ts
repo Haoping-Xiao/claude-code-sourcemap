@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/git/gitFilesystem.ts)  jaccard=0.0199  score=0.2695  fileCov=0.0211
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module W0r] deps: vn
+// [unwrapped __esm module W0r] deps: utils/sequential.ts
 vTs = require("fs");
 async function resolveRefInDir(dir, ref) {
   let n = Buffer.from(ref, "utf-8"),

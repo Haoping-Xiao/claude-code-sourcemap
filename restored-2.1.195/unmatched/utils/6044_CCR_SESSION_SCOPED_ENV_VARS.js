@@ -5,7 +5,7 @@
 // note: nearest: node_modules/commander/lib/command.js (0.0126); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runPreload, PRELOAD_CLAIM_SOCK, CCR_SESSION_SCOPED_ENV_VARS
-// [unwrapped __esm module BZo] deps: dn, kt, je, wr, At, Hpe, WGe, Is, Jt, ZVo, c9o, WL, cKe, ESt, FK
+// [unwrapped __esm module BZo] deps: dn, utils/debug.ts, utils/debug.ts, main.tsx, utils/errors.ts, utils/peerAddress.ts, utils/managedEnvConstants.ts, utils/platform.ts, utils/fsOperations.ts, services/PromptSuggestion/speculation.ts, @inquirer/figures/dist/esm/index.js, utils/git.ts, @smithy/core/dist-cjs/submodules/cbor/index.js, commands/bridge-kick.ts, utils/process.ts
 fhr = require("crypto"), Y5c = require("fs"), XP = require("fs/promises"), ghr = require("net"), mhr = require("path");
 K5c = [50, 100, 150, 200, 250, 300, 400, 500, 500, 500];
 async function runPreload(e) {

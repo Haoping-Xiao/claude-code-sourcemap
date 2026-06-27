@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.0093  score=0.1071  fileCov=0.0101
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module n9l] deps: fn
+// [unwrapped __esm module n9l] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs
 t9l = {
   type: "local-jsx",
   name: "setup-vertex",

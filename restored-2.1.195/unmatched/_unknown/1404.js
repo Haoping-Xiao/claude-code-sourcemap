@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0195  score=1  fileCov=0.0195
 // note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0195); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vFr] deps: pb, _v, Bw
+// [unwrapped __esm module vFr] deps: @aws-sdk/client-cognito-identity/dist-cjs/auth/httpAuthSchemeProvider.js, @aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js, @aws-sdk/client-cognito-identity/dist-cjs/index.js
 ari = R(yo(), 1);
 wPt = class wPt extends Vd.classBuilder().ep(vp).m(function (e, t, n, r) {
   return [ari.getEndpointPlugin(n, e.getEndpointParameterInstructions())];

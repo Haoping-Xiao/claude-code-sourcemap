@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0022  score=0.2429  fileCov=0.0022
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bJt] deps: ft, FK, fd, X6l, Yp, QEe, y_, _a
+// [unwrapped __esm module bJt] deps: services/analytics/index.ts, utils/process.ts, utils/debugFilter.ts, main.tsx, utils/gracefulShutdown.ts, commander/lib/command.js, utils/stats.ts, utils/plans.ts
 ((J6l = require("child_process")),
   (Q6l = require("fs/promises")),
   (Z6l = require("os")),

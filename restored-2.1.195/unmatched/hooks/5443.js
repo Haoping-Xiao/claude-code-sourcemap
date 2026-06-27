@@ -4,7 +4,7 @@
 // class=new  jaccard=0.009  score=0.3304  fileCov=0.0091
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.009); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vhc] deps: Ye, ZU, X8o, uo, wr, uzn
+// [unwrapped __esm module vhc] deps: hooks/useTerminalSize.ts, utils/analyzeContext.ts, components/HelpV2/HelpV2.tsx, context/notifications.tsx, main.tsx, ink/selection.ts
 Hhc = R(lt(), 1), hdm = R(rt(), 1), r6o = R(se(), 1);
 function Chc({
   withSeparator: e

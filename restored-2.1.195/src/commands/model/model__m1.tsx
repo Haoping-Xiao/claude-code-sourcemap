@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module OJt] deps: BE, DD, Ao, Ls
+// [unwrapped __esm module OJt] deps: has-flag/index.js, utils/model/modelOptions.ts, utils/agentContext.ts, utils/status.tsx
 UJl = {
   "claude-opus-4-1": {
     modelName: "Claude Opus 4.1",

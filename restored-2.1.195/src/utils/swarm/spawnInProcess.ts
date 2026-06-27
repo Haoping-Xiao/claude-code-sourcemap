@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3097  score=0.5187  fileCov=0.4345
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hP] deps: ft, dn, je, fn, At, Bi, sa, vn, Jt, Mp, d9t, hN
+// [unwrapped __esm module hP] deps: services/analytics/index.ts, dn, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/git.ts, utils/sequential.ts, utils/fsOperations.ts, utils/concurrentSessions.ts, utils/swarm/teamHelpers.ts, utils/swarm/backends/detection.ts
 ((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));
 lZp = {
   realpath: false,

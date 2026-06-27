@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.011  score=0.1161  fileCov=0.012
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JUl] deps: pz, R6, Ye
+// [unwrapped __esm module JUl] deps: utils/plugins/loadPluginCommands.ts, components/AwsAuthStatusBox.tsx, hooks/useTerminalSize.ts
 ((YUl = R(lt(), 1)), (zfe = R(se(), 1)));
 function ZUl(e) {
   let t = QUl.c(15),

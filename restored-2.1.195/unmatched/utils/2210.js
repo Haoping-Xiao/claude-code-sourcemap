@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0103  score=0.2331  fileCov=0.0107
 // note: nearest: src/utils/permissions/permissionSetup.ts (0.0103); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module T3e] deps: Xr, Jt
+// [unwrapped __esm module T3e] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/fsOperations.ts
 t1i = Object.freeze({
   toolSearchReminder: null,
   toolParamStrictness: false,

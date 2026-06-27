@@ -4,7 +4,7 @@
 // class=new  jaccard=0.004  score=0.1318  fileCov=0.0041
 // note: nearest: src/screens/REPL.tsx (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BNo] deps: Ye
+// [unwrapped __esm module BNo] deps: hooks/useTerminalSize.ts
 LNl = R(lt(), 1), NNo = R(se(), 1);
 function FNo(e) {
   let t = e.slice(0, UNo).join(", ");

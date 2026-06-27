@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0457  score=0.427  fileCov=0.0487
 // note: nearest: src/commands/brief.ts (0.0457); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SUl] deps: Ko, CH, Mg, Rc, _i, jh, Ye, kt, H0, S9e, HXn, je, At, vn
+// [unwrapped __esm module SUl] deps: components/ConfigurableShortcutHint.tsx, @smithy/types/dist-cjs/index.js, components/ScrollKeybindingHandler.tsx, constants/oauth.ts, components/design-system/Ratchet.tsx, utils/env.ts, hooks/useTerminalSize.ts, utils/debug.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, utils/staticRender.tsx, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/debug.ts, utils/errors.ts, utils/sequential.ts
 hUl = R(lt(), 1), Y$ = R(rt(), 1), SS = R(se(), 1);
 var EUl = () => ({
   type: "local-jsx",

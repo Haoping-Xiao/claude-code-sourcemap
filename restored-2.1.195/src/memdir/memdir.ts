@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3241  score=0.5946  fileCov=0.4161
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NNi] deps: UNt, Uh, MM
+// [unwrapped __esm module NNi] deps: memdir/memoryTypes.ts, services/analytics/metadata.ts, memdir/teamMemPrompts.ts
 p0n = require("path");
 function truncateEntrypointContent(raw) {
   let t = raw.trim(),

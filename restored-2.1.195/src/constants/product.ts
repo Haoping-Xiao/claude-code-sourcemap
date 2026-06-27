@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toInfraSessionId, toCompatSessionId, setCseShimGate, remoteRowId
-// [unwrapped __esm module Mua] deps: UIt, Dua
+// [unwrapped __esm module Mua] deps: lodash-es/_equalObjects.js, Dua
 Pua = Pup;
 var $ua = {};
 function setCseShimGate(e) {

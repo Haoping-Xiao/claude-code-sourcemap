@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0167  score=0.6932  fileCov=0.0168
 // note: nearest: src/components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx (0.0167); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lAc] deps: dre
+// [unwrapped __esm module lAc] deps: services/mcp/auth.ts
 iAc = R(rt(), 1);
 function tym(e, t) {
   if (t.length === 0) return e;

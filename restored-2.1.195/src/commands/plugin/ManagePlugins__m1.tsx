@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: scaleCharsToTokens, getPluginInventory, computePluginTokenCost
-// [unwrapped __esm module Arr] deps: je, At, ys, vn, Jt, B1
+// [unwrapped __esm module Arr] deps: utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/sequential.ts, utils/fsOperations.ts, tools/SkillTool/prompt.ts
 ((djl = require("crypto")), (i1e = require("fs/promises")), (pjl = require("path")));
 async function PluginComponentsDisplay(e, t) {
   if (t === "builtin") {

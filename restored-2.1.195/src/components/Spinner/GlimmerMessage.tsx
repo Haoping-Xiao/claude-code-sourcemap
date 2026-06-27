@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3978  score=0.7081  fileCov=0.4758
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aJa] deps: ZS, Ye, Pne
+// [unwrapped __esm module aJa] deps: ink/terminal.ts, hooks/useTerminalSize.ts, @xmldom/xmldom/lib/entities.js
 ((wXp = R(lt(), 1)), (CXp = R(se(), 1)));
 function GlimmerMessage(t0) {
   let t = lJa.c(102),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0261  score=1  fileCov=0.0261
 // note: nearest: src/ink/events/dispatcher.ts (0.0261); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module P7r] deps: Bke, OM
+// [unwrapped __esm module P7r] deps: ink/termio/osc.ts, ink/clearTerminal.ts
 sYh = mh(0, "f");
 function RU(e) {
   return mh(`?${e}h`);

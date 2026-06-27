@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runClaudeInChromeMcpServer, createChromeContext
-// [unwrapped __esm module k7] deps: Qi, er, je, vn, DD, Ao, Ls, jG, Rx, aW, Du
+// [unwrapped __esm module k7] deps: lodash-es/memoize.js, utils/config.ts, utils/debug.ts, utils/sequential.ts, utils/model/modelOptions.ts, utils/agentContext.ts, utils/status.tsx, utils/modelCost.ts, utils/env.ts, types/generated/google/protobuf/timestamp.ts, services/analytics/firstPartyEventLoggingExporter.ts
 ((qcc = require("crypto")),
   (xsm = new Set([
     "tengu_feature_ok",

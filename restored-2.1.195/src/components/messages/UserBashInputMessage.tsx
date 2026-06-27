@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3556  score=0.4929  fileCov=0.5607
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ail] deps: Xa, Ye, es, co
+// [unwrapped __esm module Ail] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, utils/messages.ts
 ((Sil = R(lt(), 1)), (Zyt = R(se(), 1)));
 function UserBashInputMessage(t0) {
   let t = Hil.c(8),

@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: fetchBootstrapData, buildBootstrapRequestConfig, buildBootstrapInputs
-// [unwrapped __esm module hVn] deps: ft, SJ, p4n, S4, Ye, dn, Un, vft, H0, _F, EVe, oo, Vw, Ld, er, Yp, vn, Ls, R9, aS, t1t, Ote
+// [unwrapped __esm module hVn] deps: services/analytics/index.ts, components/Feedback.tsx, services/api/grove.ts, context.ts, hooks/useTerminalSize.ts, dn, services/analytics/growthbook.ts, services/api/grove.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, bridge/bridgeEnabled.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/http.ts, utils/betas.ts, utils/concurrentSessions.ts, utils/config.ts, utils/gracefulShutdown.ts, utils/sequential.ts, utils/status.tsx, utils/errors.ts, utils/telemetry/pluginTelemetry.ts, utils/auth.ts, utils/user.ts
 eza = R(se(), 1);
 function buildBootstrapInputs() {
   return {

@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isAutobackgroundingAllowed, detectBlockedSleepPattern, PowerShellTool
-// [unwrapped __esm module DTl] deps: Ko, E5, ql, kLe, cjn, ljn, Ye
+// [unwrapped __esm module DTl] deps: components/ConfigurableShortcutHint.tsx, components/VirtualMessageList.tsx, commands/add-dir/validation.ts, components/messages/AttachmentMessage.tsx, hooks/useVoiceIntegration.tsx, tools/BashTool/UI.tsx, hooks/useTerminalSize.ts
 $k = R(se(), 1);
 function ASf(e) {
   let t = e.trim();

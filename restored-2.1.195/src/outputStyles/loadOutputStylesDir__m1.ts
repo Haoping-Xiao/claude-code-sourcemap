@@ -4,7 +4,7 @@
 // class=modified (alt of src/outputStyles/loadOutputStylesDir.ts)  jaccard=0.0203  score=0.0247  fileCov=0.1022
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ANt] deps: Xr, kt
+// [unwrapped __esm module ANt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts
 ((Yx = dKr),
   (Wst = dKr),
   (NOd = ve(() =>

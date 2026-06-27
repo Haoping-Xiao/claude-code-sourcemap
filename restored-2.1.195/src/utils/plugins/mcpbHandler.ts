@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6852  score=0.9369  fileCov=0.7184
 // note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aCa] deps: je, Is
+// [unwrapped __esm module aCa] deps: utils/debug.ts, utils/platform.ts
 ((sCa = require("os")), (tqe = require("path")));
 function n6(e) {
   return e.endsWith(".mcpb") || e.endsWith(".dxt");

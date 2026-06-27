@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0949  score=0.189  fileCov=0.1602
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mDl] deps: ft, je, wr, ys, sa, y_, oOo
+// [unwrapped __esm module mDl] deps: services/analytics/index.ts, utils/debug.ts, main.tsx, utils/fsOperations.ts, utils/git.ts, utils/stats.ts, components/Feedback.tsx
 ((Ler = require("fs/promises")),
   (zSt = require("path")),
   (Ekf = {

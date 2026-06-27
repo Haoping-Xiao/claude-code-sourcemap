@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0227  score=1  fileCov=0.0227
 // note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0227); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZFr] deps: pb, _v, Bw
+// [unwrapped __esm module ZFr] deps: @aws-sdk/client-cognito-identity/dist-cjs/auth/httpAuthSchemeProvider.js, @aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js, @aws-sdk/client-cognito-identity/dist-cjs/index.js
 Ari = R(yo(), 1);
 QFr = class QFr extends Vd.classBuilder().ep(vp).m(function (e, t, n, r) {
   return [Ari.getEndpointPlugin(n, e.getEndpointParameterInstructions())];

@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qvo] deps: Fel, Kel, ntl, Ye, F9t, xMe, $pe, Ppe, I8e, gAe, pyt, Rm, eVe, Lo, At, PB, ys, Hu, g6n
+// [unwrapped __esm module Qvo] deps: components/HighlightedCode/Fallback.tsx, tools/BashTool/utils.ts, tools/BashTool/sedEditParser.ts, hooks/useTerminalSize.ts, utils/bash/bashParser.ts, tools/FileEditTool/FileEditTool.ts, tools/FileReadTool/FileReadTool.ts, tools/FileWriteTool/FileWriteTool.ts, tools/GlobTool/GlobTool.ts, tools/GrepTool/GrepTool.ts, tools/NotebookEditTool/NotebookEditTool.ts, @grpc/grpc-js/build/src/server.js, hooks/toolPermission/permissionLogging.ts, utils/fsOperations.ts, utils/errors.ts, utils/platform.ts, utils/fsOperations.ts, utils/file.ts, components/permissions/NotebookEditPermissionRequest/NotebookEditPermissionRequest.tsx
 IMe = require("path"), EN = R(se(), 1);
 var Y9t;

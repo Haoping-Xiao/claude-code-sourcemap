@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Q$o] deps: ft, ag, kt, At, vn, y_, _a, Jt, sr
+// [unwrapped __esm module Q$o] deps: services/analytics/index.ts, utils/claudeInChrome/common.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/stats.ts, utils/plans.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts
 ((QLl = require("crypto")),
   (X$o = require("events")),
   (xer = require("fs")),

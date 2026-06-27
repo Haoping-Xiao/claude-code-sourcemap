@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/BriefTool/BriefTool.ts)  jaccard=0.0197  score=1  fileCov=0.0197
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module K0o] deps: si, AN, Xa, Ye, oc, es, oIo
+// [unwrapped __esm module K0o] deps: @xmldom/xmldom/lib/entities.js, ink/styles.ts, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, utils/profilerBase.ts, components/messages/HighlightedThinkingText.tsx
 ((Iyl = R(lt(), 1)), (MT = R(se(), 1)));
 var _mf,
   inputSchema = "The message for the user. Supports markdown formatting.",

@@ -5,7 +5,7 @@
 // note: nearest: node_modules/node-forge/lib/util.js (0.0203); dir inferred from dep-graph -> services; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: encode, decode
-// [unwrapped __esm module _jc] deps: sB, YP, wm, agr, cgr
+// [unwrapped __esm module _jc] deps: sB, node-forge/lib/util.js, services/PromptSuggestion/promptSuggestion.ts, jsonwebtoken/verify.js, cgr
 hJo = class hJo extends J7e {
   encode() {
     let e = xS(JSON.stringify({

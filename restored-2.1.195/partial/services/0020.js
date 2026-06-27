@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.098  score=1  fileCov=0.098
 // note: low-confidence suggestion: node_modules/ws/lib/validation.js; dir inferred from dep-graph -> services; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MBe] deps: PBe, Pes, $es
+// [unwrapped __esm module MBe] deps: lodash-es/_Symbol.js, lodash-es/_getRawTag.js, @opentelemetry/core/build/src/utils/lodash.merge.js
 Oes = nM ? nM.toStringTag : void 0;
 LV = xVc;
 function isBlob(value) {

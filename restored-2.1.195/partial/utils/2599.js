@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0728  score=0.2727  fileCov=0.0903
 // note: low-confidence suggestion: src/utils/plugins/pluginStartupCheck.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module glt] deps: dr
+// [unwrapped __esm module glt] deps: utils/settings/settings.ts
 reo = new Map();
 function OPn() {
   let e = $w();

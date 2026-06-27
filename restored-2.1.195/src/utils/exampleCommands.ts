@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1419  score=0.7531  fileCov=0.1488
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ubc] deps: lbc
+// [unwrapped __esm module ubc] deps: screens/REPL.tsx
 Uen = R(rt(), 1);
 function Umm(e) {
   return !Bmm.some((t) => t.test(e));

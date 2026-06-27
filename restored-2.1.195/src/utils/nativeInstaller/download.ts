@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2738  score=0.5701  fileCov=0.345
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MPe] deps: oo, FEe, er, Lo, wr, fn, Bi, ys, kgt, A9e, IVn, Is, tre, OB, lg, S9, hY, mCe, RCe, lj, EVn, Jt, _0
+// [unwrapped __esm module MPe] deps: utils/http.ts, utils/plugins/zipCacheAdapters.ts, utils/config.ts, utils/fsOperations.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, constants/files.ts, utils/fsOperations.ts, utils/nativeInstaller/packageManagers.ts, utils/shellConfig.ts, utils/nativeInstaller/packageManagers.ts, utils/platform.ts, utils/ripgrep.ts, utils/execFileNoThrowPortable.ts, utils/bash/bashParser.ts, utils/secureStorage/macOsKeychainHelpers.ts, utils/settings/managedPath.ts, mCe, utils/settings/mdm/settings.ts, utils/settings/types.ts, utils/autoUpdater.ts, utils/fsOperations.ts, axios/lib/utils.js
 ((Xqt = require("fs/promises")), (PPe = require("os")), (lA = require("path")));
 var Oza = () => {};
 function vAo(e, t) {

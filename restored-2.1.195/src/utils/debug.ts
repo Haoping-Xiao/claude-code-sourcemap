@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.181  score=0.4715  fileCov=0.2271
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module je] deps: Qi, ft, Rm, fd, Prs, fn, At, ys, ED, zH, Jt
+// [unwrapped __esm module je] deps: lodash-es/memoize.js, services/analytics/index.ts, @grpc/grpc-js/build/src/server.js, utils/debugFilter.ts, utils/envUtils.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/stringUtils.ts, services/teamMemorySync/secretScanner.ts, utils/fsOperations.ts
 ((bB = require("fs/promises")),
   (Kge = require("path")),
   (qEr = {

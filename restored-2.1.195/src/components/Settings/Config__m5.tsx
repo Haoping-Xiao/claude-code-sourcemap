@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0121  score=0.1018  fileCov=0.0135
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module str] deps: s1o, G4, kt, sre, HU, oo, er, wr, lT, NE, aE, __, qd, Fh, dr
+// [unwrapped __esm module str] deps: components/Settings/Config.tsx, constants/outputStyles.ts, utils/debug.ts, highlight.js/lib/languages/mathematica.js, utils/effort.ts, utils/http.ts, utils/config.ts, main.tsx, utils/permissions/permissionSetup.ts, utils/modelCost.ts, utils/ide.ts, utils/markdownConfigLoader.ts, utils/log.ts, components/Settings/Config.tsx, utils/settings/settings.ts
 oRf = new Map([
   ["agentsView", "/config (Agents view row)"],
   ["autoUpdatesChannel", "/channel"],

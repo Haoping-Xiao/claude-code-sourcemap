@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6572  score=0.8153  fileCov=0.7721
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $Da] deps: Lo, je, At, dn
+// [unwrapped __esm module $Da] deps: utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, dn
 ((DDa = R(require("path"))), (PDa = require("url")));
 function createLSPServerManager() {
   let e = new Map(),

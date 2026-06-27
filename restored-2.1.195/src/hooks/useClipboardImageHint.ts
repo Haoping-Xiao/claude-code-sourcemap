@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2321  score=0.3544  fileCov=0.4022
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DGe] deps: dn, ADn, je, Bi, ys, HDn, xW, vn, Is, OB, bUt, kv
+// [unwrapped __esm module DGe] deps: dn, ADn, utils/debug.ts, constants/files.ts, utils/fsOperations.ts, utils/imageResizer.ts, utils/imageResizer.ts, utils/sequential.ts, utils/platform.ts, utils/execFileNoThrowPortable.ts, utils/imagePaste.ts, proxy-from-env/index.js
 ((m8i = require("crypto")),
   (Wce = require("path")),
   (SUt = {

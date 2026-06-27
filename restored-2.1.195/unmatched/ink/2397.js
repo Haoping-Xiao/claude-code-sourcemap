@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kGi] deps: IGi
+// [unwrapped __esm module kGi] deps: code-excerpt/dist/index.js
 xGi = nGd;

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1722  score=0.3051  fileCov=0.2832
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VCo] deps: AN, Ye, YI, E8e, R6, WCo, Bzn
+// [unwrapped __esm module VCo] deps: ink/styles.ts, hooks/useTerminalSize.ts, utils/teammateMailbox.ts, components/FileEditToolDiff.tsx, components/AwsAuthStatusBox.tsx, components/messages/TaskAssignmentMessage.tsx, components/messages/PlanApprovalMessage.tsx
 ((qCo = R(lt(), 1)), (AP = R(se(), 1)));
 function UserImageMessage(t0) {
   let t = hil.c(12),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5523  score=0.6611  fileCov=0.7704
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YLn] deps: Is
+// [unwrapped __esm module YLn] deps: utils/platform.ts
 ((KLn = Vt()),
   (ZWd = KLn === "windows" || KLn === "wsl"),
   (e5d = ZWd ? "alt+v" : "ctrl+v"),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3576  score=0.5033  fileCov=0.5527
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $Yo] deps: Ree, ft, je, At, oc, sa, lE, ZC
+// [unwrapped __esm module $Yo] deps: lodash-es/_createBaseFor.js, services/analytics/index.ts, utils/debug.ts, utils/errors.ts, utils/nativeInstaller/download.ts, utils/git.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/schemas.ts
 Bfr = require("path");
 function OYo(e, t, n, r) {
   e((o) => ({

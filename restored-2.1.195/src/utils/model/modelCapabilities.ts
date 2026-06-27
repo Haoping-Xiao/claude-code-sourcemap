@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1994  score=0.375  fileCov=0.2987
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yxe] deps: PR, Qi, og, oo, xAn, Ld, Gx, Ao, Ls, Mh, ft, Rc, wFe, je, Mm, fn, drt, Jt, sr, dn, Un, kt, yje, frt
+// [unwrapped __esm module Yxe] deps: utils/errors.ts, lodash-es/memoize.js, utils/teammateContext.ts, utils/http.ts, utils/genericProcessUtils.ts, utils/concurrentSessions.ts, utils/slashCommandParsing.ts, utils/agentContext.ts, utils/status.tsx, utils/proxy.ts, services/analytics/index.ts, constants/oauth.ts, constants/xml.ts, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/sleep.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, tools/WebSearchTool/WebSearchTool.ts, frt
 cvi = require("crypto");
 ((Rkd = Cn(() => xe("provider_route"))),
   (Lkd = {

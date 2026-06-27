@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0361  score=0.421  fileCov=0.0379
 // note: nearest: src/utils/queryHelpers.ts (0.0361); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aze] deps: fd, Mm, fn
+// [unwrapped __esm module aze] deps: utils/debugFilter.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 gLo = new Map();
 function iHl(e) {
   return e?._meta?.["claude/endTurn"] === true;

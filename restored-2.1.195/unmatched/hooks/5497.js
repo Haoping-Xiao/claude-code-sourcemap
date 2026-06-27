@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0093  score=0.7259  fileCov=0.0093
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0093); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bbc] deps: Ye
+// [unwrapped __esm module bbc] deps: hooks/useTerminalSize.ts
 Ddr = R(rt(), 1);
 function Abc(e, t) {
   let n = Yce(),

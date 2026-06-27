@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1836  score=0.4465  fileCov=0.2377
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bW] deps: jit, je, Rit, m8, one, OXr
+// [unwrapped __esm module bW] deps: ink/termio/parser.ts, utils/debug.ts, ink/colorize.ts, m8, ink/termio/csi.ts, ink/screen.ts
 ((z3i = {
   type: "ansi",
   code: "\x1B[7m",

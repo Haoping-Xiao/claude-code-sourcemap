@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.362  score=0.5884  fileCov=0.4848
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OMc] deps: Ye
+// [unwrapped __esm module OMc] deps: hooks/useTerminalSize.ts
 ((MMc = R(lt(), 1)), (omr = R(se(), 1)));
 function imr(e) {
   let t = NMc.c(7),

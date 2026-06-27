@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4904  score=0.8486  fileCov=0.5374
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Y4] deps: b5e, ft, id, kt, C5e, je, wr, fn, At, oc, vn, _a, Fh
+// [unwrapped __esm module Y4] deps: services/api/promptCacheBreakDetection.ts, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, hooks/useIdeLogging.ts, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/sequential.ts, utils/plans.ts, components/Settings/Config.tsx
 ((jQa = require("crypto")),
   (IH = require("fs/promises")),
   (U6 = require("path")),

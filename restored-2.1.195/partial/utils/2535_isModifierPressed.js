@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: vendor/modifiers-napi-src/index.ts; dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: prewarm, isModifierPressed, getModifiers
-// [unwrapped __esm module MGe] deps: Tc, Xge, m0
+// [unwrapped __esm module MGe] deps: marked/lib/marked.esm.js, utils/truncate.ts, ink/line-width-cache.ts
 C6d = /^[\p{L}\p{N}\p{M}_]$/u, Xat = /\s/, I6d = /\p{N}/u, x6d = new RegExp(uZr + "$"), k6d = new RegExp("^" + uZr), R6d = new RegExp(uZr, "g");
 function L6d(e) {
   return typeof e === "object" && e !== null && "getModifiers" in e && typeof e.getModifiers === "function" && "isModifierPressed" in e && typeof e.isModifierPressed === "function";

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.018  score=0.9365  fileCov=0.018
 // note: nearest: src/utils/sessionStorage.ts (0.018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gNn] deps: Qi, Jt, kt
+// [unwrapped __esm module gNn] deps: lodash-es/memoize.js, utils/fsOperations.ts, utils/debug.ts
 vao = require("fs/promises"), Xcp = Cn(async () => null), Jcp = Cn(async () => null);
 function oF() {
   return bLe.join(tr(), "projects");

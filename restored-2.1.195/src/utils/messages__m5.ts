@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: UserChannelMessage
-// [unwrapped __esm module nal] deps: Xa, Ye
+// [unwrapped __esm module nal] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts
 ((eal = R(lt(), 1)), (IAe = R(se(), 1)));
 function dsf(e) {
   let t = e.lastIndexOf(":");

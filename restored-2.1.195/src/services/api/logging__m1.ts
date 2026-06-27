@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/logging.ts)  jaccard=0.0353  score=0.5324  fileCov=0.0364
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cYt] deps: PR, ft, CZe, oo, je, lT, vn, Sbe, Ao, Ls, zH, Jt, WSe, aS, cMo, m5, og, kt, Du, H5e, U1, g$e, tP, gSe
+// [unwrapped __esm module cYt] deps: utils/errors.ts, services/analytics/index.ts, utils/nativeInstaller/download.ts, utils/http.ts, utils/debug.ts, utils/permissions/permissionSetup.ts, utils/sequential.ts, utils/plugins/pluginIdentifier.ts, utils/agentContext.ts, utils/status.tsx, services/teamMemorySync/secretScanner.ts, utils/fsOperations.ts, follow-redirects/index.js, utils/telemetry/pluginTelemetry.ts, services/api/logging.ts, @smithy/core/dist-cjs/submodules/cbor/index.js, utils/teammateContext.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, H5e, U1, utils/markdownConfigLoader.ts, services/api/errors.ts, services/api/errors.ts
 fwf = /\b(want me to|should i|shall i|i can|would you like me to)\b[^.!?\n]{0,100}`?\/schedule\b/i;
 ((gwf = {
   litellm: {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2721  score=0.3165  fileCov=0.6598
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module V9t] deps: ft, ql, Xa, DE, Xr, Ye, Un, ii, k0, T3e, G1
+// [unwrapped __esm module V9t] deps: services/analytics/index.ts, commands/add-dir/validation.ts, @xmldom/xmldom/lib/entities.js, utils/permissions/PermissionMode.ts, @modelcontextprotocol/sdk/dist/esm/types.js, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, services/mockRateLimits.ts, k0, utils/permissions/permissionSetup.ts, tools/AskUserQuestionTool/prompt.ts
 ((dnl = R(lt(), 1)),
   (D$ = R(se(), 1)),
   (qef = ve(() =>

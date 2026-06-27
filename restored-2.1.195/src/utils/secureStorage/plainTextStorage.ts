@@ -5,7 +5,7 @@
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startKeychainPrefetch, setWindowsCredManagerAvailable, setLastKnown, isWindowsCredManagerAvailable, getLegacyApiKeyPrefetchResult, getLastKnown, ensureKeychainPrefetchCompleted, clearLegacyApiKeyPrefetch
-// [unwrapped __esm module Usi] deps: Pw, At, ys, Jt, S9, sMt
+// [unwrapped __esm module Usi] deps: utils/fileRead.ts, utils/errors.ts, utils/fsOperations.ts, utils/fsOperations.ts, utils/secureStorage/macOsKeychainHelpers.ts, @inquirer/core/dist/esm/lib/hook-engine.mjs
 ((Nsi = require("fs/promises")), (Bsi = require("path")));
 Sjr = {
   name: "plaintext",

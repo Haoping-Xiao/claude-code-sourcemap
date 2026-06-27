@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0126  score=0.4466  fileCov=0.0128
 // note: nearest: src/screens/REPL.tsx (0.0126); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ALc] deps: je, At, Xr, dn, BI, VM
+// [unwrapped __esm module ALc] deps: utils/debug.ts, utils/errors.ts, @modelcontextprotocol/sdk/dist/esm/types.js, dn, services/mcp/client.ts, utils/claudeInChrome/common.ts
 SLc = R(lt(), 1), ktn = R(rt(), 1), WmH = ve(() => H.object({
   method: H.literal("notifications/message"),
   params: H.object({

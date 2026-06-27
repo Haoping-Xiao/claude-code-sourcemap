@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/PowerShellTool/UI.tsx)  jaccard=0.0328  score=0.2282  fileCov=0.0369
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Uol] deps: Ye, es, Coe, xoe
+// [unwrapped __esm module Uol] deps: hooks/useTerminalSize.ts, utils/profilerBase.ts, react/cjs/react.production.js, components/AgentProgressLine.tsx
 ((Nol = R(lt(), 1)), (Ck = R(se(), 1)));
 function Fpe() {
   let e = Fol.c(1),

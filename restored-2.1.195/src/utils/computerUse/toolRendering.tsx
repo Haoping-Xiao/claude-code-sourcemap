@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4965  score=0.8893  fileCov=0.5292
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mfo] deps: je, S_e, ffo, lpt
+// [unwrapped __esm module mfo] deps: utils/debug.ts, services/mcp/config.ts, utils/computerUse/hostAdapter.ts, utils/computerUse/gates.ts
 upt = require("util");
 function QSe(e, t) {
   e((n) => {

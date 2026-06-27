@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3719  score=0.731  fileCov=0.4308
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U7n] deps: ft, Uh, je, At, YS, O7n, y_
+// [unwrapped __esm module U7n] deps: services/analytics/index.ts, services/analytics/metadata.ts, utils/debug.ts, utils/errors.ts, utils/teammateContext.ts, services/autoDream/consolidationLock.ts, utils/stats.ts
 ((a3 = require("fs/promises")), (tyl = require("path")));
 function G0o(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "dream";

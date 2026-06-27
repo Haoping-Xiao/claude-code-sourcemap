@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: trackDatadogEvent, shutdownDatadog, resetDatadogInit, initializeDatadog, DATADOG_LOGS_ENDPOINT, DATADOG_CLIENT_TOKEN
-// [unwrapped __esm module er] deps: Qi, ghe, ft, Uh, kt, Xzr, Lo, fd, Ld, je, Mm, wr, fn, At, oc, ys, sa, Rd, Hu, qd, W0r, hY, Sx, T3e, Jt, BRt
+// [unwrapped __esm module er] deps: lodash-es/memoize.js, ghe, services/analytics/index.ts, services/analytics/metadata.ts, utils/debug.ts, zod-to-json-schema/dist/esm/selectParser.js, utils/fsOperations.ts, utils/debugFilter.ts, utils/concurrentSessions.ts, utils/debug.ts, utils/git/gitConfigParser.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/fsOperations.ts, utils/git.ts, utils/settings/constants.ts, utils/file.ts, utils/log.ts, utils/git/gitFilesystem.ts, utils/settings/managedPath.ts, Sx, utils/permissions/permissionSetup.ts, utils/fsOperations.ts, @xmldom/xmldom/lib/entities.js
 ((FVo = require("crypto")),
   (Ucc = require("fs")),
   (HS = require("path")),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.353  score=0.5297  fileCov=0.5141
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module u7o] deps: ft, kt, je, Ao, Ls
+// [unwrapped __esm module u7o] deps: services/analytics/index.ts, utils/debug.ts, utils/debug.ts, utils/agentContext.ts, utils/status.tsx
 PZ = {
   fable: "Fable",
   sonnet: "Sonnet",

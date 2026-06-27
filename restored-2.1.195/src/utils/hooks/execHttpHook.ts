@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5286  score=0.8542  fileCov=0.5811
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fic] deps: MAe, kt, ii, fh, i$, LL, $S, fp, Vv, EAe, je, At, ys, co, Ao, Gy, y_, Jt, P5o
+// [unwrapped __esm module fic] deps: utils/telemetry/betaSessionTracing.ts, utils/debug.ts, services/mockRateLimits.ts, commands/insights.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/sessionActivity.ts, google-auth-library/build/src/crypto/node/crypto.js, screens/REPL.tsx, services/PromptSuggestion/speculation.ts, hooks/useCanUseTool.tsx, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/messages.ts, utils/agentContext.ts, utils/permissions/permissionSetup.ts, utils/stats.ts, utils/fsOperations.ts, utils/hooks/execPromptHook.ts
 M5o = require("crypto");
 async function Fem() {
   let { SandboxManager: e } = await Promise.resolve().then(() => (lg(), Rro));

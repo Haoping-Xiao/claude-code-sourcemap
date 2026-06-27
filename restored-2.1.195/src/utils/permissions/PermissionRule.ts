@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5224  score=1  fileCov=0.5224
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jgl] deps: Xr
+// [unwrapped __esm module jgl] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((E7n = ve(() => ol.enum(["allow", "deny", "ask"]))),
   (A7n = ve(() =>
     ol.object({

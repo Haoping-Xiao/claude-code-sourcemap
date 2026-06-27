@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0036); dir inferred from dep-graph -> components; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: redirectMessageFor, call
-// [unwrapped __esm module s1l] deps: ft
+// [unwrapped __esm module s1l] deps: services/analytics/index.ts
 PPf = {
   aliases: ["settings"],
   type: "local-jsx",

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2778  score=0.3759  fileCov=0.5156
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module G8o] deps: Hp, Xr, ft, dn, je, fn, wQ
+// [unwrapped __esm module G8o] deps: axios/lib/axios.js, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, dn, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, tools/BriefTool/upload.ts
 ((Lgc = require("crypto")), (Dur = require("fs/promises")), (yen = require("path")));
 ((Ium = ve(() =>
   H.object({

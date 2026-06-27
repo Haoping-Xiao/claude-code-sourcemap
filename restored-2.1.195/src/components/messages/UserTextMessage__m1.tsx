@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/messages/UserTextMessage.tsx)  jaccard=0.043  score=0.0513  fileCov=0.2094
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MJl] deps: Jt
+// [unwrapped __esm module MJl] deps: utils/fsOperations.ts
 PJl = require("fs/promises");
 function MJt(e) {
   let t = [],

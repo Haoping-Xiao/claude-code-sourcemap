@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0201  score=0.5307  fileCov=0.0205
 // note: nearest: src/components/mcp/MCPAgentServerMenu.tsx (0.0201); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module D_c] deps: ft, a0e, Ye, dn, ift, vn
+// [unwrapped __esm module D_c] deps: services/analytics/index.ts, ink/components/ClockContext.tsx, hooks/useTerminalSize.ts, dn, tools/shared/gitOperationTracking.ts, utils/sequential.ts
 RZ = R(rt(), 1), qfm = {
   pr: null,
   needsAuth: false,

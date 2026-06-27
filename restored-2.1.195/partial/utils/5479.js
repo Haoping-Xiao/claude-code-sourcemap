@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1971  score=0.2904  fileCov=0.3804
 // note: low-confidence suggestion: src/hooks/usePrStatus.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module R_c] deps: uo, Ycr
+// [unwrapped __esm module R_c] deps: context/notifications.tsx, components/messageActions.tsx
 x_c = R(rt(), 1);
 function L_c(e, t = true) {
   let [n, r] = RZ.useState(qfm),

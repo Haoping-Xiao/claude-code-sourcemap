@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0267  score=0.3391  fileCov=0.0281
 // note: nearest: node_modules/node-fetch/lib/index.js (0.0267); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module een] deps: ys, Hu, Jbe
+// [unwrapped __esm module een] deps: utils/fsOperations.ts, utils/file.ts, utils/plugins/pluginDirectories.ts
 Kfc = require("fs/promises");
 function p8o(e, t = "$") {
   let n = [],

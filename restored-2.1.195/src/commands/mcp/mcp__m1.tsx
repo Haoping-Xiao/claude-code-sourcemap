@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Yfe] deps: VFl
+// [unwrapped __esm module Yfe] deps: services/mcp/MCPConnectionManager.tsx
 ((zFl = R(lt(), 1)), (LKe = R(rt(), 1)), (YFl = R(se(), 1)), (EBo = LKe.createContext(null)));
 function DKe(e) {
   return e.type;

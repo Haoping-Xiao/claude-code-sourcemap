@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1323  score=0.4939  fileCov=0.1531
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MVl] deps: Ye, Vl
+// [unwrapped __esm module MVl] deps: hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts
 ((DVl = R(lt(), 1)), (aJt = R(rt(), 1)), (x2o = R(se(), 1)));
 function NVl(e, t) {
   let n = e.replace(/\s+/g, " ").trim();

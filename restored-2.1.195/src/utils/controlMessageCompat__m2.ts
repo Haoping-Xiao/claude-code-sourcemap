@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/controlMessageCompat.ts)  jaccard=0.1019  score=0.1504  fileCov=0.2399
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ivo] deps: Xr
+// [unwrapped __esm module ivo] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 Vht = Dy({
   kind: "permission_exit_plan_mode_v2",
   payload: ve(() =>

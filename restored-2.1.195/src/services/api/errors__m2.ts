@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0153  score=0.0665  fileCov=0.0194
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OKt] deps: ft, kt, je, fn, Jin, Jt
+// [unwrapped __esm module OKt] deps: services/analytics/index.ts, utils/debug.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/startupProfiler.ts, utils/fsOperations.ts
 ((SQn = ut(process.env.CLAUDE_CODE_PROFILE_STARTUP)),
   (rIl = Math.random() < ETf),
   (SPo = SQn || rIl));

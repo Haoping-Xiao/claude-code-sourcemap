@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.322  score=0.8087  fileCov=0.3485
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DMo] deps: wpn, Sae, RF, jG, Lo, wr, fn, At, co, Jt
+// [unwrapped __esm module DMo] deps: extend/index.js, lodash-es/negate.js, utils/diff.ts, utils/modelCost.ts, utils/fsOperations.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/messages.ts, utils/fsOperations.ts
 ((fYt = require("crypto")), (pHe = require("fs/promises")), (xSt = require("path")));
 function hasThinkingBlocks(messages) {
   for (let t of messages)

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0105  score=0.0568  fileCov=0.0127
 // note: nearest: node_modules/node-forge/lib/pkcs7.js (0.0105); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tJo] deps: Xmr, GXo, qXo, VXo, sB, Enn, wm, eJo, Hnn, JXo
+// [unwrapped __esm module tJo] deps: node-forge/lib/rsa.js, GXo, node-forge/lib/rsa.js, @smithy/eventstream-codec/dist-cjs/index.js, sB, node-forge/lib/pem.js, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/rsa.js, node-forge/lib/aes.js, node-forge/lib/rsa.js
 rgr = xDm;
 class JNe {
   constructor(e) {

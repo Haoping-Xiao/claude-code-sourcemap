@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0534  score=0.16  fileCov=0.0743
 // note: nearest: src/ink/terminal-focus-state.ts (0.0534); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JEl] deps: Oct
+// [unwrapped __esm module JEl] deps: marked/lib/marked.esm.js
 Oyf = new n1n({
   gfm: true
 });

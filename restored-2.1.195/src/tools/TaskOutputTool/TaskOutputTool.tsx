@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3394  score=0.5201  fileCov=0.4941
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mRo] deps: Xr, B_, Ko, E5, b8t, ql, Ye, nk, ii, At, co, PDe, Jt, sr, bH, pRo, F8t, qzn
+// [unwrapped __esm module mRo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, components/VirtualMessageList.tsx, components/CompactSummary.tsx, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, nk, services/mockRateLimits.ts, utils/errors.ts, utils/messages.ts, utils/semanticNumber.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, Task.ts, tools/TaskOutputTool/TaskOutputTool.tsx, utils/generators.ts, components/messages/UserBashOutputMessage.tsx
 ((x_l = R(lt(), 1)),
   (nm = R(se(), 1)),
   (Agf = ve(() =>

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.216  score=0.3006  fileCov=0.4343
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vEl] deps: Xr, ft, jc, ii, At, Jt, K0, Wso, Fso, Gso
+// [unwrapped __esm module vEl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/semver.ts, services/mockRateLimits.ts, utils/errors.ts, utils/fsOperations.ts, utils/mcpOutputStorage.ts, services/teamMemorySync/secretScanner.ts, bridge/remoteBridgeCore.ts, screens/REPL.tsx
 ((wXn = require("fs")),
   (zoe = require("fs/promises")),
   (QAe = require("path")),

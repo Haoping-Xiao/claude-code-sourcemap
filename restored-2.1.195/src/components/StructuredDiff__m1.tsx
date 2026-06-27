@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/StructuredDiff.tsx)  jaccard=0.2605  score=1  fileCov=0.2605
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xba] deps: b5e, Tc, Ye
+// [unwrapped __esm module Xba] deps: services/api/promptCacheBreakDetection.ts, marked/lib/marked.esm.js, hooks/useTerminalSize.ts
 ((Kba = R(lt(), 1)), (Z8 = R(se(), 1)));
 function u_p(e) {
   return (

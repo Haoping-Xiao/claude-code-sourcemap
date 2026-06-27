@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0055  score=0.2715  fileCov=0.0056
 // note: nearest: src/screens/REPL.tsx (0.0055); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hNe] deps: tne, ih
+// [unwrapped __esm module hNe] deps: components/Settings/Config.tsx, bootstrap/state.ts
 w8o = R(rt(), 1), Lme = uL({
   open: []
 }), v8o = Mi(), w3 = {

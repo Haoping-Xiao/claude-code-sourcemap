@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0453  score=0.3705  fileCov=0.0491
 // note: nearest: src/components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx (0.0453); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CYn] deps: dr, fh, wYn, QH
+// [unwrapped __esm module CYn] deps: utils/settings/settings.ts, commands/insights.ts, utils/permissions/dangerousPatterns.ts, tools/TaskStopTool/prompt.ts
 Lfl = new Map();
 function wko(e) {
   if (e === Co) return Co;

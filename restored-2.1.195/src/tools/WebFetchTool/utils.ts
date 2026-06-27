@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: publishArtifact, makeSetArtifactReadVersion, isShareAwarePublishEnabled, isFrameSignedPutHeaderCheckEnabled, isFrameReaderPersistEnabled, isFrameBaseVersionEnabled, goCpHeaders, artifactViewerUrl, MAX_ARTIFACT_BYTES
-// [unwrapped __esm module mko] deps: Hp, YZe, kt, ZE, je, At, Gx, vn, qdt, dr, Jt, BIo, $cl, TX, OIo
+// [unwrapped __esm module mko] deps: axios/lib/axios.js, lru-cache/dist/esm/index.js, utils/debug.ts, utils/shell/prefix.ts, utils/debug.ts, utils/errors.ts, utils/slashCommandParsing.ts, utils/sequential.ts, tools/ReadMcpResourceTool/UI.tsx, utils/settings/settings.ts, utils/fsOperations.ts, zod/v4/classic/schemas.js, tools/WebFetchTool/preapproved.ts, TX, tools/WebFetchTool/UI.tsx
 cko = class cko extends Error {
   constructor(e) {
     super(`Claude Code is unable to fetch from ${e}`);

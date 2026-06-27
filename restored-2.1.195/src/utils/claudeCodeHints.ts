@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1987  score=0.3285  fileCov=0.3347
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Amo] deps: ft, db, gb, je, fn, At, Iv, vf, L7, lj, YPn, WI, ZC
+// [unwrapped __esm module Amo] deps: services/analytics/index.ts, utils/authFileDescriptor.ts, utils/plugins/schemas.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, hooks/useSettings.ts, utils/settings/changeDetector.ts, utils/hooks/hooksConfigSnapshot.ts, utils/settings/types.ts, utils/plugins/pluginInstallationHelpers.ts, commands/plugin/ManagePlugins.tsx, utils/plugins/schemas.ts
 ((Mpt = require("fs/promises")), (u6 = require("path")));
 ((Gkp = [
   "mcpServers",

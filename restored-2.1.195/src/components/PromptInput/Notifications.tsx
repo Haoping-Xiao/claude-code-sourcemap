@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2592  score=0.5583  fileCov=0.3261
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Uhc] deps: Ed, Ye, Un, kt, $hc, vn
+// [unwrapped __esm module Uhc] deps: context/notifications.tsx, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, utils/debug.ts, screens/REPL.tsx, utils/sequential.ts
 ((Nhc = R(lt(), 1)), (odr = R(rt(), 1)), (rdr = R(se(), 1)));
 function Notifications(t0) {
   let t = jhc.c(40),

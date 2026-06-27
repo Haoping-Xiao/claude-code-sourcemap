@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3359  score=0.5395  fileCov=0.4709
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module E6l] deps: jc, oo
+// [unwrapped __esm module E6l] deps: utils/semver.ts, utils/http.ts
 ((X5f = {
   type: "local-jsx",
   name: "teleport",

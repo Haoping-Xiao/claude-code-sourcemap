@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/terminalSetup/terminalSetup.tsx)  jaccard=0.0947  score=0.4987  fileCov=0.1047
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module R0e] deps: iu, Qi, AW, Ye, HUt, dn, zQr, YQr, er, je, wr, At, Bi, oc, uf, Rd, vn, Is, Jt
+// [unwrapped __esm module R0e] deps: @mixmark-io/domino/lib/Document.js, lodash-es/memoize.js, ink/supports-hyperlinks.ts, hooks/useTerminalSize.ts, utils/appleTerminalBackup.ts, dn, utils/completionCache.ts, commands/terminalSetup/terminalSetup.tsx, utils/config.ts, utils/debug.ts, main.tsx, utils/errors.ts, constants/files.ts, utils/nativeInstaller/download.ts, main.tsx, utils/settings/constants.ts, utils/sequential.ts, utils/platform.ts, utils/fsOperations.ts
 ((Vat = require("crypto")),
   (CI = require("fs/promises")),
   (Dne = require("os")),

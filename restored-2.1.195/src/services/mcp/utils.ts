@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3896  score=0.7044  fileCov=0.4658
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Kv] deps: Sae, Qi, ghe, Xr, ft, w8, VM, S_e, er, gb, Lo, je, At, ys, Rd, QH, nDe, $g, Xh, vf, hY, L7, dr, lj, Jt, cdo, dn, kt, Yle, a5, sst, MPn, bCe, kst, g$
+// [unwrapped __esm module Kv] deps: lodash-es/negate.js, lodash-es/memoize.js, ghe, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, p-map/index.js, utils/claudeInChrome/common.ts, services/mcp/config.ts, utils/config.ts, utils/plugins/schemas.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/settings/constants.ts, tools/TaskStopTool/prompt.ts, utils/plugins/lspPluginIntegration.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/loadPluginAgents.ts, utils/settings/changeDetector.ts, utils/settings/managedPath.ts, utils/hooks/hooksConfigSnapshot.ts, utils/settings/settings.ts, utils/settings/types.ts, utils/fsOperations.ts, utils/crypto.ts, dn, utils/debug.ts, services/mcp/utils.ts, services/mcp/config.ts, sst, tools/FileWriteTool/prompt.ts, utils/plugins/schemas.ts, services/analytics/metadata.ts, services/mcp/xaa.ts
 ((oJ = require("fs/promises")), (NSe = require("path")));
 ETp = new Set(ldo);
 vTp = new Set(["dynamic", "agent", "claudeai"]);

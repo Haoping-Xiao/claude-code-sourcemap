@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0169  score=0.0357  fileCov=0.031
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aho] deps: je, At, Jt, k7, Rx
+// [unwrapped __esm module aho] deps: utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/claudeInChrome/mcpServer.ts, utils/env.ts
 ((jOa = require("crypto")), (YDe = []));
 function bPp() {
   try {

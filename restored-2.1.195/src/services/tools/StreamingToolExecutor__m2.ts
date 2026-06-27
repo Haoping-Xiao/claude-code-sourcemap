@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/tools/StreamingToolExecutor.ts)  jaccard=0.0579  score=0.0924  fileCov=0.1345
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module v_l] deps: Xr, kt, Du, ii, LL, fp, Il, je, At, sa, co, sr, WAe, fh, jv, M8t, $yl, Nyl, lRo, Y0o, __l, sRo
+// [unwrapped __esm module v_l] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, services/mockRateLimits.ts, utils/sessionActivity.ts, screens/REPL.tsx, Il, utils/debug.ts, utils/errors.ts, utils/git.ts, utils/messages.ts, services/teamMemorySync/secretScanner.ts, WAe, commands/insights.ts, tools/ScheduleCronTool/prompt.ts, utils/memoryFileDetection.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, undici/lib/web/fetch/webidl.js, components/messages/AttachmentMessage.tsx, components/messages/CollapsedReadSearchContent.tsx, services/tools/StreamingToolExecutor.ts, cli/print.ts
 ((H_l = require("util")), (T_l = R(require("vm"))));
 ((rgf = ve(() =>
   H.strictObject({

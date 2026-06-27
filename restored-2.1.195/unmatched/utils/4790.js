@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0219  score=0.1644  fileCov=0.0247
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0219); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F2l] deps: si, Cc, Bs, B_, f_, CH, MEt, Pfe, dse, _i, Ye, ps, dht, vy, je, At, oc, vq, _k, gHe, lE, e1e, oWe, pXt, vfe, WI, PEt, sr, g0, irr, VBo, zBo, frr
+// [unwrapped __esm module F2l] deps: @xmldom/xmldom/lib/entities.js, context/modalContext.tsx, components/CustomSelect/select.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/CustomSelect/select.tsx, @smithy/types/dist-cjs/index.js, utils/plugins/pluginStartupCheck.ts, components/Settings/Config.tsx, hooks/useSearchInput.ts, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, commands/insights.ts, @mixmark-io/domino/lib/htmlelts.js, utils/debug.ts, utils/errors.ts, utils/nativeInstaller/download.ts, utils/plugins/marketplaceHelpers.ts, utils/generatedFiles.ts, utils/plugins/officialMarketplaceGcs.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/parseMarketplaceInput.ts, utils/plugins/fetchTelemetry.ts, utils/plugins/schemas.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, commands/plugin/ManagePlugins.tsx, native-ts/yoga-layout/index.ts, services/teamMemorySync/secretScanner.ts, utils/format.ts, ink/Ansi.tsx, commands/plugin/pluginDetailsHelpers.tsx, commands/plugin/usePagination.ts, commands/plugin/BrowseMarketplace.tsx
 YBo = R(lt(), 1), bA = R(rt(), 1), pi = R(se(), 1);
 async function MNf(e) {
   let t = [],

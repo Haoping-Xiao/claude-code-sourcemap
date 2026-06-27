@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2515  score=0.3435  fileCov=0.4845
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hZl] deps: ft, SC
+// [unwrapped __esm module hZl] deps: services/analytics/index.ts, utils/config.ts
 ((lKf = {
   type: "local-jsx",
   name: "remote-control",

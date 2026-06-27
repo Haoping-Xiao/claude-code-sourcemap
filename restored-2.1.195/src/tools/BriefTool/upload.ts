@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: uploadBriefAttachment, escapeContentDispositionFilename
-// [unwrapped __esm module wQ] deps: Rc, oo, Ls
+// [unwrapped __esm module wQ] deps: constants/oauth.ts, utils/http.ts, utils/status.tsx
 _yl = require("os");
 function guessMimeType(filename) {
   let t = V7n.extname(filename).toLowerCase();

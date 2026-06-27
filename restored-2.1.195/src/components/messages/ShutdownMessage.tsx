@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2895  score=0.4625  fileCov=0.4364
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uil] deps: Ye, Pqe, Lo, sr, ql
+// [unwrapped __esm module uil] deps: hooks/useTerminalSize.ts, @opentelemetry/api/build/src/context-api.js, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, commands/add-dir/validation.ts
 ((iil = R(lt(), 1)), (ail = require("path")), (lil = R(rt(), 1)), (z6 = R(se(), 1)));
 function ShutdownRequestDisplay(t0) {
   let t = GCo.c(5),

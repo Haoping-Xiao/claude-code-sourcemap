@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2145  score=0.4672  fileCov=0.2839
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WSr] deps: Tx, rv, DR
+// [unwrapped __esm module WSr] deps: @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 uIt = class uIt extends cp {
   create(e, t) {
     let {

@@ -5,7 +5,7 @@
 // note: nearest: src/ink/styles.ts (0.019); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PowerupDiscoveryStep
-// [unwrapped __esm module w$c] deps: Ye, ps, kt, hAt, je, At, vn, FZt, EC
+// [unwrapped __esm module w$c] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, components/messages/AttachmentMessage.tsx, utils/debug.ts, utils/errors.ts, utils/sequential.ts, screens/REPL.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 H$c = R(lt(), 1), T$c = R(rt(), 1), $Z = R(se(), 1);
 function PowerupDiscoveryStep(e) {
   let t = C$c.c(9),

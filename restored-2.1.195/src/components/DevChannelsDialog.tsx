@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DevChannelsDialog
-// [unwrapped __esm module D$c] deps: kt, Ye, Yp, dr, Fy, vi
+// [unwrapped __esm module D$c] deps: utils/debug.ts, hooks/useTerminalSize.ts, utils/gracefulShutdown.ts, utils/settings/settings.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx
 ((R$c = R(lt(), 1)), (umr = R(rt(), 1)), (ove = R(se(), 1)));
 function DevChannelsDialog(t0) {
   let t = P$c.c(13),

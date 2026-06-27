@@ -5,7 +5,7 @@
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mcpServeHandler, mcpResetChoicesHandler, mcpRemoveHandler, mcpListHandler, mcpGetHandler, mcpAddJsonHandler, mcpAddFromDesktopHandler
-// [unwrapped __esm module Vdc] deps: bCe, je, At, Rd, Is
+// [unwrapped __esm module Vdc] deps: utils/plugins/schemas.ts, utils/debug.ts, utils/errors.ts, utils/settings/constants.ts, utils/platform.ts
 ((ZYe = require("fs/promises")), (Gdc = require("os")), (O9o = require("path")));
 function nam(e) {
   let t = e?.issues;

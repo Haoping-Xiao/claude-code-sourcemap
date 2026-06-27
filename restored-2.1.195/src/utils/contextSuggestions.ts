@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5397  score=0.8198  fileCov=0.6124
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module f1l] deps: rtr
+// [unwrapped __esm module f1l] deps: components/Settings/Config.tsx
 ((d1l = u1l("vim", "Editor mode")), (p1l = u1l("output-style", "Output style")));
 function h1l(e) {
   let t = [];

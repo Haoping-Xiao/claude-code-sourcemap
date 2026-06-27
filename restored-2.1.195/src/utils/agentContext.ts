@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1844  score=0.2835  fileCov=0.3453
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ao] deps: ft, oo, BE, RE, fn, ste, jG, dr, Ls, NE, Xa, QO, gAn, vM, vM, DD, je, Myn
+// [unwrapped __esm module Ao] deps: services/analytics/index.ts, utils/http.ts, has-flag/index.js, RE, @anthropic-ai/sdk/internal/utils/uuid.mjs, bridge/jwtUtils.ts, utils/modelCost.ts, utils/settings/settings.ts, utils/status.tsx, utils/modelCost.ts, @xmldom/xmldom/lib/entities.js, utils/model/configs.ts, utils/model/modelCapabilities.ts, utils/model/model.ts, utils/model/model.ts, utils/model/modelOptions.ts, utils/debug.ts, @smithy/smithy-client/dist-cjs/index.js
 i1 = new Set();
 gpd = new RegExp(`^((${bDt.join("|")})\\.)?(anthropic\\.|claude-)`);
 hpd = /^[a-z]+-\d/;

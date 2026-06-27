@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.44  score=0.7218  fileCov=0.5298
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OOc] deps: kt, pke, DD, Ls, dr
+// [unwrapped __esm module OOc] deps: utils/debug.ts, pke, utils/model/modelOptions.ts, utils/status.tsx, utils/settings/settings.ts
 $xm = {};
 function migrateAutoUpdatesToSettings() {
   let e = Dt();

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/imageResizer.ts)  jaccard=0.0164  score=0.2317  fileCov=0.0173
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xW] deps: Lne, kt, ADn, je, At, es, vn
+// [unwrapped __esm module xW] deps: utils/imageResizer.ts, utils/debug.ts, ADn, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, utils/sequential.ts
 NU = class NU extends Error {
   constructor(e) {
     super(e);

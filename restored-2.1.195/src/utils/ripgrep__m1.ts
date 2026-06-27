@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/ripgrep.ts)  jaccard=0.2344  score=0.703  fileCov=0.2601
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tre] deps: Qi, kt, Lo, je, fn, At, Bi, vna, vn, Is, sr, _0
+// [unwrapped __esm module tre] deps: lodash-es/memoize.js, utils/debug.ts, utils/fsOperations.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/ripgrep.ts, utils/sequential.ts, utils/platform.ts, services/teamMemorySync/secretScanner.ts, axios/lib/utils.js
 ((d2t = require("child_process")),
   (Ina = require("os")),
   (Ero = R(require("path"))),

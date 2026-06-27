@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0234  score=0.2572  fileCov=0.0251
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js (0.0234); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BKt] deps: Xr
+// [unwrapped __esm module BKt] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 LQ = Dy({
   kind: "refusal_fallback_prompt",
   payload: ve(() => H.object({

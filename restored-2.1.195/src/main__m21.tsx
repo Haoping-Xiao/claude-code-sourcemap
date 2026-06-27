@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0025  score=0.1637  fileCov=0.0026
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iUc] deps: M8o
+// [unwrapped __esm module iUc] deps: cli/transports/SSETransport.ts
 oUc = require("url");
 function fLm(e) {
   let t = e,

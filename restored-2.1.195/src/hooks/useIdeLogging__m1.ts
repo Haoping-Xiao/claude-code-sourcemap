@@ -4,7 +4,7 @@
 // class=modified (alt of src/hooks/useIdeLogging.ts)  jaccard=0.3183  score=0.9201  fileCov=0.3273
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $ur] deps: si, _i, kt, pre, uo, Y4, vn, np, O0, Ye, ps, jZe, es, uf, co, Vl, Bs, vi, gDe, B_, f_, Ko, co, EC
+// [unwrapped __esm module $ur] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, utils/debug.ts, services/compact/autoCompact.ts, context/notifications.tsx, utils/getWorktreePaths.ts, utils/sequential.ts, env-paths/index.js, commander/lib/command.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/privacyLevel.ts, utils/profilerBase.ts, main.tsx, utils/messages.ts, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/IdeOnboardingDialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, utils/messages.ts, @anthropic-ai/bedrock-sdk/client.mjs
 ((Mur = R(lt(), 1)),
   (W8o = require("crypto")),
   (vTt = R(require("path"))),

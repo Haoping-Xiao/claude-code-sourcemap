@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TEAMMATE_SYSTEM_PROMPT_ADDENDUM
-// [unwrapped __esm module sbt] deps: je, H7n
+// [unwrapped __esm module sbt] deps: utils/debug.ts, hooks/useSwarmPermissionPoller.ts
 rbt = new Map();
 z6t = new Map();
 function Ygl(e) {

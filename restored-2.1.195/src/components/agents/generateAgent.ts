@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4403  score=0.9094  fileCov=0.4605
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BYl] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
+// [unwrapped __esm module BYl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, commands/memory/memory.tsx, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((OYl = R(lt(), 1)), (Gsr = R(rt(), 1)), (Kq = R(se(), 1)));
 async function generateAgent(userPrompt, model, existingIdentifiers, abortSignal) {
   let o =

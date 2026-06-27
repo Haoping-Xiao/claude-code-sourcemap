@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0143  score=0.3718  fileCov=0.0146
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GNn] deps: Xr
+// [unwrapped __esm module GNn] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 But = Dy({
   kind: "mcp_url_elicitation",
   payload: ve(() =>

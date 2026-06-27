@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0198  score=0.1293  fileCov=0.0229
 // note: nearest: node_modules/follow-redirects/index.js (0.0198); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yjc] deps: mjc, wm, gJo
+// [unwrapped __esm module yjc] deps: @mixmark-io/domino/lib/NavigatorID.js, services/PromptSuggestion/promptSuggestion.ts, eventsource/dist/index.js
 gjc = class gjc extends ugr {
   constructor(e, t) {
     super({

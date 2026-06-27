@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2783  score=0.7829  fileCov=0.3016
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bBl] deps: Ye, Lo
+// [unwrapped __esm module bBl] deps: hooks/useTerminalSize.ts, utils/fsOperations.ts
 ((EOf = R(lt(), 1)), (gBl = require("os")), (hBl = require("path")), (_Bl = R(se(), 1)));
 function AOf(e) {
   return !!zV(e);

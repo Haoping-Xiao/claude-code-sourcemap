@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatVersion, formatAll, call, ReleaseNotesPicker
-// [unwrapped __esm module KKe] deps: ft, Rx, db, er, je, fn, At, vn, qd, sr
+// [unwrapped __esm module KKe] deps: services/analytics/index.ts, utils/env.ts, utils/authFileDescriptor.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, utils/log.ts, services/teamMemorySync/secretScanner.ts
 ((BXt = require("path")), (Yrr = R(Uj(), 1)));
 function formatVersion(e, t) {
   let n = `Version ${e}:`,

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.01  score=0.0682  fileCov=0.0115
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module t5c] deps: BZ, awt
+// [unwrapped __esm module t5c] deps: google-auth-library/build/src/auth/oauth2client.js, @modelcontextprotocol/sdk/dist/esm/shared/auth.js
 ((HZo = {
   "/v1/metrics": "metrics",
   "/v1/logs": "logs",

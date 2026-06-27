@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.1201  score=0.306  fileCov=0.1651
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ykl] deps: co, E5, vMe, ql, Ye, oc, es, KI, bH
+// [unwrapped __esm module Ykl] deps: utils/messages.ts, components/VirtualMessageList.tsx, ink/measure-text.ts, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, utils/profilerBase.ts, utils/permissions/filesystem.ts, Task.ts
 X_ = R(se(), 1);
 function isBlockedDevicePath(filePath) {
   if (hCf.has(filePath)) return true;

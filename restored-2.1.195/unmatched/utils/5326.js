@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0125  score=0.1356  fileCov=0.0135
 // note: nearest: src/services/mcp/client.ts (0.0125); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yuc] deps: FAe, ag, vn, zH
+// [unwrapped __esm module yuc] deps: entrypoints/sdk/coreSchemas.ts, utils/claudeInChrome/common.ts, utils/sequential.ts, services/teamMemorySync/secretScanner.ts
 $cr = Xy, Jsm = /\x1b\[\d*D/g;
 function Ocr(e, t, n, r, o, s) {
   let i = Mi(),

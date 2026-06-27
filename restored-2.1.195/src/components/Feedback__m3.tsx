@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0205  score=0.0863  fileCov=0.0262
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oOo] deps: Jt
+// [unwrapped __esm module oOo] deps: utils/fsOperations.ts
 Skf = [
   "msg_bdrk_",
   "msg_vrtx_",

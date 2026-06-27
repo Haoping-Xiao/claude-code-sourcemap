@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2867  score=0.4954  fileCov=0.405
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SRc] deps: Ye, uo, sr, yYo
+// [unwrapped __esm module SRc] deps: hooks/useTerminalSize.ts, context/notifications.tsx, services/teamMemorySync/secretScanner.ts, components/tasks/RemoteSessionDetailDialog.tsx
 ((_Rc = R(lt(), 1)), (M7e = R(se(), 1)));
 function TranscriptSharePrompt(t0) {
   let t = ARc.c(13),

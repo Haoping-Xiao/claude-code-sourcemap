@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module p3o] deps: G4o, Bs, pz, v5, Ko, eE, _Pn, np, fH, HN, RUt, _i, Tc, Ye, id, kt, uo, Cp, vn, Ao, sr, m1
+// [unwrapped __esm module p3o] deps: highlight.js/lib/languages/stan.js, components/CustomSelect/select.tsx, utils/plugins/loadPluginCommands.ts, components/permissions/PermissionRequestTitle.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx, @xmldom/xmldom/lib/entities.js, env-paths/index.js, react/cjs/react.production.js, utils/plugins/pluginPolicy.ts, utils/textHighlighting.ts, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, context/notifications.tsx, utils/tempfile.ts, utils/sequential.ts, utils/agentContext.ts, services/teamMemorySync/secretScanner.ts, utils/thinking.ts
 cHt = R(lt(), 1), kQl = R(rt(), 1), uZ = R(rt(), 1), Ga = R(se(), 1), Q6f = {
   low: "Quick, straightforward implementation",
   medium: "Balanced approach with standard testing",

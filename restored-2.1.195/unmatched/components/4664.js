@@ -5,7 +5,7 @@
 // note: nearest: src/commands/effort/effort.tsx (0.021); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module t1l] deps: $7t, np, Ye, str
+// [unwrapped __esm module t1l] deps: components/Settings/Config.tsx, env-paths/index.js, hooks/useTerminalSize.ts, components/Settings/Config.tsx
 ZOl = R(lt(), 1), Ktr = R(rt(), 1), oNo = R(se(), 1);
 async function call(e, t) {
   let n = e.trim(),

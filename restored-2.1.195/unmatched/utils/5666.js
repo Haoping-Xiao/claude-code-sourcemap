@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0202  score=0.156  fileCov=0.0227
 // note: nearest: src/tools/AgentTool/loadAgentsDir.ts (0.0202); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module okc] deps: ft, ZE, og, je, Bi, vn, co, Ls, qd, Jt
+// [unwrapped __esm module okc] deps: services/analytics/index.ts, utils/shell/prefix.ts, utils/teammateContext.ts, utils/debug.ts, constants/files.ts, utils/sequential.ts, utils/messages.ts, utils/status.tsx, utils/log.ts, utils/fsOperations.ts
 Fpr = [{
   template: "find security vulnerabilities in {scope} and rank them by severity",
   genericScope: "this codebase"

@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: node_modules/axios/lib/platform/node/index.js; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: origin, navigator, hasStandardBrowserWebWorkerEnv, hasStandardBrowserEnv, hasBrowserEnv
-// [unwrapped __esm module fys] deps: lys, uxr
+// [unwrapped __esm module fys] deps: axios/lib/platform/node/index.js, axios/lib/helpers/toFormData.js
 uys = R(require("crypto")), dys = {
   DIGIT: cys,
   ALPHA: mxr,

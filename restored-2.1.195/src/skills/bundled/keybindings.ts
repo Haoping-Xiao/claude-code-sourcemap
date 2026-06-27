@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4678  score=0.8428  fileCov=0.5126
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ewc] deps: YLn, xne, JLn, QLn, Jt, AA
+// [unwrapped __esm module ewc] deps: keybindings/defaultBindings.ts, utils/debug.ts, keybindings/reservedShortcuts.ts, keybindings/schema.ts, utils/fsOperations.ts, skills/bundledSkills.ts
 ((bEm = {
   $schema: "https://www.schemastore.org/claude-code-keybindings.json",
   $docs: "https://code.claude.com/docs/en/keybindings",

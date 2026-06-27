@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/installCounts.ts)  jaccard=0.0388  score=0.1017  fileCov=0.0589
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qJ] deps: je, wr, Bi, sr, hN
+// [unwrapped __esm module qJ] deps: utils/debug.ts, main.tsx, constants/files.ts, services/teamMemorySync/secretScanner.ts, utils/swarm/backends/detection.ts
 ((aht = process.env.TMUX), (B7p = process.env.TMUX_PANE));
 SHo = iht;
 function vXa() {

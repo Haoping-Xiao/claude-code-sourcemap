@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/nativeInstaller/download.ts)  jaccard=0.0105  score=0.1793  fileCov=0.0111
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cho] deps: Rc, oo, Ls, qd, Un, jc
+// [unwrapped __esm module cho] deps: constants/oauth.ts, utils/http.ts, utils/status.tsx, utils/log.ts, services/analytics/growthbook.ts, utils/semver.ts
 r4n = R(Uj(), 1);
 function SPp() {
   try {

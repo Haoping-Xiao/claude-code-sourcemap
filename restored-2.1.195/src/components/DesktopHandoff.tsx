@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3824  score=0.7681  fileCov=0.4323
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NOo] deps: ft, je, Bi, oc
+// [unwrapped __esm module NOo] deps: services/analytics/index.ts, utils/debug.ts, constants/files.ts, utils/nativeInstaller/download.ts
 DPl = R(Uj(), 1);
 function getDownloadUrl() {
   switch ("linux") {

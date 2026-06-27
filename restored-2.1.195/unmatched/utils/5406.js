@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0222  score=0.4592  fileCov=0.0228
 // note: nearest: src/ink/components/Box.tsx (0.0222); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Gmc] deps: B8n, hNe, Ld
+// [unwrapped __esm module Gmc] deps: utils/controlMessageCompat.ts, screens/REPL.tsx, utils/concurrentSessions.ts
 Fmc = R(rt(), 1);
 function qmc(e) {
   let t = Wmc.c(8),

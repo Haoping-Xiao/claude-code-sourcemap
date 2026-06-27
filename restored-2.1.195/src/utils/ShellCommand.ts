@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.357  score=0.492  fileCov=0.5653
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yC] deps: bH
+// [unwrapped __esm module yC] deps: Task.ts
 nic = require("crypto");
 Cem = new Set(["local_agent", "remote_agent", "in_process_teammate", "local_workflow"]);
 Iem = {

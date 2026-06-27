@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module IXl] deps: Xr, Vl, Ye, dn, er, je, At, Jt
+// [unwrapped __esm module IXl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, keybindings/useShortcutDisplay.ts, hooks/useTerminalSize.ts, dn, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts
 ((w4o = R(lt(), 1)),
   (D1e = R(rt(), 1)),
   (Z$ = R(se(), 1)),

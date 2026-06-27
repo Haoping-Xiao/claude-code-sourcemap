@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0272  score=1  fileCov=0.0272
 // note: nearest: src/memdir/paths.ts (0.0272); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JFo] deps: GY
+// [unwrapped __esm module JFo] deps: utils/signal.ts
 XFo = R(rt(), 1);
 function Sor() {
   let e = yn("policySettings");

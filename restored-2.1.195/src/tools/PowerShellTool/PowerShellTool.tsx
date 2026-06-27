@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3153  score=0.4788  fileCov=0.4801
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Jzt] deps: Xr, kt, ii, Z6, fp, $pt, Lo, je, wr, At, es, vn, I1, w5e, Is, U2n, bde, _$, lg, tA, PDe, Gpt, kDe, _m, sr, bH, jqe, ILe, K0, eit, N6e, szt, o6n, lf, wX, cft, PHl, tWt, TTl, wTl, Wbt, DTl, Il
+// [unwrapped __esm module Jzt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, services/mockRateLimits.ts, utils/bash/ast.ts, screens/REPL.tsx, utils/plugins/hintRecommendation.ts, utils/fsOperations.ts, utils/debug.ts, main.tsx, utils/errors.ts, utils/profilerBase.ts, utils/sequential.ts, hooks/usePasteHandler.ts, services/mcp/vscodeSdkMcp.ts, utils/platform.ts, utils/shell/powershellDetection.ts, utils/powershell/parser.ts, utils/Shell.ts, utils/bash/bashParser.ts, fast-xml-parser/lib/fxp.cjs, utils/semanticNumber.ts, components/FallbackToolUseErrorMessage.tsx, utils/powershell/parser.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, services/teamMemorySync/secretScanner.ts, Task.ts, utils/task/TaskOutput.ts, tools/ListMcpResourcesTool/prompt.ts, utils/mcpOutputStorage.ts, tools/BashTool/destructiveCommandWarning.ts, N6e, szt, utils/notebook.ts, tools/GlobTool/prompt.ts, wX, tools/shared/gitOperationTracking.ts, tools/PowerShellTool/commandSemantics.ts, tools/PowerShellTool/destructiveCommandWarning.ts, tools/PowerShellTool/prompt.ts, tools/PowerShellTool/UI.tsx, tools/PowerShellTool/readOnlyValidation.ts, tools/PowerShellTool/PowerShellTool.tsx, Il
 ((W$e = require("fs/promises")),
   (FTl = R(se(), 1)),
   (bSf = new Set(["select-string", "get-childitem", "findstr", "where.exe"])),

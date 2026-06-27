@@ -5,7 +5,7 @@
 // note: nearest: src/main.tsx (0.0026); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: WorkflowTool, WorkflowInputError
-// [unwrapped __esm module fgl] deps: zX, gm, ql, Ye, uo, es, sr, e0o, Uoe, n0o, c7n
+// [unwrapped __esm module fgl] deps: utils/terminal.ts, undici/lib/mock/mock-agent.js, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, context/notifications.tsx, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, screens/REPL.tsx, node-fetch/lib/index.js, cli/print.ts, components/tasks/InProcessTeammateDetailDialog.tsx
 o0o = R(lt(), 1), A_ = R(se(), 1);
 async function mgl(e) {
   if (e.scriptPath) {

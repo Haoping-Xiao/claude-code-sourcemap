@@ -4,7 +4,7 @@
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0907  score=0.3906  fileCov=0.1056
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JJ] deps: ft, Xr, cWt, np, dn, kt, yC, Fgo, jjn, POa, je, bm, co, tA, _a, Jt, bH, Cv, gP
+// [unwrapped __esm module JJ] deps: services/analytics/index.ts, @modelcontextprotocol/sdk/dist/esm/types.js, tools/TaskUpdateTool/TaskUpdateTool.ts, env-paths/index.js, dn, utils/debug.ts, utils/ShellCommand.ts, utils/tasks.ts, tools/TodoWriteTool/TodoWriteTool.ts, utils/teleport/api.ts, utils/debug.ts, utils/messageQueueManager.ts, utils/messages.ts, fast-xml-parser/lib/fxp.cjs, utils/plans.ts, utils/fsOperations.ts, Task.ts, utils/teleport/api.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx
 qQp = ["remote-agent", "ultraplan", "ultrareview", "autofix-pr", "remote-workflow"];
 zQp = new Map();
 XQp = {

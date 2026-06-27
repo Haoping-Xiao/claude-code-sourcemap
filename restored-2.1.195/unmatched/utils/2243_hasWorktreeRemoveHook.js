@@ -5,7 +5,7 @@
 // note: nearest: src/utils/plugins/loadPluginHooks.ts (0.0491); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: hasWorktreeRemoveHook, hasWorktreeCreateHook
-// [unwrapped __esm module PM] deps: fn, L7, dr, Sx
+// [unwrapped __esm module PM] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/hooks/hooksConfigSnapshot.ts, utils/settings/settings.ts, Sx
 _Ni = new Map();
 function hasWorktreeCreateHook() {
   if (lc("hooks")) return false;

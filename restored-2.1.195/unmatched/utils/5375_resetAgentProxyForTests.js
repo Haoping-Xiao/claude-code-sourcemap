@@ -5,7 +5,7 @@
 // note: nearest: src/cli/print.ts (0.0036); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resetAgentProxyForTests, installIntoSystemTrust, initAgentProxy, getAgentProxyEnv, findSystemCaBundle, SESSION_TOKEN_PATH
-// [unwrapped __esm module pfc] deps: dn, je, wr, At, Bi, _0, aEe, C7n
+// [unwrapped __esm module pfc] deps: dn, utils/debug.ts, main.tsx, utils/errors.ts, constants/files.ts, axios/lib/utils.js, utils/bash/ShellSnapshot.ts, utils/swarm/spawnUtils.ts
 fw = require("fs/promises"), Q9o = require("os"), Fz = require("path"), Blm = /[\s'"]/;
 async function initAgentProxy(e) {
   let t = process.env.AGENT_PROXY_URL,

@@ -4,7 +4,7 @@
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0156  score=0.2993  fileCov=0.0161
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module L0c] deps: Jat, Qmo, Ye, nk, id, uo, gq, Z6, er, wr, fn, Ko
+// [unwrapped __esm module L0c] deps: hooks/useTextInput.ts, Qmo, hooks/useTerminalSize.ts, nk, dom-mutator/dist/dom-mutator.cjs.production.min.js, context/notifications.tsx, tools/BashTool/UI.tsx, utils/bash/ast.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, components/ConfigurableShortcutHint.tsx
 ((x0c = R(lt(), 1)), (k0c = R(rt(), 1)), (tfr = R(se(), 1)));
 function D0c(e, t) {
   if (t.kind === "clear") {

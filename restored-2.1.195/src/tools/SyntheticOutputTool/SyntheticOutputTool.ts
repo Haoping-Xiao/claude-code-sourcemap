@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: WORKFLOW_TOOL_NAME, CODE_REVIEW_WORKFLOW_NAME
-// [unwrapped __esm module i$] deps: Xr, ii, At, Jt
+// [unwrapped __esm module i$] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/errors.ts, utils/fsOperations.ts
 ((Hoa = R(Run(), 1)),
   (Gop = ve(() => H.object({}).passthrough())),
   (Wop = ve(() => H.string().describe("Structured output tool result"))));

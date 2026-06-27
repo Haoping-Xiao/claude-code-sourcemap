@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4427  score=0.8785  fileCov=0.4715
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zj] deps: ft, dn, db, fd, je, fn, At, ys, vn, iZr, Jt, Mp
+// [unwrapped __esm module zj] deps: services/analytics/index.ts, dn, utils/authFileDescriptor.ts, utils/debugFilter.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/sequential.ts, history.ts, utils/fsOperations.ts, utils/concurrentSessions.ts
 lZr = require("path");
 JDn = ["session", "project", "everywhere"];
 V8i = new Set();

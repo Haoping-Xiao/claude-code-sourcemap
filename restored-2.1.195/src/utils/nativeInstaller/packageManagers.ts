@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1269  score=0.4107  fileCov=0.1552
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kgt] deps: zb, db, je, fn, At, Jt
+// [unwrapped __esm module kgt] deps: zod/v4/classic/schemas.js, utils/authFileDescriptor.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts
 ((Pza = require("path")),
   (Gzp = ve(() =>
     dt.object({

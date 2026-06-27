@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0052  score=0.1777  fileCov=0.0054
 // note: nearest: src/bootstrap/state.ts (0.0052); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pOc] deps: _7o, S6
+// [unwrapped __esm module pOc] deps: components/InvalidSettingsDialog.tsx, utils/mailbox.ts
 sve = R(se(), 1);
 function fOc(e) {
   let {

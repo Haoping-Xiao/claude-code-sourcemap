@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0467  score=1  fileCov=0.0467
 // note: nearest: src/utils/settings/changeDetector.ts (0.0467); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vf] deps: ft
+// [unwrapped __esm module vf] deps: services/analytics/index.ts
 fv = ["userSettings", "projectSettings", "localSettings", "flagSettings", "policySettings"];
 OO = ["userSettings", "projectSettings", "localSettings"], DRt = ["localSettings", "projectSettings", "userSettings"];
 function wRr(e) {

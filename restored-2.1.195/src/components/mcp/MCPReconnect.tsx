@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.458  score=0.6928  fileCov=0.5747
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xBo] deps: si, ft, Xa, fH, _i, m8, Ye, ps, a5, g$, je, sr, Cc, vKe, Bs, vi, Ko, inr
+// [unwrapped __esm module xBo] deps: @xmldom/xmldom/lib/entities.js, services/analytics/index.ts, @xmldom/xmldom/lib/entities.js, react/cjs/react.production.js, components/design-system/Ratchet.tsx, m8, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/mcp/config.ts, services/mcp/xaa.ts, utils/debug.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, components/diff/DiffDialog.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, utils/auth.ts
 ((rXt = R(lt(), 1)),
   (n2l = R(rt(), 1)),
   (_3 = R(rt(), 1)),

@@ -4,7 +4,7 @@
 // class=unchanged (alt of src/utils/crypto.ts)  jaccard=1  score=1  fileCov=1
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xtn] deps: Ye
+// [unwrapped __esm module xtn] deps: hooks/useTerminalSize.ts
 ((mYo = require("crypto")), (tD = R(rt(), 1)));
 function cfr() {
   return false;

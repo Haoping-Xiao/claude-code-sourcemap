@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/ultraplan.tsx)  jaccard=0.028  score=0.0563  fileCov=0.0528
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sYe] deps: ft, Xa, Un, kt, jc, JJ, Zor, fd, er, je, At, vn, bm, _a, xF, gP, d9l, uJt, yYt
+// [unwrapped __esm module sYe] deps: services/analytics/index.ts, @xmldom/xmldom/lib/entities.js, services/analytics/growthbook.ts, utils/debug.ts, utils/semver.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, utils/ultraplan/ccrSession.ts, utils/debugFilter.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/messageQueueManager.ts, utils/plans.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, tasks/RemoteAgentTask/RemoteAgentTask.tsx, utils/ultraplan/ccrSession.ts, uJt, yYt
 ((W2o = {
   simple_plan: p9l(),
   visual_plan: f9l(),

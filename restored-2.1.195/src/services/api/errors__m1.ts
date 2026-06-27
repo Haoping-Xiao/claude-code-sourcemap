@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0232  score=0.0795  fileCov=0.0316
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xYn] deps: kt, CYn, QH
+// [unwrapped __esm module xYn] deps: utils/debug.ts, components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx, tools/TaskStopTool/prompt.ts
 odf = ["userSettings", "projectSettings", "localSettings", "flagSettings", "cliArg", "session"];
 function udf(e) {
   return cdf.has(e);

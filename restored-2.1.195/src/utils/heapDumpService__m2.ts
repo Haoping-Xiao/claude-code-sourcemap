@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: buildRemoteAttachConfig, attachRemote
-// [unwrapped __esm module xXo] deps: yKo, dn, c_, fd, je, At, Ls, Gen, Y4o, Wen, izo
+// [unwrapped __esm module xXo] deps: skills/bundled/verifyContent.ts, dn, services/mcp/officialRegistry.ts, utils/debugFilter.ts, utils/debug.ts, utils/errors.ts, utils/status.tsx, remote/sdkMessageAdapter.ts, remote/RemoteSessionManager.ts, assistant/sessionHistory.ts, tools/TaskUpdateTool/TaskUpdateTool.ts
 ((OFc = require("fs")),
   (Yme = require("fs/promises")),
   (NFc = require("os")),

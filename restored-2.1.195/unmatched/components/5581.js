@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0124  score=0.2763  fileCov=0.0128
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0124); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cHc] deps: Vl, Bs, Ko, tHc, X0, eKo, WTe, Tpr, LUt, V9n, Ye, Un, kt, Du, uo, S$, eit, N6e, Bmo, $I, lg
+// [unwrapped __esm module cHc] deps: keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, utils/permissions/permissionExplainer.ts, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/BashPermissionRequest/BashPermissionRequest.tsx, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, components/permissions/BashPermissionRequest/bashToolUseOptions.tsx, components/PromptInput/ShimmeredInput.tsx, components/Spinner/useStalledAnimation.ts, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, context/notifications.tsx, tools/BashTool/bashPermissions.ts, tools/BashTool/destructiveCommandWarning.ts, N6e, cli/print.ts, utils/permissions/shellRuleMatching.ts, utils/bash/bashParser.ts
 aHc = R(lt(), 1), UH = R(rt(), 1), PC = R(se(), 1);
 function E_m(e, t) {
   switch (e) {

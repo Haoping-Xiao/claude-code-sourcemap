@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lts] deps: $wt
+// [unwrapped __esm module lts] deps: semver/internal/lrucache.js
 ats = f9c;
 function m9c(e) {
   return Ove(this, e).get(e);

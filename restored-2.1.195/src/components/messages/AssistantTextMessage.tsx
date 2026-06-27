@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1203  score=0.2527  fileCov=0.1867
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Osl] deps: qyt, Ye, Un, Vyt, Ijt, oo, e1, wr, d5e, ql
+// [unwrapped __esm module Osl] deps: commands/extra-usage/index.ts, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, components/messages/RateLimitMessage.tsx, Ijt, utils/http.ts, bridge/bridgeApi.ts, main.tsx, services/api/usage.ts, commands/add-dir/validation.ts
 ((Msl = R(lt(), 1)), (Izn = R(rt(), 1)), (zyt = R(se(), 1)));
 function oof() {
   let e = D8t.c(1);

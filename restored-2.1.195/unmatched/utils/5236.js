@@ -4,7 +4,7 @@
 // class=new  jaccard=0.014  score=0.1987  fileCov=0.0148
 // note: nearest: src/commands/insights.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module znc] deps: ft, Un, kt, GXn, jc, er, je, At, Bi, sa, jS, Jt, Wnc
+// [unwrapped __esm module znc] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/teleport/api.ts, utils/semver.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/git.ts, utils/path.ts, utils/fsOperations.ts, context.ts
 qnc = require("fs/promises"), uar = require("path");
 eJf = `
 

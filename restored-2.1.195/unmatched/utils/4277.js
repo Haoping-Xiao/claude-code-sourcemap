@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0071  score=0.233  fileCov=0.0072
 // note: nearest: src/cli/print.ts (0.0071); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jml] deps: WAe, yml, k6e, Lml, U6t
+// [unwrapped __esm module jml] deps: WAe, yml, tasks/LocalAgentTask/LocalAgentTask.tsx, utils/plugins/loadPluginAgents.ts, utils/markdownConfigLoader.ts
 F6t = R(require("vm"));
 async function Gml(e, t, n, r = {}) {
   let o = Date.now(),

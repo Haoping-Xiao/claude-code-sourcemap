@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3958  score=0.6182  fileCov=0.5239
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZC] deps: Xr, zfn, bCe, je, Mx
+// [unwrapped __esm module ZC] deps: @modelcontextprotocol/sdk/dist/esm/types.js, schemas/hooks.ts, utils/plugins/schemas.ts, utils/debug.ts, utils/detectRepository.ts
 ((JRt = new Set(["claude-community", "claude-plugins-community"])),
   (SCe = new Set([
     "claude-code-marketplace",

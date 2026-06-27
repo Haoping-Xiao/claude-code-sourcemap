@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0233  score=0.6778  fileCov=0.0235
 // note: nearest: src/components/CustomSelect/select.tsx (0.0233); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module f_] deps: At, m0e
+// [unwrapped __esm module f_] deps: utils/errors.ts, components/shell/ExpandShellOutputContext.tsx
 Mzi = R(lt(), 1), $zi = R(se(), 1);
 function Fl(e) {
   let t = Ozi.c(9),

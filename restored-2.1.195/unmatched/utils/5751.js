@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0184  score=0.2084  fileCov=0.0198
 // note: nearest: src/ink/termio/osc.ts (0.0184); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aPc] deps: co, _m
+// [unwrapped __esm module aPc] deps: utils/messages.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts
 O7e = R(rt(), 1), MCm = [/\bcurl\b/, /\bwget\b/, /\bssh\b/, /\bkubectl\b/, /\bsrun\b/, /\bdocker\b/, /\bbq\b/, /\bgsutil\b/, /\bgcloud\b/, /\baws\b/, /\bgit\s+push\b/, /\bgit\s+pull\b/, /\bgit\s+fetch\b/, /\bgh\s+(pr|issue)\b/, /\bnc\b/, /\bncat\b/, /\btelnet\b/, /\bftp\b/], $Cm = [/^no[,!]\s/i, /\bthat'?s (wrong|incorrect|not (what|right|correct))\b/i, /\bnot what I (asked|wanted|meant|said)\b/i, /\bI (said|asked|wanted|told you|already said)\b/i, /\bwhy did you\b/i, /\byou should(n'?t| not)? have\b/i, /\byou were supposed to\b/i, /\btry again\b/i, /\b(undo|revert) (that|this|it|what you)\b/i];
 function lPc() {
   let e = Ntn.useContext(g8),

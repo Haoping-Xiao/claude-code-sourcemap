@@ -4,6 +4,6 @@
 // class=new  jaccard=0.0191  score=1  fileCov=0.0191
 // note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0191); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OUs] deps: eyn, iDt
+// [unwrapped __esm module OUs] deps: @aws-sdk/client-sso/dist-cjs/index.js, @aws-sdk/client-sts/dist-cjs/STSClient.js
 $Us = R(yd(), 1), OCg = $Us.createPaginator(iye, cDt, "nextToken", "nextToken", "maxResults");
 var NUs, FCg;

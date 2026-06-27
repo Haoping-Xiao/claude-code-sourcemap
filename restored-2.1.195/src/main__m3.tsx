@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0186  score=0.1378  fileCov=0.0211
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LZl] deps: qee, fp, fn, At, x3o, Jt, CZl
+// [unwrapped __esm module LZl] deps: qee, screens/REPL.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, cli/print.ts, utils/fsOperations.ts, commander/lib/command.js
 ((xZl = require("child_process")),
   (kZl = require("fs")),
   (RZl = require("readline")),

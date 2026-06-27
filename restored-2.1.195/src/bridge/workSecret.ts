@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2355  score=0.3396  fileCov=0.4345
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gtc] deps: Jt, kv, Cde
+// [unwrapped __esm module gtc] deps: utils/fsOperations.ts, proxy-from-env/index.js, bridge/debugUtils.ts
 ((ftc = require("child_process")),
   (mtc = require("fs")),
   (eQt = require("path")),

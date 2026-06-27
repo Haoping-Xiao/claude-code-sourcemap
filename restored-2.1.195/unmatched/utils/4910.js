@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0248  score=0.4544  fileCov=0.0255
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0248); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U5l] deps: HN, Ao, Cnr, Hor
+// [unwrapped __esm module U5l] deps: utils/plugins/pluginPolicy.ts, utils/agentContext.ts, utils/doctorContextWarnings.ts, react/cjs/react.production.js
 O5l = R(rt(), 1), B5l = R(se(), 1);
 function j5l(e) {
   let t = F5l.c(4),

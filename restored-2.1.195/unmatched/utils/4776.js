@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DBo] deps: _m
+// [unwrapped __esm module DBo] deps: tools/SyntheticOutputTool/SyntheticOutputTool.ts
 u2l = /https?:\/\/([^\s/?#'"`<>\\)\];&|(,]+)/gi;
 sNf = new Set(["sudo"]);
 function p2l(e, t) {

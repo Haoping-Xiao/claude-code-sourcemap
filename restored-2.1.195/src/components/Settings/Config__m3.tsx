@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0335  score=0.2875  fileCov=0.0365
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S7t] deps: tne, oo, er, Mm, At, dr, ih, dn, kt, c_, sMl
+// [unwrapped __esm module S7t] deps: components/Settings/Config.tsx, utils/http.ts, utils/config.ts, utils/git/gitConfigParser.ts, utils/errors.ts, utils/settings/settings.ts, bootstrap/state.ts, dn, utils/debug.ts, services/mcp/officialRegistry.ts, zod/v4/classic/schemas.js
 ((b7t = uL(void 0)),
   (aMl = Mi()),
   (lMl = b7t.getState),

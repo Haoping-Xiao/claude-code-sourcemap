@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3752  score=0.5656  fileCov=0.5271
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Gzn] deps: si, Xa, Nht, np, Ye, uo, i6e, YI, OI, Q8, gm, AN, ql, VCo, WCo, Bzn
+// [unwrapped __esm module Gzn] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, utils/teammateMailbox.ts, env-paths/index.js, hooks/useTerminalSize.ts, context/notifications.tsx, components/DiagnosticsDisplay.tsx, utils/teammateMailbox.ts, fast-xml-parser/lib/fxp.cjs, react/cjs/react.production.js, undici/lib/mock/mock-agent.js, ink/styles.ts, commands/add-dir/validation.ts, components/messages/UserImageMessage.tsx, components/messages/TaskAssignmentMessage.tsx, components/messages/PlanApprovalMessage.tsx
 ((Qyt = R(lt(), 1)), (_il = R(rt(), 1)), (Eh = R(se(), 1)), (KCo = `</${DB}>`));
 function getStatusColor(status) {
   switch (status) {

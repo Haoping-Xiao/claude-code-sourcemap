@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5637  score=0.9271  fileCov=0.5899
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fbl] deps: Xr, yde, ii, Il, Lo, je, At, Bi, ys, vn, Hu, Yf, J_l, Z_l, lbl
+// [unwrapped __esm module fbl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/nativeInstaller/installer.ts, services/mockRateLimits.ts, Il, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, utils/sequential.ts, utils/file.ts, utils/task/diskOutput.ts, J_l, tools/LSPTool/schemas.ts, tools/LSPTool/UI.tsx
 ((ubl = require("fs/promises")),
   (bRo = R(require("path"))),
   (dbl = require("url")),

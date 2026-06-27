@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: node_modules/@opentelemetry/api/build/src/platform/index.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module xOo] deps: ft, wQ, GF, ag, IL, y_, _a, Ver, Mp
+// [unwrapped __esm module xOo] deps: services/analytics/index.ts, tools/BriefTool/upload.ts, constants/systemPromptSections.ts, utils/claudeInChrome/common.ts, tools/AgentTool/agentColorManager.ts, utils/stats.ts, utils/plans.ts, commands/color/color.ts, utils/concurrentSessions.ts
 g0f = ["default", "reset", "none", "gray", "grey"];
 async function call(e, t) {
   return {

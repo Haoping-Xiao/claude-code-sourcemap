@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.102  score=0.2528  fileCov=0.146
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vGt] deps: Un, At, Uh, MM
+// [unwrapped __esm module vGt] deps: services/analytics/growthbook.ts, utils/errors.ts, services/analytics/metadata.ts, memdir/teamMemPrompts.ts
 ((VDa = require("fs/promises")),
   (gJ = require("path")),
   (hmo = ["team", "logs", "sessions", "proposals"]));

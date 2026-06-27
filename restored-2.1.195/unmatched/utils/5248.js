@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0262  score=0.0986  fileCov=0.0344
 // note: nearest: src/components/mcp/ElicitationDialog.tsx (0.0262); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xar] deps: LQt, har, zj, dn, kt, _F, jc, ver, ty, Lo, je, At, jS, HO, xHt, ag
+// [unwrapped __esm module xar] deps: tools/FileReadTool/FileReadTool.ts, upstreamproxy/upstreamproxy.ts, utils/Cursor.ts, dn, utils/debug.ts, bridge/bridgeEnabled.ts, utils/semver.ts, tools/AgentTool/builtInAgents.ts, tools/AgentTool/loadAgentsDir.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/path.ts, utils/sessionUrl.ts, main.tsx, utils/claudeInChrome/common.ts
 CQt = require("crypto"), a2 = require("fs/promises"), LHt = require("path");
 Bse = Rrc(jYt);
 xQt = [];

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2536  score=0.4185  fileCov=0.3915
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ihc] deps: kt, Du, J8o, Ye, uo, FEe, er, je, MPe, fn, kgt, A9e, BJ, LOe, gm
+// [unwrapped __esm module ihc] deps: utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, components/AutoUpdater.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, utils/plugins/zipCacheAdapters.ts, utils/config.ts, utils/debug.ts, utils/nativeInstaller/download.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/nativeInstaller/packageManagers.ts, utils/shellConfig.ts, services/mcp/config.ts, @xmldom/xmldom/lib/entities.js, undici/lib/mock/mock-agent.js
 ((Q8o = require("path")), (Gz = R(rt(), 1)), (WT = R(se(), 1)));
 function getErrorType(errorMessage) {
   if (errorMessage.includes("timeout")) return "timeout";

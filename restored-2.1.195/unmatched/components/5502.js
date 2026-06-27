@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0062  score=0.1228  fileCov=0.0065
 // note: nearest: src/cli/print.ts (0.0062); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Dbc] deps: nUt, m_t, uo, wAe
+// [unwrapped __esm module Dbc] deps: ink/measure-element.ts, components/permissions/ComputerUseApproval/ComputerUseApproval.tsx, context/notifications.tsx, components/Settings/Usage.tsx
 nzo = R(rt(), 1);
 function Pbc(e) {
   return typeof e === "string" ? Ja(e).replace(/[\r\n]/g, " ").slice(0, 512) : void 0;

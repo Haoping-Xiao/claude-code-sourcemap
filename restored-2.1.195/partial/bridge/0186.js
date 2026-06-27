@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0973  score=0.5335  fileCov=0.1063
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _Er] deps: rv
+// [unwrapped __esm module _Er] deps: utils/bash/ParsedCommand.ts
 cwe = class cwe extends cp {
   create(e, t) {
     let {

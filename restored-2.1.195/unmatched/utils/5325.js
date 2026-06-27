@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0168  score=0.2804  fileCov=0.0176
 // note: nearest: src/services/PromptSuggestion/speculation.ts (0.0168); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZVo] deps: ft, ESt, BWt, xnt, $S, oo, er, je, jS, Sx, Jt, X4
+// [unwrapped __esm module ZVo] deps: services/analytics/index.ts, commands/bridge-kick.ts, BWt, utils/sessionStorage.ts, google-auth-library/build/src/crypto/node/crypto.js, utils/http.ts, utils/config.ts, utils/debug.ts, utils/path.ts, Sx, utils/fsOperations.ts, utils/attachments.ts
 guc = require("net");
 function e9o(e) {
   let t = "",

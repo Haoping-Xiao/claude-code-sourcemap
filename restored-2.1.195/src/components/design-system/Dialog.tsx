@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1969  score=0.2663  fileCov=0.4305
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eE] deps: fH, Ye, LW
+// [unwrapped __esm module eE] deps: react/cjs/react.production.js, hooks/useTerminalSize.ts, ink/components/Box.tsx
 ((Lzi = R(lt(), 1)), (olt = R(se(), 1)));
 function Dialog(t0) {
   let t = Pzi.c(43),

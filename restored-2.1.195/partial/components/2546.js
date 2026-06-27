@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0991  score=0.7598  fileCov=0.1023
 // note: low-confidence suggestion: src/ink/focus.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $Ge] deps: eJr
+// [unwrapped __esm module $Ge] deps: react/cjs/react.production.js
 dbe = R(rt(), 1);
 function M0(e, t, n = false) {
   _6i.useEffect(() => {

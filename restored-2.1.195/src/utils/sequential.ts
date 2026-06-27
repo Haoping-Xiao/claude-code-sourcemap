@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5221  score=0.726  fileCov=0.6502
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vn] deps: Qi, ft, np, Epn, jZe, fn, At, qd, Jt, sr
+// [unwrapped __esm module vn] deps: lodash-es/memoize.js, services/analytics/index.ts, env-paths/index.js, utils/cachePaths.ts, utils/privacyLevel.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/log.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts
 Tpn = [];
 WZe = [];
 qag = Cn(() => process.argv.includes("--hard-fail"));

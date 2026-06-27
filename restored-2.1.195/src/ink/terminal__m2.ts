@@ -4,7 +4,7 @@
 // class=modified (alt of src/ink/terminal.ts)  jaccard=0.0513  score=0.1829  fileCov=0.0665
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module p8] deps: iu
+// [unwrapped __esm module p8] deps: @mixmark-io/domino/lib/Document.js
 ((zUd = new Set(["--no-color", "--no-colors", "--color=false", "--color=never"])),
   (KUd = new Set([
     "--color",

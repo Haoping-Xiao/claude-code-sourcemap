@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0318  score=0.6938  fileCov=0.0323
 // note: nearest: node_modules/react/cjs/react.production.js (0.0318); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tzi] deps: Mce, AW, Ye, uo
+// [unwrapped __esm module tzi] deps: ink/termio/types.ts, ink/supports-hyperlinks.ts, hooks/useTerminalSize.ts, context/notifications.tsx
 Q6i = R(lt(), 1), Z6i = require("url"), $Ut = R(se(), 1);
 function Tn(e) {
   let t = nzi.c(5),

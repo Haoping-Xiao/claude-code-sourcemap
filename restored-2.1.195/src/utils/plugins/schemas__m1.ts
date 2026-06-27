@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/schemas.ts)  jaccard=0.0434  score=0.4161  fileCov=0.0462
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bCe] deps: Xr
+// [unwrapped __esm module bCe] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((WRr = ve(() =>
   H.enum(["local", "user", "project", "dynamic", "enterprise", "claudeai", "managed", "agent"]),
 )),

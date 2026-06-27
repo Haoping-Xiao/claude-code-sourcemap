@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, Teleport
-// [unwrapped __esm module Tjo] deps: kt, l6l, Ye, ps, rlt, Ko, d6l, EC
+// [unwrapped __esm module Tjo] deps: utils/debug.ts, components/ResumeTask.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, hooks/useExitOnCtrlCD.ts, components/ConfigurableShortcutHint.tsx, components/TeleportResumeWrapper.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 ((p6l = R(lt(), 1)), (f6l = R(rt(), 1)), (qq = R(se(), 1)));
 function Teleport(e) {
   let t = g6l.c(16),

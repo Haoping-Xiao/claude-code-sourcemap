@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0034  score=0.6869  fileCov=0.0034
 // note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FJr] deps: fGe, X_e
+// [unwrapped __esm module FJr] deps: ink/components/AppContext.ts, ink/styles.ts
 OLn = R(rt(), 1);
 function BLn(e) {
   let t = _8.useContext(SW),

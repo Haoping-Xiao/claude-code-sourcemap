@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.331  score=0.6421  fileCov=0.4059
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F8t] deps: Cc, Q8, Bs, Ko, zX, Uol, E5, b8t, AN, d_t, ql, Pyt, Ye, ii, ZPe, es, co, Ao, AIo, IL, N8t
+// [unwrapped __esm module F8t] deps: context/modalContext.tsx, react/cjs/react.production.js, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, utils/terminal.ts, tools/PowerShellTool/UI.tsx, components/VirtualMessageList.tsx, components/CompactSummary.tsx, ink/styles.ts, tools/AgentTool/built-in/generalPurposeAgent.ts, commands/add-dir/validation.ts, components/messages/AdvisorMessage.tsx, hooks/useTerminalSize.ts, services/mockRateLimits.ts, ZPe, utils/profilerBase.ts, utils/messages.ts, utils/agentContext.ts, tools/AgentTool/AgentTool.tsx, tools/AgentTool/agentColorManager.ts, tools/AgentTool/UI.tsx
 ((dKn = R(lt(), 1)), (ia = R(se(), 1)));
 function xu(e) {
   return e.userFacingName?.() ?? e.name;

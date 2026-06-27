@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2103  score=0.4837  fileCov=0.2711
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tSa] deps: _i, Ye, ql, T4t
+// [unwrapped __esm module tSa] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, commands/add-dir/validation.ts, T4t
 ((p_p = R(lt(), 1)), (eSa = R(se(), 1)));
 function rSa(e, { verbose: t }) {
   if (Object.keys(e).length === 0) return "";

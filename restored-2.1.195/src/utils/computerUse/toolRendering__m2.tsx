@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setChromeBinding, getClaudeInChromePermissionOverrides, _resetChromeBindingForTesting
-// [unwrapped __esm module $po] deps: tQe, VM
+// [unwrapped __esm module $po] deps: @ant/claude-for-chrome-mcp/src/browserTools.ts, utils/claudeInChrome/common.ts
 ((SCp = {
   navigate: "navigate",
   read_page: "read the page",

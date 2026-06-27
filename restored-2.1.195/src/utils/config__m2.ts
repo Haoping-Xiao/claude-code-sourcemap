@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/config.ts)  jaccard=0.0314  score=0.1905  fileCov=0.0362
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sMc] deps: er, Fh, dr
+// [unwrapped __esm module sMc] deps: utils/config.ts, components/Settings/Config.tsx, utils/settings/settings.ts
 EIm = new Set(["CLAUDE_CODE_ENTRYPOINT"]);
 AIm = new Set([
   "tipsHistory",

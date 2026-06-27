@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0072); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseKindArgs, handleListAllKinds, handleCliKind
-// [unwrapped __esm module Aqc] deps: lH, dn, Un, kt, je, At, YS, vn, Is, QEe, Z3o, Gfe, kYe, lqc, WL, q$, CHt, IKe, iQt, VQ, pqc, _qc, YOe, sQt
+// [unwrapped __esm module Aqc] deps: lH, dn, services/analytics/growthbook.ts, utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/teammateContext.ts, utils/sequential.ts, utils/platform.ts, commander/lib/command.js, hooks/useReplBridge.tsx, undici/lib/web/fileapi/util.js, bridge/bridgeMain.ts, utils/fsOperations.ts, utils/git.ts, undici/lib/core/symbols.js, utils/plugins/installCounts.ts, @aws-sdk/client-bedrock/dist-cjs/index.js, components/agents/AgentsMenu.tsx, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, bridge/sessionRunner.ts, components/Feedback.tsx, mute-stream/lib/index.js, chokidar/esm/index.js
 yhr = require("fs/promises"), cNm = bme + Sqc;
 function jZ(e) {
   process.stdout.write(e + `

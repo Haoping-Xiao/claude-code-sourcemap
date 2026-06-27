@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0096  score=0.8267  fileCov=0.0096
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0096); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kDc] deps: Ed, w4, Ye, dn, PVt, es, m3o, Fh
+// [unwrapped __esm module kDc] deps: context/notifications.tsx, highlight.js/lib/languages/reasonml.js, hooks/useTerminalSize.ts, dn, utils/activityManager.ts, utils/profilerBase.ts, m3o, components/Settings/Config.tsx
 CDc = R(lt(), 1), mvt = R(rt(), 1), xDc = R(se(), 1);
 function LDc(e) {
   let t = RDc.c(5),

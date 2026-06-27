@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1244  score=0.5272  fileCov=0.14
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SGe] deps: l0e
+// [unwrapped __esm module SGe] deps: components/shell/ExpandShellOutputContext.tsx
 H5i = R(rt(), 1);
 function NWd(e) {
   let t = T5i.c(31),

@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mergeAndFilterTools, isPrActivitySubscriptionTool, applyCoordinatorToolFilter
-// [unwrapped __esm module KKl] deps: F8
+// [unwrapped __esm module KKl] deps: coordinator/coordinatorMode.ts
 zKl = {
   type: "local-jsx",
   name: "fork",

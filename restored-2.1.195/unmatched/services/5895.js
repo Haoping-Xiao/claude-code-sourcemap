@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0264  score=0.1226  fileCov=0.0325
 // note: nearest: node_modules/yaml/dist/parse/lexer.js (0.0264); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module k2c] deps: rB, wm, sB
+// [unwrapped __esm module k2c] deps: pkce-challenge/dist/index.node.js, services/PromptSuggestion/promptSuggestion.ts, sB
 YXo = _Dm;
 async function R2c(e, t, n) {
   if (typeof e !== "string" || e.indexOf("-----BEGIN PUBLIC KEY-----") !== 0) throw TypeError('"spki" must be SPKI formatted string');

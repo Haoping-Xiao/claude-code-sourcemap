@@ -5,7 +5,7 @@
 // note: deminified; 36 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateSettingsForSource, surfaceManagedSettingsErrorsHeadless, shouldIncludeParentTier, settingsMergeCustomizer, rawSettingsContainsKey, projectSettingsAliasesUserSettings, parseSettingsFileUncached, parseSettingsFile, parseRemoteManagedSettings, loadManagedFileSettingsFromDir, loadManagedFileSettings, keepRestrictiveFromParent, isAutoModeClassifyAllShellEnabled, isAdminPolicyOrigin, hasSurvivingAdminPolicySource, hasSkipWorkflowUsageWarning, hasSkipDangerousModePermissionPrompt …
-// [unwrapped __esm module i2e] deps: Xr, dn, je, Bi, Rd, vn, Is, ih, Jt, Sx, Smn, lj, oLt
+// [unwrapped __esm module i2e] deps: @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/debug.ts, constants/files.ts, utils/settings/constants.ts, utils/sequential.ts, utils/platform.ts, bootstrap/state.ts, utils/fsOperations.ts, Sx, components/Feedback.tsx, utils/settings/types.ts, utils/settings/settings.ts
 ((iCs = require("path")),
   (kLr = Mi()),
   (D1u = ve(() =>

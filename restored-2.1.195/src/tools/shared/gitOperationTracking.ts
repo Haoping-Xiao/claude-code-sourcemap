@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3302  score=0.6122  fileCov=0.4176
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cft] deps: Xr, ft, kt, Bi, ift, Jt
+// [unwrapped __esm module cft] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/debug.ts, constants/files.ts, tools/shared/gitOperationTracking.ts, utils/fsOperations.ts
 ((dOa = aft("commit")),
   (Pjn = aft("push")),
   (bDp = aft("cherry-pick")),

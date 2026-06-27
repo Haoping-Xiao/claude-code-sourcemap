@@ -5,7 +5,7 @@
 // note: nearest: src/components/ConsoleOAuthFlow.tsx (0.0325); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ProTrialStartScreen
-// [unwrapped __esm module A$c] deps: kt, ft, O0, Ye, ps, dn, Kv, er, Lo, ys, Yp, rlt, sr, Csr, Bs, Fy, Ko, gm, X0, b$c
+// [unwrapped __esm module A$c] deps: utils/debug.ts, services/analytics/index.ts, commander/lib/command.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, dn, services/mcp/utils.ts, utils/config.ts, utils/fsOperations.ts, utils/fsOperations.ts, utils/gracefulShutdown.ts, hooks/useExitOnCtrlCD.ts, services/teamMemorySync/secretScanner.ts, components/permissions/rules/WorkspaceTab.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, undici/lib/mock/mock-agent.js, components/ManagedSettingsSecurityDialog/utils.ts, components/TrustDialog/TrustDialog.tsx
 S$c = R(lt(), 1), g7o = require("os"), cmr = R(rt(), 1), AE = R(se(), 1);
 function ProTrialStartScreen(e) {
   let t = H$c.c(9),

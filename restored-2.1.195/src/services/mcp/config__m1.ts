@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/config.ts)  jaccard=0.0044  score=0.0598  fileCov=0.0047
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S_e] deps: wr
+// [unwrapped __esm module S_e] deps: main.tsx
 $$d = {
   "iTerm.app": "com.googlecode.iterm2",
   Apple_Terminal: "com.apple.Terminal",

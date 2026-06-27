@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0166  score=0.2643  fileCov=0.0174
 // note: nearest: node_modules/bignumber.js/bignumber.js (0.0166); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qQo] deps: FQo
+// [unwrapped __esm module qQo] deps: node-forge/lib/x509.js
 $Gc = require("crypto");
 function WGc() {
   let e = Ggr.randomBytes(VQo),

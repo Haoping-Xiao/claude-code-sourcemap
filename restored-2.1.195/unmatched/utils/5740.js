@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0298  score=0.6602  fileCov=0.0303
 // note: nearest: src/hooks/useVoiceIntegration.tsx (0.0298); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wDc] deps: Ed, Ye, kt, z1, Vyt, xjt, uo, oo, e1, NX, Ao
+// [unwrapped __esm module wDc] deps: context/notifications.tsx, hooks/useTerminalSize.ts, utils/debug.ts, services/api/errorUtils.ts, components/messages/RateLimitMessage.tsx, services/rateLimitMessages.ts, context/notifications.tsx, utils/http.ts, bridge/bridgeApi.ts, services/mcp/types.ts, utils/agentContext.ts
 TDc = R(lt(), 1), tve = R(rt(), 1), fvt = R(se(), 1);
 function IDc() {
   let e = CDc.c(13),

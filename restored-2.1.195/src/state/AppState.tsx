@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: AppStateProvider
-// [unwrapped __esm module C4n] deps: Zf, zqe, ORt, er, je, Cp, Q9, fn, PM, Hu, $I, __, Gy, fre, qho, Jt, vf, dr
+// [unwrapped __esm module C4n] deps: utils/sessionStorage.ts, utils/swarm/backends/teammateModeSnapshot.ts, ORt, utils/config.ts, utils/debug.ts, utils/tempfile.ts, tools/FileReadTool/FileReadTool.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/plugins/loadPluginHooks.ts, utils/file.ts, utils/permissions/shellRuleMatching.ts, utils/markdownConfigLoader.ts, utils/permissions/permissionSetup.ts, utils/permissions/PermissionUpdate.ts, utils/settings/applySettingsChange.ts, utils/fsOperations.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts
 nNa = require("path");
 function AppStateProvider(t0) {
   let t = oNa.c(23),

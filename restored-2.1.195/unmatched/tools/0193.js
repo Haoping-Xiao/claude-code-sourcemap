@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0122  score=1  fileCov=0.0122
 // note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0122); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OK] deps: $ge, rwe, Fsn, HSr, p0, uee, Ksn, Zsn, Tx, BSr, NJe, tin, _Er, xEr, yEr, IEr, Fsn, rv, ZCt, rwe
+// [unwrapped __esm module OK] deps: $ge, @anthropic-ai/sdk/internal/detect-platform.mjs, Fsn, constants/oauth.ts, @anthropic-ai/sdk/core/error.mjs, gtoken/build/src/index.js, fflate/esm/index.mjs, @anthropic-ai/sdk/internal/decoders/line.mjs, @anthropic-ai/sdk/internal/uploads.mjs, @anthropic-ai/bedrock-sdk/internal/headers.mjs, @anthropic-ai/sdk/client.mjs, @anthropic-ai/sdk/core/api-promise.mjs, @anthropic-ai/sdk/resources/beta/messages/messages.mjs, @anthropic-ai/sdk/resources/models.mjs, @anthropic-ai/sdk/resources/beta/beta.mjs, @anthropic-ai/sdk/resources/messages/messages.mjs, Fsn, utils/bash/ParsedCommand.ts, @anthropic-ai/mcpb/dist/shared/log.js, @anthropic-ai/sdk/internal/detect-platform.mjs
 REr = ah, Tin = new WeakMap(), kEr = new WeakSet(), Xos = function () {
   return this.baseURL !== "https://api.anthropic.com";
 };

@@ -4,7 +4,7 @@
 // class=modified (alt of src/server/directConnectManager.ts)  jaccard=0.0857  score=0.1276  fileCov=0.2067
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tec] deps: Xr, qee, dn, At, x3o, Jt, eLe
+// [unwrapped __esm module Tec] deps: @modelcontextprotocol/sdk/dist/esm/types.js, qee, dn, utils/errors.ts, cli/print.ts, utils/fsOperations.ts, utils/stream.ts
 zKf = ve(() =>
   H.object({
     session_id: H.string(),

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1756  score=0.8417  fileCov=0.1816
 // note: low-confidence suggestion: node_modules/mimic-fn/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module EEs] deps: bEs, LEr, Gon
+// [unwrapped __esm module EEs] deps: bEs, lodash-es/_defineProperty.js, Gon
 YDu = !UJe ? rJe : function (e, t) {
   return UJe(e, "toString", {
     configurable: true,

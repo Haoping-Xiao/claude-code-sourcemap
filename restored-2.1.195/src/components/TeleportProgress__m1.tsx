@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/TeleportProgress.tsx)  jaccard=0.2762  score=0.6513  fileCov=0.3241
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KFc] deps: si, Ye, C5, gP
+// [unwrapped __esm module KFc] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/renderOptions.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx
 ((WFc = R(lt(), 1)),
   (qFc = R(rt(), 1)),
   (M3 = R(se(), 1)),

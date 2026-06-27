@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1012  score=0.1483  fileCov=0.2413
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module h0o] deps: Xr, jc, ii, S_, u8t, Z6, fn, h7n, hyt, _$, lg, _m, S$, N6e, xgl, yyt, wX, Pgl
+// [unwrapped __esm module h0o] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/semver.ts, services/mockRateLimits.ts, tasks/LocalShellTask/LocalShellTask.tsx, utils/agentId.ts, utils/bash/ast.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/hooks/ssrfGuard.ts, tasks/LocalShellTask/LocalShellTask.tsx, utils/Shell.ts, utils/bash/bashParser.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, tools/BashTool/bashPermissions.ts, N6e, highlight.js/lib/languages/mathematica.js, tasks/LocalAgentTask/LocalAgentTask.tsx, wX, cli/print.ts
 Ogl = require("net");
 Jpf = {
   message: `timeout_ms must be \u2264 ${f0o}`,

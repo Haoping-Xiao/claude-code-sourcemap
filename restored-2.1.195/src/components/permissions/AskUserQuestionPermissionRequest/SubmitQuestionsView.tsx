@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3783  score=0.5047  fileCov=0.6016
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GAc] deps: si, Ye, uo, QOe, aE, y3, sr, mE, Bs, LW, Ko, vMe, PWt, UAc, _pr
+// [unwrapped __esm module GAc] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, context/notifications.tsx, utils/editor.ts, utils/ide.ts, commands/memory/memory.tsx, services/teamMemorySync/secretScanner.ts, components/ThemePicker.tsx, components/CustomSelect/select.tsx, ink/components/Box.tsx, components/ConfigurableShortcutHint.tsx, ink/measure-text.ts, ink/styles.ts, components/permissions/AskUserQuestionPermissionRequest/QuestionView.tsx, components/permissions/AskUserQuestionPermissionRequest/PreviewQuestionView.tsx
 ((FAc = R(lt(), 1)), (itn = R(rt(), 1)), (w_ = R(se(), 1)));
 function SubmitQuestionsView(t0) {
   let t = WAc.c(24),

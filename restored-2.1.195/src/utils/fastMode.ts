@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.262  score=0.3149  fileCov=0.6095
 // note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mye] deps: IB, Xr, foi
+// [unwrapped __esm module mye] deps: constants/keys.ts, @modelcontextprotocol/sdk/dist/esm/types.js, utils/model/configs.ts
 ((jdd = ve(() =>
   H.object({
     first_party: H.string(),

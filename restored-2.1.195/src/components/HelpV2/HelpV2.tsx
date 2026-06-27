@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2177  score=0.3756  fileCov=0.3412
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BBl] deps: _i, Ye, rBo
+// [unwrapped __esm module BBl] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, ink/components/Box.tsx
 ((OBl = R(lt(), 1)), (ZQ = R(se(), 1)));
 function HelpV2(t0) {
   let t = UBl.c(44),

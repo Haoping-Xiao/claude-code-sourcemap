@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3431  score=0.6565  fileCov=0.4182
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lil] deps: si, np, Ye, co
+// [unwrapped __esm module Lil] deps: @xmldom/xmldom/lib/entities.js, env-paths/index.js, hooks/useTerminalSize.ts, utils/messages.ts
 ((kil = R(lt(), 1)), (Vpe = R(se(), 1)));
 function UserLocalCommandOutputMessage(t0) {
   let t = Vzn.c(2),

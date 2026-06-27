@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/design-system/ThemeProvider.tsx)  jaccard=0.1442  score=0.3292  fileCov=0.2041
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cne] deps: I0n, j_e, Fh, nne, Mke
+// [unwrapped __esm module cne] deps: readdirp/esm/index.js, utils/systemTheme.ts, components/Settings/Config.tsx, utils/signal.ts, utils/theme.ts
 ((Q0n = R(lt(), 1)),
   (Jw = R(rt(), 1)),
   (ZUi = R(se(), 1)),

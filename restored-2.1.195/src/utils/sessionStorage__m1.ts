@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0304  score=0.93  fileCov=0.0305
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nec] deps: db, BFe, jS, Jt
+// [unwrapped __esm module nec] deps: utils/authFileDescriptor.ts, utils/sessionStoragePortable.ts, utils/path.ts, utils/fsOperations.ts
 ((zJt = require("crypto")), (Pir = require("path")));
 PKf = new Set(["user", "assistant", "attachment", "system", "progress"]);
 async function rec(e, t) {

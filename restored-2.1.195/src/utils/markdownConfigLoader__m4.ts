@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0263  score=0.1764  fileCov=0.03
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module N8l] deps: je, Rd, co, _a, Jt, i$, D6e, Gko
+// [unwrapped __esm module N8l] deps: utils/debug.ts, utils/settings/constants.ts, utils/messages.ts, utils/plans.ts, utils/fsOperations.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, tools/AgentTool/loadAgentsDir.ts, tools/AgentTool/AgentTool.tsx
 $8l = require("path");
 function CLAUDE_CONFIG_DIRECTORIES(e, t) {
   if (e === "user") return gJt.join(tr(), "workflows");

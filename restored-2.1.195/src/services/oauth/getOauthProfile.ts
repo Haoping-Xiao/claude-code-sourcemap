@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3307  score=0.4678  fileCov=0.5302
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ole] deps: e1
+// [unwrapped __esm module ole] deps: bridge/bridgeApi.ts
 Eld = {};
 async function getOauthProfileFromApiKey() {
   let t = Dt().oauthAccount?.accountUuid,

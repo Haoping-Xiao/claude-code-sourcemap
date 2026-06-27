@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1247  score=0.3569  fileCov=0.1609
 // note: low-confidence suggestion: src/utils/plugins/hintRecommendation.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $pt] deps: je, ih
+// [unwrapped __esm module $pt] deps: utils/debug.ts, bootstrap/state.ts
 qkp = new Set([1]), Vkp = new Set(["plugin"]), aPa = /^[ \t]*<claude-code-hint\s+([^>]*?)\s*\/>[ \t]*$/gm, zkp = /(\w+)=(?:"([^"]*)"|([^\s/>]+))/g;
 lPa = Mi(), cPa = lPa.emit;
 fPa = lPa.subscribe;

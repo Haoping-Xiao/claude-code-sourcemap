@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3385  score=0.5062  fileCov=0.5053
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fDc] deps: ft, Mjo, ZS, Ye, kt, Ld, er, wr, uf, vn, Y9, dr, Fy, vi, gor
+// [unwrapped __esm module fDc] deps: services/analytics/index.ts, highlight.js/lib/languages/css.js, ink/terminal.ts, hooks/useTerminalSize.ts, utils/debug.ts, utils/concurrentSessions.ts, utils/config.ts, main.tsx, main.tsx, utils/sequential.ts, utils/plugins/loadPluginAgents.ts, utils/settings/settings.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, bridge/bridgeApi.ts
 ((uDc = R(lt(), 1)), (Nfr = R(rt(), 1)), (eve = R(se(), 1)));
 function usePluginAutoupdateNotification() {
   let e = mDc.c(8),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.145  score=0.4001  fileCov=0.1852
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wmc] deps: Ye, Un, er, fn, es, mE, vi
+// [unwrapped __esm module wmc] deps: hooks/useTerminalSize.ts, services/analytics/growthbook.ts, utils/config.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/profilerBase.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx
 ((Hmc = R(lt(), 1)), (STt = R(se(), 1)));
 function xmc() {
   if ((r7e++, r7e === 1)) {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0156  score=0.3547  fileCov=0.016
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0156); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Zol] deps: si, Ye, Ao, Jt, Q8, ql, Pyt
+// [unwrapped __esm module Zol] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/agentContext.ts, utils/fsOperations.ts, react/cjs/react.production.js, commands/add-dir/validation.ts, components/messages/AdvisorMessage.tsx
 Jol = R(lt(), 1), aq = R(se(), 1);
 function tsl(e) {
   let t = esl.c(3),

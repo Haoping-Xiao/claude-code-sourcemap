@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: seedUtilization, loadPlanRateLimits, collectUsageData, MIN_BEHAVIOR_PCT
-// [unwrapped __esm module F1o] deps: At, ys, jS
+// [unwrapped __esm module F1o] deps: utils/errors.ts, utils/fsOperations.ts, utils/path.ts
 ((pEt = require("fs/promises")),
   (BOe = require("path")),
   (jL = new TextEncoder()),

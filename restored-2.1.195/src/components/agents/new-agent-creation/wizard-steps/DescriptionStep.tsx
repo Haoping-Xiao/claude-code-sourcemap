@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2721  score=0.409  fileCov=0.4484
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $Yl] deps: iu, kt, uo, ty, y3, wb, VAt, DYl
+// [unwrapped __esm module $Yl] deps: @mixmark-io/domino/lib/Document.js, utils/debug.ts, context/notifications.tsx, tools/AgentTool/loadAgentsDir.ts, commands/memory/memory.tsx, @ant/computer-use-mcp/src/toolCalls.ts, skills/bundled/keybindings.ts, components/agents/new-agent-creation/wizard-steps/ConfirmStepWrapper.tsx
 ((JAt = R(rt(), 1)), (MYl = R(se(), 1)));
 function DescriptionStep() {
   let e = OYl.c(18),

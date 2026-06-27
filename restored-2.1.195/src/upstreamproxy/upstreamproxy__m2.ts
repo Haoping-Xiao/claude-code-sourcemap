@@ -4,7 +4,7 @@
 // class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0308  score=0.1086  fileCov=0.0412
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module har] deps: Un, Is
+// [unwrapped __esm module har] deps: services/analytics/growthbook.ts, utils/platform.ts
 irc = require("os");
 function mJf(e) {
   let t = Vt();

@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/sandbox-toggle/sandbox-toggle.tsx)  jaccard=0.0212  score=0.0419  fileCov=0.0412
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GHl] deps: ft, Rm, Lo, ys, bde, dze
+// [unwrapped __esm module GHl] deps: services/analytics/index.ts, @grpc/grpc-js/build/src/server.js, utils/fsOperations.ts, utils/fsOperations.ts, utils/powershell/parser.ts, utils/file.ts
 ((BHl = require("os")), (TP = require("path")));
 K_f = ["head", "objects", "refs", "hooks"];
 ((Y_f = ["path", "literalpath"]),

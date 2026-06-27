@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bys] deps: KV, Pee
+// [unwrapped __esm module Bys] deps: axios/lib/core/AxiosError.js, axios/lib/helpers/toURLEncodedForm.js
 mSu = /^(?:([^;]+);)?(?:[^;]+;)?(base64|),([\s\S]*)$/;
 var Uys, jxr, Fys, Gxr;

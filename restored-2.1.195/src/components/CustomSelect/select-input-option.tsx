@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4791  score=0.6034  fileCov=0.6994
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TPn] deps: Xce
+// [unwrapped __esm module TPn] deps: components/CustomSelect/select.tsx
 ((szi = R(lt(), 1)), (izi = R(se(), 1)));
 function Czd(e, t, n, r) {
   let o = 2 + t + 2;

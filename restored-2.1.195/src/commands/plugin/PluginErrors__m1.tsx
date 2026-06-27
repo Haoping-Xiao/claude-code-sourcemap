@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/plugin/PluginErrors.tsx)  jaccard=0.0207  score=0.098  fileCov=0.0255
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NKe] deps: Lo, je, At, vn, dr, KPn, _k, lE, $g, vfe, ZC
+// [unwrapped __esm module NKe] deps: utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/settings/settings.ts, utils/plugins/pluginLoader.ts, utils/generatedFiles.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/pluginIdentifier.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, utils/plugins/schemas.ts
 m2l = require("path");
 async function formatErrorMessage(error) {
   let t = new Map();

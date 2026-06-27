@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveWritePath, extractHits, checkWriteBudget, ProjectsTool, ProjectsPreconditionError
-// [unwrapped __esm module pEl] deps: Xr, ii, Il, Lo, At, Jt, sr, zSl, HXn, TXn, rEl, aEl
+// [unwrapped __esm module pEl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, Il, utils/fsOperations.ts, utils/errors.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, cli/print.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, skills/loadSkillsDir.ts, utils/teleport/api.ts, tools/MCPTool/classifyForCollapse.ts
 ((NRo = require("fs")),
   (P$e = require("fs/promises")),
   (Voe = require("path")),

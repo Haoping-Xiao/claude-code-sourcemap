@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1194  score=0.2983  fileCov=0.1661
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Prs] deps: Qi
+// [unwrapped __esm module Prs] deps: lodash-es/memoize.js
 Lrs = Cn((e) => {
   if (!e || e.trim() === "") return null;
   let t = e

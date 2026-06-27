@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ori] deps: o2r, Pri
+// [unwrapped __esm module Ori] deps: @aws-sdk/credential-provider-cognito-identity/dist-cjs/index.js, @aws-sdk/credential-provider-cognito-identity/dist-cjs/index.js
 Mri = R(by(), 1);

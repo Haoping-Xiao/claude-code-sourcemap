@@ -4,7 +4,7 @@
 // class=modified (alt of src/tasks/InProcessTeammateTask/InProcessTeammateTask.tsx)  jaccard=0.0517  score=0.189  fileCov=0.0665
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pMe] deps: yC, je, co, dMe
+// [unwrapped __esm module pMe] deps: utils/ShellCommand.ts, utils/debug.ts, utils/messages.ts, tasks/InProcessTeammateTask/InProcessTeammateTask.tsx
 iel = {
   name: "InProcessTeammateTask",
   type: "in_process_teammate",

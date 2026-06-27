@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2023  score=0.933  fileCov=0.2052
 // note: low-confidence suggestion: src/utils/secureStorage/macOsKeychainHelpers.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S9] deps: Rc, fn
+// [unwrapped __esm module S9] deps: constants/oauth.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 U7s = require("crypto"), ZSn = require("os"), F7s = require("path");
 Pld = /^[a-zA-Z0-9._-]+$/;
 sle = {

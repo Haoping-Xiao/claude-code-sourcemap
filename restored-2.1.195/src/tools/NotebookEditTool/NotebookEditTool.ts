@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6119  score=0.7583  fileCov=0.7602
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pyt] deps: Y4, Xr, ii, j9t, Il, At, oc, PB, ys, Rd, s6n, Hu, dyt, Yf, Jt, Qtl, anl
+// [unwrapped __esm module pyt] deps: utils/getWorktreePaths.ts, @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/fileOperationAnalytics.ts, Il, utils/errors.ts, utils/nativeInstaller/download.ts, utils/platform.ts, utils/fsOperations.ts, utils/settings/constants.ts, components/permissions/NotebookEditPermissionRequest/NotebookEditToolDiff.tsx, utils/file.ts, dyt, utils/task/diskOutput.ts, utils/fsOperations.ts, components/NotebookEditToolUseRejectedMessage.tsx, anl
 ((lnl = require("crypto")),
   (cnl = require("path")),
   (Gef = ve(() =>

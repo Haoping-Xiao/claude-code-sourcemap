@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7989  score=0.8291  fileCov=0.9564
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tgo] deps: dr
+// [unwrapped __esm module tgo] deps: utils/settings/settings.ts
 ego = [
   "Accomplishing",
   "Actioning",

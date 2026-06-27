@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5303  score=0.6744  fileCov=0.7128
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jUa] deps: oo, er, je, At, Gx, vn, SG, dn, c_
+// [unwrapped __esm module jUa] deps: utils/http.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/slashCommandParsing.ts, utils/sequential.ts, screens/REPL.tsx, dn, services/mcp/officialRegistry.ts
 ROp = Ahe(kOp, IOp);
 class BigQueryMetricsExporter {
   endpoint;

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/controlMessageCompat.ts)  jaccard=0.0652  score=0.0821  fileCov=0.2399
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nwo] deps: Xr
+// [unwrapped __esm module nwo] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 Q9t = Dy({
   kind: "permission_webfetch",
   payload: ve(() =>

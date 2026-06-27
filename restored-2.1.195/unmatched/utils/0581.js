@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RE] deps: Mms, $ms, rpn, tbs, nbs, rbs, obs, sbs, ibs, Eae, rpn
+// [unwrapped __esm module RE] deps: utils/telemetry/instrumentation.ts, constants/oauth.ts, utils/env.ts, ink/terminal.ts, services/mcp/client.ts, utils/model/modelOptions.ts, services/api/claude.ts, utils/status.tsx, node-fetch/lib/index.js, utils/auth.ts, utils/env.ts
 B0u = {
   ...BIr,
   ...fkr,

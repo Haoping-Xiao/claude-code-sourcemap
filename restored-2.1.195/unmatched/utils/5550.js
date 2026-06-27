@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0046  score=0.6853  fileCov=0.0047
 // note: nearest: src/utils/attachments.ts (0.0046); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XEc] deps: bm, KEc
+// [unwrapped __esm module XEc] deps: utils/messageQueueManager.ts, hooks/useQueueProcessor.ts
 ntn = R(rt(), 1);
 function JEc(e, t) {
   if (!t || e.length === 0) return [];

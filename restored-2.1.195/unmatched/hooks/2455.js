@@ -4,7 +4,7 @@
 // class=new  jaccard=0.025  score=0.757  fileCov=0.0252
 // note: nearest: node_modules/react/cjs/react.production.js (0.025); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UJr] deps: fGe
+// [unwrapped __esm module UJr] deps: ink/components/AppContext.ts
 j5i = R(rt(), 1), TW = UWd;
 function vW(e, t) {
   let n = Ine.useContext(SW),

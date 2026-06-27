@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mcpLogoutHandler, mcpLoginHandler
-// [unwrapped __esm module vA] deps: FZt, U9o, Ye, S6, dn, kt, Yfe, cTt, C5, uTt, oo, wr, Gre
+// [unwrapped __esm module vA] deps: screens/REPL.tsx, state/onChangeAppState.ts, hooks/useTerminalSize.ts, utils/mailbox.ts, dn, utils/debug.ts, commands/mcp/mcp.tsx, components/MCPServerDialogCopy.tsx, utils/renderOptions.ts, commands/install.tsx, utils/http.ts, main.tsx, services/remoteManagedSettings/securityCheck.tsx
 ((dpc = R(lt(), 1)), (ppc = require("process")), (sur = R(rt(), 1)), (QN = R(se(), 1)));
 vam = sur.lazy(() =>
   Promise.resolve()

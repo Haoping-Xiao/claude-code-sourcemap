@@ -5,7 +5,7 @@
 // note: nearest: src/services/api/client.ts (0.0394); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default, BaseAnthropic, AnthropicBedrockMantle, AnthropicBedrock
-// [unwrapped __esm module Wdi] deps: W4r, UHn, OK, NJe, Gdi
+// [unwrapped __esm module Wdi] deps: utils/bash/ParsedCommand.ts, @anthropic-ai/bedrock-sdk/internal/utils/values.mjs, @anthropic-ai/sdk/client.mjs, @anthropic-ai/sdk/client.mjs, signal-exit/index.js
 K4r = class K4r extends ah {
   constructor({
     awsRegion: e,

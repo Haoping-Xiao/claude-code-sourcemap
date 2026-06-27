@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0663  score=1  fileCov=0.0663
 // note: low-confidence suggestion: src/utils/computerUse/computerUseLock.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rfo] deps: ft, dn, db, fd, je, fn, Jt, At
+// [unwrapped __esm module rfo] deps: services/analytics/index.ts, dn, utils/authFileDescriptor.ts, utils/debugFilter.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts, utils/errors.ts
 JSe = require("fs/promises"), Z0a = require("path"), Zpo = {
   kind: "acquired",
   fresh: true

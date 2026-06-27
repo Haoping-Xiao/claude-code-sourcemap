@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3382  score=1  fileCov=0.3382
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module u9] deps: Qi, Vet, je, ys
+// [unwrapped __esm module u9] deps: lodash-es/memoize.js, utils/caCerts.ts, utils/debug.ts, utils/fsOperations.ts
 ((LCs = require("https")),
   (UB = Cn(() => {
     let e = {};

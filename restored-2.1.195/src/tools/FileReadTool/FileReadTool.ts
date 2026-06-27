@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5043  score=0.8687  fileCov=0.5459
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $pe] deps: Xr, Lne, ufn, Un, kt, Du, U1, q8, rq, ii, Il, Lo, je, wr, fn, At, oc, a6n, es, ys, xW, vn, Xbt, co, I1, s6n, Hu, BMo, S0n, Yf, LQn, Gpt, _m, Jt, sr, lC, ADn, uDe, lf, Ykl
+// [unwrapped __esm module $pe] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/imageResizer.ts, constants/files.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, U1, utils/pdf.ts, skills/loadSkillsDir.ts, services/mockRateLimits.ts, Il, utils/fsOperations.ts, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/gitDiff.ts, utils/profilerBase.ts, utils/fsOperations.ts, utils/imageResizer.ts, utils/sequential.ts, utils/teamMemoryOps.ts, utils/messages.ts, hooks/usePasteHandler.ts, components/permissions/NotebookEditPermissionRequest/NotebookEditToolDiff.tsx, utils/file.ts, tools/FileReadTool/UI.tsx, tools/FileReadTool/prompt.ts, utils/task/diskOutput.ts, utils/readFileInRange.ts, components/FallbackToolUseErrorMessage.tsx, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, tools/PowerShellTool/PowerShellTool.tsx, ADn, utils/toolResultStorage.ts, tools/GlobTool/prompt.ts, tools/FileReadTool/FileReadTool.ts
 ((CZn = require("fs/promises")),
   (Wze = R(require("path"))),
   (IZn = require("path")),

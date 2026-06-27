@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0135  score=0.2764  fileCov=0.014
 // note: nearest: src/components/Stats.tsx (0.0135); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rVl] deps: URn, gGe, Jke, Ye
+// [unwrapped __esm module rVl] deps: ink/termio/tokenize.ts, ink/render-node-to-output.ts, ink/parse-keypress.ts, hooks/useTerminalSize.ts
 U3f = R(lt(), 1), tVl = R(rt(), 1), nVl = R(se(), 1), WZS = F3f * j3f;
 function A2o() {
   let e = E2o.c(2),

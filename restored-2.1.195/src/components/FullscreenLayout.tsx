@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2797  score=0.3703  fileCov=0.5334
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iVl] deps: gGe, Ye
+// [unwrapped __esm module iVl] deps: ink/render-node-to-output.ts, hooks/useTerminalSize.ts
 ((E2o = R(lt(), 1)), (sVl = R(rt(), 1)), (qHe = R(se(), 1)));
 oVl = [
   {

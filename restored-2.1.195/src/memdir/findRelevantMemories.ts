@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.232  score=0.3486  fileCov=0.4095
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QMo] deps: Qi, Un, wr, dr
+// [unwrapped __esm module QMo] deps: lodash-es/memoize.js, services/analytics/growthbook.ts, main.tsx, utils/settings/settings.ts
 xCf = ["off", "infinite", "fixed", "countdown"];
 NZn = Cn(() => {
   let e = Oe.CLAUDE_CODE_TOTAL_TOKENS_REMINDER;

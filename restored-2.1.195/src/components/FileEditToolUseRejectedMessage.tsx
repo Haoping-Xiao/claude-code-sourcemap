@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3113  score=0.4642  fileCov=0.486
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Uvo] deps: _i, Ye, ql, T4t
+// [unwrapped __esm module Uvo] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, commands/add-dir/validation.ts, T4t
 ((htl = R(lt(), 1)), (DF = R(se(), 1)));
 function FileEditToolUseRejectedMessage(t0) {
   let t = _tl.c(38),

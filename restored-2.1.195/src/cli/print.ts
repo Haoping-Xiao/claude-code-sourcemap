@@ -5,7 +5,7 @@
 // note: deminified; 29 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForPendingMcpBeforeFirstCommand, shouldWarnRestrictedStartupModel, shouldIgnoreStaleEndSession, runHeadless, restoreDeclaredDialogKinds, resolveDefaultPickRepoint, reportTurnFailed, reconcileMcpServers, modelOverrideToAdoptAfterTurn, mergeMcpClientLists, loadInitialMessages, kickOffBackgroundPluginInstall, joinPromptValues, isRestartedWorkerEpoch, handleOrphanedPermissionResponse, handleMcpSetServers, getCanUseToolFn, findRewindAnchors, createPrintRequestDialog, createKeepAl …
-// [unwrapped __esm module sFc] deps: np, dn, Lo, Bi, u8o, OI
+// [unwrapped __esm module sFc] deps: env-paths/index.js, dn, utils/fsOperations.ts, constants/files.ts, utils/processUserInput/processBashCommand.tsx, fast-xml-parser/lib/fxp.cjs
 rFc = require("crypto");
 function uFc(e) {
   if (fnn.has(e)) return false;

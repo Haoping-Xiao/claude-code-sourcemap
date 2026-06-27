@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0384  score=0.3732  fileCov=0.041
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0384); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vta] deps: _ue, oro, xWe
+// [unwrapped __esm module Vta] deps: protobufjs/src/common.js, oro, @smithy/smithy-client/dist-cjs/index.js
 wtp = [/\\[1-9]/, /\\k<.>/, /\(\?\=/, /\(\?\!/, /\(\?\<\=/, /\(\?\<\!/, /\\c[A-Z]/, /\\u[0-9a-fA-F]{4}/, /\\0(?!\d)/, /\[\\b.*\]/], Ctp = new RegExp(/^\(\?(?<flags>[ims\-]+)\)/);
 ({
   BOOL: va,

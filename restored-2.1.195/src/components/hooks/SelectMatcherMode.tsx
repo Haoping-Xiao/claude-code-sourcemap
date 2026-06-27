@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3936  score=0.5205  fileCov=0.6174
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bKl] deps: Ye, WAt, Vl, vi, B_, Ko
+// [unwrapped __esm module bKl] deps: hooks/useTerminalSize.ts, utils/hooks/hooksConfigManager.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx
 ((yKl = R(lt(), 1)), (mYe = R(se(), 1)));
 function SelectMatcherMode(t0) {
   let t = SKl.c(26),

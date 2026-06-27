@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2152  score=0.2797  fileCov=0.4826
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lhc] deps: kt, je, At, J8o, Ye, uo, FEe, er, kgt, BJ, LOe, gm
+// [unwrapped __esm module lhc] deps: utils/debug.ts, utils/debug.ts, utils/errors.ts, components/AutoUpdater.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, utils/plugins/zipCacheAdapters.ts, utils/config.ts, utils/nativeInstaller/packageManagers.ts, services/mcp/config.ts, @xmldom/xmldom/lib/entities.js, undici/lib/mock/mock-agent.js
 ((CZ = R(rt(), 1)), (Kse = R(se(), 1)));
 function ldm(e, t) {
   switch (e) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4453  score=0.681  fileCov=0.5626
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lBl] deps: wr
+// [unwrapped __esm module lBl] deps: main.tsx
 ((dOf = {
   name: "doctor",
   description: "Diagnose and verify your Claude Code installation and settings",

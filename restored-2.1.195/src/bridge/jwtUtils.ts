@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6467  score=0.9219  fileCov=0.6842
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ste] deps: ft, wFe, je, vn, dr, rle, QO, Ls
+// [unwrapped __esm module ste] deps: services/analytics/index.ts, constants/xml.ts, utils/debug.ts, utils/sequential.ts, utils/settings/settings.ts, utils/model/bedrock.ts, utils/model/configs.ts, utils/status.tsx
 uUr = Object.keys(yc);
 E7s = qZe(async () => {
   if (KBe() !== null) return;

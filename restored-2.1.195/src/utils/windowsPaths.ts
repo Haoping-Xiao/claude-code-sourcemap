@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2019  score=0.5605  fileCov=0.2399
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sj] deps: Qi, je, ys, SG, Is, QZe
+// [unwrapped __esm module sj] deps: lodash-es/memoize.js, utils/debug.ts, utils/fsOperations.ts, screens/REPL.tsx, utils/platform.ts, utils/windowsPaths.ts
 nCe = R(require("path/win32"));
 Hhe = Cn(() => {
   let { existsSync: e } = qt();

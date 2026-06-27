@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/swarm/It2SetupPrompt.tsx)  jaccard=0.0453  score=0.1282  fileCov=0.0654
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AQa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, Z9n
+// [unwrapped __esm module AQa] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, components/agents/new-agent-creation/wizard-steps/MethodStep.tsx
 ((_Qa = R(lt(), 1)),
   (bQa = require("os")),
   (SQa = require("path")),

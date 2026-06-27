@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4313  score=0.6569  fileCov=0.5567
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gIo] deps: AW, Ye, UX, dzn
+// [unwrapped __esm module gIo] deps: ink/supports-hyperlinks.ts, hooks/useTerminalSize.ts, utils/imageValidation.ts, hooks/useMainLoopModel.ts
 ((Gal = R(lt(), 1)), (a_t = R(se(), 1)), (jal = `learn more: ${u5e}`));
 function teamMemSavedPart(message) {
   let t = message.teamCount ?? 0;

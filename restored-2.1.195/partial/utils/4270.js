@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0907  score=0.6616  fileCov=0.0951
 // note: low-confidence suggestion: src/utils/transcriptSearch.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jko] deps: je, At, D6e
+// [unwrapped __esm module jko] deps: utils/debug.ts, utils/errors.ts, tools/AgentTool/loadAgentsDir.ts
 Aml = require("crypto"), Y_t = require("fs/promises"), e7n = require("path");
 function toolUseSearchText(input) {
   if (typeof input !== "object" || input === null) return "";

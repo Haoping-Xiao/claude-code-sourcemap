@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2556  score=0.37  fileCov=0.4525
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OTt] deps: si, Xa, _i, m8, Tc, Ye, nk, uo, rme, gq, S_, T6o, c7n, es, sr, dMe, Bs, Ko, _rr, YHe
+// [unwrapped __esm module OTt] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, m8, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, nk, context/notifications.tsx, components/tasks/renderToolActivity.tsx, tools/BashTool/UI.tsx, tasks/LocalShellTask/LocalShellTask.tsx, utils/permissions/getNextPermissionMode.ts, components/tasks/InProcessTeammateDetailDialog.tsx, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, tasks/InProcessTeammateTask/InProcessTeammateTask.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/FuzzyPicker.tsx, components/tasks/AsyncAgentDetailDialog.tsx
 (($Tt = R(lt(), 1)), (xZ = R(rt(), 1)), (Au = R(se(), 1)));
 function HistorySearchDialog({ initialQuery: e, onSelect: t, onCancel: n }) {
   Wh("history-search");

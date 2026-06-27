@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6078  score=1  fileCov=0.6078
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zQr] deps: er, je, At, Bi, vn
+// [unwrapped __esm module zQr] deps: utils/config.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/sequential.ts
 ((VQr = require("fs/promises")), (v8i = require("os")), (w8i = require("path")));
 function detectShell() {
   let e = process.env.SHELL || "",

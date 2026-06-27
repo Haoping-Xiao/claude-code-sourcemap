@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0071  score=0.3898  fileCov=0.0071
 // note: nearest: src/utils/auth.ts (0.0071); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module inr] deps: Kv, g$, L7, Ye, bEt, xoe
+// [unwrapped __esm module inr] deps: services/mcp/utils.ts, services/mcp/xaa.ts, utils/hooks/hooksConfigSnapshot.ts, hooks/useTerminalSize.ts, screens/REPL.tsx, components/AgentProgressLine.tsx
 ENo = R(lt(), 1), Lb = R(se(), 1);
 async function EEt(e, t = {}) {
   try {

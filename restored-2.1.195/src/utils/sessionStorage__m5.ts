@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0076  score=0.3937  fileCov=0.0077
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module p0c] deps: ft, GF, LQt, xar, ag, Un, kt, fd, je, RE, At, vn, bJt, Y9, _a, aR, qar, IWo, l0c
+// [unwrapped __esm module p0c] deps: services/analytics/index.ts, constants/systemPromptSections.ts, tools/FileReadTool/FileReadTool.ts, components/mcp/ElicitationDialog.tsx, utils/claudeInChrome/common.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/debugFilter.ts, utils/debug.ts, RE, utils/errors.ts, utils/sequential.ts, main.tsx, utils/plugins/loadPluginAgents.ts, utils/plans.ts, constants/prompts.ts, main.tsx, services/vcr.ts, utils/sessionStorage.ts
 ((c0c = require("crypto")), (rvt = require("fs/promises")), (u0c = require("path")));
 function f0c(e, t, n) {
   let r = () => {

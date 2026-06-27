@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4027  score=0.8202  fileCov=0.4417
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _Ec] deps: uo, rme, S_
+// [unwrapped __esm module _Ec] deps: context/notifications.tsx, components/tasks/renderToolActivity.tsx, tasks/LocalShellTask/LocalShellTask.tsx
 spr = R(rt(), 1);
 async function handleSwarmWorkerPermission(params) {
   if (!el() || !X_t()) return null;

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0197  score=0.448  fileCov=0.0202
 // note: nearest: node_modules/react/cjs/react.production.js (0.0197); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Q8] deps: iu, Ye, kne, N0e, Ko, d4t
+// [unwrapped __esm module Q8] deps: @mixmark-io/domino/lib/Document.js, hooks/useTerminalSize.ts, vendor/image-processor-src/index.ts, commander/lib/command.js, components/ConfigurableShortcutHint.tsx, components/CtrlOToExpand.tsx
 Alo = R(lt(), 1), Fua = R(rt(), 1), Elo = R(rt(), 1), VNn = R(se(), 1), jua = Fua.createContext(false);
 function d$(e) {
   let t = Wua.c(8),

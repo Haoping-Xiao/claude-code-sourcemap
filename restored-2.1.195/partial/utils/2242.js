@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1956  score=0.6046  fileCov=0.2243
 // note: low-confidence suggestion: src/utils/hooks/hooksConfigSnapshot.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module L7] deps: dr
+// [unwrapped __esm module L7] deps: utils/settings/settings.ts
 V1d = new Set(["plugin", "policySettings", "built-in", "builtin", "bundled"]);
 function z1d() {
   return {

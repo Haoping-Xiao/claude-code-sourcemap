@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0043  score=0.107  fileCov=0.0045
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0043); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dql] deps: Xa, ZS, Ye, Mne, dr, Pne
+// [unwrapped __esm module dql] deps: @xmldom/xmldom/lib/entities.js, ink/terminal.ts, hooks/useTerminalSize.ts, components/TextInput.tsx, utils/settings/settings.ts, @xmldom/xmldom/lib/entities.js
 JXt = R(rt(), 1), XXt = R(se(), 1), D4f = cql * L4f, P4f = qM({
   r: 153,
   g: 153,

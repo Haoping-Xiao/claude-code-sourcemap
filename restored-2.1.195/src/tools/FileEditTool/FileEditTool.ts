@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4645  score=0.7025  fileCov=0.5783
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xMe] deps: kt, Xao, Un, Pqe, _pt, yde, C5e, ymo, rq, ii, j9t, Il, Lo, je, Dpe, wr, fn, At, oc, Y4, a6n, PB, ik, es, ys, G9t, k0, Ao, Hu, dyt, Yf, rvl, lf, u_, ivl, W9t, hDo, bMe
+// [unwrapped __esm module xMe] deps: utils/debug.ts, @modelcontextprotocol/sdk/dist/esm/experimental/tasks/client.js, services/analytics/growthbook.ts, @opentelemetry/api/build/src/context-api.js, utils/plugins/lspPluginIntegration.ts, utils/nativeInstaller/installer.ts, hooks/useIdeLogging.ts, convert-to-spaces/dist/index.js, skills/loadSkillsDir.ts, services/mockRateLimits.ts, utils/fileOperationAnalytics.ts, Il, utils/fsOperations.ts, utils/debug.ts, utils/fileReadCache.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/getWorktreePaths.ts, utils/gitDiff.ts, utils/platform.ts, utils/claudemd.ts, utils/profilerBase.ts, utils/fsOperations.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, k0, utils/agentContext.ts, utils/file.ts, dyt, utils/task/diskOutput.ts, tools/FileEditTool/prompt.ts, tools/GlobTool/prompt.ts, utils/markdownConfigLoader.ts, tools/FileEditTool/UI.tsx, tools/FileEditTool/types.ts, get-east-asian-width/lookup.js, tools/FileEditTool/utils.ts
 ((oHe = require("path")),
   (xH = ti({
     name: ka,

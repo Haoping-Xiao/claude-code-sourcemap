@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5145  score=0.8519  fileCov=0.565
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oKl] deps: oo
+// [unwrapped __esm module oKl] deps: utils/http.ts
 ((aVf = {
   type: "local-jsx",
   name: "privacy-settings",

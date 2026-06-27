@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.097  score=0.9557  fileCov=0.0974
 // note: low-confidence suggestion: node_modules/zod/v4/classic/schemas.js; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JTr] deps: aM, VTr
+// [unwrapped __esm module JTr] deps: aM, zod/v4/classic/errors.js
 zTr = gan(NQe), KTr = han(NQe), YTr = yan(NQe), XTr = _an(NQe);
 function ar(e) {
   return Cln(fkt, e);

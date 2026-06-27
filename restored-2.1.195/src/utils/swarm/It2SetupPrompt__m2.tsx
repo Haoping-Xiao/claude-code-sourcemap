@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/swarm/It2SetupPrompt.tsx)  jaccard=0.0414  score=0.1015  fileCov=0.0654
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WJa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH
+// [unwrapped __esm module WJa] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((jJa = R(lt(), 1)), (K9n = R(rt(), 1)), (O6 = R(se(), 1)));
 function It2SetupPrompt() {
   let { goBack: e, goNext: t, updateWizardData: n, wizardData: r } = Eu(),

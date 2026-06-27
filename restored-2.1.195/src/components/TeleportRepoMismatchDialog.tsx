@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TeleportRepoMismatchDialog
-// [unwrapped __esm module Q$c] deps: Ye, mE, vi, qNo
+// [unwrapped __esm module Q$c] deps: hooks/useTerminalSize.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx, hooks/notifs/useMcpConnectivityStatus.tsx
 ((X$c = R(lt(), 1)), (Evt = R(se(), 1)));
 function TeleportRepoMismatchDialog(t0) {
   let t = Z$c.c(18),

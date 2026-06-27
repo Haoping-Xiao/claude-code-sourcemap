@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4047  score=0.5516  fileCov=0.6032
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yXl] deps: Ye, lg, Vl, hse, kP
+// [unwrapped __esm module yXl] deps: hooks/useTerminalSize.ts, utils/bash/bashParser.ts, keybindings/useShortcutDisplay.ts, components/ValidationErrorsList.tsx, components/design-system/Tabs.tsx
 ((H4o = R(lt(), 1)), (BP = R(se(), 1)));
 function SandboxSettings(t0) {
   let t = T4o.c(29),

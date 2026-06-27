@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0494  score=0.1622  fileCov=0.0664
 // note: nearest: node_modules/node-fetch/lib/index.js (0.0494); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Uoe] deps: $7
+// [unwrapped __esm module Uoe] deps: utils/pdfUtils.ts
 Fdf = new Set(["__proto__", "constructor", "prototype"]);
 function Uko(e, t = {
   sanitize: n => n

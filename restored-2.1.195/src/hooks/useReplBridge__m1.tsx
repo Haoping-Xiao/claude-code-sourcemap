@@ -4,7 +4,7 @@
 // class=modified (alt of src/hooks/useReplBridge.tsx)  jaccard=0.0109  score=0.0776  fileCov=0.0125
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yXa] deps: Ye, kt, Hu, dr, Fy, f_, gm, wb, vH
+// [unwrapped __esm module yXa] deps: hooks/useTerminalSize.ts, utils/debug.ts, utils/file.ts, utils/settings/settings.ts, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, undici/lib/mock/mock-agent.js, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((mXa = R(lt(), 1)), (gXa = R(rt(), 1)), (D6 = R(se(), 1)));
 $7p = new Set(["AWS_BEARER_TOKEN_BEDROCK", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]);
 function VPe() {

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/proxy.ts)  jaccard=0.1218  score=0.7267  fileCov=0.1277
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mh] deps: Hp, Qi, ft, Vet, bLt, je, fn, u9, OB
+// [unwrapped __esm module Mh] deps: axios/lib/axios.js, lodash-es/memoize.js, services/analytics/index.ts, utils/caCerts.ts, utils/mtls.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/mtls.ts, utils/execFileNoThrowPortable.ts
 ((s4s = R(_Lt(), 1)), (kOr = require("net")));
 MOr = Cn((e) => {
   let t = require("undici"),

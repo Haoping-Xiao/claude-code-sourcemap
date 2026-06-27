@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0083  score=0.2918  fileCov=0.0084
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module s9l] deps: zb, je, Jt, dn, c_
+// [unwrapped __esm module s9l] deps: zod/v4/classic/schemas.js, utils/debug.ts, utils/fsOperations.ts, dn, services/mcp/officialRegistry.ts
 r9l = ve(() => dt.object({
   action: dt.enum(["proceed", "confirm", "blocked"]),
   billing_note: dt.string().nullable().optional(),

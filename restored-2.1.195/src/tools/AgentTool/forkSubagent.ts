@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isInForkChild, isForkSubagentEnabled, getForkSubagentSource, buildWorktreeNotice, buildForkedMessages, buildChildMessage, _resetForkSubagentSourceTelemetryForTesting, FORK_SUBAGENT_TYPE, FORK_AGENT
-// [unwrapped __esm module l$] deps: ZWe, dn, kt, ii, fh, RX, Nue, u_, lf, i$, HU, wr, fn, _m, F8
+// [unwrapped __esm module l$] deps: main.tsx, dn, utils/debug.ts, services/mockRateLimits.ts, commands/insights.ts, @xmldom/xmldom/lib/entities.js, tools/AgentTool/builtInAgents.ts, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/effort.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, tools/SyntheticOutputTool/SyntheticOutputTool.ts, coordinator/coordinatorMode.ts
 esp = new Set([Ly, Ip]);
 function lsp() {
   if (j8()) return "disabled";

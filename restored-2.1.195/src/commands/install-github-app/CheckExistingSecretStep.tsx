@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3  score=0.3464  fileCov=0.6914
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
+// [unwrapped __esm module NUl] deps: components/CustomSelect/select.tsx, utils/plugins/loadPluginCommands.ts, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts
 ((MUl = R(lt(), 1)), ($Ul = R(rt(), 1)), (zL = R(se(), 1)));
 function CheckExistingSecretStep(t0) {
   let t = BUl.c(42),

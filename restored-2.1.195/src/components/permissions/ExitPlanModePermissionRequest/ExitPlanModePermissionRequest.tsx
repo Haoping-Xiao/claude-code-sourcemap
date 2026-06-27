@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3423  score=0.6082  fileCov=0.4392
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WTe] deps: iu, Ye, uo, QH, m0e
+// [unwrapped __esm module WTe] deps: @mixmark-io/domino/lib/Document.js, hooks/useTerminalSize.ts, context/notifications.tsx, tools/TaskStopTool/prompt.ts, components/shell/ExpandShellOutputContext.tsx
 ((wEc = R(lt(), 1)), (v7e = R(se(), 1)));
 function buildPermissionUpdates(mode, allowedPrompts) {
   let n = [

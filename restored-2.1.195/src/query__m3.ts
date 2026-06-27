@@ -4,7 +4,7 @@
 // class=modified (alt of src/query.ts)  jaccard=0.0051  score=0.0654  fileCov=0.0056
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module c5e] deps: ft, wr, Un, oo, e1, ste, jG, NE, dr, Cp, m1, Vw, y1n, QO, je, NX, Ls, DD, vM, Ao, BE, gAn, mio
+// [unwrapped __esm module c5e] deps: services/analytics/index.ts, main.tsx, services/analytics/growthbook.ts, utils/http.ts, bridge/bridgeApi.ts, bridge/jwtUtils.ts, utils/modelCost.ts, utils/modelCost.ts, utils/settings/settings.ts, utils/tempfile.ts, utils/thinking.ts, utils/betas.ts, services/mcp/config.ts, utils/model/configs.ts, utils/debug.ts, services/mcp/types.ts, utils/status.tsx, utils/model/modelOptions.ts, utils/model/model.ts, utils/agentContext.ts, has-flag/index.js, utils/model/modelCapabilities.ts, utils/model/modelOptions.ts
 ((taa = {
   value: "sonnet",
   label: "Sonnet",

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/installCounts.ts)  jaccard=0.009  score=0.0108  fileCov=0.0528
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CHt] deps: ag, dn, Hpe, YS, vn, Is, tWo, WL, cKe, IKe
+// [unwrapped __esm module CHt] deps: utils/claudeInChrome/common.ts, dn, utils/peerAddress.ts, utils/teammateContext.ts, utils/sequential.ts, utils/platform.ts, cli/print.ts, utils/git.ts, @smithy/core/dist-cjs/submodules/cbor/index.js, @aws-sdk/client-bedrock/dist-cjs/index.js
 ((bZ = require("fs/promises")), (rWo = require("net")), (nWo = require("path")));
 async function yTe(e, t, n) {
   if (t?.backend === "peer")

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0098  score=0.4275  fileCov=0.0099
 // note: nearest: src/services/mcp/config.ts (0.0098); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tOc] deps: Ye, oc, Vtn, mE, vi, f_, EC
+// [unwrapped __esm module tOc] deps: hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, @anthropic-ai/bedrock-sdk/client.mjs, components/ThemePicker.tsx, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 Z$c = R(lt(), 1), hmr = R(rt(), 1), KP = R(se(), 1);
 function Avt(e, t, n) {
   if (!t) return e;

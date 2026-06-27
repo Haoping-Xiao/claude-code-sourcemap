@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3174  score=0.5235  fileCov=0.4463
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tpr] deps: Ed, uo, Sdr, __
+// [unwrapped __esm module Tpr] deps: context/notifications.tsx, context/notifications.tsx, components/AutoModeOptInDialog.tsx, utils/markdownConfigLoader.ts
 ZAc = R(lt(), 1);
 function o_m(e) {
   let { commandWithoutRedirections: t, redirections: n } = vde(e);

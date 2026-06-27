@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0069  score=0.3194  fileCov=0.007
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0069); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nct] deps: TWe, Vno, t2t
+// [unwrapped __esm module nct] deps: base64-js/index.js, @smithy/core/dist-cjs/submodules/cbor/index.js, yaml/dist/parse/parser.js
 U$n = Symbol.for("@bufbuild/cel/list");
 nta = class nta {
   _array;

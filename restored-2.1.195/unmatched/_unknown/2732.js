@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0158  score=0.4339  fileCov=0.0161
 // note: nearest: node_modules/@grpc/grpc-js/build/src/resolving-call.js (0.0158); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tro] deps: SX, Qne
+// [unwrapped __esm module tro] deps: protobufjs/ext/descriptor/index.js, Qne
 atp = -9223372036854775808n;
 bta = Object.freeze({
   ns: 1n,

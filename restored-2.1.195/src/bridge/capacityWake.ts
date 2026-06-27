@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4989  score=0.6518  fileCov=0.6802
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ctc] deps: iu, Xa, Tc, je, loe
+// [unwrapped __esm module ctc] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, marked/lib/marked.esm.js, utils/debug.ts, utils/swarm/constants.ts
 ((atc = R(cAt(), 1)),
   (OYf = {
     type: "utf8",

@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/AutoModeOptInDialog.tsx)  jaccard=0.037  score=0.0742  fileCov=0.0686
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LJl] deps: np, dn, kt, lT, DD, EHe
+// [unwrapped __esm module LJl] deps: env-paths/index.js, dn, utils/debug.ts, utils/permissions/permissionSetup.ts, utils/model/modelOptions.ts, EHe
 kJl = `Usage: /model <name>. Available: ${hye.join(", ")}, default, or a full model ID.`;
 function AutoModeOptInDialog(t0) {
   let t = DJl.c(23),

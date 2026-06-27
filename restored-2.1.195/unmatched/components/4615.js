@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0161  score=0.1307  fileCov=0.018
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0161); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sMl] deps: Xr
+// [unwrapped __esm module sMl] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 oMl = ve(() => {
   let e = H.object({
       enable_email: H.boolean().nullish(),

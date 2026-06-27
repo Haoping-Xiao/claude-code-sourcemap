@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.2515  score=0.4737  fileCov=0.3489
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module W$l] deps: er
+// [unwrapped __esm module W$l] deps: utils/config.ts
 ((M1o = [
   "Appearance",
   "Model & output",

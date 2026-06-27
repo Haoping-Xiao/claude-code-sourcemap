@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0912  score=0.148  fileCov=0.1921
 // note: low-confidence suggestion: src/hooks/useSettings.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Iv] deps: je, fKr
+// [unwrapped __esm module Iv] deps: utils/debug.ts, tools/AgentTool/loadAgentsDir.ts
 WOd = /[{}[\]*&#!|>%@`]|: /;
 I_e = /^---\s*\n([\s\S]*?)---\s*\n?/;
 _1i = ["bash", "powershell"];

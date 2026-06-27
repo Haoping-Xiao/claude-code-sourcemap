@@ -5,7 +5,7 @@
 // note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateWorkflowProgressBatch, skipWorkflowAgent, retryWorkflowAgent, registerWorkflowTask, registerAdoptedWorkflowTask, pauseWorkflowTask, killWorkflowTask, isLocalWorkflowTask, failWorkflowTask, enqueueWorkflowNotification, completeWorkflowTask, buildResumePrompt, LocalWorkflowTask
-// [unwrapped __esm module k6e] deps: Jt, WAe
+// [unwrapped __esm module k6e] deps: utils/fsOperations.ts, WAe
 zYn = R(require("vm"));
 Ndf = `(() => {
       const NOW_ERR = ${De($df)};

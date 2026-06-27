@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5004  score=0.5975  fileCov=0.7547
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fIo] deps: Xa, Ye, ii, co, E5, Lyt, ql, lwo, kal
+// [unwrapped __esm module fIo] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, services/mockRateLimits.ts, utils/messages.ts, components/VirtualMessageList.tsx, native-ts/yoga-layout/index.ts, commands/add-dir/validation.ts, tools/ExitPlanModeTool/UI.tsx, components/messages/UserToolResultMessage/UserToolErrorMessage.tsx
 ((Ral = R(lt(), 1)), (cQ = R(se(), 1)));
 function VerboseToolUse(t0) {
   let t = rKn.c(49),

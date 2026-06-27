@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/components/AutoModeOptInDialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: AutoDefaultNudgeDialog
-// [unwrapped __esm module MPc] deps: ft, gq, ft, rSe, id, uo, yC, pMe, WW, F2t, qYo, N8, je, bm, co, oje
+// [unwrapped __esm module MPc] deps: services/analytics/index.ts, tools/BashTool/UI.tsx, services/analytics/index.ts, utils/toolSearch.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, context/notifications.tsx, utils/ShellCommand.ts, tasks/InProcessTeammateTask/InProcessTeammateTask.tsx, utils/cronScheduler.ts, utils/cronJitterConfig.ts, hooks/useScheduledTasks.ts, utils/cronJitterConfig.ts, utils/debug.ts, utils/messageQueueManager.ts, utils/messages.ts, constants/system.ts
 yvt = R(rt(), 1), rIm = (KWe(), ro(zWe));
 function AutoModeOptInDialog(t0) {
   let t = $Pc.c(18),

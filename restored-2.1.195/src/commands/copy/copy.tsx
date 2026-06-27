@@ -5,7 +5,7 @@
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tableTokenToMarkdown, normalizeTablesInMarkdown, fileExtension, collectRecentAssistantTexts, call
-// [unwrapped __esm module cPl] deps: IL
+// [unwrapped __esm module cPl] deps: tools/AgentTool/agentColorManager.ts
 ((b0f = {
   type: "local-jsx",
   name: "color",

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0948  score=0.2015  fileCov=0.1518
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gKe] deps: _i, m8, Tc, Ye, PUt
+// [unwrapped __esm module gKe] deps: components/design-system/Ratchet.tsx, m8, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, components/design-system/StatusIcon.tsx
 ((mKe = R(lt(), 1)),
   (c1o = R(rt(), 1)),
   (DOe = R(rt(), 1)),

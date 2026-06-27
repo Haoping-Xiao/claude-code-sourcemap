@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.081  score=1  fileCov=0.081
 // note: low-confidence suggestion: src/commands/extra-usage/index.ts; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CCo] deps: Ye
+// [unwrapped __esm module CCo] deps: hooks/useTerminalSize.ts
 vzn = R(se(), 1);
 function Wyt() {
   if (Oe.DISABLE_EXTRA_USAGE_COMMAND) return false;

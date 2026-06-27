@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0093  score=0.011  fileCov=0.0584
 // note: nearest: node_modules/eventsource-parser/dist/index.js (0.0093); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ago] deps: rre, sN, ys, Hu, Yf, $I, Jbe, xue, S$, Tjn
+// [unwrapped __esm module Ago] deps: utils/bash/ast.ts, utils/bash/commands.ts, utils/fsOperations.ts, utils/file.ts, utils/task/diskOutput.ts, utils/permissions/shellRuleMatching.ts, utils/plugins/pluginDirectories.ts, utils/shell/readOnlyCommandValidation.ts, tools/BashTool/bashPermissions.ts, tools/BashTool/pathValidation.ts
 b$a = require("os"), H5 = require("path");
 ZRp = /^"?\$(?:\{[A-Za-z_][A-Za-z0-9_]*\}|[A-Za-z_][A-Za-z0-9_]*)"?\/(?:\*|\$|\/|["']|$)/, eLp = /^(?:[A-Za-z_][A-Za-z0-9_]*\+?=[^\s]*\s+)*\\?(?:[^\s=]*\/)?(rm|rmdir)(?:\s|$)/;
 Zpt = {

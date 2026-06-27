@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0243  score=0.5285  fileCov=0.0248
 // note: nearest: src/components/VirtualMessageList.tsx (0.0243); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eUt] deps: oat
+// [unwrapped __esm module eUt] deps: ink/components/App.tsx
 y8 = R(rt(), 1);
 function BJr(e) {
   return Oe.CLAUDE_CODE_ALT_SCREEN_FULL_REPAINT ? Math.max(e, BWd) : e;

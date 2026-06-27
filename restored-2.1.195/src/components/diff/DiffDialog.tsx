@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DiffDialog
-// [unwrapped __esm module J1l] deps: si, _i, Ye, es, sr, gDe, B_
+// [unwrapped __esm module J1l] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, components/IdeOnboardingDialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx
 ((onr = R(lt(), 1)), (WN = R(se(), 1)));
 function r$f(e) {
   let t = Array.from(e.files.values())

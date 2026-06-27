@@ -4,7 +4,7 @@
 // class=new  jaccard=0.005  score=0.2747  fileCov=0.005
 // note: nearest: src/components/Settings/Config.tsx (0.005); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Pfe] deps: Xa, $Ge, Ye, wr, _Ge, n$l
+// [unwrapped __esm module Pfe] deps: @xmldom/xmldom/lib/entities.js, ink/focus.ts, hooks/useTerminalSize.ts, main.tsx, components/design-system/color.ts, components/SearchBox.tsx
 S1o = R(rt(), 1), g3 = R(se(), 1);
 function V$() {
   return wc("editorMode", "normal").value === "vim";

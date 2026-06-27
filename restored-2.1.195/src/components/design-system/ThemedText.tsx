@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3398  score=0.7748  fileCov=0.377
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RLn] deps: Tne, cne
+// [unwrapped __esm module RLn] deps: ink/Ansi.tsx, components/design-system/ThemeProvider.tsx
 ((XWi = R(lt(), 1)), (JWi = R(se(), 1)));
 U = AWd;
 function QWi(e, t) {

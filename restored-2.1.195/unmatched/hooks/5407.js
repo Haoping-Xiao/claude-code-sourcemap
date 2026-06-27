@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0491  score=0.3058  fileCov=0.0553
 // note: nearest: src/ink/components/Box.tsx (0.0491); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vmc] deps: Xa, Ye, i6e
+// [unwrapped __esm module Vmc] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, components/DiagnosticsDisplay.tsx
 Wmc = R(lt(), 1), ren = R(se(), 1);
 function C8o(e) {
   let t = zmc.c(15),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2902  score=0.6668  fileCov=0.3394
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _i] deps: oat
+// [unwrapped __esm module _i] deps: ink/components/App.tsx
 K5i = R(rt(), 1);
 function Ratchet(t0) {
   let t = Y5i.c(10),

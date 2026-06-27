@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4587  score=0.5786  fileCov=0.6889
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module R6] deps: Ye, RLn, m0e
+// [unwrapped __esm module R6] deps: hooks/useTerminalSize.ts, components/design-system/ThemedText.tsx, components/shell/ExpandShellOutputContext.tsx
 ((Q7a = R(lt(), 1)), (S9n = R(se(), 1)));
 function AwsAuthStatusBox() {
   let e = Z7a.c(10),

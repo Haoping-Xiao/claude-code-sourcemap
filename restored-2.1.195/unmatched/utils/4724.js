@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0446  score=0.2143  fileCov=0.0533
 // note: nearest: src/ink/components/Box.tsx (0.0446); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rBo] deps: sJr, Ye, xne, N0e, nk, id, Un, NE, Ko, NOe
+// [unwrapped __esm module rBo] deps: ink/components/App.tsx, hooks/useTerminalSize.ts, utils/debug.ts, commander/lib/command.js, nk, dom-mutator/dist/dom-mutator.cjs.production.min.js, services/analytics/growthbook.ts, utils/modelCost.ts, components/ConfigurableShortcutHint.tsx, utils/Cursor.ts
 $Bl = R(lt(), 1), Jd = R(se(), 1);
 RHe = {
   keyCase: "lower",

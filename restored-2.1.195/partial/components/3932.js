@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1606  score=0.2933  fileCov=0.262
 // note: low-confidence suggestion: src/components/Spinner/SpinnerGlyph.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module q9n] deps: Tc, Ye, m0, Pne
+// [unwrapped __esm module q9n] deps: marked/lib/marked.esm.js, hooks/useTerminalSize.ts, ink/line-width-cache.ts, @xmldom/xmldom/lib/entities.js
 lJa = R(lt(), 1), Wg = R(se(), 1), IXp = {
   r: 171,
   g: 43,

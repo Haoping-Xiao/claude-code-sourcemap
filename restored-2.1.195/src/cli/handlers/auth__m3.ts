@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runPostLoginHooks, loginAutoContinueOptions, call, Login
-// [unwrapped __esm module mCo] deps: Ed, uo, ft, __
+// [unwrapped __esm module mCo] deps: context/notifications.tsx, context/notifications.tsx, services/analytics/index.ts, utils/markdownConfigLoader.ts
 A8t = R(rt(), 1);
 async function runPostLoginHooks(e, t, n) {
   if (

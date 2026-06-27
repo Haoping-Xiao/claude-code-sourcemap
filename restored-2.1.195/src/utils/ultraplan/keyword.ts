@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2629  score=0.7581  fileCov=0.287
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MZn] deps: je, E5e, Jt, PZn
+// [unwrapped __esm module MZn] deps: utils/debug.ts, utils/hooks/fileChangedWatcher.ts, utils/fsOperations.ts, utils/hooks/AsyncHookRegistry.ts
 Afe = new Map();
 function YMo(e, t) {
   if (!new RegExp(t, "i").test(e)) return [];

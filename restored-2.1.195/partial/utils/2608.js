@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2042  score=0.8152  fileCov=0.2141
 // note: low-confidence suggestion: src/utils/plugins/addDirPluginSettings.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module II] deps: kt, Du, er, fn, vn, Sbe, $g, ZC, I8, aS, aeo
+// [unwrapped __esm module II] deps: utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, utils/config.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/sequential.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/schemas.ts, utils/telemetryAttributes.ts, utils/telemetry/pluginTelemetry.ts, utils/processUserInput/processSlashCommand.tsx
 meo = require("path");
 function tWe() {
   let e = {};

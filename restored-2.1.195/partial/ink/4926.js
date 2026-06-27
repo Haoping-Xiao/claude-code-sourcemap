@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0942  score=0.2895  fileCov=0.1225
 // note: low-confidence suggestion: src/ink/render-node-to-output.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module b2o] deps: Tne
+// [unwrapped __esm module b2o] deps: ink/Ansi.tsx
 Vql = R(lt(), 1), TAt = R(rt(), 1), Kql = R(se(), 1), _2o = TAt.createContext(null);
 function Xql({
   scrollable: e,

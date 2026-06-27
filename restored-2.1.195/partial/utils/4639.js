@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1031  score=0.6438  fileCov=0.1093
 // note: low-confidence suggestion: src/utils/Cursor.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NOe] deps: R0e, wr, Fh
+// [unwrapped __esm module NOe] deps: commands/terminalSetup/terminalSetup.tsx, main.tsx, components/Settings/Config.tsx
 sLf = new Set(["escape", "return", "enter", "tab", "backspace", "delete", "up", "down", "left", "right", "pageup", "pagedown", "home", "end", "insert", "clear", "center", "undefined", "mouse", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12"]);
 function yKe(e, t, n) {
   let r = t;

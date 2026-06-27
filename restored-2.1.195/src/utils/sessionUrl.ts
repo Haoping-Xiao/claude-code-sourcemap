@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5815  score=0.7746  fileCov=0.6999
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module HO] deps: $S
+// [unwrapped __esm module HO] deps: google-auth-library/build/src/crypto/node/crypto.js
 ((qon = require("crypto")),
   (szc = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));
 function Xwt() {

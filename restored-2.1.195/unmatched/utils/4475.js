@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0052  score=0.1341  fileCov=0.0053
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0052); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mIl] deps: At, vn
+// [unwrapped __esm module mIl] deps: utils/errors.ts, utils/sequential.ts
 TTf = [];
 function UKt(e, t) {
   let n = e.discardAndAbortInFlight(Vct());

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3112  score=0.4115  fileCov=0.5609
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gXl] deps: Ye, Is
+// [unwrapped __esm module gXl] deps: hooks/useTerminalSize.ts, utils/platform.ts
 ((mXl = R(lt(), 1)), (Jy = R(se(), 1)));
 function SandboxOverridesTab(t0) {
   let t = H4o.c(5),

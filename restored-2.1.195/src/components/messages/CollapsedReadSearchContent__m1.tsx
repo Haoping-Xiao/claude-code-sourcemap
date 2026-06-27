@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/messages/CollapsedReadSearchContent.tsx)  jaccard=0.0541  score=0.2372  fileCov=0.0655
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yyt] deps: Ye, es
+// [unwrapped __esm module Yyt] deps: hooks/useTerminalSize.ts, utils/profilerBase.ts
 Dzn = R(rt(), 1);
 function BCo(e) {
   let t = Jyt.c(2);

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4285  score=0.7797  fileCov=0.4875
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module owc] deps: AA
+// [unwrapped __esm module owc] deps: skills/bundledSkills.ts
 twc = [
   "the",
   "a",

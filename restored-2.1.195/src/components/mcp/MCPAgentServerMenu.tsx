@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3162  score=0.4105  fileCov=0.5791
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZFl] deps: np, kt, Yfe
+// [unwrapped __esm module ZFl] deps: env-paths/index.js, utils/debug.ts, commands/mcp/mcp.tsx
 JFl = {
   connected: "connected",
   pending: "connecting",

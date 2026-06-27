@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/xaa.ts)  jaccard=0.0391  score=0.1158  fileCov=0.0558
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BCa] deps: oke, Xr, At, vn, Mh, Jt
+// [unwrapped __esm module BCa] deps: utils/browser.ts, @modelcontextprotocol/sdk/dist/esm/types.js, utils/errors.ts, utils/sequential.ts, utils/proxy.ts, utils/fsOperations.ts
 BUn = NCa();
 USe = class USe extends Error {
   shouldClearIdToken;

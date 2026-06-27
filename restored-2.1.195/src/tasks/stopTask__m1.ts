@@ -4,7 +4,7 @@
 // class=modified (alt of src/tasks/stopTask.ts)  jaccard=0.0666  score=0.2555  fileCov=0.0827
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module q6e] deps: ft, pyl, yyt, $S, je, At, vn, hyt, tA, _a
+// [unwrapped __esm module q6e] deps: services/analytics/index.ts, tasks/stopTask.ts, tasks/LocalAgentTask/LocalAgentTask.tsx, google-auth-library/build/src/crypto/node/crypto.js, utils/debug.ts, utils/errors.ts, utils/sequential.ts, tasks/LocalShellTask/LocalShellTask.tsx, fast-xml-parser/lib/fxp.cjs, utils/plans.ts
 W6e = class W6e extends Error {
   code;
   telemetryMessage;

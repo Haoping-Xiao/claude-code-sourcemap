@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1512  score=0.355  fileCov=0.2085
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wUl] deps: wr
+// [unwrapped __esm module wUl] deps: main.tsx
 vUl = {
   type: "local-jsx",
   name: "logout",

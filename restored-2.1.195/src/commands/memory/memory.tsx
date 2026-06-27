@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module y3] deps: zj, HI, QOe, ys, aE, Jt, kv
+// [unwrapped __esm module y3] deps: utils/Cursor.ts, HI, utils/editor.ts, utils/fsOperations.ts, utils/ide.ts, utils/fsOperations.ts, proxy-from-env/index.js
 ((HBl = require("child_process")),
   (xOf = {
     code: "code -w",

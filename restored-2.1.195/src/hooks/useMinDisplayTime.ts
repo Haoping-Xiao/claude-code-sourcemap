@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3449  score=1  fileCov=0.3449
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mal] deps: si, oc, es, co, Xa, Mce, Ye, uo, jCo, sA, i6e, Jt, sr, YI, Q8, uil, gm, vMe, ql, VCo, Bzn, zCo, Gzn, Qzn
+// [unwrapped __esm module mal] deps: @xmldom/xmldom/lib/entities.js, utils/nativeInstaller/download.ts, utils/profilerBase.ts, utils/messages.ts, @xmldom/xmldom/lib/entities.js, ink/termio/types.ts, hooks/useTerminalSize.ts, context/notifications.tsx, utils/ink.ts, services/PromptSuggestion/promptSuggestion.ts, components/DiagnosticsDisplay.tsx, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/teammateMailbox.ts, react/cjs/react.production.js, components/messages/ShutdownMessage.tsx, undici/lib/mock/mock-agent.js, ink/measure-text.ts, commands/add-dir/validation.ts, components/messages/UserImageMessage.tsx, components/messages/PlanApprovalMessage.tsx, utils/messages.ts, components/messages/UserAgentNotificationMessage.tsx, components/messages/AttachmentMessage.tsx
 ((t_t = R(lt(), 1)), (Zzn = require("path")), (aIo = R(rt(), 1)), (Ts = R(se(), 1)));
 function gal(e, t) {
   let n = ks(),

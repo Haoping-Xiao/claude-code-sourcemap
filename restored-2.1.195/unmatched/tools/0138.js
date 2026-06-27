@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0423  score=0.2204  fileCov=0.0498
 // note: nearest: node_modules/gtoken/build/src/index.js (0.0423); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uee] deps: p0
+// [unwrapped __esm module uee] deps: @anthropic-ai/sdk/core/error.mjs
 Uzc = new Set(["error", "error_description", "error_uri"]);
 nf = class nf extends ui {
   constructor(e, t = null, n = null, r = null) {

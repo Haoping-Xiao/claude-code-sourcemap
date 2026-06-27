@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: vertexUpgradeKey, probeVertexModel, findVertexUpgradeCandidates, checkVertexDefaultAvailability
-// [unwrapped __esm module o7o] deps: kt, pke, oo, wFe, je, fn, dr, rle, QO, Ao, Ls
+// [unwrapped __esm module o7o] deps: utils/debug.ts, pke, utils/http.ts, constants/xml.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/settings.ts, utils/model/bedrock.ts, utils/model/configs.ts, utils/agentContext.ts, utils/status.tsx
 ((ztn = Object.keys(yc)),
   (tmr = {
     sonnet: {

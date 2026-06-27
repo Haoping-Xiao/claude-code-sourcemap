@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4504  score=0.6724  fileCov=0.577
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gHc] deps: ft, Fy, X0, Ye, kt, uo
+// [unwrapped __esm module gHc] deps: services/analytics/index.ts, components/design-system/Dialog.tsx, components/ManagedSettingsSecurityDialog/utils.ts, hooks/useTerminalSize.ts, utils/debug.ts, context/notifications.tsx
 ((fHc = R(lt(), 1)), (x3 = R(se(), 1)));
 function isInClaudeFolder(filePath) {
   let t = ds(filePath),

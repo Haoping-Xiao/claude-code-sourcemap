@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0609  score=0.3128  fileCov=0.0703
 // note: low-confidence suggestion: src/services/mcp/types.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NX] deps: zb, ft, Un, oo, er, je, NE, Ls
+// [unwrapped __esm module NX] deps: zod/v4/classic/schemas.js, services/analytics/index.ts, services/analytics/growthbook.ts, utils/http.ts, utils/config.ts, utils/debug.ts, utils/modelCost.ts, utils/status.tsx
 yap = ve(() => dt.object({
   enabled: dt.boolean().optional(),
   planLimitsEndDate: dt.string().optional(),

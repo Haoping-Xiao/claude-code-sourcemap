@@ -5,7 +5,7 @@
 // note: nearest: src/utils/settings/settings.ts (0.0207); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldShowAutoDefaultNudge
-// [unwrapped __esm module BPc] deps: kt, O0, Ye, er, DE, dr, Vl, X0
+// [unwrapped __esm module BPc] deps: utils/debug.ts, commander/lib/command.js, hooks/useTerminalSize.ts, utils/config.ts, utils/permissions/PermissionMode.ts, utils/settings/settings.ts, keybindings/useShortcutDisplay.ts, components/ManagedSettingsSecurityDialog/utils.ts
 $Pc = R(lt(), 1), OPc = R(rt(), 1), jNe = R(se(), 1);
 function shouldShowAutoDefaultNudge() {
   {

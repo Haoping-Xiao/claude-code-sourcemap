@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0372  score=0.0779  fileCov=0.0664
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Y2o] deps: sYe, tC, Ye, kt, uo, Zor, er, Vl, vi
+// [unwrapped __esm module Y2o] deps: commands/ultraplan.tsx, components/CustomSelect/use-multi-select-state.ts, hooks/useTerminalSize.ts, utils/debug.ts, context/notifications.tsx, utils/ultraplan/ccrSession.ts, utils/config.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx
 ((z2o = R(lt(), 1)), (A1e = R(rt(), 1)), (sx = R(se(), 1)));
 function GlobalSearchDialog(t0) {
   let t = nsr.c(24),

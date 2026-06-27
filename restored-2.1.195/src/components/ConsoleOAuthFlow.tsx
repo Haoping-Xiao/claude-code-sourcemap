@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ConsoleOAuthFlow
-// [unwrapped __esm module K9e] deps: FK, QEe
+// [unwrapped __esm module K9e] deps: utils/process.ts, commander/lib/command.js
 ((vQa = require("child_process")),
   (wQa = require("fs")),
   (CQa = require("os")),

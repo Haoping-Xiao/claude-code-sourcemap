@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3501  score=0.6361  fileCov=0.4377
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GX] deps: Qi, ft, TM, Ioo, kt, frt, ii, LX, mZn, Vw, BE, je, fn, Jt, IX, yZn
+// [unwrapped __esm module GX] deps: lodash-es/memoize.js, services/analytics/index.ts, constants/betas.ts, utils/cron.ts, utils/debug.ts, frt, services/mockRateLimits.ts, @xmldom/xmldom/lib/entities.js, mZn, utils/betas.ts, has-flag/index.js, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts, tools/BriefTool/prompt.ts, utils/toolSearch.ts
 Qwf = Cn(
   async (e, t, n, r) => {
     let o = e.filter((s) => y4(s));

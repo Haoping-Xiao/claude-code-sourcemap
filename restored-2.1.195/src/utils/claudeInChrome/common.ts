@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5247  score=1  fileCov=0.5247
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VM] deps: dn, Un, je, At, Bi, Is, kv, _0
+// [unwrapped __esm module VM] deps: dn, services/analytics/growthbook.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/platform.ts, proxy-from-env/index.js, axios/lib/utils.js
 ((lKi = require("fs")),
   (KZr = require("fs/promises")),
   (_be = require("os")),

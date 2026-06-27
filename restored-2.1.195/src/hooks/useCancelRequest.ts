@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4151  score=0.6657  fileCov=0.5245
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iEc] deps: tC, Yj, ps
+// [unwrapped __esm module iEc] deps: components/CustomSelect/use-multi-select-state.ts, components/PromptInput/PromptInput.tsx, utils/suggestions/directoryCompletion.ts
 ((sEc = R(lt(), 1)),
   (yhm = {
     setCursorOffset: () => {},

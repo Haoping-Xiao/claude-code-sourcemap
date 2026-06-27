@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5707  score=1  fileCov=0.5707
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Epn] deps: YSs, ys
+// [unwrapped __esm module Epn] deps: cli/print.ts, utils/fsOperations.ts
 ((eRt = require("path")), (bpn = Ukr("claude-cli")));
 LFe = {
   baseLogs: () => eRt.join(bpn.cache, Spn(qt().cwd())),

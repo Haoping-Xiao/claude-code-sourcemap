@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2577  score=0.2783  fileCov=0.7762
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TM] deps: Rc
+// [unwrapped __esm module TM] deps: constants/oauth.ts
 ((Y2e = OE("claude_code", "claude-code-20250219")),
   (qIe = OE("oauth_auth", kw)),
   (Gnt = OE("interleaved_thinking", "interleaved-thinking-2025-05-14")),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0192  score=0.8166  fileCov=0.0192
 // note: nearest: src/components/VirtualMessageList.tsx (0.0192); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module E5] deps: kLe, co, Ye, sr, zX, ql
+// [unwrapped __esm module E5] deps: components/messages/AttachmentMessage.tsx, utils/messages.ts, hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts, utils/terminal.ts, commands/add-dir/validation.ts
 yMa = R(lt(), 1), Wpt = R(se(), 1);
 function cP({
   children: e

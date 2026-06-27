@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4883  score=0.9019  fileCov=0.5157
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _Gt] deps: Xr, ft, je, At, Jt, B1, i5, ZC
+// [unwrapped __esm module _Gt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, tools/SkillTool/prompt.ts, utils/plugins/mcpPluginIntegration.ts, utils/plugins/schemas.ts
 ((Nfo = require("fs/promises")), (ADe = require("path")));
 async function getAllLspServers() {
   let e = {};

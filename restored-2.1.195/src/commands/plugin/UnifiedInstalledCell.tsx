@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.404  score=0.4629  fileCov=0.7606
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cjl] deps: Ye, uo, Ao, sr, G1o
+// [unwrapped __esm module Cjl] deps: hooks/useTerminalSize.ts, context/notifications.tsx, utils/agentContext.ts, services/teamMemorySync/secretScanner.ts, G1o
 ((vjl = R(lt(), 1)), (MP = R(se(), 1)));
 function UnifiedInstalledCell(t0) {
   let t = Ijl.c(181),

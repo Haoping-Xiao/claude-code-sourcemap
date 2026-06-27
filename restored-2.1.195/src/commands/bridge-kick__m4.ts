@@ -5,7 +5,7 @@
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopRendezvousServer, startRendezvousServer, sendRv, markStartupDialogBlocked, markReplayNoOp, disarmStartupWedgeWatchdog, clearStartupDialogBlocked
-// [unwrapped __esm module ESt] deps: Jt
+// [unwrapped __esm module ESt] deps: utils/fsOperations.ts
 ((txl = require("crypto")), (nxl = require("fs/promises")));
 function ASt(e) {
   rxl = e;

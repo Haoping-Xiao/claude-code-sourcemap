@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.411  score=0.5055  fileCov=0.6872
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A0o] deps: C7n, ft, Cp, NDe, hN
+// [unwrapped __esm module A0o] deps: utils/swarm/spawnUtils.ts, services/analytics/index.ts, utils/tempfile.ts, utils/agentSwarmsEnabled.ts, utils/swarm/backends/detection.ts
 yff = [
   "CLAUDE_CODE_USE_BEDROCK",
   "CLAUDE_CODE_USE_VERTEX",

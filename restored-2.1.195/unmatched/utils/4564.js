@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0079); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module BLl] deps: si, ft, GF, cWt, kt, JJ, WW, er, N8, Lo, At, Bi, sa, Mx, Jt, gP
+// [unwrapped __esm module BLl] deps: @xmldom/xmldom/lib/entities.js, services/analytics/index.ts, constants/systemPromptSections.ts, tools/TaskUpdateTool/TaskUpdateTool.ts, utils/debug.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, utils/cronScheduler.ts, utils/config.ts, utils/cronJitterConfig.ts, utils/fsOperations.ts, utils/errors.ts, constants/files.ts, utils/git.ts, utils/detectRepository.ts, utils/fsOperations.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx
 OLl = {
   checking: "Detecting open PR for current branch\u2026",
   spawning: "Spawning cloud autofix session\u2026",

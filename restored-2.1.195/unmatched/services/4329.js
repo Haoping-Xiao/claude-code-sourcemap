@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0212  score=0.2031  fileCov=0.0232
 // note: nearest: node_modules/undici/lib/web/fetch/webidl.js (0.0212); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Nyl] deps: Xr, ql, Ye, ii, Jt
+// [unwrapped __esm module Nyl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, services/mockRateLimits.ts, utils/fsOperations.ts
 K6e = R(se(), 1);
 function wmf() {
   if (X7n) return X7n;

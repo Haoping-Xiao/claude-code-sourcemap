@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3956  score=0.662  fileCov=0.4957
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AHc] deps: Vl, Bs, Ko, _Hc, X0, Ye, ps, kt, Du, uo, u_, Lo, aE, Yf
+// [unwrapped __esm module AHc] deps: keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @xmldom/xmldom/lib/entities.js, components/ManagedSettingsSecurityDialog/utils.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, context/notifications.tsx, utils/markdownConfigLoader.ts, utils/fsOperations.ts, utils/ide.ts, utils/task/diskOutput.ts
 ((bHc = R(lt(), 1)), (SHc = require("path")), (RNe = R(rt(), 1)), (EE = R(se(), 1)));
 function PermissionPrompt(t0) {
   let t = HHc.c(57),

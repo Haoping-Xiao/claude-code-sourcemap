@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2486  score=0.5027  fileCov=0.3297
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MIo] deps: ft, Zf, s8t, LMe, ii, Il, je, Gy, $g, II, Xr, ft, np, dn, kt, a8t, q0, co, Ao, dr, sr, I8, M8e, HO, SAe, fut, Qbe, Tcl, fb
+// [unwrapped __esm module MIo] deps: services/analytics/index.ts, utils/sessionStorage.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/sandbox-utils.js, utils/attachments.ts, services/mockRateLimits.ts, Il, utils/debug.ts, utils/permissions/permissionSetup.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/addDirPluginSettings.ts, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, env-paths/index.js, dn, utils/debug.ts, utils/suggestions/skillUsageTracking.ts, cli/print.ts, utils/messages.ts, utils/agentContext.ts, utils/settings/settings.ts, services/teamMemorySync/secretScanner.ts, utils/telemetryAttributes.ts, @growthbook/growthbook/dist/esm/mongrule.mjs, utils/sessionUrl.ts, tools/SkillTool/UI.tsx, tools/ToolSearchTool/ToolSearchTool.ts, memdir/memoryAge.ts, tools/SkillTool/SkillTool.ts, fb
 ((aaf = ve(() =>
   H.object({
     skill: H.string().describe(

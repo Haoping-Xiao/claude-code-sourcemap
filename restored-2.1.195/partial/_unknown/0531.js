@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0859  score=0.2519  fileCov=0.1154
 // note: low-confidence suggestion: node_modules/axios/lib/utils.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tae] deps: XH, yys
+// [unwrapped __esm module Tae] deps: axios/lib/utils.js, axios/lib/helpers/parseHeaders.js
 _ys = Symbol("internals"), Ebu = /[^\x09\x20-\x7E\x80-\xFF]/g;
 R0t = class R0t {
   constructor(e) {

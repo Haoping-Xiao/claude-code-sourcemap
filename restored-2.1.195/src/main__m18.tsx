@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isPublishToolEnabled, isArtifactToolEnabled, isArtifactToolEligible, isArtifactSdkDefaultOff, isArtifactHardDisabled, isArtifactAdminAllowed
-// [unwrapped __esm module ZWe] deps: fh, G1, wX, lf, Rct, lC, TX, EI, _m, u_, nC, LX, i$, jv, WW, tSe, RX
+// [unwrapped __esm module ZWe] deps: commands/insights.ts, tools/AskUserQuestionTool/prompt.ts, wX, tools/GlobTool/prompt.ts, tools/GrepTool/prompt.ts, tools/PowerShellTool/PowerShellTool.tsx, TX, tools/ExitPlanModeTool/constants.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/markdownConfigLoader.ts, types/plugin.ts, @xmldom/xmldom/lib/entities.js, tools/SyntheticOutputTool/SyntheticOutputTool.ts, tools/ScheduleCronTool/prompt.ts, utils/cronScheduler.ts, tools/TaskStopTool/prompt.ts, @xmldom/xmldom/lib/entities.js
 ((jRe = Jop("external")), (aso = new Set([...jRe])));
 ((ejt = Qop("external")),
   (Doa = new Set([cC, kX, yL, ZD, Ly, DI, m4, X2t])),

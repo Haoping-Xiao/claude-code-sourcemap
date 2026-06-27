@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eEc] deps: ft, dn, ZE, oo
+// [unwrapped __esm module eEc] deps: services/analytics/index.ts, dn, utils/shell/prefix.ts, utils/http.ts
 opr = R(rt(), 1);

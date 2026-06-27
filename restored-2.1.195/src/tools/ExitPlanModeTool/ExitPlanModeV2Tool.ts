@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5108  score=0.7593  fileCov=0.6095
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module R8e] deps: Xr, ft, kt, db, ii, sA, Il, je, swo, KI, Jt, Mp, YI, aS, fh, Rnl, znl
+// [unwrapped __esm module R8e] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/debug.ts, utils/authFileDescriptor.ts, services/mockRateLimits.ts, services/PromptSuggestion/promptSuggestion.ts, Il, utils/debug.ts, swo, utils/permissions/filesystem.ts, utils/fsOperations.ts, utils/concurrentSessions.ts, utils/teammateMailbox.ts, utils/telemetry/pluginTelemetry.ts, commands/insights.ts, utils/markdown.ts, utils/permissions/autoModeState.ts
 ((ktf = ve(() =>
   H.object({
     tool: H.enum(["Bash"]).describe("The tool this prompt applies to"),

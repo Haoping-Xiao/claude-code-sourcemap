@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> native-ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bda] deps: yda
+// [unwrapped __esm module bda] deps: native-ts/color-diff/index.ts
 ndp = {
   cedar: hda
 };

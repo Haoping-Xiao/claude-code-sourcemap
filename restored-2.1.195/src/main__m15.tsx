@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0054  score=0.0323  fileCov=0.0065
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Iuc] deps: kt, je, Jt, RNo, q$
+// [unwrapped __esm module Iuc] deps: utils/debug.ts, utils/debug.ts, utils/fsOperations.ts, undici/lib/core/symbols.js, undici/lib/core/symbols.js
 ((wuc = require("net")), (Tuc = [100, 250, 500, 1000, 2000]));
 function r9o() {
   return (e, t, n) => {

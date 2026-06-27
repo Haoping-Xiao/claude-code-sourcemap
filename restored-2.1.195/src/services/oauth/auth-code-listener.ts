@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5109  score=0.7798  fileCov=0.597
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iza] deps: dn, kt, Rc, vn, H0
+// [unwrapped __esm module iza] deps: dn, utils/debug.ts, constants/oauth.ts, utils/sequential.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js
 sza = require("http");
 lAo = class lAo {
   localServer;

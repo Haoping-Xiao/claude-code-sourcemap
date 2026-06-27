@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0127  score=0.0698  fileCov=0.0153
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hnr] deps: Rd, Is, sr, VQ, zOe, YOe, Gfe, WL, q$, IKe
+// [unwrapped __esm module hnr] deps: utils/settings/constants.ts, utils/platform.ts, services/teamMemorySync/secretScanner.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/completionCache.ts, mute-stream/lib/index.js, undici/lib/web/fileapi/util.js, utils/git.ts, undici/lib/core/symbols.js, @aws-sdk/client-bedrock/dist-cjs/index.js
 IEt = require("fs/promises");
 function GITHUB_ISSUES_REPO_URL(e) {
   let t = ynr.c(19),

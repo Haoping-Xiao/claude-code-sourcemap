@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: buildGitSessionContext
-// [unwrapped __esm module PPo] deps: q0, co, _m, je, At, sr, kt, Un, MM, Uh, kPo, y_, ft, id, VKt, FIl, U7n, j7n, u_, nC, MQn
+// [unwrapped __esm module PPo] deps: cli/print.ts, utils/messages.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/debug.ts, utils/errors.ts, services/teamMemorySync/secretScanner.ts, utils/debug.ts, services/analytics/growthbook.ts, memdir/teamMemPrompts.ts, services/analytics/metadata.ts, utils/readFileInRange.ts, utils/stats.ts, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, VKt, services/autoDream/autoDream.ts, tasks/DreamTask/DreamTask.ts, tasks/DreamTask/DreamTask.ts, utils/markdownConfigLoader.ts, types/plugin.ts, services/extractMemories/prompts.ts
 ((WIl = require("fs/promises")),
   (qIl = require("path")),
   (GIl = {

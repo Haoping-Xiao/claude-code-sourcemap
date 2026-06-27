@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1299  score=0.3946  fileCov=0.1623
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cMo] deps: je, fn, At, Jt, aS
+// [unwrapped __esm module cMo] deps: utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/telemetry/pluginTelemetry.ts
 ((lMo = require("crypto")), (aYt = require("fs/promises")), (tZn = require("path")));
 function mwf(e) {
   if (e instanceof Fo) {

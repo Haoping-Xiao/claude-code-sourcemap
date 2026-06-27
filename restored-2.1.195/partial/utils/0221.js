@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1642  score=1  fileCov=0.1642
 // note: low-confidence suggestion: node_modules/lodash-es/_baseIsMap.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OEr] deps: Bss, Cin, Lon
+// [unwrapped __esm module OEr] deps: http-proxy-agent/dist/index.js, get-proto/Reflect.getPrototypeOf.js, qrcode/lib/can-promise.js
 Lin = PYc;
 function $Yc(e) {
   return hD(e) && Ege(e) == mapTag;

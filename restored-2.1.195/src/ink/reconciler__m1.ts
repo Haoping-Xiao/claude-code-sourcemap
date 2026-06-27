@@ -4,7 +4,7 @@
 // class=modified (alt of src/ink/reconciler.ts)  jaccard=0.115  score=0.6667  fileCov=0.122
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module R3i] deps: aGe
+// [unwrapped __esm module R3i] deps: utils/signal.ts
 CXr = v3d;
 function N3i(e, t, n) {
   if (!e._eventHandlers) e._eventHandlers = {};

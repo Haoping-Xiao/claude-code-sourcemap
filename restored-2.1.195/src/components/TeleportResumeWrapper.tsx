@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TeleportResumeWrapper
-// [unwrapped __esm module d6l] deps: _i, Cv, Ye, ps, nk, je, BR, es, Cc, mE, Bs, Ko, CH, sTo
+// [unwrapped __esm module d6l] deps: components/design-system/Ratchet.tsx, utils/teleport/api.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, nk, utils/debug.ts, utils/git.ts, utils/profilerBase.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @smithy/types/dist-cjs/index.js, services/api/sessionIngress.ts
 ((kse = R(rt(), 1)), (Hm = R(se(), 1)));
 function TeleportResumeWrapper(t0) {
   let t = p6l.c(30),

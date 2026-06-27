@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1619  score=1  fileCov=0.1619
 // note: low-confidence suggestion: node_modules/lodash-es/isPlainObject.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lyr] deps: kts, Nwt, P2, Uwt, Fwt, kon
+// [unwrapped __esm module Lyr] deps: kts, lodash-es/isArguments.js, lodash-es/isArray.js, lodash-es/isBuffer.js, lodash-es/isLength.js, lodash-es/_arrayLikeKeys.js
 G8c = Object.prototype, W8c = G8c.hasOwnProperty;
 Ron = q8c;
 function z8c(e) {

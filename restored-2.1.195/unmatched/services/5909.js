@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0156  score=0.0828  fileCov=0.0189
 // note: nearest: node_modules/node-forge/lib/pkcs7.js (0.0156); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ogr] deps: sB, XXo, FXo, Vmr, tJo, wm, $vt, YP, Bvt
+// [unwrapped __esm module ogr] deps: sB, qrcode/lib/core/polynomial.js, FXo, Vmr, node-forge/lib/pkcs7.js, services/PromptSuggestion/promptSuggestion.ts, lodash.isplainobject/index.js, node-forge/lib/util.js, pretty-bytes/index.js
 nJo = Symbol();
 class W2c {
   constructor(e, t, n) {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0572  score=0.1101  fileCov=0.1063
 // note: nearest: src/utils/completionCache.ts (0.0572); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zOe] deps: fn
+// [unwrapped __esm module zOe] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs
 vNo = require("path");
 function KOe() {
   let e = process.env.XDG_RUNTIME_DIR || `/run/user/${process.getuid()}`;

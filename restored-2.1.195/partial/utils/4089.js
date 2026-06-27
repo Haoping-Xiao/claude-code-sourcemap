@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1265  score=0.3368  fileCov=0.1684
 // note: low-confidence suggestion: src/utils/plugins/pluginPolicy.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module HN] deps: uo, Ao, vM, fzn, w4
+// [unwrapped __esm module HN] deps: context/notifications.tsx, utils/agentContext.ts, utils/model/model.ts, components/Settings/Config.tsx, highlight.js/lib/languages/reasonml.js
 sCo = R(rt(), 1);
 function isPluginBlockedByPolicy() {
   Cbr(structuredClone(yn("policySettings")));

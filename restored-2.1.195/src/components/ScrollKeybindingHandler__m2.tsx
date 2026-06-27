@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.0465  score=0.2584  fileCov=0.0537
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module HWi] deps: iu, t0e, sr, p8, Tc
+// [unwrapped __esm module HWi] deps: @mixmark-io/domino/lib/Document.js, @alcalzone/ansi-tokenize/build/ansiCodes.js, services/teamMemorySync/secretScanner.ts, ink/terminal.ts, marked/lib/marked.esm.js
 ((EWi = R(bWi(), 1)),
   (FGd = {
     dashed: {

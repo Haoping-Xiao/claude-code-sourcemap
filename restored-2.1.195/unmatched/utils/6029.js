@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0471  score=0.1819  fileCov=0.0597
 // note: nearest: src/tools/AgentTool/agentToolUtils.ts (0.0471); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KWc] deps: zb, At, BZ
+// [unwrapped __esm module KWc] deps: zod/v4/classic/schemas.js, utils/errors.ts, google-auth-library/build/src/auth/oauth2client.js
 yOm = /\r?\n\r?\n/;
 SZo = ve(() => dt.object({
   input_tokens: dt.number().optional(),

@@ -4,6 +4,6 @@
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
-// [unwrapped __esm module mZl] deps: wQ, SC, loe, Hir, SJ, Bs, vi, Ko, Xce, _3o, Ed, tC, Ye, ps, kt, uHt, uo, oo, je, w8t
+// [unwrapped __esm module mZl] deps: tools/BriefTool/upload.ts, utils/config.ts, utils/swarm/constants.ts, components/RemoteCallout.tsx, components/Feedback.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, components/CustomSelect/select.tsx, components/Settings/Config.tsx, context/notifications.tsx, components/CustomSelect/use-multi-select-state.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, commands/bridge/bridge.tsx, context/notifications.tsx, utils/http.ts, utils/debug.ts, undici/lib/web/fetch/response.js
 E3o = R(lt(), 1), pZl = R(cAt(), 1), gme = R(rt(), 1), zk = R(se(), 1);
 var lKf, cKf;

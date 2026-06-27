@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3114  score=0.6107  fileCov=0.3885
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S_] deps: ft, np, dn, yC, ii, jv, i$, $S, fp, ZPe, je, bm, y_, bH, xF, K6n, OI, vDo
+// [unwrapped __esm module S_] deps: services/analytics/index.ts, env-paths/index.js, dn, utils/ShellCommand.ts, services/mockRateLimits.ts, tools/ScheduleCronTool/prompt.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, google-auth-library/build/src/crypto/node/crypto.js, screens/REPL.tsx, ZPe, utils/debug.ts, utils/messageQueueManager.ts, utils/stats.ts, Task.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, tools/AgentTool/agentToolUtils.ts, fast-xml-parser/lib/fxp.cjs, tasks/LocalAgentTask/LocalAgentTask.tsx
 CDo = new Map();
 G7n = {
   name: "LocalAgentTask",

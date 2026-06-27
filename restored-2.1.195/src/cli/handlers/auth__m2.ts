@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module ECo] deps: si, Vl, Bs, Fy, vi, Ko, CH, RLe, WLn, bCo, Mg, _i, Ye, ps, kt, uut, mSe, ole, vy, er, wAe, je, At, vn, NX, Ao
+// [unwrapped __esm module ECo] deps: @xmldom/xmldom/lib/entities.js, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, @smithy/types/dist-cjs/index.js, @xmldom/xmldom/lib/entities.js, ink/styles.ts, components/LogoV2/AnimatedClawd.tsx, components/ScrollKeybindingHandler.tsx, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, cli/print.ts, services/rateLimitMessages.ts, services/oauth/getOauthProfile.ts, @mixmark-io/domino/lib/htmlelts.js, utils/config.ts, components/Settings/Usage.tsx, utils/debug.ts, utils/errors.ts, utils/sequential.ts, services/mcp/types.ts, utils/agentContext.ts
 ((lq = R(lt(), 1)), (mg = R(rt(), 1)), (is = R(se(), 1)));
 async function call(e, t) {
   if (Psl && I8t())

@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module xrr] deps: si, Cc, Bs, B_, MEt, eE, kP, O0, Ye, ps, uo, w8, At, vq, _k, gHe, lE, NKe, dr, sr, E2l, N2l, F2l, K2l, ojl, Bjl, cUo, Qjl, n4l
+// [unwrapped __esm module xrr] deps: @xmldom/xmldom/lib/entities.js, context/modalContext.tsx, components/CustomSelect/select.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, utils/plugins/pluginStartupCheck.ts, components/design-system/Dialog.tsx, components/design-system/Tabs.tsx, commander/lib/command.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/notifications.tsx, p-map/index.js, utils/errors.ts, utils/plugins/marketplaceHelpers.ts, utils/generatedFiles.ts, utils/plugins/officialMarketplaceGcs.ts, utils/plugins/installedPluginsManager.ts, commands/plugin/PluginErrors.tsx, utils/settings/settings.ts, services/teamMemorySync/secretScanner.ts, utils/plugins/installCounts.ts, commands/plugin/DiscoverPlugins.tsx, commands/plugin/ManagePlugins.tsx, services/plugins/pluginOperations.ts, components/design-system/FuzzyPicker.tsx, utils/plugins/validatePlugin.ts, commands/plugin/ManagePlugins.tsx, commands/plugin/ValidatePlugin.tsx, commands/plugin/PluginSettings.tsx
 ((AXt = R(lt(), 1)), (UT = R(rt(), 1)), (oa = R(se(), 1)));
 VBf = new Set(["git-auth-failed", "git-timeout", "network-error"]);
 function MCPToggle(t0) {

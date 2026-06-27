@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1826  score=0.2393  fileCov=0.4355
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fXl] deps: Ye, lg
+// [unwrapped __esm module fXl] deps: hooks/useTerminalSize.ts, utils/bash/bashParser.ts
 ((dXl = R(lt(), 1)), (SA = R(se(), 1)));
 function SandboxDependenciesTab(t0) {
   let t = mXl.c(24),

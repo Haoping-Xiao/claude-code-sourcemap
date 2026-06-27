@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SKILL_PROMPT, SKILL_FILES
-// [unwrapped __esm module _xc] deps: kt, Lo, AA
+// [unwrapped __esm module _xc] deps: utils/debug.ts, utils/fsOperations.ts, skills/bundledSkills.ts
 fxc = require("fs/promises");
 wHm = {
   python: [".py", "requirements.txt", "pyproject.toml", "setup.py", "Pipfile"],

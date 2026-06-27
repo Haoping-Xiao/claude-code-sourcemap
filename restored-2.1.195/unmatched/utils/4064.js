@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0359  score=0.5712  fileCov=0.0369
 // note: nearest: src/utils/hooks/execAgentHook.ts (0.0359); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Two] deps: u_, nC, sr
+// [unwrapped __esm module Two] deps: utils/markdownConfigLoader.ts, types/plugin.ts, services/teamMemorySync/secretScanner.ts
 B6n = new Set([ka, Wc, RI]);
 var byt = "LSP",
   vwo = `Interact with Language Server Protocol (LSP) servers to get code intelligence features.

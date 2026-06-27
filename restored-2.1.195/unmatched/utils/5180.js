@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0026  score=0.4623  fileCov=0.0026
 // note: nearest: src/cli/print.ts (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module x3o] deps: db, fn
+// [unwrapped __esm module x3o] deps: utils/authFileDescriptor.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 HZl = require("crypto"), I3o = require("path");
 function _Kf(e) {
   let t = e.trim();

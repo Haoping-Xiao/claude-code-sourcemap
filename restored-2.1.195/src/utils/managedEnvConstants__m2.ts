@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: probeMantleModel, checkMantleDefaultAvailability
-// [unwrapped __esm module a7o] deps: kt, pke, oo, je, fn, dr, QO, Ao, Ls, ACn
+// [unwrapped __esm module a7o] deps: utils/debug.ts, pke, utils/http.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/settings.ts, utils/model/configs.ts, utils/agentContext.ts, utils/status.tsx, services/api/client.ts
 ((Ktn = Object.keys(yc)),
   (rmr = {
     sonnet: {

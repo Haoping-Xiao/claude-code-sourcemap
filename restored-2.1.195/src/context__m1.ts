@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
-// [unwrapped __esm module Wnc] deps: At
+// [unwrapped __esm module Wnc] deps: utils/errors.ts
 ((vHt = require("fs/promises")),
   (car = require("path")),
   (NXf = /<command-name>\/([\w:-]+)<\/command-name>/g),

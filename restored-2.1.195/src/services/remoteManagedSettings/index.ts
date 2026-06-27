@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2877  score=0.4751  fileCov=0.4216
 // note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mNa] deps: Xr
+// [unwrapped __esm module mNa] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 fNa = ve(() =>
   H.object({
     uuid: H.string(),

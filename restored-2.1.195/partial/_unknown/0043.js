@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1214  score=1  fileCov=0.1214
 // note: low-confidence suggestion: node_modules/lodash-es/_Hash.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mts] deps: $wt
+// [unwrapped __esm module mts] deps: semver/internal/lrucache.js
 fts = h9c;
 function GXe(e) {
   var t = -1,

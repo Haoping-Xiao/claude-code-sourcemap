@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isRecurringTaskAged, createCronScheduler, buildMissedTaskNotification
-// [unwrapped __esm module CPc] deps: Xr, ft, TPc, fd, je, At, YS, Rd, Jt
+// [unwrapped __esm module CPc] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/cronTasksLock.ts, utils/debugFilter.ts, utils/debug.ts, utils/errors.ts, utils/teammateContext.ts, utils/settings/constants.ts, utils/fsOperations.ts
 ((rie = require("fs/promises")),
   (jtn = require("path")),
   (JCm = jtn.join(".claude", "scheduled_tasks.lock")),

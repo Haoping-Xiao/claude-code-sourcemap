@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/git.ts)  jaccard=0.1401  score=0.4304  fileCov=0.172
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sa] deps: Qi, ft, ufn, id, dn, Rm, Lo, je, Mm, Bi, ys, dfn, gM, Mx, SG, sr, _0
+// [unwrapped __esm module sa] deps: lodash-es/memoize.js, services/analytics/index.ts, constants/files.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, dn, @grpc/grpc-js/build/src/server.js, utils/fsOperations.ts, utils/debug.ts, utils/git/gitConfigParser.ts, constants/files.ts, utils/fsOperations.ts, utils/git/gitFilesystem.ts, utils/teleport.tsx, utils/detectRepository.ts, screens/REPL.tsx, services/teamMemorySync/secretScanner.ts, axios/lib/utils.js
 ((zTs = require("crypto")),
   (hM = require("fs")),
   (whe = require("fs/promises")),

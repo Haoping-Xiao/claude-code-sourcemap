@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.39  score=0.6464  fileCov=0.4957
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tXo] deps: Xr, je, $I, H7n
+// [unwrapped __esm module tXo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/permissions/shellRuleMatching.ts, hooks/useSwarmPermissionPoller.ts
 ((SNH = ve(() =>
   ol.object({
     tool_name: ol.string().describe("The name of the tool requesting permission"),

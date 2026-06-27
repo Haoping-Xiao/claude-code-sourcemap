@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/SyntheticOutputTool/SyntheticOutputTool.ts)  jaccard=0.2059  score=0.6028  fileCov=0.2382
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _m] deps: Un, fn, Is, sj
+// [unwrapped __esm module _m] deps: services/analytics/growthbook.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/platform.ts, utils/windowsPaths.ts
 W1 = [Co, Ss];
 var RI = "NotebookEdit";
 var nE = "Skill";

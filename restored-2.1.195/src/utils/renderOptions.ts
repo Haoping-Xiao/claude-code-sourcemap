@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getBaseRenderOptions
-// [unwrapped __esm module C5] deps: ft, Gho, S4n, Who, fd, H4n, C4n, uo, tne, jDe
+// [unwrapped __esm module C5] deps: services/analytics/index.ts, react/cjs/react.production.js, commands/clear/conversation.ts, cli/print.ts, utils/debugFilter.ts, H4n, state/AppState.tsx, context/notifications.tsx, components/Settings/Config.tsx, tools/BashTool/sedValidation.ts
 ((oNa = R(lt(), 1)),
   (sNa = R(rt(), 1)),
   (jre = R(rt(), 1)),

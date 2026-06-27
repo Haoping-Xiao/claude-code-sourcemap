@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: inFlightTeammateResumes, SendMessageTool, SendMessagePreconditionError
-// [unwrapped __esm module WEl] deps: ql, Ye, Jt
+// [unwrapped __esm module WEl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/fsOperations.ts
 GRo = R(se(), 1);
 function Cyf() {
   return el() ? VEl() : wyf();

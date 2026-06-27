@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1767  score=0.3632  fileCov=0.256
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mp] deps: Sj, ft, wr, Sj
+// [unwrapped __esm module Mp] deps: utils/teammate.ts, services/analytics/index.ts, main.tsx, utils/teammate.ts
 Xoi = require("child_process");
 function XY() {
   let e, t;

@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0038  score=0.1452  fileCov=0.0039
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module X6l] deps: je, At, Is
+// [unwrapped __esm module X6l] deps: utils/debug.ts, utils/errors.ts, utils/platform.ts
 K6l = require("path");
 async function main(e = {}) {
   let { cmd: t, prefixArgs: n } = e.launcher ?? CF(),

@@ -5,7 +5,7 @@
 // note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: summarizeByServerPrefix, isToolSearchToolAvailable, isToolSearchEnabled, isToolReferenceBlock, isMcpLadderNonblockingEnabled, getDeferredToolsDelta, getAutoToolSearchCharThreshold, extractDiscoveredToolNames, DEFERRED_DELTA_LIST_CAP
-// [unwrapped __esm module yZn] deps: Xr, Un
+// [unwrapped __esm module yZn] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/growthbook.ts
 Pkl = new WeakMap();
 function CMo() {
   let e = process.env.ENABLE_TOOL_SEARCH;

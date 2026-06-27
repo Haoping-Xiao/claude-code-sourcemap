@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2953  score=0.6117  fileCov=0.3634
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module V5i] deps: jh, EW
+// [unwrapped __esm module V5i] deps: utils/env.ts, ink/ink.tsx
 ((Sat = R(rt(), 1)),
   (WWd = {
     idle: {

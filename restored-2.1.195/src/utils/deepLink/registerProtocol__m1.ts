@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startBackgroundHousekeeping, isLastCleanupSentinelFresh, _resetHousekeepingStartedForTesting, TRANSCRIPT_HEARTBEAT_INTERVAL_MS, STALE_CLEANUP_CATCHUP_DELAY_MS, DELAY_VERY_SLOW_OPERATIONS_THAT_HAPPEN_EVERY_SESSION
-// [unwrapped __esm module Azo] deps: dn, je, fn, At, Bi, dr, _0, aEe, Zdr
+// [unwrapped __esm module Azo] deps: dn, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/settings/settings.ts, axios/lib/utils.js, utils/bash/ShellSnapshot.ts, utils/deepLink/registerProtocol.ts
 ((lV = require("fs")),
   (ISc = R(require("os"))),
   (Qse = R(require("path"))),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4149  score=0.7  fileCov=0.5046
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module f8l] deps: Yyt, Ye, ps, ii, LL, es, co, Bs, vi, Ko, eIo, rjo, YHe
+// [unwrapped __esm module f8l] deps: components/messages/CollapsedReadSearchContent.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/mockRateLimits.ts, utils/sessionActivity.ts, utils/profilerBase.ts, utils/messages.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, context/QueuedMessageContext.tsx, components/tasks/taskStatusUtils.tsx, components/tasks/AsyncAgentDetailDialog.tsx
 ((d8l = R(lt(), 1)), (AS = R(se(), 1)));
 function formatReviewStageCounts(stage, found, verified, refuted) {
   if (!stage) return `${found} found \xB7 ${verified} verified`;

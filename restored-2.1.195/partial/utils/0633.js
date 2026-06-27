@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0945  score=1  fileCov=0.0945
 // note: low-confidence suggestion: node_modules/lodash-es/_createAssigner.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CEs] deps: BXe, ZXe, Fwt, D2
+// [unwrapped __esm module CEs] deps: lodash-es/_arrayPush.js, ZXe, lodash-es/isLength.js, lodash-es/isFunction.js
 wEs = nPu;
 function rPu(e) {
   return TEs(function (t, n) {

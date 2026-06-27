@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2837  score=0.4276  fileCov=0.4573
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ypt] deps: ft, jDe, S$, eWt, fp, er, Il, je, At, ik, q0, es, vn, co, Yf, y6e, y_, _a, _m, Jt, dn, kt, Yqe
+// [unwrapped __esm module Ypt] deps: services/analytics/index.ts, tools/BashTool/sedValidation.ts, tools/BashTool/bashPermissions.ts, tools/BashTool/readOnlyValidation.ts, screens/REPL.tsx, utils/config.ts, Il, utils/debug.ts, utils/errors.ts, utils/claudemd.ts, cli/print.ts, utils/profilerBase.ts, utils/sequential.ts, utils/messages.ts, utils/task/diskOutput.ts, services/PromptSuggestion/speculation.ts, utils/stats.ts, utils/plans.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/fsOperations.ts, dn, utils/debug.ts, services/PromptSuggestion/promptSuggestion.ts
 ((gHl = require("crypto")),
   (hHl = require("fs")),
   (PN = require("fs/promises")),

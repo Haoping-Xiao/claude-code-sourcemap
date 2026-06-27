@@ -5,7 +5,7 @@
 // note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: restoreSkillStateFromMessages, removeInterruptedMessage, loadMessagesFromJsonlPath, loadConversationForResume, getResumePrompt, findLiveNonInteractiveSession, dropRetractedMessages, deserializeMessagesWithInterruptDetection, deserializeMessages, dedupeSessionStartHookMessages
-// [unwrapped __esm module _ht] deps: np, je, fn, At, Hpe, YS, Is, Jt, OI
+// [unwrapped __esm module _ht] deps: env-paths/index.js, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/peerAddress.ts, utils/teammateContext.ts, utils/platform.ts, utils/fsOperations.ts, fast-xml-parser/lib/fxp.cjs
 ((e9t = require("fs/promises")),
   (mTo = require("net")),
   (fTo = require("path")),

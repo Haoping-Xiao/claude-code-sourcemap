@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.211  score=0.8173  fileCov=0.2214
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bMe] deps: b5e, Hu, sr, Rm, je, Dpe, At, oc, Hel, uDe, u_
+// [unwrapped __esm module bMe] deps: services/api/promptCacheBreakDetection.ts, utils/file.ts, services/teamMemorySync/secretScanner.ts, @grpc/grpc-js/build/src/server.js, utils/debug.ts, utils/fileReadCache.ts, utils/errors.ts, utils/nativeInstaller/download.ts, tools/FileEditTool/utils.ts, utils/toolResultStorage.ts, utils/markdownConfigLoader.ts
 ((bvo = /\\u[0-9a-fA-F]{4}/), (Svo = /[\u0080-\uffff]/));
 xZp = {
   "<fnr>": "<function_results>",

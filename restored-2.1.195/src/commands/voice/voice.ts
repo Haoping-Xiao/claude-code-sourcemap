@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module mQt] deps: je, fn, Bi, Is
+// [unwrapped __esm module mQt] deps: utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, constants/files.ts, utils/platform.ts
 ((sar = require("child_process")), (snc = require("fs/promises")));
 function nXf(e) {
   let t = e.trim().toLowerCase();

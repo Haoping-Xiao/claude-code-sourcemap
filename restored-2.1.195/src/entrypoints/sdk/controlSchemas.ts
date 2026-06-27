@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3672  score=0.4124  fileCov=0.7703
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KBc] deps: Xr, NB, ZNc
+// [unwrapped __esm module KBc] deps: @modelcontextprotocol/sdk/dist/esm/types.js, types/permissions.ts, entrypoints/sdk/coreSchemas.ts
 ((URm = ve(() => H.unknown())),
   (FRm = ve(() =>
     H.object({

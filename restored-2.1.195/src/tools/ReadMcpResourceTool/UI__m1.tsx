@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/ReadMcpResourceTool/UI.tsx)  jaccard=0.0967  score=0.2163  fileCov=0.1489
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dqe] deps: E3t
+// [unwrapped __esm module dqe] deps: utils/sanitization.ts
 lIa = `
 List the direct children of a directory resource on an MCP server (\`resources/directory/read\`).
 

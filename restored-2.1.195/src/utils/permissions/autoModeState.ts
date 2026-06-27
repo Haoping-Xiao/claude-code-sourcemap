@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setAutoModeFromFallback, setAutoModeFlagCli, setAutoModeCircuitBroken, setAutoModeActive, isAutoModeFromFallback, isAutoModeCircuitBroken, isAutoModeActive, getAutoModeFlagCli, createAutoModeState, _setGlobalAutoModeStateForTesting
-// [unwrapped __esm module znl] deps: AN, ql, lwo, Xa, DE, Ye, oc, KI
+// [unwrapped __esm module znl] deps: ink/styles.ts, commands/add-dir/validation.ts, tools/ExitPlanModeTool/UI.tsx, @xmldom/xmldom/lib/entities.js, utils/permissions/PermissionMode.ts, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, utils/permissions/filesystem.ts
 HC = R(se(), 1);
 function createAutoModeState() {
   return {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3297  score=0.6263  fileCov=0.4104
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _ll] deps: ii, f4
+// [unwrapped __esm module _ll] deps: services/mockRateLimits.ts, tools/BriefTool/prompt.ts
 ((hll = R(lt(), 1)), (iif = new Set([j1])));
 function UserToolResultMessage(t0) {
   let t = bll.c(30),

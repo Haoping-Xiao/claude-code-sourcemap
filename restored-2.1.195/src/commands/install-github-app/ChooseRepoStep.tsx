@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4208  score=0.5393  fileCov=0.657
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qUl] deps: CH, Ye
+// [unwrapped __esm module qUl] deps: @smithy/types/dist-cjs/index.js, hooks/useTerminalSize.ts
 ((GUl = R(lt(), 1)), (aBo = R(se(), 1)));
 function ChooseRepoStep(t0) {
   let t = VUl.c(52),

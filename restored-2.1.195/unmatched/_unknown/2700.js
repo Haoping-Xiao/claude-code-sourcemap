@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0076  score=0.1911  fileCov=0.0079
 // note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0076); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module w$n] deps: M8, _Re, bRe, Klt
+// [unwrapped __esm module w$n] deps: zod/v4/core/util.js, protobufjs/ext/descriptor/index.js, @grpc/grpc-js/build/src/server.js, zod/v3/helpers/util.js
 LZi = {
   readUnknownFields: true
 };

@@ -4,7 +4,7 @@
 // class=modified (alt of src/state/AppState.tsx)  jaccard=0.1308  score=0.5138  fileCov=0.1492
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nbe] deps: tne
+// [unwrapped __esm module nbe] deps: components/Settings/Config.tsx
 ((KJr = R(lt(), 1)),
   (E0e = R(rt(), 1)),
   (tqi = R(se(), 1)),

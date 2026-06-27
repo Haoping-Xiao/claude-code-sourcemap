@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: hasIdeOnboardingDialogBeenShown, IdeOnboardingDialog
-// [unwrapped __esm module gDe] deps: Ye
+// [unwrapped __esm module gDe] deps: hooks/useTerminalSize.ts
 ((txa = R(lt(), 1)), (iFn = R(se(), 1)));
 function IdeOnboardingDialog(t0) {
   let t = nxa.c(22),

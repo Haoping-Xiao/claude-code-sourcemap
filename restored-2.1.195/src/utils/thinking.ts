@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2084  score=0.3603  fileCov=0.3307
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module m1] deps: Un, mye, Ao, JOt, Ls, dr
+// [unwrapped __esm module m1] deps: services/analytics/growthbook.ts, utils/fastMode.ts, utils/agentContext.ts, utils/managedEnvConstants.ts, utils/status.tsx, utils/settings/settings.ts
 ((Jkd = [
   "rainbow_red",
   "rainbow_orange",

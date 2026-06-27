@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5654  score=0.7959  fileCov=0.6613
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I8e] deps: Xr, ii, Il, Lo, At, oc, ys, Otl, Hu, Yf, w5e, EI, ztl
+// [unwrapped __esm module I8e] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, Il, utils/fsOperations.ts, utils/errors.ts, utils/nativeInstaller/download.ts, utils/fsOperations.ts, tools/GrepTool/UI.tsx, utils/file.ts, utils/task/diskOutput.ts, services/mcp/vscodeSdkMcp.ts, tools/ExitPlanModeTool/constants.ts, tools/GlobTool/GlobTool.ts
 ((Bef = ve(() =>
   H.strictObject({
     pattern: H.string().describe("The glob pattern to match files against"),

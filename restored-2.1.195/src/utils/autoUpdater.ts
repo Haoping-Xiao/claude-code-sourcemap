@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2322  score=0.2691  fileCov=0.6286
 // note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module EVn] deps: At, A9e
+// [unwrapped __esm module EVn] deps: utils/errors.ts, utils/shellConfig.ts
 ((_za = require("fs")),
   (Hgt = require("fs/promises")),
   (dAo = require("os")),

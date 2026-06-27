@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3597  score=0.5669  fileCov=0.4961
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zfc] deps: c8o, RN, kt, At, co, dr, u8o, _m, K0, OI
+// [unwrapped __esm module zfc] deps: utils/shell/resolveDefaultShell.ts, tools/BashTool/BashTool.tsx, utils/debug.ts, utils/errors.ts, utils/messages.ts, utils/settings/settings.ts, utils/processUserInput/processBashCommand.tsx, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/mcpOutputStorage.ts, fast-xml-parser/lib/fxp.cjs
 ((d8o = require("crypto")), (t7e = R(se(), 1)));
 async function processUserInput({
   input: e,

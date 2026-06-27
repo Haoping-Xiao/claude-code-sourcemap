@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0044); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ClosedIssueNotice
-// [unwrapped __esm module $hc] deps: ft, er, je, fn, At, Bi, vn, qd, Jt
+// [unwrapped __esm module $hc] deps: services/analytics/index.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/sequential.ts, utils/log.ts, utils/fsOperations.ts
 RTt = require("fs/promises"), ndr = require("path");
 function Ohc(e) {
   return rdr.jsxs(xs, {

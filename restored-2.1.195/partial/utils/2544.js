@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2387  score=0.431  fileCov=0.3485
 // note: low-confidence suggestion: src/hooks/usePasteHandler.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I1] deps: Lne, Un, xUt, mye, Ao, Ls
+// [unwrapped __esm module I1] deps: utils/imageResizer.ts, services/analytics/growthbook.ts, ink/styles.ts, utils/fastMode.ts, utils/agentContext.ts, utils/status.tsx
 G6d = {
   maxWidth: 2000,
   maxHeight: 2000

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4268  score=0.676  fileCov=0.5365
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bBo] deps: Qi, Zf, LMe
+// [unwrapped __esm module bBo] deps: lodash-es/memoize.js, utils/sessionStorage.ts, utils/attachments.ts
 Onr = Cn(async (e, t) => {
   let n = await aC(e),
     r = new Set(n.map((i) => i.name)),

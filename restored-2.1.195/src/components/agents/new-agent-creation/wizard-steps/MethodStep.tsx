@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4653  score=0.6579  fileCov=0.6137
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XYl] deps: Ye, ps, Uh, M7, Cc, Vl, Bs, Ko, wb, vH
+// [unwrapped __esm module XYl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/analytics/metadata.ts, tools/FileEditTool/constants.ts, context/modalContext.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((KYl = R(lt(), 1)), (oTe = R(se(), 1)));
 function MethodStep() {
   let e = JYl.c(11),

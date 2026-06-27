@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4578  score=0.6453  fileCov=0.6118
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module db] deps: Pw, At
+// [unwrapped __esm module db] deps: utils/fileRead.ts, utils/errors.ts
 (($7s = require("async_hooks")), (uI = require("fs/promises")));
 kld = new $7s.AsyncLocalStorage();
 function maybePersistTokenForSubprocesses(path, token, tokenName) {

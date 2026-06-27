@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4039  score=0.5061  fileCov=0.6667
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module M7] deps: ft, GNt, Uh, Lo, sa, Hu, Tkn
+// [unwrapped __esm module M7] deps: services/analytics/index.ts, tools/AgentTool/agentMemory.ts, services/analytics/metadata.ts, utils/fsOperations.ts, utils/git.ts, utils/file.ts, utils/worktree.ts
 SI = require("path");
 var ka = "Edit",
   CLAUDE_FOLDER_PERMISSION_PATTERN = "/.claude/**",

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0077  score=0.2109  fileCov=0.0079
 // note: nearest: src/screens/REPL.tsx (0.0077); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iLc] deps: ft, p4n, uo, vn, u2o
+// [unwrapped __esm module iLc] deps: services/analytics/index.ts, services/api/grove.ts, context/notifications.tsx, utils/sequential.ts, utils/statusNoticeDefinitions.tsx
 vfr = R(rt(), 1);
 function wfr(e) {
   return e.type === "user" && !e.isMeta && !e.isCompactSummary && !e.isVirtual;

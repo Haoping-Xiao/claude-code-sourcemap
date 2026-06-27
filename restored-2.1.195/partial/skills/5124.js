@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0791  score=0.8468  fileCov=0.0802
 // note: low-confidence suggestion: src/skills/bundledSkills.ts; dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AA] deps: dn, je, Yf, LMe
+// [unwrapped __esm module AA] deps: dn, utils/debug.ts, utils/task/diskOutput.ts, utils/attachments.ts
 IJt = require("fs"), Zsr = require("fs/promises"), $se = require("path"), YXl = [];
 G8f = IJt.constants.O_NOFOLLOW ?? 0, W8f = IJt.constants.O_WRONLY | IJt.constants.O_CREAT | IJt.constants.O_EXCL | G8f;
 var R4o;

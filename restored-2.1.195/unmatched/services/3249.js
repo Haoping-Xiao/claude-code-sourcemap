@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0332  score=1  fileCov=0.0332
 // note: nearest: src/utils/codeIndexing.ts (0.0332); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kIa] deps: ft, kt
+// [unwrapped __esm module kIa] deps: services/analytics/index.ts, utils/debug.ts
 kvp = /^create[_-]?(pull[_-]?request|merge[_-]?request)$|^(pull[_-]?request|merge[_-]?request)[_-]?create$/i;
 function RIa(e) {
   let t = e.trim(),

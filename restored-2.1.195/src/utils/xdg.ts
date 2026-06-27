@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4604  score=1  fileCov=0.4604
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module f6] deps: ft, EI, lC, fn, _m
+// [unwrapped __esm module f6] deps: services/analytics/index.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, tools/SyntheticOutputTool/SyntheticOutputTool.ts
 ((j0p = new Set()), (G0p = new Set([wu, qc])));
 function K2n(e) {
   return {

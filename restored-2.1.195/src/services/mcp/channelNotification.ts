@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: wrapChannelMessage, isChannelsPolicyBlocked, getEffectiveChannelAllowlist, gateChannelServer, findChannelEntry, ChannelPermissionNotificationSchema, ChannelMessageNotificationSchema, CHANNEL_PERMISSION_REQUEST_METHOD, CHANNEL_PERMISSION_METHOD
-// [unwrapped __esm module j_t] deps: Xr, $g, Un
+// [unwrapped __esm module j_t] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/plugins/pluginIdentifier.ts, services/analytics/growthbook.ts
 kdf = ve(() =>
   H.array(
     H.object({

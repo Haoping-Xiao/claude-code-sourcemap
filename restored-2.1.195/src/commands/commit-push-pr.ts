@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1196  score=0.3408  fileCov=0.1556
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UOo] deps: jc
+// [unwrapped __esm module UOo] deps: utils/semver.ts
 ((O0f = {
   type: "local-jsx",
   name: "desktop",

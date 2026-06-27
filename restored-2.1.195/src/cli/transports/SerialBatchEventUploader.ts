@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7302  score=0.8634  fileCov=0.8257
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ygc] deps: ft, je, At, ys, co, y_, _a, jS, Jt
+// [unwrapped __esm module ygc] deps: services/analytics/index.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/messages.ts, utils/stats.ts, utils/plans.ts, utils/path.ts, utils/fsOperations.ts
 ggc = require("fs/promises");
 class k8o {
   _active = false;

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.116  score=0.1965  fileCov=0.2207
 // note: low-confidence suggestion: src/tools/AgentTool/built-in/exploreAgent.ts; dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vAe] deps: Un, RX, u_, lf, nC, EI, lC, f6, Ls, _m, fh
+// [unwrapped __esm module vAe] deps: services/analytics/growthbook.ts, @xmldom/xmldom/lib/entities.js, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, utils/xdg.ts, utils/status.tsx, tools/SyntheticOutputTool/SyntheticOutputTool.ts, commands/insights.ts
 Upe = {
   agentType: "Explore",
   whenToUse: Vnf,

@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Enc] deps: dn, _nc, Lze
+// [unwrapped __esm module Enc] deps: dn, services/PromptSuggestion/promptSuggestion.ts, services/autoDream/config.ts
 Snc = R(se(), 1);
 var shouldFilterSuggestion = async (suggestion, promptId) => {
   let n = suggestion.trim();

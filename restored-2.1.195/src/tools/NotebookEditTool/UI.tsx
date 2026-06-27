@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2679  score=0.5343  fileCov=0.3494
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nnl] deps: Lo, Ye, AMe, ql
+// [unwrapped __esm module nnl] deps: utils/fsOperations.ts, hooks/useTerminalSize.ts, components/permissions/FileWritePermissionRequest/FileWriteToolDiff.tsx, commands/add-dir/validation.ts
 ((Ztl = R(lt(), 1)), (enl = require("path")), (Mpe = R(se(), 1)));
 function Kvo(e) {
   if (!e?.notebook_path) return null;

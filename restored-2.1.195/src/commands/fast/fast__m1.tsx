@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/fast/fast.tsx)  jaccard=0.1037  score=0.3045  fileCov=0.136
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xsr] deps: iu, Xa, Ye, Fh, nne, f0e
+// [unwrapped __esm module xsr] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, components/Settings/Config.tsx, utils/signal.ts, ink/render-border.ts
 ((Nzl = R(lt(), 1)), (Fjo = R(se(), 1)));
 function k1e(e, t) {
   t((n) => {

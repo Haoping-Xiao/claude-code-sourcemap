@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4929  score=0.7618  fileCov=0.5827
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module R8r] deps: Is
+// [unwrapped __esm module R8r] deps: utils/platform.ts
 ((Lwi = require("http")),
   (HRd =
     Vt() === "windows"

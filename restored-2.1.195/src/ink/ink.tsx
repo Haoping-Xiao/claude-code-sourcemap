@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4065  score=0.6053  fileCov=0.5532
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module EW] deps: ZS, one, jh
+// [unwrapped __esm module EW] deps: ink/terminal.ts, ink/termio/csi.ts, utils/env.ts
 Q7 = R(rt(), 1);
 ((g8 = Q7.createContext(null)), (CLn = g8.Provider));
 function WWi(e) {

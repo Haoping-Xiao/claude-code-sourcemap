@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0049  score=0.0339  fileCov=0.0057
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Dgo] deps: Xr, ft, kt, ii, je, Ao, IX
+// [unwrapped __esm module Dgo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/debug.ts, services/mockRateLimits.ts, utils/debug.ts, utils/agentContext.ts, tools/BriefTool/prompt.ts
 ((VLp = ve(() =>
   H.object({
     servers: H.array(H.string())

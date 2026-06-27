@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2681  score=0.8009  fileCov=0.2872
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I1n] deps: kt, es
+// [unwrapped __esm module I1n] deps: utils/debug.ts, utils/profilerBase.ts
 eut = class eut extends Error {
   constructor(e, t) {
     let n,

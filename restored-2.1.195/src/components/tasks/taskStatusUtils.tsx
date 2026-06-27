@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.461  score=0.771  fileCov=0.5341
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rjo] deps: Ye, ii, Rd
+// [unwrapped __esm module rjo] deps: hooks/useTerminalSize.ts, services/mockRateLimits.ts, utils/settings/constants.ts
 l8l = R(se(), 1);
 function isTerminalStatus(status) {
   return status === "completed" || status === "failed" || status === "killed";

@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/PromptSuggestion/promptSuggestion.ts)  jaccard=0.0221  score=0.3105  fileCov=0.0232
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yqe] deps: ft, Y3e, ag, sA, Ld, wr, fn, At, q0, vn, co, zH, dr, Mp, dn, Un, kt, fb, z1, Ypt
+// [unwrapped __esm module Yqe] deps: services/analytics/index.ts, Y3e, utils/claudeInChrome/common.ts, services/PromptSuggestion/promptSuggestion.ts, utils/concurrentSessions.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, cli/print.ts, utils/sequential.ts, utils/messages.ts, services/teamMemorySync/secretScanner.ts, utils/settings/settings.ts, utils/concurrentSessions.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, fb, services/api/errorUtils.ts, utils/task/framework.ts
 MRp = {
   user_intent: zMa,
   stated_intent: zMa,

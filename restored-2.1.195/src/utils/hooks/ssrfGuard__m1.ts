@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/hooks/ssrfGuard.ts)  jaccard=0.0562  score=0.0846  fileCov=0.1433
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module h7n] deps: sr
+// [unwrapped __esm module h7n] deps: services/teamMemorySync/secretScanner.ts
 ((Agl = require("dns")), (d0o = require("net")));
 async function ssrfError(hostname, address) {
   let n = new URL(hostname),

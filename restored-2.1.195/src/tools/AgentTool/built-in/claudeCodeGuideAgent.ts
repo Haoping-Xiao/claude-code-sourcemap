@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3431  score=0.7057  fileCov=0.4005
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module N$o] deps: lf, EI, lC, TX, Rct, oo, f6, dr, _m, Jt
+// [unwrapped __esm module N$o] deps: tools/GlobTool/prompt.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, TX, tools/GrepTool/prompt.ts, utils/http.ts, utils/xdg.ts, utils/settings/settings.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/fsOperations.ts
 yLl = {
   agentType: O$o,
   whenToUse: `Use this agent when the user asks questions ("Can Claude...", "Does Claude...", "How do I...") about: (1) Claude Code (the CLI tool) - features, hooks, slash commands, MCP servers, settings, IDE integrations, keyboard shortcuts; (2) Claude Agent SDK - building custom agents; (3) Claude API (formerly Anthropic API) - API usage, tool use, Anthropic SDK usage. **IMPORTANT:** Before spawning a new agent, check if there is already a running or recently completed claude-code-guide agent that you can continue via ${Ly}.`,

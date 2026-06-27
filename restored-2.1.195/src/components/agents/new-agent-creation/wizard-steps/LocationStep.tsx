@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4113  score=0.6306  fileCov=0.5419
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WYl] deps: PR, HN, Ye, ps, fp, y3, Cc, Bs, f_, EC, Mg, wb, vH, jYl
+// [unwrapped __esm module WYl] deps: utils/errors.ts, utils/plugins/pluginPolicy.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, screens/REPL.tsx, commands/memory/memory.tsx, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, @anthropic-ai/bedrock-sdk/client.mjs, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, components/agents/new-agent-creation/wizard-steps/GenerateStep.tsx
 ((Mse = R(rt(), 1)), (s2 = R(se(), 1)));
 function LocationStep() {
   let e = qYl.c(11),

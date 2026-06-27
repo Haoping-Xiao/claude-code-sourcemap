@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2328  score=0.4589  fileCov=0.3209
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Gre] deps: kt, je, fn, lT, ED, Y9
+// [unwrapped __esm module Gre] deps: utils/debug.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/permissions/permissionSetup.ts, utils/stringUtils.ts, utils/plugins/loadPluginAgents.ts
 ((aNa = require("fs")), (lNa = require("tty")));
 function uNa() {
   return x4n;

@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/tools/AgentTool/AgentTool.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: spawnForkFromDirective, deriveForkName
-// [unwrapped __esm module VYt] deps: PR, g$e, fp, q0, co
+// [unwrapped __esm module VYt] deps: utils/errors.ts, utils/markdownConfigLoader.ts, screens/REPL.tsx, cli/print.ts, utils/messages.ts
 rkf = /^\/btw\b/gi;
 Qze = zLl();
 async function spawnForkFromDirective(e, t, n, r) {

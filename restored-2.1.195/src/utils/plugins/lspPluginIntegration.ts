@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4506  score=0.8076  fileCov=0.5049
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _pt] deps: YZe, je, At, Jt, dn, ypt
+// [unwrapped __esm module _pt] deps: lru-cache/dist/esm/index.js, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, dn, services/lsp/LSPDiagnosticRegistry.ts
 ((rLa = require("crypto")),
   (Pre = new Map()),
   (EDe = new bG({

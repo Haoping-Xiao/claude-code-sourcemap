@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1011  score=0.251  fileCov=0.1448
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mLe] deps: ft, je, wr, vn, Yf, Jt, zb, kt, Du
+// [unwrapped __esm module mLe] deps: services/analytics/index.ts, utils/debug.ts, main.tsx, utils/sequential.ts, utils/task/diskOutput.ts, utils/fsOperations.ts, zod/v4/classic/schemas.js, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts
 ((Zla = require("fs")), (sNn = require("fs/promises")), (eca = require("path")));
 V8 = new Map();
 lcp = ve(() =>

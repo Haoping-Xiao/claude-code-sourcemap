@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5444  score=0.7486  fileCov=0.6662
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hka] deps: fpo
+// [unwrapped __esm module hka] deps: @aws-sdk/middleware-websocket/dist-cjs/index.js
 Owp = ppo;
 gka = class gka extends Error {
   constructor(e) {

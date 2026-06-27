@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.1465  score=0.247  fileCov=0.2646
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yp] deps: iu, Qi, det, ft, FK, HI, IJr, ZS, q7, jh, kt, fb, fho, fd, Ld, je, Mm, wr, fn, At, lT, uf, ED, zH, ojn, vWt, _a, sG
+// [unwrapped __esm module Yp] deps: @mixmark-io/domino/lib/Document.js, lodash-es/memoize.js, signal-exit/dist/mjs/index.js, services/analytics/index.ts, utils/process.ts, HI, ink/searchHighlight.ts, ink/terminal.ts, ink/terminal.ts, utils/env.ts, utils/debug.ts, fb, services/mcp/client.ts, utils/debugFilter.ts, utils/concurrentSessions.ts, utils/debug.ts, utils/git/gitConfigParser.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/permissions/permissionSetup.ts, main.tsx, utils/stringUtils.ts, services/teamMemorySync/secretScanner.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/gracefulShutdown.ts, utils/plans.ts, @ant/claude-for-chrome-mcp/src/mcpSocketClient.ts
 ((u4n = require("util")), (bEe = require("fs")));
 Eho = Cn(() => {
   jee(() => {});

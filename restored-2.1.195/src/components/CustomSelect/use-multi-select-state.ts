@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3471  score=0.6041  fileCov=0.4493
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TMl] deps: ft, fH, Ye, j_t, I6e, GY, atr, uo, Lo, je, wr, oc, Ls, LOe, _a, dr, MAo, Cc, gm, gKe
+// [unwrapped __esm module TMl] deps: services/analytics/index.ts, react/cjs/react.production.js, hooks/useTerminalSize.ts, services/mcp/channelNotification.ts, services/mcp/channelPermissions.ts, utils/signal.ts, components/PackageManagerAutoUpdater.tsx, context/notifications.tsx, utils/fsOperations.ts, utils/debug.ts, main.tsx, utils/nativeInstaller/download.ts, utils/status.tsx, @xmldom/xmldom/lib/entities.js, utils/plans.ts, utils/settings/settings.ts, cli/handlers/auth.ts, context/modalContext.tsx, undici/lib/mock/mock-agent.js, components/Settings/Status.tsx
 ((ltr = R(lt(), 1)), (ctr = R(rt(), 1)), (hA = R(se(), 1)));
 function useMultiSelectState({
   isDisabled: e = false,

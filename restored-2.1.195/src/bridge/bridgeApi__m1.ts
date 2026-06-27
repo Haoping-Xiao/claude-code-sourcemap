@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/bridgeApi.ts)  jaccard=0.0194  score=0.2224  fileCov=0.0208
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module USr] deps: Tx, rv, DR
+// [unwrapped __esm module USr] deps: @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 sIt = class sIt extends cp {
   create(e, t) {
     let { betas: n, ...r } = e;

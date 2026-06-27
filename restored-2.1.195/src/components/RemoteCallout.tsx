@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2161  score=0.274  fileCov=0.5056
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Hir] deps: Xr, Un
+// [unwrapped __esm module Hir] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/growthbook.ts
 ((oZl = {
   init_retry_max_attempts: 3,
   init_retry_base_delay_ms: 500,

@@ -5,6 +5,6 @@
 // note: nearest: src/tools.ts (0.0078); dir inferred from dep-graph -> tools; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SendUserFileTool
-// [unwrapped __esm module vSl] deps: Xa, Ye, K0o
+// [unwrapped __esm module vSl] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, tools/BriefTool/BriefTool.ts
 D$e = R(se(), 1);
 var Thf, vhf, SendUserFileTool;

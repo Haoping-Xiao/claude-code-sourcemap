@@ -53,6 +53,14 @@ const report = JSON.parse(readFileSync(REPORT, "utf-8"));
 const entries = Object.entries(report.report);
 console.log(`[06] ${entries.length} modules`);
 
+// 模块变量名 -> 可读标签 (匹配到的 2.1.88 路径), 用于把依赖注释里的 minified 模块名翻译为文件名。
+const MODVAR_LABEL = {};
+for (const [v, m] of entries) {
+  if (m.match && m.match.path) {
+    MODVAR_LABEL[v] = m.match.path.replace(/^src\//, "").replace(/^node_modules\//, "");
+  }
+}
+
 // 可选的 AI/人工重命名层: tools/ai-renames.json = { "<moduleVar>": {"oldLocal":"NewName",...} }
 // 这些 per-module 局部重命名会并入作用域重命名, 可复现(随 06 一起跑), 与 _t 导出名互补。
 // 也兼容 bun-demincer ai-rename.mjs 的产物(配 API key 时)。
@@ -166,7 +174,8 @@ function unwrapEsm(ast) {
             if (names) { deps.push(...names); inner.shift(); } else break;
           }
           if (inner.length) {
-            inner[0].leadingComments = [{ type: "CommentLine", value: ` [unwrapped __esm module ${modName}]${deps.length ? " deps: " + deps.join(", ") : ""}` }, ...(inner[0].leadingComments || [])];
+            const depLabels = deps.map((d) => MODVAR_LABEL[d] || d);
+            inner[0].leadingComments = [{ type: "CommentLine", value: ` [unwrapped __esm module ${modName}]${depLabels.length ? " deps: " + depLabels.join(", ") : ""}` }, ...(inner[0].leadingComments || [])];
           }
           out.push(...inner);
           unwrapped++; handled = true;

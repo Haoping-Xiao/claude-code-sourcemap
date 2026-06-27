@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4691  score=0.7333  fileCov=0.5656
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mpc] deps: Rc
+// [unwrapped __esm module Mpc] deps: constants/oauth.ts
 llm = new Set([
   "api.anthropic.com",
   "api-staging.anthropic.com",

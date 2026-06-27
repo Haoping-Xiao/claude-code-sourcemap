@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2744  score=0.4487  fileCov=0.4139
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tzo] deps: uo, hYt, IL, Ver, qJ, cAe, hN, Mp, Sj, cne
+// [unwrapped __esm module tzo] deps: context/notifications.tsx, utils/mcpInstructionsDelta.ts, tools/AgentTool/agentColorManager.ts, commands/color/color.ts, utils/plugins/installCounts.ts, utils/swarm/teammateLayoutManager.ts, utils/swarm/backends/detection.ts, utils/concurrentSessions.ts, utils/teammate.ts, components/design-system/ThemeProvider.tsx
 GTt = R(rt(), 1);
 function PromptInput({
   debug: e,

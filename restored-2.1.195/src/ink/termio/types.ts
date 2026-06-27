@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2755  score=0.8012  fileCov=0.2957
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mce] deps: AW, mGe
+// [unwrapped __esm module Mce] deps: ink/supports-hyperlinks.ts, stack-utils/index.js
 ((p5i = R(lt(), 1)), (DLn = R(se(), 1)));
 function f5i(e) {
   if (e.length === 0) return null;

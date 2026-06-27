@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0123  score=1  fileCov=0.0123
 // note: nearest: src/bridge/bridgeMessaging.ts (0.0123); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Von] deps: HO
+// [unwrapped __esm module Von] deps: utils/sessionUrl.ts
 Gns = require("crypto");
 function a0() {
   return Fyr;

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0011  score=0.1743  fileCov=0.0011
 // note: nearest: src/screens/REPL.tsx (0.0011); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FZt] deps: Ye, _i, wr
+// [unwrapped __esm module FZt] deps: hooks/useTerminalSize.ts, components/design-system/Ratchet.tsx, main.tsx
 N9o = R(lt(), 1), ko = R(se(), 1);
 async function ham(e) {
   let t = [];

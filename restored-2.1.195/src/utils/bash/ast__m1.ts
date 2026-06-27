@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/bash/ast.ts)  jaccard=0.1101  score=0.1836  fileCov=0.2155
 // note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xRe] deps: kt, Ybe
+// [unwrapped __esm module xRe] deps: utils/debug.ts, utils/bash/parser.ts
 ((mrp = new Set(["export", "declare", "typeset", "readonly", "local", "unset", "unsetenv"])),
   (grp = new Set(["word", "string", "raw_string", "number"])),
   (Bro = new Set(["command_substitution", "process_substitution"])),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1804  score=0.3131  fileCov=0.2986
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FHc] deps: ft, X0, dtn, WTe, Ye, Du
+// [unwrapped __esm module FHc] deps: services/analytics/index.ts, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/PermissionPrompt.tsx, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, hooks/useTerminalSize.ts, services/analytics/firstPartyEventLoggingExporter.ts
 ((BHc = R(lt(), 1)), (R3 = R(se(), 1)));
 function WebFetchPermissionRequest(t0, t) {
   switch (t0) {

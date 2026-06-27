@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0057  score=0.4332  fileCov=0.0058
 // note: nearest: src/screens/REPL.tsx (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module b_c] deps: Xr, ft, YHe, z2n, Lo, je, Bi, PM, sp, Is, dr, kDe, ejn, Jt, _1, sj
+// [unwrapped __esm module b_c] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, components/tasks/AsyncAgentDetailDialog.tsx, utils/embeddedTools.ts, utils/fsOperations.ts, utils/debug.ts, constants/files.ts, utils/plugins/loadPluginHooks.ts, utils/worktree.ts, utils/platform.ts, utils/settings/settings.ts, utils/powershell/parser.ts, utils/Shell.ts, utils/fsOperations.ts, utils/subprocessEnv.ts, utils/windowsPaths.ts
 Pfm = ve(() => H.object({
   id: H.string(),
   content: H.string()

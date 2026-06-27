@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6772  score=0.9167  fileCov=0.7216
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module PZn] deps: qfn, je, tA
+// [unwrapped __esm module PZn] deps: entrypoints/sdk/coreSchemas.ts, utils/debug.ts, fast-xml-parser/lib/fxp.cjs
 CCf = ["SessionStart", "Setup"];
 function registerPendingAsyncHook({
   processId: e,

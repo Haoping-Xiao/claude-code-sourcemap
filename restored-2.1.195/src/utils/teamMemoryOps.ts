@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5751  score=1  fileCov=0.5751
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xbt] deps: Uh, MM, M7, fn, sj
+// [unwrapped __esm module Xbt] deps: services/analytics/metadata.ts, memdir/teamMemPrompts.ts, tools/FileEditTool/constants.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/windowsPaths.ts
 q$e = require("path");
 function yvl(e) {
   let t = e;

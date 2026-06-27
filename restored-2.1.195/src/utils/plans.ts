@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1286  score=0.2401  fileCov=0.2167
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _a] deps: Qi, kt, ft, v0n, Zf, np, d8n, jv, $S, Pw, Rm, fd, Ld, Lo, je, Mm, fn, At, es, ys, QVt, sa, Yp, Rd, vn, co, Hu, y_, jS, ih, Jt, X4, sr, Mp, HO
+// [unwrapped __esm module _a] deps: lodash-es/memoize.js, utils/debug.ts, services/analytics/index.ts, v0n, utils/sessionStorage.ts, env-paths/index.js, utils/fileHistory.ts, tools/ScheduleCronTool/prompt.ts, google-auth-library/build/src/crypto/node/crypto.js, utils/fileRead.ts, @grpc/grpc-js/build/src/server.js, utils/debugFilter.ts, utils/concurrentSessions.ts, utils/fsOperations.ts, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/profilerBase.ts, utils/fsOperations.ts, services/analytics/metadata.ts, utils/git.ts, utils/gracefulShutdown.ts, utils/settings/constants.ts, utils/sequential.ts, utils/messages.ts, utils/file.ts, utils/stats.ts, utils/path.ts, bootstrap/state.ts, utils/fsOperations.ts, utils/attachments.ts, services/teamMemorySync/secretScanner.ts, utils/concurrentSessions.ts, utils/sessionUrl.ts
 ((c2 = require("fs")),
   (Hl = require("fs/promises")),
   (vh = require("path")),

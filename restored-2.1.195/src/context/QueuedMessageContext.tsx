@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3977  score=0.5864  fileCov=0.5528
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eIo] deps: Ye, R6, AN
+// [unwrapped __esm module eIo] deps: hooks/useTerminalSize.ts, components/AwsAuthStatusBox.tsx, ink/styles.ts
 ((Bil = R(lt(), 1)), (zzn = R(se(), 1)));
 function Wil() {
   return jil.useContext(Gil);

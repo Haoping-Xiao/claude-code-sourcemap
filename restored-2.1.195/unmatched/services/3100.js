@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0111  score=0.3558  fileCov=0.0113
 // note: nearest: src/services/mcp/config.ts (0.0111); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cco] deps: ih
+// [unwrapped __esm module cco] deps: bootstrap/state.ts
 v4t = Mi();
 function gre(e) {
   let t = [];

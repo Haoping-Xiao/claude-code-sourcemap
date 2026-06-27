@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2366  score=0.7789  fileCov=0.2537
 // note: low-confidence suggestion: node_modules/lodash-es/_baseUnset.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jun] deps: Fun
+// [unwrapped __esm module jun] deps: @modelcontextprotocol/sdk/dist/esm/server/stdio.js
 gIr = R(require("process"));
 function baseUnset(object, path, n, r) {
   if (!Bb(object)) return object;

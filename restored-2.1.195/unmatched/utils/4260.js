@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0292  score=0.1328  fileCov=0.0361
 // note: nearest: node_modules/react/cjs/react.production.js (0.0292); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eml] deps: ft, dn, I6e, Rko, Il, je, At, xYn
+// [unwrapped __esm module eml] deps: services/analytics/index.ts, dn, services/mcp/channelPermissions.ts, hooks/toolPermission/handlers/interactiveHandler.ts, Il, utils/debug.ts, utils/errors.ts, services/api/errors.ts
 Qfl = require("crypto");
 function x6e(e) {
   Boe.runInContext(`(() => {

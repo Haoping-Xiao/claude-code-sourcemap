@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1317  score=0.7235  fileCov=0.1386
 // note: low-confidence suggestion: node_modules/lodash-es/_Stack.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mon] deps: ots, lts, uts, pts, mts
+// [unwrapped __esm module mon] deps: lodash-es/_isKeyable.js, lts, uts, pts, lodash-es/_Hash.js
 GXe.prototype.clear = rts;
 GXe.prototype.delete = ats;
 GXe.prototype.get = cts;

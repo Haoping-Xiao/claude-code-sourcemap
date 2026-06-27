@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setupPluginHookHotReload, resetHotReloadState, pruneRemovedPluginHooks, loadPluginHooks, getPluginAffectingSettingsSnapshot, clearPluginHookCache
-// [unwrapped __esm module jjt] deps: Ece, ft, dn, Rm, fd, je, At, sp, E5e, PM
+// [unwrapped __esm module jjt] deps: services/analytics/firstPartyEventLoggingExporter.ts, services/analytics/index.ts, dn, @grpc/grpc-js/build/src/server.js, utils/debugFilter.ts, utils/debug.ts, utils/errors.ts, utils/worktree.ts, utils/hooks/fileChangedWatcher.ts, utils/plugins/loadPluginHooks.ts
 dNn = require("path");
 ((pNn = Icp()),
   (hca = pNn.initialize),

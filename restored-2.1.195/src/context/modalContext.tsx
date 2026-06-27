@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2838  score=0.6314  fileCov=0.3402
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cc] deps: N0e, Ko
+// [unwrapped __esm module Cc] deps: commander/lib/command.js, components/ConfigurableShortcutHint.tsx
 ((F6i = R(lt(), 1)), (j6i = R(se(), 1)));
 function YE() {
   return NGe.useContext(Xj) !== null;

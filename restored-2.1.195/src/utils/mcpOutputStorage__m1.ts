@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldToolsListOptInToBrief, isBriefEntitled, isBriefEnabled, getBriefEnforceText
-// [unwrapped __esm module z0o] deps: Lo, fn, At, oc, DGe, Hu
+// [unwrapped __esm module z0o] deps: utils/fsOperations.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, hooks/useClipboardImageHint.ts, utils/file.ts
 ((z7n = require("fs/promises")),
   (v$e = require("path")),
   (dmf = {

@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: useVoice, computeLevel, FIRST_PRESS_FALLBACK_MS
-// [unwrapped __esm module _Tc] deps: ft, sa
+// [unwrapped __esm module _Tc] deps: services/analytics/index.ts, utils/git.ts
 ((pKo = require("path")),
   (ybm = [
     "MCP",

@@ -5,7 +5,7 @@
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerScheduleRemoteAgentsSkill
-// [unwrapped __esm module $wc] deps: ft, rSe, Un, jc, G1, wX, sre, WW, tSe, Ld, fn, AA
+// [unwrapped __esm module $wc] deps: services/analytics/index.ts, utils/toolSearch.ts, services/analytics/growthbook.ts, utils/semver.ts, tools/AskUserQuestionTool/prompt.ts, wX, highlight.js/lib/languages/mathematica.js, utils/cronScheduler.ts, tools/TaskStopTool/prompt.ts, utils/concurrentSessions.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, skills/bundledSkills.ts
 R7e = (KWe(), ro(zWe));
 ((VEm = /^\d+[smhd]$/),
   (zEm =

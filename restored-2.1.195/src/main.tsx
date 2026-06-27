@@ -5,7 +5,7 @@
 // note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startDeferredPrefetches, main
-// [unwrapped __esm module F5c] deps: SGo, Lne, eqe, fn, xW, jS, Jt, HO, JN
+// [unwrapped __esm module F5c] deps: components/Feedback.tsx, utils/imageResizer.ts, utils/systemDirectories.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/imageResizer.ts, utils/path.ts, utils/fsOperations.ts, utils/sessionUrl.ts, main.tsx
 ((FZ = require("fs/promises")), (gV = require("path")), (N5c = /^[a-zA-Z0-9_-]+$/));
 function logManagedSettings() {
   try {

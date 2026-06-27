@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.476  score=0.6277  fileCov=0.6632
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module m4t] deps: Xr, BI, qNn, ii, At, vn, Jt, ILe, cda
+// [unwrapped __esm module m4t] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mcp/client.ts, qNn, services/mockRateLimits.ts, utils/errors.ts, utils/sequential.ts, utils/fsOperations.ts, tools/ListMcpResourcesTool/prompt.ts, cda
 ((jup = ve(() =>
   H.object({
     server: H.string().optional().describe("Optional server name to filter resources by"),

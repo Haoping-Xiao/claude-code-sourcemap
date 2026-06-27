@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.693  score=0.9297  fileCov=0.7313
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bal] deps: Ye, nk
+// [unwrapped __esm module Bal] deps: hooks/useTerminalSize.ts, nk
 ((Oal = R(lt(), 1)), (oKn = R(se(), 1)));
 function Ual({
   message: e,

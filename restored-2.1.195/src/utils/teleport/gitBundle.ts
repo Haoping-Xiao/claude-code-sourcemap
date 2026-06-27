@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4668  score=0.593  fileCov=0.6869
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module E8n] deps: Hp, TM, Lo, je, At, Ls, dn, kt, GY
+// [unwrapped __esm module E8n] deps: axios/lib/axios.js, constants/betas.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/status.tsx, dn, utils/debug.ts, utils/signal.ts
 ((xZa = require("crypto")),
   (Tht = R(require("fs/promises"))),
   (K5 = R(require("path"))),

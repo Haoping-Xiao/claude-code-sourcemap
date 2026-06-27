@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3319  score=0.558  fileCov=0.4502
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Jat] deps: Ye
+// [unwrapped __esm module Jat] deps: hooks/useTerminalSize.ts
 P0e = R(rt(), 1);
 function a6i(e) {
   let t = new Map(e);

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0161  score=0.2077  fileCov=0.0172
 // note: nearest: src/tools/SendMessageTool/SendMessageTool.ts (0.0161); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module D2o] deps: iu, ior, ft, fH, O0, dse, _i, p8, Ye, ps, kt, cft, es, BFe, sa, vn, _a, Cc, Vl, Bs, B_, Ko, eE, Pfe, LVl, EC, Mg, MVl
+// [unwrapped __esm module D2o] deps: @mixmark-io/domino/lib/Document.js, fuse.js/dist/fuse.mjs, services/analytics/index.ts, react/cjs/react.production.js, commander/lib/command.js, hooks/useSearchInput.ts, components/design-system/Ratchet.tsx, ink/terminal.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, tools/shared/gitOperationTracking.ts, utils/profilerBase.ts, utils/sessionStoragePortable.ts, utils/git.ts, utils/sequential.ts, utils/plans.ts, context/modalContext.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx, components/Settings/Config.tsx, components/ui/TreeSelect.tsx, @anthropic-ai/bedrock-sdk/client.mjs, components/ScrollKeybindingHandler.tsx, components/LogSelector.tsx
 wAt = require("path"), Ou = R(rt(), 1), Wl = R(se(), 1);
 function rYe(e, t) {
   return {

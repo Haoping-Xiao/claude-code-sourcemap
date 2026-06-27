@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2981  score=0.559  fileCov=0.3898
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LDa] deps: je, At, Ist, _1, ypt
+// [unwrapped __esm module LDa] deps: utils/debug.ts, utils/errors.ts, utils/sessionIngressAuth.ts, utils/subprocessEnv.ts, services/lsp/LSPDiagnosticRegistry.ts
 ((kDa = require("child_process")), (CDe = R(xDa(), 1)));
 function kkp(e, t) {
   if (e == null) return null;

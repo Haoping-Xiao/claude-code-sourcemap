@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3533  score=0.7187  fileCov=0.41
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Hur] deps: Gst, ft, B7t, np, RF, uur, dn, Un, kt, fb, g$e, tP, eKe, jc, Z6, q6e, jv, i$, NB, je, fn, At, ik, vn, H1e, l8o, YZt, co, Hu, L3e, __, yur, y6e, een, tA, _a, XKe, eLe, xF, Jfc
+// [unwrapped __esm module Hur] deps: utils/messages.ts, services/analytics/index.ts, B7t, env-paths/index.js, utils/diff.ts, query.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, fb, utils/markdownConfigLoader.ts, services/api/errors.ts, utils/sessionStorage.ts, utils/semver.ts, utils/bash/ast.ts, tasks/stopTask.ts, tools/ScheduleCronTool/prompt.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, types/permissions.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/claudemd.ts, utils/sequential.ts, components/tasks/RemoteSessionDetailDialog.tsx, components/HelpV2/HelpV2.tsx, utils/crypto.ts, utils/messages.ts, utils/file.ts, L3e, utils/markdownConfigLoader.ts, utils/fsOperations.ts, services/PromptSuggestion/speculation.ts, node-fetch/lib/index.js, fast-xml-parser/lib/fxp.cjs, utils/plans.ts, commands/rename/generateSessionName.ts, utils/stream.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, cli/print.ts
 ((Sur = require("crypto")), (Eur = require("fs/promises")));
 function tmc(e) {
   let t = Zfc.c(3),

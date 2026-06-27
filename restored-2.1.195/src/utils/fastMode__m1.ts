@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Wjo] deps: Bs, vi, hse, f_, Ko, xsr, Ed, Ye, ps, kt, uo, NE, es, Ao, jG, Gjo
+// [unwrapped __esm module Wjo] deps: components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ValidationErrorsList.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, commands/fast/fast.tsx, context/notifications.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, context/notifications.tsx, utils/modelCost.ts, utils/profilerBase.ts, utils/agentContext.ts, utils/modelCost.ts, commands/fast/fast.tsx
 ((Uzl = R(lt(), 1)), (Fzl = R(rt(), 1)), (RC = R(se(), 1)));
 async function getFastModeUnavailableReason(e, t) {
   if (!sc())

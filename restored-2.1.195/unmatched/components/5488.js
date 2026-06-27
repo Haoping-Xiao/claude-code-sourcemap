@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0295  score=0.3728  fileCov=0.031
 // note: nearest: src/ink/styles.ts (0.0295); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module J_c] deps: ft, rJt, w4, _i, y0e, Ye, z1, xjt, uo, uf, ZYt, K$e, OTt, E8o, adr, F_c, OUt, rBo, z6o
+// [unwrapped __esm module J_c] deps: services/analytics/index.ts, ink/render-node-to-output.ts, highlight.js/lib/languages/reasonml.js, components/design-system/Ratchet.tsx, components/ConfigurableShortcutHint.tsx, hooks/useTerminalSize.ts, services/api/errorUtils.ts, services/rateLimitMessages.ts, context/notifications.tsx, main.tsx, hooks/fileSuggestions.ts, utils/attribution.ts, components/HistorySearchDialog.tsx, ink/hooks/use-search-highlight.ts, hooks/useArrowKeyHistory.tsx, ink/components/Box.tsx, components/permissions/rules/AddWorkspaceDirectory.tsx, ink/components/Box.tsx, bridge/bridgeStatusUtil.ts
 K6o = R(lt(), 1), Y_c = R(rt(), 1), eB = R(se(), 1);
 X_c = Y_c.memo(Smm);
 function vmm() {

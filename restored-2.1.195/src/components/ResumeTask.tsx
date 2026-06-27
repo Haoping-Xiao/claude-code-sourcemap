@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2529  score=0.3979  fileCov=0.4097
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module l6l] deps: ft, kt, dn, At, gP
+// [unwrapped __esm module l6l] deps: services/analytics/index.ts, utils/debug.ts, dn, utils/errors.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx
 ((i6l = R(lt(), 1)), (Esr = R(rt(), 1)));
 function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
   let { rows: r } = br(),

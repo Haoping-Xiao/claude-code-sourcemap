@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3412  score=0.5798  fileCov=0.4533
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lze] deps: ft, dn, kt, er, PM, pQ, sr
+// [unwrapped __esm module Lze] deps: services/analytics/index.ts, dn, utils/debug.ts, utils/config.ts, utils/plugins/loadPluginHooks.ts, utils/hooks/registerSkillHooks.ts, services/teamMemorySync/secretScanner.ts
 ((EIl = require("crypto")), (xTf = new Set(["clear", "stop", "off", "reset", "none", "cancel"])));
 function isAutoDreamEnabled() {
   return at("tengu_onyx_plover", null);

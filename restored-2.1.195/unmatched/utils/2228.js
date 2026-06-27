@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0301  score=0.2482  fileCov=0.0331
 // note: nearest: src/tools/BashTool/shouldUseSandbox.ts (0.0301); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xNt] deps: ih
+// [unwrapped __esm module xNt] deps: bootstrap/state.ts
 wke = Mi();
 function kNt() {
   return zee().map(e => e.sandbox?.bwrapPath).find(e => e != null);

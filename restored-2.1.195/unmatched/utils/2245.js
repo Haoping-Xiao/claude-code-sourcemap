@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0154  score=0.4709  fileCov=0.0156
 // note: nearest: src/utils/plugins/schemas.ts (0.0154); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iit] deps: Xr, je, Jt
+// [unwrapped __esm module iit] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/fsOperations.ts
 SNi = ve(() => H.string().min(1).refine(X1d, {
   message: "path must be path-absolute and must not override the host"
 })), Z1d = ve(() => H.union([SNi(), H.object({

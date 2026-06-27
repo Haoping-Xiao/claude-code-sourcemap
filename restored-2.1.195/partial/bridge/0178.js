@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1247  score=0.4416  fileCov=0.1481
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uEr] deps: Tx, rv, DR
+// [unwrapped __esm module uEr] deps: @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 vIt = class vIt extends cp {
   list(e, t = {}, n) {
     let {

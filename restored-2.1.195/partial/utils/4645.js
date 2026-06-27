@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0872  score=0.5149  fileCov=0.095
 // note: low-confidence suggestion: src/hooks/useSearchInput.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dse] deps: NOe, FDn, MGe, _i, P1o
+// [unwrapped __esm module dse] deps: utils/Cursor.ts, utils/pasteStore.ts, vendor/modifiers-napi-src/index.ts, components/design-system/Ratchet.tsx, hooks/useSearchInput.ts
 use = R(rt(), 1);
 xLf = new Set(["pageup", "pagedown", "insert", "wheelup", "wheeldown", "mouse", "clear", "enter", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12"]);
 function $1o(e) {

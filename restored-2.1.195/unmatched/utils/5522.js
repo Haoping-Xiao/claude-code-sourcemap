@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0015  score=0.425  fileCov=0.0015
 // note: nearest: src/screens/REPL.tsx (0.0015); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ken] deps: ft, PPo, HSc, je, Azo, fn, At, vn, BJ, yrr, _a
+// [unwrapped __esm module Ken] deps: services/analytics/index.ts, services/autoDream/autoDream.ts, utils/deepLink/parseDeepLink.ts, utils/debug.ts, utils/deepLink/registerProtocol.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, services/mcp/config.ts, commands/plugin/ManageMarketplaces.tsx, utils/plans.ts
 npr = require("fs/promises"), Tzo = require("path");
 function USc(e) {
   let t = Sd();

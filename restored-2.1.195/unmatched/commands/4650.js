@@ -4,7 +4,7 @@
 // class=new  jaccard=0.025  score=0.288  fileCov=0.0267
 // note: nearest: src/utils/plugins/loadPluginCommands.ts (0.025); dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pz] deps: Ye
+// [unwrapped __esm module pz] deps: hooks/useTerminalSize.ts
 iOl = R(lt(), 1), P7t = R(se(), 1);
 function yDf(e) {
   let t = $2t(e),

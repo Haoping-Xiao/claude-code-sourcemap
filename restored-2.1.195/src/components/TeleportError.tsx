@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2416  score=0.4223  fileCov=0.3609
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DQa] deps: si, Ye, je, sa, Fy, vi, B_, Ko, EC
+// [unwrapped __esm module DQa] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/debug.ts, utils/git.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 ((X9e = R(rt(), 1)), (wk = R(se(), 1)));
 function TeleportError(t0) {
   let t = PQa.c(20),

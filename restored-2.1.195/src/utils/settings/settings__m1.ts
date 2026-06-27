@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/settings/settings.ts)  jaccard=0.1198  score=0.3085  fileCov=0.1638
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oLt] deps: qee, Jt, sr, lmn, Ows, lj, Bws
+// [unwrapped __esm module oLt] deps: qee, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/settings/types.ts, utils/settings/validationTips.ts, utils/settings/types.ts, utils/settings/validationTips.ts
 g1u = ve(() => _M().strict());
 _1u = new Set(GO);
 S1u = [

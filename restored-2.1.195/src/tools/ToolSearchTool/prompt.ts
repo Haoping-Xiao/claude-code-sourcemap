@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isDeferredTool, getPrompt, formatDeferredToolLine, TOOL_SEARCH_TOOL_NAME
-// [unwrapped __esm module qRe] deps: ft, np, l$, Un, kt, je, fn, co, HU, fh
+// [unwrapped __esm module qRe] deps: services/analytics/index.ts, env-paths/index.js, tools/AgentTool/forkSubagent.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/messages.ts, utils/effort.ts, commands/insights.ts
 Boa = require("crypto");
 h4 = {
   agentType: PX,

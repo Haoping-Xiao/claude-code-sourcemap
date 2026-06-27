@@ -4,7 +4,7 @@
 // class=modified (alt of src/hooks/useIdeSelection.ts)  jaccard=0.2299  score=0.3925  fileCov=0.3569
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AAc] deps: vn, Xr, aE
+// [unwrapped __esm module AAc] deps: utils/sequential.ts, @modelcontextprotocol/sdk/dist/esm/types.js, utils/ide.ts
 ((otn = R(rt(), 1)),
   (_ym = ve(() =>
     H.object({

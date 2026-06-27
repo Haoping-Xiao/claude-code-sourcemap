@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.676  score=0.7606  fileCov=0.8587
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
+// [unwrapped __esm module KUl] deps: components/CustomSelect/select.tsx, utils/plugins/loadPluginCommands.ts, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts
 ((VUl = R(lt(), 1)), (lBo = R(rt(), 1)), (fR = R(se(), 1)));
 function CreatingStep(t0) {
   let t = YUl.c(10),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2256  score=0.2964  fileCov=0.4858
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xxl] deps: kt, Du, fb, lT
+// [unwrapped __esm module Xxl] deps: utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, fb, utils/permissions/permissionSetup.ts
 ((zxl = ["um", "user", "Hmm", "User", "Benutzer", "Human", "usr", "usem", "Mensch", "usuario"]),
   (zvf = ["Human:", "Assistant:", "<dm ", "<system", "<tool_", "<function_"]),
   (Kvf = /\n\n(\p{L}{1,12})(?=[< ])/u));

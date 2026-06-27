@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: BypassPermissionsModeDialog
-// [unwrapped __esm module k$c] deps: Eor, Ye, kt, Fy, RLe, FZt, yFo, bFo
+// [unwrapped __esm module k$c] deps: components/LogoV2/ChannelsNotice.tsx, hooks/useTerminalSize.ts, utils/debug.ts, components/design-system/Dialog.tsx, @xmldom/xmldom/lib/entities.js, screens/REPL.tsx, utils/settings/validationTips.ts, components/permissions/rules/WorkspaceTab.tsx
 ((C$c = R(lt(), 1)), (I$c = R(rt(), 1)), (nK = R(se(), 1)));
 function BypassPermissionsModeDialog(t0) {
   let t = R$c.c(7),

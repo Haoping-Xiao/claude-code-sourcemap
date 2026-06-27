@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/sessionRunner.ts)  jaccard=0.0484  score=0.1581  fileCov=0.0652
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pqc] deps: At, Is, zH
+// [unwrapped __esm module pqc] deps: utils/errors.ts, utils/platform.ts, services/teamMemorySync/secretScanner.ts
 ((uqc = require("fs")), (dBe = require("fs/promises")));
 function mqc(e) {
   return Math.round(e * (0.5 + Math.random()));

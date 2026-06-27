@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6666  score=0.9802  fileCov=0.6757
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yhc] deps: Ye
+// [unwrapped __esm module Yhc] deps: hooks/useTerminalSize.ts
 Ome = R(rt(), 1);
 function usePromptSuggestion({ inputValue: e, isAssistantResponding: t }) {
   let n = Ht((_) => _.promptSuggestion),

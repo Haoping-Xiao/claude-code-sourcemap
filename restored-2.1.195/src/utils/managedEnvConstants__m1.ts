@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isPewterOwlTool, isPewterOwlHeader, isPewterOwlBrief
-// [unwrapped __esm module JOt] deps: Qi, Ls
+// [unwrapped __esm module JOt] deps: lodash-es/memoize.js, utils/status.tsx
 ((Ykd = [
   {
     modelEnvVar: "ANTHROPIC_DEFAULT_FABLE_MODEL",

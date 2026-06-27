@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4143  score=0.5858  fileCov=0.5858
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module G$i] deps: ozr, izr
+// [unwrapped __esm module G$i] deps: types/generated/events_mono/common/v1/auth.ts, types/generated/events_mono/claude_code/v1/claude_code_internal_event.ts
 azr = {
   fromJSON(e) {
     return {

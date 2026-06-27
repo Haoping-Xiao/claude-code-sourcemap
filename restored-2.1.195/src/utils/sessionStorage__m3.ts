@@ -5,7 +5,7 @@
 // note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tool, tagSession, startup, resolveSettings, renameSession, query, parseDirectConnectUrl, listSubagents, listSessions, importSessionToStore, getSubagentMessages, getSessionMessages, getSessionInfo, forkSession, foldSessionSummary, filterEscalatingDefaultMode, deleteSession, createSdkMcpServer, SYSTEM_PROMPT_DYNAMIC_BOUNDARY, InMemorySessionStore, HOOK_EVENTS, EXIT_REASONS, DirectConnectTransport, DirectConnectError, AbortError
-// [unwrapped __esm module xec] deps: ys, RCe, Sx, ICe
+// [unwrapped __esm module xec] deps: utils/fsOperations.ts, utils/settings/mdm/settings.ts, Sx, utils/settings/mdm/rawRead.ts
 ((wec = require("path")),
   (YKf = {
     user: "userSettings",

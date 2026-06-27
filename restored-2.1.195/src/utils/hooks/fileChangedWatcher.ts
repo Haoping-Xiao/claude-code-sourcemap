@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3572  score=0.622  fileCov=0.4562
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module E5e] deps: ft, je, fn, At, ys
+// [unwrapped __esm module E5e] deps: services/analytics/index.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts
 ((hLe = require("fs/promises")), (Fjt = require("path")));
 ((pca = {
   setup: 0,

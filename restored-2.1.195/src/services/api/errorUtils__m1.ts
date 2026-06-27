@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/errorUtils.ts)  jaccard=0.1063  score=0.3974  fileCov=0.1268
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YJa] deps: zb, Ye, ps, Rx, vy, je, At, drt, BCn, Fy, EC
+// [unwrapped __esm module YJa] deps: zod/v4/classic/schemas.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/env.ts, @mixmark-io/domino/lib/htmlelts.js, utils/debug.ts, utils/errors.ts, utils/sleep.ts, bridge/bridgeMain.ts, components/design-system/Dialog.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 ((Q9n = R(lt(), 1)),
   (ght = R(rt(), 1)),
   (Of = R(se(), 1)),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.35  score=0.4919  fileCov=0.5481
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Dyl] deps: Xr, kt, ii, Bot, sr, z0o, f4, l3, K0o
+// [unwrapped __esm module Dyl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, services/mockRateLimits.ts, utils/thinking.ts, services/teamMemorySync/secretScanner.ts, utils/mcpOutputStorage.ts, tools/BriefTool/prompt.ts, tools/BriefTool/UI.tsx, tools/BriefTool/BriefTool.ts
 ((_mf = ve(() =>
   H.strictObject({
     file_uuid: H.string(),

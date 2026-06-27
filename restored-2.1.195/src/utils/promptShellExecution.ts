@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.068  score=0.2614  fileCov=0.0842
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hze] deps: RN, je, At, co, Gy, Bqe, K0, _m
+// [unwrapped __esm module hze] deps: tools/BashTool/BashTool.tsx, utils/debug.ts, utils/errors.ts, utils/messages.ts, utils/permissions/permissionSetup.ts, utils/argumentSubstitution.ts, utils/mcpOutputStorage.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts
 ((GTl = require("crypto")),
   (jTl = (() => {
     let e;

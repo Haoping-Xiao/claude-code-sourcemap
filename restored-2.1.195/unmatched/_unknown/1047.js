@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module q3s] deps: j3s
+// [unwrapped __esm module q3s] deps: @smithy/smithy-client/dist-cjs/index.js
 RKu = Oyn;

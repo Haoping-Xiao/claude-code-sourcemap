@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3699  score=0.6353  fileCov=0.4697
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bmc] deps: Fy, vi
+// [unwrapped __esm module bmc] deps: components/design-system/Dialog.tsx, components/design-system/Dialog.tsx
 ((ymc = R(lt(), 1)), (A8o = R(se(), 1)));
 function CostThresholdDialog(t0) {
   let t = Smc.c(7),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1093  score=0.1388  fileCov=0.34
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module c_] deps: Hp, Rc, oo, je, RE, Gx, Ls, qd, kM, Cv
+// [unwrapped __esm module c_] deps: axios/lib/axios.js, constants/oauth.ts, utils/http.ts, utils/debug.ts, RE, utils/slashCommandParsing.ts, utils/status.tsx, utils/log.ts, utils/teleport/api.ts, utils/teleport/api.ts
 Os = {
   get(e, t) {
     return _3e("GET", e, void 0, t);

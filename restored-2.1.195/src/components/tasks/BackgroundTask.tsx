@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4402  score=0.6269  fileCov=0.5964
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module h8l] deps: Ye
+// [unwrapped __esm module h8l] deps: hooks/useTerminalSize.ts
 ((cjo = R(lt(), 1)), (iYe = R(se(), 1)));
 function BackgroundTask(t0) {
   let t = y8l.c(107),

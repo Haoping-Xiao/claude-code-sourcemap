@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0218  score=0.0375  fileCov=0.0495
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gnc] deps: Un, zqe
+// [unwrapped __esm module gnc] deps: services/analytics/growthbook.ts, utils/swarm/backends/teammateModeSnapshot.ts
 ((aXf = {
   type: "local",
   name: "recap",

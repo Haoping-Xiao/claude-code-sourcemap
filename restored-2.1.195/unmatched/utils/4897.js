@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0195  score=0.1271  fileCov=0.0225
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0195); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hAt] deps: oo, er, je, vn, dn, c_, ole
+// [unwrapped __esm module hAt] deps: utils/http.ts, utils/config.ts, utils/debug.ts, utils/sequential.ts, dn, services/mcp/officialRegistry.ts, services/oauth/getOauthProfile.ts
 jFo = {
   status: "ineligible",
   daysRemaining: null

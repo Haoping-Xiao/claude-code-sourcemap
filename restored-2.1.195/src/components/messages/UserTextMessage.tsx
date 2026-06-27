@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2407  score=0.5963  fileCov=0.2876
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cal] deps: Xa, np, Ye
+// [unwrapped __esm module cal] deps: @xmldom/xmldom/lib/entities.js, env-paths/index.js, hooks/useTerminalSize.ts
 ((aal = R(lt(), 1)), (e_t = R(se(), 1)), (msf = new RegExp(`<${bhe}>[\\s\\S]*?</${bhe}>\\n*`)));
 function UserTextMessage(t0) {
   let t = dal.c(50),

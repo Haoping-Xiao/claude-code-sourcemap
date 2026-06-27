@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2831  score=0.4778  fileCov=0.4099
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module H3i] deps: qit
+// [unwrapped __esm module H3i] deps: ink/events/terminal-event.ts
 n0e = class n0e extends yne {
   relatedTarget;
   constructor(e, t = null) {

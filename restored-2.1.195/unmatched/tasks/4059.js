@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> tasks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module d8t] deps: yyt, tA, S_
+// [unwrapped __esm module d8t] deps: tasks/LocalAgentTask/LocalAgentTask.tsx, fast-xml-parser/lib/fxp.cjs, tasks/LocalShellTask/LocalShellTask.tsx
 Swo = new Map();
 Lrl = {
   name: "MonitorWsTask",

@@ -4,7 +4,7 @@
 // class=modified (alt of src/types/generated/events_mono/claude_code/v1/claude_code_internal_event.ts)  jaccard=0.7414  score=0.8756  fileCov=0.8287
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F$i] deps: ozr, izr
+// [unwrapped __esm module F$i] deps: types/generated/events_mono/common/v1/auth.ts, types/generated/events_mono/claude_code/v1/claude_code_internal_event.ts
 tkn = {
   fromJSON(e) {
     return {

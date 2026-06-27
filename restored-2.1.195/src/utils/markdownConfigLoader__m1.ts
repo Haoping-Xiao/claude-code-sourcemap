@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.2636  score=0.9124  fileCov=0.2704
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pq] deps: Qi, kt, ft, je, fn, At, oc, Iv, sa, __, tre, vf, hY, L7
+// [unwrapped __esm module pq] deps: lodash-es/memoize.js, utils/debug.ts, services/analytics/index.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, hooks/useSettings.ts, utils/git.ts, utils/markdownConfigLoader.ts, utils/ripgrep.ts, utils/settings/changeDetector.ts, utils/settings/managedPath.ts, utils/hooks/hooksConfigSnapshot.ts
 ((Dlc = require("fs")),
   (Mz = require("fs/promises")),
   (Plc = require("os")),

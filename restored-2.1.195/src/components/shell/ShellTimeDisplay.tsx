@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1958  score=0.3311  fileCov=0.3241
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lEe] deps: eUt, Ye, d4t
+// [unwrapped __esm module lEe] deps: components/VirtualMessageList.tsx, hooks/useTerminalSize.ts, components/CtrlOToExpand.tsx
 ((ijn = R(rt(), 1)), (_Ma = R(se(), 1)));
 function ShellTimeDisplay(t0) {
   let t = bMa.c(10),

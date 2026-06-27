@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4895  score=0.9024  fileCov=0.5168
 // note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Zdr] deps: cDe
+// [unwrapped __esm module Zdr] deps: tools/ReadMcpResourceTool/prompt.ts
 qgm = /^[\w.-]+\/[\w.-]+$/;
 function linuxDesktopPath() {
   return Qse.join(Ore(), "applications", DESKTOP_FILE_NAME);

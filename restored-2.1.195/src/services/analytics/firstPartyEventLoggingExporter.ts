@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2478  score=0.5883  fileCov=0.2998
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Du] deps: Qi, wr, Q9, TM, Vw, Ao, ft, fn, Ist, Tzr, S_e, Yle, kst, QH, oo, Ld, sa, Is, og, Jt, Mp, pke, fb
+// [unwrapped __esm module Du] deps: lodash-es/memoize.js, main.tsx, tools/FileReadTool/FileReadTool.ts, constants/betas.ts, utils/betas.ts, utils/agentContext.ts, services/analytics/index.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/sessionIngressAuth.ts, utils/computerUse/common.ts, services/mcp/config.ts, services/mcp/utils.ts, services/analytics/metadata.ts, tools/TaskStopTool/prompt.ts, utils/http.ts, utils/concurrentSessions.ts, utils/git.ts, utils/platform.ts, utils/teammateContext.ts, utils/fsOperations.ts, utils/concurrentSessions.ts, pke, fb
 ((_Oi = require("path")),
   (gOi = {
     [rLt]: "Bash",

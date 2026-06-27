@@ -5,7 +5,7 @@
 // note: nearest: src/cli/print.ts (0.0045); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: agentsCommandHandler
-// [unwrapped __esm module T5c] deps: xHt, ag, dn, zH, jS, Jt, _ht, JN
+// [unwrapped __esm module T5c] deps: main.tsx, utils/claudeInChrome/common.ts, dn, services/teamMemorySync/secretScanner.ts, utils/path.ts, utils/fsOperations.ts, utils/conversationRecovery.ts, main.tsx
 cwt = require("path");
 async function agentsCommandHandler(e) {
   if (e.json) {

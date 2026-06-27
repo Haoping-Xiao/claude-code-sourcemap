@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module _nc] deps: ft, Bs, vi, B_, Ko, gm, Xa, Ye, uo, es, sr, Lze
+// [unwrapped __esm module _nc] deps: services/analytics/index.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, undici/lib/mock/mock-agent.js, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, context/notifications.tsx, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, services/autoDream/config.ts
 (($Go = R(lt(), 1)), (hnc = R(rt(), 1)), (LC = R(se(), 1)));
 var Snc,
   shouldFilterSuggestion = async (suggestion, promptId, source) => {

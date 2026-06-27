@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: install
-// [unwrapped __esm module uTt] deps: Xr, ft, ag, oo, er, je, Cp, At, OMe, Ao, DE, __, Fh
+// [unwrapped __esm module uTt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/claudeInChrome/common.ts, utils/http.ts, utils/config.ts, utils/debug.ts, utils/tempfile.ts, utils/errors.ts, utils/permissions/bypassPermissionsKillswitch.ts, utils/agentContext.ts, utils/permissions/PermissionMode.ts, utils/markdownConfigLoader.ts, components/Settings/Config.tsx
 _am = H.object({
   status_category: H.string(),
   status_detail: H.string(),

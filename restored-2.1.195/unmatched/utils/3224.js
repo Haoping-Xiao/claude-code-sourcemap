@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0259  score=0.3789  fileCov=0.027
 // note: nearest: src/utils/plugins/lspPluginIntegration.ts (0.0259); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nDe] deps: bCe, je, wr, At, ys, Hu, Jt, vdt, B1, $g, i5
+// [unwrapped __esm module nDe] deps: utils/plugins/schemas.ts, utils/debug.ts, main.tsx, utils/errors.ts, utils/fsOperations.ts, utils/file.ts, utils/fsOperations.ts, utils/plugins/pluginOptionsStorage.ts, tools/SkillTool/prompt.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/mcpPluginIntegration.ts
 gCa = require("path");
 ldo = ["CLAUDE_PLUGIN_ROOT", "CLAUDE_PLUGIN_DATA"], dTp = new Set(ldo);
 function d3t(e, t) {

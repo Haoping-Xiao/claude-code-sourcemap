@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0242  score=1  fileCov=0.0242
 // note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js (0.0242); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AZs] deps: mEn, hEn
+// [unwrapped __esm module AZs] deps: @aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js, @aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js
 vEn = R(UR(), 1), hZs = R(Xee(), 1);
 var HZs = (e, t) => {
     if (!t) return e;else return class extends e {

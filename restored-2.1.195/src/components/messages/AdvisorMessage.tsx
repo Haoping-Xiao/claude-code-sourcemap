@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3305  score=0.4827  fileCov=0.5118
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Pyt] deps: Xa, lzn, Xol, Ye
+// [unwrapped __esm module Pyt] deps: @xmldom/xmldom/lib/entities.js, math-intrinsics/floor.js, components/ToolUseLoader.tsx, hooks/useTerminalSize.ts
 ((czn = R(rt(), 1)), (eCo = R(se(), 1)));
 function AdvisorMessage(t0) {
   let t = Jol.c(30),

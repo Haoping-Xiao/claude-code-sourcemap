@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2245  score=0.3106  fileCov=0.4475
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S0n] deps: Ao
+// [unwrapped __esm module S0n] deps: utils/agentContext.ts
 ANd = new Set(["pdf"]);
 function YNi() {
   return KNi;

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1923  score=0.3039  fileCov=0.3435
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xOc] deps: Du, gb, fn, PM, Sbe, o8, $g, vf, dr, aS, II
+// [unwrapped __esm module xOc] deps: services/analytics/firstPartyEventLoggingExporter.ts, utils/plugins/schemas.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/plugins/loadPluginHooks.ts, utils/plugins/pluginIdentifier.ts, utils/settings/pluginOnlyPolicy.ts, utils/plugins/pluginIdentifier.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/telemetry/pluginTelemetry.ts, utils/plugins/addDirPluginSettings.ts
 COc = require("path");
 function Lxm() {
   return (Rxm ??= Object.keys(pKr().shape));

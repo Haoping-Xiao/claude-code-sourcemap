@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7535  score=0.8487  fileCov=0.8704
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eKn] deps: uIo, Ye, uo, ift
+// [unwrapped __esm module eKn] deps: utils/ghPrStatus.ts, hooks/useTerminalSize.ts, context/notifications.tsx, tools/shared/gitOperationTracking.ts
 ((Aal = R(lt(), 1)), (Hal = R(rt(), 1)), (zpe = R(se(), 1)));
 function val(e) {
   return (

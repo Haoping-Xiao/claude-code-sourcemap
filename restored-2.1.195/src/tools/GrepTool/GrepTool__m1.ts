@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/GrepTool/GrepTool.ts)  jaccard=0.0489  score=1  fileCov=0.0489
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jtl] deps: Q8, E5, ql, Ye, oc, es, co
+// [unwrapped __esm module jtl] deps: react/cjs/react.production.js, components/VirtualMessageList.tsx, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, utils/profilerBase.ts, utils/messages.ts
 ((Ntl = R(lt(), 1)), (XI = R(se(), 1)));
 function qvo(e, t, n = 0) {
   if (t === 0)

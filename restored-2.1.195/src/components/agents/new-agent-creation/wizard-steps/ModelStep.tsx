@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2743  score=0.4119  fileCov=0.4509
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZYl] deps: Ye, Cc, Vl, Bs, Ko, wb, vH
+// [unwrapped __esm module ZYl] deps: hooks/useTerminalSize.ts, context/modalContext.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((JYl = R(lt(), 1)), (sTe = R(se(), 1)));
 function ModelStep() {
   let e = e7l.c(8),

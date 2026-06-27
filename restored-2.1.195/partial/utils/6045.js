@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0643  score=0.1924  fileCov=0.0881
 // note: low-confidence suggestion: node_modules/chokidar/esm/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tqc] deps: At, ZVo
+// [unwrapped __esm module tqc] deps: utils/errors.ts, services/PromptSuggestion/speculation.ts
 uXe = require("fs"), J5c = require("path"), Z5c = ["CLAUDE_CODE_SESSION_ACCESS_TOKEN", "CLAUDE_CODE_WORKER_EPOCH", "CLAUDE_CODE_RESUME_INTERRUPTED_TURN", "CLAUDE_CODE_RESUME_PROMPT", "CLAUDE_CODE_SESSION_ID", "CLAUDE_CODE_REMOTE_SESSION_ID", "CLAUDE_CODE_BASE_REF", "CLAUDE_CODE_BASE_REFS", "CLAUDE_CODE_REPO_CHECKOUTS", "CLAUDE_CODE_DIAGNOSTICS_FILE", "CLAUDE_SESSION_INGRESS_TOKEN_FILE", "CLAUDECODE", "CLAUDE_CODE_CHILD_SESSION"];
 async function dXe(e, t) {
   await T2.mkdir(PNo(), {

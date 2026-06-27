@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sendChromeMessage, runChromeNativeHost
-// [unwrapped __esm module Ofo] deps: fIr, jun, k7, dn, y1, kt, ZSe, W2e, G1, oo, er, je, wr, fn, Ls, u9, Mh, Epe, VM
+// [unwrapped __esm module Ofo] deps: @modelcontextprotocol/sdk/dist/esm/shared/stdio.js, lodash-es/_baseUnset.js, utils/claudeInChrome/mcpServer.ts, dn, @growthbook/growthbook/dist/esm/core.mjs, utils/debug.ts, utils/computerUse/appNames.ts, services/oauth/client.ts, tools/AskUserQuestionTool/prompt.ts, utils/http.ts, utils/config.ts, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/status.tsx, utils/mtls.ts, utils/proxy.ts, utils/permissions/yoloClassifier.ts, utils/claudeInChrome/common.ts
 ((iTt = require("util")),
   ($sm = new Set(["bridge_status", "error_type", "tool_name"])),
   (Kcc = ["ask", "skip_all_permission_checks", "follow_a_plan"]));

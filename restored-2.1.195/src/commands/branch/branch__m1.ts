@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/branch/branch.ts)  jaccard=0.1286  score=0.2994  fileCov=0.184
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JZl] deps: At, BFe, cDe, jS, Jt
+// [unwrapped __esm module JZl] deps: utils/errors.ts, utils/sessionStoragePortable.ts, tools/ReadMcpResourceTool/prompt.ts, utils/path.ts, utils/fsOperations.ts
 ((N3o = require("fs")), (hme = require("fs/promises")), (vYe = require("path")));
 async function DKf(e, t) {
   let n = `${e}.jsonl`;

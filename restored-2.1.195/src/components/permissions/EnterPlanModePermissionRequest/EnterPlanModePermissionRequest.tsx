@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2019  score=0.2982  fileCov=0.3848
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pHc] deps: Vl, X0, Ye, VM
+// [unwrapped __esm module pHc] deps: keybindings/useShortcutDisplay.ts, components/ManagedSettingsSecurityDialog/utils.ts, hooks/useTerminalSize.ts, utils/claudeInChrome/common.ts
 ((uHc = R(lt(), 1)), (Ume = R(se(), 1)));
 function H_m(e) {
   switch (e) {

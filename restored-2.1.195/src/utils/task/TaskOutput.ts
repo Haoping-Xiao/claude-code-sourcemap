@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4088  score=0.6817  fileCov=0.5052
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jqe] deps: je, ys, BGt, sr, bH
+// [unwrapped __esm module jqe] deps: utils/debug.ts, utils/fsOperations.ts, BGt, services/teamMemorySync/secretScanner.ts, Task.ts
 HPa = require("fs/promises");
 Tb = class Tb {
   taskId;

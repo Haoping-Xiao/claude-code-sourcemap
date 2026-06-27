@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1633  score=0.3435  fileCov=0.2374
 // note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cal] deps: Ye
+// [unwrapped __esm module Cal] deps: hooks/useTerminalSize.ts
 Tal = R(lt(), 1), K6 = R(se(), 1);
 function LoadingState() {
   let e = Ial.c(1),

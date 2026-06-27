@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0187  score=0.2421  fileCov=0.0199
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0187); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module i0n] deps: Xr, je, kM, c_, WKr
+// [unwrapped __esm module i0n] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/teleport/api.ts, services/mcp/officialRegistry.ts, which/which.js
 vNi = ve(() => H.string().regex(/^mem_[A-Za-z0-9]+$/)), qKr = ve(() => H.looseObject({
   id: vNi(),
   path: H.string(),

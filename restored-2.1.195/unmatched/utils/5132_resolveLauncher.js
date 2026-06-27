@@ -5,7 +5,7 @@
 // note: nearest: src/cli/print.ts (0.0094); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveLauncher, call
-// [unwrapped __esm module RJt] deps: dn, kt, g$e, je, jZe, At, sF, Jt
+// [unwrapped __esm module RJt] deps: dn, utils/debug.ts, utils/markdownConfigLoader.ts, utils/debug.ts, utils/privacyLevel.ts, utils/errors.ts, services/api/claude.ts, utils/fsOperations.ts
 kJt = require("crypto");
 async function resolveLauncher() {
   let e = await Gf("claude");

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0034  score=0.1947  fileCov=0.0035
 // note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MNl] deps: Ye, uo, Ect, sr, bEt, xoe
+// [unwrapped __esm module MNl] deps: hooks/useTerminalSize.ts, context/notifications.tsx, tools/SkillTool/prompt.ts, services/teamMemorySync/secretScanner.ts, screens/REPL.tsx, components/AgentProgressLine.tsx
 DNl = R(lt(), 1), QF = R(se(), 1);
 function $$f(e) {
   let t = bnr.c(8),

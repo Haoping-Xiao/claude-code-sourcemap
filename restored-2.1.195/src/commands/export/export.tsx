@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sanitizeFilename, extractFirstPrompt, call
-// [unwrapped __esm module F4o] deps: qXt, Yj, xne, C5, jDe, LPe
+// [unwrapped __esm module F4o] deps: components/Messages.tsx, components/PromptInput/PromptInput.tsx, utils/debug.ts, utils/renderOptions.ts, tools/BashTool/sedValidation.ts, utils/localInstaller.ts
 ((aHt = R(rt(), 1)), (DJt = R(se(), 1)));
 function g6f(e) {
   let t = e.getFullYear(),

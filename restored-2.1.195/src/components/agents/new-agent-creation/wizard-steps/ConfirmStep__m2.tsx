@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx)  jaccard=0.0217  score=0.0366  fileCov=0.0506
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fXa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, H9n
+// [unwrapped __esm module fXa] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, @modelcontextprotocol/sdk/dist/esm/client/auth.js
 ((dXa = R(lt(), 1)), (T9n = R(rt(), 1)), (L6 = R(se(), 1)));
 function M7p(e) {
   let t = {

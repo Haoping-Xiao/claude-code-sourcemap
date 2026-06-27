@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1807  score=0.2166  fileCov=0.522
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Unc] deps: Un, jc
+// [unwrapped __esm module Unc] deps: services/analytics/growthbook.ts, utils/semver.ts
 ((PXf = {
   type: "local-jsx",
   name: "web-setup",

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1272  score=0.7654  fileCov=0.1324
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sandbox-runtime/dist/sandbox/sandbox-manager.js; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uQi] deps: IXi, $Xi, BXi, zXi, RFt, Oto, vJi, DJi, GJi, SWe, Xto, Blt, qJi
+// [unwrapped __esm module uQi] deps: @pondwader/socks5-server/dist/index.js, @smithy/core/dist-cjs/submodules/schema/index.js, @anthropic-ai/sandbox-runtime/dist/sandbox/generate-seccomp-filter.js, utils/worktree.ts, @anthropic-ai/sandbox-runtime/dist/utils/platform.js, Oto, @anthropic-ai/sandbox-runtime/dist/sandbox/macos-sandbox-utils.js, bridge/bridgeMain.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/sandbox-violation-store.js, @anthropic-ai/sandbox-runtime/dist/sandbox/generate-seccomp-filter.js, @azure/msal-common/dist/utils/UrlUtils.mjs, @anthropic-ai/sandbox-runtime/dist/sandbox/http-proxy.js, @anthropic-ai/sandbox-runtime/dist/sandbox/sandbox-manager.js
 Jto = R(require("fs")), XJi = require("crypto"), t$n = require("os"), r$n = new PFt(), o$n = new $to();
 cS = {
   initialize: VQd,

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/teammateMailbox.ts)  jaccard=0.1043  score=0.3546  fileCov=0.1287
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YI] deps: Xr, Nht, np, db, je, fn, At, vn, DE, Jt, hN, bk, Mp, OI
+// [unwrapped __esm module YI] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/teammateMailbox.ts, env-paths/index.js, utils/authFileDescriptor.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, utils/permissions/PermissionMode.ts, utils/fsOperations.ts, utils/swarm/backends/detection.ts, utils/tasks.ts, utils/concurrentSessions.ts, fast-xml-parser/lib/fxp.cjs
 ((P8n = require("path")),
   (_9t = {
     retries: {

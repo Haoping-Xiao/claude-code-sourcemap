@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0545  score=0.1061  fileCov=0.1007
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vrr] deps: Xr, At, Iv, Jt, YPn, her, ZC, D$o
+// [unwrapped __esm module vrr] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/errors.ts, hooks/useSettings.ts, utils/fsOperations.ts, utils/plugins/pluginInstallationHelpers.ts, her, utils/plugins/schemas.ts, utils/plugins/pluginLoader.ts
 ((Gq = require("fs/promises")),
   (_f = R(require("path"))),
   (bBf = new Set(["category", "source", "tags", "strict", "id", "relevance"])),

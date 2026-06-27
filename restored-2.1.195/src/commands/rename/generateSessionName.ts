@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2939  score=0.3839  fileCov=0.5562
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XKe] deps: Xr, ft, kt, ZE, og, je, wr, sF, Rd, co, qd, dr
+// [unwrapped __esm module XKe] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/debug.ts, utils/shell/prefix.ts, utils/teammateContext.ts, utils/debug.ts, main.tsx, services/api/claude.ts, utils/settings/constants.ts, utils/messages.ts, utils/log.ts, utils/settings/settings.ts
 Z2f = ve(() =>
   H.object({
     title: H.string(),

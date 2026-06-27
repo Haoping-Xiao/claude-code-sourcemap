@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0251  score=0.2903  fileCov=0.0268
 // note: nearest: node_modules/google-auth-library/build/src/auth/awsclient.js (0.0251); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I0t] deps: XH, KV, uxr
+// [unwrapped __esm module I0t] deps: axios/lib/utils.js, axios/lib/core/AxiosError.js, axios/lib/helpers/toFormData.js
 cbu = or.toFlatObject(or, {}, null, function (t) {
   return /^is[A-Z]/.test(t);
 });

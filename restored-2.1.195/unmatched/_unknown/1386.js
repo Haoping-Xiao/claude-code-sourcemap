@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mti] deps: dFr
+// [unwrapped __esm module Mti] deps: @smithy/util-base64/dist-cjs/fromBase64.js
 Dti = R(PE(), 1);

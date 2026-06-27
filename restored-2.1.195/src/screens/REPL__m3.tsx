@@ -5,7 +5,7 @@
 // note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: userAbortReason, unwrapAbortReason, serverFallbackTombstoneAbortReason, isUserInitiatedAbortReason, isUserAttributableAbortKind, isServerFallbackDiscard, createRecoveryAbortController, createChildAbortController, createAbortController, classifyAbortReasonForTelemetry, attachDetachableAbortRelay, SERVER_FALLBACK_TOMBSTONE_REASON, RECOVERY_ABORT_TIMEOUT_MS
-// [unwrapped __esm module rio] deps: ft, oo, BE, wr, Wct, Ao, Un, kt, ZE, ZU, Xso
+// [unwrapped __esm module rio] deps: services/analytics/index.ts, utils/http.ts, has-flag/index.js, main.tsx, services/compact/autoCompact.ts, utils/agentContext.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/shell/prefix.ts, utils/analyzeContext.ts, Xso
 fia = {};
 rap = new Set(["claude-sonnet-4-6", "claude-opus-4-6"]);
 function cap(e) {

@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module D4o] deps: cEe, Yp, eJl, sJl
+// [unwrapped __esm module D4o] deps: constants/spinnerVerbs.ts, utils/gracefulShutdown.ts, components/WorktreeExitDialog.tsx, components/ExitFlow.tsx
 ((iJl = R(lt(), 1)),
   (L4o = R(se(), 1)),
   (J8f = ["Goodbye!", "See ya!", "Bye!", "Catch you later!"]));

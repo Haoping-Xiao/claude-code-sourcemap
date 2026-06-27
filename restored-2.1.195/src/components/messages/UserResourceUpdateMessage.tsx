@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2187  score=0.5131  fileCov=0.2759
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Zil] deps: ft, Ye, Un, uo, wr, vn, sr, Yil
+// [unwrapped __esm module Zil] deps: services/analytics/index.ts, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, context/notifications.tsx, main.tsx, utils/sequential.ts, services/teamMemorySync/secretScanner.ts, components/messages/UserPromptMessage.tsx
 ((Jil = R(lt(), 1)), (iIo = R(se(), 1)));
 function parseUpdates(text) {
   let t = [],

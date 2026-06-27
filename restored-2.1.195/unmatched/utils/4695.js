@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0349  score=0.1615  fileCov=0.0426
 // note: nearest: src/utils/git.ts (0.0349); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WL] deps: Qi, ag, Pw, fn, At, Is
+// [unwrapped __esm module WL] deps: lodash-es/memoize.js, utils/claudeInChrome/common.ts, utils/fileRead.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/platform.ts
 HEt = require("crypto"), Ufe = require("fs"), yA = require("fs/promises"), _Nl = require("net"), Jg = require("path");
 A$f = Cn(() => HEt.createHash("sha256").update(Jg.resolve(tr())).digest("hex").slice(0, 8), () => Jg.resolve(tr())), Ffe = Cn(() => {
   let e = process.getuid?.() ?? 0,

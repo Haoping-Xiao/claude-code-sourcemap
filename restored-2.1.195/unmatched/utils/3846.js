@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0516  score=0.2812  fileCov=0.0595
 // note: nearest: src/utils/plugins/zipCacheAdapters.ts (0.0516); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FEe] deps: dn, Un, kt, Du, w4t, Rx, er, je, wr, fn, At, Bi, ys, Yp, vn, uAo, Is, qd, dr, EVn, Jt
+// [unwrapped __esm module FEe] deps: dn, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, w4t, utils/env.ts, utils/config.ts, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, utils/gracefulShutdown.ts, utils/sequential.ts, uAo, utils/platform.ts, utils/log.ts, utils/settings/settings.ts, utils/autoUpdater.ts, utils/fsOperations.ts
 Tza = require("fs"), Hk = require("fs/promises"), H9e = require("os"), x6 = require("path"), T9e = R(Uj(), 1);
 vza = class vza extends NIt {};
 function Mza() {

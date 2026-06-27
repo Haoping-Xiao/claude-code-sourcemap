@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CAt] deps: xht, je
+// [unwrapped __esm module CAt] deps: utils/collapseReadSearch.ts, utils/debug.ts
 Uor = {
   markTypeInvoked() {},
   registerName() {},

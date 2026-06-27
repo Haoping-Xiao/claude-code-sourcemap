@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3349  score=1  fileCov=0.3349
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SAc] deps: Ye, uo, hYt, i6e, Ko, lEe
+// [unwrapped __esm module SAc] deps: hooks/useTerminalSize.ts, context/notifications.tsx, utils/mcpInstructionsDelta.ts, components/DiagnosticsDisplay.tsx, components/ConfigurableShortcutHint.tsx, components/shell/ShellTimeDisplay.tsx
 ((_Ac = R(lt(), 1)), (Bme = R(se(), 1)));
 function EAc(e, t) {
   let n = otn.useRef(false),

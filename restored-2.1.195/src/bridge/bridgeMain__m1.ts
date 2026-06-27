@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/bridgeMain.ts)  jaccard=0.04  score=0.6832  fileCov=0.0407
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yir] deps: dn, kt, jir, je, Mm, fn, At, es, vn, BJ, qd, Vke, sr, kv, Ost, aR, itc, wQ, SC, loe, ctc, Cde, sVe, Tnt, nGo, rGo, gtc, SJ, qir
+// [unwrapped __esm module Yir] deps: dn, utils/debug.ts, bridge/bridgeApi.ts, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/profilerBase.ts, utils/sequential.ts, services/mcp/config.ts, utils/log.ts, tools/SkillTool/prompt.ts, services/teamMemorySync/secretScanner.ts, proxy-from-env/index.js, utils/words.ts, constants/prompts.ts, bridge/bridgeUI.ts, tools/BriefTool/upload.ts, utils/config.ts, utils/swarm/constants.ts, bridge/capacityWake.ts, bridge/debugUtils.ts, bridge/trustedDevice.ts, utils/billing.ts, bridge/pollConfig.ts, bridge/sessionRunner.ts, bridge/workSecret.ts, components/Feedback.tsx, bridge/bridgePointer.ts
 ((oQt = require("crypto")),
   (fGo = require("os")),
   (G1e = require("path")),

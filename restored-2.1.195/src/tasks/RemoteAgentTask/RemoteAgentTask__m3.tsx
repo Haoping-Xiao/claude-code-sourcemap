@@ -4,7 +4,7 @@
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0373  score=0.1418  fileCov=0.0482
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sYo] deps: Vb, ft, np, yC, je, vn, b0c, y4t, bm, OI, dn, wUn
+// [unwrapped __esm module sYo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, env-paths/index.js, utils/ShellCommand.ts, utils/debug.ts, utils/sequential.ts, cli/print.ts, screens/REPL.tsx, utils/messageQueueManager.ts, fast-xml-parser/lib/fxp.cjs, dn, @modelcontextprotocol/sdk/dist/esm/types.js
 oYo = new WeakMap();
 function svt(e, t) {
   try {

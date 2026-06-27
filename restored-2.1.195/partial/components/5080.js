@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0783  score=0.277  fileCov=0.0984
 // note: low-confidence suggestion: src/tasks/LocalAgentTask/LocalAgentTask.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module m7l] deps: Uh, wb, xYl, $Yl, BYl, WYl, zYl, XYl, ZYl, n7l, s7l, l7l, d7l
+// [unwrapped __esm module m7l] deps: services/analytics/metadata.ts, @ant/computer-use-mcp/src/toolCalls.ts, components/agents/validateAgent.ts, components/agents/new-agent-creation/wizard-steps/DescriptionStep.tsx, components/agents/generateAgent.ts, components/agents/new-agent-creation/wizard-steps/LocationStep.tsx, components/agents/new-agent-creation/wizard-steps/MemoryStep.tsx, components/agents/new-agent-creation/wizard-steps/MethodStep.tsx, components/agents/new-agent-creation/wizard-steps/ModelStep.tsx, components/agents/new-agent-creation/wizard-steps/PromptStep.tsx, components/agents/new-agent-creation/wizard-steps/ToolsStep.tsx, components/agents/new-agent-creation/wizard-steps/TypeStep.tsx, components/agents/new-agent-creation/CreateAgentWizard.tsx
 p7l = R(lt(), 1), wJt = R(se(), 1);
 function enqueueAgentNotification(e) {
   return e.type === "local_agent" && e.agentType !== "main-session" && e.status !== "completed" && e.status !== "failed" && e.status !== "killed";

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2664  score=0.6271  fileCov=0.3166
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module p4n] deps: Ye, kt, W2e, oo, er, d5e, SEe
+// [unwrapped __esm module p4n] deps: hooks/useTerminalSize.ts, utils/debug.ts, services/oauth/client.ts, utils/http.ts, utils/config.ts, services/api/usage.ts, hooks/notifs/useCanSwitchToExistingSubscription.tsx
 ((H1a = R(lt(), 1)), (DWt = R(se(), 1)));
 async function markGroveNoticeViewed() {
   try {

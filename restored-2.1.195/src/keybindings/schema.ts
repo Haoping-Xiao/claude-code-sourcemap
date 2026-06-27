@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.572  score=0.5917  fileCov=0.9451
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QLn] deps: Xr
+// [unwrapped __esm module QLn] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((Cat = [
   "Global",
   "Chat",

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.212  score=0.7141  fileCov=0.2316
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rle] deps: Qi, ft, oo, wFe, je, fn, Mh, Myn, Myn
+// [unwrapped __esm module rle] deps: lodash-es/memoize.js, services/analytics/index.ts, utils/http.ts, constants/xml.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/proxy.ts, @smithy/smithy-client/dist-cjs/index.js, @smithy/smithy-client/dist-cjs/index.js
 j2e = Cn(async function () {
   let [e, { ListInferenceProfilesCommand: t }] = await Promise.all([
       g7s(),

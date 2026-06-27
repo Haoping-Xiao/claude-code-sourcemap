@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.724  score=0.9298  fileCov=0.7659
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module PVt] deps: db, fd, je, fn, At, Fh, Jt
+// [unwrapped __esm module PVt] deps: utils/authFileDescriptor.ts, utils/debugFilter.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, components/Settings/Config.tsx, utils/fsOperations.ts
 TL_ = PHo * 60000;
 class Ape {
   activeOperations = new Set();

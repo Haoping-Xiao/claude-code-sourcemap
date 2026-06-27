@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.621  score=0.7426  fileCov=0.7913
 // note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wFe] deps: Qi, wr
+// [unwrapped __esm module wFe] deps: lodash-es/memoize.js, main.tsx
 VSs = new Map();
 IDu = Cn(async () => {
   let e = Lkr(),

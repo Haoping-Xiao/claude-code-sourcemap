@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2834  score=0.4074  fileCov=0.4821
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uwo] deps: Xr, ft, ii, Il, $I, __, G1, R8e, Qnl, nrl
+// [unwrapped __esm module uwo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/mockRateLimits.ts, Il, utils/permissions/shellRuleMatching.ts, utils/markdownConfigLoader.ts, tools/AskUserQuestionTool/prompt.ts, tools/ExitPlanModeTool/ExitPlanModeV2Tool.ts, ink/components/Box.tsx, nrl
 ((Ptf = ve(() => H.strictObject({}))),
   (Mtf = ve(() =>
     H.object({

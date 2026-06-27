@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3646  score=0.5699  fileCov=0.503
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YWe] deps: Qi
+// [unwrapped __esm module YWe] deps: lodash-es/memoize.js
 sSe = Cn(Koo);
 function getWebSearchPrompt(e) {
   let t = Soa();

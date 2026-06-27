@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1097  score=1  fileCov=0.1097
 // note: low-confidence suggestion: src/services/voiceKeyterms.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gTc] deps: id, BI, Kv, Ld, aE, jur
+// [unwrapped __esm module gTc] deps: dom-mutator/dist/dom-mutator.cjs.production.min.js, services/mcp/client.ts, services/mcp/utils.ts, utils/concurrentSessions.ts, utils/ide.ts, hooks/useIdeAtMentioned.ts
 Rpr = R(rt(), 1);
 function yTc(e) {
   return e.replace(/([a-z])([A-Z])/g, "$1 $2").split(/[-_./\s]+/).map(t => t.trim()).filter(t => t.length > 2 && t.length <= 20);

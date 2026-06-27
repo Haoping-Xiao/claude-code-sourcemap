@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2774  score=0.9612  fileCov=0.2806
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ghc] deps: kt, Ye, uo, FEe, er, je, fn, Bi, IVn, LOe
+// [unwrapped __esm module ghc] deps: utils/debug.ts, hooks/useTerminalSize.ts, context/notifications.tsx, utils/plugins/zipCacheAdapters.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, constants/files.ts, utils/nativeInstaller/packageManagers.ts, @xmldom/xmldom/lib/entities.js
 ((dhc = R(lt(), 1)),
   (phc = require("os")),
   (fhc = require("path")),

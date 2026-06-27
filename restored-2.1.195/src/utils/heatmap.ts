@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0699  score=0.5472  fileCov=0.0742
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vOl] deps: iu, Q1o
+// [unwrapped __esm module vOl] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js
 FOe = wt.hex("#da7756");
 function IOl(e) {
   let t = [],

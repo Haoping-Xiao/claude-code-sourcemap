@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0344  score=0.6228  fileCov=0.0351
 // note: nearest: src/utils/sessionStorage.ts (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NZl] deps: je, At, Jt
+// [unwrapped __esm module NZl] deps: utils/debug.ts, utils/errors.ts, utils/fsOperations.ts
 vKf = [200, 800];
 async function wKf(e, t) {
   try {

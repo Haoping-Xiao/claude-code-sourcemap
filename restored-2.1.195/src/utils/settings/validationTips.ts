@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2947  score=0.3451  fileCov=0.6684
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bws] deps: sr
+// [unwrapped __esm module Bws] deps: services/teamMemorySync/secretScanner.ts
 ((f1u = [
   {
     matches: (e) => e.path === "permissions.defaultMode" && e.code === "invalid_value",

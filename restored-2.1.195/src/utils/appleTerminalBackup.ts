@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.447  score=0.7142  fileCov=0.5444
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module HUt] deps: Qi, dn, er, Lo, oc, ys
+// [unwrapped __esm module HUt] deps: lodash-es/memoize.js, dn, utils/config.ts, utils/fsOperations.ts, utils/nativeInstaller/download.ts, utils/fsOperations.ts
 E8i = require("path");
 H8i = Cn(() => {
   let e = Lg();

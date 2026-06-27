@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5402  score=0.7144  fileCov=0.689
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RBo] deps: si, Ye, Yfe, uo, CH
+// [unwrapped __esm module RBo] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, commands/mcp/mcp.tsx, context/notifications.tsx, @smithy/types/dist-cjs/index.js
 ((r2l = R(lt(), 1)), (oXt = R(rt(), 1)), (Sse = R(se(), 1)));
 function CapabilitiesSection(t0) {
   let t = o2l.c(9),

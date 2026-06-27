@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/messageQueueManager.ts)  jaccard=0.1832  score=0.473  fileCov=0.2302
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bm] deps: ft, ft, je, sF, co, kut, _a, ih
+// [unwrapped __esm module bm] deps: services/analytics/index.ts, services/analytics/index.ts, utils/debug.ts, services/api/claude.ts, utils/messages.ts, utils/messageQueueManager.ts, utils/plans.ts, bootstrap/state.ts
 ((LNn = {
   now: 0,
   next: 1,

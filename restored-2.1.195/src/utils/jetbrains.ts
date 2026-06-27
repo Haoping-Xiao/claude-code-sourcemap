@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.427  score=0.8312  fileCov=0.4675
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZIa] deps: ys
+// [unwrapped __esm module ZIa] deps: utils/fsOperations.ts
 ((x3t = require("os")),
   (eN = require("path")),
   (JIa = {

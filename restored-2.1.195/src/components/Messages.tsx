@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.257  score=0.5176  fileCov=0.3379
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yVl] deps: Mql, Ye, m0e, v2o, je, At, vn, co, UFo
+// [unwrapped __esm module yVl] deps: react/cjs/react.production.js, hooks/useTerminalSize.ts, components/shell/ExpandShellOutputContext.tsx, components/VirtualMessageList.tsx, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/messages.ts, utils/logoV2Utils.ts
 ((Am = R(rt(), 1)), (Ise = R(se(), 1)), (dVl = new WeakMap()));
 pVl = new WeakMap();
 function filterForBriefTool(messages, briefToolNames, n) {

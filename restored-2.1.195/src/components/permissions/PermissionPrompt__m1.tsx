@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/permissions/PermissionPrompt.tsx)  jaccard=0.1175  score=0.2377  fileCov=0.1886
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dtn] deps: Ye, ps, kt, uo, Vl, Bs, Ko
+// [unwrapped __esm module dtn] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, context/notifications.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx
 ((HHc = R(lt(), 1)),
   (LNe = R(rt(), 1)),
   (Fme = R(se(), 1)),

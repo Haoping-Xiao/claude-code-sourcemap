@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Stats.tsx)  jaccard=0.1767  score=0.6104  fileCov=0.1991
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JOl] deps: iu, si, fH, _i, p8, Tc, Ye, ps, PVt, es, vOl, Ao, NOl, Fh, jOl, nne, Mke, lJ, Ko, kP, EC
+// [unwrapped __esm module JOl] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, react/cjs/react.production.js, components/design-system/Ratchet.tsx, ink/terminal.ts, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/activityManager.ts, utils/profilerBase.ts, utils/heatmap.ts, utils/agentContext.ts, utils/stats.ts, components/Settings/Config.tsx, components/Stats.tsx, utils/signal.ts, utils/theme.ts, components/StructuredDiff/Fallback.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Tabs.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 ((mEt = R(lt(), 1)), (qOl = R(_Ol(), 1)), (JF = R(rt(), 1)), (_s = R(se(), 1)));
 ((GOl = {
   "7d": "Last 7 days",

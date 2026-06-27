@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5704  score=0.8863  fileCov=0.6155
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hFl] deps: pz, R6, gm, Ye
+// [unwrapped __esm module hFl] deps: utils/plugins/loadPluginCommands.ts, components/AwsAuthStatusBox.tsx, undici/lib/mock/mock-agent.js, hooks/useTerminalSize.ts
 ((mFl = R(lt(), 1)), (im = R(se(), 1)));
 async function createWorkflowFile(
   repoName,

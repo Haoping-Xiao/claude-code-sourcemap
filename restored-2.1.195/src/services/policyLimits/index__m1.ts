@@ -5,7 +5,7 @@
 // note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setSessionCache, policyDenyKind, policyDeniedReason, loadCachedResponse, isPolicyLimitsEligible, isPolicyEnforced, isPolicyAllowed, getSessionCache, getResponseFromCache, getPolicyLimitsIneligibleReason, getPolicyDefault, getCachePath
-// [unwrapped __esm module oKr] deps: Xr
+// [unwrapped __esm module oKr] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((Lkn = ve(() =>
   H.object({
     restrictions: H.record(

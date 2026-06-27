@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0152  score=0.4939  fileCov=0.0155
 // note: nearest: node_modules/protobufjs/src/type.js (0.0152); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rOo] deps: Jt
+// [unwrapped __esm module rOo] deps: utils/fsOperations.ts
 nOo = class nOo {
   chunks = [];
   static encoder = new TextEncoder();

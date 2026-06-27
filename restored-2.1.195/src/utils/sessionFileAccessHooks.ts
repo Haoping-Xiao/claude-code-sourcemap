@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerSessionFileAccessHooks, isMemoryFileAccess
-// [unwrapped __esm module YJn] deps: Ece, Uh, vGt, MM, fd, er, je, At, sa, dn, kt, i0n, iit, PDo, Twl, qwl
+// [unwrapped __esm module YJn] deps: services/analytics/firstPartyEventLoggingExporter.ts, services/analytics/metadata.ts, services/teamMemorySync/teamMemSecretGuard.ts, memdir/teamMemPrompts.ts, utils/debugFilter.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/git.ts, dn, utils/debug.ts, zod/v4/classic/schemas.js, utils/plugins/schemas.ts, PDo, cli/print.ts, services/teamMemorySync/watcher.ts
 ((VJn = require("fs/promises")), (tSt = require("path")), (NAf = typeof Bun !== "undefined"));
 ((kb = {
   team: WJn(),

@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: InvalidSettingsDialog
-// [unwrapped __esm module _7o] deps: kt, Yp, ft, y8o, S4, cur, ZS, S6, Qtn, dn, Un, vft, w9o, C5, uTt, yzn, Rnt, dC, Ld, er, je, yMc, wr, fn, At, Vtn, vn, OMe, u7o, Ls, Xh, Gre, Dgt, dr, Ote
+// [unwrapped __esm module _7o] deps: utils/debug.ts, utils/gracefulShutdown.ts, services/analytics/index.ts, interactiveHelpers.tsx, context.ts, entrypoints/init.ts, ink/terminal.ts, utils/mailbox.ts, main.tsx, dn, services/analytics/growthbook.ts, services/api/grove.ts, utils/plugins/pluginBlocklist.ts, utils/renderOptions.ts, commands/install.tsx, utils/apiPreconnect.ts, @smithy/smithy-client/dist-cjs/index.js, utils/claudemd.ts, utils/concurrentSessions.ts, utils/config.ts, utils/debug.ts, utils/githubRepoPathMapping.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, @anthropic-ai/bedrock-sdk/client.mjs, utils/sequential.ts, utils/permissions/bypassPermissionsKillswitch.ts, utils/preflightChecks.tsx, utils/status.tsx, utils/plugins/loadPluginAgents.ts, services/remoteManagedSettings/securityCheck.tsx, utils/status.tsx, utils/settings/settings.ts, utils/user.ts
 ((fmr = require("fs")), (hw = R(se(), 1)));
 function InvalidSettingsDialog(t0) {
   let t = X$c.c(21),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0133  score=0.203  fileCov=0.014
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0133); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xWe] deps: oro, nno, _ue, t2t
+// [unwrapped __esm module xWe] deps: oro, eventsource-parser/dist/index.js, protobufjs/src/common.js, yaml/dist/parse/parser.js
 mtp = Symbol.for("@bufbuild/cel/func");
 sro = class sro {
   _name;

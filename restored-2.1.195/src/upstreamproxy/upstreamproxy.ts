@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: showInvalidConfigDialog
-// [unwrapped __esm module Afc] deps: dn, fd, je, wr, fn, At, Bi, Mx, iWe, kM, C7n, ofc, pfc
+// [unwrapped __esm module Afc] deps: dn, utils/debugFilter.ts, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/detectRepository.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/http-proxy.js, utils/teleport/api.ts, utils/swarm/spawnUtils.ts, tools/PowerShellTool/powershellSecurity.ts, cli/print.ts
 ((ffc = require("child_process")),
   (sO = require("fs/promises")),
   (e8o = require("os")),

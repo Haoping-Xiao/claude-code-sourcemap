@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6795  score=0.9081  fileCov=0.7297
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xYl] deps: Ye, ps, Cc, Bs, Ko, wb, vH, i4o
+// [unwrapped __esm module xYl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, components/agents/ModelSelector.tsx
 ((CYl = R(lt(), 1)), (nTe = R(se(), 1)));
 function validateAgentType(agentType) {
   if (!agentType) return "Agent type is required";

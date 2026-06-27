@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0265  score=0.3345  fileCov=0.0279
 // note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0265); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Z4e] deps: oke, H1t, vy, fn, At, vn, Is, Mh, R9, dr, Jt, dn, I8r, R8r
+// [unwrapped __esm module Z4e] deps: utils/browser.ts, @modelcontextprotocol/sdk/dist/esm/shared/auth.js, @mixmark-io/domino/lib/htmlelts.js, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, utils/platform.ts, utils/proxy.ts, utils/errors.ts, utils/settings/settings.ts, utils/fsOperations.ts, dn, services/mcp/oauthPort.ts, services/mcp/xaaIdpLogin.ts
 Dwi = require("crypto"), Pwi = require("http"), Mwi = require("url");
 async function hIn() {
   return (await wl().readAsync())?.mcpOAuth;

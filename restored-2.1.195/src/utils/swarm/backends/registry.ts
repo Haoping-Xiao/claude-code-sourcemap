@@ -5,7 +5,7 @@
 // note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resetBackendDetection, registerTmuxBackend, registerITermBackend, markInProcessFallback, isInProcessEnabled, globalBackendRegistry, getTeammateExecutor, getResolvedTeammateMode, getInProcessBackend, getCachedDetectionResult, getCachedBackend, getBackendByType, ensureBackendsRegistered, detectAndGetBackend, createBackendRegistry
-// [unwrapped __esm module Ahl] deps: dn, je, Bi, qJ, cAe, d9t
+// [unwrapped __esm module Ahl] deps: dn, utils/debug.ts, constants/files.ts, utils/plugins/installCounts.ts, utils/swarm/teammateLayoutManager.ts, utils/swarm/teamHelpers.ts
 ((zAe = []), (Shl = Promise.resolve()));
 registerITermBackend(w0o);
 function createBackendRegistry() {

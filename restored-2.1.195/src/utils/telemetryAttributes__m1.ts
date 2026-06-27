@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/telemetryAttributes.ts)  jaccard=0.0538  score=0.2055  fileCov=0.0679
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I8] deps: er, ih
+// [unwrapped __esm module I8] deps: utils/config.ts, bootstrap/state.ts
 ((RKd = Mi()), (X0e = new Map()));
 function DKd(e) {
   let t = e.indexOf("."),

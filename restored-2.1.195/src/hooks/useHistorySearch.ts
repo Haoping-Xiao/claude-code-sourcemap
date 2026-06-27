@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3256  score=0.8064  fileCov=0.3532
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qhc] deps: Ed, Cc, adr, zj, Ye
+// [unwrapped __esm module qhc] deps: context/notifications.tsx, context/modalContext.tsx, hooks/useArrowKeyHistory.tsx, utils/Cursor.ts, hooks/useTerminalSize.ts
 ((wS = R(rt(), 1)), (a6o = R(se(), 1)));
 function useHistorySearch(
   onAcceptHistory,

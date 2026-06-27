@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.236  score=0.2982  fileCov=0.531
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eDc] deps: ft, Ed, uo, er, je, XLc, vfe, dr, DYo
+// [unwrapped __esm module eDc] deps: services/analytics/index.ts, context/notifications.tsx, context/notifications.tsx, utils/config.ts, utils/debug.ts, hooks/usePluginRecommendationBase.tsx, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, utils/settings/settings.ts, hooks/useLspPluginRecommendation.tsx
 ((QLc = R(lt(), 1)), (Dfr = require("path")), (Pfr = R(rt(), 1)));
 function LspRecommendationMenu(e) {
   let t = tDc.c(36),

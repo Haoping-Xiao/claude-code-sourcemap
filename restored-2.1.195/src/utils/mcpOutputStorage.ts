@@ -5,7 +5,7 @@
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: persistBinaryContent, isSubagentTruncationPromptEnabled, isBinaryContentType, getLargeOutputInstructions, getFormatDescription, getBinaryBlobSavedMessage, extensionForMimeType
-// [unwrapped __esm module K0] deps: ft, Un, kt, Du, db, je, At, es, jS, Jt
+// [unwrapped __esm module K0] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, utils/authFileDescriptor.ts, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, utils/path.ts, utils/fsOperations.ts
 QUn = require("path");
 function isSubagentTruncationPromptEnabled() {
   let e = process.env.MCP_TRUNCATION_PROMPT_OVERRIDE;

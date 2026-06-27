@@ -4,7 +4,7 @@
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0073  score=0.2039  fileCov=0.0076
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wRc] deps: kt, Ye, ps, wr, Ko, dYo, yYo, SRc, TRc, pfr
+// [unwrapped __esm module wRc] deps: utils/debug.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, main.tsx, components/ConfigurableShortcutHint.tsx, components/FeedbackSurvey/submitTranscriptShare.ts, components/tasks/RemoteSessionDetailDialog.tsx, components/FeedbackSurvey/TranscriptSharePrompt.tsx, components/FeedbackSurvey/FeedbackSurvey.tsx, components/FeedbackSurvey/FeedbackSurveyView.tsx
 ((_Yo = R(lt(), 1)), (vRc = R(rt(), 1)), ($C = R(se(), 1)));
 _wm = {
   bad: "Bad",

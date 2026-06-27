@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0032  score=0.0725  fileCov=0.0033
 // note: nearest: node_modules/@opentelemetry/otlp-transformer/build/src/generated/root.js (0.0032); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hvc] deps: sst, Ox, AA
+// [unwrapped __esm module hvc] deps: sst, Ox, skills/bundledSkills.ts
 fSm = [{
   value: "sync",
   description: "Push your local design system to claude.ai/design"

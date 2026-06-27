@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: CronListTool
-// [unwrapped __esm module uSl] deps: Xr, ii, N8, Sj, WW, _Xn
+// [unwrapped __esm module uSl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/cronJitterConfig.ts, utils/teammate.ts, utils/cronScheduler.ts, tools.ts
 ((ghf = ve(() =>
   H.strictObject({
     id: H.string().describe("Job ID returned by CronCreate."),

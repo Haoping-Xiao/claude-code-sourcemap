@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2502  score=0.3919  fileCov=0.4091
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vKl] deps: Ye, WAt, vi, Ko, gKe
+// [unwrapped __esm module vKl] deps: hooks/useTerminalSize.ts, utils/hooks/hooksConfigManager.ts, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, components/Settings/Status.tsx
 ((HKl = R(lt(), 1)), (Th = R(se(), 1)));
 function HooksConfigMenu(t0) {
   let t = wKl.c(102),

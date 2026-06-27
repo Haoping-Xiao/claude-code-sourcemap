@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2922  score=0.9365  fileCov=0.2981
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Kel] deps: _i, Ye, Dpe, sr, E8e, AMe, Kut
+// [unwrapped __esm module Kel] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/fileReadCache.ts, services/teamMemorySync/secretScanner.ts, components/FileEditToolDiff.tsx, components/permissions/FileWritePermissionRequest/FileWriteToolDiff.tsx, components/StructuredDiff.tsx
 ((Vel = R(lt(), 1)), (Zht = R(se(), 1)));
 function Z8n(e) {
   let t = e.split(`

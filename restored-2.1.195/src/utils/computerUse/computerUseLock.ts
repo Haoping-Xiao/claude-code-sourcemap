@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2726  score=0.5631  fileCov=0.3457
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qpo] deps: spt, Xr
+// [unwrapped __esm module Qpo] deps: spt, @modelcontextprotocol/sdk/dist/esm/types.js
 GFn = Dy({
   kind: "computer_use_approval",
   payload: ve(() => H.custom((e) => typeof e === "object" && e !== null)),

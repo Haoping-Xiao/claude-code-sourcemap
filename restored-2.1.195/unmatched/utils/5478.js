@@ -4,7 +4,7 @@
 // class=new  jaccard=0.037  score=0.347  fileCov=0.0398
 // note: nearest: src/components/PromptInput/PromptInputQueuedCommands.tsx (0.037); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I_c] deps: ag, id, Ld, je, At
+// [unwrapped __esm module I_c] deps: utils/claudeInChrome/common.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/concurrentSessions.ts, utils/debug.ts, utils/errors.ts
 w_c = require("fs"), Cdr = R(rt(), 1);
 function k_c(e) {
   let t = Ht(r => r.footerLinks),

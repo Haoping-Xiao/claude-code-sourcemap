@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: readArtifactContent, getFrameShareStatus
-// [unwrapped __esm module l$e] deps: Cde, Rc, dn, Un, Rx, c_, je, Lx, RE, Jt
+// [unwrapped __esm module l$e] deps: bridge/debugUtils.ts, constants/oauth.ts, dn, services/analytics/growthbook.ts, utils/env.ts, services/mcp/officialRegistry.ts, utils/debug.ts, main.tsx, RE, utils/fsOperations.ts
 Fuf = new Set(["remote", "remote_cowork"]);
 Guf = /^(?:session_|cse_)[A-Za-z0-9_-]{1,184}$/;
 O_t = new Set();

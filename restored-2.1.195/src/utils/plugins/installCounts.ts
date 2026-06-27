@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.07  score=0.1102  fileCov=0.1613
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module E2l] deps: kt, Cc, Bs, f_, Ko, EC, Mg, Ye, je, At, vq, vbe, lE, e1e, OBo, Xh
+// [unwrapped __esm module E2l] deps: utils/debug.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @anthropic-ai/bedrock-sdk/client.mjs, components/ScrollKeybindingHandler.tsx, hooks/useTerminalSize.ts, utils/debug.ts, utils/errors.ts, utils/plugins/marketplaceHelpers.ts, utils/plugins/officialMarketplace.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/parseMarketplaceInput.ts, commands/plugin/AddMarketplace.tsx, utils/plugins/loadPluginAgents.ts
 ((b2l = R(lt(), 1)), (BKe = R(rt(), 1)), (PH = R(se(), 1)));
 function v2l() {
   return FBo.join(kI(), fNf);

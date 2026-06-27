@@ -4,7 +4,7 @@
 // class=new  jaccard=0.022  score=0.514  fileCov=0.0225
 // note: nearest: node_modules/react/cjs/react.production.js (0.022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hNo] deps: cne, jh, dn, er, m0
+// [unwrapped __esm module hNo] deps: components/design-system/ThemeProvider.tsx, utils/env.ts, dn, utils/config.ts, ink/line-width-cache.ts
 hEt = R(rt(), 1);
 function D1l(e) {
   let t = R1l.c(3),

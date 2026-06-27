@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2035  score=0.2522  fileCov=0.513
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qPn] deps: Qi, ft, oo, er, Lx, wr, Q9, fn, peo
+// [unwrapped __esm module qPn] deps: lodash-es/memoize.js, services/analytics/index.ts, utils/http.ts, utils/config.ts, main.tsx, main.tsx, tools/FileReadTool/FileReadTool.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/telemetryAttributes.ts
 $Kd = {
   OTEL_METRICS_INCLUDE_SESSION_ID: true,
   OTEL_METRICS_INCLUDE_VERSION: false,

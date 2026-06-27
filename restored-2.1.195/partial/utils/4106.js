@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1686  score=0.3025  fileCov=0.2759
 // note: low-confidence suggestion: src/commands/extra-usage/index.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qyt] deps: ft, ole, oo, wr
+// [unwrapped __esm module qyt] deps: services/analytics/index.ts, services/oauth/getOauthProfile.ts, utils/http.ts, main.tsx
 Loe = {
   type: "local-jsx",
   name: "usage-credits",

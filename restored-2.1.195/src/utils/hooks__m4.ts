@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0159  score=0.3029  fileCov=0.0165
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Pic] deps: ft, KKt, ag, je, sp, _a, Mp
+// [unwrapped __esm module Pic] deps: services/analytics/index.ts, tools/SendMessageTool/SendMessageTool.ts, utils/claudeInChrome/common.ts, utils/debug.ts, utils/worktree.ts, utils/plans.ts, utils/concurrentSessions.ts
 Dic = require("crypto");
 async function executeWorktreeCreateHook(name) {
   let t = {

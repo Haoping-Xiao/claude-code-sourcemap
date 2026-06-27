@@ -4,7 +4,7 @@
 // class=modified (alt of src/ink/ink.tsx)  jaccard=0.0493  score=0.6888  fileCov=0.0504
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kLn] deps: KYr, uFi, det, ft, pRn, kt, je, wr, fn, At, vn, Is, Vke, sr, Rit, p8, f7r, sJr, Wit, iJr, _Ln, YGi, X_e, XGi, ZGi, HI, nWi, iWi, K_e, qBt, Kit, KBt, $Wi, BWi, UWi, IJr, bW, jWi, NBt, Tc, xJr, ZS, X0n, one, OM, q7, jh, EW, Xge
+// [unwrapped __esm module kLn] deps: KYr, uFi, signal-exit/dist/mjs/index.js, services/analytics/index.ts, native-ts/yoga-layout/index.ts, utils/debug.ts, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, utils/platform.ts, tools/SkillTool/prompt.ts, services/teamMemorySync/secretScanner.ts, ink/colorize.ts, ink/terminal.ts, utils/earlyInput.ts, ink/components/App.tsx, Wit, ink/events/keyboard-event.ts, ink/events/focus-event.ts, ink/ink.tsx, ink/styles.ts, XGi, ink/dom.ts, HI, ink/log-update.ts, bidi-js/dist/bidi.js, ink/squash-text-nodes.ts, indent-string/index.js, ink/reconciler.ts, ink/dom.ts, ink/render-to-screen.ts, ink/renderer.ts, ink/ink.tsx, ink/searchHighlight.ts, ink/selection.ts, jWi, NBt, marked/lib/marked.esm.js, ink/useTerminalNotification.ts, ink/terminal.ts, semver/internal/lrucache.js, ink/termio/csi.ts, ink/clearTerminal.ts, ink/terminal.ts, utils/env.ts, ink/ink.tsx, utils/truncate.ts
 ((h8 = require("fs")),
   (qWi = R(nRn(), 1)),
   (JBt = require("util")),

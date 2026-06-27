@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4026  score=0.6649  fileCov=0.5051
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U_t] deps: FAe, ih
+// [unwrapped __esm module U_t] deps: entrypoints/sdk/coreSchemas.ts, bootstrap/state.ts
 ((xdf = ["sandbox", "permission", "worker-sandbox", "elicitation", "dialog"]),
   (EQ = (() => {
     let e = Mi(),

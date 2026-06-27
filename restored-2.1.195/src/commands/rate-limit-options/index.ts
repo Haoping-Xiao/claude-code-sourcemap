@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5927  score=0.9237  fileCov=0.6232
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TQl] deps: oo
+// [unwrapped __esm module TQl] deps: utils/http.ts
 ((X6f = {
   type: "local-jsx",
   name: "rate-limit-options",

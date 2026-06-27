@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0035  score=0.7537  fileCov=0.0035
 // note: nearest: src/native-ts/yoga-layout/index.ts (0.0035); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lyt] deps: Ye
+// [unwrapped __esm module Lyt] deps: hooks/useTerminalSize.ts
 Fol = R(lt(), 1), X8e = R(se(), 1);
 function jpe() {
   let e = jol.c(1),

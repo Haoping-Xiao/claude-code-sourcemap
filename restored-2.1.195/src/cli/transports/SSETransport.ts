@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4873  score=0.5589  fileCov=0.7918
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module M8o] deps: Hp, je, Mm, At, kM, Jt, X4
+// [unwrapped __esm module M8o] deps: axios/lib/axios.js, utils/debug.ts, utils/git/gitConfigParser.ts, utils/errors.ts, utils/teleport/api.ts, utils/fsOperations.ts, utils/attachments.ts
 ((mum = new Set([401, 403, 404])),
   (yum = {
     stream: true,

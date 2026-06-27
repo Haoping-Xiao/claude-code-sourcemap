@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0062  score=0.277  fileCov=0.0063
 // note: nearest: src/cli/print.ts (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TAc] deps: c8o, F8t, szt
+// [unwrapped __esm module TAc] deps: utils/shell/resolveDefaultShell.ts, utils/generators.ts, szt
 qzo = R(se(), 1), stn = {
   background_hint: () => qzo.jsx(T$e, {}),
   bash_mode_progress: e => qzo.jsx(QZt, {

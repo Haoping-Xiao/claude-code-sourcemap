@@ -5,7 +5,7 @@
 // note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForPolicyLimitsToLoad, stopBackgroundPolling, startBackgroundPolling, shouldAwaitPolicyLimitsOnStartup, refreshPolicyLimits, recordPolicyLimitsStartupAwaitResult, logPolicyLimitsCacheStateAtFirstPrompt, loadPolicyLimits, initializePolicyLimitsLoadingPromise, clearPolicyLimitsCache, _resetPolicyLimitsForTesting, POLICY_LIMITS_COLD_AWAIT_MS, FAIL_CLOSED_SHADOW_CACHE_TTL_MS
-// [unwrapped __esm module AVe] deps: PR, uee, d2r, je, vn, co, Ls, ft, oo, fn, At, NE, Ao, Mh, dn, Un, kt, H5e, Ijt, yje, tP, gSe, lZn, lZn
+// [unwrapped __esm module AVe] deps: utils/errors.ts, gtoken/build/src/index.js, utils/awsAuthStatusManager.ts, utils/debug.ts, utils/sequential.ts, utils/messages.ts, utils/status.tsx, services/analytics/index.ts, utils/http.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/modelCost.ts, utils/agentContext.ts, utils/proxy.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, H5e, Ijt, tools/WebSearchTool/WebSearchTool.ts, services/api/errors.ts, services/api/errors.ts, services/compact/compact.ts, services/compact/compact.ts
 Eom = new Set([
   "repl_main_thread",
   "repl_main_thread:outputStyle:custom",

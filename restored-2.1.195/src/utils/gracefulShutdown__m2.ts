@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runPtyHost, createRing
-// [unwrapped __esm module cuc] deps: Is, aEe
+// [unwrapped __esm module cuc] deps: utils/platform.ts, utils/bash/ShellSnapshot.ts
 ((qse = require("fs/promises")), (iNe = require("path")));
 async function setupGracefulShutdown(e) {
   let t = e.indexOf("--");

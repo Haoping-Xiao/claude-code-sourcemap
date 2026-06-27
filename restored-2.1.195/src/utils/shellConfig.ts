@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3757  score=0.5236  fileCov=0.5708
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A9e] deps: dn, er, je, fn, At, Bi, ys, vn, Jt
+// [unwrapped __esm module A9e] deps: dn, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, utils/sequential.ts, utils/fsOperations.ts
 ((Sgt = require("fs/promises")), (bgt = require("path")));
 function getShellConfigPaths(options) {
   let t = options?.homedir ?? dAo.homedir(),

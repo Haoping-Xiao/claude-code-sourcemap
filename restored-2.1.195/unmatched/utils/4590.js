@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0019); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Ger] deps: ft, ag, kt, fb, BI, S_, $S, h6, je, sp, vn, KI, _$, y_, _Le, _a, mVe, bH, aR, rKe
+// [unwrapped __esm module Ger] deps: services/analytics/index.ts, utils/claudeInChrome/common.ts, utils/debug.ts, fb, services/mcp/client.ts, tasks/LocalShellTask/LocalShellTask.tsx, google-auth-library/build/src/crypto/node/crypto.js, state/AppStateStore.ts, utils/debug.ts, utils/worktree.ts, utils/sequential.ts, utils/permissions/filesystem.ts, utils/Shell.ts, utils/stats.ts, commands/add-dir/index.ts, utils/plans.ts, mVe, Task.ts, constants/prompts.ts, commands/clear/conversation.ts
 QDl = require("crypto");
 var call = async (e, t) => {
   let n = e.trim() || void 0;

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0077  score=0.2803  fileCov=0.0079
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/GrowthBook.mjs (0.0077); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sjc] deps: cJo, wm, YP, cgr
+// [unwrapped __esm module sjc] deps: @growthbook/growthbook/dist/esm/GrowthBook.mjs, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/util.js, cgr
 dJo = class dJo extends J7e {
   setProtectedHeader(e) {
     return this._protectedHeader = e, this;

@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/GlobTool/GlobTool.ts)  jaccard=0.0342  score=0.1664  fileCov=0.0413
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ztl] deps: ql, co, E5, Ye, oc, es, gAe
+// [unwrapped __esm module ztl] deps: commands/add-dir/validation.ts, utils/messages.ts, components/VirtualMessageList.tsx, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, utils/profilerBase.ts, tools/GrepTool/GrepTool.ts
 uyt = R(se(), 1);
 Vtl = L$.renderToolResultMessage;
 function GlobTool(e) {

@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/commands/clear/caches.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: clearSessionCaches
-// [unwrapped __esm module JSt] deps: pq, jDl, id, kt, er, Lo, je, At, Bi, ys, sa, ZYt, sp, vn, Hu, tre, dr, ih
+// [unwrapped __esm module JSt] deps: utils/markdownConfigLoader.ts, components/TrustDialog/utils.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, utils/config.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, utils/git.ts, hooks/fileSuggestions.ts, utils/worktree.ts, utils/sequential.ts, utils/file.ts, utils/ripgrep.ts, utils/settings/settings.ts, bootstrap/state.ts
 WDl = require("fs"), qDl = R(D3e(), 1), jN = R(require("path"));
 Cfe = VDl();
 function clearSessionCaches(e = new Set(), t) {

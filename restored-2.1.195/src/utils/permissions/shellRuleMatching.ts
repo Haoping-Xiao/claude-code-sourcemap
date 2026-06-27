@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2319  score=0.6699  fileCov=0.2619
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $I] deps: je, dr, Jt, Yf, QH, fre
+// [unwrapped __esm module $I] deps: utils/debug.ts, utils/settings/settings.ts, utils/fsOperations.ts, utils/task/diskOutput.ts, tools/TaskStopTool/prompt.ts, utils/permissions/PermissionUpdate.ts
 Gca = require("path");
 function Qjt(e) {
   return e.match(/^(.+):\*$/)?.[1] ?? null;

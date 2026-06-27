@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0022  score=0.8247  fileCov=0.0022
 // note: nearest: src/screens/REPL.tsx (0.0022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lql] deps: Ye, kt, m_t, wAe, mVe, SEe
+// [unwrapped __esm module lql] deps: hooks/useTerminalSize.ts, utils/debug.ts, components/permissions/ComputerUseApproval/ComputerUseApproval.tsx, components/Settings/Usage.tsx, mVe, hooks/notifs/useCanSwitchToExistingSubscription.tsx
 Cor = R(lt(), 1), iql = R(rt(), 1), zN = R(se(), 1);
 xde(I4f);
 function uql({

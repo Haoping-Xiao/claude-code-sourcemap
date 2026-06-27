@@ -5,7 +5,7 @@
 // note: nearest: src/components/permissions/rules/PermissionRuleList.tsx (0.0209); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module OKl] deps: si, _i, Ye, ps, Bs, vi, B_, Ko, Xce, Mg
+// [unwrapped __esm module OKl] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, components/CustomSelect/select.tsx, components/ScrollKeybindingHandler.tsx
 Zjo = R(lt(), 1), tTe = R(rt(), 1), Zg = R(se(), 1);
 function AVf(e) {
   let t = e.match(EVf);

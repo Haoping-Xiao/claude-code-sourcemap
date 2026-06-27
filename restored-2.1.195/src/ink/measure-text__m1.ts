@@ -4,7 +4,7 @@
 // class=modified (alt of src/ink/measure-text.ts)  jaccard=0.2878  score=1  fileCov=0.2878
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vMe] deps: Mce
+// [unwrapped __esm module vMe] deps: ink/termio/types.ts
 ((Stl = R(lt(), 1)), (Etl = require("url")), (Atl = R(se(), 1)));
 function Eef(e, t, n = 1 / 0) {
   let r = t <= 0 || !Number.isFinite(t),

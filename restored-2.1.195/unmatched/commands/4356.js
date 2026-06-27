@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _bl] deps: ql, Ye
+// [unwrapped __esm module _bl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts
 R$e = R(se(), 1);
 var bbl, Kgf, Ygf, Sbl;

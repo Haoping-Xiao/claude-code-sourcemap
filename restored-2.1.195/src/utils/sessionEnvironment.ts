@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4595  score=1  fileCov=0.4595
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lNn] deps: u_, lf, nC, EI, lC, TX, Rct, je, _m, Jt, dn, kt, mLe, U1, hut
+// [unwrapped __esm module lNn] deps: utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, TX, tools/GrepTool/prompt.ts, utils/debug.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/fsOperations.ts, dn, utils/debug.ts, services/compact/microCompact.ts, U1, diff/libesm/util/string.js
 Hcp = new Set([Ds, ...W1, qc, wu, GW, Sb, ka, Wc]);
 async function yao() {
   let e = Fjt.join(tr(), "session-env", Rt());

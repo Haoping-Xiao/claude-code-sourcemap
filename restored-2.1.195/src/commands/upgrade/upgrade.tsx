@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module iQl] deps: jc, oo
+// [unwrapped __esm module iQl] deps: utils/semver.ts, utils/http.ts
 sQl = {
   type: "local-jsx",
   name: "remote-env",

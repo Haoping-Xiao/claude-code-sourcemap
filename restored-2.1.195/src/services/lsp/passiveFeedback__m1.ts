@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/lsp/passiveFeedback.ts)  jaccard=0.0123  score=0.0236  fileCov=0.025
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nQa] deps: Ye, kt, Hu, dr, Fy, f_, gm, wb, vH
+// [unwrapped __esm module nQa] deps: hooks/useTerminalSize.ts, utils/debug.ts, utils/file.ts, utils/settings/settings.ts, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, undici/lib/mock/mock-agent.js, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((ZJa = R(lt(), 1)), (eQa = R(rt(), 1)), (YJ = R(se(), 1)));
 function YHo() {
   return {

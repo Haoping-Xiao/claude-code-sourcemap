@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3858  score=0.7448  fileCov=0.4445
 // note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uDe] deps: Qi, Un, oc
+// [unwrapped __esm module uDe] deps: lodash-es/memoize.js, services/analytics/growthbook.ts, utils/nativeInstaller/download.ts
 ade = class ade extends Error {
   tokenCount;
   maxTokens;

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0114  score=0.2979  fileCov=0.0118
 // note: nearest: src/services/compact/compact.ts (0.0114); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module l8t] deps: ft, fn, Jt
+// [unwrapped __esm module l8t] deps: services/analytics/index.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts
 Erl = require("crypto"), hwo = require("fs"), L6n = require("path");
 Btf = ["model", "system", "tools", "max_tokens", "thinking", "output_config", "context_management", "metadata"], gwo = [], R6n = new Map();
 function qtf(e, t, n) {

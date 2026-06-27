@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0363  score=0.4532  fileCov=0.038
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/mongrule.mjs (0.0363); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module M8e] deps: er, ih
+// [unwrapped __esm module M8e] deps: utils/config.ts, bootstrap/state.ts
 pwo = Mi(), _rl = new Map();
 function fwo(e) {
   brl = e;

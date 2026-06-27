@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4166  score=0.6297  fileCov=0.5518
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Is] deps: Qi, je, ys, vn
+// [unwrapped __esm module Is] deps: lodash-es/memoize.js, utils/debug.ts, utils/fsOperations.ts, utils/sequential.ts
 ((Ppn = require("fs/promises")),
   (zkr = require("os")),
   (Kkr = ["macos", "wsl"]),

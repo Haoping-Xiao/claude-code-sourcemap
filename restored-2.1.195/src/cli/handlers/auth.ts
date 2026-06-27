@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: installOAuthTokens, authStatus, authLogout, authLogin
-// [unwrapped __esm module MAo] deps: si, ft, Ye, xnt, oo, wFe, dC, gb, MPe, fn, oc, es, aE, Ao, Ls, u9, BJ, Mh, lg, Dgt, vf, i2e, dr
+// [unwrapped __esm module MAo] deps: @xmldom/xmldom/lib/entities.js, services/analytics/index.ts, hooks/useTerminalSize.ts, utils/sessionStorage.ts, utils/http.ts, constants/xml.ts, utils/claudemd.ts, utils/plugins/schemas.ts, utils/nativeInstaller/download.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/nativeInstaller/download.ts, utils/profilerBase.ts, utils/ide.ts, utils/agentContext.ts, utils/status.tsx, utils/mtls.ts, services/mcp/config.ts, utils/proxy.ts, utils/bash/bashParser.ts, utils/status.tsx, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/settings/settings.ts
 dKa = R(se(), 1);
 async function pKa(e) {
   process.stderr.write(

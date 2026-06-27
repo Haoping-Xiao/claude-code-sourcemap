@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0435  score=0.2823  fileCov=0.049
 // note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0435); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fpo] deps: plo, Fun
+// [unwrapped __esm module fpo] deps: @modelcontextprotocol/sdk/dist/esm/client/stdio.js, @modelcontextprotocol/sdk/dist/esm/server/stdio.js
 U3t = class U3t extends Error {
   constructor(e) {
     super(`wrote >${Math.round(e / 1024 / 1024)}MB to stdout without a JSON-RPC message boundary. The server is likely writing logs or other non-protocol data to stdout instead of stderr. Disconnecting to prevent unbounded memory growth.`);

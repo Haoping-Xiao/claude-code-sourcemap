@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0173  score=1  fileCov=0.0173
 // note: nearest: node_modules/react/cjs/react.production.js (0.0173); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nUo] deps: Xa, Kce, Ye, Xce, _rr
+// [unwrapped __esm module nUo] deps: @xmldom/xmldom/lib/entities.js, components/Settings/Config.tsx, hooks/useTerminalSize.ts, components/CustomSelect/select.tsx, components/design-system/FuzzyPicker.tsx
 ijl = R(lt(), 1), bz = R(rt(), 1), Uq = R(se(), 1), ajl = bz.createContext(false);
 JEt = Object.assign(WNf, {
   Item: qNf

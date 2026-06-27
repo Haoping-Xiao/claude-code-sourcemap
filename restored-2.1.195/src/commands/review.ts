@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module X2o] deps: VXn, MMe
+// [unwrapped __esm module X2o] deps: commander/lib/option.js, commands/commit-push-pr.ts
 ((MWf = {
   type: "prompt",
   name: "review",

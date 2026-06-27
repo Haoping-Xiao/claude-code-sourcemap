@@ -4,7 +4,7 @@
 // class=new  jaccard=0.017  score=0.43  fileCov=0.0174
 // note: nearest: src/utils/readFileInRange.ts (0.017); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iwl] deps: iit, LDo
+// [unwrapped __esm module iwl] deps: utils/plugins/schemas.ts, utils/attachments.ts
 owl = require("fs/promises"), TKt = require("path");
 function uwl() {
   cwl = true;

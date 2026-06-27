@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0151  score=0.1367  fileCov=0.0167
 // note: nearest: src/services/analytics/metadata.ts (0.0151); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QVt] deps: kt, Rm, Bi, sa
+// [unwrapped __esm module QVt] deps: utils/debug.ts, @grpc/grpc-js/build/src/server.js, constants/files.ts, utils/git.ts
 zQa = require("path");
 function Zc(e, t, n) {
   if (uTo) return;

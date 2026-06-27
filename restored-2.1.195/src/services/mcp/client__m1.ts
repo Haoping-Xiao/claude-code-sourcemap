@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.2113  score=0.3936  fileCov=0.3132
 // note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Hfo] deps: spt, jun, Vb, k7, y1, ZSe, er, je, kRa, KFn, lpt, mfo
+// [unwrapped __esm module Hfo] deps: spt, lodash-es/_baseUnset.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/claudeInChrome/mcpServer.ts, @growthbook/growthbook/dist/esm/core.mjs, utils/computerUse/appNames.ts, utils/config.ts, utils/debug.ts, utils/computerUse/appNames.ts, utils/computerUse/escHotkey.ts, utils/computerUse/gates.ts, utils/computerUse/toolRendering.tsx
 LRa = require("os");
 function r2n(e, t) {
   t((n) => {

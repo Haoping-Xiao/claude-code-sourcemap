@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.1817  score=0.6092  fileCov=0.2057
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tcl] deps: Q8, E5, b8t, Bs, zX, d_t, ql, Ye, s8t, co, sr
+// [unwrapped __esm module Tcl] deps: react/cjs/react.production.js, components/VirtualMessageList.tsx, components/CompactSummary.tsx, components/CustomSelect/select.tsx, utils/terminal.ts, tools/AgentTool/built-in/generalPurposeAgent.ts, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/sandbox-utils.js, utils/messages.ts, services/teamMemorySync/secretScanner.ts
 JI = R(se(), 1);
 function saf(e) {
   let t = new Map();

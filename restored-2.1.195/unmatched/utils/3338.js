@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0138  score=0.2627  fileCov=0.0144
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.0138); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yde] deps: gb, je, At, dn, NDa, ypt, FDa
+// [unwrapped __esm module yde] deps: utils/plugins/schemas.ts, utils/debug.ts, utils/errors.ts, dn, services/lsp/passiveFeedback.ts, services/lsp/LSPDiagnosticRegistry.ts, services/lsp/manager.ts
 Oqe = $kp(), IDe = Oqe.get, kpt = Oqe.getStatus, jDa = Oqe.isConnected, GDa = Oqe.waitForInitialization, WDa = Oqe.initialize, I2n = Oqe.reinitialize, qDa = Oqe.shutdown;
 function Nqe() {
   if (!lu()) return false;

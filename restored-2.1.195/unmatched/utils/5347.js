@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0249  score=0.0833  fileCov=0.0342
 // note: nearest: src/utils/plugins/pluginBlocklist.ts (0.0249); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module w9o] deps: ydc, Sdc, ag, S6, C5, Ld, nDe, $g, Xh, sr, Kv, Ox, g$
+// [unwrapped __esm module w9o] deps: components/MCPServerMultiselectDialog.tsx, cli/print.ts, utils/claudeInChrome/common.ts, utils/mailbox.ts, utils/renderOptions.ts, utils/concurrentSessions.ts, utils/plugins/lspPluginIntegration.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/loadPluginAgents.ts, services/teamMemorySync/secretScanner.ts, services/mcp/utils.ts, Ox, services/mcp/xaa.ts
 QYe = R(se(), 1);
 function C9o(e, t) {
   let n = [...t].sort(),

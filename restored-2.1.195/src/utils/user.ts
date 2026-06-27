@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1049  score=0.3427  fileCov=0.1313
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ote] deps: Qi, ft, oo, er, Lo, wr, fn, OB
+// [unwrapped __esm module Ote] deps: lodash-es/memoize.js, services/analytics/index.ts, utils/http.ts, utils/config.ts, utils/fsOperations.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/execFileNoThrowPortable.ts
 Xot = Cn((e) => {
   let t = oW(),
     n = Dt(),

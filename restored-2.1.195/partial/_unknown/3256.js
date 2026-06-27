@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1234  score=1  fileCov=0.1234
 // note: low-confidence suggestion: node_modules/lodash-es/_createCaseFirst.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VIa] deps: $Ia, jdo, WIa
+// [unwrapped __esm module VIa] deps: lodash-es/_unicodeToArray.js, lodash-es/_asciiToArray.js, WIa
 qIa = rwp;
 function owp(e) {
   return function (t) {

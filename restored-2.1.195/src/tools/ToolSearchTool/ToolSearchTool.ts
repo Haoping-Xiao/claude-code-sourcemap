@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2434  score=0.3107  fileCov=0.529
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Q1n] deps: Qi, Xr, kt, Ox, ii, je, sr, GX, IX, fut, LX
+// [unwrapped __esm module Q1n] deps: lodash-es/memoize.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, Ox, services/mockRateLimits.ts, utils/debug.ts, services/teamMemorySync/secretScanner.ts, services/vcr.ts, tools/BriefTool/prompt.ts, tools/ToolSearchTool/ToolSearchTool.ts, @xmldom/xmldom/lib/entities.js
 ((kla = ve(() =>
   H.object({
     query: H.string().describe(

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1816  score=0.2325  fileCov=0.4532
 // note: low-confidence suggestion: src/components/LogoV2/AnimatedClawd.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module x8t] deps: Ye, wr
+// [unwrapped __esm module x8t] deps: hooks/useTerminalSize.ts, main.tsx
 hCo = R(lt(), 1), kL = R(se(), 1), brf = {
   default: {
     r1L: " \u2590",

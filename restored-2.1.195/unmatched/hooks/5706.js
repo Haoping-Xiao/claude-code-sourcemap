@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0065  score=0.22  fileCov=0.0067
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0065); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module URc] deps: Ye, dn, wr, kgt
+// [unwrapped __esm module URc] deps: hooks/useTerminalSize.ts, dn, main.tsx, utils/nativeInstaller/packageManagers.ts
 bfr = R(se(), 1), BRc = {
   id: "sudo-npm-install",
   maxImpressions: 1,

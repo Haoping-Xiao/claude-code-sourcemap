@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3896  score=0.5344  fileCov=0.5898
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hKl] deps: si, Ye, sr, Vl, vi
+// [unwrapped __esm module hKl] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx
 ((mKl = R(lt(), 1)), (KN = R(se(), 1)));
 function SelectHookMode(t0) {
   let t = yKl.c(20),

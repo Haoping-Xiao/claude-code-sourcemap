@@ -5,7 +5,7 @@
 // note: nearest: node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js (0.0077); dir inferred from dep-graph -> commands; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: triggerResponseSchema, buildScheduleSummary, RemoteTriggerTool
-// [unwrapped __esm module _Sl] deps: ql, Ye, sr
+// [unwrapped __esm module _Sl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts
 Dzt = R(se(), 1);
 function buildScheduleSummary(e, t = new Date()) {
   let n = e.enabled ?? true,

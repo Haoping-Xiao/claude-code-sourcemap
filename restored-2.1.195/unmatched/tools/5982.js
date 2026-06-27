@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0223  score=0.235  fileCov=0.024
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0223); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oBe] deps: NZ
+// [unwrapped __esm module oBe] deps: node-forge/lib/rsa.js
 D3c = Symbol();
 function B3(e) {
   if (!GMm(e) || Object.prototype.toString.call(e) !== "[object Object]") return false;

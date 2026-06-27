@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7291  score=0.8693  fileCov=0.8189
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zBo] deps: Cc, Bs, Ye, pXt
+// [unwrapped __esm module zBo] deps: context/modalContext.tsx, components/CustomSelect/select.tsx, hooks/useTerminalSize.ts, utils/plugins/schemas.ts
 ((BEt = R(lt(), 1)), (urr = R(rt(), 1)), (XL = R(se(), 1)));
 function FEt({
   totalItems: e,

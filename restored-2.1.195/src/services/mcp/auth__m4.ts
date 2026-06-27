@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.009  score=0.0496  fileCov=0.0109
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iFl] deps: si, Ye, ps
+// [unwrapped __esm module iFl] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts
 ((oFl = R(lt(), 1)), (mR = R(se(), 1)));
 function cFl({ onSuccess: e, onCancel: t }) {
   let [n, r] = ZF.useState({

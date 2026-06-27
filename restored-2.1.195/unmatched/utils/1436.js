@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Wri] deps: u2e
+// [unwrapped __esm module Wri] deps: @aws-sdk/credential-provider-http/dist-cjs/fromHttp/checkUrl.js
 Gri = R(UR(), 1);
 var Ldd = e => wyn({
   ...e

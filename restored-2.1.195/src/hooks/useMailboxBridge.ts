@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6537  score=1  fileCov=0.6537
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rAc] deps: S_, vDo, qzt, At, vn
+// [unwrapped __esm module rAc] deps: tasks/LocalShellTask/LocalShellTask.tsx, tasks/LocalAgentTask/LocalAgentTask.tsx, tools/SendMessageTool/UI.tsx, utils/errors.ts, utils/sequential.ts
 fpr = R(rt(), 1);
 function oAc({ isLoading: e, onSubmitMessage: t }) {
   let n = Q1a(),

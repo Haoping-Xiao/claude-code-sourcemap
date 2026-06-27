@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4171  score=0.679  fileCov=0.5196
 // note: deminified; 23 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module IAo] deps: Pw, je, fn, At, ys, YS, vn, Jt
+// [unwrapped __esm module IAo] deps: utils/fileRead.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/teammateContext.ts, utils/sequential.ts, utils/fsOperations.ts
 Qqt = require("path");
 function getPlatform() {
   let e = Oe.platform,

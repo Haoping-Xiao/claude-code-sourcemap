@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2492  score=0.4938  fileCov=0.3348
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dEr] deps: Tx, rv, DR
+// [unwrapped __esm module dEr] deps: @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 wIt = class wIt extends cp {
   retrieve(e, t, n) {
     let {

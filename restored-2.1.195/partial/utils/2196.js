@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1584  score=0.3764  fileCov=0.2147
 // note: low-confidence suggestion: src/utils/teleport/api.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cv] deps: Hp, Rc, H0, Gx, Xr, dn, oo, je, BR, At, vn, Ls, Jt
+// [unwrapped __esm module Cv] deps: axios/lib/axios.js, constants/oauth.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, utils/slashCommandParsing.ts, @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/http.ts, utils/debug.ts, utils/git.ts, utils/errors.ts, utils/sequential.ts, utils/status.tsx, utils/fsOperations.ts
 _zr = require("crypto"), oOi = [2000, 4000, 8000, 16000], yzr = oOi.length;
 k$d = ve(() => ol.object({
   id: ol.string(),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0378  score=0.3289  fileCov=0.041
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ls] deps: ft, RE, fn, QO
+// [unwrapped __esm module Ls] deps: services/analytics/index.ts, RE, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/model/configs.ts
 ote = {
   bedrock: "Amazon Bedrock",
   vertex: "Google Vertex AI",

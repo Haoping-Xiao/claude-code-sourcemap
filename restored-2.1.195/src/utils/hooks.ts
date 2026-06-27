@@ -5,7 +5,7 @@
 // note: deminified; 38 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSkipHookDueToTrust, persistHookOutput, parseElicitationHookOutput, isPluginEligibleForCredentials, isBareMcpServerMatcher, hasInstructionsLoadedHook, hasHookForEvent, hasBlockingResult, getUserPromptSubmitHookBlockingMessage, getTelemetryHookName, getTeammateIdleHookMessage, getTaskCreatedHookMessage, getTaskCompletedHookMessage, getStopHookMessage, getSessionEndHookTimeoutMs, getPreToolHookBlockingMessage, getPluginHookCounts, getMatchingHooks, getAnthropicCredentialsForO …
-// [unwrapped __esm module $ic] deps: _ic, bic, Sic, Aic, Hic, N5o, Tic, vic, kic, Ric, Lic, TIo, Pic, Mic
+// [unwrapped __esm module $ic] deps: entrypoints/sdk/coreSchemas.ts, entrypoints/sdk/coreSchemas.ts, entrypoints/sdk/coreSchemas.ts, entrypoints/sdk/coreSchemas.ts, utils/attachments.ts, entrypoints/sdk/coreSchemas.ts, utils/hooks.ts, components/tasks/BackgroundTask.tsx, entrypoints/sdk/coreSchemas.ts, utils/hooks.ts, screens/REPL.tsx, uuid/dist/rng.js, utils/hooks.ts, Mic
 zem = {
   PreToolUse: bzt,
   PostToolUse: Szt,

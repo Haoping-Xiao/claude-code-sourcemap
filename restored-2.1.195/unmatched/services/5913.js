@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0463  score=0.157  fileCov=0.0617
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0463); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module z2c] deps: oJo, rB, sJo
+// [unwrapped __esm module z2c] deps: @growthbook/growthbook/dist/esm/util.mjs, pkce-challenge/dist/index.node.js, node-forge/lib/rsa.js
 V2c = kDm;
 async function Fvt(e, t, n) {
   var r;

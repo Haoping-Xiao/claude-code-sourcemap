@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module $nc] deps: TM, Rc, Rx, c_, je, Cv
+// [unwrapped __esm module $nc] deps: constants/betas.ts, constants/oauth.ts, utils/env.ts, services/mcp/officialRegistry.ts, utils/debug.ts, utils/teleport/api.ts
 BGo = class BGo {
   #e;
   constructor(e) {

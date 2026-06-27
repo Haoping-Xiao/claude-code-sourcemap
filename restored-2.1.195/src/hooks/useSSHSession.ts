@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1521  score=0.7387  fileCov=0.1607
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sSc] deps: tSc, Yp, dzo
+// [unwrapped __esm module sSc] deps: @grpc/grpc-js/build/src/transport.js, utils/gracefulShutdown.ts, hooks/useDirectConnect.ts
 rSc = R(rt(), 1);
 function useSSHSession({
   session: e,

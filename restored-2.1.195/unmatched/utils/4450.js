@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0037  score=0.2049  fileCov=0.0037
 // note: nearest: src/utils/attachments.ts (0.0037); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rwl] deps: Uh, M7, sr, LDo
+// [unwrapped __esm module rwl] deps: services/analytics/metadata.ts, tools/FileEditTool/constants.ts, services/teamMemorySync/secretScanner.ts, utils/attachments.ts
 twl = require("fs/promises"), HKt = require("path");
 async function swl(e, t) {
   let n;

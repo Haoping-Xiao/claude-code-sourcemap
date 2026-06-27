@@ -5,7 +5,7 @@
 // note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: pluginValidateHandler, pluginUpdateHandler, pluginUninstallHandler, pluginTagHandler, pluginPruneHandler, pluginListHandler, pluginInstallHandler, pluginInitHandler, pluginEnableHandler, pluginDisableHandler, pluginDetailsHandler, marketplaceUpdateHandler, marketplaceRemoveHandler, marketplaceListHandler, marketplaceAddHandler, handleMarketplaceError, VALID_UPDATE_SCOPES, VALID_INSTALLABLE_SCOPES
-// [unwrapped __esm module W9o] deps: Pw, At, Jt, ZC
+// [unwrapped __esm module W9o] deps: utils/fileRead.ts, utils/errors.ts, utils/fsOperations.ts, utils/plugins/schemas.ts
 ((GZt = require("fs/promises")),
   (oO = require("path")),
   (WZt = ["skills", "agents", "hooks", "mcp", "lsp", "output-style", "channel"]));

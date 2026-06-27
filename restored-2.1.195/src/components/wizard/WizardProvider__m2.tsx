@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/wizard/WizardProvider.tsx)  jaccard=0.1761  score=0.5269  fileCov=0.2092
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TQa] deps: Ye, Vl, Fy, CH, gm, wb, vH, XHo
+// [unwrapped __esm module TQa] deps: hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, @smithy/types/dist-cjs/index.js, undici/lib/mock/mock-agent.js, @ant/computer-use-mcp/src/toolCalls.ts, vH, screens/REPL.tsx
 ((n8n = R(rt(), 1)), (x$ = R(se(), 1)));
 function o8n({ onComplete: e, onCancel: t }) {
   let n = r8n.useRef(e);

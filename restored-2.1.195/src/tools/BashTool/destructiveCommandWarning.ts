@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2832  score=0.326  fileCov=0.6832
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eit] deps: At, vn
+// [unwrapped __esm module eit] deps: utils/errors.ts, utils/sequential.ts
 ((xke = require("path")),
   (d1d = [
     {

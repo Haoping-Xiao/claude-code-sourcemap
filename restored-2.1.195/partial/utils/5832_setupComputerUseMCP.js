@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/utils/computerUse/setup.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setupComputerUseMCP
-// [unwrapped __esm module B1c] deps: ft, IL, bk, hN, hP
+// [unwrapped __esm module B1c] deps: services/analytics/index.ts, tools/AgentTool/agentColorManager.ts, utils/tasks.ts, utils/swarm/backends/detection.ts, utils/swarm/spawnInProcess.ts
 $1c = require("fs/promises");
 function setupComputerUseMCP() {
   let e = Cqe(ckn, apt()).map(n => i9(S7, n.name)),

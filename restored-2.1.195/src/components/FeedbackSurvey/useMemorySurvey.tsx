@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3587  score=0.5277  fileCov=0.5282
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module K0c] deps: ft, yfe, W0c, V0c, aW, kt, Ye, fb, eKe, jc, er, wr, fn, co, Ao, qd, dr, aS, dYo, pYo, fYo, xtn, gYo
+// [unwrapped __esm module K0c] deps: services/analytics/index.ts, jwa/index.js, hooks/useTimeout.ts, components/EffortIndicator.ts, types/generated/google/protobuf/timestamp.ts, utils/debug.ts, hooks/useTerminalSize.ts, fb, utils/sessionStorage.ts, utils/semver.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/messages.ts, utils/agentContext.ts, utils/log.ts, utils/settings/settings.ts, utils/telemetry/pluginTelemetry.ts, components/FeedbackSurvey/submitTranscriptShare.ts, utils/sessionStorage.ts, components/FeedbackSurvey/useFeedbackSurvey.tsx, utils/crypto.ts, components/FeedbackSurvey/useFeedbackSurvey.tsx
 MC = R(rt(), 1);
 function Y0c() {
   return at(Wvm, 0.2);

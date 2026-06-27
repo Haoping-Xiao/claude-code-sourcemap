@@ -5,7 +5,7 @@
 // note: nearest: src/components/Settings/Config.tsx (0.011); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module $7t] deps: ps, O0, _i, fH, eE, kP, TMl, J$l, yOl, JOl
+// [unwrapped __esm module $7t] deps: utils/suggestions/directoryCompletion.ts, commander/lib/command.js, components/design-system/Ratchet.tsx, react/cjs/react.production.js, components/design-system/Dialog.tsx, components/design-system/Tabs.tsx, components/CustomSelect/use-multi-select-state.ts, components/Settings/Config.tsx, yOl, components/Stats.tsx
 QOl = R(lt(), 1), GOe = R(rt(), 1), WQ = R(se(), 1);
 function RPf(e) {
   let t = ZOl.c(6),

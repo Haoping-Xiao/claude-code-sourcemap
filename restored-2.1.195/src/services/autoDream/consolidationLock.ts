@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3622  score=0.8993  fileCov=0.3775
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module O7n] deps: BFe, jS
+// [unwrapped __esm module O7n] deps: utils/sessionStoragePortable.ts, utils/path.ts
 ((dbt = require("fs/promises")), (pbt = require("path")));
 function j0o() {
   return tyl.join(mm(), LOCK_FILE);

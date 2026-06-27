@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pts] deps: $wt
+// [unwrapped __esm module pts] deps: semver/internal/lrucache.js
 dts = g9c;
 function h9c(e, t) {
   var n = Ove(this, e),

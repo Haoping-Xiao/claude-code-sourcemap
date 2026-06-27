@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, DesignLogin
-// [unwrapped __esm module gUl] deps: xne
+// [unwrapped __esm module gUl] deps: utils/debug.ts
 ((d1f = {
   name: "keybindings",
   description: "Open your keyboard shortcuts file",

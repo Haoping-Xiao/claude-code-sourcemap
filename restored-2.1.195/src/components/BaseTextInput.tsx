@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3171  score=0.434  fileCov=0.5407
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module C6i] deps: RUt, Ye, A6i, LUt
+// [unwrapped __esm module C6i] deps: utils/textHighlighting.ts, hooks/useTerminalSize.ts, components/Spinner/ShimmerChar.tsx, components/PromptInput/ShimmeredInput.tsx
 ((v6i = R(lt(), 1)), (M0e = R(se(), 1)));
 function BaseTextInput({
   inputState: e,

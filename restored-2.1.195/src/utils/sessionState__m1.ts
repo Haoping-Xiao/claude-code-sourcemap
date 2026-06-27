@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/sessionState.ts)  jaccard=0.07  score=0.1085  fileCov=0.1648
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $pr] deps: Ed, tC, nbe, Ye, Yj, xne, H0e, uo, m0, Is, sr, Cen
+// [unwrapped __esm module $pr] deps: context/notifications.tsx, components/CustomSelect/use-multi-select-state.ts, state/AppState.tsx, hooks/useTerminalSize.ts, components/PromptInput/PromptInput.tsx, utils/debug.ts, keybindings/defaultBindings.ts, context/notifications.tsx, ink/line-width-cache.ts, utils/platform.ts, services/teamMemorySync/secretScanner.ts, services/compact/compactWarningHook.ts
 ((gw = R(rt(), 1)), (Cbm = (TTc(), ro(HTc))));
 function wTc() {
   return false;

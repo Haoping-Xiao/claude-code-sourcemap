@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2987  score=0.4697  fileCov=0.4506
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U4o] deps: Hu
+// [unwrapped __esm module U4o] deps: utils/file.ts
 ((iir = require("fs/promises")), (air = require("path")));
 function ExportDialog({ content: e, defaultFilename: t, onDone: n }) {
   let [, r] = $1e.useState(null),

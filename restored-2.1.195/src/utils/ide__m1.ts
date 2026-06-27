@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/ide.ts)  jaccard=0.2117  score=0.6405  fileCov=0.2403
 // note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zdo] deps: Q9, Ye, ps, dn, er, wr, aE, lJ, vi, gDe, Ko
+// [unwrapped __esm module zdo] deps: tools/FileReadTool/FileReadTool.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, dn, utils/config.ts, main.tsx, utils/ide.ts, components/StructuredDiff/Fallback.tsx, components/design-system/Dialog.tsx, components/IdeOnboardingDialog.tsx, components/ConfigurableShortcutHint.tsx
 ((nxa = R(lt(), 1)), (FI = R(se(), 1)));
 function pxa(e) {
   try {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4691  score=0.6929  fileCov=0.5922
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Kzo] deps: yfe, tne, hNe
+// [unwrapped __esm module Kzo] deps: jwa/index.js, components/Settings/Config.tsx, screens/REPL.tsx
 ((CAc = R(rt(), 1)),
   (Vzo = uL({
     focus: null,

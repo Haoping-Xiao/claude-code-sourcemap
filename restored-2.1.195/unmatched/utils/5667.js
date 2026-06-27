@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0278  score=0.3467  fileCov=0.0294
 // note: nearest: src/ink/styles.ts (0.0278); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ckc] deps: Bs, Ye, er, Cp, DE, dr
+// [unwrapped __esm module ckc] deps: components/CustomSelect/select.tsx, hooks/useTerminalSize.ts, utils/config.ts, utils/tempfile.ts, utils/permissions/PermissionMode.ts, utils/settings/settings.ts
 skc = R(lt(), 1), $Ne = R(se(), 1);
 function dkc(e) {
   let t = ukc.c(18),

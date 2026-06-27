@@ -5,7 +5,7 @@
 // note: deminified; 24 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: validateSessionRepository, validateGitState, toServerErrorType, toServerErrorReason, teleportToRemoteWithErrorHandling, teleportToRemote, teleportResumeCodeSession, teleportFromSessionsAPI, subscribeRemoteSessionToPR, processMessagesForTeleportResume, pollRemoteSessionEvents, interruptRemoteSession, checkOutTeleportedSessionBranch, awaitRemoteSessionResult, archiveRemoteSession
-// [unwrapped __esm module CTo] deps: kt, dn, Un, E8n, Lo, je, Bi, sa, sr, kv
+// [unwrapped __esm module CTo] deps: utils/debug.ts, dn, services/analytics/growthbook.ts, utils/teleport/gitBundle.ts, utils/fsOperations.ts, utils/debug.ts, constants/files.ts, utils/git.ts, services/teamMemorySync/secretScanner.ts, proxy-from-env/index.js
 vht = require("fs/promises");
 function createTeleportResumeSystemMessage(branchError) {
   if (branchError === null) return cc("Session resumed", "suggestion");

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0244  score=0.4583  fileCov=0.0251
 // note: nearest: src/ink/components/Box.tsx (0.0244); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
+// [unwrapped __esm module jUl] deps: components/CustomSelect/select.tsx, utils/plugins/loadPluginCommands.ts, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts
 BUl = R(lt(), 1), UUl = R(rt(), 1), NT = R(se(), 1);
 function WUl() {
   let e = GUl.c(1),

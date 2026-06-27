@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0022  score=0.4227  fileCov=0.0022
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ell] deps: si, Nht, Ye, N0e, Ko
+// [unwrapped __esm module ell] deps: @xmldom/xmldom/lib/entities.js, utils/teammateMailbox.ts, hooks/useTerminalSize.ts, commander/lib/command.js, components/ConfigurableShortcutHint.tsx
 ((Qal = R(lt(), 1)),
   (kAe = R(se(), 1)),
   (tif = [

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3692  score=0.7779  fileCov=0.4127
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MLc] deps: Ye, lg, Is
+// [unwrapped __esm module MLc] deps: hooks/useTerminalSize.ts, utils/bash/bashParser.ts, utils/platform.ts
 ((PLc = R(lt(), 1)), (Ltn = R(rt(), 1)), (ZTe = R(se(), 1)));
 function useAutoModeUnavailableNotification() {
   let { addNotification: e } = Li(),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/modelCost.ts)  jaccard=0.0761  score=0.1349  fileCov=0.1485
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jG] deps: kt, ft, er, NE, QO, Ao
+// [unwrapped __esm module jG] deps: utils/debug.ts, services/analytics/index.ts, utils/config.ts, utils/modelCost.ts, utils/model/configs.ts, utils/agentContext.ts
 ((gye = {
   inputTokens: 3,
   outputTokens: 15,

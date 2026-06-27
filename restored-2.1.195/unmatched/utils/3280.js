@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0282  score=0.138  fileCov=0.0342
 // note: nearest: src/services/teamMemorySync/index.ts (0.0282); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fka] deps: At, eqe
+// [unwrapped __esm module Fka] deps: utils/errors.ts, utils/systemDirectories.ts
 Zwp = new Set(["1", "2"]), eCp = new Set(["x", "X", "g", "L", "K"]), tCp = new Set(["S", "D", "V", "M"]);
 z3t = class z3t extends mi {
   entryName;

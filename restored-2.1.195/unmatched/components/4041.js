@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0204  score=0.5293  fileCov=0.0208
 // note: nearest: src/ink/styles.ts (0.0204); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AN] deps: iu, Oct, w4, AW, Ye, eVe, e8t, co, Unl
+// [unwrapped __esm module AN] deps: @mixmark-io/domino/lib/Document.js, marked/lib/marked.esm.js, highlight.js/lib/languages/reasonml.js, ink/supports-hyperlinks.ts, hooks/useTerminalSize.ts, hooks/toolPermission/permissionLogging.ts, @xmldom/xmldom/lib/entities.js, utils/messages.ts, utils/markdown.ts
 E6n = R(lt(), 1), Fnl = R(rt(), 1), eQ = R(se(), 1), x8e = new Map(), ytf = /[#*`|[>\-_~]|\n\n|(?:^|\n) {0,3}\d+\. |https?:\/\/|www\./;
 function A6n(e) {
   let t = Gnl.c(3),

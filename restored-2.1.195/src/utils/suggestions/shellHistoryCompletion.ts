@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3203  score=0.6162  fileCov=0.4001
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ayc] deps: ior, oyc, Zf, Un, Ire, Ryt, wr, e$e, M8e
+// [unwrapped __esm module ayc] deps: fuse.js/dist/fuse.mjs, utils/suggestions/commandSuggestions.ts, utils/sessionStorage.ts, services/analytics/growthbook.ts, services/mcp/client.ts, ink/Ansi.tsx, main.tsx, tools/AgentTool/runAgent.ts, @growthbook/growthbook/dist/esm/mongrule.mjs
 syc = /[:_-]/g;
 spm = new Set(["add-dir", "resume", "plugin", "plugins", "marketplace"]);
 async function getShellHistoryCommands() {

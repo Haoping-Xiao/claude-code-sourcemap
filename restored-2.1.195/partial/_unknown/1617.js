@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1245  score=0.8027  fileCov=0.1285
 // note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/client.mjs; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ndi] deps: UHn
+// [unwrapped __esm module Ndi] deps: @anthropic-ai/bedrock-sdk/internal/utils/values.mjs
 $di = Object.freeze(Object.create(null)), q4r = sgd(Odi);
 function lgd(e) {
   let t = new j2(e);

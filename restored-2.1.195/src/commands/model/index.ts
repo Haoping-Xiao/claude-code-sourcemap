@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.164  score=0.1945  fileCov=0.511
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KJl] deps: Isr, Ao
+// [unwrapped __esm module KJl] deps: components/FastIcon.tsx, utils/agentContext.ts
 ((zJl = {
   type: "local",
   name: "model",

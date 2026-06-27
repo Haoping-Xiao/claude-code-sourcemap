@@ -4,7 +4,7 @@
 // class=modified (alt of src/hooks/useDiffInIDE.ts)  jaccard=0.1311  score=0.3088  fileCov=0.1855
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Hfl] deps: kt, Du, PB, Hu, dn, bMe, er, je, Dpe, At, aE, HDn, vn, Is
+// [unwrapped __esm module Hfl] deps: utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, utils/platform.ts, utils/file.ts, dn, tools/FileEditTool/utils.ts, utils/config.ts, utils/debug.ts, utils/fileReadCache.ts, utils/errors.ts, utils/ide.ts, utils/imageResizer.ts, utils/sequential.ts, utils/platform.ts
 AYn = R(rt(), 1);
 function ndf(e, t) {
   if (e === xH) {

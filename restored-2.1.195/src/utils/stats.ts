@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5426  score=0.9443  fileCov=0.5605
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NOl] deps: dn, Bi, vn, Is, bUt, kv
+// [unwrapped __esm module NOl] deps: dn, constants/files.ts, utils/sequential.ts, utils/platform.ts, utils/imagePaste.ts, proxy-from-env/index.js
 (($Ol = require("child_process")), (fEt = require("fs/promises")), (nNo = require("path")));
 async function processSessionFiles(sessionFiles, t = {}) {
   let { fromDate: n, toDate: r } = t,

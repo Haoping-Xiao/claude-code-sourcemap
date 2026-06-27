@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0882  score=0.1299  fileCov=0.2155
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S$] deps: PR, kt, NB, rre, sN, xRe, Xjt, Il, Lo, At, ys, Yf, $I, Jbe, QH, Gy, w5e, Is, lg, xue, Jt, sr, sj, RN, xCl, RCl, Ago, eWt, Tjn, N6e
+// [unwrapped __esm module S$] deps: utils/errors.ts, utils/debug.ts, types/permissions.ts, utils/bash/ast.ts, utils/bash/commands.ts, utils/bash/ast.ts, utils/settings/validationTips.ts, Il, utils/fsOperations.ts, utils/errors.ts, utils/fsOperations.ts, utils/task/diskOutput.ts, utils/permissions/shellRuleMatching.ts, utils/plugins/pluginDirectories.ts, tools/TaskStopTool/prompt.ts, utils/permissions/permissionSetup.ts, services/mcp/vscodeSdkMcp.ts, utils/platform.ts, utils/bash/bashParser.ts, utils/shell/readOnlyCommandValidation.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/windowsPaths.ts, tools/BashTool/BashTool.tsx, tools/BashTool/modeValidation.ts, tools/BashTool/bashPermissions.ts, eventsource-parser/dist/index.js, tools/BashTool/readOnlyValidation.ts, tools/BashTool/pathValidation.ts, N6e
 ((ZJn = require("fs/promises")), (vP = require("path")), (eQn = /^[A-Za-z_]\w*=/));
 nQn = new Set([
   "sh",

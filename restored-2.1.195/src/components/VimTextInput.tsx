@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5668  score=0.758  fileCov=0.692
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Jyc] deps: v5, Ye, ps, Cc, mE, Bs, Ko, eE
+// [unwrapped __esm module Jyc] deps: components/permissions/PermissionRequestTitle.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx
 ((Kyc = R(lt(), 1)), (Yyc = R(rt(), 1)), (jP = R(se(), 1)));
 function k6o(e) {
   let [t] = na(),

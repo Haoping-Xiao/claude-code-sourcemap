@@ -5,7 +5,7 @@
 // note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: reduceFileHistoryState, fileHistoryTrackEdit, fileHistoryRewind, fileHistoryRestoreStateFromLog, fileHistoryMakeSnapshot, fileHistoryHasAnyChanges, fileHistoryGetDiffStats, fileHistoryEnabled, fileHistoryCanRestore, copyFileHistoryForResume, checkOriginFileChanged
-// [unwrapped __esm module d8n] deps: Hp, Rc, je, Mm, fn, At, vn, kM, Cv, dn
+// [unwrapped __esm module d8n] deps: axios/lib/axios.js, constants/oauth.ts, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, utils/teleport/api.ts, utils/teleport/api.ts, dn
 ((J9e = new Map()), (iTo = new Map()));
 function ZEe(e, t) {
   return e;

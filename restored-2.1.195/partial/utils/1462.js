@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1833  score=1  fileCov=0.1833
 // note: low-confidence suggestion: src/utils/teammateContext.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YS] deps: Bi, ys
+// [unwrapped __esm module YS] deps: constants/files.ts, utils/fsOperations.ts
 kAn = new Map();
 function w0() {
   return X2r.getStore();

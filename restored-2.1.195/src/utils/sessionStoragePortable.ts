@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.37  score=0.5901  fileCov=0.498
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BFe] deps: Rm, QZe
+// [unwrapped __esm module BFe] deps: @grpc/grpc-js/build/src/server.js, utils/windowsPaths.ts
 ((WEs = require("child_process")), (qEs = require("util")), (yPu = qEs.promisify(WEs.execFile)));
 function KEs(e, t) {
   let n = EG(e, "entrypoint") ?? Kb(t, "entrypoint");

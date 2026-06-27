@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0066  score=0.4274  fileCov=0.0067
 // note: nearest: src/screens/REPL.tsx (0.0066); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qbc] deps: ft, RJt, Hde, Ye, szo, pir, Gen, Wen, izo, dn, kt, uo, Rm, je, At, es, vn, co, XKe, Cv, _i, lzo, Kbc
+// [unwrapped __esm module Qbc] deps: services/analytics/index.ts, cli/print.ts, entrypoints/sdk/coreSchemas.ts, hooks/useTerminalSize.ts, screens/REPL.tsx, utils/model/deprecation.ts, remote/sdkMessageAdapter.ts, assistant/sessionHistory.ts, tools/TaskUpdateTool/TaskUpdateTool.ts, dn, utils/debug.ts, context/notifications.tsx, @grpc/grpc-js/build/src/server.js, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, utils/sequential.ts, utils/messages.ts, commands/rename/generateSessionName.ts, utils/teleport/api.ts, components/design-system/Ratchet.tsx, hooks/useReplBridge.tsx, hooks/useRemoteSession.ts
 Xbc = require("crypto"), wd = R(rt(), 1);
 function Zbc(e, t) {
   let n = Ht(c => c.toolPermissionContext),

@@ -5,7 +5,7 @@
 // note: nearest: src/screens/REPL.tsx (0.0038); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module JVl] deps: fn
+// [unwrapped __esm module JVl] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs
 XVl = {
   type: "local-jsx",
   name: "setup-bedrock",

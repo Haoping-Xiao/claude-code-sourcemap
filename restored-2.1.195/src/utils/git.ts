@@ -5,7 +5,7 @@
 // note: deminified; 32 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stashToCleanState, redactGitRemoteCredentials, preserveGitStateForIssue, normalizeGitRemoteUrl, isLinkedWorktree, isCurrentDirectoryBareGitRepo, isBranchOnOrigin, isAtGitRoot, hasUnpushedCommits, gitExe, getWorktreeCount, getRepoRemoteHash, getRemoteUrlForBridge, getRemoteUrl, getIsHeadOnRemote, getIsGit, getIsClean, getHead, getGithubRepo, getGitWorktreeName, getGitState, getGitDir, getFileStatus, getDefaultBranch, getChangedFiles, getBranch, findRepoRemoteSlug, findRemoteBase, …
-// [unwrapped __esm module BR] deps: Lo, je, Bi, sa, Mx, sr
+// [unwrapped __esm module BR] deps: utils/fsOperations.ts, utils/debug.ts, constants/files.ts, utils/git.ts, utils/detectRepository.ts, services/teamMemorySync/secretScanner.ts
 cCe = new Map();
 P$u = /^[A-Za-z0-9._-]+$/;
 function M$u() {

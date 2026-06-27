@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4508  score=0.8372  fileCov=0.4941
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VFl] deps: ft, ft, oo, cco, Yle, BI, Ire, Z4e, Vb, gKn, Gwe, yBn, kt, Kv, je, Yp, dr, ft, Ed, SGe, uo, DHe, At, vn, bm, gz, sr, I6e, Rko, a5, AFn, Ox, g$
+// [unwrapped __esm module VFl] deps: services/analytics/index.ts, services/analytics/index.ts, utils/http.ts, services/mcp/config.ts, services/mcp/utils.ts, services/mcp/client.ts, services/mcp/client.ts, undici/lib/web/fetch/util.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/hooks/sessionHooks.ts, lodash-es/_arrayPush.js, yBn, utils/debug.ts, services/mcp/utils.ts, utils/debug.ts, utils/gracefulShutdown.ts, utils/settings/settings.ts, services/analytics/index.ts, context/notifications.tsx, ink/components/Box.tsx, context/notifications.tsx, services/mcp/useManageMCPConnections.ts, utils/errors.ts, utils/sequential.ts, utils/messageQueueManager.ts, hooks/notifs/useSettingsErrors.tsx, services/teamMemorySync/secretScanner.ts, services/mcp/channelPermissions.ts, hooks/toolPermission/handlers/interactiveHandler.ts, services/mcp/config.ts, utils/proxy.ts, Ox, services/mcp/xaa.ts
 ((kC = R(rt(), 1)), (SBo = (Mpo(), ro(Ppo)).fetchMcpSkillsForClient));
 function Unr() {
   return ABo;

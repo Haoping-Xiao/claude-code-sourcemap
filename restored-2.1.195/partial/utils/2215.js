@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0997  score=0.1303  fileCov=0.2981
 // note: low-confidence suggestion: src/utils/semver.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jc] deps: Rc, oo, Vw, fn, Rd, Ls, qd, aW, GY, oKr
+// [unwrapped __esm module jc] deps: constants/oauth.ts, utils/http.ts, utils/betas.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/constants.ts, utils/status.tsx, utils/log.ts, types/generated/google/protobuf/timestamp.ts, utils/signal.ts, services/policyLimits/index.ts
 l1i = require("fs"), c1i = require("path");
 xOd = [["hipaa", "allow_web_fetch"], ["hipaa", "allow_memory_sync"], ["zdr", "allow_memory_sync"], ["hipaa", "allow_settings_sync"], ["hipaa", "allow_voice_mode"], ["hipaa", "allow_design_sync"], ["hipaa", "allow_projects_tool"], ["hipaa", "allow_remote_sessions"], ["hipaa", "allow_cobalt_plinth"], ["zdr", "allow_cobalt_plinth"], ["hipaa", "allow_team_onboarding"], ["hipaa", "allow_team_discovery"], ["hipaa", "allow_error_reporting"], ["zdr", "allow_error_reporting"], ["hipaa", "allow_context_tips"], ["hipaa", "allow_desktop_handoff"]], kOd = new Set(["allow_product_feedback", "allow_remote_sessions", "allow_cobalt_plinth", "allow_error_reporting", "allow_desktop_handoff"]), ROd = new Set(["allow_product_feedback"]);
 function cH(e, t) {

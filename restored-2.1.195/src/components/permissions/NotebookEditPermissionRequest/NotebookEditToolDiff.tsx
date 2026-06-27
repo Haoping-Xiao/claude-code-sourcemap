@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3952  score=0.5911  fileCov=0.5438
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module s6n] deps: o6n, ys, Hu, _m, Jt
+// [unwrapped __esm module s6n] deps: utils/notebook.ts, utils/fsOperations.ts, utils/file.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/fsOperations.ts
 kvo = class kvo extends Error {
   constructor(e) {
     super(e);

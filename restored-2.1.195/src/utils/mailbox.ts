@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.58  score=0.9446  fileCov=0.6004
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S6] deps: F1a, X_e, SGe, Kit, Ye, je, vn, SZr, Yj, xne, H0e, QLn, G1a
+// [unwrapped __esm module S6] deps: ink/events/terminal-event.ts, ink/styles.ts, ink/components/Box.tsx, ink/reconciler.ts, hooks/useTerminalSize.ts, utils/debug.ts, utils/sequential.ts, components/ScrollKeybindingHandler.tsx, components/PromptInput/PromptInput.tsx, utils/debug.ts, keybindings/defaultBindings.ts, keybindings/schema.ts, keybindings/KeybindingProviderSetup.tsx
 ((Fho = R(lt(), 1)), (qI = R(rt(), 1)), (ePe = R(se(), 1)));
 class jho {
   queue = [];

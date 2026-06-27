@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1973  score=0.6494  fileCov=0.2208
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vw] deps: Qi, Un, ft, TM, GY, oo, BE, je, fn, mye, k0, Oot, Ao, JOt, Ls, Bot, m1
+// [unwrapped __esm module Vw] deps: lodash-es/memoize.js, services/analytics/growthbook.ts, services/analytics/index.ts, constants/betas.ts, utils/signal.ts, utils/http.ts, has-flag/index.js, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fastMode.ts, k0, utils/words.ts, utils/agentContext.ts, utils/managedEnvConstants.ts, utils/status.tsx, utils/thinking.ts, utils/thinking.ts
 Rvi = new Set([FY]);
 RCn = Cn((e) => {
   if (T9("hipaa")) return false;

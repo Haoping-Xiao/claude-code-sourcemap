@@ -4,7 +4,7 @@
 // class=new  jaccard=0.004  score=0.147  fileCov=0.0041
 // note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I7e] deps: ft, GF, Izt, RF, kt, ty, $S, Jen, dC, h6, Ld, BE, wpe, Lo, je, wr, Y4, gM, sa, sF, lpr, co, QO, OJt, k0, Ao, vM, Ls, DE, KI, _$, _a, bk, zgo, HO, aR
+// [unwrapped __esm module I7e] deps: services/analytics/index.ts, constants/systemPromptSections.ts, tools/EnterWorktreeTool/EnterWorktreeTool.ts, utils/diff.ts, utils/debug.ts, tools/AgentTool/loadAgentsDir.ts, google-auth-library/build/src/crypto/node/crypto.js, skills/loadSkillsDir.ts, utils/claudemd.ts, state/AppStateStore.ts, utils/concurrentSessions.ts, has-flag/index.js, services/api/filesApi.ts, utils/fsOperations.ts, utils/debug.ts, main.tsx, utils/getWorktreePaths.ts, utils/teleport.tsx, utils/git.ts, services/api/claude.ts, utils/transcriptSearch.ts, utils/messages.ts, utils/model/configs.ts, commands/model/model.tsx, k0, utils/agentContext.ts, utils/model/model.ts, utils/status.tsx, utils/permissions/PermissionMode.ts, utils/permissions/filesystem.ts, utils/Shell.ts, utils/plans.ts, utils/tasks.ts, utils/todo/types.ts, utils/sessionUrl.ts, constants/prompts.ts
 OEc = require("path");
 Vhm = {
   unknown_family: "not a model this version of Claude Code recognizes",

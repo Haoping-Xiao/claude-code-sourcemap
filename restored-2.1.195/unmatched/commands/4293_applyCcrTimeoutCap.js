@@ -5,7 +5,7 @@
 // note: nearest: src/cli/print.ts (0.0092); dir inferred from dep-graph -> commands; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: applyCcrTimeoutCap, MonitorTool
-// [unwrapped __esm module Pgl] deps: ql, Ye, es
+// [unwrapped __esm module Pgl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/profilerBase.ts
 q6t = R(se(), 1);
 function Xpf() {
   return {

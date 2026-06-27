@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2144  score=0.4359  fileCov=0.2967
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NHc] deps: mE, X0, gIo, Ye, UX
+// [unwrapped __esm module NHc] deps: components/ThemePicker.tsx, components/ManagedSettingsSecurityDialog/utils.ts, components/messages/teamMemSaved.ts, hooks/useTerminalSize.ts, utils/imageValidation.ts
 (($Hc = R(lt(), 1)), (YTe = R(se(), 1)));
 function N_m(e, t, n) {
   switch (e) {

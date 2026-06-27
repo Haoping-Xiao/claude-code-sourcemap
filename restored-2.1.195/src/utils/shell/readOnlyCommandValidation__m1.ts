@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0132  score=0.2202  fileCov=0.0138
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tdr] deps: Xa, w4, lPn, ZS, Ye, uo, Mne, Pne
+// [unwrapped __esm module tdr] deps: @xmldom/xmldom/lib/entities.js, highlight.js/lib/languages/reasonml.js, hooks/renderPlaceholder.ts, ink/terminal.ts, hooks/useTerminalSize.ts, context/notifications.tsx, components/TextInput.tsx, @xmldom/xmldom/lib/entities.js
 ((kTt = R(lt(), 1)),
   (qz = R(se(), 1)),
   (Hdm = {

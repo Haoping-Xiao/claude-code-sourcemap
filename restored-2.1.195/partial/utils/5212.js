@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0842  score=0.3233  fileCov=0.1023
 // note: low-confidence suggestion: node_modules/chokidar/esm/index.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sQt] deps: Xr, lH, At, Is, Jt, Z3o, Qir, QJt
+// [unwrapped __esm module sQt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, lH, utils/errors.ts, utils/platform.ts, utils/fsOperations.ts, hooks/useReplBridge.tsx, commands/bridge-kick.ts, cli/print.ts
 hGo = ve(() => H.object({
   intervalSeconds: H.number().positive().default(30)
 }).strict()), fZ = {

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0817  score=0.3106  fileCov=0.0998
 // note: low-confidence suggestion: src/commands/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nMl] deps: ft, ZU
+// [unwrapped __esm module nMl] deps: services/analytics/index.ts, utils/analyzeContext.ts
 tMl = {
   type: "local-jsx",
   name: "autocompact",

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2429  score=0.3305  fileCov=0.4784
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module h7l] deps: si, Xa, Ye, uo, rme, es, sr, g0, B_, gm, kP
+// [unwrapped __esm module h7l] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, context/notifications.tsx, components/tasks/renderToolActivity.tsx, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, utils/format.ts, components/PromptInput/PromptInputFooterSuggestions.tsx, undici/lib/mock/mock-agent.js, components/design-system/Tabs.tsx
 ((Vsr = R(lt(), 1)), (CJt = R(rt(), 1)), (NH = R(se(), 1)));
 function AgentsMenu(t0) {
   let t = p4o.c(215),

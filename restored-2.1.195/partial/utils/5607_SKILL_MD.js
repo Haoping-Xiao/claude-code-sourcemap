@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/skills/bundled/verifyContent.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SKILL_MD
-// [unwrapped __esm module yKo] deps: U_t, Un, jc, G1, At, Ls, qd
+// [unwrapped __esm module yKo] deps: hooks/toolPermission/PermissionContext.ts, services/analytics/growthbook.ts, utils/semver.ts, tools/AskUserQuestionTool/prompt.ts, utils/errors.ts, utils/status.tsx, utils/log.ts
 gtn = /^(?:session|cse)_[A-Za-z0-9_-]+$/;
 function Opr() {
   if (kTc) return;

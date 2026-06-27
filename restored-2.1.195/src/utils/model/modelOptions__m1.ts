@@ -5,7 +5,7 @@
 // note: deminified; 32 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: FALLBACK_FOR_ALL_PRIMARY_MODELS, CLAUDE_CONTEXT_COLLAPSE_MODEL, CLAUDE_CONTEXT_COLLAPSE, CLAUDE_CODE_SUBAGENT_MODEL, CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK, CLAUDE_CODE_SKIP_FAST_MODE_NETWORK_ERRORS, CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE, CLAUDE_CODE_ENABLE_OPUS_4_7_FAST_MODE, CLAUDE_CODE_EFFORT_LEVEL, CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP, CLAUDE_CODE_DISABLE_FAST_MODE, CLAUDE_CODE_DISABLE_1M_CONTEXT, CLAUDE_CODE_BG_CLASSIFIER_MODEL, CLAUDE_CODE_AUTO_MODE_MODEL, CLAUDE_CODE_AL …
-// [unwrapped __esm module rbs] deps: Eae
+// [unwrapped __esm module rbs] deps: utils/auth.ts
 ((fwu = Fe.str()),
   (mwu = Fe.str()),
   (gwu = Fe.str()),

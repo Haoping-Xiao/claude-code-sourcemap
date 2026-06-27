@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1833  score=0.4099  fileCov=0.249
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mTl] deps: ZLo, bde, lTl, dze
+// [unwrapped __esm module mTl] deps: utils/powershell/dangerousCmdlets.ts, utils/powershell/parser.ts, tools/PowerShellTool/clmTypes.ts, utils/file.ts
 cTl = new Set(["pwsh", "pwsh.exe", "powershell", "powershell.exe"]);
 $bf = new Set(["/", "\u2013", "\u2014", "\u2015"]);
 Fbf = new Set([

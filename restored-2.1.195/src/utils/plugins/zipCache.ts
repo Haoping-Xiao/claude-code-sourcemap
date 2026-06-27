@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3667  score=0.6342  fileCov=0.465
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YZn] deps: Qi, dn, w8, je, Iv, ys, pq, Xh, zZn
+// [unwrapped __esm module YZn] deps: lodash-es/memoize.js, dn, p-map/index.js, utils/debug.ts, hooks/useSettings.ts, utils/fsOperations.ts, utils/markdownConfigLoader.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/loadPluginCommands.ts
 Z0l = require("path");
 g$o = Cn(async () => {
   let { enabled: e, errors: t } = await mp(),

@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module y4o] deps: ft, kt, je, At, oc, ys, vn, Is, Jt
+// [unwrapped __esm module y4o] deps: services/analytics/index.ts, utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/nativeInstaller/download.ts, utils/fsOperations.ts, utils/sequential.ts, utils/platform.ts, utils/fsOperations.ts
 ((q7l = require("fs")),
   (eHt = require("fs/promises")),
   (g4o = require("path")),

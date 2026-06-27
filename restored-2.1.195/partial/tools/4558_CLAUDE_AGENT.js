@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/tools/AgentTool/forkSubagent.ts; dir inferred from dep-graph -> tools; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: CLAUDE_AGENT
-// [unwrapped __esm module HLl] deps: fh
+// [unwrapped __esm module HLl] deps: commands/insights.ts
 ELl = {
   agentType: "worker",
   whenToUse: "For executing tasks autonomously \u2014 research, implementation, or verification.",

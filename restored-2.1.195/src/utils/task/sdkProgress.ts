@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3309  score=0.3588  fileCov=0.8095
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Hoe] deps: PR, ft, dn, Un, kt, pke, ZE, tP, G1, lf, EI, lC, dqe, Lx, EAe, BE, je, wr, fn, At, sF, co, DD, xUt, Ao, Ls, dr, Epe, Jt, sr, m1, u$, Ote, pht, dyt, Yf, p8t, QH, Cwo
+// [unwrapped __esm module Hoe] deps: utils/errors.ts, services/analytics/index.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, pke, utils/shell/prefix.ts, services/api/errors.ts, tools/AskUserQuestionTool/prompt.ts, tools/GlobTool/prompt.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, tools/ReadMcpResourceTool/UI.tsx, main.tsx, hooks/useCanUseTool.tsx, has-flag/index.js, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, services/api/claude.ts, utils/messages.ts, utils/model/modelOptions.ts, ink/styles.ts, utils/agentContext.ts, utils/status.tsx, utils/settings/settings.ts, utils/permissions/yoloClassifier.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/thinking.ts, utils/model/check1mAccess.ts, utils/user.ts, utils/fingerprint.ts, dyt, utils/task/diskOutput.ts, p8t, tools/TaskStopTool/prompt.ts, Cwo
 ((rol = require("crypto")), (U8e = require("fs/promises")), (F8e = require("path")));
 ((Mwo = rnf(Wrl())), (snf = Iwo()));
 ((lnf = new Set([Co, Ss])),

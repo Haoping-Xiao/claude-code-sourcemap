@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0102  score=0.0381  fileCov=0.0138
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lOl] deps: G1o, Ye, uo, Ao, sr
+// [unwrapped __esm module lOl] deps: G1o, hooks/useTerminalSize.ts, context/notifications.tsx, utils/agentContext.ts, services/teamMemorySync/secretScanner.ts
 ((_Df = R(lt(), 1)), (aOl = R(se(), 1)));
 function fOl(e) {
   let t = UOe.c(2),

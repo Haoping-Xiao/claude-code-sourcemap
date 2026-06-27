@@ -5,7 +5,7 @@
 // note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: worktreeOwnershipFields, summarizeToolCalls, stashBgStructuredResult, setWorktreeOwnership, setPermissionBlock, scanLinkRecords, markTurnActive, markTurnAborted, markApiFailure, findLatestRealUserAsk, ensurePermissionBridge, createClassifierJobState, classifyAndPushDebounced, classifyAndPush, classify, captureLatestAsk, captureIntent, LINK_SCAN_MAX_BYTES
-// [unwrapped __esm module Oze] deps: ft, ft, GF, yfe, ESt, p8, HI, OM, fd, je, Kke, wr, At, Hpe, bm, Jt, nne, ag
+// [unwrapped __esm module Oze] deps: services/analytics/index.ts, services/analytics/index.ts, constants/systemPromptSections.ts, jwa/index.js, commands/bridge-kick.ts, ink/terminal.ts, HI, ink/clearTerminal.ts, utils/debugFilter.ts, utils/debug.ts, Kke, main.tsx, utils/errors.ts, utils/peerAddress.ts, utils/messageQueueManager.ts, utils/fsOperations.ts, utils/signal.ts, utils/claudeInChrome/common.ts
 ((TSt = require("fs/promises")),
   (sxl = require("net")),
   (jPo = require("path")),

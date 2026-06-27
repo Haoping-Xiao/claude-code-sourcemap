@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4034  score=0.5509  fileCov=0.601
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module v8l] deps: Yyt, Ye, ps, ii, LL, es, i6e, Bs, vi, Ko, rjo, YHe
+// [unwrapped __esm module v8l] deps: components/messages/CollapsedReadSearchContent.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/mockRateLimits.ts, utils/sessionActivity.ts, utils/profilerBase.ts, components/DiagnosticsDisplay.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, components/tasks/taskStatusUtils.tsx, components/tasks/AsyncAgentDetailDialog.tsx
 ((H8l = R(lt(), 1)), (_E = R(se(), 1)));
 function toInternalMessages(messages) {
   return messages.flatMap((t) => {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4454  score=0.5823  fileCov=0.6546
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I3t] deps: Vb, Xr, BI, E3t, qNn, ii, vn, qdt, Jt, I8, ILe, dqe, IIa
+// [unwrapped __esm module I3t] deps: @modelcontextprotocol/sdk/dist/esm/types.js, @modelcontextprotocol/sdk/dist/esm/types.js, services/mcp/client.ts, utils/sanitization.ts, qNn, services/mockRateLimits.ts, utils/sequential.ts, tools/ReadMcpResourceTool/UI.tsx, utils/fsOperations.ts, utils/telemetryAttributes.ts, tools/ListMcpResourcesTool/prompt.ts, tools/ReadMcpResourceTool/UI.tsx, IIa
 ((Cvp = ve(() =>
   H.object({
     server: H.string().describe("The MCP server name"),

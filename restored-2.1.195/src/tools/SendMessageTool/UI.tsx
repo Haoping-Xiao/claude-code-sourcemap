@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3991  score=0.5434  fileCov=0.6003
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qzt] deps: ft, rze, X6, l$, dn, S_, LL, $S, og, Il, c9t, Lo, je, At, vn, co, kpe, $g, uft, _a, l8e, bH, xF, Mp, K0, tQ, vAe, N8t, qRe, ty, SAe
+// [unwrapped __esm module qzt] deps: services/analytics/index.ts, tools/AgentTool/resumeAgent.ts, utils/api.ts, tools/AgentTool/forkSubagent.ts, dn, tasks/LocalShellTask/LocalShellTask.tsx, utils/sessionActivity.ts, google-auth-library/build/src/crypto/node/crypto.js, utils/teammateContext.ts, Il, utils/model/agent.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/messages.ts, utils/systemPrompt.ts, utils/plugins/pluginIdentifier.ts, bridge/debugUtils.ts, utils/plans.ts, l8e, Task.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, utils/concurrentSessions.ts, utils/mcpOutputStorage.ts, tools/AgentTool/built-in/exploreAgent.ts, tools/AgentTool/built-in/exploreAgent.ts, tools/AgentTool/UI.tsx, tools/ToolSearchTool/prompt.ts, tools/AgentTool/loadAgentsDir.ts, tools/SkillTool/UI.tsx
 jRo = require("fs");
 qF = class qF extends Error {
   constructor(e) {

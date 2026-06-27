@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3372  score=0.8277  fileCov=0.3627
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aE] deps: sFn, Qi, kt, Du, ft, dn, Rx, BI, er, wr, fn, Bi, ys, YS, ZIa, vn, Is, OB, sr, kv, fp, je, Q9, At, HDn, Jt
+// [unwrapped __esm module aE] deps: utils/jetbrains.ts, lodash-es/memoize.js, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, services/analytics/index.ts, dn, utils/env.ts, services/mcp/client.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, constants/files.ts, utils/fsOperations.ts, utils/teammateContext.ts, utils/jetbrains.ts, utils/sequential.ts, utils/platform.ts, utils/execFileNoThrowPortable.ts, services/teamMemorySync/secretScanner.ts, proxy-from-env/index.js, screens/REPL.tsx, utils/debug.ts, tools/FileReadTool/FileReadTool.ts, utils/errors.ts, utils/imageResizer.ts, utils/fsOperations.ts
 ((cxa = require("fs/promises")),
   (uxa = require("net")),
   (dxa = R(require("os"))),

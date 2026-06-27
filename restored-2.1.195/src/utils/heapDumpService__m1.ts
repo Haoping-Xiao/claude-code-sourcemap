@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/heapDumpService.ts)  jaccard=0.0212  score=0.0653  fileCov=0.0305
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SNc] deps: zb, Mm, wr, At, Jt, c_
+// [unwrapped __esm module SNc] deps: zod/v4/classic/schemas.js, utils/git/gitConfigParser.ts, main.tsx, utils/errors.ts, utils/fsOperations.ts, services/mcp/officialRegistry.ts
 ((pNc = require("fs")),
   (j7e = require("fs/promises")),
   (fNc = require("stream")),

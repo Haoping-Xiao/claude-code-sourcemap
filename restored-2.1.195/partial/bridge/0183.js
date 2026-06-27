@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2107  score=0.3999  fileCov=0.3082
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gEr] deps: Tx, rv, DR
+// [unwrapped __esm module gEr] deps: @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 IIt = class IIt extends cp {
   create(e, t, n) {
     let {

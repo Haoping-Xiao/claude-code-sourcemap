@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0561  score=0.237  fileCov=0.0685
 // note: nearest: src/tools/MCPTool/MCPTool.ts (0.0561); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eIa] deps: yBn, Xr, ft, Cre, cqe, BI, Ox, wr, fn, At, vn
+// [unwrapped __esm module eIa] deps: yBn, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/mcp/auth.ts, tools/McpAuthTool/McpAuthTool.ts, services/mcp/client.ts, Ox, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts
 nvp = ve(() => H.object({})), rvp = ve(() => H.object({
   callback_url: H.string().describe("The full callback URL from the browser address bar after authorizing, e.g. http://localhost:<port>/callback?code=...&state=...")
 }));

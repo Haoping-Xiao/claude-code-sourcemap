@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5517  score=0.8093  fileCov=0.6341
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zhc] deps: zj, ps, dn, uf
+// [unwrapped __esm module zhc] deps: utils/Cursor.ts, utils/suggestions/directoryCompletion.ts, dn, main.tsx
 qT = R(rt(), 1);
 function Khc({ maxBufferSize: e, debounceMs: t }) {
   let n = ks(),

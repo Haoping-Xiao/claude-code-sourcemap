@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.229  score=0.3681  fileCov=0.3773
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module HDc] deps: ft, Ed, GY, atr
+// [unwrapped __esm module HDc] deps: services/analytics/index.ts, context/notifications.tsx, utils/signal.ts, components/PackageManagerAutoUpdater.tsx
 Ffr = R(rt(), 1);
 function useRateLimitWarningNotification(model) {
   let t = TDc.c(30),

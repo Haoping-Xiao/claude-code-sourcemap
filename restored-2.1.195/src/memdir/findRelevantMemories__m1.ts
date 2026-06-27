@@ -4,7 +4,7 @@
 // class=modified (alt of src/memdir/findRelevantMemories.ts)  jaccard=0.064  score=0.1842  fileCov=0.0892
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module put] deps: Xr, ft, uut, mSe, z1, ole, wr, NX, Ao, dr
+// [unwrapped __esm module put] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, cli/print.ts, services/rateLimitMessages.ts, services/api/errorUtils.ts, services/oauth/getOauthProfile.ts, main.tsx, services/mcp/types.ts, utils/agentContext.ts, utils/settings/settings.ts
 ySe = Dy({
   kind: "fable_overage_consent_prompt",
   payload: ve(() =>

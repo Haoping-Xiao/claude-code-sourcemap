@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1794  score=0.2519  fileCov=0.3841
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oke] deps: bwi, Vb, H1t, H1t, h8r
+// [unwrapped __esm module oke] deps: pkce-challenge/dist/index.node.js, @modelcontextprotocol/sdk/dist/esm/types.js, @modelcontextprotocol/sdk/dist/esm/shared/auth.js, @modelcontextprotocol/sdk/dist/esm/shared/auth.js, @modelcontextprotocol/sdk/dist/esm/client/auth.js
 sL = class sL extends Error {
   constructor(e) {
     super(e ?? "Unauthorized");

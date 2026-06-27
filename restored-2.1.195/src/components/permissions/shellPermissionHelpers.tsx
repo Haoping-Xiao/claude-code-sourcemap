@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2919  score=0.4699  fileCov=0.4351
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QAc] deps: WLn, GAc, VAc, KAc, tC, HN, w4, Tc, Ye, ps, kt, uo, eVe, lT, xW, _Tt, vn, e8t, I1, KI
+// [unwrapped __esm module QAc] deps: ink/styles.ts, components/permissions/AskUserQuestionPermissionRequest/SubmitQuestionsView.tsx, components/permissions/AskUserQuestionPermissionRequest/use-multiple-choice-state.ts, components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx, components/CustomSelect/use-multi-select-state.ts, utils/plugins/pluginPolicy.ts, highlight.js/lib/languages/reasonml.js, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, context/notifications.tsx, hooks/toolPermission/permissionLogging.ts, utils/permissions/permissionSetup.ts, utils/imageResizer.ts, utils/processUserInput/processTextPrompt.ts, utils/sequential.ts, @xmldom/xmldom/lib/entities.js, hooks/usePasteHandler.ts, utils/permissions/filesystem.ts
 ((Xzo = R(lt(), 1)), (bpr = R(rt(), 1)), (atn = R(se(), 1)));
 function n_m(e) {
   switch (e.length) {

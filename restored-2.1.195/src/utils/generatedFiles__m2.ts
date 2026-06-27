@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/generatedFiles.ts)  jaccard=0.0398  score=0.2161  fileCov=0.0465
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _k] deps: kt, Pw, je, At, ys, vn, Jt, B1, ZC, ft, Lo, gM, vf, dr, lE, $g, Xh
+// [unwrapped __esm module _k] deps: utils/debug.ts, utils/fileRead.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/sequential.ts, utils/fsOperations.ts, tools/SkillTool/prompt.ts, utils/plugins/schemas.ts, services/analytics/index.ts, utils/fsOperations.ts, utils/teleport.tsx, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/loadPluginAgents.ts
 lz = require("path");
 async function EXCLUDED_FILENAMES(e) {
   let t;

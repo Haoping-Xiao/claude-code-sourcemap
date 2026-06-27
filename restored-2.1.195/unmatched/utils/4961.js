@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0496  score=0.1053  fileCov=0.0856
 // note: nearest: src/skills/bundled/remember.ts (0.0496); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module T9l] deps: kt, jc, e1, qyt, kAt, E9l
+// [unwrapped __esm module T9l] deps: utils/debug.ts, utils/semver.ts, bridge/bridgeApi.ts, commands/extra-usage/index.ts, utils/background/remote/remoteSession.ts, commands/review/ultrareviewCommand.tsx
 H9l = R(se(), 1);
 var LWf = "https://code.claude.com/docs/en/claude-code-on-the-web",
   DWf = "Run `gh pr list` to show the open pull requests, then ask the user which one to review (`/review <number>`).",

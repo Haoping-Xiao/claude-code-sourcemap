@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0179  score=0.5524  fileCov=0.0182
 // note: nearest: src/components/VirtualMessageList.tsx (0.0179); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $Ln] deps: fGe
+// [unwrapped __esm module $Ln] deps: ink/components/AppContext.ts
 hat = R(rt(), 1);
 function NLn(e) {
   let {

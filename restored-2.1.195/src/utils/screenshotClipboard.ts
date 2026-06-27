@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3733  score=0.6058  fileCov=0.493
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MOl] deps: Tc, xOl
+// [unwrapped __esm module MOl] deps: marked/lib/marked.esm.js, upstreamproxy/relay.ts
 ((Wtr = require("zlib")), (tNo = Mfe * jOe));
 kOl = WDf();
 ROl = qDf();

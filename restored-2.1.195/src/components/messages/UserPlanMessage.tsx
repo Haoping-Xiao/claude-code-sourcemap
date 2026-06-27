@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2514  score=0.3906  fileCov=0.4137
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Nil] deps: cEe, Ye, co, ql
+// [unwrapped __esm module Nil] deps: constants/spinnerVerbs.ts, hooks/useTerminalSize.ts, utils/messages.ts, commands/add-dir/validation.ts
 (($il = R(lt(), 1)), (jMe = R(se(), 1)));
 function Kzn(e) {
   let t = Bil.c(5),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0531  score=1  fileCov=0.0531
 // note: nearest: src/ink/useTerminalNotification.ts (0.0531); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qol] deps: Xa, Ye, co, Cc, ql
+// [unwrapped __esm module qol] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/messages.ts, context/modalContext.tsx, commands/add-dir/validation.ts
 Gol = R(lt(), 1), DT = R(se(), 1);
 function Dyt() {
   let e = Sd(),

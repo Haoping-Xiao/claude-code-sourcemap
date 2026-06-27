@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1456  score=0.2144  fileCov=0.312
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qRc] deps: ft, Ed, er, vn, GRc
+// [unwrapped __esm module qRc] deps: services/analytics/index.ts, context/notifications.tsx, utils/config.ts, utils/sequential.ts, components/PromptInput/PromptInput.tsx
 Sfr = R(rt(), 1);
 function _temp() {
   let { addNotification: e } = Li(),

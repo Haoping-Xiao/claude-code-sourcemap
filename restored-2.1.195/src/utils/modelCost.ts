@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2748  score=0.4322  fileCov=0.43
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NE] deps: Hp, Rc, Un, ft, id, kt, oo, er, je, fn, mye, Ao, Ls, qd, dr, ih
+// [unwrapped __esm module NE] deps: axios/lib/axios.js, constants/oauth.ts, services/analytics/growthbook.ts, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, utils/http.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fastMode.ts, utils/agentContext.ts, utils/status.tsx, utils/log.ts, utils/settings/settings.ts, bootstrap/state.ts
 Jdd = [
   {
     canonical: "claude-opus-4-6",

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4606  score=0.7494  fileCov=0.5445
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eSc] deps: Ed, pir, dn, uo, je, At
+// [unwrapped __esm module eSc] deps: context/notifications.tsx, utils/model/deprecation.ts, dn, context/notifications.tsx, utils/debug.ts, utils/errors.ts
 qen = R(rt(), 1);
 class DirectConnectSessionManager {
   ws = null;

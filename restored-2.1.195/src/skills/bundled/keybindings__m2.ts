@@ -4,7 +4,7 @@
 // class=modified (alt of src/skills/bundled/keybindings.ts)  jaccard=0.0112  score=0.0539  fileCov=0.014
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VAt] deps: hY, ty, Lo, fn, At, Iv, ys, sYl
+// [unwrapped __esm module VAt] deps: utils/settings/managedPath.ts, tools/AgentTool/loadAgentsDir.ts, utils/fsOperations.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, hooks/useSettings.ts, utils/fsOperations.ts, components/agents/agentFileUtils.ts
 ((qAt = require("fs/promises")), (Lse = require("path")));
 function generateContextsTable(e) {
   let t = s4o.c(48),

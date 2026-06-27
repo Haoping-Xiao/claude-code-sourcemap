@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withProbeDeadline, apply3PDefaultFallbacks, TIER_LABELS
-// [unwrapped __esm module CMc] deps: kt, oo, wFe, je, RE, dr, QO, Ao, Ls
+// [unwrapped __esm module CMc] deps: utils/debug.ts, utils/http.ts, constants/xml.ts, utils/debug.ts, RE, utils/settings/settings.ts, utils/model/configs.ts, utils/agentContext.ts, utils/status.tsx
 vMc = Object.keys(yc).filter((e) => yc[e].mantle !== null);
 async function withProbeDeadline(e, t) {
   let n;

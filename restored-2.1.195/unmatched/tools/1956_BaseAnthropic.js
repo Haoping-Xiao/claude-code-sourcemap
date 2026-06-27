@@ -5,7 +5,7 @@
 // note: nearest: src/services/api/client.ts (0.0338); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default, BaseAnthropic, AnthropicAws
-// [unwrapped __esm module Qqr] deps: SAi, ROt, TAi, OK, OK, xAi
+// [unwrapped __esm module Qqr] deps: @anthropic-ai/bedrock-sdk/internal/headers.mjs, lodash-es/isArray.js, @anthropic-ai/bedrock-sdk/core/auth.mjs, @anthropic-ai/sdk/client.mjs, @anthropic-ai/sdk/client.mjs, signal-exit/index.js
 Jqr = class Jqr extends G2 {
   constructor({
     awsRegion: e,

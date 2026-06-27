@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module DXl] deps: ft
+// [unwrapped __esm module DXl] deps: services/analytics/index.ts
 ((w8f = {
   name: "chrome",
   description: "Open Claude in Chrome (beta) settings",

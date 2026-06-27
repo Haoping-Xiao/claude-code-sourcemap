@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6016  score=0.8399  fileCov=0.6796
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bbl] deps: Xr, ii, sp, bk, Mp, Pbl, Obl
+// [unwrapped __esm module Bbl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/worktree.ts, utils/tasks.ts, utils/concurrentSessions.ts, tools/TaskCreateTool/prompt.ts, Obl
 ((ohf = ve(() =>
   H.strictObject({
     subject: H.string().describe("A brief title for the task"),

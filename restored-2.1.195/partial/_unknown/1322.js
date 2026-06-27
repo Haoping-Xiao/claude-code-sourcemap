@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2386  score=1  fileCov=0.2386
 // note: low-confidence suggestion: node_modules/@aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OUr] deps: cPt
+// [unwrapped __esm module OUr] deps: @aws-sdk/client-sts/dist-cjs/STSClient.js
 DJs = R(eT(), 1), lPt = R(LB(), 1);
 var OJs = e => Object.assign(e, {
     useDualstackEndpoint: e.useDualstackEndpoint ?? false,

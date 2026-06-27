@@ -5,7 +5,7 @@
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
-// [unwrapped __esm module fnc] deps: dQt
+// [unwrapped __esm module fnc] deps: services/voiceStreamSTT.ts
 ((oXf = {
   type: "local",
   name: "voice",

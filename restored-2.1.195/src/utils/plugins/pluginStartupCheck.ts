@@ -5,7 +5,7 @@
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: settingSourceToScope, isPersistableScope, installSelectedPlugins, getPluginEditableScopes, getInstalledPlugins, findMissingPlugins, checkEnabledPlugins
-// [unwrapped __esm module MEt] deps: Ye, gm
+// [unwrapped __esm module MEt] deps: hooks/useTerminalSize.ts, undici/lib/mock/mock-agent.js
 ((f2l = R(lt(), 1)), (OKe = R(se(), 1)));
 async function checkEnabledPlugins() {
   let e = Dr(),

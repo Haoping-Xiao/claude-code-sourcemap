@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1428  score=0.2606  fileCov=0.24
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pir] deps: dn, je, vn, co, Cv, MJl, Y4o
+// [unwrapped __esm module pir] deps: dn, utils/debug.ts, utils/sequential.ts, utils/messages.ts, utils/teleport/api.ts, components/messages/UserTextMessage.tsx, remote/RemoteSessionManager.ts
 $Jt = class $Jt extends Error {
   subtype;
   constructor(e, t) {

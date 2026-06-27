@@ -4,7 +4,7 @@
 // class=modified (alt of src/ink/clearTerminal.ts)  jaccard=0.042  score=0.0479  fileCov=0.252
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bBt] deps: one, OM
+// [unwrapped __esm module bBt] deps: ink/termio/csi.ts, ink/clearTerminal.ts
 m4d = /^\[M[\x60-\x7f][\x20-\uffff]?$/;
 function E4i(e) {
   return {

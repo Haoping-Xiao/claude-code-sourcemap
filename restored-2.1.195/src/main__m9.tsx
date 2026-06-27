@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0085  score=0.064  fileCov=0.0098
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xHt] deps: lH, jGo, Gfe, kYe, WL, q$, CHt, IKe, kLn, ZS, OM, dn, kt, je, At, YS, sa, zH, Vke, _ht, aR, FAe, ag
+// [unwrapped __esm module xHt] deps: lH, utils/sessionStorage.ts, undici/lib/web/fileapi/util.js, bridge/bridgeMain.ts, utils/git.ts, undici/lib/core/symbols.js, utils/plugins/installCounts.ts, @aws-sdk/client-bedrock/dist-cjs/index.js, ink/ink.tsx, ink/terminal.ts, ink/clearTerminal.ts, dn, utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/teammateContext.ts, utils/git.ts, services/teamMemorySync/secretScanner.ts, tools/SkillTool/prompt.ts, utils/conversationRecovery.ts, constants/prompts.ts, entrypoints/sdk/coreSchemas.ts, utils/claudeInChrome/common.ts
 ((PYe = require("fs/promises")), (vrc = require("path")));
 function Rrc(e) {
   return {

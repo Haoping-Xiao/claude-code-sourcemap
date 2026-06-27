@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5255  score=0.7187  fileCov=0.6616
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nKo] deps: ft, X0, dtn, WTe, Tpr, Ye, Du, sr
+// [unwrapped __esm module nKo] deps: services/analytics/index.ts, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/PermissionPrompt.tsx, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, components/permissions/BashPermissionRequest/bashToolUseOptions.tsx, hooks/useTerminalSize.ts, services/analytics/firstPartyEventLoggingExporter.ts, services/teamMemorySync/secretScanner.ts
 ((CHc = R(lt(), 1)), (b2 = R(se(), 1)));
 function powershellToolUseOptions({
   suggestions: e = [],

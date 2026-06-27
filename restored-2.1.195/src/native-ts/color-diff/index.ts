@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3099  score=0.8691  fileCov=0.3251
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eco] deps: bda, iba, vn
+// [unwrapped __esm module eco] deps: bda, highlight.js/lib/index.js, utils/sequential.ts
 ((Tba = new Set()), (vba = new Set()));
 function Nyp() {
   return zut();

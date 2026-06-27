@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3576  score=0.51  fileCov=0.5449
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OBo] deps: At, ys, Mx
+// [unwrapped __esm module OBo] deps: utils/errors.ts, utils/fsOperations.ts, utils/detectRepository.ts
 ((y2l = require("os")), (_2l = require("path")));
 function AddMarketplace(e) {
   let t = b2l.c(41),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/permissions/permissionExplainer.ts)  jaccard=0.2136  score=0.3374  fileCov=0.368
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rHc] deps: Xr, dn, kt, Du, er, je, At, Ao, Epe, Jt, sr
+// [unwrapped __esm module rHc] deps: @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/agentContext.ts, utils/permissions/yoloClassifier.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts
 ((s_m = {
   LOW: 1,
   MEDIUM: 2,

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/env.ts)  jaccard=0.0695  score=0.1844  fileCov=0.1004
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jh] deps: ft, je, wr, Bi, Is, _0, Bke, one
+// [unwrapped __esm module jh] deps: services/analytics/index.ts, utils/debug.ts, main.tsx, constants/files.ts, utils/platform.ts, axios/lib/utils.js, ink/termio/osc.ts, ink/termio/csi.ts
 ((OYr = require("buffer")), (NYr = l8 + String.fromCharCode(gW.OSC)), (PBd = l8 + "\\"));
 ((MBd = new Set([
   "ghostty",

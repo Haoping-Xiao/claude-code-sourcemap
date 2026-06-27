@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0148  score=0.2789  fileCov=0.0153
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0148); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qyc] deps: WQr, P1o, p8, Ye, _Ge, _Zr
+// [unwrapped __esm module Qyc] deps: projectOnboardingState.ts, hooks/useSearchInput.ts, ink/terminal.ts, hooks/useTerminalSize.ts, components/design-system/color.ts, components/TextInput.tsx
 Tdr = R(rt(), 1), x6o = R(se(), 1);
 function dfm() {
   let e = $en.c(8),

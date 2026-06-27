@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2904  score=0.5918  fileCov=0.3631
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module H7n] deps: Xr, DE, jgl
+// [unwrapped __esm module H7n] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/permissions/PermissionMode.ts, utils/permissions/PermissionRule.ts
 ((tbt = ve(() =>
   ol.enum(["userSettings", "projectSettings", "localSettings", "session", "cliArg"]),
 )),

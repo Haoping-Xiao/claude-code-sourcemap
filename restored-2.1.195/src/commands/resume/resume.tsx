@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: filterResumableSessions, call
-// [unwrapped __esm module O2o] deps: ft, Is, _a
+// [unwrapped __esm module O2o] deps: services/analytics/index.ts, utils/platform.ts, utils/plans.ts
 BVl = require("path");
 function resumeHelpMessage(result) {
   switch (result.resultType) {

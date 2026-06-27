@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4303  score=1  fileCov=0.4303
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module a8t] deps: fn
+// [unwrapped __esm module a8t] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((C6n = new Map()), (D8e = new Map()));
 function x6n(e) {
   pwo.emit(e);

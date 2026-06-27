@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3967  score=0.7944  fileCov=0.4421
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module T0c] deps: azo, EW, Ye, HVt, uo, ii, LL, je, co, DE, __, Hoe, Jt, qJ, cAe, hN, J_t, hP, xF, bk, Mp, Sj, YI, sbt
+// [unwrapped __esm module T0c] deps: hooks/useRemoteSession.ts, ink/ink.tsx, hooks/useTerminalSize.ts, ink/styles.ts, context/notifications.tsx, services/mockRateLimits.ts, utils/sessionActivity.ts, utils/debug.ts, utils/messages.ts, utils/permissions/PermissionMode.ts, utils/markdownConfigLoader.ts, utils/task/sdkProgress.ts, utils/fsOperations.ts, utils/plugins/installCounts.ts, utils/swarm/teammateLayoutManager.ts, utils/swarm/backends/detection.ts, tools/AgentTool/runAgent.ts, utils/swarm/spawnInProcess.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, utils/tasks.ts, utils/concurrentSessions.ts, utils/teammate.ts, utils/teammateMailbox.ts, utils/swarm/inProcessRunner.ts
 ((cYo = require("crypto")), (ONe = R(rt(), 1)));
 function useIDEIntegration(t0) {
   let t = v0c.c(7),

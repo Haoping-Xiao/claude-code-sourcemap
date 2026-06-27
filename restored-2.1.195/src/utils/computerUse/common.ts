@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1386  score=0.4767  fileCov=0.1635
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tzr] deps: ft, je, At, qd, dn, Un, kt, c_
+// [unwrapped __esm module Tzr] deps: services/analytics/index.ts, utils/debug.ts, utils/errors.ts, utils/log.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, services/mcp/officialRegistry.ts
 lOi = ["commercial", "gsuite", "enterprise", "health"];
 Hzr = L$d();
 function fOi() {

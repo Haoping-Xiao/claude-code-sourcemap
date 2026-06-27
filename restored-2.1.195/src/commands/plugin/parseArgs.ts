@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getPluginArgumentCompletions
-// [unwrapped __esm module w7l] deps: PEt, xrr
+// [unwrapped __esm module w7l] deps: native-ts/yoga-layout/index.ts, commands/mcp/mcp.tsx
 v7l = R(se(), 1);
 async function parsePluginArgs(args, t) {
   if (args.length === 0)

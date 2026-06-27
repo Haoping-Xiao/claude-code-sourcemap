@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0262  score=0.356  fileCov=0.0275
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ric] deps: sp
+// [unwrapped __esm module Ric] deps: utils/worktree.ts
 Mlr = require("crypto");
 async function* executePreToolHooks(
   toolName,

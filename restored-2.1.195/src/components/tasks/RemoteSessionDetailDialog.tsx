@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3413  score=0.5307  fileCov=0.4889
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module H1e] deps: ft, np, co, KI, CLo
+// [unwrapped __esm module H1e] deps: services/analytics/index.ts, env-paths/index.js, utils/messages.ts, utils/permissions/filesystem.ts, utils/queryHelpers.ts
 w8l = require("crypto");
 function formatToolUseSummary(name, input, n) {
   if (name === jD) return "Review the plan in Claude Code on the web";

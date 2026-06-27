@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2878  score=0.7807  fileCov=0.3132
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module __] deps: ft, INt, xNt, Lo, wr, Q9, fn, vf, lmn, dr, _1, L3e, Gy, fre, Un, qLn, kt, EI, lC, LL, ys, Vw, je, Yp, Ao, Ls, Is, _m, aS, CYn, wYn, $I, QH, qho, rcr, rcr, L3e
+// [unwrapped __esm module __] deps: services/analytics/index.ts, utils/permissions/permissionSetup.ts, tools/BashTool/shouldUseSandbox.ts, utils/fsOperations.ts, main.tsx, tools/FileReadTool/FileReadTool.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/changeDetector.ts, utils/settings/types.ts, utils/settings/settings.ts, utils/subprocessEnv.ts, L3e, utils/permissions/permissionSetup.ts, utils/permissions/PermissionUpdate.ts, services/analytics/growthbook.ts, context/voice.tsx, utils/debug.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, utils/sessionActivity.ts, utils/fsOperations.ts, utils/betas.ts, utils/debug.ts, utils/gracefulShutdown.ts, utils/agentContext.ts, utils/status.tsx, utils/platform.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/telemetry/pluginTelemetry.ts, components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx, utils/permissions/dangerousPatterns.ts, utils/permissions/shellRuleMatching.ts, tools/TaskStopTool/prompt.ts, utils/settings/applySettingsChange.ts, utils/git/gitignore.ts, utils/git/gitignore.ts, L3e
 ((Clc = require("path")), (Ilc = require("path")), (nO = (Eoe(), ro(Ope))));
 lrm = [...Hko, ...TYn, ...vYn];
 wlc = Symbol("no-cached-auto-mode-config");

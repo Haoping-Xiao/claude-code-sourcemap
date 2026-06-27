@@ -5,7 +5,7 @@
 // note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSuppressChromeOffer, shouldEnableClaudeInChrome, shouldAutoEnableClaudeInChrome, setupClaudeInChrome, markClaudeInChromeUnwiredIfChrome, markClaudeInChromeUnwired, isClaudeInChromeWiredThisSession, isChromeExtensionInstalled, installChromeNativeHostManifest, getClaudeInChromeMcpServerConfig, _resetShouldAutoEnableForTesting, _resetClaudeInChromeWiredForTesting
-// [unwrapped __esm module PFl] deps: At
+// [unwrapped __esm module PFl] deps: utils/errors.ts
 ((uBo = require("fs/promises")), (LFl = require("path")));
 function shouldEnableClaudeInChrome(e) {
   if (e === true) return true;

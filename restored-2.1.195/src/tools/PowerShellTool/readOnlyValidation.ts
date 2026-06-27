@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.647  score=0.8664  fileCov=0.7187
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Wbt] deps: Qi, Lo, Is, bde, xue, sr, ULo, dze
+// [unwrapped __esm module Wbt] deps: lodash-es/memoize.js, utils/fsOperations.ts, utils/platform.ts, utils/powershell/parser.ts, utils/shell/readOnlyCommandValidation.ts, services/teamMemorySync/secretScanner.ts, tools/PowerShellTool/commonParameters.ts, utils/file.ts
 ((JHl = require("fs")),
   (QHl = require("path")),
   (nbf = new Set(["--list-runtimes", "--list-sdks"])));

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1423  score=0.3032  fileCov=0.2114
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TTl] deps: Il, Lo, sa, Gy, w5e, Is, bde, xue, GHl, nTl, iTl, mTl, Wbt, dze
+// [unwrapped __esm module TTl] deps: Il, utils/fsOperations.ts, utils/git.ts, utils/permissions/permissionSetup.ts, services/mcp/vscodeSdkMcp.ts, utils/platform.ts, utils/powershell/parser.ts, utils/shell/readOnlyCommandValidation.ts, commands/sandbox-toggle/sandbox-toggle.tsx, tools/PowerShellTool/modeValidation.ts, tools/PowerShellTool/pathValidation.ts, tools/PowerShellTool/powershellSecurity.ts, tools/PowerShellTool/readOnlyValidation.ts, utils/file.ts
 ((yTl = require("path")),
   (nDo = new Set([
     "new-item",

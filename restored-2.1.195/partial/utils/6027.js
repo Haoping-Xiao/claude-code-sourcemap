@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0659  score=0.3815  fileCov=0.0738
 // note: low-confidence suggestion: src/tools/AgentTool/agentToolUtils.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UWc] deps: zb, BZ, pZo, rhr, $Wc
+// [unwrapped __esm module UWc] deps: zod/v4/classic/schemas.js, google-auth-library/build/src/auth/oauth2client.js, commands/bridge-kick.ts, cli/print.ts, @anthropic-ai/sdk/core/pagination.mjs
 NWc = require("crypto");
 dOm = ve(() => dt.object({
   scope: dt.discriminatedUnion("type", [dt.object({

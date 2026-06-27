@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/bridge-kick.ts)  jaccard=0.0402  score=0.0789  fileCov=0.0757
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dZo] deps: PR, TM, Rc, At, QO, Ao, Mh, Jt, BZ, awt, EWc
+// [unwrapped __esm module dZo] deps: utils/errors.ts, constants/betas.ts, constants/oauth.ts, utils/errors.ts, utils/model/configs.ts, utils/agentContext.ts, utils/proxy.ts, utils/fsOperations.ts, google-auth-library/build/src/auth/oauth2client.js, @modelcontextprotocol/sdk/dist/esm/shared/auth.js, services/api/client.ts
 $$m = new Set([
   "content-type",
   "accept",

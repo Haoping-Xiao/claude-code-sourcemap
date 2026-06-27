@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2136  score=0.4004  fileCov=0.314
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SDl] deps: SGe, jh, dn, uo, At, ik
+// [unwrapped __esm module SDl] deps: ink/components/Box.tsx, utils/env.ts, dn, context/notifications.tsx, utils/errors.ts, utils/claudemd.ts
 ((Lkf = R(lt(), 1)), (mOo = R(rt(), 1)), (Dkf = R(se(), 1)));
 function Feedback({
   abortSignal: e,

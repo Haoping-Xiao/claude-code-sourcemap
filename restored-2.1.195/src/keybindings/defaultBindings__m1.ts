@@ -4,7 +4,7 @@
 // class=modified (alt of src/keybindings/defaultBindings.ts)  jaccard=0.0399  score=0.4307  fileCov=0.0421
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module H0e] deps: lQr, Is
+// [unwrapped __esm module H0e] deps: @xmldom/xmldom/lib/entities.js, utils/platform.ts
 E5d = {
   escape: "escape",
   return: "enter",

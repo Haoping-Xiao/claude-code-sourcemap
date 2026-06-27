@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3034  score=0.431  fileCov=0.5062
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DAc] deps: Gpo, PFn, si, Ye, Bi, sr, Vl, vi
+// [unwrapped __esm module DAc] deps: @ant/computer-use-mcp/src/toolCalls.ts, @ant/computer-use-mcp/src/imageResize.ts, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, constants/files.ts, services/teamMemorySync/secretScanner.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx
 ((ypr = R(lt(), 1)),
   (kAc = R(rt(), 1)),
   (SE = R(se(), 1)),

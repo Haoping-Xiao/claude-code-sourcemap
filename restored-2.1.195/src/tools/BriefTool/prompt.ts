@@ -5,7 +5,7 @@
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PEWTER_OWL_TOOL_PROMPT, LEGACY_BRIEF_TOOL_NAME, DESCRIPTION, BRIEF_TOOL_PROMPT, BRIEF_TOOL_NAME, BRIEF_PROACTIVE_SECTION, BRIEF_ENFORCE_SENTINEL
-// [unwrapped __esm module IX] deps: ft, Un, Vw, er, je, fn, Ls
+// [unwrapped __esm module IX] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/betas.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/status.tsx
 Oop = ["claude-3-5-haiku", "claude-3-haiku"];
 Bop = [];
 var oSe = "EnterWorktree";

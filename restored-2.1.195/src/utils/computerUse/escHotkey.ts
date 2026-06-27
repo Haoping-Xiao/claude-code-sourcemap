@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3946  score=0.6557  fileCov=0.4978
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KFn] deps: je
+// [unwrapped __esm module KFn] deps: utils/debug.ts
 lRa = class lRa extends Error {
   constructor(e) {
     super(`computer-use native call exceeded ${e}ms`);

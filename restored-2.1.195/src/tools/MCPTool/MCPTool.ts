@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5149  score=0.7175  fileCov=0.6458
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sSa] deps: Xr, ii, y4t, ILe, aco
+// [unwrapped __esm module sSa] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, screens/REPL.tsx, tools/ListMcpResourcesTool/prompt.ts, tools/MCPTool/UI.tsx
 ((__p = ve(() => H.object({}).passthrough())),
   (b_p = ve(() =>
     H.union([

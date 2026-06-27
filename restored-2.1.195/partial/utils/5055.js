@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1395  score=0.8044  fileCov=0.1444
 // note: low-confidence suggestion: src/tools/AgentTool/agentDisplay.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module t4o] deps: ft, uo, LL, TJt
+// [unwrapped __esm module t4o] deps: services/analytics/index.ts, context/notifications.tsx, utils/sessionActivity.ts, utils/toolPool.ts
 eYl = R(rt(), 1);
 function tYl(e, t) {
   let n = new Map();

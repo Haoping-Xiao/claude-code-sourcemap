@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2357  score=0.2514  fileCov=0.7911
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module N_l] deps: Xr, ii
+// [unwrapped __esm module N_l] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts
 ((Dgf = ve(() => H.strictObject({}))),
   (v0b = ti({
     name: O_l,

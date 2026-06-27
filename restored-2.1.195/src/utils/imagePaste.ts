@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0628  score=0.1694  fileCov=0.0907
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bUt] deps: At
+// [unwrapped __esm module bUt] deps: utils/errors.ts
 X8d = /[\u2018-\u201F]/;
 function getClipboardCommands() {
   let t = qE(),

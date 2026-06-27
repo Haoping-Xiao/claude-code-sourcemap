@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/agents/AgentsMenu.tsx)  jaccard=0.0267  score=0.0529  fileCov=0.0512
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iQt] deps: Ece, Ree, Sae, Xr, db, je, At, Rd, Is, sQt
+// [unwrapped __esm module iQt] deps: services/analytics/firstPartyEventLoggingExporter.ts, lodash-es/_createBaseFor.js, lodash-es/negate.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/authFileDescriptor.ts, utils/debug.ts, utils/errors.ts, utils/settings/constants.ts, utils/platform.ts, chokidar/esm/index.js
 ((Dtc = require("fs/promises")), (W1e = require("path")));
 yGo = ve(() => {
   let e = xw(fZ, (t) => h7f(t.schema()));

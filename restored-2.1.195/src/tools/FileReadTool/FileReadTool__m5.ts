@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0093  score=0.0431  fileCov=0.0118
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Q9] deps: Qi, wr, Bi, YS
+// [unwrapped __esm module Q9] deps: lodash-es/memoize.js, main.tsx, constants/files.ts, utils/teammateContext.ts
 ((W$i = require("fs/promises")),
   (q$i = Cn(async () => {
     let { code: e } = await $n("test", ["-f", "/.dockerenv"]);

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0137  score=0.187  fileCov=0.0146
 // note: nearest: node_modules/@grpc/grpc-js/build/src/load-balancer-outlier-detection.js (0.0137); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gta] deps: t2t
+// [unwrapped __esm module gta] deps: yaml/dist/parse/parser.js
 dta = Symbol.for("@bufbuild/cel/resolver");
 fta = class fta {
   _groups;

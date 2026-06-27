@@ -5,7 +5,7 @@
 // note: nearest: src/tools/PowerShellTool/readOnlyValidation.ts (0.0034); dir inferred from dep-graph -> ink; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: applyFleetViewHostWindowsEnv, FleetViewScreen
-// [unwrapped __esm module jpr] deps: HI, ZS, q7, EW, Tne, oat
+// [unwrapped __esm module jpr] deps: HI, ink/terminal.ts, ink/terminal.ts, ink/ink.tsx, ink/Ansi.tsx, ink/components/App.tsx
 mkc = R(lt(), 1), ytn = R(rt(), 1), gkc = R(se(), 1);
 function FleetViewScreen(e) {
   let t = hkc.c(3),

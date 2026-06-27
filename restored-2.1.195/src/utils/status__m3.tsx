@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0131  score=0.0548  fileCov=0.017
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dQa] deps: Jt
+// [unwrapped __esm module dQa] deps: utils/fsOperations.ts
 ((GVt = require("fs/promises")), (cQa = require("os")), (jVt = require("path")));
 function buildAPIProviderProperties() {
   let e = ZHo.c(10),

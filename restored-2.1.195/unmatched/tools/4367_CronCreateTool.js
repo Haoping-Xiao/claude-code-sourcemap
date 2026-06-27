@@ -5,7 +5,7 @@
 // note: nearest: src/tools.ts (0.0078); dir inferred from dep-graph -> tools; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: CronCreateTool
-// [unwrapped __esm module _Xn] deps: B_, ql, Ye, es
+// [unwrapped __esm module _Xn] deps: components/PromptInput/PromptInputFooterSuggestions.tsx, commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/profilerBase.ts
 WF = R(se(), 1);
 var iSl = 50,
   phf,

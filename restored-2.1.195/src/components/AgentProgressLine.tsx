@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2403  score=0.3389  fileCov=0.4521
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xoe] deps: Xa, Ye
+// [unwrapped __esm module xoe] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts
 ((_8t = R(lt(), 1)),
   (Ioe = R(rt(), 1)),
   (iq = R(se(), 1)),

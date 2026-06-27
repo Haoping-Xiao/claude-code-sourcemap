@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.029  score=0.056  fileCov=0.0567
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aSt] deps: ft, S4, S$, dC, _a, WSe, dQn
+// [unwrapped __esm module aSt] deps: services/analytics/index.ts, context.ts, tools/BashTool/bashPermissions.ts, utils/claudemd.ts, utils/plans.ts, follow-redirects/index.js, services/compact/postCompactCleanup.ts
 yTf = (KWe(), ro(zWe));
 function ZCl(e) {
   return e?.type === "assistant" && hSe(e);

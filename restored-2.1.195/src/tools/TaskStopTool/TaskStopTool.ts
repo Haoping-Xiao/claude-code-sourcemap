@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sanitizeSessionNamePrefix, getBridgeTokenOverride, getBridgeSessionNamePrefix, getBridgeBaseUrlOverride, getBridgeBaseUrl, getBridgeAccessToken
-// [unwrapped __esm module q0o] deps: Xr, ii, q6e, hyt, Jt, yyl
+// [unwrapped __esm module q0o] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, tasks/stopTask.ts, tasks/LocalShellTask/LocalShellTask.tsx, utils/fsOperations.ts, yyl
 ((rmf = ve(() =>
   H.strictObject({
     task_id: H.string().optional().describe("The ID of the background task to stop"),

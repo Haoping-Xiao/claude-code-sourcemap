@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3697  score=0.501  fileCov=0.5853
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qzn] deps: np, sA, co, Lyt, ql, Ail, ZCo, xil, Lil, Mil, Nil, eIo, Zil, nal, Gzn
+// [unwrapped __esm module Qzn] deps: env-paths/index.js, services/PromptSuggestion/promptSuggestion.ts, utils/messages.ts, native-ts/yoga-layout/index.ts, commands/add-dir/validation.ts, components/messages/UserBashInputMessage.tsx, components/AgentProgressLine.tsx, components/messages/UserCommandMessage.tsx, components/messages/UserLocalCommandOutputMessage.tsx, components/messages/UserMemoryInputMessage.tsx, components/messages/UserPlanMessage.tsx, context/QueuedMessageContext.tsx, components/messages/UserResourceUpdateMessage.tsx, utils/messages.ts, components/messages/UserAgentNotificationMessage.tsx
 ((dal = R(lt(), 1)), (n3 = R(se(), 1)));
 function AttachmentMessage(e) {
   let t = t_t.c(222),

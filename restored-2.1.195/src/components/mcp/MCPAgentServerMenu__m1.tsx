@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/mcp/MCPAgentServerMenu.tsx)  jaccard=0.1008  score=0.1625  fileCov=0.2098
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qnr] deps: si, kt, O0, _i, jh, Ye, ps, Cre, Yle, cqe, a5, BI, Yfe, g$, uo, oo, vy, At, vn, sr, Cc, mE, Bs, vi, f_, Ko, gm, gKe, EC, Mg, LBo
+// [unwrapped __esm module qnr] deps: @xmldom/xmldom/lib/entities.js, utils/debug.ts, commander/lib/command.js, components/design-system/Ratchet.tsx, utils/env.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/mcp/auth.ts, services/mcp/utils.ts, tools/McpAuthTool/McpAuthTool.ts, services/mcp/config.ts, services/mcp/client.ts, commands/mcp/mcp.tsx, services/mcp/xaa.ts, context/notifications.tsx, utils/http.ts, @mixmark-io/domino/lib/htmlelts.js, utils/errors.ts, utils/sequential.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, undici/lib/mock/mock-agent.js, components/Settings/Status.tsx, @anthropic-ai/bedrock-sdk/client.mjs, components/ScrollKeybindingHandler.tsx, components/mcp/MCPRemoteServerMenu.tsx
 ((BT = R(rt(), 1)), (ns = R(se(), 1)));
 function MCPAgentServerMenu({
   server: e,

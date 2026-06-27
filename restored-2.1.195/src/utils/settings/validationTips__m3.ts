@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0044  score=0.0053  fileCov=0.0267
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yFo] deps: Ye, Bs, Ko, hFo
+// [unwrapped __esm module yFo] deps: hooks/useTerminalSize.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, utils/permissions/PermissionMode.ts
 ((OXt = R(lt(), 1)), (Ys = R(se(), 1)));
 Sz = [
   {

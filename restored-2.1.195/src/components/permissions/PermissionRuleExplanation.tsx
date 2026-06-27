@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3933  score=0.5253  fileCov=0.6102
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TEc] deps: PR, kt, Du, EJt, Ed, Ye, uo, S$, Il, je, At, vn, Gy, _m, Jt, rvo, S7n, SEc, L6t
+// [unwrapped __esm module TEc] deps: utils/errors.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, components/permissions/rules/PermissionRuleDescription.tsx, context/notifications.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, tools/BashTool/bashPermissions.ts, Il, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/permissions/permissionSetup.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/fsOperations.ts, rvo, components/permissions/PermissionRequest.tsx, hooks/useCanUseTool.tsx, services/mcp/channelAllowlist.ts
 ((AEc = R(lt(), 1)), (wNe = R(se(), 1)));
 HEc = _hm;
 function bhm(e) {

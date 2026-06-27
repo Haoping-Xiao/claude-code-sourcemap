@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.01  score=0.0602  fileCov=0.0119
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FJa] deps: Ye, ps, sr, Cc, Vl, Bs, f_, Ko, CH, Mg, wb, vH, NJa, H9n
+// [unwrapped __esm module FJa] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @smithy/types/dist-cjs/index.js, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, components/PromptInput/PromptInput.tsx, @modelcontextprotocol/sdk/dist/esm/client/auth.js
 ((qHo = R(lt(), 1)), (nMe = R(rt(), 1)), (eR = R(se(), 1)));
 function buildAPIProviderProperties() {
   let e = jJa.c(17),

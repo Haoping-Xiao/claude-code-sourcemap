@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module j6l] deps: gKn, Xa, Ye, ps, j_e, je, sr, Mke, vKe, Bs, xjo, Ko, eE, Mg
+// [unwrapped __esm module j6l] deps: utils/hooks/sessionHooks.ts, @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/systemTheme.ts, utils/debug.ts, services/teamMemorySync/secretScanner.ts, utils/theme.ts, components/diff/DiffDialog.tsx, components/CustomSelect/select.tsx, node-forge/lib/asn1.js, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx, components/ScrollKeybindingHandler.tsx
 ((kjo = R(lt(), 1)),
   (U6l = require("path")),
   (Tz = R(rt(), 1)),

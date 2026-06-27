@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0068  score=0.5789  fileCov=0.0068
 // note: nearest: node_modules/marked/lib/marked.esm.js (0.0068); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mZr] deps: Ed, R0e, FDn, zj, MGe, wr, uf, Jat
+// [unwrapped __esm module mZr] deps: context/notifications.tsx, commands/terminalSetup/terminalSetup.tsx, utils/pasteStore.ts, utils/Cursor.ts, vendor/modifiers-napi-src/index.ts, main.tsx, main.tsx, hooks/useTextInput.ts
 N6d = new Set(["insert", "clear", "enter", "center", "undefined", "mouse", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12"]);
 function GM(e) {
   return Math.round(e * l6i) / l6i;

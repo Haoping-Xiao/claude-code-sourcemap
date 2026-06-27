@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0271  score=0.1541  fileCov=0.0318
 // note: nearest: node_modules/jwa/index.js (0.0271); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yfe] deps: tne
+// [unwrapped __esm module yfe] deps: components/Settings/Config.tsx
 QKt = R(rt(), 1), sz = uL({
   value: "",
   active: false,

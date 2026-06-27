@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4475  score=0.6098  fileCov=0.6271
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module IKt] deps: ft, GF, np, u_, lf, nC, h6, je, RE, Rd, vn, QO, Ao, ste, JDo, y_, jS, dr, K$e
+// [unwrapped __esm module IKt] deps: services/analytics/index.ts, constants/systemPromptSections.ts, env-paths/index.js, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, state/AppStateStore.ts, utils/debug.ts, RE, utils/settings/constants.ts, utils/sequential.ts, utils/model/configs.ts, utils/agentContext.ts, bridge/jwtUtils.ts, JDo, utils/stats.ts, utils/path.ts, utils/settings/settings.ts, utils/attribution.ts
 oCl = require("fs/promises");
 sHf = new Set([Ds, ka, Wc]);
 function xKt() {

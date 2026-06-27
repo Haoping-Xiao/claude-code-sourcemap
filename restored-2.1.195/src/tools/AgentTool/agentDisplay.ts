@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4395  score=1  fileCov=0.4395
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module r4o] deps: kpe, vf
+// [unwrapped __esm module r4o] deps: utils/systemPrompt.ts, utils/settings/changeDetector.ts
 n4o = [
   {
     label: "User agents",

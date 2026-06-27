@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1713  score=0.2628  fileCov=0.3299
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lmn] deps: Xr, Ox, QH, sr, xws
+// [unwrapped __esm module lmn] deps: @modelcontextprotocol/sdk/dist/esm/types.js, Ox, tools/TaskStopTool/prompt.ts, services/teamMemorySync/secretScanner.ts, utils/settings/permissionValidation.ts
 ((cLr = ve(() => Lws())), (Rws = ve(() => Lws("allow"))));
 function PermissionsSchema(e) {
   return H.object({

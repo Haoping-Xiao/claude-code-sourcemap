@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2328  score=0.5828  fileCov=0.2793
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MAc] deps: mE, v5, Ko, eE, gm, EC, Ye, ps, E0o
+// [unwrapped __esm module MAc] deps: components/ThemePicker.tsx, components/permissions/PermissionRequestTitle.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx, undici/lib/mock/mock-agent.js, @anthropic-ai/bedrock-sdk/client.mjs, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, E0o
 ((zTe = R(lt(), 1)), (YTt = R(rt(), 1)), (zu = R(se(), 1)));
 function $Ac(e) {
   let t = Yzo.c(5),

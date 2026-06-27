@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/authFileDescriptor.ts)  jaccard=0.058  score=0.2039  fileCov=0.0749
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QSn] deps: ft, je, fn, At, oc, ys
+// [unwrapped __esm module QSn] deps: services/analytics/index.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/fsOperations.ts
 ((YSn = require("fs")),
   (N7s = require("fs/promises")),
   (Rld = `${XSn}/.oauth_token`),

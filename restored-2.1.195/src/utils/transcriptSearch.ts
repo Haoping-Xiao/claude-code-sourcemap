@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.781  score=1  fileCov=0.781
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BFo] deps: one, jh
+// [unwrapped __esm module BFo] deps: ink/termio/csi.ts, utils/env.ts
 Ojf = new Set([0, 1, 2, 9, 99, 777]);
 jXt = [];
 function aor(e) {

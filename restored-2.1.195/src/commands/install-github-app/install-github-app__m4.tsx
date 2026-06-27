@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.0093  score=0.095  fileCov=0.0102
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rFl] deps: mE, pz, Ye
+// [unwrapped __esm module rFl] deps: components/ThemePicker.tsx, utils/plugins/loadPluginCommands.ts, hooks/useTerminalSize.ts
 ((tFl = R(lt(), 1)), (Bq = R(se(), 1)));
 function InstallGitHubApp(props) {
   let t = oFl.c(12),

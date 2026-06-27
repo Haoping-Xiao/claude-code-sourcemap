@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/controlMessageCompat.ts)  jaccard=0.0976  score=0.1414  fileCov=0.2399
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ewo] deps: Xr
+// [unwrapped __esm module ewo] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 X9t = Dy({
   kind: "permission_powershell",
   payload: ve(() =>

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0063  score=0.2359  fileCov=0.0065
 // note: nearest: src/screens/REPL.tsx (0.0063); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wLc] deps: Ed, Ye, id, kt, uHt, uo
+// [unwrapped __esm module wLc] deps: context/notifications.tsx, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, commands/bridge/bridge.tsx, context/notifications.tsx
 Rtn = R(rt(), 1), nie = R(se(), 1);
 function Kwm() {
   return `${$s().CLAUDE_AI_ORIGIN}/code/routines`;

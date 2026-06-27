@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5667  score=0.835  fileCov=0.6382
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QRc] deps: gz
+// [unwrapped __esm module QRc] deps: hooks/notifs/useSettingsErrors.tsx
 XRc = R(rt(), 1);
 function Pwm() {
   return ut(process.env.CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL);

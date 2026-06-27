@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3317  score=1  fileCov=0.3317
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BPa] deps: wPa, IPa, kPa, LPa, PPa, $Pa, NPa
+// [unwrapped __esm module BPa] deps: utils/bash/specs/alias.ts, utils/bash/specs/nohup.ts, utils/bash/specs/pyright.ts, utils/bash/specs/sleep.ts, utils/bash/specs/srun.ts, utils/bash/specs/time.ts, utils/bash/specs/timeout.ts
 $mo = [xPa, OPa, RPa, vPa, CPa, MPa, DPa];
 async function loadFigSpec(command) {
   if (!command || command.includes("/") || command.includes("\\")) return null;

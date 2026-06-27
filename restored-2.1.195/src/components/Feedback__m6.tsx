@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0115  score=0.0824  fileCov=0.0132
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ruc] deps: zb, dn, Jt, VM
+// [unwrapped __esm module ruc] deps: zod/v4/classic/schemas.js, dn, utils/fsOperations.ts, utils/claudeInChrome/common.ts
 ((f2 = require("fs/promises")),
   (Qcc = require("net")),
   (xcr = require("os")),

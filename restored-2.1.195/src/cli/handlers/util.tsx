@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setupTokenHandler, installHandler, doctorHandler, createSubcommandRoot
-// [unwrapped __esm module upc] deps: kt, lJ, gm, Ye, je, wr, At, BJ, LOe, dr
+// [unwrapped __esm module upc] deps: utils/debug.ts, components/StructuredDiff/Fallback.tsx, undici/lib/mock/mock-agent.js, hooks/useTerminalSize.ts, utils/debug.ts, main.tsx, utils/errors.ts, services/mcp/config.ts, @xmldom/xmldom/lib/entities.js, utils/settings/settings.ts
 ((ipc = R(lt(), 1)),
   (apc = require("os")),
   (lpc = require("path")),

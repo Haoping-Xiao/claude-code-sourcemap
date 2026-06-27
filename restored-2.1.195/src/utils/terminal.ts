@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2833  score=0.9524  fileCov=0.2874
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zX] deps: Ye, sr, Q8
+// [unwrapped __esm module zX] deps: hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts, react/cjs/react.production.js
 ((Wua = R(lt(), 1)), (D5e = R(se(), 1)));
 function $up(e, t) {
   let n = e.split(`

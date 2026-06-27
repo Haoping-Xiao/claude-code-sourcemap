@@ -5,7 +5,7 @@
 // note: nearest: node_modules/commander/lib/command.js (0.0168); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: severTtyInputForRelaunch, execRelaunch
-// [unwrapped __esm module QEe] deps: aEe
+// [unwrapped __esm module QEe] deps: utils/bash/ShellSnapshot.ts
 s8n = require("fs/promises"), V9e = require("path"), i8n = R(Uj(), 1);
 function severTtyInputForRelaunch() {
   for (let e = 0; e < 32; e++) {

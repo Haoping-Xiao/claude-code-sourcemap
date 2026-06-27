@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/telemetry/perfettoTracing.ts)  jaccard=0.0059  score=0.0459  fileCov=0.0067
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VGc] deps: kgr, qQo
+// [unwrapped __esm module VGc] deps: node-forge/lib/ed25519.js, bignumber.js/bignumber.js
 Ggr = require("crypto");
 function m$m() {
   let e = Oe.CLAUDE_GATEWAY_LOG_LEVEL?.toLowerCase();

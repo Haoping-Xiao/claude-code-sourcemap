@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1069  score=0.936  fileCov=0.1077
 // note: low-confidence suggestion: src/utils/tasks.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bk] deps: Xr, ft, db, je, fn, At, vn, ih, Jt, Mp, Sj
+// [unwrapped __esm module bk] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/authFileDescriptor.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, bootstrap/state.ts, utils/fsOperations.ts, utils/concurrentSessions.ts, utils/teammate.ts
 gOa = require("fs/promises"), pft = require("path"), hOa = Mi();
 _Oa = hOa.subscribe;
 rVe = ve(() => H.enum(["pending", "in_progress", "completed"])), UDp = ve(() => H.object({

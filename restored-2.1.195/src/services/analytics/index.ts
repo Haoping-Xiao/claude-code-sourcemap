@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stripProtoFields, logEventAsync, logEvent, createAnalyticsState, attachAnalyticsSink, _setGlobalAnalyticsStateForTesting
-// [unwrapped __esm module ft] deps: Bns, Won, Von, Sx, ih, $S
+// [unwrapped __esm module ft] deps: Bns, utils/crypto.ts, bridge/bridgeMessaging.ts, Sx, bootstrap/state.ts, google-auth-library/build/src/crypto/node/crypto.js
 ((Xyr = require("fs")),
   (grs = require("process")),
   (lzc = {

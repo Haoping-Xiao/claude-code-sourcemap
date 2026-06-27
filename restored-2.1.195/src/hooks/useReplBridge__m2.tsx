@@ -4,7 +4,7 @@
 // class=modified (alt of src/hooks/useReplBridge.tsx)  jaccard=0.0056  score=0.1038  fileCov=0.0059
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Z3o] deps: db, fn, At, Jt
+// [unwrapped __esm module Z3o] deps: utils/authFileDescriptor.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts
 ((Qec = require("crypto")), (Q3o = require("path")));
 var ttc = "remote-control-repl",
   ntc = "remote-control-cli",

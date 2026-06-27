@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5292  score=1  fileCov=0.5292
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module l4o] deps: si, Ox, tQ, fh, RN, R8e, xMe, $pe, Ppe, I8e, gAe, m4t, pyt, H3t, I3t, mRo, q0o, jjn, T6t, hRo, Ye, ps, sr, LW
+// [unwrapped __esm module l4o] deps: @xmldom/xmldom/lib/entities.js, Ox, tools/AgentTool/built-in/exploreAgent.ts, commands/insights.ts, tools/BashTool/BashTool.tsx, tools/ExitPlanModeTool/ExitPlanModeV2Tool.ts, tools/FileEditTool/FileEditTool.ts, tools/FileReadTool/FileReadTool.ts, tools/FileWriteTool/FileWriteTool.ts, tools/GlobTool/GlobTool.ts, tools/GrepTool/GrepTool.ts, tools/ListMcpResourcesTool/ListMcpResourcesTool.ts, tools/NotebookEditTool/NotebookEditTool.ts, tools/ReadMcpResourceTool/ReadMcpResourceTool.ts, tools/ReadMcpResourceTool/ReadMcpResourceTool.ts, tools/TaskOutputTool/TaskOutputTool.tsx, tools/TaskStopTool/TaskStopTool.ts, tools/TodoWriteTool/TodoWriteTool.ts, tools/WebFetchTool/WebFetchTool.ts, tools/WebSearchTool/WebSearchTool.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/teamMemorySync/secretScanner.ts, ink/components/Box.tsx
 ((bYl = R(lt(), 1)), (SYl = R(rt(), 1)), (Usr = R(rt(), 1)), (Dse = R(se(), 1)));
 function getAgentSourceDisplayName(source) {
   if (source === "all") return "Agents";

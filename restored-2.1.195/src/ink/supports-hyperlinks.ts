@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2631  score=0.4852  fileCov=0.3649
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AW] deps: ft
+// [unwrapped __esm module AW] deps: services/analytics/index.ts
 ((u5i = R(rt(), 1)),
   (d5i = R(l5i(), 1)),
   (c5i = ["ghostty", "Hyper", "kitty", "alacritty", "iTerm.app", "iTerm2"]));

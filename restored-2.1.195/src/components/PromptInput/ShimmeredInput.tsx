@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4834  score=0.7313  fileCov=0.5878
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LUt] deps: Ye
+// [unwrapped __esm module LUt] deps: hooks/useTerminalSize.ts
 ((H6i = R(lt(), 1)), (T6i = R(se(), 1)));
 function w6i(e) {
   let t = v6i.c(23),

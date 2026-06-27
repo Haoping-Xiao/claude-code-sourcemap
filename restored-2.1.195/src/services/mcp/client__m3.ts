@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0112  score=0.1479  fileCov=0.012
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eTc] deps: ft, Ko, AMe, X0, dtn, Ye, Du, KHc, Uoe, y3, Jt, nKo
+// [unwrapped __esm module eTc] deps: services/analytics/index.ts, components/ConfigurableShortcutHint.tsx, components/permissions/FileWritePermissionRequest/FileWriteToolDiff.tsx, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/PermissionPrompt.tsx, hooks/useTerminalSize.ts, services/analytics/firstPartyEventLoggingExporter.ts, components/permissions/shellPermissionHelpers.tsx, node-fetch/lib/index.js, commands/memory/memory.tsx, utils/fsOperations.ts, components/permissions/PowerShellPermissionRequest/powershellToolUseOptions.tsx
 ((YHc = R(lt(), 1)),
   (XHc = R(rt(), 1)),
   (rKo = R(rt(), 1)),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0094  score=0.2231  fileCov=0.0098
 // note: nearest: src/services/api/claude.ts (0.0094); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vxl] deps: Un
+// [unwrapped __esm module Vxl] deps: services/analytics/growthbook.ts
 Vvf = new RegExp("<antml:invoke\\b");
 function Xvf(e) {
   if (e === "<") return "<";

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0076  score=0.0179  fileCov=0.013
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wHo] deps: SC, lH, fh, u_, nC, WW, TX, HU, oo, fn, sF, Jt, Un
+// [unwrapped __esm module wHo] deps: utils/config.ts, lH, commands/insights.ts, utils/markdownConfigLoader.ts, types/plugin.ts, utils/cronScheduler.ts, TX, utils/effort.ts, utils/http.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, services/api/claude.ts, utils/fsOperations.ts, services/analytics/growthbook.ts
 DXa = require("path");
 M9n = [
   {

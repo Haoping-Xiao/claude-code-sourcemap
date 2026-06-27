@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4124  score=0.5904  fileCov=0.5777
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jYl] deps: ft, S4, ZE, ii, fh, og, Fze, co, Uh, kt, Jt
+// [unwrapped __esm module jYl] deps: services/analytics/index.ts, context.ts, utils/shell/prefix.ts, services/mockRateLimits.ts, commands/insights.ts, utils/teammateContext.ts, utils/api.ts, utils/messages.ts, services/analytics/metadata.ts, utils/debug.ts, utils/fsOperations.ts
 UYl = `You are an elite AI agent architect specializing in crafting high-performance agent configurations. Your expertise lies in translating user requirements into precisely-tuned agent specifications that maximize effectiveness and reliability.
 
 **Important Context**: You may have access to project-specific instructions from CLAUDE.md files and other context that may include coding standards, project structure, and custom requirements. Consider this context when creating agents to ensure they align with the project's established patterns and practices.

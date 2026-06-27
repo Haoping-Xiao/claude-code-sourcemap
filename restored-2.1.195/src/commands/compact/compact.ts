@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module VPl] deps: IKt, Lo, sa, hze, Bqe, _m, K$e
+// [unwrapped __esm module VPl] deps: tools/BashTool/prompt.ts, utils/fsOperations.ts, utils/git.ts, utils/promptShellExecution.ts, utils/argumentSubstitution.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/attribution.ts
 ((N0f = [
   "git checkout -b *",
   "git add *",

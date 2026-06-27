@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3232  score=0.4191  fileCov=0.5854
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jjn] deps: Xr, ft, ii, bk, zgo, IOa
+// [unwrapped __esm module jjn] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/mockRateLimits.ts, utils/tasks.ts, utils/todo/types.ts, tools/TodoWriteTool/prompt.ts
 ((YDp = ve(() =>
   H.strictObject({
     todos: hft().describe("The updated todo list"),

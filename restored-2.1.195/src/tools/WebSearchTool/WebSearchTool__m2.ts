@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.0248  score=0.1984  fileCov=0.0276
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yje] deps: tIt, Zsn, Ksn, uee, je, At, vn, dn, xnt, wjr, tIt, Zsn, Ksn, uee, xnt, wjr
+// [unwrapped __esm module yje] deps: @aws-sdk/credential-provider-login/dist-cjs/index.js, @anthropic-ai/sdk/internal/decoders/line.mjs, fflate/esm/index.mjs, gtoken/build/src/index.js, utils/debug.ts, utils/errors.ts, utils/sequential.ts, dn, utils/sessionStorage.ts, @anthropic-ai/sdk/client.mjs, @aws-sdk/credential-provider-login/dist-cjs/index.js, @anthropic-ai/sdk/internal/decoders/line.mjs, fflate/esm/index.mjs, gtoken/build/src/index.js, utils/sessionStorage.ts, @anthropic-ai/sdk/client.mjs
 hje = new Set();
 function Rjr() {
   return (

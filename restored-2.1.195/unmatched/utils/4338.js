@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0087  score=0.1303  fileCov=0.0092
 // note: nearest: src/cli/print.ts (0.0087); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sRo] deps: ii, Lo, At, bUt, _m, WAe, EI, jv, Fyl, Zyl
+// [unwrapped __esm module sRo] deps: services/mockRateLimits.ts, utils/fsOperations.ts, utils/errors.ts, utils/imagePaste.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, WAe, tools/ExitPlanModeTool/constants.ts, tools/ScheduleCronTool/prompt.ts, services/tools/toolHooks.ts, axios/lib/utils.js
 nXn = require("path"), oRo = require("util"), J6e = R(require("vm")), Omf = /^[a-zA-Z0-9_-]{1,111}$/, n_l = ["sh", "cat", "rg", "rgf", "gl", "put", "gh", "chdir", "log", "str", "o", "REPO"];
 r_l = new WeakSet();
 vzt = class vzt extends mi {

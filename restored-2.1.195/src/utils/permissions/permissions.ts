@@ -5,7 +5,7 @@
 // note: deminified; 28 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toolAlwaysAllowedRule, syncPermissionRulesFromDisk, sameTurnSiblingContextEnabledWithSource, permissionRuleSourceDisplayString, isNonDeniableTool, hasPermissionsToUseToolWithSink, hasPermissionsToUseTool, guardHookUpdatedInput, getRuleByContentsForToolName, getRuleByContentsForTool, getInputParamRule, getDenyRules, getDenyRuleForTool, getDenyRuleForAgent, getAskRules, getAskRuleForTool, getAllowRules, findSafetyCheckReason, filterDeniedAgents, deletePermissionRule, createPermiss …
-// [unwrapped __esm module xqo] deps: G1, lf, EI, lC, dqe, LX, pht
+// [unwrapped __esm module xqo] deps: tools/AskUserQuestionTool/prompt.ts, tools/GlobTool/prompt.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, tools/ReadMcpResourceTool/UI.tsx, @xmldom/xmldom/lib/entities.js, utils/fingerprint.ts
 ((dlc = ro(voa).WORKFLOW_TOOL_NAME),
   (Vnm = []),
   (znm = new Set([

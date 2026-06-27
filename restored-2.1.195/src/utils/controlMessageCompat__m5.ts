@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/controlMessageCompat.ts)  jaccard=0.0943  score=0.1345  fileCov=0.2399
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module B8n] deps: Xr
+// [unwrapped __esm module B8n] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 y8e = Dy({
   kind: "permission_ask_user_question",
   payload: ve(() =>

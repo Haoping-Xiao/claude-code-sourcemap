@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.394  score=0.8141  fileCov=0.433
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xnr] deps: Ox, g$, uo, sr, Cc, mE, Bs, vi, B_, Ko
+// [unwrapped __esm module Xnr] deps: Ox, services/mcp/xaa.ts, context/notifications.tsx, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx
 ((i2l = R(lt(), 1)), (PHe = R(se(), 1)));
 function MCPSettings(t0) {
   let t = a2l.c(76),

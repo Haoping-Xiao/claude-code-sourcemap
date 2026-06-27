@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3075  score=0.5006  fileCov=0.4435
 // note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xdt] deps: ft, fd, je, fn, At, Jt, Mp
+// [unwrapped __esm module Xdt] deps: services/analytics/index.ts, utils/debugFilter.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/concurrentSessions.ts
 ((opo = []), (tN = []), (SL = new Map()), (yFn = new Map()), (ipo = new Map()));
 function lpo() {
   let e =

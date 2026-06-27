@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/hooks/ViewHookMode.tsx)  jaccard=0.0471  score=0.0674  fileCov=0.1355
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A8l] deps: Yyt, Ye, ps, sr, Bs, vi, Ko
+// [unwrapped __esm module A8l] deps: components/messages/CollapsedReadSearchContent.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/teamMemorySync/secretScanner.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 ((S8l = R(lt(), 1)), (uw = R(se(), 1)));
 function ViewHookMode(t0) {
   let t = H8l.c(71),

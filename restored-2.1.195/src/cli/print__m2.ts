@@ -4,7 +4,7 @@
 // class=modified (alt of src/cli/print.ts)  jaccard=0.058  score=0.3104  fileCov=0.0665
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OZl] deps: qee, Jt, eLe, dn, kt, Won, je, At
+// [unwrapped __esm module OZl] deps: qee, utils/fsOperations.ts, utils/stream.ts, dn, utils/debug.ts, utils/crypto.ts, utils/debug.ts, utils/errors.ts
 $Zl = Symbol("suppressControlResponse");
 R3o = class R3o {
   transport;

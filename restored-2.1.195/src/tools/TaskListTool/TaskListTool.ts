@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isWorktreeModeEnabled
-// [unwrapped __esm module Qbl] deps: Xr, ii, bk, Xbl
+// [unwrapped __esm module Qbl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/tasks.ts, Xbl
 ((uhf = ve(() => H.strictObject({}))),
   (dhf = ve(() =>
     H.object({

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6158  score=0.6985  fileCov=0.8387
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Z_l] deps: Xr
+// [unwrapped __esm module Z_l] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 Q_l = ve(() => {
   let e = H.strictObject({
       operation: H.literal("goToDefinition"),

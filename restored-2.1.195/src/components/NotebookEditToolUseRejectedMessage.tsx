@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4172  score=0.5202  fileCov=0.678
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qtl] deps: lf
+// [unwrapped __esm module Qtl] deps: tools/GlobTool/prompt.ts
 Jtl = `Replaces, inserts, or deletes a single cell in a Jupyter notebook (.ipynb file).
 
 Usage:

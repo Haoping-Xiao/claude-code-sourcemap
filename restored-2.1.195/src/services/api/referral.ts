@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2569  score=0.5321  fileCov=0.3318
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module J5l] deps: Ye, oo, er, dr, mVe, SEe
+// [unwrapped __esm module J5l] deps: hooks/useTerminalSize.ts, utils/http.ts, utils/config.ts, utils/settings/settings.ts, mVe, hooks/notifs/useCanSwitchToExistingSubscription.tsx
 ((V5l = R(lt(), 1)), (z5l = R(rt(), 1)), (KXt = R(se(), 1)));
 xde(b4f);
 async function E4f(e = "claude_code_guest_pass") {

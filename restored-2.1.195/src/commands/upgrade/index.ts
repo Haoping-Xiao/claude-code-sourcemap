@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2525  score=0.2947  fileCov=0.6381
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module o3o] deps: oo, wr, d5e
+// [unwrapped __esm module o3o] deps: utils/http.ts, main.tsx, services/api/usage.ts
 ((F6f = {
   type: "local-jsx",
   name: "upgrade",

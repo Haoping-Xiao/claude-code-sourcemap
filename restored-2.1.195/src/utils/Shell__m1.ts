@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runHeadlessBashCommand
-// [unwrapped __esm module AXo] deps: Mm, wr, At, kt, c_
+// [unwrapped __esm module AXo] deps: utils/git/gitConfigParser.ts, main.tsx, utils/errors.ts, utils/debug.ts, services/mcp/officialRegistry.ts
 ((P3 = require("fs/promises")),
   (XUc = require("path")),
   ({

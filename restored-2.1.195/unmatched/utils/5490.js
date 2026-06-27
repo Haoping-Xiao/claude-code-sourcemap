@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0074  score=0.2354  fileCov=0.0076
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0074); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Q6o] deps: Ye, uo, ft, np, nIo, CTt, bm, co, Jt, d_t
+// [unwrapped __esm module Q6o] deps: hooks/useTerminalSize.ts, context/notifications.tsx, services/analytics/index.ts, env-paths/index.js, utils/formatBriefTimestamp.ts, hooks/useIdeAtMentioned.ts, utils/messageQueueManager.ts, utils/messages.ts, utils/fsOperations.ts, tools/AgentTool/built-in/generalPurposeAgent.ts
 ebc = R(lt(), 1), tbc = R(rt(), 1), Rdr = R(se(), 1), wmm = new Set();
 Ldr = tbc.memo(kmm);
 function nbc(e, t, n) {

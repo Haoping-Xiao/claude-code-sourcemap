@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.442  score=1  fileCov=0.442
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module c8o] deps: Ye, RN, ZCo, cjn
+// [unwrapped __esm module c8o] deps: hooks/useTerminalSize.ts, tools/BashTool/BashTool.tsx, components/AgentProgressLine.tsx, hooks/useVoiceIntegration.tsx
 ((qfc = R(lt(), 1)), (JZt = R(se(), 1)));
 function mur() {
   let e = Dr().defaultShell;

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/officialMarketplaceGcs.ts)  jaccard=0.0226  score=0.0382  fileCov=0.0525
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module J1c] deps: zb, Mm, Lx, At, Jt, c_
+// [unwrapped __esm module J1c] deps: zod/v4/classic/schemas.js, utils/git/gitConfigParser.ts, main.tsx, utils/errors.ts, utils/fsOperations.ts, services/mcp/officialRegistry.ts
 ((z1c = require("fs/promises")),
   (K1c = ve(() =>
     dt.object({

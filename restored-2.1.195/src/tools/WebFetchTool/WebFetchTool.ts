@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3877  score=0.4911  fileCov=0.6481
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module T6t] deps: Xr, kt, jc, ii, Il, es, Gy, sr, TX, OIo, Lcl, mko
+// [unwrapped __esm module T6t] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/semver.ts, services/mockRateLimits.ts, Il, utils/profilerBase.ts, utils/permissions/permissionSetup.ts, services/teamMemorySync/secretScanner.ts, TX, tools/WebFetchTool/UI.tsx, bridge/sessionIdCompat.ts, tools/WebFetchTool/utils.ts
 bfl = require("http");
 Kuf = e4t - 2000;
 ((Xuf = ve(() =>

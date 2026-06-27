@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3625  score=0.467  fileCov=0.6185
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module z1] deps: PR, Ree, ft, TM, og, oo, Vw, e1, er, vn, NX, Ao, qd, kt, ZE, Yxe, Ijt, xjt
+// [unwrapped __esm module z1] deps: utils/errors.ts, lodash-es/_createBaseFor.js, services/analytics/index.ts, constants/betas.ts, utils/teammateContext.ts, utils/http.ts, utils/betas.ts, bridge/bridgeApi.ts, utils/config.ts, utils/sequential.ts, services/mcp/types.ts, utils/agentContext.ts, utils/log.ts, utils/debug.ts, utils/shell/prefix.ts, utils/model/modelCapabilities.ts, Ijt, services/rateLimitMessages.ts
 ((rlp = [
   {
     rateLimitType: "five_hour",

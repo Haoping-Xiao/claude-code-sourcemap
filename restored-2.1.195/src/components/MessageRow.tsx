@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3807  score=0.6476  fileCov=0.4801
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S5l] deps: Tc, Ye
+// [unwrapped __esm module S5l] deps: marked/lib/marked.esm.js, hooks/useTerminalSize.ts
 ((_5l = R(lt(), 1)), (KFo = R(se(), 1)));
 function hasContentAfterIndex(messages, index, tools, streamingToolUseIDs) {
   for (let o = index + 1; o < messages.length; o++) {

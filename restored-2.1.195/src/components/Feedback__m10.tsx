@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0079  score=0.0225  fileCov=0.0121
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iqc] deps: Ece, dn, kt, je, At, Is, Jt, WL, q$
+// [unwrapped __esm module iqc] deps: services/analytics/firstPartyEventLoggingExporter.ts, dn, utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/platform.ts, utils/fsOperations.ts, utils/git.ts, undici/lib/core/symbols.js
 ((nqc = require("events")), (T2 = require("fs/promises")), (mve = require("path")));
 async function GITHUB_ISSUES_REPO_URL(e, t = {}) {
   let n,

@@ -5,7 +5,7 @@
 // note: nearest: src/upstreamproxy/relay.ts (0.0374); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: glyphFor, encodePng, blitGlyph, ansiToPng, GLYPH_W, GLYPH_H
-// [unwrapped __esm module xOl] deps: OI
+// [unwrapped __esm module xOl] deps: fast-xml-parser/lib/fxp.cjs
 wOl = {
   30: {
     r: 0,

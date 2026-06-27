@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1082  score=0.1834  fileCov=0.2086
 // note: low-confidence suggestion: node_modules/@aws-crypto/util/build/isEmptyData.js; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $Xo] deps: wm, Vmr
+// [unwrapped __esm module $Xo] deps: services/PromptSuggestion/promptSuggestion.ts, Vmr
 zmr = oDm;
 var sDm = (e, t) => {
     let n = e.byteLength << 3;

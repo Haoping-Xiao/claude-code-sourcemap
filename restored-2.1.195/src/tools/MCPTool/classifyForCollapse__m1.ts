@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DesignSyncTool, DesignSyncPreconditionError
-// [unwrapped __esm module aEl] deps: Rc, H0, oo, je, At, Ls, qd, HXn
+// [unwrapped __esm module aEl] deps: constants/oauth.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, utils/http.ts, utils/debug.ts, utils/errors.ts, utils/status.tsx, utils/log.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js
 Rka(MRo);
 Dka(() => !!Tbt());
 function qhf(e) {

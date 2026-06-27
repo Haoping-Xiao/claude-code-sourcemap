@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.577  score=1  fileCov=0.577
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module V9n] deps: Tc, Ye
+// [unwrapped __esm module V9n] deps: marked/lib/marked.esm.js, hooks/useTerminalSize.ts
 fJa = R(rt(), 1);
 function $Ho(e, t, n = false, r = false) {
   let o = UVt.useRef(e),

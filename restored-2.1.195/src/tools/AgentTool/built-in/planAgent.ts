@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2901  score=1  fileCov=0.2901
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module B$o] deps: RX, u_, lf, nC, EI, lC, f6, _m, fh, vAe
+// [unwrapped __esm module B$o] deps: @xmldom/xmldom/lib/entities.js, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, utils/xdg.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, commands/insights.ts, tools/AgentTool/built-in/exploreAgent.ts
 Ter = {
   agentType: "Plan",
   whenToUse:

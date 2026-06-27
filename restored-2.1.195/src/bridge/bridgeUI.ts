@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2676  score=0.7007  fileCov=0.3021
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module itc] deps: Hp, TM, dn, sa, Kgo, Cde
+// [unwrapped __esm module itc] deps: axios/lib/axios.js, constants/betas.ts, dn, utils/git.ts, cli/transports/SSETransport.ts, bridge/debugUtils.ts
 MYf = /^[a-zA-Z0-9_-]+$/;
 Qq = class Qq extends Error {
   status;

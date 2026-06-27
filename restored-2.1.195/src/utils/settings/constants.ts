@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6584  score=0.8162  fileCov=0.7729
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Rd] deps: cvs, je, vn, SG, Jt
+// [unwrapped __esm module Rd] deps: jsonc-parser/lib/esm/main.js, utils/debug.ts, utils/sequential.ts, screens/REPL.tsx, utils/fsOperations.ts
 Eet = require("fs/promises");
 uvs = JC(dvs, (e) => e, 50);
 Ia = Object.assign(

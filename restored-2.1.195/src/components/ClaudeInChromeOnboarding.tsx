@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ClaudeInChromeOnboarding
-// [unwrapped __esm module $$c] deps: Ye, Yp, Fy, vi
+// [unwrapped __esm module $$c] deps: hooks/useTerminalSize.ts, utils/gracefulShutdown.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx
 ((P$c = R(lt(), 1)), (GNe = R(se(), 1)));
 function ClaudeInChromeOnboarding(t0) {
   let t = O$c.c(21),

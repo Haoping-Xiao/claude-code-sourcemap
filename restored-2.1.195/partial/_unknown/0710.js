@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1726  score=0.7061  fileCov=0.186
 // note: low-confidence suggestion: node_modules/lodash-es/_isFlattenable.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tvs] deps: PBe, Nwt, P2
+// [unwrapped __esm module Tvs] deps: lodash-es/_Symbol.js, lodash-es/isArguments.js, lodash-es/isArray.js
 Avs = nM ? nM.isConcatSpreadable : void 0;
 Hvs = aOu;
 function vvs(e, t, n, r, o) {

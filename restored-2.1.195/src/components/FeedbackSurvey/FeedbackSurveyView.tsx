@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1614  score=0.5768  fileCov=0.183
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pfr] deps: Ye, Yj, ps
+// [unwrapped __esm module pfr] deps: hooks/useTerminalSize.ts, components/PromptInput/PromptInput.tsx, utils/suggestions/directoryCompletion.ts
 ((qme = R(rt(), 1)),
   (dRc = new Map([
     ["&", "1"],

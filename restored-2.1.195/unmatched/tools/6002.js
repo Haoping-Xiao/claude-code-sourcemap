@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0175  score=0.3585  fileCov=0.018
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0175); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nrn] deps: AR, sK
+// [unwrapped __esm module nrn] deps: node-forge/lib/aes.js, node-forge/lib/util.js
 IGc = CGc * 60, MQo = IGc * 24, l$m = MQo * 7, c$m = MQo * 365.25, u$m = /^(\+|\-)? ?(\d+|\d+\.\d+) ?(seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)(?: (ago|from now))?$/i;
 async function $Qo(e, t, n) {
   let r = await TGc(e, t, n);

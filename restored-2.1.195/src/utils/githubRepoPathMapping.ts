@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1801  score=0.3177  fileCov=0.2938
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yMc] deps: er, je
+// [unwrapped __esm module yMc] deps: utils/config.ts, utils/debug.ts
 RIm = {
   iterm: "iTerm",
   "iterm.app": "iTerm",

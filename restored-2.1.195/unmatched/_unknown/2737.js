@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0596  score=0.1629  fileCov=0.0859
 // note: nearest: node_modules/zod-to-json-schema/dist/esm/parsers/string.js (0.0596); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Dta] deps: Qne, SX, cro, _ue, tro, xWe, B$n
+// [unwrapped __esm module Dta] deps: Qne, protobufjs/ext/descriptor/index.js, @opentelemetry/otlp-transformer/build/src/metrics/internal.js, protobufjs/src/common.js, @grpc/grpc-js/build/src/resolving-call.js, @smithy/smithy-client/dist-cjs/index.js, protobufjs/src/common.js
 btp = new TextEncoder(), Stp = new TextDecoder(void 0, {
   fatal: true
 });

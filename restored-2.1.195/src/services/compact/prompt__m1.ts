@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: workflowPermissionDialog
-// [unwrapped __esm module i0o] deps: Xr, dn, kt, yC, ii, fp, Il, Lo, Gy, k6e, Xko, Uoe, zml, Kml, U6t, D6e, fgl, HU, $7, mKr
+// [unwrapped __esm module i0o] deps: @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/debug.ts, utils/ShellCommand.ts, services/mockRateLimits.ts, screens/REPL.tsx, Il, utils/fsOperations.ts, utils/permissions/permissionSetup.ts, tasks/LocalAgentTask/LocalAgentTask.tsx, utils/crypto.ts, node-fetch/lib/index.js, zml, Kml, utils/markdownConfigLoader.ts, tools/AgentTool/loadAgentsDir.ts, main.tsx, utils/effort.ts, utils/pdfUtils.ts, services/api/overageCreditGrant.ts
 ((hgl = require("crypto")),
   (ygl = require("path")),
   (kpf = ve(() =>

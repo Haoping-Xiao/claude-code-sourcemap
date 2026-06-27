@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/components/permissions/rules/WorkspaceTab.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module bFo] deps: si, Ye, ps, kt, er, Vl, eE, RLe, gm, hFo, yFo
+// [unwrapped __esm module bFo] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts, utils/config.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, @xmldom/xmldom/lib/entities.js, undici/lib/mock/mock-agent.js, utils/permissions/PermissionMode.ts, utils/settings/validationTips.ts
 _Fo = R(lt(), 1), NXt = R(rt(), 1), ox = R(se(), 1);
 var PGl,
   call = async e => PGl.jsx(Krr, {

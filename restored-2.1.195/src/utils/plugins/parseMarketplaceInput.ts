@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5697  score=0.9389  fileCov=0.5916
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module e1e] deps: w8, je, At, vbe, lE, $g, vfe, Xh, WI
+// [unwrapped __esm module e1e] deps: p-map/index.js, utils/debug.ts, utils/errors.ts, utils/plugins/officialMarketplace.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/pluginIdentifier.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, utils/plugins/loadPluginAgents.ts, commands/plugin/ManagePlugins.tsx
 dNf = ["user", "project", "local"];
 async function parseMarketplaceInput(input) {
   let t = input.trim(),

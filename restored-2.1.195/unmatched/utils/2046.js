@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0057  score=0.0978  fileCov=0.0061
 // note: nearest: node_modules/@mixmark-io/domino/lib/htmlelts.js (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vy] deps: ft, je, RE, Bi, Is
+// [unwrapped __esm module vy] deps: services/analytics/index.ts, utils/debug.ts, RE, constants/files.ts, utils/platform.ts
 cIn = require("url"), w8r = new Set(["https:", "http:", "vscode:", "vscode-insiders:", "cursor:", "windsurf:", "zed:", "jetbrains:", "idea:", "slack:", "linear:", "notion:", "figma:"]);
 function C8r(e) {
   return e.replace(/[&<>"']/g, t => ERd[t] ?? t);

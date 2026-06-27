@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/readFileInRange.ts)  jaccard=0.1452  score=0.4142  fileCov=0.1826
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LQn] deps: es
+// [unwrapped __esm module LQn] deps: utils/profilerBase.ts
 ((kQn = require("fs")), (RQn = require("fs/promises")));
 WKt = class WKt extends Error {
   sizeInBytes;

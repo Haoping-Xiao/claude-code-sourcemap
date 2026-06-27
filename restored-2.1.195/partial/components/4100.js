@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1614  score=0.5794  fileCov=0.1829
 // note: low-confidence suggestion: src/components/LogoV2/AnimatedClawd.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bCo] deps: Ye, Mne, dr, x8t
+// [unwrapped __esm module bCo] deps: hooks/useTerminalSize.ts, components/TextInput.tsx, utils/settings/settings.ts, components/LogoV2/AnimatedClawd.tsx
 Tsl = R(lt(), 1), Gpe = R(rt(), 1), q6 = R(se(), 1), Esl = {
   dot: "\xB7",
   wave: "~"

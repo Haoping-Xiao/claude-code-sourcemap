@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0219  score=0.8458  fileCov=0.022
 // note: nearest: node_modules/react/cjs/react.production.js (0.0219); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mql] deps: vWt
+// [unwrapped __esm module Mql] deps: utils/gracefulShutdown.ts
 Hh = R(rt(), 1), x3f = Math.round(Dql * 1.5);
 function g2o(e) {
   let t = Por.c(6),

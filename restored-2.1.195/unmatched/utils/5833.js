@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0072  score=0.1338  fileCov=0.0075
 // note: nearest: src/commands/insights.ts (0.0072); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module G1c] deps: spt, Ox, S_e, lpt
+// [unwrapped __esm module G1c] deps: spt, Ox, services/mcp/config.ts, utils/computerUse/gates.ts
 U1c = require("path"), F1c = require("url");
 function W1c(e) {
   return {

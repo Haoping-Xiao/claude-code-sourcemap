@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2764  score=0.389  fileCov=0.4883
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SNo] deps: _i, Ye, Lo, oc, sr, vKe, LW, B_, Kut
+// [unwrapped __esm module SNo] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/fsOperations.ts, utils/nativeInstaller/download.ts, services/teamMemorySync/secretScanner.ts, components/diff/DiffDialog.tsx, ink/components/Box.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/StructuredDiff.tsx
 ((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));
 function DiffFileList(t0) {
   let t = onr.c(36),

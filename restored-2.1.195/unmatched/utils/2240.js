@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0151  score=0.2929  fileCov=0.0156
 // note: nearest: src/utils/plugins/schemas.ts (0.0151); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gb] deps: ft, wr, fn
+// [unwrapped __esm module gb] deps: services/analytics/index.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs
 W1d = {
   claudeMd: true,
   skills: true,

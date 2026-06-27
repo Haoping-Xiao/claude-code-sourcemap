@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.632  score=0.9352  fileCov=0.661
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Pmc] deps: fd, je, At, Is
+// [unwrapped __esm module Pmc] deps: utils/debugFilter.ts, utils/debug.ts, utils/errors.ts, utils/platform.ts
 Imc = require("child_process");
 class QueryGuard {
   _status = "idle";

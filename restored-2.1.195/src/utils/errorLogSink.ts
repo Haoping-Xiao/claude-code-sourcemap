@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initializeErrorLogSink, getMCPLogsPath, getErrorsPath, _flushLogWritersForTesting, _clearLogWritersForTesting
-// [unwrapped __esm module T3o] deps: db, Pw, At, Jt, zOe
+// [unwrapped __esm module T3o] deps: utils/authFileDescriptor.ts, utils/fileRead.ts, utils/errors.ts, utils/fsOperations.ts, utils/completionCache.ts
 ((Iir = require("fs/promises")), (EZl = require("path")));
 function getErrorsPath() {
   return qJt.join(LFe.errors(), AZl + ".jsonl");

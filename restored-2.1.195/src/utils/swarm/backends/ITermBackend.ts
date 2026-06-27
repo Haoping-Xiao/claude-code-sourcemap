@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ITermBackend
-// [unwrapped __esm module T0o] deps: dn, je, Bi, hN, qJ, cAe, d9t
+// [unwrapped __esm module T0o] deps: dn, utils/debug.ts, constants/files.ts, utils/swarm/backends/detection.ts, utils/plugins/installCounts.ts, utils/swarm/teammateLayoutManager.ts, utils/swarm/teamHelpers.ts
 hhl = Promise.resolve();
 v0o(H0o);
 function bff() {

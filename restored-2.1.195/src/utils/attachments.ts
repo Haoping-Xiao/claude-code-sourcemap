@@ -5,7 +5,7 @@
 // note: deminified; 62 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tryGetPDFReference, suppressNextSkillListing, startRelevantMemoryPrefetch, seedSentSkillNames, resetSentSkillNames, readMemoriesForSurfacing, parseAtMentionedFileLines, memoryHeader, memoryFilesToAttachments, logDiagnosticsInjected, getToolSearchUsageReminderAttachments, getTodoReminderMode, getSkillListingAttachments, getQueuedCommandAttachments, getPlanModeExitAttachment, getPlanModeAttachmentTurnCount, getMemoryUpdateAttachments, getMcpInstructionsDeltaAttachment, getDirector …
-// [unwrapped __esm module b0l] deps: dn, je, At, Rd, Ao, Epe, Jt, RPo
+// [unwrapped __esm module b0l] deps: dn, utils/debug.ts, utils/errors.ts, utils/settings/constants.ts, utils/agentContext.ts, utils/permissions/yoloClassifier.ts, utils/fsOperations.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js
 MCf = `You are selecting memories that will be useful to Claude Code as it processes a user's query. The first message lists the available memory files with their filenames and descriptions; subsequent messages each contain one user query.
 
 Return a list of filenames for the memories that will clearly be useful to Claude Code as it processes the user's query (up to 5). Only include memories that you are certain will be helpful based on their name and description.

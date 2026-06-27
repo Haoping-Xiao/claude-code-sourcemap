@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2346  score=0.2735  fileCov=0.6229
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Pbl] deps: sr
+// [unwrapped __esm module Pbl] deps: services/teamMemorySync/secretScanner.ts
 ((Qgf = new Set(["subject", "description", "activeForm", "metadata"])),
   (Zgf = ["title", "name"]),
   (ehf = ["content"]),

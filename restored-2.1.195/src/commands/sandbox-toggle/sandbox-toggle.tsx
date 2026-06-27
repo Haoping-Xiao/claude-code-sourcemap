@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module bXl] deps: Ye, ps, lg, dr, Vl, hse, v5, MEt, eE, kP, fXl, gXl, yXl
+// [unwrapped __esm module bXl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/bash/bashParser.ts, utils/settings/settings.ts, keybindings/useShortcutDisplay.ts, components/ValidationErrorsList.tsx, components/permissions/PermissionRequestTitle.tsx, utils/plugins/pluginStartupCheck.ts, components/design-system/Dialog.tsx, components/design-system/Tabs.tsx, components/sandbox/SandboxDependenciesTab.tsx, components/sandbox/SandboxOverridesTab.tsx, components/sandbox/SandboxSettings.tsx
 ((T4o = R(lt(), 1)), (EA = R(se(), 1)));
 async function call(onDone, _context, args) {
   let o = jo().theme || "light",

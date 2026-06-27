@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.285  score=0.7112  fileCov=0.3223
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fvo] deps: _i, Lo, Ye, zX, AMe, ql, T4t
+// [unwrapped __esm module Fvo] deps: components/design-system/Ratchet.tsx, utils/fsOperations.ts, hooks/useTerminalSize.ts, utils/terminal.ts, components/permissions/FileWritePermissionRequest/FileWriteToolDiff.tsx, commands/add-dir/validation.ts, T4t
 ((_tl = R(lt(), 1)), (btl = require("path")), (tq = R(se(), 1)));
 function SN(e) {
   let t = Stl.c(5),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3891  score=0.5289  fileCov=0.5954
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _1o] deps: kt, Ye, er, Fy, vi
+// [unwrapped __esm module _1o] deps: utils/debug.ts, hooks/useTerminalSize.ts, utils/config.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx
 ((NMl = R(lt(), 1)), (BMl = R(rt(), 1)), (Dfe = R(se(), 1)));
 function ChannelDowngradeDialog(t0) {
   let t = FMl.c(17),

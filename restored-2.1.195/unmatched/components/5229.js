@@ -4,6 +4,6 @@
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
-// [unwrapped __esm module knc] deps: Cnc
+// [unwrapped __esm module knc] deps: components/permissions/FileEditPermissionRequest/FileEditPermissionRequest.tsx
 xnc = R(se(), 1);
 var IXf, xXf;

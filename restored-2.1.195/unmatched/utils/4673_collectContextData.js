@@ -5,7 +5,7 @@
 // note: nearest: src/cli/print.ts (0.0066); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: collectContextData, call
-// [unwrapped __esm module T1l] deps: A1l, id, mZn, At, uf, co, LPe, lNo
+// [unwrapped __esm module T1l] deps: commands/context/context-noninteractive.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, mZn, utils/errors.ts, main.tsx, utils/messages.ts, utils/localInstaller.ts, screens/REPL.tsx
 cNo = R(se(), 1);
 async function collectContextData(e) {
   let {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.021  score=0.0656  fileCov=0.03
 // note: nearest: node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs (0.021); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xur] deps: np, kt, je, Lx
+// [unwrapped __esm module xur] deps: env-paths/index.js, utils/debug.ts, utils/debug.ts, main.tsx
 Gcm = new Set(["ios", "android", "web_claude_ai", "desktop_app"]), Wcm = new Set(["scheduled_trigger", "force_run_trigger", "github_webhook_trigger", "fire_routine", "pr_steward"]), qcm = new Set(["scheduled_trigger", "force_run_trigger", "fire_routine"]);
 Vcm = new Set(["claude-in-slack", "claude_in_slack"]), Kcm = new Set(["trigger_fire", "plugin_fire"]);
 function kur(e) {

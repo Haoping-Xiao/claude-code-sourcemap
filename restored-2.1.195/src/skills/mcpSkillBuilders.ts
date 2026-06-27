@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: fetchMcpSkillsForClient
-// [unwrapped __esm module Xka] deps: Vb, jdt, je, Fka, eqe, At, vn, RFn
+// [unwrapped __esm module Xka] deps: @modelcontextprotocol/sdk/dist/esm/types.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, services/teamMemorySync/index.ts, utils/systemDirectories.ts, utils/errors.ts, utils/sequential.ts, utils/mcpOutputStorage.ts
 ((Kka = require("crypto")), (g5 = require("fs/promises")), (Lre = require("path")));
 async function mCp(e) {
   let t = {

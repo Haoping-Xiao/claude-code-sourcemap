@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ChromeAutoEnableDialog
-// [unwrapped __esm module B$c] deps: kt, Ye, DHe, er, vn, vi
+// [unwrapped __esm module B$c] deps: utils/debug.ts, hooks/useTerminalSize.ts, services/mcp/useManageMCPConnections.ts, utils/config.ts, utils/sequential.ts, components/design-system/Dialog.tsx
 O$c = R(lt(), 1), dmr = R(rt(), 1), lO = R(se(), 1);
 function Dialog(t0) {
   let t = U$c.c(16),

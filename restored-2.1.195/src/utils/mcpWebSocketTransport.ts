@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6381  score=0.9732  fileCov=0.6495
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mFn] deps: kt, je, At
+// [unwrapped __esm module mFn] deps: utils/debug.ts, utils/debug.ts, utils/errors.ts
 Txa = require("child_process");
 class WebSocketTransport {
   ws;

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0343  score=0.4714  fileCov=0.0357
 // note: nearest: src/utils/fsOperations.ts (0.0343); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lqc] deps: VGe, ag, dn, Un, kt, je, At, Hpe, YS, vn, Is, VQ, c9o, qGo, iqc, tWo, har, WL, CHt, IKe, BZo
+// [unwrapped __esm module lqc] deps: main.tsx, utils/claudeInChrome/common.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/peerAddress.ts, utils/teammateContext.ts, utils/sequential.ts, utils/platform.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, @inquirer/figures/dist/esm/index.js, undici/lib/web/fileapi/util.js, components/Feedback.tsx, cli/print.ts, upstreamproxy/upstreamproxy.ts, utils/git.ts, utils/plugins/installCounts.ts, @aws-sdk/client-bedrock/dist-cjs/index.js, commander/lib/command.js
 kp = require("fs/promises"), GZo = require("os"), WZo = require("path"), eNm = new Set();
 async function dqc(e) {
   let t = process.stdout.isTTY,

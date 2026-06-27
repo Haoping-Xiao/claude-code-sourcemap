@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0067  score=0.2719  fileCov=0.0068
 // note: nearest: src/utils/teleport.tsx (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gM] deps: ree, ft, id, fd, Lo, sa, W0r, dfn, RTs
+// [unwrapped __esm module gM] deps: ree, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debugFilter.ts, utils/fsOperations.ts, utils/git.ts, utils/git/gitFilesystem.ts, utils/git/gitFilesystem.ts, utils/git/gitFilesystem.ts
 fet = require("fs"), fY = require("fs/promises"), mM = require("path"), met = new Map();
 Lae = new MTs();
 function SRt(e) {

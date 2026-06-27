@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2473  score=0.3366  fileCov=0.4824
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pyl] deps: j7n, S_, Z6, d8t, JJ
+// [unwrapped __esm module pyl] deps: tasks/DreamTask/DreamTask.ts, tasks/LocalShellTask/LocalShellTask.tsx, utils/bash/ast.ts, d8t, tasks/RemoteAgentTask/RemoteAgentTask.tsx
 lyl = (tfe(), ro(Bko)).LocalWorkflowTask;
 function azt(e) {
   return (

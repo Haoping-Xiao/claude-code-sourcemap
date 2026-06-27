@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2947  score=0.3981  fileCov=0.5315
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mvs] deps: Xr
+// [unwrapped __esm module Mvs] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((RRr = require("path")),
   (fOu = ve(() =>
     H.object({

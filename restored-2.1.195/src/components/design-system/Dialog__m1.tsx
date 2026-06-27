@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.1192  score=0.1468  fileCov=0.3882
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U8l] deps: kt, fn, At, sa, pq, U6t, $7
+// [unwrapped __esm module U8l] deps: utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/git.ts, utils/markdownConfigLoader.ts, utils/markdownConfigLoader.ts, utils/pdfUtils.ts
 ((dsr = require("fs/promises")), (gJt = require("path")));
 function Dialog(t0) {
   let t = F8l.c(49),

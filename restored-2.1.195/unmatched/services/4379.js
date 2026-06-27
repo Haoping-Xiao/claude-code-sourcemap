@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0079  score=0.1153  fileCov=0.0084
 // note: nearest: src/cli/print.ts (0.0079); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zSl] deps: c_, Cv
+// [unwrapped __esm module zSl] deps: services/mcp/officialRegistry.ts, utils/teleport/api.ts
 Hbt = class Hbt extends Error {
   method;
   status;

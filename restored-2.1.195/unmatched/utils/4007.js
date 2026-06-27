@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0238  score=0.1759  fileCov=0.0268
 // note: nearest: src/utils/bash/bashParser.ts (0.0238); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F9t] deps: Ybe, sN, Is, xue
+// [unwrapped __esm module F9t] deps: utils/bash/parser.ts, utils/bash/commands.ts, utils/platform.ts, utils/shell/readOnlyCommandValidation.ts
 rtl = require("crypto"), ZZp = new Set(["command_name", "word", "string", "raw_string", "number", "concatenation"]), eef = new RegExp(otl, "g"), tef = new RegExp(stl, "g"), nef = new RegExp(itl, "g"), ref = new RegExp(atl, "g"), oef = new RegExp(ltl, "g"), sef = new RegExp(ctl, "g");
 function Lvo() {
   let e = process.env.CLAUDE_BG_ISOLATION;

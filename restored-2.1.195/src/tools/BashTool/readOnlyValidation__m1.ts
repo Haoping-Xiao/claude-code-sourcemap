@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/BashTool/readOnlyValidation.ts)  jaccard=0.0292  score=0.3015  fileCov=0.0313
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Zvl] deps: sN, ys, Hu
+// [unwrapped __esm module Zvl] deps: utils/bash/commands.ts, utils/fsOperations.ts, utils/file.ts
 ((VEf = /^(\d+),(\d+)p$/), (zEf = /^(\d+)p$/), (KEf = /^\s*(echo|printf|true|:)\b/));
 JEf = new Map([
   ["cat", new Set(["-n", "--number"])],

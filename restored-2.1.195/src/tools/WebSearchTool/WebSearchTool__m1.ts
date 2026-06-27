@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.1026  score=0.8999  fileCov=0.1038
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $_l] deps: ql, Ye, es
+// [unwrapped __esm module $_l] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/profilerBase.ts
 XAe = R(se(), 1);
 function makeToolSchema(input) {
   return {

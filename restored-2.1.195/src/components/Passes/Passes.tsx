@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2648  score=0.3965  fileCov=0.4435
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vzl] deps: NE, Isr
+// [unwrapped __esm module Vzl] deps: utils/modelCost.ts, components/FastIcon.tsx
 ((Zqf = {
   type: "local-jsx",
   name: "fast",

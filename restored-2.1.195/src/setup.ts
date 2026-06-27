@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setup, isRemoteCoworkEntrypointExempted, isDesktopEntrypointExempted
-// [unwrapped __esm module Bdc] deps: er, je
+// [unwrapped __esm module Bdc] deps: utils/config.ts, utils/debug.ts
 ((Jcr = require("fs/promises")), ($dc = require("os")), (Odc = require("path")));
 async function setup(
   cwd,

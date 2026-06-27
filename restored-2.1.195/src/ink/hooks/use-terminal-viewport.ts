@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6238  score=0.9403  fileCov=0.6495
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U5i] deps: Tne
+// [unwrapped __esm module U5i] deps: ink/Ansi.tsx
 ((N5i = R(lt(), 1)), (B5i = R(se(), 1)));
 function F5i(e, t) {
   if (!e?.yogaNode || !t) return null;

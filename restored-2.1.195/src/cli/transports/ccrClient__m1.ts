@@ -4,7 +4,7 @@
 // class=modified (alt of src/cli/transports/ccrClient.ts)  jaccard=0.0282  score=0.5875  fileCov=0.0287
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module P8o] deps: Tnt, dn, kt, je, Mm, At, Mh, aze, kM, Jt, _gc, Sgc
+// [unwrapped __esm module P8o] deps: utils/billing.ts, dn, utils/debug.ts, utils/debug.ts, utils/git/gitConfigParser.ts, utils/errors.ts, utils/proxy.ts, utils/queryHelpers.ts, utils/teleport/api.ts, utils/fsOperations.ts, cli/transports/ccrClient.ts, Sgc
 D8o = require("crypto");
 _Ne = class _Ne extends Error {
   reason;

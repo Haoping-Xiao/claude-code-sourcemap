@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2472  score=0.3513  fileCov=0.4548
 // note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ONl] deps: SC, Ye, gm, xoe, BNo
+// [unwrapped __esm module ONl] deps: utils/config.ts, hooks/useTerminalSize.ts, undici/lib/mock/mock-agent.js, components/AgentProgressLine.tsx, screens/REPL.tsx
 bnr = R(lt(), 1), kEt = R(rt(), 1), pR = R(se(), 1);
 function SandboxDoctorSection() {
   let e = NNl.c(2);

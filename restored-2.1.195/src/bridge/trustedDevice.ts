@@ -5,7 +5,7 @@
 // note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: untrustedDeviceHint, recoverFromUntrustedDevice, readStoredTrustedDeviceToken, isTrustedDeviceUnenrolled, isTrustedDeviceGateEnabled, isTrustedDeviceActiveForOrg, isProactiveEnrollmentDisabled, getTrustedDeviceUnenrolledReason, getTrustedDeviceToken, getAttestationFilterPolicy, enrollTrustedDeviceIfNeeded, enrollTrustedDevice, clearTrustedDeviceTokenCache, clearTrustedDeviceToken, _resetEnrollBackoffForTesting, PROACTIVE_ENROLLMENT_DISABLED_MESSAGE
-// [unwrapped __esm module sVe] deps: Xr, dn, je, At
+// [unwrapped __esm module sVe] deps: @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/debug.ts, utils/errors.ts
 ((QDp = [
   "UNSPECIFIED",
   "ABSENT",

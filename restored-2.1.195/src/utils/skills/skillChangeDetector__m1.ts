@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/skills/skillChangeDetector.ts)  jaccard=0.0191  score=0.0297  fileCov=0.051
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MSl] deps: Xr, ft, Un, kt, ii, wr, fn, Fh, sre, DSl
+// [unwrapped __esm module MSl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, services/mockRateLimits.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, components/Settings/Config.tsx, highlight.js/lib/languages/mathematica.js, tools.ts
 ((Chf = ve(() =>
   H.strictObject({
     message: H.string()

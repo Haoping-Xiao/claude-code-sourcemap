@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0112  score=0.1941  fileCov=0.0118
 // note: nearest: node_modules/@azure/core-client/dist/esm/serializer.js (0.0112); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module O2c] deps: Xmr, GXo, qXo, VXo, sB, wm, Enn, Ann, Hnn, JXo
+// [unwrapped __esm module O2c] deps: node-forge/lib/rsa.js, GXo, node-forge/lib/rsa.js, @smithy/eventstream-codec/dist-cjs/index.js, sB, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/pem.js, jsonwebtoken/sign.js, node-forge/lib/aes.js, node-forge/lib/rsa.js
 $2c = vDm;
 function wDm(e, t, n, r, o) {
   if (o.crit !== void 0 && r.crit === void 0) throw new e('"crit" (Critical) Header Parameter MUST be integrity protected');

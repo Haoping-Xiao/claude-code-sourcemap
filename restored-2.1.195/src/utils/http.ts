@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withOAuth401Retry, getWebFetchUserAgent, getUserAgent, getMCPUserAgent, getClientPlatform, getAuthHeadersAsync, getAuthHeaders
-// [unwrapped __esm module oo] deps: iu, Qi, Rc, dn, kt, ste, Ls, ft, Tnt, ole, H0, W2e, xnt, db, QSn, Rnt, d2r, aAn, Vw, er, je, Lx, wr, fn, At, Bi, BCn, vn, SG, OB, R9, urt, S9, dr, Jt, t1t
+// [unwrapped __esm module oo] deps: @mixmark-io/domino/lib/Document.js, lodash-es/memoize.js, constants/oauth.ts, dn, utils/debug.ts, bridge/jwtUtils.ts, utils/status.tsx, services/analytics/index.ts, utils/billing.ts, services/oauth/getOauthProfile.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, services/oauth/client.ts, utils/sessionStorage.ts, utils/authFileDescriptor.ts, utils/authFileDescriptor.ts, @smithy/smithy-client/dist-cjs/index.js, utils/awsAuthStatusManager.ts, undici/lib/web/cache/cache.js, utils/betas.ts, utils/config.ts, utils/debug.ts, main.tsx, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, bridge/bridgeMain.ts, utils/sequential.ts, screens/REPL.tsx, utils/execFileNoThrowPortable.ts, utils/errors.ts, @opentelemetry/resources/build/src/detectors/platform/node/machine-id/execAsync.js, utils/secureStorage/macOsKeychainHelpers.ts, utils/settings/settings.ts, utils/fsOperations.ts, utils/auth.ts
 ((q9r = require("child_process")), (l1t = require("fs/promises")), (V9r = require("path")));
 ((Vvi = Cn(() => {
   (T(

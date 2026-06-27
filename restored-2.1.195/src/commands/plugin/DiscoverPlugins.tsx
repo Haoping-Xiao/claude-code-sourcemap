@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2936  score=0.4925  fileCov=0.421
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module N2l] deps: si, Cc, vKe, Bs, B_, f_, CH, gm, Pfe, dse, _i, Ye, ps, vy, je, At, es, Ao, vq, _k, gHe, lE, e1e, oWe, pXt, vfe, WI, sr, g0, irr, VBo, zBo, frr
+// [unwrapped __esm module N2l] deps: @xmldom/xmldom/lib/entities.js, context/modalContext.tsx, components/diff/DiffDialog.tsx, components/CustomSelect/select.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/CustomSelect/select.tsx, @smithy/types/dist-cjs/index.js, undici/lib/mock/mock-agent.js, components/Settings/Config.tsx, hooks/useSearchInput.ts, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, @mixmark-io/domino/lib/htmlelts.js, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, utils/agentContext.ts, utils/plugins/marketplaceHelpers.ts, utils/generatedFiles.ts, utils/plugins/officialMarketplaceGcs.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/parseMarketplaceInput.ts, utils/plugins/fetchTelemetry.ts, utils/plugins/schemas.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, commands/plugin/ManagePlugins.tsx, services/teamMemorySync/secretScanner.ts, utils/format.ts, ink/Ansi.tsx, commands/plugin/pluginDetailsHelpers.tsx, commands/plugin/usePagination.ts, commands/plugin/BrowseMarketplace.tsx
 (($2l = R(lt(), 1)), (J_ = R(rt(), 1)), (hi = R(se(), 1)));
 function DiscoverPlugins({
   error: e,

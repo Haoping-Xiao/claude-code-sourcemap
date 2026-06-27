@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getCronJitterConfig
-// [unwrapped __esm module N8] deps: ft, vX, je, At, ys, YS, Rd, vn, Jt
+// [unwrapped __esm module N8] deps: services/analytics/index.ts, utils/cronTasks.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/teammateContext.ts, utils/settings/constants.ts, utils/sequential.ts, utils/fsOperations.ts
 ((Gra = require("crypto")),
   (Wra = require("fs")),
   (MOn = require("fs/promises")),

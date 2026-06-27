@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4399  score=0.8045  fileCov=0.4926
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module a4o] deps: Ye, kpe, Vl
+// [unwrapped __esm module a4o] deps: hooks/useTerminalSize.ts, utils/systemPrompt.ts, keybindings/useShortcutDisplay.ts
 ((yYl = R(lt(), 1)), (KAt = R(se(), 1)));
 function getToolBuckets() {
   return {

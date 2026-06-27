@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5081  score=0.9327  fileCov=0.5274
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jJr] deps: l0e, tUt
+// [unwrapped __esm module jJr] deps: components/shell/ExpandShellOutputContext.tsx, ink/hooks/use-stdin.ts
 _8 = R(rt(), 1);
 function Z_e() {
   AGe.useContext(B_e);

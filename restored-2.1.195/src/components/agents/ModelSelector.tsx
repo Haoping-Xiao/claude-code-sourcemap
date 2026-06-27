@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2597  score=0.3694  fileCov=0.4664
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module i4o] deps: si, Ye, IL, sr, Coe
+// [unwrapped __esm module i4o] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, tools/AgentTool/agentColorManager.ts, services/teamMemorySync/secretScanner.ts, react/cjs/react.production.js
 ((gYl = R(lt(), 1)), (hYl = R(rt(), 1)), (zq = R(se(), 1)), (zAt = ["automatic", ...Ky]));
 function ModelSelector(t0) {
   let t = yYl.c(11),

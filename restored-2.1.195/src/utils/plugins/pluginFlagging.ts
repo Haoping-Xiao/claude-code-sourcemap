@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2834  score=0.4918  fileCov=0.4007
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ujl] deps: Qi, je, Un, c_
+// [unwrapped __esm module ujl] deps: lodash-es/memoize.js, utils/debug.ts, services/analytics/growthbook.ts, services/mcp/officialRegistry.ts
 ((brr = R(rt(), 1)), (VNf = new Set(["good", "warn", "poor"])));
 KNf = Cn(async () => {
   if (!at("tengu_skills_dashboard_enabled", false)) return null;

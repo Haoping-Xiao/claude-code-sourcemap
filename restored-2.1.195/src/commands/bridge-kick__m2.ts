@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/bridge-kick.ts)  jaccard=0.0214  score=0.0449  fileCov=0.0394
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gqc] deps: dn, kt, At, Is, QEe, Jt
+// [unwrapped __esm module gqc] deps: dn, utils/debug.ts, utils/errors.ts, utils/platform.ts, commander/lib/command.js, utils/fsOperations.ts
 ((fqc = require("child_process")), (KZo = require("readline")));
 function call(args) {
   return args === "heartbeat" || lce();

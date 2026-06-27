@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0638  score=0.1769  fileCov=0.0908
 // note: low-confidence suggestion: src/ink/components/ScrollBox.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vzi] deps: fGe, Tc, Ye, dn, Ezi, Yj, H0e
+// [unwrapped __esm module vzi] deps: ink/components/AppContext.ts, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, dn, keybindings/schema.ts, components/PromptInput/PromptInput.tsx, keybindings/defaultBindings.ts
 Azi = R(lt(), 1), fbe = R(rt(), 1), Tzi = R(se(), 1);
 function Izi(e) {
   let t = PZr.c(17),

@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F2c] deps: rB, sB, iie
+// [unwrapped __esm module F2c] deps: pkce-challenge/dist/index.node.js, sB, node-forge/lib/aes.js
 U2c = IDm;
 async function j2c(e) {
   return T2c(e);

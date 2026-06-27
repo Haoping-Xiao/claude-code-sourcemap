@@ -4,7 +4,7 @@
 // class=modified (alt of src/Task.ts)  jaccard=0.1646  score=0.3146  fileCov=0.2567
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iKe] deps: ft, FQn, iKn, vX, es, sr, g0
+// [unwrapped __esm module iKe] deps: services/analytics/index.ts, screens/REPL.tsx, tasks/LocalAgentTask/LocalAgentTask.tsx, utils/cronTasks.ts, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, utils/format.ts
 DOo = {
   local_agent: "subagent",
   local_workflow: "workflow",

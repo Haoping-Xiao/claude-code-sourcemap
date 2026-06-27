@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopMemoryWatcher, startMemoryWatcher, rebuildStoreSet, notifyMemoryWrite, maybeResyncStaleStores, isPermanentFailure, _startFileWatcherForTesting, _resyncTimerForTesting, _resetWatcherStateForTesting, _multiStoreStateForTesting, _lastSyncCompletedAtForTesting, _armResyncTimerForTesting, UNLINK_RECOVERABLE_REASONS_BY_SCOPE
-// [unwrapped __esm module qwl] deps: Uh, vGt, MM, je, wr, At, zH, Jt, dn, Un, kt, i0n, WKr, Iwl
+// [unwrapped __esm module qwl] deps: services/analytics/metadata.ts, services/teamMemorySync/teamMemSecretGuard.ts, memdir/teamMemPrompts.ts, utils/debug.ts, main.tsx, utils/errors.ts, services/teamMemorySync/secretScanner.ts, utils/fsOperations.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, zod/v4/classic/schemas.js, which/which.js, @ant/claude-for-chrome-mcp/src/bridgeClient.ts
 ((xwl = require("crypto")),
   (j$ = require("fs/promises")),
   (zF = require("path")),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0022  score=0.0242  fileCov=0.0024
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fho] deps: ft, Ld, er, At, DD, Ao, Is, Un, aho, cho, H5e, QOa
+// [unwrapped __esm module fho] deps: services/analytics/index.ts, utils/concurrentSessions.ts, utils/config.ts, utils/errors.ts, utils/model/modelOptions.ts, utils/agentContext.ts, utils/platform.ts, services/analytics/growthbook.ts, components/HelpV2/HelpV2.tsx, utils/nativeInstaller/download.ts, H5e, utils/gracefulShutdown.ts
 ((pho = require("crypto")), (e1a = require("os")));
 xPp = new Set([
   "claude-fable-5",

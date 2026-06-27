@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0155  score=1  fileCov=0.0155
 // note: nearest: src/utils/plugins/loadPluginAgents.ts (0.0155); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Y9] deps: p8r, wr, dr
+// [unwrapped __esm module Y9] deps: utils/deepLink/terminalLauncher.ts, main.tsx, utils/settings/settings.ts
 mwi = new fwi();
 async function hwi() {
   if (E1t === null && !S1t) S1t = X0d(), E1t = await S1t, S1t = null, Xot.cache.clear?.();

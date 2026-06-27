@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0562  score=0.3227  fileCov=0.0637
 // note: nearest: src/hooks/useVoiceIntegration.tsx (0.0562); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cjn] deps: Ye, es, ql, lEe, ljn
+// [unwrapped __esm module cjn] deps: hooks/useTerminalSize.ts, utils/profilerBase.ts, commands/add-dir/validation.ts, components/shell/ShellTimeDisplay.tsx, tools/BashTool/UI.tsx
 SMa = R(lt(), 1), j4 = R(se(), 1);
 function fRp(e) {
   for (let t of e) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1142  score=0.1209  fileCov=0.6732
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module q$a] deps: Bi, _0, Mx
+// [unwrapped __esm module q$a] deps: constants/files.ts, axios/lib/utils.js, utils/detectRepository.ts
 Pgo = new Map();
 function deriveReviewState(isDraft, reviewDecision) {
   if (isDraft) return "draft";

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0894  score=0.4309  fileCov=0.1014
 // note: low-confidence suggestion: src/ink/Ansi.tsx; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Tne] deps: OXr
+// [unwrapped __esm module Tne] deps: ink/screen.ts
 OGi = R(se(), 1);
 Iy = cGd;
 function nS(e) {

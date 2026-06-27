@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5279  score=0.8515  fileCov=0.5814
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module o6n] deps: ft, kt, Lo, Yf, _$, fn, xW, BGt, sr
+// [unwrapped __esm module o6n] deps: services/analytics/index.ts, utils/debug.ts, utils/fsOperations.ts, utils/task/diskOutput.ts, utils/Shell.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/imageResizer.ts, BGt, services/teamMemorySync/secretScanner.ts
 J8n = require("fs/promises");
 UZp = /^data:([^;]+);base64,(.+)$/;
 function GZp(e) {

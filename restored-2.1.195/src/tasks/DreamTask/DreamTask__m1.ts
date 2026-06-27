@@ -4,7 +4,7 @@
 // class=modified (alt of src/tasks/DreamTask/DreamTask.ts)  jaccard=0.1853  score=0.7447  fileCov=0.1978
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module j7n] deps: dn, U7n, yC, tA
+// [unwrapped __esm module j7n] deps: dn, tasks/DreamTask/DreamTask.ts, utils/ShellCommand.ts, fast-xml-parser/lib/fxp.cjs
 F7n = {
   name: "DreamTask",
   type: "dream",

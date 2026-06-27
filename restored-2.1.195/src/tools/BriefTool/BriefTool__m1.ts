@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/BriefTool/BriefTool.ts)  jaccard=0.2578  score=0.439  fileCov=0.3845
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CSl] deps: Xr, ft, Un, kt, ii, fn, Ls, qd, sr, z0o, l3, vSl
+// [unwrapped __esm module CSl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, services/mockRateLimits.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/status.tsx, utils/log.ts, services/teamMemorySync/secretScanner.ts, utils/mcpOutputStorage.ts, tools/BriefTool/UI.tsx, tools.ts
 ((Thf = ve(() =>
   H.strictObject({
     files: H.preprocess(

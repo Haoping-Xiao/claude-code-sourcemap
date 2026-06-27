@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6312  score=1  fileCov=0.6312
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iJr] deps: qit
+// [unwrapped __esm module iJr] deps: ink/events/terminal-event.ts
 sat = class sat extends yne {
   key;
   name;

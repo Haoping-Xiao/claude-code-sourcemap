@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/hooks/useMainLoopModel.ts; dir inferred from dep-graph -> hooks; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: REMOTE_CONTROL_DISCONNECTED_MSG, BRIDGE_SESSION_ENDED_DETAIL, BRIDGE_LOGIN_INSTRUCTION, BRIDGE_LOGIN_HINT, BRIDGE_LOGIN_ERROR
-// [unwrapped __esm module dzn] deps: Ye
+// [unwrapped __esm module dzn] deps: hooks/useTerminalSize.ts
 rsl = R(lt(), 1), nCo = R(se(), 1), srf = /https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]+/g, irf = {
   ")": "(",
   "]": "[",

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1233  score=0.5363  fileCov=0.138
 // note: low-confidence suggestion: src/ink/dom.ts; dir inferred from dep-graph -> ink; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KBt] deps: je, p8, hWi, aGe, K_e, HWi, bW, gGe, Jke, iXr, mJr, IBt
+// [unwrapped __esm module KBt] deps: utils/debug.ts, ink/terminal.ts, hWi, utils/signal.ts, ink/squash-text-nodes.ts, components/ScrollKeybindingHandler.tsx, ink/selection.ts, ink/render-node-to-output.ts, ink/parse-keypress.ts, ink/tabstops.ts, ink/output.ts, ink/dom.ts
 HLn = new Uint32Array(0);
 yGe = vLn;
 function createNode(nodeName, t) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2535  score=0.357  fileCov=0.4666
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U2n] deps: aW, kt, $pt, er, je, _k, lE, $g, WI
+// [unwrapped __esm module U2n] deps: types/generated/google/protobuf/timestamp.ts, utils/debug.ts, utils/plugins/hintRecommendation.ts, utils/config.ts, utils/debug.ts, utils/generatedFiles.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/pluginIdentifier.ts, commands/plugin/ManagePlugins.tsx
 hPa = new Set();
 async function PGt(e) {
   try {

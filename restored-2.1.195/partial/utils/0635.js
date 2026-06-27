@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1856  score=1  fileCov=0.1856
 // note: low-confidence suggestion: src/utils/cwd.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xpn] deps: mEs, xEs
+// [unwrapped __esm module xpn] deps: lodash-es/_apply.js, xEs
 oPu = IEs(function (e, t, n, r) {
   fEs(e, t, n, r);
 }), ZV = oPu;

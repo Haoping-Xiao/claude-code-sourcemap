@@ -4,7 +4,7 @@
 // class=modified (alt of src/tasks/LocalMainSessionTask.ts)  jaccard=0.0657  score=0.3082  fileCov=0.0771
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CXn] deps: ft, MAe, dn, c8t, U1, yC, jv, $S, fp, og, je, vn, tA, y_, _a, bH
+// [unwrapped __esm module CXn] deps: services/analytics/index.ts, utils/telemetry/betaSessionTracing.ts, dn, tasks/LocalShellTask/killShellTasks.ts, U1, utils/ShellCommand.ts, tools/ScheduleCronTool/prompt.ts, google-auth-library/build/src/crypto/node/crypto.js, screens/REPL.tsx, utils/teammateContext.ts, utils/debug.ts, utils/sequential.ts, fast-xml-parser/lib/fxp.cjs, utils/stats.ts, utils/plans.ts, Task.ts
 ((xEl = require("crypto")),
   (hyf = {
     agentType: "main-session",

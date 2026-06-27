@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uTc] deps: lzn, K8o, Ye, kt, hNe, Kzo, aKo
+// [unwrapped __esm module uTc] deps: math-intrinsics/floor.js, utils/mcp/dateTimeParser.ts, hooks/useTerminalSize.ts, utils/debug.ts, screens/REPL.tsx, components/permissions/ComputerUseApproval/ComputerUseApproval.tsx, components/permissions/PermissionRequest.tsx
 mtn = R(lt(), 1), kpr = R(rt(), 1), ftn = R(se(), 1);

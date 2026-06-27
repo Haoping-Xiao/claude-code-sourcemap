@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: computeVisibleWindow, buildAgentDetailLines, agentDisplayStatus, WorkflowDetailDialog, PhaseScrollIndicator
-// [unwrapped __esm module mjo] deps: _i, Ye, ps, U8l, $7, Lo, Bs, vi, f_, Ko, Mg
+// [unwrapped __esm module mjo] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, components/design-system/Dialog.tsx, utils/pdfUtils.ts, utils/fsOperations.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx
 ((F8l = R(lt(), 1)), (lYe = R(rt(), 1)), (ZL = R(se(), 1)));
 function computeVisibleWindow(e, t, n) {
   if (t <= n)

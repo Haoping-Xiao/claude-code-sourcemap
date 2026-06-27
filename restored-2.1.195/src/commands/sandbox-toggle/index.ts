@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.267  score=0.2857  fileCov=0.803
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vXl] deps: si, lg
+// [unwrapped __esm module vXl] deps: @xmldom/xmldom/lib/entities.js, utils/bash/bashParser.ts
 ((p8f = {
   name: "sandbox",
   get description() {

@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: KeybindingSetup, KeybindingRoot, CHORD_TIMEOUT_MS
-// [unwrapped __esm module G1a] deps: kt
+// [unwrapped __esm module G1a] deps: utils/debug.ts
 j1a = new Map();
 function KeybindingSetup(e) {
   let t = Fho.c(4),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0513  score=0.0609  fileCov=0.2464
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lcl] deps: ql, Ye, es
+// [unwrapped __esm module Lcl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/profilerBase.ts
 J6 = R(se(), 1);
 function toCompatSessionId() {
   let e = Oe.CLAUDE_CODE_SESSION_ID;

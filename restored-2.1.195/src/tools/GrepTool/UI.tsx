@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3088  score=0.4748  fileCov=0.469
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Otl] deps: fn, Yf, Is, q9t, tre
+// [unwrapped __esm module Otl] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/task/diskOutput.ts, utils/platform.ts, utils/glob.ts, utils/ripgrep.ts
 QJ = require("path");
 function SearchResultSummary(t0) {
   let t = Ntl.c(26),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4466  score=0.6756  fileCov=0.5685
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A9o] deps: Ye
+// [unwrapped __esm module A9o] deps: hooks/useTerminalSize.ts
 ((gdc = R(lt(), 1)), (qcr = R(se(), 1)));
 function MCPServerApprovalDialog({ serverName: e, isPluginServer: t = !1, onDone: n }) {
   function r(o) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4905  score=0.6238  fileCov=0.6966
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wpe] deps: kt, Lo, ft, dn, $S, NB, Vv, je, wr, Y4, QVt, vn, co, KI, _Le, _a, jS, X4, K0
+// [unwrapped __esm module wpe] deps: utils/debug.ts, utils/fsOperations.ts, services/analytics/index.ts, dn, google-auth-library/build/src/crypto/node/crypto.js, types/permissions.ts, services/PromptSuggestion/speculation.ts, utils/debug.ts, main.tsx, utils/getWorktreePaths.ts, services/analytics/metadata.ts, utils/sequential.ts, utils/messages.ts, utils/permissions/filesystem.ts, commands/add-dir/index.ts, utils/plans.ts, utils/path.ts, utils/attachments.ts, utils/mcpOutputStorage.ts
 ((bht = require("path")),
   (_Qp = (f4(), ro(URe)).BRIEF_TOOL_NAME),
   (bQp = (f4(), ro(URe)).LEGACY_BRIEF_TOOL_NAME),

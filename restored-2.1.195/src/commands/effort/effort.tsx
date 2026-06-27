@@ -5,7 +5,7 @@
 // note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: showCurrentEffort, rippleLevel, rippleDistance, getSliderGeometry, getEffortHelpText, executeEffort, call, UltraRippleText, RIPPLE_RAMP
-// [unwrapped __esm module wQl] deps: fh, fn
+// [unwrapped __esm module wQl] deps: commands/insights.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((J6f = {
   type: "prompt",
   description: "Set up Claude Code's status line UI",

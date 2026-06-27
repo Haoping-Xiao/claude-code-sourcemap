@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: VoiceWarmupHint, VoiceIndicator, VoiceCursorChar
-// [unwrapped __esm module Rhc] deps: Ye, nk, lg
+// [unwrapped __esm module Rhc] deps: hooks/useTerminalSize.ts, nk, utils/bash/bashParser.ts
 ((xhc = R(lt(), 1)), (xTt = R(rt(), 1)), (Qur = R(se(), 1)));
 function VoiceIndicator(e) {
   let t = kTt.c(2),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/generatedFiles.ts)  jaccard=0.0789  score=0.2485  fileCov=0.1037
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module x$o] deps: je, At, Bi
+// [unwrapped __esm module x$o] deps: utils/debug.ts, utils/errors.ts, constants/files.ts
 ((kRl = require("fs/promises")),
   (gxf = [
     {

@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/agents/AgentsMenu.tsx)  jaccard=0.025  score=0.0451  fileCov=0.0533
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ntc] deps: ft, lH, Vl, Fy, vi, TVt, gm, iQt, VQ, zOe, Qir, Ye, er, At, vn, Jbe
+// [unwrapped __esm module Ntc] deps: services/analytics/index.ts, lH, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, commands/plugin/PluginOptionsDialog.tsx, undici/lib/mock/mock-agent.js, components/agents/AgentsMenu.tsx, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/completionCache.ts, commands/bridge-kick.ts, hooks/useTerminalSize.ts, utils/config.ts, utils/errors.ts, utils/sequential.ts, utils/plugins/pluginDirectories.ts
 ((bGo = R(lt(), 1)), (pTe = require("path")), (xYe = R(rt(), 1)), (Zq = R(se(), 1)));
 function Btc(e) {
   if (e === "~" || e.startsWith("~/")) return Ftc.homedir() + e.slice(1);

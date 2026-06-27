@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0545  score=0.128  fileCov=0.0866
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Oyc] deps: ft, loe, Xa, Ed, tC, Ye, ps, uo, sa, Fh, Bs, vi, f_, Ko
+// [unwrapped __esm module Oyc] deps: services/analytics/index.ts, utils/swarm/constants.ts, @xmldom/xmldom/lib/entities.js, context/notifications.tsx, components/CustomSelect/use-multi-select-state.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/notifications.tsx, utils/git.ts, components/Settings/Config.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx
 ((Myc = require("path")), (y7e = R(rt(), 1)), (FP = R(se(), 1)));
 function kZ(e) {
   return MF(e) || uE(e);

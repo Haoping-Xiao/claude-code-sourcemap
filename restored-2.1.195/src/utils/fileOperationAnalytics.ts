@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4332  score=1  fileCov=0.4332
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module j9t] deps: ft, Lo, sa, P3e, dr
+// [unwrapped __esm module j9t] deps: services/analytics/index.ts, utils/fsOperations.ts, utils/git.ts, @modelcontextprotocol/sdk/dist/esm/shared/auth-utils.js, utils/settings/settings.ts
 eyt = require("path");
 function ief(e) {
   return kh(Dvo.createHash("sha256").update(e).digest("hex").slice(0, 16));

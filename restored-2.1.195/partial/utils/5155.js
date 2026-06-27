@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/commands/extra-usage/extra-usage.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module dQl] deps: L8t, BJt, Ye, kt, d5e, Vl, vi
+// [unwrapped __esm module dQl] deps: commands/extra-usage/extra-usage-noninteractive.ts, BJt, hooks/useTerminalSize.ts, utils/debug.ts, services/api/usage.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx
 lQl = R(lt(), 1), cQl = R(rt(), 1), SYe = R(se(), 1);
 async function call(e, t) {
   return fQl.jsx(uQl, {

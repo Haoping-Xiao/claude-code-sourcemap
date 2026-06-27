@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Messages.tsx)  jaccard=0.1421  score=0.5065  fileCov=0.165
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qXt] deps: iu, Xa, _i, EW, Ye, nk, Un, uo, ii, _oe, CWl, ZPe, wr, uf, MWl, sF, co, Fh, sr, BFo, UFo, LW, m5l, AN, v5l, YFo, lEe, Lql, d4t, yVl
+// [unwrapped __esm module qXt] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, ink/ink.tsx, hooks/useTerminalSize.ts, nk, services/analytics/growthbook.ts, context/notifications.tsx, services/mockRateLimits.ts, cost-tracker.ts, utils/groupToolUses.ts, ZPe, main.tsx, main.tsx, utils/sessionStorage.ts, services/api/claude.ts, utils/messages.ts, components/Settings/Config.tsx, services/teamMemorySync/secretScanner.ts, utils/transcriptSearch.ts, utils/logoV2Utils.ts, ink/components/Box.tsx, components/MessageModel.tsx, ink/styles.ts, utils/collapseTeammateShutdowns.ts, components/messages/nullRenderingAttachments.ts, components/shell/ShellTimeDisplay.tsx, hooks/useVirtualScroll.ts, components/CtrlOToExpand.tsx, components/Messages.tsx
 ((I2o = R(lt(), 1)),
   (sJt = R(rt(), 1)),
   (am = R(rt(), 1)),

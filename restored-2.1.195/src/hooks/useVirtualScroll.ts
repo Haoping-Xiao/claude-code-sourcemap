@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6611  score=0.8766  fileCov=0.7289
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lql] deps: _i, Ye, a5, JFo, uo, dC, er, gb, GXt, DD, Ao, gz, u2o, Hor, SEe, lEe
+// [unwrapped __esm module Lql] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, services/mcp/config.ts, memdir/paths.ts, context/notifications.tsx, utils/claudemd.ts, utils/config.ts, utils/plugins/schemas.ts, components/LogoV2/feedConfigs.tsx, utils/model/modelOptions.ts, utils/agentContext.ts, hooks/notifs/useSettingsErrors.tsx, utils/statusNoticeDefinitions.tsx, react/cjs/react.production.js, hooks/notifs/useCanSwitchToExistingSubscription.tsx, components/shell/ShellTimeDisplay.tsx
 ((f2o = R(lt(), 1)), (p2o = R(rt(), 1)), (Dor = R(rt(), 1)), (iZ = R(se(), 1)), (kql = []));
 function k3f(e) {
   return Math.max(x3f, Math.min(Math.round(e * 1.5), I3f));

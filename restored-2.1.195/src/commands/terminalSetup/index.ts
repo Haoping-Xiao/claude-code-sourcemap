@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module I6l] deps: wr
+// [unwrapped __esm module I6l] deps: main.tsx
 ((C6l = {
   ghostty: "Ghostty",
   kitty: "Kitty",

@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Zmo] deps: TMa
+// [unwrapped __esm module Zmo] deps: components/LogoV2/AnimatedClawd.tsx
 djn = yRp;
 function _Rp(e, t) {
   return Fve(t, function (n) {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0056  score=0.3769  fileCov=0.0056
 // note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FSc] deps: ft, RF, y0e, Du, e1, er, Yp
+// [unwrapped __esm module FSc] deps: services/analytics/index.ts, utils/diff.ts, components/ConfigurableShortcutHint.tsx, services/analytics/firstPartyEventLoggingExporter.ts, bridge/bridgeApi.ts, utils/config.ts, utils/gracefulShutdown.ts
 BSc = R(rt(), 1);
 function wzo({
   children: e

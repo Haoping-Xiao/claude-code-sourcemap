@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2719  score=0.8045  fileCov=0.2911
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dOe] deps: fd, je, eqe, fn, ys, Jbe, kv
+// [unwrapped __esm module dOe] deps: utils/debugFilter.ts, utils/debug.ts, utils/systemDirectories.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts, utils/plugins/pluginDirectories.ts, proxy-from-env/index.js
 ((y$o = require("crypto")), (NL = require("fs/promises")), (KF = require("path")));
 tRl = new Map();
 function GIf() {

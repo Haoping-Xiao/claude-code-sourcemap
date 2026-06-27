@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3474  score=0.4545  fileCov=0.5959
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module P1o] deps: MGe, m0, C1o, M$l, R1o, mZr
+// [unwrapped __esm module P1o] deps: vendor/modifiers-napi-src/index.ts, ink/line-width-cache.ts, vim/types.ts, hooks/useVimInput.ts, vim/types.ts, marked/lib/marked.esm.js
 ((GQ = R(rt(), 1)),
   ($$l = new Set([
     "backspace",

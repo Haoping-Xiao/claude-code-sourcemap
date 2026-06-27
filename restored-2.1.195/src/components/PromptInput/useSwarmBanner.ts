@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.366  score=0.7568  fileCov=0.4148
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Hbc] deps: RUt, Ye, Fh, nne, m1, f0e
+// [unwrapped __esm module Hbc] deps: utils/textHighlighting.ts, hooks/useTerminalSize.ts, components/Settings/Config.tsx, utils/signal.ts, utils/thinking.ts, ink/render-border.ts
 Pdr = R(rt(), 1);
 function useSwarmBanner() {
   let e = Ht((g) => g.teamContext),

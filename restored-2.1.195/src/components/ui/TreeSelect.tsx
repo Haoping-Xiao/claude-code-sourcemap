@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4686  score=0.6618  fileCov=0.6161
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LVl] deps: Ye, ps, LL, wpe, es, _a, Cc, Bs, Ko, CH, qXt
+// [unwrapped __esm module LVl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/sessionActivity.ts, services/api/filesApi.ts, utils/profilerBase.ts, utils/plans.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @smithy/types/dist-cjs/index.js, components/Messages.tsx
 ((kVl = R(lt(), 1)), (Nor = R(rt(), 1)), (S3 = R(se(), 1)));
 function TreeSelect(t0) {
   let t = DVl.c(48),

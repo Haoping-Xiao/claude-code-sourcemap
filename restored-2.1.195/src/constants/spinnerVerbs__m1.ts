@@ -4,7 +4,7 @@
 // class=modified (alt of src/constants/spinnerVerbs.ts)  jaccard=0.0147  score=1  fileCov=0.0147
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cEe] deps: Zmo, kMa, P2
+// [unwrapped __esm module cEe] deps: Zmo, kMa, lodash-es/isArray.js
 HL = ERp;
 function zpt() {
   let t = Dr().spinnerVerbs;

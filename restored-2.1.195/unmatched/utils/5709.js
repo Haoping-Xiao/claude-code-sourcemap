@@ -4,7 +4,7 @@
 // class=new  jaccard=0.005  score=0.2453  fileCov=0.005
 // note: nearest: src/components/Settings/Config.tsx (0.005); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zRc] deps: ft, Ed, uo, MPe, wr, vn, BJ, gz
+// [unwrapped __esm module zRc] deps: services/analytics/index.ts, context/notifications.tsx, context/notifications.tsx, utils/nativeInstaller/download.ts, main.tsx, utils/sequential.ts, services/mcp/config.ts, hooks/notifs/useSettingsErrors.tsx
 Efr = R(rt(), 1);
 function KRc() {
   let e = Ho(),

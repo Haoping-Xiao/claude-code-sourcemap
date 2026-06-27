@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1183  score=0.1943  fileCov=0.2323
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Syc] deps: ior, JSt, BI, Ryt, IL, es, vn
+// [unwrapped __esm module Syc] deps: fuse.js/dist/fuse.mjs, commands/clear/caches.ts, services/mcp/client.ts, ink/Ansi.tsx, tools/AgentTool/agentColorManager.ts, utils/profilerBase.ts, utils/sequential.ts
 byc = require("path");
 function kpm(e, t, n) {
   if (t === void 0) return false;

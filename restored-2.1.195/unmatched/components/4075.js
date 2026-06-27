@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0346  score=0.2887  fileCov=0.0378
 // note: nearest: node_modules/react/cjs/react.production.js (0.0346); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Coe] deps: m0e
+// [unwrapped __esm module Coe] deps: components/shell/ExpandShellOutputContext.tsx
 $ol = R(lt(), 1), Ool = R(se(), 1);
 function azn(e) {
   let t = _8t.c(7),

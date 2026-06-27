@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0083  score=0.103  fileCov=0.0089
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bUo] deps: ree, Lo, At, Bi, sa, Jt, OYt, ZC, vrr
+// [unwrapped __esm module bUo] deps: ree, utils/fsOperations.ts, utils/errors.ts, constants/files.ts, utils/git.ts, utils/fsOperations.ts, utils/plugins/pluginInstallationHelpers.ts, utils/plugins/schemas.ts, utils/plugins/validatePlugin.ts
 SXt = require("fs/promises"), rx = require("path"), zjl = R(Uj(), 1);
 function Jjl(e) {
   let t = Yjl.c(9),

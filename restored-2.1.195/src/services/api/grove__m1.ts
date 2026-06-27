@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/grove.ts)  jaccard=0.1508  score=0.6714  fileCov=0.1629
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vft] deps: Qi, kt, oo, je, Yp, ED, er, Gx, vn, dn, c_
+// [unwrapped __esm module vft] deps: lodash-es/memoize.js, utils/debug.ts, utils/http.ts, utils/debug.ts, utils/gracefulShutdown.ts, utils/stringUtils.ts, utils/config.ts, utils/slashCommandParsing.ts, utils/sequential.ts, dn, services/mcp/officialRegistry.ts
 Fre = Cn(async () => {
   try {
     return {

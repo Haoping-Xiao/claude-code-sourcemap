@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2443  score=0.4701  fileCov=0.3372
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module P5o] deps: Xr, i$, wGt
+// [unwrapped __esm module P5o] deps: @modelcontextprotocol/sdk/dist/esm/types.js, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/plugins/marketplaceHelpers.ts
 iZt = ve(() =>
   H.object({
     ok: H.boolean().describe("Whether the condition was met"),

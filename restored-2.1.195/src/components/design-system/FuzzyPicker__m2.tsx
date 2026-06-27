@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.074  score=0.1903  fileCov=0.1081
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ojl] deps: si, kt, Cc, lJ, Bs, f_, Ko, Xce, Ye, ps, er, At, vq, gHe, lE, yrr, Xh, ZC, dr, sr
+// [unwrapped __esm module ojl] deps: @xmldom/xmldom/lib/entities.js, utils/debug.ts, context/modalContext.tsx, components/StructuredDiff/Fallback.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/CustomSelect/select.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/config.ts, utils/errors.ts, utils/plugins/marketplaceHelpers.ts, utils/plugins/officialMarketplaceGcs.ts, utils/plugins/installedPluginsManager.ts, commands/plugin/ManageMarketplaces.tsx, utils/plugins/loadPluginAgents.ts, utils/plugins/schemas.ts, utils/settings/settings.ts, services/teamMemorySync/secretScanner.ts
 ((njl = R(lt(), 1)), (X$ = R(rt(), 1)), (Ks = R(se(), 1)));
 function yXt(e, t, n) {
   let r = _b(e - n + 1, 0, Math.max(0, t - n)),

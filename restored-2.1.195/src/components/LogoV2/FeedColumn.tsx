@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2688  score=0.485  fileCov=0.3761
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YWl] deps: Tc, Ye, es, B_
+// [unwrapped __esm module YWl] deps: marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, components/PromptInput/PromptInputFooterSuggestions.tsx
 ((VWl = R(lt(), 1)), (VN = R(se(), 1)));
 function FeedColumn(t0) {
   let t = XWl.c(10),

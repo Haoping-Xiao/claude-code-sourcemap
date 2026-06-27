@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/SendMessageTool/SendMessageTool.ts)  jaccard=0.1948  score=0.3724  fileCov=0.2901
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YEl] deps: Xr, ft, GF, ii, pMe, S_, xht, LEl, sA, Il, je, wr, At, es, Yp, bm, DE, PDe, _a, dr, Jt, hN, MEl, hP, Mp, YI, fh, qzt, FEl, WEl
+// [unwrapped __esm module YEl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, constants/systemPromptSections.ts, services/mockRateLimits.ts, tasks/InProcessTeammateTask/InProcessTeammateTask.tsx, tasks/LocalShellTask/LocalShellTask.tsx, utils/collapseReadSearch.ts, tools/shared/spawnMultiAgent.ts, services/PromptSuggestion/promptSuggestion.ts, Il, utils/debug.ts, main.tsx, utils/errors.ts, utils/profilerBase.ts, utils/gracefulShutdown.ts, utils/messageQueueManager.ts, utils/permissions/PermissionMode.ts, utils/semanticNumber.ts, utils/plans.ts, utils/settings/settings.ts, utils/fsOperations.ts, utils/swarm/backends/detection.ts, utils/messages.ts, utils/swarm/spawnInProcess.ts, utils/concurrentSessions.ts, utils/teammateMailbox.ts, commands/insights.ts, tools/SendMessageTool/UI.tsx, FEl, tools/SendMessageTool/SendMessageTool.ts
 ((qEl = /^[^\n\r]{1,200}$/),
   (MXn = new Map()),
   (vyf = ve(() =>

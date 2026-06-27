@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2517  score=0.4089  fileCov=0.3957
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OMe] deps: BWt, Vet, er, Lx, fn, WGe, u9, Mh, vf, dr, _1
+// [unwrapped __esm module OMe] deps: BWt, utils/caCerts.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/managedEnvConstants.ts, utils/mtls.ts, utils/proxy.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/subprocessEnv.ts
 Nyt = {
   managedByHost: false,
   managedByHostFlag: false,

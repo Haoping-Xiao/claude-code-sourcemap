@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4749  score=0.6699  fileCov=0.6199
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ihc] deps: iu, Xa, ZS, Ye, uo, es, cne, Pne
+// [unwrapped __esm module Ihc] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, ink/terminal.ts, hooks/useTerminalSize.ts, context/notifications.tsx, utils/profilerBase.ts, components/design-system/ThemeProvider.tsx, @xmldom/xmldom/lib/entities.js
 ((bNe = R(rt(), 1)),
   (xen = R(se(), 1)),
   (whc = _dm / Jur),

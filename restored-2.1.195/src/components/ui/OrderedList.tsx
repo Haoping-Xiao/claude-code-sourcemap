@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5238  score=0.745  fileCov=0.6382
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BMc] deps: Ye
+// [unwrapped __esm module BMc] deps: hooks/useTerminalSize.ts
 ((NMc = R(lt(), 1)),
   (smr = R(rt(), 1)),
   (Xtn = R(se(), 1)),

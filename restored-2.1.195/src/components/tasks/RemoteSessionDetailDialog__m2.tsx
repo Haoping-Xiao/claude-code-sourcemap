@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/tasks/RemoteSessionDetailDialog.tsx)  jaccard=0.0144  score=0.0731  fileCov=0.0177
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CAl] deps: VXn, o7n
+// [unwrapped __esm module CAl] deps: commander/lib/option.js, utils/markdownConfigLoader.ts
 ((vAl = [
   {
     title: "Scope",

@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ultrareviewHandler
-// [unwrapped __esm module I5c] deps: kt, Yp, lH, JN
+// [unwrapped __esm module I5c] deps: utils/debug.ts, utils/gracefulShutdown.ts, lH, main.tsx
 w5c = require("path");
 async function ultrareviewHandler(e, t) {
   let n = () => process.exit(130);

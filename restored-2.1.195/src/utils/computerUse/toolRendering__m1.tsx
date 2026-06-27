@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getComputerUseMCPToolOverrides, buildSessionContext, _resetComputerUseWrapperForTesting
-// [unwrapped __esm module HRa] deps: ql, Ye, es
+// [unwrapped __esm module HRa] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, utils/profilerBase.ts
 gfo = R(se(), 1);
 JIp = {
   screenshot: "Captured",

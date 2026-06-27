@@ -5,7 +5,7 @@
 // note: nearest: src/utils/fsOperations.ts (0.0327); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: readFileForRemote, REMOTE_READ_MAX_BYTES
-// [unwrapped __esm module yur] deps: ft, kt, co, Zf, Ire, Ryt, Vv, Il, Cp, p6e, sp, Dfc, xW, _Tt, co, I1, CIo, Rze, q8t, X4, uJt, yYt, Gfc
+// [unwrapped __esm module yur] deps: services/analytics/index.ts, utils/debug.ts, utils/messages.ts, utils/sessionStorage.ts, services/mcp/client.ts, ink/Ansi.tsx, services/PromptSuggestion/speculation.ts, Il, utils/tempfile.ts, utils/generators.ts, utils/worktree.ts, utils/imageStore.ts, utils/imageResizer.ts, utils/processUserInput/processTextPrompt.ts, utils/messages.ts, hooks/usePasteHandler.ts, CIo, cli/print.ts, q8t, utils/attachments.ts, uJt, yYt, components/BashModeProgress.tsx
 hur = require("crypto");
 async function readFileForRemote(e, t, n, r = "utf-8") {
   let o = ds(e);

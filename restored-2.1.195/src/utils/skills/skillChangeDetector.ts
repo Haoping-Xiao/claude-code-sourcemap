@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3809  score=0.623  fileCov=0.4949
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uAc] deps: dre
+// [unwrapped __esm module uAc] deps: services/mcp/auth.ts
 cAc = R(rt(), 1);
 async function cym() {
   let e = await yze(rc()),

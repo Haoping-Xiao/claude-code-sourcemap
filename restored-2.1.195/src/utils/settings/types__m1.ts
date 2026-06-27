@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/settings/types.ts)  jaccard=0.0834  score=0.6516  fileCov=0.0873
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lj] deps: Xr, Mvs, BRt, fn, DE, ZC, Hws, lmn, zfn, zfn
+// [unwrapped __esm module lj] deps: @modelcontextprotocol/sdk/dist/esm/types.js, entrypoints/sandboxTypes.ts, @xmldom/xmldom/lib/entities.js, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/permissions/PermissionMode.ts, utils/plugins/schemas.ts, utils/settings/types.ts, utils/settings/types.ts, schemas/hooks.ts, schemas/hooks.ts
 c1u = ve(() => H.record(H.string(), H.coerce.string()));
 ((agg = ve(() => $ws(tLr()))),
   (u1u = ve(() =>

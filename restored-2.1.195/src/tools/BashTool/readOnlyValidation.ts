@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7806  score=0.9217  fileCov=0.8361
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eWt] deps: ft, rre, Ybe, sN, Xjt, Rm, Lo, ys, sa, Is, lg, xue, sr, S$, Ago, Tjn
+// [unwrapped __esm module eWt] deps: services/analytics/index.ts, utils/bash/ast.ts, utils/bash/parser.ts, utils/bash/commands.ts, utils/settings/validationTips.ts, @grpc/grpc-js/build/src/server.js, utils/fsOperations.ts, utils/fsOperations.ts, utils/git.ts, utils/platform.ts, utils/bash/bashParser.ts, utils/shell/readOnlyCommandValidation.ts, services/teamMemorySync/secretScanner.ts, tools/BashTool/bashPermissions.ts, eventsource-parser/dist/index.js, tools/BashTool/pathValidation.ts
 ((pg = require("path")),
   (v$a = {
     "-h": "none",

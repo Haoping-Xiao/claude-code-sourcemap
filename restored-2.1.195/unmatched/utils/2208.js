@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0206  score=0.4792  fileCov=0.021
 // note: nearest: src/services/analytics/metadata.ts (0.0206); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Uh] deps: Qi, ft, id, Un, er, wr, fn, sa, Hu, Tkn, dr, Ost
+// [unwrapped __esm module Uh] deps: lodash-es/memoize.js, services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, services/analytics/growthbook.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/git.ts, utils/file.ts, utils/worktree.ts, utils/settings/settings.ts, utils/words.ts
 WOi = require("os"), bU = require("path");
 mm = Cn(() => {
   let e = VOi() ?? EOd();

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0777  score=0.1422  fileCov=0.1464
 // note: low-confidence suggestion: src/tools/WebSearchTool/WebSearchTool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iAl] deps: Xr, ft, SC, Bs, ql, Rc, bko, l$e, JEl, eAl, Ye, dn, ii, vy, Ld, Il, je, Lx, RE, fn, At, oc, Hu, Yf, _a, Mp, RX, Nue
+// [unwrapped __esm module iAl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/config.ts, components/CustomSelect/select.tsx, commands/add-dir/validation.ts, constants/oauth.ts, tools/WebFetchTool/WebFetchTool.ts, tools/WebFetchTool/utils.ts, ink/terminal-focus-state.ts, commands/insights.ts, hooks/useTerminalSize.ts, dn, services/mockRateLimits.ts, @mixmark-io/domino/lib/htmlelts.js, utils/concurrentSessions.ts, Il, utils/debug.ts, main.tsx, RE, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/file.ts, utils/task/diskOutput.ts, utils/plans.ts, utils/concurrentSessions.ts, @xmldom/xmldom/lib/entities.js, tools/AgentTool/builtInAgents.ts
 sze = require("fs/promises"), O$e = require("path"), tHe = R(se(), 1);
 tAl = `Render an HTML or Markdown file to an Artifact \u2014 a default-private web page hosted on claude.ai that the user can later choose to share with their teammates. Use this when communicating visually would be clearer than terminal text.
 

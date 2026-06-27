@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2695  score=0.3158  fileCov=0.6477
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TRc] deps: Xa, Ye, hse, pfr
+// [unwrapped __esm module TRc] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, components/ValidationErrorsList.tsx, components/FeedbackSurvey/FeedbackSurveyView.tsx
 ((ARc = R(lt(), 1)),
   (tK = R(se(), 1)),
   (gwm = ["y", "n", "d"]),

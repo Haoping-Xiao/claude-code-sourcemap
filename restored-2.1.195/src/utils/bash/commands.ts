@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0567  score=0.1097  fileCov=0.1051
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sN] deps: tlc, rre, Ybe, xRe
+// [unwrapped __esm module sN] deps: utils/bash/ast.ts, utils/bash/ast.ts, utils/bash/parser.ts, utils/bash/ast.ts
 ((Eqo = new Set(["program", "list", "pipeline"])),
   (rlc = new Set([
     "&&",

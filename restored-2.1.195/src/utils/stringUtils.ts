@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4101  score=0.6358  fileCov=0.536
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ED] deps: FK
+// [unwrapped __esm module ED] deps: utils/process.ts
 h7c = new Set(["EPIPE", "EIO", "ENXIO", "EBADF"]);
 function Ff(e, t) {
   return e.repeat(Number.isFinite(t) && t > 0 ? t : 0);

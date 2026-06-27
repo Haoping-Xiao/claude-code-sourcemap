@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3207  score=0.5394  fileCov=0.4416
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ejn] deps: fn, kv, bUt
+// [unwrapped __esm module ejn] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs, proxy-from-env/index.js, utils/imagePaste.ts
 ((sMa = require("fs/promises")), (iMa = require("path")), (aMa = require("path/posix")));
 async function zmo(e) {
   try {

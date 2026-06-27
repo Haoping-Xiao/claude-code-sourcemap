@@ -4,7 +4,7 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0162  score=0.704  fileCov=0.0163
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kic] deps: ft, sp, co, y_, Iic
+// [unwrapped __esm module kic] deps: services/analytics/index.ts, utils/worktree.ts, utils/messages.ts, utils/stats.ts, entrypoints/sdk/coreSchemas.ts
 xic = require("crypto");
 async function* HOOK_EVENTS(e, t, n, r, o = lp, s) {
   let i = {

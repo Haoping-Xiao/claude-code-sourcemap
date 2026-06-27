@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dEs] deps: Fkr, DEr, $Er, PEr, OEr, Nwt, P2, iEs, Uwt, don, D2, wpn, kon, jkr, cEs
+// [unwrapped __esm module dEs] deps: Fkr, lodash-es/_cloneBuffer.js, lodash-es/_initCloneByTag.js, PEr, lodash-es/_baseIsMap.js, lodash-es/isArguments.js, lodash-es/isArray.js, lodash-es/isPlainObject.js, lodash-es/isBuffer.js, don, lodash-es/isFunction.js, extend/index.js, lodash-es/_arrayLikeKeys.js, jkr, semver/internal/lrucache.js
 uEs = qDu;
 function pEs(e, t, n, r, o) {
   if (e === t) return;

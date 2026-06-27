@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0063  score=0.1827  fileCov=0.0065
 // note: nearest: src/cli/print.ts (0.0063); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module n0o] deps: si, Xa, fH, RUt, _i, Tc, Ye, es, uf, g0
+// [unwrapped __esm module n0o] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, react/cjs/react.production.js, utils/textHighlighting.ts, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, main.tsx, utils/format.ts
 S$e = R(lt(), 1), t0o = R(rt(), 1), rw = R(se(), 1);
 function r0o(e) {
   let t = On(e.agents, c => c.state === "done"),

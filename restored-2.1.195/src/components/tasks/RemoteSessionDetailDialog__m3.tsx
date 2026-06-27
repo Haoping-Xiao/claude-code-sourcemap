@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initBundledWorkflows
-// [unwrapped __esm module DAl] deps: o7n
+// [unwrapped __esm module DAl] deps: utils/markdownConfigLoader.ts
 RAl = [
   {
     title: "Scope",

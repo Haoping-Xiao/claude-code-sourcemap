@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1121  score=0.1426  fileCov=0.3438
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module u2o] deps: Ye, dC, MEt, Lo, es, sr, er, SC, oo, qd, GY, Ls, Cnr, fn, QFo, wr, ft, Eor, kt, M5l, Hor, SEe, U5l, G5l, Ao, q5l, J5l, sql, lql, gql, p4n, i2o, m_t, mVe, je, Un
+// [unwrapped __esm module u2o] deps: hooks/useTerminalSize.ts, utils/claudemd.ts, utils/plugins/pluginStartupCheck.ts, utils/fsOperations.ts, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, utils/config.ts, utils/config.ts, utils/http.ts, utils/log.ts, utils/signal.ts, utils/status.tsx, utils/doctorContextWarnings.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, QFo, main.tsx, services/analytics/index.ts, components/LogoV2/ChannelsNotice.tsx, utils/debug.ts, utils/bash/ParsedCommand.ts, react/cjs/react.production.js, hooks/notifs/useCanSwitchToExistingSubscription.tsx, components/messages/AttachmentMessage.tsx, components/LogoV2/EmergencyTip.tsx, utils/agentContext.ts, components/LogoV2/LogoV2.tsx, services/api/referral.ts, components/PromptInput/PromptInput.tsx, screens/REPL.tsx, screens/REPL.tsx, services/api/grove.ts, entrypoints/sdk/coreSchemas.ts, components/permissions/ComputerUseApproval/ComputerUseApproval.tsx, mVe, utils/debug.ts, services/analytics/growthbook.ts
 ((l2o = R(lt(), 1)),
   (wql = require("path")),
   ($u = R(se(), 1)),

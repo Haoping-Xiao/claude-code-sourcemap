@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4907  score=0.7202  fileCov=0.6062
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qjl] deps: si, Ye, bUo
+// [unwrapped __esm module Qjl] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, commands/plugin/ManagePlugins.tsx
 ((Yjl = R(lt(), 1)), (Xjl = R(rt(), 1)), (SUo = R(se(), 1)));
 function ValidatePlugin(t0) {
   let t = Zjl.c(5),

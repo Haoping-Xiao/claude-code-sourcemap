@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1569  score=0.7804  fileCov=0.1641
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UFo] deps: co
+// [unwrapped __esm module UFo] deps: utils/messages.ts
 ((BWl = new Set([_N, Jv])), (UWl = new WeakMap()));
 function getLayoutMode(columns) {
   if (columns >= 70) return "horizontal";

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0223  score=0.5399  fileCov=0.0228
 // note: nearest: src/utils/bash/ParsedCommand.ts (0.0223); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module M5l] deps: ft, Ye, j_t, I6e, Kv, Ls, _k, $g, dr
+// [unwrapped __esm module M5l] deps: services/analytics/index.ts, hooks/useTerminalSize.ts, services/mcp/channelNotification.ts, services/mcp/channelPermissions.ts, services/mcp/utils.ts, utils/status.tsx, utils/generatedFiles.ts, utils/plugins/pluginIdentifier.ts, utils/settings/settings.ts
 L5l = R(lt(), 1), D5l = R(rt(), 1), t2 = R(se(), 1);
 function GHe(e) {
   let t = $5l.c(3),

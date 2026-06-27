@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4764  score=1  fileCov=0.4764
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sUl] deps: HUt, Un, fn
+// [unwrapped __esm module sUl] deps: utils/appleTerminalBackup.ts, services/analytics/growthbook.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 ((a1f = {
   type: "prompt",
   name: "init",

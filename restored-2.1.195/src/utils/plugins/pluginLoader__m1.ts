@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/pluginLoader.ts)  jaccard=0.0184  score=0.2494  fileCov=0.0195
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KPn] deps: ft, dr
+// [unwrapped __esm module KPn] deps: services/analytics/index.ts, utils/settings/settings.ts
 ((heo = require("path")), (UKi = ["settings.json", "settings.local.json"]));
 function nWe(e, t, n) {
   let r = loadPluginManifest(t, n);

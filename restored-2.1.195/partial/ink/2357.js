@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1021  score=0.8629  fileCov=0.1038
 // note: low-confidence suggestion: src/ink/parse-keypress.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module z7r] deps: ft, fn, OM, bBt
+// [unwrapped __esm module z7r] deps: services/analytics/index.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, ink/clearTerminal.ts, ink/clearTerminal.ts
 EBt = require("buffer"), g4d = /^(?:\x1b)([a-zA-Z0-9])$/, h4d = /^(?:\x1b+)(O|N|\[|\[\[)(?:(\d+)(?:;(\d+))?([~^$])|(?:1;)?(\d+)?([a-zA-Z]))/, G7r = /^\x1b\[(\d+)(?:;(\d+))?u/, W7r = /^\x1b\[27;(\d+);(\d+)~/, y4d = /^\x1b\[\?(\d+);(\d+)\$y$/, _4d = /^\x1b\[\?([\d;]*)c$/, b4d = /^\x1b\[>([\d;]*)c$/, S4d = /^\x1b\[\?(\d+)u$/, E4d = /^\x1b\[\?(\d+);(\d+)R$/, A4d = /^\x1b\[\?997;([12])n$/, H4d = /^\x1b\](\d+);(.*?)(?:\x07|\x1b\\)$/s, T4d = /^\x1bP>\|(.*?)(?:\x07|\x1b\\)$/s, q7r = /^\x1b\[<(\d+);(\d+);(\d+)([Mm])$/;
 D4i = {
   mode: "NORMAL",

@@ -5,7 +5,7 @@
 // note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0207); dir inferred from dep-graph -> utils; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withCredentialsLock, resolveCredentialsFromConfig, resetWIFSingletonsForTesting, loadCredentials, loadConfig, isWIFActive, invalidateWIFToken, getWIFTokenCache, getWIFStatusLine, getWIFPrecedenceSource, getWIFCredentials, getWIFAuthType, getResolvedWIFBaseUrlSnapshot, getCredentialsPath, defaultCredentials, WorkloadIdentityError, TokenCache, OAUTH_API_BETA_HEADER, FEDERATION_BETA_HEADER
-// [unwrapped __esm module wjr] deps: uee, je, At, vn, kt
+// [unwrapped __esm module wjr] deps: gtoken/build/src/index.js, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/debug.ts
 Zsi = require("path");
 function getResolvedWIFBaseUrlSnapshot() {
   return oHn;

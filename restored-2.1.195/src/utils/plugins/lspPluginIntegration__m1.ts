@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/lspPluginIntegration.ts)  jaccard=0.0297  score=0.0563  fileCov=0.0592
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module G9o] deps: si, ghe, je, fn, At, Yp, vn, vq, vbe, _k, o8, vdt, $g, vfe, Xh, i5, ED, sr, II, dn, kt, XEt
+// [unwrapped __esm module G9o] deps: @xmldom/xmldom/lib/entities.js, ghe, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/gracefulShutdown.ts, utils/sequential.ts, utils/plugins/marketplaceHelpers.ts, utils/plugins/officialMarketplace.ts, utils/generatedFiles.ts, utils/settings/pluginOnlyPolicy.ts, utils/plugins/pluginOptionsStorage.ts, utils/plugins/pluginIdentifier.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, utils/plugins/loadPluginAgents.ts, utils/plugins/mcpPluginIntegration.ts, utils/stringUtils.ts, services/teamMemorySync/secretScanner.ts, utils/plugins/addDirPluginSettings.ts, dn, utils/debug.ts, utils/plugins/pluginAutoupdate.ts
 bpc = require("readline");
 function xpc(e) {
   let t = o2e().shape.name.safeParse(e);

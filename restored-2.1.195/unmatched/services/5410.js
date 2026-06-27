@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0058  score=0.301  fileCov=0.0059
 // note: nearest: src/screens/REPL.tsx (0.0058); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module egc] deps: ft, uo, sA, _a
+// [unwrapped __esm module egc] deps: services/analytics/index.ts, context/notifications.tsx, services/PromptSuggestion/promptSuggestion.ts, utils/plans.ts
 wZ = R(rt(), 1);
 function oen(e, t, n) {
   if (e === "now") return e;

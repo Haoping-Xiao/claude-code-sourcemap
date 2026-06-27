@@ -4,5 +4,5 @@
 // class=new  jaccard=0.0191  score=1  fileCov=0.0191
 // note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0191); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BUs] deps: tyn, iDt
+// [unwrapped __esm module BUs] deps: @aws-sdk/client-sso/dist-cjs/index.js, @aws-sdk/client-sts/dist-cjs/STSClient.js
 NUs = R(yd(), 1), FCg = NUs.createPaginator(iye, uDt, "nextToken", "nextToken", "maxResults");

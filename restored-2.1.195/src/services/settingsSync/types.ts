@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3096  score=1  fileCov=0.3096
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module L7l] deps: Xr
+// [unwrapped __esm module L7l] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 (($9f = ve(() =>
   H.object({
     entries: H.record(H.string(), H.string()),

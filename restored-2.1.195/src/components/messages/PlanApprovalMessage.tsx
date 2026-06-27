@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3191  score=0.5254  fileCov=0.4483
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bzn] deps: Ye, YI, R6
+// [unwrapped __esm module Bzn] deps: hooks/useTerminalSize.ts, utils/teammateMailbox.ts, components/AwsAuthStatusBox.tsx
 ((fil = R(lt(), 1)), (a6e = R(se(), 1)));
 function PlanApprovalRequestDisplay(t0) {
   let t = qCo.c(8),

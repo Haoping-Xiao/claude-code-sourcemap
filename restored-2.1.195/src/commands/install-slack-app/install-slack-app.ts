@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module vFl] deps: wr
+// [unwrapped __esm module vFl] deps: main.tsx
 ((v1f = {
   type: "local-jsx",
   name: "install-github-app",

@@ -5,7 +5,7 @@
 // note: nearest: src/cli/print.ts (0.0023); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isChromeMcpToolName, isAutoModeAllowlistedTool
-// [unwrapped __esm module clc] deps: Lo, Jt
+// [unwrapped __esm module clc] deps: utils/fsOperations.ts, utils/fsOperations.ts
 alc = require("fs/promises"), llc = require("path");
 function isChromeMcpToolName(e) {
   return ocr.some(t => e.startsWith(t));

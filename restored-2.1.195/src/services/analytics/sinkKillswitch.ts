@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1774  score=0.427  fileCov=0.2328
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module IOi] deps: Hp, ft, F$i, G$i, oo, er, je, fn, At, Gx, Rd, vn, Jt, H0, kt, Du
+// [unwrapped __esm module IOi] deps: axios/lib/axios.js, services/analytics/index.ts, types/generated/events_mono/claude_code/v1/claude_code_internal_event.ts, types/generated/events_mono/growthbook/v1/growthbook_experiment_event.ts, utils/http.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/slashCommandParsing.ts, utils/settings/constants.ts, utils/sequential.ts, utils/fsOperations.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts
 ((mke = R(Nh(), 1)),
   (COi = require("crypto")),
   (E7 = require("fs/promises")),

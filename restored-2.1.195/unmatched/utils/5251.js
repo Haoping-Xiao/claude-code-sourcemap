@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0027  score=0.4789  fileCov=0.0027
 // note: nearest: src/screens/REPL.tsx (0.0027); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yrc] deps: QGo, Gfe, kYe, WL, q$, kt, Pw, je, At, Is, Jt
+// [unwrapped __esm module Yrc] deps: main.tsx, undici/lib/web/fileapi/util.js, bridge/bridgeMain.ts, utils/git.ts, undici/lib/core/symbols.js, utils/debug.ts, utils/fileRead.ts, utils/debug.ts, utils/errors.ts, utils/platform.ts, utils/fsOperations.ts
 zrc = require("crypto"), Dar = require("fs/promises"), Krc = require("path");
 function $Ye(e) {
   console.error(wt.red(e));

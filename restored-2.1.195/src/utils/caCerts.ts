@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2289  score=0.407  fileCov=0.3436
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vet] deps: Qi, je, fn, ys
+// [unwrapped __esm module Vet] deps: lodash-es/memoize.js, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts
 CCs = ["bundled", "system"];
 DG = Cn(() => {
   let e = lNu(),

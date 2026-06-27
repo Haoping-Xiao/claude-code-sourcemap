@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3763  score=0.7291  fileCov=0.4374
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module O6n] deps: Awo
+// [unwrapped __esm module O6n] deps: utils/messages.ts
 ((Xtf = ["stream_event", "stream_request_start", "response_length", ...Ewo]), (Jtf = new Set(Xtf)));
 function registerFrontmatterHooks(setAppState, sessionId, hooks, sourceName, o = false) {
   if (!hooks || Object.keys(hooks).length === 0) return;

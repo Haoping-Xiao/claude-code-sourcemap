@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3463  score=0.4276  fileCov=0.6453
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rir] deps: Ld
+// [unwrapped __esm module rir] deps: utils/concurrentSessions.ts
 nir = ["exit", "quit", ":q", ":q!", ":wq", ":wq!"];
 ((o6f = {
   type: "local-jsx",

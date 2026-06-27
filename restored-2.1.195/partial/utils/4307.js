@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2227  score=0.9289  fileCov=0.2265
 // note: low-confidence suggestion: src/utils/swarm/teammateLayoutManager.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cAe] deps: ft, dn, je, Is, qJ, rhl, E0o, ghl, NDe
+// [unwrapped __esm module cAe] deps: services/analytics/index.ts, dn, utils/debug.ts, utils/platform.ts, utils/plugins/installCounts.ts, utils/swarm/backends/it2Setup.ts, E0o, utils/swarm/backends/TmuxBackend.ts, utils/agentSwarmsEnabled.ts
 vQ = Hhl();
 async function R0o() {
   return (await A$e()).backend;

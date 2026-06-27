@@ -4,7 +4,7 @@
 // class=modified (alt of src/native-ts/color-diff/index.ts)  jaccard=0.0782  score=0.4863  fileCov=0.0853
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Wba] deps: iu, b5e, eco, Tc, vn, sr
+// [unwrapped __esm module Wba] deps: @mixmark-io/domino/lib/Document.js, services/api/promptCacheBreakDetection.ts, native-ts/color-diff/index.ts, marked/lib/marked.esm.js, utils/sequential.ts, services/teamMemorySync/secretScanner.ts
 fBn = require("path");
 xSe = {
   r: 0,

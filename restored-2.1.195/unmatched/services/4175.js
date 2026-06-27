@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jll] deps: wpn
+// [unwrapped __esm module jll] deps: extend/index.js
 Fll = Iif;
 var xif = 1,
   kif = 2,

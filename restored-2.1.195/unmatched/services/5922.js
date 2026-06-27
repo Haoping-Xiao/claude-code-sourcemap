@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0387  score=0.1903  fileCov=0.0464
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0387); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module njc] deps: oJo, rB, sJo
+// [unwrapped __esm module njc] deps: @growthbook/growthbook/dist/esm/util.mjs, pkce-challenge/dist/index.node.js, node-forge/lib/rsa.js
 tjc = DDm;
 class X7e {
   constructor(e) {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0064  score=0.5434  fileCov=0.0064
 // note: nearest: src/utils/sessionStorage.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cir] deps: db, fn, YS, Rd, Jt
+// [unwrapped __esm module Cir] deps: utils/authFileDescriptor.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/teammateContext.ts, utils/settings/constants.ts, utils/fsOperations.ts
 yZl = require("path");
 async function A3o(e) {
   let t = e ?? Dq(),

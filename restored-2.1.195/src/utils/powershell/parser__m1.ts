@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/powershell/parser.ts)  jaccard=0.2151  score=0.5886  fileCov=0.2531
 // note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kDe] deps: dn, Is, _0
+// [unwrapped __esm module kDe] deps: dn, utils/platform.ts, axios/lib/utils.js
 ((Fqe = require("fs/promises")), (F2n = require("path")));
 function e0p() {
   let e = process.env.CLAUDE_CODE_PWSH_PARSE_TIMEOUT_MS;

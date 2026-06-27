@@ -4,7 +4,7 @@
 // class=new  jaccard=0.017  score=0.3073  fileCov=0.0177
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.017); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mQa] deps: Ye, ps, sr, Cc, Vl, Bs, f_, Ko, CH, Mg, wb, vH, dQa, Z9n
+// [unwrapped __esm module mQa] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @smithy/types/dist-cjs/index.js, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, utils/status.tsx, components/agents/new-agent-creation/wizard-steps/MethodStep.tsx
 ZHo = R(lt(), 1), sMe = R(rt(), 1), tR = R(se(), 1);
 function hQa() {
   let e = gQa.c(17),

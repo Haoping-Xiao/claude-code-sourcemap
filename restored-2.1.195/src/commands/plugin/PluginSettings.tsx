@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3793  score=0.5421  fileCov=0.5581
 // note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module n4l] deps: si, Ye, je, At, vrr, sr
+// [unwrapped __esm module n4l] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/debug.ts, utils/errors.ts, utils/plugins/validatePlugin.ts, services/teamMemorySync/secretScanner.ts
 ((Zjl = R(lt(), 1)), (e4l = R(rt(), 1)), (EUo = R(se(), 1)));
 function MarketplaceList(t0) {
   let t = AXt.c(4),

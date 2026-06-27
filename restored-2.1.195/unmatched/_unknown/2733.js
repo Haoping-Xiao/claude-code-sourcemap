@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0071  score=0.3593  fileCov=0.0072
 // note: nearest: src/utils/plugins/schemas.ts (0.0071); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Eta] deps: Qne, SX
+// [unwrapped __esm module Eta] deps: Qne, protobufjs/ext/descriptor/index.js
 utp = -62135596800n;
 function oct(e, t) {
   if (e === t) return true;

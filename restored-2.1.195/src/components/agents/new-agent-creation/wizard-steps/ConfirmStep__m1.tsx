@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx)  jaccard=0.024  score=0.0437  fileCov=0.0506
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QJa] deps: Ye, Vl, wb, vH, Z9n
+// [unwrapped __esm module QJa] deps: hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts, @ant/computer-use-mcp/src/toolCalls.ts, vH, components/agents/new-agent-creation/wizard-steps/MethodStep.tsx
 ((XJa = R(lt(), 1)), (hht = R(se(), 1)));
 function xJp(e) {
   let t = {

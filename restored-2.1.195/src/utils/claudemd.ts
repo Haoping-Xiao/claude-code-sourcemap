@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2298  score=0.4415  fileCov=0.324
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dC] deps: Qi, Oct, kt, ft, GNt, Uh, id, Un, Rm, er, BE, je, Mm, wr, fn, At, oc, ik, Iv, ys, sa, sp, Ao, Hu, Yf, vf, i2e, dr
+// [unwrapped __esm module dC] deps: lodash-es/memoize.js, marked/lib/marked.esm.js, utils/debug.ts, services/analytics/index.ts, tools/AgentTool/agentMemory.ts, services/analytics/metadata.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, services/analytics/growthbook.ts, @grpc/grpc-js/build/src/server.js, utils/config.ts, has-flag/index.js, utils/debug.ts, utils/git/gitConfigParser.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/claudemd.ts, hooks/useSettings.ts, utils/fsOperations.ts, utils/git.ts, utils/worktree.ts, utils/agentContext.ts, utils/file.ts, utils/task/diskOutput.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/settings/settings.ts
 ((Rsa = R(D3e(), 1)), (bh = require("path")), (Lsa = R(kso(), 1)));
 Pip = new Set([
   ".md",

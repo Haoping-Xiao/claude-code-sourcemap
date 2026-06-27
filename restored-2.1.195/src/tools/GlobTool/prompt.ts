@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.316  score=0.316  fileCov=1
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lf] deps: k0, S0n
+// [unwrapped __esm module lf] deps: k0, tools/FileReadTool/prompt.ts
 JNi = `${oYr}. Each line is the line number, a single separator (a tab or \`:\`), then the verbatim file content (including any leading whitespace).`;
 function tBi(e) {
   if (ph(e))

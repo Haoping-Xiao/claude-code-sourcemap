@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uBs] deps: aBs
+// [unwrapped __esm module uBs] deps: @smithy/smithy-client/dist-cjs/index.js
 g9u = $hn;

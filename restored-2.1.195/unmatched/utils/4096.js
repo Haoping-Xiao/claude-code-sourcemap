@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0162  score=0.1145  fileCov=0.0185
 // note: nearest: node_modules/undici/lib/web/fetch/response.js (0.0162); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module w8t] deps: ft, loe, SJ, Cc, WVt, vi, eE, fH, Ed, O0, HN, HI, Ye, ps, Un, _F, EVe, yzn, cCo, oo, Il, je, At, vn, OMe, co, Ls, mCo, lg, Ote
+// [unwrapped __esm module w8t] deps: services/analytics/index.ts, utils/swarm/constants.ts, components/Feedback.tsx, context/modalContext.tsx, components/TeleportStash.tsx, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, react/cjs/react.production.js, context/notifications.tsx, commander/lib/command.js, utils/plugins/pluginPolicy.ts, HI, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/analytics/growthbook.ts, bridge/bridgeEnabled.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/apiPreconnect.ts, utils/managedEnv.ts, utils/http.ts, Il, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/permissions/bypassPermissionsKillswitch.ts, utils/messages.ts, utils/status.tsx, cli/handlers/auth.ts, utils/bash/bashParser.ts, utils/user.ts
 fsl = R(lt(), 1), msl = R(rt(), 1), n6e = R(se(), 1);
 async function hsl(e) {
   return yl("api_admin_request_create", async () => {

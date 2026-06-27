@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Ajo] deps: si, l$, _i, uo, rme, gq, j7n, pMe, S_, Z6, d8t, JJ, q6e, hN, sYe, tC, Ye, ps, nk, Bs, vi, B_, Ko, f8l, b8l, A8l, v8l, djo, M8l
+// [unwrapped __esm module Ajo] deps: @xmldom/xmldom/lib/entities.js, tools/AgentTool/forkSubagent.ts, components/design-system/Ratchet.tsx, context/notifications.tsx, components/tasks/renderToolActivity.tsx, tools/BashTool/UI.tsx, tasks/DreamTask/DreamTask.ts, tasks/InProcessTeammateTask/InProcessTeammateTask.tsx, tasks/LocalShellTask/LocalShellTask.tsx, utils/bash/ast.ts, d8t, tasks/RemoteAgentTask/RemoteAgentTask.tsx, tasks/stopTask.ts, utils/swarm/backends/detection.ts, commands/ultraplan.tsx, components/CustomSelect/use-multi-select-state.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, nk, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, components/tasks/RemoteSessionProgress.tsx, components/tasks/DreamDetailDialog.tsx, components/hooks/ViewHookMode.tsx, utils/messages/mappers.ts, components/tasks/ShellDetailDialog.tsx, commands/insights.ts
 ((Ejo = R(lt(), 1)), (xse = R(rt(), 1)), (Ba = R(se(), 1)));
 ((Y8l = (gsr(), ro(K8l)).WorkflowDetailDialog),
   (bsr = (tfe(), ro(Bko))),

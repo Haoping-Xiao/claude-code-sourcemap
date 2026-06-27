@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.0747  score=0.1787  fileCov=0.1138
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _rr] deps: FJr, m8, ps
+// [unwrapped __esm module _rr] deps: screens/REPL.tsx, m8, utils/suggestions/directoryCompletion.ts
 s1e = R(rt(), 1);
 function ljl() {
   return bz.useContext(ajl);

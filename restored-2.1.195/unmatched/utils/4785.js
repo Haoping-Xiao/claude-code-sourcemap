@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0293  score=0.2816  fileCov=0.0317
 // note: nearest: src/ink/Ansi.tsx (0.0293); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module irr] deps: At, vdt, nDe, Xh, i5, GBo
+// [unwrapped __esm module irr] deps: utils/errors.ts, utils/plugins/pluginOptionsStorage.ts, utils/plugins/lspPluginIntegration.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/mcpPluginIntegration.ts, commands/plugin/PluginOptionsFlow.tsx
 L2l = R(lt(), 1), t1e = R(rt(), 1), qBo = R(se(), 1);
 function lrr() {
   let e = D2l.c(3),

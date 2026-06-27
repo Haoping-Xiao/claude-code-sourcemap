@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3889  score=0.4951  fileCov=0.6445
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module znr] deps: si, Ye, Kv, Yfe, g$, uo, At, sr, Cc, mE, Bs, vi, Ko, gm, gKe, EC, LBo
+// [unwrapped __esm module znr] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, services/mcp/utils.ts, commands/mcp/mcp.tsx, services/mcp/xaa.ts, context/notifications.tsx, utils/errors.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, undici/lib/mock/mock-agent.js, components/Settings/Status.tsx, @anthropic-ai/bedrock-sdk/client.mjs, components/mcp/MCPRemoteServerMenu.tsx
 ((Vnr = R(rt(), 1)), (ud = R(se(), 1)));
 function MCPToolDetailView(t0) {
   let t = s2l.c(45),

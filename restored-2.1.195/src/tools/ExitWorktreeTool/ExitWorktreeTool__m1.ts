@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/ExitWorktreeTool/ExitWorktreeTool.ts)  jaccard=0.0884  score=0.4266  fileCov=0.1003
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vbl] deps: ql, Ye
+// [unwrapped __esm module vbl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts
 cfe = R(se(), 1);
 async function countWorktreeChanges(worktreePath, originalHeadCommit) {
   let n = await $n(go(), ["-C", worktreePath, "status", "--porcelain"]);

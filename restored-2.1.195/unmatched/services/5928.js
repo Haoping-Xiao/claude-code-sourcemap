@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0194  score=0.1142  fileCov=0.0229
 // note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0194); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ijc] deps: lJo, YP, cgr
+// [unwrapped __esm module ijc] deps: node-forge/lib/rsa.js, node-forge/lib/util.js, cgr
 pJo = class pJo extends J7e {
   setProtectedHeader(e) {
     if (this._protectedHeader) throw TypeError("setProtectedHeader can only be called once");

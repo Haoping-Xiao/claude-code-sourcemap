@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.0597  score=0.2007  fileCov=0.0784
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fKr] deps: je
+// [unwrapped __esm module fKr] deps: utils/debug.ts
 jOd = [
   "name",
   "description",

@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0093  score=0.1211  fileCov=0.01
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tP] deps: PR, uee, TM, oo, e1, er, co, Ao, ste, Ls, UX, ft, Lne, Lx, wr, fn, es, xW, I1n, Jt, kt, fb, z1, Ijt, gSe
+// [unwrapped __esm module tP] deps: utils/errors.ts, gtoken/build/src/index.js, constants/betas.ts, utils/http.ts, bridge/bridgeApi.ts, utils/config.ts, utils/messages.ts, utils/agentContext.ts, bridge/jwtUtils.ts, utils/status.tsx, utils/imageValidation.ts, services/analytics/index.ts, utils/imageResizer.ts, main.tsx, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/profilerBase.ts, utils/imageResizer.ts, utils/imageValidation.ts, utils/fsOperations.ts, utils/debug.ts, fb, services/api/errorUtils.ts, Ijt, services/api/errors.ts
 ((blp = [
   "could not process image",
   "image exceeds",

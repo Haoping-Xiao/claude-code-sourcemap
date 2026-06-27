@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TrustDialog
-// [unwrapped __esm module b$c] deps: dr, er, WGe, QH, fre
+// [unwrapped __esm module b$c] deps: utils/settings/settings.ts, utils/config.ts, utils/managedEnvConstants.ts, tools/TaskStopTool/prompt.ts, utils/permissions/PermissionUpdate.ts
 s$c = require("path");
 YIm = /[\x00-\x1f\x7f-\x9f]/g;
 XIm = new Set([

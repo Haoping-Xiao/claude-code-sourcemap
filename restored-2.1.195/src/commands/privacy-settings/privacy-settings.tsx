@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module Yjo] deps: kt, Ye, vft, mE, Bs, vi, Ko
+// [unwrapped __esm module Yjo] deps: utils/debug.ts, hooks/useTerminalSize.ts, services/api/grove.ts, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 ((AJt = R(lt(), 1)), (fYe = R(rt(), 1)), (Al = R(se(), 1)));
 async function call(onDone) {
   if (!(await Tft())) return (onDone(FALLBACK_MESSAGE), null);

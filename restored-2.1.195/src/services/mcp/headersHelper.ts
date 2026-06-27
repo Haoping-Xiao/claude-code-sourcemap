@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3122  score=0.5365  fileCov=0.4275
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xka] deps: AW, Ye, xLe, Rd, Jt
+// [unwrapped __esm module xka] deps: ink/supports-hyperlinks.ts, hooks/useTerminalSize.ts, context/stats.tsx, utils/settings/constants.ts, utils/fsOperations.ts
 ((ypo = R(se(), 1)),
   (Kwp = /^[CDG][A-Z0-9]{6,}$/),
   (Ywp = new Set(["slack_send_message", "slack_post_message"])));

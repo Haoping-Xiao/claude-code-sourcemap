@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3458  score=1  fileCov=0.3458
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module IJr] deps: je, At, ZS, one, OM, q7, jh
+// [unwrapped __esm module IJr] deps: utils/debug.ts, utils/errors.ts, ink/terminal.ts, ink/termio/csi.ts, ink/clearTerminal.ts, ink/terminal.ts, utils/env.ts
 vne = require("fs");
 function FWi(e, t, n) {
   if (!t) return false;

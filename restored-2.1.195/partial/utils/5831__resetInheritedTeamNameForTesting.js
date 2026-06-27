@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sessionTeamName, initializeSessionTeam, _resetInheritedTeamNameForTesting
-// [unwrapped __esm module M1c] deps: dn, je, Vtn, Jt, wdr, Zdr, Azo, I1c
+// [unwrapped __esm module M1c] deps: dn, utils/debug.ts, @anthropic-ai/bedrock-sdk/client.mjs, utils/fsOperations.ts, utils/telemetry/pluginTelemetry.ts, utils/deepLink/registerProtocol.ts, utils/deepLink/registerProtocol.ts, utils/deepLink/protocolHandler.ts
 R1c = require("fs/promises"), L1c = require("os");
 function sessionTeamName(e) {
   return `${tkm}-${e.slice(0, 8)}`;

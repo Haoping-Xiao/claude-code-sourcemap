@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3098  score=0.3596  fileCov=0.691
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Y4o] deps: Rc, Nht, np, dn, je, At, vn, co, Mh, Jt
+// [unwrapped __esm module Y4o] deps: constants/oauth.ts, utils/teammateMailbox.ts, env-paths/index.js, dn, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/messages.ts, utils/proxy.ts, utils/fsOperations.ts
 ((uir = require("crypto")),
   (T6f = new Set([401, 403, 404])),
   (w6f = {

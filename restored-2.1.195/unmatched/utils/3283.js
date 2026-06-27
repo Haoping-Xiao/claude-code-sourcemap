@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0056  score=0.2056  fileCov=0.0057
 // note: nearest: src/cli/print.ts (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mpo] deps: Vb, Xr, dn, E3t, Ire, jdt, je, At, lT, Iv, vn, SG, cDe, Jt, Xka, RFn
+// [unwrapped __esm module Mpo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/sanitization.ts, services/mcp/client.ts, @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/errors.ts, utils/permissions/permissionSetup.ts, hooks/useSettings.ts, utils/sequential.ts, screens/REPL.tsx, tools/ReadMcpResourceTool/prompt.ts, utils/fsOperations.ts, skills/mcpSkillBuilders.ts, utils/mcpOutputStorage.ts
 Zka = require("crypto"), SDe = require("fs/promises"), Dpo = require("path"), pCp = ve(() => H.object({
   skills: H.array(H.looseObject({
     frontmatter: H.record(H.string(), H.unknown()).nullish(),

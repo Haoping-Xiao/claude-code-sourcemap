@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0038  score=0.685  fileCov=0.0038
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0038); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RNl] deps: hnr, Ye, sr, gm, xoe
+// [unwrapped __esm module RNl] deps: components/Feedback.tsx, hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts, undici/lib/mock/mock-agent.js, components/AgentProgressLine.tsx
 ynr = R(lt(), 1), xEt = R(rt(), 1), jk = R(se(), 1);
 function _nr(e) {
   let t = LNl.c(12),

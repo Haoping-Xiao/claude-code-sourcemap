@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/editor.ts)  jaccard=0.2274  score=0.4064  fileCov=0.3404
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QOe] deps: Qi, ft, HI, je, _0
+// [unwrapped __esm module QOe] deps: lodash-es/memoize.js, services/analytics/index.ts, HI, utils/debug.ts, axios/lib/utils.js
 ((Lnr = require("child_process")), (Rnr = require("path")));
 HOf = new Set(["start", "cmd", "cmd.exe"]);
 ((TOf = ["code", "cursor", "windsurf", "codium", "subl", "atom", "gedit", "notepad++", "notepad"]),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/telemetry/pluginTelemetry.ts)  jaccard=0.0302  score=0.137  fileCov=0.0373
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aUo] deps: glt, U1, q8, rq, je, At, Iv, vn, pq, Jt, lE, $g
+// [unwrapped __esm module aUo] deps: utils/plugins/pluginStartupCheck.ts, U1, utils/pdf.ts, skills/loadSkillsDir.ts, utils/debug.ts, utils/errors.ts, hooks/useSettings.ts, utils/sequential.ts, utils/markdownConfigLoader.ts, utils/fsOperations.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/pluginIdentifier.ts
 ((Hse = R(require("fs/promises"))), (jq = R(require("path"))));
 async function getEnabledVia() {
   try {

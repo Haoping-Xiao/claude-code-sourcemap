@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/ExitFlow.tsx)  jaccard=0.2671  score=0.6013  fileCov=0.3246
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sJl] deps: kt, ft, Ye, je, Bi, KI, _$, aR, Vl, vi, EC
+// [unwrapped __esm module sJl] deps: utils/debug.ts, services/analytics/index.ts, hooks/useTerminalSize.ts, utils/debug.ts, constants/files.ts, utils/permissions/filesystem.ts, utils/Shell.ts, constants/prompts.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 ((tJl = R(lt(), 1)), (nJl = require("path")), (M1e = R(rt(), 1)), (ume = R(se(), 1)));
 function Q8f() {
   return HL(J8f) ?? "Goodbye!";

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6139  score=1  fileCov=0.6139
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nsl] deps: Ye
+// [unwrapped __esm module nsl] deps: hooks/useTerminalSize.ts
 ((esl = R(lt(), 1)), (tCo = R(se(), 1)));
 function getAvailableUpgrade() {
   let e = GG();

@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0067  score=0.2151  fileCov=0.0069
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lx] deps: wr, fn
+// [unwrapped __esm module Lx] deps: main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs
 F0u = new Set([
   "cli",
   "mcp",

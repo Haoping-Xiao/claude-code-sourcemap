@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2563  score=0.3544  fileCov=0.4807
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A_c] deps: OTt, _i, Ye, uo, S_, je, PM, b_c
+// [unwrapped __esm module A_c] deps: components/HistorySearchDialog.tsx, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, tasks/LocalShellTask/LocalShellTask.tsx, utils/debug.ts, utils/plugins/loadPluginHooks.ts, screens/REPL.tsx
 Nen = R(rt(), 1);
 function HistorySearchInput(t0) {
   let t = H_c.c(12),

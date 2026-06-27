@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3565  score=0.4248  fileCov=0.6894
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZNc] deps: Xr, uur
+// [unwrapped __esm module ZNc] deps: @modelcontextprotocol/sdk/dist/esm/types.js, query.ts
 ((vmr = ve(() =>
   H.object({
     inputTokens: H.number(),

@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderChromeToolResultMessage, getClaudeInChromeMCPToolOverrides
-// [unwrapped __esm module Upo] deps: tQe, Oun, ft, dn, ii, Il, At, xW, I1, DFn, Jt, sr, VM, $po
+// [unwrapped __esm module Upo] deps: @ant/claude-for-chrome-mcp/src/browserTools.ts, @ant/claude-for-chrome-mcp/src/mcpServer.ts, services/analytics/index.ts, dn, services/mockRateLimits.ts, Il, utils/errors.ts, utils/imageResizer.ts, hooks/usePasteHandler.ts, utils/claudeInChrome/mcpServer.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/claudeInChrome/common.ts, utils/computerUse/toolRendering.tsx
 ((l0a = require("url")), (eGt = new Map()));
 ICp = new RegExp(`^${z0e}\\(([^)]+)\\)$`);
 LCp = new Set(["image/png", "image/jpeg", "image/gif", "image/webp"]);

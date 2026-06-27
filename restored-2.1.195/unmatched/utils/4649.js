@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0522  score=0.2979  fileCov=0.0595
 // note: nearest: src/services/rateLimitMessages.ts (0.0522); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module D7t] deps: ft, mSe, z1, oo, F1o, je, At, vn, Jt
+// [unwrapped __esm module D7t] deps: services/analytics/index.ts, services/rateLimitMessages.ts, services/api/errorUtils.ts, utils/http.ts, utils/sessionStorage.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/fsOperations.ts
 hDf = ["five_hour", "seven_day", "seven_day_oauth_apps", "seven_day_opus", "seven_day_sonnet", "cinder_cove", "extra_usage", "limits"];
 function LH(e) {
   let t = iOl.c(7),

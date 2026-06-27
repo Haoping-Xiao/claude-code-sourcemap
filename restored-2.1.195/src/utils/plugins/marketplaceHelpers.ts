@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3396  score=0.8696  fileCov=0.3578
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vq] deps: Zf, G4, ty, Qbe, Vv, je, At, vn, d$o, _k, eer, vYt, A5e, YZn, Xh, i5, dOe
+// [unwrapped __esm module vq] deps: utils/sessionStorage.ts, constants/outputStyles.ts, tools/AgentTool/loadAgentsDir.ts, memdir/memoryAge.ts, services/PromptSuggestion/speculation.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/plugins/walkPluginMarkdown.ts, utils/generatedFiles.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/loadPluginCommands.ts, utils/plugins/loadPluginHooks.ts, utils/plugins/zipCache.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/mcpPluginIntegration.ts, utils/plugins/cacheUtils.ts
 ((nse = require("fs/promises")),
   (IYt = require("path")),
   (UIf = (Vko(), ro($ml)).clearPluginWorkflowCache));

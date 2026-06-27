@@ -5,7 +5,7 @@
 // note: deminified; 38 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: _CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL, CLOUD_ML_REGION, CLAUDE_GATEWAY_LOG_LEVEL, CLAUDE_GATEWAY_ALLOW_LOOPBACK, CLAUDE_CODE_USE_VERTEX, CLAUDE_CODE_USE_MANTLE, CLAUDE_CODE_USE_FOUNDRY, CLAUDE_CODE_USE_CCR_V2, CLAUDE_CODE_USE_BEDROCK, CLAUDE_CODE_USE_ANTHROPIC_AWS, CLAUDE_CODE_SKIP_HFI_VERSION_CHECK, CLAUDE_CODE_SIMULATE_PROXY_USAGE, CLAUDE_CODE_PROXY_RESOLVES_HOSTS, CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST, CLAUDE_CODE_GB_REFRESH_INTERVAL_MS, CLAUDE_CODE_GB_BASE_URL, CLAUDE_CODE …
-// [unwrapped __esm module sbs] deps: Eae
+// [unwrapped __esm module sbs] deps: utils/auth.ts
 ((bku = Fe.str()),
   (Sku = Fe.str()),
   (Eku = Fe.str()),

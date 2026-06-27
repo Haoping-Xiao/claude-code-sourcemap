@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0208  score=0.1833  fileCov=0.023
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0208); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lRo] deps: je, WAe, jv, Y0o, sRo
+// [unwrapped __esm module lRo] deps: utils/debug.ts, WAe, tools/ScheduleCronTool/prompt.ts, components/messages/CollapsedReadSearchContent.tsx, cli/print.ts
 l_l = R(require("vm"));
 u_l = class u_l extends Error {
   constructor(e, t) {

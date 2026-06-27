@@ -4,7 +4,7 @@
 // class=new  jaccard=0.035  score=0.1335  fileCov=0.0453
 // note: nearest: src/components/CustomSelect/select.tsx (0.035); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cDc] deps: Ye, Vl, X0
+// [unwrapped __esm module cDc] deps: hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts, components/ManagedSettingsSecurityDialog/utils.ts
 aDc = R(lt(), 1), Ofr = R(rt(), 1), bR = R(se(), 1);
 function dDc() {
   if (Js()) return false;

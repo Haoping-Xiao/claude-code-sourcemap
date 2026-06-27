@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2466  score=0.3628  fileCov=0.4349
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Nlc] deps: Qi, ANt, dn, je, Iv, vn, pq, YZn
+// [unwrapped __esm module Nlc] deps: lodash-es/memoize.js, outputStyles/loadOutputStylesDir.ts, dn, utils/debug.ts, hooks/useSettings.ts, utils/sequential.ts, utils/markdownConfigLoader.ts, utils/plugins/zipCache.ts
 (($lc = require("path")),
   (Olc = Cn(async (e) => {
     try {

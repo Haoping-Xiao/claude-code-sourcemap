@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.632  score=0.7923  fileCov=0.7576
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module n1o] deps: si, Xa, Mce, Kce, Ye, ps, S7t, Cc, Bs, vi, Ko
+// [unwrapped __esm module n1o] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, ink/termio/types.ts, components/Settings/Config.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, components/Settings/Config.tsx, context/modalContext.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 ((e1o = R(lt(), 1)),
   (nEt = R(rt(), 1)),
   (m3 = R(se(), 1)),

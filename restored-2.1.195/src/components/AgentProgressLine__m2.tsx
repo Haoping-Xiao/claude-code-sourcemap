@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/AgentProgressLine.tsx)  jaccard=0.0547  score=0.1009  fileCov=0.1068
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZCo] deps: Ye, co
+// [unwrapped __esm module ZCo] deps: hooks/useTerminalSize.ts, utils/messages.ts
 ((Hil = R(lt(), 1)), (P8t = R(se(), 1)));
 function qof(e) {
   if (!e.match(/<sandbox_violations>([\s\S]*?)<\/sandbox_violations>/))

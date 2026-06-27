@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0027  score=0.2367  fileCov=0.0027
 // note: nearest: src/cli/print.ts (0.0027); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bmo] deps: Mmo, sr, sN, xRe, Omo
+// [unwrapped __esm module Bmo] deps: utils/shell/specPrefix.ts, services/teamMemorySync/secretScanner.ts, utils/bash/commands.ts, utils/bash/ast.ts, utils/bash/prefix.ts
 FPa = /^\d+$/, UPa = /^[A-Za-z_][A-Za-z0-9_]*=/, M0p = new Set(["nice"]);
 function Upt(e) {
   let t = {

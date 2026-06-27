@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3571  score=0.6325  fileCov=0.4506
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qzn] deps: Ko, ql, kLe, ljn, Ye
+// [unwrapped __esm module qzn] deps: components/ConfigurableShortcutHint.tsx, commands/add-dir/validation.ts, components/messages/AttachmentMessage.tsx, tools/BashTool/UI.tsx, hooks/useTerminalSize.ts
 ((vil = R(lt(), 1)), (TN = R(se(), 1)), (Til = /(?:^|\n)(Shell cwd was reset to .+)$/));
 function UserBashOutputMessage(t0) {
   let t = wil.c(10),

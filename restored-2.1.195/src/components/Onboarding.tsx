@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SkippableStep, Onboarding
-// [unwrapped __esm module GMc] deps: Ye, BMc
+// [unwrapped __esm module GMc] deps: hooks/useTerminalSize.ts, components/ui/OrderedList.tsx
 ((FMc = R(lt(), 1)),
   (m7o = R(rt(), 1)),
   (U7e = R(rt(), 1)),

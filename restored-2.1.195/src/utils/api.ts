@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3116  score=0.6031  fileCov=0.3919
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module X6] deps: IB, wr, sa, Lo, ft, rit, aR, YWe, dr, er, BE, QMo, fh, MMe, nC, lf, u_, Ao, Zf, G4, EI, lC, f6, vAe, wer, Yf, j9t, fn, k0, Oot, jv, Un, kt, T3e, Vw, qRe, je, Izt, GNt, Bot, LMe, K$e, _m, qfn
+// [unwrapped __esm module X6] deps: constants/keys.ts, main.tsx, utils/git.ts, utils/fsOperations.ts, services/analytics/index.ts, rit, constants/prompts.ts, tools/WebSearchTool/prompt.ts, utils/settings/settings.ts, utils/config.ts, has-flag/index.js, memdir/findRelevantMemories.ts, commands/insights.ts, commands/commit-push-pr.ts, types/plugin.ts, tools/GlobTool/prompt.ts, utils/markdownConfigLoader.ts, utils/agentContext.ts, utils/sessionStorage.ts, constants/outputStyles.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx, utils/xdg.ts, tools/AgentTool/built-in/exploreAgent.ts, tools/AgentTool/loadAgentsDir.ts, utils/task/diskOutput.ts, utils/fileOperationAnalytics.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, k0, utils/words.ts, tools/ScheduleCronTool/prompt.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/permissions/permissionSetup.ts, utils/betas.ts, tools/ToolSearchTool/prompt.ts, utils/debug.ts, tools/EnterWorktreeTool/EnterWorktreeTool.ts, tools/AgentTool/agentMemory.ts, utils/thinking.ts, utils/attachments.ts, utils/attribution.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, entrypoints/sdk/coreSchemas.ts
 ((zYe = require("os")),
   (cac = require("path")),
   (mtm = (f4(), ro(URe)).BRIEF_PROACTIVE_SECTION),

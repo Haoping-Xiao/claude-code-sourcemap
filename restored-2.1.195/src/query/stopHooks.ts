@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2815  score=0.3977  fileCov=0.4906
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KQn] deps: ft, KKt, U_t, dn, Un, kt, ZE, wX, WW, tSe, Vw, Ld, Lo, je, At, es, vn, co, xUt, Ao, zH, y_, _a, Epe, Jt, sr, m1, FAe, FQn, Oze, ag
+// [unwrapped __esm module KQn] deps: services/analytics/index.ts, tools/SendMessageTool/SendMessageTool.ts, hooks/toolPermission/PermissionContext.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, utils/shell/prefix.ts, wX, utils/cronScheduler.ts, tools/TaskStopTool/prompt.ts, utils/betas.ts, utils/concurrentSessions.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, utils/sequential.ts, utils/messages.ts, ink/styles.ts, utils/agentContext.ts, services/teamMemorySync/secretScanner.ts, utils/stats.ts, utils/plans.ts, utils/permissions/yoloClassifier.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/thinking.ts, entrypoints/sdk/coreSchemas.ts, screens/REPL.tsx, main.tsx, utils/claudeInChrome/common.ts
 ((rOe = require("fs/promises")), (VQn = require("path")));
 Nvf = /^(unspecified|untitled|unnamed)\b|^(unknown|no) (request|task|job|input)\b/;
 jvf = new Set([yh, DI, yT]);

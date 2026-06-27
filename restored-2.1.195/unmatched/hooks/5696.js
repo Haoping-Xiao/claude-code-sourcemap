@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0129  score=0.4782  fileCov=0.0131
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0129); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uRc] deps: Ye
+// [unwrapped __esm module uRc] deps: hooks/useTerminalSize.ts
 lRc = R(lt(), 1), P7e = R(se(), 1);
 function pRc(e) {
   return dRc.get(e) ?? e.normalize("NFKC");

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5094  score=0.8309  fileCov=0.5683
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DYl] deps: Ye, ps, Uh, M7, es, kpe, Cc, lJ, Bs, f_, Ko, wb, vH, VAt, d4o
+// [unwrapped __esm module DYl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/analytics/metadata.ts, tools/FileEditTool/constants.ts, utils/profilerBase.ts, utils/systemPrompt.ts, context/modalContext.tsx, components/StructuredDiff/Fallback.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, skills/bundled/keybindings.ts, components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx
 ((RYl = R(lt(), 1)), (Xp = R(se(), 1)));
 function ConfirmStepWrapper({ tools: e, existingAgents: t, onComplete: n }) {
   let { wizardData: r } = Eu(),

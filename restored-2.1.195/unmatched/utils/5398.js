@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0459  score=0.1699  fileCov=0.0591
 // note: nearest: src/commands/plugin/PluginOptionsDialog.tsx (0.0459); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hmc] deps: qNt, HI
+// [unwrapped __esm module hmc] deps: ink/components/StdinContext.ts, HI
 vur = R(rt(), 1);
 function _mc(e) {
   let t = ymc.c(7),

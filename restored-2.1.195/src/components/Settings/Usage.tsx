@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2187  score=0.2754  fileCov=0.5149
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gOl] deps: Ye, ps, F1o, vn, Cc, Bs
+// [unwrapped __esm module gOl] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/sessionStorage.ts, utils/sequential.ts, context/modalContext.tsx, components/CustomSelect/select.tsx
 ((UOe = R(lt(), 1)),
   (SKe = R(rt(), 1)),
   (pu = R(se(), 1)),

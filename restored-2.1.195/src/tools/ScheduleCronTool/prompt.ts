@@ -5,7 +5,7 @@
 // note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isKairosCronEnabled, isDurableCronEnabled, buildCronListPrompt, buildCronDeletePrompt, buildCronCreatePrompt, buildCronCreateDescription, DEFAULT_MAX_AGE_DAYS, CRON_LIST_TOOL_NAME, CRON_LIST_DESCRIPTION, CRON_DELETE_TOOL_NAME, CRON_DELETE_DESCRIPTION, CRON_CREATE_TOOL_NAME
-// [unwrapped __esm module jv] deps: Un, fn, lf, EI, lC
+// [unwrapped __esm module jv] deps: services/analytics/growthbook.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, tools/GlobTool/prompt.ts, tools/ExitPlanModeTool/constants.ts, tools/PowerShellTool/PowerShellTool.tsx
 Pct = new Set([Ds, wu, qc, Co, Ss, RI]);
 var Mct = "ListAgents";
 function isKairosCronEnabled() {

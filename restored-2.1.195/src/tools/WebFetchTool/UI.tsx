@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1214  score=0.2413  fileCov=0.1962
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OIo] deps: Il, At, Jt
+// [unwrapped __esm module OIo] deps: Il, utils/errors.ts, utils/fsOperations.ts
 Ccl = require("crypto");
 function renderToolUseMessage({ url: e, prompt: t }, { verbose: n }) {
   if (!e) return null;

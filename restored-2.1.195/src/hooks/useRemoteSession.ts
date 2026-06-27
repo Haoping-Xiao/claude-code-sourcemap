@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2876  score=0.3987  fileCov=0.508
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Kbc] deps: BKt
+// [unwrapped __esm module Kbc] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((jTe = R(rt(), 1)),
   (ggm = {
     ...{

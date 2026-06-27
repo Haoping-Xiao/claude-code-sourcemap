@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initializeTelemetryAfterTrust, init
-// [unwrapped __esm module vfc] deps: Ye, S6, C5, Gre, Jt, mE, vi
+// [unwrapped __esm module vfc] deps: hooks/useTerminalSize.ts, utils/mailbox.ts, utils/renderOptions.ts, services/remoteManagedSettings/securityCheck.tsx, utils/fsOperations.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx
 ((Hfc = R(lt(), 1)), (jz = R(se(), 1)));
 function initializeTelemetryAfterTrust() {
   if (eyo()) {

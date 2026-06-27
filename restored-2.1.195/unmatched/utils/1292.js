@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0137  score=0.1818  fileCov=0.0146
 // note: nearest: src/utils/sessionStorage.ts (0.0137); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xnt] deps: Qi, At
+// [unwrapped __esm module xnt] deps: lodash-es/memoize.js, utils/errors.ts
 D7s = require("fs"), q2e = require("path"), Ild = ["ANTHROPIC_FEDERATION_RULE_ID", "ANTHROPIC_ORGANIZATION_ID"], _9 = Cn(() => {
   let e = KSn(),
     t = process.env.ANTHROPIC_PROFILE?.trim();

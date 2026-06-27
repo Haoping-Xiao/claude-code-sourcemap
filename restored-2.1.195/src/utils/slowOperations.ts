@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2325  score=0.8511  fileCov=0.2424
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eis] deps: Owt, lss, UIt, uss, hss, DEr, PEr, Ass, Tss, Pyr, xin, qwt, wss, $ss, OEr, P2, Uwt, Wss, D2, Yss, OBe, FJe
+// [unwrapped __esm module eis] deps: lodash-es/_hashGet.js, lss, lodash-es/_equalObjects.js, lodash-es/_freeGlobal.js, hss, lodash-es/_cloneBuffer.js, PEr, Ass, Tss, lodash-es/_equalObjects.js, lodash-es/_initCloneArray.js, lodash-es/_baseIsEqualDeep.js, @smithy/eventstream-codec/dist-cjs/index.js, $ss, lodash-es/_baseIsMap.js, lodash-es/isArray.js, lodash-es/isBuffer.js, lodash-es/_baseIsSet.js, lodash-es/isFunction.js, lodash-es/_baseClone.js, OBe, FJe
 VH = {};
 VH[Xss] =
   VH[WYc] =

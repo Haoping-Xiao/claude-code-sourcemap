@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cyc] deps: Ed, Ye, kt, Zf, tC, Ye, Yj, ps, nk, id, BI, Ire, Ryt, uo, sA, wGt, Zhc, es, _a, sr, ayc, TZr, g6o, h6o, hN, JSt, Syc
+// [unwrapped __esm module Cyc] deps: context/notifications.tsx, hooks/useTerminalSize.ts, utils/debug.ts, utils/sessionStorage.ts, components/CustomSelect/use-multi-select-state.ts, hooks/useTerminalSize.ts, components/PromptInput/PromptInput.tsx, utils/suggestions/directoryCompletion.ts, nk, dom-mutator/dist/dom-mutator.cjs.production.min.js, services/mcp/client.ts, services/mcp/client.ts, ink/Ansi.tsx, context/notifications.tsx, services/PromptSuggestion/promptSuggestion.ts, utils/plugins/marketplaceHelpers.ts, utils/suggestions/commandSuggestions.ts, utils/profilerBase.ts, utils/plans.ts, services/teamMemorySync/secretScanner.ts, utils/suggestions/shellHistoryCompletion.ts, keybindings/useShortcutDisplay.ts, utils/suggestions/slackChannelSuggestions.ts, hooks/unifiedSuggestions.ts, utils/swarm/backends/detection.ts, commands/clear/caches.ts, hooks/useTypeahead.tsx
 Ym = R(rt(), 1), wyc = R(se(), 1), vpm = /^@[\p{L}\p{N}\p{M}_\-./\\()[\]~:]*/u, Eyc = /^[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+/u, wpm = /(@[\p{L}\p{N}\p{M}_\-./\\()[\]~:]*|[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+)$/u, Cpm = /[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+$/u, Ipm = /(^|[\s\u3002\u3001\uFF1F\uFF01])@([\p{L}\p{N}\p{M}_\-./\\()[\]~:]*|"[^"]*"?)$/u, b6o = /(^|\s)#([a-z0-9][a-z0-9_-]*)$/, S6o = /(^|\s):([a-z0-9_+-]{2,})$/, xpm = /(^|\s):([a-z0-9_+-]+):$/;
 gdr = /(^|[\s\u3002\u3001\uFF1F\uFF01])@([\w-]*)$/;
 function MTt(e, t, n) {

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0061  score=0.5003  fileCov=0.0062
 // note: nearest: src/screens/REPL.tsx (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tAc] deps: Ye, uo, qzt, je, At, vn, bm, QEc
+// [unwrapped __esm module tAc] deps: hooks/useTerminalSize.ts, context/notifications.tsx, tools/SendMessageTool/UI.tsx, utils/debug.ts, utils/errors.ts, utils/sequential.ts, utils/messageQueueManager.ts, axios/lib/adapters/http.js
 VTt = R(rt(), 1);
 function nAc({
   taskRegistry: e,

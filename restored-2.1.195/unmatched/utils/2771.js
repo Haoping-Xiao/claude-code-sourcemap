@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0371  score=0.0669  fileCov=0.0771
 // note: nearest: src/utils/cronTasks.ts (0.0371); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KWe] deps: ft, Un, kt, Yra, Xra, wX, sre, tSe, fn, At
+// [unwrapped __esm module KWe] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, Yra, Xra, wX, highlight.js/lib/languages/mathematica.js, tools/TaskStopTool/prompt.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts
 soa = require("fs"), Poo = require("path"), bop = koo;
 Ooo = `
 

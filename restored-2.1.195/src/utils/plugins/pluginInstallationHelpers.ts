@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2913  score=0.3876  fileCov=0.5396
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OYt] deps: je, Bi, gM, Mx, iWe
+// [unwrapped __esm module OYt] deps: utils/debug.ts, constants/files.ts, utils/teleport.tsx, utils/detectRepository.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/http-proxy.js
 ((RRl = require("crypto")), (uer = R(Uj(), 1)));
 function ORl() {
   return new Date().toISOString();

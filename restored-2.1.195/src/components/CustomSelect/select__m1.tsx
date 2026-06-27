@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/CustomSelect/select.tsx)  jaccard=0.0917  score=0.2658  fileCov=0.1228
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xZr] deps: fH, _i, Tc, Ye, ps, DGe, I1, Ao, tzi, Cc, Bs, Ko, Mg, TPn
+// [unwrapped __esm module xZr] deps: react/cjs/react.production.js, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, hooks/useClipboardImageHint.ts, hooks/usePasteHandler.ts, utils/agentContext.ts, react/cjs/react.production.js, context/modalContext.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, components/CustomSelect/select-input-option.tsx
 ((azi = R(lt(), 1)), (UGe = R(rt(), 1)), (rS = R(se(), 1)));
 var kZr,
   czi = ({

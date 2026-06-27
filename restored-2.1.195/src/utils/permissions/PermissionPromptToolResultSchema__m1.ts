@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/permissions/PermissionPromptToolResultSchema.ts)  jaccard=0.1804  score=0.4216  fileCov=0.2398
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JBc] deps: ft
+// [unwrapped __esm module JBc] deps: services/analytics/index.ts
 ((XRm = new Set([
   "interrupt",
   "set_permission_mode",

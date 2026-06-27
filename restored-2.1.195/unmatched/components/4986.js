@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0072  score=0.4697  fileCov=0.0073
 // note: nearest: src/commands/insights.ts (0.0072); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module M8l] deps: _i, Ye, ps, es, ys, bH, Bs, vi, B_, Ko, gKe
+// [unwrapped __esm module M8l] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/profilerBase.ts, utils/fsOperations.ts, Task.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx, components/Settings/Status.tsx
 pjo = R(lt(), 1), T1e = R(rt(), 1), T_ = R(se(), 1);
 async function O8l(e, t) {
   let n = $8l.join(Foe(e), `agent-${t}.jsonl`),

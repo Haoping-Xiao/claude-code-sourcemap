@@ -5,7 +5,7 @@
 // note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: preservableScopesFrom, getOauthConfig, fileSuffixForOauthConfig, PRESERVABLE_EXPANSION_SCOPES, OAUTH_BETA_HEADER, MCP_CLIENT_METADATA_URL, LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS, DESIGN_OAUTH_SCOPES, CONSOLE_OAUTH_SCOPES, CLAUDE_AI_PROFILE_SCOPE, CLAUDE_AI_OAUTH_SCOPES, CLAUDE_AI_INFERENCE_SCOPE, ALL_OAUTH_SCOPES, ALLOWED_OAUTH_BASE_URLS
-// [unwrapped __esm module $ms] deps: Eae
+// [unwrapped __esm module $ms] deps: utils/auth.ts
 ((Dgu = Fe.bool()),
   (Pgu = Fe.str()),
   (Mgu = Fe.str()),

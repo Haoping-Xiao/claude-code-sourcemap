@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3171  score=0.4773  fileCov=0.4858
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UAc] deps: si, _i, Ye, ps, V9t, QOe, aE, y3, Bs, LW, Ko, Mg, PWt, OAc, _pr
+// [unwrapped __esm module UAc] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, tools/AskUserQuestionTool/AskUserQuestionTool.tsx, utils/editor.ts, utils/ide.ts, commands/memory/memory.tsx, components/CustomSelect/select.tsx, ink/components/Box.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, ink/styles.ts, @xmldom/xmldom/lib/entities.js, components/permissions/AskUserQuestionPermissionRequest/PreviewQuestionView.tsx
 ((I3 = R(rt(), 1)), (eh = R(se(), 1)));
 function QuestionView(t0) {
   let t = FAc.c(59),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5216  score=0.8676  fileCov=0.5667
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DE] deps: Xr, Xa, NB
+// [unwrapped __esm module DE] deps: @modelcontextprotocol/sdk/dist/esm/types.js, @xmldom/xmldom/lib/entities.js, types/permissions.ts
 ((ews = ve(() => ol.enum(yM))),
   (qRt = ve(() => ol.enum(yY))),
   (Qvs = {

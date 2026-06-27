@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startProTrial, shouldAutoOpenProTrialExpired, getProTrialState, getProTrialDurationDays, formatTrialBadge, PRO_TRIAL_FALLBACK_DAYS
-// [unwrapped __esm module r5l] deps: si, Lo
+// [unwrapped __esm module r5l] deps: @xmldom/xmldom/lib/entities.js, utils/fsOperations.ts
 e5l = require("os");
 function getProTrialDurationDays() {
   return Lc()?.claudeCodeTrialDurationDays ?? null;

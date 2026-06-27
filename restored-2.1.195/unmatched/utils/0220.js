@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0383  score=1  fileCov=0.0383
 // note: nearest: node_modules/http-proxy-agent/dist/index.js (0.0383); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bss] deps: D2
+// [unwrapped __esm module Bss] deps: lodash-es/isFunction.js
 Oss = Object.create, DYc = function () {
   function e() {}
   return function (t) {

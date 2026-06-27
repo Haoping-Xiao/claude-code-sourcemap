@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1358  score=0.2348  fileCov=0.2437
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I9r] deps: Ree, Qi, Xr, Rc, Yxe, og, oo, je, fn, Rd, qd, Jt, Ls
+// [unwrapped __esm module I9r] deps: lodash-es/_createBaseFor.js, lodash-es/memoize.js, @modelcontextprotocol/sdk/dist/esm/types.js, constants/oauth.ts, utils/model/modelCapabilities.ts, utils/teammateContext.ts, utils/http.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/constants.ts, utils/log.ts, utils/fsOperations.ts, utils/status.tsx
 ((mvi = require("fs")),
   (vCn = require("fs/promises")),
   (C9r = require("path")),

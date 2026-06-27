@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4096  score=0.7881  fileCov=0.4603
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fel] deps: _i, Ye, bMe, je, Dpe, At, vn, X8n, sr, E8e, T4t
+// [unwrapped __esm module Fel] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, tools/FileEditTool/utils.ts, utils/debug.ts, utils/fileReadCache.ts, utils/errors.ts, utils/sequential.ts, ink/styles.ts, services/teamMemorySync/secretScanner.ts, components/FileEditToolDiff.tsx, T4t
 ((vvo = R(lt(), 1)), (Jht = R(rt(), 1)), (A8e = R(se(), 1)));
 function jel(e, t, n) {
   let r = JSs(n, t),

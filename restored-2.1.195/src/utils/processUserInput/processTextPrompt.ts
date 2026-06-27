@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2735  score=0.5529  fileCov=0.3512
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _Tt] deps: ft, je, fn, ys
+// [unwrapped __esm module _Tt] deps: services/analytics/index.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts
 ((fur = require("fs/promises")), (XZt = require("path")));
 function processTextPrompt(
   input,

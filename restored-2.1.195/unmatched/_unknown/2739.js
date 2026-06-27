@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0343  score=0.3888  fileCov=0.0363
 // note: nearest: node_modules/fflate/esm/index.mjs (0.0343); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Kta] deps: SX, _ue, Qne, xWe
+// [unwrapped __esm module Kta] deps: protobufjs/ext/descriptor/index.js, protobufjs/src/common.js, Qne, @smithy/smithy-client/dist-cjs/index.js
 ({
   STRING: Ltp,
   INT: sct

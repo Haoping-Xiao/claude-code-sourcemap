@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0133  score=0.1599  fileCov=0.0144
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js (0.0133); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module m5] deps: ft, Du, og, fn, qPn, WSe, rpo, Xdt
+// [unwrapped __esm module m5] deps: services/analytics/index.ts, services/analytics/firstPartyEventLoggingExporter.ts, utils/teammateContext.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/telemetry/events.ts, follow-redirects/index.js, utils/telemetry/perfettoTracing.ts, utils/telemetry/sessionTracing.ts
 dg = R(qi(), 1), Zxa = R(Nh(), 1), yDe = new WeakMap(), hDe = dg.createContextKey("cc.interaction_state"), bqe = dg.createContextKey("cc.tool_state"), M3t = dg.createContextKey("cc.blocked_state"), apo = dg.createContextKey("cc.execution_state"), eka = dg.createContextKey("cc.subagent_state");
 Mwp = new Zxa.W3CTraceContextPropagator();
 class mka {

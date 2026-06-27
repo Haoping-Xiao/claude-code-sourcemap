@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForUrlEvent, handleUrlSchemeLaunch, handleDeepLinkUri
-// [unwrapped __esm module I1c] deps: er, je, Bi, _0
+// [unwrapped __esm module I1c] deps: utils/config.ts, utils/debug.ts, constants/files.ts, axios/lib/utils.js
 ((H1c = require("child_process")),
   (T1c = require("path")),
   (Smr = [

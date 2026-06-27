@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3041  score=0.3589  fileCov=0.6657
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VBo] deps: si, Ye, WI
+// [unwrapped __esm module VBo] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, commands/plugin/ManagePlugins.tsx
 ((D2l = R(lt(), 1)), (arr = R(se(), 1)));
 function crr(e) {
   return [

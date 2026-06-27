@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1473  score=0.1575  fileCov=0.6945
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kUl] deps: Ye, Cc, w7t, Bs, vi, Ko
+// [unwrapped __esm module kUl] deps: hooks/useTerminalSize.ts, context/modalContext.tsx, w7t, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 ((CUl = R(lt(), 1)),
   (IUl = R(rt(), 1)),
   (Nq = R(se(), 1)),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3799  score=0.6008  fileCov=0.5081
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S4] deps: Qi, ft, YWe, Woa, dn, oo, dC, gb, je, Mm, fn, At, Bi, sa, Oso, _m
+// [unwrapped __esm module S4] deps: lodash-es/memoize.js, services/analytics/index.ts, tools/WebSearchTool/prompt.ts, marked/lib/marked.esm.js, dn, utils/http.ts, utils/claudemd.ts, utils/plugins/schemas.ts, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/git.ts, bridge/inboundAttachments.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts
 ((Zip = (Wso(), ro(nia)).getProjectContextBlock),
   (zso = Cn(async () => {
     let e = Date.now();

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0088  score=0.3956  fileCov=0.0089
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0088); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BIo] deps: Hp, zb, je, RE, At, Ls, kM
+// [unwrapped __esm module BIo] deps: axios/lib/axios.js, zod/v4/classic/schemas.js, utils/debug.ts, RE, utils/errors.ts, utils/status.tsx, utils/teleport/api.ts
 gaf = ve(() => dt.object({
   url: dt.string().optional().default(""),
   destination_url: dt.string().nullable().optional(),

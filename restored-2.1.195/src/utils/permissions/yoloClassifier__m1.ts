@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0607  score=0.3295  fileCov=0.0693
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RHo] deps: Xr, je, At, Ao, pht, Epe, Jt, sr, dn, kt, wHo
+// [unwrapped __esm module RHo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/errors.ts, utils/agentContext.ts, utils/fingerprint.ts, utils/permissions/yoloClassifier.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, dn, utils/debug.ts, utils/permissions/yoloClassifier.ts
 ((RVt = {}),
   (nXp = ve(() =>
     H.object({

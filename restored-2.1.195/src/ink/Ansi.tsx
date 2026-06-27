@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5951  score=0.9244  fileCov=0.6255
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A5i] deps: Mce, mGe, _5i
+// [unwrapped __esm module A5i] deps: ink/termio/types.ts, stack-utils/index.js, ink/Ansi.tsx
 ((OJr = R(lt(), 1)),
   (E5i = R(rt(), 1)),
   (Cne = R(se(), 1)),

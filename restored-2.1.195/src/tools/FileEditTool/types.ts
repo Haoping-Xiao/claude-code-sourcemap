@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6754  score=0.7582  fileCov=0.8609
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module W9t] deps: Xr, PDe
+// [unwrapped __esm module W9t] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/semanticNumber.ts
 ((d6n = ve(() =>
   H.strictObject({
     file_path: H.string().describe("The absolute path to the file to modify"),

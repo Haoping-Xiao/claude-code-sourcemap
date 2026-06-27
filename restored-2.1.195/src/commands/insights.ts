@@ -5,7 +5,7 @@
 // note: deminified; 25 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: normalizeSessionMeta, generateUsageReport, extractToolStats, detectMultiClauding, default, deduplicateSessionBranches, buildInsightsResponsePrompt, buildExportData, aggregateData
-// [unwrapped __esm module voc] deps: Ld
+// [unwrapped __esm module voc] deps: utils/concurrentSessions.ts
 ((IQf = {
   type: "local-jsx",
   name: "stop",

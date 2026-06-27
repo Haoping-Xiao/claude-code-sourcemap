@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/bridge/bridgePointer.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initSinks
-// [unwrapped __esm module j1e] deps: Xr, je, At, BFe, jS, Jt
+// [unwrapped __esm module j1e] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/debug.ts, utils/errors.ts, utils/sessionStoragePortable.ts, utils/path.ts, utils/fsOperations.ts
 yme = require("fs/promises"), Vir = require("path"), zYf = ve(() => H.object({
   sessionId: H.string(),
   environmentId: H.string(),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0477  score=1  fileCov=0.0477
 // note: nearest: src/utils/exampleCommands.ts (0.0477); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ezo] deps: Qi, cEe, Lo, er, je, wr, Bi, sa, Ote
+// [unwrapped __esm module ezo] deps: lodash-es/memoize.js, constants/spinnerVerbs.ts, utils/fsOperations.ts, utils/config.ts, utils/debug.ts, main.tsx, constants/files.ts, utils/git.ts, utils/user.ts
 Bmm = [/(?:^|\/)(?:package-lock\.json|yarn\.lock|bun\.lock|bun\.lockb|pnpm-lock\.yaml|Pipfile\.lock|poetry\.lock|Cargo\.lock|Gemfile\.lock|go\.sum|composer\.lock|uv\.lock)$/, /\.generated\./, /(?:^|\/)(?:dist|build|out|target|node_modules|\.next|__pycache__)\//, /\.(?:min\.js|min\.css|map|pyc|pyo)$/, /\.(?:json|ya?ml|toml|xml|ini|cfg|conf|env|lock|txt|md|mdx|rst|csv|log|svg)$/i, /(?:^|\/)\.?(?:eslintrc|prettierrc|babelrc|editorconfig|gitignore|gitattributes|dockerignore|npmrc)/, /(?:^|\/)(?:tsconfig|jsconfig|biome|vitest\.config|jest\.config|webpack\.config|vite\.config|rollup\.config)\.[a-z]+$/, /(?:^|\/)\.(?:github|vscode|idea|claude)\//, /(?:^|\/)(?:CHANGELOG|LICENSE|CONTRIBUTING|CODEOWNERS|README)(?:\.[a-z]+)?$/i];
 dbc = Cn(() => {
   let e = Lg(),

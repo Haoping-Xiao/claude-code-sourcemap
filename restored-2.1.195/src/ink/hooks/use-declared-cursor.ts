@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5129  score=0.8161  fileCov=0.5799
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yZr] deps: dn, vn, iJr, Ye, je, DGe, I1, Ao, Is
+// [unwrapped __esm module yZr] deps: dn, utils/sequential.ts, ink/events/keyboard-event.ts, hooks/useTerminalSize.ts, utils/debug.ts, hooks/useClipboardImageHint.ts, hooks/usePasteHandler.ts, utils/agentContext.ts, utils/platform.ts
 ((y6i = require("path")), (kW = R(rt(), 1)));
 function RW({ line: e, column: t, active: n, visible: r = false }) {
   let o = dbe.useContext(gLn),

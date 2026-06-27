@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3474  score=0.6728  fileCov=0.418
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vdt] deps: Gwe, w4t, Rx, CZe, je, rCa, eqe, At, ys, vn, R9, dr, Jt, aCa, dFt
+// [unwrapped __esm module vdt] deps: lodash-es/_arrayPush.js, w4t, utils/env.ts, utils/nativeInstaller/download.ts, utils/debug.ts, utils/dxt/zip.ts, utils/systemDirectories.ts, utils/errors.ts, utils/fsOperations.ts, utils/sequential.ts, utils/errors.ts, utils/settings/settings.ts, utils/fsOperations.ts, utils/plugins/mcpbHandler.ts, utils/plugins/fetchTelemetry.ts
 ((SUn = require("crypto")), (nqe = require("fs/promises")), (Hre = require("path")));
 function fS(e) {
   let t = aTp(e) ? e.manifest.displayName : e.displayName;

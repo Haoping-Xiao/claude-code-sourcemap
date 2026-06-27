@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0057  score=0.1674  fileCov=0.0059
 // note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Rze] deps: je, wr, Jin
+// [unwrapped __esm module Rze] deps: utils/debug.ts, main.tsx, utils/startupProfiler.ts
 FKt = Oe.CLAUDE_CODE_PROFILE_QUERY, IPo = new Map();
 function CQn(e) {
   return xTf.has(e.toLowerCase());

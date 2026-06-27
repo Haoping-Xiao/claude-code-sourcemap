@@ -5,7 +5,7 @@
 // note: deminified; 34 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: unwrapCcrProxyUrl, suppressedConnectorsEqual, shouldSkipClaudeAiFetchForEnterpriseLockdown, shouldAllowManagedMcpServersOnly, setMcpServerEnabled, removeMcpConfig, readRawMcpJsonServersFromCwd, parseMcpConfigFromFilePath, parseMcpConfig, isMcpServerDisabled, isMcpServerDenied, isMcpServerBlockedAtConnectTime, isMcpServerAllowedByPolicy, isBuiltinInProcessMcpServer, getMcpServerSignature, getMcpScopeConflicts, getMcpConfigsByScope, getMcpConfigByName, getEnterpriseMcpFilePath, ge …
-// [unwrapped __esm module a5] deps: Hp, iu, Qi, TM, Rc, kt, oo, er, gb, je, fn, Gx, Ls, qd, dr, dn, pdo, bCe
+// [unwrapped __esm module a5] deps: axios/lib/axios.js, @mixmark-io/domino/lib/Document.js, lodash-es/memoize.js, constants/betas.ts, constants/oauth.ts, utils/debug.ts, utils/http.ts, utils/config.ts, utils/plugins/schemas.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/slashCommandParsing.ts, utils/status.tsx, utils/log.ts, utils/settings/settings.ts, dn, components/mcp/MCPRemoteServerMenu.tsx, utils/plugins/schemas.ts
 yTp = new Set(["ECONNABORTED", "ECONNRESET", "ECONNREFUSED", "ETIMEDOUT", "EAI_AGAIN"]);
 rDe = Cn(async () => {
   let e = 0;

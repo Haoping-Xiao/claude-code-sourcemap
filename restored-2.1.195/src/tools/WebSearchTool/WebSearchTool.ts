@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5223  score=0.673  fileCov=0.7
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hRo] deps: Ls, Xr, ft, Un, ZE, frt, ii, je, At, co, Ao, Jt, L_l, Rct, $_l, Il
+// [unwrapped __esm module hRo] deps: utils/status.tsx, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/analytics/growthbook.ts, utils/shell/prefix.ts, frt, services/mockRateLimits.ts, utils/debug.ts, utils/errors.ts, utils/messages.ts, utils/agentContext.ts, utils/fsOperations.ts, tools/WebSearchTool/UI.tsx, tools/GrepTool/prompt.ts, tools/WebSearchTool/WebSearchTool.ts, Il
 ((Igf = ve(() =>
   H.strictObject({
     query: H.string().min(2).describe("The search query to use"),

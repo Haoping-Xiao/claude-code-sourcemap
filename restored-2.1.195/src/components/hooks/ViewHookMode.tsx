@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2961  score=0.3742  fileCov=0.5867
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AKl] deps: Ye, WAt, sr, Vl, vi, B_, Ko
+// [unwrapped __esm module AKl] deps: hooks/useTerminalSize.ts, utils/hooks/hooksConfigManager.ts, services/teamMemorySync/secretScanner.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, components/ConfigurableShortcutHint.tsx
 ((SKl = R(lt(), 1)), (gYe = R(se(), 1)));
 function ViewHookMode(t0) {
   let t = HKl.c(45),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3948  score=0.7288  fileCov=0.4628
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hEc] deps: ft, sA, Lzo, hP, fEc, Mp
+// [unwrapped __esm module hEc] deps: services/analytics/index.ts, services/PromptSuggestion/promptSuggestion.ts, utils/swarm/teammateInit.ts, utils/swarm/spawnInProcess.ts, hooks/useSwarmInitialization.ts, utils/concurrentSessions.ts
 mEc = R(rt(), 1);
 function useTeammateViewAutoExit() {
   let e = Ho(),

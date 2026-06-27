@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/permissions/ComputerUseApproval/ComputerUseApproval.tsx)  jaccard=0.0158  score=0.0537  fileCov=0.0219
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module m_t] deps: zb, oo, e1, er, je, dn, Un, c_
+// [unwrapped __esm module m_t] deps: zod/v4/classic/schemas.js, utils/http.ts, bridge/bridgeApi.ts, utils/config.ts, utils/debug.ts, dn, services/analytics/growthbook.ts, services/mcp/officialRegistry.ts
 Mif = ve(() =>
   dt.object({
     feature: dt.string().min(1),

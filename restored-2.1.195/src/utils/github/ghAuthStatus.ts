@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3744  score=0.485  fileCov=0.6213
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Lnc] deps: HU
+// [unwrapped __esm module Lnc] deps: utils/effort.ts
 ((IXf = {
   type: "local-jsx",
   name: "workflows",

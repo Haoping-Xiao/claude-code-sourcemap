@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0052  score=0.2041  fileCov=0.0053
 // note: nearest: src/screens/REPL.tsx (0.0052); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module e0o] deps: si, gm, Ye, es, Ao, sr, Qko
+// [unwrapped __esm module e0o] deps: @xmldom/xmldom/lib/entities.js, undici/lib/mock/mock-agent.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, utils/agentContext.ts, services/teamMemorySync/secretScanner.ts, components/AgentProgressLine.tsx
 G6t = R(lt(), 1), Yml = R(rt(), 1), ny = R(se(), 1);
 function Apf(e) {
   let t = S$e.c(2),

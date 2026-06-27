@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fss] deps: qwt, Mie
+// [unwrapped __esm module Fss] deps: lodash-es/_baseIsEqualDeep.js, lodash-es/_baseIsArguments.js
 Uss = $Yc;
 var jss, OYc, Gss;

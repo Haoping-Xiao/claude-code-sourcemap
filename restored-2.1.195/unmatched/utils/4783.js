@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0354  score=0.3042  fileCov=0.0386
 // note: nearest: src/utils/plugins/schemas.ts (0.0354); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pXt] deps: Xr, Rx, Pw, je, At, ys, Jt, dFt, B1
+// [unwrapped __esm module pXt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/env.ts, utils/fileRead.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/fsOperations.ts, utils/plugins/fetchTelemetry.ts, tools/SkillTool/prompt.ts
 nrr = require("fs/promises"), FBo = require("path"), H2l = ve(() => H.object({
   always_on: H.number(),
   on_invoke: H.number()

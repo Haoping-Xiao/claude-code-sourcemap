@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5382  score=1  fileCov=0.5382
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _Ln] deps: qit
+// [unwrapped __esm module _Ln] deps: ink/events/terminal-event.ts
 J_e = class J_e extends yne {
   text;
   constructor(e) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.182  score=0.3061  fileCov=0.31
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wHc] deps: X0, dtn, WTe, Ye, wX
+// [unwrapped __esm module wHc] deps: components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/PermissionPrompt.tsx, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, hooks/useTerminalSize.ts, wX
 ((THc = R(lt(), 1)), (k3 = R(se(), 1)));
 function M_m(e, t, n) {
   switch (e) {

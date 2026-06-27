@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.19  score=0.2918  fileCov=0.3527
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pzl] deps: Vl, Ye, $I, QH, zNo, lg, vf, dr, sr, vi, $jo
+// [unwrapped __esm module pzl] deps: keybindings/useShortcutDisplay.ts, hooks/useTerminalSize.ts, utils/permissions/shellRuleMatching.ts, tools/TaskStopTool/prompt.ts, hooks/notifs/useModelMigrationNotifications.tsx, utils/bash/bashParser.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, services/teamMemorySync/secretScanner.ts, components/design-system/Dialog.tsx, components/permissions/rules/AddPermissionRules.tsx
 ((uzl = R(lt(), 1)), (ime = R(se(), 1)));
 function PermissionRuleInput(t0) {
   let t = fzl.c(18),

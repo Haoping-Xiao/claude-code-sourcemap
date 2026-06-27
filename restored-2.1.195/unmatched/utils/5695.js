@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0475  score=0.2268  fileCov=0.0567
 // note: nearest: src/ink/components/Box.tsx (0.0475); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aRc] deps: aW, Un, kt, jc, fb, wr, co, aS, xtn
+// [unwrapped __esm module aRc] deps: types/generated/google/protobuf/timestamp.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/semver.ts, fb, main.tsx, utils/messages.ts, utils/telemetry/pluginTelemetry.ts, utils/crypto.ts
 sRc = R(lt(), 1), Wme = R(rt(), 1), swm = {
   generic: void 0,
   instruction_following: "How well is Claude following the instructions you gave earlier in this conversation? (optional)"

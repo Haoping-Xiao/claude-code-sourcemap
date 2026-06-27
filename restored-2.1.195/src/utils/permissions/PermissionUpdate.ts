@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5714  score=0.884  fileCov=0.6177
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fre] deps: ft, er, je, wr, PB, ys, Rd, vn, vf, dr, Jt, QH
+// [unwrapped __esm module fre] deps: services/analytics/index.ts, utils/config.ts, utils/debug.ts, main.tsx, utils/platform.ts, utils/fsOperations.ts, utils/settings/constants.ts, utils/sequential.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/fsOperations.ts, tools/TaskStopTool/prompt.ts
 rup = ["allow", "deny", "ask"];
 iup = OO;
 function Jjt(e) {

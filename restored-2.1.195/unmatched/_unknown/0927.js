@@ -3,5 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I1s] deps: b$r
+// [unwrapped __esm module I1s] deps: @aws-sdk/token-providers/dist-cjs/index.js
 vtt = R(by(), 1);

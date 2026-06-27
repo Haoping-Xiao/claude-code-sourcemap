@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1384  score=1  fileCov=0.1384
 // note: low-confidence suggestion: node_modules/lodash-es/_SetCache.js; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ayr] deps: mon, _ts, Sts
+// [unwrapped __esm module Ayr] deps: lodash-es/_Stack.js, lodash-es/_hashDelete.js, lodash-es/_SetCache.js
 gon.prototype.add = gon.prototype.push = yts;
 gon.prototype.has = bts;
 hon = gon;

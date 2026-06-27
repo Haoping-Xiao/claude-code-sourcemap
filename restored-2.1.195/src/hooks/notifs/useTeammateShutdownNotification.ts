@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2624  score=0.594  fileCov=0.3198
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NDc] deps: Ed, aE, id, q6o
+// [unwrapped __esm module NDc] deps: context/notifications.tsx, utils/ide.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, @xmldom/xmldom/lib/entities.js
 (($Dc = R(lt(), 1)), (qfr = R(rt(), 1)));
 function BDc(e) {
   if (!("text" in e)) return 1;

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3761  score=0.5145  fileCov=0.583
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gzi] deps: RZr
+// [unwrapped __esm module gzi] deps: components/CustomSelect/use-multi-select-state.ts
 CPn = R(rt(), 1);
 function Sr(e) {
   let t = IPn.c(10);

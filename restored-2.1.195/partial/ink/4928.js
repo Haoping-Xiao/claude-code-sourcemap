@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0801  score=1  fileCov=0.0801
 // note: low-confidence suggestion: node_modules/zod-to-json-schema/dist/esm/parsers/tuple.js; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eVl] deps: _i, Rit, bW, xJr, ZS, Ye, sr
+// [unwrapped __esm module eVl] deps: components/design-system/Ratchet.tsx, ink/colorize.ts, ink/selection.ts, ink/useTerminalNotification.ts, ink/terminal.ts, hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts
 S2o = R(rt(), 1), Zql = R(se(), 1);
 PZS = Array.from({
   length: O3f

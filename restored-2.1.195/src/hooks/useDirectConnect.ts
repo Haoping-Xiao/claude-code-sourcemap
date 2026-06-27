@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1  score=0.5426  fileCov=0.1093
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dzo] deps: Gen, Wen, uo, je, co, lzo
+// [unwrapped __esm module dzo] deps: remote/sdkMessageAdapter.ts, assistant/sessionHistory.ts, context/notifications.tsx, utils/debug.ts, utils/messages.ts, hooks/useReplBridge.tsx
 mw = R(rt(), 1);
 function useDirectConnect({
   config: e,

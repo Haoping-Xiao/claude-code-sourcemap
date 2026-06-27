@@ -5,7 +5,7 @@
 // note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeNativePlaybackData, stopNativeRecording, stopNativePlayback, startNativeRecording, startNativePlayback, microphoneAuthorizationStatus, isNativeRecordingActive, isNativePlaying, isNativeAudioAvailable, stopRecording, startRecording, requestMicrophonePermission, checkVoiceDependencies, checkRecordingAvailability, _resetArecordProbeForTesting, _resetAlsaCardsForTesting
-// [unwrapped __esm module IGo] deps: Hp, Rc, oo, je, fn, At, Gx, u9, qd, Mh, Jt, Un
+// [unwrapped __esm module IGo] deps: axios/lib/axios.js, constants/oauth.ts, utils/http.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/slashCommandParsing.ts, utils/mtls.ts, utils/log.ts, utils/proxy.ts, utils/fsOperations.ts, services/analytics/growthbook.ts
 ((fTe = R(require("ws"))),
   (vGo = {
     safety: 5000,

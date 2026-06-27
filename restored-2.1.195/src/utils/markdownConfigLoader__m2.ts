@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0599  score=0.3196  fileCov=0.0686
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module o7n] deps: LMe
+// [unwrapped __esm module o7n] deps: utils/attachments.ts
 Oml = [];
 function CLAUDE_CONFIG_DIRECTORIES(e) {
   try {

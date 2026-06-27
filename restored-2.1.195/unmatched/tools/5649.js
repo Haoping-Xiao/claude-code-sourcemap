@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dwc] deps: fh, AA
+// [unwrapped __esm module dwc] deps: commands/insights.ts, skills/bundledSkills.ts
 DEm = `\`/simplify \u2192 4 cleanup agents in parallel \u2192 apply the fixes\`
 
 You are improving the quality of the changed code, not hunting for bugs. Review

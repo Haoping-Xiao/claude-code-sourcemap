@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0069  score=0.2264  fileCov=0.007
 // note: nearest: src/cli/print.ts (0.0069); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uut] deps: je, At, vn, dn, Rx, c_, ole
+// [unwrapped __esm module uut] deps: utils/debug.ts, utils/errors.ts, utils/sequential.ts, dn, utils/env.ts, services/mcp/officialRegistry.ts, services/oauth/getOauthProfile.ts
 fla = [2500, 5000, 7500, 15000].map(e => ({
   id: "",
   credit_minor_units: e,

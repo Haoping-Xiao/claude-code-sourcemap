@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2426  score=0.456  fileCov=0.3415
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zOc] deps: dn, er
+// [unwrapped __esm module zOc] deps: dn, utils/config.ts
 Oxm = {
   "subscription-switch": "subscriptionNoticeCount",
 };

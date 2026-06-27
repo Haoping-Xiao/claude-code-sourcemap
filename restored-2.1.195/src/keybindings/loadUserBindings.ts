@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4334  score=0.69  fileCov=0.5382
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pqi] deps: Xr, sr, JLn, QLn
+// [unwrapped __esm module pqi] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/teamMemorySync/secretScanner.ts, keybindings/reservedShortcuts.ts, keybindings/schema.ts
 a5d = ve(() =>
   H.object({
     context: H.string(),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6051  score=0.7181  fileCov=0.7937
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module fKl] deps: Qi, ft, WAt
+// [unwrapped __esm module fKl] deps: lodash-es/memoize.js, services/analytics/index.ts, utils/hooks/hooksConfigManager.ts
 Dsr = Cn(
   function (e) {
     return {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2925  score=0.4122  fileCov=0.5017
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module L_l] deps: Hp, zb, je, RE, At, Ls, kM, BIo
+// [unwrapped __esm module L_l] deps: axios/lib/axios.js, zod/v4/classic/schemas.js, utils/debug.ts, RE, utils/errors.ts, utils/status.tsx, utils/teleport/api.ts, zod/v4/classic/schemas.js
 vgf = ve(() =>
   dt.object({
     results: dt

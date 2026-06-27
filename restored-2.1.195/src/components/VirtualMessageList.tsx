@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4576  score=0.6163  fileCov=0.6399
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module v2o] deps: si, fH, tC, rJt, Jql, QBt, _i, fGe, wOe, oat, HI, Ye, nk, vy, uf, vWt, Fh, sr, eVl, Coe, LW, eE, YFo, OUt, rVl, iVl
+// [unwrapped __esm module v2o] deps: @xmldom/xmldom/lib/entities.js, react/cjs/react.production.js, components/CustomSelect/use-multi-select-state.ts, ink/render-node-to-output.ts, Jql, components/TextInput.tsx, components/design-system/Ratchet.tsx, ink/components/AppContext.ts, utils/sideQuestion.ts, ink/components/App.tsx, HI, hooks/useTerminalSize.ts, nk, @mixmark-io/domino/lib/htmlelts.js, main.tsx, utils/gracefulShutdown.ts, components/Settings/Config.tsx, services/teamMemorySync/secretScanner.ts, zod-to-json-schema/dist/esm/parsers/tuple.js, react/cjs/react.production.js, ink/components/Box.tsx, components/design-system/Dialog.tsx, components/messages/nullRenderingAttachments.ts, components/permissions/rules/AddWorkspaceDirectory.tsx, components/Stats.tsx, components/FullscreenLayout.tsx
 ((tYe = R(lt(), 1)),
   (oy = R(rt(), 1)),
   (Od = R(se(), 1)),

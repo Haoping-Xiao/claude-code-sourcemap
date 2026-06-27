@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module EFl] deps: si, lJ, Ko, R6, Ye, ps
+// [unwrapped __esm module EFl] deps: @xmldom/xmldom/lib/entities.js, components/StructuredDiff/Fallback.tsx, components/ConfigurableShortcutHint.tsx, components/AwsAuthStatusBox.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts
 ((bFl = R(lt(), 1)), (Wk = R(se(), 1)));
 function InstallGitHubApp(props) {
   let [t] = eZ.useState(() => lI()),

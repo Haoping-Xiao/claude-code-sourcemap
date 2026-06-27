@@ -4,6 +4,6 @@
 // class=new  jaccard=0.0191  score=1  fileCov=0.0191
 // note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0191); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Y9s] deps: jR, Cbn
+// [unwrapped __esm module Y9s] deps: @aws-sdk/client-bedrock-runtime/dist-cjs/index.js, @aws-sdk/client-bedrock/dist-cjs/index.js
 K9s = R(yd(), 1), Pnd = K9s.createPaginator(ng, ant, "nextToken", "nextToken", "maxResults");
 var X9s, Mnd;

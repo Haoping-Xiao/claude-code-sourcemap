@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4031  score=0.5942  fileCov=0.5562
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module NDa] deps: je, At, dn, dLa, $Da, ypt
+// [unwrapped __esm module NDa] deps: utils/debug.ts, utils/errors.ts, dn, dLa, services/lsp/LSPServerManager.ts, services/lsp/LSPDiagnosticRegistry.ts
 ((rEe = R(require("path"))), (xpt = require("url")));
 function Pkp(e) {
   switch (e) {

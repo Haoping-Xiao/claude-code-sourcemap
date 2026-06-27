@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0106  score=0.1743  fileCov=0.0111
 // note: nearest: src/cli/print.ts (0.0106); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module b0c] deps: ft, db, je, At, jS, Jt
+// [unwrapped __esm module b0c] deps: services/analytics/index.ts, utils/authFileDescriptor.ts, utils/debug.ts, utils/errors.ts, utils/path.ts, utils/fsOperations.ts
 ovt = require("path");
 async function wtn(e) {
   try {

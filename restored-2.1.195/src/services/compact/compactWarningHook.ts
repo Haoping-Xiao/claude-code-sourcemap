@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4951  score=1  fileCov=0.4951
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cen] deps: kt, uo, dr, dQt
+// [unwrapped __esm module Cen] deps: utils/debug.ts, context/notifications.tsx, utils/settings/settings.ts, services/voiceStreamSTT.ts
 Gur = R(rt(), 1);
 function Wur() {
   return nhc.useSyncExternalStore(Ojt.subscribe, Ojt.getState);

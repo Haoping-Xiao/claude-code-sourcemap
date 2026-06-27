@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0208  score=0.6323  fileCov=0.0211
 // note: nearest: src/keybindings/validate.ts (0.0208); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module utr] deps: O0, _i, Ye, Yj, ps, nk, uo, j_e, Yp, dr, mE, Bs, E8e, Ko, gBn, Kut
+// [unwrapped __esm module utr] deps: commander/lib/command.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, components/PromptInput/PromptInput.tsx, utils/suggestions/directoryCompletion.ts, nk, context/notifications.tsx, utils/systemTheme.ts, utils/gracefulShutdown.ts, utils/settings/settings.ts, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/FileEditToolDiff.tsx, components/ConfigurableShortcutHint.tsx, components/StructuredDiff/Fallback.tsx, components/StructuredDiff.tsx
 xMl = R(lt(), 1), kMl = R(rt(), 1), gE = R(se(), 1);
 function GRf() {
   let e = x0()?.model_notices;

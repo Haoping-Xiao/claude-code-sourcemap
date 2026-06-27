@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5137  score=0.8183  fileCov=0.5798
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qNt] deps: C0n
+// [unwrapped __esm module qNt] deps: ink/events/emitter.ts
 ((vBi = R(rt(), 1)),
   (wBi = vBi.createContext({
     stdin: process.stdin,

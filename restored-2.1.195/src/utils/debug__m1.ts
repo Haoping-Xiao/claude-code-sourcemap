@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tailLog, parseArgs, daemonMain
-// [unwrapped __esm module ZZo] deps: vX, Lo, jS, Jt, iQt, zOe, YOe, Qir, QJt
+// [unwrapped __esm module ZZo] deps: utils/cronTasks.ts, utils/fsOperations.ts, utils/path.ts, utils/fsOperations.ts, components/agents/AgentsMenu.tsx, utils/completionCache.ts, mute-stream/lib/index.js, commands/bridge-kick.ts, cli/print.ts
 uie = require("path");
 function Tqc() {
   return ENm + (_ke() ? ANm : HNm) + TNm + vNm;

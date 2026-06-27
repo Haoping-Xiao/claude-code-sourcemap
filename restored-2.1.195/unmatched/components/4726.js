@@ -5,7 +5,7 @@
 // note: nearest: src/commands/ide/ide.tsx (0.0164); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module jBl] deps: O0, nk, fH, _i, Ye, ps, eE, kP, PBl, BBl
+// [unwrapped __esm module jBl] deps: commander/lib/command.js, nk, react/cjs/react.production.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, components/design-system/Dialog.tsx, components/design-system/Tabs.tsx, keybindings/reservedShortcuts.ts, components/HelpV2/HelpV2.tsx
 UBl = R(lt(), 1), Gk = R(se(), 1);
 var WBl,
   call = async (e, {

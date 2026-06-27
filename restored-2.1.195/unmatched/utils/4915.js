@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0087  score=0.1303  fileCov=0.0093
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0087); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sql] deps: Ye, kt, ZKe, er, SEe
+// [unwrapped __esm module sql] deps: hooks/useTerminalSize.ts, utils/debug.ts, components/LogoV2/GuestPassesUpsell.tsx, utils/config.ts, hooks/notifs/useCanSwitchToExistingSubscription.tsx
 o2o = R(lt(), 1), y1e = R(se(), 1);
 function wor(e) {
   let t = [],

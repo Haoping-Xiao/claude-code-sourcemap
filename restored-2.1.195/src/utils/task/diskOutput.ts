@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0368  score=0.059  fileCov=0.0893
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yf] deps: Qi, Uh, M7, u_, $7, ft, Un, lf, EI, Rm, Lo, fn, ys, Hu, KI, Is, y_, vf, mCe, RCe, dr, xue, kv, K0, sj, Tkn, $I, QH, Gy, w5e
+// [unwrapped __esm module Yf] deps: lodash-es/memoize.js, services/analytics/metadata.ts, tools/FileEditTool/constants.ts, utils/markdownConfigLoader.ts, utils/pdfUtils.ts, services/analytics/index.ts, services/analytics/growthbook.ts, tools/GlobTool/prompt.ts, tools/ExitPlanModeTool/constants.ts, @grpc/grpc-js/build/src/server.js, utils/fsOperations.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts, utils/file.ts, utils/permissions/filesystem.ts, utils/platform.ts, utils/stats.ts, utils/settings/changeDetector.ts, mCe, utils/settings/mdm/settings.ts, utils/settings/settings.ts, utils/shell/readOnlyCommandValidation.ts, proxy-from-env/index.js, utils/mcpOutputStorage.ts, utils/windowsPaths.ts, utils/worktree.ts, utils/permissions/shellRuleMatching.ts, tools/TaskStopTool/prompt.ts, utils/permissions/permissionSetup.ts, services/mcp/vscodeSdkMcp.ts
 ((Fsc = require("crypto")),
   (A5o = R(D3e(), 1)),
   (sZt = require("os")),

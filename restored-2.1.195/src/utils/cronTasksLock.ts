@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.254  score=0.482  fileCov=0.3494
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TPc] deps: je, At, gM
+// [unwrapped __esm module TPc] deps: utils/debug.ts, utils/errors.ts, utils/teleport.tsx
 ((hvt = require("fs/promises")),
   (FYo = require("path")),
   (XCm = [

@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatRateLimits, formatBehaviors, call
-// [unwrapped __esm module R6l] deps: $7t
+// [unwrapped __esm module R6l] deps: components/Settings/Config.tsx
 k6l = R(se(), 1);
 function Usage(e) {
   let { rate_limits: t, subscription_type: n } = e;

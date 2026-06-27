@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5738  score=0.8514  fileCov=0.6376
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zbl] deps: Xr, ii, sA, sp, Jt, bk, Mp, YI, Fgo
+// [unwrapped __esm module zbl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, services/PromptSuggestion/promptSuggestion.ts, utils/worktree.ts, utils/fsOperations.ts, utils/tasks.ts, utils/concurrentSessions.ts, utils/teammateMailbox.ts, utils/tasks.ts
 ((lhf = ve(() => {
   let e = rVe().or(H.literal("deleted"));
   return H.strictObject({

@@ -4,7 +4,7 @@
 // class=modified (alt of src/commands/extra-usage/extra-usage-core.ts)  jaccard=0.0266  score=0.066  fileCov=0.0425
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Rbc] deps: _i, Z6o, tzo
+// [unwrapped __esm module Rbc] deps: components/design-system/Ratchet.tsx, screens/REPL.tsx, components/PromptInput/PromptInput.tsx
 ((Ibc = R(lt(), 1)), (kbc = R(se(), 1)));
 function Lbc(e, t) {
   let n = Ht((i) => i.fotwClaim),

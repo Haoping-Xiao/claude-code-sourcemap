@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1559  score=0.2459  fileCov=0.2985
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OUt] deps: si, Xa, _i, Tc, Ye, es, sr, B_
+// [unwrapped __esm module OUt] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, components/PromptInput/PromptInputFooterSuggestions.tsx
 ((OZr = R(lt(), 1)), (NZr = R(rt(), 1)), (pT = R(se(), 1)), ($Zr = /\s+/g));
 nKd = NZr.memo(function (t) {
   let n = OZr.c(98),

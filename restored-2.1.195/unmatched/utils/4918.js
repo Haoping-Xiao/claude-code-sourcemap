@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0031  score=0.2896  fileCov=0.0031
 // note: nearest: src/screens/REPL.tsx (0.0031); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gql] deps: Ye, kt, er, je, uf, dr, dql, SEe
+// [unwrapped __esm module gql] deps: hooks/useTerminalSize.ts, utils/debug.ts, utils/config.ts, utils/debug.ts, main.tsx, utils/settings/settings.ts, components/PromptInput/PromptInput.tsx, hooks/notifs/useCanSwitchToExistingSubscription.tsx
 s2o = R(lt(), 1), wse = R(se(), 1);
 function bql() {
   let e = zx("tengu_startup_announcements", hql),

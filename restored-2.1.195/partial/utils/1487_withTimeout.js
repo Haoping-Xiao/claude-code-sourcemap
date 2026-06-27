@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/utils/sleep.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withTimeout, sleep
-// [unwrapped __esm module drt] deps: zb, ft, Rx, je, At, R9
+// [unwrapped __esm module drt] deps: zod/v4/classic/schemas.js, services/analytics/index.ts, utils/env.ts, utils/debug.ts, utils/errors.ts, utils/errors.ts
 Tjr = ve(() => dt.object({
   access_token: dt.string(),
   expires_in: dt.number(),

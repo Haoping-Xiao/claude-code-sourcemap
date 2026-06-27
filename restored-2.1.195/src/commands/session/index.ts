@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3173  score=0.5009  fileCov=0.464
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module k9l] deps: ft, id
+// [unwrapped __esm module k9l] deps: services/analytics/index.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js
 ((jWf = {
   type: "local-jsx",
   name: "session",

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2398  score=0.6032  fileCov=0.2847
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gKn] deps: zwt, eis, Ull, BBe, _Ue, jll, IRr, xin
+// [unwrapped __esm module gKn] deps: zwt, utils/slowOperations.ts, hasown/index.js, BBe, _Ue, jll, IRr, lodash-es/_initCloneArray.js
 ((Lif = kfn(function (e, t) {
   var n = {};
   if (e == null) return n;

@@ -5,7 +5,7 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sinksFor, runClassifierSummaryForBlocked, isPostTurnSummaryVisibleInCli, engineFor, detectSurfaces, classifiedToPostTurnSummary
-// [unwrapped __esm module Hde] deps: cEe, ft, tgo, tne
+// [unwrapped __esm module Hde] deps: constants/spinnerVerbs.ts, services/analytics/index.ts, constants/spinnerVerbs.ts, components/Settings/Config.tsx
 ((pjn = R(rt(), 1)),
   (VGt = Object.freeze({
     mode: "responding",

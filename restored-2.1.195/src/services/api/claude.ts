@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2691  score=0.3745  fileCov=0.4887
 // note: deminified; 14 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Bac] deps: TM, lf, je, K0, dn, Dac, q8, lNn
+// [unwrapped __esm module Bac] deps: constants/betas.ts, tools/GlobTool/prompt.ts, utils/debug.ts, utils/mcpOutputStorage.ts, dn, services/compact/microCompact.ts, utils/pdf.ts, utils/sessionEnvironment.ts
 ((Mac = new Set()), ($ac = new Map()));
 function getExtraBodyParams(betaHeaders) {
   let t = process.env.CLAUDE_CODE_EXTRA_BODY,

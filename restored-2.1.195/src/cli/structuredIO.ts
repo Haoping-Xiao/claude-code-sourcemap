@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1256  score=0.1456  fileCov=0.4765
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nXo] deps: Jt
+// [unwrapped __esm module nXo] deps: utils/fsOperations.ts
 nLm = /\u2028|\u2029/g;
 function rUc(e, t) {
   try {

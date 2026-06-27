@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1737  score=0.2876  fileCov=0.3049
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qbe] deps: IB, Zf, ft, np, Tc, kt, je, At, es, vn, Ect
+// [unwrapped __esm module Qbe] deps: constants/keys.ts, utils/sessionStorage.ts, services/analytics/index.ts, env-paths/index.js, marked/lib/marked.esm.js, utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/profilerBase.ts, utils/sequential.ts, tools/SkillTool/prompt.ts
 POn = Cn(
   async (e) => `Execute a skill within the main conversation
 

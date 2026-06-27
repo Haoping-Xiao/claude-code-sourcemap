@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1006  score=1  fileCov=0.1006
 // note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QDc] deps: ft, Ed, HN, uo, _oe
+// [unwrapped __esm module QDc] deps: services/analytics/index.ts, context/notifications.tsx, utils/plugins/pluginPolicy.ts, context/notifications.tsx, cost-tracker.ts
 XDc = R(lt(), 1), zfr = R(rt(), 1);
 function ePc() {
   let {

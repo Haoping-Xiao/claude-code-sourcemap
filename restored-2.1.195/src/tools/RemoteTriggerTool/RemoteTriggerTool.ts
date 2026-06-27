@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3771  score=0.5277  fileCov=0.5692
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ASl] deps: Xr, Rc, Un, kt, c_, jc, CRo, ii, oo, fn, es, Ls, Jt, _Sl
+// [unwrapped __esm module ASl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, constants/oauth.ts, services/analytics/growthbook.ts, utils/debug.ts, services/mcp/officialRegistry.ts, utils/semver.ts, commands/copy/copy.tsx, services/mockRateLimits.ts, utils/http.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/profilerBase.ts, utils/status.tsx, utils/fsOperations.ts, @aws-sdk/core/dist-cjs/submodules/protocols/index.js
 ((Ehf = ve(() =>
   H.strictObject({
     action: H.enum(["list", "get", "create", "update", "run"]),

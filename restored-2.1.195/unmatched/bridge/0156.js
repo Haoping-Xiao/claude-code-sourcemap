@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0246  score=0.1985  fileCov=0.0273
 // note: nearest: src/utils/bash/ParsedCommand.ts (0.0246); dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rv] deps: rwe
+// [unwrapped __esm module rv] deps: @anthropic-ai/sdk/internal/detect-platform.mjs
 vos = Symbol.for("brand.privateNullableHeaders");
 function Cos(e) {
   return e.replace(/[^A-Za-z0-9\-._~!$&'()*+,;=:@]+/g, encodeURIComponent);

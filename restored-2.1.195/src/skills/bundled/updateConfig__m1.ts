@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SKILL_MD, SKILL_FILES
-// [unwrapped __esm module bwc] deps: Xr, lj, Jt, AA
+// [unwrapped __esm module bwc] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/settings/types.ts, utils/fsOperations.ts, skills/bundledSkills.ts
 NEm = `# Update Config Skill
 
 Modify Claude Code configuration by updating settings.json files.

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1929  score=0.2903  fileCov=0.3653
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module peo] deps: zb, ft, Jt
+// [unwrapped __esm module peo] deps: zod/v4/classic/schemas.js, services/analytics/index.ts, utils/fsOperations.ts
 LKd = ve(() =>
   dt
     .object({

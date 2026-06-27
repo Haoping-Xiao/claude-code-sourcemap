@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.1963  score=0.4192  fileCov=0.2697
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gLl] deps: Xr, Lo, je, Jt, M7
+// [unwrapped __esm module gLl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/fsOperations.ts, utils/debug.ts, utils/fsOperations.ts, tools/FileEditTool/constants.ts
 ((kfS = ve(() =>
   H.object({
     updatedAt: H.string().min(1),

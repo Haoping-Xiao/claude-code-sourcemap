@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: invalidateWorkflowCache, getWorkflowCommands, createWorkflowCommand
-// [unwrapped __esm module $oc] deps: b5e, ZE, fh, og, je, fn, At, Bi, vn, co, Ao, y_, _a, Jt, sr, kv, OI
+// [unwrapped __esm module $oc] deps: services/api/promptCacheBreakDetection.ts, utils/shell/prefix.ts, commands/insights.ts, utils/teammateContext.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/sequential.ts, utils/messages.ts, utils/agentContext.ts, utils/stats.ts, utils/plans.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, proxy-from-env/index.js, fast-xml-parser/lib/fxp.cjs
 ((l2 = require("fs/promises")), (Rz = require("path")));
 ((LQf = {
   ".ts": "TypeScript",

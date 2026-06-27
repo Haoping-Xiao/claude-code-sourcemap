@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module b6l] deps: Tjo, uo
+// [unwrapped __esm module b6l] deps: hooks/useTeleportResume.tsx, context/notifications.tsx
 g6l = R(lt(), 1), h6l = R(rt(), 1), vjo = R(se(), 1);
 var X5f, S6l;

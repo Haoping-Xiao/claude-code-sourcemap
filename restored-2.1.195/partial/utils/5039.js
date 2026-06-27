@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2224  score=0.9044  fileCov=0.2278
 // note: low-confidence suggestion: src/utils/hooks/hooksConfigManager.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WAt] deps: ft, vf, dr, pQ
+// [unwrapped __esm module WAt] deps: services/analytics/index.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/hooks/registerSkillHooks.ts
 sKl = require("path");
 function groupHooksByEventAndMatcher(appState, toolNames) {
   let n = {

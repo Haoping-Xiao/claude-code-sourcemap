@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0045  score=0.1718  fileCov=0.0046
 // note: nearest: src/cli/print.ts (0.0045); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Sdc] deps: gdn, kt, Ye, Ox, dr, Cc, w7t, Bs, vi, Ko, A9o
+// [unwrapped __esm module Sdc] deps: gdn, utils/debug.ts, hooks/useTerminalSize.ts, Ox, utils/settings/settings.ts, context/modalContext.tsx, w7t, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, components/MCPServerApprovalDialog.tsx
 _dc = R(rt(), 1), sV = R(se(), 1);
 async function T9o() {
   let {

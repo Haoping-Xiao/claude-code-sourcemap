@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4155  score=0.5931  fileCov=0.5812
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DLc] deps: Ye, lg, Vl, X0
+// [unwrapped __esm module DLc] deps: hooks/useTerminalSize.ts, utils/bash/bashParser.ts, keybindings/useShortcutDisplay.ts, components/ManagedSettingsSecurityDialog/utils.ts
 ((LLc = R(lt(), 1)), (D3 = R(se(), 1)));
 function Zwm(e) {
   let t = e.getHours() % 12 || 12,

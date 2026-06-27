@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0883  score=0.1882  fileCov=0.1425
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module T6l] deps: VDe, Lo, Iv, pq, hze
+// [unwrapped __esm module T6l] deps: utils/background/remote/remoteSession.ts, utils/fsOperations.ts, hooks/useSettings.ts, utils/markdownConfigLoader.ts, utils/promptShellExecution.ts
 ((J5f = ["git diff *", "git status *", "git log *", "git show *", "git remote show *"]),
   (Q5f = J5f.flatMap((e) => [`Bash(${e})`, `PowerShell(${e})`]).join(", ")),
   (Z5f = `---

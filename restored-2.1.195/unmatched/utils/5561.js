@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0298  score=0.3239  fileCov=0.0317
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0298); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yAc] deps: uo, gq, mAc, M8e
+// [unwrapped __esm module yAc] deps: context/notifications.tsx, tools/BashTool/UI.tsx, screens/REPL.tsx, @growthbook/growthbook/dist/esm/mongrule.mjs
 gAc = R(rt(), 1);
 function bAc() {
   let e = _Ac.c(14),

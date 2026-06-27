@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/controlMessageCompat.ts)  jaccard=0.0901  score=0.1261  fileCov=0.2399
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U8n] deps: Xr
+// [unwrapped __esm module U8n] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 _8e = Dy({
   kind: "permission_bash",
   payload: ve(() =>

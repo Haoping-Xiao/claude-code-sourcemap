@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0211  score=0.2546  fileCov=0.0225
 // note: nearest: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js (0.0211); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tIt] deps: Fsn, cos
+// [unwrapped __esm module tIt] deps: Fsn, @anthropic-ai/sdk/internal/detect-platform.mjs
 Gzc = /^[A-Za-z0-9_.-]+$/;
 function xSr(e) {
   if (!e) throw new ui("Identity token file path is empty");

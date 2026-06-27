@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0035  score=0.1118  fileCov=0.0036
 // note: nearest: src/utils/sessionStorage.ts (0.0035); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jGo] deps: iu, lH, z7r, Jke, AW, ZS, OM, q7, jh, kt, wr, At, Bi, _Ge, Is, Vke, Jt, nne, Gfe, UGo, WL, q$
+// [unwrapped __esm module jGo] deps: @mixmark-io/domino/lib/Document.js, lH, ink/parse-keypress.ts, ink/parse-keypress.ts, ink/supports-hyperlinks.ts, ink/terminal.ts, ink/clearTerminal.ts, ink/terminal.ts, utils/env.ts, utils/debug.ts, main.tsx, utils/errors.ts, constants/files.ts, components/design-system/color.ts, utils/platform.ts, tools/SkillTool/prompt.ts, utils/fsOperations.ts, utils/signal.ts, undici/lib/web/fileapi/util.js, ink/ink.tsx, utils/git.ts, undici/lib/core/symbols.js
 Qnc = require("crypto"), Znc = require("net"), sJf = Buffer.from([127]), dar = Buffer.from("\x1B[98;5u", "latin1"), par = Buffer.from("\x1B[27;5;98~", "latin1"), nrc = Buffer.from("\x1B[122;5u", "latin1"), rrc = Buffer.from("\x1B[27;5;122~", "latin1"), iJf = Buffer.from("\x1B[27u", "latin1"), aJf = Buffer.from("\x1B[27;1u", "latin1"), cJf = Buffer.from("\x1B[99;5u", "latin1"), uJf = Buffer.from("\x1B[27;5;99~", "latin1"), Xnc = Buffer.from(uz, "ascii"), hQt = Buffer.from("\x1B[?9001", "ascii");
 gZ = Buffer.alloc(0);
 function mar() {

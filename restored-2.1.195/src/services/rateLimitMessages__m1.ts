@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/rateLimitMessages.ts)  jaccard=0.1148  score=0.161  fileCov=0.2859
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xjt] deps: oo, e1, Cp, wr, es, NX, Ao, d5e, Un, mSe
+// [unwrapped __esm module xjt] deps: utils/http.ts, bridge/bridgeApi.ts, utils/tempfile.ts, main.tsx, utils/profilerBase.ts, services/mcp/types.ts, utils/agentContext.ts, services/api/usage.ts, services/analytics/growthbook.ts, services/rateLimitMessages.ts
 ((Cio = new Set(["org_level_disabled_until", "org_spend_cap_reached"])),
   (Jap = [
     "You've hit your",

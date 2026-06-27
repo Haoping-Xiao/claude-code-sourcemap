@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0344  score=0.4618  fileCov=0.0358
 // note: nearest: src/hooks/useReplBridge.tsx (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lzo] deps: cne, Vbc, azo, id, co
+// [unwrapped __esm module lzo] deps: components/design-system/ThemeProvider.tsx, tools/MCPTool/classifyForCollapse.ts, hooks/useRemoteSession.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/messages.ts
 Yz = R(rt(), 1);
 function zbc({
   sessionKey: e,

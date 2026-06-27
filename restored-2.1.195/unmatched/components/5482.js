@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $_c] deps: RLn
+// [unwrapped __esm module $_c] deps: components/design-system/ThemedText.tsx
 Kfm = R(lt(), 1), Yfm = R(se(), 1);
 var Xfm,
   U6o,

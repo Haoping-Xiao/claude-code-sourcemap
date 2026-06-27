@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4582  score=0.7392  fileCov=0.5466
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dic] deps: ft, kt, ZE, tP, U1, Vv, EAe, BE, Il, je, At, Rd, co, Ao, Jt, P5o
+// [unwrapped __esm module dic] deps: services/analytics/index.ts, utils/debug.ts, utils/shell/prefix.ts, services/api/errors.ts, U1, services/PromptSuggestion/speculation.ts, hooks/useCanUseTool.tsx, has-flag/index.js, Il, utils/debug.ts, utils/errors.ts, utils/settings/constants.ts, utils/messages.ts, utils/agentContext.ts, utils/fsOperations.ts, utils/hooks/execPromptHook.ts
 lic = require("crypto");
 async function execAgentHook(
   hook,

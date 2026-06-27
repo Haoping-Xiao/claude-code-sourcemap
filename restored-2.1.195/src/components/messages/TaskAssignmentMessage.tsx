@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2403  score=0.4111  fileCov=0.3664
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WCo] deps: Ye, YI, E8e, R6
+// [unwrapped __esm module WCo] deps: hooks/useTerminalSize.ts, utils/teammateMailbox.ts, components/FileEditToolDiff.tsx, components/AwsAuthStatusBox.tsx
 ((GCo = R(lt(), 1)), (aQ = R(se(), 1)));
 function TaskAssignmentDisplay(t0) {
   let t = fil.c(8),

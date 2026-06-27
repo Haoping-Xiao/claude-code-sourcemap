@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3269  score=0.3977  fileCov=0.6475
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module CBo] deps: si, Ye, ps, Cre, cqe, sr, Cc, mE, Bs, vi, f_, Ko, gKe, EC
+// [unwrapped __esm module CBo] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/mcp/auth.ts, tools/McpAuthTool/McpAuthTool.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/Settings/Status.tsx, @anthropic-ai/bedrock-sdk/client.mjs
 ((bse = R(rt(), 1)), (rd = R(se(), 1)));
 function getScopeHeading(scope) {
   switch (scope) {

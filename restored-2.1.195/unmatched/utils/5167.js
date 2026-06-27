@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0045  score=0.3645  fileCov=0.0045
 // note: nearest: src/screens/REPL.tsx (0.0045); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KQl] deps: id, er, rit, uf, vn, dr
+// [unwrapped __esm module KQl] deps: dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/config.ts, rit, main.tsx, utils/sequential.ts, utils/settings/settings.ts
 Nzf = {
   type: "local-jsx",
   name: "focus",

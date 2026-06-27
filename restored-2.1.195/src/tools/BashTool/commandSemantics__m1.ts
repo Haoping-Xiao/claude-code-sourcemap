@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/BashTool/commandSemantics.ts)  jaccard=0.1467  score=0.2109  fileCov=0.3252
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xvl] deps: sN
+// [unwrapped __esm module Xvl] deps: utils/bash/commands.ts
 BEf = new Map([
   [
     "grep",

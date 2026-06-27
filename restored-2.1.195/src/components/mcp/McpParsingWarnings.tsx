@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2295  score=0.3134  fileCov=0.4615
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cNl] deps: Ye, xne, bEt, xoe
+// [unwrapped __esm module cNl] deps: hooks/useTerminalSize.ts, utils/debug.ts, screens/REPL.tsx, components/AgentProgressLine.tsx
 ((aNl = R(lt(), 1)), (qOe = R(se(), 1)));
 function McpConfigErrorSection(t0) {
   let t = ENo.c(38),

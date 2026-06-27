@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2431  score=0.4588  fileCov=0.3408
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eKo] deps: Ye, N0e, ps, kt, rHc, LUt, V9n
+// [unwrapped __esm module eKo] deps: hooks/useTerminalSize.ts, commander/lib/command.js, utils/suggestions/directoryCompletion.ts, utils/debug.ts, utils/permissions/permissionExplainer.ts, components/PromptInput/ShimmeredInput.tsx, components/Spinner/useStalledAnimation.ts
 ((ctn = R(lt(), 1)), (tie = R(rt(), 1)), (WP = R(se(), 1)));
 function ClassifierCheckingSubtitle() {
   let e = aHc.c(6),

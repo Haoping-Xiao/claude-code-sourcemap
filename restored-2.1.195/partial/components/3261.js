@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0651  score=0.7602  fileCov=0.0665
 // note: low-confidence suggestion: src/components/StructuredDiff/Fallback.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lJ] deps: si, Ye
+// [unwrapped __esm module lJ] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts
 exa = R(lt(), 1), gqe = R(se(), 1);
 function generateWordDiffElements(item) {
   let t = txa.c(10),

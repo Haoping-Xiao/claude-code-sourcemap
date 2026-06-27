@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2737  score=0.4006  fileCov=0.4637
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module RLc] deps: Y4
+// [unwrapped __esm module RLc] deps: utils/getWorktreePaths.ts
 xfr = R(rt(), 1);
 function SandboxPermissionRequest(t0) {
   let t = LLc.c(22),

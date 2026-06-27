@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4028  score=0.6218  fileCov=0.5336
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _zl] deps: EJt, Ye, Vl, gm, kP
+// [unwrapped __esm module _zl] deps: components/permissions/rules/PermissionRuleDescription.tsx, hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts, undici/lib/mock/mock-agent.js, components/design-system/Tabs.tsx
 ((hzl = R(lt(), 1)), (I1e = R(rt(), 1)), (ame = R(se(), 1)));
 function RemoveWorkspaceDirectory(t0) {
   let t = bzl.c(15),

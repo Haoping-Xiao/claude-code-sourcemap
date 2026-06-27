@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2801  score=0.4375  fileCov=0.4378
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mYl] deps: si, Ye, ps, IL, M7, tQ, ty, kpe, Coe, AN, VAt
+// [unwrapped __esm module mYl] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, tools/AgentTool/agentColorManager.ts, tools/FileEditTool/constants.ts, tools/AgentTool/built-in/exploreAgent.ts, tools/AgentTool/loadAgentsDir.ts, utils/systemPrompt.ts, react/cjs/react.production.js, ink/styles.ts, skills/bundled/keybindings.ts
 ((s4o = R(lt(), 1)), (lm = R(se(), 1)));
 function ColorPicker(t0) {
   let t = gYl.c(17),

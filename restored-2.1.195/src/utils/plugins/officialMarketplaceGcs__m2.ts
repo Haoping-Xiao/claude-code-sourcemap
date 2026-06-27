@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/officialMarketplaceGcs.ts)  jaccard=0.0156  score=0.0217  fileCov=0.0525
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uAl] deps: Xr, ft, GXn, ii, At
+// [unwrapped __esm module uAl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/teleport/api.ts, services/mockRateLimits.ts, utils/errors.ts
 ((kbt = require("fs/promises")),
   (oLo = require("path")),
   (Uyf = ve(() =>

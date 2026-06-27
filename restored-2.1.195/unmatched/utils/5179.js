@@ -4,7 +4,7 @@
 // class=new  jaccard=0.039  score=0.4357  fileCov=0.0411
 // note: nearest: src/utils/task/diskOutput.ts (0.039); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VJt] deps: Hp, ft, fho, Epn, fd, je, ys, vn, Jt, aS
+// [unwrapped __esm module VJt] deps: axios/lib/axios.js, services/analytics/index.ts, services/mcp/client.ts, utils/cachePaths.ts, utils/debugFilter.ts, utils/debug.ts, utils/fsOperations.ts, utils/sequential.ts, utils/fsOperations.ts, utils/telemetry/pluginTelemetry.ts
 qJt = require("path"), AZl = rEs(new Date());
 WJt = new Map();
 function TZl() {

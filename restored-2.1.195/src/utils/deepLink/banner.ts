@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1642  score=0.224  fileCov=0.381
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module n_c] deps: si, Xa, _i, Tc, Ye, N0e, ps, dn, uo, vy, g0, Ko, _Pn
+// [unwrapped __esm module n_c] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, commander/lib/command.js, utils/suggestions/directoryCompletion.ts, dn, context/notifications.tsx, @mixmark-io/domino/lib/htmlelts.js, utils/format.ts, components/ConfigurableShortcutHint.tsx, @xmldom/xmldom/lib/entities.js
 (($en = R(lt(), 1)),
   (L6o = require("path")),
   (Zyc = R(rt(), 1)),

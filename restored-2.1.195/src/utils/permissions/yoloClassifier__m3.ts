@@ -5,7 +5,7 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: importConversationsHandler, importConversations
-// [unwrapped __esm module $5c] deps: iu, lH, VQ, dn, kt, Du, FEe, YQr, er, je, MPe, wr, Yp, kgt, A9e, wAo, BJ, IVn, ED, LOe, dr
+// [unwrapped __esm module $5c] deps: @mixmark-io/domino/lib/Document.js, lH, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, dn, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, utils/plugins/zipCacheAdapters.ts, commands/terminalSetup/terminalSetup.tsx, utils/config.ts, utils/debug.ts, utils/nativeInstaller/download.ts, main.tsx, utils/gracefulShutdown.ts, utils/nativeInstaller/packageManagers.ts, utils/shellConfig.ts, utils/nativeInstaller/pidLock.ts, services/mcp/config.ts, utils/nativeInstaller/packageManagers.ts, utils/stringUtils.ts, @xmldom/xmldom/lib/entities.js, utils/settings/settings.ts
 P5c = require("path");
 function mrn(e) {
   return e.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(0, 128) || "file";

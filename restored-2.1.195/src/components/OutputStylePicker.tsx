@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2421  score=0.3328  fileCov=0.4707
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GMl] deps: Ye, mE, vi
+// [unwrapped __esm module GMl] deps: hooks/useTerminalSize.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx
 ((FMl = R(lt(), 1)), (cEt = R(se(), 1)));
 function WMl(e) {
   return Object.entries(e).map(([t, n]) => ({

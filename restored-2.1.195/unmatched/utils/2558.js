@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0068  score=0.1673  fileCov=0.007
 // note: nearest: node_modules/commander/lib/command.js (0.0068); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module N0e] deps: kt, Yj, H0e
+// [unwrapped __esm module N0e] deps: utils/debug.ts, components/PromptInput/PromptInput.tsx, keybindings/defaultBindings.ts
 gPn = R(rt(), 1);
 function Q6d(e) {
   let {

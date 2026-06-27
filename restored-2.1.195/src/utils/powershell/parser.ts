@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3256  score=0.7955  fileCov=0.3553
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bde] deps: je, SG, OB, kDe, Jt
+// [unwrapped __esm module bde] deps: utils/debug.ts, screens/REPL.tsx, utils/execFileNoThrowPortable.ts, utils/powershell/parser.ts, utils/fsOperations.ts
 ((l0p = ((o0p - s0p) * 3) / 8),
   (c0p = l0p - EPa.length - i0p),
   (Rn_ = Math.max(0, Math.floor((c0p * 3) / 4) - a0p)),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/ink/components/App.tsx)  jaccard=0.2078  score=0.7242  fileCov=0.2256
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sJr] deps: ft, je, Kke, wr, lT, Bi, vn, Is, Vke, C0n, y7r, HI, URn, z7r, Kit, NBt, Bke, ZS, Y3e, X0n, GYr, OM, q7, jh, fGe, l0e, eJr, GGi, qNt, QXr, oat
+// [unwrapped __esm module sJr] deps: services/analytics/index.ts, utils/debug.ts, Kke, main.tsx, utils/permissions/permissionSetup.ts, constants/files.ts, utils/sequential.ts, utils/platform.ts, tools/SkillTool/prompt.ts, ink/events/emitter.ts, @mixmark-io/domino/lib/NodeList.es6.js, HI, ink/termio/tokenize.ts, ink/parse-keypress.ts, ink/reconciler.ts, NBt, ink/termio/osc.ts, ink/terminal.ts, Y3e, semver/internal/lrucache.js, utils/fullscreen.ts, ink/clearTerminal.ts, ink/terminal.ts, utils/env.ts, ink/components/AppContext.ts, components/shell/ExpandShellOutputContext.tsx, react/cjs/react.production.js, GGi, ink/components/StdinContext.ts, ink/components/TerminalFocusContext.tsx, ink/components/App.tsx
 ((KGi = R(rt(), 1)), (c0e = R(se(), 1)));
 yLn = class yLn extends KGi.PureComponent {
   static displayName = "InternalApp";

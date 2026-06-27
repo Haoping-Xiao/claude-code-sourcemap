@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0063  score=0.421  fileCov=0.0064
 // note: nearest: src/cli/print.ts (0.0063); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DUc] deps: kt, jc, pXo, C5e
+// [unwrapped __esm module DUc] deps: utils/debug.ts, utils/semver.ts, services/mcp/vscodeSdkMcp.ts, hooks/useIdeLogging.ts
 ELm = new Set(["tengu_message_rated", "tengu_feedback_survey_event"]);
 function PUc({
   requestedAgent: e,

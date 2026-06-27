@@ -3,7 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fon] deps: P2, Vwt
+// [unwrapped __esm module Fon] deps: lodash-es/isArray.js, lodash-es/_isKey.js
 I6c = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, x6c = /^\w*$/;
 tJe = k6c;
 function Nyr(e, t) {

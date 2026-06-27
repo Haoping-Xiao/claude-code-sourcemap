@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0177  score=0.285  fileCov=0.0186
 // note: nearest: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx (0.0177); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Qzo] deps: ft, Ye, Csr
+// [unwrapped __esm module Qzo] deps: services/analytics/index.ts, hooks/useTerminalSize.ts, components/permissions/rules/WorkspaceTab.tsx
 DZ = require("path"), IA = R(se(), 1);
 function Hpr(e) {
   let t = ZAc.c(10),

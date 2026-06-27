@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.478  score=0.7155  fileCov=0.5901
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zYl] deps: Ye, Cc, Vl, Bs, Ko, wb, vH
+// [unwrapped __esm module zYl] deps: hooks/useTerminalSize.ts, context/modalContext.tsx, keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH
 ((qYl = R(lt(), 1)), (rTe = R(se(), 1)));
 function MemoryStep() {
   let e = KYl.c(13),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0018  score=0.3078  fileCov=0.0018
 // note: nearest: src/screens/REPL.tsx (0.0018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XPa] deps: kt, fd, Lo, je, f6, wr, fn, oc, ys, Is, Xh, tre, OB, _1, sj, aEe, Xjt
+// [unwrapped __esm module XPa] deps: utils/debug.ts, utils/debugFilter.ts, utils/fsOperations.ts, utils/debug.ts, utils/xdg.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/nativeInstaller/download.ts, utils/fsOperations.ts, utils/platform.ts, utils/plugins/loadPluginAgents.ts, utils/ripgrep.ts, utils/execFileNoThrowPortable.ts, utils/subprocessEnv.ts, utils/windowsPaths.ts, utils/bash/ShellSnapshot.ts, utils/settings/validationTips.ts
 zPa = require("child_process"), J2n = require("fs/promises"), Q2n = R(require("os")), jGt = require("path");
 V0p = [".git", ".svn", ".hg", ".bzr", ".jj", ".sl"];
 Q0p = /^([A-Za-z_][A-Za-z0-9_]*)=/;

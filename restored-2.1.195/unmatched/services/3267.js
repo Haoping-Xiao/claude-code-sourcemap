@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0259  score=0.3518  fileCov=0.0272
 // note: nearest: node_modules/follow-redirects/index.js (0.0259); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WSe] deps: ft, Un, Du, fn, Jt, aS
+// [unwrapped __esm module WSe] deps: services/analytics/index.ts, services/analytics/growthbook.ts, services/analytics/firstPartyEventLoggingExporter.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/fsOperations.ts, utils/telemetry/pluginTelemetry.ts
 xxa = require("crypto");
 D3t = new Set(), tpo = new Map();
 class Nxa {

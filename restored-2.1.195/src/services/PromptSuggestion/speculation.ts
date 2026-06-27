@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5102  score=0.7923  fileCov=0.589
 // note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module y6e] deps: Gst, ft, lze, dHl, ii, u_, lf, nC, Il, je, fn, At, oc, PB, ik, co, Hu, $I, _a, CLo
+// [unwrapped __esm module y6e] deps: utils/messages.ts, services/analytics/index.ts, tools/WebFetchTool/utils.ts, screens/REPL.tsx, services/mockRateLimits.ts, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, types/plugin.ts, Il, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/platform.ts, utils/claudemd.ts, utils/messages.ts, utils/file.ts, utils/permissions/shellRuleMatching.ts, utils/plans.ts, utils/queryHelpers.ts
 rKt = new Map();
 function oKt(e) {
   hHl.rm(

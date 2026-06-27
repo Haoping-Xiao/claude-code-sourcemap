@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6551  score=1  fileCov=0.6551
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vl] deps: si, fH, _i, $Ge, Kce, Tc, Ye, PUt, g0, gm, APn, xZr, TPn, uzi, gzi
+// [unwrapped __esm module Vl] deps: @xmldom/xmldom/lib/entities.js, react/cjs/react.production.js, components/design-system/Ratchet.tsx, ink/focus.ts, components/Settings/Config.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, components/design-system/StatusIcon.tsx, utils/format.ts, undici/lib/mock/mock-agent.js, components/ClickableImageRef.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select-input-option.tsx, uzi, components/CustomSelect/select.tsx
 ((IPn = R(lt(), 1)), (One = R(rt(), 1)), (Zl = R(se(), 1)));
 function useShortcutDisplay(action, context, fallback) {
   let r = KE(),

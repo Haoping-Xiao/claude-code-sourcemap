@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0122  score=0.031  fileCov=0.0198
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YGo] deps: kt, je, At, Is, R9, QEe
+// [unwrapped __esm module YGo] deps: utils/debug.ts, utils/debug.ts, utils/errors.ts, utils/platform.ts, utils/errors.ts, commander/lib/command.js
 ((KGo = require("child_process")),
   (bar = require("fs/promises")),
   (grc = require("os")),

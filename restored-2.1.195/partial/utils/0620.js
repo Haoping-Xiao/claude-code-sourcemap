@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2441  score=1  fileCov=0.2441
 // note: low-confidence suggestion: node_modules/lodash-es/isPlainObject.js; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iEs] deps: ZXe, Mie
+// [unwrapped __esm module iEs] deps: ZXe, lodash-es/_baseIsArguments.js
 sEs = $Du;
 function isPlainObject(value) {
   if (!hD(value) || LV(value) != objectTag) return false;

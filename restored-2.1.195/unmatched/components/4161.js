@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0056  score=0.305  fileCov=0.0057
 // note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Jal] deps: Ye, cEe, Xa, si, ql, FCo, vMe, gIo, vy, Val, _i, es, UX, Fh, Q8, uo, iKn, bm, aKn
+// [unwrapped __esm module Jal] deps: hooks/useTerminalSize.ts, constants/spinnerVerbs.ts, @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, commands/add-dir/validation.ts, components/messages/AssistantToolUseMessage.tsx, ink/measure-text.ts, components/messages/teamMemSaved.ts, @mixmark-io/domino/lib/htmlelts.js, tasks/pillLabel.ts, components/design-system/Ratchet.tsx, utils/profilerBase.ts, utils/imageValidation.ts, components/Settings/Config.tsx, react/cjs/react.production.js, context/notifications.tsx, tasks/LocalAgentTask/LocalAgentTask.tsx, utils/messageQueueManager.ts, utils/hooks.ts
 WMe = R(lt(), 1), lKn = R(rt(), 1), Yal = require("path"), Xi = R(se(), 1);
 function nif(e) {
   let n = [...e].filter(o => {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1209  score=0.1414  fileCov=0.4553
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module C_l] deps: Xr, rSe, ii, Gpt, tSe
+// [unwrapped __esm module C_l] deps: @modelcontextprotocol/sdk/dist/esm/types.js, utils/toolSearch.ts, services/mockRateLimits.ts, components/FallbackToolUseErrorMessage.tsx, tools/TaskStopTool/prompt.ts
 ((bgf = ve(() =>
   H.strictObject({
     delaySeconds: hF(H.number()).describe(

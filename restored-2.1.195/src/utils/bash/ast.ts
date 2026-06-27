@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1118  score=0.9015  fileCov=0.1132
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rre] deps: _1, Ybe, xRe
+// [unwrapped __esm module rre] deps: utils/subprocessEnv.ts, utils/bash/parser.ts, utils/bash/ast.ts
 ((dra = require("os")),
   (pra = new Set(["program", "list", "pipeline", "redirected_statement"])),
   (Gro = new Set([

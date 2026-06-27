@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.156  score=0.1896  fileCov=0.4683
 // note: low-confidence suggestion: src/utils/plugins/pluginIdentifier.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $g] deps: ZC
+// [unwrapped __esm module $g] deps: utils/plugins/schemas.ts
 leo = {
   policySettings: "managed",
   userSettings: "user",

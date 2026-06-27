@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0301  score=1  fileCov=0.0301
 // note: nearest: node_modules/google-auth-library/build/src/auth/awsrequestsigner.js (0.0301); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module t4r] deps: lMt, uMt, _je
+// [unwrapped __esm module t4r] deps: @smithy/util-hex-encoding/dist-cjs/index.js, @smithy/signature-v4/dist-cjs/index.js, @smithy/signature-v4/dist-cjs/index.js
 SHn = {}, e4r = [];
 var AHn = ({
   headers: e

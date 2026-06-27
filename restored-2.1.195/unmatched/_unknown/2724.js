@@ -4,7 +4,7 @@
 // class=new  jaccard=0.025  score=0.2867  fileCov=0.0266
 // note: nearest: node_modules/zod/v4/core/to-json-schema.js (0.025); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZFt] deps: TWe, ERe, Qne, Vno, t2t
+// [unwrapped __esm module ZFt] deps: base64-js/index.js, zod/v4/core/util.js, Qne, @smithy/core/dist-cjs/submodules/cbor/index.js, yaml/dist/parse/parser.js
 Kno = Symbol.for("@bufbuild/cel/map");
 Vea = class Vea {
   _map;

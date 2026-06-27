@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.472  score=0.9421  fileCov=0.4861
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rDc] deps: Ye, Vl, X0
+// [unwrapped __esm module rDc] deps: hooks/useTerminalSize.ts, keybindings/useShortcutDisplay.ts, components/ManagedSettingsSecurityDialog/utils.ts
 ((tDc = R(lt(), 1)), (Mfr = R(rt(), 1)), (Xk = R(se(), 1)));
 function useClaudeCodeHintRecommendation() {
   let e = oDc.c(11),

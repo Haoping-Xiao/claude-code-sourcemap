@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0891  score=0.2752  fileCov=0.1164
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sandbox-runtime/dist/utils/debug.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A7o] deps: ft, JN, p8r, je, At, ys, Rd, sG, X4, kv, vf, Sx
+// [unwrapped __esm module A7o] deps: services/analytics/index.ts, main.tsx, utils/deepLink/terminalLauncher.ts, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/settings/constants.ts, @ant/claude-for-chrome-mcp/src/mcpSocketClient.ts, utils/attachments.ts, proxy-from-env/index.js, utils/settings/changeDetector.ts, Sx
 bOc = require("fs");
 function TOc() {
   return !Js();

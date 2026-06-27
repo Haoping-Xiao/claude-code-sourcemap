@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.145  score=0.3361  fileCov=0.2031
 // note: low-confidence suggestion: src/utils/ghPrStatus.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uIo] deps: AW, dn, je, wr
+// [unwrapped __esm module uIo] deps: ink/supports-hyperlinks.ts, dn, utils/debug.ts, main.tsx
 bal = R(rt(), 1);
 function u6e(e) {
   let t = Aal.c(37),

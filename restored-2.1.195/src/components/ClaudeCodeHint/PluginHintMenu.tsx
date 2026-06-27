@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2346  score=0.3032  fileCov=0.5091
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iDc] deps: Ed, kt, $pt, je, U2n, $g, vfe, DYo
+// [unwrapped __esm module iDc] deps: context/notifications.tsx, utils/debug.ts, utils/plugins/hintRecommendation.ts, utils/debug.ts, utils/shell/powershellDetection.ts, utils/plugins/pluginIdentifier.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, hooks/useLspPluginRecommendation.tsx
 ((oDc = R(lt(), 1)), ($fr = R(rt(), 1)));
 function PluginHintMenu(e) {
   let t = aDc.c(35),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5282  score=1  fileCov=0.5282
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module IOa] deps: k0, u_
+// [unwrapped __esm module IOa] deps: k0, utils/markdownConfigLoader.ts
 KDp = `Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.
 It also helps the user understand the progress of the task and overall progress of their requests.
 

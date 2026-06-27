@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1124  score=0.5965  fileCov=0.1216
 // note: low-confidence suggestion: src/components/ConfigurableShortcutHint.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module y0e] deps: f7r
+// [unwrapped __esm module y0e] deps: utils/earlyInput.ts
 C5i = R(rt(), 1);
 function _0e(e) {
   let {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.308  score=0.8274  fileCov=0.3291
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jDe] deps: zqe, Yqe, ii, h6, dr, m1
+// [unwrapped __esm module jDe] deps: utils/swarm/backends/teammateModeSnapshot.ts, services/PromptSuggestion/promptSuggestion.ts, services/mockRateLimits.ts, state/AppStateStore.ts, utils/settings/settings.ts, utils/thinking.ts
 FDe = {
   status: "idle",
 };

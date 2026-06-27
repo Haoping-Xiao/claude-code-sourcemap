@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.298  score=0.3649  fileCov=0.6193
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hY] deps: Qi, Is
+// [unwrapped __esm module hY] deps: lodash-es/memoize.js, utils/platform.ts
 ((_vs = require("path")),
   (QC = Cn(function () {
     switch (Vt()) {

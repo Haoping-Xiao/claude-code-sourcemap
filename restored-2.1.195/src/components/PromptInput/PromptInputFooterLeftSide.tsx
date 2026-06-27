@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2467  score=0.4231  fileCov=0.3718
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F6o] deps: ft, Ed, tC, rJt, gNo, M_c, _i, wOe, Ye, ps, dn, uo, er, Lo, es, uf, ggo, sa, Yf, sr, gDe, LW, B_, CH, RLe, $_c, SNo
+// [unwrapped __esm module F6o] deps: services/analytics/index.ts, context/notifications.tsx, components/CustomSelect/use-multi-select-state.ts, ink/render-node-to-output.ts, hooks/useTurnDiffs.ts, M_c, components/design-system/Ratchet.tsx, utils/sideQuestion.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, dn, context/notifications.tsx, utils/config.ts, utils/fsOperations.ts, utils/profilerBase.ts, main.tsx, utils/generatedFiles.ts, utils/git.ts, utils/task/diskOutput.ts, services/teamMemorySync/secretScanner.ts, components/IdeOnboardingDialog.tsx, ink/components/Box.tsx, components/PromptInput/PromptInputFooterSuggestions.tsx, @smithy/types/dist-cjs/index.js, @xmldom/xmldom/lib/entities.js, $_c, components/diff/DiffFileList.tsx
 ((Xfm = R(lt(), 1)), (U6o = R(rt(), 1)), (N_c = R(se(), 1)));
 function PromptInputFooterLeftSide(t0) {
   let t = Idr.c(58),

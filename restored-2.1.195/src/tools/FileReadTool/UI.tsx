@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2057  score=0.3017  fileCov=0.3926
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BMo] deps: Lne, At, Bi, es, ys, sr, K0
+// [unwrapped __esm module BMo] deps: utils/imageResizer.ts, utils/errors.ts, constants/files.ts, utils/profilerBase.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/mcpOutputStorage.ts
 ((Fkl = require("crypto")),
   ($Mo = require("fs")),
   (lOe = require("fs/promises")),

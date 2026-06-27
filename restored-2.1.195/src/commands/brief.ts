@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3296  score=0.4936  fileCov=0.498
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rZl] deps: Xr, ft, Un, kt, f4, l3
+// [unwrapped __esm module rZl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, tools/BriefTool/prompt.ts, tools/BriefTool/UI.tsx
 ((Bzf = ve(() =>
   H.object({
     enable_slash_command: H.boolean(),

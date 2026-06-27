@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7  score=0.9206  fileCov=0.745
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Gbl] deps: Xr, ii, bk
+// [unwrapped __esm module Gbl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/mockRateLimits.ts, utils/tasks.ts
 ((ihf = ve(() =>
   H.strictObject({
     taskId: H.string().describe("The ID of the task to retrieve"),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1788  score=0.2967  fileCov=0.3102
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AYl] deps: iu, si, uo, Ye, ps, IL, ty, y3, f_, VAt, i4o, a4o, l4o, c4o
+// [unwrapped __esm module AYl] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, context/notifications.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, tools/AgentTool/agentColorManager.ts, tools/AgentTool/loadAgentsDir.ts, commands/memory/memory.tsx, components/CustomSelect/select.tsx, skills/bundled/keybindings.ts, components/agents/ModelSelector.tsx, components/agents/ToolSelector.tsx, components/agents/utils.ts, components/agents/AgentEditor.tsx
 ((aZ = R(rt(), 1)), (Pse = R(se(), 1)));
 function AgentsList(t0) {
   let t = XAt.c(75),

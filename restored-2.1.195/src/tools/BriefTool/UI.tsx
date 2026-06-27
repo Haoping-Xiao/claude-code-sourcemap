@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2652  score=0.4507  fileCov=0.3918
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module l3] deps: ft, Un, wr, Bot, f4
+// [unwrapped __esm module l3] deps: services/analytics/index.ts, services/analytics/growthbook.ts, main.tsx, utils/thinking.ts, tools/BriefTool/prompt.ts
 gmf = `In brief mode, plain assistant text is hidden from the user \u2014 only ${j1} reaches them. Call it now with your substantive reply for this turn. Do not mention this reminder; the message should read as if you wrote it unprompted, addressing only what the user actually asked. If you genuinely have nothing useful to tell the user, you may end the turn without calling it.`;
 function xyl() {
   return "";

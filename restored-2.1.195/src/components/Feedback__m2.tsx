@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderDaemonHubStandalone, call, DaemonHub
-// [unwrapped __esm module SGo] deps: ft, Vl, Fy, vi, TVt, gm, VQ, QJt, Ye, vX, je, At, vn
+// [unwrapped __esm module SGo] deps: services/analytics/index.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, commands/plugin/PluginOptionsDialog.tsx, undici/lib/mock/mock-agent.js, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, cli/print.ts, hooks/useTerminalSize.ts, utils/cronTasks.ts, utils/debug.ts, utils/errors.ts, utils/sequential.ts
 ((_7f = R(lt(), 1)),
   (Ftc = require("os")),
   (aQt = require("path")),

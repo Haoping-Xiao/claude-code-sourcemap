@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0249  score=0.1132  fileCov=0.031
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module X8o] deps: hut
+// [unwrapped __esm module X8o] deps: diff/libesm/util/string.js
 nhc = R(rt(), 1);
 function rhc(e) {
   return `${ITt.major(e, {

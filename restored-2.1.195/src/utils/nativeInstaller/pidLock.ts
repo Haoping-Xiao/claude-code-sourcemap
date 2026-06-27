@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4315  score=0.8329  fileCov=0.4724
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wAo] deps: dn, kt, Du, w4t, Rx, CZe, je, At, Bi, ys, Oza, Jt, CAo, uAo
+// [unwrapped __esm module wAo] deps: dn, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, w4t, utils/env.ts, utils/nativeInstaller/download.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, Oza, utils/fsOperations.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, uAo
 ((Uza = require("crypto")), (xVn = require("fs/promises")), (Fza = require("path")));
 kVn = class kVn extends Error {
   constructor() {

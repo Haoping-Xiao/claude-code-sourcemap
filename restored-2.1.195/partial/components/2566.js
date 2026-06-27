@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2316  score=0.4671  fileCov=0.3148
 // note: low-confidence suggestion: src/components/ClickableImageRef.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module APn] deps: tC, $Ge, Kce, Tc, Ye, PUt, sr
+// [unwrapped __esm module APn] deps: components/CustomSelect/use-multi-select-state.ts, ink/focus.ts, components/Settings/Config.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, components/design-system/StatusIcon.tsx, services/teamMemorySync/secretScanner.ts
 MUt = R(lt(), 1), WU = R(rt(), 1), qD = R(se(), 1);
 function ezi(e) {
   let t = Q6i.c(15),

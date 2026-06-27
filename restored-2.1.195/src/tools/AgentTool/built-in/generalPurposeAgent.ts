@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2904  score=0.588  fileCov=0.3645
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module d_t] deps: _i, Ye, uo, _oe, uf, vn, qol, LW, Zol, nsl, Bsl, LCo, sil, mal, $al, Bal, Fal, Jal, ell, zCo, Qzn, Ell, lEe, Hlo
+// [unwrapped __esm module d_t] deps: components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, cost-tracker.ts, main.tsx, utils/sequential.ts, ink/useTerminalNotification.ts, ink/components/Box.tsx, components/messages/AttachmentMessage.tsx, utils/model/contextWindowUpgradeCheck.ts, ink/styles.ts, LCo, sil, hooks/useMinDisplayTime.ts, screens/REPL.tsx, components/messages/GroupedToolUseContent.tsx, ink/Ansi.tsx, screens/REPL.tsx, utils/messages.ts, utils/messages.ts, components/messages/AttachmentMessage.tsx, components/Message.tsx, components/shell/ShellTimeDisplay.tsx, components/PromptInput/PromptInput.tsx
 ((uKn = R(lt(), 1)), (All = R(rt(), 1)), (RH = R(se(), 1)));
 dQ = All.memo(lif, dif);
 function SHARED_PREFIX() {

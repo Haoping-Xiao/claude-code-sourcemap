@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5263  score=0.9698  fileCov=0.535
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GLc] deps: je, Is, _0
+// [unwrapped __esm module GLc] deps: utils/debug.ts, utils/platform.ts, axios/lib/utils.js
 ((FLc = new Map()),
   (oCm =
     Vt() === "windows"

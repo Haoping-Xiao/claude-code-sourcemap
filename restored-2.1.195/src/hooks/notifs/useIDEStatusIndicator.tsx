@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4395  score=0.9056  fileCov=0.4606
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MDc] deps: ft, Zf, uo, fut, vn, Eue
+// [unwrapped __esm module MDc] deps: services/analytics/index.ts, utils/sessionStorage.ts, context/notifications.tsx, tools/ToolSearchTool/ToolSearchTool.ts, utils/sequential.ts, tools/WebFetchTool/prompt.ts
 $tn = R(rt(), 1);
 function useIDEStatusIndicator(t0) {
   let t = $Dc.c(20),

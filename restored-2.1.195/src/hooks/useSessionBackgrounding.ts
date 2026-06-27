@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.6628  score=0.8717  fileCov=0.7344
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module N0c] deps: si, ft, gq, ft, Ger, tC, _i, Ye, uo, db, oc, bm, co, KI, y_, gP, Ost, Vl, vi
+// [unwrapped __esm module N0c] deps: @xmldom/xmldom/lib/entities.js, services/analytics/index.ts, tools/BashTool/UI.tsx, services/analytics/index.ts, screens/REPL.tsx, components/CustomSelect/use-multi-select-state.ts, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, utils/authFileDescriptor.ts, utils/nativeInstaller/download.ts, utils/messageQueueManager.ts, utils/messages.ts, utils/permissions/filesystem.ts, utils/stats.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, utils/words.ts, keybindings/useShortcutDisplay.ts, components/design-system/Dialog.tsx
 ((M0c = require("fs/promises")), ($0c = require("path")), (ivt = R(rt(), 1)), (NNe = R(se(), 1)));
 function useSessionBackgrounding({
   setMessages: e,

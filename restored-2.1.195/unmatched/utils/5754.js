@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0031  score=0.0805  fileCov=0.0032
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0031); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UYo] deps: ft, kt, je, sp, N5o
+// [unwrapped __esm module UYo] deps: services/analytics/index.ts, utils/debug.ts, utils/debug.ts, utils/worktree.ts, entrypoints/sdk/coreSchemas.ts
 Btn = require("crypto"), dPc = 1000 / qCm;
 function VCm() {
   if (process.env.TMUX) return ane() ? "tmux_cc" : "tmux";

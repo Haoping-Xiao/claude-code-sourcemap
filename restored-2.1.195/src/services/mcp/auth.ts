@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0269  score=0.322  fileCov=0.0286
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Cre] deps: oke, h8r, H1t, Hp, Sae, Rc, db, vy, At, vn, Is, Mh, R9, S9, Jt, dn, kt, gSe, cco, Yle, I8r, R8r, g$, BCa, Z4e
+// [unwrapped __esm module Cre] deps: utils/browser.ts, @modelcontextprotocol/sdk/dist/esm/client/auth.js, @modelcontextprotocol/sdk/dist/esm/shared/auth.js, axios/lib/axios.js, lodash-es/negate.js, constants/oauth.ts, utils/authFileDescriptor.ts, @mixmark-io/domino/lib/htmlelts.js, utils/errors.ts, utils/sequential.ts, utils/platform.ts, utils/proxy.ts, utils/errors.ts, utils/secureStorage/macOsKeychainHelpers.ts, utils/fsOperations.ts, dn, utils/debug.ts, services/api/errors.ts, services/mcp/config.ts, services/mcp/utils.ts, services/mcp/oauthPort.ts, services/mcp/xaaIdpLogin.ts, services/mcp/xaa.ts, services/mcp/xaa.ts, undici/lib/web/fetch/util.js
 ((VUn = require("crypto")),
   (WCa = require("http")),
   (qCa = require("path")),

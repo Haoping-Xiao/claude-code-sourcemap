@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1251  score=0.2662  fileCov=0.1909
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module S1l] deps: si, Ye, es, gm
+// [unwrapped __esm module S1l] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, undici/lib/mock/mock-agent.js
 ((_1l = R(lt(), 1)), (fse = R(se(), 1)));
 function VPf() {
   let e = Xtr.c(2);

@@ -5,7 +5,7 @@
 // note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldOfferTerminalSetup, setupTerminal, readVSCodeScrollSensitivity, markBackslashReturnUsed, isShiftEnterKeyBindingInstalled, installVSCodeGpuAccelerationOff, hasUsedBackslashReturn, getNativeCSIuTerminalDisplayName, enableITerm2ClipboardAccess, call
-// [unwrapped __esm module YQr] deps: f0e, AW, db, je, At, Bi
+// [unwrapped __esm module YQr] deps: ink/render-border.ts, ink/supports-hyperlinks.ts, utils/authFileDescriptor.ts, utils/debug.ts, utils/errors.ts, constants/files.ts
 ((I8i = require("os")), (qce = require("path")));
 function isVSCodeRemoteSSH() {
   let e = process.env.VSCODE_GIT_ASKPASS_MAIN ?? "",

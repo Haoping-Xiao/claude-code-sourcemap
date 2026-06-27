@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4788  score=0.8048  fileCov=0.5416
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _oe] deps: ft, Un, Vw, je, RE, fn, Ao, vM, Ls, dr
+// [unwrapped __esm module _oe] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/betas.ts, utils/debug.ts, RE, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/agentContext.ts, utils/model/model.ts, utils/status.tsx, utils/settings/settings.ts
 del = {
   "claude-haiku-4-5": 1,
   "claude-sonnet-4-6": 2,

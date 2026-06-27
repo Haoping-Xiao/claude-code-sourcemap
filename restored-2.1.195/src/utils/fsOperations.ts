@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setBgExitCause, readAndClearBgExitCause
-// [unwrapped __esm module ys] deps: Rm, At, Jt
+// [unwrapped __esm module ys] deps: @grpc/grpc-js/build/src/server.js, utils/errors.ts, utils/fsOperations.ts
 ((Lp = R(require("fs"))),
   (ov = require("fs/promises")),
   (NEr = require("os")),

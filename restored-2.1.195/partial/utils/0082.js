@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1875  score=0.8058  fileCov=0.1964
 // note: low-confidence suggestion: node_modules/lodash-es/_equalObjects.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Pyr] deps: Cyr, Ton, OBe
+// [unwrapped __esm module Pyr] deps: lodash-es/_arrayPush.js, tslib/tslib.js, OBe
 Wwt = t6c;
 function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
   var i = bitmask & n6c,

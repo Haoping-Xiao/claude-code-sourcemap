@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2692  score=0.6429  fileCov=0.3166
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Kut] deps: iu, w4, Ye, uf, t0e, gBn, Xba
+// [unwrapped __esm module Kut] deps: @mixmark-io/domino/lib/Document.js, highlight.js/lib/languages/reasonml.js, hooks/useTerminalSize.ts, main.tsx, @alcalzone/ansi-tokenize/build/ansiCodes.js, components/StructuredDiff/Fallback.tsx, components/StructuredDiff.tsx
 ((Qba = R(lt(), 1)), (Zba = R(rt(), 1)), (Yue = R(se(), 1)), (Jba = new WeakMap()));
 Xue = Zba.memo(function (t) {
   let n = Qba.c(26),

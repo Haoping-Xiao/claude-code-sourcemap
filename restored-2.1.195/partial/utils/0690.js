@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2012  score=1  fileCov=0.2012
 // note: low-confidence suggestion: src/utils/git/gitConfigParser.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mm] deps: ys, Jt
+// [unwrapped __esm module Mm] deps: utils/fsOperations.ts, utils/fsOperations.ts
 ATs = require("path");
 async function gRt(e, t, n, r) {
   try {

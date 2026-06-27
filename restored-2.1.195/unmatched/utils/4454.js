@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0078  score=0.1819  fileCov=0.0081
 // note: nearest: src/cli/print.ts (0.0078); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Twl] deps: ft, Rc, Uh, vGt, MM, oo, je, At, Ls, qd, zH, kM, Jt, dn, kt, AVe, Rx, c_, jc, hwl
+// [unwrapped __esm module Twl] deps: services/analytics/index.ts, constants/oauth.ts, services/analytics/metadata.ts, services/teamMemorySync/teamMemSecretGuard.ts, memdir/teamMemPrompts.ts, utils/http.ts, utils/debug.ts, utils/errors.ts, utils/status.tsx, utils/log.ts, services/teamMemorySync/secretScanner.ts, utils/teleport/api.ts, utils/fsOperations.ts, dn, utils/debug.ts, services/policyLimits/index.ts, utils/env.ts, services/mcp/officialRegistry.ts, utils/semver.ts, services/teamMemorySync/index.ts
 bwl = require("crypto"), VF = require("fs/promises"), vze = require("path");
 gfe = {
   team: {

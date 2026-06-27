@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2537  score=0.9537  fileCov=0.2569
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZWl] deps: Ye, LW, YWl
+// [unwrapped __esm module ZWl] deps: hooks/useTerminalSize.ts, ink/components/Box.tsx, components/LogoV2/FeedColumn.tsx
 ((XWl = R(lt(), 1)), (JWl = R(rt(), 1)), (mAt = R(se(), 1)));
 function createWhatsNewFeed(releaseNotes) {
   let t = releaseNotes.map((r) => ({

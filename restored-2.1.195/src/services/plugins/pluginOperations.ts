@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2894  score=0.3985  fileCov=0.5139
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module K2l] deps: si, Ye, je, At, V2l
+// [unwrapped __esm module K2l] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, utils/debug.ts, utils/errors.ts, screens/REPL.tsx
 ((mrr = R(rt(), 1)), (JBo = R(se(), 1)));
 function QBo(e, t) {
   let n = {

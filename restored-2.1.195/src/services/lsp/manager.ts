@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4034  score=0.6558  fileCov=0.5118
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FDa] deps: je, At, Jt, dn, kt, _pt, ypt
+// [unwrapped __esm module FDa] deps: utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, dn, utils/debug.ts, utils/plugins/lspPluginIntegration.ts, services/lsp/LSPDiagnosticRegistry.ts
 BDa = require("url");
 function initializeLspServerManager() {
   let e,

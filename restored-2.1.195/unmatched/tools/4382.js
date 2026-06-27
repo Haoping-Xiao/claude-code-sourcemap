@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0251  score=0.1258  fileCov=0.0304
 // note: nearest: src/utils/teleport/api.ts (0.0251); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rEl] deps: Xr
+// [unwrapped __esm module rEl] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ZSl = require("crypto"), Nhf = ve(() => H.object({
   projectId: H.string(),
   writes: H.array(H.string()),

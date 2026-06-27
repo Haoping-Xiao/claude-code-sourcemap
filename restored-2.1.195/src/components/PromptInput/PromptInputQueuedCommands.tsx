@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1695  score=0.3147  fileCov=0.2687
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Z_c] deps: si, Ye, IL, Mp, sA
+// [unwrapped __esm module Z_c] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts, tools/AgentTool/agentColorManager.ts, utils/concurrentSessions.ts, services/PromptSuggestion/promptSuggestion.ts
 ((Y6o = R(lt(), 1)), (E7e = R(se(), 1)));
 function isIdleNotification(value) {
   try {

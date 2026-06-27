@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4046  score=0.8348  fileCov=0.4398
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module GDc] deps: Ed, id, uo
+// [unwrapped __esm module GDc] deps: context/notifications.tsx, dom-mutator/dist/dom-mutator.cjs.production.min.js, context/notifications.tsx
 Otn = R(rt(), 1);
 function useFastModeNotification() {
   let e = zDc.c(13),

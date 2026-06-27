@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0249  score=0.5494  fileCov=0.0254
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fh] deps: er, vf, dr
+// [unwrapped __esm module Fh] deps: utils/config.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts
 Nst = [
   "theme",
   "editorMode",

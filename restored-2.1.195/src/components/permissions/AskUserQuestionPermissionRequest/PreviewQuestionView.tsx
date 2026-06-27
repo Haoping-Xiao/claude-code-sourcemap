@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2617  score=0.4182  fileCov=0.4117
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _pr] deps: si, _i, Tc, Ye, es, Coe
+// [unwrapped __esm module _pr] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, react/cjs/react.production.js
 ((NAc = R(lt(), 1)), (KTe = R(se(), 1)));
 function PreviewQuestionView({
   question: e,

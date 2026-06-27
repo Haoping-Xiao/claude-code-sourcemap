@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2527  score=0.4813  fileCov=0.3472
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Edr] deps: kt, Ye, er, dr, mE, vi
+// [unwrapped __esm module Edr] deps: utils/debug.ts, hooks/useTerminalSize.ts, utils/config.ts, utils/settings/settings.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx
 ((Lyc = R(lt(), 1)), (Dyc = R(rt(), 1)), (h7e = R(se(), 1)));
 function BridgeDialog({ onDone: e }) {
   Wh("bridge-dialog");

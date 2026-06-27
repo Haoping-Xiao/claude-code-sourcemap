@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.426  score=0.6187  fileCov=0.5776
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wYl] deps: si, Xa, _i, Ye, r4o, vKe, LW, kP
+// [unwrapped __esm module wYl] deps: @xmldom/xmldom/lib/entities.js, @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, tools/AgentTool/agentDisplay.ts, components/diff/DiffDialog.tsx, ink/components/Box.tsx, components/design-system/Tabs.tsx
 ((XAt = R(lt(), 1)), (YAt = R(rt(), 1)), (kl = R(se(), 1)));
 function ColorStep() {
   let e = CYl.c(14),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3071  score=1  fileCov=0.3071
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XSc] deps: fn
+// [unwrapped __esm module XSc] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs
 KSc = R(rt(), 1);
 function JSc(e, t) {
   let n = T7e.useRef(e ?? null),

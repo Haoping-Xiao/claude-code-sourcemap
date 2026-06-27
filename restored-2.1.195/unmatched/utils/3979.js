@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0507  score=0.3475  fileCov=0.056
 // note: nearest: src/utils/swarm/It2SetupPrompt.tsx (0.0507); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UTo] deps: Xr
+// [unwrapped __esm module UTo] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 x8n = Dy({
   kind: "it2_setup",
   payload: ve(() => H.object({

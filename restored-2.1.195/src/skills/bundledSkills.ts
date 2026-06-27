@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3087  score=0.4903  fileCov=0.4545
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module KXl] deps: ft, Un, kt, oo, x4o
+// [unwrapped __esm module KXl] deps: services/analytics/index.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/http.ts, commands/advisor.ts
 zXl = [
   oHt({
     name: "ultraplan",

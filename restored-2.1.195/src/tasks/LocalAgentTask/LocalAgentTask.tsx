@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.323  score=0.5413  fileCov=0.4447
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vDo] deps: ih
+// [unwrapped __esm module vDo] deps: bootstrap/state.ts
 wJn = Mi();
 function J6n() {
   return {

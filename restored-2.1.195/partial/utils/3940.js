@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0813  score=0.1324  fileCov=0.1738
 // note: low-confidence suggestion: src/utils/model/modelSupportOverrides.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DJa] deps: Ye, BE, rle, sr, Vl, gm, EC, wb, vH, jHo
+// [unwrapped __esm module DJa] deps: hooks/useTerminalSize.ts, has-flag/index.js, utils/model/bedrock.ts, services/teamMemorySync/secretScanner.ts, keybindings/useShortcutDisplay.ts, undici/lib/mock/mock-agent.js, @anthropic-ai/bedrock-sdk/client.mjs, @ant/computer-use-mcp/src/toolCalls.ts, vH, screens/REPL.tsx
 GHo = R(lt(), 1), vF = R(rt(), 1), Zh = R(se(), 1), tMe = ["sonnet", "opus", "haiku", "fable"], z9n = {
   sonnet: "Sonnet",
   opus: "Opus",

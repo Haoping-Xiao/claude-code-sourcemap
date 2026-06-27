@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1394  score=0.3597  fileCov=0.1854
 // note: low-confidence suggestion: src/hooks/notifs/useAutoModeUnavailableNotification.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YDc] deps: Ed, uo, NE, es, ft
+// [unwrapped __esm module YDc] deps: context/notifications.tsx, context/notifications.tsx, utils/modelCost.ts, utils/profilerBase.ts, services/analytics/index.ts
 zDc = R(lt(), 1), Vfr = R(rt(), 1);
 function JDc() {
   let e = XDc.c(5),

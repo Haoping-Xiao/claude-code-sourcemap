@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1216  score=0.3029  fileCov=0.1689
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nTl] deps: bde, Wbt, dze
+// [unwrapped __esm module nTl] deps: utils/powershell/parser.ts, tools/PowerShellTool/readOnlyValidation.ts, utils/file.ts
 Sbf = new Set(["set-content", "add-content", "remove-item", "clear-content"]);
 Ebf = new Set(["symboliclink", "junction", "hardlink"]);
 function lJn(e, t) {

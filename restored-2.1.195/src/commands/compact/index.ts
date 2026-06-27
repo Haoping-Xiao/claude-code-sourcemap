@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, applyAutoCompactWindow
-// [unwrapped __esm module YPl] deps: wr
+// [unwrapped __esm module YPl] deps: main.tsx
 ((q0f = {
   type: "local",
   name: "compact",

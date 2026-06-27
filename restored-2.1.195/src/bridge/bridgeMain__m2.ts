@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/bridgeMain.ts)  jaccard=0.0032  score=0.0332  fileCov=0.0036
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DJi] deps: RFt, SWe
+// [unwrapped __esm module DJi] deps: @anthropic-ai/sandbox-runtime/dist/utils/platform.js, @anthropic-ai/sandbox-runtime/dist/sandbox/generate-seccomp-filter.js
 ((CJi = R(Uto(), 1)), (IJi = require("child_process")), (Rbe = R(require("path"))));
 xJi = `_${Math.random().toString(36).slice(2, 11)}_SBX`;
 function NJi(e) {

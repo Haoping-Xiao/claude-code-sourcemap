@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0863  score=0.4096  fileCov=0.0986
 // note: low-confidence suggestion: src/components/tasks/BackgroundTaskStatus.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module f_c] deps: Xa, Ed, Ye, uo, d_c
+// [unwrapped __esm module f_c] deps: @xmldom/xmldom/lib/entities.js, context/notifications.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, components/PromptInput/Notifications.tsx
 M6o = R(lt(), 1), NTt = R(se(), 1);
 function O6o(e) {
   let t = $6o.c(13),

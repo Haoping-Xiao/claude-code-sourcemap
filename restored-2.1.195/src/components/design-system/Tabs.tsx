@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1174  score=0.5196  fileCov=0.1317
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kP] deps: fH, _i, wOe, $Ge, $Ln, GLn, Tc, Ye, ps, Coe
+// [unwrapped __esm module kP] deps: react/cjs/react.production.js, components/design-system/Ratchet.tsx, utils/sideQuestion.ts, ink/focus.ts, components/VirtualMessageList.tsx, screens/REPL.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, react/cjs/react.production.js
 ((v7t = R(lt(), 1)),
   (FL = R(rt(), 1)),
   (GN = R(se(), 1)),

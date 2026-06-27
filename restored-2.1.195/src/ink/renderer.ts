@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4965  score=0.7403  fileCov=0.6013
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BWi] deps: je, Wit, X_e, qBt, Kit, KBt, bW
+// [unwrapped __esm module BWi] deps: utils/debug.ts, Wit, ink/styles.ts, indent-string/index.js, ink/reconciler.ts, ink/dom.ts, ink/selection.ts
 ((iWd = R(nRn(), 1)),
   (aWd = {
     reconcile: 0,

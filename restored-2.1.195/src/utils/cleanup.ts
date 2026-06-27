@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1321  score=0.2473  fileCov=0.2209
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gzo] deps: Xr, dn, Pw, Hpe, Jt, ag
+// [unwrapped __esm module gzo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/fileRead.ts, utils/peerAddress.ts, utils/fsOperations.ts, utils/claudeInChrome/common.ts
 ((pSc = require("crypto")), (HNe = require("fs/promises")), (mzo = require("path")));
 ySc = ve(() =>
   H.object({

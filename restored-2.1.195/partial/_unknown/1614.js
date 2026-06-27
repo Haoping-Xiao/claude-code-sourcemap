@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2112  score=0.9538  fileCov=0.2133
 // note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/core/streaming.mjs; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module j4r] deps: mMt
+// [unwrapped __esm module j4r] deps: @anthropic-ai/bedrock-sdk/internal/utils/log.mjs
 kdi = {
   off: 0,
   error: 200,

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.1194  score=0.7819  fileCov=0.1235
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rSe] deps: ft, dn, Un, kt, F2t, N8, je, fn
+// [unwrapped __esm module rSe] deps: services/analytics/index.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, utils/cronJitterConfig.ts, utils/cronJitterConfig.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs
 xop = (KWe(), ro(zWe));
 function parseAutoPercentage(value) {
   if (!value.startsWith("auto:")) return null;

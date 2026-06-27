@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4375  score=0.6251  fileCov=0.5931
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module D5o] deps: Xr, qee, H7n
+// [unwrapped __esm module D5o] deps: @modelcontextprotocol/sdk/dist/esm/types.js, qee, hooks/useSwarmPermissionPoller.ts
 ((Mem = ve(() => H.enum(["allow", "deny", "ask", "defer"]))),
   ($em = ve(() =>
     H.object({

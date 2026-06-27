@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/api.ts)  jaccard=0.0324  score=0.1911  fileCov=0.0375
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fze] deps: X6, S4, aW, Un, kt, BI, RN, xMe, bMe, Ppe, LL, sr, Zkn, U1, ii, fh, lf, sA, Vw, Lo, je, fn, vn, co, QO, k0, Ao, Ls, Yf, KI, Is, tre, Jt, t1t, sj, yZn
+// [unwrapped __esm module Fze] deps: utils/api.ts, context.ts, types/generated/google/protobuf/timestamp.ts, services/analytics/growthbook.ts, utils/debug.ts, services/mcp/client.ts, tools/BashTool/BashTool.tsx, tools/FileEditTool/FileEditTool.ts, tools/FileEditTool/utils.ts, tools/FileWriteTool/FileWriteTool.ts, utils/sessionActivity.ts, services/teamMemorySync/secretScanner.ts, Tool.ts, U1, services/mockRateLimits.ts, commands/insights.ts, tools/GlobTool/prompt.ts, services/PromptSuggestion/promptSuggestion.ts, utils/betas.ts, utils/fsOperations.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/sequential.ts, utils/messages.ts, utils/model/configs.ts, k0, utils/agentContext.ts, utils/status.tsx, utils/task/diskOutput.ts, utils/permissions/filesystem.ts, utils/platform.ts, utils/ripgrep.ts, utils/fsOperations.ts, utils/auth.ts, utils/windowsPaths.ts, utils/toolSearch.ts
 mac = require("crypto");
 Ztm = {
   [jD]: ["launchSwarm", "teammateCount"],

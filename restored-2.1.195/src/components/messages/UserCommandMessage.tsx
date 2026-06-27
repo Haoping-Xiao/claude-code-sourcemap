@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3787  score=0.5254  fileCov=0.5755
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xil] deps: qzn, co, OI
+// [unwrapped __esm module xil] deps: components/messages/UserBashOutputMessage.tsx, utils/messages.ts, fast-xml-parser/lib/fxp.cjs
 ((wil = R(lt(), 1)), (Iil = R(se(), 1)));
 function UserCommandMessage(t0) {
   let t = kil.c(19),

@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/tools/toolHooks.ts)  jaccard=0.0468  score=0.3846  fileCov=0.0506
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Fyl] deps: ZE, tP, Rd, co, Ao, Jt
+// [unwrapped __esm module Fyl] deps: utils/shell/prefix.ts, services/api/errors.ts, utils/settings/constants.ts, utils/messages.ts, utils/agentContext.ts, utils/fsOperations.ts
 Uyl = require("crypto");
 function runPostToolUseHooks(toolUseContext, tool, toolUseID, messageId) {
   if (toolUseContext !== ka && toolUseContext !== Wc) return null;

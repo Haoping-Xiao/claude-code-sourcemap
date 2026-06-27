@@ -4,7 +4,7 @@
 // class=modified (alt of src/keybindings/useShortcutDisplay.ts)  jaccard=0.5362  score=0.895  fileCov=0.5722
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TZr] deps: YZe, Lo, ys, Hu, id, je
+// [unwrapped __esm module TZr] deps: lru-cache/dist/esm/index.js, utils/fsOperations.ts, utils/fsOperations.ts, utils/file.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts
 ((iX = require("path")),
   (D6i = new bG({
     max: M6i,

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3394  score=0.5089  fileCov=0.5047
 // note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lE] deps: Ree, Sae, Qi, xpn, Xr, dn, Un, Rx, Pw, je, fn, At, Bi, ys, sa, Mx, vf, dr, ICe, Jt, I8, KPn, vq, dFt, iWe, _k, gHe, oWe, S$o, B1, $g, i5, WI, ZC, E$o
+// [unwrapped __esm module lE] deps: lodash-es/_createBaseFor.js, lodash-es/negate.js, lodash-es/memoize.js, utils/cwd.ts, @modelcontextprotocol/sdk/dist/esm/types.js, dn, services/analytics/growthbook.ts, utils/env.ts, utils/fileRead.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, utils/git.ts, utils/detectRepository.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/settings/mdm/rawRead.ts, utils/fsOperations.ts, utils/telemetryAttributes.ts, utils/plugins/pluginLoader.ts, utils/plugins/marketplaceHelpers.ts, utils/plugins/fetchTelemetry.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/http-proxy.js, utils/generatedFiles.ts, utils/plugins/officialMarketplaceGcs.ts, utils/plugins/fetchTelemetry.ts, utils/plugins/officialMarketplaceGcs.ts, tools/SkillTool/prompt.ts, utils/plugins/pluginIdentifier.ts, utils/plugins/mcpPluginIntegration.ts, commands/plugin/ManagePlugins.tsx, utils/plugins/schemas.ts, utils/plugins/marketplaceManager.ts
 ((gRl = require("fs/promises")), ($d = require("path")));
 JIf = new Set(["projectSettings", "localSettings"]);
 G$ = Cn(async (e) => {

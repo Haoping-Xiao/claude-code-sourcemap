@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/loadPluginHooks.ts)  jaccard=0.3976  score=0.7919  fileCov=0.444
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module A5e] deps: Qi, ft, dn, je, fn, Eue, dr, Jt, o8, Xh
+// [unwrapped __esm module A5e] deps: lodash-es/memoize.js, services/analytics/index.ts, dn, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, tools/WebFetchTool/prompt.ts, utils/settings/settings.ts, utils/fsOperations.ts, utils/settings/pluginOnlyPolicy.ts, utils/plugins/loadPluginAgents.ts
 bca = Cn(async () => {
   let { enabled: e } = await mp(),
     t = {

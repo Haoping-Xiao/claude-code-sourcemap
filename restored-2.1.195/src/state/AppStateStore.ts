@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: makeSetWebBrowserSlice, getDefaultWebBrowserState, getDefaultAppState, IDLE_SPECULATION_STATE
-// [unwrapped __esm module h6] deps: ft, Lo, je, Bi, ys, ggo, gM, sa, vn, Ao
+// [unwrapped __esm module h6] deps: services/analytics/index.ts, utils/fsOperations.ts, utils/debug.ts, constants/files.ts, utils/fsOperations.ts, utils/generatedFiles.ts, utils/teleport.tsx, utils/git.ts, utils/sequential.ts, utils/agentContext.ts
 ((n$a = require("crypto")), (r$a = require("fs/promises")), (hJ = require("path")), (BRp = []));
 hgo = new Map();
 Ajn = qZe(async (e) => {

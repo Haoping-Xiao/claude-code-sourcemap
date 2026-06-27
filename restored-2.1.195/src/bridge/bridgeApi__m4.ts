@@ -4,7 +4,7 @@
 // class=modified (alt of src/bridge/bridgeApi.ts)  jaccard=0.0092  score=0.0631  fileCov=0.0106
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module gor] deps: jh, Ye, Un, wr, gm
+// [unwrapped __esm module gor] deps: utils/env.ts, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, main.tsx, undici/lib/mock/mock-agent.js
 ((i5l = R(lt(), 1)), (sZ = R(se(), 1)));
 function isExpiredErrorType() {
   let e = l5l.c(40),

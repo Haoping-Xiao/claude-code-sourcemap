@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5086  score=0.8985  fileCov=0.5397
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OUc] deps: je, Jt, lE, ZC, dOe
+// [unwrapped __esm module OUc] deps: utils/debug.ts, utils/fsOperations.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/schemas.ts, utils/plugins/cacheUtils.ts
 ((fXo = require("fs/promises")), (Rmr = require("path")));
 async function installPluginsForHeadless(e) {
   let t = az();

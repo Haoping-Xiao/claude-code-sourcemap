@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2657  score=0.3855  fileCov=0.461
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module c1l] deps: $7t, Ye
+// [unwrapped __esm module c1l] deps: components/Settings/Config.tsx, hooks/useTerminalSize.ts
 ((O7t = R(se(), 1)),
   (i1l = {
     vim: "Editor mode",

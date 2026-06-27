@@ -4,7 +4,7 @@
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0116  score=0.1172  fileCov=0.0127
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LQt] deps: iu, jGo, QGo, Gfe, kYe, WL, q$, kLn, FAe, xar, VGe, xHt, ag, pWo, Lar, dn, kt, _F, jc, ty, Rm, er, Lo, je, At, Is, ED, Vke, dr, sj, Yrc, lH, JN
+// [unwrapped __esm module LQt] deps: @mixmark-io/domino/lib/Document.js, utils/sessionStorage.ts, main.tsx, undici/lib/web/fileapi/util.js, bridge/bridgeMain.ts, utils/git.ts, undici/lib/core/symbols.js, ink/ink.tsx, entrypoints/sdk/coreSchemas.ts, components/mcp/ElicitationDialog.tsx, main.tsx, main.tsx, utils/claudeInChrome/common.ts, undici/lib/core/symbols.js, highlight.js/lib/languages/sql.js, dn, utils/debug.ts, bridge/bridgeEnabled.ts, utils/semver.ts, tools/AgentTool/loadAgentsDir.ts, @grpc/grpc-js/build/src/server.js, utils/config.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, utils/platform.ts, utils/stringUtils.ts, tools/SkillTool/prompt.ts, utils/settings/settings.ts, utils/windowsPaths.ts, screens/REPL.tsx, lH, main.tsx
 ((Xrc = require("crypto")),
   (Eme = require("fs/promises")),
   (EWo = require("path")),

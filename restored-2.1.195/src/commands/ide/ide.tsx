@@ -5,7 +5,7 @@
 // note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatWorkspaceFolders, call, IDE_CONNECTION_TIMEOUT_MS, IDECommandFlow
-// [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi
+// [unwrapped __esm module JBl] deps: hooks/useTerminalSize.ts, utils/config.ts, utils/ide.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx
 ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
 function IDEScreen(t0) {
   let t = J7t.c(39),

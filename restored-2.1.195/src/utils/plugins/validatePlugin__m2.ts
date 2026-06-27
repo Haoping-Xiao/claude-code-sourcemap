@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0223  score=0.0778  fileCov=0.0303
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module kjl] deps: si, Cc, Coe, Xce, Ye, sr
+// [unwrapped __esm module kjl] deps: @xmldom/xmldom/lib/entities.js, context/modalContext.tsx, react/cjs/react.production.js, components/CustomSelect/select.tsx, hooks/useTerminalSize.ts, services/teamMemorySync/secretScanner.ts
 ((Ijl = R(lt(), 1)),
   (Mu = R(se(), 1)),
   (uBf = {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2697  score=0.4138  fileCov=0.4364
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LBo] deps: Ye, Bs
+// [unwrapped __esm module LBo] deps: hooks/useTerminalSize.ts, components/CustomSelect/select.tsx
 ((o2l = R(lt(), 1)), (DEt = R(se(), 1)));
 function Gnr(e) {
   let t = "url" in e.config ? e.config.url : null,

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2593  score=0.6467  fileCov=0.3021
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cur] deps: sG, ft, er, Qi, ft, ft, yde, H0, _F, jc, EVe, BWt, aCo, oo, Opc, fd, er, je, BR, Mm, Q9, fn, At, Yp, vn, OMe, u9, Yf, Is, Mh, aze, kDe, _m, _1, WSe, qPn, Bpc, sj
+// [unwrapped __esm module cur] deps: @ant/claude-for-chrome-mcp/src/mcpSocketClient.ts, services/analytics/index.ts, utils/config.ts, lodash-es/memoize.js, services/analytics/index.ts, services/analytics/index.ts, utils/nativeInstaller/installer.ts, @modelcontextprotocol/sdk/dist/esm/server/auth/errors.js, bridge/bridgeEnabled.ts, utils/semver.ts, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, BWt, utils/model/validateModel.ts, utils/http.ts, Opc, utils/debugFilter.ts, utils/config.ts, utils/debug.ts, utils/git.ts, utils/git/gitConfigParser.ts, tools/FileReadTool/FileReadTool.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/gracefulShutdown.ts, utils/sequential.ts, utils/permissions/bypassPermissionsKillswitch.ts, utils/mtls.ts, utils/task/diskOutput.ts, utils/platform.ts, utils/proxy.ts, utils/queryHelpers.ts, utils/powershell/parser.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/subprocessEnv.ts, follow-redirects/index.js, utils/telemetry/events.ts, tools/FileReadTool/FileReadTool.ts, utils/windowsPaths.ts
 i8o = Cn(async () => {
   let e = Date.now();
   (In("info", "init_started"), pa("init_function_start"));

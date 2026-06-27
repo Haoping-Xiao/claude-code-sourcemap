@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4725  score=0.8026  fileCov=0.5347
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hDc] deps: Ed, Ye, id, uo, je, yrr
+// [unwrapped __esm module hDc] deps: context/notifications.tsx, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, context/notifications.tsx, utils/debug.ts, commands/plugin/ManageMarketplaces.tsx
 ((mDc = R(lt(), 1)), (Mtn = R(rt(), 1)), ($7e = R(se(), 1)));
 function MYo(e, t, n) {
   let r = [],

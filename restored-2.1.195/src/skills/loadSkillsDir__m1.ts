@@ -4,7 +4,7 @@
 // class=modified (alt of src/skills/loadSkillsDir.ts)  jaccard=0.2172  score=0.6248  fileCov=0.2498
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module rq] deps: Qi, ft, ANt, dn, kt, U1, dqe, wGt, Il, gb, Lo, je, Cp, fn, At, Iv, ys, mRr, vn, pq, Ao, $g, Amo, hze, vf, hY, L7, dr, lj, ih, sDo, II, iDo, aDo
+// [unwrapped __esm module rq] deps: lodash-es/memoize.js, services/analytics/index.ts, outputStyles/loadOutputStylesDir.ts, dn, utils/debug.ts, U1, tools/ReadMcpResourceTool/UI.tsx, utils/plugins/marketplaceHelpers.ts, Il, utils/plugins/schemas.ts, utils/fsOperations.ts, utils/debug.ts, utils/tempfile.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, hooks/useSettings.ts, utils/fsOperations.ts, jsonc-parser/lib/esm/impl/parser.js, utils/sequential.ts, utils/markdownConfigLoader.ts, utils/agentContext.ts, utils/plugins/pluginIdentifier.ts, utils/claudeCodeHints.ts, utils/promptShellExecution.ts, utils/settings/changeDetector.ts, utils/settings/managedPath.ts, utils/hooks/hooksConfigSnapshot.ts, utils/settings/settings.ts, utils/settings/types.ts, bootstrap/state.ts, sDo, utils/plugins/addDirPluginSettings.ts, iDo, skills/loadSkillsDir.ts
 ((lDo = require("fs/promises")), (zTl = R(D3e(), 1)), (rm = require("path")));
 yze = Cn(
   async (e) => {

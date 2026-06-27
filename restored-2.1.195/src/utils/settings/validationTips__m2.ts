@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0521  score=0.0968  fileCov=0.1015
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Xjt] deps: _1
+// [unwrapped __esm module Xjt] deps: utils/subprocessEnv.ts
 Pca = new Set();
 nup = [
   "SHELL",

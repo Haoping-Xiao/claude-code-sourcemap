@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2627  score=0.3506  fileCov=0.5114
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module n6o] deps: Ye, uo
+// [unwrapped __esm module n6o] deps: hooks/useTerminalSize.ts, context/notifications.tsx
 ((yhc = R(lt(), 1)), (t6o = R(se(), 1)));
 function useMemoryUsage() {
   let [e, t] = Yur.useState(null),

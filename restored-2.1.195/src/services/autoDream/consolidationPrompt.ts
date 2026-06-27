@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0893  score=0.1559  fileCov=0.1728
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module BIl] deps: Un, DPo
+// [unwrapped __esm module BIl] deps: services/analytics/growthbook.ts, DPo
 rvf = [];
 function buildConsolidationPrompt(memoryRoot, transcriptDir, extra, r = false) {
   return `# Dream: Memory Consolidation

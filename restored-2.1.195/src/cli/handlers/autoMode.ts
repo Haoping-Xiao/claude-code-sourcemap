@@ -5,7 +5,7 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: autoModeDefaultsHandler, autoModeCritiqueHandler, autoModeConfigHandler
-// [unwrapped __esm module R5c] deps: iu, kAt, MMe, np, dn, Un, _F, jc, JJ, fp, At, Jt, sr, Gor, Cv, gP, JN
+// [unwrapped __esm module R5c] deps: @mixmark-io/domino/lib/Document.js, utils/background/remote/remoteSession.ts, commands/commit-push-pr.ts, env-paths/index.js, dn, services/analytics/growthbook.ts, bridge/bridgeEnabled.ts, utils/semver.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, screens/REPL.tsx, utils/errors.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/agenticSessionSearch.ts, utils/teleport/api.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, main.tsx
 prn = class prn extends Error {
   reason;
   constructor(e, t) {

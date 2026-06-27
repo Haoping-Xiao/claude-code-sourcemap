@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3543  score=0.5037  fileCov=0.5443
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module b8l] deps: Ye, es, i6e, sr, Xa, ljo, h8l, YHe
+// [unwrapped __esm module b8l] deps: hooks/useTerminalSize.ts, utils/profilerBase.ts, components/DiagnosticsDisplay.tsx, services/teamMemorySync/secretScanner.ts, @xmldom/xmldom/lib/entities.js, components/tasks/ShellProgress.tsx, components/tasks/BackgroundTask.tsx, components/tasks/AsyncAgentDetailDialog.tsx
 ((y8l = R(lt(), 1)), (jT = R(se(), 1)));
 function DreamDetailDialog(t0) {
   let t = S8l.c(75),

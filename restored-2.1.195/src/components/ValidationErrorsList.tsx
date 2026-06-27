@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2586  score=0.5762  fileCov=0.3194
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hse] deps: Ye
+// [unwrapped __esm module hse] deps: hooks/useTerminalSize.ts
 ((FNl = R(lt(), 1)), (Snr = R(se(), 1)));
 function Enr(e) {
   let t = jNl.c(8),

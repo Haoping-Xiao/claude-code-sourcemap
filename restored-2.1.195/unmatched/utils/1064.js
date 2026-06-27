@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0277  score=1  fileCov=0.0277
 // note: nearest: node_modules/@aws-sdk/client-bedrock-runtime/dist-cjs/index.js (0.0277); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jR] deps: Zs, YOr, Ei, FGs, QGs
+// [unwrapped __esm module jR] deps: @aws-sdk/client-bedrock/dist-cjs/auth/httpAuthSchemeProvider.js, @aws-sdk/client-bedrock-runtime/dist-cjs/index.js, @aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js, @smithy/protocol-http/dist-cjs/index.js, QGs
 qyn = R(Ghe(), 1), ZGs = R(Whe(), 1), eWs = R(qhe(), 1), Vyn = R(zae(), 1), tWs = R(Dx(), 1), ztt = R(yd(), 1), nWs = R(ME(), 1), rWs = R(Jhe(), 1), oWs = R(yo(), 1), zyn = R(zO(), 1);
 ng = class ng extends SDt {
   config;

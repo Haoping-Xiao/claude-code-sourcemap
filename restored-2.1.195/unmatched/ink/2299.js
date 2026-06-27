@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0165  score=0.1162  fileCov=0.0189
 // note: nearest: src/tools/SkillTool/prompt.ts (0.0165); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Vke] deps: je, At
+// [unwrapped __esm module Vke] deps: utils/debug.ts, utils/errors.ts
 GUd = new Set(["EIO", "ENOTTY", "EBADF"]);
 function VFi(e, t) {
   if (e < 2) return;

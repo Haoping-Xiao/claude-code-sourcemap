@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2246  score=1  fileCov=0.2246
 // note: low-confidence suggestion: node_modules/lodash-es/toNumber.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oFi] deps: nFi
+// [unwrapped __esm module oFi] deps: tools/BashTool/commentLabel.ts
 sUd = /^\s+/;
 rFi = iUd;
 function toNumber(value) {

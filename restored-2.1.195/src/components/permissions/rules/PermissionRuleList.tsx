@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.312  score=0.5016  fileCov=0.4522
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vzl] deps: si, ft, Vl, Ye, Csr, kP
+// [unwrapped __esm module vzl] deps: @xmldom/xmldom/lib/entities.js, services/analytics/index.ts, keybindings/useShortcutDisplay.ts, hooks/useTerminalSize.ts, components/permissions/rules/WorkspaceTab.tsx, components/design-system/Tabs.tsx
 ((Azl = R(lt(), 1)), (Hzl = R(rt(), 1)), (pYe = R(se(), 1)));
 function Rqf(e) {
   let t = FAt.c(4),

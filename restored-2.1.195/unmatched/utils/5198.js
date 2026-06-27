@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0121  score=0.1413  fileCov=0.013
 // note: nearest: src/cli/print.ts (0.0121); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QJt] deps: Xr, dn, Pw, vX, N8, fn, YS, Rd, Jt, oje, T3o
+// [unwrapped __esm module QJt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, dn, utils/fileRead.ts, utils/cronTasks.ts, utils/cronJitterConfig.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/teammateContext.ts, utils/settings/constants.ts, utils/fsOperations.ts, constants/system.ts, utils/errorLogSink.ts
 qec = require("fs/promises"), Vec = require("path"), gHt = ["dontAsk", "auto", "default", "acceptEdits", "plan", "bypassPermissions"], Y3o = ve(() => H.object({
   id: H.string().min(1),
   cron: H.string().refine(e => F1(e) !== null, {

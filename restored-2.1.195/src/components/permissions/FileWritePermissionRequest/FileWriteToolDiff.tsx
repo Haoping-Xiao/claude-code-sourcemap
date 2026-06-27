@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2868  score=0.4253  fileCov=0.4683
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module AMe] deps: w4, Ye, oc, uf, t0e, sr, qel, gBn
+// [unwrapped __esm module AMe] deps: highlight.js/lib/languages/reasonml.js, hooks/useTerminalSize.ts, utils/nativeInstaller/download.ts, main.tsx, @alcalzone/ansi-tokenize/build/ansiCodes.js, services/teamMemorySync/secretScanner.ts, ink/components/Box.tsx, components/StructuredDiff/Fallback.tsx
 ((Ivo = R(lt(), 1)),
   (EMe = R(rt(), 1)),
   (eq = R(se(), 1)),

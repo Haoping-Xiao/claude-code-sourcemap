@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4887  score=0.5974  fileCov=0.7287
 // note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module g$] deps: ft, Lo, wr, lT, vn, vf, dr, Jt, Kv, Ox, bCe, kst
+// [unwrapped __esm module g$] deps: services/analytics/index.ts, utils/fsOperations.ts, main.tsx, utils/permissions/permissionSetup.ts, utils/sequential.ts, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/fsOperations.ts, services/mcp/utils.ts, Ox, utils/plugins/schemas.ts, services/analytics/metadata.ts
 ((RCa = require("crypto")),
   (LCa = require("path")),
   (CTp = new Set(["http", "sse", "claudeai-proxy"])),

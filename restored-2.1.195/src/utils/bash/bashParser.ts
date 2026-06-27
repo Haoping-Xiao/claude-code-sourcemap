@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0984  score=0.1229  fileCov=0.3304
 // note: deminified; 35 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lg] deps: uQi, SWe, Xto, IB, ft, dn, Un, kt, bLt, hna, je, Q9, fn, Hu, Is, Eue, vf, hY, mCe, dr, _1, AKr, u_, lf, TX, At, Yf, tre, Hro, Nna
+// [unwrapped __esm module lg] deps: @anthropic-ai/sandbox-runtime/dist/sandbox/sandbox-manager.js, @anthropic-ai/sandbox-runtime/dist/sandbox/generate-seccomp-filter.js, @azure/msal-common/dist/utils/UrlUtils.mjs, constants/keys.ts, services/analytics/index.ts, dn, services/analytics/growthbook.ts, utils/debug.ts, utils/mtls.ts, utils/settings/changeDetector.ts, utils/debug.ts, tools/FileReadTool/FileReadTool.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/file.ts, utils/platform.ts, tools/WebFetchTool/prompt.ts, utils/settings/changeDetector.ts, utils/settings/managedPath.ts, mCe, utils/settings/settings.ts, utils/subprocessEnv.ts, utils/tempfile.ts, utils/markdownConfigLoader.ts, tools/GlobTool/prompt.ts, TX, utils/errors.ts, utils/task/diskOutput.ts, utils/ripgrep.ts, Hro, utils/sandbox/sandbox-adapter.ts
 ((hT = require("fs")), (za = require("path")));
 oOn = class oOn extends Error {
   constructor(e) {

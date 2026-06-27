@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3453  score=0.5346  fileCov=0.4938
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Rbl] deps: Xr, ft, GF, Izt, kt, ii, dC, Lo, je, At, Bi, gM, sa, PM, KI, _$, _a, kv, aR, vbl
+// [unwrapped __esm module Rbl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, constants/systemPromptSections.ts, tools/EnterWorktreeTool/EnterWorktreeTool.ts, utils/debug.ts, services/mockRateLimits.ts, utils/claudemd.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/teleport.tsx, utils/git.ts, utils/plugins/loadPluginHooks.ts, utils/permissions/filesystem.ts, utils/Shell.ts, utils/plans.ts, proxy-from-env/index.js, constants/prompts.ts, tools/ExitWorktreeTool/ExitWorktreeTool.ts
 ((Ibl = require("fs/promises")),
   (xbl = require("os")),
   (Xgf = ve(() =>

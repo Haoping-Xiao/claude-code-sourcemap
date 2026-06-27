@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0821  score=0.101  fileCov=0.3047
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/internal/utils/uuid.mjs; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ynn] deps: rB
+// [unwrapped __esm module ynn] deps: pkce-challenge/dist/index.node.js
 VNe = Ru.getRandomValues.bind(Ru);
 function MXo(e) {
   switch (e) {

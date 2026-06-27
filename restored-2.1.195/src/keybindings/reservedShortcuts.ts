@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5023  score=0.6922  fileCov=0.6468
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module JLn] deps: Is
+// [unwrapped __esm module JLn] deps: utils/platform.ts
 ((aUt = [
   {
     key: "ctrl+c",

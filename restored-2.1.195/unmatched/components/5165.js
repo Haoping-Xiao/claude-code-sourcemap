@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0025  score=0.1312  fileCov=0.0025
 // note: nearest: src/commands/insights.ts (0.0025); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module qQl] deps: vi, Ko, kP, Ye, ps, PVt, m3o, Fh, dr
+// [unwrapped __esm module qQl] deps: components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Tabs.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/activityManager.ts, m3o, components/Settings/Config.tsx, utils/settings/settings.ts
 Lzf = R(lt(), 1), Dzf = R(rt(), 1), WQl = R(se(), 1), FQl = [{
   label: "Off",
   intervalMinutes: null

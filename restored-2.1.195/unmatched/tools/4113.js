@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0033  score=1  fileCov=0.0033
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0033); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OCo] deps: jv, DCo, Kyt
+// [unwrapped __esm module OCo] deps: tools/ScheduleCronTool/prompt.ts, components/Messages.tsx, bridge/bridgeMain.ts
 cof = Vsl * 2, PCo = new Map();
 function sQ(e, t, n = 1000, r = 0, o) {
   let s = ks(),

@@ -5,7 +5,7 @@
 // note: nearest: src/utils/teleport/api.ts (0.026); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ShareOnboardingGuideTool
-// [unwrapped __esm module GXn] deps: Rc, oo, qd, Un, kt, c_, jc
+// [unwrapped __esm module GXn] deps: constants/oauth.ts, utils/http.ts, utils/log.ts, services/analytics/growthbook.ts, utils/debug.ts, services/mcp/officialRegistry.ts, utils/semver.ts
 UXn = {
   auth: "teleport-org",
   timeout: Byf,

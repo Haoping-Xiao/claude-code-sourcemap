@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0039  score=0.2991  fileCov=0.004
 // note: nearest: src/screens/REPL.tsx (0.0039); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module SG] deps: YZe, je, Jt
+// [unwrapped __esm module SG] deps: lru-cache/dist/esm/index.js, utils/debug.ts, utils/fsOperations.ts
 lPu = new Set();
 function uPu() {
   return false;

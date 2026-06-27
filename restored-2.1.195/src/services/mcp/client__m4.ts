@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0099  score=0.2963  fileCov=0.0101
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module yec] deps: l0t, MQe, wwr, Vb, dec, pec, zb
+// [unwrapped __esm module yec] deps: @modelcontextprotocol/sdk/dist/esm/server/index.js, MQe, @modelcontextprotocol/sdk/dist/esm/shared/protocol.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/settings/permissionValidation.ts, @modelcontextprotocol/sdk/dist/esm/types.js, zod/v4/classic/schemas.js
 WKf = {
   type: "object",
   properties: {},

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1845  score=0.5109  fileCov=0.224
 // note: low-confidence suggestion: src/ink/components/ClockContext.tsx; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module a0e] deps: QXr
+// [unwrapped __esm module a0e] deps: ink/components/TerminalFocusContext.tsx
 ZXr = R(rt(), 1);
 function X3d(e) {
   let t = new Map(),

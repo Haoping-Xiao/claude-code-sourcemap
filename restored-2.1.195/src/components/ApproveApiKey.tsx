@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ApproveApiKey
-// [unwrapped __esm module LMc] deps: Hp, kt, EC, Rc, FK, nUt, Ye, gSe, Gx, vn
+// [unwrapped __esm module LMc] deps: axios/lib/axios.js, utils/debug.ts, @anthropic-ai/bedrock-sdk/client.mjs, constants/oauth.ts, utils/process.ts, ink/measure-element.ts, hooks/useTerminalSize.ts, services/api/errors.ts, utils/slashCommandParsing.ts, utils/sequential.ts
 ((kMc = R(lt(), 1)), (Svt = R(rt(), 1)), (E2 = R(se(), 1)));
 function ApproveApiKey(t0) {
   let t = DMc.c(16),

@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/commands/extra-usage/extra-usage-noninteractive.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-// [unwrapped __esm module L8t] deps: oo, w8t, Ezn
+// [unwrapped __esm module L8t] deps: utils/http.ts, undici/lib/web/fetch/response.js, components/LogoV2/Clawd.tsx
 ACo = R(se(), 1), Psl = (ECo(), ro(Dsl)).ExtraUsageDialog;
 async function call() {
   let e = await Fyt({

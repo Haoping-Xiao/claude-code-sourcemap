@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3441  score=0.4787  fileCov=0.5503
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module q7] deps: OM
+// [unwrapped __esm module q7] deps: ink/clearTerminal.ts
 p_ = {
   CURSOR_VISIBLE: 25,
   ALT_SCREEN: 47,

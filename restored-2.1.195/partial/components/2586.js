@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.175  score=0.5708  fileCov=0.2016
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vi] deps: fH, O0, GLn, Ye, vzi, kzi, Cc, Bs, Ko, eE
+// [unwrapped __esm module vi] deps: react/cjs/react.production.js, commander/lib/command.js, screens/REPL.tsx, hooks/useTerminalSize.ts, ink/components/ScrollBox.tsx, components/PromptInput/PromptInput.tsx, context/modalContext.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx
 Pzi = R(lt(), 1), hbe = R(rt(), 1), N0 = R(se(), 1), Dzi = N0.jsxs(Tn, {
   children: [N0.jsx(ht, {
     chord: "enter",

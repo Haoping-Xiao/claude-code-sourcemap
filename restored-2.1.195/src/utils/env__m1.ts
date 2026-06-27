@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/env.ts)  jaccard=0.1974  score=0.4109  fileCov=0.2754
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Rx] deps: Hp, CZe, Hp
+// [unwrapped __esm module Rx] deps: axios/lib/axios.js, utils/nativeInstaller/download.ts, axios/lib/axios.js
 lb = {
   get(e, t) {
     return (IZe(e, t), po.get(e, t));

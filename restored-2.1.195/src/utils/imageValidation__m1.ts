@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/imageValidation.ts)  jaccard=0.2325  score=0.5653  fileCov=0.2831
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UX] deps: ft, wr, Rd, k0, Oot, Ao, c5e, Ls, Fh
+// [unwrapped __esm module UX] deps: services/analytics/index.ts, main.tsx, utils/settings/constants.ts, k0, utils/words.ts, utils/agentContext.ts, query.ts, utils/status.tsx, components/Settings/Config.tsx
 Jct = `Send feedback with /feedback or learn more: ${u5e}`;
 daa = `They may flag safe, normal content as well. ${Vap}`;
 function isBase64ImageBlock(block) {

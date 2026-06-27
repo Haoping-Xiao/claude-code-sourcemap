@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5536  score=0.9101  fileCov=0.5856
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module nGo] deps: Xr, Un, dtc
+// [unwrapped __esm module nGo] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/growthbook.ts, bridge/pollConfig.ts
 ((ptc = {
   message: "must be 0 (disabled) or \u2265100ms",
 }),

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0177  score=0.1789  fileCov=0.0193
 // note: nearest: src/services/mcp/utils.ts (0.0177); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yle] deps: Ls, R9, Jt, Z4e
+// [unwrapped __esm module Yle] deps: utils/status.tsx, utils/errors.ts, utils/fsOperations.ts, undici/lib/web/fetch/util.js
 Fwi = require("crypto");
 IRd = ["/v1/design/"];
 function kRd() {

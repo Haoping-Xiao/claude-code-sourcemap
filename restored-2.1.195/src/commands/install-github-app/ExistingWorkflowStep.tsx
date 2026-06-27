@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2925  score=0.3395  fileCov=0.6788
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module eFl] deps: lJ, pz, R6, Ye
+// [unwrapped __esm module eFl] deps: components/StructuredDiff/Fallback.tsx, utils/plugins/loadPluginCommands.ts, components/AwsAuthStatusBox.tsx, hooks/useTerminalSize.ts
 ((QUl = R(lt(), 1)), (KL = R(se(), 1)));
 function ExistingWorkflowStep(t0) {
   let t = tFl.c(15),

@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Q9l] deps: Y9l, Ao, PEt, xrr
+// [unwrapped __esm module Q9l] deps: screens/REPL.tsx, utils/agentContext.ts, native-ts/yoga-layout/index.ts, commands/mcp/mcp.tsx
 J9l = R(se(), 1);
 var n5f, Z9l;

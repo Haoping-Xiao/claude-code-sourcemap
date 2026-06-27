@@ -5,7 +5,7 @@
 // note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: trackClaudeInChromeTabId, openInChrome, isTrackedClaudeInChromeTabId, isInProductPermissionsEnabled, isClaudeInChromeMCPServer, getSocketDir, getSecureSocketPath, getAllWindowsRegistryKeys, getAllSocketPaths, getAllNativeMessagingHostsDirs, getAllBrowserDataPaths, detectAvailableBrowser, _resetTrackedTabIdsForTesting, CLAUDE_IN_CHROME_MCP_SERVER_NAME, CLAUDE_IN_CHROME_DOMAIN_RULE_TOOL, CHROMIUM_BROWSERS, CFC_TOOL_PREFIX, BROWSER_DETECTION_ORDER
-// [unwrapped __esm module ag] deps: IB, Xr, ft, kt, Pw, Rm, je, wr, fn, At, vn, zH, Jt, HO, VGe
+// [unwrapped __esm module ag] deps: constants/keys.ts, @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/debug.ts, utils/fileRead.ts, @grpc/grpc-js/build/src/server.js, utils/debug.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/sequential.ts, services/teamMemorySync/secretScanner.ts, utils/fsOperations.ts, utils/sessionUrl.ts, main.tsx
 ((fT = require("fs/promises")),
   (oS = require("path")),
   (Yzi = /^[a-f0-9]{8}$/),

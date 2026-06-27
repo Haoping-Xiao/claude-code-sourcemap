@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/ultraplan/ccrSession.ts)  jaccard=0.0243  score=0.1058  fileCov=0.0306
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bka] deps: je, Mh, _1
+// [unwrapped __esm module bka] deps: utils/debug.ts, utils/proxy.ts, utils/subprocessEnv.ts
 _ka = require("fs/promises");
 function pde(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);

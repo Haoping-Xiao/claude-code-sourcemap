@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0153  score=0.5323  fileCov=0.0155
 // note: nearest: src/ink/ink.tsx (0.0153); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module YGi] deps: qit
+// [unwrapped __esm module YGi] deps: ink/events/terminal-event.ts
 aJr = class aJr extends yne {
   deltaY;
   deltaX;

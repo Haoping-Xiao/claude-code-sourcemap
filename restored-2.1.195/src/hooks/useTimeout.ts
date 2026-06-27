@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3714  score=1  fileCov=0.3714
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hbc] deps: CTt, uo, er, ezo, bm
+// [unwrapped __esm module hbc] deps: hooks/useIdeAtMentioned.ts, context/notifications.tsx, utils/config.ts, utils/exampleCommands.ts, utils/messageQueueManager.ts
 mbc = R(rt(), 1);
 function _bc(e) {
   let [t, n] = Ddr.useState(false),

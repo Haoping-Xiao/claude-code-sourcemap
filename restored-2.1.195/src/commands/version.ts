@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3016  score=0.4714  fileCov=0.4558
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tXl] deps: ft, pz, v5, Ko, eE, Ye, id, At
+// [unwrapped __esm module tXl] deps: services/analytics/index.ts, utils/plugins/loadPluginCommands.ts, components/permissions/PermissionRequestTitle.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/errors.ts
 ((eXl = R(lt(), 1)), (Jsr = R(rt(), 1)), (yR = R(se(), 1)));
 ((e8f = {
   type: "local-jsx",

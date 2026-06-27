@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1702  score=0.4599  fileCov=0.2128
 // note: low-confidence suggestion: src/components/tasks/BackgroundTask.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vic] deps: ft, $S, sp, _a, pQ
+// [unwrapped __esm module vic] deps: services/analytics/index.ts, google-auth-library/build/src/crypto/node/crypto.js, utils/worktree.ts, utils/plans.ts, utils/hooks/registerSkillHooks.ts
 Dlr = require("crypto");
 function BackgroundTask(t0) {
   let t = [];

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.092  score=0.6613  fileCov=0.0966
 // note: low-confidence suggestion: src/commands/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VXl] deps: _oe
+// [unwrapped __esm module VXl] deps: cost-tracker.ts
 qXl = {
   type: "local-jsx",
   name: "advisor",

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/cronJitterConfig.ts)  jaccard=0.2835  score=0.3941  fileCov=0.5026
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F2t] deps: Xr, Un, N8
+// [unwrapped __esm module F2t] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/growthbook.ts, utils/cronJitterConfig.ts
 mop = ve(() =>
   H.object({
     recurringFrac: H.number().min(0).max(1),

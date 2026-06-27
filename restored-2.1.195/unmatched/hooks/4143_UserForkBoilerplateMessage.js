@@ -5,7 +5,7 @@
 // note: nearest: src/ink/components/Box.tsx (0.0491); dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: UserForkBoilerplateMessage
-// [unwrapped __esm module ial] deps: Xa, np, Ye, es, OI
+// [unwrapped __esm module ial] deps: @xmldom/xmldom/lib/entities.js, env-paths/index.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, fast-xml-parser/lib/fxp.cjs
 oal = R(lt(), 1), GMe = R(se(), 1), lsf = new RegExp(`^<${xFe}\\s+source="([^"]*)"([^>]*)>\\n?`), Jzn = `</${xFe}>`, ral = `
 ${Jzn}`, csf = /\buser="([^"]+)"/, usf = [`
 

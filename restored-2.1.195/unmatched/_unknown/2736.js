@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0217  score=0.142  fileCov=0.025
 // note: nearest: node_modules/@opentelemetry/otlp-transformer/build/src/metrics/internal.js (0.0217); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cro] deps: _ue, nct, ERe, tro, Eta, nno, xWe
+// [unwrapped __esm module cro] deps: protobufjs/src/common.js, zod/v4/classic/schemas.js, zod/v4/core/util.js, @grpc/grpc-js/build/src/resolving-call.js, utils/plugins/schemas.ts, eventsource-parser/dist/index.js, @smithy/smithy-client/dist-cjs/index.js
 wta = -9223372036854775808n;
 iro = $8(Pu.DYN), {
   BYTES: aro,

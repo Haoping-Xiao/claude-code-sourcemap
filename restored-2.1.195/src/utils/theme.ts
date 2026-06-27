@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7548  score=0.8235  fileCov=0.9004
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mke] deps: iu, BRt, wr
+// [unwrapped __esm module Mke] deps: @mixmark-io/domino/lib/Document.js, @xmldom/xmldom/lib/entities.js, main.tsx
 ((_Bd = {
   autoAccept: "rgb(135,0,255)",
   autoAcceptShimmer: "rgb(208,180,255)",

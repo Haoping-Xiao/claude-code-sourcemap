@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0473  score=1  fileCov=0.0473
 // note: nearest: node_modules/@azure/msal-node/dist/cache/NodeStorage.mjs (0.0473); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module xGr] deps: oT, m$t, UTn, JR, NTn, Krt, MTn, wGr, Bgi, n7, C0
+// [unwrapped __esm module xGr] deps: @azure/msal-common/dist/utils/Constants.mjs, @azure/msal-common/dist/account/ClientInfo.mjs, @azure/msal-common/dist/account/AuthToken.mjs, @azure/msal-common/dist/error/ClientAuthError.mjs, NTn, @azure/msal-common/dist/utils/UrlUtils.mjs, MTn, @azure/msal-common/dist/authority/AuthorityMetadata.mjs, @azure/msal-common/dist/cache/CacheManager.mjs, @azure/msal-common/dist/error/ClientAuthErrorCodes.mjs, C0
 /*! @azure/msal-common v15.13.1 2025-10-29 */
 GTn = class GTn extends o4e {
   async setAccount() {

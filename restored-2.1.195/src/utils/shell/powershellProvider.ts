@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4682  score=0.6717  fileCov=0.6071
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oMa] deps: ft, dn, XPa, qmo, eMa, Xjt, je, fn, Is, E5e, kv, sj
+// [unwrapped __esm module oMa] deps: services/analytics/index.ts, dn, screens/REPL.tsx, qmo, utils/shell/bashProvider.ts, utils/settings/validationTips.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/platform.ts, utils/hooks/fileChangedWatcher.ts, proxy-from-env/index.js, utils/windowsPaths.ts
 ((tMa = require("fs/promises")), (nMa = require("path")), (GGt = require("path/posix")));
 function buildPowerShellArgs() {
   let e = ["-NoProfile", "-NonInteractive"];

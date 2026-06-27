@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3079  score=0.4294  fileCov=0.521
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module cUc] deps: ft, sVe, nGo, SJ, tSe, fd, je, Mm, fn, At, Yp, vn, ED, aze, kM, _a, Von, X4, sXo, nXo, v0n, oXo, P8o, iUc
+// [unwrapped __esm module cUc] deps: services/analytics/index.ts, bridge/trustedDevice.ts, bridge/pollConfig.ts, components/Feedback.tsx, tools/TaskStopTool/prompt.ts, utils/debugFilter.ts, utils/debug.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/gracefulShutdown.ts, utils/sequential.ts, utils/stringUtils.ts, utils/queryHelpers.ts, utils/teleport/api.ts, utils/plans.ts, bridge/bridgeMessaging.ts, utils/attachments.ts, cli/transports/transportUtils.ts, cli/structuredIO.ts, v0n, utils/subprocessEnv.ts, cli/transports/ccrClient.ts, main.tsx
 ((aUc = require("stream")), (lUc = require("url")));
 kvt = class kvt extends dnn {
   url;

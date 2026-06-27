@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4456  score=0.6357  fileCov=0.5985
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module y5l] deps: Tc, Ye
+// [unwrapped __esm module y5l] deps: marked/lib/marked.esm.js, hooks/useTerminalSize.ts
 ((g5l = R(lt(), 1)), (zFo = R(se(), 1)));
 function MessageTimestamp(t0) {
   let t = _5l.c(10),

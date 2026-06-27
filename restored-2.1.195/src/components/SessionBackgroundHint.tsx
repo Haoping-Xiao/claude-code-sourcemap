@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2798  score=0.5393  fileCov=0.3677
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module I0c] deps: id, fp, Ld, aE
+// [unwrapped __esm module I0c] deps: dom-mutator/dist/dom-mutator.cjs.production.min.js, screens/REPL.tsx, utils/concurrentSessions.ts, utils/ide.ts
 ((v0c = R(lt(), 1)), (w0c = R(rt(), 1)));
 function SessionBackgroundHint(t0) {
   let t = x0c.c(15),

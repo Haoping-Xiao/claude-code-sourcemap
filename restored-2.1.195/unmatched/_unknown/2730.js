@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0246  score=1  fileCov=0.0246
 // note: nearest: node_modules/undici/lib/mock/mock-utils.js (0.0246); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uta] deps: Qne, SX
+// [unwrapped __esm module uta] deps: Qne, protobufjs/ext/descriptor/index.js
 rtp = Rno(M1, bX, SRe, Jne, zFt);
 function pta(...e) {
   let t = new Map();

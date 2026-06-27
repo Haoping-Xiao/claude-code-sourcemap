@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.0782  score=0.2321  fileCov=0.1055
 // note: low-confidence suggestion: src/utils/permissions/PermissionMode.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hFo] deps: cEe, loe, Xa, w4, Tc, Ye, ps, nk, Mne
+// [unwrapped __esm module hFo] deps: constants/spinnerVerbs.ts, utils/swarm/constants.ts, @xmldom/xmldom/lib/entities.js, highlight.js/lib/languages/reasonml.js, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, nk, components/TextInput.tsx
 $Xt = R(lt(), 1), uAt = R(rt(), 1), gR = R(se(), 1);
 k2f = /\[(\w+):([^\]]*)\]/g;
 wGl = [{

@@ -4,7 +4,7 @@
 // class=new  jaccard=0.014  score=0.4658  fileCov=0.0142
 // note: nearest: src/utils/bash/ast.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Z6] deps: ft, np, dn, yC, $S, Lo, RE, ys, vn, bm, tA, bH, OI, S_, CXn, u8t
+// [unwrapped __esm module Z6] deps: services/analytics/index.ts, env-paths/index.js, dn, utils/ShellCommand.ts, google-auth-library/build/src/crypto/node/crypto.js, utils/fsOperations.ts, RE, utils/fsOperations.ts, utils/sequential.ts, utils/messageQueueManager.ts, fast-xml-parser/lib/fxp.cjs, Task.ts, fast-xml-parser/lib/fxp.cjs, tasks/LocalShellTask/LocalShellTask.tsx, tasks/LocalMainSessionTask.ts, utils/agentId.ts
 Ovl = require("fs/promises");
 IEf = [/\(y\/n\)/i, /\[y\/n\]/i, /\(yes\/no\)/i, /\b(?:Do you|Would you|Shall I|Are you sure|Ready to)\b.*\? *$/i, /Press (any key|Enter)/i, /Continue\?/i, /Overwrite\?/i];
 W7n = {

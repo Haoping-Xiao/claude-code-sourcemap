@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseConfigShorthand, listConfigKeys, getConfigArgumentCompletions, applyConfigShorthand, _resetSettableConfigKeysForTesting
-// [unwrapped __esm module s1o] deps: Ye, er, Rnt, Fh, DE, __, je, kt, dn, SC, EHe, DD, vM, Ao, h7t, gb, j_e, BRt, m0, aE, dr, HU, ft, UX, G4, fn, Un, lH, rze, S7t, n1o, sre, sA, NDe, cAe, L0o, NE, uf, rtr, Xa
+// [unwrapped __esm module s1o] deps: hooks/useTerminalSize.ts, utils/config.ts, @smithy/smithy-client/dist-cjs/index.js, components/Settings/Config.tsx, utils/permissions/PermissionMode.ts, utils/markdownConfigLoader.ts, utils/debug.ts, utils/debug.ts, dn, utils/config.ts, EHe, utils/model/modelOptions.ts, utils/model/model.ts, utils/agentContext.ts, commands/model/model.tsx, utils/plugins/schemas.ts, utils/systemTheme.ts, @xmldom/xmldom/lib/entities.js, ink/line-width-cache.ts, utils/ide.ts, utils/settings/settings.ts, utils/effort.ts, services/analytics/index.ts, utils/imageValidation.ts, constants/outputStyles.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, services/analytics/growthbook.ts, lH, tools/AgentTool/resumeAgent.ts, components/Settings/Config.tsx, utils/configConstants.ts, highlight.js/lib/languages/mathematica.js, services/PromptSuggestion/promptSuggestion.ts, utils/agentSwarmsEnabled.ts, utils/swarm/teammateLayoutManager.ts, tools/shared/spawnMultiAgent.ts, utils/modelCost.ts, main.tsx, components/Settings/Config.tsx, @xmldom/xmldom/lib/entities.js
 o1o = R(rt(), 1);
 tRf = new Map([
   ["jp", "ja"],

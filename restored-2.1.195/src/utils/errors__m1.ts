@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/errors.ts)  jaccard=0.2925  score=0.6803  fileCov=0.339
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module At] deps: PR
+// [unwrapped __esm module At] deps: utils/errors.ts
 NIt = class NIt extends Error {
   constructor(e) {
     super(e);

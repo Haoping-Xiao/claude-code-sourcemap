@@ -5,7 +5,7 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: useVoiceKeybindingHandler, useVoiceIntegration
-// [unwrapped __esm module TTc] deps: ree, nbe, a0e, Ye, dn, kt, _Tc, IGo, je, At, m0, vn, dr
+// [unwrapped __esm module TTc] deps: ree, state/AppState.tsx, ink/components/ClockContext.tsx, hooks/useTerminalSize.ts, dn, utils/debug.ts, hooks/useVoice.ts, services/voice.ts, utils/debug.ts, utils/errors.ts, ink/line-width-cache.ts, utils/sequential.ts, utils/settings/settings.ts
 ((th = R(rt(), 1)), (PNe = []));
 function Rbm(e, t) {
   if ((e.key === "return" ? "enter" : e.key.toLowerCase()) !== t.key) return false;

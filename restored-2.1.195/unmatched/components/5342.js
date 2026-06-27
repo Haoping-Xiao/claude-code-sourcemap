@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0106  score=0.3443  fileCov=0.0108
 // note: nearest: src/services/mcp/config.ts (0.0106); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module mdc] deps: Yp, ED, Ye, Kv, sr, Cc, w7t, Bs, vi, Ko
+// [unwrapped __esm module mdc] deps: utils/gracefulShutdown.ts, utils/stringUtils.ts, hooks/useTerminalSize.ts, services/mcp/utils.ts, services/teamMemorySync/secretScanner.ts, context/modalContext.tsx, w7t, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 pdc = R(lt(), 1), Gcr = R(rt(), 1), v3 = R(se(), 1);
 async function oV(e) {
   if (!tyo()) return;

@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MGl] deps: bFo
+// [unwrapped __esm module MGl] deps: components/permissions/rules/WorkspaceTab.tsx
 PGl = R(se(), 1);
 var SFo;

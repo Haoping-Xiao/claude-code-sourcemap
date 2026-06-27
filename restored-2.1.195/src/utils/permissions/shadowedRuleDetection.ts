@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4596  score=1  fileCov=0.4596
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VNo] deps: id, uo, Dgt, gz, S4n
+// [unwrapped __esm module VNo] deps: dom-mutator/dist/dom-mutator.cjs.production.min.js, context/notifications.tsx, utils/status.tsx, hooks/notifs/useSettingsErrors.tsx, commands/clear/conversation.ts
 ((qNl = R(lt(), 1)), (Anr = R(rt(), 1)));
 function isSharedSettingSource(source) {
   return source === "projectSettings" || source === "policySettings" || source === "command";

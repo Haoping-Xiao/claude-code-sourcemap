@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0277  score=1  fileCov=0.0277
 // note: nearest: node_modules/@aws-sdk/client-bedrock-runtime/dist-cjs/index.js (0.0277); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module dSn] deps: GNr, uBr, c6s, HM, SBr, OY, nYs, fYs
+// [unwrapped __esm module dSn] deps: GNr, @smithy/smithy-client/dist-cjs/index.js, c6s, @aws-sdk/client-bedrock/dist-cjs/auth/httpAuthSchemeProvider.js, @aws-sdk/client-bedrock-runtime/dist-cjs/index.js, @aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js, @smithy/protocol-http/dist-cjs/index.js, fYs
 lSn = R(Ghe(), 1), mYs = R(Whe(), 1), gYs = R(qhe(), 1), cSn = R(zae(), 1), hYs = R(Dx(), 1), bnt = R(yd(), 1), yYs = R(ME(), 1), _Ys = R(Jhe(), 1), bYs = R(yo(), 1), uSn = R(zO(), 1);
 Snt = class Snt extends UDt {
   config;

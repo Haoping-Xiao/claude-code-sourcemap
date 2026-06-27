@@ -4,7 +4,7 @@
 // class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.077  score=0.4426  fileCov=0.0853
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Mg] deps: iu, nbe, WQr, mZr, lPn, p8, Ye, _Ge, _Zr
+// [unwrapped __esm module Mg] deps: @mixmark-io/domino/lib/Document.js, state/AppState.tsx, projectOnboardingState.ts, marked/lib/marked.esm.js, hooks/renderPlaceholder.ts, ink/terminal.ts, hooks/useTerminalSize.ts, components/design-system/color.ts, components/TextInput.tsx
 ((I6i = R(rt(), 1)), (bZr = R(se(), 1)));
 function x6i(e) {
   let t = z6d[e.name],

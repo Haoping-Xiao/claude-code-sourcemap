@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0024  score=0.0619  fileCov=0.0024
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QGo] deps: lH, kt, er, wr, VQ, zOe, YOe, kYe
+// [unwrapped __esm module QGo] deps: lH, utils/debug.ts, utils/config.ts, main.tsx, @smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js, utils/completionCache.ts, mute-stream/lib/index.js, bridge/bridgeMain.ts
 Src = require("readline");
 function main(e) {
   let t = "--cloud",

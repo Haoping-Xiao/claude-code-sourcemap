@@ -4,7 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.028  score=0.6853  fileCov=0.0284
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module j9o] deps: dn, kt, Cre, Yle, cqe, a5, BI, Kv, cTt, oo, vy, Kke, At, xLe, Ls, JN, I9o
+// [unwrapped __esm module j9o] deps: dn, utils/debug.ts, services/mcp/auth.ts, services/mcp/utils.ts, tools/McpAuthTool/McpAuthTool.ts, services/mcp/config.ts, services/mcp/client.ts, services/mcp/utils.ts, components/MCPServerDialogCopy.tsx, utils/http.ts, @mixmark-io/domino/lib/htmlelts.js, Kke, utils/errors.ts, context/stats.tsx, utils/status.tsx, main.tsx, I9o
 mpc = require("readline");
 function run(e) {
   let t = e

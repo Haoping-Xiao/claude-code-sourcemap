@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.2121  score=0.4059  fileCov=0.3075
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs; dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module pEr] deps: uEr, uEr, dEr, dEr, Tx, rv, DR
+// [unwrapped __esm module pEr] deps: @anthropic-ai/sdk/resources/beta/messages/batches.mjs, @anthropic-ai/sdk/resources/beta/messages/batches.mjs, @anthropic-ai/sdk/resources/beta/skills/versions.mjs, @anthropic-ai/sdk/resources/beta/skills/versions.mjs, @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 gUe = class gUe extends cp {
   constructor() {
     super(...arguments);

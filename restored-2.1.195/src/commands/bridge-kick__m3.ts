@@ -5,7 +5,7 @@
 // note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startParentWatchdog, runDaemonWorker, registerShutdownHandlers, isShutdownSentinel, httpStatusOf, heartbeatWorkerSchema, WORKER_KINDS
-// [unwrapped __esm module Qir] deps: IB, Xr, wQ, dn, NB, T3o
+// [unwrapped __esm module Qir] deps: constants/keys.ts, @modelcontextprotocol/sdk/dist/esm/types.js, tools/BriefTool/upload.ts, dn, types/permissions.ts, utils/errorLogSink.ts
 gGo = ve(() =>
   H.object({
     dir: H.string(),

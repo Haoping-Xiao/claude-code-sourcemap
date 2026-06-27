@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.1473  score=0.6834  fileCov=0.1581
 // note: low-confidence suggestion: src/utils/fsOperations.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Jt] deps: ft, je
+// [unwrapped __esm module Jt] deps: services/analytics/index.ts, utils/debug.ts
 Wge = require("fs"), C8m = (() => {
   let e = process.env.CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS;
   if (e !== void 0) {

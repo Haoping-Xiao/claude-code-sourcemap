@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0141  score=0.1168  fileCov=0.0158
 // note: nearest: src/services/mcp/client.ts (0.0141); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module lNc] deps: ft, Zf, rq, Pw, Mm, wr, fn, dOe, yLe, Jt, kv, kt, J1c, a8t
+// [unwrapped __esm module lNc] deps: services/analytics/index.ts, utils/sessionStorage.ts, skills/loadSkillsDir.ts, utils/fileRead.ts, utils/git/gitConfigParser.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/plugins/cacheUtils.ts, utils/sessionStart.ts, utils/fsOperations.ts, proxy-from-env/index.js, utils/debug.ts, utils/plugins/officialMarketplaceGcs.ts, utils/suggestions/skillUsageTracking.ts
 A2 = require("fs/promises"), rD = require("path");
 function cNc(e) {
   return {

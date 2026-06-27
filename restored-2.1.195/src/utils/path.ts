@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.294  score=0.5072  fileCov=0.4115
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module jS] deps: Rm, fn, Jkr, BFe
+// [unwrapped __esm module jS] deps: @grpc/grpc-js/build/src/server.js, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/getWorktreePathsPortable.ts, utils/sessionStoragePortable.ts
 ((Qkr = require("events")),
   (VEs = require("fs")),
   (ij = require("fs/promises")),

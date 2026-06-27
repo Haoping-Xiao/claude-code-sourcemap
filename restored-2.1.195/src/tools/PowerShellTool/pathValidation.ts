@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.647  score=0.9362  fileCov=0.6768
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module iTl] deps: Lo, ys, Hu, Yf, $I, Jbe, Is, bde, ULo, Wbt, dze
+// [unwrapped __esm module iTl] deps: utils/fsOperations.ts, utils/fsOperations.ts, utils/file.ts, utils/task/diskOutput.ts, utils/permissions/shellRuleMatching.ts, utils/plugins/pluginDirectories.ts, utils/platform.ts, utils/powershell/parser.ts, tools/PowerShellTool/commonParameters.ts, tools/PowerShellTool/readOnlyValidation.ts, utils/file.ts
 ((oTl = require("os")),
   ($N = require("path")),
   (dJn = {

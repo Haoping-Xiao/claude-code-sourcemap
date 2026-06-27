@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/plugins/officialMarketplaceStartupCheck.ts)  jaccard=0.0979  score=0.597  fileCov=0.1048
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tLc] deps: dn, Un, kt, er, je, fn, eMn, lE, oWe, S$o, WI
+// [unwrapped __esm module tLc] deps: dn, services/analytics/growthbook.ts, utils/debug.ts, utils/config.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, protobufjs/src/enum.js, utils/plugins/installedPluginsManager.ts, utils/plugins/fetchTelemetry.ts, utils/plugins/officialMarketplaceGcs.ts, commands/plugin/ManagePlugins.tsx
 ZRc = require("path");
 Hfr = {
   MAX_ATTEMPTS: 10,

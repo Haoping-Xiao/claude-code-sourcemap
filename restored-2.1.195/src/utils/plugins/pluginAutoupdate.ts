@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2132  score=0.3309  fileCov=0.3746
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module XEt] deps: ft, glt, je, fn, At, ys, Hu, vq, vbe, _k, lE, e1e, B1, $g, vfe, Xh, i5, WI, NKe, OYt, ZC, dr, sr, I8
+// [unwrapped __esm module XEt] deps: services/analytics/index.ts, utils/plugins/pluginStartupCheck.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/file.ts, utils/plugins/marketplaceHelpers.ts, utils/plugins/officialMarketplace.ts, utils/generatedFiles.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/parseMarketplaceInput.ts, tools/SkillTool/prompt.ts, utils/plugins/pluginIdentifier.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, utils/plugins/loadPluginAgents.ts, utils/plugins/mcpPluginIntegration.ts, commands/plugin/ManagePlugins.tsx, commands/plugin/PluginErrors.tsx, utils/plugins/pluginInstallationHelpers.ts, utils/plugins/schemas.ts, utils/settings/settings.ts, services/teamMemorySync/secretScanner.ts, utils/telemetryAttributes.ts
 ((Ase = require("path")), (jEt = R(Uj(), 1)));
 ((JL = ["user", "project", "local"]),
   (r1e = {

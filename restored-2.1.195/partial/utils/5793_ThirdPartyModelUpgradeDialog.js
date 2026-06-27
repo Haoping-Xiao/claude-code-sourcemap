@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ThirdPartyModelUpgradeDialog
-// [unwrapped __esm module j$c] deps: kt, Ye, dn, VM, er, Cc, Bs, Fy, vi, Ko
+// [unwrapped __esm module j$c] deps: utils/debug.ts, hooks/useTerminalSize.ts, dn, utils/claudeInChrome/common.ts, utils/config.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 U$c = R(lt(), 1), pmr = R(rt(), 1), oie = R(se(), 1);
 function Dialog(t0) {
   let t = G$c.c(27),

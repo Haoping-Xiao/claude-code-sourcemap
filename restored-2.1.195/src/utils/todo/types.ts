@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5602  score=0.7575  fileCov=0.6826
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module zgo] deps: Xr
+// [unwrapped __esm module zgo] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 ((qDp = ve(() => H.enum(["pending", "in_progress", "completed"]))),
   (VDp = ve(() =>
     H.object({

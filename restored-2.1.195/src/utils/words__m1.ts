@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0041  score=0.2447  fileCov=0.0042
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WHc] deps: Vl, X0, WTe, Ye
+// [unwrapped __esm module WHc] deps: keybindings/useShortcutDisplay.ts, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, hooks/useTerminalSize.ts
 ((jHc = R(lt(), 1)), (cV = R(se(), 1)));
 function G_m(e, t) {
   let n = t;

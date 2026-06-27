@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3807  score=0.7019  fileCov=0.4541
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module tRc] deps: aW, Un, kt, Uh, jc, uo, lf, er, wr, fn, Xbt, co, qd, aS, pYo, xtn, gYo
+// [unwrapped __esm module tRc] deps: types/generated/google/protobuf/timestamp.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/metadata.ts, utils/semver.ts, context/notifications.tsx, tools/GlobTool/prompt.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/teamMemoryOps.ts, utils/messages.ts, utils/log.ts, utils/telemetry/pluginTelemetry.ts, utils/sessionStorage.ts, utils/crypto.ts, components/FeedbackSurvey/useFeedbackSurvey.tsx
 nD = R(rt(), 1);
 qvm = /\bmemor(?:y|ies)\b/i;
 function Xvm(e, t) {

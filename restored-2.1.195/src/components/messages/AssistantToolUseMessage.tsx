@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3417  score=0.4592  fileCov=0.5719
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module FCo] deps: Xa, Ye
+// [unwrapped __esm module FCo] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts
 ((eil = R(lt(), 1)), (FMe = R(se(), 1)));
 function AssistantToolUseMessage(t0) {
   let t = nil.c(180),

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3296  score=0.7651  fileCov=0.3667
 // note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module l0o] deps: Xr
+// [unwrapped __esm module l0o] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 $pf = Dy({
   kind: "permission_workflow",
   payload: ve(() =>

@@ -5,7 +5,7 @@
 // note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: useVoiceState, useSetVoiceState, useGetVoiceState, VoiceProvider
-// [unwrapped __esm module qLn] deps: iu, ft, At, Hu, Yf
+// [unwrapped __esm module qLn] deps: @mixmark-io/domino/lib/Document.js, services/analytics/index.ts, utils/errors.ts, utils/file.ts, utils/task/diskOutput.ts
 ((Q5i = require("fs/promises")), (oUt = require("path")));
 function VoiceProvider(e) {
   let t = KJr.c(3),

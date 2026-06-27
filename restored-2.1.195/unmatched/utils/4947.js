@@ -3,6 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module e9l] deps: tTo, Ye, ps, kt
+// [unwrapped __esm module e9l] deps: utils/nativeInstaller/installer.ts, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, utils/debug.ts
 QVl = R(rt(), 1), S1e = R(se(), 1);
 var t9l;

@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0163  score=0.0512  fileCov=0.0233
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module U6t] deps: Qi, LMe, gb, Vko, o7n, Uml
+// [unwrapped __esm module U6t] deps: lodash-es/memoize.js, utils/attachments.ts, utils/plugins/schemas.ts, utils/plugins/loadPluginAgents.ts, utils/markdownConfigLoader.ts, services/mcp/claudeai.ts
 b$e = Cn(
   async (e) => {
     if (lc("workflows")) return [...zko()];

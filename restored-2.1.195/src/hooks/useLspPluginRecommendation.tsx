@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5118  score=0.9054  fileCov=0.5407
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module DYo] deps: gm, Ye, id, dn, je, vn, lE
+// [unwrapped __esm module DYo] deps: undici/lib/mock/mock-agent.js, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, dn, utils/debug.ts, utils/sequential.ts, utils/plugins/installedPluginsManager.ts
 ((JLc = R(lt(), 1)), (kfr = R(rt(), 1)), (Ptn = R(se(), 1)));
 function useLspPluginRecommendation() {
   let e = QLc.c(12),

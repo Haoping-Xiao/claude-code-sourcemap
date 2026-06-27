@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3379  score=0.5871  fileCov=0.4432
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module LPe] deps: EW, Ye
+// [unwrapped __esm module LPe] deps: ink/ink.tsx, hooks/useTerminalSize.ts
 ((dza = R(lt(), 1)), (pza = R(rt(), 1)), (fza = require("stream")), (ygt = R(se(), 1)));
 async function yVn(e, t) {
   let n;

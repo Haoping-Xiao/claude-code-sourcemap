@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.7573  score=0.9925  fileCov=0.7617
 // note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module ZLo] deps: wYn, bde
+// [unwrapped __esm module ZLo] deps: utils/permissions/dangerousPatterns.ts, utils/powershell/parser.ts
 ((XLo = new Set(["invoke-command", "start-job", "start-threadjob", "register-scheduledjob"])),
   (JLo = new Set([
     "invoke-command",

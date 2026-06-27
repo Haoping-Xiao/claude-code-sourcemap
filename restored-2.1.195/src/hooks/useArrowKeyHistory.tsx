@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3692  score=0.6509  fileCov=0.4604
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module adr] deps: si, Ed, kt, uo, ft, nbe, HN, Cen, Ye, id, mLe, Vyt, ZU, X8o, oo, QOe, fn, es, jjt, aE, e6o, Cc, n6o, Ahc, Pzn, vhc, Ihc, Rhc
+// [unwrapped __esm module adr] deps: @xmldom/xmldom/lib/entities.js, context/notifications.tsx, utils/debug.ts, context/notifications.tsx, services/analytics/index.ts, state/AppState.tsx, utils/plugins/pluginPolicy.ts, services/compact/compactWarningHook.ts, hooks/useTerminalSize.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, services/compact/microCompact.ts, components/messages/RateLimitMessage.tsx, utils/analyzeContext.ts, components/HelpV2/HelpV2.tsx, utils/http.ts, utils/editor.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/profilerBase.ts, utils/plugins/loadPluginHooks.ts, utils/ide.ts, components/PromptInput/Notifications.tsx, context/modalContext.tsx, hooks/useMemoryUsage.ts, components/TokenWarning.tsx, components/messages/HookProgressMessage.tsx, components/PromptInput/PromptInput.tsx, components/PromptInput/SandboxPromptFooterHint.tsx, components/PromptInput/VoiceIndicator.tsx
 ((jhc = R(lt(), 1)),
   (SNe = R(rt(), 1)),
   (sy = R(se(), 1)),

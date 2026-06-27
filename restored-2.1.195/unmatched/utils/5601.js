@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0339  score=0.7343  fileCov=0.0343
 // note: nearest: src/utils/processUserInput/processUserInput.ts (0.0339); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module uKo] deps: ft, ufn, RN, u_, W9t, bMe, Ppe, nC, pyt, fd, h6, je, fn, Bi, sa, Ao, pTc, _a, bKn
+// [unwrapped __esm module uKo] deps: services/analytics/index.ts, constants/files.ts, tools/BashTool/BashTool.tsx, utils/markdownConfigLoader.ts, tools/FileEditTool/types.ts, tools/FileEditTool/utils.ts, tools/FileWriteTool/FileWriteTool.ts, types/plugin.ts, tools/NotebookEditTool/NotebookEditTool.ts, utils/debugFilter.ts, state/AppStateStore.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, constants/files.ts, utils/git.ts, utils/agentContext.ts, pTc, utils/plans.ts, services/mcp/auth.ts
 kYA = hbm();
 function dKo(e, t, n) {
   return (r, o, s, i, a) => {

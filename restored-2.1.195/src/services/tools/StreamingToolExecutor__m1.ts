@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/tools/StreamingToolExecutor.ts)  jaccard=0.0651  score=0.2178  fileCov=0.0849
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module __l] deps: ql, Ye, Kyt
+// [unwrapped __esm module __l] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts, bridge/bridgeMain.ts
 ((f_l = R(rt(), 1)), (x$e = R(se(), 1)));
 function ngf(e, t) {
   let n = Woe(xAe(), t),

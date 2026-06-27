@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.0726  score=0.0871  fileCov=0.3035
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module hgt] deps: Hp, Ree, oo, zb, ft, Rc, er, je, Lx, wr, At, drt, Gx, vn, QO, NX, Ao, Ls, jG, qd, dn, kt, yje, Xzr, Yxe
+// [unwrapped __esm module hgt] deps: axios/lib/axios.js, lodash-es/_createBaseFor.js, utils/http.ts, zod/v4/classic/schemas.js, services/analytics/index.ts, constants/oauth.ts, utils/config.ts, utils/debug.ts, main.tsx, main.tsx, utils/errors.ts, utils/sleep.ts, utils/slashCommandParsing.ts, utils/sequential.ts, utils/model/configs.ts, services/mcp/types.ts, utils/agentContext.ts, utils/status.tsx, utils/modelCost.ts, utils/log.ts, dn, utils/debug.ts, tools/WebSearchTool/WebSearchTool.ts, zod-to-json-schema/dist/esm/selectParser.js, utils/model/modelCapabilities.ts
 Czp = ve(() =>
   dt.object({
     client_data: dt.record(dt.unknown()).nullish(),

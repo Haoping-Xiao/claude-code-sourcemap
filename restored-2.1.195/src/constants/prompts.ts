@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2107  score=0.3889  fileCov=0.3149
 // note: deminified; 18 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module aR] deps: iu, dn, kt, er, Lo, je, At, Bi, YS, dfn, gM, sa, P3e, sp, Hu, Is, iWe, OB, dr, xue, sr, qJ
+// [unwrapped __esm module aR] deps: @mixmark-io/domino/lib/Document.js, dn, utils/debug.ts, utils/config.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/teammateContext.ts, utils/git/gitFilesystem.ts, utils/teleport.tsx, utils/git.ts, @modelcontextprotocol/sdk/dist/esm/shared/auth-utils.js, utils/worktree.ts, utils/file.ts, utils/platform.ts, @anthropic-ai/sandbox-runtime/dist/sandbox/http-proxy.js, utils/execFileNoThrowPortable.ts, utils/settings/settings.ts, utils/shell/readOnlyCommandValidation.ts, services/teamMemorySync/secretScanner.ts, utils/plugins/installCounts.ts
 ((eu = require("fs/promises")), (Qic = R(D3e(), 1)), (Bd = require("path")));
 ltm = /^[a-zA-Z0-9._-]+$/;
 ow = class ow extends Error {

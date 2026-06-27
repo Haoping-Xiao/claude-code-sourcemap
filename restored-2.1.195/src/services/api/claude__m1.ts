@@ -4,7 +4,7 @@
 // class=modified (alt of src/services/api/claude.ts)  jaccard=0.0206  score=0.3399  fileCov=0.0214
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module F8n] deps: Xr
+// [unwrapped __esm module F8n] deps: @modelcontextprotocol/sdk/dist/esm/types.js
 fMe = Dy({
   kind: "permission_file",
   payload: ve(() =>

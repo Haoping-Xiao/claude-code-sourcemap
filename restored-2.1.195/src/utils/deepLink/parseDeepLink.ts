@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.5593  score=0.7858  fileCov=0.66
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module HSc] deps: gzo, ag, kt, RFn, Epn, je, fn, At, ys, YS, _Tt, vn, BJ, iZr, y_, Dgt, vf, dr, Jt, sr, kv, K0, aR
+// [unwrapped __esm module HSc] deps: utils/cleanup.ts, utils/claudeInChrome/common.ts, utils/debug.ts, utils/mcpOutputStorage.ts, utils/cachePaths.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/teammateContext.ts, utils/processUserInput/processTextPrompt.ts, utils/sequential.ts, services/mcp/config.ts, history.ts, utils/stats.ts, utils/status.tsx, utils/settings/changeDetector.ts, utils/settings/settings.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, proxy-from-env/index.js, utils/mcpOutputStorage.ts, constants/prompts.ts
 tu = require("path");
 function wSc(e, { allowNewlineAndTab: t = false } = {}) {
   for (let n = 0; n < e.length; n++) {

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2455  score=0.5177  fileCov=0.3183
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Yil] deps: si, nIo, Ye, oIo, m1, LW
+// [unwrapped __esm module Yil] deps: @xmldom/xmldom/lib/entities.js, utils/formatBriefTimestamp.ts, hooks/useTerminalSize.ts, components/messages/HighlightedThinkingText.tsx, utils/thinking.ts, ink/components/Box.tsx
 ((Xzn = R(lt(), 1)), (fE = R(se(), 1)));
 function UserPromptMessage(e) {
   let t = Jil.c(23),

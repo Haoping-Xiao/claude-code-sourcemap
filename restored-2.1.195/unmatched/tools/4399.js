@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0147  score=0.0322  fileCov=0.0263
 // note: nearest: node_modules/commander/lib/option.js (0.0147); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VXn] deps: fh
+// [unwrapped __esm module VXn] deps: commands/insights.ts
 hAl = [dAl, pAl, fAl, mAl, gAl], sLo = `${dAl}
 ${pAl}
 ${fAl}`, Gyf = `${sLo}

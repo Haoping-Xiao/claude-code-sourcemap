@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0062  score=0.2565  fileCov=0.0063
 // note: nearest: node_modules/@grpc/grpc-js/build/src/server.js (0.0062); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module bRe] deps: M8, g$n, NFt, Vlt, HWe, _Re, Dbe, UFt
+// [unwrapped __esm module bRe] deps: zod/v4/core/util.js, protobufjs/ext/descriptor/index.js, @smithy/smithy-client/dist-cjs/index.js, @modelcontextprotocol/sdk/dist/esm/server/zod-compat.js, protobufjs/src/common.js, protobufjs/ext/descriptor/index.js, node-forge/lib/util.js, node-forge/lib/util.js
 PQi = new WeakMap();
 OQi = class OQi {
   field() {

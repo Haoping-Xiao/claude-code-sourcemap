@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.2304  score=0.6873  fileCov=0.2574
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Sbe] deps: vn, aeo
+// [unwrapped __esm module Sbe] deps: utils/sequential.ts, utils/processUserInput/processSlashCommand.tsx
 BPn = new Map();
 EKi = new Set();
 function U0(e) {

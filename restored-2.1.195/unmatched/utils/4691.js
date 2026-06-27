@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0458  score=0.1564  fileCov=0.0608
 // note: nearest: node_modules/@smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js (0.0458); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module VQ] deps: fn, At, YS, Rd, ANo, Jt
+// [unwrapped __esm module VQ] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/teammateContext.ts, utils/settings/constants.ts, tools/FileReadTool/FileReadTool.ts, utils/fsOperations.ts
 z$ = require("fs/promises"), HNo = require("path");
 function Dq() {
   return vNo.join(tr(), "daemon.json");

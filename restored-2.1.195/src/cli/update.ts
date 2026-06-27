@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: update
-// [unwrapped __esm module uhr] deps: Ye, dn, At, Ao, Hoe, dr, Epe, Jt, LPe, JN
+// [unwrapped __esm module uhr] deps: hooks/useTerminalSize.ts, dn, utils/errors.ts, utils/agentContext.ts, utils/task/sdkProgress.ts, utils/settings/settings.ts, utils/permissions/yoloClassifier.ts, utils/fsOperations.ts, utils/localInstaller.ts, main.tsx
 pve = R(se(), 1);
 async function update() {
   if (Oe.DISABLE_UPDATES)

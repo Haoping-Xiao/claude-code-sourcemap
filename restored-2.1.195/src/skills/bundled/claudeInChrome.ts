@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1772  score=0.3325  fileCov=0.275
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module UTc] deps: fh, G1, sa, AA
+// [unwrapped __esm module UTc] deps: commands/insights.ts, tools/AskUserQuestionTool/prompt.ts, utils/git.ts, skills/bundledSkills.ts
 Wbm = `After you finish implementing the change:
 1. **Code review** \u2014 Invoke the \`${nE}\` tool with \`skill: "code-review"\` to find correctness bugs (it reports findings; it does not edit code). Fix any findings it surfaces before continuing.
 2. **Run unit tests** \u2014 Run the project's test suite (check for package.json scripts, Makefile targets, or common commands like \`npm test\`, \`bun test\`, \`pytest\`, \`go test\`). If tests fail, fix them.

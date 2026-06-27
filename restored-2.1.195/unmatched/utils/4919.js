@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0084  score=0.1297  fileCov=0.0089
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0084); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module i2o] deps: zb, Ye, Un, er, vM, mVe, AN, SEe
+// [unwrapped __esm module i2o] deps: zod/v4/classic/schemas.js, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, utils/config.ts, utils/model/model.ts, mVe, ink/styles.ts, hooks/notifs/useCanSwitchToExistingSubscription.tsx
 yql = R(lt(), 1), _ql = R(rt(), 1), QXt = R(se(), 1), O4f = ve(() => dt.array(dt.object({
   id: dt.string(),
   title: dt.string().optional(),

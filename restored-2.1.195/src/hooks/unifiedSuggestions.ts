@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3274  score=0.5283  fileCov=0.4626
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module h6o] deps: zb, je, ih, Jt
+// [unwrapped __esm module h6o] deps: zod/v4/classic/schemas.js, utils/debug.ts, bootstrap/state.ts, utils/fsOperations.ts
 ((DTt = new Map()), (pdr = new Set()), (pyc = Mi()), (fyc = pyc.subscribe));
 ypm = ve(() =>
   dt.object({

@@ -5,7 +5,7 @@
 // note: deminified; 40 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: untypeDenyReasonForAskPropagation, toPosixPath, relativePath, patternWithRoot, pathInWorkingPath, pathInAllowedWorkingPath, normalizeTrustedSymlink, normalizePatternsToPath, normalizeCaseForComparison, matchingRuleForInput, matchingAllowRuleForAllPaths, matchesPathRule, isUntrustedUncPath, isScratchpadEnabled, isClaudeSettingsPath, getScratchpadDir, getResolvedWorkingDirPaths, getProjectTempDir, getFileReadIgnorePatterns, getClaudeTempDirName, getClaudeTempDir, getClaudeSkillSco …
-// [unwrapped __esm module KI] deps: Qi, ft, db, Lo, je, fn, At, iYr, ys, vn, dr, Ost
+// [unwrapped __esm module KI] deps: lodash-es/memoize.js, services/analytics/index.ts, utils/authFileDescriptor.ts, utils/fsOperations.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/config.ts, utils/fsOperations.ts, utils/sequential.ts, utils/settings/settings.ts, utils/words.ts
 (($sc = require("crypto")), (Lz = require("path")));
 gS = Cn(function () {
   let n = Dr().plansDirectory,

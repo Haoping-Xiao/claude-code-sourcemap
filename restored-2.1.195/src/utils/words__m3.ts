@@ -4,7 +4,7 @@
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0018  score=0.0313  fileCov=0.002
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module oRc] deps: aW, Un, kt, jc, wr, co, aS, xtn
+// [unwrapped __esm module oRc] deps: types/generated/google/protobuf/timestamp.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/semver.ts, main.tsx, utils/messages.ts, utils/telemetry/pluginTelemetry.ts, utils/crypto.ts
 ((nRc = R(lt(), 1)), (UNe = R(rt(), 1)));
 function ADJECTIVES(e) {
   return e === "instruction_following" ? "instruction_following" : "generic";

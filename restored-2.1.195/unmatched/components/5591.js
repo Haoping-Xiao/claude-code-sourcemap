@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0432  score=0.1649  fileCov=0.0553
 // note: nearest: src/ink/components/Box.tsx (0.0432); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module MHc] deps: Vl, Bs, Ko, X0, eKo, WTe, kHc, Ye, Un, kt, Du, uo, tWt, Wbt, DHc
+// [unwrapped __esm module MHc] deps: keybindings/useShortcutDisplay.ts, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/BashPermissionRequest/BashPermissionRequest.tsx, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, utils/powershell/staticPrefix.ts, hooks/useTerminalSize.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/firstPartyEventLoggingExporter.ts, context/notifications.tsx, tools/PowerShellTool/destructiveCommandWarning.ts, tools/PowerShellTool/readOnlyValidation.ts, components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx
 cx = R(rt(), 1), qP = R(se(), 1);
 function OHc(e) {
   let t = $Hc.c(27),

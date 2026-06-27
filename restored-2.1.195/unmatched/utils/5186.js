@@ -4,7 +4,7 @@
 // class=new  jaccard=0.0312  score=1  fileCov=0.0312
 // note: nearest: src/utils/listSessionsImpl.ts (0.0312); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module $3o] deps: fn, jS, Jt
+// [unwrapped __esm module $3o] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/path.ts, utils/fsOperations.ts
 FZl = require("fs/promises");
 async function qZl(e, t = {}) {
   let n = FS(e);

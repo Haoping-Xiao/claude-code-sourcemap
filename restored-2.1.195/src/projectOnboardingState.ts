@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4087  score=0.795  fileCov=0.4568
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module WQr] deps: Ed, Ye, kne, DGe
+// [unwrapped __esm module WQr] deps: context/notifications.tsx, hooks/useTerminalSize.ts, vendor/image-processor-src/index.ts, hooks/useClipboardImageHint.ts
 jat = R(rt(), 1);
 function EUt(e, t) {
   switch (t) {

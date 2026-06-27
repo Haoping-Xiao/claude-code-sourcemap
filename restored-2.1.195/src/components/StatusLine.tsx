@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1821  score=0.4617  fileCov=0.2311
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module b8o] deps: EJt, m8o, FDn, Ed, y8o, C5, uTt, rnr
+// [unwrapped __esm module b8o] deps: components/permissions/rules/PermissionRuleDescription.tsx, context/stats.tsx, utils/pasteStore.ts, context/notifications.tsx, interactiveHelpers.tsx, utils/renderOptions.ts, commands/install.tsx, components/ScrollKeybindingHandler.tsx
 ((lmc = R(lt(), 1)), (gNe = R(se(), 1)));
 class cmc {
   pending = null;

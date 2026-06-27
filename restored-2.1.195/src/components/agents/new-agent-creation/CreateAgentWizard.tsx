@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1453  score=0.5307  fileCov=0.1667
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module d7l] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, d4o
+// [unwrapped __esm module d7l] deps: hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/ScrollKeybindingHandler.tsx, @ant/computer-use-mcp/src/toolCalls.ts, vH, components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx
 ((c7l = R(lt(), 1)), (qsr = R(rt(), 1)), (wz = R(se(), 1)));
 function CreateAgentWizard(t0) {
   let t = p7l.c(17),
