@@ -82,7 +82,6 @@ UJl = {
     },
   },
 };
-var qJl = {};
 function R6f({ hasConversationMessages: e, onDone: t }) {
   let n = Ht((b) => b.mainLoopModel),
     r = Ht((b) => b.mainLoopModelForSession),

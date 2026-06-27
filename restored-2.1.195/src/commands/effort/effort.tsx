@@ -40,7 +40,6 @@ Do not run the statusline-setup agent and do not edit any settings files. Simply
   },
 }),
   (vQl = J6f));
-var MQl = {};
 function getEffortHelpText() {
   let e = As(),
     t = t8(e),

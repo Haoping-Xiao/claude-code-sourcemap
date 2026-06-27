@@ -198,7 +198,6 @@
   (Nxu = Fe.int()),
   (Bxu = Fe.int()),
   (Uxu = Fe.int()));
-var dkr = {};
 var ANTHROPIC_MODEL,
   ANTHROPIC_SMALL_FAST_MODEL,
   ANTHROPIC_DEFAULT_FABLE_MODEL,

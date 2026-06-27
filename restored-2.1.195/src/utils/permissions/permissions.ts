@@ -77,7 +77,6 @@
     "triple_click",
     "left_click_drag",
   ])));
-var cDl = {};
 function isNonDeniableTool(e) {
   return !e.mcpInfo && trm.has(e.name);
 }

@@ -5,7 +5,6 @@
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mapWorkflowSelectionToResult, WorkflowPermissionDialog, WORKFLOW_USAGE_WARNING
-var ZHc = {};
 function mapWorkflowSelectionToResult(e, t, n, r) {
   switch (e) {
     case "yes":

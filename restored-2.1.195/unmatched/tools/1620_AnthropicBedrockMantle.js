@@ -63,4 +63,3 @@ K4r = class K4r extends ah {
     e.headers = vrt([o, e.headers]).values;
   }
 };
-var Eje = {};

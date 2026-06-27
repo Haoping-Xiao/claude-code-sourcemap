@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module eNl] deps: fH, tC, gNo, I1l, Ye, ps, sr, Cc, Bs, vi, gDe, Ko, CH, kP, _No, SNo, J1l
 Q1l = R(lt(), 1), wHe = R(rt(), 1), lw = R(se(), 1);
-var tNl = {};
 var nNl,
   call = async (e, t) => {
     let {

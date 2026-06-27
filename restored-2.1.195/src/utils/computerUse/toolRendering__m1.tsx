@@ -23,7 +23,6 @@ JIp = {
   left_click_drag: "Dragged",
   open_application: "Opened",
 };
-var wRa = {};
 function h5() {
   return hfo;
 }

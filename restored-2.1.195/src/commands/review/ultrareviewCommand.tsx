@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module E9l] deps: Vl, vi, q9n, NVt, Y2o, tC, w4, Ye, Zor, er, Mne, sYe, kAt
 ((nsr = R(lt(), 1)), (nme = R(rt(), 1)), (Db = R(se(), 1)));
-var A9l = {};
 function xWf(e) {
   return e.map((t) => (t.type === "text" ? t.text : "")).filter(Boolean).join(`
 `);

@@ -5,7 +5,6 @@
 // note: nearest: src/components/Settings/Config.tsx (0.012); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: relaunchInto, call
-var nzl = {};
 function relaunchInto(e, t) {
   return w1e({
     freshIfNoTranscript: !0,

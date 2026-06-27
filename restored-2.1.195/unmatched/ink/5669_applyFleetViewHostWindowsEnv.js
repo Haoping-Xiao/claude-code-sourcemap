@@ -7,7 +7,6 @@
 // module exports: applyFleetViewHostWindowsEnv, FleetViewScreen
 // [unwrapped __esm module jpr] deps: HI, ZS, q7, EW, Tne, oat
 mkc = R(lt(), 1), ytn = R(rt(), 1), gkc = R(se(), 1);
-var _tn = {};
 function FleetViewScreen(e) {
   let t = hkc.c(3),
     {

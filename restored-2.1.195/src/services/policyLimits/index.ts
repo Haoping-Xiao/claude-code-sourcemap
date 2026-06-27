@@ -48,7 +48,6 @@ tO = class tO extends Error {
 ]),
   (vom = new Set([401, 407, 429, 404, 403, 413])),
   (wom = [Oio, Djt, Nio, O1n, wcc, Pjt]));
-var bWt = {};
 function Dcc() {
   try {
     return Math.max(0, Date.now() - Rcc.statSync(Ske()).mtimeMs);

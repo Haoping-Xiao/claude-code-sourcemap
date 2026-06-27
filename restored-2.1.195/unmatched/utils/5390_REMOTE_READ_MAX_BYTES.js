@@ -7,7 +7,6 @@
 // module exports: readFileForRemote, REMOTE_READ_MAX_BYTES
 // [unwrapped __esm module yur] deps: ft, kt, co, Zf, Ire, Ryt, Vv, Il, Cp, p6e, sp, Dfc, xW, _Tt, co, I1, CIo, Rze, q8t, X4, uJt, yYt, Gfc
 hur = require("crypto");
-var Yfc = {};
 async function readFileForRemote(e, t, n, r = "utf-8") {
   let o = ds(e);
   for (let a of i_(o)) if (!DOn(a, n, "read").allowed) throw Error(`read denied: ${e}`);

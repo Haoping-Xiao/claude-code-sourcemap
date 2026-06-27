@@ -7,7 +7,6 @@
 // module exports: sharp, getNativeModule, default
 // [unwrapped __esm module kne] deps: kt, xne, H0e
 Tqi = new Set();
-var dQr = {};
 function getNativeModule() {
   if (vqi) return sDn;
   vqi = !0;

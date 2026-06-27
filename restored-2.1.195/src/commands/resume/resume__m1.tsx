@@ -5,7 +5,6 @@
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parsePrIdentifier, ResumeConversation, LiveBgMessage
-var iOc = {};
 function parsePrIdentifier(e) {
   let t = parseInt(e, 10);
   if (!isNaN(t) && t > 0) return t;

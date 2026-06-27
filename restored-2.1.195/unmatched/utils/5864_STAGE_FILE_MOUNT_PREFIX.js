@@ -21,7 +21,6 @@ function _Xo(e, t) {
   for (let n of e) t(n);
   e.length = 0;
 }
-var EXo = {};
 function resolveStageFileRoot(e) {
   if (!e) return DEFAULT_STAGE_FILE_ROOT;
   if (!Lmr(e)) throw Error("CLAUDE_STAGE_FILE_ROOT must be an absolute path");

@@ -7,7 +7,6 @@
 // module exports: shouldShowAutoDefaultNudge
 // [unwrapped __esm module BPc] deps: kt, O0, Ye, er, DE, dr, Vl, X0
 $Pc = R(lt(), 1), OPc = R(rt(), 1), jNe = R(se(), 1);
-var UPc = {};
 function shouldShowAutoDefaultNudge() {
   {
     let e = Dt();

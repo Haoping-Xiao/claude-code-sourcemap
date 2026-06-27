@@ -5,7 +5,6 @@
 // note: deminified; 16 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: storeOAuthAccountInfo, shouldUseClaudeAIAuth, revokeOAuthToken, refreshOAuthToken, populateOAuthAccountInfoIfNeeded, parseScopes, isOAuthTokenExpired, isInvalidGrantError, isExpectedOAuthTokenError, getOrganizationUUID, fetchProfileInfo, fetchAndStoreUserRoles, extractOAuthErrorFields, exchangeCodeForTokens, createAndStoreApiKey, buildAuthUrl
-var Int = {};
 function shouldUseClaudeAIAuth(e) {
   return Array.isArray(e) && e.includes(xB);
 }

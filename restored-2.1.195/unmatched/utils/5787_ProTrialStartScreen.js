@@ -7,7 +7,6 @@
 // module exports: ProTrialStartScreen
 // [unwrapped __esm module A$c] deps: kt, ft, O0, Ye, ps, dn, Kv, er, Lo, ys, Yp, rlt, sr, Csr, Bs, Fy, Ko, gm, X0, b$c
 S$c = R(lt(), 1), g7o = require("os"), cmr = R(rt(), 1), AE = R(se(), 1);
-var v$c = {};
 function ProTrialStartScreen(e) {
   let t = H$c.c(9),
     {

@@ -11,7 +11,6 @@
   (Tz = R(rt(), 1)),
   (Nf = R(se(), 1)),
   (cqf = NRr + NRr));
-var q6l = {};
 function fqf(e) {
   let t = G6l.c(25),
     { onDone: n } = e,

@@ -18,7 +18,6 @@ gGo = ve(() =>
     createSessionOnStart: H.boolean().default(false),
   }).strict(),
 );
-var Ltc = {};
 async function p7f(e, t, n, r) {
   let { intervalSeconds: o } = heartbeatWorkerSchema().parse(e);
   n(`heartbeat worker started (interval=${o}s)`);

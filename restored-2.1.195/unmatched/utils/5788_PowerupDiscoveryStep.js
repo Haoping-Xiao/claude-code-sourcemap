@@ -7,7 +7,6 @@
 // module exports: PowerupDiscoveryStep
 // [unwrapped __esm module w$c] deps: Ye, ps, kt, hAt, je, At, vn, FZt, EC
 H$c = R(lt(), 1), T$c = R(rt(), 1), $Z = R(se(), 1);
-var x$c = {};
 function PowerupDiscoveryStep(e) {
   let t = C$c.c(9),
     {

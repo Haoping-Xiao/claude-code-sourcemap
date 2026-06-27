@@ -14,7 +14,6 @@
   load: () => Promise.resolve().then(() => (kzl(), Izl)),
 }),
   (Lzl = Gqf));
-var Mzl = {};
 function Wqf(e) {
   let t = Pzl.c(10),
     { planContent: n, planPath: r, editorName: o } = e,

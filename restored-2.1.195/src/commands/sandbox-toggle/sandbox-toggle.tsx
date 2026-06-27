@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module bXl] deps: Ye, ps, lg, dr, Vl, hse, v5, MEt, eE, kP, fXl, gXl, yXl
 ((T4o = R(lt(), 1)), (EA = R(se(), 1)));
-var EXl = {};
 async function call(e, t, n) {
   let o = jo().theme || "light",
     s = Vt();

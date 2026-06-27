@@ -15,7 +15,6 @@
     "examples/server.md": Fxc,
     "examples/tui.md": Gxc,
   }));
-var zxc = {};
 function Vxc() {
   return (QHm ??= Promise.resolve().then(() => (EKo(), SKo)));
 }

@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module OKl] deps: si, _i, Ye, ps, Bs, vi, B_, Ko, Xce, Mg
 Zjo = R(lt(), 1), tTe = R(rt(), 1), Zg = R(se(), 1);
-var NKl = {};
 function AVf(e) {
   let t = e.match(EVf);
   if (!t) return null;

@@ -5,7 +5,6 @@
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeBridgePointer, readBridgePointerAcrossWorktrees, readBridgePointer, getBridgePointerPath, clearBridgePointer, BRIDGE_POINTER_TTL_MS
-var F1e = {};
 function getBridgePointerPath(e) {
   return Vir.join(PO(), LE(e), "bridge-pointer.json");
 }

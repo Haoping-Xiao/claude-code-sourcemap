@@ -21,7 +21,6 @@
       defaultKey: zY,
     },
   }));
-var wMc = {};
 async function checkMantleDefaultAvailability(e = Jnt) {
   if (fr() !== "mantle") return [];
   if (Oe.CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST) return [];

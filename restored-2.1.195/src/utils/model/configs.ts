@@ -195,7 +195,6 @@
   (cUr = ["opus48", "opus47", "opus46", "opus45"]),
   (_7s = Object.values(yc).map((e) => e.firstParty)),
   (MSn = Object.fromEntries(Object.entries(yc).map(([e, t]) => [t.firstParty, e]))));
-var b7s = {};
 function getAPIProvider() {
   if (km()) return "gateway";
   return ut(process.env.CLAUDE_CODE_USE_BEDROCK)

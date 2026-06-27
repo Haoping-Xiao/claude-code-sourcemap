@@ -5,7 +5,6 @@
 // note: deminified; 41 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSkipPluginAutoupdate, setPathTrusted, setClientDataCacheKeyGetter, saveGlobalConfig, saveCurrentProjectConfig, resetTrustDialogAcceptedCache, resetLocalSettingsGitTrackedCache, recordFirstStartTime, isWorkspacePersistedTrusted, isProjectScopeTrustAccepted, isProjectConfigKey, isPathTrusted, isLocalSettingsGitTracked, isGlobalConfigKey, isAutoUpdaterDisabled, hasClientDataCacheSlot, getWorkspacePersistedTrustKey, getUserClaudeRulesDir, getRemoteControlAtStartup, getRawCurre …
-var NQ = {};
 function Cme() {
   return {
     numStartups: 0,

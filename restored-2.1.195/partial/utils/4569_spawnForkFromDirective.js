@@ -8,7 +8,6 @@
 // [unwrapped __esm module VYt] deps: PR, g$e, fp, q0, co
 rkf = /^\/btw\b/gi;
 Qze = zLl();
-var JLl = {};
 async function spawnForkFromDirective(e, t, n, r) {
   if (Gv()) return Le("subagent_launch", "subagent_fork_coordinator_mode"), null;
   let o = t.renderedSystemPrompt;

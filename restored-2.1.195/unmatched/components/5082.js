@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module _7l] deps: iu, Xa, O0, t4o, _i, Ye, ps, uo, rme, r4o, ty, gb, je, fn, At, Vl, Bs, Fy, vi, v5, Ko, eE, kP, Mg, mYl, AYl, wYl, VAt, m7l, h7l
 p4o = R(lt(), 1), QAt = R(rt(), 1), tc = R(se(), 1);
-var b7l = {};
 async function call(e, t) {
   let n = Fr(t),
     r = F$(n);

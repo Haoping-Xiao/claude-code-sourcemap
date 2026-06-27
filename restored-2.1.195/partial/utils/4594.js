@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module xOo] deps: ft, wQ, GF, ag, IL, y_, _a, Ver, Mp
 g0f = ["default", "reset", "none", "gray", "grey"];
-var iPl = {};
 async function call(e, t) {
   return {
     type: "text",

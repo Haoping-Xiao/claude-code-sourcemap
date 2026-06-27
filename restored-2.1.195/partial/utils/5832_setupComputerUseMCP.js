@@ -7,7 +7,6 @@
 // module exports: setupComputerUseMCP
 // [unwrapped __esm module B1c] deps: ft, IL, bk, hN, hP
 $1c = require("fs/promises");
-var j1c = {};
 function setupComputerUseMCP() {
   let e = Cqe(ckn, apt()).map(n => i9(S7, n.name)),
     t = dm() ? ["--computer-use-mcp"] : [U1c.join(F1c.fileURLToPath("file:///home/runner/work/claude-cli-internal/claude-cli-internal/src/utils/computerUse/setup.ts"), "..", "cli.js"), "--computer-use-mcp"];

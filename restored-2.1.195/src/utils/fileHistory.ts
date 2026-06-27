@@ -13,7 +13,6 @@ function ZEe(e, t) {
 function iMe(e) {
   return;
 }
-var VQa = {};
 function reduceFileHistoryState(e, t) {
   switch (t.kind) {
     case "track":

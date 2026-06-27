@@ -5,7 +5,6 @@
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sanitizeKeytermsForHeader, probeVoiceConnectivity, isVoiceStreamAvailable, isTypedInterimsEnabled, connectVoiceStream, FINALIZE_TIMEOUTS_MS
-var enc = {};
 function rar(e, t, n) {
   return typeof e === "number" && Number.isInteger(e) && e >= t && e <= n ? String(e) : "unknown";
 }

@@ -11,7 +11,6 @@
     code: "code -w",
     subl: "subl --wait",
   }));
-var wBl = {};
 function POf({ onDone: e }) {
   let t = async (r) => {
       try {

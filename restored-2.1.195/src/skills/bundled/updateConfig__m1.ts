@@ -529,5 +529,4 @@ costs one more human look. Ambiguous output is FAIL with the raw
 capture attached \u2014 don't interpret.
 `;
 var Twc = () => {};
-var wwc = {};
 var SKILL_MD, SKILL_FILES;

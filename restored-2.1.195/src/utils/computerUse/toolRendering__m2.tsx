@@ -40,7 +40,6 @@
     cursor_position: "read the cursor position",
     wait: "wait",
   }));
-var u0a = {};
 function n0a(e, t) {
   if (eGt.size >= TCp) eGt.clear();
   eGt.set(e, t);

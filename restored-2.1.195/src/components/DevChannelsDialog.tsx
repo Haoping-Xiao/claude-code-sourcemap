@@ -7,7 +7,6 @@
 // module exports: DevChannelsDialog
 // [unwrapped __esm module D$c] deps: kt, Ye, Yp, dr, Fy, vi
 ((R$c = R(lt(), 1)), (umr = R(rt(), 1)), (ove = R(se(), 1)));
-var M$c = {};
 function DevChannelsDialog(e) {
   let t = P$c.c(13),
     { channels: n, onAccept: r } = e,

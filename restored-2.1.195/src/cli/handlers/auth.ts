@@ -7,7 +7,6 @@
 // module exports: installOAuthTokens, authStatus, authLogout, authLogin
 // [unwrapped __esm module MAo] deps: si, ft, Ye, xnt, oo, wFe, dC, gb, MPe, fn, oc, es, aE, Ao, Ls, u9, BJ, Mh, lg, Dgt, vf, i2e, dr
 dKa = R(se(), 1);
-var UVn = {};
 async function pKa(e) {
   process.stderr.write(
     e +

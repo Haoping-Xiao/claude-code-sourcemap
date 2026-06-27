@@ -16,7 +16,6 @@
       osPlatform: H.string().optional(),
     }),
   )));
-var kXl = {};
 function _8f(e) {
   let t = xXl.c(47),
     { onDone: n, isExtensionInstalled: r, configEnabled: o, isClaudeAISubscriber: s, isWSL: i } = e,

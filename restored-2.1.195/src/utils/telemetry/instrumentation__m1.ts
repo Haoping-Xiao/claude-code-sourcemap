@@ -58,7 +58,6 @@
   (kgu = Fe.str()),
   (Rgu = Fe.str()),
   (Lgu = Fe.str()));
-var UIr = {};
 var CLAUDE_DEBUG,
   CLAUDE_CODE_DEBUG_LOG_LEVEL,
   CLAUDE_CODE_DEBUG_LOGS_DIR,

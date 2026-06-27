@@ -15,7 +15,6 @@
   load: () => Promise.resolve().then(() => (MXl(), PXl)),
 }),
   (C4o = I8f));
-var OXl = {};
 async function call() {
   if (await ac("https://clau.de/radio"))
     return {

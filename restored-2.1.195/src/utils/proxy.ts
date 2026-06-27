@@ -5,7 +5,6 @@
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldBypassProxyWithCidr, shouldBypassProxy, prefetchProxyAuthFromHelperIfSafe, getWebSocketProxyUrl, getProxyUrl, getProxyFetchOptions, getProxyAuthFromHelperCached, getProxyAuthFromHelper, getProxyAgent, getNoProxy, getConfiguredProxyAuthHelper, getAddressFamily, getAWSClientProxyConfig, disableKeepAlive, configureGlobalAgents, clearProxyCache, clearProxyAuthHelperCache, _setProxyAuthHelperConfig, _resetProxyAuthHelperForTesting, _resetKeepAliveForTesting
-var k2e = {};
 function disableKeepAlive() {
   LOr = true;
 }

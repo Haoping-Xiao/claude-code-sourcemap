@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module t1l] deps: $7t, np, Ye, str
 ZOl = R(lt(), 1), Ktr = R(rt(), 1), oNo = R(se(), 1);
-var n1l = {};
 async function call(e, t) {
   let n = e.trim(),
     r = n.toLowerCase();

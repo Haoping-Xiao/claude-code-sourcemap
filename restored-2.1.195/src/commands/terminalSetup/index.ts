@@ -37,7 +37,6 @@
     load: () => Promise.resolve().then(() => (R0e(), P8i)),
   }),
   (wjo = eqf));
-var x6l = {};
 var k6l,
   call = async (e, t, n, r) =>
     k6l.jsx(WOe, {

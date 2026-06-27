@@ -5,7 +5,6 @@
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isAllowedAutoMemWritePath, initExtractMemories, executeExtractMemories, drainPendingExtraction, createAutoMemCanUseTool
-var NQn = {};
 function LPo(e) {
   return e.type === "user" || e.type === "assistant";
 }

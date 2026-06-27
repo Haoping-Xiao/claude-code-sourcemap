@@ -14,7 +14,6 @@ vam = sur.lazy(() =>
       default: e.Doctor,
     })),
 );
-var F9o = {};
 async function gpc(e, t) {
   await oV({
     hasDynamicMcpConfig: false,

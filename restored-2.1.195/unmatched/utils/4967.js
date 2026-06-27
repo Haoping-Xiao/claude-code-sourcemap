@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module B9l] deps: m8, gGe, Jke, Ye, kt, Du, rpn, vn, Hu, Is, dr, sr, eE
 $9l = R(lt(), 1), zHe = R(rt(), 1), hR = R(se(), 1);
-var U9l = {};
 var F9l,
   KWf = 20,
   call = async (e, t) => {

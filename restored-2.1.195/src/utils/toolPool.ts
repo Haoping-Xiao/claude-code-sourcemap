@@ -14,7 +14,6 @@ zKl = {
   isEnabled: () => !Gv(),
   load: () => Promise.resolve().then(() => (VKl(), qKl)),
 };
-var ZKl = {};
 function isPrActivitySubscriptionTool(e) {
   return xVf.some((t) => e.endsWith(t));
 }

@@ -56,7 +56,6 @@ S6t = class S6t extends Error {
     ttl: 300000,
   })));
 Ouf = new Set([301, 302, 303, 307, 308]);
-var yko = {};
 function isFrameBaseVersionEnabled() {
   return at("tengu_cobalt_plinth_fern", false);
 }

@@ -7,4 +7,3 @@
 // module exports: fromWebToken, fromTokenFile
 // [unwrapped __esm module qjs]
 Fjs = R(UR(), 1), jjs = R(by(), 1), Gjs = R(ej(), 1), Wjs = require("fs");
-var wOr = {};

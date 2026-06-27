@@ -14,7 +14,6 @@
   load: () => Promise.resolve().then(() => (Q$o(), J$o)),
 }),
   (GKl = vVf));
-var qKl = {};
 var call = async (e, t, n) => {
   let r = n.trim();
   if (!r)

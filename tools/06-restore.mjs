@@ -172,6 +172,27 @@ function simplifyExports(ast) {
   return exportNames.length;
 }
 
+// 删除零引用的空对象声明 `var X = {}` (折叠 _t 后遗留的导出目标)。
+// 只删 init 为空 ObjectExpression 且无任何引用者, 注入的 exports/module 因被引用而保留。
+function removeDeadExportObjects(ast) {
+  traverse(ast, {
+    Program(path) {
+      path.scope.crawl(); // 重新计算作用域/引用 (前面手动改过 body 数组, 缓存已过期)
+      for (const name of Object.keys(path.scope.bindings)) {
+        const b = path.scope.bindings[name];
+        if (b.references !== 0 || b.constantViolations.length !== 0) continue;
+        const node = b.path.node;
+        if (b.path.type === "VariableDeclarator" && node.init &&
+            node.init.type === "ObjectExpression" && node.init.properties.length === 0 &&
+            b.path.parentPath.node.declarations.length === 1) {
+          b.path.parentPath.remove();
+        }
+      }
+      path.stop();
+    },
+  });
+}
+
 async function deobfuscate(content, { pretty, structural = true }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
@@ -212,6 +233,9 @@ async function deobfuscate(content, { pretty, structural = true }) {
 
   // 折叠 _t(target,{k:()=>v,...}) 导出表为一行注释 (重命名后多为 identity 噪声)
   try { simplifyExports(ast); } catch { /* keep as-is */ }
+
+  // 清理因折叠导出表而变成死代码的空导出对象 `var X = {}` (仅在零引用时删除)
+  try { removeDeadExportObjects(ast); } catch { /* keep as-is */ }
 
   let out;
   try {

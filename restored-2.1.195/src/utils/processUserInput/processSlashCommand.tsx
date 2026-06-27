@@ -5,7 +5,6 @@
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runUserPromptExpansionHook, processSlashCommand, processPromptSlashCommand, looksLikeCommand, isSlashCommandBlockedByEndedByModel, formatSkillLoadingMetadata
-var z8t = {};
 function isSlashCommandBlockedByEndedByModel(e, t) {
   if (!t) return false;
   return !(e && e.type !== "prompt" && Gif.has(e.name));

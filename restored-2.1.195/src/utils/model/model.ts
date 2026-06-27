@@ -5,7 +5,6 @@
 // note: deminified; 64 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: swapShrinksContextWindow, strip1mTag, resolvesToDefaultModel, resolveSkillModelOverride, resolveModelAliasEnvFree, resetEnforcementWarnDedupForTests, renderModelSetting, renderModelName, renderDefaultModelSetting, parseUserSpecifiedModel, normalizeModelStringForAPI, modelDisplayString, isWindowSilentDefaultPick, isPinnedFableModel, isOpus1mMergeEnabled, isNonCustomOpusModel, isNonCustomMythosModel, isNonCustomFableModel, isMythosModelValue, isMythosFamilyOrPinnedModel, isMythosA …
-var F2r = {};
 function getSmallFastModel() {
   if (process.env.ANTHROPIC_SMALL_FAST_MODEL) return iI(process.env.ANTHROPIC_SMALL_FAST_MODEL);
   let e = fr(),

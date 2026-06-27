@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module Czl] deps: iu, si, uo, $I, Vl, EJt, dse, Ye, ps, QH, Gy, Jt, Fy, v5, Ko, eE, R6, kP, Pfe, pzl, BZr, $jo, gzl, _zl, Ezl, vzl
 FAt = R(lt(), 1), A3 = R(rt(), 1), mu = R(se(), 1);
-var Izl = {};
 var xzl,
   call = async (e, t) => xzl.jsx(wzl, {
     onExit: e,

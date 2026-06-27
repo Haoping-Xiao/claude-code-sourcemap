@@ -126,7 +126,6 @@
   (uwu = Fe.str()),
   (dwu = Fe.str()),
   (pwu = Fe.str()));
-var ukr = {};
 var ANTHROPIC_CONFIG_DIR,
   CLAUDE_AFTER_LAST_COMPACT,
   CLAUDE_AGENTS_SELECT,

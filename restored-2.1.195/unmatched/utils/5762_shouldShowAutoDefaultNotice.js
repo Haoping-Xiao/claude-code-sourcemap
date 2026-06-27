@@ -5,7 +5,6 @@
 // note: nearest: src/commands/plugin/ManageMarketplaces.tsx (0.008); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldShowAutoDefaultNotice, AUTO_DEFAULT_NOTICE_TEXT
-var jPc = {};
 function shouldShowAutoDefaultNotice(e) {
   {
     let t = Dt();

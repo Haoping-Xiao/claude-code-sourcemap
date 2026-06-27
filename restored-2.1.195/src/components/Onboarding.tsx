@@ -15,7 +15,6 @@
   })));
 jMc.Item = imr;
 lmr = jMc;
-var VMc = {};
 function Onboarding({ onDone: e }) {
   let [t, n] = MZ.useState(0),
     [r, o] = MZ.useState(false),

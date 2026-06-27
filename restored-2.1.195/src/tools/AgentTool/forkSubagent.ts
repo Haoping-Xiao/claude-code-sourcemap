@@ -7,7 +7,6 @@
 // module exports: isInForkChild, isForkSubagentEnabled, getForkSubagentSource, buildWorktreeNotice, buildForkedMessages, buildChildMessage, _resetForkSubagentSourceTelemetryForTesting, FORK_SUBAGENT_TYPE, FORK_AGENT
 // [unwrapped __esm module l$] deps: ZWe, dn, kt, ii, fh, RX, Nue, u_, lf, i$, HU, wr, fn, _m, F8
 esp = new Set([Ly, Ip]);
-var Foa = {};
 function lsp() {
   if (j8()) return "disabled";
   if (ut(process.env.CLAUDE_CODE_FORK_SUBAGENT)) return "env";

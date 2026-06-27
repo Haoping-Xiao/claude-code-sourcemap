@@ -5,7 +5,6 @@
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateSessionTitle, sendEventToRemoteSession, sendBashCommandToRemoteSession, reportClientPresence, prepareApiRequest, markSessionRead, isTransientNetworkError, getOAuthHeaders, getBranchFromSession, fetchSession, fetchCodeSessionsFromSessionsAPI, ccrSessionToResource, axiosGetWithRetry, CodeSessionSchema, CCR_BYOC_BETA
-var sce = {};
 function isTransientNetworkError(e) {
   if (!po.isAxiosError(e)) return false;
   if (!e.response) return true;

@@ -7,7 +7,6 @@
 // module exports: recordExternalIncludesDecision, ClaudeMdExternalIncludesDialog
 // [unwrapped __esm module ptr] deps: sFn, v5, kt, NE, Xa, Ye, ps, uo, Cp, rle, Ao, LMl, c5e, dr, Cc, mE, Bs, Ko, zX, eE, m1o
 ((h1o = R(lt(), 1)), ($Oe = R(rt(), 1)), (Xg = R(se(), 1)));
-var UMl = {};
 function recordExternalIncludesDecision(e, t) {
   (pH((n) => ({
     ...n,

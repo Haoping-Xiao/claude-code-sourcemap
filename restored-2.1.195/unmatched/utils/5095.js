@@ -14,7 +14,6 @@ W9f = {
   thinClientDispatch: "post-text",
   load: () => Promise.resolve().then(() => (U7l(), B7l))
 }, Ysr = W9f;
-var j7l = {};
 async function call(e, t) {
   return t.onQueryEvent?.({
     type: "open_message_selector"

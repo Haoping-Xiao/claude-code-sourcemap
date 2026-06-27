@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module dQl] deps: L8t, BJt, Ye, kt, d5e, Vl, vi
 lQl = R(lt(), 1), cQl = R(rt(), 1), SYe = R(se(), 1);
-var pQl = {};
 async function call(e, t) {
   return fQl.jsx(uQl, {
     onDone: e,

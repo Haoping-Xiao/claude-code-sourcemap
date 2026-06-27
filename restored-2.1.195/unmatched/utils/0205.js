@@ -6,7 +6,6 @@
 // module exports: default
 // [unwrapped __esm module hss] deps: _Ue, FJe
 gss = KKc;
-var FIt = {};
 function XKc(e, t) {
   if (t) return e.slice();
   var n = e.length,

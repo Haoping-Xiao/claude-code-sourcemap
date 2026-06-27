@@ -9,7 +9,6 @@
 ((iTt = require("util")),
   ($sm = new Set(["bridge_status", "error_type", "tool_name"])),
   (Kcc = ["ask", "skip_all_permission_checks", "follow_a_plan"]));
-var nuc = {};
 function pw(e, ...t) {
   if (Jcc) {
     let n = new Date().toISOString(),

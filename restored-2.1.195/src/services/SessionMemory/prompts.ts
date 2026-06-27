@@ -7,7 +7,6 @@
 // module exports: registerRunSkillGeneratorSkill
 // [unwrapped __esm module HKo] deps: Yxc, Jxc
 ((rTm = Xxc), (oTm = Qxc));
-var Zxc = {};
 function registerRunSkillGeneratorSkill() {
   Nd({
     name: "run-skill-generator",

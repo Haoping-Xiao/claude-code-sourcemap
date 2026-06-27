@@ -16,7 +16,6 @@ sQl = {
   },
   load: () => Promise.resolve().then(() => (oQl(), nQl)),
 };
-var r3o = {};
 async function call(e, t) {
   try {
     if (bo()) {

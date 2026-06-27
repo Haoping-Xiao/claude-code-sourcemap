@@ -7,7 +7,6 @@
 // module exports: call, Teleport
 // [unwrapped __esm module Tjo] deps: kt, l6l, Ye, ps, rlt, Ko, d6l, EC
 ((p6l = R(lt(), 1)), (f6l = R(rt(), 1)), (qq = R(se(), 1)));
-var _6l = {};
 function Teleport(e) {
   let t = g6l.c(16),
     { onExit: n, context: r } = e,

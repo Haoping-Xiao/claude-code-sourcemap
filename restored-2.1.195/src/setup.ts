@@ -7,7 +7,6 @@
 // module exports: setup, isRemoteCoworkEntrypointExempted, isDesktopEntrypointExempted
 // [unwrapped __esm module Bdc] deps: er, je
 ((Jcr = require("fs/promises")), ($dc = require("os")), (Odc = require("path")));
-var Qcr = {};
 async function setup(e, t, n, r, o, s, i, a, l) {
   In("info", "setup_started");
   let c = process.version.match(/^v(\d+)\./)?.[1];

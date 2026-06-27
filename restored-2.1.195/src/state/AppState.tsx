@@ -7,7 +7,6 @@
 // module exports: AppStateProvider
 // [unwrapped __esm module C4n] deps: Zf, zqe, ORt, er, je, Cp, Q9, fn, PM, Hu, $I, __, Gy, fre, qho, Jt, vf, dr
 nNa = require("path");
-var iNa = {};
 function AppStateProvider(e) {
   let t = oNa.c(23),
     { children: n, initialState: r, onChangeAppState: o } = e;

@@ -7,7 +7,6 @@
 // module exports: parseGitRemote, parseGitHubRepository, isCachedGitHubRepo, getCachedRepositoryHost, getCachedRepository, detectCurrentRepositoryWithHost, detectCurrentRepository, clearRepositoryCaches
 // [unwrapped __esm module Mx]
 L$u = /[:/\\?#@\s]/;
-var ARt = {};
 function clearRepositoryCaches() {
   cCe.clear();
 }

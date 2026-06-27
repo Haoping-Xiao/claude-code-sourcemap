@@ -48,7 +48,6 @@
     ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     ".zip": "application/zip",
   }));
-var CQ = {};
 function isBriefEntitled() {
   return Oe.CLAUDE_CODE_BRIEF || T7("tengu_kairos_brief", false, fmf);
 }

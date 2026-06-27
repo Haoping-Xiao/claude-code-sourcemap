@@ -22,7 +22,6 @@ Vjo = {
   },
   load: () => Promise.resolve().then(() => (Qzl(), Xzl)),
 };
-var eKl = {};
 function rVf() {
   let e = AJt.c(9),
     t;

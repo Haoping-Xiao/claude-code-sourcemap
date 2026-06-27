@@ -327,7 +327,6 @@ if (!(Lue.cache instanceof Map)) Lue.cache = new Map();
     B4o,
   ])));
 SZf = Cn(() => qQt().filter((e) => e.fleetHostCall !== void 0));
-var nVe = {};
 function isTranscriptMessage(e) {
   return (
     e.type === "user" || e.type === "assistant" || e.type === "attachment" || e.type === "system"

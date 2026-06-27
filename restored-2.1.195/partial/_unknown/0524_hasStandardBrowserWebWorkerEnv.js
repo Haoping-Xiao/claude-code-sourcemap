@@ -21,5 +21,4 @@ uys = R(require("crypto")), dys = {
   generateString: pbu,
   protocols: ["http", "https", "file", "data"]
 };
-var yxr = {};
 var hasBrowserEnv, navigator, hasStandardBrowserEnv, hasStandardBrowserWebWorkerEnv, origin;

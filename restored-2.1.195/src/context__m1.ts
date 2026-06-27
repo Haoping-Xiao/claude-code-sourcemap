@@ -13,7 +13,6 @@
   (qXf = /"customTitle":"([^"]+)"/),
   (VXf = /"prNumber":(\d+)/),
   (zXf = /"role":"user"[^}]*"content":"([^"]+)"/));
-var Vnc = {};
 function YXf(e) {
   try {
     return new URL(e).origin;

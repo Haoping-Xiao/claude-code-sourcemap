@@ -26,7 +26,6 @@
     load: () => Promise.resolve().then(() => (aPl(), iPl)),
   }),
   (kOo = b0f));
-var EPl = {};
 function E0f(e) {
   let t = ug.lexer(RMe(e)),
     n = [];

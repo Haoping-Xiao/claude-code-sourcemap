@@ -30,7 +30,6 @@ Ygo = ["VERIFIED", "VERIFIED_KEYLESS_DEVICE", "VERIFIED_BY_GATE"];
       accept_statuses: H.array(H.enum(nPp)).default([]),
     }),
   )));
-var Qjn = {};
 function isProactiveEnrollmentDisabled() {
   return at(FOa, false);
 }

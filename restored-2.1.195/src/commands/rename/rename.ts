@@ -5,7 +5,6 @@
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renameSystemReminder, performRename, call
-var eWl = {};
 function renameSystemReminder(e) {
   let t = Ner(e);
   return aw(`The user named this session "${t}". This may indicate the session's focus or intent.`);

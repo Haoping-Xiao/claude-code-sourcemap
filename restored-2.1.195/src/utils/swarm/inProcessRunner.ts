@@ -18,7 +18,6 @@ function Jgl() {
   _0o = null;
 }
 var _0o = null;
-var Qgl = {};
 var TEAMMATE_SYSTEM_PROMPT_ADDENDUM = `
 # Agent Teammate Communication
 

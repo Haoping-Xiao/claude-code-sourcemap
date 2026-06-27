@@ -7,4 +7,3 @@
 // module exports: fromHttp
 // [unwrapped __esm module sLs] deps: DIs, eLs
 nLs = R(UR(), 1), rLs = R(PG(), 1), iPr = R(by(), 1), oLs = R(require("fs/promises"));
-var aPr = {};

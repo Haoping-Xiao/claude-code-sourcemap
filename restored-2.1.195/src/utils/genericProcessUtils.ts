@@ -10,7 +10,6 @@ function Hr(e) {
   return /^[A-Za-z0-9_-]{1,128}$/.test(e) ? kh(e) : We("nonconforming");
 }
 var fb = () => {};
-var ort = {};
 function isProcessRunning(e) {
   if (e <= 1) return false;
   try {

@@ -29,7 +29,6 @@ function jie(e, t) {
 function jBe(e, t) {
   return e.rejected.has(t);
 }
-var twe = {};
 function hrs() {
   let e = "";
   if (

@@ -11,7 +11,6 @@ OLl = {
   spawning: "Spawning cloud autofix session\u2026",
   subscribing: "Turning on autofix\u2026"
 };
-var ULl = {};
 function Qxf(e) {
   let t = G$o.c(16),
     {

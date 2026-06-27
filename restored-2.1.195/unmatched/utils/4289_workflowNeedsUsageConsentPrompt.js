@@ -5,7 +5,6 @@
 // note: nearest: src/tools/AgentTool/runAgent.ts (0.0151); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: workflowNeedsUsageConsentPrompt, recordWorkflowUsageConsent
-var c0o = {};
 function workflowNeedsUsageConsentPrompt(e, t) {
   if (e !== uC) return false;
   if (t.options.isNonInteractiveSession) return false;

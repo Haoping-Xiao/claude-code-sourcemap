@@ -7,7 +7,6 @@
 // module exports: hasWorktreeRemoveHook, hasWorktreeCreateHook
 // [unwrapped __esm module PM] deps: fn, L7, dr, Sx
 _Ni = new Map();
-var jKr = {};
 function hasWorktreeCreateHook() {
   if (lc("hooks")) return false;
   let e = CU()?.WorktreeCreate;

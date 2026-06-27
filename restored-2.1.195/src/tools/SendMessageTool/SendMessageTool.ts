@@ -7,7 +7,6 @@
 // module exports: inFlightTeammateResumes, SendMessageTool, SendMessagePreconditionError
 // [unwrapped __esm module WEl] deps: ql, Ye, Jt
 GRo = R(se(), 1);
-var KEl = {};
 function Cyf() {
   return el() ? VEl() : wyf();
 }

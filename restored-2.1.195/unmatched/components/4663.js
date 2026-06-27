@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module $7t] deps: ps, O0, _i, fH, eE, kP, TMl, J$l, yOl, JOl
 QOl = R(lt(), 1), GOe = R(rt(), 1), WQ = R(se(), 1);
-var e1l = {};
 function RPf(e) {
   let t = ZOl.c(6),
     {

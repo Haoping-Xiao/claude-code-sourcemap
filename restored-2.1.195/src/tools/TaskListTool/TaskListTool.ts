@@ -92,7 +92,6 @@
       };
     },
   })));
-var Zbl = {};
 function isWorktreeModeEnabled() {
   return true;
 }

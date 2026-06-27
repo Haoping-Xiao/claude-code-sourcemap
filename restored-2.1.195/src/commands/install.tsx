@@ -11,7 +11,6 @@ _am = H.object({
   status_detail: H.string(),
   needs_action: H.string(),
 });
-var cpc = {};
 function bam() {
   let e = Oe.platform === "win32",
     t = apc.homedir();

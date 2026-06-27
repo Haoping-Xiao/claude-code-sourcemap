@@ -16,7 +16,6 @@
   load: () => Promise.resolve().then(() => j7l),
 }),
   (G7l = V9f));
-var z7l = {};
 async function captureMemoryDiagnostics(e, t = 0) {
   let n = process.memoryUsage(),
     r = Xsr.getHeapStatistics(),

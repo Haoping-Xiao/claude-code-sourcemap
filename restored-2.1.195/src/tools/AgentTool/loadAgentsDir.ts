@@ -5,7 +5,6 @@
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toAgentInfos, parseAgentsFromJson, parseAgentFromMarkdown, parseAgentFromJson, normalizeAgentType, isPluginAgent, isCustomAgent, isBuiltInAgent, hasRequiredMcpServers, getBuiltInAgents, getAgentDefinitionsWithOverrides, getActiveAgentsFromList, filterAgentsByMcpRequirements, clearAgentDefinitionsCache, agentMcpSpecsToScopedConfigs
-var GSt = {};
 function agentMcpSpecsToScopedConfigs(e) {
   if (!e.mcpServers?.length) return {};
   if (VE("mcp") && !L_e(e.source))

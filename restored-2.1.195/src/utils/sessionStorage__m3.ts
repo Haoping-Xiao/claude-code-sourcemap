@@ -22,7 +22,6 @@
   (XKf = ["user", "project", "local"]),
   (JKf = new Set(["bypassPermissions", "auto", "acceptEdits"])),
   (QKf = new Set(["project"])));
-var Gec = {};
 async function resolveSettings(e) {
   return Iec(e);
 }

@@ -39,7 +39,6 @@ function XFl(e, t) {
           : `"${t}" is pending approval \u2014 approve it in the terminal first`,
     );
 }
-var QFl = {};
 async function call(e, t) {
   let n = e.trim(),
     r = t.getMcp().clients.filter((_) => _.name !== "ide"),

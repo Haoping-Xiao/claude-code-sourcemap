@@ -9,7 +9,6 @@
 ((l0a = require("url")), (eGt = new Map()));
 ICp = new RegExp(`^${z0e}\\(([^)]+)\\)$`);
 LCp = new Set(["image/png", "image/jpeg", "image/gif", "image/webp"]);
-var p0a = {};
 function BCp(e, t, n) {
   let r = e.tabId;
   if (typeof r === "number") QZr(r);

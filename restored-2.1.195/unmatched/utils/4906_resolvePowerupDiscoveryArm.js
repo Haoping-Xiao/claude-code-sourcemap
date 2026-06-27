@@ -4,7 +4,6 @@
 // note: dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolvePowerupDiscoveryArm, POWERUP_DISCOVERY_COPY
-var R5l = {};
 function resolvePowerupDiscoveryArm() {
   let e = Oe.CLAUDE_CODE_POWERUP_ONBOARDING;
   if (e === "banner" || e === "step") return e;

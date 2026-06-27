@@ -29,7 +29,6 @@ function dxl(e) {
     .filter(Boolean).join(`
 `);
 }
-var zQn = {};
 async function Nze(e, t, n) {
   if ((await Kd(e, t), Object.keys(n).length > 0))
     Hq({

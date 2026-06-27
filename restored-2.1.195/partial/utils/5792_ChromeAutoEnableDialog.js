@@ -7,7 +7,6 @@
 // module exports: ChromeAutoEnableDialog
 // [unwrapped __esm module B$c] deps: kt, Ye, DHe, er, vn, vi
 O$c = R(lt(), 1), dmr = R(rt(), 1), lO = R(se(), 1);
-var F$c = {};
 function ChromeAutoEnableDialog(e) {
   let t = U$c.c(16),
     {

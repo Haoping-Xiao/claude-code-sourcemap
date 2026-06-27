@@ -7,7 +7,6 @@
 // module exports: useVoiceState, useSetVoiceState, useGetVoiceState, VoiceProvider
 // [unwrapped __esm module qLn] deps: iu, ft, At, Hu, Yf
 ((Q5i = require("fs/promises")), (oUt = require("path")));
-var eqi = {};
 function VoiceProvider(e) {
   let t = KJr.c(3),
     { children: n } = e,

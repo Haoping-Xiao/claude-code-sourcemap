@@ -5,7 +5,6 @@
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatLastUpdateResult, buildFixPrompt, PluginErrorsSection, McpConnectionIssuesSection, LastUpdateNode, IneffectivePluginDisablesSection, Doctor, DistTagsDisplay
-var YNo = {};
 function DistTagsDisplay(e) {
   let t = JOe.c(9),
     { promise: n } = e,

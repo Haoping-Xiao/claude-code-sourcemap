@@ -7,7 +7,6 @@
 // module exports: fetchMcpSkillsForClient
 // [unwrapped __esm module Xka] deps: Vb, jdt, je, Fka, eqe, At, vn, RFn
 ((Kka = require("crypto")), (g5 = require("fs/promises")), (Lre = require("path")));
-var Ppo = {};
 async function mCp(e) {
   let t = {
       direct: [],

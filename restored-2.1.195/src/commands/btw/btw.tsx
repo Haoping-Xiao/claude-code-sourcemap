@@ -12,7 +12,6 @@
   (ker = require("fs/promises")),
   (ZLl = require("readline")),
   (eDl = require("stream/promises")));
-var aDl = {};
 function fkf({ question: e, context: t, onDone: n }) {
   let [r, o] = UN.useState(null),
     [s, i] = UN.useState(false),

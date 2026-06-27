@@ -42,7 +42,6 @@ CRITICAL: You MUST call the ${Ip} tool exactly once to return your final answer.
   ...Wko,
   getSystemPrompt: () => npf
 };
-var $ml = {};
 async function Dml(e, t, n, r, o) {
   let s = qt(),
     i;

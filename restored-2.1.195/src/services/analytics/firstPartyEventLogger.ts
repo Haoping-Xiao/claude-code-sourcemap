@@ -5,7 +5,6 @@
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shutdown1PEventLogging, shouldSampleEvent, reinitialize1PEventLoggingIfConfigChanged, logGrowthBookExperimentTo1P, logEventTo1PAwaitable, logEventTo1PAsync, logEventTo1P, is1PEventLoggingEnabled, initialize1PEventLogging, getEventSamplingConfig, _reset1PStateForTesting, _getPreInitQueueForTesting
-var E3e = {};
 function getEventSamplingConfig() {
   return zx(eOd, {});
 }

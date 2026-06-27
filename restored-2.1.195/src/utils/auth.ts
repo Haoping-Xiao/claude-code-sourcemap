@@ -7,7 +7,6 @@
 // module exports: withOAuthRefreshLock, waitForRotatedEnvToken, validateForceLoginOrg, toAccountInfo, shouldUseWIFAuth, saveOAuthTokensIfNeeded, saveApiKey, restoreGatewayAuth, resetEnvDerivedAuthCaches, resetAwsAuthRefreshCooldown, resetAuthFailureTracking, removeApiKey, refreshGcpCredentialsIfNeeded, refreshGcpAuth, refreshAwsAuth, refreshAndGetAwsCredentials, readFreshOAuthAccessToken, prefetchGcpCredentialsIfSafe, prefetchAwsCredentialsAndBedRockInfoIfSafe, prefetchApiKeyFromApiKeyHelperIfSaf …
 // [unwrapped __esm module t1t]
 Bvi = new Map();
-var pU = {};
 function Vot() {
   return ut(process.env.CLAUDE_CODE_REMOTE) || oY();
 }

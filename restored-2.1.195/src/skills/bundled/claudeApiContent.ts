@@ -86,7 +86,6 @@
     "typescript/claude-api/tool-use.md": ixc,
     "typescript/managed-agents/README.md": lxc,
   }));
-var yxc = {};
 function dxc() {
   return (THm ??= Promise.resolve().then(() => (uxc(), cxc)));
 }

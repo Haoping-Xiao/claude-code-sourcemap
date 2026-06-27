@@ -5,7 +5,6 @@
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initReplBridge
-var F8o = {};
 async function initReplBridge(e) {
   let {
     getToolPermissionContext: t,

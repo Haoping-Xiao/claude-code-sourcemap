@@ -4,5 +4,4 @@
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopNonInteractive, default
-var Toc = {};
 var IQf, stopNonInteractive, kQf;

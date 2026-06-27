@@ -7,7 +7,6 @@
 // module exports: runPostLoginHooks, loginAutoContinueOptions, call, Login
 // [unwrapped __esm module mCo] deps: Ed, uo, ft, __
 A8t = R(rt(), 1);
-var gsl = {};
 async function runPostLoginHooks(e, t, n) {
   if (
     (e.onChangeAPIKey(),

@@ -7,5 +7,4 @@
 // module exports: SendUserFileTool
 // [unwrapped __esm module vSl] deps: Xa, Ye, K0o
 D$e = R(se(), 1);
-var wSl = {};
 var Thf, vhf, SendUserFileTool;

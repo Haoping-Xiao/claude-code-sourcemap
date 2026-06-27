@@ -7,7 +7,6 @@
 // module exports: stripHtmlComments, shouldShowClaudeMdExternalIncludesWarning, resetGetMemoryFilesCache, processMemoryFile, processMdRules, processConditionedMdRules, isSyntheticMemoryPath, isMemoryFilePath, hasExternalClaudeMdIncludes, getMemoryFilesForNestedDirectory, getMemoryFiles, getMaxMemoryCharacterCount, getManagedAndUserConditionalRules, getLargeMemoryFiles, getExternalClaudeMdIncludes, getConditionalRulesForCwdLevelDirectory, getClaudeMds, getAllMemoryFilePaths, filterInjectedMemoryFi …
 // [unwrapped __esm module ik] deps: YZe
 fjt = require("path");
-var Usa = {};
 function isSyntheticMemoryPath(e) {
   return e === RLr || e === MANAGED_SETTINGS_CLAUDEMD_PATH;
 }

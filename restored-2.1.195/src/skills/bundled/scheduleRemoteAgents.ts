@@ -23,7 +23,6 @@ Examples:
   /loop 1h /standup 1
   /loop check the deploy          (defaults to ${ZTt})
   /loop check the deploy every 20m`;
-var Bwc = {};
 function rAm(e) {
   if (!e.startsWith("mcpsrv_")) return null;
   let r = e.slice(7).slice(2),

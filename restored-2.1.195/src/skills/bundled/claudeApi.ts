@@ -175,5 +175,4 @@ If WebFetch fails or you have no network:
 - Proactively mention related features they may not know about, but only when relevant to the question.
 `;
 var Hxc = () => {};
-var vxc = {};
 var SKILL_PROMPT, SKILL_FILES;

@@ -9,7 +9,6 @@
 ((iJl = R(lt(), 1)),
   (L4o = R(se(), 1)),
   (J8f = ["Goodbye!", "See ya!", "Bye!", "Catch you later!"]));
-var aJl = {};
 function t6f() {
   return HL(e6f) ?? "Goodbye!";
 }

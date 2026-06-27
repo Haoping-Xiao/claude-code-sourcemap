@@ -16,7 +16,6 @@ ${v3e(false)}`, `
 ${v3e(true)}${ENt}`, `
 
 ${v3e(true)}`];
-var lal = {};
 function UserForkBoilerplateMessage(e) {
   let t = aal.c(8),
     {

@@ -7,7 +7,6 @@
 // module exports: resolveLauncher, call
 // [unwrapped __esm module RJt] deps: dn, kt, g$e, je, jZe, At, sF, Jt
 kJt = require("crypto");
-var SJl = {};
 async function resolveLauncher() {
   let e = await Gf("claude");
   if (e) return {

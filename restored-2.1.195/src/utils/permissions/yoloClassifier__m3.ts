@@ -7,7 +7,6 @@
 // module exports: importConversationsHandler, importConversations
 // [unwrapped __esm module $5c] deps: iu, lH, VQ, dn, kt, Du, FEe, YQr, er, je, MPe, wr, Yp, kgt, A9e, wAo, BJ, IVn, ED, LOe, dr
 P5c = require("path");
-var U5c = {};
 function mrn(e) {
   return e.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(0, 128) || "file";
 }

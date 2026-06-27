@@ -99,7 +99,6 @@
       };
     },
   })));
-var V0o = {};
 function getBridgeTokenOverride() {
   return;
 }

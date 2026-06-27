@@ -15,7 +15,6 @@ XVl = {
   },
   load: () => Promise.resolve().then(() => (YVl(), KVl))
 };
-var ZVl = {};
 async function call(e) {
   return G("tengu_vertex_setup_started", {}), S1e.jsx(XGf, {
     onDone: e

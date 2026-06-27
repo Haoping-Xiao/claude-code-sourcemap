@@ -7,7 +7,6 @@
 // module exports: tailLog, parseArgs, daemonMain
 // [unwrapped __esm module ZZo] deps: vX, Lo, jS, Jt, iQt, zOe, YOe, Qir, QJt
 uie = require("path");
-var kqc = {};
 function Tqc() {
   return ENm + (_ke() ? ANm : HNm) + TNm + vNm;
 }

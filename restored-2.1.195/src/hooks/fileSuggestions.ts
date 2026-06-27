@@ -5,7 +5,6 @@
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startBackgroundCacheRefresh, resetFileIndexCache, pathListSignature, normalizeGitPathsAsync, globalFileIndexCache, getPathsForSuggestions, getDirectoryNamesAsync, getDirectoryNames, generateFileSuggestions, findLongestCommonPrefix, filterIgnoredAsync, createFileIndexCache, applyFileSuggestion
-var YDl = {};
 function createFileIndexCache() {
   return {
     fileIndex: null,

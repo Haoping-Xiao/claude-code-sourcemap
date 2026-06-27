@@ -10,7 +10,6 @@
 ((ejt = Qop("external")),
   (Doa = new Set([cC, kX, yL, ZD, Ly, DI, m4, X2t])),
   (lso = new Set([ss, QD, Ly, Ip, uC])));
-var KOn = {};
 function isArtifactHardDisabled() {
   return Oe.CLAUDE_CODE_DISABLE_ARTIFACT || a0()?.settings.disableArtifact === true;
 }

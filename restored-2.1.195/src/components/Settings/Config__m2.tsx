@@ -18,7 +18,6 @@ hMl = {
   setSettingsData: r1o,
   setChanges: r1o,
 };
-var yMl = {};
 function parseConfigShorthand(e) {
   let t = e.trim();
   if (!t || !t.includes("=")) return null;

@@ -5,7 +5,6 @@
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isChannelsEnabled, isChannelAllowlisted, getChannelAllowlist
-var Gfl = {};
 function getChannelAllowlist() {
   let e = at("tengu_harbor_ledger", []),
     t = kdf().safeParse(e);

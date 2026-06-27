@@ -5,7 +5,6 @@
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: deriveFirstPrompt, createFork, call, branchAndResume
-var J$o = {};
 function deriveFirstPrompt(e) {
   let t = e?.message?.content;
   if (!t) return "Branched conversation";

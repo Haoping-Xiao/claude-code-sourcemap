@@ -7,5 +7,4 @@
 // module exports: NON_REPL_SUBCOMMANDS
 // [unwrapped __esm module Rqc] deps: lH, kkn, k7, dn, y1, je, At, Rd, vn, BJ, Is, kme, Jt, sr, Gfe, kYe, q$, CHt, YGo, VQ, zOe, YOe, Aqc
 wqc = require("child_process"), bhr = require("fs/promises"), Cqc = require("os"), grn = require("path"), wNm = new Set(["list", "scheduled", "remote-control", "hub"]), CNm = new Set(["run", "status", "stop", "uninstall"]);
-var Lqc = {};
 var NON_REPL_SUBCOMMANDS;

@@ -7,7 +7,6 @@
 // module exports: isCancel, isAxiosError, externalHttp
 // [unwrapped __esm module CZe]
 cEu = /(^|\.)(anthropic\.com|claude\.ai|claude\.com)$/i, uEu = /(^|\.)downloads\.claude\.ai$/i;
-var X_s = {};
 function IZe(e, t) {
   for (let n of [e, t?.baseURL]) if (n && epn(n)) throw Error(`externalHttp: ${n} is Anthropic-operated. Use firstPartyApi from ` + "src/services/http/firstParty \u2014 it enforces the 3P data-residency gate.");
 }

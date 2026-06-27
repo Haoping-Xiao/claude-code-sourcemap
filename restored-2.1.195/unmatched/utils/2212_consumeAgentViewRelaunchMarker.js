@@ -5,7 +5,6 @@
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js (0.0205); dir inferred from dep-graph -> utils; 15 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldShowLaunchComposer, isLaunchComposerEnabled, isDaemonWorkerRegistryEnabled, isDaemonServiceRecalled, isDaemonServiceInstallEnabled, isDaemonCliEnabled, isAgentsFleetEnabled, fleetGateRejected, ensureFleetGateHydrated, daemonHint, daemonColdStartGbDefault, consumeAgentViewRelaunchMarker, bgSupervisorNounCap, bgSupervisorNoun, AGENT_VIEW_RELAUNCH_ENV_KEY
-var Rkn = {};
 function isAgentsFleetEnabled() {
   return !Bst();
 }

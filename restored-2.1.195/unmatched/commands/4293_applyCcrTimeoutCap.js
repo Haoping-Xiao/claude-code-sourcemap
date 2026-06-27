@@ -7,7 +7,6 @@
 // module exports: applyCcrTimeoutCap, MonitorTool
 // [unwrapped __esm module Pgl] deps: ql, Ye, es
 q6t = R(se(), 1);
-var g0o = {};
 function Xpf() {
   return {
     description: H.string().describe("Short human-readable description of what you are monitoring (shown in notifications)."),

@@ -8,7 +8,6 @@
 // [unwrapped __esm module Ahl] deps: dn, je, Bi, qJ, cAe, d9t
 ((zAe = []), (Shl = Promise.resolve()));
 registerITermBackend(w0o);
-var sel = {};
 function createBackendRegistry() {
   return {
     cachedBackend: null,

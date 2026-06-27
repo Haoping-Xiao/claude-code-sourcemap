@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isAgentSwarmsEnabled, captureTeammateModeSnapshotIfEnabled
-var VMa = {};
 function RRp() {
   return process.argv.includes("--agent-teams");
 }

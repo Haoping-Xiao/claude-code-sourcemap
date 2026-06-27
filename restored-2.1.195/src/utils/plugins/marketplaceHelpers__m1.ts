@@ -5,7 +5,6 @@
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sideloadFlagsBlockedMessage, localPluginDirsBlockedMessage, isSourceInBlocklist, isSourceAllowedByPolicy, isPluginBlockedByPolicy, isMarketplaceSourceDeclaredByPolicy, isGitUrlHostAmbiguous, getStrictKnownMarketplaces, getPluginTrustMessage, getPluginSuggestionMarketplaces, getHostPatternsFromAllowlist, getBlockedMarketplaces, extractHostFromSource, areSideloadFlagsDisabledByPolicy, areLocalPluginDirsAllowedByPolicy
-var nPa = {};
 function isPluginBlockedByPolicy(e) {
   return yn("policySettings")?.enabledPlugins?.[e] === false;
 }

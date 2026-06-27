@@ -7,7 +7,6 @@
 // module exports: initializeTelemetryAfterTrust, init
 // [unwrapped __esm module vfc] deps: Ye, S6, C5, Gre, Jt, mE, vi
 ((Hfc = R(lt(), 1)), (jz = R(se(), 1)));
-var wfc = {};
 function initializeTelemetryAfterTrust() {
   if (eyo()) {
     if (Ir() && mC())

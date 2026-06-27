@@ -7,7 +7,6 @@
 // module exports: initializeErrorLogSink, getMCPLogsPath, getErrorsPath, _flushLogWritersForTesting, _clearLogWritersForTesting
 // [unwrapped __esm module T3o] deps: db, Pw, At, Jt, zOe
 ((Iir = require("fs/promises")), (EZl = require("path")));
-var kir = {};
 function getErrorsPath() {
   return qJt.join(LFe.errors(), AZl + ".jsonl");
 }

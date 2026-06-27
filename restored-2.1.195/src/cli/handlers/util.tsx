@@ -30,7 +30,6 @@ Aam = {
       );
   },
 };
-var TA = {};
 function createSubcommandRoot() {
   return rUt({
     ...lN(false),

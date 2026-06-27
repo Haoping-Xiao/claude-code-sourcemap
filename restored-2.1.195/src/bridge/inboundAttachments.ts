@@ -5,7 +5,6 @@
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveInboundAttachments, resolveAndPrepend, prependPathRefs, extractInboundAttachments
-var Mgc = {};
 function a7e(e) {
   T(`[bridge:inbound-attach] ${e}`);
 }

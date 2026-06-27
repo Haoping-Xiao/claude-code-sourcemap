@@ -38,7 +38,6 @@ zem = {
   WorktreeRemove: QHt,
   MessageDisplay: JHt,
 };
-var _1a = {};
 function Bic() {
   return Yem;
 }

@@ -17,7 +17,6 @@
   load: () => Promise.resolve().then(() => (KPl(), zPl)),
 }),
   (Qer = q0f));
-var XPl = {};
 function V0f(e, t) {
   let { window: n, configured: r, source: o } = A4(e, t),
     s = r > n ? ` \xB7 capped to ${gl(n)} by model` : "",

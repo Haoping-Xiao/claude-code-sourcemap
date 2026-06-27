@@ -5,7 +5,6 @@
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseOtelHeadersEnvVar, parseExporterTypes, isTelemetryEnabled, isBigQueryMetricsEnabled, initializeTelemetry, getOtlpLogExporters, getOTLPExporterConfig, flushTelemetry, bootstrapTelemetry
-var tAo = {};
 function ZEo(e, t) {
   return new Promise((n, r) => {
     setTimeout((o, s) => o(new eAo(s)), e, r, t).unref();

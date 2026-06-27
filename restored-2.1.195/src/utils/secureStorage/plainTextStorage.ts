@@ -62,7 +62,6 @@ Sjr = {
     }
   },
 };
-var Ksi = {};
 function isWindowsCredManagerAvailable() {
   return Gsi === true;
 }

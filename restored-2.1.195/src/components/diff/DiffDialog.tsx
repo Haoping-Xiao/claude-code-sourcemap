@@ -7,7 +7,6 @@
 // module exports: DiffDialog
 // [unwrapped __esm module J1l] deps: si, _i, Ye, es, sr, gDe, B_
 ((onr = R(lt(), 1)), (WN = R(se(), 1)));
-var Z1l = {};
 function r$f(e) {
   let t = Array.from(e.files.values())
       .map((r) => ({

@@ -5,7 +5,6 @@
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renameRecordingForSession, installAsciicastRecorder, getSessionRecordingPaths, getRecordFilePath, flushAsciicastRecorder, _resetRecordingStateForTesting
-var PEc = {};
 function getRecordFilePath() {
   if (Zz.filePath !== null) return Zz.filePath;
   return null;

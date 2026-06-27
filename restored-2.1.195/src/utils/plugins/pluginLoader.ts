@@ -5,7 +5,6 @@
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolvePluginRoot, resolvePluginPath, resolveContainedPluginPath, probeSeedCacheAnyVersion, mergePluginSources, loadSkillsAsPlugins, loadPluginManifest, loadAllPluginsForPreview, loadAllPluginsCacheOnly, loadAllPlugins, installFromNpm, installFromGitSubdir, gitClone, getVersionedZipCachePath, getVersionedCachePathIn, getVersionedCachePath, getPluginCachePath, getLegacyCachePath, getEnabledPluginBinPaths, generateTemporaryCacheNameForPlugin, displaySkillsDirPath, createPluginFrom …
-var uLl = {};
 function displaySkillsDirPath(e) {
   if (e.scope === "project") {
     let t = Es.join(yr(), ".claude", "skills");

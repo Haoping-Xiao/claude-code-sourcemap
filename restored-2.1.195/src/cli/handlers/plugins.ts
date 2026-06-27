@@ -9,7 +9,6 @@
 ((GZt = require("fs/promises")),
   (oO = require("path")),
   (WZt = ["skills", "agents", "hooks", "mcp", "lsp", "output-style", "channel"]));
-var m2 = {};
 function handleMarketplaceError(e, t) {
   (T(`Failed to ${t}: ${be(e)}`, {
     level: "error",

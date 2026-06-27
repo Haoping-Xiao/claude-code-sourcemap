@@ -7,7 +7,6 @@
 // module exports: isAutobackgroundingAllowed, detectBlockedSleepPattern, PowerShellTool
 // [unwrapped __esm module DTl] deps: Ko, E5, ql, kLe, cjn, ljn, Ye
 $k = R(se(), 1);
-var Xzt = {};
 function ASf(e) {
   let t = e.trim();
   if (!t)

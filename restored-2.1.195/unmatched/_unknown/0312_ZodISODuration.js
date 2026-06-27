@@ -5,7 +5,6 @@
 // note: nearest: node_modules/zod/v4/classic/iso.js (0.053); 8 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: time, duration, datetime, date, ZodISOTime, ZodISODuration, ZodISODateTime, ZodISODate
-var $Qe = {};
 function datetime(e) {
   return ATr(ZodISODateTime, e);
 }

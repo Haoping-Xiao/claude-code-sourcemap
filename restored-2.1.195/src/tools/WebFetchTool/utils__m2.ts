@@ -9,7 +9,6 @@
 Fuf = new Set(["remote", "remote_cowork"]);
 Guf = /^(?:session_|cse_)[A-Za-z0-9_-]{1,184}$/;
 O_t = new Set();
-var hfl = {};
 async function gfl({ slug: e, env: t }, n, r) {
   let o = $s().CLAUDE_AI_ORIGIN.includes("staging") ? "staging" : "prod";
   if (t !== o)

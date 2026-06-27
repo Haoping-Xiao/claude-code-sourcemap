@@ -7,7 +7,6 @@
 // module exports: ClaudeInChromeOnboarding
 // [unwrapped __esm module $$c] deps: Ye, Yp, Fy, vi
 ((P$c = R(lt(), 1)), (GNe = R(se(), 1)));
-var N$c = {};
 function ClaudeInChromeOnboarding(e) {
   let t = O$c.c(21),
     { onDone: n } = e,

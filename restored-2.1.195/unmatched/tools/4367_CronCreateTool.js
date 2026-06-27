@@ -7,7 +7,6 @@
 // module exports: CronCreateTool
 // [unwrapped __esm module _Xn] deps: B_, ql, Ye, es
 WF = R(se(), 1);
-var aSl = {};
 var iSl = 50,
   phf,
   fhf,

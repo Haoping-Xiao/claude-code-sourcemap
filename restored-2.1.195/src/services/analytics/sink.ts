@@ -5,7 +5,6 @@
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: createLinkedTransportPair, shouldTrackDatadog, initializeAnalyticsSink
-var bfo = {};
 class _fo {
   peer;
   closed = false;
@@ -33,7 +32,6 @@ function createLinkedTransportPair() {
     t = new _fo();
   return (e._setPeer(t), t._setPeer(e), [e, t]);
 }
-var dpt = {};
 function shouldTrackDatadog() {
   if (S3e("datadog")) return false;
   try {

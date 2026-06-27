@@ -8,7 +8,6 @@
 // [unwrapped __esm module xrr] deps: si, Cc, Bs, B_, MEt, eE, kP, O0, Ye, ps, uo, w8, At, vq, _k, gHe, lE, NKe, dr, sr, E2l, N2l, F2l, K2l, ojl, Bjl, cUo, Qjl, n4l
 ((AXt = R(lt(), 1)), (UT = R(rt(), 1)), (oa = R(se(), 1)));
 VBf = new Set(["git-auth-failed", "git-timeout", "network-error"]);
-var i4l = {};
 function aUf(e) {
   let t = s4l.c(7),
     { action: n, target: r, onComplete: o } = e,

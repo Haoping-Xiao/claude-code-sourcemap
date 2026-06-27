@@ -6,5 +6,4 @@
 // module exports: default
 // [unwrapped __esm module Pts]
 Dts = s8c;
-var Bwt = {};
 var Ots, Mts, i8c, $ts, a8c, l8c, $ie;

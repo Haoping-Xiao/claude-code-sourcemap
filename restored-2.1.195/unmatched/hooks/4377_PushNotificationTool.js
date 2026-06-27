@@ -7,7 +7,6 @@
 // module exports: PushNotificationTool
 // [unwrapped __esm module DSl] deps: ql, kSl, Ye
 mq = R(se(), 1);
-var PSl = {};
 var Chf,
   Ihf,
   xhf = 300000,

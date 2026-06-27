@@ -12,7 +12,6 @@
   (CXo = require("path")),
   (BFc = require("stream/promises")));
 gnn = new Map();
-var FFc = {};
 async function attachRemote(e, t, n) {
   let [
       { prepareApiRequest: r, fetchSession: o },

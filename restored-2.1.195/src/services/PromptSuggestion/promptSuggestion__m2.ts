@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module _nc] deps: ft, Bs, vi, B_, Ko, gm, Xa, Ye, uo, es, sr, Lze
 (($Go = R(lt(), 1)), (hnc = R(rt(), 1)), (LC = R(se(), 1)));
-var bnc = {};
 var Snc,
   call = async (e, t, n) => {
     let r = n.trim();

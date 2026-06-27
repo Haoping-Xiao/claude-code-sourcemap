@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: respawnPaneWithCommand, TmuxBackend
-var bhl = {};
 function yhl(e) {
   let t = `Failed to create teammate pane: ${e}`,
     n = e.toLowerCase();

@@ -8,7 +8,6 @@
 // [unwrapped __esm module _F] deps: Hp, Rc, oo, fd, je, At, Gx, Jt, dn, kt, AVe, cho, jc, oKr
 ((kcc = require("crypto")), (Rcc = require("fs")), (XYe = require("fs/promises")));
 Pcc = Date.now();
-var Hcr = {};
 function hasBridgeEntitlement() {
   return Jl() && rTt() && at("tengu_ccr_bridge", !1);
 }

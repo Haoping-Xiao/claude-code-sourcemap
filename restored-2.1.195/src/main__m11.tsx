@@ -16,7 +16,6 @@ Ajr();
 ((MZo = (l$(), ro(qW))), (G5c = (Eoe(), ro(Ope))));
 pa("main_tsx_imports_loaded");
 if (I1m()) process.exit(1);
-var X5c = {};
 async function runBgSpare(e) {
   let t = e[0];
   if (!t)

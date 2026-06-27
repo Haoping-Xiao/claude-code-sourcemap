@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module bFo] deps: si, Ye, ps, kt, er, Vl, eE, RLe, gm, hFo, yFo
 _Fo = R(lt(), 1), NXt = R(rt(), 1), ox = R(se(), 1);
-var DGl = {};
 var PGl,
   call = async e => PGl.jsx(Krr, {
     onExit: t => e(t, {

@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: teleportWithProgress, TeleportProgress
-var zFc = {};
 function TeleportProgress(e) {
   let t = WFc.c(16),
     { currentStep: n, sessionId: r } = e,

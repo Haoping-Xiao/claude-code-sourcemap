@@ -10,7 +10,6 @@ Oop = ["claude-3-5-haiku", "claude-3-haiku"];
 Bop = [];
 var oSe = "EnterWorktree";
 var _h = "ToolSearch";
-var URe = {};
 var BRIEF_TOOL_NAME = "SendUserMessage",
   LEGACY_BRIEF_TOOL_NAME = "Brief",
   BRIEF_ENFORCE_SENTINEL = "You ended the turn without calling SendUserMessage.",

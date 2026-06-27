@@ -7,7 +7,6 @@
 // module exports: waitForTeammatesToBecomeIdle, setDynamicTeamContext, runWithTeammateContext, isTeammate, isTeamLead, isPlanModeRequired, isNestedInteractiveClaudeSession, isModelDrivenSession, isInProcessTeammate, hasWorkingInProcessTeammates, hasNonLeadTeammate, hasActiveInProcessTeammates, getTeammateContext, getTeammateColor, getTeamName, getParentSessionId, getDynamicTeamContext, getAgentName, getAgentId, createTeammateContext, clearDynamicTeamContext, _tmuxGlobalEnvOutputHasMarker, _setAmb …
 // [unwrapped __esm module Sj]
 ((Yoi = require("async_hooks")), (X2r = new Yoi.AsyncLocalStorage()));
-var ejr = {};
 function getParentSessionId() {
   let e = w0();
   if (e) return e.parentSessionId;

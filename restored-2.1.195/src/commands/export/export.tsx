@@ -7,7 +7,6 @@
 // module exports: sanitizeFilename, extractFirstPrompt, call
 // [unwrapped __esm module F4o] deps: qXt, Yj, xne, C5, jDe, LPe
 ((aHt = R(rt(), 1)), (DJt = R(se(), 1)));
-var wJl = {};
 function g6f(e) {
   let t = e.getFullYear(),
     n = String(e.getMonth() + 1).padStart(2, "0"),

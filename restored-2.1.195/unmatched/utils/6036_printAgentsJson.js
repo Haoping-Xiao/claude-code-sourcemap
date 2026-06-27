@@ -7,7 +7,6 @@
 // module exports: printAgentsJson
 // [unwrapped __esm module S5c] deps: ft, mE, Ye, S6, dn, C5, Pw, er, fn, At, sa, Hu, jS, Jt, bk, JN
 xZo = require("fs"), dve = require("fs/promises"), pO = require("path"), ihr = require("readline"), cXe = R(se(), 1), zOm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-var H5c = {};
 async function printAgentsJson(e, t) {
   let n = e ? await jA(cwt.resolve(e)) : void 0;
   function r(d) {

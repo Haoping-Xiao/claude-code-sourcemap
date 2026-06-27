@@ -5,7 +5,6 @@
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runUltrareviewHeadless, precheckLaunchScope, parseUltrareviewArgs, launchRemoteReview, getReviewDurationNote, getReviewCostNote, confirmOverage, checkOverageGate, _resetOverageConfirmedForTests
-var i9l = {};
 function confirmOverage() {
   j2o = true;
 }

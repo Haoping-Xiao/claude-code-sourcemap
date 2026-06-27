@@ -38,7 +38,6 @@ function nAe(e) {
   let t = /^[\\/]{2}[.?][\\/]pipe[\\/]([^\\/]+)$/i.exec(e);
   return t !== null && t[1] !== "." && t[1] !== "..";
 }
-var yTo = {};
 function pQp(e) {
   return dQp.includes(e) ? e : void 0;
 }

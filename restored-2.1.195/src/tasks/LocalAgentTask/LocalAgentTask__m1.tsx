@@ -57,7 +57,6 @@ function uml(e) {
   }
   return r;
 }
-var Bko = {};
 function registerWorkflowTask({
   taskId: e,
   script: t,

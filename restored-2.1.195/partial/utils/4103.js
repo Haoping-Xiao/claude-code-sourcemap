@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module L8t] deps: oo, w8t, Ezn
 ACo = R(se(), 1), Psl = (ECo(), ro(Dsl)).ExtraUsageDialog;
-var TCo = {};
 async function call() {
   let e = await Fyt({
     openInBrowser: Ir()

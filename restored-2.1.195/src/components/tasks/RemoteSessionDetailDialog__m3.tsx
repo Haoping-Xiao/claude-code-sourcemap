@@ -28,7 +28,6 @@ RAl = [
     detail: "Merge semantic dupes, rank by confidence, cite sources",
   },
 ];
-var PAl = {};
 function initBundledWorkflows() {
   (LAl(), wAl());
 }

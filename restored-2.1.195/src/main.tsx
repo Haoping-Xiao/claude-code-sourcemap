@@ -7,7 +7,6 @@
 // module exports: startDeferredPrefetches, main
 // [unwrapped __esm module F5c] deps: SGo, Lne, eqe, fn, xW, jS, Jt, HO, JN
 ((FZ = require("fs/promises")), (gV = require("path")), (N5c = /^[a-zA-Z0-9_-]+$/));
-var phr = {};
 function C1m() {
   try {
     let e = yn("policySettings");

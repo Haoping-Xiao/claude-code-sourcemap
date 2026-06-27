@@ -7,7 +7,6 @@
 // module exports: formatVersion, formatAll, call, ReleaseNotesPicker
 // [unwrapped __esm module KKe] deps: ft, Rx, db, er, je, fn, At, vn, qd, sr
 ((BXt = require("path")), (Yrr = R(Uj(), 1)));
-var VGl = {};
 function formatVersion(e, t) {
   let n = `Version ${e}:`,
     r = t.map((o) => `\xB7 ${o}`).join(`

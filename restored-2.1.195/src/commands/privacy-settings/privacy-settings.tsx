@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module Yjo] deps: kt, Ye, vft, mE, Bs, vi, Ko
 ((AJt = R(lt(), 1)), (fYe = R(rt(), 1)), (Al = R(se(), 1)));
-var nKl = {};
 async function call(e) {
   if (!(await Tft())) return (e(tKl), null);
   let [n, r] = await Promise.all([Fre(), JDe()]);

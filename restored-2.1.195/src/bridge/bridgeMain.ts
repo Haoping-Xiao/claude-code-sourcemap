@@ -5,7 +5,6 @@
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runBridgeLoop, runBridgeHeadless, parseArgs, isServerError, isConnectionError, bridgeMain, BridgeHeadlessPermanentError
-var Kir = {};
 function Stc(e) {
   return e.connCapMs * 2;
 }

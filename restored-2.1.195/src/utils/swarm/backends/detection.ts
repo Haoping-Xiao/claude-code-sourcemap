@@ -7,7 +7,6 @@
 // module exports: resetDetectionCache, listUserTmuxSessions, isTmuxAvailable, isIt2CliAvailable, isInsideTmuxSync, isInsideTmux, isInITerm2, getUserTmuxSocket, getLeaderPaneId, getIt2Command, IT2_COMMAND
 // [unwrapped __esm module hN]
 TXa = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
-var AHo = {};
 function isInsideTmuxSync() {
   return !!aht;
 }

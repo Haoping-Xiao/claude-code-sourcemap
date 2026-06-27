@@ -96,7 +96,6 @@ wOl = {
   g: 30,
   b: 30
 };
-var POl = {};
 function glyphFor(e) {
   return ROl.get(e) ?? kOl;
 }

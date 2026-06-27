@@ -7,7 +7,6 @@
 // module exports: computeVisibleWindow, buildAgentDetailLines, agentDisplayStatus, WorkflowDetailDialog, PhaseScrollIndicator
 // [unwrapped __esm module mjo] deps: _i, Ye, ps, U8l, $7, Lo, Bs, vi, f_, Ko, Mg
 ((F8l = R(lt(), 1)), (lYe = R(rt(), 1)), (ZL = R(se(), 1)));
-var K8l = {};
 function computeVisibleWindow(e, t, n) {
   if (t <= n)
     return {

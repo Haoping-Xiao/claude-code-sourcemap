@@ -7,7 +7,6 @@
 // module exports: startProTrial, shouldAutoOpenProTrialExpired, getProTrialState, getProTrialDurationDays, formatTrialBadge, PRO_TRIAL_FALLBACK_DAYS
 // [unwrapped __esm module r5l] deps: si, Lo
 e5l = require("os");
-var s5l = {};
 function getProTrialDurationDays() {
   return Lc()?.claudeCodeTrialDurationDays ?? null;
 }

@@ -894,5 +894,4 @@ recommend \`/run-skill-generator\` in your report so that work gets
 captured as a project skill. If it just worked, don't.
 `;
 var Wxc = () => {};
-var SKo = {};
 var SKILL_MD, RUN_EXAMPLE_FILES;

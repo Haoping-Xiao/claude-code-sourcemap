@@ -8,7 +8,6 @@
 // [unwrapped __esm module BR] deps: Lo, je, Bi, sa, Mx, sr
 cCe = new Map();
 P$u = /^[A-Za-z0-9._-]+$/;
-var Sfn = {};
 function M$u() {
   function e(t) {
     let n = FTs(t);

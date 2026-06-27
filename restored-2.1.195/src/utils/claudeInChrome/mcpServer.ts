@@ -214,7 +214,6 @@ Dsm = Cn(() => {
     t = qcc.createHash("sha256").update(e).digest("hex");
   return parseInt(t.slice(0, 8), 16) % Lsm;
 });
-var $fo = {};
 function Osm(e) {
   return Kcc.some((t) => t === e);
 }

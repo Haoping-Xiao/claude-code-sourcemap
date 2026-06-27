@@ -10,7 +10,6 @@ rZn = {
   maxConsecutive: 3,
   maxTotal: 20,
 };
-var yMo = {};
 function saveCacheSafeParams(e) {
   ((jze = e), (mMo = e ? Date.now() : null), (gMo = e ? As() : null));
 }

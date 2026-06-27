@@ -15,7 +15,6 @@
   (G6a = R(require("https"))),
   (W6a = R(_Lt(), 1)));
 eAo = class eAo extends Error {};
-var rAo = {};
 async function performLogout({
   clearOnboarding: e = false,
   preserveInProcessTokens: t = false,

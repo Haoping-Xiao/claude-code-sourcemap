@@ -34,7 +34,6 @@
   }),
   (f3o = Rzf));
 var m3o = () => {};
-var GQl = {};
 function initialIndexFor(e, t) {
   if (!e) return 0;
   let n = t ?? 120,

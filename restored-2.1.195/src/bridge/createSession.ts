@@ -5,7 +5,6 @@
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateBridgeSessionTitle, updateBridgeSessionColorTag, getBridgeSession, createBridgeSession, archiveBridgeSession, SESSION_COLOR_TAG_PREFIX
-var Dze = {};
 async function createBridgeSession({
   environmentId: e,
   title: t,

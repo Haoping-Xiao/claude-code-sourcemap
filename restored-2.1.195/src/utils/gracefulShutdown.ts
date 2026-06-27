@@ -40,7 +40,6 @@ async function flushAnalyticsSinks() {
   } catch {}
 }
 var a4n = () => {};
-var kWt = {};
 function cleanupTerminalModes() {
   if (!process.stdout.isTTY) return;
   try {

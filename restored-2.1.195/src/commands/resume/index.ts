@@ -15,7 +15,6 @@
   load: () => Promise.resolve().then(() => (WVl(), GVl)),
 }),
   (qVl = VGf));
-var KVl = {};
 async function call(e) {
   return (
     G("tengu_bedrock_setup_started", {}),

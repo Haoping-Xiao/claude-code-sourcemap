@@ -17,7 +17,6 @@
       acquiredAt: H.number(),
     }),
   )));
-var RPc = {};
 function isRecurringTaskAged(e, t, n) {
   if (n === 0) return false;
   return Boolean(e.recurring && !e.permanent && t - e.createdAt >= n);

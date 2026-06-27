@@ -7,7 +7,6 @@
 // module exports: isChromeMcpToolName, isAutoModeAllowlistedTool
 // [unwrapped __esm module clc] deps: Lo, Jt
 alc = require("fs/promises"), llc = require("path");
-var ylc = {};
 function isChromeMcpToolName(e) {
   return ocr.some(t => e.startsWith(t));
 }

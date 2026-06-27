@@ -20,7 +20,6 @@
   load: () => Promise.resolve().then(() => (dnc(), unc)),
 }),
   (sXf = oXf));
-var mnc = {};
 var iXf = async (e, t) => {
     let n = await KGt(t.abortController.signal);
     switch (n.kind) {

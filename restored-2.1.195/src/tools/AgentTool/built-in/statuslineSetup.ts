@@ -169,7 +169,6 @@ Guidelines:
   Also ensure that the user is informed that they can ask Claude to continue to make changes to the status line.
 `,
 };
-var ALl = {};
 function getWorkerSystemPrompt() {
   return `You are a worker agent executing a task assigned by the coordinator.
 

@@ -11,7 +11,6 @@ var IDa = {
   exports: qe_,
 };
 IDa.exports = CDa();
-var RDa = {};
 function createLSPClient(e, t) {
   let n,
     r,

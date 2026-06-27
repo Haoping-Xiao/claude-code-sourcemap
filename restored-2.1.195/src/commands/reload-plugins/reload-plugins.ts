@@ -5,7 +5,6 @@
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-var $7l = {};
 function lZ(e, t) {
   return `${e} ${bn(e, t)}`;
 }

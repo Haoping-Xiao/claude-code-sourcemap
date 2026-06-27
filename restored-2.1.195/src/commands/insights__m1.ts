@@ -291,7 +291,6 @@ ${d}
   },
 };
 sZf = oZf;
-var PWo = {};
 function createWorkflowCommand(e) {
   return {
     type: "prompt",

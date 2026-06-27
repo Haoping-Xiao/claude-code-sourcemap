@@ -76,7 +76,6 @@ function microphoneAuthorizationStatus() {
 }
 var pQt = null,
   tnc = false;
-var fQt = {};
 function iar() {
   return (
     (rnc ??= (async () => {

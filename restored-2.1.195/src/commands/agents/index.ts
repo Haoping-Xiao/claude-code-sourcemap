@@ -13,7 +13,6 @@
   load: () => Promise.resolve().then(() => (E7l(), b7l)),
 }),
   (A7l = I9f));
-var T7l = {};
 async function call(e, t, n) {
   return v7l.jsx(o4l, {
     onComplete: e,

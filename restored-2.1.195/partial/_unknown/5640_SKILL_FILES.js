@@ -428,7 +428,6 @@ try {
 process.stdout.write(JSON.stringify(verdict, null, 2) + '\\n');
 process.exit(ok ? 0 : (firstFailExit ?? 1));
 `;
-var Vvc = {};
 var ux = e => typeof e === "string" ? e : e.default,
   FSm,
   jSm,

@@ -5,7 +5,6 @@
 // note: nearest: src/utils/heapDumpService.ts (0.0207); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startEventLoopStallDetector, sampleRss
-var _1c = {};
 function sampleRss() {
   try {
     let e = process.memoryUsage();

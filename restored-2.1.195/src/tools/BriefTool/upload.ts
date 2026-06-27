@@ -7,7 +7,6 @@
 // module exports: uploadBriefAttachment, escapeContentDispositionFilename
 // [unwrapped __esm module wQ] deps: Rc, oo, Ls
 _yl = require("os");
-var Tyl = {};
 function amf(e) {
   let t = V7n.extname(e).toLowerCase();
   return imf[t] ?? "application/octet-stream";

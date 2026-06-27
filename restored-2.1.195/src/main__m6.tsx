@@ -5,7 +5,6 @@
 // note: deminified; 18 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withStdinPositional, stripSessionIdFlag, stripResumeFlags, stripBgFlags, stopHandler, spawnBgSession, rmHandler, respawnHandler, readBgStdin, preSeedReplBgJob, parseResumeTarget, logsHandler, handleBgFlag, formatBgHints, flagsWithoutPositional, detailForStderr, bgVerbExtraArgsNote, attachHandler
-var ooc = {};
 function KJf(e) {
   return (
     Opn(),

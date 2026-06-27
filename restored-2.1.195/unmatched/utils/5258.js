@@ -4,7 +4,6 @@
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-var Soc = {};
 async function call(e) {
   return e(), await Yar("stop_command"), null;
 }

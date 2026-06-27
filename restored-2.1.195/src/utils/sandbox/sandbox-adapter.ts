@@ -7,7 +7,6 @@
 // module exports: shouldForceSandboxOn, shouldAllowManagedSandboxDomainsOnly, resolveSandboxFilesystemPath, resolvePathPatternForSandbox, isHostAllowedBySandboxNetworkPolicy, getTenguSandboxGbConfig, getEffectiveFilesystemPolicy, detectWorktreeGitCommonDir, convertToSandboxRuntimeConfig, addToExcludedCommands, addSandboxAllowWriteDirectory, SandboxViolationStore, SandboxManager, SandboxInitFailedError, SandboxBridgeUnavailableError, HOST_CEL_POLICIES
 // [unwrapped __esm module Nna]
 Ona = {};
-var Rro = {};
 function MWe(e) {
   let t = e.match(/^([^(]+)\(([^)]+)\)$/);
   if (!t)

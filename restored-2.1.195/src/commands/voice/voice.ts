@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module mQt] deps: je, fn, Bi, Is
 ((sar = require("child_process")), (snc = require("fs/promises")));
-var unc = {};
 function nXf(e) {
   let t = e.trim().toLowerCase();
   if (t === "") return;

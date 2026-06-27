@@ -7,7 +7,6 @@
 // module exports: ArtifactTool
 // [unwrapped __esm module eAl]
 WRo = new Map(), qRo = new Map();
-var sAl = {};
 function JRo(e) {
   return nHe ? nHe.mcpFromGatedInput(e) : void 0;
 }

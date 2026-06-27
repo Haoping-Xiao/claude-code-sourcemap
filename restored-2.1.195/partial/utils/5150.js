@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module tQl] deps: iu, Ye, je, At, vf, dr, sr, XJl, Cc, Vl, Bs, vi, Ko, CH
 n3o = R(lt(), 1), uTe = R(rt(), 1), lx = R(se(), 1);
-var nQl = {};
 async function call(e) {
   return rQl.jsx(eQl, {
     onDone: e

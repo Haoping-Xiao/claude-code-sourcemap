@@ -14,7 +14,6 @@ function oxl(e) {
   return rxl?.(e) ?? false;
 }
 var rxl = null;
-var qQn = {};
 function axl() {
   if (FPo === void 0) delete process.env.BROWSER;
   else process.env.BROWSER = FPo;

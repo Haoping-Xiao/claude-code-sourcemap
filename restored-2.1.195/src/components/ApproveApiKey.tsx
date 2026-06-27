@@ -7,7 +7,6 @@
 // module exports: ApproveApiKey
 // [unwrapped __esm module LMc] deps: Hp, kt, EC, Rc, FK, nUt, Ye, gSe, Gx, vn
 ((kMc = R(lt(), 1)), (Svt = R(rt(), 1)), (E2 = R(se(), 1)));
-var PMc = {};
 function ApproveApiKey(e) {
   let t = DMc.c(16),
     { customApiKeyTruncated: n, onDone: r } = e,

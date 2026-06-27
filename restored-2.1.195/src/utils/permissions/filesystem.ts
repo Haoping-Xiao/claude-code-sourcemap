@@ -29,7 +29,6 @@ gS = Cn(function () {
   }
   return r;
 });
-var Noa = {};
 function normalizeCaseForComparison(e) {
   return e
     .toLowerCase()

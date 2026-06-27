@@ -44,7 +44,6 @@ Fe = {
         .transform((t) => (t !== void 0 && e.includes(t.trim()) ? t.trim() : void 0)),
     ),
 };
-var BIr = {};
 var ANTHROPIC_API_KEY,
   ANTHROPIC_AUTH_TOKEN,
   CLAUDE_CODE_OAUTH_TOKEN,

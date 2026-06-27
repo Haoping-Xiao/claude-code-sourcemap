@@ -7,7 +7,6 @@
 // module exports: shouldOfferTerminalSetup, setupTerminal, readVSCodeScrollSensitivity, markBackslashReturnUsed, isShiftEnterKeyBindingInstalled, installVSCodeGpuAccelerationOff, hasUsedBackslashReturn, getNativeCSIuTerminalDisplayName, enableITerm2ClipboardAccess, call
 // [unwrapped __esm module YQr] deps: f0e, AW, db, je, At, Bi
 ((I8i = require("os")), (qce = require("path")));
-var P8i = {};
 function MDn() {
   let e = process.env.VSCODE_GIT_ASKPASS_MAIN ?? "",
     t = process.env.PATH ?? "";

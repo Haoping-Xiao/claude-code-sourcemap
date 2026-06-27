@@ -7,7 +7,6 @@
 // module exports: startMdmRawRead, getMdmRawReadPromise, fireRawRead
 // [unwrapped __esm module ICe] deps: xpn, kvs, ORt, je, Mm, fn, At, PB, ys, Rd, Is, Jt, vf, hY, mCe, Sx, lj, oLt
 qO = require("path");
-var Qws = {};
 function Xws(e, t) {
   return new Promise((n) => {
     try {

@@ -27,7 +27,6 @@ V9l = R(lt(), 1), r2 = R(rt(), 1), ix = R(se(), 1), Z2o = ["on", "name-only", "u
     color: "error"
   }
 };
-var X9l = {};
 async function call(e, t) {
   return J9l.jsx(K9l, {
     onExit: e,

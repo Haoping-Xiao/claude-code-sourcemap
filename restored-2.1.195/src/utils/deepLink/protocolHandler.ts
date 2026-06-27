@@ -66,7 +66,6 @@ function waitForUrlEvent(e) {
 }
 var Emr = null;
 var k1c = () => {};
-var P1c = {};
 async function handleDeepLinkUri(e) {
   T(`Handling deep link URI: ${e}`);
   let t;

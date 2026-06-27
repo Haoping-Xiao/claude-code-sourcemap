@@ -7,7 +7,6 @@
 // module exports: KeybindingSetup, KeybindingRoot, CHORD_TIMEOUT_MS
 // [unwrapped __esm module G1a] deps: kt
 j1a = new Map();
-var z1a = {};
 function KeybindingSetup(e) {
   let t = Fho.c(4),
     { children: n } = e;

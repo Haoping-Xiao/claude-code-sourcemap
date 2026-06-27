@@ -24,7 +24,6 @@ BGo = class BGo {
     return "[REDACTED:gh-token]";
   }
 };
-var Onc = {};
 async function kXf() {
   if (!(await Pnc()))
     return {

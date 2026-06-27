@@ -7,7 +7,6 @@
 // module exports: validateSessionRepository, validateGitState, toServerErrorType, toServerErrorReason, teleportToRemoteWithErrorHandling, teleportToRemote, teleportResumeCodeSession, teleportFromSessionsAPI, subscribeRemoteSessionToPR, processMessagesForTeleportResume, pollRemoteSessionEvents, interruptRemoteSession, checkOutTeleportedSessionBranch, awaitRemoteSessionResult, archiveRemoteSession
 // [unwrapped __esm module CTo] deps: kt, dn, Un, E8n, Lo, je, Bi, sa, sr, kv
 vht = require("fs/promises");
-var i9t = {};
 function MQp(e) {
   if (e === null) return cc("Session resumed", "suggestion");
   let t = e instanceof qb ? e.formattedMessage : e.message;

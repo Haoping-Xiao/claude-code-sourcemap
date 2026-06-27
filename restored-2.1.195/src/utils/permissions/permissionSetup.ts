@@ -11,7 +11,6 @@
   (erm = (u0o(), ro(c0o))),
   (Rqo = [...fv, "cliArg", "command", "session", "toolsNarrowing", "mcpServerPolicy"]),
   (trm = new Set([])));
-var T6n = {};
 function Fqo(e) {
   if (fv.includes(e)) {
     let t = xg(e);

@@ -7,7 +7,6 @@
 // module exports: formatWorkspaceFolders, call, IDE_CONNECTION_TIMEOUT_MS, IDECommandFlow
 // [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi
 ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
-var eUl = {};
 function VOf(e) {
   let t = J7t.c(39),
     { availableIDEs: n, unavailableIDEs: r, selectedIDE: o, onClose: s, onSelect: i } = e,

@@ -7,7 +7,6 @@
 // module exports: summarizeEvent, stateBucket, sortJobs, seedLastJobs, rollupJobColor, repoGroupLabel, repoGroup, pruneMap, pickIcon, peerStatusFor, parseUrlRef, parseQuery, parsePrRef, parseDispatch, needsRespawn, mountFleetView, labelReplaceFrame, jobStatusKey, jobRowSrLabel, jobMatchesUrl, jobMatchesPr, jobLabel, glyphColor, formatJobAge, fleetVerticalBudget, fleetTitle, flattenDetail, extractRepoCwd, effectiveStateSortOrder, effectiveSortOrder, deriveBand, deriveActivity, computeSuggestions,  …
 // [unwrapped __esm module Akc]
 ((_kc = require("fs/promises")), (hTm = /"timestamp":"([^"]+)"/));
-var i0c = {};
 function pruneMap(e, t) {
   let n;
   for (let r of e.keys()) if (!t.has(r)) (n ??= new Map(e)).delete(r);

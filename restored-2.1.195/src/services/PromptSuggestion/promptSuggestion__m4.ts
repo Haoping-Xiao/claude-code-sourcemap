@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module Enc] deps: dn, _nc, Lze
 Snc = R(se(), 1);
-var Anc = {};
 var call = async (e, t) => {
   let n = e.trim();
   if (n === "") {

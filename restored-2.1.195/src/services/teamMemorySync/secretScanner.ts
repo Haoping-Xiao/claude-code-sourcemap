@@ -254,7 +254,6 @@ A7c = {
   hashicorp: "HashiCorp",
   sendgrid: "SendGrid",
 };
-var Eis = {};
 function qin() {
   if (typeof process === "undefined" || !Array.isArray(process.argv)) return [];
   let e = process.argv.indexOf("--");

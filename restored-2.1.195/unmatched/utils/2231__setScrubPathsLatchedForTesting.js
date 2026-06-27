@@ -7,7 +7,6 @@
 // module exports: subprocessEnv, shouldUseMcpAllowlistEnv, setSettingsColorEnv, scrubSandboxConfig, registerAgentProxyEnvFn, isScrubSandboxAvailable, isScrubEnabled, enforceScriptCaps, assertScrubSandboxAvailable, agentProxyEnv, _setScrubPathsLatchedForTesting, _resetScrubLatchForTesting, _resetScriptCapsForTesting, BG_WORKER_IDENTITY_ENV_VARS
 // [unwrapped __esm module j1i]
 t1d = /[ \t\n\v\f\r'"]/;
-var K1i = {};
 function isScrubEnabled() {
   if (Kkn === void 0) Kkn = ut(process.env.CLAUDE_CODE_SUBPROCESS_ENV_SCRUB);
   return Kkn;

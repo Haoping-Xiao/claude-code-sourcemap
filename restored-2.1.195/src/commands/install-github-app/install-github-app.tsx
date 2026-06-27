@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module EFl] deps: si, lJ, Ko, R6, Ye, ps
 ((bFl = R(lt(), 1)), (Wk = R(se(), 1)));
-var AFl = {};
 function H1f(e) {
   let [t] = eZ.useState(() => lI()),
     [n, r] = eZ.useState({

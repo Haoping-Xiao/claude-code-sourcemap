@@ -16,7 +16,6 @@
   load: () => Promise.resolve().then(() => (NXl(), OXl)),
 }),
   (I4o = k8f));
-var GXl = {};
 function jXl(e, t, n) {
   if (
     (G("tengu_advisor_command", {

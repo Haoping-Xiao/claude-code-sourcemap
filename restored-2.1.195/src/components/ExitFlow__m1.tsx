@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module cJl] deps: cEe, D4o, m7t, Ld, iKe, Yp, aR
 ((lJl = R(se(), 1)), (e6f = ["Goodbye!", "See ya!", "Bye!", "Catch you later!"]));
-var uJl = {};
 async function call() {
   if (Js())
     return {

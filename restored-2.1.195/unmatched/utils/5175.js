@@ -6,5 +6,4 @@
 // module exports: default
 // [unwrapped __esm module mZl] deps: wQ, SC, loe, Hir, SJ, Bs, vi, Ko, Xce, _3o, Ed, tC, Ye, ps, kt, uHt, uo, oo, je, w8t
 E3o = R(lt(), 1), pZl = R(cAt(), 1), gme = R(rt(), 1), zk = R(se(), 1);
-var gZl = {};
 var lKf, cKf;

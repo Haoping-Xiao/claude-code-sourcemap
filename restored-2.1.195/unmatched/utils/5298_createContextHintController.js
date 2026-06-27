@@ -5,7 +5,6 @@
 // note: nearest: src/services/compact/microCompact.ts (0.0259); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: handleHintReject, createContextHintController, applyHintEdits
-var Nac = {};
 async function lnm(e, t) {
   let n = await pDe(e, t);
   if (mDe(n)) return null;

@@ -7,5 +7,4 @@
 // module exports: default
 // [unwrapped __esm module IWo] deps: Gwe, ft, LQt, Fy, vi, np, m7t, Ye, VGe, ag, dn, kt, uo, gq, fd, Ld, Cp, At, iKe, Yp, vn, co, _a, sr, aR, Zrr, qar
 goc = R(lt(), 1), hoc = require("crypto"), OHt = require("fs/promises"), Var = require("path"), NHt = R(rt(), 1), FQt = R(se(), 1);
-var _oc = {};
 var HQf, TQf;

@@ -4,7 +4,6 @@
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-var tWl = {};
 async function call(e, t) {
   let {
     message: n

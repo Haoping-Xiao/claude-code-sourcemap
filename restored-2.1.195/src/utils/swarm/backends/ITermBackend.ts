@@ -8,7 +8,6 @@
 // [unwrapped __esm module T0o] deps: dn, je, Bi, hN, qJ, cAe, d9t
 hhl = Promise.resolve();
 v0o(H0o);
-var Ehl = {};
 function bff() {
   let e,
     t = new Promise((r) => {

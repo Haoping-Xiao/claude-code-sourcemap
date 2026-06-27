@@ -164,7 +164,6 @@ _Eu = new Set([
   "xonsh",
   "ion",
 ]);
-var lkr = {};
 var CLAUDE_AX_SCREEN_READER,
   CLAUDE_CHROME_CLASSIFIER_FLOOR,
   CLAUDE_CODE_ALT_SCREEN_FULL_REPAINT,

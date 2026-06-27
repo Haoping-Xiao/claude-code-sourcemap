@@ -16,7 +16,6 @@
   load: () => Promise.resolve().then(() => (O7l(), $7l)),
 }),
   (Ksr = j9f));
-var B7l = {};
 var call = async (e, t) => {
   let n = $t(),
     r = await aC(n),

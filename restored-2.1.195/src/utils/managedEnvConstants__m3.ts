@@ -21,7 +21,6 @@
       defaultKey: zY,
     },
   }));
-var i7o = {};
 function s7o(e) {
   if (e.startsWith("sonnet")) return "sonnet";
   if (e.startsWith("opus")) return "opus";

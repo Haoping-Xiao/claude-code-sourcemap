@@ -11,7 +11,6 @@ rsl = R(lt(), 1), nCo = R(se(), 1), srf = /https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]
   "]": "[",
   "}": "{"
 };
-var osl = {};
 var BRIDGE_LOGIN_INSTRUCTION = "Remote Control is only available with claude.ai subscriptions. Please use `/login` to sign in with your claude.ai account.",
   BRIDGE_LOGIN_ERROR = "Error: You must be logged in to use Remote Control.\n\nRemote Control is only available with claude.ai subscriptions. Please use `/login` to sign in with your claude.ai account.",
   REMOTE_CONTROL_DISCONNECTED_MSG = "Remote Control disconnected.",

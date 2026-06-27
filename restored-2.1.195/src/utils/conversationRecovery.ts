@@ -11,7 +11,6 @@
   (fTo = require("path")),
   (dQp = ["interactive", "bg", "daemon", "daemon-worker"]));
 fQp = ["busy", "shell", "idle", "waiting"];
-var TZa = {};
 function AQp(e) {
   if (e.type !== "attachment") return e;
   let t = e.attachment;

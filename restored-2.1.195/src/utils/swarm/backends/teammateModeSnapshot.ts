@@ -5,7 +5,6 @@
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setCliTeammateModeOverride, hasTeammateModeSnapshot, getTeammateModeFromSnapshot, getCliTeammateModeOverride, clearCliTeammateModeOverride, captureTeammateModeSnapshot, DEFAULT_TEAMMATE_MODE
-var ago = {};
 function setCliTeammateModeOverride(e) {
   YGt = e;
 }

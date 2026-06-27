@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: AutoModeOptInDialog, AUTO_MODE_DESCRIPTION
-var C6o = {};
 function AutoModeOptInDialog(e) {
   let t = Lyc.c(25),
     { onAccept: n, onDecline: r, declineExits: o } = e,

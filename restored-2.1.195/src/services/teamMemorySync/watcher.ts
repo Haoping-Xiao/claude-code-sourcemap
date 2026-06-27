@@ -24,7 +24,6 @@ Wwl = {
   filesWritten: 0,
   filesDeleted: 0,
 };
-var KJn = {};
 function WJn() {
   return {
     syncState: null,

@@ -7,7 +7,6 @@
 // module exports: wrapText, useTimeout, useThemeSetting, useTheme, useTerminalViewport, useTerminalTitle, useTerminalFocus, useTabStatus, useStdin, useSelection, useResolvedTheme, usePreviewTheme, useIsScreenReaderEnabled, useInterval, useHasFocus, useFocus, useDebouncedCallback, useCustomThemes, useClock, useApp, useAnimationTimer, useAnimationFrame, supportsTabStatus, render, measureElement, createRoot, color, ThemeProvider, Text, TerminalFocusEvent, Spacer, RawAnsi, NoSelect, Newline, Link, Fo …
 // [unwrapped __esm module GLn]
 tX = VWd;
-var wW = {};
 function GJr(e) {
   return z5i.createElement(Z0n, null, e);
 }

@@ -7,7 +7,6 @@
 // module exports: shouldSuppressChromeOffer, shouldEnableClaudeInChrome, shouldAutoEnableClaudeInChrome, setupClaudeInChrome, markClaudeInChromeUnwiredIfChrome, markClaudeInChromeUnwired, isClaudeInChromeWiredThisSession, isChromeExtensionInstalled, installChromeNativeHostManifest, getClaudeInChromeMcpServerConfig, _resetShouldAutoEnableForTesting, _resetClaudeInChromeWiredForTesting
 // [unwrapped __esm module PFl] deps: At
 ((uBo = require("fs/promises")), (LFl = require("path")));
-var yBo = {};
 function shouldEnableClaudeInChrome(e) {
   if (e === true) return true;
   if (e === false) return false;

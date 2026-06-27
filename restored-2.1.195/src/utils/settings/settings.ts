@@ -16,7 +16,6 @@
     }),
   )),
   (P1u = new Set(["plist", "hklm", "file"])));
-var EY = {};
 function cj() {
   let e = {
     cwd: yr(),

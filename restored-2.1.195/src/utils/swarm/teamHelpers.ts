@@ -13,7 +13,6 @@ IF = class IF extends Error {
   }
 };
 eel = /\p{Cc}/u;
-var oel = {};
 function sanitizeName(e) {
   return e.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
 }

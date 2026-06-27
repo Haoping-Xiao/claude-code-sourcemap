@@ -5,7 +5,6 @@
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: matchSessionMode, isCoordinatorMode, isCcrCoordinator, getCoordinatorUserContext, getCoordinatorSystemPrompt
-var qW = {};
 function Zop() {
   let { isScratchpadEnabled: e } = (Yf(), ro(Noa));
   return e();

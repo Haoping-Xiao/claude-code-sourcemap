@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module IKl] deps: uo, S4n, Ye, ps, fn, fKl, QFo, dr, sr, vi, Ko, hKl, bKl, AKl, vKl
 ((wKl = R(lt(), 1)), (Psr = R(rt(), 1)), (NP = R(se(), 1)));
-var xKl = {};
 var kKl,
   call = async (e, t) => {
     G("tengu_hooks_command", {});

@@ -6,5 +6,4 @@
 // module exports: default
 // [unwrapped __esm module knc] deps: Cnc
 xnc = R(se(), 1);
-var Rnc = {};
 var IXf, xXf;

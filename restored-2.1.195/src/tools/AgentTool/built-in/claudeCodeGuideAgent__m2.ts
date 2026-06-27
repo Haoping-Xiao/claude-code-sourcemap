@@ -11,7 +11,6 @@
     "references/live-sources.md": Sxc,
     "references/recent-changes.md": Axc,
   }));
-var kxc = {};
 function Cxc() {
   return (NHm ??= Promise.resolve().then(() => (wxc(), vxc)));
 }

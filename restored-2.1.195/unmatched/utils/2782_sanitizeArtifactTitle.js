@@ -12,7 +12,6 @@ function rso() {
 `);
 }
 var FRe = "WaitForMcpServers";
-var Q2t = {};
 function parseArtifactUrl(e) {
   let t = e.match(new RegExp(`^https://(?:[a-z0-9-]+\\.)?claude\\.ai/code/(?:artifact|frame)/(${oso})(?:[/?#]|$)`));
   if (t?.[1]) return {

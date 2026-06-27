@@ -8,7 +8,6 @@
 // [unwrapped __esm module wOe] deps: ft, Wit, Kit, Tne
 ((vOe = R(rt(), 1)), (W$o = R(se(), 1)));
 Rq = nkf;
-var YLl = {};
 function findBtwTriggerPositions(e) {
   let t = [],
     n = e.matchAll(rkf);

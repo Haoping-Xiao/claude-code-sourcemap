@@ -79,7 +79,6 @@
         .optional(),
     }),
   )));
-var yoc = {};
 async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
   let u = r_(),
     d = typeof n === "string" ? n : void 0,

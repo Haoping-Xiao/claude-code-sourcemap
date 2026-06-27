@@ -72,7 +72,6 @@ ${c6(i)}`;
   },
 }),
   (qPl = B0f));
-var zPl = {};
 async function F0f(e, t, n) {
   (t.onCompactEvent?.({
     type: "compact_progress",

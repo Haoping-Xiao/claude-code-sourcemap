@@ -7,7 +7,6 @@
 // module exports: UserChannelMessage
 // [unwrapped __esm module nal] deps: Xa, Ye
 ((eal = R(lt(), 1)), (IAe = R(se(), 1)));
-var sal = {};
 function dsf(e) {
   let t = e.lastIndexOf(":");
   return t === -1 ? e : e.slice(t + 1);

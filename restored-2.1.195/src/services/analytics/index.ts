@@ -24,7 +24,6 @@ H_r = E_r.subscribe;
 rbr = Mi();
 yCt = rbr.subscribe;
 mrs = [];
-var jCt = {};
 function stripProtoFields(e) {
   let t;
   for (let n in e)

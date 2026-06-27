@@ -9,7 +9,6 @@
 ((c2i = R(rt(), 1)), (u2i = c2i.createContext(false)));
 u2i.displayName = "InternalAccessibilityContext";
 yRn = u2i;
-var h7r = {};
 function startCapturingEarlyInput() {
   if (
     !process.stdin.isTTY ||

@@ -5,7 +5,6 @@
 // note: nearest: src/utils/transcriptSearch.ts (0.0532); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: restoreGoalFromTranscript, findGoalToRestore
-var Nzo = {};
 function findGoalToRestore(e) {
   if (!e) return null;
   for (let t = e.length - 1; t >= 0; t--) {

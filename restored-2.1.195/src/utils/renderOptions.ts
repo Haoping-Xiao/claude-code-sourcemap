@@ -12,7 +12,6 @@
   (NWt = R(se(), 1)),
   (tMp = (nbe(), ro(eqi)).VoiceProvider),
   (rNa = sNa.createContext(false)));
-var I4n = {};
 function rMp() {
   if (tPe !== null) return tPe;
   if (process.stdin.isTTY) {

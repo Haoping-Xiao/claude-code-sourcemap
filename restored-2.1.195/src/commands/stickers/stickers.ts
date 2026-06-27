@@ -15,7 +15,6 @@
   load: () => Promise.resolve().then(() => (RXl(), kXl)),
 }),
   (LXl = w8f));
-var PXl = {};
 async function call() {
   if (await ac("https://www.stickermule.com/claudecode"))
     return {

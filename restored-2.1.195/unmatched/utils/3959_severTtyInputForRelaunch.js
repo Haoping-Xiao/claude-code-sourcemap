@@ -7,7 +7,6 @@
 // module exports: severTtyInputForRelaunch, execRelaunch
 // [unwrapped __esm module QEe] deps: aEe
 s8n = require("fs/promises"), V9e = require("path"), i8n = R(Uj(), 1);
-var z9e = {};
 function severTtyInputForRelaunch() {
   for (let e = 0; e < 32; e++) {
     if (e === 1 || e === 2) continue;

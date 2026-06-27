@@ -5,7 +5,6 @@
 // note: nearest: src/screens/REPL.tsx (0.0064); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-var H1l = {};
 function yMf(e) {
   return Py(e);
 }

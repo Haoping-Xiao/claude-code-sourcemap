@@ -5,7 +5,6 @@
 // note: nearest: src/screens/REPL.tsx (0.0025); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: safeInline, getProjectContextBlock, formatProjectContext, describeSyncSource
-var nia = {};
 async function getProjectContextBlock() {
   let e = process.env.CLAUDE_PROJECT_UUID?.trim();
   if (!e) return null;

@@ -5,7 +5,6 @@
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: wrapText, truncateToWidthNoEllipsis, truncateToWidth, truncateStartToWidth, truncatePathMiddle, truncate, formatTokens, formatTokenEstimate, formatSecondsShort, formatResetTime, formatResetText, formatRelativeTimeAgo, formatRelativeTime, formatNumber, formatLogMetadata, formatFileSize, formatDuration, formatBarElapsed
-var xis = {};
 function formatFileSize(e) {
   let t = e / 1024;
   if (t < 1) return `${e} bytes`;

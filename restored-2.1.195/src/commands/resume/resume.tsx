@@ -7,7 +7,6 @@
 // module exports: filterResumableSessions, call
 // [unwrapped __esm module O2o] deps: ft, Is, _a
 BVl = require("path");
-var GVl = {};
 function UVl(e) {
   switch (e.resultType) {
     case "sessionNotFound":

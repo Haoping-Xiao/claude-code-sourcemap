@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: performSetColor, call
-var sPl = {};
 async function call(e, t, n) {
   return (
     e(await performSetColor(n, t), {

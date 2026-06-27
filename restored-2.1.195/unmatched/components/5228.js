@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module Cnc] deps: si, uo, gq, fH, tC, _i, m8, Ye, ps, tfe, Uoe, D6e, $7, es, sr, Bs, vi, B_, Ko, CH, _rr, mjo, gsr
 OGo = R(lt(), 1), _me = R(rt(), 1), dw = R(se(), 1);
-var Inc = {};
 async function call(e, t) {
   return xnc.jsx(wnc, {
     toolUseContext: t,

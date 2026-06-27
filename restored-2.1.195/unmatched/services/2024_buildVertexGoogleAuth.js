@@ -5,7 +5,6 @@
 // note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0364); dir inferred from dep-graph -> services; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: vertexAuthFetch, buildVertexGoogleAuth
-var avi = {};
 async function buildVertexGoogleAuth(e, t) {
   if (e.kind === "skip") return {
     getClient: () => ({

@@ -19,7 +19,6 @@ h4 = {
   baseDir: "built-in",
   getSystemPrompt: () => "",
 };
-var fso = {};
 function isDeferredTool(e) {
   if (e.alwaysLoad === true) return false;
   if (goa().includes(e.name)) return false;

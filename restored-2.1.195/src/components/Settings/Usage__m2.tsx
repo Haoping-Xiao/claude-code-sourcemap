@@ -19,7 +19,6 @@
 }),
   (krf = new Set(["JPY", "KRW", "VND"])));
 var k8t = "https://support.claude.com/en/articles/12429409-extra-usage-for-paid-claude-plans";
-var Dsl = {};
 function xsl() {
   if (tH(As()) && jue() && !Gue()) oLe();
 }

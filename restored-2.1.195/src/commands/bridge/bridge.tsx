@@ -5,7 +5,6 @@
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-var fZl = {};
 function Vzf(e) {
   let t = E3o.c(18),
     { onDone: n, name: r, context: o } = e,

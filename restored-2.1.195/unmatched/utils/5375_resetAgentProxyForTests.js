@@ -7,7 +7,6 @@
 // module exports: resetAgentProxyForTests, installIntoSystemTrust, initAgentProxy, getAgentProxyEnv, findSystemCaBundle, SESSION_TOKEN_PATH
 // [unwrapped __esm module pfc] deps: dn, je, wr, At, Bi, _0, aEe, C7n
 fw = require("fs/promises"), Q9o = require("os"), Fz = require("path"), Blm = /[\s'"]/;
-var Efc = {};
 async function initAgentProxy(e) {
   let t = process.env.AGENT_PROXY_URL,
     n = process.env.AGENT_PROXY_AUTH_TOKEN;

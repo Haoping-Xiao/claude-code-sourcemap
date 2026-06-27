@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module Ger] deps: ft, ag, kt, fb, BI, S_, $S, h6, je, sp, vn, KI, _$, y_, _Le, _a, mVe, bH, aR, rKe
 QDl = require("crypto");
-var tPl = {};
 var call = async (e, t) => {
   let n = e.trim() || void 0;
   for await (let r of r7t({

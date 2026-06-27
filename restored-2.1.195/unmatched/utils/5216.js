@@ -14,5 +14,4 @@ v7f = {
   uninstall: "Uninstall service",
   stop: "Stop"
 };
-var Ytc = {};
 var x7f, k7f;

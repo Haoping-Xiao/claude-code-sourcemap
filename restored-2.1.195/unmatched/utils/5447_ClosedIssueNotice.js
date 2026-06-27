@@ -7,7 +7,6 @@
 // module exports: ClosedIssueNotice
 // [unwrapped __esm module $hc] deps: ft, er, je, fn, At, Bi, vn, qd, Jt
 RTt = require("fs/promises"), ndr = require("path");
-var Bhc = {};
 function Ohc(e) {
   return rdr.jsxs(xs, {
     url: `${Mdm}${e}`,

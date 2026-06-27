@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, FastModePicker
-var jzl = {};
 function FastModePicker(e) {
   let t = Uzl.c(32),
     { onDone: n, unavailableReason: r } = e,

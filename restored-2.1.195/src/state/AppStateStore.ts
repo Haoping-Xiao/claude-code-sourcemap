@@ -44,7 +44,6 @@ function makeSetWebBrowserSlice(e) {
       };
     });
 }
-var a$a = {};
 function getDefaultAppState() {
   let e = (Mp(), ro(ejr)),
     t = e.isTeammate() && e.isPlanModeRequired() ? "plan" : "default";

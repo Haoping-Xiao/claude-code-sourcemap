@@ -7,7 +7,6 @@
 // module exports: runFastPathPolicyHelper, resetFastPathPolicyForTesting, loadFastPathPolicy, ensureFastPathSettingsLoaded
 // [unwrapped __esm module XVo] deps: je, vn, dr
 kcr = R(Uj(), 1), Wsm = new Set(["update", "install", "doctor"]);
-var kTe = {};
 async function ensureFastPathSettingsLoaded() {
   if (JVo) return;
   JVo = true, eEe(), await Uet(), $Me();

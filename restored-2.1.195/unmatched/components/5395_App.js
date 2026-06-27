@@ -8,7 +8,6 @@
 // [unwrapped __esm module y8o] deps: er
 smc = R(lt(), 1), ten = R(rt(), 1), amc = R(se(), 1);
 Ecm = ten.createContext(null);
-var _8o = {};
 function App(e) {
   let t = lmc.c(11),
     {

@@ -21,7 +21,6 @@ O8 = {
   recurringMaxAgeMs: 604800000,
   cacheLeadMs: 15000,
 };
-var Kra = {};
 function getCronJitterConfig() {
   let e = T7("tengu_kairos_cron_config", O8, pop),
     t = mop().safeParse(e);

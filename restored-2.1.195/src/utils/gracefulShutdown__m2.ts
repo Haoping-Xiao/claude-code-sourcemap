@@ -7,7 +7,6 @@
 // module exports: runPtyHost, createRing
 // [unwrapped __esm module cuc] deps: Is, aEe
 ((qse = require("fs/promises")), (iNe = require("path")));
-var fuc = {};
 async function runPtyHost(e) {
   let t = e.indexOf("--");
   if (!e.includes("--bg-spare", t + 1)) await luc();

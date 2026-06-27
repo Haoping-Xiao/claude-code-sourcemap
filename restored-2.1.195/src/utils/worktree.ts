@@ -37,7 +37,6 @@ Yem = new Set();
     "PermissionDenied",
   ])));
 U5o = new Set();
-var lac = {};
 function persistWorktreeSession(e) {
   (Eft(e),
     pH((t) => ({

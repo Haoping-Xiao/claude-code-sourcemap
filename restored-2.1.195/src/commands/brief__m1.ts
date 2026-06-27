@@ -11,7 +11,6 @@ ZQl = {
   isHidden: true,
   name: "stub",
 };
-var nZl = {};
 function Uzf() {
   let e = at("tengu_kairos_brief_config", tZl),
     t = Bzf().safeParse(e);

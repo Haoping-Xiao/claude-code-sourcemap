@@ -47,7 +47,6 @@
     },
     (e, t) => `${e.toLowerCase()}:${t}`,
   )));
-var xvi = {};
 function Xkd() {
   let e = x0()?.pewter_owl_model;
   if (typeof e === "string" && e !== "") return e;

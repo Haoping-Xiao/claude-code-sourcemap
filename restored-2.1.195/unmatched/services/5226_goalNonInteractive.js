@@ -4,5 +4,4 @@
 // note: dir inferred from dep-graph -> services; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: goalNonInteractive, default
-var Tnc = {};
 var fXf, goalNonInteractive, gXf;

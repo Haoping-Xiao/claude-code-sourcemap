@@ -7,7 +7,6 @@
 // module exports: persistBinaryContent, isSubagentTruncationPromptEnabled, isBinaryContentType, getLargeOutputInstructions, getFormatDescription, getBinaryBlobSavedMessage, extensionForMimeType
 // [unwrapped __esm module K0] deps: ft, Un, kt, Du, db, je, At, es, jS, Jt
 QUn = require("path");
-var Ndo = {};
 function isSubagentTruncationPromptEnabled() {
   let e = process.env.MCP_TRUNCATION_PROMPT_OVERRIDE;
   return e ? e !== "legacy" : at("tengu_mcp_subagent_prompt", !1);

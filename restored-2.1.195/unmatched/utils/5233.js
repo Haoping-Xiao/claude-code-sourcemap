@@ -6,5 +6,4 @@
 // module exports: default
 // [unwrapped __esm module Nnc] deps: Fy, vi, CH, Ye, kt, a5, vy, je, NGo, OB, Ide, $nc
 THt = R(rt(), 1), mZ = R(se(), 1);
-var Bnc = {};
 var PXf, MXf;

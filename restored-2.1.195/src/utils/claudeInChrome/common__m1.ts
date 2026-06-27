@@ -157,7 +157,6 @@ zzi = ve(() =>
 ((Nne = new Map()), (G0e = new Set()));
 Kzi = Promise.resolve();
 ((ult = `(idle \u2014 ${PW})`), (llt = ["starting", "resuming", "adopted", "crashed"]));
-var dKi = {};
 function isInProductPermissionsEnabled() {
   return at("tengu_cfc_in_product_permissions", false);
 }

@@ -41,7 +41,6 @@ IQl = LQl, xQl = [62, 22, 118], wzf = [140, 80, 240], jJt = Array.from({
     r = o => Math.round(xQl[o] + (wzf[o] - xQl[o]) * n);
   return `rgb(${r(0)},${r(1)},${r(2)})`;
 }), d3o = jJt.at(-1), _ir = d3o;
-var $Ql = {};
 async function call(e, t) {
   let n = e.trim(),
     r = t.getAppState(),

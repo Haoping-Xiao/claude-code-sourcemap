@@ -35,5 +35,4 @@ hJo = class hJo extends J7e {
     };
   }
 };
-var yJo = {};
 var encode, decode;

@@ -7,7 +7,6 @@
 // module exports: prewarm, isModifierPressed, getModifiers
 // [unwrapped __esm module MGe] deps: Tc, Xge, m0
 C6d = /^[\p{L}\p{N}\p{M}_]$/u, Xat = /\s/, I6d = /\p{N}/u, x6d = new RegExp(uZr + "$"), k6d = new RegExp("^" + uZr), R6d = new RegExp(uZr, "g");
-var pZr = {};
 function L6d(e) {
   return typeof e === "object" && e !== null && "getModifiers" in e && typeof e.getModifiers === "function" && "isModifierPressed" in e && typeof e.isModifierPressed === "function";
 }

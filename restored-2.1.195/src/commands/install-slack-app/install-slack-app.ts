@@ -15,7 +15,6 @@
   load: () => Promise.resolve().then(() => (HFl(), AFl)),
 }),
   (TFl = v1f));
-var CFl = {};
 async function call() {
   if (
     (G("tengu_install_slack_app_clicked", {}),

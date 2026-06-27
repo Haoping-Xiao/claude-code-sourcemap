@@ -14,7 +14,6 @@ kdf = ve(() =>
     }),
   ),
 );
-var qfl = {};
 function wrapChannelMessage(e, t, n) {
   let r = Object.entries(n ?? {}),
     [o, s] = Rdf(r, ([l]) => Wfl.test(l));

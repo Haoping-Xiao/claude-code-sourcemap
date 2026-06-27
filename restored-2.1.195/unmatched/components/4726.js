@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module jBl] deps: O0, nk, fH, _i, Ye, ps, eE, kP, PBl, BBl
 UBl = R(lt(), 1), Gk = R(se(), 1);
-var GBl = {};
 var WBl,
   call = async (e, {
     options: {

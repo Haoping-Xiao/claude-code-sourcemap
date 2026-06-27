@@ -7,7 +7,6 @@
 // module exports: agentsCommandHandler
 // [unwrapped __esm module T5c] deps: xHt, ag, dn, zH, jS, Jt, _ht, JN
 cwt = require("path");
-var C5c = {};
 async function agentsCommandHandler(e) {
   if (e.json) {
     if (await Fst(), !Kx()) {

@@ -7,7 +7,6 @@
 // module exports: formatRateLimits, formatBehaviors, call
 // [unwrapped __esm module R6l] deps: $7t
 k6l = R(se(), 1);
-var $6l = {};
 function formatRateLimits(e) {
   let { rate_limits: t, subscription_type: n } = e;
   if (!t) return null;

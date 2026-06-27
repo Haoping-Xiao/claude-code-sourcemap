@@ -15,7 +15,6 @@
   load: () => Promise.resolve().then(() => (fUl(), pUl)),
 }),
   (mUl = d1f));
-var bUl = {};
 function DesignLogin({ onDone: e }) {
   let [t, n] = Y$.useState({
       state: "starting",

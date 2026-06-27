@@ -10,7 +10,6 @@
   (eHt = require("fs/promises")),
   (g4o = require("path")),
   (Xsr = require("v8")));
-var K7l = {};
 async function call() {
   let e = await h4o();
   if (!e.success)

@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module SQl] deps: si, vi, CH, Ye, kt, uut, mSe, z1, Vyt, ole, oo, wAe, wr, es, d5e
 ((cZ = R(rt(), 1)), (Nse = R(se(), 1)));
-var EQl = {};
 function K6f({ onDone: e, context: t }) {
   let [n, r] = AYe.useState(null),
     o = Wpe(),

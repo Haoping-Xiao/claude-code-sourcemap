@@ -23,7 +23,6 @@
     load: () => Promise.resolve().then(() => (Hoc(), Aoc)),
   }),
   (kQf = IQf));
-var Moc = {};
 function Coc() {
   return O_();
 }

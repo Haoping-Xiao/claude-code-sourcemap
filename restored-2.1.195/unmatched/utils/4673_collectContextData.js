@@ -7,7 +7,6 @@
 // module exports: collectContextData, call
 // [unwrapped __esm module T1l] deps: A1l, id, mZn, At, uf, co, LPe, lNo
 cNo = R(se(), 1);
-var uNo = {};
 async function collectContextData(e) {
   let {
       messages: t,

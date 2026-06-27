@@ -7,7 +7,6 @@
 // module exports: summarizeByServerPrefix, isToolSearchToolAvailable, isToolSearchEnabled, isToolReferenceBlock, isMcpLadderNonblockingEnabled, getDeferredToolsDelta, getAutoToolSearchCharThreshold, extractDiscoveredToolNames, DEFERRED_DELTA_LIST_CAP
 // [unwrapped __esm module yZn] deps: Xr, Un
 Pkl = new WeakMap();
-var TMo = {};
 function CMo() {
   let e = process.env.ENABLE_TOOL_SEARCH;
   if (!e) return wMo;

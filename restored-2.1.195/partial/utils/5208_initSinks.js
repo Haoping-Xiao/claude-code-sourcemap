@@ -13,7 +13,6 @@ yme = require("fs/promises"), Vir = require("path"), zYf = ve(() => H.object({
   pid: H.number().optional(),
   procStart: H.string().optional()
 }));
-var bHt = {};
 function initSinks() {
   C3o(), Iqe();
 }

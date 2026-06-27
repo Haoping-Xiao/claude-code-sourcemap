@@ -7,7 +7,6 @@
 // module exports: skillIndexCacheKey, getSkillIndex, clearSkillIndexCache
 // [unwrapped __esm module DHe] deps: ft, dn, Un, oo, er, je, wr, fn, Bi, vn, Is, Jt, VM, kZn, PFl
 _se = require("fs/promises"), OFl = require("os"), tZ = require("path"), pBo = require("url"), MFl = `${fBo}.json`;
-var _Bo = {};
 function skillIndexCacheKey(e, t) {
   return `${hKt()}:${G6()}:${e}:${(t ?? []).map(n => n.name).sort().join(",")}`;
 }

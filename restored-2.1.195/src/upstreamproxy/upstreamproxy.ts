@@ -67,7 +67,6 @@ ocm = [
     refresh: ["update-ca-trust", "extract"],
   },
 ];
-var Tfc = {};
 function acm(e) {
   let t = Hfc.c(19),
     { filePath: n, errorDescription: r, onExit: o, onReset: s } = e,

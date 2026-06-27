@@ -67,4 +67,3 @@ Jqr = class Jqr extends G2 {
     e.headers = Xqr([o, e.headers]).values;
   }
 };
-var kAi = {};

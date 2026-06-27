@@ -5,7 +5,6 @@
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-var QPl = {};
 function K0f(e) {
   let t = JPl.c(52),
     { onDone: n, context: r } = e,

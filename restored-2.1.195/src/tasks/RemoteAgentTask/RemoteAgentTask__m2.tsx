@@ -7,7 +7,6 @@
 // module exports: ultrareviewHandler
 // [unwrapped __esm module I5c] deps: kt, Yp, lH, JN
 w5c = require("path");
-var k5c = {};
 async function ultrareviewHandler(e, t) {
   let n = () => process.exit(130);
   (process.once("SIGINT", n), await tV());

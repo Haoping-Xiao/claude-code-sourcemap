@@ -7,7 +7,6 @@
 // module exports: writeToStdout, writeToStderr, registerProcessIOErrorHandlers, peekForStdinData, iterateStreamUntilClose, handleStreamGoneErrors, exitWithError
 // [unwrapped __esm module FK]
 ((tae = require("fs")), (UEr = require("path")));
-var bUe = {};
 function handleStreamGoneErrors(e, t) {
   e.on("error", (n) => {
     if (n.code !== void 0 && h7c.has(n.code)) {

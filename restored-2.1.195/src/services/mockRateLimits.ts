@@ -7,7 +7,6 @@
 // module exports: withProbeDeadline, apply3PDefaultFallbacks, TIER_LABELS
 // [unwrapped __esm module CMc] deps: kt, oo, wFe, je, RE, dr, QO, Ao, Ls
 vMc = Object.keys(yc).filter((e) => yc[e].mantle !== null);
-var xMc = {};
 async function withProbeDeadline(e, t) {
   let n;
   try {

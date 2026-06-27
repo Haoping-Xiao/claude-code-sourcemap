@@ -7,7 +7,6 @@
 // module exports: WorkflowTool, WorkflowInputError
 // [unwrapped __esm module fgl] deps: zX, gm, ql, Ye, uo, es, sr, e0o, Uoe, n0o, c7n
 o0o = R(lt(), 1), A_ = R(se(), 1);
-var s0o = {};
 async function mgl(e) {
   if (e.scriptPath) {
     if (e.script) return {

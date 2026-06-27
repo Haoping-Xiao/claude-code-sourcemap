@@ -81,5 +81,4 @@ Review the design plan against the subject before building: if any part of it re
 - Spend your boldness in one place; keep everything around it quiet. If the accent fights the ground, shift it toward analogous or drop saturation rather than replacing it.
 `;
 var RTc = () => {};
-var DTc = {};
 var SKILL_MD;

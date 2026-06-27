@@ -96,7 +96,6 @@ Ime = Cn(() => {
 ((ysm = oTt), (_sm = sTt), (bsm = kZt), (Ssm = CZt), (Esm = UVo));
 ((Hsm = NVo), (Tsm = dsm));
 r1i(() => x0());
-var CWt = {};
 function Wcc(e) {
   return e.replace(/[A-Z]/g, (t) => `_${t.toLowerCase()}`);
 }

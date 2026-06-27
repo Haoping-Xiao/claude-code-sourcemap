@@ -8,7 +8,6 @@
 // [unwrapped __esm module uf] deps: ft, Un, je, Lx, wr, fn, Bi, Is, QZe, Y9, dr
 VUi = require("child_process");
 ine = qBd();
-var JUi = {};
 function XBd() {
   J0n = void 0;
 }

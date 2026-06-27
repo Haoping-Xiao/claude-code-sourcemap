@@ -21,7 +21,6 @@ function fJ() {
   return (ifo = e);
 }
 var ifo;
-var SRa = {};
 function lfo(e, t, n) {
   let r = Math.round(e * n),
     o = Math.round(t * n);

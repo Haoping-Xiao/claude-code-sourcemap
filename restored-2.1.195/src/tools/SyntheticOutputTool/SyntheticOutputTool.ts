@@ -67,7 +67,6 @@
 })),
   (Aoa = new WeakMap()));
 var qOn = "ExitWorktree";
-var voa = {};
 var WORKFLOW_TOOL_NAME = "Workflow",
   CODE_REVIEW_WORKFLOW_NAME = "code-review";
 function woa() {

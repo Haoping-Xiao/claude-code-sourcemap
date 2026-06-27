@@ -49,7 +49,6 @@
     "com.apple.systempreferences",
   ])),
   (cxp = /^[\p{L}\p{M}\p{N}_ .&'()+-]+$/u));
-var Afo = {};
 async function mxp() {
   try {
     let e = U4(),

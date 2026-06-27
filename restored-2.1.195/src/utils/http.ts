@@ -110,7 +110,6 @@ g1t = oRt(async () => {
 ((lwi = ["EACCES", "EPERM", "EBUSY", "EIO", "EISDIR", "ELOOP"]),
   (V0d = new RegExp(`\\b(${lwi.join("|")})\\b`)));
 cwi = class cwi extends Error {};
-var eii = {};
 function getUserAgent() {
   let e = process.env.CLAUDE_AGENT_SDK_VERSION
       ? `, agent-sdk/${process.env.CLAUDE_AGENT_SDK_VERSION}`

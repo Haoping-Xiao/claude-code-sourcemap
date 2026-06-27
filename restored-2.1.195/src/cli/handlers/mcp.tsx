@@ -7,7 +7,6 @@
 // module exports: mcpServeHandler, mcpResetChoicesHandler, mcpRemoveHandler, mcpListHandler, mcpGetHandler, mcpAddJsonHandler, mcpAddFromDesktopHandler
 // [unwrapped __esm module Vdc] deps: bCe, je, At, Rd, Is
 ((ZYe = require("fs/promises")), (Gdc = require("os")), (O9o = require("path")));
-var lNe = {};
 function nam(e) {
   let t = e?.issues;
   if (Array.isArray(t) && t.length > 0) {

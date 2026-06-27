@@ -5,7 +5,6 @@
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: loadSettingsFromFlag, loadSettingSourcesFromFlag, loadManagedSettingsFromFlag, eagerLoadSettings
-var HOc = {};
 function loadSettingsFromFlag(e) {
   try {
     let t = e.trim(),

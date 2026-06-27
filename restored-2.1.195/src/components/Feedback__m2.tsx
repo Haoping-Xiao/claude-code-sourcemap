@@ -11,7 +11,6 @@
   (aQt = require("path")),
   (EHt = R(rt(), 1)),
   (YN = R(se(), 1)));
-var HGo = {};
 async function EGo() {
   let e = KOe(),
     [t, n, r, o, s, i, a] = await Promise.all([

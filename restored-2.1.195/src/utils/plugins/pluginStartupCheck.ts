@@ -7,7 +7,6 @@
 // module exports: settingSourceToScope, isPersistableScope, installSelectedPlugins, getPluginEditableScopes, getInstalledPlugins, findMissingPlugins, checkEnabledPlugins
 // [unwrapped __esm module MEt] deps: Ye, gm
 ((f2l = R(lt(), 1)), (OKe = R(se(), 1)));
-var h2l = {};
 async function checkEnabledPlugins() {
   let e = Dr(),
     t = [],

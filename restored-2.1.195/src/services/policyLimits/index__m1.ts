@@ -23,7 +23,6 @@
     compliance_taints: [],
     defaults: {},
   }));
-var SNt = {};
 function setSessionCache(e) {
   let t = hNt?.compliance_taints ?? [],
     n = e?.compliance_taints ?? [];

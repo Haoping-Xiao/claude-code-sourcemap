@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startMCPServer, createMCPServer
-var Fdc = {};
 async function startMCPServer(e, t, n) {
   Uy(e);
   let r = createMCPServer(t, n),

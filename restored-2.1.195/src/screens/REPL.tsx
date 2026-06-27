@@ -5,7 +5,6 @@
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TranscriptHelpMenu, REPL
-var JPc = {};
 function hIm() {
   G("tengu_left_arrow_gesture", {
     outcome: $e("abandoned"),

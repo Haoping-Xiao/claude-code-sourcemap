@@ -38,7 +38,6 @@
   (hku = Fe.bool()),
   (yku = Fe.bool()),
   (_ku = Fe.bool()));
-var pkr = {};
 var HTTP_PROXY,
   HTTPS_PROXY,
   NO_PROXY,

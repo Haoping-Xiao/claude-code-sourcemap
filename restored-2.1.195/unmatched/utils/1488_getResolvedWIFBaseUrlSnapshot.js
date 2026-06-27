@@ -7,7 +7,6 @@
 // module exports: withCredentialsLock, resolveCredentialsFromConfig, resetWIFSingletonsForTesting, loadCredentials, loadConfig, isWIFActive, invalidateWIFToken, getWIFTokenCache, getWIFStatusLine, getWIFPrecedenceSource, getWIFCredentials, getWIFAuthType, getResolvedWIFBaseUrlSnapshot, getCredentialsPath, defaultCredentials, WorkloadIdentityError, TokenCache, OAUTH_API_BETA_HEADER, FEDERATION_BETA_HEADER
 // [unwrapped __esm module wjr] deps: uee, je, At, vn, kt
 Zsi = require("path");
-var kjr = {};
 function getResolvedWIFBaseUrlSnapshot() {
   return oHn;
 }

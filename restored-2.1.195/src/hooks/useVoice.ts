@@ -23,7 +23,6 @@
     "subagent",
     "worktree",
   ]));
-var HTc = {};
 function Lpr() {
   PNe.push(Date.now());
 }

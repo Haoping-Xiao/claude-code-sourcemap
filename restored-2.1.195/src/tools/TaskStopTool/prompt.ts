@@ -39,7 +39,6 @@ var QD = "TaskStop",
 - Returns a success or failure status
 - Use this tool when you need to terminate a long-running task
 `;
-var zWe = {};
 function isLoopPersistentPreambleEnabled() {
   if (ut(process.env.CLAUDE_CODE_LOOP_PERSISTENT)) return !0;
   return at("tengu_kairos_loop_persistent", !1);

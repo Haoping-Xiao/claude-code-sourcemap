@@ -7,7 +7,6 @@
 // module exports: readClaudeDesktopMcpServers, getClaudeDesktopConfigPath
 // [unwrapped __esm module jdc] deps: l0t, jun, Vb, rq, jDe, X2o, ii, uDe, LL, fp, og, CAt, je, At, ik, P2o, vn, bm, co, Ao, Gy, _$, Jt, IAt, Gor, mzt, yZn
 Zim = [rsr];
-var qdc = {};
 async function getClaudeDesktopConfigPath() {
   let e = Vt();
   if (!Kkr.includes(e))

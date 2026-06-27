@@ -8,7 +8,6 @@
 // [unwrapped __esm module jv] deps: Un, fn, lf, EI, lC
 Pct = new Set([Ds, wu, qc, Co, Ss, RI]);
 var Mct = "ListAgents";
-var Ioa = {};
 function isKairosCronEnabled() {
   return !ut(process.env.CLAUDE_CODE_DISABLE_CRON) && T7("tengu_kairos_cron", true, Coa);
 }

@@ -15,7 +15,6 @@ KDe = Cn(async () => {
 var Zjn = 78,
   e4n = 75,
   SWt = 70;
-var WOa = {};
 function dPp() {
   return parseInt(process.env.CLAUDE_CODE_DD_ERROR_TRACKING_FLUSH_INTERVAL_MS || "", 10) || lPp;
 }

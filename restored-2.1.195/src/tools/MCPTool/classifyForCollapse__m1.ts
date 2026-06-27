@@ -8,7 +8,6 @@
 // [unwrapped __esm module aEl] deps: Rc, H0, oo, je, At, Ls, qd, HXn
 Rka(MRo);
 Dka(() => !!Tbt());
-var dEl = {};
 function qhf(e) {
   let t = Whf[e.method],
     n = t.present.filter((o) => e[o] === void 0),

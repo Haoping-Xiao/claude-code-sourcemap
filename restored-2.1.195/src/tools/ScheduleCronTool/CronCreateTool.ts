@@ -114,5 +114,4 @@
     renderToolUseMessage: eSl,
     renderToolResultMessage: tSl,
   })));
-var cSl = {};
 var ghf, hhf, CronDeleteTool;

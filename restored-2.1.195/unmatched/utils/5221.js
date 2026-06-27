@@ -4,5 +4,4 @@
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
-var pnc = {};
 var oXf, sXf;

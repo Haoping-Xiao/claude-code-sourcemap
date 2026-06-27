@@ -12,7 +12,6 @@ dNn = require("path");
   (_ao = pNn.setEnvHookNotifier),
   (yca = pNn.updateWatchPaths),
   (_ca = pNn.onCwdChanged));
-var Aao = {};
 function xcp(e) {
   let t = {
     PreToolUse: [],

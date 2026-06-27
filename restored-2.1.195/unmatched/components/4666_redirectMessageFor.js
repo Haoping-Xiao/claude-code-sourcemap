@@ -27,7 +27,6 @@ PPf = {
   },
   load: () => Promise.resolve().then(() => (r1l(), n1l))
 }, o1l = PPf;
-var l1l = {};
 function redirectMessageFor(e) {
   let t = e && i1l[e] ? e : "vim";
   return `/${t} moved \u2192 ${i1l[t]} in /config`;

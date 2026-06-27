@@ -30,7 +30,6 @@ function oio(e, t) {
 var bia = 3,
   sio =
     "Autocompact is thrashing: the context refilled to the limit within 3 turns of the previous compact, 3 times in a row. A file being read or a tool output is likely too large for the context window. Try reading in smaller chunks, or use /clear to start fresh.";
-var cio = {};
 function createAbortController(e = uap) {
   let t = new AbortController();
   return (Sia.setMaxListeners(e, t.signal), t);

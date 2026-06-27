@@ -401,5 +401,4 @@ You will be notified when it completes. Use /workflows to watch live progress.`;
     };
   },
 });
-var a0o = {};
 var workflowPermissionDialog;

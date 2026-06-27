@@ -62,7 +62,6 @@
   "**": 14,
 }),
   (urp = new Set(["=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", "&=", "^=", "|=", "**"])));
-var rra = {};
 async function parseCommand(e) {
   if (!e || e.length > nra) return null;
   try {

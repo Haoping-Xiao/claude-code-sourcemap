@@ -21,7 +21,6 @@
     defaultVerb: "",
   })),
   (uEe = uL({})));
-var rgo = {};
 function detectSurfaces() {
   if (Js()) return new Set(["bg"]);
   let e = new Set();

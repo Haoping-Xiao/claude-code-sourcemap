@@ -12,7 +12,6 @@ $Of = {
   description: "Open a memory file in your editor",
   load: () => Promise.resolve().then(() => (CBl(), wBl))
 }, IBl = $Of;
-var kBl = {};
 var call = async () => {
   let e = !bD();
   return ECt(e), G("tengu_memory_toggled", {

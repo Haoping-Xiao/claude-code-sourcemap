@@ -5,7 +5,6 @@
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: outputSchema, inputSchema, clearToolSearchDescriptionCache, ToolSearchTool
-var Lla = {};
 function Klp(e) {
   return e
     .map((t) => t.name)

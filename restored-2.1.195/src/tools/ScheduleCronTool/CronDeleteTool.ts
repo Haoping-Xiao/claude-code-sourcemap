@@ -81,5 +81,4 @@
     renderToolUseMessage: nSl,
     renderToolResultMessage: rSl,
   })));
-var dSl = {};
 var _hf, bhf, CronListTool;

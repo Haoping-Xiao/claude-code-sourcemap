@@ -7,7 +7,6 @@
 // module exports: scaleCharsToTokens, getPluginInventory, computePluginTokenCost
 // [unwrapped __esm module Arr] deps: je, At, ys, vn, Jt, B1
 ((djl = require("crypto")), (i1e = require("fs/promises")), (pjl = require("path")));
-var Hjl = {};
 async function getPluginInventory(e, t) {
   if (t === "builtin") {
     let f = yKi(e.name);

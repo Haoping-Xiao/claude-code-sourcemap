@@ -7,7 +7,6 @@
 // module exports: sessionTeamName, initializeSessionTeam, _resetInheritedTeamNameForTesting
 // [unwrapped __esm module M1c] deps: dn, je, Vtn, Jt, wdr, Zdr, Azo, I1c
 R1c = require("fs/promises"), L1c = require("os");
-var N1c = {};
 function sessionTeamName(e) {
   return `${tkm}-${e.slice(0, 8)}`;
 }

@@ -7,7 +7,6 @@
 // module exports: BypassPermissionsModeDialog
 // [unwrapped __esm module k$c] deps: Eor, Ye, kt, Fy, RLe, FZt, yFo, bFo
 ((C$c = R(lt(), 1)), (I$c = R(rt(), 1)), (nK = R(se(), 1)));
-var L$c = {};
 function BypassPermissionsModeDialog(e) {
   let t = R$c.c(7),
     { onAccept: n } = e,

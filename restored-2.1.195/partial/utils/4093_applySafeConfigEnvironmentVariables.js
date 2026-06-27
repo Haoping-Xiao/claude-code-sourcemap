@@ -5,7 +5,6 @@
 // note: low-confidence suggestion: src/utils/managedEnv.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: applySafeConfigEnvironmentVariables, applyConfigEnvironmentVariables, _resetSpawnEnvSnapshotForTesting
-var csl = {};
 function crf(e) {
   if (!e || !process.env.ANTHROPIC_UNIX_SOCKET) return e || {};
   let {

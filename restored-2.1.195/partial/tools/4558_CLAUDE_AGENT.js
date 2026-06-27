@@ -16,5 +16,4 @@ ELl = {
   baseDir: "built-in",
   getSystemPrompt: e => SLl()
 };
-var TLl = {};
 var CLAUDE_AGENT;

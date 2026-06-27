@@ -5,7 +5,6 @@
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toSlashCommands, shippedCommandNames, scopedSkillName, routeThinClientCommand, meetsAvailabilityRequirement, isThinClientSafe, isSkillToolCommand, isSkillOff, isSkillExcludedFromModel, isCommandEnabled, isBridgeSafeCommand, isBridgeDispatchable, hasCommand, getSlashCommandToolSkills, getSkillToolCommands, getSkillOverride, getMcpSkillCommands, getDynamicSkillStateKey, getCommands, getCommandName, getCommand, getBuiltinCommands, formatDescriptionWithSource, fleetHostCommands, fin …
-var fjo = {};
 function getBuiltinCommands() {
   return qQt();
 }

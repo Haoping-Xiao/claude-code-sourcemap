@@ -190,7 +190,6 @@
   },
 }),
   (g7c = BEr));
-var sis = {};
 function setBgExitCause(e, t) {
   let n = t ?? process.env.CLAUDE_JOB_DIR;
   if (!n) return;

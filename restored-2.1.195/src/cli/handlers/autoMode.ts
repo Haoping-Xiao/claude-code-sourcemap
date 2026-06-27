@@ -19,7 +19,6 @@ a1m = {
   nit: "\uD83D\uDFE1",
   pre_existing: "\uD83D\uDFE3",
 };
-var chr = {};
 async function L5c(e, t) {
   (e.render(
     pve.jsx(V_, {

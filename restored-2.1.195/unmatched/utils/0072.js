@@ -6,5 +6,4 @@
 // module exports: default
 // [unwrapped __esm module Con]
 XXe = B8c;
-var jwt = {};
 var Uts, Gwt, U8c, Ryr, F8c, Oie;

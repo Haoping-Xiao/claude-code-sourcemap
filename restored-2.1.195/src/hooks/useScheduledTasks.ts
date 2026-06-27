@@ -7,7 +7,6 @@
 // module exports: useScheduledTasks
 // [unwrapped __esm module qYo] deps: ft, kt, vX, N8, CPc, je, YS
 eIm = (KWe(), ro(zWe));
-var PPc = {};
 function useScheduledTasks({ isLoading: e, assistantMode: t, setMessages: n }) {
   let r = yvt.useRef(e);
   r.current = e;

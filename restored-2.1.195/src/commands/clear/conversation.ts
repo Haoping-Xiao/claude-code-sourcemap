@@ -5,7 +5,6 @@
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: clearConversation
-var ZDl = {};
 async function* clearConversation({
   setMessages: e,
   readFileState: t,

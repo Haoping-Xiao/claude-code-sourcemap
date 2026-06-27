@@ -43,7 +43,6 @@
   (Zku = Fe.int({
     min: 0,
   })));
-var fkr = {};
 var CLAUDE_CODE_USE_BEDROCK,
   CLAUDE_CODE_USE_VERTEX,
   CLAUDE_CODE_USE_FOUNDRY,

@@ -17,7 +17,6 @@
   load: () => Promise.resolve().then(() => (IJl(), wJl)),
 }),
   (j4o = _6f));
-var RJl = {};
 async function call(e, t) {
   let n = e.trim();
   if (!n || Iae.includes(n)) {

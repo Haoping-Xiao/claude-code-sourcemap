@@ -14,7 +14,6 @@
   (J8l = bsr?.skipWorkflowAgent ?? null),
   (Q8l = bsr?.retryWorkflowAgent ?? null),
   (ysr = N5f?.killMonitorMcp ?? null));
-var t6l = {};
 async function call(e, t) {
   return n6l.jsx(Ssr, {
     toolUseContext: t,

@@ -10,7 +10,6 @@
   (wQa = require("fs")),
   (CQa = require("os")),
   (IQa = require("tty")));
-var RQa = {};
 function ConsoleOAuthFlow({
   onDone: e,
   onAuthSuccess: t,

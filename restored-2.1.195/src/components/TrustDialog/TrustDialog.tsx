@@ -18,7 +18,6 @@ XIm = new Set([
   "WebFetch",
   "WebSearch",
 ]);
-var E$c = {};
 function TrustDialog(e) {
   let t = S$c.c(45),
     { onDone: n, commands: r } = e,

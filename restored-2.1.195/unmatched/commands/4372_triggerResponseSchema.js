@@ -7,7 +7,6 @@
 // module exports: triggerResponseSchema, buildScheduleSummary, RemoteTriggerTool
 // [unwrapped __esm module _Sl] deps: ql, Ye, sr
 Dzt = R(se(), 1);
-var ESl = {};
 function buildScheduleSummary(e, t = new Date()) {
   let n = e.enabled ?? true,
     r = [],

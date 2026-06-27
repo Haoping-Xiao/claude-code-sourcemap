@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module OPl] deps: m7t, Ye, vy, Ld, NOo, At, Yp, _a, CH
 uKe = R(rt(), 1), Rfe = R(se(), 1);
-var NPl = {};
 async function call(e) {
   return BPl.jsx($Pl, {
     onDone: e

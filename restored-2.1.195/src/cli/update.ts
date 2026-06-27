@@ -7,7 +7,6 @@
 // module exports: update
 // [unwrapped __esm module uhr] deps: Ye, dn, At, Ao, Hoe, dr, Epe, Jt, LPe, JN
 pve = R(se(), 1);
-var M5c = {};
 async function update() {
   if (Oe.DISABLE_UPDATES)
     ($i(`Updates are disabled by your administrator. Contact your IT team to get the latest version.

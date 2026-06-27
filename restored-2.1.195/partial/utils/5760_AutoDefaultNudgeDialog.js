@@ -7,7 +7,6 @@
 // module exports: AutoDefaultNudgeDialog
 // [unwrapped __esm module MPc] deps: ft, gq, ft, rSe, id, uo, yC, pMe, WW, F2t, qYo, N8, je, bm, co, oje
 yvt = R(rt(), 1), rIm = (KWe(), ro(zWe));
-var NPc = {};
 function AutoDefaultNudgeDialog(e) {
   let t = $Pc.c(18),
     {

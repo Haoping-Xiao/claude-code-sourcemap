@@ -7,7 +7,6 @@
 // module exports: setAutoModeFromFallback, setAutoModeFlagCli, setAutoModeCircuitBroken, setAutoModeActive, isAutoModeFromFallback, isAutoModeCircuitBroken, isAutoModeActive, getAutoModeFlagCli, createAutoModeState, _setGlobalAutoModeStateForTesting
 // [unwrapped __esm module znl] deps: AN, ql, lwo, Xa, DE, Ye, oc, KI
 HC = R(se(), 1);
-var Ope = {};
 function createAutoModeState() {
   return {
     active: false,

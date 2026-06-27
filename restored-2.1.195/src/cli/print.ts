@@ -7,7 +7,6 @@
 // module exports: waitForPendingMcpBeforeFirstCommand, shouldWarnRestrictedStartupModel, shouldIgnoreStaleEndSession, runHeadless, restoreDeclaredDialogKinds, resolveDefaultPickRepoint, reportTurnFailed, reconcileMcpServers, modelOverrideToAdoptAfterTurn, mergeMcpClientLists, loadInitialMessages, kickOffBackgroundPluginInstall, joinPromptValues, isRestartedWorkerEpoch, handleOrphanedPermissionResponse, handleMcpSetServers, getCanUseToolFn, findRewindAnchors, createPrintRequestDialog, createKeepAl …
 // [unwrapped __esm module sFc] deps: np, dn, Lo, Bi, u8o, OI
 rFc = require("crypto");
-var MFc = {};
 function uFc(e) {
   if (fnn.has(e)) return false;
   if ((fnn.add(e), Dmr.push(e), Dmr.length > cFc)) {

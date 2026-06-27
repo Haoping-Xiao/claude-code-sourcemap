@@ -17,7 +17,6 @@ If you can answer right away, send the answer. If you need to go look \u2014 run
 For longer work: ack \u2192 work \u2192 result. Between those, send a checkpoint when something useful happened \u2014 a decision you made, a surprise you hit, a phase boundary. Skip the filler ("running tests...") \u2014 a checkpoint earns its place by carrying information.
 
 Keep messages tight \u2014 the decision, the file:line, the PR number. Second person always ("your config"), never third.`;
-var WOn = {};
 var SEND_USER_FILE_TOOL_NAME = "SendUserFile",
   DESCRIPTION = "Send one or more files to the user",
   SEND_USER_FILE_TOOL_PROMPT = `Send files to the user. Use this when the file *is* the deliverable \u2014 a generated diagram, a report, a screenshot, a built artifact \u2014 and you want it surfaced, not just mentioned. Paths can be absolute or relative to the current working directory.

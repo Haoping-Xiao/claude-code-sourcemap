@@ -12,7 +12,6 @@
   (zen = Qse.join(ISc.homedir(), "Applications", Vgm)),
   (_zo = Qse.join(zen, "Contents", "MacOS", "claude")));
 ((bzo = `HKEY_CURRENT_USER\\Software\\Classes\\${aV}`), (kSc = `${bzo}\\shell\\open\\command`));
-var rpr = {};
 async function isLastCleanupSentinelFresh() {
   try {
     let e = await npr.stat(Tzo.join(tr(), ".last-cleanup"));

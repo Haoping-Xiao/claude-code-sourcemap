@@ -12,7 +12,6 @@
     minHours: 24,
     minSessions: 5,
   }));
-var YIl = {};
 async function buildGitSessionContext(e, t, n) {
   if (!e)
     return {

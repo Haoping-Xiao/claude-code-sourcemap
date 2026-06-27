@@ -5,7 +5,6 @@
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: profileReport, profileCheckpoint, logStartupPerf, isDetailedProfilingEnabled, getStartupPerfLogPath, getStartupPerfJsonPath, addStartupContext
-var jis = {};
 function addStartupContext(e) {
   if (!ZIt) return;
   Object.assign(Nis, e);

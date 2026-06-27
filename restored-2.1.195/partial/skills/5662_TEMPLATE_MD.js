@@ -494,5 +494,4 @@ NOTE ON THE DRIVER:
 Delete everything from \`---\` above onwards before committing. --->
 `;
 var Jxc = () => {};
-var AKo = {};
 var SKILL_MD, TEMPLATE_MD;

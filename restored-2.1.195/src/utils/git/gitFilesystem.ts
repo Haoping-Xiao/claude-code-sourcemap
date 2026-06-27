@@ -7,7 +7,6 @@
 // module exports: resolveRef, resolveGitDir, resetGitFileWatcher, removeWatchedRepo, reanchorGitFileWatcher, readWorktreeHeadSha, readRawSymref, readGitHead, onRepoBranchChange, isValidGitSha, isShallowClone, getWorktreeCountFromFs, getRemoteUrlForDir, getHeadForDir, getCommonDir, getCachedRemoteUrl, getCachedHead, getCachedDefaultBranch, getCachedBranchForRepo, getCachedBranch, clearResolveGitDirCache, addWatchedRepo
 // [unwrapped __esm module RTs]
 ((ITs = require("fs/promises")), (xTs = require("path")), (w$u = /^[0-9a-f]+$/));
-var $Ts = {};
 function clearResolveGitDirCache() {
   met.clear();
 }

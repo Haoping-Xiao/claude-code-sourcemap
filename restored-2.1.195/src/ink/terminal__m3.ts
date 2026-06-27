@@ -150,7 +150,6 @@
   (QHu = Fe.bool()),
   (ZHu = Fe.bool()),
   (eTu = Fe.bool()));
-var ckr = {};
 var HOME,
   PATH,
   PWD,

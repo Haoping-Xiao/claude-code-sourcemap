@@ -1179,5 +1179,4 @@ The \`.plugin\` file will appear in the chat as a rich preview where the user ca
 - **\`references/search-strategies.md\`** \u2014 Knowledge MCP query patterns for finding tool names and org values
 `;
 var rvc = () => {};
-var svc = {};
 var SKILL_MD, SKILL_FILES;

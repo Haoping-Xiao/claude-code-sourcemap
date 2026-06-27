@@ -7,7 +7,6 @@
 // module exports: call
 // [unwrapped __esm module Yzl] deps: Xa, O0, jh, Ye, ps, kt, ZKe, je, vn, Bs, Ko, eE
 ((zzl = R(lt(), 1)), (lme = R(rt(), 1)), (bf = R(se(), 1)));
-var Xzl = {};
 async function call(e) {
   let n = !Dt().hasVisitedPasses;
   if (n) {

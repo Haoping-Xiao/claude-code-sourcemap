@@ -164,7 +164,6 @@ rDe = Cn(async () => {
     );
   }
 });
-var kCa = {};
 function getEnterpriseMcpFilePath() {
   return NSe.join(QC(), "managed-mcp.json");
 }

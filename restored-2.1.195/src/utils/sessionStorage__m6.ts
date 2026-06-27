@@ -29,7 +29,6 @@
   (iDf = jL.encode('"attributionSkill":"')),
   (aDf = jL.encode('"attributionPlugin":"')),
   (lDf = jL.encode('"attributionMcpServer":"')));
-var sOl = {};
 function seedUtilization() {
   let e = f5e();
   if (!e.five_hour && !e.seven_day) return null;

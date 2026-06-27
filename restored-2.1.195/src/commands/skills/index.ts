@@ -14,7 +14,6 @@
   load: () => Promise.resolve().then(() => (Q9l(), X9l)),
 }),
   (Z9l = n5f));
-var t8l = {};
 async function call(e, t) {
   return n8l.jsx(WOe, {
     onClose: e,
