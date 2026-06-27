@@ -36,6 +36,9 @@ $NODE tools/06-restore.mjs
 echo "==> [7/7] 覆盖率报告 + 抽样验证"
 $NODE tools/07-report.mjs
 
+echo "==> [7.5/7] 全量语法验证 (所有还原文件)"
+$NODE tools/10-validate-parse.mjs || echo "  (存在解析失败, 见上)"
+
 if command -v bun >/dev/null 2>&1; then
   echo "==> [extra] 功能性 round-trip: bun 运行提取的 cli.js --version"
   bun tools/08-roundtrip.mjs "$VERSION" --version || echo "  (round-trip 失败, 非致命)"
