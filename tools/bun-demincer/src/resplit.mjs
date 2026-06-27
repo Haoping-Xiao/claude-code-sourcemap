@@ -159,7 +159,14 @@ const lazyFn = lazyMatch ? lazyMatch[1] : null;
 
 const modFn = factoryFn || "y";
 const lazFn = lazyFn || "h";
-console.log(`Module factory: ${modFn}() | Lazy initializer: ${lazFn}()`);
+
+// Auto-detect __export helper: (target, all) => { for (var name in all) __defProp(target, name, {...}) }
+// In older bundles this was named MR; newer bun builds use other short names (e.g. _t).
+const exportMatch = preamble.match(
+  new RegExp(`(?:,|var\\s+)(${ID})\\s*=\\s*\\((${ID}),\\s*(${ID})\\)\\s*=>\\s*\\{\\s*for\\s*\\(\\s*(?:var\\s+|let\\s+)?(${ID})\\s+in\\s+\\3\\s*\\)`)
+);
+const exportFn = exportMatch ? exportMatch[1] : "MR";
+console.log(`Module factory: ${modFn}() | Lazy initializer: ${lazFn}() | Export helper: ${exportFn}()`);
 
 function escRe(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -253,7 +260,7 @@ const GENERIC_NAMES = new Set([
  */
 function extractModuleExports(content) {
   const exports = {};
-  const mrCallRe = /MR\([^,]+,\s*\{/g;
+  const mrCallRe = new RegExp(`${escRe(exportFn)}\\([^,]+,\\s*\\{`, "g");
   let match;
 
   while ((match = mrCallRe.exec(content)) !== null) {
