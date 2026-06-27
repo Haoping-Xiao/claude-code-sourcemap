@@ -33,4 +33,11 @@ $NODE tools/06-restore.mjs
 echo "==> [7/7] 覆盖率报告 + 抽样验证"
 $NODE tools/07-report.mjs
 
+if command -v bun >/dev/null 2>&1; then
+  echo "==> [extra] 功能性 round-trip: bun 运行提取的 cli.js --version"
+  bun tools/08-roundtrip.mjs "$VERSION" --version || echo "  (round-trip 失败, 非致命)"
+else
+  echo "==> [extra] 跳过 round-trip (未安装 bun)"
+fi
+
 echo "==> 完成。产物: dist/$VERSION/cli.js , restored-$VERSION/"
