@@ -81,31 +81,47 @@ for (const name of names) {
     for (const fi of arr) overlap.set(fi, (overlap.get(fi) || 0) + w);
   }
 
-  // 对候选精确计算完整重合 (含全部共享字符串, 不止 df<=cap 的)
-  let best = null;
-  for (const [fi, approx] of overlap) {
+  // 对候选精确计算完整重合 (含全部共享字符串, 不止 df<=cap 的)。
+  // 同时统计"该文件独有字符串(df==1)"在本模块中的命中数 uniq —— 这是身份的近乎确证信号。
+  let bestByScore = null, bestByUniq = null;
+  for (const [fi] of overlap) {
     const f = fileList[fi];
-    let ov = 0;
-    for (const s of S) if (f.set.has(s)) ov += idf[s] ?? IDF_UNKNOWN;
+    let ov = 0, uniq = 0;
+    for (const s of S) {
+      if (f.set.has(s)) {
+        ov += idf[s] ?? IDF_UNKNOWN;
+        if (df[s] === 1) uniq++;
+      }
+    }
     const score = moduleWeight > 0 ? ov / moduleWeight : 0;       // 模块被该文件覆盖比例
     const fileCov = f.weight > 0 ? ov / f.weight : 0;             // 该文件被模块覆盖比例
     const jacc = (moduleWeight + f.weight - ov) > 0 ? ov / (moduleWeight + f.weight - ov) : 0;
-    if (!best || score > best.score || (score === best.score && fileCov > best.fileCov)) {
-      best = { rel: f.rel, app: f.app, score, fileCov, jacc };
-    }
+    const cand = { rel: f.rel, app: f.app, score, fileCov, jacc, uniq };
+    if (!bestByScore || score > bestByScore.score || (score === bestByScore.score && fileCov > bestByScore.fileCov)) bestByScore = cand;
+    if (!bestByUniq || uniq > bestByUniq.uniq || (uniq === bestByUniq.uniq && score > bestByUniq.score)) bestByUniq = cand;
   }
 
-  // 用 jaccard (双向重合) 作为主置信度, 避免"小模块恰为大文件子集"造成的假匹配。
+  // 若存在"独有字符串命中>=2"的候选, 以其为准 (身份确证); 否则取覆盖率最高者。
+  const best = (bestByUniq && bestByUniq.uniq >= 2) ? bestByUniq : bestByScore;
+
   let cls, vendor = false;
   const j = best ? best.jacc : 0;
-  if (!best || j < 0.06) {
+  const u = best ? best.uniq : 0;
+  if (!best) {
     cls = "new";
+  } else if (u >= 2) {
+    // 独有字符串确证: 至少 modified; jaccard 高则 unchanged
+    cls = (j >= 0.80 && best.fileCov >= 0.55) ? "unchanged" : "modified";
+  } else if (u === 1 && j >= 0.08) {
+    cls = "modified";
   } else if (j >= 0.80 && best.fileCov >= 0.55) {
     cls = "unchanged";
   } else if (j >= 0.25) {
     cls = "modified";
+  } else if (j >= 0.06) {
+    cls = "partial";
   } else {
-    cls = "partial"; // 有线索但置信度低: 记录建议路径, 但不当作可靠匹配
+    cls = "new";
   }
   if (best && isVendorPath(best.rel) && (cls === "unchanged" || cls === "modified")) vendor = true;
 
@@ -122,7 +138,7 @@ for (const name of names) {
     nExports: (meta.exports || []).length,
     size: meta.size,
     nStrings: S.size,
-    match: best ? { path: best.rel, app: best.app, score: +best.score.toFixed(4), fileCov: +best.fileCov.toFixed(4), jaccard: +best.jacc.toFixed(4) } : null,
+    match: best ? { path: best.rel, app: best.app, score: +best.score.toFixed(4), fileCov: +best.fileCov.toFixed(4), jaccard: +best.jacc.toFixed(4), uniqueHits: best.uniq } : null,
     class: cls,
     vendor,
   };

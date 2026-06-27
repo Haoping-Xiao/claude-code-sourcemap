@@ -1,27 +1,47 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fGe
 // matched 2.1.88 source: src/ink/components/AppContext.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=1  score=1  fileCov=1
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=1  score=1  fileCov=1
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-import { createContext } from 'react'
-
-export type Props = {
-  /**
-   * Exit (unmount) the whole Ink app.
-   */
-  readonly exit: (error?: Error) => void
+var fGe = E(() => {
+  ((_Gi = R(rt(), 1)),
+    (bGi = _Gi.createContext({
+      exit() {},
+      focusManager: null,
+      rootNode: null,
+      dispatchPasteEvent() {},
+    })));
+  bGi.displayName = "InternalAppContext";
+  J7 = bGi;
+});
+var $U = 16;
+function EGi(e) {
+  let t = SGi.c(6),
+    { children: n } = e,
+    r = BBt.useSyncExternalStore(K3e, Sit),
+    o = BBt.useSyncExternalStore(K3e, N7),
+    s;
+  if (t[0] !== r || t[1] !== o)
+    ((s = {
+      isTerminalFocused: r,
+      terminalFocusState: o,
+    }),
+      (t[0] = r),
+      (t[1] = o),
+      (t[2] = s));
+  else s = t[2];
+  let i = s,
+    a;
+  if (t[3] !== n || t[4] !== i)
+    ((a = AGi.jsx(XXr.Provider, {
+      value: i,
+      children: n,
+    })),
+      (t[3] = n),
+      (t[4] = i),
+      (t[5] = a));
+  else a = t[5];
+  return a;
 }
-
-/**
- * `AppContext` is a React context, which exposes a method to manually exit the app (unmount).
- */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const AppContext = createContext<Props>({
-  exit() {},
-})
-
-// eslint-disable-next-line custom-rules/no-top-level-side-effects
-AppContext.displayName = 'InternalAppContext'
-
-export default AppContext
+var SGi, BBt, AGi, XXr, JXr;

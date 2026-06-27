@@ -1,0 +1,293 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module s1o
+// matched 2.1.88 source: src/components/Settings/Config.tsx
+// class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0164  score=0.2099  fileCov=0.0175
+// note: deminified; 4 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var s1o = E(() => {
+  Ye();
+  er();
+  Rnt();
+  Fh();
+  DE();
+  __();
+  je();
+  kt();
+  dn();
+  SC();
+  EHe();
+  DD();
+  vM();
+  Ao();
+  h7t();
+  gb();
+  j_e();
+  BRt();
+  m0();
+  aE();
+  dr();
+  HU();
+  ft();
+  UX();
+  G4();
+  fn();
+  Un();
+  lH();
+  rze();
+  S7t();
+  n1o();
+  sre();
+  sA();
+  NDe();
+  cAe();
+  L0o();
+  NE();
+  uf();
+  rtr();
+  Xa();
+  o1o = R(rt(), 1);
+  tRf = new Map([
+    ["jp", "ja"],
+    ["kr", "ko"],
+    ["cn", "zh"],
+    ["tw", "zh-Hant"],
+  ]);
+  hMl = {
+    setGlobalConfig: r1o,
+    setSettingsData: r1o,
+    setChanges: r1o,
+  };
+});
+var yMl = {};
+_t(yMl, {
+  parseConfigShorthand: () => parseConfigShorthand,
+  listConfigKeys: () => listConfigKeys,
+  getConfigArgumentCompletions: () => getConfigArgumentCompletions,
+  applyConfigShorthand: () => applyConfigShorthand,
+  _resetSettableConfigKeysForTesting: () => lRf,
+});
+function parseConfigShorthand(e) {
+  let t = e.trim();
+  if (!t || !t.includes("=")) return null;
+  let n = t.split(/\s+/);
+  if (On(n, (o) => o.includes("=")) === 1) {
+    let o = t.indexOf("="),
+      s = t.slice(0, o);
+    if (!s || /\s/.test(s)) return null;
+    return [
+      {
+        key: s,
+        raw: t.slice(o + 1),
+      },
+    ];
+  }
+  let r = [];
+  for (let o of n) {
+    let s = o.indexOf("=");
+    if (s <= 0) return null;
+    r.push({
+      key: o.slice(0, s),
+      raw: o.slice(s + 1),
+    });
+  }
+  return r;
+}
+function rRf(e, t) {
+  let n = e.toLowerCase();
+  return t.find((r) => r.id.toLowerCase() === n);
+}
+function applyConfigShorthand(e, t, n) {
+  let { settings: r } = iEt(a1o(t, n));
+  return e.map(({ key: o, raw: s }) => sRf(o, s, r));
+}
+function sRf(e, t, n) {
+  let r = rRf(e, n);
+  if (
+    (G("tengu_config_shorthand", {
+      key_hash: Dd(e),
+      matched: r !== void 0,
+    }),
+    !r)
+  )
+    return {
+      ok: !1,
+      message: `${e} isn't a /config setting. Run /config to see what's available.`,
+    };
+  let o = "searchText" in r ? r.searchText : r.label;
+  if (r.consentGated)
+    return {
+      ok: !1,
+      message: `${o} can't be set with key=value \u2014 open /config to change it from the panel.`,
+    };
+  switch (r.type) {
+    case "boolean": {
+      let s = t.toLowerCase(),
+        i = ["true", "1", "on", "yes"].includes(s),
+        a = ["false", "0", "off", "no"].includes(s);
+      if (!i && !a)
+        return {
+          ok: !1,
+          message: `${o} takes true or false, not "${t}".`,
+        };
+      let l = r.onChange(i);
+      if (l?.error)
+        return {
+          ok: !1,
+          message: `Couldn't save ${o}: ${l.error.message}`,
+        };
+      return {
+        ok: !0,
+        message: `Set ${o} to ${i ? "true" : "false"}`,
+      };
+    }
+    case "enum":
+    case "managedEnum": {
+      let s = r.type === "managedEnum" ? r.coerce : void 0;
+      if (!r.options && !s)
+        return {
+          ok: !1,
+          message: `${o} can't be set with key=value \u2014 use ${oRf.get(r.id) ?? "/config"}.`,
+        };
+      let i = s ? s(t) : r.options?.find((l) => l.toLowerCase() === t.toLowerCase());
+      if (i === void 0) {
+        let l = r.type === "managedEnum" && r.optionsHint ? ` ${r.optionsHint}` : "";
+        return {
+          ok: !1,
+          message: r.options
+            ? `${o} takes one of: ${r.options.join(", ")}.${l}`
+            : `${o} doesn't accept "${t}".${l}`,
+        };
+      }
+      let a = r.onChange(i);
+      if (a?.error)
+        return {
+          ok: !1,
+          message: `Couldn't save ${o}: ${a.error.message}`,
+        };
+      return {
+        ok: !0,
+        message: `Set ${o} to ${i}`,
+      };
+    }
+  }
+}
+function listConfigKeys(e) {
+  let { settings: t } = iEt(a1o(e));
+  return t
+    .flatMap((n) => {
+      if (n.consentGated) return [];
+      let r =
+        n.type === "boolean"
+          ? "true|false"
+          : n.options
+            ? n.options.join("|")
+            : n.type === "managedEnum" && n.coerce
+              ? "<value>"
+              : null;
+      return r ? [`  ${n.id}=${r}`] : [];
+    })
+    .sort().join(`
+`);
+}
+function getConfigArgumentCompletions(e, t) {
+  let n = aRf(),
+    r = t.indexOf("=");
+  if (r === -1) {
+    let a = t.toLowerCase();
+    return n
+      .filter((l) => l.id.toLowerCase().startsWith(a))
+      .sort((l, c) => l.id.localeCompare(c.id))
+      .map((l) => ({
+        value: `${l.id}=`,
+        description: l.options?.slice(0, 4).join(" | ") ?? l.hint,
+        isFinal: !1,
+        appendSpace: !1,
+      }));
+  }
+  let o = t.slice(0, r),
+    s = t.slice(r + 1).toLowerCase(),
+    i = n.find((a) => a.id.toLowerCase() === o.toLowerCase());
+  if (!i?.options) return [];
+  return i.options
+    .filter((a) => a.toLowerCase().startsWith(s))
+    .map((a) => ({
+      value: `${i.id}=${a}`,
+      isFinal: !0,
+    }));
+}
+function aRf() {
+  if (E7t) return E7t;
+  let e = {
+      getAppState: () => ({
+        thinkingEnabled: !1,
+        verbose: !1,
+        mainLoopModel: null,
+        fastMode: !1,
+        promptSuggestionEnabled: !1,
+        awaySummaryEnabled: !1,
+      }),
+      setAppState: () => {},
+      options: {
+        mcpClients: [],
+      },
+    },
+    { settings: t } = iEt(a1o(e));
+  return (
+    (E7t = t.flatMap((n) => {
+      if (n.consentGated) return [];
+      let r =
+        n.type === "boolean" ? ["true", "false"] : "options" in n && n.options ? n.options : void 0;
+      if (r || (n.type === "managedEnum" && n.coerce))
+        return [
+          {
+            id: n.id,
+            options: r,
+            hint: n.type === "managedEnum" ? n.optionsHint : void 0,
+          },
+        ];
+      return [];
+    })),
+    E7t
+  );
+}
+function lRf() {
+  E7t = void 0;
+}
+function a1o(e, t) {
+  let n = e.getAppState(),
+    r = Dr(),
+    o = sEt(),
+    s = wc("disableWorkflows", !1),
+    i = wc("enableWorkflows", !1),
+    a =
+      Ukn() &&
+      (s.value !== !0 || s.source === "userSettings") &&
+      (i.source === "default" || i.source === "userSettings"),
+    l = (l3(), ro(CQ)).isBriefEntitled();
+  return {
+    globalConfig: o,
+    settingsData: r,
+    themeSetting: o.theme,
+    currentOutputStyle: r?.outputStyle || uP,
+    currentLanguage: r?.language,
+    externalIncludesApproved: !1,
+    thinkingEnabled: n.thinkingEnabled,
+    verbose: n.verbose,
+    mainLoopModel: n.mainLoopModel,
+    isFastMode: sc() ? n.fastMode : !1,
+    promptSuggestionEnabled: n.promptSuggestionEnabled,
+    awaySummaryEnabled: n.awaySummaryEnabled,
+    showAutoInDefaultModePicker: ROe() || fKe() === "enabled",
+    showDefaultViewPicker: l,
+    pushTogglesVisible: $ue() && !Vi() && WE(),
+    isConnectedToIde: yqe(e.options.mcpClients),
+    isFileCheckpointingAvailable: !Oe.CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING,
+    workflowsToggleable: a,
+    shouldShowExternalIncludesToggle: !1,
+    autoUpdaterDisabledReason: jEe(),
+    setAppState: (c) => e.setAppState(c),
+    setTheme: t?.setTheme ?? ((c) => yI("theme", c)),
+    ...hMl,
+  };
+}
+var oRf, E7t;

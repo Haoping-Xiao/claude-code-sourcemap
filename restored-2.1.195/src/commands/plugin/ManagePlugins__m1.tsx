@@ -1,0 +1,283 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Arr
+// matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
+// class=modified (alt of src/commands/plugin/ManagePlugins.tsx)  jaccard=0.0464  score=0.6756  fileCov=0.0475
+// note: deminified; 3 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var Arr = E(() => {
+  je();
+  At();
+  ys();
+  vn();
+  Jt();
+  B1();
+  ((djl = require("crypto")), (i1e = require("fs/promises")), (pjl = require("path")));
+});
+var Hjl = {};
+_t(Hjl, {
+  scaleCharsToTokens: () => scaleCharsToTokens,
+  getPluginInventory: () => getPluginInventory,
+  computePluginTokenCost: () => computePluginTokenCost,
+});
+async function getPluginInventory(e, t) {
+  if (t === "builtin") {
+    let f = yKi(e.name);
+    if (!f) throw Error(`Built-in plugin ${e.name} not found`);
+    return {
+      commands: [],
+      agents: [],
+      skills:
+        f.skills?.map((m) => ({
+          name: m.name,
+        })) ?? [],
+      hooks: f.hooks ? Object.keys(f.hooks) : [],
+      mcpServers: f.mcpServers ? Object.keys(f.mcpServers) : [],
+      lspServers: [],
+    };
+  }
+  let n = U0(t),
+    r = Qo(e.source).name || e.name,
+    o = n ? void 0 : (await G$(t)).plugins.find((f) => f.name === r);
+  if (!o && !n) throw Error(`Plugin ${r} not found in marketplace ${t}`);
+  let [s, i, a] = await Promise.all([
+      Sjl([e.commandsPath, ...(e.commandsPaths ?? [])]),
+      Sjl([e.agentsPath, ...(e.agentsPaths ?? [])]),
+      nBf([e.skillsPath, ...(e.skillsPaths ?? [])]),
+    ]),
+    l = e.hooksConfig ? Object.keys(e.hooksConfig) : Hrr(o?.hooks),
+    c = e.mcpServers ? Object.keys(e.mcpServers) : await eBf(e.path),
+    u = c.length > 0 ? c : Hrr(o?.mcpServers),
+    d = e.lspServers
+      ? Object.keys(e.lspServers)
+      : (await tBf(e.path)).concat(Hrr(e.manifest.lspServers)),
+    p = d.length > 0 ? Uo(d) : Hrr(o?.lspServers);
+  return {
+    commands: s,
+    agents: i,
+    skills: a,
+    hooks: l,
+    mcpServers: u,
+    lspServers: p,
+  };
+}
+async function computePluginTokenCost(e, t, n) {
+  let [r, o, s] = await Promise.all([
+      Promise.all(
+        e.skills.map((u) => rUo(u.path ? jq.join(u.path, "SKILL.md") : void 0, _jl(u, n))),
+      ),
+      Promise.all(e.agents.map((u) => rUo(u.path, u.name))),
+      Promise.all(e.commands.map((u) => rUo(u.path, _jl(u, n)))),
+    ]),
+    i = [...r, ...o, ...s],
+    a = i.map((u) => u.alwaysOn).filter(Boolean).join(`
+`),
+    l = i.map((u) => u.onInvoke).filter(Boolean).join(`
+
+`),
+    c = {};
+  for (let u of t) {
+    let [d, p] = await Promise.all([bjl(a, u), bjl(l, u)]);
+    if (d !== null && p !== null)
+      c[u] = {
+        always_on: d,
+        on_invoke: p,
+      };
+  }
+  return {
+    tokens: c,
+    inventory: {
+      ...e,
+      skills: oUo(e.skills, r),
+      agents: oUo(e.agents, o),
+      commands: oUo(e.commands, s),
+    },
+  };
+}
+function scaleCharsToTokens(e, t, n, r = 4) {
+  if (n !== void 0 && t > 0) return Math.round((e / t) * n);
+  return If(" ".repeat(e), r);
+}
+function _jl(e, t) {
+  if (!t) return e.name;
+  return `${t}:${e.name.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+}
+async function rUo(e, t) {
+  if (!e)
+    return {
+      alwaysOn: "",
+      onInvoke: "",
+    };
+  let n;
+  try {
+    n = await Ajl(e, Ejl);
+  } catch (l) {
+    return (
+      iUo(e, l),
+      {
+        alwaysOn: "",
+        onInvoke: "",
+      }
+    );
+  }
+  let { frontmatter: r, content: o } = Bm(n, e, {
+      normalizeKeys: !0,
+    }),
+    s = AU(r.description, t) ?? ffe(o, "Skill"),
+    i = r.when_to_use != null ? String(r.when_to_use) : void 0;
+  return {
+    alwaysOn: cDo({
+      name: t,
+      description: s,
+      whenToUse: i,
+    }),
+    onInvoke: o.trim(),
+  };
+}
+async function Ajl(e, t) {
+  let n = await Hse.open(e, "r");
+  try {
+    let { size: r } = await n.stat(),
+      o = Math.min(r, t),
+      s = Buffer.alloc(o),
+      { bytesRead: i } = await n.read(s, 0, o, 0);
+    return s.toString("utf8", 0, i);
+  } finally {
+    await n.close();
+  }
+}
+function oUo(e, t) {
+  return e.map((n, r) => {
+    let o = t[r];
+    if (!o) return n;
+    return {
+      ...n,
+      chars: {
+        always_on: o.alwaysOn.length,
+        on_invoke: o.onInvoke.length,
+      },
+    };
+  });
+}
+async function bjl(e, t) {
+  if (!e) return 0;
+  return P5e(
+    [
+      {
+        role: "user",
+        content: e,
+      },
+    ],
+    [],
+    t,
+  );
+}
+function Hrr(e) {
+  return [e]
+    .flat()
+    .filter((t) => t != null && typeof t === "object")
+    .flatMap(Object.keys);
+}
+async function eBf(e) {
+  try {
+    let t = await Hse.readFile(jq.join(e, ".mcp.json"), "utf-8"),
+      n = Ft(t);
+    if (n == null || typeof n !== "object") return [];
+    let r = "mcpServers" in n && typeof n.mcpServers === "object" ? n.mcpServers : n;
+    return r == null ? [] : Object.keys(r);
+  } catch {
+    return [];
+  }
+}
+async function tBf(e) {
+  try {
+    let t = await Hse.readFile(jq.join(e, ".lsp.json"), "utf-8"),
+      n = Ft(t);
+    if (n == null || typeof n !== "object") return [];
+    return Object.keys(n);
+  } catch {
+    return [];
+  }
+}
+async function Sjl(e) {
+  let t = [],
+    n = new Set();
+  for (let r of e) {
+    if (!r) continue;
+    let o;
+    try {
+      o = await Hse.readdir(r, {
+        withFileTypes: !0,
+      });
+    } catch (s) {
+      iUo(r, s);
+      continue;
+    }
+    for (let s of o)
+      if (s.isFile() && s.name.endsWith(".md")) {
+        let i = jq.join(r, s.name),
+          a = jq.resolve(i);
+        if (n.has(a)) continue;
+        (n.add(a),
+          t.push({
+            name: jq.basename(s.name, ".md"),
+            path: i,
+          }));
+      }
+  }
+  return t;
+}
+async function nBf(e) {
+  let t = [],
+    n = new Set(),
+    r = (o, s) => {
+      let i = jq.resolve(s);
+      if (n.has(i)) return;
+      (n.add(i),
+        t.push({
+          name: o,
+          path: s,
+        }));
+    };
+  for (let o of e) {
+    if (!o) continue;
+    try {
+      let i = jq.join(o, "SKILL.md");
+      if ((await Hse.stat(i)).isFile()) {
+        let l = "";
+        try {
+          let c = await Ajl(i, Ejl),
+            { frontmatter: u } = Bm(c, i);
+          l = typeof u.name === "string" ? u.name.trim() : "";
+        } catch {}
+        r(l || jq.basename(o), o);
+        continue;
+      }
+    } catch {}
+    let s;
+    try {
+      s = await Hse.readdir(o, {
+        withFileTypes: !0,
+      });
+    } catch (i) {
+      iUo(o, i);
+      continue;
+    }
+    for (let i of s) {
+      if (!i.isDirectory() && !i.isSymbolicLink()) continue;
+      let a = jq.join(o, i.name);
+      try {
+        if ((await Hse.stat(jq.join(a, "SKILL.md"))).isFile()) r(i.name, a);
+      } catch {}
+    }
+  }
+  return t;
+}
+function iUo(e, t) {
+  (T(`Failed to read plugin components from ${e}: ${be(t)}`, {
+    level: "error",
+  }),
+    ke(Zr(t)));
+}
+var Hse,
+  jq,
+  Ejl = 1048576;
