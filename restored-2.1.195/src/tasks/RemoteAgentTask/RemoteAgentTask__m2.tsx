@@ -4,12 +4,10 @@
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0612  score=0.1829  fileCov=0.0842
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: ultrareviewHandler
 // [unwrapped __esm module I5c] deps: kt, Yp, lH, JN
 w5c = require("path");
 var k5c = {};
-_t(k5c, {
-  ultrareviewHandler: () => ultrareviewHandler,
-});
 async function ultrareviewHandler(e, t) {
   let n = () => process.exit(130);
   (process.once("SIGINT", n), await tV());

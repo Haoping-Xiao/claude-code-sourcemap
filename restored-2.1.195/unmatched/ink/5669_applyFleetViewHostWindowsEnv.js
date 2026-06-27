@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0034  score=0.1607  fileCov=0.0035
 // note: nearest: src/tools/PowerShellTool/readOnlyValidation.ts (0.0034); dir inferred from dep-graph -> ink; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: applyFleetViewHostWindowsEnv, FleetViewScreen
 // [unwrapped __esm module jpr] deps: HI, ZS, q7, EW, Tne, oat
 mkc = R(lt(), 1), ytn = R(rt(), 1), gkc = R(se(), 1);
 var _tn = {};
-_t(_tn, {
-  applyFleetViewHostWindowsEnv: () => applyFleetViewHostWindowsEnv,
-  FleetViewScreen: () => FleetViewScreen
-});
 function FleetViewScreen(e) {
   let t = hkc.c(3),
     {

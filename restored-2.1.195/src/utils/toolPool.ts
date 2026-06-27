@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1622  score=0.2906  fileCov=0.2686
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: mergeAndFilterTools, isPrActivitySubscriptionTool, applyCoordinatorToolFilter
 // [unwrapped __esm module KKl] deps: F8
 zKl = {
   type: "local-jsx",
@@ -14,11 +15,6 @@ zKl = {
   load: () => Promise.resolve().then(() => (VKl(), qKl)),
 };
 var ZKl = {};
-_t(ZKl, {
-  mergeAndFilterTools: () => mergeAndFilterTools,
-  isPrActivitySubscriptionTool: () => isPrActivitySubscriptionTool,
-  applyCoordinatorToolFilter: () => applyCoordinatorToolFilter,
-});
 function isPrActivitySubscriptionTool(e) {
   return xVf.some((t) => e.endsWith(t));
 }

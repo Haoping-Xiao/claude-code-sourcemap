@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.5286  score=0.8822  fileCov=0.5688
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setBgExitCause, readAndClearBgExitCause
 // [unwrapped __esm module ys] deps: Rm, At, Jt
 ((Lp = R(require("fs"))),
   (ov = require("fs/promises")),
@@ -190,10 +191,6 @@
 }),
   (g7c = BEr));
 var sis = {};
-_t(sis, {
-  setBgExitCause: () => setBgExitCause,
-  readAndClearBgExitCause: () => readAndClearBgExitCause,
-});
 function setBgExitCause(e, t) {
   let n = t ?? process.env.CLAUDE_JOB_DIR;
   if (!n) return;

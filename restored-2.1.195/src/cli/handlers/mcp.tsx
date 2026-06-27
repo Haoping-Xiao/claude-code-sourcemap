@@ -4,18 +4,10 @@
 // class=modified  jaccard=0.2892  score=0.3831  fileCov=0.5412
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: mcpServeHandler, mcpResetChoicesHandler, mcpRemoveHandler, mcpListHandler, mcpGetHandler, mcpAddJsonHandler, mcpAddFromDesktopHandler
 // [unwrapped __esm module Vdc] deps: bCe, je, At, Rd, Is
 ((ZYe = require("fs/promises")), (Gdc = require("os")), (O9o = require("path")));
 var lNe = {};
-_t(lNe, {
-  mcpServeHandler: () => mcpServeHandler,
-  mcpResetChoicesHandler: () => mcpResetChoicesHandler,
-  mcpRemoveHandler: () => mcpRemoveHandler,
-  mcpListHandler: () => mcpListHandler,
-  mcpGetHandler: () => mcpGetHandler,
-  mcpAddJsonHandler: () => mcpAddJsonHandler,
-  mcpAddFromDesktopHandler: () => mcpAddFromDesktopHandler,
-});
 function nam(e) {
   let t = e?.issues;
   if (Array.isArray(t) && t.length > 0) {

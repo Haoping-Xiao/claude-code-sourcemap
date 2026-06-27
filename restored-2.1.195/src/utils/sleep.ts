@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2107  score=0.2566  fileCov=0.5411
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: withTimeout, sleep
 // [unwrapped __esm module drt] deps: zb, ft, Rx, je, At, R9
 Tjr = ve(() =>
   dt.object({
@@ -13,10 +14,6 @@ Tjr = ve(() =>
   }),
 );
 var iMt = {};
-_t(iMt, {
-  withTimeout: () => withTimeout,
-  sleep: () => sleep,
-});
 function sleep(e, t, n) {
   return new Promise((r, o) => {
     if (t?.aborted) {

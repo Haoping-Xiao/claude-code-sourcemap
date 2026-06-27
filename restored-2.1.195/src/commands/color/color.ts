@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2706  score=0.4019  fileCov=0.4532
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: performSetColor, call
 var sPl = {};
-_t(sPl, {
-  performSetColor: () => performSetColor,
-  call: () => call,
-});
 async function call(e, t, n) {
   return (
     e(await performSetColor(n, t), {

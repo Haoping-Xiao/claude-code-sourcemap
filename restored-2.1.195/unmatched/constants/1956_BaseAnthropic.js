@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0338  score=0.1886  fileCov=0.0395
 // note: nearest: src/services/api/client.ts (0.0338); dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: default, BaseAnthropic, AnthropicAws
 // [unwrapped __esm module Qqr] deps: SAi, ROt, TAi, OK, OK, xAi
 Jqr = class Jqr extends G2 {
   constructor({
@@ -67,8 +68,3 @@ Jqr = class Jqr extends G2 {
   }
 };
 var kAi = {};
-_t(kAi, {
-  default: () => Jqr,
-  BaseAnthropic: () => ah,
-  AnthropicAws: () => Jqr
-});

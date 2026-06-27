@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1421  score=0.2697  fileCov=0.2309
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isDeferredTool, getPrompt, formatDeferredToolLine, TOOL_SEARCH_TOOL_NAME
 // [unwrapped __esm module qRe] deps: ft, np, l$, Un, kt, je, fn, co, HU, fh
 Boa = require("crypto");
 h4 = {
@@ -19,12 +20,6 @@ h4 = {
   getSystemPrompt: () => "",
 };
 var fso = {};
-_t(fso, {
-  isDeferredTool: () => isDeferredTool,
-  getPrompt: () => getPrompt,
-  formatDeferredToolLine: () => formatDeferredToolLine,
-  TOOL_SEARCH_TOOL_NAME: () => _h,
-});
 function isDeferredTool(e) {
   if (e.alwaysLoad === true) return false;
   if (goa().includes(e.name)) return false;

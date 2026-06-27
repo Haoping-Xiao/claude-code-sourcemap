@@ -4,6 +4,7 @@
 // class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.0614  score=0.0821  fileCov=0.1963
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setChromeBinding, getClaudeInChromePermissionOverrides, _resetChromeBindingForTesting
 // [unwrapped __esm module $po] deps: tQe, VM
 ((SCp = {
   navigate: "navigate",
@@ -40,11 +41,6 @@
     wait: "wait",
   }));
 var u0a = {};
-_t(u0a, {
-  setChromeBinding: () => setChromeBinding,
-  getClaudeInChromePermissionOverrides: () => getClaudeInChromePermissionOverrides,
-  _resetChromeBindingForTesting: () => wCp,
-});
 function n0a(e, t) {
   if (eGt.size >= TCp) eGt.clear();
   eGt.set(e, t);

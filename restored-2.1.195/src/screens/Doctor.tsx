@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.1837  score=0.286  fileCov=0.3392
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: formatLastUpdateResult, buildFixPrompt, PluginErrorsSection, McpConnectionIssuesSection, LastUpdateNode, IneffectivePluginDisablesSection, Doctor, DistTagsDisplay
 var YNo = {};
-_t(YNo, {
-  formatLastUpdateResult: () => formatLastUpdateResult,
-  buildFixPrompt: () => buildFixPrompt,
-  PluginErrorsSection: () => PluginErrorsSection,
-  McpConnectionIssuesSection: () => McpConnectionIssuesSection,
-  LastUpdateNode: () => LastUpdateNode,
-  IneffectivePluginDisablesSection: () => IneffectivePluginDisablesSection,
-  Doctor: () => Doctor,
-  DistTagsDisplay: () => DistTagsDisplay,
-});
 function DistTagsDisplay(e) {
   let t = JOe.c(9),
     { promise: n } = e,

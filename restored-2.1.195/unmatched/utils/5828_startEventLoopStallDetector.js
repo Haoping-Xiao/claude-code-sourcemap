@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0207  score=0.0861  fileCov=0.0266
 // note: nearest: src/utils/heapDumpService.ts (0.0207); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: startEventLoopStallDetector, sampleRss
 var _1c = {};
-_t(_1c, {
-  startEventLoopStallDetector: () => startEventLoopStallDetector,
-  sampleRss: () => sampleRss
-});
 function sampleRss() {
   try {
     let e = process.memoryUsage();

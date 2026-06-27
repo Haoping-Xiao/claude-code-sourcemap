@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0057  score=0.1406  fileCov=0.006
 // note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call, applyAutoCompactWindow
 // [unwrapped __esm module YPl] deps: wr
 q0f = {
   type: "local",
@@ -16,10 +17,6 @@ q0f = {
   load: () => Promise.resolve().then(() => (KPl(), zPl))
 }, Qer = q0f;
 var XPl = {};
-_t(XPl, {
-  call: () => call,
-  applyAutoCompactWindow: () => applyAutoCompactWindow
-});
 function V0f(e, t) {
   let {
       window: n,

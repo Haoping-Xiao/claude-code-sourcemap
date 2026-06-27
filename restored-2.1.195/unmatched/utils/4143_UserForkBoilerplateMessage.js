@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0491  score=0.2679  fileCov=0.0567
 // note: nearest: src/ink/components/Box.tsx (0.0491); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: UserForkBoilerplateMessage
 // [unwrapped __esm module ial] deps: Xa, np, Ye, es, OI
 oal = R(lt(), 1), GMe = R(se(), 1), lsf = new RegExp(`^<${xFe}\\s+source="([^"]*)"([^>]*)>\\n?`), Jzn = `</${xFe}>`, ral = `
 ${Jzn}`, csf = /\buser="([^"]+)"/, usf = [`
@@ -16,9 +17,6 @@ ${v3e(true)}${ENt}`, `
 
 ${v3e(true)}`];
 var lal = {};
-_t(lal, {
-  UserForkBoilerplateMessage: () => UserForkBoilerplateMessage
-});
 function UserForkBoilerplateMessage(e) {
   let t = aal.c(8),
     {

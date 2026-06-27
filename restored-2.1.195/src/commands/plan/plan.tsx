@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1886  score=0.3382  fileCov=0.2988
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module Dzl]
 ((Gqf = {
   type: "local-jsx",
@@ -14,9 +15,6 @@
 }),
   (Lzl = Gqf));
 var Mzl = {};
-_t(Mzl, {
-  call: () => call,
-});
 function Wqf(e) {
   let t = Pzl.c(10),
     { planContent: n, planPath: r, editorName: o } = e,

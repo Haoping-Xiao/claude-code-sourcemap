@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0056  score=0.2722  fileCov=0.0057
 // note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module p3o] deps: G4o, Bs, pz, v5, Ko, eE, _Pn, np, fH, HN, RUt, _i, Tc, Ye, id, kt, uo, Cp, vn, Ao, sr, m1
 cHt = R(lt(), 1), kQl = R(rt(), 1), uZ = R(rt(), 1), Ga = R(se(), 1), Q6f = {
   low: "Quick, straightforward implementation",
@@ -41,9 +42,6 @@ IQl = LQl, xQl = [62, 22, 118], wzf = [140, 80, 240], jJt = Array.from({
   return `rgb(${r(0)},${r(1)},${r(2)})`;
 }), d3o = jJt.at(-1), _ir = d3o;
 var $Ql = {};
-_t($Ql, {
-  call: () => call
-});
 async function call(e, t) {
   let n = e.trim(),
     r = t.getAppState(),

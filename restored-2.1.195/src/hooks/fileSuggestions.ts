@@ -4,22 +4,8 @@
 // class=modified  jaccard=0.5205  score=0.7823  fileCov=0.6087
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: startBackgroundCacheRefresh, resetFileIndexCache, pathListSignature, normalizeGitPathsAsync, globalFileIndexCache, getPathsForSuggestions, getDirectoryNamesAsync, getDirectoryNames, generateFileSuggestions, findLongestCommonPrefix, filterIgnoredAsync, createFileIndexCache, applyFileSuggestion
 var YDl = {};
-_t(YDl, {
-  startBackgroundCacheRefresh: () => startBackgroundCacheRefresh,
-  resetFileIndexCache: () => resetFileIndexCache,
-  pathListSignature: () => pathListSignature,
-  normalizeGitPathsAsync: () => normalizeGitPathsAsync,
-  globalFileIndexCache: () => globalFileIndexCache,
-  getPathsForSuggestions: () => getPathsForSuggestions,
-  getDirectoryNamesAsync: () => getDirectoryNamesAsync,
-  getDirectoryNames: () => getDirectoryNames,
-  generateFileSuggestions: () => generateFileSuggestions,
-  findLongestCommonPrefix: () => findLongestCommonPrefix,
-  filterIgnoredAsync: () => filterIgnoredAsync,
-  createFileIndexCache: () => createFileIndexCache,
-  applyFileSuggestion: () => applyFileSuggestion,
-});
 function createFileIndexCache() {
   return {
     fileIndex: null,

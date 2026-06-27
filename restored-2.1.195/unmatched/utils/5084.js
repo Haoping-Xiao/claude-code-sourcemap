@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0028  score=0.4728  fileCov=0.0028
 // note: nearest: src/screens/REPL.tsx (0.0028); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module H7l]
 I9f = {
   type: "local-jsx",
@@ -12,9 +13,6 @@ I9f = {
   load: () => Promise.resolve().then(() => (E7l(), b7l))
 }, A7l = I9f;
 var T7l = {};
-_t(T7l, {
-  call: () => call
-});
 async function call(e, t, n) {
   return v7l.jsx(o4l, {
     onComplete: e,

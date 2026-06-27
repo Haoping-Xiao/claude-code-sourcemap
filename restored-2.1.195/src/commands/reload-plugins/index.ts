@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2064  score=0.2356  fileCov=0.6248
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module N7l]
 ((j9f = {
   type: "local",
@@ -16,9 +17,6 @@
 }),
   (Ksr = j9f));
 var B7l = {};
-_t(B7l, {
-  call: () => call,
-});
 var call = async (e, t) => {
   let n = $t(),
     r = await aC(n),

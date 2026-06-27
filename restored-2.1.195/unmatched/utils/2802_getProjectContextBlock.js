@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0025  score=0.0749  fileCov=0.0026
 // note: nearest: src/screens/REPL.tsx (0.0025); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: safeInline, getProjectContextBlock, formatProjectContext, describeSyncSource
 var nia = {};
-_t(nia, {
-  safeInline: () => safeInline,
-  getProjectContextBlock: () => getProjectContextBlock,
-  formatProjectContext: () => formatProjectContext,
-  describeSyncSource: () => describeSyncSource
-});
 async function getProjectContextBlock() {
   let e = process.env.CLAUDE_PROJECT_UUID?.trim();
   if (!e) return null;

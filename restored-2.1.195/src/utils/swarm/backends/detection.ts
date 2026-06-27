@@ -4,22 +4,10 @@
 // class=modified  jaccard=0.2899  score=0.3531  fileCov=0.6184
 // note: deminified; 11 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resetDetectionCache, listUserTmuxSessions, isTmuxAvailable, isIt2CliAvailable, isInsideTmuxSync, isInsideTmux, isInITerm2, getUserTmuxSocket, getLeaderPaneId, getIt2Command, IT2_COMMAND
 // [unwrapped __esm module hN]
 TXa = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
 var AHo = {};
-_t(AHo, {
-  resetDetectionCache: () => resetDetectionCache,
-  listUserTmuxSessions: () => listUserTmuxSessions,
-  isTmuxAvailable: () => isTmuxAvailable,
-  isIt2CliAvailable: () => isIt2CliAvailable,
-  isInsideTmuxSync: () => isInsideTmuxSync,
-  isInsideTmux: () => isInsideTmux,
-  isInITerm2: () => isInITerm2,
-  getUserTmuxSocket: () => getUserTmuxSocket,
-  getLeaderPaneId: () => getLeaderPaneId,
-  getIt2Command: () => getIt2Command,
-  IT2_COMMAND: () => IT2_COMMAND,
-});
 function isInsideTmuxSync() {
   return !!aht;
 }

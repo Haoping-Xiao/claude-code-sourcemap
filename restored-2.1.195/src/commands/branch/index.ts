@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2934  score=0.4029  fileCov=0.5191
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module WKl]
 ((vVf = {
   type: "local-jsx",
@@ -14,9 +15,6 @@
 }),
   (GKl = vVf));
 var qKl = {};
-_t(qKl, {
-  call: () => call,
-});
 var call = async (e, t, n) => {
   let r = n.trim();
   if (!r)

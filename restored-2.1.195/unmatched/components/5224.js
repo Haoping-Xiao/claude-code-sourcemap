@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0147  score=0.2814  fileCov=0.0153
 // note: nearest: src/utils/processUserInput/processSlashCommand.tsx (0.0147); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module _nc] deps: ft, Bs, vi, B_, Ko, gm, Xa, Ye, uo, es, sr, Lze
 $Go = R(lt(), 1), hnc = R(rt(), 1), LC = R(se(), 1);
 var bnc = {};
-_t(bnc, {
-  call: () => call
-});
 var Snc,
   call = async (e, t, n) => {
     let r = n.trim();

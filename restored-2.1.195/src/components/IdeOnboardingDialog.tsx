@@ -4,13 +4,10 @@
 // class=modified  jaccard=0.2806  score=0.3641  fileCov=0.5501
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: hasIdeOnboardingDialogBeenShown, IdeOnboardingDialog
 // [unwrapped __esm module gDe] deps: Ye
 ((txa = R(lt(), 1)), (iFn = R(se(), 1)));
 var oxa = {};
-_t(oxa, {
-  hasIdeOnboardingDialogBeenShown: () => hasIdeOnboardingDialogBeenShown,
-  IdeOnboardingDialog: () => IdeOnboardingDialog,
-});
 function IdeOnboardingDialog(e) {
   let t = nxa.c(22),
     { onDone: n, installationStatus: r } = e;

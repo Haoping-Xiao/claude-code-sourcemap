@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.0537  score=0.0537  fileCov=1
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resolveLoopFileFire, resolveLoopDefaultFire, resolveAutonomousLoopFire, resetAutonomousLoopDelivered, readLoopFile, logAutonomousLoopActivation, isLoopPersistentPreambleEnabled, isLoopFileSentinel, isLoopDefaultSentinel, isLoopDefaultPromptEnabled, isAutonomousLoopSentinel, getAutonomousLoopPreamble, LOOP_FILE_SENTINEL, LOOP_FILE_DYNAMIC_SENTINEL, AUTONOMOUS_LOOP_PREAMBLE
 // [unwrapped __esm module tSe]
 toa = `Schedule when to resume work in /loop dynamic mode \u2014 the user invoked /loop without an interval, asking you to self-pace iterations of a specific task.
 
@@ -39,23 +40,6 @@ var QD = "TaskStop",
 - Use this tool when you need to terminate a long-running task
 `;
 var zWe = {};
-_t(zWe, {
-  resolveLoopFileFire: () => resolveLoopFileFire,
-  resolveLoopDefaultFire: () => resolveLoopDefaultFire,
-  resolveAutonomousLoopFire: () => resolveAutonomousLoopFire,
-  resetAutonomousLoopDelivered: () => resetAutonomousLoopDelivered,
-  readLoopFile: () => readLoopFile,
-  logAutonomousLoopActivation: () => logAutonomousLoopActivation,
-  isLoopPersistentPreambleEnabled: () => isLoopPersistentPreambleEnabled,
-  isLoopFileSentinel: () => isLoopFileSentinel,
-  isLoopDefaultSentinel: () => isLoopDefaultSentinel,
-  isLoopDefaultPromptEnabled: () => isLoopDefaultPromptEnabled,
-  isAutonomousLoopSentinel: () => isAutonomousLoopSentinel,
-  getAutonomousLoopPreamble: () => getAutonomousLoopPreamble,
-  LOOP_FILE_SENTINEL: () => LOOP_FILE_SENTINEL,
-  LOOP_FILE_DYNAMIC_SENTINEL: () => LOOP_FILE_DYNAMIC_SENTINEL,
-  AUTONOMOUS_LOOP_PREAMBLE: () => AUTONOMOUS_LOOP_PREAMBLE,
-});
 function isLoopPersistentPreambleEnabled() {
   if (ut(process.env.CLAUDE_CODE_LOOP_PERSISTENT)) return !0;
   return at("tengu_kairos_loop_persistent", !1);

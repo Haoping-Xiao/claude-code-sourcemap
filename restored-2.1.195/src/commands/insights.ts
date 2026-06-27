@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4668  score=0.9259  fileCov=0.485
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: normalizeSessionMeta, generateUsageReport, extractToolStats, detectMultiClauding, default, deduplicateSessionBranches, buildInsightsResponsePrompt, buildExportData, aggregateData
 // [unwrapped __esm module voc] deps: Ld
 ((IQf = {
   type: "local-jsx",
@@ -23,17 +24,6 @@
   }),
   (kQf = IQf));
 var Moc = {};
-_t(Moc, {
-  normalizeSessionMeta: () => normalizeSessionMeta,
-  generateUsageReport: () => generateUsageReport,
-  extractToolStats: () => extractToolStats,
-  detectMultiClauding: () => detectMultiClauding,
-  default: () => sZf,
-  deduplicateSessionBranches: () => deduplicateSessionBranches,
-  buildInsightsResponsePrompt: () => buildInsightsResponsePrompt,
-  buildExportData: () => buildExportData,
-  aggregateData: () => aggregateData,
-});
 function Coc() {
   return O_();
 }

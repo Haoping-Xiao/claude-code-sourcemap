@@ -4,14 +4,10 @@
 // class=modified  jaccard=0.5058  score=0.8388  fileCov=0.5602
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sanitizeFilename, extractFirstPrompt, call
 // [unwrapped __esm module F4o] deps: qXt, Yj, xne, C5, jDe, LPe
 ((aHt = R(rt(), 1)), (DJt = R(se(), 1)));
 var wJl = {};
-_t(wJl, {
-  sanitizeFilename: () => sanitizeFilename,
-  extractFirstPrompt: () => extractFirstPrompt,
-  call: () => call,
-});
 function g6f(e) {
   let t = e.getFullYear(),
     n = String(e.getMonth() + 1).padStart(2, "0"),

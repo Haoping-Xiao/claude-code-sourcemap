@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2158  score=0.2582  fileCov=0.5677
 // note: deminified; 24 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: toolAlwaysAllowedRule, syncPermissionRulesFromDisk, sameTurnSiblingContextEnabledWithSource, permissionRuleSourceDisplayString, isNonDeniableTool, hasPermissionsToUseToolWithSink, hasPermissionsToUseTool, guardHookUpdatedInput, getRuleByContentsForToolName, getRuleByContentsForTool, getInputParamRule, getDenyRules, getDenyRuleForTool, getDenyRuleForAgent, getAskRules, getAskRuleForTool, getAllowRules, findSafetyCheckReason, filterDeniedAgents, deletePermissionRule, createPermiss …
 // [unwrapped __esm module xqo] deps: G1, lf, EI, lC, dqe, LX, pht
 ((dlc = ro(voa).WORKFLOW_TOOL_NAME),
   (Vnm = []),
@@ -77,32 +78,6 @@
     "left_click_drag",
   ])));
 var cDl = {};
-_t(cDl, {
-  toolAlwaysAllowedRule: () => toolAlwaysAllowedRule,
-  syncPermissionRulesFromDisk: () => syncPermissionRulesFromDisk,
-  sameTurnSiblingContextEnabledWithSource: () => sameTurnSiblingContextEnabledWithSource,
-  permissionRuleSourceDisplayString: () => permissionRuleSourceDisplayString,
-  isNonDeniableTool: () => isNonDeniableTool,
-  hasPermissionsToUseToolWithSink: () => hasPermissionsToUseToolWithSink,
-  hasPermissionsToUseTool: () => hasPermissionsToUseTool,
-  guardHookUpdatedInput: () => guardHookUpdatedInput,
-  getRuleByContentsForToolName: () => getRuleByContentsForToolName,
-  getRuleByContentsForTool: () => getRuleByContentsForTool,
-  getInputParamRule: () => getInputParamRule,
-  getDenyRules: () => getDenyRules,
-  getDenyRuleForTool: () => getDenyRuleForTool,
-  getDenyRuleForAgent: () => getDenyRuleForAgent,
-  getAskRules: () => getAskRules,
-  getAskRuleForTool: () => getAskRuleForTool,
-  getAllowRules: () => getAllowRules,
-  findSafetyCheckReason: () => findSafetyCheckReason,
-  filterDeniedAgents: () => filterDeniedAgents,
-  deletePermissionRule: () => deletePermissionRule,
-  createPermissionRequestMessage: () => createPermissionRequestMessage,
-  checkRuleBasedPermissions: () => checkRuleBasedPermissions,
-  applyPermissionRulesToPermissionContext: () => applyPermissionRulesToPermissionContext,
-  PERMISSION_RULE_SOURCES: () => PERMISSION_RULE_SOURCES,
-});
 function isNonDeniableTool(e) {
   return !e.mcpInfo && trm.has(e.name);
 }

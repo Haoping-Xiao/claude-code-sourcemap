@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2653  score=0.4289  fileCov=0.4102
 // note: deminified; 32 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: worktreeBranchName, validateWorktreeSlug, unlockAgentWorktree, unlinkWorktreeReparsePoints, symlinkDirectories, stripGitProgress, restoreWorktreeSession, resolveExistingWorktreeTarget, removeAgentWorktree, reapJobWorktreeIfSafe, persistWorktreeSession, parsePRReference, listRegisteredWorktrees, killTmuxSession, keepWorktree, isWorktreeWriteDestUnsafe, isTmuxAvailable, hasWorktreeChanges, getTmuxInstallInstructions, getCurrentWorktreeSession, getAgentWorktreeChanges, generateTmux …
 // [unwrapped __esm module sp] deps: ft, oc, ojn, jqe, Lo, qmo, E5e, _1, z2n, $pt, Cp, Is, Ls, qd, sj, kDe, _m, ejn, i5, B1, o8, ft, er, ZYt, PM, _a, dr, kt, dn, Du, I8, aS, II, $g, ZC, Un, m5, D5o, K0, iu, WAt, je, Mm, sr, BFo, QH, vn, EAe, MZn, bm, co, np, OI, PZn, Vv, oo, p6e, ii, dic, fic, mic, gic, pQ, Jt, gb, fn, At, yic
 ((Nic = require("path")), (Nlr = require("child_process")), (qYe = require("crypto")));
 $ic();
@@ -37,41 +38,6 @@ Yem = new Set();
   ])));
 U5o = new Set();
 var lac = {};
-_t(lac, {
-  worktreeBranchName: () => worktreeBranchName,
-  validateWorktreeSlug: () => validateWorktreeSlug,
-  unlockAgentWorktree: () => unlockAgentWorktree,
-  unlinkWorktreeReparsePoints: () => unlinkWorktreeReparsePoints,
-  symlinkDirectories: () => symlinkDirectories,
-  stripGitProgress: () => stripGitProgress,
-  restoreWorktreeSession: () => restoreWorktreeSession,
-  resolveExistingWorktreeTarget: () => resolveExistingWorktreeTarget,
-  removeAgentWorktree: () => removeAgentWorktree,
-  reapJobWorktreeIfSafe: () => reapJobWorktreeIfSafe,
-  persistWorktreeSession: () => persistWorktreeSession,
-  parsePRReference: () => parsePRReference,
-  listRegisteredWorktrees: () => listRegisteredWorktrees,
-  killTmuxSession: () => killTmuxSession,
-  keepWorktree: () => keepWorktree,
-  isWorktreeWriteDestUnsafe: () => isWorktreeWriteDestUnsafe,
-  isTmuxAvailable: () => isTmuxAvailable,
-  hasWorktreeChanges: () => hasWorktreeChanges,
-  getTmuxInstallInstructions: () => getTmuxInstallInstructions,
-  getCurrentWorktreeSession: () => Gm,
-  getAgentWorktreeChanges: () => getAgentWorktreeChanges,
-  generateTmuxSessionName: () => generateTmuxSessionName,
-  execIntoTmuxWorktree: () => execIntoTmuxWorktree,
-  enterExistingWorktreeForSession: () => enterExistingWorktreeForSession,
-  createWorktreeForSession: () => createWorktreeForSession,
-  createTmuxSessionForWorktree: () => createTmuxSessionForWorktree,
-  createAgentWorktree: () => createAgentWorktree,
-  copyWorktreeIncludeFiles: () => copyWorktreeIncludeFiles,
-  cleanupWorktree: () => cleanupWorktree,
-  cleanupStaleAgentWorktrees: () => cleanupStaleAgentWorktrees,
-  agentWorktreeSlug: () => agentWorktreeSlug,
-  WorktreeIsolationError: () => WorktreeIsolationError,
-  WorktreeGitTransientError: () => WorktreeGitTransientError,
-});
 function persistWorktreeSession(e) {
   (Eft(e),
     pH((t) => ({

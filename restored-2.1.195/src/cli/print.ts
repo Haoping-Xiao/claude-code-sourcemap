@@ -4,36 +4,10 @@
 // class=modified  jaccard=0.2726  score=0.4545  fileCov=0.4052
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: waitForPendingMcpBeforeFirstCommand, shouldWarnRestrictedStartupModel, shouldIgnoreStaleEndSession, runHeadless, restoreDeclaredDialogKinds, resolveDefaultPickRepoint, reportTurnFailed, reconcileMcpServers, modelOverrideToAdoptAfterTurn, mergeMcpClientLists, loadInitialMessages, kickOffBackgroundPluginInstall, joinPromptValues, isRestartedWorkerEpoch, handleOrphanedPermissionResponse, handleMcpSetServers, getCanUseToolFn, findRewindAnchors, createPrintRequestDialog, createKeepAl …
 // [unwrapped __esm module sFc] deps: np, dn, Lo, Bi, u8o, OI
 rFc = require("crypto");
 var MFc = {};
-_t(MFc, {
-  waitForPendingMcpBeforeFirstCommand: () => waitForPendingMcpBeforeFirstCommand,
-  shouldWarnRestrictedStartupModel: () => shouldWarnRestrictedStartupModel,
-  shouldIgnoreStaleEndSession: () => shouldIgnoreStaleEndSession,
-  runHeadless: () => runHeadless,
-  restoreDeclaredDialogKinds: () => restoreDeclaredDialogKinds,
-  resolveDefaultPickRepoint: () => resolveDefaultPickRepoint,
-  reportTurnFailed: () => reportTurnFailed,
-  reconcileMcpServers: () => reconcileMcpServers,
-  modelOverrideToAdoptAfterTurn: () => modelOverrideToAdoptAfterTurn,
-  mergeMcpClientLists: () => mergeMcpClientLists,
-  loadInitialMessages: () => loadInitialMessages,
-  kickOffBackgroundPluginInstall: () => kickOffBackgroundPluginInstall,
-  joinPromptValues: () => joinPromptValues,
-  isRestartedWorkerEpoch: () => isRestartedWorkerEpoch,
-  handleOrphanedPermissionResponse: () => handleOrphanedPermissionResponse,
-  handleMcpSetServers: () => handleMcpSetServers,
-  getCanUseToolFn: () => getCanUseToolFn,
-  findRewindAnchors: () => findRewindAnchors,
-  createPrintRequestDialog: () => createPrintRequestDialog,
-  createKeepAlivePulse: () => createKeepAlivePulse,
-  createCanUseToolWithPermissionPrompt: () => createCanUseToolWithPermissionPrompt,
-  canBatchWith: () => canBatchWith,
-  buildToolPermissionsFromPolicy: () => buildToolPermissionsFromPolicy,
-  _runHeadlessStreamingForTesting: () => wFc,
-  MAX_DECLARED_DIALOG_KINDS: () => xJt,
-});
 function uFc(e) {
   if (fnn.has(e)) return false;
   if ((fnn.add(e), Dmr.push(e), Dmr.length > cFc)) {

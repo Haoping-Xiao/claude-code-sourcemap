@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0327  score=0.2948  fileCov=0.0355
 // note: nearest: src/utils/fsOperations.ts (0.0327); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: readFileForRemote, REMOTE_READ_MAX_BYTES
 // [unwrapped __esm module yur] deps: ft, kt, co, Zf, Ire, Ryt, Vv, Il, Cp, p6e, sp, Dfc, xW, _Tt, co, I1, CIo, Rze, q8t, X4, uJt, yYt, Gfc
 hur = require("crypto");
 var Yfc = {};
-_t(Yfc, {
-  readFileForRemote: () => readFileForRemote,
-  REMOTE_READ_MAX_BYTES: () => REMOTE_READ_MAX_BYTES
-});
 async function readFileForRemote(e, t, n, r = "utf-8") {
   let o = ds(e);
   for (let a of i_(o)) if (!DOn(a, n, "read").allowed) throw Error(`read denied: ${e}`);

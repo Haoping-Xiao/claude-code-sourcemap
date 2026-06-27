@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2662  score=0.6581  fileCov=0.3089
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SKILL_PROMPT, SKILL_FILES
 // [unwrapped __esm module _xc] deps: kt, Lo, AA
 fxc = require("fs/promises");
 wHm = {
@@ -175,8 +176,4 @@ If WebFetch fails or you have no network:
 `;
 var Hxc = () => {};
 var vxc = {};
-_t(vxc, {
-  SKILL_PROMPT: () => SKILL_PROMPT,
-  SKILL_FILES: () => SKILL_FILES,
-});
 var SKILL_PROMPT, SKILL_FILES;

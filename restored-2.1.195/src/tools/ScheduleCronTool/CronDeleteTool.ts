@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.6129  score=0.9488  fileCov=0.6338
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: CronListTool
 // [unwrapped __esm module uSl] deps: Xr, ii, N8, Sj, WW, _Xn
 ((ghf = ve(() =>
   H.strictObject({
@@ -81,7 +82,4 @@
     renderToolResultMessage: rSl,
   })));
 var dSl = {};
-_t(dSl, {
-  CronListTool: () => CronListTool,
-});
 var _hf, bhf, CronListTool;

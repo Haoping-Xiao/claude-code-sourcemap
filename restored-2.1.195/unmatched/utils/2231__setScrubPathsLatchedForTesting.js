@@ -4,25 +4,10 @@
 // class=new  jaccard=0.0009  score=0.0601  fileCov=0.001
 // note: nearest: src/main.tsx (0.0009); dir inferred from dep-graph -> utils; 11 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: subprocessEnv, shouldUseMcpAllowlistEnv, setSettingsColorEnv, scrubSandboxConfig, registerAgentProxyEnvFn, isScrubSandboxAvailable, isScrubEnabled, enforceScriptCaps, assertScrubSandboxAvailable, agentProxyEnv, _setScrubPathsLatchedForTesting, _resetScrubLatchForTesting, _resetScriptCapsForTesting, BG_WORKER_IDENTITY_ENV_VARS
 // [unwrapped __esm module j1i]
 t1d = /[ \t\n\v\f\r'"]/;
 var K1i = {};
-_t(K1i, {
-  subprocessEnv: () => subprocessEnv,
-  shouldUseMcpAllowlistEnv: () => shouldUseMcpAllowlistEnv,
-  setSettingsColorEnv: () => setSettingsColorEnv,
-  scrubSandboxConfig: () => scrubSandboxConfig,
-  registerAgentProxyEnvFn: () => registerAgentProxyEnvFn,
-  isScrubSandboxAvailable: () => isScrubSandboxAvailable,
-  isScrubEnabled: () => isScrubEnabled,
-  enforceScriptCaps: () => enforceScriptCaps,
-  assertScrubSandboxAvailable: () => assertScrubSandboxAvailable,
-  agentProxyEnv: () => agentProxyEnv,
-  _setScrubPathsLatchedForTesting: () => l1d,
-  _resetScrubLatchForTesting: () => a1d,
-  _resetScriptCapsForTesting: () => V1i,
-  BG_WORKER_IDENTITY_ENV_VARS: () => BG_WORKER_IDENTITY_ENV_VARS
-});
 function isScrubEnabled() {
   if (Kkn === void 0) Kkn = ut(process.env.CLAUDE_CODE_SUBPROCESS_ENV_SCRUB);
   return Kkn;

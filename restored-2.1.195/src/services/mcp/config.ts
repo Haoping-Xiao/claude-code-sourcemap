@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3224  score=0.4808  fileCov=0.4946
 // note: deminified; 31 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: unwrapCcrProxyUrl, suppressedConnectorsEqual, shouldSkipClaudeAiFetchForEnterpriseLockdown, shouldAllowManagedMcpServersOnly, setMcpServerEnabled, removeMcpConfig, readRawMcpJsonServersFromCwd, parseMcpConfigFromFilePath, parseMcpConfig, isMcpServerDisabled, isMcpServerDenied, isMcpServerBlockedAtConnectTime, isMcpServerAllowedByPolicy, isBuiltinInProcessMcpServer, getMcpServerSignature, getMcpScopeConflicts, getMcpConfigsByScope, getMcpConfigByName, getEnterpriseMcpFilePath, ge …
 // [unwrapped __esm module a5] deps: Hp, iu, Qi, TM, Rc, kt, oo, er, gb, je, fn, Gx, Ls, qd, dr, dn, pdo, bCe
 yTp = new Set(["ECONNABORTED", "ECONNRESET", "ECONNREFUSED", "ETIMEDOUT", "EAI_AGAIN"]);
 rDe = Cn(async () => {
@@ -164,39 +165,6 @@ rDe = Cn(async () => {
   }
 });
 var kCa = {};
-_t(kCa, {
-  unwrapCcrProxyUrl: () => unwrapCcrProxyUrl,
-  suppressedConnectorsEqual: () => suppressedConnectorsEqual,
-  shouldSkipClaudeAiFetchForEnterpriseLockdown: () => shouldSkipClaudeAiFetchForEnterpriseLockdown,
-  shouldAllowManagedMcpServersOnly: () => shouldAllowManagedMcpServersOnly,
-  setMcpServerEnabled: () => setMcpServerEnabled,
-  removeMcpConfig: () => removeMcpConfig,
-  readRawMcpJsonServersFromCwd: () => readRawMcpJsonServersFromCwd,
-  parseMcpConfigFromFilePath: () => parseMcpConfigFromFilePath,
-  parseMcpConfig: () => parseMcpConfig,
-  isMcpServerDisabled: () => isMcpServerDisabled,
-  isMcpServerDenied: () => isMcpServerDenied,
-  isMcpServerBlockedAtConnectTime: () => isMcpServerBlockedAtConnectTime,
-  isMcpServerAllowedByPolicy: () => isMcpServerAllowedByPolicy,
-  isBuiltinInProcessMcpServer: () => isBuiltinInProcessMcpServer,
-  getMcpServerSignature: () => getMcpServerSignature,
-  getMcpScopeConflicts: () => getMcpScopeConflicts,
-  getMcpConfigsByScope: () => getMcpConfigsByScope,
-  getMcpConfigByName: () => getMcpConfigByName,
-  getEnterpriseMcpFilePath: () => getEnterpriseMcpFilePath,
-  getConnectablePluginMcpServerNames: () => getConnectablePluginMcpServerNames,
-  getClaudeCodeMcpConfigs: () => getClaudeCodeMcpConfigs,
-  getAllMcpConfigs: () => getAllMcpConfigs,
-  filterMcpServersByPolicy: () => filterMcpServersByPolicy,
-  filterDynamicMcpServersByPolicy: () => filterDynamicMcpServersByPolicy,
-  doesEnterpriseMcpConfigExist: () => doesEnterpriseMcpConfigExist,
-  dedupPluginMcpServers: () => dedupPluginMcpServers,
-  dedupClaudeAiMcpServers: () => dedupClaudeAiMcpServers,
-  areMcpConfigsAllowedWithEnterpriseMcpConfig: () => areMcpConfigsAllowedWithEnterpriseMcpConfig,
-  areMcpConfigsAllSdkType: () => areMcpConfigsAllSdkType,
-  addMcpConfig: () => addMcpConfig,
-  MCP_SETTINGS_SCOPES: () => MCP_SETTINGS_SCOPES,
-});
 function getEnterpriseMcpFilePath() {
   return NSe.join(QC(), "managed-mcp.json");
 }

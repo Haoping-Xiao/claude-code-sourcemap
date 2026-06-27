@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.378  score=0.4605  fileCov=0.6783
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module I6l] deps: wr
 ((C6l = {
   ghostty: "Ghostty",
@@ -37,9 +38,6 @@
   }),
   (wjo = eqf));
 var x6l = {};
-_t(x6l, {
-  call: () => call,
-});
 var k6l,
   call = async (e, t, n, r) =>
     k6l.jsx(WOe, {

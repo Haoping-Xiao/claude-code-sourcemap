@@ -4,17 +4,13 @@
 // class=partial  jaccard=0.0645  score=0.124  fileCov=0.1186
 // note: low-confidence suggestion: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerClaudeCodeSkill, CLAUDE_CODE_SKILL_NAME, CLAUDE_CODE_SKILL_DESCRIPTION
 // [unwrapped __esm module wxc] deps: bxc, Exc, Hxc
 $Hm = Txc, OHm = {
   "references/live-sources.md": Sxc,
   "references/recent-changes.md": Axc
 };
 var kxc = {};
-_t(kxc, {
-  registerClaudeCodeSkill: () => registerClaudeCodeSkill,
-  CLAUDE_CODE_SKILL_NAME: () => CLAUDE_CODE_SKILL_NAME,
-  CLAUDE_CODE_SKILL_DESCRIPTION: () => CLAUDE_CODE_SKILL_DESCRIPTION
-});
 function Cxc() {
   return NHm ??= Promise.resolve().then(() => (wxc(), vxc));
 }

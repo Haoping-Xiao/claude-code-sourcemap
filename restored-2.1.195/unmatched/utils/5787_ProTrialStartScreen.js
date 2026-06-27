@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0325  score=0.1816  fileCov=0.0381
 // note: nearest: src/components/ConsoleOAuthFlow.tsx (0.0325); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: ProTrialStartScreen
 // [unwrapped __esm module A$c] deps: kt, ft, O0, Ye, ps, dn, Kv, er, Lo, ys, Yp, rlt, sr, Csr, Bs, Fy, Ko, gm, X0, b$c
 S$c = R(lt(), 1), g7o = require("os"), cmr = R(rt(), 1), AE = R(se(), 1);
 var v$c = {};
-_t(v$c, {
-  ProTrialStartScreen: () => ProTrialStartScreen
-});
 function ProTrialStartScreen(e) {
   let t = H$c.c(9),
     {

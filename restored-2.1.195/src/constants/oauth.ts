@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3022  score=0.6501  fileCov=0.3609
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: preservableScopesFrom, getOauthConfig, fileSuffixForOauthConfig, PRESERVABLE_EXPANSION_SCOPES, OAUTH_BETA_HEADER, MCP_CLIENT_METADATA_URL, LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS, DESIGN_OAUTH_SCOPES, CONSOLE_OAUTH_SCOPES, CLAUDE_AI_PROFILE_SCOPE, CLAUDE_AI_OAUTH_SCOPES, CLAUDE_AI_INFERENCE_SCOPE, ALL_OAUTH_SCOPES, ALLOWED_OAUTH_BASE_URLS
 // [unwrapped __esm module $ms] deps: Eae
 ((Dgu = Fe.bool()),
   (Pgu = Fe.str()),
@@ -77,22 +78,6 @@ function Uo(e) {
   return [...new Set(e)];
 }
 var _0t = {};
-_t(_0t, {
-  preservableScopesFrom: () => preservableScopesFrom,
-  getOauthConfig: () => getOauthConfig,
-  fileSuffixForOauthConfig: () => fileSuffixForOauthConfig,
-  PRESERVABLE_EXPANSION_SCOPES: () => PRESERVABLE_EXPANSION_SCOPES,
-  OAUTH_BETA_HEADER: () => OAUTH_BETA_HEADER,
-  MCP_CLIENT_METADATA_URL: () => MCP_CLIENT_METADATA_URL,
-  LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS: () => LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS,
-  DESIGN_OAUTH_SCOPES: () => DESIGN_OAUTH_SCOPES,
-  CONSOLE_OAUTH_SCOPES: () => CONSOLE_OAUTH_SCOPES,
-  CLAUDE_AI_PROFILE_SCOPE: () => CLAUDE_AI_PROFILE_SCOPE,
-  CLAUDE_AI_OAUTH_SCOPES: () => CLAUDE_AI_OAUTH_SCOPES,
-  CLAUDE_AI_INFERENCE_SCOPE: () => CLAUDE_AI_INFERENCE_SCOPE,
-  ALL_OAUTH_SCOPES: () => ALL_OAUTH_SCOPES,
-  ALLOWED_OAUTH_BASE_URLS: () => ALLOWED_OAUTH_BASE_URLS,
-});
 function Nms() {
   return "prod";
 }

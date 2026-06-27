@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.5478  score=0.8312  fileCov=0.6164
 // note: deminified; 11 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: reduceFileHistoryState, fileHistoryTrackEdit, fileHistoryRewind, fileHistoryRestoreStateFromLog, fileHistoryMakeSnapshot, fileHistoryHasAnyChanges, fileHistoryGetDiffStats, fileHistoryEnabled, fileHistoryCanRestore, copyFileHistoryForResume, checkOriginFileChanged
 // [unwrapped __esm module d8n] deps: Hp, Rc, je, Mm, fn, At, vn, kM, Cv, dn
 ((J9e = new Map()), (iTo = new Map()));
 function ZEe(e, t) {
@@ -13,19 +14,6 @@ function iMe(e) {
   return;
 }
 var VQa = {};
-_t(VQa, {
-  reduceFileHistoryState: () => reduceFileHistoryState,
-  fileHistoryTrackEdit: () => fileHistoryTrackEdit,
-  fileHistoryRewind: () => fileHistoryRewind,
-  fileHistoryRestoreStateFromLog: () => fileHistoryRestoreStateFromLog,
-  fileHistoryMakeSnapshot: () => fileHistoryMakeSnapshot,
-  fileHistoryHasAnyChanges: () => fileHistoryHasAnyChanges,
-  fileHistoryGetDiffStats: () => fileHistoryGetDiffStats,
-  fileHistoryEnabled: () => fileHistoryEnabled,
-  fileHistoryCanRestore: () => fileHistoryCanRestore,
-  copyFileHistoryForResume: () => copyFileHistoryForResume,
-  checkOriginFileChanged: () => checkOriginFileChanged,
-});
 function reduceFileHistoryState(e, t) {
   switch (t.kind) {
     case "track":

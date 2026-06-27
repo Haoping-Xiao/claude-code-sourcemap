@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.3473  score=0.5855  fileCov=0.4606
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sanitizeKeytermsForHeader, probeVoiceConnectivity, isVoiceStreamAvailable, isTypedInterimsEnabled, connectVoiceStream, FINALIZE_TIMEOUTS_MS
 var enc = {};
-_t(enc, {
-  sanitizeKeytermsForHeader: () => sanitizeKeytermsForHeader,
-  probeVoiceConnectivity: () => probeVoiceConnectivity,
-  isVoiceStreamAvailable: () => isVoiceStreamAvailable,
-  isTypedInterimsEnabled: () => isTypedInterimsEnabled,
-  connectVoiceStream: () => connectVoiceStream,
-  FINALIZE_TIMEOUTS_MS: () => FINALIZE_TIMEOUTS_MS,
-});
 function rar(e, t, n) {
   return typeof e === "number" && Number.isInteger(e) && e >= t && e <= n ? String(e) : "unknown";
 }

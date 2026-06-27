@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.5476  score=0.6503  fileCov=0.7761
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sanitizeSessionNamePrefix, getBridgeTokenOverride, getBridgeSessionNamePrefix, getBridgeBaseUrlOverride, getBridgeBaseUrl, getBridgeAccessToken
 // [unwrapped __esm module q0o] deps: Xr, ii, q6e, hyt, Jt, yyl
 ((rmf = ve(() =>
   H.strictObject({
@@ -99,14 +100,6 @@
     },
   })));
 var V0o = {};
-_t(V0o, {
-  sanitizeSessionNamePrefix: () => sanitizeSessionNamePrefix,
-  getBridgeTokenOverride: () => getBridgeTokenOverride,
-  getBridgeSessionNamePrefix: () => getBridgeSessionNamePrefix,
-  getBridgeBaseUrlOverride: () => getBridgeBaseUrlOverride,
-  getBridgeBaseUrl: () => getBridgeBaseUrl,
-  getBridgeAccessToken: () => getBridgeAccessToken,
-});
 function getBridgeTokenOverride() {
   return;
 }

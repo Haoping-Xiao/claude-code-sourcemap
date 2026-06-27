@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.0772  score=0.1368  fileCov=0.1505
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 var $7l = {};
-_t($7l, {
-  call: () => call,
-});
 function lZ(e, t) {
   return `${e} ${bn(e, t)}`;
 }

@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.6082  score=0.8177  fileCov=0.7037
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: respawnPaneWithCommand, TmuxBackend
 var bhl = {};
-_t(bhl, {
-  respawnPaneWithCommand: () => respawnPaneWithCommand,
-  TmuxBackend: () => TmuxBackend,
-});
 function yhl(e) {
   let t = `Failed to create teammate pane: ${e}`,
     n = e.toLowerCase();

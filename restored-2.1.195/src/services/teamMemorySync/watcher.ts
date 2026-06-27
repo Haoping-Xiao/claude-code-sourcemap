@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1427  score=0.1747  fileCov=0.4378
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stopMemoryWatcher, startMemoryWatcher, rebuildStoreSet, notifyMemoryWrite, maybeResyncStaleStores, isPermanentFailure, _startFileWatcherForTesting, _resyncTimerForTesting, _resetWatcherStateForTesting, _multiStoreStateForTesting, _lastSyncCompletedAtForTesting, _armResyncTimerForTesting, UNLINK_RECOVERABLE_REASONS_BY_SCOPE
 // [unwrapped __esm module qwl] deps: Uh, vGt, MM, je, wr, At, zH, Jt, dn, Un, kt, i0n, WKr, Iwl
 ((xwl = require("crypto")),
   (j$ = require("fs/promises")),
@@ -24,21 +25,6 @@ Wwl = {
   filesDeleted: 0,
 };
 var KJn = {};
-_t(KJn, {
-  stopMemoryWatcher: () => stopMemoryWatcher,
-  startMemoryWatcher: () => startMemoryWatcher,
-  rebuildStoreSet: () => rebuildStoreSet,
-  notifyMemoryWrite: () => notifyMemoryWrite,
-  maybeResyncStaleStores: () => maybeResyncStaleStores,
-  isPermanentFailure: () => isPermanentFailure,
-  _startFileWatcherForTesting: () => VAf,
-  _resyncTimerForTesting: () => KAf,
-  _resetWatcherStateForTesting: () => qAf,
-  _multiStoreStateForTesting: () => YAf,
-  _lastSyncCompletedAtForTesting: () => zAf,
-  _armResyncTimerForTesting: () => XAf,
-  UNLINK_RECOVERABLE_REASONS_BY_SCOPE: () => UNLINK_RECOVERABLE_REASONS_BY_SCOPE,
-});
 function WJn() {
   return {
     syncState: null,

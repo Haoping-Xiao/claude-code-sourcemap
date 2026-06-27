@@ -4,13 +4,10 @@
 // class=modified  jaccard=0.346  score=0.6295  fileCov=0.4344
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: filterResumableSessions, call
 // [unwrapped __esm module O2o] deps: ft, Is, _a
 BVl = require("path");
 var GVl = {};
-_t(GVl, {
-  filterResumableSessions: () => filterResumableSessions,
-  call: () => call,
-});
 function UVl(e) {
   switch (e.resultType) {
     case "sessionNotFound":

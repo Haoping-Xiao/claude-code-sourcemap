@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2616  score=0.3133  fileCov=0.6133
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: withOAuth401Retry, getWebFetchUserAgent, getUserAgent, getMCPUserAgent, getClientPlatform, getAuthHeadersAsync, getAuthHeaders
 // [unwrapped __esm module oo] deps: iu, Qi, Rc, dn, kt, ste, Ls, ft, Tnt, ole, H0, W2e, xnt, db, QSn, Rnt, d2r, aAn, Vw, er, je, Lx, wr, fn, At, Bi, BCn, vn, SG, OB, R9, urt, S9, dr, Jt, t1t
 ((q9r = require("child_process")), (l1t = require("fs/promises")), (V9r = require("path")));
 ((Vvi = Cn(() => {
@@ -110,15 +111,6 @@ g1t = oRt(async () => {
   (V0d = new RegExp(`\\b(${lwi.join("|")})\\b`)));
 cwi = class cwi extends Error {};
 var eii = {};
-_t(eii, {
-  withOAuth401Retry: () => withOAuth401Retry,
-  getWebFetchUserAgent: () => getWebFetchUserAgent,
-  getUserAgent: () => getUserAgent,
-  getMCPUserAgent: () => getMCPUserAgent,
-  getClientPlatform: () => _x,
-  getAuthHeadersAsync: () => getAuthHeadersAsync,
-  getAuthHeaders: () => getAuthHeaders,
-});
 function getUserAgent() {
   let e = process.env.CLAUDE_AGENT_SDK_VERSION
       ? `, agent-sdk/${process.env.CLAUDE_AGENT_SDK_VERSION}`

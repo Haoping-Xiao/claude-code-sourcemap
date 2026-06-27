@@ -4,21 +4,10 @@
 // class=modified  jaccard=0.4376  score=0.6226  fileCov=0.5956
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldOfferTerminalSetup, setupTerminal, readVSCodeScrollSensitivity, markBackslashReturnUsed, isShiftEnterKeyBindingInstalled, installVSCodeGpuAccelerationOff, hasUsedBackslashReturn, getNativeCSIuTerminalDisplayName, enableITerm2ClipboardAccess, call
 // [unwrapped __esm module YQr] deps: f0e, AW, db, je, At, Bi
 ((I8i = require("os")), (qce = require("path")));
 var P8i = {};
-_t(P8i, {
-  shouldOfferTerminalSetup: () => shouldOfferTerminalSetup,
-  setupTerminal: () => setupTerminal,
-  readVSCodeScrollSensitivity: () => readVSCodeScrollSensitivity,
-  markBackslashReturnUsed: () => markBackslashReturnUsed,
-  isShiftEnterKeyBindingInstalled: () => isShiftEnterKeyBindingInstalled,
-  installVSCodeGpuAccelerationOff: () => installVSCodeGpuAccelerationOff,
-  hasUsedBackslashReturn: () => hasUsedBackslashReturn,
-  getNativeCSIuTerminalDisplayName: () => getNativeCSIuTerminalDisplayName,
-  enableITerm2ClipboardAccess: () => enableITerm2ClipboardAccess,
-  call: () => call,
-});
 function MDn() {
   let e = process.env.VSCODE_GIT_ASKPASS_MAIN ?? "",
     t = process.env.PATH ?? "";

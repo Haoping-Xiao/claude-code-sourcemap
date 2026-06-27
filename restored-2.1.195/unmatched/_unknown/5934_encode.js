@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0203  score=0.383  fileCov=0.021
 // note: nearest: node_modules/node-forge/lib/util.js (0.0203); 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: encode, decode
 // [unwrapped __esm module _jc] deps: sB, YP, wm, agr, cgr
 hJo = class hJo extends J7e {
   encode() {
@@ -35,8 +36,4 @@ hJo = class hJo extends J7e {
   }
 };
 var yJo = {};
-_t(yJo, {
-  encode: () => encode,
-  decode: () => decode
-});
 var encode, decode;

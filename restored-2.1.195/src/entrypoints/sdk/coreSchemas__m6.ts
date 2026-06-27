@@ -4,6 +4,7 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0103  score=0.1089  fileCov=0.0112
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sinksFor, runClassifierSummaryForBlocked, isPostTurnSummaryVisibleInCli, engineFor, detectSurfaces, classifiedToPostTurnSummary
 // [unwrapped __esm module Hde] deps: cEe, ft, tgo, tne
 ((pjn = R(rt(), 1)),
   (VGt = Object.freeze({
@@ -21,14 +22,6 @@
   })),
   (uEe = uL({})));
 var rgo = {};
-_t(rgo, {
-  sinksFor: () => sinksFor,
-  runClassifierSummaryForBlocked: () => runClassifierSummaryForBlocked,
-  isPostTurnSummaryVisibleInCli: () => isPostTurnSummaryVisibleInCli,
-  engineFor: () => engineFor,
-  detectSurfaces: () => detectSurfaces,
-  classifiedToPostTurnSummary: () => classifiedToPostTurnSummary,
-});
 function detectSurfaces() {
   if (Js()) return new Set(["bg"]);
   let e = new Set();

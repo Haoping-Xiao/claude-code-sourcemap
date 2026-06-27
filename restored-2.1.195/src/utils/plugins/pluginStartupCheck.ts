@@ -4,18 +4,10 @@
 // class=modified  jaccard=0.4993  score=0.8443  fileCov=0.5499
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: settingSourceToScope, isPersistableScope, installSelectedPlugins, getPluginEditableScopes, getInstalledPlugins, findMissingPlugins, checkEnabledPlugins
 // [unwrapped __esm module MEt] deps: Ye, gm
 ((f2l = R(lt(), 1)), (OKe = R(se(), 1)));
 var h2l = {};
-_t(h2l, {
-  settingSourceToScope: () => settingSourceToScope,
-  isPersistableScope: () => isPersistableScope,
-  installSelectedPlugins: () => installSelectedPlugins,
-  getPluginEditableScopes: () => getPluginEditableScopes,
-  getInstalledPlugins: () => getInstalledPlugins,
-  findMissingPlugins: () => findMissingPlugins,
-  checkEnabledPlugins: () => checkEnabledPlugins,
-});
 async function checkEnabledPlugins() {
   let e = Dr(),
     t = [],

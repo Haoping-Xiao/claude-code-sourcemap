@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.5818  score=0.9444  fileCov=0.6024
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: renameRecordingForSession, installAsciicastRecorder, getSessionRecordingPaths, getRecordFilePath, flushAsciicastRecorder, _resetRecordingStateForTesting
 var PEc = {};
-_t(PEc, {
-  renameRecordingForSession: () => renameRecordingForSession,
-  installAsciicastRecorder: () => installAsciicastRecorder,
-  getSessionRecordingPaths: () => getSessionRecordingPaths,
-  getRecordFilePath: () => getRecordFilePath,
-  flushAsciicastRecorder: () => flushAsciicastRecorder,
-  _resetRecordingStateForTesting: () => Nhm,
-});
 function getRecordFilePath() {
   if (Zz.filePath !== null) return Zz.filePath;
   return null;

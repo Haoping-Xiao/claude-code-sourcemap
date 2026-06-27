@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4498  score=0.8497  fileCov=0.4887
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: parseCommandRaw, parseCommand, findCommandNode, extractCommandArguments, PARSE_ABORTED
 // [unwrapped __esm module Ybe]
 ((knp = {
   parse: Nnp,
@@ -62,13 +63,6 @@
 }),
   (urp = new Set(["=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", "&=", "^=", "|=", "**"])));
 var rra = {};
-_t(rra, {
-  parseCommandRaw: () => parseCommandRaw,
-  parseCommand: () => parseCommand,
-  findCommandNode: () => findCommandNode,
-  extractCommandArguments: () => extractCommandArguments,
-  PARSE_ABORTED: () => PARSE_ABORTED,
-});
 async function parseCommand(e) {
   if (!e || e.length > nra) return null;
   try {

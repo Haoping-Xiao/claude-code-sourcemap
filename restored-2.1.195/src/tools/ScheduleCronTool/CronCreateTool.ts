@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.6659  score=0.9731  fileCov=0.6784
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: CronDeleteTool
 // [unwrapped __esm module lSl] deps: Xr, ft, ii, vX, N8, PDe, Sj, WW, _Xn
 ((phf = ve(() =>
   H.strictObject({
@@ -114,7 +115,4 @@
     renderToolResultMessage: tSl,
   })));
 var cSl = {};
-_t(cSl, {
-  CronDeleteTool: () => CronDeleteTool,
-});
 var ghf, hhf, CronDeleteTool;

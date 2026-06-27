@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4856  score=0.6162  fileCov=0.6962
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isWorktreeModeEnabled
 // [unwrapped __esm module Qbl] deps: Xr, ii, bk, Xbl
 ((uhf = ve(() => H.strictObject({}))),
   (dhf = ve(() =>
@@ -92,9 +93,6 @@
     },
   })));
 var Zbl = {};
-_t(Zbl, {
-  isWorktreeModeEnabled: () => isWorktreeModeEnabled,
-});
 function isWorktreeModeEnabled() {
   return true;
 }

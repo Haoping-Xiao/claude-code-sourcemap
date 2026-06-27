@@ -4,27 +4,10 @@
 // class=modified  jaccard=0.1557  score=0.2708  fileCov=0.2681
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldForceSandboxOn, shouldAllowManagedSandboxDomainsOnly, resolveSandboxFilesystemPath, resolvePathPatternForSandbox, isHostAllowedBySandboxNetworkPolicy, getTenguSandboxGbConfig, getEffectiveFilesystemPolicy, detectWorktreeGitCommonDir, convertToSandboxRuntimeConfig, addToExcludedCommands, addSandboxAllowWriteDirectory, SandboxViolationStore, SandboxManager, SandboxInitFailedError, SandboxBridgeUnavailableError, HOST_CEL_POLICIES
 // [unwrapped __esm module Nna]
 Ona = {};
 var Rro = {};
-_t(Rro, {
-  shouldForceSandboxOn: () => shouldForceSandboxOn,
-  shouldAllowManagedSandboxDomainsOnly: () => shouldAllowManagedSandboxDomainsOnly,
-  resolveSandboxFilesystemPath: () => resolveSandboxFilesystemPath,
-  resolvePathPatternForSandbox: () => resolvePathPatternForSandbox,
-  isHostAllowedBySandboxNetworkPolicy: () => isHostAllowedBySandboxNetworkPolicy,
-  getTenguSandboxGbConfig: () => getTenguSandboxGbConfig,
-  getEffectiveFilesystemPolicy: () => getEffectiveFilesystemPolicy,
-  detectWorktreeGitCommonDir: () => detectWorktreeGitCommonDir,
-  convertToSandboxRuntimeConfig: () => convertToSandboxRuntimeConfig,
-  addToExcludedCommands: () => addToExcludedCommands,
-  addSandboxAllowWriteDirectory: () => addSandboxAllowWriteDirectory,
-  SandboxViolationStore: () => PFt,
-  SandboxManager: () => SandboxManager,
-  SandboxInitFailedError: () => SandboxInitFailedError,
-  SandboxBridgeUnavailableError: () => SandboxBridgeUnavailableError,
-  HOST_CEL_POLICIES: () => Ona,
-});
 function MWe(e) {
   let t = e.match(/^([^(]+)\(([^)]+)\)$/);
   if (!t)

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3849  score=0.6551  fileCov=0.4827
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: TEAMMATE_SYSTEM_PROMPT_ADDENDUM
 // [unwrapped __esm module sbt] deps: je, H7n
 rbt = new Map();
 z6t = new Map();
@@ -18,9 +19,6 @@ function Jgl() {
 }
 var _0o = null;
 var Qgl = {};
-_t(Qgl, {
-  TEAMMATE_SYSTEM_PROMPT_ADDENDUM: () => TEAMMATE_SYSTEM_PROMPT_ADDENDUM,
-});
 var TEAMMATE_SYSTEM_PROMPT_ADDENDUM = `
 # Agent Teammate Communication
 

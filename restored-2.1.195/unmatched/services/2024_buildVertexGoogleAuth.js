@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0364  score=0.4973  fileCov=0.0378
 // note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0364); dir inferred from dep-graph -> services; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: vertexAuthFetch, buildVertexGoogleAuth
 var avi = {};
-_t(avi, {
-  vertexAuthFetch: () => vertexAuthFetch,
-  buildVertexGoogleAuth: () => buildVertexGoogleAuth
-});
 async function buildVertexGoogleAuth(e, t) {
   if (e.kind === "skip") return {
     getClient: () => ({

@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.2181  score=0.4269  fileCov=0.3084
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: applySafeConfigEnvironmentVariables, applyConfigEnvironmentVariables, _resetSpawnEnvSnapshotForTesting
 var csl = {};
-_t(csl, {
-  applySafeConfigEnvironmentVariables: () => applySafeConfigEnvironmentVariables,
-  applyConfigEnvironmentVariables: () => applyConfigEnvironmentVariables,
-  _resetSpawnEnvSnapshotForTesting: () => yrf,
-});
 function crf(e) {
   if (!e || !process.env.ANTHROPIC_UNIX_SOCKET) return e || {};
   let {

@@ -4,6 +4,7 @@
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0296  score=0.0649  fileCov=0.0517
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: updateWorkflowProgressBatch, skipWorkflowAgent, retryWorkflowAgent, registerWorkflowTask, registerAdoptedWorkflowTask, pauseWorkflowTask, killWorkflowTask, isLocalWorkflowTask, failWorkflowTask, enqueueWorkflowNotification, completeWorkflowTask, buildResumePrompt, LocalWorkflowTask
 // [unwrapped __esm module k6e] deps: Jt, WAe
 zYn = R(require("vm"));
 Ndf = `(() => {
@@ -57,21 +58,6 @@ function uml(e) {
   return r;
 }
 var Bko = {};
-_t(Bko, {
-  updateWorkflowProgressBatch: () => updateWorkflowProgressBatch,
-  skipWorkflowAgent: () => skipWorkflowAgent,
-  retryWorkflowAgent: () => retryWorkflowAgent,
-  registerWorkflowTask: () => registerWorkflowTask,
-  registerAdoptedWorkflowTask: () => registerAdoptedWorkflowTask,
-  pauseWorkflowTask: () => pauseWorkflowTask,
-  killWorkflowTask: () => killWorkflowTask,
-  isLocalWorkflowTask: () => isLocalWorkflowTask,
-  failWorkflowTask: () => failWorkflowTask,
-  enqueueWorkflowNotification: () => enqueueWorkflowNotification,
-  completeWorkflowTask: () => completeWorkflowTask,
-  buildResumePrompt: () => buildResumePrompt,
-  LocalWorkflowTask: () => LocalWorkflowTask,
-});
 function registerWorkflowTask({
   taskId: e,
   script: t,

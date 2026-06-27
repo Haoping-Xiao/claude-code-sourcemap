@@ -4,14 +4,10 @@
 // class=modified  jaccard=0.2594  score=0.4049  fileCov=0.4192
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: VoiceWarmupHint, VoiceIndicator, VoiceCursorChar
 // [unwrapped __esm module Rhc] deps: Ye, nk, lg
 ((xhc = R(lt(), 1)), (xTt = R(rt(), 1)), (Qur = R(se(), 1)));
 var Lhc = {};
-_t(Lhc, {
-  VoiceWarmupHint: () => VoiceWarmupHint,
-  VoiceIndicator: () => VoiceIndicator,
-  VoiceCursorChar: () => VoiceCursorChar,
-});
 function VoiceIndicator(e) {
   let t = kTt.c(2),
     n;

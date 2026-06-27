@@ -4,24 +4,11 @@
 // class=modified  jaccard=0.4005  score=0.5452  fileCov=0.6015
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isKairosCronEnabled, isDurableCronEnabled, buildCronListPrompt, buildCronDeletePrompt, buildCronCreatePrompt, buildCronCreateDescription, DEFAULT_MAX_AGE_DAYS, CRON_LIST_TOOL_NAME, CRON_LIST_DESCRIPTION, CRON_DELETE_TOOL_NAME, CRON_DELETE_DESCRIPTION, CRON_CREATE_TOOL_NAME
 // [unwrapped __esm module jv] deps: Un, fn, lf, EI, lC
 Pct = new Set([Ds, wu, qc, Co, Ss, RI]);
 var Mct = "ListAgents";
 var Ioa = {};
-_t(Ioa, {
-  isKairosCronEnabled: () => isKairosCronEnabled,
-  isDurableCronEnabled: () => isDurableCronEnabled,
-  buildCronListPrompt: () => buildCronListPrompt,
-  buildCronDeletePrompt: () => buildCronDeletePrompt,
-  buildCronCreatePrompt: () => buildCronCreatePrompt,
-  buildCronCreateDescription: () => buildCronCreateDescription,
-  DEFAULT_MAX_AGE_DAYS: () => DEFAULT_MAX_AGE_DAYS,
-  CRON_LIST_TOOL_NAME: () => CRON_LIST_TOOL_NAME,
-  CRON_LIST_DESCRIPTION: () => CRON_LIST_DESCRIPTION,
-  CRON_DELETE_TOOL_NAME: () => CRON_DELETE_TOOL_NAME,
-  CRON_DELETE_DESCRIPTION: () => CRON_DELETE_DESCRIPTION,
-  CRON_CREATE_TOOL_NAME: () => CRON_CREATE_TOOL_NAME,
-});
 function isKairosCronEnabled() {
   return !ut(process.env.CLAUDE_CODE_DISABLE_CRON) && T7("tengu_kairos_cron", true, Coa);
 }

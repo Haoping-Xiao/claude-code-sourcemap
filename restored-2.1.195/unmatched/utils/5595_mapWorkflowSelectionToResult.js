@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0098  score=0.1827  fileCov=0.0102
 // note: nearest: src/screens/REPL.tsx (0.0098); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: mapWorkflowSelectionToResult, WorkflowPermissionDialog, WORKFLOW_USAGE_WARNING
 var ZHc = {};
-_t(ZHc, {
-  mapWorkflowSelectionToResult: () => mapWorkflowSelectionToResult,
-  WorkflowPermissionDialog: () => WorkflowPermissionDialog,
-  WORKFLOW_USAGE_WARNING: () => WORKFLOW_USAGE_WARNING
-});
 function mapWorkflowSelectionToResult(e, t, n, r) {
   switch (e) {
     case "yes":

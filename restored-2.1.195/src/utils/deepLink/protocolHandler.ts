@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.284  score=0.376  fileCov=0.5372
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: waitForUrlEvent, handleUrlSchemeLaunch, handleDeepLinkUri
 // [unwrapped __esm module I1c] deps: er, je, Bi, _0
 ((H1c = require("child_process")),
   (T1c = require("path")),
@@ -54,9 +55,6 @@
   ]));
 Yxm = /^[A-Za-z0-9 /._=-]+$/;
 var x1c = {};
-_t(x1c, {
-  waitForUrlEvent: () => waitForUrlEvent,
-});
 function Jxm() {
   if (Emr) return Emr;
   return null;
@@ -69,10 +67,6 @@ function waitForUrlEvent(e) {
 var Emr = null;
 var k1c = () => {};
 var P1c = {};
-_t(P1c, {
-  handleUrlSchemeLaunch: () => handleUrlSchemeLaunch,
-  handleDeepLinkUri: () => handleDeepLinkUri,
-});
 async function handleDeepLinkUri(e) {
   T(`Handling deep link URI: ${e}`);
   let t;

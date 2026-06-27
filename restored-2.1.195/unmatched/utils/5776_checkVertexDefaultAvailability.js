@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0367  score=0.0967  fileCov=0.0559
 // note: nearest: src/services/api/client.ts (0.0367); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: vertexUpgradeKey, probeVertexModel, findVertexUpgradeCandidates, checkVertexDefaultAvailability
 // [unwrapped __esm module o7o] deps: kt, pke, oo, wFe, je, fn, dr, rle, QO, Ao, Ls
 ztn = Object.keys(yc), tmr = {
   sonnet: {
@@ -20,12 +21,6 @@ ztn = Object.keys(yc), tmr = {
   }
 };
 var i7o = {};
-_t(i7o, {
-  vertexUpgradeKey: () => vertexUpgradeKey,
-  probeVertexModel: () => probeVertexModel,
-  findVertexUpgradeCandidates: () => findVertexUpgradeCandidates,
-  checkVertexDefaultAvailability: () => checkVertexDefaultAvailability
-});
 function s7o(e) {
   if (e.startsWith("sonnet")) return "sonnet";
   if (e.startsWith("opus")) return "opus";

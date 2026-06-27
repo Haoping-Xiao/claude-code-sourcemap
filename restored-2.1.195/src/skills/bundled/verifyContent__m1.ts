@@ -4,6 +4,7 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.2165  score=0.5146  fileCov=0.2721
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SKILL_MD, SKILL_FILES
 // [unwrapped __commonJS module qvc] (exports=PJA, module=USm)
 var PJA = {};
 var USm = {
@@ -428,10 +429,6 @@ process.stdout.write(JSON.stringify(verdict, null, 2) + '\\n');
 process.exit(ok ? 0 : (firstFailExit ?? 1));
 `;
 var Vvc = {};
-_t(Vvc, {
-  SKILL_MD: () => SKILL_MD,
-  SKILL_FILES: () => SKILL_FILES,
-});
 var ux = (e) => (typeof e === "string" ? e : e.default),
   FSm,
   jSm,

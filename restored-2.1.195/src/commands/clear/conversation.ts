@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2871  score=0.5429  fileCov=0.3787
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: clearConversation
 var ZDl = {};
-_t(ZDl, {
-  clearConversation: () => clearConversation,
-});
 async function* clearConversation({
   setMessages: e,
   readFileState: t,

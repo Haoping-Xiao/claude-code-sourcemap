@@ -4,6 +4,7 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1428  score=0.1751  fileCov=0.4367
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerRunSkill
 // [unwrapped __esm module EKo] deps: Lxc, Pxc, $xc, Nxc, Uxc, jxc, Wxc
 ((XHm = qxc),
   (JHm = {
@@ -15,9 +16,6 @@
     "examples/tui.md": Gxc,
   }));
 var zxc = {};
-_t(zxc, {
-  registerRunSkill: () => registerRunSkill,
-});
 function Vxc() {
   return (QHm ??= Promise.resolve().then(() => (EKo(), SKo)));
 }

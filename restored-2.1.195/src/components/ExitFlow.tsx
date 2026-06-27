@@ -4,14 +4,12 @@
 // class=modified  jaccard=0.3728  score=0.7413  fileCov=0.4286
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module D4o] deps: cEe, Yp, eJl, sJl
 ((iJl = R(lt(), 1)),
   (L4o = R(se(), 1)),
   (J8f = ["Goodbye!", "See ya!", "Bye!", "Catch you later!"]));
 var aJl = {};
-_t(aJl, {
-  call: () => call,
-});
 function t6f() {
   return HL(e6f) ?? "Goodbye!";
 }

@@ -4,29 +4,8 @@
 // class=modified  jaccard=0.4045  score=0.5504  fileCov=0.6042
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldBypassProxyWithCidr, shouldBypassProxy, prefetchProxyAuthFromHelperIfSafe, getWebSocketProxyUrl, getProxyUrl, getProxyFetchOptions, getProxyAuthFromHelperCached, getProxyAuthFromHelper, getProxyAgent, getNoProxy, getConfiguredProxyAuthHelper, getAddressFamily, getAWSClientProxyConfig, disableKeepAlive, configureGlobalAgents, clearProxyCache, clearProxyAuthHelperCache, _setProxyAuthHelperConfig, _resetProxyAuthHelperForTesting, _resetKeepAliveForTesting
 var k2e = {};
-_t(k2e, {
-  shouldBypassProxyWithCidr: () => shouldBypassProxyWithCidr,
-  shouldBypassProxy: () => shouldBypassProxy,
-  prefetchProxyAuthFromHelperIfSafe: () => prefetchProxyAuthFromHelperIfSafe,
-  getWebSocketProxyUrl: () => getWebSocketProxyUrl,
-  getProxyUrl: () => getProxyUrl,
-  getProxyFetchOptions: () => getProxyFetchOptions,
-  getProxyAuthFromHelperCached: () => getProxyAuthFromHelperCached,
-  getProxyAuthFromHelper: () => getProxyAuthFromHelper,
-  getProxyAgent: () => getProxyAgent,
-  getNoProxy: () => getNoProxy,
-  getConfiguredProxyAuthHelper: () => getConfiguredProxyAuthHelper,
-  getAddressFamily: () => getAddressFamily,
-  getAWSClientProxyConfig: () => getAWSClientProxyConfig,
-  disableKeepAlive: () => disableKeepAlive,
-  configureGlobalAgents: () => configureGlobalAgents,
-  clearProxyCache: () => clearProxyCache,
-  clearProxyAuthHelperCache: () => clearProxyAuthHelperCache,
-  _setProxyAuthHelperConfig: () => $Or,
-  _resetProxyAuthHelperForTesting: () => CKu,
-  _resetKeepAliveForTesting: () => TKu,
-});
 function disableKeepAlive() {
   LOr = true;
 }

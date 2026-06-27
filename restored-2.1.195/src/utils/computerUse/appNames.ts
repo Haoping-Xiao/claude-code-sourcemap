@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.5203  score=0.7718  fileCov=0.6149
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: runComputerUseMcpServer, createComputerUseMcpServerForCli
 // [unwrapped __esm module kRa]
 ((ixp = ["/Applications/", "/System/Applications/"]),
   (axp = [
@@ -49,10 +50,6 @@
   ])),
   (cxp = /^[\p{L}\p{M}\p{N}_ .&'()+-]+$/u));
 var Afo = {};
-_t(Afo, {
-  runComputerUseMcpServer: () => runComputerUseMcpServer,
-  createComputerUseMcpServerForCli: () => createComputerUseMcpServerForCli,
-});
 async function mxp() {
   try {
     let e = U4(),

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4591  score=0.4787  fileCov=0.9182
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: usesFirstPartyModelIds, shouldPropagateTraceContext, isFirstPartyProvider, isFirstPartyApiBackend, isFirstPartyAnthropicHost, isFirstPartyAnthropicBaseUrl, isActualFirstPartyAnthropicBaseUrl, hasFirstPartyCapabilities, getSecondaryProvider, getProviderForModel, getAPIProviderForAnalytics, getAPIProvider, THIRD_PARTY_PROVIDER_LABELS
 // [unwrapped __esm module QO]
 ((XBr = {
   firstParty: "claude-3-7-sonnet-20250219",
@@ -195,21 +196,6 @@
   (_7s = Object.values(yc).map((e) => e.firstParty)),
   (MSn = Object.fromEntries(Object.entries(yc).map(([e, t]) => [t.firstParty, e]))));
 var b7s = {};
-_t(b7s, {
-  usesFirstPartyModelIds: () => usesFirstPartyModelIds,
-  shouldPropagateTraceContext: () => shouldPropagateTraceContext,
-  isFirstPartyProvider: () => isFirstPartyProvider,
-  isFirstPartyApiBackend: () => isFirstPartyApiBackend,
-  isFirstPartyAnthropicHost: () => isFirstPartyAnthropicHost,
-  isFirstPartyAnthropicBaseUrl: () => isFirstPartyAnthropicBaseUrl,
-  isActualFirstPartyAnthropicBaseUrl: () => isActualFirstPartyAnthropicBaseUrl,
-  hasFirstPartyCapabilities: () => hasFirstPartyCapabilities,
-  getSecondaryProvider: () => getSecondaryProvider,
-  getProviderForModel: () => getProviderForModel,
-  getAPIProviderForAnalytics: () => getAPIProviderForAnalytics,
-  getAPIProvider: () => getAPIProvider,
-  THIRD_PARTY_PROVIDER_LABELS: () => THIRD_PARTY_PROVIDER_LABELS,
-});
 function getAPIProvider() {
   if (km()) return "gateway";
   return ut(process.env.CLAUDE_CODE_USE_BEDROCK)

@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stopNonInteractive, default
 var Toc = {};
-_t(Toc, {
-  stopNonInteractive: () => stopNonInteractive,
-  default: () => kQf
-});
 var IQf, stopNonInteractive, kQf;

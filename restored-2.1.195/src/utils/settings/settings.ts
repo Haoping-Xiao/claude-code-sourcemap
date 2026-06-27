@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3272  score=0.5235  fileCov=0.466
 // note: deminified; 36 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: updateSettingsForSource, surfaceManagedSettingsErrorsHeadless, shouldIncludeParentTier, settingsMergeCustomizer, rawSettingsContainsKey, projectSettingsAliasesUserSettings, parseSettingsFileUncached, parseSettingsFile, parseRemoteManagedSettings, loadManagedFileSettingsFromDir, loadManagedFileSettings, keepRestrictiveFromParent, isAutoModeClassifyAllShellEnabled, isAdminPolicyOrigin, hasSurvivingAdminPolicySource, hasSkipWorkflowUsageWarning, hasSkipDangerousModePermissionPrompt …
 // [unwrapped __esm module i2e] deps: Xr, dn, je, Bi, Rd, vn, Is, ih, Jt, Sx, Smn, lj, oLt
 ((iCs = require("path")),
   (kLr = Mi()),
@@ -16,53 +17,6 @@
   )),
   (P1u = new Set(["plist", "hklm", "file"])));
 var EY = {};
-_t(EY, {
-  updateSettingsForSource: () => updateSettingsForSource,
-  surfaceManagedSettingsErrorsHeadless: () => surfaceManagedSettingsErrorsHeadless,
-  shouldIncludeParentTier: () => hLr,
-  settingsMergeCustomizer: () => SY,
-  rawSettingsContainsKey: () => rawSettingsContainsKey,
-  projectSettingsAliasesUserSettings: () => projectSettingsAliasesUserSettings,
-  parseSettingsFileUncached: () => gLr,
-  parseSettingsFile: () => a9,
-  parseRemoteManagedSettings: () => parseRemoteManagedSettings,
-  loadManagedFileSettingsFromDir: () => sLt,
-  loadManagedFileSettings: () => loadManagedFileSettings,
-  keepRestrictiveFromParent: () => yLr,
-  isAutoModeClassifyAllShellEnabled: () => isAutoModeClassifyAllShellEnabled,
-  isAdminPolicyOrigin: () => Bet,
-  hasSurvivingAdminPolicySource: () => hasSurvivingAdminPolicySource,
-  hasSkipWorkflowUsageWarning: () => hasSkipWorkflowUsageWarning,
-  hasSkipDangerousModePermissionPrompt: () => hasSkipDangerousModePermissionPrompt,
-  hasIsolatePeerMachines: () => hasIsolatePeerMachines,
-  hasDisableClaudeAiConnectors: () => hasDisableClaudeAiConnectors,
-  hasAutoModeOptIn: () => hasAutoModeOptIn,
-  handleFileSystemError: () => lLt,
-  getUseAutoModeDuringPlan: () => getUseAutoModeDuringPlan,
-  getSettings_DEPRECATED: () => getSettings_DEPRECATED,
-  getSettingsWithSources: () => getSettingsWithSources,
-  getSettingsWithErrors: () => getSettingsWithErrors,
-  getSettingsRootPathForSource: () => getSettingsRootPathForSource,
-  getSettingsForSource: () => getSettingsForSource,
-  getSettingsFilePathForSource: () => getSettingsFilePathForSource,
-  getSettingsAfterPluginLoad: () => getSettingsAfterPluginLoad,
-  getSecuritySensitiveSetting: () => getSecuritySensitiveSetting,
-  getRelativeSettingsFilePathForSource: () => kG,
-  getPolicySettingsOrigin: () => getPolicySettingsOrigin,
-  getPolicySettingsLoadErrors: () => getPolicySettingsLoadErrors,
-  getManagedSettingsKeysForLogging: () => getManagedSettingsKeysForLogging,
-  getManagedFileSettingsPresence: () => getManagedFileSettingsPresence,
-  getLocalSettingsValidationErrors: () => getLocalSettingsValidationErrors,
-  getInitialSettings: () => getInitialSettings,
-  getFatalAdminPolicyLoadErrors: () => getFatalAdminPolicyLoadErrors,
-  getEffectiveSettingSource: () => getEffectiveSettingSource,
-  getBasePolicySettingsOrigin: () => getBasePolicySettingsOrigin,
-  getBasePolicySettings: () => getBasePolicySettings,
-  getAutoModeConfig: () => getAutoModeConfig,
-  getAllPolicyTierSettings: () => getAllPolicyTierSettings,
-  getAdminPolicyLoadErrors: () => getAdminPolicyLoadErrors,
-  filterFatalPolicyErrors: () => filterFatalPolicyErrors,
-});
 function cj() {
   let e = {
     cwd: yr(),

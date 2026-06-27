@@ -4,17 +4,10 @@
 // class=new  jaccard=0.0036  score=0.0543  fileCov=0.0038
 // note: nearest: src/cli/print.ts (0.0036); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resetAgentProxyForTests, installIntoSystemTrust, initAgentProxy, getAgentProxyEnv, findSystemCaBundle, SESSION_TOKEN_PATH
 // [unwrapped __esm module pfc] deps: dn, je, wr, At, Bi, _0, aEe, C7n
 fw = require("fs/promises"), Q9o = require("os"), Fz = require("path"), Blm = /[\s'"]/;
 var Efc = {};
-_t(Efc, {
-  resetAgentProxyForTests: () => resetAgentProxyForTests,
-  installIntoSystemTrust: () => installIntoSystemTrust,
-  initAgentProxy: () => initAgentProxy,
-  getAgentProxyEnv: () => getAgentProxyEnv,
-  findSystemCaBundle: () => findSystemCaBundle,
-  SESSION_TOKEN_PATH: () => SESSION_TOKEN_PATH
-});
 async function initAgentProxy(e) {
   let t = process.env.AGENT_PROXY_URL,
     n = process.env.AGENT_PROXY_AUTH_TOKEN;

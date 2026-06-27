@@ -4,34 +4,10 @@
 // class=modified (alt of src/utils/claudemd.ts)  jaccard=0.1798  score=0.2853  fileCov=0.3272
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stripHtmlComments, shouldShowClaudeMdExternalIncludesWarning, resetGetMemoryFilesCache, processMemoryFile, processMdRules, processConditionedMdRules, isSyntheticMemoryPath, isMemoryFilePath, hasExternalClaudeMdIncludes, getMemoryFilesForNestedDirectory, getMemoryFiles, getMaxMemoryCharacterCount, getManagedAndUserConditionalRules, getLargeMemoryFiles, getExternalClaudeMdIncludes, getConditionalRulesForCwdLevelDirectory, getClaudeMds, getAllMemoryFilePaths, filterInjectedMemoryFi …
 // [unwrapped __esm module ik] deps: YZe
 fjt = require("path");
 var Usa = {};
-_t(Usa, {
-  stripHtmlComments: () => stripHtmlComments,
-  shouldShowClaudeMdExternalIncludesWarning: () => shouldShowClaudeMdExternalIncludesWarning,
-  resetGetMemoryFilesCache: () => resetGetMemoryFilesCache,
-  processMemoryFile: () => processMemoryFile,
-  processMdRules: () => processMdRules,
-  processConditionedMdRules: () => processConditionedMdRules,
-  isSyntheticMemoryPath: () => isSyntheticMemoryPath,
-  isMemoryFilePath: () => isMemoryFilePath,
-  hasExternalClaudeMdIncludes: () => hasExternalClaudeMdIncludes,
-  getMemoryFilesForNestedDirectory: () => getMemoryFilesForNestedDirectory,
-  getMemoryFiles: () => getMemoryFiles,
-  getMaxMemoryCharacterCount: () => getMaxMemoryCharacterCount,
-  getManagedAndUserConditionalRules: () => getManagedAndUserConditionalRules,
-  getLargeMemoryFiles: () => getLargeMemoryFiles,
-  getExternalClaudeMdIncludes: () => getExternalClaudeMdIncludes,
-  getConditionalRulesForCwdLevelDirectory: () => getConditionalRulesForCwdLevelDirectory,
-  getClaudeMds: () => getClaudeMds,
-  getAllMemoryFilePaths: () => getAllMemoryFilePaths,
-  filterInjectedMemoryFiles: () => filterInjectedMemoryFiles,
-  clearMemoryFileCaches: () => clearMemoryFileCaches,
-  MIN_MEMORY_CHARACTER_COUNT: () => MIN_MEMORY_CHARACTER_COUNT,
-  MAX_CLAUDE_MD_TOKEN_CONTEXT_RATIO: () => MAX_CLAUDE_MD_TOKEN_CONTEXT_RATIO,
-  MANAGED_SETTINGS_CLAUDEMD_PATH: () => MANAGED_SETTINGS_CLAUDEMD_PATH,
-});
 function isSyntheticMemoryPath(e) {
   return e === RLr || e === MANAGED_SETTINGS_CLAUDEMD_PATH;
 }

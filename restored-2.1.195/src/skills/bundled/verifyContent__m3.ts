@@ -4,6 +4,7 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1522  score=0.2567  fileCov=0.2721
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SKILL_MD, SKILL_FILES
 var XTc = `# Component Schemas
 
 Detailed format specifications for every plugin component type. Reference this when implementing components in Phase 4.
@@ -1180,8 +1181,4 @@ The \`.plugin\` file will appear in the chat as a rich preview where the user ca
 `;
 var rvc = () => {};
 var svc = {};
-_t(svc, {
-  SKILL_MD: () => SKILL_MD,
-  SKILL_FILES: () => SKILL_FILES,
-});
 var SKILL_MD, SKILL_FILES;

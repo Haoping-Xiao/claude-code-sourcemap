@@ -4,21 +4,8 @@
 // class=modified  jaccard=0.416  score=0.7162  fileCov=0.4981
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shutdown1PEventLogging, shouldSampleEvent, reinitialize1PEventLoggingIfConfigChanged, logGrowthBookExperimentTo1P, logEventTo1PAwaitable, logEventTo1PAsync, logEventTo1P, is1PEventLoggingEnabled, initialize1PEventLogging, getEventSamplingConfig, _reset1PStateForTesting, _getPreInitQueueForTesting
 var E3e = {};
-_t(E3e, {
-  shutdown1PEventLogging: () => shutdown1PEventLogging,
-  shouldSampleEvent: () => shouldSampleEvent,
-  reinitialize1PEventLoggingIfConfigChanged: () => reinitialize1PEventLoggingIfConfigChanged,
-  logGrowthBookExperimentTo1P: () => logGrowthBookExperimentTo1P,
-  logEventTo1PAwaitable: () => logEventTo1PAwaitable,
-  logEventTo1PAsync: () => logEventTo1PAsync,
-  logEventTo1P: () => logEventTo1P,
-  is1PEventLoggingEnabled: () => is1PEventLoggingEnabled,
-  initialize1PEventLogging: () => initialize1PEventLogging,
-  getEventSamplingConfig: () => getEventSamplingConfig,
-  _reset1PStateForTesting: () => rOd,
-  _getPreInitQueueForTesting: () => nOd,
-});
 function getEventSamplingConfig() {
   return zx(eOd, {});
 }

@@ -143,6 +143,35 @@ function unwrapEsm(ast) {
   return unwrapped;
 }
 
+// 折叠 __export 表: `_t(T,{k:()=>v,...})` -> 移除该语句, 把导出名汇总成注释挂到首条语句。
+function simplifyExports(ast) {
+  const body = ast.program.body;
+  const out = [];
+  const exportNames = [];
+  for (const stmt of body) {
+    let drop = false;
+    if (stmt.type === "ExpressionStatement" && stmt.expression.type === "CallExpression") {
+      const c = stmt.expression;
+      if (c.callee.type === "Identifier" && c.callee.name === "_t" && c.arguments.length === 2 &&
+          c.arguments[1].type === "ObjectExpression") {
+        for (const pr of c.arguments[1].properties) {
+          if (pr.type === "ObjectProperty" && pr.key) exportNames.push(pr.key.name || pr.key.value);
+        }
+        drop = true;
+      }
+    }
+    if (!drop) out.push(stmt);
+  }
+  if (exportNames.length && out.length) {
+    const uniq = [...new Set(exportNames)];
+    const txt = ` module exports: ${uniq.join(", ")}`;
+    // 分多行避免超长
+    out[0].leadingComments = [{ type: "CommentLine", value: txt.length > 500 ? txt.slice(0, 500) + " …" : txt }, ...(out[0].leadingComments || [])];
+  }
+  ast.program.body = out;
+  return exportNames.length;
+}
+
 async function deobfuscate(content, { pretty, structural = true }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
@@ -160,7 +189,10 @@ async function deobfuscate(content, { pretty, structural = true }) {
   } catch (e) {
     return { code: code, renamed: 0, ok: false, note: "parse-failed: " + e.message };
   }
-  // 模块内作用域重命名 (仅在 Program 作用域有绑定的导出 local)
+  // 先解开 __esm/__commonJS 包裹: 让导出 local 上升到 Program 作用域, 提升重命名命中率
+  try { unwrapEsm(ast); } catch { /* keep wrapped */ }
+
+  // 模块内作用域重命名 (导出 local -> 原始导出名)
   let renamed = 0;
   try {
     traverse(ast, {
@@ -178,8 +210,8 @@ async function deobfuscate(content, { pretty, structural = true }) {
     });
   } catch { /* 重命名失败不致命 */ }
 
-  // 解开 __esm 包裹 (失败不致命)
-  try { unwrapEsm(ast); } catch { /* keep wrapped */ }
+  // 折叠 _t(target,{k:()=>v,...}) 导出表为一行注释 (重命名后多为 identity 噪声)
+  try { simplifyExports(ast); } catch { /* keep as-is */ }
 
   let out;
   try {

@@ -4,50 +4,8 @@
 // class=modified  jaccard=0.1703  score=0.4373  fileCov=0.2181
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: toSlashCommands, shippedCommandNames, scopedSkillName, routeThinClientCommand, meetsAvailabilityRequirement, isThinClientSafe, isSkillToolCommand, isSkillOff, isSkillExcludedFromModel, isCommandEnabled, isBridgeSafeCommand, isBridgeDispatchable, hasCommand, getSlashCommandToolSkills, getSkillToolCommands, getSkillOverride, getMcpSkillCommands, getDynamicSkillStateKey, getCommands, getCommandName, getCommand, getBuiltinCommands, formatDescriptionWithSource, fleetHostCommands, fin …
 var fjo = {};
-_t(fjo, {
-  toSlashCommands: () => toSlashCommands,
-  shippedCommandNames: () => shippedCommandNames,
-  scopedSkillName: () => scopedSkillName,
-  routeThinClientCommand: () => routeThinClientCommand,
-  meetsAvailabilityRequirement: () => meetsAvailabilityRequirement,
-  isThinClientSafe: () => isThinClientSafe,
-  isSkillToolCommand: () => isSkillToolCommand,
-  isSkillOff: () => isSkillOff,
-  isSkillExcludedFromModel: () => isSkillExcludedFromModel,
-  isCommandEnabled: () => Ik,
-  isBridgeSafeCommand: () => isBridgeSafeCommand,
-  isBridgeDispatchable: () => isBridgeDispatchable,
-  hasCommand: () => hasCommand,
-  getSlashCommandToolSkills: () => getSlashCommandToolSkills,
-  getSkillToolCommands: () => getSkillToolCommands,
-  getSkillOverride: () => getSkillOverride,
-  getMcpSkillCommands: () => getMcpSkillCommands,
-  getDynamicSkillStateKey: () => hKt,
-  getCommands: () => getCommands,
-  getCommandName: () => xu,
-  getCommand: () => getCommand,
-  getBuiltinCommands: () => getBuiltinCommands,
-  formatDescriptionWithSource: () => formatDescriptionWithSource,
-  fleetHostCommands: () => fleetHostCommands,
-  findCommand: () => findCommand,
-  findBridgeFallback: () => findBridgeFallback,
-  filterSkillCommandsByAllowlist: () => filterSkillCommandsByAllowlist,
-  filterCommandsForRemoteMode: () => filterCommandsForRemoteMode,
-  filterCommandsForHeadless: () => filterCommandsForHeadless,
-  dropShadowedFallbackSkills: () => dropShadowedFallbackSkills,
-  dropShadowedBundledSkills: () => dropShadowedBundledSkills,
-  deriveRequires: () => deriveRequires,
-  clearCommandsCache: () => clearCommandsCache,
-  clearCommandMemoizationCaches: () => clearCommandMemoizationCaches,
-  builtInCommandNames: () => builtInCommandNames,
-  attributionSkillName: () => attributionSkillName,
-  _resetFallbackTelemetryForTesting: () => bZf,
-  REMOTE_SAFE_COMMANDS: () => REMOTE_SAFE_COMMANDS,
-  INTERNAL_ONLY_COMMANDS: () => INTERNAL_ONLY_COMMANDS,
-  BRIDGE_SAFE_COMMANDS: () => BRIDGE_SAFE_COMMANDS,
-  ANT_GATED_COMMANDS: () => ANT_GATED_COMMANDS,
-});
 function getBuiltinCommands() {
   return qQt();
 }

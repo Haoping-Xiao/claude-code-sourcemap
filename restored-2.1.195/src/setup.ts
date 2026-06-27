@@ -4,14 +4,10 @@
 // class=modified  jaccard=0.3445  score=0.7002  fileCov=0.4041
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setup, isRemoteCoworkEntrypointExempted, isDesktopEntrypointExempted
 // [unwrapped __esm module Bdc] deps: er, je
 ((Jcr = require("fs/promises")), ($dc = require("os")), (Odc = require("path")));
 var Qcr = {};
-_t(Qcr, {
-  setup: () => setup,
-  isRemoteCoworkEntrypointExempted: () => isRemoteCoworkEntrypointExempted,
-  isDesktopEntrypointExempted: () => isDesktopEntrypointExempted,
-});
 async function setup(e, t, n, r, o, s, i, a, l) {
   In("info", "setup_started");
   let c = process.version.match(/^v(\d+)\./)?.[1];

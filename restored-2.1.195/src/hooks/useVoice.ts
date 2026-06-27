@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3569  score=0.5734  fileCov=0.4859
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: useVoice, computeLevel, FIRST_PRESS_FALLBACK_MS
 // [unwrapped __esm module _Tc] deps: ft, sa
 ((pKo = require("path")),
   (ybm = [
@@ -23,11 +24,6 @@
     "worktree",
   ]));
 var HTc = {};
-_t(HTc, {
-  useVoice: () => useVoice,
-  computeLevel: () => computeLevel,
-  FIRST_PRESS_FALLBACK_MS: () => FIRST_PRESS_FALLBACK_MS,
-});
 function Lpr() {
   PNe.push(Date.now());
 }

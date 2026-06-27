@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.4094  score=0.5758  fileCov=0.5862
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: updateSessionTitle, sendEventToRemoteSession, sendBashCommandToRemoteSession, reportClientPresence, prepareApiRequest, markSessionRead, isTransientNetworkError, getOAuthHeaders, getBranchFromSession, fetchSession, fetchCodeSessionsFromSessionsAPI, ccrSessionToResource, axiosGetWithRetry, CodeSessionSchema, CCR_BYOC_BETA
 var sce = {};
-_t(sce, {
-  updateSessionTitle: () => updateSessionTitle,
-  sendEventToRemoteSession: () => sendEventToRemoteSession,
-  sendBashCommandToRemoteSession: () => sendBashCommandToRemoteSession,
-  reportClientPresence: () => reportClientPresence,
-  prepareApiRequest: () => prepareApiRequest,
-  markSessionRead: () => markSessionRead,
-  isTransientNetworkError: () => isTransientNetworkError,
-  getOAuthHeaders: () => getOAuthHeaders,
-  getBranchFromSession: () => getBranchFromSession,
-  fetchSession: () => fetchSession,
-  fetchCodeSessionsFromSessionsAPI: () => fetchCodeSessionsFromSessionsAPI,
-  ccrSessionToResource: () => ccrSessionToResource,
-  axiosGetWithRetry: () => axiosGetWithRetry,
-  CodeSessionSchema: () => CodeSessionSchema,
-  CCR_BYOC_BETA: () => CCR_BYOC_BETA,
-});
 function isTransientNetworkError(e) {
   if (!po.isAxiosError(e)) return false;
   if (!e.response) return true;

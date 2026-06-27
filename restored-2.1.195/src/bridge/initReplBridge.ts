@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1635  score=0.2932  fileCov=0.2698
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: initReplBridge
 var F8o = {};
-_t(F8o, {
-  initReplBridge: () => initReplBridge,
-});
 async function initReplBridge(e) {
   let {
     getToolPermissionContext: t,

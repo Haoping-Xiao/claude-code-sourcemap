@@ -4,15 +4,12 @@
 // class=modified  jaccard=0.6073  score=0.6621  fileCov=0.8801
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: renderChromeToolResultMessage, getClaudeInChromeMCPToolOverrides
 // [unwrapped __esm module Upo] deps: tQe, Oun, ft, dn, ii, Il, At, xW, I1, DFn, Jt, sr, VM, $po
 ((l0a = require("url")), (eGt = new Map()));
 ICp = new RegExp(`^${z0e}\\(([^)]+)\\)$`);
 LCp = new Set(["image/png", "image/jpeg", "image/gif", "image/webp"]);
 var p0a = {};
-_t(p0a, {
-  renderChromeToolResultMessage: () => renderChromeToolResultMessage,
-  getClaudeInChromeMCPToolOverrides: () => getClaudeInChromeMCPToolOverrides,
-});
 function BCp(e, t, n) {
   let r = e.tabId;
   if (typeof r === "number") QZr(r);

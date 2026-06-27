@@ -4,12 +4,8 @@
 // class=modified (alt of src/components/LogSelector.tsx)  jaccard=0.0563  score=0.1478  fileCov=0.0833
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: parsePrIdentifier, ResumeConversation, LiveBgMessage
 var iOc = {};
-_t(iOc, {
-  parsePrIdentifier: () => parsePrIdentifier,
-  ResumeConversation: () => ResumeConversation,
-  LiveBgMessage: () => LiveBgMessage,
-});
 function parsePrIdentifier(e) {
   let t = parseInt(e, 10);
   if (!isNaN(t) && t > 0) return t;

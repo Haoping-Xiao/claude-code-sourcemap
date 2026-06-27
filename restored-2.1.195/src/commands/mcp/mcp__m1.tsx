@@ -4,6 +4,7 @@
 // class=modified (alt of src/commands/mcp/mcp.tsx)  jaccard=0.0714  score=0.0893  fileCov=0.2622
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module Yfe] deps: VFl
 ((zFl = R(lt(), 1)), (LKe = R(rt(), 1)), (YFl = R(se(), 1)), (EBo = LKe.createContext(null)));
 function DKe(e) {
@@ -39,9 +40,6 @@ function XFl(e, t) {
     );
 }
 var QFl = {};
-_t(QFl, {
-  call: () => call,
-});
 async function call(e, t) {
   let n = e.trim(),
     r = t.getMcp().clients.filter((_) => _.name !== "ide"),

@@ -4,19 +4,10 @@
 // class=modified  jaccard=0.5458  score=0.7208  fileCov=0.6921
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: parseGitRemote, parseGitHubRepository, isCachedGitHubRepo, getCachedRepositoryHost, getCachedRepository, detectCurrentRepositoryWithHost, detectCurrentRepository, clearRepositoryCaches
 // [unwrapped __esm module Mx]
 L$u = /[:/\\?#@\s]/;
 var ARt = {};
-_t(ARt, {
-  parseGitRemote: () => parseGitRemote,
-  parseGitHubRepository: () => parseGitHubRepository,
-  isCachedGitHubRepo: () => isCachedGitHubRepo,
-  getCachedRepositoryHost: () => getCachedRepositoryHost,
-  getCachedRepository: () => getCachedRepository,
-  detectCurrentRepositoryWithHost: () => detectCurrentRepositoryWithHost,
-  detectCurrentRepository: () => detectCurrentRepository,
-  clearRepositoryCaches: () => clearRepositoryCaches,
-});
 function clearRepositoryCaches() {
   cCe.clear();
 }

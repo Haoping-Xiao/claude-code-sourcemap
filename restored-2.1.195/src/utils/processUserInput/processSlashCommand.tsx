@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2787  score=0.5092  fileCov=0.381
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: runUserPromptExpansionHook, processSlashCommand, processPromptSlashCommand, looksLikeCommand, isSlashCommandBlockedByEndedByModel, formatSkillLoadingMetadata
 var z8t = {};
-_t(z8t, {
-  runUserPromptExpansionHook: () => runUserPromptExpansionHook,
-  processSlashCommand: () => processSlashCommand,
-  processPromptSlashCommand: () => processPromptSlashCommand,
-  looksLikeCommand: () => looksLikeCommand,
-  isSlashCommandBlockedByEndedByModel: () => isSlashCommandBlockedByEndedByModel,
-  formatSkillLoadingMetadata: () => formatSkillLoadingMetadata,
-});
 function isSlashCommandBlockedByEndedByModel(e, t) {
   if (!t) return false;
   return !(e && e.type !== "prompt" && Gif.has(e.name));

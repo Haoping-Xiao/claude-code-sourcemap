@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.0886  score=0.3363  fileCov=0.1073
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: startMCPServer, createMCPServer
 var Fdc = {};
-_t(Fdc, {
-  startMCPServer: () => startMCPServer,
-  createMCPServer: () => createMCPServer,
-});
 async function startMCPServer(e, t, n) {
   Uy(e);
   let r = createMCPServer(t, n),

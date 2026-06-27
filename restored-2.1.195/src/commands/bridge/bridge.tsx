@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2486  score=0.459  fileCov=0.3517
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 var fZl = {};
-_t(fZl, {
-  call: () => call,
-});
 function Vzf(e) {
   let t = E3o.c(18),
     { onDone: n, name: r, context: o } = e,

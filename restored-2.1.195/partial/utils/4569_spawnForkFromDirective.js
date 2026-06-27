@@ -4,14 +4,11 @@
 // class=partial  jaccard=0.0852  score=0.5353  fileCov=0.092
 // note: low-confidence suggestion: src/tools/AgentTool/AgentTool.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: spawnForkFromDirective, deriveForkName
 // [unwrapped __esm module VYt] deps: PR, g$e, fp, q0, co
 rkf = /^\/btw\b/gi;
 Qze = zLl();
 var JLl = {};
-_t(JLl, {
-  spawnForkFromDirective: () => spawnForkFromDirective,
-  deriveForkName: () => deriveForkName
-});
 async function spawnForkFromDirective(e, t, n, r) {
   if (Gv()) return Le("subagent_launch", "subagent_fork_coordinator_mode"), null;
   let o = t.renderedSystemPrompt;

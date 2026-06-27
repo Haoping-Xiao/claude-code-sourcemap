@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4541  score=0.6937  fileCov=0.5679
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: getCronJitterConfig
 // [unwrapped __esm module N8] deps: ft, vX, je, At, ys, YS, Rd, vn, Jt
 ((Gra = require("crypto")),
   (Wra = require("fs")),
@@ -21,9 +22,6 @@ O8 = {
   cacheLeadMs: 15000,
 };
 var Kra = {};
-_t(Kra, {
-  getCronJitterConfig: () => getCronJitterConfig,
-});
 function getCronJitterConfig() {
   let e = T7("tengu_kairos_cron_config", O8, pop),
     t = mop().safeParse(e);

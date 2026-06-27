@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0241  score=0.2787  fileCov=0.0257
 // note: nearest: src/bridge/bridgeMain.ts (0.0241); dir inferred from dep-graph -> utils; 7 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: startParentWatchdog, runDaemonWorker, registerShutdownHandlers, isShutdownSentinel, httpStatusOf, heartbeatWorkerSchema, WORKER_KINDS
 // [unwrapped __esm module Qir] deps: IB, Xr, wQ, dn, NB, T3o
 gGo = ve(() => H.object({
   dir: H.string(),
@@ -16,15 +17,6 @@ gGo = ve(() => H.object({
   createSessionOnStart: H.boolean().default(false)
 }).strict());
 var Ltc = {};
-_t(Ltc, {
-  startParentWatchdog: () => startParentWatchdog,
-  runDaemonWorker: () => runDaemonWorker,
-  registerShutdownHandlers: () => registerShutdownHandlers,
-  isShutdownSentinel: () => isShutdownSentinel,
-  httpStatusOf: () => httpStatusOf,
-  heartbeatWorkerSchema: () => heartbeatWorkerSchema,
-  WORKER_KINDS: () => WORKER_KINDS
-});
 async function p7f(e, t, n, r) {
   let {
     intervalSeconds: o

@@ -4,13 +4,10 @@
 // class=modified  jaccard=0.3937  score=0.5696  fileCov=0.5604
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: uploadBriefAttachment, escapeContentDispositionFilename
 // [unwrapped __esm module wQ] deps: Rc, oo, Ls
 _yl = require("os");
 var Tyl = {};
-_t(Tyl, {
-  uploadBriefAttachment: () => uploadBriefAttachment,
-  escapeContentDispositionFilename: () => escapeContentDispositionFilename,
-});
 function amf(e) {
   let t = V7n.extname(e).toLowerCase();
   return imf[t] ?? "application/octet-stream";

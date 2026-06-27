@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0148  score=0.1509  fileCov=0.0161
 // note: nearest: src/components/Settings/Config.tsx (0.0148); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 var QPl = {};
-_t(QPl, {
-  call: () => call
-});
 function K0f(e) {
   let t = JPl.c(52),
     {

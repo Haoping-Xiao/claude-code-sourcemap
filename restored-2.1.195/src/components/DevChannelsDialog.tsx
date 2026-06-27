@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.3295  score=0.4435  fileCov=0.5617
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: DevChannelsDialog
 // [unwrapped __esm module D$c] deps: kt, Ye, Yp, dr, Fy, vi
 ((R$c = R(lt(), 1)), (umr = R(rt(), 1)), (ove = R(se(), 1)));
 var M$c = {};
-_t(M$c, {
-  DevChannelsDialog: () => DevChannelsDialog,
-});
 function DevChannelsDialog(e) {
   let t = P$c.c(13),
     { channels: n, onAccept: r } = e,

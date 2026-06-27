@@ -4,20 +4,10 @@
 // class=modified  jaccard=0.2371  score=0.4473  fileCov=0.3354
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isInForkChild, isForkSubagentEnabled, getForkSubagentSource, buildWorktreeNotice, buildForkedMessages, buildChildMessage, _resetForkSubagentSourceTelemetryForTesting, FORK_SUBAGENT_TYPE, FORK_AGENT
 // [unwrapped __esm module l$] deps: ZWe, dn, kt, ii, fh, RX, Nue, u_, lf, i$, HU, wr, fn, _m, F8
 esp = new Set([Ly, Ip]);
 var Foa = {};
-_t(Foa, {
-  isInForkChild: () => isInForkChild,
-  isForkSubagentEnabled: () => isForkSubagentEnabled,
-  getForkSubagentSource: () => getForkSubagentSource,
-  buildWorktreeNotice: () => buildWorktreeNotice,
-  buildForkedMessages: () => buildForkedMessages,
-  buildChildMessage: () => buildChildMessage,
-  _resetForkSubagentSourceTelemetryForTesting: () => csp,
-  FORK_SUBAGENT_TYPE: () => FORK_SUBAGENT_TYPE,
-  FORK_AGENT: () => FORK_AGENT,
-});
 function lsp() {
   if (j8()) return "disabled";
   if (ut(process.env.CLAUDE_CODE_FORK_SUBAGENT)) return "env";

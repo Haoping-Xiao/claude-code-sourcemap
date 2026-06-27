@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3702  score=0.6074  fileCov=0.4866
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: verifyAutoModeGateAccess, transitionPlanAutoMode, transitionPermissionMode, stripDangerousPermissionsForAutoMode, shouldPlanUseAutoMode, shouldDisableBypassPermissions, setPermissionModeWithGuards, restoreDangerousPermissions, removeDangerousPermissions, prepareContextForPlanMode, parseToolListFromCLI, parseBaseToolsFromCLI, isYoloEquivStripEnabledForEntrypoint, isOverlyBroadPowerShellAllowRule, isOverlyBroadBashAllowRule, isDefaultPermissionModeAuto, isDangerousTaskPermission,  …
 // [unwrapped __esm module Gy] deps: Uge, Sae, Ox, fh, eit, N6e, tWt, NB, sN, je, At, vn, lg, vf, sr, rcr, clc, CYn, DFn, DE, $I, QH, fre, ft, Un, kt, Du, fb, Il, Lo, RE, fn, sp, co, jG, dr, Jt, Mp, pMo, Hoe
 ((kqo = (xqo(), ro(ylc))),
   (Znm = (Eoe(), ro(Ope))),
@@ -11,44 +12,6 @@
   (Rqo = [...fv, "cliArg", "command", "session", "toolsNarrowing", "mcpServerPolicy"]),
   (trm = new Set([])));
 var T6n = {};
-_t(T6n, {
-  verifyAutoModeGateAccess: () => verifyAutoModeGateAccess,
-  transitionPlanAutoMode: () => transitionPlanAutoMode,
-  transitionPermissionMode: () => transitionPermissionMode,
-  stripDangerousPermissionsForAutoMode: () => stripDangerousPermissionsForAutoMode,
-  shouldPlanUseAutoMode: () => shouldPlanUseAutoMode,
-  shouldDisableBypassPermissions: () => shouldDisableBypassPermissions,
-  setPermissionModeWithGuards: () => setPermissionModeWithGuards,
-  restoreDangerousPermissions: () => restoreDangerousPermissions,
-  removeDangerousPermissions: () => removeDangerousPermissions,
-  prepareContextForPlanMode: () => prepareContextForPlanMode,
-  parseToolListFromCLI: () => parseToolListFromCLI,
-  parseBaseToolsFromCLI: () => parseBaseToolsFromCLI,
-  isYoloEquivStripEnabledForEntrypoint: () => isYoloEquivStripEnabledForEntrypoint,
-  isOverlyBroadPowerShellAllowRule: () => isOverlyBroadPowerShellAllowRule,
-  isOverlyBroadBashAllowRule: () => isOverlyBroadBashAllowRule,
-  isDefaultPermissionModeAuto: () => isDefaultPermissionModeAuto,
-  isDangerousTaskPermission: () => Tko,
-  isDangerousPowerShellPermission: () => I6t,
-  isDangerousClassifierPermission: () => C6e,
-  isDangerousBashPermission: () => w6t,
-  isBypassPermissionsModeDisabled: () => wU,
-  isAutoModeGateEnabled: () => isAutoModeGateEnabled,
-  initializeToolPermissionContext: () => initializeToolPermissionContext,
-  initialPermissionModeFromCLI: () => initialPermissionModeFromCLI,
-  hasAutoModeOptInAnySource: () => hasAutoModeOptInAnySource,
-  getAutoModeUnavailableReason: () => getAutoModeUnavailableReason,
-  getAutoModeUnavailableNotification: () => getAutoModeUnavailableNotification,
-  getAutoModeEnabledStateWithSource: () => getAutoModeEnabledStateWithSource,
-  getAutoModeEnabledStateIfCached: () => getAutoModeEnabledStateIfCached,
-  getAutoModeEnabledState: () => getAutoModeEnabledState,
-  findOverlyBroadPowerShellPermissions: () => findOverlyBroadPowerShellPermissions,
-  findOverlyBroadBashPermissions: () => findOverlyBroadBashPermissions,
-  findDangerousClassifierPermissions: () => findDangerousClassifierPermissions,
-  createDisabledBypassPermissionsContext: () => createDisabledBypassPermissionsContext,
-  checkAndDisableBypassPermissions: () => checkAndDisableBypassPermissions,
-  antBuiltinDenyRules: () => ncr,
-});
 function Fqo(e) {
   if (fv.includes(e)) {
     let t = xg(e);

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4781  score=0.7511  fileCov=0.5681
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: writeTeamFileAsync, updateTeamFile, teamMissingError, syncTeammateMode, setMultipleMemberModes, setMemberMode, setMemberActive, sanitizeName, sanitizeAgentName, removeTeammateFromTeamFile, removeTeamMember, removeMemberFromTeam, removeMemberByAgentId, removeHiddenPaneId, registerTeamForSessionCleanup, readTeamFileAsync, readTeamFile, logTeamFileWriteFailure, getTeamFilePath, getTeamDir, cleanupTeamDirectories, cleanupSessionTeams, addHiddenPaneId
 // [unwrapped __esm module d9t]
 IF = class IF extends Error {
   constructor(e) {
@@ -13,31 +14,6 @@ IF = class IF extends Error {
 };
 eel = /\p{Cc}/u;
 var oel = {};
-_t(oel, {
-  writeTeamFileAsync: () => writeTeamFileAsync,
-  updateTeamFile: () => updateTeamFile,
-  teamMissingError: () => teamMissingError,
-  syncTeammateMode: () => syncTeammateMode,
-  setMultipleMemberModes: () => setMultipleMemberModes,
-  setMemberMode: () => setMemberMode,
-  setMemberActive: () => setMemberActive,
-  sanitizeName: () => sanitizeName,
-  sanitizeAgentName: () => sanitizeAgentName,
-  removeTeammateFromTeamFile: () => removeTeammateFromTeamFile,
-  removeTeamMember: () => removeTeamMember,
-  removeMemberFromTeam: () => removeMemberFromTeam,
-  removeMemberByAgentId: () => removeMemberByAgentId,
-  removeHiddenPaneId: () => removeHiddenPaneId,
-  registerTeamForSessionCleanup: () => registerTeamForSessionCleanup,
-  readTeamFileAsync: () => readTeamFileAsync,
-  readTeamFile: () => readTeamFile,
-  logTeamFileWriteFailure: () => logTeamFileWriteFailure,
-  getTeamFilePath: () => getTeamFilePath,
-  getTeamDir: () => getTeamDir,
-  cleanupTeamDirectories: () => cleanupTeamDirectories,
-  cleanupSessionTeams: () => cleanupSessionTeams,
-  addHiddenPaneId: () => addHiddenPaneId,
-});
 function sanitizeName(e) {
   return e.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
 }

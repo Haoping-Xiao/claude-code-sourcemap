@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4989  score=0.7114  fileCov=0.6255
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module $nc] deps: TM, Rc, Rx, c_, je, Cv
 BGo = class BGo {
   #e;
@@ -24,9 +25,6 @@ BGo = class BGo {
   }
 };
 var Onc = {};
-_t(Onc, {
-  call: () => call,
-});
 async function kXf() {
   if (!(await Pnc()))
     return {

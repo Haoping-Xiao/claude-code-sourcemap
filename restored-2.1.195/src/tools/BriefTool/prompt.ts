@@ -4,21 +4,13 @@
 // class=modified  jaccard=0.0912  score=0.1255  fileCov=0.25
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: PEWTER_OWL_TOOL_PROMPT, LEGACY_BRIEF_TOOL_NAME, DESCRIPTION, BRIEF_TOOL_PROMPT, BRIEF_TOOL_NAME, BRIEF_PROACTIVE_SECTION, BRIEF_ENFORCE_SENTINEL
 // [unwrapped __esm module IX] deps: ft, Un, Vw, er, je, fn, Ls
 Oop = ["claude-3-5-haiku", "claude-3-haiku"];
 Bop = [];
 var oSe = "EnterWorktree";
 var _h = "ToolSearch";
 var URe = {};
-_t(URe, {
-  PEWTER_OWL_TOOL_PROMPT: () => PEWTER_OWL_TOOL_PROMPT,
-  LEGACY_BRIEF_TOOL_NAME: () => LEGACY_BRIEF_TOOL_NAME,
-  DESCRIPTION: () => DESCRIPTION,
-  BRIEF_TOOL_PROMPT: () => BRIEF_TOOL_PROMPT,
-  BRIEF_TOOL_NAME: () => BRIEF_TOOL_NAME,
-  BRIEF_PROACTIVE_SECTION: () => BRIEF_PROACTIVE_SECTION,
-  BRIEF_ENFORCE_SENTINEL: () => BRIEF_ENFORCE_SENTINEL,
-});
 var BRIEF_TOOL_NAME = "SendUserMessage",
   LEGACY_BRIEF_TOOL_NAME = "Brief",
   BRIEF_ENFORCE_SENTINEL = "You ended the turn without calling SendUserMessage.",

@@ -4,6 +4,7 @@
 // class=modified (alt of src/utils/claudeInChrome/common.ts)  jaccard=0.2202  score=0.301  fileCov=0.4507
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: trackClaudeInChromeTabId, openInChrome, isTrackedClaudeInChromeTabId, isInProductPermissionsEnabled, isClaudeInChromeMCPServer, getSocketDir, getSecureSocketPath, getAllWindowsRegistryKeys, getAllSocketPaths, getAllNativeMessagingHostsDirs, getAllBrowserDataPaths, detectAvailableBrowser, _resetTrackedTabIdsForTesting, CLAUDE_IN_CHROME_MCP_SERVER_NAME, CLAUDE_IN_CHROME_DOMAIN_RULE_TOOL, CHROMIUM_BROWSERS, CFC_TOOL_PREFIX, BROWSER_DETECTION_ORDER
 // [unwrapped __esm module ag] deps: IB, Xr, ft, kt, Pw, Rm, je, wr, fn, At, vn, zH, Jt, HO, VGe
 ((fT = require("fs/promises")),
   (oS = require("path")),
@@ -157,26 +158,6 @@ zzi = ve(() =>
 Kzi = Promise.resolve();
 ((ult = `(idle \u2014 ${PW})`), (llt = ["starting", "resuming", "adopted", "crashed"]));
 var dKi = {};
-_t(dKi, {
-  trackClaudeInChromeTabId: () => trackClaudeInChromeTabId,
-  openInChrome: () => openInChrome,
-  isTrackedClaudeInChromeTabId: () => isTrackedClaudeInChromeTabId,
-  isInProductPermissionsEnabled: () => isInProductPermissionsEnabled,
-  isClaudeInChromeMCPServer: () => isClaudeInChromeMCPServer,
-  getSocketDir: () => getSocketDir,
-  getSecureSocketPath: () => getSecureSocketPath,
-  getAllWindowsRegistryKeys: () => getAllWindowsRegistryKeys,
-  getAllSocketPaths: () => getAllSocketPaths,
-  getAllNativeMessagingHostsDirs: () => getAllNativeMessagingHostsDirs,
-  getAllBrowserDataPaths: () => getAllBrowserDataPaths,
-  detectAvailableBrowser: () => detectAvailableBrowser,
-  _resetTrackedTabIdsForTesting: () => SKd,
-  CLAUDE_IN_CHROME_MCP_SERVER_NAME: () => CLAUDE_IN_CHROME_MCP_SERVER_NAME,
-  CLAUDE_IN_CHROME_DOMAIN_RULE_TOOL: () => CLAUDE_IN_CHROME_DOMAIN_RULE_TOOL,
-  CHROMIUM_BROWSERS: () => CHROMIUM_BROWSERS,
-  CFC_TOOL_PREFIX: () => CFC_TOOL_PREFIX,
-  BROWSER_DETECTION_ORDER: () => BROWSER_DETECTION_ORDER,
-});
 function isInProductPermissionsEnabled() {
   return at("tengu_cfc_in_product_permissions", false);
 }

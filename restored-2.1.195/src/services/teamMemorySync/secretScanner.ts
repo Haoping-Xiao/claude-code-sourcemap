@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.5708  score=0.6341  fileCov=0.8511
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setHasFormattedOutput, resetDebugLogRotationForTest, resetDebugCaches, maybeRotateDebugLog, logForDebugging, logAntError, isDebugToStdErr, isDebugMode, getMinDebugLogLevel, getHasFormattedOutput, getDebugLogPath, getDebugFilter, getDebugFilePath, flushDebugLogs, enableDebugLogging
 // [unwrapped __esm module zH] deps: sr
 ((gis =
   /api[_-]?key|secret|token|password|passwd|credential|bearer|authorization|auth[_-]?header|cookie|session[_-]?(?:id|key)|connection[_-]?string|(?:private|ssh|encryption|signing|access|deploy|master|license)[_-]?key|client[_-]?secret/i),
@@ -254,23 +255,6 @@ A7c = {
   sendgrid: "SendGrid",
 };
 var Eis = {};
-_t(Eis, {
-  setHasFormattedOutput: () => setHasFormattedOutput,
-  resetDebugLogRotationForTest: () => resetDebugLogRotationForTest,
-  resetDebugCaches: () => resetDebugCaches,
-  maybeRotateDebugLog: () => maybeRotateDebugLog,
-  logForDebugging: () => logForDebugging,
-  logAntError: () => logAntError,
-  isDebugToStdErr: () => isDebugToStdErr,
-  isDebugMode: () => isDebugMode,
-  getMinDebugLogLevel: () => getMinDebugLogLevel,
-  getHasFormattedOutput: () => getHasFormattedOutput,
-  getDebugLogPath: () => getDebugLogPath,
-  getDebugFilter: () => getDebugFilter,
-  getDebugFilePath: () => getDebugFilePath,
-  flushDebugLogs: () => flushDebugLogs,
-  enableDebugLogging: () => enableDebugLogging,
-});
 function qin() {
   if (typeof process === "undefined" || !Array.isArray(process.argv)) return [];
   let e = process.argv.indexOf("--");

@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.1437  score=0.2098  fileCov=0.3134
 // note: low-confidence suggestion: src/commands/memory/index.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module xBl]
 $Of = {
   type: "local-jsx",
@@ -12,9 +13,6 @@ $Of = {
   load: () => Promise.resolve().then(() => (CBl(), wBl))
 }, IBl = $Of;
 var kBl = {};
-_t(kBl, {
-  call: () => call
-});
 var call = async () => {
   let e = !bD();
   return ECt(e), G("tengu_memory_toggled", {

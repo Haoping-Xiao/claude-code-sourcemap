@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1658  score=0.3982  fileCov=0.2212
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: renameSystemReminder, performRename, call
 var eWl = {};
-_t(eWl, {
-  renameSystemReminder: () => renameSystemReminder,
-  performRename: () => performRename,
-  call: () => call,
-});
 function renameSystemReminder(e) {
   let t = Ner(e);
   return aw(`The user named this session "${t}". This may indicate the session's focus or intent.`);

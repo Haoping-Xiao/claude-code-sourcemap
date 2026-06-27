@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0296  score=0.094  fileCov=0.0415
 // note: nearest: src/utils/managedEnvConstants.ts (0.0296); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: probeMantleModel, checkMantleDefaultAvailability
 // [unwrapped __esm module a7o] deps: kt, pke, oo, je, fn, dr, QO, Ao, Ls, ACn
 Ktn = Object.keys(yc), rmr = {
   sonnet: {
@@ -20,10 +21,6 @@ Ktn = Object.keys(yc), rmr = {
   }
 };
 var wMc = {};
-_t(wMc, {
-  probeMantleModel: () => probeMantleModel,
-  checkMantleDefaultAvailability: () => checkMantleDefaultAvailability
-});
 async function checkMantleDefaultAvailability(e = Jnt) {
   if (fr() !== "mantle") return [];
   if (Oe.CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST) return [];

@@ -4,34 +4,10 @@
 // class=modified  jaccard=0.4431  score=0.5188  fileCov=0.7522
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: waitForTeammatesToBecomeIdle, setDynamicTeamContext, runWithTeammateContext, isTeammate, isTeamLead, isPlanModeRequired, isNestedInteractiveClaudeSession, isModelDrivenSession, isInProcessTeammate, hasWorkingInProcessTeammates, hasNonLeadTeammate, hasActiveInProcessTeammates, getTeammateContext, getTeammateColor, getTeamName, getParentSessionId, getDynamicTeamContext, getAgentName, getAgentId, createTeammateContext, clearDynamicTeamContext, _tmuxGlobalEnvOutputHasMarker, _setAmb …
 // [unwrapped __esm module Sj]
 ((Yoi = require("async_hooks")), (X2r = new Yoi.AsyncLocalStorage()));
 var ejr = {};
-_t(ejr, {
-  waitForTeammatesToBecomeIdle: () => waitForTeammatesToBecomeIdle,
-  setDynamicTeamContext: () => setDynamicTeamContext,
-  runWithTeammateContext: () => RAn,
-  isTeammate: () => isTeammate,
-  isTeamLead: () => isTeamLead,
-  isPlanModeRequired: () => isPlanModeRequired,
-  isNestedInteractiveClaudeSession: () => isNestedInteractiveClaudeSession,
-  isModelDrivenSession: () => isModelDrivenSession,
-  isInProcessTeammate: () => oU,
-  hasWorkingInProcessTeammates: () => hasWorkingInProcessTeammates,
-  hasNonLeadTeammate: () => hasNonLeadTeammate,
-  hasActiveInProcessTeammates: () => hasActiveInProcessTeammates,
-  getTeammateContext: () => w0,
-  getTeammateColor: () => getTeammateColor,
-  getTeamName: () => getTeamName,
-  getParentSessionId: () => getParentSessionId,
-  getDynamicTeamContext: () => getDynamicTeamContext,
-  getAgentName: () => getAgentName,
-  getAgentId: () => getAgentId,
-  createTeammateContext: () => LAn,
-  clearDynamicTeamContext: () => clearDynamicTeamContext,
-  _tmuxGlobalEnvOutputHasMarker: () => Joi,
-  _setAmbientMarkerProbeForTesting: () => wpd,
-});
 function getParentSessionId() {
   let e = w0();
   if (e) return e.parentSessionId;

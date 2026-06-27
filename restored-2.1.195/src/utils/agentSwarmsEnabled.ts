@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.4488  score=0.6265  fileCov=0.6128
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isAgentSwarmsEnabled, captureTeammateModeSnapshotIfEnabled
 var VMa = {};
-_t(VMa, {
-  isAgentSwarmsEnabled: () => isAgentSwarmsEnabled,
-  captureTeammateModeSnapshotIfEnabled: () => captureTeammateModeSnapshotIfEnabled,
-});
 function RRp() {
   return process.argv.includes("--agent-teams");
 }

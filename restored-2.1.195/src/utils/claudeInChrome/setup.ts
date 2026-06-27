@@ -4,23 +4,10 @@
 // class=modified  jaccard=0.3773  score=0.5025  fileCov=0.6024
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldSuppressChromeOffer, shouldEnableClaudeInChrome, shouldAutoEnableClaudeInChrome, setupClaudeInChrome, markClaudeInChromeUnwiredIfChrome, markClaudeInChromeUnwired, isClaudeInChromeWiredThisSession, isChromeExtensionInstalled, installChromeNativeHostManifest, getClaudeInChromeMcpServerConfig, _resetShouldAutoEnableForTesting, _resetClaudeInChromeWiredForTesting
 // [unwrapped __esm module PFl] deps: At
 ((uBo = require("fs/promises")), (LFl = require("path")));
 var yBo = {};
-_t(yBo, {
-  shouldSuppressChromeOffer: () => shouldSuppressChromeOffer,
-  shouldEnableClaudeInChrome: () => shouldEnableClaudeInChrome,
-  shouldAutoEnableClaudeInChrome: () => shouldAutoEnableClaudeInChrome,
-  setupClaudeInChrome: () => setupClaudeInChrome,
-  markClaudeInChromeUnwiredIfChrome: () => markClaudeInChromeUnwiredIfChrome,
-  markClaudeInChromeUnwired: () => markClaudeInChromeUnwired,
-  isClaudeInChromeWiredThisSession: () => isClaudeInChromeWiredThisSession,
-  isChromeExtensionInstalled: () => isChromeExtensionInstalled,
-  installChromeNativeHostManifest: () => installChromeNativeHostManifest,
-  getClaudeInChromeMcpServerConfig: () => getClaudeInChromeMcpServerConfig,
-  _resetShouldAutoEnableForTesting: () => L1f,
-  _resetClaudeInChromeWiredForTesting: () => D1f,
-});
 function shouldEnableClaudeInChrome(e) {
   if (e === true) return true;
   if (e === false) return false;

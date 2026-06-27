@@ -4,20 +4,10 @@
 // class=modified  jaccard=0.4108  score=0.6837  fileCov=0.5071
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: summarizeByServerPrefix, isToolSearchToolAvailable, isToolSearchEnabled, isToolReferenceBlock, isMcpLadderNonblockingEnabled, getDeferredToolsDelta, getAutoToolSearchCharThreshold, extractDiscoveredToolNames, DEFERRED_DELTA_LIST_CAP
 // [unwrapped __esm module yZn] deps: Xr, Un
 Pkl = new WeakMap();
 var TMo = {};
-_t(TMo, {
-  summarizeByServerPrefix: () => summarizeByServerPrefix,
-  isToolSearchToolAvailable: () => isToolSearchToolAvailable,
-  isToolSearchEnabled: () => isToolSearchEnabled,
-  isToolReferenceBlock: () => isToolReferenceBlock,
-  isMcpLadderNonblockingEnabled: () => isMcpLadderNonblockingEnabled,
-  getDeferredToolsDelta: () => getDeferredToolsDelta,
-  getAutoToolSearchCharThreshold: () => getAutoToolSearchCharThreshold,
-  extractDiscoveredToolNames: () => extractDiscoveredToolNames,
-  DEFERRED_DELTA_LIST_CAP: () => DEFERRED_DELTA_LIST_CAP,
-});
 function CMo() {
   let e = process.env.ENABLE_TOOL_SEARCH;
   if (!e) return wMo;

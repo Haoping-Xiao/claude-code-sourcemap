@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.0788  score=0.087  fileCov=0.4558
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerLoopSkill
 var Mwc = {};
-_t(Mwc, {
-  registerLoopSkill: () => registerLoopSkill,
-});
 function Lwc() {
   return $Re()
     ? ` Before you stop, send a one-line outcome via ${B8} \u2014 the user may be away and waiting to hear it's done. Skip this if you're stopping because the user just told you to; they're already here.`

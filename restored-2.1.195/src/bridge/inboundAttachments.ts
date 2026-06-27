@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.5943  score=0.8533  fileCov=0.662
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resolveInboundAttachments, resolveAndPrepend, prependPathRefs, extractInboundAttachments
 var Mgc = {};
-_t(Mgc, {
-  resolveInboundAttachments: () => resolveInboundAttachments,
-  resolveAndPrepend: () => resolveAndPrepend,
-  prependPathRefs: () => prependPathRefs,
-  extractInboundAttachments: () => extractInboundAttachments,
-});
 function a7e(e) {
   T(`[bridge:inbound-attach] ${e}`);
 }

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2609  score=0.3392  fileCov=0.5305
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isPewterOwlTool, isPewterOwlHeader, isPewterOwlBrief
 // [unwrapped __esm module JOt] deps: Qi, Ls
 ((Ykd = [
   {
@@ -47,11 +48,6 @@
     (e, t) => `${e.toLowerCase()}:${t}`,
   )));
 var xvi = {};
-_t(xvi, {
-  isPewterOwlTool: () => isPewterOwlTool,
-  isPewterOwlHeader: () => isPewterOwlHeader,
-  isPewterOwlBrief: () => isPewterOwlBrief,
-});
 function Xkd() {
   let e = x0()?.pewter_owl_model;
   if (typeof e === "string" && e !== "") return e;

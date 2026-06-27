@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0532  score=0.161  fileCov=0.0737
 // note: nearest: src/utils/transcriptSearch.ts (0.0532); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: restoreGoalFromTranscript, findGoalToRestore
 var Nzo = {};
-_t(Nzo, {
-  restoreGoalFromTranscript: () => restoreGoalFromTranscript,
-  findGoalToRestore: () => findGoalToRestore
-});
 function findGoalToRestore(e) {
   if (!e) return null;
   for (let t = e.length - 1; t >= 0; t--) {

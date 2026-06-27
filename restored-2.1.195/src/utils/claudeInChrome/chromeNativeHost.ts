@@ -4,15 +4,12 @@
 // class=modified  jaccard=0.7599  score=0.9176  fileCov=0.8155
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sendChromeMessage, runChromeNativeHost
 // [unwrapped __esm module Ofo] deps: fIr, jun, k7, dn, y1, kt, ZSe, W2e, G1, oo, er, je, wr, fn, Ls, u9, Mh, Epe, VM
 ((iTt = require("util")),
   ($sm = new Set(["bridge_status", "error_type", "tool_name"])),
   (Kcc = ["ask", "skip_all_permission_checks", "follow_a_plan"]));
 var nuc = {};
-_t(nuc, {
-  sendChromeMessage: () => sendChromeMessage,
-  runChromeNativeHost: () => runChromeNativeHost,
-});
 function pw(e, ...t) {
   if (Jcc) {
     let n = new Date().toISOString(),

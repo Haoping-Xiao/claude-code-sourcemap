@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2301  score=0.3195  fileCov=0.4513
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setupTokenHandler, installHandler, doctorHandler, createSubcommandRoot
 // [unwrapped __esm module upc] deps: kt, lJ, gm, Ye, je, wr, At, BJ, LOe, dr
 ((ipc = R(lt(), 1)),
   (apc = require("os")),
@@ -30,12 +31,6 @@ Aam = {
   },
 };
 var TA = {};
-_t(TA, {
-  setupTokenHandler: () => setupTokenHandler,
-  installHandler: () => installHandler,
-  doctorHandler: () => doctorHandler,
-  createSubcommandRoot: () => createSubcommandRoot,
-});
 function createSubcommandRoot() {
   return rUt({
     ...lN(false),

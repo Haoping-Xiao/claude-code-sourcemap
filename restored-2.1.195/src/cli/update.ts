@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.468  score=0.5831  fileCov=0.7032
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: update
 // [unwrapped __esm module uhr] deps: Ye, dn, At, Ao, Hoe, dr, Epe, Jt, LPe, JN
 pve = R(se(), 1);
 var M5c = {};
-_t(M5c, {
-  update: () => update,
-});
 async function update() {
   if (Oe.DISABLE_UPDATES)
     ($i(`Updates are disabled by your administrator. Contact your IT team to get the latest version.

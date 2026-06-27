@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.1531  score=0.6557  fileCov=0.1665
 // note: low-confidence suggestion: src/tools/AgentTool/forkSubagent.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: CLAUDE_AGENT
 // [unwrapped __esm module HLl] deps: fh
 ELl = {
   agentType: "worker",
@@ -16,7 +17,4 @@ ELl = {
   getSystemPrompt: e => SLl()
 };
 var TLl = {};
-_t(TLl, {
-  CLAUDE_AGENT: () => CLAUDE_AGENT
-});
 var CLAUDE_AGENT;

@@ -4,11 +4,8 @@
 // class=new  jaccard=0.008  score=0.1489  fileCov=0.0084
 // note: nearest: src/commands/plugin/ManageMarketplaces.tsx (0.008); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldShowAutoDefaultNotice, AUTO_DEFAULT_NOTICE_TEXT
 var jPc = {};
-_t(jPc, {
-  shouldShowAutoDefaultNotice: () => shouldShowAutoDefaultNotice,
-  AUTO_DEFAULT_NOTICE_TEXT: () => AUTO_DEFAULT_NOTICE_TEXT
-});
 function shouldShowAutoDefaultNotice(e) {
   {
     let t = Dt();

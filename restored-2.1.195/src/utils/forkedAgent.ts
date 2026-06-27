@@ -4,28 +4,13 @@
 // class=modified  jaccard=0.3896  score=0.5346  fileCov=0.5896
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: withDisallowedCommandTools, withAllowedCommandTools, saveCacheSafeParams, runForkedAgent, prepareForkedCommandContext, isMainThreadCacheWarm, getLastCacheSafeParams, forkPointUuidOf, extractResultText, createSubagentContext, createGetAppStateWithForkedToolScoping, createCacheSafeParams, FORKED_AGENT_DEFAULT_MAX_TURNS, ASYNC_SHARED_APP_STATE_KEYS
 // [unwrapped __esm module pMo]
 rZn = {
   maxConsecutive: 3,
   maxTotal: 20,
 };
 var yMo = {};
-_t(yMo, {
-  withDisallowedCommandTools: () => withDisallowedCommandTools,
-  withAllowedCommandTools: () => withAllowedCommandTools,
-  saveCacheSafeParams: () => saveCacheSafeParams,
-  runForkedAgent: () => runForkedAgent,
-  prepareForkedCommandContext: () => prepareForkedCommandContext,
-  isMainThreadCacheWarm: () => isMainThreadCacheWarm,
-  getLastCacheSafeParams: () => getLastCacheSafeParams,
-  forkPointUuidOf: () => forkPointUuidOf,
-  extractResultText: () => extractResultText,
-  createSubagentContext: () => createSubagentContext,
-  createGetAppStateWithForkedToolScoping: () => createGetAppStateWithForkedToolScoping,
-  createCacheSafeParams: () => createCacheSafeParams,
-  FORKED_AGENT_DEFAULT_MAX_TURNS: () => FORKED_AGENT_DEFAULT_MAX_TURNS,
-  ASYNC_SHARED_APP_STATE_KEYS: () => ASYNC_SHARED_APP_STATE_KEYS,
-});
 function saveCacheSafeParams(e) {
   ((jze = e), (mMo = e ? Date.now() : null), (gMo = e ? As() : null));
 }

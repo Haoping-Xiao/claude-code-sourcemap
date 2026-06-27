@@ -4,15 +4,10 @@
 // class=modified (alt of src/services/api/client.ts)  jaccard=0.0362  score=0.1086  fileCov=0.0515
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: upgradeKey, probeBedrockModel, findBedrockUpgradeCandidates, checkBedrockDefaultAvailability
 // [unwrapped __esm module Vtn] deps: ft, Rm, er, je, BR, oc, gM, sa
 _Mc = require("fs/promises");
 var r7o = {};
-_t(r7o, {
-  upgradeKey: () => upgradeKey,
-  probeBedrockModel: () => probeBedrockModel,
-  findBedrockUpgradeCandidates: () => findBedrockUpgradeCandidates,
-  checkBedrockDefaultAvailability: () => checkBedrockDefaultAvailability,
-});
 function n7o(e) {
   if (e.startsWith("sonnet")) return "sonnet";
   if (e.startsWith("opus")) return "opus";

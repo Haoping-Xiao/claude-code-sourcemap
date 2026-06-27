@@ -4,12 +4,10 @@
 // class=partial  jaccard=0.0913  score=0.1702  fileCov=0.1646
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: ThirdPartyModelUpgradeDialog
 // [unwrapped __esm module j$c] deps: kt, Ye, dn, VM, er, Cc, Bs, Fy, vi, Ko
 U$c = R(lt(), 1), pmr = R(rt(), 1), oie = R(se(), 1);
 var h7o = {};
-_t(h7o, {
-  ThirdPartyModelUpgradeDialog: () => ThirdPartyModelUpgradeDialog
-});
 function ThirdPartyModelUpgradeDialog(e) {
   let t = G$c.c(27),
     {

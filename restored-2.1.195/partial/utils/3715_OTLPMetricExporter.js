@@ -4,7 +4,5 @@
 // class=partial  jaccard=0.1922  score=1  fileCov=0.1922
 // note: low-confidence suggestion: node_modules/@opentelemetry/exporter-metrics-otlp-http/build/src/platform/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: OTLPMetricExporter
 var xqa = {};
-_t(xqa, {
-  OTLPMetricExporter: () => yqt
-});

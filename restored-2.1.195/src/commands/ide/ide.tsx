@@ -4,15 +4,10 @@
 // class=modified  jaccard=0.5103  score=0.7408  fileCov=0.6212
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: formatWorkspaceFolders, call, IDE_CONNECTION_TIMEOUT_MS, IDECommandFlow
 // [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi
 ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
 var eUl = {};
-_t(eUl, {
-  formatWorkspaceFolders: () => formatWorkspaceFolders,
-  call: () => call,
-  IDE_CONNECTION_TIMEOUT_MS: () => IDE_CONNECTION_TIMEOUT_MS,
-  IDECommandFlow: () => IDECommandFlow,
-});
 function VOf(e) {
   let t = J7t.c(39),
     { availableIDEs: n, unavailableIDEs: r, selectedIDE: o, onClose: s, onSelect: i } = e,

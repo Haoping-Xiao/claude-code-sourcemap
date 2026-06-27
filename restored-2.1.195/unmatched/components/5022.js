@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0311  score=0.3508  fileCov=0.033
 // note: nearest: src/hooks/useSearchInput.ts (0.0311); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module Czl] deps: iu, si, uo, $I, Vl, EJt, dse, Ye, ps, QH, Gy, Jt, Fy, v5, Ko, eE, R6, kP, Pfe, pzl, BZr, $jo, gzl, _zl, Ezl, vzl
 FAt = R(lt(), 1), A3 = R(rt(), 1), mu = R(se(), 1);
 var Izl = {};
-_t(Izl, {
-  call: () => call
-});
 var xzl,
   call = async (e, t) => xzl.jsx(wzl, {
     onExit: e,

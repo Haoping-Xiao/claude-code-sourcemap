@@ -4,33 +4,10 @@
 // class=modified  jaccard=0.5437  score=0.7142  fileCov=0.6949
 // note: deminified; 22 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resolveRef, resolveGitDir, resetGitFileWatcher, removeWatchedRepo, reanchorGitFileWatcher, readWorktreeHeadSha, readRawSymref, readGitHead, onRepoBranchChange, isValidGitSha, isShallowClone, getWorktreeCountFromFs, getRemoteUrlForDir, getHeadForDir, getCommonDir, getCachedRemoteUrl, getCachedHead, getCachedDefaultBranch, getCachedBranchForRepo, getCachedBranch, clearResolveGitDirCache, addWatchedRepo
 // [unwrapped __esm module RTs]
 ((ITs = require("fs/promises")), (xTs = require("path")), (w$u = /^[0-9a-f]+$/));
 var $Ts = {};
-_t($Ts, {
-  resolveRef: () => resolveRef,
-  resolveGitDir: () => resolveGitDir,
-  resetGitFileWatcher: () => resetGitFileWatcher,
-  removeWatchedRepo: () => removeWatchedRepo,
-  reanchorGitFileWatcher: () => reanchorGitFileWatcher,
-  readWorktreeHeadSha: () => readWorktreeHeadSha,
-  readRawSymref: () => readRawSymref,
-  readGitHead: () => readGitHead,
-  onRepoBranchChange: () => onRepoBranchChange,
-  isValidGitSha: () => isValidGitSha,
-  isShallowClone: () => isShallowClone,
-  getWorktreeCountFromFs: () => getWorktreeCountFromFs,
-  getRemoteUrlForDir: () => getRemoteUrlForDir,
-  getHeadForDir: () => getHeadForDir,
-  getCommonDir: () => getCommonDir,
-  getCachedRemoteUrl: () => getCachedRemoteUrl,
-  getCachedHead: () => getCachedHead,
-  getCachedDefaultBranch: () => getCachedDefaultBranch,
-  getCachedBranchForRepo: () => getCachedBranchForRepo,
-  getCachedBranch: () => getCachedBranch,
-  clearResolveGitDirCache: () => clearResolveGitDirCache,
-  addWatchedRepo: () => addWatchedRepo,
-});
 function clearResolveGitDirCache() {
   met.clear();
 }

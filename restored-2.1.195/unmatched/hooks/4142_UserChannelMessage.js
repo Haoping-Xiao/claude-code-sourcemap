@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0098  score=0.4222  fileCov=0.01
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0098); dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: UserChannelMessage
 // [unwrapped __esm module nal] deps: Xa, Ye
 eal = R(lt(), 1), IAe = R(se(), 1);
 var sal = {};
-_t(sal, {
-  UserChannelMessage: () => UserChannelMessage
-});
 function dsf(e) {
   let t = e.lastIndexOf(":");
   return t === -1 ? e : e.slice(t + 1);

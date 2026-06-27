@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0298  score=0.8483  fileCov=0.0299
 // note: nearest: src/components/diff/DiffDialog.tsx (0.0298); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module eNl] deps: fH, tC, gNo, I1l, Ye, ps, sr, Cc, Bs, vi, gDe, Ko, CH, kP, _No, SNo, J1l
 Q1l = R(lt(), 1), wHe = R(rt(), 1), lw = R(se(), 1);
 var tNl = {};
-_t(tNl, {
-  call: () => call
-});
 var nNl,
   call = async (e, t) => {
     let {

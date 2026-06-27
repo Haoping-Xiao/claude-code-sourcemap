@@ -3,12 +3,10 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: default
 // [unwrapped __esm module hss] deps: _Ue, FJe
 gss = KKc;
 var FIt = {};
-_t(FIt, {
-  default: () => jIt
-});
 function XKc(e, t) {
   if (t) return e.slice();
   var n = e.length,

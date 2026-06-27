@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2322  score=0.321  fileCov=0.4563
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module VPl] deps: IKt, Lo, sa, hze, Bqe, _m, K$e
 ((N0f = [
   "git checkout -b *",
@@ -72,9 +73,6 @@ ${c6(i)}`;
 }),
   (qPl = B0f));
 var zPl = {};
-_t(zPl, {
-  call: () => call,
-});
 async function F0f(e, t, n) {
   (t.onCompactEvent?.({
     type: "compact_progress",

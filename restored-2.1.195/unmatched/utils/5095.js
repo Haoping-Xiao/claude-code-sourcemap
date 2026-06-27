@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0015  score=0.2126  fileCov=0.0015
 // note: nearest: src/screens/REPL.tsx (0.0015); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module F7l]
 W9f = {
   type: "local",
@@ -14,9 +15,6 @@ W9f = {
   load: () => Promise.resolve().then(() => (U7l(), B7l))
 }, Ysr = W9f;
 var j7l = {};
-_t(j7l, {
-  call: () => call
-});
 async function call(e, t) {
   return t.onQueryEvent?.({
     type: "open_message_selector"

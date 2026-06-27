@@ -4,13 +4,10 @@
 // class=modified  jaccard=0.6856  score=0.9028  fileCov=0.7403
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: readClaudeDesktopMcpServers, getClaudeDesktopConfigPath
 // [unwrapped __esm module jdc] deps: l0t, jun, Vb, rq, jDe, X2o, ii, uDe, LL, fp, og, CAt, je, At, ik, P2o, vn, bm, co, Ao, Gy, _$, Jt, IAt, Gor, mzt, yZn
 Zim = [rsr];
 var qdc = {};
-_t(qdc, {
-  readClaudeDesktopMcpServers: () => readClaudeDesktopMcpServers,
-  getClaudeDesktopConfigPath: () => getClaudeDesktopConfigPath,
-});
 async function getClaudeDesktopConfigPath() {
   let e = Vt();
   if (!Kkr.includes(e))

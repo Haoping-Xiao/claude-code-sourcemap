@@ -4,15 +4,10 @@
 // class=new  jaccard=0.0585  score=0.2321  fileCov=0.0726
 // note: nearest: src/components/CustomSelect/select.tsx (0.0585); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: formatVersion, formatAll, call, ReleaseNotesPicker
 // [unwrapped __esm module KKe] deps: ft, Rx, db, er, je, fn, At, vn, qd, sr
 BXt = require("path"), Yrr = R(Uj(), 1);
 var VGl = {};
-_t(VGl, {
-  formatVersion: () => formatVersion,
-  formatAll: () => formatAll,
-  call: () => call,
-  ReleaseNotesPicker: () => ReleaseNotesPicker
-});
 function formatVersion(e, t) {
   let n = `Version ${e}:`,
     r = t.map(o => `\xB7 ${o}`).join(`

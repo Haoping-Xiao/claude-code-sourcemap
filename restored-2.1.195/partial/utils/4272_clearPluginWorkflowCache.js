@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.0705  score=0.1819  fileCov=0.1033
 // note: low-confidence suggestion: src/utils/plugins/loadPluginAgents.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: loadPluginWorkflows, clearPluginWorkflowCache
 // [unwrapped __esm module Lml] deps: RF, Un, kt, g$e, ii, LL, fp, og, Il, c9t, Lo, je, Cp, wr, fn, At, sa, co, kpe, Ao, Gy, uft, Jt, sr, Mp, gP, u$, HO, WAe, aR, tQ, vAe, fh, ty, SAe, f4, i$, k6e, jko, Gko
 wml = require("os"), Cml = require("util");
 Xdf = Ydf(wml.cpus().length), Qdf = `Workflow agent() call cap reached (${Iml}). This usually means a loop using budget.remaining() never terminates because ` + "no token budget was set \u2014 remaining() returns Infinity when budget.total is null. " + "Add a hard iteration cap to the loop, or pass a token budget.";
@@ -42,10 +43,6 @@ CRITICAL: You MUST call the ${Ip} tool exactly once to return your final answer.
   getSystemPrompt: () => npf
 };
 var $ml = {};
-_t($ml, {
-  loadPluginWorkflows: () => loadPluginWorkflows,
-  clearPluginWorkflowCache: () => clearPluginWorkflowCache
-});
 async function Dml(e, t, n, r, o) {
   let s = qt(),
     i;

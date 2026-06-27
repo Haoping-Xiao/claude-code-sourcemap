@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4621  score=0.6432  fileCov=0.6214
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: writeNativePlaybackData, stopNativeRecording, stopNativePlayback, startNativeRecording, startNativePlayback, microphoneAuthorizationStatus, isNativeRecordingActive, isNativePlaying, isNativeAudioAvailable, stopRecording, startRecording, requestMicrophonePermission, checkVoiceDependencies, checkRecordingAvailability, _resetArecordProbeForTesting, _resetAlsaCardsForTesting
 // [unwrapped __esm module IGo] deps: Hp, Rc, oo, je, fn, At, Gx, u9, qd, Mh, Jt, Un
 ((fTe = R(require("ws"))),
   (vGo = {
@@ -11,17 +12,6 @@
     noData: 1500,
   }));
 var nnc = {};
-_t(nnc, {
-  writeNativePlaybackData: () => writeNativePlaybackData,
-  stopNativeRecording: () => stopNativeRecording,
-  stopNativePlayback: () => stopNativePlayback,
-  startNativeRecording: () => startNativeRecording,
-  startNativePlayback: () => startNativePlayback,
-  microphoneAuthorizationStatus: () => microphoneAuthorizationStatus,
-  isNativeRecordingActive: () => isNativeRecordingActive,
-  isNativePlaying: () => isNativePlaying,
-  isNativeAudioAvailable: () => isNativeAudioAvailable,
-});
 function mTe() {
   if (tnc) return pQt;
   tnc = true;
@@ -87,15 +77,6 @@ function microphoneAuthorizationStatus() {
 var pQt = null,
   tnc = false;
 var fQt = {};
-_t(fQt, {
-  stopRecording: () => stopRecording,
-  startRecording: () => startRecording,
-  requestMicrophonePermission: () => requestMicrophonePermission,
-  checkVoiceDependencies: () => checkVoiceDependencies,
-  checkRecordingAvailability: () => checkRecordingAvailability,
-  _resetArecordProbeForTesting: () => K7f,
-  _resetAlsaCardsForTesting: () => Y7f,
-});
 function iar() {
   return (
     (rnc ??= (async () => {

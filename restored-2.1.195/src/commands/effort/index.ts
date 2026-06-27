@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2074  score=0.273  fileCov=0.4629
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: initialQuietIndexFor, initialIndexFor, call
 // [unwrapped __esm module UQl] deps: Cp, Isr, Ao
 ((Rzf = {
   type: "local-jsx",
@@ -34,11 +35,6 @@
   (f3o = Rzf));
 var m3o = () => {};
 var GQl = {};
-_t(GQl, {
-  initialQuietIndexFor: () => initialQuietIndexFor,
-  initialIndexFor: () => initialIndexFor,
-  call: () => call,
-});
 function initialIndexFor(e, t) {
   if (!e) return 0;
   let n = t ?? 120,

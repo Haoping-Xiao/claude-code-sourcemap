@@ -4,14 +4,10 @@
 // class=modified  jaccard=0.2248  score=0.6212  fileCov=0.2605
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: inFlightTeammateResumes, SendMessageTool, SendMessagePreconditionError
 // [unwrapped __esm module WEl] deps: ql, Ye, Jt
 GRo = R(se(), 1);
 var KEl = {};
-_t(KEl, {
-  inFlightTeammateResumes: () => inFlightTeammateResumes,
-  SendMessageTool: () => SendMessageTool,
-  SendMessagePreconditionError: () => SendMessagePreconditionError,
-});
 function Cyf() {
   return el() ? VEl() : wyf();
 }

@@ -4,12 +4,10 @@
 // class=partial  jaccard=0.1799  score=0.2777  fileCov=0.338
 // note: low-confidence suggestion: src/skills/bundled/verify.ts; dir inferred from dep-graph -> skills; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerRunSkillGeneratorSkill
 // [unwrapped __esm module HKo] deps: Yxc, Jxc
 rTm = Xxc, oTm = Qxc;
 var Zxc = {};
-_t(Zxc, {
-  registerRunSkillGeneratorSkill: () => registerRunSkillGeneratorSkill
-});
 function registerRunSkillGeneratorSkill() {
   Nd({
     name: "run-skill-generator",

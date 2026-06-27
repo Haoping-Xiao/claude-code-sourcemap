@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3424  score=0.6105  fileCov=0.4382
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: WORKFLOW_TOOL_NAME, CODE_REVIEW_WORKFLOW_NAME
 // [unwrapped __esm module i$] deps: Xr, ii, At, Jt
 ((Hoa = R(Run(), 1)),
   (Gop = ve(() => H.object({}).passthrough())),
@@ -67,10 +68,6 @@
   (Aoa = new WeakMap()));
 var qOn = "ExitWorktree";
 var voa = {};
-_t(voa, {
-  WORKFLOW_TOOL_NAME: () => WORKFLOW_TOOL_NAME,
-  CODE_REVIEW_WORKFLOW_NAME: () => CODE_REVIEW_WORKFLOW_NAME,
-});
 var WORKFLOW_TOOL_NAME = "Workflow",
   CODE_REVIEW_WORKFLOW_NAME = "code-review";
 function woa() {

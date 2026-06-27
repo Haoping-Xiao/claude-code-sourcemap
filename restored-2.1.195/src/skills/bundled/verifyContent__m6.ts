@@ -4,6 +4,7 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.0988  score=0.2354  fileCov=0.1456
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: TEMPLATE_MD, SKILL_MD
 var Xxc = `---
 name: run-skill-generator
 description: Author or improve the run-<unit> skill \u2014 a per-project skill that tells agents how to build, launch, and drive this project's app. Use when the user asks to set up the project, get it running, write run instructions, or verify build/run steps work from a clean environment.
@@ -494,8 +495,4 @@ Delete everything from \`---\` above onwards before committing. --->
 `;
 var Jxc = () => {};
 var AKo = {};
-_t(AKo, {
-  TEMPLATE_MD: () => TEMPLATE_MD,
-  SKILL_MD: () => SKILL_MD,
-});
 var SKILL_MD, TEMPLATE_MD;

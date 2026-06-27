@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: goalNonInteractive, default
 var Tnc = {};
-_t(Tnc, {
-  goalNonInteractive: () => goalNonInteractive,
-  default: () => gXf
-});
 var fXf, goalNonInteractive, gXf;

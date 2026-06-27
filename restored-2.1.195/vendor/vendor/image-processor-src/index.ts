@@ -4,14 +4,10 @@
 // class=vendor  jaccard=0.365  score=0.8793  fileCov=0.3842
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sharp, getNativeModule, default
 // [unwrapped __esm module kne] deps: kt, xne, H0e
 Tqi = new Set();
 var dQr = {};
-_t(dQr, {
-  sharp: () => sharp,
-  getNativeModule: () => getNativeModule,
-  default: () => A5d
-});
 function getNativeModule() {
   if (vqi) return sDn;
   vqi = !0;

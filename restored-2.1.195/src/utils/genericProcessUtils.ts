@@ -4,27 +4,13 @@
 // class=modified  jaccard=0.2568  score=0.3776  fileCov=0.4454
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sigtermThenKill, ownProcStartAsync, ownProcStart, isSameProcessAsync, isSameProcess, isProcessRunning, getProcessStartTimeAsync, getProcessStartTime, getProcessCommand, getChildPids, getAncestorPidsAsync, getAncestorCommandsAsync, _resetProcStartCacheForTesting
 function Hr(e) {
   if (e == null) return;
   return /^[A-Za-z0-9_-]{1,128}$/.test(e) ? kh(e) : We("nonconforming");
 }
 var fb = () => {};
 var ort = {};
-_t(ort, {
-  sigtermThenKill: () => sigtermThenKill,
-  ownProcStartAsync: () => ownProcStartAsync,
-  ownProcStart: () => ownProcStart,
-  isSameProcessAsync: () => isSameProcessAsync,
-  isSameProcess: () => isSameProcess,
-  isProcessRunning: () => isProcessRunning,
-  getProcessStartTimeAsync: () => getProcessStartTimeAsync,
-  getProcessStartTime: () => getProcessStartTime,
-  getProcessCommand: () => getProcessCommand,
-  getChildPids: () => getChildPids,
-  getAncestorPidsAsync: () => getAncestorPidsAsync,
-  getAncestorCommandsAsync: () => getAncestorCommandsAsync,
-  _resetProcStartCacheForTesting: () => Epd,
-});
 function isProcessRunning(e) {
   if (e <= 1) return false;
   try {

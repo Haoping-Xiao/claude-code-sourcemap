@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 var tWl = {};
-_t(tWl, {
-  call: () => call
-});
 async function call(e, t) {
   let {
     message: n

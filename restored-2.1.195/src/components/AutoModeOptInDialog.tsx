@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.5209  score=0.6328  fileCov=0.7465
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: AutoModeOptInDialog, AUTO_MODE_DESCRIPTION
 var C6o = {};
-_t(C6o, {
-  AutoModeOptInDialog: () => AutoModeOptInDialog,
-  AUTO_MODE_DESCRIPTION: () => AUTO_MODE_DESCRIPTION,
-});
 function AutoModeOptInDialog(e) {
   let t = Lyc.c(25),
     { onAccept: n, onDecline: r, declineExits: o } = e,

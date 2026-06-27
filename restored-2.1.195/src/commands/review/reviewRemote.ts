@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2031  score=0.2551  fileCov=0.4991
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: runUltrareviewHeadless, precheckLaunchScope, parseUltrareviewArgs, launchRemoteReview, getReviewDurationNote, getReviewCostNote, confirmOverage, checkOverageGate, _resetOverageConfirmedForTests
 var i9l = {};
-_t(i9l, {
-  runUltrareviewHeadless: () => runUltrareviewHeadless,
-  precheckLaunchScope: () => precheckLaunchScope,
-  parseUltrareviewArgs: () => parseUltrareviewArgs,
-  launchRemoteReview: () => launchRemoteReview,
-  getReviewDurationNote: () => nQ,
-  getReviewCostNote: () => PMe,
-  confirmOverage: () => confirmOverage,
-  checkOverageGate: () => checkOverageGate,
-  _resetOverageConfirmedForTests: () => JGf,
-});
 function confirmOverage() {
   j2o = true;
 }

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.189  score=0.2516  fileCov=0.4316
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module vFl] deps: wr
 ((v1f = {
   type: "local-jsx",
@@ -15,9 +16,6 @@
 }),
   (TFl = v1f));
 var CFl = {};
-_t(CFl, {
-  call: () => call,
-});
 async function call() {
   if (
     (G("tengu_install_slack_app_clicked", {}),

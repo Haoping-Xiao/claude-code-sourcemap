@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.0866  score=0.0947  fileCov=0.5026
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: runClaudeInChromeMcpServer, createChromeContext
 // [unwrapped __esm module k7] deps: Qi, er, je, vn, DD, Ao, Ls, jG, Rx, aW, Du
 ((qcc = require("crypto")),
   (xsm = new Set([
@@ -214,10 +215,6 @@ Dsm = Cn(() => {
   return parseInt(t.slice(0, 8), 16) % Lsm;
 });
 var $fo = {};
-_t($fo, {
-  runClaudeInChromeMcpServer: () => runClaudeInChromeMcpServer,
-  createChromeContext: () => createChromeContext,
-});
 function Osm(e) {
   return Kcc.some((t) => t === e);
 }

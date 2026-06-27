@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1764  score=0.3882  fileCov=0.2443
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: untypeDenyReasonForAskPropagation, toPosixPath, relativePath, patternWithRoot, pathInWorkingPath, pathInAllowedWorkingPath, normalizeTrustedSymlink, normalizePatternsToPath, normalizeCaseForComparison, matchingRuleForInput, matchingAllowRuleForAllPaths, matchesPathRule, isUntrustedUncPath, isScratchpadEnabled, isClaudeSettingsPath, getScratchpadDir, getResolvedWorkingDirPaths, getProjectTempDir, getFileReadIgnorePatterns, getClaudeTempDirName, getClaudeTempDir, getClaudeSkillSco …
 // [unwrapped __esm module KI] deps: Qi, ft, db, Lo, je, fn, At, iYr, ys, vn, dr, Ost
 (($sc = require("crypto")), (Lz = require("path")));
 gS = Cn(function () {
@@ -29,45 +30,6 @@ gS = Cn(function () {
   return r;
 });
 var Noa = {};
-_t(Noa, {
-  untypeDenyReasonForAskPropagation: () => untypeDenyReasonForAskPropagation,
-  toPosixPath: () => toPosixPath,
-  relativePath: () => relativePath,
-  patternWithRoot: () => patternWithRoot,
-  pathInWorkingPath: () => pathInWorkingPath,
-  pathInAllowedWorkingPath: () => pathInAllowedWorkingPath,
-  normalizeTrustedSymlink: () => normalizeTrustedSymlink,
-  normalizePatternsToPath: () => normalizePatternsToPath,
-  normalizeCaseForComparison: () => normalizeCaseForComparison,
-  matchingRuleForInput: () => matchingRuleForInput,
-  matchingAllowRuleForAllPaths: () => matchingAllowRuleForAllPaths,
-  matchesPathRule: () => matchesPathRule,
-  isUntrustedUncPath: () => isUntrustedUncPath,
-  isScratchpadEnabled: () => isScratchpadEnabled,
-  isClaudeSettingsPath: () => isClaudeSettingsPath,
-  getScratchpadDir: () => getScratchpadDir,
-  getResolvedWorkingDirPaths: () => getResolvedWorkingDirPaths,
-  getProjectTempDir: () => getProjectTempDir,
-  getFileReadIgnorePatterns: () => getFileReadIgnorePatterns,
-  getClaudeTempDirName: () => getClaudeTempDirName,
-  getClaudeTempDir: () => getClaudeTempDir,
-  getClaudeSkillScope: () => getClaudeSkillScope,
-  getChildProcessTmpDir: () => getChildProcessTmpDir,
-  getBundledSkillsRoot: () => getBundledSkillsRoot,
-  generateSuggestions: () => generateSuggestions,
-  ensureScratchpadDir: () => ensureScratchpadDir,
-  checkWritePermissionForTool: () => checkWritePermissionForTool,
-  checkReadableInternalPath: () => checkReadableInternalPath,
-  checkReadPermissionForTool: () => checkReadPermissionForTool,
-  checkReadNetworkPathSafety: () => checkReadNetworkPathSafety,
-  checkPathSafetyForAutoEdit: () => checkPathSafetyForAutoEdit,
-  checkEditableInternalPath: () => checkEditableInternalPath,
-  allWorkingDirectories: () => allWorkingDirectories,
-  DANGEROUS_FILES_LC: () => DANGEROUS_FILES_LC,
-  DANGEROUS_FILES: () => DANGEROUS_FILES,
-  DANGEROUS_DIRECTORY_PATHS: () => DANGEROUS_DIRECTORY_PATHS,
-  DANGEROUS_DIRECTORIES: () => DANGEROUS_DIRECTORIES,
-});
 function normalizeCaseForComparison(e) {
   return e
     .toLowerCase()

@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0374  score=0.1483  fileCov=0.0476
 // note: nearest: src/upstreamproxy/relay.ts (0.0374); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: glyphFor, encodePng, blitGlyph, ansiToPng, GLYPH_W, GLYPH_H
 // [unwrapped __esm module xOl] deps: OI
 wOl = {
   30: {
@@ -96,14 +97,6 @@ wOl = {
   b: 30
 };
 var POl = {};
-_t(POl, {
-  glyphFor: () => glyphFor,
-  encodePng: () => encodePng,
-  blitGlyph: () => blitGlyph,
-  ansiToPng: () => ansiToPng,
-  GLYPH_W: () => GLYPH_W,
-  GLYPH_H: () => GLYPH_H
-});
 function glyphFor(e) {
   return ROl.get(e) ?? kOl;
 }

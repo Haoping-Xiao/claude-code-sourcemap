@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0039  score=0.3108  fileCov=0.004
 // note: nearest: src/screens/REPL.tsx (0.0039); dir inferred from dep-graph -> components; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call, Teleport
 // [unwrapped __esm module Tjo] deps: kt, l6l, Ye, ps, rlt, Ko, d6l, EC
 p6l = R(lt(), 1), f6l = R(rt(), 1), qq = R(se(), 1);
 var _6l = {};
-_t(_6l, {
-  call: () => call,
-  Teleport: () => Teleport
-});
 function Teleport(e) {
   let t = g6l.c(16),
     {

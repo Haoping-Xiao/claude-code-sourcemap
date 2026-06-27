@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3549  score=0.6181  fileCov=0.4545
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call, FastModePicker
 var jzl = {};
-_t(jzl, {
-  call: () => call,
-  FastModePicker: () => FastModePicker,
-});
 function FastModePicker(e) {
   let t = Uzl.c(32),
     { onDone: n, unavailableReason: r } = e,

@@ -4,6 +4,7 @@
 // class=modified (alt of src/components/StatusLine.tsx)  jaccard=0.0385  score=0.1424  fileCov=0.05
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: seedUtilization, loadPlanRateLimits, collectUsageData, MIN_BEHAVIOR_PCT
 // [unwrapped __esm module F1o] deps: At, ys, jS
 ((pEt = require("fs/promises")),
   (BOe = require("path")),
@@ -29,12 +30,6 @@
   (aDf = jL.encode('"attributionPlugin":"')),
   (lDf = jL.encode('"attributionMcpServer":"')));
 var sOl = {};
-_t(sOl, {
-  seedUtilization: () => seedUtilization,
-  loadPlanRateLimits: () => loadPlanRateLimits,
-  collectUsageData: () => collectUsageData,
-  MIN_BEHAVIOR_PCT: () => MIN_BEHAVIOR_PCT,
-});
 function seedUtilization() {
   let e = f5e();
   if (!e.five_hour && !e.seven_day) return null;

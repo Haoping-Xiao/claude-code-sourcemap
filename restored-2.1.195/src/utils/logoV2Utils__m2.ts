@@ -4,16 +4,10 @@
 // class=modified (alt of src/utils/logoV2Utils.ts)  jaccard=0.018  score=0.0245  fileCov=0.0642
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: computeVisibleWindow, buildAgentDetailLines, agentDisplayStatus, WorkflowDetailDialog, PhaseScrollIndicator
 // [unwrapped __esm module mjo] deps: _i, Ye, ps, U8l, $7, Lo, Bs, vi, f_, Ko, Mg
 ((F8l = R(lt(), 1)), (lYe = R(rt(), 1)), (ZL = R(se(), 1)));
 var K8l = {};
-_t(K8l, {
-  computeVisibleWindow: () => computeVisibleWindow,
-  buildAgentDetailLines: () => buildAgentDetailLines,
-  agentDisplayStatus: () => agentDisplayStatus,
-  WorkflowDetailDialog: () => WorkflowDetailDialog,
-  PhaseScrollIndicator: () => PhaseScrollIndicator,
-});
 function computeVisibleWindow(e, t, n) {
   if (t <= n)
     return {

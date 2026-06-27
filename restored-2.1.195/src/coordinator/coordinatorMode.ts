@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2788  score=0.4589  fileCov=0.4153
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: matchSessionMode, isCoordinatorMode, isCcrCoordinator, getCoordinatorUserContext, getCoordinatorSystemPrompt
 var qW = {};
-_t(qW, {
-  matchSessionMode: () => matchSessionMode,
-  isCoordinatorMode: () => isCoordinatorMode,
-  isCcrCoordinator: () => isCcrCoordinator,
-  getCoordinatorUserContext: () => getCoordinatorUserContext,
-  getCoordinatorSystemPrompt: () => getCoordinatorSystemPrompt,
-});
 function Zop() {
   let { isScratchpadEnabled: e } = (Yf(), ro(Noa));
   return e();

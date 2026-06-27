@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.378  score=0.5129  fileCov=0.5896
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: updateBridgeSessionTitle, updateBridgeSessionColorTag, getBridgeSession, createBridgeSession, archiveBridgeSession, SESSION_COLOR_TAG_PREFIX
 var Dze = {};
-_t(Dze, {
-  updateBridgeSessionTitle: () => updateBridgeSessionTitle,
-  updateBridgeSessionColorTag: () => updateBridgeSessionColorTag,
-  getBridgeSession: () => getBridgeSession,
-  createBridgeSession: () => createBridgeSession,
-  archiveBridgeSession: () => archiveBridgeSession,
-  SESSION_COLOR_TAG_PREFIX: () => SESSION_COLOR_TAG_PREFIX,
-});
 async function createBridgeSession({
   environmentId: e,
   title: t,

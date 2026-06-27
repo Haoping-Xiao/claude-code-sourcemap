@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4455  score=0.5073  fileCov=0.7853
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: getWorkerSystemPrompt, getCoordinatorAgents, WORKER_AGENT
 // [unwrapped __esm module bLl]
 _Ll = {
   agentType: "statusline-setup",
@@ -169,11 +170,6 @@ Guidelines:
 `,
 };
 var ALl = {};
-_t(ALl, {
-  getWorkerSystemPrompt: () => getWorkerSystemPrompt,
-  getCoordinatorAgents: () => getCoordinatorAgents,
-  WORKER_AGENT: () => WORKER_AGENT,
-});
 function getWorkerSystemPrompt() {
   return `You are a worker agent executing a task assigned by the coordinator.
 

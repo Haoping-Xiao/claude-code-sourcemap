@@ -4,39 +4,8 @@
 // class=modified  jaccard=0.311  score=0.3814  fileCov=0.6276
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resolvePluginRoot, resolvePluginPath, resolveContainedPluginPath, probeSeedCacheAnyVersion, mergePluginSources, loadSkillsAsPlugins, loadPluginManifest, loadAllPluginsForPreview, loadAllPluginsCacheOnly, loadAllPlugins, installFromNpm, installFromGitSubdir, gitClone, getVersionedZipCachePath, getVersionedCachePathIn, getVersionedCachePath, getPluginCachePath, getLegacyCachePath, getEnabledPluginBinPaths, generateTemporaryCacheNameForPlugin, displaySkillsDirPath, createPluginFrom …
 var uLl = {};
-_t(uLl, {
-  resolvePluginRoot: () => resolvePluginRoot,
-  resolvePluginPath: () => resolvePluginPath,
-  resolveContainedPluginPath: () => resolveContainedPluginPath,
-  probeSeedCacheAnyVersion: () => probeSeedCacheAnyVersion,
-  mergePluginSources: () => mergePluginSources,
-  loadSkillsAsPlugins: () => loadSkillsAsPlugins,
-  loadPluginManifest: () => loadPluginManifest,
-  loadAllPluginsForPreview: () => loadAllPluginsForPreview,
-  loadAllPluginsCacheOnly: () => loadAllPluginsCacheOnly,
-  loadAllPlugins: () => loadAllPlugins,
-  installFromNpm: () => installFromNpm,
-  installFromGitSubdir: () => installFromGitSubdir,
-  gitClone: () => gitClone,
-  getVersionedZipCachePath: () => getVersionedZipCachePath,
-  getVersionedCachePathIn: () => getVersionedCachePathIn,
-  getVersionedCachePath: () => getVersionedCachePath,
-  getPluginCachePath: () => getPluginCachePath,
-  getLegacyCachePath: () => getLegacyCachePath,
-  getEnabledPluginBinPaths: () => getEnabledPluginBinPaths,
-  generateTemporaryCacheNameForPlugin: () => generateTemporaryCacheNameForPlugin,
-  displaySkillsDirPath: () => displaySkillsDirPath,
-  createPluginFromPath: () => createPluginFromPath,
-  copyPluginToVersionedCache: () => copyPluginToVersionedCache,
-  copyDir: () => copyDir,
-  clearPluginCache: () => clearPluginCache,
-  cachePluginSettings: () => cachePluginSettings,
-  cachePlugin: () => cachePlugin,
-  cacheMatchesDeclaredPaths: () => cacheMatchesDeclaredPaths,
-  cacheDirHasPluginContent: () => cacheDirHasPluginContent,
-  IMPLICIT_PLUGIN_LAYOUT_ENTRIES: () => IMPLICIT_PLUGIN_LAYOUT_ENTRIES,
-});
 function displaySkillsDirPath(e) {
   if (e.scope === "project") {
     let t = Es.join(yr(), ".claude", "skills");

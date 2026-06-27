@@ -4,16 +4,10 @@
 // class=modified  jaccard=0.5311  score=0.9424  fileCov=0.5489
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: initializeErrorLogSink, getMCPLogsPath, getErrorsPath, _flushLogWritersForTesting, _clearLogWritersForTesting
 // [unwrapped __esm module T3o] deps: db, Pw, At, Jt, zOe
 ((Iir = require("fs/promises")), (EZl = require("path")));
 var kir = {};
-_t(kir, {
-  initializeErrorLogSink: () => initializeErrorLogSink,
-  getMCPLogsPath: () => getMCPLogsPath,
-  getErrorsPath: () => getErrorsPath,
-  _flushLogWritersForTesting: () => dKf,
-  _clearLogWritersForTesting: () => pKf,
-});
 function getErrorsPath() {
   return qJt.join(LFe.errors(), AZl + ".jsonl");
 }

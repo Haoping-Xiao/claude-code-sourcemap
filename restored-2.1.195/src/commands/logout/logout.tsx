@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1715  score=0.2589  fileCov=0.337
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: performLogout, fleetHostLogout, clearAuthRelatedCaches, call
 // [unwrapped __esm module nAo] deps: X6r, rzr, NUa, Gwe, ft, oo, Is, Vet, fd, je, fn, At, peo, drt, u9, qd, Mh, dr, Jt, sG, WSe, GUa, rpo, KUa, XUa, Xdt, m5
 ((ioe = R(qi(), 1)),
   (F6a = R(Nh(), 1)),
@@ -15,12 +16,6 @@
   (W6a = R(_Lt(), 1)));
 eAo = class eAo extends Error {};
 var rAo = {};
-_t(rAo, {
-  performLogout: () => performLogout,
-  fleetHostLogout: () => fleetHostLogout,
-  clearAuthRelatedCaches: () => clearAuthRelatedCaches,
-  call: () => call,
-});
 async function performLogout({
   clearOnboarding: e = false,
   preserveInProcessTokens: t = false,

@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0259  score=0.1045  fileCov=0.0333
 // note: nearest: src/services/compact/microCompact.ts (0.0259); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: handleHintReject, createContextHintController, applyHintEdits
 var Nac = {};
-_t(Nac, {
-  handleHintReject: () => handleHintReject,
-  createContextHintController: () => createContextHintController,
-  applyHintEdits: () => applyHintEdits
-});
 async function lnm(e, t) {
   let n = await pDe(e, t);
   if (mDe(n)) return null;

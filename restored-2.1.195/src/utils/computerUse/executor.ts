@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1499  score=0.8359  fileCov=0.1544
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: unhideComputerUseApps, createCliExecutor
 // [unwrapped __commonJS module hRa] (exports=zXy, module=gRa)
 var zXy = {};
 var gRa = {
@@ -21,10 +22,6 @@ function fJ() {
 }
 var ifo;
 var SRa = {};
-_t(SRa, {
-  unhideComputerUseApps: () => unhideComputerUseApps,
-  createCliExecutor: () => createCliExecutor,
-});
 function lfo(e, t, n) {
   let r = Math.round(e * n),
     o = Math.round(t * n);

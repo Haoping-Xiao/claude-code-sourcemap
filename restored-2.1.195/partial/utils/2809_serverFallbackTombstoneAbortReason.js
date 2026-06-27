@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.1314  score=0.1521  fileCov=0.4919
 // note: low-confidence suggestion: src/utils/abortController.ts; dir inferred from dep-graph -> utils; 13 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: userAbortReason, unwrapAbortReason, serverFallbackTombstoneAbortReason, isUserInitiatedAbortReason, isUserAttributableAbortKind, isServerFallbackDiscard, createRecoveryAbortController, createChildAbortController, createAbortController, classifyAbortReasonForTelemetry, attachDetachableAbortRelay, SERVER_FALLBACK_TOMBSTONE_REASON, RECOVERY_ABORT_TIMEOUT_MS
 // [unwrapped __esm module rio] deps: ft, oo, BE, wr, Wct, Ao, Un, kt, ZE, ZU, Xso
 fia = {};
 rap = new Set(["claude-sonnet-4-6", "claude-opus-4-6"]);
@@ -29,21 +30,6 @@ function oio(e, t) {
 var bia = 3,
   sio = "Autocompact is thrashing: the context refilled to the limit within 3 turns of the previous compact, 3 times in a row. A file being read or a tool output is likely too large for the context window. Try reading in smaller chunks, or use /clear to start fresh.";
 var cio = {};
-_t(cio, {
-  userAbortReason: () => userAbortReason,
-  unwrapAbortReason: () => unwrapAbortReason,
-  serverFallbackTombstoneAbortReason: () => serverFallbackTombstoneAbortReason,
-  isUserInitiatedAbortReason: () => isUserInitiatedAbortReason,
-  isUserAttributableAbortKind: () => isUserAttributableAbortKind,
-  isServerFallbackDiscard: () => isServerFallbackDiscard,
-  createRecoveryAbortController: () => createRecoveryAbortController,
-  createChildAbortController: () => createChildAbortController,
-  createAbortController: () => createAbortController,
-  classifyAbortReasonForTelemetry: () => classifyAbortReasonForTelemetry,
-  attachDetachableAbortRelay: () => attachDetachableAbortRelay,
-  SERVER_FALLBACK_TOMBSTONE_REASON: () => SERVER_FALLBACK_TOMBSTONE_REASON,
-  RECOVERY_ABORT_TIMEOUT_MS: () => RECOVERY_ABORT_TIMEOUT_MS
-});
 function createAbortController(e = uap) {
   let t = new AbortController();
   return Sia.setMaxListeners(e, t.signal), t;

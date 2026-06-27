@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1503  score=0.1745  fileCov=0.5195
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: showCurrentEffort, rippleLevel, rippleDistance, getSliderGeometry, getEffortHelpText, executeEffort, call, UltraRippleText, RIPPLE_RAMP
 // [unwrapped __esm module wQl] deps: fh, fn
 ((J6f = {
   type: "prompt",
@@ -40,17 +41,6 @@ Do not run the statusline-setup agent and do not edit any settings files. Simply
 }),
   (vQl = J6f));
 var MQl = {};
-_t(MQl, {
-  showCurrentEffort: () => showCurrentEffort,
-  rippleLevel: () => rippleLevel,
-  rippleDistance: () => rippleDistance,
-  getSliderGeometry: () => getSliderGeometry,
-  getEffortHelpText: () => getEffortHelpText,
-  executeEffort: () => executeEffort,
-  call: () => call,
-  UltraRippleText: () => UltraRippleText,
-  RIPPLE_RAMP: () => RIPPLE_RAMP,
-});
 function getEffortHelpText() {
   let e = As(),
     t = t8(e),

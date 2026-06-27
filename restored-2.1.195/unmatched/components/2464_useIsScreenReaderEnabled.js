@@ -4,56 +4,10 @@
 // class=new  jaccard=0.0045  score=0.1264  fileCov=0.0046
 // note: nearest: src/screens/REPL.tsx (0.0045); dir inferred from dep-graph -> components; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: wrapText, useTimeout, useThemeSetting, useTheme, useTerminalViewport, useTerminalTitle, useTerminalFocus, useTabStatus, useStdin, useSelection, useResolvedTheme, usePreviewTheme, useIsScreenReaderEnabled, useInterval, useHasFocus, useFocus, useDebouncedCallback, useCustomThemes, useClock, useApp, useAnimationTimer, useAnimationFrame, supportsTabStatus, render, measureElement, createRoot, color, ThemeProvider, Text, TerminalFocusEvent, Spacer, RawAnsi, NoSelect, Newline, Link, Fo …
 // [unwrapped __esm module GLn]
 tX = VWd;
 var wW = {};
-_t(wW, {
-  wrapText: () => C1,
-  useTimeout: () => Pd,
-  useThemeSetting: () => Fke,
-  useTheme: () => na,
-  useTerminalViewport: () => b0e,
-  useTerminalTitle: () => S0e,
-  useTerminalFocus: () => Pg,
-  useTabStatus: () => ULn,
-  useStdin: () => s8,
-  useSelection: () => Z_e,
-  useResolvedTheme: () => GD,
-  usePreviewTheme: () => eRn,
-  useIsScreenReaderEnabled: () => Sd,
-  useInterval: () => Gc,
-  useHasFocus: () => NLn,
-  useFocus: () => yat,
-  useDebouncedCallback: () => vW,
-  useCustomThemes: () => jke,
-  useClock: () => ks,
-  useApp: () => TW,
-  useAnimationTimer: () => BLn,
-  useAnimationFrame: () => Kf,
-  supportsTabStatus: () => eGe,
-  render: () => render,
-  measureElement: () => tX,
-  createRoot: () => createRoot,
-  color: () => Io,
-  ThemeProvider: () => Z0n,
-  Text: () => w,
-  TerminalFocusEvent: () => Pit,
-  Spacer: () => NJr,
-  RawAnsi: () => gat,
-  NoSelect: () => wI,
-  Newline: () => HW,
-  Link: () => xs,
-  FocusManager: () => Vit,
-  EventEmitter: () => F3e,
-  Event: () => Qte,
-  Decorative: () => _0e,
-  ClickEvent: () => UBt,
-  Button: () => mat,
-  Box: () => U,
-  BaseText: () => nS,
-  BaseBox: () => Iy,
-  Ansi: () => bd
-});
 function GJr(e) {
   return z5i.createElement(Z0n, null, e);
 }

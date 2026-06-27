@@ -4,14 +4,10 @@
 // class=modified (alt of src/components/Settings/Usage.tsx)  jaccard=0.1206  score=0.2765  fileCov=0.1762
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: formatRateLimits, formatBehaviors, call
 // [unwrapped __esm module R6l] deps: $7t
 k6l = R(se(), 1);
 var $6l = {};
-_t($6l, {
-  formatRateLimits: () => formatRateLimits,
-  formatBehaviors: () => formatBehaviors,
-  call: () => call,
-});
 function formatRateLimits(e) {
   let { rate_limits: t, subscription_type: n } = e;
   if (!t) return null;

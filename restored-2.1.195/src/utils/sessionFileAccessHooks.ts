@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3157  score=0.7465  fileCov=0.3536
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerSessionFileAccessHooks, isMemoryFileAccess
 // [unwrapped __esm module YJn] deps: Ece, Uh, vGt, MM, fd, er, je, At, sa, dn, kt, i0n, iit, PDo, Twl, qwl
 ((VJn = require("fs/promises")), (tSt = require("path")), (NAf = typeof Bun !== "undefined"));
 ((kb = {
@@ -15,10 +16,6 @@
     user: new Set(),
   }));
 var nCl = {};
-_t(nCl, {
-  registerSessionFileAccessHooks: () => registerSessionFileAccessHooks,
-  isMemoryFileAccess: () => isMemoryFileAccess,
-});
 function tCl(e, t) {
   switch (e) {
     case Ds: {

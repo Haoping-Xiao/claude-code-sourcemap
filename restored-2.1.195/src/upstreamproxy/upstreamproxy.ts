@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1466  score=0.2575  fileCov=0.2539
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: showInvalidConfigDialog
 // [unwrapped __esm module Afc] deps: dn, fd, je, wr, fn, At, Bi, Mx, iWe, kM, C7n, ofc, pfc
 ((ffc = require("child_process")),
   (sO = require("fs/promises")),
@@ -67,9 +68,6 @@ ocm = [
   },
 ];
 var Tfc = {};
-_t(Tfc, {
-  showInvalidConfigDialog: () => showInvalidConfigDialog,
-});
 function acm(e) {
   let t = Hfc.c(19),
     { filePath: n, errorDescription: r, onExit: o, onReset: s } = e,

@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0117  score=0.1132  fileCov=0.0128
 // note: nearest: src/commands/insights.ts (0.0117); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stageFile, resolveStageFileRoot, destFromMountPath, STAGE_FILE_ROOT, STAGE_FILE_MOUNT_PREFIX, DEFAULT_STAGE_FILE_ROOT
 function yXo({
   message: e,
   held: t,
@@ -21,14 +22,6 @@ function _Xo(e, t) {
   e.length = 0;
 }
 var EXo = {};
-_t(EXo, {
-  stageFile: () => stageFile,
-  resolveStageFileRoot: () => resolveStageFileRoot,
-  destFromMountPath: () => destFromMountPath,
-  STAGE_FILE_ROOT: () => STAGE_FILE_ROOT,
-  STAGE_FILE_MOUNT_PREFIX: () => STAGE_FILE_MOUNT_PREFIX,
-  DEFAULT_STAGE_FILE_ROOT: () => DEFAULT_STAGE_FILE_ROOT
-});
 function resolveStageFileRoot(e) {
   if (!e) return DEFAULT_STAGE_FILE_ROOT;
   if (!Lmr(e)) throw Error("CLAUDE_STAGE_FILE_ROOT must be an absolute path");

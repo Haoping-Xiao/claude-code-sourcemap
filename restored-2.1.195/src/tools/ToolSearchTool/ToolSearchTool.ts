@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.165  score=0.744  fileCov=0.1749
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: outputSchema, inputSchema, clearToolSearchDescriptionCache, ToolSearchTool
 var Lla = {};
-_t(Lla, {
-  outputSchema: () => outputSchema,
-  inputSchema: () => inputSchema,
-  clearToolSearchDescriptionCache: () => clearToolSearchDescriptionCache,
-  ToolSearchTool: () => ToolSearchTool,
-});
 function Klp(e) {
   return e
     .map((t) => t.name)

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.5719  score=0.8234  fileCov=0.6518
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setupPluginHookHotReload, resetHotReloadState, pruneRemovedPluginHooks, loadPluginHooks, getPluginAffectingSettingsSnapshot, clearPluginHookCache
 // [unwrapped __esm module jjt] deps: Ece, ft, dn, Rm, fd, je, At, sp, E5e, PM
 dNn = require("path");
 ((pNn = Icp()),
@@ -12,14 +13,6 @@ dNn = require("path");
   (yca = pNn.updateWatchPaths),
   (_ca = pNn.onCwdChanged));
 var Aao = {};
-_t(Aao, {
-  setupPluginHookHotReload: () => setupPluginHookHotReload,
-  resetHotReloadState: () => resetHotReloadState,
-  pruneRemovedPluginHooks: () => pruneRemovedPluginHooks,
-  loadPluginHooks: () => loadPluginHooks,
-  getPluginAffectingSettingsSnapshot: () => getPluginAffectingSettingsSnapshot,
-  clearPluginHookCache: () => clearPluginHookCache,
-});
 function xcp(e) {
   let t = {
     PreToolUse: [],

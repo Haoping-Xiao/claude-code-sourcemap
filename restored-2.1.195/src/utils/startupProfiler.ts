@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3121  score=0.4989  fileCov=0.4546
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: profileReport, profileCheckpoint, logStartupPerf, isDetailedProfilingEnabled, getStartupPerfLogPath, getStartupPerfJsonPath, addStartupContext
 var jis = {};
-_t(jis, {
-  profileReport: () => profileReport,
-  profileCheckpoint: () => profileCheckpoint,
-  logStartupPerf: () => logStartupPerf,
-  isDetailedProfilingEnabled: () => isDetailedProfilingEnabled,
-  getStartupPerfLogPath: () => getStartupPerfLogPath,
-  getStartupPerfJsonPath: () => getStartupPerfJsonPath,
-  addStartupContext: () => addStartupContext,
-});
 function addStartupContext(e) {
   if (!ZIt) return;
   Object.assign(Nis, e);

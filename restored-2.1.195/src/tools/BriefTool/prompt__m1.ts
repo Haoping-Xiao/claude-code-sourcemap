@@ -4,6 +4,7 @@
 // class=modified (alt of src/tools/BriefTool/prompt.ts)  jaccard=0.089  score=0.1214  fileCov=0.25
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SEND_USER_FILE_TOOL_PROMPT, SEND_USER_FILE_TOOL_NAME, DESCRIPTION
 // [unwrapped __esm module f4]
 jop = `## Talking to the user
 
@@ -17,11 +18,6 @@ For longer work: ack \u2192 work \u2192 result. Between those, send a checkpoint
 
 Keep messages tight \u2014 the decision, the file:line, the PR number. Second person always ("your config"), never third.`;
 var WOn = {};
-_t(WOn, {
-  SEND_USER_FILE_TOOL_PROMPT: () => SEND_USER_FILE_TOOL_PROMPT,
-  SEND_USER_FILE_TOOL_NAME: () => SEND_USER_FILE_TOOL_NAME,
-  DESCRIPTION: () => DESCRIPTION,
-});
 var SEND_USER_FILE_TOOL_NAME = "SendUserFile",
   DESCRIPTION = "Send one or more files to the user",
   SEND_USER_FILE_TOOL_PROMPT = `Send files to the user. Use this when the file *is* the deliverable \u2014 a generated diagram, a report, a screenshot, a built artifact \u2014 and you want it surfaced, not just mentioned. Paths can be absolute or relative to the current working directory.

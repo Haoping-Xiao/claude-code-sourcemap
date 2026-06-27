@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0151  score=0.3099  fileCov=0.0156
 // note: nearest: src/tools/AgentTool/runAgent.ts (0.0151); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: workflowNeedsUsageConsentPrompt, recordWorkflowUsageConsent
 var c0o = {};
-_t(c0o, {
-  workflowNeedsUsageConsentPrompt: () => workflowNeedsUsageConsentPrompt,
-  recordWorkflowUsageConsent: () => recordWorkflowUsageConsent
-});
 function workflowNeedsUsageConsentPrompt(e, t) {
   if (e !== uC) return false;
   if (t.options.isNonInteractiveSession) return false;

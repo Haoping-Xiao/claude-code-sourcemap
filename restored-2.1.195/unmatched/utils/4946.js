@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0038  score=0.2416  fileCov=0.0039
 // note: nearest: src/screens/REPL.tsx (0.0038); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module JVl] deps: fn
 XVl = {
   type: "local-jsx",
@@ -15,9 +16,6 @@ XVl = {
   load: () => Promise.resolve().then(() => (YVl(), KVl))
 };
 var ZVl = {};
-_t(ZVl, {
-  call: () => call
-});
 async function call(e) {
   return G("tengu_vertex_setup_started", {}), S1e.jsx(XGf, {
     onDone: e

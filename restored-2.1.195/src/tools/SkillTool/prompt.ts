@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2906  score=0.6956  fileCov=0.333
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: getSkillToolInfo, getSkillInfo, getPrompt, getLimitedSkillToolCommands, formatCommandsWithinBudget, clearPromptCache
 var Bra = {};
-_t(Bra, {
-  getSkillToolInfo: () => getSkillToolInfo,
-  getSkillInfo: () => getSkillInfo,
-  getPrompt: () => getPrompt,
-  getLimitedSkillToolCommands: () => getLimitedSkillToolCommands,
-  formatCommandsWithinBudget: () => formatCommandsWithinBudget,
-  clearPromptCache: () => clearPromptCache,
-});
 function Hoo(e) {
   let t = $2t(e),
     n = WWe();

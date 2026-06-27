@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3002  score=0.4343  fileCov=0.4929
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module DXl] deps: ft
 ((w8f = {
   name: "chrome",
@@ -15,9 +16,6 @@
 }),
   (LXl = w8f));
 var PXl = {};
-_t(PXl, {
-  call: () => call,
-});
 async function call() {
   if (await ac("https://www.stickermule.com/claudecode"))
     return {

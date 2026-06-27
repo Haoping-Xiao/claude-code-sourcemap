@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.0954  score=0.1983  fileCov=0.1554
 // note: low-confidence suggestion: src/hooks/useMainLoopModel.ts; dir inferred from dep-graph -> hooks; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: REMOTE_CONTROL_DISCONNECTED_MSG, BRIDGE_SESSION_ENDED_DETAIL, BRIDGE_LOGIN_INSTRUCTION, BRIDGE_LOGIN_HINT, BRIDGE_LOGIN_ERROR
 // [unwrapped __esm module dzn] deps: Ye
 rsl = R(lt(), 1), nCo = R(se(), 1), srf = /https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]+/g, irf = {
   ")": "(",
@@ -11,13 +12,6 @@ rsl = R(lt(), 1), nCo = R(se(), 1), srf = /https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]
   "}": "{"
 };
 var osl = {};
-_t(osl, {
-  REMOTE_CONTROL_DISCONNECTED_MSG: () => REMOTE_CONTROL_DISCONNECTED_MSG,
-  BRIDGE_SESSION_ENDED_DETAIL: () => BRIDGE_SESSION_ENDED_DETAIL,
-  BRIDGE_LOGIN_INSTRUCTION: () => BRIDGE_LOGIN_INSTRUCTION,
-  BRIDGE_LOGIN_HINT: () => BRIDGE_LOGIN_HINT,
-  BRIDGE_LOGIN_ERROR: () => BRIDGE_LOGIN_ERROR
-});
 var BRIDGE_LOGIN_INSTRUCTION = "Remote Control is only available with claude.ai subscriptions. Please use `/login` to sign in with your claude.ai account.",
   BRIDGE_LOGIN_ERROR = "Error: You must be logged in to use Remote Control.\n\nRemote Control is only available with claude.ai subscriptions. Please use `/login` to sign in with your claude.ai account.",
   REMOTE_CONTROL_DISCONNECTED_MSG = "Remote Control disconnected.",

@@ -4,20 +4,12 @@
 // class=modified  jaccard=0.7222  score=0.8461  fileCov=0.8314
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stopCapturingEarlyInput, startCapturingEarlyInput, seedEarlyInput, processChunk, isCapturingEarlyInput, hasEarlyInput, consumeEarlyInput
 // [unwrapped __esm module f7r]
 ((c2i = R(rt(), 1)), (u2i = c2i.createContext(false)));
 u2i.displayName = "InternalAccessibilityContext";
 yRn = u2i;
 var h7r = {};
-_t(h7r, {
-  stopCapturingEarlyInput: () => stopCapturingEarlyInput,
-  startCapturingEarlyInput: () => startCapturingEarlyInput,
-  seedEarlyInput: () => seedEarlyInput,
-  processChunk: () => processChunk,
-  isCapturingEarlyInput: () => isCapturingEarlyInput,
-  hasEarlyInput: () => hasEarlyInput,
-  consumeEarlyInput: () => consumeEarlyInput,
-});
 function startCapturingEarlyInput() {
   if (
     !process.stdin.isTTY ||

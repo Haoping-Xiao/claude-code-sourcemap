@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.1934  score=0.318  fileCov=0.3305
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: TranscriptHelpMenu, REPL
 var JPc = {};
-_t(JPc, {
-  TranscriptHelpMenu: () => TranscriptHelpMenu,
-  REPL: () => REPL,
-});
 function hIm() {
   G("tengu_left_arrow_gesture", {
     outcome: $e("abandoned"),

@@ -4,14 +4,10 @@
 // class=partial  jaccard=0.0696  score=0.5225  fileCov=0.0743
 // note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sessionTeamName, initializeSessionTeam, _resetInheritedTeamNameForTesting
 // [unwrapped __esm module M1c] deps: dn, je, Vtn, Jt, wdr, Zdr, Azo, I1c
 R1c = require("fs/promises"), L1c = require("os");
 var N1c = {};
-_t(N1c, {
-  sessionTeamName: () => sessionTeamName,
-  initializeSessionTeam: () => initializeSessionTeam,
-  _resetInheritedTeamNameForTesting: () => rkm
-});
 function sessionTeamName(e) {
   return `${tkm}-${e.slice(0, 8)}`;
 }

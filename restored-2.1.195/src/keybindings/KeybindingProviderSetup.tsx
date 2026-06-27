@@ -4,14 +4,10 @@
 // class=modified  jaccard=0.1932  score=0.2842  fileCov=0.3762
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: KeybindingSetup, KeybindingRoot, CHORD_TIMEOUT_MS
 // [unwrapped __esm module G1a] deps: kt
 j1a = new Map();
 var z1a = {};
-_t(z1a, {
-  KeybindingSetup: () => KeybindingSetup,
-  KeybindingRoot: () => KeybindingRoot,
-  CHORD_TIMEOUT_MS: () => CHORD_TIMEOUT_MS,
-});
 function KeybindingSetup(e) {
   let t = Fho.c(4),
     { children: n } = e;

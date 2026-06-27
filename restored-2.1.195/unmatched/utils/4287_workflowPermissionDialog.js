@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0597  score=0.1548  fileCov=0.0886
 // note: nearest: src/tools/SkillTool/SkillTool.ts (0.0597); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: workflowPermissionDialog
 // [unwrapped __esm module i0o] deps: Xr, dn, kt, yC, ii, fp, Il, Lo, Gy, k6e, Xko, Uoe, zml, Kml, U6t, D6e, fgl, HU, $7, mKr
 hgl = require("crypto"), ygl = require("path"), kpf = ve(() => H.strictObject({
   script: H.string().max(Oj).refine(sEe, xpf).optional().describe("Self-contained workflow script. Must begin with `export const meta = { name, description, phases }` (pure literal, no computed values) followed by the script body using agent()/parallel()/pipeline()/phase()."),
@@ -294,7 +295,4 @@ You will be notified when it completes. Use /workflows to watch live progress.`;
   }
 });
 var a0o = {};
-_t(a0o, {
-  workflowPermissionDialog: () => workflowPermissionDialog
-});
 var workflowPermissionDialog;

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3138  score=0.4577  fileCov=0.4994
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: restoreSkillStateFromMessages, removeInterruptedMessage, loadMessagesFromJsonlPath, loadConversationForResume, getResumePrompt, findLiveNonInteractiveSession, dropRetractedMessages, deserializeMessagesWithInterruptDetection, deserializeMessages, dedupeSessionStartHookMessages
 // [unwrapped __esm module _ht] deps: np, je, fn, At, Hpe, YS, Is, Jt, OI
 ((e9t = require("fs/promises")),
   (mTo = require("net")),
@@ -11,18 +12,6 @@
   (dQp = ["interactive", "bg", "daemon", "daemon-worker"]));
 fQp = ["busy", "shell", "idle", "waiting"];
 var TZa = {};
-_t(TZa, {
-  restoreSkillStateFromMessages: () => restoreSkillStateFromMessages,
-  removeInterruptedMessage: () => removeInterruptedMessage,
-  loadMessagesFromJsonlPath: () => loadMessagesFromJsonlPath,
-  loadConversationForResume: () => loadConversationForResume,
-  getResumePrompt: () => getResumePrompt,
-  findLiveNonInteractiveSession: () => findLiveNonInteractiveSession,
-  dropRetractedMessages: () => dropRetractedMessages,
-  deserializeMessagesWithInterruptDetection: () => deserializeMessagesWithInterruptDetection,
-  deserializeMessages: () => deserializeMessages,
-  dedupeSessionStartHookMessages: () => dedupeSessionStartHookMessages,
-});
 function AQp(e) {
   if (e.type !== "attachment") return e;
   let t = e.attachment;

@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.2106  score=0.3798  fileCov=0.321
 // note: low-confidence suggestion: src/commands/mobile/mobile.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __commonJS module cAt] (exports=IzS, module=mGl)
 var IzS = {};
 var mGl = {
@@ -11,9 +12,6 @@ var mGl = {
 };
 mGl.exports = fGl();
 var hGl = {};
-_t(hGl, {
-  call: () => call
-});
 function T2f(e) {
   let t = fFo.c(19),
     {

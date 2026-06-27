@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.54  score=0.7546  fileCov=0.655
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module EFl] deps: si, lJ, Ko, R6, Ye, ps
 ((bFl = R(lt(), 1)), (Wk = R(se(), 1)));
 var AFl = {};
-_t(AFl, {
-  call: () => call,
-});
 function H1f(e) {
   let [t] = eZ.useState(() => lI()),
     [n, r] = eZ.useState({

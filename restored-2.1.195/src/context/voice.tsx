@@ -4,15 +4,10 @@
 // class=modified  jaccard=0.435  score=0.9427  fileCov=0.4469
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: useVoiceState, useSetVoiceState, useGetVoiceState, VoiceProvider
 // [unwrapped __esm module qLn] deps: iu, ft, At, Hu, Yf
 ((Q5i = require("fs/promises")), (oUt = require("path")));
 var eqi = {};
-_t(eqi, {
-  useVoiceState: () => useVoiceState,
-  useSetVoiceState: () => useSetVoiceState,
-  useGetVoiceState: () => useGetVoiceState,
-  VoiceProvider: () => VoiceProvider,
-});
 function VoiceProvider(e) {
   let t = KJr.c(3),
     { children: n } = e,

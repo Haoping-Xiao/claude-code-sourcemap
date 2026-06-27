@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2524  score=0.2861  fileCov=0.6817
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module VVl]
 ((VGf = {
   type: "local-jsx",
@@ -15,9 +16,6 @@
 }),
   (qVl = VGf));
 var KVl = {};
-_t(KVl, {
-  call: () => call,
-});
 async function call(e) {
   return (
     G("tengu_bedrock_setup_started", {}),

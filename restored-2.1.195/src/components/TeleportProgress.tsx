@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.288  score=0.5036  fileCov=0.4023
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: teleportWithProgress, TeleportProgress
 var zFc = {};
-_t(zFc, {
-  teleportWithProgress: () => teleportWithProgress,
-  TeleportProgress: () => TeleportProgress,
-});
 function TeleportProgress(e) {
   let t = WFc.c(16),
     { currentStep: n, sessionId: r } = e,

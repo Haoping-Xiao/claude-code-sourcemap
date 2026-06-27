@@ -4,39 +4,11 @@
 // class=modified  jaccard=0.337  score=0.6797  fileCov=0.4006
 // note: deminified; 27 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stopPeriodicGrowthBookRefresh, setupPeriodicGrowthBookRefresh, setGrowthBookConfigOverride, resetGrowthBook, refreshGrowthBookFeatures, refreshGrowthBookAfterAuthChange, onGrowthBookRefresh, isGrowthBookEnabled, isFeatureFromExperiment, initializeGrowthBook, hasGrowthBookEnvOverride, hasFreshGrowthBookFeatures, getUserAttributes, getNonDefaultFeatureKeys, getGrowthBookConfigOverrides, getFeatureValue_DEPRECATED, getFeatureValue_CACHED_WITH_REFRESH, getFeatureValue_CACHED_MAY_BE_ …
 // [unwrapped __esm module y1] deps: rzr, IB, er, je, fn, vn, Is, Jt, sG, Ote, aW, IOi, Un, Du, Pzr
 ((xOi = R(Hst(), 1)), (hkn = R(Bte(), 1)), (Mzr = require("crypto")));
 A7 = [];
 var Kzr = {};
-_t(Kzr, {
-  stopPeriodicGrowthBookRefresh: () => stopPeriodicGrowthBookRefresh,
-  setupPeriodicGrowthBookRefresh: () => setupPeriodicGrowthBookRefresh,
-  setGrowthBookConfigOverride: () => setGrowthBookConfigOverride,
-  resetGrowthBook: () => resetGrowthBook,
-  refreshGrowthBookFeatures: () => refreshGrowthBookFeatures,
-  refreshGrowthBookAfterAuthChange: () => refreshGrowthBookAfterAuthChange,
-  onGrowthBookRefresh: () => onGrowthBookRefresh,
-  isGrowthBookEnabled: () => isGrowthBookEnabled,
-  isFeatureFromExperiment: () => isFeatureFromExperiment,
-  initializeGrowthBook: () => initializeGrowthBook,
-  hasGrowthBookEnvOverride: () => hasGrowthBookEnvOverride,
-  hasFreshGrowthBookFeatures: () => hasFreshGrowthBookFeatures,
-  getUserAttributes: () => getUserAttributes,
-  getNonDefaultFeatureKeys: () => getNonDefaultFeatureKeys,
-  getGrowthBookConfigOverrides: () => getGrowthBookConfigOverrides,
-  getFeatureValue_DEPRECATED: () => getFeatureValue_DEPRECATED,
-  getFeatureValue_CACHED_WITH_REFRESH: () => getFeatureValue_CACHED_WITH_REFRESH,
-  getFeatureValue_CACHED_MAY_BE_STALE: () => getFeatureValue_CACHED_MAY_BE_STALE,
-  getDynamicConfig_CACHED_MAY_BE_STALE: () => getDynamicConfig_CACHED_MAY_BE_STALE,
-  getDynamicConfig_BLOCKS_ON_INIT: () => getDynamicConfig_BLOCKS_ON_INIT,
-  getClientDataAtis: () => getClientDataAtis,
-  getApiBaseUrlHost: () => getApiBaseUrlHost,
-  getAllGrowthBookFeatures: () => getAllGrowthBookFeatures,
-  clearGrowthBookConfigOverrides: () => clearGrowthBookConfigOverrides,
-  checkSecurityRestrictionGate: () => checkSecurityRestrictionGate,
-  checkGate_CACHED_OR_BLOCKING: () => checkGate_CACHED_OR_BLOCKING,
-  ATIS_REQUEST_HEADER: () => ATIS_REQUEST_HEADER,
-});
 function DOi(e) {
   try {
     Promise.resolve(e()).catch((t) => {

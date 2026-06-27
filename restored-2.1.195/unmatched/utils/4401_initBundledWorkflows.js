@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0127  score=0.1398  fileCov=0.0138
 // note: nearest: src/components/tasks/RemoteSessionDetailDialog.tsx (0.0127); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: initBundledWorkflows
 // [unwrapped __esm module DAl] deps: o7n
 RAl = [{
   title: "Scope",
@@ -22,9 +23,6 @@ RAl = [{
   detail: "Merge semantic dupes, rank by confidence, cite sources"
 }];
 var PAl = {};
-_t(PAl, {
-  initBundledWorkflows: () => initBundledWorkflows
-});
 function initBundledWorkflows() {
   LAl(), wAl();
 }

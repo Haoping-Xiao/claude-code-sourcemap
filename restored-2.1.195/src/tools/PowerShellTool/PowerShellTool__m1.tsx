@@ -4,14 +4,10 @@
 // class=modified (alt of src/tools/PowerShellTool/PowerShellTool.tsx)  jaccard=0.141  score=0.4003  fileCov=0.1787
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isAutobackgroundingAllowed, detectBlockedSleepPattern, PowerShellTool
 // [unwrapped __esm module DTl] deps: Ko, E5, ql, kLe, cjn, ljn, Ye
 $k = R(se(), 1);
 var Xzt = {};
-_t(Xzt, {
-  isAutobackgroundingAllowed: () => isAutobackgroundingAllowed,
-  detectBlockedSleepPattern: () => detectBlockedSleepPattern,
-  PowerShellTool: () => PowerShellTool,
-});
 function ASf(e) {
   let t = e.trim();
   if (!t)

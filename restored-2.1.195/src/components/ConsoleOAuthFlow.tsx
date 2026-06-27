@@ -4,15 +4,13 @@
 // class=modified  jaccard=0.2302  score=0.3454  fileCov=0.4083
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: ConsoleOAuthFlow
 // [unwrapped __esm module K9e] deps: FK, QEe
 ((vQa = require("child_process")),
   (wQa = require("fs")),
   (CQa = require("os")),
   (IQa = require("tty")));
 var RQa = {};
-_t(RQa, {
-  ConsoleOAuthFlow: () => ConsoleOAuthFlow,
-});
 function ConsoleOAuthFlow({
   onDone: e,
   onAuthSuccess: t,

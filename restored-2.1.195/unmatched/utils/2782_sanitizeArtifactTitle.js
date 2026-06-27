@@ -4,6 +4,7 @@
 // class=new  jaccard=0.011  score=0.0391  fileCov=0.0151
 // note: nearest: src/utils/cronScheduler.ts (0.011); dir inferred from dep-graph -> utils; 8 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: uuidSlugFromUrl, sanitizeArtifactTitle, parseArtifactUrl, extractHtmlTitle, deriveDescription, TITLE_SCAN_BYTES, ArtifactInputError, ARTIFACT_TOOL_NAME
 // [unwrapped __esm module WW] deps: Un, N8, fn, wX
 ire = O8.recurringMaxAgeMs / 86400000;
 function rso() {
@@ -12,16 +13,6 @@ function rso() {
 }
 var FRe = "WaitForMcpServers";
 var Q2t = {};
-_t(Q2t, {
-  uuidSlugFromUrl: () => uuidSlugFromUrl,
-  sanitizeArtifactTitle: () => sanitizeArtifactTitle,
-  parseArtifactUrl: () => parseArtifactUrl,
-  extractHtmlTitle: () => extractHtmlTitle,
-  deriveDescription: () => deriveDescription,
-  TITLE_SCAN_BYTES: () => TITLE_SCAN_BYTES,
-  ArtifactInputError: () => ArtifactInputError,
-  ARTIFACT_TOOL_NAME: () => ARTIFACT_TOOL_NAME
-});
 function parseArtifactUrl(e) {
   let t = e.match(new RegExp(`^https://(?:[a-z0-9-]+\\.)?claude\\.ai/code/(?:artifact|frame)/(${oso})(?:[/?#]|$)`));
   if (t?.[1]) return {

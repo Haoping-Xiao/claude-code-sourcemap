@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3191  score=0.6063  fileCov=0.4025
 // note: deminified; 42 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: tryGetPDFReference, suppressNextSkillListing, startRelevantMemoryPrefetch, seedSentSkillNames, resetSentSkillNames, readMemoriesForSurfacing, parseAtMentionedFileLines, memoryHeader, memoryFilesToAttachments, logDiagnosticsInjected, getToolSearchUsageReminderAttachments, getTodoReminderMode, getSkillListingAttachments, getQueuedCommandAttachments, getPlanModeExitAttachment, getPlanModeAttachmentTurnCount, getMemoryUpdateAttachments, getMcpInstructionsDeltaAttachment, getDirector …
 // [unwrapped __esm module b0l] deps: dn, je, At, Rd, Ao, Epe, Jt, RPo
 MCf = `You are selecting memories that will be useful to Claude Code as it processes a user's query. The first message lists the available memory files with their filenames and descriptions; subsequent messages each contain one user query.
 
@@ -14,50 +15,6 @@ Return a list of filenames for the memories that will clearly be useful to Claud
 - Do not re-select memories you already returned for an earlier query in this conversation.${PCf}
 `;
 var j0l = {};
-_t(j0l, {
-  tryGetPDFReference: () => tryGetPDFReference,
-  suppressNextSkillListing: () => suppressNextSkillListing,
-  startRelevantMemoryPrefetch: () => startRelevantMemoryPrefetch,
-  seedSentSkillNames: () => seedSentSkillNames,
-  resetSentSkillNames: () => resetSentSkillNames,
-  readMemoriesForSurfacing: () => readMemoriesForSurfacing,
-  parseAtMentionedFileLines: () => parseAtMentionedFileLines,
-  memoryHeader: () => memoryHeader,
-  memoryFilesToAttachments: () => memoryFilesToAttachments,
-  logDiagnosticsInjected: () => logDiagnosticsInjected,
-  getToolSearchUsageReminderAttachments: () => getToolSearchUsageReminderAttachments,
-  getTodoReminderMode: () => getTodoReminderMode,
-  getSkillListingAttachments: () => getSkillListingAttachments,
-  getQueuedCommandAttachments: () => getQueuedCommandAttachments,
-  getPlanModeExitAttachment: () => getPlanModeExitAttachment,
-  getPlanModeAttachmentTurnCount: () => getPlanModeAttachmentTurnCount,
-  getMemoryUpdateAttachments: () => getMemoryUpdateAttachments,
-  getMcpInstructionsDeltaAttachment: () => getMcpInstructionsDeltaAttachment,
-  getDirectoriesToProcess: () => getDirectoriesToProcess,
-  getDeferredToolsDeltaAttachment: () => getDeferredToolsDeltaAttachment,
-  getDateChangeAttachments: () => getDateChangeAttachments,
-  getContextEfficiencyAttachment: () => getContextEfficiencyAttachment,
-  getChangedFiles: () => getChangedFiles,
-  getAttachments: () => getAttachments,
-  getAttachmentMessages: () => getAttachmentMessages,
-  getAgentPendingMessageAttachments: () => getAgentPendingMessageAttachments,
-  getAgentListingDeltaAttachment: () => getAgentListingDeltaAttachment,
-  generateFileAttachment: () => generateFileAttachment,
-  filterDuplicateMemoryAttachments: () => filterDuplicateMemoryAttachments,
-  extractMcpResourceMentions: () => extractMcpResourceMentions,
-  extractAtMentionedFiles: () => extractAtMentionedFiles,
-  extractAkiSearchTerms: () => extractAkiSearchTerms,
-  extractAgentMentions: () => extractAgentMentions,
-  evictSentSkillNames: () => evictSentSkillNames,
-  createAttachmentMessage: () => createAttachmentMessage,
-  computeSkillListingDelta: () => computeSkillListingDelta,
-  collectSurfacedMemories: () => collectSurfacedMemories,
-  clearSentSkillNamesForAgent: () => clearSentSkillNamesForAgent,
-  ULTRA_EFFORT_CONFIG: () => ULTRA_EFFORT_CONFIG,
-  TODO_REMINDER_CONFIG: () => TODO_REMINDER_CONFIG,
-  RELEVANT_MEMORIES_CONFIG: () => RELEVANT_MEMORIES_CONFIG,
-  PLAN_MODE_ATTACHMENT_CONFIG: () => PLAN_MODE_ATTACHMENT_CONFIG,
-});
 function getTodoReminderMode() {
   let e = Oe.CLAUDE_CODE_TODO_REMINDER_MODE;
   if (e !== void 0) return e;

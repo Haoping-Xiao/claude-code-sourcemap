@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2448  score=0.3028  fileCov=0.5613
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: default
 // [unwrapped __esm module fnc] deps: dQt
 ((oXf = {
   type: "local",
@@ -20,9 +21,6 @@
 }),
   (sXf = oXf));
 var mnc = {};
-_t(mnc, {
-  default: () => lXf,
-});
 var iXf = async (e, t) => {
     let n = await KGt(t.abortController.signal);
     switch (n.kind) {

@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.5677  score=0.9346  fileCov=0.5911
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: writeBridgePointer, readBridgePointerAcrossWorktrees, readBridgePointer, getBridgePointerPath, clearBridgePointer, BRIDGE_POINTER_TTL_MS
 var F1e = {};
-_t(F1e, {
-  writeBridgePointer: () => writeBridgePointer,
-  readBridgePointerAcrossWorktrees: () => readBridgePointerAcrossWorktrees,
-  readBridgePointer: () => readBridgePointer,
-  getBridgePointerPath: () => getBridgePointerPath,
-  clearBridgePointer: () => clearBridgePointer,
-  BRIDGE_POINTER_TTL_MS: () => BRIDGE_POINTER_TTL_MS,
-});
 function getBridgePointerPath(e) {
   return Vir.join(PO(), LE(e), "bridge-pointer.json");
 }

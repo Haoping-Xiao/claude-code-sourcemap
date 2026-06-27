@@ -4,13 +4,8 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0139  score=0.5988  fileCov=0.014
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: loadSettingsFromFlag, loadSettingSourcesFromFlag, loadManagedSettingsFromFlag, eagerLoadSettings
 var HOc = {};
-_t(HOc, {
-  loadSettingsFromFlag: () => loadSettingsFromFlag,
-  loadSettingSourcesFromFlag: () => loadSettingSourcesFromFlag,
-  loadManagedSettingsFromFlag: () => loadManagedSettingsFromFlag,
-  eagerLoadSettings: () => eagerLoadSettings,
-});
 function loadSettingsFromFlag(e) {
   try {
     let t = e.trim(),

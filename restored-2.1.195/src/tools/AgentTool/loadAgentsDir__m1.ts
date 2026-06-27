@@ -4,6 +4,7 @@
 // class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.1911  score=0.5772  fileCov=0.2222
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module ty] deps: Qi, Xr, Uh, ANt, kt, MPn, bCe, gb, je, Cp, Iv, vn, pq, DE, eer, L7, lj, Jt, II, u_, lf, nC, IL, M7, gLl, wer
 ((vLl = require("path")), (wLl = ve(() => H.union([H.string(), H.record(H.string(), Nae())]))));
 ((CLl = ve(() =>
@@ -101,9 +102,6 @@ CP = Cn(async (e) => {
   }
 });
 var RLl = {};
-_t(RLl, {
-  call: () => call,
-});
 function qxf(e) {
   let t = kLl.c(7),
     { message: n, args: r, onDone: o } = e;

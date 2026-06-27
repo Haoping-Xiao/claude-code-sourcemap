@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resolvePowerupDiscoveryArm, POWERUP_DISCOVERY_COPY
 var R5l = {};
-_t(R5l, {
-  resolvePowerupDiscoveryArm: () => resolvePowerupDiscoveryArm,
-  POWERUP_DISCOVERY_COPY: () => POWERUP_DISCOVERY_COPY
-});
 function resolvePowerupDiscoveryArm() {
   let e = Oe.CLAUDE_CODE_POWERUP_ONBOARDING;
   if (e === "banner" || e === "step") return e;

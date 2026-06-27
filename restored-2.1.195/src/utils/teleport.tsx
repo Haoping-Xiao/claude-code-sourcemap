@@ -4,26 +4,10 @@
 // class=modified  jaccard=0.4221  score=0.5171  fileCov=0.6967
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: validateSessionRepository, validateGitState, toServerErrorType, toServerErrorReason, teleportToRemoteWithErrorHandling, teleportToRemote, teleportResumeCodeSession, teleportFromSessionsAPI, subscribeRemoteSessionToPR, processMessagesForTeleportResume, pollRemoteSessionEvents, interruptRemoteSession, checkOutTeleportedSessionBranch, awaitRemoteSessionResult, archiveRemoteSession
 // [unwrapped __esm module CTo] deps: kt, dn, Un, E8n, Lo, je, Bi, sa, sr, kv
 vht = require("fs/promises");
 var i9t = {};
-_t(i9t, {
-  validateSessionRepository: () => validateSessionRepository,
-  validateGitState: () => validateGitState,
-  toServerErrorType: () => toServerErrorType,
-  toServerErrorReason: () => toServerErrorReason,
-  teleportToRemoteWithErrorHandling: () => teleportToRemoteWithErrorHandling,
-  teleportToRemote: () => teleportToRemote,
-  teleportResumeCodeSession: () => teleportResumeCodeSession,
-  teleportFromSessionsAPI: () => teleportFromSessionsAPI,
-  subscribeRemoteSessionToPR: () => subscribeRemoteSessionToPR,
-  processMessagesForTeleportResume: () => processMessagesForTeleportResume,
-  pollRemoteSessionEvents: () => pollRemoteSessionEvents,
-  interruptRemoteSession: () => interruptRemoteSession,
-  checkOutTeleportedSessionBranch: () => checkOutTeleportedSessionBranch,
-  awaitRemoteSessionResult: () => awaitRemoteSessionResult,
-  archiveRemoteSession: () => archiveRemoteSession,
-});
 function MQp(e) {
   if (e === null) return cc("Session resumed", "suggestion");
   let t = e instanceof qb ? e.formattedMessage : e.message;

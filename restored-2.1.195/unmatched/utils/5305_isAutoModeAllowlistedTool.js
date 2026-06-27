@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0023  score=0.4203  fileCov=0.0023
 // note: nearest: src/cli/print.ts (0.0023); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isChromeMcpToolName, isAutoModeAllowlistedTool
 // [unwrapped __esm module clc] deps: Lo, Jt
 alc = require("fs/promises"), llc = require("path");
 var ylc = {};
-_t(ylc, {
-  isChromeMcpToolName: () => isChromeMcpToolName,
-  isAutoModeAllowlistedTool: () => isAutoModeAllowlistedTool
-});
 function isChromeMcpToolName(e) {
   return ocr.some(t => e.startsWith(t));
 }

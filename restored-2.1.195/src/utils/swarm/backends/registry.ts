@@ -4,27 +4,11 @@
 // class=modified  jaccard=0.5236  score=0.6655  fileCov=0.7107
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: resetBackendDetection, registerTmuxBackend, registerITermBackend, markInProcessFallback, isInProcessEnabled, globalBackendRegistry, getTeammateExecutor, getResolvedTeammateMode, getInProcessBackend, getCachedDetectionResult, getCachedBackend, getBackendByType, ensureBackendsRegistered, detectAndGetBackend, createBackendRegistry
 // [unwrapped __esm module Ahl] deps: dn, je, Bi, qJ, cAe, d9t
 ((zAe = []), (Shl = Promise.resolve()));
 registerITermBackend(w0o);
 var sel = {};
-_t(sel, {
-  resetBackendDetection: () => resetBackendDetection,
-  registerTmuxBackend: () => registerTmuxBackend,
-  registerITermBackend: () => registerITermBackend,
-  markInProcessFallback: () => markInProcessFallback,
-  isInProcessEnabled: () => isInProcessEnabled,
-  globalBackendRegistry: () => globalBackendRegistry,
-  getTeammateExecutor: () => getTeammateExecutor,
-  getResolvedTeammateMode: () => getResolvedTeammateMode,
-  getInProcessBackend: () => getInProcessBackend,
-  getCachedDetectionResult: () => getCachedDetectionResult,
-  getCachedBackend: () => getCachedBackend,
-  getBackendByType: () => getBackendByType,
-  ensureBackendsRegistered: () => ensureBackendsRegistered,
-  detectAndGetBackend: () => detectAndGetBackend,
-  createBackendRegistry: () => createBackendRegistry,
-});
 function createBackendRegistry() {
   return {
     cachedBackend: null,

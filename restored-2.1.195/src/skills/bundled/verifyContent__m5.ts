@@ -4,6 +4,7 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1258  score=0.4802  fileCov=0.1456
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SKILL_MD
 // [unwrapped __esm module yKo] deps: U_t, Un, jc, G1, At, Ls, qd
 gtn = /^(?:session|cse)_[A-Za-z0-9_-]+$/;
 function Opr() {
@@ -81,7 +82,4 @@ Review the design plan against the subject before building: if any part of it re
 `;
 var RTc = () => {};
 var DTc = {};
-_t(DTc, {
-  SKILL_MD: () => SKILL_MD,
-});
 var SKILL_MD;

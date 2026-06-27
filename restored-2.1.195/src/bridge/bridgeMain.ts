@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.4312  score=0.7464  fileCov=0.5052
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: runBridgeLoop, runBridgeHeadless, parseArgs, isServerError, isConnectionError, bridgeMain, BridgeHeadlessPermanentError
 var Kir = {};
-_t(Kir, {
-  runBridgeLoop: () => runBridgeLoop,
-  runBridgeHeadless: () => runBridgeHeadless,
-  parseArgs: () => parseArgs,
-  isServerError: () => isServerError,
-  isConnectionError: () => isConnectionError,
-  bridgeMain: () => bridgeMain,
-  BridgeHeadlessPermanentError: () => BridgeHeadlessPermanentError,
-});
 function Stc(e) {
   return e.connCapMs * 2;
 }

@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.4313  score=0.6214  fileCov=0.5849
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: deriveFirstPrompt, createFork, call, branchAndResume
 var J$o = {};
-_t(J$o, {
-  deriveFirstPrompt: () => deriveFirstPrompt,
-  createFork: () => createFork,
-  call: () => call,
-  branchAndResume: () => branchAndResume,
-});
 function deriveFirstPrompt(e) {
   let t = e?.message?.content;
   if (!t) return "Branched conversation";

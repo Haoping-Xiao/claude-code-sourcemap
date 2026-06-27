@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.335  score=0.7121  fileCov=0.3875
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: toAgentInfos, parseAgentsFromJson, parseAgentFromMarkdown, parseAgentFromJson, normalizeAgentType, isPluginAgent, isCustomAgent, isBuiltInAgent, hasRequiredMcpServers, getBuiltInAgents, getAgentDefinitionsWithOverrides, getActiveAgentsFromList, filterAgentsByMcpRequirements, clearAgentDefinitionsCache, agentMcpSpecsToScopedConfigs
 var GSt = {};
-_t(GSt, {
-  toAgentInfos: () => toAgentInfos,
-  parseAgentsFromJson: () => parseAgentsFromJson,
-  parseAgentFromMarkdown: () => parseAgentFromMarkdown,
-  parseAgentFromJson: () => parseAgentFromJson,
-  normalizeAgentType: () => normalizeAgentType,
-  isPluginAgent: () => isPluginAgent,
-  isCustomAgent: () => isCustomAgent,
-  isBuiltInAgent: () => isBuiltInAgent,
-  hasRequiredMcpServers: () => hasRequiredMcpServers,
-  getBuiltInAgents: () => yHe,
-  getAgentDefinitionsWithOverrides: () => getAgentDefinitionsWithOverrides,
-  getActiveAgentsFromList: () => getActiveAgentsFromList,
-  filterAgentsByMcpRequirements: () => filterAgentsByMcpRequirements,
-  clearAgentDefinitionsCache: () => clearAgentDefinitionsCache,
-  agentMcpSpecsToScopedConfigs: () => agentMcpSpecsToScopedConfigs,
-});
 function agentMcpSpecsToScopedConfigs(e) {
   if (!e.mcpServers?.length) return {};
   if (VE("mcp") && !L_e(e.source))

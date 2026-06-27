@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0241  score=0.1416  fileCov=0.0282
 // note: nearest: src/tools/SendMessageTool/SendMessageTool.ts (0.0241); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sendToUdsSocket, sendControlToUdsSocket, listLivePeerSessions, listAllLiveSessions, formatCrossSessionMessage, buildCrossSessionAttrs
 // [unwrapped __esm module Hpe]
 g8n = require("fs/promises");
 function gZa(e) {
@@ -34,14 +35,6 @@ function nAe(e) {
   return t !== null && t[1] !== "." && t[1] !== "..";
 }
 var yTo = {};
-_t(yTo, {
-  sendToUdsSocket: () => sendToUdsSocket,
-  sendControlToUdsSocket: () => sendControlToUdsSocket,
-  listLivePeerSessions: () => listLivePeerSessions,
-  listAllLiveSessions: () => listAllLiveSessions,
-  formatCrossSessionMessage: () => formatCrossSessionMessage,
-  buildCrossSessionAttrs: () => buildCrossSessionAttrs
-});
 function pQp(e) {
   return dQp.includes(e) ? e : void 0;
 }

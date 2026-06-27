@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.2038  score=0.5904  fileCov=0.2373
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setupComputerUseMCP
 // [unwrapped __esm module B1c] deps: ft, IL, bk, hN, hP
 $1c = require("fs/promises");
 var j1c = {};
-_t(j1c, {
-  setupComputerUseMCP: () => setupComputerUseMCP,
-});
 function setupComputerUseMCP() {
   let e = Cqe(ckn, apt()).map((n) => i9(S7, n.name)),
     t = dm()

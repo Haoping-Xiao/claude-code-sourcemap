@@ -4,6 +4,7 @@
 // class=modified (alt of src/commands/insights.ts)  jaccard=0.2671  score=0.8535  fileCov=0.28
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: invalidateWorkflowCache, getWorkflowCommands, createWorkflowCommand
 // [unwrapped __esm module $oc] deps: b5e, ZE, fh, og, je, fn, At, Bi, vn, co, Ao, y_, _a, Jt, sr, kv, OI
 ((l2 = require("fs/promises")), (Rz = require("path")));
 ((LQf = {
@@ -291,11 +292,6 @@ ${d}
 };
 sZf = oZf;
 var PWo = {};
-_t(PWo, {
-  invalidateWorkflowCache: () => s7n,
-  getWorkflowCommands: () => getWorkflowCommands,
-  createWorkflowCommand: () => createWorkflowCommand,
-});
 function createWorkflowCommand(e) {
   return {
     type: "prompt",

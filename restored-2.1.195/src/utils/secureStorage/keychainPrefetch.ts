@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2748  score=0.3779  fileCov=0.5017
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: startKeychainPrefetch, setWindowsCredManagerAvailable, setLastKnown, isWindowsCredManagerAvailable, getLegacyApiKeyPrefetchResult, getLastKnown, ensureKeychainPrefetchCompleted, clearLegacyApiKeyPrefetch
 // [unwrapped __esm module Usi] deps: Pw, At, ys, Jt, S9, sMt
 ((Nsi = require("fs/promises")), (Bsi = require("path")));
 Sjr = {
@@ -62,16 +63,6 @@ Sjr = {
   },
 };
 var Ksi = {};
-_t(Ksi, {
-  startKeychainPrefetch: () => startKeychainPrefetch,
-  setWindowsCredManagerAvailable: () => setWindowsCredManagerAvailable,
-  setLastKnown: () => setLastKnown,
-  isWindowsCredManagerAvailable: () => isWindowsCredManagerAvailable,
-  getLegacyApiKeyPrefetchResult: () => getLegacyApiKeyPrefetchResult,
-  getLastKnown: () => getLastKnown,
-  ensureKeychainPrefetchCompleted: () => ensureKeychainPrefetchCompleted,
-  clearLegacyApiKeyPrefetch: () => clearLegacyApiKeyPrefetch,
-});
 function isWindowsCredManagerAvailable() {
   return Gsi === true;
 }

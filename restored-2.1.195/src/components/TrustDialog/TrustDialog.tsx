@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.211  score=0.2965  fileCov=0.4226
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: TrustDialog
 // [unwrapped __esm module b$c] deps: dr, er, WGe, QH, fre
 s$c = require("path");
 YIm = /[\x00-\x1f\x7f-\x9f]/g;
@@ -18,9 +19,6 @@ XIm = new Set([
   "WebSearch",
 ]);
 var E$c = {};
-_t(E$c, {
-  TrustDialog: () => TrustDialog,
-});
 function TrustDialog(e) {
   let t = S$c.c(45),
     { onDone: n, commands: r } = e,

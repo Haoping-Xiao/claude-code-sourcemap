@@ -4,6 +4,7 @@
 // class=modified (alt of src/components/ConsoleOAuthFlow.tsx)  jaccard=0.1493  score=0.3015  fileCov=0.2281
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call, DesignLogin
 // [unwrapped __esm module gUl] deps: xne
 ((d1f = {
   name: "keybindings",
@@ -15,10 +16,6 @@
 }),
   (mUl = d1f));
 var bUl = {};
-_t(bUl, {
-  call: () => call,
-  DesignLogin: () => DesignLogin,
-});
 function DesignLogin({ onDone: e }) {
   let [t, n] = Y$.useState({
       state: "starting",

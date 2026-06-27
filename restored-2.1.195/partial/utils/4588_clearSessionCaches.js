@@ -4,13 +4,11 @@
 // class=partial  jaccard=0.1098  score=0.6245  fileCov=0.1176
 // note: low-confidence suggestion: src/commands/clear/caches.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: clearSessionCaches
 // [unwrapped __esm module JSt] deps: pq, jDl, id, kt, er, Lo, je, At, Bi, ys, sa, ZYt, sp, vn, Hu, tre, dr, ih
 WDl = require("fs"), qDl = R(D3e(), 1), jN = R(require("path"));
 Cfe = VDl();
 var QSt = {};
-_t(QSt, {
-  clearSessionCaches: () => clearSessionCaches
-});
 function clearSessionCaches(e = new Set(), t) {
   let n = e.size > 0;
   if (uS.cache.clear?.(), hH.cache.clear?.(), zso.cache.clear?.(), cb.cache.clear?.(), sSe.cache.clear?.(), HOo(Cfe), W0(), !n) cca();

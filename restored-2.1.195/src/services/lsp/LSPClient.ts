@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.6944  score=0.9246  fileCov=0.736
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: createLSPClient
 // [unwrapped __commonJS module xDa] (exports=qe_, module=IDa)
 var qe_ = {};
 var IDa = {
@@ -11,9 +12,6 @@ var IDa = {
 };
 IDa.exports = CDa();
 var RDa = {};
-_t(RDa, {
-  createLSPClient: () => createLSPClient,
-});
 function createLSPClient(e, t) {
   let n,
     r,

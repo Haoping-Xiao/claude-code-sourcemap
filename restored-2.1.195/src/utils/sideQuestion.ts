@@ -4,20 +4,11 @@
 // class=modified  jaccard=0.3125  score=0.3603  fileCov=0.7023
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: runSideQuestion, resetBtwHistory, getBtwHistory, findBtwTriggerPositions, createBtwHistoryState, clearBtwHistory, appendBtwHistory, _setGlobalBtwHistoryStateForTesting
 // [unwrapped __esm module wOe] deps: ft, Wit, Kit, Tne
 ((vOe = R(rt(), 1)), (W$o = R(se(), 1)));
 Rq = nkf;
 var YLl = {};
-_t(YLl, {
-  runSideQuestion: () => runSideQuestion,
-  resetBtwHistory: () => resetBtwHistory,
-  getBtwHistory: () => getBtwHistory,
-  findBtwTriggerPositions: () => findBtwTriggerPositions,
-  createBtwHistoryState: () => createBtwHistoryState,
-  clearBtwHistory: () => clearBtwHistory,
-  appendBtwHistory: () => appendBtwHistory,
-  _setGlobalBtwHistoryStateForTesting: () => skf,
-});
 function findBtwTriggerPositions(e) {
   let t = [],
     n = e.matchAll(rkf);

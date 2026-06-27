@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.631  score=0.7791  fileCov=0.7685
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: performHeapDump, captureMemoryDiagnostics
 // [unwrapped __esm module W7l]
 ((V9f = {
   description: "Restore the code and/or conversation to a previous point",
@@ -16,10 +17,6 @@
 }),
   (G7l = V9f));
 var z7l = {};
-_t(z7l, {
-  performHeapDump: () => performHeapDump,
-  captureMemoryDiagnostics: () => captureMemoryDiagnostics,
-});
 async function captureMemoryDiagnostics(e, t = 0) {
   let n = process.memoryUsage(),
     r = Xsr.getHeapStatistics(),

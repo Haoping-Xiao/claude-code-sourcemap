@@ -4,17 +4,8 @@
 // class=new  jaccard=0.053  score=0.1978  fileCov=0.0674
 // note: nearest: node_modules/zod/v4/classic/iso.js (0.053); 8 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: time, duration, datetime, date, ZodISOTime, ZodISODuration, ZodISODateTime, ZodISODate
 var $Qe = {};
-_t($Qe, {
-  time: () => time,
-  duration: () => duration,
-  datetime: () => datetime,
-  date: () => date,
-  ZodISOTime: () => ZodISOTime,
-  ZodISODuration: () => ZodISODuration,
-  ZodISODateTime: () => ZodISODateTime,
-  ZodISODate: () => ZodISODate
-});
 function datetime(e) {
   return ATr(ZodISODateTime, e);
 }

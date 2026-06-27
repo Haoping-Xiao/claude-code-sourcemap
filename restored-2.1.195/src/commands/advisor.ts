@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.0856  score=0.1455  fileCov=0.1722
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module BXl] deps: Un
 ((k8f = {
   type: "local",
@@ -16,9 +17,6 @@
 }),
   (I4o = k8f));
 var GXl = {};
-_t(GXl, {
-  call: () => call,
-});
 function jXl(e, t, n) {
   if (
     (G("tengu_advisor_command", {

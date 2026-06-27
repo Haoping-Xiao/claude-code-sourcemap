@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2223  score=0.3159  fileCov=0.4289
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: waitForPolicyLimitsToLoad, stopBackgroundPolling, startBackgroundPolling, shouldAwaitPolicyLimitsOnStartup, refreshPolicyLimits, recordPolicyLimitsStartupAwaitResult, logPolicyLimitsCacheStateAtFirstPrompt, loadPolicyLimits, initializePolicyLimitsLoadingPromise, clearPolicyLimitsCache, _resetPolicyLimitsForTesting, POLICY_LIMITS_COLD_AWAIT_MS, FAIL_CLOSED_SHADOW_CACHE_TTL_MS
 // [unwrapped __esm module AVe] deps: PR, uee, d2r, je, vn, co, Ls, ft, oo, fn, At, NE, Ao, Mh, dn, Un, kt, H5e, Ijt, yje, tP, gSe, lZn, lZn
 Eom = new Set([
   "repl_main_thread",
@@ -48,21 +49,6 @@ tO = class tO extends Error {
   (vom = new Set([401, 407, 429, 404, 403, 413])),
   (wom = [Oio, Djt, Nio, O1n, wcc, Pjt]));
 var bWt = {};
-_t(bWt, {
-  waitForPolicyLimitsToLoad: () => waitForPolicyLimitsToLoad,
-  stopBackgroundPolling: () => stopBackgroundPolling,
-  startBackgroundPolling: () => startBackgroundPolling,
-  shouldAwaitPolicyLimitsOnStartup: () => shouldAwaitPolicyLimitsOnStartup,
-  refreshPolicyLimits: () => refreshPolicyLimits,
-  recordPolicyLimitsStartupAwaitResult: () => recordPolicyLimitsStartupAwaitResult,
-  logPolicyLimitsCacheStateAtFirstPrompt: () => logPolicyLimitsCacheStateAtFirstPrompt,
-  loadPolicyLimits: () => loadPolicyLimits,
-  initializePolicyLimitsLoadingPromise: () => initializePolicyLimitsLoadingPromise,
-  clearPolicyLimitsCache: () => clearPolicyLimitsCache,
-  _resetPolicyLimitsForTesting: () => Gom,
-  POLICY_LIMITS_COLD_AWAIT_MS: () => POLICY_LIMITS_COLD_AWAIT_MS,
-  FAIL_CLOSED_SHADOW_CACHE_TTL_MS: () => FAIL_CLOSED_SHADOW_CACHE_TTL_MS,
-});
 function Dcc() {
   try {
     return Math.max(0, Date.now() - Rcc.statSync(Ske()).mtimeMs);

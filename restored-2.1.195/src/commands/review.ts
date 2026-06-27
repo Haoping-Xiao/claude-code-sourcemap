@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.099  score=0.1182  fileCov=0.3785
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module X2o] deps: VXn, MMe
 ((MWf = {
   type: "prompt",
@@ -36,9 +37,6 @@
   }),
   (rsr = MWf));
 var I9l = {};
-_t(I9l, {
-  call: () => call,
-});
 function $Wf(e) {
   let t = w9l.c(15),
     { onDone: n } = e,

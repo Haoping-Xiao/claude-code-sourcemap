@@ -4,6 +4,7 @@
 // class=modified (alt of src/commands/model/model.tsx)  jaccard=0.1203  score=0.1919  fileCov=0.2439
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module OJt] deps: BE, DD, Ao, Ls
 UJl = {
   "claude-opus-4-1": {
@@ -82,9 +83,6 @@ UJl = {
   },
 };
 var qJl = {};
-_t(qJl, {
-  call: () => call,
-});
 function R6f({ hasConversationMessages: e, onDone: t }) {
   let n = Ht((b) => b.mainLoopModel),
     r = Ht((b) => b.mainLoopModelForSession),

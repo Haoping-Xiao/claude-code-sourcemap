@@ -4,6 +4,7 @@
 // class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0306  score=0.0806  fileCov=0.0471
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: mcpLogoutHandler, mcpLoginHandler
 // [unwrapped __esm module vA] deps: FZt, U9o, Ye, S6, dn, kt, Yfe, cTt, C5, uTt, oo, wr, Gre
 ((dpc = R(lt(), 1)), (ppc = require("process")), (sur = R(rt(), 1)), (QN = R(se(), 1)));
 vam = sur.lazy(() =>
@@ -14,10 +15,6 @@ vam = sur.lazy(() =>
     })),
 );
 var F9o = {};
-_t(F9o, {
-  mcpLogoutHandler: () => mcpLogoutHandler,
-  mcpLoginHandler: () => mcpLoginHandler,
-});
 async function gpc(e, t) {
   await oV({
     hasDynamicMcpConfig: false,

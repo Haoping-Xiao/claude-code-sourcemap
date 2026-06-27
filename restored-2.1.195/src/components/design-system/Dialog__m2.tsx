@@ -4,12 +4,10 @@
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.1266  score=0.1679  fileCov=0.3393
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: ChromeAutoEnableDialog
 // [unwrapped __esm module B$c] deps: kt, Ye, DHe, er, vn, vi
 ((O$c = R(lt(), 1)), (dmr = R(rt(), 1)), (lO = R(se(), 1)));
 var F$c = {};
-_t(F$c, {
-  ChromeAutoEnableDialog: () => ChromeAutoEnableDialog,
-});
 function ChromeAutoEnableDialog(e) {
   let t = U$c.c(16),
     { onDone: n, isDontAskMode: r, isAutoMode: o } = e,

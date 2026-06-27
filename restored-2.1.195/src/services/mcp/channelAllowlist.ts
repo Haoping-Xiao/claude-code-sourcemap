@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.4928  score=1  fileCov=0.4928
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isChannelsEnabled, isChannelAllowlisted, getChannelAllowlist
 var Gfl = {};
-_t(Gfl, {
-  isChannelsEnabled: () => isChannelsEnabled,
-  isChannelAllowlisted: () => isChannelAllowlisted,
-  getChannelAllowlist: () => getChannelAllowlist,
-});
 function getChannelAllowlist() {
   let e = at("tengu_harbor_ledger", []),
     t = kdf().safeParse(e);

@@ -4,6 +4,7 @@
 // class=new  jaccard=0.022  score=0.0935  fileCov=0.028
 // note: nearest: src/utils/sessionStorage.ts (0.022); dir inferred from dep-graph -> utils; 18 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: worktreeOwnershipFields, summarizeToolCalls, stashBgStructuredResult, setWorktreeOwnership, setPermissionBlock, scanLinkRecords, markTurnActive, markTurnAborted, markApiFailure, findLatestRealUserAsk, ensurePermissionBridge, createClassifierJobState, classifyAndPushDebounced, classifyAndPush, classify, captureLatestAsk, captureIntent, LINK_SCAN_MAX_BYTES
 // [unwrapped __esm module Oze] deps: ft, ft, GF, yfe, ESt, p8, HI, OM, fd, je, Kke, wr, At, Hpe, bm, Jt, nne, ag
 TSt = require("fs/promises"), sxl = require("net"), jPo = require("path"), ixl = require("string_decoder");
 function dxl(e) {
@@ -19,26 +20,6 @@ function dxl(e) {
 `);
 }
 var zQn = {};
-_t(zQn, {
-  worktreeOwnershipFields: () => worktreeOwnershipFields,
-  summarizeToolCalls: () => summarizeToolCalls,
-  stashBgStructuredResult: () => stashBgStructuredResult,
-  setWorktreeOwnership: () => setWorktreeOwnership,
-  setPermissionBlock: () => setPermissionBlock,
-  scanLinkRecords: () => scanLinkRecords,
-  markTurnActive: () => markTurnActive,
-  markTurnAborted: () => markTurnAborted,
-  markApiFailure: () => markApiFailure,
-  findLatestRealUserAsk: () => findLatestRealUserAsk,
-  ensurePermissionBridge: () => ensurePermissionBridge,
-  createClassifierJobState: () => createClassifierJobState,
-  classifyAndPushDebounced: () => classifyAndPushDebounced,
-  classifyAndPush: () => classifyAndPush,
-  classify: () => classify,
-  captureLatestAsk: () => captureLatestAsk,
-  captureIntent: () => captureIntent,
-  LINK_SCAN_MAX_BYTES: () => LINK_SCAN_MAX_BYTES
-});
 async function Nze(e, t, n) {
   if (await Kd(e, t), Object.keys(n).length > 0) Hq({
     type: "state",

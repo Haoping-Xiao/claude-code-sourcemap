@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3326  score=0.4647  fileCov=0.5391
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: getBaseRenderOptions
 // [unwrapped __esm module C5] deps: ft, Gho, S4n, Who, fd, H4n, C4n, uo, tne, jDe
 ((oNa = R(lt(), 1)),
   (sNa = R(rt(), 1)),
@@ -12,9 +13,6 @@
   (tMp = (nbe(), ro(eqi)).VoiceProvider),
   (rNa = sNa.createContext(false)));
 var I4n = {};
-_t(I4n, {
-  getBaseRenderOptions: () => getBaseRenderOptions,
-});
 function rMp() {
   if (tPe !== null) return tPe;
   if (process.stdin.isTTY) {

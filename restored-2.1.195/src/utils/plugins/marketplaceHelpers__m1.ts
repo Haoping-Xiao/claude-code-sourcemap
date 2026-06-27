@@ -4,24 +4,8 @@
 // class=modified (alt of src/utils/plugins/marketplaceHelpers.ts)  jaccard=0.1752  score=0.4783  fileCov=0.2167
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: sideloadFlagsBlockedMessage, localPluginDirsBlockedMessage, isSourceInBlocklist, isSourceAllowedByPolicy, isPluginBlockedByPolicy, isMarketplaceSourceDeclaredByPolicy, isGitUrlHostAmbiguous, getStrictKnownMarketplaces, getPluginTrustMessage, getPluginSuggestionMarketplaces, getHostPatternsFromAllowlist, getBlockedMarketplaces, extractHostFromSource, areSideloadFlagsDisabledByPolicy, areLocalPluginDirsAllowedByPolicy
 var nPa = {};
-_t(nPa, {
-  sideloadFlagsBlockedMessage: () => sideloadFlagsBlockedMessage,
-  localPluginDirsBlockedMessage: () => localPluginDirsBlockedMessage,
-  isSourceInBlocklist: () => isSourceInBlocklist,
-  isSourceAllowedByPolicy: () => isSourceAllowedByPolicy,
-  isPluginBlockedByPolicy: () => isPluginBlockedByPolicy,
-  isMarketplaceSourceDeclaredByPolicy: () => isMarketplaceSourceDeclaredByPolicy,
-  isGitUrlHostAmbiguous: () => isGitUrlHostAmbiguous,
-  getStrictKnownMarketplaces: () => getStrictKnownMarketplaces,
-  getPluginTrustMessage: () => getPluginTrustMessage,
-  getPluginSuggestionMarketplaces: () => getPluginSuggestionMarketplaces,
-  getHostPatternsFromAllowlist: () => getHostPatternsFromAllowlist,
-  getBlockedMarketplaces: () => getBlockedMarketplaces,
-  extractHostFromSource: () => extractHostFromSource,
-  areSideloadFlagsDisabledByPolicy: () => areSideloadFlagsDisabledByPolicy,
-  areLocalPluginDirsAllowedByPolicy: () => areLocalPluginDirsAllowedByPolicy,
-});
 function isPluginBlockedByPolicy(e) {
   return yn("policySettings")?.enabledPlugins?.[e] === false;
 }

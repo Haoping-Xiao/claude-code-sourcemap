@@ -4,36 +4,11 @@
 // class=modified  jaccard=0.1017  score=0.1121  fileCov=0.5217
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isRunningInRemoteEnvironment, isRemoteControlInternalEventsEnabled, isRemoteControlHardDisabled, isPreviewHmrEnabled, isPolicyLimitsCacheLoaded, isPersistentRemoteSessionEnabled, isCseShimEnabled, isCcrV2SendEventsEnabled, isCcrMirrorEnabled, isBridgeEnabledBlocking, isBridgeEnabled, hasBridgeEntitlement, getRemoteControlPolicyVerdict, getCcrAutoConnectDefault, getBridgeGrowthBookDebugLines, getBridgeEntitlementBlocker, getBridgeDoctorInfo, getBridgeDisabledReason, getBridgeAuth …
 // [unwrapped __esm module _F] deps: Hp, Rc, oo, fd, je, At, Gx, Jt, dn, kt, AVe, cho, jc, oKr
 ((kcc = require("crypto")), (Rcc = require("fs")), (XYe = require("fs/promises")));
 Pcc = Date.now();
 var Hcr = {};
-_t(Hcr, {
-  isRunningInRemoteEnvironment: () => isRunningInRemoteEnvironment,
-  isRemoteControlInternalEventsEnabled: () => isRemoteControlInternalEventsEnabled,
-  isRemoteControlHardDisabled: () => isRemoteControlHardDisabled,
-  isPreviewHmrEnabled: () => isPreviewHmrEnabled,
-  isPolicyLimitsCacheLoaded: () => isPolicyLimitsCacheLoaded,
-  isPersistentRemoteSessionEnabled: () => isPersistentRemoteSessionEnabled,
-  isCseShimEnabled: () => isCseShimEnabled,
-  isCcrV2SendEventsEnabled: () => isCcrV2SendEventsEnabled,
-  isCcrMirrorEnabled: () => isCcrMirrorEnabled,
-  isBridgeEnabledBlocking: () => isBridgeEnabledBlocking,
-  isBridgeEnabled: () => isBridgeEnabled,
-  hasBridgeEntitlement: () => hasBridgeEntitlement,
-  getRemoteControlPolicyVerdict: () => getRemoteControlPolicyVerdict,
-  getCcrAutoConnectDefault: () => getCcrAutoConnectDefault,
-  getBridgeGrowthBookDebugLines: () => getBridgeGrowthBookDebugLines,
-  getBridgeEntitlementBlocker: () => getBridgeEntitlementBlocker,
-  getBridgeDoctorInfo: () => getBridgeDoctorInfo,
-  getBridgeDisabledReason: () => getBridgeDisabledReason,
-  getBridgeAuthDebugInfo: () => getBridgeAuthDebugInfo,
-  describeAuthPrecedenceBlocker: () => describeAuthPrecedenceBlocker,
-  checkBridgeMinVersion: () => checkBridgeMinVersion,
-  applyRemoteControlToAppState: () => applyRemoteControlToAppState,
-  applyAutoUploadSessionsToAppState: () => applyAutoUploadSessionsToAppState,
-  _resetDiagnosticPolicyKickForTesting: () => tsm,
-});
 function hasBridgeEntitlement() {
   return Jl() && rTt() && at("tengu_ccr_bridge", !1);
 }

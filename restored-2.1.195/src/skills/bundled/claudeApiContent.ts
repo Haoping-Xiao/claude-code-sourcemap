@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1826  score=0.2371  fileCov=0.4429
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerClaudeApiSkill, processSkillMarkdown, matchSubcommand, CLAUDE_API_SKILL_DESCRIPTION
 // [unwrapped __esm module uxc] deps: Fwc, Gwc, qwc, zwc, Ywc, Jwc, Zwc, tCc, rCc, sCc, aCc, cCc, dCc, fCc, gCc, yCc, bCc, ECc, HCc, vCc, CCc, xCc, RCc, DCc, MCc, OCc, BCc, FCc, GCc, qCc, zCc, YCc, JCc, ZCc, tIc, rIc, sIc, aIc, cIc, dIc, fIc, gIc, yIc, bIc, EIc, HIc, vIc, CIc, xIc, RIc, DIc, MIc, OIc, BIc, FIc, GIc, qIc, zIc, YIc, JIc, ZIc, txc, rxc, sxc, axc
 ((EHm = {
   FABLE_ID: "claude-fable-5",
@@ -86,12 +87,6 @@
     "typescript/managed-agents/README.md": lxc,
   }));
 var yxc = {};
-_t(yxc, {
-  registerClaudeApiSkill: () => registerClaudeApiSkill,
-  processSkillMarkdown: () => processSkillMarkdown,
-  matchSubcommand: () => matchSubcommand,
-  CLAUDE_API_SKILL_DESCRIPTION: () => CLAUDE_API_SKILL_DESCRIPTION,
-});
 function dxc() {
   return (THm ??= Promise.resolve().then(() => (uxc(), cxc)));
 }

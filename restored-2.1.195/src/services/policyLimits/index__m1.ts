@@ -4,6 +4,7 @@
 // class=modified (alt of src/services/policyLimits/index.ts)  jaccard=0.0944  score=0.3022  fileCov=0.1207
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setSessionCache, policyDenyKind, policyDeniedReason, loadCachedResponse, isPolicyLimitsEligible, isPolicyEnforced, isPolicyAllowed, getSessionCache, getResponseFromCache, getPolicyLimitsIneligibleReason, getPolicyDefault, getCachePath
 // [unwrapped __esm module oKr] deps: Xr
 ((Lkn = ve(() =>
   H.object({
@@ -23,20 +24,6 @@
     defaults: {},
   }));
 var SNt = {};
-_t(SNt, {
-  setSessionCache: () => setSessionCache,
-  policyDenyKind: () => policyDenyKind,
-  policyDeniedReason: () => policyDeniedReason,
-  loadCachedResponse: () => loadCachedResponse,
-  isPolicyLimitsEligible: () => isPolicyLimitsEligible,
-  isPolicyEnforced: () => isPolicyEnforced,
-  isPolicyAllowed: () => isPolicyAllowed,
-  getSessionCache: () => getSessionCache,
-  getResponseFromCache: () => getResponseFromCache,
-  getPolicyLimitsIneligibleReason: () => getPolicyLimitsIneligibleReason,
-  getPolicyDefault: () => getPolicyDefault,
-  getCachePath: () => getCachePath,
-});
 function setSessionCache(e) {
   let t = hNt?.compliance_taints ?? [],
     n = e?.compliance_taints ?? [];

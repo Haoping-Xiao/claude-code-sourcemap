@@ -4,15 +4,13 @@
 // class=modified (alt of src/utils/heapDumpService.ts)  jaccard=0.0666  score=0.3008  fileCov=0.0788
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module y4o] deps: ft, kt, je, At, oc, ys, vn, Is, Jt
 ((q7l = require("fs")),
   (eHt = require("fs/promises")),
   (g4o = require("path")),
   (Xsr = require("v8")));
 var K7l = {};
-_t(K7l, {
-  call: () => call,
-});
 async function call() {
   let e = await h4o();
   if (!e.success)

@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2607  score=0.661  fileCov=0.3009
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: isAllowedAutoMemWritePath, initExtractMemories, executeExtractMemories, drainPendingExtraction, createAutoMemCanUseTool
 var NQn = {};
-_t(NQn, {
-  isAllowedAutoMemWritePath: () => isAllowedAutoMemWritePath,
-  initExtractMemories: () => initExtractMemories,
-  executeExtractMemories: () => executeExtractMemories,
-  drainPendingExtraction: () => drainPendingExtraction,
-  createAutoMemCanUseTool: () => createAutoMemCanUseTool,
-});
 function LPo(e) {
   return e.type === "user" || e.type === "assistant";
 }

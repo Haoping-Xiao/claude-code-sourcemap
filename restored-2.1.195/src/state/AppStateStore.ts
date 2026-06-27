@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2696  score=0.4689  fileCov=0.3881
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: makeSetWebBrowserSlice, getDefaultWebBrowserState, getDefaultAppState, IDLE_SPECULATION_STATE
 // [unwrapped __esm module h6] deps: ft, Lo, je, Bi, ys, ggo, gM, sa, vn, Ao
 ((n$a = require("crypto")), (r$a = require("fs/promises")), (hJ = require("path")), (BRp = []));
 hgo = new Map();
@@ -17,10 +18,6 @@ Ajn = qZe(async (e) => {
   return (hgo.set(t, o ? "internal" : "external"), o);
 });
 var _go = {};
-_t(_go, {
-  makeSetWebBrowserSlice: () => makeSetWebBrowserSlice,
-  getDefaultWebBrowserState: () => getDefaultWebBrowserState,
-});
 function getDefaultWebBrowserState() {
   return {
     view: void 0,
@@ -48,10 +45,6 @@ function makeSetWebBrowserSlice(e) {
     });
 }
 var a$a = {};
-_t(a$a, {
-  getDefaultAppState: () => getDefaultAppState,
-  IDLE_SPECULATION_STATE: () => IDLE_SPECULATION_STATE,
-});
 function getDefaultAppState() {
   let e = (Mp(), ro(ejr)),
     t = e.isTeammate() && e.isPlanModeRequired() ? "plan" : "default";

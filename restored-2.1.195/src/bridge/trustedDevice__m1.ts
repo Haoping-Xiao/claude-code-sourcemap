@@ -4,6 +4,7 @@
 // class=modified (alt of src/bridge/trustedDevice.ts)  jaccard=0.0373  score=0.0737  fileCov=0.0701
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shutdownErrorTracking, isErrorTrackingCapReached, flushErrorTracking, enqueueErrorLog, _resetForTesting, DD_BROWSER_INTAKE
 // [unwrapped __esm module SJ] deps: Hp, Qi, Rc, dn, Un, je, At, Ls, Is, qd, R9, Jt, sVe
 UOa = require("os");
 KDe = Cn(async () => {
@@ -15,14 +16,6 @@ var Zjn = 78,
   e4n = 75,
   SWt = 70;
 var WOa = {};
-_t(WOa, {
-  shutdownErrorTracking: () => shutdownErrorTracking,
-  isErrorTrackingCapReached: () => isErrorTrackingCapReached,
-  flushErrorTracking: () => flushErrorTracking,
-  enqueueErrorLog: () => enqueueErrorLog,
-  _resetForTesting: () => hPp,
-  DD_BROWSER_INTAKE: () => DD_BROWSER_INTAKE,
-});
 function dPp() {
   return parseInt(process.env.CLAUDE_CODE_DD_ERROR_TRACKING_FLUSH_INTERVAL_MS || "", 10) || lPp;
 }

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4284  score=0.6095  fileCov=0.5904
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: tableTokenToMarkdown, normalizeTablesInMarkdown, fileExtension, collectRecentAssistantTexts, call
 // [unwrapped __esm module cPl] deps: IL
 ((b0f = {
   type: "local-jsx",
@@ -26,13 +27,6 @@
   }),
   (kOo = b0f));
 var EPl = {};
-_t(EPl, {
-  tableTokenToMarkdown: () => tableTokenToMarkdown,
-  normalizeTablesInMarkdown: () => normalizeTablesInMarkdown,
-  fileExtension: () => fileExtension,
-  collectRecentAssistantTexts: () => collectRecentAssistantTexts,
-  call: () => call,
-});
 function E0f(e) {
   let t = ug.lexer(RMe(e)),
     n = [];

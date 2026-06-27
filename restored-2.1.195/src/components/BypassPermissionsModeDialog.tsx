@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.4682  score=0.6566  fileCov=0.62
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: BypassPermissionsModeDialog
 // [unwrapped __esm module k$c] deps: Eor, Ye, kt, Fy, RLe, FZt, yFo, bFo
 ((C$c = R(lt(), 1)), (I$c = R(rt(), 1)), (nK = R(se(), 1)));
 var L$c = {};
-_t(L$c, {
-  BypassPermissionsModeDialog: () => BypassPermissionsModeDialog,
-});
 function BypassPermissionsModeDialog(e) {
   let t = R$c.c(7),
     { onAccept: n } = e,

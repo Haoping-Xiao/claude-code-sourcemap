@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2604  score=0.6634  fileCov=0.3
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: parseOtelHeadersEnvVar, parseExporterTypes, isTelemetryEnabled, isBigQueryMetricsEnabled, initializeTelemetry, getOtlpLogExporters, getOTLPExporterConfig, flushTelemetry, bootstrapTelemetry
 var tAo = {};
-_t(tAo, {
-  parseOtelHeadersEnvVar: () => parseOtelHeadersEnvVar,
-  parseExporterTypes: () => parseExporterTypes,
-  isTelemetryEnabled: () => isTelemetryEnabled,
-  isBigQueryMetricsEnabled: () => isBigQueryMetricsEnabled,
-  initializeTelemetry: () => initializeTelemetry,
-  getOtlpLogExporters: () => getOtlpLogExporters,
-  getOTLPExporterConfig: () => getOTLPExporterConfig,
-  flushTelemetry: () => flushTelemetry,
-  bootstrapTelemetry: () => bootstrapTelemetry,
-});
 function ZEo(e, t) {
   return new Promise((n, r) => {
     setTimeout((o, s) => o(new eAo(s)), e, r, t).unref();

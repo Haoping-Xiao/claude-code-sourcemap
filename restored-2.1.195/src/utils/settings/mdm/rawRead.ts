@@ -4,14 +4,10 @@
 // class=modified  jaccard=0.5221  score=0.9141  fileCov=0.549
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: startMdmRawRead, getMdmRawReadPromise, fireRawRead
 // [unwrapped __esm module ICe] deps: xpn, kvs, ORt, je, Mm, fn, At, PB, ys, Rd, Is, Jt, vf, hY, mCe, Sx, lj, oLt
 qO = require("path");
 var Qws = {};
-_t(Qws, {
-  startMdmRawRead: () => startMdmRawRead,
-  getMdmRawReadPromise: () => getMdmRawReadPromise,
-  fireRawRead: () => fireRawRead,
-});
 function Xws(e, t) {
   return new Promise((n) => {
     try {

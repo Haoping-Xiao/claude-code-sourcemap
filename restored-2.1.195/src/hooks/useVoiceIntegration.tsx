@@ -4,13 +4,10 @@
 // class=modified  jaccard=0.4044  score=0.7073  fileCov=0.4856
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: useVoiceKeybindingHandler, useVoiceIntegration
 // [unwrapped __esm module TTc] deps: ree, nbe, a0e, Ye, dn, kt, _Tc, IGo, je, At, m0, vn, dr
 ((th = R(rt(), 1)), (PNe = []));
 var hKo = {};
-_t(hKo, {
-  useVoiceKeybindingHandler: () => useVoiceKeybindingHandler,
-  useVoiceIntegration: () => useVoiceIntegration,
-});
 function Rbm(e, t) {
   if ((e.key === "return" ? "enter" : e.key.toLowerCase()) !== t.key) return false;
   if (e.ctrl !== t.ctrl) return false;

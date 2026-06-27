@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3182  score=0.3934  fileCov=0.6248
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module $Xl]
 ((I8f = {
   type: "local",
@@ -15,9 +16,6 @@
 }),
   (C4o = I8f));
 var OXl = {};
-_t(OXl, {
-  call: () => call,
-});
 async function call() {
   if (await ac("https://clau.de/radio"))
     return {

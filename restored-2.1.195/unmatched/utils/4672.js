@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0064  score=0.423  fileCov=0.0065
 // note: nearest: src/screens/REPL.tsx (0.0064); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 var H1l = {};
-_t(H1l, {
-  call: () => call
-});
 function yMf(e) {
   return Py(e);
 }

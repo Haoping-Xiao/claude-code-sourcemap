@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2586  score=0.3908  fileCov=0.4333
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: registerScheduleRemoteAgentsSkill
 // [unwrapped __esm module $wc] deps: ft, rSe, Un, jc, G1, wX, sre, WW, tSe, Ld, fn, AA
 R7e = (KWe(), ro(zWe));
 ((VEm = /^\d+[smhd]$/),
@@ -23,9 +24,6 @@ Examples:
   /loop check the deploy          (defaults to ${ZTt})
   /loop check the deploy every 20m`;
 var Bwc = {};
-_t(Bwc, {
-  registerScheduleRemoteAgentsSkill: () => registerScheduleRemoteAgentsSkill,
-});
 function rAm(e) {
   if (!e.startsWith("mcpsrv_")) return null;
   let r = e.slice(7).slice(2),

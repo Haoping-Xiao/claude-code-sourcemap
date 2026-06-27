@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2551  score=0.4018  fileCov=0.4112
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SkippableStep, Onboarding
 // [unwrapped __esm module GMc] deps: Ye, BMc
 ((FMc = R(lt(), 1)),
   (m7o = R(rt(), 1)),
@@ -15,10 +16,6 @@
 jMc.Item = imr;
 lmr = jMc;
 var VMc = {};
-_t(VMc, {
-  SkippableStep: () => SkippableStep,
-  Onboarding: () => Onboarding,
-});
 function Onboarding({ onDone: e }) {
   let [t, n] = MZ.useState(0),
     [r, o] = MZ.useState(false),

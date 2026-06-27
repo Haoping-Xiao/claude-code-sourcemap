@@ -4,12 +4,10 @@
 // class=partial  jaccard=0.0682  score=0.2235  fileCov=0.0893
 // note: low-confidence suggestion: src/commands/login/login.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module ECo] deps: si, Vl, Bs, Fy, vi, Ko, CH, RLe, WLn, bCo, Mg, _i, Ye, ps, kt, uut, mSe, ole, vy, er, wAe, je, At, vn, NX, Ao
 lq = R(lt(), 1), mg = R(rt(), 1), is = R(se(), 1);
 var HCo = {};
-_t(HCo, {
-  call: () => call
-});
 async function call(e, t) {
   if (Psl && I8t()) return ACo.jsx(Psl, {
     onDone: e

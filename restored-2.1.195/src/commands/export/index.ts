@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2443  score=0.2735  fileCov=0.6958
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module xJl]
 ((_6f = {
   type: "local-jsx",
@@ -17,9 +18,6 @@
 }),
   (j4o = _6f));
 var RJl = {};
-_t(RJl, {
-  call: () => call,
-});
 async function call(e, t) {
   let n = e.trim();
   if (!n || Iae.includes(n)) {

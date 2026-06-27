@@ -4,6 +4,7 @@
 // class=new  jaccard=0.026  score=0.164  fileCov=0.03
 // note: nearest: src/utils/teleport/api.ts (0.026); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: ShareOnboardingGuideTool
 // [unwrapped __esm module GXn] deps: Rc, oo, qd, Un, kt, c_, jc
 UXn = {
   auth: "teleport-org",
@@ -17,9 +18,6 @@ var zzt = "ShareOnboardingGuide",
 
 When called with the default mode='check': if a local ONBOARDING.md is present, uploads it to the most-recently-updated org guide (or creates one if none exist) and returns a fresh link. If no local file is present, returns the existing link without uploading (status: has_existing).`;
 var cAl = {};
-_t(cAl, {
-  ShareOnboardingGuideTool: () => ShareOnboardingGuideTool
-});
 async function nLo() {
   let e = await eLo();
   if (e.length === 0) return;

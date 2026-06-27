@@ -4,6 +4,7 @@
 // class=partial  jaccard=0.0693  score=0.7428  fileCov=0.071
 // note: low-confidence suggestion: src/commands/brief.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: default
 // [unwrapped __esm module eZl]
 ZQl = {
   isEnabled: () => false,
@@ -11,9 +12,6 @@ ZQl = {
   name: "stub"
 };
 var nZl = {};
-_t(nZl, {
-  default: () => jzf
-});
 function Uzf() {
   let e = at("tengu_kairos_brief_config", tZl),
     t = Bzf().safeParse(e);

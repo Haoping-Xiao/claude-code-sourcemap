@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4737  score=0.6757  fileCov=0.6131
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module iQl] deps: jc, oo
 sQl = {
   type: "local-jsx",
@@ -16,9 +17,6 @@ sQl = {
   load: () => Promise.resolve().then(() => (oQl(), nQl)),
 };
 var r3o = {};
-_t(r3o, {
-  call: () => call,
-});
 async function call(e, t) {
   try {
     if (bo()) {

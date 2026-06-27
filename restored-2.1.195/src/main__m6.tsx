@@ -4,27 +4,8 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0104  score=0.0556  fileCov=0.0126
 // note: deminified; 18 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: withStdinPositional, stripSessionIdFlag, stripResumeFlags, stripBgFlags, stopHandler, spawnBgSession, rmHandler, respawnHandler, readBgStdin, preSeedReplBgJob, parseResumeTarget, logsHandler, handleBgFlag, formatBgHints, flagsWithoutPositional, detailForStderr, bgVerbExtraArgsNote, attachHandler
 var ooc = {};
-_t(ooc, {
-  withStdinPositional: () => withStdinPositional,
-  stripSessionIdFlag: () => stripSessionIdFlag,
-  stripResumeFlags: () => stripResumeFlags,
-  stripBgFlags: () => stripBgFlags,
-  stopHandler: () => stopHandler,
-  spawnBgSession: () => spawnBgSession,
-  rmHandler: () => rmHandler,
-  respawnHandler: () => respawnHandler,
-  readBgStdin: () => readBgStdin,
-  preSeedReplBgJob: () => preSeedReplBgJob,
-  parseResumeTarget: () => parseResumeTarget,
-  logsHandler: () => logsHandler,
-  handleBgFlag: () => handleBgFlag,
-  formatBgHints: () => formatBgHints,
-  flagsWithoutPositional: () => flagsWithoutPositional,
-  detailForStderr: () => detailForStderr,
-  bgVerbExtraArgsNote: () => bgVerbExtraArgsNote,
-  attachHandler: () => attachHandler,
-});
 function KJf(e) {
   return (
     Opn(),

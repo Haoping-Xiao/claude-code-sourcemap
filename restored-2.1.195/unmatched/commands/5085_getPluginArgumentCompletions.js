@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0246  score=0.3642  fileCov=0.0257
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0246); dir inferred from dep-graph -> commands; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: getPluginArgumentCompletions
 // [unwrapped __esm module w7l] deps: PEt, xrr
 v7l = R(se(), 1);
 var C7l = {};
-_t(C7l, {
-  getPluginArgumentCompletions: () => getPluginArgumentCompletions
-});
 async function getPluginArgumentCompletions(e, t) {
   if (e.length === 0) return ZAt([{
     value: "list",

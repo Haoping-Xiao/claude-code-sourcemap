@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.177  score=0.3012  fileCov=0.3005
 // note: deminified; 19 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: flushAnalyticsSinks, setupGracefulShutdown, resetShutdownState, releaseShutdownClaim, recordUncaughtAndCheckBreaker, protoDataString, ownDataString, markStartupActionStarted, isShuttingDown, hasProxyInChain, gracefulShutdownSync, gracefulShutdown, getPendingShutdownForTesting, exitIfStartupNeverMounted, emitScrollTelemetrySummary, disarmOrphanCheck, cleanupTerminalModes, claimShutdown, STARTUP_MOUNT_GRACE_MS
 // [unwrapped __esm module vWt]
 aVe = t1a();
 function Gm() {
@@ -26,9 +27,6 @@ var wWt = null,
   gho = null,
   FPp = null;
 var i1a = {};
-_t(i1a, {
-  flushAnalyticsSinks: () => flushAnalyticsSinks,
-});
 async function flushAnalyticsSinks() {
   try {
     let [{ shutdown1PEventLogging: e }, { shutdownDatadog: t }, { shutdownErrorTracking: n }] =
@@ -43,27 +41,6 @@ async function flushAnalyticsSinks() {
 }
 var a4n = () => {};
 var kWt = {};
-_t(kWt, {
-  setupGracefulShutdown: () => setupGracefulShutdown,
-  resetShutdownState: () => resetShutdownState,
-  releaseShutdownClaim: () => releaseShutdownClaim,
-  recordUncaughtAndCheckBreaker: () => recordUncaughtAndCheckBreaker,
-  protoDataString: () => protoDataString,
-  ownDataString: () => ownDataString,
-  markStartupActionStarted: () => markStartupActionStarted,
-  isShuttingDown: () => isShuttingDown,
-  hasProxyInChain: () => hasProxyInChain,
-  gracefulShutdownSync: () => gracefulShutdownSync,
-  gracefulShutdown: () => gracefulShutdown,
-  getPendingShutdownForTesting: () => getPendingShutdownForTesting,
-  flushAnalyticsSinks: () => fVe,
-  exitIfStartupNeverMounted: () => exitIfStartupNeverMounted,
-  emitScrollTelemetrySummary: () => emitScrollTelemetrySummary,
-  disarmOrphanCheck: () => disarmOrphanCheck,
-  cleanupTerminalModes: () => cleanupTerminalModes,
-  claimShutdown: () => claimShutdown,
-  STARTUP_MOUNT_GRACE_MS: () => STARTUP_MOUNT_GRACE_MS,
-});
 function cleanupTerminalModes() {
   if (!process.stdout.isTTY) return;
   try {

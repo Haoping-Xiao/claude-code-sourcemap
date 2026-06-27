@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0094  score=0.1478  fileCov=0.01
 // note: nearest: src/cli/print.ts (0.0094); dir inferred from dep-graph -> utils; 7 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stopRendezvousServer, startRendezvousServer, sendRv, markStartupDialogBlocked, markReplayNoOp, disarmStartupWedgeWatchdog, clearStartupDialogBlocked
 // [unwrapped __esm module ESt] deps: Jt
 txl = require("crypto"), nxl = require("fs/promises");
 function ASt(e) {
@@ -14,15 +15,6 @@ function oxl(e) {
 }
 var rxl = null;
 var qQn = {};
-_t(qQn, {
-  stopRendezvousServer: () => stopRendezvousServer,
-  startRendezvousServer: () => startRendezvousServer,
-  sendRv: () => sendRv,
-  markStartupDialogBlocked: () => markStartupDialogBlocked,
-  markReplayNoOp: () => markReplayNoOp,
-  disarmStartupWedgeWatchdog: () => disarmStartupWedgeWatchdog,
-  clearStartupDialogBlocked: () => clearStartupDialogBlocked
-});
 function axl() {
   if (FPo === void 0) delete process.env.BROWSER;else process.env.BROWSER = FPo;
 }

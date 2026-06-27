@@ -4,12 +4,10 @@
 // class=modified (alt of src/components/ExitFlow.tsx)  jaccard=0.2748  score=0.7408  fileCov=0.304
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module cJl] deps: cEe, D4o, m7t, Ld, iKe, Yp, aR
 ((lJl = R(se(), 1)), (e6f = ["Goodbye!", "See ya!", "Bye!", "Catch you later!"]));
 var uJl = {};
-_t(uJl, {
-  call: () => call,
-});
 async function call() {
   if (Js())
     return {

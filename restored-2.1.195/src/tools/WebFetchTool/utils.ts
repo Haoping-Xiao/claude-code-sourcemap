@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.0831  score=0.1215  fileCov=0.208
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: publishArtifact, makeSetArtifactReadVersion, isShareAwarePublishEnabled, isFrameSignedPutHeaderCheckEnabled, isFrameReaderPersistEnabled, isFrameBaseVersionEnabled, goCpHeaders, artifactViewerUrl, MAX_ARTIFACT_BYTES
 // [unwrapped __esm module mko] deps: Hp, YZe, kt, ZE, je, At, Gx, vn, qdt, dr, Jt, BIo, $cl, TX, OIo
 cko = class cko extends Error {
   constructor(e) {
@@ -56,17 +57,6 @@ S6t = class S6t extends Error {
   })));
 Ouf = new Set([301, 302, 303, 307, 308]);
 var yko = {};
-_t(yko, {
-  publishArtifact: () => publishArtifact,
-  makeSetArtifactReadVersion: () => makeSetArtifactReadVersion,
-  isShareAwarePublishEnabled: () => isShareAwarePublishEnabled,
-  isFrameSignedPutHeaderCheckEnabled: () => isFrameSignedPutHeaderCheckEnabled,
-  isFrameReaderPersistEnabled: () => isFrameReaderPersistEnabled,
-  isFrameBaseVersionEnabled: () => isFrameBaseVersionEnabled,
-  goCpHeaders: () => goCpHeaders,
-  artifactViewerUrl: () => artifactViewerUrl,
-  MAX_ARTIFACT_BYTES: () => MAX_ARTIFACT_BYTES,
-});
 function isFrameBaseVersionEnabled() {
   return at("tengu_cobalt_plinth_fern", false);
 }

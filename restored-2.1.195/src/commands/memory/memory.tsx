@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3915  score=0.5483  fileCov=0.5779
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module y3] deps: zj, HI, QOe, ys, aE, Jt, kv
 ((HBl = require("child_process")),
   (xOf = {
@@ -11,9 +12,6 @@
     subl: "subl --wait",
   }));
 var wBl = {};
-_t(wBl, {
-  call: () => call,
-});
 function POf({ onDone: e }) {
   let t = async (r) => {
       try {

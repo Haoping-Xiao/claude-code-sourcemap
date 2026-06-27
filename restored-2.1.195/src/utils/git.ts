@@ -4,43 +4,11 @@
 // class=modified  jaccard=0.2952  score=0.6301  fileCov=0.3571
 // note: deminified; 31 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stashToCleanState, redactGitRemoteCredentials, preserveGitStateForIssue, normalizeGitRemoteUrl, isLinkedWorktree, isCurrentDirectoryBareGitRepo, isBranchOnOrigin, isAtGitRoot, hasUnpushedCommits, gitExe, getWorktreeCount, getRepoRemoteHash, getRemoteUrlForBridge, getRemoteUrl, getIsHeadOnRemote, getIsGit, getIsClean, getHead, getGithubRepo, getGitWorktreeName, getGitState, getGitDir, getFileStatus, getDefaultBranch, getChangedFiles, getBranch, findRepoRemoteSlug, findRemoteBase, …
 // [unwrapped __esm module BR] deps: Lo, je, Bi, sa, Mx, sr
 cCe = new Map();
 P$u = /^[A-Za-z0-9._-]+$/;
 var Sfn = {};
-_t(Sfn, {
-  stashToCleanState: () => stashToCleanState,
-  redactGitRemoteCredentials: () => redactGitRemoteCredentials,
-  preserveGitStateForIssue: () => preserveGitStateForIssue,
-  normalizeGitRemoteUrl: () => normalizeGitRemoteUrl,
-  isLinkedWorktree: () => isLinkedWorktree,
-  isCurrentDirectoryBareGitRepo: () => isCurrentDirectoryBareGitRepo,
-  isBranchOnOrigin: () => isBranchOnOrigin,
-  isAtGitRoot: () => isAtGitRoot,
-  hasUnpushedCommits: () => hasUnpushedCommits,
-  gitExe: () => gitExe,
-  getWorktreeCount: () => getWorktreeCount,
-  getRepoRemoteHash: () => getRepoRemoteHash,
-  getRemoteUrlForBridge: () => getRemoteUrlForBridge,
-  getRemoteUrl: () => getRemoteUrl,
-  getIsHeadOnRemote: () => getIsHeadOnRemote,
-  getIsGit: () => getIsGit,
-  getIsClean: () => getIsClean,
-  getHead: () => getHead,
-  getGithubRepo: () => getGithubRepo,
-  getGitWorktreeName: () => getGitWorktreeName,
-  getGitState: () => getGitState,
-  getGitDir: () => getGitDir,
-  getFileStatus: () => getFileStatus,
-  getDefaultBranch: () => getDefaultBranch,
-  getChangedFiles: () => getChangedFiles,
-  getBranch: () => getBranch,
-  findRepoRemoteSlug: () => findRepoRemoteSlug,
-  findRemoteBase: () => findRemoteBase,
-  findGitRoot: () => findGitRoot,
-  findCanonicalGitRoot: () => findCanonicalGitRoot,
-  dirIsInGitRepo: () => dirIsInGitRepo,
-});
 function M$u() {
   function e(t) {
     let n = FTs(t);

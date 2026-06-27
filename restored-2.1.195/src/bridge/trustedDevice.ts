@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3061  score=0.3552  fileCov=0.6888
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: untrustedDeviceHint, recoverFromUntrustedDevice, readStoredTrustedDeviceToken, isTrustedDeviceUnenrolled, isTrustedDeviceGateEnabled, isTrustedDeviceActiveForOrg, isProactiveEnrollmentDisabled, getTrustedDeviceUnenrolledReason, getTrustedDeviceToken, getAttestationFilterPolicy, enrollTrustedDeviceIfNeeded, enrollTrustedDevice, clearTrustedDeviceTokenCache, clearTrustedDeviceToken, _resetEnrollBackoffForTesting, PROACTIVE_ENROLLMENT_DISABLED_MESSAGE
 // [unwrapped __esm module sVe] deps: Xr, dn, je, At
 ((QDp = [
   "UNSPECIFIED",
@@ -30,24 +31,6 @@ Ygo = ["VERIFIED", "VERIFIED_KEYLESS_DEVICE", "VERIFIED_BY_GATE"];
     }),
   )));
 var Qjn = {};
-_t(Qjn, {
-  untrustedDeviceHint: () => untrustedDeviceHint,
-  recoverFromUntrustedDevice: () => recoverFromUntrustedDevice,
-  readStoredTrustedDeviceToken: () => readStoredTrustedDeviceToken,
-  isTrustedDeviceUnenrolled: () => isTrustedDeviceUnenrolled,
-  isTrustedDeviceGateEnabled: () => isTrustedDeviceGateEnabled,
-  isTrustedDeviceActiveForOrg: () => isTrustedDeviceActiveForOrg,
-  isProactiveEnrollmentDisabled: () => isProactiveEnrollmentDisabled,
-  getTrustedDeviceUnenrolledReason: () => getTrustedDeviceUnenrolledReason,
-  getTrustedDeviceToken: () => getTrustedDeviceToken,
-  getAttestationFilterPolicy: () => getAttestationFilterPolicy,
-  enrollTrustedDeviceIfNeeded: () => enrollTrustedDeviceIfNeeded,
-  enrollTrustedDevice: () => enrollTrustedDevice,
-  clearTrustedDeviceTokenCache: () => clearTrustedDeviceTokenCache,
-  clearTrustedDeviceToken: () => clearTrustedDeviceToken,
-  _resetEnrollBackoffForTesting: () => aPp,
-  PROACTIVE_ENROLLMENT_DISABLED_MESSAGE: () => PROACTIVE_ENROLLMENT_DISABLED_MESSAGE,
-});
 function isProactiveEnrollmentDisabled() {
   return at(FOa, false);
 }

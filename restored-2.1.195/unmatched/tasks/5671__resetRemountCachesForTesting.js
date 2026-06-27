@@ -4,56 +4,10 @@
 // class=new  jaccard=0.0035  score=0.0061  fileCov=0.0084
 // note: nearest: src/components/Feedback.tsx (0.0035); dir inferred from dep-graph -> tasks; 44 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: summarizeEvent, stateBucket, sortJobs, seedLastJobs, rollupJobColor, repoGroupLabel, repoGroup, pruneMap, pickIcon, peerStatusFor, parseUrlRef, parseQuery, parsePrRef, parseDispatch, needsRespawn, mountFleetView, labelReplaceFrame, jobStatusKey, jobRowSrLabel, jobMatchesUrl, jobMatchesPr, jobLabel, glyphColor, formatJobAge, fleetVerticalBudget, fleetTitle, flattenDetail, extractRepoCwd, effectiveStateSortOrder, effectiveSortOrder, deriveBand, deriveActivity, computeSuggestions,  …
 // [unwrapped __esm module Akc]
 _kc = require("fs/promises"), hTm = /"timestamp":"([^"]+)"/;
 var i0c = {};
-_t(i0c, {
-  summarizeEvent: () => summarizeEvent,
-  stateBucket: () => stateBucket,
-  sortJobs: () => sortJobs,
-  seedLastJobs: () => seedLastJobs,
-  rollupJobColor: () => rollupJobColor,
-  repoGroupLabel: () => repoGroupLabel,
-  repoGroup: () => repoGroup,
-  pruneMap: () => pruneMap,
-  pickIcon: () => pickIcon,
-  peerStatusFor: () => peerStatusFor,
-  parseUrlRef: () => parseUrlRef,
-  parseQuery: () => parseQuery,
-  parsePrRef: () => parsePrRef,
-  parseDispatch: () => parseDispatch,
-  needsRespawn: () => needsRespawn,
-  mountFleetView: () => mountFleetView,
-  labelReplaceFrame: () => labelReplaceFrame,
-  jobStatusKey: () => jobStatusKey,
-  jobRowSrLabel: () => jobRowSrLabel,
-  jobMatchesUrl: () => jobMatchesUrl,
-  jobMatchesPr: () => jobMatchesPr,
-  jobLabel: () => jobLabel,
-  glyphColor: () => glyphColor,
-  formatJobAge: () => formatJobAge,
-  fleetVerticalBudget: () => fleetVerticalBudget,
-  fleetTitle: () => fleetTitle,
-  flattenDetail: () => flattenDetail,
-  extractRepoCwd: () => extractRepoCwd,
-  effectiveStateSortOrder: () => effectiveStateSortOrder,
-  effectiveSortOrder: () => effectiveSortOrder,
-  deriveBand: () => deriveBand,
-  deriveActivity: () => deriveActivity,
-  computeSuggestions: () => computeSuggestions,
-  childStatusColor: () => childStatusColor,
-  buildPrRefRe: () => buildPrRefRe,
-  buildFleetRows: () => buildFleetRows,
-  actionableStatus: () => actionableStatus,
-  _resetRemountCachesForTesting: () => DTm,
-  SessionPreview: () => SessionPreview,
-  PEAK_CONCURRENT_GOAL: () => PEAK_CONCURRENT_GOAL,
-  InlineEmphasis: () => InlineEmphasis,
-  FleetView: () => FleetView,
-  AUTO_RELAUNCH_UNFOCUSED_MS: () => AUTO_RELAUNCH_UNFOCUSED_MS,
-  AUTO_RELAUNCH_MIN_INTERVAL_MS: () => AUTO_RELAUNCH_MIN_INTERVAL_MS,
-  AUTO_RELAUNCH_ENV_KEY: () => AUTO_RELAUNCH_ENV_KEY
-});
 function pruneMap(e, t) {
   let n;
   for (let r of e.keys()) if (!t.has(r)) (n ??= new Map(e)).delete(r);

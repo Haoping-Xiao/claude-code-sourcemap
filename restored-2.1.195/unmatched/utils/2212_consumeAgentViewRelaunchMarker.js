@@ -4,24 +4,8 @@
 // class=new  jaccard=0.0205  score=0.0491  fileCov=0.0341
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js (0.0205); dir inferred from dep-graph -> utils; 15 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldShowLaunchComposer, isLaunchComposerEnabled, isDaemonWorkerRegistryEnabled, isDaemonServiceRecalled, isDaemonServiceInstallEnabled, isDaemonCliEnabled, isAgentsFleetEnabled, fleetGateRejected, ensureFleetGateHydrated, daemonHint, daemonColdStartGbDefault, consumeAgentViewRelaunchMarker, bgSupervisorNounCap, bgSupervisorNoun, AGENT_VIEW_RELAUNCH_ENV_KEY
 var Rkn = {};
-_t(Rkn, {
-  shouldShowLaunchComposer: () => shouldShowLaunchComposer,
-  isLaunchComposerEnabled: () => isLaunchComposerEnabled,
-  isDaemonWorkerRegistryEnabled: () => isDaemonWorkerRegistryEnabled,
-  isDaemonServiceRecalled: () => isDaemonServiceRecalled,
-  isDaemonServiceInstallEnabled: () => isDaemonServiceInstallEnabled,
-  isDaemonCliEnabled: () => isDaemonCliEnabled,
-  isAgentsFleetEnabled: () => isAgentsFleetEnabled,
-  fleetGateRejected: () => fleetGateRejected,
-  ensureFleetGateHydrated: () => ensureFleetGateHydrated,
-  daemonHint: () => daemonHint,
-  daemonColdStartGbDefault: () => daemonColdStartGbDefault,
-  consumeAgentViewRelaunchMarker: () => consumeAgentViewRelaunchMarker,
-  bgSupervisorNounCap: () => bgSupervisorNounCap,
-  bgSupervisorNoun: () => bgSupervisorNoun,
-  AGENT_VIEW_RELAUNCH_ENV_KEY: () => AGENT_VIEW_RELAUNCH_ENV_KEY
-});
 function isAgentsFleetEnabled() {
   return !Bst();
 }

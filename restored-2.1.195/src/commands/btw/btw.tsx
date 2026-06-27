@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1767  score=0.2468  fileCov=0.3834
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module Q$o] deps: ft, ag, kt, At, vn, y_, _a, Jt, sr
 ((QLl = require("crypto")),
   (X$o = require("events")),
@@ -12,9 +13,6 @@
   (ZLl = require("readline")),
   (eDl = require("stream/promises")));
 var aDl = {};
-_t(aDl, {
-  call: () => call,
-});
 function fkf({ question: e, context: t, onDone: n }) {
   let [r, o] = UN.useState(null),
     [s, i] = UN.useState(false),

@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1935  score=0.3913  fileCov=0.2768
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: createLinkedTransportPair, shouldTrackDatadog, initializeAnalyticsSink
 var bfo = {};
-_t(bfo, {
-  createLinkedTransportPair: () => createLinkedTransportPair,
-});
 class _fo {
   peer;
   closed = false;
@@ -36,10 +34,6 @@ function createLinkedTransportPair() {
   return (e._setPeer(t), t._setPeer(e), [e, t]);
 }
 var dpt = {};
-_t(dpt, {
-  shouldTrackDatadog: () => shouldTrackDatadog,
-  initializeAnalyticsSink: () => initializeAnalyticsSink,
-});
 function shouldTrackDatadog() {
   if (S3e("datadog")) return false;
   try {

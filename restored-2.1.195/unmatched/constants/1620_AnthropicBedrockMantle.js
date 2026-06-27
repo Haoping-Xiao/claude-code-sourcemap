@@ -4,6 +4,7 @@
 // class=new  jaccard=0.0394  score=0.2579  fileCov=0.0444
 // note: nearest: src/services/api/client.ts (0.0394); dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: default, BaseAnthropic, AnthropicBedrockMantle, AnthropicBedrock
 // [unwrapped __esm module Wdi] deps: W4r, UHn, OK, NJe, Gdi
 K4r = class K4r extends ah {
   constructor({
@@ -63,9 +64,3 @@ K4r = class K4r extends ah {
   }
 };
 var Eje = {};
-_t(Eje, {
-  default: () => V4r,
-  BaseAnthropic: () => ah,
-  AnthropicBedrockMantle: () => K4r,
-  AnthropicBedrock: () => V4r
-});

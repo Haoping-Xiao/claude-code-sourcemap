@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3875  score=0.6634  fileCov=0.4824
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: processBashCommand
 var Vfc = {};
-_t(Vfc, {
-  processBashCommand: () => processBashCommand,
-});
 async function processBashCommand(e, t, n, r) {
   let o = q1() && mur() === "powershell",
     s = Dr().respondToBashCommands ?? true;

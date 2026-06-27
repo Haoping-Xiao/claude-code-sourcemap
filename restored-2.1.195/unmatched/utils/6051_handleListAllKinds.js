@@ -4,14 +4,10 @@
 // class=new  jaccard=0.0072  score=0.14  fileCov=0.0076
 // note: nearest: src/screens/REPL.tsx (0.0072); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: parseKindArgs, handleListAllKinds, handleCliKind
 // [unwrapped __esm module Aqc] deps: lH, dn, Un, kt, je, At, YS, vn, Is, QEe, Z3o, Gfe, kYe, lqc, WL, q$, CHt, IKe, iQt, VQ, pqc, _qc, YOe, sQt
 yhr = require("fs/promises"), cNm = bme + Sqc;
 var QZo = {};
-_t(QZo, {
-  parseKindArgs: () => parseKindArgs,
-  handleListAllKinds: () => handleListAllKinds,
-  handleCliKind: () => handleCliKind
-});
 function jZ(e) {
   process.stdout.write(e + `
 `);

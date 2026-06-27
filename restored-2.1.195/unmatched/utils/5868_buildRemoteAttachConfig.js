@@ -4,14 +4,11 @@
 // class=new  jaccard=0.0089  score=0.1771  fileCov=0.0093
 // note: nearest: src/screens/REPL.tsx (0.0089); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: buildRemoteAttachConfig, attachRemote
 // [unwrapped __esm module xXo] deps: yKo, dn, c_, fd, je, At, Ls, Gen, Y4o, Wen, izo
 OFc = require("fs"), Yme = require("fs/promises"), NFc = require("os"), CXo = require("path"), BFc = require("stream/promises");
 gnn = new Map();
 var FFc = {};
-_t(FFc, {
-  buildRemoteAttachConfig: () => buildRemoteAttachConfig,
-  attachRemote: () => attachRemote
-});
 async function attachRemote(e, t, n) {
   let [{
       prepareApiRequest: r,

@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0092  score=0.1692  fileCov=0.0096
 // note: nearest: src/cli/print.ts (0.0092); dir inferred from dep-graph -> commands; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: applyCcrTimeoutCap, MonitorTool
 // [unwrapped __esm module Pgl] deps: ql, Ye, es
 q6t = R(se(), 1);
 var g0o = {};
-_t(g0o, {
-  applyCcrTimeoutCap: () => applyCcrTimeoutCap,
-  MonitorTool: () => MonitorTool
-});
 function Xpf() {
   return {
     description: H.string().describe("Short human-readable description of what you are monitoring (shown in notifications)."),

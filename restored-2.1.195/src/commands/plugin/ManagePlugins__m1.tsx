@@ -4,14 +4,10 @@
 // class=modified (alt of src/commands/plugin/ManagePlugins.tsx)  jaccard=0.0665  score=0.5063  fileCov=0.0711
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: scaleCharsToTokens, getPluginInventory, computePluginTokenCost
 // [unwrapped __esm module Arr] deps: je, At, ys, vn, Jt, B1
 ((djl = require("crypto")), (i1e = require("fs/promises")), (pjl = require("path")));
 var Hjl = {};
-_t(Hjl, {
-  scaleCharsToTokens: () => scaleCharsToTokens,
-  getPluginInventory: () => getPluginInventory,
-  computePluginTokenCost: () => computePluginTokenCost,
-});
 async function getPluginInventory(e, t) {
   if (t === "builtin") {
     let f = yKi(e.name);

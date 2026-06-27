@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.0379  score=0.0518  fileCov=0.124
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: tool, tagSession, startup, resolveSettings, renameSession, query, parseDirectConnectUrl, listSubagents, listSessions, importSessionToStore, getSubagentMessages, getSessionMessages, getSessionInfo, forkSession, foldSessionSummary, filterEscalatingDefaultMode, deleteSession, createSdkMcpServer, SYSTEM_PROMPT_DYNAMIC_BOUNDARY, InMemorySessionStore, HOOK_EVENTS, EXIT_REASONS, DirectConnectTransport, DirectConnectError, AbortError
 // [unwrapped __esm module xec] deps: ys, RCe, Sx, ICe
 ((wec = require("path")),
   (YKf = {
@@ -22,33 +23,6 @@
   (JKf = new Set(["bypassPermissions", "auto", "acceptEdits"])),
   (QKf = new Set(["project"])));
 var Gec = {};
-_t(Gec, {
-  tool: () => _ec,
-  tagSession: () => tagSession,
-  startup: () => startup,
-  resolveSettings: () => resolveSettings,
-  renameSession: () => renameSession,
-  query: () => query,
-  parseDirectConnectUrl: () => Hec,
-  listSubagents: () => listSubagents,
-  listSessions: () => listSessions,
-  importSessionToStore: () => importSessionToStore,
-  getSubagentMessages: () => getSubagentMessages,
-  getSessionMessages: () => getSessionMessages,
-  getSessionInfo: () => getSessionInfo,
-  forkSession: () => forkSession,
-  foldSessionSummary: () => VRt,
-  filterEscalatingDefaultMode: () => Cec,
-  deleteSession: () => deleteSession,
-  createSdkMcpServer: () => bec,
-  SYSTEM_PROMPT_DYNAMIC_BOUNDARY: () => Oae,
-  InMemorySessionStore: () => Vfn,
-  HOOK_EVENTS: () => GO,
-  EXIT_REASONS: () => nws,
-  DirectConnectTransport: () => q3o,
-  DirectConnectError: () => dZ,
-  AbortError: () => WO,
-});
 async function resolveSettings(e) {
   return Iec(e);
 }

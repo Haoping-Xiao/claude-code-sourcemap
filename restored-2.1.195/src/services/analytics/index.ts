@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.3224  score=0.3917  fileCov=0.6459
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: stripProtoFields, logEventAsync, logEvent, createAnalyticsState, attachAnalyticsSink, _setGlobalAnalyticsStateForTesting
 // [unwrapped __esm module ft] deps: Bns, Won, Von, Sx, ih, $S
 ((Xyr = require("fs")),
   (grs = require("process")),
@@ -24,14 +25,6 @@ rbr = Mi();
 yCt = rbr.subscribe;
 mrs = [];
 var jCt = {};
-_t(jCt, {
-  stripProtoFields: () => stripProtoFields,
-  logEventAsync: () => logEventAsync,
-  logEvent: () => logEvent,
-  createAnalyticsState: () => createAnalyticsState,
-  attachAnalyticsSink: () => attachAnalyticsSink,
-  _setGlobalAnalyticsStateForTesting: () => Izc,
-});
 function stripProtoFields(e) {
   let t;
   for (let n in e)

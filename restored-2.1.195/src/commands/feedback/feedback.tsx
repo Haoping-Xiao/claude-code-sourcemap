@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.1224  score=0.1345  fileCov=0.5758
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: renderFeedbackComponent, call
 // [unwrapped __esm module vDl] deps: _i, Ye, ps, Un, ZE, tP, eKe, uo, og, vy, je, wr, At, sa, vn, zH, Jt, sr, Cc, Vl, Bs, vi, f_, Ko, gm, SDl, Mg
 ((FN = R(rt(), 1)),
   (nl = R(se(), 1)),
@@ -60,10 +61,6 @@ function CDl() {
 }
 var hOo = null;
 var xDl = {};
-_t(xDl, {
-  renderFeedbackComponent: () => renderFeedbackComponent,
-  call: () => call,
-});
 function renderFeedbackComponent(e, t, n, r = "", o = {}, s) {
   let i = Zze();
   if (i.kind === "disabled") return (e(i.reason), null);

@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2385  score=0.3551  fileCov=0.4206
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module IXl] deps: Xr, Vl, Ye, dn, er, je, At, Jt
 ((w4o = R(lt(), 1)),
   (D1e = R(rt(), 1)),
@@ -16,9 +17,6 @@
     }),
   )));
 var kXl = {};
-_t(kXl, {
-  call: () => call,
-});
 function _8f(e) {
   let t = xXl.c(47),
     { onDone: n, isExtensionInstalled: r, configEnabled: o, isClaudeAISubscriber: s, isWSL: i } = e,

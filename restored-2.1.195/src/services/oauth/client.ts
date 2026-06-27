@@ -4,25 +4,8 @@
 // class=modified  jaccard=0.3445  score=0.6126  fileCov=0.4404
 // note: deminified; 16 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: storeOAuthAccountInfo, shouldUseClaudeAIAuth, revokeOAuthToken, refreshOAuthToken, populateOAuthAccountInfoIfNeeded, parseScopes, isOAuthTokenExpired, isInvalidGrantError, isExpectedOAuthTokenError, getOrganizationUUID, fetchProfileInfo, fetchAndStoreUserRoles, extractOAuthErrorFields, exchangeCodeForTokens, createAndStoreApiKey, buildAuthUrl
 var Int = {};
-_t(Int, {
-  storeOAuthAccountInfo: () => storeOAuthAccountInfo,
-  shouldUseClaudeAIAuth: () => shouldUseClaudeAIAuth,
-  revokeOAuthToken: () => revokeOAuthToken,
-  refreshOAuthToken: () => refreshOAuthToken,
-  populateOAuthAccountInfoIfNeeded: () => populateOAuthAccountInfoIfNeeded,
-  parseScopes: () => parseScopes,
-  isOAuthTokenExpired: () => isOAuthTokenExpired,
-  isInvalidGrantError: () => isInvalidGrantError,
-  isExpectedOAuthTokenError: () => isExpectedOAuthTokenError,
-  getOrganizationUUID: () => getOrganizationUUID,
-  fetchProfileInfo: () => fetchProfileInfo,
-  fetchAndStoreUserRoles: () => fetchAndStoreUserRoles,
-  extractOAuthErrorFields: () => extractOAuthErrorFields,
-  exchangeCodeForTokens: () => exchangeCodeForTokens,
-  createAndStoreApiKey: () => createAndStoreApiKey,
-  buildAuthUrl: () => buildAuthUrl,
-});
 function shouldUseClaudeAIAuth(e) {
   return Array.isArray(e) && e.includes(xB);
 }

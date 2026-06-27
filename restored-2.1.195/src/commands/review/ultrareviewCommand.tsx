@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.125  score=0.1941  fileCov=0.2601
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module E9l] deps: Vl, vi, q9n, NVt, Y2o, tC, w4, Ye, Zor, er, Mne, sYe, kAt
 ((nsr = R(lt(), 1)), (nme = R(rt(), 1)), (Db = R(se(), 1)));
 var A9l = {};
-_t(A9l, {
-  call: () => call,
-});
 function xWf(e) {
   return e.map((t) => (t.type === "text" ? t.text : "")).filter(Boolean).join(`
 `);

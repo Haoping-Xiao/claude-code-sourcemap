@@ -4,6 +4,7 @@
 // class=modified (alt of src/components/design-system/Tabs.tsx)  jaccard=0.0623  score=0.0822  fileCov=0.2046
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: renderDaemonHubStandalone, call, DaemonHub
 // [unwrapped __esm module SGo] deps: ft, Vl, Fy, vi, TVt, gm, VQ, QJt, Ye, vX, je, At, vn
 ((_7f = R(lt(), 1)),
   (Ftc = require("os")),
@@ -11,11 +12,6 @@
   (EHt = R(rt(), 1)),
   (YN = R(se(), 1)));
 var HGo = {};
-_t(HGo, {
-  renderDaemonHubStandalone: () => renderDaemonHubStandalone,
-  call: () => call,
-  DaemonHub: () => DaemonHub,
-});
 async function EGo() {
   let e = KOe(),
     [t, n, r, o, s, i, a] = await Promise.all([

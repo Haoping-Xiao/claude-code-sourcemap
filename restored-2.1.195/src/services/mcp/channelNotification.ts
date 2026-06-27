@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.4314  score=0.7085  fileCov=0.5244
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: wrapChannelMessage, isChannelsPolicyBlocked, getEffectiveChannelAllowlist, gateChannelServer, findChannelEntry, ChannelPermissionNotificationSchema, ChannelMessageNotificationSchema, CHANNEL_PERMISSION_REQUEST_METHOD, CHANNEL_PERMISSION_METHOD
 // [unwrapped __esm module j_t] deps: Xr, $g, Un
 kdf = ve(() =>
   H.array(
@@ -14,17 +15,6 @@ kdf = ve(() =>
   ),
 );
 var qfl = {};
-_t(qfl, {
-  wrapChannelMessage: () => wrapChannelMessage,
-  isChannelsPolicyBlocked: () => isChannelsPolicyBlocked,
-  getEffectiveChannelAllowlist: () => getEffectiveChannelAllowlist,
-  gateChannelServer: () => gateChannelServer,
-  findChannelEntry: () => findChannelEntry,
-  ChannelPermissionNotificationSchema: () => ChannelPermissionNotificationSchema,
-  ChannelMessageNotificationSchema: () => ChannelMessageNotificationSchema,
-  CHANNEL_PERMISSION_REQUEST_METHOD: () => CHANNEL_PERMISSION_REQUEST_METHOD,
-  CHANNEL_PERMISSION_METHOD: () => CHANNEL_PERMISSION_METHOD,
-});
 function wrapChannelMessage(e, t, n) {
   let r = Object.entries(n ?? {}),
     [o, s] = Rdf(r, ([l]) => Wfl.test(l));

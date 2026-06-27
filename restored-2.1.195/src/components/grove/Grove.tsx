@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.24  score=0.3669  fileCov=0.4097
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: PrivacySettingsDialog, GroveDialog
 // [unwrapped __esm module Zzl] deps: ZKe
 Vjo = {
   type: "local-jsx",
@@ -22,10 +23,6 @@ Vjo = {
   load: () => Promise.resolve().then(() => (Qzl(), Xzl)),
 };
 var eKl = {};
-_t(eKl, {
-  PrivacySettingsDialog: () => PrivacySettingsDialog,
-  GroveDialog: () => GroveDialog,
-});
 function rVf() {
   let e = AJt.c(9),
     t;

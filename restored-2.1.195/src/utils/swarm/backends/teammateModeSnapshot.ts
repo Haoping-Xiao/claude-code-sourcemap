@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.487  score=0.7384  fileCov=0.5885
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: setCliTeammateModeOverride, hasTeammateModeSnapshot, getTeammateModeFromSnapshot, getCliTeammateModeOverride, clearCliTeammateModeOverride, captureTeammateModeSnapshot, DEFAULT_TEAMMATE_MODE
 var ago = {};
-_t(ago, {
-  setCliTeammateModeOverride: () => setCliTeammateModeOverride,
-  hasTeammateModeSnapshot: () => hasTeammateModeSnapshot,
-  getTeammateModeFromSnapshot: () => getTeammateModeFromSnapshot,
-  getCliTeammateModeOverride: () => getCliTeammateModeOverride,
-  clearCliTeammateModeOverride: () => clearCliTeammateModeOverride,
-  captureTeammateModeSnapshot: () => captureTeammateModeSnapshot,
-  DEFAULT_TEAMMATE_MODE: () => DEFAULT_TEAMMATE_MODE,
-});
 function setCliTeammateModeOverride(e) {
   YGt = e;
 }

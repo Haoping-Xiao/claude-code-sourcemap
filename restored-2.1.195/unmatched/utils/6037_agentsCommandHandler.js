@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0045  score=0.1663  fileCov=0.0046
 // note: nearest: src/cli/print.ts (0.0045); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: agentsCommandHandler
 // [unwrapped __esm module T5c] deps: xHt, ag, dn, zH, jS, Jt, _ht, JN
 cwt = require("path");
 var C5c = {};
-_t(C5c, {
-  agentsCommandHandler: () => agentsCommandHandler
-});
 async function agentsCommandHandler(e) {
   if (e.json) {
     if (await Fst(), !Kx()) {

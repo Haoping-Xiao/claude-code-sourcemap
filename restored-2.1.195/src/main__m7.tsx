@@ -4,6 +4,7 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0101  score=0.0853  fileCov=0.0114
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: spawnBackgroundFork, deriveBackgroundSeed, call
 // [unwrapped __esm module qar] deps: zb, ft, np, dn, kt, S_, tfe, D6e, $S, CWo, Pw, Rm, je, wr, At, iKe, ys, YS, bm, Yf, y_, _a, Jt, OI
 ((soc = require("crypto")),
   (DC = require("fs/promises")),
@@ -79,11 +80,6 @@
     }),
   )));
 var yoc = {};
-_t(yoc, {
-  spawnBackgroundFork: () => spawnBackgroundFork,
-  deriveBackgroundSeed: () => deriveBackgroundSeed,
-  call: () => call,
-});
 async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
   let u = r_(),
     d = typeof n === "string" ? n : void 0,

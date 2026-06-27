@@ -4,6 +4,7 @@
 // class=modified  jaccard=0.2542  score=0.3472  fileCov=0.4868
 // note: deminified; 28 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: shouldSkipHookDueToTrust, persistHookOutput, parseElicitationHookOutput, isPluginEligibleForCredentials, isBareMcpServerMatcher, hasInstructionsLoadedHook, hasHookForEvent, hasBlockingResult, getUserPromptSubmitHookBlockingMessage, getTelemetryHookName, getTeammateIdleHookMessage, getTaskCreatedHookMessage, getTaskCompletedHookMessage, getStopHookMessage, getSessionEndHookTimeoutMs, getPreToolHookBlockingMessage, getPluginHookCounts, getMatchingHooks, getAnthropicCredentialsForO …
 // [unwrapped __esm module $ic] deps: _ic, bic, Sic, Aic, Hic, N5o, Tic, vic, kic, Ric, Lic, TIo, Pic, Mic
 zem = {
   PreToolUse: bzt,
@@ -38,68 +39,6 @@ zem = {
   MessageDisplay: JHt,
 };
 var _1a = {};
-_t(_1a, {
-  shouldSkipHookDueToTrust: () => shouldSkipHookDueToTrust,
-  persistHookOutput: () => persistHookOutput,
-  parseElicitationHookOutput: () => parseElicitationHookOutput,
-  isPluginEligibleForCredentials: () => isPluginEligibleForCredentials,
-  isBareMcpServerMatcher: () => isBareMcpServerMatcher,
-  hasInstructionsLoadedHook: () => hasInstructionsLoadedHook,
-  hasHookForEvent: () => hasHookForEvent,
-  hasBlockingResult: () => hasBlockingResult,
-  getUserPromptSubmitHookBlockingMessage: () => getUserPromptSubmitHookBlockingMessage,
-  getTelemetryHookName: () => getTelemetryHookName,
-  getTeammateIdleHookMessage: () => getTeammateIdleHookMessage,
-  getTaskCreatedHookMessage: () => getTaskCreatedHookMessage,
-  getTaskCompletedHookMessage: () => getTaskCompletedHookMessage,
-  getStopHookMessage: () => getStopHookMessage,
-  getSessionEndHookTimeoutMs: () => getSessionEndHookTimeoutMs,
-  getPreToolHookBlockingMessage: () => getPreToolHookBlockingMessage,
-  getPluginHookCounts: () => getPluginHookCounts,
-  getMatchingHooks: () => getMatchingHooks,
-  getAnthropicCredentialsForOfficialPluginHook: () => getAnthropicCredentialsForOfficialPluginHook,
-  flushPendingAsyncRewakeHooks: () => flushPendingAsyncRewakeHooks,
-  executeWorktreeRemoveHook: () => QHt,
-  executeWorktreeCreateHook: () => WYe,
-  executeUserPromptSubmitHooks: () => aZt,
-  executeUserPromptExpansionHooks: () => G8t,
-  executeTeammateIdleHooks: () => oYt,
-  executeTaskCreatedHooks: () => Rzt,
-  executeTaskCompletedHooks: () => Z6e,
-  executeSubagentStartHooks: () => J8t,
-  executeStopHooks: () => OAe,
-  executeStopFailureHooks: () => sOe,
-  executeStatusLineCommand: () => executeStatusLineCommand,
-  executeSetupHooks: () => Vjt,
-  executeSessionStartHooks: () => qjt,
-  executeSessionEndHooks: () => oKe,
-  executePreToolHooks: () => bzt,
-  executePreCompactHooks: () => RQ,
-  executePostToolUseFailureHooks: () => Ezt,
-  executePostToolHooks: () => Szt,
-  executePostToolBatchHooks: () => wSt,
-  executePostCompactHooks: () => eOe,
-  executePermissionRequestHooks: () => jAe,
-  executePermissionDeniedHooks: () => tKt,
-  executeNotificationHooks: () => cJ,
-  executeMessageDisplayHooks: () => JHt,
-  executeInstructionsLoadedHooks: () => o5e,
-  executeHooksOutsideREPL: () => executeHooksOutsideREPL,
-  executeHooks: () => executeHooks,
-  executeFileSuggestionCommand: () => executeFileSuggestionCommand,
-  executeFileChangedHooks: () => Wjt,
-  executeElicitationResultHooks: () => q3t,
-  executeElicitationHooks: () => W3t,
-  executeCwdChangedHooks: () => Gjt,
-  executeConfigChangeHooks: () => vRe,
-  emitHookMetrics: () => emitHookMetrics,
-  createBaseHookInput: () => createBaseHookInput,
-  applyHookSessionTitle: () => $lr,
-  _resetBareMcpServerMatcherWarningsForTesting: () => Zem,
-  SESSION_END_HOOK_TIMEOUT_MS_DEFAULT: () => SESSION_END_HOOK_TIMEOUT_MS_DEFAULT,
-  HOOK_EVENT_REGISTRY: () => zem,
-  ASYNC_REWAKE_FLUSH_TIMEOUT_MS: () => ASYNC_REWAKE_FLUSH_TIMEOUT_MS,
-});
 function Bic() {
   return Yem;
 }

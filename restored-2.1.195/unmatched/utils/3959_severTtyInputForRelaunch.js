@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0168  score=0.3522  fileCov=0.0174
 // note: nearest: node_modules/commander/lib/command.js (0.0168); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: severTtyInputForRelaunch, execRelaunch
 // [unwrapped __esm module QEe] deps: aEe
 s8n = require("fs/promises"), V9e = require("path"), i8n = R(Uj(), 1);
 var z9e = {};
-_t(z9e, {
-  severTtyInputForRelaunch: () => severTtyInputForRelaunch,
-  execRelaunch: () => execRelaunch
-});
 function severTtyInputForRelaunch() {
   for (let e = 0; e < 32; e++) {
     if (e === 1 || e === 2) continue;

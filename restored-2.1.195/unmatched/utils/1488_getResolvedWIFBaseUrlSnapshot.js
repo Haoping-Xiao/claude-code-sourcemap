@@ -4,30 +4,10 @@
 // class=new  jaccard=0.0207  score=0.0674  fileCov=0.029
 // note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0207); dir inferred from dep-graph -> utils; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: withCredentialsLock, resolveCredentialsFromConfig, resetWIFSingletonsForTesting, loadCredentials, loadConfig, isWIFActive, invalidateWIFToken, getWIFTokenCache, getWIFStatusLine, getWIFPrecedenceSource, getWIFCredentials, getWIFAuthType, getResolvedWIFBaseUrlSnapshot, getCredentialsPath, defaultCredentials, WorkloadIdentityError, TokenCache, OAUTH_API_BETA_HEADER, FEDERATION_BETA_HEADER
 // [unwrapped __esm module wjr] deps: uee, je, At, vn, kt
 Zsi = require("path");
 var kjr = {};
-_t(kjr, {
-  withCredentialsLock: () => nHn,
-  resolveCredentialsFromConfig: () => cUe,
-  resetWIFSingletonsForTesting: () => resetWIFSingletonsForTesting,
-  loadCredentials: () => dos,
-  loadConfig: () => eIt,
-  isWIFActive: () => qSn,
-  invalidateWIFToken: () => invalidateWIFToken,
-  getWIFTokenCache: () => getWIFTokenCache,
-  getWIFStatusLine: () => VSn,
-  getWIFPrecedenceSource: () => _9,
-  getWIFCredentials: () => getWIFCredentials,
-  getWIFAuthType: () => V2e,
-  getResolvedWIFBaseUrlSnapshot: () => getResolvedWIFBaseUrlSnapshot,
-  getCredentialsPath: () => lUe,
-  defaultCredentials: () => Qsn,
-  WorkloadIdentityError: () => nf,
-  TokenCache: () => aUe,
-  OAUTH_API_BETA_HEADER: () => Nge,
-  FEDERATION_BETA_HEADER: () => Wsn
-});
 function getResolvedWIFBaseUrlSnapshot() {
   return oHn;
 }

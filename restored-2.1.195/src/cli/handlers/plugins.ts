@@ -4,31 +4,12 @@
 // class=modified  jaccard=0.2674  score=0.3271  fileCov=0.5944
 // note: deminified; 16 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: pluginValidateHandler, pluginUpdateHandler, pluginUninstallHandler, pluginTagHandler, pluginPruneHandler, pluginListHandler, pluginInstallHandler, pluginInitHandler, pluginEnableHandler, pluginDisableHandler, pluginDetailsHandler, marketplaceUpdateHandler, marketplaceRemoveHandler, marketplaceListHandler, marketplaceAddHandler, handleMarketplaceError, VALID_UPDATE_SCOPES, VALID_INSTALLABLE_SCOPES
 // [unwrapped __esm module W9o] deps: Pw, At, Jt, ZC
 ((GZt = require("fs/promises")),
   (oO = require("path")),
   (WZt = ["skills", "agents", "hooks", "mcp", "lsp", "output-style", "channel"]));
 var m2 = {};
-_t(m2, {
-  pluginValidateHandler: () => pluginValidateHandler,
-  pluginUpdateHandler: () => pluginUpdateHandler,
-  pluginUninstallHandler: () => pluginUninstallHandler,
-  pluginTagHandler: () => pluginTagHandler,
-  pluginPruneHandler: () => pluginPruneHandler,
-  pluginListHandler: () => pluginListHandler,
-  pluginInstallHandler: () => pluginInstallHandler,
-  pluginInitHandler: () => pluginInitHandler,
-  pluginEnableHandler: () => pluginEnableHandler,
-  pluginDisableHandler: () => pluginDisableHandler,
-  pluginDetailsHandler: () => pluginDetailsHandler,
-  marketplaceUpdateHandler: () => marketplaceUpdateHandler,
-  marketplaceRemoveHandler: () => marketplaceRemoveHandler,
-  marketplaceListHandler: () => marketplaceListHandler,
-  marketplaceAddHandler: () => marketplaceAddHandler,
-  handleMarketplaceError: () => handleMarketplaceError,
-  VALID_UPDATE_SCOPES: () => UKe,
-  VALID_INSTALLABLE_SCOPES: () => JL,
-});
 function handleMarketplaceError(e, t) {
   (T(`Failed to ${t}: ${be(e)}`, {
     level: "error",

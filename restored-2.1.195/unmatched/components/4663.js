@@ -4,12 +4,10 @@
 // class=new  jaccard=0.011  score=0.4135  fileCov=0.0112
 // note: nearest: src/components/Settings/Config.tsx (0.011); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: call
 // [unwrapped __esm module $7t] deps: ps, O0, _i, fH, eE, kP, TMl, J$l, yOl, JOl
 QOl = R(lt(), 1), GOe = R(rt(), 1), WQ = R(se(), 1);
 var e1l = {};
-_t(e1l, {
-  call: () => call
-});
 function RPf(e) {
   let t = ZOl.c(6),
     {

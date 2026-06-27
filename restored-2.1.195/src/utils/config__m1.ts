@@ -4,6 +4,7 @@
 // class=modified (alt of src/utils/config.ts)  jaccard=0.1516  score=0.5453  fileCov=0.1735
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: trackDatadogEvent, shutdownDatadog, resetDatadogInit, initializeDatadog, DATADOG_LOGS_ENDPOINT, DATADOG_CLIENT_TOKEN
 // [unwrapped __esm module er] deps: Qi, ghe, ft, Uh, kt, Xzr, Lo, fd, Ld, je, Mm, wr, fn, At, oc, ys, sa, Rd, Hu, qd, W0r, hY, Sx, T3e, Jt, BRt
 ((FVo = require("crypto")),
   (Ucc = require("fs")),
@@ -96,14 +97,6 @@ Ime = Cn(() => {
 ((Hsm = NVo), (Tsm = dsm));
 r1i(() => x0());
 var CWt = {};
-_t(CWt, {
-  trackDatadogEvent: () => trackDatadogEvent,
-  shutdownDatadog: () => shutdownDatadog,
-  resetDatadogInit: () => resetDatadogInit,
-  initializeDatadog: () => initializeDatadog,
-  DATADOG_LOGS_ENDPOINT: () => DATADOG_LOGS_ENDPOINT,
-  DATADOG_CLIENT_TOKEN: () => DATADOG_CLIENT_TOKEN,
-});
 function Wcc(e) {
   return e.replace(/[A-Z]/g, (t) => `_${t.toLowerCase()}`);
 }

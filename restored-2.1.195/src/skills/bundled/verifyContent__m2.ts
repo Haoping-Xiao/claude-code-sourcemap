@@ -4,6 +4,7 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1532  score=0.2596  fileCov=0.2721
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
+// module exports: SKILL_MD, SKILL_FILES
 // [unwrapped __esm module bwc] deps: Xr, lj, Jt, AA
 NEm = `# Update Config Skill
 
@@ -529,8 +530,4 @@ capture attached \u2014 don't interpret.
 `;
 var Twc = () => {};
 var wwc = {};
-_t(wwc, {
-  SKILL_MD: () => SKILL_MD,
-  SKILL_FILES: () => SKILL_FILES,
-});
 var SKILL_MD, SKILL_FILES;
