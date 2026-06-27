@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0093  score=0.7259  fileCov=0.0093
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0093); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bbc = E(() => {
-  Ye();
-  Ddr = R(rt(), 1);
-});
+// [unwrapped __esm module bbc] deps: Ye
+Ddr = R(rt(), 1);
 function Abc(e, t) {
   let n = Yce(),
     [r, o] = Pdr.useState(false),

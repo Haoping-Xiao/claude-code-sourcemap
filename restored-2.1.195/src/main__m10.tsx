@@ -4,9 +4,6 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0078  score=0.4289  fileCov=0.0079
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wr = E(() => {
-  RE();
-});
 function Q2() {
   let e = process.env.CLAUDE_CODE_ENTRYPOINT;
   return e && F0u.has(e) ? e : void 0;

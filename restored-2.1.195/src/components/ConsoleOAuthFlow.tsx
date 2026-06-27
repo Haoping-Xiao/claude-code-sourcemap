@@ -4,14 +4,11 @@
 // class=modified  jaccard=0.2302  score=0.3454  fileCov=0.4083
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K9e = E(() => {
-  FK();
-  QEe();
-  ((vQa = require("child_process")),
-    (wQa = require("fs")),
-    (CQa = require("os")),
-    (IQa = require("tty")));
-});
+// [unwrapped __esm module K9e] deps: FK, QEe
+((vQa = require("child_process")),
+  (wQa = require("fs")),
+  (CQa = require("os")),
+  (IQa = require("tty")));
 var RQa = {};
 _t(RQa, {
   ConsoleOAuthFlow: () => ConsoleOAuthFlow,

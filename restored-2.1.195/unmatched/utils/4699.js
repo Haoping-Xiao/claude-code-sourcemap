@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0038  score=0.685  fileCov=0.0038
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0038); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RNl = E(() => {
-  hnr();
-  Ye();
-  sr();
-  gm();
-  xoe();
-  ynr = R(lt(), 1), xEt = R(rt(), 1), jk = R(se(), 1);
-});
+// [unwrapped __esm module RNl] deps: hnr, Ye, sr, gm, xoe
+ynr = R(lt(), 1), xEt = R(rt(), 1), jk = R(se(), 1);
 function _nr(e) {
   let t = LNl.c(12),
     {

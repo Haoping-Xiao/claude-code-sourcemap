@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0465  score=1  fileCov=0.0465
 // note: nearest: node_modules/@anthropic-ai/foundry-sdk/client.mjs (0.0465); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ydi = E(() => {
-  VHn();
-  zdi();
-  Kdi();
-});
 function ggd(e) {
   let t = new j2(e);
   return delete t.batches, t;

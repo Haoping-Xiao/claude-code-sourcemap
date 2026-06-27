@@ -4,33 +4,21 @@
 // class=new  jaccard=0.0367  score=0.0967  fileCov=0.0559
 // note: nearest: src/services/api/client.ts (0.0367); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o7o = E(() => {
-  kt();
-  pke();
-  oo();
-  wFe();
-  je();
-  fn();
-  dr();
-  rle();
-  QO();
-  Ao();
-  Ls();
-  ztn = Object.keys(yc), tmr = {
-    sonnet: {
-      envVarPriority: ["ANTHROPIC_DEFAULT_SONNET_MODEL"],
-      defaultKey: _j
-    },
-    opus: {
-      envVarPriority: ["ANTHROPIC_DEFAULT_OPUS_MODEL"],
-      defaultKey: VY
-    },
-    haiku: {
-      envVarPriority: ["ANTHROPIC_SMALL_FAST_MODEL", "ANTHROPIC_DEFAULT_HAIKU_MODEL"],
-      defaultKey: zY
-    }
-  };
-});
+// [unwrapped __esm module o7o] deps: kt, pke, oo, wFe, je, fn, dr, rle, QO, Ao, Ls
+ztn = Object.keys(yc), tmr = {
+  sonnet: {
+    envVarPriority: ["ANTHROPIC_DEFAULT_SONNET_MODEL"],
+    defaultKey: _j
+  },
+  opus: {
+    envVarPriority: ["ANTHROPIC_DEFAULT_OPUS_MODEL"],
+    defaultKey: VY
+  },
+  haiku: {
+    envVarPriority: ["ANTHROPIC_SMALL_FAST_MODEL", "ANTHROPIC_DEFAULT_HAIKU_MODEL"],
+    defaultKey: zY
+  }
+};
 var i7o = {};
 _t(i7o, {
   vertexUpgradeKey: () => vertexUpgradeKey,

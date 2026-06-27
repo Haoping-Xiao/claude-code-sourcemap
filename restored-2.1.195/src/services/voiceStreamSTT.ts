@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3473  score=0.5855  fileCov=0.4606
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dQt = E(() => {
-  jc();
-  oo();
-});
 var enc = {};
 _t(enc, {
   sanitizeKeytermsForHeader: () => sanitizeKeytermsForHeader,

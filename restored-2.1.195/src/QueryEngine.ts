@@ -4,20 +4,6 @@
 // class=modified  jaccard=0.2472  score=0.3281  fileCov=0.5004
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lXo = E(() => {
-  X6();
-  S4();
-  l$e();
-  fp();
-  og();
-  CAt();
-  pQ();
-  bm();
-  Ao();
-  IAt();
-  xF();
-  m1();
-});
 class _Uc {
   config;
   mutableMessages;

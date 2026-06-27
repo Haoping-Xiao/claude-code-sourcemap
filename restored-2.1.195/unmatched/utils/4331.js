@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0125  score=0.5289  fileCov=0.0126
 // note: nearest: src/utils/attachments.ts (0.0125); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fyl = E(() => {
-  ZE();
-  tP();
-  Rd();
-  co();
-  Ao();
-  Jt();
-  Uyl = require("crypto");
-});
+// [unwrapped __esm module Fyl] deps: ZE, tP, Rd, co, Ao, Jt
+Uyl = require("crypto");
 function Z7n(e, t, n, r) {
   if (e !== ka && e !== Wc) return null;
   if (typeof n !== "object" || n === null || !("file_path" in n) || typeof n.file_path !== "string") return null;

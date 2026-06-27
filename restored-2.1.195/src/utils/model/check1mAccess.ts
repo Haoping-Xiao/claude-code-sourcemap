@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.5737  score=0.91  fileCov=0.6082
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var u$ = E(() => {
-  q8();
-  co();
-  Jt();
-});
 function wia() {
   let e = Dt().cachedExtraUsageDisabledReason;
   if (e === void 0) return false;

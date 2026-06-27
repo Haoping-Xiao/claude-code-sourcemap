@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0327  score=0.2106  fileCov=0.0373
 // note: nearest: node_modules/undici/lib/dispatcher/client.js (0.0327); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Huc = E(() => {
-  kt();
-  je();
-  At();
-  Hpe();
-  YS();
-  Is();
-  ih();
-  WL();
-  q$();
-  cKe();
-  MZt = require("fs/promises"), Euc = require("net"), Auc = require("string_decoder"), _uc = [50, 100, 250, 500, 1000, 2000], Suc = 8 * ZSt;
-});
+// [unwrapped __esm module Huc] deps: kt, je, At, Hpe, YS, Is, ih, WL, q$, cKe
+MZt = require("fs/promises"), Euc = require("net"), Auc = require("string_decoder"), _uc = [50, 100, 250, 500, 1000, 2000], Suc = 8 * ZSt;
 function Cuc(e, t, n, r, o) {
   let s,
     i = false,

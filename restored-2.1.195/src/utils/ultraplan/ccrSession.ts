@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.5216  score=0.7931  fileCov=0.6037
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Zor = E(() => {
-  Un();
-  Lo();
-  BR();
-  fn();
-  sa();
-  Mx();
-  VDe();
-});
 class l9l {
   exitPlanCalls = [];
   results = new Map();

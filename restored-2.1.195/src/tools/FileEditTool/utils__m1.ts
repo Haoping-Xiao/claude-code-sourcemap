@@ -4,11 +4,8 @@
 // class=modified (alt of src/tools/FileEditTool/utils.ts)  jaccard=0.0834  score=0.4721  fileCov=0.092
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Hel = E(() => {
-  oc();
-  ys();
-  wZp = new Ael();
-});
+// [unwrapped __esm module Hel] deps: oc, ys
+wZp = new Ael();
 function Tel(e) {
   return e.replaceAll(gvo, "'").replaceAll(V8n, "'").replaceAll(hvo, '"').replaceAll(yvo, '"');
 }

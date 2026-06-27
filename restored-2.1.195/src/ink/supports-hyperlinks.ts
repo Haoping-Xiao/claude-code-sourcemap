@@ -4,12 +4,10 @@
 // class=modified  jaccard=0.2631  score=0.4852  fileCov=0.3649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AW = E(() => {
-  ft();
-  ((u5i = R(rt(), 1)),
-    (d5i = R(l5i(), 1)),
-    (c5i = ["ghostty", "Hyper", "kitty", "alacritty", "iTerm.app", "iTerm2"]));
-});
+// [unwrapped __esm module AW] deps: ft
+((u5i = R(rt(), 1)),
+  (d5i = R(l5i(), 1)),
+  (c5i = ["ghostty", "Hyper", "kitty", "alacritty", "iTerm.app", "iTerm2"]));
 function xs(e) {
   let t = p5i.c(5),
     { children: n, url: r, fallback: o, assumeSupport: s } = e,

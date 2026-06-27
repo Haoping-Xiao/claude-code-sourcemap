@@ -4,14 +4,8 @@
 // class=modified (alt of src/utils/logoV2Utils.ts)  jaccard=0.0796  score=0.293  fileCov=0.0985
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gor = E(() => {
-  jh();
-  Ye();
-  Un();
-  wr();
-  gm();
-  ((i5l = R(lt(), 1)), (sZ = R(se(), 1)));
-});
+// [unwrapped __esm module gor] deps: jh, Ye, Un, wr, gm
+((i5l = R(lt(), 1)), (sZ = R(se(), 1)));
 function c5l() {
   let e = l5l.c(40),
     { columns: t } = br(),

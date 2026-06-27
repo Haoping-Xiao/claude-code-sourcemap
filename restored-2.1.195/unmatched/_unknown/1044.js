@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0225  score=1  fileCov=0.0225
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0225); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $3s = E(() => {
-  WOr();
-});
 var qOr = e => {
   switch (e) {
     case "standard":

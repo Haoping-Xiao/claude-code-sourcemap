@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.3171  score=0.4773  fileCov=0.4858
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var UAc = E(() => {
-  si();
-  _i();
-  Ye();
-  ps();
-  V9t();
-  QOe();
-  aE();
-  y3();
-  Bs();
-  LW();
-  Ko();
-  Mg();
-  PWt();
-  OAc();
-  _pr();
-  ((I3 = R(rt(), 1)), (eh = R(se(), 1)));
-});
+// [unwrapped __esm module UAc] deps: si, _i, Ye, ps, V9t, QOe, aE, y3, Bs, LW, Ko, Mg, PWt, OAc, _pr
+((I3 = R(rt(), 1)), (eh = R(se(), 1)));
 function jAc(e) {
   let t = FAc.c(59),
     {

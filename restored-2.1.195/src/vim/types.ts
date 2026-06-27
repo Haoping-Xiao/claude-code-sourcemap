@@ -4,20 +4,19 @@
 // class=modified  jaccard=0.272  score=0.6604  fileCov=0.3162
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var R1o = E(() => {
-  wtr = {
-    d: "delete",
-    c: "change",
-    y: "yank",
-  };
-  ((Ctr = new Set(["h", "l", " ", "j", "k", "w", "b", "e", "W", "B", "E", "0", "^", "$"])),
-    (Itr = new Set(["f", "F", "t", "T"])),
-    (xtr = {
-      i: "inner",
-      a: "around",
-    }));
-  k1o = new Set(["w", "W", '"', "'", "`", "(", ")", "b", "[", "]", "{", "}", "B", "<", ">"]);
-});
+// [unwrapped __esm module R1o]
+wtr = {
+  d: "delete",
+  c: "change",
+  y: "yank",
+};
+((Ctr = new Set(["h", "l", " ", "j", "k", "w", "b", "e", "W", "B", "E", "0", "^", "$"])),
+  (Itr = new Set(["f", "F", "t", "T"])),
+  (xtr = {
+    i: "inner",
+    a: "around",
+  }));
+k1o = new Set(["w", "W", '"', "'", "`", "(", ")", "b", "[", "]", "{", "}", "B", "<", ">"]);
 function L1o(e, t, n) {
   switch (e.type) {
     case "idle":

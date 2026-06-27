@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0188  score=0.1164  fileCov=0.0219
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0188); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uGc = E(() => {
-  Qvt();
-  NZ();
-});
 function Xnn(e) {
   if (e === void 0) throw new Ac("JWE Encrypted Key missing");
 }

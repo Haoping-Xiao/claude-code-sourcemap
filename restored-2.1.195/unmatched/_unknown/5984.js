@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0248  score=0.268  fileCov=0.0266
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0248); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q3c = E(() => {
-  NZ();
-  AQo();
-  sK();
-  AR();
-});
 function znn(e, t) {
   if (e.startsWith("RS") || e.startsWith("PS")) {
     let {

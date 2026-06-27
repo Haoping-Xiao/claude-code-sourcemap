@@ -4,284 +4,265 @@
 // class=modified  jaccard=0.5108  score=0.7593  fileCov=0.6095
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var R8e = E(() => {
-  Xr();
-  ft();
-  kt();
-  db();
-  ii();
-  sA();
-  Il();
-  je();
-  swo();
-  KI();
-  Jt();
-  Mp();
-  YI();
-  aS();
-  fh();
-  Rnl();
-  znl();
-  ((ktf = ve(() =>
-    H.object({
-      tool: H.enum(["Bash"]).describe("The tool this prompt applies to"),
-      prompt: H.string().describe(
-        'Semantic description of the action, e.g. "run tests", "install dependencies"',
-      ),
+// [unwrapped __esm module R8e] deps: Xr, ft, kt, db, ii, sA, Il, je, swo, KI, Jt, Mp, YI, aS, fh, Rnl, znl
+((ktf = ve(() =>
+  H.object({
+    tool: H.enum(["Bash"]).describe("The tool this prompt applies to"),
+    prompt: H.string().describe(
+      'Semantic description of the action, e.g. "run tests", "install dependencies"',
+    ),
+  }),
+)),
+  (Xnl = ve(() =>
+    H.strictObject({
+      allowedPrompts: H.array(ktf())
+        .optional()
+        .describe(
+          "Prompt-based permissions needed to implement the plan. These describe categories of actions rather than specific commands.",
+        ),
+    }).passthrough(),
+  )),
+  (Y9_ = ve(() =>
+    Xnl().extend({
+      plan: H.string()
+        .optional()
+        .describe("The plan content (injected by normalizeToolInput from disk)"),
+      planFilePath: H.string()
+        .optional()
+        .describe("The plan file path (injected by normalizeToolInput)"),
     }),
   )),
-    (Xnl = ve(() =>
-      H.strictObject({
-        allowedPrompts: H.array(ktf())
-          .optional()
-          .describe(
-            "Prompt-based permissions needed to implement the plan. These describe categories of actions rather than specific commands.",
-          ),
-      }).passthrough(),
-    )),
-    (Y9_ = ve(() =>
-      Xnl().extend({
-        plan: H.string()
-          .optional()
-          .describe("The plan content (injected by normalizeToolInput from disk)"),
-        planFilePath: H.string()
-          .optional()
-          .describe("The plan file path (injected by normalizeToolInput)"),
-      }),
-    )),
-    (Rtf = ve(() =>
-      H.object({
-        plan: H.string().nullable().describe("The plan that was presented to the user"),
-        isAgent: H.boolean(),
-        filePath: H.string().optional().describe("The file path where the plan was saved"),
-        hasTaskTool: H.boolean()
-          .optional()
-          .describe("Whether the Agent tool is available in the current context"),
-        planWasEdited: H.boolean()
-          .optional()
-          .describe(
-            "True when the user edited the plan (CCR web UI or Ctrl+G); determines whether the plan is echoed back in tool_result",
-          ),
-        awaitingLeaderApproval: H.boolean()
-          .optional()
-          .describe("When true, the teammate has sent a plan approval request to the team leader"),
-        requestId: H.string()
-          .optional()
-          .describe("Unique identifier for the plan approval request"),
-      }),
-    )),
-    (EP = ti({
-      name: jD,
-      searchHint: "present plan for approval and start coding (plan mode only)",
-      maxResultSizeChars: 1e5,
-      async description() {
-        return "Prompts the user to exit plan mode and start coding";
-      },
-      async prompt() {
-        return Lnl;
-      },
-      get inputSchema() {
-        return Xnl();
-      },
-      get outputSchema() {
-        return Rtf();
-      },
-      userFacingName() {
-        return "";
-      },
-      shouldDefer: !0,
-      isEnabled() {
-        if (MA().length > 0 && Ir()) return !1;
-        if (Ir() && !hCt()) return !1;
-        return !0;
-      },
-      isConcurrencySafe() {
-        return !0;
-      },
-      isReadOnly() {
-        return !1;
-      },
-      requiresUserInteraction() {
-        if (wf()) return !1;
-        return !0;
-      },
-      async validateInput(e, t) {
-        let { options: n } = t;
-        if (wf())
-          return {
-            result: !0,
-          };
-        let r = Fr(t).mode;
-        if (r !== "plan")
-          return (
-            G("tengu_exit_plan_mode_called_outside_plan", {
-              model: n.mainLoopModel,
-              mode: $e(r),
-              hasExitedPlanModeInSession: LCt(),
-            }),
-            {
-              result: !1,
-              message: `You are not in plan mode. To enter plan mode, call the ${xX} tool first. If your plan was already approved, continue with implementation.`,
-              errorCode: 1,
-            }
-          );
+  (Rtf = ve(() =>
+    H.object({
+      plan: H.string().nullable().describe("The plan that was presented to the user"),
+      isAgent: H.boolean(),
+      filePath: H.string().optional().describe("The file path where the plan was saved"),
+      hasTaskTool: H.boolean()
+        .optional()
+        .describe("Whether the Agent tool is available in the current context"),
+      planWasEdited: H.boolean()
+        .optional()
+        .describe(
+          "True when the user edited the plan (CCR web UI or Ctrl+G); determines whether the plan is echoed back in tool_result",
+        ),
+      awaitingLeaderApproval: H.boolean()
+        .optional()
+        .describe("When true, the teammate has sent a plan approval request to the team leader"),
+      requestId: H.string().optional().describe("Unique identifier for the plan approval request"),
+    }),
+  )),
+  (EP = ti({
+    name: jD,
+    searchHint: "present plan for approval and start coding (plan mode only)",
+    maxResultSizeChars: 1e5,
+    async description() {
+      return "Prompts the user to exit plan mode and start coding";
+    },
+    async prompt() {
+      return Lnl;
+    },
+    get inputSchema() {
+      return Xnl();
+    },
+    get outputSchema() {
+      return Rtf();
+    },
+    userFacingName() {
+      return "";
+    },
+    shouldDefer: !0,
+    isEnabled() {
+      if (MA().length > 0 && Ir()) return !1;
+      if (Ir() && !hCt()) return !1;
+      return !0;
+    },
+    isConcurrencySafe() {
+      return !0;
+    },
+    isReadOnly() {
+      return !1;
+    },
+    requiresUserInteraction() {
+      if (wf()) return !1;
+      return !0;
+    },
+    async validateInput(e, t) {
+      let { options: n } = t;
+      if (wf())
         return {
           result: !0,
         };
-      },
-      async checkPermissions(e, t) {
-        if (wf())
-          return {
-            behavior: "allow",
-            updatedInput: e,
-          };
+      let r = Fr(t).mode;
+      if (r !== "plan")
+        return (
+          G("tengu_exit_plan_mode_called_outside_plan", {
+            model: n.mainLoopModel,
+            mode: $e(r),
+            hasExitedPlanModeInSession: LCt(),
+          }),
+          {
+            result: !1,
+            message: `You are not in plan mode. To enter plan mode, call the ${xX} tool first. If your plan was already approved, continue with implementation.`,
+            errorCode: 1,
+          }
+        );
+      return {
+        result: !0,
+      };
+    },
+    async checkPermissions(e, t) {
+      if (wf())
         return {
-          behavior: "ask",
-          message: "Exit plan mode?",
+          behavior: "allow",
           updatedInput: e,
         };
-      },
-      renderToolUseMessage: Wnl,
-      renderToolResultMessage: qnl,
-      renderToolUseRejectedMessage: Vnl,
-      async call(e, t, n, r, o) {
-        let s = null,
-          i = null;
-        [s, i] = await Promise.all([
-          Promise.resolve().then(() => (Eoe(), Ope)),
-          Promise.resolve().then(() => (__(), T6n)),
-        ]);
-        let a = !!t.agentId,
-          l = _P(t.agentId),
-          c = "plan" in e && typeof e.plan === "string" ? e.plan : void 0,
-          u = c ?? bP(t.agentId);
-        if (c !== void 0 && l)
-          (await qs()
-            .write(l, c)
-            .catch((m) =>
-              T(`Failed to persist plan to ${l}: ${m instanceof Error ? m.message : String(m)}`, {
-                level: "error",
-              }),
-            ),
-            H6n());
-        if (wf() && KPt()) {
-          if (!u)
-            throw new iwo(
-              `No plan file found at ${l}. Please write your plan to this file before calling ExitPlanMode.`,
-            );
-          let m = Oh() || "unknown",
-            g = rp(),
-            h = nrt("plan_approval", pte(m, g || "default")),
-            y = {
-              type: "plan_approval_request",
-              from: m,
-              timestamp: new Date().toISOString(),
-              planFilePath: l,
-              planContent: u,
-              requestId: h,
-            };
-          await fg(
-            "team-lead",
-            {
-              from: m,
-              text: De(y),
-              timestamp: new Date().toISOString(),
-            },
-            g,
+      return {
+        behavior: "ask",
+        message: "Exit plan mode?",
+        updatedInput: e,
+      };
+    },
+    renderToolUseMessage: Wnl,
+    renderToolResultMessage: qnl,
+    renderToolUseRejectedMessage: Vnl,
+    async call(e, t, n, r, o) {
+      let s = null,
+        i = null;
+      [s, i] = await Promise.all([
+        Promise.resolve().then(() => (Eoe(), Ope)),
+        Promise.resolve().then(() => (__(), T6n)),
+      ]);
+      let a = !!t.agentId,
+        l = _P(t.agentId),
+        c = "plan" in e && typeof e.plan === "string" ? e.plan : void 0,
+        u = c ?? bP(t.agentId);
+      if (c !== void 0 && l)
+        (await qs()
+          .write(l, c)
+          .catch((m) =>
+            T(`Failed to persist plan to ${l}: ${m instanceof Error ? m.message : String(m)}`, {
+              level: "error",
+            }),
+          ),
+          H6n());
+      if (wf() && KPt()) {
+        if (!u)
+          throw new iwo(
+            `No plan file found at ${l}. Please write your plan to this file before calling ExitPlanMode.`,
           );
-          let b = t.getAppState(),
-            _ = xnl(m, b);
-          if (_) rwo(_, t.taskRegistry, !0);
-          return {
-            data: {
-              plan: u,
-              isAgent: !0,
-              filePath: l,
-              awaitingLeaderApproval: !0,
-              requestId: h,
-            },
+        let m = Oh() || "unknown",
+          g = rp(),
+          h = nrt("plan_approval", pte(m, g || "default")),
+          y = {
+            type: "plan_approval_request",
+            from: m,
+            timestamp: new Date().toISOString(),
+            planFilePath: l,
+            planContent: u,
+            requestId: h,
           };
-        }
-        let d = null;
-        {
-          let m = Fr(t).prePlanMode ?? "default";
-          if (m === "auto" && !(i?.isAutoModeGateEnabled() ?? !1)) {
-            let g = i?.getAutoModeUnavailableReason() ?? "circuit-breaker";
-            ((d = i?.getAutoModeUnavailableNotification(g) ?? "auto mode unavailable"),
-              T(
-                `[auto-mode gate @ ExitPlanModeV2Tool] prePlanMode=${m} but gate is off (reason=${g}) \u2014 falling back to default on plan exit`,
-                {
-                  level: "warn",
-                },
-              ));
-          }
-        }
-        if (d)
-          o?.({
-            type: "notification",
-            notification: {
-              key: "auto-mode-gate-plan-exit-fallback",
-              text: `plan exit \u2192 default \xB7 ${d}`,
-              priority: "immediate",
-              color: "warning",
-              timeoutMs: 1e4,
-            },
-          });
-        let p = Fr(t);
-        if (p.mode === "plan") {
-          (xK(!0), Vie(!0));
-          let m = p.prePlanMode ?? "default";
+        await fg(
+          "team-lead",
           {
-            if (m === "auto" && !(i?.isAutoModeGateEnabled() ?? !1)) m = "default";
-            let y = m === "auto",
-              b = s?.isAutoModeActive() ?? !1;
-            if ((s?.setAutoModeActive(y), b && !y)) B2(!0);
-          }
-          Ebe({
-            from: "plan",
-            to: m,
-            trigger: "exit_plan_mode",
-          });
-          let g = m === "auto",
-            h = p.strippedDangerousRules;
-          t.setToolPermissionContext((y) => {
-            let b = y;
-            if (g) b = i?.stripDangerousPermissionsForAutoMode(b) ?? b;
-            else if (h) b = i?.restoreDangerousPermissions(b) ?? b;
-            return {
-              ...b,
-              mode: m,
-              prePlanMode: void 0,
-            };
-          });
-        }
-        let f = el() && t.options.tools.some((m) => Ql(m, ss));
+            from: m,
+            text: De(y),
+            timestamp: new Date().toISOString(),
+          },
+          g,
+        );
+        let b = t.getAppState(),
+          _ = xnl(m, b);
+        if (_) rwo(_, t.taskRegistry, !0);
         return {
           data: {
             plan: u,
-            isAgent: a,
+            isAgent: !0,
             filePath: l,
-            hasTaskTool: f || void 0,
-            planWasEdited: c !== void 0 || void 0,
+            awaitingLeaderApproval: !0,
+            requestId: h,
           },
         };
-      },
-      mapToolResultToToolResultBlockParam(
+      }
+      let d = null;
+      {
+        let m = Fr(t).prePlanMode ?? "default";
+        if (m === "auto" && !(i?.isAutoModeGateEnabled() ?? !1)) {
+          let g = i?.getAutoModeUnavailableReason() ?? "circuit-breaker";
+          ((d = i?.getAutoModeUnavailableNotification(g) ?? "auto mode unavailable"),
+            T(
+              `[auto-mode gate @ ExitPlanModeV2Tool] prePlanMode=${m} but gate is off (reason=${g}) \u2014 falling back to default on plan exit`,
+              {
+                level: "warn",
+              },
+            ));
+        }
+      }
+      if (d)
+        o?.({
+          type: "notification",
+          notification: {
+            key: "auto-mode-gate-plan-exit-fallback",
+            text: `plan exit \u2192 default \xB7 ${d}`,
+            priority: "immediate",
+            color: "warning",
+            timeoutMs: 1e4,
+          },
+        });
+      let p = Fr(t);
+      if (p.mode === "plan") {
+        (xK(!0), Vie(!0));
+        let m = p.prePlanMode ?? "default";
         {
-          isAgent: e,
-          plan: t,
-          filePath: n,
-          hasTaskTool: r,
-          planWasEdited: o,
-          awaitingLeaderApproval: s,
-          requestId: i,
-        },
-        a,
-      ) {
-        if (s)
+          if (m === "auto" && !(i?.isAutoModeGateEnabled() ?? !1)) m = "default";
+          let y = m === "auto",
+            b = s?.isAutoModeActive() ?? !1;
+          if ((s?.setAutoModeActive(y), b && !y)) B2(!0);
+        }
+        Ebe({
+          from: "plan",
+          to: m,
+          trigger: "exit_plan_mode",
+        });
+        let g = m === "auto",
+          h = p.strippedDangerousRules;
+        t.setToolPermissionContext((y) => {
+          let b = y;
+          if (g) b = i?.stripDangerousPermissionsForAutoMode(b) ?? b;
+          else if (h) b = i?.restoreDangerousPermissions(b) ?? b;
           return {
-            type: "tool_result",
-            content: `Your plan has been submitted to the team lead for approval.
+            ...b,
+            mode: m,
+            prePlanMode: void 0,
+          };
+        });
+      }
+      let f = el() && t.options.tools.some((m) => Ql(m, ss));
+      return {
+        data: {
+          plan: u,
+          isAgent: a,
+          filePath: l,
+          hasTaskTool: f || void 0,
+          planWasEdited: c !== void 0 || void 0,
+        },
+      };
+    },
+    mapToolResultToToolResultBlockParam(
+      {
+        isAgent: e,
+        plan: t,
+        filePath: n,
+        hasTaskTool: r,
+        planWasEdited: o,
+        awaitingLeaderApproval: s,
+        requestId: i,
+      },
+      a,
+    ) {
+      if (s)
+        return {
+          type: "tool_result",
+          content: `Your plan has been submitted to the team lead for approval.
 
 Plan file: ${n}
 
@@ -294,40 +275,39 @@ Plan file: ${n}
 **Important:** Do NOT proceed until you receive approval. Check your inbox for response.
 
 Request ID: ${i}`,
-            tool_use_id: a,
-          };
-        if (e)
-          return {
-            type: "tool_result",
-            content:
-              'User has approved the plan. There is nothing else needed from you now. Please respond with "ok"',
-            tool_use_id: a,
-          };
-        if (!t || t.trim() === "")
-          return {
-            type: "tool_result",
-            content: "User has approved exiting plan mode. You can now proceed.",
-            tool_use_id: a,
-          };
-        let l = r
-          ? `
-
-If this plan can be broken down into multiple independent tasks, consider spawning named teammates with the ${ss} tool (pass a \`name\`) to parallelize the work.`
-          : "";
+          tool_use_id: a,
+        };
+      if (e)
         return {
           type: "tool_result",
-          content: `User has approved your plan. You can now start coding. Start with updating your todo list if applicable
+          content:
+            'User has approved the plan. There is nothing else needed from you now. Please respond with "ok"',
+          tool_use_id: a,
+        };
+      if (!t || t.trim() === "")
+        return {
+          type: "tool_result",
+          content: "User has approved exiting plan mode. You can now proceed.",
+          tool_use_id: a,
+        };
+      let l = r
+        ? `
+
+If this plan can be broken down into multiple independent tasks, consider spawning named teammates with the ${ss} tool (pass a \`name\`) to parallelize the work.`
+        : "";
+      return {
+        type: "tool_result",
+        content: `User has approved your plan. You can now start coding. Start with updating your todo list if applicable
 
 Your plan has been saved to: ${n}
 You can refer back to it if needed during implementation.${l}
 
 ## ${o ? "Approved Plan (edited by user)" : "Approved Plan"}:
 ${t}`,
-          tool_use_id: a,
-        };
-      },
-    })));
-});
+        tool_use_id: a,
+      };
+    },
+  })));
 function Ltf() {
   return `## What Happens in Plan Mode
 

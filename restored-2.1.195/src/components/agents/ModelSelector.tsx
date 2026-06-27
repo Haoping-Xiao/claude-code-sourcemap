@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2597  score=0.3694  fileCov=0.4664
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var i4o = E(() => {
-  si();
-  Ye();
-  IL();
-  sr();
-  Coe();
-  ((gYl = R(lt(), 1)), (hYl = R(rt(), 1)), (zq = R(se(), 1)), (zAt = ["automatic", ...Ky]));
-});
+// [unwrapped __esm module i4o] deps: si, Ye, IL, sr, Coe
+((gYl = R(lt(), 1)), (hYl = R(rt(), 1)), (zq = R(se(), 1)), (zAt = ["automatic", ...Ky]));
 function Bsr(e) {
   let t = yYl.c(11),
     { initialModel: n, onComplete: r, onCancel: o } = e,

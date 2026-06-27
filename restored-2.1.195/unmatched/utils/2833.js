@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0057  score=0.056  fileCov=0.0063
 // note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dre = E(() => {
-  Gve();
-  ula();
-  oE = jlp;
-});
+// [unwrapped __esm module dre] deps: Gve, ula
+oE = jlp;
 function V1n(e) {
   if (!ab(e)) return null;
   let n = e.response?.data?.error;

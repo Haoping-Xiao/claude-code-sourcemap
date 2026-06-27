@@ -4,9 +4,6 @@
 // class=modified (alt of src/memdir/memoryTypes.ts)  jaccard=0.0221  score=0.254  fileCov=0.0236
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LNi = E(() => {
-  PNt();
-});
 function DNi(e) {
   if (typeof e !== "string") return;
   return KKr.find((t) => t === e);

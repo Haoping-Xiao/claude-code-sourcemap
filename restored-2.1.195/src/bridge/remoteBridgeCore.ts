@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.4224  score=0.5275  fileCov=0.6795
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var B8o = E(() => {
-  Hp();
-  Lo();
-  je();
-  At();
-  Jt();
-  Cde();
-});
 function Igc(e) {
   return {
     Authorization: `Bearer ${e}`,

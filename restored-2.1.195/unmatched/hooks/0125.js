@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0106  score=1  fileCov=0.0106
 // note: nearest: src/hooks/useVoice.ts (0.0106); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var urs = E(() => {
-  Yyr();
-});
 function iJe(e) {
   if (!e) return {
     code: "en"

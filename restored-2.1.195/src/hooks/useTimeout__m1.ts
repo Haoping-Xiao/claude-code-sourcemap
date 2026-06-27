@@ -4,10 +4,8 @@
 // class=modified (alt of src/hooks/useTimeout.ts)  jaccard=0.3714  score=1  fileCov=0.3714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W0c = E(() => {
-  Un();
-  nfr = R(rt(), 1);
-});
+// [unwrapped __esm module W0c] deps: Un
+nfr = R(rt(), 1);
 function q0c(e, t = $vm) {
   let n = ks(),
     [r, o] = rfr.useState(!e);

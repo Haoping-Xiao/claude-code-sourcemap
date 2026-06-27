@@ -4,16 +4,6 @@
 // class=modified  jaccard=0.1837  score=0.286  fileCov=0.3392
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KNl = E(() => {
-  U1();
-  dC();
-  gb();
-  QH();
-  zNo();
-  lg();
-  Cnr();
-  sr();
-});
 var YNo = {};
 _t(YNo, {
   formatLastUpdateResult: () => formatLastUpdateResult,

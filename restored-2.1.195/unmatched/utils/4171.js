@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0042  score=0.3547  fileCov=0.0043
 // note: nearest: src/screens/REPL.tsx (0.0042); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var p6e = E(() => {
-  jib = Symbol("NO_VALUE");
-});
+// [unwrapped __esm module p6e]
+jib = Symbol("NO_VALUE");
 var lp = 600000,
   Mll = 30000;
 async function* G8t(e, t, n, r, o, s, i) {

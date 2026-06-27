@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0018  score=1  fileCov=0.0018
 // note: nearest: src/services/api/claude.ts (0.0018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sF = E(() => {
-  kt();
-});
 function Nao(e, t) {
   let n = Object.create(null),
     r = 0;

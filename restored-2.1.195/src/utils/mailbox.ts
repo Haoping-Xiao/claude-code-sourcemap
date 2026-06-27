@@ -4,22 +4,8 @@
 // class=modified  jaccard=0.58  score=0.9446  fileCov=0.6004
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var S6 = E(() => {
-  F1a();
-  X_e();
-  SGe();
-  Kit();
-  Ye();
-  je();
-  vn();
-  SZr();
-  Yj();
-  xne();
-  H0e();
-  QLn();
-  G1a();
-  ((Fho = R(lt(), 1)), (qI = R(rt(), 1)), (ePe = R(se(), 1)));
-});
+// [unwrapped __esm module S6] deps: F1a, X_e, SGe, Kit, Ye, je, vn, SZr, Yj, xne, H0e, QLn, G1a
+((Fho = R(lt(), 1)), (qI = R(rt(), 1)), (ePe = R(se(), 1)));
 class jho {
   queue = [];
   waiters = [];

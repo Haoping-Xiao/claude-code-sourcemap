@@ -4,10 +4,6 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0139  score=0.5988  fileCov=0.014
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Aic = E(() => {
-  sp();
-  E5e();
-});
 async function o5e(e, t, n, r) {
   let { globs: o, triggerFilePath: s, parentFilePath: i, timeoutMs: a = lp } = r ?? {},
     l = {

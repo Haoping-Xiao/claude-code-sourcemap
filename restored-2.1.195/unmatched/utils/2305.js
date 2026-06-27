@@ -3,12 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HI = E(() => {
-  p2i = class p2i extends Map {
-    everMounted = false;
-    set(e, t) {
-      return this.everMounted = true, super.set(e, t);
-    }
-  };
-  lFd = new p2i(), Cu = lFd;
-});
+// [unwrapped __esm module HI]
+p2i = class p2i extends Map {
+  everMounted = false;
+  set(e, t) {
+    return this.everMounted = true, super.set(e, t);
+  }
+};
+lFd = new p2i(), Cu = lFd;

@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0259  score=0.1045  fileCov=0.0333
 // note: nearest: src/services/compact/microCompact.ts (0.0259); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dac = E(() => {
-  PR();
-  Un();
-  kt();
-  fb();
-});
 var Nac = {};
 _t(Nac, {
   handleHintReject: () => handleHintReject,

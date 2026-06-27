@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.1936  score=0.6234  fileCov=0.2192
 // note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tPc = E(() => {
-  Ed();
-  Un();
-  ZDc = R(rt(), 1);
-});
+// [unwrapped __esm module tPc] deps: Ed, Un
+ZDc = R(rt(), 1);
 function oPc() {
   let {
     addNotification: e,

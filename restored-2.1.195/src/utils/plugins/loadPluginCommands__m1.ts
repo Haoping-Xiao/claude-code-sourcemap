@@ -4,11 +4,8 @@
 // class=modified (alt of src/utils/plugins/loadPluginCommands.ts)  jaccard=0.2906  score=0.7397  fileCov=0.3237
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zZn = E(() => {
-  je();
-  ys();
-  ((p$o = require("path")), (RIf = /^skill\.md$/i));
-});
+// [unwrapped __esm module zZn] deps: je, ys
+((p$o = require("path")), (RIf = /^skill\.md$/i));
 function f$o(e) {
   return /^skill\.md$/i.test(Bk.basename(e));
 }

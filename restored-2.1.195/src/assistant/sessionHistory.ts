@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.2213  score=0.3982  fileCov=0.3325
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Wen = E(() => {
-  je();
-  H1e();
-  co();
-});
 async function qdr(e) {
   let { accessToken: t } = await Lj();
   return {

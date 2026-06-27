@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0038  score=0.0795  fileCov=0.0039
 // note: nearest: src/cli/print.ts (0.0038); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Smn = E(() => {
-  ih();
-  Fet = Mi();
-});
+// [unwrapped __esm module Smn] deps: ih
+Fet = Mi();
 async function Emn(e, t) {
   if (sCs) return null;
   sCs = true;

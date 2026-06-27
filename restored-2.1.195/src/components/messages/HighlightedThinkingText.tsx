@@ -4,27 +4,24 @@
 // class=modified  jaccard=0.1743  score=0.2431  fileCov=0.3811
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oIo = E(() => {
-  m0();
-  sr();
-  ((Xof = {
+// [unwrapped __esm module oIo] deps: m0, sr
+((Xof = {
+  hour: "numeric",
+  minute: "2-digit",
+}),
+  (Jof = {
+    weekday: "long",
     hour: "numeric",
     minute: "2-digit",
   }),
-    (Jof = {
-      weekday: "long",
-      hour: "numeric",
-      minute: "2-digit",
-    }),
-    (Qof = {
-      weekday: "long",
-      month: "short",
-      day: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-    }),
-    (rIo = new Map()));
-});
+  (Qof = {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  }),
+  (rIo = new Map()));
 function Kil(e) {
   let t = Xzn.c(28),
     { text: n, useBriefLayout: r, timestamp: o } = e,

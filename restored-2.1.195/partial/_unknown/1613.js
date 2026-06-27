@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1217  score=1  fileCov=0.1217
 // note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/internal/utils/log.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mMt = E(() => {
-  UHn();
-  F4r = U4r;
-});
+// [unwrapped __esm module mMt] deps: UHn
+F4r = U4r;
 function gMt() {}
 function jHn(e, t, n) {
   if (!t || kdi[e] > kdi[n]) return gMt;else return t[e].bind(t);

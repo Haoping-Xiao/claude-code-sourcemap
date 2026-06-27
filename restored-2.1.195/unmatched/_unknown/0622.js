@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jkr = E(() => {
-  nRt = GDu;
-});
+// [unwrapped __esm module jkr]
+nRt = GDu;
 function WDu(e) {
   return UK(e, Zie(e));
 }

@@ -4,8 +4,8 @@
 // class=new  jaccard=0.0135  score=0.7167  fileCov=0.0136
 // note: nearest: src/cli/print.ts (0.0135); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kZn = E(() => {
-  qMo = `# Claude in Chrome browser automation
+// [unwrapped __esm module kZn]
+qMo = `# Claude in Chrome browser automation
 
 You have access to browser automation tools (mcp__claude-in-chrome__*) for interacting with web pages in Chrome. Follow these guidelines for effective browser automation.
 
@@ -59,7 +59,6 @@ Never reuse tab IDs from a previous/other session. Follow these guidelines:
 2. Otherwise, create a new tab with mcp__claude-in-chrome__tabs_create_mcp
 3. If a tool returns an error indicating the tab doesn't exist or is invalid, call tabs_context_mcp to get fresh tab IDs
 4. When a tab is closed by the user or a navigation error occurs, call tabs_context_mcp to see what tabs are available`;
-});
 var l0l = `You have a computer-use MCP available (tools named \`mcp__computer-use__*\`). It lets you take screenshots of the user's desktop and control it with mouse clicks, keyboard input, and scrolling.
 
 **Pick the right tool for the app.** Each tier trades speed/precision against coverage:

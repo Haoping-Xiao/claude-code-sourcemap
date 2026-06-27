@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.1285  score=0.7122  fileCov=0.1356
 // note: low-confidence suggestion: src/hooks/notifs/useMcpConnectivityStatus.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qNo = E(() => {
-  Ye();
-  hse();
-  xoe();
-  jNl = R(lt(), 1), Mq = R(se(), 1);
-});
+// [unwrapped __esm module qNo] deps: Ye, hse, xoe
+jNl = R(lt(), 1), Mq = R(se(), 1);
 function VL(e, t) {
   if (t <= 0) return;
   T(`${t} setup ${bn(t, "issue")}: ${e} (run /doctor for details)`, {

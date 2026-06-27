@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0083  score=0.2232  fileCov=0.0085
 // note: nearest: node_modules/react/cjs/react.production.js (0.0083); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hor = E(() => {
-  Ye();
-  $5l = R(lt(), 1), Aor = R(se(), 1);
-});
+// [unwrapped __esm module Hor] deps: Ye
+$5l = R(lt(), 1), Aor = R(se(), 1);
 function N5l() {
   let e = $yt(),
     t = O5l.useMemo(jPt, [e]),

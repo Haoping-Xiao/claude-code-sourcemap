@@ -4,37 +4,13 @@
 // class=modified  jaccard=0.2837  score=0.4276  fileCov=0.4573
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ypt = E(() => {
-  ft();
-  jDe();
-  S$();
-  eWt();
-  fp();
-  er();
-  Il();
-  je();
-  At();
-  ik();
-  q0();
-  es();
-  vn();
-  co();
-  Yf();
-  y6e();
-  y_();
-  _a();
-  _m();
-  Jt();
-  dn();
-  kt();
-  Yqe();
-  ((gHl = require("crypto")),
-    (hHl = require("fs")),
-    (PN = require("fs/promises")),
-    (HP = require("path")),
-    (T_f = new Set(["Edit", "Write", "NotebookEdit"])),
-    (v_f = new Set(["Read", "Glob", "Grep", "ToolSearch", "LSP", "TaskGet", "TaskList"])));
-});
+// [unwrapped __esm module Ypt] deps: ft, jDe, S$, eWt, fp, er, Il, je, At, ik, q0, es, vn, co, Yf, y6e, y_, _a, _m, Jt, dn, kt, Yqe
+((gHl = require("crypto")),
+  (hHl = require("fs")),
+  (PN = require("fs/promises")),
+  (HP = require("path")),
+  (T_f = new Set(["Edit", "Write", "NotebookEdit"])),
+  (v_f = new Set(["Read", "Glob", "Grep", "ToolSearch", "LSP", "TaskGet", "TaskList"])));
 function DLo(e, t) {
   if (e === void 0 || e.size === 0) return e;
   let n;

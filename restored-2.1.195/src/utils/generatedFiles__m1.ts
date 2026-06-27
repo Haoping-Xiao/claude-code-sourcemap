@@ -4,34 +4,30 @@
 // class=modified (alt of src/utils/generatedFiles.ts)  jaccard=0.0789  score=0.2485  fileCov=0.1037
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var x$o = E(() => {
-  je();
-  At();
-  Bi();
-  ((kRl = require("fs/promises")),
-    (gxf = [
-      {
-        lockfile: "bun.lock",
-        command: "bun",
-        args: ["install", "--frozen-lockfile", "--ignore-scripts"],
-      },
-      {
-        lockfile: "bun.lockb",
-        command: "bun",
-        args: ["install", "--frozen-lockfile", "--ignore-scripts"],
-      },
-      {
-        lockfile: "npm-shrinkwrap.json",
-        command: "npm",
-        args: ["ci", "--ignore-scripts"],
-      },
-      {
-        lockfile: "package-lock.json",
-        command: "npm",
-        args: ["ci", "--ignore-scripts"],
-      },
-    ]));
-});
+// [unwrapped __esm module x$o] deps: je, At, Bi
+((kRl = require("fs/promises")),
+  (gxf = [
+    {
+      lockfile: "bun.lock",
+      command: "bun",
+      args: ["install", "--frozen-lockfile", "--ignore-scripts"],
+    },
+    {
+      lockfile: "bun.lockb",
+      command: "bun",
+      args: ["install", "--frozen-lockfile", "--ignore-scripts"],
+    },
+    {
+      lockfile: "npm-shrinkwrap.json",
+      command: "npm",
+      args: ["ci", "--ignore-scripts"],
+    },
+    {
+      lockfile: "package-lock.json",
+      command: "npm",
+      args: ["ci", "--ignore-scripts"],
+    },
+  ]));
 async function lse(e, t, n, r, o, s) {
   if (n?.version) return (T(`Using manifest version for ${e}: ${n.version}`), n.version);
   if (o) return (T(`Using provided version for ${e}: ${o}`), o);

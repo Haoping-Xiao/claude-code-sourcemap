@@ -4,23 +4,20 @@
 // class=modified (alt of src/utils/fsOperations.ts)  jaccard=0.1473  score=0.6834  fileCov=0.1581
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jt = E(() => {
-  ft();
-  je();
-  ((Wge = require("fs")),
-    (C8m = (() => {
-      let e = process.env.CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS;
-      if (e !== void 0) {
-        let t = Number(e);
-        if (!Number.isNaN(t) && t >= 0) return t;
-      }
-      return 1 / 0;
-    })()),
-    (f7c = {
-      [Symbol.dispose]() {},
-    }));
-  gy = m7c;
-});
+// [unwrapped __esm module Jt] deps: ft, je
+((Wge = require("fs")),
+  (C8m = (() => {
+    let e = process.env.CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS;
+    if (e !== void 0) {
+      let t = Number(e);
+      if (!Number.isNaN(t) && t >= 0) return t;
+    }
+    return 1 / 0;
+  })()),
+  (f7c = {
+    [Symbol.dispose]() {},
+  }));
+gy = m7c;
 function GIt(e, t) {
   if ((Fc(t) && !qp(t)) || Tw(t)) return;
   let n = s_.resolve(t),

@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0061  score=0.6514  fileCov=0.0061
 // note: nearest: src/bridge/bridgeMain.ts (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nOe = E(() => {
-  dn();
-  je();
-  At();
-  Ide();
-  Cde();
-  $Po();
-});
 async function lHe(e, t) {
   let n = Rt(),
     r = ML() ?? em();

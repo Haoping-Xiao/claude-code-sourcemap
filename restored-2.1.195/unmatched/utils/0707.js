@@ -3,7 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cfn = E(() => {
-  wfn = new Map();
-});
+// [unwrapped __esm module Cfn]
+wfn = new Map();
 var _vs, QC, PRt;

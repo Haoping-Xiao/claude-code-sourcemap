@@ -4,175 +4,158 @@
 // class=modified (alt of src/utils/claudeInChrome/common.ts)  jaccard=0.2202  score=0.301  fileCov=0.4507
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ag = E(() => {
-  IB();
-  Xr();
-  ft();
-  kt();
-  Pw();
-  Rm();
-  je();
-  wr();
-  fn();
-  At();
-  vn();
-  zH();
-  Jt();
-  HO();
-  VGe();
-  ((fT = require("fs/promises")),
-    (oS = require("path")),
-    (Yzi = /^[a-f0-9]{8}$/),
-    (mKd = /^(cse_|session_)[A-Za-z0-9_-]{1,128}$/));
-  zzi = ve(() =>
-    H.object({
-      state: H.string(),
-      detail: H.string(),
-      tempo: H.enum(["active", "idle", "blocked"])
-        .optional()
-        .catch(void 0),
-      inFlight: H.object({
-        tasks: H.number(),
-        queued: H.number(),
-        kinds: H.array(H.string()),
-      }).optional(),
-      fan: H.array(
+// [unwrapped __esm module ag] deps: IB, Xr, ft, kt, Pw, Rm, je, wr, fn, At, vn, zH, Jt, HO, VGe
+((fT = require("fs/promises")),
+  (oS = require("path")),
+  (Yzi = /^[a-f0-9]{8}$/),
+  (mKd = /^(cse_|session_)[A-Za-z0-9_-]{1,128}$/));
+zzi = ve(() =>
+  H.object({
+    state: H.string(),
+    detail: H.string(),
+    tempo: H.enum(["active", "idle", "blocked"])
+      .optional()
+      .catch(void 0),
+    inFlight: H.object({
+      tasks: H.number(),
+      queued: H.number(),
+      kinds: H.array(H.string()),
+    }).optional(),
+    fan: H.array(
+      H.object({
+        id: H.string().optional(),
+        kind: H.enum(["agent", "workflow", "shell", "monitor", "mcp", "todo"])
+          .optional()
+          .catch(void 0),
+        label: H.string(),
+        startedAt: H.number().optional(),
+        doneAt: H.number().optional(),
+        failed: H.boolean().optional(),
+        group: H.string().optional(),
+      }),
+    ).optional(),
+    budget: H.object({
+      spent: H.number(),
+      target: H.number(),
+    }).optional(),
+    tokens: H.number().optional(),
+    needs_you: H.boolean().optional(),
+    needs: H.string().optional(),
+    block: H.object({
+      questions: H.array(
         H.object({
-          id: H.string().optional(),
-          kind: H.enum(["agent", "workflow", "shell", "monitor", "mcp", "todo"])
-            .optional()
-            .catch(void 0),
-          label: H.string(),
-          startedAt: H.number().optional(),
-          doneAt: H.number().optional(),
-          failed: H.boolean().optional(),
-          group: H.string().optional(),
-        }),
-      ).optional(),
-      budget: H.object({
-        spent: H.number(),
-        target: H.number(),
-      }).optional(),
-      tokens: H.number().optional(),
-      needs_you: H.boolean().optional(),
-      needs: H.string().optional(),
-      block: H.object({
-        questions: H.array(
-          H.object({
-            question: H.string(),
-            options: H.array(
-              H.object({
-                label: H.string(),
-                description: H.string(),
-              }),
-            ),
-          }),
-        ),
-      }).optional(),
-      suggestedReply: H.string().optional(),
-      output: H.record(H.string(), H.string()).nullable().default(null),
-      structuredResult: H.record(H.string(), H.unknown()).optional(),
-      children: H.array(
-        H.object({
-          id: H.string(),
-          href: H.string(),
-          kind: H.enum(["pr", "frame"])
-            .optional()
-            .catch(void 0),
-        }),
-      )
-        .nullable()
-        .default(null),
-      linkScanOffset: H.number().default(0),
-      linkScanPath: qUt()
-        .transform(
-          VUt(
-            "linkScanPath",
-            (e) =>
-              oS.isAbsolute(e) && e.endsWith(".jsonl") && yD(oS.basename(e, ".jsonl")) !== null,
+          question: H.string(),
+          options: H.array(
+            H.object({
+              label: H.string(),
+              description: H.string(),
+            }),
           ),
-        )
-        .optional(),
-      template: H.string(),
-      routine: H.string().optional(),
-      respawnFlags: H.array(H.string())
-        .default([])
-        .transform((e) => T8(j0e(e))),
-      bgIsolation: H.enum(["none", "worktree"])
-        .optional()
-        .catch(void 0),
-      providerEnv: H.record(H.string(), H.string())
-        .transform((e) => {
-          let t = Vzi(e);
-          return t && xw(t, tv);
-        })
-        .optional(),
-      sessionPermissionRules: H.object({
-        allow: H.array(H.string()),
-        deny: H.array(H.string()),
-      }).optional(),
-      memoryToggledOff: H.boolean().optional(),
-      intent: H.string(),
-      displayIntent: H.string().optional(),
-      initialPrompt: H.string().optional(),
-      queuedPrompt: H.string().optional(),
-      name: H.string().optional(),
-      nameSource: H.enum(["user", "auto"])
-        .optional()
-        .catch(void 0),
-      color: H.string().optional(),
-      sessionId: qUt(),
-      resumeSessionId: H.string()
-        .transform(VUt("resumeSessionId", (e) => yD(e) !== null))
-        .optional(),
-      daemonShort: H.string()
-        .transform(VUt("daemonShort", (e) => Yzi.test(e)))
-        .optional(),
-      cliVersion: H.string().optional(),
-      cwd: qUt(),
-      createdAt: H.string(),
-      updatedAt: H.string(),
-      firstTerminalAt: H.string().nullable().default(null),
-      worktreePath: qUt().optional(),
-      worktreeBranch: H.string().optional(),
-      worktreeHookBased: H.boolean().optional(),
-      originCwd: qUt().optional(),
-      bridgeSessionId: H.string()
-        .transform(VUt("bridgeSessionId", (e) => mKd.test(e)))
-        .optional(),
-      bridgeOutboundOnly: H.boolean().optional(),
-      bridgeSessionSeq: H.number()
-        .transform(VUt("bridgeSessionSeq", (e) => Number.isInteger(e) && e >= 0))
-        .optional(),
-      backend: H.enum(["daemon", "peer", "remote"])
-        .catch("daemon")
-        .default("daemon")
-        .transform((e) => {
-          if (e === "daemon") return e;
-          return (
-            T(
-              `[jobs] coerced persisted backend '${e}' to 'daemon' \u2014 peer/remote rows are never written to disk`,
-              {
-                level: "warn",
-              },
-            ),
-            "daemon"
-          );
         }),
-      sock: H.string().optional(),
-      pid: H.number().optional(),
-      sortOrder: H.number().optional(),
-      stateSortOrder: H.number().optional(),
-      pinned: H.boolean().optional(),
-    }).transform(({ needs_you: e, ...t }) => ({
-      ...t,
-      tempo: t.tempo ?? (e ? "blocked" : "idle"),
-    })),
-  );
-  ((Nne = new Map()), (G0e = new Set()));
-  Kzi = Promise.resolve();
-  ((ult = `(idle \u2014 ${PW})`), (llt = ["starting", "resuming", "adopted", "crashed"]));
-});
+      ),
+    }).optional(),
+    suggestedReply: H.string().optional(),
+    output: H.record(H.string(), H.string()).nullable().default(null),
+    structuredResult: H.record(H.string(), H.unknown()).optional(),
+    children: H.array(
+      H.object({
+        id: H.string(),
+        href: H.string(),
+        kind: H.enum(["pr", "frame"])
+          .optional()
+          .catch(void 0),
+      }),
+    )
+      .nullable()
+      .default(null),
+    linkScanOffset: H.number().default(0),
+    linkScanPath: qUt()
+      .transform(
+        VUt(
+          "linkScanPath",
+          (e) => oS.isAbsolute(e) && e.endsWith(".jsonl") && yD(oS.basename(e, ".jsonl")) !== null,
+        ),
+      )
+      .optional(),
+    template: H.string(),
+    routine: H.string().optional(),
+    respawnFlags: H.array(H.string())
+      .default([])
+      .transform((e) => T8(j0e(e))),
+    bgIsolation: H.enum(["none", "worktree"])
+      .optional()
+      .catch(void 0),
+    providerEnv: H.record(H.string(), H.string())
+      .transform((e) => {
+        let t = Vzi(e);
+        return t && xw(t, tv);
+      })
+      .optional(),
+    sessionPermissionRules: H.object({
+      allow: H.array(H.string()),
+      deny: H.array(H.string()),
+    }).optional(),
+    memoryToggledOff: H.boolean().optional(),
+    intent: H.string(),
+    displayIntent: H.string().optional(),
+    initialPrompt: H.string().optional(),
+    queuedPrompt: H.string().optional(),
+    name: H.string().optional(),
+    nameSource: H.enum(["user", "auto"])
+      .optional()
+      .catch(void 0),
+    color: H.string().optional(),
+    sessionId: qUt(),
+    resumeSessionId: H.string()
+      .transform(VUt("resumeSessionId", (e) => yD(e) !== null))
+      .optional(),
+    daemonShort: H.string()
+      .transform(VUt("daemonShort", (e) => Yzi.test(e)))
+      .optional(),
+    cliVersion: H.string().optional(),
+    cwd: qUt(),
+    createdAt: H.string(),
+    updatedAt: H.string(),
+    firstTerminalAt: H.string().nullable().default(null),
+    worktreePath: qUt().optional(),
+    worktreeBranch: H.string().optional(),
+    worktreeHookBased: H.boolean().optional(),
+    originCwd: qUt().optional(),
+    bridgeSessionId: H.string()
+      .transform(VUt("bridgeSessionId", (e) => mKd.test(e)))
+      .optional(),
+    bridgeOutboundOnly: H.boolean().optional(),
+    bridgeSessionSeq: H.number()
+      .transform(VUt("bridgeSessionSeq", (e) => Number.isInteger(e) && e >= 0))
+      .optional(),
+    backend: H.enum(["daemon", "peer", "remote"])
+      .catch("daemon")
+      .default("daemon")
+      .transform((e) => {
+        if (e === "daemon") return e;
+        return (
+          T(
+            `[jobs] coerced persisted backend '${e}' to 'daemon' \u2014 peer/remote rows are never written to disk`,
+            {
+              level: "warn",
+            },
+          ),
+          "daemon"
+        );
+      }),
+    sock: H.string().optional(),
+    pid: H.number().optional(),
+    sortOrder: H.number().optional(),
+    stateSortOrder: H.number().optional(),
+    pinned: H.boolean().optional(),
+  }).transform(({ needs_you: e, ...t }) => ({
+    ...t,
+    tempo: t.tempo ?? (e ? "blocked" : "idle"),
+  })),
+);
+((Nne = new Map()), (G0e = new Set()));
+Kzi = Promise.resolve();
+((ult = `(idle \u2014 ${PW})`), (llt = ["starting", "resuming", "adopted", "crashed"]));
 var dKi = {};
 _t(dKi, {
   trackClaudeInChromeTabId: () => trackClaudeInChromeTabId,

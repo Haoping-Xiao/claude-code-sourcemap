@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.2233  score=1  fileCov=0.2233
 // note: low-confidence suggestion: node_modules/lodash-es/_createBaseFor.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hEs = E(() => {
-  gEs = VDu;
-});
+// [unwrapped __esm module hEs]
+gEs = VDu;
 function zDu(e, t, n) {
   return t = yEs(t === void 0 ? e.length - 1 : t, 0), function () {
     var r = arguments,

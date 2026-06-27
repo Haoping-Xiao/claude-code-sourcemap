@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.0895  score=0.4068  fileCov=0.1029
 // note: low-confidence suggestion: node_modules/pkce-challenge/dist/index.node.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qvt = E(() => {
-  sK();
-  AR();
-});
 function O3(e, t) {
   if (e) throw TypeError(`${t} can only be called once`);
 }

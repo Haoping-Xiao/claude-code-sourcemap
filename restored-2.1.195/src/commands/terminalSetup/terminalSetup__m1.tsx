@@ -4,60 +4,40 @@
 // class=modified (alt of src/commands/terminalSetup/terminalSetup.tsx)  jaccard=0.0947  score=0.4987  fileCov=0.1047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var R0e = E(() => {
-  iu();
-  Qi();
-  AW();
-  Ye();
-  HUt();
-  dn();
-  zQr();
-  YQr();
-  er();
-  je();
-  wr();
-  At();
-  Bi();
-  oc();
-  uf();
-  Rd();
-  vn();
-  Is();
-  Jt();
-  ((Vat = require("crypto")),
-    (CI = require("fs/promises")),
-    (Dne = require("os")),
-    (UU = require("path")),
-    (R8i = require("url")),
-    (PDn = {
-      ghostty: "Ghostty",
-      kitty: "Kitty",
-      "iTerm.app": "iTerm2",
-      WezTerm: "WezTerm",
-      WarpTerminal: "Warp",
-      "windows-terminal": "Windows Terminal",
-    }));
-  ODn = Cn(
-    async (e) => {
-      let t = (n) =>
-        UU.join(
-          Dne.homedir(),
-          Dne.platform() === "win32"
-            ? UU.join("AppData", "Roaming", n, "User")
-            : Dne.platform() === "darwin"
-              ? UU.join("Library", "Application Support", n, "User")
-              : UU.join(".config", n, "User"),
-        );
-      if (e === "VSCode") return t("Code");
-      if (e === "Devin Desktop") {
-        let n = t("Devin");
-        return (await ed(n)) ? n : t("Windsurf");
-      }
-      return t(e);
-    },
-    (e) => `${e}:${Dne.homedir()}`,
-  );
-});
+// [unwrapped __esm module R0e] deps: iu, Qi, AW, Ye, HUt, dn, zQr, YQr, er, je, wr, At, Bi, oc, uf, Rd, vn, Is, Jt
+((Vat = require("crypto")),
+  (CI = require("fs/promises")),
+  (Dne = require("os")),
+  (UU = require("path")),
+  (R8i = require("url")),
+  (PDn = {
+    ghostty: "Ghostty",
+    kitty: "Kitty",
+    "iTerm.app": "iTerm2",
+    WezTerm: "WezTerm",
+    WarpTerminal: "Warp",
+    "windows-terminal": "Windows Terminal",
+  }));
+ODn = Cn(
+  async (e) => {
+    let t = (n) =>
+      UU.join(
+        Dne.homedir(),
+        Dne.platform() === "win32"
+          ? UU.join("AppData", "Roaming", n, "User")
+          : Dne.platform() === "darwin"
+            ? UU.join("Library", "Application Support", n, "User")
+            : UU.join(".config", n, "User"),
+      );
+    if (e === "VSCode") return t("Code");
+    if (e === "Devin Desktop") {
+      let n = t("Devin");
+      return (await ed(n)) ? n : t("Windsurf");
+    }
+    return t(e);
+  },
+  (e) => `${e}:${Dne.homedir()}`,
+);
 function f6d(e, t) {
   switch (t.type) {
     case "kill": {

@@ -4,28 +4,8 @@
 // class=modified  jaccard=0.5286  score=0.8542  fileCov=0.5811
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fic = E(() => {
-  MAe();
-  kt();
-  ii();
-  fh();
-  i$();
-  LL();
-  $S();
-  fp();
-  Vv();
-  EAe();
-  je();
-  At();
-  ys();
-  co();
-  Ao();
-  Gy();
-  y_();
-  Jt();
-  P5o();
-  M5o = require("crypto");
-});
+// [unwrapped __esm module fic] deps: MAe, kt, ii, fh, i$, LL, $S, fp, Vv, EAe, je, At, ys, co, Ao, Gy, y_, Jt, P5o
+M5o = require("crypto");
 async function Fem() {
   let { SandboxManager: e } = await Promise.resolve().then(() => (lg(), Rro));
   if (!e.isSandboxingEnabled()) return;

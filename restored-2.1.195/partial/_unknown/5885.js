@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.2337  score=0.8779  fileCov=0.2415
 // note: low-confidence suggestion: node_modules/lodash.isplainobject/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $vt = E(() => {
-  Jme = dDm;
-});
+// [unwrapped __esm module $vt]
+Jme = dDm;
 function pDm(e) {
   return typeof e === "object" && e !== null;
 }

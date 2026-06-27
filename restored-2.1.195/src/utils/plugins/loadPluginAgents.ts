@@ -4,85 +4,35 @@
 // class=modified  jaccard=0.3179  score=0.6752  fileCov=0.3753
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xh = E(() => {
-  Qi();
-  ZUt();
-  ft();
-  glt();
-  dn();
-  kt();
-  er();
-  je();
-  wr();
-  At();
-  Bi();
-  oc();
-  ys();
-  sa();
-  Mx();
-  vn();
-  Hu();
-  Mh();
-  ieo();
-  dr();
-  Sx();
-  lj();
-  Jt();
-  sr();
-  II();
-  KPn();
-  YPn();
-  vbe();
-  dFt();
-  eMn();
-  iWe();
-  _k();
-  d$o();
-  o8();
-  gHe();
-  lE();
-  x$o();
-  B1();
-  $g();
-  vfe();
-  WI();
-  her();
-  GRl();
-  OYt();
-  ZC();
-  Amo();
-  D$o();
-  E$o();
-  dOe();
-  ((KRl = require("fs")),
-    (cd = require("fs/promises")),
-    (Es = require("path")),
-    (YRl = require("stream")),
-    (XRl = require("stream/promises")));
-  bxf = new Set(["node_modules", ".orphaned_at", DSt]);
-  Cxf = ve(() =>
-    _M()
-      .pick(Object.fromEntries(jRl.map((e) => [e, true])))
-      .strip(),
+// [unwrapped __esm module Xh] deps: Qi, ZUt, ft, glt, dn, kt, er, je, wr, At, Bi, oc, ys, sa, Mx, vn, Hu, Mh, ieo, dr, Sx, lj, Jt, sr, II, KPn, YPn, vbe, dFt, eMn, iWe, _k, d$o, o8, gHe, lE, x$o, B1, $g, vfe, WI, her, GRl, OYt, ZC, Amo, D$o, E$o, dOe
+((KRl = require("fs")),
+  (cd = require("fs/promises")),
+  (Es = require("path")),
+  (YRl = require("stream")),
+  (XRl = require("stream/promises")));
+bxf = new Set(["node_modules", ".orphaned_at", DSt]);
+Cxf = ve(() =>
+  _M()
+    .pick(Object.fromEntries(jRl.map((e) => [e, true])))
+    .strip(),
+);
+iLl = ["agents", "output-styles", "themes", "hooks", "monitors"];
+((OT = Cn(async () => {
+  let e = await $$o(() =>
+    M$o({
+      cacheOnly: false,
+    }),
   );
-  iLl = ["agents", "output-styles", "themes", "hooks", "monitors"];
-  ((OT = Cn(async () => {
-    let e = await $$o(() =>
+  return (mp.cache?.set(void 0, Promise.resolve(e)), e);
+})),
+  (mp = Cn(async () => {
+    if (Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL) return OT();
+    return $$o(() =>
       M$o({
-        cacheOnly: false,
+        cacheOnly: true,
       }),
     );
-    return (mp.cache?.set(void 0, Promise.resolve(e)), e);
-  })),
-    (mp = Cn(async () => {
-      if (Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL) return OT();
-      return $$o(() =>
-        M$o({
-          cacheOnly: true,
-        }),
-      );
-    })));
-});
+  })));
 async function pLl(e, t, n, r, o, s) {
   let i = [];
   return (

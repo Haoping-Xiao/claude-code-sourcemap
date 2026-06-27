@@ -4,24 +4,15 @@
 // class=modified  jaccard=0.4749  score=0.6699  fileCov=0.6199
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ihc = E(() => {
-  iu();
-  Xa();
-  ZS();
-  Ye();
-  uo();
-  es();
-  cne();
-  Pne();
-  ((bNe = R(rt(), 1)),
-    (xen = R(se(), 1)),
-    (whc = _dm / Jur),
-    (Sdm = {
-      r: 0,
-      g: 0,
-      b: 0,
-    }));
-});
+// [unwrapped __esm module Ihc] deps: iu, Xa, ZS, Ye, uo, es, cne, Pne
+((bNe = R(rt(), 1)),
+  (xen = R(se(), 1)),
+  (whc = _dm / Jur),
+  (Sdm = {
+    r: 0,
+    g: 0,
+    b: 0,
+  }));
 function khc() {
   let e = xhc.c(7),
     [t, n] = xTt.useState(0),

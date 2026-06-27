@@ -4,38 +4,34 @@
 // class=modified  jaccard=0.2074  score=0.273  fileCov=0.4629
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var UQl = E(() => {
-  Cp();
-  Isr();
-  Ao();
-  ((Rzf = {
-    type: "local-jsx",
+// [unwrapped __esm module UQl] deps: Cp, Isr, Ao
+((Rzf = {
+  type: "local-jsx",
+  name: "effort",
+  description: "Set effort level for model usage",
+  get argumentHint() {
+    return NQl("[", "]");
+  },
+  get immediate() {
+    return GAt();
+  },
+  requires: {
+    ink: true,
+  },
+  thinClientDispatch: "control-request",
+  load: () => Promise.resolve().then(() => (p3o(), MQl)),
+}),
+  (BQl = {
+    type: "local",
     name: "effort",
+    supportsNonInteractive: true,
     description: "Set effort level for model usage",
     get argumentHint() {
-      return NQl("[", "]");
+      return NQl("<", ">");
     },
-    get immediate() {
-      return GAt();
-    },
-    requires: {
-      ink: true,
-    },
-    thinClientDispatch: "control-request",
-    load: () => Promise.resolve().then(() => (p3o(), MQl)),
+    load: () => Promise.resolve().then(() => (OQl(), $Ql)),
   }),
-    (BQl = {
-      type: "local",
-      name: "effort",
-      supportsNonInteractive: true,
-      description: "Set effort level for model usage",
-      get argumentHint() {
-        return NQl("<", ">");
-      },
-      load: () => Promise.resolve().then(() => (OQl(), $Ql)),
-    }),
-    (f3o = Rzf));
-});
+  (f3o = Rzf));
 var m3o = () => {};
 var GQl = {};
 _t(GQl, {

@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2529  score=0.3979  fileCov=0.4097
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var l6l = E(() => {
-  ft();
-  kt();
-  dn();
-  At();
-  gP();
-  ((i6l = R(lt(), 1)), (Esr = R(rt(), 1)));
-});
+// [unwrapped __esm module l6l] deps: ft, kt, dn, At, gP
+((i6l = R(lt(), 1)), (Esr = R(rt(), 1)));
 function u6l({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
   let { rows: r } = br(),
     [o, s] = kse.useState([]),

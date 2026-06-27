@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3495  score=0.6293  fileCov=0.4401
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var c8t = E(() => {
-  co();
-  O8e();
-});
 function yAe(e, t) {
   let n,
     r = false;

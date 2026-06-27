@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0092  score=1  fileCov=0.0092
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0092); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dBs = E(() => {
-  uBs();
-});
 var h9u = e => Array.isArray(e) ? e : [e];
 var pBs = e => {
   for (let n in e) if (e.hasOwnProperty(n) && e[n]["#text"] !== void 0) e[n] = e[n]["#text"];else if (typeof e[n] === "object" && e[n] !== null) e[n] = pBs(e[n]);

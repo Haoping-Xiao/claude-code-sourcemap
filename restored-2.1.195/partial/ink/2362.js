@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.1847  score=1  fileCov=0.1847
 // note: low-confidence suggestion: src/utils/signal.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aGe = E(() => {
-  XYr();
-});
 function Uit(e) {
   let t = VRn.get(e);
   if (t !== void 0) return t;

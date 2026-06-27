@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.4582  score=0.8974  fileCov=0.4835
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var u0o = E(() => {
-  kt();
-  Ld();
-  Il();
-  je();
-  Cp();
-  dr();
-  J_t();
-});
 function Q_t(e) {
   let t = d0o.isIP(e);
   if (t === 4) return Hgl(e);

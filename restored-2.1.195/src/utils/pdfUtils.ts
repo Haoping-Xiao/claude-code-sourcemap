@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.4421  score=0.9184  fileCov=0.4601
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $7 = E(() => {
-  ft();
-  Rm();
-  Lo();
-  je();
-  At();
-  ys();
-  jS();
-  ((_0n = require("fs/promises")), (uit = require("path")));
-});
+// [unwrapped __esm module $7] deps: ft, Rm, Lo, je, At, ys, jS
+((_0n = require("fs/promises")), (uit = require("path")));
 function rYr(e) {
   let t = e.trim();
   if (!t) return null;

@@ -4,8 +4,5 @@
 // class=new  jaccard=0.0308  score=1  fileCov=0.0308
 // note: nearest: node_modules/@typespec/ts-http-runtime/dist/esm/policies/multipartPolicy.js (0.0308); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var afi = E(() => {
-  f3r();
-  ifi();
-  nhd = new Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'()+,-./:=?");
-});
+// [unwrapped __esm module afi] deps: f3r, ifi
+nhd = new Set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'()+,-./:=?");

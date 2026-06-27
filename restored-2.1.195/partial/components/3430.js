@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.1346  score=0.1604  fileCov=0.4554
 // note: low-confidence suggestion: src/components/permissions/PermissionRequestTitle.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var v5 = E(() => {
-  O0();
-  Ye();
-  P1a = R(lt(), 1), M1a = R(se(), 1);
-});
+// [unwrapped __esm module v5] deps: O0, Ye
+P1a = R(lt(), 1), M1a = R(se(), 1);
 function ZDe(e) {
   let t = $1a.c(18),
     {

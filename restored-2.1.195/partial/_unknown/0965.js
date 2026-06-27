@@ -4,12 +4,6 @@
 // class=partial  jaccard=0.0723  score=1  fileCov=0.0723
 // note: low-confidence suggestion: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fUs = E(() => {
-  cUs();
-  uUs();
-  dUs();
-  pUs();
-});
 var mUs = e => {
     let {
       httpAuthSchemes: t,

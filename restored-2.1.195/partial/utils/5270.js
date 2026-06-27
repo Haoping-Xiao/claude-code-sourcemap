@@ -4,17 +4,8 @@
 // class=partial  jaccard=0.1107  score=1  fileCov=0.1107
 // note: low-confidence suggestion: node_modules/@smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ojn = E(() => {
-  yC();
-  fp();
-  At();
-  es();
-  mFn();
-  Is();
-  bH();
-  jqe();
-  xlr = require("fs/promises"), sic = require("path"), k5o = new Set();
-});
+// [unwrapped __esm module ojn] deps: yC, fp, At, es, mFn, Is, bH, jqe
+xlr = require("fs/promises"), sic = require("path"), k5o = new Set();
 function eO(e) {
   return !("async" in e && e.async === true);
 }

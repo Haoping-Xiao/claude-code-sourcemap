@@ -4,22 +4,18 @@
 // class=modified (alt of src/utils/cronJitterConfig.ts)  jaccard=0.2835  score=0.3941  fileCov=0.5026
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var F2t = E(() => {
-  Xr();
-  Un();
-  N8();
-  mop = ve(() =>
-    H.object({
-      recurringFrac: H.number().min(0).max(1),
-      recurringCapMs: H.number().int().min(0).max(xoo),
-      oneShotMaxMs: H.number().int().min(0).max(xoo),
-      oneShotFloorMs: H.number().int().min(0).max(xoo),
-      oneShotMinuteMod: H.number().int().min(1).max(60),
-      recurringMaxAgeMs: H.number().int().min(0).max(fop).default(O8.recurringMaxAgeMs),
-      cacheLeadMs: H.number().int().min(0).max(60000).default(O8.cacheLeadMs),
-    }).refine((e) => e.oneShotFloorMs <= e.oneShotMaxMs),
-  );
-});
+// [unwrapped __esm module F2t] deps: Xr, Un, N8
+mop = ve(() =>
+  H.object({
+    recurringFrac: H.number().min(0).max(1),
+    recurringCapMs: H.number().int().min(0).max(xoo),
+    oneShotMaxMs: H.number().int().min(0).max(xoo),
+    oneShotFloorMs: H.number().int().min(0).max(xoo),
+    oneShotMinuteMod: H.number().int().min(1).max(60),
+    recurringMaxAgeMs: H.number().int().min(0).max(fop).default(O8.recurringMaxAgeMs),
+    cacheLeadMs: H.number().int().min(0).max(60000).default(O8.cacheLeadMs),
+  }).refine((e) => e.oneShotFloorMs <= e.oneShotMaxMs),
+);
 var koo = `# Autonomous loop check
 
 You're being invoked on a timer while the user is away or occupied. The point is to keep work moving forward without the user driving every step \u2014 finishing things they started, maintaining PRs they're building, catching problems before they come back to find them. You're a steward, not an initiator. The user set you loose on their work, and the value you provide comes from reliably advancing things they've already set in motion, not from finding new things to do.

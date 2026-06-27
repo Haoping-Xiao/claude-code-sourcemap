@@ -4,23 +4,8 @@
 // class=new  jaccard=0.017  score=0.3071  fileCov=0.0177
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.017); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FJa = E(() => {
-  Ye();
-  ps();
-  sr();
-  Cc();
-  Vl();
-  Bs();
-  f_();
-  Ko();
-  CH();
-  Mg();
-  wb();
-  vH();
-  NJa();
-  H9n();
-  qHo = R(lt(), 1), nMe = R(rt(), 1), eR = R(se(), 1);
-});
+// [unwrapped __esm module FJa] deps: Ye, ps, sr, Cc, Vl, Bs, f_, Ko, CH, Mg, wb, vH, NJa, H9n
+qHo = R(lt(), 1), nMe = R(rt(), 1), eR = R(se(), 1);
 function GJa() {
   let e = jJa.c(17),
     {

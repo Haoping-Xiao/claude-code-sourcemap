@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.2441  score=1  fileCov=0.2441
 // note: low-confidence suggestion: node_modules/lodash-es/isPlainObject.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iEs = E(() => {
-  ZXe();
-  Mie();
-  sEs = $Du;
-});
+// [unwrapped __esm module iEs] deps: ZXe, Mie
+sEs = $Du;
 function jDu(e) {
   if (!hD(e) || LV(e) != ODu) return false;
   var t = jJe(e);

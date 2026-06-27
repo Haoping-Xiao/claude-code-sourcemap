@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.1997  score=0.4514  fileCov=0.2637
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NUa = E(() => {
-  $Ua();
-  Ryo();
-  OUa();
-});
 async function xOp() {
   let e = await Os.get("/api/claude_code/organizations/metrics_enabled", {
     auth: "async",

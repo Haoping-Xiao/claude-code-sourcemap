@@ -4,21 +4,8 @@
 // class=modified  jaccard=0.0534  score=0.1727  fileCov=0.0719
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aUo = E(() => {
-  glt();
-  U1();
-  q8();
-  rq();
-  je();
-  At();
-  Iv();
-  vn();
-  pq();
-  Jt();
-  lE();
-  $g();
-  ((Hse = R(require("fs/promises"))), (jq = R(require("path"))));
-});
+// [unwrapped __esm module aUo] deps: glt, U1, q8, rq, je, At, Iv, vn, pq, Jt, lE, $g
+((Hse = R(require("fs/promises"))), (jq = R(require("path"))));
 async function _Xt() {
   try {
     if (!mp.cache?.has(void 0)) return [];

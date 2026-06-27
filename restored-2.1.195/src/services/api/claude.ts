@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.2691  score=0.3745  fileCov=0.4887
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Bac = E(() => {
-  TM();
-  lf();
-  je();
-  K0();
-  dn();
-  Dac();
-  q8();
-  lNn();
-  ((Mac = new Set()), ($ac = new Map()));
-});
+// [unwrapped __esm module Bac] deps: TM, lf, je, K0, dn, Dac, q8, lNn
+((Mac = new Set()), ($ac = new Map()));
 function W8e(e) {
   let t = process.env.CLAUDE_CODE_EXTRA_BODY,
     n = {};

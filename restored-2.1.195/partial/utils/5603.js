@@ -4,15 +4,8 @@
 // class=partial  jaccard=0.1097  score=1  fileCov=0.1097
 // note: low-confidence suggestion: src/services/voiceKeyterms.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gTc = E(() => {
-  id();
-  BI();
-  Kv();
-  Ld();
-  aE();
-  jur();
-  Rpr = R(rt(), 1);
-});
+// [unwrapped __esm module gTc] deps: id, BI, Kv, Ld, aE, jur
+Rpr = R(rt(), 1);
 function yTc(e) {
   return e.replace(/([a-z])([A-Z])/g, "$1 $2").split(/[-_./\s]+/).map(t => t.trim()).filter(t => t.length > 2 && t.length <= 20);
 }

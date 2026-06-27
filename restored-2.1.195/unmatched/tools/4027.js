@@ -3,15 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var anl = E(() => {
-  co();
-  E5();
-  vMe();
-  AMe();
-  ql();
-  nnl();
-  Ye();
-  oc();
-  rR = R(se(), 1);
-});
+// [unwrapped __esm module anl] deps: co, E5, vMe, AMe, ql, nnl, Ye, oc
+rR = R(se(), 1);
 var lnl, cnl, Gef, Wef, oq;

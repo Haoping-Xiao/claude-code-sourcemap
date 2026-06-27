@@ -4,135 +4,126 @@
 // class=modified  jaccard=0.2868  score=0.4253  fileCov=0.4683
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AMe = E(() => {
-  w4();
-  Ye();
-  oc();
-  uf();
-  t0e();
-  sr();
-  qel();
-  gBn();
-  ((Ivo = R(lt(), 1)),
-    (EMe = R(rt(), 1)),
-    (eq = R(se(), 1)),
-    (LF = EMe.memo(function (t) {
-      let n = Ivo.c(21),
-        { code: r, filePath: o, width: s, dim: i } = t,
-        a = i === void 0 ? false : i,
-        l = EMe.useRef(null),
-        [c, u] = EMe.useState(s || OZp),
-        [d] = na(),
-        f = G_().syntaxHighlightingDisabled ?? false,
-        m;
-      if (n[0] !== r || n[1] !== o || n[2] !== f) {
-        e: {
-          if (f) {
-            m = null;
-            break e;
-          }
-          let C = Vba();
-          if (!C) {
-            m = null;
-            break e;
-          }
-          m = new C(dY(r), o);
-        }
-        ((n[0] = r), (n[1] = o), (n[2] = f), (n[3] = m));
-      } else m = n[3];
-      let g = m,
-        h,
-        y;
-      if (n[4] !== s)
-        ((h = () => {
-          if (!s && l.current) {
-            let { width: C } = tX(l.current);
-            if (C > 0) u(C - 2);
-          }
-        }),
-          (y = [s]),
-          (n[4] = s),
-          (n[5] = h),
-          (n[6] = y));
-      else ((h = n[5]), (y = n[6]));
-      EMe.useEffect(h, y);
-      let b;
+// [unwrapped __esm module AMe] deps: w4, Ye, oc, uf, t0e, sr, qel, gBn
+((Ivo = R(lt(), 1)),
+  (EMe = R(rt(), 1)),
+  (eq = R(se(), 1)),
+  (LF = EMe.memo(function (t) {
+    let n = Ivo.c(21),
+      { code: r, filePath: o, width: s, dim: i } = t,
+      a = i === void 0 ? false : i,
+      l = EMe.useRef(null),
+      [c, u] = EMe.useState(s || OZp),
+      [d] = na(),
+      f = G_().syntaxHighlightingDisabled ?? false,
+      m;
+    if (n[0] !== r || n[1] !== o || n[2] !== f) {
       e: {
-        if (g === null) {
-          b = null;
+        if (f) {
+          m = null;
           break e;
         }
-        let C;
-        if (n[7] !== g || n[8] !== a || n[9] !== c || n[10] !== d)
-          ((C = g.render(d, c, a)), (n[7] = g), (n[8] = a), (n[9] = c), (n[10] = d), (n[11] = C));
-        else C = n[11];
-        b = C;
+        let C = Vba();
+        if (!C) {
+          m = null;
+          break e;
+        }
+        m = new C(dY(r), o);
       }
-      let _ = b,
-        S;
-      e: {
-        if (!Ns()) {
-          S = 0;
-          break e;
+      ((n[0] = r), (n[1] = o), (n[2] = f), (n[3] = m));
+    } else m = n[3];
+    let g = m,
+      h,
+      y;
+    if (n[4] !== s)
+      ((h = () => {
+        if (!s && l.current) {
+          let { width: C } = tX(l.current);
+          if (C > 0) u(C - 2);
         }
-        let C =
-            hu(
-              r,
-              `
+      }),
+        (y = [s]),
+        (n[4] = s),
+        (n[5] = h),
+        (n[6] = y));
+    else ((h = n[5]), (y = n[6]));
+    EMe.useEffect(h, y);
+    let b;
+    e: {
+      if (g === null) {
+        b = null;
+        break e;
+      }
+      let C;
+      if (n[7] !== g || n[8] !== a || n[9] !== c || n[10] !== d)
+        ((C = g.render(d, c, a)), (n[7] = g), (n[8] = a), (n[9] = c), (n[10] = d), (n[11] = C));
+      else C = n[11];
+      b = C;
+    }
+    let _ = b,
+      S;
+    e: {
+      if (!Ns()) {
+        S = 0;
+        break e;
+      }
+      let C =
+          hu(
+            r,
+            `
 `,
-            ) + 1,
-          x;
-        if (n[12] !== C) ((x = C.toString()), (n[12] = C), (n[13] = x));
-        else x = n[13];
-        S = x.length + 2;
-      }
-      let A = S,
-        v;
-      if (n[14] !== r || n[15] !== a || n[16] !== o || n[17] !== A || n[18] !== _ || n[19] !== f)
-        ((v = eq.jsx(U, {
-          ref: l,
-          children: _
-            ? eq.jsx(U, {
-                flexDirection: "column",
-                children: _.map((C, x) =>
-                  A > 0
-                    ? eq.jsx(
-                        NZp,
-                        {
-                          line: C,
-                          gutterWidth: A,
-                        },
-                        x,
-                      )
-                    : eq.jsx(
-                        w,
-                        {
-                          children: eq.jsx(bd, {
-                            children: C,
-                          }),
-                        },
-                        x,
-                      ),
-                ),
-              })
-            : eq.jsx(Wel, {
-                code: r,
-                filePath: o,
-                dim: a,
-                skipColoring: f,
-              }),
-        })),
-          (n[14] = r),
-          (n[15] = a),
-          (n[16] = o),
-          (n[17] = A),
-          (n[18] = _),
-          (n[19] = f),
-          (n[20] = v));
-      else v = n[20];
-      return v;
-    })));
-});
+          ) + 1,
+        x;
+      if (n[12] !== C) ((x = C.toString()), (n[12] = C), (n[13] = x));
+      else x = n[13];
+      S = x.length + 2;
+    }
+    let A = S,
+      v;
+    if (n[14] !== r || n[15] !== a || n[16] !== o || n[17] !== A || n[18] !== _ || n[19] !== f)
+      ((v = eq.jsx(U, {
+        ref: l,
+        children: _
+          ? eq.jsx(U, {
+              flexDirection: "column",
+              children: _.map((C, x) =>
+                A > 0
+                  ? eq.jsx(
+                      NZp,
+                      {
+                        line: C,
+                        gutterWidth: A,
+                      },
+                      x,
+                    )
+                  : eq.jsx(
+                      w,
+                      {
+                        children: eq.jsx(bd, {
+                          children: C,
+                        }),
+                      },
+                      x,
+                    ),
+              ),
+            })
+          : eq.jsx(Wel, {
+              code: r,
+              filePath: o,
+              dim: a,
+              skipColoring: f,
+            }),
+      })),
+        (n[14] = r),
+        (n[15] = a),
+        (n[16] = o),
+        (n[17] = A),
+        (n[18] = _),
+        (n[19] = f),
+        (n[20] = v));
+    else v = n[20];
+    return v;
+  })));
 function zel(e) {
   let t = Vel.c(15),
     { file_path: n, content: r, fileExists: o, oldContent: s } = e,

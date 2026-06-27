@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zwt = E(() => {
-  Fve = O6c;
-});
+// [unwrapped __esm module zwt]
+Fve = O6c;
 function Sns(e) {
   if (typeof e == "string") return e;
   if (Ub(e)) return Fve(e, Sns) + "";

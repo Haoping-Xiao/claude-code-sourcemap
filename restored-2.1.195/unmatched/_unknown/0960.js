@@ -3,8 +3,4 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LBs = E(() => {
-  IBs();
-  RBs();
-});
 var DBs, PBs, MBs, FBs, jBs, DY, $Bs, GBs, OBs, NBs, BBs, UBs, I9u, WBs;

@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0168  score=0.5321  fileCov=0.017
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0168); dir inferred from dep-graph -> cli; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iUc = E(() => {
-  M8o();
-  oUc = require("url");
-});
+// [unwrapped __esm module iUc] deps: M8o
+oUc = require("url");
 function fLm(e) {
   let t = e,
     n = t.subtype;

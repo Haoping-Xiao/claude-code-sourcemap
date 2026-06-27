@@ -4,22 +4,8 @@
 // class=modified  jaccard=0.3816  score=0.7863  fileCov=0.4258
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bXl = E(() => {
-  Ye();
-  ps();
-  lg();
-  dr();
-  Vl();
-  hse();
-  v5();
-  MEt();
-  eE();
-  kP();
-  fXl();
-  gXl();
-  yXl();
-  ((T4o = R(lt(), 1)), (EA = R(se(), 1)));
-});
+// [unwrapped __esm module bXl] deps: Ye, ps, lg, dr, Vl, hse, v5, MEt, eE, kP, fXl, gXl, yXl
+((T4o = R(lt(), 1)), (EA = R(se(), 1)));
 var EXl = {};
 _t(EXl, {
   call: () => call,

@@ -4,82 +4,68 @@
 // class=modified  jaccard=0.1466  score=0.2575  fileCov=0.2539
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Afc = E(() => {
-  dn();
-  fd();
-  je();
-  wr();
-  fn();
-  At();
-  Bi();
-  Mx();
-  iWe();
-  kM();
-  C7n();
-  ofc();
-  pfc();
-  ((ffc = require("child_process")),
-    (sO = require("fs/promises")),
-    (e8o = require("os")),
-    ($Te = require("path")),
-    (gfc = [
-      "/etc/ssl/certs/ca-certificates.crt",
-      "/etc/pki/tls/certs/ca-bundle.crt",
-      "/etc/ssl/cert.pem",
-    ]),
-    (hfc = [
-      "localhost",
-      "127.0.0.1",
-      "::1",
-      "127.0.0.0/8",
-      "0.0.0.0/8",
-      "::",
-      "169.254.0.0/16",
-      "anthropic.com",
-      ".anthropic.com",
-      "*.anthropic.com",
-      "registry.npmjs.org",
-      "jsr.io",
-      "npm.jsr.io",
-      "pypi.org",
-      "files.pythonhosted.org",
-      "index.crates.io",
-      "proxy.golang.org",
-      "host.docker.internal",
-    ]),
-    (r8o = [
-      ...hfc,
-      "10.0.0.0/8",
-      "172.16.0.0/12",
-      "192.168.0.0/16",
-      "100.64.0.0/10",
-      ".svc.cluster.local",
-      "*.svc.cluster.local",
-    ].join(",")),
-    (Vlm = hfc.join(",")),
-    (vS = {
-      enabled: false,
-      noProxy: r8o,
-    }));
-  Ylm = [
-    ["git_http_proxy_configured", /^http\.(.+\.)?proxy$/m],
-    ["git_ssl_cainfo_configured", /^http\.(.+\.)?sslcainfo$/m],
-    ["git_https_to_ssh_insteadof_configured", /^url\.(git@|ssh:\/\/).*\.insteadof$/m],
-  ];
-  ncm = /-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----/g;
-  ocm = [
-    {
-      dir: "/usr/local/share/ca-certificates",
-      name: "ccr-agent-proxy.crt",
-      refresh: ["update-ca-certificates"],
-    },
-    {
-      dir: "/etc/pki/ca-trust/source/anchors",
-      name: "ccr-agent-proxy.crt",
-      refresh: ["update-ca-trust", "extract"],
-    },
-  ];
-});
+// [unwrapped __esm module Afc] deps: dn, fd, je, wr, fn, At, Bi, Mx, iWe, kM, C7n, ofc, pfc
+((ffc = require("child_process")),
+  (sO = require("fs/promises")),
+  (e8o = require("os")),
+  ($Te = require("path")),
+  (gfc = [
+    "/etc/ssl/certs/ca-certificates.crt",
+    "/etc/pki/tls/certs/ca-bundle.crt",
+    "/etc/ssl/cert.pem",
+  ]),
+  (hfc = [
+    "localhost",
+    "127.0.0.1",
+    "::1",
+    "127.0.0.0/8",
+    "0.0.0.0/8",
+    "::",
+    "169.254.0.0/16",
+    "anthropic.com",
+    ".anthropic.com",
+    "*.anthropic.com",
+    "registry.npmjs.org",
+    "jsr.io",
+    "npm.jsr.io",
+    "pypi.org",
+    "files.pythonhosted.org",
+    "index.crates.io",
+    "proxy.golang.org",
+    "host.docker.internal",
+  ]),
+  (r8o = [
+    ...hfc,
+    "10.0.0.0/8",
+    "172.16.0.0/12",
+    "192.168.0.0/16",
+    "100.64.0.0/10",
+    ".svc.cluster.local",
+    "*.svc.cluster.local",
+  ].join(",")),
+  (Vlm = hfc.join(",")),
+  (vS = {
+    enabled: false,
+    noProxy: r8o,
+  }));
+Ylm = [
+  ["git_http_proxy_configured", /^http\.(.+\.)?proxy$/m],
+  ["git_ssl_cainfo_configured", /^http\.(.+\.)?sslcainfo$/m],
+  ["git_https_to_ssh_insteadof_configured", /^url\.(git@|ssh:\/\/).*\.insteadof$/m],
+];
+ncm = /-----BEGIN CERTIFICATE-----[\s\S]*?-----END CERTIFICATE-----/g;
+ocm = [
+  {
+    dir: "/usr/local/share/ca-certificates",
+    name: "ccr-agent-proxy.crt",
+    refresh: ["update-ca-certificates"],
+  },
+  {
+    dir: "/etc/pki/ca-trust/source/anchors",
+    name: "ccr-agent-proxy.crt",
+    refresh: ["update-ca-trust", "extract"],
+  },
+];
 var Tfc = {};
 _t(Tfc, {
   showInvalidConfigDialog: () => showInvalidConfigDialog,

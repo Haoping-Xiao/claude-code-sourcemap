@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.145  score=0.3361  fileCov=0.2031
 // note: low-confidence suggestion: src/utils/ghPrStatus.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uIo = E(() => {
-  AW();
-  dn();
-  je();
-  wr();
-  bal = R(rt(), 1);
-});
+// [unwrapped __esm module uIo] deps: AW, dn, je, wr
+bal = R(rt(), 1);
 function u6e(e) {
   let t = Aal.c(37),
     {

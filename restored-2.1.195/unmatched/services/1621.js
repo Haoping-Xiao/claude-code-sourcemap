@@ -3,8 +3,3 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Aje = E(() => {
-  z4r();
-  Wdi();
-  z4r();
-});

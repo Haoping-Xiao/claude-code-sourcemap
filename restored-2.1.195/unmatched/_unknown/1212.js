@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0595  score=1  fileCov=0.0595
 // note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0595); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var n6s = E(() => {
-  z8s();
-  e6s();
-});
 var r6s = e => e.protocol === "ws:" || e.protocol === "wss:";
 class cBr {
   signer;

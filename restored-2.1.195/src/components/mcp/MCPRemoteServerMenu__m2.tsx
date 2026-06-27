@@ -4,29 +4,15 @@
 // class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0306  score=0.0806  fileCov=0.0471
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vA = E(() => {
-  FZt();
-  U9o();
-  Ye();
-  S6();
-  dn();
-  kt();
-  Yfe();
-  cTt();
-  C5();
-  uTt();
-  oo();
-  wr();
-  Gre();
-  ((dpc = R(lt(), 1)), (ppc = require("process")), (sur = R(rt(), 1)), (QN = R(se(), 1)));
-  vam = sur.lazy(() =>
-    Promise.resolve()
-      .then(() => (xnr(), YNo))
-      .then((e) => ({
-        default: e.Doctor,
-      })),
-  );
-});
+// [unwrapped __esm module vA] deps: FZt, U9o, Ye, S6, dn, kt, Yfe, cTt, C5, uTt, oo, wr, Gre
+((dpc = R(lt(), 1)), (ppc = require("process")), (sur = R(rt(), 1)), (QN = R(se(), 1)));
+vam = sur.lazy(() =>
+  Promise.resolve()
+    .then(() => (xnr(), YNo))
+    .then((e) => ({
+      default: e.Doctor,
+    })),
+);
 var F9o = {};
 _t(F9o, {
   mcpLogoutHandler: () => mcpLogoutHandler,

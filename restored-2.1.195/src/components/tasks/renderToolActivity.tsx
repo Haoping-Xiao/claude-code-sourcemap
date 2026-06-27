@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4705  score=0.8959  fileCov=0.4978
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rme = E(() => {
-  kt();
-  yC();
-});
 function asr(e, t, n) {
   let r = _l(t, e.toolName);
   if (!r) return e.toolName;

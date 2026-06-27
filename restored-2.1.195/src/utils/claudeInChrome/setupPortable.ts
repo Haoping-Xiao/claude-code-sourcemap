@@ -4,13 +4,12 @@
 // class=modified  jaccard=0.2599  score=0.7877  fileCov=0.2795
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RFl = E(() => {
-  cBo = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub",
-  };
-});
+// [unwrapped __esm module RFl]
+cBo = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub",
+};
 function x1f() {
   return [I1f];
 }

@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nns = E(() => {
-  Ons = nzc;
-});
+// [unwrapped __esm module Nns]
+Ons = nzc;
 function rzc(e, t) {
   return e && e.length ? Ons(e, Q3(t, 2)) : 0;
 }

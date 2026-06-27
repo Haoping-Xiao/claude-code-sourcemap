@@ -4,127 +4,114 @@
 // class=modified (alt of src/tools/BriefTool/BriefTool.ts)  jaccard=0.2578  score=0.439  fileCov=0.3845
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CSl = E(() => {
-  Xr();
-  ft();
-  Un();
-  kt();
-  ii();
-  fn();
-  Ls();
-  qd();
-  sr();
-  z0o();
-  l3();
-  vSl();
-  ((Thf = ve(() =>
-    H.strictObject({
-      files: H.preprocess(
-        (e) => (typeof e === "string" ? [e] : e),
-        H.array(H.string()).min(1),
-      ).describe(
-        "File paths (absolute or relative to cwd) to send to the user. Always pass an array, even for a single file.",
-      ),
-      caption: H.string().optional().describe("Optional short caption for the file(s)."),
-      status: H.enum(["normal", "proactive"]).describe(
-        "Use 'proactive' when you're surfacing a file the user hasn't asked for and needs to see now \u2014 a generated artifact, a completed report. Use 'normal' when replying to something the user just said.",
-      ),
+// [unwrapped __esm module CSl] deps: Xr, ft, Un, kt, ii, fn, Ls, qd, sr, z0o, l3, vSl
+((Thf = ve(() =>
+  H.strictObject({
+    files: H.preprocess(
+      (e) => (typeof e === "string" ? [e] : e),
+      H.array(H.string()).min(1),
+    ).describe(
+      "File paths (absolute or relative to cwd) to send to the user. Always pass an array, even for a single file.",
+    ),
+    caption: H.string().optional().describe("Optional short caption for the file(s)."),
+    status: H.enum(["normal", "proactive"]).describe(
+      "Use 'proactive' when you're surfacing a file the user hasn't asked for and needs to see now \u2014 a generated artifact, a completed report. Use 'normal' when replying to something the user just said.",
+    ),
+  }),
+)),
+  (vhf = ve(() =>
+    H.object({
+      caption: H.string().optional(),
+      attachments: H.array(
+        H.object({
+          path: H.string(),
+          size: H.number(),
+          isImage: H.boolean(),
+          file_uuid: H.string().optional(),
+          media_type: H.string().optional(),
+        }),
+      ).describe("Resolved file metadata"),
     }),
   )),
-    (vhf = ve(() =>
-      H.object({
-        caption: H.string().optional(),
-        attachments: H.array(
-          H.object({
-            path: H.string(),
-            size: H.number(),
-            isImage: H.boolean(),
-            file_uuid: H.string().optional(),
-            media_type: H.string().optional(),
-          }),
-        ).describe("Resolved file metadata"),
-      }),
-    )),
-    (whf = ti({
-      name: K2t,
-      searchHint: "deliver files (screenshots, reports, artifacts) to the user",
-      briefStandalone: true,
-      maxResultSizeChars: 100000 /* 1e5 */,
-      userFacingName() {
-        return "";
-      },
-      get inputSchema() {
-        return Thf();
-      },
-      get outputSchema() {
-        return vhf();
-      },
-      isEnabled() {
-        if (fr() !== "firstParty" || Vi()) return false;
-        if (!at("tengu_send_user_file", true)) return false;
-        return (
-          (d0() ||
-            !!process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE ||
-            ut(process.env.CLAUDE_CODE_REMOTE)) &&
-          !z6e()
-        );
-      },
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      toAutoClassifierInput(e) {
-        return e.caption ?? `[${e.files?.length ?? 0} file(s)]`;
-      },
-      async validateInput({ files: e }, t) {
-        return K7n(e);
-      },
-      async description() {
-        return qoo;
-      },
-      async prompt() {
-        return Voo;
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        let n = e.attachments.length,
-          r = e.attachments
-            .filter((o) => o.file_uuid !== void 0)
-            .map((o) => `  ${o.path} \u2192 file_uuid: ${o.file_uuid}`);
-        return {
-          tool_use_id: t,
-          type: "tool_result",
-          content:
-            `${n} ${bn(n, "file")} delivered to user.` +
-            (r.length > 0
-              ? `
+  (whf = ti({
+    name: K2t,
+    searchHint: "deliver files (screenshots, reports, artifacts) to the user",
+    briefStandalone: true,
+    maxResultSizeChars: 100000 /* 1e5 */,
+    userFacingName() {
+      return "";
+    },
+    get inputSchema() {
+      return Thf();
+    },
+    get outputSchema() {
+      return vhf();
+    },
+    isEnabled() {
+      if (fr() !== "firstParty" || Vi()) return false;
+      if (!at("tengu_send_user_file", true)) return false;
+      return (
+        (d0() ||
+          !!process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE ||
+          ut(process.env.CLAUDE_CODE_REMOTE)) &&
+        !z6e()
+      );
+    },
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    toAutoClassifierInput(e) {
+      return e.caption ?? `[${e.files?.length ?? 0} file(s)]`;
+    },
+    async validateInput({ files: e }, t) {
+      return K7n(e);
+    },
+    async description() {
+      return qoo;
+    },
+    async prompt() {
+      return Voo;
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      let n = e.attachments.length,
+        r = e.attachments
+          .filter((o) => o.file_uuid !== void 0)
+          .map((o) => `  ${o.path} \u2192 file_uuid: ${o.file_uuid}`);
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content:
+          `${n} ${bn(n, "file")} delivered to user.` +
+          (r.length > 0
+            ? `
 ${r.join(`
 `)}`
-              : ""),
-        };
-      },
-      renderToolUseMessage: HSl,
-      renderToolResultMessage: TSl,
-      async call({ files: e, caption: t, status: n }, r) {
-        G("tengu_send_user_file", {
-          proactive: n === "proactive",
-          file_count: e.length,
+            : ""),
+      };
+    },
+    renderToolUseMessage: HSl,
+    renderToolResultMessage: TSl,
+    async call({ files: e, caption: t, status: n }, r) {
+      G("tengu_send_user_file", {
+        proactive: n === "proactive",
+        file_count: e.length,
+      });
+      let o = r.getAppState(),
+        s = await Y7n(e, {
+          replBridgeEnabled: o.replBridgeEnabled,
+          signal: r.abortController.signal,
         });
-        let o = r.getAppState(),
-          s = await Y7n(e, {
-            replBridgeEnabled: o.replBridgeEnabled,
-            signal: r.abortController.signal,
-          });
-        return {
-          data: {
-            caption: t,
-            attachments: s,
-          },
-        };
-      },
-    })));
-});
+      return {
+        data: {
+          caption: t,
+          attachments: s,
+        },
+      };
+    },
+  })));
 function IRo(e) {
   let t = ISl.c(13),
     { command: n } = e,

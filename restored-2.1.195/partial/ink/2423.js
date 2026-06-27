@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.0805  score=1  fileCov=0.0805
 // note: low-confidence suggestion: src/ink/render-to-screen.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $Wi = E(() => {
-  aGe();
-});
 function OWi(e, t) {
   let n = t.toLowerCase();
   if (!n) return [];

@@ -3,7 +3,4 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qNn = E(() => {
-  At();
-});
 var Uua, wLe;

@@ -4,20 +4,13 @@
 // class=modified  jaccard=0.447  score=0.7142  fileCov=0.5444
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HUt = E(() => {
-  Qi();
-  dn();
-  er();
-  Lo();
-  oc();
-  ys();
-  E8i = require("path");
-  H8i = Cn(() => {
-    let e = Lg();
-    if (e.hasCompletedProjectOnboarding || e.projectOnboardingSeenCount >= 4 || process.env.IS_DEMO)
-      return false;
-    return !A8i();
-  });
+// [unwrapped __esm module HUt] deps: Qi, dn, er, Lo, oc, ys
+E8i = require("path");
+H8i = Cn(() => {
+  let e = Lg();
+  if (e.hasCompletedProjectOnboarding || e.projectOnboardingSeenCount >= 4 || process.env.IS_DEMO)
+    return false;
+  return !A8i();
 });
 function r6d(e) {
   gn((t) => ({

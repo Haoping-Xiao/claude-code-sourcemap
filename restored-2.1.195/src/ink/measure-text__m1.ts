@@ -4,10 +4,8 @@
 // class=modified (alt of src/ink/measure-text.ts)  jaccard=0.2878  score=1  fileCov=0.2878
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vMe = E(() => {
-  Mce();
-  ((Stl = R(lt(), 1)), (Etl = require("url")), (Atl = R(se(), 1)));
-});
+// [unwrapped __esm module vMe] deps: Mce
+((Stl = R(lt(), 1)), (Etl = require("url")), (Atl = R(se(), 1)));
 function Eef(e, t, n = 1 / 0) {
   let r = t <= 0 || !Number.isFinite(t),
     o = 0,

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0261  score=1  fileCov=0.0261
 // note: nearest: node_modules/@smithy/signature-v4/dist-cjs/index.js (0.0261); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o4r = E(() => {
-  zjr();
-  _je();
-});
 var pMt = async ({
   headers: e,
   body: t

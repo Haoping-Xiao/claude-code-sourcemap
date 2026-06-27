@@ -4,25 +4,22 @@
 // class=modified (alt of src/components/CustomSelect/select.tsx)  jaccard=0.0909  score=0.2886  fileCov=0.1171
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LBl = E(() => {
-  ft();
-  Uh();
-  ((NOf = {
-    type: "local",
-    name: "pause-memory",
-    aliases: ["memory-pause", "toggle-memory"],
-    description: "Pause automemory for this session",
-    isEnabled: () => false,
-    isHidden: false,
-    supportsNonInteractive: false,
-    thinClientDispatch: "post-text",
-    load: () => Promise.resolve().then(() => (RBl(), kBl)),
-    userFacingName() {
-      return "pause-memory";
-    },
-  }),
-    (tBo = NOf));
-});
+// [unwrapped __esm module LBl] deps: ft, Uh
+((NOf = {
+  type: "local",
+  name: "pause-memory",
+  aliases: ["memory-pause", "toggle-memory"],
+  description: "Pause automemory for this session",
+  isEnabled: () => false,
+  isHidden: false,
+  supportsNonInteractive: false,
+  thinClientDispatch: "post-text",
+  load: () => Promise.resolve().then(() => (RBl(), kBl)),
+  userFacingName() {
+    return "pause-memory";
+  },
+}),
+  (tBo = NOf));
 function nBo(e) {
   let t = DBl.c(14),
     { commands: n, maxHeight: r, columns: o, title: s, onCancel: i, emptyMessage: a } = e,

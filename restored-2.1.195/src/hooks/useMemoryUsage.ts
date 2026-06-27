@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2627  score=0.3506  fileCov=0.5114
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var n6o = E(() => {
-  Ye();
-  uo();
-  ((yhc = R(lt(), 1)), (t6o = R(se(), 1)));
-});
+// [unwrapped __esm module n6o] deps: Ye, uo
+((yhc = R(lt(), 1)), (t6o = R(se(), 1)));
 function bhc() {
   let [e, t] = Yur.useState(null),
     n = Yur.useRef("normal");

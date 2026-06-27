@@ -3,12 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $ss = E(() => {
-  kin();
-  Iss();
-  kss();
-  Pss();
-  $Er();
-  Mss = LYc;
-});
+// [unwrapped __esm module $ss] deps: kin, Iss, kss, Pss, $Er
+Mss = LYc;
 var Oss, DYc, Nss;

@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.4008  score=0.8041  fileCov=0.4442
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nWi = E(() => {
-  ((TGd = []), (vGd = []));
-});
+// [unwrapped __esm module nWi]
+((TGd = []), (vGd = []));
 class cJr {
   options;
   state;

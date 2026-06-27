@@ -4,11 +4,10 @@
 // class=partial  jaccard=0.2162  score=1  fileCov=0.2162
 // note: low-confidence suggestion: src/ink/line-width-cache.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var m0 = E(() => {
-  Ais = new Map();
-  His = new WeakMap();
-  Tis = new Map();
-});
+// [unwrapped __esm module m0]
+Ais = new Map();
+His = new WeakMap();
+Tis = new Map();
 function rn(e) {
   return Bun.stringWidth(e, k7c);
 }

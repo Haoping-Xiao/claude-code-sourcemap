@@ -4,44 +4,41 @@
 // class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.0614  score=0.0821  fileCov=0.1963
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $po = E(() => {
-  tQe();
-  VM();
-  ((SCp = {
-    navigate: "navigate",
-    read_page: "read the page",
-    get_page_text: "extract page text",
-    find: "find an element",
-    form_input: "fill in a form field",
-    javascript_tool: "run JavaScript",
-    read_console_messages: "read console messages",
-    read_network_requests: "read network requests",
-    upload_image: "upload an image",
-    file_upload: "upload a file",
-    select_browser: "select a browser",
-  }),
-    (t0a = {
-      screenshot: "take a screenshot",
-      left_click: "click",
-      right_click: "right-click",
-      middle_click: "middle-click",
-      double_click: "double-click",
-      triple_click: "triple-click",
-      type: "type text",
-      key: "press keys",
-      hold_key: "hold a key",
-      scroll: "scroll",
-      scroll_to: "scroll to an element",
-      left_click_drag: "drag",
-      zoom: "zoom in",
-      hover: "hover",
-      mouse_move: "move the mouse",
-      left_mouse_down: "press the mouse button",
-      left_mouse_up: "release the mouse button",
-      cursor_position: "read the cursor position",
-      wait: "wait",
-    }));
-});
+// [unwrapped __esm module $po] deps: tQe, VM
+((SCp = {
+  navigate: "navigate",
+  read_page: "read the page",
+  get_page_text: "extract page text",
+  find: "find an element",
+  form_input: "fill in a form field",
+  javascript_tool: "run JavaScript",
+  read_console_messages: "read console messages",
+  read_network_requests: "read network requests",
+  upload_image: "upload an image",
+  file_upload: "upload a file",
+  select_browser: "select a browser",
+}),
+  (t0a = {
+    screenshot: "take a screenshot",
+    left_click: "click",
+    right_click: "right-click",
+    middle_click: "middle-click",
+    double_click: "double-click",
+    triple_click: "triple-click",
+    type: "type text",
+    key: "press keys",
+    hold_key: "hold a key",
+    scroll: "scroll",
+    scroll_to: "scroll to an element",
+    left_click_drag: "drag",
+    zoom: "zoom in",
+    hover: "hover",
+    mouse_move: "move the mouse",
+    left_mouse_down: "press the mouse button",
+    left_mouse_up: "release the mouse button",
+    cursor_position: "read the cursor position",
+    wait: "wait",
+  }));
 var u0a = {};
 _t(u0a, {
   setChromeBinding: () => setChromeBinding,

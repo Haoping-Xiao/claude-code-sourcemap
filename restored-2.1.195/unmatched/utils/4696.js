@@ -4,16 +4,8 @@
 // class=new  jaccard=0.018  score=0.192  fileCov=0.0195
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gfe = E(() => {
-  lH();
-  Lo();
-  At();
-  Jt();
-  RNo();
-  WL();
-  q$();
-  fnr = require("net"), vNl = require("string_decoder");
-});
+// [unwrapped __esm module Gfe] deps: lH, Lo, At, Jt, RNo, WL, q$
+fnr = require("net"), vNl = require("string_decoder");
 function z7t() {
   return {
     proto: hp,

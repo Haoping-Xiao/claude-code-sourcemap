@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mti = E(() => {
-  dti();
-  Xcd = xEn;
-});
+// [unwrapped __esm module mti] deps: dti
+Xcd = xEn;

@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2308  score=0.5234  fileCov=0.2923
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oat = E(() => {
-  ((WGi = R(rt(), 1)), (Dce = WGi.createContext(null)));
-});
+// [unwrapped __esm module oat]
+((WGi = R(rt(), 1)), (Dce = WGi.createContext(null)));
 function oJr() {
   if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return false;
   return true;

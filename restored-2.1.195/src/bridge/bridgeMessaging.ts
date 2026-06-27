@@ -4,34 +4,32 @@
 // class=modified  jaccard=0.3463  score=0.4276  fileCov=0.6453
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rir = E(() => {
-  Ld();
-  nir = ["exit", "quit", ":q", ":q!", ":wq", ":wq!"];
-  ((o6f = {
-    type: "local-jsx",
+// [unwrapped __esm module rir] deps: Ld
+nir = ["exit", "quit", ":q", ":q!", ":wq", ":wq!"];
+((o6f = {
+  type: "local-jsx",
+  name: "exit",
+  aliases: ["quit"],
+  get description() {
+    return pJl();
+  },
+  immediate: true,
+  requires: {
+    ink: true,
+  },
+  fleetHostCall: async ({ exit: e }) => e(),
+  load: () => Promise.resolve().then(() => (cJl(), aJl)),
+}),
+  (fJl = {
+    type: "local",
     name: "exit",
-    aliases: ["quit"],
+    supportsNonInteractive: true,
     get description() {
       return pJl();
     },
-    immediate: true,
-    requires: {
-      ink: true,
-    },
-    fleetHostCall: async ({ exit: e }) => e(),
-    load: () => Promise.resolve().then(() => (cJl(), aJl)),
+    load: () => Promise.resolve().then(() => (dJl(), uJl)),
   }),
-    (fJl = {
-      type: "local",
-      name: "exit",
-      supportsNonInteractive: true,
-      get description() {
-        return pJl();
-      },
-      load: () => Promise.resolve().then(() => (dJl(), uJl)),
-    }),
-    (P4o = o6f));
-});
+  (P4o = o6f));
 function oir(e) {
   if (e === null || typeof e !== "object") return e;
   let t = e;

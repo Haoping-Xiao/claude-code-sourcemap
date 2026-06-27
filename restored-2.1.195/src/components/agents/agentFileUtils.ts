@@ -4,12 +4,11 @@
 // class=modified  jaccard=0.459  score=0.6312  fileCov=0.6272
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sYl = E(() => {
-  cme = {
-    FOLDER_NAME: ".claude",
-    AGENTS_DIR: "agents",
-  };
-});
+// [unwrapped __esm module sYl]
+cme = {
+  FOLDER_NAME: ".claude",
+  AGENTS_DIR: "agents",
+};
 function RVf(e, t, n, r, o, s, i, a) {
   let l = t
       .replaceAll("\\", "\\\\")

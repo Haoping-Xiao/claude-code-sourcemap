@@ -4,22 +4,21 @@
 // class=new  jaccard=0.0401  score=1  fileCov=0.0401
 // note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0401); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var j8s = E(() => {
-  sBr = class sBr {
-    options;
-    constructor(e) {
-      this.options = e;
+// [unwrapped __esm module j8s]
+sBr = class sBr {
+  options;
+  constructor(e) {
+    this.options = e;
+  }
+  [Symbol.asyncIterator]() {
+    return this.asyncIterator();
+  }
+  async *asyncIterator() {
+    for await (let e of this.options.messageStream) {
+      let t = await this.options.deserializer(e);
+      if (t === void 0) continue;
+      yield t;
     }
-    [Symbol.asyncIterator]() {
-      return this.asyncIterator();
-    }
-    async *asyncIterator() {
-      for await (let e of this.options.messageStream) {
-        let t = await this.options.deserializer(e);
-        if (t === void 0) continue;
-        yield t;
-      }
-    }
-  };
-});
+  }
+};
 var iBr;

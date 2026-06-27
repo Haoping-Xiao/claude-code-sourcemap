@@ -4,17 +4,15 @@
 // class=modified  jaccard=0.5382  score=1  fileCov=0.5382
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Ln = E(() => {
-  qit();
-  J_e = class J_e extends yne {
-    text;
-    constructor(e) {
-      super("paste", {
-        bubbles: true,
-        cancelable: true,
-      });
-      this.text = e;
-    }
-  };
-});
+// [unwrapped __esm module _Ln] deps: qit
+J_e = class J_e extends yne {
+  text;
+  constructor(e) {
+    super("paste", {
+      bubbles: true,
+      cancelable: true,
+    });
+    this.text = e;
+  }
+};
 var aJr;

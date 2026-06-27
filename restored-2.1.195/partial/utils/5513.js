@@ -4,12 +4,6 @@
 // class=partial  jaccard=0.2006  score=0.3763  fileCov=0.3004
 // note: low-confidence suggestion: src/hooks/useRemoteSession.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tSc = E(() => {
-  RJt();
-  Wen();
-  je();
-  Jt();
-});
 function Ydr({
   adapter: e,
   setMessages: t,

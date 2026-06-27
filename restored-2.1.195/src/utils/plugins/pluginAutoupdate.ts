@@ -4,40 +4,15 @@
 // class=modified  jaccard=0.2132  score=0.3309  fileCov=0.3746
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var XEt = E(() => {
-  ft();
-  glt();
-  je();
-  fn();
-  At();
-  ys();
-  Hu();
-  vq();
-  vbe();
-  _k();
-  lE();
-  e1e();
-  B1();
-  $g();
-  vfe();
-  Xh();
-  i5();
-  WI();
-  NKe();
-  OYt();
-  ZC();
-  dr();
-  sr();
-  I8();
-  ((Ase = require("path")), (jEt = R(Uj(), 1)));
-  ((JL = ["user", "project", "local"]),
-    (r1e = {
-      user: 0,
-      project: 1,
-      local: 2,
-    }),
-    (UKe = ["user", "project", "local", "managed"]));
-});
+// [unwrapped __esm module XEt] deps: ft, glt, je, fn, At, ys, Hu, vq, vbe, _k, lE, e1e, B1, $g, vfe, Xh, i5, WI, NKe, OYt, ZC, dr, sr, I8
+((Ase = require("path")), (jEt = R(Uj(), 1)));
+((JL = ["user", "project", "local"]),
+  (r1e = {
+    user: 0,
+    project: 1,
+    local: 2,
+  }),
+  (UKe = ["user", "project", "local", "managed"]));
 function ejl(e) {
   if (((hrr = e), hXt !== null)) (e(hXt.updated, hXt.blocked), (hXt = null));
   return () => {

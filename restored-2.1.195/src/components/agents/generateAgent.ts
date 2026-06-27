@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.4403  score=0.9094  fileCov=0.4605
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BYl = E(() => {
-  Ye();
-  ps();
-  y3();
-  Cc();
-  Bs();
-  f_();
-  Ko();
-  Mg();
-  wb();
-  vH();
-  ((OYl = R(lt(), 1)), (Gsr = R(rt(), 1)), (Kq = R(se(), 1)));
-});
+// [unwrapped __esm module BYl] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
+((OYl = R(lt(), 1)), (Gsr = R(rt(), 1)), (Kq = R(se(), 1)));
 async function FYl(e, t, n, r) {
   let o =
       n.length > 0

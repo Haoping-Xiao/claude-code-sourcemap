@@ -4,15 +4,12 @@
 // class=modified  jaccard=0.2657  score=0.3855  fileCov=0.461
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var c1l = E(() => {
-  $7t();
-  Ye();
-  ((O7t = R(se(), 1)),
-    (i1l = {
-      vim: "Editor mode",
-      "output-style": "Output style",
-    }));
-});
+// [unwrapped __esm module c1l] deps: $7t, Ye
+((O7t = R(se(), 1)),
+  (i1l = {
+    vim: "Editor mode",
+    "output-style": "Output style",
+  }));
 function u1l(e, t) {
   return {
     type: "local-jsx",

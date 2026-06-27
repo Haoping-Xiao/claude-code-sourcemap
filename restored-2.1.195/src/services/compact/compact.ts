@@ -4,22 +4,21 @@
 // class=modified  jaccard=0.4034  score=0.6075  fileCov=0.5456
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lZn = E(() => {
-  NN = class NN extends Error {
-    originalModel;
-    fallbackModel;
-    reason;
-    originalError;
-    constructor(e, t, n = "overloaded", r) {
-      super(`Model fallback triggered: ${e} -> ${t}`);
-      this.originalModel = e;
-      this.fallbackModel = t;
-      this.reason = n;
-      this.originalError = r;
-      this.name = "FallbackTriggeredError";
-    }
-  };
-});
+// [unwrapped __esm module lZn]
+NN = class NN extends Error {
+  originalModel;
+  fallbackModel;
+  reason;
+  originalError;
+  constructor(e, t, n = "overloaded", r) {
+    super(`Model fallback triggered: ${e} -> ${t}`);
+    this.originalModel = e;
+    this.fallbackModel = t;
+    this.reason = n;
+    this.originalError = r;
+    this.name = "FallbackTriggeredError";
+  }
+};
 function wwf(e) {
   if (
     e.type === "queued_command" &&

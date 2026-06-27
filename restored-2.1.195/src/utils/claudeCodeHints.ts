@@ -4,51 +4,37 @@
 // class=modified  jaccard=0.1987  score=0.3285  fileCov=0.3347
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Amo = E(() => {
-  ft();
-  db();
-  gb();
-  je();
-  fn();
-  At();
-  Iv();
-  vf();
-  L7();
-  lj();
-  YPn();
-  WI();
-  ZC();
-  ((Mpt = require("fs/promises")), (u6 = require("path")));
-  ((Gkp = [
-    "mcpServers",
-    "lspServers",
-    "agents",
-    "outputStyles",
-    "themes",
-    "workflows",
-    "channels",
-    "monitors",
-    "settings",
-    "userConfig",
-    "experimental",
-  ]),
-    (Wkp = {
-      defaultEnabled: (e) => typeof e === "boolean",
-      author: (e) => QRt().safeParse(e).success,
-      homepage: (e) => {
-        if (typeof e !== "string") return false;
-        try {
-          let { protocol: t } = new URL(e);
-          return t === "http:" || t === "https:";
-        } catch {
-          return false;
-        }
-      },
-      repository: (e) => typeof e === "string",
-      license: (e) => typeof e === "string",
-      keywords: (e) => Array.isArray(e) && e.every((t) => typeof t === "string"),
-    }));
-});
+// [unwrapped __esm module Amo] deps: ft, db, gb, je, fn, At, Iv, vf, L7, lj, YPn, WI, ZC
+((Mpt = require("fs/promises")), (u6 = require("path")));
+((Gkp = [
+  "mcpServers",
+  "lspServers",
+  "agents",
+  "outputStyles",
+  "themes",
+  "workflows",
+  "channels",
+  "monitors",
+  "settings",
+  "userConfig",
+  "experimental",
+]),
+  (Wkp = {
+    defaultEnabled: (e) => typeof e === "boolean",
+    author: (e) => QRt().safeParse(e).success,
+    homepage: (e) => {
+      if (typeof e !== "string") return false;
+      try {
+        let { protocol: t } = new URL(e);
+        return t === "http:" || t === "https:";
+      } catch {
+        return false;
+      }
+    },
+    repository: (e) => typeof e === "string",
+    license: (e) => typeof e === "string",
+    keywords: (e) => Array.isArray(e) && e.every((t) => typeof t === "string"),
+  }));
 function LGt(e, t) {
   if (!e.includes("<claude-code-hint"))
     return {

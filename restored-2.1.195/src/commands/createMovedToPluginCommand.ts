@@ -4,22 +4,19 @@
 // class=modified  jaccard=0.3359  score=0.5395  fileCov=0.4709
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var E6l = E(() => {
-  jc();
-  oo();
-  ((X5f = {
-    type: "local-jsx",
-    name: "teleport",
-    description: "Resume a Claude Code session from claude.ai",
-    aliases: ["tp"],
-    isEnabled: () => bo() && Us("allow_remote_sessions"),
-    get isHidden() {
-      return !bo() || !Us("allow_remote_sessions");
-    },
-    load: () => Promise.resolve().then(() => (b6l(), _6l)),
-  }),
-    (S6l = X5f));
-});
+// [unwrapped __esm module E6l] deps: jc, oo
+((X5f = {
+  type: "local-jsx",
+  name: "teleport",
+  description: "Resume a Claude Code session from claude.ai",
+  aliases: ["tp"],
+  isEnabled: () => bo() && Us("allow_remote_sessions"),
+  get isHidden() {
+    return !bo() || !Us("allow_remote_sessions");
+  },
+  load: () => Promise.resolve().then(() => (b6l(), _6l)),
+}),
+  (S6l = X5f));
 function A6l({
   name: e,
   description: t,

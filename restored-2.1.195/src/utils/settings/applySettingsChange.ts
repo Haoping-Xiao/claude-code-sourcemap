@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.1246  score=0.2258  fileCov=0.2176
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qho = E(() => {
-  Rm();
-});
 function v4n(e, t) {
   let n = Dr();
   if ((T(`Settings changed from ${e}, updating app state`), e === "localSettings")) Yho();

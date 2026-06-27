@@ -4,25 +4,8 @@
 // class=modified  jaccard=0.4582  score=0.7392  fileCov=0.5466
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dic = E(() => {
-  ft();
-  kt();
-  ZE();
-  tP();
-  U1();
-  Vv();
-  EAe();
-  BE();
-  Il();
-  je();
-  At();
-  Rd();
-  co();
-  Ao();
-  Jt();
-  P5o();
-  lic = require("crypto");
-});
+// [unwrapped __esm module dic] deps: ft, kt, ZE, tP, U1, Vv, EAe, BE, Il, je, At, Rd, co, Ao, Jt, P5o
+lic = require("crypto");
 async function pic(e, t, n, r, o, s, i, a) {
   let l = i || `hook-${M5o.randomUUID()}`,
     c = s.agentId ? uk(s.agentId) : em(),

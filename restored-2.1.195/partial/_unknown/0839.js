@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.0846  score=1  fileCov=0.0846
 // note: low-confidence suggestion: node_modules/@smithy/types/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MRs = E(() => {
-  PRs = R(ZH(), 1);
-});
+// [unwrapped __esm module MRs]
+PRs = R(ZH(), 1);
 var $Rs = e => {
     let t = [];
     for (let n in Xet) {

@@ -4,29 +4,20 @@
 // class=modified  jaccard=0.3034  score=0.431  fileCov=0.5062
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DAc = E(() => {
-  Gpo();
-  PFn();
-  si();
-  Ye();
-  Bi();
-  sr();
-  Vl();
-  vi();
-  ((ypr = R(lt(), 1)),
-    (kAc = R(rt(), 1)),
-    (SE = R(se(), 1)),
-    (RAc = {
-      granted: [],
-      denied: [],
-      flags: pJ,
-    }));
-  Eym = {
-    shell: "equivalent to shell access",
-    filesystem: "can read/write any file",
-    system_settings: "can change system settings",
-  };
-});
+// [unwrapped __esm module DAc] deps: Gpo, PFn, si, Ye, Bi, sr, Vl, vi
+((ypr = R(lt(), 1)),
+  (kAc = R(rt(), 1)),
+  (SE = R(se(), 1)),
+  (RAc = {
+    granted: [],
+    denied: [],
+    flags: pJ,
+  }));
+Eym = {
+  shell: "equivalent to shell access",
+  filesystem: "can read/write any file",
+  system_settings: "can change system settings",
+};
 function PAc(e) {
   let t = zTe.c(58),
     { onDone: n, tmuxAvailable: r } = e,

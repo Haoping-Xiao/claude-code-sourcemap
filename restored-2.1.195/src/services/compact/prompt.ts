@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.1454  score=0.3835  fileCov=0.1897
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Cao = E(() => {
-  co();
-});
 function yNn(e) {
   let t = (r) =>
     r.type === "assistant" &&

@@ -4,26 +4,18 @@
 // class=new  jaccard=0.0088  score=0.3956  fileCov=0.0089
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0088); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var BIo = E(() => {
-  Hp();
-  zb();
-  je();
-  RE();
-  At();
-  Ls();
-  kM();
-  gaf = ve(() => dt.object({
-    url: dt.string().optional().default(""),
-    destination_url: dt.string().nullable().optional(),
-    title: dt.string().optional().default(""),
-    text: dt.string().optional().default(""),
-    content_type: dt.string().nullable().optional(),
-    error: dt.object({
-      error_type: dt.string(),
-      error_message: dt.string()
-    }).nullable().optional()
-  }));
-});
+// [unwrapped __esm module BIo] deps: Hp, zb, je, RE, At, Ls, kM
+gaf = ve(() => dt.object({
+  url: dt.string().optional().default(""),
+  destination_url: dt.string().nullable().optional(),
+  title: dt.string().optional().default(""),
+  text: dt.string().optional().default(""),
+  content_type: dt.string().nullable().optional(),
+  error: dt.object({
+    error_type: dt.string(),
+    error_message: dt.string()
+  }).nullable().optional()
+}));
 function Mcl(e, t) {
   if (_af.has(e)) return true;
   let n = baf.get(e);

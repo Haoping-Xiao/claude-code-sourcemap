@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sys = E(() => {
-  XH();
-  fxr = oys;
-});
+// [unwrapped __esm module sys] deps: XH
+fxr = oys;
 var Kwe;

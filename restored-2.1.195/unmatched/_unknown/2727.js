@@ -4,16 +4,6 @@
 // class=new  jaccard=0.0287  score=0.4448  fileCov=0.0298
 // note: nearest: node_modules/yaml/dist/parse/parser.js (0.0287); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var t2t = E(() => {
-  ERe();
-  ZFt();
-  nct();
-  TWe();
-  Qne();
-  B$n();
-  SX();
-  _ue();
-});
 function CWe(e) {
   if (gue(e)) return new rta(e);
   return new nta(e);

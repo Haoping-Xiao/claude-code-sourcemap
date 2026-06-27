@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.577  score=1  fileCov=0.577
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var V9n = E(() => {
-  Tc();
-  Ye();
-  fJa = R(rt(), 1);
-});
+// [unwrapped __esm module V9n] deps: Tc, Ye
+fJa = R(rt(), 1);
 function $Ho(e, t, n = false, r = false) {
   let o = UVt.useRef(e),
     s = UVt.useRef(t),

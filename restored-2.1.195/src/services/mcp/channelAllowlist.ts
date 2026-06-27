@@ -4,22 +4,6 @@
 // class=modified  jaccard=0.4928  score=1  fileCov=0.4928
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var L6t = E(() => {
-  kt();
-  Du();
-  G1();
-  S$();
-  Il();
-  je();
-  sp();
-  co();
-  $I();
-  __();
-  Gy();
-  xYn();
-  kgo();
-  U_t();
-});
 var Gfl = {};
 _t(Gfl, {
   isChannelsEnabled: () => isChannelsEnabled,

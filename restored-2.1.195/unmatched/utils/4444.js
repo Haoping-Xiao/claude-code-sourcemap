@@ -4,33 +4,16 @@
 // class=new  jaccard=0.014  score=0.4658  fileCov=0.0142
 // note: nearest: src/utils/bash/ast.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Z6 = E(() => {
-  ft();
-  np();
-  dn();
-  yC();
-  $S();
-  Lo();
-  RE();
-  ys();
-  vn();
-  bm();
-  tA();
-  bH();
-  OI();
-  S_();
-  CXn();
-  u8t();
-  Ovl = require("fs/promises");
-  IEf = [/\(y\/n\)/i, /\[y\/n\]/i, /\(yes\/no\)/i, /\b(?:Do you|Would you|Shall I|Are you sure|Ready to)\b.*\? *$/i, /Press (any key|Enter)/i, /Continue\?/i, /Overwrite\?/i];
-  W7n = {
-    name: "LocalShellTask",
-    type: "local_bash",
-    async kill(e, t) {
-      yAe(e, t);
-    }
-  };
-});
+// [unwrapped __esm module Z6] deps: ft, np, dn, yC, $S, Lo, RE, ys, vn, bm, tA, bH, OI, S_, CXn, u8t
+Ovl = require("fs/promises");
+IEf = [/\(y\/n\)/i, /\[y\/n\]/i, /\(yes\/no\)/i, /\b(?:Do you|Would you|Shall I|Are you sure|Ready to)\b.*\? *$/i, /Press (any key|Enter)/i, /Continue\?/i, /Overwrite\?/i];
+W7n = {
+  name: "LocalShellTask",
+  type: "local_bash",
+  async kill(e, t) {
+    yAe(e, t);
+  }
+};
 function DEf(e) {
   let t = e.slice(e.lastIndexOf("/") + 1).toLowerCase();
   return jvl.has(t) || jvl.has(t.replace(/\.(exe|bat|cmd|com)$/, "").replace(/(?<=[a-z])[\d.]+$/, ""));

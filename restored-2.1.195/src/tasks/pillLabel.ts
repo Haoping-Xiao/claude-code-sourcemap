@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.5028  score=0.5918  fileCov=0.7697
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Val = E(() => {
-  qal = ["Baked", "Brewed", "Churned", "Cogitated", "Cooked", "Crunched", "Saut\xE9ed", "Worked"];
-});
+// [unwrapped __esm module Val]
+qal = ["Baked", "Brewed", "Churned", "Cogitated", "Cooked", "Crunched", "Saut\xE9ed", "Worked"];
 function l_t(e) {
   let t = e[0];
   if (!t) return null;

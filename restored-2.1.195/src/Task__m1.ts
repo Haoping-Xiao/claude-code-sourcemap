@@ -4,22 +4,20 @@
 // class=modified (alt of src/Task.ts)  jaccard=0.1762  score=0.2265  fileCov=0.4423
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yC = E(() => {
-  bH();
-  nic = require("crypto");
-  Cem = new Set(["local_agent", "remote_agent", "in_process_teammate", "local_workflow"]);
-  Iem = {
-    local_bash: "b",
-    local_agent: "a",
-    remote_agent: "r",
-    in_process_teammate: "t",
-    local_workflow: "w",
-    monitor_mcp: "m",
-    monitor_ws: "s",
-    mcp_task: "k",
-    dream: "d",
-  };
-});
+// [unwrapped __esm module yC] deps: bH
+nic = require("crypto");
+Cem = new Set(["local_agent", "remote_agent", "in_process_teammate", "local_workflow"]);
+Iem = {
+  local_bash: "b",
+  local_agent: "a",
+  remote_agent: "r",
+  in_process_teammate: "t",
+  local_workflow: "w",
+  monitor_mcp: "m",
+  monitor_ws: "s",
+  mcp_task: "k",
+  dream: "d",
+};
 async function y1a() {
   await Promise.allSettled(Array.from(k5o));
 }

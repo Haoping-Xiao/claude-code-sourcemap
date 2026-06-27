@@ -4,34 +4,8 @@
 // class=new  jaccard=0.0028  score=0.1395  fileCov=0.0029
 // note: nearest: src/cli/print.ts (0.0028); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vfe = E(() => {
-  kt();
-  Du();
-  Lo();
-  je();
-  At();
-  ys();
-  vf();
-  dr();
-  I8();
-  aS();
-  II();
-  vq();
-  vbe();
-  _k();
-  o8();
-  lE();
-  x$o();
-  B1();
-  $g();
-  Xh();
-  i5();
-  WI();
-  OYt();
-  ZC();
-  dOe();
-  $Rl = require("crypto"), BSt = require("fs/promises"), xq = require("path");
-});
+// [unwrapped __esm module vfe] deps: kt, Du, Lo, je, At, ys, vf, dr, I8, aS, II, vq, vbe, _k, o8, lE, x$o, B1, $g, Xh, i5, WI, OYt, ZC, dOe
+$Rl = require("crypto"), BSt = require("fs/promises"), xq = require("path");
 function FSt(e, t, n) {
   if (!Object.hasOwn(t, e)) return null;
   let r = new Set(),

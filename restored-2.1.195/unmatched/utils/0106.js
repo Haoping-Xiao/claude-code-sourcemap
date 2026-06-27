@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Kwt = E(() => {
-  BBe();
-  UBe();
-  jve = G6c;
-});
+// [unwrapped __esm module Kwt] deps: BBe, UBe
+jve = G6c;
 function W6c(e, t, n) {
   var r = e == null ? void 0 : jve(e, t);
   return r === void 0 ? n : r;

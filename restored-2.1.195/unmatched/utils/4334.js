@@ -4,19 +4,6 @@
 // class=new  jaccard=0.0034  score=0.2362  fileCov=0.0034
 // note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eXn = E(() => {
-  kt();
-  Du();
-  Xr();
-  Vv();
-  Il();
-  je();
-  At();
-  sp();
-  vn();
-  Gy();
-  mzt();
-});
 function C$e(e = null, t) {
   if (e) t?.(e);
   return {

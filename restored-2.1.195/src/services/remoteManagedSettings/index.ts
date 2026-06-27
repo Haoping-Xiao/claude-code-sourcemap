@@ -4,16 +4,14 @@
 // class=modified  jaccard=0.2877  score=0.4751  fileCov=0.4216
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mNa = E(() => {
-  Xr();
-  fNa = ve(() =>
-    H.object({
-      uuid: H.string(),
-      checksum: H.string(),
-      settings: H.record(H.string(), H.unknown()),
-    }),
-  );
-});
+// [unwrapped __esm module mNa] deps: Xr
+fNa = ve(() =>
+  H.object({
+    uuid: H.string(),
+    checksum: H.string(),
+    settings: H.record(H.string(), H.unknown()),
+  }),
+);
 function Zho() {
   if ((yNa(), nPe)) return;
   if (HJ())

@@ -3,7 +3,4 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> context; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Jsl = E(() => {
-  uo();
-});
 var Qsl, s6e;

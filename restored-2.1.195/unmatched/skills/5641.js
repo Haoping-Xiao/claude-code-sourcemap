@@ -4,38 +4,34 @@
 // class=new  jaccard=0.0512  score=0.1055  fileCov=0.0906
 // note: nearest: src/skills/bundledSkills.ts (0.0512); dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zvc = E(() => {
-  yvc();
-  bvc();
-  Evc();
-  FSm = Hvc(), jSm = Tvc(), GSm = vvc(), WSm = wvc(), qSm = Cvc(), VSm = Ivc(), zSm = xvc(), KSm = kvc(), YSm = Rvc(), XSm = Lvc(), JSm = Dvc(), QSm = Pvc(), ZSm = Mvc(), eEm = $vc(), tEm = Ovc(), nEm = Nvc(), rEm = Bvc(), oEm = Uvc(), sEm = Fvc(), iEm = jvc(), aEm = Gvc(), lEm = Wvc(), cEm = qvc(), uEm = Svc, dEm = {
-    "storybook/SKILL.md": Avc,
-    "non-storybook/SKILL.md": _vc,
-    "package-build.mjs": ux(FSm),
-    "package-validate.mjs": ux(jSm),
-    "lib/common.mjs": ux(GSm),
-    "lib/detect.mjs": ux(WSm),
-    "lib/bundle.mjs": ux(qSm),
-    "lib/dts.mjs": ux(VSm),
-    "lib/css.mjs": ux(zSm),
-    "lib/source-storybook.mjs": ux(KSm),
-    "lib/source-kit.mjs": ux(YSm),
-    "lib/story-imports.mjs": ux(XSm),
-    "lib/css-fallback.mjs": ux(JSm),
-    "lib/emit.mjs": ux(QSm),
-    "lib/previews.mjs": ux(ZSm),
-    "lib/preview-gen-storybook.mjs": ux(eEm),
-    "lib/docs.mjs": ux(tEm),
-    "lib/preview-rebuild.mjs": ux(nEm),
-    "storybook/http-serve.mjs": ux(rEm),
-    "storybook/probe.mjs": ux(oEm),
-    "storybook/compare.mjs": ux(sEm),
-    "package-capture.mjs": ux(iEm),
-    "lib/sync-hashes.mjs": ux(aEm),
-    "lib/remote-diff.mjs": ux(lEm),
-    "resync.mjs": ux(cEm)
-  };
-});
+// [unwrapped __esm module zvc] deps: yvc, bvc, Evc
+FSm = Hvc(), jSm = Tvc(), GSm = vvc(), WSm = wvc(), qSm = Cvc(), VSm = Ivc(), zSm = xvc(), KSm = kvc(), YSm = Rvc(), XSm = Lvc(), JSm = Dvc(), QSm = Pvc(), ZSm = Mvc(), eEm = $vc(), tEm = Ovc(), nEm = Nvc(), rEm = Bvc(), oEm = Uvc(), sEm = Fvc(), iEm = jvc(), aEm = Gvc(), lEm = Wvc(), cEm = qvc(), uEm = Svc, dEm = {
+  "storybook/SKILL.md": Avc,
+  "non-storybook/SKILL.md": _vc,
+  "package-build.mjs": ux(FSm),
+  "package-validate.mjs": ux(jSm),
+  "lib/common.mjs": ux(GSm),
+  "lib/detect.mjs": ux(WSm),
+  "lib/bundle.mjs": ux(qSm),
+  "lib/dts.mjs": ux(VSm),
+  "lib/css.mjs": ux(zSm),
+  "lib/source-storybook.mjs": ux(KSm),
+  "lib/source-kit.mjs": ux(YSm),
+  "lib/story-imports.mjs": ux(XSm),
+  "lib/css-fallback.mjs": ux(JSm),
+  "lib/emit.mjs": ux(QSm),
+  "lib/previews.mjs": ux(ZSm),
+  "lib/preview-gen-storybook.mjs": ux(eEm),
+  "lib/docs.mjs": ux(tEm),
+  "lib/preview-rebuild.mjs": ux(nEm),
+  "storybook/http-serve.mjs": ux(rEm),
+  "storybook/probe.mjs": ux(oEm),
+  "storybook/compare.mjs": ux(sEm),
+  "package-capture.mjs": ux(iEm),
+  "lib/sync-hashes.mjs": ux(aEm),
+  "lib/remote-diff.mjs": ux(lEm),
+  "resync.mjs": ux(cEm)
+};
 function Kvc() {
   return pEm ??= Promise.resolve().then(() => (zvc(), Vvc));
 }

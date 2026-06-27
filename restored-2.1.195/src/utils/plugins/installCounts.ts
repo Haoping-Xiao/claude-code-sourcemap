@@ -4,25 +4,8 @@
 // class=modified  jaccard=0.07  score=0.1102  fileCov=0.1613
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var E2l = E(() => {
-  kt();
-  Cc();
-  Bs();
-  f_();
-  Ko();
-  EC();
-  Mg();
-  Ye();
-  je();
-  At();
-  vq();
-  vbe();
-  lE();
-  e1e();
-  OBo();
-  Xh();
-  ((b2l = R(lt(), 1)), (BKe = R(rt(), 1)), (PH = R(se(), 1)));
-});
+// [unwrapped __esm module E2l] deps: kt, Cc, Bs, f_, Ko, EC, Mg, Ye, je, At, vq, vbe, lE, e1e, OBo, Xh
+((b2l = R(lt(), 1)), (BKe = R(rt(), 1)), (PH = R(se(), 1)));
 function v2l() {
   return FBo.join(kI(), fNf);
 }

@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.3597  score=0.5669  fileCov=0.4961
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zfc = E(() => {
-  c8o();
-  RN();
-  kt();
-  At();
-  co();
-  dr();
-  u8o();
-  _m();
-  K0();
-  OI();
-  ((d8o = require("crypto")), (t7e = R(se(), 1)));
-});
+// [unwrapped __esm module zfc] deps: c8o, RN, kt, At, co, dr, u8o, _m, K0, OI
+((d8o = require("crypto")), (t7e = R(se(), 1)));
 async function bTt({
   input: e,
   preExpansionInput: t,

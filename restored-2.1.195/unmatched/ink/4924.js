@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0359  score=0.7223  fileCov=0.0364
 // note: nearest: src/ink/log-update.ts (0.0359); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Wql = E(() => {
-  ZS();
-  OM();
-  q7();
-  sr();
-});
 function Mor(e, t, n) {
   let r = e.width,
     o = n * r,

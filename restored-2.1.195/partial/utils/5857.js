@@ -4,17 +4,6 @@
 // class=partial  jaccard=0.0799  score=0.3112  fileCov=0.097
 // note: low-confidence suggestion: src/services/mcp/vscodeSdkMcp.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pXo = E(() => {
-  fYo();
-  er();
-  wr();
-  dr();
-  aS();
-  aW();
-  Un();
-  kt();
-  jc();
-});
 function LUc(e) {
   let t = e.find(n => n.name === "ccd_session");
   if (!t || t.type !== "connected") return;

@@ -4,32 +4,5 @@
 // class=new  jaccard=0.0069  score=1  fileCov=0.0069
 // note: nearest: src/bridge/sessionRunner.ts (0.0069); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mgt = E(() => {
-  ft();
-  hVn();
-  Rc();
-  Ye();
-  dn();
-  a4n();
-  kt();
-  hgt();
-  gSe();
-  oza();
-  H0();
-  W2e();
-  S9e();
-  oo();
-  er();
-  je();
-  fn();
-  At();
-  xLe();
-  vn();
-  Ls();
-  dr();
-  Jt();
-  LPe();
-  MAo();
-  aS();
-  fKa = require("readline"), Pgt = R(se(), 1);
-});
+// [unwrapped __esm module Mgt] deps: ft, hVn, Rc, Ye, dn, a4n, kt, hgt, gSe, oza, H0, W2e, S9e, oo, er, je, fn, At, xLe, vn, Ls, dr, Jt, LPe, MAo, aS
+fKa = require("readline"), Pgt = R(se(), 1);

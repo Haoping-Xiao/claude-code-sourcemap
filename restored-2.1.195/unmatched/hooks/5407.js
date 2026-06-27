@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0491  score=0.3058  fileCov=0.0553
 // note: nearest: src/ink/components/Box.tsx (0.0491); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Vmc = E(() => {
-  Xa();
-  Ye();
-  i6e();
-  Wmc = R(lt(), 1), ren = R(se(), 1);
-});
+// [unwrapped __esm module Vmc] deps: Xa, Ye, i6e
+Wmc = R(lt(), 1), ren = R(se(), 1);
 function C8o(e) {
   let t = zmc.c(15),
     {

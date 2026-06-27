@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0572  score=0.1101  fileCov=0.1063
 // note: nearest: src/utils/completionCache.ts (0.0572); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zOe = E(() => {
-  fn();
-  vNo = require("path");
-});
+// [unwrapped __esm module zOe] deps: fn
+vNo = require("path");
 function KOe() {
   let e = process.env.XDG_RUNTIME_DIR || `/run/user/${process.getuid()}`;
   try {

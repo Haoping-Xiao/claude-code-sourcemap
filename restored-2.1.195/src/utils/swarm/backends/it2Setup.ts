@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.5708  score=0.7922  fileCov=0.6714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rhl = E(() => {
-  pMe();
-  je();
-  Jt();
-  YI();
-  v7n();
-  dMe();
-});
 async function ohl() {
   if ((await $n("which", ["uv"])).code === 0)
     return (T("[it2Setup] Found uv (will use uv tool install)"), "uvx");

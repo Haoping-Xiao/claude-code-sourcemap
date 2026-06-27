@@ -4,10 +4,6 @@
 // class=modified (alt of src/utils/tempfile.ts)  jaccard=0.1805  score=0.2012  fileCov=0.6366
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AKr = E(() => {
-  dr();
-  _0();
-});
 function vU() {
   if (process.env.CLAUDE_CODE_TMPDIR) return process.env.CLAUDE_CODE_TMPDIR;
   return TKr.tmpdir();

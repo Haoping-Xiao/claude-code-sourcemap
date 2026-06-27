@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0154  score=1  fileCov=0.0154
 // note: nearest: node_modules/qrcode/lib/core/qrcode.js (0.0154); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vyr = E(() => {
-  TK();
-  C9c = bx.Uint8Array, qXe = C9c;
-});
+// [unwrapped __esm module vyr] deps: TK
+C9c = bx.Uint8Array, qXe = C9c;
 function I9c(e) {
   var t = -1,
     n = Array(e.size);

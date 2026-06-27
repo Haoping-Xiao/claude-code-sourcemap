@@ -4,24 +4,16 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1428  score=0.1751  fileCov=0.4367
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var EKo = E(() => {
-  Lxc();
-  Pxc();
-  $xc();
-  Nxc();
-  Uxc();
-  jxc();
-  Wxc();
-  ((XHm = qxc),
-    (JHm = {
-      "examples/cli.md": Dxc,
-      "examples/electron.md": Mxc,
-      "examples/library.md": Oxc,
-      "examples/playwright.md": Bxc,
-      "examples/server.md": Fxc,
-      "examples/tui.md": Gxc,
-    }));
-});
+// [unwrapped __esm module EKo] deps: Lxc, Pxc, $xc, Nxc, Uxc, jxc, Wxc
+((XHm = qxc),
+  (JHm = {
+    "examples/cli.md": Dxc,
+    "examples/electron.md": Mxc,
+    "examples/library.md": Oxc,
+    "examples/playwright.md": Bxc,
+    "examples/server.md": Fxc,
+    "examples/tui.md": Gxc,
+  }));
 var zxc = {};
 _t(zxc, {
   registerRunSkill: () => registerRunSkill,

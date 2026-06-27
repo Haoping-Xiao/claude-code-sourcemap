@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4466  score=0.6756  fileCov=0.5685
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var A9o = E(() => {
-  Ye();
-  ((gdc = R(lt(), 1)), (qcr = R(se(), 1)));
-});
+// [unwrapped __esm module A9o] deps: Ye
+((gdc = R(lt(), 1)), (qcr = R(se(), 1)));
 function hdc({ serverName: e, isPluginServer: t = !1, onDone: n }) {
   function r(o) {
     switch (

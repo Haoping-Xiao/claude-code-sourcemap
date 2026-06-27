@@ -4,10 +4,6 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0067  score=0.1372  fileCov=0.007
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DOc = E(() => {
-  Rm();
-  je();
-});
 function MOc(e) {
   let { regularMcpConfigs: t, claudeaiConfigPromise: n, state: r } = e,
     o = ml(process.env.MCP_CONNECTION_NONBLOCKING)

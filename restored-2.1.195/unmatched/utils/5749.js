@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0091  score=0.4181  fileCov=0.0092
 // note: nearest: src/utils/sessionStorage.ts (0.0091); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sPc = E(() => {
-  Ed();
-  Un();
-  rPc = R(rt(), 1);
-});
+// [unwrapped __esm module sPc] deps: Ed, Un
+rPc = R(rt(), 1);
 function Kfr(e) {
   let t = new Set(),
     n = new Set();

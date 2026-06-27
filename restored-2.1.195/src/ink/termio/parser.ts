@@ -4,27 +4,26 @@
 // class=modified  jaccard=0.44  score=0.6329  fileCov=0.5908
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var g5i = E(() => {
-  ((PLn = [
-    "black",
-    "red",
-    "green",
-    "yellow",
-    "blue",
-    "magenta",
-    "cyan",
-    "white",
-    "brightBlack",
-    "brightRed",
-    "brightGreen",
-    "brightYellow",
-    "brightBlue",
-    "brightMagenta",
-    "brightCyan",
-    "brightWhite",
-  ]),
-    (vWd = ["none", "single", "double", "curly", "dotted", "dashed"]));
-});
+// [unwrapped __esm module g5i]
+((PLn = [
+  "black",
+  "red",
+  "green",
+  "yellow",
+  "blue",
+  "magenta",
+  "cyan",
+  "white",
+  "brightBlack",
+  "brightRed",
+  "brightGreen",
+  "brightYellow",
+  "brightBlue",
+  "brightMagenta",
+  "brightCyan",
+  "brightWhite",
+]),
+  (vWd = ["none", "single", "double", "curly", "dotted", "dashed"]));
 function* h5i(e) {
   let t = true;
   for (let n = 0; n < e.length; n++)

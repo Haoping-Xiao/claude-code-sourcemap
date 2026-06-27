@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0241  score=0.1416  fileCov=0.0282
 // note: nearest: src/tools/SendMessageTool/SendMessageTool.ts (0.0241); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hpe = E(() => {
-  g8n = require("fs/promises");
-});
+// [unwrapped __esm module Hpe]
+g8n = require("fs/promises");
 function gZa(e) {
   if (e.startsWith("uds:")) return {
     scheme: "uds",

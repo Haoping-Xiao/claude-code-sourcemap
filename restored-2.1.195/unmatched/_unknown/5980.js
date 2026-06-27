@@ -4,84 +4,83 @@
 // class=new  jaccard=0.0514  score=0.0952  fileCov=0.1006
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/util.mjs (0.0514); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var AR = E(() => {
-  nge = class nge extends Error {
-    static code = "ERR_JOSE_GENERIC";
-    code = "ERR_JOSE_GENERIC";
-    constructor(e, t) {
-      super(e, t);
-      this.name = this.constructor.name, Error.captureStackTrace?.(this, this.constructor);
-    }
-  };
-  H2 = class H2 extends nge {
-    static code = "ERR_JWT_CLAIM_VALIDATION_FAILED";
-    code = "ERR_JWT_CLAIM_VALIDATION_FAILED";
-    claim;
-    reason;
-    payload;
-    constructor(e, t, n = "unspecified", r = "unspecified") {
-      super(e, {
-        cause: {
-          claim: n,
-          reason: r,
-          payload: t
-        }
-      });
-      this.claim = n, this.reason = r, this.payload = t;
-    }
-  };
-  Pgr = class Pgr extends nge {
-    static code = "ERR_JWT_EXPIRED";
-    code = "ERR_JWT_EXPIRED";
-    claim;
-    reason;
-    payload;
-    constructor(e, t, n = "unspecified", r = "unspecified") {
-      super(e, {
-        cause: {
-          claim: n,
-          reason: r,
-          payload: t
-        }
-      });
-      this.claim = n, this.reason = r, this.payload = t;
-    }
-  };
-  Xvt = class Xvt extends nge {
-    static code = "ERR_JOSE_ALG_NOT_ALLOWED";
-    code = "ERR_JOSE_ALG_NOT_ALLOWED";
-  };
-  nh = class nh extends nge {
-    static code = "ERR_JOSE_NOT_SUPPORTED";
-    code = "ERR_JOSE_NOT_SUPPORTED";
-  };
-  jnn = class jnn extends nge {
-    static code = "ERR_JWE_DECRYPTION_FAILED";
-    code = "ERR_JWE_DECRYPTION_FAILED";
-    constructor(e = "decryption operation failed", t) {
-      super(e, t);
-    }
-  };
-  Ac = class Ac extends nge {
-    static code = "ERR_JWE_INVALID";
-    code = "ERR_JWE_INVALID";
-  };
-  jH = class jH extends nge {
-    static code = "ERR_JWS_INVALID";
-    code = "ERR_JWS_INVALID";
-  };
-  oXe = class oXe extends nge {
-    static code = "ERR_JWT_INVALID";
-    code = "ERR_JWT_INVALID";
-  };
-  SQo = class SQo extends nge {
-    static code = "ERR_JWS_SIGNATURE_VERIFICATION_FAILED";
-    code = "ERR_JWS_SIGNATURE_VERIFICATION_FAILED";
-    constructor(e = "signature verification failed", t) {
-      super(e, t);
-    }
-  };
-});
+// [unwrapped __esm module AR]
+nge = class nge extends Error {
+  static code = "ERR_JOSE_GENERIC";
+  code = "ERR_JOSE_GENERIC";
+  constructor(e, t) {
+    super(e, t);
+    this.name = this.constructor.name, Error.captureStackTrace?.(this, this.constructor);
+  }
+};
+H2 = class H2 extends nge {
+  static code = "ERR_JWT_CLAIM_VALIDATION_FAILED";
+  code = "ERR_JWT_CLAIM_VALIDATION_FAILED";
+  claim;
+  reason;
+  payload;
+  constructor(e, t, n = "unspecified", r = "unspecified") {
+    super(e, {
+      cause: {
+        claim: n,
+        reason: r,
+        payload: t
+      }
+    });
+    this.claim = n, this.reason = r, this.payload = t;
+  }
+};
+Pgr = class Pgr extends nge {
+  static code = "ERR_JWT_EXPIRED";
+  code = "ERR_JWT_EXPIRED";
+  claim;
+  reason;
+  payload;
+  constructor(e, t, n = "unspecified", r = "unspecified") {
+    super(e, {
+      cause: {
+        claim: n,
+        reason: r,
+        payload: t
+      }
+    });
+    this.claim = n, this.reason = r, this.payload = t;
+  }
+};
+Xvt = class Xvt extends nge {
+  static code = "ERR_JOSE_ALG_NOT_ALLOWED";
+  code = "ERR_JOSE_ALG_NOT_ALLOWED";
+};
+nh = class nh extends nge {
+  static code = "ERR_JOSE_NOT_SUPPORTED";
+  code = "ERR_JOSE_NOT_SUPPORTED";
+};
+jnn = class jnn extends nge {
+  static code = "ERR_JWE_DECRYPTION_FAILED";
+  code = "ERR_JWE_DECRYPTION_FAILED";
+  constructor(e = "decryption operation failed", t) {
+    super(e, t);
+  }
+};
+Ac = class Ac extends nge {
+  static code = "ERR_JWE_INVALID";
+  code = "ERR_JWE_INVALID";
+};
+jH = class jH extends nge {
+  static code = "ERR_JWS_INVALID";
+  code = "ERR_JWS_INVALID";
+};
+oXe = class oXe extends nge {
+  static code = "ERR_JWT_INVALID";
+  code = "ERR_JWT_INVALID";
+};
+SQo = class SQo extends nge {
+  static code = "ERR_JWS_SIGNATURE_VERIFICATION_FAILED";
+  code = "ERR_JWS_SIGNATURE_VERIFICATION_FAILED";
+  constructor(e = "signature verification failed", t) {
+    super(e, t);
+  }
+};
 function Jvt(e) {
   if (!cve(e)) throw Error("CryptoKey instance expected");
 }

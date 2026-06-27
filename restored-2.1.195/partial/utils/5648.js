@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.0821  score=0.3167  fileCov=0.0998
 // note: low-confidence suggestion: src/skills/bundled/loop.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cwc = E(() => {
-  Uh();
-  AA();
-});
 function uwc() {
   Nd({
     name: y8t,

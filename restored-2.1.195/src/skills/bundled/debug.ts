@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.334  score=0.534  fileCov=0.4714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cvc = E(() => {
-  wr();
-  AA();
-});
 function dvc() {
   Nd({
     name: "debug",

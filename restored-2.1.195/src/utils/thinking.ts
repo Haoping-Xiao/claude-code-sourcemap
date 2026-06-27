@@ -4,32 +4,25 @@
 // class=modified  jaccard=0.2084  score=0.3603  fileCov=0.3307
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m1 = E(() => {
-  Un();
-  mye();
-  Ao();
-  JOt();
-  Ls();
-  dr();
-  ((Jkd = [
-    "rainbow_red",
-    "rainbow_orange",
-    "rainbow_yellow",
-    "rainbow_green",
-    "rainbow_blue",
-    "rainbow_indigo",
-    "rainbow_violet",
-  ]),
-    (Qkd = [
-      "rainbow_red_shimmer",
-      "rainbow_orange_shimmer",
-      "rainbow_yellow_shimmer",
-      "rainbow_green_shimmer",
-      "rainbow_blue_shimmer",
-      "rainbow_indigo_shimmer",
-      "rainbow_violet_shimmer",
-    ]));
-});
+// [unwrapped __esm module m1] deps: Un, mye, Ao, JOt, Ls, dr
+((Jkd = [
+  "rainbow_red",
+  "rainbow_orange",
+  "rainbow_yellow",
+  "rainbow_green",
+  "rainbow_blue",
+  "rainbow_indigo",
+  "rainbow_violet",
+]),
+  (Qkd = [
+    "rainbow_red_shimmer",
+    "rainbow_orange_shimmer",
+    "rainbow_yellow_shimmer",
+    "rainbow_green_shimmer",
+    "rainbow_blue_shimmer",
+    "rainbow_indigo_shimmer",
+    "rainbow_violet_shimmer",
+  ]));
 function e0d(e) {
   let t = [],
     n = [];

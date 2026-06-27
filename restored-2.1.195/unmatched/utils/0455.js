@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kms = E(() => {
-  Tms();
-  Ims();
-  Gve();
-  P2();
-  xms = Ulu;
-});
+// [unwrapped __esm module kms] deps: Tms, Ims, Gve, P2
+xms = Ulu;
 var Flu, aFe;

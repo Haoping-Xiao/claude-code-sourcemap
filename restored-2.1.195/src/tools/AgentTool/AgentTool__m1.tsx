@@ -4,9 +4,6 @@
 // class=modified (alt of src/tools/AgentTool/AgentTool.tsx)  jaccard=0.0265  score=0.0918  fileCov=0.0359
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gko = E(() => {
-  es();
-});
 function Ydf(e) {
   return Math.min(16, Math.max(2, e - 2));
 }

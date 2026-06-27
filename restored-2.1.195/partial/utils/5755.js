@@ -4,13 +4,6 @@
 // class=partial  jaccard=0.1049  score=0.193  fileCov=0.1868
 // note: low-confidence suggestion: src/ink/hooks/use-interval.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Pc = E(() => {
-  ft();
-  ZS();
-  kt();
-  wr();
-  uf();
-});
 function zCm() {
   return {
     classifier: null,

@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0463  score=0.157  fileCov=0.0617
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0463); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var z2c = E(() => {
-  oJo();
-  rB();
-  sJo();
-  V2c = kDm;
-});
+// [unwrapped __esm module z2c] deps: oJo, rB, sJo
+V2c = kDm;
 async function Fvt(e, t, n) {
   var r;
   if (!eb(e)) throw new wh("Flattened JWS must be an object");

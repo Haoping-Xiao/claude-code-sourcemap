@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gns = E(() => {
-  Qi();
-  mns = D6c;
-});
+// [unwrapped __esm module gns] deps: Qi
+mns = D6c;
 var P6c, M6c, $6c, hns;

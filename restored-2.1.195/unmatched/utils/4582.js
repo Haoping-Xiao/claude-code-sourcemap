@@ -4,19 +4,18 @@
 // class=new  jaccard=0.0041  score=0.2663  fileCov=0.0042
 // note: nearest: src/screens/REPL.tsx (0.0041); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LDl = E(() => {
-  Fkf = {
-    aliases: ["share", "bug"],
-    type: "local-jsx",
-    name: "feedback",
-    description: "Submit feedback, report a bug, or share your conversation",
-    argumentHint: "[report]",
-    requires: {
-      ink: true
-    },
-    load: () => Promise.resolve().then(() => (RDl(), xDl))
-  }, yOo = Fkf;
-});
+// [unwrapped __esm module LDl]
+Fkf = {
+  aliases: ["share", "bug"],
+  type: "local-jsx",
+  name: "feedback",
+  description: "Submit feedback, report a bug, or share your conversation",
+  argumentHint: "[report]",
+  requires: {
+    ink: true
+  },
+  load: () => Promise.resolve().then(() => (RDl(), xDl))
+}, yOo = Fkf;
 function PDl(e, t) {
   let n = Uo([...i_(e.requestedPath), e.canonicalPath]),
     r = Uo([e.canonicalPath, KYt(e.canonicalPath)]),

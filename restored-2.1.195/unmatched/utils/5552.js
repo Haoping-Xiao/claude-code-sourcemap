@@ -4,17 +4,8 @@
 // class=new  jaccard=0.0061  score=0.5003  fileCov=0.0062
 // note: nearest: src/screens/REPL.tsx (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tAc = E(() => {
-  Ye();
-  uo();
-  qzt();
-  je();
-  At();
-  vn();
-  bm();
-  QEc();
-  VTt = R(rt(), 1);
-});
+// [unwrapped __esm module tAc] deps: Ye, uo, qzt, je, At, vn, bm, QEc
+VTt = R(rt(), 1);
 function nAc({
   taskRegistry: e,
   getToolUseContext: t,

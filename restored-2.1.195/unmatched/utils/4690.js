@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0191  score=0.3574  fileCov=0.0198
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.0191); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ANo = E(() => {
-  At();
-});
 function Nfe() {
   return HNo.join(tr(), uNl);
 }

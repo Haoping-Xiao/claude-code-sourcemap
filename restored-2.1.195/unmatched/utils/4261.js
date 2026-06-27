@@ -3,7 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WAe = E(() => {
-  Boe = R(require("vm"));
-  oml = Symbol("vmArrayCap");
-});
+// [unwrapped __esm module WAe]
+Boe = R(require("vm"));
+oml = Symbol("vmArrayCap");

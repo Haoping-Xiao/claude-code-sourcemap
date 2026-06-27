@@ -3,9 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sst = E(() => {
-  wr();
-  Ls();
-  Yle();
-  RRd = new Set([Gwi, xRd]);
-});
+// [unwrapped __esm module sst] deps: wr, Ls, Yle
+RRd = new Set([Gwi, xRd]);

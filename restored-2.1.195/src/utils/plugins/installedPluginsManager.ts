@@ -4,85 +4,49 @@
 // class=modified  jaccard=0.3394  score=0.5089  fileCov=0.5047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lE = E(() => {
-  Ree();
-  Sae();
-  Qi();
-  xpn();
-  Xr();
-  dn();
-  Un();
-  Rx();
-  Pw();
-  je();
-  fn();
-  At();
-  Bi();
-  ys();
-  sa();
-  Mx();
-  vf();
-  dr();
-  ICe();
-  Jt();
-  I8();
-  KPn();
-  vq();
-  dFt();
-  iWe();
-  _k();
-  gHe();
-  oWe();
-  S$o();
-  B1();
-  $g();
-  i5();
-  WI();
-  ZC();
-  E$o();
-  ((gRl = require("fs/promises")), ($d = require("path")));
-  JIf = new Set(["projectSettings", "localSettings"]);
-  G$ = Cn(async (e) => {
-    let t = await om(),
-      n = t[e];
-    if (!n)
-      throw Rh(
-        Error(
-          `Marketplace '${e}' not found in configuration. Available marketplaces: ${Object.keys(t).join(", ")}`,
-        ),
-        "Marketplace not found in configuration",
-      );
-    if (s9(n.source) && !$d.isAbsolute(n.source.path)) {
-      let o = xy("plugin marketplace remove", e);
-      throw Rh(
-        Error(
-          `Marketplace "${e}" has a relative source path (${n.source.path}) ` +
-            "in known_marketplaces.json \u2014 this is stale state from an older " +
-            `Claude Code version. ${o ? `Run \`${o}\` and re-add` : "Remove and re-add"} it from the original project directory.`,
-        ),
-        "Marketplace has relative source path (legacy state)",
-      );
-    }
-    try {
-      return await kYt(n.installLocation);
-    } catch (o) {
-      T(`Cache corrupted or missing for marketplace ${e}, re-fetching from source: ${be(o)}`, {
-        level: "warn",
-      });
-    }
-    let r;
-    try {
-      ({ marketplace: r } = await H$o(n.source));
-    } catch (o) {
-      throw Rh(
-        Error(`Failed to load marketplace "${e}" from source (${n.source.source}): ${be(o)}`),
-        "Failed to load marketplace from source",
-      );
-    }
-    return ((t[e].lastUpdated = new Date().toISOString()), await sse(t), r);
-  });
-  rer = new Map();
+// [unwrapped __esm module lE] deps: Ree, Sae, Qi, xpn, Xr, dn, Un, Rx, Pw, je, fn, At, Bi, ys, sa, Mx, vf, dr, ICe, Jt, I8, KPn, vq, dFt, iWe, _k, gHe, oWe, S$o, B1, $g, i5, WI, ZC, E$o
+((gRl = require("fs/promises")), ($d = require("path")));
+JIf = new Set(["projectSettings", "localSettings"]);
+G$ = Cn(async (e) => {
+  let t = await om(),
+    n = t[e];
+  if (!n)
+    throw Rh(
+      Error(
+        `Marketplace '${e}' not found in configuration. Available marketplaces: ${Object.keys(t).join(", ")}`,
+      ),
+      "Marketplace not found in configuration",
+    );
+  if (s9(n.source) && !$d.isAbsolute(n.source.path)) {
+    let o = xy("plugin marketplace remove", e);
+    throw Rh(
+      Error(
+        `Marketplace "${e}" has a relative source path (${n.source.path}) ` +
+          "in known_marketplaces.json \u2014 this is stale state from an older " +
+          `Claude Code version. ${o ? `Run \`${o}\` and re-add` : "Remove and re-add"} it from the original project directory.`,
+      ),
+      "Marketplace has relative source path (legacy state)",
+    );
+  }
+  try {
+    return await kYt(n.installLocation);
+  } catch (o) {
+    T(`Cache corrupted or missing for marketplace ${e}, re-fetching from source: ${be(o)}`, {
+      level: "warn",
+    });
+  }
+  let r;
+  try {
+    ({ marketplace: r } = await H$o(n.source));
+  } catch (o) {
+    throw Rh(
+      Error(`Failed to load marketplace "${e}" from source (${n.source.source}): ${be(o)}`),
+      "Failed to load marketplace from source",
+    );
+  }
+  return ((t[e].lastUpdated = new Date().toISOString()), await sse(t), r);
 });
+rer = new Map();
 function DYt() {
   return lz.join(kI(), "installed_plugins.json");
 }

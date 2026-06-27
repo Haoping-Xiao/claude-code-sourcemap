@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2713  score=0.6113  fileCov=0.3279
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CTt = E(() => {
-  bm();
-  Zgc = R(rt(), 1);
-});
+// [unwrapped __esm module CTt] deps: bm
+Zgc = R(rt(), 1);
 function Uur(e, t) {
   let n = wen.useRef(void 0),
     r = wen.useRef(t);

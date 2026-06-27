@@ -4,11 +4,10 @@
 // class=modified  jaccard=0.7222  score=0.8461  fileCov=0.8314
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var f7r = E(() => {
-  ((c2i = R(rt(), 1)), (u2i = c2i.createContext(false)));
-  u2i.displayName = "InternalAccessibilityContext";
-  yRn = u2i;
-});
+// [unwrapped __esm module f7r]
+((c2i = R(rt(), 1)), (u2i = c2i.createContext(false)));
+u2i.displayName = "InternalAccessibilityContext";
+yRn = u2i;
 var h7r = {};
 _t(h7r, {
   stopCapturingEarlyInput: () => stopCapturingEarlyInput,

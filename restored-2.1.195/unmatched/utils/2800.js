@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0552  score=0.1126  fileCov=0.0978
 // note: nearest: src/bridge/inboundAttachments.ts (0.0552); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Oso = E(() => {
-  fn();
-  dr();
-});
 function Nso() {
   return XS() !== null;
 }

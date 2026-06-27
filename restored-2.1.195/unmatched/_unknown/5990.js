@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0389  score=0.2213  fileCov=0.045
 // note: nearest: node_modules/jwa/index.js (0.0389); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kQo = E(() => {
-  NZ();
-  rGc();
-  wQo();
-  AR();
-});
 async function oGc(e) {
   if (Gnn(e)) if (e.type === "secret") e = e.export();else return e.export({
     format: "jwk"

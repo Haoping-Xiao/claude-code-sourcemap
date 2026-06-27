@@ -4,25 +4,8 @@
 // class=partial  jaccard=0.0733  score=0.3838  fileCov=0.0831
 // note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var u5l = E(() => {
-  HN();
-  _i();
-  Tc();
-  Ye();
-  hAt();
-  uo();
-  Cp();
-  wr();
-  es();
-  uf();
-  GXt();
-  Ao();
-  lEe();
-  bCo();
-  x8t();
-  gor();
-  l5l = R(lt(), 1), yE = R(se(), 1);
-});
+// [unwrapped __esm module u5l] deps: HN, _i, Tc, Ye, hAt, uo, Cp, wr, es, uf, GXt, Ao, lEe, bCo, x8t, gor
+l5l = R(lt(), 1), yE = R(se(), 1);
 function f5l() {
   let e = d5l.c(63),
     t = Lc(),

@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.2224  score=0.9044  fileCov=0.2278
 // note: low-confidence suggestion: src/utils/hooks/hooksConfigManager.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WAt = E(() => {
-  ft();
-  vf();
-  dr();
-  pQ();
-  sKl = require("path");
-});
+// [unwrapped __esm module WAt] deps: ft, vf, dr, pQ
+sKl = require("path");
 function uKl(e, t) {
   let n = {
       PreToolUse: {},

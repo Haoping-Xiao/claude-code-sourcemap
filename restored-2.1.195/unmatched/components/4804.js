@@ -4,39 +4,32 @@
 // class=new  jaccard=0.0305  score=0.2609  fileCov=0.0334
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0305); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kjl = E(() => {
-  si();
-  Cc();
-  Coe();
-  Xce();
-  Ye();
-  sr();
-  Ijl = R(lt(), 1), Mu = R(se(), 1), uBf = {
-    good: "success",
-    warn: "warning",
-    poor: "error"
-  }, dBf = {
-    on: {
-      glyph: nt.tick,
-      label: "on",
-      color: "success"
-    },
-    "name-only": {
-      glyph: nt.bullet,
-      label: "name-only"
-    },
-    "user-invocable-only": {
-      glyph: nt.circle,
-      label: "user-only",
-      color: "warning"
-    },
-    off: {
-      glyph: nt.cross,
-      label: "off",
-      color: "error"
-    }
-  };
-});
+// [unwrapped __esm module kjl] deps: si, Cc, Coe, Xce, Ye, sr
+Ijl = R(lt(), 1), Mu = R(se(), 1), uBf = {
+  good: "success",
+  warn: "warning",
+  poor: "error"
+}, dBf = {
+  on: {
+    glyph: nt.tick,
+    label: "on",
+    color: "success"
+  },
+  "name-only": {
+    glyph: nt.bullet,
+    label: "name-only"
+  },
+  "user-invocable-only": {
+    glyph: nt.circle,
+    label: "user-only",
+    color: "warning"
+  },
+  off: {
+    glyph: nt.cross,
+    label: "off",
+    color: "error"
+  }
+};
 function ZEt(e) {
   return e?.kind === "item" || e?.kind === "disabled-header";
 }

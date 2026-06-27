@@ -4,27 +4,19 @@
 // class=modified (alt of src/utils/settings/settings.ts)  jaccard=0.1198  score=0.3085  fileCov=0.1638
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oLt = E(() => {
-  qee();
-  Jt();
-  sr();
-  lmn();
-  Ows();
-  lj();
-  Bws();
-  g1u = ve(() => _M().strict());
-  _1u = new Set(GO);
-  S1u = [
-    {
-      key: "allowedMcpServers",
-      schema: cmn,
-    },
-    {
-      key: "deniedMcpServers",
-      schema: umn,
-    },
-  ];
-});
+// [unwrapped __esm module oLt] deps: qee, Jt, sr, lmn, Ows, lj, Bws
+g1u = ve(() => _M().strict());
+_1u = new Set(GO);
+S1u = [
+  {
+    key: "allowedMcpServers",
+    schema: cmn,
+  },
+  {
+    key: "deniedMcpServers",
+    schema: umn,
+  },
+];
 function iLt(e) {
   let t = new Set(e.allowedSources);
   return (t.add("flagSettings"), t.add("policySettings"), fv.filter((n) => t.has(n)));

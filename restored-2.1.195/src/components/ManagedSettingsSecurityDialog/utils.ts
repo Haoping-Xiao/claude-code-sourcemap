@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2489  score=0.5408  fileCov=0.3155
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var X0 = E(() => {
-  Ye();
-  PWt();
-  ((O1a = R(lt(), 1)), (hVe = R(se(), 1)));
-});
+// [unwrapped __esm module X0] deps: Ye, PWt
+((O1a = R(lt(), 1)), (hVe = R(se(), 1)));
 function Cft(e) {
   if (!e)
     return {

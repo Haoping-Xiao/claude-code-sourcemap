@@ -4,18 +4,8 @@
 // class=modified (alt of src/utils/debug.ts)  jaccard=0.0286  score=0.0382  fileCov=0.1018
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZZo = E(() => {
-  vX();
-  Lo();
-  jS();
-  Jt();
-  iQt();
-  zOe();
-  YOe();
-  Qir();
-  QJt();
-  uie = require("path");
-});
+// [unwrapped __esm module ZZo] deps: vX, Lo, jS, Jt, iQt, zOe, YOe, Qir, QJt
+uie = require("path");
 var kqc = {};
 _t(kqc, {
   tailLog: () => tailLog,

@@ -4,14 +4,13 @@
 // class=new  jaccard=0.0028  score=0.4728  fileCov=0.0028
 // note: nearest: src/screens/REPL.tsx (0.0028); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var H7l = E(() => {
-  I9f = {
-    type: "local-jsx",
-    name: "agents",
-    description: "Manage agent configurations",
-    load: () => Promise.resolve().then(() => (E7l(), b7l))
-  }, A7l = I9f;
-});
+// [unwrapped __esm module H7l]
+I9f = {
+  type: "local-jsx",
+  name: "agents",
+  description: "Manage agent configurations",
+  load: () => Promise.resolve().then(() => (E7l(), b7l))
+}, A7l = I9f;
 var T7l = {};
 _t(T7l, {
   call: () => call

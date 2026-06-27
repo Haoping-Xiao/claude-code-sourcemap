@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NIr = E(() => {
-  $Ir();
-  wms();
-  Nlu = vms(pdn), mdn = Nlu;
-});
+// [unwrapped __esm module NIr] deps: $Ir, wms
+Nlu = vms(pdn), mdn = Nlu;
 function Blu(e, t, n, r) {
   return mdn(e, function (o, s, i) {
     t(r, o, n(o), i);

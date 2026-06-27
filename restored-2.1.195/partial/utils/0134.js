@@ -4,14 +4,10 @@
 // class=partial  jaccard=0.2339  score=0.4016  fileCov=0.3591
 // note: low-confidence suggestion: src/utils/envUtils.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fn = E(() => {
-  ree();
-  Qi();
-  ree();
-  Mrs = require("os"), hSr = require("path"), tr = Cn(() => (process.env.CLAUDE_CONFIG_DIR ?? hSr.join(Mrs.homedir(), ".claude")).normalize("NFC"), () => process.env.CLAUDE_CONFIG_DIR);
-  ySr = Cn(() => ut(process.env.CLAUDE_CODE_SUPERVISED));
-  Lzc = [["claude-fable-5", "VERTEX_REGION_CLAUDE_FABLE_5"], ["claude-haiku-4-5", "VERTEX_REGION_CLAUDE_HAIKU_4_5"], ["claude-3-5-haiku", "VERTEX_REGION_CLAUDE_3_5_HAIKU"], ["claude-3-5-sonnet", "VERTEX_REGION_CLAUDE_3_5_SONNET"], ["claude-3-7-sonnet", "VERTEX_REGION_CLAUDE_3_7_SONNET"], ["claude-opus-4-8", "VERTEX_REGION_CLAUDE_4_8_OPUS"], ["claude-opus-4-7", "VERTEX_REGION_CLAUDE_4_7_OPUS"], ["claude-opus-4-6", "VERTEX_REGION_CLAUDE_4_6_OPUS"], ["claude-opus-4-5", "VERTEX_REGION_CLAUDE_4_5_OPUS"], ["claude-opus-4-1", "VERTEX_REGION_CLAUDE_4_1_OPUS"], ["claude-opus-4", "VERTEX_REGION_CLAUDE_4_0_OPUS"], ["claude-sonnet-4-6", "VERTEX_REGION_CLAUDE_4_6_SONNET"], ["claude-sonnet-4-5", "VERTEX_REGION_CLAUDE_4_5_SONNET"], ["claude-sonnet-4", "VERTEX_REGION_CLAUDE_4_0_SONNET"]];
-});
+// [unwrapped __esm module fn] deps: ree, Qi, ree
+Mrs = require("os"), hSr = require("path"), tr = Cn(() => (process.env.CLAUDE_CONFIG_DIR ?? hSr.join(Mrs.homedir(), ".claude")).normalize("NFC"), () => process.env.CLAUDE_CONFIG_DIR);
+ySr = Cn(() => ut(process.env.CLAUDE_CODE_SUPERVISED));
+Lzc = [["claude-fable-5", "VERTEX_REGION_CLAUDE_FABLE_5"], ["claude-haiku-4-5", "VERTEX_REGION_CLAUDE_HAIKU_4_5"], ["claude-3-5-haiku", "VERTEX_REGION_CLAUDE_3_5_HAIKU"], ["claude-3-5-sonnet", "VERTEX_REGION_CLAUDE_3_5_SONNET"], ["claude-3-7-sonnet", "VERTEX_REGION_CLAUDE_3_7_SONNET"], ["claude-opus-4-8", "VERTEX_REGION_CLAUDE_4_8_OPUS"], ["claude-opus-4-7", "VERTEX_REGION_CLAUDE_4_7_OPUS"], ["claude-opus-4-6", "VERTEX_REGION_CLAUDE_4_6_OPUS"], ["claude-opus-4-5", "VERTEX_REGION_CLAUDE_4_5_OPUS"], ["claude-opus-4-1", "VERTEX_REGION_CLAUDE_4_1_OPUS"], ["claude-opus-4", "VERTEX_REGION_CLAUDE_4_0_OPUS"], ["claude-sonnet-4-6", "VERTEX_REGION_CLAUDE_4_6_SONNET"], ["claude-sonnet-4-5", "VERTEX_REGION_CLAUDE_4_5_SONNET"], ["claude-sonnet-4", "VERTEX_REGION_CLAUDE_4_0_SONNET"]];
 function Aa(e, t, n, r, o) {
   if (r === "m") throw TypeError("Private method is not writable");
   if (r === "a" && !o) throw TypeError("Private accessor was defined without a setter");

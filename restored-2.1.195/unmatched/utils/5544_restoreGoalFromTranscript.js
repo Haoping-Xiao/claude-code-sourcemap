@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0532  score=0.161  fileCov=0.0737
 // note: nearest: src/utils/transcriptSearch.ts (0.0532); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lpr = E(() => {
-  ft();
-  L7();
-});
 var Nzo = {};
 _t(Nzo, {
   restoreGoalFromTranscript: () => restoreGoalFromTranscript,

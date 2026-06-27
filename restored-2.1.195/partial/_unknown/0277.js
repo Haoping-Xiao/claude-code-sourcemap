@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2419  score=0.3171  fileCov=0.5049
 // note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qas = E(() => {
-  ep();
-});
 function QHr() {
   return {
     localeError: qJc()

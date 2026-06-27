@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0398  score=0.3279  fileCov=0.0434
 // note: nearest: src/tasks/LocalAgentTask/LocalAgentTask.tsx (0.0398); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iKn = E(() => {
-  Xa();
-  Un();
-});
 function $8t({
   tasks: e,
   queuedCommands: t = []

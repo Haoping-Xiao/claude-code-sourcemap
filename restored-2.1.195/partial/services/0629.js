@@ -4,19 +4,15 @@
 // class=partial  jaccard=0.1756  score=0.8417  fileCov=0.1816
 // note: low-confidence suggestion: node_modules/mimic-fn/index.js; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EEs = E(() => {
-  bEs();
-  LEr();
-  Gon();
-  YDu = !UJe ? rJe : function (e, t) {
-    return UJe(e, "toString", {
-      configurable: true,
-      enumerable: false,
-      value: _Es(t),
-      writable: true
-    });
-  }, SEs = YDu;
-});
+// [unwrapped __esm module EEs] deps: bEs, LEr, Gon
+YDu = !UJe ? rJe : function (e, t) {
+  return UJe(e, "toString", {
+    configurable: true,
+    enumerable: false,
+    value: _Es(t),
+    writable: true
+  });
+}, SEs = YDu;
 function ZDu(e) {
   var t = 0,
     n = 0;

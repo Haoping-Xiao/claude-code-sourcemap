@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.4355  score=0.9204  fileCov=0.4525
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Dfc = E(() => {
-  ft();
-  ZE();
-  ii();
-  og();
-  vn();
-  co();
-  Ao();
-});
 function Mfc() {
   return XZt.join(tr(), Pfc, Rt());
 }

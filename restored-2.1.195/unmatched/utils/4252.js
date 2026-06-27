@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0453  score=0.3705  fileCov=0.0491
 // note: nearest: src/components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx (0.0453); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CYn = E(() => {
-  dr();
-  fh();
-  wYn();
-  QH();
-  Lfl = new Map();
-});
+// [unwrapped __esm module CYn] deps: dr, fh, wYn, QH
+Lfl = new Map();
 function wko(e) {
   if (e === Co) return Co;
   if (e === Ss) return Ss;

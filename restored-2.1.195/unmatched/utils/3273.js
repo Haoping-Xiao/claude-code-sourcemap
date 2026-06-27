@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0506  score=0.4484  fileCov=0.054
 // note: nearest: src/utils/proxy.ts (0.0506); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var AFn = E(() => {
-  Vb();
-  sp();
-  vn();
-  Jt();
-  dn();
-  kt();
-});
 var uJ = 2048;
 async function HFn(e) {
   if (!ID()) {

@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2215  score=0.6281  fileCov=0.2549
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NGo = E(() => {
-  OB();
-  _0();
-});
 async function Dnc(e) {
   let t;
   try {

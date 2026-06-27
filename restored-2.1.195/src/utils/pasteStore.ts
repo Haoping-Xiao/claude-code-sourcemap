@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.3682  score=0.6874  fileCov=0.4423
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var FDn = E(() => {
-  ((zat = R(rt(), 1)),
-    (N8i = R(se(), 1)),
-    (p6d = {
-      ring: [],
-      mode: {
-        type: "idle",
-      },
-    }));
-  $8i = zat.createContext(M8i());
-});
+// [unwrapped __esm module FDn]
+((zat = R(rt(), 1)),
+  (N8i = R(se(), 1)),
+  (p6d = {
+    ring: [],
+    mode: {
+      type: "idle",
+    },
+  }));
+$8i = zat.createContext(M8i());
 function B8i() {
   return h6d ?? g6d;
 }

@@ -4,24 +4,16 @@
 // class=modified  jaccard=0.2778  score=0.3759  fileCov=0.5156
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var G8o = E(() => {
-  Hp();
-  Xr();
-  ft();
-  dn();
-  je();
-  fn();
-  wQ();
-  ((Lgc = require("crypto")), (Dur = require("fs/promises")), (yen = require("path")));
-  ((Ium = ve(() =>
-    H.object({
-      file_uuid: H.string(),
-      file_name: H.string(),
-      is_image: H.boolean().nullish(),
-    }),
-  )),
-    (xum = ve(() => H.array(Ium()))));
-});
+// [unwrapped __esm module G8o] deps: Hp, Xr, ft, dn, je, fn, wQ
+((Lgc = require("crypto")), (Dur = require("fs/promises")), (yen = require("path")));
+((Ium = ve(() =>
+  H.object({
+    file_uuid: H.string(),
+    file_name: H.string(),
+    is_image: H.boolean().nullish(),
+  }),
+)),
+  (xum = ve(() => H.array(Ium()))));
 function Pum(e, t) {
   let n = JMe(e);
   if (!n) return null;

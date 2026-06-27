@@ -4,20 +4,8 @@
 // class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.1817  score=0.6092  fileCov=0.2057
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Tcl = E(() => {
-  Q8();
-  E5();
-  b8t();
-  Bs();
-  zX();
-  d_t();
-  ql();
-  Ye();
-  s8t();
-  co();
-  sr();
-  JI = R(se(), 1);
-});
+// [unwrapped __esm module Tcl] deps: Q8, E5, b8t, Bs, zX, d_t, ql, Ye, s8t, co, sr
+JI = R(se(), 1);
 function saf(e) {
   let t = new Map();
   for (let n of e) {

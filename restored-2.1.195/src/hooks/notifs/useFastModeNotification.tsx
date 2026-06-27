@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.4046  score=0.8348  fileCov=0.4398
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GDc = E(() => {
-  Ed();
-  id();
-  uo();
-  Otn = R(rt(), 1);
-});
+// [unwrapped __esm module GDc] deps: Ed, id, uo
+Otn = R(rt(), 1);
 function KDc() {
   let e = zDc.c(13),
     { addNotification: t } = Li(),

@@ -4,7 +4,6 @@
 // class=modified  jaccard=0.5428  score=1  fileCov=0.5428
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ekl = E(() => {
-  Skl = ["User", "Project", "Local", "Managed", "AutoMem"];
-});
+// [unwrapped __esm module Ekl]
+Skl = ["User", "Project", "Local", "Managed", "AutoMem"];
 var NN;

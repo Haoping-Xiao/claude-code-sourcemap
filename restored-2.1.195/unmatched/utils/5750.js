@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0035  score=1  fileCov=0.0035
 // note: nearest: src/screens/REPL.tsx (0.0035); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NYo = E(() => {
-  RX();
-});
 function OCm(e) {
   for (let t of e) {
     if (t.type !== "assistant") continue;

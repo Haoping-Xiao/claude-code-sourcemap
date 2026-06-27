@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0116  score=0.0993  fileCov=0.0129
 // note: nearest: src/services/mcp/client.ts (0.0116); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cuc = E(() => {
-  Is();
-  aEe();
-  qse = require("fs/promises"), iNe = require("path");
-});
+// [unwrapped __esm module cuc] deps: Is, aEe
+qse = require("fs/promises"), iNe = require("path");
 var fuc = {};
 _t(fuc, {
   runPtyHost: () => runPtyHost,

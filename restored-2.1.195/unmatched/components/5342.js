@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0106  score=0.3443  fileCov=0.0108
 // note: nearest: src/services/mcp/config.ts (0.0106); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mdc = E(() => {
-  Yp();
-  ED();
-  Ye();
-  Kv();
-  sr();
-  Cc();
-  w7t();
-  Bs();
-  vi();
-  Ko();
-  pdc = R(lt(), 1), Gcr = R(rt(), 1), v3 = R(se(), 1);
-});
+// [unwrapped __esm module mdc] deps: Yp, ED, Ye, Kv, sr, Cc, w7t, Bs, vi, Ko
+pdc = R(lt(), 1), Gcr = R(rt(), 1), v3 = R(se(), 1);
 async function oV(e) {
   if (!tyo()) return;
   if (e.hasDynamicMcpConfig || !e.pluginStateReliable || (await wim())) T("[mcp-policy-cold-start] waiting on remote managed-settings load"), await bVe();else T("[mcp-policy-cold-start] skipped \u2014 no MCP server source visible");

@@ -4,16 +4,8 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1258  score=0.4802  fileCov=0.1456
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yKo = E(() => {
-  U_t();
-  Un();
-  jc();
-  G1();
-  At();
-  Ls();
-  qd();
-  gtn = /^(?:session|cse)_[A-Za-z0-9_-]+$/;
-});
+// [unwrapped __esm module yKo] deps: U_t, Un, jc, G1, At, Ls, qd
+gtn = /^(?:session|cse)_[A-Za-z0-9_-]+$/;
 function Opr() {
   if (kTc) return;
   kTc = true;

@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.3319  score=0.5577  fileCov=0.4505
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var N8t = E(() => {
-  RAe = {
-    agentType: "general-purpose",
-    whenToUse:
-      "General-purpose agent for researching complex questions, searching for code, and executing multi-step tasks. When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries use this agent to perform the search for you.",
-    tools: ["*"],
-    source: "built-in",
-    baseDir: "built-in",
-    getSystemPrompt: pif,
-  };
-});
+// [unwrapped __esm module N8t]
+RAe = {
+  agentType: "general-purpose",
+  whenToUse:
+    "General-purpose agent for researching complex questions, searching for code, and executing multi-step tasks. When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries use this agent to perform the search for you.",
+  tools: ["*"],
+  source: "built-in",
+  baseDir: "built-in",
+  getSystemPrompt: pif,
+};
 function r3(e) {
   if (!("message" in e)) return false;
   let t = e.message;

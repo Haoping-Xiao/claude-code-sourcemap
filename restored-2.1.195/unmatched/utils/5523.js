@@ -4,16 +4,8 @@
 // class=new  jaccard=0.0056  score=0.3769  fileCov=0.0056
 // note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FSc = E(() => {
-  ft();
-  RF();
-  y0e();
-  Du();
-  e1();
-  er();
-  Yp();
-  BSc = R(rt(), 1);
-});
+// [unwrapped __esm module FSc] deps: ft, RF, y0e, Du, e1, er, Yp
+BSc = R(rt(), 1);
 function wzo({
   children: e
 }) {

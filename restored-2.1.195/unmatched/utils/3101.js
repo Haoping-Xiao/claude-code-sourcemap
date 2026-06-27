@@ -3,17 +3,13 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w4t = E(() => {
-  Hp();
-  CZe();
-  Hp();
-  A_p = /^([a-z][a-z\d+\-.]*:)?\/\//i;
-  kSe = {
-    get(e, t) {
-      return H_p(e, t), po.get(e, t);
-    }
-  };
-});
+// [unwrapped __esm module w4t] deps: Hp, CZe, Hp
+A_p = /^([a-z][a-z\d+\-.]*:)?\/\//i;
+kSe = {
+  get(e, t) {
+    return H_p(e, t), po.get(e, t);
+  }
+};
 var _Bn = e => e.name === "up" || e.name === "k" || e.ctrl && e.name === "p",
   uco = e => e.name === "down" || e.name === "j" || e.ctrl && e.name === "n",
   bBn = e => e.name === "backspace",

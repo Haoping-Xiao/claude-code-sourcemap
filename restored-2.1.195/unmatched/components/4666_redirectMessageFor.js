@@ -4,30 +4,28 @@
 // class=new  jaccard=0.0036  score=0.1915  fileCov=0.0036
 // note: nearest: src/screens/REPL.tsx (0.0036); dir inferred from dep-graph -> components; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var s1l = E(() => {
-  ft();
-  PPf = {
-    aliases: ["settings"],
-    type: "local-jsx",
-    name: "config",
-    description: "Open settings",
-    argumentHint: "[key=value]",
-    getArgumentCompletions: (e, t) => Promise.resolve().then(() => (str(), yMl)).then(n => n.getConfigArgumentCompletions(e, t)),
-    load: () => Promise.resolve().then(() => (t1l(), e1l))
-  }, sNo = {
-    type: "local",
-    name: "config",
-    aliases: ["settings"],
-    supportsNonInteractive: true,
-    description: "Set a setting by key",
-    argumentHint: "key=value",
-    isEnabled: () => Ir(),
-    get isHidden() {
-      return !Ir();
-    },
-    load: () => Promise.resolve().then(() => (r1l(), n1l))
-  }, o1l = PPf;
-});
+// [unwrapped __esm module s1l] deps: ft
+PPf = {
+  aliases: ["settings"],
+  type: "local-jsx",
+  name: "config",
+  description: "Open settings",
+  argumentHint: "[key=value]",
+  getArgumentCompletions: (e, t) => Promise.resolve().then(() => (str(), yMl)).then(n => n.getConfigArgumentCompletions(e, t)),
+  load: () => Promise.resolve().then(() => (t1l(), e1l))
+}, sNo = {
+  type: "local",
+  name: "config",
+  aliases: ["settings"],
+  supportsNonInteractive: true,
+  description: "Set a setting by key",
+  argumentHint: "key=value",
+  isEnabled: () => Ir(),
+  get isHidden() {
+    return !Ir();
+  },
+  load: () => Promise.resolve().then(() => (r1l(), n1l))
+}, o1l = PPf;
 var l1l = {};
 _t(l1l, {
   redirectMessageFor: () => redirectMessageFor,

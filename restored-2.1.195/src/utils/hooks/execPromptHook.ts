@@ -4,20 +4,16 @@
 // class=modified  jaccard=0.2443  score=0.4701  fileCov=0.3372
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var P5o = E(() => {
-  Xr();
-  i$();
-  wGt();
-  iZt = ve(() =>
-    H.object({
-      ok: H.boolean().describe("Whether the condition was met"),
-      reason: H.string().describe("Reason, if the condition was not met").optional(),
-      impossible: H.boolean()
-        .describe("Whether the condition can never be satisfied (only meaningful when ok is false)")
-        .optional(),
-    }),
-  );
-});
+// [unwrapped __esm module P5o] deps: Xr, i$, wGt
+iZt = ve(() =>
+  H.object({
+    ok: H.boolean().describe("Whether the condition was met"),
+    reason: H.string().describe("Reason, if the condition was not met").optional(),
+    impossible: H.boolean()
+      .describe("Whether the condition can never be satisfied (only meaningful when ok is false)")
+      .optional(),
+  }),
+);
 async function cic(e, t, n, r, o, s, i, a) {
   let l = a || `hook-${lic.randomUUID()}`,
     c = n === "Stop" || n === "SubagentStop";

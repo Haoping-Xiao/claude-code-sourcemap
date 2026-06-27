@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2953  score=0.5076  fileCov=0.4138
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d4t = E(() => {
-  ((Uua = R(rt(), 1)), (wLe = Uua.createContext(false)));
-});
+// [unwrapped __esm module d4t]
+((Uua = R(rt(), 1)), (wLe = Uua.createContext(false)));
 function p4t(e) {
   let t = Alo.c(2),
     { children: n } = e,

@@ -4,56 +4,48 @@
 // class=modified  jaccard=0.3817  score=0.5442  fileCov=0.5611
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lbl = E(() => {
-  Q8();
-  E5();
-  ql();
-  Ye();
-  oc();
-  co();
-  nbl();
-  ((rbl = R(lt(), 1)),
-    (Lk = R(se(), 1)),
-    (Mgf = {
-      goToDefinition: {
-        singular: "definition",
-        plural: "definitions",
-      },
-      findReferences: {
-        singular: "reference",
-        plural: "references",
-      },
-      documentSymbol: {
-        singular: "symbol",
-        plural: "symbols",
-      },
-      workspaceSymbol: {
-        singular: "symbol",
-        plural: "symbols",
-      },
-      hover: {
-        singular: "hover info",
-        plural: "hover info",
-        special: "available",
-      },
-      goToImplementation: {
-        singular: "implementation",
-        plural: "implementations",
-      },
-      prepareCallHierarchy: {
-        singular: "call item",
-        plural: "call items",
-      },
-      incomingCalls: {
-        singular: "caller",
-        plural: "callers",
-      },
-      outgoingCalls: {
-        singular: "callee",
-        plural: "callees",
-      },
-    }));
-});
+// [unwrapped __esm module lbl] deps: Q8, E5, ql, Ye, oc, co, nbl
+((rbl = R(lt(), 1)),
+  (Lk = R(se(), 1)),
+  (Mgf = {
+    goToDefinition: {
+      singular: "definition",
+      plural: "definitions",
+    },
+    findReferences: {
+      singular: "reference",
+      plural: "references",
+    },
+    documentSymbol: {
+      singular: "symbol",
+      plural: "symbols",
+    },
+    workspaceSymbol: {
+      singular: "symbol",
+      plural: "symbols",
+    },
+    hover: {
+      singular: "hover info",
+      plural: "hover info",
+      special: "available",
+    },
+    goToImplementation: {
+      singular: "implementation",
+      plural: "implementations",
+    },
+    prepareCallHierarchy: {
+      singular: "call item",
+      plural: "call items",
+    },
+    incomingCalls: {
+      singular: "caller",
+      plural: "callers",
+    },
+    outgoingCalls: {
+      singular: "callee",
+      plural: "callees",
+    },
+  }));
 function Ugf(e, t) {
   let n = dbl.pathToFileURL(t).href,
     r = {

@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.5051  score=0.8751  fileCov=0.5443
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GOc = E(() => {
-  kt();
-  dn();
-  er();
-  je();
-  vn();
-  dr();
-});
 function WOc() {
   if (fr() !== "firstParty") return;
   if (!nje()) return;

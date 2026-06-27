@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4045  score=0.5504  fileCov=0.6042
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I2e = E(() => {
-  r4s();
-});
 var k2e = {};
 _t(k2e, {
   shouldBypassProxyWithCidr: () => shouldBypassProxyWithCidr,

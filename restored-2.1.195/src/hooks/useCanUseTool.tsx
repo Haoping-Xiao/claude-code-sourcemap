@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.3379  score=0.6838  fileCov=0.4005
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SEc = E(() => {
-  dn();
-  sA();
-  At();
-  vn();
-  J_t();
-  sbt();
-  L6t();
-});
 function EEc(e, t) {
   return W1.includes(e)
     ? De({

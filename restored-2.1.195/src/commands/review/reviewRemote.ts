@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2031  score=0.2551  fileCov=0.4991
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var F2o = E(() => {
-  sr();
-});
 var i9l = {};
 _t(i9l, {
   runUltrareviewHeadless: () => runUltrareviewHeadless,

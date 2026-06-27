@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3041  score=0.3589  fileCov=0.6657
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VBo = E(() => {
-  si();
-  Ye();
-  WI();
-  ((D2l = R(lt(), 1)), (arr = R(se(), 1)));
-});
+// [unwrapped __esm module VBo] deps: si, Ye, WI
+((D2l = R(lt(), 1)), (arr = R(se(), 1)));
 function crr(e) {
   return [
     ["Commands", e.commands.map((n) => n.name)],

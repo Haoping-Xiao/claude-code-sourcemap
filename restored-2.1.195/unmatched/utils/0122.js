@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0123  score=1  fileCov=0.0123
 // note: nearest: src/bridge/bridgeMessaging.ts (0.0123); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Von = E(() => {
-  HO();
-  Gns = require("crypto");
-});
+// [unwrapped __esm module Von] deps: HO
+Gns = require("crypto");
 function a0() {
   return Fyr;
 }

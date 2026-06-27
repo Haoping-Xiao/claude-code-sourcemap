@@ -4,29 +4,8 @@
 // class=new  jaccard=0.0019  score=0.6549  fileCov=0.0019
 // note: nearest: src/screens/REPL.tsx (0.0019); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ger = E(() => {
-  ft();
-  ag();
-  kt();
-  fb();
-  BI();
-  S_();
-  $S();
-  h6();
-  je();
-  sp();
-  vn();
-  KI();
-  _$();
-  y_();
-  _Le();
-  _a();
-  mVe();
-  bH();
-  aR();
-  rKe();
-  QDl = require("crypto");
-});
+// [unwrapped __esm module Ger] deps: ft, ag, kt, fb, BI, S_, $S, h6, je, sp, vn, KI, _$, y_, _Le, _a, mVe, bH, aR, rKe
+QDl = require("crypto");
 var tPl = {};
 _t(tPl, {
   call: () => call

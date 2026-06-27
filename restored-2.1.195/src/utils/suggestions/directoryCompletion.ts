@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2715  score=0.5782  fileCov=0.3385
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ps = E(() => {
-  Yj();
-  O0e = R(rt(), 1);
-});
+// [unwrapped __esm module ps] deps: Yj
+O0e = R(rt(), 1);
 function N6i(e, t) {
   if (!e)
     return {

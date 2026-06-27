@@ -4,10 +4,6 @@
 // class=new  jaccard=0.012  score=0.0983  fileCov=0.0135
 // note: nearest: src/components/Settings/Config.tsx (0.012); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Djo = E(() => {
-  ft();
-  Cp();
-});
 var nzl = {};
 _t(nzl, {
   relaunchInto: () => relaunchInto,

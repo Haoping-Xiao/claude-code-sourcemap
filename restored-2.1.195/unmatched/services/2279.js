@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Y3e = E(() => {
-  ft();
-  yUi = new Set(), kYr = new Set();
-});
+// [unwrapped __esm module Y3e] deps: ft
+yUi = new Set(), kYr = new Set();
 function DYr(e) {
   return e >= 48 && e <= 126;
 }

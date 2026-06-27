@@ -4,29 +4,26 @@
 // class=new  jaccard=0.0079  score=0.1153  fileCov=0.0084
 // note: nearest: src/cli/print.ts (0.0079); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zSl = E(() => {
-  c_();
-  Cv();
-  Hbt = class Hbt extends Error {
-    method;
-    status;
-    body;
-    telemetryMessage;
-    constructor(e, t, n) {
-      super(`Design API ${e} failed: HTTP ${t} ${Dhf(n)}`);
-      this.method = e;
-      this.status = t;
-      this.body = n;
-      this.name = "DesignRpcError", this.telemetryMessage = `Design API ${e} failed: HTTP ${t}`;
-    }
-  };
-  VSl = class VSl extends Hbt {
-    constructor(e, t, n) {
-      super(e, t, n);
-      this.name = "DesignAuthError";
-    }
-  };
-});
+// [unwrapped __esm module zSl] deps: c_, Cv
+Hbt = class Hbt extends Error {
+  method;
+  status;
+  body;
+  telemetryMessage;
+  constructor(e, t, n) {
+    super(`Design API ${e} failed: HTTP ${t} ${Dhf(n)}`);
+    this.method = e;
+    this.status = t;
+    this.body = n;
+    this.name = "DesignRpcError", this.telemetryMessage = `Design API ${e} failed: HTTP ${t}`;
+  }
+};
+VSl = class VSl extends Hbt {
+  constructor(e, t, n) {
+    super(e, t, n);
+    this.name = "DesignAuthError";
+  }
+};
 function Tbt() {
   try {
     return wl().read()?.designOauth ?? null;

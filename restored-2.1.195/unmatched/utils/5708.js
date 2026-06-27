@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0048  score=0.406  fileCov=0.0049
 // note: nearest: src/screens/REPL.tsx (0.0048); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qRc = E(() => {
-  ft();
-  Ed();
-  er();
-  vn();
-  GRc();
-  Sfr = R(rt(), 1);
-});
+// [unwrapped __esm module qRc] deps: ft, Ed, er, vn, GRc
+Sfr = R(rt(), 1);
 function VRc() {
   let {
       addNotification: e

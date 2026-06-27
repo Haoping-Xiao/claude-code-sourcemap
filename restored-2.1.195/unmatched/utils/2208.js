@@ -4,27 +4,14 @@
 // class=new  jaccard=0.0206  score=0.4792  fileCov=0.021
 // note: nearest: src/services/analytics/metadata.ts (0.0206); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Uh = E(() => {
-  Qi();
-  ft();
-  id();
-  Un();
-  er();
-  wr();
-  fn();
-  sa();
-  Hu();
-  Tkn();
-  dr();
-  Ost();
-  WOi = require("os"), bU = require("path");
-  mm = Cn(() => {
-    let e = VOi() ?? EOd();
-    if (e) return e;
-    let t = bU.join(ace(), "projects");
-    return (bU.join(t, LE(AOd()), bOd) + bU.sep).normalize("NFC");
-  }, () => `${rc()}|${yke()}`);
-});
+// [unwrapped __esm module Uh] deps: Qi, ft, id, Un, er, wr, fn, sa, Hu, Tkn, dr, Ost
+WOi = require("os"), bU = require("path");
+mm = Cn(() => {
+  let e = VOi() ?? EOd();
+  if (e) return e;
+  let t = bU.join(ace(), "projects");
+  return (bU.join(t, LE(AOd()), bOd) + bU.sep).normalize("NFC");
+}, () => `${rc()}|${yke()}`);
 function xkn(e) {
   let t = JSON.stringify([e.entrypoint ?? null, e.model, e.ccVersion, e.organizationUuid]),
     n = zOi.createHash("sha256").update(t).digest("hex");

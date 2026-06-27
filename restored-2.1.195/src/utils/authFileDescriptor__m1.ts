@@ -4,19 +4,12 @@
 // class=modified (alt of src/utils/authFileDescriptor.ts)  jaccard=0.058  score=0.2039  fileCov=0.0749
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QSn = E(() => {
-  ft();
-  je();
-  fn();
-  At();
-  oc();
-  ys();
-  ((YSn = require("fs")),
-    (N7s = require("fs/promises")),
-    (Rld = `${XSn}/.oauth_token`),
-    (Lld = `${XSn}/.api_key`),
-    (JSn = `${XSn}/.session_ingress_token`));
-});
+// [unwrapped __esm module QSn] deps: ft, je, fn, At, oc, ys
+((YSn = require("fs")),
+  (N7s = require("fs/promises")),
+  (Rld = `${XSn}/.oauth_token`),
+  (Lld = `${XSn}/.api_key`),
+  (JSn = `${XSn}/.session_ingress_token`));
 function BY() {
   let e = process.env.CLAUDE_SECURESTORAGE_CONFIG_DIR;
   if (e !== void 0) return (e || F7s.join(ZSn.homedir(), ".claude")).normalize("NFC");

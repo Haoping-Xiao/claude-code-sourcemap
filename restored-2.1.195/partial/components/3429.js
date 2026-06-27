@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.0843  score=0.4879  fileCov=0.0925
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fy = E(() => {
-  Ye();
-  APn();
-  Vl();
-  D1a = R(lt(), 1), $ho = R(se(), 1);
-});
+// [unwrapped __esm module Fy] deps: Ye, APn, Vl
+D1a = R(lt(), 1), $ho = R(se(), 1);
 function vb(e) {
   let t = P1a.c(2),
     {

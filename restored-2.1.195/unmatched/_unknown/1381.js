@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0114  score=1  fileCov=0.0114
 // note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0114); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uFr = E(() => {
-  Eti = R(eT(), 1), APt = R(LB(), 1);
-});
+// [unwrapped __esm module uFr]
+Eti = R(eT(), 1), APt = R(LB(), 1);
 var vti = e => Object.assign(e, {
     useDualstackEndpoint: e.useDualstackEndpoint ?? false,
     useFipsEndpoint: e.useFipsEndpoint ?? false,

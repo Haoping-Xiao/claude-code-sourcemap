@@ -4,30 +4,29 @@
 // class=modified  jaccard=0.3692  score=0.4068  fileCov=0.8
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ULo = E(() => {
-  ((NLo = ["-verbose", "-debug"]),
-    (BLo = [
-      "-erroraction",
-      "-warningaction",
-      "-informationaction",
-      "-progressaction",
-      "-errorvariable",
-      "-warningvariable",
-      "-informationvariable",
-      "-outvariable",
-      "-outbuffer",
-      "-pipelinevariable",
-      "-ea",
-      "-wa",
-      "-infa",
-      "-proga",
-    ]),
-    (WHl = new Set([...NLo, ...BLo])),
-    (qHl = ["-erroraction", "-warningaction", "-informationaction", "-progressaction"]),
-    (VHl = ["-ea", "-wa", "-infa", "-proga"]));
-  ((V2b = new Set([...qHl, ...VHl])),
-    (KHl = new Set(["silentlycontinue", "0", "stop", "1", "continue", "2", "ignore", "4"])));
-});
+// [unwrapped __esm module ULo]
+((NLo = ["-verbose", "-debug"]),
+  (BLo = [
+    "-erroraction",
+    "-warningaction",
+    "-informationaction",
+    "-progressaction",
+    "-errorvariable",
+    "-warningvariable",
+    "-informationvariable",
+    "-outvariable",
+    "-outbuffer",
+    "-pipelinevariable",
+    "-ea",
+    "-wa",
+    "-infa",
+    "-proga",
+  ]),
+  (WHl = new Set([...NLo, ...BLo])),
+  (qHl = ["-erroraction", "-warningaction", "-informationaction", "-progressaction"]),
+  (VHl = ["-ea", "-wa", "-infa", "-proga"]));
+((V2b = new Set([...qHl, ...VHl])),
+  (KHl = new Set(["silentlycontinue", "0", "stop", "1", "continue", "2", "ignore", "4"])));
 function iJn(e) {
   let t = e;
   for (;;) {

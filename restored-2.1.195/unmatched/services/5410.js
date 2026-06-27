@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0058  score=0.301  fileCov=0.0059
 // note: nearest: src/screens/REPL.tsx (0.0058); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var egc = E(() => {
-  ft();
-  uo();
-  sA();
-  _a();
-  wZ = R(rt(), 1);
-});
+// [unwrapped __esm module egc] deps: ft, uo, sA, _a
+wZ = R(rt(), 1);
 function oen(e, t, n) {
   if (e === "now") return e;
   return t && qcm.has(t) || n && Kcm.has(n) ? "later" : e;

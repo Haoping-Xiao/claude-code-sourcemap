@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.1265  score=0.3368  fileCov=0.1684
 // note: low-confidence suggestion: src/utils/plugins/pluginPolicy.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HN = E(() => {
-  uo();
-  Ao();
-  vM();
-  fzn();
-  w4();
-  sCo = R(rt(), 1);
-});
+// [unwrapped __esm module HN] deps: uo, Ao, vM, fzn, w4
+sCo = R(rt(), 1);
 function gzn() {
   Cbr(structuredClone(yn("policySettings")));
 }

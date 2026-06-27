@@ -4,14 +4,11 @@
 // class=modified (alt of src/components/CustomSelect/select.tsx)  jaccard=0.1068  score=0.2243  fileCov=0.1693
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tC = E(() => {
-  HI();
-  uo();
-  ((V6i = R(lt(), 1)),
-    (tlt = R(rt(), 1)),
-    (uzd = new Set(["autocomplete"])),
-    (dzd = new Set(["history-search"])));
-});
+// [unwrapped __esm module tC] deps: HI, uo
+((V6i = R(lt(), 1)),
+  (tlt = R(rt(), 1)),
+  (uzd = new Set(["autocomplete"])),
+  (dzd = new Set(["history-search"])));
 function CZr() {
   let e = MUt.c(3),
     [t, n] = WU.useState(""),

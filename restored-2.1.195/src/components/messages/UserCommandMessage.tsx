@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3787  score=0.5254  fileCov=0.5755
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xil = E(() => {
-  qzn();
-  co();
-  OI();
-  ((wil = R(lt(), 1)), (Iil = R(se(), 1)));
-});
+// [unwrapped __esm module xil] deps: qzn, co, OI
+((wil = R(lt(), 1)), (Iil = R(se(), 1)));
 function Ril(e) {
   let t = kil.c(19),
     { addMargin: n, param: r } = e,

@@ -4,26 +4,6 @@
 // class=partial  jaccard=0.0608  score=1  fileCov=0.0608
 // note: low-confidence suggestion: node_modules/@smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fLc = E(() => {
-  ft();
-  yfe();
-  Y3e();
-  Ye();
-  xHt();
-  rSe();
-  dn();
-  Un();
-  kt();
-  zqe();
-  z1();
-  uo();
-  i$();
-  Ld();
-  je();
-  uf();
-  bm();
-  co();
-  aKn();
-  uLc = require("fs/promises"), dLc = require("path"), zP = R(rt(), 1);
-});
+// [unwrapped __esm module fLc] deps: ft, yfe, Y3e, Ye, xHt, rSe, dn, Un, kt, zqe, z1, uo, i$, Ld, je, uf, bm, co, aKn
+uLc = require("fs/promises"), dLc = require("path"), zP = R(rt(), 1);
 var mLc;

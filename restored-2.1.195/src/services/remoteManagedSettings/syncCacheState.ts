@@ -4,14 +4,11 @@
 // class=modified  jaccard=0.1047  score=1  fileCov=0.1047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kvs = E(() => {
-  Evs();
-  IRr();
-  ((uOu = kfn(function (e, t) {
-    return e == null ? {} : Svs(e, t);
-  })),
-    (Rfn = uOu));
-});
+// [unwrapped __esm module kvs] deps: Evs, IRr
+((uOu = kfn(function (e, t) {
+  return e == null ? {} : Svs(e, t);
+})),
+  (Rfn = uOu));
 function wet(e) {
   (($Rt = e), n_());
 }

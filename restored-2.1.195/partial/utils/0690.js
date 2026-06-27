@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.2012  score=1  fileCov=0.2012
 // note: low-confidence suggestion: src/utils/git/gitConfigParser.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mm = E(() => {
-  ys();
-  Jt();
-  ATs = require("path");
-});
+// [unwrapped __esm module Mm] deps: ys, Jt
+ATs = require("path");
 async function gRt(e, t, n, r) {
   try {
     let o = await HTs.readFile(TTs.join(e, "config"), "utf-8");

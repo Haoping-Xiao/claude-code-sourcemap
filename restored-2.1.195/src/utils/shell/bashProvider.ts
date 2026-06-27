@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.3153  score=0.7093  fileCov=0.3621
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eMa = E(() => {
-  tRp = /(\d?&?>+[ \t]*)[Nn][Uu][Ll](?=\s|$|[|&;)\n])/g;
-});
+// [unwrapped __esm module eMa]
+tRp = /(\d?&?>+[ \t]*)[Nn][Uu][Ll](?=\s|$|[|&;)\n])/g;
 function nRp(e) {
   if (process.env.CLAUDE_CODE_SHELL_PREFIX)
     return "{ shopt -u extglob || setopt NO_EXTENDED_GLOB NO_BARE_GLOB_QUAL; } >/dev/null 2>&1 || true";

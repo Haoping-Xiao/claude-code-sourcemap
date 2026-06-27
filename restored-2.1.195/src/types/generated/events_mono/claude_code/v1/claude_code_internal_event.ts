@@ -4,36 +4,35 @@
 // class=modified  jaccard=0.7472  score=0.9138  fileCov=0.8038
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var izr = E(() => {
-  __e = {
-    fromJSON(e) {
-      return {
-        account_id: szr(e.account_id) ? globalThis.Number(e.account_id) : 0,
-        organization_uuid: szr(e.organization_uuid) ? globalThis.String(e.organization_uuid) : "",
-        account_uuid: szr(e.account_uuid) ? globalThis.String(e.account_uuid) : "",
-      };
-    },
-    toJSON(e) {
-      let t = {};
-      if (e.account_id !== void 0) t.account_id = Math.round(e.account_id);
-      if (e.organization_uuid !== void 0) t.organization_uuid = e.organization_uuid;
-      if (e.account_uuid !== void 0) t.account_uuid = e.account_uuid;
-      return t;
-    },
-    create(e) {
-      return __e.fromPartial(e ?? {});
-    },
-    fromPartial(e) {
-      let t = c$d();
-      return (
-        (t.account_id = e.account_id ?? 0),
-        (t.organization_uuid = e.organization_uuid ?? ""),
-        (t.account_uuid = e.account_uuid ?? ""),
-        t
-      );
-    },
-  };
-});
+// [unwrapped __esm module izr]
+__e = {
+  fromJSON(e) {
+    return {
+      account_id: szr(e.account_id) ? globalThis.Number(e.account_id) : 0,
+      organization_uuid: szr(e.organization_uuid) ? globalThis.String(e.organization_uuid) : "",
+      account_uuid: szr(e.account_uuid) ? globalThis.String(e.account_uuid) : "",
+    };
+  },
+  toJSON(e) {
+    let t = {};
+    if (e.account_id !== void 0) t.account_id = Math.round(e.account_id);
+    if (e.organization_uuid !== void 0) t.organization_uuid = e.organization_uuid;
+    if (e.account_uuid !== void 0) t.account_uuid = e.account_uuid;
+    return t;
+  },
+  create(e) {
+    return __e.fromPartial(e ?? {});
+  },
+  fromPartial(e) {
+    let t = c$d();
+    return (
+      (t.account_id = e.account_id ?? 0),
+      (t.organization_uuid = e.organization_uuid ?? ""),
+      (t.account_uuid = e.account_uuid ?? ""),
+      t
+    );
+  },
+};
 function u$d() {
   return {
     actor_id: "",

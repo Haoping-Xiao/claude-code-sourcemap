@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.5074  score=0.8675  fileCov=0.55
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var q9t = E(() => {
-  tre();
-  B1();
-  PF = require("path");
-  Ptl = kef();
-});
+// [unwrapped __esm module q9t] deps: tre, B1
+PF = require("path");
+Ptl = kef();
 function Def(e) {
   let t = /[*?[{]/,
     n = e.match(t);

@@ -4,19 +4,17 @@
 // class=new  jaccard=0.0057  score=0.1406  fileCov=0.006
 // note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YPl = E(() => {
-  wr();
-  q0f = {
-    type: "local",
-    name: "compact",
-    description: "Free up context by summarizing the conversation so far",
-    isEnabled: () => !Oe.DISABLE_COMPACT,
-    supportsNonInteractive: true,
-    argumentHint: "<optional custom summarization instructions>",
-    thinClientDispatch: "post-text",
-    load: () => Promise.resolve().then(() => (KPl(), zPl))
-  }, Qer = q0f;
-});
+// [unwrapped __esm module YPl] deps: wr
+q0f = {
+  type: "local",
+  name: "compact",
+  description: "Free up context by summarizing the conversation so far",
+  isEnabled: () => !Oe.DISABLE_COMPACT,
+  supportsNonInteractive: true,
+  argumentHint: "<optional custom summarization instructions>",
+  thinClientDispatch: "post-text",
+  load: () => Promise.resolve().then(() => (KPl(), zPl))
+}, Qer = q0f;
 var XPl = {};
 _t(XPl, {
   call: () => call,

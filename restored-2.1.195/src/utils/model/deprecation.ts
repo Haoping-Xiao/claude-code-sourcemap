@@ -4,24 +4,16 @@
 // class=modified  jaccard=0.1428  score=0.2606  fileCov=0.24
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pir = E(() => {
-  dn();
-  je();
-  vn();
-  co();
-  Cv();
-  MJl();
-  Y4o();
-  $Jt = class $Jt extends Error {
-    subtype;
-    constructor(e, t) {
-      super(
-        `[RemoteSessionManager] control_request '${e}' got no response after ${t / 1000}s \u2014 the worker may still apply it`,
-      );
-      this.subtype = e;
-    }
-  };
-});
+// [unwrapped __esm module pir] deps: dn, je, vn, co, Cv, MJl, Y4o
+$Jt = class $Jt extends Error {
+  subtype;
+  constructor(e, t) {
+    super(
+      `[RemoteSessionManager] control_request '${e}' got no response after ${t / 1000}s \u2014 the worker may still apply it`,
+    );
+    this.subtype = e;
+  }
+};
 function fir(e) {
   let t = mo(ya(e)),
     n = fr(),

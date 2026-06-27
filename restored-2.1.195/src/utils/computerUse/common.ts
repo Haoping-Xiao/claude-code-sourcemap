@@ -4,21 +4,19 @@
 // class=modified  jaccard=0.4923  score=0.7564  fileCov=0.585
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var S_e = E(() => {
-  wr();
-  $$d = {
-    "iTerm.app": "com.googlecode.iterm2",
-    Apple_Terminal: "com.apple.Terminal",
-    ghostty: "com.mitchellh.ghostty",
-    kitty: "net.kovidgoyal.kitty",
-    WarpTerminal: "dev.warp.Warp-Stable",
-    vscode: "com.microsoft.VSCode",
-  };
-  ckn = {
-    screenshotFiltering: "native",
-    platform: "darwin",
-  };
-});
+// [unwrapped __esm module S_e] deps: wr
+$$d = {
+  "iTerm.app": "com.googlecode.iterm2",
+  Apple_Terminal: "com.apple.Terminal",
+  ghostty: "com.mitchellh.ghostty",
+  kitty: "net.kovidgoyal.kitty",
+  WarpTerminal: "dev.warp.Warp-Stable",
+  vscode: "com.microsoft.VSCode",
+};
+ckn = {
+  screenshotFiltering: "native",
+  platform: "darwin",
+};
 function ukn(e) {
   let t = O$d;
   if (!t) return false;

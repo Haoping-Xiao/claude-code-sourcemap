@@ -4,9 +4,8 @@
 // class=modified (alt of src/utils/crypto.ts)  jaccard=0.2752  score=0.2752  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Won = E(() => {
-  Age = require("crypto");
-});
+// [unwrapped __esm module Won]
+Age = require("crypto");
 function Fb(e) {
   return e;
 }

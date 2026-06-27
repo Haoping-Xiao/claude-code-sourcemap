@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3075  score=0.5006  fileCov=0.4435
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xdt = E(() => {
-  ft();
-  fd();
-  je();
-  fn();
-  At();
-  Jt();
-  Mp();
-  ((opo = []), (tN = []), (SL = new Map()), (yFn = new Map()), (ipo = new Map()));
-});
+// [unwrapped __esm module Xdt] deps: ft, fd, je, fn, At, Jt, Mp
+((opo = []), (tN = []), (SL = new Map()), (yFn = new Map()), (ipo = new Map()));
 function lpo() {
   let e =
     process.env.CLAUDE_CODE_ENHANCED_TELEMETRY_BETA ?? process.env.ENABLE_ENHANCED_TELEMETRY_BETA;

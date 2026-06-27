@@ -4,34 +4,31 @@
 // class=modified  jaccard=0.164  score=0.1945  fileCov=0.511
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KJl = E(() => {
-  Isr();
-  Ao();
-  ((zJl = {
-    type: "local",
+// [unwrapped __esm module KJl] deps: Isr, Ao
+((zJl = {
+  type: "local",
+  name: "model",
+  supportsNonInteractive: true,
+  description: "Set the AI model for Claude Code",
+  argumentHint: "<model>",
+  load: () => Promise.resolve().then(() => (LJl(), RJl)),
+}),
+  (t3o = {
+    type: "local-jsx",
     name: "model",
-    supportsNonInteractive: true,
-    description: "Set the AI model for Claude Code",
-    argumentHint: "<model>",
-    load: () => Promise.resolve().then(() => (LJl(), RJl)),
-  }),
-    (t3o = {
-      type: "local-jsx",
-      name: "model",
-      get description() {
-        return `Set the AI model for Claude Code (currently ${wp(As())})`;
-      },
-      argumentHint: "[model]",
-      get immediate() {
-        return GAt();
-      },
-      requires: {
-        ink: true,
-      },
-      thinClientDispatch: "control-request",
-      load: () => Promise.resolve().then(() => (VJl(), qJl)),
-    }));
-});
+    get description() {
+      return `Set the AI model for Claude Code (currently ${wp(As())})`;
+    },
+    argumentHint: "[model]",
+    get immediate() {
+      return GAt();
+    },
+    requires: {
+      ink: true,
+    },
+    thinClientDispatch: "control-request",
+    load: () => Promise.resolve().then(() => (VJl(), qJl)),
+  }));
 async function YJl() {
   let [e, t] = await Promise.allSettled([Ure(), xOa()]),
     n = e.status === "rejected" ? be(e.reason) : null,

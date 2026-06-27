@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0026  score=0.2442  fileCov=0.0026
 // note: nearest: src/cli/print.ts (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dqe = E(() => {
-  E3t();
-  lIa = `
+// [unwrapped __esm module dqe] deps: E3t
+lIa = `
 List the direct children of a directory resource on an MCP server (\`resources/directory/read\`).
 
 Parameters:
@@ -17,7 +16,6 @@ The listing is not recursive. Each entry carries its own \`uri\`; subdirectories
 
 Only usable against a server that has declared support for directory listing; other servers return an error.
 `;
-});
 function cIa(e) {
   if (!e.uri || !e.server) return null;
   return `List directory resource "${e.uri}" from server "${e.server}"`;

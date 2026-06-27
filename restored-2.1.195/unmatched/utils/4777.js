@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0116  score=0.6367  fileCov=0.0116
 // note: nearest: src/native-ts/yoga-layout/index.ts (0.0116); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var PEt = E(() => {
-  DBo();
-  Lo();
-  je();
-  ik();
-  sa();
-  Qnr = require("fs/promises"), PBo = R(kso(), 1);
-});
+// [unwrapped __esm module PEt] deps: DBo, Lo, je, ik, sa
+Qnr = require("fs/promises"), PBo = R(kso(), 1);
 function qk(e) {
   let t = f2l.c(9),
     {

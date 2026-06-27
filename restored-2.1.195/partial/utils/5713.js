@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.153  score=0.3884  fileCov=0.2015
 // note: low-confidence suggestion: src/hooks/notifs/useStartupNotification.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oLc = E(() => {
-  ft();
-  uo();
-  vn();
-  tLc();
-  gz();
-  nLc = R(lt(), 1), Tfr = R(rt(), 1);
-});
+// [unwrapped __esm module oLc] deps: ft, uo, vn, tLc, gz
+nLc = R(lt(), 1), Tfr = R(rt(), 1);
 function sLc() {
   let e = Ho(),
     t = vfr.useRef(false);

@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.391  score=1  fileCov=0.391
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var w5i = E(() => {
-  SGe();
-  Tne();
-  ((T5i = R(lt(), 1)), (h0e = R(rt(), 1)), (v5i = R(se(), 1)));
-  mat = NWd;
-});
+// [unwrapped __esm module w5i] deps: SGe, Tne
+((T5i = R(lt(), 1)), (h0e = R(rt(), 1)), (v5i = R(se(), 1)));
+mat = NWd;
 function Sd() {
   return C5i.useContext(yRn);
 }

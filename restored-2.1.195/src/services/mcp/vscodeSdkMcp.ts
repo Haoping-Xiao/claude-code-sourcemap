@@ -4,12 +4,11 @@
 // class=modified  jaccard=0.3211  score=0.4776  fileCov=0.495
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var w5e = E(() => {
-  ((lup = new RegExp("\x00ESCAPED_STAR\x00", "g")),
-    (cup = new RegExp("\x00ESCAPED_BACKSLASH\x00", "g")),
-    (uup = /\/(?:\*\*\/)+/g),
-    (dup = new RegExp("\x00GLOBSTAR\x00", "g")));
-});
+// [unwrapped __esm module w5e]
+((lup = new RegExp("\x00ESCAPED_STAR\x00", "g")),
+  (cup = new RegExp("\x00ESCAPED_BACKSLASH\x00", "g")),
+  (uup = /\/(?:\*\*\/)+/g),
+  (dup = new RegExp("\x00GLOBSTAR\x00", "g")));
 var e4t = 50000,
   $ao = 500000,
   t4t = 4,

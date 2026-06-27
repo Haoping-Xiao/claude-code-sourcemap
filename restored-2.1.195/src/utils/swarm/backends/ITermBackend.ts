@@ -4,17 +4,9 @@
 // class=modified  jaccard=0.5669  score=0.8922  fileCov=0.6086
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var T0o = E(() => {
-  dn();
-  je();
-  Bi();
-  hN();
-  qJ();
-  cAe();
-  d9t();
-  hhl = Promise.resolve();
-  v0o(H0o);
-});
+// [unwrapped __esm module T0o] deps: dn, je, Bi, hN, qJ, cAe, d9t
+hhl = Promise.resolve();
+v0o(H0o);
 var Ehl = {};
 _t(Ehl, {
   ITermBackend: () => ITermBackend,

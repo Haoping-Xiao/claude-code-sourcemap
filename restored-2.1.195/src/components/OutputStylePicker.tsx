@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.2421  score=0.3328  fileCov=0.4707
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GMl = E(() => {
-  Ye();
-  mE();
-  vi();
-  ((FMl = R(lt(), 1)), (cEt = R(se(), 1)));
-});
+// [unwrapped __esm module GMl] deps: Ye, mE, vi
+((FMl = R(lt(), 1)), (cEt = R(se(), 1)));
 function WMl(e) {
   return Object.entries(e).map(([t, n]) => ({
     label: n?.name ?? eLf,

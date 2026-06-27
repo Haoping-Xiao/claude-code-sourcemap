@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2961  score=0.4815  fileCov=0.4348
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Bke = E(() => {
-  E1 = new kUi();
-});
+// [unwrapped __esm module Bke]
+E1 = new kUi();
 function DUi() {
   return fy()?.terminal ?? Oe.terminal;
 }

@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0453  score=0.5901  fileCov=0.0468
 // note: nearest: src/ink/Ansi.tsx (0.0453); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fal = E(() => {
-  ii();
-});
 function sKn(e) {
   let t = Gal.c(27),
     {

@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.5668  score=0.7658  fileCov=0.6856
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sTo = E(() => {
-  VDe();
-  Yp();
-  fH();
-  Ye();
-  WVt();
-  Fy();
-  vi();
-  eE();
-  DQa();
-  ((PQa = R(lt(), 1)), (qVt = R(rt(), 1)), (XJ = R(se(), 1)), (zJp = new Set()));
-});
+// [unwrapped __esm module sTo] deps: VDe, Yp, fH, Ye, WVt, Fy, vi, eE, DQa
+((PQa = R(lt(), 1)), (qVt = R(rt(), 1)), (XJ = R(se(), 1)), (zJp = new Set()));
 function XJp(e) {
   let t = iTo.get(e);
   if (!t) ((t = qZe(async (n, r, o) => await JJp(e, n, r, o))), iTo.set(e, t));

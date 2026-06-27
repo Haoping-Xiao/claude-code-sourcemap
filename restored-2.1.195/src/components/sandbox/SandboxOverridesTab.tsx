@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3112  score=0.4115  fileCov=0.5609
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gXl = E(() => {
-  Ye();
-  Is();
-  ((mXl = R(lt(), 1)), (Jy = R(se(), 1)));
-});
+// [unwrapped __esm module gXl] deps: Ye, Is
+((mXl = R(lt(), 1)), (Jy = R(se(), 1)));
 function hXl(e) {
   let t = H4o.c(5),
     { onComplete: n } = e,

@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.2366  score=0.7789  fileCov=0.2537
 // note: low-confidence suggestion: node_modules/lodash-es/_baseUnset.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jun = E(() => {
-  Fun();
-  gIr = R(require("process"));
-});
+// [unwrapped __esm module jun] deps: Fun
+gIr = R(require("process"));
 function Eau(e, t, n, r) {
   if (!Bb(e)) return e;
   t = wK(t, e);

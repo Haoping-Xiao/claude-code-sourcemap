@@ -4,27 +4,9 @@
 // class=new  jaccard=0.0031  score=0.1823  fileCov=0.0031
 // note: nearest: src/main.tsx (0.0031); dir inferred from dep-graph -> tools; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZWe = E(() => {
-  fh();
-  G1();
-  wX();
-  lf();
-  Rct();
-  lC();
-  TX();
-  EI();
-  _m();
-  u_();
-  nC();
-  LX();
-  i$();
-  jv();
-  WW();
-  tSe();
-  RX();
-  jRe = Jop("external"), aso = new Set([...jRe]);
-  ejt = Qop("external"), Doa = new Set([cC, kX, yL, ZD, Ly, DI, m4, X2t]), lso = new Set([ss, QD, Ly, Ip, uC]);
-});
+// [unwrapped __esm module ZWe] deps: fh, G1, wX, lf, Rct, lC, TX, EI, _m, u_, nC, LX, i$, jv, WW, tSe, RX
+jRe = Jop("external"), aso = new Set([...jRe]);
+ejt = Qop("external"), Doa = new Set([cC, kX, yL, ZD, Ly, DI, m4, X2t]), lso = new Set([ss, QD, Ly, Ip, uC]);
 var KOn = {};
 _t(KOn, {
   isPublishToolEnabled: () => isPublishToolEnabled,

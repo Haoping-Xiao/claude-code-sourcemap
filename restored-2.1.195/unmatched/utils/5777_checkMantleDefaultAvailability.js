@@ -4,32 +4,21 @@
 // class=new  jaccard=0.0296  score=0.094  fileCov=0.0415
 // note: nearest: src/utils/managedEnvConstants.ts (0.0296); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var a7o = E(() => {
-  kt();
-  pke();
-  oo();
-  je();
-  fn();
-  dr();
-  QO();
-  Ao();
-  Ls();
-  ACn();
-  Ktn = Object.keys(yc), rmr = {
-    sonnet: {
-      envVarPriority: ["ANTHROPIC_DEFAULT_SONNET_MODEL"],
-      defaultKey: _j
-    },
-    opus: {
-      envVarPriority: ["ANTHROPIC_DEFAULT_OPUS_MODEL"],
-      defaultKey: VY
-    },
-    haiku: {
-      envVarPriority: ["ANTHROPIC_SMALL_FAST_MODEL", "ANTHROPIC_DEFAULT_HAIKU_MODEL"],
-      defaultKey: zY
-    }
-  };
-});
+// [unwrapped __esm module a7o] deps: kt, pke, oo, je, fn, dr, QO, Ao, Ls, ACn
+Ktn = Object.keys(yc), rmr = {
+  sonnet: {
+    envVarPriority: ["ANTHROPIC_DEFAULT_SONNET_MODEL"],
+    defaultKey: _j
+  },
+  opus: {
+    envVarPriority: ["ANTHROPIC_DEFAULT_OPUS_MODEL"],
+    defaultKey: VY
+  },
+  haiku: {
+    envVarPriority: ["ANTHROPIC_SMALL_FAST_MODEL", "ANTHROPIC_DEFAULT_HAIKU_MODEL"],
+    defaultKey: zY
+  }
+};
 var wMc = {};
 _t(wMc, {
   probeMantleModel: () => probeMantleModel,

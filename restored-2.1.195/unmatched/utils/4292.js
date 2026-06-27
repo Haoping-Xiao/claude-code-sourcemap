@@ -4,24 +4,14 @@
 // class=new  jaccard=0.0137  score=0.1562  fileCov=0.0148
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0137); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xgl = E(() => {
-  yC();
-  S_();
-  d8t();
-  At();
-  h7n();
-  hyt();
-  u9();
-  Mh();
-  yyt();
-  vgl = require("dns/promises"), wgl = require("net"), Cgl = R(require("ws"));
-  y7n = class y7n extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "MonitorWsPreconditionError";
-    }
-  };
-});
+// [unwrapped __esm module xgl] deps: yC, S_, d8t, At, h7n, hyt, u9, Mh, yyt
+vgl = require("dns/promises"), wgl = require("net"), Cgl = R(require("ws"));
+y7n = class y7n extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "MonitorWsPreconditionError";
+  }
+};
 function kgl() {
   return "Monitor";
 }

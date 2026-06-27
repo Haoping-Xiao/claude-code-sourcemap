@@ -4,17 +4,6 @@
 // class=modified  jaccard=0.335  score=0.7121  fileCov=0.3875
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wer = E(() => {
-  ft();
-  kkn();
-  F8();
-  fn();
-  N$o();
-  vAe();
-  N8t();
-  B$o();
-  bLl();
-});
 var GSt = {};
 _t(GSt, {
   toAgentInfos: () => toAgentInfos,

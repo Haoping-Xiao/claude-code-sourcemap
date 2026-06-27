@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2707  score=0.5154  fileCov=0.3631
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gq = E(() => {
-  xF();
-  uo();
-  AHl = R(rt(), 1);
-});
+// [unwrapped __esm module gq] deps: xF, uo
+AHl = R(rt(), 1);
 function T$e(e) {
   let t = THl.c(10),
     n;

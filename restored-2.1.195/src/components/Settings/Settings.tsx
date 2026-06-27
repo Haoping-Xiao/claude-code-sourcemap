@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.1065  score=0.4612  fileCov=0.1216
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var e8l = E(() => {
-  ((n5f = {
-    type: "local-jsx",
-    name: "skills",
-    description: "List available skills",
-    immediate: true,
-    load: () => Promise.resolve().then(() => (Q9l(), X9l)),
-  }),
-    (Z9l = n5f));
-});
+// [unwrapped __esm module e8l]
+((n5f = {
+  type: "local-jsx",
+  name: "skills",
+  description: "List available skills",
+  immediate: true,
+  load: () => Promise.resolve().then(() => (Q9l(), X9l)),
+}),
+  (Z9l = n5f));
 var t8l = {};
 _t(t8l, {
   call: () => call,

@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3174  score=0.5235  fileCov=0.4463
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Tpr = E(() => {
-  Ed();
-  uo();
-  Sdr();
-  __();
-  ZAc = R(lt(), 1);
-});
+// [unwrapped __esm module Tpr] deps: Ed, uo, Sdr, __
+ZAc = R(lt(), 1);
 function o_m(e) {
   let { commandWithoutRedirections: t, redirections: n } = vde(e);
   return n.length > 0 ? t : e;

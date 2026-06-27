@@ -3,10 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tyr = E(() => {
-  Ayr();
-  Ats();
-  Hyr();
-  _on = w9c;
-});
+// [unwrapped __esm module Tyr] deps: Ayr, Ats, Hyr
+_on = w9c;
 var C9c, qXe;

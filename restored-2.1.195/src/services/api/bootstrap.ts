@@ -4,31 +4,8 @@
 // class=modified  jaccard=0.2015  score=0.3313  fileCov=0.3398
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hVn = E(() => {
-  ft();
-  SJ();
-  p4n();
-  S4();
-  Ye();
-  dn();
-  Un();
-  vft();
-  H0();
-  _F();
-  EVe();
-  oo();
-  Vw();
-  Ld();
-  er();
-  Yp();
-  vn();
-  Ls();
-  R9();
-  aS();
-  t1t();
-  Ote();
-  eza = R(se(), 1);
-});
+// [unwrapped __esm module hVn] deps: ft, SJ, p4n, S4, Ye, dn, Un, vft, H0, _F, EVe, oo, Vw, Ld, er, Yp, vn, Ls, R9, aS, t1t, Ote
+eza = R(se(), 1);
 var iAo = {};
 _t(iAo, {
   fetchBootstrapData: () => fetchBootstrapData,

@@ -4,32 +4,26 @@
 // class=new  jaccard=0.0187  score=0.2421  fileCov=0.0199
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0187); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var i0n = E(() => {
-  Xr();
-  je();
-  kM();
-  c_();
-  WKr();
-  vNi = ve(() => H.string().regex(/^mem_[A-Za-z0-9]+$/)), qKr = ve(() => H.looseObject({
-    id: vNi(),
-    path: H.string(),
-    content_sha256: H.string(),
-    content_size_bytes: H.number().int().nonnegative().optional()
-  })), oNd = ve(() => H.looseObject({
-    data: H.array(H.looseObject({
-      type: H.string()
-    })),
-    next_page: H.string().nullish()
-  })), sNd = ve(() => qKr().extend({
-    content: H.string()
-  })), ANi = qKr, iNd = ve(() => H.looseObject({
-    error: H.looseObject({
-      type: H.string().optional(),
-      conflicting_path: H.string().optional(),
-      conflicting_memory_id: vNi().optional()
-    }).optional()
-  }));
-});
+// [unwrapped __esm module i0n] deps: Xr, je, kM, c_, WKr
+vNi = ve(() => H.string().regex(/^mem_[A-Za-z0-9]+$/)), qKr = ve(() => H.looseObject({
+  id: vNi(),
+  path: H.string(),
+  content_sha256: H.string(),
+  content_size_bytes: H.number().int().nonnegative().optional()
+})), oNd = ve(() => H.looseObject({
+  data: H.array(H.looseObject({
+    type: H.string()
+  })),
+  next_page: H.string().nullish()
+})), sNd = ve(() => qKr().extend({
+  content: H.string()
+})), ANi = qKr, iNd = ve(() => H.looseObject({
+  error: H.looseObject({
+    type: H.string().optional(),
+    conflicting_path: H.string().optional(),
+    conflicting_memory_id: vNi().optional()
+  }).optional()
+}));
 async function wNi(e = lNd) {
   let t;
   try {

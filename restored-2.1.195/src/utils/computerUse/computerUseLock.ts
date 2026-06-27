@@ -4,19 +4,16 @@
 // class=modified  jaccard=0.2726  score=0.5631  fileCov=0.3457
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qpo = E(() => {
-  spt();
-  Xr();
-  GFn = Dy({
-    kind: "computer_use_approval",
-    payload: ve(() => H.custom((e) => typeof e === "object" && e !== null)),
-    result: ve(() => H.custom((e) => typeof e === "object" && e !== null)),
-    default: {
-      granted: [],
-      denied: [],
-      flags: pJ,
-    },
-  });
+// [unwrapped __esm module Qpo] deps: spt, Xr
+GFn = Dy({
+  kind: "computer_use_approval",
+  payload: ve(() => H.custom((e) => typeof e === "object" && e !== null)),
+  result: ve(() => H.custom((e) => typeof e === "object" && e !== null)),
+  default: {
+    granted: [],
+    denied: [],
+    flags: pJ,
+  },
 });
 function NIp(e) {
   if (typeof e !== "object" || e === null) return false;

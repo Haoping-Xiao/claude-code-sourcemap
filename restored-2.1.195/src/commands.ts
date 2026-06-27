@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.1703  score=0.4373  fileCov=0.2181
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MWo = E(() => {
-  Jt();
-  U6t();
-  HU();
-});
 var fjo = {};
 _t(fjo, {
   toSlashCommands: () => toSlashCommands,

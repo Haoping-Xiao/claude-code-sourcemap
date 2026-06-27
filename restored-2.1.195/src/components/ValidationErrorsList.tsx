@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2586  score=0.5762  fileCov=0.3194
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hse = E(() => {
-  Ye();
-  ((FNl = R(lt(), 1)), (Snr = R(se(), 1)));
-});
+// [unwrapped __esm module hse] deps: Ye
+((FNl = R(lt(), 1)), (Snr = R(se(), 1)));
 function Enr(e) {
   let t = jNl.c(8),
     { errors: n } = e;

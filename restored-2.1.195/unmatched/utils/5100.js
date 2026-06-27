@@ -4,13 +4,12 @@
 // class=new  jaccard=0.0438  score=0.1079  fileCov=0.0686
 // note: nearest: src/components/HelpV2/HelpV2.tsx (0.0438); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Z7l = E(() => {
-  Q7l = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub"
-  };
-});
+// [unwrapped __esm module Z7l]
+Q7l = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub"
+};
 function J9f() {
   let e = `${{
     ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",

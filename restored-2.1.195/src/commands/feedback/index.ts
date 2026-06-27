@@ -4,36 +4,31 @@
 // class=modified  jaccard=0.0298  score=0.0374  fileCov=0.1274
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TRc = E(() => {
-  Xa();
-  Ye();
-  hse();
-  pfr();
-  ((ARc = R(lt(), 1)),
-    (tK = R(se(), 1)),
-    (gwm = ["y", "n", "d"]),
-    (ERc = {
-      y: "yes",
-      n: "no",
-      d: "dont_ask_again",
-    }),
-    (hwm = [
-      {
-        key: "y",
-        label: "Yes",
-        width: 10,
-      },
-      {
-        key: "n",
-        label: "No",
-        width: 10,
-      },
-      {
-        key: "d",
-        label: "Don't ask again",
-      },
-    ]));
-});
+// [unwrapped __esm module TRc] deps: Xa, Ye, hse, pfr
+((ARc = R(lt(), 1)),
+  (tK = R(se(), 1)),
+  (gwm = ["y", "n", "d"]),
+  (ERc = {
+    y: "yes",
+    n: "no",
+    d: "dont_ask_again",
+  }),
+  (hwm = [
+    {
+      key: "y",
+      label: "Yes",
+      width: 10,
+    },
+    {
+      key: "n",
+      label: "No",
+      width: 10,
+    },
+    {
+      key: "d",
+      label: "Don't ask again",
+    },
+  ]));
 function cvt(e) {
   let t = _Yo.c(33),
     {

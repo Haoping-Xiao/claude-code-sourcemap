@@ -4,11 +4,10 @@
 // class=new  jaccard=0.0541  score=0.4651  fileCov=0.0577
 // note: nearest: node_modules/@smithy/types/dist-cjs/index.js (0.0541); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cxs = E(() => {
-  (function (e) {
-    e.PROFILE = "profile", e.SSO_SESSION = "sso-session", e.SERVICES = "services";
-  })(wxs || (wxs = {}));
-});
+// [unwrapped __esm module Cxs]
+(function (e) {
+  e.PROFILE = "profile", e.SSO_SESSION = "sso-session", e.SERVICES = "services";
+})(wxs || (wxs = {}));
 var Ixs = () => {};
 var xxs = () => {};
 var kxs = () => {};

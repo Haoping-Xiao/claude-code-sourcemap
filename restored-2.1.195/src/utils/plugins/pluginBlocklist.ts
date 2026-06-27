@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.1707  score=0.3527  fileCov=0.2487
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tpc = E(() => {
-  dn();
-  gb();
-  j_e();
-});
 function yam(e, t, n) {
   let r = new Set(t.plugins.map((i) => i.name)),
     o = `@${n}`,

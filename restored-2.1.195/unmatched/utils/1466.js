@@ -3,6 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FAn = E(() => {
-  UAn = Symbol("secureStorage.READ_FAILED");
-});
+// [unwrapped __esm module FAn]
+UAn = Symbol("secureStorage.READ_FAILED");

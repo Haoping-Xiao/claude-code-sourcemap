@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.125  score=1  fileCov=0.125
 // note: low-confidence suggestion: node_modules/@smithy/util-body-length-browser/dist-cjs/index.js; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vEs = E(() => {
-  Gon();
-  Gkr();
-  Wkr();
-  TEs = tPu;
-});
+// [unwrapped __esm module vEs] deps: Gon, Gkr, Wkr
+TEs = tPu;
 function nPu(e, t, n) {
   if (!Bb(n)) return false;
   var r = typeof t;

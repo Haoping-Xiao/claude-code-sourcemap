@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0194  score=0.2297  fileCov=0.0207
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0194); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dQa = E(() => {
-  Jt();
-  GVt = require("fs/promises"), cQa = require("os"), jVt = require("path");
-});
+// [unwrapped __esm module dQa] deps: Jt
+GVt = require("fs/promises"), cQa = require("os"), jVt = require("path");
 function fQa() {
   let e = ZHo.c(10),
     {

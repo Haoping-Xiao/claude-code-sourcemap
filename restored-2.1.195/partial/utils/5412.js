@@ -4,11 +4,6 @@
 // class=partial  jaccard=0.0957  score=0.245  fileCov=0.1356
 // note: low-confidence suggestion: src/bridge/codeSessionApi.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rur = E(() => {
-  Un();
-  bm();
-  xur();
-});
 async function rum() {
   let e = Oe.CLAUDE_CLIENT_PRESENCE_FILE;
   if (!e) return false;

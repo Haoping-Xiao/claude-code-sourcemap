@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $Ir = E(() => {
-  MIr();
-  OBe();
-  pdn = Rlu;
-});
+// [unwrapped __esm module $Ir] deps: MIr, OBe
+pdn = Rlu;
 function Llu(e, t) {
   var n = {};
   return t = Q3(t, 3), pdn(e, function (r, o, s) {

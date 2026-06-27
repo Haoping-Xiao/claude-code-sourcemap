@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 16 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sB = E(() => {
-  YP();
-});
 var PXo = {};
 _t(PXo, {
   JWTInvalid: () => JWTInvalid,

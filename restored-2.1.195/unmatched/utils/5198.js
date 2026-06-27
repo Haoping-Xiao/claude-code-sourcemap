@@ -4,37 +4,25 @@
 // class=new  jaccard=0.0121  score=0.1413  fileCov=0.013
 // note: nearest: src/cli/print.ts (0.0121); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QJt = E(() => {
-  Xr();
-  dn();
-  Pw();
-  vX();
-  N8();
-  fn();
-  YS();
-  Rd();
-  Jt();
-  oje();
-  T3o();
-  qec = require("fs/promises"), Vec = require("path"), gHt = ["dontAsk", "auto", "default", "acceptEdits", "plan", "bypassPermissions"], Y3o = ve(() => H.object({
-    id: H.string().min(1),
-    cron: H.string().refine(e => F1(e) !== null, {
-      message: "invalid 5-field cron expression"
-    }),
-    prompt: H.string().min(1),
-    directory: H.string().min(1),
-    enabled: H.boolean().default(true),
-    permissionMode: H.enum(gHt).default("dontAsk"),
-    model: H.string().optional(),
-    runTimeoutMinutes: H.number().positive().max(zec).default(30),
-    maxQueued: H.number().int().positive().default(1)
-  }).strict()), X3o = ve(() => H.object({
-    tasks: H.array(Y3o()).default([]).refine(e => new Set(e.map(t => t.id)).size === e.length, {
-      message: "task ids must be unique"
-    }),
-    maxConcurrent: H.number().int().positive().default(1)
-  }).strict());
-});
+// [unwrapped __esm module QJt] deps: Xr, dn, Pw, vX, N8, fn, YS, Rd, Jt, oje, T3o
+qec = require("fs/promises"), Vec = require("path"), gHt = ["dontAsk", "auto", "default", "acceptEdits", "plan", "bypassPermissions"], Y3o = ve(() => H.object({
+  id: H.string().min(1),
+  cron: H.string().refine(e => F1(e) !== null, {
+    message: "invalid 5-field cron expression"
+  }),
+  prompt: H.string().min(1),
+  directory: H.string().min(1),
+  enabled: H.boolean().default(true),
+  permissionMode: H.enum(gHt).default("dontAsk"),
+  model: H.string().optional(),
+  runTimeoutMinutes: H.number().positive().max(zec).default(30),
+  maxQueued: H.number().int().positive().default(1)
+}).strict()), X3o = ve(() => H.object({
+  tasks: H.array(Y3o()).default([]).refine(e => new Set(e.map(t => t.id)).size === e.length, {
+    message: "task ids must be unique"
+  }),
+  maxConcurrent: H.number().int().positive().default(1)
+}).strict());
 function xYf(e) {
   return typeof e === "object" && e !== null && "type" in e && (e.type === "token_update" || e.type === "auth_401_result");
 }

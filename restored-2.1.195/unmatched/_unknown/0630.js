@@ -3,8 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HEs = E(() => {
-  QDu = Date.now;
-  AEs = ZDu;
-});
+// [unwrapped __esm module HEs]
+QDu = Date.now;
+AEs = ZDu;
 var ePu, Ipn;

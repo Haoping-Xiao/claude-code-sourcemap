@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0026  score=0.1665  fileCov=0.0026
 // note: nearest: src/components/Settings/Config.tsx (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _3o = E(() => {
-  SC();
-  Ye();
-  oo();
-  er();
-  Vl();
-  X0();
-  HYe = R(rt(), 1), mme = R(se(), 1);
-});
+// [unwrapped __esm module _3o] deps: SC, Ye, oo, er, Vl, X0
+HYe = R(rt(), 1), mme = R(se(), 1);
 function b3o() {
   if (!xC()) return false;
   let e = Dt();

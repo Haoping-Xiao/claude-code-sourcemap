@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0213  score=1  fileCov=0.0213
 // note: nearest: node_modules/zod-to-json-schema/dist/esm/parsers/string.js (0.0213); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var XIa = E(() => {
-  KIa();
-  swp = zIa("toUpperCase"), YIa = swp;
-});
+// [unwrapped __esm module XIa] deps: KIa
+swp = zIa("toUpperCase"), YIa = swp;
 function iwp(e) {
   return YIa(Bie(e).toLowerCase());
 }

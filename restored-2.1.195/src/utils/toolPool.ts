@@ -4,17 +4,15 @@
 // class=modified  jaccard=0.1622  score=0.2906  fileCov=0.2686
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KKl = E(() => {
-  F8();
-  zKl = {
-    type: "local-jsx",
-    name: "fork",
-    description: "Spawn a background agent that inherits the full conversation",
-    argumentHint: "<directive>",
-    isEnabled: () => !Gv(),
-    load: () => Promise.resolve().then(() => (VKl(), qKl)),
-  };
-});
+// [unwrapped __esm module KKl] deps: F8
+zKl = {
+  type: "local-jsx",
+  name: "fork",
+  description: "Spawn a background agent that inherits the full conversation",
+  argumentHint: "<directive>",
+  isEnabled: () => !Gv(),
+  load: () => Promise.resolve().then(() => (VKl(), qKl)),
+};
 var ZKl = {};
 _t(ZKl, {
   mergeAndFilterTools: () => mergeAndFilterTools,

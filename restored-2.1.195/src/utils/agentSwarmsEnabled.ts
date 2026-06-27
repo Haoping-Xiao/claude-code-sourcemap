@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.4488  score=0.6265  fileCov=0.6128
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NDe = E(() => {
-  je();
-  vn();
-  Fh();
-});
 var VMa = {};
 _t(VMa, {
   isAgentSwarmsEnabled: () => isAgentSwarmsEnabled,

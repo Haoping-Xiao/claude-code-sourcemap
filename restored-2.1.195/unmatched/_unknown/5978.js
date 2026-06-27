@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0345  score=0.4489  fileCov=0.036
 // note: nearest: node_modules/node-forge/lib/util.js (0.0345); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sK = E(() => {
-  rXe = new TextEncoder(), oK = new TextDecoder();
-});
+// [unwrapped __esm module sK]
+rXe = new TextEncoder(), oK = new TextDecoder();
 function _Qo(e) {
   if (Uint8Array.prototype.toBase64) return e.toBase64();
   let t = 32768,

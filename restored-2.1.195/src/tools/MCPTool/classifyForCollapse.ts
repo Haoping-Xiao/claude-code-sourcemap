@@ -4,20 +4,6 @@
 // class=modified  jaccard=0.0062  score=0.0646  fileCov=0.0068
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fvc = E(() => {
-  N$o();
-  dr();
-  WL();
-  VQ();
-  zOe();
-  Cir();
-  ag();
-  je();
-  At();
-  es();
-  ys();
-  AA();
-});
 function mvc(e) {
   return i9(ost, e);
 }

@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0075  score=0.2836  fileCov=0.0077
 // note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0075); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lgr = E(() => {
-  sB();
-  njc();
-  $vt();
-  wm();
-  YP();
-  Hnn();
-  Bvt();
-});
 class xnn {
   constructor(e) {
     this._flattened = new X7e(e);

@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.4918  score=0.4918  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ILe = E(() => {
-  iu();
-  Q8();
-  zX();
-  Tc();
-  t0e();
-});
 var Kue = "ListMcpResourcesTool",
   zua = `
 Lists available resources from configured MCP servers.

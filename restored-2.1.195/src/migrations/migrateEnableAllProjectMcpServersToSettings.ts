@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.313  score=0.5477  fileCov=0.422
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var FOc = E(() => {
-  kt();
-  dn();
-  er();
-  je();
-  dr();
-});
 function jOc() {
   let e = GVo();
   if (!e) return;

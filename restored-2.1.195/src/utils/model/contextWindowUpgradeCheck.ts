@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.6139  score=1  fileCov=0.6139
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nsl = E(() => {
-  Ye();
-  ((esl = R(lt(), 1)), (tCo = R(se(), 1)));
-});
+// [unwrapped __esm module nsl] deps: Ye
+((esl = R(lt(), 1)), (tCo = R(se(), 1)));
 function orf() {
   let e = GG();
   if (e === "opus" && ure())

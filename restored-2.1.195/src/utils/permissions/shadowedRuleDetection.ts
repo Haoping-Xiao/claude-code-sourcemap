@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.4596  score=1  fileCov=0.4596
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VNo = E(() => {
-  id();
-  uo();
-  Dgt();
-  gz();
-  S4n();
-  ((qNl = R(lt(), 1)), (Anr = R(rt(), 1)));
-});
+// [unwrapped __esm module VNo] deps: id, uo, Dgt, gz, S4n
+((qNl = R(lt(), 1)), (Anr = R(rt(), 1)));
 function X$f(e) {
   return e === "projectSettings" || e === "policySettings" || e === "command";
 }

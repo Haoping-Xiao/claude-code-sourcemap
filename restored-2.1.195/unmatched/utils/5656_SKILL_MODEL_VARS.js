@@ -4,22 +4,6 @@
 // class=new  jaccard=0.002  score=0.023  fileCov=0.0021
 // note: nearest: src/cli/print.ts (0.002); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Uwc = E(() => {
-  Un();
-  jc();
-  G1();
-  oo();
-  VDe();
-  je();
-  BR();
-  fn();
-  sa();
-  Mx();
-  Ls();
-  Jt();
-  Ide();
-  AA();
-});
 var jwc = `# Message Batches \u2014 C#
 
 ## Message Batches API

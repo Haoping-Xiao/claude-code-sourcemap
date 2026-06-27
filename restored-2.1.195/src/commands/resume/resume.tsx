@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.346  score=0.6295  fileCov=0.4344
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var O2o = E(() => {
-  ft();
-  Is();
-  _a();
-  BVl = require("path");
-});
+// [unwrapped __esm module O2o] deps: ft, Is, _a
+BVl = require("path");
 var GVl = {};
 _t(GVl, {
   filterResumableSessions: () => filterResumableSessions,

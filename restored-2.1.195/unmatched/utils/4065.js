@@ -4,9 +4,6 @@
 // class=new  jaccard=0.046  score=0.3374  fileCov=0.0505
 // note: nearest: src/hooks/useCanUseTool.tsx (0.046); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EAe = E(() => {
-  fp();
-});
 function Frl(e) {
   if (e.behavior === "ask") return "user-rejected";
   let t = e.decisionReason;

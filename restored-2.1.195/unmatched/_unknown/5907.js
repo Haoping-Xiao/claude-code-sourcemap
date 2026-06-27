@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0073  score=0.0665  fileCov=0.0081
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0073); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eJo = E(() => {
-  Zmr();
-  Zmr();
-  F2c();
-});
 async function xDm(e, t, n, r, o = {}) {
   let s, i, a;
   switch (XNe(e, n, "encrypt"), e) {

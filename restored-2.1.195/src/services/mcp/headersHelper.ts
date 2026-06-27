@@ -4,16 +4,10 @@
 // class=modified  jaccard=0.3122  score=0.5365  fileCov=0.4275
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xka = E(() => {
-  AW();
-  Ye();
-  xLe();
-  Rd();
-  Jt();
-  ((ypo = R(se(), 1)),
-    (Kwp = /^[CDG][A-Z0-9]{6,}$/),
-    (Ywp = new Set(["slack_send_message", "slack_post_message"])));
-});
+// [unwrapped __esm module xka] deps: AW, Ye, xLe, Rd, Jt
+((ypo = R(se(), 1)),
+  (Kwp = /^[CDG][A-Z0-9]{6,}$/),
+  (Ywp = new Set(["slack_send_message", "slack_post_message"])));
 function Rka(e) {
   let t = _po;
   return ((_po = e), t);

@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0428  score=1  fileCov=0.0428
 // note: nearest: src/components/PackageManagerAutoUpdater.tsx (0.0428); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var atr = E(() => {
-  je();
-});
 function jQ() {
   let e = Dr()?.autoUpdatesChannel;
   if (e && e !== "latest") return e;

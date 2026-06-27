@@ -4,27 +4,24 @@
 // class=modified  jaccard=0.2403  score=0.3389  fileCov=0.4521
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xoe = E(() => {
-  Xa();
-  Ye();
-  ((_8t = R(lt(), 1)),
-    (Ioe = R(rt(), 1)),
-    (iq = R(se(), 1)),
-    (Jnf = {
-      branch: FO.branch,
-      last: FO.last,
-      pipe: FO.pipe,
-      space: "",
-    }));
-  ((Xwo = Ioe.createContext({
-    variant: "outline",
-    ancestors: [],
-  })),
-    (Jwo = Ioe.createContext(true)));
-  hs = Object.assign(Znf, {
-    Node: erf,
-    Group: trf,
-  });
+// [unwrapped __esm module xoe] deps: Xa, Ye
+((_8t = R(lt(), 1)),
+  (Ioe = R(rt(), 1)),
+  (iq = R(se(), 1)),
+  (Jnf = {
+    branch: FO.branch,
+    last: FO.last,
+    pipe: FO.pipe,
+    space: "",
+  }));
+((Xwo = Ioe.createContext({
+  variant: "outline",
+  ancestors: [],
+})),
+  (Jwo = Ioe.createContext(true)));
+hs = Object.assign(Znf, {
+  Node: erf,
+  Group: trf,
 });
 function Bol(e) {
   let t = Nol.c(32),

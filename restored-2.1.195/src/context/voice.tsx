@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.435  score=0.9427  fileCov=0.4469
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qLn = E(() => {
-  iu();
-  ft();
-  At();
-  Hu();
-  Yf();
-  ((Q5i = require("fs/promises")), (oUt = require("path")));
-});
+// [unwrapped __esm module qLn] deps: iu, ft, At, Hu, Yf
+((Q5i = require("fs/promises")), (oUt = require("path")));
 var eqi = {};
 _t(eqi, {
   useVoiceState: () => useVoiceState,

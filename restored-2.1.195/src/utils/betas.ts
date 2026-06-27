@@ -4,86 +4,68 @@
 // class=modified  jaccard=0.1973  score=0.6494  fileCov=0.2208
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vw = E(() => {
-  Qi();
-  Un();
-  ft();
-  TM();
-  GY();
-  oo();
-  BE();
-  je();
-  fn();
-  mye();
-  k0();
-  Oot();
-  Ao();
-  JOt();
-  Ls();
-  Bot();
-  m1();
-  Rvi = new Set([FY]);
-  RCn = Cn((e) => {
-    if (T9("hipaa")) return false;
-    if (ut(process.env.CLAUDE_CODE_FORCE_MID_CONVERSATION_SYSTEM)) return true;
-    let t = W9(e, "mid_conversation_system");
-    if (t !== void 0) return t;
-    let n = mo(e);
-    if (
-      n.includes("claude-3-") ||
-      n === "claude-opus-4-0" ||
-      n === "claude-opus-4-1" ||
-      n === "claude-opus-4-5" ||
-      n === "claude-opus-4-6" ||
-      n === "claude-opus-4-7" ||
-      n === "claude-sonnet-4-0" ||
-      n === "claude-sonnet-4-5" ||
-      n === "claude-sonnet-4-6" ||
-      n === "claude-haiku-4-5"
-    )
-      return false;
-    if (JB(n, "mid_conv_system") || n === "claude-mythos-5") return true;
-    return ZO(l_(e));
-  });
-  (($9r = Cn((e) => {
-    let t = [],
-      n = mo(e),
-      r = n.includes("haiku"),
-      o = fr(),
-      s = CM();
-    if (!r) t.push(Y2e);
-    if (bo() || (M9r() && !nPt() && iH())) t.push(qIe);
-    if (Sy(e)) t.push(FY);
-    if (!ut(process.env.DISABLE_INTERLEAVED_THINKING) && QOt(e)) t.push(Gnt);
-    if (s && QOt(e) && !Ir() && !xCn()) t.push(kPt);
-    if (cAn && s && QOt(e) && fr() === "firstParty") t.push(cAn);
-    if (s && R9r()) t.push(RPt);
-    let i = ut(process.env.USE_API_CONTEXT_MANAGEMENT) && false,
-      a = n0d(e);
-    if (ZO(l_(e)) && !F4e() && (i || a)) t.push(X2e);
-    let l = at("tengu_tool_pear", false);
-    if (ZO(l_(e)) && !F4e() && j4e(e) && l) t.push(lte);
-    if (o === "vertex" && t0d(n)) t.push(IPt);
-    if (o === "foundry") t.push(IPt);
-    if (s) t.push(qnt);
-    if (RCn(e)) t.push(jY);
-    if (process.env.ANTHROPIC_BETAS)
-      t.push(
-        ...process.env.ANTHROPIC_BETAS.split(",")
-          .map((c) => c.trim())
-          .filter(Boolean)
-          .map(b2r),
-      );
+// [unwrapped __esm module Vw] deps: Qi, Un, ft, TM, GY, oo, BE, je, fn, mye, k0, Oot, Ao, JOt, Ls, Bot, m1
+Rvi = new Set([FY]);
+RCn = Cn((e) => {
+  if (T9("hipaa")) return false;
+  if (ut(process.env.CLAUDE_CODE_FORCE_MID_CONVERSATION_SYSTEM)) return true;
+  let t = W9(e, "mid_conversation_system");
+  if (t !== void 0) return t;
+  let n = mo(e);
+  if (
+    n.includes("claude-3-") ||
+    n === "claude-opus-4-0" ||
+    n === "claude-opus-4-1" ||
+    n === "claude-opus-4-5" ||
+    n === "claude-opus-4-6" ||
+    n === "claude-opus-4-7" ||
+    n === "claude-sonnet-4-0" ||
+    n === "claude-sonnet-4-5" ||
+    n === "claude-sonnet-4-6" ||
+    n === "claude-haiku-4-5"
+  )
+    return false;
+  if (JB(n, "mid_conv_system") || n === "claude-mythos-5") return true;
+  return ZO(l_(e));
+});
+(($9r = Cn((e) => {
+  let t = [],
+    n = mo(e),
+    r = n.includes("haiku"),
+    o = fr(),
+    s = CM();
+  if (!r) t.push(Y2e);
+  if (bo() || (M9r() && !nPt() && iH())) t.push(qIe);
+  if (Sy(e)) t.push(FY);
+  if (!ut(process.env.DISABLE_INTERLEAVED_THINKING) && QOt(e)) t.push(Gnt);
+  if (s && QOt(e) && !Ir() && !xCn()) t.push(kPt);
+  if (cAn && s && QOt(e) && fr() === "firstParty") t.push(cAn);
+  if (s && R9r()) t.push(RPt);
+  let i = ut(process.env.USE_API_CONTEXT_MANAGEMENT) && false,
+    a = n0d(e);
+  if (ZO(l_(e)) && !F4e() && (i || a)) t.push(X2e);
+  let l = at("tengu_tool_pear", false);
+  if (ZO(l_(e)) && !F4e() && j4e(e) && l) t.push(lte);
+  if (o === "vertex" && t0d(n)) t.push(IPt);
+  if (o === "foundry") t.push(IPt);
+  if (s) t.push(qnt);
+  if (RCn(e)) t.push(jY);
+  if (process.env.ANTHROPIC_BETAS)
+    t.push(
+      ...process.env.ANTHROPIC_BETAS.split(",")
+        .map((c) => c.trim())
+        .filter(Boolean)
+        .map(b2r),
+    );
+  return t;
+})),
+  (V9 = Cn((e) => {
+    let t = $9r(e);
+    if (l_(e) === "bedrock") return t.filter((n) => !S2r.has(n));
     return t;
   })),
-    (V9 = Cn((e) => {
-      let t = $9r(e);
-      if (l_(e) === "bedrock") return t.filter((n) => !S2r.has(n));
-      return t;
-    })),
-    (O9r = Cn((e) => $9r(e).filter((n) => S2r.has(n)))));
-  Pvi = new Set([Y2e, Gnt, FY, X2e, lte, IPt, Wnt, xPt, T0, o1]);
-});
+  (O9r = Cn((e) => $9r(e).filter((n) => S2r.has(n)))));
+Pvi = new Set([Y2e, Gnt, FY, X2e, lte, IPt, Wnt, xPt, T0, o1]);
 function OCn(e) {
   let t = e.trim();
   if (!/^https?:\/\//i.test(t)) t = `https://${t}`;

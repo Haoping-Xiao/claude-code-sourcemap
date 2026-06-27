@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4877  score=0.5695  fileCov=0.7724
 // note: deminified; 315 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ih = E(() => {
-  ree();
-});
 function Fie() {
   return {
     sent: new Set(),

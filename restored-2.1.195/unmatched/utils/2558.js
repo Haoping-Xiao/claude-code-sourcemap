@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0068  score=0.1673  fileCov=0.007
 // note: nearest: node_modules/commander/lib/command.js (0.0068); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var N0e = E(() => {
-  kt();
-  Yj();
-  H0e();
-  gPn = R(rt(), 1);
-});
+// [unwrapped __esm module N0e] deps: kt, Yj, H0e
+gPn = R(rt(), 1);
 function Q6d(e) {
   let {
     style: t,

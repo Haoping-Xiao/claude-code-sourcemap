@@ -4,15 +4,14 @@
 // class=new  jaccard=0.01  score=0.4148  fileCov=0.0102
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.01); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NFt = E(() => {
-  fZd = ["FieldValueInvalidError", "FieldListRangeError", "ForeignFieldError"];
-  D1 = class D1 extends Error {
-    constructor(e, t, n = "FieldValueInvalidError") {
-      super(t);
-      this.name = n, this.field = () => e;
-    }
-  };
-});
+// [unwrapped __esm module NFt]
+fZd = ["FieldValueInvalidError", "FieldListRangeError", "ForeignFieldError"];
+D1 = class D1 extends Error {
+  constructor(e, t, n = "FieldValueInvalidError") {
+    super(t);
+    this.name = n, this.field = () => e;
+  }
+};
 function Lbe(e) {
   let t = false,
     n = [];

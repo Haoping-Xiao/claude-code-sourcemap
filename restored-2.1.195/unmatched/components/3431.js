@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0475  score=0.4439  fileCov=0.0505
 // note: nearest: src/ink/styles.ts (0.0475); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var PWt = E(() => {
-  Ye();
-  g0();
-  $1a = R(lt(), 1), QDe = R(se(), 1);
-});
+// [unwrapped __esm module PWt] deps: Ye, g0
+$1a = R(lt(), 1), QDe = R(se(), 1);
 function Lf(e) {
   let t = O1a.c(15),
     {

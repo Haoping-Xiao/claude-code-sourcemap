@@ -4,21 +4,20 @@
 // class=new  jaccard=0.0576  score=0.5496  fileCov=0.0604
 // note: nearest: src/Tool.ts (0.0576); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ii = E(() => {
-  rNi = new WeakMap(), oNi = new WeakSet();
-  E1d = {
-    isEnabled: () => true,
-    isConcurrencySafe: e => false,
-    isReadOnly: e => false,
-    isDestructive: e => false,
-    checkPermissions: (e, t) => Promise.resolve({
-      behavior: "allow",
-      updatedInput: e
-    }),
-    toAutoClassifierInput: e => "",
-    userFacingName: e => ""
-  };
-});
+// [unwrapped __esm module ii]
+rNi = new WeakMap(), oNi = new WeakSet();
+E1d = {
+  isEnabled: () => true,
+  isConcurrencySafe: e => false,
+  isReadOnly: e => false,
+  isDestructive: e => false,
+  checkPermissions: (e, t) => Promise.resolve({
+    behavior: "allow",
+    updatedInput: e
+  }),
+  toAutoClassifierInput: e => "",
+  userFacingName: e => ""
+};
 function MKr(e) {
   return false;
 }

@@ -4,14 +4,9 @@
 // class=modified  jaccard=0.4625  score=0.8447  fileCov=0.5054
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ist = E(() => {
-  kt();
-  fd();
-  Lx();
-  fn();
-  ((mzr = require("fs")), (Q$i = new Map()));
-  ((T$d = ["bash_shell", "mcp_stdio", "lsp", "other"]), (Cst = new Map()));
-});
+// [unwrapped __esm module Ist] deps: kt, fd, Lx, fn
+((mzr = require("fs")), (Q$i = new Map()));
+((T$d = ["bash_shell", "mcp_stdio", "lsp", "other"]), (Cst = new Map()));
 function x$d() {
   let e = Sbr();
   if (e !== void 0) return e;

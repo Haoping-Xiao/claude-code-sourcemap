@@ -3,8 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ori = E(() => {
-  o2r();
-  Pri();
-  Mri = R(by(), 1);
-});
+// [unwrapped __esm module Ori] deps: o2r, Pri
+Mri = R(by(), 1);

@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.1247  score=0.5708  fileCov=0.1376
 // note: low-confidence suggestion: node_modules/mute-stream/lib/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YOe = E(() => {
-  At();
-  Bi();
-  aEe();
-  OI();
-  gNl = require("fs"), zQ = require("fs/promises"), CNo = require("os"), wKe = require("path");
-});
+// [unwrapped __esm module YOe] deps: At, Bi, aEe, OI
+gNl = require("fs"), zQ = require("fs/promises"), CNo = require("os"), wKe = require("path");
 function dnr(e, t) {
   let n = new yNl.StringDecoder("utf8"),
     r = "",

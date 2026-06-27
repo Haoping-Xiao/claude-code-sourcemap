@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.1301  score=0.185  fileCov=0.305
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qpc = E(() => {
-  mNe = require("fs/promises");
-});
+// [unwrapped __esm module qpc]
+mNe = require("fs/promises");
 function Y9o(e) {
   let t = e.length,
     n = [],

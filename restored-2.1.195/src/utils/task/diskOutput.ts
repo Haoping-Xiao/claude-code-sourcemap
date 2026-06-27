@@ -4,96 +4,75 @@
 // class=modified  jaccard=0.0368  score=0.059  fileCov=0.0893
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Yf = E(() => {
-  Qi();
-  Uh();
-  M7();
-  u_();
-  $7();
-  ft();
-  Un();
-  lf();
-  EI();
-  Rm();
-  Lo();
-  fn();
-  ys();
-  Hu();
-  KI();
-  Is();
-  y_();
-  vf();
-  mCe();
-  RCe();
-  dr();
-  xue();
-  kv();
-  K0();
-  sj();
-  Tkn();
-  $I();
-  QH();
-  Gy();
-  w5e();
-  ((Fsc = require("crypto")),
-    (A5o = R(D3e(), 1)),
-    (sZt = require("os")),
-    (Rl = require("path")),
-    (T5o = [
-      ".gitconfig",
-      ".gitmodules",
-      ".bashrc",
-      ".bash_profile",
-      ".zshrc",
-      ".zprofile",
-      ".profile",
-      ".zshenv",
-      ".zlogin",
-      ".zlogout",
-      ".bash_login",
-      ".bash_aliases",
-      ".bash_logout",
-      ".envrc",
-      ".ripgreprc",
-      ".mcp.json",
-      ".claude.json",
-      ".npmrc",
-      ".yarnrc",
-      ".yarnrc.yml",
-      ".pnp.cjs",
-      ".pnp.loader.mjs",
-      ".pnpmfile.cjs",
-      "bunfig.toml",
-      ".bunfig.toml",
-      ".bazelrc",
-      ".bazelversion",
-      ".bazeliskrc",
-      ".pre-commit-config.yaml",
-      "lefthook.yml",
-      ".lefthook.yml",
-      "lefthook.yaml",
-      ".lefthook.yaml",
-      "gradle-wrapper.properties",
-      "maven-wrapper.properties",
-      ".devcontainer.json",
-      "pyrightconfig.json",
-    ]),
-    (v5o = new Set(T5o.map((e) => e.toLowerCase()))),
-    (jsc = [
-      ".git",
-      ".vscode",
-      ".idea",
-      ".claude",
-      ".husky",
-      ".cargo",
-      ".devcontainer",
-      ".yarn",
-      ".mvn",
-    ]),
-    (Gsc = [".config/git"]));
-  Tme = Rl.posix.sep;
-  ((YU = Cn(function () {
-    let t = qE(),
+// [unwrapped __esm module Yf] deps: Qi, Uh, M7, u_, $7, ft, Un, lf, EI, Rm, Lo, fn, ys, Hu, KI, Is, y_, vf, mCe, RCe, dr, xue, kv, K0, sj, Tkn, $I, QH, Gy, w5e
+((Fsc = require("crypto")),
+  (A5o = R(D3e(), 1)),
+  (sZt = require("os")),
+  (Rl = require("path")),
+  (T5o = [
+    ".gitconfig",
+    ".gitmodules",
+    ".bashrc",
+    ".bash_profile",
+    ".zshrc",
+    ".zprofile",
+    ".profile",
+    ".zshenv",
+    ".zlogin",
+    ".zlogout",
+    ".bash_login",
+    ".bash_aliases",
+    ".bash_logout",
+    ".envrc",
+    ".ripgreprc",
+    ".mcp.json",
+    ".claude.json",
+    ".npmrc",
+    ".yarnrc",
+    ".yarnrc.yml",
+    ".pnp.cjs",
+    ".pnp.loader.mjs",
+    ".pnpmfile.cjs",
+    "bunfig.toml",
+    ".bunfig.toml",
+    ".bazelrc",
+    ".bazelversion",
+    ".bazeliskrc",
+    ".pre-commit-config.yaml",
+    "lefthook.yml",
+    ".lefthook.yml",
+    "lefthook.yaml",
+    ".lefthook.yaml",
+    "gradle-wrapper.properties",
+    "maven-wrapper.properties",
+    ".devcontainer.json",
+    "pyrightconfig.json",
+  ]),
+  (v5o = new Set(T5o.map((e) => e.toLowerCase()))),
+  (jsc = [
+    ".git",
+    ".vscode",
+    ".idea",
+    ".claude",
+    ".husky",
+    ".cargo",
+    ".devcontainer",
+    ".yarn",
+    ".mvn",
+  ]),
+  (Gsc = [".config/git"]));
+Tme = Rl.posix.sep;
+((YU = Cn(function () {
+  let t = qE(),
+    n = qt(),
+    r = t;
+  try {
+    r = n.realpathSync(t);
+  } catch {}
+  return r + Rl.sep;
+})),
+  (y2t = Cn(function () {
+    let t = Xst(),
       n = qt(),
       r = t;
     try {
@@ -101,57 +80,47 @@ var Yf = E(() => {
     } catch {}
     return r + Rl.sep;
   })),
-    (y2t = Cn(function () {
-      let t = Xst(),
-        n = qt(),
-        r = t;
-      try {
-        r = n.realpathSync(t);
-      } catch {}
-      return r + Rl.sep;
-    })),
-    (eir = Cn(function () {
-      let t = Fsc.randomBytes(16).toString("hex");
-      return Rl.join(
-        YU(),
-        "bundled-skills",
-        {
-          ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
-          PACKAGE_URL: "@anthropic-ai/claude-code",
-          README_URL: "https://code.claude.com/docs/en/overview",
-          VERSION: "2.1.195",
-          FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
-          BUILD_TIME: "2026-06-26T01:00:56Z",
-          GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
-        }.VERSION,
-        t,
-      );
-    })));
-  _em = Cn(function (t) {
+  (eir = Cn(function () {
+    let t = Fsc.randomBytes(16).toString("hex");
+    return Rl.join(
+      YU(),
+      "bundled-skills",
+      {
+        ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+        PACKAGE_URL: "@anthropic-ai/claude-code",
+        README_URL: "https://code.claude.com/docs/en/overview",
+        VERSION: "2.1.195",
+        FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+        BUILD_TIME: "2026-06-26T01:00:56Z",
+        GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+      }.VERSION,
+      t,
+    );
+  })));
+_em = Cn(function (t) {
+  try {
+    return Rl.join(bTe(), t, "scratchpad");
+  } catch {
+    return null;
+  }
+});
+Tlr = Cn(i_);
+Hem = Cn(function () {
+  let t = [
+      ["/private/tmp", "/tmp"],
+      ["/private/var", "/var"],
+      ["/private/etc", "/etc"],
+      ["/usr/bin", "/bin"],
+      ["/usr/lib", "/lib"],
+      ["/usr/sbin", "/sbin"],
+    ],
+    n = new Map(),
+    r = qt();
+  for (let [o, s] of t)
     try {
-      return Rl.join(bTe(), t, "scratchpad");
-    } catch {
-      return null;
-    }
-  });
-  Tlr = Cn(i_);
-  Hem = Cn(function () {
-    let t = [
-        ["/private/tmp", "/tmp"],
-        ["/private/var", "/var"],
-        ["/private/etc", "/etc"],
-        ["/usr/bin", "/bin"],
-        ["/usr/lib", "/lib"],
-        ["/usr/sbin", "/sbin"],
-      ],
-      n = new Map(),
-      r = qt();
-    for (let [o, s] of t)
-      try {
-        if (r.realpathSync(s) === o) n.set(o, s);
-      } catch {}
-    return n;
-  });
+      if (r.realpathSync(s) === o) n.set(o, s);
+    } catch {}
+  return n;
 });
 function jpt() {
   if (w5o === void 0) w5o = C5o.join(bTe(), Rt(), "tasks");

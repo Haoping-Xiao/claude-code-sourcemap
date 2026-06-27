@@ -4,11 +4,10 @@
 // class=unchanged (alt of src/commands/ant-trace/index.js)  jaccard=1  score=1  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QQl = E(() => {
-  JQl = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub",
-  };
-});
+// [unwrapped __esm module QQl]
+JQl = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub",
+};
 var ZQl;

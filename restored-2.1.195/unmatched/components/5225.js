@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0127  score=0.1152  fileCov=0.014
 // note: nearest: src/tools/AgentTool/UI.tsx (0.0127); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Enc = E(() => {
-  dn();
-  _nc();
-  Lze();
-  Snc = R(se(), 1);
-});
+// [unwrapped __esm module Enc] deps: dn, _nc, Lze
+Snc = R(se(), 1);
 var Anc = {};
 _t(Anc, {
   call: () => call

@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0026  score=0.4404  fileCov=0.0026
 // note: nearest: src/utils/sessionStorage.ts (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EUc = E(() => {
-  kt();
-  E8n();
-  Lo();
-  At();
-  vn();
-  kM();
-  iYr();
-});
 class TUc {
   async snapshot(e, t) {
     return t;

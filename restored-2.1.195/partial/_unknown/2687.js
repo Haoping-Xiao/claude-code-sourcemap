@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0797  score=0.2822  fileCov=0.1
 // note: low-confidence suggestion: node_modules/@modelcontextprotocol/sdk/dist/esm/server/zod-compat.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Vlt = E(() => {
-  _Re();
-  Kne = Symbol.for("reflect unsafe local");
-});
+// [unwrapped __esm module Vlt] deps: _Re
+Kne = Symbol.for("reflect unsafe local");
 function mue(e) {
   return e !== null && typeof e == "object" && !Array.isArray(e);
 }

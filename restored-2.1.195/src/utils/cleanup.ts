@@ -4,22 +4,15 @@
 // class=modified  jaccard=0.1321  score=0.2473  fileCov=0.2209
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gzo = E(() => {
-  Xr();
-  dn();
-  Pw();
-  Hpe();
-  Jt();
-  ag();
-  ((pSc = require("crypto")), (HNe = require("fs/promises")), (mzo = require("path")));
-  ySc = ve(() =>
-    H.object({
-      q: H.string(),
-      collapsed: H.array(H.string()).optional(),
-      ts: H.number(),
-    }),
-  );
-});
+// [unwrapped __esm module gzo] deps: Xr, dn, Pw, Hpe, Jt, ag
+((pSc = require("crypto")), (HNe = require("fs/promises")), (mzo = require("path")));
+ySc = ve(() =>
+  H.object({
+    q: H.string(),
+    collapsed: H.array(H.string()).optional(),
+    ts: H.number(),
+  }),
+);
 function bgm() {
   if (!Om("userSettings") && jo()?.cleanupPeriodDays === void 0)
     return (

@@ -4,18 +4,8 @@
 // class=partial  jaccard=0.1561  score=1  fileCov=0.1561
 // note: low-confidence suggestion: src/commands/output-style/output-style.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OPl = E(() => {
-  m7t();
-  Ye();
-  vy();
-  Ld();
-  NOo();
-  At();
-  Yp();
-  _a();
-  CH();
-  uKe = R(rt(), 1), Rfe = R(se(), 1);
-});
+// [unwrapped __esm module OPl] deps: m7t, Ye, vy, Ld, NOo, At, Yp, _a, CH
+uKe = R(rt(), 1), Rfe = R(se(), 1);
 var NPl = {};
 _t(NPl, {
   call: () => call

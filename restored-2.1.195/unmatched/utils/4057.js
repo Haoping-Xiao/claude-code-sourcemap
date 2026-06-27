@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0438  score=0.1565  fileCov=0.0573
 // note: nearest: src/tasks/LocalShellTask/LocalShellTask.tsx (0.0438); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hyt = E(() => {
-  $S();
-  Sj();
-});
 function $6n(e) {
   let {
       description: t,

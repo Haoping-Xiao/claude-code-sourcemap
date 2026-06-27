@@ -4,14 +4,6 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0139  score=0.5988  fileCov=0.014
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Oc = E(() => {
-  kt();
-  fd();
-  sG();
-  vq();
-  _k();
-  q9t();
-});
 var HOc = {};
 _t(HOc, {
   loadSettingsFromFlag: () => loadSettingsFromFlag,

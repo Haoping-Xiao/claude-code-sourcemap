@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2328  score=0.4589  fileCov=0.3209
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gre = E(() => {
-  kt();
-  je();
-  fn();
-  lT();
-  ED();
-  Y9();
-  ((aNa = require("fs")), (lNa = require("tty")));
-});
+// [unwrapped __esm module Gre] deps: kt, je, fn, lT, ED, Y9
+((aNa = require("fs")), (lNa = require("tty")));
 function uNa() {
   return x4n;
 }

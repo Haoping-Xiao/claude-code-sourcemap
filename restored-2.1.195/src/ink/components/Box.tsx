@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1244  score=0.5272  fileCov=0.14
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SGe = E(() => {
-  l0e();
-  H5i = R(rt(), 1);
-});
+// [unwrapped __esm module SGe] deps: l0e
+H5i = R(rt(), 1);
 function NWd(e) {
   let t = T5i.c(31),
     n,

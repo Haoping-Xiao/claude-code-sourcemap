@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.316  score=0.316  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lf = E(() => {
-  k0();
-  S0n();
-  JNi = `${oYr}. Each line is the line number, a single separator (a tab or \`:\`), then the verbatim file content (including any leading whitespace).`;
-});
+// [unwrapped __esm module lf] deps: k0, S0n
+JNi = `${oYr}. Each line is the line number, a single separator (a tab or \`:\`), then the verbatim file content (including any leading whitespace).`;
 function tBi(e) {
   if (ph(e))
     return 'Fast file pattern matching. Supports glob patterns like "**/*.js" or "src/**/*.ts". Returns matching file paths sorted by modification time.';

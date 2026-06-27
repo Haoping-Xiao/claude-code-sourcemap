@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fss = E(() => {
-  qwt();
-  Mie();
-  Uss = $Yc;
-});
+// [unwrapped __esm module Fss] deps: qwt, Mie
+Uss = $Yc;
 var jss, OYc, Gss;

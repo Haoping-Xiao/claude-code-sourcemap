@@ -4,59 +4,48 @@
 // class=modified  jaccard=0.3667  score=0.6342  fileCov=0.465
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YZn = E(() => {
-  Qi();
-  dn();
-  w8();
-  je();
-  Iv();
-  ys();
-  pq();
-  Xh();
-  zZn();
-  Z0l = require("path");
-  g$o = Cn(async () => {
-    let { enabled: e, errors: t } = await mp(),
-      n = [];
-    if (t.length > 0) T(`Plugin loading errors: ${t.map((o) => iS(o)).join(", ")}`);
-    let r = null;
-    for (let o of e) {
-      let s = new Set();
-      if (o.outputStylesPath)
+// [unwrapped __esm module YZn] deps: Qi, dn, w8, je, Iv, ys, pq, Xh, zZn
+Z0l = require("path");
+g$o = Cn(async () => {
+  let { enabled: e, errors: t } = await mp(),
+    n = [];
+  if (t.length > 0) T(`Plugin loading errors: ${t.map((o) => iS(o)).join(", ")}`);
+  let r = null;
+  for (let o of e) {
+    let s = new Set();
+    if (o.outputStylesPath)
+      try {
+        let i = await Q0l(o.outputStylesPath, o.name, s);
+        if ((n.push(...i), i.length > 0))
+          T(`Loaded ${i.length} output styles from plugin ${o.name} default directory`);
+      } catch (i) {
+        ((r = "plugin_load_output_styles_dir_failed"),
+          T(`Failed to load output styles from plugin ${o.name} default directory: ${i}`, {
+            level: "error",
+          }));
+      }
+    if (o.outputStylesPaths)
+      for (let i of o.outputStylesPaths)
         try {
-          let i = await Q0l(o.outputStylesPath, o.name, s);
-          if ((n.push(...i), i.length > 0))
-            T(`Loaded ${i.length} output styles from plugin ${o.name} default directory`);
-        } catch (i) {
-          ((r = "plugin_load_output_styles_dir_failed"),
-            T(`Failed to load output styles from plugin ${o.name} default directory: ${i}`, {
+          let l = await qt().stat(i);
+          if (l.isDirectory()) {
+            let c = await Q0l(i, o.name, s);
+            if ((n.push(...c), c.length > 0))
+              T(`Loaded ${c.length} output styles from plugin ${o.name} custom path: ${i}`);
+          } else if (l.isFile() && i.endsWith(".md")) {
+            let c = await eRl(i, o.name, s);
+            if (c) (n.push(c), T(`Loaded output style from plugin ${o.name} custom file: ${i}`));
+          }
+        } catch (a) {
+          ((r = "plugin_load_output_styles_path_failed"),
+            T(`Failed to load output styles from plugin ${o.name} custom path ${i}: ${a}`, {
               level: "error",
             }));
         }
-      if (o.outputStylesPaths)
-        for (let i of o.outputStylesPaths)
-          try {
-            let l = await qt().stat(i);
-            if (l.isDirectory()) {
-              let c = await Q0l(i, o.name, s);
-              if ((n.push(...c), c.length > 0))
-                T(`Loaded ${c.length} output styles from plugin ${o.name} custom path: ${i}`);
-            } else if (l.isFile() && i.endsWith(".md")) {
-              let c = await eRl(i, o.name, s);
-              if (c) (n.push(c), T(`Loaded output style from plugin ${o.name} custom file: ${i}`));
-            }
-          } catch (a) {
-            ((r = "plugin_load_output_styles_path_failed"),
-              T(`Failed to load output styles from plugin ${o.name} custom path ${i}: ${a}`, {
-                level: "error",
-              }));
-          }
-    }
-    if ((T(`Total plugin output styles loaded: ${n.length}`), r))
-      Le("plugin_load_output_styles", r);
-    else xe("plugin_load_output_styles");
-    return n;
-  });
+  }
+  if ((T(`Total plugin output styles loaded: ${n.length}`), r)) Le("plugin_load_output_styles", r);
+  else xe("plugin_load_output_styles");
+  return n;
 });
 function az() {
   return ut(process.env.CLAUDE_CODE_PLUGIN_USE_ZIP_CACHE);

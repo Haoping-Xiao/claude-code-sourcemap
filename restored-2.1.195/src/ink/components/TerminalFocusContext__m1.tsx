@@ -4,17 +4,16 @@
 // class=modified (alt of src/ink/components/TerminalFocusContext.tsx)  jaccard=0.3026  score=0.4265  fileCov=0.5102
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fGe = E(() => {
-  ((_Gi = R(rt(), 1)),
-    (bGi = _Gi.createContext({
-      exit() {},
-      focusManager: null,
-      rootNode: null,
-      dispatchPasteEvent() {},
-    })));
-  bGi.displayName = "InternalAppContext";
-  J7 = bGi;
-});
+// [unwrapped __esm module fGe]
+((_Gi = R(rt(), 1)),
+  (bGi = _Gi.createContext({
+    exit() {},
+    focusManager: null,
+    rootNode: null,
+    dispatchPasteEvent() {},
+  })));
+bGi.displayName = "InternalAppContext";
+J7 = bGi;
 var $U = 16;
 function EGi(e) {
   let t = SGi.c(6),

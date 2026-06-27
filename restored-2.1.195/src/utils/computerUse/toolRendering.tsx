@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.4965  score=0.8893  fileCov=0.5292
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mfo = E(() => {
-  je();
-  S_e();
-  ffo();
-  lpt();
-  upt = require("util");
-});
+// [unwrapped __esm module mfo] deps: je, S_e, ffo, lpt
+upt = require("util");
 function QSe(e, t) {
   e((n) => {
     let r = t(n.computerUseMcpState);

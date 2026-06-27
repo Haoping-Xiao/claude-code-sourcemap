@@ -3,10 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wX = E(() => {
-  Un();
-  sre();
-});
 var yh = "ScheduleWakeup",
   Cct = "<<autonomous-loop>>",
   ORe = "<<autonomous-loop-dynamic>>",

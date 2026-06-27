@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0036  score=0.4404  fileCov=0.0036
 // note: nearest: src/screens/REPL.tsx (0.0036); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Z6o = E(() => {
-  Tc();
-  Ye();
-  Coe();
-  rbc = R(lt(), 1), LZ = R(se(), 1);
-});
+// [unwrapped __esm module Z6o] deps: Tc, Ye, Coe
+rbc = R(lt(), 1), LZ = R(se(), 1);
 function obc(e) {
   let t = FTt.useRef(e);
   t.current = e;

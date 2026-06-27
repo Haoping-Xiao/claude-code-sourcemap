@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0203  score=0.1382  fileCov=0.0233
 // note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0203); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var D$n = E(() => {
-  HWe();
-  w$n();
-  bRe();
-  _Re();
-  Bno();
-  Klt();
-});
 function Uno(e, t, n, r) {
   if (t.$typeName != e.typeName || n.$typeName != e.typeName) return false;
   if (t === n) return true;

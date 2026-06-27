@@ -4,16 +4,8 @@
 // class=new  jaccard=0.0074  score=0.1031  fileCov=0.0079
 // note: nearest: src/screens/REPL.tsx (0.0074); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G4o = E(() => {
-  ft();
-  EHe();
-  Ye();
-  uo();
-  Cp();
-  Fy();
-  vi();
-  DJl = R(lt(), 1), _Ye = R(se(), 1);
-});
+// [unwrapped __esm module G4o] deps: ft, EHe, Ye, uo, Cp, Fy, vi
+DJl = R(lt(), 1), _Ye = R(se(), 1);
 function PJt({
   variant: e,
   onDone: t,

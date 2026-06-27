@@ -4,11 +4,9 @@
 // class=modified  jaccard=0.5815  score=0.7746  fileCov=0.6999
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HO = E(() => {
-  $S();
-  ((qon = require("crypto")),
-    (szc = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));
-});
+// [unwrapped __esm module HO] deps: $S
+((qon = require("crypto")),
+  (szc = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));
 function Xwt() {
   let e = process.env.CLAUDE_CODE_REMOTE_SESSION_ID?.trim();
   return e ? Ywt(e, Wns) : null;

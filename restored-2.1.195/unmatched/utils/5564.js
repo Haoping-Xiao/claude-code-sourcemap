@@ -4,28 +4,24 @@
 // class=new  jaccard=0.0062  score=0.277  fileCov=0.0063
 // note: nearest: src/cli/print.ts (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TAc = E(() => {
-  c8o();
-  F8t();
-  szt();
-  qzo = R(se(), 1), stn = {
-    background_hint: () => qzo.jsx(T$e, {}),
-    bash_mode_progress: e => qzo.jsx(QZt, {
-      input: e.input,
-      progress: e.progress,
-      verbose: e.verbose
-    }),
-    agent_progress: (e, {
-      tools: t,
-      verbose: n
-    }) => KMe(e.progressMessages, {
-      tools: t,
-      verbose: n
-    }),
-    it2_setup_prompt: () => null,
-    computer_use_approval: () => null
-  };
-});
+// [unwrapped __esm module TAc] deps: c8o, F8t, szt
+qzo = R(se(), 1), stn = {
+  background_hint: () => qzo.jsx(T$e, {}),
+  bash_mode_progress: e => qzo.jsx(QZt, {
+    input: e.input,
+    progress: e.progress,
+    verbose: e.verbose
+  }),
+  agent_progress: (e, {
+    tools: t,
+    verbose: n
+  }) => KMe(e.progressMessages, {
+    tools: t,
+    verbose: n
+  }),
+  it2_setup_prompt: () => null,
+  computer_use_approval: () => null
+};
 function vAc() {
   let e = Mi(),
     t = Mi(),

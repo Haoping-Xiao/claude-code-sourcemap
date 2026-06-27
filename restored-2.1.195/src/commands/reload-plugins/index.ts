@@ -4,18 +4,17 @@
 // class=modified  jaccard=0.2064  score=0.2356  fileCov=0.6248
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var N7l = E(() => {
-  ((j9f = {
-    type: "local",
-    name: "reload-plugins",
-    description: "Activate pending plugin changes in the current session",
-    argumentHint: "[--force]",
-    supportsNonInteractive: false,
-    thinClientDispatch: "control-request",
-    load: () => Promise.resolve().then(() => (O7l(), $7l)),
-  }),
-    (Ksr = j9f));
-});
+// [unwrapped __esm module N7l]
+((j9f = {
+  type: "local",
+  name: "reload-plugins",
+  description: "Activate pending plugin changes in the current session",
+  argumentHint: "[--force]",
+  supportsNonInteractive: false,
+  thinClientDispatch: "control-request",
+  load: () => Promise.resolve().then(() => (O7l(), $7l)),
+}),
+  (Ksr = j9f));
 var B7l = {};
 _t(B7l, {
   call: () => call,

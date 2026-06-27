@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.5004  score=0.5975  fileCov=0.7547
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fIo = E(() => {
-  Xa();
-  Ye();
-  ii();
-  co();
-  E5();
-  Lyt();
-  ql();
-  lwo();
-  kal();
-  ((Ral = R(lt(), 1)), (cQ = R(se(), 1)));
-});
+// [unwrapped __esm module fIo] deps: Xa, Ye, ii, co, E5, Lyt, ql, lwo, kal
+((Ral = R(lt(), 1)), (cQ = R(se(), 1)));
 function Osf(e) {
   let t = rKn.c(49),
     { content: n, tools: r, lookups: o, inProgressToolUseIDs: s, shouldAnimate: i, theme: a } = e,

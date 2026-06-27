@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.4047  score=0.5516  fileCov=0.6032
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yXl = E(() => {
-  Ye();
-  lg();
-  Vl();
-  hse();
-  kP();
-  ((H4o = R(lt(), 1)), (BP = R(se(), 1)));
-});
+// [unwrapped __esm module yXl] deps: Ye, lg, Vl, hse, kP
+((H4o = R(lt(), 1)), (BP = R(se(), 1)));
 function _Xl(e) {
   let t = T4o.c(29),
     { onComplete: n, depCheck: r } = e,

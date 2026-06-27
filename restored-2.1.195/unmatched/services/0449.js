@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OIr = E(() => {
-  fdn = Plu;
-});
+// [unwrapped __esm module OIr]
+fdn = Plu;
 function Mlu(e, t) {
   return cv(e, fdn(Q3(t)));
 }

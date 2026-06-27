@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2913  score=0.3876  fileCov=0.5396
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OYt = E(() => {
-  je();
-  Bi();
-  gM();
-  Mx();
-  iWe();
-  ((RRl = require("crypto")), (uer = R(Uj(), 1)));
-});
+// [unwrapped __esm module OYt] deps: je, Bi, gM, Mx, iWe
+((RRl = require("crypto")), (uer = R(Uj(), 1)));
 function ORl() {
   return new Date().toISOString();
 }

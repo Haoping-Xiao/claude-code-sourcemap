@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.3088  score=0.4748  fileCov=0.469
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Otl = E(() => {
-  fn();
-  Yf();
-  Is();
-  q9t();
-  tre();
-  QJ = require("path");
-});
+// [unwrapped __esm module Otl] deps: fn, Yf, Is, q9t, tre
+QJ = require("path");
 function Gvo(e) {
   let t = Ntl.c(26),
     { count: n, countLabel: r, secondaryCount: o, secondaryLabel: s, content: i, verbose: a } = e,

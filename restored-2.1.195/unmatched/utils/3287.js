@@ -3,14 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var f0a = E(() => {
-  ql();
-  AW();
-  Ye();
-  aco();
-  es();
-  VM();
-  Upo();
-  Tqe = R(se(), 1);
-});
+// [unwrapped __esm module f0a] deps: ql, AW, Ye, aco, es, VM, Upo
+Tqe = R(se(), 1);
 var pJ;

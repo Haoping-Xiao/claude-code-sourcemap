@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.391  score=0.6328  fileCov=0.5057
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var L0o = E(() => {
-  ste();
-  Ls();
-});
 function L7n(e) {
   let t = Dt().teammateDefaultModel;
   if (t === null) return e ?? nzt();

@@ -4,23 +4,12 @@
 // class=new  jaccard=0.0446  score=0.2143  fileCov=0.0533
 // note: nearest: src/ink/components/Box.tsx (0.0446); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rBo = E(() => {
-  sJr();
-  Ye();
-  xne();
-  N0e();
-  nk();
-  id();
-  Un();
-  NE();
-  Ko();
-  NOe();
-  $Bl = R(lt(), 1), Jd = R(se(), 1);
-  RHe = {
-    keyCase: "lower",
-    modSep: " + "
-  };
-});
+// [unwrapped __esm module rBo] deps: sJr, Ye, xne, N0e, nk, id, Un, NE, Ko, NOe
+$Bl = R(lt(), 1), Jd = R(se(), 1);
+RHe = {
+  keyCase: "lower",
+  modSep: " + "
+};
 function NBl() {
   let e = OBl.c(8),
     {

@@ -4,23 +4,19 @@
 // class=modified (alt of src/utils/plugins/fetchTelemetry.ts)  jaccard=0.2389  score=0.9177  fileCov=0.2442
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dFt = E(() => {
-  kt();
-  Mx();
-  oWe();
-  zKd = new Set([
-    JH,
-    "raw.githubusercontent.com",
-    "objects.githubusercontent.com",
-    "gist.githubusercontent.com",
-    "gitlab.com",
-    "bitbucket.org",
-    "codeberg.org",
-    "dev.azure.com",
-    "ssh.dev.azure.com",
-    "storage.googleapis.com",
-  ]);
-});
+// [unwrapped __esm module dFt] deps: kt, Mx, oWe
+zKd = new Set([
+  JH,
+  "raw.githubusercontent.com",
+  "objects.githubusercontent.com",
+  "gist.githubusercontent.com",
+  "gitlab.com",
+  "bitbucket.org",
+  "codeberg.org",
+  "dev.azure.com",
+  "ssh.dev.azure.com",
+  "storage.googleapis.com",
+]);
 async function XKd(e) {
   try {
     return !!(await Gf(e));

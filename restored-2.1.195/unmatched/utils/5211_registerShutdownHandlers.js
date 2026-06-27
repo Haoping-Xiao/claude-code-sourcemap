@@ -4,24 +4,17 @@
 // class=new  jaccard=0.0241  score=0.2787  fileCov=0.0257
 // note: nearest: src/bridge/bridgeMain.ts (0.0241); dir inferred from dep-graph -> utils; 7 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qir = E(() => {
-  IB();
-  Xr();
-  wQ();
-  dn();
-  NB();
-  T3o();
-  gGo = ve(() => H.object({
-    dir: H.string(),
-    name: H.string().optional(),
-    spawnMode: H.enum(["same-dir", "worktree"]).default("same-dir"),
-    capacity: H.number().int().positive().default(32),
-    permissionMode: H.enum(yY).optional(),
-    sandbox: H.boolean().default(false),
-    sessionTimeoutSeconds: H.number().int().positive().optional(),
-    createSessionOnStart: H.boolean().default(false)
-  }).strict());
-});
+// [unwrapped __esm module Qir] deps: IB, Xr, wQ, dn, NB, T3o
+gGo = ve(() => H.object({
+  dir: H.string(),
+  name: H.string().optional(),
+  spawnMode: H.enum(["same-dir", "worktree"]).default("same-dir"),
+  capacity: H.number().int().positive().default(32),
+  permissionMode: H.enum(yY).optional(),
+  sandbox: H.boolean().default(false),
+  sessionTimeoutSeconds: H.number().int().positive().optional(),
+  createSessionOnStart: H.boolean().default(false)
+}).strict());
 var Ltc = {};
 _t(Ltc, {
   startParentWatchdog: () => startParentWatchdog,

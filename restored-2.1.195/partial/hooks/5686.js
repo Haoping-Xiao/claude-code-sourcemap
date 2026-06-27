@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0757  score=0.3707  fileCov=0.0869
 // note: low-confidence suggestion: src/components/EffortIndicator.ts; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var V0c = E(() => {
-  Ye();
-  rfr = R(rt(), 1);
-});
+// [unwrapped __esm module V0c] deps: Ye
+rfr = R(rt(), 1);
 function ofr() {
   let e = Ht(n => n.effortValue),
     t = lL(As(), e);

@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.2765  score=0.5282  fileCov=0.3671
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZKe = E(() => {
-  oo();
-  er();
-  wAe();
-  je();
-  qd();
-  dn();
-  c_();
-});
 function A4f() {
   let e = vor();
   if (e == null || e <= 0) return;

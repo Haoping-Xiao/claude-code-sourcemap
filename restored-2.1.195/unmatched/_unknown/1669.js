@@ -3,10 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wfi = E(() => {
-  lTn();
-  bte();
-});
 function Cfi(e = {}) {
   return V3r(e);
 }

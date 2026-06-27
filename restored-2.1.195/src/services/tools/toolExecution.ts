@@ -4,12 +4,11 @@
 // class=modified  jaccard=0.2864  score=0.362  fileCov=0.5784
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ALo = E(() => {
-  s_f = Object.freeze({
-    _meta: Object.freeze({
-      ["claude/endTurn"]: !0,
-    }),
-  });
+// [unwrapped __esm module ALo]
+s_f = Object.freeze({
+  _meta: Object.freeze({
+    ["claude/endTurn"]: !0,
+  }),
 });
 function XXn(e) {
   if (e instanceof Error) {

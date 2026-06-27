@@ -4,15 +4,14 @@
 // class=modified  jaccard=0.3314  score=0.558  fileCov=0.4494
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rnr = E(() => {
-  ((R1l = R(lt(), 1)),
-    (yEt = R(rt(), 1)),
-    (P1l = R(se(), 1)),
-    (L1l = yEt.createContext({
-      setHandler: () => {},
-      tryDelete: () => false,
-    })));
-});
+// [unwrapped __esm module rnr]
+((R1l = R(lt(), 1)),
+  (yEt = R(rt(), 1)),
+  (P1l = R(se(), 1)),
+  (L1l = yEt.createContext({
+    setHandler: () => {},
+    tryDelete: () => false,
+  })));
 function UMf(e, t) {
   if (t.upArrow || t.downArrow || t.home || t.end) return true;
   if (e.length !== 1) return false;

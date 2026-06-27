@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.4108  score=0.6837  fileCov=0.5071
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yZn = E(() => {
-  Xr();
-  Un();
-  Pkl = new WeakMap();
-});
+// [unwrapped __esm module yZn] deps: Xr, Un
+Pkl = new WeakMap();
 var TMo = {};
 _t(TMo, {
   summarizeByServerPrefix: () => summarizeByServerPrefix,

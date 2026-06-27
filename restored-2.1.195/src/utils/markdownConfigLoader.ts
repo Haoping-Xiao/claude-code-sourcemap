@@ -4,48 +4,10 @@
 // class=modified  jaccard=0.2878  score=0.7807  fileCov=0.3132
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var __ = E(() => {
-  ft();
-  INt();
-  xNt();
-  Lo();
-  wr();
-  Q9();
-  fn();
-  vf();
-  lmn();
-  dr();
-  _1();
-  L3e();
-  Gy();
-  fre();
-  Un();
-  qLn();
-  kt();
-  EI();
-  lC();
-  LL();
-  ys();
-  Vw();
-  je();
-  Yp();
-  Ao();
-  Ls();
-  Is();
-  _m();
-  aS();
-  CYn();
-  wYn();
-  $I();
-  QH();
-  qho();
-  rcr();
-  rcr();
-  L3e();
-  ((Clc = require("path")), (Ilc = require("path")), (nO = (Eoe(), ro(Ope))));
-  lrm = [...Hko, ...TYn, ...vYn];
-  wlc = Symbol("no-cached-auto-mode-config");
-});
+// [unwrapped __esm module __] deps: ft, INt, xNt, Lo, wr, Q9, fn, vf, lmn, dr, _1, L3e, Gy, fre, Un, qLn, kt, EI, lC, LL, ys, Vw, je, Yp, Ao, Ls, Is, _m, aS, CYn, wYn, $I, QH, qho, rcr, rcr, L3e
+((Clc = require("path")), (Ilc = require("path")), (nO = (Eoe(), ro(Ope))));
+lrm = [...Hko, ...TYn, ...vYn];
+wlc = Symbol("no-cached-auto-mode-config");
 function ffe(e, t = "Custom item") {
   let n = e.split(`
 `);

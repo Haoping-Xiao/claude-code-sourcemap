@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.3849  score=0.6551  fileCov=0.4827
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sbt = E(() => {
-  je();
-  H7n();
-  rbt = new Map();
-  z6t = new Map();
-});
+// [unwrapped __esm module sbt] deps: je, H7n
+rbt = new Map();
+z6t = new Map();
 function Ygl(e) {
   _0o = e;
 }

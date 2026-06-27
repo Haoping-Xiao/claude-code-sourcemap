@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.5517  score=0.8093  fileCov=0.6341
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zhc = E(() => {
-  zj();
-  ps();
-  dn();
-  uf();
-  qT = R(rt(), 1);
-});
+// [unwrapped __esm module zhc] deps: zj, ps, dn, uf
+qT = R(rt(), 1);
 function Khc({ maxBufferSize: e, debounceMs: t }) {
   let n = ks(),
     r = Ome.useRef({

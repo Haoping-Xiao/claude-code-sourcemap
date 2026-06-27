@@ -4,11 +4,6 @@
 // class=modified (alt of src/utils/permissions/permissionSetup.ts)  jaccard=0.0347  score=0.4485  fileCov=0.0363
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cMc = E(() => {
-  ft();
-  kt();
-  fb();
-});
 function xIm() {
   let e = process.env.CLAUDE_BG_SESSION_PERMISSION_RULES;
   if (!e || process.env.CLAUDE_CODE_SESSION_KIND !== "bg") return;

@@ -4,20 +4,8 @@
 // class=new  jaccard=0.0298  score=0.6602  fileCov=0.0303
 // note: nearest: src/hooks/useVoiceIntegration.tsx (0.0298); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wDc = E(() => {
-  Ed();
-  Ye();
-  kt();
-  z1();
-  Vyt();
-  xjt();
-  uo();
-  oo();
-  e1();
-  NX();
-  Ao();
-  TDc = R(lt(), 1), tve = R(rt(), 1), fvt = R(se(), 1);
-});
+// [unwrapped __esm module wDc] deps: Ed, Ye, kt, z1, Vyt, xjt, uo, oo, e1, NX, Ao
+TDc = R(lt(), 1), tve = R(rt(), 1), fvt = R(se(), 1);
 function IDc() {
   let e = CDc.c(13),
     {

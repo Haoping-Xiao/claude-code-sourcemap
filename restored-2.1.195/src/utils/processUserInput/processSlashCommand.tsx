@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2787  score=0.5092  fileCov=0.381
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var acl = E(() => {
-  m_t();
-  Ld();
-});
 var z8t = {};
 _t(z8t, {
   runUserPromptExpansionHook: () => runUserPromptExpansionHook,

@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.227  score=0.4303  fileCov=0.3245
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $Tc = E(() => {
-  Un();
-  Nue();
-  Iv();
-  AA();
-});
 function qbm(e) {
   return `# Batch: Parallel Work Orchestration
 

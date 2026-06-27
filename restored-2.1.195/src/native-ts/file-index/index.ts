@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.4746  score=0.7947  fileCov=0.541
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var UDl = E(() => {
-  ((Kkf = {
-    type: "local-jsx",
-    name: "cd",
-    description: "Move this session to a new working directory",
-    argumentHint: "<path>",
-    load: () => Promise.resolve().then(() => (NDl(), ODl)),
-  }),
-    (BDl = Kkf));
-});
+// [unwrapped __esm module UDl]
+((Kkf = {
+  type: "local-jsx",
+  name: "cd",
+  description: "Move this session to a new working directory",
+  argumentHint: "<path>",
+  load: () => Promise.resolve().then(() => (NDl(), ODl)),
+}),
+  (BDl = Kkf));
 class QYt {
   paths = [];
   lowerPaths = [];

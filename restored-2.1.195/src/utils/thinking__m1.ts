@@ -4,13 +4,6 @@
 // class=modified (alt of src/utils/thinking.ts)  jaccard=0.1229  score=0.3827  fileCov=0.1533
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Bot = E(() => {
-  ft();
-  Un();
-  er();
-  RE();
-  Ao();
-});
 function xCn() {
   return Dr().showThinkingSummaries ?? false;
 }

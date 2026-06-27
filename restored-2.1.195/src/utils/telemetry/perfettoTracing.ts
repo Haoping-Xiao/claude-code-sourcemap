@@ -4,10 +4,9 @@
 // class=modified  jaccard=0.3618  score=0.9278  fileCov=0.3723
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rpo = E(() => {
-  (($xa = R(qi(), 1)), (Oxa = require("async_hooks")));
-  qSe = new Nxa();
-});
+// [unwrapped __esm module rpo]
+(($xa = R(qi(), 1)), (Oxa = require("async_hooks")));
+qSe = new Nxa();
 function Uxa(e) {
   return Math.abs(eCe(e)) || 1;
 }

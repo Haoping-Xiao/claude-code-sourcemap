@@ -4,45 +4,13 @@
 // class=modified  jaccard=0.4482  score=0.5552  fileCov=0.6994
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cNe = E(() => {
-  si();
-  ZUt();
-  mdc();
-  inr();
-  Ye();
-  S6();
-  dn();
-  a4n();
-  kt();
-  Cre();
-  BI();
-  Kv();
-  Apo();
-  Ox();
-  cTt();
-  g$();
-  w9o();
-  C5();
-  er();
-  je();
-  At();
-  Yp();
-  Rd();
-  Is();
-  zH();
-  Dgt();
-  L7();
-  dr();
-  LPe();
-  JN();
-  I9o();
-  ((Kdc = R(lt(), 1)),
-    (Ydc = require("fs/promises")),
-    (Xdc = require("process")),
-    (eur = R(rt(), 1)),
-    (TS = R(se(), 1)));
-  lam = `${nt.cross} Rejected (see disabledMcpjsonServers in settings)`;
-});
+// [unwrapped __esm module cNe] deps: si, ZUt, mdc, inr, Ye, S6, dn, a4n, kt, Cre, BI, Kv, Apo, Ox, cTt, g$, w9o, C5, er, je, At, Yp, Rd, Is, zH, Dgt, L7, dr, LPe, JN, I9o
+((Kdc = R(lt(), 1)),
+  (Ydc = require("fs/promises")),
+  (Xdc = require("process")),
+  (eur = R(rt(), 1)),
+  (TS = R(se(), 1)));
+lam = `${nt.cross} Rejected (see disabledMcpjsonServers in settings)`;
 function uNe() {
   let e = N9o.c(36),
     [t] = na(),

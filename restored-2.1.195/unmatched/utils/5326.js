@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0125  score=0.1356  fileCov=0.0135
 // note: nearest: src/services/mcp/client.ts (0.0125); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yuc = E(() => {
-  FAe();
-  ag();
-  vn();
-  zH();
-  $cr = Xy, Jsm = /\x1b\[\d*D/g;
-});
+// [unwrapped __esm module yuc] deps: FAe, ag, vn, zH
+$cr = Xy, Jsm = /\x1b\[\d*D/g;
 function Ocr(e, t, n, r, o, s) {
   let i = Mi(),
     a = Mi(),

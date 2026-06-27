@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.2537  score=0.9537  fileCov=0.2569
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZWl = E(() => {
-  Ye();
-  LW();
-  YWl();
-  ((XWl = R(lt(), 1)), (JWl = R(rt(), 1)), (mAt = R(se(), 1)));
-});
+// [unwrapped __esm module ZWl] deps: Ye, LW, YWl
+((XWl = R(lt(), 1)), (JWl = R(rt(), 1)), (mAt = R(se(), 1)));
 function t5l(e) {
   let t = e.map((r) => ({
       text: r,

@@ -3,19 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qne = E(() => {
-  qQi();
-  HWe();
-  VQi();
-  M8();
-  Aea();
-  Hea();
-  T$n();
-  Rea();
-  Uea();
-  Fea();
-  Dbe();
-});
 function Ube(e) {
   return new Wea(e);
 }

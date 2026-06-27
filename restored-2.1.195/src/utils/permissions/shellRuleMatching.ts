@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2319  score=0.6699  fileCov=0.2619
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $I = E(() => {
-  je();
-  dr();
-  Jt();
-  Yf();
-  QH();
-  fre();
-  Gca = require("path");
-});
+// [unwrapped __esm module $I] deps: je, dr, Jt, Yf, QH, fre
+Gca = require("path");
 function Qjt(e) {
   return e.match(/^(.+):\*$/)?.[1] ?? null;
 }

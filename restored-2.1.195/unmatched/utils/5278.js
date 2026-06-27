@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0068  score=0.4915  fileCov=0.0069
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0068); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _ic = E(() => {
-  sp();
-});
 async function vRe(e, t, n = lp) {
   let r = {
       ...Td(void 0),

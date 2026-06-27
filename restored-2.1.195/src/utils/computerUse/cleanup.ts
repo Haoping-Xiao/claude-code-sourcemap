@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.3771  score=0.7581  fileCov=0.4287
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nIl = E(() => {
-  At();
-  vn();
-  Jt();
-  dn();
-  ZE();
-});
 async function* tOe(e) {
   let n = e.getAppState().computerUseMcpState?.hiddenDuringTurn,
     r = !!(n && n.size > 0),

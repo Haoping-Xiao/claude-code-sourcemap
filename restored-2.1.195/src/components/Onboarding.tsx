@@ -4,19 +4,16 @@
 // class=modified  jaccard=0.2551  score=0.4018  fileCov=0.4112
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GMc = E(() => {
-  Ye();
-  BMc();
-  ((FMc = R(lt(), 1)),
-    (m7o = R(rt(), 1)),
-    (U7e = R(rt(), 1)),
-    (amr = R(se(), 1)),
-    (UMc = U7e.createContext({
-      marker: "",
-    })));
-  jMc.Item = imr;
-  lmr = jMc;
-});
+// [unwrapped __esm module GMc] deps: Ye, BMc
+((FMc = R(lt(), 1)),
+  (m7o = R(rt(), 1)),
+  (U7e = R(rt(), 1)),
+  (amr = R(se(), 1)),
+  (UMc = U7e.createContext({
+    marker: "",
+  })));
+jMc.Item = imr;
+lmr = jMc;
 var VMc = {};
 _t(VMc, {
   SkippableStep: () => SkippableStep,

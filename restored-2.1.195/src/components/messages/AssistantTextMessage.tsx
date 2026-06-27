@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.1203  score=0.2527  fileCov=0.1867
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Osl = E(() => {
-  qyt();
-  Ye();
-  Un();
-  Vyt();
-  Ijt();
-  oo();
-  e1();
-  wr();
-  d5e();
-  ql();
-  ((Msl = R(lt(), 1)), (Izn = R(rt(), 1)), (zyt = R(se(), 1)));
-});
+// [unwrapped __esm module Osl] deps: qyt, Ye, Un, Vyt, Ijt, oo, e1, wr, d5e, ql
+((Msl = R(lt(), 1)), (Izn = R(rt(), 1)), (zyt = R(se(), 1)));
 function oof() {
   let e = D8t.c(1);
   if (!xzn.use(Osi())) return null;

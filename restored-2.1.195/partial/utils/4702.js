@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.2472  score=0.3513  fileCov=0.4548
 // note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ONl = E(() => {
-  SC();
-  Ye();
-  gm();
-  xoe();
-  BNo();
-  bnr = R(lt(), 1), kEt = R(rt(), 1), pR = R(se(), 1);
-});
+// [unwrapped __esm module ONl] deps: SC, Ye, gm, xoe, BNo
+bnr = R(lt(), 1), kEt = R(rt(), 1), pR = R(se(), 1);
 function BNl() {
   let e = NNl.c(2);
   if (!xo.isSupportedPlatform()) return null;

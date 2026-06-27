@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KYr = E(() => {
-  W_e = tUd;
-});
+// [unwrapped __esm module KYr]
+W_e = tUd;
 var nUd = function () {
     return bx.Date.now();
   },

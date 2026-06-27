@@ -3,11 +3,10 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eUc = E(() => {
-  eLm = {
-    refusal_fallback_prompt: "choose: retry on fallback model or edit prompt"
-  };
-});
+// [unwrapped __esm module eUc]
+eLm = {
+  refusal_fallback_prompt: "choose: retry on fallback model or edit prompt"
+};
 function tUc() {
   return Oe.CLAUDE_CODE_USER_DIALOG_TIMEOUT_MS ?? tLm;
 }

@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.4595  score=1  fileCov=0.4595
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lNn = E(() => {
-  u_();
-  lf();
-  nC();
-  EI();
-  lC();
-  TX();
-  Rct();
-  je();
-  _m();
-  Jt();
-  dn();
-  kt();
-  mLe();
-  U1();
-  hut();
-  Hcp = new Set([Ds, ...W1, qc, wu, GW, Sb, ka, Wc]);
-});
+// [unwrapped __esm module lNn] deps: u_, lf, nC, EI, lC, TX, Rct, je, _m, Jt, dn, kt, mLe, U1, hut
+Hcp = new Set([Ds, ...W1, qc, wu, GW, Sb, ka, Wc]);
 async function yao() {
   let e = Fjt.join(tr(), "session-env", Rt());
   return (await qt().mkdir(e), e);

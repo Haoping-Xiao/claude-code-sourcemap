@@ -4,12 +4,11 @@
 // class=partial  jaccard=0.1891  score=0.2462  fileCov=0.4493
 // note: low-confidence suggestion: src/components/permissions/rules/PermissionRuleDescription.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EJt = E(() => {
-  szl = R(lt(), 1), NAt = R(rt(), 1), lzl = R(se(), 1), izl = NAt.createContext({
-    getDenials: () => [],
-    recordDenial: () => {},
-    removeDenial: () => {}
-  });
+// [unwrapped __esm module EJt]
+szl = R(lt(), 1), NAt = R(rt(), 1), lzl = R(se(), 1), izl = NAt.createContext({
+  getDenials: () => [],
+  recordDenial: () => {},
+  removeDenial: () => {}
 });
 function wsr(e) {
   let t = czl.c(9),

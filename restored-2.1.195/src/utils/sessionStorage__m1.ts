@@ -4,14 +4,9 @@
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0304  score=0.93  fileCov=0.0305
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nec = E(() => {
-  db();
-  BFe();
-  jS();
-  Jt();
-  ((zJt = require("crypto")), (Pir = require("path")));
-  PKf = new Set(["user", "assistant", "attachment", "system", "progress"]);
-});
+// [unwrapped __esm module nec] deps: db, BFe, jS, Jt
+((zJt = require("crypto")), (Pir = require("path")));
+PKf = new Set(["user", "assistant", "attachment", "system", "progress"]);
 async function rec(e, t) {
   let n = await rCe(e, t);
   if (!n) return null;

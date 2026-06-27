@@ -4,16 +4,14 @@
 // class=new  jaccard=0.0143  score=0.3718  fileCov=0.0146
 // note: nearest: src/services/mcp/client.ts (0.0143); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GNn = E(() => {
-  Xr();
-  But = Dy({
-    kind: "mcp_url_elicitation",
-    payload: ve(() => H.custom(e => typeof e === "object" && e !== null && "serverName" in e && "params" in e)),
-    result: ve(() => H.custom(e => typeof e === "object" && e !== null)),
-    default: {
-      action: "cancel"
-    }
-  });
+// [unwrapped __esm module GNn] deps: Xr
+But = Dy({
+  kind: "mcp_url_elicitation",
+  payload: ve(() => H.custom(e => typeof e === "object" && e !== null && "serverName" in e && "params" in e)),
+  result: ve(() => H.custom(e => typeof e === "object" && e !== null)),
+  default: {
+    action: "cancel"
+  }
 });
 function Oua(e) {
   _lo = e;

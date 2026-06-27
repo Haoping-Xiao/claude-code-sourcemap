@@ -3,15 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ins = E(() => {
-  BBe();
-  Nwt();
-  P2();
-  Fwt();
-  won();
-  UBe();
-  Cns = V6c;
-});
+// [unwrapped __esm module Ins] deps: BBe, Nwt, P2, Fwt, won, UBe
+Cns = V6c;
 function z6c(e, t) {
   return e != null && Cns(e, t, vns);
 }

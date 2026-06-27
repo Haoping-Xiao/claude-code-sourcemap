@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0112  score=0.1941  fileCov=0.0118
 // note: nearest: node_modules/@azure/core-client/dist/esm/serializer.js (0.0112); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var O2c = E(() => {
-  Xmr();
-  GXo();
-  qXo();
-  VXo();
-  sB();
-  wm();
-  Enn();
-  Ann();
-  Hnn();
-  JXo();
-  $2c = vDm;
-});
+// [unwrapped __esm module O2c] deps: Xmr, GXo, qXo, VXo, sB, wm, Enn, Ann, Hnn, JXo
+$2c = vDm;
 function wDm(e, t, n, r, o) {
   if (o.crit !== void 0 && r.crit === void 0) throw new e('"crit" (Critical) Header Parameter MUST be integrity protected');
   if (!r || r.crit === void 0) return new Set();

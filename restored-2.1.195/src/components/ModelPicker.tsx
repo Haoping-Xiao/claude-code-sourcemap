@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.172  score=0.3117  fileCov=0.2772
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m1o = E(() => {
-  Xa();
-  Cp();
-  Fh();
-  nne();
-  f0e();
-});
 function hKe(e) {
   let t = h1o.c(102),
     {

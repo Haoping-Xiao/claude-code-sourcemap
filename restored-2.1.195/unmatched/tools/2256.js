@@ -4,14 +4,13 @@
 // class=new  jaccard=0.008  score=0.2333  fileCov=0.0082
 // note: nearest: src/utils/sessionStorage.ts (0.008); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var u_ = E(() => {
-  O_e = class O_e extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "FileStateError";
-    }
-  };
-});
+// [unwrapped __esm module u_]
+O_e = class O_e extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "FileStateError";
+  }
+};
 function N_e(e) {
   return e.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "workflow";
 }

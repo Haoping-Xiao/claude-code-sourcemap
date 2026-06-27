@@ -4,33 +4,8 @@
 // class=modified  jaccard=0.3449  score=1  fileCov=0.3449
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mal = E(() => {
-  si();
-  oc();
-  es();
-  co();
-  Xa();
-  Mce();
-  Ye();
-  uo();
-  jCo();
-  sA();
-  i6e();
-  Jt();
-  sr();
-  YI();
-  Q8();
-  uil();
-  gm();
-  vMe();
-  ql();
-  VCo();
-  Bzn();
-  zCo();
-  Gzn();
-  Qzn();
-  ((t_t = R(lt(), 1)), (Zzn = require("path")), (aIo = R(rt(), 1)), (Ts = R(se(), 1)));
-});
+// [unwrapped __esm module mal] deps: si, oc, es, co, Xa, Mce, Ye, uo, jCo, sA, i6e, Jt, sr, YI, Q8, uil, gm, vMe, ql, VCo, Bzn, zCo, Gzn, Qzn
+((t_t = R(lt(), 1)), (Zzn = require("path")), (aIo = R(rt(), 1)), (Ts = R(se(), 1)));
 function gal(e, t) {
   let n = ks(),
     [r, o] = n_t.useState(e),

@@ -4,32 +4,25 @@
 // class=modified  jaccard=0.4989  score=0.7114  fileCov=0.6255
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $nc = E(() => {
-  TM();
-  Rc();
-  Rx();
-  c_();
-  je();
-  Cv();
-  BGo = class BGo {
-    #e;
-    constructor(e) {
-      this.#e = e;
-    }
-    reveal() {
-      return this.#e;
-    }
-    toString() {
-      return "[REDACTED:gh-token]";
-    }
-    toJSON() {
-      return "[REDACTED:gh-token]";
-    }
-    [Symbol.for("nodejs.util.inspect.custom")]() {
-      return "[REDACTED:gh-token]";
-    }
-  };
-});
+// [unwrapped __esm module $nc] deps: TM, Rc, Rx, c_, je, Cv
+BGo = class BGo {
+  #e;
+  constructor(e) {
+    this.#e = e;
+  }
+  reveal() {
+    return this.#e;
+  }
+  toString() {
+    return "[REDACTED:gh-token]";
+  }
+  toJSON() {
+    return "[REDACTED:gh-token]";
+  }
+  [Symbol.for("nodejs.util.inspect.custom")]() {
+    return "[REDACTED:gh-token]";
+  }
+};
 var Onc = {};
 _t(Onc, {
   call: () => call,

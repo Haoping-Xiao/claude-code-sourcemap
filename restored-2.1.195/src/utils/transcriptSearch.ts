@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.781  score=1  fileCov=0.781
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BFo = E(() => {
-  one();
-  jh();
-  Ojf = new Set([0, 1, 2, 9, 99, 777]);
-  jXt = [];
-});
+// [unwrapped __esm module BFo] deps: one, jh
+Ojf = new Set([0, 1, 2, 9, 99, 777]);
+jXt = [];
 function aor(e) {
   let t = UWl.get(e);
   if (t !== void 0) return t;

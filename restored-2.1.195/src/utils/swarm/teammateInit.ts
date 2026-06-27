@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.5926  score=0.9737  fileCov=0.6023
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Lzo = E(() => {
-  je();
-  At();
-  vn();
-  Mp();
-  hP();
-});
 function Dzo(e, t, n) {
   let { teamName: r, agentId: o, agentName: s } = n,
     i = J4(r);

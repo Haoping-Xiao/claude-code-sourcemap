@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2144  score=0.4359  fileCov=0.2967
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NHc = E(() => {
-  mE();
-  X0();
-  gIo();
-  Ye();
-  UX();
-  (($Hc = R(lt(), 1)), (YTe = R(se(), 1)));
-});
+// [unwrapped __esm module NHc] deps: mE, X0, gIo, Ye, UX
+(($Hc = R(lt(), 1)), (YTe = R(se(), 1)));
 function N_m(e, t, n) {
   switch (e) {
     case "yes":

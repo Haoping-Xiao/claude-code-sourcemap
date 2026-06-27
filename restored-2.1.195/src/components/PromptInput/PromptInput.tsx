@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.2744  score=0.4487  fileCov=0.4139
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tzo = E(() => {
-  uo();
-  hYt();
-  IL();
-  Ver();
-  qJ();
-  cAe();
-  hN();
-  Mp();
-  Sj();
-  cne();
-  GTt = R(rt(), 1);
-});
+// [unwrapped __esm module tzo] deps: uo, hYt, IL, Ver, qJ, cAe, hN, Mp, Sj, cne
+GTt = R(rt(), 1);
 function Jmm({
   debug: e,
   ideSelection: t,

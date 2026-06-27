@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hro = E(() => {
-  vn();
-  Dna = require("fs");
-});
+// [unwrapped __esm module Hro] deps: vn
+Dna = require("fs");
 var Ona;

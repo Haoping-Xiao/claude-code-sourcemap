@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3741  score=1  fileCov=0.3741
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var es = E(() => {
-  m0();
-  g0();
-});
 function oG() {
   if (!dAr) dAr = require("perf_hooks").performance;
   return dAr;

@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0169  score=0.2839  fileCov=0.0177
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0169); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uXa = E(() => {
-  Ye();
-  Vl();
-  wb();
-  vH();
-  H9n();
-  lXa = R(lt(), 1), nht = R(se(), 1);
-});
+// [unwrapped __esm module uXa] deps: Ye, Vl, wb, vH, H9n
+lXa = R(lt(), 1), nht = R(se(), 1);
 function pXa() {
   let e = dXa.c(17),
     {

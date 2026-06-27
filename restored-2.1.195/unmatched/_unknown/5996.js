@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0237  score=0.0575  fileCov=0.0386
 // note: nearest: node_modules/eventsource/dist/index.js (0.0237); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DQo = E(() => {
-  AR();
-  sK();
-});
 async function yGc(e, t, n) {
   if (!B3(e)) throw new Ac("Flattened JWE must be an object");
   if (e.protected === void 0 && e.header === void 0 && e.unprotected === void 0) throw new Ac("JOSE Header missing");

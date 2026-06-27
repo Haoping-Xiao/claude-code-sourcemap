@@ -4,32 +4,25 @@
 // class=modified  jaccard=0.3224  score=0.3917  fileCov=0.6459
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ft = E(() => {
-  Bns();
-  Won();
-  Von();
-  Sx();
-  ih();
-  $S();
-  ((Xyr = require("fs")),
-    (grs = require("process")),
-    (lzc = {
-      renderTarget: "ink",
-      workspace: "local",
-      canDrive: true,
-      transcriptSource: "local-jsonl",
-      remote: null,
-    }));
-  Bt = hrs();
-  ((Xon = Mi()), (oee = Xon.subscribe));
-  ((Zyr = Mi()), (e_r = Zyr.subscribe));
-  ((d_r = Mi()), (p_r = d_r.subscribe));
-  E_r = Mi();
-  H_r = E_r.subscribe;
-  rbr = Mi();
-  yCt = rbr.subscribe;
-  mrs = [];
-});
+// [unwrapped __esm module ft] deps: Bns, Won, Von, Sx, ih, $S
+((Xyr = require("fs")),
+  (grs = require("process")),
+  (lzc = {
+    renderTarget: "ink",
+    workspace: "local",
+    canDrive: true,
+    transcriptSource: "local-jsonl",
+    remote: null,
+  }));
+Bt = hrs();
+((Xon = Mi()), (oee = Xon.subscribe));
+((Zyr = Mi()), (e_r = Zyr.subscribe));
+((d_r = Mi()), (p_r = d_r.subscribe));
+E_r = Mi();
+H_r = E_r.subscribe;
+rbr = Mi();
+yCt = rbr.subscribe;
+mrs = [];
 var jCt = {};
 _t(jCt, {
   stripProtoFields: () => stripProtoFields,

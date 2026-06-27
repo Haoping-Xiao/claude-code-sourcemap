@@ -4,14 +4,12 @@
 // class=partial  jaccard=0.0954  score=0.1983  fileCov=0.1554
 // note: low-confidence suggestion: src/hooks/useMainLoopModel.ts; dir inferred from dep-graph -> hooks; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dzn = E(() => {
-  Ye();
-  rsl = R(lt(), 1), nCo = R(se(), 1), srf = /https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]+/g, irf = {
-    ")": "(",
-    "]": "[",
-    "}": "{"
-  };
-});
+// [unwrapped __esm module dzn] deps: Ye
+rsl = R(lt(), 1), nCo = R(se(), 1), srf = /https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]+/g, irf = {
+  ")": "(",
+  "]": "[",
+  "}": "{"
+};
 var osl = {};
 _t(osl, {
   REMOTE_CONTROL_DISCONNECTED_MSG: () => REMOTE_CONTROL_DISCONNECTED_MSG,

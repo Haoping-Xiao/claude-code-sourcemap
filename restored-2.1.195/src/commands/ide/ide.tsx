@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.5103  score=0.7408  fileCov=0.6212
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var JBl = E(() => {
-  Ye();
-  er();
-  aE();
-  mE();
-  Fy();
-  vi();
-  ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
-});
+// [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi
+((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
 var eUl = {};
 _t(eUl, {
   formatWorkspaceFolders: () => formatWorkspaceFolders,

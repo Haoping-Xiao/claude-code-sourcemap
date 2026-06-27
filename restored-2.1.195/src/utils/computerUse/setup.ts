@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2038  score=0.5904  fileCov=0.2373
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var B1c = E(() => {
-  ft();
-  IL();
-  bk();
-  hN();
-  hP();
-  $1c = require("fs/promises");
-});
+// [unwrapped __esm module B1c] deps: ft, IL, bk, hN, hP
+$1c = require("fs/promises");
 var j1c = {};
 _t(j1c, {
   setupComputerUseMCP: () => setupComputerUseMCP,

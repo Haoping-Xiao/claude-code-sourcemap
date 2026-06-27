@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0126  score=0.1497  fileCov=0.0135
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0126); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WJa = E(() => {
-  Ye();
-  ps();
-  Cc();
-  Bs();
-  f_();
-  Ko();
-  Mg();
-  wb();
-  vH();
-  jJa = R(lt(), 1), K9n = R(rt(), 1), O6 = R(se(), 1);
-});
+// [unwrapped __esm module WJa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH
+jJa = R(lt(), 1), K9n = R(rt(), 1), O6 = R(se(), 1);
 function qJa() {
   let {
       goBack: e,

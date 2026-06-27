@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.6551  score=1  fileCov=0.6551
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vl = E(() => {
-  si();
-  fH();
-  _i();
-  $Ge();
-  Kce();
-  Tc();
-  Ye();
-  PUt();
-  g0();
-  gm();
-  APn();
-  xZr();
-  TPn();
-  uzi();
-  gzi();
-  ((IPn = R(lt(), 1)), (One = R(rt(), 1)), (Zl = R(se(), 1)));
-});
+// [unwrapped __esm module Vl] deps: si, fH, _i, $Ge, Kce, Tc, Ye, PUt, g0, gm, APn, xZr, TPn, uzi, gzi
+((IPn = R(lt(), 1)), (One = R(rt(), 1)), (Zl = R(se(), 1)));
 function Uu(e, t, n) {
   let r = KE(),
     o = r?.getDisplayText(e, t),

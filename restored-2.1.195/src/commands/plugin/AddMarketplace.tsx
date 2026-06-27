@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3576  score=0.51  fileCov=0.5449
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OBo = E(() => {
-  At();
-  ys();
-  Mx();
-  ((y2l = require("os")), (_2l = require("path")));
-});
+// [unwrapped __esm module OBo] deps: At, ys, Mx
+((y2l = require("os")), (_2l = require("path")));
 function S2l(e) {
   let t = b2l.c(41),
     {

@@ -4,15 +4,6 @@
 // class=partial  jaccard=0.1997  score=1  fileCov=0.1997
 // note: low-confidence suggestion: node_modules/@azure/core-rest-pipeline/dist/esm/policies/logPolicy.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bte = E(() => {
-  Ypi();
-  k3r();
-  tfi();
-  nfi();
-  afi();
-  yfi();
-  Sfi();
-});
 function vfi(e = {}) {
   return F3r(Object.assign({
     logger: Iye.info

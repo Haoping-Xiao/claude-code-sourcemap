@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var omi = E(() => {
-  bte();
-});
 function smi(e) {
   return z3r(e);
 }

@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.6641  score=0.9862  fileCov=0.6703
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var X_e = E(() => {
-  H3i();
-  K_e();
-});
 function d3d(e) {
   return e === "absolute" ? 2 : 1;
 }

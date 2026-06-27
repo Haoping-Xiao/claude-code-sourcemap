@@ -4,18 +4,17 @@
 // class=new  jaccard=0.0047  score=0.2119  fileCov=0.0048
 // note: nearest: src/screens/REPL.tsx (0.0047); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var boc = E(() => {
-  HQf = {
-    type: "local-jsx",
-    name: "background",
-    aliases: ["bg"],
-    description: "Send this session to the background and free the terminal",
-    argumentHint: "[prompt]",
-    immediate: e => !e.trim(),
-    isEnabled: () => true,
-    load: () => Promise.resolve().then(() => (IWo(), yoc))
-  }, TQf = HQf;
-});
+// [unwrapped __esm module boc]
+HQf = {
+  type: "local-jsx",
+  name: "background",
+  aliases: ["bg"],
+  description: "Send this session to the background and free the terminal",
+  argumentHint: "[prompt]",
+  immediate: e => !e.trim(),
+  isEnabled: () => true,
+  load: () => Promise.resolve().then(() => (IWo(), yoc))
+}, TQf = HQf;
 function vQf() {
   return process.env.CLAUDE_JOB_DIR;
 }

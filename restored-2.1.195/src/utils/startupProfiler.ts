@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3121  score=0.4989  fileCov=0.4546
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jin = E(() => {
-  es();
-});
 var jis = {};
 _t(jis, {
   profileReport: () => profileReport,

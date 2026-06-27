@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.0772  score=0.2036  fileCov=0.1107
 // note: low-confidence suggestion: src/utils/plugins/zipCache.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RNo = E(() => {
-  yNl = require("string_decoder");
-});
+// [unwrapped __esm module RNo]
+yNl = require("string_decoder");
 function Bfe() {
   return Jg.join(tr(), "daemon");
 }

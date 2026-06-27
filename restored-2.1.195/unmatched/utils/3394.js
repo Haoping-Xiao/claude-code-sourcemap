@@ -4,312 +4,301 @@
 // class=new  jaccard=0.0093  score=0.011  fileCov=0.0584
 // note: nearest: node_modules/eventsource-parser/dist/index.js (0.0093); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ago = E(() => {
-  rre();
-  sN();
-  ys();
-  Hu();
-  Yf();
-  $I();
-  Jbe();
-  xue();
-  S$();
-  Tjn();
-  b$a = require("os"), H5 = require("path");
-  ZRp = /^"?\$(?:\{[A-Za-z_][A-Za-z0-9_]*\}|[A-Za-z_][A-Za-z0-9_]*)"?\/(?:\*|\$|\/|["']|$)/, eLp = /^(?:[A-Za-z_][A-Za-z0-9_]*\+?=[^\s]*\s+)*\\?(?:[^\s=]*\/)?(rm|rmdir)(?:\s|$)/;
-  Zpt = {
-    cd: e => {
-      let t = SH(e);
-      if (t.length === 0) return e.at(-1) === "-" ? ["-"] : [b$a.homedir()];
-      return [t[0]];
-    },
-    ls: e => {
-      let t = SH(e);
-      return t.length > 0 ? t : ["."];
-    },
-    find: e => {
-      let t = [],
-        n = new Set(["-newer", "-anewer", "-cnewer", "-mnewer", "-samefile", "-path", "-wholename", "-ilname", "-lname", "-ipath", "-iwholename"]),
-        r = /^-newer[acmBt][acmtB]$/,
-        o = false,
-        s = false;
-      for (let i = 0; i < e.length; i++) {
-        let a = e[i];
-        if (!a) continue;
-        if (s) {
-          t.push(a);
-          continue;
-        }
-        if (a === "--") {
-          s = true;
-          continue;
-        }
-        if (a.startsWith("-")) {
-          if (["-H", "-L", "-P"].includes(a)) continue;
-          if (o = true, n.has(a) || r.test(a)) {
-            let l = e[i + 1];
-            if (l) t.push(l), i++;
-          }
-          continue;
-        }
-        if (!o) t.push(a);
-      }
-      return t.length > 0 ? t : ["."];
-    },
-    mkdir: SH,
-    touch: SH,
-    rm: SH,
-    rmdir: SH,
-    mv: SH,
-    cp: SH,
-    cat: SH,
-    head: SH,
-    tail: SH,
-    sort: SH,
-    uniq: SH,
-    wc: SH,
-    cut: Ego(new Set(["-d", "--delimiter", "-f", "--fields", "-b", "--bytes", "-c", "--characters", "--output-delimiter"])),
-    paste: Ego(new Set(["-d", "--delimiters"])),
-    column: Ego(new Set(["-s", "--separator", "-o", "--output-separator", "-c", "--output-width"])),
-    file: SH,
-    stat: SH,
-    diff: SH,
-    awk: e => {
-      let t = new Set(["-F", "--field-separator", "-v", "--assign", "-e", "--source"]),
-        n = new Set(["-f", "--file", "-E", "--exec"]),
-        r = [],
-        o = false,
-        s = false,
-        i = false;
-      for (let a = 0; a < e.length; a++) {
-        let l = e[a];
-        if (l === void 0 || l === null) continue;
-        if (!o && !i && l === "--") {
-          o = true;
-          continue;
-        }
-        if (!o && !i && l !== "-" && l.startsWith("-")) {
-          let c = l.indexOf("="),
-            u = c >= 0 ? l.slice(0, c) : l;
-          if (t.has(u)) {
-            if (u === "-e" || u === "--source") s = true;
-            if (c < 0) a++;
-            continue;
-          }
-          if (n.has(u)) {
-            if (s = true, c >= 0) r.push(l.slice(c + 1));else {
-              let d = e[a + 1];
-              if (d !== void 0) r.push(d), a++;
-            }
-            continue;
-          }
-          continue;
-        }
-        if (i && !o) {
-          let c = E$a(l, ["-f", "--file", "-E", "--exec"]);
-          if (c !== void 0) r.push(c);
-        }
-        if (i = true, !s) {
-          s = true;
-          continue;
-        }
-        r.push(l);
-      }
-      return r;
-    },
-    strings: SH,
-    hexdump: SH,
-    od: SH,
-    base64: SH,
-    nl: SH,
-    sha256sum: SH,
-    sha1sum: SH,
-    md5sum: SH,
-    tr: e => {
-      let t = e.some(r => r === "-d" || r === "--delete" || r.startsWith("-") && r.includes("d"));
-      return SH(e).slice(t ? 1 : 2);
-    },
-    grep: e => {
-      let n = y$a(e, new Set(["-e", "--regexp", "-f", "--file", "--exclude", "--include", "--exclude-dir", "--include-dir", "-m", "--max-count", "-A", "--after-context", "-B", "--before-context", "-C", "--context"]));
-      if (n.length === 0 && e.some(r => ["-r", "-R", "--recursive"].includes(r))) return ["."];
-      return n;
-    },
-    rg: e => y$a(e, new Set(["-e", "--regexp", "-f", "--file", "-t", "--type", "-T", "--type-not", "-g", "--glob", "-m", "--max-count", "--max-depth", "-r", "--replace", "-A", "--after-context", "-B", "--before-context", "-C", "--context"]), ["."]),
-    sed: e => {
-      let t = [],
-        n = false,
-        r = false,
-        o = false,
-        s = false;
-      for (let i = 0; i < e.length; i++) {
-        if (n) {
-          n = false;
-          continue;
-        }
-        let a = e[i];
-        if (!a) continue;
-        if (!o && !s && a === "--") {
-          o = true;
-          continue;
-        }
-        if (!o && !s && a !== "-" && a.startsWith("-")) {
-          if (["-f", "--file"].includes(a)) {
-            let l = e[i + 1];
-            if (l) t.push(l), n = true;
-            r = true;
-          } else if (["-e", "--expression"].includes(a)) n = true, r = true;else if (a.includes("e") || a.includes("f")) r = true;
-          continue;
-        }
-        if (s = true, !r) {
-          r = true;
-          continue;
-        }
+// [unwrapped __esm module Ago] deps: rre, sN, ys, Hu, Yf, $I, Jbe, xue, S$, Tjn
+b$a = require("os"), H5 = require("path");
+ZRp = /^"?\$(?:\{[A-Za-z_][A-Za-z0-9_]*\}|[A-Za-z_][A-Za-z0-9_]*)"?\/(?:\*|\$|\/|["']|$)/, eLp = /^(?:[A-Za-z_][A-Za-z0-9_]*\+?=[^\s]*\s+)*\\?(?:[^\s=]*\/)?(rm|rmdir)(?:\s|$)/;
+Zpt = {
+  cd: e => {
+    let t = SH(e);
+    if (t.length === 0) return e.at(-1) === "-" ? ["-"] : [b$a.homedir()];
+    return [t[0]];
+  },
+  ls: e => {
+    let t = SH(e);
+    return t.length > 0 ? t : ["."];
+  },
+  find: e => {
+    let t = [],
+      n = new Set(["-newer", "-anewer", "-cnewer", "-mnewer", "-samefile", "-path", "-wholename", "-ilname", "-lname", "-ipath", "-iwholename"]),
+      r = /^-newer[acmBt][acmtB]$/,
+      o = false,
+      s = false;
+    for (let i = 0; i < e.length; i++) {
+      let a = e[i];
+      if (!a) continue;
+      if (s) {
         t.push(a);
+        continue;
       }
-      return t;
-    },
-    jq: e => {
-      let t = [],
-        n = new Set(["-e", "--expression", "--arg", "--argjson", "--args", "--jsonargs", "-L", "--library-path", "--indent", "--tab"]),
-        r = false,
-        o = false;
-      for (let s = 0; s < e.length; s++) {
-        let i = e[s];
-        if (i === void 0 || i === null) continue;
-        if (!o && i === "--") {
-          o = true;
+      if (a === "--") {
+        s = true;
+        continue;
+      }
+      if (a.startsWith("-")) {
+        if (["-H", "-L", "-P"].includes(a)) continue;
+        if (o = true, n.has(a) || r.test(a)) {
+          let l = e[i + 1];
+          if (l) t.push(l), i++;
+        }
+        continue;
+      }
+      if (!o) t.push(a);
+    }
+    return t.length > 0 ? t : ["."];
+  },
+  mkdir: SH,
+  touch: SH,
+  rm: SH,
+  rmdir: SH,
+  mv: SH,
+  cp: SH,
+  cat: SH,
+  head: SH,
+  tail: SH,
+  sort: SH,
+  uniq: SH,
+  wc: SH,
+  cut: Ego(new Set(["-d", "--delimiter", "-f", "--fields", "-b", "--bytes", "-c", "--characters", "--output-delimiter"])),
+  paste: Ego(new Set(["-d", "--delimiters"])),
+  column: Ego(new Set(["-s", "--separator", "-o", "--output-separator", "-c", "--output-width"])),
+  file: SH,
+  stat: SH,
+  diff: SH,
+  awk: e => {
+    let t = new Set(["-F", "--field-separator", "-v", "--assign", "-e", "--source"]),
+      n = new Set(["-f", "--file", "-E", "--exec"]),
+      r = [],
+      o = false,
+      s = false,
+      i = false;
+    for (let a = 0; a < e.length; a++) {
+      let l = e[a];
+      if (l === void 0 || l === null) continue;
+      if (!o && !i && l === "--") {
+        o = true;
+        continue;
+      }
+      if (!o && !i && l !== "-" && l.startsWith("-")) {
+        let c = l.indexOf("="),
+          u = c >= 0 ? l.slice(0, c) : l;
+        if (t.has(u)) {
+          if (u === "-e" || u === "--source") s = true;
+          if (c < 0) a++;
           continue;
         }
-        if (!o && i.startsWith("-")) {
-          let a = i.indexOf("="),
-            l = a >= 0 ? i.slice(0, a) : i;
-          if (["-e", "--expression"].includes(l)) r = true;
-          if (["-f", "--from-file"].includes(l)) {
-            if (r = true, a >= 0) t.push(i.slice(a + 1));else {
-              let c = e[s + 1];
-              if (c !== void 0) t.push(c), s++;
-            }
-            continue;
+        if (n.has(u)) {
+          if (s = true, c >= 0) r.push(l.slice(c + 1));else {
+            let d = e[a + 1];
+            if (d !== void 0) r.push(d), a++;
           }
-          if (["--slurpfile", "--rawfile"].includes(l)) {
-            let c = e[s + 2];
-            if (c !== void 0) t.push(c);
-            s += 2;
-            continue;
-          }
-          if (n.has(l) && a < 0) s++;
           continue;
         }
-        if (!r) {
+        continue;
+      }
+      if (i && !o) {
+        let c = E$a(l, ["-f", "--file", "-E", "--exec"]);
+        if (c !== void 0) r.push(c);
+      }
+      if (i = true, !s) {
+        s = true;
+        continue;
+      }
+      r.push(l);
+    }
+    return r;
+  },
+  strings: SH,
+  hexdump: SH,
+  od: SH,
+  base64: SH,
+  nl: SH,
+  sha256sum: SH,
+  sha1sum: SH,
+  md5sum: SH,
+  tr: e => {
+    let t = e.some(r => r === "-d" || r === "--delete" || r.startsWith("-") && r.includes("d"));
+    return SH(e).slice(t ? 1 : 2);
+  },
+  grep: e => {
+    let n = y$a(e, new Set(["-e", "--regexp", "-f", "--file", "--exclude", "--include", "--exclude-dir", "--include-dir", "-m", "--max-count", "-A", "--after-context", "-B", "--before-context", "-C", "--context"]));
+    if (n.length === 0 && e.some(r => ["-r", "-R", "--recursive"].includes(r))) return ["."];
+    return n;
+  },
+  rg: e => y$a(e, new Set(["-e", "--regexp", "-f", "--file", "-t", "--type", "-T", "--type-not", "-g", "--glob", "-m", "--max-count", "--max-depth", "-r", "--replace", "-A", "--after-context", "-B", "--before-context", "-C", "--context"]), ["."]),
+  sed: e => {
+    let t = [],
+      n = false,
+      r = false,
+      o = false,
+      s = false;
+    for (let i = 0; i < e.length; i++) {
+      if (n) {
+        n = false;
+        continue;
+      }
+      let a = e[i];
+      if (!a) continue;
+      if (!o && !s && a === "--") {
+        o = true;
+        continue;
+      }
+      if (!o && !s && a !== "-" && a.startsWith("-")) {
+        if (["-f", "--file"].includes(a)) {
+          let l = e[i + 1];
+          if (l) t.push(l), n = true;
           r = true;
+        } else if (["-e", "--expression"].includes(a)) n = true, r = true;else if (a.includes("e") || a.includes("f")) r = true;
+        continue;
+      }
+      if (s = true, !r) {
+        r = true;
+        continue;
+      }
+      t.push(a);
+    }
+    return t;
+  },
+  jq: e => {
+    let t = [],
+      n = new Set(["-e", "--expression", "--arg", "--argjson", "--args", "--jsonargs", "-L", "--library-path", "--indent", "--tab"]),
+      r = false,
+      o = false;
+    for (let s = 0; s < e.length; s++) {
+      let i = e[s];
+      if (i === void 0 || i === null) continue;
+      if (!o && i === "--") {
+        o = true;
+        continue;
+      }
+      if (!o && i.startsWith("-")) {
+        let a = i.indexOf("="),
+          l = a >= 0 ? i.slice(0, a) : i;
+        if (["-e", "--expression"].includes(l)) r = true;
+        if (["-f", "--from-file"].includes(l)) {
+          if (r = true, a >= 0) t.push(i.slice(a + 1));else {
+            let c = e[s + 1];
+            if (c !== void 0) t.push(c), s++;
+          }
           continue;
         }
-        t.push(i);
-      }
-      return t;
-    },
-    git: e => {
-      if (e.length >= 1 && e[0] === "diff") {
-        if (e.includes("--no-index")) return SH(e.slice(1));
-      }
-      return [];
-    }
-  }, A$a = Object.keys(Zpt), tLp = {
-    cd: "change directories to",
-    ls: "list files in",
-    find: "search files in",
-    mkdir: "create directories in",
-    touch: "create or modify files in",
-    rm: "remove files from",
-    rmdir: "remove directories from",
-    mv: "move files to/from",
-    cp: "copy files to/from",
-    cat: "concatenate files from",
-    head: "read the beginning of files from",
-    tail: "read the end of files from",
-    sort: "sort contents of files from",
-    uniq: "filter duplicate lines from files in",
-    wc: "count lines/words/bytes in files from",
-    cut: "extract columns from files in",
-    paste: "merge files from",
-    column: "format files from",
-    tr: "transform text from files in",
-    file: "examine file types in",
-    stat: "read file stats from",
-    diff: "compare files from",
-    awk: "process text from files in",
-    strings: "extract strings from files in",
-    hexdump: "display hex dump of files from",
-    od: "display octal dump of files from",
-    base64: "encode/decode files from",
-    nl: "number lines in files from",
-    grep: "search for patterns in files from",
-    rg: "search for patterns in files from",
-    sed: "edit files in",
-    git: "access files with git from",
-    jq: "process JSON from files in",
-    sha256sum: "compute SHA-256 checksums for files in",
-    sha1sum: "compute SHA-1 checksums for files in",
-    md5sum: "compute MD5 checksums for files in"
-  }, Jqe = {
-    cd: "read",
-    ls: "read",
-    find: "read",
-    mkdir: "create",
-    touch: "create",
-    rm: "write",
-    rmdir: "write",
-    mv: "write",
-    cp: "write",
-    cat: "read",
-    head: "read",
-    tail: "read",
-    sort: "read",
-    uniq: "read",
-    wc: "read",
-    cut: "read",
-    paste: "read",
-    column: "read",
-    tr: "read",
-    file: "read",
-    stat: "read",
-    diff: "read",
-    awk: "read",
-    strings: "read",
-    hexdump: "read",
-    od: "read",
-    base64: "read",
-    nl: "read",
-    grep: "read",
-    rg: "read",
-    sed: "write",
-    git: "read",
-    jq: "read",
-    sha256sum: "read",
-    sha1sum: "read",
-    md5sum: "read"
-  }, nLp = {
-    mv: e => !e.some(t => t?.startsWith("-")),
-    cp: e => !e.some(t => t?.startsWith("-")),
-    cd: e => {
-      let t = false,
-        n = 0;
-      for (let r of e) {
-        if (!t) {
-          if (r === "--") {
-            t = true;
-            continue;
-          }
-          if (r.startsWith("-") && r !== "-") continue;
-          t = true;
+        if (["--slurpfile", "--rawfile"].includes(l)) {
+          let c = e[s + 2];
+          if (c !== void 0) t.push(c);
+          s += 2;
+          continue;
         }
-        n++;
+        if (n.has(l) && a < 0) s++;
+        continue;
       }
-      return n <= 1;
+      if (!r) {
+        r = true;
+        continue;
+      }
+      t.push(i);
     }
-  };
-  _$a = /^[A-Za-z0-9_.+-]+$/;
-});
+    return t;
+  },
+  git: e => {
+    if (e.length >= 1 && e[0] === "diff") {
+      if (e.includes("--no-index")) return SH(e.slice(1));
+    }
+    return [];
+  }
+}, A$a = Object.keys(Zpt), tLp = {
+  cd: "change directories to",
+  ls: "list files in",
+  find: "search files in",
+  mkdir: "create directories in",
+  touch: "create or modify files in",
+  rm: "remove files from",
+  rmdir: "remove directories from",
+  mv: "move files to/from",
+  cp: "copy files to/from",
+  cat: "concatenate files from",
+  head: "read the beginning of files from",
+  tail: "read the end of files from",
+  sort: "sort contents of files from",
+  uniq: "filter duplicate lines from files in",
+  wc: "count lines/words/bytes in files from",
+  cut: "extract columns from files in",
+  paste: "merge files from",
+  column: "format files from",
+  tr: "transform text from files in",
+  file: "examine file types in",
+  stat: "read file stats from",
+  diff: "compare files from",
+  awk: "process text from files in",
+  strings: "extract strings from files in",
+  hexdump: "display hex dump of files from",
+  od: "display octal dump of files from",
+  base64: "encode/decode files from",
+  nl: "number lines in files from",
+  grep: "search for patterns in files from",
+  rg: "search for patterns in files from",
+  sed: "edit files in",
+  git: "access files with git from",
+  jq: "process JSON from files in",
+  sha256sum: "compute SHA-256 checksums for files in",
+  sha1sum: "compute SHA-1 checksums for files in",
+  md5sum: "compute MD5 checksums for files in"
+}, Jqe = {
+  cd: "read",
+  ls: "read",
+  find: "read",
+  mkdir: "create",
+  touch: "create",
+  rm: "write",
+  rmdir: "write",
+  mv: "write",
+  cp: "write",
+  cat: "read",
+  head: "read",
+  tail: "read",
+  sort: "read",
+  uniq: "read",
+  wc: "read",
+  cut: "read",
+  paste: "read",
+  column: "read",
+  tr: "read",
+  file: "read",
+  stat: "read",
+  diff: "read",
+  awk: "read",
+  strings: "read",
+  hexdump: "read",
+  od: "read",
+  base64: "read",
+  nl: "read",
+  grep: "read",
+  rg: "read",
+  sed: "write",
+  git: "read",
+  jq: "read",
+  sha256sum: "read",
+  sha1sum: "read",
+  md5sum: "read"
+}, nLp = {
+  mv: e => !e.some(t => t?.startsWith("-")),
+  cp: e => !e.some(t => t?.startsWith("-")),
+  cd: e => {
+    let t = false,
+      n = 0;
+    for (let r of e) {
+      if (!t) {
+        if (r === "--") {
+          t = true;
+          continue;
+        }
+        if (r.startsWith("-") && r !== "-") continue;
+        t = true;
+      }
+      n++;
+    }
+    return n <= 1;
+  }
+};
+_$a = /^[A-Za-z0-9_.+-]+$/;
 function fLp() {
   let e = pLp;
   if (Vt() === "windows") {

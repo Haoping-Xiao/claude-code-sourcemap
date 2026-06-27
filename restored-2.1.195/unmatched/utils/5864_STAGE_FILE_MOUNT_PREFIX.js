@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0117  score=0.1132  fileCov=0.0128
 // note: nearest: src/commands/insights.ts (0.0117); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VUc = E(() => {
-  dn();
-  u8t();
-  je();
-  RE();
-  tA();
-});
 function yXo({
   message: e,
   held: t,

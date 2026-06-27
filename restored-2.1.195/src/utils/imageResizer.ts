@@ -4,14 +4,13 @@
 // class=modified  jaccard=0.4695  score=0.6659  fileCov=0.6141
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Lne = E(() => {
-  H8 = {
-    maxWidth: 2000,
-    maxHeight: 2000,
-    maxBase64Size: 5242880,
-    targetRawSize: 3932160,
-  };
-});
+// [unwrapped __esm module Lne]
+H8 = {
+  maxWidth: 2000,
+  maxHeight: 2000,
+  maxBase64Size: 5242880,
+  targetRawSize: 3932160,
+};
 function i8i(e) {
   if (e instanceof Error) {
     let n = e;

@@ -4,23 +4,16 @@
 // class=modified (alt of src/keybindings/useShortcutDisplay.ts)  jaccard=0.5362  score=0.895  fileCov=0.5722
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TZr = E(() => {
-  YZe();
-  Lo();
-  ys();
-  Hu();
-  id();
-  je();
-  ((iX = require("path")),
-    (D6i = new bG({
-      max: M6i,
-      ttl: $6i,
-    })),
-    (P6i = new bG({
-      max: M6i,
-      ttl: $6i,
-    })));
-});
+// [unwrapped __esm module TZr] deps: YZe, Lo, ys, Hu, id, je
+((iX = require("path")),
+  (D6i = new bG({
+    max: M6i,
+    ttl: $6i,
+  })),
+  (P6i = new bG({
+    max: M6i,
+    ttl: $6i,
+  })));
 function $0(e, t, n) {
   let r = KE(),
     o = r ? uQr(e, t, r.bindings) : void 0,

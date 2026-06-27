@@ -4,130 +4,99 @@
 // class=modified  jaccard=0.0984  score=0.1229  fileCov=0.3304
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lg = E(() => {
-  uQi();
-  SWe();
-  Xto();
-  IB();
-  ft();
-  dn();
-  Un();
-  kt();
-  bLt();
-  hna();
-  je();
-  Q9();
-  fn();
-  Hu();
-  Is();
-  Eue();
-  vf();
-  hY();
-  mCe();
-  dr();
-  _1();
-  AKr();
-  u_();
-  lf();
-  TX();
-  At();
-  Yf();
-  tre();
-  Hro();
-  Nna();
-  ((hT = require("fs")), (za = require("path")));
-  oOn = class oOn extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "SandboxInitFailedError";
-    }
-  };
-  vro = class vro extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "SandboxBridgeUnavailableError";
-    }
-  };
-  wRe = Cn(() => ({}));
-  sOn = new Set();
-  ((cct = []), (g2t = []), (iOn = new Map()));
-  h2t = Cn(() => {
-    try {
-      cS.updateConfig(f2t(jo() ?? {}));
-    } catch (n) {
-      T(`checkDependencies: settings unavailable, skipping SRT config seed: ${n}`);
-    }
-    let { rgPath: e, rgArgs: t } = DWe();
-    return cS.checkDependencies({
-      command: e,
-      args: t,
-    });
+// [unwrapped __esm module lg] deps: uQi, SWe, Xto, IB, ft, dn, Un, kt, bLt, hna, je, Q9, fn, Hu, Is, Eue, vf, hY, mCe, dr, _1, AKr, u_, lf, TX, At, Yf, tre, Hro, Nna
+((hT = require("fs")), (za = require("path")));
+oOn = class oOn extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "SandboxInitFailedError";
+  }
+};
+vro = class vro extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "SandboxBridgeUnavailableError";
+  }
+};
+wRe = Cn(() => ({}));
+sOn = new Set();
+((cct = []), (g2t = []), (iOn = new Map()));
+h2t = Cn(() => {
+  try {
+    cS.updateConfig(f2t(jo() ?? {}));
+  } catch (n) {
+    T(`checkDependencies: settings unavailable, skipping SRT config seed: ${n}`);
+  }
+  let { rgPath: e, rgArgs: t } = DWe();
+  return cS.checkDependencies({
+    command: e,
+    args: t,
   });
-  lOn = Cn(() => {
-    if (Vt() === "windows") return false;
-    return cS.isSupportedPlatform();
-  });
-  xo = {
-    initialize: jna,
-    isSandboxingEnabled: uOn,
-    isSandboxEnabledInSettings: $We,
-    isPlatformInEnabledList: cOn,
-    getSandboxUnavailableReason: Hnp,
-    isAutoAllowBashIfSandboxedEnabled: Snp,
-    areUnsandboxedCommandsAllowed: Enp,
-    isSandboxRequired: Fna,
-    areSandboxSettingsLockedByPolicy: vnp,
-    areUnsandboxedCommandsForbiddenByPolicy: Anp,
-    setSandboxSettings: wnp,
-    getExcludedCommands: Cnp,
-    wrapWithSandbox: Inp,
-    refreshConfig: xro,
-    addSessionAllowedHost: ynp,
-    reset: xnp,
-    checkDependencies: h2t,
-    getConfig: cS.getConfig,
-    getFsReadConfig: () => {
-      let e = cS.getConfig();
-      if (e?.filesystem.disabled)
-        return {
-          denyOnly: e.filesystem.denyRead.map(NW),
-          allowWithinDeny: (e.filesystem.allowRead ?? []).map(NW),
-        };
-      return cS.getFsReadConfig();
-    },
-    getFsWriteConfig: () => {
-      let e = cS.getConfig();
-      if (e?.filesystem.disabled)
-        return {
-          allowOnly: e.filesystem.allowWrite.map(NW),
-          denyWithinAllow: e.filesystem.denyWrite.map(NW),
-        };
-      return cS.getFsWriteConfig();
-    },
-    getNetworkRestrictionConfig: () => {
-      if (cS.getConfig()?.network?.allowedDomains === void 0) return {};
-      return cS.getNetworkRestrictionConfig();
-    },
-    getIgnoreViolations: cS.getIgnoreViolations,
-    getLinuxGlobPatternWarnings: Tnp,
-    isSupportedPlatform: lOn,
-    getAllowUnixSockets: cS.getAllowUnixSockets,
-    getAllowLocalBinding: cS.getAllowLocalBinding,
-    getAllowMachLookup: cS.getAllowMachLookup,
-    getEnableWeakerNestedSandbox: cS.getEnableWeakerNestedSandbox,
-    getProxyPort: cS.getProxyPort,
-    getProxyAuthToken: cS.getProxyAuthToken,
-    getSocksProxyPort: cS.getSocksProxyPort,
-    getLinuxHttpSocketPath: cS.getLinuxHttpSocketPath,
-    getLinuxSocksSocketPath: cS.getLinuxSocksSocketPath,
-    waitForNetworkInitialization: cS.waitForNetworkInitialization,
-    getSandboxViolationStore: cS.getSandboxViolationStore,
-    annotateStderrWithSandboxFailures: cS.annotateStderrWithSandboxFailures,
-    cleanupAfterCommand: () => {
-      (cS.cleanupAfterCommand(), _np(), bnp());
-    },
-  };
 });
+lOn = Cn(() => {
+  if (Vt() === "windows") return false;
+  return cS.isSupportedPlatform();
+});
+xo = {
+  initialize: jna,
+  isSandboxingEnabled: uOn,
+  isSandboxEnabledInSettings: $We,
+  isPlatformInEnabledList: cOn,
+  getSandboxUnavailableReason: Hnp,
+  isAutoAllowBashIfSandboxedEnabled: Snp,
+  areUnsandboxedCommandsAllowed: Enp,
+  isSandboxRequired: Fna,
+  areSandboxSettingsLockedByPolicy: vnp,
+  areUnsandboxedCommandsForbiddenByPolicy: Anp,
+  setSandboxSettings: wnp,
+  getExcludedCommands: Cnp,
+  wrapWithSandbox: Inp,
+  refreshConfig: xro,
+  addSessionAllowedHost: ynp,
+  reset: xnp,
+  checkDependencies: h2t,
+  getConfig: cS.getConfig,
+  getFsReadConfig: () => {
+    let e = cS.getConfig();
+    if (e?.filesystem.disabled)
+      return {
+        denyOnly: e.filesystem.denyRead.map(NW),
+        allowWithinDeny: (e.filesystem.allowRead ?? []).map(NW),
+      };
+    return cS.getFsReadConfig();
+  },
+  getFsWriteConfig: () => {
+    let e = cS.getConfig();
+    if (e?.filesystem.disabled)
+      return {
+        allowOnly: e.filesystem.allowWrite.map(NW),
+        denyWithinAllow: e.filesystem.denyWrite.map(NW),
+      };
+    return cS.getFsWriteConfig();
+  },
+  getNetworkRestrictionConfig: () => {
+    if (cS.getConfig()?.network?.allowedDomains === void 0) return {};
+    return cS.getNetworkRestrictionConfig();
+  },
+  getIgnoreViolations: cS.getIgnoreViolations,
+  getLinuxGlobPatternWarnings: Tnp,
+  isSupportedPlatform: lOn,
+  getAllowUnixSockets: cS.getAllowUnixSockets,
+  getAllowLocalBinding: cS.getAllowLocalBinding,
+  getAllowMachLookup: cS.getAllowMachLookup,
+  getEnableWeakerNestedSandbox: cS.getEnableWeakerNestedSandbox,
+  getProxyPort: cS.getProxyPort,
+  getProxyAuthToken: cS.getProxyAuthToken,
+  getSocksProxyPort: cS.getSocksProxyPort,
+  getLinuxHttpSocketPath: cS.getLinuxHttpSocketPath,
+  getLinuxSocksSocketPath: cS.getLinuxSocksSocketPath,
+  waitForNetworkInitialization: cS.waitForNetworkInitialization,
+  getSandboxViolationStore: cS.getSandboxViolationStore,
+  annotateStderrWithSandboxFailures: cS.annotateStderrWithSandboxFailures,
+  cleanupAfterCommand: () => {
+    (cS.cleanupAfterCommand(), _np(), bnp());
+  },
+};
 function hL() {
   return knp;
 }

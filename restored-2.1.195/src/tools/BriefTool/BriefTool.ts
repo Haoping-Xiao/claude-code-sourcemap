@@ -4,149 +4,139 @@
 // class=modified  jaccard=0.35  score=0.4919  fileCov=0.5481
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Dyl = E(() => {
-  Xr();
-  kt();
-  ii();
-  Bot();
-  sr();
-  z0o();
-  f4();
-  l3();
-  K0o();
-  ((_mf = ve(() =>
+// [unwrapped __esm module Dyl] deps: Xr, kt, ii, Bot, sr, z0o, f4, l3, K0o
+((_mf = ve(() =>
+  H.strictObject({
+    file_uuid: H.string(),
+    file_name: H.string(),
+    size: H.number(),
+    is_image: H.boolean(),
+    media_type: H.string().optional(),
+  }).describe(
+    "A file already uploaded to the filestore (e.g. by the device attach_file tool). Passed through without local stat or upload.",
+  ),
+)),
+  (bmf = ve(() =>
     H.strictObject({
-      file_uuid: H.string(),
-      file_name: H.string(),
-      size: H.number(),
-      is_image: H.boolean(),
-      media_type: H.string().optional(),
-    }).describe(
-      "A file already uploaded to the filestore (e.g. by the device attach_file tool). Passed through without local stat or upload.",
-    ),
-  )),
-    (bmf = ve(() =>
-      H.strictObject({
-        message: H.string().describe(Ryl),
-        attachments: H.array(H.union([H.string(), _mf()]))
-          .optional()
-          .describe(
-            "Optional attachments for the user to see alongside your message. Each entry is either a file path (absolute or relative to cwd) for a file you can read locally, or a pre-resolved {file_uuid, file_name, size, is_image} object you obtained from a device tool such as attach_file.",
-          ),
-        status: H.enum(["normal", "proactive"]).describe(
-          "Use 'proactive' when you're surfacing something the user hasn't asked for and needs to see now \u2014 task completion while they're away, a blocker you hit, an unsolicited status update. Use 'normal' when replying to something the user just said.",
+      message: H.string().describe(Ryl),
+      attachments: H.array(H.union([H.string(), _mf()]))
+        .optional()
+        .describe(
+          "Optional attachments for the user to see alongside your message. Each entry is either a file path (absolute or relative to cwd) for a file you can read locally, or a pre-resolved {file_uuid, file_name, size, is_image} object you obtained from a device tool such as attach_file.",
         ),
-      }),
-    )),
-    (Smf = ve(() =>
-      H.object({
-        message: H.string().describe(Ryl),
-      }),
-    )),
-    (Emf = ve(() =>
-      H.object({
-        message: H.string().describe("The message"),
-        attachments: H.array(
-          H.object({
-            path: H.string(),
-            size: H.number(),
-            isImage: H.boolean(),
-            file_uuid: H.string().optional(),
-            media_type: H.string().optional(),
-          }),
-        )
-          .optional()
-          .describe("Resolved attachment metadata"),
-        sentAt: H.string()
-          .optional()
-          .describe(
-            "ISO timestamp captured at tool execution on the emitting process. Optional \u2014 resumed sessions replay pre-sentAt outputs verbatim.",
-          ),
-      }),
-    )),
-    (Lyl = ti({
-      name: j1,
-      aliases: [z2t],
-      searchHint: "send a message to the user \u2014 your primary visible output channel",
-      briefStandalone: true,
-      maxResultSizeChars: 100000 /* 1e5 */,
-      userFacingName() {
-        return "";
-      },
-      get inputSchema() {
-        return z6e() ? bmf() : Smf();
-      },
-      get outputSchema() {
-        return Emf();
-      },
-      isEnabled() {
-        return z6e() || Jxe();
-      },
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      toAutoClassifierInput(e) {
-        return e.message;
-      },
-      async validateInput(e, t) {
-        if (!("attachments" in e) || !e.attachments?.length)
-          return {
-            result: true,
-          };
-        return K7n(e.attachments);
-      },
-      async description() {
-        return joo;
-      },
-      async prompt() {
-        return z6e() ? Goo : Woo;
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        let n = e.attachments?.length ?? 0,
-          r = n === 0 ? "" : ` (${n} ${bn(n, "attachment")} included)`;
+      status: H.enum(["normal", "proactive"]).describe(
+        "Use 'proactive' when you're surfacing something the user hasn't asked for and needs to see now \u2014 task completion while they're away, a blocker you hit, an unsolicited status update. Use 'normal' when replying to something the user just said.",
+      ),
+    }),
+  )),
+  (Smf = ve(() =>
+    H.object({
+      message: H.string().describe(Ryl),
+    }),
+  )),
+  (Emf = ve(() =>
+    H.object({
+      message: H.string().describe("The message"),
+      attachments: H.array(
+        H.object({
+          path: H.string(),
+          size: H.number(),
+          isImage: H.boolean(),
+          file_uuid: H.string().optional(),
+          media_type: H.string().optional(),
+        }),
+      )
+        .optional()
+        .describe("Resolved attachment metadata"),
+      sentAt: H.string()
+        .optional()
+        .describe(
+          "ISO timestamp captured at tool execution on the emitting process. Optional \u2014 resumed sessions replay pre-sentAt outputs verbatim.",
+        ),
+    }),
+  )),
+  (Lyl = ti({
+    name: j1,
+    aliases: [z2t],
+    searchHint: "send a message to the user \u2014 your primary visible output channel",
+    briefStandalone: true,
+    maxResultSizeChars: 100000 /* 1e5 */,
+    userFacingName() {
+      return "";
+    },
+    get inputSchema() {
+      return z6e() ? bmf() : Smf();
+    },
+    get outputSchema() {
+      return Emf();
+    },
+    isEnabled() {
+      return z6e() || Jxe();
+    },
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    toAutoClassifierInput(e) {
+      return e.message;
+    },
+    async validateInput(e, t) {
+      if (!("attachments" in e) || !e.attachments?.length)
         return {
-          tool_use_id: t,
-          type: "tool_result",
-          content: `Message delivered to user.${r}`,
+          result: true,
         };
-      },
-      renderToolUseMessage: xyl,
-      renderToolResultMessage: kyl,
-      async call(e, t) {
-        let { message: n } = e,
-          r = "attachments" in e ? e.attachments : void 0,
-          o = new Date().toISOString();
-        if (
-          (G("tengu_brief_send", {
-            proactive: "status" in e && e.status === "proactive",
-            attachment_count: r?.length ?? 0,
-          }),
-          !r?.length)
-        )
-          return {
-            data: {
-              message: n,
-              sentAt: o,
-            },
-          };
-        let s = t.getAppState(),
-          i = await Y7n(r, {
-            replBridgeEnabled: s.replBridgeEnabled,
-            signal: t.abortController.signal,
-          });
+      return K7n(e.attachments);
+    },
+    async description() {
+      return joo;
+    },
+    async prompt() {
+      return z6e() ? Goo : Woo;
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      let n = e.attachments?.length ?? 0,
+        r = n === 0 ? "" : ` (${n} ${bn(n, "attachment")} included)`;
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content: `Message delivered to user.${r}`,
+      };
+    },
+    renderToolUseMessage: xyl,
+    renderToolResultMessage: kyl,
+    async call(e, t) {
+      let { message: n } = e,
+        r = "attachments" in e ? e.attachments : void 0,
+        o = new Date().toISOString();
+      if (
+        (G("tengu_brief_send", {
+          proactive: "status" in e && e.status === "proactive",
+          attachment_count: r?.length ?? 0,
+        }),
+        !r?.length)
+      )
         return {
           data: {
             message: n,
-            attachments: i,
             sentAt: o,
           },
         };
-      },
-    })));
-});
+      let s = t.getAppState(),
+        i = await Y7n(r, {
+          replBridgeEnabled: s.replBridgeEnabled,
+          signal: t.abortController.signal,
+        });
+      return {
+        data: {
+          message: n,
+          attachments: i,
+          sentAt: o,
+        },
+      };
+    },
+  })));
 async function Pyl() {
   let e = LI(),
     t = Su(),

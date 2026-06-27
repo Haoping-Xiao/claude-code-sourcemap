@@ -4,12 +4,8 @@
 // class=modified (alt of src/components/ConsoleOAuthFlow.tsx)  jaccard=0.2048  score=0.4357  fileCov=0.2788
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iFl = E(() => {
-  si();
-  Ye();
-  ps();
-  ((oFl = R(lt(), 1)), (mR = R(se(), 1)));
-});
+// [unwrapped __esm module iFl] deps: si, Ye, ps
+((oFl = R(lt(), 1)), (mR = R(se(), 1)));
 function cFl({ onSuccess: e, onCancel: t }) {
   let [n, r] = ZF.useState({
       state: "starting",

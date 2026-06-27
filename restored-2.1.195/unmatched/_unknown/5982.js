@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0223  score=0.235  fileCov=0.024
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0223); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oBe = E(() => {
-  NZ();
-  D3c = Symbol();
-});
+// [unwrapped __esm module oBe] deps: NZ
+D3c = Symbol();
 function B3(e) {
   if (!GMm(e) || Object.prototype.toString.call(e) !== "[object Object]") return false;
   if (Object.getPrototypeOf(e) === null) return true;

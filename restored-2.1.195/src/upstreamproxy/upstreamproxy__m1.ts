@@ -4,18 +4,17 @@
 // class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0316  score=0.1191  fileCov=0.0412
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var z6l = E(() => {
-  ((gqf = {
-    type: "local-jsx",
-    name: "theme",
-    description: "Change the theme",
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (V6l(), q6l)),
-  }),
-    (Rjo = gqf));
-});
+// [unwrapped __esm module z6l]
+((gqf = {
+  type: "local-jsx",
+  name: "theme",
+  description: "Change the theme",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (V6l(), q6l)),
+}),
+  (Rjo = gqf));
 function Y6l(e, t, n, r) {
   let o = Vt();
   if (o === "windows" || !K6l.isAbsolute(e)) return;

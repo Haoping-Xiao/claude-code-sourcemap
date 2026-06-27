@@ -4,16 +4,6 @@
 // class=new  jaccard=0.0178  score=0.5491  fileCov=0.0181
 // note: nearest: src/ink/styles.ts (0.0178); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HVt = E(() => {
-  ft();
-  je();
-  wr();
-  Bi();
-  sp();
-  Fh();
-  dn();
-  kt();
-});
 function cA(e) {
   let t = Q7a.c(10),
     {

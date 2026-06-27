@@ -4,23 +4,16 @@
 // class=new  jaccard=0.0381  score=0.2964  fileCov=0.0418
 // note: nearest: src/services/compact/compact.ts (0.0381); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gjn = E(() => {
-  ft();
-  id();
-  Un();
-  Ld();
-  je();
-  fn();
-  ARp = new Set(["remote", "remote_cowork", "remote_desktop", "remote_mobile"]);
-  BMa = {
-    bg: ["state"],
-    watched: ["state"],
-    ccr: ["summary"],
-    bridge: ["summary"],
-    desktop: ["summary"],
-    cli: ["summary"]
-  };
-});
+// [unwrapped __esm module gjn] deps: ft, id, Un, Ld, je, fn
+ARp = new Set(["remote", "remote_cowork", "remote_desktop", "remote_mobile"]);
+BMa = {
+  bg: ["state"],
+  watched: ["state"],
+  ccr: ["summary"],
+  bridge: ["summary"],
+  desktop: ["summary"],
+  cli: ["summary"]
+};
 function Kpt() {
   let e = process.env.CLAUDE_CODE_ENABLE_AWAY_SUMMARY;
   if (ml(e)) return false;

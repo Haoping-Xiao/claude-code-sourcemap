@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.5704  score=0.8863  fileCov=0.6155
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hFl = E(() => {
-  pz();
-  R6();
-  gm();
-  Ye();
-  ((mFl = R(lt(), 1)), (im = R(se(), 1)));
-});
+// [unwrapped __esm module hFl] deps: pz, R6, gm, Ye
+((mFl = R(lt(), 1)), (im = R(se(), 1)));
 async function b1f(e, t, n, r, o, s, i) {
   let a = await $n("gh", ["api", `repos/${e}/contents/${n}`, "--jq", ".sha"]),
     l = null;

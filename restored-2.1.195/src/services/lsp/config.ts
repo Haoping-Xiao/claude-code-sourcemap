@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.4883  score=0.9019  fileCov=0.5157
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Gt = E(() => {
-  Xr();
-  ft();
-  je();
-  At();
-  Jt();
-  B1();
-  i5();
-  ZC();
-  ((Nfo = require("fs/promises")), (ADe = require("path")));
-});
+// [unwrapped __esm module _Gt] deps: Xr, ft, je, At, Jt, B1, i5, ZC
+((Nfo = require("fs/promises")), (ADe = require("path")));
 async function uLa() {
   let e = {};
   try {

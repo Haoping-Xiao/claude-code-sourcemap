@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2412  score=0.4395  fileCov=0.3483
 // note: low-confidence suggestion: src/tools/FileWriteTool/UI.tsx; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ttl = E(() => {
-  zRn();
-});
 function vtl(e) {
   let t = e.split(oyt);
   return e.endsWith(oyt) ? t.length - 1 : t.length;

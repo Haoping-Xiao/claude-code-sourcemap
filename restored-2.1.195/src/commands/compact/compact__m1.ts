@@ -4,8 +4,8 @@
 // class=modified (alt of src/commands/compact/compact.ts)  jaccard=0.0431  score=0.0971  fileCov=0.072
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Iao = E(() => {
-  ((Qcp = `Your task is to create a detailed summary of the RECENT portion of the conversation \u2014 the messages that follow earlier retained context. The earlier messages are being kept intact and do NOT need to be summarized. Focus your summary on what was discussed, learned, and accomplished in the recent messages only.
+// [unwrapped __esm module Iao]
+((Qcp = `Your task is to create a detailed summary of the RECENT portion of the conversation \u2014 the messages that follow earlier retained context. The earlier messages are being kept intact and do NOT need to be summarized. Focus your summary on what was discussed, learned, and accomplished in the recent messages only.
 
 ${`Before providing your final summary, wrap your analysis in <analysis> tags to organize your thoughts and ensure you've covered all necessary points. In your analysis process:
 
@@ -79,12 +79,11 @@ Here's an example of how your output should be structured:
 
 Please provide your summary based on the RECENT messages only (after the retained earlier context), following this structure and ensuring precision and thoroughness in your response.
 `),
-    (kca =
-      `
+  (kca =
+    `
 
 REMINDER: Do NOT call any tools. Respond with plain text only \u2014 ` +
-      "an <analysis> block followed by a <summary> block. Tool calls will be rejected and you will fail the task."));
-});
+    "an <analysis> block followed by a <summary> block. Tool calls will be rejected and you will fail the task."));
 async function eup(e, t, n, r) {
   let o = bNn(n),
     s = Rn({

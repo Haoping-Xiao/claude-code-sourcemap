@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1439  score=0.2927  fileCov=0.2206
 // note: low-confidence suggestion: src/skills/bundled/verify.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var PTc = E(() => {
-  RTc();
-  Nbm = LTc;
-});
+// [unwrapped __esm module PTc] deps: RTc
+Nbm = LTc;
 function Ubm() {
   return Bbm ??= Promise.resolve().then(() => (PTc(), DTc));
 }

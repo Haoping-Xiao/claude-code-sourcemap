@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.6572  score=0.8153  fileCov=0.7721
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $Da = E(() => {
-  Lo();
-  je();
-  At();
-  dn();
-  ((DDa = R(require("path"))), (PDa = require("url")));
-});
+// [unwrapped __esm module $Da] deps: Lo, je, At, dn
+((DDa = R(require("path"))), (PDa = require("url")));
 function ODa() {
   let e = new Map(),
     t = new Map(),

@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0894  score=0.489  fileCov=0.0986
 // note: low-confidence suggestion: src/components/CustomSelect/use-multi-select-state.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RZr = E(() => {
-  dzi();
-  tk = R(rt(), 1), fzi = require("util");
-});
+// [unwrapped __esm module RZr] deps: dzi
+tk = R(rt(), 1), fzi = require("util");
 function mzi({
   visibleOptionCount: e = 5,
   options: t,

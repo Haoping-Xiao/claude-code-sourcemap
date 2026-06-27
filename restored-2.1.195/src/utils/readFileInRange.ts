@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.5118  score=0.8598  fileCov=0.5584
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kPo = E(() => {
-  MM();
-  dr();
-  Un();
-});
 async function mSt(e, t = 0, n, r, o, s) {
   o?.throwIfAborted();
   let i = s?.truncateOnByteLimit ?? false,

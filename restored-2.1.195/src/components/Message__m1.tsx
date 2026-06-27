@@ -4,14 +4,8 @@
 // class=modified (alt of src/components/Message.tsx)  jaccard=0.0997  score=0.3433  fileCov=0.1232
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Z_c = E(() => {
-  si();
-  Ye();
-  IL();
-  Mp();
-  sA();
-  ((Y6o = R(lt(), 1)), (E7e = R(se(), 1)));
-});
+// [unwrapped __esm module Z_c] deps: si, Ye, IL, Mp, sA
+((Y6o = R(lt(), 1)), (E7e = R(se(), 1)));
 function Cmm(e) {
   try {
     return Ft(e)?.type === "idle_notification";

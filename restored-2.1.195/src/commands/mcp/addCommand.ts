@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4644  score=0.7934  fileCov=0.5283
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jcr = E(() => {
-  Tc();
-  sr();
-});
 function ldc(e) {
   e.command("add <name> <commandOrUrl> [args...]")
     .description(

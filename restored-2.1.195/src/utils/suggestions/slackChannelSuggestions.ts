@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3916  score=1  fileCov=0.3916
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var g6o = E(() => {
-  zj();
-  je();
-});
 function myc(e) {
   return e.find((t) => t.type === "connected" && t.name.includes("slack"));
 }

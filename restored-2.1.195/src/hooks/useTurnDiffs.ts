@@ -4,15 +4,12 @@
 // class=modified  jaccard=0.6809  score=0.9183  fileCov=0.7248
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gNo = E(() => {
-  l0e();
-  G9t();
-  ((qQ = R(rt(), 1)),
-    (fNo = {
-      hunks: new Map(),
-      skippedLarge: new Set(),
-    }));
-});
+// [unwrapped __esm module gNo] deps: l0e, G9t
+((qQ = R(rt(), 1)),
+  (fNo = {
+    hunks: new Map(),
+    skippedLarge: new Set(),
+  }));
 function AMf(e) {
   if (!e || typeof e !== "object") return false;
   let t = e,

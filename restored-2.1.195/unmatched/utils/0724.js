@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qee = E(() => {
-  GRr();
-  zRt();
-  qfn();
-  ows();
-  WO = class WO extends Error {};
-});
+// [unwrapped __esm module qee] deps: GRr, zRt, qfn, ows
+WO = class WO extends Error {};
 var sws;

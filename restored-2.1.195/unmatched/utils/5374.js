@@ -4,28 +4,20 @@
 // class=new  jaccard=0.0137  score=0.0465  fileCov=0.0191
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.0137); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ofc = E(() => {
-  dn();
-  je();
-  u9();
-  Mh();
-  Jt();
-  sr();
-  qpc();
-  Elm = {
-    openTimeoutMs: 10000 /* 1e4 */,
-    openMaxAttempts: 3,
-    openBackoffBaseMs: 100,
-    sendHighWater: 4194304,
-    sendLowWater: 1048576,
-    drainPollMs: 50,
-    pendingBytesCap: 33554432,
-    poolMax: 4,
-    poolIdleTtlMs: 10000 /* 1e4 */,
-    poolMaxAgeMs: 2700000,
-    finGraceMs: 1500
-  };
-});
+// [unwrapped __esm module ofc] deps: dn, je, u9, Mh, Jt, sr, qpc
+Elm = {
+  openTimeoutMs: 10000 /* 1e4 */,
+  openMaxAttempts: 3,
+  openBackoffBaseMs: 100,
+  sendHighWater: 4194304,
+  sendLowWater: 1048576,
+  drainPollMs: 50,
+  pendingBytesCap: 33554432,
+  poolMax: 4,
+  poolIdleTtlMs: 10000 /* 1e4 */,
+  poolMaxAgeMs: 2700000,
+  finGraceMs: 1500
+};
 function lfc(e, t) {
   let n = t?.trim();
   if (n?.includes("javax.net.ssl.trustStore=")) return n;

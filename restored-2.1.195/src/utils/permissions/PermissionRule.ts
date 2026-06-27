@@ -4,14 +4,12 @@
 // class=modified  jaccard=0.5224  score=1  fileCov=0.5224
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jgl = E(() => {
-  Xr();
-  ((E7n = ve(() => ol.enum(["allow", "deny", "ask"]))),
-    (A7n = ve(() =>
-      ol.object({
-        toolName: ol.string(),
-        ruleContent: ol.string().optional(),
-      }),
-    )));
-});
+// [unwrapped __esm module jgl] deps: Xr
+((E7n = ve(() => ol.enum(["allow", "deny", "ask"]))),
+  (A7n = ve(() =>
+    ol.object({
+      toolName: ol.string(),
+      ruleContent: ol.string().optional(),
+    }),
+  )));
 var tbt, nbt;

@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.5081  score=0.9327  fileCov=0.5274
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jJr = E(() => {
-  l0e();
-  tUt();
-  _8 = R(rt(), 1);
-});
+// [unwrapped __esm module jJr] deps: l0e, tUt
+_8 = R(rt(), 1);
 function Z_e() {
   AGe.useContext(B_e);
   let e = Cu.get(process.stdout);

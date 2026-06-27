@@ -4,17 +4,12 @@
 // class=partial  jaccard=0.0649  score=0.6374  fileCov=0.0673
 // note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q5l = E(() => {
-  Ye();
-  Un();
-  GY();
-  er();
-  zXt = R(rt(), 1), e2o = R(se(), 1);
-  _4f = {
-    tip: "",
-    color: "dim"
-  };
-});
+// [unwrapped __esm module q5l] deps: Ye, Un, GY, er
+zXt = R(rt(), 1), e2o = R(se(), 1);
+_4f = {
+  tip: "",
+  color: "dim"
+};
 function K5l() {
   let e = Dr().companyAnnouncements;
   return !!e && e.some(t => t);

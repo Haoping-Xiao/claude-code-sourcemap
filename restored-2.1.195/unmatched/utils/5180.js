@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0026  score=0.4623  fileCov=0.0026
 // note: nearest: src/cli/print.ts (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var x3o = E(() => {
-  db();
-  fn();
-  HZl = require("crypto"), I3o = require("path");
-});
+// [unwrapped __esm module x3o] deps: db, fn
+HZl = require("crypto"), I3o = require("path");
 function _Kf(e) {
   let t = e.trim();
   return t.startsWith("{") && t.endsWith("}");

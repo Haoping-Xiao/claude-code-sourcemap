@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0212  score=0.2031  fileCov=0.0232
 // note: nearest: node_modules/undici/lib/web/fetch/webidl.js (0.0212); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nyl = E(() => {
-  Xr();
-  ql();
-  Ye();
-  ii();
-  Jt();
-  K6e = R(se(), 1);
-});
+// [unwrapped __esm module Nyl] deps: Xr, ql, Ye, ii, Jt
+K6e = R(se(), 1);
 function wmf() {
   if (X7n) return X7n;
   return X7n = new Bun.Transpiler({

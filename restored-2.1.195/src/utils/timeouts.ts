@@ -4,30 +4,23 @@
 // class=modified  jaccard=0.1169  score=0.1335  fileCov=0.4843
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var X6e = E(() => {
-  dqe();
-  TX();
-  Rct();
-  Un();
-  Ox();
-  jc();
-  nRo = [
-    "cowork",
-    "workspace",
-    "session-info",
-    "mcp-registry",
-    "plugins",
-    "scheduled-tasks",
-    "dispatch",
-    "ide",
-  ];
-  ((Lmf = new Set(["web_fetch", "web_search"])), (Dmf = /^claude[-_](?:for|in)[-_]chrome$/i));
-  Gyl = {
-    denyMessage: null,
-    classifiedAs: null,
-    activeLatch: null,
-  };
-});
+// [unwrapped __esm module X6e] deps: dqe, TX, Rct, Un, Ox, jc
+nRo = [
+  "cowork",
+  "workspace",
+  "session-info",
+  "mcp-registry",
+  "plugins",
+  "scheduled-tasks",
+  "dispatch",
+  "ide",
+];
+((Lmf = new Set(["web_fetch", "web_search"])), (Dmf = /^claude[-_](?:for|in)[-_]chrome$/i));
+Gyl = {
+  denyMessage: null,
+  classifiedAs: null,
+  activeLatch: null,
+};
 function I$e(e = process.env) {
   let t = e.BASH_DEFAULT_TIMEOUT_MS;
   if (t) {

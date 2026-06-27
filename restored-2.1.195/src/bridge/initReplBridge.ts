@@ -4,35 +4,6 @@
 // class=modified  jaccard=0.1635  score=0.2932  fileCov=0.2698
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kgc = E(() => {
-  Hp();
-  dn();
-  Un();
-  kt();
-  jir();
-  G1();
-  fd();
-  je();
-  Mm();
-  fn();
-  At();
-  qd();
-  zH();
-  g0();
-  SC();
-  RJt();
-  Cde();
-  Tnt();
-  rGo();
-  Hir();
-  wgc();
-  cWt();
-  SJ();
-  qir();
-  B8o();
-  wQ();
-  B8o();
-});
 var F8o = {};
 _t(F8o, {
   initReplBridge: () => initReplBridge,

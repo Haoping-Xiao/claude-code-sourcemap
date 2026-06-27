@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MGl = E(() => {
-  bFo();
-  PGl = R(se(), 1);
-});
+// [unwrapped __esm module MGl] deps: bFo
+PGl = R(se(), 1);
 var SFo;

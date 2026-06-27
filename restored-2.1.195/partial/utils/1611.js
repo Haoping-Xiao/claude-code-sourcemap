@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.2281  score=1  fileCov=0.2281
 // note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/internal/shims.mjs; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cdi = E(() => {
-  vdi();
-  DSn();
-});
 function Idi(e) {
   if (e[Symbol.asyncIterator]) return e;
   let t = e.getReader();

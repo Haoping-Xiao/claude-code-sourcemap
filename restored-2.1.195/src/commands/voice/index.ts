@@ -4,23 +4,21 @@
 // class=modified  jaccard=0.2448  score=0.3028  fileCov=0.5613
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fnc = E(() => {
-  dQt();
-  ((oXf = {
-    type: "local",
-    name: "voice",
-    description: "Toggle voice mode",
-    argumentHint: "[hold|tap|off]",
-    availability: ["claude-ai"],
-    isEnabled: () => cQt(),
-    get isHidden() {
-      return !AHt();
-    },
-    supportsNonInteractive: false,
-    load: () => Promise.resolve().then(() => (dnc(), unc)),
-  }),
-    (sXf = oXf));
-});
+// [unwrapped __esm module fnc] deps: dQt
+((oXf = {
+  type: "local",
+  name: "voice",
+  description: "Toggle voice mode",
+  argumentHint: "[hold|tap|off]",
+  availability: ["claude-ai"],
+  isEnabled: () => cQt(),
+  get isHidden() {
+    return !AHt();
+  },
+  supportsNonInteractive: false,
+  load: () => Promise.resolve().then(() => (dnc(), unc)),
+}),
+  (sXf = oXf));
 var mnc = {};
 _t(mnc, {
   default: () => lXf,

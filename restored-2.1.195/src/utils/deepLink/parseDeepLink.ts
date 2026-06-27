@@ -4,32 +4,8 @@
 // class=modified  jaccard=0.5593  score=0.7858  fileCov=0.66
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HSc = E(() => {
-  gzo();
-  ag();
-  kt();
-  RFn();
-  Epn();
-  je();
-  fn();
-  At();
-  ys();
-  YS();
-  _Tt();
-  vn();
-  BJ();
-  iZr();
-  y_();
-  Dgt();
-  vf();
-  dr();
-  Jt();
-  sr();
-  kv();
-  K0();
-  aR();
-  tu = require("path");
-});
+// [unwrapped __esm module HSc] deps: gzo, ag, kt, RFn, Epn, je, fn, At, ys, YS, _Tt, vn, BJ, iZr, y_, Dgt, vf, dr, Jt, sr, kv, K0, aR
+tu = require("path");
 function wSc(e, { allowNewlineAndTab: t = false } = {}) {
   for (let n = 0; n < e.length; n++) {
     let r = e.charCodeAt(n);

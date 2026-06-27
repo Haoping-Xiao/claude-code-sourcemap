@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2902  score=0.6668  fileCov=0.3394
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _i = E(() => {
-  oat();
-  K5i = R(rt(), 1);
-});
+// [unwrapped __esm module _i] deps: oat
+K5i = R(rt(), 1);
 function Eat(e) {
   let t = Y5i.c(10),
     { children: n, lock: r } = e,

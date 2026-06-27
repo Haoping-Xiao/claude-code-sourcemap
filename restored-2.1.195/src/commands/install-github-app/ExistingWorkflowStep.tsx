@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2925  score=0.3395  fileCov=0.6788
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eFl = E(() => {
-  lJ();
-  pz();
-  R6();
-  Ye();
-  ((QUl = R(lt(), 1)), (KL = R(se(), 1)));
-});
+// [unwrapped __esm module eFl] deps: lJ, pz, R6, Ye
+((QUl = R(lt(), 1)), (KL = R(se(), 1)));
 function nFl(e) {
   let t = tFl.c(15),
     { repoName: n, onSelectAction: r } = e,

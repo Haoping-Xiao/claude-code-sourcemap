@@ -4,11 +4,10 @@
 // class=partial  jaccard=0.1154  score=1  fileCov=0.1154
 // note: low-confidence suggestion: node_modules/eventsource-parser/dist/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xua = E(() => {
-  mlo = class mlo extends Error {
-    constructor(e, t) {
-      super(e), this.name = "ParseError", this.type = t.type, this.field = t.field, this.value = t.value, this.line = t.line;
-    }
-  };
-});
+// [unwrapped __esm module xua]
+mlo = class mlo extends Error {
+  constructor(e, t) {
+    super(e), this.name = "ParseError", this.type = t.type, this.field = t.field, this.value = t.value, this.line = t.line;
+  }
+};
 var glo;

@@ -4,25 +4,12 @@
 // class=modified  jaccard=0.2939  score=0.3839  fileCov=0.5562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var XKe = E(() => {
-  Xr();
-  ft();
-  kt();
-  ZE();
-  og();
-  je();
-  wr();
-  sF();
-  Rd();
-  co();
-  qd();
-  dr();
-  Z2f = ve(() =>
-    H.object({
-      title: H.string(),
-    }),
-  );
-});
+// [unwrapped __esm module XKe] deps: Xr, ft, kt, ZE, og, je, wr, sF, Rd, co, qd, dr
+Z2f = ve(() =>
+  H.object({
+    title: H.string(),
+  }),
+);
 function ZGl(e) {
   let t = Ia(vG(e), false);
   if (t && typeof t === "object" && "name" in t && typeof t.name === "string") return t.name;

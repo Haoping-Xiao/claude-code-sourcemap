@@ -4,25 +4,8 @@
 // class=new  jaccard=0.004  score=0.2132  fileCov=0.0041
 // note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hDo = E(() => {
-  Fvo();
-  ql();
-  co();
-  E5();
-  Uvo();
-  vMe();
-  Ye();
-  je();
-  Dpe();
-  At();
-  oc();
-  vn();
-  KI();
-  X8n();
-  sr();
-  bMe();
-  mDo = R(lt(), 1), Ybt = R(rt(), 1), ON = R(se(), 1);
-});
+// [unwrapped __esm module hDo] deps: Fvo, ql, co, E5, Uvo, vMe, Ye, je, Dpe, At, oc, vn, KI, X8n, sr, bMe
+mDo = R(lt(), 1), Ybt = R(rt(), 1), ON = R(se(), 1);
 function ZSf(e) {
   try {
     let t = Bee(e);

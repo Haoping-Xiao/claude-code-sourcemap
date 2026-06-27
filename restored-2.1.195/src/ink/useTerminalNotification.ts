@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.766  score=0.9715  fileCov=0.7836
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xJr = E(() => {
-  Rit();
-});
 function XBt(e) {
   let t = "";
   for (let n = 0; n < e.length; n++) {

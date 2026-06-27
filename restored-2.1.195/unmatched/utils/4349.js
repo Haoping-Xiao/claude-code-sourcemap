@@ -3,10 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var J_l = E(() => {
-  je();
-  At();
-  sr();
-  j_l = require("path");
-});
+// [unwrapped __esm module J_l] deps: je, At, sr
+j_l = require("path");
 var Q_l;

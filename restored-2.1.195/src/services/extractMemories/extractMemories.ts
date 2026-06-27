@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.2607  score=0.661  fileCov=0.3009
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xIl = E(() => {
-  u_();
-  lf();
-  nC();
-  EI();
-  lC();
-  _m();
-});
 var NQn = {};
 _t(NQn, {
   isAllowedAutoMemWritePath: () => isAllowedAutoMemWritePath,

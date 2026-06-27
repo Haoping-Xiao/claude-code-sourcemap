@@ -4,17 +4,17 @@
 // class=modified  jaccard=0.4455  score=0.5073  fileCov=0.7853
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bLl = E(() => {
-  _Ll = {
-    agentType: "statusline-setup",
-    whenToUse: "Use this agent to configure the user's Claude Code status line setting.",
-    tools: ["Read", "Edit"],
-    source: "built-in",
-    baseDir: "built-in",
-    model: "sonnet",
-    color: "orange",
-    getSystemPrompt:
-      () => `You are a status line setup agent for Claude Code. Your job is to create or update the statusLine command in the user's Claude Code settings.
+// [unwrapped __esm module bLl]
+_Ll = {
+  agentType: "statusline-setup",
+  whenToUse: "Use this agent to configure the user's Claude Code status line setting.",
+  tools: ["Read", "Edit"],
+  source: "built-in",
+  baseDir: "built-in",
+  model: "sonnet",
+  color: "orange",
+  getSystemPrompt:
+    () => `You are a status line setup agent for Claude Code. Your job is to create or update the statusLine command in the user's Claude Code settings.
 
 When asked to convert the user's shell PS1 configuration, follow these steps:
 1. Read the user's shell configuration files in this order of preference:
@@ -167,8 +167,7 @@ Guidelines:
 - IMPORTANT: At the end of your response, inform the parent agent that this "statusline-setup" agent must be used for further status line changes.
   Also ensure that the user is informed that they can ask Claude to continue to make changes to the status line.
 `,
-  };
-});
+};
 var ALl = {};
 _t(ALl, {
   getWorkerSystemPrompt: () => getWorkerSystemPrompt,

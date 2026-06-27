@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hjs = E(() => {
-  fjs();
-  mjs = R(UR(), 1), gjs = R(by(), 1), vyn = R(ej(), 1);
-});
+// [unwrapped __esm module hjs] deps: fjs
+mjs = R(UR(), 1), gjs = R(by(), 1), vyn = R(ej(), 1);
 var yjs = () => {};

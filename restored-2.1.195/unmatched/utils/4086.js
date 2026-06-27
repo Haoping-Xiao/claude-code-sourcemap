@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0353  score=0.5927  fileCov=0.0362
 // note: nearest: src/ink/selection.ts (0.0353); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uzn = E(() => {
-  y1n();
-  Ao();
-});
 function rCo(e) {
   while (e.length > 0) {
     let t = e.at(-1);

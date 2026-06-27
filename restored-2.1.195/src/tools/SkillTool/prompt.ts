@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2906  score=0.6956  fileCov=0.333
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ect = E(() => {
-  dr();
-});
 var Bra = {};
 _t(Bra, {
   getSkillToolInfo: () => getSkillToolInfo,

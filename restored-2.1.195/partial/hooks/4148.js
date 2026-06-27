@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1522  score=0.476  fileCov=0.1829
 // note: low-confidence suggestion: src/utils/ghPrStatus.ts; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _al = E(() => {
-  Ye();
-  r_t = R(rt(), 1);
-});
+// [unwrapped __esm module _al] deps: Ye
+r_t = R(rt(), 1);
 function Sal(e, t) {
   if (!e || !t) return null;
   let n = e.kind === "cr" && false;

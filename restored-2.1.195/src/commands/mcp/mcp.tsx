@@ -4,39 +4,9 @@
 // class=modified  jaccard=0.3404  score=0.5726  fileCov=0.4564
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xrr = E(() => {
-  si();
-  Cc();
-  Bs();
-  B_();
-  MEt();
-  eE();
-  kP();
-  O0();
-  Ye();
-  ps();
-  uo();
-  w8();
-  At();
-  vq();
-  _k();
-  gHe();
-  lE();
-  NKe();
-  dr();
-  sr();
-  E2l();
-  N2l();
-  F2l();
-  K2l();
-  ojl();
-  Bjl();
-  cUo();
-  Qjl();
-  n4l();
-  ((AXt = R(lt(), 1)), (UT = R(rt(), 1)), (oa = R(se(), 1)));
-  VBf = new Set(["git-auth-failed", "git-timeout", "network-error"]);
-});
+// [unwrapped __esm module xrr] deps: si, Cc, Bs, B_, MEt, eE, kP, O0, Ye, ps, uo, w8, At, vq, _k, gHe, lE, NKe, dr, sr, E2l, N2l, F2l, K2l, ojl, Bjl, cUo, Qjl, n4l
+((AXt = R(lt(), 1)), (UT = R(rt(), 1)), (oa = R(se(), 1)));
+VBf = new Set(["git-auth-failed", "git-timeout", "network-error"]);
 var i4l = {};
 _t(i4l, {
   call: () => call,

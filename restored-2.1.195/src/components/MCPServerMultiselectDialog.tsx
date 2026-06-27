@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2753  score=0.4434  fileCov=0.4207
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ydc = E(() => {
-  kt();
-  Ox();
-  dr();
-  mE();
-  vi();
-  A9o();
-  BZt = R(se(), 1);
-});
+// [unwrapped __esm module ydc] deps: kt, Ox, dr, mE, vi, A9o
+BZt = R(se(), 1);
 function bdc({ serverNames: e, pluginServerNames: t, onDone: n }) {
   function r(s) {
     let i = jo() || {},

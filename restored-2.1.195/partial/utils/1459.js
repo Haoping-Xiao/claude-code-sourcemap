@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.2219  score=0.507  fileCov=0.2829
 // note: low-confidence suggestion: src/utils/teammateContext.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var og = E(() => {
-  ft();
-  qoi = require("async_hooks"), WPt = new qoi.AsyncLocalStorage();
-});
+// [unwrapped __esm module og] deps: ft
+qoi = require("async_hooks"), WPt = new qoi.AsyncLocalStorage();
 function pte(e, t) {
   return `${e}@${t}`;
 }

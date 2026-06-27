@@ -4,20 +4,8 @@
 // class=new  jaccard=0.0015  score=0.425  fileCov=0.0015
 // note: nearest: src/screens/REPL.tsx (0.0015); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ken = E(() => {
-  ft();
-  PPo();
-  HSc();
-  je();
-  Azo();
-  fn();
-  At();
-  vn();
-  BJ();
-  yrr();
-  _a();
-  npr = require("fs/promises"), Tzo = require("path");
-});
+// [unwrapped __esm module Ken] deps: ft, PPo, HSc, je, Azo, fn, At, vn, BJ, yrr, _a
+npr = require("fs/promises"), Tzo = require("path");
 function USc(e) {
   let t = Sd();
   BSc.useEffect(() => {

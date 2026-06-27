@@ -4,17 +4,6 @@
 // class=modified  jaccard=0.6233  score=0.719  fileCov=0.8241
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lUo = E(() => {
-  er();
-  je();
-  o8();
-  B1();
-  $g();
-  Xh();
-  WI();
-  II();
-  I8();
-});
 function a1e(e) {
   switch (e.type) {
     case "path-not-found":

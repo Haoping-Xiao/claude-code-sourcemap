@@ -4,66 +4,56 @@
 // class=modified  jaccard=0.2019  score=0.5605  fileCov=0.2399
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sj = E(() => {
-  Qi();
-  je();
-  ys();
-  SG();
-  Is();
-  QZe();
-  nCe = R(require("path/win32"));
-  Hhe = Cn(() => {
-    let { existsSync: e } = qt();
-    if (process.env.CLAUDE_CODE_GIT_BASH_PATH) {
-      if (e(process.env.CLAUDE_CODE_GIT_BASH_PATH)) return process.env.CLAUDE_CODE_GIT_BASH_PATH;
-      (console.error(
-        `Claude Code was unable to find CLAUDE_CODE_GIT_BASH_PATH path "${process.env.CLAUDE_CODE_GIT_BASH_PATH}"`,
-      ),
-        process.exit(1));
-    }
-    let t = [
-      "C:\\Program Files\\Git\\bin\\bash.exe",
-      "C:\\Program Files (x86)\\Git\\bin\\bash.exe",
-    ];
-    for (let r of t) if (e(r)) return r;
-    let n = Xkr("git");
-    if (n) {
-      let r = nCe.join(n, "..", "..", "bin", "bash.exe");
-      if (e(r)) return r;
-    }
-    return null;
-  });
-  ((TD = JC(
+// [unwrapped __esm module sj] deps: Qi, je, ys, SG, Is, QZe
+nCe = R(require("path/win32"));
+Hhe = Cn(() => {
+  let { existsSync: e } = qt();
+  if (process.env.CLAUDE_CODE_GIT_BASH_PATH) {
+    if (e(process.env.CLAUDE_CODE_GIT_BASH_PATH)) return process.env.CLAUDE_CODE_GIT_BASH_PATH;
+    (console.error(
+      `Claude Code was unable to find CLAUDE_CODE_GIT_BASH_PATH path "${process.env.CLAUDE_CODE_GIT_BASH_PATH}"`,
+    ),
+      process.exit(1));
+  }
+  let t = ["C:\\Program Files\\Git\\bin\\bash.exe", "C:\\Program Files (x86)\\Git\\bin\\bash.exe"];
+  for (let r of t) if (e(r)) return r;
+  let n = Xkr("git");
+  if (n) {
+    let r = nCe.join(n, "..", "..", "bin", "bash.exe");
+    if (e(r)) return r;
+  }
+  return null;
+});
+((TD = JC(
+  (e) => {
+    if (e.startsWith("\\\\")) return e.replaceAll("\\", "/");
+    let t = e.match(/^([A-Za-z]):[/\\]/);
+    if (t) return "/" + t[1].toLowerCase() + e.slice(2).replaceAll("\\", "/");
+    return e.replaceAll("\\", "/");
+  },
+  (e) => e,
+  500,
+)),
+  (NFe = JC(
     (e) => {
-      if (e.startsWith("\\\\")) return e.replaceAll("\\", "/");
-      let t = e.match(/^([A-Za-z]):[/\\]/);
-      if (t) return "/" + t[1].toLowerCase() + e.slice(2).replaceAll("\\", "/");
-      return e.replaceAll("\\", "/");
+      if (e.startsWith("//")) return e.replaceAll("/", "\\");
+      let t = e.match(/^\/cygdrive\/([A-Za-z])(\/|$)/);
+      if (t) {
+        let r = t[1].toUpperCase(),
+          o = e.slice(("/cygdrive/" + t[1]).length);
+        return r + ":" + (o || "\\").replaceAll("/", "\\");
+      }
+      let n = e.match(/^\/([A-Za-z])(\/|$)/);
+      if (n) {
+        let r = n[1].toUpperCase(),
+          o = e.slice(2);
+        return r + ":" + (o || "\\").replaceAll("/", "\\");
+      }
+      return e.replaceAll("/", "\\");
     },
     (e) => e,
     500,
-  )),
-    (NFe = JC(
-      (e) => {
-        if (e.startsWith("//")) return e.replaceAll("/", "\\");
-        let t = e.match(/^\/cygdrive\/([A-Za-z])(\/|$)/);
-        if (t) {
-          let r = t[1].toUpperCase(),
-            o = e.slice(("/cygdrive/" + t[1]).length);
-          return r + ":" + (o || "\\").replaceAll("/", "\\");
-        }
-        let n = e.match(/^\/([A-Za-z])(\/|$)/);
-        if (n) {
-          let r = n[1].toUpperCase(),
-            o = e.slice(2);
-          return r + ":" + (o || "\\").replaceAll("/", "\\");
-        }
-        return e.replaceAll("/", "\\");
-      },
-      (e) => e,
-      500,
-    )));
-});
+  )));
 function sRt(e, t) {
   if (e.type !== "user") return;
   if (e.isMeta === true || e.isCompactSummary === true) return;

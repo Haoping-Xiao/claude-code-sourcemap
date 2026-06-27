@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0498  score=0.7909  fileCov=0.0505
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0498); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vRs = E(() => {
-  TRs = R(ZH(), 1);
-});
+// [unwrapped __esm module vRs]
+TRs = R(ZH(), 1);
 function Tgn(e, t) {
   if (t == null) return t;
   let n = wRs.NormalizedSchema.of(e);

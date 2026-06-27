@@ -4,37 +4,31 @@
 // class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.0465  score=0.2584  fileCov=0.0537
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HWi = E(() => {
-  iu();
-  t0e();
-  sr();
-  p8();
-  Tc();
-  ((EWi = R(bWi(), 1)),
-    (FGd = {
-      dashed: {
-        top: "\u254C",
-        left: "\u254E",
-        right: "\u254E",
-        bottom: "\u254C",
-        topLeft: " ",
-        topRight: " ",
-        bottomLeft: " ",
-        bottomRight: " ",
-      },
-      quote: {
-        top: " ",
-        left: "\u258E",
-        right: " ",
-        bottom: " ",
-        topLeft: " ",
-        topRight: " ",
-        bottomLeft: " ",
-        bottomRight: " ",
-      },
-    }));
-  AWi = jGd;
-});
+// [unwrapped __esm module HWi] deps: iu, t0e, sr, p8, Tc
+((EWi = R(bWi(), 1)),
+  (FGd = {
+    dashed: {
+      top: "\u254C",
+      left: "\u254E",
+      right: "\u254E",
+      bottom: "\u254C",
+      topLeft: " ",
+      topRight: " ",
+      bottomLeft: " ",
+      bottomRight: " ",
+    },
+    quote: {
+      top: " ",
+      left: "\u258E",
+      right: " ",
+      bottom: " ",
+      topLeft: " ",
+      topRight: " ",
+      bottomLeft: " ",
+      bottomRight: " ",
+    },
+  }));
+AWi = jGd;
 function EJr(e, t) {
   let n = e && (t?.demoRuler ?? true);
   if (ELn === e && _Jr === n) return;

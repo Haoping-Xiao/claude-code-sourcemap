@@ -4,12 +4,8 @@
 // class=modified (alt of src/components/StructuredDiff.tsx)  jaccard=0.2605  score=1  fileCov=0.2605
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xba = E(() => {
-  b5e();
-  Tc();
-  Ye();
-  ((Kba = R(lt(), 1)), (Z8 = R(se(), 1)));
-});
+// [unwrapped __esm module Xba] deps: b5e, Tc, Ye
+((Kba = R(lt(), 1)), (Z8 = R(se(), 1)));
 function u_p(e) {
   return (
     Math.max(e.oldStart + e.oldLines - 1, e.newStart + e.newLines - 1, 1).toString().length + 3

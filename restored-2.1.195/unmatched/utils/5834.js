@@ -4,19 +4,12 @@
 // class=new  jaccard=0.0319  score=0.1024  fileCov=0.0443
 // note: nearest: src/utils/claudeInChrome/chromeNativeHost.ts (0.0319); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var J1c = E(() => {
-  zb();
-  Mm();
-  Lx();
-  At();
-  Jt();
-  c_();
-  z1c = require("fs/promises"), K1c = ve(() => dt.object({
-    error: dt.object({
-      type: dt.string().optional()
-    })
-  }));
-});
+// [unwrapped __esm module J1c] deps: zb, Mm, Lx, At, Jt, c_
+z1c = require("fs/promises"), K1c = ve(() => dt.object({
+  error: dt.object({
+    type: dt.string().optional()
+  })
+}));
 function tNc() {
   let e = Oe.CLAUDE_CODE_SYNC_SKILLS_WAIT_TIMEOUT_MS;
   return e && e > 0 ? e : 5000;

@@ -4,27 +4,17 @@
 // class=modified  jaccard=0.4668  score=0.593  fileCov=0.6869
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var E8n = E(() => {
-  Hp();
-  TM();
-  Lo();
-  je();
-  At();
-  Ls();
-  dn();
-  kt();
-  GY();
-  ((xZa = require("crypto")),
-    (Tht = R(require("fs/promises"))),
-    (K5 = R(require("path"))),
-    (kZa = `${h2r.header},${qIe.header}`));
-  s8e = class s8e extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "UploadNonRetriableError";
-    }
-  };
-});
+// [unwrapped __esm module E8n] deps: Hp, TM, Lo, je, At, Ls, dn, kt, GY
+((xZa = require("crypto")),
+  (Tht = R(require("fs/promises"))),
+  (K5 = R(require("path"))),
+  (kZa = `${h2r.header},${qIe.header}`));
+s8e = class s8e extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "UploadNonRetriableError";
+  }
+};
 function NZa() {
   return at("tengu_ccr_bundle_max_bytes", null) ?? DQp;
 }

@@ -4,31 +4,30 @@
 // class=modified  jaccard=0.3038  score=0.627  fileCov=0.3708
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vX = E(() => {
-  iop = [
-    {
-      min: 0,
-      max: 59,
-    },
-    {
-      min: 0,
-      max: 23,
-    },
-    {
-      min: 1,
-      max: 31,
-    },
-    {
-      min: 1,
-      max: 12,
-    },
-    {
-      min: 0,
-      max: 6,
-    },
-  ];
-  jra = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-});
+// [unwrapped __esm module vX]
+iop = [
+  {
+    min: 0,
+    max: 59,
+  },
+  {
+    min: 0,
+    max: 23,
+  },
+  {
+    min: 1,
+    max: 31,
+  },
+  {
+    min: 1,
+    max: 12,
+  },
+  {
+    min: 0,
+    max: 6,
+  },
+];
+jra = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 function eSe(e) {
   return $On.join(e ?? rc(), dop);
 }

@@ -4,11 +4,9 @@
 // class=partial  jaccard=0.2246  score=1  fileCov=0.2246
 // note: low-confidence suggestion: node_modules/lodash-es/toNumber.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oFi = E(() => {
-  nFi();
-  sUd = /^\s+/;
-  rFi = iUd;
-});
+// [unwrapped __esm module oFi] deps: nFi
+sUd = /^\s+/;
+rFi = iUd;
 function dUd(e) {
   if (typeof e == "number") return e;
   if (Uve(e)) return sFi;

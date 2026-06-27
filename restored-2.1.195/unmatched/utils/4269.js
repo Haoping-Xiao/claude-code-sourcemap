@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0523  score=0.2738  fileCov=0.0608
 // note: nearest: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js (0.0523); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var D6e = E(() => {
-  ft();
-  je();
-  y_();
-  Jt();
-  h$e = require("fs/promises"), L6e = require("path");
-});
+// [unwrapped __esm module D6e] deps: ft, je, y_, Jt
+h$e = require("fs/promises"), L6e = require("path");
 function Eml(e) {
   let t = new Map(),
     n = new Map();

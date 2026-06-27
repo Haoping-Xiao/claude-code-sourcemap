@@ -4,26 +4,8 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.028  score=0.6853  fileCov=0.0284
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var j9o = E(() => {
-  dn();
-  kt();
-  Cre();
-  Yle();
-  cqe();
-  a5();
-  BI();
-  Kv();
-  cTt();
-  oo();
-  vy();
-  Kke();
-  At();
-  xLe();
-  Ls();
-  JN();
-  I9o();
-  mpc = require("readline");
-});
+// [unwrapped __esm module j9o] deps: dn, kt, Cre, Yle, cqe, a5, BI, Kv, cTt, oo, vy, Kke, At, xLe, Ls, JN, I9o
+mpc = require("readline");
 function ypc(e) {
   let t = e
     .command("mcp")

@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0531  score=1  fileCov=0.0531
 // note: nearest: src/ink/useTerminalNotification.ts (0.0531); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qol = E(() => {
-  Xa();
-  Ye();
-  co();
-  Cc();
-  ql();
-  Gol = R(lt(), 1), DT = R(se(), 1);
-});
+// [unwrapped __esm module qol] deps: Xa, Ye, co, Cc, ql
+Gol = R(lt(), 1), DT = R(se(), 1);
 function Dyt() {
   let e = Sd(),
     t = Z7();

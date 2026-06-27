@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0085  score=0.7107  fileCov=0.0085
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0085); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zb = E(() => {
-  uan();
-  uan();
-});
 function ve(e) {
   let t;
   return () => t ??= e();

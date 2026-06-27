@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.2414  score=0.6437  fileCov=0.2786
 // note: low-confidence suggestion: src/query/deps.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Pxl = E(() => {
-  ft();
-  fn();
-});
 function $xl() {
   return {
     callModel: ybt,

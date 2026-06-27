@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4413  score=1  fileCov=0.4413
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nUc = E(() => {
-  wr();
-});
 function rLm(e) {
   return e.replace(nLm, (t) => (t === "\u2028" ? "\\u2028" : "\\u2029"));
 }

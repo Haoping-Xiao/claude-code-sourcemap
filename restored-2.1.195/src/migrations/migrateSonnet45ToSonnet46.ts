@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.5981  score=0.9156  fileCov=0.633
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZOc = E(() => {
-  ft();
-  dn();
-  er();
-  dr();
-});
 function e1c() {
   if (fr() !== "firstParty") return;
   if (!Aye() && !mle() && !QIe()) return;

@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0521  score=0.315  fileCov=0.0587
 // note: nearest: src/utils/agentId.ts (0.0521); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var u8t = E(() => {
-  je();
-  vn();
-  bm();
-  tA();
-  bH();
-});
 function gyt(e) {
   if (e.agentId) return e.agentId;
   let t = w0();

@@ -4,19 +4,16 @@
 // class=modified  jaccard=0.3457  score=0.512  fileCov=0.5156
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Eor = E(() => {
-  Un();
-  wr();
-  yAt = {
-    heading: "Learn the moves",
-    body:
-      "Quick lessons on the things power users do \u2014 plan mode, undo, " +
-      "subagents, memory. About 5 minutes. Come back any time with /powerup.",
-    banner:
-      "New here? Type /powerup for a 5-minute tour \u2014 modes, undo, " +
-      "@-mentions, and how to teach Claude your rules.",
-  };
-});
+// [unwrapped __esm module Eor] deps: Un, wr
+yAt = {
+  heading: "Learn the moves",
+  body:
+    "Quick lessons on the things power users do \u2014 plan mode, undo, " +
+    "subagents, memory. About 5 minutes. Come back any time with /powerup.",
+  banner:
+    "New here? Type /powerup for a 5-minute tour \u2014 modes, undo, " +
+    "@-mentions, and how to teach Claude your rules.",
+};
 function P5l() {
   let e = L5l.c(30),
     [t] = D5l.useState(m4f),

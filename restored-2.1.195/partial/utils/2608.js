@@ -4,20 +4,8 @@
 // class=partial  jaccard=0.2042  score=0.8152  fileCov=0.2141
 // note: low-confidence suggestion: src/utils/plugins/addDirPluginSettings.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var II = E(() => {
-  kt();
-  Du();
-  er();
-  fn();
-  vn();
-  Sbe();
-  $g();
-  ZC();
-  I8();
-  aS();
-  aeo();
-  meo = require("path");
-});
+// [unwrapped __esm module II] deps: kt, Du, er, fn, vn, Sbe, $g, ZC, I8, aS, aeo
+meo = require("path");
 function tWe() {
   let e = {};
   for (let t of c0()) for (let n of UKi) {

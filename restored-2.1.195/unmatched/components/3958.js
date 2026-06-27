@@ -4,17 +4,8 @@
 // class=new  jaccard=0.0133  score=0.4962  fileCov=0.0134
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.0133); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tTo = E(() => {
-  wb();
-  QJa();
-  nQa();
-  lQa();
-  mQa();
-  yQa();
-  AQa();
-  TQa();
-  r8n = R(rt(), 1), eTo = R(se(), 1);
-});
+// [unwrapped __esm module tTo] deps: wb, QJa, nQa, lQa, mQa, yQa, AQa, TQa
+r8n = R(rt(), 1), eTo = R(se(), 1);
 function a8n() {
   if (!dm()) return false;
   let e = V9e.join(Ore(), "claude", "versions") + V9e.sep;

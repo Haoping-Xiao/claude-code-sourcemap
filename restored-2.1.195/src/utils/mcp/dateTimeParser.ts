@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.5677  score=0.7073  fileCov=0.742
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K8o = E(() => {
-  ft();
-  EW();
-  Ye();
-  HVt();
-  _en = R(rt(), 1);
-});
+// [unwrapped __esm module K8o] deps: ft, EW, Ye, HVt
+_en = R(rt(), 1);
 async function zgc(e, t, n) {
   let r = new Date(),
     o = r.toISOString(),

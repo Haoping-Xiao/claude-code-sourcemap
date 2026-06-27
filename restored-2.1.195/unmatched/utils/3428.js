@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0065  score=0.281  fileCov=0.0066
 // note: nearest: src/components/Settings/Config.tsx (0.0065); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Pho = E(() => {
-  Jt();
-  R1a = require("crypto");
-});
+// [unwrapped __esm module Pho] deps: Jt
+R1a = require("crypto");
 function L1a(e) {
   Mho = e;
 }

@@ -4,12 +4,9 @@
 // class=partial  jaccard=0.1536  score=1  fileCov=0.1536
 // note: low-confidence suggestion: node_modules/shebang-command/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dbs = E(() => {
-  Rbs();
-  nJe();
-  aRu = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, dRu = lRu + cRu + uRu, pRu = "[" + dRu + "]", fRu = RegExp(pRu, "g");
-  Lbs = mRu;
-});
+// [unwrapped __esm module Dbs] deps: Rbs, nJe
+aRu = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g, dRu = lRu + cRu + uRu, pRu = "[" + dRu + "]", fRu = RegExp(pRu, "g");
+Lbs = mRu;
 function hRu(e) {
   return e.match(gRu) || [];
 }

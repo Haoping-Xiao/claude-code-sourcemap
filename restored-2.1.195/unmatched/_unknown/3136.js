@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var AEa = E(() => {
-  vBn();
-  EEa = R(TBn(), 1);
-});
+// [unwrapped __esm module AEa] deps: vBn
+EEa = R(TBn(), 1);

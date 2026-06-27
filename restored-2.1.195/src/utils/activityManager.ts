@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.724  score=0.9298  fileCov=0.7659
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PVt = E(() => {
-  db();
-  fd();
-  je();
-  fn();
-  At();
-  Fh();
-  Jt();
-  TL_ = PHo * 60000;
-});
+// [unwrapped __esm module PVt] deps: db, fd, je, fn, At, Fh, Jt
+TL_ = PHo * 60000;
 class Ape {
   activeOperations = new Set();
   lastUserActivityTime = 0;

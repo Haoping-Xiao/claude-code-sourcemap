@@ -4,28 +4,24 @@
 // class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.1598  score=0.2324  fileCov=0.3382
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HRa = E(() => {
-  ql();
-  Ye();
-  es();
-  gfo = R(se(), 1);
-  JIp = {
-    screenshot: "Captured",
-    zoom: "Captured",
-    request_access: "Access updated",
-    left_click: "Clicked",
-    right_click: "Clicked",
-    middle_click: "Clicked",
-    double_click: "Clicked",
-    triple_click: "Clicked",
-    type: "Typed",
-    key: "Pressed",
-    hold_key: "Pressed",
-    scroll: "Scrolled",
-    left_click_drag: "Dragged",
-    open_application: "Opened",
-  };
-});
+// [unwrapped __esm module HRa] deps: ql, Ye, es
+gfo = R(se(), 1);
+JIp = {
+  screenshot: "Captured",
+  zoom: "Captured",
+  request_access: "Access updated",
+  left_click: "Clicked",
+  right_click: "Clicked",
+  middle_click: "Clicked",
+  double_click: "Clicked",
+  triple_click: "Clicked",
+  type: "Typed",
+  key: "Pressed",
+  hold_key: "Pressed",
+  scroll: "Scrolled",
+  left_click_drag: "Dragged",
+  open_application: "Opened",
+};
 var wRa = {};
 _t(wRa, {
   getComputerUseMCPToolOverrides: () => getComputerUseMCPToolOverrides,

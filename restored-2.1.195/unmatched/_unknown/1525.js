@@ -4,11 +4,10 @@
 // class=new  jaccard=0.0178  score=1  fileCov=0.0178
 // note: nearest: node_modules/@smithy/util-endpoints/dist-cjs/index.js (0.0178); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gli = E(() => {
-  (function (e) {
-    e.HTTP = "http", e.HTTPS = "https";
-  })(mli || (mli = {}));
-});
+// [unwrapped __esm module gli]
+(function (e) {
+  e.HTTP = "http", e.HTTPS = "https";
+})(mli || (mli = {}));
 var hli = () => {};
 var yli = () => {};
 var _li = () => {};

@@ -4,49 +4,45 @@
 // class=modified (alt of src/utils/config.ts)  jaccard=0.0314  score=0.1905  fileCov=0.0362
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sMc = E(() => {
-  er();
-  Fh();
-  dr();
-  EIm = new Set(["CLAUDE_CODE_ENTRYPOINT"]);
-  AIm = new Set([
-    "tipsHistory",
-    "installMethod",
-    "shiftEnterKeyBindingInstalled",
-    "hasUsedBackslashReturn",
-    "hasCompletedClaudeInChromeOnboarding",
-    "remoteDialogSeen",
-    "lspRecommendationIgnoredCount",
-    "autoUpdates",
-    "autoUpdatesProtectedForNative",
-  ]);
-  HIm = [
-    "model",
-    "outputStyle",
-    "language",
-    "effortLevel",
-    "fastMode",
-    "alwaysThinkingEnabled",
-    "spinnerTipsEnabled",
-    "prefersReducedMotion",
-    "promptSuggestionEnabled",
-    "awaySummaryEnabled",
-    "precomputeCompactionEnabled",
-    "switchModelsOnFlag",
-    "autoUpdatesChannel",
-    "viewMode",
-    "syntaxHighlightingDisabled",
-    "useAutoModeDuringPlan",
-    "enableWorkflows",
-    "disableWorkflows",
-    "disableArtifact",
-    "workflowKeywordTriggerEnabled",
-    "respondToBashCommands",
-    "autoCompactWindow",
-    "cleanupPeriodDays",
-    "forceLoginMethod",
-  ];
-});
+// [unwrapped __esm module sMc] deps: er, Fh, dr
+EIm = new Set(["CLAUDE_CODE_ENTRYPOINT"]);
+AIm = new Set([
+  "tipsHistory",
+  "installMethod",
+  "shiftEnterKeyBindingInstalled",
+  "hasUsedBackslashReturn",
+  "hasCompletedClaudeInChromeOnboarding",
+  "remoteDialogSeen",
+  "lspRecommendationIgnoredCount",
+  "autoUpdates",
+  "autoUpdatesProtectedForNative",
+]);
+HIm = [
+  "model",
+  "outputStyle",
+  "language",
+  "effortLevel",
+  "fastMode",
+  "alwaysThinkingEnabled",
+  "spinnerTipsEnabled",
+  "prefersReducedMotion",
+  "promptSuggestionEnabled",
+  "awaySummaryEnabled",
+  "precomputeCompactionEnabled",
+  "switchModelsOnFlag",
+  "autoUpdatesChannel",
+  "viewMode",
+  "syntaxHighlightingDisabled",
+  "useAutoModeDuringPlan",
+  "enableWorkflows",
+  "disableWorkflows",
+  "disableArtifact",
+  "workflowKeywordTriggerEnabled",
+  "respondToBashCommands",
+  "autoCompactWindow",
+  "cleanupPeriodDays",
+  "forceLoginMethod",
+];
 function wIm() {
   let e = process.argv[1] || "",
     t = process.execPath || process.argv[0] || "";

@@ -4,30 +4,19 @@
 // class=new  jaccard=0.0087  score=0.1303  fileCov=0.0092
 // note: nearest: src/cli/print.ts (0.0087); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sRo = E(() => {
-  ii();
-  Lo();
-  At();
-  bUt();
-  _m();
-  WAe();
-  EI();
-  jv();
-  Fyl();
-  Zyl();
-  nXn = require("path"), oRo = require("util"), J6e = R(require("vm")), Omf = /^[a-zA-Z0-9_-]{1,111}$/, n_l = ["sh", "cat", "rg", "rgf", "gl", "put", "gh", "chdir", "log", "str", "o", "REPO"];
-  r_l = new WeakSet();
-  vzt = class vzt extends mi {
-    key;
-    constructor(e) {
-      super(`REPL sandbox code made the global '${e}' non-configurable; the host cannot restore it`, "REPL sandbox pinned a managed global non-configurable");
-      this.name = "VMContextPoisonedError", this.key = e, r_l.add(this);
-    }
-  };
-  Bmf = ["console", "setTimeout", "clearTimeout", "setInterval", "clearInterval", "atob", "btoa", "shQuote", "registerTool", "unregisterTool", "listTools", "getTool"];
-  Gmf = ["A", "B", "C", "glob", "head", "type", "i"];
-  Wmf = /^(pr|issue|run|workflow|release|label|cache)\b/, qmf = /(^|\s)(-R|--repo\b)/;
-});
+// [unwrapped __esm module sRo] deps: ii, Lo, At, bUt, _m, WAe, EI, jv, Fyl, Zyl
+nXn = require("path"), oRo = require("util"), J6e = R(require("vm")), Omf = /^[a-zA-Z0-9_-]{1,111}$/, n_l = ["sh", "cat", "rg", "rgf", "gl", "put", "gh", "chdir", "log", "str", "o", "REPO"];
+r_l = new WeakSet();
+vzt = class vzt extends mi {
+  key;
+  constructor(e) {
+    super(`REPL sandbox code made the global '${e}' non-configurable; the host cannot restore it`, "REPL sandbox pinned a managed global non-configurable");
+    this.name = "VMContextPoisonedError", this.key = e, r_l.add(this);
+  }
+};
+Bmf = ["console", "setTimeout", "clearTimeout", "setInterval", "clearInterval", "atob", "btoa", "shQuote", "registerTool", "unregisterTool", "listTools", "getTool"];
+Gmf = ["A", "B", "C", "glob", "head", "type", "i"];
+Wmf = /^(pr|issue|run|workflow|release|label|cache)\b/, qmf = /(^|\s)(-R|--repo\b)/;
 function aRo(e) {
   return Array.from(e.values()).filter(t => t.phase === "complete" || t.phase === "error").map(t => t.phase === "error" ? {
     kind: "err",

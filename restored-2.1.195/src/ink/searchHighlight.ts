@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3458  score=1  fileCov=0.3458
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IJr = E(() => {
-  je();
-  At();
-  ZS();
-  one();
-  OM();
-  q7();
-  jh();
-  vne = require("fs");
-});
+// [unwrapped __esm module IJr] deps: je, At, ZS, one, OM, q7, jh
+vne = require("fs");
 function FWi(e, t, n) {
   if (!t) return false;
   let r = t.toLowerCase(),

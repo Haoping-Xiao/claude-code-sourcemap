@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3622  score=0.8993  fileCov=0.3775
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var O7n = E(() => {
-  BFe();
-  jS();
-  ((dbt = require("fs/promises")), (pbt = require("path")));
-});
+// [unwrapped __esm module O7n] deps: BFe, jS
+((dbt = require("fs/promises")), (pbt = require("path")));
 function j0o() {
   return tyl.join(mm(), Xff);
 }

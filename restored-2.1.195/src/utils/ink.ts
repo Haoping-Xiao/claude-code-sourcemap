@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2875  score=1  fileCov=0.2875
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jCo = E(() => {
-  ft();
-  Un();
-});
 function V6(e) {
   if (!e) return Cof;
   let t = C$[e];

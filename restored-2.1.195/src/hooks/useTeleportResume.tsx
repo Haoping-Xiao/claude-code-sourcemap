@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.1859  score=0.3413  fileCov=0.2898
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var s6l = E(() => {
-  ((q5f = {
-    type: "local-jsx",
-    name: "tasks",
-    aliases: ["bashes"],
-    description: "View and manage everything running in the background",
-    immediate: true,
-    load: () => Promise.resolve().then(() => (r6l(), t6l)),
-  }),
-    (o6l = q5f));
-});
+// [unwrapped __esm module s6l]
+((q5f = {
+  type: "local-jsx",
+  name: "tasks",
+  aliases: ["bashes"],
+  description: "View and manage everything running in the background",
+  immediate: true,
+  load: () => Promise.resolve().then(() => (r6l(), t6l)),
+}),
+  (o6l = q5f));
 function a6l(e) {
   let t = i6l.c(8),
     [n, r] = Esr.useState(false),

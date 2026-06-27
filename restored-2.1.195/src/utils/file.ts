@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2419  score=0.3572  fileCov=0.4285
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Hu = E(() => {
-  Rm();
-  Lo();
-  ys();
-  Is();
-  sj();
-  jS();
-  ((Vpn = require("os")), (MO = require("path")));
-});
+// [unwrapped __esm module Hu] deps: Rm, Lo, ys, Is, sj, jS
+((Vpn = require("os")), (MO = require("path")));
 function rAs(e, t) {
   return `${e}\x00${t}`;
 }

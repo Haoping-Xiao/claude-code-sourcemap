@@ -4,16 +4,14 @@
 // class=new  jaccard=0.0205  score=0.4546  fileCov=0.021
 // note: nearest: src/utils/sessionStorage.ts (0.0205); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zRt = E(() => {
-  Jkr();
-  yOu = {
-    customTitle: "customTitle",
-    aiTitle: "aiTitle",
-    lastPrompt: "lastPrompt",
-    summary: "summaryHint",
-    gitBranch: "gitBranch"
-  };
-});
+// [unwrapped __esm module zRt] deps: Jkr
+yOu = {
+  customTitle: "customTitle",
+  aiTitle: "aiTitle",
+  lastPrompt: "lastPrompt",
+  summary: "summaryHint",
+  gitBranch: "gitBranch"
+};
 class Vfn {
   store = new Map();
   mtimes = new Map();

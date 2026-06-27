@@ -4,38 +4,20 @@
 // class=modified  jaccard=0.217  score=0.4359  fileCov=0.3017
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var R5c = E(() => {
-  iu();
-  kAt();
-  MMe();
-  np();
-  dn();
-  Un();
-  _F();
-  jc();
-  JJ();
-  fp();
-  At();
-  Jt();
-  sr();
-  Gor();
-  Cv();
-  gP();
-  JN();
-  prn = class prn extends Error {
-    reason;
-    constructor(e, t) {
-      super(t);
-      this.reason = e;
-      this.name = "PollFailure";
-    }
-  };
-  a1m = {
-    normal: "\uD83D\uDD34",
-    nit: "\uD83D\uDFE1",
-    pre_existing: "\uD83D\uDFE3",
-  };
-});
+// [unwrapped __esm module R5c] deps: iu, kAt, MMe, np, dn, Un, _F, jc, JJ, fp, At, Jt, sr, Gor, Cv, gP, JN
+prn = class prn extends Error {
+  reason;
+  constructor(e, t) {
+    super(t);
+    this.reason = e;
+    this.name = "PollFailure";
+  }
+};
+a1m = {
+  normal: "\uD83D\uDD34",
+  nit: "\uD83D\uDFE1",
+  pre_existing: "\uD83D\uDFE3",
+};
 var chr = {};
 _t(chr, {
   autoModeDefaultsHandler: () => autoModeDefaultsHandler,

@@ -4,24 +4,23 @@
 // class=modified  jaccard=0.4024  score=0.6247  fileCov=0.5306
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lJr = E(() => {
-  UBt = class UBt extends Qte {
-    col;
-    row;
-    localCol = 0;
-    localRow = 0;
-    cellIsBlank;
-    hyperlinkUrl;
-    defaultAllowed = false;
-    allowDefault() {
-      this.defaultAllowed = true;
-    }
-    constructor(e, t, n, r) {
-      super();
-      ((this.col = e), (this.row = t), (this.cellIsBlank = n), (this.hyperlinkUrl = r));
-    }
-  };
-});
+// [unwrapped __esm module lJr]
+UBt = class UBt extends Qte {
+  col;
+  row;
+  localCol = 0;
+  localRow = 0;
+  cellIsBlank;
+  hyperlinkUrl;
+  defaultAllowed = false;
+  allowDefault() {
+    this.defaultAllowed = true;
+  }
+  constructor(e, t, n, r) {
+    super();
+    ((this.col = e), (this.row = t), (this.cellIsBlank = n), (this.hyperlinkUrl = r));
+  }
+};
 function FBt(e, t, n) {
   let r = Cy.get(e);
   if (!r) return null;

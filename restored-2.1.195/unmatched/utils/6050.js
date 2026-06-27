@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0061  score=0.0353  fileCov=0.0074
 // note: nearest: src/utils/attachments.ts (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _qc = E(() => {
-  lH();
-  kt();
-  vn();
-  iQt();
-  Cir();
-  gqc();
-  sQt();
-});
 async function bqc(e) {
   try {
     let t = await yhr.realpath(e),

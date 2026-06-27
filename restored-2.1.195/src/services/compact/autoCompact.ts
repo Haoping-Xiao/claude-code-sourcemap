@@ -4,60 +4,8 @@
 // class=modified  jaccard=0.1076  score=0.174  fileCov=0.2198
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pre = E(() => {
-  dre();
-  ft();
-  ft();
-  put();
-  $pe();
-  lf();
-  jv();
-  Q1n();
-  Vv();
-  er();
-  BE();
-  tao();
-  Il();
-  je();
-  Cp();
-  At();
-  ik();
-  q0();
-  mwo();
-  sp();
-  vn();
-  Ekl();
-  co();
-  Ao();
-  Hu();
-  KI();
-  tA();
-  aze();
-  y_();
-  _Le();
-  _a();
-  Jt();
-  bH();
-  aS();
-  m5();
-  u$();
-  GX();
-  dn();
-  Un();
-  kt();
-  pke();
-  fb();
-  ZE();
-  tP();
-  lZn();
-  mLe();
-  H5e();
-  gNn();
-  U1();
-  q8();
-  Iao();
-  Tq = class Tq extends Error {};
-});
+// [unwrapped __esm module pre] deps: dre, ft, ft, put, $pe, lf, jv, Q1n, Vv, er, BE, tao, Il, je, Cp, At, ik, q0, mwo, sp, vn, Ekl, co, Ao, Hu, KI, tA, aze, y_, _Le, _a, Jt, bH, aS, m5, u$, GX, dn, Un, kt, pke, fb, ZE, tP, lZn, mLe, H5e, gNn, U1, q8, Iao
+Tq = class Tq extends Error {};
 function Pwf(e) {
   return e instanceof Tq || K1(be(e)) || Xie(e, cZn) || Xie(e, bMo);
 }

@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.4602  score=0.9266  fileCov=0.4776
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jhc = E(() => {
-  a0e();
-  kt();
-  fb();
-  Ypt();
-  uo();
-  BTe = R(rt(), 1);
-});
+// [unwrapped __esm module Jhc] deps: a0e, kt, fb, Ypt, uo
+BTe = R(rt(), 1);
 function LTt(e) {
   return "'" + e[0].replaceAll("'", `'"'"'`) + "'";
 }

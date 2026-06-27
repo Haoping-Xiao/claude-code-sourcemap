@@ -4,40 +4,37 @@
 // class=modified  jaccard=0.2648  score=0.3965  fileCov=0.4435
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vzl = E(() => {
-  NE();
-  Isr();
-  ((Zqf = {
-    type: "local-jsx",
+// [unwrapped __esm module Vzl] deps: NE, Isr
+((Zqf = {
+  type: "local-jsx",
+  name: "fast",
+  get description() {
+    return `Toggle fast mode (${FG()})`;
+  },
+  get isHidden() {
+    return !sc();
+  },
+  argumentHint: "[on|off]",
+  get immediate() {
+    return GAt();
+  },
+  requires: {
+    ink: true,
+  },
+  thinClientDispatch: "control-request",
+  load: () => Promise.resolve().then(() => (Wjo(), jzl)),
+}),
+  (qzl = {
+    type: "local",
     name: "fast",
+    supportsNonInteractive: true,
     get description() {
       return `Toggle fast mode (${FG()})`;
     },
-    get isHidden() {
-      return !sc();
-    },
     argumentHint: "[on|off]",
-    get immediate() {
-      return GAt();
-    },
-    requires: {
-      ink: true,
-    },
-    thinClientDispatch: "control-request",
-    load: () => Promise.resolve().then(() => (Wjo(), jzl)),
+    load: () => Promise.resolve().then(() => (Wzl(), Gzl)),
   }),
-    (qzl = {
-      type: "local",
-      name: "fast",
-      supportsNonInteractive: true,
-      get description() {
-        return `Toggle fast mode (${FG()})`;
-      },
-      argumentHint: "[on|off]",
-      load: () => Promise.resolve().then(() => (Wzl(), Gzl)),
-    }),
-    (qjo = Zqf));
-});
+  (qjo = Zqf));
 function Kzl({ onDone: e }) {
   let [t, n] = lme.useState(true),
     [r, o] = lme.useState([]),

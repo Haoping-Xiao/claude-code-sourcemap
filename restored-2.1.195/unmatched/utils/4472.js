@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0355  score=0.1959  fileCov=0.0416
 // note: nearest: src/services/compact/compact.ts (0.0355); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OKt = E(() => {
-  ft();
-  kt();
-  je();
-  fn();
-  Jin();
-  Jt();
-  SQn = ut(process.env.CLAUDE_CODE_PROFILE_STARTUP), rIl = Math.random() < ETf, SPo = SQn || rIl;
-});
+// [unwrapped __esm module OKt] deps: ft, kt, je, fn, Jin, Jt
+SQn = ut(process.env.CLAUDE_CODE_PROFILE_STARTUP), rIl = Math.random() < ETf, SPo = SQn || rIl;
 function HQn(e) {
   return e === "refusal" || e === "sticky";
 }

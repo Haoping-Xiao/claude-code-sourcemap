@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0324  score=0.2832  fileCov=0.0352
 // note: nearest: src/utils/permissions/filesystem.ts (0.0324); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tkn = E(() => {
-  UOi = require("path"), gOd = new Set([".git", "hooks", ".husky", ".githooks", "node_modules", ".vscode", ".idea", "head", "config", "objects", "refs", ".claude", "skills", "commands", "agents", ".cargo", ".devcontainer", ".yarn", ".mvn"]);
-});
+// [unwrapped __esm module Tkn]
+UOi = require("path"), gOd = new Set([".git", "hooks", ".husky", ".githooks", "node_modules", ".vscode", ".idea", "head", "config", "objects", "refs", ".claude", "skills", "commands", "agents", ".cargo", ".devcontainer", ".yarn", ".mvn"]);
 function yOd(e) {
   return FOi.randomBytes(4).readUInt32BE(0) % e;
 }

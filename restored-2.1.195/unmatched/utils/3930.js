@@ -3,12 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var W9n = E(() => {
-  ft();
-  uo();
-  ih();
-  bk();
-  Mp();
-  oJa = require("fs"), G9n = R(rt(), 1);
-});
+// [unwrapped __esm module W9n] deps: ft, uo, ih, bk, Mp
+oJa = require("fs"), G9n = R(rt(), 1);
 var wXp, CXp;

@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ywr = E(() => {
-  JK();
-});
 function lus(e) {
   return Cw(e);
 }

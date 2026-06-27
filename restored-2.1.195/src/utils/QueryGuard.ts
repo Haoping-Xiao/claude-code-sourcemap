@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.632  score=0.9352  fileCov=0.661
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pmc = E(() => {
-  fd();
-  je();
-  At();
-  Is();
-  Imc = require("child_process");
-});
+// [unwrapped __esm module Pmc] deps: fd, je, At, Is
+Imc = require("child_process");
 class T8o {
   _status = "idle";
   _generation = 0;

@@ -4,22 +4,9 @@
 // class=modified  jaccard=0.5714  score=0.884  fileCov=0.6177
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fre = E(() => {
-  ft();
-  er();
-  je();
-  wr();
-  PB();
-  ys();
-  Rd();
-  vn();
-  vf();
-  dr();
-  Jt();
-  QH();
-  rup = ["allow", "deny", "ask"];
-  iup = OO;
-});
+// [unwrapped __esm module fre] deps: ft, er, je, wr, PB, ys, Rd, vn, vf, dr, Jt, QH
+rup = ["allow", "deny", "ask"];
+iup = OO;
 function Jjt(e) {
   if (!e) return [];
   return e.flatMap((t) => {

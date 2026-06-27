@@ -4,12 +4,8 @@
 // class=modified (alt of src/utils/powershell/parser.ts)  jaccard=0.2151  score=0.5886  fileCov=0.2531
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kDe = E(() => {
-  dn();
-  Is();
-  _0();
-  ((Fqe = require("fs/promises")), (F2n = require("path")));
-});
+// [unwrapped __esm module kDe] deps: dn, Is, _0
+((Fqe = require("fs/promises")), (F2n = require("path")));
 function e0p() {
   let e = process.env.CLAUDE_CODE_PWSH_PARSE_TIMEOUT_MS;
   if (e) {

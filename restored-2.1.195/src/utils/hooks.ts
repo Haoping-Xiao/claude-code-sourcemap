@@ -4,54 +4,39 @@
 // class=modified  jaccard=0.2542  score=0.3472  fileCov=0.4868
 // note: deminified; 28 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $ic = E(() => {
-  _ic();
-  bic();
-  Sic();
-  Aic();
-  Hic();
-  N5o();
-  Tic();
-  vic();
-  kic();
-  Ric();
-  Lic();
-  TIo();
-  Pic();
-  Mic();
-  zem = {
-    PreToolUse: bzt,
-    PostToolUse: Szt,
-    PostToolUseFailure: Ezt,
-    PostToolBatch: wSt,
-    PermissionDenied: tKt,
-    PermissionRequest: jAe,
-    Notification: cJ,
-    Stop: OAe,
-    SubagentStop: OAe,
-    StopFailure: sOe,
-    TeammateIdle: oYt,
-    TaskCreated: Rzt,
-    TaskCompleted: Z6e,
-    UserPromptSubmit: aZt,
-    UserPromptExpansion: G8t,
-    SessionStart: qjt,
-    SessionEnd: oKe,
-    Setup: Vjt,
-    SubagentStart: J8t,
-    PreCompact: RQ,
-    PostCompact: eOe,
-    ConfigChange: vRe,
-    CwdChanged: Gjt,
-    FileChanged: Wjt,
-    InstructionsLoaded: o5e,
-    Elicitation: W3t,
-    ElicitationResult: q3t,
-    WorktreeCreate: WYe,
-    WorktreeRemove: QHt,
-    MessageDisplay: JHt,
-  };
-});
+// [unwrapped __esm module $ic] deps: _ic, bic, Sic, Aic, Hic, N5o, Tic, vic, kic, Ric, Lic, TIo, Pic, Mic
+zem = {
+  PreToolUse: bzt,
+  PostToolUse: Szt,
+  PostToolUseFailure: Ezt,
+  PostToolBatch: wSt,
+  PermissionDenied: tKt,
+  PermissionRequest: jAe,
+  Notification: cJ,
+  Stop: OAe,
+  SubagentStop: OAe,
+  StopFailure: sOe,
+  TeammateIdle: oYt,
+  TaskCreated: Rzt,
+  TaskCompleted: Z6e,
+  UserPromptSubmit: aZt,
+  UserPromptExpansion: G8t,
+  SessionStart: qjt,
+  SessionEnd: oKe,
+  Setup: Vjt,
+  SubagentStart: J8t,
+  PreCompact: RQ,
+  PostCompact: eOe,
+  ConfigChange: vRe,
+  CwdChanged: Gjt,
+  FileChanged: Wjt,
+  InstructionsLoaded: o5e,
+  Elicitation: W3t,
+  ElicitationResult: q3t,
+  WorktreeCreate: WYe,
+  WorktreeRemove: QHt,
+  MessageDisplay: JHt,
+};
 var _1a = {};
 _t(_1a, {
   shouldSkipHookDueToTrust: () => shouldSkipHookDueToTrust,

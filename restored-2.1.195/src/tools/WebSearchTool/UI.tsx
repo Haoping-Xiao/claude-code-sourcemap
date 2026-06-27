@@ -4,37 +4,28 @@
 // class=modified  jaccard=0.2925  score=0.4122  fileCov=0.5017
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var L_l = E(() => {
-  Hp();
-  zb();
-  je();
-  RE();
-  At();
-  Ls();
-  kM();
-  BIo();
-  vgf = ve(() =>
-    dt.object({
-      results: dt
-        .array(
-          dt.object({
-            title: dt.string().optional().default(""),
-            url: dt.string().optional().default(""),
-            snippet: dt.string().optional().default(""),
-          }),
-        )
-        .optional()
-        .default([]),
-      error: dt
-        .object({
-          error_type: dt.string(),
-          error_message: dt.string(),
-        })
-        .nullable()
-        .optional(),
-    }),
-  );
-});
+// [unwrapped __esm module L_l] deps: Hp, zb, je, RE, At, Ls, kM, BIo
+vgf = ve(() =>
+  dt.object({
+    results: dt
+      .array(
+        dt.object({
+          title: dt.string().optional().default(""),
+          url: dt.string().optional().default(""),
+          snippet: dt.string().optional().default(""),
+        }),
+      )
+      .optional()
+      .default([]),
+    error: dt
+      .object({
+        error_type: dt.string(),
+        error_message: dt.string(),
+      })
+      .nullable()
+      .optional(),
+  }),
+);
 function Cgf(e) {
   let t = 0;
   for (let n of e) if (n != null && typeof n !== "string") t++;

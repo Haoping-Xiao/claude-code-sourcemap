@@ -4,10 +4,6 @@
 // class=modified (alt of src/utils/platform.ts)  jaccard=0.1112  score=0.6768  fileCov=0.1175
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PB = E(() => {
-  je();
-  ys();
-});
 function Mpn(e) {
   switch (e) {
     case "darwin":

@@ -4,25 +4,12 @@
 // class=new  jaccard=0.011  score=0.3533  fileCov=0.0112
 // note: nearest: src/screens/REPL.tsx (0.011); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eTc = E(() => {
-  ft();
-  Ko();
-  AMe();
-  X0();
-  dtn();
-  Ye();
-  Du();
-  KHc();
-  Uoe();
-  y3();
-  Jt();
-  nKo();
-  YHc = R(lt(), 1), XHc = R(rt(), 1), rKo = R(rt(), 1), xA = R(se(), 1), JHc = "Dynamic workflows can use a lot of tokens quickly by running many " + "subagents in parallel \u2014 which counts against your usage limit. Stop a " + "running workflow at any time with /workflows, or disable dynamic workflows in /config.", q_m = {
-    loop: "loop",
-    parallel: "parallel",
-    sequential: "step"
-  };
-});
+// [unwrapped __esm module eTc] deps: ft, Ko, AMe, X0, dtn, Ye, Du, KHc, Uoe, y3, Jt, nKo
+YHc = R(lt(), 1), XHc = R(rt(), 1), rKo = R(rt(), 1), xA = R(se(), 1), JHc = "Dynamic workflows can use a lot of tokens quickly by running many " + "subagents in parallel \u2014 which counts against your usage limit. Stop a " + "running workflow at any time with /workflows, or disable dynamic workflows in /config.", q_m = {
+  loop: "loop",
+  parallel: "parallel",
+  sequential: "step"
+};
 function dbm(e) {
   let t = oTc.c(3),
     {

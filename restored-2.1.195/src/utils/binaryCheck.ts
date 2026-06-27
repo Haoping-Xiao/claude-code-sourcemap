@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.3624  score=0.7481  fileCov=0.4128
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ULc = E(() => {
-  ft();
-  Ye();
-  id();
-  yde();
-  uo();
-  je();
-  fn();
-  gz();
-  ((NLc = R(lt(), 1)), (pvt = R(rt(), 1)));
-});
+// [unwrapped __esm module ULc] deps: ft, Ye, id, yde, uo, je, fn, gz
+((NLc = R(lt(), 1)), (pvt = R(rt(), 1)));
 async function jLc(e) {
   if (!e || !e.trim()) return (T("[binaryCheck] Empty command provided, returning false"), false);
   let t = e.trim();

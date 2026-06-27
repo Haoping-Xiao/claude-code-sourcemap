@@ -4,220 +4,214 @@
 // class=modified  jaccard=0.4088  score=0.6817  fileCov=0.5052
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jqe = E(() => {
-  je();
-  ys();
-  BGt();
-  sr();
-  bH();
-  HPa = require("fs/promises");
-  Tb = class Tb {
-    taskId;
-    path;
-    stdoutToFile;
-    #e = "";
-    #t = "";
-    #n = null;
-    #r = new Rmo(1000);
-    #o = 0;
-    #l = 0;
-    #s;
-    #a;
-    #c = false;
-    #u = 0;
-    static #i = new Map();
-    static #p = new Map();
-    static #h = null;
-    constructor(e, t, n = false, r = E0p) {
-      if (
-        ((this.taskId = e),
-        (this.path = jm(e)),
-        (this.stdoutToFile = n),
-        (this.#s = r),
-        (this.#a = t),
-        n && t)
-      )
-        Tb.#i.set(e, this);
-    }
-    static startPolling(e) {
-      let t = Tb.#i.get(e);
-      if (!t || !t.#a) return;
-      if ((Tb.#p.set(e, t), !Tb.#h)) ((Tb.#h = setInterval(Tb.#m, A0p)), Tb.#h.unref());
-    }
-    static stopPolling(e) {
-      if ((Tb.#p.delete(e), Tb.#p.size === 0 && Tb.#h)) (clearInterval(Tb.#h), (Tb.#h = null));
-    }
-    static #m() {
-      for (let [, e] of Tb.#p) {
-        if (!e.#a) continue;
-        vx(e.path, H0p).then(
-          ({ content: t, bytesRead: n, bytesTotal: r }) => {
-            if (!e.#a) return;
-            if (!t) {
-              e.#a("", "", e.#o, r, false);
-              return;
-            }
-            let o = t.length,
-              s = 0,
-              i = 0,
-              a = 0;
-            while (o > 0) {
-              if (
-                ((o = t.lastIndexOf(
-                  `
+// [unwrapped __esm module jqe] deps: je, ys, BGt, sr, bH
+HPa = require("fs/promises");
+Tb = class Tb {
+  taskId;
+  path;
+  stdoutToFile;
+  #e = "";
+  #t = "";
+  #n = null;
+  #r = new Rmo(1000);
+  #o = 0;
+  #l = 0;
+  #s;
+  #a;
+  #c = false;
+  #u = 0;
+  static #i = new Map();
+  static #p = new Map();
+  static #h = null;
+  constructor(e, t, n = false, r = E0p) {
+    if (
+      ((this.taskId = e),
+      (this.path = jm(e)),
+      (this.stdoutToFile = n),
+      (this.#s = r),
+      (this.#a = t),
+      n && t)
+    )
+      Tb.#i.set(e, this);
+  }
+  static startPolling(e) {
+    let t = Tb.#i.get(e);
+    if (!t || !t.#a) return;
+    if ((Tb.#p.set(e, t), !Tb.#h)) ((Tb.#h = setInterval(Tb.#m, A0p)), Tb.#h.unref());
+  }
+  static stopPolling(e) {
+    if ((Tb.#p.delete(e), Tb.#p.size === 0 && Tb.#h)) (clearInterval(Tb.#h), (Tb.#h = null));
+  }
+  static #m() {
+    for (let [, e] of Tb.#p) {
+      if (!e.#a) continue;
+      vx(e.path, H0p).then(
+        ({ content: t, bytesRead: n, bytesTotal: r }) => {
+          if (!e.#a) return;
+          if (!t) {
+            e.#a("", "", e.#o, r, false);
+            return;
+          }
+          let o = t.length,
+            s = 0,
+            i = 0,
+            a = 0;
+          while (o > 0) {
+            if (
+              ((o = t.lastIndexOf(
+                `
 `,
-                  o - 1,
-                )),
-                a++,
-                a === 5)
-              )
-                s = o <= 0 ? 0 : o + 1;
-              if (a === 100) i = o <= 0 ? 0 : o + 1;
-            }
-            let l = n >= r ? a : Math.max(e.#o, Math.round((r / n) * a));
-            ((e.#o = l), (e.#l = r), e.#a(t.slice(s), t.slice(i), l, r, n < r));
-          },
-          () => {},
-        );
+                o - 1,
+              )),
+              a++,
+              a === 5)
+            )
+              s = o <= 0 ? 0 : o + 1;
+            if (a === 100) i = o <= 0 ? 0 : o + 1;
+          }
+          let l = n >= r ? a : Math.max(e.#o, Math.round((r / n) * a));
+          ((e.#o = l), (e.#l = r), e.#a(t.slice(s), t.slice(i), l, r, n < r));
+        },
+        () => {},
+      );
+    }
+  }
+  writeStdout(e) {
+    this.#d(e, false);
+  }
+  writeStderr(e) {
+    this.#d(e, true);
+  }
+  #d(e, t) {
+    if (((this.#l += e.length), this.#y(e), this.#n)) {
+      this.#n.append(t ? `[stderr] ${e}` : e);
+      return;
+    }
+    if (this.#e.length + this.#t.length + e.length > this.#s) {
+      this.#g(t ? e : null, t ? null : e);
+      return;
+    }
+    if (t) this.#t += e;
+    else this.#e += e;
+  }
+  #y(e) {
+    let r = 0,
+      o = [],
+      s = 0,
+      i = e.length;
+    while (i > 0) {
+      let a = e.lastIndexOf(
+        `
+`,
+        i - 1,
+      );
+      if (a === -1) break;
+      if ((r++, o.length < 100 && s < 4096)) {
+        let l = i - a - 1;
+        if (l > 0 && l <= 4096 - s) {
+          let c = e.slice(a + 1, i);
+          if (c.trim()) (o.push(Buffer.from(c).toString()), (s += l));
+        }
       }
+      i = a;
     }
-    writeStdout(e) {
-      this.#d(e, false);
-    }
-    writeStderr(e) {
-      this.#d(e, true);
-    }
-    #d(e, t) {
-      if (((this.#l += e.length), this.#y(e), this.#n)) {
-        this.#n.append(t ? `[stderr] ${e}` : e);
-        return;
-      }
-      if (this.#e.length + this.#t.length + e.length > this.#s) {
-        this.#g(t ? e : null, t ? null : e);
-        return;
-      }
-      if (t) this.#t += e;
-      else this.#e += e;
-    }
-    #y(e) {
-      let r = 0,
-        o = [],
-        s = 0,
-        i = e.length;
-      while (i > 0) {
-        let a = e.lastIndexOf(
+    this.#o += r;
+    for (let a = o.length - 1; a >= 0; a--) this.#r.add(o[a]);
+    if (this.#a && o.length > 0) {
+      let a = this.#r.getRecent(5);
+      this.#a(
+        Fin(
+          a,
           `
 `,
-          i - 1,
-        );
-        if (a === -1) break;
-        if ((r++, o.length < 100 && s < 4096)) {
-          let l = i - a - 1;
-          if (l > 0 && l <= 4096 - s) {
-            let c = e.slice(a + 1, i);
-            if (c.trim()) (o.push(Buffer.from(c).toString()), (s += l));
-          }
-        }
-        i = a;
-      }
-      this.#o += r;
-      for (let a = o.length - 1; a >= 0; a--) this.#r.add(o[a]);
-      if (this.#a && o.length > 0) {
-        let a = this.#r.getRecent(5);
-        this.#a(
-          Fin(
-            a,
-            `
+        ),
+        Fin(
+          this.#r.getRecent(100),
+          `
 `,
-          ),
-          Fin(
-            this.#r.getRecent(100),
-            `
-`,
-          ),
-          this.#o,
-          this.#l,
-          this.#n !== null,
-        );
-      }
+        ),
+        this.#o,
+        this.#l,
+        this.#n !== null,
+      );
     }
-    #g(e, t) {
-      if (((this.#n = new W2n(this.taskId)), this.#e)) (this.#n.append(this.#e), (this.#e = ""));
-      if (this.#t) (this.#n.append(`[stderr] ${this.#t}`), (this.#t = ""));
-      if (t) this.#n.append(t);
-      if (e) this.#n.append(`[stderr] ${e}`);
-    }
-    async getStdout() {
-      if (this.stdoutToFile) return this.#b();
-      if (this.#n) {
-        let e = this.#r.getRecent(5),
-          t = Fin(
-            e,
-            `
+  }
+  #g(e, t) {
+    if (((this.#n = new W2n(this.taskId)), this.#e)) (this.#n.append(this.#e), (this.#e = ""));
+    if (this.#t) (this.#n.append(`[stderr] ${this.#t}`), (this.#t = ""));
+    if (t) this.#n.append(t);
+    if (e) this.#n.append(`[stderr] ${e}`);
+  }
+  async getStdout() {
+    if (this.stdoutToFile) return this.#b();
+    if (this.#n) {
+      let e = this.#r.getRecent(5),
+        t = Fin(
+          e,
+          `
 `,
-          ),
-          r = `
+        ),
+        r = `
 Output truncated (${Math.round(this.#l / 1024)}KB total). Full output saved to: ${this.path}`;
-        return t ? t + r : r.trimStart();
-      }
-      return this.#e;
+      return t ? t + r : r.trimStart();
     }
-    async #b() {
-      let e = Npt();
-      try {
-        let t = await Min(this.path, 0, e);
-        if (!t) return ((this.#c = true), "");
-        let { content: n, bytesRead: r, bytesTotal: o } = t;
-        return ((this.#u = o), (this.#c = o <= r), n);
-      } catch (t) {
-        let n = t instanceof Error && "code" in t ? String(t.code) : "unknown";
-        return (
-          T(`TaskOutput.#readStdoutFromFile: failed to read ${this.path} (${n}): ${t}`),
-          `<bash output unavailable: output file ${this.path} could not be read (${n}). This usually means another Claude Code process in the same project deleted it during startup cleanup.>`
-        );
-      }
+    return this.#e;
+  }
+  async #b() {
+    let e = Npt();
+    try {
+      let t = await Min(this.path, 0, e);
+      if (!t) return ((this.#c = true), "");
+      let { content: n, bytesRead: r, bytesTotal: o } = t;
+      return ((this.#u = o), (this.#c = o <= r), n);
+    } catch (t) {
+      let n = t instanceof Error && "code" in t ? String(t.code) : "unknown";
+      return (
+        T(`TaskOutput.#readStdoutFromFile: failed to read ${this.path} (${n}): ${t}`),
+        `<bash output unavailable: output file ${this.path} could not be read (${n}). This usually means another Claude Code process in the same project deleted it during startup cleanup.>`
+      );
     }
-    getStderr() {
-      if (this.#n) return "";
-      return this.#t;
-    }
-    get isOverflowed() {
-      return this.#n !== null;
-    }
-    get totalLines() {
-      return this.#o;
-    }
-    get totalBytes() {
-      return this.#l;
-    }
-    get outputFileRedundant() {
-      return this.#c;
-    }
-    get outputFileSize() {
-      return this.#u;
-    }
-    spillToDisk() {
-      if (!this.#n) this.#g(null, null);
-    }
-    async flush() {
-      await this.#n?.flush();
-    }
-    async deleteOutputFile() {
-      try {
-        await HPa.unlink(this.path);
-      } catch {}
-    }
-    clear() {
-      ((this.#e = ""),
-        (this.#t = ""),
-        this.#r.clear(),
-        (this.#a = null),
-        this.#n?.cancel(),
-        Tb.stopPolling(this.taskId),
-        Tb.#i.delete(this.taskId));
-    }
-  };
-});
+  }
+  getStderr() {
+    if (this.#n) return "";
+    return this.#t;
+  }
+  get isOverflowed() {
+    return this.#n !== null;
+  }
+  get totalLines() {
+    return this.#o;
+  }
+  get totalBytes() {
+    return this.#l;
+  }
+  get outputFileRedundant() {
+    return this.#c;
+  }
+  get outputFileSize() {
+    return this.#u;
+  }
+  spillToDisk() {
+    if (!this.#n) this.#g(null, null);
+  }
+  async flush() {
+    await this.#n?.flush();
+  }
+  async deleteOutputFile() {
+    try {
+      await HPa.unlink(this.path);
+    } catch {}
+  }
+  clear() {
+    ((this.#e = ""),
+      (this.#t = ""),
+      this.#r.clear(),
+      (this.#a = null),
+      this.#n?.cancel(),
+      Tb.stopPolling(this.taskId),
+      Tb.#i.delete(this.taskId));
+  }
+};
 function Pmo(e, t) {
   if (!t?.subcommands?.length) return false;
   let n = e.toLowerCase();

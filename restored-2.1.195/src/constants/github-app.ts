@@ -4,49 +4,42 @@
 // class=modified  jaccard=0.1473  score=0.1575  fileCov=0.6945
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kUl = E(() => {
-  Ye();
-  Cc();
-  w7t();
-  Bs();
-  vi();
-  Ko();
-  ((CUl = R(lt(), 1)),
-    (IUl = R(rt(), 1)),
-    (Nq = R(se(), 1)),
-    (m1f = [
-      {
-        value: "claude",
-        label: "@Claude Code - Tag @claude in issues and PR comments",
-      },
-      {
-        value: "claude-review",
-        label: "Claude Code Review - Automated code review on new PRs",
-      },
-    ]),
-    (g1f = Nq.jsxs(Tn, {
-      children: [
-        Nq.jsx(ht, {
-          chord: ["up", "down"],
-          action: "navigate",
-        }),
-        Nq.jsx(ht, {
-          chord: "space",
-          action: "toggle",
-        }),
-        Nq.jsx(ht, {
-          chord: "enter",
-          action: "confirm",
-        }),
-        Nq.jsx(mr, {
-          action: "confirm:no",
-          context: "Confirmation",
-          fallback: "Esc",
-          description: "cancel",
-        }),
-      ],
-    })));
-});
+// [unwrapped __esm module kUl] deps: Ye, Cc, w7t, Bs, vi, Ko
+((CUl = R(lt(), 1)),
+  (IUl = R(rt(), 1)),
+  (Nq = R(se(), 1)),
+  (m1f = [
+    {
+      value: "claude",
+      label: "@Claude Code - Tag @claude in issues and PR comments",
+    },
+    {
+      value: "claude-review",
+      label: "Claude Code Review - Automated code review on new PRs",
+    },
+  ]),
+  (g1f = Nq.jsxs(Tn, {
+    children: [
+      Nq.jsx(ht, {
+        chord: ["up", "down"],
+        action: "navigate",
+      }),
+      Nq.jsx(ht, {
+        chord: "space",
+        action: "toggle",
+      }),
+      Nq.jsx(ht, {
+        chord: "enter",
+        action: "confirm",
+      }),
+      Nq.jsx(mr, {
+        action: "confirm:no",
+        context: "Confirmation",
+        fallback: "Esc",
+        description: "cancel",
+      }),
+    ],
+  })));
 var RUl = "Add Claude Code GitHub Workflow",
   Vfe = "https://github.com/anthropics/claude-code-action/blob/main/docs/setup.md",
   LUl = `name: Claude Code

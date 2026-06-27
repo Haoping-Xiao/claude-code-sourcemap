@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0164  score=0.2264  fileCov=0.0174
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0164); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $Xi = E(() => {
-  PXi();
-  Blt();
-});
 class $to {
   constructor() {
     this.byName = new Map(), this.bySentinel = new Map();

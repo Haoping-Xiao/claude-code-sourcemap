@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.5615  score=0.8308  fileCov=0.6341
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uEc = E(() => {
-  uo();
-  ydr();
-  rme();
-  gq();
-  S_();
-});
 function dEc() {
   let e = ije();
   if (!e?.teamName || !e?.agentName) {

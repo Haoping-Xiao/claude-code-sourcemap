@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0141  score=1  fileCov=0.0141
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0141); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sJo = E(() => {
-  rB();
-  iie();
-});
 var kDm = async (e, t, n, r) => {
     let o = await Cnn(e, t, "verify");
     Y7e(e, o);

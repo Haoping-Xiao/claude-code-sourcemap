@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3935  score=0.3935  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cDe = E(() => {
-  sr();
-});
 var ide = "ReadMcpResourceTool",
   sIa = `
 Reads a specific resource from an MCP server.

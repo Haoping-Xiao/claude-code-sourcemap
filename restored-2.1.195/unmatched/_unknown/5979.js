@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0153  score=0.0789  fileCov=0.0187
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0153); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NZ = E(() => {
-  sK();
-});
 function MMm(e) {
   return parseInt(e.name.slice(4), 10);
 }

@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.2051  score=0.2885  fileCov=0.415
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var XJl = E(() => {
-  At();
-  vf();
-  dr();
-  Ide();
-  Ide();
-});
 function eQl(e) {
   let t = n3o.c(28),
     { onDone: n } = e,

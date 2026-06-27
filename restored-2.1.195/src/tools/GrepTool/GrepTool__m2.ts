@@ -4,21 +4,8 @@
 // class=modified (alt of src/tools/GrepTool/GrepTool.ts)  jaccard=0.0396  score=0.0689  fileCov=0.0853
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Zyl = E(() => {
-  kt();
-  Du();
-  Q0o();
-  eXn();
-  X6e();
-  je();
-  At();
-  co();
-  lg();
-  Jt();
-  mzt();
-  Xyl();
-  Qyl = require("crypto");
-});
+// [unwrapped __esm module Zyl] deps: kt, Du, Q0o, eXn, X6e, je, At, co, lg, Jt, mzt, Xyl
+Qyl = require("crypto");
 function Nmf(e) {
   let t = [],
     n = [],

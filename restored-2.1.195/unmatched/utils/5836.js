@@ -4,20 +4,13 @@
 // class=new  jaccard=0.0233  score=0.0841  fileCov=0.0312
 // note: nearest: src/utils/tasks.ts (0.0233); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SNc = E(() => {
-  zb();
-  Mm();
-  wr();
-  At();
-  Jt();
-  c_();
-  pNc = require("fs"), j7e = require("fs/promises"), fNc = require("stream"), mNc = require("stream/promises");
-  gNc = ve(() => dt.object({
-    error: dt.object({
-      type: dt.string().optional()
-    })
-  }));
-});
+// [unwrapped __esm module SNc] deps: zb, Mm, wr, At, Jt, c_
+pNc = require("fs"), j7e = require("fs/promises"), fNc = require("stream"), mNc = require("stream/promises");
+gNc = ve(() => dt.object({
+  error: dt.object({
+    type: dt.string().optional()
+  })
+}));
 function rnn() {
   return ut(process.env.CLAUDE_CODE_SYNC_PLUGINS);
 }

@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.7836  score=1  fileCov=0.7836
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W_c = E(() => {
-  er();
-});
 function xdr(e) {
   return q_c.useMemo(() => {
     let t = e.find((o) => o.name === "ide");

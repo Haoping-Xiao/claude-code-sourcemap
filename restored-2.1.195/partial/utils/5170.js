@@ -4,13 +4,12 @@
 // class=partial  jaccard=0.0693  score=0.7428  fileCov=0.071
 // note: low-confidence suggestion: src/commands/brief.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eZl = E(() => {
-  ZQl = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub"
-  };
-});
+// [unwrapped __esm module eZl]
+ZQl = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub"
+};
 var nZl = {};
 _t(nZl, {
   default: () => jzf

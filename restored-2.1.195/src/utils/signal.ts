@@ -4,9 +4,7 @@
 // class=modified  jaccard=0.2529  score=1  fileCov=0.2529
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GY = E(() => {
-  ree();
-  ((znt = []), (doi = Mi()));
-  LPt = doi.subscribe;
-});
+// [unwrapped __esm module GY] deps: ree
+((znt = []), (doi = Mi()));
+LPt = doi.subscribe;
 var moi;

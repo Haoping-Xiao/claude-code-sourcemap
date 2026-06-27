@@ -4,11 +4,8 @@
 // class=modified (alt of src/tools/ExitWorktreeTool/ExitWorktreeTool.ts)  jaccard=0.0884  score=0.4266  fileCov=0.1003
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vbl = E(() => {
-  ql();
-  Ye();
-  cfe = R(se(), 1);
-});
+// [unwrapped __esm module vbl] deps: ql, Ye
+cfe = R(se(), 1);
 async function wbl(e, t) {
   let n = await $n(go(), ["-C", e, "status", "--porcelain"]);
   if (n.code !== 0) return null;

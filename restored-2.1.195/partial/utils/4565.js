@@ -4,20 +4,8 @@
 // class=partial  jaccard=0.0823  score=1  fileCov=0.0823
 // note: low-confidence suggestion: src/commands/remote-env/index.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FLl = E(() => {
-  Vl();
-  vi();
-  f_();
-  Ko();
-  CH();
-  Mce();
-  Ye();
-  ps();
-  fp();
-  er();
-  BLl();
-  G$o = R(lt(), 1), $Q = R(rt(), 1), lR = R(se(), 1);
-});
+// [unwrapped __esm module FLl] deps: Vl, vi, f_, Ko, CH, Mce, Ye, ps, fp, er, BLl
+G$o = R(lt(), 1), $Q = R(rt(), 1), lR = R(se(), 1);
 function jLl() {
   return bo() && Us("allow_remote_sessions");
 }

@@ -4,50 +4,13 @@
 // class=new  jaccard=0.004  score=0.147  fileCov=0.0041
 // note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var I7e = E(() => {
-  ft();
-  GF();
-  Izt();
-  RF();
-  kt();
-  ty();
-  $S();
-  Jen();
-  dC();
-  h6();
-  Ld();
-  BE();
-  wpe();
-  Lo();
-  je();
-  wr();
-  Y4();
-  gM();
-  sa();
-  sF();
-  lpr();
-  co();
-  QO();
-  OJt();
-  k0();
-  Ao();
-  vM();
-  Ls();
-  DE();
-  KI();
-  _$();
-  _a();
-  bk();
-  zgo();
-  HO();
-  aR();
-  OEc = require("path");
-  Vhm = {
-    unknown_family: "not a model this version of Claude Code recognizes",
-    not_allowed: "not allowed by this account's model settings",
-    retired: "retired"
-  };
-});
+// [unwrapped __esm module I7e] deps: ft, GF, Izt, RF, kt, ty, $S, Jen, dC, h6, Ld, BE, wpe, Lo, je, wr, Y4, gM, sa, sF, lpr, co, QO, OJt, k0, Ao, vM, Ls, DE, KI, _$, _a, bk, zgo, HO, aR
+OEc = require("path");
+Vhm = {
+  unknown_family: "not a model this version of Claude Code recognizes",
+  not_allowed: "not allowed by this account's model settings",
+  retired: "retired"
+};
 function Jhm(e) {
   return e.type === "system" && e.subtype === "model_refusal_fallback";
 }

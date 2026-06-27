@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0229  score=0.0796  fileCov=0.0311
 // note: nearest: src/services/api/overageCreditGrant.ts (0.0229); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mKr = E(() => {
-  fn();
-  Sx();
-});
 function JS() {
   if (Nkn()) return false;
   if (!S1i()) return false;

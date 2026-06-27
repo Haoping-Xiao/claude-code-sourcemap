@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.2036  score=1  fileCov=0.2036
 // note: low-confidence suggestion: src/utils/settings/pluginOnlyPolicy.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o8 = E(() => {
-  dr();
-  sr();
-});
 function VE(e) {
   let t = yn("policySettings")?.strictPluginOnlyCustomization;
   if (t === true) return true;

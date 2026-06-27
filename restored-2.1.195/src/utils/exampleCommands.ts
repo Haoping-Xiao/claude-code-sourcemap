@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1419  score=0.7531  fileCov=0.1488
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ubc = E(() => {
-  lbc();
-  Uen = R(rt(), 1);
-});
+// [unwrapped __esm module ubc] deps: lbc
+Uen = R(rt(), 1);
 function Umm(e) {
   return !Bmm.some((t) => t.test(e));
 }

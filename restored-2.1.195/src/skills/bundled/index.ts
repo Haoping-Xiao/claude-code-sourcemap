@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.0832  score=0.4697  fileCov=0.0918
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ekc = E(() => {
-  Iv();
-  AA();
-});
 function Upr() {
   if (tkc) return;
   ((tkc = true),

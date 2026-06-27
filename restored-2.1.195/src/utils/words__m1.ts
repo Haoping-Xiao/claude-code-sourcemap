@@ -4,13 +4,8 @@
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0041  score=0.2447  fileCov=0.0042
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var WHc = E(() => {
-  Vl();
-  X0();
-  WTe();
-  Ye();
-  ((jHc = R(lt(), 1)), (cV = R(se(), 1)));
-});
+// [unwrapped __esm module WHc] deps: Vl, X0, WTe, Ye
+((jHc = R(lt(), 1)), (cV = R(se(), 1)));
 function G_m(e, t) {
   let n = t;
   while (n < e.length && /\s/.test(e[n])) n++;

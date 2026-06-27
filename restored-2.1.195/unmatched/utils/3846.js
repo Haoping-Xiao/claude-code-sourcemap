@@ -4,31 +4,9 @@
 // class=new  jaccard=0.0516  score=0.2812  fileCov=0.0595
 // note: nearest: src/utils/plugins/zipCacheAdapters.ts (0.0516); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FEe = E(() => {
-  dn();
-  Un();
-  kt();
-  Du();
-  w4t();
-  Rx();
-  er();
-  je();
-  wr();
-  fn();
-  At();
-  Bi();
-  ys();
-  Yp();
-  vn();
-  uAo();
-  Is();
-  qd();
-  dr();
-  EVn();
-  Jt();
-  Tza = require("fs"), Hk = require("fs/promises"), H9e = require("os"), x6 = require("path"), T9e = R(Uj(), 1);
-  vza = class vza extends NIt {};
-});
+// [unwrapped __esm module FEe] deps: dn, Un, kt, Du, w4t, Rx, er, je, wr, fn, At, Bi, ys, Yp, vn, uAo, Is, qd, dr, EVn, Jt
+Tza = require("fs"), Hk = require("fs/promises"), H9e = require("os"), x6 = require("path"), T9e = R(Uj(), 1);
+vza = class vza extends NIt {};
 function Mza() {
   return Pza.join(tr(), ".last-update-result.json");
 }

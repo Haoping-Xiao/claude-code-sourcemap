@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0599  score=0.3196  fileCov=0.0686
 // note: nearest: src/utils/markdownConfigLoader.ts (0.0599); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o7n = E(() => {
-  LMe();
-  Oml = [];
-});
+// [unwrapped __esm module o7n] deps: LMe
+Oml = [];
 function ipf(e) {
   try {
     return O6e("workflows", e);

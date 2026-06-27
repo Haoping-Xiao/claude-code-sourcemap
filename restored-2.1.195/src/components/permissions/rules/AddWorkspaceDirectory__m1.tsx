@@ -4,38 +4,24 @@
 // class=modified (alt of src/components/permissions/rules/AddWorkspaceDirectory.tsx)  jaccard=0.0915  score=0.8464  fileCov=0.0931
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BZr = E(() => {
-  si();
-  qLn();
-  Mg();
-  Ye();
-  ps();
-  TZr();
-  Cc();
-  Vl();
-  Bs();
-  vi();
-  f_();
-  Ko();
-  OUt();
-  ((NUt = R(lt(), 1)),
-    (GGe = R(rt(), 1)),
-    ($v = R(se(), 1)),
-    (sKd = [
-      {
-        value: "yes-session",
-        label: "Yes, for this session",
-      },
-      {
-        value: "yes-remember",
-        label: "Yes, and remember this directory",
-      },
-      {
-        value: "no",
-        label: "No",
-      },
-    ]));
-});
+// [unwrapped __esm module BZr] deps: si, qLn, Mg, Ye, ps, TZr, Cc, Vl, Bs, vi, f_, Ko, OUt
+((NUt = R(lt(), 1)),
+  (GGe = R(rt(), 1)),
+  ($v = R(se(), 1)),
+  (sKd = [
+    {
+      value: "yes-session",
+      label: "Yes, for this session",
+    },
+    {
+      value: "yes-remember",
+      label: "Yes, and remember this directory",
+    },
+    {
+      value: "no",
+      label: "No",
+    },
+  ]));
 function Gzi(e) {
   let t = e.toUpperCase();
   return cKd.has(t) || jUt.some((n) => t.startsWith(n));

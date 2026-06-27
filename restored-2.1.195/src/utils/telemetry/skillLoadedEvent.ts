@@ -4,20 +4,8 @@
 // class=modified  jaccard=0.1923  score=0.3039  fileCov=0.3435
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xOc = E(() => {
-  Du();
-  gb();
-  fn();
-  PM();
-  Sbe();
-  o8();
-  $g();
-  vf();
-  dr();
-  aS();
-  II();
-  COc = require("path");
-});
+// [unwrapped __esm module xOc] deps: Du, gb, fn, PM, Sbe, o8, $g, vf, dr, aS, II
+COc = require("path");
 function Lxm() {
   return (Rxm ??= Object.keys(pKr().shape));
 }

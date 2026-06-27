@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0062  score=0.1228  fileCov=0.0065
 // note: nearest: src/cli/print.ts (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dbc = E(() => {
-  nUt();
-  m_t();
-  uo();
-  wAe();
-  nzo = R(rt(), 1);
-});
+// [unwrapped __esm module Dbc] deps: nUt, m_t, uo, wAe
+nzo = R(rt(), 1);
 function Pbc(e) {
   return typeof e === "string" ? Ja(e).replace(/[\r\n]/g, " ").slice(0, 512) : void 0;
 }

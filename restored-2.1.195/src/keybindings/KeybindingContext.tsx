@@ -4,23 +4,22 @@
 // class=modified  jaccard=0.286  score=0.3791  fileCov=0.5383
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SZr = E(() => {
-  z6d = {
-    up: "upArrow",
-    down: "downArrow",
-    left: "leftArrow",
-    right: "rightArrow",
-    pagedown: "pageDown",
-    pageup: "pageUp",
-    home: "home",
-    end: "end",
-    return: "return",
-    escape: "escape",
-    tab: "tab",
-    backspace: "backspace",
-    delete: "delete",
-  };
-});
+// [unwrapped __esm module SZr]
+z6d = {
+  up: "upArrow",
+  down: "downArrow",
+  left: "leftArrow",
+  right: "rightArrow",
+  pagedown: "pageDown",
+  pageup: "pageUp",
+  home: "home",
+  end: "end",
+  return: "return",
+  escape: "escape",
+  tab: "tab",
+  backspace: "backspace",
+  delete: "delete",
+};
 function dPn() {
   return {
     decls: new WeakMap(),

@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0164  score=1  fileCov=0.0164
 // note: nearest: src/commands/ide/ide.tsx (0.0164); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jBl = E(() => {
-  O0();
-  nk();
-  fH();
-  _i();
-  Ye();
-  ps();
-  eE();
-  kP();
-  PBl();
-  BBl();
-  UBl = R(lt(), 1), Gk = R(se(), 1);
-});
+// [unwrapped __esm module jBl] deps: O0, nk, fH, _i, Ye, ps, eE, kP, PBl, BBl
+UBl = R(lt(), 1), Gk = R(se(), 1);
 var GBl = {};
 _t(GBl, {
   call: () => call

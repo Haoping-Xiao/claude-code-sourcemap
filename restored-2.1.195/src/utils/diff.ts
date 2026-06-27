@@ -4,22 +4,6 @@
 // class=modified  jaccard=0.4422  score=0.7556  fileCov=0.5161
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RF = E(() => {
-  iu();
-  IB();
-  ft();
-  kt();
-  Du();
-  _oe();
-  er();
-  BE();
-  NE();
-  es();
-  Yp();
-  Sbe();
-  Ao();
-  jG();
-});
 function q8n(e, t) {
   if (t === 0) return e;
   return e.map((n) => ({

@@ -4,7 +4,5 @@
 // class=partial  jaccard=0.1517  score=1  fileCov=0.1517
 // note: low-confidence suggestion: node_modules/@smithy/middleware-retry/dist-cjs/isStreamingPayload/isStreamingPayload.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w4r = E(() => {
-  Mui();
-  Oui = require("stream");
-});
+// [unwrapped __esm module w4r] deps: Mui
+Oui = require("stream");

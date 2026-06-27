@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0183  score=0.412  fileCov=0.0188
 // note: nearest: src/ink/styles.ts (0.0183); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UCo = E(() => {
-  Ye();
-  ql();
-  Zsl = R(lt(), 1), iQ = R(se(), 1);
-});
+// [unwrapped __esm module UCo] deps: Ye, ql
+Zsl = R(lt(), 1), iQ = R(se(), 1);
 function $zn(e) {
   let t = eil.c(7),
     {

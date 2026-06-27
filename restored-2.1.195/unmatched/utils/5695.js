@@ -4,21 +4,11 @@
 // class=new  jaccard=0.0475  score=0.2268  fileCov=0.0567
 // note: nearest: src/ink/components/Box.tsx (0.0475); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aRc = E(() => {
-  aW();
-  Un();
-  kt();
-  jc();
-  fb();
-  wr();
-  co();
-  aS();
-  xtn();
-  sRc = R(lt(), 1), Wme = R(rt(), 1), swm = {
-    generic: void 0,
-    instruction_following: "How well is Claude following the instructions you gave earlier in this conversation? (optional)"
-  };
-});
+// [unwrapped __esm module aRc] deps: aW, Un, kt, jc, fb, wr, co, aS, xtn
+sRc = R(lt(), 1), Wme = R(rt(), 1), swm = {
+  generic: void 0,
+  instruction_following: "How well is Claude following the instructions you gave earlier in this conversation? (optional)"
+};
 function cRc(e) {
   let t = lRc.c(10),
     {

@@ -4,14 +4,9 @@
 // class=modified (alt of src/bridge/debugUtils.ts)  jaccard=0.1228  score=0.2007  fileCov=0.2405
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Cde = E(() => {
-  kt();
-  je();
-  At();
-  Jt();
-  ((IDp = ["session_ingress_token", "environment_secret", "access_token", "secret", "token"]),
-    (xDp = new RegExp(`"(${IDp.join("|")})"\\s*:\\s*"([^"]*)"`, "g")));
-});
+// [unwrapped __esm module Cde] deps: kt, je, At, Jt
+((IDp = ["session_ingress_token", "environment_secret", "access_token", "secret", "token"]),
+  (xDp = new RegExp(`"(${IDp.join("|")})"\\s*:\\s*"([^"]*)"`, "g")));
 function DDp(e) {
   if (!e || typeof e !== "object") return;
   let t = "error" in e ? e.error : e;

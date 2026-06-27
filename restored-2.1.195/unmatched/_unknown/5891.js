@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0254  score=0.3107  fileCov=0.0269
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0254); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _2c = E(() => {
-  wm();
-});
 var Y7e = (e, t) => {
   if (e.startsWith("RS") || e.startsWith("PS")) {
     let {

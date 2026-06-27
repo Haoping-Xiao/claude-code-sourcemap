@@ -4,17 +4,9 @@
 // class=modified  jaccard=0.0912  score=0.1255  fileCov=0.25
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IX = E(() => {
-  ft();
-  Un();
-  Vw();
-  er();
-  je();
-  fn();
-  Ls();
-  Oop = ["claude-3-5-haiku", "claude-3-haiku"];
-  Bop = [];
-});
+// [unwrapped __esm module IX] deps: ft, Un, Vw, er, je, fn, Ls
+Oop = ["claude-3-5-haiku", "claude-3-haiku"];
+Bop = [];
 var oSe = "EnterWorktree";
 var _h = "ToolSearch";
 var URe = {};

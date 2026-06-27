@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.6395  score=1  fileCov=0.6395
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K_e = E(() => {
-  ((Cy = new WeakMap()), (wBt = new WeakMap()));
-});
+// [unwrapped __esm module K_e]
+((Cy = new WeakMap()), (wBt = new WeakMap()));
 function KRn(e, t = {}, n, r = []) {
   let o = e.textStyles
     ? {

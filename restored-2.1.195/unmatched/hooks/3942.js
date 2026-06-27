@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0193  score=0.2153  fileCov=0.0207
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0193); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NJa = E(() => {
-  MJa = require("fs/promises"), $Ja = require("os"), WHo = require("path");
-});
+// [unwrapped __esm module NJa]
+MJa = require("fs/promises"), $Ja = require("os"), WHo = require("path");
 function UJa() {
   let e = qHo.c(10),
     {

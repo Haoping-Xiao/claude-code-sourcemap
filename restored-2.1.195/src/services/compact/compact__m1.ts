@@ -4,16 +4,8 @@
 // class=modified (alt of src/services/compact/compact.ts)  jaccard=0.1169  score=0.3635  fileCov=0.147
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aSt = E(() => {
-  ft();
-  S4();
-  S$();
-  dC();
-  _a();
-  WSe();
-  dQn();
-  yTf = (KWe(), ro(zWe));
-});
+// [unwrapped __esm module aSt] deps: ft, S4, S$, dC, _a, WSe, dQn
+yTf = (KWe(), ro(zWe));
 function ZCl(e) {
   return e?.type === "assistant" && hSe(e);
 }

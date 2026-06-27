@@ -3,6 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iDo = E(() => {
-  VTl = new Map();
-});
+// [unwrapped __esm module iDo]
+VTl = new Map();

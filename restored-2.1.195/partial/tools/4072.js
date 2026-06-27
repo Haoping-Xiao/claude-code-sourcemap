@@ -4,31 +4,19 @@
 // class=partial  jaccard=0.116  score=0.1965  fileCov=0.2207
 // note: low-confidence suggestion: src/tools/AgentTool/built-in/exploreAgent.ts; dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vAe = E(() => {
-  Un();
-  RX();
-  u_();
-  lf();
-  nC();
-  EI();
-  lC();
-  f6();
-  Ls();
-  _m();
-  fh();
-  Upe = {
-    agentType: "Explore",
-    whenToUse: Vnf,
-    whenToUseLean: znf,
-    disallowedTools: [ss, g4, Xx, ka, Wc, RI],
-    source: "built-in",
-    baseDir: "built-in",
-    model: "haiku",
-    omitClaudeMd: true,
-    getSystemPrompt: () => qnf()
-  };
-  Iol = ["haiku", "sonnet", "opus"];
-});
+// [unwrapped __esm module vAe] deps: Un, RX, u_, lf, nC, EI, lC, f6, Ls, _m, fh
+Upe = {
+  agentType: "Explore",
+  whenToUse: Vnf,
+  whenToUseLean: znf,
+  disallowedTools: [ss, g4, Xx, ka, Wc, RI],
+  source: "built-in",
+  baseDir: "built-in",
+  model: "haiku",
+  omitClaudeMd: true,
+  getSystemPrompt: () => qnf()
+};
+Iol = ["haiku", "sonnet", "opus"];
 function z8e() {
   return at("tengu_review_bughunter_config", null);
 }

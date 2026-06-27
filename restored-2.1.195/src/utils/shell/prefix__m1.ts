@@ -4,67 +4,62 @@
 // class=modified (alt of src/utils/shell/prefix.ts)  jaccard=0.0781  score=0.2173  fileCov=0.1087
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sN = E(() => {
-  tlc();
-  rre();
-  Ybe();
-  xRe();
-  ((Eqo = new Set(["program", "list", "pipeline"])),
-    (rlc = new Set([
-      "&&",
-      "||",
-      "|",
-      ";",
-      "&",
-      "|&",
-      `
+// [unwrapped __esm module sN] deps: tlc, rre, Ybe, xRe
+((Eqo = new Set(["program", "list", "pipeline"])),
+  (rlc = new Set([
+    "&&",
+    "||",
+    "|",
+    ";",
+    "&",
+    "|&",
+    `
 `,
-    ])));
-  Sqo = new Set([
-    "command_substitution",
-    "process_substitution",
-    "expansion",
-    "simple_expansion",
-    "arithmetic_expansion",
-  ]);
-  Onm = new Set(["ansi_c_string", "translated_string"]);
-  olc = new Set([
-    "<",
-    ">",
-    ">>",
-    "<<",
-    "<<-",
-    "<<<",
-    "<&",
-    ">&",
-    "&>",
-    "&>>",
-    ">|",
-    ">&-",
-    "<&-",
-    "file_descriptor",
-    "heredoc_start",
-    "heredoc_body",
-    "heredoc_content",
-    "heredoc_end",
-  ]);
-  ((Nnm = new Set(["word", "string", "raw_string", "number"])),
-    (Bnm = /(?:^|[^\\])(?:\\\\)*[;|&<>]/),
-    (Unm = /(?:^|[^\\])(?:\\\\)*\\$/));
-  ((ilc = Zac({
-    toolName: "Bash",
-    policySpec: jnm,
-    eventName: "tengu_bash_prefix",
-    querySource: "bash_extract_prefix",
-    preCheck: (e) =>
-      Fnm(e)
-        ? {
-            commandPrefix: e,
-          }
-        : null,
-  })),
-    (sSt = elc(ilc, By)));
-});
+  ])));
+Sqo = new Set([
+  "command_substitution",
+  "process_substitution",
+  "expansion",
+  "simple_expansion",
+  "arithmetic_expansion",
+]);
+Onm = new Set(["ansi_c_string", "translated_string"]);
+olc = new Set([
+  "<",
+  ">",
+  ">>",
+  "<<",
+  "<<-",
+  "<<<",
+  "<&",
+  ">&",
+  "&>",
+  "&>>",
+  ">|",
+  ">&-",
+  "<&-",
+  "file_descriptor",
+  "heredoc_start",
+  "heredoc_body",
+  "heredoc_content",
+  "heredoc_end",
+]);
+((Nnm = new Set(["word", "string", "raw_string", "number"])),
+  (Bnm = /(?:^|[^\\])(?:\\\\)*[;|&<>]/),
+  (Unm = /(?:^|[^\\])(?:\\\\)*\\$/));
+((ilc = Zac({
+  toolName: "Bash",
+  policySpec: jnm,
+  eventName: "tengu_bash_prefix",
+  querySource: "bash_extract_prefix",
+  preCheck: (e) =>
+    Fnm(e)
+      ? {
+          commandPrefix: e,
+        }
+      : null,
+})),
+  (sSt = elc(ilc, By)));
 function Wnm(e) {
   let n = jo().sandbox?.excludedCommands ?? [];
   if (n.length === 0) return false;

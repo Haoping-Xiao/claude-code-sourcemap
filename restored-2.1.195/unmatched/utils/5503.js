@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0051  score=0.1654  fileCov=0.0052
 // note: nearest: src/screens/REPL.tsx (0.0051); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var szo = E(() => {
-  ngm = ["provision", "clone", "setup_script", "start_cc"];
-});
+// [unwrapped __esm module szo]
+ngm = ["provision", "clone", "setup_script", "start_cc"];
 function Bdr() {
   return {
     retracted: new Set(),

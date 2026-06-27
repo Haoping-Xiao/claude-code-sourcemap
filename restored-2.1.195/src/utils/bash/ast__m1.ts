@@ -4,15 +4,12 @@
 // class=modified (alt of src/utils/bash/ast.ts)  jaccard=0.1101  score=0.1836  fileCov=0.2155
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xRe = E(() => {
-  kt();
-  Ybe();
-  ((mrp = new Set(["export", "declare", "typeset", "readonly", "local", "unset", "unsetenv"])),
-    (grp = new Set(["word", "string", "raw_string", "number"])),
-    (Bro = new Set(["command_substitution", "process_substitution"])),
-    (Uro = new Set(["command", "declaration_command"])));
-  wue = Symbol("parse-aborted");
-});
+// [unwrapped __esm module xRe] deps: kt, Ybe
+((mrp = new Set(["export", "declare", "typeset", "readonly", "local", "unset", "unsetenv"])),
+  (grp = new Set(["word", "string", "raw_string", "number"])),
+  (Bro = new Set(["command_substitution", "process_substitution"])),
+  (Uro = new Set(["command", "declaration_command"])));
+wue = Symbol("parse-aborted");
 function Bp(e) {
   return e.includes(Cue) || e.includes(cg);
 }

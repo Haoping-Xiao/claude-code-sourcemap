@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2419  score=0.3346  fileCov=0.4661
 // note: low-confidence suggestion: node_modules/zod/v4/locales/en.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zas = E(() => {
-  ep();
-});
 function eTr() {
   return {
     localeError: zJc()

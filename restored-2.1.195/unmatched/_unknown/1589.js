@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0481  score=1  fileCov=0.0481
 // note: nearest: node_modules/@smithy/util-stream/dist-cjs/index.js (0.0481); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xui = E(() => {
-  L4r();
-  zui();
-  Yui();
-});
 function Jui(e, t = "utf-8") {
   if (t === "base64") return NHn(e);
   return Kui(e);

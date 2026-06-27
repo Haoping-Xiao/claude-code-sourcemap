@@ -4,11 +4,8 @@
 // class=new  jaccard=0.058  score=0.2086  fileCov=0.0744
 // note: nearest: src/tools/BashTool/bashPermissions.ts (0.058); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RCl = E(() => {
-  sN();
-  S$();
-  GHf = ["mkdir", "touch", "rm", "rmdir", "mv", "cp", "sed"];
-});
+// [unwrapped __esm module RCl] deps: sN, S$
+GHf = ["mkdir", "touch", "rm", "rmdir", "mv", "cp", "sed"];
 function LCl(e, t, n, r) {
   return;
 }

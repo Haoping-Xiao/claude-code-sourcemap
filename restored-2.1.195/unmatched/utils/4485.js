@@ -3,33 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VKt = E(() => {
-  ft();
-  RPo();
-  Uh();
-  MM();
-  id();
-  u_();
-  lf();
-  nC();
-  EI();
-  lC();
-  jv();
-  fp();
-  rre();
-  je();
-  q0();
-  co();
-  Yf();
-  _m();
-  dn();
-  Un();
-  kt();
-  Du();
-  MQn();
-  xIl();
-  DIl = require("path");
-});
+// [unwrapped __esm module VKt] deps: ft, RPo, Uh, MM, id, u_, lf, nC, EI, lC, jv, fp, rre, je, q0, co, Yf, _m, dn, Un, kt, Du, MQn, xIl
+DIl = require("path");
 function ZTf() {
   return false;
 }

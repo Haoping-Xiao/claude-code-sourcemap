@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.5127  score=0.6422  fileCov=0.7177
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aCo = E(() => {
-  ft();
-  Rc();
-  fn();
-});
 function asl() {
   lCo.clear();
 }

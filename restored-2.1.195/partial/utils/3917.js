@@ -4,30 +4,20 @@
 // class=partial  jaccard=0.1282  score=0.1848  fileCov=0.2952
 // note: low-confidence suggestion: src/services/tips/tipHistory.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xXa = E(() => {
-  oo();
-  je();
-  fn();
-  At();
-  SG();
-  Jt();
-  Un();
-  c_();
-  jc();
-  cht = require("fs/promises"), HHo = require("path");
-  z7p = Ahe(async () => {
-    if (!Us("allow_team_discovery")) return;
-    if (!at("tengu_team_discovery", false)) return;
-    if (!bo()) return;
-    let e = await W7p();
-    if (e && Date.now() - e.fetchedAt < G7p) return e.data ?? void 0;
-    let t = await V7p();
-    return await q7p({
-      fetchedAt: Date.now(),
-      data: t
-    }), t ?? void 0;
-  }, 3600000);
-});
+// [unwrapped __esm module xXa] deps: oo, je, fn, At, SG, Jt, Un, c_, jc
+cht = require("fs/promises"), HHo = require("path");
+z7p = Ahe(async () => {
+  if (!Us("allow_team_discovery")) return;
+  if (!at("tengu_team_discovery", false)) return;
+  if (!bo()) return;
+  let e = await W7p();
+  if (e && Date.now() - e.fetchedAt < G7p) return e.data ?? void 0;
+  let t = await V7p();
+  return await q7p({
+    fetchedAt: Date.now(),
+    data: t
+  }), t ?? void 0;
+}, 3600000);
 function uht(e, t) {
   let n = Dt().numStartups;
   gn(r => {

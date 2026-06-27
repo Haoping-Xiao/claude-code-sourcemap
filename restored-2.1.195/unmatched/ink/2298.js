@@ -4,31 +4,29 @@
 // class=new  jaccard=0.0154  score=0.4152  fileCov=0.0157
 // note: nearest: src/native-ts/yoga-layout/index.ts (0.0154); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pRn = E(() => {
-  XYr();
-  u8 = {
-    unit: 0,
-    value: NaN
-  }, q_e = {
-    unit: 3,
-    value: NaN
-  };
-  bUd = PFi();
-  wUd = new Float64Array(0);
-  tBt = new Int32Array(8), ZYr = new Float64Array(64);
-  jUd = {
-    Config: {
-      create: PFi,
-      destroy() {}
-    },
-    Node: {
-      create: e => new aRn(e),
-      createDefault: () => new aRn(),
-      createWithConfig: e => new aRn(e),
-      destroy() {}
-    }
-  }, GFi = jUd;
-});
+// [unwrapped __esm module pRn] deps: XYr
+u8 = {
+  unit: 0,
+  value: NaN
+}, q_e = {
+  unit: 3,
+  value: NaN
+};
+bUd = PFi();
+wUd = new Float64Array(0);
+tBt = new Int32Array(8), ZYr = new Float64Array(64);
+jUd = {
+  Config: {
+    create: PFi,
+    destroy() {}
+  },
+  Node: {
+    create: e => new aRn(e),
+    createDefault: () => new aRn(),
+    createWithConfig: e => new aRn(e),
+    destroy() {}
+  }
+}, GFi = jUd;
 function L0(e, t) {
   if (!("setRawMode" in e) || typeof e.setRawMode !== "function") return;
   try {

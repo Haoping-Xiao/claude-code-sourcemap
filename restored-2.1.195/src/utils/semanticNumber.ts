@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4574  score=1  fileCov=0.4574
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PDe = E(() => {
-  Xr();
-});
 function hF(e = H.number()) {
   return H.preprocess((t) => {
     if (typeof t === "string") {

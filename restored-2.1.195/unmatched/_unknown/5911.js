@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0294  score=0.5375  fileCov=0.0302
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/util.mjs (0.0294); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oJo = E(() => {
-  wm();
-});
 function Cnn(e, t, n) {
   if (OC(t)) return i2c(t, e, n), t;
   if (t instanceof Uint8Array) {

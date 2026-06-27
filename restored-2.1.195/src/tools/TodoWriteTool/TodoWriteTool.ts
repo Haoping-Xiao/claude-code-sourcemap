@@ -4,91 +4,84 @@
 // class=modified  jaccard=0.3232  score=0.4191  fileCov=0.5854
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jjn = E(() => {
-  Xr();
-  ft();
-  ii();
-  bk();
-  zgo();
-  IOa();
-  ((YDp = ve(() =>
-    H.strictObject({
-      todos: hft().describe("The updated todo list"),
+// [unwrapped __esm module jjn] deps: Xr, ft, ii, bk, zgo, IOa
+((YDp = ve(() =>
+  H.strictObject({
+    todos: hft().describe("The updated todo list"),
+  }),
+)),
+  (XDp = ve(() =>
+    H.object({
+      oldTodos: hft().describe("The todo list before the update"),
+      newTodos: hft().describe("The todo list after the update"),
     }),
   )),
-    (XDp = ve(() =>
-      H.object({
-        oldTodos: hft().describe("The todo list before the update"),
-        newTodos: hft().describe("The todo list after the update"),
-      }),
-    )),
-    (qDe = ti({
-      name: s$,
-      searchHint: "manage the session task checklist",
-      maxResultSizeChars: 100000 /* 1e5 */,
-      strict: true,
-      async description() {
-        return COa;
-      },
-      async prompt({ model: e }) {
-        return wOa(e);
-      },
-      get inputSchema() {
-        return YDp();
-      },
-      get outputSchema() {
-        return XDp();
-      },
-      userFacingName() {
-        return "";
-      },
-      shouldDefer: true,
-      isEnabled() {
-        return !EH();
-      },
-      toAutoClassifierInput(e) {
-        return `${e.todos.length} items`;
-      },
-      async checkPermissions(e) {
-        return {
-          behavior: "allow",
-          updatedInput: e,
-        };
-      },
-      renderToolUseMessage() {
-        return null;
-      },
-      async call({ todos: e }, t) {
-        let n = t.getAppState(),
-          r = t.agentId ?? Rt(),
-          o = n.todos[r] ?? [],
-          i = e.every((a) => a.status === "completed") ? [] : e;
-        return (
-          t.setAppState((a) => ({
-            ...a,
-            todos: {
-              ...a.todos,
-              [r]: i,
-            },
-          })),
-          {
-            data: {
-              oldTodos: o,
-              newTodos: e,
-            },
-          }
-        );
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        return {
-          tool_use_id: t,
-          type: "tool_result",
-          content:
-            "Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable",
-        };
-      },
-    })));
-});
+  (qDe = ti({
+    name: s$,
+    searchHint: "manage the session task checklist",
+    maxResultSizeChars: 100000 /* 1e5 */,
+    strict: true,
+    async description() {
+      return COa;
+    },
+    async prompt({ model: e }) {
+      return wOa(e);
+    },
+    get inputSchema() {
+      return YDp();
+    },
+    get outputSchema() {
+      return XDp();
+    },
+    userFacingName() {
+      return "";
+    },
+    shouldDefer: true,
+    isEnabled() {
+      return !EH();
+    },
+    toAutoClassifierInput(e) {
+      return `${e.todos.length} items`;
+    },
+    async checkPermissions(e) {
+      return {
+        behavior: "allow",
+        updatedInput: e,
+      };
+    },
+    renderToolUseMessage() {
+      return null;
+    },
+    async call({ todos: e }, t) {
+      let n = t.getAppState(),
+        r = t.agentId ?? Rt(),
+        o = n.todos[r] ?? [],
+        i = e.every((a) => a.status === "completed") ? [] : e;
+      return (
+        t.setAppState((a) => ({
+          ...a,
+          todos: {
+            ...a.todos,
+            [r]: i,
+          },
+        })),
+        {
+          data: {
+            oldTodos: o,
+            newTodos: e,
+          },
+        }
+      );
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content:
+          "Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable",
+      };
+    },
+  })));
 function Wjn(e) {
   return false;
 }

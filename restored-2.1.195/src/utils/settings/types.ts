@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.1713  score=0.2628  fileCov=0.3299
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lmn = E(() => {
-  Xr();
-  Ox();
-  QH();
-  sr();
-  xws();
-  ((cLr = ve(() => Lws())), (Rws = ve(() => Lws("allow"))));
-});
+// [unwrapped __esm module lmn] deps: Xr, Ox, QH, sr, xws
+((cLr = ve(() => Lws())), (Rws = ve(() => Lws("allow"))));
 function $ws(e) {
   return H.object({
     allow: H.array(Rws()).optional().describe("List of permission rules for allowed operations"),

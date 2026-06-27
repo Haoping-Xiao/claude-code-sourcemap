@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0124  score=0.1389  fileCov=0.0135
 // note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0124); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LX = E(() => {
-  rSe();
-  Lx();
-  T3e();
-  IX();
-  fh();
-  tSe();
-  dsp = (f4(), ro(URe)).BRIEF_TOOL_NAME, psp = ro(WOn).SEND_USER_FILE_TOOL_NAME;
-});
+// [unwrapped __esm module LX] deps: rSe, Lx, T3e, IX, fh, tSe
+dsp = (f4(), ro(URe)).BRIEF_TOOL_NAME, psp = ro(WOn).SEND_USER_FILE_TOOL_NAME;
 function joa(e) {
   let t = Buffer.from(e, "base64"),
     n = "";

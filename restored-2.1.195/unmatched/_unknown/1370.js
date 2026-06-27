@@ -4,50 +4,6 @@
 // class=new  jaccard=0.0498  score=0.7909  fileCov=0.0505
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0498); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tFr = E(() => {
-  OZs();
-  VZs();
-  zZs();
-  KZs();
-  YZs();
-  XZs();
-  eei();
-  tei();
-  nei();
-  oei();
-  uei();
-  dei();
-  gei();
-  hei();
-  _ei();
-  bei();
-  Tei();
-  vei();
-  Cei();
-  xei();
-  kei();
-  Rei();
-  Lei();
-  Dei();
-  Pei();
-  Mei();
-  $ei();
-  Oei();
-  Nei();
-  Bei();
-  Uei();
-  Fei();
-  jei();
-  Gei();
-  qei();
-  Vei();
-  zei();
-  Kei();
-  Yei();
-  Xei();
-  Jei();
-  Qei();
-});
 function IEn(e, t) {
   if (t == null) return t;
   let n = Zei.NormalizedSchema.of(e);

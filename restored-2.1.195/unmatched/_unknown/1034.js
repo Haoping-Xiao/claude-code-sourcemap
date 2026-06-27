@@ -4,10 +4,9 @@
 // class=new  jaccard=0.0308  score=0.3366  fileCov=0.0328
 // note: nearest: node_modules/@smithy/types/dist-cjs/index.js (0.0308); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G4s = E(() => {
-  (function (e) {
-    e.MD5 = "md5", e.CRC32 = "crc32", e.CRC32C = "crc32c", e.SHA1 = "sha1", e.SHA256 = "sha256";
-  })(Gtt || (Gtt = {}));
-});
+// [unwrapped __esm module G4s]
+(function (e) {
+  e.MD5 = "md5", e.CRC32 = "crc32", e.CRC32C = "crc32c", e.SHA1 = "sha1", e.SHA256 = "sha256";
+})(Gtt || (Gtt = {}));
 var W4s = () => {};
 var q4s = () => {};

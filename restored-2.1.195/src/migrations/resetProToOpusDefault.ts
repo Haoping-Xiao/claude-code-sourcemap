@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.3473  score=0.6954  fileCov=0.4096
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var s1c = E(() => {
-  kt();
-  dn();
-  er();
-  vn();
-  __();
-  dr();
-});
 function i1c() {
   if (Dt().opusProMigrationComplete) return;
   if (fr() !== "firstParty" || !Aye()) {

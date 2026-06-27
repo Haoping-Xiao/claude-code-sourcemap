@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.392  score=0.6974  fileCov=0.4723
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gGe = E(() => {
-  ((lat = []),
-    (GGd = {
-      enabled: VBt,
-      events: lat,
-      position: bJr,
-    }),
-    (WGd = new Set()),
-    (ALn = new Set()));
-});
+// [unwrapped __esm module gGe]
+((lat = []),
+  (GGd = {
+    enabled: VBt,
+    events: lat,
+    position: bJr,
+  }),
+  (WGd = new Set()),
+  (ALn = new Set()));
 function hGe() {
   return {
     overlayActive: false,

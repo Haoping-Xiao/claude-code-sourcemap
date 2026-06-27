@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0129  score=0.6456  fileCov=0.013
 // note: nearest: src/commands/insights.ts (0.0129); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dht = E(() => {
-  er();
-});
 function XPe(e, ...t) {
   let n = new Set(t);
   return e.messages.some(r => r.type === "assistant" && Array.isArray(r.message.content) && r.message.content.some(o => o.type === "tool_use" && n.has(o.name)));

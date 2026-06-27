@@ -4,185 +4,164 @@
 // class=modified  jaccard=0.3224  score=0.4808  fileCov=0.4946
 // note: deminified; 31 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var a5 = E(() => {
-  Hp();
-  iu();
-  Qi();
-  TM();
-  Rc();
-  kt();
-  oo();
-  er();
-  gb();
-  je();
-  fn();
-  Gx();
-  Ls();
-  qd();
-  dr();
-  dn();
-  pdo();
-  bCe();
-  yTp = new Set(["ECONNABORTED", "ECONNRESET", "ECONNREFUSED", "ETIMEDOUT", "EAI_AGAIN"]);
-  rDe = Cn(async () => {
-    let e = 0;
-    oqe = void 0;
-    try {
-      let t = ml(process.env.ENABLE_CLAUDEAI_MCP_SERVERS),
-        n = l2e();
-      if (t || n)
-        return (
-          T(`[claudeai-mcp] Disabled via ${t ? "env var" : "disableClaudeAiConnectors setting"}`),
-          G("tengu_claudeai_mcp_eligibility", {
-            state: t ? We("disabled_env_var") : We("disabled_setting"),
-          }),
-          {}
-        );
-      if (lc("mcpClaudeAi"))
-        return (
-          T("[claudeai-mcp] Disabled in safe mode"),
-          G("tengu_claudeai_mcp_eligibility", {
-            state: We("safe_mode"),
-          }),
-          {}
-        );
-      if (!Jl())
-        return (
-          T("[claudeai-mcp] Disabled on third-party provider"),
-          G("tengu_claudeai_mcp_eligibility", {
-            state: We("third_party_provider"),
-          }),
-          {}
-        );
-      if (!bo()) {
-        if (
-          (T("[claudeai-mcp] Disabled: API-key auth precedence active"),
-          G("tengu_claudeai_mcp_eligibility", {
-            state: We("api_key_precedence"),
-          }),
-          Ws()?.scopes?.includes("user:mcp_servers"))
-        )
-          oqe = {
-            level: "warn",
-            message:
-              "claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login \xB7 Unset it to load your organization's connectors",
-          };
-        return {};
-      }
-      await ch();
-      let r = Ws();
-      if (!r?.accessToken)
-        return (
-          T("[claudeai-mcp] No access token"),
-          G("tengu_claudeai_mcp_eligibility", {
-            state: We("no_oauth_token"),
-          }),
-          {}
-        );
-      if (!r.scopes?.includes("user:mcp_servers")) {
-        let p = process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE
-          ? "[claudeai-mcp] inference token lacks user:mcp_servers scope \u2014 claude.ai org connectors disabled (locally-configured MCP servers in managed-mcp.json / .claude.json / .mcp.json are NOT affected by this check)"
-          : `[claudeai-mcp] Missing user:mcp_servers scope (scopes=${r.scopes?.join(",") || "none"})`;
-        return (
-          T(p),
-          G("tengu_claudeai_mcp_eligibility", {
-            state: We("missing_scope"),
-          }),
-          {}
-        );
-      }
-      let s = `${$s().BASE_API_URL}/v1/mcp_servers?limit=1000`;
-      T(`[claudeai-mcp] Fetching from ${s}`);
-      let i = () =>
-          oL(() =>
-            po.get(s, {
-              headers: {
-                Authorization: `Bearer ${Ws()?.accessToken ?? r.accessToken}`,
-                "Content-Type": "application/json",
-                "anthropic-beta": g2r.header,
-                "anthropic-version": "2023-06-01",
-                ..._Ca(),
-              },
-              timeout: ECa,
-            }),
-          ),
-        a = Date.now(),
-        l;
-      while (true) {
-        e++;
-        try {
-          l = await i();
-          break;
-        } catch (p) {
-          if (e >= ACa || !_Tp(p)) throw p;
-          let f = mTp * gTp ** (e - 1);
-          if (Date.now() - a + f + ECa >= hTp)
-            throw (T(`[claudeai-mcp] Retry budget exhausted after ${e} attempt(s)`), p);
-          let m = po.isAxiosError(p) ? (p.response?.status ?? p.code ?? "unknown") : "unknown";
-          (T(
-            `[claudeai-mcp] Transient fetch error (${m}), retrying in ${f}ms (attempt ${e}/${ACa})`,
-          ),
-            await Nn(f));
-        }
-      }
-      let c = new Map();
-      for (let p of l.data.data) {
-        let f = STp(p.url),
-          m = c.get(f);
-        if (m) {
-          T(`[claudeai-mcp] Dropping duplicate upstream ${f}: keeping ${m.id}, dropping ${p.id}`);
-          continue;
-        }
-        c.set(f, p);
-      }
-      let u = {},
-        d = new Set();
-      for (let p of c.values()) {
-        let f = `claude.ai ${p.display_name}`,
-          m = f,
-          g = hc(m),
-          h = 1;
-        while (d.has(g)) (h++, (m = `${f} (${h})`), (g = hc(m)));
-        if (h > 1)
-          T(
-            `[claudeai-mcp] Display-name collision on distinct upstreams: "${m}" (${p.id}, ${p.url})`,
-          );
-        (d.add(g),
-          (u[m] = {
-            type: "claudeai-proxy",
-            url: p.url,
-            id: p.id,
-            displayName: p.display_name,
-            iconUrl: p.icon_url,
-            scope: "claudeai",
-            toolPermissions: bTp(p.tools),
-            stateless: p.stateless,
-            cachedInitResponse: p.cached_init_response,
-          }));
-      }
+// [unwrapped __esm module a5] deps: Hp, iu, Qi, TM, Rc, kt, oo, er, gb, je, fn, Gx, Ls, qd, dr, dn, pdo, bCe
+yTp = new Set(["ECONNABORTED", "ECONNRESET", "ECONNREFUSED", "ETIMEDOUT", "EAI_AGAIN"]);
+rDe = Cn(async () => {
+  let e = 0;
+  oqe = void 0;
+  try {
+    let t = ml(process.env.ENABLE_CLAUDEAI_MCP_SERVERS),
+      n = l2e();
+    if (t || n)
       return (
-        T(`[claudeai-mcp] Fetched ${Object.keys(u).length} servers`),
+        T(`[claudeai-mcp] Disabled via ${t ? "env var" : "disableClaudeAiConnectors setting"}`),
         G("tengu_claudeai_mcp_eligibility", {
-          state: We("eligible"),
+          state: t ? We("disabled_env_var") : We("disabled_setting"),
         }),
-        xe("mcp_claudeai_fetch_configs"),
-        u
+        {}
       );
-    } catch (t) {
-      let n = po.isAxiosError(t) ? String(t.response?.status ?? t.code ?? "unknown") : "unknown";
+    if (lc("mcpClaudeAi"))
       return (
-        T(`[claudeai-mcp] Fetch failed (${n}) after ${e} attempt(s)`),
+        T("[claudeai-mcp] Disabled in safe mode"),
         G("tengu_claudeai_mcp_eligibility", {
-          state: We("fetch_failed"),
-          status: n,
-          attempts: e,
+          state: We("safe_mode"),
         }),
-        Le("mcp_claudeai_fetch_configs", "fetch_failed"),
-        rDe.cache.clear?.(),
+        {}
+      );
+    if (!Jl())
+      return (
+        T("[claudeai-mcp] Disabled on third-party provider"),
+        G("tengu_claudeai_mcp_eligibility", {
+          state: We("third_party_provider"),
+        }),
+        {}
+      );
+    if (!bo()) {
+      if (
+        (T("[claudeai-mcp] Disabled: API-key auth precedence active"),
+        G("tengu_claudeai_mcp_eligibility", {
+          state: We("api_key_precedence"),
+        }),
+        Ws()?.scopes?.includes("user:mcp_servers"))
+      )
+        oqe = {
+          level: "warn",
+          message:
+            "claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login \xB7 Unset it to load your organization's connectors",
+        };
+      return {};
+    }
+    await ch();
+    let r = Ws();
+    if (!r?.accessToken)
+      return (
+        T("[claudeai-mcp] No access token"),
+        G("tengu_claudeai_mcp_eligibility", {
+          state: We("no_oauth_token"),
+        }),
+        {}
+      );
+    if (!r.scopes?.includes("user:mcp_servers")) {
+      let p = process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE
+        ? "[claudeai-mcp] inference token lacks user:mcp_servers scope \u2014 claude.ai org connectors disabled (locally-configured MCP servers in managed-mcp.json / .claude.json / .mcp.json are NOT affected by this check)"
+        : `[claudeai-mcp] Missing user:mcp_servers scope (scopes=${r.scopes?.join(",") || "none"})`;
+      return (
+        T(p),
+        G("tengu_claudeai_mcp_eligibility", {
+          state: We("missing_scope"),
+        }),
         {}
       );
     }
-  });
+    let s = `${$s().BASE_API_URL}/v1/mcp_servers?limit=1000`;
+    T(`[claudeai-mcp] Fetching from ${s}`);
+    let i = () =>
+        oL(() =>
+          po.get(s, {
+            headers: {
+              Authorization: `Bearer ${Ws()?.accessToken ?? r.accessToken}`,
+              "Content-Type": "application/json",
+              "anthropic-beta": g2r.header,
+              "anthropic-version": "2023-06-01",
+              ..._Ca(),
+            },
+            timeout: ECa,
+          }),
+        ),
+      a = Date.now(),
+      l;
+    while (true) {
+      e++;
+      try {
+        l = await i();
+        break;
+      } catch (p) {
+        if (e >= ACa || !_Tp(p)) throw p;
+        let f = mTp * gTp ** (e - 1);
+        if (Date.now() - a + f + ECa >= hTp)
+          throw (T(`[claudeai-mcp] Retry budget exhausted after ${e} attempt(s)`), p);
+        let m = po.isAxiosError(p) ? (p.response?.status ?? p.code ?? "unknown") : "unknown";
+        (T(`[claudeai-mcp] Transient fetch error (${m}), retrying in ${f}ms (attempt ${e}/${ACa})`),
+          await Nn(f));
+      }
+    }
+    let c = new Map();
+    for (let p of l.data.data) {
+      let f = STp(p.url),
+        m = c.get(f);
+      if (m) {
+        T(`[claudeai-mcp] Dropping duplicate upstream ${f}: keeping ${m.id}, dropping ${p.id}`);
+        continue;
+      }
+      c.set(f, p);
+    }
+    let u = {},
+      d = new Set();
+    for (let p of c.values()) {
+      let f = `claude.ai ${p.display_name}`,
+        m = f,
+        g = hc(m),
+        h = 1;
+      while (d.has(g)) (h++, (m = `${f} (${h})`), (g = hc(m)));
+      if (h > 1)
+        T(
+          `[claudeai-mcp] Display-name collision on distinct upstreams: "${m}" (${p.id}, ${p.url})`,
+        );
+      (d.add(g),
+        (u[m] = {
+          type: "claudeai-proxy",
+          url: p.url,
+          id: p.id,
+          displayName: p.display_name,
+          iconUrl: p.icon_url,
+          scope: "claudeai",
+          toolPermissions: bTp(p.tools),
+          stateless: p.stateless,
+          cachedInitResponse: p.cached_init_response,
+        }));
+    }
+    return (
+      T(`[claudeai-mcp] Fetched ${Object.keys(u).length} servers`),
+      G("tengu_claudeai_mcp_eligibility", {
+        state: We("eligible"),
+      }),
+      xe("mcp_claudeai_fetch_configs"),
+      u
+    );
+  } catch (t) {
+    let n = po.isAxiosError(t) ? String(t.response?.status ?? t.code ?? "unknown") : "unknown";
+    return (
+      T(`[claudeai-mcp] Fetch failed (${n}) after ${e} attempt(s)`),
+      G("tengu_claudeai_mcp_eligibility", {
+        state: We("fetch_failed"),
+        status: n,
+        attempts: e,
+      }),
+      Le("mcp_claudeai_fetch_configs", "fetch_failed"),
+      rDe.cache.clear?.(),
+      {}
+    );
+  }
 });
 var kCa = {};
 _t(kCa, {

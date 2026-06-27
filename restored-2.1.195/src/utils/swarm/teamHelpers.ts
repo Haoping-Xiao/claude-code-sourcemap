@@ -4,15 +4,14 @@
 // class=modified  jaccard=0.4781  score=0.7511  fileCov=0.5681
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d9t = E(() => {
-  IF = class IF extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "SwarmPaneError";
-    }
-  };
-  eel = /\p{Cc}/u;
-});
+// [unwrapped __esm module d9t]
+IF = class IF extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "SwarmPaneError";
+  }
+};
+eel = /\p{Cc}/u;
 var oel = {};
 _t(oel, {
   writeTeamFileAsync: () => writeTeamFileAsync,

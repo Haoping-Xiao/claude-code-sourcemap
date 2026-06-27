@@ -4,81 +4,73 @@
 // class=modified  jaccard=0.2322  score=0.321  fileCov=0.4563
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VPl = E(() => {
-  IKt();
-  Lo();
-  sa();
-  hze();
-  Bqe();
-  _m();
-  K$e();
-  ((N0f = [
-    "git checkout -b *",
-    "git add *",
-    "git status *",
-    "git push *",
-    "git commit *",
-    "gh pr create *",
-    "gh pr edit *",
-    "gh pr view *",
-    "gh pr merge *",
-  ]),
-    (jPl = [
-      ...N0f.flatMap((e) => [`Bash(${e})`, `PowerShell(${e})`]),
-      "ToolSearch",
-      "mcp__slack__send_message",
-      "mcp__claude_ai_Slack__slack_send_message",
-    ]));
-  ((B0f = {
-    type: "prompt",
-    name: Kwo,
-    description: "Commit, push, and open a PR",
-    allowedTools: jPl,
-    get contentLength() {
-      return GPl("main", false).length;
-    },
-    progressMessage: "creating commit and PR",
-    source: "builtin",
-    async getPromptForCommand(e, t) {
-      let [n, r] = await Promise.all([vD(), aCl(t.getAppState)]),
-        o = false,
-        s = GPl(c6(n), o, r),
-        i = e?.trim();
-      if (i)
-        s += `
+// [unwrapped __esm module VPl] deps: IKt, Lo, sa, hze, Bqe, _m, K$e
+((N0f = [
+  "git checkout -b *",
+  "git add *",
+  "git status *",
+  "git push *",
+  "git commit *",
+  "gh pr create *",
+  "gh pr edit *",
+  "gh pr view *",
+  "gh pr merge *",
+]),
+  (jPl = [
+    ...N0f.flatMap((e) => [`Bash(${e})`, `PowerShell(${e})`]),
+    "ToolSearch",
+    "mcp__slack__send_message",
+    "mcp__claude_ai_Slack__slack_send_message",
+  ]));
+((B0f = {
+  type: "prompt",
+  name: Kwo,
+  description: "Commit, push, and open a PR",
+  allowedTools: jPl,
+  get contentLength() {
+    return GPl("main", false).length;
+  },
+  progressMessage: "creating commit and PR",
+  source: "builtin",
+  async getPromptForCommand(e, t) {
+    let [n, r] = await Promise.all([vD(), aCl(t.getAppState)]),
+      o = false,
+      s = GPl(c6(n), o, r),
+      i = e?.trim();
+    if (i)
+      s += `
 
 ## Additional instructions from user
 
 ${c6(i)}`;
-      return [
-        {
-          type: "text",
-          text: await pfe(
-            s,
-            {
-              ...t,
-              getAppState() {
-                let l = t.getAppState();
-                return {
-                  ...l,
-                  toolPermissionContext: {
-                    ...l.toolPermissionContext,
-                    alwaysAllowRules: {
-                      ...l.toolPermissionContext.alwaysAllowRules,
-                      command: jPl,
-                    },
+    return [
+      {
+        type: "text",
+        text: await pfe(
+          s,
+          {
+            ...t,
+            getAppState() {
+              let l = t.getAppState();
+              return {
+                ...l,
+                toolPermissionContext: {
+                  ...l.toolPermissionContext,
+                  alwaysAllowRules: {
+                    ...l.toolPermissionContext.alwaysAllowRules,
+                    command: jPl,
                   },
-                };
-              },
+                },
+              };
             },
-            `/${Kwo}`,
-          ),
-        },
-      ];
-    },
-  }),
-    (qPl = B0f));
-});
+          },
+          `/${Kwo}`,
+        ),
+      },
+    ];
+  },
+}),
+  (qPl = B0f));
 var zPl = {};
 _t(zPl, {
   call: () => call,

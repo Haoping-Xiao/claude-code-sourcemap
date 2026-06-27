@@ -4,19 +4,17 @@
 // class=modified  jaccard=0.2831  score=0.4778  fileCov=0.4099
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var H3i = E(() => {
-  qit();
-  n0e = class n0e extends yne {
-    relatedTarget;
-    constructor(e, t = null) {
-      super(e, {
-        bubbles: true,
-        cancelable: false,
-      });
-      this.relatedTarget = t;
-    }
-  };
-});
+// [unwrapped __esm module H3i] deps: qit
+n0e = class n0e extends yne {
+  relatedTarget;
+  constructor(e, t = null) {
+    super(e, {
+      bubbles: true,
+      cancelable: false,
+    });
+    this.relatedTarget = t;
+  }
+};
 class Vit {
   activeElement = null;
   dispatchFocusEvent;

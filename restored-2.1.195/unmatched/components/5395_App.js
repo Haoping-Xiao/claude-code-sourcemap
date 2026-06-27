@@ -4,11 +4,9 @@
 // class=new  jaccard=0.0202  score=0.4605  fileCov=0.0207
 // note: nearest: src/interactiveHelpers.tsx (0.0202); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var y8o = E(() => {
-  er();
-  smc = R(lt(), 1), ten = R(rt(), 1), amc = R(se(), 1);
-  Ecm = ten.createContext(null);
-});
+// [unwrapped __esm module y8o] deps: er
+smc = R(lt(), 1), ten = R(rt(), 1), amc = R(se(), 1);
+Ecm = ten.createContext(null);
 var _8o = {};
 _t(_8o, {
   App: () => App

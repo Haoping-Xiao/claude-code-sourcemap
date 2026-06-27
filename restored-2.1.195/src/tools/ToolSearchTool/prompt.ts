@@ -4,31 +4,20 @@
 // class=modified  jaccard=0.1421  score=0.2697  fileCov=0.2309
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qRe = E(() => {
-  ft();
-  np();
-  l$();
-  Un();
-  kt();
-  je();
-  fn();
-  co();
-  HU();
-  fh();
-  Boa = require("crypto");
-  h4 = {
-    agentType: PX,
-    whenToUse:
-      'Fork \u2014 inherits full conversation context. Selected explicitly via subagent_type: "fork" when the fork experiment is active; never the default.',
-    tools: ["*"],
-    maxTurns: 200,
-    model: "inherit",
-    permissionMode: "bubble",
-    source: "built-in",
-    baseDir: "built-in",
-    getSystemPrompt: () => "",
-  };
-});
+// [unwrapped __esm module qRe] deps: ft, np, l$, Un, kt, je, fn, co, HU, fh
+Boa = require("crypto");
+h4 = {
+  agentType: PX,
+  whenToUse:
+    'Fork \u2014 inherits full conversation context. Selected explicitly via subagent_type: "fork" when the fork experiment is active; never the default.',
+  tools: ["*"],
+  maxTurns: 200,
+  model: "inherit",
+  permissionMode: "bubble",
+  source: "built-in",
+  baseDir: "built-in",
+  getSystemPrompt: () => "",
+};
 var fso = {};
 _t(fso, {
   isDeferredTool: () => isDeferredTool,

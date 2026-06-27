@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2737  score=0.4006  fileCov=0.4637
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RLc = E(() => {
-  Y4();
-  xfr = R(rt(), 1);
-});
+// [unwrapped __esm module RLc] deps: Y4
+xfr = R(rt(), 1);
 function RYo(e) {
   let t = LLc.c(22),
     { hostPattern: n, onUserResponse: r } = e,

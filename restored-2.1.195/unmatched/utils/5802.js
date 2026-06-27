@@ -3,30 +3,3 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gOc = E(() => {
-  YWe();
-  Un();
-  kt();
-  Du();
-  ii();
-  lf();
-  fp();
-  EAe();
-  Il();
-  Lo();
-  je();
-  Cp();
-  Lx();
-  wr();
-  At();
-  q0();
-  vn();
-  co();
-  jG();
-  dr();
-  kv();
-  xqo();
-  dyt();
-  Cwo();
-  Hoe();
-});

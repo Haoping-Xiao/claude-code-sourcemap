@@ -4,35 +4,24 @@
 // class=modified  jaccard=0.1093  score=0.1388  fileCov=0.34
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var c_ = E(() => {
-  Hp();
-  Rc();
-  oo();
-  je();
-  RE();
-  Gx();
-  Ls();
-  qd();
-  kM();
-  Cv();
-  Os = {
-    get(e, t) {
-      return _3e("GET", e, void 0, t);
-    },
-    post(e, t, n) {
-      return _3e("POST", e, t, n);
-    },
-    put(e, t, n) {
-      return _3e("PUT", e, t, n);
-    },
-    patch(e, t, n) {
-      return _3e("PATCH", e, t, n);
-    },
-    delete(e, t) {
-      return _3e("DELETE", e, void 0, t);
-    },
-  };
-});
+// [unwrapped __esm module c_] deps: Hp, Rc, oo, je, RE, Gx, Ls, qd, kM, Cv
+Os = {
+  get(e, t) {
+    return _3e("GET", e, void 0, t);
+  },
+  post(e, t, n) {
+    return _3e("POST", e, t, n);
+  },
+  put(e, t, n) {
+    return _3e("PUT", e, t, n);
+  },
+  patch(e, t, n) {
+    return _3e("PATCH", e, t, n);
+  },
+  delete(e, t) {
+    return _3e("DELETE", e, void 0, t);
+  },
+};
 function L$d() {
   return {
     urls: void 0,

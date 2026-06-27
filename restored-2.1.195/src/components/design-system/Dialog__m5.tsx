@@ -4,16 +4,15 @@
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.0879  score=0.1072  fileCov=0.3289
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DKl = E(() => {
-  ((_Vf = {
-    type: "local-jsx",
-    name: "hooks",
-    description: "View hook configurations for tool events",
-    immediate: true,
-    load: () => Promise.resolve().then(() => (RKl(), xKl)),
-  }),
-    (LKl = _Vf));
-});
+// [unwrapped __esm module DKl]
+((_Vf = {
+  type: "local-jsx",
+  name: "hooks",
+  description: "View hook configurations for tool events",
+  immediate: true,
+  load: () => Promise.resolve().then(() => (RKl(), xKl)),
+}),
+  (LKl = _Vf));
 function MKl(e, t) {
   return e.length > t ? e.slice(0, t - 1) + "\u2026" : e;
 }

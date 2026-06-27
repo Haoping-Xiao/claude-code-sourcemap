@@ -4,28 +4,23 @@
 // class=modified  jaccard=0.0379  score=0.0518  fileCov=0.124
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xec = E(() => {
-  ys();
-  RCe();
-  Sx();
-  ICe();
-  ((wec = require("path")),
-    (YKf = {
-      user: "userSettings",
-      project: "projectSettings",
-      local: "localSettings",
-    }),
-    (vec = {
-      userSettings: "user",
-      projectSettings: "project",
-      localSettings: "local",
-      flagSettings: "flag",
-      policySettings: "managed",
-    }),
-    (XKf = ["user", "project", "local"]),
-    (JKf = new Set(["bypassPermissions", "auto", "acceptEdits"])),
-    (QKf = new Set(["project"])));
-});
+// [unwrapped __esm module xec] deps: ys, RCe, Sx, ICe
+((wec = require("path")),
+  (YKf = {
+    user: "userSettings",
+    project: "projectSettings",
+    local: "localSettings",
+  }),
+  (vec = {
+    userSettings: "user",
+    projectSettings: "project",
+    localSettings: "local",
+    flagSettings: "flag",
+    policySettings: "managed",
+  }),
+  (XKf = ["user", "project", "local"]),
+  (JKf = new Set(["bypassPermissions", "auto", "acceptEdits"])),
+  (QKf = new Set(["project"])));
 var Gec = {};
 _t(Gec, {
   tool: () => _ec,

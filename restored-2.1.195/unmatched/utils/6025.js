@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0043  score=0.081  fileCov=0.0045
 // note: nearest: src/cli/print.ts (0.0043); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rhr = E(() => {
-  fZo();
-});
 async function PWc({
   url: e,
   sql: t,

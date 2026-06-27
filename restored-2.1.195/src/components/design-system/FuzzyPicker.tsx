@@ -4,33 +4,31 @@
 // class=modified  jaccard=0.2627  score=0.3266  fileCov=0.5731
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var N6l = E(() => {
-  ft();
-  ((Cjo = {
-    type: "local-jsx",
+// [unwrapped __esm module N6l] deps: ft
+((Cjo = {
+  type: "local-jsx",
+  name: "usage",
+  aliases: ["cost", "stats"],
+  description: "Show session cost, plan usage, and activity stats",
+  thinClientDispatch: "control-request",
+  immediate: true,
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (R6l(), x6l)),
+}),
+  (Ijo = {
+    type: "local",
     name: "usage",
     aliases: ["cost", "stats"],
-    description: "Show session cost, plan usage, and activity stats",
-    thinClientDispatch: "control-request",
-    immediate: true,
-    requires: {
-      ink: true,
+    supportsNonInteractive: true,
+    description: "Show session cost, plan usage, and what's contributing to your limits",
+    isEnabled: () => Ir(),
+    get isHidden() {
+      return !Ir();
     },
-    load: () => Promise.resolve().then(() => (R6l(), x6l)),
-  }),
-    (Ijo = {
-      type: "local",
-      name: "usage",
-      aliases: ["cost", "stats"],
-      supportsNonInteractive: true,
-      description: "Show session cost, plan usage, and what's contributing to your limits",
-      isEnabled: () => Ir(),
-      get isHidden() {
-        return !Ir();
-      },
-      load: () => Promise.resolve().then(() => (O6l(), $6l)),
-    }));
-});
+    load: () => Promise.resolve().then(() => (O6l(), $6l)),
+  }));
 function Hsr({
   title: e,
   placeholder: t = "Type to search\u2026",

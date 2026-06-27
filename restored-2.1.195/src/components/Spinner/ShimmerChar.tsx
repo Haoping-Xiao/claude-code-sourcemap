@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4805  score=0.757  fileCov=0.5681
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var A6i = E(() => {
-  jit();
-});
 function OGe(e) {
   let t = H6i.c(3),
     { char: n, index: r, glimmerIndex: o, messageColor: s, shimmerColor: i } = e,

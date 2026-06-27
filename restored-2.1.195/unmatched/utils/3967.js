@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0092  score=0.6272  fileCov=0.0093
 // note: nearest: src/utils/attachments.ts (0.0092); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var X4 = E(() => {
-  fn();
-  ZVt = {}, YQa = {};
-});
+// [unwrapped __esm module X4] deps: fn
+ZVt = {}, YQa = {};
 function pTo() {
   return new Set((process.env.CLAUDE_CODE_TERMINAL_MCP_TOOLS ?? "").split(",").map(e => e.trim()).filter(Boolean));
 }

@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.1218  score=0.1979  fileCov=0.2407
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dYo = E(() => {
-  uo();
-  Cp();
-  Ao();
-});
 async function ifr(e, t, n) {
   if (Vi())
     return (

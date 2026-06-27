@@ -4,50 +4,6 @@
 // class=new  jaccard=0.0498  score=0.7909  fileCov=0.0505
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0498); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var S$r = E(() => {
-  D1s();
-  j1s();
-  G1s();
-  W1s();
-  q1s();
-  V1s();
-  X1s();
-  J1s();
-  Q1s();
-  eNs();
-  iNs();
-  aNs();
-  dNs();
-  pNs();
-  mNs();
-  gNs();
-  SNs();
-  ENs();
-  HNs();
-  vNs();
-  wNs();
-  CNs();
-  INs();
-  xNs();
-  kNs();
-  RNs();
-  LNs();
-  DNs();
-  PNs();
-  MNs();
-  $Ns();
-  ONs();
-  NNs();
-  BNs();
-  FNs();
-  jNs();
-  GNs();
-  WNs();
-  qNs();
-  VNs();
-  zNs();
-  KNs();
-});
 function Mhn(e, t) {
   if (t == null) return t;
   let n = YNs.NormalizedSchema.of(e);

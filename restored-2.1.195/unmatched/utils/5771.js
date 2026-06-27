@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0079  score=0.312  fileCov=0.0081
 // note: nearest: src/cli/print.ts (0.0079); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pMc = E(() => {
-  ft();
-  __();
-  sr();
-});
 async function fMc({
   cwd: e,
   toolPermissionContext: t,

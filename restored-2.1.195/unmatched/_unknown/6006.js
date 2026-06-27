@@ -4,16 +4,6 @@
 // class=new  jaccard=0.0076  score=0.3726  fileCov=0.0077
 // note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0076); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LGc = E(() => {
-  NZ();
-  Bgr();
-  AR();
-  sK();
-  Znn();
-  Jnn();
-  nwt();
-  oBe();
-});
 class UQo {
   #e;
   constructor(e) {

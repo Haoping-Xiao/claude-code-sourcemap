@@ -4,20 +4,8 @@
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.1733  score=0.2507  fileCov=0.3595
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pzl = E(() => {
-  Vl();
-  Ye();
-  $I();
-  QH();
-  zNo();
-  lg();
-  vf();
-  dr();
-  sr();
-  vi();
-  $jo();
-  ((uzl = R(lt(), 1)), (ime = R(se(), 1)));
-});
+// [unwrapped __esm module pzl] deps: Vl, Ye, $I, QH, zNo, lg, vf, dr, sr, vi, $jo
+((uzl = R(lt(), 1)), (ime = R(se(), 1)));
 function mzl(e) {
   let t = fzl.c(18),
     { onCancel: n, onSubmit: r, ruleBehavior: o } = e,

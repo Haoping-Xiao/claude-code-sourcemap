@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2103  score=0.4837  fileCov=0.2711
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tSa = E(() => {
-  _i();
-  Ye();
-  ql();
-  T4t();
-  ((p_p = R(lt(), 1)), (eSa = R(se(), 1)));
-});
+// [unwrapped __esm module tSa] deps: _i, Ye, ql, T4t
+((p_p = R(lt(), 1)), (eSa = R(se(), 1)));
 function rSa(e, { verbose: t }) {
   if (Object.keys(e).length === 0) return "";
   let n = Pae(e);

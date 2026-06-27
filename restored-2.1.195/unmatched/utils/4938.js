@@ -4,13 +4,12 @@
 // class=new  jaccard=0.0092  score=0.3783  fileCov=0.0094
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/core.mjs (0.0092); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var P2o = E(() => {
-  For = {
-    add() {},
-    remove() {},
-    clear() {}
-  };
-});
+// [unwrapped __esm module P2o]
+For = {
+  add() {},
+  remove() {},
+  clear() {}
+};
 function oYe(e, t) {
   return {
     assign(n) {

@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0254  score=0.3533  fileCov=0.0267
 // note: nearest: node_modules/node-forge/lib/util.js (0.0254); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TWe = E(() => {
-  UFt();
-  NFt();
-  Wlt();
-  bRe();
-  GQi();
-  _Re();
-  WQi();
-});
 var qQi = () => {};
 var VQi = () => {};
 function E$n(e) {

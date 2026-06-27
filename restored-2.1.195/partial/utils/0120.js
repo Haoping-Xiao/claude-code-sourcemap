@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.1376  score=0.5446  fileCov=0.1555
 // note: low-confidence suggestion: node_modules/google-auth-library/build/src/crypto/node/crypto.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $S = E(() => {
-  Fns = new RegExp(`^${Uns}$`), ozc = new RegExp(`^a(?:${Uns}-)?[0-9a-f]{16}$`);
-});
+// [unwrapped __esm module $S]
+Fns = new RegExp(`^${Uns}$`), ozc = new RegExp(`^a(?:${Uns}-)?[0-9a-f]{16}$`);
 function Ywt(e, t) {
   let n = Buffer.from(t.replace(/-/g, ""), "hex"),
     r = qon.createHash("sha1").update(n).update(Buffer.from(e, "utf8")).digest();

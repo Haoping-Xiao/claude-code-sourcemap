@@ -4,29 +4,18 @@
 // class=modified (alt of src/components/design-system/Tabs.tsx)  jaccard=0.1174  score=0.5196  fileCov=0.1317
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kP = E(() => {
-  fH();
-  _i();
-  wOe();
-  $Ge();
-  $Ln();
-  GLn();
-  Tc();
-  Ye();
-  ps();
-  Coe();
-  ((v7t = R(lt(), 1)),
-    (FL = R(rt(), 1)),
-    (GN = R(se(), 1)),
-    (itr = FL.createContext({
-      selectedTab: void 0,
-      width: void 0,
-      headerFocused: false,
-      focusHeader: () => {},
-      blurHeader: () => {},
-      registerOptIn: () => () => {},
-    })));
-});
+// [unwrapped __esm module kP] deps: fH, _i, wOe, $Ge, $Ln, GLn, Tc, Ye, ps, Coe
+((v7t = R(lt(), 1)),
+  (FL = R(rt(), 1)),
+  (GN = R(se(), 1)),
+  (itr = FL.createContext({
+    selectedTab: void 0,
+    width: void 0,
+    headerFocused: false,
+    focusHeader: () => {},
+    blurHeader: () => {},
+    registerOptIn: () => () => {},
+  })));
 function aEt(e) {
   switch (e) {
     case "hipaa":

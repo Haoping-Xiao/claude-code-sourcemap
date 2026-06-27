@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.4604  score=1  fileCov=0.4604
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var f6 = E(() => {
-  ft();
-  EI();
-  lC();
-  fn();
-  _m();
-  ((j0p = new Set()), (G0p = new Set([wu, qc])));
-});
+// [unwrapped __esm module f6] deps: ft, EI, lC, fn, _m
+((j0p = new Set()), (G0p = new Set([wu, qc])));
 function K2n(e) {
   return {
     env: e?.env ?? process.env,

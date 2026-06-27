@@ -4,17 +4,6 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1522  score=0.2567  fileCov=0.2721
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KTc = E(() => {
-  ft();
-  Qbe();
-  IKt();
-  hze();
-  Bqe();
-  AKt();
-  _m();
-  K$e();
-  AA();
-});
 var XTc = `# Component Schemas
 
 Detailed format specifications for every plugin component type. Reference this when implementing components in Phase 4.

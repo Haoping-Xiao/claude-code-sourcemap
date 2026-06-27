@@ -4,49 +4,46 @@
 // class=modified  jaccard=0.4026  score=0.6649  fileCov=0.5051
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var U_t = E(() => {
-  FAe();
-  ih();
-  ((xdf = ["sandbox", "permission", "worker-sandbox", "elicitation", "dialog"]),
-    (EQ = (() => {
-      let e = Mi(),
-        t = {
-          sandbox: null,
-          permission: null,
-          "worker-sandbox": null,
-          elicitation: null,
-          dialog: null,
-        },
-        n = null;
-      function r() {
-        let o = null;
-        for (let s of xdf) {
-          let i = t[s];
-          if (i) {
-            o = i;
-            break;
-          }
+// [unwrapped __esm module U_t] deps: FAe, ih
+((xdf = ["sandbox", "permission", "worker-sandbox", "elicitation", "dialog"]),
+  (EQ = (() => {
+    let e = Mi(),
+      t = {
+        sandbox: null,
+        permission: null,
+        "worker-sandbox": null,
+        elicitation: null,
+        dialog: null,
+      },
+      n = null;
+    function r() {
+      let o = null;
+      for (let s of xdf) {
+        let i = t[s];
+        if (i) {
+          o = i;
+          break;
         }
-        if (o?.text === n?.text) return;
-        ((n = o), e.emit(o));
       }
-      return {
-        subscribe: e.subscribe,
-        emit(o, s = "permission") {
-          let i =
-            o === null
-              ? null
-              : typeof o === "string"
-                ? {
-                    text: o,
-                  }
-                : o;
-          if (t[s]?.text === i?.text) return;
-          ((t[s] = i), r());
-        },
-      };
-    })()));
-});
+      if (o?.text === n?.text) return;
+      ((n = o), e.emit(o));
+    }
+    return {
+      subscribe: e.subscribe,
+      emit(o, s = "permission") {
+        let i =
+          o === null
+            ? null
+            : typeof o === "string"
+              ? {
+                  text: o,
+                }
+              : o;
+        if (t[s]?.text === i?.text) return;
+        ((t[s] = i), r());
+      },
+    };
+  })()));
 function RYn(e) {
   let t = false,
     n = false;

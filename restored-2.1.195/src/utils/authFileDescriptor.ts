@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.4578  score=0.6453  fileCov=0.6118
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var db = E(() => {
-  Pw();
-  At();
-  (($7s = require("async_hooks")), (uI = require("fs/promises")));
-  kld = new $7s.AsyncLocalStorage();
-});
+// [unwrapped __esm module db] deps: Pw, At
+(($7s = require("async_hooks")), (uI = require("fs/promises")));
+kld = new $7s.AsyncLocalStorage();
 function CUr(e, t, n) {
   if (!ut(process.env.CLAUDE_CODE_REMOTE)) return;
   try {

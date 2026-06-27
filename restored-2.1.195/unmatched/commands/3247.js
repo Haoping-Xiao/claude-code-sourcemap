@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var IIa = E(() => {
-  ql();
-  kLe();
-  Ye();
-  Jt();
-  Vdt = R(se(), 1);
-});
+// [unwrapped __esm module IIa] deps: ql, kLe, Ye, Jt
+Vdt = R(se(), 1);
 var Cvp, Ivp, xvp, u5;

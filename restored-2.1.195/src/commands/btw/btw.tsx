@@ -4,23 +4,13 @@
 // class=modified  jaccard=0.1767  score=0.2468  fileCov=0.3834
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Q$o = E(() => {
-  ft();
-  ag();
-  kt();
-  At();
-  vn();
-  y_();
-  _a();
-  Jt();
-  sr();
-  ((QLl = require("crypto")),
-    (X$o = require("events")),
-    (xer = require("fs")),
-    (ker = require("fs/promises")),
-    (ZLl = require("readline")),
-    (eDl = require("stream/promises")));
-});
+// [unwrapped __esm module Q$o] deps: ft, ag, kt, At, vn, y_, _a, Jt, sr
+((QLl = require("crypto")),
+  (X$o = require("events")),
+  (xer = require("fs")),
+  (ker = require("fs/promises")),
+  (ZLl = require("readline")),
+  (eDl = require("stream/promises")));
 var aDl = {};
 _t(aDl, {
   call: () => call,

@@ -4,28 +4,8 @@
 // class=new  jaccard=0.0056  score=0.305  fileCov=0.0057
 // note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Jal = E(() => {
-  Ye();
-  cEe();
-  Xa();
-  si();
-  ql();
-  FCo();
-  vMe();
-  gIo();
-  vy();
-  Val();
-  _i();
-  es();
-  UX();
-  Fh();
-  Q8();
-  uo();
-  iKn();
-  bm();
-  aKn();
-  WMe = R(lt(), 1), lKn = R(rt(), 1), Yal = require("path"), Xi = R(se(), 1);
-});
+// [unwrapped __esm module Jal] deps: Ye, cEe, Xa, si, ql, FCo, vMe, gIo, vy, Val, _i, es, UX, Fh, Q8, uo, iKn, bm, aKn
+WMe = R(lt(), 1), lKn = R(rt(), 1), Yal = require("path"), Xi = R(se(), 1);
 function nif(e) {
   let n = [...e].filter(o => {
     let s = o.codePointAt(0) ?? 0;

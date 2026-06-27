@@ -4,14 +4,12 @@
 // class=modified  jaccard=0.4691  score=0.7333  fileCov=0.5656
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mpc = E(() => {
-  Rc();
-  llm = new Set([
-    "api.anthropic.com",
-    "api-staging.anthropic.com",
-    ...ydn.map((e) => new URL(e).hostname),
-  ]);
-});
+// [unwrapped __esm module Mpc] deps: Rc
+llm = new Set([
+  "api.anthropic.com",
+  "api-staging.anthropic.com",
+  ...ydn.map((e) => new URL(e).hostname),
+]);
 function $pc() {
   if (process.env.NODE_EXTRA_CA_CERTS) return;
   let e = clm();

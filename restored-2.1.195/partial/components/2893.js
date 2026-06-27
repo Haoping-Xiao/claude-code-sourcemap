@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.0925  score=0.5688  fileCov=0.0995
 // note: low-confidence suggestion: node_modules/highlight.js/lib/languages/reasonml.js; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w4 = E(() => {
-  uo();
-});
 var tdp = e => ({
     name: "Cedar",
     aliases: ["cedarpolicy"],

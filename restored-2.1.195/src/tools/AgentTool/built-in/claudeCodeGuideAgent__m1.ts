@@ -4,23 +4,17 @@
 // class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.1963  score=0.4192  fileCov=0.2697
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gLl = E(() => {
-  Xr();
-  Lo();
-  je();
-  Jt();
-  M7();
-  ((kfS = ve(() =>
+// [unwrapped __esm module gLl] deps: Xr, Lo, je, Jt, M7
+((kfS = ve(() =>
+  H.object({
+    updatedAt: H.string().min(1),
+  }),
+)),
+  (RfS = ve(() =>
     H.object({
-      updatedAt: H.string().min(1),
+      syncedFrom: H.string().min(1),
     }),
-  )),
-    (RfS = ve(() =>
-      H.object({
-        syncedFrom: H.string().min(1),
-      }),
-    )));
-});
+  )));
 function Oxf() {
   let t = hC() && Su() ? `${Ds}, \`find\`, and \`grep\`` : `${Ds}, ${wu}, and ${qc}`;
   return `You are the Claude guide agent. Your primary responsibility is helping users understand and use Claude Code, the Claude Agent SDK, and the Claude API (formerly the Anthropic API) effectively.

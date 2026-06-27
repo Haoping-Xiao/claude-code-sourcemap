@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2905  score=0.7674  fileCov=0.3185
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ymn = E(() => {
-  mCe();
-  Jws = require("child_process");
-});
+// [unwrapped __esm module ymn] deps: mCe
+Jws = require("child_process");
 function x1u() {
   if (_mn) return;
   _mn = (async () => {

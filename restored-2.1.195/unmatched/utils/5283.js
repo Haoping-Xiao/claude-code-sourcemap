@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0067  score=0.4981  fileCov=0.0067
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var N5o = E(() => {
-  sp();
-});
 async function cJ(e, t = lp) {
   let {
       message: n,

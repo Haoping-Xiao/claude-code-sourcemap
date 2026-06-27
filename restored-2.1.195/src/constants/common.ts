@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.3078  score=0.412  fileCov=0.5488
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var G1 = E(() => {
-  ((_oa = {
-    markdown: `
+// [unwrapped __esm module G1]
+((_oa = {
+  markdown: `
 Preview feature:
 Use the optional \`preview\` field on options when presenting concrete artifacts that users need to visually compare:
 - ASCII mockups of UI layouts or components
@@ -16,7 +16,7 @@ Use the optional \`preview\` field on options when presenting concrete artifacts
 
 Preview content is rendered as markdown in a monospace box. Multi-line text with newlines is supported. When any option has a preview, the UI switches to a side-by-side layout with a vertical option list on the left and preview on the right. Do not use previews for simple preference questions where labels and descriptions suffice. Note: previews are only supported for single-select questions (not multiSelect).
 `,
-    html: `
+  html: `
 Preview feature:
 Use the optional \`preview\` field on options when presenting concrete artifacts that users need to visually compare:
 - HTML mockups of UI layouts or components
@@ -25,8 +25,8 @@ Use the optional \`preview\` field on options when presenting concrete artifacts
 
 Preview content must be a self-contained HTML fragment (no <html>/<body> wrapper, no <script> or <style> tags \u2014 use inline style attributes instead). Do not use previews for simple preference questions where labels and descriptions suffice. Note: previews are only supported for single-select questions (not multiSelect).
 `,
-  }),
-    (zoo = `Use this tool only when you are blocked on a decision that is genuinely the user's to make: one you cannot resolve from the request, the code, or sensible defaults.
+}),
+  (zoo = `Use this tool only when you are blocked on a decision that is genuinely the user's to make: one you cannot resolve from the request, the code, or sensible defaults.
 
 Usage notes:
 - Users will always be able to select "Other" to provide custom text input
@@ -35,7 +35,6 @@ Usage notes:
 
 Plan mode note: To switch into plan mode, use ${xX} (not this tool). Once in plan mode, use this tool to clarify requirements or choose between approaches BEFORE finalizing your plan. Do NOT use this tool to ask "Is my plan ready?", "Should I proceed?", or otherwise reference "the plan" in questions \u2014 the user cannot see the plan until you call ${Xx} for approval.
 `));
-});
 var kct = "ConnectGitHub";
 function Koo() {
   let e = new Date(),

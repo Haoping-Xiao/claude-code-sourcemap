@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.1232  score=0.3269  fileCov=0.1651
 // note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UNl = E(() => {
-  Ye();
-  lg();
-  bEt();
-  xoe();
-  NNl = R(lt(), 1), xHe = R(se(), 1);
-});
+// [unwrapped __esm module UNl] deps: Ye, lg, bEt, xoe
+NNl = R(lt(), 1), xHe = R(se(), 1);
 function qL(e) {
   let t = FNl.c(2),
     {

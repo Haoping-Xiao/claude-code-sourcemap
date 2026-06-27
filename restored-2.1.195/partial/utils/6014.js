@@ -4,9 +4,5 @@
 // class=partial  jaccard=0.0608  score=1  fileCov=0.0608
 // note: low-confidence suggestion: node_modules/@smithy/shared-ini-file-loader/dist-cjs/getSSOTokenFromFile.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JGc = E(() => {
-  FQo();
-  Jt();
-  BZ();
-  YGc = require("fs/promises");
-});
+// [unwrapped __esm module JGc] deps: FQo, Jt, BZ
+YGc = require("fs/promises");

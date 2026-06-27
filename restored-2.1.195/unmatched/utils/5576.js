@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0177  score=0.285  fileCov=0.0186
 // note: nearest: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx (0.0177); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qzo = E(() => {
-  ft();
-  Ye();
-  Csr();
-  DZ = require("path"), IA = R(se(), 1);
-});
+// [unwrapped __esm module Qzo] deps: ft, Ye, Csr
+DZ = require("path"), IA = R(se(), 1);
 function Hpr(e) {
   let t = ZAc.c(10),
     n = Ht(r_m),

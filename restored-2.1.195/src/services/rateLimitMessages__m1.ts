@@ -4,42 +4,31 @@
 // class=modified (alt of src/services/rateLimitMessages.ts)  jaccard=0.1148  score=0.161  fileCov=0.2859
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xjt = E(() => {
-  oo();
-  e1();
-  Cp();
-  wr();
-  es();
-  NX();
-  Ao();
-  d5e();
-  Un();
-  mSe();
-  ((Cio = new Set(["org_level_disabled_until", "org_spend_cap_reached"])),
-    (Jap = [
-      "You've hit your",
-      "You've reached your",
-      "You've used",
-      "You're now using usage credits",
-      "You're close to",
-      "You're out of usage credits",
-      "Your org is out of usage \xB7 add funds to continue",
-      "Your org is out of usage \xB7 contact your admin",
-      "You're now using your usage allocation",
-      "Now using your usage allocation",
-      "Now using usage credits",
-      "Your seat type doesn't include usage credits",
-      "Your seat type doesn't include usage",
-      "This service is disabled for your org",
-      "Your usage allocation has been disabled by your admin",
-      "Your group's usage limit is set to $0",
-      "Fable 5 requires usage credits",
-      "You're now using extra usage",
-      "You're out of extra usage",
-      "Now using extra usage",
-      "Your seat type doesn't include extra usage",
-    ]));
-});
+// [unwrapped __esm module xjt] deps: oo, e1, Cp, wr, es, NX, Ao, d5e, Un, mSe
+((Cio = new Set(["org_level_disabled_until", "org_spend_cap_reached"])),
+  (Jap = [
+    "You've hit your",
+    "You've reached your",
+    "You've used",
+    "You're now using usage credits",
+    "You're close to",
+    "You're out of usage credits",
+    "Your org is out of usage \xB7 add funds to continue",
+    "Your org is out of usage \xB7 contact your admin",
+    "You're now using your usage allocation",
+    "Now using your usage allocation",
+    "Now using usage credits",
+    "Your seat type doesn't include usage credits",
+    "Your seat type doesn't include usage",
+    "This service is disabled for your org",
+    "Your usage allocation has been disabled by your admin",
+    "Your group's usage limit is set to $0",
+    "Fable 5 requires usage credits",
+    "You're now using extra usage",
+    "You're out of extra usage",
+    "Now using extra usage",
+    "Your seat type doesn't include extra usage",
+  ]));
 function xaa(e) {
   return slp[e] || e;
 }

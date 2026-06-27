@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.5255  score=0.7187  fileCov=0.6616
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nKo = E(() => {
-  ft();
-  X0();
-  dtn();
-  WTe();
-  Tpr();
-  Ye();
-  Du();
-  sr();
-  ((CHc = R(lt(), 1)), (b2 = R(se(), 1)));
-});
+// [unwrapped __esm module nKo] deps: ft, X0, dtn, WTe, Tpr, Ye, Du, sr
+((CHc = R(lt(), 1)), (b2 = R(se(), 1)));
 function xHc({
   suggestions: e = [],
   onRejectFeedbackChange: t,

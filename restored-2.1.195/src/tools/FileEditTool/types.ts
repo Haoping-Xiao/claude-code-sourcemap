@@ -4,54 +4,51 @@
 // class=modified  jaccard=0.6754  score=0.7582  fileCov=0.8609
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W9t = E(() => {
-  Xr();
-  PDe();
-  ((d6n = ve(() =>
-    H.strictObject({
-      file_path: H.string().describe("The absolute path to the file to modify"),
-      old_string: H.string().describe("The text to replace"),
-      new_string: H.string().describe(
-        "The text to replace it with (must be different from old_string)",
-      ),
-      replace_all: Y0(H.boolean().default(false).optional()).describe(
-        "Replace all occurrences of old_string (default false)",
-      ),
+// [unwrapped __esm module W9t] deps: Xr, PDe
+((d6n = ve(() =>
+  H.strictObject({
+    file_path: H.string().describe("The absolute path to the file to modify"),
+    old_string: H.string().describe("The text to replace"),
+    new_string: H.string().describe(
+      "The text to replace it with (must be different from old_string)",
+    ),
+    replace_all: Y0(H.boolean().default(false).optional()).describe(
+      "Replace all occurrences of old_string (default false)",
+    ),
+  }),
+)),
+  (Ovo = ve(() =>
+    H.object({
+      oldStart: H.number(),
+      oldLines: H.number(),
+      newStart: H.number(),
+      newLines: H.number(),
+      lines: H.array(H.string()),
     }),
   )),
-    (Ovo = ve(() =>
-      H.object({
-        oldStart: H.number(),
-        oldLines: H.number(),
-        newStart: H.number(),
-        newLines: H.number(),
-        lines: H.array(H.string()),
-      }),
-    )),
-    (Nvo = ve(() =>
-      H.object({
-        filename: H.string(),
-        status: H.enum(["modified", "added"]),
-        additions: H.number(),
-        deletions: H.number(),
-        changes: H.number(),
-        patch: H.string(),
-        repository: H.string().nullable().optional().describe("GitHub owner/repo when available"),
-      }),
-    )),
-    (Bvo = ve(() =>
-      H.object({
-        filePath: H.string().describe("The file path that was edited"),
-        oldString: H.string().describe("The original string that was replaced"),
-        newString: H.string().describe("The new string that replaced it"),
-        originalFile: H.string().nullable().describe("The original file contents before editing"),
-        structuredPatch: H.array(Ovo()).describe("Diff patch showing the changes"),
-        userModified: H.boolean().describe("Whether the user modified the proposed changes"),
-        replaceAll: H.boolean().describe("Whether all occurrences were replaced"),
-        gitDiff: Nvo().optional(),
-      }),
-    )));
-});
+  (Nvo = ve(() =>
+    H.object({
+      filename: H.string(),
+      status: H.enum(["modified", "added"]),
+      additions: H.number(),
+      deletions: H.number(),
+      changes: H.number(),
+      patch: H.string(),
+      repository: H.string().nullable().optional().describe("GitHub owner/repo when available"),
+    }),
+  )),
+  (Bvo = ve(() =>
+    H.object({
+      filePath: H.string().describe("The file path that was edited"),
+      oldString: H.string().describe("The original string that was replaced"),
+      newString: H.string().describe("The new string that replaced it"),
+      originalFile: H.string().nullable().describe("The original file contents before editing"),
+      structuredPatch: H.array(Ovo()).describe("Diff patch showing the changes"),
+      userModified: H.boolean().describe("Whether the user modified the proposed changes"),
+      replaceAll: H.boolean().describe("Whether all occurrences were replaced"),
+      gitDiff: Nvo().optional(),
+    }),
+  )));
 function p6n(e) {
   let t = htl.c(22),
     {

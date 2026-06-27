@@ -4,22 +4,11 @@
 // class=new  jaccard=0.0371  score=0.0669  fileCov=0.0771
 // note: nearest: src/utils/cronTasks.ts (0.0371); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KWe = E(() => {
-  ft();
-  Un();
-  kt();
-  Yra();
-  Xra();
-  wX();
-  sre();
-  tSe();
-  fn();
-  At();
-  soa = require("fs"), Poo = require("path"), bop = koo;
-  Ooo = `
+// [unwrapped __esm module KWe] deps: ft, Un, kt, Yra, Xra, wX, sre, tSe, fn, At
+soa = require("fs"), Poo = require("path"), bop = koo;
+Ooo = `
 
 If a ${yT} is armed (check ${yL}), keep \`delaySeconds\` at 1200\u20131800s \u2014 the ${yT} is the wake signal and this is only the fallback heartbeat. If you were woken by a \`<task-notification>\`, handle the event before rescheduling. To stop the loop, also ${QD} the monitor (use ${yL} to find its task ID if no longer in context).`;
-});
 function xct(e, t) {
   G("tengu_loop_ended", {
     reason: $e(e),

@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0249  score=0.1132  fileCov=0.031
 // note: nearest: src/components/HelpV2/HelpV2.tsx (0.0249); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var X8o = E(() => {
-  hut();
-  nhc = R(rt(), 1);
-});
+// [unwrapped __esm module X8o] deps: hut
+nhc = R(rt(), 1);
 function rhc(e) {
   return `${ITt.major(e, {
     loose: true

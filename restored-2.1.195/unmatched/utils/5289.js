@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0049  score=0.5166  fileCov=0.005
 // note: nearest: src/screens/REPL.tsx (0.0049); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Lic = E(() => {
-  ft();
-  je();
-  sp();
-});
 async function $lr(e) {
   if (wf()) return;
   let t = VHt(e);

@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.0622  score=0.5852  fileCov=0.0651
 // note: low-confidence suggestion: src/commands/clear/conversation.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var S4n = E(() => {
-  Eue();
-  dr();
-  b4n = R(rt(), 1);
-});
+// [unwrapped __esm module S4n] deps: Eue, dr
+b4n = R(rt(), 1);
 function vT(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "local_bash";
 }

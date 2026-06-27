@@ -4,29 +4,9 @@
 // class=modified  jaccard=0.4475  score=0.6098  fileCov=0.6271
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IKt = E(() => {
-  ft();
-  GF();
-  np();
-  u_();
-  lf();
-  nC();
-  h6();
-  je();
-  RE();
-  Rd();
-  vn();
-  QO();
-  Ao();
-  ste();
-  JDo();
-  y_();
-  jS();
-  dr();
-  K$e();
-  oCl = require("fs/promises");
-  sHf = new Set([Ds, ka, Wc]);
-});
+// [unwrapped __esm module IKt] deps: ft, GF, np, u_, lf, nC, h6, je, RE, Rd, vn, QO, Ao, ste, JDo, y_, jS, dr, K$e
+oCl = require("fs/promises");
+sHf = new Set([Ds, ka, Wc]);
 function xKt() {
   return I$e();
 }

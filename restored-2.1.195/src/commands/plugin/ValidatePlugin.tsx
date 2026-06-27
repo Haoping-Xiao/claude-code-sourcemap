@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.4907  score=0.7202  fileCov=0.6062
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qjl = E(() => {
-  si();
-  Ye();
-  bUo();
-  ((Yjl = R(lt(), 1)), (Xjl = R(rt(), 1)), (SUo = R(se(), 1)));
-});
+// [unwrapped __esm module Qjl] deps: si, Ye, bUo
+((Yjl = R(lt(), 1)), (Xjl = R(rt(), 1)), (SUo = R(se(), 1)));
 function t4l(e) {
   let t = Zjl.c(5),
     { onComplete: n, path: r } = e,

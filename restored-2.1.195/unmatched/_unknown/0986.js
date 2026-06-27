@@ -3,6 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JUs = E(() => {
-  YUs = R(UR(), 1), ryn = R(by(), 1);
-});
+// [unwrapped __esm module JUs]
+YUs = R(UR(), 1), ryn = R(by(), 1);

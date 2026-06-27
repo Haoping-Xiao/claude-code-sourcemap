@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.172  score=0.2222  fileCov=0.432
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YPn = E(() => {
-  fKr();
-  ZC();
-});
 function jKi(e) {
   if (e === null || typeof e !== "object") return;
   let t = "dependencies" in e ? e.dependencies : void 0;

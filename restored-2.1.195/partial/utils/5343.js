@@ -4,15 +4,6 @@
 // class=partial  jaccard=0.1859  score=0.3115  fileCov=0.3155
 // note: low-confidence suggestion: src/components/MCPServerDialogCopy.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cTt = E(() => {
-  oo();
-  je();
-  aE();
-  Xh();
-  EVe();
-  Kv();
-  sst();
-});
 function Wcr() {
   let e = gdc.c(1),
     t;

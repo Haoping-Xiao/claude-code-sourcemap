@@ -4,18 +4,9 @@
 // class=partial  jaccard=0.1226  score=0.5185  fileCov=0.1384
 // note: low-confidence suggestion: src/utils/systemTheme.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var j_e = E(() => {
-  Ece();
-  tne();
-  gb();
-  je();
-  fn();
-  At();
-  Jt();
-  Mke();
-  _it = require("fs"), Ace = require("fs/promises"), a8 = require("path");
-  q3e = uL([]);
-});
+// [unwrapped __esm module j_e] deps: Ece, tne, gb, je, fn, At, Jt, Mke
+_it = require("fs"), Ace = require("fs/promises"), a8 = require("path");
+q3e = uL([]);
 function z3e() {
   return U0n ?? fUi() ?? "dark";
 }

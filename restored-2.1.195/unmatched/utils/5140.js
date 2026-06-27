@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0024  score=0.1121  fileCov=0.0025
 // note: nearest: src/screens/REPL.tsx (0.0024); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LJl = E(() => {
-  np();
-  dn();
-  kt();
-  lT();
-  DD();
-  EHe();
-  kJl = `Usage: /model <name>. Available: ${hye.join(", ")}, default, or a full model ID.`;
-});
+// [unwrapped __esm module LJl] deps: np, dn, kt, lT, DD, EHe
+kJl = `Usage: /model <name>. Available: ${hye.join(", ")}, default, or a full model ID.`;
 function lHt(e) {
   let t = DJl.c(23),
     {

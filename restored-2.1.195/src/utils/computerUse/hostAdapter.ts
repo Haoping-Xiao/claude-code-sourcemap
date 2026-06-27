@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.5035  score=0.8613  fileCov=0.548
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ffo = E(() => {
-  spt();
-  je();
-  At();
-  Bi();
-  S_e();
-  KFn();
-  YFn();
-});
 class ERa {
   silly(e, ...t) {
     T(upt.format(e, ...t), {

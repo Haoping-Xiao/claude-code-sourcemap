@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.408  score=0.6438  fileCov=0.5269
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Dgt = E(() => {
-  Kv();
-  dr();
-});
 function OVn(e) {
   let t = e.map((n) => n.filter((r) => !r.antOnly));
   return (t.push(e.flatMap((n) => n.filter((r) => r.antOnly))), t);

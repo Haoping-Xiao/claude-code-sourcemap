@@ -4,11 +4,6 @@
 // class=partial  jaccard=0.0896  score=1  fileCov=0.0896
 // note: low-confidence suggestion: node_modules/@typespec/ts-http-runtime/dist/esm/httpHeaders.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OD = E(() => {
-  ble();
-  UE();
-  Api();
-});
 function nTn(e) {
   return e.toLowerCase();
 }

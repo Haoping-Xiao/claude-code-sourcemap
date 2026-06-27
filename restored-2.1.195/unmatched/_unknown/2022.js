@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0489  score=0.7255  fileCov=0.0499
 // note: nearest: node_modules/@anthropic-ai/vertex-sdk/client.mjs (0.0489); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ovi = E(() => {
-  _9r();
-  nvi = Symbol.for("brand.privateNullableHeaders");
-});
+// [unwrapped __esm module ovi] deps: _9r
+nvi = Symbol.for("brand.privateNullableHeaders");
 function Ikd(e) {
   let t = new j2(e);
   return delete t.batches, t;

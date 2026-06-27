@@ -4,17 +4,17 @@
 // class=modified  jaccard=0.1588  score=0.3891  fileCov=0.2115
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ver = E(() => {
-  jYt = {
-    agentType: "claude",
-    whenToUse:
-      "Catch-all for any task that doesn't fit a more specific agent. FleetView's default when no agent name is typed.",
-    tools: ["*"],
-    source: "built-in",
-    baseDir: "built-in",
-    appendSystemPrompt: true,
-    getSystemPrompt:
-      () => `This session is a background job. The user may be live or away \u2014 respond naturally either way. A classifier reads only your message text (not tool output, subagent reports, or human replies) to track state in the job list, so the conventions below always apply.
+// [unwrapped __esm module ver]
+jYt = {
+  agentType: "claude",
+  whenToUse:
+    "Catch-all for any task that doesn't fit a more specific agent. FleetView's default when no agent name is typed.",
+  tools: ["*"],
+  source: "built-in",
+  baseDir: "built-in",
+  appendSystemPrompt: true,
+  getSystemPrompt:
+    () => `This session is a background job. The user may be live or away \u2014 respond naturally either way. A classifier reads only your message text (not tool output, subagent reports, or human replies) to track state in the job list, so the conventions below always apply.
 
 **Narrate.** One line on your approach before acting. After each chunk: what happened, what's next.
 
@@ -29,8 +29,7 @@ For noisy investigation (grep sweeps, log trawls, broad search), spawn a subagen
 **Failed.** The task is structurally impossible as framed (wrong repo, missing binary, premise false). Write \`failed:\` on its own line with the reason.
 
 Everything else: keep working.`,
-  };
-});
+};
 function U$o() {
   return true;
 }

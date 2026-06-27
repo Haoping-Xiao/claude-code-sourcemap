@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.0425  score=0.184  fileCov=0.0523
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Tjn = E(() => {
-  rre();
-  Ybe();
-  sN();
-  xRe();
-  S$();
-});
 function Xqe(e, t, n) {
   return {
     behavior: "ask",

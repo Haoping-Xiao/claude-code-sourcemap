@@ -4,13 +4,8 @@
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0612  score=0.1829  fileCov=0.0842
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I5c = E(() => {
-  kt();
-  Yp();
-  lH();
-  JN();
-  w5c = require("path");
-});
+// [unwrapped __esm module I5c] deps: kt, Yp, lH, JN
+w5c = require("path");
 var k5c = {};
 _t(k5c, {
   ultrareviewHandler: () => ultrareviewHandler,

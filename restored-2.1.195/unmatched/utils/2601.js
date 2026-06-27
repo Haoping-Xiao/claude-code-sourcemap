@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0098  score=0.0933  fileCov=0.0108
 // note: nearest: src/utils/processUserInput/processSlashCommand.tsx (0.0098); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aeo = E(() => {
-  bKi = require("crypto");
-});
+// [unwrapped __esm module aeo]
+bKi = require("crypto");
 function SKi(e, t) {
   BPn.set(e, t);
 }

@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pGs = E(() => {
-  XOr();
-  uGs = R(PE(), 1);
-});
+// [unwrapped __esm module pGs] deps: XOr
+uGs = R(PE(), 1);

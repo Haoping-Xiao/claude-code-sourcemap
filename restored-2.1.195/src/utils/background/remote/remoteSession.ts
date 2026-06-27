@@ -4,22 +4,6 @@
 // class=modified  jaccard=0.2576  score=0.6462  fileCov=0.2999
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VDe = E(() => {
-  Hp();
-  Rc();
-  H0();
-  Un();
-  oo();
-  Lo();
-  je();
-  BR();
-  At();
-  Bi();
-  sa();
-  Jt();
-  Cv();
-  Ide();
-});
 async function DOa({ allowBundle: e = false, cwd: t } = {}) {
   let n = [];
   if (!Us("allow_remote_sessions"))

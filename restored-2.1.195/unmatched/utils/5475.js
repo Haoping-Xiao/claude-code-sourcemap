@@ -4,28 +4,11 @@
 // class=new  jaccard=0.0057  score=0.4332  fileCov=0.0058
 // note: nearest: src/screens/REPL.tsx (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var b_c = E(() => {
-  Xr();
-  ft();
-  YHe();
-  z2n();
-  Lo();
-  je();
-  Bi();
-  PM();
-  sp();
-  Is();
-  dr();
-  kDe();
-  ejn();
-  Jt();
-  _1();
-  sj();
-  Pfm = ve(() => H.object({
-    id: H.string(),
-    content: H.string()
-  }));
-});
+// [unwrapped __esm module b_c] deps: Xr, ft, YHe, z2n, Lo, je, Bi, PM, sp, Is, dr, kDe, ejn, Jt, _1, sj
+Pfm = ve(() => H.object({
+  id: H.string(),
+  content: H.string()
+}));
 function Ofm(e, t) {
   let n = Object.keys(e),
     r = Object.keys(t);

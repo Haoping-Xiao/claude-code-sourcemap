@@ -4,21 +4,8 @@
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0156  score=0.2993  fileCov=0.0161
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var L0c = E(() => {
-  Jat();
-  Qmo();
-  Ye();
-  nk();
-  id();
-  uo();
-  gq();
-  Z6();
-  er();
-  wr();
-  fn();
-  Ko();
-  ((x0c = R(lt(), 1)), (k0c = R(rt(), 1)), (tfr = R(se(), 1)));
-});
+// [unwrapped __esm module L0c] deps: Jat, Qmo, Ye, nk, id, uo, gq, Z6, er, wr, fn, Ko
+((x0c = R(lt(), 1)), (k0c = R(rt(), 1)), (tfr = R(se(), 1)));
 function D0c(e, t) {
   if (t.kind === "clear") {
     if (!e.has(t.toolUseId)) return e;

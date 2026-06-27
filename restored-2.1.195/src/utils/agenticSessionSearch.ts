@@ -4,26 +4,25 @@
 // class=modified  jaccard=0.0528  score=0.07  fileCov=0.1765
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gor = E(() => {
-  xAt = {
-    register() {},
-    update() {},
-    updateTranscript() {},
-    getTranscript() {
-      return;
-    },
-    remove() {},
-    evictTerminal() {},
-    applyOffsetsAndEvict() {},
-    get() {
-      return;
-    },
-    all() {
-      return {};
-    },
-    abortSpeculation() {},
-  };
-});
+// [unwrapped __esm module Gor]
+xAt = {
+  register() {},
+  update() {},
+  updateTranscript() {},
+  getTranscript() {
+    return;
+  },
+  remove() {},
+  evictTerminal() {},
+  applyOffsetsAndEvict() {},
+  get() {
+    return;
+  },
+  all() {
+    return {};
+  },
+  abortSpeculation() {},
+};
 function UGf(e) {
   return e.slice(0, OGf).map((t) => {
     let n = qg(t) ?? "?",

@@ -4,10 +4,9 @@
 // class=partial  jaccard=0.1687  score=0.7776  fileCov=0.1773
 // note: low-confidence suggestion: src/utils/truncate.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xge = E(() => {
-  R7c = /\x1b\[[34]8;[25];/;
-  lAr = /\x1b\[([\d;]*)m/g, L7c = /^(3[0-79]|9[0-7])$/, D7c = /^(4[0-79]|10[0-7])$/;
-});
+// [unwrapped __esm module Xge]
+R7c = /\x1b\[[34]8;[25];/;
+lAr = /\x1b\[([\d;]*)m/g, L7c = /^(3[0-79]|9[0-7])$/, D7c = /^(4[0-79]|10[0-7])$/;
 function JJe(e, t) {
   if (rn(e) <= t) return e;
   if (t <= 0) return "\u2026";

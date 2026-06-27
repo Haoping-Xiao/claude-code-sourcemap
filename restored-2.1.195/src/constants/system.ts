@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.295  score=0.5041  fileCov=0.4157
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oje = E(() => {
-  ((Voi = require("async_hooks")), (zoi = new Voi.AsyncLocalStorage()));
-});
+// [unwrapped __esm module oje]
+((Voi = require("async_hooks")), (zoi = new Voi.AsyncLocalStorage()));
 function IAn(e, t) {
   if (ml(process.env.CLAUDE_CODE_ATTRIBUTION_HEADER)) return "";
   let n = `${

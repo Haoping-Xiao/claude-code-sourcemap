@@ -4,78 +4,68 @@
 // class=modified  jaccard=0.2834  score=0.4074  fileCov=0.4821
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uwo = E(() => {
-  Xr();
-  ft();
-  ii();
-  Il();
-  $I();
-  __();
-  G1();
-  R8e();
-  Qnl();
-  nrl();
-  ((Ptf = ve(() => H.strictObject({}))),
-    (Mtf = ve(() =>
-      H.object({
-        message: H.string().describe("Confirmation that plan mode was entered"),
-      }),
-    )),
-    (v6n = ti({
-      name: xX,
-      searchHint: "switch to plan mode to design an approach before coding",
-      maxResultSizeChars: 100000 /* 1e5 */,
-      async description() {
-        return "Requests permission to enter plan mode for complex tasks requiring exploration and design";
-      },
-      async prompt() {
-        return Jnl();
-      },
-      get inputSchema() {
-        return Ptf();
-      },
-      get outputSchema() {
-        return Mtf();
-      },
-      userFacingName() {
-        return "";
-      },
-      shouldDefer: true,
-      isEnabled() {
-        return EP.isEnabled();
-      },
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      renderToolUseMessage: Znl,
-      renderToolResultMessage: erl,
-      renderToolUseRejectedMessage: trl,
-      async call(e, t) {
-        if (t.agentId) throw Error("EnterPlanMode tool cannot be used in agent contexts");
-        return (
-          Lge(Fr(t).mode, "plan"),
-          t.setToolPermissionContext((n) =>
-            My(myt(n), {
-              type: "setMode",
-              mode: "plan",
-              destination: "session",
-            }),
-          ),
-          {
-            data: {
-              message:
-                "Entered plan mode. You should now focus on exploring the codebase and designing an implementation approach.",
-            },
-          }
-        );
-      },
-      mapToolResultToToolResultBlockParam({ message: e }, t) {
-        return {
-          type: "tool_result",
-          content: `${e}
+// [unwrapped __esm module uwo] deps: Xr, ft, ii, Il, $I, __, G1, R8e, Qnl, nrl
+((Ptf = ve(() => H.strictObject({}))),
+  (Mtf = ve(() =>
+    H.object({
+      message: H.string().describe("Confirmation that plan mode was entered"),
+    }),
+  )),
+  (v6n = ti({
+    name: xX,
+    searchHint: "switch to plan mode to design an approach before coding",
+    maxResultSizeChars: 100000 /* 1e5 */,
+    async description() {
+      return "Requests permission to enter plan mode for complex tasks requiring exploration and design";
+    },
+    async prompt() {
+      return Jnl();
+    },
+    get inputSchema() {
+      return Ptf();
+    },
+    get outputSchema() {
+      return Mtf();
+    },
+    userFacingName() {
+      return "";
+    },
+    shouldDefer: true,
+    isEnabled() {
+      return EP.isEnabled();
+    },
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    renderToolUseMessage: Znl,
+    renderToolResultMessage: erl,
+    renderToolUseRejectedMessage: trl,
+    async call(e, t) {
+      if (t.agentId) throw Error("EnterPlanMode tool cannot be used in agent contexts");
+      return (
+        Lge(Fr(t).mode, "plan"),
+        t.setToolPermissionContext((n) =>
+          My(myt(n), {
+            type: "setMode",
+            mode: "plan",
+            destination: "session",
+          }),
+        ),
+        {
+          data: {
+            message:
+              "Entered plan mode. You should now focus on exploring the codebase and designing an implementation approach.",
+          },
+        }
+      );
+    },
+    mapToolResultToToolResultBlockParam({ message: e }, t) {
+      return {
+        type: "tool_result",
+        content: `${e}
 
 In plan mode, you should:
 1. Thoroughly explore the codebase to understand existing patterns
@@ -86,11 +76,10 @@ In plan mode, you should:
 6. When ready, use ${Xx} to present your plan for approval
 
 Remember: DO NOT write or edit any files yet. This is a read-only exploration and planning phase.`,
-          tool_use_id: t,
-        };
-      },
-    })));
-});
+        tool_use_id: t,
+      };
+    },
+  })));
 function srl(e) {
   let t = e.split("/");
   if (t[0] !== ".claude" || t.length < 3) return null;

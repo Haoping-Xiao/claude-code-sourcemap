@@ -4,23 +4,8 @@
 // class=modified (alt of src/hooks/useDiffInIDE.ts)  jaccard=0.1311  score=0.3088  fileCov=0.1855
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Hfl = E(() => {
-  kt();
-  Du();
-  PB();
-  Hu();
-  dn();
-  bMe();
-  er();
-  je();
-  Dpe();
-  At();
-  aE();
-  HDn();
-  vn();
-  Is();
-  AYn = R(rt(), 1);
-});
+// [unwrapped __esm module Hfl] deps: kt, Du, PB, Hu, dn, bMe, er, je, Dpe, At, aE, HDn, vn, Is
+AYn = R(rt(), 1);
 function ndf(e, t) {
   if (e === xH) {
     let n = xH.inputSchema.parse(t);

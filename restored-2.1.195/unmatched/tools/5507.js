@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0043  score=0.2181  fileCov=0.0044
 // note: nearest: src/cli/print.ts (0.0043); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Vbc = E(() => {
-  Xr();
-  ii();
-  Jt();
-});
 async function zdr(e) {
   let t = e.tool,
     n = y0o(t);

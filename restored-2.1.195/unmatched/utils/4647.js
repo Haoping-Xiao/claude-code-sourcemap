@@ -4,73 +4,17 @@
 // class=new  jaccard=0.0292  score=0.2331  fileCov=0.0323
 // note: nearest: src/components/Settings/Config.tsx (0.0292); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var J$l = E(() => {
-  Ye();
-  Kce();
-  PUt();
-  sr();
-  ps();
-  si();
-  Xa();
-  er();
-  Rnt();
-  er();
-  Fh();
-  iu();
-  lT();
-  DE();
-  __();
-  kt();
-  dn();
-  utr();
-  uo();
-  EHe();
-  ptr();
-  _1o();
-  GMl();
-  vi();
-  mE();
-  zMl();
-  XMl();
-  dC();
-  gb();
-  j_e();
-  Ko();
-  Cc();
-  Bs();
-  kP();
-  fH();
-  Pfe();
-  aE();
-  dr();
-  HU();
-  G4();
-  wr();
-  fn();
-  lH();
-  rze();
-  S7t();
-  n1o();
-  sre();
-  oo();
-  qd();
-  dse();
-  _i();
-  NE();
-  rtr();
-  W$l();
-  s1o();
-  N1o = R(lt(), 1), z$l = R(rt(), 1), Em = R(rt(), 1), Zo = R(se(), 1);
-  Y$l = {
-    auto: "Auto (match terminal)",
-    dark: "Dark mode",
-    light: "Light mode",
-    "dark-daltonized": "Dark mode (colorblind-friendly)",
-    "light-daltonized": "Light mode (colorblind-friendly)",
-    "dark-ansi": "Dark mode (ANSI colors only)",
-    "light-ansi": "Light mode (ANSI colors only)"
-  };
-});
+// [unwrapped __esm module J$l] deps: Ye, Kce, PUt, sr, ps, si, Xa, er, Rnt, er, Fh, iu, lT, DE, __, kt, dn, utr, uo, EHe, ptr, _1o, GMl, vi, mE, zMl, XMl, dC, gb, j_e, Ko, Cc, Bs, kP, fH, Pfe, aE, dr, HU, G4, wr, fn, lH, rze, S7t, n1o, sre, oo, qd, dse, _i, NE, rtr, W$l, s1o
+N1o = R(lt(), 1), z$l = R(rt(), 1), Em = R(rt(), 1), Zo = R(se(), 1);
+Y$l = {
+  auto: "Auto (match terminal)",
+  dark: "Dark mode",
+  light: "Light mode",
+  "dark-daltonized": "Dark mode (colorblind-friendly)",
+  "light-daltonized": "Light mode (colorblind-friendly)",
+  "dark-ansi": "Dark mode (ANSI colors only)",
+  "light-ansi": "Light mode (ANSI colors only)"
+};
 function THe(e, t, n, r) {
   let o = e.subarray(n, r).indexOf(t);
   return o < 0 ? -1 : n + o;

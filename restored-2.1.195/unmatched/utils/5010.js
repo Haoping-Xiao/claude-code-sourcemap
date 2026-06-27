@@ -4,17 +4,8 @@
 // class=new  jaccard=0.0034  score=0.3793  fileCov=0.0035
 // note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bJt = E(() => {
-  ft();
-  FK();
-  fd();
-  X6l();
-  Yp();
-  QEe();
-  y_();
-  _a();
-  J6l = require("child_process"), Q6l = require("fs/promises"), Z6l = require("os"), ezl = require("path");
-});
+// [unwrapped __esm module bJt] deps: ft, FK, fd, X6l, Yp, QEe, y_, _a
+J6l = require("child_process"), Q6l = require("fs/promises"), Z6l = require("os"), ezl = require("path");
 function vsr(e, t) {
   let n = Array.from(e.additionalWorkingDirectories.values()).filter(a => a.source === "cliArg" || a.source === "session").map(a => a.path),
     r = [],

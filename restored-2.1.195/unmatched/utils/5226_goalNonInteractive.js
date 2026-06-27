@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hnc = E(() => {
-  dn();
-  sr();
-  Lze();
-});
 var Tnc = {};
 _t(Tnc, {
   goalNonInteractive: () => goalNonInteractive,

@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2551  score=0.4951  fileCov=0.3448
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fkc = E(() => {
-  Ye();
-  ((ukc = R(lt(), 1)), (aO = R(se(), 1)));
-});
+// [unwrapped __esm module fkc] deps: Ye
+((ukc = R(lt(), 1)), (aO = R(se(), 1)));
 function evt(e) {
   let t = mkc.c(7),
     { children: n, mouseTracking: r } = e,

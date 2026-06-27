@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mVe = E(() => {
-  b1a = new Set();
-});
+// [unwrapped __esm module mVe]
+b1a = new Set();
 function E1a(e) {
   if (Iho.has(e)) return false;
   return Iho.add(e), true;

@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.3145  score=0.6645  fileCov=0.3739
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vUc = E(() => {
-  ft();
-  Yf();
-  ((AUc = require("async_hooks")), (HUc = require("path")));
-  ((yLm = new AUc.AsyncLocalStorage()), (_Lm = new TUc()));
-});
+// [unwrapped __esm module vUc] deps: ft, Yf
+((AUc = require("async_hooks")), (HUc = require("path")));
+((yLm = new AUc.AsyncLocalStorage()), (_Lm = new TUc()));
 function wUc(e) {
   let t = process.env.CLAUDE_CODE_EXIT_AFTER_STOP_DELAY,
     n = t ? parseInt(t, 10) : null,

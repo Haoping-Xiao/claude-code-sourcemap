@@ -4,15 +4,13 @@
 // class=new  jaccard=0.0251  score=0.1258  fileCov=0.0304
 // note: nearest: src/utils/teleport/api.ts (0.0251); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rEl = E(() => {
-  Xr();
-  ZSl = require("crypto"), Nhf = ve(() => H.object({
-    projectId: H.string(),
-    writes: H.array(H.string()),
-    deletes: H.array(H.string()),
-    localDir: H.string().optional()
-  })), eEl = new Map(), Bhf = /^plan_[a-z0-9]{1,16}_[a-f0-9]{12}$/;
-});
+// [unwrapped __esm module rEl] deps: Xr
+ZSl = require("crypto"), Nhf = ve(() => H.object({
+  projectId: H.string(),
+  writes: H.array(H.string()),
+  deletes: H.array(H.string()),
+  localDir: H.string().optional()
+})), eEl = new Map(), Bhf = /^plan_[a-z0-9]{1,16}_[a-f0-9]{12}$/;
 async function MRo() {
   if (!Jl()) return {
     ok: !1,

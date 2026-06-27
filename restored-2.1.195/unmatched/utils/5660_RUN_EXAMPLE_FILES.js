@@ -4,17 +4,9 @@
 // class=new  jaccard=0.0565  score=0.0846  fileCov=0.1456
 // note: nearest: src/skills/bundled/verifyContent.ts (0.0565); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rxc = E(() => {
-  Un();
-  kt();
-  oo();
-  KKe();
-  dr();
-  sr();
-  AA();
-  xxc = BHm + `TRIGGER when: user asks how Claude Code works ("Can Claude\u2026", "Does Claude\u2026", "How do I\u2026", "Is there a way to\u2026"); user asks about a slash command, CLI flag, settings key, hook, skill, MCP server, subagent, keybinding, or .claude/ directory; user wants to configure, customize, or troubleshoot Claude Code; YOU are about to recommend a Claude Code slash command, flag, or setting and have not verified it exists in this build.
+// [unwrapped __esm module Rxc] deps: Un, kt, oo, KKe, dr, sr, AA
+xxc = BHm + `TRIGGER when: user asks how Claude Code works ("Can Claude\u2026", "Does Claude\u2026", "How do I\u2026", "Is there a way to\u2026"); user asks about a slash command, CLI flag, settings key, hook, skill, MCP server, subagent, keybinding, or .claude/ directory; user wants to configure, customize, or troubleshoot Claude Code; YOU are about to recommend a Claude Code slash command, flag, or setting and have not verified it exists in this build.
 ` + "SKIP: questions about building applications with the Claude API or Anthropic SDK (use /claude-api), general programming questions, questions about the user's own codebase.";
-});
 var Dxc = `# Example: CLI tool
 
 CLIs are the simplest case \u2014 there's usually no background process to

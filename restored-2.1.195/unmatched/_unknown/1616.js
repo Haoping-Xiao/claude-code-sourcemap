@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0246  score=0.1985  fileCov=0.0273
 // note: nearest: src/utils/bash/ParsedCommand.ts (0.0246); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var W4r = E(() => {
-  mMt();
-  Mdi = Symbol.for("brand.privateNullableHeaders");
-});
+// [unwrapped __esm module W4r] deps: mMt
+Mdi = Symbol.for("brand.privateNullableHeaders");
 function Odi(e) {
   return e.replace(/[^A-Za-z0-9\-._~!$&'()*+,;=:@]+/g, encodeURIComponent);
 }

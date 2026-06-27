@@ -4,34 +4,23 @@
 // class=modified  jaccard=0.379  score=0.6645  fileCov=0.4687
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var i5 = E(() => {
-  Qi();
-  Gwe();
-  ft();
-  je();
-  At();
-  SG();
-  R9();
-  dr();
-  vdt();
-  B1();
-  ((m$ = Cn((e) => {
+// [unwrapped __esm module i5] deps: Qi, Gwe, ft, je, At, SG, R9, dr, vdt, B1
+((m$ = Cn((e) => {
+  let n = jo().pluginConfigs?.[e]?.options ?? {},
+    o = wl().read()?.pluginSecrets?.[e] ?? {};
+  return {
+    ...n,
+    ...o,
+  };
+})),
+  (lTp = oRt(async (e) => {
     let n = jo().pluginConfigs?.[e]?.options ?? {},
-      o = wl().read()?.pluginSecrets?.[e] ?? {};
+      o = (await wl().readAsync())?.pluginSecrets?.[e] ?? {};
     return {
       ...n,
       ...o,
     };
-  })),
-    (lTp = oRt(async (e) => {
-      let n = jo().pluginConfigs?.[e]?.options ?? {},
-        o = (await wl().readAsync())?.pluginSecrets?.[e] ?? {};
-      return {
-        ...n,
-        ...o,
-      };
-    })));
-});
+  })));
 async function mCa(e, t, n) {
   try {
     T(`Loading MCP servers from MCPB: ${t}`);

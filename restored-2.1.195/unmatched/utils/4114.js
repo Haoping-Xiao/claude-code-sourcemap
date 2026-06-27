@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0541  score=0.2372  fileCov=0.0655
 // note: nearest: src/components/messages/CollapsedReadSearchContent.tsx (0.0541); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Yyt = E(() => {
-  Ye();
-  es();
-  Dzn = R(rt(), 1);
-});
+// [unwrapped __esm module Yyt] deps: Ye, es
+Dzn = R(rt(), 1);
 function BCo(e) {
   let t = Jyt.c(2);
   if (!qpe() || e.param.name !== Fm) return null;

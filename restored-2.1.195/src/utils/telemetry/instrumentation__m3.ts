@@ -4,16 +4,13 @@
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.01  score=0.0682  fileCov=0.0115
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var t5c = E(() => {
-  BZ();
-  awt();
-  ((HZo = {
-    "/v1/metrics": "metrics",
-    "/v1/logs": "logs",
-    "/v1/traces": "traces",
-  }),
-    (shr = new Map()));
-});
+// [unwrapped __esm module t5c] deps: BZ, awt
+((HZo = {
+  "/v1/metrics": "metrics",
+  "/v1/logs": "logs",
+  "/v1/traces": "traces",
+}),
+  (shr = new Map()));
 var n5c = `# Claude Code gateway protocol
 
 This is the wire contract the Claude Code CLI uses to talk to this gateway:

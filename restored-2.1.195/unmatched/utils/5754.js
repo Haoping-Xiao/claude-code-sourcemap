@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0031  score=0.0805  fileCov=0.0032
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0031); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UYo = E(() => {
-  ft();
-  kt();
-  je();
-  sp();
-  N5o();
-  Btn = require("crypto"), dPc = 1000 / qCm;
-});
+// [unwrapped __esm module UYo] deps: ft, kt, je, sp, N5o
+Btn = require("crypto"), dPc = 1000 / qCm;
 function VCm() {
   if (process.env.TMUX) return ane() ? "tmux_cc" : "tmux";
   if (process.env.ZELLIJ != null) return "zellij";

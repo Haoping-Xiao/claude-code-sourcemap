@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2023  score=1  fileCov=0.2023
 // note: low-confidence suggestion: node_modules/@azure/core-rest-pipeline/dist/esm/policies/retryPolicy.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Smi = E(() => {
-  krt();
-});
 function rGr(e, t = {
   maxRetries: Lfi
 }) {

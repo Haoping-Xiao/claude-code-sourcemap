@@ -4,19 +4,9 @@
 // class=modified  jaccard=0.1847  score=0.3951  fileCov=0.2576
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yXa = E(() => {
-  Ye();
-  kt();
-  Hu();
-  dr();
-  Fy();
-  f_();
-  gm();
-  wb();
-  vH();
-  ((mXa = R(lt(), 1)), (gXa = R(rt(), 1)), (D6 = R(se(), 1)));
-  $7p = new Set(["AWS_BEARER_TOKEN_BEDROCK", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]);
-});
+// [unwrapped __esm module yXa] deps: Ye, kt, Hu, dr, Fy, f_, gm, wb, vH
+((mXa = R(lt(), 1)), (gXa = R(rt(), 1)), (D6 = R(se(), 1)));
+$7p = new Set(["AWS_BEARER_TOKEN_BEDROCK", "AWS_SECRET_ACCESS_KEY", "AWS_SESSION_TOKEN"]);
 function VPe() {
   let e = new Date(),
     t = String(e.getHours()).padStart(2, "0"),

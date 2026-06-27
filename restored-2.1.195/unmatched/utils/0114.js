@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Pns = E(() => {
-  Kwt();
-  Dns = Z6c;
-});
+// [unwrapped __esm module Pns] deps: Kwt
+Dns = Z6c;
 function ezc(e) {
   return tJe(e) ? Rns(DV(e)) : Dns(e);
 }

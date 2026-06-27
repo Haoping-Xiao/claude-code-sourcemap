@@ -4,10 +4,6 @@
 // class=modified (alt of src/tools/TaskOutputTool/TaskOutputTool.tsx)  jaccard=0.2157  score=0.6427  fileCov=0.2451
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pRo = E(() => {
-  Wct();
-  bH();
-});
 async function cXn(e) {
   let t;
   if (e.type === "local_bash") {

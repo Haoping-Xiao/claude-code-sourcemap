@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3824  score=0.7681  fileCov=0.4323
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NOo = E(() => {
-  ft();
-  je();
-  Bi();
-  oc();
-  DPl = R(Uj(), 1);
-});
+// [unwrapped __esm module NOo] deps: ft, je, Bi, oc
+DPl = R(Uj(), 1);
 function P0f() {
   switch ("linux") {
     case "win32":

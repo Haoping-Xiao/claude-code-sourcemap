@@ -4,26 +4,24 @@
 // class=modified  jaccard=0.4668  score=0.9259  fileCov=0.485
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var voc = E(() => {
-  Ld();
-  ((IQf = {
-    type: "local-jsx",
+// [unwrapped __esm module voc] deps: Ld
+((IQf = {
+  type: "local-jsx",
+  name: "stop",
+  description: "Stop this background session; transcript and worktree are kept",
+  immediate: true,
+  isEnabled: Js,
+  load: () => Promise.resolve().then(() => (Eoc(), Soc)),
+}),
+  (xQf = {
+    type: "local",
     name: "stop",
+    supportsNonInteractive: true,
     description: "Stop this background session; transcript and worktree are kept",
-    immediate: true,
     isEnabled: Js,
-    load: () => Promise.resolve().then(() => (Eoc(), Soc)),
+    load: () => Promise.resolve().then(() => (Hoc(), Aoc)),
   }),
-    (xQf = {
-      type: "local",
-      name: "stop",
-      supportsNonInteractive: true,
-      description: "Stop this background session; transcript and worktree are kept",
-      isEnabled: Js,
-      load: () => Promise.resolve().then(() => (Hoc(), Aoc)),
-    }),
-    (kQf = IQf));
-});
+  (kQf = IQf));
 var Moc = {};
 _t(Moc, {
   normalizeSessionMeta: () => normalizeSessionMeta,

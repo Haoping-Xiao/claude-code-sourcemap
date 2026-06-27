@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2009  score=0.26  fileCov=0.4695
 // note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uls = E(() => {
-  ep();
-});
 function hTr() {
   return {
     localeError: uQc()

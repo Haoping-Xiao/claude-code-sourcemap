@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3113  score=0.4642  fileCov=0.486
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Uvo = E(() => {
-  _i();
-  Ye();
-  ql();
-  T4t();
-  ((htl = R(lt(), 1)), (DF = R(se(), 1)));
-});
+// [unwrapped __esm module Uvo] deps: _i, Ye, ql, T4t
+((htl = R(lt(), 1)), (DF = R(se(), 1)));
 function TMe(e) {
   let t = _tl.c(38),
     {

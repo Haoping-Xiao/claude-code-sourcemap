@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var r8l = E(() => {
-  $7t();
-  n8l = R(se(), 1);
-});
+// [unwrapped __esm module r8l] deps: $7t
+n8l = R(se(), 1);
 var o5f, o8l;

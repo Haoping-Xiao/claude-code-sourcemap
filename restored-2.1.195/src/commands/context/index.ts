@@ -4,31 +4,29 @@
 // class=modified  jaccard=0.1608  score=0.1901  fileCov=0.5104
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var v1l = E(() => {
-  ft();
-  ((dNo = {
+// [unwrapped __esm module v1l] deps: ft
+((dNo = {
+  name: "context",
+  description: "Visualize current context usage as a colored grid",
+  argumentHint: "[all]",
+  isEnabled: () => !Ir(),
+  type: "local-jsx",
+  thinClientDispatch: "control-request",
+  load: () => Promise.resolve().then(() => (T1l(), H1l)),
+}),
+  (pNo = {
+    type: "local",
     name: "context",
-    description: "Visualize current context usage as a colored grid",
-    argumentHint: "[all]",
-    isEnabled: () => !Ir(),
-    type: "local-jsx",
-    thinClientDispatch: "control-request",
-    load: () => Promise.resolve().then(() => (T1l(), H1l)),
-  }),
-    (pNo = {
-      type: "local",
-      name: "context",
-      supportsNonInteractive: true,
-      description: "Show current context usage",
-      get isHidden() {
-        return !Ir();
-      },
-      isEnabled() {
-        return Ir();
-      },
-      load: () => Promise.resolve().then(() => (B7t(), uNo)),
-    }));
-});
+    supportsNonInteractive: true,
+    description: "Show current context usage",
+    get isHidden() {
+      return !Ir();
+    },
+    isEnabled() {
+      return Ir();
+    },
+    load: () => Promise.resolve().then(() => (B7t(), uNo)),
+  }));
 function mNo(e = 0) {
   let n = qQ.useContext(SW)?.setTimeout ?? nat,
     [r, o] = qQ.useState(null),

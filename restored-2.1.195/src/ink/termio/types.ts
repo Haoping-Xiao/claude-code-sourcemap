@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2755  score=0.8012  fileCov=0.2957
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mce = E(() => {
-  AW();
-  mGe();
-  ((p5i = R(lt(), 1)), (DLn = R(se(), 1)));
-});
+// [unwrapped __esm module Mce] deps: AW, mGe
+((p5i = R(lt(), 1)), (DLn = R(se(), 1)));
 function f5i(e) {
   if (e.length === 0) return null;
   let t = e[0];

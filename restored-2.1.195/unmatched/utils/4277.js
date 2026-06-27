@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0071  score=0.233  fileCov=0.0072
 // note: nearest: src/cli/print.ts (0.0071); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jml = E(() => {
-  WAe();
-  yml();
-  k6e();
-  Lml();
-  U6t();
-  F6t = R(require("vm"));
-});
+// [unwrapped __esm module jml] deps: WAe, yml, k6e, Lml, U6t
+F6t = R(require("vm"));
 async function Gml(e, t, n, r = {}) {
   let o = Date.now(),
     s = [],

@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.3854  score=0.7473  fileCov=0.4431
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var r1c = E(() => {
-  dn();
-  kt();
-  er();
-  vn();
-  Fh();
-  dr();
-});
 function o1c() {
   if (Dt().hasResetAutoModeOptInForDefaultOffer) return;
   if (fKe() !== "enabled") return;

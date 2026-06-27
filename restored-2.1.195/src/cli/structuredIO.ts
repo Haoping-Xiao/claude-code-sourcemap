@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1256  score=0.1456  fileCov=0.4765
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nXo = E(() => {
-  Jt();
-  nLm = /\u2028|\u2029/g;
-});
+// [unwrapped __esm module nXo] deps: Jt
+nLm = /\u2028|\u2029/g;
 function rUc(e, t) {
   try {
     return e.getToolUseSummary?.(t) ?? e.getActivityDescription?.(t) ?? "";

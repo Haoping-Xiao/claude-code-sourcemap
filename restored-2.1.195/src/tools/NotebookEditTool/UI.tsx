@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2679  score=0.5343  fileCov=0.3494
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nnl = E(() => {
-  Lo();
-  Ye();
-  AMe();
-  ql();
-  ((Ztl = R(lt(), 1)), (enl = require("path")), (Mpe = R(se(), 1)));
-});
+// [unwrapped __esm module nnl] deps: Lo, Ye, AMe, ql
+((Ztl = R(lt(), 1)), (enl = require("path")), (Mpe = R(se(), 1)));
 function Kvo(e) {
   if (!e?.notebook_path) return null;
   return kd(e.notebook_path);

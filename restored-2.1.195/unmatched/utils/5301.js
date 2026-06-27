@@ -4,16 +4,8 @@
 // class=new  jaccard=0.0389  score=0.4845  fileCov=0.0406
 // note: nearest: src/utils/bash/ast.ts (0.0389); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tlc = E(() => {
-  iu();
-  kt();
-  ZE();
-  tP();
-  og();
-  SG();
-  Jt();
-  Pnm = new Set(["sh", "bash", "zsh", "fish", "csh", "tcsh", "ksh", "dash", "cmd", "cmd.exe", "powershell", "powershell.exe", "pwsh", "pwsh.exe", "bash.exe"]);
-});
+// [unwrapped __esm module tlc] deps: iu, kt, ZE, tP, og, SG, Jt
+Pnm = new Set(["sh", "bash", "zsh", "fish", "csh", "tcsh", "ksh", "dash", "cmd", "cmd.exe", "powershell", "powershell.exe", "pwsh", "pwsh.exe", "bash.exe"]);
 function JGt(e) {
   return too.test(e) || noo.test(e) || roo.test(e) || EOn.test(e) || AOn.test(e) || ioo.test(e);
 }

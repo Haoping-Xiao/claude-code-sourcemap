@@ -4,29 +4,8 @@
 // class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.074  score=0.1903  fileCov=0.1081
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ojl = E(() => {
-  si();
-  kt();
-  Cc();
-  lJ();
-  Bs();
-  f_();
-  Ko();
-  Xce();
-  Ye();
-  ps();
-  er();
-  At();
-  vq();
-  gHe();
-  lE();
-  yrr();
-  Xh();
-  ZC();
-  dr();
-  sr();
-  ((njl = R(lt(), 1)), (X$ = R(rt(), 1)), (Ks = R(se(), 1)));
-});
+// [unwrapped __esm module ojl] deps: si, kt, Cc, lJ, Bs, f_, Ko, Xce, Ye, ps, er, At, vq, gHe, lE, yrr, Xh, ZC, dr, sr
+((njl = R(lt(), 1)), (X$ = R(rt(), 1)), (Ks = R(se(), 1)));
 function yXt(e, t, n) {
   let r = _b(e - n + 1, 0, Math.max(0, t - n)),
     o = Math.min(r + n, t);

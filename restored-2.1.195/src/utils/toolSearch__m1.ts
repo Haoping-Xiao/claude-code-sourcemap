@@ -4,17 +4,8 @@
 // class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.1194  score=0.7819  fileCov=0.1235
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rSe = E(() => {
-  ft();
-  dn();
-  Un();
-  kt();
-  F2t();
-  N8();
-  je();
-  fn();
-  xop = (KWe(), ro(zWe));
-});
+// [unwrapped __esm module rSe] deps: ft, dn, Un, kt, F2t, N8, je, fn
+xop = (KWe(), ro(zWe));
 function Foo(e) {
   if (!e.startsWith("auto:")) return null;
   let t = e.slice(5),

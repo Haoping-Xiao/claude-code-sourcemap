@@ -4,9 +4,6 @@
 // class=new  jaccard=0.042  score=0.2676  fileCov=0.0475
 // note: nearest: node_modules/commander/lib/argument.js (0.042); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DGc = E(() => {
-  LGc();
-});
 class owt {
   #e;
   #t;

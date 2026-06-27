@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0311  score=0.1584  fileCov=0.0373
 // note: nearest: src/ink/ink.tsx (0.0311); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UGo = E(() => {
-  Knc = new Set([1000, 1002, 1003, 1004, 1006, 2004, 2031]), Ync = /\x1b\[\?([\d;]+)([hl])/g;
-});
+// [unwrapped __esm module UGo]
+Knc = new Set([1000, 1002, 1003, 1004, 1006, 2004, 2031]), Ync = /\x1b\[\?([\d;]+)([hl])/g;
 function hZ(e, t, n) {
   return e.length - t >= n.length && e.compare(n, 0, n.length, t, t + n.length) === 0;
 }

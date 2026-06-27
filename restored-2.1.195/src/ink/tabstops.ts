@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.3512  score=1  fileCov=0.3512
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iXr = E(() => {
-  Y4i = sXr;
-});
+// [unwrapped __esm module iXr]
+Y4i = sXr;
 function X4i(e, t = B4d) {
   if (!e.includes("\t")) return e;
   let n = Qke(),

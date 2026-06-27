@@ -4,18 +4,16 @@
 // class=modified  jaccard=0.189  score=0.2516  fileCov=0.4316
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vFl = E(() => {
-  wr();
-  ((v1f = {
-    type: "local-jsx",
-    name: "install-github-app",
-    description: "Set up Claude GitHub Actions for a repository",
-    availability: ["claude-ai", "console"],
-    isEnabled: () => !Oe.DISABLE_INSTALL_GITHUB_APP_COMMAND,
-    load: () => Promise.resolve().then(() => (HFl(), AFl)),
-  }),
-    (TFl = v1f));
-});
+// [unwrapped __esm module vFl] deps: wr
+((v1f = {
+  type: "local-jsx",
+  name: "install-github-app",
+  description: "Set up Claude GitHub Actions for a repository",
+  availability: ["claude-ai", "console"],
+  isEnabled: () => !Oe.DISABLE_INSTALL_GITHUB_APP_COMMAND,
+  load: () => Promise.resolve().then(() => (HFl(), AFl)),
+}),
+  (TFl = v1f));
 var CFl = {};
 _t(CFl, {
   call: () => call,

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0136  score=0.4976  fileCov=0.0138
 // note: nearest: src/tools/PowerShellTool/PowerShellTool.tsx (0.0136); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lC = E(() => {
-  k0();
-  fh();
-});
 var Ss = "PowerShell";
 function q1() {
   let e = process.env.CLAUDE_CODE_USE_POWERSHELL_TOOL;

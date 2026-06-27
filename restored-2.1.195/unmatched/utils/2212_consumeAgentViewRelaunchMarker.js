@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0205  score=0.0491  fileCov=0.0341
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js (0.0205); dir inferred from dep-graph -> utils; 15 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kkn = E(() => {
-  fn();
-  Sx();
-});
 var Rkn = {};
 _t(Rkn, {
   shouldShowLaunchComposer: () => shouldShowLaunchComposer,

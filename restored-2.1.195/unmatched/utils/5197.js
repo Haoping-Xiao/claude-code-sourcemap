@@ -4,36 +4,10 @@
 // class=new  jaccard=0.0135  score=0.2245  fileCov=0.0142
 // note: nearest: src/cli/print.ts (0.0135); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Wec = E(() => {
-  fp();
-  Rm();
-  LZl();
-  MZl();
-  OZl();
-  NZl();
-  cDe();
-  Jt();
-  $3o();
-  O7n();
-  VZl();
-  JZl();
-  nec();
-  aec();
-  je();
-  At();
-  S9();
-  jS();
-  zRt();
-  Sec();
-  qee();
-  GRr();
-  zRt();
-  Tec();
-  xec();
-  Pec = require("child_process"), Oir = require("crypto"), Nir = require("fs"), i2 = require("fs/promises"), Mec = require("module"), mHt = require("os"), v_ = require("path"), $ec = require("readline"), Oec = require("url"), Bir = R(qi(), 1);
-  process.env.NoDefaultCurrentDirectoryInExePath = "1";
-  rYf = new Set(["EBUSY", "EMFILE", "ENFILE", "ENOTEMPTY", "EPERM"]);
-});
+// [unwrapped __esm module Wec] deps: fp, Rm, LZl, MZl, OZl, NZl, cDe, Jt, $3o, O7n, VZl, JZl, nec, aec, je, At, S9, jS, zRt, Sec, qee, GRr, zRt, Tec, xec
+Pec = require("child_process"), Oir = require("crypto"), Nir = require("fs"), i2 = require("fs/promises"), Mec = require("module"), mHt = require("os"), v_ = require("path"), $ec = require("readline"), Oec = require("url"), Bir = R(qi(), 1);
+process.env.NoDefaultCurrentDirectoryInExePath = "1";
+rYf = new Set(["EBUSY", "EMFILE", "ENFILE", "ENOTEMPTY", "EPERM"]);
 function Kec() {
   return Vec.join(tr(), "daemon.scheduled.status.json");
 }

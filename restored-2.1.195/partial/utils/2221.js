@@ -4,13 +4,10 @@
 // class=partial  jaccard=0.0912  score=0.148  fileCov=0.1921
 // note: low-confidence suggestion: src/hooks/useSettings.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Iv = E(() => {
-  je();
-  fKr();
-  WOd = /[{}[\]*&#!|>%@`]|: /;
-  I_e = /^---\s*\n([\s\S]*?)---\s*\n?/;
-  _1i = ["bash", "powershell"];
-});
+// [unwrapped __esm module Iv] deps: je, fKr
+WOd = /[{}[\]*&#!|>%@`]|: /;
+I_e = /^---\s*\n([\s\S]*?)---\s*\n?/;
+_1i = ["bash", "powershell"];
 function Nkn() {
   return ut(process.env.CLAUDE_CODE_DISABLE_WORKFLOWS) || a0()?.settings.disableWorkflows === true;
 }

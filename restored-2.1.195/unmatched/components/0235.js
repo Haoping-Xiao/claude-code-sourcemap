@@ -4,11 +4,10 @@
 // class=new  jaccard=0.0105  score=0.3782  fileCov=0.0107
 // note: nearest: node_modules/marked/lib/marked.esm.js (0.0105); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tc = E(() => {
-  k7c = {
-    ambiguousIsNarrow: true
-  };
-});
+// [unwrapped __esm module Tc]
+k7c = {
+  ambiguousIsNarrow: true
+};
 function SB(e, t, n) {
   if (!(t > 0)) return e;
   let r = Bun.wrapAnsi(e, t, n);

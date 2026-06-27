@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Sms = E(() => {
-  _ms();
-});
 function Ilu(e, t) {
   return eJe(e, t);
 }

@@ -4,13 +4,6 @@
 // class=modified (alt of src/memdir/memoryTypes.ts)  jaccard=0.0203  score=0.1255  fileCov=0.0236
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CNi = E(() => {
-  je();
-  At();
-  dn();
-  i0n();
-  iit();
-});
 var uH = "MEMORY.md",
   D7 = 200,
   bce = 25000,

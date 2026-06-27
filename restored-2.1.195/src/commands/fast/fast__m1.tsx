@@ -4,15 +4,8 @@
 // class=modified (alt of src/commands/fast/fast.tsx)  jaccard=0.1037  score=0.3045  fileCov=0.136
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xsr = E(() => {
-  iu();
-  Xa();
-  Ye();
-  Fh();
-  nne();
-  f0e();
-  ((Nzl = R(lt(), 1)), (Fjo = R(se(), 1)));
-});
+// [unwrapped __esm module xsr] deps: iu, Xa, Ye, Fh, nne, f0e
+((Nzl = R(lt(), 1)), (Fjo = R(se(), 1)));
 function k1e(e, t) {
   t((n) => {
     let r = n;

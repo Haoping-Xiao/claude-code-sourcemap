@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2913  score=0.8583  fileCov=0.306
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vna = E(() => {
-  _0();
-});
 function xna(e) {
   if (e.code === "ENOENT" && p2t().mode === "system") {
     let t = Error(dnp, {

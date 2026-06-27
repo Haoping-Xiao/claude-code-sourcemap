@@ -4,13 +4,12 @@
 // class=new  jaccard=0.0469  score=1  fileCov=0.0469
 // note: nearest: node_modules/@smithy/util-hex-encoding/dist-cjs/index.js (0.0469); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lMt = E(() => {
-  Vai = {}, Gjr = {};
-  for (let e = 0; e < 256; e++) {
-    let t = e.toString(16).toLowerCase();
-    if (t.length === 1) t = `0${t}`;
-    Vai[e] = t, Gjr[t] = e;
-  }
-});
+// [unwrapped __esm module lMt]
+Vai = {}, Gjr = {};
+for (let e = 0; e < 256; e++) {
+  let t = e.toString(16).toLowerCase();
+  if (t.length === 1) t = `0${t}`;
+  Vai[e] = t, Gjr[t] = e;
+}
 var Kai = () => {};
 var Yai;

@@ -4,63 +4,27 @@
 // class=modified  jaccard=0.3896  score=0.7044  fileCov=0.4658
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Kv = E(() => {
-  Sae();
-  Qi();
-  ghe();
-  Xr();
-  ft();
-  w8();
-  VM();
-  S_e();
-  er();
-  gb();
-  Lo();
-  je();
-  At();
-  ys();
-  Rd();
-  QH();
-  nDe();
-  $g();
-  Xh();
-  vf();
-  hY();
-  L7();
-  dr();
-  lj();
-  Jt();
-  cdo();
-  dn();
-  kt();
-  Yle();
-  a5();
-  sst();
-  MPn();
-  bCe();
-  kst();
-  g$();
-  ((oJ = require("fs/promises")), (NSe = require("path")));
-  ETp = new Set(ldo);
-  vTp = new Set(["dynamic", "agent", "claudeai"]);
-  _do = ["enterprise", "local", "user", "project"];
-  TCa = {
-    stdio: YRt,
-    sse: qRr,
-    http: Kfn,
-    "streamable-http": Kfn,
-    ws: VRr,
-    sdk: zRr,
-    "claudeai-proxy": KRr,
-  };
-  Z1 = Cn(() => {
-    let { config: e } = Rdt({
-      filePath: p3t(),
-      expandVars: true,
-      scope: "enterprise",
-    });
-    return e !== null;
+// [unwrapped __esm module Kv] deps: Sae, Qi, ghe, Xr, ft, w8, VM, S_e, er, gb, Lo, je, At, ys, Rd, QH, nDe, $g, Xh, vf, hY, L7, dr, lj, Jt, cdo, dn, kt, Yle, a5, sst, MPn, bCe, kst, g$
+((oJ = require("fs/promises")), (NSe = require("path")));
+ETp = new Set(ldo);
+vTp = new Set(["dynamic", "agent", "claudeai"]);
+_do = ["enterprise", "local", "user", "project"];
+TCa = {
+  stdio: YRt,
+  sse: qRr,
+  http: Kfn,
+  "streamable-http": Kfn,
+  ws: VRr,
+  sdk: zRr,
+  "claudeai-proxy": KRr,
+};
+Z1 = Cn(() => {
+  let { config: e } = Rdt({
+    filePath: p3t(),
+    expandVars: true,
+    scope: "enterprise",
   });
+  return e !== null;
 });
 function gk(e) {
   return e.name?.startsWith("mcp__") || e.isMcp === true;

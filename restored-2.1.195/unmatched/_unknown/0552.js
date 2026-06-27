@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var i_s = E(() => {
-  s_s = vSu;
-});
+// [unwrapped __esm module i_s]
+s_s = vSu;
 function wSu(e, t) {
   let n = 0,
     r = 1000 / t,

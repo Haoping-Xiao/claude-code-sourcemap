@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0404  score=1  fileCov=0.0404
 // note: nearest: node_modules/jsonc-parser/lib/esm/main.js (0.0404); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var svs = E(() => {
-  _Rr();
-  ERr();
-});
 function ARr(e, t, n, r) {
   return ovs(e, t, n, r);
 }

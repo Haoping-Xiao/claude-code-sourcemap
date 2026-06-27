@@ -4,25 +4,16 @@
 // class=new  jaccard=0.0084  score=0.1297  fileCov=0.0089
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0084); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var i2o = E(() => {
-  zb();
-  Ye();
-  Un();
-  er();
-  vM();
-  mVe();
-  AN();
-  SEe();
-  yql = R(lt(), 1), _ql = R(rt(), 1), QXt = R(se(), 1), O4f = ve(() => dt.array(dt.object({
-    id: dt.string(),
-    title: dt.string().optional(),
-    text: dt.string(),
-    priority: dt.number().default(0),
-    maxImpressions: dt.number().default(3),
-    requiresModel: dt.string().optional()
-  })).default([])), hql = [];
-  xde(N4f);
-});
+// [unwrapped __esm module i2o] deps: zb, Ye, Un, er, vM, mVe, AN, SEe
+yql = R(lt(), 1), _ql = R(rt(), 1), QXt = R(se(), 1), O4f = ve(() => dt.array(dt.object({
+  id: dt.string(),
+  title: dt.string().optional(),
+  text: dt.string(),
+  priority: dt.number().default(0),
+  maxImpressions: dt.number().default(3),
+  requiresModel: dt.string().optional()
+})).default([])), hql = [];
+xde(N4f);
 function t3f(e) {
   if (!at("tengu_cobalt_harbor_notice", true)) return false;
   if (!e.replBridgeAutoOnByDefault) return false;

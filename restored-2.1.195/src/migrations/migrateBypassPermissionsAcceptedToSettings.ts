@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.3677  score=0.6753  fileCov=0.4466
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BOc = E(() => {
-  kt();
-  dn();
-  er();
-  je();
-  RE();
-  dr();
-});
 function UOc() {
   if (!Dt().bypassPermissionsModeAccepted) return;
   try {

@@ -4,26 +4,8 @@
 // class=new  jaccard=0.0398  score=0.2161  fileCov=0.0465
 // note: nearest: src/utils/generatedFiles.ts (0.0398); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _k = E(() => {
-  kt();
-  Pw();
-  je();
-  At();
-  ys();
-  vn();
-  Jt();
-  B1();
-  ZC();
-  ft();
-  Lo();
-  gM();
-  vf();
-  dr();
-  lE();
-  $g();
-  Xh();
-  lz = require("path");
-});
+// [unwrapped __esm module _k] deps: kt, Pw, je, At, ys, vn, Jt, B1, ZC, ft, Lo, gM, vf, dr, lE, $g, Xh
+lz = require("path");
 async function cer(e) {
   let t;
   try {

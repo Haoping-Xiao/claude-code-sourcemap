@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.5397  score=0.8198  fileCov=0.6124
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var f1l = E(() => {
-  rtr();
-  ((d1l = u1l("vim", "Editor mode")), (p1l = u1l("output-style", "Output style")));
-});
+// [unwrapped __esm module f1l] deps: rtr
+((d1l = u1l("vim", "Editor mode")), (p1l = u1l("output-style", "Output style")));
 function h1l(e) {
   let t = [];
   return (

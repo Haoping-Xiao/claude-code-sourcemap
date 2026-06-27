@@ -4,11 +4,10 @@
 // class=new  jaccard=0.0178  score=1  fileCov=0.0178
 // note: nearest: node_modules/@smithy/util-endpoints/dist-cjs/index.js (0.0178); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oai = E(() => {
-  (function (e) {
-    e.HTTP = "http", e.HTTPS = "https";
-  })(rai || (rai = {}));
-});
+// [unwrapped __esm module oai]
+(function (e) {
+  e.HTTP = "http", e.HTTPS = "https";
+})(rai || (rai = {}));
 var sai = () => {};
 var iai = () => {};
 var aai = () => {};

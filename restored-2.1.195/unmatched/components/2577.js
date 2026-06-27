@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nk = E(() => {
-  kt();
-  Yj();
-  xPn = R(rt(), 1);
-});
+// [unwrapped __esm module nk] deps: kt, Yj
+xPn = R(rt(), 1);
 function Jj() {
   if (Oe.CLAUDE_CODE_KB_COHESION_FIXES) return true;
   return false;

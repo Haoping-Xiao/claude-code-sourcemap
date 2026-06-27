@@ -4,9 +4,6 @@
 // class=modified (alt of src/constants/oauth.ts)  jaccard=0.0193  score=0.053  fileCov=0.0296
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HSr = E(() => {
-  p0();
-});
 function qsn(e) {
   if (!e) return;
   let t;

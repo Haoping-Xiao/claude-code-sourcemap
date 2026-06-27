@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0119  score=0.1482  fileCov=0.0128
 // note: nearest: node_modules/node-forge/lib/util.js (0.0119); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dbe = E(() => {
-  U_ = hZd();
-});
+// [unwrapped __esm module Dbe]
+U_ = hZd();
 function qlt(e, t, n) {
   if (t === n) return true;
   if (e == pr.BYTES) {

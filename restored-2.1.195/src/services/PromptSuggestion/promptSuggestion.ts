@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.5673  score=0.8278  fileCov=0.6432
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sA = E(() => {
-  Un();
-  fn();
-});
 function _jn() {
   return "user_intent";
 }

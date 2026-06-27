@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3569  score=0.4735  fileCov=0.5918
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Csr = E(() => {
-  cDe();
-  Cqf = /[\x00-\x1f\x7f-\x9f\u061c\u2028\u2029\u202a-\u202e\u2066-\u2069\p{Co}\p{Cn}]/gu;
-});
+// [unwrapped __esm module Csr] deps: cDe
+Cqf = /[\x00-\x1f\x7f-\x9f\u061c\u2028\u2029\u202a-\u202e\u2066-\u2069\p{Co}\p{Cn}]/gu;
 function Tzl(e) {
   let t = Azl.c(23),
     {

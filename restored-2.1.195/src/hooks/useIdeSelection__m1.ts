@@ -4,33 +4,29 @@
 // class=modified (alt of src/hooks/useIdeSelection.ts)  jaccard=0.2299  score=0.3925  fileCov=0.3569
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AAc = E(() => {
-  vn();
-  Xr();
-  aE();
-  ((otn = R(rt(), 1)),
-    (_ym = ve(() =>
-      H.object({
-        method: H.literal("selection_changed"),
-        params: H.object({
-          selection: H.object({
-            start: H.object({
-              line: H.number(),
-              character: H.number(),
-            }),
-            end: H.object({
-              line: H.number(),
-              character: H.number(),
-            }),
-          })
-            .nullable()
-            .optional(),
-          text: H.string().optional(),
-          filePath: H.string().optional(),
-        }),
+// [unwrapped __esm module AAc] deps: vn, Xr, aE
+((otn = R(rt(), 1)),
+  (_ym = ve(() =>
+    H.object({
+      method: H.literal("selection_changed"),
+      params: H.object({
+        selection: H.object({
+          start: H.object({
+            line: H.number(),
+            character: H.number(),
+          }),
+          end: H.object({
+            line: H.number(),
+            character: H.number(),
+          }),
+        })
+          .nullable()
+          .optional(),
+        text: H.string().optional(),
+        filePath: H.string().optional(),
       }),
-    )));
-});
+    }),
+  )));
 function HAc(e, t) {
   switch (e.kind) {
     case "background_hint":

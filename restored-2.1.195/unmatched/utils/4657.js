@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0525  score=0.6406  fileCov=0.0541
 // note: nearest: src/utils/ansiToSvg.ts (0.0525); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vOl = E(() => {
-  iu();
-  Q1o();
-  FOe = wt.hex("#da7756");
-});
+// [unwrapped __esm module vOl] deps: iu, Q1o
+FOe = wt.hex("#da7756");
 function IOl(e) {
   let t = [],
     n = e.split(`

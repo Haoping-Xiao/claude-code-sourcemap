@@ -4,9 +4,8 @@
 // class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.0369  score=0.3245  fileCov=0.04
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZUt = E(() => {
-  gKi = Symbol("skip");
-});
+// [unwrapped __esm module ZUt]
+gKi = Symbol("skip");
 function K0e(e, t, n) {
   if (typeof n !== "function") return;
   Object.defineProperty(e, t, {

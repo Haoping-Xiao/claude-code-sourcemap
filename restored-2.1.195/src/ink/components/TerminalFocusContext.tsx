@@ -4,18 +4,16 @@
 // class=modified  jaccard=0.4554  score=0.7561  fileCov=0.5338
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QXr = E(() => {
-  Y3e();
-  ((SGi = R(lt(), 1)),
-    (BBt = R(rt(), 1)),
-    (AGi = R(se(), 1)),
-    (XXr = BBt.createContext({
-      isTerminalFocused: true,
-      terminalFocusState: "unknown",
-    })));
-  XXr.displayName = "TerminalFocusContext";
-  JXr = XXr;
-});
+// [unwrapped __esm module QXr] deps: Y3e
+((SGi = R(lt(), 1)),
+  (BBt = R(rt(), 1)),
+  (AGi = R(se(), 1)),
+  (XXr = BBt.createContext({
+    isTerminalFocused: true,
+    terminalFocusState: "unknown",
+  })));
+XXr.displayName = "TerminalFocusContext";
+JXr = XXr;
 function Pg() {
   let { isTerminalFocused: e } = ZXr.useContext(JXr);
   return e;

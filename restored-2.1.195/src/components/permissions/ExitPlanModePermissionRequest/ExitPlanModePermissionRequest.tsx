@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.3423  score=0.6082  fileCov=0.4392
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var WTe = E(() => {
-  iu();
-  Ye();
-  uo();
-  QH();
-  m0e();
-  ((wEc = R(lt(), 1)), (v7e = R(se(), 1)));
-});
+// [unwrapped __esm module WTe] deps: iu, Ye, uo, QH, m0e
+((wEc = R(lt(), 1)), (v7e = R(se(), 1)));
 function Mzo(e, t) {
   let n = [
     {

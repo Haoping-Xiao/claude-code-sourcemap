@@ -4,15 +4,8 @@
 // class=new  jaccard=0.009  score=0.3304  fileCov=0.0091
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.009); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vhc = E(() => {
-  Ye();
-  ZU();
-  X8o();
-  uo();
-  wr();
-  uzn();
-  Hhc = R(lt(), 1), hdm = R(rt(), 1), r6o = R(se(), 1);
-});
+// [unwrapped __esm module vhc] deps: Ye, ZU, X8o, uo, wr, uzn
+Hhc = R(lt(), 1), hdm = R(rt(), 1), r6o = R(se(), 1);
 function Chc({
   withSeparator: e
 }) {

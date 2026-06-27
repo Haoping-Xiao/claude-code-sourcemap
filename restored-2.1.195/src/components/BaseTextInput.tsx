@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3171  score=0.434  fileCov=0.5407
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var C6i = E(() => {
-  RUt();
-  Ye();
-  A6i();
-  LUt();
-  ((v6i = R(lt(), 1)), (M0e = R(se(), 1)));
-});
+// [unwrapped __esm module C6i] deps: RUt, Ye, A6i, LUt
+((v6i = R(lt(), 1)), (M0e = R(se(), 1)));
 function uPn({
   inputState: e,
   children: t,

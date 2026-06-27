@@ -4,29 +4,6 @@
 // class=modified (alt of src/tools/BashTool/BashTool.tsx)  jaccard=0.1281  score=0.4296  fileCov=0.1544
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fCl = E(() => {
-  X6();
-  Un();
-  IKt();
-  f6();
-  wr();
-  Oso();
-  k0();
-  Yf();
-  AKt();
-  lg();
-  _m();
-  Jt();
-  bk();
-  K$e();
-  fh();
-  u_();
-  lf();
-  nC();
-  EI();
-  lC();
-  wX();
-});
 function _Hf(e) {
   let t = By(e);
   if (t.length === 0)

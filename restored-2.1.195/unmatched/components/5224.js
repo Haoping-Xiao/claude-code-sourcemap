@@ -4,21 +4,8 @@
 // class=new  jaccard=0.0147  score=0.2814  fileCov=0.0153
 // note: nearest: src/utils/processUserInput/processSlashCommand.tsx (0.0147); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _nc = E(() => {
-  ft();
-  Bs();
-  vi();
-  B_();
-  Ko();
-  gm();
-  Xa();
-  Ye();
-  uo();
-  es();
-  sr();
-  Lze();
-  $Go = R(lt(), 1), hnc = R(rt(), 1), LC = R(se(), 1);
-});
+// [unwrapped __esm module _nc] deps: ft, Bs, vi, B_, Ko, gm, Xa, Ye, uo, es, sr, Lze
+$Go = R(lt(), 1), hnc = R(rt(), 1), LC = R(se(), 1);
 var bnc = {};
 _t(bnc, {
   call: () => call

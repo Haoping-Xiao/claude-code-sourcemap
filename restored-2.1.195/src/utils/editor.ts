@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2783  score=0.7829  fileCov=0.3016
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bBl = E(() => {
-  Ye();
-  Lo();
-  ((EOf = R(lt(), 1)), (gBl = require("os")), (hBl = require("path")), (_Bl = R(se(), 1)));
-});
+// [unwrapped __esm module bBl] deps: Ye, Lo
+((EOf = R(lt(), 1)), (gBl = require("os")), (hBl = require("path")), (_Bl = R(se(), 1)));
 function AOf(e) {
   return !!zV(e);
 }

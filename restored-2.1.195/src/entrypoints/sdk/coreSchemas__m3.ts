@@ -4,14 +4,8 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0162  score=0.704  fileCov=0.0163
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kic = E(() => {
-  ft();
-  sp();
-  co();
-  y_();
-  Iic();
-  xic = require("crypto");
-});
+// [unwrapped __esm module kic] deps: ft, sp, co, y_, Iic
+xic = require("crypto");
 async function* oYt(e, t, n, r, o = lp, s) {
   let i = {
     ...Td(n),

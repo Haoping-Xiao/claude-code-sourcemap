@@ -4,19 +4,14 @@
 // class=modified  jaccard=0.6218  score=0.7649  fileCov=0.7687
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eqe = E(() => {
-  je();
-  At();
-  ys();
-  Hu();
-  ((yUn = require("path")),
-    (oCa = {
-      MAX_FILE_SIZE: 536870912,
-      MAX_TOTAL_SIZE: 1073741824,
-      MAX_FILE_COUNT: 1e5,
-      MAX_COMPRESSION_RATIO: 50,
-    }));
-});
+// [unwrapped __esm module eqe] deps: je, At, ys, Hu
+((yUn = require("path")),
+  (oCa = {
+    MAX_FILE_SIZE: 536870912,
+    MAX_TOTAL_SIZE: 1073741824,
+    MAX_FILE_COUNT: 1e5,
+    MAX_COMPRESSION_RATIO: 50,
+  }));
 function iCa(e) {
   let t = e?.platform ?? Vt(),
     n = e?.homedir ?? sCa.homedir(),

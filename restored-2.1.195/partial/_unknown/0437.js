@@ -4,19 +4,18 @@
 // class=partial  jaccard=0.0837  score=0.759  fileCov=0.086
 // note: low-confidence suggestion: node_modules/dom-mutator/dist/dom-mutator.cjs.production.min.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ffs = E(() => {
-  vau = /^[a-zA-Z:_][a-zA-Z0-9:_.-]*$/, SIr = {
-    revert: function () {}
-  }, Kun = new Map(), EIr = new Set();
-  Vau();
-  Kau = {
-    html: bIr,
-    classes: d0t,
-    attribute: zun,
-    position: Bfs,
-    declarative: zau
-  }, Ufs = Kau;
-});
+// [unwrapped __esm module Ffs]
+vau = /^[a-zA-Z:_][a-zA-Z0-9:_.-]*$/, SIr = {
+  revert: function () {}
+}, Kun = new Map(), EIr = new Set();
+Vau();
+Kau = {
+  html: bIr,
+  classes: d0t,
+  attribute: zun,
+  position: Bfs,
+  declarative: zau
+}, Ufs = Kau;
 function Wfs() {
   return Gfs;
 }

@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.407  score=0.5591  fileCov=0.5994
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gfc = E(() => {
-  ft();
-  kt();
-  fb();
-  co();
-  aS();
-  tMo();
-});
 function Wfc({ isNonInteractive: e, isMeta: t, callerSource: n }) {
   if (e) return "sdk";
   if (t) return "system";

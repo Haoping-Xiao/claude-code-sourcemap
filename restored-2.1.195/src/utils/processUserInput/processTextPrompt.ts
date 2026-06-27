@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2735  score=0.5529  fileCov=0.3512
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Tt = E(() => {
-  ft();
-  je();
-  fn();
-  ys();
-  ((fur = require("fs/promises")), (XZt = require("path")));
-});
+// [unwrapped __esm module _Tt] deps: ft, je, fn, ys
+((fur = require("fs/promises")), (XZt = require("path")));
 function jfc(e, t, n, r, o, s, i, a, l, c, u) {
   let d = typeof e === "string" ? e : e.find((_) => _.type === "text")?.text || "",
     p = typeof e === "string" ? e : e.findLast((_) => _.type === "text")?.text || "";

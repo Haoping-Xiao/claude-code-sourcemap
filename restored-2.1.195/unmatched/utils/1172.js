@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0191  score=1  fileCov=0.0191
 // note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0191); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G9s = E(() => {
-  jR();
-  Tbn();
-  j9s = R(yd(), 1), Rnd = j9s.createPaginator(ng, ont, "nextToken", "nextToken", "maxResults");
-});
+// [unwrapped __esm module G9s] deps: jR, Tbn
+j9s = R(yd(), 1), Rnd = j9s.createPaginator(ng, ont, "nextToken", "nextToken", "maxResults");
 var W9s, Lnd;

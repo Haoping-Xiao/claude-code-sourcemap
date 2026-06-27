@@ -4,15 +4,11 @@
 // class=modified  jaccard=0.4691  score=0.6929  fileCov=0.5922
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Kzo = E(() => {
-  yfe();
-  tne();
-  hNe();
-  ((CAc = R(rt(), 1)),
-    (Vzo = uL({
-      focus: null,
-    })));
-});
+// [unwrapped __esm module Kzo] deps: yfe, tne, hNe
+((CAc = R(rt(), 1)),
+  (Vzo = uL({
+    focus: null,
+  })));
 function LAc(e) {
   let t = ypr.c(3),
     { request: n, onDone: r } = e,

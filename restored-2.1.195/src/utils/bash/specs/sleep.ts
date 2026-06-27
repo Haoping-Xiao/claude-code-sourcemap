@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.7435  score=1  fileCov=0.7435
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LPa = E(() => {
-  ((k0p = {
-    name: "sleep",
-    description: "Delay for a specified amount of time",
-    args: {
-      name: "duration",
-      description: "Duration to sleep (seconds or with suffix like 5s, 2m, 1h)",
-      isOptional: false,
-    },
-  }),
-    (RPa = k0p));
-});
+// [unwrapped __esm module LPa]
+((k0p = {
+  name: "sleep",
+  description: "Delay for a specified amount of time",
+  args: {
+    name: "duration",
+    description: "Duration to sleep (seconds or with suffix like 5s, 2m, 1h)",
+    isOptional: false,
+  },
+}),
+  (RPa = k0p));
 var R0p, DPa;

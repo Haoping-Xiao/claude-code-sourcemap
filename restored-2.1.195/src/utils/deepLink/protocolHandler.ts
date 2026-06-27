@@ -4,60 +4,55 @@
 // class=modified  jaccard=0.284  score=0.376  fileCov=0.5372
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I1c = E(() => {
-  er();
-  je();
-  Bi();
-  _0();
-  ((H1c = require("child_process")),
-    (T1c = require("path")),
-    (Smr = [
-      {
-        name: "iTerm2",
-        bundleId: "com.googlecode.iterm2",
-        app: "iTerm",
-      },
-      {
-        name: "Ghostty",
-        bundleId: "com.mitchellh.ghostty",
-        app: "Ghostty",
-      },
-      {
-        name: "Kitty",
-        bundleId: "net.kovidgoyal.kitty",
-        app: "kitty",
-      },
-      {
-        name: "Alacritty",
-        bundleId: "org.alacritty",
-        app: "Alacritty",
-      },
-      {
-        name: "WezTerm",
-        bundleId: "com.github.wez.wezterm",
-        app: "WezTerm",
-      },
-      {
-        name: "Terminal.app",
-        bundleId: "com.apple.Terminal",
-        app: "Terminal",
-        termProgramAliases: ["apple_terminal"],
-      },
-    ]),
-    (jxm = [
-      "ghostty",
-      "kitty",
-      "alacritty",
-      "wezterm",
-      "gnome-terminal",
-      "konsole",
-      "xfce4-terminal",
-      "mate-terminal",
-      "tilix",
-      "xterm",
-    ]));
-  Yxm = /^[A-Za-z0-9 /._=-]+$/;
-});
+// [unwrapped __esm module I1c] deps: er, je, Bi, _0
+((H1c = require("child_process")),
+  (T1c = require("path")),
+  (Smr = [
+    {
+      name: "iTerm2",
+      bundleId: "com.googlecode.iterm2",
+      app: "iTerm",
+    },
+    {
+      name: "Ghostty",
+      bundleId: "com.mitchellh.ghostty",
+      app: "Ghostty",
+    },
+    {
+      name: "Kitty",
+      bundleId: "net.kovidgoyal.kitty",
+      app: "kitty",
+    },
+    {
+      name: "Alacritty",
+      bundleId: "org.alacritty",
+      app: "Alacritty",
+    },
+    {
+      name: "WezTerm",
+      bundleId: "com.github.wez.wezterm",
+      app: "WezTerm",
+    },
+    {
+      name: "Terminal.app",
+      bundleId: "com.apple.Terminal",
+      app: "Terminal",
+      termProgramAliases: ["apple_terminal"],
+    },
+  ]),
+  (jxm = [
+    "ghostty",
+    "kitty",
+    "alacritty",
+    "wezterm",
+    "gnome-terminal",
+    "konsole",
+    "xfce4-terminal",
+    "mate-terminal",
+    "tilix",
+    "xterm",
+  ]));
+Yxm = /^[A-Za-z0-9 /._=-]+$/;
 var x1c = {};
 _t(x1c, {
   waitForUrlEvent: () => waitForUrlEvent,

@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0174  score=1  fileCov=0.0174
 // note: nearest: node_modules/react/cjs/react.production.js (0.0174); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _at = E(() => {
-  qNt();
-  HI();
-  AGe = R(rt(), 1);
-});
+// [unwrapped __esm module _at] deps: qNt, HI
+AGe = R(rt(), 1);
 function ULn(e, t) {
   let n = Sat.useContext(g8),
     r = Sat.useRef(null);

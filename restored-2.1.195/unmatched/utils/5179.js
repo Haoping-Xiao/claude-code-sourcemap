@@ -4,20 +4,9 @@
 // class=new  jaccard=0.039  score=0.4357  fileCov=0.0411
 // note: nearest: src/utils/task/diskOutput.ts (0.039); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VJt = E(() => {
-  Hp();
-  ft();
-  fho();
-  Epn();
-  fd();
-  je();
-  ys();
-  vn();
-  Jt();
-  aS();
-  qJt = require("path"), AZl = rEs(new Date());
-  WJt = new Map();
-});
+// [unwrapped __esm module VJt] deps: Hp, ft, fho, Epn, fd, je, ys, vn, Jt, aS
+qJt = require("path"), AZl = rEs(new Date());
+WJt = new Map();
 function TZl() {
   if (pHt) return pHt;
   if (!ut(process.env.DEBUG_CLAUDE_AGENT_SDK)) return TYe = null, pHt = Promise.resolve(), pHt;

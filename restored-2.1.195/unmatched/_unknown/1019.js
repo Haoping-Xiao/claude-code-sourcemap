@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0531  score=1  fileCov=0.0531
 // note: nearest: node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js (0.0531); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Jjs = E(() => {
-  g2s();
-  Ejs();
-  Pjs();
-  Ojs();
-  Bjs();
-  Yjs();
-  Xjs = R(by(), 1);
-});
+// [unwrapped __esm module Jjs] deps: g2s, Ejs, Pjs, Ojs, Bjs, Yjs
+Xjs = R(by(), 1);
 var kyn,
   IOr = (e = {}) => async ({
     callerClientConfig: t

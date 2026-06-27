@@ -4,12 +4,11 @@
 // class=new  jaccard=0.0181  score=0.3057  fileCov=0.0189
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0181); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jXo = E(() => {
-  fDm = [{
-    hash: "SHA-256",
-    name: "HMAC"
-  }, true, ["sign"]], Ovt = fDm;
-});
+// [unwrapped __esm module jXo]
+fDm = [{
+  hash: "SHA-256",
+  name: "HMAC"
+}, true, ["sign"]], Ovt = fDm;
 function u2c(e, t) {
   if (e.algorithm.length !== parseInt(t.slice(1, 4), 10)) throw TypeError(`Invalid key size for alg: ${t}`);
 }

@@ -4,70 +4,69 @@
 // class=partial  jaccard=0.0697  score=0.2289  fileCov=0.091
 // note: low-confidence suggestion: src/keybindings/schema.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ezi = E(() => {
-  Wzd = {
-    "confirm:yes": {
-      description: "confirm"
-    },
-    "confirm:no": {
-      description: "cancel"
-    },
-    "confirm:previous": {
-      description: "navigate"
-    },
-    "confirm:next": {
-      description: "navigate"
-    },
-    "confirm:nextField": {
-      description: "next field"
-    },
-    "confirm:previousField": {
-      description: "previous field"
-    },
-    "confirm:toggle": {
-      description: "toggle"
-    },
-    "confirm:cycleMode": {
-      description: "cycle mode"
-    },
-    "confirm:toggleExplanation": {
-      description: "explanation"
-    },
-    "select:next": {
-      description: "navigate"
-    },
-    "select:previous": {
-      description: "navigate"
-    },
-    "select:pageUp": {
-      description: "page up"
-    },
-    "select:pageDown": {
-      description: "page down"
-    },
-    "select:first": {
-      description: "first"
-    },
-    "select:last": {
-      description: "last"
-    },
-    "select:accept": {
-      description: "select"
-    },
-    "select:cancel": {
-      description: "cancel"
-    },
-    "tabs:next": {
-      description: "switch tab"
-    },
-    "tabs:previous": {
-      description: "switch tab"
-    },
-    "app:toggleReplTab": {
-      description: "switch tab"
-    }
-  };
-});
+// [unwrapped __esm module Ezi]
+Wzd = {
+  "confirm:yes": {
+    description: "confirm"
+  },
+  "confirm:no": {
+    description: "cancel"
+  },
+  "confirm:previous": {
+    description: "navigate"
+  },
+  "confirm:next": {
+    description: "navigate"
+  },
+  "confirm:nextField": {
+    description: "next field"
+  },
+  "confirm:previousField": {
+    description: "previous field"
+  },
+  "confirm:toggle": {
+    description: "toggle"
+  },
+  "confirm:cycleMode": {
+    description: "cycle mode"
+  },
+  "confirm:toggleExplanation": {
+    description: "explanation"
+  },
+  "select:next": {
+    description: "navigate"
+  },
+  "select:previous": {
+    description: "navigate"
+  },
+  "select:pageUp": {
+    description: "page up"
+  },
+  "select:pageDown": {
+    description: "page down"
+  },
+  "select:first": {
+    description: "first"
+  },
+  "select:last": {
+    description: "last"
+  },
+  "select:accept": {
+    description: "select"
+  },
+  "select:cancel": {
+    description: "cancel"
+  },
+  "tabs:next": {
+    description: "switch tab"
+  },
+  "tabs:previous": {
+    description: "switch tab"
+  },
+  "app:toggleReplTab": {
+    description: "switch tab"
+  }
+};
 function Hzi(e) {
   let t = Azi.c(18),
     {

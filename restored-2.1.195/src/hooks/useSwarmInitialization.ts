@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.2859  score=0.9048  fileCov=0.2947
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fEc = E(() => {
-  je();
-  pQ();
-  $I();
-  Jt();
-  Mp();
-  YI();
-  hP();
-});
 function gEc(e, t, { enabled: n = true } = {}) {
   mEc.useEffect(() => {
     if (!n) return;

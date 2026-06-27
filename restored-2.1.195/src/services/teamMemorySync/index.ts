@@ -4,56 +4,54 @@
 // class=modified  jaccard=0.2623  score=0.3664  fileCov=0.4802
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hwl = E(() => {
-  Xr();
-  ((fAf = ve(() =>
+// [unwrapped __esm module hwl] deps: Xr
+((fAf = ve(() =>
+  H.object({
+    entries: H.record(H.string(), H.string()),
+    entryChecksums: H.record(H.string(), H.string()).optional(),
+    deletedEntries: H.record(H.string(), H.number()).optional(),
+  }),
+)),
+  (pwl = ve(() =>
     H.object({
-      entries: H.record(H.string(), H.string()),
+      organizationId: H.string().optional(),
+      repo: H.string(),
+      version: H.number().optional(),
+      lastModified: H.string(),
+      checksum: H.string(),
+      content: fAf(),
+    }),
+  )),
+  (fwl = ve(() =>
+    H.object({
+      checksum: H.string().optional(),
+      version: H.number().optional(),
       entryChecksums: H.record(H.string(), H.string()).optional(),
       deletedEntries: H.record(H.string(), H.number()).optional(),
     }),
   )),
-    (pwl = ve(() =>
-      H.object({
-        organizationId: H.string().optional(),
-        repo: H.string(),
-        version: H.number().optional(),
-        lastModified: H.string(),
-        checksum: H.string(),
-        content: fAf(),
-      }),
-    )),
-    (fwl = ve(() =>
-      H.object({
-        checksum: H.string().optional(),
-        version: H.number().optional(),
-        entryChecksums: H.record(H.string(), H.string()).optional(),
-        deletedEntries: H.record(H.string(), H.number()).optional(),
-      }),
-    )),
-    (mwl = ve(() =>
-      H.object({
-        error: H.object({
-          details: H.object({
-            error_code: H.literal("team_memory_too_many_entries"),
-            max_entries: H.number().int().positive(),
-            received_entries: H.number().int().positive(),
-          }),
+  (mwl = ve(() =>
+    H.object({
+      error: H.object({
+        details: H.object({
+          error_code: H.literal("team_memory_too_many_entries"),
+          max_entries: H.number().int().positive(),
+          received_entries: H.number().int().positive(),
         }),
       }),
-    )),
-    (gwl = ve(() =>
-      H.object({
-        error: H.object({
-          type: H.string().optional(),
-          message: H.string().optional(),
-          details: H.object({
-            error_code: H.string().optional(),
-          }).optional(),
+    }),
+  )),
+  (gwl = ve(() =>
+    H.object({
+      error: H.object({
+        type: H.string().optional(),
+        message: H.string().optional(),
+        details: H.object({
+          error_code: H.string().optional(),
         }).optional(),
-      }),
-    )));
-});
+      }).optional(),
+    }),
+  )));
 function NDo(e, t, n) {
   let r = n ? `&view=${n}` : "";
   if (e === "team") return `/api/claude_code/team_memory?repo=${encodeURIComponent(t)}${r}`;

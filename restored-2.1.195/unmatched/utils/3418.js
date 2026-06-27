@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0145  score=0.2383  fileCov=0.0152
 // note: nearest: src/utils/doctorDiagnostic.ts (0.0145); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cho = E(() => {
-  Rc();
-  oo();
-  Ls();
-  qd();
-  Un();
-  jc();
-  r4n = R(Uj(), 1);
-});
+// [unwrapped __esm module cho] deps: Rc, oo, Ls, qd, Un, jc
+r4n = R(Uj(), 1);
 function SPp() {
   try {
     return VOa.homedir();

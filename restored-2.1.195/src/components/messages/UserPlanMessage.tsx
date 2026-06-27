@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2514  score=0.3906  fileCov=0.4137
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Nil = E(() => {
-  cEe();
-  Ye();
-  co();
-  ql();
-  (($il = R(lt(), 1)), (jMe = R(se(), 1)));
-});
+// [unwrapped __esm module Nil] deps: cEe, Ye, co, ql
+(($il = R(lt(), 1)), (jMe = R(se(), 1)));
 function Kzn(e) {
   let t = Bil.c(5),
     { addMargin: n, planContent: r } = e,

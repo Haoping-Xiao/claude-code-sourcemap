@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0214  score=0.6408  fileCov=0.0217
 // note: nearest: src/components/CustomSelect/select.tsx (0.0214); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var I5i = E(() => {
-  y0e();
-});
 function HW(e) {
   let t = x5i.c(4),
     {

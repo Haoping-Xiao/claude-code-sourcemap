@@ -4,30 +4,28 @@
 // class=new  jaccard=0.0161  score=0.1307  fileCov=0.018
 // note: nearest: node_modules/zod/v4/classic/schemas.js (0.0161); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sMl = E(() => {
-  Xr();
-  oMl = ve(() => {
-    let e = H.object({
-        enable_email: H.boolean().nullish(),
-        enable_push: H.boolean().nullish()
-      }),
-      t = H.object({
-        bogosort: e.nullish(),
-        code_requires_action: e.nullish()
-      }),
-      n = H.object({
-        has_active_channel: H.boolean(),
-        platforms: H.array(H.string()).nullish().transform(r => r ?? []),
-        most_recent_token_refresh: H.string().nullish()
-      });
-    return H.object({
-      account_id: H.number().nullish(),
-      organization_id: H.number().nullish(),
-      preferences: H.object({
-        feature_preference: t.nullish()
-      }).nullish(),
-      push_reachability: n.nullish()
+// [unwrapped __esm module sMl] deps: Xr
+oMl = ve(() => {
+  let e = H.object({
+      enable_email: H.boolean().nullish(),
+      enable_push: H.boolean().nullish()
+    }),
+    t = H.object({
+      bogosort: e.nullish(),
+      code_requires_action: e.nullish()
+    }),
+    n = H.object({
+      has_active_channel: H.boolean(),
+      platforms: H.array(H.string()).nullish().transform(r => r ?? []),
+      most_recent_token_refresh: H.string().nullish()
     });
+  return H.object({
+    account_id: H.number().nullish(),
+    organization_id: H.number().nullish(),
+    preferences: H.object({
+      feature_preference: t.nullish()
+    }).nullish(),
+    push_reachability: n.nullish()
   });
 });
 function dMl() {

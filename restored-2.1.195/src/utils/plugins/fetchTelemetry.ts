@@ -4,12 +4,11 @@
 // class=modified  jaccard=0.3026  score=0.8175  fileCov=0.3245
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oWe = E(() => {
-  Alt = {
-    source: "github",
-    repo: "anthropics/claude-plugins-official",
-  };
-});
+// [unwrapped __esm module oWe]
+Alt = {
+  source: "github",
+  repo: "anthropics/claude-plugins-official",
+};
 function KKd(e) {
   let t,
     n = /^[^@/]+@([^:/]+):/.exec(e);

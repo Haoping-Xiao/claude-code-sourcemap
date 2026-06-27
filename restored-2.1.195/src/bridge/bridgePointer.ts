@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.5677  score=0.9346  fileCov=0.5911
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qir = E(() => {
-  Hp();
-  Jt();
-});
 var F1e = {};
 _t(F1e, {
   writeBridgePointer: () => writeBridgePointer,

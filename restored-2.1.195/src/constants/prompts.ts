@@ -4,53 +4,30 @@
 // class=modified  jaccard=0.2107  score=0.3889  fileCov=0.3149
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aR = E(() => {
-  iu();
-  dn();
-  kt();
-  er();
-  Lo();
-  je();
-  At();
-  Bi();
-  YS();
-  dfn();
-  gM();
-  sa();
-  P3e();
-  sp();
-  Hu();
-  Is();
-  iWe();
-  OB();
-  dr();
-  xue();
-  sr();
-  qJ();
-  ((eu = require("fs/promises")), (Qic = R(D3e(), 1)), (Bd = require("path")));
-  ltm = /^[a-zA-Z0-9._-]+$/;
-  ow = class ow extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "WorktreeIsolationError";
-    }
-  };
-  z5o = class z5o extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "WorktreeGitTransientError";
-    }
-  };
-  dtm = [
-    /^agent-a[0-9a-f]{16}$/,
-    /^agent-a[0-9a-f]{7}$/,
-    /^wf_[0-9a-f]{8}-[0-9a-f]{3}-\d+$/,
-    /^wf-\d+$/,
-    /^bridge-[A-Za-z0-9_]+(-[A-Za-z0-9_]+)*$/,
-    /^job-[a-zA-Z0-9._-]{1,55}-[0-9a-f]{8}$/,
-    /^bg-[a-zA-Z0-9._-]{1,55}-[0-9a-f]{8}$/,
-  ];
-});
+// [unwrapped __esm module aR] deps: iu, dn, kt, er, Lo, je, At, Bi, YS, dfn, gM, sa, P3e, sp, Hu, Is, iWe, OB, dr, xue, sr, qJ
+((eu = require("fs/promises")), (Qic = R(D3e(), 1)), (Bd = require("path")));
+ltm = /^[a-zA-Z0-9._-]+$/;
+ow = class ow extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "WorktreeIsolationError";
+  }
+};
+z5o = class z5o extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "WorktreeGitTransientError";
+  }
+};
+dtm = [
+  /^agent-a[0-9a-f]{16}$/,
+  /^agent-a[0-9a-f]{7}$/,
+  /^wf_[0-9a-f]{8}-[0-9a-f]{3}-\d+$/,
+  /^wf-\d+$/,
+  /^bridge-[A-Za-z0-9_]+(-[A-Za-z0-9_]+)*$/,
+  /^job-[a-zA-Z0-9._-]{1,55}-[0-9a-f]{8}$/,
+  /^bg-[a-zA-Z0-9._-]{1,55}-[0-9a-f]{8}$/,
+];
 var tqo =
   "IMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.";
 function gtm(e) {

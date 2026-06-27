@@ -4,55 +4,29 @@
 // class=modified  jaccard=0.0269  score=0.322  fileCov=0.0286
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Cre = E(() => {
-  oke();
-  h8r();
-  H1t();
-  Hp();
-  Sae();
-  Rc();
-  db();
-  vy();
-  At();
-  vn();
-  Is();
-  Mh();
-  R9();
-  S9();
-  Jt();
-  dn();
-  kt();
-  gSe();
-  cco();
-  Yle();
-  I8r();
-  R8r();
-  g$();
-  BCa();
-  Z4e();
-  ((VUn = require("crypto")),
-    (WCa = require("http")),
-    (qCa = require("path")),
-    (VCa = require("url")),
-    (qTp = new Set([...que, ...out, "ETIMEDOUT"])));
-  KTp = ["state", "nonce", "code_challenge", "code_verifier", "code"];
-  YTp = new Set(["invalid_refresh_token", "expired_refresh_token", "token_expired"]);
-  N4 = class N4 extends Error {
-    constructor() {
-      super("Authentication was cancelled");
-      this.name = "AuthenticationCancelledError";
-    }
-  };
-  ((UUn = new Map()), (FUn = new Map()));
-  jUn = new Map();
-  ((QTp = [
-    "login.microsoftonline.com",
-    "login.microsoftonline.us",
-    "login.partner.microsoftonline.cn",
-    "login.chinacloudapi.cn",
-  ]),
-    (ZTp = [".b2clogin.com", ".ciamlogin.com"]));
-});
+// [unwrapped __esm module Cre] deps: oke, h8r, H1t, Hp, Sae, Rc, db, vy, At, vn, Is, Mh, R9, S9, Jt, dn, kt, gSe, cco, Yle, I8r, R8r, g$, BCa, Z4e
+((VUn = require("crypto")),
+  (WCa = require("http")),
+  (qCa = require("path")),
+  (VCa = require("url")),
+  (qTp = new Set([...que, ...out, "ETIMEDOUT"])));
+KTp = ["state", "nonce", "code_challenge", "code_verifier", "code"];
+YTp = new Set(["invalid_refresh_token", "expired_refresh_token", "token_expired"]);
+N4 = class N4 extends Error {
+  constructor() {
+    super("Authentication was cancelled");
+    this.name = "AuthenticationCancelledError";
+  }
+};
+((UUn = new Map()), (FUn = new Map()));
+jUn = new Map();
+((QTp = [
+  "login.microsoftonline.com",
+  "login.microsoftonline.us",
+  "login.partner.microsoftonline.cn",
+  "login.chinacloudapi.cn",
+]),
+  (ZTp = [".b2clogin.com", ".ciamlogin.com"]));
 function XCa(e) {
   return e.toLowerCase().replace(/\.$/, "");
 }

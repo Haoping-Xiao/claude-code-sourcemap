@@ -4,16 +4,6 @@
 // class=modified  jaccard=0.1985  score=0.2434  fileCov=0.5183
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var g6n = E(() => {
-  V9t();
-  og();
-  Rm();
-  $po();
-  At();
-  PB();
-  fre();
-  KI();
-});
 function z9t(e) {
   switch (e) {
     case xH:

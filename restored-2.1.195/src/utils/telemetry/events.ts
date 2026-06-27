@@ -4,42 +4,32 @@
 // class=modified  jaccard=0.2035  score=0.2522  fileCov=0.513
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qPn = E(() => {
-  Qi();
-  ft();
-  oo();
-  er();
-  Lx();
-  wr();
-  Q9();
-  fn();
-  peo();
-  $Kd = {
-    OTEL_METRICS_INCLUDE_SESSION_ID: true,
-    OTEL_METRICS_INCLUDE_VERSION: false,
-    OTEL_METRICS_INCLUDE_ACCOUNT_UUID: true,
-    OTEL_METRICS_INCLUDE_ENTRYPOINT: false,
-    OTEL_METRICS_INCLUDE_RESOURCE_ATTRIBUTES: true,
-  };
-  OKd = Cn((e) => {
-    if (!e) return {};
-    let t = {};
-    try {
-      for (let n of e.split(",")) {
-        let [r, o, ...s] = n.split("=");
-        if (r === void 0 || o === void 0 || s.length > 0) continue;
-        let i = r.trim(),
-          a = o.trim().split(/^"|"$/).join("");
-        if (i.length === 0 || i.length > DKi || !LKi(i))
-          throw Error("invalid resource attribute key");
-        if (a.length > DKi || !LKi(a)) throw Error("invalid resource attribute value");
-        t[i] = decodeURIComponent(a);
-      }
-    } catch {
-      return {};
+// [unwrapped __esm module qPn] deps: Qi, ft, oo, er, Lx, wr, Q9, fn, peo
+$Kd = {
+  OTEL_METRICS_INCLUDE_SESSION_ID: true,
+  OTEL_METRICS_INCLUDE_VERSION: false,
+  OTEL_METRICS_INCLUDE_ACCOUNT_UUID: true,
+  OTEL_METRICS_INCLUDE_ENTRYPOINT: false,
+  OTEL_METRICS_INCLUDE_RESOURCE_ATTRIBUTES: true,
+};
+OKd = Cn((e) => {
+  if (!e) return {};
+  let t = {};
+  try {
+    for (let n of e.split(",")) {
+      let [r, o, ...s] = n.split("=");
+      if (r === void 0 || o === void 0 || s.length > 0) continue;
+      let i = r.trim(),
+        a = o.trim().split(/^"|"$/).join("");
+      if (i.length === 0 || i.length > DKi || !LKi(i))
+        throw Error("invalid resource attribute key");
+      if (a.length > DKi || !LKi(a)) throw Error("invalid resource attribute value");
+      t[i] = decodeURIComponent(a);
     }
-    return t;
-  });
+  } catch {
+    return {};
+  }
+  return t;
 });
 function UKd() {
   return ut(process.env.OTEL_LOG_USER_PROMPTS);

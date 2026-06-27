@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1009  score=0.1971  fileCov=0.1714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lwo = E(() => {
-  AN();
-  ql();
-  Ye();
-  ((Gnl = R(lt(), 1)), (k8e = R(se(), 1)));
-});
+// [unwrapped __esm module lwo] deps: AN, ql, Ye
+((Gnl = R(lt(), 1)), (k8e = R(se(), 1)));
 function Wnl() {
   return null;
 }

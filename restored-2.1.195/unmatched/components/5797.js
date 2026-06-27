@@ -4,16 +4,8 @@
 // class=new  jaccard=0.0098  score=0.4275  fileCov=0.0099
 // note: nearest: src/services/mcp/config.ts (0.0098); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tOc = E(() => {
-  Ye();
-  oc();
-  Vtn();
-  mE();
-  vi();
-  f_();
-  EC();
-  Z$c = R(lt(), 1), hmr = R(rt(), 1), KP = R(se(), 1);
-});
+// [unwrapped __esm module tOc] deps: Ye, oc, Vtn, mE, vi, f_, EC
+Z$c = R(lt(), 1), hmr = R(rt(), 1), KP = R(se(), 1);
 function Avt(e, t, n) {
   if (!t) return e;
   if (Tl()) return e;

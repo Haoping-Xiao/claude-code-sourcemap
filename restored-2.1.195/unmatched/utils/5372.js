@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0075  score=0.2301  fileCov=0.0077
 // note: nearest: src/utils/sessionStorage.ts (0.0075); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bpc = E(() => {
-  je();
-});
 async function Wpc(e, t) {
   let n = await mlm(e, t);
   if (n.startsWith("<")) return n;

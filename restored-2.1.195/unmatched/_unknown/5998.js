@@ -4,11 +4,6 @@
 // class=new  jaccard=0.018  score=0.0773  fileCov=0.0229
 // note: nearest: node_modules/undici/lib/web/fetch/request.js (0.018); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SGc = E(() => {
-  _Gc();
-  AR();
-  sK();
-});
 class PQo {
   #e;
   #t;

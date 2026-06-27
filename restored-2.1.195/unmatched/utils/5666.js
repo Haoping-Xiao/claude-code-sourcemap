@@ -4,27 +4,17 @@
 // class=new  jaccard=0.0202  score=0.156  fileCov=0.0227
 // note: nearest: src/tools/AgentTool/loadAgentsDir.ts (0.0202); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var okc = E(() => {
-  ft();
-  ZE();
-  og();
-  je();
-  Bi();
-  vn();
-  co();
-  Ls();
-  qd();
-  Jt();
-  Fpr = [{
-    template: "find security vulnerabilities in {scope} and rank them by severity",
-    genericScope: "this codebase"
-  }, {
-    template: "write tests for {scope} where coverage looks thin",
-    genericScope: "the recent changes"
-  }, {
-    template: "find and explain TODO and FIXME comments around {scope}",
-    genericScope: "this repo"
-  }], MNe = Fpr.map(e => e.template.replace("{scope}", e.genericScope)), aTm = `You narrow the scope of three generic coding tasks using a repo's recently merged PRs.
+// [unwrapped __esm module okc] deps: ft, ZE, og, je, Bi, vn, co, Ls, qd, Jt
+Fpr = [{
+  template: "find security vulnerabilities in {scope} and rank them by severity",
+  genericScope: "this codebase"
+}, {
+  template: "write tests for {scope} where coverage looks thin",
+  genericScope: "the recent changes"
+}, {
+  template: "find and explain TODO and FIXME comments around {scope}",
+  genericScope: "this repo"
+}], MNe = Fpr.map(e => e.template.replace("{scope}", e.genericScope)), aTm = `You narrow the scope of three generic coding tasks using a repo's recently merged PRs.
 
 The three tasks (do NOT change their wording \u2014 you only fill in {scope}):
 ${Fpr.map((e, t) => `${t + 1}. ${e.template}`).join(`
@@ -40,7 +30,6 @@ Each {scope} phrase must:
 If no PR gives a recognizable anchor for a task, return "" for that slot and the generic will be used.
 
 Output JSON only \u2014 no prose, no code fence.`, vKo = new Map();
-});
 function ikc(e) {
   let t = e?.agent ?? Dr().agent;
   if (!e && !t) return;

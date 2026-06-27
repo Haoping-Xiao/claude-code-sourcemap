@@ -4,8 +4,8 @@
 // class=modified (alt of src/tools/BriefTool/prompt.ts)  jaccard=0.089  score=0.1214  fileCov=0.25
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var f4 = E(() => {
-  jop = `## Talking to the user
+// [unwrapped __esm module f4]
+jop = `## Talking to the user
 
 ${"SendUserMessage"} is where your replies go. Text outside it is visible if the user expands the detail view, but most won't \u2014 assume unread. Anything you want them to actually see goes through ${"SendUserMessage"}. The failure mode: the real answer lives in plain text while ${"SendUserMessage"} just says "done!" \u2014 they see "done!" and miss everything.
 
@@ -16,7 +16,6 @@ If you can answer right away, send the answer. If you need to go look \u2014 run
 For longer work: ack \u2192 work \u2192 result. Between those, send a checkpoint when something useful happened \u2014 a decision you made, a surprise you hit, a phase boundary. Skip the filler ("running tests...") \u2014 a checkpoint earns its place by carrying information.
 
 Keep messages tight \u2014 the decision, the file:line, the PR number. Second person always ("your config"), never third.`;
-});
 var WOn = {};
 _t(WOn, {
   SEND_USER_FILE_TOOL_PROMPT: () => SEND_USER_FILE_TOOL_PROMPT,

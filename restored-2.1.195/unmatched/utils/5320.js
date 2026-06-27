@@ -4,16 +4,11 @@
 // class=new  jaccard=0.0077  score=0.0883  fileCov=0.0084
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.0077); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ruc = E(() => {
-  zb();
-  dn();
-  Jt();
-  VM();
-  f2 = require("fs/promises"), Qcc = require("net"), xcr = require("os"), Zcc = require("path");
-  Gsm = ve(() => dt.object({
-    type: dt.string()
-  }).passthrough());
-});
+// [unwrapped __esm module ruc] deps: zb, dn, Jt, VM
+f2 = require("fs/promises"), Qcc = require("net"), xcr = require("os"), Zcc = require("path");
+Gsm = ve(() => dt.object({
+  type: dt.string()
+}).passthrough());
 function ouc({
   currentVersion: e,
   requiredMinimumVersion: t,

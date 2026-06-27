@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.3148  score=0.4236  fileCov=0.5508
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var FK = E(() => {
-  ((tae = require("fs")), (UEr = require("path")));
-});
+// [unwrapped __esm module FK]
+((tae = require("fs")), (UEr = require("path")));
 var bUe = {};
 _t(bUe, {
   writeToStdout: () => writeToStdout,

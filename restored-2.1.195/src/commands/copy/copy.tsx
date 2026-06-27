@@ -4,29 +4,27 @@
 // class=modified  jaccard=0.4284  score=0.6095  fileCov=0.5904
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cPl = E(() => {
-  IL();
-  ((b0f = {
-    type: "local-jsx",
+// [unwrapped __esm module cPl] deps: IL
+((b0f = {
+  type: "local-jsx",
+  name: "color",
+  description: "Set the prompt bar color for this session",
+  immediate: true,
+  argumentHint: `[${[...Ky, "default"].join("|")}]`,
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (xOo(), sPl)),
+}),
+  (lPl = {
+    type: "local",
     name: "color",
+    supportsNonInteractive: true,
     description: "Set the prompt bar color for this session",
-    immediate: true,
     argumentHint: `[${[...Ky, "default"].join("|")}]`,
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (xOo(), sPl)),
+    load: () => Promise.resolve().then(() => (aPl(), iPl)),
   }),
-    (lPl = {
-      type: "local",
-      name: "color",
-      supportsNonInteractive: true,
-      description: "Set the prompt bar color for this session",
-      argumentHint: `[${[...Ky, "default"].join("|")}]`,
-      load: () => Promise.resolve().then(() => (aPl(), iPl)),
-    }),
-    (kOo = b0f));
-});
+  (kOo = b0f));
 var EPl = {};
 _t(EPl, {
   tableTokenToMarkdown: () => tableTokenToMarkdown,

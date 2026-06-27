@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.2164  score=1  fileCov=0.2164
 // note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var g2s = E(() => {
-  JUs();
-  oOr = R(UR(), 1), sOr = R(by(), 1), p2s = R(ej(), 1);
-});
+// [unwrapped __esm module g2s] deps: JUs
+oOr = R(UR(), 1), sOr = R(by(), 1), p2s = R(ej(), 1);
 var h2s = () => {};
 var y2s = () => {};
 var _2s = () => {};

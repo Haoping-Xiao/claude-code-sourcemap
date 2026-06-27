@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.177  score=0.3012  fileCov=0.3005
 // note: deminified; 19 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vWt = E(() => {
-  aVe = t1a();
-});
+// [unwrapped __esm module vWt]
+aVe = t1a();
 function Gm() {
   return wWt;
 }

@@ -4,16 +4,8 @@
 // class=new  jaccard=0.0244  score=0.4583  fileCov=0.0251
 // note: nearest: src/ink/components/Box.tsx (0.0244); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jUl = E(() => {
-  Bs();
-  pz();
-  Ko();
-  Mg();
-  _i();
-  Ye();
-  ps();
-  BUl = R(lt(), 1), UUl = R(rt(), 1), NT = R(se(), 1);
-});
+// [unwrapped __esm module jUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
+BUl = R(lt(), 1), UUl = R(rt(), 1), NT = R(se(), 1);
 function WUl() {
   let e = GUl.c(1),
     t;

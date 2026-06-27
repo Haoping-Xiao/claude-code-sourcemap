@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.3456  score=0.5115  fileCov=0.5159
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var M$l = E(() => {
-  C1o();
-  A1o();
-  R1o();
-});
 function D1o(e) {
   let {
       value: t,

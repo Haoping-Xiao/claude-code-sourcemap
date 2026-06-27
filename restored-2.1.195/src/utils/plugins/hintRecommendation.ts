@@ -4,16 +4,13 @@
 // class=modified  jaccard=0.1247  score=0.3569  fileCov=0.1609
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $pt = E(() => {
-  je();
-  ih();
-  ((qkp = new Set([1])),
-    (Vkp = new Set(["plugin"])),
-    (aPa = /^[ \t]*<claude-code-hint\s+([^>]*?)\s*\/>[ \t]*$/gm),
-    (zkp = /(\w+)=(?:"([^"]*)"|([^\s/>]+))/g));
-  ((lPa = Mi()), (cPa = lPa.emit));
-  fPa = lPa.subscribe;
-});
+// [unwrapped __esm module $pt] deps: je, ih
+((qkp = new Set([1])),
+  (Vkp = new Set(["plugin"])),
+  (aPa = /^[ \t]*<claude-code-hint\s+([^>]*?)\s*\/>[ \t]*$/gm),
+  (zkp = /(\w+)=(?:"([^"]*)"|([^\s/>]+))/g));
+((lPa = Mi()), (cPa = lPa.emit));
+fPa = lPa.subscribe;
 function gPa(e) {
   if (e === 9 || e === 10) return false;
   return e < 32 || (e >= 127 && e <= 159);

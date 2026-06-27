@@ -4,17 +4,8 @@
 // class=partial  jaccard=0.1416  score=0.4183  fileCov=0.1763
 // note: low-confidence suggestion: src/components/FeedbackSurvey/useFeedbackSurvey.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oRc = E(() => {
-  aW();
-  Un();
-  kt();
-  jc();
-  wr();
-  co();
-  aS();
-  xtn();
-  nRc = R(lt(), 1), UNe = R(rt(), 1);
-});
+// [unwrapped __esm module oRc] deps: aW, Un, kt, jc, wr, co, aS, xtn
+nRc = R(lt(), 1), UNe = R(rt(), 1);
 function iwm(e) {
   return e === "instruction_following" ? "instruction_following" : "generic";
 }

@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3646  score=0.5699  fileCov=0.503
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YWe = E(() => {
-  Qi();
-  sSe = Cn(Koo);
-});
+// [unwrapped __esm module YWe] deps: Qi
+sSe = Cn(Koo);
 function Eoa(e) {
   let t = Soa();
   if (ph(e))

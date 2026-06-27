@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3824  score=0.8846  fileCov=0.4025
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kHc = E(() => {
-  fre();
-  Qzo();
-});
 function $_m(e) {
   let t = [];
   for (let n of e.statements)

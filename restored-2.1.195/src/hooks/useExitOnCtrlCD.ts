@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3116  score=0.6171  fileCov=0.3863
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rlt = E(() => {
-  Un();
-  RE();
-});
 function hzi(e, t, n, r = true) {
   let { handleInterrupt: o, handleExit: s, exitState: i } = DZr(t, n),
     a = F0e.useMemo(

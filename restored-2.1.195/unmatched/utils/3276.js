@@ -4,13 +4,9 @@
 // class=new  jaccard=0.0064  score=0.586  fileCov=0.0064
 // note: nearest: node_modules/@mixmark-io/domino/lib/HTMLParser.js (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wka = E(() => {
-  vn();
-  sr();
-  kt();
-  hpo = ["<invoke>", "<invoke ", "<invoke\t", `<invoke
+// [unwrapped __esm module wka] deps: vn, sr, kt
+hpo = ["<invoke>", "<invoke ", "<invoke\t", `<invoke
 `, "</invoke>"], Vwp = new Set(["address", "area", "article", "audio", "base", "body", "button", "cite", "code", "data", "details", "dialog", "figure", "footer", "form", "head", "header", "html", "image", "input", "label", "link", "main", "mark", "menu", "meta", "object", "option", "output", "path", "picture", "script", "section", "select", "slot", "source", "span", "style", "summary", "table", "template", "text", "time", "title", "video"]);
-});
 function Cka(e) {
   return Ywp.has(e);
 }

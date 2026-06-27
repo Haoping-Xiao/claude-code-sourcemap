@@ -4,31 +4,17 @@
 // class=modified  jaccard=0.3272  score=0.5235  fileCov=0.466
 // note: deminified; 36 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var i2e = E(() => {
-  Xr();
-  dn();
-  je();
-  Bi();
-  Rd();
-  vn();
-  Is();
-  ih();
-  Jt();
-  Sx();
-  Smn();
-  lj();
-  oLt();
-  ((iCs = require("path")),
-    (kLr = Mi()),
-    (D1u = ve(() =>
-      H.looseObject({
-        managedSettings: H.unknown().optional(),
-        claudeMd: H.string().optional(),
-        appendSystemPrompt: H.string().optional(),
-      }),
-    )),
-    (P1u = new Set(["plist", "hklm", "file"])));
-});
+// [unwrapped __esm module i2e] deps: Xr, dn, je, Bi, Rd, vn, Is, ih, Jt, Sx, Smn, lj, oLt
+((iCs = require("path")),
+  (kLr = Mi()),
+  (D1u = ve(() =>
+    H.looseObject({
+      managedSettings: H.unknown().optional(),
+      claudeMd: H.string().optional(),
+      appendSystemPrompt: H.string().optional(),
+    }),
+  )),
+  (P1u = new Set(["plist", "hklm", "file"])));
 var EY = {};
 _t(EY, {
   updateSettingsForSource: () => updateSettingsForSource,

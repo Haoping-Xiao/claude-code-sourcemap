@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0455  score=0.6478  fileCov=0.0466
 // note: nearest: src/utils/sessionStoragePortable.ts (0.0455); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var W0r = E(() => {
-  vn();
-  vTs = require("fs");
-});
+// [unwrapped __esm module W0r] deps: vn
+vTs = require("fs");
 async function kTs(e, t) {
   let n = Buffer.from(t, "utf-8"),
     r = n.length,

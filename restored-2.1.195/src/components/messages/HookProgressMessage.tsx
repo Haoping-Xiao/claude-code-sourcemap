@@ -4,26 +4,25 @@
 // class=modified  jaccard=0.3899  score=0.4899  fileCov=0.6565
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pzn = E(() => {
-  Qsl = R(rt(), 1);
-  s6e = class s6e extends Qsl.Component {
-    constructor(e) {
-      super(e);
-      this.state = {
-        hasError: false,
-      };
-    }
-    static getDerivedStateFromError() {
-      return {
-        hasError: true,
-      };
-    }
-    render() {
-      if (this.state.hasError) return null;
-      return this.props.children;
-    }
-  };
-});
+// [unwrapped __esm module Pzn]
+Qsl = R(rt(), 1);
+s6e = class s6e extends Qsl.Component {
+  constructor(e) {
+    super(e);
+    this.state = {
+      hasError: false,
+    };
+  }
+  static getDerivedStateFromError() {
+    return {
+      hasError: true,
+    };
+  }
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+};
 function Mzn(e) {
   let t = Zsl.c(22),
     { hookEvent: n, lookups: r, toolUseID: o, isTranscriptMode: s } = e,

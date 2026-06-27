@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.47  score=0.6214  fileCov=0.6586
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eJl = E(() => {
-  fH();
-  _i();
-  Ye();
-  kt();
-  uf();
-  Vl();
-  vi();
-  zX();
-  ((QXl = R(lt(), 1)), (aTe = R(se(), 1)));
-});
+// [unwrapped __esm module eJl] deps: fH, _i, Ye, kt, uf, Vl, vi, zX
+((QXl = R(lt(), 1)), (aTe = R(se(), 1)));
 function rJl() {
   return (_a(), ro(nVe));
 }

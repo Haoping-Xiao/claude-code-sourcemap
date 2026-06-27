@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.2183  score=1  fileCov=0.2183
 // note: low-confidence suggestion: node_modules/lodash-es/_baseKeys.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gts = E(() => {
-  Dyr();
-  Y8c = Don(Object.keys, Object), jts = Y8c;
-});
+// [unwrapped __esm module Gts] deps: Dyr
+Y8c = Don(Object.keys, Object), jts = Y8c;
 function Q8c(e) {
   if (!QXe(e)) return jts(e);
   var t = [];

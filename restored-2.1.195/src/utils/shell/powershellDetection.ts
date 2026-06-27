@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2535  score=0.357  fileCov=0.4666
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var U2n = E(() => {
-  aW();
-  kt();
-  $pt();
-  er();
-  je();
-  _k();
-  lE();
-  $g();
-  WI();
-  hPa = new Set();
-});
+// [unwrapped __esm module U2n] deps: aW, kt, $pt, er, je, _k, lE, $g, WI
+hPa = new Set();
 async function PGt(e) {
   try {
     return (await Fqe.stat(e)).isFile() ? e : null;

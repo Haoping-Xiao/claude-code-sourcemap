@@ -4,93 +4,50 @@
 // class=modified  jaccard=0.1347  score=0.1981  fileCov=0.2964
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tQ = E(() => {
-  Xr();
-  ft();
-  ZWe();
-  Hde();
-  Brl();
-  dn();
-  Un();
-  kt();
-  Du();
-  l8t();
-  Ox();
-  ii();
-  S_();
-  $S();
-  fp();
-  sA();
-  Il();
-  je();
-  Two();
-  f6();
-  RE();
-  fn();
-  At();
-  Sbe();
-  co();
-  pht();
-  QH();
-  Hoe();
-  $g();
-  K6n();
-  aS();
-  II();
-  u$();
-  R8e();
-  lf();
-  I8e();
-  EI();
-  gAe();
-  lC();
-  jv();
-  fut();
-  fh();
-  ((Bnf = (RX(), ro(Q2t)).ARTIFACT_TOOL_NAME), (Aol = new Set([s$, cC, ZD, kX, yL])));
-  Tol = ve(() =>
-    H.object({
-      agentId: H.string(),
-      agentType: H.string().optional(),
-      content: H.array(
-        H.object({
-          type: H.literal("text"),
-          text: H.string(),
-        }),
-      ),
-      resolvedModel: H.string().optional(),
-      totalToolUseCount: H.number(),
-      totalDurationMs: H.number(),
-      totalTokens: H.number(),
-      usage: H.object({
-        input_tokens: H.number(),
-        output_tokens: H.number(),
-        cache_creation_input_tokens: H.number().nullable(),
-        cache_read_input_tokens: H.number().nullable(),
-        server_tool_use: H.object({
-          web_search_requests: H.number(),
-          web_fetch_requests: H.number(),
-        }).nullable(),
-        service_tier: H.enum(["standard", "priority", "batch"]).nullable(),
-        cache_creation: H.object({
-          ephemeral_1h_input_tokens: H.number(),
-          ephemeral_5m_input_tokens: H.number(),
-        }).nullable(),
+// [unwrapped __esm module tQ] deps: Xr, ft, ZWe, Hde, Brl, dn, Un, kt, Du, l8t, Ox, ii, S_, $S, fp, sA, Il, je, Two, f6, RE, fn, At, Sbe, co, pht, QH, Hoe, $g, K6n, aS, II, u$, R8e, lf, I8e, EI, gAe, lC, jv, fut, fh
+((Bnf = (RX(), ro(Q2t)).ARTIFACT_TOOL_NAME), (Aol = new Set([s$, cC, ZD, kX, yL])));
+Tol = ve(() =>
+  H.object({
+    agentId: H.string(),
+    agentType: H.string().optional(),
+    content: H.array(
+      H.object({
+        type: H.literal("text"),
+        text: H.string(),
       }),
-      toolStats: H.object({
-        readCount: H.number(),
-        searchCount: H.number(),
-        bashCount: H.number(),
-        editFileCount: H.number(),
-        linesAdded: H.number(),
-        linesRemoved: H.number(),
-        otherToolCount: H.number(),
-      }).optional(),
+    ),
+    resolvedModel: H.string().optional(),
+    totalToolUseCount: H.number(),
+    totalDurationMs: H.number(),
+    totalTokens: H.number(),
+    usage: H.object({
+      input_tokens: H.number(),
+      output_tokens: H.number(),
+      cache_creation_input_tokens: H.number().nullable(),
+      cache_read_input_tokens: H.number().nullable(),
+      server_tool_use: H.object({
+        web_search_requests: H.number(),
+        web_fetch_requests: H.number(),
+      }).nullable(),
+      service_tier: H.enum(["standard", "priority", "batch"]).nullable(),
+      cache_creation: H.object({
+        ephemeral_1h_input_tokens: H.number(),
+        ephemeral_5m_input_tokens: H.number(),
+      }).nullable(),
     }),
-  );
-  Fwo = xVt + kVt + 60000;
-  Wnf = new Set([ss]);
-});
+    toolStats: H.object({
+      readCount: H.number(),
+      searchCount: H.number(),
+      bashCount: H.number(),
+      editFileCount: H.number(),
+      linesAdded: H.number(),
+      linesRemoved: H.number(),
+      otherToolCount: H.number(),
+    }).optional(),
+  }),
+);
+Fwo = xVt + kVt + 60000;
+Wnf = new Set([ss]);
 function qnf() {
   let e = Su(),
     t = e ? Co : Ss,

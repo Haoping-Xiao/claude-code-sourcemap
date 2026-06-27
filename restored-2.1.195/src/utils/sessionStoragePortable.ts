@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.37  score=0.5901  fileCov=0.498
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BFe = E(() => {
-  Rm();
-  QZe();
-  ((WEs = require("child_process")), (qEs = require("util")), (yPu = qEs.promisify(WEs.execFile)));
-});
+// [unwrapped __esm module BFe] deps: Rm, QZe
+((WEs = require("child_process")), (qEs = require("util")), (yPu = qEs.promisify(WEs.execFile)));
 function KEs(e, t) {
   let n = EG(e, "entrypoint") ?? Kb(t, "entrypoint");
   if (n && jpn.has(n)) return true;

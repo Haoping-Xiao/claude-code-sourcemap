@@ -4,13 +4,12 @@
 // class=modified  jaccard=0.3821  score=0.4891  fileCov=0.6359
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uXl = E(() => {
-  cXl = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub",
-  };
-});
+// [unwrapped __esm module uXl]
+cXl = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub",
+};
 function pXl() {
   let e = dXl.c(3),
     t = xo.isSandboxingEnabled(),

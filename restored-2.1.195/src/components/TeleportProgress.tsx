@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.288  score=0.5036  fileCov=0.4023
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jFc = E(() => {
-  ft();
-  kt();
-  $S();
-  Rm();
-  je();
-  At();
-  co();
-});
 var zFc = {};
 _t(zFc, {
   teleportWithProgress: () => teleportWithProgress,

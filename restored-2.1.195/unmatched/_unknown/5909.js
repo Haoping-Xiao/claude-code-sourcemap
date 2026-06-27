@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0156  score=0.0828  fileCov=0.0189
 // note: nearest: node_modules/node-forge/lib/pkcs7.js (0.0156); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ogr = E(() => {
-  sB();
-  XXo();
-  FXo();
-  Vmr();
-  tJo();
-  wm();
-  $vt();
-  YP();
-  Bvt();
-  nJo = Symbol();
-});
+// [unwrapped __esm module ogr] deps: sB, XXo, FXo, Vmr, tJo, wm, $vt, YP, Bvt
+nJo = Symbol();
 class W2c {
   constructor(e, t, n) {
     this.parent = e, this.key = t, this.options = n;

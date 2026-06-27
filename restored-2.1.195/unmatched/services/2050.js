@@ -4,14 +4,9 @@
 // class=new  jaccard=0.0177  score=0.1789  fileCov=0.0193
 // note: nearest: src/services/mcp/utils.ts (0.0177); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Yle = E(() => {
-  Ls();
-  R9();
-  Jt();
-  Z4e();
-  Fwi = require("crypto");
-  IRd = ["/v1/design/"];
-});
+// [unwrapped __esm module Yle] deps: Ls, R9, Jt, Z4e
+Fwi = require("crypto");
+IRd = ["/v1/design/"];
 function kRd() {
   return Gwi;
 }

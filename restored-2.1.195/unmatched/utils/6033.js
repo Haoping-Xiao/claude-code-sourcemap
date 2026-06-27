@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0148  score=0.0756  fileCov=0.0181
 // note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0148); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o5c = E(() => {
-  BZ();
-});
 async function a5c(e, t) {
   if (typeof Bun === "undefined") throw Error("claude gateway requires the native binary");
   let n = new Bun.SQL(e, {

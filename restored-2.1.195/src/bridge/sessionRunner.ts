@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.6905  score=0.9953  fileCov=0.6928
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rGo = E(() => {
-  je();
-  At();
-  u9();
-  Mh();
-  Jt();
-  Tnt();
-});
 function Gir(e) {
   return e.replace(/[^a-zA-Z0-9_-]/g, "_");
 }

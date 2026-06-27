@@ -4,23 +4,8 @@
 // class=modified  jaccard=0.3196  score=0.4309  fileCov=0.5531
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d6l = E(() => {
-  _i();
-  Cv();
-  Ye();
-  ps();
-  nk();
-  je();
-  BR();
-  es();
-  Cc();
-  mE();
-  Bs();
-  Ko();
-  CH();
-  sTo();
-  ((kse = R(rt(), 1)), (Hm = R(se(), 1)));
-});
+// [unwrapped __esm module d6l] deps: _i, Cv, Ye, ps, nk, je, BR, es, Cc, mE, Bs, Ko, CH, sTo
+((kse = R(rt(), 1)), (Hm = R(se(), 1)));
 var m6l = {};
 _t(m6l, {
   TeleportResumeWrapper: () => TeleportResumeWrapper,

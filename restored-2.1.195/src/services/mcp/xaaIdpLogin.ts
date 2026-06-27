@@ -4,20 +4,18 @@
 // class=modified  jaccard=0.4929  score=0.7618  fileCov=0.5827
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var R8r = E(() => {
-  Is();
-  ((Lwi = require("http")),
-    (HRd =
-      Vt() === "windows"
-        ? {
-            min: 39152,
-            max: 49151,
-          }
-        : {
-            min: 49152,
-            max: 65535,
-          }));
-});
+// [unwrapped __esm module R8r] deps: Is
+((Lwi = require("http")),
+  (HRd =
+    Vt() === "windows"
+      ? {
+          min: 39152,
+          max: 49151,
+        }
+      : {
+          min: 49152,
+          max: 65535,
+        }));
 function y7() {
   return ut(process.env.CLAUDE_CODE_ENABLE_XAA);
 }

@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0078  score=0.2497  fileCov=0.008
 // note: nearest: src/tools/SendMessageTool/SendMessageTool.ts (0.0078); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KKt = E(() => {
-  ft();
-  wQ();
-  GF();
-  id();
-  Ld();
-  y_();
-  _a();
-});
 function XKt(e) {
   if (!e || e.target <= 0) return -1;
   return Math.floor(20 * e.spent / e.target);

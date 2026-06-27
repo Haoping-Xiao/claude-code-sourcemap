@@ -4,28 +4,17 @@
 // class=modified  jaccard=0.4788  score=0.8048  fileCov=0.5416
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _oe = E(() => {
-  ft();
-  Un();
-  Vw();
-  je();
-  RE();
-  fn();
-  Ao();
-  vM();
-  Ls();
-  dr();
-  del = {
-    "claude-haiku-4-5": 1,
-    "claude-sonnet-4-6": 2,
-    "claude-opus-4-6": 3,
-    "claude-opus-4-7": 4,
-    "claude-opus-4-8": 4,
-    "claude-mythos-5": 5,
-    "claude-fable-5": 5,
-  };
-  EZp = ["fable", "opus", "sonnet"];
-});
+// [unwrapped __esm module _oe] deps: ft, Un, Vw, je, RE, fn, Ao, vM, Ls, dr
+del = {
+  "claude-haiku-4-5": 1,
+  "claude-sonnet-4-6": 2,
+  "claude-opus-4-6": 3,
+  "claude-opus-4-7": 4,
+  "claude-opus-4-8": 4,
+  "claude-mythos-5": 5,
+  "claude-fable-5": 5,
+};
+EZp = ["fable", "opus", "sonnet"];
 function uvo(e) {
   let t = Lg();
   if (t.lastSessionId !== e) return;

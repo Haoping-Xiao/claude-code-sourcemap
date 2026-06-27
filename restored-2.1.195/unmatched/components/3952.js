@@ -4,34 +4,25 @@
 // class=new  jaccard=0.0253  score=0.1165  fileCov=0.0313
 // note: nearest: src/utils/managedEnvConstants.ts (0.0253); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lQa = E(() => {
-  Ye();
-  BE();
-  Vl();
-  gm();
-  EC();
-  wb();
-  vH();
-  XHo();
-  QHo = R(lt(), 1), wF = R(rt(), 1), ey = R(se(), 1), oMe = ["sonnet", "opus", "haiku", "fable"], JHo = {
-    sonnet: "Sonnet",
-    opus: "Opus",
-    haiku: "Haiku",
-    fable: "Fable"
-  }, MJp = {
-    sonnet: "ANTHROPIC_DEFAULT_SONNET_MODEL",
-    opus: "ANTHROPIC_DEFAULT_OPUS_MODEL",
-    haiku: "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-    fable: "ANTHROPIC_DEFAULT_FABLE_MODEL"
-  };
-  iQa = {
-    auth: "auth failed",
-    permission: "no aiplatform.endpoints.predict permission",
-    model: "not enabled in this project",
-    network: "unreachable",
-    other: "request failed"
-  };
-});
+// [unwrapped __esm module lQa] deps: Ye, BE, Vl, gm, EC, wb, vH, XHo
+QHo = R(lt(), 1), wF = R(rt(), 1), ey = R(se(), 1), oMe = ["sonnet", "opus", "haiku", "fable"], JHo = {
+  sonnet: "Sonnet",
+  opus: "Opus",
+  haiku: "Haiku",
+  fable: "Fable"
+}, MJp = {
+  sonnet: "ANTHROPIC_DEFAULT_SONNET_MODEL",
+  opus: "ANTHROPIC_DEFAULT_OPUS_MODEL",
+  haiku: "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+  fable: "ANTHROPIC_DEFAULT_FABLE_MODEL"
+};
+iQa = {
+  auth: "auth failed",
+  permission: "no aiplatform.endpoints.predict permission",
+  model: "not enabled in this project",
+  network: "unreachable",
+  other: "request failed"
+};
 async function uQa() {
   let e = new Set(),
     t = process.env.CLOUDSDK_CONFIG ?? UJp();

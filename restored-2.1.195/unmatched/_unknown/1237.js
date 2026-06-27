@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qzs = E(() => {
-  jzs();
-  Sod = eSn;
-});
+// [unwrapped __esm module qzs] deps: jzs
+Sod = eSn;

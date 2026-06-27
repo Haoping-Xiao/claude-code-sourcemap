@@ -4,17 +4,8 @@
 // class=new  jaccard=0.011  score=0.2273  fileCov=0.0114
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.011); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var N8l = E(() => {
-  je();
-  Rd();
-  co();
-  _a();
-  Jt();
-  i$();
-  D6e();
-  Gko();
-  $8l = require("path");
-});
+// [unwrapped __esm module N8l] deps: je, Rd, co, _a, Jt, i$, D6e, Gko
+$8l = require("path");
 function S5f(e, t) {
   if (e === "user") return gJt.join(tr(), "workflows");
   let n = Tu(t);

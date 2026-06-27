@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.5458  score=0.7208  fileCov=0.6921
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mx = E(() => {
-  L$u = /[:/\\?#@\s]/;
-});
+// [unwrapped __esm module Mx]
+L$u = /[:/\\?#@\s]/;
 var ARt = {};
 _t(ARt, {
   parseGitRemote: () => parseGitRemote,

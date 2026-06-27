@@ -4,8 +4,5 @@
 // class=partial  jaccard=0.191  score=1  fileCov=0.191
 // note: low-confidence suggestion: node_modules/@opentelemetry/resources/build/src/detectors/platform/node/machine-id/execAsync.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var urt = E(() => {
-  fn();
-  S9();
-  jsi = require("child_process");
-});
+// [unwrapped __esm module urt] deps: fn, S9
+jsi = require("child_process");

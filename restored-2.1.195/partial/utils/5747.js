@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.1006  score=1  fileCov=0.1006
 // note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QDc = E(() => {
-  ft();
-  Ed();
-  HN();
-  uo();
-  _oe();
-  XDc = R(lt(), 1), zfr = R(rt(), 1);
-});
+// [unwrapped __esm module QDc] deps: ft, Ed, HN, uo, _oe
+XDc = R(lt(), 1), zfr = R(rt(), 1);
 function ePc() {
   let {
     addNotification: e,

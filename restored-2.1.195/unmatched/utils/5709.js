@@ -4,17 +4,8 @@
 // class=new  jaccard=0.005  score=0.2453  fileCov=0.005
 // note: nearest: src/components/Settings/Config.tsx (0.005); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zRc = E(() => {
-  ft();
-  Ed();
-  uo();
-  MPe();
-  wr();
-  vn();
-  BJ();
-  gz();
-  Efr = R(rt(), 1);
-});
+// [unwrapped __esm module zRc] deps: ft, Ed, uo, MPe, wr, vn, BJ, gz
+Efr = R(rt(), 1);
 function KRc() {
   let e = Ho(),
     t = Afr.useRef(false);

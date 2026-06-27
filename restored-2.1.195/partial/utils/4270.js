@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.0907  score=0.6616  fileCov=0.0951
 // note: low-confidence suggestion: src/utils/transcriptSearch.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jko = E(() => {
-  je();
-  At();
-  D6e();
-  Aml = require("crypto"), Y_t = require("fs/promises"), e7n = require("path");
-});
+// [unwrapped __esm module jko] deps: je, At, D6e
+Aml = require("crypto"), Y_t = require("fs/promises"), e7n = require("path");
 function t7n(e) {
   if (typeof e !== "object" || e === null) return "";
   let t = e;

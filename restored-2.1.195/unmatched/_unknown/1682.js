@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zfi = E(() => {
-  bte();
-  qfi();
-  Q3r = dTn;
-});
+// [unwrapped __esm module zfi] deps: bte, qfi
+Q3r = dTn;
 function Kfi() {
   return T3r();
 }

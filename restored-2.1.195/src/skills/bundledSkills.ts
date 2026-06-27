@@ -4,42 +4,36 @@
 // class=modified  jaccard=0.3087  score=0.4903  fileCov=0.4545
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KXl = E(() => {
-  ft();
-  Un();
-  kt();
-  oo();
-  x4o();
-  zXl = [
-    oHt({
-      name: "ultraplan",
-      description: "Claude Code on the web drafts a plan you can edit and approve",
-    }),
-    oHt({
-      name: "ultrareview",
-      description: "Find and verify bugs in your branch using Claude Code on the web",
-    }),
-    oHt({
-      name: "teleport",
-      aliases: ["tp"],
-      description: "Resume a Claude Code session from claude.ai",
-    }),
-    oHt({
-      name: "remote-control",
-      aliases: ["rc"],
-      description: "Control this session from your phone or claude.ai/code",
-    }),
-    oHt({
-      name: "schedule",
-      aliases: ["routines"],
-      description: "Create and manage scheduled remote Claude Code agents",
-    }),
-    oHt({
-      name: "autofix-pr",
-      description: "Monitor and autofix any issues with the current PR",
-    }),
-  ];
-});
+// [unwrapped __esm module KXl] deps: ft, Un, kt, oo, x4o
+zXl = [
+  oHt({
+    name: "ultraplan",
+    description: "Claude Code on the web drafts a plan you can edit and approve",
+  }),
+  oHt({
+    name: "ultrareview",
+    description: "Find and verify bugs in your branch using Claude Code on the web",
+  }),
+  oHt({
+    name: "teleport",
+    aliases: ["tp"],
+    description: "Resume a Claude Code session from claude.ai",
+  }),
+  oHt({
+    name: "remote-control",
+    aliases: ["rc"],
+    description: "Control this session from your phone or claude.ai/code",
+  }),
+  oHt({
+    name: "schedule",
+    aliases: ["routines"],
+    description: "Create and manage scheduled remote Claude Code agents",
+  }),
+  oHt({
+    name: "autofix-pr",
+    description: "Monitor and autofix any issues with the current PR",
+  }),
+];
 function Nd(e) {
   let { files: t } = e,
     n,

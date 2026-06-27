@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.4094  score=0.5758  fileCov=0.5862
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kM = E(() => {
-  ft();
-  QSn();
-  je();
-  At();
-  oc();
-});
 var sce = {};
 _t(sce, {
   updateSessionTitle: () => updateSessionTitle,

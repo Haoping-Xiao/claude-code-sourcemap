@@ -4,18 +4,16 @@
 // class=modified  jaccard=0.5602  score=0.7575  fileCov=0.6826
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zgo = E(() => {
-  Xr();
-  ((qDp = ve(() => H.enum(["pending", "in_progress", "completed"]))),
-    (VDp = ve(() =>
-      H.object({
-        content: H.string().min(1, "Content cannot be empty"),
-        status: qDp(),
-        activeForm: H.string().min(1, "Active form cannot be empty"),
-      }),
-    )),
-    (hft = ve(() => H.array(VDp()))));
-});
+// [unwrapped __esm module zgo] deps: Xr
+((qDp = ve(() => H.enum(["pending", "in_progress", "completed"]))),
+  (VDp = ve(() =>
+    H.object({
+      content: H.string().min(1, "Content cannot be empty"),
+      status: qDp(),
+      activeForm: H.string().min(1, "Active form cannot be empty"),
+    }),
+  )),
+  (hft = ve(() => H.array(VDp()))));
 function wOa(e) {
   return ph(e) ? zDp : KDp;
 }

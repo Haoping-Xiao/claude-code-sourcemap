@@ -4,31 +4,12 @@
 // class=partial  jaccard=0.0939  score=0.5069  fileCov=0.1033
 // note: low-confidence suggestion: src/utils/model/model.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ao = E(() => {
-  ft();
-  oo();
-  BE();
-  RE();
-  fn();
-  ste();
-  jG();
-  dr();
-  Ls();
-  NE();
-  Xa();
-  QO();
-  gAn();
-  vM();
-  vM();
-  DD();
-  je();
-  Myn();
-  i1 = new Set();
-  gpd = new RegExp(`^((${bDt.join("|")})\\.)?(anthropic\\.|claude-)`);
-  hpd = /^[a-z]+-\d/;
-  ypd = new Set(["claude-3-opus", "claude-3-sonnet", "claude-3-haiku", "claude-3-5-sonnet", "claude-3-5-haiku", "claude-3-7-sonnet", "claude-opus-4-0", "claude-opus-4-1", "claude-opus-4-5", "claude-opus-4-6", "claude-sonnet-4-0", "claude-sonnet-4-5", "claude-sonnet-4-6", "claude-haiku-4-5"]);
-  _pd = ["claude-opus-4-20250514", "claude-opus-4-1-20250805", "claude-opus-4-0", "claude-opus-4-1"];
-});
+// [unwrapped __esm module Ao] deps: ft, oo, BE, RE, fn, ste, jG, dr, Ls, NE, Xa, QO, gAn, vM, vM, DD, je, Myn
+i1 = new Set();
+gpd = new RegExp(`^((${bDt.join("|")})\\.)?(anthropic\\.|claude-)`);
+hpd = /^[a-z]+-\d/;
+ypd = new Set(["claude-3-opus", "claude-3-sonnet", "claude-3-haiku", "claude-3-5-sonnet", "claude-3-5-haiku", "claude-3-7-sonnet", "claude-opus-4-0", "claude-opus-4-1", "claude-opus-4-5", "claude-opus-4-6", "claude-sonnet-4-0", "claude-sonnet-4-5", "claude-sonnet-4-6", "claude-haiku-4-5"]);
+_pd = ["claude-opus-4-20250514", "claude-opus-4-1-20250805", "claude-opus-4-0", "claude-opus-4-1"];
 function x9(e, t) {
   return WPt.run(e, t);
 }

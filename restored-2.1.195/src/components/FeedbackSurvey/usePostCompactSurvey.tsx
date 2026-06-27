@@ -4,27 +4,9 @@
 // class=modified  jaccard=0.3807  score=0.7019  fileCov=0.4541
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tRc = E(() => {
-  aW();
-  Un();
-  kt();
-  Uh();
-  jc();
-  uo();
-  lf();
-  er();
-  wr();
-  fn();
-  Xbt();
-  co();
-  qd();
-  aS();
-  pYo();
-  xtn();
-  gYo();
-  nD = R(rt(), 1);
-  qvm = /\bmemor(?:y|ies)\b/i;
-});
+// [unwrapped __esm module tRc] deps: aW, Un, kt, Uh, jc, uo, lf, er, wr, fn, Xbt, co, qd, aS, pYo, xtn, gYo
+nD = R(rt(), 1);
+qvm = /\bmemor(?:y|ies)\b/i;
 function Xvm(e, t) {
   let n = e.findIndex((r) => r.uuid === t);
   if (n === -1) return false;

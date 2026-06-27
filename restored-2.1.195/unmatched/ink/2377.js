@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0295  score=0.4027  fileCov=0.0308
 // note: nearest: src/ink/termio/parser.ts (0.0295); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jit = E(() => {
-  CBt();
-  pXr();
-  QRn();
-  dXr();
-  i3i();
-  u3i();
-});
 function p3i(e) {
   let t = Qke(),
     n = [...t.feed(e), ...t.flush()],

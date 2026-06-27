@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2328  score=0.5828  fileCov=0.2793
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MAc = E(() => {
-  mE();
-  v5();
-  Ko();
-  eE();
-  gm();
-  EC();
-  Ye();
-  ps();
-  E0o();
-  ((zTe = R(lt(), 1)), (YTt = R(rt(), 1)), (zu = R(se(), 1)));
-});
+// [unwrapped __esm module MAc] deps: mE, v5, Ko, eE, gm, EC, Ye, ps, E0o
+((zTe = R(lt(), 1)), (YTt = R(rt(), 1)), (zu = R(se(), 1)));
 function $Ac(e) {
   let t = Yzo.c(5),
     n = G_(),

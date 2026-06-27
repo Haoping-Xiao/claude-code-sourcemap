@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.4028  score=0.6218  fileCov=0.5336
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _zl = E(() => {
-  EJt();
-  Ye();
-  Vl();
-  gm();
-  kP();
-  ((hzl = R(lt(), 1)), (I1e = R(rt(), 1)), (ame = R(se(), 1)));
-});
+// [unwrapped __esm module _zl] deps: EJt, Ye, Vl, gm, kP
+((hzl = R(lt(), 1)), (I1e = R(rt(), 1)), (ame = R(se(), 1)));
 function Szl(e) {
   let t = bzl.c(15),
     {

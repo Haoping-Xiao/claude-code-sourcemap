@@ -4,37 +4,8 @@
 // class=new  jaccard=0.0161  score=0.2077  fileCov=0.0172
 // note: nearest: src/tools/SendMessageTool/SendMessageTool.ts (0.0161); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var D2o = E(() => {
-  iu();
-  ior();
-  ft();
-  fH();
-  O0();
-  dse();
-  _i();
-  p8();
-  Ye();
-  ps();
-  kt();
-  cft();
-  es();
-  BFe();
-  sa();
-  vn();
-  _a();
-  Cc();
-  Vl();
-  Bs();
-  B_();
-  Ko();
-  eE();
-  Pfe();
-  LVl();
-  EC();
-  Mg();
-  MVl();
-  wAt = require("path"), Ou = R(rt(), 1), Wl = R(se(), 1);
-});
+// [unwrapped __esm module D2o] deps: iu, ior, ft, fH, O0, dse, _i, p8, Ye, ps, kt, cft, es, BFe, sa, vn, _a, Cc, Vl, Bs, B_, Ko, eE, Pfe, LVl, EC, Mg, MVl
+wAt = require("path"), Ou = R(rt(), 1), Wl = R(se(), 1);
 function rYe(e, t) {
   return {
     markTypeInvoked(n) {

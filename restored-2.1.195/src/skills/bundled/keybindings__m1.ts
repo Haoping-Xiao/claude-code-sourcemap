@@ -4,9 +4,6 @@
 // class=modified (alt of src/skills/bundled/keybindings.ts)  jaccard=0.2951  score=0.973  fileCov=0.2975
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qvc = E(() => {
-  AA();
-});
 function gEm() {
   return _Ko(
     ["Context", "Description"],

@@ -4,12 +4,8 @@
 // class=new  jaccard=0.004  score=0.283  fileCov=0.0041
 // note: nearest: src/screens/REPL.tsx (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wdr = E(() => {
-  es();
-  gM();
-  sa();
-  o_c = require("fs/promises"), s_c = require("os"), Oen = require("path");
-});
+// [unwrapped __esm module wdr] deps: es, gM, sa
+o_c = require("fs/promises"), s_c = require("os"), Oen = require("path");
 function u_c() {
   let e = P6o.c(5),
     t = ZIl(),

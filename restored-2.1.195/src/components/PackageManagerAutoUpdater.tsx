@@ -4,21 +4,8 @@
 // class=modified  jaccard=0.2152  score=0.2797  fileCov=0.4826
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lhc = E(() => {
-  kt();
-  je();
-  At();
-  J8o();
-  Ye();
-  uo();
-  FEe();
-  er();
-  kgt();
-  BJ();
-  LOe();
-  gm();
-  ((CZ = R(rt(), 1)), (Kse = R(se(), 1)));
-});
+// [unwrapped __esm module lhc] deps: kt, je, At, J8o, Ye, uo, FEe, er, kgt, BJ, LOe, gm
+((CZ = R(rt(), 1)), (Kse = R(se(), 1)));
 function ldm(e, t) {
   switch (e) {
     case "homebrew":

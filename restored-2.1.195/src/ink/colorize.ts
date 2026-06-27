@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.7699  score=0.8658  fileCov=0.8742
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rit = E(() => {
-  mRn = new Set();
-});
+// [unwrapped __esm module Rit]
+mRn = new Set();
 function o2i(e) {
   let t = process.argv.indexOf("--");
   return (t === -1 ? process.argv : process.argv.slice(0, t)).some((r) => e.has(r));

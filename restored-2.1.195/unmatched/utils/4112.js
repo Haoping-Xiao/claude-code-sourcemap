@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0148  score=0.5601  fileCov=0.0149
 // note: nearest: src/components/Messages.tsx (0.0148); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DCo = E(() => {
-  es();
-  sr();
-  g0();
-});
 function MCo() {
   PCo.clear();
 }

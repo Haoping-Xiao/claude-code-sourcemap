@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0184  score=0.3971  fileCov=0.019
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0184); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xmr = E(() => {
-  jXo();
-  rB();
-  iie();
-});
 async function Jmr(e, t, n, r, o = new Uint8Array(0), s = new Uint8Array(0)) {
   if (!OC(e)) throw TypeError(_w(e, ...Z_));
   if (dV(e, "ECDH"), !OC(t)) throw TypeError(_w(t, ...Z_));

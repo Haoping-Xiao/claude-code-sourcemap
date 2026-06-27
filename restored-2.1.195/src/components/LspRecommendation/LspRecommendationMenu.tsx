@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.236  score=0.2982  fileCov=0.531
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eDc = E(() => {
-  ft();
-  Ed();
-  uo();
-  er();
-  je();
-  XLc();
-  vfe();
-  dr();
-  DYo();
-  ((QLc = R(lt(), 1)), (Dfr = require("path")), (Pfr = R(rt(), 1)));
-});
+// [unwrapped __esm module eDc] deps: ft, Ed, uo, er, je, XLc, vfe, dr, DYo
+((QLc = R(lt(), 1)), (Dfr = require("path")), (Pfr = R(rt(), 1)));
 function nDc(e) {
   let t = tDc.c(36),
     { pluginName: n, pluginDescription: r, fileExtension: o, onResponse: s } = e,

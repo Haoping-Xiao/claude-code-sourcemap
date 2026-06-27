@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0131  score=0.0867  fileCov=0.0152
 // note: nearest: src/utils/sessionStorage.ts (0.0131); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var l0c = E(() => {
-  HI();
-  ag();
-  je();
-  Yp();
-  Gre();
-  _a();
-});
 function cvm(e) {
   return {
     permissionMode: e

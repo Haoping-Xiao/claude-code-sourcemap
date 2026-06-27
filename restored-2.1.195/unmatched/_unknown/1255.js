@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CKs = E(() => {
-  CBr();
-  vKs = R(PE(), 1);
-});
+// [unwrapped __esm module CKs] deps: CBr
+vKs = R(PE(), 1);

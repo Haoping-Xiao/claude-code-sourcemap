@@ -4,14 +4,8 @@
 // class=new  jaccard=0.022  score=0.514  fileCov=0.0225
 // note: nearest: node_modules/react/cjs/react.production.js (0.022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hNo = E(() => {
-  cne();
-  jh();
-  dn();
-  er();
-  m0();
-  hEt = R(rt(), 1);
-});
+// [unwrapped __esm module hNo] deps: cne, jh, dn, er, m0
+hEt = R(rt(), 1);
 function D1l(e) {
   let t = R1l.c(3),
     {

@@ -4,14 +4,8 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0054  score=0.0323  fileCov=0.0065
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Iuc = E(() => {
-  kt();
-  je();
-  Jt();
-  RNo();
-  q$();
-  ((wuc = require("net")), (Tuc = [100, 250, 500, 1000, 2000]));
-});
+// [unwrapped __esm module Iuc] deps: kt, je, Jt, RNo, q$
+((wuc = require("net")), (Tuc = [100, 250, 500, 1000, 2000]));
 function r9o() {
   return (e, t, n) => {
     let { cmd: r, prefixArgs: o } = CF({

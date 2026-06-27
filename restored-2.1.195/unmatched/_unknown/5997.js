@@ -4,19 +4,6 @@
 // class=new  jaccard=0.0194  score=0.1633  fileCov=0.0216
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0194); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Gc = E(() => {
-  NZ();
-  Qvt();
-  oBe();
-  AR();
-  RQo();
-  sK();
-  Qvt();
-  Jnn();
-  nwt();
-  Znn();
-  DQo();
-});
 async function bGc(e, t, n) {
   if (e instanceof Uint8Array) e = oK.decode(e);
   if (typeof e !== "string") throw new Ac("Compact JWE must be a string or Uint8Array");

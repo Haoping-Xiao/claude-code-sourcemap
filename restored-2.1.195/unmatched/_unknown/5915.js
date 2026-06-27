@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0314  score=0.3227  fileCov=0.0337
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0314); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iJo = E(() => {
-  sgr();
-  wm();
-  YP();
-});
 async function K2c(e, t, n) {
   if (!eb(e)) throw new wh("General JWS must be an object");
   if (!Array.isArray(e.signatures) || !e.signatures.every(eb)) throw new wh("JWS Signatures missing or incorrect type");

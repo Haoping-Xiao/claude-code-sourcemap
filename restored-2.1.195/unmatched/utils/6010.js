@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0103  score=0.1938  fileCov=0.0107
 // note: nearest: node_modules/node-forge/lib/x509.js (0.0103); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FQo = E(() => {
-  xGc();
-  kGc();
-  PGc();
-  MGc();
-  kQo();
-});
 function OGc(e) {
   return (Array.isArray(e) ? e : [e]).map(n => {
     let r = $Gc.createHash("sha256").update(n).digest();

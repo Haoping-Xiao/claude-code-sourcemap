@@ -4,19 +4,14 @@
 // class=modified  jaccard=0.4334  score=0.69  fileCov=0.5382
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pqi = E(() => {
-  Xr();
-  sr();
-  JLn();
-  QLn();
-  a5d = ve(() =>
-    H.object({
-      context: H.string(),
-      bindings: H.record(H.string(), H.string().nullable()),
-    }),
-  );
-  dqi = Cat;
-});
+// [unwrapped __esm module pqi] deps: Xr, sr, JLn, QLn
+a5d = ve(() =>
+  H.object({
+    context: H.string(),
+    bindings: H.record(H.string(), H.string().nullable()),
+  }),
+);
+dqi = Cat;
 function E8() {
   return at("tengu_keybinding_customization_release", true);
 }

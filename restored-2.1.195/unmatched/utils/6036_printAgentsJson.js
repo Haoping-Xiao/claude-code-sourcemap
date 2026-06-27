@@ -4,25 +4,8 @@
 // class=new  jaccard=0.0093  score=0.2337  fileCov=0.0096
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0093); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var S5c = E(() => {
-  ft();
-  mE();
-  Ye();
-  S6();
-  dn();
-  C5();
-  Pw();
-  er();
-  fn();
-  At();
-  sa();
-  Hu();
-  jS();
-  Jt();
-  bk();
-  JN();
-  xZo = require("fs"), dve = require("fs/promises"), pO = require("path"), ihr = require("readline"), cXe = R(se(), 1), zOm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-});
+// [unwrapped __esm module S5c] deps: ft, mE, Ye, S6, dn, C5, Pw, er, fn, At, sa, Hu, jS, Jt, bk, JN
+xZo = require("fs"), dve = require("fs/promises"), pO = require("path"), ihr = require("readline"), cXe = R(se(), 1), zOm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 var H5c = {};
 _t(H5c, {
   printAgentsJson: () => printAgentsJson

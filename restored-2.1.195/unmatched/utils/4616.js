@@ -4,20 +4,8 @@
 // class=new  jaccard=0.0335  score=0.2875  fileCov=0.0365
 // note: nearest: src/components/Settings/Config.tsx (0.0335); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var S7t = E(() => {
-  tne();
-  oo();
-  er();
-  Mm();
-  At();
-  dr();
-  ih();
-  dn();
-  kt();
-  c_();
-  sMl();
-  b7t = uL(void 0), aMl = Mi(), lMl = b7t.getState, cMl = b7t.subscribe, uMl = aMl.subscribe;
-});
+// [unwrapped __esm module S7t] deps: tne, oo, er, Mm, At, dr, ih, dn, kt, c_, sMl
+b7t = uL(void 0), aMl = Mi(), lMl = b7t.getState, cMl = b7t.subscribe, uMl = aMl.subscribe;
 function t1o(e) {
   switch (e) {
     case "terminal_bell":

@@ -4,10 +4,8 @@
 // class=unchanged (alt of src/utils/crypto.ts)  jaccard=1  score=1  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xtn = E(() => {
-  Ye();
-  ((mYo = require("crypto")), (tD = R(rt(), 1)));
-});
+// [unwrapped __esm module xtn] deps: Ye
+((mYo = require("crypto")), (tD = R(rt(), 1)));
 function cfr() {
   return false;
 }

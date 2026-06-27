@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.1323  score=0.4939  fileCov=0.1531
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MVl = E(() => {
-  Ye();
-  Vl();
-  ((DVl = R(lt(), 1)), (aJt = R(rt(), 1)), (x2o = R(se(), 1)));
-});
+// [unwrapped __esm module MVl] deps: Ye, Vl
+((DVl = R(lt(), 1)), (aJt = R(rt(), 1)), (x2o = R(se(), 1)));
 function NVl(e, t) {
   let n = e.replace(/\s+/g, " ").trim();
   return Rs(n, t);

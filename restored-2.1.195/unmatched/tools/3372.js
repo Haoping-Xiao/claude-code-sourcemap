@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0192  score=0.8166  fileCov=0.0192
 // note: nearest: src/components/VirtualMessageList.tsx (0.0192); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var E5 = E(() => {
-  kLe();
-  co();
-  Ye();
-  sr();
-  zX();
-  ql();
-  yMa = R(lt(), 1), Wpt = R(se(), 1);
-});
+// [unwrapped __esm module E5] deps: kLe, co, Ye, sr, zX, ql
+yMa = R(lt(), 1), Wpt = R(se(), 1);
 function cP({
   children: e
 }) {

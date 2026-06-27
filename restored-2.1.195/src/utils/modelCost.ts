@@ -4,51 +4,34 @@
 // class=modified  jaccard=0.2748  score=0.4322  fileCov=0.43
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NE = E(() => {
-  Hp();
-  Rc();
-  Un();
-  ft();
-  id();
-  kt();
-  oo();
-  er();
-  je();
-  fn();
-  mye();
-  Ao();
-  Ls();
-  qd();
-  dr();
-  ih();
-  Jdd = [
-    {
-      canonical: "claude-opus-4-6",
-      label: "Opus 4.6",
-      flag: "tengu_sunset_penguin_opus46",
-      defaultDate: "2026-06-29",
-    },
-    {
-      canonical: "claude-opus-4-7",
-      label: "Opus 4.7",
-      flag: "tengu_sunset_penguin_opus47",
-      defaultDate: "2026-07-25",
-    },
-  ];
-  ((Knt = {
-    status: "active",
-  }),
-    (yoi = Mi()),
-    (_oi = Mi()),
-    (boi = yoi.subscribe),
-    (Soi = _oi.subscribe));
-  ((Hoi = Mi()), (Toi = Hoi.subscribe));
-  ((s1 = {
-    status: "pending",
-  }),
-    (w2r = Mi()),
-    (woi = w2r.subscribe));
-});
+// [unwrapped __esm module NE] deps: Hp, Rc, Un, ft, id, kt, oo, er, je, fn, mye, Ao, Ls, qd, dr, ih
+Jdd = [
+  {
+    canonical: "claude-opus-4-6",
+    label: "Opus 4.6",
+    flag: "tengu_sunset_penguin_opus46",
+    defaultDate: "2026-06-29",
+  },
+  {
+    canonical: "claude-opus-4-7",
+    label: "Opus 4.7",
+    flag: "tengu_sunset_penguin_opus47",
+    defaultDate: "2026-07-25",
+  },
+];
+((Knt = {
+  status: "active",
+}),
+  (yoi = Mi()),
+  (_oi = Mi()),
+  (boi = yoi.subscribe),
+  (Soi = _oi.subscribe));
+((Hoi = Mi()), (Toi = Hoi.subscribe));
+((s1 = {
+  status: "pending",
+}),
+  (w2r = Mi()),
+  (woi = w2r.subscribe));
 function Xnt(e, t) {
   if (sc() && e) {
     if (t === "claude-opus-4-8") return pAn;

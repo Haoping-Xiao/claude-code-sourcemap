@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0169  score=0.3077  fileCov=0.0176
 // note: nearest: src/components/mcp/MCPRemoteServerMenu.tsx (0.0169); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZCa = E(() => {
-  Un();
-  YCa = ["microsoft365.mcp.claude.com", "gmail.mcp.claude.com", "gcal.mcp.claude.com"];
-});
+// [unwrapped __esm module ZCa] deps: Un
+YCa = ["microsoft365.mcp.claude.com", "gmail.mcp.claude.com", "gcal.mcp.claude.com"];
 function r6(e, t) {
   if (t.type === "claudeai-proxy") return {
     kind: "claudeai-proxy",

@@ -3,20 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Jql = E(() => {
-  _i();
-  Tne();
-  wOe();
-  HI();
-  K_e();
-  qBt();
-  KBt();
-  bW();
-  Wql();
-  qql();
-  b2o();
-  Cse = R(rt(), 1), eYe = R(se(), 1);
-});
+// [unwrapped __esm module Jql] deps: _i, Tne, wOe, HI, K_e, qBt, KBt, bW, Wql, qql, b2o
+Cse = R(rt(), 1), eYe = R(se(), 1);
 function Qql(e) {
   return `rgb(${e & 255},${e >> 8 & 255},${e >> 16 & 255})`;
 }

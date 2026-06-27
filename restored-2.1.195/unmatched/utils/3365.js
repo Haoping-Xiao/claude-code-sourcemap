@@ -4,28 +4,10 @@
 // class=new  jaccard=0.0018  score=0.3078  fileCov=0.0018
 // note: nearest: src/screens/REPL.tsx (0.0018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var XPa = E(() => {
-  kt();
-  fd();
-  Lo();
-  je();
-  f6();
-  wr();
-  fn();
-  oc();
-  ys();
-  Is();
-  Xh();
-  tre();
-  OB();
-  _1();
-  sj();
-  aEe();
-  Xjt();
-  zPa = require("child_process"), J2n = require("fs/promises"), Q2n = R(require("os")), jGt = require("path");
-  V0p = [".git", ".svn", ".hg", ".bzr", ".jj", ".sl"];
-  Q0p = /^([A-Za-z_][A-Za-z0-9_]*)=/;
-});
+// [unwrapped __esm module XPa] deps: kt, fd, Lo, je, f6, wr, fn, oc, ys, Is, Xh, tre, OB, _1, sj, aEe, Xjt
+zPa = require("child_process"), J2n = require("fs/promises"), Q2n = R(require("os")), jGt = require("path");
+V0p = [".git", ".svn", ".hg", ".bzr", ".jj", ".sl"];
+Q0p = /^([A-Za-z_][A-Za-z0-9_]*)=/;
 function Z2n(e, t) {
   let n = e.lastIndexOf(" -");
   if (n > 0) {

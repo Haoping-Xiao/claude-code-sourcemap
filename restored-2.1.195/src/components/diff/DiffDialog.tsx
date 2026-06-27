@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3886  score=0.5163  fileCov=0.611
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var J1l = E(() => {
-  si();
-  _i();
-  Ye();
-  es();
-  sr();
-  gDe();
-  B_();
-  ((onr = R(lt(), 1)), (WN = R(se(), 1)));
-});
+// [unwrapped __esm module J1l] deps: si, _i, Ye, es, sr, gDe, B_
+((onr = R(lt(), 1)), (WN = R(se(), 1)));
 var Z1l = {};
 _t(Z1l, {
   DiffDialog: () => DiffDialog,

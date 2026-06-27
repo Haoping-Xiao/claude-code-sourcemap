@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1214  score=1  fileCov=0.1214
 // note: low-confidence suggestion: node_modules/lodash-es/_Hash.js; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tts = E(() => {
-  Mwt();
-  ets = c9c;
-});
+// [unwrapped __esm module tts] deps: Mwt
+ets = c9c;
 function jXe(e) {
   var t = -1,
     n = e == null ? 0 : e.length;

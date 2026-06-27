@@ -4,32 +4,8 @@
 // class=modified  jaccard=0.3486  score=0.4566  fileCov=0.5958
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MAo = E(() => {
-  si();
-  ft();
-  Ye();
-  xnt();
-  oo();
-  wFe();
-  dC();
-  gb();
-  MPe();
-  fn();
-  oc();
-  es();
-  aE();
-  Ao();
-  Ls();
-  u9();
-  BJ();
-  Mh();
-  lg();
-  Dgt();
-  vf();
-  i2e();
-  dr();
-  dKa = R(se(), 1);
-});
+// [unwrapped __esm module MAo] deps: si, ft, Ye, xnt, oo, wFe, dC, gb, MPe, fn, oc, es, aE, Ao, Ls, u9, BJ, Mh, lg, Dgt, vf, i2e, dr
+dKa = R(se(), 1);
 var UVn = {};
 _t(UVn, {
   installOAuthTokens: () => installOAuthTokens,

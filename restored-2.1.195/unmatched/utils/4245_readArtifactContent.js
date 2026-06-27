@@ -4,21 +4,10 @@
 // class=new  jaccard=0.0303  score=0.0742  fileCov=0.0488
 // note: nearest: src/tools/WebFetchTool/utils.ts (0.0303); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var l$e = E(() => {
-  Cde();
-  Rc();
-  dn();
-  Un();
-  Rx();
-  c_();
-  je();
-  Lx();
-  RE();
-  Jt();
-  Fuf = new Set(["remote", "remote_cowork"]);
-  Guf = /^(?:session_|cse_)[A-Za-z0-9_-]{1,184}$/;
-  O_t = new Set();
-});
+// [unwrapped __esm module l$e] deps: Cde, Rc, dn, Un, Rx, c_, je, Lx, RE, Jt
+Fuf = new Set(["remote", "remote_cowork"]);
+Guf = /^(?:session_|cse_)[A-Za-z0-9_-]{1,184}$/;
+O_t = new Set();
 var hfl = {};
 _t(hfl, {
   readArtifactContent: () => readArtifactContent,

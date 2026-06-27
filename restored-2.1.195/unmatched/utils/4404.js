@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0361  score=0.421  fileCov=0.0379
 // note: nearest: src/utils/queryHelpers.ts (0.0361); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aze = E(() => {
-  fd();
-  Mm();
-  fn();
-  gLo = new Map();
-});
+// [unwrapped __esm module aze] deps: fd, Mm, fn
+gLo = new Map();
 function iHl(e) {
   return e?._meta?.["claude/endTurn"] === true;
 }

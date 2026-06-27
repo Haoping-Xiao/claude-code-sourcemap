@@ -4,27 +4,22 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0103  score=0.1089  fileCov=0.0112
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Hde = E(() => {
-  cEe();
-  ft();
-  tgo();
-  tne();
-  ((pjn = R(rt(), 1)),
-    (VGt = Object.freeze({
-      mode: "responding",
-      overrideMessage: null,
-      overrideColor: null,
-      overrideShimmerColor: null,
-      isCompacting: false,
-      compactingHintText: null,
-      compactingStartTime: null,
-      turnEffort: null,
-      retryStatus: null,
-      thinkingStartedAt: null,
-      defaultVerb: "",
-    })),
-    (uEe = uL({})));
-});
+// [unwrapped __esm module Hde] deps: cEe, ft, tgo, tne
+((pjn = R(rt(), 1)),
+  (VGt = Object.freeze({
+    mode: "responding",
+    overrideMessage: null,
+    overrideColor: null,
+    overrideShimmerColor: null,
+    isCompacting: false,
+    compactingHintText: null,
+    compactingStartTime: null,
+    turnEffort: null,
+    retryStatus: null,
+    thinkingStartedAt: null,
+    defaultVerb: "",
+  })),
+  (uEe = uL({})));
 var rgo = {};
 _t(rgo, {
   sinksFor: () => sinksFor,

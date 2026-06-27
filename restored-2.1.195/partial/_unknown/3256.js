@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.1234  score=1  fileCov=0.1234
 // note: low-confidence suggestion: node_modules/lodash-es/_createCaseFirst.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VIa = E(() => {
-  $Ia();
-  jdo();
-  WIa();
-  qIa = rwp;
-});
+// [unwrapped __esm module VIa] deps: $Ia, jdo, WIa
+qIa = rwp;
 function owp(e) {
   return function (t) {
     t = Bie(t);

@@ -4,22 +4,9 @@
 // class=new  jaccard=0.014  score=0.1987  fileCov=0.0148
 // note: nearest: src/commands/insights.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var znc = E(() => {
-  ft();
-  Un();
-  kt();
-  GXn();
-  jc();
-  er();
-  je();
-  At();
-  Bi();
-  sa();
-  jS();
-  Jt();
-  Wnc();
-  qnc = require("fs/promises"), uar = require("path");
-  eJf = `
+// [unwrapped __esm module znc] deps: ft, Un, kt, GXn, jc, er, je, At, Bi, sa, jS, Jt, Wnc
+qnc = require("fs/promises"), uar = require("path");
+eJf = `
 
 **Sharing** \u2014 call the ${zzt} tool twice:
 
@@ -38,53 +25,52 @@ var znc = E(() => {
    Send this to teammates and they'll get a guided walkthrough when they open it in Claude Code.
 
 If the tool returns 'unavailable' at any point, skip that call and use the manual close from step 5 instead.`, tJf = ["Edit(ONBOARDING.md)", "Bash(ls *)", zzt], nJf = {
-    type: "prompt",
-    name: "team-onboarding",
-    description: "Help teammates ramp on Claude Code with a guide from your usage",
-    allowedTools: tJf,
-    contentLength: 0,
-    isEnabled: () => Us("allow_team_onboarding"),
-    isHidden: false,
-    progressMessage: "scanning usage data",
-    effort: "low",
-    requires: {
-      workspace: true
-    },
-    userFacingName() {
-      return "team-onboarding";
-    },
-    source: "builtin",
-    disableModelInvocation: true,
-    async getPromptForCommand() {
-      let e = at("tengu_flint_harbor_prompt", {}),
-        t = typeof e?.prompt === "string" ? e.prompt : ZXf,
-        n = typeof e?.guideTemplate === "string" ? e.guideTemplate : QXf,
-        r = typeof e?.windowDays === "number" ? Math.min(Math.max(Math.floor(e.windowDays), 1), 365) : KXf;
-      G("tengu_team_onboarding_invoked", {
-        window_days: r
-      }), gn(c => ({
-        ...c,
-        teamOnboardingLastUsedAt: Date.now()
-      }));
-      let {
-          usageData: o,
-          sessionCount: s,
-          slashCommandCount: i,
-          mcpServerCount: a
-        } = await JXf(r),
-        l = t.replaceAll("{{WINDOW_DAYS}}", String(r)).replaceAll("{{GUIDE_TEMPLATE}}", n).replaceAll("{{USAGE_DATA}}", o) + (xbt() ? eJf : "");
-      return G("tengu_team_onboarding_generated", {
-        session_count: s,
-        slash_command_count: i,
-        mcp_server_count: a,
-        window_days: r
-      }), [{
-        type: "text",
-        text: l
-      }];
-    }
-  }, rJf = nJf;
-});
+  type: "prompt",
+  name: "team-onboarding",
+  description: "Help teammates ramp on Claude Code with a guide from your usage",
+  allowedTools: tJf,
+  contentLength: 0,
+  isEnabled: () => Us("allow_team_onboarding"),
+  isHidden: false,
+  progressMessage: "scanning usage data",
+  effort: "low",
+  requires: {
+    workspace: true
+  },
+  userFacingName() {
+    return "team-onboarding";
+  },
+  source: "builtin",
+  disableModelInvocation: true,
+  async getPromptForCommand() {
+    let e = at("tengu_flint_harbor_prompt", {}),
+      t = typeof e?.prompt === "string" ? e.prompt : ZXf,
+      n = typeof e?.guideTemplate === "string" ? e.guideTemplate : QXf,
+      r = typeof e?.windowDays === "number" ? Math.min(Math.max(Math.floor(e.windowDays), 1), 365) : KXf;
+    G("tengu_team_onboarding_invoked", {
+      window_days: r
+    }), gn(c => ({
+      ...c,
+      teamOnboardingLastUsedAt: Date.now()
+    }));
+    let {
+        usageData: o,
+        sessionCount: s,
+        slashCommandCount: i,
+        mcpServerCount: a
+      } = await JXf(r),
+      l = t.replaceAll("{{WINDOW_DAYS}}", String(r)).replaceAll("{{GUIDE_TEMPLATE}}", n).replaceAll("{{USAGE_DATA}}", o) + (xbt() ? eJf : "");
+    return G("tengu_team_onboarding_generated", {
+      session_count: s,
+      slash_command_count: i,
+      mcp_server_count: a,
+      window_days: r
+    }), [{
+      type: "text",
+      text: l
+    }];
+  }
+}, rJf = nJf;
 function gQt() {
   let e = new Set(),
     t = "";

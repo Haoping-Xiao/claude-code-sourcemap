@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0359  score=0.5712  fileCov=0.0369
 // note: nearest: src/utils/hooks/execAgentHook.ts (0.0359); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Two = E(() => {
-  u_();
-  nC();
-  sr();
-  B6n = new Set([ka, Wc, RI]);
-});
+// [unwrapped __esm module Two] deps: u_, nC, sr
+B6n = new Set([ka, Wc, RI]);
 var byt = "LSP",
   vwo = `Interact with Language Server Protocol (LSP) servers to get code intelligence features.
 

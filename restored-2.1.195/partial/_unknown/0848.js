@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.1153  score=0.9005  fileCov=0.1168
 // note: low-confidence suggestion: node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lLs = E(() => {
-  Ign = R(by(), 1);
-});
+// [unwrapped __esm module lLs]
+Ign = R(by(), 1);
 function cLs(e, t) {
   let n = L2u(e),
     r,

@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.3597  score=0.5358  fileCov=0.5226
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YHe = E(() => {
-  si();
-  S_();
-  jCo();
-  ZPe();
-});
 function p8l(e) {
   let t = d8l.c(63),
     { agent: n, onDone: r, onKillAgent: o, onBack: s, killAllAgentsShortcut: i } = e,

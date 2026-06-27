@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2421  score=0.4629  fileCov=0.3366
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Dqc = E(() => {
-  LNm = new Set(["update", "upgrade"]);
-});
+// [unwrapped __esm module Dqc]
+LNm = new Set(["update", "upgrade"]);
 process.env.NoDefaultCurrentDirectoryInExePath = "1";
 process.env.COREPACK_ENABLE_AUTO_PIN = "0";
 con();

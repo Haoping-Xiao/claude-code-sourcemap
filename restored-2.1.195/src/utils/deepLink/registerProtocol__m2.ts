@@ -4,15 +4,6 @@
 // class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.0587  score=0.3802  fileCov=0.0649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kme = E(() => {
-  er();
-  OMe();
-  XVo();
-  urt();
-  RCe();
-  i2e();
-  dr();
-});
 async function zsm() {
   let e = iNe.join(Ore(), "claude");
   if (!process.execPath.startsWith(iNe.join(e, "versions") + iNe.sep)) return null;

@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.468  score=0.5717  fileCov=0.7206
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K0 = E(() => {
-  ft();
-  Un();
-  kt();
-  Du();
-  db();
-  je();
-  At();
-  es();
-  jS();
-  Jt();
-  QUn = require("path");
-});
+// [unwrapped __esm module K0] deps: ft, Un, kt, Du, db, je, At, es, jS, Jt
+QUn = require("path");
 var Ndo = {};
 _t(Ndo, {
   persistBinaryContent: () => persistBinaryContent,

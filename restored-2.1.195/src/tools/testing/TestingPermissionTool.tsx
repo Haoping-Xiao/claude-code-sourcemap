@@ -4,72 +4,69 @@
 // class=modified  jaccard=0.2357  score=0.2514  fileCov=0.7911
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var N_l = E(() => {
-  Xr();
-  ii();
-  ((Dgf = ve(() => H.strictObject({}))),
-    (v0b = ti({
-      name: O_l,
-      maxResultSizeChars: 100000 /* 1e5 */,
-      async description() {
-        return "Test tool that always asks for permission";
-      },
-      async prompt() {
-        return "Test tool that always asks for permission before executing. Used for end-to-end testing.";
-      },
-      get inputSchema() {
-        return Dgf();
-      },
-      userFacingName() {
-        return "TestingPermission";
-      },
-      isEnabled() {
-        return false;
-      },
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      async checkPermissions() {
-        return {
-          behavior: "ask",
-          message: "Run test?",
-        };
-      },
-      renderToolUseMessage() {
-        return null;
-      },
-      renderToolUseProgressMessage() {
-        return null;
-      },
-      renderToolUseQueuedMessage() {
-        return null;
-      },
-      renderToolUseRejectedMessage() {
-        return null;
-      },
-      renderToolResultMessage() {
-        return null;
-      },
-      renderToolUseErrorMessage() {
-        return null;
-      },
-      async call() {
-        return {
-          data: `${O_l} executed successfully`,
-        };
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        return {
-          type: "tool_result",
-          content: String(e),
-          tool_use_id: t,
-        };
-      },
-    })));
-});
+// [unwrapped __esm module N_l] deps: Xr, ii
+((Dgf = ve(() => H.strictObject({}))),
+  (v0b = ti({
+    name: O_l,
+    maxResultSizeChars: 100000 /* 1e5 */,
+    async description() {
+      return "Test tool that always asks for permission";
+    },
+    async prompt() {
+      return "Test tool that always asks for permission before executing. Used for end-to-end testing.";
+    },
+    get inputSchema() {
+      return Dgf();
+    },
+    userFacingName() {
+      return "TestingPermission";
+    },
+    isEnabled() {
+      return false;
+    },
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    async checkPermissions() {
+      return {
+        behavior: "ask",
+        message: "Run test?",
+      };
+    },
+    renderToolUseMessage() {
+      return null;
+    },
+    renderToolUseProgressMessage() {
+      return null;
+    },
+    renderToolUseQueuedMessage() {
+      return null;
+    },
+    renderToolUseRejectedMessage() {
+      return null;
+    },
+    renderToolResultMessage() {
+      return null;
+    },
+    renderToolUseErrorMessage() {
+      return null;
+    },
+    async call() {
+      return {
+        data: `${O_l} executed successfully`,
+      };
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      return {
+        type: "tool_result",
+        content: String(e),
+        tool_use_id: t,
+      };
+    },
+  })));
 function Czt(e, t) {
   if (!e)
     return (

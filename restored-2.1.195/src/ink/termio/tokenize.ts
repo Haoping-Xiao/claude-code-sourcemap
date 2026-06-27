@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4335  score=0.8369  fileCov=0.4735
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var URn = E(() => {
-  Jke();
-});
 function Qke(e) {
   let t = "ground",
     n = "",

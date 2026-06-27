@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.0976  score=0.3503  fileCov=0.1192
 // note: low-confidence suggestion: src/context/voice.tsx; dir inferred from dep-graph -> bootstrap; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wAc = E(() => {
-  ih();
-});
 function zzo(e) {
   Vzo.setState(t => t.focus === e ? t : {
     focus: e

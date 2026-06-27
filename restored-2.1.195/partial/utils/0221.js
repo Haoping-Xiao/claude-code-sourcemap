@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.1642  score=1  fileCov=0.1642
 // note: low-confidence suggestion: node_modules/lodash-es/_baseIsMap.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OEr = E(() => {
-  Bss();
-  Cin();
-  Lon();
-  Lin = PYc;
-});
+// [unwrapped __esm module OEr] deps: Bss, Cin, Lon
+Lin = PYc;
 function $Yc(e) {
   return hD(e) && Ege(e) == MYc;
 }

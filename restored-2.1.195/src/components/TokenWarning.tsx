@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1512  score=0.4222  fileCov=0.1907
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ahc = E(() => {
-  Shc();
-  Ye();
-  es();
-  Xur = R(se(), 1);
-});
+// [unwrapped __esm module Ahc] deps: Shc, Ye, es
+Xur = R(se(), 1);
 function Thc(e) {
   let t = Hhc.c(13),
     { tokenUsage: n, model: r } = e,

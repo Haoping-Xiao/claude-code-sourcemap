@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0115  score=0.119  fileCov=0.0125
 // note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0115); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VXo = E(() => {
-  _2c();
-  jXo();
-  rB();
-  iie();
-});
 function Snn(e) {
   switch (e) {
     case "A128GCM":

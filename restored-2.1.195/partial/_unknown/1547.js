@@ -4,11 +4,6 @@
 // class=partial  jaccard=0.2226  score=1  fileCov=0.2226
 // note: low-confidence suggestion: node_modules/@smithy/eventstream-codec/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var s4r = E(() => {
-  lMt();
-  uMt();
-  _je();
-});
 class i4r {
   format(e) {
     let t = [];

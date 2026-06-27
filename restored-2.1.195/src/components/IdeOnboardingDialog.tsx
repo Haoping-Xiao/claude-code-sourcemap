@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2806  score=0.3641  fileCov=0.5501
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gDe = E(() => {
-  Ye();
-  ((txa = R(lt(), 1)), (iFn = R(se(), 1)));
-});
+// [unwrapped __esm module gDe] deps: Ye
+((txa = R(lt(), 1)), (iFn = R(se(), 1)));
 var oxa = {};
 _t(oxa, {
   hasIdeOnboardingDialogBeenShown: () => hasIdeOnboardingDialogBeenShown,

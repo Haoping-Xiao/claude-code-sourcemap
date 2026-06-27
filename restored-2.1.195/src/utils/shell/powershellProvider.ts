@@ -4,21 +4,8 @@
 // class=modified  jaccard=0.4682  score=0.6717  fileCov=0.6071
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oMa = E(() => {
-  ft();
-  dn();
-  XPa();
-  qmo();
-  eMa();
-  Xjt();
-  je();
-  fn();
-  Is();
-  E5e();
-  kv();
-  sj();
-  ((tMa = require("fs/promises")), (nMa = require("path")), (GGt = require("path/posix")));
-});
+// [unwrapped __esm module oMa] deps: ft, dn, XPa, qmo, eMa, Xjt, je, fn, Is, E5e, kv, sj
+((tMa = require("fs/promises")), (nMa = require("path")), (GGt = require("path/posix")));
 function lMa() {
   let e = ["-NoProfile", "-NonInteractive"];
   if (!ut(process.env.CLAUDE_CODE_POWERSHELL_RESPECT_EXECUTION_POLICY))

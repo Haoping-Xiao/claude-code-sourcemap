@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.5697  score=0.9389  fileCov=0.5916
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var e1e = E(() => {
-  w8();
-  je();
-  At();
-  vbe();
-  lE();
-  $g();
-  vfe();
-  Xh();
-  WI();
-  dNf = ["user", "project", "local"];
-});
+// [unwrapped __esm module e1e] deps: w8, je, At, vbe, lE, $g, vfe, Xh, WI
+dNf = ["user", "project", "local"];
 async function trr(e) {
   let t = e.trim(),
     n = qt(),

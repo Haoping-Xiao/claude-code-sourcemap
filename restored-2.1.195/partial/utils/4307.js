@@ -4,18 +4,8 @@
 // class=partial  jaccard=0.2227  score=0.9289  fileCov=0.2265
 // note: low-confidence suggestion: src/utils/swarm/teammateLayoutManager.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cAe = E(() => {
-  ft();
-  dn();
-  je();
-  Is();
-  qJ();
-  rhl();
-  E0o();
-  ghl();
-  NDe();
-  vQ = Hhl();
-});
+// [unwrapped __esm module cAe] deps: ft, dn, je, Is, qJ, rhl, E0o, ghl, NDe
+vQ = Hhl();
 async function R0o() {
   return (await A$e()).backend;
 }

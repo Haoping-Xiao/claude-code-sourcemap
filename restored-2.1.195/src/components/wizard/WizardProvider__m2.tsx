@@ -4,17 +4,8 @@
 // class=modified (alt of src/components/wizard/WizardProvider.tsx)  jaccard=0.1761  score=0.5269  fileCov=0.2092
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TQa = E(() => {
-  Ye();
-  Vl();
-  Fy();
-  CH();
-  gm();
-  wb();
-  vH();
-  XHo();
-  ((n8n = R(rt(), 1)), (x$ = R(se(), 1)));
-});
+// [unwrapped __esm module TQa] deps: Ye, Vl, Fy, CH, gm, wb, vH, XHo
+((n8n = R(rt(), 1)), (x$ = R(se(), 1)));
 function o8n({ onComplete: e, onCancel: t }) {
   let n = r8n.useRef(e);
   n.current = e;

@@ -4,18 +4,6 @@
 // class=modified  jaccard=0.2181  score=0.4269  fileCov=0.3084
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cCo = E(() => {
-  ft();
-  k7();
-  Un();
-  aCo();
-  oo();
-  Vw();
-  je();
-  rle();
-  JOt();
-  _zn();
-});
 var csl = {};
 _t(csl, {
   applySafeConfigEnvironmentVariables: () => applySafeConfigEnvironmentVariables,

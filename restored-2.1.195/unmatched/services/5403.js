@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0029  score=0.7428  fileCov=0.0029
 // note: nearest: src/screens/REPL.tsx (0.0029); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mmc = E(() => {
-  ft();
-  ih();
-});
 function $mc(e) {
   let t = false;
   return Lme.setState(n => {

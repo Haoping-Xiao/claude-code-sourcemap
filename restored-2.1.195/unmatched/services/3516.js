@@ -3,6 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OUa = E(() => {
-  r5t = R(Nh(), 1);
-});
+// [unwrapped __esm module OUa]
+r5t = R(Nh(), 1);

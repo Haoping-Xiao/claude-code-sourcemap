@@ -4,74 +4,54 @@
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0082  score=0.1436  fileCov=0.0086
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sYe = E(() => {
-  ft();
-  Xa();
-  Un();
-  kt();
-  jc();
-  JJ();
-  Zor();
-  fd();
-  er();
-  je();
-  At();
-  vn();
-  bm();
-  _a();
-  xF();
-  gP();
-  d9l();
-  uJt();
-  yYt();
-  ((W2o = {
-    simple_plan: p9l(),
-    visual_plan: f9l(),
-    three_subagents_with_critique: m9l(),
-  }),
-    (FoE = Object.keys(W2o)));
-  ((h9l = {
-    timeEstimate: "a few minutes",
-    dialogBody:
-      "Interactive planning on the web where you can edit and leave targeted comments on Claude's plan.",
-    dialogPipeline: "Plan \u2192 Edit \u2192 Execute",
-    usageBlurb: [
-      "Remote plan mode with rich web editing experience.",
-      "Runs in Claude Code on the web. When the plan is ready,",
-      "you can execute it in the web session or send it back here.",
-      "You can continue to work while the plan is generated remotely.",
-    ],
-  }),
-    (lWf = {
-      simple_plan: h9l,
-      visual_plan: h9l,
-      three_subagents_with_critique: {
-        timeEstimate: "~10\u201330 min",
-        dialogBody:
-          "Interactive planning on the web where you can edit and leave targeted comments on Claude's plan.",
-        dialogPipeline: "Scope \u2192 Critique \u2192 Edit \u2192 Execute",
-        usageBlurb: [
-          "Advanced multi-agent plan mode.",
-          "Runs in Claude Code on the web. When the plan is ready,",
-          "you can execute it in the web session or send it back here.",
-          "You can continue to work while the plan is generated remotely.",
-        ],
-      },
-    }));
-  _9l = {
-    type: "local-jsx",
-    name: "ultraplan",
-    get description() {
-      return `Draft an editable plan in Claude Code on the web (${tsr().timeEstimate}) \xB7 See ${E1e}`;
+// [unwrapped __esm module sYe] deps: ft, Xa, Un, kt, jc, JJ, Zor, fd, er, je, At, vn, bm, _a, xF, gP, d9l, uJt, yYt
+((W2o = {
+  simple_plan: p9l(),
+  visual_plan: f9l(),
+  three_subagents_with_critique: m9l(),
+}),
+  (FoE = Object.keys(W2o)));
+((h9l = {
+  timeEstimate: "a few minutes",
+  dialogBody:
+    "Interactive planning on the web where you can edit and leave targeted comments on Claude's plan.",
+  dialogPipeline: "Plan \u2192 Edit \u2192 Execute",
+  usageBlurb: [
+    "Remote plan mode with rich web editing experience.",
+    "Runs in Claude Code on the web. When the plan is ready,",
+    "you can execute it in the web session or send it back here.",
+    "You can continue to work while the plan is generated remotely.",
+  ],
+}),
+  (lWf = {
+    simple_plan: h9l,
+    visual_plan: h9l,
+    three_subagents_with_critique: {
+      timeEstimate: "~10\u201330 min",
+      dialogBody:
+        "Interactive planning on the web where you can edit and leave targeted comments on Claude's plan.",
+      dialogPipeline: "Scope \u2192 Critique \u2192 Edit \u2192 Execute",
+      usageBlurb: [
+        "Advanced multi-agent plan mode.",
+        "Runs in Claude Code on the web. When the plan is ready,",
+        "you can execute it in the web session or send it back here.",
+        "You can continue to work while the plan is generated remotely.",
+      ],
     },
-    argumentHint: "<prompt>",
-    isEnabled: () => tme(),
-    load: () =>
-      Promise.resolve({
-        call: hWf,
-      }),
-  };
-});
+  }));
+_9l = {
+  type: "local-jsx",
+  name: "ultraplan",
+  get description() {
+    return `Draft an editable plan in Claude Code on the web (${tsr().timeEstimate}) \xB7 See ${E1e}`;
+  },
+  argumentHint: "<prompt>",
+  isEnabled: () => tme(),
+  load: () =>
+    Promise.resolve({
+      call: hWf,
+    }),
+};
 function K2o(e) {
   if (!e.bundleSeedEnabled) return null;
   return e.cloneViable

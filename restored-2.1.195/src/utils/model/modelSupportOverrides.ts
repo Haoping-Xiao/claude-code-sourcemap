@@ -4,51 +4,48 @@
 // class=modified  jaccard=0.2609  score=0.3392  fileCov=0.5305
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var JOt = E(() => {
-  Qi();
-  Ls();
-  ((Ykd = [
-    {
-      modelEnvVar: "ANTHROPIC_DEFAULT_FABLE_MODEL",
-      capabilitiesEnvVar: "ANTHROPIC_DEFAULT_FABLE_MODEL_SUPPORTED_CAPABILITIES",
+// [unwrapped __esm module JOt] deps: Qi, Ls
+((Ykd = [
+  {
+    modelEnvVar: "ANTHROPIC_DEFAULT_FABLE_MODEL",
+    capabilitiesEnvVar: "ANTHROPIC_DEFAULT_FABLE_MODEL_SUPPORTED_CAPABILITIES",
+  },
+  {
+    modelEnvVar: "ANTHROPIC_DEFAULT_OPUS_MODEL",
+    capabilitiesEnvVar: "ANTHROPIC_DEFAULT_OPUS_MODEL_SUPPORTED_CAPABILITIES",
+  },
+  {
+    modelEnvVar: "ANTHROPIC_DEFAULT_SONNET_MODEL",
+    capabilitiesEnvVar: "ANTHROPIC_DEFAULT_SONNET_MODEL_SUPPORTED_CAPABILITIES",
+  },
+  {
+    modelEnvVar: "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+    capabilitiesEnvVar: "ANTHROPIC_DEFAULT_HAIKU_MODEL_SUPPORTED_CAPABILITIES",
+  },
+  {
+    modelEnvVar: "ANTHROPIC_CUSTOM_MODEL_OPTION",
+    capabilitiesEnvVar: "ANTHROPIC_CUSTOM_MODEL_OPTION_SUPPORTED_CAPABILITIES",
+  },
+]),
+  (W9 = Cn(
+    (e, t) => {
+      if (td()) return;
+      let n = e.toLowerCase();
+      for (let r of Ykd) {
+        let o = process.env[r.modelEnvVar],
+          s = process.env[r.capabilitiesEnvVar];
+        if (!o || s === void 0) continue;
+        if (n !== o.toLowerCase()) continue;
+        return s
+          .toLowerCase()
+          .split(",")
+          .map((i) => i.trim())
+          .includes(t);
+      }
+      return;
     },
-    {
-      modelEnvVar: "ANTHROPIC_DEFAULT_OPUS_MODEL",
-      capabilitiesEnvVar: "ANTHROPIC_DEFAULT_OPUS_MODEL_SUPPORTED_CAPABILITIES",
-    },
-    {
-      modelEnvVar: "ANTHROPIC_DEFAULT_SONNET_MODEL",
-      capabilitiesEnvVar: "ANTHROPIC_DEFAULT_SONNET_MODEL_SUPPORTED_CAPABILITIES",
-    },
-    {
-      modelEnvVar: "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-      capabilitiesEnvVar: "ANTHROPIC_DEFAULT_HAIKU_MODEL_SUPPORTED_CAPABILITIES",
-    },
-    {
-      modelEnvVar: "ANTHROPIC_CUSTOM_MODEL_OPTION",
-      capabilitiesEnvVar: "ANTHROPIC_CUSTOM_MODEL_OPTION_SUPPORTED_CAPABILITIES",
-    },
-  ]),
-    (W9 = Cn(
-      (e, t) => {
-        if (td()) return;
-        let n = e.toLowerCase();
-        for (let r of Ykd) {
-          let o = process.env[r.modelEnvVar],
-            s = process.env[r.capabilitiesEnvVar];
-          if (!o || s === void 0) continue;
-          if (n !== o.toLowerCase()) continue;
-          return s
-            .toLowerCase()
-            .split(",")
-            .map((i) => i.trim())
-            .includes(t);
-        }
-        return;
-      },
-      (e, t) => `${e.toLowerCase()}:${t}`,
-    )));
-});
+    (e, t) => `${e.toLowerCase()}:${t}`,
+  )));
 var xvi = {};
 _t(xvi, {
   isPewterOwlTool: () => isPewterOwlTool,

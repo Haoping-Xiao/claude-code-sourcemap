@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0184  score=0.2494  fileCov=0.0195
 // note: nearest: src/utils/plugins/pluginLoader.ts (0.0184); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KPn = E(() => {
-  ft();
-  dr();
-  heo = require("path"), UKi = ["settings.json", "settings.local.json"];
-});
+// [unwrapped __esm module KPn] deps: ft, dr
+heo = require("path"), UKi = ["settings.json", "settings.local.json"];
 function nWe(e, t, n) {
   let r = qKd(t, n);
   if (typeof e !== "object" || e === null || Array.isArray(e)) return {

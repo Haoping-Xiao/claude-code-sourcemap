@@ -3,15 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var x9l = E(() => {
-  v5();
-  Ko();
-  eE();
-  Ye();
-  ps();
-  id();
-  uo();
-  je();
-  w9l = R(lt(), 1), C9l = R(cAt(), 1), osr = R(rt(), 1), Vk = R(se(), 1);
-});
+// [unwrapped __esm module x9l] deps: v5, Ko, eE, Ye, ps, id, uo, je
+w9l = R(lt(), 1), C9l = R(cAt(), 1), osr = R(rt(), 1), Vk = R(se(), 1);
 var jWf, J2o;

@@ -4,12 +4,9 @@
 // class=new  jaccard=0.036  score=0.0899  fileCov=0.0568
 // note: nearest: src/utils/deepLink/terminalLauncher.ts (0.036); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DJi = E(() => {
-  RFt();
-  SWe();
-  CJi = R(Uto(), 1), IJi = require("child_process"), Rbe = R(require("path"));
-  xJi = `_${Math.random().toString(36).slice(2, 11)}_SBX`;
-});
+// [unwrapped __esm module DJi] deps: RFt, SWe
+CJi = R(Uto(), 1), IJi = require("child_process"), Rbe = R(require("path"));
+xJi = `_${Math.random().toString(36).slice(2, 11)}_SBX`;
 function NJi(e) {
   if (e === void 0) return {
     kind: "cmd"

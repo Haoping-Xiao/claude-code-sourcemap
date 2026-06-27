@@ -4,14 +4,8 @@
 // class=modified (alt of src/commands/branch/branch.ts)  jaccard=0.1286  score=0.2994  fileCov=0.184
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var JZl = E(() => {
-  At();
-  BFe();
-  cDe();
-  jS();
-  Jt();
-  ((N3o = require("fs")), (hme = require("fs/promises")), (vYe = require("path")));
-});
+// [unwrapped __esm module JZl] deps: At, BFe, cDe, jS, Jt
+((N3o = require("fs")), (hme = require("fs/promises")), (vYe = require("path")));
 async function DKf(e, t) {
   let n = `${e}.jsonl`;
   async function r(i) {

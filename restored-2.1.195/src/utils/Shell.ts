@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3207  score=0.5394  fileCov=0.4416
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ejn = E(() => {
-  fn();
-  kv();
-  bUt();
-  ((sMa = require("fs/promises")), (iMa = require("path")), (aMa = require("path/posix")));
-});
+// [unwrapped __esm module ejn] deps: fn, kv, bUt
+((sMa = require("fs/promises")), (iMa = require("path")), (aMa = require("path/posix")));
 async function zmo(e) {
   try {
     return (fMa.accessSync(e, m6.constants.X_OK), true);

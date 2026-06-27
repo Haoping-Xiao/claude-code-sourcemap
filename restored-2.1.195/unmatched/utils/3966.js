@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0151  score=0.1367  fileCov=0.0167
 // note: nearest: src/services/analytics/metadata.ts (0.0151); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QVt = E(() => {
-  kt();
-  Rm();
-  Bi();
-  sa();
-  zQa = require("path");
-});
+// [unwrapped __esm module QVt] deps: kt, Rm, Bi, sa
+zQa = require("path");
 function Zc(e, t, n) {
   if (uTo) return;
   if (e === "skills_load_ms" && ZVt[e] !== void 0) return;

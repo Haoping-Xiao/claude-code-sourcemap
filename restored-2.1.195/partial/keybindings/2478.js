@@ -4,15 +4,14 @@
 // class=partial  jaccard=0.2295  score=0.6519  fileCov=0.2615
 // note: low-confidence suggestion: src/keybindings/resolver.ts; dir inferred from dep-graph -> keybindings; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lQr = E(() => {
-  iQr = {
-    "\u2020": "t"
-  };
-  aQr = {
-    π: "alt+p",
-    ø: "alt+o"
-  };
-});
+// [unwrapped __esm module lQr]
+iQr = {
+  "\u2020": "t"
+};
+aQr = {
+  π: "alt+p",
+  ø: "alt+o"
+};
 function uQr(e, t, n) {
   let r = false,
     o;

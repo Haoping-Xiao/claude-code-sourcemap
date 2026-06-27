@@ -4,19 +4,9 @@
 // class=new  jaccard=0.0067  score=0.2719  fileCov=0.0068
 // note: nearest: src/utils/teleport.tsx (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gM = E(() => {
-  ree();
-  ft();
-  id();
-  fd();
-  Lo();
-  sa();
-  W0r();
-  dfn();
-  RTs();
-  fet = require("fs"), fY = require("fs/promises"), mM = require("path"), met = new Map();
-  Lae = new MTs();
-});
+// [unwrapped __esm module gM] deps: ree, ft, id, fd, Lo, sa, W0r, dfn, RTs
+fet = require("fs"), fY = require("fs/promises"), mM = require("path"), met = new Map();
+Lae = new MTs();
 function SRt(e) {
   let t = NTs(e.replace(/[\t\n\r]/g, "").toLowerCase());
   if (t === "" || L$u.test(t)) return t;

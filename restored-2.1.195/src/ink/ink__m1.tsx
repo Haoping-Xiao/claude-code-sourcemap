@@ -4,92 +4,42 @@
 // class=modified (alt of src/ink/ink.tsx)  jaccard=0.0493  score=0.6888  fileCov=0.0504
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kLn = E(() => {
-  KYr();
-  uFi();
-  det();
-  ft();
-  pRn();
-  kt();
-  je();
-  wr();
-  fn();
-  At();
-  vn();
-  Is();
-  Vke();
-  sr();
-  Rit();
-  p8();
-  f7r();
-  sJr();
-  Wit();
-  iJr();
-  _Ln();
-  YGi();
-  X_e();
-  XGi();
-  ZGi();
-  HI();
-  nWi();
-  iWi();
-  K_e();
-  qBt();
-  Kit();
-  KBt();
-  $Wi();
-  BWi();
-  UWi();
-  IJr();
-  bW();
-  jWi();
-  NBt();
-  Tc();
-  xJr();
-  ZS();
-  X0n();
-  one();
-  OM();
-  q7();
-  jh();
-  EW();
-  Xge();
-  ((h8 = require("fs")),
-    (qWi = R(nRn(), 1)),
-    (JBt = require("util")),
-    (xLn = R(se(), 1)),
-    (lWd = UUi()),
-    (cWd = Object.freeze({
-      x: 0,
-      y: 0,
-      visible: false,
-    })),
-    (uWd = Object.freeze({
-      type: "stdout",
-      content: dH,
-    })),
-    (dWd = Object.freeze({
-      type: "stdout",
-      content: Jx + dH,
-    })));
-  ((mWd = [
-    "log",
-    "info",
-    "debug",
-    "dir",
-    "dirxml",
-    "count",
-    "countReset",
-    "group",
-    "groupCollapsed",
-    "groupEnd",
-    "table",
-    "time",
-    "timeEnd",
-    "timeLog",
-  ]),
-    (gWd = ["warn", "error", "trace"]));
-});
+// [unwrapped __esm module kLn] deps: KYr, uFi, det, ft, pRn, kt, je, wr, fn, At, vn, Is, Vke, sr, Rit, p8, f7r, sJr, Wit, iJr, _Ln, YGi, X_e, XGi, ZGi, HI, nWi, iWi, K_e, qBt, Kit, KBt, $Wi, BWi, UWi, IJr, bW, jWi, NBt, Tc, xJr, ZS, X0n, one, OM, q7, jh, EW, Xge
+((h8 = require("fs")),
+  (qWi = R(nRn(), 1)),
+  (JBt = require("util")),
+  (xLn = R(se(), 1)),
+  (lWd = UUi()),
+  (cWd = Object.freeze({
+    x: 0,
+    y: 0,
+    visible: false,
+  })),
+  (uWd = Object.freeze({
+    type: "stdout",
+    content: dH,
+  })),
+  (dWd = Object.freeze({
+    type: "stdout",
+    content: Jx + dH,
+  })));
+((mWd = [
+  "log",
+  "info",
+  "debug",
+  "dir",
+  "dirxml",
+  "count",
+  "countReset",
+  "group",
+  "groupCollapsed",
+  "groupEnd",
+  "table",
+  "time",
+  "timeEnd",
+  "timeLog",
+]),
+  (gWd = ["warn", "error", "trace"]));
 async function zWi({
   stdout: e = process.stdout,
   stdin: t = process.stdin,

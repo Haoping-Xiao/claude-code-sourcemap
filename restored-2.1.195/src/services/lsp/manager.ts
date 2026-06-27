@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.4034  score=0.6558  fileCov=0.5118
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var FDa = E(() => {
-  je();
-  At();
-  Jt();
-  dn();
-  kt();
-  _pt();
-  ypt();
-  BDa = require("url");
-});
+// [unwrapped __esm module FDa] deps: je, At, Jt, dn, kt, _pt, ypt
+BDa = require("url");
 function $kp() {
   let e,
     t = "not-started",

@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2757  score=0.4843  fileCov=0.3903
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var F5c = E(() => {
-  SGo();
-  Lne();
-  eqe();
-  fn();
-  xW();
-  jS();
-  Jt();
-  HO();
-  JN();
-  ((FZ = require("fs/promises")), (gV = require("path")), (N5c = /^[a-zA-Z0-9_-]+$/));
-});
+// [unwrapped __esm module F5c] deps: SGo, Lne, eqe, fn, xW, jS, Jt, HO, JN
+((FZ = require("fs/promises")), (gV = require("path")), (N5c = /^[a-zA-Z0-9_-]+$/));
 var phr = {};
 _t(phr, {
   startDeferredPrefetches: () => startDeferredPrefetches,

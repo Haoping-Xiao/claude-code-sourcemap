@@ -4,31 +4,26 @@
 // class=modified  jaccard=0.2834  score=0.4918  fileCov=0.4007
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ujl = E(() => {
-  Qi();
-  je();
-  Un();
-  c_();
-  ((brr = R(rt(), 1)), (VNf = new Set(["good", "warn", "poor"])));
-  KNf = Cn(async () => {
-    if (!at("tengu_skills_dashboard_enabled", false)) return null;
-    try {
-      let e = await Os.get("/api/claude_code/skills", {
-        auth: "async",
-        timeout: 5000,
-        validateStatus: () => true,
-      });
-      if (!e.ok) return (T(`Skill health fetch skipped: ${e.reason}`), null);
-      if (e.status >= 400) return (T(`Skill health fetch skipped: status ${e.status}`), null);
-      let t = e.data?.skills;
-      if (!Array.isArray(t)) return null;
-      let n = new Map();
-      for (let r of t) if (r.skill_name && zNf(r.health)) n.set(r.skill_name, r.health);
-      return n;
-    } catch (e) {
-      return (T(`Skill health fetch skipped: ${e}`), null);
-    }
-  });
+// [unwrapped __esm module ujl] deps: Qi, je, Un, c_
+((brr = R(rt(), 1)), (VNf = new Set(["good", "warn", "poor"])));
+KNf = Cn(async () => {
+  if (!at("tengu_skills_dashboard_enabled", false)) return null;
+  try {
+    let e = await Os.get("/api/claude_code/skills", {
+      auth: "async",
+      timeout: 5000,
+      validateStatus: () => true,
+    });
+    if (!e.ok) return (T(`Skill health fetch skipped: ${e.reason}`), null);
+    if (e.status >= 400) return (T(`Skill health fetch skipped: status ${e.status}`), null);
+    let t = e.data?.skills;
+    if (!Array.isArray(t)) return null;
+    let n = new Map();
+    for (let r of t) if (r.skill_name && zNf(r.health)) n.set(r.skill_name, r.health);
+    return n;
+  } catch (e) {
+    return (T(`Skill health fetch skipped: ${e}`), null);
+  }
 });
 function fjl() {
   return pjl.join(kI(), YNf);

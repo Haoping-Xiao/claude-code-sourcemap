@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.6238  score=0.9403  fileCov=0.6495
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var U5i = E(() => {
-  Tne();
-  ((N5i = R(lt(), 1)), (B5i = R(se(), 1)));
-});
+// [unwrapped __esm module U5i] deps: Tne
+((N5i = R(lt(), 1)), (B5i = R(se(), 1)));
 function F5i(e, t) {
   if (!e?.yogaNode || !t) return null;
   let n = e.yogaNode.getComputedHeight(),

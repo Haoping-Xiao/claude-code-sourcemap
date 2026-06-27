@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0292  score=0.1181  fileCov=0.0373
 // note: nearest: node_modules/@azure/core-rest-pipeline/dist/esm/policies/bearerTokenAuthenticationPolicy.js (0.0292); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kGc = E(() => {
-  SGc();
-  nrn();
-  AR();
-});
 class NQo {
   #e;
   constructor(e) {

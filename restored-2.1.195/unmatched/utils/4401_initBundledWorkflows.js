@@ -4,25 +4,23 @@
 // class=new  jaccard=0.0127  score=0.1398  fileCov=0.0138
 // note: nearest: src/components/tasks/RemoteSessionDetailDialog.tsx (0.0127); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DAl = E(() => {
-  o7n();
-  RAl = [{
-    title: "Scope",
-    detail: "Decompose question (from args) into 5 search angles"
-  }, {
-    title: "Search",
-    detail: "5 parallel WebSearch agents, one per angle"
-  }, {
-    title: "Fetch",
-    detail: "URL-dedup, fetch top 15 sources, extract falsifiable claims"
-  }, {
-    title: "Verify",
-    detail: "3-vote adversarial verification per claim (need 2/3 refutes to kill)"
-  }, {
-    title: "Synthesize",
-    detail: "Merge semantic dupes, rank by confidence, cite sources"
-  }];
-});
+// [unwrapped __esm module DAl] deps: o7n
+RAl = [{
+  title: "Scope",
+  detail: "Decompose question (from args) into 5 search angles"
+}, {
+  title: "Search",
+  detail: "5 parallel WebSearch agents, one per angle"
+}, {
+  title: "Fetch",
+  detail: "URL-dedup, fetch top 15 sources, extract falsifiable claims"
+}, {
+  title: "Verify",
+  detail: "3-vote adversarial verification per claim (need 2/3 refutes to kill)"
+}, {
+  title: "Synthesize",
+  detail: "Merge semantic dupes, rank by confidence, cite sources"
+}];
 var PAl = {};
 _t(PAl, {
   initBundledWorkflows: () => initBundledWorkflows

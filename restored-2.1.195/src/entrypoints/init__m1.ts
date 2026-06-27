@@ -4,16 +4,8 @@
 // class=modified (alt of src/entrypoints/init.ts)  jaccard=0.0879  score=0.8556  fileCov=0.0892
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vfc = E(() => {
-  Ye();
-  S6();
-  C5();
-  Gre();
-  Jt();
-  mE();
-  vi();
-  ((Hfc = R(lt(), 1)), (jz = R(se(), 1)));
-});
+// [unwrapped __esm module vfc] deps: Ye, S6, C5, Gre, Jt, mE, vi
+((Hfc = R(lt(), 1)), (jz = R(se(), 1)));
 var wfc = {};
 _t(wfc, {
   initializeTelemetryAfterTrust: () => initializeTelemetryAfterTrust,

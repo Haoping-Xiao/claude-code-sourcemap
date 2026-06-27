@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.2016  score=0.2756  fileCov=0.4291
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _pc = E(() => {
-  cdc();
-  ddc();
-  Z4e();
-  JN();
-  jcr();
-});
 function dNe(e, t, n) {
   let r = lX(e);
   if (r === "unknown") ke(e);

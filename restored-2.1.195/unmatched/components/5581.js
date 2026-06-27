@@ -4,30 +4,8 @@
 // class=new  jaccard=0.0124  score=0.2763  fileCov=0.0128
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0124); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cHc = E(() => {
-  Vl();
-  Bs();
-  Ko();
-  tHc();
-  X0();
-  eKo();
-  WTe();
-  Tpr();
-  LUt();
-  V9n();
-  Ye();
-  Un();
-  kt();
-  Du();
-  uo();
-  S$();
-  eit();
-  N6e();
-  Bmo();
-  $I();
-  lg();
-  aHc = R(lt(), 1), UH = R(rt(), 1), PC = R(se(), 1);
-});
+// [unwrapped __esm module cHc] deps: Vl, Bs, Ko, tHc, X0, eKo, WTe, Tpr, LUt, V9n, Ye, Un, kt, Du, uo, S$, eit, N6e, Bmo, $I, lg
+aHc = R(lt(), 1), UH = R(rt(), 1), PC = R(se(), 1);
 function E_m(e, t) {
   switch (e) {
     case "allow":

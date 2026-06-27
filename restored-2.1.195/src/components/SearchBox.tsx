@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.1989  score=0.222  fileCov=0.657
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var n$l = E(() => {
-  Tc();
-  Xge();
-});
 function LP({
   query: e,
   placeholder: t = "Search\u2026",

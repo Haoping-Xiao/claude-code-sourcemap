@@ -4,39 +4,19 @@
 // class=modified  jaccard=0.4905  score=0.6238  fileCov=0.6966
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wpe = E(() => {
-  kt();
-  Lo();
-  ft();
-  dn();
-  $S();
-  NB();
-  Vv();
-  je();
-  wr();
-  Y4();
-  QVt();
-  vn();
-  co();
-  KI();
-  _Le();
-  _a();
-  jS();
-  X4();
-  K0();
-  ((bht = require("path")),
-    (_Qp = (f4(), ro(URe)).BRIEF_TOOL_NAME),
-    (bQp = (f4(), ro(URe)).LEGACY_BRIEF_TOOL_NAME),
-    (SQp = ro(WOn).SEND_USER_FILE_TOOL_NAME),
-    (EQp = new Set([
-      "compaction_reminder",
-      "companion_intro",
-      "echo_activities",
-      "pen_mode_enter",
-      "pen_mode_exit",
-      "verify_plan_reminder",
-    ])));
-});
+// [unwrapped __esm module wpe] deps: kt, Lo, ft, dn, $S, NB, Vv, je, wr, Y4, QVt, vn, co, KI, _Le, _a, jS, X4, K0
+((bht = require("path")),
+  (_Qp = (f4(), ro(URe)).BRIEF_TOOL_NAME),
+  (bQp = (f4(), ro(URe)).LEGACY_BRIEF_TOOL_NAME),
+  (SQp = ro(WOn).SEND_USER_FILE_TOOL_NAME),
+  (EQp = new Set([
+    "compaction_reminder",
+    "companion_intro",
+    "echo_activities",
+    "pen_mode_enter",
+    "pen_mode_exit",
+    "verify_plan_reminder",
+  ])));
 function vZa(e, t) {
   let n = new Set();
   for (let r of e) if (!t.has(r)) n.add(r);

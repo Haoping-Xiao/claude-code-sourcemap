@@ -4,16 +4,8 @@
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0159  score=0.3029  fileCov=0.0165
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pic = E(() => {
-  ft();
-  KKt();
-  ag();
-  je();
-  sp();
-  _a();
-  Mp();
-  Dic = require("crypto");
-});
+// [unwrapped __esm module Pic] deps: ft, KKt, ag, je, sp, _a, Mp
+Dic = require("crypto");
 async function WYe(e) {
   let t = {
       ...Td(void 0),

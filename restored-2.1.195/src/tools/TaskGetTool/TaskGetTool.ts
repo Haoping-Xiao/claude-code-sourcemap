@@ -4,109 +4,105 @@
 // class=modified  jaccard=0.7  score=0.9206  fileCov=0.745
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gbl = E(() => {
-  Xr();
-  ii();
-  bk();
-  ((ihf = ve(() =>
-    H.strictObject({
-      taskId: H.string().describe("The ID of the task to retrieve"),
+// [unwrapped __esm module Gbl] deps: Xr, ii, bk
+((ihf = ve(() =>
+  H.strictObject({
+    taskId: H.string().describe("The ID of the task to retrieve"),
+  }),
+)),
+  (ahf = ve(() =>
+    H.object({
+      task: H.object({
+        id: H.string(),
+        subject: H.string(),
+        description: H.string(),
+        status: rVe(),
+        blocks: H.array(H.string()),
+        blockedBy: H.array(H.string()),
+      }).nullable(),
     }),
   )),
-    (ahf = ve(() =>
-      H.object({
-        task: H.object({
-          id: H.string(),
-          subject: H.string(),
-          description: H.string(),
-          status: rVe(),
-          blocks: H.array(H.string()),
-          blockedBy: H.array(H.string()),
-        }).nullable(),
-      }),
-    )),
-    (jbl = ti({
-      name: kX,
-      searchHint: "retrieve a task by ID",
-      maxResultSizeChars: 100000 /* 1e5 */,
-      async description() {
-        return Ubl;
-      },
-      async prompt() {
-        return Fbl;
-      },
-      get inputSchema() {
-        return ihf();
-      },
-      get outputSchema() {
-        return ahf();
-      },
-      userFacingName() {
-        return "TaskGet";
-      },
-      shouldDefer: true,
-      isEnabled() {
-        return EH();
-      },
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      toAutoClassifierInput(e) {
-        return e.taskId;
-      },
-      renderToolUseMessage() {
-        return null;
-      },
-      async call({ taskId: e }) {
-        let t = yF(),
-          n = await Bre(t, e);
-        if (!n)
-          return {
-            data: {
-              task: null,
-            },
-          };
+  (jbl = ti({
+    name: kX,
+    searchHint: "retrieve a task by ID",
+    maxResultSizeChars: 100000 /* 1e5 */,
+    async description() {
+      return Ubl;
+    },
+    async prompt() {
+      return Fbl;
+    },
+    get inputSchema() {
+      return ihf();
+    },
+    get outputSchema() {
+      return ahf();
+    },
+    userFacingName() {
+      return "TaskGet";
+    },
+    shouldDefer: true,
+    isEnabled() {
+      return EH();
+    },
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    toAutoClassifierInput(e) {
+      return e.taskId;
+    },
+    renderToolUseMessage() {
+      return null;
+    },
+    async call({ taskId: e }) {
+      let t = yF(),
+        n = await Bre(t, e);
+      if (!n)
         return {
           data: {
-            task: {
-              id: n.id,
-              subject: n.subject,
-              description: n.description,
-              status: n.status,
-              blocks: n.blocks,
-              blockedBy: n.blockedBy,
-            },
+            task: null,
           },
         };
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        let { task: n } = e;
-        if (!n)
-          return {
-            tool_use_id: t,
-            type: "tool_result",
-            content: "Task not found",
-          };
-        let r = [
-          `Task #${n.id}: ${n.subject}`,
-          `Status: ${n.status}`,
-          `Description: ${n.description}`,
-        ];
-        if (n.blockedBy.length > 0)
-          r.push(`Blocked by: ${n.blockedBy.map((o) => `#${o}`).join(", ")}`);
-        if (n.blocks.length > 0) r.push(`Blocks: ${n.blocks.map((o) => `#${o}`).join(", ")}`);
+      return {
+        data: {
+          task: {
+            id: n.id,
+            subject: n.subject,
+            description: n.description,
+            status: n.status,
+            blocks: n.blocks,
+            blockedBy: n.blockedBy,
+          },
+        },
+      };
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      let { task: n } = e;
+      if (!n)
         return {
           tool_use_id: t,
           type: "tool_result",
-          content: r.join(`
-`),
+          content: "Task not found",
         };
-      },
-    })));
-});
+      let r = [
+        `Task #${n.id}: ${n.subject}`,
+        `Status: ${n.status}`,
+        `Description: ${n.description}`,
+      ];
+      if (n.blockedBy.length > 0)
+        r.push(`Blocked by: ${n.blockedBy.map((o) => `#${o}`).join(", ")}`);
+      if (n.blocks.length > 0) r.push(`Blocks: ${n.blocks.map((o) => `#${o}`).join(", ")}`);
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content: r.join(`
+`),
+      };
+    },
+  })));
 var Wbl = "Update a task in the task list",
   qbl = `Use this tool to update a task in the task list.
 

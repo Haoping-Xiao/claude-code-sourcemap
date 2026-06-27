@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0045  score=0.0892  fileCov=0.0047
 // note: nearest: src/screens/REPL.tsx (0.0045); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jTc = E(() => {
-  kZn();
-  DHe();
-  AA();
-});
 function qTc(e) {
   let {
       rawFirstToken: t,

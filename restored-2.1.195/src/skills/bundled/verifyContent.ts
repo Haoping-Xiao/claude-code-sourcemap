@@ -4,16 +4,12 @@
 // class=modified  jaccard=0.3134  score=0.414  fileCov=0.5633
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Cwc = E(() => {
-  Swc();
-  Awc();
-  Twc();
-  ((jEm = vwc),
-    (GEm = {
-      "examples/cli.md": Ewc,
-      "examples/server.md": Hwc,
-    }));
-});
+// [unwrapped __esm module Cwc] deps: Swc, Awc, Twc
+((jEm = vwc),
+  (GEm = {
+    "examples/cli.md": Ewc,
+    "examples/server.md": Hwc,
+  }));
 function Iwc() {
   return (WEm ??= Promise.resolve().then(() => (Cwc(), wwc)));
 }

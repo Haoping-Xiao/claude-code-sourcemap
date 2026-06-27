@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.0846  score=1  fileCov=0.0846
 // note: low-confidence suggestion: node_modules/@smithy/types/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var B3s = E(() => {
-  N3s = R(ZH(), 1);
-});
+// [unwrapped __esm module B3s]
+N3s = R(ZH(), 1);
 var U3s = e => {
     let t = [];
     for (let n in Gtt) {

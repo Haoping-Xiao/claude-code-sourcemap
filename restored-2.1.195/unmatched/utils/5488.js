@@ -4,29 +4,9 @@
 // class=new  jaccard=0.0295  score=0.3728  fileCov=0.031
 // note: nearest: src/ink/styles.ts (0.0295); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var J_c = E(() => {
-  ft();
-  rJt();
-  w4();
-  _i();
-  y0e();
-  Ye();
-  z1();
-  xjt();
-  uo();
-  uf();
-  ZYt();
-  K$e();
-  OTt();
-  E8o();
-  adr();
-  F_c();
-  OUt();
-  rBo();
-  z6o();
-  K6o = R(lt(), 1), Y_c = R(rt(), 1), eB = R(se(), 1);
-  X_c = Y_c.memo(Smm);
-});
+// [unwrapped __esm module J_c] deps: ft, rJt, w4, _i, y0e, Ye, z1, xjt, uo, uf, ZYt, K$e, OTt, E8o, adr, F_c, OUt, rBo, z6o
+K6o = R(lt(), 1), Y_c = R(rt(), 1), eB = R(se(), 1);
+X_c = Y_c.memo(Smm);
 function vmm() {
   if (!el()) return;
   let e = Sv();

@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0177  score=1  fileCov=0.0177
 // note: nearest: src/components/ConsoleOAuthFlow.tsx (0.0177); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qgc = E(() => {
-  Qho();
-  Our = R(rt(), 1);
-});
+// [unwrapped __esm module qgc] deps: Qho
+Our = R(rt(), 1);
 function Vum() {
   return Date.now() - Ex();
 }

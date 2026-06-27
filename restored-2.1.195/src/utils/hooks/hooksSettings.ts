@@ -4,20 +4,18 @@
 // class=modified  jaccard=0.5145  score=0.8519  fileCov=0.565
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oKl = E(() => {
-  oo();
-  ((aVf = {
-    type: "local-jsx",
-    name: "privacy-settings",
-    description: "View and update your privacy settings",
-    isEnabled: () => Y4e(),
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (rKl(), nKl)),
-  }),
-    (Jjo = aVf));
-});
+// [unwrapped __esm module oKl] deps: oo
+((aVf = {
+  type: "local-jsx",
+  name: "privacy-settings",
+  description: "View and update your privacy settings",
+  isEnabled: () => Y4e(),
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (rKl(), nKl)),
+}),
+  (Jjo = aVf));
 function eTe(e) {
   switch (e.type) {
     case "command":

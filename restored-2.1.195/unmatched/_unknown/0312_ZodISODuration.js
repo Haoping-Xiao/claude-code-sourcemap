@@ -4,9 +4,6 @@
 // class=new  jaccard=0.053  score=0.1978  fileCov=0.0674
 // note: nearest: node_modules/zod/v4/classic/iso.js (0.053); 8 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FTr = E(() => {
-  aM();
-});
 var $Qe = {};
 _t($Qe, {
   time: () => time,

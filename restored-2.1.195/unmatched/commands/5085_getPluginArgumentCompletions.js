@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0246  score=0.3642  fileCov=0.0257
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0246); dir inferred from dep-graph -> commands; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w7l = E(() => {
-  PEt();
-  xrr();
-  v7l = R(se(), 1);
-});
+// [unwrapped __esm module w7l] deps: PEt, xrr
+v7l = R(se(), 1);
 var C7l = {};
 _t(C7l, {
   getPluginArgumentCompletions: () => getPluginArgumentCompletions

@@ -4,12 +4,8 @@
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.1026  score=0.8999  fileCov=0.1038
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $_l = E(() => {
-  ql();
-  Ye();
-  es();
-  XAe = R(se(), 1);
-});
+// [unwrapped __esm module $_l] deps: ql, Ye, es
+XAe = R(se(), 1);
 function Rgf(e) {
   return {
     type: "web_search_20250305",

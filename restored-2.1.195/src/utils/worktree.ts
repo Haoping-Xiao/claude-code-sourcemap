@@ -4,107 +4,38 @@
 // class=modified  jaccard=0.2653  score=0.4289  fileCov=0.4102
 // note: deminified; 32 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sp = E(() => {
-  ft();
-  oc();
-  ojn();
-  jqe();
-  Lo();
-  qmo();
-  E5e();
-  _1();
-  z2n();
-  $pt();
-  Cp();
-  Is();
-  Ls();
-  qd();
-  sj();
-  kDe();
-  _m();
-  ejn();
-  i5();
-  B1();
-  o8();
-  ft();
-  er();
-  ZYt();
-  PM();
-  _a();
-  dr();
-  kt();
-  dn();
-  Du();
-  I8();
-  aS();
-  II();
-  $g();
-  ZC();
-  Un();
-  m5();
-  D5o();
-  K0();
-  iu();
-  WAt();
-  je();
-  Mm();
-  sr();
-  BFo();
-  QH();
-  vn();
-  EAe();
-  MZn();
-  bm();
-  co();
-  np();
-  OI();
-  PZn();
-  Vv();
-  oo();
-  p6e();
-  ii();
-  dic();
-  fic();
-  mic();
-  gic();
-  pQ();
-  Jt();
-  gb();
-  fn();
-  At();
-  yic();
-  ((Nic = require("path")), (Nlr = require("child_process")), (qYe = require("crypto")));
-  $ic();
-  Yem = new Set();
-  ((Jem = new Set([
+// [unwrapped __esm module sp] deps: ft, oc, ojn, jqe, Lo, qmo, E5e, _1, z2n, $pt, Cp, Is, Ls, qd, sj, kDe, _m, ejn, i5, B1, o8, ft, er, ZYt, PM, _a, dr, kt, dn, Du, I8, aS, II, $g, ZC, Un, m5, D5o, K0, iu, WAt, je, Mm, sr, BFo, QH, vn, EAe, MZn, bm, co, np, OI, PZn, Vv, oo, p6e, ii, dic, fic, mic, gic, pQ, Jt, gb, fn, At, yic
+((Nic = require("path")), (Nlr = require("child_process")), (qYe = require("crypto")));
+$ic();
+Yem = new Set();
+((Jem = new Set([
+  "PreToolUse",
+  "PostToolUse",
+  "PostToolUseFailure",
+  "PermissionRequest",
+  "PermissionDenied",
+  "UserPromptExpansion",
+  "SessionStart",
+  "SessionEnd",
+  "Setup",
+  "PreCompact",
+  "PostCompact",
+  "Notification",
+  "SubagentStart",
+  "SubagentStop",
+  "Elicitation",
+  "ElicitationResult",
+  "ConfigChange",
+  "InstructionsLoaded",
+])),
+  (Qem = new Set([
     "PreToolUse",
     "PostToolUse",
     "PostToolUseFailure",
     "PermissionRequest",
     "PermissionDenied",
-    "UserPromptExpansion",
-    "SessionStart",
-    "SessionEnd",
-    "Setup",
-    "PreCompact",
-    "PostCompact",
-    "Notification",
-    "SubagentStart",
-    "SubagentStop",
-    "Elicitation",
-    "ElicitationResult",
-    "ConfigChange",
-    "InstructionsLoaded",
-  ])),
-    (Qem = new Set([
-      "PreToolUse",
-      "PostToolUse",
-      "PostToolUseFailure",
-      "PermissionRequest",
-      "PermissionDenied",
-    ])));
-  U5o = new Set();
-});
+  ])));
+U5o = new Set();
 var lac = {};
 _t(lac, {
   worktreeBranchName: () => worktreeBranchName,

@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0337  score=0.2119  fileCov=0.0385
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0337); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RGc = E(() => {
-  EGc();
-});
 class BQo {
   #e;
   #t;

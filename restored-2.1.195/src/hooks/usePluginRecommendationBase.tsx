@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.262  score=0.4226  fileCov=0.4082
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var XLc = E(() => {
-  GLc();
-  er();
-  je();
-  _k();
-  lE();
-  WI();
-  ZC();
-  VLc = require("path");
-});
+// [unwrapped __esm module XLc] deps: GLc, er, je, _k, lE, WI, ZC
+VLc = require("path");
 function Rfr() {
   let e = JLc.c(6),
     [t, n] = kfr.useState(null),

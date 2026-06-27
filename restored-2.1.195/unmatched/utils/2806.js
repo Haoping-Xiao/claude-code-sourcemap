@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0337  score=0.2949  fileCov=0.0367
 // note: nearest: src/services/compact/autoCompact.ts (0.0337); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ria = E(() => {
-  eLe();
-});
 function l1n() {
   return at("tengu_amber_redwood2", "") || at("tengu_amber_redwood3", "");
 }

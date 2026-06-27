@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3099  score=0.8691  fileCov=0.3251
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eco = E(() => {
-  bda();
-  iba();
-  vn();
-  ((Tba = new Set()), (vba = new Set()));
-});
+// [unwrapped __esm module eco] deps: bda, iba, vn
+((Tba = new Set()), (vba = new Set()));
 function Nyp() {
   return zut();
 }

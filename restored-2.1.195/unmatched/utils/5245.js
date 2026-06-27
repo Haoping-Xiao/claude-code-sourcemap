@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0056  score=0.2406  fileCov=0.0057
 // note: nearest: src/cli/print.ts (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tWo = E(() => {
-  FAe();
-  Hpe();
-  zH();
-  WL();
-});
 async function oWo(e = {}) {
   return yl("daemon_bg_reap_all", async () => {
     let t = await h3({

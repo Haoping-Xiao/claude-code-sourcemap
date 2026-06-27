@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.5402  score=0.7144  fileCov=0.689
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RBo = E(() => {
-  si();
-  Ye();
-  Yfe();
-  uo();
-  CH();
-  ((r2l = R(lt(), 1)), (oXt = R(rt(), 1)), (Sse = R(se(), 1)));
-});
+// [unwrapped __esm module RBo] deps: si, Ye, Yfe, uo, CH
+((r2l = R(lt(), 1)), (oXt = R(rt(), 1)), (Sse = R(se(), 1)));
 function jnr(e) {
   let t = o2l.c(9),
     { serverToolsCount: n, serverPromptsCount: r, serverResourcesCount: o } = e,

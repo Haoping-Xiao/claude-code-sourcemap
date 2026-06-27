@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.1086  score=0.1672  fileCov=0.2367
 // note: low-confidence suggestion: src/commands/install-github-app/CreatingStep.tsx; dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fFl = E(() => {
-  mE();
-  pz();
-  Ye();
-  dFl = R(lt(), 1), LHe = R(se(), 1);
-});
+// [unwrapped __esm module fFl] deps: mE, pz, Ye
+dFl = R(lt(), 1), LHe = R(se(), 1);
 function gFl(e) {
   let t = mFl.c(25),
     {

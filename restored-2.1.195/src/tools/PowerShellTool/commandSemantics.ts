@@ -4,136 +4,131 @@
 // class=modified  jaccard=0.1266  score=0.1672  fileCov=0.3426
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PHl = E(() => {
-  PLo();
-  B_f = new Map([
-    ["grep", MLo],
-    ["rg", MLo],
-    ["findstr", MLo],
-    [
-      "robocopy",
-      (e, t, n) => ({
-        isError: e >= 8,
-        message:
-          e === 0
-            ? "No files copied (already in sync)"
-            : e >= 1 && e < 8
-              ? e & 1
-                ? "Files copied successfully"
-                : "Robocopy completed (no errors)"
-              : void 0,
-      }),
-    ],
-  ]);
-  ((F_f = [...nJn, "Invoke-WebRequest", "winget", "choco", "az"]),
-    (j_f = new Map(F_f.map((e) => [e.toLowerCase(), e]))));
-  G_f = [
-    ["ps5_chain_op", /token '(&&|\|\||\?\?)' is not a valid|InvalidEndOfLine/i],
-    ["parser_error", /ParserError:|ParseException|TerminatorExpectedAtEndOfString/],
-    [
-      "not_recognized",
-      /is not recognized as (a name of a cmdlet|the name of a cmdlet|an? internal)/i,
-    ],
-    ["command_not_found", /CommandNotFoundException/],
-    ["path_not_found", /ItemNotFoundException|PathNotFound,Microsoft\.PowerShell/],
-    ["access_denied", /UnauthorizedAccessException|PermissionDenied,Microsoft\.PowerShell/],
-    ["parameter_binding", /ParameterBindingException|ParameterArgumentValidationError/],
-    ["object_not_found", /ObjectNotFound: \(|DriveNotFoundException/],
-    ["execution_policy", /running scripts is disabled on this system|PSSecurityException/i],
-    ["method_invocation", /MethodInvocationException|MethodException/],
-    ["cannot_convert", /InvalidCastException|ConvertToFinalInvalidCastException/],
-    [
-      "null_expression",
-      /InvokeMethodOnNull|NullArray|PropertyNotFoundStrict|NullReferenceException/,
-    ],
-    ["io_exception", /\bIOException\b|FileNotFoundException/],
-    ["write_error", /WriteErrorException/],
-    [
-      "iwr_basic_parsing",
-      /Internet Explorer engine is not available|WebCmdletIEDomNotSupportedException/i,
-    ],
-    ["runtime_exception", /: RuntimeException\b|ScriptHalted/],
-    ["native_npm", /^npm (ERR!|error)/m],
-    ["native_dotnet", /: error [A-Z]{2,}\d{4}:|^Build FAILED\./m],
-    ["native_python", /^Traceback \(most recent call last\):/m],
-    ["native_cargo", /^error\[E\d{4}\]|^error: could not compile/m],
-    ["native_go", /^# [\w./-]+\n.*\.go:\d+:\d+: /m],
-    ["native_git", /^(?:\S+ : )?(fatal|error): /m],
-    [
-      "native_node",
-      /^(?:Type|Reference|Syntax|Range)Error[: [\]]|^Error: Cannot find module|^node:internal\//m,
-    ],
-    ["native_command_error", /NativeCommandError|RemoteException/],
-  ];
-  ((W_f = new Set([
-    "head",
-    "tail",
-    "which",
-    "touch",
-    "grep",
-    "sed",
-    "awk",
-    "wc",
-    "chmod",
-    "chown",
-    "ln",
-    "cut",
-    "tr",
-    "uniq",
-    "xargs",
-    "env",
-    "seq",
-    "realpath",
-    "readlink",
-    "basename",
-    "dirname",
-    "printf",
-    "source",
-    "export",
-    "unset",
-    "true",
-    "false",
-    "yes",
-    "stat",
-    "find",
-    "less",
-    "sudo",
-  ])),
-    (q_f = new Set([
-      "git",
-      "gh",
-      "node",
-      "npm",
-      "npx",
-      "yarn",
-      "pnpm",
-      "bun",
-      "python",
-      "python3",
-      "pip",
-      "pip3",
-      "cargo",
-      "rustc",
-      "go",
-      "dotnet",
-      "java",
-      "javac",
-      "mvn",
-      "gradle",
-      "make",
-      "cmake",
-      "docker",
-      "kubectl",
-      "terraform",
-      "az",
-      "aws",
-      "gcloud",
-      "curl",
-      "wget",
-      "jq",
-      "code",
-    ])));
-});
+// [unwrapped __esm module PHl] deps: PLo
+B_f = new Map([
+  ["grep", MLo],
+  ["rg", MLo],
+  ["findstr", MLo],
+  [
+    "robocopy",
+    (e, t, n) => ({
+      isError: e >= 8,
+      message:
+        e === 0
+          ? "No files copied (already in sync)"
+          : e >= 1 && e < 8
+            ? e & 1
+              ? "Files copied successfully"
+              : "Robocopy completed (no errors)"
+            : void 0,
+    }),
+  ],
+]);
+((F_f = [...nJn, "Invoke-WebRequest", "winget", "choco", "az"]),
+  (j_f = new Map(F_f.map((e) => [e.toLowerCase(), e]))));
+G_f = [
+  ["ps5_chain_op", /token '(&&|\|\||\?\?)' is not a valid|InvalidEndOfLine/i],
+  ["parser_error", /ParserError:|ParseException|TerminatorExpectedAtEndOfString/],
+  [
+    "not_recognized",
+    /is not recognized as (a name of a cmdlet|the name of a cmdlet|an? internal)/i,
+  ],
+  ["command_not_found", /CommandNotFoundException/],
+  ["path_not_found", /ItemNotFoundException|PathNotFound,Microsoft\.PowerShell/],
+  ["access_denied", /UnauthorizedAccessException|PermissionDenied,Microsoft\.PowerShell/],
+  ["parameter_binding", /ParameterBindingException|ParameterArgumentValidationError/],
+  ["object_not_found", /ObjectNotFound: \(|DriveNotFoundException/],
+  ["execution_policy", /running scripts is disabled on this system|PSSecurityException/i],
+  ["method_invocation", /MethodInvocationException|MethodException/],
+  ["cannot_convert", /InvalidCastException|ConvertToFinalInvalidCastException/],
+  ["null_expression", /InvokeMethodOnNull|NullArray|PropertyNotFoundStrict|NullReferenceException/],
+  ["io_exception", /\bIOException\b|FileNotFoundException/],
+  ["write_error", /WriteErrorException/],
+  [
+    "iwr_basic_parsing",
+    /Internet Explorer engine is not available|WebCmdletIEDomNotSupportedException/i,
+  ],
+  ["runtime_exception", /: RuntimeException\b|ScriptHalted/],
+  ["native_npm", /^npm (ERR!|error)/m],
+  ["native_dotnet", /: error [A-Z]{2,}\d{4}:|^Build FAILED\./m],
+  ["native_python", /^Traceback \(most recent call last\):/m],
+  ["native_cargo", /^error\[E\d{4}\]|^error: could not compile/m],
+  ["native_go", /^# [\w./-]+\n.*\.go:\d+:\d+: /m],
+  ["native_git", /^(?:\S+ : )?(fatal|error): /m],
+  [
+    "native_node",
+    /^(?:Type|Reference|Syntax|Range)Error[: [\]]|^Error: Cannot find module|^node:internal\//m,
+  ],
+  ["native_command_error", /NativeCommandError|RemoteException/],
+];
+((W_f = new Set([
+  "head",
+  "tail",
+  "which",
+  "touch",
+  "grep",
+  "sed",
+  "awk",
+  "wc",
+  "chmod",
+  "chown",
+  "ln",
+  "cut",
+  "tr",
+  "uniq",
+  "xargs",
+  "env",
+  "seq",
+  "realpath",
+  "readlink",
+  "basename",
+  "dirname",
+  "printf",
+  "source",
+  "export",
+  "unset",
+  "true",
+  "false",
+  "yes",
+  "stat",
+  "find",
+  "less",
+  "sudo",
+])),
+  (q_f = new Set([
+    "git",
+    "gh",
+    "node",
+    "npm",
+    "npx",
+    "yarn",
+    "pnpm",
+    "bun",
+    "python",
+    "python3",
+    "pip",
+    "pip3",
+    "cargo",
+    "rustc",
+    "go",
+    "dotnet",
+    "java",
+    "javac",
+    "mvn",
+    "gradle",
+    "make",
+    "cmake",
+    "docker",
+    "kubectl",
+    "terraform",
+    "az",
+    "aws",
+    "gcloud",
+    "curl",
+    "wget",
+    "jq",
+    "code",
+  ])));
 function hq(e) {
   let t = e.replace($Lo, "");
   for (;;)

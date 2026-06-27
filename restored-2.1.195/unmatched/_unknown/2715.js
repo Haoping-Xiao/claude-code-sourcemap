@@ -4,26 +4,6 @@
 // class=new  jaccard=0.029  score=0.2177  fileCov=0.0324
 // note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.029); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SX = E(() => {
-  $Zi();
-  NZi();
-  qZi();
-  Ono();
-  JZi();
-  ZZi();
-  Dno();
-  OZi();
-  eea();
-  tea();
-  sea();
-  lea();
-  VZi();
-  cea();
-  $no();
-  XZi();
-  hea();
-  _ea();
-});
 function KFt(e, t) {
   Sea(t, e);
   let n = Eep(e.$unknown, t),

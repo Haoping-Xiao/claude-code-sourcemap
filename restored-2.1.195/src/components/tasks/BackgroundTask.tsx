@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4402  score=0.6269  fileCov=0.5964
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var h8l = E(() => {
-  Ye();
-  ((cjo = R(lt(), 1)), (iYe = R(se(), 1)));
-});
+// [unwrapped __esm module h8l] deps: Ye
+((cjo = R(lt(), 1)), (iYe = R(se(), 1)));
 function _8l(e) {
   let t = y8l.c(107),
     { task: n, maxActivityWidth: r } = e,

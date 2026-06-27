@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2892  score=0.3831  fileCov=0.5412
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vdc = E(() => {
-  bCe();
-  je();
-  At();
-  Rd();
-  Is();
-  ((ZYe = require("fs/promises")), (Gdc = require("os")), (O9o = require("path")));
-});
+// [unwrapped __esm module Vdc] deps: bCe, je, At, Rd, Is
+((ZYe = require("fs/promises")), (Gdc = require("os")), (O9o = require("path")));
 var lNe = {};
 _t(lNe, {
   mcpServeHandler: () => mcpServeHandler,

@@ -4,33 +4,32 @@
 // class=new  jaccard=0.0479  score=0.7577  fileCov=0.0486
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0479); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gBr = E(() => {
-  kIe = class kIe extends Error {
-    $fault;
-    $response;
-    $retryable;
-    $metadata;
-    constructor(e) {
-      super(e.message);
-      Object.setPrototypeOf(this, Object.getPrototypeOf(this).constructor.prototype), this.name = e.name, this.$fault = e.$fault, this.$metadata = e.$metadata;
+// [unwrapped __esm module gBr]
+kIe = class kIe extends Error {
+  $fault;
+  $response;
+  $retryable;
+  $metadata;
+  constructor(e) {
+    super(e.message);
+    Object.setPrototypeOf(this, Object.getPrototypeOf(this).constructor.prototype), this.name = e.name, this.$fault = e.$fault, this.$metadata = e.$metadata;
+  }
+  static isInstance(e) {
+    if (!e) return false;
+    let t = e;
+    return kIe.prototype.isPrototypeOf(t) || Boolean(t.$fault) && Boolean(t.$metadata) && (t.$fault === "client" || t.$fault === "server");
+  }
+  static [Symbol.hasInstance](e) {
+    if (!e) return false;
+    let t = e;
+    if (this === kIe) return kIe.isInstance(e);
+    if (kIe.isInstance(e)) {
+      if (t.name && this.name) return this.prototype.isPrototypeOf(e) || t.name === this.name;
+      return this.prototype.isPrototypeOf(e);
     }
-    static isInstance(e) {
-      if (!e) return false;
-      let t = e;
-      return kIe.prototype.isPrototypeOf(t) || Boolean(t.$fault) && Boolean(t.$metadata) && (t.$fault === "client" || t.$fault === "server");
-    }
-    static [Symbol.hasInstance](e) {
-      if (!e) return false;
-      let t = e;
-      if (this === kIe) return kIe.isInstance(e);
-      if (kIe.isInstance(e)) {
-        if (t.name && this.name) return this.prototype.isPrototypeOf(e) || t.name === this.name;
-        return this.prototype.isPrototypeOf(e);
-      }
-      return false;
-    }
-  };
-});
+    return false;
+  }
+};
 var Mzs = ({
     output: e,
     parsedBody: t,

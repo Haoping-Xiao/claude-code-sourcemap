@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0062  score=0.3898  fileCov=0.0063
 // note: nearest: src/commands/insights.ts (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Brl = E(() => {
-  S_();
-  SAe();
-  je();
-  q0();
-  vn();
-  co();
-  kt();
-});
 function _yt(e, t, n) {
   e.updateTranscript(t, r => ({
     ...r,

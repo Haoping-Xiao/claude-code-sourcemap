@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0041  score=0.1643  fileCov=0.0042
 // note: nearest: src/utils/attachments.ts (0.0041); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hic = E(() => {
-  sp();
-});
 async function* JHt(e, t, n, r = lp) {
   let o = {
     ...Td(void 0),

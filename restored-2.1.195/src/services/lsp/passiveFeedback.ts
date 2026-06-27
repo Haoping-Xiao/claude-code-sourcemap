@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.4031  score=0.5942  fileCov=0.5562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NDa = E(() => {
-  je();
-  At();
-  dn();
-  dLa();
-  $Da();
-  ypt();
-  ((rEe = R(require("path"))), (xpt = require("url")));
-});
+// [unwrapped __esm module NDa] deps: je, At, dn, dLa, $Da, ypt
+((rEe = R(require("path"))), (xpt = require("url")));
 function Pkp(e) {
   switch (e) {
     case 1:

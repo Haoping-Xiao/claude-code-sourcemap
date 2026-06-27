@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0172  score=0.2571  fileCov=0.0181
 // note: nearest: src/services/mcp/auth.ts (0.0172); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var udo = E(() => {
-  wUn();
-});
 function yCa() {
   return at("tengu_mcp_stateless_skip_init", true);
 }

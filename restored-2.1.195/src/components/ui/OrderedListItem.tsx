@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.362  score=0.5884  fileCov=0.4848
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OMc = E(() => {
-  Ye();
-  ((MMc = R(lt(), 1)), (omr = R(se(), 1)));
-});
+// [unwrapped __esm module OMc] deps: Ye
+((MMc = R(lt(), 1)), (omr = R(se(), 1)));
 function imr(e) {
   let t = NMc.c(7),
     { children: n } = e,

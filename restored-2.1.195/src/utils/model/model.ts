@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.283  score=0.3564  fileCov=0.5789
 // note: deminified; 64 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vM = E(() => {
-  oo();
-  dr();
-  DD();
-  Ao();
-  ste();
-  Ls();
-});
 var F2r = {};
 _t(F2r, {
   swapShrinksContextWindow: () => swapShrinksContextWindow,

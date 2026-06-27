@@ -4,10 +4,6 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0104  score=0.0556  fileCov=0.0126
 // note: deminified; 18 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var JN = E(() => {
-  iu();
-  FK();
-});
 var ooc = {};
 _t(ooc, {
   withStdinPositional: () => withStdinPositional,

@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.3606  score=0.432  fileCov=0.6855
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rUl = E(() => {
-  ((r1f = {
-    type: "local-jsx",
-    name: "ide",
-    description: "Manage IDE integrations and show status",
-    argumentHint: "[open]",
-    load: () => Promise.resolve().then(() => (tUl(), eUl)),
-  }),
-    (nUl = r1f));
-});
+// [unwrapped __esm module rUl]
+((r1f = {
+  type: "local-jsx",
+  name: "ide",
+  description: "Manage IDE integrations and show status",
+  argumentHint: "[open]",
+  load: () => Promise.resolve().then(() => (tUl(), eUl)),
+}),
+  (nUl = r1f));
 function o1f() {
   return ut(process.env.CLAUDE_CODE_NEW_INIT) || at("tengu_slate_harbor_experiment", !1);
 }

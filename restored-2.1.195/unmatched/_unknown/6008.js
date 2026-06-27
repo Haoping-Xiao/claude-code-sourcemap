@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0256  score=0.0781  fileCov=0.0367
 // note: nearest: node_modules/node-forge/lib/kem.js (0.0256); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var PGc = E(() => {
-  DGc();
-  AR();
-  nrn();
-});
 class jgr {
   #e;
   #t;

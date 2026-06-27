@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3216  score=0.5792  fileCov=0.4197
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var FIl = E(() => {
-  BIl();
-  DPo();
-});
 function avf() {
   let e = at("tengu_onyx_plover", null);
   return {

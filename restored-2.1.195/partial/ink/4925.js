@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.1275  score=0.6522  fileCov=0.1368
 // note: low-confidence suggestion: src/ink/hooks/use-interval.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qql = E(() => {
-  bW();
-  jh();
-});
 function zql() {
   let e = Vql.c(2),
     t = TAt.useContext(_2o),

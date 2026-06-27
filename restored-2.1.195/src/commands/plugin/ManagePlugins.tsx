@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.3095  score=0.466  fileCov=0.4797
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pjl = E(() => {
-  uUo = ["on", "name-only", "user-invocable-only", "off"];
-});
+// [unwrapped __esm module Pjl]
+uUo = ["on", "name-only", "user-invocable-only", "off"];
 function Mjl(e, t) {
   let n = yn("localSettings")?.skillOverrides,
     r = yn("projectSettings")?.skillOverrides,

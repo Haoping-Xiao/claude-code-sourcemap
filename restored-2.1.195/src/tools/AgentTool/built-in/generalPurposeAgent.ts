@@ -4,34 +4,9 @@
 // class=modified  jaccard=0.2904  score=0.588  fileCov=0.3645
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d_t = E(() => {
-  _i();
-  Ye();
-  uo();
-  _oe();
-  uf();
-  vn();
-  qol();
-  LW();
-  Zol();
-  nsl();
-  Bsl();
-  LCo();
-  sil();
-  mal();
-  $al();
-  Bal();
-  Fal();
-  Jal();
-  ell();
-  zCo();
-  Qzn();
-  Ell();
-  lEe();
-  Hlo();
-  ((uKn = R(lt(), 1)), (All = R(rt(), 1)), (RH = R(se(), 1)));
-  dQ = All.memo(lif, dif);
-});
+// [unwrapped __esm module d_t] deps: _i, Ye, uo, _oe, uf, vn, qol, LW, Zol, nsl, Bsl, LCo, sil, mal, $al, Bal, Fal, Jal, ell, zCo, Qzn, Ell, lEe, Hlo
+((uKn = R(lt(), 1)), (All = R(rt(), 1)), (RH = R(se(), 1)));
+dQ = All.memo(lif, dif);
 function pif() {
   return `${"You are an agent for Claude Code, Anthropic's official CLI for Claude. Given the user's message, you should use the tools available to complete the task. Complete the task fully\u2014don't gold-plate, but don't leave it half-done."} When you complete the task, respond with a concise report covering what was done and any key findings \u2014 the caller will relay this to the user, so it only needs the essentials.
 

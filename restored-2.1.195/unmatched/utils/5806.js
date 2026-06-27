@@ -4,10 +4,6 @@
 // class=new  jaccard=0.004  score=0.2653  fileCov=0.0041
 // note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wOc = E(() => {
-  Ld();
-  je();
-});
 function IOc(e, t) {
   if (Mj()) return;
   if (lc("hooks")) return;

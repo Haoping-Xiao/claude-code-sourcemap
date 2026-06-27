@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bys = E(() => {
-  KV();
-  Pee();
-  mSu = /^(?:([^;]+);)?(?:[^;]+;)?(base64|),([\s\S]*)$/;
-});
+// [unwrapped __esm module Bys] deps: KV, Pee
+mSu = /^(?:([^;]+);)?(?:[^;]+;)?(base64|),([\s\S]*)$/;
 var Uys, jxr, Fys, Gxr;

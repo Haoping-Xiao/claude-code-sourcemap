@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0039  score=0.2991  fileCov=0.004
 // note: nearest: src/screens/REPL.tsx (0.0039); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SG = E(() => {
-  YZe();
-  je();
-  Jt();
-  lPu = new Set();
-});
+// [unwrapped __esm module SG] deps: YZe, je, Jt
+lPu = new Set();
 function uPu() {
   return false;
 }

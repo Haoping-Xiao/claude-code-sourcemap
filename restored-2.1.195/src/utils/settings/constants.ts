@@ -4,25 +4,19 @@
 // class=modified  jaccard=0.6584  score=0.8162  fileCov=0.7729
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rd = E(() => {
-  cvs();
-  je();
-  vn();
-  SG();
-  Jt();
-  Eet = require("fs/promises");
-  uvs = JC(dvs, (e) => e, 50);
-  Ia = Object.assign(
-    function (t, n = true) {
-      if (!t) return null;
-      let r = t.length > tOu ? dvs(t, n) : uvs(t, n);
-      return r.ok ? r.value : null;
-    },
-    {
-      cache: uvs.cache,
-    },
-  );
-});
+// [unwrapped __esm module Rd] deps: cvs, je, vn, SG, Jt
+Eet = require("fs/promises");
+uvs = JC(dvs, (e) => e, 50);
+Ia = Object.assign(
+  function (t, n = true) {
+    if (!t) return null;
+    let r = t.length > tOu ? dvs(t, n) : uvs(t, n);
+    return r.ok ? r.value : null;
+  },
+  {
+    cache: uvs.cache,
+  },
+);
 function wG(e) {
   switch (e) {
     case "userSettings":

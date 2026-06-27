@@ -4,24 +4,9 @@
 // class=modified  jaccard=0.1017  score=0.1121  fileCov=0.5217
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _F = E(() => {
-  Hp();
-  Rc();
-  oo();
-  fd();
-  je();
-  At();
-  Gx();
-  Jt();
-  dn();
-  kt();
-  AVe();
-  cho();
-  jc();
-  oKr();
-  ((kcc = require("crypto")), (Rcc = require("fs")), (XYe = require("fs/promises")));
-  Pcc = Date.now();
-});
+// [unwrapped __esm module _F] deps: Hp, Rc, oo, fd, je, At, Gx, Jt, dn, kt, AVe, cho, jc, oKr
+((kcc = require("crypto")), (Rcc = require("fs")), (XYe = require("fs/promises")));
+Pcc = Date.now();
 var Hcr = {};
 _t(Hcr, {
   isRunningInRemoteEnvironment: () => isRunningInRemoteEnvironment,

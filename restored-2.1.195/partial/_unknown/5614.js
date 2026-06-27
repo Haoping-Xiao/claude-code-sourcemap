@@ -4,19 +4,13 @@
 // class=partial  jaccard=0.1637  score=0.2566  fileCov=0.3115
 // note: low-confidence suggestion: src/skills/bundled/verify.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ivc = E(() => {
-  YTc();
-  JTc();
-  ZTc();
-  tvc();
-  rvc();
-  iSm = ovc, aSm = {
-    "references/component-schemas.md": XTc,
-    "references/example-plugins.md": QTc,
-    "references/mcp-servers.md": evc,
-    "references/search-strategies.md": nvc
-  };
-});
+// [unwrapped __esm module ivc] deps: YTc, JTc, ZTc, tvc, rvc
+iSm = ovc, aSm = {
+  "references/component-schemas.md": XTc,
+  "references/example-plugins.md": QTc,
+  "references/mcp-servers.md": evc,
+  "references/search-strategies.md": nvc
+};
 function avc() {
   return lSm ??= Promise.resolve().then(() => (ivc(), svc));
 }

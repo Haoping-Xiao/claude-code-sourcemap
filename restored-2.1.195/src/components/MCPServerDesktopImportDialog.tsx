@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.2964  score=0.4646  fileCov=0.4501
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ddc = E(() => {
-  JN();
-  Z4e();
-  At();
-  dr();
-});
 function fdc(e) {
   let t = pdc.c(36),
     { servers: n, scope: r, onDone: o } = e,

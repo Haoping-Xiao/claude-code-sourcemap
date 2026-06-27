@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.182  score=0.3061  fileCov=0.31
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wHc = E(() => {
-  X0();
-  dtn();
-  WTe();
-  Ye();
-  wX();
-  ((THc = R(lt(), 1)), (k3 = R(se(), 1)));
-});
+// [unwrapped __esm module wHc] deps: X0, dtn, WTe, Ye, wX
+((THc = R(lt(), 1)), (k3 = R(se(), 1)));
 function M_m(e, t, n) {
   switch (e) {
     case "yes":

@@ -4,31 +4,30 @@
 // class=modified  jaccard=0.223  score=0.366  fileCov=0.3632
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var C7n = E(() => {
-  ((Y6t = [
-    "SSL_CERT_FILE",
-    "NODE_EXTRA_CA_CERTS",
-    "REQUESTS_CA_BUNDLE",
-    "CURL_CA_BUNDLE",
-    "CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE",
-    "HTTPLIB2_CA_CERTS",
+// [unwrapped __esm module C7n]
+((Y6t = [
+  "SSL_CERT_FILE",
+  "NODE_EXTRA_CA_CERTS",
+  "REQUESTS_CA_BUNDLE",
+  "CURL_CA_BUNDLE",
+  "CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE",
+  "HTTPLIB2_CA_CERTS",
+]),
+  (X6t = [
+    "AWS_CA_BUNDLE",
+    "DENO_CERT",
+    "CARGO_HTTP_CAINFO",
+    "PIP_CERT",
+    "GIT_SSL_CAINFO",
+    "GRPC_DEFAULT_SSL_ROOTS_FILE_PATH",
+    "NIX_SSL_CERT_FILE",
+    "HEX_CACERTS_PATH",
   ]),
-    (X6t = [
-      "AWS_CA_BUNDLE",
-      "DENO_CERT",
-      "CARGO_HTTP_CAINFO",
-      "PIP_CERT",
-      "GIT_SSL_CAINFO",
-      "GRPC_DEFAULT_SSL_ROOTS_FILE_PATH",
-      "NIX_SSL_CERT_FILE",
-      "HEX_CACERTS_PATH",
-    ]),
-    (J6t = [...Y6t, ...X6t]),
-    (B6e = {
-      UV_NATIVE_TLS: "true",
-      DENO_TLS_CA_STORE: "system,mozilla",
-    }));
-});
+  (J6t = [...Y6t, ...X6t]),
+  (B6e = {
+    UV_NATIVE_TLS: "true",
+    DENO_TLS_CA_STORE: "system,mozilla",
+  }));
 function dhl() {
   if (process.env[sht]) return process.env[sht];
   return dm() ? process.execPath : process.argv[1];

@@ -4,21 +4,18 @@
 // class=new  jaccard=0.006  score=0.1749  fileCov=0.0061
 // note: nearest: src/screens/REPL.tsx (0.006); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gnc = E(() => {
-  Un();
-  zqe();
-  aXf = {
-    type: "local",
-    name: "recap",
-    description: "Generate a one-line session recap now",
-    isEnabled: () => at("tengu_sedge_lantern", true),
-    supportsNonInteractive: false,
-    thinClientDispatch: "post-text",
-    load: () => Promise.resolve({
-      call: iXf
-    })
-  }, lXf = aXf;
-});
+// [unwrapped __esm module gnc] deps: Un, zqe
+aXf = {
+  type: "local",
+  name: "recap",
+  description: "Generate a one-line session recap now",
+  isEnabled: () => at("tengu_sedge_lantern", true),
+  supportsNonInteractive: false,
+  thinClientDispatch: "post-text",
+  load: () => Promise.resolve({
+    call: iXf
+  })
+}, lXf = aXf;
 function ync(e) {
   let t = $Go.c(39),
     {

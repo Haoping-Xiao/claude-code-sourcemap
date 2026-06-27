@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sGc = E(() => {
-  NZ();
-});
 async function iGc(e) {
   return oGc(e);
 }

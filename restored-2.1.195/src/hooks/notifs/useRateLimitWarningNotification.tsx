@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.229  score=0.3681  fileCov=0.3773
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HDc = E(() => {
-  ft();
-  Ed();
-  GY();
-  atr();
-  Ffr = R(rt(), 1);
-});
+// [unwrapped __esm module HDc] deps: ft, Ed, GY, atr
+Ffr = R(rt(), 1);
 function vDc(e) {
   let t = TDc.c(30),
     { addNotification: n } = Li(),

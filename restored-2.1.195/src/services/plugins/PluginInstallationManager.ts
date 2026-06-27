@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.3576  score=0.5033  fileCov=0.5527
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $Yo = E(() => {
-  Ree();
-  ft();
-  je();
-  At();
-  oc();
-  sa();
-  lE();
-  ZC();
-  Bfr = require("path");
-});
+// [unwrapped __esm module $Yo] deps: Ree, ft, je, At, oc, sa, lE, ZC
+Bfr = require("path");
 function OYo(e, t, n, r) {
   e((o) => ({
     ...o,

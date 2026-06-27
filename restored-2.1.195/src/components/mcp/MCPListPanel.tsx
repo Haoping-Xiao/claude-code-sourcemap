@@ -4,23 +4,8 @@
 // class=modified  jaccard=0.3269  score=0.3977  fileCov=0.6475
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CBo = E(() => {
-  si();
-  Ye();
-  ps();
-  Cre();
-  cqe();
-  sr();
-  Cc();
-  mE();
-  Bs();
-  vi();
-  f_();
-  Ko();
-  gKe();
-  EC();
-  ((bse = R(rt(), 1)), (rd = R(se(), 1)));
-});
+// [unwrapped __esm module CBo] deps: si, Ye, ps, Cre, cqe, sr, Cc, mE, Bs, vi, f_, Ko, gKe, EC
+((bse = R(rt(), 1)), (rd = R(se(), 1)));
 function t2l(e) {
   switch (e) {
     case "project":

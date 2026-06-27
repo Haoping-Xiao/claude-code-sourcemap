@@ -4,15 +4,8 @@
 // class=partial  jaccard=0.1367  score=0.2541  fileCov=0.2284
 // note: low-confidence suggestion: node_modules/qrcode/lib/core/polynomial.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var XXo = E(() => {
-  YP();
-  $Xo();
-  OXo();
-  rB();
-  wm();
-  iie();
-  Tnn = TDm;
-});
+// [unwrapped __esm module XXo] deps: YP, $Xo, OXo, rB, wm, iie
+Tnn = TDm;
 async function P2c(e, t, n, r) {
   let o = e.slice(0, 7);
   r || (r = qmr(o));

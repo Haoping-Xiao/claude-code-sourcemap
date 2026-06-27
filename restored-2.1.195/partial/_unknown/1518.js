@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2059  score=1  fileCov=0.2059
 // note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gai = E(() => {
-  _Hn();
-});
 var Wai = () => {};
 class ixe {
   constructor(e) {

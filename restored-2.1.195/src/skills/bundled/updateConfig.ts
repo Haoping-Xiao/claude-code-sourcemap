@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3143  score=0.5846  fileCov=0.4047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gwc = E(() => {
-  AA();
-});
 function $Em() {
   let e = zK(_M(), {
     io: "input",

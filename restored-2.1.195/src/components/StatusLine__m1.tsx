@@ -4,34 +4,30 @@
 // class=modified (alt of src/components/StatusLine.tsx)  jaccard=0.0385  score=0.1424  fileCov=0.05
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var F1o = E(() => {
-  At();
-  ys();
-  jS();
-  ((pEt = require("fs/promises")),
-    (BOe = require("path")),
-    (jL = new TextEncoder()),
-    (WLf = jL.encode('"type":"assistant"')),
-    (qLf = jL.encode('"usage":{')),
-    (VLf = jL.encode('"timestamp":"')),
-    (zLf = jL.encode('"sessionId":"')),
-    (KLf = jL.encode('"model":"')),
-    (YLf = jL.encode('"requestId":"')),
-    (Z$l = jL.encode('"id":"')),
-    (XLf = jL.encode("msg_")),
-    (JLf = jL.encode('"uuid":"')),
-    (QLf = jL.encode('"input_tokens":')),
-    (ZLf = jL.encode('"output_tokens":')),
-    (eDf = jL.encode('"cache_creation_input_tokens":')),
-    (tDf = jL.encode('"cache_read_input_tokens":')),
-    (nDf = jL.encode('"isSidechain":true')),
-    (rDf = jL.encode('"isSidechain": true')),
-    (oDf = jL.encode('"attribution')),
-    (sDf = jL.encode('"attributionAgent":"')),
-    (iDf = jL.encode('"attributionSkill":"')),
-    (aDf = jL.encode('"attributionPlugin":"')),
-    (lDf = jL.encode('"attributionMcpServer":"')));
-});
+// [unwrapped __esm module F1o] deps: At, ys, jS
+((pEt = require("fs/promises")),
+  (BOe = require("path")),
+  (jL = new TextEncoder()),
+  (WLf = jL.encode('"type":"assistant"')),
+  (qLf = jL.encode('"usage":{')),
+  (VLf = jL.encode('"timestamp":"')),
+  (zLf = jL.encode('"sessionId":"')),
+  (KLf = jL.encode('"model":"')),
+  (YLf = jL.encode('"requestId":"')),
+  (Z$l = jL.encode('"id":"')),
+  (XLf = jL.encode("msg_")),
+  (JLf = jL.encode('"uuid":"')),
+  (QLf = jL.encode('"input_tokens":')),
+  (ZLf = jL.encode('"output_tokens":')),
+  (eDf = jL.encode('"cache_creation_input_tokens":')),
+  (tDf = jL.encode('"cache_read_input_tokens":')),
+  (nDf = jL.encode('"isSidechain":true')),
+  (rDf = jL.encode('"isSidechain": true')),
+  (oDf = jL.encode('"attribution')),
+  (sDf = jL.encode('"attributionAgent":"')),
+  (iDf = jL.encode('"attributionSkill":"')),
+  (aDf = jL.encode('"attributionPlugin":"')),
+  (lDf = jL.encode('"attributionMcpServer":"')));
 var sOl = {};
 _t(sOl, {
   seedUtilization: () => seedUtilization,

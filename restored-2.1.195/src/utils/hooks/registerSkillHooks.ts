@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.3934  score=1  fileCov=0.3934
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pQ = E(() => {
-  qee();
-  je();
-  _m();
-  Jt();
-});
 function Kll(e, t, n, r, o) {
   let s = 0;
   for (let i of GO) {

@@ -4,114 +4,78 @@
 // class=modified  jaccard=0.1286  score=0.2401  fileCov=0.2167
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _a = E(() => {
-  Qi();
-  kt();
-  ft();
-  v0n();
-  Zf();
-  np();
-  d8n();
-  jv();
-  $S();
-  Pw();
-  Rm();
-  fd();
-  Ld();
-  Lo();
-  je();
-  Mm();
-  fn();
-  At();
-  es();
-  ys();
-  QVt();
-  sa();
-  Yp();
-  Rd();
-  vn();
-  co();
-  Hu();
-  y_();
-  jS();
-  ih();
-  Jt();
-  X4();
-  sr();
-  Mp();
-  HO();
-  ((c2 = require("fs")),
-    (Hl = require("fs/promises")),
-    (vh = require("path")),
-    (asc = require("string_decoder")),
-    (EZf = {
-      ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
-      PACKAGE_URL: "@anthropic-ai/claude-code",
-      README_URL: "https://code.claude.com/docs/en/overview",
-      VERSION: "2.1.195",
-      FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
-      BUILD_TIME: "2026-06-26T01:00:56Z",
-      GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
-    }.VERSION),
-    (lsc = /^(?:\s*<[a-z][\w-]*[\s>]|\[Request interrupted by user[^\]]*\])/));
-  csc = {
-    user: "dedup-transcript",
-    assistant: "dedup-transcript",
-    attachment: "dedup-transcript",
-    system: "dedup-transcript",
-    progress: "dedup-transcript",
-    summary: "always",
-    "custom-title": "always",
-    "ended-by-model": "always",
-    "ai-title": "always",
-    "last-prompt": "always",
-    tag: "always",
-    "agent-name": "always",
-    "agent-color": "always",
-    "agent-setting": "always",
-    "pr-link": "always",
-    "frame-link": "always",
-    "bridge-session": "always",
-    "file-history-snapshot": "always",
-    "attribution-snapshot": "always",
-    "speculation-accept": "always",
-    mode: "always",
-    "permission-mode": "always",
-    "isolation-latch": "always",
-    "worktree-state": "always",
-    "queue-operation": "always",
-    "marble-origami-commit": "always",
-    "marble-origami-snapshot": "always",
-    "marble-origami-reset": "always",
-    "content-replacement": "route-by-agent",
-    "fork-context-ref": "route-by-agent",
-  };
-  TZf = new Set(["bash_progress", "powershell_progress", "mcp_progress", ...[], "repl_tool_call"]);
-  BYe = new Map();
-  jse = class jse extends Error {
-    code;
-    constructor(e, t) {
-      super(e);
-      this.code = t;
+// [unwrapped __esm module _a] deps: Qi, kt, ft, v0n, Zf, np, d8n, jv, $S, Pw, Rm, fd, Ld, Lo, je, Mm, fn, At, es, ys, QVt, sa, Yp, Rd, vn, co, Hu, y_, jS, ih, Jt, X4, sr, Mp, HO
+((c2 = require("fs")),
+  (Hl = require("fs/promises")),
+  (vh = require("path")),
+  (asc = require("string_decoder")),
+  (EZf = {
+    ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+    PACKAGE_URL: "@anthropic-ai/claude-code",
+    README_URL: "https://code.claude.com/docs/en/overview",
+    VERSION: "2.1.195",
+    FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+    BUILD_TIME: "2026-06-26T01:00:56Z",
+    GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+  }.VERSION),
+  (lsc = /^(?:\s*<[a-z][\w-]*[\s>]|\[Request interrupted by user[^\]]*\])/));
+csc = {
+  user: "dedup-transcript",
+  assistant: "dedup-transcript",
+  attachment: "dedup-transcript",
+  system: "dedup-transcript",
+  progress: "dedup-transcript",
+  summary: "always",
+  "custom-title": "always",
+  "ended-by-model": "always",
+  "ai-title": "always",
+  "last-prompt": "always",
+  tag: "always",
+  "agent-name": "always",
+  "agent-color": "always",
+  "agent-setting": "always",
+  "pr-link": "always",
+  "frame-link": "always",
+  "bridge-session": "always",
+  "file-history-snapshot": "always",
+  "attribution-snapshot": "always",
+  "speculation-accept": "always",
+  mode: "always",
+  "permission-mode": "always",
+  "isolation-latch": "always",
+  "worktree-state": "always",
+  "queue-operation": "always",
+  "marble-origami-commit": "always",
+  "marble-origami-snapshot": "always",
+  "marble-origami-reset": "always",
+  "content-replacement": "route-by-agent",
+  "fork-context-ref": "route-by-agent",
+};
+TZf = new Set(["bash_progress", "powershell_progress", "mcp_progress", ...[], "repl_tool_call"]);
+BYe = new Map();
+jse = class jse extends Error {
+  code;
+  constructor(e, t) {
+    super(e);
+    this.code = t;
+  }
+};
+((m5o = Mi()), (g5o = m5o.subscribe));
+((nZt = Mi()), (hlr = nZt.subscribe));
+YQn = Mi();
+Q1e = Cn(
+  async (e) => {
+    try {
+      let { messages: t } = await Lsc(e);
+      return new Set(t.keys());
+    } catch (t) {
+      return (ke(t), new Set());
     }
-  };
-  ((m5o = Mi()), (g5o = m5o.subscribe));
-  ((nZt = Mi()), (hlr = nZt.subscribe));
-  YQn = Mi();
-  Q1e = Cn(
-    async (e) => {
-      try {
-        let { messages: t } = await Lsc(e);
-        return new Set(t.keys());
-      } catch (t) {
-        return (ke(t), new Set());
-      }
-    },
-    (e) => e,
-  );
-  JWo = /[^a-zA-Z0-9/\\:-]/;
-  nem = new Set([]);
-});
+  },
+  (e) => e,
+);
+JWo = /[^a-zA-Z0-9/\\:-]/;
+nem = new Set([]);
 function L$e(e, t) {
   let n = e ?? Rt(),
     r = Zve(),

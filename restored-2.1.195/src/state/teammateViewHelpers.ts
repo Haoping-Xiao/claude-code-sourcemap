@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.3352  score=0.6544  fileCov=0.4074
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var s8l = E(() => {
-  ((o5f = {
-    type: "local-jsx",
-    name: "status",
-    description:
-      "Show Claude Code status including version, model, account, API connectivity, and tool statuses",
-    immediate: true,
-    load: () => Promise.resolve().then(() => (r8l(), t8l)),
-  }),
-    (o8l = o5f));
-});
+// [unwrapped __esm module s8l]
+((o5f = {
+  type: "local-jsx",
+  name: "status",
+  description:
+    "Show Claude Code status including version, model, account, API connectivity, and tool statuses",
+  immediate: true,
+  load: () => Promise.resolve().then(() => (r8l(), t8l)),
+}),
+  (o8l = o5f));
 function ejo(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "local_agent";
 }

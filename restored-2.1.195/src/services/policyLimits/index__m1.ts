@@ -4,26 +4,24 @@
 // class=modified (alt of src/services/policyLimits/index.ts)  jaccard=0.0944  score=0.3022  fileCov=0.1207
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oKr = E(() => {
-  Xr();
-  ((Lkn = ve(() =>
-    H.object({
-      restrictions: H.record(
-        H.string(),
-        H.object({
-          allowed: H.boolean(),
-        }),
-      ),
-      compliance_taints: H.array(H.string()).default([]),
-      defaults: H.record(H.string(), H.unknown()).default({}).catch({}),
-    }),
-  )),
-    (rKr = {
-      restrictions: {},
-      compliance_taints: [],
-      defaults: {},
-    }));
-});
+// [unwrapped __esm module oKr] deps: Xr
+((Lkn = ve(() =>
+  H.object({
+    restrictions: H.record(
+      H.string(),
+      H.object({
+        allowed: H.boolean(),
+      }),
+    ),
+    compliance_taints: H.array(H.string()).default([]),
+    defaults: H.record(H.string(), H.unknown()).default({}).catch({}),
+  }),
+)),
+  (rKr = {
+    restrictions: {},
+    compliance_taints: [],
+    defaults: {},
+  }));
 var SNt = {};
 _t(SNt, {
   setSessionCache: () => setSessionCache,

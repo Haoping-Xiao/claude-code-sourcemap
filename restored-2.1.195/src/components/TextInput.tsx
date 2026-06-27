@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.4284  score=0.7542  fileCov=0.4979
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Zr = E(() => {
-  f6i();
-  yZr();
-  $Ge();
-  y0e();
-  Kce();
-  Ye();
-  _Ge();
-  C6i();
-  (($0e = R(rt(), 1)), ($ne = R(se(), 1)));
-});
+// [unwrapped __esm module _Zr] deps: f6i, yZr, $Ge, y0e, Kce, Ye, _Ge, C6i
+(($0e = R(rt(), 1)), ($ne = R(se(), 1)));
 function Ta(e) {
   let [t] = na(),
     n = Pg(),

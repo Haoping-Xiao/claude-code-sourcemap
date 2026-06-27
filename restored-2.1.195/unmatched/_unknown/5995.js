@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0245  score=0.1144  fileCov=0.0303
 // note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0245); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Jnn = E(() => {
-  AR();
-});
 function Qnn(e, t) {
   if (t !== void 0 && (!Array.isArray(t) || t.some(n => typeof n !== "string"))) throw TypeError(`"${e}" option must be an array of strings`);
   if (!t) return;

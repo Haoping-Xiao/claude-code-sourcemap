@@ -4,17 +4,10 @@
 // class=modified  jaccard=0.308  score=0.8274  fileCov=0.3291
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jDe = E(() => {
-  zqe();
-  Yqe();
-  ii();
-  h6();
-  dr();
-  m1();
-  FDe = {
-    status: "idle",
-  };
-});
+// [unwrapped __esm module jDe] deps: zqe, Yqe, ii, h6, dr, m1
+FDe = {
+  status: "idle",
+};
 function p$a(e, t) {
   for (let n of e)
     if (n.startsWith("-") && !n.startsWith("--") && n.length > 2)

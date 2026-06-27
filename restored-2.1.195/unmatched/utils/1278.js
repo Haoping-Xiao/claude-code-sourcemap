@@ -3,17 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var l7s = E(() => {
-  NBr();
-  BBr();
-  UBr();
-  FBr();
-  jBr();
-  GBr();
-  WBr();
-  qBr();
-  RSn();
-  VBr();
-});
 var c7s = () => {};
 var u7s, Dad;

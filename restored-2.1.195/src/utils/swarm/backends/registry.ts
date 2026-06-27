@@ -4,16 +4,9 @@
 // class=modified  jaccard=0.5236  score=0.6655  fileCov=0.7107
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ahl = E(() => {
-  dn();
-  je();
-  Bi();
-  qJ();
-  cAe();
-  d9t();
-  ((zAe = []), (Shl = Promise.resolve()));
-  registerITermBackend(w0o);
-});
+// [unwrapped __esm module Ahl] deps: dn, je, Bi, qJ, cAe, d9t
+((zAe = []), (Shl = Promise.resolve()));
+registerITermBackend(w0o);
 var sel = {};
 _t(sel, {
   resetBackendDetection: () => resetBackendDetection,

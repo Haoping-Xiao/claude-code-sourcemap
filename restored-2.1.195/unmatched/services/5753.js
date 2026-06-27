@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0157  score=0.2002  fileCov=0.0168
 // note: nearest: src/utils/attachments.ts (0.0157); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uPc = E(() => {
-  ft();
-  Ye();
-  jCm = R(lt(), 1), GCm = R(rt(), 1), WCm = R(se(), 1);
-});
+// [unwrapped __esm module uPc] deps: ft, Ye
+jCm = R(lt(), 1), GCm = R(rt(), 1), WCm = R(se(), 1);
 function N7e(e) {
   return (t, n) => {
     e(r => {

@@ -4,19 +4,6 @@
 // class=modified  jaccard=0.6256  score=0.823  fileCov=0.7228
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cdc = E(() => {
-  Bcr();
-  JN();
-  kt();
-  Cre();
-  Kv();
-  g$();
-  Z4e();
-  fn();
-  At();
-  zH();
-  Jt();
-});
 function udc(e) {
   let t = e.command("xaa").description("Manage the XAA (SEP-990) IdP connection");
   (t

@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ypi = E(() => {
-  Kpi();
-  x3r();
-  k3r();
-});
 function Ale(e, t) {
   return Buffer.from(e, t);
 }

@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.2352  score=0.6041  fileCov=0.278
 // note: low-confidence suggestion: src/ink/wrap-text.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var t0e = E(() => {
-  jit();
-  Tc();
-  one();
-  bBt();
-  m0();
-  Z4d = `\x1B]8;;${$M}`;
-});
+// [unwrapped __esm module t0e] deps: jit, Tc, one, bBt, m0
+Z4d = `\x1B]8;;${$M}`;
 function eLn(e, t, n) {
   let r = w1(e, t, n);
   while (rn(r) > n - t && n > t) n--, r = w1(e, t, n);

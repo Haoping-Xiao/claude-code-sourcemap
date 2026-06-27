@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.2536  score=0.4185  fileCov=0.3915
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ihc = E(() => {
-  kt();
-  Du();
-  J8o();
-  Ye();
-  uo();
-  FEe();
-  er();
-  je();
-  MPe();
-  fn();
-  kgt();
-  A9e();
-  BJ();
-  LOe();
-  gm();
-  ((Q8o = require("path")), (Gz = R(rt(), 1)), (WT = R(se(), 1)));
-});
+// [unwrapped __esm module ihc] deps: kt, Du, J8o, Ye, uo, FEe, er, je, MPe, fn, kgt, A9e, BJ, LOe, gm
+((Q8o = require("path")), (Gz = R(rt(), 1)), (WT = R(se(), 1)));
 function adm(e) {
   if (e.includes("timeout")) return "timeout";
   if (e.includes("Checksum mismatch")) return "checksum_mismatch";

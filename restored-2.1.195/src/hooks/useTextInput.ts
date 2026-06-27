@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3319  score=0.558  fileCov=0.4502
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jat = E(() => {
-  Ye();
-  P0e = R(rt(), 1);
-});
+// [unwrapped __esm module Jat] deps: Ye
+P0e = R(rt(), 1);
 function a6i(e) {
   let t = new Map(e);
   return function (n) {

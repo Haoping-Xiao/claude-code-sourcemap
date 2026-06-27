@@ -4,15 +4,10 @@
 // class=modified  jaccard=0.2674  score=0.3271  fileCov=0.5944
 // note: deminified; 16 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W9o = E(() => {
-  Pw();
-  At();
-  Jt();
-  ZC();
-  ((GZt = require("fs/promises")),
-    (oO = require("path")),
-    (WZt = ["skills", "agents", "hooks", "mcp", "lsp", "output-style", "channel"]));
-});
+// [unwrapped __esm module W9o] deps: Pw, At, Jt, ZC
+((GZt = require("fs/promises")),
+  (oO = require("path")),
+  (WZt = ["skills", "agents", "hooks", "mcp", "lsp", "output-style", "channel"]));
 var m2 = {};
 _t(m2, {
   pluginValidateHandler: () => pluginValidateHandler,

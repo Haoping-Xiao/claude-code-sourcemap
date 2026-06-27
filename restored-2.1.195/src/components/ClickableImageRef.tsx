@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.2316  score=0.4671  fileCov=0.3148
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var APn = E(() => {
-  tC();
-  $Ge();
-  Kce();
-  Tc();
-  Ye();
-  PUt();
-  sr();
-  ((MUt = R(lt(), 1)), (WU = R(rt(), 1)), (qD = R(se(), 1)));
-});
+// [unwrapped __esm module APn] deps: tC, $Ge, Kce, Tc, Ye, PUt, sr
+((MUt = R(lt(), 1)), (WU = R(rt(), 1)), (qD = R(se(), 1)));
 function ezi(e) {
   let t = Q6i.c(15),
     { imageId: n, backgroundColor: r, isSelected: o } = e,

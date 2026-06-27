@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.1767  score=0.3632  fileCov=0.256
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mp = E(() => {
-  Sj();
-  ft();
-  wr();
-  Sj();
-  Xoi = require("child_process");
-});
+// [unwrapped __esm module Mp] deps: Sj, ft, wr, Sj
+Xoi = require("child_process");
 function XY() {
   let e, t;
   return {

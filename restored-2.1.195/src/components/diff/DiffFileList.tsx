@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2764  score=0.389  fileCov=0.4883
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SNo = E(() => {
-  _i();
-  Ye();
-  Lo();
-  oc();
-  sr();
-  vKe();
-  LW();
-  B_();
-  Kut();
-  ((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));
-});
+// [unwrapped __esm module SNo] deps: _i, Ye, Lo, oc, sr, vKe, LW, B_, Kut
+((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));
 function X1l(e) {
   let t = onr.c(36),
     { files: n, selectedIndex: r } = e,

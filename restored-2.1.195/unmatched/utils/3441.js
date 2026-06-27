@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0026  score=0.2247  fileCov=0.0026
 // note: nearest: src/cli/print.ts (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Who = E(() => {
-  vn();
-  tA();
-  bH();
-});
 function A4n(e) {
   return oee((t, n, r) => {
     if (!r) return;

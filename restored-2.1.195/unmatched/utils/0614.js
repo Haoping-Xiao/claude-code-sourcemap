@@ -4,11 +4,10 @@
 // class=new  jaccard=0.0017  score=0.4327  fileCov=0.0017
 // note: nearest: src/cli/print.ts (0.0017); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YSs = E(() => {
-  Dw = R(require("path")), Nkr = R(require("os")), _pn = R(require("process")), Zwe = Nkr.default.homedir(), Bkr = Nkr.default.tmpdir(), {
-    env: UZe
-  } = _pn.default;
-});
+// [unwrapped __esm module YSs]
+Dw = R(require("path")), Nkr = R(require("os")), _pn = R(require("process")), Zwe = Nkr.default.homedir(), Bkr = Nkr.default.tmpdir(), {
+  env: UZe
+} = _pn.default;
 function eCe(e) {
   let t = 0;
   for (let n = 0; n < e.length; n++) t = (t << 5) - t + e.charCodeAt(n) | 0;

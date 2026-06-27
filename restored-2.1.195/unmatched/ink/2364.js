@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rXr = E(() => {
-  zRn();
-  lGe = N4d;
-});
+// [unwrapped __esm module rXr] deps: zRn
+lGe = N4d;
 function z4i(e, t, n) {
   let r = wBt.get(e);
   if (r) r.push(t);else wBt.set(e, [t]);

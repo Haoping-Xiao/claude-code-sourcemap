@@ -4,24 +4,11 @@
 // class=modified  jaccard=0.4427  score=0.8785  fileCov=0.4715
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zj = E(() => {
-  ft();
-  dn();
-  db();
-  fd();
-  je();
-  fn();
-  At();
-  ys();
-  vn();
-  iZr();
-  Jt();
-  Mp();
-  lZr = require("path");
-  JDn = ["session", "project", "everywhere"];
-  V8i = new Set();
-  ((zce = []), (J8i = new Set()));
-});
+// [unwrapped __esm module zj] deps: ft, dn, db, fd, je, fn, At, ys, vn, iZr, Jt, Mp
+lZr = require("path");
+JDn = ["session", "project", "everywhere"];
+V8i = new Set();
+((zce = []), (J8i = new Set()));
 class Ul {
   measuredText;
   selection;

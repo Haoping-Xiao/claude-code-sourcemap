@@ -4,19 +4,16 @@
 // class=modified  jaccard=0.1801  score=0.3177  fileCov=0.2938
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yMc = E(() => {
-  er();
-  je();
-  RIm = {
-    iterm: "iTerm",
-    "iterm.app": "iTerm",
-    ghostty: "Ghostty",
-    kitty: "kitty",
-    alacritty: "Alacritty",
-    wezterm: "WezTerm",
-    apple_terminal: "Terminal",
-  };
-});
+// [unwrapped __esm module yMc] deps: er, je
+RIm = {
+  iterm: "iTerm",
+  "iterm.app": "iTerm",
+  ghostty: "Ghostty",
+  kitty: "kitty",
+  alacritty: "Alacritty",
+  wezterm: "WezTerm",
+  apple_terminal: "Terminal",
+};
 class t7o {
   frameDurations = [];
   totalFrames = 0;

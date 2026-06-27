@@ -4,21 +4,18 @@
 // class=new  jaccard=0.0123  score=0.2329  fileCov=0.0128
 // note: nearest: src/utils/sessionStorage.ts (0.0123); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Unc = E(() => {
-  Un();
-  jc();
-  PXf = {
-    type: "local-jsx",
-    name: "web-setup",
-    description: "Set up Claude Code on the web with your GitHub account",
-    availability: ["claude-ai"],
-    isEnabled: () => at("tengu_cobalt_lantern", false) && Us("allow_remote_sessions") && Us("allow_quick_web_setup"),
-    get isHidden() {
-      return !Us("allow_remote_sessions") || !Us("allow_quick_web_setup");
-    },
-    load: () => Promise.resolve().then(() => (Nnc(), Onc))
-  }, MXf = PXf;
-});
+// [unwrapped __esm module Unc] deps: Un, jc
+PXf = {
+  type: "local-jsx",
+  name: "web-setup",
+  description: "Set up Claude Code on the web with your GitHub account",
+  availability: ["claude-ai"],
+  isEnabled: () => at("tengu_cobalt_lantern", false) && Us("allow_remote_sessions") && Us("allow_quick_web_setup"),
+  get isHidden() {
+    return !Us("allow_remote_sessions") || !Us("allow_quick_web_setup");
+  },
+  load: () => Promise.resolve().then(() => (Nnc(), Onc))
+}, MXf = PXf;
 async function Gnc(e, t) {
   let n = {
       slashCommandCounts: new Map(),

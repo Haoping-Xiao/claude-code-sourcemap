@@ -4,32 +4,8 @@
 // class=modified  jaccard=0.3587  score=0.5277  fileCov=0.5282
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K0c = E(() => {
-  ft();
-  yfe();
-  W0c();
-  V0c();
-  aW();
-  kt();
-  Ye();
-  fb();
-  eKe();
-  jc();
-  er();
-  wr();
-  fn();
-  co();
-  Ao();
-  qd();
-  dr();
-  aS();
-  dYo();
-  pYo();
-  fYo();
-  xtn();
-  gYo();
-  MC = R(rt(), 1);
-});
+// [unwrapped __esm module K0c] deps: ft, yfe, W0c, V0c, aW, kt, Ye, fb, eKe, jc, er, wr, fn, co, Ao, qd, dr, aS, dYo, pYo, fYo, xtn, gYo
+MC = R(rt(), 1);
 function Y0c() {
   return at(Wvm, 0.2);
 }

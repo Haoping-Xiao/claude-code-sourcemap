@@ -4,17 +4,8 @@
 // class=new  jaccard=0.0062  score=0.3086  fileCov=0.0063
 // note: nearest: src/screens/REPL.tsx (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iDc = E(() => {
-  Ed();
-  kt();
-  $pt();
-  je();
-  U2n();
-  $g();
-  vfe();
-  DYo();
-  oDc = R(lt(), 1), $fr = R(rt(), 1);
-});
+// [unwrapped __esm module iDc] deps: Ed, kt, $pt, je, U2n, $g, vfe, DYo
+oDc = R(lt(), 1), $fr = R(rt(), 1);
 function lDc(e) {
   let t = aDc.c(35),
     {

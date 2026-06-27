@@ -4,26 +4,20 @@
 // class=new  jaccard=0.0083  score=0.2918  fileCov=0.0084
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var s9l = E(() => {
-  zb();
-  je();
-  Jt();
-  dn();
-  c_();
-  r9l = ve(() => dt.object({
-    action: dt.enum(["proceed", "confirm", "blocked"]),
-    billing_note: dt.string().nullable().optional(),
-    confirm: dt.object({
-      title: dt.string().optional(),
-      body: dt.string()
-    }).nullable().optional(),
-    blocked: dt.object({
-      message: dt.string(),
-      action_url: dt.string().nullable(),
-      reason: dt.string().optional()
-    }).nullable().optional()
-  }));
-});
+// [unwrapped __esm module s9l] deps: zb, je, Jt, dn, c_
+r9l = ve(() => dt.object({
+  action: dt.enum(["proceed", "confirm", "blocked"]),
+  billing_note: dt.string().nullable().optional(),
+  confirm: dt.object({
+    title: dt.string().optional(),
+    body: dt.string()
+  }).nullable().optional(),
+  blocked: dt.object({
+    message: dt.string(),
+    action_url: dt.string().nullable(),
+    reason: dt.string().optional()
+  }).nullable().optional()
+}));
 function Kor(e, t) {
   let n = e.trim(),
     r = n.split(/\s+/, 1)[0] ?? "",

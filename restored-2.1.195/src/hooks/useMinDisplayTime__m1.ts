@@ -4,10 +4,8 @@
 // class=modified (alt of src/hooks/useMinDisplayTime.ts)  jaccard=0.3449  score=1  fileCov=0.3449
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hal = E(() => {
-  Ye();
-  n_t = R(rt(), 1);
-});
+// [unwrapped __esm module hal] deps: Ye
+n_t = R(rt(), 1);
 function yal(e, t) {
   let n = ks(),
     [r, o] = r_t.useState(e),

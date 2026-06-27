@@ -3,11 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qZi = E(() => {
-  Ono();
-  HWe();
-  Bno();
-  w$n();
-});
 var VZi = () => {};
 var zZi, KZi, YZi;

@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0064  score=0.5434  fileCov=0.0064
 // note: nearest: src/utils/sessionStorage.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cir = E(() => {
-  db();
-  fn();
-  YS();
-  Rd();
-  Jt();
-  yZl = require("path");
-});
+// [unwrapped __esm module Cir] deps: db, fn, YS, Rd, Jt
+yZl = require("path");
 async function A3o(e) {
   let t = e ?? Dq(),
     n;

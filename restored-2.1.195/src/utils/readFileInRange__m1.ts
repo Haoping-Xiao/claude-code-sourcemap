@@ -4,22 +4,20 @@
 // class=modified (alt of src/utils/readFileInRange.ts)  jaccard=0.1452  score=0.4142  fileCov=0.1826
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LQn = E(() => {
-  es();
-  ((kQn = require("fs")), (RQn = require("fs/promises")));
-  WKt = class WKt extends Error {
-    sizeInBytes;
-    maxSizeBytes;
-    constructor(e, t) {
-      super(
-        `File content (${Ra(e)}) exceeds maximum allowed size (${Ra(t)}). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.`,
-      );
-      this.sizeInBytes = e;
-      this.maxSizeBytes = t;
-      this.name = "FileTooLargeError";
-    }
-  };
-});
+// [unwrapped __esm module LQn] deps: es
+((kQn = require("fs")), (RQn = require("fs/promises")));
+WKt = class WKt extends Error {
+  sizeInBytes;
+  maxSizeBytes;
+  constructor(e, t) {
+    super(
+      `File content (${Ra(e)}) exceeds maximum allowed size (${Ra(t)}). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.`,
+    );
+    this.sizeInBytes = e;
+    this.maxSizeBytes = t;
+    this.name = "FileTooLargeError";
+  }
+};
 function UTf() {
   let e;
   try {

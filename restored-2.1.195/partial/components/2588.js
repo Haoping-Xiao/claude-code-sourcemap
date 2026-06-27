@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1796  score=0.2612  fileCov=0.365
 // note: low-confidence suggestion: src/components/PromptInput/PromptInputFooterSuggestions.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var B_ = E(() => {
-  Ye();
-  Ozi = R(lt(), 1), slt = R(se(), 1);
-});
+// [unwrapped __esm module B_] deps: Ye
+Ozi = R(lt(), 1), slt = R(se(), 1);
 function eKd(e) {
   if (e.startsWith("file-")) return "+";
   if (e.startsWith("mcp-resource-")) return mv;

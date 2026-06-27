@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0058  score=0.1332  fileCov=0.006
 // note: nearest: src/screens/REPL.tsx (0.0058); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var XHo = E(() => {
-  fn();
-  DD();
-  QO();
-  Ao();
-  ACn();
-});
 function $Jp(e) {
   return /\[1m\]$/i.test(e) ? e : `${e}[1m]`;
 }

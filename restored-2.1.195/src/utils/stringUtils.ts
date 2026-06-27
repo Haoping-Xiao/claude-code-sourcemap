@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4101  score=0.6358  fileCov=0.536
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ED = E(() => {
-  FK();
-  h7c = new Set(["EPIPE", "EIO", "ENXIO", "EBADF"]);
-});
+// [unwrapped __esm module ED] deps: FK
+h7c = new Set(["EPIPE", "EIO", "ENXIO", "EBADF"]);
 function Ff(e, t) {
   return e.repeat(Number.isFinite(t) && t > 0 ? t : 0);
 }

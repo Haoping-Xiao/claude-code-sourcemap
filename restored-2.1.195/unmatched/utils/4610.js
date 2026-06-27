@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0148  score=0.1509  fileCov=0.0161
 // note: nearest: src/components/Settings/Config.tsx (0.0148); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FOo = E(() => {
-  kt();
-  ZU();
-  es();
-  dr();
-});
 var QPl = {};
 _t(QPl, {
   call: () => call

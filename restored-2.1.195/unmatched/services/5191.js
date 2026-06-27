@@ -4,12 +4,11 @@
 // class=new  jaccard=0.0096  score=0.1303  fileCov=0.0102
 // note: nearest: src/utils/ide.ts (0.0096); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dec = E(() => {
-  cec = Symbol.for("mcp.completable");
-  (function (e) {
-    e.Completable = "McpCompletable";
-  })(lec || (lec = {}));
-});
+// [unwrapped __esm module dec]
+cec = Symbol.for("mcp.completable");
+(function (e) {
+  e.Completable = "McpCompletable";
+})(lec || (lec = {}));
 function jKf(e) {
   let t = [];
   if (e.length === 0) return {

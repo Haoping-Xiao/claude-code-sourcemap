@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.5282  score=1  fileCov=0.5282
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IOa = E(() => {
-  k0();
-  u_();
-  KDp = `Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.
+// [unwrapped __esm module IOa] deps: k0, u_
+KDp = `Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.
 It also helps the user understand the progress of the task and overall progress of their requests.
 
 ## When to Use This Tool
@@ -186,5 +184,4 @@ The assistant did not use the todo list because this is a single command executi
 
 When in doubt, use this tool. Being proactive with task management demonstrates attentiveness and ensures you complete all requirements successfully.
 `;
-});
 var YDp, XDp, qDe;

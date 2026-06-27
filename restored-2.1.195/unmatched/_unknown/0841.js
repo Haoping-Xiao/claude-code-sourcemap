@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jRs = E(() => {
-  NRs();
-  h2u = FRs;
-});
+// [unwrapped __esm module jRs] deps: NRs
+h2u = FRs;

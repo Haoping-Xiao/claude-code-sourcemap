@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0542  score=0.2062  fileCov=0.0684
 // note: nearest: node_modules/zod-to-json-schema/dist/esm/selectParser.js (0.0542); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xzr = E(() => {
-  zOi = require("crypto");
-});
+// [unwrapped __esm module Xzr]
+zOi = require("crypto");
 function r1i(e) {
   n1i = e;
 }

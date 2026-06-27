@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0761  score=0.1716  fileCov=0.1204
 // note: low-confidence suggestion: src/utils/proxy.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kv = E(() => {
-  Mm();
-  Vkn = require("crypto"), Cke = require("fs"), TKr = require("os"), zkn = require("path");
-});
+// [unwrapped __esm module kv] deps: Mm
+Vkn = require("crypto"), Cke = require("fs"), TKr = require("os"), zkn = require("path");
 function F1i(e) {
   let t = e.HTTP_PROXY || e.http_proxy || e.CLAUDE_CODE_HTTP_PROXY,
     n = e.HTTPS_PROXY || e.https_proxy || e.CLAUDE_CODE_HTTPS_PROXY,

@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.1496  score=1  fileCov=0.1496
 // note: low-confidence suggestion: src/ink/warn.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var l3i = E(() => {
-  a3i();
-});
 function gXr(e) {
   if (!Number.isInteger(e)) return false;
   return fXr(e) || mXr(e);

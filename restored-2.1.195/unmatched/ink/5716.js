@@ -3,12 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gLc = E(() => {
-  ft();
-  jh();
-  EW();
-  mLc = R(rt(), 1);
-});
+// [unwrapped __esm module gLc] deps: ft, jh, EW
+mLc = R(rt(), 1);
 function xYo(e) {
   Fwm = e;
 }

@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.442  score=1  fileCov=0.442
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var c8o = E(() => {
-  Ye();
-  RN();
-  ZCo();
-  cjn();
-  ((qfc = R(lt(), 1)), (JZt = R(se(), 1)));
-});
+// [unwrapped __esm module c8o] deps: Ye, RN, ZCo, cjn
+((qfc = R(lt(), 1)), (JZt = R(se(), 1)));
 function mur() {
   let e = Dr().defaultShell;
   if (e === "bash" && !Su()) return "powershell";

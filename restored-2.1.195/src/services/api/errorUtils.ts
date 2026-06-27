@@ -4,79 +4,60 @@
 // class=modified  jaccard=0.3625  score=0.467  fileCov=0.6185
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var z1 = E(() => {
-  PR();
-  Ree();
-  ft();
-  TM();
-  og();
-  oo();
-  Vw();
-  e1();
-  er();
-  vn();
-  NX();
-  Ao();
-  qd();
-  kt();
-  ZE();
-  Yxe();
-  Ijt();
-  xjt();
-  ((rlp = [
-    {
-      rateLimitType: "five_hour",
-      claimAbbrev: "5h",
-      windowSeconds: 18000,
-      thresholds: [
-        {
-          utilization: 0.9,
-          timePct: 0.72,
-        },
-      ],
-    },
-    {
-      rateLimitType: "seven_day",
-      claimAbbrev: "7d",
-      windowSeconds: 604800,
-      thresholds: [
-        {
-          utilization: 0.75,
-          timePct: 0.6,
-        },
-        {
-          utilization: 0.5,
-          timePct: 0.35,
-        },
-        {
-          utilization: 0.25,
-          timePct: 0.15,
-        },
-      ],
-    },
-  ]),
-    (olp = {
-      "5h": "five_hour",
-      "7d": "seven_day",
-      "7d_oi": "seven_day_overage_included",
-      overage: "overage",
-    }),
-    (slp = {
-      five_hour: "session limit",
-      seven_day: "weekly limit",
-      seven_day_opus: "Opus limit",
-      seven_day_sonnet: "Sonnet limit",
-      seven_day_overage_included: "Fable 5 limit",
-      overage: "usage credit limit",
-    }));
-  ((ck = {
-    status: "allowed",
-    unifiedRateLimitFallbackAvailable: false,
-    isUsingOverage: false,
+// [unwrapped __esm module z1] deps: PR, Ree, ft, TM, og, oo, Vw, e1, er, vn, NX, Ao, qd, kt, ZE, Yxe, Ijt, xjt
+((rlp = [
+  {
+    rateLimitType: "five_hour",
+    claimAbbrev: "5h",
+    windowSeconds: 18000,
+    thresholds: [
+      {
+        utilization: 0.9,
+        timePct: 0.72,
+      },
+    ],
+  },
+  {
+    rateLimitType: "seven_day",
+    claimAbbrev: "7d",
+    windowSeconds: 604800,
+    thresholds: [
+      {
+        utilization: 0.75,
+        timePct: 0.6,
+      },
+      {
+        utilization: 0.5,
+        timePct: 0.35,
+      },
+      {
+        utilization: 0.25,
+        timePct: 0.15,
+      },
+    ],
+  },
+]),
+  (olp = {
+    "5h": "five_hour",
+    "7d": "seven_day",
+    "7d_oi": "seven_day_overage_included",
+    overage: "overage",
   }),
-    (p5e = {}));
-  ((cLe = new Set()), (k1n = new Set()));
-});
+  (slp = {
+    five_hour: "session limit",
+    seven_day: "weekly limit",
+    seven_day_opus: "Opus limit",
+    seven_day_sonnet: "Sonnet limit",
+    seven_day_overage_included: "Fable 5 limit",
+    overage: "usage credit limit",
+  }));
+((ck = {
+  status: "allowed",
+  unifiedRateLimitFallbackAvailable: false,
+  isUsingOverage: false,
+}),
+  (p5e = {}));
+((cLe = new Set()), (k1n = new Set()));
 function Dio(e) {
   return que.has(e) ? kh(e) : We("other");
 }

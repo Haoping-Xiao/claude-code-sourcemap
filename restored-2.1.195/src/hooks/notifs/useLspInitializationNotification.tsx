@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3534  score=0.8419  fileCov=0.3785
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OLc = E(() => {
-  Ed();
-  ft();
-  uo();
-  __();
-  Dtn = R(rt(), 1);
-});
+// [unwrapped __esm module OLc] deps: Ed, ft, uo, __
+Dtn = R(rt(), 1);
 function BLc() {
   let e = NLc.c(12),
     t = Ho(),

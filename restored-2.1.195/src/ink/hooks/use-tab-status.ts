@@ -4,28 +4,25 @@
 // class=modified  jaccard=0.2953  score=0.6117  fileCov=0.3634
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var V5i = E(() => {
-  jh();
-  EW();
-  ((Sat = R(rt(), 1)),
-    (WWd = {
-      idle: {
-        indicator: bat(0, 215, 95),
-        status: "Idle",
-        statusColor: bat(136, 136, 136),
-      },
-      busy: {
-        indicator: bat(255, 149, 0),
-        status: "Working\u2026",
-        statusColor: bat(255, 149, 0),
-      },
-      waiting: {
-        indicator: bat(95, 135, 255),
-        status: "Waiting",
-        statusColor: bat(95, 135, 255),
-      },
-    }));
-});
+// [unwrapped __esm module V5i] deps: jh, EW
+((Sat = R(rt(), 1)),
+  (WWd = {
+    idle: {
+      indicator: bat(0, 215, 95),
+      status: "Idle",
+      statusColor: bat(136, 136, 136),
+    },
+    busy: {
+      indicator: bat(255, 149, 0),
+      status: "Working\u2026",
+      statusColor: bat(255, 149, 0),
+    },
+    waiting: {
+      indicator: bat(95, 135, 255),
+      status: "Waiting",
+      statusColor: bat(95, 135, 255),
+    },
+  }));
 function Ja(e) {
   return Bun.stripANSI(e);
 }

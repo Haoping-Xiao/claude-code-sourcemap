@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.1  score=0.5426  fileCov=0.1093
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dzo = E(() => {
-  Gen();
-  Wen();
-  uo();
-  je();
-  co();
-  lzo();
-  mw = R(rt(), 1);
-});
+// [unwrapped __esm module dzo] deps: Gen, Wen, uo, je, co, lzo
+mw = R(rt(), 1);
 function oSc({
   config: e,
   setMessages: t,

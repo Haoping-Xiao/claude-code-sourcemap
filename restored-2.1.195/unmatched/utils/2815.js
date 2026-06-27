@@ -4,41 +4,17 @@
 // class=new  jaccard=0.0265  score=0.141  fileCov=0.0316
 // note: nearest: src/utils/model/modelOptions.ts (0.0265); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var c5e = E(() => {
-  ft();
-  wr();
-  Un();
-  oo();
-  e1();
-  ste();
-  jG();
-  NE();
-  dr();
-  Cp();
-  m1();
-  Vw();
-  y1n();
-  QO();
-  je();
-  NX();
-  Ls();
-  DD();
-  vM();
-  Ao();
-  BE();
-  gAn();
-  mio();
-  taa = {
-    value: "sonnet",
-    label: "Sonnet",
-    description: `Sonnet 4.6 \xB7 ${T1n}`
-  }, Kia = {
-    value: "haiku",
-    label: "Haiku",
-    description: `Haiku 4.5 \xB7 ${Sio}`
-  };
-  Nap = new Set(["claude-vscode"]);
-});
+// [unwrapped __esm module c5e] deps: ft, wr, Un, oo, e1, ste, jG, NE, dr, Cp, m1, Vw, y1n, QO, je, NX, Ls, DD, vM, Ao, BE, gAn, mio
+taa = {
+  value: "sonnet",
+  label: "Sonnet",
+  description: `Sonnet 4.6 \xB7 ${T1n}`
+}, Kia = {
+  value: "haiku",
+  label: "Haiku",
+  description: `Haiku 4.5 \xB7 ${Sio}`
+};
+Nap = new Set(["claude-vscode"]);
 function BX() {
   return !Oe.CLAUDE_CODE_DISABLE_REFUSAL_FALLBACK;
 }

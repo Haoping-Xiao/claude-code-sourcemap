@@ -4,20 +4,8 @@
 // class=modified (alt of src/utils/ide.ts)  jaccard=0.2117  score=0.6405  fileCov=0.2403
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zdo = E(() => {
-  Q9();
-  Ye();
-  ps();
-  dn();
-  er();
-  wr();
-  aE();
-  lJ();
-  vi();
-  gDe();
-  Ko();
-  ((nxa = R(lt(), 1)), (FI = R(se(), 1)));
-});
+// [unwrapped __esm module zdo] deps: Q9, Ye, ps, dn, er, wr, aE, lJ, vi, gDe, Ko
+((nxa = R(lt(), 1)), (FI = R(se(), 1)));
 function pxa(e) {
   try {
     return (process.kill(e, 0), true);

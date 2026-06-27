@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0102  score=0.1792  fileCov=0.0106
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0102); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cUo = E(() => {
-  w8();
-});
 function wjl(e) {
   let t = vjl.c(17),
     {

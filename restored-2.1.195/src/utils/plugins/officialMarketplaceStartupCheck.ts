@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.5667  score=0.835  fileCov=0.6382
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QRc = E(() => {
-  gz();
-  XRc = R(rt(), 1);
-});
+// [unwrapped __esm module QRc] deps: gz
+XRc = R(rt(), 1);
 function Pwm() {
   return ut(process.env.CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL);
 }

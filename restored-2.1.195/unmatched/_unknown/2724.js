@@ -4,90 +4,84 @@
 // class=new  jaccard=0.025  score=0.2867  fileCov=0.0266
 // note: nearest: node_modules/zod/v4/core/to-json-schema.js (0.025); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZFt = E(() => {
-  TWe();
-  ERe();
-  Qne();
-  Vno();
-  t2t();
-  Kno = Symbol.for("@bufbuild/cel/map");
-  Vea = class Vea {
-    _map;
-    [Kno] = {};
-    constructor(e) {
-      this._map = e;
+// [unwrapped __esm module ZFt] deps: TWe, ERe, Qne, Vno, t2t
+Kno = Symbol.for("@bufbuild/cel/map");
+Vea = class Vea {
+  _map;
+  [Kno] = {};
+  constructor(e) {
+    this._map = e;
+  }
+  get size() {
+    return this._map.size;
+  }
+  get(e) {
+    if ($1(e)) e = e.value;
+    if (typeof e === "number") {
+      if (!Number.isInteger(e)) return;
+      e = BigInt(e);
     }
-    get size() {
-      return this._map.size;
+    let t = this._map.get(e);
+    if (t !== void 0) return Zne(t);
+    if (typeof e === "bigint") for (let n of this._map.keys()) {
+      if (!$1(n)) continue;
+      if (n.value === e) return Zne(this._map.get(n));
     }
-    get(e) {
-      if ($1(e)) e = e.value;
-      if (typeof e === "number") {
-        if (!Number.isInteger(e)) return;
-        e = BigInt(e);
-      }
-      let t = this._map.get(e);
-      if (t !== void 0) return Zne(t);
-      if (typeof e === "bigint") for (let n of this._map.keys()) {
-        if (!$1(n)) continue;
-        if (n.value === e) return Zne(this._map.get(n));
-      }
-      return;
-    }
-    has(e) {
-      return this.get(e) != null;
-    }
-    forEach(e, t) {
-      this._map.forEach((n, r, o) => e.call(t, Zne(n), r, this));
-    }
-    *entries() {
-      for (let [e, t] of this._map.entries()) yield [e, Zne(t)];
-    }
-    keys() {
-      return this._map.keys();
-    }
-    *values() {
-      for (let e of this._map.values()) yield Zne(e);
-    }
-    [Symbol.iterator]() {
-      return this.entries();
-    }
-  };
-  zea = class zea {
-    _map;
-    [Kno] = {};
-    constructor(e) {
-      this._map = e;
-    }
-    get size() {
-      return this._map.size;
-    }
-    get(e) {
-      let t = this._map.get(qea(this._map.field(), e));
-      if (t === void 0) return;
-      return N$n(this._map.field(), t);
-    }
-    has(e) {
-      return this._map.has(qea(this._map.field(), e));
-    }
-    forEach(e, t) {
-      this._map.forEach((n, r, o) => e.call(t, N$n(this._map.field(), n), zno(this._map.field(), r), this));
-    }
-    *entries() {
-      for (let [e, t] of this._map.entries()) yield [zno(this._map.field(), e), N$n(this._map.field(), t)];
-    }
-    *keys() {
-      for (let e of this._map.keys()) yield zno(this._map.field(), e);
-    }
-    *values() {
-      for (let e of this._map.keys()) yield N$n(this._map.field(), e);
-    }
-    [Symbol.iterator]() {
-      return this.entries();
-    }
-  };
-  kSy = QFt(new Map());
-});
+    return;
+  }
+  has(e) {
+    return this.get(e) != null;
+  }
+  forEach(e, t) {
+    this._map.forEach((n, r, o) => e.call(t, Zne(n), r, this));
+  }
+  *entries() {
+    for (let [e, t] of this._map.entries()) yield [e, Zne(t)];
+  }
+  keys() {
+    return this._map.keys();
+  }
+  *values() {
+    for (let e of this._map.values()) yield Zne(e);
+  }
+  [Symbol.iterator]() {
+    return this.entries();
+  }
+};
+zea = class zea {
+  _map;
+  [Kno] = {};
+  constructor(e) {
+    this._map = e;
+  }
+  get size() {
+    return this._map.size;
+  }
+  get(e) {
+    let t = this._map.get(qea(this._map.field(), e));
+    if (t === void 0) return;
+    return N$n(this._map.field(), t);
+  }
+  has(e) {
+    return this._map.has(qea(this._map.field(), e));
+  }
+  forEach(e, t) {
+    this._map.forEach((n, r, o) => e.call(t, N$n(this._map.field(), n), zno(this._map.field(), r), this));
+  }
+  *entries() {
+    for (let [e, t] of this._map.entries()) yield [zno(this._map.field(), e), N$n(this._map.field(), t)];
+  }
+  *keys() {
+    for (let e of this._map.keys()) yield zno(this._map.field(), e);
+  }
+  *values() {
+    for (let e of this._map.keys()) yield N$n(this._map.field(), e);
+  }
+  [Symbol.iterator]() {
+    return this.entries();
+  }
+};
+kSy = QFt(new Map());
 function n2t() {
   if (Yno.length === 0) throw Error("cannot use `getEvalContext` outside of an evaluation");
   return Yno[Yno.length - 1];

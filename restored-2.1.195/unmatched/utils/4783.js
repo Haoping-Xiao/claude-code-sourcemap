@@ -4,48 +4,38 @@
 // class=new  jaccard=0.0354  score=0.3042  fileCov=0.0386
 // note: nearest: src/utils/plugins/schemas.ts (0.0354); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pXt = E(() => {
-  Xr();
-  Rx();
-  Pw();
-  je();
-  At();
-  ys();
-  Jt();
-  dFt();
-  B1();
-  nrr = require("fs/promises"), FBo = require("path"), H2l = ve(() => H.object({
-    always_on: H.number(),
-    on_invoke: H.number()
-  })), NBo = ve(() => H.object({
-    name: H.string(),
-    chars: H2l().optional()
-  }).loose()), gNf = ve(() => H.object({
-    plugin: H.string(),
-    tokens: H.record(H.string(), H2l()),
-    components: H.object({
-      commands: H.array(NBo()),
-      agents: H.array(NBo()),
-      skills: H.array(NBo()),
-      hooks: H.array(H.string()).optional(),
-      mcpServers: H.array(H.string()).optional(),
-      lspServers: H.array(H.string()).optional()
-    }).loose(),
-    unique_installs: H.number().optional(),
-    last_updated: H.string().optional(),
-    marketplace_entry: H.record(H.string(), H.unknown())
-  }).loose()), T2l = ve(() => H.object({
-    generated_at: H.string(),
-    installs_generated_at: H.string().optional(),
-    marketplace_sha: H.string(),
-    models: H.array(H.string()),
-    plugins: H.record(H.string(), gNf())
-  }).loose()), hNf = ve(() => H.object({
-    version: H.number(),
-    fetchedAt: H.string(),
-    catalog: T2l()
-  }));
-});
+// [unwrapped __esm module pXt] deps: Xr, Rx, Pw, je, At, ys, Jt, dFt, B1
+nrr = require("fs/promises"), FBo = require("path"), H2l = ve(() => H.object({
+  always_on: H.number(),
+  on_invoke: H.number()
+})), NBo = ve(() => H.object({
+  name: H.string(),
+  chars: H2l().optional()
+}).loose()), gNf = ve(() => H.object({
+  plugin: H.string(),
+  tokens: H.record(H.string(), H2l()),
+  components: H.object({
+    commands: H.array(NBo()),
+    agents: H.array(NBo()),
+    skills: H.array(NBo()),
+    hooks: H.array(H.string()).optional(),
+    mcpServers: H.array(H.string()).optional(),
+    lspServers: H.array(H.string()).optional()
+  }).loose(),
+  unique_installs: H.number().optional(),
+  last_updated: H.string().optional(),
+  marketplace_entry: H.record(H.string(), H.unknown())
+}).loose()), T2l = ve(() => H.object({
+  generated_at: H.string(),
+  installs_generated_at: H.string().optional(),
+  marketplace_sha: H.string(),
+  models: H.array(H.string()),
+  plugins: H.record(H.string(), gNf())
+}).loose()), hNf = ve(() => H.object({
+  version: H.number(),
+  fetchedAt: H.string(),
+  catalog: T2l()
+}));
 function SNf(e, t, n, r) {
   let o = {};
   for (let s of e) {

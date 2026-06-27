@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2788  score=0.4589  fileCov=0.4153
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var F8 = E(() => {
-  ft();
-  fn();
-});
 var qW = {};
 _t(qW, {
   matchSessionMode: () => matchSessionMode,

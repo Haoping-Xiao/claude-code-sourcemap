@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0352  score=0.1503  fileCov=0.044
 // note: nearest: src/ink/styles.ts (0.0352); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lOl = E(() => {
-  G1o();
-  Ye();
-  uo();
-  Ao();
-  sr();
-  _Df = R(lt(), 1), aOl = R(se(), 1);
-});
+// [unwrapped __esm module lOl] deps: G1o, Ye, uo, Ao, sr
+_Df = R(lt(), 1), aOl = R(se(), 1);
 function fOl(e) {
   let t = UOe.c(2),
     {

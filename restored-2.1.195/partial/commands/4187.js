@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.069  score=0.1774  fileCov=0.1014
 // note: low-confidence suggestion: src/bridge/codeSessionApi.ts; dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Lcl = E(() => {
-  ql();
-  Ye();
-  es();
-  J6 = R(se(), 1);
-});
+// [unwrapped __esm module Lcl] deps: ql, Ye, es
+J6 = R(se(), 1);
 function Z8t() {
   let e = Oe.CLAUDE_CODE_SESSION_ID;
   if (e && (e.startsWith("cse_") || e.startsWith("session_"))) return e;

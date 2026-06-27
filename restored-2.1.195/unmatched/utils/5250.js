@@ -4,50 +4,43 @@
 // class=new  jaccard=0.0286  score=0.0808  fileCov=0.0423
 // note: nearest: src/tools/AgentTool/loadAgentsDir.ts (0.0286); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pWo = E(() => {
-  Qi();
-  dn();
-  je();
-  Iv();
-  pq();
-  Lar();
-  qrc = require("path"), A4E = Cn(async function (e) {
-    let t = await _q("routines", e),
-      n = [...t.filter(s => s.source !== "projectSettings" && s.source !== "policySettings"), ...t.filter(s => s.source === "projectSettings").sort(WSt), ...t.filter(s => s.source === "policySettings")],
-      r = new Map(),
-      o = null;
-    for (let s of n) {
-      let i = Frc(s.frontmatter);
-      for (let u of i.warnings) T(`[Routines] ${s.filePath}: ${u}`, {
+// [unwrapped __esm module pWo] deps: Qi, dn, je, Iv, pq, Lar
+qrc = require("path"), A4E = Cn(async function (e) {
+  let t = await _q("routines", e),
+    n = [...t.filter(s => s.source !== "projectSettings" && s.source !== "policySettings"), ...t.filter(s => s.source === "projectSettings").sort(WSt), ...t.filter(s => s.source === "policySettings")],
+    r = new Map(),
+    o = null;
+  for (let s of n) {
+    let i = Frc(s.frontmatter);
+    for (let u of i.warnings) T(`[Routines] ${s.filePath}: ${u}`, {
+      level: "warn"
+    });
+    if (i.triggers.length === 0) {
+      T(`[Routines] skipping ${s.filePath}: no usable trigger (need at least one of: schedule, on)`, {
         level: "warn"
-      });
-      if (i.triggers.length === 0) {
-        T(`[Routines] skipping ${s.filePath}: no usable trigger (need at least one of: schedule, on)`, {
-          level: "warn"
-        }), o ??= "routine_load_no_trigger";
-        continue;
-      }
-      let a = qrc.basename(s.filePath, ".md"),
-        l = s.frontmatter.name,
-        c = typeof l === "string" && l.trim() !== "" ? l.trim() : a;
-      if (c.startsWith("-")) {
-        T(`[Routines] skipping ${s.filePath}: name '${c}' must not start with '-'`, {
-          level: "error"
-        }), o = "routine_load_invalid_name";
-        continue;
-      }
-      r.set(c, {
-        name: c,
-        description: AU(s.frontmatter.description, c) ?? void 0,
-        triggers: i.triggers,
-        body: s.content.trim(),
-        source: s.source,
-        filePath: s.filePath
-      });
+      }), o ??= "routine_load_no_trigger";
+      continue;
     }
-    if (o !== null) It("routine_load", o);else xe("routine_load");
-    return Array.from(r.values());
-  });
+    let a = qrc.basename(s.filePath, ".md"),
+      l = s.frontmatter.name,
+      c = typeof l === "string" && l.trim() !== "" ? l.trim() : a;
+    if (c.startsWith("-")) {
+      T(`[Routines] skipping ${s.filePath}: name '${c}' must not start with '-'`, {
+        level: "error"
+      }), o = "routine_load_invalid_name";
+      continue;
+    }
+    r.set(c, {
+      name: c,
+      description: AU(s.frontmatter.description, c) ?? void 0,
+      triggers: i.triggers,
+      body: s.content.trim(),
+      source: s.source,
+      filePath: s.filePath
+    });
+  }
+  if (o !== null) It("routine_load", o);else xe("routine_load");
+  return Array.from(r.values());
 });
 async function hWo(e, t = !1, n = Date.now()) {
   let r = gWo;

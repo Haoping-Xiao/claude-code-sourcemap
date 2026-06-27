@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0199  score=0.3546  fileCov=0.0207
 // note: nearest: src/services/api/claude.ts (0.0199); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Zo = E(() => {
-  er();
-  Ao();
-  jG();
-});
 function qWc(e, t, n, r = null, o) {
   if (!e.body || e.status >= 400) return e;
   let s = (e.headers.get("content-type") ?? "").includes("text/event-stream"),

@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3875  score=0.6634  fileCov=0.4824
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var u8o = E(() => {
-  dr();
-  _m();
-});
 var Vfc = {};
 _t(Vfc, {
   processBashCommand: () => processBashCommand,

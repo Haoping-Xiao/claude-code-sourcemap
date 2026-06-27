@@ -4,38 +4,35 @@
 // class=modified  jaccard=0.4395  score=1  fileCov=0.4395
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var r4o = E(() => {
-  kpe();
-  vf();
-  n4o = [
-    {
-      label: "User agents",
-      source: "userSettings",
-    },
-    {
-      label: "Project agents",
-      source: "projectSettings",
-    },
-    {
-      label: "Local agents",
-      source: "localSettings",
-    },
-    {
-      label: "Managed agents",
-      source: "policySettings",
-    },
-    {
-      label: "Plugin agents",
-      source: "plugin",
-    },
-    {
-      label: "CLI arg agents",
-      source: "flagSettings",
-    },
-    {
-      label: "Built-in agents",
-      source: "built-in",
-    },
-  ];
-});
+// [unwrapped __esm module r4o] deps: kpe, vf
+n4o = [
+  {
+    label: "User agents",
+    source: "userSettings",
+  },
+  {
+    label: "Project agents",
+    source: "projectSettings",
+  },
+  {
+    label: "Local agents",
+    source: "localSettings",
+  },
+  {
+    label: "Managed agents",
+    source: "policySettings",
+  },
+  {
+    label: "Plugin agents",
+    source: "plugin",
+  },
+  {
+    label: "CLI arg agents",
+    source: "flagSettings",
+  },
+  {
+    label: "Built-in agents",
+    source: "built-in",
+  },
+];
 var cme;

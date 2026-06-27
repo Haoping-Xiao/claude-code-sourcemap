@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0708  score=0.2448  fileCov=0.0905
 // note: low-confidence suggestion: src/components/diff/DiffDialog.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vKe = E(() => {
-  Ye();
-  V1l = R(lt(), 1), z1l = R(se(), 1);
-});
+// [unwrapped __esm module vKe] deps: Ye
+V1l = R(lt(), 1), z1l = R(se(), 1);
 function bNo(e) {
   let t = K1l.c(61),
     {

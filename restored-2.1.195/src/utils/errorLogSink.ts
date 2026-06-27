@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.5311  score=0.9424  fileCov=0.5489
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var T3o = E(() => {
-  db();
-  Pw();
-  At();
-  Jt();
-  zOe();
-  ((Iir = require("fs/promises")), (EZl = require("path")));
-});
+// [unwrapped __esm module T3o] deps: db, Pw, At, Jt, zOe
+((Iir = require("fs/promises")), (EZl = require("path")));
 var kir = {};
 _t(kir, {
   initializeErrorLogSink: () => initializeErrorLogSink,

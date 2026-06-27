@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.6078  score=1  fileCov=0.6078
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zQr = E(() => {
-  er();
-  je();
-  At();
-  Bi();
-  vn();
-  ((VQr = require("fs/promises")), (v8i = require("os")), (w8i = require("path")));
-});
+// [unwrapped __esm module zQr] deps: er, je, At, Bi, vn
+((VQr = require("fs/promises")), (v8i = require("os")), (w8i = require("path")));
 function s6d() {
   let e = process.env.SHELL || "",
     t = I8i.homedir(),

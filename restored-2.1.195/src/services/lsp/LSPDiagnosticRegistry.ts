@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.5419  score=0.797  fileCov=0.6288
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ypt = E(() => {
-  At();
-  vn();
-});
 function oLa({ serverName: e, files: t }) {
   let n = rLa.randomUUID();
   (T(`LSP Diagnostics: Registering ${t.length} diagnostic file(s) from ${e} (ID: ${n})`),

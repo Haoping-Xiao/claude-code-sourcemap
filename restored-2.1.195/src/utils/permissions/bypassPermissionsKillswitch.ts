@@ -4,35 +4,23 @@
 // class=modified  jaccard=0.2517  score=0.4089  fileCov=0.3957
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OMe = E(() => {
-  BWt();
-  Vet();
-  er();
-  Lx();
-  fn();
-  WGe();
-  u9();
-  Mh();
-  vf();
-  dr();
-  _1();
-  Nyt = {
-    managedByHost: false,
-    managedByHostFlag: false,
-    desktopHost: false,
-    hostOrchestrated: false,
-  };
-  urf = new Set(["policySettings", "projectSettings", "localSettings"]);
-  Byt = {};
-  mrf = new Set([
-    "CLAUDE_CODE_REMOTE",
-    "CLAUDE_CODE_ACCOUNT_UUID",
-    "CLAUDE_CODE_ORGANIZATION_UUID",
-    "CLAUDE_CODE_USER_EMAIL",
-    "CLAUDE_CODE_CONTAINER_ID",
-  ]);
-  hrf = ["userSettings", "flagSettings", "policySettings"];
-});
+// [unwrapped __esm module OMe] deps: BWt, Vet, er, Lx, fn, WGe, u9, Mh, vf, dr, _1
+Nyt = {
+  managedByHost: false,
+  managedByHostFlag: false,
+  desktopHost: false,
+  hostOrchestrated: false,
+};
+urf = new Set(["policySettings", "projectSettings", "localSettings"]);
+Byt = {};
+mrf = new Set([
+  "CLAUDE_CODE_REMOTE",
+  "CLAUDE_CODE_ACCOUNT_UUID",
+  "CLAUDE_CODE_ORGANIZATION_UUID",
+  "CLAUDE_CODE_USER_EMAIL",
+  "CLAUDE_CODE_CONTAINER_ID",
+]);
+hrf = ["userSettings", "flagSettings", "policySettings"];
 async function H8t(e, t) {
   if (dCo) return;
   if (((dCo = true), !e.isBypassPermissionsModeAvailable)) return;

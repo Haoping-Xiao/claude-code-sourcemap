@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3714  score=0.6311  fileCov=0.4744
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qlc = E(() => {
-  oo();
-});
 function Srm() {
   return (YI(), ro(nvo));
 }

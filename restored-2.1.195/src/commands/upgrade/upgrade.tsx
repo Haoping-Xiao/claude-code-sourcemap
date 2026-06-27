@@ -4,20 +4,17 @@
 // class=modified  jaccard=0.4737  score=0.6757  fileCov=0.6131
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iQl = E(() => {
-  jc();
-  oo();
-  sQl = {
-    type: "local-jsx",
-    name: "remote-env",
-    description: "Choose the default environment for cloud agents",
-    isEnabled: () => bo() && Us("allow_remote_sessions"),
-    get isHidden() {
-      return !bo() || !Us("allow_remote_sessions");
-    },
-    load: () => Promise.resolve().then(() => (oQl(), nQl)),
-  };
-});
+// [unwrapped __esm module iQl] deps: jc, oo
+sQl = {
+  type: "local-jsx",
+  name: "remote-env",
+  description: "Choose the default environment for cloud agents",
+  isEnabled: () => bo() && Us("allow_remote_sessions"),
+  get isHidden() {
+    return !bo() || !Us("allow_remote_sessions");
+  },
+  load: () => Promise.resolve().then(() => (oQl(), nQl)),
+};
 var r3o = {};
 _t(r3o, {
   call: () => call,

@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0264  score=0.1226  fileCov=0.0325
 // note: nearest: node_modules/yaml/dist/parse/lexer.js (0.0264); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var k2c = E(() => {
-  rB();
-  wm();
-  sB();
-  YXo = _Dm;
-});
+// [unwrapped __esm module k2c] deps: rB, wm, sB
+YXo = _Dm;
 async function R2c(e, t, n) {
   if (typeof e !== "string" || e.indexOf("-----BEGIN PUBLIC KEY-----") !== 0) throw TypeError('"spki" must be SPKI formatted string');
   return KXo(e, t, n);

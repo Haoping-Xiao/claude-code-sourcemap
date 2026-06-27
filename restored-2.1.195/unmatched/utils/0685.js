@@ -4,20 +4,9 @@
 // class=new  jaccard=0.0064  score=0.2997  fileCov=0.0065
 // note: nearest: src/utils/auth.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var N0r = E(() => {
-  QAs();
-  nHs();
-  fHs();
-  gHs();
-  wHs();
-  kHs();
-  ZHs();
-  tTs();
-  aTs();
-  dTs();
-  fTs = require("buffer"), mTs = R(require("path")), cfn = R(require("child_process")), pRt = R(require("process")), gTs = R(d0r(), 1);
-  Odg = yTs();
-});
+// [unwrapped __esm module N0r] deps: QAs, nHs, fHs, gHs, wHs, kHs, ZHs, tTs, aTs, dTs
+fTs = require("buffer"), mTs = R(require("path")), cfn = R(require("child_process")), pRt = R(require("process")), gTs = R(d0r(), 1);
+Odg = yTs();
 function p$u() {
   return false;
 }

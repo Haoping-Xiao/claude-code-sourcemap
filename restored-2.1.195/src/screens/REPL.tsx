@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.1934  score=0.318  fileCov=0.3305
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GPc = E(() => {
-  er();
-  Eoe();
-  __();
-});
 var JPc = {};
 _t(JPc, {
   TranscriptHelpMenu: () => TranscriptHelpMenu,

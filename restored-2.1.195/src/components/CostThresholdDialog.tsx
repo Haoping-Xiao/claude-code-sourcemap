@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3699  score=0.6353  fileCov=0.4697
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bmc = E(() => {
-  Fy();
-  vi();
-  ((ymc = R(lt(), 1)), (A8o = R(se(), 1)));
-});
+// [unwrapped __esm module bmc] deps: Fy, vi
+((ymc = R(lt(), 1)), (A8o = R(se(), 1)));
 function Emc(e) {
   let t = Smc.c(7),
     { onDone: n } = e,

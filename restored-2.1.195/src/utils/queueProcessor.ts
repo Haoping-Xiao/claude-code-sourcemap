@@ -4,31 +4,6 @@
 // class=modified  jaccard=0.2096  score=0.5944  fileCov=0.2446
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qEc = E(() => {
-  ghe();
-  ft();
-  dn();
-  kt();
-  rir();
-  Zf();
-  $ur();
-  zj();
-  fp();
-  je();
-  Cp();
-  Y4();
-  Ozo();
-  Yp();
-  sF();
-  bm();
-  co();
-  Ao();
-  e$e();
-  yur();
-  Rze();
-  m5();
-  oje();
-});
 function VEc(e) {
   if (e.skipSlashCommands && e.origin?.kind === "peer") return false;
   if (typeof e.value === "string") return e.value.trim().startsWith("/");

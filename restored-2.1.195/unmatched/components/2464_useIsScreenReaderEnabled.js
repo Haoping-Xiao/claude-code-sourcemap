@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0045  score=0.1264  fileCov=0.0046
 // note: nearest: src/screens/REPL.tsx (0.0045); dir inferred from dep-graph -> components; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GLn = E(() => {
-  tX = VWd;
-});
+// [unwrapped __esm module GLn]
+tX = VWd;
 var wW = {};
 _t(wW, {
   wrapText: () => C1,

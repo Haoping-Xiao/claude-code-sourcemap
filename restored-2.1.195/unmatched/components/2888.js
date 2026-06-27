@@ -4,20 +4,9 @@
 // class=new  jaccard=0.0117  score=0.2891  fileCov=0.012
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0117); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kLe = E(() => {
-  _i();
-  bW();
-  Ye();
-  xLe();
-  Jt();
-  ILe();
-  cne();
-  ql();
-  d4t();
-  Hlo();
-  oda = R(lt(), 1), sda = R(rt(), 1), zNn = R(se(), 1);
-  Uup = /https?:\/\/[^\s"'<>\\\x00-\x1f]+/g;
-});
+// [unwrapped __esm module kLe] deps: _i, bW, Ye, xLe, Jt, ILe, cne, ql, d4t, Hlo
+oda = R(lt(), 1), sda = R(rt(), 1), zNn = R(se(), 1);
+Uup = /https?:\/\/[^\s"'<>\\\x00-\x1f]+/g;
 function ada(e) {
   return e.server ? `List MCP resources from server "${e.server}"` : "List all MCP resources";
 }

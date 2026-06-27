@@ -4,28 +4,6 @@
 // class=modified  jaccard=0.4017  score=0.6511  fileCov=0.5119
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m4o = E(() => {
-  ft();
-  Rc();
-  oo();
-  dC();
-  er();
-  Mm();
-  At();
-  sa();
-  Ls();
-  Cfn();
-  dr();
-  Sx();
-  dn();
-  Un();
-  kt();
-  AVe();
-  c_();
-  jc();
-  R7l();
-  L7l();
-});
 async function iTe(e) {
   (T("refreshActivePlugins: clearing all plugin caches"), vRl(), Ah(), Mtl());
   let t = await OT();

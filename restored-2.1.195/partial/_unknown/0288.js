@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2256  score=0.3486  fileCov=0.3899
 // note: low-confidence suggestion: node_modules/zod/v4/locales/ru.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nls = E(() => {
-  ep();
-});
 function rls(e, t, n, r) {
   let o = Math.abs(e),
     s = o % 10,

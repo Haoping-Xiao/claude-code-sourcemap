@@ -4,11 +4,6 @@
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.1053  score=0.7165  fileCov=0.1099
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ows = E(() => {
-  Xr();
-  Jt();
-  lj();
-});
 function Nws(e) {
   let t = f1u.find((r) => r.matches(e));
   if (!t) return null;

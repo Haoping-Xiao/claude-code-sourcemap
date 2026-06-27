@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.2524  score=0.2861  fileCov=0.6817
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VVl = E(() => {
-  ((VGf = {
-    type: "local-jsx",
-    name: "resume",
-    description: "Resume a previous conversation",
-    aliases: ["continue"],
-    argumentHint: "[conversation id or search term]",
-    load: () => Promise.resolve().then(() => (WVl(), GVl)),
-  }),
-    (qVl = VGf));
-});
+// [unwrapped __esm module VVl]
+((VGf = {
+  type: "local-jsx",
+  name: "resume",
+  description: "Resume a previous conversation",
+  aliases: ["continue"],
+  argumentHint: "[conversation id or search term]",
+  load: () => Promise.resolve().then(() => (WVl(), GVl)),
+}),
+  (qVl = VGf));
 var KVl = {};
 _t(KVl, {
   call: () => call,

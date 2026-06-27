@@ -4,21 +4,9 @@
 // class=new  jaccard=0.0033  score=0.1026  fileCov=0.0034
 // note: nearest: src/bridge/bridgeMain.ts (0.0033); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uf = E(() => {
-  ft();
-  Un();
-  je();
-  Lx();
-  wr();
-  fn();
-  Bi();
-  Is();
-  QZe();
-  Y9();
-  dr();
-  VUi = require("child_process");
-  ine = qBd();
-});
+// [unwrapped __esm module uf] deps: ft, Un, je, Lx, wr, fn, Bi, Is, QZe, Y9, dr
+VUi = require("child_process");
+ine = qBd();
 var JUi = {};
 _t(JUi, {
   watchSystemTheme: () => watchSystemTheme,

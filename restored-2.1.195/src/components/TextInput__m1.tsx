@@ -4,10 +4,6 @@
 // class=modified (alt of src/components/TextInput.tsx)  jaccard=0.0982  score=0.8941  fileCov=0.0993
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mne = E(() => {
-  ZS();
-  Un();
-});
 function d6i() {
   ((IUt = 0), (hZr = false));
 }

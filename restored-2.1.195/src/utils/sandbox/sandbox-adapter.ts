@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.1557  score=0.2708  fileCov=0.2681
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Nna = E(() => {
-  Ona = {};
-});
+// [unwrapped __esm module Nna]
+Ona = {};
 var Rro = {};
 _t(Rro, {
   shouldForceSandboxOn: () => shouldForceSandboxOn,

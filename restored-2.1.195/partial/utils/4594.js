@@ -4,18 +4,8 @@
 // class=partial  jaccard=0.1186  score=1  fileCov=0.1186
 // note: low-confidence suggestion: node_modules/@opentelemetry/api/build/src/platform/index.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xOo = E(() => {
-  ft();
-  wQ();
-  GF();
-  ag();
-  IL();
-  y_();
-  _a();
-  Ver();
-  Mp();
-  g0f = ["default", "reset", "none", "gray", "grey"];
-});
+// [unwrapped __esm module xOo] deps: ft, wQ, GF, ag, IL, y_, _a, Ver, Mp
+g0f = ["default", "reset", "none", "gray", "grey"];
 var iPl = {};
 _t(iPl, {
   call: () => call

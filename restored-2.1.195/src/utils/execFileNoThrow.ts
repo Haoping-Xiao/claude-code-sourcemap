@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.4206  score=0.6192  fileCov=0.5674
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var B0r = E(() => {
-  Lo();
-  OB();
-  Jt();
-});
 var ETs = {};
 _t(ETs, {
   execSyncWithDefaults_BLOCKS_EVENT_LOOP_WILL_FREEZE_UI_MAKE_SURE_YOU_KNOW_WHAT_YOU_ARE_DOING: () =>

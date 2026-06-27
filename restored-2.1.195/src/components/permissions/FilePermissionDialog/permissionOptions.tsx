@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.4504  score=0.6724  fileCov=0.577
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gHc = E(() => {
-  ft();
-  Fy();
-  X0();
-  Ye();
-  kt();
-  uo();
-  ((fHc = R(lt(), 1)), (x3 = R(se(), 1)));
-});
+// [unwrapped __esm module gHc] deps: ft, Fy, X0, Ye, kt, uo
+((fHc = R(lt(), 1)), (x3 = R(se(), 1)));
 function v_m(e) {
   let t = ds(e),
     n = ds(`${yr()}/.claude`),

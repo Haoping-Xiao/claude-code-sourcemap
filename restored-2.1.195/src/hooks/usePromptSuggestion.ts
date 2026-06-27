@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.6666  score=0.9802  fileCov=0.6757
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Yhc = E(() => {
-  Ye();
-  Ome = R(rt(), 1);
-});
+// [unwrapped __esm module Yhc] deps: Ye
+Ome = R(rt(), 1);
 function Xhc({ inputValue: e, isAssistantResponding: t }) {
   let n = Ht((_) => _.promptSuggestion),
     r = Ho(),

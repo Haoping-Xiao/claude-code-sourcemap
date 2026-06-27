@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0228  score=0.2864  fileCov=0.0242
 // note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0228); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Re = E(() => {
-  Dbe();
-  M8();
-});
 function u$n(e, t) {
   let n = e[t.localName].case;
   if (n === void 0) return n;

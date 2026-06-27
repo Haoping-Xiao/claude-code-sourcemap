@@ -4,21 +4,8 @@
 // class=modified (alt of src/utils/sessionState.ts)  jaccard=0.07  score=0.1085  fileCov=0.1648
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $pr = E(() => {
-  Ed();
-  tC();
-  nbe();
-  Ye();
-  Yj();
-  xne();
-  H0e();
-  uo();
-  m0();
-  Is();
-  sr();
-  Cen();
-  ((gw = R(rt(), 1)), (Cbm = (TTc(), ro(HTc))));
-});
+// [unwrapped __esm module $pr] deps: Ed, tC, nbe, Ye, Yj, xne, H0e, uo, m0, Is, sr, Cen
+((gw = R(rt(), 1)), (Cbm = (TTc(), ro(HTc))));
 function wTc() {
   return false;
 }

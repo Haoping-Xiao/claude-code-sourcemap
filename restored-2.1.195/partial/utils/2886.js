@@ -4,11 +4,6 @@
 // class=partial  jaccard=0.082  score=1  fileCov=0.082
 // note: low-confidence suggestion: src/context/stats.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xLe = E(() => {
-  iu();
-  AW();
-  Mke();
-});
 function tda(e) {
   let t = Jua.c(2),
     {

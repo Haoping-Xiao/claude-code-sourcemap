@@ -4,20 +4,8 @@
 // class=partial  jaccard=0.0858  score=0.2888  fileCov=0.1089
 // note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gzl = E(() => {
-  si();
-  Mg();
-  _i();
-  Ye();
-  ps();
-  RN();
-  T6t();
-  QH();
-  Bs();
-  vi();
-  Ko();
-  fzl = R(lt(), 1), Ojo = R(rt(), 1), Vq = R(se(), 1);
-});
+// [unwrapped __esm module gzl] deps: si, Mg, _i, Ye, ps, RN, T6t, QH, Bs, vi, Ko
+fzl = R(lt(), 1), Ojo = R(rt(), 1), Vq = R(se(), 1);
 function yzl(e) {
   let t = hzl.c(32),
     {

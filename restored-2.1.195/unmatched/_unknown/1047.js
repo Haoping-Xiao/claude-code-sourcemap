@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q3s = E(() => {
-  j3s();
-  RKu = Oyn;
-});
+// [unwrapped __esm module q3s] deps: j3s
+RKu = Oyn;

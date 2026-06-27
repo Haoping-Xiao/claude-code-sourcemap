@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0366  score=0.5003  fileCov=0.038
 // note: nearest: src/utils/fileHistory.ts (0.0366); dir inferred from dep-graph -> context; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uSc = E(() => {
-  uo();
-  Ven = R(rt(), 1), pzo = [], fzo = new Set();
-});
+// [unwrapped __esm module uSc] deps: uo
+Ven = R(rt(), 1), pzo = [], fzo = new Set();
 var dSc = 3;
 function Xdr(e) {
   let t = pSc.createHash("sha256").update(e).digest("hex").slice(0, 8);

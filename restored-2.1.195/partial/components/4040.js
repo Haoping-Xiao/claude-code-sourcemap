@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.1022  score=0.2847  fileCov=0.1375
 // note: low-confidence suggestion: src/utils/markdown.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Unl = E(() => {
-  _i();
-  Tc();
-  Xge();
-  Ye();
-  e8t();
-  Nnl = R(lt(), 1), r8t = R(se(), 1);
-});
+// [unwrapped __esm module Unl] deps: _i, Tc, Xge, Ye, e8t
+Nnl = R(lt(), 1), r8t = R(se(), 1);
 function _tf(e) {
   return ytf.test(e.length > 500 ? e.slice(0, 500) : e);
 }

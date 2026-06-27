@@ -4,16 +4,6 @@
 // class=new  jaccard=0.0392  score=0.3968  fileCov=0.0416
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0392); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sgr = E(() => {
-  sB();
-  z2c();
-  wm();
-  YP();
-  $vt();
-  Hnn();
-  Bvt();
-  QXo();
-});
 async function igr(e, t, n) {
   if (e instanceof Uint8Array) e = fx.decode(e);
   if (typeof e !== "string") throw new wh("Compact JWS must be a string or Uint8Array");

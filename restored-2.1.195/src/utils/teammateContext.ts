@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.1833  score=1  fileCov=0.1833
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YS = E(() => {
-  Bi();
-  ys();
-  kAn = new Map();
-});
+// [unwrapped __esm module YS] deps: Bi, ys
+kAn = new Map();
 function w0() {
   return X2r.getStore();
 }

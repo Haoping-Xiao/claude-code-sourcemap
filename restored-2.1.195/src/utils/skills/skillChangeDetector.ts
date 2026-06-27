@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3809  score=0.623  fileCov=0.4949
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uAc = E(() => {
-  dre();
-  cAc = R(rt(), 1);
-});
+// [unwrapped __esm module uAc] deps: dre
+cAc = R(rt(), 1);
 async function cym() {
   let e = await yze(rc()),
     t = new Map();

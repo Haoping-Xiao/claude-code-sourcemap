@@ -4,27 +4,9 @@
 // class=modified  jaccard=0.1964  score=0.305  fileCov=0.3556
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Eue = E(() => {
-  Ece();
-  id();
-  fd();
-  je();
-  At();
-  sp();
-  vn();
-  Is();
-  ih();
-  Jt();
-  vf();
-  Cfn();
-  hY();
-  RCe();
-  dr();
-  Sx();
-  Smn();
-  ((LWe = require("fs/promises")), (t$ = R(require("path"))), (inp = Ena + Ana + 200));
-  n$ = anp();
-});
+// [unwrapped __esm module Eue] deps: Ece, id, fd, je, At, sp, vn, Is, ih, Jt, vf, Cfn, hY, RCe, dr, Sx, Smn
+((LWe = require("fs/promises")), (t$ = R(require("path"))), (inp = Ena + Ana + 200));
+n$ = anp();
 var Sb = "WebFetch";
 function Hna(e, t = !1) {
   if (ph(e))

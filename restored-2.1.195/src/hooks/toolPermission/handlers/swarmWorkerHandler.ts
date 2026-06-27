@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.4027  score=0.8202  fileCov=0.4417
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Ec = E(() => {
-  uo();
-  rme();
-  S_();
-  spr = R(rt(), 1);
-});
+// [unwrapped __esm module _Ec] deps: uo, rme, S_
+spr = R(rt(), 1);
 async function bEc(e) {
   if (!el() || !X_t()) return null;
   let { ctx: t, description: n, updatedInput: r, suggestions: o } = e,

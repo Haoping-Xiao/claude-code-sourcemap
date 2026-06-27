@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2624  score=0.594  fileCov=0.3198
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NDc = E(() => {
-  Ed();
-  aE();
-  id();
-  q6o();
-  (($Dc = R(lt(), 1)), (qfr = R(rt(), 1)));
-});
+// [unwrapped __esm module NDc] deps: Ed, aE, id, q6o
+(($Dc = R(lt(), 1)), (qfr = R(rt(), 1)));
 function BDc(e) {
   if (!("text" in e)) return 1;
   let t = e.text.match(/^(\d+)/);

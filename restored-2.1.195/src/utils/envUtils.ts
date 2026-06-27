@@ -4,25 +4,23 @@
 // class=modified  jaccard=0.1194  score=0.2983  fileCov=0.1661
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Prs = E(() => {
-  Qi();
-  Lrs = Cn((e) => {
-    if (!e || e.trim() === "") return null;
-    let t = e
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-    if (t.length === 0) return null;
-    let n = t.some((s) => s.startsWith("!")),
-      r = t.some((s) => !s.startsWith("!"));
-    if (n && r) return null;
-    let o = t.map((s) => s.replace(/^!/, "").toLowerCase());
-    return {
-      include: n ? [] : o,
-      exclude: n ? o : [],
-      isExclusive: n,
-    };
-  });
+// [unwrapped __esm module Prs] deps: Qi
+Lrs = Cn((e) => {
+  if (!e || e.trim() === "") return null;
+  let t = e
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (t.length === 0) return null;
+  let n = t.some((s) => s.startsWith("!")),
+    r = t.some((s) => !s.startsWith("!"));
+  if (n && r) return null;
+  let o = t.map((s) => s.replace(/^!/, "").toLowerCase());
+  return {
+    include: n ? [] : o,
+    exclude: n ? o : [],
+    isExclusive: n,
+  };
 });
 function nwe() {
   return hSr.join(tr(), "teams");

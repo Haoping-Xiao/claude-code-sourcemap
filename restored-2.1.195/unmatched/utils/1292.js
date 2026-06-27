@@ -4,53 +4,50 @@
 // class=new  jaccard=0.0137  score=0.1818  fileCov=0.0146
 // note: nearest: src/utils/sessionStorage.ts (0.0137); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xnt = E(() => {
-  Qi();
-  At();
-  D7s = require("fs"), q2e = require("path"), Ild = ["ANTHROPIC_FEDERATION_RULE_ID", "ANTHROPIC_ORGANIZATION_ID"], _9 = Cn(() => {
-    let e = KSn(),
-      t = process.env.ANTHROPIC_PROFILE?.trim();
-    if (t) {
-      if (e === null) return null;
-      let n = TUr(e, t);
-      return n === "oidc_federation" || n === "user_oauth" ? "profile-explicit" : null;
-    }
-    if (Ild.every(n => process.env[n]?.trim())) return "env-quad";
-    if (e !== null) {
-      let n = TUr(e, zSn(e));
-      if (n === "oidc_federation" || n === "user_oauth") return "profile-implicit";
-    }
-    return null;
-  });
-  V2e = Cn(() => {
-    let e = _9();
+// [unwrapped __esm module xnt] deps: Qi, At
+D7s = require("fs"), q2e = require("path"), Ild = ["ANTHROPIC_FEDERATION_RULE_ID", "ANTHROPIC_ORGANIZATION_ID"], _9 = Cn(() => {
+  let e = KSn(),
+    t = process.env.ANTHROPIC_PROFILE?.trim();
+  if (t) {
     if (e === null) return null;
-    if (e === "env-quad") return "oidc_federation";
-    let t = KSn();
-    if (t === null) return null;
-    let n = e === "profile-explicit" ? process.env.ANTHROPIC_PROFILE?.trim() ?? "default" : zSn(t),
-      r = TUr(t, n);
-    return r === "oidc_federation" || r === "user_oauth" ? r : null;
-  }), xld = Cn(() => {
-    let e = _9();
-    if (e === null || e === "env-quad") return;
-    let t = KSn();
-    if (t === null) return;
-    let n = e === "profile-explicit" ? process.env.ANTHROPIC_PROFILE?.trim() ?? "default" : zSn(t),
-      r = oPt(P7s(t, n));
-    if (r === null) return;
-    try {
-      let o = JSON.parse(r);
-      return {
-        organizationUuid: o.organization_uuid,
-        organizationName: o.organization_name,
-        accountEmail: o.account_email,
-        workspaceName: o.workspace_name
-      };
-    } catch {
-      return;
-    }
-  });
+    let n = TUr(e, t);
+    return n === "oidc_federation" || n === "user_oauth" ? "profile-explicit" : null;
+  }
+  if (Ild.every(n => process.env[n]?.trim())) return "env-quad";
+  if (e !== null) {
+    let n = TUr(e, zSn(e));
+    if (n === "oidc_federation" || n === "user_oauth") return "profile-implicit";
+  }
+  return null;
+});
+V2e = Cn(() => {
+  let e = _9();
+  if (e === null) return null;
+  if (e === "env-quad") return "oidc_federation";
+  let t = KSn();
+  if (t === null) return null;
+  let n = e === "profile-explicit" ? process.env.ANTHROPIC_PROFILE?.trim() ?? "default" : zSn(t),
+    r = TUr(t, n);
+  return r === "oidc_federation" || r === "user_oauth" ? r : null;
+}), xld = Cn(() => {
+  let e = _9();
+  if (e === null || e === "env-quad") return;
+  let t = KSn();
+  if (t === null) return;
+  let n = e === "profile-explicit" ? process.env.ANTHROPIC_PROFILE?.trim() ?? "default" : zSn(t),
+    r = oPt(P7s(t, n));
+  if (r === null) return;
+  try {
+    let o = JSON.parse(r);
+    return {
+      organizationUuid: o.organization_uuid,
+      organizationName: o.organization_name,
+      accountEmail: o.account_email,
+      workspaceName: o.workspace_name
+    };
+  } catch {
+    return;
+  }
 });
 class O7s {
   read(e) {

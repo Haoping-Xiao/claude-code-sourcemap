@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2473  score=0.3366  fileCov=0.4824
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pyl = E(() => {
-  j7n();
-  S_();
-  Z6();
-  d8t();
-  JJ();
-  lyl = (tfe(), ro(Bko)).LocalWorkflowTask;
-});
+// [unwrapped __esm module pyl] deps: j7n, S_, Z6, d8t, JJ
+lyl = (tfe(), ro(Bko)).LocalWorkflowTask;
 function azt(e) {
   return (
     e.type === "local_agent" &&

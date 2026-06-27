@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.4395  score=0.9056  fileCov=0.4606
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MDc = E(() => {
-  ft();
-  Zf();
-  uo();
-  fut();
-  vn();
-  Eue();
-  $tn = R(rt(), 1);
-});
+// [unwrapped __esm module MDc] deps: ft, Zf, uo, fut, vn, Eue
+$tn = R(rt(), 1);
 function ODc(e) {
   let t = $Dc.c(20),
     { ideSelection: n, mcpClients: r, ideInstallationStatus: o } = e,

@@ -4,15 +4,6 @@
 // class=partial  jaccard=0.11  score=1  fileCov=0.11
 // note: low-confidence suggestion: src/constants/files.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bi = E(() => {
-  N0r();
-  Lo();
-  je();
-  At();
-  vn();
-  QZe();
-  B0r();
-});
 function mRt(e) {
   let t = e.slice(e.lastIndexOf(".")).toLowerCase();
   return g$u.has(t);

@@ -4,26 +4,19 @@
 // class=modified  jaccard=0.1269  score=0.4107  fileCov=0.1552
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kgt = E(() => {
-  zb();
-  db();
-  je();
-  fn();
-  At();
-  Jt();
-  ((Pza = require("path")),
-    (Gzp = ve(() =>
-      dt.object({
-        timestamp: dt.string(),
-        path: dt.enum(["npm-global", "npm-local", "native"]),
-        outcome: dt.enum(["success", "failed"]),
-        status: dt.string(),
-        version_from: dt.string(),
-        version_to: dt.string().nullable(),
-        error_code: dt.string().nullable(),
-      }),
-    )));
-});
+// [unwrapped __esm module kgt] deps: zb, db, je, fn, At, Jt
+((Pza = require("path")),
+  (Gzp = ve(() =>
+    dt.object({
+      timestamp: dt.string(),
+      path: dt.enum(["npm-global", "npm-local", "native"]),
+      outcome: dt.enum(["success", "failed"]),
+      status: dt.string(),
+      version_from: dt.string(),
+      version_to: dt.string().nullable(),
+      error_code: dt.string().nullable(),
+    }),
+  )));
 function CVn(e, t) {
   return t.includes(e.id) || e.idLike.some((n) => t.includes(n));
 }

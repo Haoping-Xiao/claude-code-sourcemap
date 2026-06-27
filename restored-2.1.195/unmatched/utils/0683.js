@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0169  score=0.6211  fileCov=0.0171
 // note: nearest: src/bridge/sessionRunner.ts (0.0169); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aTs = E(() => {
-  oTs = require("buffer"), sTs = require("child_process"), o$u = /^[\w.-]+$/, i$u = / +/g;
-});
+// [unwrapped __esm module aTs]
+oTs = require("buffer"), sTs = require("child_process"), o$u = /^[\w.-]+$/, i$u = / +/g;
 var lTs,
   cTs,
   uTs,

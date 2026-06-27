@@ -4,11 +4,8 @@
 // class=new  jaccard=0.002  score=0.1328  fileCov=0.002
 // note: nearest: src/main.tsx (0.002); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kSl = E(() => {
-  Ye();
-  kt();
-  ISl = R(lt(), 1), xSl = R(rt(), 1), Pzt = R(se(), 1);
-});
+// [unwrapped __esm module kSl] deps: Ye, kt
+ISl = R(lt(), 1), xSl = R(rt(), 1), Pzt = R(se(), 1);
 function RSl(e) {
   if (!e.message) return "";
   return e.message;

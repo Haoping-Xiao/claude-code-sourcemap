@@ -4,18 +4,6 @@
 // class=modified  jaccard=0.487  score=0.7384  fileCov=0.5885
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zqe = E(() => {
-  ft();
-  gjn();
-  je();
-  wr();
-  fn();
-  q0();
-  co();
-  dr();
-  dn();
-  Un();
-});
 var ago = {};
 _t(ago, {
   setCliTeammateModeOverride: () => setCliTeammateModeOverride,

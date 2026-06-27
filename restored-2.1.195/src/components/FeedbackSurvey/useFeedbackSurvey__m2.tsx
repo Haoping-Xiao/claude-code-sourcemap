@@ -4,11 +4,6 @@
 // class=modified (alt of src/components/FeedbackSurvey/useFeedbackSurvey.tsx)  jaccard=0.1646  score=0.7633  fileCov=0.1734
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xUc = E(() => {
-  DE();
-  Hoe();
-  Mp();
-});
 function kUc() {
   if (!at("tengu_vscode_feedback_survey", false)) return;
   if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return;

@@ -4,10 +4,8 @@
 // class=new  jaccard=0.025  score=0.288  fileCov=0.0267
 // note: nearest: src/utils/plugins/loadPluginCommands.ts (0.025); dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pz = E(() => {
-  Ye();
-  iOl = R(lt(), 1), P7t = R(se(), 1);
-});
+// [unwrapped __esm module pz] deps: Ye
+iOl = R(lt(), 1), P7t = R(se(), 1);
 function yDf(e) {
   let t = $2t(e),
     n = Math.min(t.length, WWe());

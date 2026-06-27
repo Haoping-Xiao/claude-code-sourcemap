@@ -4,29 +4,18 @@
 // class=modified (alt of src/memdir/findRelevantMemories.ts)  jaccard=0.064  score=0.1842  fileCov=0.0892
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var put = E(() => {
-  Xr();
-  ft();
-  uut();
-  mSe();
-  z1();
-  ole();
-  wr();
-  NX();
-  Ao();
-  dr();
-  ySe = Dy({
-    kind: "fable_overage_consent_prompt",
-    payload: ve(() =>
-      H.object({
-        overagesEnabled: H.boolean(),
-        balanceCents: H.number().nullable().optional(),
-        currency: H.string().nullable().optional(),
-      }),
-    ),
-    result: ve(() => H.enum(["consent", "switch_default", "cancelled"])),
-    default: "cancelled",
-  });
+// [unwrapped __esm module put] deps: Xr, ft, uut, mSe, z1, ole, wr, NX, Ao, dr
+ySe = Dy({
+  kind: "fable_overage_consent_prompt",
+  payload: ve(() =>
+    H.object({
+      overagesEnabled: H.boolean(),
+      balanceCents: H.number().nullable().optional(),
+      currency: H.string().nullable().optional(),
+    }),
+  ),
+  result: ve(() => H.enum(["consent", "switch_default", "cancelled"])),
+  default: "cancelled",
 });
 function pLe() {
   return {

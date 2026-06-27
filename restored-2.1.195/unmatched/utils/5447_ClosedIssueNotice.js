@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0044  score=0.2435  fileCov=0.0044
 // note: nearest: src/screens/REPL.tsx (0.0044); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $hc = E(() => {
-  ft();
-  er();
-  je();
-  fn();
-  At();
-  Bi();
-  vn();
-  qd();
-  Jt();
-  RTt = require("fs/promises"), ndr = require("path");
-});
+// [unwrapped __esm module $hc] deps: ft, er, je, fn, At, Bi, vn, qd, Jt
+RTt = require("fs/promises"), ndr = require("path");
 var Bhc = {};
 _t(Bhc, {
   ClosedIssueNotice: () => ClosedIssueNotice

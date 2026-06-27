@@ -4,22 +4,17 @@
 // class=modified  jaccard=0.294  score=0.5072  fileCov=0.4115
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jS = E(() => {
-  Rm();
-  fn();
-  Jkr();
-  BFe();
-  ((Qkr = require("events")),
-    (VEs = require("fs")),
-    (ij = require("fs/promises")),
-    (uY = require("path")),
-    (zEs = require("readline")),
-    (jpn = new Set(["sdk-cli", "sdk-ts", "sdk-py"])));
-  _Pu = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  ((Fpn = Buffer.from('{"type":"attribution-snapshot"')),
-    (TPu = Buffer.from('{"type":"system"')),
-    (vPu = Buffer.from([iRt])));
-});
+// [unwrapped __esm module jS] deps: Rm, fn, Jkr, BFe
+((Qkr = require("events")),
+  (VEs = require("fs")),
+  (ij = require("fs/promises")),
+  (uY = require("path")),
+  (zEs = require("readline")),
+  (jpn = new Set(["sdk-cli", "sdk-ts", "sdk-py"])));
+_Pu = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+((Fpn = Buffer.from('{"type":"attribution-snapshot"')),
+  (TPu = Buffer.from('{"type":"system"')),
+  (vPu = Buffer.from([iRt])));
 function ds(e, t) {
   let n = t ?? $t() ?? qt().cwd();
   if (typeof e !== "string") throw TypeError(`Path must be a string, received ${typeof e}`);

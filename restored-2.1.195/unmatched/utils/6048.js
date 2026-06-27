@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0153  score=0.162  fileCov=0.0166
 // note: nearest: src/bridge/bridgeMain.ts (0.0153); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pqc = E(() => {
-  At();
-  Is();
-  zH();
-  uqc = require("fs"), dBe = require("fs/promises");
-});
+// [unwrapped __esm module pqc] deps: At, Is, zH
+uqc = require("fs"), dBe = require("fs/promises");
 function mqc(e) {
   return Math.round(e * (0.5 + Math.random()));
 }

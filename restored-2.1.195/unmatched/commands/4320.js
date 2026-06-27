@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yyl = E(() => {
-  ql();
-  Tc();
-  Ye();
-  es();
-  q7n = R(se(), 1);
-});
+// [unwrapped __esm module yyl] deps: ql, Tc, Ye, es
+q7n = R(se(), 1);
 var rmf, omf, gbt;

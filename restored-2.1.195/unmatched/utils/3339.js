@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0032  score=0.305  fileCov=0.0033
 // note: nearest: src/commands/insights.ts (0.0032); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vGt = E(() => {
-  Un();
-  At();
-  Uh();
-  MM();
-  VDa = require("fs/promises"), gJ = require("path"), hmo = ["team", "logs", "sessions", "proposals"];
-});
+// [unwrapped __esm module vGt] deps: Un, At, Uh, MM
+VDa = require("fs/promises"), gJ = require("path"), hmo = ["team", "logs", "sessions", "proposals"];
 function L2n(e, t) {
   let n = $_e(e),
     r = !n && Nqe() && zDa(e);

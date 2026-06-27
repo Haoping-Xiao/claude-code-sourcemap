@@ -4,42 +4,31 @@
 // class=modified  jaccard=0.2301  score=0.3195  fileCov=0.4513
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var upc = E(() => {
-  kt();
-  lJ();
-  gm();
-  Ye();
-  je();
-  wr();
-  At();
-  BJ();
-  LOe();
-  dr();
-  ((ipc = R(lt(), 1)),
-    (apc = require("os")),
-    (lpc = require("path")),
-    (our = R(rt(), 1)),
-    (Tm = R(se(), 1)));
-  Aam = {
-    type: "local-jsx",
-    name: "install",
-    description: "Install Claude Code native build",
-    argumentHint: "[options]",
-    async call(e, t, n) {
-      let r = n.includes("--force"),
-        s = n.filter((a) => !a.startsWith("--"))[0],
-        { unmount: i } = await b8(
-          Tm.jsx(Eam, {
-            onDone: (a, l) => {
-              (i(), e(a, l));
-            },
-            force: r,
-            target: s,
-          }),
-        );
-    },
-  };
-});
+// [unwrapped __esm module upc] deps: kt, lJ, gm, Ye, je, wr, At, BJ, LOe, dr
+((ipc = R(lt(), 1)),
+  (apc = require("os")),
+  (lpc = require("path")),
+  (our = R(rt(), 1)),
+  (Tm = R(se(), 1)));
+Aam = {
+  type: "local-jsx",
+  name: "install",
+  description: "Install Claude Code native build",
+  argumentHint: "[options]",
+  async call(e, t, n) {
+    let r = n.includes("--force"),
+      s = n.filter((a) => !a.startsWith("--"))[0],
+      { unmount: i } = await b8(
+        Tm.jsx(Eam, {
+          onDone: (a, l) => {
+            (i(), e(a, l));
+          },
+          force: r,
+          target: s,
+        }),
+      );
+  },
+};
 var TA = {};
 _t(TA, {
   setupTokenHandler: () => setupTokenHandler,

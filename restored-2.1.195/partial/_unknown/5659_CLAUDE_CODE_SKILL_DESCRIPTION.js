@@ -4,15 +4,11 @@
 // class=partial  jaccard=0.0645  score=0.124  fileCov=0.1186
 // note: low-confidence suggestion: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wxc = E(() => {
-  bxc();
-  Exc();
-  Hxc();
-  $Hm = Txc, OHm = {
-    "references/live-sources.md": Sxc,
-    "references/recent-changes.md": Axc
-  };
-});
+// [unwrapped __esm module wxc] deps: bxc, Exc, Hxc
+$Hm = Txc, OHm = {
+  "references/live-sources.md": Sxc,
+  "references/recent-changes.md": Axc
+};
 var kxc = {};
 _t(kxc, {
   registerClaudeCodeSkill: () => registerClaudeCodeSkill,

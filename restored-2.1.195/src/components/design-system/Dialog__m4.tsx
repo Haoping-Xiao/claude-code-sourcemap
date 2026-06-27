@@ -4,13 +4,8 @@
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.1151  score=0.1386  fileCov=0.4042
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mCo = E(() => {
-  Ed();
-  uo();
-  ft();
-  __();
-  A8t = R(rt(), 1);
-});
+// [unwrapped __esm module mCo] deps: Ed, uo, ft, __
+A8t = R(rt(), 1);
 var gsl = {};
 _t(gsl, {
   runPostLoginHooks: () => runPostLoginHooks,

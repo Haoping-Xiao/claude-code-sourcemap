@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.1581  score=0.3815  fileCov=0.2126
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MQn = E(() => {
-  Vw();
-  Un();
-});
 function IIl(e, t, n) {
   let r = Su(),
     o = r ? Co : Ss,

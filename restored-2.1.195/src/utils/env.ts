@@ -4,171 +4,165 @@
 // class=modified  jaccard=0.5631  score=0.8604  fileCov=0.6198
 // note: deminified; 144 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rpn = E(() => {
-  Qi();
-  Rc();
-  fn();
-  ys();
-  _0();
-  ((J_s = require("os")),
-    (tpn = require("path")),
-    (b0 = Cn(() => {
-      if (qt().existsSync(tpn.join(tr(), ".config.json"))) return tpn.join(tr(), ".config.json");
-      let e = `.claude${hdn()}.json`;
-      return tpn.join(process.env.CLAUDE_CONFIG_DIR || J_s.homedir(), e);
-    })),
-    (dEu = Cn(async () => {
-      try {
-        let { externalHttp: e } = await Promise.resolve().then(() => (Rx(), X_s));
-        return (
-          await e.head("http://1.1.1.1", {
-            signal: AbortSignal.timeout(1000),
-          }),
-          true
-        );
-      } catch {
-        return false;
-      }
-    })));
-  ((fEu = Cn(async () => {
+// [unwrapped __esm module rpn] deps: Qi, Rc, fn, ys, _0
+((J_s = require("os")),
+  (tpn = require("path")),
+  (b0 = Cn(() => {
+    if (qt().existsSync(tpn.join(tr(), ".config.json"))) return tpn.join(tr(), ".config.json");
+    let e = `.claude${hdn()}.json`;
+    return tpn.join(process.env.CLAUDE_CONFIG_DIR || J_s.homedir(), e);
+  })),
+  (dEu = Cn(async () => {
+    try {
+      let { externalHttp: e } = await Promise.resolve().then(() => (Rx(), X_s));
+      return (
+        await e.head("http://1.1.1.1", {
+          signal: AbortSignal.timeout(1000),
+        }),
+        true
+      );
+    } catch {
+      return false;
+    }
+  })));
+((fEu = Cn(async () => {
+  let e = [];
+  if (await xZe("npm")) e.push("npm");
+  if (await xZe("yarn")) e.push("yarn");
+  if (await xZe("pnpm")) e.push("pnpm");
+  return e;
+})),
+  (mEu = Cn(async () => {
     let e = [];
-    if (await xZe("npm")) e.push("npm");
-    if (await xZe("yarn")) e.push("yarn");
-    if (await xZe("pnpm")) e.push("pnpm");
+    if (await xZe("bun")) e.push("bun");
+    if (await xZe("deno")) e.push("deno");
+    if (await xZe("node")) e.push("node");
     return e;
   })),
-    (mEu = Cn(async () => {
-      let e = [];
-      if (await xZe("bun")) e.push("bun");
-      if (await xZe("deno")) e.push("deno");
-      if (await xZe("node")) e.push("node");
-      return e;
-    })),
-    (Q_s = Cn(() => {
-      try {
-        return qt().existsSync("/proc/sys/fs/binfmt_misc/WSLInterop");
-      } catch (e) {
-        return false;
-      }
-    })),
-    (gEu = Cn(() => {
-      try {
-        if (!Q_s()) return false;
-        let e = zV("npm");
-        if (e === null) return false;
-        return e.startsWith("/mnt/c/");
-      } catch (e) {
-        return false;
-      }
-    })));
-  JV = [
-    "pycharm",
-    "intellij",
-    "webstorm",
-    "phpstorm",
-    "rubymine",
-    "clion",
-    "goland",
-    "rider",
-    "datagrip",
-    "appcode",
-    "dataspell",
-    "aqua",
-    "gateway",
-    "fleet",
-    "jetbrains",
-    "androidstudio",
-  ];
-  Z_s = Cn(() => {
-    if (ut(process.env.CODESPACES)) return "codespaces";
-    if (process.env.GITPOD_WORKSPACE_ID) return "gitpod";
-    if (ut(process.env.CODER) || process.env.CODER_WORKSPACE_NAME) return "coder";
-    if (ut(process.env.DEVPOD) || process.env.DEVPOD_WORKSPACE_UID) return "devpod";
-    if (process.env.DAYTONA_WS_ID) return "daytona";
-    if (ut(process.env.GOOGLE_CLOUD_WORKSTATIONS)) return "gcp-cloud-workstations";
-    if (process.env.C9_PID || process.env.C9_USER) return "aws-cloud9";
-    if (process.env.REPL_ID || process.env.REPL_SLUG) return "replit";
-    if (process.env.PROJECT_DOMAIN) return "glitch";
-    if (ut(process.env.VERCEL)) return "vercel";
-    if (process.env.RAILWAY_ENVIRONMENT_NAME || process.env.RAILWAY_SERVICE_NAME) return "railway";
-    if (ut(process.env.RENDER)) return "render";
-    if (ut(process.env.NETLIFY)) return "netlify";
-    if (process.env.DYNO) return "heroku";
-    if (process.env.FLY_APP_NAME || process.env.FLY_MACHINE_ID) return "fly.io";
-    if (ut(process.env.CF_PAGES)) return "cloudflare-pages";
-    if (process.env.DENO_DEPLOYMENT_ID) return "deno-deploy";
-    if (process.env.AWS_LAMBDA_FUNCTION_NAME) return "aws-lambda";
-    if (process.env.AWS_EXECUTION_ENV === "AWS_ECS_FARGATE") return "aws-fargate";
-    if (process.env.AWS_EXECUTION_ENV === "AWS_ECS_EC2") return "aws-ecs";
+  (Q_s = Cn(() => {
     try {
-      if (
-        qt()
-          .readFileSync("/sys/hypervisor/uuid", {
-            encoding: "utf8",
-          })
-          .trim()
-          .toLowerCase()
-          .startsWith("ec2")
-      )
-        return "aws-ec2";
-    } catch {}
-    if (process.env.K_SERVICE) return "gcp-cloud-run";
-    if (process.env.GOOGLE_CLOUD_PROJECT) return "gcp";
-    if (process.env.WEBSITE_SITE_NAME || process.env.WEBSITE_SKU) return "azure-app-service";
-    if (process.env.AZURE_FUNCTIONS_ENVIRONMENT) return "azure-functions";
-    if (process.env.APP_URL?.includes("ondigitalocean.app")) return "digitalocean-app-platform";
-    if (process.env.SPACE_CREATOR_USER_ID) return "huggingface-spaces";
-    if (ut(process.env.GITHUB_ACTIONS)) return "github-actions";
-    if (ut(process.env.GITLAB_CI)) return "gitlab-ci";
-    if (process.env.CIRCLECI) return "circleci";
-    if (process.env.BUILDKITE) return "buildkite";
-    if (ut(false)) return "ci";
-    if (process.env.KUBERNETES_SERVICE_HOST) return "kubernetes";
+      return qt().existsSync("/proc/sys/fs/binfmt_misc/WSLInterop");
+    } catch (e) {
+      return false;
+    }
+  })),
+  (gEu = Cn(() => {
     try {
-      if (qt().existsSync("/.dockerenv")) return "docker";
-    } catch {}
-    if (kZe.platform === "darwin") return "unknown-darwin";
-    if (kZe.platform === "linux") return "unknown-linux";
-    if (kZe.platform === "win32") return "unknown-win32";
-    return "unknown";
-  });
-  kZe = {
-    hasInternetAccess: dEu,
-    probeInternalNetworkAccess: pEu,
-    isCI: ut(false),
-    platform: ["win32", "darwin"].includes("linux") ? "linux" : "linux",
-    arch: "x64",
-    nodeVersion: process.version,
-    terminal: yEu(),
-    isSSH: ebs,
-    getPackageManagers: fEu,
-    getRuntimes: mEu,
-    isRunningWithBun: Cn(gG),
-    isWslEnvironment: Q_s,
-    isNpmFromWindowsPath: gEu,
-    isConductor: hEu,
-    detectDeploymentEnvironment: Z_s,
-  };
-  _Eu = new Set([
-    "zsh",
-    "bash",
-    "fish",
-    "sh",
-    "dash",
-    "ash",
-    "ksh",
-    "tcsh",
-    "csh",
-    "nu",
-    "nushell",
-    "pwsh",
-    "powershell",
-    "cmd",
-    "elvish",
-    "xonsh",
-    "ion",
-  ]);
+      if (!Q_s()) return false;
+      let e = zV("npm");
+      if (e === null) return false;
+      return e.startsWith("/mnt/c/");
+    } catch (e) {
+      return false;
+    }
+  })));
+JV = [
+  "pycharm",
+  "intellij",
+  "webstorm",
+  "phpstorm",
+  "rubymine",
+  "clion",
+  "goland",
+  "rider",
+  "datagrip",
+  "appcode",
+  "dataspell",
+  "aqua",
+  "gateway",
+  "fleet",
+  "jetbrains",
+  "androidstudio",
+];
+Z_s = Cn(() => {
+  if (ut(process.env.CODESPACES)) return "codespaces";
+  if (process.env.GITPOD_WORKSPACE_ID) return "gitpod";
+  if (ut(process.env.CODER) || process.env.CODER_WORKSPACE_NAME) return "coder";
+  if (ut(process.env.DEVPOD) || process.env.DEVPOD_WORKSPACE_UID) return "devpod";
+  if (process.env.DAYTONA_WS_ID) return "daytona";
+  if (ut(process.env.GOOGLE_CLOUD_WORKSTATIONS)) return "gcp-cloud-workstations";
+  if (process.env.C9_PID || process.env.C9_USER) return "aws-cloud9";
+  if (process.env.REPL_ID || process.env.REPL_SLUG) return "replit";
+  if (process.env.PROJECT_DOMAIN) return "glitch";
+  if (ut(process.env.VERCEL)) return "vercel";
+  if (process.env.RAILWAY_ENVIRONMENT_NAME || process.env.RAILWAY_SERVICE_NAME) return "railway";
+  if (ut(process.env.RENDER)) return "render";
+  if (ut(process.env.NETLIFY)) return "netlify";
+  if (process.env.DYNO) return "heroku";
+  if (process.env.FLY_APP_NAME || process.env.FLY_MACHINE_ID) return "fly.io";
+  if (ut(process.env.CF_PAGES)) return "cloudflare-pages";
+  if (process.env.DENO_DEPLOYMENT_ID) return "deno-deploy";
+  if (process.env.AWS_LAMBDA_FUNCTION_NAME) return "aws-lambda";
+  if (process.env.AWS_EXECUTION_ENV === "AWS_ECS_FARGATE") return "aws-fargate";
+  if (process.env.AWS_EXECUTION_ENV === "AWS_ECS_EC2") return "aws-ecs";
+  try {
+    if (
+      qt()
+        .readFileSync("/sys/hypervisor/uuid", {
+          encoding: "utf8",
+        })
+        .trim()
+        .toLowerCase()
+        .startsWith("ec2")
+    )
+      return "aws-ec2";
+  } catch {}
+  if (process.env.K_SERVICE) return "gcp-cloud-run";
+  if (process.env.GOOGLE_CLOUD_PROJECT) return "gcp";
+  if (process.env.WEBSITE_SITE_NAME || process.env.WEBSITE_SKU) return "azure-app-service";
+  if (process.env.AZURE_FUNCTIONS_ENVIRONMENT) return "azure-functions";
+  if (process.env.APP_URL?.includes("ondigitalocean.app")) return "digitalocean-app-platform";
+  if (process.env.SPACE_CREATOR_USER_ID) return "huggingface-spaces";
+  if (ut(process.env.GITHUB_ACTIONS)) return "github-actions";
+  if (ut(process.env.GITLAB_CI)) return "gitlab-ci";
+  if (process.env.CIRCLECI) return "circleci";
+  if (process.env.BUILDKITE) return "buildkite";
+  if (ut(false)) return "ci";
+  if (process.env.KUBERNETES_SERVICE_HOST) return "kubernetes";
+  try {
+    if (qt().existsSync("/.dockerenv")) return "docker";
+  } catch {}
+  if (kZe.platform === "darwin") return "unknown-darwin";
+  if (kZe.platform === "linux") return "unknown-linux";
+  if (kZe.platform === "win32") return "unknown-win32";
+  return "unknown";
 });
+kZe = {
+  hasInternetAccess: dEu,
+  probeInternalNetworkAccess: pEu,
+  isCI: ut(false),
+  platform: ["win32", "darwin"].includes("linux") ? "linux" : "linux",
+  arch: "x64",
+  nodeVersion: process.version,
+  terminal: yEu(),
+  isSSH: ebs,
+  getPackageManagers: fEu,
+  getRuntimes: mEu,
+  isRunningWithBun: Cn(gG),
+  isWslEnvironment: Q_s,
+  isNpmFromWindowsPath: gEu,
+  isConductor: hEu,
+  detectDeploymentEnvironment: Z_s,
+};
+_Eu = new Set([
+  "zsh",
+  "bash",
+  "fish",
+  "sh",
+  "dash",
+  "ash",
+  "ksh",
+  "tcsh",
+  "csh",
+  "nu",
+  "nushell",
+  "pwsh",
+  "powershell",
+  "cmd",
+  "elvish",
+  "xonsh",
+  "ion",
+]);
 var lkr = {};
 _t(lkr, {
   USE_API_CONTEXT_MANAGEMENT: () => USE_API_CONTEXT_MANAGEMENT,

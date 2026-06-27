@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0229  score=0.3614  fileCov=0.0239
 // note: nearest: src/services/api/claude.ts (0.0229); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var IHo = E(() => {
-  jXa = require("crypto");
-});
+// [unwrapped __esm module IHo]
+jXa = require("crypto");
 function Q7p(e) {
   let t = e.find(o => o.role === "user");
   if (!t) return "";

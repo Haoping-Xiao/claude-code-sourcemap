@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0095  score=0.3444  fileCov=0.0096
 // note: nearest: src/utils/sessionStorage.ts (0.0095); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tvt = E(() => {
-  jpr();
-  wr();
-  uf();
-  Is();
-  hkc = R(lt(), 1), ykc = R(se(), 1);
-});
+// [unwrapped __esm module tvt] deps: jpr, wr, uf, Is
+hkc = R(lt(), 1), ykc = R(se(), 1);
 function bkc() {
   return {
     scanStates: new Map(),

@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0163  score=0.1097  fileCov=0.0188
 // note: nearest: src/services/PromptSuggestion/speculation.ts (0.0163); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var r5l = E(() => {
-  si();
-  Lo();
-  e5l = require("os");
-});
+// [unwrapped __esm module r5l] deps: si, Lo
+e5l = require("os");
 var s5l = {};
 _t(s5l, {
   startProTrial: () => startProTrial,

@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0443  score=0.3583  fileCov=0.0481
 // note: nearest: src/ink/parse-keypress.ts (0.0443); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Jke = E(() => {
-  ft();
-  wr();
-  Bke();
-  ZS();
-});
 function d4d() {
   U7r = true, F7r = true, NRn++;
 }

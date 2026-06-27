@@ -4,10 +4,9 @@
 // class=partial  jaccard=0.1434  score=0.465  fileCov=0.1717
 // note: low-confidence suggestion: src/utils/git/gitignore.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SPc = E(() => {
-  gvt = R(rt(), 1), YCm = R(se(), 1);
-  KCm = gvt.createContext(null);
-});
+// [unwrapped __esm module SPc]
+gvt = R(rt(), 1), YCm = R(se(), 1);
+KCm = gvt.createContext(null);
 async function HPc(e) {
   if (APc.has(e)) return;
   APc.add(e);

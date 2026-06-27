@@ -4,117 +4,113 @@
 // class=modified  jaccard=0.262  score=0.3149  fileCov=0.6095
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mye = E(() => {
-  IB();
-  Xr();
-  foi();
-  ((jdd = ve(() =>
+// [unwrapped __esm module mye] deps: IB, Xr, foi
+((jdd = ve(() =>
+  H.object({
+    first_party: H.string(),
+    bedrock: H.string().nullish(),
+    vertex: H.string().nullish(),
+    foundry: H.string().nullish(),
+    anthropic_aws: H.string().nullish(),
+    mantle: H.string().nullish(),
+    gateway: H.string().nullish(),
+  }).loose(),
+)),
+  (Gdd = ve(() =>
     H.object({
-      first_party: H.string(),
-      bedrock: H.string().nullish(),
-      vertex: H.string().nullish(),
-      foundry: H.string().nullish(),
-      anthropic_aws: H.string().nullish(),
-      mantle: H.string().nullish(),
-      gateway: H.string().nullish(),
+      input: H.number(),
+      output: H.number(),
+      cache_write_5m: H.number().optional(),
+      cache_write_1h: H.number().optional(),
+      cache_read: H.number().optional(),
+      web_search: H.number().optional(),
     }).loose(),
   )),
-    (Gdd = ve(() =>
-      H.object({
-        input: H.number(),
-        output: H.number(),
-        cache_write_5m: H.number().optional(),
-        cache_write_1h: H.number().optional(),
-        cache_read: H.number().optional(),
-        web_search: H.number().optional(),
-      }).loose(),
-    )),
-    (Wdd = ve(() =>
-      H.object({
-        id: H.string(),
-        family: H.string(),
-        display_name: H.string(),
-        slogan: H.string().optional(),
-        knowledge_cutoff: H.string().optional(),
-        provider_ids: jdd(),
-        vertex_region_env_var: H.string().optional(),
-        context: H.object({
-          window: H.number(),
-          native_1m: H.boolean().optional(),
-          supports_1m_beta: H.boolean().optional(),
-        })
-          .loose()
-          .optional(),
-        max_output_tokens: H.object({
-          default: H.number(),
-          upper: H.number(),
-        })
-          .loose()
-          .optional(),
-        pricing: Gdd().optional(),
-        capabilities: H.array(H.string()).default([]),
-        default_effort: H.enum(["low", "medium", "high", "xhigh", "max"]).optional(),
-        image_limits: H.object({
-          maxWidth: H.number().optional(),
-          maxHeight: H.number().optional(),
-          maxBase64Size: H.number().optional(),
-        })
-          .loose()
-          .optional(),
-        advisor_rank: H.number().optional(),
-        fallback_chain: H.array(H.string()).optional(),
-        picker: H.object({
-          section: H.enum(["main", "overflow", "deprecated"]).optional(),
-          badge: H.string().optional(),
-          disabled_reason: H.string().optional(),
-          tiers: H.array(H.string()).optional(),
-        })
-          .loose()
-          .optional(),
-        deprecation: H.object({
-          retirement_dates: H.record(H.string(), H.string()).optional(),
-          remapped_to: H.string().optional(),
-        })
-          .loose()
-          .optional(),
-        min_cli_version: H.string().optional(),
-      }).loose(),
-    )),
-    (qdd = ve(() =>
-      H.object({
-        default: H.string(),
-        per_provider: H.record(H.string(), H.string()).optional(),
-      }).loose(),
-    )),
-    (Vdd = ve(() =>
-      H.object({
-        schema_version: H.number(),
-        models: H.array(Wdd()),
-        aliases: H.record(H.string(), qdd()).default({}),
-        defaults: H.record(H.string(), H.string()).default({}),
-        best: H.string().optional(),
-        latest_per_family: H.record(H.string(), H.string()).default({}),
-        alias_migration: H.record(H.string(), H.string()).default({}),
-      }).loose(),
-    )),
-    (zdd = {
-      schema_version: 0,
-      models: [],
-      aliases: {},
-      defaults: {},
-      latest_per_family: {},
-      alias_migration: {},
-    }),
-    (Kdd = Cn(() => {
-      let e = Vdd().safeParse(moi);
-      return e.success ? e.data : zdd;
-    })),
-    (Ydd = Cn(() => {
-      let e = new Map();
-      for (let t of Kdd().models) e.set(t.id, t);
-      return e;
-    })));
-});
+  (Wdd = ve(() =>
+    H.object({
+      id: H.string(),
+      family: H.string(),
+      display_name: H.string(),
+      slogan: H.string().optional(),
+      knowledge_cutoff: H.string().optional(),
+      provider_ids: jdd(),
+      vertex_region_env_var: H.string().optional(),
+      context: H.object({
+        window: H.number(),
+        native_1m: H.boolean().optional(),
+        supports_1m_beta: H.boolean().optional(),
+      })
+        .loose()
+        .optional(),
+      max_output_tokens: H.object({
+        default: H.number(),
+        upper: H.number(),
+      })
+        .loose()
+        .optional(),
+      pricing: Gdd().optional(),
+      capabilities: H.array(H.string()).default([]),
+      default_effort: H.enum(["low", "medium", "high", "xhigh", "max"]).optional(),
+      image_limits: H.object({
+        maxWidth: H.number().optional(),
+        maxHeight: H.number().optional(),
+        maxBase64Size: H.number().optional(),
+      })
+        .loose()
+        .optional(),
+      advisor_rank: H.number().optional(),
+      fallback_chain: H.array(H.string()).optional(),
+      picker: H.object({
+        section: H.enum(["main", "overflow", "deprecated"]).optional(),
+        badge: H.string().optional(),
+        disabled_reason: H.string().optional(),
+        tiers: H.array(H.string()).optional(),
+      })
+        .loose()
+        .optional(),
+      deprecation: H.object({
+        retirement_dates: H.record(H.string(), H.string()).optional(),
+        remapped_to: H.string().optional(),
+      })
+        .loose()
+        .optional(),
+      min_cli_version: H.string().optional(),
+    }).loose(),
+  )),
+  (qdd = ve(() =>
+    H.object({
+      default: H.string(),
+      per_provider: H.record(H.string(), H.string()).optional(),
+    }).loose(),
+  )),
+  (Vdd = ve(() =>
+    H.object({
+      schema_version: H.number(),
+      models: H.array(Wdd()),
+      aliases: H.record(H.string(), qdd()).default({}),
+      defaults: H.record(H.string(), H.string()).default({}),
+      best: H.string().optional(),
+      latest_per_family: H.record(H.string(), H.string()).default({}),
+      alias_migration: H.record(H.string(), H.string()).default({}),
+    }).loose(),
+  )),
+  (zdd = {
+    schema_version: 0,
+    models: [],
+    aliases: {},
+    defaults: {},
+    latest_per_family: {},
+    alias_migration: {},
+  }),
+  (Kdd = Cn(() => {
+    let e = Vdd().safeParse(moi);
+    return e.success ? e.data : zdd;
+  })),
+  (Ydd = Cn(() => {
+    let e = new Map();
+    for (let t of Kdd().models) e.set(t.id, t);
+    return e;
+  })));
 function sc() {
   if (fr() !== "firstParty") return !1;
   return !ut(process.env.CLAUDE_CODE_DISABLE_FAST_MODE);

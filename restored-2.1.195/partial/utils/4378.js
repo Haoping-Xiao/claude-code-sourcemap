@@ -4,140 +4,129 @@
 // class=partial  jaccard=0.1137  score=0.1594  fileCov=0.2839
 // note: low-confidence suggestion: src/tools/BriefTool/BriefTool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MSl = E(() => {
-  Xr();
-  ft();
-  Un();
-  kt();
-  ii();
-  wr();
-  fn();
-  Fh();
-  sre();
-  DSl();
-  Chf = ve(() => H.strictObject({
-    message: H.string().min(1).describe("The notification body. Keep it under 200 characters; mobile OSes truncate."),
-    status: H.literal("proactive")
-  })), Ihf = ve(() => H.object({
-    message: H.string(),
-    pushSent: H.boolean().optional(),
-    localSent: H.boolean().optional(),
-    disabledReason: H.enum(["config_off", "user_present", "no_transport"]).optional(),
-    idleSec: H.number().optional(),
-    hasFocus: H.boolean().optional(),
-    sentAt: H.string().optional().describe("ISO timestamp captured at tool execution on the emitting process. Optional \u2014 resumed sessions replay pre-sentAt outputs verbatim.")
-  })), khf = ti({
-    name: B8,
-    searchHint: "send a notification to the user via terminal and optionally mobile",
-    maxResultSizeChars: 1000,
-    userFacingName: () => "PushNotification",
-    get inputSchema() {
-      return Chf();
-    },
-    get outputSchema() {
-      return Ihf();
-    },
-    shouldDefer: true,
-    isEnabled() {
-      return T7("tengu_kairos_push_notifications", false, xhf);
-    },
-    isConcurrencySafe() {
-      return true;
-    },
-    isReadOnly() {
-      return true;
-    },
-    toAutoClassifierInput(e) {
-      return e.message;
-    },
-    async description() {
-      return Zra;
-    },
-    async prompt() {
-      return eoa();
-    },
-    mapToolResultToToolResultBlockParam(e, t) {
-      let n;
-      if (e.disabledReason === "config_off") n = "Push not sent \u2014 mobile push is disabled in /config.";else if (e.disabledReason === "user_present") {
-        if (e.hasFocus === true) n = "Not sent \u2014 terminal has focus. Terminal + mobile suppressed.";else {
-          let r = rsn / 1000;
-          n = `Not sent \u2014 user active (last keystroke ${e.idleSec !== void 0 ? `${e.idleSec}s` : `<${r}s`} ago, threshold ${r}s). Terminal + mobile suppressed.`;
-        }
-      } else if (e.disabledReason === "no_transport") n = e.localSent ? "Terminal notification sent. Mobile push not sent (Remote Control inactive)." : "Mobile push not sent (Remote Control inactive).";else n = e.localSent ? "Terminal notification sent. Mobile push requested." : "Mobile push requested.";
-      return {
-        tool_use_id: t,
-        type: "tool_result",
-        content: n
+// [unwrapped __esm module MSl] deps: Xr, ft, Un, kt, ii, wr, fn, Fh, sre, DSl
+Chf = ve(() => H.strictObject({
+  message: H.string().min(1).describe("The notification body. Keep it under 200 characters; mobile OSes truncate."),
+  status: H.literal("proactive")
+})), Ihf = ve(() => H.object({
+  message: H.string(),
+  pushSent: H.boolean().optional(),
+  localSent: H.boolean().optional(),
+  disabledReason: H.enum(["config_off", "user_present", "no_transport"]).optional(),
+  idleSec: H.number().optional(),
+  hasFocus: H.boolean().optional(),
+  sentAt: H.string().optional().describe("ISO timestamp captured at tool execution on the emitting process. Optional \u2014 resumed sessions replay pre-sentAt outputs verbatim.")
+})), khf = ti({
+  name: B8,
+  searchHint: "send a notification to the user via terminal and optionally mobile",
+  maxResultSizeChars: 1000,
+  userFacingName: () => "PushNotification",
+  get inputSchema() {
+    return Chf();
+  },
+  get outputSchema() {
+    return Ihf();
+  },
+  shouldDefer: true,
+  isEnabled() {
+    return T7("tengu_kairos_push_notifications", false, xhf);
+  },
+  isConcurrencySafe() {
+    return true;
+  },
+  isReadOnly() {
+    return true;
+  },
+  toAutoClassifierInput(e) {
+    return e.message;
+  },
+  async description() {
+    return Zra;
+  },
+  async prompt() {
+    return eoa();
+  },
+  mapToolResultToToolResultBlockParam(e, t) {
+    let n;
+    if (e.disabledReason === "config_off") n = "Push not sent \u2014 mobile push is disabled in /config.";else if (e.disabledReason === "user_present") {
+      if (e.hasFocus === true) n = "Not sent \u2014 terminal has focus. Terminal + mobile suppressed.";else {
+        let r = rsn / 1000;
+        n = `Not sent \u2014 user active (last keystroke ${e.idleSec !== void 0 ? `${e.idleSec}s` : `<${r}s`} ago, threshold ${r}s). Terminal + mobile suppressed.`;
+      }
+    } else if (e.disabledReason === "no_transport") n = e.localSent ? "Terminal notification sent. Mobile push not sent (Remote Control inactive)." : "Mobile push not sent (Remote Control inactive).";else n = e.localSent ? "Terminal notification sent. Mobile push requested." : "Mobile push requested.";
+    return {
+      tool_use_id: t,
+      type: "tool_result",
+      content: n
+    };
+  },
+  renderToolUseMessage: RSl,
+  renderToolResultMessage: LSl,
+  async call({
+    message: e
+  }, t, n, r, o) {
+    let s = new Date().toISOString(),
+      i = ut(process.env.CLAUDE_CODE_REMOTE) || da(),
+      a = i || d0(),
+      l = (u, d, p) => {
+        G("tengu_push_notification_send", {
+          message_length: e.length,
+          push_sent: u,
+          local_sent: d,
+          is_remote: i,
+          disabled_reason: Oo(p)
+        });
       };
-    },
-    renderToolUseMessage: RSl,
-    renderToolResultMessage: LSl,
-    async call({
-      message: e
-    }, t, n, r, o) {
-      let s = new Date().toISOString(),
-        i = ut(process.env.CLAUDE_CODE_REMOTE) || da(),
-        a = i || d0(),
-        l = (u, d, p) => {
-          G("tengu_push_notification_send", {
-            message_length: e.length,
-            push_sent: u,
-            local_sent: d,
-            is_remote: i,
-            disabled_reason: Oo(p)
-          });
-        };
-      if (a && !i && !wc("agentPushNotifEnabled", false).value) return l(false, false, "config_off"), {
+    if (a && !i && !wc("agentPushNotifEnabled", false).value) return l(false, false, "config_off"), {
+      data: {
+        message: e,
+        pushSent: false,
+        localSent: false,
+        disabledReason: "config_off",
+        sentAt: s
+      }
+    };
+    if (!i && !Oe.CLAUDE_CODE_DISABLE_NOTIFICATION_PRESENCE_CHECK && T_r()) {
+      let u = Math.round((Date.now() - Ex()) / 1000),
+        d = GBe();
+      return l(false, false, "user_present"), {
         data: {
           message: e,
           pushSent: false,
           localSent: false,
-          disabledReason: "config_off",
-          sentAt: s
-        }
-      };
-      if (!i && !Oe.CLAUDE_CODE_DISABLE_NOTIFICATION_PRESENCE_CHECK && T_r()) {
-        let u = Math.round((Date.now() - Ex()) / 1000),
-          d = GBe();
-        return l(false, false, "user_present"), {
-          data: {
-            message: e,
-            pushSent: false,
-            localSent: false,
-            disabledReason: "user_present",
-            idleSec: u,
-            ...(d !== void 0 && {
-              hasFocus: d
-            }),
-            sentAt: s
-          }
-        };
-      }
-      o?.({
-        type: "os_notification",
-        message: e,
-        notificationType: "push_notification"
-      });
-      let c = !t.options.isNonInteractiveSession;
-      if (!a) return l(false, c, "no_transport"), {
-        data: {
-          message: e,
-          pushSent: false,
-          localSent: c,
-          disabledReason: "no_transport",
-          sentAt: s
-        }
-      };
-      return l(true, c), {
-        data: {
-          message: e,
-          pushSent: true,
-          localSent: c,
+          disabledReason: "user_present",
+          idleSec: u,
+          ...(d !== void 0 && {
+            hasFocus: d
+          }),
           sentAt: s
         }
       };
     }
-  });
+    o?.({
+      type: "os_notification",
+      message: e,
+      notificationType: "push_notification"
+    });
+    let c = !t.options.isNonInteractiveSession;
+    if (!a) return l(false, c, "no_transport"), {
+      data: {
+        message: e,
+        pushSent: false,
+        localSent: c,
+        disabledReason: "no_transport",
+        sentAt: s
+      }
+    };
+    return l(true, c), {
+      data: {
+        message: e,
+        pushSent: true,
+        localSent: c,
+        sentAt: s
+      }
+    };
+  }
 });
 function Lhf(e) {
   return `/${Rhf}/${e}`;

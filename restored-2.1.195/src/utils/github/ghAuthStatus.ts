@@ -4,19 +4,17 @@
 // class=modified  jaccard=0.3744  score=0.485  fileCov=0.6213
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Lnc = E(() => {
-  HU();
-  ((IXf = {
-    type: "local-jsx",
-    name: "workflows",
-    aliases: [],
-    description: "Browse running and completed workflows",
-    isEnabled: () => JS(),
-    immediate: true,
-    load: () => Promise.resolve().then(() => (knc(), Inc)),
-  }),
-    (xXf = IXf));
-});
+// [unwrapped __esm module Lnc] deps: HU
+((IXf = {
+  type: "local-jsx",
+  name: "workflows",
+  aliases: [],
+  description: "Browse running and completed workflows",
+  isEnabled: () => JS(),
+  immediate: true,
+  load: () => Promise.resolve().then(() => (knc(), Inc)),
+}),
+  (xXf = IXf));
 async function aar() {
   if (!(await Gf("gh"))) return "not_installed";
   try {

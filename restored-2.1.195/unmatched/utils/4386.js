@@ -4,30 +4,13 @@
 // class=new  jaccard=0.0075  score=0.3211  fileCov=0.0076
 // note: nearest: src/cli/print.ts (0.0075); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CXn = E(() => {
-  ft();
-  MAe();
-  dn();
-  c8t();
-  U1();
-  yC();
-  jv();
-  $S();
-  fp();
-  og();
-  je();
-  vn();
-  tA();
-  y_();
-  _a();
-  bH();
-  xEl = require("crypto"), hyf = {
-    agentType: "main-session",
-    whenToUse: "Main session query",
-    source: "userSettings",
-    getSystemPrompt: () => ""
-  };
-});
+// [unwrapped __esm module CXn] deps: ft, MAe, dn, c8t, U1, yC, jv, $S, fp, og, je, vn, tA, y_, _a, bH
+xEl = require("crypto"), hyf = {
+  agentType: "main-session",
+  whenToUse: "Main session query",
+  source: "userSettings",
+  getSystemPrompt: () => ""
+};
 async function REl(e, t, n) {
   if (typeof t === "string") {
     if (e === Q5) return {

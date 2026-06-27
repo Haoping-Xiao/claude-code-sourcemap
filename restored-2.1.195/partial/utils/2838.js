@@ -4,11 +4,6 @@
 // class=partial  jaccard=0.1956  score=1  fileCov=0.1956
 // note: low-confidence suggestion: src/services/compact/compactWarningState.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tao = E(() => {
-  U1();
-  co();
-  Jt();
-});
 function gut() {
   Ojt.setState(() => true);
 }

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0036  score=0.4596  fileCov=0.0036
 // note: nearest: src/bridge/bridgeMain.ts (0.0036); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Kyt = E(() => {
-  wr();
-  jv();
-});
 function jsl(e) {
   if (!e.startsWith(Fsl)) return "";
   let t = e.slice(Fsl.length),

@@ -3,15 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oro = E(() => {
-  TWe();
-  B$n();
-  Qne();
-  nct();
-  ZFt();
-  ERe();
-  _ue();
-});
 function Do(e, t, n, r) {
   return new Ata(e, void 0, t, n, r);
 }

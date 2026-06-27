@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0029  score=0.1391  fileCov=0.003
 // note: nearest: src/screens/REPL.tsx (0.0029); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rbc = E(() => {
-  _i();
-  Z6o();
-  tzo();
-  Ibc = R(lt(), 1), kbc = R(se(), 1);
-});
+// [unwrapped __esm module Rbc] deps: _i, Z6o, tzo
+Ibc = R(lt(), 1), kbc = R(se(), 1);
 function Lbc(e, t) {
   let n = Ht(i => i.fotwClaim),
     r = Ho();

@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.5129  score=0.8161  fileCov=0.5799
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yZr = E(() => {
-  dn();
-  vn();
-  iJr();
-  Ye();
-  je();
-  DGe();
-  I1();
-  Ao();
-  Is();
-  ((y6i = require("path")), (kW = R(rt(), 1)));
-});
+// [unwrapped __esm module yZr] deps: dn, vn, iJr, Ye, je, DGe, I1, Ao, Is
+((y6i = require("path")), (kW = R(rt(), 1)));
 function RW({ line: e, column: t, active: n, visible: r = false }) {
   let o = dbe.useContext(gLn),
     s = dbe.useRef(null),

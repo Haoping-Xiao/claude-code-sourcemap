@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4106  score=0.8021  fileCov=0.4568
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OB = E(() => {
-  N0r();
-  QZe();
-});
 function WFe(e, t, n = 10 * STs * bTs) {
   let r;
   if (t === void 0) r = {};

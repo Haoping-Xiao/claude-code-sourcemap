@@ -4,10 +4,6 @@
 // class=modified (alt of src/ink/render-border.ts)  jaccard=0.109  score=0.7158  fileCov=0.1139
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var f0e = E(() => {
-  p8();
-  Mke();
-});
 function pat(e, t) {
   if (!e) return;
   if (

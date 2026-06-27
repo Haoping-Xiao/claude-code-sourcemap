@@ -4,16 +4,12 @@
 // class=modified  jaccard=0.5263  score=0.9698  fileCov=0.535
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GLc = E(() => {
-  je();
-  Is();
-  _0();
-  ((FLc = new Map()),
-    (oCm =
-      Vt() === "windows"
-        ? /^[A-Za-z0-9/\\][A-Za-z0-9_.+:\\?/-]*$/
-        : /^[A-Za-z0-9/][A-Za-z0-9_.+/-]*$/));
-});
+// [unwrapped __esm module GLc] deps: je, Is, _0
+((FLc = new Map()),
+  (oCm =
+    Vt() === "windows"
+      ? /^[A-Za-z0-9/\\][A-Za-z0-9_.+:\\?/-]*$/
+      : /^[A-Za-z0-9/][A-Za-z0-9_.+/-]*$/));
 function iCm(e) {
   return SCe.has(e.toLowerCase());
 }

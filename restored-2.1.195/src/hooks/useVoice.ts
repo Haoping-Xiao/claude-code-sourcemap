@@ -4,27 +4,24 @@
 // class=modified  jaccard=0.3569  score=0.5734  fileCov=0.4859
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Tc = E(() => {
-  ft();
-  sa();
-  ((pKo = require("path")),
-    (ybm = [
-      "MCP",
-      "symlink",
-      "grep",
-      "regex",
-      "localhost",
-      "codebase",
-      "TypeScript",
-      "JSON",
-      "OAuth",
-      "webhook",
-      "gRPC",
-      "dotfiles",
-      "subagent",
-      "worktree",
-    ]));
-});
+// [unwrapped __esm module _Tc] deps: ft, sa
+((pKo = require("path")),
+  (ybm = [
+    "MCP",
+    "symlink",
+    "grep",
+    "regex",
+    "localhost",
+    "codebase",
+    "TypeScript",
+    "JSON",
+    "OAuth",
+    "webhook",
+    "gRPC",
+    "dotfiles",
+    "subagent",
+    "worktree",
+  ]));
 var HTc = {};
 _t(HTc, {
   useVoice: () => useVoice,

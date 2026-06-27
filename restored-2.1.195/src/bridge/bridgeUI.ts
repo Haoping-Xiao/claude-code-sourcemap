@@ -4,23 +4,16 @@
 // class=modified  jaccard=0.2676  score=0.7007  fileCov=0.3021
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var itc = E(() => {
-  Hp();
-  TM();
-  dn();
-  sa();
-  Kgo();
-  Cde();
-  MYf = /^[a-zA-Z0-9_-]+$/;
-  Qq = class Qq extends Error {
-    status;
-    errorType;
-    constructor(e, t, n) {
-      super(e);
-      ((this.name = "BridgeFatalError"), (this.status = t), (this.errorType = n));
-    }
-  };
-});
+// [unwrapped __esm module itc] deps: Hp, TM, dn, sa, Kgo, Cde
+MYf = /^[a-zA-Z0-9_-]+$/;
+Qq = class Qq extends Error {
+  status;
+  errorType;
+  constructor(e, t, n) {
+    super(e);
+    ((this.name = "BridgeFatalError"), (this.status = t), (this.errorType = n));
+  }
+};
 async function NYf(e) {
   return (await atc.toString(e, OYf))
     .split(

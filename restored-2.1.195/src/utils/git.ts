@@ -4,16 +4,9 @@
 // class=modified  jaccard=0.2952  score=0.6301  fileCov=0.3571
 // note: deminified; 31 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BR = E(() => {
-  Lo();
-  je();
-  Bi();
-  sa();
-  Mx();
-  sr();
-  cCe = new Map();
-  P$u = /^[A-Za-z0-9._-]+$/;
-});
+// [unwrapped __esm module BR] deps: Lo, je, Bi, sa, Mx, sr
+cCe = new Map();
+P$u = /^[A-Za-z0-9._-]+$/;
 var Sfn = {};
 _t(Sfn, {
   stashToCleanState: () => stashToCleanState,

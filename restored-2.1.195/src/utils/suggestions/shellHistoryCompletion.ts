@@ -4,19 +4,9 @@
 // class=modified  jaccard=0.3203  score=0.6162  fileCov=0.4001
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ayc = E(() => {
-  ior();
-  oyc();
-  Zf();
-  Un();
-  Ire();
-  Ryt();
-  wr();
-  e$e();
-  M8e();
-  syc = /[:_-]/g;
-  spm = new Set(["add-dir", "resume", "plugin", "plugins", "marketplace"]);
-});
+// [unwrapped __esm module ayc] deps: ior, oyc, Zf, Un, Ire, Ryt, wr, e$e, M8e
+syc = /[:_-]/g;
+spm = new Set(["add-dir", "resume", "plugin", "plugins", "marketplace"]);
 async function mpm() {
   let e = Date.now();
   if (m7e && e - lyc < fpm) return m7e;

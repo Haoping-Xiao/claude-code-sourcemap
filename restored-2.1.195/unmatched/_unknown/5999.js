@@ -4,18 +4,6 @@
 // class=new  jaccard=0.0466  score=0.1595  fileCov=0.0617
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0466); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EGc = E(() => {
-  NZ();
-  oBe();
-  Qvt();
-  RQo();
-  AR();
-  sK();
-  Jnn();
-  nwt();
-  Znn();
-  DQo();
-});
 async function AGc(e, t, n) {
   if (!B3(e)) throw new jH("Flattened JWS must be an object");
   if (e.protected === void 0 && e.header === void 0) throw new jH('Flattened JWS must have either of the "protected" or "header" members');

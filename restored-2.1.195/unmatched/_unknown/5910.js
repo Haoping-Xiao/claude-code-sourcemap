@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0045  score=0.2881  fileCov=0.0045
 // note: nearest: node_modules/node-forge/lib/x509.js (0.0045); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q2c = E(() => {
-  ogr();
-  wm();
-  Enn();
-  $vt();
-  tJo();
-  sB();
-  Bvt();
-});
 function wnn(e, t) {
   let n = `SHA-${e.slice(-3)}`;
   switch (e) {

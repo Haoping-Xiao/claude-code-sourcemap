@@ -4,14 +4,13 @@
 // class=partial  jaccard=0.1064  score=0.3026  fileCov=0.141
 // note: low-confidence suggestion: src/utils/hooks/execPromptHook.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Y0o = E(() => {
-  Byl = require("util");
-  Cmf = {
-    "import-statement": "import",
-    "dynamic-import": "import",
-    "require-call": "require"
-  };
-});
+// [unwrapped __esm module Y0o]
+Byl = require("util");
+Cmf = {
+  "import-statement": "import",
+  "dynamic-import": "import",
+  "require-call": "require"
+};
 function J0o(e, t, n) {
   function r(s, i) {
     return async (a, l) => {

@@ -4,18 +4,13 @@
 // class=modified  jaccard=0.3274  score=0.5283  fileCov=0.4626
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var h6o = E(() => {
-  zb();
-  je();
-  ih();
-  Jt();
-  ((DTt = new Map()), (pdr = new Set()), (pyc = Mi()), (fyc = pyc.subscribe));
-  ypm = ve(() =>
-    dt.object({
-      results: dt.string(),
-    }),
-  );
-});
+// [unwrapped __esm module h6o] deps: zb, je, ih, Jt
+((DTt = new Map()), (pdr = new Set()), (pyc = Mi()), (fyc = pyc.subscribe));
+ypm = ve(() =>
+  dt.object({
+    results: dt.string(),
+  }),
+);
 function _yc(e) {
   switch (e.type) {
     case "file":

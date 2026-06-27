@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0344  score=0.6228  fileCov=0.0351
 // note: nearest: src/utils/sessionStorage.ts (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NZl = E(() => {
-  je();
-  At();
-  Jt();
-  vKf = [200, 800];
-});
+// [unwrapped __esm module NZl] deps: je, At, Jt
+vKf = [200, 800];
 async function wKf(e, t) {
   try {
     if (t > oCe && !ut(process.env.CLAUDE_CODE_DISABLE_PRECOMPACT_SKIP)) return (await qpn(e, t)).postBoundaryBuf;

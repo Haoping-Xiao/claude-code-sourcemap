@@ -4,16 +4,8 @@
 // class=new  jaccard=0.0416  score=0.4358  fileCov=0.044
 // note: nearest: node_modules/ws/lib/websocket-server.js (0.0416); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var muc = E(() => {
-  Pw();
-  Is();
-  cuc();
-  WL();
-  cKe();
-  ESt();
-  FK();
-  aNe = require("fs"), Lcr = require("fs/promises"), uuc = require("net"), Dcr = require("os"), duc = require("path");
-});
+// [unwrapped __esm module muc] deps: Pw, Is, cuc, WL, cKe, ESt, FK
+aNe = require("fs"), Lcr = require("fs/promises"), uuc = require("net"), Dcr = require("os"), duc = require("path");
 function Pcr(e, t, n) {
   return new Promise((r, o) => {
     let s = a => {

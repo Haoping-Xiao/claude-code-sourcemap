@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.583  score=0.832  fileCov=0.6607
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var loe = E(() => {
-  Tc();
-  es();
-  m0();
-});
 function zPe(e) {
   if (!e?.excludeDefault) return false;
   return e.tips.length > 0;

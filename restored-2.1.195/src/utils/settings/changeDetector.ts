@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.3848  score=0.6186  fileCov=0.5045
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hna = E(() => {
-  bro();
-  _ro();
-  gna();
-  bLt();
-  X$n();
-});
 function Q$n(e, t) {
   let n = e.get(t);
   if (n) return n;

@@ -4,27 +4,8 @@
 // class=partial  jaccard=0.1491  score=0.606  fileCov=0.1651
 // note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _No = E(() => {
-  Ed();
-  tC();
-  hNo();
-  _at();
-  URn();
-  gGe();
-  Jke();
-  NBt();
-  jh();
-  Ye();
-  ps();
-  kt();
-  dht();
-  er();
-  je();
-  vWt();
-  Fh();
-  rnr();
-  W1l = R(lt(), 1), Lq = R(rt(), 1);
-});
+// [unwrapped __esm module _No] deps: Ed, tC, hNo, _at, URn, gGe, Jke, NBt, jh, Ye, ps, kt, dht, er, je, vWt, Fh, rnr
+W1l = R(lt(), 1), Lq = R(rt(), 1);
 function mz(e) {
   let t = V1l.c(2),
     {

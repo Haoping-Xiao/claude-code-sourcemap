@@ -4,26 +4,16 @@
 // class=modified  jaccard=0.3226  score=0.4399  fileCov=0.5476
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d$o = E(() => {
-  zb();
-  Pw();
-  fd();
-  je();
-  At();
-  YS();
-  Rd();
-  Jt();
-  B1();
-  ((iz = require("fs/promises")),
-    (LSt = require("path")),
-    (CIf = ve(() =>
-      dt.object({
-        pid: dt.number(),
-        procStart: dt.string().optional(),
-      }),
-    )),
-    (u$o = new Set()));
-});
+// [unwrapped __esm module d$o] deps: zb, Pw, fd, je, At, YS, Rd, Jt, B1
+((iz = require("fs/promises")),
+  (LSt = require("path")),
+  (CIf = ve(() =>
+    dt.object({
+      pid: dt.number(),
+      procStart: dt.string().optional(),
+    }),
+  )),
+  (u$o = new Set()));
 async function PSt(e, t, n = {}) {
   let r = qt(),
     o = n.logLabel ?? "plugin",

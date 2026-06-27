@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.322  score=0.8087  fileCov=0.3485
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DMo = E(() => {
-  wpn();
-  Sae();
-  RF();
-  jG();
-  Lo();
-  wr();
-  fn();
-  At();
-  co();
-  Jt();
-  ((fYt = require("crypto")), (pHe = require("fs/promises")), (xSt = require("path")));
-});
+// [unwrapped __esm module DMo] deps: wpn, Sae, RF, jG, Lo, wr, fn, At, co, Jt
+((fYt = require("crypto")), (pHe = require("fs/promises")), (xSt = require("path")));
 function Bkl(e) {
   for (let t of e)
     if (t.role === "assistant" && Array.isArray(t.content)) {

@@ -4,14 +4,13 @@
 // class=new  jaccard=0.0018  score=0.3933  fileCov=0.0019
 // note: nearest: src/screens/REPL.tsx (0.0018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sNl = E(() => {
-  oNl = {
-    type: "local-jsx",
-    name: "diff",
-    description: "View uncommitted changes and per-turn diffs",
-    load: () => Promise.resolve().then(() => (rNl(), tNl))
-  };
-});
+// [unwrapped __esm module sNl]
+oNl = {
+  type: "local-jsx",
+  name: "diff",
+  description: "View uncommitted changes and per-turn diffs",
+  load: () => Promise.resolve().then(() => (rNl(), tNl))
+};
 function nx(e) {
   let t = iNl.c(10),
     {

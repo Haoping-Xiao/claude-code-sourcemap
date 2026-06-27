@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.4437  score=0.8111  fileCov=0.4948
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m7t = E(() => {
-  Oze();
-  Ld();
-  iKe();
-  q$();
-});
 function PPl() {
   let e = [process.argv[1] || "", process.execPath || ""],
     t = ["/build-ant/", "/build-ant-native/", "/build-external/", "/build-external-native/"];

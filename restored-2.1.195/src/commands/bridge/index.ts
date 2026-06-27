@@ -4,30 +4,27 @@
 // class=modified  jaccard=0.2515  score=0.3435  fileCov=0.4845
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hZl = E(() => {
-  ft();
-  SC();
-  ((lKf = {
-    type: "local-jsx",
-    name: "remote-control",
-    aliases: ["rc"],
-    get description() {
-      return d0()
-        ? "Disconnect Remote Control"
-        : "Control this session from your phone or claude.ai/code";
-    },
-    get argumentHint() {
-      return d0() ? void 0 : "[name]";
-    },
-    isEnabled: xC,
-    get isHidden() {
-      return !xC();
-    },
-    immediate: true,
-    load: () => Promise.resolve().then(() => (mZl(), fZl)),
-  }),
-    (cKf = lKf));
-});
+// [unwrapped __esm module hZl] deps: ft, SC
+((lKf = {
+  type: "local-jsx",
+  name: "remote-control",
+  aliases: ["rc"],
+  get description() {
+    return d0()
+      ? "Disconnect Remote Control"
+      : "Control this session from your phone or claude.ai/code";
+  },
+  get argumentHint() {
+    return d0() ? void 0 : "[name]";
+  },
+  isEnabled: xC,
+  get isHidden() {
+    return !xC();
+  },
+  immediate: true,
+  load: () => Promise.resolve().then(() => (mZl(), fZl)),
+}),
+  (cKf = lKf));
 function GJt() {
   return yZl.join(tr(), "daemon.status.json");
 }

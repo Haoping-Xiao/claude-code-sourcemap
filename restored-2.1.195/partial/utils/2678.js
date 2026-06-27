@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.0888  score=1  fileCov=0.0888
 // note: low-confidence suggestion: node_modules/@azure/msal-common/dist/utils/UrlUtils.mjs; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xto = E(() => {
-  SWe();
-});
 function MFt(e, t) {
   let n = e.toLowerCase();
   if (t === "*") return true;

@@ -4,19 +4,15 @@
 // class=modified  jaccard=0.4314  score=0.7085  fileCov=0.5244
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var j_t = E(() => {
-  Xr();
-  $g();
-  Un();
-  kdf = ve(() =>
-    H.array(
-      H.object({
-        marketplace: H.string(),
-        plugin: H.string(),
-      }),
-    ),
-  );
-});
+// [unwrapped __esm module j_t] deps: Xr, $g, Un
+kdf = ve(() =>
+  H.array(
+    H.object({
+      marketplace: H.string(),
+      plugin: H.string(),
+    }),
+  ),
+);
 var qfl = {};
 _t(qfl, {
   wrapChannelMessage: () => wrapChannelMessage,

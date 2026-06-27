@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0528  score=0.1228  fileCov=0.0847
 // note: nearest: node_modules/@anthropic-ai/sdk/core/error.mjs (0.0528); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tac = E(() => {
-  sr();
-});
 function vac() {
   return at("tengu_hazel_osprey", false);
 }

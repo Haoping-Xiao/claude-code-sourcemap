@@ -4,30 +4,8 @@
 // class=new  jaccard=0.0295  score=0.1785  fileCov=0.0341
 // note: nearest: src/utils/sessionStorage.ts (0.0295); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $5c = E(() => {
-  iu();
-  lH();
-  VQ();
-  dn();
-  kt();
-  Du();
-  FEe();
-  YQr();
-  er();
-  je();
-  MPe();
-  wr();
-  Yp();
-  kgt();
-  A9e();
-  wAo();
-  BJ();
-  IVn();
-  ED();
-  LOe();
-  dr();
-  P5c = require("path");
-});
+// [unwrapped __esm module $5c] deps: iu, lH, VQ, dn, kt, Du, FEe, YQr, er, je, MPe, wr, Yp, kgt, A9e, wAo, BJ, IVn, ED, LOe, dr
+P5c = require("path");
 var U5c = {};
 _t(U5c, {
   importConversationsHandler: () => importConversationsHandler,

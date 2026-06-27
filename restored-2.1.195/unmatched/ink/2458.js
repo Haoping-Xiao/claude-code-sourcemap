@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0034  score=0.6869  fileCov=0.0034
 // note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FJr = E(() => {
-  fGe();
-  X_e();
-  OLn = R(rt(), 1);
-});
+// [unwrapped __esm module FJr] deps: fGe, X_e
+OLn = R(rt(), 1);
 function BLn(e) {
   let t = _8.useContext(SW),
     n = e === null ? null : Math.ceil(BJr(e) / $U) * $U,

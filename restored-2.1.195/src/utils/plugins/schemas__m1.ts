@@ -4,142 +4,140 @@
 // class=modified (alt of src/utils/plugins/schemas.ts)  jaccard=0.0434  score=0.4161  fileCov=0.0462
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bCe = E(() => {
-  Xr();
-  ((WRr = ve(() =>
-    H.enum(["local", "user", "project", "dynamic", "enterprise", "claudeai", "managed", "agent"]),
+// [unwrapped __esm module bCe] deps: Xr
+((WRr = ve(() =>
+  H.enum(["local", "user", "project", "dynamic", "enterprise", "claudeai", "managed", "agent"]),
+)),
+  (Hmg = ve(() => H.enum(["stdio", "sse", "sse-ide", "http", "ws", "sdk"]))),
+  (Let = ve(() =>
+    H.literal("comms")
+      .optional()
+      .catch(void 0),
   )),
-    (Hmg = ve(() => H.enum(["stdio", "sse", "sse-ide", "http", "ws", "sdk"]))),
-    (Let = ve(() =>
-      H.literal("comms")
-        .optional()
-        .catch(void 0),
-    )),
-    (_Ce = ve(() => H.number().int().positive())),
-    (YRt = ve(() =>
-      H.object({
-        type: H.literal("stdio").optional(),
-        command: H.string().min(1, "Command cannot be empty"),
-        args: H.array(H.string()).default([]),
-        env: H.record(H.string(), H.string()).optional(),
-        timeout: _Ce().optional(),
-        alwaysLoad: H.boolean().optional(),
-        role: Let(),
-      }),
-    )),
-    (AOu = ve(() => H.boolean())),
-    (cws = ve(() =>
-      H.object({
-        clientId: H.string().optional(),
-        callbackPort: H.number().int().positive().optional(),
-        authServerMetadataUrl: H.string()
-          .url()
-          .startsWith("https://", {
-            message: "authServerMetadataUrl must use https://",
-          })
-          .optional(),
-        scopes: H.string().min(1).optional(),
-        xaa: AOu().optional(),
-      }),
-    )),
-    (uws = ve(() =>
-      H.object({
-        name: H.string(),
-        permission_policy: H.enum(["always_allow", "always_ask", "always_deny"]).optional(),
-      }),
-    )),
-    (qRr = ve(() =>
-      H.object({
-        type: H.literal("sse"),
-        url: H.string(),
-        headers: H.record(H.string(), H.string()).optional(),
-        headersHelper: H.string().optional(),
-        oauth: cws().optional(),
-        timeout: _Ce().optional(),
-        tools: H.array(uws()).optional(),
-        alwaysLoad: H.boolean().optional(),
-        role: Let(),
-        toolPermissions: H.record(H.string(), XRt()).optional(),
-      }),
-    )),
-    (HOu = ve(() =>
-      H.object({
-        type: H.literal("sse-ide"),
-        url: H.string(),
-        ideName: H.string(),
-        ideRunningInWindows: H.boolean().optional(),
-        timeout: _Ce().optional(),
-        alwaysLoad: H.boolean().optional(),
-        role: Let(),
-      }),
-    )),
-    (TOu = ve(() =>
-      H.object({
-        type: H.literal("ws-ide"),
-        url: H.string(),
-        ideName: H.string(),
-        authToken: H.string().optional(),
-        ideRunningInWindows: H.boolean().optional(),
-        timeout: _Ce().optional(),
-        alwaysLoad: H.boolean().optional(),
-        role: Let(),
-      }),
-    )),
-    (Kfn = ve(() =>
-      H.object({
-        type: H.enum(["http", "streamable-http"]).transform(() => "http"),
-        url: H.string(),
-        headers: H.record(H.string(), H.string()).optional(),
-        headersHelper: H.string().optional(),
-        oauth: cws().optional(),
-        timeout: _Ce().optional(),
-        tools: H.array(uws()).optional(),
-        alwaysLoad: H.boolean().optional(),
-        role: Let(),
-        toolPermissions: H.record(H.string(), XRt()).optional(),
-      }),
-    )),
-    (VRr = ve(() =>
-      H.object({
-        type: H.literal("ws"),
-        url: H.string(),
-        headers: H.record(H.string(), H.string()).optional(),
-        headersHelper: H.string().optional(),
-        timeout: _Ce().optional(),
-        alwaysLoad: H.boolean().optional(),
-        role: Let(),
-      }),
-    )),
-    (zRr = ve(() =>
-      H.object({
-        type: H.literal("sdk"),
-        name: H.string(),
-        timeout: _Ce().optional(),
-        alwaysLoad: H.boolean().optional(),
-      }),
-    )),
-    (XRt = ve(() => H.enum(["allow", "ask", "blocked"]))),
-    (KRr = ve(() =>
-      H.object({
-        type: H.literal("claudeai-proxy"),
-        url: H.string(),
-        id: H.string(),
-        displayName: H.string().optional(),
-        iconUrl: H.string().optional(),
-        timeout: _Ce().optional(),
-        alwaysLoad: H.boolean().optional(),
-        toolPermissions: H.record(H.string(), XRt()).optional(),
-        stateless: H.boolean().optional(),
-        cachedInitResponse: H.record(H.string(), H.unknown()).nullish(),
-      }),
-    )),
-    (Nae = ve(() => H.union([YRt(), qRr(), HOu(), TOu(), Kfn(), VRr(), zRr(), KRr()]))),
-    (Tmg = ve(() =>
-      H.object({
-        mcpServers: H.record(H.string(), Nae()),
-      }),
-    )));
-});
+  (_Ce = ve(() => H.number().int().positive())),
+  (YRt = ve(() =>
+    H.object({
+      type: H.literal("stdio").optional(),
+      command: H.string().min(1, "Command cannot be empty"),
+      args: H.array(H.string()).default([]),
+      env: H.record(H.string(), H.string()).optional(),
+      timeout: _Ce().optional(),
+      alwaysLoad: H.boolean().optional(),
+      role: Let(),
+    }),
+  )),
+  (AOu = ve(() => H.boolean())),
+  (cws = ve(() =>
+    H.object({
+      clientId: H.string().optional(),
+      callbackPort: H.number().int().positive().optional(),
+      authServerMetadataUrl: H.string()
+        .url()
+        .startsWith("https://", {
+          message: "authServerMetadataUrl must use https://",
+        })
+        .optional(),
+      scopes: H.string().min(1).optional(),
+      xaa: AOu().optional(),
+    }),
+  )),
+  (uws = ve(() =>
+    H.object({
+      name: H.string(),
+      permission_policy: H.enum(["always_allow", "always_ask", "always_deny"]).optional(),
+    }),
+  )),
+  (qRr = ve(() =>
+    H.object({
+      type: H.literal("sse"),
+      url: H.string(),
+      headers: H.record(H.string(), H.string()).optional(),
+      headersHelper: H.string().optional(),
+      oauth: cws().optional(),
+      timeout: _Ce().optional(),
+      tools: H.array(uws()).optional(),
+      alwaysLoad: H.boolean().optional(),
+      role: Let(),
+      toolPermissions: H.record(H.string(), XRt()).optional(),
+    }),
+  )),
+  (HOu = ve(() =>
+    H.object({
+      type: H.literal("sse-ide"),
+      url: H.string(),
+      ideName: H.string(),
+      ideRunningInWindows: H.boolean().optional(),
+      timeout: _Ce().optional(),
+      alwaysLoad: H.boolean().optional(),
+      role: Let(),
+    }),
+  )),
+  (TOu = ve(() =>
+    H.object({
+      type: H.literal("ws-ide"),
+      url: H.string(),
+      ideName: H.string(),
+      authToken: H.string().optional(),
+      ideRunningInWindows: H.boolean().optional(),
+      timeout: _Ce().optional(),
+      alwaysLoad: H.boolean().optional(),
+      role: Let(),
+    }),
+  )),
+  (Kfn = ve(() =>
+    H.object({
+      type: H.enum(["http", "streamable-http"]).transform(() => "http"),
+      url: H.string(),
+      headers: H.record(H.string(), H.string()).optional(),
+      headersHelper: H.string().optional(),
+      oauth: cws().optional(),
+      timeout: _Ce().optional(),
+      tools: H.array(uws()).optional(),
+      alwaysLoad: H.boolean().optional(),
+      role: Let(),
+      toolPermissions: H.record(H.string(), XRt()).optional(),
+    }),
+  )),
+  (VRr = ve(() =>
+    H.object({
+      type: H.literal("ws"),
+      url: H.string(),
+      headers: H.record(H.string(), H.string()).optional(),
+      headersHelper: H.string().optional(),
+      timeout: _Ce().optional(),
+      alwaysLoad: H.boolean().optional(),
+      role: Let(),
+    }),
+  )),
+  (zRr = ve(() =>
+    H.object({
+      type: H.literal("sdk"),
+      name: H.string(),
+      timeout: _Ce().optional(),
+      alwaysLoad: H.boolean().optional(),
+    }),
+  )),
+  (XRt = ve(() => H.enum(["allow", "ask", "blocked"]))),
+  (KRr = ve(() =>
+    H.object({
+      type: H.literal("claudeai-proxy"),
+      url: H.string(),
+      id: H.string(),
+      displayName: H.string().optional(),
+      iconUrl: H.string().optional(),
+      timeout: _Ce().optional(),
+      alwaysLoad: H.boolean().optional(),
+      toolPermissions: H.record(H.string(), XRt()).optional(),
+      stateless: H.boolean().optional(),
+      cachedInitResponse: H.record(H.string(), H.unknown()).nullish(),
+    }),
+  )),
+  (Nae = ve(() => H.union([YRt(), qRr(), HOu(), TOu(), Kfn(), VRr(), zRr(), KRr()]))),
+  (Tmg = ve(() =>
+    H.object({
+      mcpServers: H.record(H.string(), Nae()),
+    }),
+  )));
 function khe(e, t, n) {
   if (n !== void 0) return n;
   let r = e.toLowerCase();

@@ -4,13 +4,11 @@
 // class=partial  jaccard=0.115  score=1  fileCov=0.115
 // note: low-confidence suggestion: node_modules/@smithy/eventstream-serde-config-resolver/dist-cjs/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var IAt = E(() => {
-  IL();
-  jor = {
-    assign: () => Ky[0],
-    get: () => {
-      return;
-    }
-  };
-});
+// [unwrapped __esm module IAt] deps: IL
+jor = {
+  assign: () => Ky[0],
+  get: () => {
+    return;
+  }
+};
 var xAt;

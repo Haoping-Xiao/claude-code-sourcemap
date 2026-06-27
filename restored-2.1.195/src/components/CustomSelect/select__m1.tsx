@@ -4,12 +4,8 @@
 // class=modified (alt of src/components/CustomSelect/select.tsx)  jaccard=0.222  score=0.4649  fileCov=0.2982
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CMl = E(() => {
-  tC();
-  sr();
-  RZr();
-  ((POe = R(rt(), 1)), (vMl = require("util")));
-});
+// [unwrapped __esm module CMl] deps: tC, sr, RZr
+((POe = R(rt(), 1)), (vMl = require("util")));
 function MOe(e) {
   let t = d1o.c(11);
   if (Sd()) {

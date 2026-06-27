@@ -4,16 +4,6 @@
 // class=modified  jaccard=0.3426  score=0.8581  fileCov=0.3631
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ndo = E(() => {
-  Uco();
-  edo();
-  Xuo();
-  muo();
-  Kuo();
-  Zuo();
-  M4t();
-  nCa();
-});
 async function eTp(e) {
   let { McpbManifestSchema: t } = await Promise.resolve().then(() => (ndo(), tdo)),
     n = t.safeParse(e);

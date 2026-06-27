@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2947  score=0.6492  fileCov=0.3505
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Bqe = E(() => {
-  sr();
-});
 function bmo(e) {
   if (!e || !e.trim()) return [];
   let t = oA(e);

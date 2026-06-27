@@ -3,12 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var H4n = E(() => {
-  ft();
-  kt();
-  NE();
-  UX();
-});
 function T4n(e) {
   if (!/^[A-Za-z]:[\\/]/.test(e)) return [];
   let t = oUe(e);

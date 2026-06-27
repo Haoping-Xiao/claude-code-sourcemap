@@ -4,24 +4,21 @@
 // class=modified  jaccard=0.298  score=0.3649  fileCov=0.6193
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hY = E(() => {
-  Qi();
-  Is();
-  ((_vs = require("path")),
-    (QC = Cn(function () {
-      switch (Vt()) {
-        case "macos":
-          return "/Library/Application Support/ClaudeCode";
-        case "windows":
-          return "C:\\Program Files\\ClaudeCode";
-        default:
-          return "/etc/claude-code";
-      }
-    })),
-    (PRt = Cn(function () {
-      return _vs.join(QC(), "managed-settings.d");
-    })));
-});
+// [unwrapped __esm module hY] deps: Qi, Is
+((_vs = require("path")),
+  (QC = Cn(function () {
+    switch (Vt()) {
+      case "macos":
+        return "/Library/Application Support/ClaudeCode";
+      case "windows":
+        return "C:\\Program Files\\ClaudeCode";
+      default:
+        return "/etc/claude-code";
+    }
+  })),
+  (PRt = Cn(function () {
+    return _vs.join(QC(), "managed-settings.d");
+  })));
 function MRt() {
   if (process.env.WSL_DISTRO_NAME) return true;
   try {

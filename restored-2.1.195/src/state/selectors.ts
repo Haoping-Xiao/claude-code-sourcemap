@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2185  score=0.4584  fileCov=0.2945
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var WMo = E(() => {
-  ft();
-  S_();
-  ((t0l = []), (n0l = new Set()));
-});
+// [unwrapped __esm module WMo] deps: ft, S_
+((t0l = []), (n0l = new Set()));
 function cOe(e) {
   return xZn(e.viewingAgentTaskId, e.tasks).teammate;
 }

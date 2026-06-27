@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0048  score=0.3529  fileCov=0.0048
 // note: nearest: src/screens/REPL.tsx (0.0048); dir inferred from dep-graph -> context; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sAc = E(() => {
-  Gho();
-  INe = R(rt(), 1);
-});
+// [unwrapped __esm module sAc] deps: Gho
+INe = R(rt(), 1);
 function mpr(e, t) {
   switch (t.type) {
     case "append":

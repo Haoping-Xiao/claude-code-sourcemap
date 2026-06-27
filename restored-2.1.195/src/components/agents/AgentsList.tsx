@@ -4,23 +4,8 @@
 // class=modified  jaccard=0.1788  score=0.2967  fileCov=0.3102
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AYl = E(() => {
-  iu();
-  si();
-  uo();
-  Ye();
-  ps();
-  IL();
-  ty();
-  y3();
-  f_();
-  VAt();
-  i4o();
-  a4o();
-  l4o();
-  c4o();
-  ((aZ = R(rt(), 1)), (Pse = R(se(), 1)));
-});
+// [unwrapped __esm module AYl] deps: iu, si, uo, Ye, ps, IL, ty, y3, f_, VAt, i4o, a4o, l4o, c4o
+((aZ = R(rt(), 1)), (Pse = R(se(), 1)));
 function vYl(e) {
   let t = XAt.c(75),
     {

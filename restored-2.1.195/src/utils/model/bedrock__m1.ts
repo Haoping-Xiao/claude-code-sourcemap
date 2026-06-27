@@ -4,15 +4,6 @@
 // class=modified (alt of src/utils/model/bedrock.ts)  jaccard=0.1231  score=0.5049  fileCov=0.14
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DSn = E(() => {
-  pSn();
-  dSn();
-  a7s();
-  l7s();
-  p7s();
-  f7s();
-  IBr();
-});
 function G2e(e, t, n) {
   if (n) {
     let r = e.find((o) => o.startsWith(`${n}.`) && o.includes(t));

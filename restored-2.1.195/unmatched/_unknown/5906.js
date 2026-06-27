@@ -3,12 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var F2c = E(() => {
-  rB();
-  sB();
-  iie();
-  U2c = IDm;
-});
+// [unwrapped __esm module F2c] deps: rB, sB, iie
+U2c = IDm;
 async function j2c(e) {
   return T2c(e);
 }

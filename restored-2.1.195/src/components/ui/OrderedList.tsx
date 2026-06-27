@@ -4,15 +4,13 @@
 // class=modified  jaccard=0.5238  score=0.745  fileCov=0.6382
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BMc = E(() => {
-  Ye();
-  ((NMc = R(lt(), 1)),
-    (smr = R(rt(), 1)),
-    (Xtn = R(se(), 1)),
-    (f7o = smr.createContext({
-      marker: "",
-    })));
-});
+// [unwrapped __esm module BMc] deps: Ye
+((NMc = R(lt(), 1)),
+  (smr = R(rt(), 1)),
+  (Xtn = R(se(), 1)),
+  (f7o = smr.createContext({
+    marker: "",
+  })));
 function jMc(e) {
   let t = FMc.c(9),
     { children: n } = e,

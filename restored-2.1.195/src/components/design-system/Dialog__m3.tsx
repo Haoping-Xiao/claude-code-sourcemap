@@ -4,16 +4,8 @@
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.1192  score=0.1468  fileCov=0.3882
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var U8l = E(() => {
-  kt();
-  fn();
-  At();
-  sa();
-  pq();
-  U6t();
-  $7();
-  ((dsr = require("fs/promises")), (gJt = require("path")));
-});
+// [unwrapped __esm module U8l] deps: kt, fn, At, sa, pq, U6t, $7
+((dsr = require("fs/promises")), (gJt = require("path")));
 function psr(e) {
   let t = F8l.c(49),
     { script: n, defaultName: r, onDone: o } = e,

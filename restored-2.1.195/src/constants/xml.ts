@@ -4,41 +4,38 @@
 // class=modified  jaccard=0.621  score=0.7426  fileCov=0.7913
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wFe = E(() => {
-  Qi();
-  wr();
-  VSs = new Map();
-  IDu = Cn(async () => {
-    let e = Lkr(),
-      t;
-    try {
-      let [n, r] = await Promise.all([
-          Promise.resolve().then(() => R(RB(), 1)),
-          Promise.resolve().then(() => R(Dx(), 1)),
-        ]),
-        o = n.loadConfig ?? n.default?.loadConfig,
-        s = r.NODE_REGION_CONFIG_FILE_OPTIONS ?? r.default?.NODE_REGION_CONFIG_FILE_OPTIONS;
-      t =
-        (
-          await o(
-            {
-              environmentVariableSelector: () => {
-                return;
-              },
-              configFileSelector: (a) => a.region,
-              default: () => {
-                return;
-              },
+// [unwrapped __esm module wFe] deps: Qi, wr
+VSs = new Map();
+IDu = Cn(async () => {
+  let e = Lkr(),
+    t;
+  try {
+    let [n, r] = await Promise.all([
+        Promise.resolve().then(() => R(RB(), 1)),
+        Promise.resolve().then(() => R(Dx(), 1)),
+      ]),
+      o = n.loadConfig ?? n.default?.loadConfig,
+      s = r.NODE_REGION_CONFIG_FILE_OPTIONS ?? r.default?.NODE_REGION_CONFIG_FILE_OPTIONS;
+    t =
+      (
+        await o(
+          {
+            environmentVariableSelector: () => {
+              return;
             },
-            s,
-          )()
-        )?.trim() || void 0;
-    } catch {
-      t = void 0;
-    }
-    return (VSs.set(e, t), t);
-  }, Lkr);
-});
+            configFileSelector: (a) => a.region,
+            default: () => {
+              return;
+            },
+          },
+          s,
+        )()
+      )?.trim() || void 0;
+  } catch {
+    t = void 0;
+  }
+  return (VSs.set(e, t), t);
+}, Lkr);
 var rj = "command-name",
   zC = "command-message",
   hpn = "command-args",

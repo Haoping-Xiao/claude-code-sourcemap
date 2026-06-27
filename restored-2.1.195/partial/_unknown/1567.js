@@ -4,18 +4,17 @@
 // class=partial  jaccard=0.064  score=1  fileCov=0.064
 // note: low-confidence suggestion: node_modules/@smithy/eventstream-codec/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Iui = E(() => {
-  A4r = class A4r {
-    constructor(e) {
-      this.options = e;
-    }
-    [Symbol.asyncIterator]() {
-      return this.asyncIterator();
-    }
-    async *asyncIterator() {
-      for await (let e of this.options.messageStream) yield this.options.encoder.encode(e);
-      if (this.options.includeEndFrame) yield new Uint8Array(0);
-    }
-  };
-});
+// [unwrapped __esm module Iui]
+A4r = class A4r {
+  constructor(e) {
+    this.options = e;
+  }
+  [Symbol.asyncIterator]() {
+    return this.asyncIterator();
+  }
+  async *asyncIterator() {
+    for await (let e of this.options.messageStream) yield this.options.encoder.encode(e);
+    if (this.options.includeEndFrame) yield new Uint8Array(0);
+  }
+};
 var H4r;

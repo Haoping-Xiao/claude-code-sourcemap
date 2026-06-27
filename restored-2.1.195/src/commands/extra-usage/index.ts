@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.081  score=1  fileCov=0.081
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CCo = E(() => {
-  Ye();
-  vzn = R(se(), 1);
-});
+// [unwrapped __esm module CCo] deps: Ye
+vzn = R(se(), 1);
 function Wyt() {
   if (Oe.DISABLE_EXTRA_USAGE_COMMAND) return false;
   if (A0() !== null) return true;

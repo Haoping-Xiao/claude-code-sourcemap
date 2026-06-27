@@ -4,13 +4,9 @@
 // class=new  jaccard=0.0227  score=1  fileCov=0.0227
 // note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0227); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zFr = E(() => {
-  pb();
-  _v();
-  Bw();
-  bri = R(yo(), 1);
-  VFr = class VFr extends Vd.classBuilder().ep(vp).m(function (e, t, n, r) {
-    return [bri.getEndpointPlugin(n, e.getEndpointParameterInstructions())];
-  }).s("AWSCognitoIdentityService", "TagResource", {}).n("CognitoIdentityClient", "TagResourceCommand").sc(Xni).build() {};
-});
+// [unwrapped __esm module zFr] deps: pb, _v, Bw
+bri = R(yo(), 1);
+VFr = class VFr extends Vd.classBuilder().ep(vp).m(function (e, t, n, r) {
+  return [bri.getEndpointPlugin(n, e.getEndpointParameterInstructions())];
+}).s("AWSCognitoIdentityService", "TagResource", {}).n("CognitoIdentityClient", "TagResourceCommand").sc(Xni).build() {};
 var Sri, KFr;

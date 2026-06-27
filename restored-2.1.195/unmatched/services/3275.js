@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0211  score=0.1542  fileCov=0.0239
 // note: nearest: src/services/analytics/metadata.ts (0.0211); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Eka = E(() => {
-  Fwp = ["anyOf", "oneOf", "allOf"], jwp = /^[a-zA-Z0-9_.-]{1,64}$/, Gwp = ["$defs", "definitions", "$schema", "additionalProperties", "description", "title"];
-});
+// [unwrapped __esm module Eka]
+Fwp = ["anyOf", "oneOf", "allOf"], jwp = /^[a-zA-Z0-9_.-]{1,64}$/, Gwp = ["$defs", "definitions", "$schema", "additionalProperties", "description", "title"];
 function zwp(e) {
   let t = e.inputSchema?.properties ?? {},
     n = Object.keys(t),

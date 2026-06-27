@@ -4,11 +4,8 @@
 // class=modified (alt of src/utils/telemetryAttributes.ts)  jaccard=0.0538  score=0.2055  fileCov=0.0679
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I8 = E(() => {
-  er();
-  ih();
-  ((RKd = Mi()), (X0e = new Map()));
-});
+// [unwrapped __esm module I8] deps: er, ih
+((RKd = Mi()), (X0e = new Map()));
 function DKd(e) {
   let t = e.indexOf("."),
     n = e.indexOf(".", t + 1);

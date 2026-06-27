@@ -4,36 +4,26 @@
 // class=partial  jaccard=0.0782  score=0.2321  fileCov=0.1055
 // note: low-confidence suggestion: src/utils/permissions/PermissionMode.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hFo = E(() => {
-  cEe();
-  loe();
-  Xa();
-  w4();
-  Tc();
-  Ye();
-  ps();
-  nk();
-  Mne();
-  $Xt = R(lt(), 1), uAt = R(rt(), 1), gR = R(se(), 1);
-  k2f = /\[(\w+):([^\]]*)\]/g;
-  wGl = [{
-    label: "default",
-    symbol: "",
-    color: "text"
-  }, {
-    label: "accept edits on",
-    symbol: "\u23F5\u23F5",
-    color: "autoAccept"
-  }, {
-    label: "plan mode on",
-    symbol: Bfn,
-    color: "planMode"
-  }, {
-    label: "auto mode on",
-    symbol: "\u23F5\u23F5",
-    color: "warning"
-  }], O2f = [BO, mv, gc, "\xB7"], N2f = ["claude", "success", "warning", "suggestion", "autoAccept"];
-});
+// [unwrapped __esm module hFo] deps: cEe, loe, Xa, w4, Tc, Ye, ps, nk, Mne
+$Xt = R(lt(), 1), uAt = R(rt(), 1), gR = R(se(), 1);
+k2f = /\[(\w+):([^\]]*)\]/g;
+wGl = [{
+  label: "default",
+  symbol: "",
+  color: "text"
+}, {
+  label: "accept edits on",
+  symbol: "\u23F5\u23F5",
+  color: "autoAccept"
+}, {
+  label: "plan mode on",
+  symbol: Bfn,
+  color: "planMode"
+}, {
+  label: "auto mode on",
+  symbol: "\u23F5\u23F5",
+  color: "warning"
+}], O2f = [BO, mv, gc, "\xB7"], N2f = ["claude", "success", "warning", "suggestion", "autoAccept"];
 function dAt(e) {
   let t = OXt.c(2),
     {

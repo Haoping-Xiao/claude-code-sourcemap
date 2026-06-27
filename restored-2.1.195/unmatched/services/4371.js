@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0392  score=0.3283  fileCov=0.0426
 // note: nearest: src/tools/RemoteTriggerTool/RemoteTriggerTool.ts (0.0392); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CRo = E(() => {
-  c_();
-});
 var eze = "RemoteTrigger",
   mSl = "Manage scheduled remote Claude Code agents (routines) via the claude.ai CCR API. Auth is handled in-process \u2014 the token never reaches the shell.",
   gSl = `Call the claude.ai remote-trigger API. Use this instead of curl \u2014 the OAuth token is added automatically in-process and never exposed.

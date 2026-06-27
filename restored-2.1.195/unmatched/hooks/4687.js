@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0037  score=0.3476  fileCov=0.0038
 // note: nearest: src/screens/REPL.tsx (0.0037); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bEt = E(() => {
-  Ye();
-  gm();
-  iNl = R(lt(), 1), _Et = R(se(), 1);
-});
+// [unwrapped __esm module bEt] deps: Ye, gm
+iNl = R(lt(), 1), _Et = R(se(), 1);
 function lNl() {
   let e = aNl.c(1);
   if (!E8()) return null;

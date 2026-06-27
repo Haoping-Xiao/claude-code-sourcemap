@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2726  score=0.4545  fileCov=0.4052
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sFc = E(() => {
-  np();
-  dn();
-  Lo();
-  Bi();
-  u8o();
-  OI();
-  rFc = require("crypto");
-});
+// [unwrapped __esm module sFc] deps: np, dn, Lo, Bi, u8o, OI
+rFc = require("crypto");
 var MFc = {};
 _t(MFc, {
   waitForPendingMcpBeforeFirstCommand: () => waitForPendingMcpBeforeFirstCommand,

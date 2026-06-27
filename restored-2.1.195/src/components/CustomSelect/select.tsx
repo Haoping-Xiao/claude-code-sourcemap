@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3761  score=0.5145  fileCov=0.583
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gzi = E(() => {
-  RZr();
-  CPn = R(rt(), 1);
-});
+// [unwrapped __esm module gzi] deps: RZr
+CPn = R(rt(), 1);
 function Sr(e) {
   let t = IPn.c(10);
   if (Sd()) {

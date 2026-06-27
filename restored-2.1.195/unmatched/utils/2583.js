@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0072  score=0.449  fileCov=0.0073
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0072); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kzi = E(() => {
-  X_e();
-  Ye();
-  je();
-  Jt();
-  Yj();
-  PZr = R(lt(), 1), Jce = R(rt(), 1), xzi = R(se(), 1);
-});
+// [unwrapped __esm module kzi] deps: X_e, Ye, je, Jt, Yj
+PZr = R(lt(), 1), Jce = R(rt(), 1), xzi = R(se(), 1);
 function qh(e) {
   let t = Rzi.c(27),
     {

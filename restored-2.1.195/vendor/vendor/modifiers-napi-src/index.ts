@@ -4,12 +4,8 @@
 // class=vendor  jaccard=0.19  score=0.4643  fileCov=0.2433
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MGe = E(() => {
-  Tc();
-  Xge();
-  m0();
-  C6d = /^[\p{L}\p{N}\p{M}_]$/u, Xat = /\s/, I6d = /\p{N}/u, x6d = new RegExp(uZr + "$"), k6d = new RegExp("^" + uZr), R6d = new RegExp(uZr, "g");
-});
+// [unwrapped __esm module MGe] deps: Tc, Xge, m0
+C6d = /^[\p{L}\p{N}\p{M}_]$/u, Xat = /\s/, I6d = /\p{N}/u, x6d = new RegExp(uZr + "$"), k6d = new RegExp("^" + uZr), R6d = new RegExp(uZr, "g");
 var pZr = {};
 _t(pZr, {
   prewarm: () => prewarm,

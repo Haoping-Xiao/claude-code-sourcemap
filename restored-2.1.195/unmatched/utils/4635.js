@@ -4,16 +4,8 @@
 // class=new  jaccard=0.015  score=0.4244  fileCov=0.0153
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.015); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zMl = E(() => {
-  G4();
-  Ye();
-  gb();
-  Lo();
-  fn();
-  Vl();
-  vi();
-  qMl = R(lt(), 1), I7t = R(rt(), 1), AHe = R(se(), 1);
-});
+// [unwrapped __esm module zMl] deps: G4, Ye, gb, Lo, fn, Vl, vi
+qMl = R(lt(), 1), I7t = R(rt(), 1), AHe = R(se(), 1);
 function YMl(e) {
   let t = KMl.c(13),
     {

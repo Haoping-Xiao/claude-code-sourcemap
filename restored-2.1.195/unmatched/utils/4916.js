@@ -4,16 +4,9 @@
 // class=new  jaccard=0.0022  score=0.8247  fileCov=0.0022
 // note: nearest: src/screens/REPL.tsx (0.0022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lql = E(() => {
-  Ye();
-  kt();
-  m_t();
-  wAe();
-  mVe();
-  SEe();
-  Cor = R(lt(), 1), iql = R(rt(), 1), zN = R(se(), 1);
-  xde(I4f);
-});
+// [unwrapped __esm module lql] deps: Ye, kt, m_t, wAe, mVe, SEe
+Cor = R(lt(), 1), iql = R(rt(), 1), zN = R(se(), 1);
+xde(I4f);
 function uql({
   char: e = Gee
 }) {

@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Q9l = E(() => {
-  Y9l();
-  Ao();
-  PEt();
-  xrr();
-  J9l = R(se(), 1);
-});
+// [unwrapped __esm module Q9l] deps: Y9l, Ao, PEt, xrr
+J9l = R(se(), 1);
 var n5f, Z9l;

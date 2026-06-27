@@ -4,18 +4,11 @@
 // class=partial  jaccard=0.2387  score=0.431  fileCov=0.3485
 // note: low-confidence suggestion: src/hooks/usePasteHandler.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var I1 = E(() => {
-  Lne();
-  Un();
-  xUt();
-  mye();
-  Ao();
-  Ls();
-  G6d = {
-    maxWidth: 2000,
-    maxHeight: 2000
-  };
-});
+// [unwrapped __esm module I1] deps: Lne, Un, xUt, mye, Ao, Ls
+G6d = {
+  maxWidth: 2000,
+  maxHeight: 2000
+};
 function h6i() {
   return Gh(As());
 }

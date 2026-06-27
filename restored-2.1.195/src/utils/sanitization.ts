@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.6069  score=1  fileCov=0.6069
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var E3t = E(() => {
-  Vb();
-  vn();
-  Ire();
-  jdt();
-});
 function cvp(e) {
   let t = e.replace(/[\p{Cf}\p{Co}\p{Cn}]/gu, "");
   return (

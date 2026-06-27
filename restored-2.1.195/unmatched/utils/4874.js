@@ -4,13 +4,12 @@
 // class=new  jaccard=0.0168  score=0.2581  fileCov=0.0177
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0168); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SGl = E(() => {
-  bGl = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub"
-  };
-});
+// [unwrapped __esm module SGl]
+bGl = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub"
+};
 function vGl(e) {
   let t = $Xt.c(10),
     {

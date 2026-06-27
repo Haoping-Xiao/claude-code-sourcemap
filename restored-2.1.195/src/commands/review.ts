@@ -4,40 +4,37 @@
 // class=modified  jaccard=0.099  score=0.1182  fileCov=0.3785
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var X2o = E(() => {
-  VXn();
-  MMe();
-  ((MWf = {
-    type: "prompt",
-    name: "review",
-    description: "Review a GitHub pull request; for your working diff use /code-review",
-    argumentHint: "[pr number]",
-    effort: "medium",
-    progressMessage: "reviewing pull request",
-    contentLength: 0,
-    source: "builtin",
-    async getPromptForCommand(e) {
-      let [t = "", ...n] = e.trim().split(/\s+/),
-        r = t.replaceAll("`", "").replace(/^#/, "");
-      return [
-        {
-          type: "text",
-          text: r ? PWf(r, n.join(" ")) : DWf,
-        },
-      ];
-    },
-  }),
-    (v9l = {
-      type: "local-jsx",
-      name: "ultrareview",
-      get description() {
-        return `Start a cloud agent that finds and verifies bugs in your branch (${nQ()}, ${PMe()} USD) \xB7 Runs in Claude Code on the web. See ${LWf}`;
+// [unwrapped __esm module X2o] deps: VXn, MMe
+((MWf = {
+  type: "prompt",
+  name: "review",
+  description: "Review a GitHub pull request; for your working diff use /code-review",
+  argumentHint: "[pr number]",
+  effort: "medium",
+  progressMessage: "reviewing pull request",
+  contentLength: 0,
+  source: "builtin",
+  async getPromptForCommand(e) {
+    let [t = "", ...n] = e.trim().split(/\s+/),
+      r = t.replaceAll("`", "").replace(/^#/, "");
+    return [
+      {
+        type: "text",
+        text: r ? PWf(r, n.join(" ")) : DWf,
       },
-      isEnabled: () => W6(),
-      load: () => Promise.resolve().then(() => (T9l(), A9l)),
-    }),
-    (rsr = MWf));
-});
+    ];
+  },
+}),
+  (v9l = {
+    type: "local-jsx",
+    name: "ultrareview",
+    get description() {
+      return `Start a cloud agent that finds and verifies bugs in your branch (${nQ()}, ${PMe()} USD) \xB7 Runs in Claude Code on the web. See ${LWf}`;
+    },
+    isEnabled: () => W6(),
+    load: () => Promise.resolve().then(() => (T9l(), A9l)),
+  }),
+  (rsr = MWf));
 var I9l = {};
 _t(I9l, {
   call: () => call,

@@ -4,23 +4,8 @@
 // class=modified (alt of src/components/CustomSelect/select.tsx)  jaccard=0.0917  score=0.2658  fileCov=0.1228
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xZr = E(() => {
-  fH();
-  _i();
-  Tc();
-  Ye();
-  ps();
-  DGe();
-  I1();
-  Ao();
-  tzi();
-  Cc();
-  Bs();
-  Ko();
-  Mg();
-  TPn();
-  ((azi = R(lt(), 1)), (UGe = R(rt(), 1)), (rS = R(se(), 1)));
-});
+// [unwrapped __esm module xZr] deps: fH, _i, Tc, Ye, ps, DGe, I1, Ao, tzi, Cc, Bs, Ko, Mg, TPn
+((azi = R(lt(), 1)), (UGe = R(rt(), 1)), (rS = R(se(), 1)));
 var kZr,
   czi = ({
     isDisabled: e = false,

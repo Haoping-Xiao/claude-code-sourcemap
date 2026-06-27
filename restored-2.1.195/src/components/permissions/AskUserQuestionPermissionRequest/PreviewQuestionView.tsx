@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2617  score=0.4182  fileCov=0.4117
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _pr = E(() => {
-  si();
-  _i();
-  Tc();
-  Ye();
-  es();
-  Coe();
-  ((NAc = R(lt(), 1)), (KTe = R(se(), 1)));
-});
+// [unwrapped __esm module _pr] deps: si, _i, Tc, Ye, es, Coe
+((NAc = R(lt(), 1)), (KTe = R(se(), 1)));
 function BAc({
   question: e,
   questions: t,

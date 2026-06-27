@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.2303  score=0.4398  fileCov=0.3258
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QUi = E(() => {
-  Y3e();
-  X0n();
-  GYr();
-  jh();
-  je();
-  uf();
-  nne();
-});
 function QBd() {
   return wc("theme", "dark").value;
 }

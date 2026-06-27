@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0043  score=1  fileCov=0.0043
 // note: nearest: src/components/Settings/Config.tsx (0.0043); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fzn = E(() => {
-  Un();
-  pzn = R(rt(), 1);
-});
+// [unwrapped __esm module fzn] deps: Un
+pzn = R(rt(), 1);
 function mzn(e, t) {
   for (let n of [e, t]) {
     if (n == null) continue;

@@ -4,31 +4,22 @@
 // class=modified (alt of src/ink/terminal.ts)  jaccard=0.1711  score=0.4051  fileCov=0.2285
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZS = E(() => {
-  ft();
-  wr();
-  fn();
-  P7r();
-  Bke();
-  OM();
-  q7();
-  jh();
-  a4i = R(Uj(), 1);
-  o4d = new Set([
-    "iTerm.app",
-    "vscode",
-    "WezTerm",
-    "WarpTerminal",
-    "Hyper",
-    "Tabby",
-    "rio",
-    "contour",
-    "alacritty",
-  ]);
-  s4d = ["iTerm.app", "kitty", "WezTerm", "ghostty", "tmux", "windows-terminal", "WarpTerminal"];
-  yYh = LU();
-  $Rn = $7r();
-});
+// [unwrapped __esm module ZS] deps: ft, wr, fn, P7r, Bke, OM, q7, jh
+a4i = R(Uj(), 1);
+o4d = new Set([
+  "iTerm.app",
+  "vscode",
+  "WezTerm",
+  "WarpTerminal",
+  "Hyper",
+  "Tabby",
+  "rio",
+  "contour",
+  "alacritty",
+]);
+s4d = ["iTerm.app", "kitty", "WezTerm", "ghostty", "tmux", "windows-terminal", "WarpTerminal"];
+yYh = LU();
+$Rn = $7r();
 function T1() {
   let e = _Bt(),
     t = fy(),

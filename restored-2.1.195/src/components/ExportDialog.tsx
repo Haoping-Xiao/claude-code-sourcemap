@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2987  score=0.4697  fileCov=0.4506
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var U4o = E(() => {
-  Hu();
-  ((iir = require("fs/promises")), (air = require("path")));
-});
+// [unwrapped __esm module U4o] deps: Hu
+((iir = require("fs/promises")), (air = require("path")));
 function AJl({ content: e, defaultFilename: t, onDone: n }) {
   let [, r] = $1e.useState(null),
     [o, s] = $1e.useState(t),

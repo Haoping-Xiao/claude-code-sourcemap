@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4459  score=0.6717  fileCov=0.5701
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gIl = E(() => {
-  fp();
-  kt();
-});
 class aHe {
   toolDefinitions;
   canUseTool;

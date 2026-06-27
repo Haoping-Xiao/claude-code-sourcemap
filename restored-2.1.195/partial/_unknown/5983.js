@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.0887  score=0.2268  fileCov=0.1271
 // note: low-confidence suggestion: node_modules/pkce-challenge/dist/index.node.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var F3c = E(() => {
-  sK();
-  oBe();
-});
 function KMm(e, t) {
   if (e instanceof Uint8Array) return crypto.subtle.importKey("raw", e, "PBKDF2", false, ["deriveBits"]);
   return iK(e, t, "deriveBits"), e;

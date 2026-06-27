@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.5209  score=0.6328  fileCov=0.7465
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Sdr = E(() => {
-  er();
-  je();
-  __();
-});
 var C6o = {};
 _t(C6o, {
   AutoModeOptInDialog: () => AutoModeOptInDialog,

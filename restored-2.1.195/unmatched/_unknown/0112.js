@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gon = E(() => {
-  rJe = J6c;
-});
+// [unwrapped __esm module Gon]
+rJe = J6c;
 function Q6c(e) {
   return function (t) {
     return t == null ? void 0 : t[e];

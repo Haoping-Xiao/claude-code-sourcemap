@@ -4,19 +4,8 @@
 // class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.1313  score=0.2094  fileCov=0.2602
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xjo = E(() => {
-  dse();
-  _i();
-  m8();
-  Ye();
-  Pfe();
-  Bs();
-  B_();
-  Ko();
-  Xce();
-  eE();
-  ((B6l = R(lt(), 1)), (QHe = R(rt(), 1)), (OH = R(se(), 1)));
-});
+// [unwrapped __esm module xjo] deps: dse, _i, m8, Ye, Pfe, Bs, B_, Ko, Xce, eE
+((B6l = R(lt(), 1)), (QHe = R(rt(), 1)), (OH = R(se(), 1)));
 function Tsr(e) {
   let t = kjo.c(2),
     { value: n } = e,

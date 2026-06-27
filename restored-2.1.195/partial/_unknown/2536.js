@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.0613  score=0.7427  fileCov=0.0626
 // note: low-confidence suggestion: src/hooks/usePasteHandler.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fZr = E(() => {
-  n6i = require("module"), r6i = require("url"), nPn = require("path");
-});
+// [unwrapped __esm module fZr]
+n6i = require("module"), r6i = require("url"), nPn = require("path");
 function s6i() {
   return;
 }

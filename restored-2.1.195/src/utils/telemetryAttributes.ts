@@ -4,21 +4,17 @@
 // class=modified  jaccard=0.1929  score=0.2903  fileCov=0.3653
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var peo = E(() => {
-  zb();
-  ft();
-  Jt();
-  LKd = ve(() =>
-    dt
-      .object({
-        sub: dt.string().optional(),
-        email: dt.string().optional(),
-        groups: dt.array(dt.string()).optional(),
-      })
-      .passthrough(),
-  );
-  ((deo = Object.freeze({})), (GPn = deo));
-});
+// [unwrapped __esm module peo] deps: zb, ft, Jt
+LKd = ve(() =>
+  dt
+    .object({
+      sub: dt.string().optional(),
+      email: dt.string().optional(),
+      groups: dt.array(dt.string()).optional(),
+    })
+    .passthrough(),
+);
+((deo = Object.freeze({})), (GPn = deo));
 function PKd(e) {
   let t = BigInt(58),
     n = Array(22).fill("1"),

@@ -4,26 +4,22 @@
 // class=modified  jaccard=0.254  score=0.482  fileCov=0.3494
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TPc = E(() => {
-  je();
-  At();
-  gM();
-  ((hvt = require("fs/promises")),
-    (FYo = require("path")),
-    (XCm = [
-      "**/.claude/scheduled_tasks.lock",
-      "**/.claude/scheduled_tasks.json",
-      "**/.claude/routines/.state/",
-      "**/.claude/worktrees/",
-      "**/.claude/checkpoints/",
-      "**/.claude/mailbox/",
-      "**/.claude/agent-registry.json",
-      "**/.claude/agent-memory-local",
-      "**/.claude/first-run",
-      "**/.claude/assistant-daemon-state.json",
-    ]),
-    (APc = new Set()));
-});
+// [unwrapped __esm module TPc] deps: je, At, gM
+((hvt = require("fs/promises")),
+  (FYo = require("path")),
+  (XCm = [
+    "**/.claude/scheduled_tasks.lock",
+    "**/.claude/scheduled_tasks.json",
+    "**/.claude/routines/.state/",
+    "**/.claude/worktrees/",
+    "**/.claude/checkpoints/",
+    "**/.claude/mailbox/",
+    "**/.claude/agent-registry.json",
+    "**/.claude/agent-memory-local",
+    "**/.claude/first-run",
+    "**/.claude/assistant-daemon-state.json",
+  ]),
+  (APc = new Set()));
 function Ftn(e) {
   return jtn.join(e ?? rc(), JCm);
 }

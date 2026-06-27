@@ -4,16 +4,11 @@
 // class=new  jaccard=0.0035  score=0.2012  fileCov=0.0036
 // note: nearest: src/screens/REPL.tsx (0.0035); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var V2l = E(() => {
-  Xr();
-  je();
-  At();
-  Iv();
-  gXt = require("fs/promises"), j2l = require("os"), $He = R(require("path")), PNf = ve(() => H.object({
-    query: H.string().min(1),
-    should_trigger: H.boolean()
-  }));
-});
+// [unwrapped __esm module V2l] deps: Xr, je, At, Iv
+gXt = require("fs/promises"), j2l = require("os"), $He = R(require("path")), PNf = ve(() => H.object({
+  query: H.string().min(1),
+  should_trigger: H.boolean()
+}));
 function z2l({
   onComplete: e,
   target: t

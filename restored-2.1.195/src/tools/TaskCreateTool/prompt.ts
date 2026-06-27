@@ -4,27 +4,25 @@
 // class=modified  jaccard=0.2346  score=0.2735  fileCov=0.6229
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pbl = E(() => {
-  sr();
-  ((Qgf = new Set(["subject", "description", "activeForm", "metadata"])),
-    (Zgf = ["title", "name"]),
-    (ehf = ["content"]),
-    (thf = ["active_form"]),
-    (nhf = new Set([
-      "status",
-      "state",
-      "priority",
-      "prompt",
-      "subagent_type",
-      "id",
-      "type",
-      "owner",
-      "blocks",
-      "blockedBy",
-      "addBlocks",
-      "addBlockedBy",
-    ])));
-});
+// [unwrapped __esm module Pbl] deps: sr
+((Qgf = new Set(["subject", "description", "activeForm", "metadata"])),
+  (Zgf = ["title", "name"]),
+  (ehf = ["content"]),
+  (thf = ["active_form"]),
+  (nhf = new Set([
+    "status",
+    "state",
+    "priority",
+    "prompt",
+    "subagent_type",
+    "id",
+    "type",
+    "owner",
+    "blocks",
+    "blockedBy",
+    "addBlocks",
+    "addBlockedBy",
+  ])));
 function $bl() {
   let e = el() ? " and potentially assigned to teammates" : "",
     t = el()

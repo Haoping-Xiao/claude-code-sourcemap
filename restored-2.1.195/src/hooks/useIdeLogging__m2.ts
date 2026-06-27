@@ -4,21 +4,16 @@
 // class=modified (alt of src/hooks/useIdeLogging.ts)  jaccard=0.2529  score=0.4454  fileCov=0.3692
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var C5e = E(() => {
-  je();
-  Xr();
-  Un();
-  kt();
-  Oao = ve(() =>
-    H.object({
-      method: H.literal("log_event"),
-      params: H.object({
-        eventName: H.string(),
-        eventData: H.object({}).passthrough(),
-      }),
+// [unwrapped __esm module C5e] deps: je, Xr, Un, kt
+Oao = ve(() =>
+  H.object({
+    method: H.literal("log_event"),
+    params: H.object({
+      eventName: H.string(),
+      eventData: H.object({}).passthrough(),
     }),
-  );
-});
+  }),
+);
 function Xca(e) {
   return e?.kind === "human";
 }

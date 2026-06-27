@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0081  score=0.5327  fileCov=0.0082
 // note: nearest: src/native-ts/color-diff/index.ts (0.0081); dir inferred from dep-graph -> native-ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yda = E(() => {
-  hda = tdp;
-});
+// [unwrapped __esm module yda]
+hda = tdp;
 function _da(e) {
   for (let [t, n] of Object.entries(ndp)) if (!e.getLanguage(t)) e.registerLanguage(t, n);
 }

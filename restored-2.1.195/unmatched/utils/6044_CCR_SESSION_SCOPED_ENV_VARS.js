@@ -4,25 +4,9 @@
 // class=new  jaccard=0.0126  score=0.2556  fileCov=0.0131
 // note: nearest: node_modules/commander/lib/command.js (0.0126); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var BZo = E(() => {
-  dn();
-  kt();
-  je();
-  wr();
-  At();
-  Hpe();
-  WGe();
-  Is();
-  Jt();
-  ZVo();
-  c9o();
-  WL();
-  cKe();
-  ESt();
-  FK();
-  fhr = require("crypto"), Y5c = require("fs"), XP = require("fs/promises"), ghr = require("net"), mhr = require("path");
-  K5c = [50, 100, 150, 200, 250, 300, 400, 500, 500, 500];
-});
+// [unwrapped __esm module BZo] deps: dn, kt, je, wr, At, Hpe, WGe, Is, Jt, ZVo, c9o, WL, cKe, ESt, FK
+fhr = require("crypto"), Y5c = require("fs"), XP = require("fs/promises"), ghr = require("net"), mhr = require("path");
+K5c = [50, 100, 150, 200, 250, 300, 400, 500, 500, 500];
 var eqc = {};
 _t(eqc, {
   runPreload: () => runPreload,

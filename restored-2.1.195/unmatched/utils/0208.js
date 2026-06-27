@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ass = E(() => {
-  _Ue();
-  Ton();
-  Ess = QKc;
-});
+// [unwrapped __esm module Ass] deps: _Ue, Ton
+Ess = QKc;
 var ZKc, jJe;

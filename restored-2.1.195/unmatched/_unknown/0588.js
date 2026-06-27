@@ -3,7 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xbs = E(() => {
-  Ibs = oRu;
-});
+// [unwrapped __esm module xbs]
+Ibs = oRu;
 var sRu, iRu, kbs;

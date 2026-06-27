@@ -4,41 +4,12 @@
 // class=modified  jaccard=0.3692  score=0.6509  fileCov=0.4604
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var adr = E(() => {
-  si();
-  Ed();
-  kt();
-  uo();
-  ft();
-  nbe();
-  HN();
-  Cen();
-  Ye();
-  id();
-  mLe();
-  Vyt();
-  ZU();
-  X8o();
-  oo();
-  QOe();
-  fn();
-  es();
-  jjt();
-  aE();
-  e6o();
-  Cc();
-  n6o();
-  Ahc();
-  Pzn();
-  vhc();
-  Ihc();
-  Rhc();
-  ((jhc = R(lt(), 1)),
-    (SNe = R(rt(), 1)),
-    (sy = R(se(), 1)),
-    (Fdm = (tdr(), ro(Lhc)).VoiceIndicator),
-    (jdm = (Uhc(), ro(Bhc)).ClosedIssueNotice));
-});
+// [unwrapped __esm module adr] deps: si, Ed, kt, uo, ft, nbe, HN, Cen, Ye, id, mLe, Vyt, ZU, X8o, oo, QOe, fn, es, jjt, aE, e6o, Cc, n6o, Ahc, Pzn, vhc, Ihc, Rhc
+((jhc = R(lt(), 1)),
+  (SNe = R(rt(), 1)),
+  (sy = R(se(), 1)),
+  (Fdm = (tdr(), ro(Lhc)).VoiceIndicator),
+  (jdm = (Uhc(), ro(Bhc)).ClosedIssueNotice));
 async function Xdm(e, t) {
   let n = Math.ceil(e / Ghc) * Ghc;
   if (p7e && ldr >= n && i6o === t) return p7e;

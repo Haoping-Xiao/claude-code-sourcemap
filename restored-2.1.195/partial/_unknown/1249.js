@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.2278  score=0.7951  fileCov=0.242
 // note: low-confidence suggestion: node_modules/@smithy/eventstream-serde-node/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mKs = E(() => {
-  pKs();
-  fKs();
-});
 async function* gKs(e) {
   let t = false,
     n = false,

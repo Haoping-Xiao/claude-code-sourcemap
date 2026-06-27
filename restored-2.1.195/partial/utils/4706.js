@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.1259  score=0.5184  fileCov=0.1426
 // note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gz = E(() => {
-  je();
-  sr();
-});
 function Hnr() {
   let e = qNl.c(5),
     t = Ho(),

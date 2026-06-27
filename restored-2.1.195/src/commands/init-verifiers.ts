@@ -4,20 +4,19 @@
 // class=modified  jaccard=0.4583  score=0.5127  fileCov=0.8122
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aUl = E(() => {
-  bk();
-  ((l1f = {
-    type: "prompt",
-    name: "init-verifiers",
-    description: "Create verifier skill(s) for automated verification of code changes",
-    contentLength: 0,
-    progressMessage: "analyzing your project and creating verifier skills",
-    source: "builtin",
-    async getPromptForCommand() {
-      return [
-        {
-          type: "text",
-          text: `Use the ${EH() ? cC : s$} tool to track your progress through this multi-step task.
+// [unwrapped __esm module aUl] deps: bk
+((l1f = {
+  type: "prompt",
+  name: "init-verifiers",
+  description: "Create verifier skill(s) for automated verification of code changes",
+  contentLength: 0,
+  progressMessage: "analyzing your project and creating verifier skills",
+  source: "builtin",
+  async getPromptForCommand() {
+    return [
+      {
+        type: "text",
+        text: `Use the ${EH() ? cC : s$} tool to track your progress through this multi-step task.
 
 ## Goal
 
@@ -259,12 +258,11 @@ After writing the skill file(s), inform the user:
 4. That they can run /init-verifiers again to add more verifiers for other areas
 5. That the verifier will offer to self-update if it detects its own instructions are outdated (wrong dev server command, changed ready signal, etc.)
 `,
-        },
-      ];
-    },
-  }),
-    (iUl = l1f));
-});
+      },
+    ];
+  },
+}),
+  (iUl = l1f));
 function c1f(e) {
   let t = new Set(aUt.map((n) => vGe(n.key)));
   return e

@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1845  score=0.5109  fileCov=0.224
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var a0e = E(() => {
-  QXr();
-  ZXr = R(rt(), 1);
-});
+// [unwrapped __esm module a0e] deps: QXr
+ZXr = R(rt(), 1);
 function X3d(e) {
   let t = new Map(),
     n = null,

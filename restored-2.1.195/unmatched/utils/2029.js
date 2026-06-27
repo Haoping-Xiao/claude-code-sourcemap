@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0435  score=0.3199  fileCov=0.048
 // note: nearest: src/utils/model/model.ts (0.0435); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Oot = E(() => {
-  mye();
-});
 function XOt(e) {
   if (Mte(e)) return "falcon";
   if (e === "claude-sonnet-4-5") return "sonnet_4_5";

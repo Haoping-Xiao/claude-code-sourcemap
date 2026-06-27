@@ -4,12 +4,11 @@
 // class=modified  jaccard=0.2662  score=0.4456  fileCov=0.3979
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KUa = E(() => {
-  (($yo = R(Nh(), 1)),
-    (qUa = {
-      code: $yo.ExportResultCode.SUCCESS,
-    }));
-});
+// [unwrapped __esm module KUa]
+(($yo = R(Nh(), 1)),
+  (qUa = {
+    code: $yo.ExportResultCode.SUCCESS,
+  }));
 class Byo {
   error(e, ...t) {
     if (Oe.CLAUDE_CODE_OTEL_DIAG_STDERR)

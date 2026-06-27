@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4895  score=0.9024  fileCov=0.5168
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Zdr = E(() => {
-  cDe();
-  qgm = /^[\w.-]+\/[\w.-]+$/;
-});
+// [unwrapped __esm module Zdr] deps: cDe
+qgm = /^[\w.-]+\/[\w.-]+$/;
 function epr() {
   return Qse.join(Ore(), "applications", xSc);
 }

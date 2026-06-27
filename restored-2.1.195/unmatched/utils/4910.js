@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0248  score=0.4544  fileCov=0.0255
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0248); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var U5l = E(() => {
-  HN();
-  Ao();
-  Cnr();
-  Hor();
-  O5l = R(rt(), 1), B5l = R(se(), 1);
-});
+// [unwrapped __esm module U5l] deps: HN, Ao, Cnr, Hor
+O5l = R(rt(), 1), B5l = R(se(), 1);
 function j5l(e) {
   let t = F5l.c(4),
     {

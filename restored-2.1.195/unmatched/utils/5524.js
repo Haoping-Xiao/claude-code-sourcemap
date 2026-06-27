@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0198  score=0.4266  fileCov=0.0203
 // note: nearest: node_modules/react/cjs/react.production.js (0.0198); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GSc = E(() => {
-  Ed();
-  Ye();
-  kt();
-  fb();
-  jc();
-  thm = R(lt(), 1), eD = R(rt(), 1), H7e = R(se(), 1), nhm = eD.createContext(null), jSc = new Map(), rhm = eD.createContext(jSc), ohm = eD.createContext(null), shm = eD.createContext(null), ihm = eD.createContext(null), ahm = eD.createContext(null);
-});
+// [unwrapped __esm module GSc] deps: Ed, Ye, kt, fb, jc
+thm = R(lt(), 1), eD = R(rt(), 1), H7e = R(se(), 1), nhm = eD.createContext(null), jSc = new Map(), rhm = eD.createContext(jSc), ohm = eD.createContext(null), shm = eD.createContext(null), ihm = eD.createContext(null), ahm = eD.createContext(null);
 function VSc(e) {
   let t = WSc.c(3),
     {

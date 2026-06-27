@@ -4,10 +4,6 @@
 // class=new  jaccard=0.03  score=0.773  fileCov=0.0303
 // note: nearest: src/utils/codeIndexing.ts (0.03); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nxl = E(() => {
-  dn();
-  QQn();
-});
 function Bxl(e) {
   let t = e.toLowerCase();
   return /\b(wtf|wth|ffs|omfg|shit(ty|tiest)?|dumbass|horrible|awful|piss(ed|ing)? off|piece of (shit|crap|junk)|what the (fuck|hell)|fucking? (broken|useless|terrible|awful|horrible)|fuck you|screw (this|you)|so frustrating|this sucks|damn it)\b/.test(t);

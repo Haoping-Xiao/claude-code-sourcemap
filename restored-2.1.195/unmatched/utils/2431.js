@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0302  score=0.4248  fileCov=0.0315
 // note: nearest: src/ink/terminal.ts (0.0302); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KWi = E(() => {
-  je();
-  kLn();
-  HI();
-  VWi = require("stream"), RJr = _Wd;
-});
+// [unwrapped __esm module KWi] deps: je, kLn, HI
+VWi = require("stream"), RJr = _Wd;
 function p0e() {
   if (Pce !== void 0) return Pce;
   if (!process.stdout.isTTY) return Pce = false;

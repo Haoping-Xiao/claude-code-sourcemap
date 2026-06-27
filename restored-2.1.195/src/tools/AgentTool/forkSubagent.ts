@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.2371  score=0.4473  fileCov=0.3354
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var l$ = E(() => {
-  ZWe();
-  dn();
-  kt();
-  ii();
-  fh();
-  RX();
-  Nue();
-  u_();
-  lf();
-  i$();
-  HU();
-  wr();
-  fn();
-  _m();
-  F8();
-  esp = new Set([Ly, Ip]);
-});
+// [unwrapped __esm module l$] deps: ZWe, dn, kt, ii, fh, RX, Nue, u_, lf, i$, HU, wr, fn, _m, F8
+esp = new Set([Ly, Ip]);
 var Foa = {};
 _t(Foa, {
   isInForkChild: () => isInForkChild,

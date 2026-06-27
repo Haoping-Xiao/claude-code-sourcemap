@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3638  score=0.7033  fileCov=0.4298
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yLe = E(() => {
-  ih();
-  rF = Mi();
-});
+// [unwrapped __esm module yLe] deps: ih
+rF = Mi();
 function Sca() {
   let e = Hao;
   return ((Hao = void 0), e);

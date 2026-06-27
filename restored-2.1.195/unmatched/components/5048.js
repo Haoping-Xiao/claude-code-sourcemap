@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0209  score=0.1424  fileCov=0.0239
 // note: nearest: src/components/permissions/rules/PermissionRuleList.tsx (0.0209); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OKl = E(() => {
-  si();
-  _i();
-  Ye();
-  ps();
-  Bs();
-  vi();
-  B_();
-  Ko();
-  Xce();
-  Mg();
-  Zjo = R(lt(), 1), tTe = R(rt(), 1), Zg = R(se(), 1);
-});
+// [unwrapped __esm module OKl] deps: si, _i, Ye, ps, Bs, vi, B_, Ko, Xce, Mg
+Zjo = R(lt(), 1), tTe = R(rt(), 1), Zg = R(se(), 1);
 var NKl = {};
 _t(NKl, {
   call: () => call

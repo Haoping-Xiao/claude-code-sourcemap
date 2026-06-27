@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4727  score=0.6186  fileCov=0.6672
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rct = E(() => {
-  YWe();
-  k0();
-});
 var s$ = "TodoWrite";
 function Yoo(e) {
   if (ph(e))

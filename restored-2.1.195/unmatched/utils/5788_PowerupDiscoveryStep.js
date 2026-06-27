@@ -4,18 +4,8 @@
 // class=new  jaccard=0.019  score=0.1616  fileCov=0.0211
 // note: nearest: src/ink/styles.ts (0.019); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w$c = E(() => {
-  Ye();
-  ps();
-  kt();
-  hAt();
-  je();
-  At();
-  vn();
-  FZt();
-  EC();
-  H$c = R(lt(), 1), T$c = R(rt(), 1), $Z = R(se(), 1);
-});
+// [unwrapped __esm module w$c] deps: Ye, ps, kt, hAt, je, At, vn, FZt, EC
+H$c = R(lt(), 1), T$c = R(rt(), 1), $Z = R(se(), 1);
 var x$c = {};
 _t(x$c, {
   PowerupDiscoveryStep: () => PowerupDiscoveryStep

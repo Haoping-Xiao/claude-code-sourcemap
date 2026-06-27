@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0166  score=0.2643  fileCov=0.0174
 // note: nearest: node_modules/bignumber.js/bignumber.js (0.0166); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qQo = E(() => {
-  FQo();
-  $Gc = require("crypto");
-});
+// [unwrapped __esm module qQo] deps: FQo
+$Gc = require("crypto");
 function WGc() {
   let e = Ggr.randomBytes(VQo),
     t = "";

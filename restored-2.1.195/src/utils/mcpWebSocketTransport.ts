@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.6381  score=0.9732  fileCov=0.6495
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mFn = E(() => {
-  kt();
-  je();
-  At();
-  Txa = require("child_process");
-});
+// [unwrapped __esm module mFn] deps: kt, je, At
+Txa = require("child_process");
 class hFn {
   ws;
   started = false;

@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0282  score=0.5811  fileCov=0.0288
 // note: nearest: src/components/BridgeDialog.tsx (0.0282); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YOc = E(() => {
-  dn();
-  kt();
-  Ao();
-  dr();
-});
 function XOc() {
   let e = false;
   if (gn(t => {

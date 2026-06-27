@@ -82,6 +82,55 @@ function extractRenames(content) {
 
 const RESERVED = new Set(["default","this","arguments","null","true","false","var","let","const","function","return","new","typeof","in","of","class"]);
 
+// 解开 bundler 的 __esm 惰性包裹: `var NAME = E(()=>{ <deps-init>; <real> })`
+// -> 直接展开 <real> 到顶层, 并把开头的依赖初始化调用(ft();Zf();...)收进注释。
+// 仅在精确匹配该模式时处理; 失败则原样返回。便于阅读(还原树非用于重组)。
+function isInitCall(node) {
+  // ExpressionStatement: f()  或  f(),g(),...  (全为零参标识符调用)
+  if (node.type !== "ExpressionStatement") return null;
+  const exprs = node.expression.type === "SequenceExpression" ? node.expression.expressions : [node.expression];
+  const names = [];
+  for (const e of exprs) {
+    if (e.type === "CallExpression" && e.callee.type === "Identifier" && e.arguments.length === 0) names.push(e.callee.name);
+    else return null;
+  }
+  return names;
+}
+function unwrapEsm(ast) {
+  const body = ast.program.body;
+  const out = [];
+  let unwrapped = 0;
+  for (const stmt of body) {
+    let handled = false;
+    if (stmt.type === "VariableDeclaration" && stmt.declarations.length === 1) {
+      const d = stmt.declarations[0];
+      if (d.init && d.init.type === "CallExpression" && d.init.callee.type === "Identifier" &&
+          d.init.callee.name.length <= 2 && d.init.arguments.length === 1) {
+        const arg = d.init.arguments[0];
+        if (arg.type === "ArrowFunctionExpression" && arg.params.length === 0 && arg.body.type === "BlockStatement") {
+          const inner = arg.body.body.slice();
+          const deps = [];
+          while (inner.length) {
+            const names = isInitCall(inner[0]);
+            if (names) { deps.push(...names); inner.shift(); } else break;
+          }
+          const modName = d.id.type === "Identifier" ? d.id.name : "?";
+          // 用注释承载 unwrap 信息, 不引入多余语句: 挂到第一条 inner 上
+          if (inner.length) {
+            inner[0].leadingComments = [{ type: "CommentLine", value: ` [unwrapped __esm module ${modName}]${deps.length ? " deps: " + deps.join(", ") : ""}` }, ...(inner[0].leadingComments || [])];
+          }
+          out.push(...inner);
+          unwrapped++;
+          handled = true;
+        }
+      }
+    }
+    if (!handled) out.push(stmt);
+  }
+  ast.program.body = out;
+  return unwrapped;
+}
+
 async function deobfuscate(content, { pretty, structural = true }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
@@ -116,6 +165,9 @@ async function deobfuscate(content, { pretty, structural = true }) {
       },
     });
   } catch { /* 重命名失败不致命 */ }
+
+  // 解开 __esm 包裹 (失败不致命)
+  try { unwrapEsm(ast); } catch { /* keep wrapped */ }
 
   let out;
   try {

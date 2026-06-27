@@ -3,13 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var BBe = E(() => {
-  P2();
-  Fon();
-  yns();
-  nJe();
-  wK = U6c;
-});
+// [unwrapped __esm module BBe] deps: P2, Fon, yns, nJe
+wK = U6c;
 function j6c(e) {
   if (typeof e == "string" || Uve(e)) return e;
   var t = e + "";

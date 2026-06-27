@@ -4,57 +4,55 @@
 // class=new  jaccard=0.0479  score=1  fileCov=0.0479
 // note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0479); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var L$r = E(() => {
-  R$r();
-  Yhn = class Yhn extends aye {
-    name = "InvalidRequestException";
-    $fault = "client";
-    constructor(e) {
-      super({
-        name: "InvalidRequestException",
-        $fault: "client",
-        ...e
-      });
-      Object.setPrototypeOf(this, Yhn.prototype);
-    }
-  };
-  Xhn = class Xhn extends aye {
-    name = "ResourceNotFoundException";
-    $fault = "client";
-    constructor(e) {
-      super({
-        name: "ResourceNotFoundException",
-        $fault: "client",
-        ...e
-      });
-      Object.setPrototypeOf(this, Xhn.prototype);
-    }
-  };
-  Jhn = class Jhn extends aye {
-    name = "TooManyRequestsException";
-    $fault = "client";
-    constructor(e) {
-      super({
-        name: "TooManyRequestsException",
-        $fault: "client",
-        ...e
-      });
-      Object.setPrototypeOf(this, Jhn.prototype);
-    }
-  };
-  Qhn = class Qhn extends aye {
-    name = "UnauthorizedException";
-    $fault = "client";
-    constructor(e) {
-      super({
-        name: "UnauthorizedException",
-        $fault: "client",
-        ...e
-      });
-      Object.setPrototypeOf(this, Qhn.prototype);
-    }
-  };
-});
+// [unwrapped __esm module L$r] deps: R$r
+Yhn = class Yhn extends aye {
+  name = "InvalidRequestException";
+  $fault = "client";
+  constructor(e) {
+    super({
+      name: "InvalidRequestException",
+      $fault: "client",
+      ...e
+    });
+    Object.setPrototypeOf(this, Yhn.prototype);
+  }
+};
+Xhn = class Xhn extends aye {
+  name = "ResourceNotFoundException";
+  $fault = "client";
+  constructor(e) {
+    super({
+      name: "ResourceNotFoundException",
+      $fault: "client",
+      ...e
+    });
+    Object.setPrototypeOf(this, Xhn.prototype);
+  }
+};
+Jhn = class Jhn extends aye {
+  name = "TooManyRequestsException";
+  $fault = "client";
+  constructor(e) {
+    super({
+      name: "TooManyRequestsException",
+      $fault: "client",
+      ...e
+    });
+    Object.setPrototypeOf(this, Jhn.prototype);
+  }
+};
+Qhn = class Qhn extends aye {
+  name = "UnauthorizedException";
+  $fault = "client";
+  constructor(e) {
+    super({
+      name: "UnauthorizedException",
+      $fault: "client",
+      ...e
+    });
+    Object.setPrototypeOf(this, Qhn.prototype);
+  }
+};
 var ktt,
   Zhn,
   k9u,

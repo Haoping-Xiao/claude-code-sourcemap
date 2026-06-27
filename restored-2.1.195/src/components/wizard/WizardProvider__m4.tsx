@@ -4,10 +4,8 @@
 // class=modified (alt of src/components/wizard/WizardProvider.tsx)  jaccard=0.074  score=0.1266  fileCov=0.1511
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gHo = E(() => {
-  mHo();
-  tXa = R(rt(), 1);
-});
+// [unwrapped __esm module gHo] deps: mHo
+tXa = R(rt(), 1);
 function Pc(e) {
   let t = nXa.c(14),
     { title: n, color: r, children: o, subtitle: s, footerText: i } = e,

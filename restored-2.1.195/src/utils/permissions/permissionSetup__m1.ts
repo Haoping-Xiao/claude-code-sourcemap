@@ -4,14 +4,6 @@
 // class=modified (alt of src/utils/permissions/permissionSetup.ts)  jaccard=0.0754  score=0.3586  fileCov=0.0871
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lT = E(() => {
-  k7();
-  y1();
-  kt();
-  je();
-  At();
-  SKr();
-});
 function C1i(e) {
   let t = TU(e.cli.effort);
   if (t !== void 0) return t;

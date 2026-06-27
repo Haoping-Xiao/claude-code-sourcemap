@@ -4,16 +4,14 @@
 // class=new  jaccard=0.0507  score=0.3475  fileCov=0.056
 // note: nearest: src/utils/swarm/It2SetupPrompt.tsx (0.0507); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UTo = E(() => {
-  Xr();
-  x8n = Dy({
-    kind: "it2_setup",
-    payload: ve(() => H.object({
-      tmuxAvailable: H.boolean()
-    })),
-    result: ve(() => H.enum(["installed", "use-tmux", "cancelled"])),
-    default: "cancelled"
-  });
+// [unwrapped __esm module UTo] deps: Xr
+x8n = Dy({
+  kind: "it2_setup",
+  payload: ve(() => H.object({
+    tmuxAvailable: H.boolean()
+  })),
+  result: ve(() => H.enum(["installed", "use-tmux", "cancelled"])),
+  default: "cancelled"
 });
 function tel(e) {
   return eel.test(e);

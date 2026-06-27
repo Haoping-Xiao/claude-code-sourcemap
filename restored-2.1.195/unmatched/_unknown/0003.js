@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ges = E(() => {
-  mes = oVc;
-});
+// [unwrapped __esm module ges]
+mes = oVc;
 function sVc(e, t) {
   return e === t || e !== e && t !== t;
 }

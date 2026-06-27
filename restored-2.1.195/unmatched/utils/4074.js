@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0331  score=0.3828  fileCov=0.0349
 // note: nearest: src/ink/Ansi.tsx (0.0331); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ryt = E(() => {
-  sr();
-});
 function pE(e) {
   let t = $ol.c(7),
     {

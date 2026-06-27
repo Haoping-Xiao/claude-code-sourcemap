@@ -3,12 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fon = E(() => {
-  P2();
-  Vwt();
-  I6c = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, x6c = /^\w*$/;
-  tJe = k6c;
-});
+// [unwrapped __esm module Fon] deps: P2, Vwt
+I6c = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, x6c = /^\w*$/;
+tJe = k6c;
 function Nyr(e, t) {
   if (typeof e != "function" || t != null && typeof t != "function") throw TypeError(R6c);
   var n = function () {

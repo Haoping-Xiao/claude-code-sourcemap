@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0131  score=1  fileCov=0.0131
 // note: nearest: node_modules/undici/lib/web/cache/cache.js (0.0131); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aAn = E(() => {
-  ih();
-});
 function OE(e, t) {
   return Object.freeze({
     name: e,

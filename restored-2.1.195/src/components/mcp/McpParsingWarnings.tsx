@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2295  score=0.3134  fileCov=0.4615
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cNl = E(() => {
-  Ye();
-  xne();
-  bEt();
-  xoe();
-  ((aNl = R(lt(), 1)), (qOe = R(se(), 1)));
-});
+// [unwrapped __esm module cNl] deps: Ye, xne, bEt, xoe
+((aNl = R(lt(), 1)), (qOe = R(se(), 1)));
 function u$f(e) {
   let t = ENo.c(38),
     { scope: n, parsingErrors: r, warnings: o } = e,

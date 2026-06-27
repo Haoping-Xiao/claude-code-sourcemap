@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3431  score=0.6565  fileCov=0.4182
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Lil = E(() => {
-  si();
-  np();
-  Ye();
-  co();
-  ((kil = R(lt(), 1)), (Vpe = R(se(), 1)));
-});
+// [unwrapped __esm module Lil] deps: si, np, Ye, co
+((kil = R(lt(), 1)), (Vpe = R(se(), 1)));
 function Pil(e) {
   let t = Vzn.c(2),
     { content: n } = e,

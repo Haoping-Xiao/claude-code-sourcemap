@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.282  score=0.4608  fileCov=0.4209
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var J8o = E(() => {
-  ((ohc = R(rt(), 1)), (ITt = R(Uj(), 1)));
-});
+// [unwrapped __esm module J8o]
+((ohc = R(rt(), 1)), (ITt = R(Uj(), 1)));
 function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verbose: r }) {
   let o = Ht((h) => h.autoUpdaterResult),
     s = Ho(),

@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.1702  score=0.4599  fileCov=0.2128
 // note: low-confidence suggestion: src/components/tasks/BackgroundTask.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vic = E(() => {
-  ft();
-  $S();
-  sp();
-  _a();
-  pQ();
-  Dlr = require("crypto");
-});
+// [unwrapped __esm module vic] deps: ft, $S, sp, _a, pQ
+Dlr = require("crypto");
 function wic(e) {
   let t = [];
   for (let n of Object.values(e)) {

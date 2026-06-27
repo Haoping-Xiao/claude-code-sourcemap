@@ -3,8 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mQl = E(() => {
-  dQl();
-  fQl = R(se(), 1);
-});
+// [unwrapped __esm module mQl] deps: dQl
+fQl = R(se(), 1);
 var G6f, gQl;

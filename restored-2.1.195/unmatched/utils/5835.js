@@ -4,23 +4,8 @@
 // class=new  jaccard=0.0141  score=0.1168  fileCov=0.0158
 // note: nearest: src/services/mcp/client.ts (0.0141); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lNc = E(() => {
-  ft();
-  Zf();
-  rq();
-  Pw();
-  Mm();
-  wr();
-  fn();
-  dOe();
-  yLe();
-  Jt();
-  kv();
-  kt();
-  J1c();
-  a8t();
-  A2 = require("fs/promises"), rD = require("path");
-});
+// [unwrapped __esm module lNc] deps: ft, Zf, rq, Pw, Mm, wr, fn, dOe, yLe, Jt, kv, kt, J1c, a8t
+A2 = require("fs/promises"), rD = require("path");
 function cNc(e) {
   return {
     pluginId: e.id,

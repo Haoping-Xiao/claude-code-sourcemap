@@ -4,16 +4,6 @@
 // class=modified  jaccard=0.5092  score=0.6934  fileCov=0.6572
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Q0o = E(() => {
-  u_();
-  nC();
-  Vv();
-  je();
-  oc();
-  PB();
-  ik();
-  Hu();
-});
 function Z0o(e) {
   switch (e) {
     case "allow":

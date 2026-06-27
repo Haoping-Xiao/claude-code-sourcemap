@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0337  score=1  fileCov=0.0337
 // note: nearest: node_modules/@anthropic-ai/sdk/lib/BetaMessageStream.mjs (0.0337); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cin = E(() => {
-  RSr();
-});
 function Dos(e) {
   return e.type === "tool_use" || e.type === "server_tool_use" || e.type === "mcp_tool_use";
 }

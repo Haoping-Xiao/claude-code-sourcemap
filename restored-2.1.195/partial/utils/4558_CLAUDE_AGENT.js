@@ -4,19 +4,17 @@
 // class=partial  jaccard=0.1531  score=0.6557  fileCov=0.1665
 // note: low-confidence suggestion: src/tools/AgentTool/forkSubagent.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HLl = E(() => {
-  fh();
-  ELl = {
-    agentType: "worker",
-    whenToUse: "For executing tasks autonomously \u2014 research, implementation, or verification.",
-    tools: ["*"],
-    maxTurns: 200,
-    permissionMode: "bubble",
-    source: "built-in",
-    baseDir: "built-in",
-    getSystemPrompt: e => SLl()
-  };
-});
+// [unwrapped __esm module HLl] deps: fh
+ELl = {
+  agentType: "worker",
+  whenToUse: "For executing tasks autonomously \u2014 research, implementation, or verification.",
+  tools: ["*"],
+  maxTurns: 200,
+  permissionMode: "bubble",
+  source: "built-in",
+  baseDir: "built-in",
+  getSystemPrompt: e => SLl()
+};
 var TLl = {};
 _t(TLl, {
   CLAUDE_AGENT: () => CLAUDE_AGENT

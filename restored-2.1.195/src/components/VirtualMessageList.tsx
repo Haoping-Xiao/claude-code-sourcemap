@@ -4,40 +4,13 @@
 // class=modified  jaccard=0.4576  score=0.6163  fileCov=0.6399
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var v2o = E(() => {
-  si();
-  fH();
-  tC();
-  rJt();
-  Jql();
-  QBt();
-  _i();
-  fGe();
-  wOe();
-  oat();
-  HI();
-  Ye();
-  nk();
-  vy();
-  uf();
-  vWt();
-  Fh();
-  sr();
-  eVl();
-  Coe();
-  LW();
-  eE();
-  YFo();
-  OUt();
-  rVl();
-  iVl();
-  ((tYe = R(lt(), 1)),
-    (oy = R(rt(), 1)),
-    (Od = R(se(), 1)),
-    ($or = oy.createContext({
-      setStickyPrompt: () => {},
-    })));
-});
+// [unwrapped __esm module v2o] deps: si, fH, tC, rJt, Jql, QBt, _i, fGe, wOe, oat, HI, Ye, nk, vy, uf, vWt, Fh, sr, eVl, Coe, LW, eE, YFo, OUt, rVl, iVl
+((tYe = R(lt(), 1)),
+  (oy = R(rt(), 1)),
+  (Od = R(se(), 1)),
+  ($or = oy.createContext({
+    setStickyPrompt: () => {},
+  })));
 function oGf(e) {
   let t = dVl.get(e);
   if (t !== void 0) return t;

@@ -4,18 +4,9 @@
 // class=modified  jaccard=0.0236  score=0.0349  fileCov=0.0679
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aEl = E(() => {
-  Rc();
-  H0();
-  oo();
-  je();
-  At();
-  Ls();
-  qd();
-  HXn();
-  Rka(MRo);
-  Dka(() => !!Tbt());
-});
+// [unwrapped __esm module aEl] deps: Rc, H0, oo, je, At, Ls, qd, HXn
+Rka(MRo);
+Dka(() => !!Tbt());
 var dEl = {};
 _t(dEl, {
   DesignSyncTool: () => DesignSyncTool,

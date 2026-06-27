@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Odn = E(() => {
-  KV();
-});
 function Axr(e) {
   if (typeof e !== "string") return false;
   return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(e);

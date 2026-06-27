@@ -4,20 +4,8 @@
 // class=new  jaccard=0.0027  score=0.4789  fileCov=0.0027
 // note: nearest: src/screens/REPL.tsx (0.0027); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Yrc = E(() => {
-  QGo();
-  Gfe();
-  kYe();
-  WL();
-  q$();
-  kt();
-  Pw();
-  je();
-  At();
-  Is();
-  Jt();
-  zrc = require("crypto"), Dar = require("fs/promises"), Krc = require("path");
-});
+// [unwrapped __esm module Yrc] deps: QGo, Gfe, kYe, WL, q$, kt, Pw, je, At, Is, Jt
+zrc = require("crypto"), Dar = require("fs/promises"), Krc = require("path");
 function $Ye(e) {
   console.error(wt.red(e));
 }

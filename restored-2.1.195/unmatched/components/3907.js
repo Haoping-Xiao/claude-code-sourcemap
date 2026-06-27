@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0303  score=0.3164  fileCov=0.0324
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0303); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wb = E(() => {
-  gHo();
-  vH();
-  mHo();
-});
 function qPe(e) {
   let t = yHo.c(107),
     {

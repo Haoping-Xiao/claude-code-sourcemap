@@ -4,17 +4,8 @@
 // class=partial  jaccard=0.0696  score=0.5225  fileCov=0.0743
 // note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var M1c = E(() => {
-  dn();
-  je();
-  Vtn();
-  Jt();
-  wdr();
-  Zdr();
-  Azo();
-  I1c();
-  R1c = require("fs/promises"), L1c = require("os");
-});
+// [unwrapped __esm module M1c] deps: dn, je, Vtn, Jt, wdr, Zdr, Azo, I1c
+R1c = require("fs/promises"), L1c = require("os");
 var N1c = {};
 _t(N1c, {
   sessionTeamName: () => sessionTeamName,

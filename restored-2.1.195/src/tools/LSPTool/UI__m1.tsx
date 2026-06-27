@@ -4,12 +4,6 @@
 // class=modified (alt of src/tools/LSPTool/UI.tsx)  jaccard=0.2594  score=0.6648  fileCov=0.2984
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nbl = E(() => {
-  je();
-  es();
-  ys();
-  Hu();
-});
 function $gf(e) {
   let t = rbl.c(24),
     { operation: n, resultCount: r, fileCount: o, content: s, verbose: i } = e,

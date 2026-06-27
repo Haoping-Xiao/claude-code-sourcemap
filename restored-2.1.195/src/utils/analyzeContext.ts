@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.5229  score=0.8859  fileCov=0.5606
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZU = E(() => {
-  rio();
-  EMo();
-  ria();
-  iia();
-  rio();
-  EMo();
-});
 async function ISt(e, t) {
   try {
     let n = await P5e(e, t);

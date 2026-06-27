@@ -4,11 +4,8 @@
 // class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0308  score=0.1086  fileCov=0.0412
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var har = E(() => {
-  Un();
-  Is();
-  irc = require("os");
-});
+// [unwrapped __esm module har] deps: Un, Is
+irc = require("os");
 function mJf(e) {
   let t = Vt();
   if (t === "windows") return null;

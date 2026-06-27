@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1521  score=0.7387  fileCov=0.1607
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sSc = E(() => {
-  tSc();
-  Yp();
-  dzo();
-  rSc = R(rt(), 1);
-});
+// [unwrapped __esm module sSc] deps: tSc, Yp, dzo
+rSc = R(rt(), 1);
 function aSc({
   session: e,
   setMessages: t,

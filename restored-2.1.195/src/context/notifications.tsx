@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.32  score=0.5535  fileCov=0.4313
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uo = E(() => {
-  ((A0e = R(rt(), 1)), (vat = A0e.createContext(null)));
-});
+// [unwrapped __esm module uo]
+((A0e = R(rt(), 1)), (vat = A0e.createContext(null)));
 function iUt(e, t) {
   let n = e.current?.key === t,
     r = e.queue.some((s) => s.key === t),

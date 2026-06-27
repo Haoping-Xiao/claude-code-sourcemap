@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.2934  score=0.4029  fileCov=0.5191
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var WKl = E(() => {
-  ((vVf = {
-    type: "local-jsx",
-    name: "branch",
-    description: "Create a branch of the current conversation at this point",
-    argumentHint: "[name]",
-    load: () => Promise.resolve().then(() => (Q$o(), J$o)),
-  }),
-    (GKl = vVf));
-});
+// [unwrapped __esm module WKl]
+((vVf = {
+  type: "local-jsx",
+  name: "branch",
+  description: "Create a branch of the current conversation at this point",
+  argumentHint: "[name]",
+  load: () => Promise.resolve().then(() => (Q$o(), J$o)),
+}),
+  (GKl = vVf));
 var qKl = {};
 _t(qKl, {
   call: () => call,

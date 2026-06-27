@@ -4,19 +4,17 @@
 // class=modified  jaccard=0.0856  score=0.1455  fileCov=0.1722
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BXl = E(() => {
-  Un();
-  ((k8f = {
-    type: "local",
-    name: "radio",
-    description: "Listen to Claude FM lo-fi radio",
-    isEnabled: () => at("tengu_velvet_static", false),
-    supportsNonInteractive: false,
-    requires: {},
-    load: () => Promise.resolve().then(() => (NXl(), OXl)),
-  }),
-    (I4o = k8f));
-});
+// [unwrapped __esm module BXl] deps: Un
+((k8f = {
+  type: "local",
+  name: "radio",
+  description: "Listen to Claude FM lo-fi radio",
+  isEnabled: () => at("tengu_velvet_static", false),
+  supportsNonInteractive: false,
+  requires: {},
+  load: () => Promise.resolve().then(() => (NXl(), OXl)),
+}),
+  (I4o = k8f));
 var GXl = {};
 _t(GXl, {
   call: () => call,

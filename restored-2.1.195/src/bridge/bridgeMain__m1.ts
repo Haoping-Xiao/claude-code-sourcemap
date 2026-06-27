@@ -4,56 +4,26 @@
 // class=modified (alt of src/bridge/bridgeMain.ts)  jaccard=0.04  score=0.6832  fileCov=0.0407
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Yir = E(() => {
-  dn();
-  kt();
-  jir();
-  je();
-  Mm();
-  fn();
-  At();
-  es();
-  vn();
-  BJ();
-  qd();
-  Vke();
-  sr();
-  kv();
-  Ost();
-  aR();
-  itc();
-  wQ();
-  SC();
-  loe();
-  ctc();
-  Cde();
-  sVe();
-  Tnt();
-  nGo();
-  rGo();
-  gtc();
-  SJ();
-  qir();
-  ((oQt = require("crypto")),
-    (fGo = require("os")),
-    (G1e = require("path")),
-    (JYf = {
-      connInitialMs: 2000,
-      connCapMs: 120000,
-      connGiveUpMs: 600000,
-      generalInitialMs: 500,
-      generalCapMs: 30000,
-      generalGiveUpMs: 600000,
-    }));
-  e7f = new Set(["ECONNREFUSED", "ECONNRESET", "ETIMEDOUT", "ENETUNREACH", "EHOSTUNREACH"]);
-  t7f = ["session", "same-dir", "worktree"];
-  CYe = class CYe extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "BridgeHeadlessPermanentError";
-    }
-  };
-});
+// [unwrapped __esm module Yir] deps: dn, kt, jir, je, Mm, fn, At, es, vn, BJ, qd, Vke, sr, kv, Ost, aR, itc, wQ, SC, loe, ctc, Cde, sVe, Tnt, nGo, rGo, gtc, SJ, qir
+((oQt = require("crypto")),
+  (fGo = require("os")),
+  (G1e = require("path")),
+  (JYf = {
+    connInitialMs: 2000,
+    connCapMs: 120000,
+    connGiveUpMs: 600000,
+    generalInitialMs: 500,
+    generalCapMs: 30000,
+    generalGiveUpMs: 600000,
+  }));
+e7f = new Set(["ECONNREFUSED", "ECONNRESET", "ETIMEDOUT", "ENETUNREACH", "EHOSTUNREACH"]);
+t7f = ["session", "same-dir", "worktree"];
+CYe = class CYe extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "BridgeHeadlessPermanentError";
+  }
+};
 async function Xir(e, t) {
   return yl("daemon_rc_add", async () => {
     let n = "added";

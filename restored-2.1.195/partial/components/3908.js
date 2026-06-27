@@ -4,18 +4,8 @@
 // class=partial  jaccard=0.0683  score=0.209  fileCov=0.092
 // note: low-confidence suggestion: src/commands/plugin/PluginOptionsDialog.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TVt = E(() => {
-  si();
-  Tc();
-  Ye();
-  ps();
-  Mg();
-  Bs();
-  vi();
-  f_();
-  Ko();
-  yHo = R(lt(), 1), hHo = R(rt(), 1), z_ = R(se(), 1);
-});
+// [unwrapped __esm module TVt] deps: si, Tc, Ye, ps, Mg, Bs, vi, f_, Ko
+yHo = R(lt(), 1), hHo = R(rt(), 1), z_ = R(se(), 1);
 function sXa() {
   let e = rXa.c(16),
     {

@@ -4,17 +4,6 @@
 // class=new  jaccard=0.0249  score=0.2942  fileCov=0.0265
 // note: nearest: src/utils/cronScheduler.ts (0.0249); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hLc = E(() => {
-  ft();
-  ft();
-  fd();
-  je();
-  wr();
-  At();
-  bm();
-  Jt();
-  kv();
-});
 function _Lc(e) {
   kYo.useEffect(() => {
     if (vl()) return;

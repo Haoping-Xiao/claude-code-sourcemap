@@ -4,17 +4,6 @@
 // class=modified  jaccard=0.1046  score=0.2166  fileCov=0.1683
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var O0o = E(() => {
-  Un();
-  oo();
-  er();
-  Lo();
-  je();
-  wr();
-  sa();
-  P3e();
-  Ls();
-});
 function Mff(e) {
   let { tools: t, disallowedTools: n } = e,
     r = t && t.length > 0,

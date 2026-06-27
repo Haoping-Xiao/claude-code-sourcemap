@@ -4,15 +4,12 @@
 // class=modified  jaccard=0.2322  score=0.2691  fileCov=0.6286
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var EVn = E(() => {
-  At();
-  A9e();
-  ((_za = require("fs")),
-    (Hgt = require("fs/promises")),
-    (dAo = require("os")),
-    (Agt = require("path")),
-    (bza = /^\s*alias\s+claude\s*=/));
-});
+// [unwrapped __esm module EVn] deps: At, A9e
+((_za = require("fs")),
+  (Hgt = require("fs/promises")),
+  (dAo = require("os")),
+  (Agt = require("path")),
+  (bza = /^\s*alias\s+claude\s*=/));
 async function wza() {
   try {
     let e = await v7("tengu_version_config", {

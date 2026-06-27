@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.687  score=0.87  fileCov=0.7656
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jir = E(() => {
-  fn();
-});
 function Jq(e, t) {
   if (!e || !MYf.test(e)) throw Error(`Invalid ${t}: contains unsafe characters`);
   return e;

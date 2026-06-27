@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0569  score=0.1722  fileCov=0.0784
 // note: nearest: node_modules/gtoken/build/src/index.js (0.0569); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mos = E(() => {
-  p0();
-});
 function gos(e) {
   return async () => {
     qsn(e.baseURL);

@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3985  score=0.4992  fileCov=0.6641
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var b8t = E(() => {
-  Lyt();
-  ql();
-  ((jol = R(lt(), 1)), (Zwo = R(se(), 1)));
-});
+// [unwrapped __esm module b8t] deps: Lyt, ql
+((jol = R(lt(), 1)), (Zwo = R(se(), 1)));
 function Wol(e) {
   let t = Gol.c(24),
     { message: n, screen: r } = e,

@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.0739  score=1  fileCov=0.0739
 // note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uni = E(() => {
-  wti();
-  I2e();
-  oni();
-  pb();
-  pb();
-  PEn = R(eT(), 1), MEn = R(Zhe(), 1), WIe = R(Dx(), 1), sni = R(eye(), 1), $En = R(zO(), 1), GIe = R(RB(), 1), OEn = R(PG(), 1), ini = R(tye(), 1), ani = R(Kae(), 1), lni = R(sye(), 1);
-});
+// [unwrapped __esm module uni] deps: wti, I2e, oni, pb, pb
+PEn = R(eT(), 1), MEn = R(Zhe(), 1), WIe = R(Dx(), 1), sni = R(eye(), 1), $En = R(zO(), 1), GIe = R(RB(), 1), OEn = R(PG(), 1), ini = R(tye(), 1), ani = R(Kae(), 1), lni = R(sye(), 1);
 var dni = e => ({
     setHttpHandler(t) {
       e.httpHandler = t;

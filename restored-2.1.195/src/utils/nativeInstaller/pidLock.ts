@@ -4,29 +4,14 @@
 // class=modified  jaccard=0.4315  score=0.8329  fileCov=0.4724
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wAo = E(() => {
-  dn();
-  kt();
-  Du();
-  w4t();
-  Rx();
-  CZe();
-  je();
-  At();
-  Bi();
-  ys();
-  Oza();
-  Jt();
-  CAo();
-  uAo();
-  ((Uza = require("crypto")), (xVn = require("fs/promises")), (Fza = require("path")));
-  kVn = class kVn extends Error {
-    constructor() {
-      super("Download stalled: no data received for 120 seconds");
-      this.name = "StallTimeoutError";
-    }
-  };
-});
+// [unwrapped __esm module wAo] deps: dn, kt, Du, w4t, Rx, CZe, je, At, Bi, ys, Oza, Jt, CAo, uAo
+((Uza = require("crypto")), (xVn = require("fs/promises")), (Fza = require("path")));
+kVn = class kVn extends Error {
+  constructor() {
+    super("Download stalled: no data received for 120 seconds");
+    this.name = "StallTimeoutError";
+  }
+};
 function $Pe() {
   return !ml(void 0);
 }

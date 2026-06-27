@@ -4,50 +4,38 @@
 // class=partial  jaccard=0.0607  score=0.3295  fileCov=0.0693
 // note: low-confidence suggestion: src/utils/permissions/yoloClassifier.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RHo = E(() => {
-  Xr();
-  je();
-  At();
-  Ao();
-  pht();
-  Epe();
-  Jt();
-  sr();
-  dn();
-  kt();
-  wHo();
-  RVt = {}, nXp = ve(() => H.object({
-    has_tip: H.boolean(),
-    tip: H.string().optional(),
-    feature_id: H.string().optional(),
-    action: H.string().optional()
-  })), rXp = {
-    name: xHo,
-    description: "Emit a contextual tip, or decline. Declining (has_tip: false) is the expected outcome most of the time.",
-    input_schema: {
-      type: "object",
-      properties: {
-        has_tip: {
-          type: "boolean",
-          description: "Whether to show a tip. false is the expected default."
-        },
-        tip: {
-          type: "string",
-          description: "1-2 sentence tip referencing what the user is doing. Only when has_tip is true."
-        },
-        feature_id: {
-          type: "string",
-          description: 'Situation ID from the catalog (e.g. "correction-spiral"). Only when has_tip is true.'
-        },
-        action: {
-          type: "string",
-          description: 'Command or shortcut to try (e.g. "/mcp"). Optional.'
-        }
+// [unwrapped __esm module RHo] deps: Xr, je, At, Ao, pht, Epe, Jt, sr, dn, kt, wHo
+RVt = {}, nXp = ve(() => H.object({
+  has_tip: H.boolean(),
+  tip: H.string().optional(),
+  feature_id: H.string().optional(),
+  action: H.string().optional()
+})), rXp = {
+  name: xHo,
+  description: "Emit a contextual tip, or decline. Declining (has_tip: false) is the expected outcome most of the time.",
+  input_schema: {
+    type: "object",
+    properties: {
+      has_tip: {
+        type: "boolean",
+        description: "Whether to show a tip. false is the expected default."
       },
-      required: ["has_tip"]
-    }
-  };
-});
+      tip: {
+        type: "string",
+        description: "1-2 sentence tip referencing what the user is doing. Only when has_tip is true."
+      },
+      feature_id: {
+        type: "string",
+        description: 'Situation ID from the catalog (e.g. "correction-spiral"). Only when has_tip is true.'
+      },
+      action: {
+        type: "string",
+        description: 'Command or shortcut to try (e.g. "/mcp"). Optional.'
+      }
+    },
+    required: ["has_tip"]
+  }
+};
 function KXa(e, t, n, r) {
   e.pending = {
     tip: t,

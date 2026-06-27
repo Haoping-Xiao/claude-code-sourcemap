@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0179  score=0.5524  fileCov=0.0182
 // note: nearest: src/components/VirtualMessageList.tsx (0.0179); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $Ln = E(() => {
-  fGe();
-  hat = R(rt(), 1);
-});
+// [unwrapped __esm module $Ln] deps: fGe
+hat = R(rt(), 1);
 function NLn(e) {
   let {
     focusManager: t

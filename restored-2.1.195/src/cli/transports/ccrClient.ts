@@ -4,16 +4,14 @@
 // class=modified  jaccard=0.3065  score=0.4609  fileCov=0.4777
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _gc = E(() => {
-  Jt();
-  s7e = class s7e extends Error {
-    retryAfterMs;
-    constructor(e, t) {
-      super(e);
-      this.retryAfterMs = t;
-    }
-  };
-});
+// [unwrapped __esm module _gc] deps: Jt
+s7e = class s7e extends Error {
+  retryAfterMs;
+  constructor(e, t) {
+    super(e);
+    this.retryAfterMs = t;
+  }
+};
 class R8o {
   inflight = null;
   pending = null;

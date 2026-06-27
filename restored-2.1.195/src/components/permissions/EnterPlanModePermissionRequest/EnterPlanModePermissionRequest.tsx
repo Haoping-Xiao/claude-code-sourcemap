@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2019  score=0.2982  fileCov=0.3848
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pHc = E(() => {
-  Vl();
-  X0();
-  Ye();
-  VM();
-  ((uHc = R(lt(), 1)), (Ume = R(se(), 1)));
-});
+// [unwrapped __esm module pHc] deps: Vl, X0, Ye, VM
+((uHc = R(lt(), 1)), (Ume = R(se(), 1)));
 function H_m(e) {
   switch (e) {
     case "yes":

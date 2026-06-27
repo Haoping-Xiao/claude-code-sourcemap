@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0173  score=0.3585  fileCov=0.0179
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0173); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bgr = E(() => {
-  AR();
-});
 async function J3c(e, t, n) {
   return iK(t, e, "encrypt"), znn(e, t), new Uint8Array(await crypto.subtle.encrypt(X3c(e), t, n));
 }

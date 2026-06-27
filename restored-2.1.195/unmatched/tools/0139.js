@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0243  score=0.8692  fileCov=0.0244
 // note: nearest: node_modules/fflate/esm/index.mjs (0.0243); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ksn = E(() => {
-  uee();
-});
 var Wb = e => {
   if (typeof globalThis.process !== "undefined") return globalThis.process.env?.[e]?.trim() || void 0;
   if (typeof globalThis.Deno !== "undefined") return globalThis.Deno.env?.get?.(e)?.trim() || void 0;

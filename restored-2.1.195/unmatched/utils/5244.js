@@ -4,17 +4,8 @@
 // class=new  jaccard=0.0036  score=0.0824  fileCov=0.0037
 // note: nearest: src/cli/print.ts (0.0036); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QGo = E(() => {
-  lH();
-  kt();
-  er();
-  wr();
-  VQ();
-  zOe();
-  YOe();
-  kYe();
-  Src = require("readline");
-});
+// [unwrapped __esm module QGo] deps: lH, kt, er, wr, VQ, zOe, YOe, kYe
+Src = require("readline");
 function Erc(e) {
   let t = "--cloud",
     n = "\nTo reattach to a cloud session, pass its id: `claude --cloud <session-id>` (find IDs at claude.ai/code).";

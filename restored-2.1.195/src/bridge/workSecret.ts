@@ -4,35 +4,31 @@
 // class=modified  jaccard=0.2355  score=0.3396  fileCov=0.4345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gtc = E(() => {
-  Jt();
-  kv();
-  Cde();
-  ((ftc = require("child_process")),
-    (mtc = require("fs")),
-    (eQt = require("path")),
-    (oGo = require("readline")));
-  jYf = {
-    Read: "Reading",
-    Write: "Writing",
-    Edit: "Editing",
-    MultiEdit: "Editing",
-    Bash: "Running",
-    Glob: "Searching",
-    Grep: "Searching",
-    WebFetch: "Fetching",
-    WebSearch: "Searching",
-    Task: "Running task",
-    FileReadTool: "Reading",
-    FileWriteTool: "Writing",
-    FileEditTool: "Editing",
-    GlobTool: "Searching",
-    GrepTool: "Searching",
-    BashTool: "Running",
-    NotebookEditTool: "Editing notebook",
-    LSP: "LSP",
-  };
-});
+// [unwrapped __esm module gtc] deps: Jt, kv, Cde
+((ftc = require("child_process")),
+  (mtc = require("fs")),
+  (eQt = require("path")),
+  (oGo = require("readline")));
+jYf = {
+  Read: "Reading",
+  Write: "Writing",
+  Edit: "Editing",
+  MultiEdit: "Editing",
+  Bash: "Running",
+  Glob: "Searching",
+  Grep: "Searching",
+  WebFetch: "Fetching",
+  WebSearch: "Searching",
+  Task: "Running task",
+  FileReadTool: "Reading",
+  FileWriteTool: "Writing",
+  FileEditTool: "Editing",
+  GlobTool: "Searching",
+  GrepTool: "Searching",
+  BashTool: "Running",
+  NotebookEditTool: "Editing notebook",
+  LSP: "LSP",
+};
 function htc(e) {
   let t = Buffer.from(e, "base64url").toString("utf-8"),
     n = Ft(t);

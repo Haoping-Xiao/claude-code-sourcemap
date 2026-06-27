@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2697  score=0.4138  fileCov=0.4364
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LBo = E(() => {
-  Ye();
-  Bs();
-  ((o2l = R(lt(), 1)), (DEt = R(se(), 1)));
-});
+// [unwrapped __esm module LBo] deps: Ye, Bs
+((o2l = R(lt(), 1)), (DEt = R(se(), 1)));
 function Gnr(e) {
   let t = "url" in e.config ? e.config.url : null,
     n = e.errorCode;

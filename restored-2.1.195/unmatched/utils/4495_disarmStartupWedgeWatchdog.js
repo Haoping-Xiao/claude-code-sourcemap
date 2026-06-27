@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0094  score=0.1478  fileCov=0.01
 // note: nearest: src/cli/print.ts (0.0094); dir inferred from dep-graph -> utils; 7 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ESt = E(() => {
-  Jt();
-  txl = require("crypto"), nxl = require("fs/promises");
-});
+// [unwrapped __esm module ESt] deps: Jt
+txl = require("crypto"), nxl = require("fs/promises");
 function ASt(e) {
   rxl = e;
 }

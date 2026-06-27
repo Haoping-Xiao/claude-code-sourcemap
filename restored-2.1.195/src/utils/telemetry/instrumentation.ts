@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2604  score=0.6634  fileCov=0.3
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var B6a = E(() => {
-  O6a();
-});
 var tAo = {};
 _t(tAo, {
   parseOtelHeadersEnvVar: () => parseOtelHeadersEnvVar,

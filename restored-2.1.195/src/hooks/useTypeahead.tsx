@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.1183  score=0.1943  fileCov=0.2323
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Syc = E(() => {
-  ior();
-  JSt();
-  BI();
-  Ryt();
-  IL();
-  es();
-  vn();
-  byc = require("path");
-});
+// [unwrapped __esm module Syc] deps: ior, JSt, BI, Ryt, IL, es, vn
+byc = require("path");
 function kpm(e, t, n) {
   if (t === void 0) return false;
   let r = e.length - t.length,

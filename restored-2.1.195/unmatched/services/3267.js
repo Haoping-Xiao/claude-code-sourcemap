@@ -4,16 +4,9 @@
 // class=new  jaccard=0.0259  score=0.3518  fileCov=0.0272
 // note: nearest: node_modules/follow-redirects/index.js (0.0259); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WSe = E(() => {
-  ft();
-  Un();
-  Du();
-  fn();
-  Jt();
-  aS();
-  xxa = require("crypto");
-  D3t = new Set(), tpo = new Map();
-});
+// [unwrapped __esm module WSe] deps: ft, Un, Du, fn, Jt, aS
+xxa = require("crypto");
+D3t = new Set(), tpo = new Map();
 class Nxa {
   als = new Oxa.AsyncLocalStorage();
   active() {

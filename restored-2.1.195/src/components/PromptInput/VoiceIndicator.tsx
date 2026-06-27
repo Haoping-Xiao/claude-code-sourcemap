@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.2594  score=0.4049  fileCov=0.4192
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rhc = E(() => {
-  Ye();
-  nk();
-  lg();
-  ((xhc = R(lt(), 1)), (xTt = R(rt(), 1)), (Qur = R(se(), 1)));
-});
+// [unwrapped __esm module Rhc] deps: Ye, nk, lg
+((xhc = R(lt(), 1)), (xTt = R(rt(), 1)), (Qur = R(se(), 1)));
 var Lhc = {};
 _t(Lhc, {
   VoiceWarmupHint: () => VoiceWarmupHint,

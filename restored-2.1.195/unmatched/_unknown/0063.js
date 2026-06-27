@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kts = E(() => {
-  xts = Q9c;
-});
+// [unwrapped __esm module kts]
+xts = Q9c;
 function Z9c(e) {
   return e != null && typeof e == "object";
 }

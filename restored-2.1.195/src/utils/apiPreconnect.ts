@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.6819  score=0.8429  fileCov=0.7812
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yzn = E(() => {
-  ft();
-  dr();
-});
 function ssl() {
   iCo = false;
 }

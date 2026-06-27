@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3807  score=0.6476  fileCov=0.4801
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var S5l = E(() => {
-  Tc();
-  Ye();
-  ((_5l = R(lt(), 1)), (KFo = R(se(), 1)));
-});
+// [unwrapped __esm module S5l] deps: Tc, Ye
+((_5l = R(lt(), 1)), (KFo = R(se(), 1)));
 function H5l(e, t, n, r) {
   for (let o = t + 1; o < e.length; o++) {
     let s = e[o];

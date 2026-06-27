@@ -4,28 +4,12 @@
 // class=modified  jaccard=0.2397  score=0.336  fileCov=0.4553
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var str = E(() => {
-  s1o();
-  G4();
-  kt();
-  sre();
-  HU();
-  oo();
-  er();
-  wr();
-  lT();
-  NE();
-  aE();
-  __();
-  qd();
-  Fh();
-  dr();
-  oRf = new Map([
-    ["agentsView", "/config (Agents view row)"],
-    ["autoUpdatesChannel", "/channel"],
-    ["showExternalIncludesDialog", "/config (External CLAUDE.md row)"],
-  ]);
-});
+// [unwrapped __esm module str] deps: s1o, G4, kt, sre, HU, oo, er, wr, lT, NE, aE, __, qd, Fh, dr
+oRf = new Map([
+  ["agentsView", "/config (Agents view row)"],
+  ["autoUpdatesChannel", "/channel"],
+  ["showExternalIncludesDialog", "/config (External CLAUDE.md row)"],
+]);
 function cR(e) {
   let t = v7t.c(46),
     {

@@ -4,11 +4,6 @@
 // class=modified (alt of src/utils/plugins/marketplaceHelpers.ts)  jaccard=0.1752  score=0.4783  fileCov=0.2167
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wGt = E(() => {
-  sN();
-  sr();
-  Bqe();
-});
 var nPa = {};
 _t(nPa, {
   sideloadFlagsBlockedMessage: () => sideloadFlagsBlockedMessage,

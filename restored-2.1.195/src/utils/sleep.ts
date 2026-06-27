@@ -4,21 +4,14 @@
 // class=modified  jaccard=0.2107  score=0.2566  fileCov=0.5411
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var drt = E(() => {
-  zb();
-  ft();
-  Rx();
-  je();
-  At();
-  R9();
-  Tjr = ve(() =>
-    dt.object({
-      access_token: dt.string(),
-      expires_in: dt.number(),
-      refresh_token: dt.string().nullish(),
-    }),
-  );
-});
+// [unwrapped __esm module drt] deps: zb, ft, Rx, je, At, R9
+Tjr = ve(() =>
+  dt.object({
+    access_token: dt.string(),
+    expires_in: dt.number(),
+    refresh_token: dt.string().nullish(),
+  }),
+);
 var iMt = {};
 _t(iMt, {
   withTimeout: () => withTimeout,

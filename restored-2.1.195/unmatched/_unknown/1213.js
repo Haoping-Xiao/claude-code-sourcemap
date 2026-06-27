@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0226  score=1  fileCov=0.0226
 // note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0226); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o6s = E(() => {
-  lBr();
-});
 var s6s = e => {
     let {
       signer: t

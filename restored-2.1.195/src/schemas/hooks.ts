@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.3959  score=0.4974  fileCov=0.6598
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iws = E(() => {
-  sws = ["bash", "powershell"];
-});
+// [unwrapped __esm module iws]
+sws = ["bash", "powershell"];
 function EOu() {
   let e = H.object({
       type: H.literal("command").describe("Shell command hook type"),

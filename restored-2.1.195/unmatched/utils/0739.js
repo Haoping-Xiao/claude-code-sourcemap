@@ -4,21 +4,9 @@
 // class=new  jaccard=0.0283  score=1  fileCov=0.0283
 // note: nearest: src/utils/settings/mdm/settings.ts (0.0283); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RCe = E(() => {
-  je();
-  Mm();
-  PB();
-  ys();
-  Rd();
-  Jt();
-  hY();
-  ICe();
-  oLt();
-  mCe();
-  ymn();
-  Bae = require("path"), xCe = Object.freeze({
-    settings: {},
-    errors: []
-  });
+// [unwrapped __esm module RCe] deps: je, Mm, PB, ys, Rd, Jt, hY, ICe, oLt, mCe, ymn
+Bae = require("path"), xCe = Object.freeze({
+  settings: {},
+  errors: []
 });
 var Fet;

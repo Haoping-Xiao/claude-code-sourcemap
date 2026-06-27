@@ -4,16 +4,6 @@
 // class=new  jaccard=0.0476  score=0.7935  fileCov=0.0482
 // note: nearest: src/utils/stats.ts (0.0476); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var c2l = E(() => {
-  CBo();
-  xBo();
-  RBo();
-  qnr();
-  l2l();
-  znr();
-  Ynr();
-  Xnr();
-});
 function* d2l(e) {
   for (let t of e) if (t.type === "assistant" && Array.isArray(t.message.content)) {
     for (let n of t.message.content) if (n.type === "tool_use" && W1.includes(n.name)) {

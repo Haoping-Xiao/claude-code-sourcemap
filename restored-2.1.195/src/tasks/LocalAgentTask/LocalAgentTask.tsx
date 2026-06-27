@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.323  score=0.5413  fileCov=0.4447
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vDo = E(() => {
-  ih();
-  wJn = Mi();
-});
+// [unwrapped __esm module vDo] deps: ih
+wJn = Mi();
 function J6n() {
   return {
     toolUseCount: 0,

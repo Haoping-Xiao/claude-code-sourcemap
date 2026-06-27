@@ -4,18 +4,8 @@
 // class=modified (alt of src/components/wizard/WizardProvider.tsx)  jaccard=0.1761  score=0.5269  fileCov=0.2092
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VJa = E(() => {
-  Ye();
-  sr();
-  Vl();
-  Fy();
-  CH();
-  gm();
-  wb();
-  vH();
-  jHo();
-  ((Y9n = R(rt(), 1)), (I$ = R(se(), 1)));
-});
+// [unwrapped __esm module VJa] deps: Ye, sr, Vl, Fy, CH, gm, wb, vH, jHo
+((Y9n = R(rt(), 1)), (I$ = R(se(), 1)));
 function J9n({ onComplete: e, onCancel: t }) {
   let n = X9n.useRef(e);
   n.current = e;

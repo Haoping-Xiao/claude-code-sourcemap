@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.0739  score=1  fileCov=0.0739
 // note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CQs = E(() => {
-  NJs();
-  I2e();
-  SQs();
-  kD();
-  kD();
-  Pnt = R(eT(), 1), sEn = R(Zhe(), 1), FIe = R(Dx(), 1), EQs = R(yd(), 1), AQs = R(eye(), 1), iEn = R(zO(), 1), UIe = R(RB(), 1), aEn = R(PG(), 1), HQs = R(tye(), 1), TQs = R(Kae(), 1), vQs = R(sye(), 1);
-});
+// [unwrapped __esm module CQs] deps: NJs, I2e, SQs, kD, kD
+Pnt = R(eT(), 1), sEn = R(Zhe(), 1), FIe = R(Dx(), 1), EQs = R(yd(), 1), AQs = R(eye(), 1), iEn = R(zO(), 1), UIe = R(RB(), 1), aEn = R(PG(), 1), HQs = R(tye(), 1), TQs = R(Kae(), 1), vQs = R(sye(), 1);
 var IQs = e => ({
     setHttpHandler(t) {
       e.httpHandler = t;

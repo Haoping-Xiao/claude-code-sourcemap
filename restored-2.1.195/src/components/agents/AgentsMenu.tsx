@@ -4,20 +4,8 @@
 // class=modified  jaccard=0.2429  score=0.3305  fileCov=0.4784
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var h7l = E(() => {
-  si();
-  Xa();
-  Ye();
-  uo();
-  rme();
-  es();
-  sr();
-  g0();
-  B_();
-  gm();
-  kP();
-  ((Vsr = R(lt(), 1)), (CJt = R(rt(), 1)), (NH = R(se(), 1)));
-});
+// [unwrapped __esm module h7l] deps: si, Xa, Ye, uo, rme, es, sr, g0, B_, gm, kP
+((Vsr = R(lt(), 1)), (CJt = R(rt(), 1)), (NH = R(se(), 1)));
 function y7l(e) {
   let t = p4o.c(215),
     { tools: n, onExit: r } = e,

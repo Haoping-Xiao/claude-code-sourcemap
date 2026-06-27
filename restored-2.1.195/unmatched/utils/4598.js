@@ -4,17 +4,16 @@
 // class=new  jaccard=0.0405  score=0.275  fileCov=0.0453
 // note: nearest: src/components/tasks/BackgroundTasksDialog.tsx (0.0405); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HPl = E(() => {
-  I0f = {
-    type: "local-jsx",
-    name: "copy",
-    description: "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)",
-    requires: {
-      ink: true
-    },
-    load: () => Promise.resolve().then(() => (APl(), EPl))
-  }, LOo = I0f;
-});
+// [unwrapped __esm module HPl]
+I0f = {
+  type: "local-jsx",
+  name: "copy",
+  description: "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)",
+  requires: {
+    ink: true
+  },
+  load: () => Promise.resolve().then(() => (APl(), EPl))
+}, LOo = I0f;
 function Ker(e) {
   let t = [];
   for (let n of Hw()) {

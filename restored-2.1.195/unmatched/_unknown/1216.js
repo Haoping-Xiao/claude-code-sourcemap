@@ -3,7 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var d6s = E(() => {
-  u6s = R(FB(), 1);
-});
+// [unwrapped __esm module d6s]
+u6s = R(FB(), 1);
 var p6s;

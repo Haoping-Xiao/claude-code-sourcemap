@@ -4,117 +4,82 @@
 // class=modified  jaccard=0.036  score=0.1333  fileCov=0.0471
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aKo = E(() => {
-  W4o();
-  Y8o();
-  DAc();
-  Ed();
-  MAc();
-  QAc();
-  B8n();
-  cHc();
-  pHc();
-  U8n();
-  ovo();
-  Qpo();
-  hNe();
-  gHc();
-  $zo();
-  GNn();
-  svo();
-  ivo();
-  AHc();
-  put();
-  F8n();
-  UTo();
-  wHc();
-  Zvo();
-  nKo();
-  MHc();
-  y6n();
-  ewo();
-  NHc();
-  BKt();
-  FHc();
-  two();
-  WHc();
-  nwo();
-  ((oTc = R(lt(), 1)),
-    (sTc = R(rt(), 1)),
-    (VP = R(se(), 1)),
-    (nTc = (eTc(), ro(ZHc)).WorkflowPermissionDialog),
-    (xpr = (l0o(), ro(a0o)).workflowPermissionDialog));
-  if (tTc) {
-    let e = tTc;
-    oKo = ({ payload: t, answer: n }) =>
-      VP.jsx(e, {
-        payload: t,
-        answer: n,
-      });
-  }
-  if (nTc) {
-    let e = nTc;
-    sKo = ({ payload: t, answer: n }) =>
-      VP.jsx(e, {
-        payload: t,
-        answer: n,
-      });
-  }
-  ((iKo = {
-    [Vht.kind]: "modal",
-  }),
-    (iTc = {
-      [kMe.kind]: jme,
-      [Q9t.kind]: jme,
-      [J9t.kind]: jme,
-      [X9t.kind]: jme,
-      [fMe.kind]: jme,
-      [y8e.kind]: jme,
-      [D9t.kind]: "Claude Code wants to enter plan mode",
-      [Vht.kind]: "Claude Code needs your approval for the plan",
-      [Y9t.kind]: jme,
-      [_8e.kind]: jme,
-      ...{
-        [LQ.kind]: "Session paused",
-      },
-      [ySe.kind]: "Session paused",
-      [L9t.kind]: jme,
-      ...(Ipr && {
-        [Ipr.kind]: "Claude needs your approval for a review artifact",
-      }),
-      ...(xpr && {
-        [xpr.kind]: jme,
-      }),
-    }));
-  lTc = {
-    [x8n.kind]: J_m,
-    [GFn.kind]: Q_m,
-    [But.kind]: Z_m,
-    [kMe.kind]: ebm,
-    [Q9t.kind]: tbm,
-    [J9t.kind]: nbm,
-    [X9t.kind]: rbm,
-    [fMe.kind]: obm,
-    [y8e.kind]: sbm,
-    [D9t.kind]: ibm,
-    [Vht.kind]: abm,
-    [Y9t.kind]: lbm,
-    [_8e.kind]: cbm,
+// [unwrapped __esm module aKo] deps: W4o, Y8o, DAc, Ed, MAc, QAc, B8n, cHc, pHc, U8n, ovo, Qpo, hNe, gHc, $zo, GNn, svo, ivo, AHc, put, F8n, UTo, wHc, Zvo, nKo, MHc, y6n, ewo, NHc, BKt, FHc, two, WHc, nwo
+((oTc = R(lt(), 1)),
+  (sTc = R(rt(), 1)),
+  (VP = R(se(), 1)),
+  (nTc = (eTc(), ro(ZHc)).WorkflowPermissionDialog),
+  (xpr = (l0o(), ro(a0o)).workflowPermissionDialog));
+if (tTc) {
+  let e = tTc;
+  oKo = ({ payload: t, answer: n }) =>
+    VP.jsx(e, {
+      payload: t,
+      answer: n,
+    });
+}
+if (nTc) {
+  let e = nTc;
+  sKo = ({ payload: t, answer: n }) =>
+    VP.jsx(e, {
+      payload: t,
+      answer: n,
+    });
+}
+((iKo = {
+  [Vht.kind]: "modal",
+}),
+  (iTc = {
+    [kMe.kind]: jme,
+    [Q9t.kind]: jme,
+    [J9t.kind]: jme,
+    [X9t.kind]: jme,
+    [fMe.kind]: jme,
+    [y8e.kind]: jme,
+    [D9t.kind]: "Claude Code wants to enter plan mode",
+    [Vht.kind]: "Claude Code needs your approval for the plan",
+    [Y9t.kind]: jme,
+    [_8e.kind]: jme,
     ...{
-      [LQ.kind]: ubm,
+      [LQ.kind]: "Session paused",
     },
-    [ySe.kind]: dbm,
-    [L9t.kind]: pbm,
-    ...(oKo &&
-      Ipr && {
-        [Ipr.kind]: oKo,
-      }),
-    ...(sKo &&
-      xpr && {
-        [xpr.kind]: sKo,
-      }),
-  };
-});
+    [ySe.kind]: "Session paused",
+    [L9t.kind]: jme,
+    ...(Ipr && {
+      [Ipr.kind]: "Claude needs your approval for a review artifact",
+    }),
+    ...(xpr && {
+      [xpr.kind]: jme,
+    }),
+  }));
+lTc = {
+  [x8n.kind]: J_m,
+  [GFn.kind]: Q_m,
+  [But.kind]: Z_m,
+  [kMe.kind]: ebm,
+  [Q9t.kind]: tbm,
+  [J9t.kind]: nbm,
+  [X9t.kind]: rbm,
+  [fMe.kind]: obm,
+  [y8e.kind]: sbm,
+  [D9t.kind]: ibm,
+  [Vht.kind]: abm,
+  [Y9t.kind]: lbm,
+  [_8e.kind]: cbm,
+  ...{
+    [LQ.kind]: ubm,
+  },
+  [ySe.kind]: dbm,
+  [L9t.kind]: pbm,
+  ...(oKo &&
+    Ipr && {
+      [Ipr.kind]: oKo,
+    }),
+  ...(sKo &&
+    xpr && {
+      [xpr.kind]: sKo,
+    }),
+};
 function lKo(e) {
   let t = mtn.c(14),
     { channel: n, variant: r, components: o, layouts: s, notifications: i } = e,

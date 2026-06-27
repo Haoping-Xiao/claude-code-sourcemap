@@ -3,9 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> native-ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bda = E(() => {
-  yda();
-  ndp = {
-    cedar: hda
-  };
-});
+// [unwrapped __esm module bda] deps: yda
+ndp = {
+  cedar: hda
+};

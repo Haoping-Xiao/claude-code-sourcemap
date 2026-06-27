@@ -4,108 +4,106 @@
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.2515  score=0.4737  fileCov=0.3489
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W$l = E(() => {
-  er();
-  ((M1o = [
-    "Appearance",
-    "Model & output",
-    "Display",
-    "Input & controls",
-    "Connections",
-    "Advanced",
-    "Experimental",
-    "Internal",
+// [unwrapped __esm module W$l] deps: er
+((M1o = [
+  "Appearance",
+  "Model & output",
+  "Display",
+  "Input & controls",
+  "Connections",
+  "Advanced",
+  "Experimental",
+  "Internal",
+]),
+  (U$l = new Set(["Advanced", "Experimental", "Internal"])),
+  (Rtr = [
+    {
+      id: "autoUpdatesChannel",
+      isSet: ({ settingsData: e }) => e?.autoUpdatesChannel !== void 0,
+    },
+    {
+      id: "worktreeBaseRef",
+      isSet: ({ settingsData: e }) => e?.worktree?.baseRef !== void 0,
+    },
+    {
+      id: "gitignore",
+      isSet: ({ globalConfig: e }) => e.respectGitignore !== I7.respectGitignore,
+    },
+    {
+      id: "copyFullResponse",
+      isSet: ({ globalConfig: e }) => e.copyFullResponse !== I7.copyFullResponse,
+    },
+    {
+      id: "recap",
+      isSet: ({ settingsData: e }) => e?.awaySummaryEnabled !== void 0,
+    },
   ]),
-    (U$l = new Set(["Advanced", "Experimental", "Internal"])),
-    (Rtr = [
-      {
-        id: "autoUpdatesChannel",
-        isSet: ({ settingsData: e }) => e?.autoUpdatesChannel !== void 0,
-      },
-      {
-        id: "worktreeBaseRef",
-        isSet: ({ settingsData: e }) => e?.worktree?.baseRef !== void 0,
-      },
-      {
-        id: "gitignore",
-        isSet: ({ globalConfig: e }) => e.respectGitignore !== I7.respectGitignore,
-      },
-      {
-        id: "copyFullResponse",
-        isSet: ({ globalConfig: e }) => e.copyFullResponse !== I7.copyFullResponse,
-      },
-      {
-        id: "recap",
-        isSet: ({ settingsData: e }) => e?.awaySummaryEnabled !== void 0,
-      },
-    ]),
-    (kLf = new Set(Rtr.map((e) => e.id))));
-  ((j$l = {
-    Appearance: ["theme", "language", "reduceMotion"],
-    "Model & output": [
-      "model",
-      "fast",
-      "switchModelsOnFlag",
-      "outputStyle",
-      "defaultView",
-      "verbose",
-      "autoCompact",
-      "thinking",
-      "permissionMode",
-      "useAutoModeDuringPlan",
-    ],
-    Display: [
-      "autoScroll",
-      "progressBar",
-      "tips",
-      "turnDuration",
-      "prStatus",
-      "externalEditorContext",
-    ],
-    "Input & controls": [
-      "editor",
-      "copyOnSelect",
-      "promptSuggestionEnabled",
-      "agentsView",
-      "checkpoints",
-      "workflows",
-      "workflowKeywordTriggerEnabled",
-    ],
-    Connections: [
-      "notifChannel",
-      "inputNeededNotifEnabled",
-      "agentPushNotifEnabled",
-      "autoConnectIde",
-      "autoInstallIdeExtension",
-      "diffTool",
-      "chrome",
-      "remoteControl",
-      "showExternalIncludesDialog",
-      "apiKey",
-    ],
-    Advanced: Rtr.map((e) => e.id),
-    Experimental: [
-      "precomputeCompactionEnabled",
-      "timestamps",
-      "showStatusInTerminalTab",
-      "teammateMode",
-      "teammateDefaultModel",
-    ],
-    Internal: [
-      "speculationEnabled",
-      ...[],
-      "snipEnabled",
-      "snipDebug",
-      "doneMeansMerged",
-      "autoUploadSessions",
-      "autoAddRemoteControlDaemonWorker",
-      "autofixPrMode",
-    ],
-  }),
-    (RLf = new Map(M1o.flatMap((e) => j$l[e].map((t) => [t, e])))),
-    (N$l = new Map(M1o.flatMap((e, t) => j$l[e].map((n, r) => [n, t * 1000 + r])))));
-  B$l = M1o.indexOf("Advanced") * 1000 + 999;
-});
+  (kLf = new Set(Rtr.map((e) => e.id))));
+((j$l = {
+  Appearance: ["theme", "language", "reduceMotion"],
+  "Model & output": [
+    "model",
+    "fast",
+    "switchModelsOnFlag",
+    "outputStyle",
+    "defaultView",
+    "verbose",
+    "autoCompact",
+    "thinking",
+    "permissionMode",
+    "useAutoModeDuringPlan",
+  ],
+  Display: [
+    "autoScroll",
+    "progressBar",
+    "tips",
+    "turnDuration",
+    "prStatus",
+    "externalEditorContext",
+  ],
+  "Input & controls": [
+    "editor",
+    "copyOnSelect",
+    "promptSuggestionEnabled",
+    "agentsView",
+    "checkpoints",
+    "workflows",
+    "workflowKeywordTriggerEnabled",
+  ],
+  Connections: [
+    "notifChannel",
+    "inputNeededNotifEnabled",
+    "agentPushNotifEnabled",
+    "autoConnectIde",
+    "autoInstallIdeExtension",
+    "diffTool",
+    "chrome",
+    "remoteControl",
+    "showExternalIncludesDialog",
+    "apiKey",
+  ],
+  Advanced: Rtr.map((e) => e.id),
+  Experimental: [
+    "precomputeCompactionEnabled",
+    "timestamps",
+    "showStatusInTerminalTab",
+    "teammateMode",
+    "teammateDefaultModel",
+  ],
+  Internal: [
+    "speculationEnabled",
+    ...[],
+    "snipEnabled",
+    "snipDebug",
+    "doneMeansMerged",
+    "autoUploadSessions",
+    "autoAddRemoteControlDaemonWorker",
+    "autofixPrMode",
+  ],
+}),
+  (RLf = new Map(M1o.flatMap((e) => j$l[e].map((t) => [t, e])))),
+  (N$l = new Map(M1o.flatMap((e, t) => j$l[e].map((n, r) => [n, t * 1000 + r])))));
+B$l = M1o.indexOf("Advanced") * 1000 + 999;
 function K$l({
   onClose: e,
   context: t,

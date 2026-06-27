@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2572  score=0.8041  fileCov=0.2744
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uft = E(() => {
-  G4();
-  dr();
-});
 function RDp(e) {
   return e.replace(xDp, (t, n, r) => {
     if (r.length < kDp) return `"${n}":"[REDACTED]"`;

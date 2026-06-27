@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0087  score=0.0828  fileCov=0.0096
 // note: nearest: src/components/Settings/Config.tsx (0.0087); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MDl = E(() => {
-  Lo();
-  ys();
-  Yf();
-  Gy();
-});
 var ODl = {};
 _t(ODl, {
   call: () => call,

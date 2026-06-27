@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0125  score=0.6578  fileCov=0.0125
 // note: nearest: src/components/Settings/Config.tsx (0.0125); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tne = E(() => {
-  ree();
-});
 function eUi(e) {
   return e.startsWith("light");
 }

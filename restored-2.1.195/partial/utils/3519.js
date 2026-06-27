@@ -4,19 +4,8 @@
 // class=partial  jaccard=0.0875  score=0.4214  fileCov=0.0995
 // note: low-confidence suggestion: node_modules/@opentelemetry/otlp-exporter-base/build/src/otlp-export-delegate.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GUa = E(() => {
-  Hp();
-  Rc();
-  jUa();
-  ft();
-  oo();
-  er();
-  je();
-  At();
-  Gx();
-  Jt();
-  MVe = R(Nh(), 1), Pyo = R(e5t(), 1);
-});
+// [unwrapped __esm module GUa] deps: Hp, Rc, jUa, ft, oo, er, je, At, Gx, Jt
+MVe = R(Nh(), 1), Pyo = R(e5t(), 1);
 function VUa(e) {
   return {
     code: $yo.ExportResultCode.FAILED,

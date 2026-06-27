@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0454  score=0.3357  fileCov=0.0499
 // note: nearest: src/tools/EnterWorktreeTool/EnterWorktreeTool.ts (0.0454); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Izt = E(() => {
-  ft();
-});
 function gbl() {
   return `Use this tool ONLY when explicitly instructed to work in a worktree \u2014 either by the user directly, or by project instructions (CLAUDE.md / memory). This tool creates an isolated git worktree and switches the current session into it.
 

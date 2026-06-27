@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.1574  score=0.2399  fileCov=0.3138
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var f1c = E(() => {
-  Rx();
-  At();
-  Jt();
-  p1c();
-});
 class Ztn {
   onStateChanged;
   onWaitingOnUserChanged;

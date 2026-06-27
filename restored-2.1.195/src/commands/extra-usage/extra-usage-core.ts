@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.1891  score=0.3123  fileCov=0.3241
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bsl = E(() => {
-  dn();
-  c_();
-});
 function Ssl(e) {
   if (!po.isAxiosError(e)) return null;
   let t = e.response?.status;

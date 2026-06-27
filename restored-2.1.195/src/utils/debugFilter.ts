@@ -4,32 +4,31 @@
 // class=modified  jaccard=0.2493  score=0.4286  fileCov=0.3735
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fd = E(() => {
-  krs = class krs {
-    #e = new Set();
-    register(e) {
-      let t = xzc(e);
-      this.#e.add(t);
-      let n = () => {
-        this.#e.delete(t);
-      };
-      return Object.assign(n, {
-        [Symbol.dispose]: n,
-      });
-    }
-    async drain() {
-      let e = Array.from(this.#e);
-      (this.#e.clear(), await Promise.all(e.map(async (t) => t())));
-    }
-    async [Symbol.asyncDispose]() {
-      await this.drain();
-    }
-    get sizeForTesting() {
-      return this.#e.size;
-    }
-  };
-  Rrs = new krs();
-});
+// [unwrapped __esm module fd]
+krs = class krs {
+  #e = new Set();
+  register(e) {
+    let t = xzc(e);
+    this.#e.add(t);
+    let n = () => {
+      this.#e.delete(t);
+    };
+    return Object.assign(n, {
+      [Symbol.dispose]: n,
+    });
+  }
+  async drain() {
+    let e = Array.from(this.#e);
+    (this.#e.clear(), await Promise.all(e.map(async (t) => t())));
+  }
+  async [Symbol.asyncDispose]() {
+    await this.drain();
+  }
+  get sizeForTesting() {
+    return this.#e.size;
+  }
+};
+Rrs = new krs();
 function kzc(e) {
   let t = [],
     n = e.match(/^MCP server ["']([^"']+)["']/);

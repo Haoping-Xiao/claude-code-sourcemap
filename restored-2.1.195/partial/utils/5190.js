@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.1995  score=0.7285  fileCov=0.2155
 // note: low-confidence suggestion: node_modules/jsonwebtoken/decode.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aec = E(() => {
-  $3o();
-  jS();
-  Jt();
-  KJt = require("fs/promises"), Mir = require("path");
-});
+// [unwrapped __esm module aec] deps: $3o, jS, Jt
+KJt = require("fs/promises"), Mir = require("path");
 function U3o(e) {
   return !!e && typeof e === "object" && cec in e;
 }

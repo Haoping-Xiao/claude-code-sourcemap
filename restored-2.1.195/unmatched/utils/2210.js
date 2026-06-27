@@ -4,16 +4,13 @@
 // class=new  jaccard=0.0103  score=0.2331  fileCov=0.0107
 // note: nearest: src/utils/permissions/permissionSetup.ts (0.0103); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var T3e = E(() => {
-  Xr();
-  Jt();
-  t1i = Object.freeze({
-    toolSearchReminder: null,
-    toolParamStrictness: false,
-    emptyInputRepair: false,
-    toolSearchFetchRule: false,
-    schemaDescFixes: false
-  });
+// [unwrapped __esm module T3e] deps: Xr, Jt
+t1i = Object.freeze({
+  toolSearchReminder: null,
+  toolParamStrictness: false,
+  emptyInputRepair: false,
+  toolSearchFetchRule: false,
+  schemaDescFixes: false
 });
 function wc(e, t) {
   let n = $w(),

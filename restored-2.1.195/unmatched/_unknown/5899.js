@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0061  score=0.0369  fileCov=0.0072
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0061); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JXo = E(() => {
-  XXo();
-  UXo();
-  Vmr();
-  sB();
-});
 async function vDm(e, t, n, r, o) {
   switch (XNe(e, t, "decrypt"), e) {
     case "dir":

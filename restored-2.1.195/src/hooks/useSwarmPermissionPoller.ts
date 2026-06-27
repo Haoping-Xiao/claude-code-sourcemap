@@ -4,51 +4,47 @@
 // class=modified  jaccard=0.2904  score=0.5918  fileCov=0.3631
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var H7n = E(() => {
-  Xr();
-  DE();
-  jgl();
-  ((tbt = ve(() =>
-    ol.enum(["userSettings", "projectSettings", "localSettings", "session", "cliArg"]),
-  )),
-    (nbt = ve(() =>
-      ol.discriminatedUnion("type", [
-        ol.object({
-          type: ol.literal("addRules"),
-          rules: ol.array(A7n()),
-          behavior: E7n(),
-          destination: tbt(),
-        }),
-        ol.object({
-          type: ol.literal("replaceRules"),
-          rules: ol.array(A7n()),
-          behavior: E7n(),
-          destination: tbt(),
-        }),
-        ol.object({
-          type: ol.literal("removeRules"),
-          rules: ol.array(A7n()),
-          behavior: E7n(),
-          destination: tbt(),
-        }),
-        ol.object({
-          type: ol.literal("setMode"),
-          mode: qRt(),
-          destination: tbt(),
-        }),
-        ol.object({
-          type: ol.literal("addDirectories"),
-          directories: ol.array(ol.string()),
-          destination: tbt(),
-        }),
-        ol.object({
-          type: ol.literal("removeDirectories"),
-          directories: ol.array(ol.string()),
-          destination: tbt(),
-        }),
-      ]),
-    )));
-});
+// [unwrapped __esm module H7n] deps: Xr, DE, jgl
+((tbt = ve(() =>
+  ol.enum(["userSettings", "projectSettings", "localSettings", "session", "cliArg"]),
+)),
+  (nbt = ve(() =>
+    ol.discriminatedUnion("type", [
+      ol.object({
+        type: ol.literal("addRules"),
+        rules: ol.array(A7n()),
+        behavior: E7n(),
+        destination: tbt(),
+      }),
+      ol.object({
+        type: ol.literal("replaceRules"),
+        rules: ol.array(A7n()),
+        behavior: E7n(),
+        destination: tbt(),
+      }),
+      ol.object({
+        type: ol.literal("removeRules"),
+        rules: ol.array(A7n()),
+        behavior: E7n(),
+        destination: tbt(),
+      }),
+      ol.object({
+        type: ol.literal("setMode"),
+        mode: qRt(),
+        destination: tbt(),
+      }),
+      ol.object({
+        type: ol.literal("addDirectories"),
+        directories: ol.array(ol.string()),
+        destination: tbt(),
+      }),
+      ol.object({
+        type: ol.literal("removeDirectories"),
+        directories: ol.array(ol.string()),
+        destination: tbt(),
+      }),
+    ]),
+  )));
 function lff(e) {
   if (!Array.isArray(e)) return [];
   let t = nbt(),

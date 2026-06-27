@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.1886  score=0.3382  fileCov=0.2988
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Dzl = E(() => {
-  ((Gqf = {
-    type: "local-jsx",
-    name: "permissions",
-    aliases: ["allowed-tools"],
-    description: "Manage allow and deny tool permission rules",
-    load: () => Promise.resolve().then(() => (kzl(), Izl)),
-  }),
-    (Lzl = Gqf));
-});
+// [unwrapped __esm module Dzl]
+((Gqf = {
+  type: "local-jsx",
+  name: "permissions",
+  aliases: ["allowed-tools"],
+  description: "Manage allow and deny tool permission rules",
+  load: () => Promise.resolve().then(() => (kzl(), Izl)),
+}),
+  (Lzl = Gqf));
 var Mzl = {};
 _t(Mzl, {
   call: () => call,

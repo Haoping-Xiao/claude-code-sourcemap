@@ -4,31 +4,8 @@
 // class=modified  jaccard=0.2776  score=0.515  fileCov=0.3759
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m5l = E(() => {
-  Ye();
-  _i();
-  Tc();
-  GXt();
-  es();
-  x8t();
-  ZWl();
-  r5l();
-  er();
-  Fh();
-  nne();
-  HUt();
-  u5l();
-  hAt();
-  lEe();
-  KKe();
-  wr();
-  uo();
-  Cp();
-  HN();
-  Ao();
-  oo();
-  ((d5l = R(lt(), 1)), (p5l = R(rt(), 1)), (Qg = R(se(), 1)));
-});
+// [unwrapped __esm module m5l] deps: Ye, _i, Tc, GXt, es, x8t, ZWl, r5l, er, Fh, nne, HUt, u5l, hAt, lEe, KKe, wr, uo, Cp, HN, Ao, oo
+((d5l = R(lt(), 1)), (p5l = R(rt(), 1)), (Qg = R(se(), 1)));
 function h5l(e) {
   let t = g5l.c(5),
     { message: n, isTranscriptMode: r } = e;

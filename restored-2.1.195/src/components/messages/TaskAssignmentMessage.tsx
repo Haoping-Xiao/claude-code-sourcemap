@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2403  score=0.4111  fileCov=0.3664
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var WCo = E(() => {
-  Ye();
-  YI();
-  E8e();
-  R6();
-  ((GCo = R(lt(), 1)), (aQ = R(se(), 1)));
-});
+// [unwrapped __esm module WCo] deps: Ye, YI, E8e, R6
+((GCo = R(lt(), 1)), (aQ = R(se(), 1)));
 function Dof(e) {
   let t = fil.c(8),
     { assignment: n } = e,

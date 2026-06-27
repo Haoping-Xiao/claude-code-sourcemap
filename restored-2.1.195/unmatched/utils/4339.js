@@ -4,20 +4,14 @@
 // class=new  jaccard=0.0208  score=0.1833  fileCov=0.023
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0208); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lRo = E(() => {
-  je();
-  WAe();
-  jv();
-  Y0o();
-  sRo();
-  l_l = R(require("vm"));
-  u_l = class u_l extends Error {
-    constructor(e, t) {
-      super(`REPL replay: ${e} invoked but only ${t} calls were cached. ` + "The replayed code is making more tool calls than the original \u2014 " + "likely nondeterminism (Date.now, Math.random) took a different branch.");
-      this.name = "ReplayCacheExhausted";
-    }
-  };
-});
+// [unwrapped __esm module lRo] deps: je, WAe, jv, Y0o, sRo
+l_l = R(require("vm"));
+u_l = class u_l extends Error {
+  constructor(e, t) {
+    super(`REPL replay: ${e} invoked but only ${t} calls were cached. ` + "The replayed code is making more tool calls than the original \u2014 " + "likely nondeterminism (Date.now, Math.random) took a different branch.");
+    this.name = "ReplayCacheExhausted";
+  }
+};
 function m_l(e, t) {
   return "";
 }

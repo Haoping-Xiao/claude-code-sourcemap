@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0558  score=0.7196  fileCov=0.057
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0558); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qfn = E(() => {
-  GO = ["PreToolUse", "PostToolUse", "PostToolUseFailure", "PostToolBatch", "Notification", "UserPromptSubmit", "UserPromptExpansion", "SessionStart", "SessionEnd", "Stop", "StopFailure", "SubagentStart", "SubagentStop", "PreCompact", "PostCompact", "PermissionRequest", "PermissionDenied", "Setup", "TeammateIdle", "TaskCreated", "TaskCompleted", "Elicitation", "ElicitationResult", "ConfigChange", "WorktreeCreate", "WorktreeRemove", "InstructionsLoaded", "CwdChanged", "FileChanged", "MessageDisplay"], nws = ["clear", "resume", "logout", "prompt_input_exit", "other", "bypass_permissions_disabled"];
-});
+// [unwrapped __esm module qfn]
+GO = ["PreToolUse", "PostToolUse", "PostToolUseFailure", "PostToolBatch", "Notification", "UserPromptSubmit", "UserPromptExpansion", "SessionStart", "SessionEnd", "Stop", "StopFailure", "SubagentStart", "SubagentStop", "PreCompact", "PostCompact", "PermissionRequest", "PermissionDenied", "Setup", "TeammateIdle", "TaskCreated", "TaskCompleted", "Elicitation", "ElicitationResult", "ConfigChange", "WorktreeCreate", "WorktreeRemove", "InstructionsLoaded", "CwdChanged", "FileChanged", "MessageDisplay"], nws = ["clear", "resume", "logout", "prompt_input_exit", "other", "bypass_permissions_disabled"];
 function VRt(e, t, n, r) {
   let o = r?.mtime ?? e?.mtime ?? 0,
     s = e !== void 0 ? {

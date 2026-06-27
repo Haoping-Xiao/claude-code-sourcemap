@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0488  score=0.3173  fileCov=0.0546
 // note: nearest: src/utils/imageResizer.ts (0.0488); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var HDn = E(() => {
-  Bi();
-});
 function oX(e) {
   if (e.length < 4) return null;
   if (e[0] === 137 && e[1] === 80 && e[2] === 78 && e[3] === 71) return "image/png";

@@ -4,59 +4,50 @@
 // class=modified  jaccard=0.2466  score=0.3628  fileCov=0.4349
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Nlc = E(() => {
-  Qi();
-  ANt();
-  dn();
-  je();
-  Iv();
-  vn();
-  pq();
-  YZn();
-  (($lc = require("path")),
-    (Olc = Cn(async (e) => {
-      try {
-        let n = (await _q("output-styles", e))
-          .map(({ filePath: r, frontmatter: o, content: s, source: i, baseDir: a }) => {
-            try {
-              w3e("output-style", o);
-              let c = $lc.basename(r).replace(/\.md$/, ""),
-                u = (o.name != null ? String(o.name) : void 0) || c,
-                d = AU(o.description, c) ?? ffe(s, `Custom ${c} output style`),
-                p = C3e(o["keep-coding-instructions"]);
-              if (o["force-for-plugin"] !== void 0)
-                T(
-                  `Output style "${u}" has force-for-plugin set, but this option only applies to plugin output styles. Ignoring.`,
-                  {
-                    level: "warn",
-                  },
-                );
-              return {
-                name: u,
-                description: d,
-                prompt: s.trim(),
-                source: i,
-                baseDir: a,
-                keepCodingInstructions: p,
-              };
-            } catch (l) {
-              return (ke(l), null);
-            }
-          })
-          .filter((r) => r !== null)
-          .sort(WSt);
-        return (xe("output_style_load"), n);
-      } catch (t) {
-        return (
-          It("output_style_load", "output_style_load_failed"),
-          T(`Failed to load output styles: ${t instanceof Error ? t.message : String(t)}`, {
-            level: "error",
-          }),
-          []
-        );
-      }
-    })));
-});
+// [unwrapped __esm module Nlc] deps: Qi, ANt, dn, je, Iv, vn, pq, YZn
+(($lc = require("path")),
+  (Olc = Cn(async (e) => {
+    try {
+      let n = (await _q("output-styles", e))
+        .map(({ filePath: r, frontmatter: o, content: s, source: i, baseDir: a }) => {
+          try {
+            w3e("output-style", o);
+            let c = $lc.basename(r).replace(/\.md$/, ""),
+              u = (o.name != null ? String(o.name) : void 0) || c,
+              d = AU(o.description, c) ?? ffe(s, `Custom ${c} output style`),
+              p = C3e(o["keep-coding-instructions"]);
+            if (o["force-for-plugin"] !== void 0)
+              T(
+                `Output style "${u}" has force-for-plugin set, but this option only applies to plugin output styles. Ignoring.`,
+                {
+                  level: "warn",
+                },
+              );
+            return {
+              name: u,
+              description: d,
+              prompt: s.trim(),
+              source: i,
+              baseDir: a,
+              keepCodingInstructions: p,
+            };
+          } catch (l) {
+            return (ke(l), null);
+          }
+        })
+        .filter((r) => r !== null)
+        .sort(WSt);
+      return (xe("output_style_load"), n);
+    } catch (t) {
+      return (
+        It("output_style_load", "output_style_load_failed"),
+        T(`Failed to load output styles: ${t instanceof Error ? t.message : String(t)}`, {
+          level: "error",
+        }),
+        []
+      );
+    }
+  })));
 function cRl() {
   uEt.cache?.clear?.();
 }

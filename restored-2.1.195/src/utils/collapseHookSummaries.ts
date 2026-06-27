@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.3288  score=0.3781  fileCov=0.7162
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CWl = E(() => {
-  np();
-  Z6();
-  uf();
-  co();
-});
 function IWl(e) {
   return e.type === "system" && e.subtype === "stop_hook_summary" && e.hookLabel !== void 0;
 }

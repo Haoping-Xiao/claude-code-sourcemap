@@ -3,7 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wUa = E(() => {
-  HEe = R(qi(), 1), R5 = R(Nh(), 1);
-});
+// [unwrapped __esm module wUa]
+HEe = R(qi(), 1), R5 = R(Nh(), 1);
 var DVe;

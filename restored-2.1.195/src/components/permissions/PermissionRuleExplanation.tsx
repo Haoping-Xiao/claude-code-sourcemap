@@ -4,29 +4,9 @@
 // class=modified  jaccard=0.3933  score=0.5253  fileCov=0.6102
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TEc = E(() => {
-  PR();
-  kt();
-  Du();
-  EJt();
-  Ed();
-  Ye();
-  uo();
-  S$();
-  Il();
-  je();
-  At();
-  vn();
-  Gy();
-  _m();
-  Jt();
-  rvo();
-  S7n();
-  SEc();
-  L6t();
-  ((AEc = R(lt(), 1)), (wNe = R(se(), 1)));
-  HEc = _hm;
-});
+// [unwrapped __esm module TEc] deps: PR, kt, Du, EJt, Ed, Ye, uo, S$, Il, je, At, vn, Gy, _m, Jt, rvo, S7n, SEc, L6t
+((AEc = R(lt(), 1)), (wNe = R(se(), 1)));
+HEc = _hm;
 function bhm(e) {
   if (e?.startsWith("plugin")) return "plugin hooks.json";
   if (e?.startsWith("skill")) return "SKILL.md";

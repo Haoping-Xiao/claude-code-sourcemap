@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0369  score=0.2327  fileCov=0.042
 // note: nearest: src/utils/transcriptSearch.ts (0.0369); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cWt = E(() => {
-  Hp();
-  dn();
-  je();
-  At();
-  Cde();
-});
 function NDp(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
 }

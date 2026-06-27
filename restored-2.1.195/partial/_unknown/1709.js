@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.0797  score=0.5592  fileCov=0.0851
 // note: low-confidence suggestion: node_modules/@azure/core-client/dist/esm/deserializationPolicy.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qmi = E(() => {
-  Hle();
-  vTn();
-  PMt();
-  Xhd = ["application/json", "text/json"], Jhd = ["application/xml", "application/atom+xml"];
-});
+// [unwrapped __esm module Qmi] deps: Hle, vTn, PMt
+Xhd = ["application/json", "text/json"], Jhd = ["application/xml", "application/atom+xml"];
 function Zmi(e) {
   let t = new Set();
   for (let n in e.responses) {

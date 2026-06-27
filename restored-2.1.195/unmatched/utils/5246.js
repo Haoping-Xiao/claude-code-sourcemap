@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0093  score=0.0739  fileCov=0.0105
 // note: nearest: src/cli/print.ts (0.0093); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CHt = E(() => {
-  ag();
-  dn();
-  Hpe();
-  YS();
-  vn();
-  Is();
-  tWo();
-  WL();
-  cKe();
-  IKe();
-  bZ = require("fs/promises"), rWo = require("net"), nWo = require("path");
-});
+// [unwrapped __esm module CHt] deps: ag, dn, Hpe, YS, vn, Is, tWo, WL, cKe, IKe
+bZ = require("fs/promises"), rWo = require("net"), nWo = require("path");
 async function yTe(e, t, n) {
   if (t?.backend === "peer") return {
     confirmed: true

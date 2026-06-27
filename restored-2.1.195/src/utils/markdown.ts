@@ -4,14 +4,13 @@
 // class=modified  jaccard=0.3274  score=0.6019  fileCov=0.4179
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rnl = E(() => {
-  iwo = class iwo extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "PlanPreconditionError";
-    }
-  };
-});
+// [unwrapped __esm module Rnl]
+iwo = class iwo extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "PlanPreconditionError";
+  }
+};
 var Lnl = `Use this tool when you are in plan mode and have finished writing your plan to the plan file and are ready for user approval.
 
 ## How This Tool Works

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.012  score=0.1163  fileCov=0.0132
 // note: nearest: node_modules/@mixmark-io/domino/lib/htmlelts.js (0.012); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sWc = E(() => {
-  kgr();
-  awt();
-});
 function iXe(e) {
   return e.replace(/[&<>"']/g, t => b$m[t] ?? t);
 }

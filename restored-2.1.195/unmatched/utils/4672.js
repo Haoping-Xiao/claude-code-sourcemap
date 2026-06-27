@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0064  score=0.423  fileCov=0.0065
 // note: nearest: src/screens/REPL.tsx (0.0064); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lNo = E(() => {
-  es();
-  vf();
-  sr();
-});
 var H1l = {};
 _t(H1l, {
   call: () => call

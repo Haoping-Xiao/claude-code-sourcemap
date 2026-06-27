@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0153  score=0.3148  fileCov=0.0158
 // note: nearest: node_modules/node-forge/lib/util.js (0.0153); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dgr = E(() => {
-  sB();
-  BDm = xS, knn = VT;
-});
+// [unwrapped __esm module dgr] deps: sB
+BDm = xS, knn = VT;
 function bjc(e) {
   let t;
   if (typeof e === "string") {

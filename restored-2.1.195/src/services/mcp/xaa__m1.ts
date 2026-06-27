@@ -4,41 +4,34 @@
 // class=modified (alt of src/services/mcp/xaa.ts)  jaccard=0.0391  score=0.1158  fileCov=0.0558
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BCa = E(() => {
-  oke();
-  Xr();
-  At();
-  vn();
-  Mh();
-  Jt();
-  BUn = NCa();
-  USe = class USe extends Error {
-    shouldClearIdToken;
-    constructor(e, t) {
-      super(e);
-      ((this.name = "XaaTokenExchangeError"), (this.shouldClearIdToken = t));
-    }
-  };
-  $Tp =
-    /"(access_token|refresh_token|id_token|assertion|subject_token|client_secret)"\s*:\s*"[^"]*"/g;
-  ((OTp = ve(() =>
+// [unwrapped __esm module BCa] deps: oke, Xr, At, vn, Mh, Jt
+BUn = NCa();
+USe = class USe extends Error {
+  shouldClearIdToken;
+  constructor(e, t) {
+    super(e);
+    ((this.name = "XaaTokenExchangeError"), (this.shouldClearIdToken = t));
+  }
+};
+$Tp =
+  /"(access_token|refresh_token|id_token|assertion|subject_token|client_secret)"\s*:\s*"[^"]*"/g;
+((OTp = ve(() =>
+  H.object({
+    access_token: H.string().optional(),
+    issued_token_type: H.string().optional(),
+    expires_in: H.coerce.number().optional(),
+    scope: H.string().optional(),
+  }),
+)),
+  (NTp = ve(() =>
     H.object({
-      access_token: H.string().optional(),
-      issued_token_type: H.string().optional(),
+      access_token: H.string().min(1),
+      token_type: H.string().default("Bearer"),
       expires_in: H.coerce.number().optional(),
       scope: H.string().optional(),
+      refresh_token: H.string().optional(),
     }),
-  )),
-    (NTp = ve(() =>
-      H.object({
-        access_token: H.string().min(1),
-        token_type: H.string().default("Bearer"),
-        expires_in: H.coerce.number().optional(),
-        scope: H.string().optional(),
-        refresh_token: H.string().optional(),
-      }),
-    )));
-});
+  )));
 function VTp(e) {
   if (lh(e)) return !0;
   if (e instanceof Error && e.name === "TimeoutError") return !0;

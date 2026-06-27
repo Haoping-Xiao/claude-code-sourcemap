@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4303  score=1  fileCov=0.4303
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var a8t = E(() => {
-  fn();
-  ((C6n = new Map()), (D8e = new Map()));
-});
+// [unwrapped __esm module a8t] deps: fn
+((C6n = new Map()), (D8e = new Map()));
 function x6n(e) {
   pwo.emit(e);
   let t = Date.now(),

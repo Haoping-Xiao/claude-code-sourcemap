@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0401  score=0.1963  fileCov=0.0479
 // note: nearest: src/ink/styles.ts (0.0401); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qko = E(() => {
-  Xa();
-  Ao();
-});
 function i7n(e) {
   let t = new Map(),
     n = [],

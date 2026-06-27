@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.2568  score=0.3776  fileCov=0.4454
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xAn = E(() => {
-  Rc();
-  og();
-  je();
-  fn();
-  Ls();
-  oje();
-});
 function Hr(e) {
   if (e == null) return;
   return /^[A-Za-z0-9_-]{1,128}$/.test(e) ? kh(e) : We("nonconforming");

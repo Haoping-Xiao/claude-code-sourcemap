@@ -4,23 +4,12 @@
 // class=modified  jaccard=0.2774  score=0.9612  fileCov=0.2806
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ghc = E(() => {
-  kt();
-  Ye();
-  uo();
-  FEe();
-  er();
-  je();
-  fn();
-  Bi();
-  IVn();
-  LOe();
-  ((dhc = R(lt(), 1)),
-    (phc = require("os")),
-    (fhc = require("path")),
-    (IZ = R(rt(), 1)),
-    (Wz = R(se(), 1)));
-});
+// [unwrapped __esm module ghc] deps: kt, Ye, uo, FEe, er, je, fn, Bi, IVn, LOe
+((dhc = R(lt(), 1)),
+  (phc = require("os")),
+  (fhc = require("path")),
+  (IZ = R(rt(), 1)),
+  (Wz = R(se(), 1)));
 function zur(e) {
   let t = hhc.c(13),
     { isUpdating: n, onChangeIsUpdating: r, showSuccessMessage: o, verbose: s } = e,

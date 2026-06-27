@@ -4,21 +4,8 @@
 // class=new  jaccard=0.022  score=0.2198  fileCov=0.0238
 // note: nearest: src/utils/attachments.ts (0.022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sYo = E(() => {
-  Vb();
-  ft();
-  np();
-  yC();
-  je();
-  vn();
-  b0c();
-  y4t();
-  bm();
-  OI();
-  dn();
-  wUn();
-  oYo = new WeakMap();
-});
+// [unwrapped __esm module sYo] deps: Vb, ft, np, yC, je, vn, b0c, y4t, bm, OI, dn, wUn
+oYo = new WeakMap();
 function svt(e, t) {
   try {
     let n = Evm(e);

@@ -4,19 +4,11 @@
 // class=modified  jaccard=0.2057  score=0.3017  fileCov=0.3926
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BMo = E(() => {
-  Lne();
-  At();
-  Bi();
-  es();
-  ys();
-  sr();
-  K0();
-  ((Fkl = require("crypto")),
-    ($Mo = require("fs")),
-    (lOe = require("fs/promises")),
-    (OMo = require("path")));
-});
+// [unwrapped __esm module BMo] deps: Lne, At, Bi, es, ys, sr, K0
+((Fkl = require("crypto")),
+  ($Mo = require("fs")),
+  (lOe = require("fs/promises")),
+  (OMo = require("path")));
 function gCf(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
 }

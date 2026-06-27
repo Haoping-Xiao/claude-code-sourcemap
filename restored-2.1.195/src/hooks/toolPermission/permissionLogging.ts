@@ -4,49 +4,46 @@
 // class=modified  jaccard=0.2644  score=0.3291  fileCov=0.5735
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eVe = E(() => {
-  iu();
-  eco();
-  ((P$a = require("path")),
-    ($Lp = {
-      keyword: wt.blue,
-      built_in: wt.cyan,
-      type: wt.cyan.dim,
-      literal: wt.blue,
-      number: wt.green,
-      regexp: wt.red,
-      string: wt.red,
-      subst: wt.reset,
-      symbol: wt.reset,
-      class: wt.blue,
-      function: wt.yellow,
-      title: wt.reset,
-      params: wt.reset,
-      comment: wt.green,
-      doctag: wt.green,
-      meta: wt.grey,
-      "meta-keyword": wt.reset,
-      "meta-string": wt.reset,
-      section: wt.reset,
-      tag: wt.grey,
-      name: wt.blue,
-      attr: wt.cyan,
-      attribute: wt.reset,
-      variable: wt.reset,
-      bullet: wt.reset,
-      code: wt.reset,
-      emphasis: wt.italic,
-      strong: wt.bold,
-      link: wt.underline,
-      quote: wt.reset,
-      addition: wt.green,
-      deletion: wt.red,
-    }));
-  BLp = {
-    highlight: OLp,
-    supportsLanguage: NLp,
-  };
-});
+// [unwrapped __esm module eVe] deps: iu, eco
+((P$a = require("path")),
+  ($Lp = {
+    keyword: wt.blue,
+    built_in: wt.cyan,
+    type: wt.cyan.dim,
+    literal: wt.blue,
+    number: wt.green,
+    regexp: wt.red,
+    string: wt.red,
+    subst: wt.reset,
+    symbol: wt.reset,
+    class: wt.blue,
+    function: wt.yellow,
+    title: wt.reset,
+    params: wt.reset,
+    comment: wt.green,
+    doctag: wt.green,
+    meta: wt.grey,
+    "meta-keyword": wt.reset,
+    "meta-string": wt.reset,
+    section: wt.reset,
+    tag: wt.grey,
+    name: wt.blue,
+    attr: wt.cyan,
+    attribute: wt.reset,
+    variable: wt.reset,
+    bullet: wt.reset,
+    code: wt.reset,
+    emphasis: wt.italic,
+    strong: wt.bold,
+    link: wt.underline,
+    quote: wt.reset,
+    addition: wt.green,
+    deletion: wt.red,
+  }));
+BLp = {
+  highlight: OLp,
+  supportsLanguage: NLp,
+};
 function Igo(e) {
   return ULp.includes(e);
 }

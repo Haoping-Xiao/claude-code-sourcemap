@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.3373  score=0.4134  fileCov=0.6469
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nC = E(() => {
-  k0();
-  u_();
-  lf();
-});
 function teo(e) {
   return /^\w[\w.@-]*$/.test(e);
 }

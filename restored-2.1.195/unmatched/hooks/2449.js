@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0163  score=0.5331  fileCov=0.0166
 // note: nearest: src/ink/styles.ts (0.0163); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var R5i = E(() => {
-  x5i = R(lt(), 1), k5i = R(se(), 1);
-});
+// [unwrapped __esm module R5i]
+x5i = R(lt(), 1), k5i = R(se(), 1);
 function wI(e) {
   let t = L5i.c(9),
     n,

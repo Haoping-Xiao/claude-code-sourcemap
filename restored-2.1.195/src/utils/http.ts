@@ -4,148 +4,111 @@
 // class=modified  jaccard=0.2616  score=0.3133  fileCov=0.6133
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var oo = E(() => {
-  iu();
-  Qi();
-  Rc();
-  dn();
-  kt();
-  ste();
-  Ls();
-  ft();
-  Tnt();
-  ole();
-  H0();
-  W2e();
-  xnt();
-  db();
-  QSn();
-  Rnt();
-  d2r();
-  aAn();
-  Vw();
-  er();
-  je();
-  Lx();
-  wr();
-  fn();
-  At();
-  Bi();
-  BCn();
-  vn();
-  SG();
-  OB();
-  R9();
-  urt();
-  S9();
-  dr();
-  Jt();
-  t1t();
-  ((q9r = require("child_process")), (l1t = require("fs/promises")), (V9r = require("path")));
-  ((Vvi = Cn(() => {
-    (T(
-      `An Anthropic profile (~/.config/anthropic) is configured, but a claude.ai login exists \u2014 using the claude.ai login. Set ANTHROPIC_PROFILE=<name> to use the profile instead.${""}`,
+// [unwrapped __esm module oo] deps: iu, Qi, Rc, dn, kt, ste, Ls, ft, Tnt, ole, H0, W2e, xnt, db, QSn, Rnt, d2r, aAn, Vw, er, je, Lx, wr, fn, At, Bi, BCn, vn, SG, OB, R9, urt, S9, dr, Jt, t1t
+((q9r = require("child_process")), (l1t = require("fs/promises")), (V9r = require("path")));
+((Vvi = Cn(() => {
+  (T(
+    `An Anthropic profile (~/.config/anthropic) is configured, but a claude.ai login exists \u2014 using the claude.ai login. Set ANTHROPIC_PROFILE=<name> to use the profile instead.${""}`,
+    {
+      level: "warn",
+    },
+  ),
+    queueMicrotask(() => G("tengu_wif_implicit_profile_skipped_stored_login", {})));
+})),
+  (zvi = Cn(() => {
+    let e = _9() ?? "profile",
+      t = e === "profile-implicit" && V2e() === "user_oauth";
+    T(
+      `Using Anthropic profile auth (${e}); ${t ? "a claude.ai login (/login) would take precedence over it" : "this takes precedence over any stored claude.ai login"}`,
       {
-        level: "warn",
+        level: "info",
       },
-    ),
-      queueMicrotask(() => G("tengu_wif_implicit_profile_skipped_stored_login", {})));
-  })),
-    (zvi = Cn(() => {
-      let e = _9() ?? "profile",
-        t = e === "profile-implicit" && V2e() === "user_oauth";
-      T(
-        `Using Anthropic profile auth (${e}); ${t ? "a claude.ai login (/login) would take precedence over it" : "this takes precedence over any stored claude.ai login"}`,
-        {
-          level: "info",
-        },
-      );
-    })));
-  K9r = new Set(["claude-desktop", "local-agent", "claude-vscode"]);
-  BG = Ahe(
-    async () => {
-      let e = performance.now();
-      T("[API:auth] AWS credential resolve start");
-      let t = await p0d(),
-        n = await m0d();
-      if (t || n) await coi();
-      return (
-        T(`[API:auth] AWS credential resolve done in ${Math.round(performance.now() - e)}ms`),
-        n
-      );
-    },
-    (e) => {
-      let t = e?.expiration,
-        n = t === void 0 ? void 0 : t - Date.now();
-      if (n === void 0 || n <= jvi + u0d) return c0d;
-      return n - jvi;
-    },
-  );
-  N4e = Ahe(async () => await y0d(), h0d);
-  V4e = Cn(() => {
-    if (md()) return null;
-    let e = Dt();
-    if (!e.primaryApiKey) return null;
-    return {
-      key: e.primaryApiKey,
-      source: "/login managed key",
-    };
-  });
-  FCn = new Set();
-  Ws = Cn(() => {
-    if (md()) return null;
-    if (process.env.CLAUDE_CODE_OAUTH_TOKEN)
-      return {
-        accessToken: process.env.CLAUDE_CODE_OAUTH_TOKEN,
-        refreshToken: null,
-        expiresAt: null,
-        scopes: Gvi(),
-        subscriptionType: process.env.CLAUDE_CODE_SUBSCRIPTION_TYPE || null,
-        rateLimitTier: process.env.CLAUDE_CODE_RATE_LIMIT_TIER || null,
-      };
-    let e = b9();
-    if (e)
-      return {
-        accessToken: e,
-        refreshToken: null,
-        expiresAt: null,
-        scopes: Ebr() ?? Gvi(),
-        subscriptionType: process.env.CLAUDE_CODE_SUBSCRIPTION_TYPE || null,
-        rateLimitTier: process.env.CLAUDE_CODE_RATE_LIMIT_TIER || null,
-      };
-    try {
-      let r = wl().read()?.claudeAiOauth;
-      if (!r?.accessToken) return null;
-      return r;
-    } catch (t) {
-      return (ke(t), null);
-    }
-  });
-  U9r = new Map();
-  nL = oRt(async () => {
-    if (md()) return null;
-    if (process.env.CLAUDE_CODE_OAUTH_TOKEN || b9()) return Ws();
-    try {
-      let n = (await wl().readAsync())?.claudeAiOauth;
-      if (!n?.accessToken) return null;
-      return n;
-    } catch (e) {
-      return (ke(e), null);
-    }
-  });
-  g1t = oRt(async () => {
-    if (md()) return null;
-    let e = Dt();
-    if (!e.primaryApiKey) return null;
-    return {
-      key: e.primaryApiKey,
-      source: "/login managed key",
-    };
-  });
-  ((lwi = ["EACCES", "EPERM", "EBUSY", "EIO", "EISDIR", "ELOOP"]),
-    (V0d = new RegExp(`\\b(${lwi.join("|")})\\b`)));
-  cwi = class cwi extends Error {};
+    );
+  })));
+K9r = new Set(["claude-desktop", "local-agent", "claude-vscode"]);
+BG = Ahe(
+  async () => {
+    let e = performance.now();
+    T("[API:auth] AWS credential resolve start");
+    let t = await p0d(),
+      n = await m0d();
+    if (t || n) await coi();
+    return (
+      T(`[API:auth] AWS credential resolve done in ${Math.round(performance.now() - e)}ms`),
+      n
+    );
+  },
+  (e) => {
+    let t = e?.expiration,
+      n = t === void 0 ? void 0 : t - Date.now();
+    if (n === void 0 || n <= jvi + u0d) return c0d;
+    return n - jvi;
+  },
+);
+N4e = Ahe(async () => await y0d(), h0d);
+V4e = Cn(() => {
+  if (md()) return null;
+  let e = Dt();
+  if (!e.primaryApiKey) return null;
+  return {
+    key: e.primaryApiKey,
+    source: "/login managed key",
+  };
 });
+FCn = new Set();
+Ws = Cn(() => {
+  if (md()) return null;
+  if (process.env.CLAUDE_CODE_OAUTH_TOKEN)
+    return {
+      accessToken: process.env.CLAUDE_CODE_OAUTH_TOKEN,
+      refreshToken: null,
+      expiresAt: null,
+      scopes: Gvi(),
+      subscriptionType: process.env.CLAUDE_CODE_SUBSCRIPTION_TYPE || null,
+      rateLimitTier: process.env.CLAUDE_CODE_RATE_LIMIT_TIER || null,
+    };
+  let e = b9();
+  if (e)
+    return {
+      accessToken: e,
+      refreshToken: null,
+      expiresAt: null,
+      scopes: Ebr() ?? Gvi(),
+      subscriptionType: process.env.CLAUDE_CODE_SUBSCRIPTION_TYPE || null,
+      rateLimitTier: process.env.CLAUDE_CODE_RATE_LIMIT_TIER || null,
+    };
+  try {
+    let r = wl().read()?.claudeAiOauth;
+    if (!r?.accessToken) return null;
+    return r;
+  } catch (t) {
+    return (ke(t), null);
+  }
+});
+U9r = new Map();
+nL = oRt(async () => {
+  if (md()) return null;
+  if (process.env.CLAUDE_CODE_OAUTH_TOKEN || b9()) return Ws();
+  try {
+    let n = (await wl().readAsync())?.claudeAiOauth;
+    if (!n?.accessToken) return null;
+    return n;
+  } catch (e) {
+    return (ke(e), null);
+  }
+});
+g1t = oRt(async () => {
+  if (md()) return null;
+  let e = Dt();
+  if (!e.primaryApiKey) return null;
+  return {
+    key: e.primaryApiKey,
+    source: "/login managed key",
+  };
+});
+((lwi = ["EACCES", "EPERM", "EBUSY", "EIO", "EISDIR", "ELOOP"]),
+  (V0d = new RegExp(`\\b(${lwi.join("|")})\\b`)));
+cwi = class cwi extends Error {};
 var eii = {};
 _t(eii, {
   withOAuth401Retry: () => withOAuth401Retry,

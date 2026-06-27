@@ -4,22 +4,14 @@
 // class=new  jaccard=0.026  score=0.164  fileCov=0.03
 // note: nearest: src/utils/teleport/api.ts (0.026); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GXn = E(() => {
-  Rc();
-  oo();
-  qd();
-  Un();
-  kt();
-  c_();
-  jc();
-  UXn = {
-    auth: "teleport-org",
-    timeout: Byf,
-    headers: {
-      "anthropic-beta": kw
-    }
-  };
-});
+// [unwrapped __esm module GXn] deps: Rc, oo, qd, Un, kt, c_, jc
+UXn = {
+  auth: "teleport-org",
+  timeout: Byf,
+  headers: {
+    "anthropic-beta": kw
+  }
+};
 var zzt = "ShareOnboardingGuide",
   tLo = `Upload the ONBOARDING.md in the current directory and return a share link teammates can open in Claude Code. Call this after the user has confirmed the final content.
 

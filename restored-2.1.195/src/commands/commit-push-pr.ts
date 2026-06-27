@@ -4,22 +4,20 @@
 // class=modified  jaccard=0.1196  score=0.3408  fileCov=0.1556
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var UOo = E(() => {
-  jc();
-  ((O0f = {
-    type: "local-jsx",
-    name: "desktop",
-    aliases: ["app"],
-    description: "Continue the current session in Claude Desktop",
-    availability: ["claude-ai"],
-    isEnabled: tEt,
-    get isHidden() {
-      return !tEt();
-    },
-    load: () => Promise.resolve().then(() => (UPl(), NPl)),
-  }),
-    (FPl = O0f));
-});
+// [unwrapped __esm module UOo] deps: jc
+((O0f = {
+  type: "local-jsx",
+  name: "desktop",
+  aliases: ["app"],
+  description: "Continue the current session in Claude Desktop",
+  availability: ["claude-ai"],
+  isEnabled: tEt,
+  get isHidden() {
+    return !tEt();
+  },
+  load: () => Promise.resolve().then(() => (UPl(), NPl)),
+}),
+  (FPl = O0f));
 function GPl(e, t, n) {
   let { commit: r, pr: o } = wze(),
     s = c6(r),

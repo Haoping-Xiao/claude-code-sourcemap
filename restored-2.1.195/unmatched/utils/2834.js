@@ -4,26 +4,18 @@
 // class=new  jaccard=0.0069  score=0.2264  fileCov=0.007
 // note: nearest: src/cli/print.ts (0.0069); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uut = E(() => {
-  je();
-  At();
-  vn();
-  dn();
-  Rx();
-  c_();
-  ole();
-  fla = [2500, 5000, 7500, 15000].map(e => ({
-    id: "",
-    credit_minor_units: e,
-    price_minor_units: e,
-    discount_minor_units: 0,
-    local_credit_minor_units: e,
-    local_price_minor_units: e
-  })), Glp = {
-    default: dla([[2500, 0], [5000, 0], [7500, 0], [15000, 0]]),
-    discounted: dla([[5000, 10], [25000, 20], [100000 /* 1e5 */, 30]])
-  };
-});
+// [unwrapped __esm module uut] deps: je, At, vn, dn, Rx, c_, ole
+fla = [2500, 5000, 7500, 15000].map(e => ({
+  id: "",
+  credit_minor_units: e,
+  price_minor_units: e,
+  discount_minor_units: 0,
+  local_credit_minor_units: e,
+  local_price_minor_units: e
+})), Glp = {
+  default: dla([[2500, 0], [5000, 0], [7500, 0], [15000, 0]]),
+  discounted: dla([[5000, 10], [25000, 20], [100000 /* 1e5 */, 30]])
+};
 function Dy(e) {
   return e;
 }

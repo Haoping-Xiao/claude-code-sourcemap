@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0109  score=0.8757  fileCov=0.0109
 // note: nearest: node_modules/sharp/lib/input.js (0.0109); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var I8s = E(() => {
-  C8s();
-  eod = typeof Buffer !== "undefined" && Buffer.from ? function (e) {
-    return Buffer.from(e, "utf8");
-  } : qNr;
-});
+// [unwrapped __esm module I8s] deps: C8s
+eod = typeof Buffer !== "undefined" && Buffer.from ? function (e) {
+  return Buffer.from(e, "utf8");
+} : qNr;
 function KNr(e) {
   if (typeof e === "string") return e.length === 0;
   return e.byteLength === 0;

@@ -4,14 +4,6 @@
 // class=partial  jaccard=0.2156  score=1  fileCov=0.2156
 // note: low-confidence suggestion: src/utils/slashCommandParsing.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gx = E(() => {
-  Hp();
-  Rc();
-  oo();
-  je();
-  Ls();
-  oje();
-});
 function KCn(e, t = process.argv) {
   let n;
   for (let r = 0; r < t.length; r++) {

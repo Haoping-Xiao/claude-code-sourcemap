@@ -4,11 +4,10 @@
 // class=new  jaccard=0.0178  score=1  fileCov=0.0178
 // note: nearest: node_modules/@smithy/util-endpoints/dist-cjs/index.js (0.0178); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eNs = E(() => {
-  (function (e) {
-    e.HTTP = "http", e.HTTPS = "https";
-  })(Z1s || (Z1s = {}));
-});
+// [unwrapped __esm module eNs]
+(function (e) {
+  e.HTTP = "http", e.HTTPS = "https";
+})(Z1s || (Z1s = {}));
 var tNs = () => {};
 var nNs = () => {};
 var rNs = () => {};

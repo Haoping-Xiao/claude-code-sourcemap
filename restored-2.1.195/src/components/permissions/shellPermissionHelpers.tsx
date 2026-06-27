@@ -4,29 +4,8 @@
 // class=modified  jaccard=0.2919  score=0.4699  fileCov=0.4351
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QAc = E(() => {
-  WLn();
-  GAc();
-  VAc();
-  KAc();
-  tC();
-  HN();
-  w4();
-  Tc();
-  Ye();
-  ps();
-  kt();
-  uo();
-  eVe();
-  lT();
-  xW();
-  _Tt();
-  vn();
-  e8t();
-  I1();
-  KI();
-  ((Xzo = R(lt(), 1)), (bpr = R(rt(), 1)), (atn = R(se(), 1)));
-});
+// [unwrapped __esm module QAc] deps: WLn, GAc, VAc, KAc, tC, HN, w4, Tc, Ye, ps, kt, uo, eVe, lT, xW, _Tt, vn, e8t, I1, KI
+((Xzo = R(lt(), 1)), (bpr = R(rt(), 1)), (atn = R(se(), 1)));
 function n_m(e) {
   switch (e.length) {
     case 0:

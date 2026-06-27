@@ -4,14 +4,12 @@
 // class=new  jaccard=0.0495  score=0.8096  fileCov=0.0501
 // note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.0495); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EIs = E(() => {
-  tDr();
-  SIs = {
-    environmentVariableSelector: e => e[YNu],
-    configFileSelector: e => e[XNu],
-    default: MCe.IPv4
-  };
-});
+// [unwrapped __esm module EIs] deps: tDr
+SIs = {
+  environmentVariableSelector: e => e[YNu],
+  configFileSelector: e => e[XNu],
+  default: MCe.IPv4
+};
 var nDr,
   AIs,
   Fmn = async () => AIs.parseUrl((await JNu()) || (await QNu())),

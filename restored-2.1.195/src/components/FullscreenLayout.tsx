@@ -4,53 +4,50 @@
 // class=modified  jaccard=0.2797  score=0.3703  fileCov=0.5334
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iVl = E(() => {
-  gGe();
-  Ye();
-  ((E2o = R(lt(), 1)), (sVl = R(rt(), 1)), (qHe = R(se(), 1)));
-  oVl = [
-    {
-      lines: 1,
-      indent: 0,
-    },
-    {
-      lines: 5,
-      indent: 0,
-    },
-    {
-      lines: 3,
-      indent: 2,
-    },
-    {
-      lines: 2,
-      indent: 0,
-    },
-    {
-      lines: 7,
-      indent: 0,
-    },
-    {
-      lines: 4,
-      indent: 2,
-    },
-    {
-      lines: 1,
-      indent: 0,
-    },
-    {
-      lines: 6,
-      indent: 0,
-    },
-    {
-      lines: 2,
-      indent: 2,
-    },
-    {
-      lines: 3,
-      indent: 0,
-    },
-  ];
-});
+// [unwrapped __esm module iVl] deps: gGe, Ye
+((E2o = R(lt(), 1)), (sVl = R(rt(), 1)), (qHe = R(se(), 1)));
+oVl = [
+  {
+    lines: 1,
+    indent: 0,
+  },
+  {
+    lines: 5,
+    indent: 0,
+  },
+  {
+    lines: 3,
+    indent: 2,
+  },
+  {
+    lines: 2,
+    indent: 0,
+  },
+  {
+    lines: 7,
+    indent: 0,
+  },
+  {
+    lines: 4,
+    indent: 2,
+  },
+  {
+    lines: 1,
+    indent: 0,
+  },
+  {
+    lines: 6,
+    indent: 0,
+  },
+  {
+    lines: 2,
+    indent: 2,
+  },
+  {
+    lines: 3,
+    indent: 0,
+  },
+];
 function cVl(e) {
   let [t, n] = oy.useState(null),
     r = oy.useRef(t);

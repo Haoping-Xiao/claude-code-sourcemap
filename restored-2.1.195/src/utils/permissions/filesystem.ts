@@ -4,42 +4,29 @@
 // class=modified  jaccard=0.1764  score=0.3882  fileCov=0.2443
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KI = E(() => {
-  Qi();
-  ft();
-  db();
-  Lo();
-  je();
-  fn();
-  At();
-  iYr();
-  ys();
-  vn();
-  dr();
-  Ost();
-  (($sc = require("crypto")), (Lz = require("path")));
-  gS = Cn(function () {
-    let n = Dr().plansDirectory,
-      r;
-    if (n) {
-      let o = $t(),
-        s = Lz.resolve(o, n);
-      if (!s.startsWith(o + Lz.sep) && s !== o)
-        (T(`plansDirectory must be within project root: ${n}`, {
-          level: "error",
-        }),
-          (r = Lz.join(tr(), "plans")));
-      else r = s;
-    } else r = Lz.join(tr(), "plans");
-    try {
-      qt().mkdirSync(r);
-    } catch (o) {
-      T(`Failed to create plans directory ${r}: ${o}`, {
+// [unwrapped __esm module KI] deps: Qi, ft, db, Lo, je, fn, At, iYr, ys, vn, dr, Ost
+(($sc = require("crypto")), (Lz = require("path")));
+gS = Cn(function () {
+  let n = Dr().plansDirectory,
+    r;
+  if (n) {
+    let o = $t(),
+      s = Lz.resolve(o, n);
+    if (!s.startsWith(o + Lz.sep) && s !== o)
+      (T(`plansDirectory must be within project root: ${n}`, {
         level: "error",
-      });
-    }
-    return r;
-  });
+      }),
+        (r = Lz.join(tr(), "plans")));
+    else r = s;
+  } else r = Lz.join(tr(), "plans");
+  try {
+    qt().mkdirSync(r);
+  } catch (o) {
+    T(`Failed to create plans directory ${r}: ${o}`, {
+      level: "error",
+    });
+  }
+  return r;
 });
 var Noa = {};
 _t(Noa, {

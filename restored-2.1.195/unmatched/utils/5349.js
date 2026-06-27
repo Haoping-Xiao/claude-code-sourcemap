@@ -4,42 +4,34 @@
 // class=new  jaccard=0.0397  score=0.1922  fileCov=0.0477
 // note: nearest: src/components/messageActions.tsx (0.0397); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ycr = E(() => {
-  IB();
-  dn();
-  vy();
-  je();
-  At();
-  sr();
-  g0();
-  wdc = UZt * 4, Tdc = wdc * 10;
-  Rim = Cn(e => {
-    T(`[footerLinks] skipping a 'regex' entry with non-string fields (pattern/url/label types: ${e}); the entry is preserved in settings`, {
-      level: "warn"
-    }), It("repl_footer_links", "unreadable_entry");
-  }), Kcr = /\{([^{}]+)\}/g, Lim = /\(\?<([^>=!][^>]*)>/g, Dim = Cn((e, t, n) => {
-    let r = new Set([...t.matchAll(Lim)].map(o => o[1]));
-    for (let [, o] of n.matchAll(Kcr)) if (o !== void 0 && !r.has(o)) T(`[footerLinks] template references {${o}} but pattern ${t} has no such named capture group`, {
-      level: "warn"
-    });
-  }), Pim = /^(?:\.|%2e){1,2}$/i;
-  $im = /[\x00-\x1f\x7f]/g;
-  Bim = Cn(e => {
-    let t = xdc(e.replace(Kcr, "x"));
-    if (!t || !w8r.has(t.protocol)) return T(`[footerLinks] url template "${e}" must have a literal origin with an allowlisted scheme (e.g. https://host/...); skipping`, {
-      level: "warn"
-    }), It("repl_footer_links", "bad_url_template"), null;
-    return Idc(t);
+// [unwrapped __esm module Ycr] deps: IB, dn, vy, je, At, sr, g0
+wdc = UZt * 4, Tdc = wdc * 10;
+Rim = Cn(e => {
+  T(`[footerLinks] skipping a 'regex' entry with non-string fields (pattern/url/label types: ${e}); the entry is preserved in settings`, {
+    level: "warn"
+  }), It("repl_footer_links", "unreadable_entry");
+}), Kcr = /\{([^{}]+)\}/g, Lim = /\(\?<([^>=!][^>]*)>/g, Dim = Cn((e, t, n) => {
+  let r = new Set([...t.matchAll(Lim)].map(o => o[1]));
+  for (let [, o] of n.matchAll(Kcr)) if (o !== void 0 && !r.has(o)) T(`[footerLinks] template references {${o}} but pattern ${t} has no such named capture group`, {
+    level: "warn"
   });
-  Uim = Cn(e => {
-    try {
-      return new RegExp(e, "g");
-    } catch (t) {
-      return T(`[footerLinks] invalid pattern ${e}: ${be(t)}`, {
-        level: "warn"
-      }), It("repl_footer_links", "invalid_pattern"), null;
-    }
-  });
+}), Pim = /^(?:\.|%2e){1,2}$/i;
+$im = /[\x00-\x1f\x7f]/g;
+Bim = Cn(e => {
+  let t = xdc(e.replace(Kcr, "x"));
+  if (!t || !w8r.has(t.protocol)) return T(`[footerLinks] url template "${e}" must have a literal origin with an allowlisted scheme (e.g. https://host/...); skipping`, {
+    level: "warn"
+  }), It("repl_footer_links", "bad_url_template"), null;
+  return Idc(t);
+});
+Uim = Cn(e => {
+  try {
+    return new RegExp(e, "g");
+  } catch (t) {
+    return T(`[footerLinks] invalid pattern ${e}: ${be(t)}`, {
+      level: "warn"
+    }), It("repl_footer_links", "invalid_pattern"), null;
+  }
 });
 function Ldc() {
   let e = $Lr("footerLinksRegexes").flat();

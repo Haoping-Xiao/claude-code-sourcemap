@@ -4,17 +4,6 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0028  score=0.4353  fileCov=0.0028
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hOc = E(() => {
-  Un();
-  kt();
-  pke();
-  gOc();
-  dyt();
-  p8t();
-  __();
-  Gy();
-  Hoe();
-});
 function yOc({ deferToCleanup: e }) {
   let t = performance.now(),
     n = IRl();

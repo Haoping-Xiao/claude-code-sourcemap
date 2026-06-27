@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0106  score=0.1743  fileCov=0.0111
 // note: nearest: src/cli/print.ts (0.0106); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var b0c = E(() => {
-  ft();
-  db();
-  je();
-  At();
-  jS();
-  Jt();
-  ovt = require("path");
-});
+// [unwrapped __esm module b0c] deps: ft, db, je, At, jS, Jt
+ovt = require("path");
 async function wtn(e) {
   try {
     await y0c(e);

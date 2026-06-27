@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.0711  score=0.1956  fileCov=0.1004
 // note: low-confidence suggestion: src/ink/root.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vtn = E(() => {
-  lH();
-  tYo();
-});
 function nYo() {
   return Promise.all([Promise.resolve().then(() => (Ye(), wW)), Promise.resolve().then(() => (tYo(), i0c)), Promise.resolve().then(() => (tvt(), _tn)), Promise.resolve().then(() => (vtn(), Ttn))]);
 }

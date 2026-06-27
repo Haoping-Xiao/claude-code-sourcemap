@@ -4,17 +4,6 @@
 // class=new  jaccard=0.0062  score=0.3055  fileCov=0.0063
 // note: nearest: src/cli/print.ts (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mic = E(() => {
-  Rx();
-  EAe();
-  je();
-  At();
-  Mh();
-  dr();
-  _1();
-  cdo();
-  h7n();
-});
 function qem(e, t) {
   let n = o => {
       let s = t;

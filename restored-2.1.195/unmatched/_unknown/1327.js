@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zJs = E(() => {
-  NUr();
-  qJs = R(PE(), 1);
-});
+// [unwrapped __esm module zJs] deps: NUr
+qJs = R(PE(), 1);

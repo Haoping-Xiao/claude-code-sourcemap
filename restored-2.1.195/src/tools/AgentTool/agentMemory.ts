@@ -4,26 +4,8 @@
 // class=modified  jaccard=0.4486  score=0.9266  fileCov=0.4651
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GNt = E(() => {
-  dn();
-  Un();
-  kt();
-  iit();
-  CNi();
-  je();
-  fn();
-  At();
-  es();
-  ys();
-  k0();
-  dr();
-  LNi();
-  UNt();
-  Uh();
-  MM();
-  NNi();
-  BNi = require("path");
-});
+// [unwrapped __esm module GNt] deps: dn, Un, kt, iit, CNi, je, fn, At, es, ys, k0, dr, LNi, UNt, Uh, MM, NNi
+BNi = require("path");
 function WNi(e) {
   let t = e.replace(/[^a-zA-Z0-9\-_]/g, "-");
   return t === "" ? "unknown" : t;

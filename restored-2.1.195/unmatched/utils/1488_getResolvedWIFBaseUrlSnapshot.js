@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0207  score=0.0674  fileCov=0.029
 // note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0207); dir inferred from dep-graph -> utils; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wjr = E(() => {
-  uee();
-  je();
-  At();
-  vn();
-  kt();
-  Zsi = require("path");
-});
+// [unwrapped __esm module wjr] deps: uee, je, At, vn, kt
+Zsi = require("path");
 var kjr = {};
 _t(kjr, {
   withCredentialsLock: () => nHn,

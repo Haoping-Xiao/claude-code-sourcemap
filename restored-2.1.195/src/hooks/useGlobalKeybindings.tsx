@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.4648  score=0.8242  fileCov=0.5159
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tEc = E(() => {
-  ft();
-  HI();
-  fd();
-  Lo();
-  je();
-  Is();
-  sj();
-});
 function Izo(e) {
   let t = nEc.c(37),
     {

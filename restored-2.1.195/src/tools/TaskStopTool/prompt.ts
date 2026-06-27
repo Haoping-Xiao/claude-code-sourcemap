@@ -4,8 +4,8 @@
 // class=modified  jaccard=0.0537  score=0.0537  fileCov=1
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tSe = E(() => {
-  toa = `Schedule when to resume work in /loop dynamic mode \u2014 the user invoked /loop without an interval, asking you to self-pace iterations of a specific task.
+// [unwrapped __esm module tSe]
+toa = `Schedule when to resume work in /loop dynamic mode \u2014 the user invoked /loop without an interval, asking you to self-pace iterations of a specific task.
 
 Do NOT schedule a short-interval wakeup to poll for background work you started \u2014 when harness-tracked work finishes, you are re-invoked automatically, so polling is wasted. Instead schedule a long fallback (1200s+) so the loop survives if the work hangs or never notifies. The exception is external work the harness cannot track (a CI run, a deploy, a remote queue) \u2014 there, pick a delay matched to how fast that state actually changes.
 
@@ -30,7 +30,6 @@ The runtime clamps to [60, 3600], so you don't need to clamp yourself.
 
 One short sentence on what you chose and why. Goes to telemetry and is shown back to the user. "watching CI run" beats "waiting." The user reads this to understand what you're doing without having to predict your cadence in advance \u2014 make it specific.
 `;
-});
 var yL = "TaskList";
 var QD = "TaskStop",
   roa = `

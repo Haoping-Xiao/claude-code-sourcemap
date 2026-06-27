@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0571  score=0.4388  fileCov=0.0616
 // note: nearest: src/utils/collapseHookSummaries.ts (0.0571); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uZi = E(() => {
-  vno();
-  T$n();
-});
 function sk(e, t, ...n) {
   return n.reduce((r, o) => r.nestedMessages[o], e.messages[t]);
 }

@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.312  score=0.5016  fileCov=0.4522
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vzl = E(() => {
-  si();
-  ft();
-  Vl();
-  Ye();
-  Csr();
-  kP();
-  ((Azl = R(lt(), 1)), (Hzl = R(rt(), 1)), (pYe = R(se(), 1)));
-});
+// [unwrapped __esm module vzl] deps: si, ft, Vl, Ye, Csr, kP
+((Azl = R(lt(), 1)), (Hzl = R(rt(), 1)), (pYe = R(se(), 1)));
 function Rqf(e) {
   let t = FAt.c(4),
     { rule: n } = e,

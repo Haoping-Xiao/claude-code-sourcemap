@@ -4,37 +4,34 @@
 // class=modified  jaccard=0.267  score=0.2857  fileCov=0.803
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vXl = E(() => {
-  si();
-  lg();
-  ((p8f = {
-    name: "sandbox",
-    get description() {
-      let e = xo.isSandboxingEnabled(),
-        t = xo.isAutoAllowBashIfSandboxedEnabled(),
-        n = xo.areUnsandboxedCommandsAllowed(),
-        r = xo.areSandboxSettingsLockedByPolicy() || xo.areUnsandboxedCommandsForbiddenByPolicy(),
-        o = xo.checkDependencies().errors.length === 0,
-        s;
-      if (!o) s = nt.warning;
-      else s = e ? nt.tick : nt.circle;
-      let i = "sandbox disabled";
-      if (e)
-        ((i = t ? "sandbox enabled (auto-allow)" : "sandbox enabled"),
-          (i += n ? ", fallback allowed" : ""));
-      if (r) i += " (managed)";
-      return `${s} ${i} (\u23CE to configure)`;
-    },
-    argumentHint: 'exclude "command pattern"',
-    get isHidden() {
-      return !xo.isSupportedPlatform() || !xo.isPlatformInEnabledList();
-    },
-    immediate: !0,
-    type: "local-jsx",
-    load: () => Promise.resolve().then(() => (HXl(), EXl)),
-  }),
-    (TXl = p8f));
-});
+// [unwrapped __esm module vXl] deps: si, lg
+((p8f = {
+  name: "sandbox",
+  get description() {
+    let e = xo.isSandboxingEnabled(),
+      t = xo.isAutoAllowBashIfSandboxedEnabled(),
+      n = xo.areUnsandboxedCommandsAllowed(),
+      r = xo.areSandboxSettingsLockedByPolicy() || xo.areUnsandboxedCommandsForbiddenByPolicy(),
+      o = xo.checkDependencies().errors.length === 0,
+      s;
+    if (!o) s = nt.warning;
+    else s = e ? nt.tick : nt.circle;
+    let i = "sandbox disabled";
+    if (e)
+      ((i = t ? "sandbox enabled (auto-allow)" : "sandbox enabled"),
+        (i += n ? ", fallback allowed" : ""));
+    if (r) i += " (managed)";
+    return `${s} ${i} (\u23CE to configure)`;
+  },
+  argumentHint: 'exclude "command pattern"',
+  get isHidden() {
+    return !xo.isSupportedPlatform() || !xo.isPlatformInEnabledList();
+  },
+  immediate: !0,
+  type: "local-jsx",
+  load: () => Promise.resolve().then(() => (HXl(), EXl)),
+}),
+  (TXl = p8f));
 function wXl(e) {
   let t = w4o.c(36),
     { chromeClient: n, onDone: r } = e,

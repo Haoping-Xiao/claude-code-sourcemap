@@ -4,49 +4,35 @@
 // class=modified  jaccard=0.1358  score=0.2348  fileCov=0.2437
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I9r = E(() => {
-  Ree();
-  Qi();
-  Xr();
-  Rc();
-  Yxe();
-  og();
-  oo();
-  je();
-  fn();
-  Rd();
-  qd();
-  Jt();
-  Ls();
-  ((mvi = require("fs")),
-    (vCn = require("fs/promises")),
-    (C9r = require("path")),
-    (gvi = ve(() =>
-      H.object({
-        id: H.string(),
-        max_input_tokens: H.number().optional(),
-        max_tokens: H.number().optional(),
-      }).strip(),
-    )),
-    (jkd = ve(() =>
-      H.object({
-        models: H.array(gvi()),
-        timestamp: H.number(),
-      }),
-    )));
-  w9r = Cn(
-    (e) => {
-      try {
-        let t = mvi.readFileSync(e, "utf-8"),
-          n = jkd().safeParse(Ia(t, false));
-        return n.success ? n.data.models : null;
-      } catch {
-        return null;
-      }
-    },
-    (e) => e,
-  );
-});
+// [unwrapped __esm module I9r] deps: Ree, Qi, Xr, Rc, Yxe, og, oo, je, fn, Rd, qd, Jt, Ls
+((mvi = require("fs")),
+  (vCn = require("fs/promises")),
+  (C9r = require("path")),
+  (gvi = ve(() =>
+    H.object({
+      id: H.string(),
+      max_input_tokens: H.number().optional(),
+      max_tokens: H.number().optional(),
+    }).strip(),
+  )),
+  (jkd = ve(() =>
+    H.object({
+      models: H.array(gvi()),
+      timestamp: H.number(),
+    }),
+  )));
+w9r = Cn(
+  (e) => {
+    try {
+      let t = mvi.readFileSync(e, "utf-8"),
+        n = jkd().safeParse(Ia(t, false));
+      return n.success ? n.data.models : null;
+    } catch {
+      return null;
+    }
+  },
+  (e) => e,
+);
 function Sye() {
   return ut(process.env.CLAUDE_CODE_DISABLE_1M_CONTEXT);
 }

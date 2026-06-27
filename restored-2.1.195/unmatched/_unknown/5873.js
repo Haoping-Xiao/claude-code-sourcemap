@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0198  score=0.4317  fileCov=0.0203
 // note: nearest: node_modules/node-forge/lib/util.js (0.0198); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RXo = E(() => {
-  rB();
-  $mr = rDm;
-});
+// [unwrapped __esm module RXo] deps: rB
+$mr = rDm;
 function oB(...e) {
   let t = e.reduce((o, {
       length: s

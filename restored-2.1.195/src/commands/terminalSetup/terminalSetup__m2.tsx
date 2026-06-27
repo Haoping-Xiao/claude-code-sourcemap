@@ -4,13 +4,12 @@
 // class=modified (alt of src/commands/terminalSetup/terminalSetup.tsx)  jaccard=0.0498  score=0.1248  fileCov=0.0764
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var P9l = E(() => {
-  D9l = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub",
-  };
-});
+// [unwrapped __esm module P9l]
+D9l = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub",
+};
 function Q2o(e, t) {
   let n = e < 1 ? Math.round(e / isr) * isr : Math.round(e);
   return _b(n, t, ssr);

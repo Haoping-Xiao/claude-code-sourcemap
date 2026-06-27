@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.1892  score=0.4166  fileCov=0.2574
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AKt = E(() => {
-  dr();
-});
 function OEf(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
 }

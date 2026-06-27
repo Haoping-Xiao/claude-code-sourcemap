@@ -4,12 +4,6 @@
 // class=new  jaccard=0.021  score=1  fileCov=0.021
 // note: nearest: node_modules/@smithy/types/dist-cjs/index.js (0.021); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Axs = E(() => {
-  _xs();
-  bxs();
-  Sxs();
-  Exs();
-});
 var Hxs = () => {};
 var Txs = "__smithy_context";
 var vxs = () => {};

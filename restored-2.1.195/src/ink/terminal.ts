@@ -4,37 +4,35 @@
 // class=modified  jaccard=0.3441  score=0.4787  fileCov=0.5503
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var q7 = E(() => {
-  OM();
-  p_ = {
-    CURSOR_VISIBLE: 25,
-    ALT_SCREEN: 47,
-    ALT_SCREEN_CLEAR: 1049,
-    MOUSE_NORMAL: 1000,
-    MOUSE_BUTTON: 1002,
-    MOUSE_ANY: 1003,
-    MOUSE_SGR: 1006,
-    FOCUS_EVENTS: 1004,
-    BRACKETED_PASTE: 2004,
-    THEME_NOTIFY: 2031,
-    SYNCHRONIZED_UPDATE: 2026,
-  };
-  ((hBt = RU(p_.SYNCHRONIZED_UPDATE)),
-    (Oit = W7(p_.SYNCHRONIZED_UPDATE)),
-    (RRn = RU(p_.BRACKETED_PASTE)),
-    (LRn = W7(p_.BRACKETED_PASTE)),
-    (M7r = RU(p_.FOCUS_EVENTS)),
-    (yBt = W7(p_.FOCUS_EVENTS)),
-    (r4i = RU(p_.THEME_NOTIFY)),
-    (DRn = W7(p_.THEME_NOTIFY)),
-    (A1 = RU(p_.CURSOR_VISIBLE)),
-    (_W = W7(p_.CURSOR_VISIBLE)),
-    (PRn = RU(p_.ALT_SCREEN_CLEAR)),
-    (o4i = W7(p_.ALT_SCREEN_CLEAR)),
-    (n4d = RU(p_.MOUSE_NORMAL) + RU(p_.MOUSE_BUTTON) + RU(p_.MOUSE_ANY) + RU(p_.MOUSE_SGR)),
-    (r4d = RU(p_.MOUSE_NORMAL) + RU(p_.MOUSE_SGR)),
-    (kce = W7(p_.MOUSE_SGR) + W7(p_.MOUSE_ANY) + W7(p_.MOUSE_BUTTON) + W7(p_.MOUSE_NORMAL)));
-});
+// [unwrapped __esm module q7] deps: OM
+p_ = {
+  CURSOR_VISIBLE: 25,
+  ALT_SCREEN: 47,
+  ALT_SCREEN_CLEAR: 1049,
+  MOUSE_NORMAL: 1000,
+  MOUSE_BUTTON: 1002,
+  MOUSE_ANY: 1003,
+  MOUSE_SGR: 1006,
+  FOCUS_EVENTS: 1004,
+  BRACKETED_PASTE: 2004,
+  THEME_NOTIFY: 2031,
+  SYNCHRONIZED_UPDATE: 2026,
+};
+((hBt = RU(p_.SYNCHRONIZED_UPDATE)),
+  (Oit = W7(p_.SYNCHRONIZED_UPDATE)),
+  (RRn = RU(p_.BRACKETED_PASTE)),
+  (LRn = W7(p_.BRACKETED_PASTE)),
+  (M7r = RU(p_.FOCUS_EVENTS)),
+  (yBt = W7(p_.FOCUS_EVENTS)),
+  (r4i = RU(p_.THEME_NOTIFY)),
+  (DRn = W7(p_.THEME_NOTIFY)),
+  (A1 = RU(p_.CURSOR_VISIBLE)),
+  (_W = W7(p_.CURSOR_VISIBLE)),
+  (PRn = RU(p_.ALT_SCREEN_CLEAR)),
+  (o4i = W7(p_.ALT_SCREEN_CLEAR)),
+  (n4d = RU(p_.MOUSE_NORMAL) + RU(p_.MOUSE_BUTTON) + RU(p_.MOUSE_ANY) + RU(p_.MOUSE_SGR)),
+  (r4d = RU(p_.MOUSE_NORMAL) + RU(p_.MOUSE_SGR)),
+  (kce = W7(p_.MOUSE_SGR) + W7(p_.MOUSE_ANY) + W7(p_.MOUSE_BUTTON) + W7(p_.MOUSE_NORMAL)));
 function iGe() {
   let e = fy()?.progressReporting;
   if (e !== void 0) return e;

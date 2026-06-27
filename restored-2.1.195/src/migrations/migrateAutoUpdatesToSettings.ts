@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.44  score=0.7218  fileCov=0.5298
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OOc = E(() => {
-  kt();
-  pke();
-  DD();
-  Ls();
-  dr();
-  $xm = {};
-});
+// [unwrapped __esm module OOc] deps: kt, pke, DD, Ls, dr
+$xm = {};
 function NOc() {
   let e = Dt();
   if (e.autoUpdates !== false || e.autoUpdatesProtectedForNative === true) return;

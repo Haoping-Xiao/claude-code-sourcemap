@@ -4,14 +4,13 @@
 // class=new  jaccard=0.0556  score=1  fileCov=0.0556
 // note: nearest: node_modules/@smithy/signature-v4/dist-cjs/index.js (0.0556); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZNr = E(() => {
-  k8s = {}, QNr = {};
-  for (let e = 0; e < 256; e++) {
-    let t = e.toString(16).toLowerCase();
-    if (t.length === 1) t = `0${t}`;
-    k8s[e] = t, QNr[t] = e;
-  }
-});
+// [unwrapped __esm module ZNr]
+k8s = {}, QNr = {};
+for (let e = 0; e < 256; e++) {
+  let t = e.toString(16).toLowerCase();
+  if (t.length === 1) t = `0${t}`;
+  k8s[e] = t, QNr[t] = e;
+}
 class fnt {
   bytes;
   constructor(e) {

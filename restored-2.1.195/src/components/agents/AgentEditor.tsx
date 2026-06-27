@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3954  score=0.6626  fileCov=0.4951
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var c4o = E(() => {
-  sFn();
-  vf();
-});
 function EYl({ agent: e, tools: t, onSaved: n, onBack: r }) {
   let o = Ho(),
     [s, i] = aZ.useState("menu"),

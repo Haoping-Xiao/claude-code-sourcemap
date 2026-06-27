@@ -4,74 +4,49 @@
 // class=modified  jaccard=0.2223  score=0.3159  fileCov=0.4289
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AVe = E(() => {
-  PR();
-  uee();
-  d2r();
-  je();
-  vn();
-  co();
-  Ls();
-  ft();
-  oo();
-  fn();
-  At();
-  NE();
-  Ao();
-  Mh();
-  dn();
-  Un();
-  kt();
-  H5e();
-  Ijt();
-  yje();
-  tP();
-  gSe();
-  lZn();
-  lZn();
-  Eom = new Set([
-    "repl_main_thread",
-    "repl_main_thread:outputStyle:custom",
-    "repl_main_thread:outputStyle:Proactive",
-    "repl_main_thread:outputStyle:Explanatory",
-    "repl_main_thread:outputStyle:Learning",
-    "sdk",
-    "agent:custom",
-    "agent:default",
-    "agent:builtin",
-    "compact",
-    "hook_agent",
-    "hook_prompt",
-    "side_question",
-    "auto_mode",
-    ...[],
-  ]);
-  tO = class tO extends Error {
-    originalError;
-    retryContext;
-    constructor(e, t) {
-      let n = be(e);
-      super(n);
-      this.originalError = e;
-      this.retryContext = t;
-      if (((this.name = "RetryError"), e instanceof Error && e.stack)) this.stack = e.stack;
-    }
-  };
-  ((Tom = [
-    "invalid_request_error",
-    "authentication_error",
-    "billing_error",
-    "permission_error",
-    "not_found_error",
-    "request_too_large",
-    "rate_limit_error",
-    "timeout_error",
-    "api_error",
-    "overloaded_error",
-  ]),
-    (vom = new Set([401, 407, 429, 404, 403, 413])),
-    (wom = [Oio, Djt, Nio, O1n, wcc, Pjt]));
-});
+// [unwrapped __esm module AVe] deps: PR, uee, d2r, je, vn, co, Ls, ft, oo, fn, At, NE, Ao, Mh, dn, Un, kt, H5e, Ijt, yje, tP, gSe, lZn, lZn
+Eom = new Set([
+  "repl_main_thread",
+  "repl_main_thread:outputStyle:custom",
+  "repl_main_thread:outputStyle:Proactive",
+  "repl_main_thread:outputStyle:Explanatory",
+  "repl_main_thread:outputStyle:Learning",
+  "sdk",
+  "agent:custom",
+  "agent:default",
+  "agent:builtin",
+  "compact",
+  "hook_agent",
+  "hook_prompt",
+  "side_question",
+  "auto_mode",
+  ...[],
+]);
+tO = class tO extends Error {
+  originalError;
+  retryContext;
+  constructor(e, t) {
+    let n = be(e);
+    super(n);
+    this.originalError = e;
+    this.retryContext = t;
+    if (((this.name = "RetryError"), e instanceof Error && e.stack)) this.stack = e.stack;
+  }
+};
+((Tom = [
+  "invalid_request_error",
+  "authentication_error",
+  "billing_error",
+  "permission_error",
+  "not_found_error",
+  "request_too_large",
+  "rate_limit_error",
+  "timeout_error",
+  "api_error",
+  "overloaded_error",
+]),
+  (vom = new Set([401, 407, 429, 404, 403, 413])),
+  (wom = [Oio, Djt, Nio, O1n, wcc, Pjt]));
 var bWt = {};
 _t(bWt, {
   waitForPolicyLimitsToLoad: () => waitForPolicyLimitsToLoad,

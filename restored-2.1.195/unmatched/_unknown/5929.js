@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0198  score=0.3875  fileCov=0.0204
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0198); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ljc = E(() => {
-  RXo();
-  sB();
-  wm();
-  YP();
-});
 async function cjc(e, t) {
   let n = {
     ...e,

@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0026  score=0.1908  fileCov=0.0026
 // note: nearest: src/commands/insights.ts (0.0026); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var eAl = E(() => {
-  WRo = new Map(), qRo = new Map();
-});
+// [unwrapped __esm module eAl]
+WRo = new Map(), qRo = new Map();
 var sAl = {};
 _t(sAl, {
   ArtifactTool: () => ArtifactTool

@@ -4,16 +4,8 @@
 // class=modified (alt of src/tools/SkillTool/prompt.ts)  jaccard=0.0817  score=0.2219  fileCov=0.1144
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var B1 = E(() => {
-  ft();
-  je();
-  fn();
-  At();
-  es();
-  ys();
-  Jbe();
-  ((_ct = require("fs/promises")), (bct = require("path")));
-});
+// [unwrapped __esm module B1] deps: ft, je, fn, At, es, ys, Jbe
+((_ct = require("fs/promises")), (bct = require("path")));
 function WWe() {
   return Dr().skillListingMaxDescChars ?? Zrp;
 }

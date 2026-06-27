@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0625  score=0.2051  fileCov=0.0825
 // note: low-confidence suggestion: node_modules/undici/lib/core/tree.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OXo = E(() => {
-  wm();
-  Mvt = sDm;
-});
+// [unwrapped __esm module OXo] deps: wm
+Mvt = sDm;
 var iDm = (e, t) => {
     if (!(e instanceof Uint8Array)) throw TypeError("First argument must be a buffer");
     if (!(t instanceof Uint8Array)) throw TypeError("Second argument must be a buffer");

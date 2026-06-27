@@ -4,14 +4,13 @@
 // class=new  jaccard=0.0417  score=1  fileCov=0.0417
 // note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.0417); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fIs = E(() => {
-  pIs = R(by(), 1);
-  Umn = class Umn extends pIs.CredentialsProviderError {
-    tryNextLink;
-    name = "InstanceMetadataV1FallbackError";
-    constructor(e, t = true) {
-      super(e, t);
-      this.tryNextLink = t, Object.setPrototypeOf(this, Umn.prototype);
-    }
-  };
-});
+// [unwrapped __esm module fIs]
+pIs = R(by(), 1);
+Umn = class Umn extends pIs.CredentialsProviderError {
+  tryNextLink;
+  name = "InstanceMetadataV1FallbackError";
+  constructor(e, t = true) {
+    super(e, t);
+    this.tryNextLink = t, Object.setPrototypeOf(this, Umn.prototype);
+  }
+};

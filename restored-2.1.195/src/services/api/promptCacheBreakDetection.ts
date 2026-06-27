@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.4509  score=0.5934  fileCov=0.6526
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var b5e = E(() => {
-  Bla();
-  aao();
-  Wla();
-  qla();
-});
 function tca() {
   return process.env.CLAUDE_CODE_ENTRYPOINT === "claude-desktop";
 }

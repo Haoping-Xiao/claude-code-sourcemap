@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0064  score=0.0942  fileCov=0.0068
 // note: nearest: src/bridge/bridgeMain.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gqc = E(() => {
-  dn();
-  kt();
-  At();
-  Is();
-  QEe();
-  Jt();
-  fqc = require("child_process"), KZo = require("readline");
-});
+// [unwrapped __esm module gqc] deps: dn, kt, At, Is, QEe, Jt
+fqc = require("child_process"), KZo = require("readline");
 function hqc(e) {
   return e === "heartbeat" || lce();
 }

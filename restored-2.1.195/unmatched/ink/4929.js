@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0135  score=0.2764  fileCov=0.014
 // note: nearest: src/components/Stats.tsx (0.0135); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rVl = E(() => {
-  URn();
-  gGe();
-  Jke();
-  Ye();
-  U3f = R(lt(), 1), tVl = R(rt(), 1), nVl = R(se(), 1), WZS = F3f * j3f;
-});
+// [unwrapped __esm module rVl] deps: URn, gGe, Jke, Ye
+U3f = R(lt(), 1), tVl = R(rt(), 1), nVl = R(se(), 1), WZS = F3f * j3f;
 function A2o() {
   let e = E2o.c(2),
     t = sVl.useSyncExternalStore(cat, wWi),

@@ -4,139 +4,124 @@
 // class=modified (alt of src/bridge/bridgeStatusUtil.ts)  jaccard=0.0316  score=0.0477  fileCov=0.0855
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var z6o = E(() => {
-  si();
-  uo();
-  SC();
-  loe();
-  W_c();
-  fzn();
-  q6o();
-  _i();
-  Ye();
-  Un();
-  atr();
-  JFo();
-  Ko();
-  eKn();
-  ((kdr = R(lt(), 1)),
-    (V_c = require("path")),
-    (z_c = R(rt(), 1)),
-    (UTt = R(rt(), 1)),
-    (BH = R(se(), 1)));
-  umm = UTt.memo(function (t) {
-    let n = kdr.c(26),
-      { bridgeSelected: r, leadingSeparator: o } = t,
-      s = Ht(fmm),
-      i = Ht(mmm),
-      a = Ht(gmm),
-      l = Ht(hmm),
-      c = Ht(ymm),
-      u = Ht(_mm),
-      d;
-    if (n[0] !== l || n[1] !== c)
-      ((d = !xC() || c || Boolean(l)), (n[0] = l), (n[1] = c), (n[2] = d));
-    else d = n[2];
-    let p = d,
-      f;
-    if (n[3] !== s || n[4] !== a || n[5] !== i)
-      ((f = w9n({
-        connected: s,
-        sessionActive: i,
-        reconnecting: a,
-      })),
-        (n[3] = s),
-        (n[4] = a),
-        (n[5] = i),
-        (n[6] = f));
-    else f = n[6];
-    let m = f,
-      g = W6o(),
-      h,
-      y;
-    if (n[7] !== p || n[8] !== m.label)
-      ((h = () => {
-        if (!p && m.label === "/rc active") G_c();
-      }),
-        (y = [p, m.label]),
-        (n[7] = p),
-        (n[8] = m.label),
-        (n[9] = h),
-        (n[10] = y));
-    else ((h = n[9]), (y = n[10]));
-    if ((UTt.useEffect(h, y), p)) return null;
-    let b = m.label === "/rc active" && !g ? "/rc" : m.label,
-      _;
-    if (n[11] !== b || n[12] !== u)
-      ((_ = u
-        ? BH.jsx(xs, {
-            url: u,
-            children: b,
-          })
-        : b),
-        (n[11] = b),
-        (n[12] = u),
-        (n[13] = _));
-    else _ = n[13];
-    let S = _,
-      A;
-    if (n[14] !== o)
-      ((A =
-        o &&
-        BH.jsx(
-          w,
-          {
-            dimColor: true,
-            children: " \xB7 ",
-          },
-          "bridge-sep",
-        )),
-        (n[14] = o),
-        (n[15] = A));
-    else A = n[15];
-    let v = r ? "background" : m.color,
-      C;
-    if (n[16] !== r)
-      ((C =
-        r &&
-        BH.jsxs(w, {
+// [unwrapped __esm module z6o] deps: si, uo, SC, loe, W_c, fzn, q6o, _i, Ye, Un, atr, JFo, Ko, eKn
+((kdr = R(lt(), 1)),
+  (V_c = require("path")),
+  (z_c = R(rt(), 1)),
+  (UTt = R(rt(), 1)),
+  (BH = R(se(), 1)));
+umm = UTt.memo(function (t) {
+  let n = kdr.c(26),
+    { bridgeSelected: r, leadingSeparator: o } = t,
+    s = Ht(fmm),
+    i = Ht(mmm),
+    a = Ht(gmm),
+    l = Ht(hmm),
+    c = Ht(ymm),
+    u = Ht(_mm),
+    d;
+  if (n[0] !== l || n[1] !== c)
+    ((d = !xC() || c || Boolean(l)), (n[0] = l), (n[1] = c), (n[2] = d));
+  else d = n[2];
+  let p = d,
+    f;
+  if (n[3] !== s || n[4] !== a || n[5] !== i)
+    ((f = w9n({
+      connected: s,
+      sessionActive: i,
+      reconnecting: a,
+    })),
+      (n[3] = s),
+      (n[4] = a),
+      (n[5] = i),
+      (n[6] = f));
+  else f = n[6];
+  let m = f,
+    g = W6o(),
+    h,
+    y;
+  if (n[7] !== p || n[8] !== m.label)
+    ((h = () => {
+      if (!p && m.label === "/rc active") G_c();
+    }),
+      (y = [p, m.label]),
+      (n[7] = p),
+      (n[8] = m.label),
+      (n[9] = h),
+      (n[10] = y));
+  else ((h = n[9]), (y = n[10]));
+  if ((UTt.useEffect(h, y), p)) return null;
+  let b = m.label === "/rc active" && !g ? "/rc" : m.label,
+    _;
+  if (n[11] !== b || n[12] !== u)
+    ((_ = u
+      ? BH.jsx(xs, {
+          url: u,
+          children: b,
+        })
+      : b),
+      (n[11] = b),
+      (n[12] = u),
+      (n[13] = _));
+  else _ = n[13];
+  let S = _,
+    A;
+  if (n[14] !== o)
+    ((A =
+      o &&
+      BH.jsx(
+        w,
+        {
           dimColor: true,
-          children: [
-            " \xB7 ",
-            BH.jsx(ht, {
-              chord: "enter",
-              action: "view",
-            }),
-          ],
-        })),
-        (n[16] = r),
-        (n[17] = C));
-    else C = n[17];
-    let x;
-    if (n[18] !== r || n[19] !== S || n[20] !== v || n[21] !== C)
-      ((x = BH.jsxs(w, {
-        color: v,
-        inverse: r,
-        wrap: "truncate",
-        children: [S, C],
+          children: " \xB7 ",
+        },
+        "bridge-sep",
+      )),
+      (n[14] = o),
+      (n[15] = A));
+  else A = n[15];
+  let v = r ? "background" : m.color,
+    C;
+  if (n[16] !== r)
+    ((C =
+      r &&
+      BH.jsxs(w, {
+        dimColor: true,
+        children: [
+          " \xB7 ",
+          BH.jsx(ht, {
+            chord: "enter",
+            action: "view",
+          }),
+        ],
       })),
-        (n[18] = r),
-        (n[19] = S),
-        (n[20] = v),
-        (n[21] = C),
-        (n[22] = x));
-    else x = n[22];
-    let I;
-    if (n[23] !== A || n[24] !== x)
-      ((I = BH.jsxs(BH.Fragment, {
-        children: [A, x],
-      })),
-        (n[23] = A),
-        (n[24] = x),
-        (n[25] = I));
-    else I = n[25];
-    return I;
-  });
+      (n[16] = r),
+      (n[17] = C));
+  else C = n[17];
+  let x;
+  if (n[18] !== r || n[19] !== S || n[20] !== v || n[21] !== C)
+    ((x = BH.jsxs(w, {
+      color: v,
+      inverse: r,
+      wrap: "truncate",
+      children: [S, C],
+    })),
+      (n[18] = r),
+      (n[19] = S),
+      (n[20] = v),
+      (n[21] = C),
+      (n[22] = x));
+  else x = n[22];
+  let I;
+  if (n[23] !== A || n[24] !== x)
+    ((I = BH.jsxs(BH.Fragment, {
+      children: [A, x],
+    })),
+      (n[23] = A),
+      (n[24] = x),
+      (n[25] = I));
+  else I = n[25];
+  return I;
 });
 function Smm(e) {
   let t = K6o.c(88),

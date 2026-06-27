@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2057  score=1  fileCov=0.2057
 // note: low-confidence suggestion: src/cli/transports/transportUtils.ts; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sXo = E(() => {
-  Un();
-});
 function sUc(e, t = {}, n, r) {
   let o = new oUc.URL(e.href);
   if (o.protocol === "wss:") o.protocol = "https:";else if (o.protocol === "ws:") o.protocol = "http:";

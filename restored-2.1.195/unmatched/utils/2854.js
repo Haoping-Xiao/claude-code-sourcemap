@@ -4,15 +4,10 @@
 // class=new  jaccard=0.0192  score=1  fileCov=0.0192
 // note: nearest: src/utils/stats.ts (0.0192); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var y_ = E(() => {
-  Qi();
-  ft();
-  fn();
-  jS();
-  vca = require("fs/promises"), bLe = require("path");
-  Jh = Cn(e => bLe.join(oF(), LE(e)));
-  wao = new Map();
-});
+// [unwrapped __esm module y_] deps: Qi, ft, fn, jS
+vca = require("fs/promises"), bLe = require("path");
+Jh = Cn(e => bLe.join(oF(), LE(e)));
+wao = new Map();
 function Tut(e) {
   let t = [],
     n = [],

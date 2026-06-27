@@ -4,15 +4,14 @@
 // class=modified  jaccard=0.3982  score=0.6528  fileCov=0.5052
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I8r = E(() => {
-  ERd = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  };
-});
+// [unwrapped __esm module I8r]
+ERd = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
 function T1t(e = k8r) {
   return `http://localhost:${e}/callback`;
 }

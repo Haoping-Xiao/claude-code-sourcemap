@@ -4,25 +4,11 @@
 // class=modified  jaccard=0.4633  score=0.6356  fileCov=0.6309
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uTt = E(() => {
-  Xr();
-  ft();
-  ag();
-  oo();
-  er();
-  je();
-  Cp();
-  At();
-  OMe();
-  Ao();
-  DE();
-  __();
-  Fh();
-  _am = H.object({
-    status_category: H.string(),
-    status_detail: H.string(),
-    needs_action: H.string(),
-  });
+// [unwrapped __esm module uTt] deps: Xr, ft, ag, oo, er, je, Cp, At, OMe, Ao, DE, __, Fh
+_am = H.object({
+  status_category: H.string(),
+  status_detail: H.string(),
+  needs_action: H.string(),
 });
 var cpc = {};
 _t(cpc, {

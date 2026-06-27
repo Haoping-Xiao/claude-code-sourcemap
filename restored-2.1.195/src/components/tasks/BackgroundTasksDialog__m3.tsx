@@ -4,11 +4,9 @@
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0296  score=0.0649  fileCov=0.0517
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var k6e = E(() => {
-  Jt();
-  WAe();
-  zYn = R(require("vm"));
-  Ndf = `(() => {
+// [unwrapped __esm module k6e] deps: Jt, WAe
+zYn = R(require("vm"));
+Ndf = `(() => {
       const NOW_ERR = ${De($df)};
       const RANDOM_ERR = ${De(Odf)};
       Math.random = function random() { throw new Error(RANDOM_ERR) };
@@ -29,7 +27,6 @@ var k6e = E(() => {
       Object.freeze(RealDate);
       globalThis.Date = ShimDate;
     })()`;
-});
 function uml(e) {
   let { parse: t } = qYn(),
     n = Dko(),

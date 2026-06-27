@@ -4,14 +4,13 @@
 // class=new  jaccard=0.0556  score=1  fileCov=0.0556
 // note: nearest: node_modules/@smithy/signature-v4/dist-cjs/index.js (0.0556); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var h4r = E(() => {
-  gui = {}, g4r = {};
-  for (let e = 0; e < 256; e++) {
-    let t = e.toString(16).toLowerCase();
-    if (t.length === 1) t = `0${t}`;
-    gui[e] = t, g4r[t] = e;
-  }
-});
+// [unwrapped __esm module h4r]
+gui = {}, g4r = {};
+for (let e = 0; e < 256; e++) {
+  let t = e.toString(16).toLowerCase();
+  if (t.length === 1) t = `0${t}`;
+  gui[e] = t, g4r[t] = e;
+}
 class Srt {
   constructor(e) {
     if (this.bytes = e, e.byteLength !== 8) throw Error("Int64 buffers must be exactly 8 bytes");

@@ -4,19 +4,9 @@
 // class=modified  jaccard=0.257  score=0.5176  fileCov=0.3379
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yVl = E(() => {
-  Mql();
-  Ye();
-  m0e();
-  v2o();
-  je();
-  At();
-  vn();
-  co();
-  UFo();
-  ((Am = R(rt(), 1)), (Ise = R(se(), 1)), (dVl = new WeakMap()));
-  pVl = new WeakMap();
-});
+// [unwrapped __esm module yVl] deps: Mql, Ye, m0e, v2o, je, At, vn, co, UFo
+((Am = R(rt(), 1)), (Ise = R(se(), 1)), (dVl = new WeakMap()));
+pVl = new WeakMap();
 function mGf(e, t, n) {
   let r = new Set(t),
     o = new Set(n),

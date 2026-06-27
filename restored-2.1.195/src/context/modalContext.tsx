@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2838  score=0.6314  fileCov=0.3402
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Cc = E(() => {
-  N0e();
-  Ko();
-  ((F6i = R(lt(), 1)), (j6i = R(se(), 1)));
-});
+// [unwrapped __esm module Cc] deps: N0e, Ko
+((F6i = R(lt(), 1)), (j6i = R(se(), 1)));
 function YE() {
   return NGe.useContext(Xj) !== null;
 }

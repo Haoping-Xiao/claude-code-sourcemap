@@ -4,59 +4,52 @@
 // class=new  jaccard=0.0349  score=0.1615  fileCov=0.0426
 // note: nearest: src/utils/git.ts (0.0349); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WL = E(() => {
-  Qi();
-  ag();
-  Pw();
-  fn();
-  At();
-  Is();
-  HEt = require("crypto"), Ufe = require("fs"), yA = require("fs/promises"), _Nl = require("net"), Jg = require("path");
-  A$f = Cn(() => HEt.createHash("sha256").update(Jg.resolve(tr())).digest("hex").slice(0, 8), () => Jg.resolve(tr())), Ffe = Cn(() => {
-    let e = process.getuid?.() ?? 0,
-      t = process.env.TERMUX_VERSION && process.env.PREFIX ? Jg.join(process.env.PREFIX, "tmp") : "/tmp";
-    return Jg.join(t, `cc-daemon-${e}`, A$f());
-  }, () => tr()), H$f = /^[a-f0-9]{16}$/, T$f = Cn(() => {
-    let e = Jg.join(Bfe(), "pipe.key");
-    for (let t = 0; t < 8; t++) {
-      let n;
-      try {
-        let o = Ufe.lstatSync(e);
-        if (!o.isFile() || o.size > 4096) {
-          try {
-            Ufe.rmSync(e, {
-              recursive: true,
-              force: true
-            });
-          } catch {}
-          n = "invalid";
-        } else n = Ufe.readFileSync(e, "utf8").trim();
-      } catch (o) {
-        if (!wn(o)) throw o;
-      }
-      if (n !== void 0) {
-        if (H$f.test(n)) return n;
-        if (n === "" && t < 3) continue;
-        let o = HEt.randomBytes(8).toString("hex");
-        return oj(e, o, 384), o;
-      }
-      let r = HEt.randomBytes(8).toString("hex");
-      Ufe.mkdirSync(Bfe(), {
-        recursive: true,
-        mode: 448
-      });
-      try {
-        return Ufe.writeFileSync(e, r, {
-          flag: "wx",
-          mode: 384
-        }), r;
-      } catch (o) {
-        if (on(o) !== "EEXIST") throw o;
-      }
+// [unwrapped __esm module WL] deps: Qi, ag, Pw, fn, At, Is
+HEt = require("crypto"), Ufe = require("fs"), yA = require("fs/promises"), _Nl = require("net"), Jg = require("path");
+A$f = Cn(() => HEt.createHash("sha256").update(Jg.resolve(tr())).digest("hex").slice(0, 8), () => Jg.resolve(tr())), Ffe = Cn(() => {
+  let e = process.getuid?.() ?? 0,
+    t = process.env.TERMUX_VERSION && process.env.PREFIX ? Jg.join(process.env.PREFIX, "tmp") : "/tmp";
+  return Jg.join(t, `cc-daemon-${e}`, A$f());
+}, () => tr()), H$f = /^[a-f0-9]{16}$/, T$f = Cn(() => {
+  let e = Jg.join(Bfe(), "pipe.key");
+  for (let t = 0; t < 8; t++) {
+    let n;
+    try {
+      let o = Ufe.lstatSync(e);
+      if (!o.isFile() || o.size > 4096) {
+        try {
+          Ufe.rmSync(e, {
+            recursive: true,
+            force: true
+          });
+        } catch {}
+        n = "invalid";
+      } else n = Ufe.readFileSync(e, "utf8").trim();
+    } catch (o) {
+      if (!wn(o)) throw o;
     }
-    throw Error("daemon pipe.key is not a valid nonce");
-  }, () => tr());
-});
+    if (n !== void 0) {
+      if (H$f.test(n)) return n;
+      if (n === "" && t < 3) continue;
+      let o = HEt.randomBytes(8).toString("hex");
+      return oj(e, o, 384), o;
+    }
+    let r = HEt.randomBytes(8).toString("hex");
+    Ufe.mkdirSync(Bfe(), {
+      recursive: true,
+      mode: 448
+    });
+    try {
+      return Ufe.writeFileSync(e, r, {
+        flag: "wx",
+        mode: 384
+      }), r;
+    } catch (o) {
+      if (on(o) !== "EEXIST") throw o;
+    }
+  }
+  throw Error("daemon pipe.key is not a valid nonce");
+}, () => tr());
 async function hE(e, t) {
   let n;
   try {

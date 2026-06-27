@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.2313  score=0.489  fileCov=0.305
 // note: low-confidence suggestion: src/components/FileEditToolDiff.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var E8e = E(() => {
-  Ye();
-  Bel = R(lt(), 1), Uel = R(se(), 1);
-});
+// [unwrapped __esm module E8e] deps: Ye
+Bel = R(lt(), 1), Uel = R(se(), 1);
 function wvo(e) {
   let t = vvo.c(9),
     n;

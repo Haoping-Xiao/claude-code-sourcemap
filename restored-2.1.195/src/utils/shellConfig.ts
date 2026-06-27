@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.3757  score=0.5236  fileCov=0.5708
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var A9e = E(() => {
-  dn();
-  er();
-  je();
-  fn();
-  At();
-  Bi();
-  ys();
-  vn();
-  Jt();
-  ((Sgt = require("fs/promises")), (bgt = require("path")));
-});
+// [unwrapped __esm module A9e] deps: dn, er, je, fn, At, Bi, ys, vn, Jt
+((Sgt = require("fs/promises")), (bgt = require("path")));
 function DPe(e) {
   let t = e?.homedir ?? dAo.homedir(),
     n = e?.env ?? process.env,

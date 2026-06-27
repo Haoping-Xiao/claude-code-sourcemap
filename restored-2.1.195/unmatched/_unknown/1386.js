@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mti = E(() => {
-  dFr();
-  Dti = R(PE(), 1);
-});
+// [unwrapped __esm module Mti] deps: dFr
+Dti = R(PE(), 1);

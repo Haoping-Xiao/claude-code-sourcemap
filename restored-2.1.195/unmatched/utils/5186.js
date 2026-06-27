@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0312  score=1  fileCov=0.0312
 // note: nearest: src/utils/listSessionsImpl.ts (0.0312); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $3o = E(() => {
-  fn();
-  jS();
-  Jt();
-  FZl = require("fs/promises");
-});
+// [unwrapped __esm module $3o] deps: fn, jS, Jt
+FZl = require("fs/promises");
 async function qZl(e, t = {}) {
   let n = FS(e);
   if (!n) return;

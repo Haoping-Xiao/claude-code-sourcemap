@@ -4,23 +4,14 @@
 // class=partial  jaccard=0.068  score=0.2614  fileCov=0.0842
 // note: low-confidence suggestion: src/utils/promptShellExecution.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hze = E(() => {
-  RN();
-  je();
-  At();
-  co();
-  Gy();
-  Bqe();
-  K0();
-  _m();
-  GTl = require("crypto"), jTl = (() => {
-    let e;
-    return () => {
-      if (!e) e = (Jzt(), ro(Xzt)).PowerShellTool;
-      return e;
-    };
-  })(), kSf = /```!\s*\n?([\s\S]*?)\n?```/g, RSf = /(?<=^|\s)!`([^`]+)`/gm;
-});
+// [unwrapped __esm module hze] deps: RN, je, At, co, Gy, Bqe, K0, _m
+GTl = require("crypto"), jTl = (() => {
+  let e;
+  return () => {
+    if (!e) e = (Jzt(), ro(Xzt)).PowerShellTool;
+    return e;
+  };
+})(), kSf = /```!\s*\n?([\s\S]*?)\n?```/g, RSf = /(?<=^|\s)!`([^`]+)`/gm;
 function EJn() {
   if (Oe.CLAUDE_CODE_IS_COWORK) return true;
   if (yn("policySettings")?.disableSkillShellExecution === true) return true;

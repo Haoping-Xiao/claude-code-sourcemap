@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4907  score=0.7785  fileCov=0.5703
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var a6n = E(() => {
-  kt();
-  Dvo = require("crypto");
-});
+// [unwrapped __esm module a6n] deps: kt
+Dvo = require("crypto");
 async function ftl(e) {
   if (!(await cb())) return null;
   if (await gtl()) return null;

@@ -4,16 +4,6 @@
 // class=modified  jaccard=0.3549  score=0.6181  fileCov=0.4545
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gjo = E(() => {
-  xsr();
-  id();
-  kt();
-  NE();
-  vn();
-  Ao();
-  jG();
-  dr();
-});
 var jzl = {};
 _t(jzl, {
   call: () => call,

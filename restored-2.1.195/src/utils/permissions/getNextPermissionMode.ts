@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3122  score=0.4844  fileCov=0.4676
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var T6o = E(() => {
-  yC();
-});
 function xyc(e) {
   let t = e.match(/^@([\w-]+)\s+(.+)$/s);
   if (!t) return null;

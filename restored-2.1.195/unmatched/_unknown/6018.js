@@ -4,15 +4,14 @@
 // class=new  jaccard=0.0115  score=0.7843  fileCov=0.0116
 // note: nearest: node_modules/@xmldom/xmldom/lib/dom.js (0.0115); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lWc = E(() => {
-  iWc = require("crypto"), b$m = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  };
-});
+// [unwrapped __esm module lWc]
+iWc = require("crypto"), b$m = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;"
+};
 function rZo(e) {
   if (e.includes("/")) {
     let [n, r] = mV.parseCIDR(e);

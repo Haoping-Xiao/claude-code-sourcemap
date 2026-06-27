@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.6765  score=1  fileCov=0.6765
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IPa = E(() => {
-  ((x0p = {
-    name: "nohup",
-    description: "Run a command immune to hangups",
-    args: {
-      name: "command",
-      description: "Command to run with nohup",
-      isCommand: true,
-    },
-  }),
-    (CPa = x0p));
-});
+// [unwrapped __esm module IPa]
+((x0p = {
+  name: "nohup",
+  description: "Run a command immune to hangups",
+  args: {
+    name: "command",
+    description: "Command to run with nohup",
+    isCommand: true,
+  },
+}),
+  (CPa = x0p));
 var xPa;

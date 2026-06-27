@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2387  score=0.5216  fileCov=0.3057
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iZr = E(() => {
-  dn();
-  db();
-  je();
-  fn();
-  At();
-  ((U8i = require("crypto")), (GDn = require("path")), (jDn = new Map()), (Vce = new Map()));
-});
+// [unwrapped __esm module iZr] deps: dn, db, je, fn, At
+((U8i = require("crypto")), (GDn = require("path")), (jDn = new Map()), (Vce = new Map()));
 function L0e(e) {
   return (e.match(/\r\n|\r|\n/g) || []).length;
 }

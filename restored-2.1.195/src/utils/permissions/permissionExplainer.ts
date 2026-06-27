@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.3788  score=0.5761  fileCov=0.5251
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tHc = E(() => {
-  sN();
-  fre();
-  Qzo();
-  Tpr();
-});
 function p_m(e) {
   if (typeof e === "string") return e;
   try {

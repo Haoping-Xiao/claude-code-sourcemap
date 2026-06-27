@@ -4,27 +4,12 @@
 // class=modified (alt of src/components/ThemePicker.tsx)  jaccard=0.0462  score=0.1962  fileCov=0.057
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var j6l = E(() => {
-  gKn();
-  Xa();
-  Ye();
-  ps();
-  j_e();
-  je();
-  sr();
-  Mke();
-  vKe();
-  Bs();
-  xjo();
-  Ko();
-  eE();
-  Mg();
-  ((kjo = R(lt(), 1)),
-    (U6l = require("path")),
-    (Tz = R(rt(), 1)),
-    (Nf = R(se(), 1)),
-    (cqf = NRr + NRr));
-});
+// [unwrapped __esm module j6l] deps: gKn, Xa, Ye, ps, j_e, je, sr, Mke, vKe, Bs, xjo, Ko, eE, Mg
+((kjo = R(lt(), 1)),
+  (U6l = require("path")),
+  (Tz = R(rt(), 1)),
+  (Nf = R(se(), 1)),
+  (cqf = NRr + NRr));
 var q6l = {};
 _t(q6l, {
   call: () => call,

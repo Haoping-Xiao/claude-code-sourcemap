@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1969  score=0.2663  fileCov=0.4305
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var eE = E(() => {
-  fH();
-  Ye();
-  LW();
-  ((Lzi = R(lt(), 1)), (olt = R(se(), 1)));
-});
+// [unwrapped __esm module eE] deps: fH, Ye, LW
+((Lzi = R(lt(), 1)), (olt = R(se(), 1)));
 function zn(e) {
   let t = Pzi.c(43),
     {

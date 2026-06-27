@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2921  score=0.4775  fileCov=0.4294
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dHo = E(() => {
-  Ye();
-  aAn();
-  f_();
-  R6();
-  ((Z7a = R(lt(), 1)), (E9n = R(rt(), 1)), (KEe = R(se(), 1)), (w7p = /https?:\/\/\S+/));
-});
+// [unwrapped __esm module dHo] deps: Ye, aAn, f_, R6
+((Z7a = R(lt(), 1)), (E9n = R(rt(), 1)), (KEe = R(se(), 1)), (w7p = /https?:\/\/\S+/));
 function U9e(e) {
   let t = eXa.c(38),
     {

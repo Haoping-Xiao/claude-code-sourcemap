@@ -4,12 +4,11 @@
 // class=modified  jaccard=0.3896  score=0.5346  fileCov=0.5896
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pMo = E(() => {
-  rZn = {
-    maxConsecutive: 3,
-    maxTotal: 20,
-  };
-});
+// [unwrapped __esm module pMo]
+rZn = {
+  maxConsecutive: 3,
+  maxTotal: 20,
+};
 var yMo = {};
 _t(yMo, {
   withDisallowedCommandTools: () => withDisallowedCommandTools,

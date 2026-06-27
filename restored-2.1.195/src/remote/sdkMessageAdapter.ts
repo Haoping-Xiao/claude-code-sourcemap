@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3178  score=0.3957  fileCov=0.6174
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gen = E(() => {
-  kt();
-});
 function jbc(e) {
   return (
     e.type !== "control_request" &&

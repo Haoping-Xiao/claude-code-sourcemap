@@ -3,37 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cyc = E(() => {
-  Ed();
-  Ye();
-  kt();
-  Zf();
-  tC();
-  Ye();
-  Yj();
-  ps();
-  nk();
-  id();
-  BI();
-  Ire();
-  Ryt();
-  uo();
-  sA();
-  wGt();
-  Zhc();
-  es();
-  _a();
-  sr();
-  ayc();
-  TZr();
-  g6o();
-  h6o();
-  hN();
-  JSt();
-  Syc();
-  Ym = R(rt(), 1), wyc = R(se(), 1), vpm = /^@[\p{L}\p{N}\p{M}_\-./\\()[\]~:]*/u, Eyc = /^[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+/u, wpm = /(@[\p{L}\p{N}\p{M}_\-./\\()[\]~:]*|[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+)$/u, Cpm = /[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+$/u, Ipm = /(^|[\s\u3002\u3001\uFF1F\uFF01])@([\p{L}\p{N}\p{M}_\-./\\()[\]~:]*|"[^"]*"?)$/u, b6o = /(^|\s)#([a-z0-9][a-z0-9_-]*)$/, S6o = /(^|\s):([a-z0-9_+-]{2,})$/, xpm = /(^|\s):([a-z0-9_+-]+):$/;
-  gdr = /(^|[\s\u3002\u3001\uFF1F\uFF01])@([\w-]*)$/;
-});
+// [unwrapped __esm module Cyc] deps: Ed, Ye, kt, Zf, tC, Ye, Yj, ps, nk, id, BI, Ire, Ryt, uo, sA, wGt, Zhc, es, _a, sr, ayc, TZr, g6o, h6o, hN, JSt, Syc
+Ym = R(rt(), 1), wyc = R(se(), 1), vpm = /^@[\p{L}\p{N}\p{M}_\-./\\()[\]~:]*/u, Eyc = /^[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+/u, wpm = /(@[\p{L}\p{N}\p{M}_\-./\\()[\]~:]*|[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+)$/u, Cpm = /[\p{L}\p{N}\p{M}_\-./\\()[\]~:]+$/u, Ipm = /(^|[\s\u3002\u3001\uFF1F\uFF01])@([\p{L}\p{N}\p{M}_\-./\\()[\]~:]*|"[^"]*"?)$/u, b6o = /(^|\s)#([a-z0-9][a-z0-9_-]*)$/, S6o = /(^|\s):([a-z0-9_+-]{2,})$/, xpm = /(^|\s):([a-z0-9_+-]+):$/;
+gdr = /(^|[\s\u3002\u3001\uFF1F\uFF01])@([\w-]*)$/;
 function MTt(e, t, n) {
   if (e.type === "in_process_teammate") {
     if (e.status === "running") return uMe(e.id, t, n), t.update(e.id, s => s.status === "killed" && s.evictAfter === void 0 ? {

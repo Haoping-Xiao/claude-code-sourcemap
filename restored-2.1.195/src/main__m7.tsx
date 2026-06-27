@@ -4,105 +4,80 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0101  score=0.0853  fileCov=0.0114
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qar = E(() => {
-  zb();
-  ft();
-  np();
-  dn();
-  kt();
-  S_();
-  tfe();
-  D6e();
-  $S();
-  CWo();
-  Pw();
-  Rm();
-  je();
-  wr();
-  At();
-  iKe();
-  ys();
-  YS();
-  bm();
-  Yf();
-  y_();
-  _a();
-  Jt();
-  OI();
-  ((soc = require("crypto")),
-    (DC = require("fs/promises")),
-    (Fse = require("path")),
-    (ioc = require("timers/promises")),
-    (OQt = /^[\w-]+$/));
-  ((iQf = ve(() =>
+// [unwrapped __esm module qar] deps: zb, ft, np, dn, kt, S_, tfe, D6e, $S, CWo, Pw, Rm, je, wr, At, iKe, ys, YS, bm, Yf, y_, _a, Jt, OI
+((soc = require("crypto")),
+  (DC = require("fs/promises")),
+  (Fse = require("path")),
+  (ioc = require("timers/promises")),
+  (OQt = /^[\w-]+$/));
+((iQf = ve(() =>
+  dt.object({
+    taskId: dt.string().regex(OQt),
+    pid: dt.number().int().positive(),
+    procStart: dt.string().optional(),
+    startTimeTicks: dt.number().int().optional(),
+    command: dt.string(),
+    description: dt.string(),
+    outputPath: Nar(() => [bTe()]),
+    lastReportedTotalLines: dt.number().int(),
+    toolUseId: dt.string().optional(),
+    kind: dt.enum(["bash", "monitor"]).optional(),
+    agentId: dt.string().regex(OQt).optional(),
+  }),
+)),
+  (aQf = ve(() =>
     dt.object({
-      taskId: dt.string().regex(OQt),
-      pid: dt.number().int().positive(),
-      procStart: dt.string().optional(),
-      startTimeTicks: dt.number().int().optional(),
-      command: dt.string(),
-      description: dt.string(),
-      outputPath: Nar(() => [bTe()]),
-      lastReportedTotalLines: dt.number().int(),
-      toolUseId: dt.string().optional(),
-      kind: dt.enum(["bash", "monitor"]).optional(),
-      agentId: dt.string().regex(OQt).optional(),
+      id: dt.string(),
+      cron: dt.string(),
+      prompt: dt.string(),
+      createdAt: dt.number(),
+      recurring: dt.boolean().optional(),
+      agentId: dt.string().optional(),
+      kind: dt.literal("loop").optional(),
     }),
   )),
-    (aQf = ve(() =>
-      dt.object({
-        id: dt.string(),
-        cron: dt.string(),
-        prompt: dt.string(),
-        createdAt: dt.number(),
-        recurring: dt.boolean().optional(),
-        agentId: dt.string().optional(),
-        kind: dt.literal("loop").optional(),
-      }),
-    )),
-    (lQf = ve(() =>
-      dt.object({
-        taskId: dt.string().regex(OQt),
-        workflowRunId: dt.string().regex(/^wf_[a-z0-9-]{6,}$/),
-        scriptPath: dt.string(),
-        scriptSha256: dt
-          .string()
-          .regex(/^[0-9a-f]{64}$/)
-          .optional(),
-        argsJson: dt.string().optional(),
-        description: dt.string(),
-        startTime: dt.number().optional(),
-        transcriptDir: Nar(() => [oF()]),
-      }),
-    )),
-    (cQf = ve(() =>
-      dt.object({
-        agentId: dt.string().regex(OQt),
-        agentType: dt.string().optional(),
-        description: dt.string().optional(),
-        toolUseId: dt.string().optional(),
-        spawnDepth: dt.number().int().optional(),
-        startTime: dt.number().optional(),
-        transcriptPath: Nar(() => [oF()]).optional(),
-        parentAgentId: dt.string().regex(OQt).optional(),
-      }),
-    )),
-    (uQf = ve(() =>
-      dt.object({
-        writtenAtMs: dt.number(),
-        shells: dt.array(iQf()),
-        cron: dt.array(aQf()),
-        agents: dt.array(cQf()).optional(),
-        workflows: dt.array(lQf()).optional(),
-        prefill: dt
-          .object({
-            text: dt.string(),
-            boundaryUuid: dt.string().optional(),
-          })
-          .optional(),
-      }),
-    )));
-});
+  (lQf = ve(() =>
+    dt.object({
+      taskId: dt.string().regex(OQt),
+      workflowRunId: dt.string().regex(/^wf_[a-z0-9-]{6,}$/),
+      scriptPath: dt.string(),
+      scriptSha256: dt
+        .string()
+        .regex(/^[0-9a-f]{64}$/)
+        .optional(),
+      argsJson: dt.string().optional(),
+      description: dt.string(),
+      startTime: dt.number().optional(),
+      transcriptDir: Nar(() => [oF()]),
+    }),
+  )),
+  (cQf = ve(() =>
+    dt.object({
+      agentId: dt.string().regex(OQt),
+      agentType: dt.string().optional(),
+      description: dt.string().optional(),
+      toolUseId: dt.string().optional(),
+      spawnDepth: dt.number().int().optional(),
+      startTime: dt.number().optional(),
+      transcriptPath: Nar(() => [oF()]).optional(),
+      parentAgentId: dt.string().regex(OQt).optional(),
+    }),
+  )),
+  (uQf = ve(() =>
+    dt.object({
+      writtenAtMs: dt.number(),
+      shells: dt.array(iQf()),
+      cron: dt.array(aQf()),
+      agents: dt.array(cQf()).optional(),
+      workflows: dt.array(lQf()).optional(),
+      prefill: dt
+        .object({
+          text: dt.string(),
+          boundaryUuid: dt.string().optional(),
+        })
+        .optional(),
+    }),
+  )));
 var yoc = {};
 _t(yoc, {
   spawnBackgroundFork: () => spawnBackgroundFork,

@@ -4,20 +4,9 @@
 // class=modified  jaccard=0.1737  score=0.2876  fileCov=0.3049
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qbe = E(() => {
-  IB();
-  Zf();
-  ft();
-  np();
-  Tc();
-  kt();
-  je();
-  At();
-  es();
-  vn();
-  Ect();
-  POn = Cn(
-    async (e) => `Execute a skill within the main conversation
+// [unwrapped __esm module Qbe] deps: IB, Zf, ft, np, Tc, kt, je, At, es, vn, Ect
+POn = Cn(
+  async (e) => `Execute a skill within the main conversation
 
 When users ask you to perform tasks, check if any of the available skills match. Skills provide specialized capabilities and domain knowledge.
 
@@ -37,8 +26,7 @@ Important:
 - Do not use this tool for built-in CLI commands (like /help, /clear, etc.)
 - If you see a <${rj}> tag in the current conversation turn, the skill has ALREADY been loaded - follow the instructions directly instead of calling this tool again
 `,
-  );
-});
+);
 function rop(e) {
   return Math.max(0, Math.floor((Date.now() - e) / 86400000));
 }

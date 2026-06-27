@@ -4,134 +4,130 @@
 // class=new  jaccard=0.0223  score=0.0356  fileCov=0.0564
 // note: nearest: src/components/teams/TeamsDialog.tsx (0.0223); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yFo = E(() => {
-  Ye();
-  Bs();
-  Ko();
-  hFo();
-  OXt = R(lt(), 1), Ys = R(se(), 1);
-  Sz = [{
-    id: "at-mentions",
-    title: "Talk to your codebase",
-    tagline: "@ files, line refs",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Type ", Ys.jsx(dAt, {
-          children: "@"
-        }), " anywhere in your prompt to fuzzy-find and attach a file. Claude reads it before answering \u2014 no more pasting code."]
-      }), Ys.jsx(Qfe, {
-        frames: [`> what does [suggestion:@]
+// [unwrapped __esm module yFo] deps: Ye, Bs, Ko, hFo
+OXt = R(lt(), 1), Ys = R(se(), 1);
+Sz = [{
+  id: "at-mentions",
+  title: "Talk to your codebase",
+  tagline: "@ files, line refs",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Type ", Ys.jsx(dAt, {
+        children: "@"
+      }), " anywhere in your prompt to fuzzy-find and attach a file. Claude reads it before answering \u2014 no more pasting code."]
+    }), Ys.jsx(Qfe, {
+      frames: [`> what does [suggestion:@]
 #type a file name\u2026`, `> what does [suggestion:@src/auth.ts]
   [suggestion:\u276F src/auth.ts]
 #   src/auth.test.ts`, `> what does [suggestion:@src/auth.ts] do?
 #\u25D0 Reading src/auth.ts\u2026`, `> what does [suggestion:@src/auth.ts] do?
 Exports validateToken() which
 checks JWT expiry and signature.`]
-      }), Ys.jsxs(w, {
-        children: ["Reference specific lines with ", Ys.jsx(cw, {
-          children: "src/app.ts:42"
-        }), " and Claude jumps straight there. Works in both directions: Claude cites files the same way, so you can click to open them in your editor."]
-      }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["Also try: ", Ys.jsx(cw, {
-          children: "@folder/"
-        }), " to attach a whole directory tree."]
-      })]
-    })
-  }, {
-    id: "modes",
-    title: "Steer with modes",
-    tagline: "shift+tab, plan, auto",
-    body: Ys.jsxs(U, {
+    }), Ys.jsxs(w, {
+      children: ["Reference specific lines with ", Ys.jsx(cw, {
+        children: "src/app.ts:42"
+      }), " and Claude jumps straight there. Works in both directions: Claude cites files the same way, so you can click to open them in your editor."]
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["Also try: ", Ys.jsx(cw, {
+        children: "@folder/"
+      }), " to attach a whole directory tree."]
+    })]
+  })
+}, {
+  id: "modes",
+  title: "Steer with modes",
+  tagline: "shift+tab, plan, auto",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Press ", Ys.jsx(dAt, {
+        children: "shift+tab"
+      }), " to cycle permission modes. Each mode changes how much Claude asks before acting:"]
+    }), Ys.jsx(kGl, {}), Ys.jsxs(U, {
       flexDirection: "column",
-      gap: 1,
+      paddingLeft: 2,
       children: [Ys.jsxs(w, {
-        children: ["Press ", Ys.jsx(dAt, {
-          children: "shift+tab"
-        }), " to cycle permission modes. Each mode changes how much Claude asks before acting:"]
-      }), Ys.jsx(kGl, {}), Ys.jsxs(U, {
-        flexDirection: "column",
-        paddingLeft: 2,
-        children: [Ys.jsxs(w, {
-          children: [Ys.jsx(w, {
-            color: "success",
-            children: "default"
-          }), " \u2014 ask before every edit"]
-        }), Ys.jsxs(w, {
-          children: [Ys.jsx(w, {
-            color: "autoAccept",
-            children: "accept edits"
-          }), " \u2014 edit freely, ask for commands"]
-        }), Ys.jsxs(w, {
-          children: [Ys.jsx(w, {
-            color: "planMode",
-            children: "plan"
-          }), " \u2014 research and propose, never touch files"]
-        }), Ys.jsxs(w, {
-          children: [Ys.jsx(w, {
-            color: "warning",
-            children: "auto"
-          }), " \u2014 Claude decides what is safe"]
-        })]
+        children: [Ys.jsx(w, {
+          color: "success",
+          children: "default"
+        }), " \u2014 ask before every edit"]
       }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["Use ", Ys.jsx(w, {
+        children: [Ys.jsx(w, {
+          color: "autoAccept",
+          children: "accept edits"
+        }), " \u2014 edit freely, ask for commands"]
+      }), Ys.jsxs(w, {
+        children: [Ys.jsx(w, {
           color: "planMode",
           children: "plan"
-        }), " for big refactors you want to review first. Use ", Ys.jsx(w, {
+        }), " \u2014 research and propose, never touch files"]
+      }), Ys.jsxs(w, {
+        children: [Ys.jsx(w, {
           color: "warning",
           children: "auto"
-        }), " for long unattended tasks. Run ", Ys.jsx(cw, {
-          children: "/permissions"
-        }), " to pre-allow specific commands so Claude stops asking about them."]
+        }), " \u2014 Claude decides what is safe"]
       })]
-    })
-  }, {
-    id: "undo",
-    title: "Undo anything",
-    tagline: "/rewind, Esc-Esc",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Claude checkpoints your files before every edit. Press", " ", Ys.jsx(dAt, {
-          children: "Esc Esc"
-        }), " (double-tap) to open ", Ys.jsx(cw, {
-          children: "/rewind"
-        }), " and roll back to any prior state \u2014 code, conversation, or both."]
-      }), Ys.jsx(Qfe, {
-        frames: [`[success:\u2713] Updated regex in parser.ts
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["Use ", Ys.jsx(w, {
+        color: "planMode",
+        children: "plan"
+      }), " for big refactors you want to review first. Use ", Ys.jsx(w, {
+        color: "warning",
+        children: "auto"
+      }), " for long unattended tasks. Run ", Ys.jsx(cw, {
+        children: "/permissions"
+      }), " to pre-allow specific commands so Claude stops asking about them."]
+    })]
+  })
+}, {
+  id: "undo",
+  title: "Undo anything",
+  tagline: "/rewind, Esc-Esc",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Claude checkpoints your files before every edit. Press", " ", Ys.jsx(dAt, {
+        children: "Esc Esc"
+      }), " (double-tap) to open ", Ys.jsx(cw, {
+        children: "/rewind"
+      }), " and roll back to any prior state \u2014 code, conversation, or both."]
+    }), Ys.jsx(Qfe, {
+      frames: [`[success:\u2713] Updated regex in parser.ts
 #[error:8 tests failing]`, `#press Esc Esc
 Rewind to:
   [suggestion:\u276F before parser.ts edit]`, `#[success:\u2713] parser.ts restored
 > try a simpler approach
 #\u25D0 thinking\u2026`]
-      }), Ys.jsx(w, {
-        children: "Went down the wrong path? Rewind to before the detour and try a different prompt. Your git history stays clean."
-      }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["Also: ", Ys.jsx(cw, {
-          children: "/clear"
-        }), " wipes conversation but keeps files.", " ", Ys.jsx(cw, {
-          children: "/branch"
-        }), " forks the conversation to try two approaches."]
-      })]
-    })
-  }, {
-    id: "background",
-    title: "Run in the background",
-    tagline: "tasks, /tasks",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Long builds and test suites do not have to block you. Add", " ", Ys.jsx(dAt, {
-          children: "&"
-        }), " to any bash command and it runs in the background \u2014 you keep chatting, Claude notifies you when it finishes."]
-      }), Ys.jsx(Qfe, {
-        frames: [`> run the test suite [claude:&]
+    }), Ys.jsx(w, {
+      children: "Went down the wrong path? Rewind to before the detour and try a different prompt. Your git history stays clean."
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["Also: ", Ys.jsx(cw, {
+        children: "/clear"
+      }), " wipes conversation but keeps files.", " ", Ys.jsx(cw, {
+        children: "/branch"
+      }), " forks the conversation to try two approaches."]
+    })]
+  })
+}, {
+  id: "background",
+  title: "Run in the background",
+  tagline: "tasks, /tasks",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Long builds and test suites do not have to block you. Add", " ", Ys.jsx(dAt, {
+        children: "&"
+      }), " to any bash command and it runs in the background \u2014 you keep chatting, Claude notifies you when it finishes."]
+    }), Ys.jsx(Qfe, {
+      frames: [`> run the test suite [claude:&]
 #task started in background`, `> now fix the lint in app.ts
 #\u25D0 Editing app.ts\u2026
 #[warning:\u25D0] bun test \xB7 12s`, `> now fix the lint in app.ts
@@ -139,115 +135,115 @@ Rewind to:
 #[warning:\u25D0] bun test \xB7 28s`, `> now fix the lint in app.ts
 [success:\u2713] Removed unused import
 #[success:\u2713] bun test \xB7 284 pass`]
-      }), Ys.jsxs(w, {
-        children: ["Run ", Ys.jsx(cw, {
-          children: "/tasks"
-        }), " to see everything in flight. Claude can read task output mid-run and react to failures automatically."]
-      }), Ys.jsx(w, {
-        dimColor: true,
-        children: "Subagents also run as tasks \u2014 it is all one queue."
-      })]
-    })
-  }, {
-    id: "memory",
-    title: "Teach Claude your rules",
-    tagline: "CLAUDE.md, /memory",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Drop a ", Ys.jsx(cw, {
-          children: "CLAUDE.md"
-        }), " file in your repo and Claude reads it at the start of every session. Put your conventions there: test commands, style rules, do-not-touch directories."]
-      }), Ys.jsx(Qfe, {
-        frames: [`#\u2500 CLAUDE.md \u2500
+    }), Ys.jsxs(w, {
+      children: ["Run ", Ys.jsx(cw, {
+        children: "/tasks"
+      }), " to see everything in flight. Claude can read task output mid-run and react to failures automatically."]
+    }), Ys.jsx(w, {
+      dimColor: true,
+      children: "Subagents also run as tasks \u2014 it is all one queue."
+    })]
+  })
+}, {
+  id: "memory",
+  title: "Teach Claude your rules",
+  tagline: "CLAUDE.md, /memory",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Drop a ", Ys.jsx(cw, {
+        children: "CLAUDE.md"
+      }), " file in your repo and Claude reads it at the start of every session. Put your conventions there: test commands, style rules, do-not-touch directories."]
+    }), Ys.jsx(Qfe, {
+      frames: [`#\u2500 CLAUDE.md \u2500
 #Run tests with: [suggestion:bun test]
 #Never edit src/legacy/`, `> add tests for the cache
 #\u25D0 reading CLAUDE.md\u2026`, `> add tests for the cache
 Writing cache.test.ts,
 running [suggestion:bun test] to verify.`]
-      }), Ys.jsxs(w, {
-        children: ["Run ", Ys.jsx(cw, {
-          children: "/init"
-        }), " to generate a starter CLAUDE.md from your codebase. Run ", Ys.jsx(cw, {
-          children: "/memory"
-        }), " to edit it inline."]
-      }), Ys.jsx(w, {
-        dimColor: true,
-        children: "Works at three levels: repo, your home directory (all projects), and per-directory overrides."
-      })]
-    })
-  }, {
-    id: "mcp",
-    title: "Extend with tools",
-    tagline: "MCP, /mcp",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["MCP servers give Claude new tools: read your Slack, query your database, control your browser. Run ", Ys.jsx(cw, {
-          children: "/mcp"
-        }), " to browse and connect servers."]
-      }), Ys.jsx(Qfe, {
-        frames: [`> [suggestion:/mcp]
+    }), Ys.jsxs(w, {
+      children: ["Run ", Ys.jsx(cw, {
+        children: "/init"
+      }), " to generate a starter CLAUDE.md from your codebase. Run ", Ys.jsx(cw, {
+        children: "/memory"
+      }), " to edit it inline."]
+    }), Ys.jsx(w, {
+      dimColor: true,
+      children: "Works at three levels: repo, your home directory (all projects), and per-directory overrides."
+    })]
+  })
+}, {
+  id: "mcp",
+  title: "Extend with tools",
+  tagline: "MCP, /mcp",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["MCP servers give Claude new tools: read your Slack, query your database, control your browser. Run ", Ys.jsx(cw, {
+        children: "/mcp"
+      }), " to browse and connect servers."]
+    }), Ys.jsx(Qfe, {
+      frames: [`> [suggestion:/mcp]
 Connected servers:
   [success:\u2713] slack    [success:\u2713] github`, `> anything urgent in #eng?
 #\u25D0 [suggestion:slack] \xB7 reading channel\u2026`, `Boris posted about the merge
 freeze. Also 3 PRs await
 your review on github.`]
-      }), Ys.jsx(w, {
-        children: 'Once connected, tools appear automatically \u2014 ask Claude to "check my calendar" or "search our Notion" and it just works.'
-      }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["From your shell:", " ", Ys.jsx(cw, {
-          children: "claude mcp add my-server -- npx some-mcp-pkg"
-        }), " to wire one up without leaving the terminal."]
-      })]
-    })
-  }, {
-    id: "automate",
-    title: "Automate your workflow",
-    tagline: "skills, hooks",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Save a prompt to ", Ys.jsx(cw, {
-          children: ".claude/skills/deploy/SKILL.md"
-        }), " and it becomes ", Ys.jsx(cw, {
-          children: "/deploy"
-        }), " \u2014 type it, Claude runs it. Run", " ", Ys.jsx(cw, {
-          children: "/skills"
-        }), " to see what you have."]
-      }), Ys.jsx(Qfe, {
-        frames: [`> [suggestion:/deploy] staging
+    }), Ys.jsx(w, {
+      children: 'Once connected, tools appear automatically \u2014 ask Claude to "check my calendar" or "search our Notion" and it just works.'
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["From your shell:", " ", Ys.jsx(cw, {
+        children: "claude mcp add my-server -- npx some-mcp-pkg"
+      }), " to wire one up without leaving the terminal."]
+    })]
+  })
+}, {
+  id: "automate",
+  title: "Automate your workflow",
+  tagline: "skills, hooks",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Save a prompt to ", Ys.jsx(cw, {
+        children: ".claude/skills/deploy/SKILL.md"
+      }), " and it becomes ", Ys.jsx(cw, {
+        children: "/deploy"
+      }), " \u2014 type it, Claude runs it. Run", " ", Ys.jsx(cw, {
+        children: "/skills"
+      }), " to see what you have."]
+    }), Ys.jsx(Qfe, {
+      frames: [`> [suggestion:/deploy] staging
 #\u25D0 skill: deploy`, `[success:\u2713] built
 [success:\u2713] tests pass
 #\u25D0 pushing to staging\u2026`, `[success:\u2713] deployed
 #[suggestion:staging.app.com]
 #PostToolUse hook ran prettier`]
-      }), Ys.jsxs(w, {
-        children: ["Hooks run your own scripts on events: before a tool call, after a response, on session start. Use them to enforce rules, log activity, or inject context. Run ", Ys.jsx(cw, {
-          children: "/hooks"
-        }), " to see what fires when."]
-      }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["Run ", Ys.jsx(cw, {
-          children: "/install-github-app"
-        }), " to let Claude review PRs when tagged."]
-      })]
-    })
-  }, {
-    id: "subagents",
-    title: "Multiply yourself",
-    tagline: "subagents, /agents",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsx(w, {
-        children: 'Claude can spawn copies of itself to work in parallel. Ask it to "use subagents to search these 5 directories" and watch the fan-out.'
-      }), Ys.jsx(Qfe, {
-        frames: [`> find any error handling bugs
+    }), Ys.jsxs(w, {
+      children: ["Hooks run your own scripts on events: before a tool call, after a response, on session start. Use them to enforce rules, log activity, or inject context. Run ", Ys.jsx(cw, {
+        children: "/hooks"
+      }), " to see what fires when."]
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["Run ", Ys.jsx(cw, {
+        children: "/install-github-app"
+      }), " to let Claude review PRs when tagged."]
+    })]
+  })
+}, {
+  id: "subagents",
+  title: "Multiply yourself",
+  tagline: "subagents, /agents",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsx(w, {
+      children: 'Claude can spawn copies of itself to work in parallel. Ask it to "use subagents to search these 5 directories" and watch the fan-out.'
+    }), Ys.jsx(Qfe, {
+      frames: [`> find any error handling bugs
 #\u25D0 Spawning 3 agents\u2026`, `#[warning:\u25D0] agent-1 \xB7 scanning api
 #[warning:\u25D0] agent-2 \xB7 scanning utils
 #[warning:\u25D0] agent-3 \xB7 scanning cli`, `#[success:\u2713] agent-1 \xB7 found reject
@@ -255,32 +251,32 @@ your review on github.`]
 #[success:\u2713] agent-3 \xB7 no issues`, `Found 2 issues:
   [suggestion:api/fetch.ts:42] unhandled
   [suggestion:utils/retry.ts:18] swallowed`]
-      }), Ys.jsxs(w, {
-        children: ["Define specialized agents in ", Ys.jsx(cw, {
-          children: ".claude/agents/"
-        }), " \u2014 a test runner, a code reviewer, a docs writer \u2014 each with its own tools and instructions. Run ", Ys.jsx(cw, {
-          children: "/agents"
-        }), " to manage them."]
-      }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["Subagents run in isolated context. For true parallel sessions on separate branches, launch with ", Ys.jsx(cw, {
-          children: "claude --worktree"
-        }), "."]
-      })]
-    })
-  }, {
-    id: "cross-device",
-    title: "Code from anywhere",
-    tagline: "/remote-control, /teleport",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Run ", Ys.jsx(cw, {
-          children: "/remote-control"
-        }), " to take this session with you and pick up right where you left off on any device. Open the Code tab in the Claude mobile app, or visit claude.ai/code in a browser. The session keeps running on this machine while your other devices act as a remote control."]
-      }), Ys.jsx(Qfe, {
-        frames: [`> [suggestion:/remote-control]
+    }), Ys.jsxs(w, {
+      children: ["Define specialized agents in ", Ys.jsx(cw, {
+        children: ".claude/agents/"
+      }), " \u2014 a test runner, a code reviewer, a docs writer \u2014 each with its own tools and instructions. Run ", Ys.jsx(cw, {
+        children: "/agents"
+      }), " to manage them."]
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["Subagents run in isolated context. For true parallel sessions on separate branches, launch with ", Ys.jsx(cw, {
+        children: "claude --worktree"
+      }), "."]
+    })]
+  })
+}, {
+  id: "cross-device",
+  title: "Code from anywhere",
+  tagline: "/remote-control, /teleport",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Run ", Ys.jsx(cw, {
+        children: "/remote-control"
+      }), " to take this session with you and pick up right where you left off on any device. Open the Code tab in the Claude mobile app, or visit claude.ai/code in a browser. The session keeps running on this machine while your other devices act as a remote control."]
+    }), Ys.jsx(Qfe, {
+      frames: [`> [suggestion:/remote-control]
 #\u25D0 connecting\u2026`, `[success:\u2713] connected
 see this session at
 [suggestion:claude.ai/code/abc123]`, `#\u2500 on your phone \u2500
@@ -288,49 +284,48 @@ see this session at
 [warning:\u25D0] 142 of 284`, `#\u2500 on your phone \u2500
 #abc123 \xB7 [success:\u2713] all pass
 > ship it`]
-      }), Ys.jsxs(w, {
-        children: ["Started a session on the web and want to move it here? Run", " ", Ys.jsx(cw, {
-          children: "/teleport"
-        }), " to pull it into this terminal with full history."]
-      }), Ys.jsx(w, {
-        dimColor: true,
-        children: "Kick off a long task, close your laptop, check progress from your phone."
-      })]
-    })
-  }, {
-    id: "model-dial",
-    title: "Dial the model",
-    tagline: "/model, /effort",
-    body: Ys.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [Ys.jsxs(w, {
-        children: ["Run ", Ys.jsx(cw, {
-          children: "/model"
-        }), " to switch models. Fable for the hardest problems, Opus for complex work, Sonnet for most tasks, Haiku for quick questions. Each trades speed for depth."]
-      }), Ys.jsx(Qfe, {
-        frames: [`> [suggestion:/effort] high
+    }), Ys.jsxs(w, {
+      children: ["Started a session on the web and want to move it here? Run", " ", Ys.jsx(cw, {
+        children: "/teleport"
+      }), " to pull it into this terminal with full history."]
+    }), Ys.jsx(w, {
+      dimColor: true,
+      children: "Kick off a long task, close your laptop, check progress from your phone."
+    })]
+  })
+}, {
+  id: "model-dial",
+  title: "Dial the model",
+  tagline: "/model, /effort",
+  body: Ys.jsxs(U, {
+    flexDirection: "column",
+    gap: 1,
+    children: [Ys.jsxs(w, {
+      children: ["Run ", Ys.jsx(cw, {
+        children: "/model"
+      }), " to switch models. Fable for the hardest problems, Opus for complex work, Sonnet for most tasks, Haiku for quick questions. Each trades speed for depth."]
+    }), Ys.jsx(Qfe, {
+      frames: [`> [suggestion:/effort] high
 #effort set to [claude:high]`, `> why is the list page slow?
 #[claude:\u25D0 thinking deeply\u2026]`, `Three hypotheses, ranked:
  1. N+1 query in loader
  2. missing index on users`]
-      }), Ys.jsxs(w, {
-        children: [Ys.jsx(cw, {
-          children: "/effort"
-        }), " controls how long Claude thinks before answering.", " ", Ys.jsx(dAt, {
-          children: "high"
-        }), " for tricky bugs, ", Ys.jsx(dAt, {
-          children: "low"
-        }), " when you just need a quick edit."]
-      }), Ys.jsxs(w, {
-        dimColor: true,
-        children: ["Also: ", Ys.jsx(cw, {
-          children: "/fast"
-        }), " toggles fast mode \u2014 same model, faster output."]
-      })]
-    })
-  }];
-});
+    }), Ys.jsxs(w, {
+      children: [Ys.jsx(cw, {
+        children: "/effort"
+      }), " controls how long Claude thinks before answering.", " ", Ys.jsx(dAt, {
+        children: "high"
+      }), " for tricky bugs, ", Ys.jsx(dAt, {
+        children: "low"
+      }), " when you just need a quick edit."]
+    }), Ys.jsxs(w, {
+      dimColor: true,
+      children: ["Also: ", Ys.jsx(cw, {
+        children: "/fast"
+      }), " toggles fast mode \u2014 same model, faster output."]
+    })]
+  })
+}];
 function Krr(e) {
   let t = _Fo.c(47),
     {

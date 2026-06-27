@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0154  score=0.0813  fileCov=0.0187
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0154); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o2c = E(() => {
-  r2c = iDm;
-});
+// [unwrapped __esm module o2c]
+r2c = iDm;
 function aB(e, t = "algorithm.name") {
   return TypeError(`CryptoKey does not support this operation, its ${t} must be ${e}`);
 }

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0393  score=0.2184  fileCov=0.0458
 // note: nearest: node_modules/node-forge/lib/util.js (0.0393); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vno = E(() => {
-  Wlt();
-  Vlt();
-});
 function XQi(e, t) {
   let n = e.values.find(r => r.name === t);
   if (!n) throw Error(`cannot parse ${e} default value: ${t}`);

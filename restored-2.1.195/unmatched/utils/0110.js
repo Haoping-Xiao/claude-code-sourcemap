@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Byr = E(() => {
-  wns();
-  Ins();
-  jon = z6c;
-});
+// [unwrapped __esm module Byr] deps: wns, Ins
+jon = z6c;
 function X6c(e, t) {
   if (tJe(e) && Bon(t)) return Uon(DV(e), t);
   return function (n) {

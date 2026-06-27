@@ -4,21 +4,11 @@
 // class=new  jaccard=0.0119  score=0.227  fileCov=0.0124
 // note: nearest: src/utils/sessionStorage.ts (0.0119); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pgc = E(() => {
-  Hp();
-  Won();
-  ft();
-  Rm();
-  je();
-  wr();
-  At();
-  Gx();
-  qd();
-  ugc = require("fs/promises"), tum = Age.randomUUID(), num = {
-    teardown: () => {},
-    pulseIfClientPresent: () => {}
-  };
-});
+// [unwrapped __esm module pgc] deps: Hp, Won, ft, Rm, je, wr, At, Gx, qd
+ugc = require("fs/promises"), tum = Age.randomUUID(), num = {
+  teardown: () => {},
+  pulseIfClientPresent: () => {}
+};
 async function hgc(e, t, n) {
   let [r, o] = await Promise.all([t.readMain(), t.readSubagents()]),
     s = new Set();

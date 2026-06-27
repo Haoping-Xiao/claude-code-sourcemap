@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0407  score=0.4705  fileCov=0.0426
 // note: nearest: node_modules/human-signals/build/src/core.js (0.0407); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lHs = E(() => {
-  iHs();
-  aHs = require("os");
-});
+// [unwrapped __esm module lHs] deps: iHs
+aHs = require("os");
 var cHs,
   bMu = () => {
     let e = h0r();

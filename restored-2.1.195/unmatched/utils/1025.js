@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0185  score=0.6017  fileCov=0.0187
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0185); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Myn = E(() => {
-  bDt = ["us", "eu", "apac", "jp", "au", "us-gov", "global"];
-});
+// [unwrapped __esm module Myn]
+bDt = ["us", "eu", "apac", "jp", "au", "us-gov", "global"];
 class SDt {
   config;
   middlewareStack = u4s.constructStack();

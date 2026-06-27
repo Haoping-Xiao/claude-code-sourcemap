@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4985  score=0.9311  fileCov=0.5175
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AUl = E(() => {
-  TXn();
-});
 var HUl = () => ({
   type: "local-jsx",
   name: "login",

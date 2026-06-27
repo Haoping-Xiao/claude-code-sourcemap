@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0215  score=0.1612  fileCov=0.0242
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0215); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vGc = E(() => {
-  HGc();
-  AR();
-  sK();
-});
 function ern(e) {
   let t = u$m.exec(e);
   if (!t || t[4] && t[1]) throw TypeError("Invalid time period format");

@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.306  score=0.7892  fileCov=0.3332
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Sfl = E(() => {
-  kt();
-  Du();
-  fb();
-});
 function Efl(e, t, n, r) {
   let o = r === "single",
     s = yMe({

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0194  score=0.191  fileCov=0.0212
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js (0.0194); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Vno = E(() => {
-  Qne();
-  ERe();
-});
 function QFt(e) {
   if (hue(e)) return new zea(e);
   return new Vea(e);

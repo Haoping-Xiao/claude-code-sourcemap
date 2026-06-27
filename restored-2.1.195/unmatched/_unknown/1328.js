@@ -3,8 +3,4 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KJs = E(() => {
-  WJs();
-  zJs();
-});
 var YJs, BUr, oQs, XJs, n1, JJs, sQs, iQs, YB, A9, QJs, aQs, lQs, ZJs, cQs, eQs, tQs, nQs, rQs, Qld, uQs;

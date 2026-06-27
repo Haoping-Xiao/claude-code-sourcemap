@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.3413  score=0.5307  fileCov=0.4889
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var H1e = E(() => {
-  ft();
-  np();
-  co();
-  KI();
-  CLo();
-  w8l = require("crypto");
-});
+// [unwrapped __esm module H1e] deps: ft, np, co, KI, CLo
+w8l = require("crypto");
 function ujo(e, t, n) {
   if (e === jD) return "Review the plan in Claude Code on the web";
   if (!t || typeof t !== "object") return e;

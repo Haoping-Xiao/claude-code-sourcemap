@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0023  score=0.3145  fileCov=0.0023
 // note: nearest: src/main.tsx (0.0023); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var XVo = E(() => {
-  je();
-  vn();
-  dr();
-  kcr = R(Uj(), 1), Wsm = new Set(["update", "install", "doctor"]);
-});
+// [unwrapped __esm module XVo] deps: je, vn, dr
+kcr = R(Uj(), 1), Wsm = new Set(["update", "install", "doctor"]);
 var kTe = {};
 _t(kTe, {
   runFastPathPolicyHelper: () => runFastPathPolicyHelper,

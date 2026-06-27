@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0506  score=0.7062  fileCov=0.0517
 // note: nearest: src/ink/components/Text.tsx (0.0506); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var O5i = E(() => {
-  M5i = R(lt(), 1), $5i = R(se(), 1);
-});
+// [unwrapped __esm module O5i]
+M5i = R(lt(), 1), $5i = R(se(), 1);
 function NJr() {
   let e = N5i.c(1),
     t;

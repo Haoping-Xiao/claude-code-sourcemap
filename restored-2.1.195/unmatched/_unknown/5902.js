@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0159  score=0.0458  fileCov=0.0238
 // note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0159); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QXo = E(() => {
-  vnn = CDm;
-});
+// [unwrapped __esm module QXo]
+vnn = CDm;
 async function Uvt(e, t, n) {
   var r;
   if (!eb(e)) throw new Wa("Flattened JWE must be an object");

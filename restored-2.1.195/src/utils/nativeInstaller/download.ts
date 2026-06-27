@@ -4,32 +4,8 @@
 // class=modified  jaccard=0.2738  score=0.5701  fileCov=0.345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MPe = E(() => {
-  oo();
-  FEe();
-  er();
-  Lo();
-  wr();
-  fn();
-  Bi();
-  ys();
-  kgt();
-  A9e();
-  IVn();
-  Is();
-  tre();
-  OB();
-  lg();
-  S9();
-  hY();
-  mCe();
-  RCe();
-  lj();
-  EVn();
-  Jt();
-  _0();
-  ((Xqt = require("fs/promises")), (PPe = require("os")), (lA = require("path")));
-});
+// [unwrapped __esm module MPe] deps: oo, FEe, er, Lo, wr, fn, Bi, ys, kgt, A9e, IVn, Is, tre, OB, lg, S9, hY, mCe, RCe, lj, EVn, Jt, _0
+((Xqt = require("fs/promises")), (PPe = require("os")), (lA = require("path")));
 var Oza = () => {};
 function vAo(e, t) {
   return SFe(e) ? kSe.get(e, t) : lb.get(e, t);

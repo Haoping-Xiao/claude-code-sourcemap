@@ -4,25 +4,12 @@
 // class=modified  jaccard=0.4621  score=0.6432  fileCov=0.6214
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IGo = E(() => {
-  Hp();
-  Rc();
-  oo();
-  je();
-  fn();
-  At();
-  Gx();
-  u9();
-  qd();
-  Mh();
-  Jt();
-  Un();
-  ((fTe = R(require("ws"))),
-    (vGo = {
-      safety: 5000,
-      noData: 1500,
-    }));
-});
+// [unwrapped __esm module IGo] deps: Hp, Rc, oo, je, fn, At, Gx, u9, qd, Mh, Jt, Un
+((fTe = R(require("ws"))),
+  (vGo = {
+    safety: 5000,
+    noData: 1500,
+  }));
 var nnc = {};
 _t(nnc, {
   writeNativePlaybackData: () => writeNativePlaybackData,

@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.3055  score=0.3817  fileCov=0.6049
 // note: deminified; 112 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var t1t = E(() => {
-  Bvi = new Map();
-});
+// [unwrapped __esm module t1t]
+Bvi = new Map();
 var pU = {};
 _t(pU, {
   withOAuthRefreshLock: () => withOAuthRefreshLock,

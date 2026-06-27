@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DIs = E(() => {
-  RIs = R(by(), 1);
-});
+// [unwrapped __esm module DIs]
+RIs = R(by(), 1);
 var PIs = () => {};
 var MIs = () => {};
 var $Is;

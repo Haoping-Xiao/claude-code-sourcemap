@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.2664  score=0.6271  fileCov=0.3166
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var p4n = E(() => {
-  Ye();
-  kt();
-  W2e();
-  oo();
-  er();
-  d5e();
-  SEe();
-  ((H1a = R(lt(), 1)), (DWt = R(se(), 1)));
-});
+// [unwrapped __esm module p4n] deps: Ye, kt, W2e, oo, er, d5e, SEe
+((H1a = R(lt(), 1)), (DWt = R(se(), 1)));
 async function Rho() {
   try {
     (await oL(async () => {

@@ -4,117 +4,86 @@
 // class=modified (alt of src/components/Messages.tsx)  jaccard=0.1421  score=0.5065  fileCov=0.165
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qXt = E(() => {
-  iu();
-  Xa();
-  _i();
-  EW();
-  Ye();
-  nk();
-  Un();
-  uo();
-  ii();
-  _oe();
-  CWl();
-  ZPe();
-  wr();
-  uf();
-  MWl();
-  sF();
-  co();
-  Fh();
-  sr();
-  BFo();
-  UFo();
-  LW();
-  m5l();
-  AN();
-  v5l();
-  YFo();
-  lEe();
-  Lql();
-  d4t();
-  yVl();
-  ((I2o = R(lt(), 1)),
-    (sJt = R(rt(), 1)),
-    (am = R(rt(), 1)),
-    (MH = R(se(), 1)),
-    (dGf = sJt.memo(function (t) {
-      let n = I2o.c(5),
-        { agentDefinitions: r, latchAnnouncementSlot: o } = t,
-        s,
-        i;
-      if (n[0] === Symbol.for("react.memo_cache_sentinel"))
-        ((s = MH.jsx(f5l, {})), (i = null), (n[0] = s), (n[1] = i));
-      else ((s = n[0]), (i = n[1]));
-      let a;
-      if (n[2] !== r || n[3] !== o)
-        ((a = MH.jsx(cP, {
-          children: MH.jsxs(U, {
-            flexDirection: "column",
-            gap: 1,
-            children: [
-              s,
-              i,
-              MH.jsx(sJt.Suspense, {
-                fallback: null,
-                children: MH.jsx(Rql, {
-                  agentDefinitions: r,
-                  latchAnnouncementSlot: o,
-                }),
+// [unwrapped __esm module qXt] deps: iu, Xa, _i, EW, Ye, nk, Un, uo, ii, _oe, CWl, ZPe, wr, uf, MWl, sF, co, Fh, sr, BFo, UFo, LW, m5l, AN, v5l, YFo, lEe, Lql, d4t, yVl
+((I2o = R(lt(), 1)),
+  (sJt = R(rt(), 1)),
+  (am = R(rt(), 1)),
+  (MH = R(se(), 1)),
+  (dGf = sJt.memo(function (t) {
+    let n = I2o.c(5),
+      { agentDefinitions: r, latchAnnouncementSlot: o } = t,
+      s,
+      i;
+    if (n[0] === Symbol.for("react.memo_cache_sentinel"))
+      ((s = MH.jsx(f5l, {})), (i = null), (n[0] = s), (n[1] = i));
+    else ((s = n[0]), (i = n[1]));
+    let a;
+    if (n[2] !== r || n[3] !== o)
+      ((a = MH.jsx(cP, {
+        children: MH.jsxs(U, {
+          flexDirection: "column",
+          gap: 1,
+          children: [
+            s,
+            i,
+            MH.jsx(sJt.Suspense, {
+              fallback: null,
+              children: MH.jsx(Rql, {
+                agentDefinitions: r,
+                latchAnnouncementSlot: o,
               }),
-            ],
-          }),
-        })),
-          (n[2] = r),
-          (n[3] = o),
-          (n[4] = a));
-      else a = n[4];
-      return a;
-    })),
-    (bVl = (f4(), ro(URe)).BRIEF_TOOL_NAME),
-    (pGf = ro(WOn).SEND_USER_FILE_TOOL_NAME),
-    (SVl = (l3(), ro(CQ)).isBriefEnabled),
-    (fGf = (Bot(), ro(xvi)).isPewterOwlTool));
-  TVl = [];
-  AGf = sJt.memo(_Gf, (e, t) => {
-    let n = Object.keys(e);
-    for (let r of n) {
-      if (
-        r === "onOpenRateLimitOptions" ||
-        r === "scrollRef" ||
-        r === "trackStickyPrompt" ||
-        r === "jumpRef" ||
-        r === "onSearchMatchesChange" ||
-        r === "scanElement" ||
-        r === "setPositions"
-      )
-        continue;
-      if (e[r] !== t[r]) {
-        if (r === "streamingToolUses") {
-          let o = e.streamingToolUses,
-            s = t.streamingToolUses;
-          if (o.length === s.length && o.every((i, a) => i.contentBlock === s[a]?.contentBlock))
-            continue;
-        }
-        if (r === "inProgressToolUseIDs") {
-          if (bGf(e.inProgressToolUseIDs, t.inProgressToolUseIDs)) continue;
-        }
-        if (r === "unseenDivider") {
-          let o = e.unseenDivider,
-            s = t.unseenDivider;
-          if (o?.firstUnseenUuid === s?.firstUnseenUuid && o?.count === s?.count) continue;
-        }
-        if (r === "tools") {
-          let o = e.tools,
-            s = t.tools;
-          if (o.length === s.length && o.every((i, a) => i.name === s[a]?.name)) continue;
-        }
-        return false;
+            }),
+          ],
+        }),
+      })),
+        (n[2] = r),
+        (n[3] = o),
+        (n[4] = a));
+    else a = n[4];
+    return a;
+  })),
+  (bVl = (f4(), ro(URe)).BRIEF_TOOL_NAME),
+  (pGf = ro(WOn).SEND_USER_FILE_TOOL_NAME),
+  (SVl = (l3(), ro(CQ)).isBriefEnabled),
+  (fGf = (Bot(), ro(xvi)).isPewterOwlTool));
+TVl = [];
+AGf = sJt.memo(_Gf, (e, t) => {
+  let n = Object.keys(e);
+  for (let r of n) {
+    if (
+      r === "onOpenRateLimitOptions" ||
+      r === "scrollRef" ||
+      r === "trackStickyPrompt" ||
+      r === "jumpRef" ||
+      r === "onSearchMatchesChange" ||
+      r === "scanElement" ||
+      r === "setPositions"
+    )
+      continue;
+    if (e[r] !== t[r]) {
+      if (r === "streamingToolUses") {
+        let o = e.streamingToolUses,
+          s = t.streamingToolUses;
+        if (o.length === s.length && o.every((i, a) => i.contentBlock === s[a]?.contentBlock))
+          continue;
       }
+      if (r === "inProgressToolUseIDs") {
+        if (bGf(e.inProgressToolUseIDs, t.inProgressToolUseIDs)) continue;
+      }
+      if (r === "unseenDivider") {
+        let o = e.unseenDivider,
+          s = t.unseenDivider;
+        if (o?.firstUnseenUuid === s?.firstUnseenUuid && o?.count === s?.count) continue;
+      }
+      if (r === "tools") {
+        let o = e.tools,
+          s = t.tools;
+        if (o.length === s.length && o.every((i, a) => i.name === s[a]?.name)) continue;
+      }
+      return false;
     }
-    return true;
-  });
+  }
+  return true;
 });
 function RVl(e) {
   let t = kVl.c(34),

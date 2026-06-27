@@ -4,32 +4,19 @@
 // class=partial  jaccard=0.071  score=0.2569  fileCov=0.0893
 // note: low-confidence suggestion: src/utils/model/model.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fho = E(() => {
-  ft();
-  Ld();
-  er();
-  At();
-  DD();
-  Ao();
-  Is();
-  Un();
-  aho();
-  cho();
-  H5e();
-  QOa();
-  pho = require("crypto"), e1a = require("os");
-  xPp = new Set(["claude-fable-5", "claude-mythos-5", "claude-opus-4-8", "claude-opus-4-7", "claude-opus-4-6", "claude-opus-4-5", "claude-opus-4-1", "claude-opus-4-0", "claude-sonnet-4-6", "claude-sonnet-4-5", "claude-sonnet-4-0", "claude-haiku-4-5", "claude-3-7-sonnet", "claude-3-5-sonnet", "claude-3-5-haiku", "claude-3-opus", "claude-3-sonnet", "claude-3-haiku"]);
-  MPp = new Set(["APIUserAbortError", "AuthenticationError", "McpSessionExpiredError"]), $Pp = [{
-    messagePrefix: "File does not exist",
-    topFrameIncludes: "FileReadTool.ts"
-  }], OPp = [{
-    topFile: "node:net",
-    topFunction: "internalConnectMultipleTimeout"
-  }, {
-    topFile: "node:_http_server",
-    topFunction: "#onClose"
-  }];
-});
+// [unwrapped __esm module fho] deps: ft, Ld, er, At, DD, Ao, Is, Un, aho, cho, H5e, QOa
+pho = require("crypto"), e1a = require("os");
+xPp = new Set(["claude-fable-5", "claude-mythos-5", "claude-opus-4-8", "claude-opus-4-7", "claude-opus-4-6", "claude-opus-4-5", "claude-opus-4-1", "claude-opus-4-0", "claude-sonnet-4-6", "claude-sonnet-4-5", "claude-sonnet-4-0", "claude-haiku-4-5", "claude-3-7-sonnet", "claude-3-5-sonnet", "claude-3-5-haiku", "claude-3-opus", "claude-3-sonnet", "claude-3-haiku"]);
+MPp = new Set(["APIUserAbortError", "AuthenticationError", "McpSessionExpiredError"]), $Pp = [{
+  messagePrefix: "File does not exist",
+  topFrameIncludes: "FileReadTool.ts"
+}], OPp = [{
+  topFile: "node:net",
+  topFunction: "internalConnectMultipleTimeout"
+}, {
+  topFile: "node:_http_server",
+  topFunction: "#onClose"
+}];
 function t1a() {
   return {
     scrolls: 0,

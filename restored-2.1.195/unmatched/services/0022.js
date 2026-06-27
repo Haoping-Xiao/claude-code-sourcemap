@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var don = E(() => {
-  MBe();
-  D2();
-  FXe = MVc;
-});
+// [unwrapped __esm module don] deps: MBe, D2
+FXe = MVc;
 var $Vc, pon;

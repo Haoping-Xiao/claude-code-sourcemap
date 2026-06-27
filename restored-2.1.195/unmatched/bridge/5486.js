@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0494  score=0.2587  fileCov=0.0575
 // note: nearest: src/state/AppStateStore.ts (0.0494); dir inferred from dep-graph -> bridge; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q6o = E(() => {
-  q_c = R(rt(), 1);
-});
+// [unwrapped __esm module q6o]
+q_c = R(rt(), 1);
 function K_c(e) {
   let t = kdr.c(43),
     {

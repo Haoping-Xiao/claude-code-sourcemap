@@ -4,21 +4,15 @@
 // class=modified  jaccard=0.3572  score=0.622  fileCov=0.4562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var E5e = E(() => {
-  ft();
-  je();
-  fn();
-  At();
-  ys();
-  ((hLe = require("fs/promises")), (Fjt = require("path")));
-  ((pca = {
-    setup: 0,
-    sessionstart: 1,
-    cwdchanged: 2,
-    filechanged: 3,
-  }),
-    (uNn = /^(setup|sessionstart|cwdchanged|filechanged)-hook-(\d+)\.sh$/));
-});
+// [unwrapped __esm module E5e] deps: ft, je, fn, At, ys
+((hLe = require("fs/promises")), (Fjt = require("path")));
+((pca = {
+  setup: 0,
+  sessionstart: 1,
+  cwdchanged: 2,
+  filechanged: 3,
+}),
+  (uNn = /^(setup|sessionstart|cwdchanged|filechanged)-hook-(\d+)\.sh$/));
 function Icp() {
   let e = null,
     t,

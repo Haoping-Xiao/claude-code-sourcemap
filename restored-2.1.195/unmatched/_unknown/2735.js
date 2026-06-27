@@ -4,65 +4,60 @@
 // class=new  jaccard=0.0133  score=0.203  fileCov=0.014
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0133); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xWe = E(() => {
-  oro();
-  nno();
-  _ue();
-  t2t();
-  mtp = Symbol.for("@bufbuild/cel/func");
-  sro = class sro {
-    _name;
-    _target;
-    _args;
-    _result;
-    _impl;
-    _id;
-    [mtp] = {};
-    constructor(e, t, n, r, o, s = "") {
-      this._name = e, this._target = t, this._args = n, this._result = r, this._impl = o, this._id = s;
+// [unwrapped __esm module xWe] deps: oro, nno, _ue, t2t
+mtp = Symbol.for("@bufbuild/cel/func");
+sro = class sro {
+  _name;
+  _target;
+  _args;
+  _result;
+  _impl;
+  _id;
+  [mtp] = {};
+  constructor(e, t, n, r, o, s = "") {
+    this._name = e, this._target = t, this._args = n, this._result = r, this._impl = o, this._id = s;
+  }
+  get id() {
+    if (this._id === "") {
+      let e = this.target ? `${this.target.name}.` : "";
+      this._id = `${e}${this.name}(${this.arguments.map(t => t.name).join(",")})`;
     }
-    get id() {
-      if (this._id === "") {
-        let e = this.target ? `${this.target.name}.` : "";
-        this._id = `${e}${this.name}(${this.arguments.map(t => t.name).join(",")})`;
-      }
-      return this._id;
+    return this._id;
+  }
+  get name() {
+    return this._name;
+  }
+  get target() {
+    return this._target;
+  }
+  get arguments() {
+    return this._args;
+  }
+  get result() {
+    return this._result;
+  }
+  call(e, t, n) {
+    if (n.length != this.arguments.length) return;
+    for (let r = 0; r < n.length; r++) if (!Tta(n[r], this.arguments[r])) return;
+    try {
+      return Zne(this._impl.apply(t, n));
+    } catch (r) {
+      return EWe(r, e);
     }
-    get name() {
-      return this._name;
-    }
-    get target() {
-      return this._target;
-    }
-    get arguments() {
-      return this._args;
-    }
-    get result() {
-      return this._result;
-    }
-    call(e, t, n) {
-      if (n.length != this.arguments.length) return;
-      for (let r = 0; r < n.length; r++) if (!Tta(n[r], this.arguments[r])) return;
-      try {
-        return Zne(this._impl.apply(t, n));
-      } catch (r) {
-        return EWe(r, e);
-      }
-    }
-  };
-  Ata = class Ata extends sro {
-    call(e, t, n) {
-      if (t !== void 0) return;
-      return super.call(e, void 0, n);
-    }
-  };
-  Hta = class Hta extends sro {
-    call(e, t, n) {
-      if (t === void 0 || !Tta(t, this.target)) return;
-      return super.call(e, t, n);
-    }
-  };
-});
+  }
+};
+Ata = class Ata extends sro {
+  call(e, t, n) {
+    if (t !== void 0) return;
+    return super.call(e, void 0, n);
+  }
+};
+Hta = class Hta extends sro {
+  call(e, t, n) {
+    if (t === void 0 || !Tta(t, this.target)) return;
+    return super.call(e, t, n);
+  }
+};
 function ere(e, t = "type conversion") {
   let n = typeof e === "string" ? BigInt(e) : e;
   if (typeof n === "bigint") {

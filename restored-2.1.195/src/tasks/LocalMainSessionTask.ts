@@ -4,263 +4,252 @@
 // class=modified  jaccard=0.216  score=0.3006  fileCov=0.4343
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vEl = E(() => {
-  Xr();
-  ft();
-  jc();
-  ii();
-  At();
-  Jt();
-  K0();
-  Wso();
-  Fso();
-  Gso();
-  ((wXn = require("fs")),
-    (zoe = require("fs/promises")),
-    (QAe = require("path")),
-    (nyf = ve(() =>
-      H.strictObject({
-        method: H.enum([
-          "project_info",
-          "project_read",
-          "project_search",
-          "project_write",
-          "project_delete",
-        ]),
-        path: H.string()
-          .min(1)
-          .max(255)
-          .optional()
-          .describe(
-            'project_read/project_write/project_delete: doc path. project_write: an existing path is replaced in place; a new bare filename (no "/") is namespaced to "claude/<name>".',
-          ),
-        content: H.string()
-          .optional()
-          .describe(
-            "project_write: inline doc text. Mutually exclusive with local_path. Use local_path for anything you have on disk.",
-          ),
-        local_path: H.string()
-          .min(1)
-          .optional()
-          .describe(
-            "project_write: a file inside the working directory to upload. The " +
-              "tool reads, encodes, and uploads directly \u2014 contents never enter " +
-              "your context. Mutually exclusive with content.",
-          ),
-        force: H.boolean()
-          .optional()
-          .describe(
-            "project_write: bypass the chat-injection budget guard. Set only when the write is genuinely worth degrading chat to retrieval mode for everyone in the project.",
-          ),
-        query: H.string().min(1).optional().describe("project_search: knowledge-base query"),
-        n: H.number()
-          .int()
-          .min(1)
-          .max(15)
-          .optional()
-          .describe("project_search: number of hits (default 5)"),
-      }),
-    )),
-    (Bzt = {
-      notice: H.string().optional(),
-    }),
-    (mEl = ve(() =>
-      H.object({
-        knowledge_size: H.number(),
-        max_knowledge_size: H.number(),
-        search_threshold: H.number().nullable(),
-        rag_active: H.boolean(),
-        remaining_budget: H.number().nullable(),
-      }),
-    )),
-    (ryf = ve(() =>
-      H.discriminatedUnion("method", [
-        H.object({
-          method: H.literal("project_info"),
-          ...Bzt,
-          name: H.string(),
-          description: H.string(),
-          instructions: H.string(),
-          docs: H.array(
-            H.object({
-              path: H.string(),
-              created_at: H.string().nullable(),
-            }),
-          ),
-          files: H.array(
-            H.object({
-              path: H.string(),
-              file_kind: H.string(),
-              created_at: H.string().nullable(),
-            }),
-          ).optional(),
-          sync_sources: H.array(
-            H.object({
-              type: H.string().nullable(),
-              config: H.record(H.string(), H.unknown()),
-            }),
-          ).optional(),
-          knowledge: mEl(),
-        }),
-        H.object({
-          method: H.literal("project_read"),
-          ...Bzt,
-          path: H.string(),
-          file_kind: H.string().optional(),
-          content: H.string().optional(),
-          local_file: H.string().optional(),
-          created_at: H.string().nullable(),
-        }),
-        H.object({
-          method: H.literal("project_search"),
-          ...Bzt,
-          rag: H.boolean(),
-          hits: H.array(
-            H.object({
-              name: H.string().optional(),
-              doc_uuid: H.string().optional(),
-              text: H.string().optional(),
-            }),
-          ).optional(),
-          docs: H.array(H.string()).optional(),
-        }),
-        H.object({
-          method: H.literal("project_write"),
-          ...Bzt,
-          path: H.string(),
-          doc_uuid: H.string(),
-          replaced: H.boolean(),
-          knowledge: mEl(),
-        }),
-        H.object({
-          method: H.literal("project_delete"),
-          ...Bzt,
-          path: H.string(),
-          deleted: H.boolean(),
-        }),
+// [unwrapped __esm module vEl] deps: Xr, ft, jc, ii, At, Jt, K0, Wso, Fso, Gso
+((wXn = require("fs")),
+  (zoe = require("fs/promises")),
+  (QAe = require("path")),
+  (nyf = ve(() =>
+    H.strictObject({
+      method: H.enum([
+        "project_info",
+        "project_read",
+        "project_search",
+        "project_write",
+        "project_delete",
       ]),
-    )),
-    (oyf = {
-      project_info: [],
-      project_read: ["path"],
-      project_search: ["query"],
-      project_write: ["path"],
-      project_delete: ["path"],
-    }));
-  U$ = class U$ extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "ProjectsPreconditionError";
-    }
-  };
-  cyf = ti({
-    name: fEl,
-    searchHint: "read and write the session's attached claude.ai project",
-    maxResultSizeChars: 300000,
-    persistenceThresholdCeiling: 300000,
-    isEnabled() {
-      return Us("allow_projects_tool") && gEl() !== void 0;
-    },
-    async description() {
-      return BRo;
-    },
-    async prompt() {
-      return BRo;
-    },
-    get inputSchema() {
-      return nyf();
-    },
-    get outputSchema() {
-      return ryf();
-    },
-    isConcurrencySafe() {
-      return false;
-    },
-    isReadOnly(e) {
-      return syf(e.method);
-    },
-    isDestructive(e) {
-      return e.method === "project_write" || e.method === "project_delete";
-    },
-    userFacingName(e) {
-      return `Project: ${vXn(e)}`;
-    },
-    getToolUseSummary(e) {
-      return e?.method ? vXn(e) : null;
-    },
-    toAutoClassifierInput(e) {
-      return vXn(e);
-    },
-    renderToolUseMessage(e) {
-      return vXn(e);
-    },
-    async validateInput(e) {
-      let t = oyf[e.method].filter((n) => e[n] === void 0);
-      if (t.length > 0)
+      path: H.string()
+        .min(1)
+        .max(255)
+        .optional()
+        .describe(
+          'project_read/project_write/project_delete: doc path. project_write: an existing path is replaced in place; a new bare filename (no "/") is namespaced to "claude/<name>".',
+        ),
+      content: H.string()
+        .optional()
+        .describe(
+          "project_write: inline doc text. Mutually exclusive with local_path. Use local_path for anything you have on disk.",
+        ),
+      local_path: H.string()
+        .min(1)
+        .optional()
+        .describe(
+          "project_write: a file inside the working directory to upload. The " +
+            "tool reads, encodes, and uploads directly \u2014 contents never enter " +
+            "your context. Mutually exclusive with content.",
+        ),
+      force: H.boolean()
+        .optional()
+        .describe(
+          "project_write: bypass the chat-injection budget guard. Set only when the write is genuinely worth degrading chat to retrieval mode for everyone in the project.",
+        ),
+      query: H.string().min(1).optional().describe("project_search: knowledge-base query"),
+      n: H.number()
+        .int()
+        .min(1)
+        .max(15)
+        .optional()
+        .describe("project_search: number of hits (default 5)"),
+    }),
+  )),
+  (Bzt = {
+    notice: H.string().optional(),
+  }),
+  (mEl = ve(() =>
+    H.object({
+      knowledge_size: H.number(),
+      max_knowledge_size: H.number(),
+      search_threshold: H.number().nullable(),
+      rag_active: H.boolean(),
+      remaining_budget: H.number().nullable(),
+    }),
+  )),
+  (ryf = ve(() =>
+    H.discriminatedUnion("method", [
+      H.object({
+        method: H.literal("project_info"),
+        ...Bzt,
+        name: H.string(),
+        description: H.string(),
+        instructions: H.string(),
+        docs: H.array(
+          H.object({
+            path: H.string(),
+            created_at: H.string().nullable(),
+          }),
+        ),
+        files: H.array(
+          H.object({
+            path: H.string(),
+            file_kind: H.string(),
+            created_at: H.string().nullable(),
+          }),
+        ).optional(),
+        sync_sources: H.array(
+          H.object({
+            type: H.string().nullable(),
+            config: H.record(H.string(), H.unknown()),
+          }),
+        ).optional(),
+        knowledge: mEl(),
+      }),
+      H.object({
+        method: H.literal("project_read"),
+        ...Bzt,
+        path: H.string(),
+        file_kind: H.string().optional(),
+        content: H.string().optional(),
+        local_file: H.string().optional(),
+        created_at: H.string().nullable(),
+      }),
+      H.object({
+        method: H.literal("project_search"),
+        ...Bzt,
+        rag: H.boolean(),
+        hits: H.array(
+          H.object({
+            name: H.string().optional(),
+            doc_uuid: H.string().optional(),
+            text: H.string().optional(),
+          }),
+        ).optional(),
+        docs: H.array(H.string()).optional(),
+      }),
+      H.object({
+        method: H.literal("project_write"),
+        ...Bzt,
+        path: H.string(),
+        doc_uuid: H.string(),
+        replaced: H.boolean(),
+        knowledge: mEl(),
+      }),
+      H.object({
+        method: H.literal("project_delete"),
+        ...Bzt,
+        path: H.string(),
+        deleted: H.boolean(),
+      }),
+    ]),
+  )),
+  (oyf = {
+    project_info: [],
+    project_read: ["path"],
+    project_search: ["query"],
+    project_write: ["path"],
+    project_delete: ["path"],
+  }));
+U$ = class U$ extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "ProjectsPreconditionError";
+  }
+};
+cyf = ti({
+  name: fEl,
+  searchHint: "read and write the session's attached claude.ai project",
+  maxResultSizeChars: 300000,
+  persistenceThresholdCeiling: 300000,
+  isEnabled() {
+    return Us("allow_projects_tool") && gEl() !== void 0;
+  },
+  async description() {
+    return BRo;
+  },
+  async prompt() {
+    return BRo;
+  },
+  get inputSchema() {
+    return nyf();
+  },
+  get outputSchema() {
+    return ryf();
+  },
+  isConcurrencySafe() {
+    return false;
+  },
+  isReadOnly(e) {
+    return syf(e.method);
+  },
+  isDestructive(e) {
+    return e.method === "project_write" || e.method === "project_delete";
+  },
+  userFacingName(e) {
+    return `Project: ${vXn(e)}`;
+  },
+  getToolUseSummary(e) {
+    return e?.method ? vXn(e) : null;
+  },
+  toAutoClassifierInput(e) {
+    return vXn(e);
+  },
+  renderToolUseMessage(e) {
+    return vXn(e);
+  },
+  async validateInput(e) {
+    let t = oyf[e.method].filter((n) => e[n] === void 0);
+    if (t.length > 0)
+      return {
+        result: false,
+        message: `${e.method} requires: ${t.join(", ")}.`,
+        errorCode: 1,
+      };
+    if (e.method === "project_write") {
+      let n = e.content !== void 0,
+        r = e.local_path !== void 0;
+      if (n === r)
         return {
           result: false,
-          message: `${e.method} requires: ${t.join(", ")}.`,
+          message: 'project_write requires exactly one of "content" or "local_path".',
           errorCode: 1,
         };
-      if (e.method === "project_write") {
-        let n = e.content !== void 0,
-          r = e.local_path !== void 0;
-        if (n === r)
-          return {
-            result: false,
-            message: 'project_write requires exactly one of "content" or "local_path".',
-            errorCode: 1,
-          };
-      }
+    }
+    return {
+      result: true,
+    };
+  },
+  async call(e, t) {
+    let n = t.abortController.signal,
+      r = gEl();
+    if (!r)
+      throw new U$(
+        "No project attached to this session. Project tools are available when the session is started inside a claude.ai Project.",
+      );
+    let o = "";
+    try {
+      let s = await lyf();
+      o = s.accessToken;
+      let i = await gyf(e, r, n);
       return {
-        result: true,
+        data: s.expanded
+          ? {
+              ...i,
+              notice: ayf,
+            }
+          : i,
       };
-    },
-    async call(e, t) {
-      let n = t.abortController.signal,
-        r = gEl();
-      if (!r)
-        throw new U$(
-          "No project attached to this session. Project tools are available when the session is started inside a claude.ai Project.",
-        );
-      let o = "";
-      try {
-        let s = await lyf();
-        o = s.accessToken;
-        let i = await gyf(e, r, n);
-        return {
-          data: s.expanded
-            ? {
-                ...i,
-                notice: ayf,
-              }
-            : i,
-        };
-      } catch (s) {
-        if (n.aborted) throw new ru();
-        let i = Ksa(be(s), o);
-        if (s instanceof U$) throw new U$(i);
-        let a = on(s),
-          l = Error(i);
-        if (
-          (Vo(s) && a !== "EACCES" && a !== "EPERM") ||
-          Qie(s) ||
-          a === "ENOSPC" ||
-          a === "EDQUOT" ||
-          a === "EIO"
-        )
-          l.code = a;
-        throw l;
-      }
-    },
-    mapToolResultToToolResultBlockParam(e, t) {
-      return {
-        tool_use_id: t,
-        type: "tool_result",
-        content: De(e),
-      };
-    },
-  });
+    } catch (s) {
+      if (n.aborted) throw new ru();
+      let i = Ksa(be(s), o);
+      if (s instanceof U$) throw new U$(i);
+      let a = on(s),
+        l = Error(i);
+      if (
+        (Vo(s) && a !== "EACCES" && a !== "EPERM") ||
+        Qie(s) ||
+        a === "ENOSPC" ||
+        a === "EDQUOT" ||
+        a === "EIO"
+      )
+        l.code = a;
+      throw l;
+    }
+  },
+  mapToolResultToToolResultBlockParam(e, t) {
+    return {
+      tool_use_id: t,
+      type: "tool_result",
+      content: De(e),
+    };
+  },
 });
 function yyf() {
   let e = xEl.randomBytes(8),

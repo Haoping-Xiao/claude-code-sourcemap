@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0344  score=0.2296  fileCov=0.0389
 // note: nearest: node_modules/zod/v4/core/to-json-schema.js (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bka = E(() => {
-  je();
-  Mh();
-  _1();
-  _ka = require("fs/promises");
-});
+// [unwrapped __esm module bka] deps: je, Mh, _1
+_ka = require("fs/promises");
 function pde(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
 }

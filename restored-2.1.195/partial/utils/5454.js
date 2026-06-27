@@ -4,11 +4,6 @@
 // class=partial  jaccard=0.085  score=0.4232  fileCov=0.0962
 // note: low-confidence suggestion: src/utils/suggestions/commandSuggestions.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Zhc = E(() => {
-  je();
-  A9e();
-  _$();
-});
 async function tyc(e, t) {
   let n = e.indexOf(" ");
   if (!e.startsWith("/") || n === -1) return [];

@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.2052  score=1  fileCov=0.2052
 // note: low-confidence suggestion: node_modules/lodash-es/_SetCache.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Sts = E(() => {
-  bts = E9c;
-});
+// [unwrapped __esm module Sts]
+bts = E9c;
 function gon(e) {
   var t = -1,
     n = e == null ? 0 : e.length;

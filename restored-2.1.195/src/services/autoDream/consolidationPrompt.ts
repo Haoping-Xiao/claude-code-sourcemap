@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.0893  score=0.1559  fileCov=0.1728
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BIl = E(() => {
-  Un();
-  DPo();
-  rvf = [];
-});
+// [unwrapped __esm module BIl] deps: Un, DPo
+rvf = [];
 function UIl(e, t, n, r = false) {
   return `# Dream: Memory Consolidation
 

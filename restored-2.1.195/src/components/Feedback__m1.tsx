@@ -4,21 +4,13 @@
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0949  score=0.189  fileCov=0.1602
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mDl = E(() => {
-  ft();
-  je();
-  wr();
-  ys();
-  sa();
-  y_();
-  oOo();
-  ((Ler = require("fs/promises")),
-    (zSt = require("path")),
-    (Ekf = {
-      day: 86400000,
-      week: 604800000,
-    }));
-});
+// [unwrapped __esm module mDl] deps: ft, je, wr, ys, sa, y_, oOo
+((Ler = require("fs/promises")),
+  (zSt = require("path")),
+  (Ekf = {
+    day: 86400000,
+    week: 604800000,
+  }));
 function Zze() {
   if (Oe.DISABLE_FEEDBACK_COMMAND)
     return {

@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0097  score=0.1385  fileCov=0.0103
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/GrowthBook.mjs (0.0097); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cJo = E(() => {
-  lgr();
-});
 class rjc {
   constructor(e, t, n) {
     this.parent = e, this.key = t, this.options = n;

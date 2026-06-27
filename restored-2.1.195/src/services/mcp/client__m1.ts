@@ -4,21 +4,8 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.2113  score=0.3936  fileCov=0.3132
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Hfo = E(() => {
-  spt();
-  jun();
-  Vb();
-  k7();
-  y1();
-  ZSe();
-  er();
-  je();
-  kRa();
-  KFn();
-  lpt();
-  mfo();
-  LRa = require("os");
-});
+// [unwrapped __esm module Hfo] deps: spt, jun, Vb, k7, y1, ZSe, er, je, kRa, KFn, lpt, mfo
+LRa = require("os");
 function r2n(e, t) {
   t((n) => {
     let r = n.mcp.clients.findIndex((i) => i.name === e);

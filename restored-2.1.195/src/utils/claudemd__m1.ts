@@ -4,10 +4,8 @@
 // class=modified (alt of src/utils/claudemd.ts)  jaccard=0.1798  score=0.2853  fileCov=0.3272
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ik = E(() => {
-  YZe();
-  fjt = require("path");
-});
+// [unwrapped __esm module ik] deps: YZe
+fjt = require("path");
 var Usa = {};
 _t(Usa, {
   stripHtmlComments: () => stripHtmlComments,

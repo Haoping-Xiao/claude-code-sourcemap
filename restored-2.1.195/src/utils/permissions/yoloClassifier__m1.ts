@@ -4,24 +4,6 @@
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0583  score=0.2713  fileCov=0.0691
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Epe = E(() => {
-  ft();
-  TM();
-  Zkn();
-  kt();
-  fb();
-  ZE();
-  Yxe();
-  frt();
-  og();
-  Vw();
-  xAn();
-  IHo();
-  Sbe();
-  Ao();
-  Jt();
-  sr();
-});
 function qXa(e) {
   let t = e.replace(/[\x00-\x1f\x7f-\x9f]/g, "");
   return Ix(t, Z7p);

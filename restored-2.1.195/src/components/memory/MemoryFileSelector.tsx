@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.394  score=0.692  fileCov=0.4778
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uBl = E(() => {
-  sa();
-});
 function fBl(e) {
   let t = dBl.c(68),
     { onSelect: n, onCancel: r } = e,

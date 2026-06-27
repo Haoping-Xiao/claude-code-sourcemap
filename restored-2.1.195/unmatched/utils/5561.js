@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0298  score=0.3239  fileCov=0.0317
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.0298); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yAc = E(() => {
-  uo();
-  gq();
-  mAc();
-  M8e();
-  gAc = R(rt(), 1);
-});
+// [unwrapped __esm module yAc] deps: uo, gq, mAc, M8e
+gAc = R(rt(), 1);
 function bAc() {
   let e = _Ac.c(14),
     t = Ht(yym);

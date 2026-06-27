@@ -3,6 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Oto = E(() => {
-  YXi = R(require("fs"));
-});
+// [unwrapped __esm module Oto]
+YXi = R(require("fs"));

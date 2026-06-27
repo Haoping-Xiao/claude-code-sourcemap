@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.311  score=0.3814  fileCov=0.6276
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var D$o = E(() => {
-  aDo();
-  At();
-  Iv();
-});
 var uLl = {};
 _t(uLl, {
   resolvePluginRoot: () => resolvePluginRoot,

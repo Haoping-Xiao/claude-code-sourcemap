@@ -4,52 +4,48 @@
 // class=modified (alt of src/tools/BashTool/readOnlyValidation.ts)  jaccard=0.0292  score=0.3015  fileCov=0.0313
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Zvl = E(() => {
-  sN();
-  ys();
-  Hu();
-  ((VEf = /^(\d+),(\d+)p$/), (zEf = /^(\d+)p$/), (KEf = /^\s*(echo|printf|true|:)\b/));
-  JEf = new Map([
-    ["cat", new Set(["-n", "--number"])],
-    ["nl", new Set()],
-    ["bat", new Set(["-n", "--number", "-p", "--plain"])],
-    ["batcat", new Set(["-n", "--number", "-p", "--plain"])],
-  ]);
-  ((tAf = /^-[niwxEFGPHh]+$/),
-    (nAf = /^-[ABC]\d+$/),
-    (rAf = /^--(?:after-context|before-context|context)=\d+$/),
-    (oAf = new Set([
-      "--line-number",
-      "--ignore-case",
-      "--word-regexp",
-      "--line-regexp",
-      "--extended-regexp",
-      "--fixed-strings",
-      "--basic-regexp",
-      "--perl-regexp",
-      "--with-filename",
-      "--no-filename",
-      "--color=never",
-      "--color=auto",
-    ])));
-  ((iAf = /^-[iSswxFnNHUP]+$/),
-    (aAf = /^-[ABC]\d+$/),
-    (lAf = /^--(?:after-context|before-context|context)=\d+$/),
-    (cAf = new Set([
-      "--ignore-case",
-      "--smart-case",
-      "--case-sensitive",
-      "--word-regexp",
-      "--line-regexp",
-      "--fixed-strings",
-      "--line-number",
-      "--no-line-number",
-      "--with-filename",
-      "--no-filename",
-      "--multiline",
-      "--pcre2",
-    ])));
-});
+// [unwrapped __esm module Zvl] deps: sN, ys, Hu
+((VEf = /^(\d+),(\d+)p$/), (zEf = /^(\d+)p$/), (KEf = /^\s*(echo|printf|true|:)\b/));
+JEf = new Map([
+  ["cat", new Set(["-n", "--number"])],
+  ["nl", new Set()],
+  ["bat", new Set(["-n", "--number", "-p", "--plain"])],
+  ["batcat", new Set(["-n", "--number", "-p", "--plain"])],
+]);
+((tAf = /^-[niwxEFGPHh]+$/),
+  (nAf = /^-[ABC]\d+$/),
+  (rAf = /^--(?:after-context|before-context|context)=\d+$/),
+  (oAf = new Set([
+    "--line-number",
+    "--ignore-case",
+    "--word-regexp",
+    "--line-regexp",
+    "--extended-regexp",
+    "--fixed-strings",
+    "--basic-regexp",
+    "--perl-regexp",
+    "--with-filename",
+    "--no-filename",
+    "--color=never",
+    "--color=auto",
+  ])));
+((iAf = /^-[iSswxFnNHUP]+$/),
+  (aAf = /^-[ABC]\d+$/),
+  (lAf = /^--(?:after-context|before-context|context)=\d+$/),
+  (cAf = new Set([
+    "--ignore-case",
+    "--smart-case",
+    "--case-sensitive",
+    "--word-regexp",
+    "--line-regexp",
+    "--fixed-strings",
+    "--line-number",
+    "--no-line-number",
+    "--with-filename",
+    "--no-filename",
+    "--multiline",
+    "--pcre2",
+  ])));
 function LJn(e) {
   let t = [
     {

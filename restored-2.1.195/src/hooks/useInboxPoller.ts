@@ -4,20 +4,8 @@
 // class=modified  jaccard=0.4001  score=0.7322  fileCov=0.4686
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aYo = E(() => {
-  ft();
-  np();
-  dn();
-  WW();
-  F2t();
-  N8();
-  je();
-  vn();
-  bm();
-  tA();
-  OI();
-  ((_vm = new RegExp(`<${Dp}>([^<]+)</${Dp}>`, "g")), (bvm = `<${Oc}>`), (Svm = `<${up}>`));
-});
+// [unwrapped __esm module aYo] deps: ft, np, dn, WW, F2t, N8, je, vn, bm, tA, OI
+((_vm = new RegExp(`<${Dp}>([^<]+)</${Dp}>`, "g")), (bvm = `<${Oc}>`), (Svm = `<${up}>`));
 function efr(e) {
   if (oU()) return;
   if (wf()) return Oh();

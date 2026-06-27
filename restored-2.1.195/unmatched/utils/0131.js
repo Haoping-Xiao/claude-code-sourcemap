@@ -4,9 +4,8 @@
 // class=new  jaccard=0.006  score=0.5437  fileCov=0.006
 // note: nearest: node_modules/@grpc/grpc-js/build/src/server.js (0.006); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rm = E(() => {
-  Irs = require("fs"), xrs = require("os"), zie = require("path");
-});
+// [unwrapped __esm module Rm]
+Irs = require("fs"), xrs = require("os"), zie = require("path");
 function xzc(e) {
   if (typeof e === "function") return e;
   if (Symbol.asyncDispose in e) return () => e[Symbol.asyncDispose]();

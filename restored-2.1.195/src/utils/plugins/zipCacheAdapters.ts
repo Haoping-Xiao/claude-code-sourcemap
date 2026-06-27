@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.2245  score=0.9312  fileCov=0.2283
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MUc = E(() => {
-  ft();
-  ty();
-  Ao();
-  I7e();
-  _a();
-});
 async function ALm() {
   try {
     let e = await fXo.readFile(_$o(), "utf-8"),

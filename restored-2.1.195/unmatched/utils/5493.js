@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0047  score=0.8462  fileCov=0.0047
 // note: nearest: src/screens/REPL.tsx (0.0047); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lbc = E(() => {
-  zj();
-});
 function cbc({
   input: e,
   pastedContents: t,

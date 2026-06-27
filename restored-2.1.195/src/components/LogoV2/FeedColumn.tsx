@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2688  score=0.485  fileCov=0.3761
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YWl = E(() => {
-  Tc();
-  Ye();
-  es();
-  B_();
-  ((VWl = R(lt(), 1)), (VN = R(se(), 1)));
-});
+// [unwrapped __esm module YWl] deps: Tc, Ye, es, B_
+((VWl = R(lt(), 1)), (VN = R(se(), 1)));
 function QWl(e) {
   let t = XWl.c(10),
     { feeds: n, maxWidth: r } = e,

@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0098  score=0.4222  fileCov=0.01
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0098); dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nal = E(() => {
-  Xa();
-  Ye();
-  eal = R(lt(), 1), IAe = R(se(), 1);
-});
+// [unwrapped __esm module nal] deps: Xa, Ye
+eal = R(lt(), 1), IAe = R(se(), 1);
 var sal = {};
 _t(sal, {
   UserChannelMessage: () => UserChannelMessage

@@ -3,7 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ams = E(() => {
-  Ems = xlu;
-});
+// [unwrapped __esm module Ams]
+Ems = xlu;
 var klu, ddn;

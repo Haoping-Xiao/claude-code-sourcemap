@@ -4,56 +4,41 @@
 // class=modified  jaccard=0.1423  score=0.3032  fileCov=0.2114
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TTl = E(() => {
-  Il();
-  Lo();
-  sa();
-  Gy();
-  w5e();
-  Is();
-  bde();
-  xue();
-  GHl();
-  nTl();
-  iTl();
-  mTl();
-  Wbt();
-  dze();
-  ((yTl = require("path")),
-    (nDo = new Set([
-      "new-item",
-      "set-content",
-      "add-content",
-      "out-file",
-      "copy-item",
-      "move-item",
-      "rename-item",
-      "expand-archive",
-      "invoke-webrequest",
-      "invoke-restmethod",
-      "tee-object",
-      "export-csv",
-      "export-clixml",
-    ])),
-    (pSf = new Set([
-      "tar",
-      "tar.exe",
-      "bsdtar",
-      "bsdtar.exe",
-      "unzip",
-      "unzip.exe",
-      "7z",
-      "7z.exe",
-      "7za",
-      "7za.exe",
-      "gzip",
-      "gzip.exe",
-      "gunzip",
-      "gunzip.exe",
-      "expand-archive",
-    ])),
-    (fSf = new Set(["xcopy", "xcopy.exe", "robocopy", "robocopy.exe"])));
-});
+// [unwrapped __esm module TTl] deps: Il, Lo, sa, Gy, w5e, Is, bde, xue, GHl, nTl, iTl, mTl, Wbt, dze
+((yTl = require("path")),
+  (nDo = new Set([
+    "new-item",
+    "set-content",
+    "add-content",
+    "out-file",
+    "copy-item",
+    "move-item",
+    "rename-item",
+    "expand-archive",
+    "invoke-webrequest",
+    "invoke-restmethod",
+    "tee-object",
+    "export-csv",
+    "export-clixml",
+  ])),
+  (pSf = new Set([
+    "tar",
+    "tar.exe",
+    "bsdtar",
+    "bsdtar.exe",
+    "unzip",
+    "unzip.exe",
+    "7z",
+    "7z.exe",
+    "7za",
+    "7za.exe",
+    "gzip",
+    "gzip.exe",
+    "gunzip",
+    "gunzip.exe",
+    "expand-archive",
+  ])),
+  (fSf = new Set(["xcopy", "xcopy.exe", "robocopy", "robocopy.exe"])));
 function hJn() {
   return I$e();
 }

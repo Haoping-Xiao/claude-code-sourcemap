@@ -4,46 +4,45 @@
 // class=new  jaccard=0.0238  score=0.0802  fileCov=0.0328
 // note: nearest: src/services/teamMemorySync/index.ts (0.0238); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WKr = E(() => {
-  D_e = class D_e extends Error {
-    path;
-    expected;
-    actual;
-    existingId;
-    constructor(e, t, n, r) {
-      super(`conflict on ${e}: expected ${t ?? "<none>"}, actual ${n ?? "<unknown>"}`);
-      this.path = e;
-      this.expected = t;
-      this.actual = n;
-      this.existingId = r;
-      this.name = "ConflictError";
-    }
-  };
-  _ce = class _ce extends Error {
-    path;
-    constructor(e) {
-      super(`not found: ${e}`);
-      this.path = e;
-      this.name = "NotFoundError";
-    }
-  };
-  M3e = class M3e extends Error {
-    cause;
-    constructor(e, t) {
-      super(e);
-      this.cause = t;
-      this.name = "UnavailableError";
-    }
-  };
-  $j = class $j extends Error {
-    reason;
-    constructor(e, t) {
-      super(t ?? `permanent: ${e}`);
-      this.reason = e;
-      this.name = "PermanentError";
-    }
-  };
-});
+// [unwrapped __esm module WKr]
+D_e = class D_e extends Error {
+  path;
+  expected;
+  actual;
+  existingId;
+  constructor(e, t, n, r) {
+    super(`conflict on ${e}: expected ${t ?? "<none>"}, actual ${n ?? "<unknown>"}`);
+    this.path = e;
+    this.expected = t;
+    this.actual = n;
+    this.existingId = r;
+    this.name = "ConflictError";
+  }
+};
+_ce = class _ce extends Error {
+  path;
+  constructor(e) {
+    super(`not found: ${e}`);
+    this.path = e;
+    this.name = "NotFoundError";
+  }
+};
+M3e = class M3e extends Error {
+  cause;
+  constructor(e, t) {
+    super(e);
+    this.cause = t;
+    this.name = "UnavailableError";
+  }
+};
+$j = class $j extends Error {
+  reason;
+  constructor(e, t) {
+    super(t ?? `permanent: ${e}`);
+    this.reason = e;
+    this.name = "PermanentError";
+  }
+};
 function $3e(e) {
   return (e.startsWith("/") ? e : "/" + e).replace(/\/{2,}/g, "/");
 }

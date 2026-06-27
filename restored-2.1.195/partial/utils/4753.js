@@ -4,14 +4,6 @@
 // class=partial  jaccard=0.248  score=0.3126  fileCov=0.5456
 // note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Fl = E(() => {
-  kt();
-  er();
-  vy();
-  je();
-  Bi();
-  vn();
-});
 function SFl(e) {
   let t = bFl.c(9),
     {

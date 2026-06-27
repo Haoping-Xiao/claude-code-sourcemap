@@ -4,32 +4,16 @@
 // class=modified (alt of src/utils/editor.ts)  jaccard=0.2274  score=0.4064  fileCov=0.3404
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QOe = E(() => {
-  Qi();
-  ft();
-  HI();
-  je();
-  _0();
-  ((Lnr = require("child_process")), (Rnr = require("path")));
-  HOf = new Set(["start", "cmd", "cmd.exe"]);
-  ((TOf = [
-    "code",
-    "cursor",
-    "windsurf",
-    "codium",
-    "subl",
-    "atom",
-    "gedit",
-    "notepad++",
-    "notepad",
-  ]),
-    (vOf = /\b(vi|vim|nvim|nano|emacs|pico|micro|helix|hx)\b/),
-    (wOf = new Set(["code", "cursor", "windsurf", "codium"])));
-  IOf = Cn(() => {
-    if (process.env.VISUAL?.trim()) return process.env.VISUAL.trim();
-    if (process.env.EDITOR?.trim()) return process.env.EDITOR.trim();
-    return ["code", "vi", "nano"].find((t) => AOf(t));
-  });
+// [unwrapped __esm module QOe] deps: Qi, ft, HI, je, _0
+((Lnr = require("child_process")), (Rnr = require("path")));
+HOf = new Set(["start", "cmd", "cmd.exe"]);
+((TOf = ["code", "cursor", "windsurf", "codium", "subl", "atom", "gedit", "notepad++", "notepad"]),
+  (vOf = /\b(vi|vim|nvim|nano|emacs|pico|micro|helix|hx)\b/),
+  (wOf = new Set(["code", "cursor", "windsurf", "codium"])));
+IOf = Cn(() => {
+  if (process.env.VISUAL?.trim()) return process.env.VISUAL.trim();
+  if (process.env.EDITOR?.trim()) return process.env.EDITOR.trim();
+  return ["code", "vi", "nano"].find((t) => AOf(t));
 });
 function kOf(e) {
   return QNo(e) !== void 0;

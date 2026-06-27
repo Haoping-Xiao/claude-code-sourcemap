@@ -4,21 +4,9 @@
 // class=new  jaccard=0.0259  score=0.3789  fileCov=0.027
 // note: nearest: src/utils/plugins/lspPluginIntegration.ts (0.0259); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nDe = E(() => {
-  bCe();
-  je();
-  wr();
-  At();
-  ys();
-  Hu();
-  Jt();
-  vdt();
-  B1();
-  $g();
-  i5();
-  gCa = require("path");
-  ldo = ["CLAUDE_PLUGIN_ROOT", "CLAUDE_PLUGIN_DATA"], dTp = new Set(ldo);
-});
+// [unwrapped __esm module nDe] deps: bCe, je, wr, At, ys, Hu, Jt, vdt, B1, $g, i5
+gCa = require("path");
+ldo = ["CLAUDE_PLUGIN_ROOT", "CLAUDE_PLUGIN_DATA"], dTp = new Set(ldo);
 function d3t(e, t) {
   if (t === "*") return true;
   let n;

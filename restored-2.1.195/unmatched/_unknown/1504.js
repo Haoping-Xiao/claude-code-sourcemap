@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0169  score=0.6969  fileCov=0.017
 // note: nearest: node_modules/@smithy/core/dist-cjs/index.js (0.0169); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bii = E(() => {
-  (function (e) {
-    e.HEADER = "header", e.QUERY = "query";
-  })(Nii || (Nii = {}));
-});
+// [unwrapped __esm module Bii]
+(function (e) {
+  e.HEADER = "header", e.QUERY = "query";
+})(Nii || (Nii = {}));
 var Uii;

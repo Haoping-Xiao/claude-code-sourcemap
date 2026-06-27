@@ -4,26 +4,17 @@
 // class=modified  jaccard=0.2385  score=0.3551  fileCov=0.4206
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IXl = E(() => {
-  Xr();
-  Vl();
-  Ye();
-  dn();
-  er();
-  je();
-  At();
-  Jt();
-  ((w4o = R(lt(), 1)),
-    (D1e = R(rt(), 1)),
-    (Z$ = R(se(), 1)),
-    (f8f = ve(() =>
-      H.object({
-        deviceId: H.string(),
-        name: H.string().default("Browser"),
-        osPlatform: H.string().optional(),
-      }),
-    )));
-});
+// [unwrapped __esm module IXl] deps: Xr, Vl, Ye, dn, er, je, At, Jt
+((w4o = R(lt(), 1)),
+  (D1e = R(rt(), 1)),
+  (Z$ = R(se(), 1)),
+  (f8f = ve(() =>
+    H.object({
+      deviceId: H.string(),
+      name: H.string().default("Browser"),
+      osPlatform: H.string().optional(),
+    }),
+  )));
 var kXl = {};
 _t(kXl, {
   call: () => call,

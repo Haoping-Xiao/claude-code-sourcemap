@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qes = E(() => {
-  Wes = YVc;
-});
+// [unwrapped __esm module qes]
+Wes = YVc;
 function XVc(e, t) {
   var n = Wes(e, t);
   return jes(n) ? n : void 0;

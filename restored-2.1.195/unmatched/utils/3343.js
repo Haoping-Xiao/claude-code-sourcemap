@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0306  score=0.3938  fileCov=0.0321
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0306); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WI = E(() => {
-  Ree();
-  je();
-  Mx();
-  dr();
-  Ukp = new Set(["http:", "https:", "git:", "git+http:", "git+https:"]);
-});
+// [unwrapped __esm module WI] deps: Ree, je, Mx, dr
+Ukp = new Set(["http:", "https:", "git:", "git+http:", "git+https:"]);
 function jkp(e) {
   let t = u6.relative(u6.join(tr(), "skills"), e);
   return t !== "" && t !== ".." && !t.startsWith(`..${u6.sep}`) && !u6.isAbsolute(t);

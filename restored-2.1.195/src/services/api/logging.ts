@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.1299  score=0.3946  fileCov=0.1623
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cMo = E(() => {
-  je();
-  fn();
-  At();
-  Jt();
-  aS();
-  ((lMo = require("crypto")), (aYt = require("fs/promises")), (tZn = require("path")));
-});
+// [unwrapped __esm module cMo] deps: je, fn, At, Jt, aS
+((lMo = require("crypto")), (aYt = require("fs/promises")), (tZn = require("path")));
 function mwf(e) {
   if (e instanceof Fo) {
     let n = e.error?.error?.message;

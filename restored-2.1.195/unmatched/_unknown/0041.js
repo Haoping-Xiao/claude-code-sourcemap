@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uts = E(() => {
-  $wt();
-  cts = m9c;
-});
+// [unwrapped __esm module uts] deps: $wt
+cts = m9c;
 function g9c(e) {
   return Ove(this, e).has(e);
 }

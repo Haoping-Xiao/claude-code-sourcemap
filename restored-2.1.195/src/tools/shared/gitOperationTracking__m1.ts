@@ -4,113 +4,96 @@
 // class=modified (alt of src/tools/shared/gitOperationTracking.ts)  jaccard=0.2433  score=0.3686  fileCov=0.4173
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ift = E(() => {
-  zb();
-  dn();
-  Un();
-  Pw();
-  je();
-  fn();
-  At();
-  Bi();
-  sa();
-  q$a();
-  Mx();
-  SG();
-  qd();
-  Mh();
-  ih();
-  Jt();
-  ((X$a = require("fs/promises")),
-    (J$a = require("path")),
-    (tVe = Mi()),
-    (Nre = {
-      disabled: false,
-      badStreak: 0,
-    }));
-  ((JLp = new Set([301, 302, 307, 308])),
-    (QLp = ve(() =>
-      dt.array(
-        dt.object({
-          number: dt.number(),
-          html_url: dt.string(),
-          draft: dt.boolean(),
-        }),
-      ),
-    )),
-    (ZLp = ve(() =>
+// [unwrapped __esm module ift] deps: zb, dn, Un, Pw, je, fn, At, Bi, sa, q$a, Mx, SG, qd, Mh, ih, Jt
+((X$a = require("fs/promises")),
+  (J$a = require("path")),
+  (tVe = Mi()),
+  (Nre = {
+    disabled: false,
+    badStreak: 0,
+  }));
+((JLp = new Set([301, 302, 307, 308])),
+  (QLp = ve(() =>
+    dt.array(
       dt.object({
-        data: dt.object({
-          repository: dt
-            .object({
-              pullRequest: dt
-                .object({
-                  reviewDecision: dt.string().nullable(),
-                })
-                .nullable(),
-            })
-            .nullable(),
-        }),
+        number: dt.number(),
+        html_url: dt.string(),
+        draft: dt.boolean(),
       }),
-    )));
-  rDp = ve(() =>
+    ),
+  )),
+  (ZLp = ve(() =>
     dt.object({
-      parent: dt
-        .object({
-          name: dt.string(),
-          owner: dt.object({
-            login: dt.string(),
-          }),
-        })
-        .nullish(),
+      data: dt.object({
+        repository: dt
+          .object({
+            pullRequest: dt
+              .object({
+                reviewDecision: dt.string().nullable(),
+              })
+              .nullable(),
+          })
+          .nullable(),
+      }),
     }),
+  )));
+rDp = ve(() =>
+  dt.object({
+    parent: dt
+      .object({
+        name: dt.string(),
+        owner: dt.object({
+          login: dt.string(),
+        }),
+      })
+      .nullish(),
+  }),
+);
+lDp = Ahe(async (e) => {
+  let { stdout: t, code: n } = await $n(
+    "gh",
+    [
+      "pr",
+      "view",
+      e,
+      "--json",
+      "number,title,state,isDraft,statusCheckRollup,reviewDecision,additions,deletions",
+    ],
+    {
+      timeout: rWt,
+      preserveOutputOnError: false,
+    },
   );
-  lDp = Ahe(async (e) => {
-    let { stdout: t, code: n } = await $n(
-      "gh",
-      [
-        "pr",
-        "view",
-        e,
-        "--json",
-        "number,title,state,isDraft,statusCheckRollup,reviewDecision,additions,deletions",
-      ],
-      {
-        timeout: rWt,
-        preserveOutputOnError: false,
-      },
-    );
-    if (n !== 0 || !t.trim()) return null;
-    try {
-      let r = Ft(t);
-      return {
-        number: r.number,
-        title: r.title,
-        state:
-          r.state === "MERGED"
-            ? "MERGED"
-            : r.state === "CLOSED"
-              ? "CLOSED"
-              : r.isDraft
-                ? "DRAFT"
-                : "OPEN",
-        checks: aDp(r.statusCheckRollup),
-        review:
-          r.reviewDecision === "APPROVED" ||
-          r.reviewDecision === "CHANGES_REQUESTED" ||
-          r.reviewDecision === "REVIEW_REQUIRED"
-            ? r.reviewDecision
-            : null,
-        additions: r.additions,
-        deletions: r.deletions,
-      };
-    } catch {
-      return null;
-    }
-  }, 30000);
-  cDp = /^https:\/\/([\w.-]+)\/([\w.-]+)\/([\w.-]+)\/pull\/(\d+)\b/;
-  K$a = /rate limit/i;
-});
+  if (n !== 0 || !t.trim()) return null;
+  try {
+    let r = Ft(t);
+    return {
+      number: r.number,
+      title: r.title,
+      state:
+        r.state === "MERGED"
+          ? "MERGED"
+          : r.state === "CLOSED"
+            ? "CLOSED"
+            : r.isDraft
+              ? "DRAFT"
+              : "OPEN",
+      checks: aDp(r.statusCheckRollup),
+      review:
+        r.reviewDecision === "APPROVED" ||
+        r.reviewDecision === "CHANGES_REQUESTED" ||
+        r.reviewDecision === "REVIEW_REQUIRED"
+          ? r.reviewDecision
+          : null,
+      additions: r.additions,
+      deletions: r.deletions,
+    };
+  } catch {
+    return null;
+  }
+}, 30000);
+cDp = /^https:\/\/([\w.-]+)\/([\w.-]+)\/([\w.-]+)\/pull\/(\d+)\b/;
+K$a = /rate limit/i;
 function aft(e, t = "") {
   return new RegExp(`\\bgit(?:\\s+-[cC]\\s+\\S+|\\s+--\\S+=\\S+)*\\s+${e}\\b${t}`);
 }

@@ -4,170 +4,141 @@
 // class=modified  jaccard=0.2478  score=0.5883  fileCov=0.2998
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Du = E(() => {
-  Qi();
-  wr();
-  Q9();
-  TM();
-  Vw();
-  Ao();
-  ft();
-  fn();
-  Ist();
-  Tzr();
-  S_e();
-  Yle();
-  kst();
-  QH();
-  oo();
-  Ld();
-  sa();
-  Is();
-  og();
-  Jt();
-  Mp();
-  pke();
-  fb();
-  ((_Oi = require("path")),
-    (gOi = {
-      [rLt]: "Bash",
-      [vws]: "WebFetch",
-    }));
-  xzr = new Set([S7]);
-  ((G$d = new Set([
-    "rm",
-    "mv",
-    "cp",
-    "touch",
-    "mkdir",
-    "chmod",
-    "chown",
-    "cat",
-    "head",
-    "tail",
-    "sort",
-    "stat",
-    "diff",
-    "wc",
-    "grep",
-    "rg",
-    "sed",
-  ])),
-    (W$d = /\s*(?:&&|\|\||[;|])\s*/),
-    (q$d = /\s+/));
-  V$d = /\.(csv|docx?|html|json|md|od[pst]|pdf|pptx?|rtf|txt|xlsx?)\b/g;
-  z$d =
-    /^\d+\.\d+\.\d+(-(?:dev|alpha|beta|rc|test|nightly)(?![a-z_-])\d{0,8}(?:\.[a-z0-9.]{0,40})?)?/;
-  K$d = new Set([
-    "darwin",
-    "linux",
-    "win32",
-    "freebsd",
-    "openbsd",
-    "netbsd",
-    "android",
-    "aix",
-    "sunos",
-    "cygwin",
-    "haiku",
-    "macos",
-    "windows",
-    "wsl",
-    "unknown",
-  ]);
-  ((rNt = Cn(() => {
-    let e = {
-      ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
-      PACKAGE_URL: "@anthropic-ai/claude-code",
-      README_URL: "https://code.claude.com/docs/en/overview",
-      VERSION: "2.1.195",
-      FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
-      BUILD_TIME: "2026-06-26T01:00:56Z",
-      GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
-    }.VERSION.match(/^\d+\.\d+\.\d+(?:-[a-z]+)?/);
-    return e ? e[0] : void 0;
+// [unwrapped __esm module Du] deps: Qi, wr, Q9, TM, Vw, Ao, ft, fn, Ist, Tzr, S_e, Yle, kst, QH, oo, Ld, sa, Is, og, Jt, Mp, pke, fb
+((_Oi = require("path")),
+  (gOi = {
+    [rLt]: "Bash",
+    [vws]: "WebFetch",
+  }));
+xzr = new Set([S7]);
+((G$d = new Set([
+  "rm",
+  "mv",
+  "cp",
+  "touch",
+  "mkdir",
+  "chmod",
+  "chown",
+  "cat",
+  "head",
+  "tail",
+  "sort",
+  "stat",
+  "diff",
+  "wc",
+  "grep",
+  "rg",
+  "sed",
+])),
+  (W$d = /\s*(?:&&|\|\||[;|])\s*/),
+  (q$d = /\s+/));
+V$d = /\.(csv|docx?|html|json|md|od[pst]|pdf|pptx?|rtf|txt|xlsx?)\b/g;
+z$d =
+  /^\d+\.\d+\.\d+(-(?:dev|alpha|beta|rc|test|nightly)(?![a-z_-])\d{0,8}(?:\.[a-z0-9.]{0,40})?)?/;
+K$d = new Set([
+  "darwin",
+  "linux",
+  "win32",
+  "freebsd",
+  "openbsd",
+  "netbsd",
+  "android",
+  "aix",
+  "sunos",
+  "cygwin",
+  "haiku",
+  "macos",
+  "windows",
+  "wsl",
+  "unknown",
+]);
+((rNt = Cn(() => {
+  let e = {
+    ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+    PACKAGE_URL: "@anthropic-ai/claude-code",
+    README_URL: "https://code.claude.com/docs/en/overview",
+    VERSION: "2.1.195",
+    FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+    BUILD_TIME: "2026-06-26T01:00:56Z",
+    GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+  }.VERSION.match(/^\d+\.\d+\.\d+(?:-[a-z]+)?/);
+  return e ? e[0] : void 0;
+})),
+  (X$d = Cn(async () => {
+    let [e, t, n, r] = await Promise.all([Oe.getPackageManagers(), Oe.getRuntimes(), DEs(), MEs()]);
+    return {
+      platform: W0t(),
+      platformRaw: process.env.CLAUDE_CODE_HOST_PLATFORM || "linux",
+      arch: Oe.arch,
+      nodeVersion: Oe.nodeVersion,
+      terminal: h1.terminal,
+      shell: akr(),
+      packageManagers: e.join(","),
+      runtimes: t.join(","),
+      isRunningWithBun: Oe.isRunningWithBun(),
+      isCi: ut(false),
+      isClaubbit: Oe.CLAUBBIT,
+      isClaudeCodeRemote: ut(process.env.CLAUDE_CODE_REMOTE),
+      isLocalAgentMode: process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent",
+      isConductor: Oe.isConductor(),
+      ...(process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE && {
+        remoteEnvironmentType: process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE,
+      }),
+      ...{},
+      ...(process.env.CLAUDE_CODE_CONTAINER_ID && {
+        claudeCodeContainerId: process.env.CLAUDE_CODE_CONTAINER_ID,
+      }),
+      ...(process.env.CLAUDE_CODE_REMOTE_SESSION_ID && {
+        claudeCodeRemoteSessionId: process.env.CLAUDE_CODE_REMOTE_SESSION_ID,
+      }),
+      ...(process.env.CLAUDE_CODE_TAGS && {
+        tags: process.env.CLAUDE_CODE_TAGS,
+      }),
+      isGithubAction: ut(process.env.GITHUB_ACTIONS),
+      isClaudeCodeAction: ut(process.env.CLAUDE_CODE_ACTION),
+      isClaudeAiAuth: bo(),
+      version: {
+        ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+        PACKAGE_URL: "@anthropic-ai/claude-code",
+        README_URL: "https://code.claude.com/docs/en/overview",
+        VERSION: "2.1.195",
+        FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+        BUILD_TIME: "2026-06-26T01:00:56Z",
+        GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+      }.VERSION,
+      versionBase: rNt(),
+      buildTime: {
+        ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+        PACKAGE_URL: "@anthropic-ai/claude-code",
+        README_URL: "https://code.claude.com/docs/en/overview",
+        VERSION: "2.1.195",
+        FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+        BUILD_TIME: "2026-06-26T01:00:56Z",
+        GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+      }.BUILD_TIME,
+      deploymentEnvironment: Oe.detectDeploymentEnvironment(),
+      ...(ut(process.env.GITHUB_ACTIONS) && {
+        githubEventName: process.env.GITHUB_EVENT_NAME,
+        githubActionsRunnerEnvironment: process.env.RUNNER_ENVIRONMENT,
+        githubActionsRunnerOs: process.env.RUNNER_OS,
+        githubActionRef: process.env.GITHUB_ACTION_PATH?.includes("claude-code-action/")
+          ? process.env.GITHUB_ACTION_PATH.split("claude-code-action/")[1]
+          : void 0,
+      }),
+      ...(OFe() && {
+        wslVersion: OFe(),
+      }),
+      ...(n ?? {}),
+      ...(r.length > 0 && {
+        vcs: r.join(","),
+      }),
+    };
   })),
-    (X$d = Cn(async () => {
-      let [e, t, n, r] = await Promise.all([
-        Oe.getPackageManagers(),
-        Oe.getRuntimes(),
-        DEs(),
-        MEs(),
-      ]);
-      return {
-        platform: W0t(),
-        platformRaw: process.env.CLAUDE_CODE_HOST_PLATFORM || "linux",
-        arch: Oe.arch,
-        nodeVersion: Oe.nodeVersion,
-        terminal: h1.terminal,
-        shell: akr(),
-        packageManagers: e.join(","),
-        runtimes: t.join(","),
-        isRunningWithBun: Oe.isRunningWithBun(),
-        isCi: ut(false),
-        isClaubbit: Oe.CLAUBBIT,
-        isClaudeCodeRemote: ut(process.env.CLAUDE_CODE_REMOTE),
-        isLocalAgentMode: process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent",
-        isConductor: Oe.isConductor(),
-        ...(process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE && {
-          remoteEnvironmentType: process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE,
-        }),
-        ...{},
-        ...(process.env.CLAUDE_CODE_CONTAINER_ID && {
-          claudeCodeContainerId: process.env.CLAUDE_CODE_CONTAINER_ID,
-        }),
-        ...(process.env.CLAUDE_CODE_REMOTE_SESSION_ID && {
-          claudeCodeRemoteSessionId: process.env.CLAUDE_CODE_REMOTE_SESSION_ID,
-        }),
-        ...(process.env.CLAUDE_CODE_TAGS && {
-          tags: process.env.CLAUDE_CODE_TAGS,
-        }),
-        isGithubAction: ut(process.env.GITHUB_ACTIONS),
-        isClaudeCodeAction: ut(process.env.CLAUDE_CODE_ACTION),
-        isClaudeAiAuth: bo(),
-        version: {
-          ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
-          PACKAGE_URL: "@anthropic-ai/claude-code",
-          README_URL: "https://code.claude.com/docs/en/overview",
-          VERSION: "2.1.195",
-          FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
-          BUILD_TIME: "2026-06-26T01:00:56Z",
-          GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
-        }.VERSION,
-        versionBase: rNt(),
-        buildTime: {
-          ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
-          PACKAGE_URL: "@anthropic-ai/claude-code",
-          README_URL: "https://code.claude.com/docs/en/overview",
-          VERSION: "2.1.195",
-          FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
-          BUILD_TIME: "2026-06-26T01:00:56Z",
-          GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
-        }.BUILD_TIME,
-        deploymentEnvironment: Oe.detectDeploymentEnvironment(),
-        ...(ut(process.env.GITHUB_ACTIONS) && {
-          githubEventName: process.env.GITHUB_EVENT_NAME,
-          githubActionsRunnerEnvironment: process.env.RUNNER_ENVIRONMENT,
-          githubActionsRunnerOs: process.env.RUNNER_OS,
-          githubActionRef: process.env.GITHUB_ACTION_PATH?.includes("claude-code-action/")
-            ? process.env.GITHUB_ACTION_PATH.split("claude-code-action/")[1]
-            : void 0,
-        }),
-        ...(OFe() && {
-          wslVersion: OFe(),
-        }),
-        ...(n ?? {}),
-        ...(r.length > 0 && {
-          vcs: r.join(","),
-        }),
-      };
-    })),
-    (b3e = {
-      rss: 0,
-      heapUsed: 0,
-      external: 0,
-    }));
-});
+  (b3e = {
+    rss: 0,
+    heapUsed: 0,
+    external: 0,
+  }));
 function oNt() {
   return gkn.join(tr(), "telemetry");
 }

@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2657  score=0.3576  fileCov=0.5082
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K6n = E(() => {
-  tA();
-});
 function Hol(e) {
   if (e) return false;
   return at("tengu_shale_finch", false);

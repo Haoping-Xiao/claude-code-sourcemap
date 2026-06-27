@@ -4,19 +4,14 @@
 // class=new  jaccard=0.0155  score=0.0603  fileCov=0.0204
 // note: nearest: src/utils/teleport.tsx (0.0155); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $Wc = E(() => {
-  zb();
-  pZo();
-  fZo();
-  rhr();
-  J$m = ve(() => dt.object({
-    p: dt.string(),
-    s: dt.undefined()
-  })), Q$m = ve(() => dt.object({
-    p: dt.string(),
-    s: dt.literal(true)
-  }));
-});
+// [unwrapped __esm module $Wc] deps: zb, pZo, fZo, rhr
+J$m = ve(() => dt.object({
+  p: dt.string(),
+  s: dt.undefined()
+})), Q$m = ve(() => dt.object({
+  p: dt.string(),
+  s: dt.literal(true)
+}));
 function hZo(e) {
   return e === uBe || e.startsWith(`${uBe}/`);
 }

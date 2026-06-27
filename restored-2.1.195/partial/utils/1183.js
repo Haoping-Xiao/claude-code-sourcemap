@@ -4,15 +4,6 @@
 // class=partial  jaccard=0.1975  score=0.6942  fileCov=0.2164
 // note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NDt = E(() => {
-  Kyn();
-  jR();
-  H9s();
-  T9s();
-  i8s();
-  a8s();
-  JOr();
-});
 function l8s(e) {
   let {
       signer: t,

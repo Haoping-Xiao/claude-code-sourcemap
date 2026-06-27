@@ -4,22 +4,14 @@
 // class=modified (alt of src/components/permissions/PermissionPrompt.tsx)  jaccard=0.1175  score=0.2377  fileCov=0.1886
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dtn = E(() => {
-  Ye();
-  ps();
-  kt();
-  uo();
-  Vl();
-  Bs();
-  Ko();
-  ((HHc = R(lt(), 1)),
-    (LNe = R(rt(), 1)),
-    (Fme = R(se(), 1)),
-    (k_m = {
-      accept: "tell Claude what to do next",
-      reject: "tell Claude what to do differently",
-    }));
-});
+// [unwrapped __esm module dtn] deps: Ye, ps, kt, uo, Vl, Bs, Ko
+((HHc = R(lt(), 1)),
+  (LNe = R(rt(), 1)),
+  (Fme = R(se(), 1)),
+  (k_m = {
+    accept: "tell Claude what to do next",
+    reject: "tell Claude what to do differently",
+  }));
 function L_m(e, t, n) {
   switch (e) {
     case "yes":

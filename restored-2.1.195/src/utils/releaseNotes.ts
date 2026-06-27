@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.158  score=0.3307  fileCov=0.2323
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $Gl = E(() => {
-  SFo = {
-    type: "local-jsx",
-    name: "powerup",
-    description: "Discover Claude Code features through quick interactive lessons",
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (MGl(), DGl)),
-  };
-});
+// [unwrapped __esm module $Gl]
+SFo = {
+  type: "local-jsx",
+  name: "powerup",
+  description: "Discover Claude Code features through quick interactive lessons",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (MGl(), DGl)),
+};
 function EFo() {
   return BXt.join(tr(), "cache", "changelog.md");
 }

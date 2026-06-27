@@ -4,28 +4,18 @@
 // class=modified  jaccard=0.3802  score=0.5649  fileCov=0.5377
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CPc = E(() => {
-  Xr();
-  ft();
-  TPc();
-  fd();
-  je();
-  At();
-  YS();
-  Rd();
-  Jt();
-  ((rie = require("fs/promises")),
-    (jtn = require("path")),
-    (JCm = jtn.join(".claude", "scheduled_tasks.lock")),
-    (QCm = ve(() =>
-      H.object({
-        sessionId: H.string(),
-        pid: H.number(),
-        procStart: H.string().optional(),
-        acquiredAt: H.number(),
-      }),
-    )));
-});
+// [unwrapped __esm module CPc] deps: Xr, ft, TPc, fd, je, At, YS, Rd, Jt
+((rie = require("fs/promises")),
+  (jtn = require("path")),
+  (JCm = jtn.join(".claude", "scheduled_tasks.lock")),
+  (QCm = ve(() =>
+    H.object({
+      sessionId: H.string(),
+      pid: H.number(),
+      procStart: H.string().optional(),
+      acquiredAt: H.number(),
+    }),
+  )));
 var RPc = {};
 _t(RPc, {
   isRecurringTaskAged: () => isRecurringTaskAged,

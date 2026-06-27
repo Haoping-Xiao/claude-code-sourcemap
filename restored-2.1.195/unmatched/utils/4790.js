@@ -4,42 +4,8 @@
 // class=new  jaccard=0.0219  score=0.1644  fileCov=0.0247
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0219); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var F2l = E(() => {
-  si();
-  Cc();
-  Bs();
-  B_();
-  f_();
-  CH();
-  MEt();
-  Pfe();
-  dse();
-  _i();
-  Ye();
-  ps();
-  dht();
-  vy();
-  je();
-  At();
-  oc();
-  vq();
-  _k();
-  gHe();
-  lE();
-  e1e();
-  oWe();
-  pXt();
-  vfe();
-  WI();
-  PEt();
-  sr();
-  g0();
-  irr();
-  VBo();
-  zBo();
-  frr();
-  YBo = R(lt(), 1), bA = R(rt(), 1), pi = R(se(), 1);
-});
+// [unwrapped __esm module F2l] deps: si, Cc, Bs, B_, f_, CH, MEt, Pfe, dse, _i, Ye, ps, dht, vy, je, At, oc, vq, _k, gHe, lE, e1e, oWe, pXt, vfe, WI, PEt, sr, g0, irr, VBo, zBo, frr
+YBo = R(lt(), 1), bA = R(rt(), 1), pi = R(se(), 1);
 async function MNf(e) {
   let t = [],
     n = [],

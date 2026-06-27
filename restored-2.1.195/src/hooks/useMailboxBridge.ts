@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.6537  score=1  fileCov=0.6537
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rAc = E(() => {
-  S_();
-  vDo();
-  qzt();
-  At();
-  vn();
-  fpr = R(rt(), 1);
-});
+// [unwrapped __esm module rAc] deps: S_, vDo, qzt, At, vn
+fpr = R(rt(), 1);
 function oAc({ isLoading: e, onSubmitMessage: t }) {
   let n = Q1a(),
     r = INe.useMemo(() => n.subscribe.bind(n), [n]),

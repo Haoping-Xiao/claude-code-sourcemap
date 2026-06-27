@@ -4,15 +4,8 @@
 // class=new  jaccard=0.005  score=0.2747  fileCov=0.005
 // note: nearest: src/components/Settings/Config.tsx (0.005); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Pfe = E(() => {
-  Xa();
-  $Ge();
-  Ye();
-  wr();
-  _Ge();
-  n$l();
-  S1o = R(rt(), 1), g3 = R(se(), 1);
-});
+// [unwrapped __esm module Pfe] deps: Xa, $Ge, Ye, wr, _Ge, n$l
+S1o = R(rt(), 1), g3 = R(se(), 1);
 function V$() {
   return wc("editorMode", "normal").value === "vim";
 }

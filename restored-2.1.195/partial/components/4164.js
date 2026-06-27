@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.2333  score=0.4126  fileCov=0.3493
 // note: low-confidence suggestion: src/components/messages/UserToolResultMessage/UserToolSuccessMessage.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ill = E(() => {
-  _i();
-  Ye();
-  ii();
-  b8t();
-  oll = R(lt(), 1), cKn = R(se(), 1);
-});
+// [unwrapped __esm module ill] deps: _i, Ye, ii, b8t
+oll = R(lt(), 1), cKn = R(se(), 1);
 function qMe(e) {
   return t => e(n => {
     let r = t(n.classifierApprovals);

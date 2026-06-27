@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.2416  score=0.4223  fileCov=0.3609
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DQa = E(() => {
-  si();
-  Ye();
-  je();
-  sa();
-  Fy();
-  vi();
-  B_();
-  Ko();
-  EC();
-  ((X9e = R(rt(), 1)), (wk = R(se(), 1)));
-});
+// [unwrapped __esm module DQa] deps: si, Ye, je, sa, Fy, vi, B_, Ko, EC
+((X9e = R(rt(), 1)), (wk = R(se(), 1)));
 function c8n(e) {
   let t = PQa.c(20),
     { onComplete: n, errorsToIgnore: r } = e,

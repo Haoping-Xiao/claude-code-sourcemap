@@ -4,136 +4,130 @@
 // class=partial  jaccard=0.0968  score=0.1577  fileCov=0.2002
 // note: low-confidence suggestion: src/tools/RemoteTriggerTool/RemoteTriggerTool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uAl = E(() => {
-  Xr();
-  ft();
-  GXn();
-  ii();
-  At();
-  kbt = require("fs/promises"), oLo = require("path"), Uyf = ve(() => H.strictObject({
-    mode: H.enum(["check", "update", "create", "delete"]).default("check").describe("'check' (default): if ONBOARDING.md is present locally, uploads it to the most-recent guide (creates one if none exist); otherwise reports the existing link without uploading. 'update': upload to a specific guide by short_code. 'create': always make a new link. 'delete': remove a guide."),
-    short_code: H.string().regex(/^[A-Za-z0-9_-]{1,64}$/).optional().describe("Short code of a specific guide to target (returned by a previous call). Honored by check, update, and delete \u2014 skips the org-wide lookup and targets this guide directly.")
-  })), Fyf = ve(() => H.object({
-    status: H.enum(["created", "updated", "deleted", "has_existing", "unavailable"]),
-    share_url: H.string().optional(),
-    short_code: H.string().optional(),
-    message: H.string()
-  })), jyf = ti({
-    name: zzt,
-    searchHint: "upload ONBOARDING.md and get a team share link",
-    maxResultSizeChars: 1000,
-    async description() {
-      return tLo;
-    },
-    isEnabled() {
-      return xbt();
-    },
-    isConcurrencySafe() {
-      return false;
-    },
-    isReadOnly() {
-      return false;
-    },
-    get inputSchema() {
-      return Uyf();
-    },
-    get outputSchema() {
-      return Fyf();
-    },
-    async validateInput() {
-      return {
-        result: true
+// [unwrapped __esm module uAl] deps: Xr, ft, GXn, ii, At
+kbt = require("fs/promises"), oLo = require("path"), Uyf = ve(() => H.strictObject({
+  mode: H.enum(["check", "update", "create", "delete"]).default("check").describe("'check' (default): if ONBOARDING.md is present locally, uploads it to the most-recent guide (creates one if none exist); otherwise reports the existing link without uploading. 'update': upload to a specific guide by short_code. 'create': always make a new link. 'delete': remove a guide."),
+  short_code: H.string().regex(/^[A-Za-z0-9_-]{1,64}$/).optional().describe("Short code of a specific guide to target (returned by a previous call). Honored by check, update, and delete \u2014 skips the org-wide lookup and targets this guide directly.")
+})), Fyf = ve(() => H.object({
+  status: H.enum(["created", "updated", "deleted", "has_existing", "unavailable"]),
+  share_url: H.string().optional(),
+  short_code: H.string().optional(),
+  message: H.string()
+})), jyf = ti({
+  name: zzt,
+  searchHint: "upload ONBOARDING.md and get a team share link",
+  maxResultSizeChars: 1000,
+  async description() {
+    return tLo;
+  },
+  isEnabled() {
+    return xbt();
+  },
+  isConcurrencySafe() {
+    return false;
+  },
+  isReadOnly() {
+    return false;
+  },
+  get inputSchema() {
+    return Uyf();
+  },
+  get outputSchema() {
+    return Fyf();
+  },
+  async validateInput() {
+    return {
+      result: true
+    };
+  },
+  async prompt() {
+    return tLo;
+  },
+  toAutoClassifierInput(e) {
+    return `share onboarding guide (mode: ${e.mode ?? "check"})`;
+  },
+  isDestructive(e) {
+    return e.mode === "delete";
+  },
+  renderToolUseMessage(e) {
+    return e.mode && e.mode !== "check" ? e.mode : null;
+  },
+  async call({
+    mode: e = "check",
+    short_code: t
+  }) {
+    if (e === "delete") try {
+      let s = t ?? (await nLo())?.short_code;
+      if (!s) return ize("No guide found for this org to delete.");
+      return await lAl(s), {
+        data: {
+          status: "deleted",
+          message: `Guide ${s} deleted.`
+        }
       };
-    },
-    async prompt() {
-      return tLo;
-    },
-    toAutoClassifierInput(e) {
-      return `share onboarding guide (mode: ${e.mode ?? "check"})`;
-    },
-    isDestructive(e) {
-      return e.mode === "delete";
-    },
-    renderToolUseMessage(e) {
-      return e.mode && e.mode !== "check" ? e.mode : null;
-    },
-    async call({
-      mode: e = "check",
-      short_code: t
-    }) {
-      if (e === "delete") try {
-        let s = t ?? (await nLo())?.short_code;
-        if (!s) return ize("No guide found for this org to delete.");
-        return await lAl(s), {
+    } catch (s) {
+      let i = s instanceof Error ? s.message : String(s);
+      return ize(`Delete didn't go through (${i}).`);
+    }
+    if (e === "check") try {
+      let s = t ? (await eLo()).find(i => i.short_code === t) : await nLo();
+      if (s) {
+        let i = oLo.join(yr(), Kzt),
+          a = null;
+        try {
+          a = (await kbt.stat(i)).size;
+        } catch (u) {
+          if (!wn(u)) throw u;
+        }
+        if (a === null) return {
           data: {
-            status: "deleted",
-            message: `Guide ${s} deleted.`
+            status: "has_existing",
+            share_url: s.share_url,
+            short_code: s.short_code,
+            message: `A guide already exists for this org at ${s.share_url} (short_code: ${s.short_code}). If this link is what the user needed, share it. If they want to create or update a guide, tell them to run /team-onboarding themselves (it scans local session data and cannot be invoked by the model).`
           }
         };
-      } catch (s) {
-        let i = s instanceof Error ? s.message : String(s);
-        return ize(`Delete didn't go through (${i}).`);
+        if (a > WXn) return ize(`${Kzt} is over ${WXn / 1024}KB. Trim it before sharing.`);
+        let l = await kbt.readFile(i, "utf8"),
+          c = await ZRo(s.short_code, l);
+        return rLo("updated", c.share_url, c.short_code, false);
       }
-      if (e === "check") try {
-        let s = t ? (await eLo()).find(i => i.short_code === t) : await nLo();
-        if (s) {
-          let i = oLo.join(yr(), Kzt),
-            a = null;
-          try {
-            a = (await kbt.stat(i)).size;
-          } catch (u) {
-            if (!wn(u)) throw u;
-          }
-          if (a === null) return {
-            data: {
-              status: "has_existing",
-              share_url: s.share_url,
-              short_code: s.short_code,
-              message: `A guide already exists for this org at ${s.share_url} (short_code: ${s.short_code}). If this link is what the user needed, share it. If they want to create or update a guide, tell them to run /team-onboarding themselves (it scans local session data and cannot be invoked by the model).`
-            }
-          };
-          if (a > WXn) return ize(`${Kzt} is over ${WXn / 1024}KB. Trim it before sharing.`);
-          let l = await kbt.readFile(i, "utf8"),
-            c = await ZRo(s.short_code, l);
-          return rLo("updated", c.share_url, c.short_code, false);
-        }
-      } catch (s) {
-        let i = s instanceof Error ? s.message : String(s);
-        return ize(`Upload didn't go through (${i}). Fall back to the manual share copy.`);
-      }
-      let n = oLo.join(yr(), Kzt),
-        r;
-      try {
-        r = (await kbt.stat(n)).size;
-      } catch (s) {
-        if (wn(s)) return ize(`${Kzt} not found in the current directory. Write the guide first.`);
-        throw s;
-      }
-      if (r > WXn) return ize(`${Kzt} is over ${WXn / 1024}KB. Trim it before sharing.`);
-      let o = await kbt.readFile(n, "utf8");
-      try {
-        if (e === "update") {
-          let i = t ?? (await nLo())?.short_code;
-          if (i) {
-            let a = await ZRo(i, o);
-            return rLo("updated", a.share_url, a.short_code, true);
-          }
-        }
-        let s = await aAl(o);
-        return rLo("created", s.share_url, s.short_code, false);
-      } catch (s) {
-        let i = s instanceof Error ? s.message : String(s);
-        return ize(`Upload didn't go through (${i}). Fall back to the manual share copy.`);
-      }
-    },
-    mapToolResultToToolResultBlockParam(e, t) {
-      return {
-        tool_use_id: t,
-        type: "tool_result",
-        content: `[${e.status}] ${e.message}`
-      };
+    } catch (s) {
+      let i = s instanceof Error ? s.message : String(s);
+      return ize(`Upload didn't go through (${i}). Fall back to the manual share copy.`);
     }
-  });
+    let n = oLo.join(yr(), Kzt),
+      r;
+    try {
+      r = (await kbt.stat(n)).size;
+    } catch (s) {
+      if (wn(s)) return ize(`${Kzt} not found in the current directory. Write the guide first.`);
+      throw s;
+    }
+    if (r > WXn) return ize(`${Kzt} is over ${WXn / 1024}KB. Trim it before sharing.`);
+    let o = await kbt.readFile(n, "utf8");
+    try {
+      if (e === "update") {
+        let i = t ?? (await nLo())?.short_code;
+        if (i) {
+          let a = await ZRo(i, o);
+          return rLo("updated", a.share_url, a.short_code, true);
+        }
+      }
+      let s = await aAl(o);
+      return rLo("created", s.share_url, s.short_code, false);
+    } catch (s) {
+      let i = s instanceof Error ? s.message : String(s);
+      return ize(`Upload didn't go through (${i}). Fall back to the manual share copy.`);
+    }
+  },
+  mapToolResultToToolResultBlockParam(e, t) {
+    return {
+      tool_use_id: t,
+      type: "tool_result",
+      content: `[${e.status}] ${e.message}`
+    };
+  }
 });
 var Rbt = "## Phase 0 \u2014 Gather the diff\n\nRun `git diff @{upstream}...HEAD` (or `git diff main...HEAD` / `git diff HEAD~1`\nif there's no upstream) to get the unified diff under review. If there are\nuncommitted changes, or the range diff is empty, also run `git diff HEAD` and\ninclude the working-tree changes in scope \u2014 the review often runs before the\ncommit. If a PR number, branch name, or file path was passed as an argument,\nreview that target instead. Treat this diff as the review scope.\n",
   Lbt = `Flag new code that re-implements something the codebase

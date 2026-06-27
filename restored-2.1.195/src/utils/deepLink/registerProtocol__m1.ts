@@ -4,23 +4,13 @@
 // class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.077  score=0.3499  fileCov=0.0899
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Azo = E(() => {
-  dn();
-  je();
-  fn();
-  At();
-  Bi();
-  dr();
-  _0();
-  aEe();
-  Zdr();
-  ((lV = require("fs")),
-    (ISc = R(require("os"))),
-    (Qse = R(require("path"))),
-    (zen = Qse.join(ISc.homedir(), "Applications", Vgm)),
-    (_zo = Qse.join(zen, "Contents", "MacOS", "claude")));
-  ((bzo = `HKEY_CURRENT_USER\\Software\\Classes\\${aV}`), (kSc = `${bzo}\\shell\\open\\command`));
-});
+// [unwrapped __esm module Azo] deps: dn, je, fn, At, Bi, dr, _0, aEe, Zdr
+((lV = require("fs")),
+  (ISc = R(require("os"))),
+  (Qse = R(require("path"))),
+  (zen = Qse.join(ISc.homedir(), "Applications", Vgm)),
+  (_zo = Qse.join(zen, "Contents", "MacOS", "claude")));
+((bzo = `HKEY_CURRENT_USER\\Software\\Classes\\${aV}`), (kSc = `${bzo}\\shell\\open\\command`));
 var rpr = {};
 _t(rpr, {
   startBackgroundHousekeeping: () => startBackgroundHousekeeping,

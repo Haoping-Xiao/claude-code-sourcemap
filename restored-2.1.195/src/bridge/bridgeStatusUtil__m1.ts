@@ -4,15 +4,8 @@
 // class=modified (alt of src/bridge/bridgeStatusUtil.ts)  jaccard=0.051  score=0.1025  fileCov=0.0921
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Edr = E(() => {
-  kt();
-  Ye();
-  er();
-  dr();
-  mE();
-  vi();
-  ((Lyc = R(lt(), 1)), (Dyc = R(rt(), 1)), (h7e = R(se(), 1)));
-});
+// [unwrapped __esm module Edr] deps: kt, Ye, er, dr, mE, vi
+((Lyc = R(lt(), 1)), (Dyc = R(rt(), 1)), (h7e = R(se(), 1)));
 function $yc({ onDone: e }) {
   Wh("bridge-dialog");
   let t = Ht((L) => L.replBridgeConnected),

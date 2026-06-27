@@ -4,50 +4,6 @@
 // class=new  jaccard=0.0498  score=0.7909  fileCov=0.0505
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0498); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var IUr = E(() => {
-  K7s();
-  rXs();
-  oXs();
-  sXs();
-  iXs();
-  aXs();
-  dXs();
-  pXs();
-  fXs();
-  gXs();
-  EXs();
-  AXs();
-  wXs();
-  CXs();
-  xXs();
-  kXs();
-  MXs();
-  $Xs();
-  NXs();
-  UXs();
-  FXs();
-  jXs();
-  GXs();
-  WXs();
-  qXs();
-  VXs();
-  zXs();
-  KXs();
-  YXs();
-  XXs();
-  JXs();
-  QXs();
-  ZXs();
-  eJs();
-  nJs();
-  rJs();
-  oJs();
-  sJs();
-  iJs();
-  aJs();
-  lJs();
-  cJs();
-});
 function eEn(e, t) {
   if (t == null) return t;
   let n = uJs.NormalizedSchema.of(e);

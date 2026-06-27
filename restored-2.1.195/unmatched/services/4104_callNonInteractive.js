@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0247  score=0.3538  fileCov=0.0259
 // note: nearest: src/components/CustomSelect/select.tsx (0.0247); dir inferred from dep-graph -> services; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vCo = E(() => {
-  ft();
-  Ezn();
-});
 var wCo = {};
 _t(wCo, {
   callNonInteractive: () => callNonInteractive,

@@ -4,30 +4,6 @@
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0104  score=0.1494  fileCov=0.0111
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TKo = E(() => {
-  Kv();
-  fn();
-  $Tc();
-  UTc();
-  jTc();
-  zTc();
-  KTc();
-  cvc();
-  fvc();
-  hvc();
-  Xvc();
-  Qvc();
-  ewc();
-  owc();
-  iwc();
-  awc();
-  cwc();
-  dwc();
-  fwc();
-  gwc();
-  bwc();
-  kwc();
-});
 function nkc(e, t) {
   if (e) {
     if (t < 30000) return 15000;

@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.1567  score=1  fileCov=0.1567
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IB = E(() => {
-  Ree();
-  Sae();
-  Qi();
-  Gwe();
-  gdn();
-  ghe();
-});
 function Rms() {
   return "sdk-zAZezfDKGoZuXXKe";
 }

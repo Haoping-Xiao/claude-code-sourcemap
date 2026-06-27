@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.0686  score=0.8375  fileCov=0.0696
 // note: low-confidence suggestion: src/ink/components/Box.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LW = E(() => {
-  Xa();
-  _i();
-  Tc();
-  Ye();
-  Rzi = R(lt(), 1), Qce = R(se(), 1);
-});
+// [unwrapped __esm module LW] deps: Xa, _i, Tc, Ye
+Rzi = R(lt(), 1), Qce = R(se(), 1);
 function Fu(e) {
   let t = Lzi.c(9),
     {

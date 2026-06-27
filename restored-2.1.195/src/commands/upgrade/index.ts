@@ -4,20 +4,16 @@
 // class=modified  jaccard=0.2525  score=0.2947  fileCov=0.6381
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var o3o = E(() => {
-  oo();
-  wr();
-  d5e();
-  ((F6f = {
-    type: "local-jsx",
-    name: "upgrade",
-    description: "Upgrade to Max for higher rate limits and more Opus",
-    availability: ["claude-ai"],
-    isEnabled: () => !FX() && !Oe.DISABLE_UPGRADE_COMMAND && Di() !== "enterprise",
-    load: () => Promise.resolve().then(() => (BJt(), r3o)),
-  }),
-    (N1e = F6f));
-});
+// [unwrapped __esm module o3o] deps: oo, wr, d5e
+((F6f = {
+  type: "local-jsx",
+  name: "upgrade",
+  description: "Upgrade to Max for higher rate limits and more Opus",
+  availability: ["claude-ai"],
+  isEnabled: () => !FX() && !Oe.DISABLE_UPGRADE_COMMAND && Di() !== "enterprise",
+  load: () => Promise.resolve().then(() => (BJt(), r3o)),
+}),
+  (N1e = F6f));
 function uQl(e) {
   let t = lQl.c(15),
     { onDone: n, context: r } = e,

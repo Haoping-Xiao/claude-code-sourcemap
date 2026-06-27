@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.2401  score=0.3737  fileCov=0.4019
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZCo = E(() => {
-  Ye();
-  co();
-  ((Hil = R(lt(), 1)), (P8t = R(se(), 1)));
-});
+// [unwrapped __esm module ZCo] deps: Ye, co
+((Hil = R(lt(), 1)), (P8t = R(se(), 1)));
 function qof(e) {
   if (!e.match(/<sandbox_violations>([\s\S]*?)<\/sandbox_violations>/))
     return {

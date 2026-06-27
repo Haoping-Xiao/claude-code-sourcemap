@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0027  score=0.2367  fileCov=0.0027
 // note: nearest: src/cli/print.ts (0.0027); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bmo = E(() => {
-  Mmo();
-  sr();
-  sN();
-  xRe();
-  Omo();
-  FPa = /^\d+$/, UPa = /^[A-Za-z_][A-Za-z0-9_]*=/, M0p = new Set(["nice"]);
-});
+// [unwrapped __esm module Bmo] deps: Mmo, sr, sN, xRe, Omo
+FPa = /^\d+$/, UPa = /^[A-Za-z_][A-Za-z0-9_]*=/, M0p = new Set(["nice"]);
 function Upt(e) {
   let t = {
     CLAUDECODE: "1",

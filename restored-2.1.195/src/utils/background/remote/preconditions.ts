@@ -4,20 +4,6 @@
 // class=modified  jaccard=0.4959  score=0.889  fileCov=0.5287
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ide = E(() => {
-  Hp();
-  Rc();
-  H0();
-  dn();
-  oo();
-  er();
-  je();
-  At();
-  Gx();
-  vn();
-  Ls();
-  Cv();
-});
 async function Vjn() {
   if (!bo()) return false;
   return ch();

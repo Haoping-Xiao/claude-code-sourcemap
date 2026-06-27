@@ -4,50 +4,6 @@
 // class=new  jaccard=0.0498  score=0.7909  fileCov=0.0505
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0498); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dBr = E(() => {
-  m6s();
-  H6s();
-  T6s();
-  v6s();
-  w6s();
-  C6s();
-  R6s();
-  L6s();
-  D6s();
-  M6s();
-  F6s();
-  j6s();
-  V6s();
-  z6s();
-  Y6s();
-  X6s();
-  tzs();
-  nzs();
-  ozs();
-  izs();
-  azs();
-  lzs();
-  czs();
-  uzs();
-  dzs();
-  pzs();
-  fzs();
-  mzs();
-  gzs();
-  hzs();
-  yzs();
-  _zs();
-  bzs();
-  Szs();
-  Azs();
-  Hzs();
-  Tzs();
-  vzs();
-  wzs();
-  Czs();
-  Izs();
-  xzs();
-});
 function Zbn(e, t) {
   if (t == null) return t;
   let n = kzs.NormalizedSchema.of(e);

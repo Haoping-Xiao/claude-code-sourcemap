@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.4129  score=0.6263  fileCov=0.5479
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var A8l = E(() => {
-  Yyt();
-  Ye();
-  ps();
-  sr();
-  Bs();
-  vi();
-  Ko();
-  ((S8l = R(lt(), 1)), (uw = R(se(), 1)));
-});
+// [unwrapped __esm module A8l] deps: Yyt, Ye, ps, sr, Bs, vi, Ko
+((S8l = R(lt(), 1)), (uw = R(se(), 1)));
 function T8l(e) {
   let t = H8l.c(71),
     { teammate: n, onDone: r, onKill: o, onBack: s, onForeground: i } = e,

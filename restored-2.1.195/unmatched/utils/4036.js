@@ -4,16 +4,14 @@
 // class=new  jaccard=0.0273  score=0.312  fileCov=0.0291
 // note: nearest: src/tools/shared/spawnMultiAgent.ts (0.0273); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nwo = E(() => {
-  Xr();
-  Q9t = Dy({
-    kind: "permission_webfetch",
-    payload: ve(() => H.custom(e => typeof e === "object" && e !== null && "requestId" in e && "toolName" in e && "permissionResult" in e && "hostname" in e)),
-    result: ve(() => H.custom(e => typeof e === "object" && e !== null && "behavior" in e)),
-    default: {
-      behavior: "cancelled"
-    }
-  });
+// [unwrapped __esm module nwo] deps: Xr
+Q9t = Dy({
+  kind: "permission_webfetch",
+  payload: ve(() => H.custom(e => typeof e === "object" && e !== null && "requestId" in e && "toolName" in e && "permissionResult" in e && "hostname" in e)),
+  result: ve(() => H.custom(e => typeof e === "object" && e !== null && "behavior" in e)),
+  default: {
+    behavior: "cancelled"
+  }
 });
 function xnl(e, t) {
   for (let n of Object.values(t.tasks)) if (uE(n) && n.identity.agentName === e) return n.id;

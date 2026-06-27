@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.3397  score=0.7414  fileCov=0.3853
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PR = E(() => {
-  OK();
-  BSr();
-  tin();
-  OK();
-  Tx();
-  p0();
-});
 function lh(e) {
   try {
     return e instanceof ru || e instanceof tf || (e instanceof Error && e.name === "AbortError");

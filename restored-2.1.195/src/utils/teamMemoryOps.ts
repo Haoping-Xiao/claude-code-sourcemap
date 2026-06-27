@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.5751  score=1  fileCov=0.5751
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xbt = E(() => {
-  Uh();
-  MM();
-  M7();
-  fn();
-  sj();
-  q$e = require("path");
-});
+// [unwrapped __esm module Xbt] deps: Uh, MM, M7, fn, sj
+q$e = require("path");
 function yvl(e) {
   let t = e;
   if (!t) return false;

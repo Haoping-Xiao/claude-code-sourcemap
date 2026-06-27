@@ -4,16 +4,9 @@
 // class=partial  jaccard=0.1715  score=0.7189  fileCov=0.1838
 // note: low-confidence suggestion: src/utils/plugins/officialMarketplaceGcs.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var S$o = E(() => {
-  ft();
-  kt();
-  w4t();
-  je();
-  eqe();
-  At();
-  W$ = require("fs/promises"), ose = require("path");
-  YIf = new Set(["ENOSPC", "EACCES", "EPERM", "EXDEV", "EBUSY", "ENOENT", "ENOTDIR", "EROFS", "EMFILE", "ENAMETOOLONG"]);
-});
+// [unwrapped __esm module S$o] deps: ft, kt, w4t, je, eqe, At
+W$ = require("fs/promises"), ose = require("path");
+YIf = new Set(["ENOSPC", "EACCES", "EPERM", "EXDEV", "EBUSY", "ENOENT", "ENOTDIR", "EROFS", "EMFILE", "ENAMETOOLONG"]);
 function ter() {
   let e = yr(),
     t = t9(qf(e) ?? e);

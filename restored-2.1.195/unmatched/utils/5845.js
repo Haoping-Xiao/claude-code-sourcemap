@@ -4,43 +4,9 @@
 // class=new  jaccard=0.0258  score=0.2389  fileCov=0.0281
 // note: nearest: src/utils/subprocessEnv.ts (0.0258); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var oXo = E(() => {
-  ft();
-  KBc();
-  kt();
-  JBc();
-  G1();
-  S$();
-  TX();
-  D5o();
-  NB();
-  oo();
-  je();
-  Mm();
-  At();
-  tXo();
-  Gy();
-  ED();
-  zH();
-  lg();
-  Jt();
-  g0();
-  Xr();
-  QXn();
-  Il();
-  eUc();
-  lT();
-  sp();
-  $I();
-  Hoe();
-  bmr();
-  Jt();
-  eLe();
-  nUc();
-  nXo();
-  xvt = require("crypto");
-  cLm = new Set(["CLAUDE_CODE_SESSION_ACCESS_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN"]);
-});
+// [unwrapped __esm module oXo] deps: ft, KBc, kt, JBc, G1, S$, TX, D5o, NB, oo, je, Mm, At, tXo, Gy, ED, zH, lg, Jt, g0, Xr, QXn, Il, eUc, lT, sp, $I, Hoe, bmr, Jt, eLe, nUc, nXo
+xvt = require("crypto");
+cLm = new Set(["CLAUDE_CODE_SESSION_ACCESS_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN"]);
 function kmr() {
   return at("tengu_ccr_delta_rehydrate", false);
 }

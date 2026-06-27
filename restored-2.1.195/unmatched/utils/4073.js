@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0033  score=0.2174  fileCov=0.0033
 // note: nearest: src/main.tsx (0.0033); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MMe = E(() => {
-  SC();
-  Un();
-  oo();
-  Ls();
-});
 var ozn = "artifact-design",
   woe = "code-review",
   Y8e = "verify",

@@ -4,18 +4,11 @@
 // class=new  jaccard=0.0043  score=0.107  fileCov=0.0045
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0043); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dql = E(() => {
-  Xa();
-  ZS();
-  Ye();
-  Mne();
-  dr();
-  Pne();
-  JXt = R(rt(), 1), XXt = R(se(), 1), D4f = cql * L4f, P4f = qM({
-    r: 153,
-    g: 153,
-    b: 153
-  });
+// [unwrapped __esm module dql] deps: Xa, ZS, Ye, Mne, dr, Pne
+JXt = R(rt(), 1), XXt = R(se(), 1), D4f = cql * L4f, P4f = qM({
+  r: 153,
+  g: 153,
+  b: 153
 });
 function fql() {
   if (Uke() !== "downsell_on") return false;

@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0183  score=0.2977  fileCov=0.0191
 // note: nearest: src/components/TextInput.tsx (0.0183); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QBt = E(() => {
-  ZS();
-  Un();
-  fn();
-  uf();
-  Y9();
-});
 function wne() {
   if (ZBt !== void 0) return ZBt;
   if (Oe.CLAUDE_CODE_ACCESSIBILITY) return ZBt = true;

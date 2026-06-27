@@ -4,24 +4,19 @@
 // class=modified  jaccard=0.1237  score=0.1623  fileCov=0.3423
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W9l = E(() => {
-  ft();
-  Bke();
-  wr();
-  uf();
-  ((XWf = {
-    type: "local-jsx",
-    name: "scroll-speed",
-    description: "Adjust mouse wheel scroll speed",
-    isEnabled: () => {
-      if (!Ns()) return false;
-      let e = fy();
-      return !(e ? JV.includes(e.terminal ?? "") : E1.isJetBrainsIdeTerminal());
-    },
-    load: () => Promise.resolve().then(() => (j9l(), U9l)),
-  }),
-    (G9l = XWf));
-});
+// [unwrapped __esm module W9l] deps: ft, Bke, wr, uf
+((XWf = {
+  type: "local-jsx",
+  name: "scroll-speed",
+  description: "Adjust mouse wheel scroll speed",
+  isEnabled: () => {
+    if (!Ns()) return false;
+    let e = fy();
+    return !(e ? JV.includes(e.terminal ?? "") : E1.isJetBrainsIdeTerminal());
+  },
+  load: () => Promise.resolve().then(() => (j9l(), U9l)),
+}),
+  (G9l = XWf));
 function QWf(e, t) {
   let n = yn("policySettings")?.skillOverrides?.[t];
   if (n)

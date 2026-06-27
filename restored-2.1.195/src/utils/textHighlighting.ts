@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.5013  score=1  fileCov=0.5013
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RUt = E(() => {
-  uo();
-  Mne();
-});
 function S6i(e, t) {
   if (t.length === 0)
     return [

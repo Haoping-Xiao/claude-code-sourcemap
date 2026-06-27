@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dwc = E(() => {
-  fh();
-  AA();
-  DEm = `\`/simplify \u2192 4 cleanup agents in parallel \u2192 apply the fixes\`
+// [unwrapped __esm module dwc] deps: fh, AA
+DEm = `\`/simplify \u2192 4 cleanup agents in parallel \u2192 apply the fixes\`
 
 You are improving the quality of the changed code, not hunting for bugs. Review
 it for reuse, simplification, efficiency, and altitude issues, then fix what you
@@ -36,7 +34,6 @@ diff, or that you judge to be a false positive \u2014 note the skip rather than
 arguing with it. Finish with a brief summary of what was fixed and what was
 skipped (or confirm the code was already clean).
 `;
-});
 function PEm() {
   return `# Skillify {{userDescriptionBlock}}
 

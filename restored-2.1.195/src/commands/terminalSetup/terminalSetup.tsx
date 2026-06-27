@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.4376  score=0.6226  fileCov=0.5956
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YQr = E(() => {
-  f0e();
-  AW();
-  db();
-  je();
-  At();
-  Bi();
-  ((I8i = require("os")), (qce = require("path")));
-});
+// [unwrapped __esm module YQr] deps: f0e, AW, db, je, At, Bi
+((I8i = require("os")), (qce = require("path")));
 var P8i = {};
 _t(P8i, {
   shouldOfferTerminalSetup: () => shouldOfferTerminalSetup,

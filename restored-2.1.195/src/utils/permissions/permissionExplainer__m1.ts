@@ -4,61 +4,49 @@
 // class=modified (alt of src/utils/permissions/permissionExplainer.ts)  jaccard=0.2136  score=0.3374  fileCov=0.368
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rHc = E(() => {
-  Xr();
-  dn();
-  kt();
-  Du();
-  er();
-  je();
-  At();
-  Ao();
-  Epe();
-  Jt();
-  sr();
-  ((s_m = {
-    LOW: 1,
-    MEDIUM: 2,
-    HIGH: 3,
-  }),
-    (u_m = {
-      name: "explain_command",
-      description: "Provide an explanation of a shell command",
-      input_schema: {
-        type: "object",
-        properties: {
-          explanation: {
-            type: "string",
-            description: "What this command does (1-2 sentences)",
-          },
-          reasoning: {
-            type: "string",
-            description:
-              'Why YOU are running this command. Start with "I" - e.g. "I need to check the file contents"',
-          },
-          risk: {
-            type: "string",
-            description: "What could go wrong, under 15 words",
-          },
-          riskLevel: {
-            type: "string",
-            enum: ["LOW", "MEDIUM", "HIGH"],
-            description:
-              "LOW (safe dev workflows), MEDIUM (recoverable changes), HIGH (dangerous/irreversible)",
-          },
+// [unwrapped __esm module rHc] deps: Xr, dn, kt, Du, er, je, At, Ao, Epe, Jt, sr
+((s_m = {
+  LOW: 1,
+  MEDIUM: 2,
+  HIGH: 3,
+}),
+  (u_m = {
+    name: "explain_command",
+    description: "Provide an explanation of a shell command",
+    input_schema: {
+      type: "object",
+      properties: {
+        explanation: {
+          type: "string",
+          description: "What this command does (1-2 sentences)",
         },
-        required: ["explanation", "reasoning", "risk", "riskLevel"],
+        reasoning: {
+          type: "string",
+          description:
+            'Why YOU are running this command. Start with "I" - e.g. "I need to check the file contents"',
+        },
+        risk: {
+          type: "string",
+          description: "What could go wrong, under 15 words",
+        },
+        riskLevel: {
+          type: "string",
+          enum: ["LOW", "MEDIUM", "HIGH"],
+          description:
+            "LOW (safe dev workflows), MEDIUM (recoverable changes), HIGH (dangerous/irreversible)",
+        },
       },
+      required: ["explanation", "reasoning", "risk", "riskLevel"],
+    },
+  }),
+  (d_m = ve(() =>
+    H.object({
+      riskLevel: H.enum(["LOW", "MEDIUM", "HIGH"]),
+      explanation: H.string(),
+      reasoning: H.string(),
+      risk: H.string(),
     }),
-    (d_m = ve(() =>
-      H.object({
-        riskLevel: H.enum(["LOW", "MEDIUM", "HIGH"]),
-        explanation: H.string(),
-        reasoning: H.string(),
-        risk: H.string(),
-      }),
-    )));
-});
+  )));
 function m_m() {
   let e = ctn.c(7),
     [t, n] = BVt("responding", oHc, false),

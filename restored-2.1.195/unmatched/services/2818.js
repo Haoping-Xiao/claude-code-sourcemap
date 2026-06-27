@@ -3,10 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ijt = E(() => {
-  PR();
-  ole();
-});
 function FX() {
   return at("tengu_idle_amber_finch", false);
 }

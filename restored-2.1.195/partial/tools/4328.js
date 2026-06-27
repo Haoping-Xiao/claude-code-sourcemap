@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.2173  score=0.5251  fileCov=0.2704
 // note: low-confidence suggestion: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts; dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $yl = E(() => {
-  IB();
-  _m();
-  _0();
-  u_();
-  jv();
-  Amf = Cn(async () => (await Gf("gh")) !== null);
-});
+// [unwrapped __esm module $yl] deps: IB, _m, _0, u_, jv
+Amf = Cn(async () => (await Gf("gh")) !== null);
 function Oyl(e, t) {
   let n = [];
   for (let [, r] of e) n.push(vmf(r, t));

@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0023  score=0.0435  fileCov=0.0024
 // note: nearest: src/services/api/claude.ts (0.0023); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fZo = E(() => {
-  arn = ["daily", "weekly", "monthly"];
-});
+// [unwrapped __esm module fZo]
+arn = ["daily", "weekly", "monthly"];
 function nhr(e, t) {
   if (e === "user") return {
     type: "user",

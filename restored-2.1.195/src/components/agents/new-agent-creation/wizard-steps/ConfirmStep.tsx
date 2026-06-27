@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2531  score=0.4146  fileCov=0.3939
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d4o = E(() => {
-  tQ();
-  c4o();
-});
 function LYl(e) {
   let t = RYl.c(88),
     { tools: n, existingAgents: r, onSave: o, onSaveAndEdit: s, error: i } = e,

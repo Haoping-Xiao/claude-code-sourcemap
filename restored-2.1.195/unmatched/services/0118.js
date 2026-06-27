@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bns = E(() => {
-  Gve();
-  Nns();
-  oJe = rzc;
-});
+// [unwrapped __esm module Bns] deps: Gve, Nns
+oJe = rzc;
 var Age;

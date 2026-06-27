@@ -4,18 +4,16 @@
 // class=modified (alt of src/components/ConsoleOAuthFlow.tsx)  jaccard=0.1493  score=0.3015  fileCov=0.2281
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gUl = E(() => {
-  xne();
-  ((d1f = {
-    name: "keybindings",
-    description: "Open your keyboard shortcuts file",
-    isEnabled: () => E8(),
-    supportsNonInteractive: false,
-    type: "local",
-    load: () => Promise.resolve().then(() => (fUl(), pUl)),
-  }),
-    (mUl = d1f));
-});
+// [unwrapped __esm module gUl] deps: xne
+((d1f = {
+  name: "keybindings",
+  description: "Open your keyboard shortcuts file",
+  isEnabled: () => E8(),
+  supportsNonInteractive: false,
+  type: "local",
+  load: () => Promise.resolve().then(() => (fUl(), pUl)),
+}),
+  (mUl = d1f));
 var bUl = {};
 _t(bUl, {
   call: () => call,

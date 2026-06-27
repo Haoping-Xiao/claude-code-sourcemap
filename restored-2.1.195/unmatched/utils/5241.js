@@ -4,28 +4,9 @@
 // class=new  jaccard=0.0585  score=0.1503  fileCov=0.0873
 // note: nearest: node_modules/open/index.js (0.0585); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qGo = E(() => {
-  lH();
-  OM();
-  q7();
-  ag();
-  Un();
-  kt();
-  je();
-  At();
-  vn();
-  Is();
-  jS();
-  ih();
-  Jt();
-  har();
-  WL();
-  urc();
-  q$();
-  ESt();
-  wHt = require("fs/promises"), prc = require("net"), frc = require("string_decoder");
-  AJf = /\x1b\[(?:<\d+;\d+;\d+[Mm]|M[\s\S]{3}|I|O|\??\d+;\d+(?:;\d+)*R|[?>]\d+(?:;\d+)*c|\?\d+(?:;\d+)*\$y|\?997;[12]n|\?\d+u)|\x1bP[^\x1b]*\x1b\\|\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)/g;
-});
+// [unwrapped __esm module qGo] deps: lH, OM, q7, ag, Un, kt, je, At, vn, Is, jS, ih, Jt, har, WL, urc, q$, ESt
+wHt = require("fs/promises"), prc = require("net"), frc = require("string_decoder");
+AJf = /\x1b\[(?:<\d+;\d+;\d+[Mm]|M[\s\S]{3}|I|O|\??\d+;\d+(?:;\d+)*R|[?>]\d+(?:;\d+)*c|\?\d+(?:;\d+)*\$y|\?997;[12]n|\?\d+u)|\x1bP[^\x1b]*\x1b\\|\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)/g;
 async function Sar(e) {
   let {
       cmd: t,

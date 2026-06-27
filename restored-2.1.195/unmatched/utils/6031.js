@@ -4,9 +4,6 @@
 // class=new  jaccard=0.005  score=0.2727  fileCov=0.0051
 // note: nearest: src/cli/print.ts (0.005); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZWc = E(() => {
-  dZo();
-});
 function AZo(e) {
   return String(e).replace(/(\b\w+:\/\/)[^@/]+@/g, "$1");
 }

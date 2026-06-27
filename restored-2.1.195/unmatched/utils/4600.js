@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0103  score=0.3075  fileCov=0.0106
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js (0.0103); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cKe = E(() => {
-  Jt();
-});
 function kfe(e) {
   if (!e) return uz;
   return MOo + e + xPl + uz;

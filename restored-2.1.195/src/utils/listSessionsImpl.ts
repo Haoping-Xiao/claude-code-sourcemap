@@ -4,89 +4,82 @@
 // class=modified  jaccard=0.1971  score=0.3732  fileCov=0.2947
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qhl = E(() => {
-  Xr();
-  ql();
-  Ye();
-  ii();
-  wr();
-  Jt();
-  ((F0o = R(se(), 1)),
-    (Fff = ve(() => H.strictObject({}))),
-    (jff = ve(() =>
-      H.object({
-        role: H.string().optional(),
-        dismissed: H.boolean().optional(),
-      }),
-    )));
-  Jhl = ti({
-    name: $7n,
-    searchHint: "show the Cowork onboarding role picker",
-    maxResultSizeChars: 10000 /* 1e4 */,
-    get inputSchema() {
-      return Fff();
-    },
-    get outputSchema() {
-      return jff();
-    },
-    isEnabled: Gff,
-    isConcurrencySafe() {
-      return true;
-    },
-    isReadOnly() {
-      return true;
-    },
-    requiresUserInteraction() {
-      return true;
-    },
-    async description() {
-      return Yhl;
-    },
-    async prompt() {
-      return Xhl;
-    },
-    toAutoClassifierInput() {
-      return "show onboarding role picker";
-    },
-    async checkPermissions(e, t) {
-      return {
-        behavior: "ask",
-        message: "Pick your role?",
-        updatedInput: {},
-      };
-    },
-    async call(e, t) {
-      let { role: n, dismissed: r } = e;
-      return {
-        data: {
-          ...(typeof n === "string" &&
-            n.trim() !== "" && {
-              role: n,
-            }),
-          ...(typeof r === "boolean" && {
-            dismissed: r,
+// [unwrapped __esm module Qhl] deps: Xr, ql, Ye, ii, wr, Jt
+((F0o = R(se(), 1)),
+  (Fff = ve(() => H.strictObject({}))),
+  (jff = ve(() =>
+    H.object({
+      role: H.string().optional(),
+      dismissed: H.boolean().optional(),
+    }),
+  )));
+Jhl = ti({
+  name: $7n,
+  searchHint: "show the Cowork onboarding role picker",
+  maxResultSizeChars: 10000 /* 1e4 */,
+  get inputSchema() {
+    return Fff();
+  },
+  get outputSchema() {
+    return jff();
+  },
+  isEnabled: Gff,
+  isConcurrencySafe() {
+    return true;
+  },
+  isReadOnly() {
+    return true;
+  },
+  requiresUserInteraction() {
+    return true;
+  },
+  async description() {
+    return Yhl;
+  },
+  async prompt() {
+    return Xhl;
+  },
+  toAutoClassifierInput() {
+    return "show onboarding role picker";
+  },
+  async checkPermissions(e, t) {
+    return {
+      behavior: "ask",
+      message: "Pick your role?",
+      updatedInput: {},
+    };
+  },
+  async call(e, t) {
+    let { role: n, dismissed: r } = e;
+    return {
+      data: {
+        ...(typeof n === "string" &&
+          n.trim() !== "" && {
+            role: n,
           }),
-        },
-      };
-    },
-    mapToolResultToToolResultBlockParam(e, t) {
-      return {
-        tool_use_id: t,
-        type: "tool_result",
-        content: De(e),
-      };
-    },
-    renderToolUseMessage() {
-      return null;
-    },
-    renderToolResultMessage(e) {
-      return F0o.jsx(qn, {
-        children: F0o.jsx(w, {
-          children: e.role !== void 0 ? `Role: ${e.role}` : "Role picker dismissed",
+        ...(typeof r === "boolean" && {
+          dismissed: r,
         }),
-      });
-    },
-  });
+      },
+    };
+  },
+  mapToolResultToToolResultBlockParam(e, t) {
+    return {
+      tool_use_id: t,
+      type: "tool_result",
+      content: De(e),
+    };
+  },
+  renderToolUseMessage() {
+    return null;
+  },
+  renderToolResultMessage(e) {
+    return F0o.jsx(qn, {
+      children: F0o.jsx(w, {
+        children: e.role !== void 0 ? `Role: ${e.role}` : "Role picker dismissed",
+      }),
+    });
+  },
 });
 function fbt(e, t, n) {
   let { head: r, tail: o, mtime: s, size: i } = t,

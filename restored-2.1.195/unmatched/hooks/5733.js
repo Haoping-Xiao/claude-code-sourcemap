@@ -4,12 +4,8 @@
 // class=new  jaccard=0.035  score=0.1335  fileCov=0.0453
 // note: nearest: src/components/CustomSelect/select.tsx (0.035); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cDc = E(() => {
-  Ye();
-  Vl();
-  X0();
-  aDc = R(lt(), 1), Ofr = R(rt(), 1), bR = R(se(), 1);
-});
+// [unwrapped __esm module cDc] deps: Ye, Vl, X0
+aDc = R(lt(), 1), Ofr = R(rt(), 1), bR = R(se(), 1);
 function dDc() {
   if (Js()) return false;
   if (Oe.CLAUDE_CODE_FORCE_FULLSCREEN_UPSELL) return true;

@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TX = E(() => {
-  k0();
-});
 function eOn(e, t) {
   return {
     cmd: zV(e) ?? e,

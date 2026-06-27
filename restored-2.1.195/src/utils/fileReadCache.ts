@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.5571  score=1  fileCov=0.5571
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Dpe = E(() => {
-  b5e();
-  kt();
-  ft();
-  RF();
-  oc();
-});
 class Ael {
   cache = new Map();
   maxCacheSize = 1000;

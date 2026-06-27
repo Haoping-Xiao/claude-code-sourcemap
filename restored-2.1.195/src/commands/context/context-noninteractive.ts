@@ -4,19 +4,9 @@
 // class=modified  jaccard=0.3083  score=0.7559  fileCov=0.3424
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var A1l = E(() => {
-  Ye();
-  y1l();
-  oc();
-  es();
-  Ao();
-  vf();
-  sr();
-  S1l();
-  xoe();
-  ((Xtr = R(lt(), 1)), (Pi = R(se(), 1)));
-  zPf = ["Project", "User", "Managed", "Plugin", "MCP", "Built-in"];
-});
+// [unwrapped __esm module A1l] deps: Ye, y1l, oc, es, Ao, vf, sr, S1l, xoe
+((Xtr = R(lt(), 1)), (Pi = R(se(), 1)));
+zPf = ["Project", "User", "Managed", "Plugin", "MCP", "Built-in"];
 function N7t(e, t) {
   let {
       categories: n,

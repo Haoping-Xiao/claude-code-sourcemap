@@ -3,16 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kWo = E(() => {
-  ft();
-  q$();
-  dn();
-  kt();
-  fb();
-  Ld();
-  Yp();
-  ag();
-});
 var Soc = {};
 _t(Soc, {
   call: () => call

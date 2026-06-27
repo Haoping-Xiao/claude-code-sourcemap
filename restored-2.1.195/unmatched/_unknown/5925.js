@@ -4,10 +4,6 @@
 // class=new  jaccard=0.012  score=0.4878  fileCov=0.0122
 // note: nearest: node_modules/react/cjs/react.production.js (0.012); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ojc = E(() => {
-  lgr();
-  wm();
-});
 class J7e {
   constructor(e) {
     if (!eb(e)) throw TypeError("JWT Claims Set MUST be an object");

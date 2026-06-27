@@ -4,17 +4,16 @@
 // class=new  jaccard=0.0153  score=1  fileCov=0.0153
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0153); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Adi = E(() => {
-  B4r.prototype = Object.create(String.prototype, {
-    constructor: {
-      value: B4r,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  Object.setPrototypeOf(B4r, String);
+// [unwrapped __esm module Adi]
+B4r.prototype = Object.create(String.prototype, {
+  constructor: {
+    value: B4r,
+    enumerable: false,
+    writable: true,
+    configurable: true
+  }
 });
+Object.setPrototypeOf(B4r, String);
 function Hrt(e, t, n) {
   let r, o, s;
   if (typeof t === "undefined" && typeof n === "undefined") r = {}, s = e;else if (r = e, typeof t === "function") return o = t, s = n, Umd(r, o, s);else s = t;

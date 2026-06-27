@@ -4,23 +4,18 @@
 // class=modified (alt of src/utils/dxt/zip.ts)  jaccard=0.0442  score=0.0678  fileCov=0.1125
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RFn = E(() => {
-  Xr();
-  fn();
-  vn();
-  Jt();
-  ((jka = require("crypto")),
-    (YSe = require("fs/promises")),
-    (fde = require("path")),
-    (aCp = ve(() =>
-      H.object({
-        url: H.string(),
-        cacheKey: H.string(),
-        declaredDigest: H.string().optional(),
-        fetchedAt: H.number(),
-      }),
-    )));
-});
+// [unwrapped __esm module RFn] deps: Xr, fn, vn, Jt
+((jka = require("crypto")),
+  (YSe = require("fs/promises")),
+  (fde = require("path")),
+  (aCp = ve(() =>
+    H.object({
+      url: H.string(),
+      cacheKey: H.string(),
+      declaredDigest: H.string().optional(),
+      fetchedAt: H.number(),
+    }),
+  )));
 var dJ = 1e6;
 function Lpo(e, t) {
   let n = e?.toLowerCase();

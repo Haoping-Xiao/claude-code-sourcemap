@@ -4,10 +4,8 @@
 // class=modified (alt of src/cli/transports/SSETransport.ts)  jaccard=0.1267  score=0.205  fileCov=0.249
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MJl = E(() => {
-  Jt();
-  PJl = require("fs/promises");
-});
+// [unwrapped __esm module MJl] deps: Jt
+PJl = require("fs/promises");
 function MJt(e) {
   let t = [],
     n = 0,

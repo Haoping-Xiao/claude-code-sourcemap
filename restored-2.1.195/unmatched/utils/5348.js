@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0187  score=0.1245  fileCov=0.0215
 // note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0187); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var k9o = E(() => {
-  je();
-  At();
-  Adc = [];
-});
+// [unwrapped __esm module k9o] deps: je, At
+Adc = [];
 function Cdc(e, t, n) {
   let r = e.find(o => o.key === t);
   if (n === null) return r ? e.filter(o => o.key !== t) : e;

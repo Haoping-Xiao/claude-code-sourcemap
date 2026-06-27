@@ -4,11 +4,6 @@
 // class=new  jaccard=0.008  score=0.1348  fileCov=0.0084
 // note: nearest: node_modules/node-forge/lib/pkcs7.js (0.008); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZXo = E(() => {
-  egr();
-  wm();
-  YP();
-});
 async function N2c(e, t, n) {
   if (!eb(e)) throw new Wa("General JWE must be an object");
   if (!Array.isArray(e.recipients) || !e.recipients.every(eb)) throw new Wa("JWE Recipients missing or incorrect type");

@@ -4,28 +4,15 @@
 // class=new  jaccard=0.0216  score=0.0914  fileCov=0.0275
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js (0.0216); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tfe = E(() => {
-  ft();
-  np();
-  dn();
-  yC();
-  fp();
-  je();
-  bm();
-  tA();
-  Jt();
-  bH();
-  xF();
-  OI();
-  pml = require("fs/promises");
-  Udf = {
-    name: "LocalWorkflowTask",
-    type: "local_workflow",
-    async kill(e, t) {
-      qAe(e, t);
-    }
-  };
-});
+// [unwrapped __esm module tfe] deps: ft, np, dn, yC, fp, je, bm, tA, Jt, bH, xF, OI
+pml = require("fs/promises");
+Udf = {
+  name: "LocalWorkflowTask",
+  type: "local_workflow",
+  async kill(e, t) {
+    qAe(e, t);
+  }
+};
 function ZI(e) {
   if (e.length > Oj) return {
     error: `Script exceeds ${Oj} bytes`

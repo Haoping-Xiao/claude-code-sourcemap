@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1932  score=0.2842  fileCov=0.3762
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var G1a = E(() => {
-  kt();
-  j1a = new Map();
-});
+// [unwrapped __esm module G1a] deps: kt
+j1a = new Map();
 var z1a = {};
 _t(z1a, {
   KeybindingSetup: () => KeybindingSetup,

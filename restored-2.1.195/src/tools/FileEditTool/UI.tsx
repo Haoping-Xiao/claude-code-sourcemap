@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.282  score=0.5756  fileCov=0.3561
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ivl = E(() => {
-  Un();
-  k0();
-  uDe();
-  lf();
-});
 function TJn(e) {
   if (!e) return "Update";
   if (e.file_path?.startsWith(gS())) return "Updated plan";

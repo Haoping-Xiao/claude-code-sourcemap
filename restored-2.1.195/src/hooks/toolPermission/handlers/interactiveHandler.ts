@@ -4,36 +4,33 @@
 // class=modified  jaccard=0.2634  score=0.5584  fileCov=0.3327
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rko = E(() => {
-  Jt();
-  Un();
-  Ddf = [
-    "fuck",
-    "shit",
-    "cunt",
-    "cock",
-    "dick",
-    "twat",
-    "piss",
-    "crap",
-    "bitch",
-    "whore",
-    "ass",
-    "tit",
-    "cum",
-    "fag",
-    "dyke",
-    "nig",
-    "kike",
-    "rape",
-    "nazi",
-    "damn",
-    "poo",
-    "pee",
-    "wank",
-    "anus",
-  ];
-});
+// [unwrapped __esm module Rko] deps: Jt, Un
+Ddf = [
+  "fuck",
+  "shit",
+  "cunt",
+  "cock",
+  "dick",
+  "twat",
+  "piss",
+  "crap",
+  "bitch",
+  "whore",
+  "ass",
+  "tit",
+  "cum",
+  "fag",
+  "dyke",
+  "nig",
+  "kike",
+  "rape",
+  "nazi",
+  "damn",
+  "poo",
+  "pee",
+  "wank",
+  "anus",
+];
 function Pdf(e, t) {
   if (t.length === 0) return;
   let n = [];

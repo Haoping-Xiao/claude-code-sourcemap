@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.0601  score=0.3089  fileCov=0.0695
 // note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Kmc = E(() => {
-  Ye();
-  Mp();
-  R6();
-  EC();
-  Vmc();
-  zmc = R(lt(), 1), ZN = R(se(), 1);
-});
+// [unwrapped __esm module Kmc] deps: Ye, Mp, R6, EC, Vmc
+zmc = R(lt(), 1), ZN = R(se(), 1);
 function NTe(e) {
   return Vm(xc(e).replace(/\s+/g, " ").trim(), Bcm);
 }

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0186  score=0.7456  fileCov=0.0187
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0186); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rnt = E(() => {
-  S9();
-  OB();
-});
 class aPt {
   config;
   middlewareStack = W7s.constructStack();

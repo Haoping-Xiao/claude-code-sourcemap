@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2228  score=0.3208  fileCov=0.4216
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pht = E(() => {
-  PR();
-});
 function J7p(e) {
   let t = e.find((r) => r.type === "user" && !r.isMeta);
   if (!t) return "";

@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0171  score=1  fileCov=0.0171
 // note: nearest: src/ink/dom.ts (0.0171); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hyr = E(() => {
-  yon = H9c;
-});
+// [unwrapped __esm module Hyr]
+yon = H9c;
 function w9c(e, t, n, r, o, s) {
   var i = n & T9c,
     a = e.length,

@@ -4,19 +4,13 @@
 // class=modified  jaccard=0.353  score=0.5297  fileCov=0.5141
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var u7o = E(() => {
-  ft();
-  kt();
-  je();
-  Ao();
-  Ls();
-  PZ = {
-    fable: "Fable",
-    sonnet: "Sonnet",
-    opus: "Opus",
-    haiku: "Haiku",
-  };
-});
+// [unwrapped __esm module u7o] deps: ft, kt, je, Ao, Ls
+PZ = {
+  fable: "Fable",
+  sonnet: "Sonnet",
+  opus: "Opus",
+  haiku: "Haiku",
+};
 async function VIm() {
   try {
     let e = $s(),

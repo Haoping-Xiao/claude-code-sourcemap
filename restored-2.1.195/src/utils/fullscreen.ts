@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.1792  score=0.2418  fileCov=0.409
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GYr = E(() => {
-  jYr = new Set();
-});
+// [unwrapped __esm module GYr]
+jYr = new Set();
 function qBd() {
   return {
     loggedTmuxCcDisable: false,

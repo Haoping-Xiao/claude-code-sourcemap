@@ -4,20 +4,18 @@
 // class=modified  jaccard=0.2522  score=0.2829  fileCov=0.699
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IL = E(() => {
-  ft();
-  ((Ky = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan"]),
-    (C$ = {
-      red: "red_FOR_SUBAGENTS_ONLY",
-      blue: "blue_FOR_SUBAGENTS_ONLY",
-      green: "green_FOR_SUBAGENTS_ONLY",
-      yellow: "yellow_FOR_SUBAGENTS_ONLY",
-      purple: "purple_FOR_SUBAGENTS_ONLY",
-      orange: "orange_FOR_SUBAGENTS_ONLY",
-      pink: "pink_FOR_SUBAGENTS_ONLY",
-      cyan: "cyan_FOR_SUBAGENTS_ONLY",
-    }));
-});
+// [unwrapped __esm module IL] deps: ft
+((Ky = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan"]),
+  (C$ = {
+    red: "red_FOR_SUBAGENTS_ONLY",
+    blue: "blue_FOR_SUBAGENTS_ONLY",
+    green: "green_FOR_SUBAGENTS_ONLY",
+    yellow: "yellow_FOR_SUBAGENTS_ONLY",
+    purple: "purple_FOR_SUBAGENTS_ONLY",
+    orange: "orange_FOR_SUBAGENTS_ONLY",
+    pink: "pink_FOR_SUBAGENTS_ONLY",
+    cyan: "cyan_FOR_SUBAGENTS_ONLY",
+  }));
 function MVt(e, t) {
   let n = parseInt(e.id, 10),
     r = parseInt(t.id, 10);

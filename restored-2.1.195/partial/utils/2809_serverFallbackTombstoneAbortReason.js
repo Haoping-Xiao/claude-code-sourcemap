@@ -4,21 +4,9 @@
 // class=partial  jaccard=0.1314  score=0.1521  fileCov=0.4919
 // note: low-confidence suggestion: src/utils/abortController.ts; dir inferred from dep-graph -> utils; 13 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rio = E(() => {
-  ft();
-  oo();
-  BE();
-  wr();
-  Wct();
-  Ao();
-  Un();
-  kt();
-  ZE();
-  ZU();
-  Xso();
-  fia = {};
-  rap = new Set(["claude-sonnet-4-6", "claude-opus-4-6"]);
-});
+// [unwrapped __esm module rio] deps: ft, oo, BE, wr, Wct, Ao, Un, kt, ZE, ZU, Xso
+fia = {};
+rap = new Set(["claude-sonnet-4-6", "claude-opus-4-6"]);
 function cap(e) {
   return e?.compacted === true && e.turnCounter < 3 ? (e?.consecutiveRapidRefills ?? 0) + 1 : 0;
 }

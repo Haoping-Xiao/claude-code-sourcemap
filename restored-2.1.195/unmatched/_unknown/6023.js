@@ -4,16 +4,15 @@
 // class=new  jaccard=0.0296  score=0.3319  fileCov=0.0314
 // note: nearest: node_modules/@smithy/core/dist-cjs/submodules/serde/index.js (0.0296); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pZo = E(() => {
-  lXe = {
-    "Cache-Control": "no-store"
-  }, Y$m = {
-    400: "invalid_request_error",
-    401: "authentication_error",
-    403: "permission_error",
-    404: "not_found_error"
-  };
-});
+// [unwrapped __esm module pZo]
+lXe = {
+  "Cache-Control": "no-store"
+}, Y$m = {
+  400: "invalid_request_error",
+  401: "authentication_error",
+  403: "permission_error",
+  404: "not_found_error"
+};
 function lrn(e = "monthly", t = new Date()) {
   if (e === "monthly") return t.toISOString().slice(0, 7);
   if (e === "daily") return t.toISOString().slice(0, 10);

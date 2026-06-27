@@ -4,46 +4,43 @@
 // class=new  jaccard=0.0033  score=0.0764  fileCov=0.0035
 // note: nearest: src/commands/insights.ts (0.0033); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CAl = E(() => {
-  VXn();
-  o7n();
-  vAl = [{
-    title: "Scope",
-    detail: "Pin the diff command, changed files, applicable CLAUDE.md files, and conventions"
-  }, {
-    title: "Find",
-    detail: "One finder agent per review angle (correctness + cleanup + conventions), pooled before verify"
-  }, {
-    title: "Verify",
-    detail: "One independent verifier per distinct (file, line) location \u2014 CONFIRMED / PLAUSIBLE / REFUTED per candidate"
-  }, {
-    title: "Sweep",
-    detail: "Fresh finder hunting only for gaps (xhigh/max)"
-  }, {
-    title: "Synthesize",
-    detail: "Merge duplicates, rank, cap the report"
-  }], Vyf = hAl.map((e, t) => ({
-    label: `angle-${"ABCDE"[t]}`,
-    text: e
-  })), zyf = [{
-    label: "reuse",
-    text: `### Reuse
+// [unwrapped __esm module CAl] deps: VXn, o7n
+vAl = [{
+  title: "Scope",
+  detail: "Pin the diff command, changed files, applicable CLAUDE.md files, and conventions"
+}, {
+  title: "Find",
+  detail: "One finder agent per review angle (correctness + cleanup + conventions), pooled before verify"
+}, {
+  title: "Verify",
+  detail: "One independent verifier per distinct (file, line) location \u2014 CONFIRMED / PLAUSIBLE / REFUTED per candidate"
+}, {
+  title: "Sweep",
+  detail: "Fresh finder hunting only for gaps (xhigh/max)"
+}, {
+  title: "Synthesize",
+  detail: "Merge duplicates, rank, cap the report"
+}], Vyf = hAl.map((e, t) => ({
+  label: `angle-${"ABCDE"[t]}`,
+  text: e
+})), zyf = [{
+  label: "reuse",
+  text: `### Reuse
 
 ${Lbt}`
-  }, {
-    label: "simplification",
-    text: N$e
-  }, {
-    label: "efficiency",
-    text: B$e
-  }, {
-    label: "altitude",
-    text: U$e
-  }, {
-    label: "conventions",
-    text: Dbt
-  }];
-});
+}, {
+  label: "simplification",
+  text: N$e
+}, {
+  label: "efficiency",
+  text: B$e
+}, {
+  label: "altitude",
+  text: U$e
+}, {
+  label: "conventions",
+  text: Dbt
+}];
 function LAl() {
   r7n(`export const meta = {
   name: '${IAl}',

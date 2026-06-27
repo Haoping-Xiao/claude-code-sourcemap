@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.6772  score=0.9167  fileCov=0.7216
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PZn = E(() => {
-  qfn();
-  je();
-  tA();
-  CCf = ["SessionStart", "Setup"];
-});
+// [unwrapped __esm module PZn] deps: qfn, je, tA
+CCf = ["SessionStart", "Setup"];
 function d0l({
   processId: e,
   hookId: t,

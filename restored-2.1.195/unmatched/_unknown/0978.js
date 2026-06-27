@@ -4,8 +4,5 @@
 // class=new  jaccard=0.0191  score=1  fileCov=0.0191
 // note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0191); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var BUs = E(() => {
-  tyn();
-  iDt();
-  NUs = R(yd(), 1), FCg = NUs.createPaginator(iye, uDt, "nextToken", "nextToken", "maxResults");
-});
+// [unwrapped __esm module BUs] deps: tyn, iDt
+NUs = R(yd(), 1), FCg = NUs.createPaginator(iye, uDt, "nextToken", "nextToken", "maxResults");

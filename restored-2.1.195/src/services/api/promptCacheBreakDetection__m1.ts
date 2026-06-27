@@ -4,63 +4,53 @@
 // class=modified (alt of src/services/api/promptCacheBreakDetection.ts)  jaccard=0.1158  score=0.357  fileCov=0.1463
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mLe = E(() => {
-  ft();
-  je();
-  wr();
-  vn();
-  Yf();
-  Jt();
-  zb();
-  kt();
-  Du();
-  ((Zla = require("fs")), (sNn = require("fs/promises")), (eca = require("path")));
-  V8 = new Map();
-  lcp = ve(() =>
-    dt.record(
-      dt.string(),
-      dt.object({
-        systemHash: dt.number(),
-        toolsHash: dt.number(),
-        cacheControlHash: dt.number(),
-        toolNames: dt.array(dt.string()),
-        perToolHashes: dt.record(dt.string(), dt.number()),
-        perBlockHashes: dt.array(dt.number()),
-        perBlockLengths: dt.array(dt.number()),
-        systemCharCount: dt.number(),
-        model: dt.string(),
-        fastMode: dt.boolean(),
-        globalCacheStrategy: dt.string(),
-        betas: dt.array(dt.string()),
-        autoModeActive: dt.boolean(),
-        isUsingOverage: dt.boolean(),
-        is1hCacheTTL: dt.boolean().default(false),
-        queryDepth: dt.number().optional(),
-        cacheDiagnosis: dt.boolean().default(false),
-        effortValue: dt.string(),
-        extraBodyHash: dt.number(),
-        callCount: dt.number(),
-        prevCacheReadTokens: dt.number().nullable(),
-        cacheDeletionsPending: dt.boolean(),
-        messageHashes: dt.array(dt.number()),
-      }),
-    ),
-  );
-  Xla = Promise.resolve();
-  dcp = ["repl_main_thread", "sdk", "agent:custom", "agent:default", "agent:builtin"];
-  hcp = new Set([
-    "type",
-    "text",
-    "thinking",
-    "id",
-    "tool_use_id",
-    "name",
-    "input",
-    "source",
-    "content",
-    "cache_control",
-  ]);
-});
+// [unwrapped __esm module mLe] deps: ft, je, wr, vn, Yf, Jt, zb, kt, Du
+((Zla = require("fs")), (sNn = require("fs/promises")), (eca = require("path")));
+V8 = new Map();
+lcp = ve(() =>
+  dt.record(
+    dt.string(),
+    dt.object({
+      systemHash: dt.number(),
+      toolsHash: dt.number(),
+      cacheControlHash: dt.number(),
+      toolNames: dt.array(dt.string()),
+      perToolHashes: dt.record(dt.string(), dt.number()),
+      perBlockHashes: dt.array(dt.number()),
+      perBlockLengths: dt.array(dt.number()),
+      systemCharCount: dt.number(),
+      model: dt.string(),
+      fastMode: dt.boolean(),
+      globalCacheStrategy: dt.string(),
+      betas: dt.array(dt.string()),
+      autoModeActive: dt.boolean(),
+      isUsingOverage: dt.boolean(),
+      is1hCacheTTL: dt.boolean().default(false),
+      queryDepth: dt.number().optional(),
+      cacheDiagnosis: dt.boolean().default(false),
+      effortValue: dt.string(),
+      extraBodyHash: dt.number(),
+      callCount: dt.number(),
+      prevCacheReadTokens: dt.number().nullable(),
+      cacheDeletionsPending: dt.boolean(),
+      messageHashes: dt.array(dt.number()),
+    }),
+  ),
+);
+Xla = Promise.resolve();
+dcp = ["repl_main_thread", "sdk", "agent:custom", "agent:default", "agent:builtin"];
+hcp = new Set([
+  "type",
+  "text",
+  "thinking",
+  "id",
+  "tool_use_id",
+  "name",
+  "input",
+  "source",
+  "content",
+  "cache_control",
+]);
 function Tcp(e) {
   if (!e.content) return 0;
   if (typeof e.content === "string") return If(e.content);

@@ -3,17 +3,4 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DBn = E(() => {
-  bSa();
-  ABn();
-  HBn();
-  SSa();
-  wBn();
-  ESa();
-  yco();
-  iEa();
-  SEa();
-  AEa();
-  SBn();
-});
 var sE;

@@ -4,22 +4,20 @@
 // class=partial  jaccard=0.156  score=0.1896  fileCov=0.4683
 // note: low-confidence suggestion: src/utils/plugins/pluginIdentifier.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $g = E(() => {
-  ZC();
-  leo = {
-    policySettings: "managed",
-    userSettings: "user",
-    projectSettings: "project",
-    localSettings: "local",
-    flagSettings: "flag"
-  };
-  IKd = new Set(["anthropic-skills", "core", "cowork-plugin-management", "data", "design", "engineering", "enterprise-search", "figma", "finance", "human-resources", "internal-apps", "legal", "marketing", "operations", "product-management", "productivity", "sales", "small-business", "ai-governance-legal", "cocounsel-legal", "commercial-legal", "corporate-legal", "employment-legal", "ip-legal", "law-student", "legal-builder-hub", "legal-clinic", "litigation-legal", "privacy-legal", "product-legal", "regulatory-legal"]);
-  xKd = {
-    user: "userSettings",
-    project: "projectSettings",
-    local: "localSettings"
-  };
-});
+// [unwrapped __esm module $g] deps: ZC
+leo = {
+  policySettings: "managed",
+  userSettings: "user",
+  projectSettings: "project",
+  localSettings: "local",
+  flagSettings: "flag"
+};
+IKd = new Set(["anthropic-skills", "core", "cowork-plugin-management", "data", "design", "engineering", "enterprise-search", "figma", "finance", "human-resources", "internal-apps", "legal", "marketing", "operations", "product-management", "productivity", "sales", "small-business", "ai-governance-legal", "cocounsel-legal", "commercial-legal", "corporate-legal", "employment-legal", "ip-legal", "law-student", "legal-builder-hub", "legal-clinic", "litigation-legal", "privacy-legal", "product-legal", "regulatory-legal"]);
+xKd = {
+  user: "userSettings",
+  project: "projectSettings",
+  local: "localSettings"
+};
 function Zj(e) {
   RKd.emit(e);
   let t = Date.now(),

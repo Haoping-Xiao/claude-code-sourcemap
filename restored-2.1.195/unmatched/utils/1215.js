@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0185  score=0.5841  fileCov=0.0187
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0185); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uBr = E(() => {
-  W8s();
-  n6s();
-  i6s();
-  a6s();
-});
 var l6s = e => Object.assign(e, {
   eventStreamMarshaller: e.eventStreamSerdeProvider(e)
 });

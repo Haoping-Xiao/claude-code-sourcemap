@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.2738  score=0.895  fileCov=0.2829
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Ge = E(() => {
-  QBt();
-  Un();
-  wr();
-  fn();
-  Y9();
-});
 function Io(e, t, n = "foreground") {
   return (r) => {
     if (!e) return r;

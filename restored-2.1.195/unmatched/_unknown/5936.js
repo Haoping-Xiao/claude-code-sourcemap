@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0113  score=0.1683  fileCov=0.012
 // note: nearest: node_modules/node-forge/lib/util.js (0.0113); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Sjc = E(() => {
-  dgr();
-  YP();
-});
 function Ejc(e) {
   if (typeof e !== "string") throw new sD("JWTs must use Compact JWS serialization, JWT must be a string");
   let {

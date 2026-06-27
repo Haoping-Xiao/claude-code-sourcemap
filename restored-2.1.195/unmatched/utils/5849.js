@@ -4,11 +4,6 @@
 // class=new  jaccard=0.004  score=0.2557  fileCov=0.004
 // note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fUc = E(() => {
-  fd();
-  je();
-  Jt();
-});
 function mUc(e, t) {
   let n = t?.external?.pending_action,
     r = n?.request_id;

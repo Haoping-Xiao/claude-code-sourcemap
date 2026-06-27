@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0077  score=0.1077  fileCov=0.0082
 // note: nearest: node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js (0.0077); dir inferred from dep-graph -> commands; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Sl = E(() => {
-  ql();
-  Ye();
-  sr();
-  Dzt = R(se(), 1);
-});
+// [unwrapped __esm module _Sl] deps: ql, Ye, sr
+Dzt = R(se(), 1);
 var ESl = {};
 _t(ESl, {
   triggerResponseSchema: () => triggerResponseSchema,

@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4557  score=1  fileCov=0.4557
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zRn = E(() => {
-  Tc();
-  VRn = new Map();
-});
+// [unwrapped __esm module zRn] deps: Tc
+VRn = new Map();
 function N4d(e, t) {
   if (e.length === 0)
     return {

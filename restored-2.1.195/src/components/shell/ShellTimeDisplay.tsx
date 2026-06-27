@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1958  score=0.3311  fileCov=0.3241
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lEe = E(() => {
-  eUt();
-  Ye();
-  d4t();
-  ((ijn = R(rt(), 1)), (_Ma = R(se(), 1)));
-});
+// [unwrapped __esm module lEe] deps: eUt, Ye, d4t
+((ijn = R(rt(), 1)), (_Ma = R(se(), 1)));
 function Vqe(e) {
   let t = bMa.c(10),
     { elapsedTimeSeconds: n, timeoutMs: r } = e;

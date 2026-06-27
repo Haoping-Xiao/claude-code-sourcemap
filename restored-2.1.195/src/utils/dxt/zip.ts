@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.624  score=0.9568  fileCov=0.6421
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rCa = E(() => {
-  At();
-  Jt();
-});
 function odo(e) {
   if (kae(e)) return false;
   for (let n of e.split(/[/\\]/)) if (/^\.\. [ .]*$/.test(n)) return false;

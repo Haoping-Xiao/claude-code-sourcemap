@@ -4,31 +4,27 @@
 // class=modified (alt of src/utils/env.ts)  jaccard=0.1974  score=0.4109  fileCov=0.2754
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Rx = E(() => {
-  Hp();
-  CZe();
-  Hp();
-  lb = {
-    get(e, t) {
-      return (IZe(e, t), po.get(e, t));
-    },
-    head(e, t) {
-      return (IZe(e, t), po.head(e, t));
-    },
-    post(e, t, n) {
-      return (IZe(e, n), po.post(e, t, n));
-    },
-    put(e, t, n) {
-      return (IZe(e, n), po.put(e, t, n));
-    },
-    patch(e, t, n) {
-      return (IZe(e, n), po.patch(e, t, n));
-    },
-    delete(e, t) {
-      return (IZe(e, t), po.delete(e, t));
-    },
-  };
-});
+// [unwrapped __esm module Rx] deps: Hp, CZe, Hp
+lb = {
+  get(e, t) {
+    return (IZe(e, t), po.get(e, t));
+  },
+  head(e, t) {
+    return (IZe(e, t), po.head(e, t));
+  },
+  post(e, t, n) {
+    return (IZe(e, n), po.post(e, t, n));
+  },
+  put(e, t, n) {
+    return (IZe(e, n), po.put(e, t, n));
+  },
+  patch(e, t, n) {
+    return (IZe(e, n), po.patch(e, t, n));
+  },
+  delete(e, t) {
+    return (IZe(e, t), po.delete(e, t));
+  },
+};
 async function pEu() {
   return null;
 }

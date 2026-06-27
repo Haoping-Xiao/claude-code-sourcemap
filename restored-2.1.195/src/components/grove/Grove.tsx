@@ -4,25 +4,23 @@
 // class=modified  jaccard=0.24  score=0.3669  fileCov=0.4097
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Zzl = E(() => {
-  ZKe();
-  Vjo = {
-    type: "local-jsx",
-    name: "passes",
-    get description() {
-      if (SAt()) return "Share a free week of Claude Code with friends and earn usage credits";
-      return "Share a free week of Claude Code with friends";
-    },
-    get isHidden() {
-      let { eligible: e, hasCache: t } = _At();
-      return !e || !t;
-    },
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (Qzl(), Xzl)),
-  };
-});
+// [unwrapped __esm module Zzl] deps: ZKe
+Vjo = {
+  type: "local-jsx",
+  name: "passes",
+  get description() {
+    if (SAt()) return "Share a free week of Claude Code with friends and earn usage credits";
+    return "Share a free week of Claude Code with friends";
+  },
+  get isHidden() {
+    let { eligible: e, hasCache: t } = _At();
+    return !e || !t;
+  },
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (Qzl(), Xzl)),
+};
 var eKl = {};
 _t(eKl, {
   PrivacySettingsDialog: () => PrivacySettingsDialog,

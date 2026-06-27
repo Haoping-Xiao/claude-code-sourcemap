@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.4476  score=0.6814  fileCov=0.5661
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mQt = E(() => {
-  je();
-  fn();
-  Bi();
-  Is();
-  ((sar = require("child_process")), (snc = require("fs/promises")));
-});
+// [unwrapped __esm module mQt] deps: je, fn, Bi, Is
+((sar = require("child_process")), (snc = require("fs/promises")));
 var unc = {};
 _t(unc, {
   call: () => call,

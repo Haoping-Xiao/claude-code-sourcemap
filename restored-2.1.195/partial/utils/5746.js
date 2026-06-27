@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.1394  score=0.3597  fileCov=0.1854
 // note: low-confidence suggestion: src/hooks/notifs/useAutoModeUnavailableNotification.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YDc = E(() => {
-  Ed();
-  uo();
-  NE();
-  es();
-  ft();
-  zDc = R(lt(), 1), Vfr = R(rt(), 1);
-});
+// [unwrapped __esm module YDc] deps: Ed, uo, NE, es, ft
+zDc = R(lt(), 1), Vfr = R(rt(), 1);
 function JDc() {
   let e = XDc.c(5),
     {

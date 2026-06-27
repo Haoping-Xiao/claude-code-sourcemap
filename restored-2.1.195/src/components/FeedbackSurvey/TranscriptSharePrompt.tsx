@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2867  score=0.4954  fileCov=0.405
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SRc = E(() => {
-  Ye();
-  uo();
-  sr();
-  yYo();
-  ((_Rc = R(lt(), 1)), (M7e = R(se(), 1)));
-});
+// [unwrapped __esm module SRc] deps: Ye, uo, sr, yYo
+((_Rc = R(lt(), 1)), (M7e = R(se(), 1)));
 function HRc(e) {
   let t = ARc.c(13),
     { onSelect: n, inputValue: r, setInputValue: o } = e,

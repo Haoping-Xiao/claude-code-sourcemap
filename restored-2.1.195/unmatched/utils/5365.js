@@ -4,31 +4,8 @@
 // class=new  jaccard=0.0314  score=0.1409  fileCov=0.0388
 // note: nearest: src/utils/plugins/pluginLoader.ts (0.0314); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G9o = E(() => {
-  si();
-  ghe();
-  je();
-  fn();
-  At();
-  Yp();
-  vn();
-  vq();
-  vbe();
-  _k();
-  o8();
-  vdt();
-  $g();
-  vfe();
-  Xh();
-  i5();
-  ED();
-  sr();
-  II();
-  dn();
-  kt();
-  XEt();
-  bpc = require("readline");
-});
+// [unwrapped __esm module G9o] deps: si, ghe, je, fn, At, Yp, vn, vq, vbe, _k, o8, vdt, $g, vfe, Xh, i5, ED, sr, II, dn, kt, XEt
+bpc = require("readline");
 function xpc(e) {
   let t = o2e().shape.name.safeParse(e);
   if (!t.success) return t.error.issues[0]?.message ?? null;

@@ -4,37 +4,12 @@
 // class=modified (alt of src/hooks/useIdeLogging.ts)  jaccard=0.3183  score=0.9201  fileCov=0.3273
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $ur = E(() => {
-  si();
-  _i();
-  kt();
-  pre();
-  uo();
-  Y4();
-  vn();
-  np();
-  O0();
-  Ye();
-  ps();
-  jZe();
-  es();
-  uf();
-  co();
-  Vl();
-  Bs();
-  vi();
-  gDe();
-  B_();
-  f_();
-  Ko();
-  co();
-  EC();
-  ((Mur = R(lt(), 1)),
-    (W8o = require("crypto")),
-    (vTt = R(require("path"))),
-    (GT = R(rt(), 1)),
-    (ul = R(se(), 1)));
-});
+// [unwrapped __esm module $ur] deps: si, _i, kt, pre, uo, Y4, vn, np, O0, Ye, ps, jZe, es, uf, co, Vl, Bs, vi, gDe, B_, f_, Ko, co, EC
+((Mur = R(lt(), 1)),
+  (W8o = require("crypto")),
+  (vTt = R(require("path"))),
+  (GT = R(rt(), 1)),
+  (ul = R(se(), 1)));
 function jgc(e) {
   Fgc.useEffect(() => {
     if (!e.length) return;

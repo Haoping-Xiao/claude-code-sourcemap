@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.4124  score=0.5904  fileCov=0.5777
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jYl = E(() => {
-  ft();
-  S4();
-  ZE();
-  ii();
-  fh();
-  og();
-  Fze();
-  co();
-  Uh();
-  kt();
-  Jt();
-  UYl = `You are an elite AI agent architect specializing in crafting high-performance agent configurations. Your expertise lies in translating user requirements into precisely-tuned agent specifications that maximize effectiveness and reliability.
+// [unwrapped __esm module jYl] deps: ft, S4, ZE, ii, fh, og, Fze, co, Uh, kt, Jt
+UYl = `You are an elite AI agent architect specializing in crafting high-performance agent configurations. Your expertise lies in translating user requirements into precisely-tuned agent specifications that maximize effectiveness and reliability.
 
 **Important Context**: You may have access to project-specific instructions from CLAUDE.md files and other context that may include coding standards, project structure, and custom requirements. Consider this context when creating agents to ensure they align with the project's established patterns and practices.
 
@@ -88,7 +77,6 @@ Key principles for your system prompts:
 
 Remember: The agents you create should be autonomous experts capable of handling their designated tasks with minimal additional guidance. Your system prompts are their complete operational manual.
 `;
-});
 function GYl() {
   let { updateWizardData: e, goBack: t, goToStep: n, wizardData: r } = Eu(),
     [o, s] = Mse.useState(r.generationPrompt || ""),

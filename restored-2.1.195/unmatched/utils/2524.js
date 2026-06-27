@@ -4,21 +4,13 @@
 // class=new  jaccard=0.0164  score=0.2317  fileCov=0.0173
 // note: nearest: src/utils/imageResizer.ts (0.0164); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xW = E(() => {
-  Lne();
-  kt();
-  ADn();
-  je();
-  At();
-  es();
-  vn();
-  NU = class NU extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "ImageResizeError";
-    }
-  };
-});
+// [unwrapped __esm module xW] deps: Lne, kt, ADn, je, At, es, vn
+NU = class NU extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "ImageResizeError";
+  }
+};
 function Fat(e, t = "value") {
   let n = X8d.exec(e);
   if (n) {

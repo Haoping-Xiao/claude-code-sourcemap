@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.2922  score=0.9365  fileCov=0.2981
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Kel = E(() => {
-  _i();
-  Ye();
-  Dpe();
-  sr();
-  E8e();
-  AMe();
-  Kut();
-  ((Vel = R(lt(), 1)), (Zht = R(se(), 1)));
-});
+// [unwrapped __esm module Kel] deps: _i, Ye, Dpe, sr, E8e, AMe, Kut
+((Vel = R(lt(), 1)), (Zht = R(se(), 1)));
 function Z8n(e) {
   let t = e.split(`
 `),

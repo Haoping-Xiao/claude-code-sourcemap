@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.3393  score=0.677  fileCov=0.4049
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K$e = E(() => {
-  h6();
-  er();
-  fn();
-});
 function sCl() {
   if (Oe.CLAUDE_CODE_SUPPRESS_SESSION_ATTRIBUTION) return null;
   if (Dr().attribution?.sessionUrl === false) return null;

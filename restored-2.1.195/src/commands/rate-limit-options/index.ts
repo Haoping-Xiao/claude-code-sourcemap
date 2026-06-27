@@ -4,16 +4,14 @@
 // class=modified  jaccard=0.5927  score=0.9237  fileCov=0.6232
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TQl = E(() => {
-  oo();
-  ((X6f = {
-    type: "local-jsx",
-    name: "rate-limit-options",
-    description: "Show options when rate limit is reached",
-    isEnabled: () => bo() || false,
-    isHidden: true,
-    load: () => Promise.resolve().then(() => (AQl(), EQl)),
-  }),
-    (HQl = X6f));
-});
+// [unwrapped __esm module TQl] deps: oo
+((X6f = {
+  type: "local-jsx",
+  name: "rate-limit-options",
+  description: "Show options when rate limit is reached",
+  isEnabled: () => bo() || false,
+  isHidden: true,
+  load: () => Promise.resolve().then(() => (AQl(), EQl)),
+}),
+  (HQl = X6f));
 var J6f, vQl;

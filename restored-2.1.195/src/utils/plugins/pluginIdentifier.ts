@@ -4,12 +4,9 @@
 // class=modified  jaccard=0.2304  score=0.6873  fileCov=0.2574
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Sbe = E(() => {
-  vn();
-  aeo();
-  BPn = new Map();
-  EKi = new Set();
-});
+// [unwrapped __esm module Sbe] deps: vn, aeo
+BPn = new Map();
+EKi = new Set();
 function U0(e) {
   return e === Bne || e === JE;
 }

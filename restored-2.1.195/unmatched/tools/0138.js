@@ -4,16 +4,14 @@
 // class=new  jaccard=0.0423  score=0.2204  fileCov=0.0498
 // note: nearest: node_modules/gtoken/build/src/index.js (0.0423); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uee = E(() => {
-  p0();
-  Uzc = new Set(["error", "error_description", "error_uri"]);
-  nf = class nf extends ui {
-    constructor(e, t = null, n = null, r = null) {
-      super(e);
-      this.statusCode = t, this.body = n, this.requestId = r;
-    }
-  };
-});
+// [unwrapped __esm module uee] deps: p0
+Uzc = new Set(["error", "error_description", "error_uri"]);
+nf = class nf extends ui {
+  constructor(e, t = null, n = null, r = null) {
+    super(e);
+    this.statusCode = t, this.body = n, this.requestId = r;
+  }
+};
 function dee() {
   return Math.floor(Date.now() / 1000);
 }

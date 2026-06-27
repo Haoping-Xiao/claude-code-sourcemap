@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0065  score=0.1394  fileCov=0.0067
 // note: nearest: src/screens/REPL.tsx (0.0065); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Y2o = E(() => {
-  sYe();
-  tC();
-  Ye();
-  kt();
-  uo();
-  Zor();
-  er();
-  Vl();
-  vi();
-  z2o = R(lt(), 1), A1e = R(rt(), 1), sx = R(se(), 1);
-});
+// [unwrapped __esm module Y2o] deps: sYe, tC, Ye, kt, uo, Zor, er, Vl, vi
+z2o = R(lt(), 1), A1e = R(rt(), 1), sx = R(se(), 1);
 function S9l(e) {
   let t = nsr.c(24),
     {

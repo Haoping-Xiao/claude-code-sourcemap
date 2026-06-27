@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4312  score=0.7464  fileCov=0.5052
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wYe = E(() => {
-  ZSe();
-  VJt();
-});
 var Kir = {};
 _t(Kir, {
   runBridgeLoop: () => runBridgeLoop,

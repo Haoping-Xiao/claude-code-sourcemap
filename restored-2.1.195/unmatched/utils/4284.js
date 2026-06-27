@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0063  score=0.1827  fileCov=0.0065
 // note: nearest: src/cli/print.ts (0.0063); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var n0o = E(() => {
-  si();
-  Xa();
-  fH();
-  RUt();
-  _i();
-  Tc();
-  Ye();
-  es();
-  uf();
-  g0();
-  S$e = R(lt(), 1), t0o = R(rt(), 1), rw = R(se(), 1);
-});
+// [unwrapped __esm module n0o] deps: si, Xa, fH, RUt, _i, Tc, Ye, es, uf, g0
+S$e = R(lt(), 1), t0o = R(rt(), 1), rw = R(se(), 1);
 function r0o(e) {
   let t = On(e.agents, c => c.state === "done"),
     n = On(e.agents, c => c.state === "error"),

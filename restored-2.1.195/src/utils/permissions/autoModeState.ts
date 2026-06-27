@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.3708  score=0.3946  fileCov=0.8602
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var znl = E(() => {
-  AN();
-  ql();
-  lwo();
-  Xa();
-  DE();
-  Ye();
-  oc();
-  KI();
-  HC = R(se(), 1);
-});
+// [unwrapped __esm module znl] deps: AN, ql, lwo, Xa, DE, Ye, oc, KI
+HC = R(se(), 1);
 var Ope = {};
 _t(Ope, {
   setAutoModeFromFallback: () => setAutoModeFromFallback,

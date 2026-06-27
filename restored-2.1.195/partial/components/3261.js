@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.0651  score=0.7602  fileCov=0.0665
 // note: low-confidence suggestion: src/components/StructuredDiff/Fallback.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lJ = E(() => {
-  si();
-  Ye();
-  exa = R(lt(), 1), gqe = R(se(), 1);
-});
+// [unwrapped __esm module lJ] deps: si, Ye
+exa = R(lt(), 1), gqe = R(se(), 1);
 function d5(e) {
   let t = txa.c(10),
     {

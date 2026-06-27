@@ -4,23 +4,8 @@
 // class=partial  jaccard=0.1553  score=0.2032  fileCov=0.3971
 // note: low-confidence suggestion: src/components/CoordinatorAgentStatus.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Oyc = E(() => {
-  ft();
-  loe();
-  Xa();
-  Ed();
-  tC();
-  Ye();
-  ps();
-  uo();
-  sa();
-  Fh();
-  Bs();
-  vi();
-  f_();
-  Ko();
-  Myc = require("path"), y7e = R(rt(), 1), FP = R(se(), 1);
-});
+// [unwrapped __esm module Oyc] deps: ft, loe, Xa, Ed, tC, Ye, ps, uo, sa, Fh, Bs, vi, f_, Ko
+Myc = require("path"), y7e = R(rt(), 1), FP = R(se(), 1);
 function kZ(e) {
   return MF(e) || uE(e);
 }

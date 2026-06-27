@@ -4,10 +4,8 @@
 // class=new  jaccard=0.012  score=0.1474  fileCov=0.0129
 // note: nearest: src/services/mcp/client.ts (0.012); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var h7n = E(() => {
-  sr();
-  Agl = require("dns"), d0o = require("net");
-});
+// [unwrapped __esm module h7n] deps: sr
+Agl = require("dns"), d0o = require("net");
 async function Wpf(e, t) {
   let n = new URL(e),
     r = n.hostname.replace(/^\[|\]$/g, "");

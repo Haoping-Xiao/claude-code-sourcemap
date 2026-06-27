@@ -4,21 +4,19 @@
 // class=modified (alt of src/context/voice.tsx)  jaccard=0.2977  score=0.6644  fileCov=0.3504
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nbe = E(() => {
-  tne();
-  ((KJr = R(lt(), 1)),
-    (E0e = R(rt(), 1)),
-    (tqi = R(se(), 1)),
-    (KWd = {
-      voiceState: "idle",
-      voiceError: null,
-      voiceInterimTranscript: "",
-      voiceAudioLevels: [],
-      voiceWarmingUp: false,
-      awaitingVoiceSubmitDoubleTap: false,
-    }),
-    (Z5i = E0e.createContext(null)));
-});
+// [unwrapped __esm module nbe] deps: tne
+((KJr = R(lt(), 1)),
+  (E0e = R(rt(), 1)),
+  (tqi = R(se(), 1)),
+  (KWd = {
+    voiceState: "idle",
+    voiceError: null,
+    voiceInterimTranscript: "",
+    voiceAudioLevels: [],
+    voiceWarmingUp: false,
+    awaitingVoiceSubmitDoubleTap: false,
+  }),
+  (Z5i = E0e.createContext(null)));
 function XJr() {
   let e = A0e.useContext(vat);
   if (!e)

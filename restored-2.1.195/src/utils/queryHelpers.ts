@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2908  score=0.4517  fileCov=0.4495
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CLo = E(() => {
-  QXn();
-  ii();
-});
 function ZXn(e, t = null) {
   if (!e) return false;
   if (e.type === "assistant") {

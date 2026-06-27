@@ -4,25 +4,17 @@
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0099  score=0.2963  fileCov=0.0101
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yec = E(() => {
-  l0t();
-  MQe();
-  wwr();
-  Vb();
-  dec();
-  pec();
-  zb();
-  WKf = {
-    type: "object",
-    properties: {},
-  };
-  YJt = {
-    completion: {
-      values: [],
-      hasMore: false,
-    },
-  };
-});
+// [unwrapped __esm module yec] deps: l0t, MQe, wwr, Vb, dec, pec, zb
+WKf = {
+  type: "object",
+  properties: {},
+};
+YJt = {
+  completion: {
+    values: [],
+    hasMore: false,
+  },
+};
 function _ec(e, t, n, r, o) {
   let s = {};
   if (o?.searchHint) s["anthropic/searchHint"] = o.searchHint;

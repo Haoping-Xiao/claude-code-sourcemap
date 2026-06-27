@@ -4,27 +4,16 @@
 // class=new  jaccard=0.0052  score=0.2874  fileCov=0.0053
 // note: nearest: src/services/mcp/client.ts (0.0052); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q6e = E(() => {
-  ft();
-  pyl();
-  yyt();
-  $S();
-  je();
-  At();
-  vn();
-  hyt();
-  tA();
-  _a();
-  W6e = class W6e extends Error {
-    code;
-    telemetryMessage;
-    constructor(e, t) {
-      super(e);
-      this.code = t;
-      this.name = "StopTaskError", this.telemetryMessage = `StopTask: ${t}`;
-    }
-  };
-});
+// [unwrapped __esm module q6e] deps: ft, pyl, yyt, $S, je, At, vn, hyt, tA, _a
+W6e = class W6e extends Error {
+  code;
+  telemetryMessage;
+  constructor(e, t) {
+    super(e);
+    this.code = t;
+    this.name = "StopTaskError", this.telemetryMessage = `StopTask: ${t}`;
+  }
+};
 function gyl() {
   return "";
 }

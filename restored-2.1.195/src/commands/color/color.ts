@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2706  score=0.4019  fileCov=0.4532
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ver = E(() => {
-  Mp();
-});
 var sPl = {};
 _t(sPl, {
   performSetColor: () => performSetColor,

@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.1594  score=1  fileCov=0.1594
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GF = E(() => {
-  Ld();
-  t1t();
-});
 function Dk(e, t) {
   return {
     name: e,

@@ -4,15 +4,10 @@
 // class=new  jaccard=0.0076  score=0.1911  fileCov=0.0079
 // note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0076); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w$n = E(() => {
-  M8();
-  _Re();
-  bRe();
-  Klt();
-  LZi = {
-    readUnknownFields: true
-  };
-});
+// [unwrapped __esm module w$n] deps: M8, _Re, bRe, Klt
+LZi = {
+  readUnknownFields: true
+};
 function yue(e, t) {
   var n;
   let r = v$n(RZi, E$n(e));

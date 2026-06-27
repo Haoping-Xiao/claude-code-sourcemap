@@ -4,14 +4,12 @@
 // class=modified  jaccard=0.3671  score=0.5204  fileCov=0.5547
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pw = E(() => {
-  At();
-  ((Vkr = require("crypto")),
-    (lY = require("fs")),
-    (cY = require("fs/promises")),
-    ($Fe = new Set(["EXDEV", "EPERM", "EEXIST", "EBUSY"])),
-    (REs = new Set(["ENOSPC", "EIO", "EDQUOT", "EFBIG"])));
-});
+// [unwrapped __esm module Pw] deps: At
+((Vkr = require("crypto")),
+  (lY = require("fs")),
+  (cY = require("fs/promises")),
+  ($Fe = new Set(["EXDEV", "EPERM", "EEXIST", "EBUSY"])),
+  (REs = new Set(["ENOSPC", "EIO", "EDQUOT", "EFBIG"])));
 function Lpn(e) {
   let { buffer: t, bytesRead: n } = qt().readSync(e, {
     length: 4096,

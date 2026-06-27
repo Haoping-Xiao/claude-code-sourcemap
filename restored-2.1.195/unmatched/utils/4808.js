@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0083  score=0.103  fileCov=0.0089
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bUo = E(() => {
-  ree();
-  Lo();
-  At();
-  Bi();
-  sa();
-  Jt();
-  OYt();
-  ZC();
-  vrr();
-  SXt = require("fs/promises"), rx = require("path"), zjl = R(Uj(), 1);
-});
+// [unwrapped __esm module bUo] deps: ree, Lo, At, Bi, sa, Jt, OYt, ZC, vrr
+SXt = require("fs/promises"), rx = require("path"), zjl = R(Uj(), 1);
 function Jjl(e) {
   let t = Yjl.c(9),
     {

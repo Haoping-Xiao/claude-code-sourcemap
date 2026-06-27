@@ -4,27 +4,25 @@
 // class=modified (alt of src/services/api/claude.ts)  jaccard=0.0206  score=0.3399  fileCov=0.0214
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var F8n = E(() => {
-  Xr();
-  fMe = Dy({
-    kind: "permission_file",
-    payload: ve(() =>
-      H.custom(
-        (e) =>
-          typeof e === "object" &&
-          e !== null &&
-          "requestId" in e &&
-          "toolName" in e &&
-          "permissionResult" in e &&
-          "filePath" in e &&
-          "operationType" in e,
-      ),
+// [unwrapped __esm module F8n] deps: Xr
+fMe = Dy({
+  kind: "permission_file",
+  payload: ve(() =>
+    H.custom(
+      (e) =>
+        typeof e === "object" &&
+        e !== null &&
+        "requestId" in e &&
+        "toolName" in e &&
+        "permissionResult" in e &&
+        "filePath" in e &&
+        "operationType" in e,
     ),
-    result: ve(() => H.custom((e) => typeof e === "object" && e !== null && "behavior" in e)),
-    default: {
-      behavior: "cancelled",
-    },
-  });
+  ),
+  result: ve(() => H.custom((e) => typeof e === "object" && e !== null && "behavior" in e)),
+  default: {
+    behavior: "cancelled",
+  },
 });
 function b8e(e) {
   return e.type === "advisor_tool_result" || (e.type === "server_tool_use" && e.name === "advisor");

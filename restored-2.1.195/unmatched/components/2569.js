@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0563  score=0.4483  fileCov=0.0605
 // note: nearest: src/components/CustomSelect/select.tsx (0.0563); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xce = E(() => {
-  si();
-  $Ge();
-  Ye();
-  IZr = R(lt(), 1), ozi = R(rt(), 1), qU = R(se(), 1);
-});
+// [unwrapped __esm module Xce] deps: si, $Ge, Ye
+IZr = R(lt(), 1), ozi = R(rt(), 1), qU = R(se(), 1);
 function U0e(e) {
   let t = szi.c(9),
     {

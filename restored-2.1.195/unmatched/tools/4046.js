@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0506  score=0.3753  fileCov=0.0553
 // note: nearest: src/ink/components/Box.tsx (0.0506); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qnl = E(() => {
-  f6();
-  _m();
-  G1();
-  lf();
-  EI();
-  lC();
-});
 function Znl() {
   return null;
 }

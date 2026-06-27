@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.2486  score=0.459  fileCov=0.3517
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uHt = E(() => {
-  SC();
-  sre();
-  er();
-  Fh();
-  dn();
-});
 var fZl = {};
 _t(fZl, {
   call: () => call,

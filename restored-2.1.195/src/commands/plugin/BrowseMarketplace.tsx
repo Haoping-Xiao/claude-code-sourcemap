@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2898  score=0.5266  fileCov=0.3918
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var frr = E(() => {
-  _z = R(rt(), 1);
-});
+// [unwrapped __esm module frr]
+_z = R(rt(), 1);
 function O2l({
   error: e,
   setError: t,

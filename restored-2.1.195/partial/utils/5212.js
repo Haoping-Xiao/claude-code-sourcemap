@@ -4,35 +4,26 @@
 // class=partial  jaccard=0.0842  score=0.3233  fileCov=0.1023
 // note: low-confidence suggestion: node_modules/chokidar/esm/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sQt = E(() => {
-  Xr();
-  lH();
-  At();
-  Is();
-  Jt();
-  Z3o();
-  Qir();
-  QJt();
-  hGo = ve(() => H.object({
-    intervalSeconds: H.number().positive().default(30)
-  }).strict()), fZ = {
-    heartbeat: {
-      schema: hGo,
-      run: p7f,
-      needsOAuth: false
-    },
-    scheduled: {
-      schema: X3o,
-      run: Xec,
-      needsOAuth: true
-    },
-    remoteControl: {
-      schema: gGo,
-      run: Ctc,
-      needsOAuth: true
-    }
-  };
-});
+// [unwrapped __esm module sQt] deps: Xr, lH, At, Is, Jt, Z3o, Qir, QJt
+hGo = ve(() => H.object({
+  intervalSeconds: H.number().positive().default(30)
+}).strict()), fZ = {
+  heartbeat: {
+    schema: hGo,
+    run: p7f,
+    needsOAuth: false
+  },
+  scheduled: {
+    schema: X3o,
+    run: Xec,
+    needsOAuth: true
+  },
+  remoteControl: {
+    schema: gGo,
+    run: Ctc,
+    needsOAuth: true
+  }
+};
 function h7f(e) {
   return H.union([e, H.array(e)]).optional().transform(t => t === void 0 ? [] : Array.isArray(t) ? t : [t]);
 }

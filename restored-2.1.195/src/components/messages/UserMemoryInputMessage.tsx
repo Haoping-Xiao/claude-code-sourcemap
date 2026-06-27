@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3882  score=0.5741  fileCov=0.5451
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mil = E(() => {
-  Xa();
-  Ye();
-  co();
-  AN();
-  ((Vzn = R(lt(), 1)), (vN = R(se(), 1)));
-});
+// [unwrapped __esm module Mil] deps: Xa, Ye, co, AN
+((Vzn = R(lt(), 1)), (vN = R(se(), 1)));
 function Kof() {
   return HL(["Got it.", "Good to know.", "Noted."]);
 }

@@ -4,17 +4,16 @@
 // class=modified  jaccard=0.7657  score=1  fileCov=0.7657
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wPa = E(() => {
-  ((I0p = {
-    name: "alias",
-    description: "Create or list command aliases",
-    args: {
-      name: "definition",
-      description: "Alias definition in the form name=value",
-      isOptional: true,
-      isVariadic: true,
-    },
-  }),
-    (vPa = I0p));
-});
+// [unwrapped __esm module wPa]
+((I0p = {
+  name: "alias",
+  description: "Create or list command aliases",
+  args: {
+    name: "definition",
+    description: "Alias definition in the form name=value",
+    isOptional: true,
+    isVariadic: true,
+  },
+}),
+  (vPa = I0p));
 var x0p, CPa;

@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0658  score=0.6653  fileCov=0.0681
 // note: low-confidence suggestion: src/Tool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Zkn = E(() => {
-  Ls();
-  b1d = [PKr, tNi, nNi], Jkn = new Set(b1d);
-});
+// [unwrapped __esm module Zkn] deps: Ls
+b1d = [PKr, tNi, nNi], Jkn = new Set(b1d);
 function kke(e) {
   return e.filter(t => t.data?.type !== "hook_progress");
 }

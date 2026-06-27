@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0094  score=0.423  fileCov=0.0095
 // note: nearest: src/cli/print.ts (0.0094); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JBc = E(() => {
-  ft();
-  XRm = new Set(["interrupt", "set_permission_mode", "set_model", "set_max_thinking_tokens", "set_color", "mcp_toggle", "message_rated"]), JRm = new Set(["can_use_tool", "request_user_dialog", "elicitation"]);
-});
+// [unwrapped __esm module JBc] deps: ft
+XRm = new Set(["interrupt", "set_permission_mode", "set_model", "set_max_thinking_tokens", "set_color", "mcp_toggle", "message_rated"]), JRm = new Set(["can_use_tool", "request_user_dialog", "elicitation"]);
 function Ivt(e, t, n, r) {
   let o = {
     type: "permissionPromptTool",

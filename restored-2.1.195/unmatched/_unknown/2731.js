@@ -4,44 +4,42 @@
 // class=new  jaccard=0.0137  score=0.187  fileCov=0.0146
 // note: nearest: node_modules/@grpc/grpc-js/build/src/load-balancer-outlier-detection.js (0.0137); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gta = E(() => {
-  t2t();
-  dta = Symbol.for("@bufbuild/cel/resolver");
-  fta = class fta {
-    _groups;
-    [dta] = {};
-    constructor(e) {
-      this._groups = e;
+// [unwrapped __esm module gta] deps: t2t
+dta = Symbol.for("@bufbuild/cel/resolver");
+fta = class fta {
+  _groups;
+  [dta] = {};
+  constructor(e) {
+    this._groups = e;
+  }
+  *[Symbol.iterator]() {
+    for (let e of this._groups.values()) yield* e;
+  }
+  find(e) {
+    return this._groups.get(e);
+  }
+};
+mta = class mta {
+  _name;
+  _funcs;
+  constructor(e, t) {
+    this._name = e, this._funcs = t;
+  }
+  *[Symbol.iterator]() {
+    yield* this._funcs;
+  }
+  get name() {
+    return this._name;
+  }
+  call(e, t, n) {
+    n = n.map(r => Xea(r));
+    for (let r of this._funcs) {
+      let o = r.call(e, t, n);
+      if (o !== void 0) return o;
     }
-    *[Symbol.iterator]() {
-      for (let e of this._groups.values()) yield* e;
-    }
-    find(e) {
-      return this._groups.get(e);
-    }
-  };
-  mta = class mta {
-    _name;
-    _funcs;
-    constructor(e, t) {
-      this._name = e, this._funcs = t;
-    }
-    *[Symbol.iterator]() {
-      yield* this._funcs;
-    }
-    get name() {
-      return this._name;
-    }
-    call(e, t, n) {
-      n = n.map(r => Xea(r));
-      for (let r of this._funcs) {
-        let o = r.call(e, t, n);
-        if (o !== void 0) return o;
-      }
-      return;
-    }
-  };
-});
+    return;
+  }
+};
 function i2t(e = 0n, t = 0n) {
   let n = e * ero + BigInt(t);
   if (n > itp || n < atp) throw Error("duration out of range");

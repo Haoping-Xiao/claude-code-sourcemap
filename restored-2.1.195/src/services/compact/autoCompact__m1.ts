@@ -4,9 +4,6 @@
 // class=modified (alt of src/services/compact/autoCompact.ts)  jaccard=0.0454  score=0.112  fileCov=0.0709
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Wct = E(() => {
-  je();
-});
 function aia(e) {
   return typeof e === "number" && Number.isFinite(e) && e >= 0 && e < 1 ? e : null;
 }

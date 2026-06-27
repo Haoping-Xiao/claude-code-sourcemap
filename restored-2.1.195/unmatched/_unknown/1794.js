@@ -4,10 +4,9 @@
 // class=new  jaccard=0.0038  score=0.3121  fileCov=0.0039
 // note: nearest: src/services/api/claude.ts (0.0038); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nhi = E(() => {
-  d1 = [];
-  for (let e = 0; e < 256; ++e) d1.push((e + 256).toString(16).slice(1));
-});
+// [unwrapped __esm module Nhi]
+d1 = [];
+for (let e = 0; e < 256; ++e) d1.push((e + 256).toString(16).slice(1));
 function X_d(e, t, n) {
   if (zWr.randomUUID && !t && !e) return zWr.randomUUID();
   e = e || {};

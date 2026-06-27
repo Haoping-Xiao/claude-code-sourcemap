@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.5334  score=0.7373  fileCov=0.6586
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uza = E(() => {
-  Wqt = require("crypto");
-});
+// [unwrapped __esm module uza]
+Wqt = require("crypto");
 class I6 {
   codeVerifier;
   authCodeListener = null;

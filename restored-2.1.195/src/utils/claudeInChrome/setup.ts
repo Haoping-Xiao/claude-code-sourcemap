@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3773  score=0.5025  fileCov=0.6024
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PFl = E(() => {
-  At();
-  ((uBo = require("fs/promises")), (LFl = require("path")));
-});
+// [unwrapped __esm module PFl] deps: At
+((uBo = require("fs/promises")), (LFl = require("path")));
 var yBo = {};
 _t(yBo, {
   shouldSuppressChromeOffer: () => shouldSuppressChromeOffer,

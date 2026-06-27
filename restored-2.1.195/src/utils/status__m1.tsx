@@ -4,20 +4,15 @@
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0378  score=0.3289  fileCov=0.041
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ls = E(() => {
-  ft();
-  RE();
-  fn();
-  QO();
-  ote = {
-    bedrock: "Amazon Bedrock",
-    vertex: "Google Vertex AI",
-    foundry: "Microsoft Foundry",
-    anthropicAws: "Claude Platform on AWS",
-    mantle: "Amazon Bedrock (Mantle)",
-    gateway: "Cloud gateway",
-  };
-});
+// [unwrapped __esm module Ls] deps: ft, RE, fn, QO
+ote = {
+  bedrock: "Amazon Bedrock",
+  vertex: "Google Vertex AI",
+  foundry: "Microsoft Foundry",
+  anthropicAws: "Claude Platform on AWS",
+  mantle: "Amazon Bedrock (Mantle)",
+  gateway: "Cloud gateway",
+};
 function iI(e) {
   return e;
 }

@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var I1s = E(() => {
-  b$r();
-  vtt = R(by(), 1);
-});
+// [unwrapped __esm module I1s] deps: b$r
+vtt = R(by(), 1);

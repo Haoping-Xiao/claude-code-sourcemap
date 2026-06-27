@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0064  score=0.3487  fileCov=0.0065
 // note: nearest: src/commands/insights.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fh = E(() => {
-  Y1i = new Set(["Explore", "Plan"]);
-});
+// [unwrapped __esm module fh]
+Y1i = new Set(["Explore", "Plan"]);
 function Q1i(e) {
   if (e.length > 10000 /* 1e4 */) return null;
   for (let t of d1d) if (t.pattern.test(e)) return t;

@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.1916  score=0.2921  fileCov=0.3577
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d5e = E(() => {
-  Un();
-});
 function x1n(e) {
   if (e?.is_enabled === true) return true;
   return PPt(e?.disabled_reason ?? null);

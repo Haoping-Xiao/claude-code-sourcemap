@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0028  score=0.2419  fileCov=0.0028
 // note: nearest: src/screens/REPL.tsx (0.0028); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var y4t = E(() => {
-  Un();
-  U1();
-  q8();
-  xW();
-  vn();
-  sr();
-});
 var fda = "",
   mda = "";
 function ZW(e) {

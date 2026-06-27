@@ -4,20 +4,6 @@
 // class=partial  jaccard=0.2421  score=0.3856  fileCov=0.3943
 // note: low-confidence suggestion: src/components/LogoV2/Clawd.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ezn = E(() => {
-  Hp();
-  Un();
-  bsl();
-  mSe();
-  ole();
-  oo();
-  e1();
-  vy();
-  je();
-  At();
-  vn();
-  qd();
-});
 function rQ(e) {
   let t = hCo.c(26),
     n;

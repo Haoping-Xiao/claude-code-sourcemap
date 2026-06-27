@@ -4,9 +4,6 @@
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0216  score=0.3457  fileCov=0.0225
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Tic = E(() => {
-  sp();
-});
 async function* qjt(e, t, n, r, o, s, i = lp, a) {
   let l = {
     ...Td(void 0, t),

@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0523  score=1  fileCov=0.0523
 // note: nearest: node_modules/@anthropic-ai/bedrock-sdk/internal/utils/values.mjs (0.0523); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UHn = E(() => {
-  p0();
-});
 function FHn(e) {
   return e != null && typeof e === "object" && !Array.isArray(e);
 }

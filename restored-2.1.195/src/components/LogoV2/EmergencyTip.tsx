@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3006  score=0.5196  fileCov=0.4164
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var G5l = E(() => {
-  Ye();
-  gm();
-  ((F5l = R(lt(), 1)), (QKe = R(se(), 1)));
-});
+// [unwrapped __esm module G5l] deps: Ye, gm
+((F5l = R(lt(), 1)), (QKe = R(se(), 1)));
 function W5l() {
   let e = zXt.useMemo(t2o, []),
     t = zXt.useMemo(() => Dt().lastShownEmergencyTip, []),

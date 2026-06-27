@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0493  score=0.9632  fileCov=0.0494
 // note: nearest: node_modules/@azure/msal-common/dist/cache/CacheManager.mjs (0.0493); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var zrt = E(() => {
-  JR();
-  oT();
-  C0(); /*! @azure/msal-common v15.13.1 2025-10-29 */
-});
 function xgi(e, t) {
   return !!e && !!t && e === t.split(".")[1];
 }

@@ -3,14 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nor = E(() => {
-  ag();
-  co();
-  Ver();
-  Mp();
-  KKt();
-  Zrr();
-});
 var tWl = {};
 _t(tWl, {
   call: () => call

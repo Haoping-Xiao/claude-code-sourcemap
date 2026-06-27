@@ -4,26 +4,18 @@
 // class=modified (alt of src/Task.ts)  jaccard=0.1646  score=0.3146  fileCov=0.2567
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iKe = E(() => {
-  ft();
-  FQn();
-  iKn();
-  vX();
-  es();
-  sr();
-  g0();
-  DOo = {
-    local_agent: "subagent",
-    local_workflow: "workflow",
-    local_bash: "shell",
-    monitor_mcp: "monitor",
-    monitor_ws: "monitor",
-    mcp_task: "MCP task",
-    in_process_teammate: "teammate",
-    dream: "dream",
-    remote_agent: "cloud session",
-  };
-});
+// [unwrapped __esm module iKe] deps: ft, FQn, iKn, vX, es, sr, g0
+DOo = {
+  local_agent: "subagent",
+  local_workflow: "workflow",
+  local_bash: "shell",
+  monitor_mcp: "monitor",
+  monitor_ws: "monitor",
+  mcp_task: "MCP task",
+  in_process_teammate: "teammate",
+  dream: "dream",
+  remote_agent: "cloud session",
+};
 function u7t(e) {
   let t = typeof e === "string" ? Buffer.from(e, "utf8") : e,
     n = Buffer.allocUnsafe(aKe + t.length);

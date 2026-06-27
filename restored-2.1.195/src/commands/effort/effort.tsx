@@ -4,44 +4,41 @@
 // class=modified  jaccard=0.1503  score=0.1745  fileCov=0.5195
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wQl = E(() => {
-  fh();
-  fn();
-  ((J6f = {
-    type: "prompt",
-    description: "Set up Claude Code's status line UI",
-    contentLength: 0,
-    aliases: [],
-    name: "statusline",
-    progressMessage: "setting up statusLine",
-    allowedTools: [ss, "Read(~/**)", "Edit(~/.claude/settings.json)"],
-    source: "builtin",
-    disableNonInteractive: true,
-    disableModelInvocation: true,
-    requires: {
-      workspace: true,
-    },
-    async getPromptForCommand(e) {
-      if (Tl())
-        return [
-          {
-            type: "text",
-            text: `Tell the user: /statusline is unavailable in safe mode. The setup flow saves the status line to ~/.claude/settings.json, but safe mode only displays the managed (policy) status line, so the result would never render. To set up a status line, ${qH()} and run /statusline again.
-
-Do not run the statusline-setup agent and do not edit any settings files. Simply inform the user.`,
-          },
-        ];
-      let t = e.trim() || "Configure my statusLine from my shell PS1 configuration";
+// [unwrapped __esm module wQl] deps: fh, fn
+((J6f = {
+  type: "prompt",
+  description: "Set up Claude Code's status line UI",
+  contentLength: 0,
+  aliases: [],
+  name: "statusline",
+  progressMessage: "setting up statusLine",
+  allowedTools: [ss, "Read(~/**)", "Edit(~/.claude/settings.json)"],
+  source: "builtin",
+  disableNonInteractive: true,
+  disableModelInvocation: true,
+  requires: {
+    workspace: true,
+  },
+  async getPromptForCommand(e) {
+    if (Tl())
       return [
         {
           type: "text",
-          text: `Create an ${ss} with subagent_type "statusline-setup" and the prompt "${t}"`,
+          text: `Tell the user: /statusline is unavailable in safe mode. The setup flow saves the status line to ~/.claude/settings.json, but safe mode only displays the managed (policy) status line, so the result would never render. To set up a status line, ${qH()} and run /statusline again.
+
+Do not run the statusline-setup agent and do not edit any settings files. Simply inform the user.`,
         },
       ];
-    },
-  }),
-    (vQl = J6f));
-});
+    let t = e.trim() || "Configure my statusLine from my shell PS1 configuration";
+    return [
+      {
+        type: "text",
+        text: `Create an ${ss} with subagent_type "statusline-setup" and the prompt "${t}"`,
+      },
+    ];
+  },
+}),
+  (vQl = J6f));
 var MQl = {};
 _t(MQl, {
   showCurrentEffort: () => showCurrentEffort,

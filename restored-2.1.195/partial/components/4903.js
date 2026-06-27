@@ -4,18 +4,9 @@
 // class=partial  jaccard=0.1242  score=1  fileCov=0.1242
 // note: low-confidence suggestion: src/utils/collapseTeammateShutdowns.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var v5l = E(() => {
-  Ye();
-  ZPe();
-  co();
-  d_t();
-  y5l();
-  qXt();
-  S5l();
-  lEe();
-  E5l = R(lt(), 1), A5l = R(rt(), 1), FHe = R(se(), 1);
-  T5l = A5l.memo(o4f, l4f);
-});
+// [unwrapped __esm module v5l] deps: Ye, ZPe, co, d_t, y5l, qXt, S5l, lEe
+E5l = R(lt(), 1), A5l = R(rt(), 1), FHe = R(se(), 1);
+T5l = A5l.memo(o4f, l4f);
 function bor(e) {
   return e.type === "attachment" && u4f.has(e.attachment.type);
 }

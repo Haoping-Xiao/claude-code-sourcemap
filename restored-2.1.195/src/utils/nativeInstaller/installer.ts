@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.4171  score=0.679  fileCov=0.5196
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IAo = E(() => {
-  Pw();
-  je();
-  fn();
-  At();
-  ys();
-  YS();
-  vn();
-  Jt();
-  Qqt = require("path");
-});
+// [unwrapped __esm module IAo] deps: Pw, je, fn, At, ys, YS, vn, Jt
+Qqt = require("path");
 function aoe() {
   let e = Oe.platform,
     t = "x64";

@@ -4,13 +4,12 @@
 // class=unchanged (alt of src/commands/ant-trace/index.js)  jaccard=1  score=1  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rXl = E(() => {
-  ((nXl = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub",
-  }),
-    (S4o = nXl),
-    (Qsr = nXl));
-});
+// [unwrapped __esm module rXl]
+((nXl = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub",
+}),
+  (S4o = nXl),
+  (Qsr = nXl));
 var n8f, E4o;

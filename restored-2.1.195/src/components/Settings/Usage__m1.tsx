@@ -4,10 +4,8 @@
 // class=modified (alt of src/components/Settings/Usage.tsx)  jaccard=0.1206  score=0.2765  fileCov=0.1762
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var R6l = E(() => {
-  $7t();
-  k6l = R(se(), 1);
-});
+// [unwrapped __esm module R6l] deps: $7t
+k6l = R(se(), 1);
 var $6l = {};
 _t($6l, {
   formatRateLimits: () => formatRateLimits,

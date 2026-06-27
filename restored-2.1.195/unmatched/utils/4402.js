@@ -4,11 +4,6 @@
 // class=new  jaccard=0.044  score=0.5433  fileCov=0.0457
 // note: nearest: src/tools.ts (0.044); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MAl = E(() => {
-  fn();
-  CAl();
-  DAl();
-});
 function fLo(e) {
   let t = e.toLowerCase();
   if (!t_f.includes(t)) return null;

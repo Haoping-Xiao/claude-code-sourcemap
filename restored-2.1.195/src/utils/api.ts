@@ -4,73 +4,28 @@
 // class=modified  jaccard=0.3116  score=0.6031  fileCov=0.3919
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var X6 = E(() => {
-  IB();
-  wr();
-  sa();
-  Lo();
-  ft();
-  rit();
-  aR();
-  YWe();
-  dr();
-  er();
-  BE();
-  QMo();
-  fh();
-  MMe();
-  nC();
-  lf();
-  u_();
-  Ao();
-  Zf();
-  G4();
-  EI();
-  lC();
-  f6();
-  vAe();
-  wer();
-  Yf();
-  j9t();
-  fn();
-  k0();
-  Oot();
-  jv();
-  Un();
-  kt();
-  T3e();
-  Vw();
-  qRe();
-  je();
-  Izt();
-  GNt();
-  Bot();
-  LMe();
-  K$e();
-  _m();
-  qfn();
-  ((zYe = require("os")),
-    (cac = require("path")),
-    (mtm = (f4(), ro(URe)).BRIEF_PROACTIVE_SECTION),
-    (oqo = (l3(), ro(CQ))),
-    (rNe = {
-      fable: "claude-fable-5",
-      opus: "claude-opus-4-8",
-      sonnet: "claude-sonnet-4-6",
-      haiku: "claude-haiku-4-5-20251001",
-    }));
-  sqo = Cn(() => {
-    let e = Oe.CLAUDE_CODE_OWNERSHIP_FRAME,
-      t = e || at("tengu_walnut_prism", false);
-    if (t) T(`ownership_frame_arm_active source=${e ? "env" : "growthbook"}`);
-    return t;
-  });
-  Ntm = Cn(() => {
-    let e = Oe.CLAUDE_CODE_ACT_DONT_REDERIVE,
-      t = e ?? at("tengu_cedar_lantern", true);
-    if (t) T(`act_dont_rederive_arm_active source=${e !== void 0 ? "env" : "growthbook"}`);
-    return t;
-  });
+// [unwrapped __esm module X6] deps: IB, wr, sa, Lo, ft, rit, aR, YWe, dr, er, BE, QMo, fh, MMe, nC, lf, u_, Ao, Zf, G4, EI, lC, f6, vAe, wer, Yf, j9t, fn, k0, Oot, jv, Un, kt, T3e, Vw, qRe, je, Izt, GNt, Bot, LMe, K$e, _m, qfn
+((zYe = require("os")),
+  (cac = require("path")),
+  (mtm = (f4(), ro(URe)).BRIEF_PROACTIVE_SECTION),
+  (oqo = (l3(), ro(CQ))),
+  (rNe = {
+    fable: "claude-fable-5",
+    opus: "claude-opus-4-8",
+    sonnet: "claude-sonnet-4-6",
+    haiku: "claude-haiku-4-5-20251001",
+  }));
+sqo = Cn(() => {
+  let e = Oe.CLAUDE_CODE_OWNERSHIP_FRAME,
+    t = e || at("tengu_walnut_prism", false);
+  if (t) T(`ownership_frame_arm_active source=${e ? "env" : "growthbook"}`);
+  return t;
+});
+Ntm = Cn(() => {
+  let e = Oe.CLAUDE_CODE_ACT_DONT_REDERIVE,
+    t = e ?? at("tengu_cedar_lantern", true);
+  if (t) T(`act_dont_rederive_arm_active source=${e !== void 0 ? "env" : "growthbook"}`);
+  return t;
 });
 function Qtm(e) {
   return ((dac ??= new Map(Object.values(yc).map((t) => [mo(t.firstParty), t]))), dac.get(mo(e)));

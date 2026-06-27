@@ -3,12 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LCo = E(() => {
-  Xa();
-  Ye();
-  AN();
-  Usl = R(lt(), 1), UMe = R(se(), 1);
-});
+// [unwrapped __esm module LCo] deps: Xa, Ye, AN
+Usl = R(lt(), 1), UMe = R(se(), 1);
 function qpe() {
   return (J2.CLAUDE_REPL_VERBOSE ?? false) && LI();
 }

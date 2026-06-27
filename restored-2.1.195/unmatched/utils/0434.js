@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ghe = E(() => {
-  zwt();
-  Gve();
-  hIr();
-  xin();
-  cv = Hau;
-});
+// [unwrapped __esm module ghe] deps: zwt, Gve, hIr, xin
+cv = Hau;
 var kfs;

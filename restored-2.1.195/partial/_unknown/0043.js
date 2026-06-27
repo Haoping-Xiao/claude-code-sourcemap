@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1214  score=1  fileCov=0.1214
 // note: low-confidence suggestion: node_modules/lodash-es/_Hash.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mts = E(() => {
-  $wt();
-  fts = h9c;
-});
+// [unwrapped __esm module mts] deps: $wt
+fts = h9c;
 function GXe(e) {
   var t = -1,
     n = e == null ? 0 : e.length;

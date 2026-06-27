@@ -4,25 +4,8 @@
 // class=partial  jaccard=0.1108  score=0.2085  fileCov=0.1913
 // note: low-confidence suggestion: src/components/AutoModeOptInDialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MPc = E(() => {
-  ft();
-  gq();
-  ft();
-  rSe();
-  id();
-  uo();
-  yC();
-  pMe();
-  WW();
-  F2t();
-  qYo();
-  N8();
-  je();
-  bm();
-  co();
-  oje();
-  yvt = R(rt(), 1), rIm = (KWe(), ro(zWe));
-});
+// [unwrapped __esm module MPc] deps: ft, gq, ft, rSe, id, uo, yC, pMe, WW, F2t, qYo, N8, je, bm, co, oje
+yvt = R(rt(), 1), rIm = (KWe(), ro(zWe));
 var NPc = {};
 _t(NPc, {
   AutoDefaultNudgeDialog: () => AutoDefaultNudgeDialog

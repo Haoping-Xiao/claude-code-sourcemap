@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var i3i = E(() => {
-  CBt();
-  pXr();
-  QRn();
-});
 function fXr(e) {
   return e === 12288 || e >= 65281 && e <= 65376 || e >= 65504 && e <= 65510;
 }

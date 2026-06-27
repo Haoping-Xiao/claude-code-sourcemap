@@ -4,98 +4,93 @@
 // class=modified  jaccard=0.4856  score=0.6162  fileCov=0.6962
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qbl = E(() => {
-  Xr();
-  ii();
-  bk();
-  Xbl();
-  ((uhf = ve(() => H.strictObject({}))),
-    (dhf = ve(() =>
-      H.object({
-        tasks: H.array(
-          H.object({
-            id: H.string(),
-            subject: H.string(),
-            status: rVe(),
-            owner: H.string().optional(),
-            blockedBy: H.array(H.string()),
-          }),
-        ),
-      }),
-    )),
-    (Jbl = ti({
-      name: yL,
-      searchHint: "list all tasks",
-      maxResultSizeChars: 100000 /* 1e5 */,
-      async description() {
-        return Kbl;
-      },
-      async prompt() {
-        return Ybl();
-      },
-      get inputSchema() {
-        return uhf();
-      },
-      get outputSchema() {
-        return dhf();
-      },
-      userFacingName() {
-        return "TaskList";
-      },
-      shouldDefer: true,
-      isEnabled() {
-        return EH();
-      },
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      renderToolUseMessage() {
-        return null;
-      },
-      async call() {
-        let e = yF(),
-          t = (await W4(e)).filter((o) => !o.metadata?._internal),
-          n = new Set(t.filter((o) => o.status === "completed").map((o) => o.id));
-        return {
-          data: {
-            tasks: t.map((o) => ({
-              id: o.id,
-              subject: o.subject,
-              status: o.status,
-              owner: o.owner,
-              blockedBy: o.blockedBy.filter((s) => !n.has(s)),
-            })),
-          },
-        };
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        let { tasks: n } = e;
-        if (n.length === 0)
-          return {
-            tool_use_id: t,
-            type: "tool_result",
-            content: "No tasks found",
-          };
-        let r = n.map((o) => {
-          let s = o.owner ? ` (${o.owner})` : "",
-            i =
-              o.blockedBy.length > 0
-                ? ` [blocked by ${o.blockedBy.map((a) => `#${a}`).join(", ")}]`
-                : "";
-          return `#${o.id} [${o.status}] ${o.subject}${s}${i}`;
-        });
+// [unwrapped __esm module Qbl] deps: Xr, ii, bk, Xbl
+((uhf = ve(() => H.strictObject({}))),
+  (dhf = ve(() =>
+    H.object({
+      tasks: H.array(
+        H.object({
+          id: H.string(),
+          subject: H.string(),
+          status: rVe(),
+          owner: H.string().optional(),
+          blockedBy: H.array(H.string()),
+        }),
+      ),
+    }),
+  )),
+  (Jbl = ti({
+    name: yL,
+    searchHint: "list all tasks",
+    maxResultSizeChars: 100000 /* 1e5 */,
+    async description() {
+      return Kbl;
+    },
+    async prompt() {
+      return Ybl();
+    },
+    get inputSchema() {
+      return uhf();
+    },
+    get outputSchema() {
+      return dhf();
+    },
+    userFacingName() {
+      return "TaskList";
+    },
+    shouldDefer: true,
+    isEnabled() {
+      return EH();
+    },
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    renderToolUseMessage() {
+      return null;
+    },
+    async call() {
+      let e = yF(),
+        t = (await W4(e)).filter((o) => !o.metadata?._internal),
+        n = new Set(t.filter((o) => o.status === "completed").map((o) => o.id));
+      return {
+        data: {
+          tasks: t.map((o) => ({
+            id: o.id,
+            subject: o.subject,
+            status: o.status,
+            owner: o.owner,
+            blockedBy: o.blockedBy.filter((s) => !n.has(s)),
+          })),
+        },
+      };
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      let { tasks: n } = e;
+      if (n.length === 0)
         return {
           tool_use_id: t,
           type: "tool_result",
-          content: r.join(`
-`),
+          content: "No tasks found",
         };
-      },
-    })));
-});
+      let r = n.map((o) => {
+        let s = o.owner ? ` (${o.owner})` : "",
+          i =
+            o.blockedBy.length > 0
+              ? ` [blocked by ${o.blockedBy.map((a) => `#${a}`).join(", ")}]`
+              : "";
+        return `#${o.id} [${o.status}] ${o.subject}${s}${i}`;
+      });
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content: r.join(`
+`),
+      };
+    },
+  })));
 var Zbl = {};
 _t(Zbl, {
   isWorktreeModeEnabled: () => isWorktreeModeEnabled,

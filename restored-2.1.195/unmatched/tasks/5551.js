@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0045  score=0.4056  fileCov=0.0045
 // note: nearest: src/screens/REPL.tsx (0.0045); dir inferred from dep-graph -> tasks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var QEc = E(() => {
-  S_();
-});
 function eAc(e) {
   let t = ks(),
     n = VTt.useSyncExternalStore(HSe, Rut),

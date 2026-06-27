@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0342  score=0.0925  fileCov=0.0514
 // note: nearest: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js (0.0342); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _os = E(() => {
-  tIt();
-  uee();
-});
 function cUe(e, t) {
   let n = e.authentication.credentials_path ?? null,
     r = (e.base_url || t.baseURL).replace(/\/+$/, ""),

@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.4426  score=0.8181  fileCov=0.4909
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Tnt = E(() => {
-  kt();
-  je();
-  Mm();
-  At();
-  Jt();
-});
 function BSn() {
   if (Oe.DISABLE_COST_WARNINGS) return false;
   let e = bo();

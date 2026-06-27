@@ -4,13 +4,11 @@
 // class=modified (alt of src/services/tips/tipRegistry.ts)  jaccard=0.0295  score=0.2519  fileCov=0.0324
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kRc = E(() => {
-  Un();
-  vwm = {
-    enable_shortcut_tip: false,
-    enable_contextual_tip: false,
-  };
-});
+// [unwrapped __esm module kRc] deps: Un
+vwm = {
+  enable_shortcut_tip: false,
+  enable_contextual_tip: false,
+};
 async function DRc() {
   if (hfr !== void 0) return hfr;
   return ((hfr = await wP()), hfr);

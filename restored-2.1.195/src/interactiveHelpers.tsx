@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.0626  score=0.1693  fileCov=0.0903
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var y7o = E(() => {
-  Ye();
-  Fy();
-  vi();
-  ((G$c = R(lt(), 1)), (rK = R(se(), 1)));
-});
+// [unwrapped __esm module y7o] deps: Ye, Fy, vi
+((G$c = R(lt(), 1)), (rK = R(se(), 1)));
 function yxm() {
   gn((e) => ({
     ...e,

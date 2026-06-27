@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2109  score=0.8186  fileCov=0.2213
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mwo = E(() => {
-  er();
-  Ao();
-});
 function Ntf(e) {
   return Erl.createHash("sha256").update(e).digest("hex");
 }

@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.3783  score=0.5047  fileCov=0.6016
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GAc = E(() => {
-  si();
-  Ye();
-  uo();
-  QOe();
-  aE();
-  y3();
-  sr();
-  mE();
-  Bs();
-  LW();
-  Ko();
-  vMe();
-  PWt();
-  UAc();
-  _pr();
-  ((FAc = R(lt(), 1)), (itn = R(rt(), 1)), (w_ = R(se(), 1)));
-});
+// [unwrapped __esm module GAc] deps: si, Ye, uo, QOe, aE, y3, sr, mE, Bs, LW, Ko, vMe, PWt, UAc, _pr
+((FAc = R(lt(), 1)), (itn = R(rt(), 1)), (w_ = R(se(), 1)));
 function qAc(e) {
   let t = WAc.c(24),
     {

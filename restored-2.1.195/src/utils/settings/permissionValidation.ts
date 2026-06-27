@@ -4,45 +4,44 @@
 // class=modified  jaccard=0.3675  score=0.5526  fileCov=0.523
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xws = E(() => {
-  imn = {
-    filePatternTools: ["Read", "Write", "Edit", "Glob", "NotebookRead", "NotebookEdit", "Cd"],
-    bashPrefixTools: ["Bash"],
-    customValidation: {
-      WebSearch: (e) => {
-        if (e.includes("*") || e.includes("?"))
-          return {
-            valid: false,
-            error: "WebSearch does not support wildcards",
-            suggestion: "Use exact search terms without * or ?",
-            examples: ["WebSearch(claude ai)", "WebSearch(typescript tutorial)"],
-          };
+// [unwrapped __esm module xws]
+imn = {
+  filePatternTools: ["Read", "Write", "Edit", "Glob", "NotebookRead", "NotebookEdit", "Cd"],
+  bashPrefixTools: ["Bash"],
+  customValidation: {
+    WebSearch: (e) => {
+      if (e.includes("*") || e.includes("?"))
         return {
-          valid: true,
+          valid: false,
+          error: "WebSearch does not support wildcards",
+          suggestion: "Use exact search terms without * or ?",
+          examples: ["WebSearch(claude ai)", "WebSearch(typescript tutorial)"],
         };
-      },
-      WebFetch: (e) => {
-        if (e.includes("://") || e.startsWith("http"))
-          return {
-            valid: false,
-            error: "WebFetch permissions use domain format, not URLs",
-            suggestion: 'Use "domain:hostname" format',
-            examples: ["WebFetch(domain:example.com)", "WebFetch(domain:github.com)"],
-          };
-        if (!e.startsWith("domain:"))
-          return {
-            valid: false,
-            error: 'WebFetch permissions must use "domain:" prefix',
-            suggestion: 'Use "domain:hostname" format',
-            examples: ["WebFetch(domain:example.com)", "WebFetch(domain:*.google.com)"],
-          };
-        return {
-          valid: true,
-        };
-      },
+      return {
+        valid: true,
+      };
     },
-  };
-});
+    WebFetch: (e) => {
+      if (e.includes("://") || e.startsWith("http"))
+        return {
+          valid: false,
+          error: "WebFetch permissions use domain format, not URLs",
+          suggestion: 'Use "domain:hostname" format',
+          examples: ["WebFetch(domain:example.com)", "WebFetch(domain:github.com)"],
+        };
+      if (!e.startsWith("domain:"))
+        return {
+          valid: false,
+          error: 'WebFetch permissions must use "domain:" prefix',
+          suggestion: 'Use "domain:hostname" format',
+          examples: ["WebFetch(domain:example.com)", "WebFetch(domain:*.google.com)"],
+        };
+      return {
+        valid: true,
+      };
+    },
+  },
+};
 function kws(e, t) {
   let n = 0,
     r = t - 1;

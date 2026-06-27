@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0204  score=0.1412  fileCov=0.0233
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0204); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xYn = E(() => {
-  kt();
-  CYn();
-  QH();
-  odf = ["userSettings", "projectSettings", "localSettings", "flagSettings", "cliArg", "session"];
-});
+// [unwrapped __esm module xYn] deps: kt, CYn, QH
+odf = ["userSettings", "projectSettings", "localSettings", "flagSettings", "cliArg", "session"];
 function udf(e) {
   return cdf.has(e);
 }

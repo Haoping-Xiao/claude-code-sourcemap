@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0009  score=0.0601  fileCov=0.001
 // note: nearest: src/main.tsx (0.0009); dir inferred from dep-graph -> utils; 11 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var j1i = E(() => {
-  t1d = /[ \t\n\v\f\r'"]/;
-});
+// [unwrapped __esm module j1i]
+t1d = /[ \t\n\v\f\r'"]/;
 var K1i = {};
 _t(K1i, {
   subprocessEnv: () => subprocessEnv,

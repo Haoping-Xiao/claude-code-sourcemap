@@ -4,26 +4,8 @@
 // class=new  jaccard=0.0248  score=0.4166  fileCov=0.0257
 // note: nearest: src/ink/styles.ts (0.0248); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bsl = E(() => {
-  pre();
-  xjt();
-  Xa();
-  _i();
-  Ye();
-  tP();
-  wr();
-  co();
-  uzn();
-  Ao();
-  bjr();
-  Q8();
-  Lyt();
-  dzn();
-  AN();
-  ql();
-  Osl();
-  D8t = R(lt(), 1), xzn = R(rt(), 1), ld = R(se(), 1);
-});
+// [unwrapped __esm module Bsl] deps: pre, xjt, Xa, _i, Ye, tP, wr, co, uzn, Ao, bjr, Q8, Lyt, dzn, AN, ql, Osl
+D8t = R(lt(), 1), xzn = R(rt(), 1), ld = R(se(), 1);
 function Rzn(e) {
   let t = Usl.c(7),
     {

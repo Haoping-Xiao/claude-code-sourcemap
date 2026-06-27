@@ -4,452 +4,328 @@
 // class=modified  jaccard=0.2224  score=0.3996  fileCov=0.3341
 // note: deminified; 132 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Zf = E(() => {
-  fn();
-  PLl();
-  WLl();
-  VLl();
-  uDl();
-  dDl();
-  LDl();
-  UDl();
-  rPl();
-  cPl();
-  HPl();
-  UOo();
-  VPl();
-  YPl();
-  nMl();
-  s1l();
-  f1l();
-  v1l();
-  sNl();
-  lBl();
-  xBl();
-  LBl();
-  VBl();
-  rUl();
-  sUl();
-  aUl();
-  gUl();
-  AUl();
-  TUl();
-  wUl();
-  vFl();
-  kFl();
-  RFl();
-  u4l();
-  _Gl();
-  SGl();
-  $Gl();
-  KGl();
-  oWl();
-  VVl();
-  JVl();
-  n9l();
-  X2o();
-  k9l();
-  L9l();
-  P9l();
-  W9l();
-  e8l();
-  s8l();
-  s6l();
-  E6l();
-  T6l();
-  w6l();
-  I6l();
-  sYe();
-  N6l();
-  z6l();
-  ozl();
-  lH();
-  Ire();
-  Dzl();
-  Ozl();
-  Vzl();
-  Zzl();
-  oKl();
-  DKl();
-  jKl();
-  WKl();
-  KKl();
-  H7l();
-  k7l();
-  N7l();
-  F7l();
-  W7l();
-  J7l();
-  Z7l();
-  tXl();
-  rXl();
-  oXl();
-  iXl();
-  lXl();
-  uXl();
-  vXl();
-  DXl();
-  $Xl();
-  BXl();
-  VXl();
-  KXl();
-  vn();
-  At();
-  LMe();
-  je();
-  II();
-  dn();
-  rq();
-  a8t();
-  X4();
-  AA();
-  glt();
-  vYt();
-  Qi();
-  ft();
-  oo();
-  Ls();
-  JXl();
-  rir();
-  EJl();
-  xJl();
-  KJl();
-  iQl();
-  o3o();
-  qyt();
-  hQl();
-  TQl();
-  wQl();
-  UQl();
-  VQl();
-  KQl();
-  XQl();
-  QQl();
-  eZl();
-  vf();
-  dr();
-  ((K1e = require("path")),
-    (aZf = (rZl(), ro(nZl)).default),
-    (Noc = (hZl(), ro(gZl)).default),
-    (Zar = (Xtc(), ro(Ytc)).default),
-    (Boc = (fnc(), ro(pnc)).default),
-    (jHt = (gnc(), ro(mnc)).default),
-    (Koc = (vnc(), ro(Tnc))),
-    (lZf = Koc.default),
-    (FWo = Koc.goalNonInteractive),
-    (Uoc = (Lnc(), ro(Rnc)).default),
-    (cZf = (Unc(), ro(Bnc)).default),
-    (uZf = []),
-    (Foc = (znc(), ro(Vnc)).default),
-    (tlr = Yoc?.default ?? null),
-    (joc = Yoc?.prideNonInteractive ?? null),
-    (Goc = (boc(), ro(_oc)).default),
-    (Xoc = (voc(), ro(Toc))),
-    (Woc = Xoc?.default ?? null),
-    (qoc = Xoc?.stopNonInteractive ?? null),
-    (dZf = {
-      type: "prompt",
-      name: "insights",
-      description: "Generate a report analyzing your Claude Code sessions",
-      contentLength: 0,
-      progressMessage: "analyzing your sessions",
-      source: "builtin",
-      disableModelInvocation: !0,
-      requires: {
-        workspace: !0,
-      },
-      async getPromptForCommand(e, t) {
-        let n = (await Promise.resolve().then(() => ($oc(), Moc))).default;
-        if (n.type !== "prompt") throw Error("unreachable");
-        return n.getPromptForCommand(e, t);
-      },
-    }),
-    (pZf = [
-      VOo,
-      qLl,
-      cBo,
-      v6l,
-      qPl,
-      tOo,
-      iUl,
-      ...(nlr ? [nlr] : []),
-      Q7l,
-      ...(rlr ? [rlr] : []),
-      b4o,
-      _4o,
-      S4o,
-      Qsr,
-      E4o,
-      bGl,
-      D9l,
-      R9l,
-      sXl,
-      aXl,
-      cXl,
-      R4o,
-      YQl,
-      JQl,
-      ZQl,
-      OWo,
-    ].filter(Boolean)),
-    (fZf = [WQt, NWo, BWo, UWo].filter(Boolean)),
-    (qQt = Cn(() => [
-      DLl,
-      qXl,
-      A7l,
-      tMl,
-      zKl,
-      GKl,
-      eOo,
-      BDl,
-      LXl,
-      Wer,
-      kOo,
-      ...(tlr ? [tlr] : []),
-      Qer,
-      o1l,
-      sNo,
-      d1l,
-      p1l,
-      LOo,
-      FPl,
-      dNo,
-      pNo,
-      oNl,
-      ...(Goc && Kx() ? [Goc] : []),
-      ...(Woc && Kx() ? [Woc] : []),
-      XNo,
-      f3o,
-      g3o,
-      P4o,
-      qjo,
-      h3o,
-      X7l,
-      oBo,
-      nUl,
-      oUl,
-      mUl,
-      TFl,
-      xFl,
-      c4l,
-      IBl,
-      mFo,
-      tBo,
-      t3o,
-      sQl,
-      x7l,
-      TFo,
-      Ksr,
-      Ysr,
-      wFo,
-      qVl,
-      XVl,
-      t9l,
-      J2o,
-      Z9l,
-      o8l,
-      vQl,
-      C4o,
-      Rjo,
-      rzl,
-      yOo,
-      rsr,
-      v9l,
-      _9l,
-      G7l,
-      H6l,
-      wjo,
-      G9l,
-      B4o,
-      N1e,
-      Loe,
-      ICo,
-      xCo,
-      kCo,
-      HQl,
-      gQl,
-      Cjo,
-      Ijo,
-      dZf,
-      cZf,
-      aZf,
-      ...(Noc ? [Noc] : []),
-      ...(Zar && lce() ? [Zar] : []),
-      ...(Boc ? [Boc] : []),
-      ...(jHt ? [jHt] : []),
-      ...(GHt ? [GHt] : []),
-      Lzl,
-      Ujo,
-      SFo,
-      Jjo,
-      lZf,
-      FWo,
-      LKl,
-      FKl,
-      j4o,
-      TXl,
-      HUl(),
-      EUl(),
-      ...(!g7() || fr() === "gateway" ? [vUl] : []),
-      Vjo,
-      ...(elr ? [elr] : []),
-      o6l,
-      GLl,
-      ...[],
-      ...uZf,
-      S6l,
-      ...(Uoc ? [Uoc] : []),
-      ...(Foc ? [Foc] : []),
-      I4o,
-      ...(WQt ? [WQt] : []),
-      ...(NWo ? [NWo] : []),
-      ...(BWo ? [BWo] : []),
-      ...(UWo ? [UWo] : []),
-      ...zXl,
-      ...[],
-    ])),
-    (mQ = Cn(() => new Set(qQt().flatMap((e) => [e.name, ...(e.aliases ?? [])])))),
-    (Y8t = Cn(() => new Set([...mQ(), ...k4o().map((e) => e.name)]))));
-  ((Voc = (MWo(), ro(PWo)).getWorkflowCommands), (gZf = (MWo(), ro(PWo)).invalidateWorkflowCache));
-  olr = Cn(async (e) => {
-    let t = performance.now(),
-      [{ skillDirCommands: n, pluginSkills: r, bundledSkills: o, builtinPluginSkills: s }, i, a] =
-        await Promise.all([
-          mZf(e).then((c) => (Zc("skills_load_ms", performance.now() - t, t), c)),
-          Vze(),
-          Voc ? Voc(e) : Promise.resolve([]),
-        ]),
-      l = yQ([...n, ...a, ...i, ...r, ...o, ...s, ...qQt()]);
-    return (
-      Z0e(
-        "command",
-        l
-          .map((c) => ({
-            name: c.name,
-            source: c.type === "prompt" ? c.source : "builtin",
-          }))
-          .reverse(),
-        {
-          resolves: !0,
-        },
-      ),
-      l
-    );
-  }, GWo);
-  if (!(olr.cache instanceof Map)) olr.cache = new Map();
-  _Zf = new Set();
-  aC = Cn(async (e) => {
-    if (N2()) return [];
-    return (await mA(e)).filter(Y1e);
-  }, GWo);
-  if (!(aC.cache instanceof Map)) aC.cache = new Map();
-  Lue = Cn(async (e) => {
-    if (N2()) return [];
-    try {
-      let n = (await mA(e)).filter(
-        (r) =>
-          r.type === "prompt" &&
-          r.source !== "builtin" &&
-          !Poe(r) &&
-          (r.hasUserSpecifiedDescription || r.whenToUse) &&
-          (r.loadedFrom === "skills" ||
-            r.loadedFrom === "plugin" ||
-            r.loadedFrom === "bundled" ||
-            r.disableModelInvocation),
-      );
-      return (xe("cmd_load"), n);
-    } catch (t) {
-      return (
-        ke(Zr(t)),
-        It("cmd_load", "cmd_load_slash_tool_skills_failed"),
-        T("Returning empty skills array due to load failure"),
-        []
-      );
-    }
-  }, GWo);
-  if (!(Lue.cache instanceof Map)) Lue.cache = new Map();
-  ((ilr = new Set([
-    J2o,
-    P4o,
-    oBo,
-    Rjo,
-    kOo,
-    ...(tlr ? [tlr] : []),
-    Cjo,
-    LOo,
-    yOo,
+// [unwrapped __esm module Zf] deps: fn, PLl, WLl, VLl, uDl, dDl, LDl, UDl, rPl, cPl, HPl, UOo, VPl, YPl, nMl, s1l, f1l, v1l, sNl, lBl, xBl, LBl, VBl, rUl, sUl, aUl, gUl, AUl, TUl, wUl, vFl, kFl, RFl, u4l, _Gl, SGl, $Gl, KGl, oWl, VVl, JVl, n9l, X2o, k9l, L9l, P9l, W9l, e8l, s8l, s6l, E6l, T6l, w6l, I6l, sYe, N6l, z6l, ozl, lH, Ire, Dzl, Ozl, Vzl, Zzl, oKl, DKl, jKl, WKl, KKl, H7l, k7l, N7l, F7l, W7l, J7l, Z7l, tXl, rXl, oXl, iXl, lXl, uXl, vXl, DXl, $Xl, BXl, VXl, KXl, vn, At, LMe, je, II, dn, rq, a8t, X4, AA, glt, vYt, Qi, ft, oo, Ls, JXl, rir, EJl, xJl, KJl, iQl, o3o, qyt, hQl, TQl, wQl, UQl, VQl, KQl, XQl, QQl, eZl, vf, dr
+((K1e = require("path")),
+  (aZf = (rZl(), ro(nZl)).default),
+  (Noc = (hZl(), ro(gZl)).default),
+  (Zar = (Xtc(), ro(Ytc)).default),
+  (Boc = (fnc(), ro(pnc)).default),
+  (jHt = (gnc(), ro(mnc)).default),
+  (Koc = (vnc(), ro(Tnc))),
+  (lZf = Koc.default),
+  (FWo = Koc.goalNonInteractive),
+  (Uoc = (Lnc(), ro(Rnc)).default),
+  (cZf = (Unc(), ro(Bnc)).default),
+  (uZf = []),
+  (Foc = (znc(), ro(Vnc)).default),
+  (tlr = Yoc?.default ?? null),
+  (joc = Yoc?.prideNonInteractive ?? null),
+  (Goc = (boc(), ro(_oc)).default),
+  (Xoc = (voc(), ro(Toc))),
+  (Woc = Xoc?.default ?? null),
+  (qoc = Xoc?.stopNonInteractive ?? null),
+  (dZf = {
+    type: "prompt",
+    name: "insights",
+    description: "Generate a report analyzing your Claude Code sessions",
+    contentLength: 0,
+    progressMessage: "analyzing your sessions",
+    source: "builtin",
+    disableModelInvocation: !0,
+    requires: {
+      workspace: !0,
+    },
+    async getPromptForCommand(e, t) {
+      let n = (await Promise.resolve().then(() => ($oc(), Moc))).default;
+      if (n.type !== "prompt") throw Error("unreachable");
+      return n.getPromptForCommand(e, t);
+    },
+  }),
+  (pZf = [
+    VOo,
+    qLl,
+    cBo,
+    v6l,
+    qPl,
     tOo,
-    mFo,
-    TFo,
-    j4o,
-    XNo,
-    wjo,
-    Jjo,
-    h3o,
-    g3o,
-    SFo,
-    Vjo,
-    Loe,
-    xCo,
+    iUl,
+    ...(nlr ? [nlr] : []),
+    Q7l,
+    ...(rlr ? [rlr] : []),
+    b4o,
+    _4o,
     S4o,
     Qsr,
-    ...(OWo ? [OWo] : []),
-    ...(Zar ? [Zar] : []),
-    wFo,
-    eOo,
-    dNo,
-    Ujo,
-    f3o,
-    qjo,
-    t3o,
-    b4o,
-    Wer,
-    Qer,
-    FWo,
-    C4o,
-    I4o,
-    cBo,
+    E4o,
+    bGl,
+    D9l,
+    R9l,
+    sXl,
+    aXl,
+    cXl,
     R4o,
+    YQl,
+    JQl,
+    ZQl,
+    OWo,
+  ].filter(Boolean)),
+  (fZf = [WQt, NWo, BWo, UWo].filter(Boolean)),
+  (qQt = Cn(() => [
+    DLl,
+    qXl,
+    A7l,
+    tMl,
+    zKl,
+    GKl,
+    eOo,
+    BDl,
+    LXl,
+    Wer,
+    kOo,
+    ...(tlr ? [tlr] : []),
+    Qer,
+    o1l,
+    sNo,
+    d1l,
+    p1l,
+    LOo,
+    FPl,
+    dNo,
+    pNo,
+    oNl,
+    ...(Goc && Kx() ? [Goc] : []),
+    ...(Woc && Kx() ? [Woc] : []),
+    XNo,
+    f3o,
+    g3o,
+    P4o,
+    qjo,
+    h3o,
+    X7l,
+    oBo,
+    nUl,
+    oUl,
+    mUl,
+    TFl,
+    xFl,
+    c4l,
+    IBl,
+    mFo,
     tBo,
-    Ysr,
+    t3o,
+    sQl,
+    x7l,
+    TFo,
     Ksr,
-    ...(nlr ? [nlr] : []),
+    Ysr,
+    wFo,
+    qVl,
+    XVl,
+    t9l,
+    J2o,
+    Z9l,
+    o8l,
+    vQl,
+    C4o,
+    Rjo,
+    rzl,
+    yOo,
+    rsr,
+    v9l,
+    _9l,
+    G7l,
+    H6l,
+    wjo,
+    G9l,
+    B4o,
+    N1e,
+    Loe,
+    ICo,
+    xCo,
+    kCo,
+    HQl,
+    gQl,
+    Cjo,
+    Ijo,
+    dZf,
+    cZf,
+    aZf,
+    ...(Noc ? [Noc] : []),
+    ...(Zar && lce() ? [Zar] : []),
+    ...(Boc ? [Boc] : []),
     ...(jHt ? [jHt] : []),
     ...(GHt ? [GHt] : []),
+    Lzl,
+    Ujo,
+    SFo,
+    Jjo,
+    lZf,
+    FWo,
+    LKl,
+    FKl,
+    j4o,
+    TXl,
+    HUl(),
+    EUl(),
+    ...(!g7() || fr() === "gateway" ? [vUl] : []),
+    Vjo,
+    ...(elr ? [elr] : []),
+    o6l,
+    GLl,
+    ...[],
+    ...uZf,
+    S6l,
+    ...(Uoc ? [Uoc] : []),
+    ...(Foc ? [Foc] : []),
+    I4o,
+    ...(WQt ? [WQt] : []),
+    ...(NWo ? [NWo] : []),
+    ...(BWo ? [BWo] : []),
+    ...(UWo ? [UWo] : []),
+    ...zXl,
+    ...[],
   ])),
-    (qWo = new Set([
-      Qer,
-      VOo,
-      Wer,
-      Ijo,
-      pNo,
-      sNo,
-      FWo,
-      fJl,
-      ...(qoc ? [qoc] : []),
-      _4o,
-      ICo,
-      kCo,
-      rWl,
-      lPl,
-      ...(joc ? [joc] : []),
-      ...(rlr ? [rlr] : []),
-      qzl,
-      BQl,
-      zJl,
-      l4l,
-      Qsr,
-      E4o,
-      ...(jHt ? [jHt] : []),
-      ...(GHt ? [GHt] : []),
-      ...(elr ? [elr] : []),
-      ...(WQt ? [WQt] : []),
-      Ksr,
-      Ysr,
-      B4o,
-    ])));
-  SZf = Cn(() => qQt().filter((e) => e.fleetHostCall !== void 0));
-});
+  (mQ = Cn(() => new Set(qQt().flatMap((e) => [e.name, ...(e.aliases ?? [])])))),
+  (Y8t = Cn(() => new Set([...mQ(), ...k4o().map((e) => e.name)]))));
+((Voc = (MWo(), ro(PWo)).getWorkflowCommands), (gZf = (MWo(), ro(PWo)).invalidateWorkflowCache));
+olr = Cn(async (e) => {
+  let t = performance.now(),
+    [{ skillDirCommands: n, pluginSkills: r, bundledSkills: o, builtinPluginSkills: s }, i, a] =
+      await Promise.all([
+        mZf(e).then((c) => (Zc("skills_load_ms", performance.now() - t, t), c)),
+        Vze(),
+        Voc ? Voc(e) : Promise.resolve([]),
+      ]),
+    l = yQ([...n, ...a, ...i, ...r, ...o, ...s, ...qQt()]);
+  return (
+    Z0e(
+      "command",
+      l
+        .map((c) => ({
+          name: c.name,
+          source: c.type === "prompt" ? c.source : "builtin",
+        }))
+        .reverse(),
+      {
+        resolves: !0,
+      },
+    ),
+    l
+  );
+}, GWo);
+if (!(olr.cache instanceof Map)) olr.cache = new Map();
+_Zf = new Set();
+aC = Cn(async (e) => {
+  if (N2()) return [];
+  return (await mA(e)).filter(Y1e);
+}, GWo);
+if (!(aC.cache instanceof Map)) aC.cache = new Map();
+Lue = Cn(async (e) => {
+  if (N2()) return [];
+  try {
+    let n = (await mA(e)).filter(
+      (r) =>
+        r.type === "prompt" &&
+        r.source !== "builtin" &&
+        !Poe(r) &&
+        (r.hasUserSpecifiedDescription || r.whenToUse) &&
+        (r.loadedFrom === "skills" ||
+          r.loadedFrom === "plugin" ||
+          r.loadedFrom === "bundled" ||
+          r.disableModelInvocation),
+    );
+    return (xe("cmd_load"), n);
+  } catch (t) {
+    return (
+      ke(Zr(t)),
+      It("cmd_load", "cmd_load_slash_tool_skills_failed"),
+      T("Returning empty skills array due to load failure"),
+      []
+    );
+  }
+}, GWo);
+if (!(Lue.cache instanceof Map)) Lue.cache = new Map();
+((ilr = new Set([
+  J2o,
+  P4o,
+  oBo,
+  Rjo,
+  kOo,
+  ...(tlr ? [tlr] : []),
+  Cjo,
+  LOo,
+  yOo,
+  tOo,
+  mFo,
+  TFo,
+  j4o,
+  XNo,
+  wjo,
+  Jjo,
+  h3o,
+  g3o,
+  SFo,
+  Vjo,
+  Loe,
+  xCo,
+  S4o,
+  Qsr,
+  ...(OWo ? [OWo] : []),
+  ...(Zar ? [Zar] : []),
+  wFo,
+  eOo,
+  dNo,
+  Ujo,
+  f3o,
+  qjo,
+  t3o,
+  b4o,
+  Wer,
+  Qer,
+  FWo,
+  C4o,
+  I4o,
+  cBo,
+  R4o,
+  tBo,
+  Ysr,
+  Ksr,
+  ...(nlr ? [nlr] : []),
+  ...(jHt ? [jHt] : []),
+  ...(GHt ? [GHt] : []),
+])),
+  (qWo = new Set([
+    Qer,
+    VOo,
+    Wer,
+    Ijo,
+    pNo,
+    sNo,
+    FWo,
+    fJl,
+    ...(qoc ? [qoc] : []),
+    _4o,
+    ICo,
+    kCo,
+    rWl,
+    lPl,
+    ...(joc ? [joc] : []),
+    ...(rlr ? [rlr] : []),
+    qzl,
+    BQl,
+    zJl,
+    l4l,
+    Qsr,
+    E4o,
+    ...(jHt ? [jHt] : []),
+    ...(GHt ? [GHt] : []),
+    ...(elr ? [elr] : []),
+    ...(WQt ? [WQt] : []),
+    Ksr,
+    Ysr,
+    B4o,
+  ])));
+SZf = Cn(() => qQt().filter((e) => e.fleetHostCall !== void 0));
 var nVe = {};
 _t(nVe, {
   writeRemoteAgentMetadata: () => writeRemoteAgentMetadata,

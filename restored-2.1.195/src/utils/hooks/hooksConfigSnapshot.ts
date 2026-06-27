@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1956  score=0.6046  fileCov=0.2243
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var L7 = E(() => {
-  dr();
-  V1d = new Set(["plugin", "policySettings", "built-in", "builtin", "bundled"]);
-});
+// [unwrapped __esm module L7] deps: dr
+V1d = new Set(["plugin", "policySettings", "built-in", "builtin", "bundled"]);
 function z1d() {
   return {
     initialHooksConfig: null,

@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.2973  score=0.3764  fileCov=0.5861
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aS = E(() => {
-  ft();
-  je();
-  RE();
-  fn();
-  At();
-  qPn();
-});
 function Abe(e, t) {
   let n = t ? `${e}@${t.toLowerCase()}` : e;
   return eFt(n);

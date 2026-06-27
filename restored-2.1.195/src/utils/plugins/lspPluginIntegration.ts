@@ -4,19 +4,12 @@
 // class=modified  jaccard=0.4506  score=0.8076  fileCov=0.5049
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _pt = E(() => {
-  YZe();
-  je();
-  At();
-  Jt();
-  dn();
-  ypt();
-  ((rLa = require("crypto")),
-    (Pre = new Map()),
-    (EDe = new bG({
-      max: Gxp,
-    })));
-});
+// [unwrapped __esm module _pt] deps: YZe, je, At, Jt, dn, ypt
+((rLa = require("crypto")),
+  (Pre = new Map()),
+  (EDe = new bG({
+    max: Gxp,
+  })));
 function qxp(e, t) {
   let n = ADe.resolve(e),
     r = ADe.resolve(e, t),

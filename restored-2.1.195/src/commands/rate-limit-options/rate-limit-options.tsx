@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.2241  score=0.3786  fileCov=0.3545
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SQl = E(() => {
-  si();
-  vi();
-  CH();
-  Ye();
-  kt();
-  uut();
-  mSe();
-  z1();
-  Vyt();
-  ole();
-  oo();
-  wAe();
-  wr();
-  es();
-  d5e();
-  ((cZ = R(rt(), 1)), (Nse = R(se(), 1)));
-});
+// [unwrapped __esm module SQl] deps: si, vi, CH, Ye, kt, uut, mSe, z1, Vyt, ole, oo, wAe, wr, es, d5e
+((cZ = R(rt(), 1)), (Nse = R(se(), 1)));
 var EQl = {};
 _t(EQl, {
   call: () => call,

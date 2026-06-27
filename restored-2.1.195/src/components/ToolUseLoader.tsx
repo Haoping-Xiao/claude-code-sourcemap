@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.1955  score=0.3229  fileCov=0.3314
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xol = E(() => {
-  Ye();
-});
 function koe({ isError: e, isUnresolved: t, shouldAnimate: n }) {
   let r = Sd(),
     [o, s] = Yol(n && !r),

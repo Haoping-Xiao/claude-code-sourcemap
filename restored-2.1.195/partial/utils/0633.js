@@ -4,13 +4,8 @@
 // class=partial  jaccard=0.0945  score=1  fileCov=0.0945
 // note: low-confidence suggestion: node_modules/lodash-es/_createAssigner.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CEs = E(() => {
-  BXe();
-  ZXe();
-  Fwt();
-  D2();
-  wEs = nPu;
-});
+// [unwrapped __esm module CEs] deps: BXe, ZXe, Fwt, D2
+wEs = nPu;
 function rPu(e) {
   return TEs(function (t, n) {
     var r = -1,

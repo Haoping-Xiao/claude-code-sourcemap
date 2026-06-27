@@ -3,10 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var f6i = E(() => {
-  iu();
-  p8();
-});
 function j6d() {
   return null;
 }

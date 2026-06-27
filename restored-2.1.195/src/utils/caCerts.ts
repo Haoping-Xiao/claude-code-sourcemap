@@ -4,57 +4,52 @@
 // class=modified  jaccard=0.2289  score=0.407  fileCov=0.3436
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vet = E(() => {
-  Qi();
-  je();
-  fn();
-  ys();
-  CCs = ["bundled", "system"];
-  DG = Cn(() => {
-    let e = lNu(),
-      t = process.env.NODE_EXTRA_CA_CERTS,
-      n = e.includes("bundled"),
-      r = e.includes("system");
-    T(`CA certs: stores=${e.join(",")}, extraCertsPath=${t}`);
-    let o = require("tls"),
-      s = o.getCACertificates;
-    if (!n && r && !s) {
-      T("CA certs: stores=system but system CA API unavailable, deferring to runtime");
-      return;
-    }
-    let i = [];
-    if (n)
-      (i.push(...o.rootCertificates),
-        T(`CA certs: Loaded ${o.rootCertificates.length} bundled root certificates`));
-    if (r)
-      try {
-        let a = s?.("system");
-        if (a && a.length > 0)
-          (i.push(...a), T(`CA certs: Loaded ${a.length} system CA certificates`));
-        else if ((T(`CA certs: system store ${s ? "returned empty" : "unavailable"}`), !n))
-          i.push(...o.rootCertificates);
-      } catch (a) {
-        if (
-          (T(`CA certs: Failed to load system CA certificates: ${a}`, {
-            level: "error",
-          }),
-          !n)
-        )
-          i.push(...o.rootCertificates);
-      }
-    if (t)
-      try {
-        let a = qt().readFileSync(t, {
-          encoding: "utf8",
-        });
-        (i.push(a), T(`CA certs: Appended extra certificates from NODE_EXTRA_CA_CERTS (${t})`));
-      } catch (a) {
-        T(`CA certs: Failed to read NODE_EXTRA_CA_CERTS file (${t}): ${a}`, {
+// [unwrapped __esm module Vet] deps: Qi, je, fn, ys
+CCs = ["bundled", "system"];
+DG = Cn(() => {
+  let e = lNu(),
+    t = process.env.NODE_EXTRA_CA_CERTS,
+    n = e.includes("bundled"),
+    r = e.includes("system");
+  T(`CA certs: stores=${e.join(",")}, extraCertsPath=${t}`);
+  let o = require("tls"),
+    s = o.getCACertificates;
+  if (!n && r && !s) {
+    T("CA certs: stores=system but system CA API unavailable, deferring to runtime");
+    return;
+  }
+  let i = [];
+  if (n)
+    (i.push(...o.rootCertificates),
+      T(`CA certs: Loaded ${o.rootCertificates.length} bundled root certificates`));
+  if (r)
+    try {
+      let a = s?.("system");
+      if (a && a.length > 0)
+        (i.push(...a), T(`CA certs: Loaded ${a.length} system CA certificates`));
+      else if ((T(`CA certs: system store ${s ? "returned empty" : "unavailable"}`), !n))
+        i.push(...o.rootCertificates);
+    } catch (a) {
+      if (
+        (T(`CA certs: Failed to load system CA certificates: ${a}`, {
           level: "error",
-        });
-      }
-    return i.length > 0 ? Uo(i) : void 0;
-  });
+        }),
+        !n)
+      )
+        i.push(...o.rootCertificates);
+    }
+  if (t)
+    try {
+      let a = qt().readFileSync(t, {
+        encoding: "utf8",
+      });
+      (i.push(a), T(`CA certs: Appended extra certificates from NODE_EXTRA_CA_CERTS (${t})`));
+    } catch (a) {
+      T(`CA certs: Failed to read NODE_EXTRA_CA_CERTS file (${t}): ${a}`, {
+        level: "error",
+      });
+    }
+  return i.length > 0 ? Uo(i) : void 0;
 });
 function wmn(e) {
   let t = e.toLowerCase().replace(/\.+$/, ""),

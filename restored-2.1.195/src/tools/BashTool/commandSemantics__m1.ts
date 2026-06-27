@@ -4,67 +4,65 @@
 // class=modified (alt of src/tools/BashTool/commandSemantics.ts)  jaccard=0.1467  score=0.2109  fileCov=0.3252
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xvl = E(() => {
-  sN();
-  BEf = new Map([
-    [
-      "grep",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "No matches found" : void 0,
-      }),
-    ],
-    [
-      "rg",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "No matches found" : void 0,
-      }),
-    ],
-    [
-      "egrep",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "No matches found" : void 0,
-      }),
-    ],
-    [
-      "fgrep",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "No matches found" : void 0,
-      }),
-    ],
-    [
-      "find",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "Some directories were inaccessible" : void 0,
-      }),
-    ],
-    [
-      "diff",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "Files differ" : void 0,
-      }),
-    ],
-    [
-      "test",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "Condition is false" : void 0,
-      }),
-    ],
-    [
-      "[",
-      (e, t, n) => ({
-        isError: e >= 2,
-        message: e === 1 ? "Condition is false" : void 0,
-      }),
-    ],
-  ]);
-});
+// [unwrapped __esm module Xvl] deps: sN
+BEf = new Map([
+  [
+    "grep",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "No matches found" : void 0,
+    }),
+  ],
+  [
+    "rg",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "No matches found" : void 0,
+    }),
+  ],
+  [
+    "egrep",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "No matches found" : void 0,
+    }),
+  ],
+  [
+    "fgrep",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "No matches found" : void 0,
+    }),
+  ],
+  [
+    "find",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "Some directories were inaccessible" : void 0,
+    }),
+  ],
+  [
+    "diff",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "Files differ" : void 0,
+    }),
+  ],
+  [
+    "test",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "Condition is false" : void 0,
+    }),
+  ],
+  [
+    "[",
+    (e, t, n) => ({
+      isError: e >= 2,
+      message: e === 1 ? "Condition is false" : void 0,
+    }),
+  ],
+]);
 function YEf(e) {
   if (/[|<>]/.test(e)) return [];
   let t;

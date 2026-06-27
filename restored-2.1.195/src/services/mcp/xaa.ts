@@ -4,34 +4,21 @@
 // class=modified  jaccard=0.4887  score=0.5974  fileCov=0.7287
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var g$ = E(() => {
-  ft();
-  Lo();
-  wr();
-  lT();
-  vn();
-  vf();
-  dr();
-  Jt();
-  Kv();
-  Ox();
-  bCe();
-  kst();
-  ((RCa = require("crypto")),
-    (LCa = require("path")),
-    (CTp = new Set(["http", "sse", "claudeai-proxy"])),
-    (Hdo = new Set([
-      "ECONNREFUSED",
-      "ETIMEDOUT",
-      "ECONNRESET",
-      "ENOTFOUND",
-      "EAI_AGAIN",
-      "ConnectionRefused",
-      "ConnectionClosed",
-      "FailedToOpenSocket",
-    ])),
-    (Tdo = new Set(["500", "502", "503", "504", ...Hdo, "23"])));
-});
+// [unwrapped __esm module g$] deps: ft, Lo, wr, lT, vn, vf, dr, Jt, Kv, Ox, bCe, kst
+((RCa = require("crypto")),
+  (LCa = require("path")),
+  (CTp = new Set(["http", "sse", "claudeai-proxy"])),
+  (Hdo = new Set([
+    "ECONNREFUSED",
+    "ETIMEDOUT",
+    "ECONNRESET",
+    "ENOTFOUND",
+    "EAI_AGAIN",
+    "ConnectionRefused",
+    "ConnectionClosed",
+    "FailedToOpenSocket",
+  ])),
+  (Tdo = new Set(["500", "502", "503", "504", ...Hdo, "23"])));
 function NCa(e) {
   return (t, n) => {
     let r = AbortSignal.timeout(DTp),

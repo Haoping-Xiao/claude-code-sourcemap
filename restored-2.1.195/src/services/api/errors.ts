@@ -4,40 +4,39 @@
 // class=modified  jaccard=0.1275  score=0.2816  fileCov=0.189
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gSe = E(() => {
-  ((dlp = new Set([
-    "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
-    "UNABLE_TO_GET_ISSUER_CERT",
-    "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
-    "CERT_SIGNATURE_FAILURE",
-    "CERT_NOT_YET_VALID",
-    "CERT_HAS_EXPIRED",
-    "CERT_REVOKED",
-    "CERT_REJECTED",
-    "CERT_UNTRUSTED",
-    "DEPTH_ZERO_SELF_SIGNED_CERT",
-    "SELF_SIGNED_CERT_IN_CHAIN",
-    "CERT_CHAIN_TOO_LONG",
-    "PATH_LENGTH_EXCEEDED",
-    "ERR_TLS_CERT_ALTNAME_INVALID",
-    "HOSTNAME_MISMATCH",
-    "ERR_TLS_HANDSHAKE_TIMEOUT",
-    "ERR_SSL_WRONG_VERSION_NUMBER",
-    "ERR_SSL_DECRYPTION_FAILED_OR_BAD_RECORD_MAC",
+// [unwrapped __esm module gSe]
+((dlp = new Set([
+  "UNABLE_TO_VERIFY_LEAF_SIGNATURE",
+  "UNABLE_TO_GET_ISSUER_CERT",
+  "UNABLE_TO_GET_ISSUER_CERT_LOCALLY",
+  "CERT_SIGNATURE_FAILURE",
+  "CERT_NOT_YET_VALID",
+  "CERT_HAS_EXPIRED",
+  "CERT_REVOKED",
+  "CERT_REJECTED",
+  "CERT_UNTRUSTED",
+  "DEPTH_ZERO_SELF_SIGNED_CERT",
+  "SELF_SIGNED_CERT_IN_CHAIN",
+  "CERT_CHAIN_TOO_LONG",
+  "PATH_LENGTH_EXCEEDED",
+  "ERR_TLS_CERT_ALTNAME_INVALID",
+  "HOSTNAME_MISMATCH",
+  "ERR_TLS_HANDSHAKE_TIMEOUT",
+  "ERR_SSL_WRONG_VERSION_NUMBER",
+  "ERR_SSL_DECRYPTION_FAILED_OR_BAD_RECORD_MAC",
+])),
+  (out = new Set([
+    "ECONNREFUSED",
+    "ConnectionRefused",
+    "ENOTFOUND",
+    "ENETUNREACH",
+    "ENETDOWN",
+    "EHOSTUNREACH",
+    "EHOSTDOWN",
+    "EAI_AGAIN",
+    "FailedToOpenSocket",
   ])),
-    (out = new Set([
-      "ECONNREFUSED",
-      "ConnectionRefused",
-      "ENOTFOUND",
-      "ENETUNREACH",
-      "ENETDOWN",
-      "EHOSTUNREACH",
-      "EHOSTDOWN",
-      "EAI_AGAIN",
-      "FailedToOpenSocket",
-    ])),
-    (que = new Set(["ECONNRESET", "EPIPE", "ConnectionClosed", "StreamSuspended"])));
-});
+  (que = new Set(["ECONNRESET", "EPIPE", "ConnectionClosed", "StreamSuspended"])));
 function K1(e) {
   return e.startsWith(Eb) || e.startsWith(`Please run /login \xB7 ${Eb}`);
 }

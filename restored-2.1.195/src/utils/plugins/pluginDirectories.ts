@@ -4,23 +4,15 @@
 // class=modified  jaccard=0.4218  score=0.8837  fileCov=0.4467
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jbe = E(() => {
-  Qi();
-  Is();
-  Rm();
-  ys();
-  lg();
-  xue();
-  Yf();
-  ((_oo = require("os")), (ore = require("path")), (jrp = /[{}]/));
-  Pra = Cn(i_);
-  ((qrp = /^[A-Za-z]:\/?$/), (Vrp = /^[A-Za-z]:\/[^/]+$/));
-  zrp = Cn((e) =>
-    jd(qt(), e)
-      .resolvedPath.replace(/[\\/]+/g, "/")
-      .replace(/\/$/, ""),
-  );
-});
+// [unwrapped __esm module Jbe] deps: Qi, Is, Rm, ys, lg, xue, Yf
+((_oo = require("os")), (ore = require("path")), (jrp = /[{}]/));
+Pra = Cn(i_);
+((qrp = /^[A-Za-z]:\/?$/), (Vrp = /^[A-Za-z]:\/[^/]+$/));
+zrp = Cn((e) =>
+  jd(qt(), e)
+    .resolvedPath.replace(/[\\/]+/g, "/")
+    .replace(/\/$/, ""),
+);
 function Yrp() {
   if (ICt()) return Mra;
   if (ut(process.env.CLAUDE_CODE_USE_COWORK_PLUGINS)) return Mra;

@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0148  score=0.1664  fileCov=0.016
 // note: nearest: src/services/mcp/config.ts (0.0148); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var y1n = E(() => {
-  oo();
-  er();
-  BE();
-});
 function _ap(e) {
   let t = e.replace(/^(\d{4}-\d{2}-\d{2}) (?=\d{2}:)/, "$1T"),
     n = t.includes("T"),

@@ -4,12 +4,8 @@
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0205  score=0.114  fileCov=0.0243
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CWo = E(() => {
-  YS();
-  mFn();
-  jqe();
-  $ar = require("fs/promises");
-});
+// [unwrapped __esm module CWo] deps: YS, mFn, jqe
+$ar = require("fs/promises");
 function Nar(e) {
   return dt.string().transform((t, n) => {
     let r = (l) => (

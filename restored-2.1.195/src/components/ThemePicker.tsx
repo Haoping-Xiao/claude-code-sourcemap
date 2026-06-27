@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4334  score=0.6034  fileCov=0.6061
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mE = E(() => {
-  w7t();
-  Vl();
-});
 function lEt(e) {
   let t = xMl.c(88),
     {

@@ -4,18 +4,17 @@
 // class=modified  jaccard=0.2293  score=0.3349  fileCov=0.421
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VBl = E(() => {
-  ((WOf = {
-    type: "local-jsx",
-    name: "help",
-    description: "Show help and available commands",
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (qBl(), GBl)),
-  }),
-    (oBo = WOf));
-});
+// [unwrapped __esm module VBl]
+((WOf = {
+  type: "local-jsx",
+  name: "help",
+  description: "Show help and available commands",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (qBl(), GBl)),
+}),
+  (oBo = WOf));
 function zBl(e) {
   let t = sBo.c(9),
     { onComplete: n } = e,

@@ -4,19 +4,8 @@
 // class=modified  jaccard=0.394  score=0.8141  fileCov=0.433
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xnr = E(() => {
-  Ox();
-  g$();
-  uo();
-  sr();
-  Cc();
-  mE();
-  Bs();
-  vi();
-  B_();
-  Ko();
-  ((i2l = R(lt(), 1)), (PHe = R(se(), 1)));
-});
+// [unwrapped __esm module Xnr] deps: Ox, g$, uo, sr, Cc, mE, Bs, vi, B_, Ko
+((i2l = R(lt(), 1)), (PHe = R(se(), 1)));
 function Jnr(e) {
   let t = a2l.c(76),
     { onComplete: n } = e,

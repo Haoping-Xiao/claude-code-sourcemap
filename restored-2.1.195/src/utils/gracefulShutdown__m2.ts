@@ -4,11 +4,10 @@
 // class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.0325  score=0.0619  fileCov=0.0641
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QOa = E(() => {
-  ((VOa = require("os")), (zOa = require("path")));
-  KOa = new Set(["cli.js", "cli", "sdk.mjs", "browser-sdk.js", "agentSdk.js"]);
-  YOa = ["src/", "packages/"];
-});
+// [unwrapped __esm module QOa]
+((VOa = require("os")), (zOa = require("path")));
+KOa = new Set(["cli.js", "cli", "sdk.mjs", "browser-sdk.js", "agentSdk.js"]);
+YOa = ["src/", "packages/"];
 function CPp() {
   if (o4n !== void 0) return o4n;
   let e = oW(),

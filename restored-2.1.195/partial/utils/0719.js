@@ -4,13 +4,12 @@
 // class=partial  jaccard=0.1594  score=0.6833  fileCov=0.1721
 // note: low-confidence suggestion: src/types/permissions.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NB = E(() => {
-  yY = ["acceptEdits", "auto", "bypassPermissions", "default", "dontAsk", "plan"], Jvs = [...yY], yM = Jvs;
-  FRr = ["rule", "mode", "subcommandResults", "permissionPromptTool", "hook", "asyncAgent", "sandboxOverride", "workingDir", "safetyCheck", "classifier", "other"], WRt = {
-    type: "asyncAgent",
-    reason: jfn
-  };
-});
+// [unwrapped __esm module NB]
+yY = ["acceptEdits", "auto", "bypassPermissions", "default", "dontAsk", "plan"], Jvs = [...yY], yM = Jvs;
+FRr = ["rule", "mode", "subcommandResults", "permissionPromptTool", "hook", "asyncAgent", "sandboxOverride", "workingDir", "safetyCheck", "classifier", "other"], WRt = {
+  type: "asyncAgent",
+  reason: jfn
+};
 function Gfn(e, t) {
   if (!e) return;
   if (t === "auto" && e === "acceptEdits") return;

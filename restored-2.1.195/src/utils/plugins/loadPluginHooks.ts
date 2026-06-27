@@ -4,24 +4,13 @@
 // class=modified  jaccard=0.5719  score=0.8234  fileCov=0.6518
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jjt = E(() => {
-  Ece();
-  ft();
-  dn();
-  Rm();
-  fd();
-  je();
-  At();
-  sp();
-  E5e();
-  PM();
-  dNn = require("path");
-  ((pNn = Icp()),
-    (hca = pNn.initialize),
-    (_ao = pNn.setEnvHookNotifier),
-    (yca = pNn.updateWatchPaths),
-    (_ca = pNn.onCwdChanged));
-});
+// [unwrapped __esm module jjt] deps: Ece, ft, dn, Rm, fd, je, At, sp, E5e, PM
+dNn = require("path");
+((pNn = Icp()),
+  (hca = pNn.initialize),
+  (_ao = pNn.setEnvHookNotifier),
+  (yca = pNn.updateWatchPaths),
+  (_ca = pNn.onCwdChanged));
 var Aao = {};
 _t(Aao, {
   setupPluginHookHotReload: () => setupPluginHookHotReload,

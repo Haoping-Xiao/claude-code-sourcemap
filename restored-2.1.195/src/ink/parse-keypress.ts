@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3443  score=0.5702  fileCov=0.4649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bBt = E(() => {
-  one();
-  OM();
-  m4d = /^\[M[\x60-\x7f][\x20-\uffff]?$/;
-});
+// [unwrapped __esm module bBt] deps: one, OM
+m4d = /^\[M[\x60-\x7f][\x20-\uffff]?$/;
 function E4i(e) {
   return {
     kind: "key",

@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0087  score=0.1303  fileCov=0.0093
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0087); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sql = E(() => {
-  Ye();
-  kt();
-  ZKe();
-  er();
-  SEe();
-  o2o = R(lt(), 1), y1e = R(se(), 1);
-});
+// [unwrapped __esm module sql] deps: Ye, kt, ZKe, er, SEe
+o2o = R(lt(), 1), y1e = R(se(), 1);
 function wor(e) {
   let t = [],
     n = /(^|[\s\u3002\u3001\uFF1F\uFF01])(\/[a-zA-Z][a-zA-Z0-9.:\-_]*)/g,

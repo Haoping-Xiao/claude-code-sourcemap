@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0204  score=0.1024  fileCov=0.0248
 // note: nearest: src/memdir/paths.ts (0.0204); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var t1c = E(() => {
-  dn();
-  kt();
-  oo();
-  er();
-  Ls();
-  dr();
-});
 function n1c() {
   let e = Dt(),
     t = yn("userSettings"),

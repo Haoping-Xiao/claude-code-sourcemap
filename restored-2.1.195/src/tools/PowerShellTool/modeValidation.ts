@@ -4,13 +4,9 @@
 // class=modified  jaccard=0.1216  score=0.3029  fileCov=0.1689
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nTl = E(() => {
-  bde();
-  Wbt();
-  dze();
-  Sbf = new Set(["set-content", "add-content", "remove-item", "clear-content"]);
-  Ebf = new Set(["symboliclink", "junction", "hardlink"]);
-});
+// [unwrapped __esm module nTl] deps: bde, Wbt, dze
+Sbf = new Set(["set-content", "add-content", "remove-item", "clear-content"]);
+Ebf = new Set(["symboliclink", "junction", "hardlink"]);
 function lJn(e, t) {
   for (let n of t) if (n === e || (e.length > 1 && n.startsWith(e))) return true;
   return false;

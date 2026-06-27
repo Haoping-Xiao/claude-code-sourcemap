@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aGc = E(() => {
-  sGc();
-});
 async function lGc(e, t, n, r) {
   let o = e.slice(0, 7),
     s = await Ogr(o, n, t, r, new Uint8Array());

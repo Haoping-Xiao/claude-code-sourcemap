@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1657  score=0.3148  fileCov=0.2593
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SEe = E(() => {
-  A1a();
-  ((Hft = R(rt(), 1)), (xho = Hft.createContext(true)));
-});
+// [unwrapped __esm module SEe] deps: A1a
+((Hft = R(rt(), 1)), (xho = Hft.createContext(true)));
 async function T1a() {
   if (bo()) return null;
   let e = await R7s();

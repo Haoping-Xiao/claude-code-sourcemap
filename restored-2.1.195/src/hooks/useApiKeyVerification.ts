@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2996  score=0.5955  fileCov=0.3762
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QSc = E(() => {
-  T7e = R(rt(), 1);
-});
+// [unwrapped __esm module QSc]
+T7e = R(rt(), 1);
 function ZSc() {
   let [e, t] = opr.useState(() => {
       if (!eS() || bo()) return "valid";

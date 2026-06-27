@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3867  score=0.6312  fileCov=0.4995
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var i6e = E(() => {
-  IL();
-});
 function cil(e) {
   let t = iil.c(13),
     { attachment: n, verbose: r, isTranscriptMode: o } = e;

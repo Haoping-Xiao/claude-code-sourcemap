@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Lns = E(() => {
-  Rns = Q6c;
-});
+// [unwrapped __esm module Lns]
+Rns = Q6c;
 function Z6c(e) {
   return function (t) {
     return jve(t, e);

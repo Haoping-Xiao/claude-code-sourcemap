@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.1461  score=0.5643  fileCov=0.1647
 // note: low-confidence suggestion: src/components/ScrollKeybindingHandler.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var I1l = E(() => {
-  Qtr = R(rt(), 1);
-});
+// [unwrapped __esm module I1l]
+Qtr = R(rt(), 1);
 function x1l(e) {
   if (e.wheelUp || e.wheelDown) return false;
   if (e.pageUp || e.pageDown) return false;

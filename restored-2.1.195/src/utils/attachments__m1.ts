@@ -4,130 +4,38 @@
 // class=modified (alt of src/utils/attachments.ts)  jaccard=0.0207  score=0.3575  fileCov=0.0215
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vv = E(() => {
-  kt();
-  dn();
-  Du();
-  lT();
-  ii();
-  $pe();
-  LQn();
-  Hu();
-  sr();
-  ys();
-  bk();
-  KI();
-  aE();
-  dC();
-  Lo();
-  hYt();
-  vn();
-  aS();
-  je();
-  At();
-  Pqe();
-  sF();
-  G4();
-  dr();
-  bMe();
-  xW();
-  I1();
-  Ao();
-  k0();
-  Zf();
-  dre();
-  ft();
-  Qbe();
-  M8e();
-  BE();
-  lf();
-  uDe();
-  ik();
-  fp();
-  At();
-  oc();
-  ty();
-  fh();
-  N0o();
-  Gy();
-  oo();
-  Yf();
-  xF();
-  bH();
-  S_();
-  ft();
-  GX();
-  IX();
-  T3e();
-  LX();
-  i0l();
-  VM();
-  kZn();
-  S_e();
-  MZn();
-  _pt();
-  co();
-  wr();
-  fn();
-  m1();
-  yYt();
-  HU();
-  Il();
-  Cp();
-  u$();
-  ZU();
-  QMo();
-  Un();
-  sp();
-  Jt();
-  S0n();
-  YWe();
-  BMo();
-  Lne();
-  sA();
-  b0l();
-  PDo();
-  Rd();
-  Uh();
-  M7();
-  YI();
-  Mp();
-  Sj();
-  hP();
-  bk();
-  Il();
-  ((RSt = require("fs/promises")),
-    (Nk = require("path")),
-    (r$o = require("crypto")),
-    (NCf = (Eoe(), ro(Ope))),
-    (FZn = (f4(), ro(URe)).BRIEF_TOOL_NAME),
-    (_Yt = {
-      TURNS_SINCE_WRITE: 10,
-      TURNS_BETWEEN_REMINDERS: 10,
-    }));
-  ((n$o = {
-    TURNS_BETWEEN_ATTACHMENTS: 5,
-    FULL_REMINDER_EVERY_N_ATTACHMENTS: 5,
+// [unwrapped __esm module Vv] deps: kt, dn, Du, lT, ii, $pe, LQn, Hu, sr, ys, bk, KI, aE, dC, Lo, hYt, vn, aS, je, At, Pqe, sF, G4, dr, bMe, xW, I1, Ao, k0, Zf, dre, ft, Qbe, M8e, BE, lf, uDe, ik, fp, At, oc, ty, fh, N0o, Gy, oo, Yf, xF, bH, S_, ft, GX, IX, T3e, LX, i0l, VM, kZn, S_e, MZn, _pt, co, wr, fn, m1, yYt, HU, Il, Cp, u$, ZU, QMo, Un, sp, Jt, S0n, YWe, BMo, Lne, sA, b0l, PDo, Rd, Uh, M7, YI, Mp, Sj, hP, bk, Il
+((RSt = require("fs/promises")),
+  (Nk = require("path")),
+  (r$o = require("crypto")),
+  (NCf = (Eoe(), ro(Ope))),
+  (FZn = (f4(), ro(URe)).BRIEF_TOOL_NAME),
+  (_Yt = {
+    TURNS_SINCE_WRITE: 10,
+    TURNS_BETWEEN_REMINDERS: 10,
+  }));
+((n$o = {
+  TURNS_BETWEEN_ATTACHMENTS: 5,
+  FULL_REMINDER_EVERY_N_ATTACHMENTS: 5,
+}),
+  (E0l = {
+    TURNS_BETWEEN_MAINTENANCE: 10,
   }),
-    (E0l = {
-      TURNS_BETWEEN_MAINTENANCE: 10,
-    }),
-    (A0l = {
-      MAX_SESSION_BYTES: 61440,
-    }));
-  BCf = new Set(["prompt", "task-notification"]);
-  aIf = new Set([
-    "extract_memories",
-    "auto_dream",
-    X1n,
-    Qio,
-    "prompt_suggestion",
-    "speculation",
-    "compact",
-  ]);
-  SYt = new Map();
-  e$o = new Set();
-});
+  (A0l = {
+    MAX_SESSION_BYTES: 61440,
+  }));
+BCf = new Set(["prompt", "task-notification"]);
+aIf = new Set([
+  "extract_memories",
+  "auto_dream",
+  X1n,
+  Qio,
+  "prompt_suggestion",
+  "speculation",
+  "compact",
+]);
+SYt = new Map();
+e$o = new Set();
 async function xIf() {
   (await Promise.all(
     Array.from(u$o).map((e) =>

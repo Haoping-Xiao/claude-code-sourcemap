@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1246  score=0.6665  fileCov=0.1329
 // note: low-confidence suggestion: node_modules/xmlbuilder/lib/Utility.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G_s = E(() => {
-  fFe();
-  j_s = nkr;
-});
+// [unwrapped __esm module G_s] deps: fFe
+j_s = nkr;
 function rkr(e) {
   return function (n) {
     return e.apply(null, n);

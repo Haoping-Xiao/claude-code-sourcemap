@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0209  score=0.7669  fileCov=0.021
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0209); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xZs = E(() => {
-  CZs = R(by(), 1);
-});
+// [unwrapped __esm module xZs]
+CZs = R(by(), 1);
 var kZs = () => {};
 var RZs = () => {};
 var LZs = () => {};

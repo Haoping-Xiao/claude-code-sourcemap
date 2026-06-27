@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.2591  score=0.786  fileCov=0.2787
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var M8t = E(() => {
-  RN();
-  xMe();
-  $pe();
-  Ppe();
-  I8e();
-  gAe();
-  pyt();
-});
 function nEf(e) {
   return e.split(q$e.win32.sep).join(q$e.posix.sep);
 }

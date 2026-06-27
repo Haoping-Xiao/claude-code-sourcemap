@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0387  score=0.1903  fileCov=0.0464
 // note: nearest: node_modules/jsonwebtoken/verify.js (0.0387); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var njc = E(() => {
-  oJo();
-  rB();
-  sJo();
-  tjc = DDm;
-});
+// [unwrapped __esm module njc] deps: oJo, rB, sJo
+tjc = DDm;
 class X7e {
   constructor(e) {
     if (!(e instanceof Uint8Array)) throw TypeError("payload must be an instance of Uint8Array");

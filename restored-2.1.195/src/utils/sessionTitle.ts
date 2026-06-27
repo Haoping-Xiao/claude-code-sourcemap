@@ -4,18 +4,17 @@
 // class=modified  jaccard=0.3688  score=0.5258  fileCov=0.5526
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KGl = E(() => {
-  ((X2f = {
-    description: "View release notes",
-    name: "release-notes",
-    type: "local-jsx",
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (zGl(), VGl)),
-  }),
-    (TFo = X2f));
-});
+// [unwrapped __esm module KGl]
+((X2f = {
+  description: "View release notes",
+  name: "release-notes",
+  type: "local-jsx",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (zGl(), VGl)),
+}),
+  (TFo = X2f));
 function XGl() {
   return Vi() || Oe.CLAUDE_CODE_DISABLE_TERMINAL_TITLE;
 }

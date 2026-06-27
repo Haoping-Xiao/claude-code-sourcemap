@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ffi = E(() => {
-  hTn();
-});
 function jfi(e, t) {
   return vMt(e, t);
 }

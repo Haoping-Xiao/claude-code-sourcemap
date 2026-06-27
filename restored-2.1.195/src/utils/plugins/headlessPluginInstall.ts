@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.5086  score=0.8985  fileCov=0.5397
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OUc = E(() => {
-  je();
-  Jt();
-  lE();
-  ZC();
-  dOe();
-  ((fXo = require("fs/promises")), (Rmr = require("path")));
-});
+// [unwrapped __esm module OUc] deps: je, Jt, lE, ZC, dOe
+((fXo = require("fs/promises")), (Rmr = require("path")));
 async function mXo(e) {
   let t = az();
   T(`installPluginsForHeadless: starting${t ? " (zip cache mode)" : ""}`);

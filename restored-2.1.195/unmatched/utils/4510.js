@@ -4,28 +4,9 @@
 // class=new  jaccard=0.0099  score=0.3592  fileCov=0.01
 // note: nearest: src/cli/print.ts (0.0099); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q0 = E(() => {
-  ft();
-  MAe();
-  kt();
-  fb();
-  ZE();
-  cYt();
-  c8t();
-  O6n();
-  fp();
-  je();
-  ik();
-  co();
-  Ao();
-  pMo();
-  __();
-  _a();
-  K0();
-  HO();
-  hkl = require("crypto");
-  _kl = ["frameUrls"];
-});
+// [unwrapped __esm module q0] deps: ft, MAe, kt, fb, ZE, cYt, c8t, O6n, fp, je, ik, co, Ao, pMo, __, _a, K0, HO
+hkl = require("crypto");
+_kl = ["frameUrls"];
 function Fr(e) {
   let t = e.getAppState().toolPermissionContext,
     n = e.permissionLayers;

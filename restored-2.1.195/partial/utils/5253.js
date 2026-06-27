@@ -4,42 +4,8 @@
 // class=partial  jaccard=0.1477  score=0.441  fileCov=0.1818
 // note: low-confidence suggestion: src/utils/ShellCommand.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LQt = E(() => {
-  iu();
-  jGo();
-  QGo();
-  Gfe();
-  kYe();
-  WL();
-  q$();
-  kLn();
-  FAe();
-  xar();
-  VGe();
-  xHt();
-  ag();
-  pWo();
-  Lar();
-  dn();
-  kt();
-  _F();
-  jc();
-  ty();
-  Rm();
-  er();
-  Lo();
-  je();
-  At();
-  Is();
-  ED();
-  Vke();
-  dr();
-  sj();
-  Yrc();
-  lH();
-  JN();
-  Xrc = require("crypto"), Eme = require("fs/promises"), EWo = require("path"), zJf = ["--bg", "--background"];
-});
+// [unwrapped __esm module LQt] deps: iu, jGo, QGo, Gfe, kYe, WL, q$, kLn, FAe, xar, VGe, xHt, ag, pWo, Lar, dn, kt, _F, jc, ty, Rm, er, Lo, je, At, Is, ED, Vke, dr, sj, Yrc, lH, JN
+Xrc = require("crypto"), Eme = require("fs/promises"), EWo = require("path"), zJf = ["--bg", "--background"];
 class vWo {
   taskOutput;
   #e;

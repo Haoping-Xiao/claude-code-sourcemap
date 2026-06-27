@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.4851  score=0.6486  fileCov=0.658
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bPo = E(() => {
-  dn();
-  je();
-  At();
-  rfo();
-  YFn();
-});
 function ATf() {
   let e = oG(),
     t = e.getEntriesByType("mark");

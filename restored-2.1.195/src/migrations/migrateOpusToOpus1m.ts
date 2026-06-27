@@ -4,13 +4,10 @@
 // class=modified  jaccard=0.2426  score=0.456  fileCov=0.3415
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zOc = E(() => {
-  dn();
-  er();
-  Oxm = {
-    "subscription-switch": "subscriptionNoticeCount",
-  };
-});
+// [unwrapped __esm module zOc] deps: dn, er
+Oxm = {
+  "subscription-switch": "subscriptionNoticeCount",
+};
 function KOc() {
   if (!nT()) return;
   if (yn("userSettings")?.model !== "opus") return;

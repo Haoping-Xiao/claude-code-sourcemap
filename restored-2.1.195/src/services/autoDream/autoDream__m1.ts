@@ -4,35 +4,13 @@
 // class=modified (alt of src/services/autoDream/autoDream.ts)  jaccard=0.0201  score=0.2003  fileCov=0.0218
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PPo = E(() => {
-  q0();
-  co();
-  _m();
-  je();
-  At();
-  sr();
-  kt();
-  Un();
-  MM();
-  Uh();
-  kPo();
-  y_();
-  ft();
-  id();
-  VKt();
-  FIl();
-  U7n();
-  j7n();
-  u_();
-  nC();
-  MQn();
-  ((WIl = require("fs/promises")),
-    (qIl = require("path")),
-    (GIl = {
-      minHours: 24,
-      minSessions: 5,
-    }));
-});
+// [unwrapped __esm module PPo] deps: q0, co, _m, je, At, sr, kt, Un, MM, Uh, kPo, y_, ft, id, VKt, FIl, U7n, j7n, u_, nC, MQn
+((WIl = require("fs/promises")),
+  (qIl = require("path")),
+  (GIl = {
+    minHours: 24,
+    minSessions: 5,
+  }));
 var YIl = {};
 _t(YIl, {
   buildGitSessionContext: () => buildGitSessionContext,

@@ -4,19 +4,18 @@
 // class=modified  jaccard=0.4543  score=0.5954  fileCov=0.6573
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ozl = E(() => {
-  ((Vqf = {
-    type: "local-jsx",
-    name: "plan",
-    description: "Enable plan mode or view the current session plan",
-    argumentHint: "[open|<description>]",
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => ($zl(), Mzl)),
-  }),
-    (Ujo = Vqf));
-});
+// [unwrapped __esm module Ozl]
+((Vqf = {
+  type: "local-jsx",
+  name: "plan",
+  description: "Enable plan mode or view the current session plan",
+  argumentHint: "[open|<description>]",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => ($zl(), Mzl)),
+}),
+  (Ujo = Vqf));
 function GAt() {
   return at("tengu_immediate_model_command", false);
 }

@@ -4,18 +4,8 @@
 // class=partial  jaccard=0.147  score=1  fileCov=0.147
 // note: low-confidence suggestion: src/hooks/useDynamicConfig.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YRc = E(() => {
-  ft();
-  uo();
-  oo();
-  DHe();
-  er();
-  wr();
-  fn();
-  vn();
-  gz();
-  Afr = R(rt(), 1);
-});
+// [unwrapped __esm module YRc] deps: ft, uo, oo, DHe, er, wr, fn, vn, gz
+Afr = R(rt(), 1);
 function JRc() {
   XRc.useEffect(() => {}, []);
 }

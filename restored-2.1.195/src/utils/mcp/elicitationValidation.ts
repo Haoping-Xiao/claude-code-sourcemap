@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.3327  score=0.6868  fileCov=0.3922
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ygc = E(() => {
-  dn();
-  ZE();
-  og();
-  vn();
-  co();
-});
 function c7e(e) {
   return (
     e.type === "array" &&

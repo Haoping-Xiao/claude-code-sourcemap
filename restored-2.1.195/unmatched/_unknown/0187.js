@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0255  score=1  fileCov=0.0255
 // note: nearest: node_modules/@anthropic-ai/sdk/lib/MessageStream.mjs (0.0255); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var EEr = E(() => {
-  p0();
-});
 function Vos(e) {
   return e.type === "tool_use" || e.type === "server_tool_use";
 }

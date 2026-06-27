@@ -4,15 +4,14 @@
 // class=new  jaccard=0.021  score=0.2505  fileCov=0.0225
 // note: nearest: node_modules/react/cjs/react.production.js (0.021); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ozl = E(() => {
-  Eqf = {
-    type: "local-jsx",
-    name: "tui",
-    description: "Set the terminal UI renderer (default | fullscreen)",
-    argumentHint: "[default|fullscreen]",
-    load: () => Promise.resolve().then(() => (Mjo(), nzl))
-  }, rzl = Eqf;
-});
+// [unwrapped __esm module ozl]
+Eqf = {
+  type: "local-jsx",
+  name: "tui",
+  description: "Set the terminal UI renderer (default | fullscreen)",
+  argumentHint: "[default|fullscreen]",
+  load: () => Promise.resolve().then(() => (Mjo(), nzl))
+}, rzl = Eqf;
 function azl(e) {
   let t = szl.c(4),
     {

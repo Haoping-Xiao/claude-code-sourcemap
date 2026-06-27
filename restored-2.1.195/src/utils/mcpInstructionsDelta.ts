@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4948  score=0.8305  fileCov=0.5504
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hYt = E(() => {
-  WMo();
-});
 function qze(e) {
   return e.type === "image" && e.content.length > 0;
 }

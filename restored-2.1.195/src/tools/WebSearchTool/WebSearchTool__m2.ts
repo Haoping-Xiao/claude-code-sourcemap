@@ -4,25 +4,8 @@
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.0248  score=0.1984  fileCov=0.0276
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yje = E(() => {
-  tIt();
-  Zsn();
-  Ksn();
-  uee();
-  je();
-  At();
-  vn();
-  dn();
-  xnt();
-  wjr();
-  tIt();
-  Zsn();
-  Ksn();
-  uee();
-  xnt();
-  wjr();
-  hje = new Set();
-});
+// [unwrapped __esm module yje] deps: tIt, Zsn, Ksn, uee, je, At, vn, dn, xnt, wjr, tIt, Zsn, Ksn, uee, xnt, wjr
+hje = new Set();
 function Rjr() {
   return (
     Oe.ANTHROPIC_FOUNDRY_BASE_URL ||

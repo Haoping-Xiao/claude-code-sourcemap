@@ -4,53 +4,12 @@
 // class=modified  jaccard=0.3702  score=0.6074  fileCov=0.4866
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gy = E(() => {
-  Uge();
-  Sae();
-  Ox();
-  fh();
-  eit();
-  N6e();
-  tWt();
-  NB();
-  sN();
-  je();
-  At();
-  vn();
-  lg();
-  vf();
-  sr();
-  rcr();
-  clc();
-  CYn();
-  DFn();
-  DE();
-  $I();
-  QH();
-  fre();
-  ft();
-  Un();
-  kt();
-  Du();
-  fb();
-  Il();
-  Lo();
-  RE();
-  fn();
-  sp();
-  co();
-  jG();
-  dr();
-  Jt();
-  Mp();
-  pMo();
-  Hoe();
-  ((kqo = (xqo(), ro(ylc))),
-    (Znm = (Eoe(), ro(Ope))),
-    (erm = (u0o(), ro(c0o))),
-    (Rqo = [...fv, "cliArg", "command", "session", "toolsNarrowing", "mcpServerPolicy"]),
-    (trm = new Set([])));
-});
+// [unwrapped __esm module Gy] deps: Uge, Sae, Ox, fh, eit, N6e, tWt, NB, sN, je, At, vn, lg, vf, sr, rcr, clc, CYn, DFn, DE, $I, QH, fre, ft, Un, kt, Du, fb, Il, Lo, RE, fn, sp, co, jG, dr, Jt, Mp, pMo, Hoe
+((kqo = (xqo(), ro(ylc))),
+  (Znm = (Eoe(), ro(Ope))),
+  (erm = (u0o(), ro(c0o))),
+  (Rqo = [...fv, "cliArg", "command", "session", "toolsNarrowing", "mcpServerPolicy"]),
+  (trm = new Set([])));
 var T6n = {};
 _t(T6n, {
   verifyAutoModeGateAccess: () => verifyAutoModeGateAccess,

@@ -4,14 +4,13 @@
 // class=new  jaccard=0.003  score=0.378  fileCov=0.003
 // note: nearest: src/screens/REPL.tsx (0.003); dir inferred from dep-graph -> query; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FQn = E(() => {
-  YKt = {
-    tasks: 0,
-    queued: 0,
-    kinds: [],
-    items: []
-  };
-});
+// [unwrapped __esm module FQn]
+YKt = {
+  tasks: 0,
+  queued: 0,
+  kinds: [],
+  items: []
+};
 function jQn() {
   return QKt.useSyncExternalStore(sz.subscribe, () => sz.getState().value);
 }

@@ -4,28 +4,17 @@
 // class=partial  jaccard=0.175  score=0.5708  fileCov=0.2016
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vi = E(() => {
-  fH();
-  O0();
-  GLn();
-  Ye();
-  vzi();
-  kzi();
-  Cc();
-  Bs();
-  Ko();
-  eE();
-  Pzi = R(lt(), 1), hbe = R(rt(), 1), N0 = R(se(), 1), Dzi = N0.jsxs(Tn, {
-    children: [N0.jsx(ht, {
-      chord: "enter",
-      action: "confirm"
-    }), N0.jsx(mr, {
-      action: "confirm:no",
-      context: "Confirmation",
-      fallback: "Esc",
-      description: "cancel"
-    })]
-  });
+// [unwrapped __esm module vi] deps: fH, O0, GLn, Ye, vzi, kzi, Cc, Bs, Ko, eE
+Pzi = R(lt(), 1), hbe = R(rt(), 1), N0 = R(se(), 1), Dzi = N0.jsxs(Tn, {
+  children: [N0.jsx(ht, {
+    chord: "enter",
+    action: "confirm"
+  }), N0.jsx(mr, {
+    action: "confirm:no",
+    context: "Confirmation",
+    fallback: "Esc",
+    description: "cancel"
+  })]
 });
 function Va(e) {
   let t = Mzi.c(4),

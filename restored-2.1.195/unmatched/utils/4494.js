@@ -4,13 +4,11 @@
 // class=new  jaccard=0.0271  score=0.1541  fileCov=0.0318
 // note: nearest: node_modules/jwa/index.js (0.0271); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yfe = E(() => {
-  tne();
-  QKt = R(rt(), 1), sz = uL({
-    value: "",
-    active: false,
-    launchWarning: null
-  });
+// [unwrapped __esm module yfe] deps: tne
+QKt = R(rt(), 1), sz = uL({
+  value: "",
+  active: false,
+  launchWarning: null
 });
 async function SSt(e) {
   try {

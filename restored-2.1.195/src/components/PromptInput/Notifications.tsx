@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.2592  score=0.5583  fileCov=0.3261
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Uhc = E(() => {
-  Ed();
-  Ye();
-  Un();
-  kt();
-  $hc();
-  vn();
-  ((Nhc = R(lt(), 1)), (odr = R(rt(), 1)), (rdr = R(se(), 1)));
-});
+// [unwrapped __esm module Uhc] deps: Ed, Ye, Un, kt, $hc, vn
+((Nhc = R(lt(), 1)), (odr = R(rt(), 1)), (rdr = R(se(), 1)));
 function idr(e) {
   let t = jhc.c(40),
     {

@@ -4,15 +4,8 @@
 // class=modified  jaccard=0.3793  score=0.5421  fileCov=0.5581
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var n4l = E(() => {
-  si();
-  Ye();
-  je();
-  At();
-  vrr();
-  sr();
-  ((Zjl = R(lt(), 1)), (e4l = R(rt(), 1)), (EUo = R(se(), 1)));
-});
+// [unwrapped __esm module n4l] deps: si, Ye, je, At, vrr, sr
+((Zjl = R(lt(), 1)), (e4l = R(rt(), 1)), (EUo = R(se(), 1)));
 function $Bf(e) {
   let t = AXt.c(4),
     { onComplete: n } = e,

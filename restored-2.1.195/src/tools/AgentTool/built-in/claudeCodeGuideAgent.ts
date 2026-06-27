@@ -4,71 +4,61 @@
 // class=modified  jaccard=0.3431  score=0.7057  fileCov=0.4005
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var N$o = E(() => {
-  lf();
-  EI();
-  lC();
-  TX();
-  Rct();
-  oo();
-  f6();
-  dr();
-  _m();
-  Jt();
-  yLl = {
-    agentType: O$o,
-    whenToUse: `Use this agent when the user asks questions ("Can Claude...", "Does Claude...", "How do I...") about: (1) Claude Code (the CLI tool) - features, hooks, slash commands, MCP servers, settings, IDE integrations, keyboard shortcuts; (2) Claude Agent SDK - building custom agents; (3) Claude API (formerly Anthropic API) - API usage, tool use, Anthropic SDK usage. **IMPORTANT:** Before spawning a new agent, check if there is already a running or recently completed claude-code-guide agent that you can continue via ${Ly}.`,
-    get tools() {
-      return hC() && Su() ? [Co, Ds, Sb, GW] : [wu, qc, Ds, Sb, GW];
-    },
-    source: "built-in",
-    baseDir: "built-in",
-    model: "haiku",
-    permissionMode: "dontAsk",
-    getSystemPrompt({ toolUseContext: e }) {
-      let t = e.options.commands,
-        n = [],
-        r = t.filter((u) => u.type === "prompt");
-      if (r.length > 0) {
-        let u = r.map((d) => `- /${d.name}: ${d.description}`).join(`
+// [unwrapped __esm module N$o] deps: lf, EI, lC, TX, Rct, oo, f6, dr, _m, Jt
+yLl = {
+  agentType: O$o,
+  whenToUse: `Use this agent when the user asks questions ("Can Claude...", "Does Claude...", "How do I...") about: (1) Claude Code (the CLI tool) - features, hooks, slash commands, MCP servers, settings, IDE integrations, keyboard shortcuts; (2) Claude Agent SDK - building custom agents; (3) Claude API (formerly Anthropic API) - API usage, tool use, Anthropic SDK usage. **IMPORTANT:** Before spawning a new agent, check if there is already a running or recently completed claude-code-guide agent that you can continue via ${Ly}.`,
+  get tools() {
+    return hC() && Su() ? [Co, Ds, Sb, GW] : [wu, qc, Ds, Sb, GW];
+  },
+  source: "built-in",
+  baseDir: "built-in",
+  model: "haiku",
+  permissionMode: "dontAsk",
+  getSystemPrompt({ toolUseContext: e }) {
+    let t = e.options.commands,
+      n = [],
+      r = t.filter((u) => u.type === "prompt");
+    if (r.length > 0) {
+      let u = r.map((d) => `- /${d.name}: ${d.description}`).join(`
 `);
-        n.push(`**Available custom skills in this project:**
+      n.push(`**Available custom skills in this project:**
 ${u}`);
-      }
-      let o = e.options.agentDefinitions.activeAgents.filter((u) => u.source !== "built-in");
-      if (o.length > 0) {
-        let u = o.map((d) => `- ${d.agentType}: ${d.whenToUse}`).join(`
+    }
+    let o = e.options.agentDefinitions.activeAgents.filter((u) => u.source !== "built-in");
+    if (o.length > 0) {
+      let u = o.map((d) => `- ${d.agentType}: ${d.whenToUse}`).join(`
 `);
-        n.push(`**Available custom agents configured:**
+      n.push(`**Available custom agents configured:**
 ${u}`);
-      }
-      let s = e.options.mcpClients;
-      if (s && s.length > 0) {
-        let u = s.map((d) => `- ${d.name}`).join(`
+    }
+    let s = e.options.mcpClients;
+    if (s && s.length > 0) {
+      let u = s.map((d) => `- ${d.name}`).join(`
 `);
-        n.push(`**Configured MCP servers:**
+      n.push(`**Configured MCP servers:**
 ${u}`);
-      }
-      let i = t.filter((u) => u.type === "prompt" && u.source === "plugin");
-      if (i.length > 0) {
-        let u = i.map((d) => `- /${d.name}: ${d.description}`).join(`
+    }
+    let i = t.filter((u) => u.type === "prompt" && u.source === "plugin");
+    if (i.length > 0) {
+      let u = i.map((d) => `- /${d.name}: ${d.description}`).join(`
 `);
-        n.push(`**Available plugin skills:**
+      n.push(`**Available plugin skills:**
 ${u}`);
-      }
-      let a = jo();
-      if (Object.keys(a).length > 0) {
-        let u = De(a, null, 2);
-        n.push(`**User's settings.json:**
+    }
+    let a = jo();
+    if (Object.keys(a).length > 0) {
+      let u = De(a, null, 2);
+      n.push(`**User's settings.json:**
 \`\`\`json
 ${u}
 \`\`\``);
-      }
-      let l = Nxf(),
-        c = `${Oxf()}
+    }
+    let l = Nxf(),
+      c = `${Oxf()}
 ${l}`;
-      if (n.length > 0)
-        return `${c}
+    if (n.length > 0)
+      return `${c}
 
 ---
 
@@ -81,10 +71,9 @@ ${n.join(`
 `)}
 
 When answering questions, consider these configured features and proactively suggest them when relevant.`;
-      return c;
-    },
-  };
-});
+    return c;
+  },
+};
 function Bxf() {
   let e = Su(),
     t = e ? Co : Ss,

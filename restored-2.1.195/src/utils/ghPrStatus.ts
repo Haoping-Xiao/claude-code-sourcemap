@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1142  score=0.1209  fileCov=0.6732
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var q$a = E(() => {
-  Bi();
-  _0();
-  Mx();
-  Pgo = new Map();
-});
+// [unwrapped __esm module q$a] deps: Bi, _0, Mx
+Pgo = new Map();
 function Q$a(e, t) {
   if (e) return "draft";
   switch (t) {

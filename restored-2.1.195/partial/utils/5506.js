@@ -4,13 +4,6 @@
 // class=partial  jaccard=0.0921  score=0.5794  fileCov=0.0987
 // note: low-confidence suggestion: src/tools/TaskUpdateTool/TaskUpdateTool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var izo = E(() => {
-  Hp();
-  Rc();
-  dn();
-  je();
-  Cv();
-});
 function qbc(e, t) {
   let n = _l(t, e);
   if (n) return n;

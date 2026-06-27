@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0063  score=0.421  fileCov=0.0064
 // note: nearest: src/cli/print.ts (0.0063); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DUc = E(() => {
-  kt();
-  jc();
-  pXo();
-  C5e();
-  ELm = new Set(["tengu_message_rated", "tengu_feedback_survey_event"]);
-});
+// [unwrapped __esm module DUc] deps: kt, jc, pXo, C5e
+ELm = new Set(["tengu_message_rated", "tengu_feedback_survey_event"]);
 function PUc({
   requestedAgent: e,
   agents: t,

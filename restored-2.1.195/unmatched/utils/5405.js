@@ -4,15 +4,11 @@
 // class=new  jaccard=0.0344  score=0.2991  fileCov=0.0374
 // note: nearest: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Umc = E(() => {
-  hNe();
-  Ld();
-  U_t();
-  nen = R(rt(), 1), Ncm = {
-    refusal_fallback_prompt: "choose: retry on fallback model or edit prompt",
-    fable_overage_consent_prompt: "choose: continue Fable 5 on usage credits or switch models"
-  };
-});
+// [unwrapped __esm module Umc] deps: hNe, Ld, U_t
+nen = R(rt(), 1), Ncm = {
+  refusal_fallback_prompt: "choose: retry on fallback model or edit prompt",
+  fable_overage_consent_prompt: "choose: continue Fable 5 on usage credits or switch models"
+};
 function jmc() {
   let e = ATt(),
     t = e?.kind === y8e.kind;

@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0143  score=0.379  fileCov=0.0147
 // note: nearest: src/utils/sessionStorage.ts (0.0143); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VZl = E(() => {
-  O7n();
-  jS();
-});
 async function zZl(e, t, n = {}) {
   if (!FS(e)) throw Error(`Invalid sessionId: ${e}`);
   if (!t.trim()) throw Error("title must be non-empty");

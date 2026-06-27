@@ -4,9 +4,6 @@
 // class=new  jaccard=0.004  score=0.2671  fileCov=0.0041
 // note: nearest: src/utils/attachments.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LDo = E(() => {
-  es();
-});
 async function nwl(e) {
   if (!lu()) return null;
   if (!(HKt.resolve(e) === HKt.resolve(T_e()) || HKt.basename(e) === uH && N3e(e))) return null;

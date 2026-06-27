@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.4791  score=0.6034  fileCov=0.6994
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TPn = E(() => {
-  Xce();
-  ((szi = R(lt(), 1)), (izi = R(se(), 1)));
-});
+// [unwrapped __esm module TPn] deps: Xce
+((szi = R(lt(), 1)), (izi = R(se(), 1)));
 function Czd(e, t, n, r) {
   let o = 2 + t + 2;
   return Math.max(1, e - o - n - r);

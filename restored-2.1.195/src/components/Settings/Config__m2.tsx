@@ -4,60 +4,19 @@
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0476  score=0.3224  fileCov=0.0529
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var s1o = E(() => {
-  Ye();
-  er();
-  Rnt();
-  Fh();
-  DE();
-  __();
-  je();
-  kt();
-  dn();
-  SC();
-  EHe();
-  DD();
-  vM();
-  Ao();
-  h7t();
-  gb();
-  j_e();
-  BRt();
-  m0();
-  aE();
-  dr();
-  HU();
-  ft();
-  UX();
-  G4();
-  fn();
-  Un();
-  lH();
-  rze();
-  S7t();
-  n1o();
-  sre();
-  sA();
-  NDe();
-  cAe();
-  L0o();
-  NE();
-  uf();
-  rtr();
-  Xa();
-  o1o = R(rt(), 1);
-  tRf = new Map([
-    ["jp", "ja"],
-    ["kr", "ko"],
-    ["cn", "zh"],
-    ["tw", "zh-Hant"],
-  ]);
-  hMl = {
-    setGlobalConfig: r1o,
-    setSettingsData: r1o,
-    setChanges: r1o,
-  };
-});
+// [unwrapped __esm module s1o] deps: Ye, er, Rnt, Fh, DE, __, je, kt, dn, SC, EHe, DD, vM, Ao, h7t, gb, j_e, BRt, m0, aE, dr, HU, ft, UX, G4, fn, Un, lH, rze, S7t, n1o, sre, sA, NDe, cAe, L0o, NE, uf, rtr, Xa
+o1o = R(rt(), 1);
+tRf = new Map([
+  ["jp", "ja"],
+  ["kr", "ko"],
+  ["cn", "zh"],
+  ["tw", "zh-Hant"],
+]);
+hMl = {
+  setGlobalConfig: r1o,
+  setSettingsData: r1o,
+  setChanges: r1o,
+};
 var yMl = {};
 _t(yMl, {
   parseConfigShorthand: () => parseConfigShorthand,

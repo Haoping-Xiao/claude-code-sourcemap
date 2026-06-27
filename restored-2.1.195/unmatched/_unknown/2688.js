@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0208  score=0.4184  fileCov=0.0214
 // note: nearest: node_modules/node-forge/lib/util.js (0.0208); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UFt = E(() => {
-  Vlt();
-});
 function FFt() {
   if (globalThis[ino] == null) {
     let e = new globalThis.TextEncoder(),

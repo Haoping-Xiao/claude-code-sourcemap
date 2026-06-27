@@ -4,13 +4,8 @@
 // class=modified (alt of src/tools/AgentTool/agentDisplay.ts)  jaccard=0.1395  score=0.8044  fileCov=0.1444
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var t4o = E(() => {
-  ft();
-  uo();
-  LL();
-  TJt();
-  eYl = R(rt(), 1);
-});
+// [unwrapped __esm module t4o] deps: ft, uo, LL, TJt
+eYl = R(rt(), 1);
 function tYl(e, t) {
   let n = new Map();
   for (let s of t) n.set(s.agentType, s);

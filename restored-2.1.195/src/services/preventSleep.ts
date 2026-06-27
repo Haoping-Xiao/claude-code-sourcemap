@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.145  score=0.4001  fileCov=0.1852
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wmc = E(() => {
-  Ye();
-  Un();
-  er();
-  fn();
-  es();
-  mE();
-  vi();
-  ((Hmc = R(lt(), 1)), (STt = R(se(), 1)));
-});
+// [unwrapped __esm module wmc] deps: Ye, Un, er, fn, es, mE, vi
+((Hmc = R(lt(), 1)), (STt = R(se(), 1)));
 function xmc() {
   if ((r7e++, r7e === 1)) {
     if (zse !== null) (clearTimeout(zse), (zse = null));

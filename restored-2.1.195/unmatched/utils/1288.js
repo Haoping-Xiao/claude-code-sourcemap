@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0053  score=0.4308  fileCov=0.0054
 // note: nearest: src/services/api/claude.ts (0.0053); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var e1 = E(() => {
-  oo();
-  er();
-  wr();
-});
 function I7s() {
   return null;
 }

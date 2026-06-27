@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.7302  score=0.8634  fileCov=0.8257
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ygc = E(() => {
-  ft();
-  je();
-  At();
-  ys();
-  co();
-  y_();
-  _a();
-  jS();
-  Jt();
-  ggc = require("fs/promises");
-});
+// [unwrapped __esm module ygc] deps: ft, je, At, ys, co, y_, _a, jS, Jt
+ggc = require("fs/promises");
 class k8o {
   _active = false;
   _pending = [];

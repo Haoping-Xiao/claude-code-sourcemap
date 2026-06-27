@@ -4,23 +4,8 @@
 // class=new  jaccard=0.0223  score=0.2641  fileCov=0.0237
 // note: nearest: src/ink/styles.ts (0.0223); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uFl = E(() => {
-  kt();
-  Ko();
-  CH();
-  Mg();
-  Rc();
-  _i();
-  jh();
-  Ye();
-  S9e();
-  oo();
-  je();
-  At();
-  lT();
-  vn();
-  aFl = R(lt(), 1), ZF = R(rt(), 1), ry = R(se(), 1);
-});
+// [unwrapped __esm module uFl] deps: kt, Ko, CH, Mg, Rc, _i, jh, Ye, S9e, oo, je, At, lT, vn
+aFl = R(lt(), 1), ZF = R(rt(), 1), ry = R(se(), 1);
 function pFl(e) {
   let t = dFl.c(8),
     {

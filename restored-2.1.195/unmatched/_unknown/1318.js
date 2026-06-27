@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vJs = E(() => {
-  AJs();
-  Nld = tEn;
-});
+// [unwrapped __esm module vJs] deps: AJs
+Nld = tEn;

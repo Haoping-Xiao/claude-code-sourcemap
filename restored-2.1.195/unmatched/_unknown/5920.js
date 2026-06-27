@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0283  score=0.1047  fileCov=0.0373
 // note: nearest: node_modules/@azure/core-rest-pipeline/dist/esm/policies/bearerTokenAuthenticationPolicy.js (0.0283); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ejc = E(() => {
-  ZXo();
-  agr();
-  wm();
-});
 class Inn {
   constructor(e) {
     this._flattened = new JNe(e);

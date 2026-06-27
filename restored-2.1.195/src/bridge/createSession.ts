@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.378  score=0.5129  fileCov=0.5896
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $Po = E(() => {
-  Mx();
-});
 var Dze = {};
 _t(Dze, {
   updateBridgeSessionTitle: () => updateBridgeSessionTitle,

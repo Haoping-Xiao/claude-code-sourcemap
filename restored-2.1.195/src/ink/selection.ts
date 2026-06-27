@@ -4,42 +4,35 @@
 // class=modified  jaccard=0.1836  score=0.4465  fileCov=0.2377
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bW = E(() => {
-  jit();
-  je();
-  Rit();
-  m8();
-  one();
-  OXr();
-  ((z3i = {
+// [unwrapped __esm module bW] deps: jit, je, Rit, m8, one, OXr
+((z3i = {
+  type: "ansi",
+  code: "\x1B[7m",
+  endCode: "\x1B[27m",
+}),
+  (R3d = {
     type: "ansi",
-    code: "\x1B[7m",
-    endCode: "\x1B[27m",
+    code: "\x1B[1m",
+    endCode: "\x1B[22m",
   }),
-    (R3d = {
-      type: "ansi",
-      code: "\x1B[1m",
-      endCode: "\x1B[22m",
-    }),
-    (L3d = {
-      type: "ansi",
-      code: "\x1B[4m",
-      endCode: "\x1B[24m",
-    }),
-    (D3d = {
-      type: "ansi",
-      code: "\x1B[33m",
-      endCode: "\x1B[39m",
-    }));
-  P3d = new Set(["\x1B[49m", "\x1B[27m", "\x1B[24m", "\x1B[29m", "\x1B[55m"]);
-  ((O3d = (1 << (32 - dGe)) - 1), (UXr = O3d >>> 1));
-  Ane = {
-    HardBreak: 0,
-    Continuation: 1,
-    ContinuationElidedSep: 2,
-  };
-  ((eGi = new RegExp(`^${l8}\\]8${$ke}${$ke}([^${$M}]*)${$M}$`)), (s0e = `${l8}]8${$ke}`));
-});
+  (L3d = {
+    type: "ansi",
+    code: "\x1B[4m",
+    endCode: "\x1B[24m",
+  }),
+  (D3d = {
+    type: "ansi",
+    code: "\x1B[33m",
+    endCode: "\x1B[39m",
+  }));
+P3d = new Set(["\x1B[49m", "\x1B[27m", "\x1B[24m", "\x1B[29m", "\x1B[55m"]);
+((O3d = (1 << (32 - dGe)) - 1), (UXr = O3d >>> 1));
+Ane = {
+  HardBreak: 0,
+  Continuation: 1,
+  ContinuationElidedSep: 2,
+};
+((eGi = new RegExp(`^${l8}\\]8${$ke}${$ke}([^${$M}]*)${$M}$`)), (s0e = `${l8}]8${$ke}`));
 function sGi() {
   return {
     anchor: null,

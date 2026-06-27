@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.3371  score=0.56  fileCov=0.4586
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Q$c = E(() => {
-  Ye();
-  mE();
-  vi();
-  qNo();
-  ((X$c = R(lt(), 1)), (Evt = R(se(), 1)));
-});
+// [unwrapped __esm module Q$c] deps: Ye, mE, vi, qNo
+((X$c = R(lt(), 1)), (Evt = R(se(), 1)));
 var eOc = {};
 _t(eOc, {
   TeleportRepoMismatchDialog: () => TeleportRepoMismatchDialog,

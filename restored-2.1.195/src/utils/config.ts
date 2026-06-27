@@ -4,21 +4,6 @@
 // class=modified  jaccard=0.3563  score=0.5887  fileCov=0.4744
 // note: deminified; 41 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SC = E(() => {
-  ft();
-  Rc();
-  Un();
-  GY();
-  jc();
-  oo();
-  er();
-  je();
-  wr();
-  fn();
-  Ls();
-  qd();
-  Sx();
-});
 var NQ = {};
 _t(NQ, {
   shouldSkipPluginAutoupdate: () => shouldSkipPluginAutoupdate,

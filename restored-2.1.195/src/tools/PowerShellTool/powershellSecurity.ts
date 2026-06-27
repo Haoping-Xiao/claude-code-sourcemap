@@ -4,67 +4,53 @@
 // class=modified  jaccard=0.1833  score=0.4099  fileCov=0.249
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mTl = E(() => {
-  ZLo();
-  bde();
-  lTl();
-  dze();
-  cTl = new Set(["pwsh", "pwsh.exe", "powershell", "powershell.exe"]);
-  $bf = new Set(["/", "\u2013", "\u2014", "\u2015"]);
-  Fbf = new Set([
-    "invoke-webrequest",
-    "iwr",
-    "invoke-restmethod",
-    "irm",
-    "new-object",
-    "start-bitstransfer",
-  ]);
-  pTl = new Set([
-    "where-object",
-    "sort-object",
-    "select-object",
-    "group-object",
-    "format-table",
-    "format-list",
-    "format-wide",
-    "format-custom",
-  ]);
-  rSf = new Set([
-    "register-scheduledtask",
-    "new-scheduledtask",
-    "new-scheduledtaskaction",
-    "set-scheduledtask",
-  ]);
-  sSf = new Set([
-    "set-item",
-    "si",
-    "new-item",
-    "ni",
-    "remove-item",
-    "ri",
-    "del",
-    "rm",
-    "rd",
-    "rmdir",
-    "erase",
-    "clear-item",
-    "cli",
-    "set-content",
-    "add-content",
-    "ac",
-  ]);
-  lSf = new Set([
-    "set-alias",
-    "sal",
-    "new-alias",
-    "nal",
-    "set-variable",
-    "sv",
-    "new-variable",
-    "nv",
-  ]);
-  uSf = new Set(["invoke-wmimethod", "iwmi", "invoke-cimmethod"]);
-});
+// [unwrapped __esm module mTl] deps: ZLo, bde, lTl, dze
+cTl = new Set(["pwsh", "pwsh.exe", "powershell", "powershell.exe"]);
+$bf = new Set(["/", "\u2013", "\u2014", "\u2015"]);
+Fbf = new Set([
+  "invoke-webrequest",
+  "iwr",
+  "invoke-restmethod",
+  "irm",
+  "new-object",
+  "start-bitstransfer",
+]);
+pTl = new Set([
+  "where-object",
+  "sort-object",
+  "select-object",
+  "group-object",
+  "format-table",
+  "format-list",
+  "format-wide",
+  "format-custom",
+]);
+rSf = new Set([
+  "register-scheduledtask",
+  "new-scheduledtask",
+  "new-scheduledtaskaction",
+  "set-scheduledtask",
+]);
+sSf = new Set([
+  "set-item",
+  "si",
+  "new-item",
+  "ni",
+  "remove-item",
+  "ri",
+  "del",
+  "rm",
+  "rd",
+  "rmdir",
+  "erase",
+  "clear-item",
+  "cli",
+  "set-content",
+  "add-content",
+  "ac",
+]);
+lSf = new Set(["set-alias", "sal", "new-alias", "nal", "set-variable", "sv", "new-variable", "nv"]);
+uSf = new Set(["invoke-wmimethod", "iwmi", "invoke-cimmethod"]);
 function mSf(e) {
   let t = e.name.toLowerCase(),
     n = t.slice(Math.max(t.lastIndexOf("\\"), t.lastIndexOf("/")) + 1);

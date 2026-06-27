@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2598  score=0.3998  fileCov=0.4258
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var $$c = E(() => {
-  Ye();
-  Yp();
-  Fy();
-  vi();
-  ((P$c = R(lt(), 1)), (GNe = R(se(), 1)));
-});
+// [unwrapped __esm module $$c] deps: Ye, Yp, Fy, vi
+((P$c = R(lt(), 1)), (GNe = R(se(), 1)));
 var N$c = {};
 _t(N$c, {
   ClaudeInChromeOnboarding: () => ClaudeInChromeOnboarding,

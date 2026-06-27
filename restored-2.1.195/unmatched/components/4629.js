@@ -4,25 +4,8 @@
 // class=new  jaccard=0.0208  score=0.6323  fileCov=0.0211
 // note: nearest: src/keybindings/validate.ts (0.0208); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var utr = E(() => {
-  O0();
-  _i();
-  Ye();
-  Yj();
-  ps();
-  nk();
-  uo();
-  j_e();
-  Yp();
-  dr();
-  mE();
-  Bs();
-  E8e();
-  Ko();
-  gBn();
-  Kut();
-  xMl = R(lt(), 1), kMl = R(rt(), 1), gE = R(se(), 1);
-});
+// [unwrapped __esm module utr] deps: O0, _i, Ye, Yj, ps, nk, uo, j_e, Yp, dr, mE, Bs, E8e, Ko, gBn, Kut
+xMl = R(lt(), 1), kMl = R(rt(), 1), gE = R(se(), 1);
 function GRf() {
   let e = x0()?.model_notices;
   if (typeof e !== "object" || e === null || Array.isArray(e)) return {};

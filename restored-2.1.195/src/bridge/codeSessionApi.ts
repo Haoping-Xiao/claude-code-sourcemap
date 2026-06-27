@@ -4,15 +4,6 @@
 // class=modified  jaccard=0.54  score=0.6539  fileCov=0.7562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wgc = E(() => {
-  P8o();
-  M8o();
-  je();
-  At();
-  kM();
-  sVe();
-  qir();
-});
 function Cgc(e) {
   return {
     Authorization: `Bearer ${e}`,

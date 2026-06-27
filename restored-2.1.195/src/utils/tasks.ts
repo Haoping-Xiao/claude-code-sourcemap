@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.251  score=0.8777  fileCov=0.2601
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Fgo = E(() => {
-  (($Dp = ["id", "task_id"]), (ODp = ["active_form"]));
-});
+// [unwrapped __esm module Fgo]
+(($Dp = ["id", "task_id"]), (ODp = ["active_form"]));
 function yOa(e) {
   if (jgo === e) return;
   ((jgo = e), dWt());

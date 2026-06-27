@@ -4,139 +4,121 @@
 // class=modified (alt of src/utils/git.ts)  jaccard=0.1401  score=0.4304  fileCov=0.172
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sa = E(() => {
-  Qi();
-  ft();
-  ufn();
-  id();
-  dn();
-  Rm();
-  Lo();
-  je();
-  Mm();
-  Bi();
-  ys();
-  dfn();
-  gM();
-  Mx();
-  SG();
-  sr();
-  _0();
-  ((zTs = require("crypto")),
-    (hM = require("fs")),
-    (whe = require("fs/promises")),
-    (KTs = require("os")),
-    (yu = require("path")),
-    (YTs = Symbol("git-root-not-found")),
-    (FTs = JC(
-      (e) => {
-        let t = Date.now();
-        In("info", "find_git_root_started");
-        let n = yu.resolve(e),
-          r = n.substring(0, n.indexOf(yu.sep) + 1) || yu.sep,
-          o = 0;
-        while (n !== r) {
-          try {
-            let i = yu.join(n, ".git");
-            o++;
-            let a = hM.statSync(i);
-            if (a.isDirectory() || a.isFile())
-              return (
-                In("info", "find_git_root_completed", {
-                  duration_ms: Date.now() - t,
-                  stat_count: o,
-                  found: true,
-                }),
-                o_(n)
-              );
-          } catch {}
-          let s = yu.dirname(n);
-          if (s === n) break;
-          n = s;
-        }
+// [unwrapped __esm module sa] deps: Qi, ft, ufn, id, dn, Rm, Lo, je, Mm, Bi, ys, dfn, gM, Mx, SG, sr, _0
+((zTs = require("crypto")),
+  (hM = require("fs")),
+  (whe = require("fs/promises")),
+  (KTs = require("os")),
+  (yu = require("path")),
+  (YTs = Symbol("git-root-not-found")),
+  (FTs = JC(
+    (e) => {
+      let t = Date.now();
+      In("info", "find_git_root_started");
+      let n = yu.resolve(e),
+        r = n.substring(0, n.indexOf(yu.sep) + 1) || yu.sep,
+        o = 0;
+      while (n !== r) {
         try {
-          let s = yu.join(r, ".git");
+          let i = yu.join(n, ".git");
           o++;
-          let i = hM.statSync(s);
-          if (i.isDirectory() || i.isFile())
+          let a = hM.statSync(i);
+          if (a.isDirectory() || a.isFile())
             return (
               In("info", "find_git_root_completed", {
                 duration_ms: Date.now() - t,
                 stat_count: o,
                 found: true,
               }),
-              o_(r)
+              o_(n)
             );
         } catch {}
-        return (
-          In("info", "find_git_root_completed", {
-            duration_ms: Date.now() - t,
-            stat_count: o,
-            found: false,
-          }),
-          YTs
-        );
-      },
-      (e) => e,
-      50,
-    )),
-    (Tu = M$u()));
-  ((jTs = JC(
-    (e) => {
-      try {
-        let t = hM.readFileSync(yu.join(e, ".git"), "utf-8").trim();
-        if (!t.startsWith("gitdir:")) return e;
-        let n = t.slice(7).trim(),
-          r = yu.resolve(e, n),
-          o = hM.readFileSync(yu.join(r, "commondir"), "utf-8").trim(),
-          s = yu.resolve(r, o);
-        if (yu.resolve(yu.dirname(r)) !== yu.join(s, "worktrees")) return e;
-        if (
-          hM.realpathSync(hM.readFileSync(yu.join(r, "gitdir"), "utf-8").trim()) !==
-          yu.join(hM.realpathSync(e), ".git")
-        )
-          return e;
-        if (yu.basename(s) !== ".git") return o_(s);
-        return o_(yu.dirname(s));
-      } catch {
-        return e;
+        let s = yu.dirname(n);
+        if (s === n) break;
+        n = s;
       }
+      try {
+        let s = yu.join(r, ".git");
+        o++;
+        let i = hM.statSync(s);
+        if (i.isDirectory() || i.isFile())
+          return (
+            In("info", "find_git_root_completed", {
+              duration_ms: Date.now() - t,
+              stat_count: o,
+              found: true,
+            }),
+            o_(r)
+          );
+      } catch {}
+      return (
+        In("info", "find_git_root_completed", {
+          duration_ms: Date.now() - t,
+          stat_count: o,
+          found: false,
+        }),
+        YTs
+      );
     },
     (e) => e,
     50,
   )),
-    (qf = $$u()));
-  ((go = Cn(() => zV("git") || "git")),
-    (cb = Cn(
-      async () => {
-        let e = Date.now();
-        In("info", "is_git_check_started");
-        let t = Tu($t()) !== null;
-        return (
-          In("info", "is_git_check_completed", {
-            duration_ms: Date.now() - e,
-            is_git: t,
-          }),
-          t
-        );
-      },
-      () => Rt(),
-    )));
-  iRr = Symbol("remote-slug-not-found");
-  B$u = JC(
-    (e) => {
-      let t = N$u(e);
-      if (!t) return iRr;
-      let n = (r) => {
-        let o = G0r(t, "remote", "origin", r);
-        return o ? KFe(o) : null;
-      };
-      return n("pushurl") ?? n("url") ?? iRr;
+  (Tu = M$u()));
+((jTs = JC(
+  (e) => {
+    try {
+      let t = hM.readFileSync(yu.join(e, ".git"), "utf-8").trim();
+      if (!t.startsWith("gitdir:")) return e;
+      let n = t.slice(7).trim(),
+        r = yu.resolve(e, n),
+        o = hM.readFileSync(yu.join(r, "commondir"), "utf-8").trim(),
+        s = yu.resolve(r, o);
+      if (yu.resolve(yu.dirname(r)) !== yu.join(s, "worktrees")) return e;
+      if (
+        hM.realpathSync(hM.readFileSync(yu.join(r, "gitdir"), "utf-8").trim()) !==
+        yu.join(hM.realpathSync(e), ".git")
+      )
+        return e;
+      if (yu.basename(s) !== ".git") return o_(s);
+      return o_(yu.dirname(s));
+    } catch {
+      return e;
+    }
+  },
+  (e) => e,
+  50,
+)),
+  (qf = $$u()));
+((go = Cn(() => zV("git") || "git")),
+  (cb = Cn(
+    async () => {
+      let e = Date.now();
+      In("info", "is_git_check_started");
+      let t = Tu($t()) !== null;
+      return (
+        In("info", "is_git_check_completed", {
+          duration_ms: Date.now() - e,
+          is_git: t,
+        }),
+        t
+      );
     },
-    (e) => e,
-    50,
-  );
-});
+    () => Rt(),
+  )));
+iRr = Symbol("remote-slug-not-found");
+B$u = JC(
+  (e) => {
+    let t = N$u(e);
+    if (!t) return iRr;
+    let n = (r) => {
+      let o = G0r(t, "remote", "origin", r);
+      return o ? KFe(o) : null;
+    };
+    return n("pushurl") ?? n("url") ?? iRr;
+  },
+  (e) => e,
+  50,
+);
 async function Efn(e, t) {
   let { code: n } = await Gr("git", ["check-ignore", "--", e], {
     preserveOutputOnError: false,

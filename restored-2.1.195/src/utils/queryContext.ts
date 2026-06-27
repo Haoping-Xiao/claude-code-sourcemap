@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2844  score=0.3991  fileCov=0.4975
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gUc = E(() => {
-  kt();
-  je();
-});
 async function aXo({
   tools: e,
   mainLoopModel: t,

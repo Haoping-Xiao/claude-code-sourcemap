@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1144  score=0.2111  fileCov=0.1997
 // note: low-confidence suggestion: node_modules/protobufjs/src/reader.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ono = E(() => {
-  Jlt();
-  fep = yue("Chlnb29nbGUvcHJvdG9idWYvYW55LnByb3RvEg9nb29nbGUucHJvdG9idWYiJgoDQW55EhAKCHR5cGVfdXJsGAEgASgJEg0KBXZhbHVlGAIgASgMQnYKE2NvbS5nb29nbGUucHJvdG9idWZCCEFueVByb3RvUAFaLGdvb2dsZS5nb2xhbmcub3JnL3Byb3RvYnVmL3R5cGVzL2tub3duL2FueXBiogIDR1BCqgIeR29vZ2xlLlByb3RvYnVmLldlbGxLbm93blR5cGVzYgZwcm90bzM"), SRe = sk(fep, 0);
-});
+// [unwrapped __esm module Ono] deps: Jlt
+fep = yue("Chlnb29nbGUvcHJvdG9idWYvYW55LnByb3RvEg9nb29nbGUucHJvdG9idWYiJgoDQW55EhAKCHR5cGVfdXJsGAEgASgJEg0KBXZhbHVlGAIgASgMQnYKE2NvbS5nb29nbGUucHJvdG9idWZCCEFueVByb3RvUAFaLGdvb2dsZS5nb2xhbmcub3JnL3Byb3RvYnVmL3R5cGVzL2tub3duL2FueXBiogIDR1BCqgIeR29vZ2xlLlByb3RvYnVmLldlbGxLbm93blR5cGVzYgZwcm90bzM"), SRe = sk(fep, 0);
 function gep(e) {
   return e ? Object.assign(Object.assign({}, BZi), e) : BZi;
 }

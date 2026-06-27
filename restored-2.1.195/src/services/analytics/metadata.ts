@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.4716  score=0.7383  fileCov=0.5663
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kst = E(() => {
-  ((wzr = [
-    "/v2/session_ingress/shttp/mcp/",
-    "/v2/session_ingress/mcp/ws/",
-    "/v2/ccr-sessions/",
-    "/v1/code/",
-  ]),
-    (O$d = process.env.SESSION_INGRESS_URL ?? process.env.ANTHROPIC_BASE_URL));
-  N$d = new Set(["bridge.claudeusercontent.com", "bridge-staging.claudeusercontent.com"]);
-});
+// [unwrapped __esm module kst]
+((wzr = [
+  "/v2/session_ingress/shttp/mcp/",
+  "/v2/session_ingress/mcp/ws/",
+  "/v2/ccr-sessions/",
+  "/v1/code/",
+]),
+  (O$d = process.env.SESSION_INGRESS_URL ?? process.env.ANTHROPIC_BASE_URL));
+N$d = new Set(["bridge.claudeusercontent.com", "bridge-staging.claudeusercontent.com"]);
 var Co = "Bash";
 function Cf(e) {
   if (e == null) return;

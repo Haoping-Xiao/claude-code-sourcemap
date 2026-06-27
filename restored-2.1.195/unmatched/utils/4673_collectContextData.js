@@ -4,17 +4,8 @@
 // class=new  jaccard=0.0066  score=0.7367  fileCov=0.0066
 // note: nearest: src/cli/print.ts (0.0066); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var T1l = E(() => {
-  A1l();
-  id();
-  mZn();
-  At();
-  uf();
-  co();
-  LPe();
-  lNo();
-  cNo = R(se(), 1);
-});
+// [unwrapped __esm module T1l] deps: A1l, id, mZn, At, uf, co, LPe, lNo
+cNo = R(se(), 1);
 var uNo = {};
 _t(uNo, {
   collectContextData: () => collectContextData,

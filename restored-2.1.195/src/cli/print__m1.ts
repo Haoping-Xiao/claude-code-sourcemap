@@ -4,20 +4,19 @@
 // class=modified (alt of src/cli/print.ts)  jaccard=0.0676  score=0.2343  fileCov=0.0867
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jfc = E(() => {
-  bur = class bur extends TypeError {
-    violations;
-    frameType;
-    constructor(e, t) {
-      let n = e[0];
-      super(
-        `[shoji] non-serializable value on the wire: ${e.length} hard violation(s); first: ${n.kind} ${n.preview} at ${n.path}. ` +
-          "The wire cannot carry this \u2014 it must become data (an Input/Event/RPC/Handle) before it can cross the seam.",
-      );
-      ((this.name = "WireViolationError"), (this.violations = e), (this.frameType = t));
-    }
-  };
-});
+// [unwrapped __esm module Jfc]
+bur = class bur extends TypeError {
+  violations;
+  frameType;
+  constructor(e, t) {
+    let n = e[0];
+    super(
+      `[shoji] non-serializable value on the wire: ${e.length} hard violation(s); first: ${n.kind} ${n.preview} at ${n.path}. ` +
+        "The wire cannot carry this \u2014 it must become data (an Input/Event/RPC/Handle) before it can cross the seam.",
+    );
+    ((this.name = "WireViolationError"), (this.violations = e), (this.frameType = t));
+  }
+};
 async function* Scm(e, t, n) {
   let r = t.messages.filter((l) => l.uuid !== e.messageUuid),
     { messages: o } = await bTt({

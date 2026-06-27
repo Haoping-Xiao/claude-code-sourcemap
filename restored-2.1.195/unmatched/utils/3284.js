@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0064  score=0.303  fileCov=0.0065
 // note: nearest: node_modules/@ant/computer-use-mcp/src/toolCalls.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DFn = E(() => {
-  bCp = new Set(["claude-in-chrome", "Claude in Chrome"]);
-});
+// [unwrapped __esm module DFn]
+bCp = new Set(["claude-in-chrome", "Claude in Chrome"]);
 function ACp(e) {
   let t = e.slice(0, ECp),
     n = e.length - t.length;

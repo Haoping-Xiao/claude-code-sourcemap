@@ -4,26 +4,19 @@
 // class=new  jaccard=0.0126  score=0.4466  fileCov=0.0128
 // note: nearest: src/screens/REPL.tsx (0.0126); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ALc = E(() => {
-  je();
-  At();
-  Xr();
-  dn();
-  BI();
-  VM();
-  SLc = R(lt(), 1), ktn = R(rt(), 1), WmH = ve(() => H.object({
-    method: H.literal("notifications/message"),
-    params: H.object({
-      prompt: H.string(),
-      image: H.object({
-        type: H.literal("base64"),
-        media_type: H.enum(["image/jpeg", "image/png", "image/gif", "image/webp"]),
-        data: H.string()
-      }).optional(),
-      tabId: H.number().optional()
-    })
-  }));
-});
+// [unwrapped __esm module ALc] deps: je, At, Xr, dn, BI, VM
+SLc = R(lt(), 1), ktn = R(rt(), 1), WmH = ve(() => H.object({
+  method: H.literal("notifications/message"),
+  params: H.object({
+    prompt: H.string(),
+    image: H.object({
+      type: H.literal("base64"),
+      media_type: H.enum(["image/jpeg", "image/png", "image/gif", "image/webp"]),
+      data: H.string()
+    }).optional(),
+    tabId: H.number().optional()
+  })
+}));
 function vLc(e, t) {
   let {
       addNotification: n,

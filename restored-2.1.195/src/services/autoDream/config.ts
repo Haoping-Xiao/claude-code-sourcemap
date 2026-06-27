@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3412  score=0.5798  fileCov=0.4533
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Lze = E(() => {
-  ft();
-  dn();
-  kt();
-  er();
-  PM();
-  pQ();
-  sr();
-  ((EIl = require("crypto")), (xTf = new Set(["clear", "stop", "off", "reset", "none", "cancel"])));
-});
+// [unwrapped __esm module Lze] deps: ft, dn, kt, er, PM, pQ, sr
+((EIl = require("crypto")), (xTf = new Set(["clear", "stop", "off", "reset", "none", "cancel"])));
 function vIl() {
   return at("tengu_onyx_plover", null);
 }

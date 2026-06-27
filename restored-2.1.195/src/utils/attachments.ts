@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3191  score=0.6063  fileCov=0.4025
 // note: deminified; 42 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var b0l = E(() => {
-  dn();
-  je();
-  At();
-  Rd();
-  Ao();
-  Epe();
-  Jt();
-  RPo();
-  MCf = `You are selecting memories that will be useful to Claude Code as it processes a user's query. The first message lists the available memory files with their filenames and descriptions; subsequent messages each contain one user query.
+// [unwrapped __esm module b0l] deps: dn, je, At, Rd, Ao, Epe, Jt, RPo
+MCf = `You are selecting memories that will be useful to Claude Code as it processes a user's query. The first message lists the available memory files with their filenames and descriptions; subsequent messages each contain one user query.
 
 Return a list of filenames for the memories that will clearly be useful to Claude Code as it processes the user's query (up to 5). Only include memories that you are certain will be helpful based on their name and description.
 - If you are unsure if a memory will be useful in processing the user's query, then do not include it in your list. Be selective and discerning.
@@ -21,7 +13,6 @@ Return a list of filenames for the memories that will clearly be useful to Claud
 - Be especially conservative with user-profile and project-overview memories ([user], [project]). These describe the user's ongoing focus, not what every question is about. A profile saying "works on DB performance" is NOT relevant to a question that merely contains the word "performance" unless the question is actually about that DB work. Match on what the question IS ABOUT, not on surface keyword overlap with who the user is.
 - Do not re-select memories you already returned for an earlier query in this conversation.${PCf}
 `;
-});
 var j0l = {};
 _t(j0l, {
   tryGetPDFReference: () => tryGetPDFReference,

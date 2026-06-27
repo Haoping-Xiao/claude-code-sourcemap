@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.2222  score=0.4187  fileCov=0.3212
 // note: low-confidence suggestion: src/utils/messages/systemInit.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var l8o = E(() => {
-  ft();
-  Xbt();
-  Rfc = require("crypto");
-});
+// [unwrapped __esm module l8o] deps: ft, Xbt
+Rfc = require("crypto");
 function KZt(e) {
   return e === ss ? r8 : e;
 }

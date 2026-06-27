@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0053  score=0.7326  fileCov=0.0053
 // note: nearest: src/utils/sessionStorage.ts (0.0053); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MWl = E(() => {
-  LWl = new WeakMap();
-});
+// [unwrapped __esm module MWl]
+LWl = new WeakMap();
 function Bjf(e) {
   let t = "";
   for (let n = 0; n < e.length; n++) {

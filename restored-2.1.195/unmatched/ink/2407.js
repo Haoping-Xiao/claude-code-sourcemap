@@ -4,23 +4,21 @@
 // class=new  jaccard=0.0153  score=0.5323  fileCov=0.0155
 // note: nearest: src/ink/ink.tsx (0.0153); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YGi = E(() => {
-  qit();
-  aJr = class aJr extends yne {
-    deltaY;
-    deltaX;
-    ctrl;
-    shift;
-    meta;
-    constructor(e, t) {
-      super("wheel", {
-        bubbles: true,
-        cancelable: true
-      });
-      this.deltaY = e, this.deltaX = t.deltaX ?? 0, this.ctrl = t.ctrl ?? false, this.shift = t.shift ?? false, this.meta = t.meta ?? false;
-    }
-  };
-});
+// [unwrapped __esm module YGi] deps: qit
+aJr = class aJr extends yne {
+  deltaY;
+  deltaX;
+  ctrl;
+  shift;
+  meta;
+  constructor(e, t) {
+    super("wheel", {
+      bubbles: true,
+      cancelable: true
+    });
+    this.deltaY = e, this.deltaX = t.deltaX ?? 0, this.ctrl = t.ctrl ?? false, this.shift = t.shift ?? false, this.meta = t.meta ?? false;
+  }
+};
 function u0e(e, t, n, r, o) {
   return {
     screen: Y7(0, 0, n, r, o),

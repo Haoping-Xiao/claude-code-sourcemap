@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0177  score=0.2  fileCov=0.019
 // note: nearest: node_modules/commander/lib/command.js (0.0177); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var X6l = E(() => {
-  je();
-  At();
-  Is();
-  K6l = require("path");
-});
+// [unwrapped __esm module X6l] deps: je, At, Is
+K6l = require("path");
 async function w1e(e = {}) {
   let {
       cmd: t,

@@ -4,12 +4,8 @@
 // class=partial  jaccard=0.2085  score=0.2943  fileCov=0.417
 // note: low-confidence suggestion: src/commands/install-github-app/InstallAppStep.tsx; dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rFl = E(() => {
-  mE();
-  pz();
-  Ye();
-  tFl = R(lt(), 1), Bq = R(se(), 1);
-});
+// [unwrapped __esm module rFl] deps: mE, pz, Ye
+tFl = R(lt(), 1), Bq = R(se(), 1);
 function sFl(e) {
   let t = oFl.c(12),
     {

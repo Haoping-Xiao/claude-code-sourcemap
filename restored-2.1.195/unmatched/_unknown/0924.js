@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0175  score=1  fileCov=0.0175
 // note: nearest: node_modules/@aws-sdk/token-providers/dist-cjs/index.js (0.0175); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var E1s = E(() => {
-  S1s = R(by(), 1);
-});
+// [unwrapped __esm module E1s]
+S1s = R(by(), 1);
 var A1s,
   H1s,
   d9u,

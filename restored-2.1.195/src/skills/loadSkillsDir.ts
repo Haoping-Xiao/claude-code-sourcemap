@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.229  score=0.3208  fileCov=0.4447
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aDo = E(() => {
-  je();
-  At();
-});
 function $Sf(e, t) {
   if (t === "policySettings") return !1;
   return e === "skills" || e === "commands_DEPRECATED" || e === "plugin";

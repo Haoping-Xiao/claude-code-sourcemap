@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.0788  score=0.087  fileCov=0.4558
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kwc = E(() => {
-  Iv();
-  AA();
-});
 var Mwc = {};
 _t(Mwc, {
   registerLoopSkill: () => registerLoopSkill,

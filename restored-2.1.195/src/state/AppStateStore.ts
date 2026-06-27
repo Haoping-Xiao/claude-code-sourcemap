@@ -4,28 +4,17 @@
 // class=modified  jaccard=0.2696  score=0.4689  fileCov=0.3881
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var h6 = E(() => {
-  ft();
-  Lo();
-  je();
-  Bi();
-  ys();
-  ggo();
-  gM();
-  sa();
-  vn();
-  Ao();
-  ((n$a = require("crypto")), (r$a = require("fs/promises")), (hJ = require("path")), (BRp = []));
-  hgo = new Map();
-  Ajn = qZe(async (e) => {
-    let t = FRp(e),
-      n = hgo.get(t);
-    if (n !== void 0) return n === "internal";
-    let r = await bRt(e);
-    if (!r) return (hgo.set(t, "none"), false);
-    let o = URp(r);
-    return (hgo.set(t, o ? "internal" : "external"), o);
-  });
+// [unwrapped __esm module h6] deps: ft, Lo, je, Bi, ys, ggo, gM, sa, vn, Ao
+((n$a = require("crypto")), (r$a = require("fs/promises")), (hJ = require("path")), (BRp = []));
+hgo = new Map();
+Ajn = qZe(async (e) => {
+  let t = FRp(e),
+    n = hgo.get(t);
+  if (n !== void 0) return n === "internal";
+  let r = await bRt(e);
+  if (!r) return (hgo.set(t, "none"), false);
+  let o = URp(r);
+  return (hgo.set(t, o ? "internal" : "external"), o);
 });
 var _go = {};
 _t(_go, {

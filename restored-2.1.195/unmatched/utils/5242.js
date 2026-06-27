@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0185  score=0.0662  fileCov=0.025
 // note: nearest: src/utils/nativeInstaller/installer.ts (0.0185); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YGo = E(() => {
-  kt();
-  je();
-  At();
-  Is();
-  R9();
-  QEe();
-  KGo = require("child_process"), bar = require("fs/promises"), grc = require("os"), zGo = require("path");
-});
+// [unwrapped __esm module YGo] deps: kt, je, At, Is, R9, QEe
+KGo = require("child_process"), bar = require("fs/promises"), grc = require("os"), zGo = require("path");
 async function q1e(e) {
   let t = Date.now() + e;
   while (Date.now() < t) {

@@ -4,13 +4,12 @@
 // class=new  jaccard=0.0523  score=0.2498  fileCov=0.062
 // note: nearest: src/components/CustomSelect/select.tsx (0.0523); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JXl = E(() => {
-  R4o = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub"
-  };
-});
+// [unwrapped __esm module JXl]
+R4o = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub"
+};
 function ZXl(e) {
   let t = QXl.c(42),
     {

@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3692  score=0.7779  fileCov=0.4127
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MLc = E(() => {
-  Ye();
-  lg();
-  Is();
-  ((PLc = R(lt(), 1)), (Ltn = R(rt(), 1)), (ZTe = R(se(), 1)));
-});
+// [unwrapped __esm module MLc] deps: Ye, lg, Is
+((PLc = R(lt(), 1)), (Ltn = R(rt(), 1)), (ZTe = R(se(), 1)));
 function $Lc() {
   let { addNotification: e } = Li(),
     t = Ht((s) => s.toolPermissionContext.mode),

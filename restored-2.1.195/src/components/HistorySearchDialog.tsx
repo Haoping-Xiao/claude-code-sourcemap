@@ -4,29 +4,8 @@
 // class=modified  jaccard=0.2556  score=0.37  fileCov=0.4525
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OTt = E(() => {
-  si();
-  Xa();
-  _i();
-  m8();
-  Tc();
-  Ye();
-  nk();
-  uo();
-  rme();
-  gq();
-  S_();
-  T6o();
-  c7n();
-  es();
-  sr();
-  dMe();
-  Bs();
-  Ko();
-  _rr();
-  YHe();
-  (($Tt = R(lt(), 1)), (xZ = R(rt(), 1)), (Au = R(se(), 1)));
-});
+// [unwrapped __esm module OTt] deps: si, Xa, _i, m8, Tc, Ye, nk, uo, rme, gq, S_, T6o, c7n, es, sr, dMe, Bs, Ko, _rr, YHe
+(($Tt = R(lt(), 1)), (xZ = R(rt(), 1)), (Au = R(se(), 1)));
 function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
   Wh("history-search");
   let { columns: r } = br(),

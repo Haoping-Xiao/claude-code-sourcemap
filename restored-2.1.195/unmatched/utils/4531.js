@@ -3,17 +3,16 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yYt = E(() => {
-  m0l = {
-    "`": "`",
-    '"': '"',
-    "<": ">",
-    "{": "}",
-    "[": "]",
-    "(": ")",
-    "'": "'"
-  };
-});
+// [unwrapped __esm module yYt]
+m0l = {
+  "`": "`",
+  '"': '"',
+  "<": ">",
+  "{": "}",
+  "[": "]",
+  "(": ")",
+  "'": "'"
+};
 function JMo(e) {
   return e !== void 0 && xCf.includes(e);
 }

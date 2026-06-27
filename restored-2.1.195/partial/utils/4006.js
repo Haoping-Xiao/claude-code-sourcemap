@@ -4,20 +4,8 @@
 // class=partial  jaccard=0.1677  score=0.6464  fileCov=0.1846
 // note: low-confidence suggestion: src/tools/BashTool/sedEditParser.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ntl = E(() => {
-  Ye();
-  Rm();
-  Lo();
-  Dpe();
-  ys();
-  Rd();
-  s6n();
-  sr();
-  R6();
-  AMe();
-  Kut();
-  Rvo = R(lt(), 1), etl = require("path"), i6n = R(rt(), 1), bN = R(se(), 1);
-});
+// [unwrapped __esm module ntl] deps: Ye, Rm, Lo, Dpe, ys, Rd, s6n, sr, R6, AMe, Kut
+Rvo = R(lt(), 1), etl = require("path"), i6n = R(rt(), 1), bN = R(se(), 1);
 function T8e(e) {
   let t = e.trim();
   if (vjn(t)) return null;

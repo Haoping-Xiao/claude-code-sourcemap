@@ -4,11 +4,9 @@
 // class=new  jaccard=0.0012  score=0.6907  fileCov=0.0012
 // note: nearest: src/screens/REPL.tsx (0.0012); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var A1a = E(() => {
-  mVe();
-  Iho = new Set();
-  xde(() => Iho.clear());
-});
+// [unwrapped __esm module A1a] deps: mVe
+Iho = new Set();
+xde(() => Iho.clear());
 function gVe() {
   return Hft.useContext(xho);
 }

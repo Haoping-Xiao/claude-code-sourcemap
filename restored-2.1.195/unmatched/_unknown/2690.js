@@ -4,13 +4,10 @@
 // class=new  jaccard=0.0591  score=0.0808  fileCov=0.1808
 // note: nearest: node_modules/zod/v3/helpers/util.js (0.0591); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Klt = E(() => {
-  Dbe();
-  f$n();
-  (function (e) {
-    e[e.Varint = 0] = "Varint", e[e.Bit64 = 1] = "Bit64", e[e.LengthDelimited = 2] = "LengthDelimited", e[e.StartGroup = 3] = "StartGroup", e[e.EndGroup = 4] = "EndGroup", e[e.Bit32 = 5] = "Bit32";
-  })(sC || (sC = {}));
-});
+// [unwrapped __esm module Klt] deps: Dbe, f$n
+(function (e) {
+  e[e.Varint = 0] = "Varint", e[e.Bit64 = 1] = "Bit64", e[e.LengthDelimited = 2] = "LengthDelimited", e[e.StartGroup = 3] = "StartGroup", e[e.EndGroup = 4] = "EndGroup", e[e.Bit32 = 5] = "Bit32";
+})(sC || (sC = {}));
 function Pbe(e, t) {
   let n = e.fieldKind == "list" ? gue(t, e) : e.fieldKind == "map" ? hue(t, e) : mno(e, t);
   if (n === true) return;

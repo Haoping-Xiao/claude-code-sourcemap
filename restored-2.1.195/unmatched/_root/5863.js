@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0579  score=0.1241  fileCov=0.098
 // note: nearest: src/utils/sdkEventQueue.ts (0.0579); dir inferred from dep-graph -> _root; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jUc = E(() => {
-  wr();
-});
 function GUc() {
   return Oe.CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS ?? CLm;
 }

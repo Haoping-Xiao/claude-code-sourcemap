@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0441  score=0.2185  fileCov=0.0524
 // note: nearest: src/utils/sessionState.ts (0.0441); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var BUc = E(() => {
-  yC();
-  tQ();
-  je();
-});
 function UUc({
   inputClosed: e,
   runningTasks: t

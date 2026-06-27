@@ -4,20 +4,8 @@
 // class=partial  jaccard=0.0697  score=0.3455  fileCov=0.0803
 // note: low-confidence suggestion: src/utils/plugins/pluginInstallationHelpers.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NKe = E(() => {
-  Lo();
-  je();
-  At();
-  vn();
-  dr();
-  KPn();
-  _k();
-  lE();
-  $g();
-  vfe();
-  ZC();
-  m2l = require("path");
-});
+// [unwrapped __esm module NKe] deps: Lo, je, At, vn, dr, KPn, _k, lE, $g, vfe, ZC
+m2l = require("path");
 async function MHe(e) {
   let t = new Map();
   for (let a of e) {

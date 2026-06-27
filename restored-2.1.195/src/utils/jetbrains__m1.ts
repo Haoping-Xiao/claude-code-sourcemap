@@ -4,11 +4,8 @@
 // class=modified (alt of src/utils/jetbrains.ts)  jaccard=0.3061  score=0.9748  fileCov=0.3086
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sFn = E(() => {
-  nJe();
-  XIa();
-  mqe = iwp;
-});
+// [unwrapped __esm module sFn] deps: nJe, XIa
+mqe = iwp;
 function lwp(e) {
   let t = x3t.homedir(),
     n = [],

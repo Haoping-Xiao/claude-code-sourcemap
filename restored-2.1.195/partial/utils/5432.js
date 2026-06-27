@@ -4,21 +4,15 @@
 // class=partial  jaccard=0.2201  score=0.395  fileCov=0.332
 // note: low-confidence suggestion: src/hooks/useIdeAtMentioned.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jur = E(() => {
-  vn();
-  Xr();
-  dn();
-  Lo();
-  aE();
-  ehc = R(require("path")), wen = R(rt(), 1), sdm = ve(() => H.object({
-    method: H.literal(odm),
-    params: H.object({
-      filePath: H.string(),
-      lineStart: H.number().optional(),
-      lineEnd: H.number().optional()
-    })
-  }));
-});
+// [unwrapped __esm module jur] deps: vn, Xr, dn, Lo, aE
+ehc = R(require("path")), wen = R(rt(), 1), sdm = ve(() => H.object({
+  method: H.literal(odm),
+  params: H.object({
+    filePath: H.string(),
+    lineStart: H.number().optional(),
+    lineEnd: H.number().optional()
+  })
+}));
 function $me() {
   let e = Ht(r => uQt(r.settings)),
     t = Ht(r => r.authVersion),

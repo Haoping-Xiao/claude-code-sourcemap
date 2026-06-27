@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var RKl = E(() => {
-  IKl();
-  kt();
-  LL();
-  Il();
-  kKl = R(se(), 1);
-});
+// [unwrapped __esm module RKl] deps: IKl, kt, LL, Il
+kKl = R(se(), 1);
 var _Vf, LKl;

@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.1265  score=0.4716  fileCov=0.1474
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var zNo = E(() => {
-  Gy();
-});
 function wnr() {
   if (r_() !== void 0) return false;
   let e = Dt(),

@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.3697  score=0.501  fileCov=0.5853
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qzn = E(() => {
-  np();
-  sA();
-  co();
-  Lyt();
-  ql();
-  Ail();
-  ZCo();
-  xil();
-  Lil();
-  Mil();
-  Nil();
-  eIo();
-  Zil();
-  nal();
-  Gzn();
-  ((dal = R(lt(), 1)), (n3 = R(se(), 1)));
-});
+// [unwrapped __esm module Qzn] deps: np, sA, co, Lyt, ql, Ail, ZCo, xil, Lil, Mil, Nil, eIo, Zil, nal, Gzn
+((dal = R(lt(), 1)), (n3 = R(se(), 1)));
 function pal(e) {
   let t = t_t.c(222),
     { attachment: n, addMargin: r, verbose: o, isTranscriptMode: s } = e;

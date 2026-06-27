@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.1316  score=0.3155  fileCov=0.1842
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ACn = E(() => {
-  kkd = ["https://www.googleapis.com/auth/cloud-platform"];
-});
+// [unwrapped __esm module ACn]
+kkd = ["https://www.googleapis.com/auth/cloud-platform"];
 function Kxe() {
   return {
     error: (e, ...t) => console.error("[Anthropic SDK ERROR]", e, ...t),

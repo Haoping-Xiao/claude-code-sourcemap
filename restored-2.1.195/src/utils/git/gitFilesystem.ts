@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.5437  score=0.7142  fileCov=0.6949
 // note: deminified; 22 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var RTs = E(() => {
-  ((ITs = require("fs/promises")), (xTs = require("path")), (w$u = /^[0-9a-f]+$/));
-});
+// [unwrapped __esm module RTs]
+((ITs = require("fs/promises")), (xTs = require("path")), (w$u = /^[0-9a-f]+$/));
 var $Ts = {};
 _t($Ts, {
   resolveRef: () => resolveRef,

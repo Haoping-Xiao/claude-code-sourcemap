@@ -4,18 +4,16 @@
 // class=modified  jaccard=0.5444  score=0.7486  fileCov=0.6662
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hka = E(() => {
-  fpo();
-  Owp = ppo;
-  gka = class gka extends Error {
-    constructor(e) {
-      super(
-        `streamed >${Math.round(e / 1024 / 1024)}MB ${mpo}. The server is likely returning non-protocol data. Disconnecting to prevent unbounded memory growth.`,
-      );
-      this.name = "HttpBodyOverflowError";
-    }
-  };
-});
+// [unwrapped __esm module hka] deps: fpo
+Owp = ppo;
+gka = class gka extends Error {
+  constructor(e) {
+    super(
+      `streamed >${Math.round(e / 1024 / 1024)}MB ${mpo}. The server is likely returning non-protocol data. Disconnecting to prevent unbounded memory growth.`,
+    );
+    this.name = "HttpBodyOverflowError";
+  }
+};
 function Bwp(e) {
   return e.mode === "url" ? "url" : "form";
 }

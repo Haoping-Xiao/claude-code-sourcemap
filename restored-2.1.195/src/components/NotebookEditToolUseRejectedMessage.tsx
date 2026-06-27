@@ -4,16 +4,14 @@
 // class=modified  jaccard=0.4172  score=0.5202  fileCov=0.678
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Qtl = E(() => {
-  lf();
-  Jtl = `Replaces, inserts, or deletes a single cell in a Jupyter notebook (.ipynb file).
+// [unwrapped __esm module Qtl] deps: lf
+Jtl = `Replaces, inserts, or deletes a single cell in a Jupyter notebook (.ipynb file).
 
 Usage:
 - You must use the ${Ds} tool on the notebook in this conversation before editing \u2014 this tool will fail otherwise.
 - \`notebook_path\` must be an absolute path.
 - \`cell_id\` is the \`id\` attribute shown in the ${Ds} tool's \`<cell id="...">\` output. It is required for \`replace\` and \`delete\`.
 - \`edit_mode\` defaults to \`replace\`. Use \`insert\` to add a new cell after the cell with the given \`cell_id\` (or at the beginning of the notebook if \`cell_id\` is omitted) \u2014 \`cell_type\` is required when inserting. Use \`delete\` to remove the cell.`;
-});
 function tnl(e) {
   let t = Ztl.c(20),
     { notebook_path: n, cell_id: r, new_source: o, cell_type: s, edit_mode: i, verbose: a } = e,

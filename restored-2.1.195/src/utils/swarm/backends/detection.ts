@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.2899  score=0.3531  fileCov=0.6184
 // note: deminified; 11 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hN = E(() => {
-  TXa = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
-});
+// [unwrapped __esm module hN]
+TXa = /^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/;
 var AHo = {};
 _t(AHo, {
   resetDetectionCache: () => resetDetectionCache,

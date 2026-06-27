@@ -4,29 +4,27 @@
 // class=modified  jaccard=0.427  score=0.8312  fileCov=0.4675
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZIa = E(() => {
-  ys();
-  ((x3t = require("os")),
-    (eN = require("path")),
-    (JIa = {
-      pycharm: ["PyCharm"],
-      intellij: ["IntelliJIdea", "IdeaIC"],
-      webstorm: ["WebStorm"],
-      phpstorm: ["PhpStorm"],
-      rubymine: ["RubyMine"],
-      clion: ["CLion"],
-      goland: ["GoLand"],
-      rider: ["Rider"],
-      datagrip: ["DataGrip"],
-      appcode: ["AppCode"],
-      dataspell: ["DataSpell"],
-      aqua: ["Aqua"],
-      gateway: ["Gateway"],
-      fleet: ["Fleet"],
-      androidstudio: ["AndroidStudio"],
-    }));
-  qdo = new Map();
-});
+// [unwrapped __esm module ZIa] deps: ys
+((x3t = require("os")),
+  (eN = require("path")),
+  (JIa = {
+    pycharm: ["PyCharm"],
+    intellij: ["IntelliJIdea", "IdeaIC"],
+    webstorm: ["WebStorm"],
+    phpstorm: ["PhpStorm"],
+    rubymine: ["RubyMine"],
+    clion: ["CLion"],
+    goland: ["GoLand"],
+    rider: ["Rider"],
+    datagrip: ["DataGrip"],
+    appcode: ["AppCode"],
+    dataspell: ["DataSpell"],
+    aqua: ["Aqua"],
+    gateway: ["Gateway"],
+    fleet: ["Fleet"],
+    androidstudio: ["AndroidStudio"],
+  }));
+qdo = new Map();
 function iE(e) {
   let t = exa.c(4),
     { children: n, color: r } = e,

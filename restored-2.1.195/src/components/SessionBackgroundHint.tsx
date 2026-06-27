@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.2798  score=0.5393  fileCov=0.3677
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var I0c = E(() => {
-  id();
-  fp();
-  Ld();
-  aE();
-  ((v0c = R(lt(), 1)), (w0c = R(rt(), 1)));
-});
+// [unwrapped __esm module I0c] deps: id, fp, Ld, aE
+((v0c = R(lt(), 1)), (w0c = R(rt(), 1)));
 function R0c(e) {
   let t = x0c.c(15),
     { onBackgroundSession: n, isLoading: r } = e,

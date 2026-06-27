@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0302  score=1  fileCov=0.0302
 // note: nearest: node_modules/zod/v4/core/util.js (0.0302); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NTr = E(() => {
-  aM();
-});
 function BTr(e, t) {
   let n = {
     type: "object",

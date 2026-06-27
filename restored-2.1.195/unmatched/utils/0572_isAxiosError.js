@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0143  score=0.2374  fileCov=0.015
 // note: nearest: src/utils/nativeInstaller/download.ts (0.0143); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CZe = E(() => {
-  cEu = /(^|\.)(anthropic\.com|claude\.ai|claude\.com)$/i, uEu = /(^|\.)downloads\.claude\.ai$/i;
-});
+// [unwrapped __esm module CZe]
+cEu = /(^|\.)(anthropic\.com|claude\.ai|claude\.com)$/i, uEu = /(^|\.)downloads\.claude\.ai$/i;
 var X_s = {};
 _t(X_s, {
   isCancel: () => dM,

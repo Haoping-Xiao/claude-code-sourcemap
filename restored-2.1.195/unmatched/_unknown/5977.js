@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0338  score=0.2578  fileCov=0.0374
 // note: nearest: node_modules/node-forge/lib/ed25519.js (0.0338); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kgr = E(() => {
-  nXe = R(H3c(), 1), gQo = nXe.default.Issuer, DzH = nXe.default.Strategy, PzH = nXe.default.TokenSet, MzH = nXe.default.errors, xgr = nXe.default.custom, Yvt = nXe.default.generators;
-});
+// [unwrapped __esm module kgr]
+nXe = R(H3c(), 1), gQo = nXe.default.Issuer, DzH = nXe.default.Strategy, PzH = nXe.default.TokenSet, MzH = nXe.default.errors, xgr = nXe.default.custom, Yvt = nXe.default.generators;
 var T3c = 1;
 function iD(...e) {
   let t = e.reduce((o, {

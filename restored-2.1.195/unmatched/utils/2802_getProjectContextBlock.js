@@ -4,16 +4,6 @@
 // class=new  jaccard=0.0025  score=0.0749  fileCov=0.0026
 // note: nearest: src/screens/REPL.tsx (0.0025); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gso = E(() => {
-  Rc();
-  H0();
-  jc();
-  oo();
-  At();
-  Ls();
-  qd();
-  kM();
-});
 var nia = {};
 _t(nia, {
   safeInline: () => safeInline,

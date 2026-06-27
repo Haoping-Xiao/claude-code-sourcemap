@@ -4,16 +4,15 @@
 // class=modified  jaccard=0.0608  score=0.0623  fileCov=0.7088
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PLl = E(() => {
-  ((zxf = {
-    type: "local-jsx",
-    name: "add-dir",
-    description: "Add a new working directory",
-    argumentHint: "<path>",
-    load: () => Promise.resolve().then(() => (LLl(), RLl)),
-  }),
-    (DLl = zxf));
-});
+// [unwrapped __esm module PLl]
+((zxf = {
+  type: "local-jsx",
+  name: "add-dir",
+  description: "Add a new working directory",
+  argumentHint: "<path>",
+  load: () => Promise.resolve().then(() => (LLl(), RLl)),
+}),
+  (DLl = zxf));
 async function NLl(e, t, n) {
   let r, o;
   return (

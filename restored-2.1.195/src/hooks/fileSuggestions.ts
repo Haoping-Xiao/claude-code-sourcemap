@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.5205  score=0.7823  fileCov=0.6087
 // note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZYt = E(() => {
-  er();
-  dr();
-  PM();
-});
 var YDl = {};
 _t(YDl, {
   startBackgroundCacheRefresh: () => startBackgroundCacheRefresh,

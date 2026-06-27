@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0331  score=0.4006  fileCov=0.0348
 // note: nearest: src/components/PromptInput/Notifications.tsx (0.0331); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var d_c = E(() => {
-  Ed();
-  Ye();
-  wdr();
-  yfe();
-  P6o = R(lt(), 1), c_c = R(rt(), 1), S7e = R(se(), 1);
-});
+// [unwrapped __esm module d_c] deps: Ed, Ye, wdr, yfe
+P6o = R(lt(), 1), c_c = R(rt(), 1), S7e = R(se(), 1);
 function p_c() {
   let e = M6o.c(10);
   u_c();

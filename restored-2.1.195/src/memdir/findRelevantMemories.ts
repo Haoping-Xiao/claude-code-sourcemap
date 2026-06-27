@@ -4,20 +4,15 @@
 // class=modified  jaccard=0.232  score=0.3486  fileCov=0.4095
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QMo = E(() => {
-  Qi();
-  Un();
-  wr();
-  dr();
-  xCf = ["off", "infinite", "fixed", "countdown"];
-  NZn = Cn(() => {
-    let e = Oe.CLAUDE_CODE_TOTAL_TOKENS_REMINDER;
-    if (JMo(e)) return e;
-    let t = Dr().totalTokensReminder;
-    if (JMo(t)) return t;
-    let n = at("tengu_lapis_anchor", "off");
-    return JMo(n) ? n : "off";
-  });
+// [unwrapped __esm module QMo] deps: Qi, Un, wr, dr
+xCf = ["off", "infinite", "fixed", "countdown"];
+NZn = Cn(() => {
+  let e = Oe.CLAUDE_CODE_TOTAL_TOKENS_REMINDER;
+  if (JMo(e)) return e;
+  let t = Dr().totalTokensReminder;
+  if (JMo(t)) return t;
+  let n = at("tengu_lapis_anchor", "off");
+  return JMo(n) ? n : "off";
 });
 function DCf(e) {
   return e.map((t) => {

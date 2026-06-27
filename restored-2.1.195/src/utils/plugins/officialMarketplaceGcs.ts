@@ -4,13 +4,6 @@
 // class=modified  jaccard=0.4636  score=0.5723  fileCov=0.7095
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gHe = E(() => {
-  je();
-  sr();
-  eMn();
-  lE();
-  WI();
-});
 async function xYt(e, t) {
   let n = ose.resolve(t),
     r = ose.resolve(e);

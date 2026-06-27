@@ -4,21 +4,8 @@
 // class=new  jaccard=0.0029  score=0.5101  fileCov=0.0029
 // note: nearest: src/screens/REPL.tsx (0.0029); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mAc = E(() => {
-  ft();
-  dn();
-  Z6();
-  yyt();
-  wX();
-  gb();
-  je();
-  PM();
-  sp();
-  _$();
-  _m();
-  i5();
-  pym = new Set();
-});
+// [unwrapped __esm module mAc] deps: ft, dn, Z6, yyt, wX, gb, je, PM, sp, _$, _m, i5
+pym = new Set();
 function hAc({
   enabled: e
 }) {

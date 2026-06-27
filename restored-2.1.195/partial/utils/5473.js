@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.0863  score=0.4096  fileCov=0.0986
 // note: low-confidence suggestion: src/components/tasks/BackgroundTaskStatus.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var f_c = E(() => {
-  Xa();
-  Ed();
-  Ye();
-  uo();
-  d_c();
-  M6o = R(lt(), 1), NTt = R(se(), 1);
-});
+// [unwrapped __esm module f_c] deps: Xa, Ed, Ye, uo, d_c
+M6o = R(lt(), 1), NTt = R(se(), 1);
 function O6o(e) {
   let t = $6o.c(13),
     {

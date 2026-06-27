@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.5296  score=0.7633  fileCov=0.6337
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mzt = E(() => {
-  At();
-  co();
-  sr();
-});
 async function* gzt(e, t, n, r, o, s, i, a, l, c) {
   if (w$e(t)) return;
   if (e.options.bareFork) return;

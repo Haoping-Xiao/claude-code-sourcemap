@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1633  score=0.3435  fileCov=0.2374
 // note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cal = E(() => {
-  Ye();
-  Tal = R(lt(), 1), K6 = R(se(), 1);
-});
+// [unwrapped __esm module Cal] deps: Ye
+Tal = R(lt(), 1), K6 = R(se(), 1);
 function xal() {
   let e = Ial.c(1),
     t;

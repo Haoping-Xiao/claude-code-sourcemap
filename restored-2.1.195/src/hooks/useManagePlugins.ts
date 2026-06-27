@@ -4,19 +4,6 @@
 // class=modified  jaccard=0.5174  score=0.9095  fileCov=0.5455
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var B9o = E(() => {
-  kt();
-  XEt();
-  je();
-  At();
-  II();
-  _k();
-  o8();
-  lE();
-  Arr();
-  $g();
-  her();
-});
 function rur({ enabled: e = true } = {}) {
   let t = Ho(),
     n = Ht((s) => s.plugins.needsRefresh),

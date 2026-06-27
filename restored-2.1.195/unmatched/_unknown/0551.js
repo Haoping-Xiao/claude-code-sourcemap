@@ -4,15 +4,14 @@
 // class=new  jaccard=0.0128  score=0.7857  fileCov=0.0128
 // note: nearest: node_modules/whatwg-url/lib/url-state-machine.js (0.0128); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o_s = E(() => {
-  ESu = new Set(["localhost"]), HSu = {
-    http: 80,
-    https: 443,
-    ws: 80,
-    wss: 443,
-    ftp: 21
-  };
-});
+// [unwrapped __esm module o_s]
+ESu = new Set(["localhost"]), HSu = {
+  http: 80,
+  https: 443,
+  ws: 80,
+  wss: 443,
+  ftp: 21
+};
 function vSu(e, t) {
   e = e || 10;
   let n = Array(e),

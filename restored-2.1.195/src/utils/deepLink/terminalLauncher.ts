@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.4487  score=0.6654  fileCov=0.5794
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var b1c = E(() => {
-  HI();
-  kt();
-  je();
-});
 async function Gxm() {
   let e = Dt().deepLinkTerminal;
   if (e) {

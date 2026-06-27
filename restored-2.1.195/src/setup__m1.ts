@@ -4,48 +4,43 @@
 // class=modified (alt of src/setup.ts)  jaccard=0.0178  score=0.0705  fileCov=0.0233
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Q9 = E(() => {
-  Qi();
-  wr();
-  Bi();
-  YS();
-  ((W$i = require("fs/promises")),
-    (q$i = Cn(async () => {
-      let { code: e } = await $n("test", ["-f", "/.dockerenv"]);
-      return e === 0;
-    })));
-  z$i = Cn(async () => {
-    let [e, t] = await Promise.all([q$i(), Oe.hasInternetAccess()]);
-    return ((czr = (e || V$i() || process.env.IS_SANDBOX === "1") && !t), czr);
-  });
-  _$d = Cn(async () => {
-    let [e, t] = await Promise.all([z$i(), Oe.probeInternalNetworkAccess()]);
-    return ((uzr = e && t === null && !K$i()), uzr);
-  });
-  W$i.stat("/lib/libc.musl-x86_64.so.1").then(
-    () => {
-      dzr = true;
-    },
-    () => {
-      dzr = false;
-    },
-  );
-  h1 = {
-    ...Oe,
-    terminal: H$d(),
-    getIsDocker: q$i,
-    getIsBubblewrapSandbox: V$i,
-    getIsContainedNoInternet: z$i,
-    getIsContainedNoInternetCached: y$d,
-    passesAntDspEnvGate: _$d,
-    passesAntDspEnvGateCached: b$d,
-    isRootOutsideDeliberateSandbox: K$i,
-    isMuslEnvironment: S$d,
-    isAndroidEnvironment: E$d,
-    getTerminalWithJetBrainsDetectionAsync: A$d,
-    initJetBrainsDetection: pzr,
-  };
+// [unwrapped __esm module Q9] deps: Qi, wr, Bi, YS
+((W$i = require("fs/promises")),
+  (q$i = Cn(async () => {
+    let { code: e } = await $n("test", ["-f", "/.dockerenv"]);
+    return e === 0;
+  })));
+z$i = Cn(async () => {
+  let [e, t] = await Promise.all([q$i(), Oe.hasInternetAccess()]);
+  return ((czr = (e || V$i() || process.env.IS_SANDBOX === "1") && !t), czr);
 });
+_$d = Cn(async () => {
+  let [e, t] = await Promise.all([z$i(), Oe.probeInternalNetworkAccess()]);
+  return ((uzr = e && t === null && !K$i()), uzr);
+});
+W$i.stat("/lib/libc.musl-x86_64.so.1").then(
+  () => {
+    dzr = true;
+  },
+  () => {
+    dzr = false;
+  },
+);
+h1 = {
+  ...Oe,
+  terminal: H$d(),
+  getIsDocker: q$i,
+  getIsBubblewrapSandbox: V$i,
+  getIsContainedNoInternet: z$i,
+  getIsContainedNoInternetCached: y$d,
+  passesAntDspEnvGate: _$d,
+  passesAntDspEnvGateCached: b$d,
+  isRootOutsideDeliberateSandbox: K$i,
+  isMuslEnvironment: S$d,
+  isAndroidEnvironment: E$d,
+  getTerminalWithJetBrainsDetectionAsync: A$d,
+  initJetBrainsDetection: pzr,
+};
 function xM(e) {
   if (e === void 0) return;
   if (e.startsWith("repl_main_thread") || e === "sdk") return "main";

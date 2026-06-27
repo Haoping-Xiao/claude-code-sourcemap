@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0131  score=0.4378  fileCov=0.0133
 // note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0131); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bic = E(() => {
-  sp();
-});
 async function W3t({
   serverName: e,
   message: t,

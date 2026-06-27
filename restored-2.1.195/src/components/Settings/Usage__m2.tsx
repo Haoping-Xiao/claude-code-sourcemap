@@ -4,20 +4,19 @@
 // class=modified (alt of src/components/Settings/Usage.tsx)  jaccard=0.0267  score=0.0353  fileCov=0.0991
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wAe = E(() => {
-  ((xrf = {
-    USD: "$",
-    EUR: "\u20AC",
-    GBP: "\xA3",
-    JPY: "\xA5",
-    BRL: "R$",
-    CAD: "CA$",
-    AUD: "A$",
-    NZD: "NZ$",
-    SGD: "S$",
-  }),
-    (krf = new Set(["JPY", "KRW", "VND"])));
-});
+// [unwrapped __esm module wAe]
+((xrf = {
+  USD: "$",
+  EUR: "\u20AC",
+  GBP: "\xA3",
+  JPY: "\xA5",
+  BRL: "R$",
+  CAD: "CA$",
+  AUD: "A$",
+  NZD: "NZ$",
+  SGD: "S$",
+}),
+  (krf = new Set(["JPY", "KRW", "VND"])));
 var k8t = "https://support.claude.com/en/articles/12429409-extra-usage-for-paid-claude-plans";
 var Dsl = {};
 _t(Dsl, {

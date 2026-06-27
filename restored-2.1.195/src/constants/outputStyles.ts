@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.3542  score=0.5079  fileCov=0.5392
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var G4 = E(() => {
-  si();
-  Qi();
-  Nlc();
-  gb();
-  Lo();
-  je();
-  YZn();
-  dr();
-  II();
-  ((Blc = `
+// [unwrapped __esm module G4] deps: si, Qi, Nlc, gb, Lo, je, YZn, dr, II
+((Blc = `
 ## Insights
 In order to encourage learning, before and after writing code, always provide brief educational explanations about implementation choices using (with backticks):
 "\`${nt.star} Insight \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\`
@@ -22,39 +13,38 @@ In order to encourage learning, before and after writing code, always provide br
 \`\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\`"
 
 These insights should be included in the conversation, not in the codebase. You should generally focus on interesting insights that are specific to the codebase or the code you just wrote, rather than general programming concepts.`),
-    (yJ = {
-      [uP]: null,
-      Proactive: {
-        name: "Proactive",
-        source: "built-in",
-        description:
-          "Claude executes immediately, minimizes interruptions, and prefers action over planning",
-        keepCodingInstructions: !0,
-        prompt: `You are an interactive CLI tool that helps users with software engineering tasks. You should work proactively and autonomously, executing immediately and minimizing interruptions.
+  (yJ = {
+    [uP]: null,
+    Proactive: {
+      name: "Proactive",
+      source: "built-in",
+      description:
+        "Claude executes immediately, minimizes interruptions, and prefers action over planning",
+      keepCodingInstructions: !0,
+      prompt: `You are an interactive CLI tool that helps users with software engineering tasks. You should work proactively and autonomously, executing immediately and minimizing interruptions.
 
 # Proactive Style Active
 ${_rm}`,
-        turnReminder: brm,
-      },
-      Explanatory: {
-        name: "Explanatory",
-        source: "built-in",
-        description: "Claude explains its implementation choices and codebase patterns",
-        keepCodingInstructions: !0,
-        prompt: `You are an interactive CLI tool that helps users with software engineering tasks. In addition to software engineering tasks, you should provide educational insights about the codebase along the way.
+      turnReminder: brm,
+    },
+    Explanatory: {
+      name: "Explanatory",
+      source: "built-in",
+      description: "Claude explains its implementation choices and codebase patterns",
+      keepCodingInstructions: !0,
+      prompt: `You are an interactive CLI tool that helps users with software engineering tasks. In addition to software engineering tasks, you should provide educational insights about the codebase along the way.
 
 You should be clear and educational, providing helpful explanations while remaining focused on the task. Balance educational content with task completion. When providing insights, you may exceed typical length constraints, but remain focused and relevant.
 
 # Explanatory Style Active
 ${Blc}`,
-      },
-      Learning: {
-        name: "Learning",
-        source: "built-in",
-        description:
-          "Claude pauses and asks you to write small pieces of code for hands-on practice",
-        keepCodingInstructions: !0,
-        prompt: `You are an interactive CLI tool that helps users with software engineering tasks. In addition to software engineering tasks, you should help users learn more about the codebase through hands-on practice and educational insights.
+    },
+    Learning: {
+      name: "Learning",
+      source: "built-in",
+      description: "Claude pauses and asks you to write small pieces of code for hands-on practice",
+      keepCodingInstructions: !0,
+      prompt: `You are an interactive CLI tool that helps users with software engineering tasks. In addition to software engineering tasks, you should help users learn more about the codebase through hands-on practice and educational insights.
 
 You should be collaborative and encouraging. Balance task completion with learning by requesting user input for meaningful design decisions while handling routine implementation yourself.   
 
@@ -126,53 +116,52 @@ Share one insight connecting their code to broader patterns or system effects. A
 
 ## Insights
 ${Blc}`,
+    },
+  }),
+  (uEt = Cn(async function (t) {
+    if (lc("outputStyles"))
+      return {
+        ...yJ,
+      };
+    let n = await Olc(t),
+      r = await g$o(),
+      o = {
+        ...yJ,
       },
-    }),
-    (uEt = Cn(async function (t) {
-      if (lc("outputStyles"))
-        return {
-          ...yJ,
-        };
-      let n = await Olc(t),
-        r = await g$o(),
-        o = {
-          ...yJ,
-        },
-        s = n.filter((c) => c.source === "policySettings"),
-        i = n.filter((c) => c.source === "userSettings"),
-        a = n.filter((c) => c.source === "projectSettings"),
-        l = [r, i, a, s];
-      Z0e(
-        "outputStyle",
-        [
-          ...Object.values(yJ)
-            .filter((c) => c !== null)
-            .map((c) => ({
-              name: c.name,
-              source: c.source,
-            })),
-          ...l.flat().map((c) => ({
+      s = n.filter((c) => c.source === "policySettings"),
+      i = n.filter((c) => c.source === "userSettings"),
+      a = n.filter((c) => c.source === "projectSettings"),
+      l = [r, i, a, s];
+    Z0e(
+      "outputStyle",
+      [
+        ...Object.values(yJ)
+          .filter((c) => c !== null)
+          .map((c) => ({
             name: c.name,
             source: c.source,
           })),
-        ],
-        {
-          resolves: !0,
-        },
-      );
-      for (let c of l)
-        for (let u of c)
-          o[u.name] = {
-            name: u.name,
-            description: u.description,
-            prompt: u.prompt,
-            source: u.source,
-            keepCodingInstructions: u.keepCodingInstructions,
-            forceForPlugin: u.forceForPlugin,
-          };
-      return o;
-    })));
-});
+        ...l.flat().map((c) => ({
+          name: c.name,
+          source: c.source,
+        })),
+      ],
+      {
+        resolves: !0,
+      },
+    );
+    for (let c of l)
+      for (let u of c)
+        o[u.name] = {
+          name: u.name,
+          description: u.description,
+          prompt: u.prompt,
+          source: u.source,
+          keepCodingInstructions: u.keepCodingInstructions,
+          forceForPlugin: u.forceForPlugin,
+        };
+    return o;
+  })));
 function jlc(e) {
   return `[SYSTEM NOTIFICATION - NOT USER INPUT]
 This is an automated background-task event, NOT a message from the user.

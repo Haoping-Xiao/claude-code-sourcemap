@@ -4,19 +4,18 @@
 // class=modified  jaccard=0.2443  score=0.2735  fileCov=0.6958
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xJl = E(() => {
-  ((_6f = {
-    type: "local-jsx",
-    name: "export",
-    description: "Export the current conversation to a file or clipboard",
-    argumentHint: "[filename]",
-    requires: {
-      ink: true,
-    },
-    load: () => Promise.resolve().then(() => (IJl(), wJl)),
-  }),
-    (j4o = _6f));
-});
+// [unwrapped __esm module xJl]
+((_6f = {
+  type: "local-jsx",
+  name: "export",
+  description: "Export the current conversation to a file or clipboard",
+  argumentHint: "[filename]",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (IJl(), wJl)),
+}),
+  (j4o = _6f));
 var RJl = {};
 _t(RJl, {
   call: () => call,

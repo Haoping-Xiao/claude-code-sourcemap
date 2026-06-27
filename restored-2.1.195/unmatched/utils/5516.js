@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0047  score=0.4686  fileCov=0.0047
 // note: nearest: src/screens/REPL.tsx (0.0047); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lSc = E(() => {
-  Yp();
-  dzo();
-  iSc = R(rt(), 1);
-});
+// [unwrapped __esm module lSc] deps: Yp, dzo
+iSc = R(rt(), 1);
 function cSc(e) {
   let t = Dc(),
     n = Ht(a => a.transcripts[e]?.messages ?? pzo),

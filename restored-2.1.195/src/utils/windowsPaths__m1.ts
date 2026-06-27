@@ -4,12 +4,10 @@
 // class=modified (alt of src/utils/windowsPaths.ts)  jaccard=0.1148  score=0.5058  fileCov=0.1294
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var QZe = E(() => {
-  Rm();
-  ((FEs = require("child_process")), (jEs = require("fs")), (GEs = require("path")));
-  XZe = new Map();
-  pPu = new Set([".com", ".exe", ".bat", ".cmd"]);
-});
+// [unwrapped __esm module QZe] deps: Rm
+((FEs = require("child_process")), (jEs = require("fs")), (GEs = require("path")));
+XZe = new Map();
+pPu = new Set([".com", ".exe", ".bat", ".cmd"]);
 function Opn() {
   if (Vt() === "windows") {
     let e = Hhe();

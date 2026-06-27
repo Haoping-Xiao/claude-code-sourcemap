@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2368  score=0.8415  fileCov=0.2478
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qd = E(() => {
-  fn();
-});
 function DFe(e, t) {
   let n = e.firstPrompt?.startsWith(`<${Cae}>`),
     r = e.firstPrompt ? FZe(e.firstPrompt) : "",

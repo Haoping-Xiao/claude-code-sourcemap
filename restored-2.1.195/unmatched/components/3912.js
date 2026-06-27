@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0334  score=0.0925  fileCov=0.0498
 // note: nearest: src/services/api/client.ts (0.0334); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fXa = E(() => {
-  Ye();
-  ps();
-  Cc();
-  Bs();
-  f_();
-  Ko();
-  Mg();
-  wb();
-  vH();
-  H9n();
-  dXa = R(lt(), 1), T9n = R(rt(), 1), L6 = R(se(), 1);
-});
+// [unwrapped __esm module fXa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, H9n
+dXa = R(lt(), 1), T9n = R(rt(), 1), L6 = R(se(), 1);
 function M7p(e) {
   let t = {
     CLAUDE_CODE_USE_BEDROCK: "1",

@@ -4,26 +4,24 @@
 // class=modified  jaccard=0.3296  score=0.7651  fileCov=0.3667
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var l0o = E(() => {
-  Xr();
-  $pf = Dy({
-    kind: "permission_workflow",
-    payload: ve(() =>
-      H.custom(
-        (e) =>
-          typeof e === "object" &&
-          e !== null &&
-          "requestId" in e &&
-          "toolName" in e &&
-          "permissionResult" in e &&
-          "script" in e,
-      ),
+// [unwrapped __esm module l0o] deps: Xr
+$pf = Dy({
+  kind: "permission_workflow",
+  payload: ve(() =>
+    H.custom(
+      (e) =>
+        typeof e === "object" &&
+        e !== null &&
+        "requestId" in e &&
+        "toolName" in e &&
+        "permissionResult" in e &&
+        "script" in e,
     ),
-    result: ve(() => H.custom((e) => typeof e === "object" && e !== null && "behavior" in e)),
-    default: {
-      behavior: "cancelled",
-    },
-  });
+  ),
+  result: ve(() => H.custom((e) => typeof e === "object" && e !== null && "behavior" in e)),
+  default: {
+    behavior: "cancelled",
+  },
 });
 function Opf() {
   return `perm-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;

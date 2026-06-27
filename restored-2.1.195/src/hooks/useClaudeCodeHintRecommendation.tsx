@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.472  score=0.9421  fileCov=0.4861
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rDc = E(() => {
-  Ye();
-  Vl();
-  X0();
-  ((tDc = R(lt(), 1)), (Mfr = R(rt(), 1)), (Xk = R(se(), 1)));
-});
+// [unwrapped __esm module rDc] deps: Ye, Vl, X0
+((tDc = R(lt(), 1)), (Mfr = R(rt(), 1)), (Xk = R(se(), 1)));
 function sDc() {
   let e = oDc.c(11),
     t = $fr.useSyncExternalStore(fPa, Tmo),

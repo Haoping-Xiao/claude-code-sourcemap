@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0346  score=0.1421  fileCov=0.0438
 // note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0346); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var g$n = E(() => {
-  M8();
-  NFt();
-  UFt();
-  Klt();
-  f$n();
-  Dbe();
-});
 function h$n(e) {
   return kQi(e.$typeName);
 }

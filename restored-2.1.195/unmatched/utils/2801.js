@@ -4,24 +4,19 @@
 // class=new  jaccard=0.0313  score=0.1518  fileCov=0.0379
 // note: nearest: node_modules/@azure/msal-node/dist/client/ClientCredentialClient.mjs (0.0313); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fso = E(() => {
-  Rc();
-  c_();
-  kM();
-  Jt();
-  Fct = class Fct extends Error {
-    action;
-    status;
-    body;
-    constructor(e, t, n) {
-      super(`Projects API: ${e} failed (HTTP ${t})${Kip(n)}`);
-      this.action = e;
-      this.status = t;
-      this.body = n;
-      this.name = "ProjectsApiError";
-    }
-  };
-});
+// [unwrapped __esm module Fso] deps: Rc, c_, kM, Jt
+Fct = class Fct extends Error {
+  action;
+  status;
+  body;
+  constructor(e, t, n) {
+    super(`Projects API: ${e} failed (HTTP ${t})${Kip(n)}`);
+    this.action = e;
+    this.status = t;
+    this.body = n;
+    this.name = "ProjectsApiError";
+  }
+};
 async function a1n() {
   if (!Us("allow_projects_tool")) return {
     ok: false,

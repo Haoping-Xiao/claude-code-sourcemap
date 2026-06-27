@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0478  score=0.7418  fileCov=0.0486
 // note: nearest: src/tools/AgentTool/UI.tsx (0.0478); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rll = E(() => {
-  Lyt();
-  ql();
-  tll = R(lt(), 1), yIo = R(se(), 1);
-});
+// [unwrapped __esm module rll] deps: Lyt, ql
+tll = R(lt(), 1), yIo = R(se(), 1);
 function sll(e) {
   let t = oll.c(13),
     {

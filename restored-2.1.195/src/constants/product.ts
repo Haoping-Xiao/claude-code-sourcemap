@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.4499  score=0.6299  fileCov=0.6115
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mua = E(() => {
-  UIt();
-  Dua();
-  Pua = Pup;
-});
+// [unwrapped __esm module Mua] deps: UIt, Dua
+Pua = Pup;
 var $ua = {};
 _t($ua, {
   toInfraSessionId: () => toInfraSessionId,

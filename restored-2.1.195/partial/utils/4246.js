@@ -4,13 +4,6 @@
 // class=partial  jaccard=0.0844  score=0.3994  fileCov=0.0967
 // note: low-confidence suggestion: src/tools/WebFetchTool/WebFetchTool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bko = E(() => {
-  Rc();
-  dn();
-  Rx();
-  c_();
-  l$e();
-});
 function EYn(e) {
   return bfl.STATUS_CODES[e] ?? "Unknown Status";
 }

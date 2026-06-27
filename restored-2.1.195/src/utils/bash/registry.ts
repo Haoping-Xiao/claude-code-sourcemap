@@ -4,16 +4,8 @@
 // class=modified  jaccard=0.3317  score=1  fileCov=0.3317
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BPa = E(() => {
-  wPa();
-  IPa();
-  kPa();
-  LPa();
-  PPa();
-  $Pa();
-  NPa();
-  $mo = [xPa, OPa, RPa, vPa, CPa, MPa, DPa];
-});
+// [unwrapped __esm module BPa] deps: wPa, IPa, kPa, LPa, PPa, $Pa, NPa
+$mo = [xPa, OPa, RPa, vPa, CPa, MPa, DPa];
 async function P0p(e) {
   if (!e || e.includes("/") || e.includes("\\")) return null;
   if (e.includes("..")) return null;

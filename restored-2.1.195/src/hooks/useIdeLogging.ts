@@ -4,21 +4,17 @@
 // class=modified  jaccard=0.3533  score=0.7726  fileCov=0.3943
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ggc = E(() => {
-  kt();
-  Xr();
-  aE();
-  ((Fgc = R(rt(), 1)),
-    (qum = ve(() =>
-      H.object({
-        method: H.literal("log_event"),
-        params: H.object({
-          eventName: H.string(),
-          eventData: H.object({}).passthrough(),
-        }),
+// [unwrapped __esm module Ggc] deps: kt, Xr, aE
+((Fgc = R(rt(), 1)),
+  (qum = ve(() =>
+    H.object({
+      method: H.literal("log_event"),
+      params: H.object({
+        eventName: H.string(),
+        eventData: H.object({}).passthrough(),
       }),
-    )));
-});
+    }),
+  )));
 function Wgc() {
   let [e, t] = Our.useState(null);
   return (

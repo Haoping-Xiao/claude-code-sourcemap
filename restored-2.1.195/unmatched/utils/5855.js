@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0024  score=0.4084  fileCov=0.0024
 // note: nearest: src/cli/print.ts (0.0024); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CUc = E(() => {
-  je();
-  Yp();
-});
 function IUc(e, t, n, r) {
   return async o => {
     let s = t();

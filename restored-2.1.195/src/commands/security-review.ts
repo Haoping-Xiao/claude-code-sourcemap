@@ -4,15 +4,10 @@
 // class=modified  jaccard=0.0883  score=0.1882  fileCov=0.1425
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var T6l = E(() => {
-  VDe();
-  Lo();
-  Iv();
-  pq();
-  hze();
-  ((J5f = ["git diff *", "git status *", "git log *", "git show *", "git remote show *"]),
-    (Q5f = J5f.flatMap((e) => [`Bash(${e})`, `PowerShell(${e})`]).join(", ")),
-    (Z5f = `---
+// [unwrapped __esm module T6l] deps: VDe, Lo, Iv, pq, hze
+((J5f = ["git diff *", "git status *", "git log *", "git show *", "git remote show *"]),
+  (Q5f = J5f.flatMap((e) => [`Bash(${e})`, `PowerShell(${e})`]).join(", ")),
+  (Z5f = `---
 allowed-tools: ${Q5f}, Read, Glob, Grep, LS, Task
 description: Complete a security review of the pending changes on the current branch
 ---
@@ -203,53 +198,52 @@ Begin your analysis now. Do this in 3 steps:
 3. Filter out any vulnerabilities where the sub-task reported a confidence less than 8.
 
 Your final reply must contain the markdown report and nothing else.`),
-    (H6l = A6l({
-      name: "security-review",
-      description: "Complete a security review of the pending changes on the current branch",
-      progressMessage: "analyzing code changes for security risks",
-      pluginName: "security-review",
-      pluginCommand: "security-review",
-      async getPromptWhileMarketplaceIsPrivate(e, t) {
-        let n = $t();
-        if (!(await _ft(n)))
-          return [
-            {
-              type: "text",
-              text: `Tell the user: /security-review needs to run inside a git repository, but the current working directory (\`${n}\`) is not one.
+  (H6l = A6l({
+    name: "security-review",
+    description: "Complete a security review of the pending changes on the current branch",
+    progressMessage: "analyzing code changes for security risks",
+    pluginName: "security-review",
+    pluginCommand: "security-review",
+    async getPromptWhileMarketplaceIsPrivate(e, t) {
+      let n = $t();
+      if (!(await _ft(n)))
+        return [
+          {
+            type: "text",
+            text: `Tell the user: /security-review needs to run inside a git repository, but the current working directory (\`${n}\`) is not one.
 
 If the repository is in a subdirectory, \`cd\` into it first and then re-run /security-review.
 
 If this is a self-hosted runner session created without a \`git_repository\` source, either add one at session creation so the runner clones it and sets the working directory, or \`cd\` into the cloned repo before running the review.`,
-            },
-          ];
-        let r = Bm(Z5f),
-          o = kQ(r.frontmatter["allowed-tools"]);
-        return [
-          {
-            type: "text",
-            text: await pfe(
-              r.content,
-              {
-                ...t,
-                getAppState() {
-                  let i = t.getAppState();
-                  return {
-                    ...i,
-                    toolPermissionContext: {
-                      ...i.toolPermissionContext,
-                      alwaysAllowRules: {
-                        ...i.toolPermissionContext.alwaysAllowRules,
-                        command: o,
-                      },
-                    },
-                  };
-                },
-              },
-              "security-review",
-            ),
           },
         ];
-      },
-    })));
-});
+      let r = Bm(Z5f),
+        o = kQ(r.frontmatter["allowed-tools"]);
+      return [
+        {
+          type: "text",
+          text: await pfe(
+            r.content,
+            {
+              ...t,
+              getAppState() {
+                let i = t.getAppState();
+                return {
+                  ...i,
+                  toolPermissionContext: {
+                    ...i.toolPermissionContext,
+                    alwaysAllowRules: {
+                      ...i.toolPermissionContext.alwaysAllowRules,
+                      command: o,
+                    },
+                  },
+                };
+              },
+            },
+            "security-review",
+          ),
+        },
+      ];
+    },
+  })));
 var v6l;

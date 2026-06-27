@@ -4,9 +4,6 @@
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0279  score=0.3776  fileCov=0.0292
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var yic = E(() => {
-  je();
-});
 async function RQ(e, t, n = lp) {
   let r = {
       ...Td(void 0),

@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3445  score=0.7002  fileCov=0.4041
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Bdc = E(() => {
-  er();
-  je();
-  ((Jcr = require("fs/promises")), ($dc = require("os")), (Odc = require("path")));
-});
+// [unwrapped __esm module Bdc] deps: er, je
+((Jcr = require("fs/promises")), ($dc = require("os")), (Odc = require("path")));
 var Qcr = {};
 _t(Qcr, {
   setup: () => setup,

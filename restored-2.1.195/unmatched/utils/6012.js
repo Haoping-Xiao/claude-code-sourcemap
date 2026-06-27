@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0061  score=0.0875  fileCov=0.0065
 // note: nearest: src/utils/teleport.tsx (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var VGc = E(() => {
-  kgr();
-  qQo();
-  Ggr = require("crypto");
-});
+// [unwrapped __esm module VGc] deps: kgr, qQo
+Ggr = require("crypto");
 function m$m() {
   let e = Oe.CLAUDE_GATEWAY_LOG_LEVEL?.toLowerCase();
   return e && e in Vgr ? Vgr[e] : Vgr.info;

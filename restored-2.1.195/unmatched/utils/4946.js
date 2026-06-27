@@ -4,18 +4,16 @@
 // class=new  jaccard=0.0038  score=0.2416  fileCov=0.0039
 // note: nearest: src/screens/REPL.tsx (0.0038); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JVl = E(() => {
-  fn();
-  XVl = {
-    type: "local-jsx",
-    name: "setup-bedrock",
-    description: "Reconfigure Amazon Bedrock authentication, region, or model pins",
-    get isHidden() {
-      return !ut(process.env.CLAUDE_CODE_USE_BEDROCK);
-    },
-    load: () => Promise.resolve().then(() => (YVl(), KVl))
-  };
-});
+// [unwrapped __esm module JVl] deps: fn
+XVl = {
+  type: "local-jsx",
+  name: "setup-bedrock",
+  description: "Reconfigure Amazon Bedrock authentication, region, or model pins",
+  get isHidden() {
+    return !ut(process.env.CLAUDE_CODE_USE_BEDROCK);
+  },
+  load: () => Promise.resolve().then(() => (YVl(), KVl))
+};
 var ZVl = {};
 _t(ZVl, {
   call: () => call

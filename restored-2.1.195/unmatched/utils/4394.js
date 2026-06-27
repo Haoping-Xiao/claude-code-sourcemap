@@ -4,11 +4,9 @@
 // class=new  jaccard=0.0534  score=0.16  fileCov=0.0743
 // note: nearest: src/ink/terminal-focus-state.ts (0.0534); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var JEl = E(() => {
-  Oct();
-  Oyf = new n1n({
-    gfm: true
-  });
+// [unwrapped __esm module JEl] deps: Oct
+Oyf = new n1n({
+  gfm: true
 });
 function VRo(e) {
   return WRo.get(e);

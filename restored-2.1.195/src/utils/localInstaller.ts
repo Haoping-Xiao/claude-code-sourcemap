@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3379  score=0.5871  fileCov=0.4432
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LPe = E(() => {
-  EW();
-  Ye();
-  ((dza = R(lt(), 1)), (pza = R(rt(), 1)), (fza = require("stream")), (ygt = R(se(), 1)));
-});
+// [unwrapped __esm module LPe] deps: EW, Ye
+((dza = R(lt(), 1)), (pza = R(rt(), 1)), (fza = require("stream")), (ygt = R(se(), 1)));
 async function yVn(e, t) {
   let n;
   for (let r = 1; r <= t.attempts; r++)

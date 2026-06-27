@@ -4,26 +4,12 @@
 // class=modified (alt of src/bridge/trustedDevice.ts)  jaccard=0.0373  score=0.0737  fileCov=0.0701
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var SJ = E(() => {
-  Hp();
-  Qi();
-  Rc();
-  dn();
-  Un();
-  je();
-  At();
-  Ls();
-  Is();
-  qd();
-  R9();
-  Jt();
-  sVe();
-  UOa = require("os");
-  KDe = Cn(async () => {
-    let e = process.env.CLAUDE_TRUSTED_DEVICE_TOKEN;
-    if (e) return e;
-    return (await wl().readAsync())?.trustedDeviceToken;
-  });
+// [unwrapped __esm module SJ] deps: Hp, Qi, Rc, dn, Un, je, At, Ls, Is, qd, R9, Jt, sVe
+UOa = require("os");
+KDe = Cn(async () => {
+  let e = process.env.CLAUDE_TRUSTED_DEVICE_TOKEN;
+  if (e) return e;
+  return (await wl().readAsync())?.trustedDeviceToken;
 });
 var Zjn = 78,
   e4n = 75,

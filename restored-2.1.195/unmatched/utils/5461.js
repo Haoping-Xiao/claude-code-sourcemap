@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0489  score=0.7601  fileCov=0.0496
 // note: nearest: src/utils/task/framework.ts (0.0489); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ydr = E(() => {
-  S_();
-  tfe();
-  q6e();
-  dMe();
-  xF();
-  rme();
-});
 function Pen(e) {
   let t = [];
   for (let n of Object.values(e)) {

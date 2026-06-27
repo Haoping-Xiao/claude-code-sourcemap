@@ -4,17 +4,9 @@
 // class=modified  jaccard=0.2719  score=0.8045  fileCov=0.2911
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var dOe = E(() => {
-  fd();
-  je();
-  eqe();
-  fn();
-  ys();
-  Jbe();
-  kv();
-  ((y$o = require("crypto")), (NL = require("fs/promises")), (KF = require("path")));
-  tRl = new Map();
-});
+// [unwrapped __esm module dOe] deps: fd, je, eqe, fn, ys, Jbe, kv
+((y$o = require("crypto")), (NL = require("fs/promises")), (KF = require("path")));
+tRl = new Map();
 function GIf() {
   (PI(), KZn(), ZZn(), mNn(), Eao().catch((e) => ke(e)), AUn(), h$o(), cRl(), UIf?.());
 }

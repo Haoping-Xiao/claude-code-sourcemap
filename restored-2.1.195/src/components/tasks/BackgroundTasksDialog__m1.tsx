@@ -4,30 +4,28 @@
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0803  score=0.1916  fileCov=0.1214
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vnc = E(() => {
-  ft();
-  ((fXf = {
-    type: "local-jsx",
+// [unwrapped __esm module vnc] deps: ft
+((fXf = {
+  type: "local-jsx",
+  name: "goal",
+  description: "Set a goal Claude checks before stopping",
+  argumentHint: "[<condition> | clear]",
+  immediate: true,
+  load: () => Promise.resolve().then(() => (Enc(), bnc)),
+}),
+  (mXf = {
+    type: "local",
     name: "goal",
-    description: "Set a goal Claude checks before stopping",
-    argumentHint: "[<condition> | clear]",
-    immediate: true,
-    load: () => Promise.resolve().then(() => (Enc(), bnc)),
+    supportsNonInteractive: true,
+    thinClientDispatch: "post-text",
+    description: "Set a goal \u2014 keep working until the condition is met",
+    get isHidden() {
+      return !Ir();
+    },
+    isEnabled: () => Ir() || da(),
+    load: () => Promise.resolve().then(() => (Hnc(), Anc)),
   }),
-    (mXf = {
-      type: "local",
-      name: "goal",
-      supportsNonInteractive: true,
-      thinClientDispatch: "post-text",
-      description: "Set a goal \u2014 keep working until the condition is met",
-      get isHidden() {
-        return !Ir();
-      },
-      isEnabled: () => Ir() || da(),
-      load: () => Promise.resolve().then(() => (Hnc(), Anc)),
-    }),
-    (gXf = fXf));
-});
+  (gXf = fXf));
 function hXf(e) {
   return {
     id: e.taskId,

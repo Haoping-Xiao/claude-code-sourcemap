@@ -4,19 +4,17 @@
 // class=new  jaccard=0.0152  score=0.4939  fileCov=0.0155
 // note: nearest: node_modules/protobufjs/src/type.js (0.0152); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rOo = E(() => {
-  Jt();
-  nOo = class nOo {
-    chunks = [];
-    static encoder = new TextEncoder();
-    push(e) {
-      if (e.length > 0) this.chunks.push(nOo.encoder.encode(e));
-    }
-    toBuffer() {
-      return Buffer.concat(this.chunks);
-    }
-  };
-});
+// [unwrapped __esm module rOo] deps: Jt
+nOo = class nOo {
+  chunks = [];
+  static encoder = new TextEncoder();
+  push(e) {
+    if (e.length > 0) this.chunks.push(nOo.encoder.encode(e));
+  }
+  toBuffer() {
+    return Buffer.concat(this.chunks);
+  }
+};
 function VSt(e) {
   return Skf.some(t => e.includes(t));
 }

@@ -4,9 +4,8 @@
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.0377  score=0.1618  fileCov=0.0469
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sZo = E(() => {
-  mV = R(QQo(), 1);
-});
+// [unwrapped __esm module sZo]
+mV = R(QQo(), 1);
 function A$m(e) {
   return fWc.has(e);
 }

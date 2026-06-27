@@ -4,31 +4,30 @@
 // class=modified (alt of src/utils/deepLink/terminalLauncher.ts)  jaccard=0.0275  score=0.1185  fileCov=0.0345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var p8r = E(() => {
-  uwi = new Set([
-    "--prefill",
-    "--prefill-b64",
-    "--deep-link-repo",
-    "--deep-link-last-fetch",
-    "--deep-link-cwd-b64",
-    "--handle-uri",
-    "--settings",
-    "--managed-settings",
-    "--setting-sources",
-    "--team-name",
-    "--agent-id",
-    "--agent-name",
-    "--agent-color",
-    "--parent-session-id",
-    "--agent-type",
-    "--model",
-    "--agent",
-    "--routine",
-    "--effort",
-    "--permission-mode",
-    "--session-id",
-  ]);
-});
+// [unwrapped __esm module p8r]
+uwi = new Set([
+  "--prefill",
+  "--prefill-b64",
+  "--deep-link-repo",
+  "--deep-link-last-fetch",
+  "--deep-link-cwd-b64",
+  "--handle-uri",
+  "--settings",
+  "--managed-settings",
+  "--setting-sources",
+  "--team-name",
+  "--agent-id",
+  "--agent-name",
+  "--agent-color",
+  "--parent-session-id",
+  "--agent-type",
+  "--model",
+  "--agent",
+  "--routine",
+  "--effort",
+  "--permission-mode",
+  "--session-id",
+]);
 function pwi(e) {
   let t = f8r;
   return ((f8r = e), t);

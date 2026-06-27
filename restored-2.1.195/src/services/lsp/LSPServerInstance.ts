@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2981  score=0.559  fileCov=0.3898
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var LDa = E(() => {
-  je();
-  At();
-  Ist();
-  _1();
-  ypt();
-  ((kDa = require("child_process")), (CDe = R(xDa(), 1)));
-});
+// [unwrapped __esm module LDa] deps: je, At, Ist, _1, ypt
+((kDa = require("child_process")), (CDe = R(xDa(), 1)));
 function kkp(e, t) {
   if (e == null) return null;
   if (t === void 0 || t === "") return e;

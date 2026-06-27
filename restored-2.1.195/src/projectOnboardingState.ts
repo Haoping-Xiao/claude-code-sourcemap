@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.4087  score=0.795  fileCov=0.4568
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var WQr = E(() => {
-  Ed();
-  Ye();
-  kne();
-  DGe();
-  jat = R(rt(), 1);
-});
+// [unwrapped __esm module WQr] deps: Ed, Ye, kne, DGe
+jat = R(rt(), 1);
 function EUt(e, t) {
   switch (t) {
     case "bash":

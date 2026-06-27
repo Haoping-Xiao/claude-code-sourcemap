@@ -4,28 +4,26 @@
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0521  score=0.0968  fileCov=0.1015
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xjt = E(() => {
-  _1();
-  Pca = new Set();
-  nup = [
-    "SHELL",
-    "GIT_EDITOR",
-    "CLAUDECODE",
-    "AI_AGENT",
-    "CLAUDE_CODE_SESSION_ID",
-    "CLAUDE_CODE_CHILD_SESSION",
-    "TRACEPARENT",
-    "CLAUDE_CODE_EXECPATH",
-    "TMUX",
-    "TMPDIR",
-    "CLAUDE_CODE_TMPDIR",
-    "TMPPREFIX",
-    "BUN_OPTIONS",
-    "TEMP",
-    "TMP",
-    "CLAUDE_EFFORT",
-  ];
-});
+// [unwrapped __esm module Xjt] deps: _1
+Pca = new Set();
+nup = [
+  "SHELL",
+  "GIT_EDITOR",
+  "CLAUDECODE",
+  "AI_AGENT",
+  "CLAUDE_CODE_SESSION_ID",
+  "CLAUDE_CODE_CHILD_SESSION",
+  "TRACEPARENT",
+  "CLAUDE_CODE_EXECPATH",
+  "TMUX",
+  "TMPDIR",
+  "CLAUDE_CODE_TMPDIR",
+  "TMPPREFIX",
+  "BUN_OPTIONS",
+  "TEMP",
+  "TMP",
+  "CLAUDE_EFFORT",
+];
 function $ca(e) {
   return `prompt: ${e.trim()}`;
 }

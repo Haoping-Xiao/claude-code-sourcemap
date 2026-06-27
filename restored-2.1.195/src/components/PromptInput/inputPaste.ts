@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.3833  score=0.796  fileCov=0.4251
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var sbc = E(() => {
-  ft();
-  I0n();
-  HI();
-  wr();
-  uf();
-  FTt = R(rt(), 1);
-});
+// [unwrapped __esm module sbc] deps: ft, I0n, HI, wr, uf
+FTt = R(rt(), 1);
 function Omm(e, t, n = false) {
   if ((!n && e.length <= ibc) || e.length <= jTt)
     return {

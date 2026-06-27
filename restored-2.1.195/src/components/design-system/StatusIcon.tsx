@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.1147  score=0.3395  fileCov=0.1477
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var PUt = E(() => {
-  W6i = R(rt(), 1);
-});
+// [unwrapped __esm module PUt]
+W6i = R(rt(), 1);
 function Hs(e) {
   let t = q6i.c(8),
     { status: n, withSpace: r } = e,

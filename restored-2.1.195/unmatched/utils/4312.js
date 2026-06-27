@@ -4,20 +4,6 @@
 // class=new  jaccard=0.0067  score=0.5572  fileCov=0.0067
 // note: nearest: src/tools/AgentTool/AgentTool.tsx (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var N0o = E(() => {
-  oo();
-  f6();
-  wr();
-  k0();
-  _m();
-  Mp();
-  Sj();
-  lf();
-  lC();
-  fh();
-  qRe();
-  O0o();
-});
 function Off() {
   if (ut(process.env.CLAUDE_AUTO_BACKGROUND_TASKS)) return 120000;
   return 0;

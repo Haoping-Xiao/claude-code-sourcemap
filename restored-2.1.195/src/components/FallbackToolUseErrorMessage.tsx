@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.3098  score=0.6604  fileCov=0.3685
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Gpt = E(() => {
-  Xr();
-});
 function hMa(e) {
   if (typeof e === "string") return dRp(e, 9);
   if (!Array.isArray(e)) return false;

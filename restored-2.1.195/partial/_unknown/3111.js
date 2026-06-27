@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.1728  score=1  fileCov=0.1728
 // note: low-confidence suggestion: node_modules/@inquirer/core/dist/esm/lib/use-ref.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var SSa = E(() => {
-  B5e();
-});
 function DLe(e) {
   return Q1({
     current: e

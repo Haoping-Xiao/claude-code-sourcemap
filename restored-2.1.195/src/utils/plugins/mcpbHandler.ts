@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.6852  score=0.9369  fileCov=0.7184
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aCa = E(() => {
-  je();
-  Is();
-  ((sCa = require("os")), (tqe = require("path")));
-});
+// [unwrapped __esm module aCa] deps: je, Is
+((sCa = require("os")), (tqe = require("path")));
 function n6(e) {
   return e.endsWith(".mcpb") || e.endsWith(".dxt");
 }

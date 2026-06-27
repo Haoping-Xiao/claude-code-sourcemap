@@ -4,13 +4,12 @@
 // class=new  jaccard=0.0339  score=0.3579  fileCov=0.0361
 // note: nearest: src/skills/bundledSkills.ts (0.0339); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dDl = E(() => {
-  tOo = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub"
-  };
-});
+// [unwrapped __esm module dDl]
+tOo = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub"
+};
 function qSt(e, t, n, r) {
   let o = new nOo(),
     s = c => {

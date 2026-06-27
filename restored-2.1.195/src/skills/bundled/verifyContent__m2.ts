@@ -4,12 +4,8 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1532  score=0.2596  fileCov=0.2721
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bwc = E(() => {
-  Xr();
-  lj();
-  Jt();
-  AA();
-  NEm = `# Update Config Skill
+// [unwrapped __esm module bwc] deps: Xr, lj, Jt, AA
+NEm = `# Update Config Skill
 
 Modify Claude Code configuration by updating settings.json files.
 
@@ -146,7 +142,6 @@ If a hook isn't running:
 5. **Test the command** - Run the hook command manually to see if it works
 6. **Use --debug** - Run \`claude --debug\` to see hook execution logs
 `;
-});
 var Ewc = `# Verifying a CLI change
 
 The handle is direct invocation. The evidence is stdout/stderr/exit code.

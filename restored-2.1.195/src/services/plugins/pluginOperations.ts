@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.2894  score=0.3985  fileCov=0.5139
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K2l = E(() => {
-  si();
-  Ye();
-  je();
-  At();
-  V2l();
-  ((mrr = R(rt(), 1)), (JBo = R(se(), 1)));
-});
+// [unwrapped __esm module K2l] deps: si, Ye, je, At, V2l
+((mrr = R(rt(), 1)), (JBo = R(se(), 1)));
 function QBo(e, t) {
   let n = {
     install: "installed",

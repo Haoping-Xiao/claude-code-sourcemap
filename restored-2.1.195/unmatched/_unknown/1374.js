@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0225  score=1  fileCov=0.0225
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0225); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sti = E(() => {
-  sFr();
-});
 var iFr = e => {
   switch (e) {
     case "standard":

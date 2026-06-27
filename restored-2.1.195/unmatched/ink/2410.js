@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0309  score=0.4119  fileCov=0.0323
 // note: nearest: src/ink/dom.ts (0.0309); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZGi = E(() => {
-  lJr();
-  K_e();
-});
 function eWi(e) {
   if (!e) return 0;
   let t = 0,

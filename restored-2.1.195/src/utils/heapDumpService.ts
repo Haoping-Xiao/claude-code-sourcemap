@@ -4,18 +4,17 @@
 // class=modified  jaccard=0.631  score=0.7791  fileCov=0.7685
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var W7l = E(() => {
-  ((V9f = {
-    description: "Restore the code and/or conversation to a previous point",
-    name: "rewind",
-    aliases: ["checkpoint", "undo"],
-    argumentHint: "",
-    type: "local",
-    supportsNonInteractive: false,
-    load: () => Promise.resolve().then(() => j7l),
-  }),
-    (G7l = V9f));
-});
+// [unwrapped __esm module W7l]
+((V9f = {
+  description: "Restore the code and/or conversation to a previous point",
+  name: "rewind",
+  aliases: ["checkpoint", "undo"],
+  argumentHint: "",
+  type: "local",
+  supportsNonInteractive: false,
+  load: () => Promise.resolve().then(() => j7l),
+}),
+  (G7l = V9f));
 var z7l = {};
 _t(z7l, {
   performHeapDump: () => performHeapDump,

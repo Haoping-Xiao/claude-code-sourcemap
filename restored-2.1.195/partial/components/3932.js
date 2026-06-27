@@ -4,17 +4,12 @@
 // class=partial  jaccard=0.1606  score=0.2933  fileCov=0.262
 // note: low-confidence suggestion: src/components/Spinner/SpinnerGlyph.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var q9n = E(() => {
-  Tc();
-  Ye();
-  m0();
-  Pne();
-  lJa = R(lt(), 1), Wg = R(se(), 1), IXp = {
-    r: 171,
-    g: 43,
-    b: 63
-  };
-});
+// [unwrapped __esm module q9n] deps: Tc, Ye, m0, Pne
+lJa = R(lt(), 1), Wg = R(se(), 1), IXp = {
+  r: 171,
+  g: 43,
+  b: 63
+};
 function eMe(e) {
   let t = pJa.c(34),
     {

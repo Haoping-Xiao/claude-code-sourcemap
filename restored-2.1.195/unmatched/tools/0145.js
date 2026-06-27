@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0388  score=0.2163  fileCov=0.0451
 // note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.0388); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hos = E(() => {
-  uee();
-});
 function yos(e) {
   return async t => {
     let n = await import("fs");

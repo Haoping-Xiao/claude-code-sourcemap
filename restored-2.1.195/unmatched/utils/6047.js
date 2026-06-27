@@ -4,30 +4,8 @@
 // class=new  jaccard=0.0343  score=0.4714  fileCov=0.0357
 // note: nearest: src/utils/fsOperations.ts (0.0343); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lqc = E(() => {
-  VGe();
-  ag();
-  dn();
-  Un();
-  kt();
-  je();
-  At();
-  Hpe();
-  YS();
-  vn();
-  Is();
-  VQ();
-  c9o();
-  qGo();
-  iqc();
-  tWo();
-  har();
-  WL();
-  CHt();
-  IKe();
-  BZo();
-  kp = require("fs/promises"), GZo = require("os"), WZo = require("path"), eNm = new Set();
-});
+// [unwrapped __esm module lqc] deps: VGe, ag, dn, Un, kt, je, At, Hpe, YS, vn, Is, VQ, c9o, qGo, iqc, tWo, har, WL, CHt, IKe, BZo
+kp = require("fs/promises"), GZo = require("os"), WZo = require("path"), eNm = new Set();
 async function dqc(e) {
   let t = process.stdout.isTTY,
     n = await dBe.stat(e).then(s => s.size).catch(() => 0);

@@ -4,15 +4,14 @@
 // class=modified  jaccard=0.2666  score=0.489  fileCov=0.3697
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KAc = E(() => {
-  xNe = R(rt(), 1);
-  qym = {
-    currentQuestionIndex: 0,
-    answers: {},
-    questionStates: {},
-    isInTextInput: false,
-  };
-});
+// [unwrapped __esm module KAc]
+xNe = R(rt(), 1);
+qym = {
+  currentQuestionIndex: 0,
+  answers: {},
+  questionStates: {},
+  isInTextInput: false,
+};
 function YAc(e) {
   let t = Xzo.c(5),
     n = G_(),

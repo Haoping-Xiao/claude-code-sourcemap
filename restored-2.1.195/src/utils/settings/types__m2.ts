@@ -4,97 +4,92 @@
 // class=modified (alt of src/utils/settings/types.ts)  jaccard=0.0454  score=0.298  fileCov=0.0509
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Hws = E(() => {
-  Xr();
-  NB();
-  ((r1u = ["autoMode", "deepLink", "voice", "briefView", "screenReader"]),
-    (emn = {
-      autoMode: {
-        buildGate: () => true,
-        shape: () => ({
-          skipAutoPermissionPrompt: H.boolean()
-            .optional()
-            .describe("Whether the user has accepted the auto mode opt-in dialog"),
-          useAutoModeDuringPlan: H.boolean()
-            .optional()
-            .describe(
-              "Whether plan mode uses auto mode semantics when auto mode is available (default: true)",
-            ),
-          autoMode: H.object({
-            allow: H.array(H.string())
-              .optional()
-              .describe(
-                'Rules for the auto mode classifier allow section. Include the literal string "$defaults" to inherit the built-in rules at that position.',
-              ),
-            soft_deny: H.array(H.string())
-              .optional()
-              .describe(
-                'Rules for the auto mode classifier SOFT BLOCK section \u2014 destructive/irreversible actions that user intent can clear. Include the literal string "$defaults" to inherit the built-in rules at that position.',
-              ),
-            hard_deny: H.array(H.string())
-              .optional()
-              .describe(
-                'Rules for the auto mode classifier HARD BLOCK section \u2014 security boundaries that user intent does NOT clear. Include the literal string "$defaults" to inherit the built-in rules at that position.',
-              ),
-            ...false,
-            ...{},
-            environment: H.array(H.string())
-              .optional()
-              .describe(
-                'Entries for the auto mode classifier environment section. Include the literal string "$defaults" to inherit the built-in entries at that position.',
-              ),
-            classifyAllShell: H.boolean()
-              .optional()
-              .describe(
-                "When true, every Bash/PowerShell allow rule is suspended while auto mode is active so all shell commands are routed through the classifier (higher safety, more classifier calls). Default: false.",
-              ),
-          })
-            .optional()
-            .describe("Auto mode classifier prompt customization"),
-        }),
-        permissionsShape: () => ({
-          disableAutoMode: H.enum(["disable"]).optional().describe("Disable auto mode"),
-        }),
-        permissionModes: () => yM.filter((e) => !yY.includes(e)),
-      },
-      deepLink: {
-        buildGate: () => true,
-        shape: () => ({
-          disableDeepLinkRegistration: H.enum(["disable"])
-            .optional()
-            .describe("Prevent claude-cli:// protocol handler registration with the OS"),
-        }),
-      },
-      voice: {
-        buildGate: () => true,
-        shape: () => ({
-          voiceEnabled: H.boolean()
-            .optional()
-            .describe("Enable voice mode (hold-to-talk dictation)"),
-        }),
-      },
-      briefView: {
-        buildGate: () => true,
-        shape: () => ({
-          defaultView: H.enum(["chat", "transcript"])
+// [unwrapped __esm module Hws] deps: Xr, NB
+((r1u = ["autoMode", "deepLink", "voice", "briefView", "screenReader"]),
+  (emn = {
+    autoMode: {
+      buildGate: () => true,
+      shape: () => ({
+        skipAutoPermissionPrompt: H.boolean()
+          .optional()
+          .describe("Whether the user has accepted the auto mode opt-in dialog"),
+        useAutoModeDuringPlan: H.boolean()
+          .optional()
+          .describe(
+            "Whether plan mode uses auto mode semantics when auto mode is available (default: true)",
+          ),
+        autoMode: H.object({
+          allow: H.array(H.string())
             .optional()
             .describe(
-              "Default transcript view: chat (SendUserMessage checkpoints only) or transcript (full)",
+              'Rules for the auto mode classifier allow section. Include the literal string "$defaults" to inherit the built-in rules at that position.',
             ),
-        }),
-      },
-      screenReader: {
-        buildGate: () => true,
-        shape: () => ({
-          axScreenReader: H.boolean()
+          soft_deny: H.array(H.string())
             .optional()
             .describe(
-              "Render screen-reader friendly output (flat text, no decorative borders or animations). Overridden by the CLAUDE_AX_SCREEN_READER env var and the --ax-screen-reader CLI flag.",
+              'Rules for the auto mode classifier SOFT BLOCK section \u2014 destructive/irreversible actions that user intent can clear. Include the literal string "$defaults" to inherit the built-in rules at that position.',
             ),
-        }),
-      },
-    }));
-});
+          hard_deny: H.array(H.string())
+            .optional()
+            .describe(
+              'Rules for the auto mode classifier HARD BLOCK section \u2014 security boundaries that user intent does NOT clear. Include the literal string "$defaults" to inherit the built-in rules at that position.',
+            ),
+          ...false,
+          ...{},
+          environment: H.array(H.string())
+            .optional()
+            .describe(
+              'Entries for the auto mode classifier environment section. Include the literal string "$defaults" to inherit the built-in entries at that position.',
+            ),
+          classifyAllShell: H.boolean()
+            .optional()
+            .describe(
+              "When true, every Bash/PowerShell allow rule is suspended while auto mode is active so all shell commands are routed through the classifier (higher safety, more classifier calls). Default: false.",
+            ),
+        })
+          .optional()
+          .describe("Auto mode classifier prompt customization"),
+      }),
+      permissionsShape: () => ({
+        disableAutoMode: H.enum(["disable"]).optional().describe("Disable auto mode"),
+      }),
+      permissionModes: () => yM.filter((e) => !yY.includes(e)),
+    },
+    deepLink: {
+      buildGate: () => true,
+      shape: () => ({
+        disableDeepLinkRegistration: H.enum(["disable"])
+          .optional()
+          .describe("Prevent claude-cli:// protocol handler registration with the OS"),
+      }),
+    },
+    voice: {
+      buildGate: () => true,
+      shape: () => ({
+        voiceEnabled: H.boolean().optional().describe("Enable voice mode (hold-to-talk dictation)"),
+      }),
+    },
+    briefView: {
+      buildGate: () => true,
+      shape: () => ({
+        defaultView: H.enum(["chat", "transcript"])
+          .optional()
+          .describe(
+            "Default transcript view: chat (SendUserMessage checkpoints only) or transcript (full)",
+          ),
+      }),
+    },
+    screenReader: {
+      buildGate: () => true,
+      shape: () => ({
+        axScreenReader: H.boolean()
+          .optional()
+          .describe(
+            "Render screen-reader friendly output (flat text, no decorative borders or animations). Overridden by the CLAUDE_AX_SCREEN_READER env var and the --ax-screen-reader CLI flag.",
+          ),
+      }),
+    },
+  }));
 function hc(e) {
   let t = e.replace(/[^a-zA-Z0-9_-]/g, "_");
   if (e.startsWith("claude.ai ")) t = t.replace(/_+/g, "_").replace(/^_|_$/g, "");

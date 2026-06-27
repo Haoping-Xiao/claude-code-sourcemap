@@ -4,22 +4,18 @@
 // class=modified  jaccard=0.4268  score=0.676  fileCov=0.5365
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bBo = E(() => {
-  Qi();
-  Zf();
-  LMe();
-  Onr = Cn(async (e, t) => {
-    let n = await aC(e),
-      r = new Set(n.map((i) => i.name)),
-      o = (t ?? []).filter((i) => !r.has(i.name));
-    return yQ([...n, ...o]).map((i) => ({
-      name: i.name,
-      description: i.description,
-      whenToUse: i.whenToUse ?? "",
-    }));
-  }, NFl);
-  if (!(Onr.cache instanceof Map)) Onr.cache = new Map();
-});
+// [unwrapped __esm module bBo] deps: Qi, Zf, LMe
+Onr = Cn(async (e, t) => {
+  let n = await aC(e),
+    r = new Set(n.map((i) => i.name)),
+    o = (t ?? []).filter((i) => !r.has(i.name));
+  return yQ([...n, ...o]).map((i) => ({
+    name: i.name,
+    description: i.description,
+    whenToUse: i.whenToUse ?? "",
+  }));
+}, NFl);
+if (!(Onr.cache instanceof Map)) Onr.cache = new Map();
 function Bnr(e) {
   let t = "plugin" in e ? e.plugin : "no-plugin";
   return `${e.type}:${e.source}:${t}`;

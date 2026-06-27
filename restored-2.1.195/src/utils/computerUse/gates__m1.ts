@@ -4,11 +4,6 @@
 // class=modified (alt of src/utils/computerUse/gates.ts)  jaccard=0.1025  score=1  fileCov=0.1025
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var YFn = E(() => {
-  dn();
-  je();
-  KFn();
-});
 function sfo() {
   return {
     ...fRa,

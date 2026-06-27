@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0019  score=0.6431  fileCov=0.0019
 // note: nearest: src/main.tsx (0.0019); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Sec = E(() => {
-  yec();
-  Xr();
-});
 function Hec(e) {
   if (e.startsWith("cc://")) {
     let r = e.slice(5),

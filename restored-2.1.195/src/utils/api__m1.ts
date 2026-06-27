@@ -4,50 +4,13 @@
 // class=modified (alt of src/utils/api.ts)  jaccard=0.0324  score=0.1911  fileCov=0.0375
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Fze = E(() => {
-  X6();
-  S4();
-  aW();
-  Un();
-  kt();
-  BI();
-  RN();
-  xMe();
-  bMe();
-  Ppe();
-  LL();
-  sr();
-  Zkn();
-  U1();
-  ii();
-  fh();
-  lf();
-  sA();
-  Vw();
-  Lo();
-  je();
-  fn();
-  vn();
-  co();
-  QO();
-  k0();
-  Ao();
-  Ls();
-  Yf();
-  KI();
-  Is();
-  tre();
-  Jt();
-  t1t();
-  sj();
-  yZn();
-  mac = require("crypto");
-  Ztm = {
-    [jD]: ["launchSwarm", "teammateCount"],
-    [ss]: ["name", "team_name", "mode"],
-  };
-  fac = new WeakMap();
-});
+// [unwrapped __esm module Fze] deps: X6, S4, aW, Un, kt, BI, RN, xMe, bMe, Ppe, LL, sr, Zkn, U1, ii, fh, lf, sA, Vw, Lo, je, fn, vn, co, QO, k0, Ao, Ls, Yf, KI, Is, tre, Jt, t1t, sj, yZn
+mac = require("crypto");
+Ztm = {
+  [jD]: ["launchSwarm", "teammateCount"],
+  [ss]: ["name", "team_name", "mode"],
+};
+fac = new WeakMap();
 function bac(e) {
   let { hasThinking: t = false } = e ?? {};
   if (t)

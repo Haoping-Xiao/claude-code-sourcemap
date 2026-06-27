@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.2375  score=1  fileCov=0.2375
 // note: low-confidence suggestion: node_modules/lodash-es/_getMapData.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var its = E(() => {
-  sts = d9c;
-});
+// [unwrapped __esm module its]
+sts = d9c;
 function p9c(e, t) {
   var n = e.__data__;
   return sts(t) ? n[typeof t == "string" ? "string" : "hash"] : n.map;

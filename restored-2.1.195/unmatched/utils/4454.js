@@ -4,41 +4,20 @@
 // class=new  jaccard=0.0078  score=0.1819  fileCov=0.0081
 // note: nearest: src/cli/print.ts (0.0078); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Twl = E(() => {
-  ft();
-  Rc();
-  Uh();
-  vGt();
-  MM();
-  oo();
-  je();
-  At();
-  Ls();
-  qd();
-  zH();
-  kM();
-  Jt();
-  dn();
-  kt();
-  AVe();
-  Rx();
-  c_();
-  jc();
-  hwl();
-  bwl = require("crypto"), VF = require("fs/promises"), vze = require("path");
-  gfe = {
-    team: {
-      pull: "team_memory_sync_pull",
-      push: "team_memory_sync_push",
-      conflict: "team_memory_sync_conflict"
-    },
-    user: {
-      pull: "personal_memory_sync_pull",
-      push: "personal_memory_sync_push",
-      conflict: "personal_memory_sync_conflict"
-    }
-  };
-});
+// [unwrapped __esm module Twl] deps: ft, Rc, Uh, vGt, MM, oo, je, At, Ls, qd, zH, kM, Jt, dn, kt, AVe, Rx, c_, jc, hwl
+bwl = require("crypto"), VF = require("fs/promises"), vze = require("path");
+gfe = {
+  team: {
+    pull: "team_memory_sync_pull",
+    push: "team_memory_sync_push",
+    conflict: "team_memory_sync_conflict"
+  },
+  user: {
+    pull: "personal_memory_sync_pull",
+    push: "personal_memory_sync_push",
+    conflict: "personal_memory_sync_conflict"
+  }
+};
 async function* IAf(e, t, n = wwl) {
   let r = new vwl.StringDecoder("utf8"),
     o = "",

@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.206  score=0.3257  fileCov=0.359
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Oho = E(() => {
-  WGe();
-  Jt();
-});
 function h4n(e) {
   let t = U1a.c(20),
     { settings: n, onAccept: r, onReject: o } = e,

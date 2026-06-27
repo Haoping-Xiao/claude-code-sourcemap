@@ -4,57 +4,48 @@
 // class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0545  score=0.1061  fileCov=0.1007
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vrr = E(() => {
-  Xr();
-  At();
-  Iv();
-  Jt();
-  YPn();
-  her();
-  ZC();
-  D$o();
-  ((Gq = require("fs/promises")),
-    (_f = R(require("path"))),
-    (bBf = new Set(["category", "source", "tags", "strict", "id", "relevance"])),
-    (jjl = new Map([
-      ["publisher", "a VS Code/Cursor extension manifest"],
-      ["engines", "a VS Code/Cursor extension manifest"],
-      ["categories", "a VS Code/Cursor extension manifest"],
-      ["icon", "a VS Code/Cursor extension manifest"],
-      ["contributes", "a VS Code/Cursor extension manifest"],
-      ["activationEvents", "a VS Code/Cursor extension manifest"],
-      ["preview", "a VS Code/Cursor extension manifest"],
-      ["main", "an npm package.json"],
-      ["type", "an npm package.json"],
-      ["files", "an npm package.json"],
-      ["bin", "an npm package.json"],
-      ["scripts", "an npm package.json"],
-      ["private", "an npm package.json"],
-      ["bugs", "an npm package.json"],
-      ["contributors", "an npm package.json"],
-      ["dxt_version", "an MCPB/DXT manifest"],
-      ["mcpb_version", "an MCPB/DXT manifest"],
-      ["user_config", "an MCPB/DXT manifest"],
-      ["compatibility", "an MCPB/DXT manifest"],
-      ["server", "an MCP server manifest"],
-      ["tools", "an MCP server manifest"],
-      ["prompts", "an MCP server manifest"],
-      ["resources", "an MCP server manifest"],
-      ["logo", "manifests across many tools"],
-      ["readme", "manifests across many tools"],
-      ["changelog", "manifests across many tools"],
-      ["support", "manifests across many tools"],
-      ["privacy_policy", "manifests across many tools"],
-      ["privacy_policies", "manifests across many tools"],
-      ["terms_of_service", "manifests across many tools"],
-      ["_comment", "manifests across many tools"],
-      ["$id", "a JSON Schema document"],
-      ["$comment", "a JSON Schema document"],
-    ])),
-    (SBf = new Map([["user_config", "userConfig"]])),
-    (EBf = ["monitors", "themes"]),
-    (Gjl = new Set(["themes", "monitors", "outputStyles", "evals"])));
-});
+// [unwrapped __esm module vrr] deps: Xr, At, Iv, Jt, YPn, her, ZC, D$o
+((Gq = require("fs/promises")),
+  (_f = R(require("path"))),
+  (bBf = new Set(["category", "source", "tags", "strict", "id", "relevance"])),
+  (jjl = new Map([
+    ["publisher", "a VS Code/Cursor extension manifest"],
+    ["engines", "a VS Code/Cursor extension manifest"],
+    ["categories", "a VS Code/Cursor extension manifest"],
+    ["icon", "a VS Code/Cursor extension manifest"],
+    ["contributes", "a VS Code/Cursor extension manifest"],
+    ["activationEvents", "a VS Code/Cursor extension manifest"],
+    ["preview", "a VS Code/Cursor extension manifest"],
+    ["main", "an npm package.json"],
+    ["type", "an npm package.json"],
+    ["files", "an npm package.json"],
+    ["bin", "an npm package.json"],
+    ["scripts", "an npm package.json"],
+    ["private", "an npm package.json"],
+    ["bugs", "an npm package.json"],
+    ["contributors", "an npm package.json"],
+    ["dxt_version", "an MCPB/DXT manifest"],
+    ["mcpb_version", "an MCPB/DXT manifest"],
+    ["user_config", "an MCPB/DXT manifest"],
+    ["compatibility", "an MCPB/DXT manifest"],
+    ["server", "an MCP server manifest"],
+    ["tools", "an MCP server manifest"],
+    ["prompts", "an MCP server manifest"],
+    ["resources", "an MCP server manifest"],
+    ["logo", "manifests across many tools"],
+    ["readme", "manifests across many tools"],
+    ["changelog", "manifests across many tools"],
+    ["support", "manifests across many tools"],
+    ["privacy_policy", "manifests across many tools"],
+    ["privacy_policies", "manifests across many tools"],
+    ["terms_of_service", "manifests across many tools"],
+    ["_comment", "manifests across many tools"],
+    ["$id", "a JSON Schema document"],
+    ["$comment", "a JSON Schema document"],
+  ])),
+  (SBf = new Map([["user_config", "userConfig"]])),
+  (EBf = ["monitors", "themes"]),
+  (Gjl = new Set(["themes", "monitors", "outputStyles", "evals"])));
 async function wrr(e, t = {}) {
   let n = [],
     r = await IBf(e);

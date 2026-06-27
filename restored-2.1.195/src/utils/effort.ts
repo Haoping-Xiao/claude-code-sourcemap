@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.1078  score=0.2187  fileCov=0.1754
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var HU = E(() => {
-  Un();
-  jc();
-  oo();
-  fn();
-  Sx();
-  mKr();
-});
 function Kw(e) {
   let t = W9(e, "effort");
   if (t !== void 0) return t;

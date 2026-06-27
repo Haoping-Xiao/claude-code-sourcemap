@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.4456  score=0.6357  fileCov=0.5985
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var y5l = E(() => {
-  Tc();
-  Ye();
-  ((g5l = R(lt(), 1)), (zFo = R(se(), 1)));
-});
+// [unwrapped __esm module y5l] deps: Tc, Ye
+((g5l = R(lt(), 1)), (zFo = R(se(), 1)));
 function b5l(e) {
   let t = _5l.c(10),
     { message: n, isTranscriptMode: r, showMessageTimestamps: o } = e,

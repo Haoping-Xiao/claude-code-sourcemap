@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.2224  score=1  fileCov=0.2224
 // note: low-confidence suggestion: node_modules/@azure/logger/dist/esm/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bpi = E(() => {
-  ZHn();
-});
 function eTn() {
   return c3r.getLogLevel();
 }

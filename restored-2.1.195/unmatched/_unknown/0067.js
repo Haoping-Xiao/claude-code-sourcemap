@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Pts = E(() => {
-  Dts = s8c;
-});
+// [unwrapped __esm module Pts]
+Dts = s8c;
 var Bwt = {};
 _t(Bwt, {
   default: () => $ie

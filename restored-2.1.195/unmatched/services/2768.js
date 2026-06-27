@@ -4,14 +4,10 @@
 // class=new  jaccard=0.0002  score=0.0931  fileCov=0.0002
 // note: nearest: node_modules/highlight.js/lib/languages/mathematica.js (0.0002); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sre = E(() => {
-  Un();
-  Lx();
-  Fh();
-  _op = `
+// [unwrapped __esm module sre] deps: Un, Lx, Fh
+_op = `
 
 This is a scheduled routine \u2014 the notification is how the run reaches its owner. Wrap the message in ${yop} tags: the first sentence becomes the phone banner, the full text becomes the email body.`;
-});
 function Roo() {
   return $Re() ? `
 

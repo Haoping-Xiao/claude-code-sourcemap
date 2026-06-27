@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0088  score=0.1562  fileCov=0.0093
 // note: nearest: src/ink/styles.ts (0.0088); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xUt = E(() => {
-  Un();
-});
 function Gh(e) {
   let t = W6d(),
     n = e ? mo(e) : void 0,

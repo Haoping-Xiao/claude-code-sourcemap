@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0474  score=0.5755  fileCov=0.0491
 // note: nearest: src/components/TrustDialog/utils.ts (0.0474); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jDl = E(() => {
-  Ber = new Int32Array(64);
-});
+// [unwrapped __esm module jDl]
+Ber = new Int32Array(64);
 function nKe(e) {
   return N_() ? yn("policySettings")?.statusLine : e;
 }

@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.2177  score=0.3756  fileCov=0.3412
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var BBl = E(() => {
-  _i();
-  Ye();
-  rBo();
-  ((OBl = R(lt(), 1)), (ZQ = R(se(), 1)));
-});
+// [unwrapped __esm module BBl] deps: _i, Ye, rBo
+((OBl = R(lt(), 1)), (ZQ = R(se(), 1)));
 function FBl(e) {
   let t = UBl.c(44),
     { onClose: n, commands: r } = e,

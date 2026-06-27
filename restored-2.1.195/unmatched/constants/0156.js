@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0246  score=0.1985  fileCov=0.0273
 // note: nearest: src/utils/bash/ParsedCommand.ts (0.0246); dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rv = E(() => {
-  rwe();
-  vos = Symbol.for("brand.privateNullableHeaders");
-});
+// [unwrapped __esm module rv] deps: rwe
+vos = Symbol.for("brand.privateNullableHeaders");
 function Cos(e) {
   return e.replace(/[^A-Za-z0-9\-._~!$&'()*+,;=:@]+/g, encodeURIComponent);
 }

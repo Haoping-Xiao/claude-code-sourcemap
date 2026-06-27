@@ -4,17 +4,13 @@
 // class=modified  jaccard=0.4151  score=0.6657  fileCov=0.5245
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iEc = E(() => {
-  tC();
-  Yj();
-  ps();
-  ((sEc = R(lt(), 1)),
-    (yhm = {
-      setCursorOffset: () => {},
-      clearBuffer: () => {},
-      resetHistory: () => {},
-    }));
-});
+// [unwrapped __esm module iEc] deps: tC, Yj, ps
+((sEc = R(lt(), 1)),
+  (yhm = {
+    setCursorOffset: () => {},
+    clearBuffer: () => {},
+    resetHistory: () => {},
+  }));
 function kzo(e) {
   return (
     (El(e) && (e.status === "running" || sw(e))) ||

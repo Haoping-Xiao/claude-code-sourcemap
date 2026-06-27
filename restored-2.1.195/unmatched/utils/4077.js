@@ -4,13 +4,8 @@
 // class=new  jaccard=0.016  score=0.4107  fileCov=0.0164
 // note: nearest: src/components/messages/AttachmentMessage.tsx (0.016); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Uol = E(() => {
-  Ye();
-  es();
-  Coe();
-  xoe();
-  Nol = R(lt(), 1), Ck = R(se(), 1);
-});
+// [unwrapped __esm module Uol] deps: Ye, es, Coe, xoe
+Nol = R(lt(), 1), Ck = R(se(), 1);
 function Fpe() {
   let e = Fol.c(1),
     t;

@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.5496  score=0.6814  fileCov=0.7396
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aEe = E(() => {
-  ((qPa = require("os")), (FGt = require("path")));
-});
+// [unwrapped __esm module aEe]
+((qPa = require("os")), (FGt = require("path")));
 function Fmo(e, t, n = [], r = []) {
   let o = n.length > 0 ? `${n.join(" ")} \${1+"$@"}` : '${1+"$@"}',
     s = Vt() === "windows",

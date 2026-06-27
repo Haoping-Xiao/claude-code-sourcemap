@@ -4,15 +4,6 @@
 // class=modified (alt of src/query.ts)  jaccard=0.0065  score=1  fileCov=0.0065
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ifc = E(() => {
-  g$e();
-  lze();
-  eXn();
-  X6e();
-  RN();
-  At();
-  a8o();
-});
 function zZt(e) {
   return e === "aborted_streaming" || e === "aborted_tools";
 }

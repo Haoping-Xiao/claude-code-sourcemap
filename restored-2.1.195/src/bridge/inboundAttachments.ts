@@ -4,42 +4,6 @@
 // class=modified  jaccard=0.5943  score=0.8533  fileCov=0.662
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var j8o = E(() => {
-  ft();
-  JSt();
-  pgc();
-  S7t();
-  H0();
-  _F();
-  jc();
-  ii();
-  IL();
-  sre();
-  oo();
-  er();
-  je();
-  jZe();
-  At();
-  sa();
-  sF();
-  H1e();
-  co();
-  qd();
-  een();
-  y_();
-  _a();
-  XKe();
-  Ost();
-  wQ();
-  SC();
-  nOe();
-  Cde();
-  sVe();
-  ygc();
-  kgc();
-  Hir();
-  SJ();
-});
 var Mgc = {};
 _t(Mgc, {
   resolveInboundAttachments: () => resolveInboundAttachments,

@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0129  score=0.2193  fileCov=0.0135
 // note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0129); dir inferred from dep-graph -> context; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var U0c = E(() => {
-  uo();
-  avt = R(rt(), 1);
-});
+// [unwrapped __esm module U0c] deps: uo
+avt = R(rt(), 1);
 function j0c() {
   let e = uYo.c(22),
     t = Ht(Pvm),

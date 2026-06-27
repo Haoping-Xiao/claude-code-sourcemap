@@ -3,10 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pts = E(() => {
-  $wt();
-  dts = g9c;
-});
+// [unwrapped __esm module pts] deps: $wt
+dts = g9c;
 function h9c(e, t) {
   var n = Ove(this, e),
     r = n.size;

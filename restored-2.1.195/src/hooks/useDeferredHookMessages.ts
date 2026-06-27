@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3071  score=1  fileCov=0.3071
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var XSc = E(() => {
-  fn();
-  KSc = R(rt(), 1);
-});
+// [unwrapped __esm module XSc] deps: fn
+KSc = R(rt(), 1);
 function JSc(e, t) {
   let n = T7e.useRef(e ?? null),
     r = T7e.useRef(!e);

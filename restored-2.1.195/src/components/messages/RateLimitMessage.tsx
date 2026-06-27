@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2708  score=0.3809  fileCov=0.4838
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Vyt = E(() => {
-  z1();
-  Czn = R(rt(), 1);
-});
+// [unwrapped __esm module Vyt] deps: z1
+Czn = R(rt(), 1);
 function rof({
   shouldShowUpsell: e,
   isMax20x: t,

@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0035  score=0.0061  fileCov=0.0084
 // note: nearest: src/components/Feedback.tsx (0.0035); dir inferred from dep-graph -> tasks; 44 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Akc = E(() => {
-  _kc = require("fs/promises"), hTm = /"timestamp":"([^"]+)"/;
-});
+// [unwrapped __esm module Akc]
+_kc = require("fs/promises"), hTm = /"timestamp":"([^"]+)"/;
 var i0c = {};
 _t(i0c, {
   summarizeEvent: () => summarizeEvent,

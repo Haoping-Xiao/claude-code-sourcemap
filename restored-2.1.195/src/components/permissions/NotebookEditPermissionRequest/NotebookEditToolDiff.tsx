@@ -4,19 +4,13 @@
 // class=modified  jaccard=0.3952  score=0.5911  fileCov=0.5438
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var s6n = E(() => {
-  o6n();
-  ys();
-  Hu();
-  _m();
-  Jt();
-  kvo = class kvo extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "NotebookReadError";
-    }
-  };
-});
+// [unwrapped __esm module s6n] deps: o6n, ys, Hu, _m, Jt
+kvo = class kvo extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "NotebookReadError";
+  }
+};
 function ttl(e) {
   let t = Rvo.c(7),
     n;

@@ -4,26 +4,14 @@
 // class=modified (alt of src/utils/plugins/officialMarketplaceStartupCheck.ts)  jaccard=0.0979  score=0.597  fileCov=0.1048
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tLc = E(() => {
-  dn();
-  Un();
-  kt();
-  er();
-  je();
-  fn();
-  eMn();
-  lE();
-  oWe();
-  S$o();
-  WI();
-  ZRc = require("path");
-  Hfr = {
-    MAX_ATTEMPTS: 10,
-    INITIAL_DELAY_MS: 3600000,
-    BACKOFF_MULTIPLIER: 2,
-    MAX_DELAY_MS: 604800000,
-  };
-});
+// [unwrapped __esm module tLc] deps: dn, Un, kt, er, je, fn, eMn, lE, oWe, S$o, WI
+ZRc = require("path");
+Hfr = {
+  MAX_ATTEMPTS: 10,
+  INITIAL_DELAY_MS: 3600000,
+  BACKOFF_MULTIPLIER: 2,
+  MAX_DELAY_MS: 604800000,
+};
 function rLc() {
   let e = nLc.c(3),
     t = Ho(),

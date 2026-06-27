@@ -4,18 +4,8 @@
 // class=modified  jaccard=0.5303  score=0.6744  fileCov=0.7128
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jUa = E(() => {
-  oo();
-  er();
-  je();
-  At();
-  Gx();
-  vn();
-  SG();
-  dn();
-  c_();
-  ROp = Ahe(kOp, IOp);
-});
+// [unwrapped __esm module jUa] deps: oo, er, je, At, Gx, vn, SG, dn, c_
+ROp = Ahe(kOp, IOp);
 class Myo {
   endpoint;
   timeout;

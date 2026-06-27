@@ -4,6 +4,5 @@
 // class=partial  jaccard=0.1359  score=1  fileCov=0.1359
 // note: low-confidence suggestion: node_modules/lodash-es/_cloneBuffer.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xUa = E(() => {
-  w3n = Buffer.allocUnsafe(16);
-});
+// [unwrapped __esm module xUa]
+w3n = Buffer.allocUnsafe(16);

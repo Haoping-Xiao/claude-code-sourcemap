@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.299  score=0.7201  fileCov=0.3383
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mJr = E(() => {
-  zRn();
-});
 function MGd(e, t) {
   if (!e) return t;
   return {

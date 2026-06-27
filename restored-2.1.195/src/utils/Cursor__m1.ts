@@ -4,13 +4,8 @@
 // class=modified (alt of src/utils/Cursor.ts)  jaccard=0.0475  score=0.8441  fileCov=0.0479
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var XMl = E(() => {
-  si();
-  Ye();
-  ps();
-  Mg();
-  ((KMl = R(lt(), 1)), (b1o = R(rt(), 1)), (OOe = R(se(), 1)));
-});
+// [unwrapped __esm module XMl] deps: si, Ye, ps, Mg
+((KMl = R(lt(), 1)), (b1o = R(rt(), 1)), (OOe = R(se(), 1)));
 function QMl(e, t) {
   let n = Math.max(1, Math.floor(t) || 1),
     r =

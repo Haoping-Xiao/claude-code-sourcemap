@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.1107  score=0.4191  fileCov=0.1308
 // note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bs = E(() => {
-  Ye();
-  nzi = R(lt(), 1), rzi = R(rt(), 1), HPn = R(rt(), 1), BGe = R(se(), 1);
-});
+// [unwrapped __esm module Bs] deps: Ye
+nzi = R(lt(), 1), rzi = R(rt(), 1), HPn = R(rt(), 1), BGe = R(se(), 1);
 function mH(e) {
   let t = IZr.c(42),
     {

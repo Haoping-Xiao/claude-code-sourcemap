@@ -4,15 +4,6 @@
 // class=partial  jaccard=0.2344  score=0.7144  fileCov=0.2586
 // note: low-confidence suggestion: src/utils/staticRender.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var S9e = E(() => {
-  kt();
-  vy();
-  aS();
-  dn();
-  iza();
-  H0();
-  uza();
-});
 function Lzp() {}
 function V_(e) {
   let t = dza.c(5),

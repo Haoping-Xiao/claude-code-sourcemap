@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.3297  score=0.6263  fileCov=0.4104
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _ll = E(() => {
-  ii();
-  f4();
-  ((hll = R(lt(), 1)), (iif = new Set([j1])));
-});
+// [unwrapped __esm module _ll] deps: ii, f4
+((hll = R(lt(), 1)), (iif = new Set([j1])));
 function Sll(e) {
   let t = bll.c(30),
     {

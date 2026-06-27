@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.609  score=0.8259  fileCov=0.6987
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var g0 = E(() => {
-  Tc();
-  Xge();
-  m0();
-});
 var xis = {};
 _t(xis, {
   wrapText: () => Yin,

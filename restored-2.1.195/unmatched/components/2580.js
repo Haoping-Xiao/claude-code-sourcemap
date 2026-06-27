@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0057  score=1  fileCov=0.0057
 // note: nearest: node_modules/commander/lib/command.js (0.0057); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var O0 = E(() => {
-  ps();
-  yzi();
-  _zi = R(rt(), 1);
-});
+// [unwrapped __esm module O0] deps: ps, yzi
+_zi = R(rt(), 1);
 function Szi(e) {
   if (e.startsWith("command:")) return {
     description: e.slice(8)

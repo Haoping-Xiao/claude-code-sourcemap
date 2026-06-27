@@ -3,21 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nnc = E(() => {
-  Fy();
-  vi();
-  CH();
-  Ye();
-  kt();
-  a5();
-  vy();
-  je();
-  NGo();
-  OB();
-  Ide();
-  $nc();
-  THt = R(rt(), 1), mZ = R(se(), 1);
-});
+// [unwrapped __esm module Nnc] deps: Fy, vi, CH, Ye, kt, a5, vy, je, NGo, OB, Ide, $nc
+THt = R(rt(), 1), mZ = R(se(), 1);
 var Bnc = {};
 _t(Bnc, {
   default: () => MXf

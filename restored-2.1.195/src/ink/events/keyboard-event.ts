@@ -4,31 +4,29 @@
 // class=modified  jaccard=0.6312  score=1  fileCov=0.6312
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var iJr = E(() => {
-  qit();
-  sat = class sat extends yne {
-    key;
-    name;
-    sequence;
-    ctrl;
-    shift;
-    meta;
-    superKey;
-    fn;
-    constructor(e) {
-      super("keydown", {
-        bubbles: true,
-        cancelable: true,
-      });
-      ((this.key = HGd(e)),
-        (this.name = e.name ?? ""),
-        (this.sequence = e.sequence ?? ""),
-        (this.ctrl = e.ctrl),
-        (this.shift = e.shift),
-        (this.meta = e.meta || e.option),
-        (this.superKey = e.super),
-        (this.fn = e.fn));
-    }
-  };
-});
+// [unwrapped __esm module iJr] deps: qit
+sat = class sat extends yne {
+  key;
+  name;
+  sequence;
+  ctrl;
+  shift;
+  meta;
+  superKey;
+  fn;
+  constructor(e) {
+    super("keydown", {
+      bubbles: true,
+      cancelable: true,
+    });
+    ((this.key = HGd(e)),
+      (this.name = e.name ?? ""),
+      (this.sequence = e.sequence ?? ""),
+      (this.ctrl = e.ctrl),
+      (this.shift = e.shift),
+      (this.meta = e.meta || e.option),
+      (this.superKey = e.super),
+      (this.fn = e.fn));
+  }
+};
 var J_e;

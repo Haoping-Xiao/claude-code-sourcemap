@@ -4,14 +4,13 @@
 // class=modified  jaccard=0.3843  score=0.6702  fileCov=0.474
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var CCl = E(() => {
-  JJn = {
-    parse(e) {
-      if (e === vCl && XJn !== void 0) return XJn;
-      return ((vCl = e), (XJn = BHf(e)), XJn);
-    },
-  };
-});
+// [unwrapped __esm module CCl]
+JJn = {
+  parse(e) {
+    if (e === vCl && XJn !== void 0) return XJn;
+    return ((vCl = e), (XJn = BHf(e)), XJn);
+  },
+};
 async function UHf(e, t, n, r, o, s, i) {
   let a = new Map();
   for (let f = 0; f < t.length; f++) {

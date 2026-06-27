@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0046  score=0.4378  fileCov=0.0046
 // note: nearest: src/utils/attachments.ts (0.0046); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LMe = E(() => {
-  wr();
-  dr();
-});
 function Npe(e, t, {
   maxEditDistance: n = 1
 } = {}) {

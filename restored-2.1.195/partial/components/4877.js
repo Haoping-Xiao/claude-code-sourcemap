@@ -4,20 +4,8 @@
 // class=partial  jaccard=0.0819  score=1  fileCov=0.0819
 // note: low-confidence suggestion: src/components/permissions/rules/WorkspaceTab.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var bFo = E(() => {
-  si();
-  Ye();
-  ps();
-  kt();
-  er();
-  Vl();
-  eE();
-  RLe();
-  gm();
-  hFo();
-  yFo();
-  _Fo = R(lt(), 1), NXt = R(rt(), 1), ox = R(se(), 1);
-});
+// [unwrapped __esm module bFo] deps: si, Ye, ps, kt, er, Vl, eE, RLe, gm, hFo, yFo
+_Fo = R(lt(), 1), NXt = R(rt(), 1), ox = R(se(), 1);
 var DGl = {};
 _t(DGl, {
   call: () => call

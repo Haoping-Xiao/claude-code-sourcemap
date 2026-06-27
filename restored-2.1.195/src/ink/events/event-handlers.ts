@@ -4,66 +4,65 @@
 // class=modified  jaccard=0.322  score=0.3608  fileCov=0.7497
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var TXr = E(() => {
-  ((S3i = {
-    keydown: {
-      bubble: "onKeyDown",
-      capture: "onKeyDownCapture",
-    },
-    focus: {
-      bubble: "onFocus",
-      capture: "onFocusCapture",
-    },
-    blur: {
-      bubble: "onBlur",
-      capture: "onBlurCapture",
-    },
-    paste: {
-      bubble: "onPaste",
-      capture: "onPasteCapture",
-    },
-    wheel: {
-      bubble: "onWheel",
-      capture: "onWheelCapture",
-    },
-    action: {
-      bubble: "onAction",
-      capture: "onActionCapture",
-    },
-    resize: {
-      bubble: "onResize",
-    },
-    click: {
-      bubble: "onClick",
-    },
-  }),
-    (AXr = new Set([
-      "onKeyDown",
-      "onKeyDownCapture",
-      "onPaste",
-      "onPasteCapture",
-      "onWheel",
-      "onWheelCapture",
-    ])),
-    (HXr = new Set([
-      "onKeyDown",
-      "onKeyDownCapture",
-      "onFocus",
-      "onFocusCapture",
-      "onBlur",
-      "onBlurCapture",
-      "onPaste",
-      "onPasteCapture",
-      "onWheel",
-      "onWheelCapture",
-      "onAction",
-      "onActionCapture",
-      "onResize",
-      "onClick",
-      "onMouseEnter",
-      "onMouseLeave",
-    ])));
-});
+// [unwrapped __esm module TXr]
+((S3i = {
+  keydown: {
+    bubble: "onKeyDown",
+    capture: "onKeyDownCapture",
+  },
+  focus: {
+    bubble: "onFocus",
+    capture: "onFocusCapture",
+  },
+  blur: {
+    bubble: "onBlur",
+    capture: "onBlurCapture",
+  },
+  paste: {
+    bubble: "onPaste",
+    capture: "onPasteCapture",
+  },
+  wheel: {
+    bubble: "onWheel",
+    capture: "onWheelCapture",
+  },
+  action: {
+    bubble: "onAction",
+    capture: "onActionCapture",
+  },
+  resize: {
+    bubble: "onResize",
+  },
+  click: {
+    bubble: "onClick",
+  },
+}),
+  (AXr = new Set([
+    "onKeyDown",
+    "onKeyDownCapture",
+    "onPaste",
+    "onPasteCapture",
+    "onWheel",
+    "onWheelCapture",
+  ])),
+  (HXr = new Set([
+    "onKeyDown",
+    "onKeyDownCapture",
+    "onFocus",
+    "onFocusCapture",
+    "onBlur",
+    "onBlurCapture",
+    "onPaste",
+    "onPasteCapture",
+    "onWheel",
+    "onWheelCapture",
+    "onAction",
+    "onActionCapture",
+    "onResize",
+    "onClick",
+    "onMouseEnter",
+    "onMouseLeave",
+  ])));
 function E3i(e, t, n) {
   let r = e._eventHandlers;
   if (!r) return;

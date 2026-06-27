@@ -4,10 +4,6 @@
 // class=partial  jaccard=0.079  score=0.8567  fileCov=0.0801
 // note: low-confidence suggestion: node_modules/axios/lib/core/Axios.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ddn = E(() => {
-  XH();
-  rys();
-});
 class oys {
   constructor() {
     this.handlers = [];

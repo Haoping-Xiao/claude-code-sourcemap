@@ -4,14 +4,13 @@
 // class=partial  jaccard=0.0748  score=0.3328  fileCov=0.0881
 // note: low-confidence suggestion: node_modules/gaxios/build/src/gaxios.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var mXi = E(() => {
-  uXi = R(MMn(), 1), dXi = require("net"), pXi = require("tls"), {
-    pki: $Mn,
-    md: OJd,
-    random: NJd,
-    util: BJd
-  } = uXi.default;
-});
+// [unwrapped __esm module mXi]
+uXi = R(MMn(), 1), dXi = require("net"), pXi = require("tls"), {
+  pki: $Mn,
+  md: OJd,
+  random: NJd,
+  util: BJd
+} = uXi.default;
 function kto(e) {
   let t = e?.http ?? process.env.HTTP_PROXY ?? process.env.http_proxy ?? void 0,
     n = e?.https ?? process.env.HTTPS_PROXY ?? process.env.https_proxy ?? t,

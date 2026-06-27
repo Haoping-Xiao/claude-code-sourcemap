@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0521  score=1  fileCov=0.0521
 // note: nearest: src/utils/telemetry/pluginTelemetry.ts (0.0521); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ieo = E(() => {
-  vf();
-  dr();
-});
 function eFt(e) {
   return bKi.createHash("sha256").update(e + TKd).digest("hex").slice(0, 16);
 }

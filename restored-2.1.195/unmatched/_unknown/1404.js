@@ -4,13 +4,9 @@
 // class=new  jaccard=0.0195  score=1  fileCov=0.0195
 // note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0195); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vFr = E(() => {
-  pb();
-  _v();
-  Bw();
-  ari = R(yo(), 1);
-  wPt = class wPt extends Vd.classBuilder().ep(vp).m(function (e, t, n, r) {
-    return [ari.getEndpointPlugin(n, e.getEndpointParameterInstructions())];
-  }).s("AWSCognitoIdentityService", "GetId", {}).n("CognitoIdentityClient", "GetIdCommand").sc(Nni).build() {};
-});
+// [unwrapped __esm module vFr] deps: pb, _v, Bw
+ari = R(yo(), 1);
+wPt = class wPt extends Vd.classBuilder().ep(vp).m(function (e, t, n, r) {
+  return [ari.getEndpointPlugin(n, e.getEndpointParameterInstructions())];
+}).s("AWSCognitoIdentityService", "GetId", {}).n("CognitoIdentityClient", "GetIdCommand").sc(Nni).build() {};
 var lri, wFr;

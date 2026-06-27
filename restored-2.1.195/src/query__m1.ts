@@ -4,23 +4,22 @@
 // class=modified (alt of src/query.ts)  jaccard=0.0308  score=0.3483  fileCov=0.0327
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uur = E(() => {
-  xfc = [
-    "blocking_limit",
-    "rapid_refill_breaker",
-    "prompt_too_long",
-    "image_error",
-    "model_error",
-    "aborted_streaming",
-    "aborted_tools",
-    "stop_hook_prevented",
-    "hook_stopped",
-    "tool_deferred",
-    "max_turns",
-    "background_requested",
-    "completed",
-  ];
-});
+// [unwrapped __esm module uur]
+xfc = [
+  "blocking_limit",
+  "rapid_refill_breaker",
+  "prompt_too_long",
+  "image_error",
+  "model_error",
+  "aborted_streaming",
+  "aborted_tools",
+  "stop_hook_prevented",
+  "hook_stopped",
+  "tool_deferred",
+  "max_turns",
+  "background_requested",
+  "completed",
+];
 function kfc(e) {
   return {
     commands: e.commands ?? [],

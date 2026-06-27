@@ -4,24 +4,8 @@
 // class=new  jaccard=0.0432  score=0.1649  fileCov=0.0553
 // note: nearest: src/ink/components/Box.tsx (0.0432); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var MHc = E(() => {
-  Vl();
-  Bs();
-  Ko();
-  X0();
-  eKo();
-  WTe();
-  kHc();
-  Ye();
-  Un();
-  kt();
-  Du();
-  uo();
-  tWt();
-  Wbt();
-  DHc();
-  cx = R(rt(), 1), qP = R(se(), 1);
-});
+// [unwrapped __esm module MHc] deps: Vl, Bs, Ko, X0, eKo, WTe, kHc, Ye, Un, kt, Du, uo, tWt, Wbt, DHc
+cx = R(rt(), 1), qP = R(se(), 1);
 function OHc(e) {
   let t = $Hc.c(27),
     {

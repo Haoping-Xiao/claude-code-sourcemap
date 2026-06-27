@@ -4,11 +4,8 @@
 // class=partial  jaccard=0.2434  score=0.5237  fileCov=0.3126
 // note: low-confidence suggestion: src/components/ConfigurableShortcutHint.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ko = E(() => {
-  mGe();
-  _Pn();
-  U6i = R(lt(), 1), DUt = R(se(), 1);
-});
+// [unwrapped __esm module Ko] deps: mGe, _Pn
+U6i = R(lt(), 1), DUt = R(se(), 1);
 function mr(e) {
   let t = F6i.c(5),
     {

@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.1424  score=0.211  fileCov=0.3047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Amc = E(() => {
-  Ye();
-  mE();
-  vi();
-  ((Smc = R(lt(), 1)), (n7e = R(se(), 1)));
-});
+// [unwrapped __esm module Amc] deps: Ye, mE, vi
+((Smc = R(lt(), 1)), (n7e = R(se(), 1)));
 function Tmc(e, t) {
   if (!at("tengu_gleaming_fair", false)) return null;
   if (Dt().resumeReturnDismissed) return null;

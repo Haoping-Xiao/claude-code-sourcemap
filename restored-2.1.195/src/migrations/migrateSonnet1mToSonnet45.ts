@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.3223  score=0.7697  fileCov=0.3567
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var JOc = E(() => {
-  dn();
-  er();
-});
 function QOc() {
   if (Dt().sonnet1m45MigrationComplete) return;
   let t = false;

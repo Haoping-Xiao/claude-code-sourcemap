@@ -4,11 +4,8 @@
 // class=modified  jaccard=0.1826  score=0.2393  fileCov=0.4355
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fXl = E(() => {
-  Ye();
-  lg();
-  ((dXl = R(lt(), 1)), (SA = R(se(), 1)));
-});
+// [unwrapped __esm module fXl] deps: Ye, lg
+((dXl = R(lt(), 1)), (SA = R(se(), 1)));
 function A4o(e) {
   let t = mXl.c(24),
     { depCheck: n } = e,

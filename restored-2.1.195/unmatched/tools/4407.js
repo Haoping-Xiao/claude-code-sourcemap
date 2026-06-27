@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0032  score=0.2936  fileCov=0.0032
 // note: nearest: src/screens/REPL.tsx (0.0032); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var dHl = E(() => {
-  ii();
-  Il();
-  p6e();
-  lze();
-});
 function pHl(e) {
   if (!e || typeof e !== "object") return false;
   return "behavior" in e && (e.behavior === "allow" || e.behavior === "deny");

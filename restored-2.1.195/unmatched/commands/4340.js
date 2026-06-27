@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0088  score=0.2628  fileCov=0.0091
 // note: nearest: src/cli/print.ts (0.0088); dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var __l = E(() => {
-  ql();
-  Ye();
-  Kyt();
-  f_l = R(rt(), 1), x$e = R(se(), 1);
-});
+// [unwrapped __esm module __l] deps: ql, Ye, Kyt
+f_l = R(rt(), 1), x$e = R(se(), 1);
 function ngf(e, t) {
   let n = Woe(xAe(), t),
     r = new Set(e.map(s => s.name)),

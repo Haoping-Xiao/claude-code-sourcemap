@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.4431  score=0.5188  fileCov=0.7522
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Sj = E(() => {
-  ((Yoi = require("async_hooks")), (X2r = new Yoi.AsyncLocalStorage()));
-});
+// [unwrapped __esm module Sj]
+((Yoi = require("async_hooks")), (X2r = new Yoi.AsyncLocalStorage()));
 var ejr = {};
 _t(ejr, {
   waitForTeammatesToBecomeIdle: () => waitForTeammatesToBecomeIdle,

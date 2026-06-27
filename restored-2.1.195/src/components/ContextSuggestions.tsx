@@ -4,14 +4,6 @@
 // class=modified  jaccard=0.2748  score=0.4046  fileCov=0.4615
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var y1l = E(() => {
-  lf();
-  lC();
-  TX();
-  wr();
-  oc();
-  es();
-});
 function b1l(e) {
   let t = _1l.c(5),
     { suggestions: n } = e;

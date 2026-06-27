@@ -4,42 +4,10 @@
 // class=modified  jaccard=0.2815  score=0.3977  fileCov=0.4906
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var KQn = E(() => {
-  ft();
-  KKt();
-  U_t();
-  dn();
-  Un();
-  kt();
-  ZE();
-  wX();
-  WW();
-  tSe();
-  Vw();
-  Ld();
-  Lo();
-  je();
-  At();
-  es();
-  vn();
-  co();
-  xUt();
-  Ao();
-  zH();
-  y_();
-  _a();
-  Epe();
-  Jt();
-  sr();
-  m1();
-  FAe();
-  FQn();
-  Oze();
-  ag();
-  ((rOe = require("fs/promises")), (VQn = require("path")));
-  Nvf = /^(unspecified|untitled|unnamed)\b|^(unknown|no) (request|task|job|input)\b/;
-  jvf = new Set([yh, DI, yT]);
-});
+// [unwrapped __esm module KQn] deps: ft, KKt, U_t, dn, Un, kt, ZE, wX, WW, tSe, Vw, Ld, Lo, je, At, es, vn, co, xUt, Ao, zH, y_, _a, Epe, Jt, sr, m1, FAe, FQn, Oze, ag
+((rOe = require("fs/promises")), (VQn = require("path")));
+Nvf = /^(unspecified|untitled|unnamed)\b|^(unknown|no) (request|task|job|input)\b/;
+jvf = new Set([yh, DI, yT]);
 function Cxl(e) {
   return e.findLastIndex((t) => t.type === "user" && !t.isMeta && !bfe(t));
 }

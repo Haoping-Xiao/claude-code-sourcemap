@@ -4,18 +4,6 @@
 // class=partial  jaccard=0.1286  score=0.4717  fileCov=0.1503
 // note: low-confidence suggestion: src/components/LogoV2/feedConfigs.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GXt = E(() => {
-  ft();
-  Tc();
-  oo();
-  Lo();
-  wr();
-  oc();
-  es();
-  Ls();
-  KKe();
-  dr();
-});
 function zWl(e) {
   let {
       title: t,

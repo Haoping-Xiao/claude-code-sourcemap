@@ -4,10 +4,8 @@
 // class=partial  jaccard=0.0821  score=0.101  fileCov=0.3047
 // note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/internal/utils/uuid.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ynn = E(() => {
-  rB();
-  VNe = Ru.getRandomValues.bind(Ru);
-});
+// [unwrapped __esm module ynn] deps: rB
+VNe = Ru.getRandomValues.bind(Ru);
 function MXo(e) {
   switch (e) {
     case "A128GCM":

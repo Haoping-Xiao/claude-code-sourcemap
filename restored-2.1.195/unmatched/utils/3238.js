@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0207  score=0.2255  fileCov=0.0223
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js (0.0207); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jdt = E(() => {
-  wr();
-});
 function uqe(e) {
   let t = e?.extensions?.[Ldo];
   return t != null && typeof t === "object" && "directoryRead" in t && t.directoryRead === true;

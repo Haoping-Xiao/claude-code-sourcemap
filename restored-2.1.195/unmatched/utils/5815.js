@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0347  score=0.2303  fileCov=0.0392
 // note: nearest: node_modules/@opentelemetry/otlp-transformer/build/src/common/internal.js (0.0347); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var qOc = E(() => {
-  dn();
-  kt();
-  er();
-  Ao();
-  Ls();
-  dr();
-});
 function VOc() {
   let e = Dt();
   if (e.seenNotifications !== void 0) return;

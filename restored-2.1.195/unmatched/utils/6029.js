@@ -4,35 +4,31 @@
 // class=new  jaccard=0.0471  score=0.1819  fileCov=0.0597
 // note: nearest: src/tools/AgentTool/agentToolUtils.ts (0.0471); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KWc = E(() => {
-  zb();
-  At();
-  BZ();
-  yOm = /\r?\n\r?\n/;
-  SZo = ve(() => dt.object({
-    input_tokens: dt.number().optional(),
-    output_tokens: dt.number().optional(),
-    cache_read_input_tokens: dt.number().optional(),
-    cache_creation_input_tokens: dt.number().optional(),
-    speed: dt.string().nullable().optional(),
-    server_tool_use: dt.object({
-      web_search_requests: dt.number().optional()
-    }).passthrough().optional()
-  }).passthrough()), AOm = ve(() => dt.object({
-    type: dt.string().optional(),
-    usage: SZo().optional(),
-    message: dt.object({
-      usage: SZo().optional()
-    }).passthrough().optional(),
-    delta: dt.object({
-      text: dt.string().optional(),
-      partial_json: dt.string().optional(),
-      thinking: dt.string().optional()
-    }).passthrough().optional()
-  }).passthrough()), HOm = ve(() => dt.object({
+// [unwrapped __esm module KWc] deps: zb, At, BZ
+yOm = /\r?\n\r?\n/;
+SZo = ve(() => dt.object({
+  input_tokens: dt.number().optional(),
+  output_tokens: dt.number().optional(),
+  cache_read_input_tokens: dt.number().optional(),
+  cache_creation_input_tokens: dt.number().optional(),
+  speed: dt.string().nullable().optional(),
+  server_tool_use: dt.object({
+    web_search_requests: dt.number().optional()
+  }).passthrough().optional()
+}).passthrough()), AOm = ve(() => dt.object({
+  type: dt.string().optional(),
+  usage: SZo().optional(),
+  message: dt.object({
     usage: SZo().optional()
-  }).passthrough());
-});
+  }).passthrough().optional(),
+  delta: dt.object({
+    text: dt.string().optional(),
+    partial_json: dt.string().optional(),
+    thinking: dt.string().optional()
+  }).passthrough().optional()
+}).passthrough()), HOm = ve(() => dt.object({
+  usage: SZo().optional()
+}).passthrough());
 function YWc(e, t) {
   if (!t.admin) return null;
   let n = t.admin,

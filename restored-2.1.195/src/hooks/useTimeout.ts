@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.3714  score=1  fileCov=0.3714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hbc = E(() => {
-  CTt();
-  uo();
-  er();
-  ezo();
-  bm();
-  mbc = R(rt(), 1);
-});
+// [unwrapped __esm module hbc] deps: CTt, uo, er, ezo, bm
+mbc = R(rt(), 1);
 function _bc(e) {
   let [t, n] = Ddr.useState(false),
     r = ks();

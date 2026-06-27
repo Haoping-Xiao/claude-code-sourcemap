@@ -4,22 +4,8 @@
 // class=new  jaccard=0.0249  score=0.0833  fileCov=0.0342
 // note: nearest: src/utils/plugins/pluginBlocklist.ts (0.0249); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var w9o = E(() => {
-  ydc();
-  Sdc();
-  ag();
-  S6();
-  C5();
-  Ld();
-  nDe();
-  $g();
-  Xh();
-  sr();
-  Kv();
-  Ox();
-  g$();
-  QYe = R(se(), 1);
-});
+// [unwrapped __esm module w9o] deps: ydc, Sdc, ag, S6, C5, Ld, nDe, $g, Xh, sr, Kv, Ox, g$
+QYe = R(se(), 1);
 function C9o(e, t) {
   let n = [...t].sort(),
     r = Npe(e, n.map(a => ({

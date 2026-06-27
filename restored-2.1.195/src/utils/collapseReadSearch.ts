@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.4555  score=0.71  fileCov=0.5595
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Svl = E(() => {
-  MM();
-  u_();
-  nC();
-});
 function iEf(e) {
   let t = e;
   return t?.file_path ?? t?.path;

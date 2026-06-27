@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.2405  score=0.5095  fileCov=0.3129
 // note: low-confidence suggestion: node_modules/run-applescript/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TEi = E(() => {
-  EEi = require("util"), AEi = R(require("process")), HEi = require("child_process"), lwd = EEi.promisify(HEi.execFile);
-});
+// [unwrapped __esm module TEi]
+EEi = require("util"), AEi = R(require("process")), HEi = require("child_process"), lwd = EEi.promisify(HEi.execFile);
 async function CEi(e, {
   humanReadableOutput: t = true,
   signal: n

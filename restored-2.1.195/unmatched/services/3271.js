@@ -4,25 +4,22 @@
 // class=new  jaccard=0.0435  score=0.2823  fileCov=0.049
 // note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0435); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fpo = E(() => {
-  plo();
-  Fun();
-  U3t = class U3t extends Error {
-    constructor(e) {
-      super(`wrote >${Math.round(e / 1024 / 1024)}MB to stdout without a JSON-RPC message boundary. The server is likely writing logs or other non-protocol data to stdout instead of stderr. Disconnecting to prevent unbounded memory growth.`);
-      this.name = "StdoutOverflowError";
-    }
-  };
-  F3t = class F3t extends dlo {
-    overflowError;
-    constructor(e) {
-      super(e);
-      this._readBuffer = new mka(ppo, t => {
-        this.overflowError = t, queueMicrotask(() => void this.close());
-      });
-    }
-  };
-});
+// [unwrapped __esm module fpo] deps: plo, Fun
+U3t = class U3t extends Error {
+  constructor(e) {
+    super(`wrote >${Math.round(e / 1024 / 1024)}MB to stdout without a JSON-RPC message boundary. The server is likely writing logs or other non-protocol data to stdout instead of stderr. Disconnecting to prevent unbounded memory growth.`);
+    this.name = "StdoutOverflowError";
+  }
+};
+F3t = class F3t extends dlo {
+  overflowError;
+  constructor(e) {
+    super(e);
+    this._readBuffer = new mka(ppo, t => {
+      this.overflowError = t, queueMicrotask(() => void this.close());
+    });
+  }
+};
 function Nwp(e) {
   let t = 0,
     n = 0,

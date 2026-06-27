@@ -4,7 +4,5 @@
 // class=partial  jaccard=0.1009  score=1  fileCov=0.1009
 // note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/internal/headers.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Vdi = E(() => {
-  VHn();
-  qdi = Symbol.for("brand.privateNullableHeaders");
-});
+// [unwrapped __esm module Vdi] deps: VHn
+qdi = Symbol.for("brand.privateNullableHeaders");

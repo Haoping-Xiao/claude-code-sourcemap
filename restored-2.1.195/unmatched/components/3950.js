@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0299  score=0.1196  fileCov=0.0383
 // note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0299); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var nQa = E(() => {
-  Ye();
-  kt();
-  Hu();
-  dr();
-  Fy();
-  f_();
-  gm();
-  wb();
-  vH();
-  ZJa = R(lt(), 1), eQa = R(rt(), 1), YJ = R(se(), 1);
-});
+// [unwrapped __esm module nQa] deps: Ye, kt, Hu, dr, Fy, f_, gm, wb, vH
+ZJa = R(lt(), 1), eQa = R(rt(), 1), YJ = R(se(), 1);
 function YHo() {
   return {
     sonnet: yc[_j].vertex,

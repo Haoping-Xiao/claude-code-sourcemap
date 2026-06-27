@@ -4,16 +4,8 @@
 // class=modified (alt of src/tools/GrepTool/GrepTool.ts)  jaccard=0.0489  score=1  fileCov=0.0489
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jtl = E(() => {
-  Q8();
-  E5();
-  ql();
-  Ye();
-  oc();
-  es();
-  co();
-  ((Ntl = R(lt(), 1)), (XI = R(se(), 1)));
-});
+// [unwrapped __esm module jtl] deps: Q8, E5, ql, Ye, oc, es, co
+((Ntl = R(lt(), 1)), (XI = R(se(), 1)));
 function qvo(e, t, n = 0) {
   if (t === 0)
     return {

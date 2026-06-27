@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.2585  score=0.2788  fileCov=0.7802
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Apo = E(() => {
-  oke();
-  Vb();
-});
 class Hpo {
   serverName;
   sendMcpMessage;

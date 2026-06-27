@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0123  score=0.0365  fileCov=0.0183
 // note: nearest: node_modules/node-forge/lib/ed25519.js (0.0123); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rjc = E(() => {
-  kjc = xjc;
-});
+// [unwrapped __esm module Rjc]
+kjc = xjc;
 var pgr = {};
 _t(pgr, {
   jwtVerify: () => J2c,

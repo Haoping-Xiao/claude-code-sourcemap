@@ -4,117 +4,109 @@
 // class=modified  jaccard=0.6016  score=0.8399  fileCov=0.6796
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Bbl = E(() => {
-  Xr();
-  ii();
-  sp();
-  bk();
-  Mp();
-  Pbl();
-  Obl();
-  ((ohf = ve(() =>
-    H.strictObject({
-      subject: H.string().describe("A brief title for the task"),
-      description: H.string().describe("What needs to be done"),
-      activeForm: H.string()
-        .optional()
-        .describe(
-          'Present continuous form shown in spinner when in_progress (e.g., "Running tests")',
-        ),
-      metadata: H.record(H.string(), H.unknown())
-        .optional()
-        .describe("Arbitrary metadata to attach to the task"),
+// [unwrapped __esm module Bbl] deps: Xr, ii, sp, bk, Mp, Pbl, Obl
+((ohf = ve(() =>
+  H.strictObject({
+    subject: H.string().describe("A brief title for the task"),
+    description: H.string().describe("What needs to be done"),
+    activeForm: H.string()
+      .optional()
+      .describe(
+        'Present continuous form shown in spinner when in_progress (e.g., "Running tests")',
+      ),
+    metadata: H.record(H.string(), H.unknown())
+      .optional()
+      .describe("Arbitrary metadata to attach to the task"),
+  }),
+)),
+  (shf = ve(() =>
+    H.object({
+      task: H.object({
+        id: H.string(),
+        subject: H.string(),
+      }),
     }),
   )),
-    (shf = ve(() =>
-      H.object({
-        task: H.object({
-          id: H.string(),
-          subject: H.string(),
+  (Nbl = ti({
+    name: cC,
+    searchHint: "create a task in the task list",
+    maxResultSizeChars: 100000 /* 1e5 */,
+    async description() {
+      return Mbl;
+    },
+    async prompt() {
+      return $bl();
+    },
+    get inputSchema() {
+      return ohf();
+    },
+    get outputSchema() {
+      return shf();
+    },
+    userFacingName() {
+      return "TaskCreate";
+    },
+    shouldDefer: true,
+    coerceInput: Lbl,
+    validationErrorSteer: Dbl,
+    isEnabled() {
+      return EH();
+    },
+    isConcurrencySafe() {
+      return false;
+    },
+    toAutoClassifierInput(e) {
+      return e.subject;
+    },
+    renderToolUseMessage() {
+      return null;
+    },
+    async call({ subject: e, description: t, activeForm: n, metadata: r }, o, s, i, a) {
+      let l = await HOa(yF(), {
+          subject: e,
+          description: t,
+          activeForm: n,
+          status: "pending",
+          owner: void 0,
+          blocks: [],
+          blockedBy: [],
+          metadata: r,
         }),
-      }),
-    )),
-    (Nbl = ti({
-      name: cC,
-      searchHint: "create a task in the task list",
-      maxResultSizeChars: 100000 /* 1e5 */,
-      async description() {
-        return Mbl;
-      },
-      async prompt() {
-        return $bl();
-      },
-      get inputSchema() {
-        return ohf();
-      },
-      get outputSchema() {
-        return shf();
-      },
-      userFacingName() {
-        return "TaskCreate";
-      },
-      shouldDefer: true,
-      coerceInput: Lbl,
-      validationErrorSteer: Dbl,
-      isEnabled() {
-        return EH();
-      },
-      isConcurrencySafe() {
-        return false;
-      },
-      toAutoClassifierInput(e) {
-        return e.subject;
-      },
-      renderToolUseMessage() {
-        return null;
-      },
-      async call({ subject: e, description: t, activeForm: n, metadata: r }, o, s, i, a) {
-        let l = await HOa(yF(), {
-            subject: e,
-            description: t,
-            activeForm: n,
-            status: "pending",
-            owner: void 0,
-            blocks: [],
-            blockedBy: [],
-            metadata: r,
-          }),
-          c = [],
-          u = Rzt(l, e, t, Oh(), rp(), void 0, o?.abortController?.signal, void 0, o);
-        for await (let d of u) if (d.blockingError) c.push(vRo(d.blockingError));
-        if (c.length > 0)
-          throw (
-            await Fjn(yF(), l),
-            Error(
-              c.join(`
+        c = [],
+        u = Rzt(l, e, t, Oh(), rp(), void 0, o?.abortController?.signal, void 0, o);
+      for await (let d of u) if (d.blockingError) c.push(vRo(d.blockingError));
+      if (c.length > 0)
+        throw (
+          await Fjn(yF(), l),
+          Error(
+            c.join(`
 `),
-            )
-          );
-        return (
-          a?.({
-            type: "set_expanded_view",
-            expandedView: "tasks",
-          }),
-          {
-            data: {
-              task: {
-                id: l,
-                subject: e,
-              },
-            },
-          }
+          )
         );
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        let { task: n } = e;
-        return {
-          tool_use_id: t,
-          type: "tool_result",
-          content: `Task #${n.id} created successfully: ${n.subject}`,
-        };
-      },
-    })));
-});
+      return (
+        a?.({
+          type: "set_expanded_view",
+          expandedView: "tasks",
+        }),
+        {
+          data: {
+            task: {
+              id: l,
+              subject: e,
+            },
+          },
+        }
+      );
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      let { task: n } = e;
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content: `Task #${n.id} created successfully: ${n.subject}`,
+      };
+    },
+  })));
 var Ubl = "Get a task by ID from the task list",
   Fbl = `Use this tool to retrieve a task by its ID from the task list.
 

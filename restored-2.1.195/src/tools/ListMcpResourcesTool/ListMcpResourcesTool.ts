@@ -4,105 +4,95 @@
 // class=modified  jaccard=0.476  score=0.6277  fileCov=0.6632
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m4t = E(() => {
-  Xr();
-  BI();
-  qNn();
-  ii();
-  At();
-  vn();
-  Jt();
-  ILe();
-  cda();
-  ((jup = ve(() =>
-    H.object({
-      server: H.string().optional().describe("Optional server name to filter resources by"),
-    }),
+// [unwrapped __esm module m4t] deps: Xr, BI, qNn, ii, At, vn, Jt, ILe, cda
+((jup = ve(() =>
+  H.object({
+    server: H.string().optional().describe("Optional server name to filter resources by"),
+  }),
+)),
+  (Gup = ve(() =>
+    H.array(
+      H.object({
+        uri: H.string().describe("Resource URI"),
+        name: H.string().describe("Resource name"),
+        mimeType: H.string().optional().describe("MIME type of the resource"),
+        description: H.string().optional().describe("Resource description"),
+        server: H.string().describe("Server that provides this resource"),
+      }),
+    ),
   )),
-    (Gup = ve(() =>
-      H.array(
-        H.object({
-          uri: H.string().describe("Resource URI"),
-          name: H.string().describe("Resource name"),
-          mimeType: H.string().optional().describe("MIME type of the resource"),
-          description: H.string().optional().describe("Resource description"),
-          server: H.string().describe("Server that provides this resource"),
-        }),
-      ),
-    )),
-    (QW = ti({
-      isConcurrencySafe() {
-        return true;
-      },
-      isReadOnly() {
-        return true;
-      },
-      toAutoClassifierInput(e) {
-        return e.server ?? "";
-      },
-      shouldDefer: true,
-      name: Kue,
-      aliases: ["ListMcpResources"],
-      searchHint: "list resources from connected MCP servers",
-      maxResultSizeChars: 100000 /* 1e5 */,
-      async description() {
-        return zua;
-      },
-      async prompt() {
-        return Kua;
-      },
-      get inputSchema() {
-        return jup();
-      },
-      get outputSchema() {
-        return Gup();
-      },
-      async call(e, { options: { mcpClients: t } }) {
-        let { server: n } = e,
-          r = n ? Slo(t, n) : t;
-        if (n && r.length === 0)
-          throw new mi(
-            `Server "${n}" not found. Available servers: ${t.map((s) => s.name).join(", ")}`,
-            "MCP server not found",
-          );
-        return {
-          data: (
-            await Promise.all(
-              r.map(async (s) => {
-                if (s.type !== "connected") return [];
-                try {
-                  let i = await CSe(s);
-                  return await v4(i);
-                } catch (i) {
-                  return (au(s.name, be(i)), []);
-                }
-              }),
-            )
-          ).flat(),
-        };
-      },
-      renderToolUseMessage: ada,
-      userFacingName: () => "listMcpResources",
-      renderToolResultMessage: lda,
-      isResultTruncated(e, { columns: t }) {
-        return X1(De(e, null, 2), t);
-      },
-      mapToolResultToToolResultBlockParam(e, t) {
-        if (!e || e.length === 0)
-          return {
-            tool_use_id: t,
-            type: "tool_result",
-            content:
-              "No resources found. MCP servers may still provide tools even if they have no resources.",
-          };
+  (QW = ti({
+    isConcurrencySafe() {
+      return true;
+    },
+    isReadOnly() {
+      return true;
+    },
+    toAutoClassifierInput(e) {
+      return e.server ?? "";
+    },
+    shouldDefer: true,
+    name: Kue,
+    aliases: ["ListMcpResources"],
+    searchHint: "list resources from connected MCP servers",
+    maxResultSizeChars: 100000 /* 1e5 */,
+    async description() {
+      return zua;
+    },
+    async prompt() {
+      return Kua;
+    },
+    get inputSchema() {
+      return jup();
+    },
+    get outputSchema() {
+      return Gup();
+    },
+    async call(e, { options: { mcpClients: t } }) {
+      let { server: n } = e,
+        r = n ? Slo(t, n) : t;
+      if (n && r.length === 0)
+        throw new mi(
+          `Server "${n}" not found. Available servers: ${t.map((s) => s.name).join(", ")}`,
+          "MCP server not found",
+        );
+      return {
+        data: (
+          await Promise.all(
+            r.map(async (s) => {
+              if (s.type !== "connected") return [];
+              try {
+                let i = await CSe(s);
+                return await v4(i);
+              } catch (i) {
+                return (au(s.name, be(i)), []);
+              }
+            }),
+          )
+        ).flat(),
+      };
+    },
+    renderToolUseMessage: ada,
+    userFacingName: () => "listMcpResources",
+    renderToolResultMessage: lda,
+    isResultTruncated(e, { columns: t }) {
+      return X1(De(e, null, 2), t);
+    },
+    mapToolResultToToolResultBlockParam(e, t) {
+      if (!e || e.length === 0)
         return {
           tool_use_id: t,
           type: "tool_result",
-          content: De(e),
+          content:
+            "No resources found. MCP servers may still provide tools even if they have no resources.",
         };
-      },
-    })));
-});
+      return {
+        tool_use_id: t,
+        type: "tool_result",
+        content: De(e),
+      };
+    },
+  })));
 function XNn() {
   let e = process.env.MAX_MCP_OUTPUT_TOKENS;
   if (e) {

@@ -4,10 +4,9 @@
 // class=new  jaccard=0.0387  score=0.2908  fileCov=0.0427
 // note: nearest: src/utils/model/modelOptions.ts (0.0387); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DD = E(() => {
-  hye = ["sonnet", "opus", "haiku", "fable", "best", "sonnet[1m]", "opus[1m]", "fable[1m]", "opusplan"];
-  spd = ["sonnet", "opus", "haiku", "fable"];
-});
+// [unwrapped __esm module DD]
+hye = ["sonnet", "opus", "haiku", "fable", "best", "sonnet[1m]", "opus[1m]", "fable[1m]", "opusplan"];
+spd = ["sonnet", "opus", "haiku", "fable"];
 function ipd(e) {
   return mo(ya(e.trim().toLowerCase()));
 }

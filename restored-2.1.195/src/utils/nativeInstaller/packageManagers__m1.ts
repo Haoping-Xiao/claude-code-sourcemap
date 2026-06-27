@@ -4,86 +4,80 @@
 // class=modified (alt of src/utils/nativeInstaller/packageManagers.ts)  jaccard=0.0707  score=0.1095  fileCov=0.1666
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var IVn = E(() => {
-  Qi();
-  je();
-  Bi();
-  Is();
-  (($za = require("fs/promises")),
-    (wVn = Cn(async () => {
-      try {
-        let e = await $za.readFile("/etc/os-release", "utf8"),
-          t = e.match(/^ID=["']?(\S+?)["']?\s*$/m),
-          n = e.match(/^ID_LIKE=["']?(.+?)["']?\s*$/m);
-        return {
-          id: t?.[1] ?? "",
-          idLike: n?.[1]?.split(" ") ?? [],
-        };
-      } catch {
-        return null;
-      }
-    })));
-  ((_Ao = Cn(async () => {
+// [unwrapped __esm module IVn] deps: Qi, je, Bi, Is
+(($za = require("fs/promises")),
+  (wVn = Cn(async () => {
+    try {
+      let e = await $za.readFile("/etc/os-release", "utf8"),
+        t = e.match(/^ID=["']?(\S+?)["']?\s*$/m),
+        n = e.match(/^ID_LIKE=["']?(.+?)["']?\s*$/m);
+      return {
+        id: t?.[1] ?? "",
+        idLike: n?.[1]?.split(" ") ?? [],
+      };
+    } catch {
+      return null;
+    }
+  })));
+((_Ao = Cn(async () => {
+  if (Vt() !== "linux") return !1;
+  let t = await wVn();
+  if (t && !CVn(t, ["arch"])) return !1;
+  let n = process.execPath || process.argv[0] || "",
+    r = await $n("pacman", ["-Qo", n], {
+      timeout: 5000,
+      useCwd: !1,
+    });
+  if (r.code === 0 && r.stdout) return (T(`Detected pacman installation: ${r.stdout.trim()}`), !0);
+  return !1;
+})),
+  (bAo = Cn(async () => {
     if (Vt() !== "linux") return !1;
     let t = await wVn();
-    if (t && !CVn(t, ["arch"])) return !1;
+    if (t && !CVn(t, ["debian"])) return !1;
     let n = process.execPath || process.argv[0] || "",
-      r = await $n("pacman", ["-Qo", n], {
+      r = await $n("dpkg", ["-S", n], {
         timeout: 5000,
         useCwd: !1,
       });
-    if (r.code === 0 && r.stdout)
-      return (T(`Detected pacman installation: ${r.stdout.trim()}`), !0);
+    if (r.code === 0 && r.stdout) return (T(`Detected deb installation: ${r.stdout.trim()}`), !0);
     return !1;
   })),
-    (bAo = Cn(async () => {
-      if (Vt() !== "linux") return !1;
-      let t = await wVn();
-      if (t && !CVn(t, ["debian"])) return !1;
-      let n = process.execPath || process.argv[0] || "",
-        r = await $n("dpkg", ["-S", n], {
-          timeout: 5000,
-          useCwd: !1,
-        });
-      if (r.code === 0 && r.stdout) return (T(`Detected deb installation: ${r.stdout.trim()}`), !0);
-      return !1;
-    })),
-    (SAo = Cn(async () => {
-      if (Vt() !== "linux") return !1;
-      let t = await wVn();
-      if (t && !CVn(t, ["fedora", "rhel", "suse"])) return !1;
-      let n = process.execPath || process.argv[0] || "",
-        r = await $n("rpm", ["-qf", n], {
-          timeout: 5000,
-          useCwd: !1,
-        });
-      if (r.code === 0 && r.stdout) return (T(`Detected rpm installation: ${r.stdout.trim()}`), !0);
-      return !1;
-    })),
-    (EAo = Cn(async () => {
-      if (Vt() !== "linux") return !1;
-      let t = await wVn();
-      if (t && !CVn(t, ["alpine"])) return !1;
-      let n = process.execPath || process.argv[0] || "",
-        r = await $n("apk", ["info", "--who-owns", n], {
-          timeout: 5000,
-          useCwd: !1,
-        });
-      if (r.code === 0 && r.stdout) return (T(`Detected apk installation: ${r.stdout.trim()}`), !0);
-      return !1;
-    })),
-    (C9e = Cn(async () => {
-      if (Rgt()) return "homebrew";
-      if (yAo()) return "winget";
-      if (gAo()) return "mise";
-      if (hAo()) return "asdf";
-      if (await _Ao()) return "pacman";
-      if (await EAo()) return "apk";
-      if (await bAo()) return "deb";
-      if (await SAo()) return "rpm";
-      return "unknown";
-    })));
-});
+  (SAo = Cn(async () => {
+    if (Vt() !== "linux") return !1;
+    let t = await wVn();
+    if (t && !CVn(t, ["fedora", "rhel", "suse"])) return !1;
+    let n = process.execPath || process.argv[0] || "",
+      r = await $n("rpm", ["-qf", n], {
+        timeout: 5000,
+        useCwd: !1,
+      });
+    if (r.code === 0 && r.stdout) return (T(`Detected rpm installation: ${r.stdout.trim()}`), !0);
+    return !1;
+  })),
+  (EAo = Cn(async () => {
+    if (Vt() !== "linux") return !1;
+    let t = await wVn();
+    if (t && !CVn(t, ["alpine"])) return !1;
+    let n = process.execPath || process.argv[0] || "",
+      r = await $n("apk", ["info", "--who-owns", n], {
+        timeout: 5000,
+        useCwd: !1,
+      });
+    if (r.code === 0 && r.stdout) return (T(`Detected apk installation: ${r.stdout.trim()}`), !0);
+    return !1;
+  })),
+  (C9e = Cn(async () => {
+    if (Rgt()) return "homebrew";
+    if (yAo()) return "winget";
+    if (gAo()) return "mise";
+    if (hAo()) return "asdf";
+    if (await _Ao()) return "pacman";
+    if (await EAo()) return "apk";
+    if (await bAo()) return "deb";
+    if (await SAo()) return "rpm";
+    return "unknown";
+  })));
 function Wzp() {
   let e = process.argv[1] || "",
     t = process.execPath || process.argv[0] || "";

@@ -4,16 +4,8 @@
 // class=partial  jaccard=0.0638  score=0.1769  fileCov=0.0908
 // note: low-confidence suggestion: src/ink/components/ScrollBox.tsx; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vzi = E(() => {
-  fGe();
-  Tc();
-  Ye();
-  dn();
-  Ezi();
-  Yj();
-  H0e();
-  Azi = R(lt(), 1), fbe = R(rt(), 1), Tzi = R(se(), 1);
-});
+// [unwrapped __esm module vzi] deps: fGe, Tc, Ye, dn, Ezi, Yj, H0e
+Azi = R(lt(), 1), fbe = R(rt(), 1), Tzi = R(se(), 1);
 function Izi(e) {
   let t = PZr.c(17),
     {

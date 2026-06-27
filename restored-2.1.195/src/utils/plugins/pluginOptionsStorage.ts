@@ -4,24 +4,8 @@
 // class=modified  jaccard=0.3474  score=0.6728  fileCov=0.418
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vdt = E(() => {
-  Gwe();
-  w4t();
-  Rx();
-  CZe();
-  je();
-  rCa();
-  eqe();
-  At();
-  ys();
-  vn();
-  R9();
-  dr();
-  Jt();
-  aCa();
-  dFt();
-  ((SUn = require("crypto")), (nqe = require("fs/promises")), (Hre = require("path")));
-});
+// [unwrapped __esm module vdt] deps: Gwe, w4t, Rx, CZe, je, rCa, eqe, At, ys, vn, R9, dr, Jt, aCa, dFt
+((SUn = require("crypto")), (nqe = require("fs/promises")), (Hre = require("path")));
 function fS(e) {
   let t = aTp(e) ? e.manifest.displayName : e.displayName;
   return tDe(t) ?? e.name;

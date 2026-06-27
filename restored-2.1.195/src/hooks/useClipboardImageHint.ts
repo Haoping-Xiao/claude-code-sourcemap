@@ -4,29 +4,16 @@
 // class=modified  jaccard=0.2321  score=0.3544  fileCov=0.4022
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DGe = E(() => {
-  dn();
-  ADn();
-  je();
-  Bi();
-  ys();
-  HDn();
-  xW();
-  vn();
-  Is();
-  OB();
-  bUt();
-  kv();
-  ((m8i = require("crypto")),
-    (Wce = require("path")),
-    (SUt = {
-      darwin: "osascript -e 'get POSIX path of (the clipboard as \xABclass furl\xBB)'",
-      linux: "xclip -selection clipboard -t text/plain -o 2>/dev/null || wl-paste 2>/dev/null",
-      win32: ["powershell", "-NoProfile", "-Command", "Get-Clipboard"],
-    }));
-  IDn = /\.(png|jpe?g|gif|webp)$/i;
-  y8i = /^(?:[A-Za-z]:\\|\\\\)/;
-});
+// [unwrapped __esm module DGe] deps: dn, ADn, je, Bi, ys, HDn, xW, vn, Is, OB, bUt, kv
+((m8i = require("crypto")),
+  (Wce = require("path")),
+  (SUt = {
+    darwin: "osascript -e 'get POSIX path of (the clipboard as \xABclass furl\xBB)'",
+    linux: "xclip -selection clipboard -t text/plain -o 2>/dev/null || wl-paste 2>/dev/null",
+    win32: ["powershell", "-NoProfile", "-Command", "Get-Clipboard"],
+  }));
+IDn = /\.(png|jpe?g|gif|webp)$/i;
+y8i = /^(?:[A-Za-z]:\\|\\\\)/;
 function xDn(e, t) {
   let { addNotification: n } = Li(),
     r = jat.useRef(e),

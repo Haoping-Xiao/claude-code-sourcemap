@@ -4,21 +4,20 @@
 // class=modified (alt of src/components/FeedbackSurvey/useFeedbackSurvey.tsx)  jaccard=0.1908  score=0.5324  fileCov=0.2292
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fYo = E(() => {
-  ((afr = {
-    minTimeBeforeFeedbackMs: 600000,
-    minTimeBetweenFeedbackMs: 3600000,
-    minTimeBetweenGlobalFeedbackMs: 100000000 /* 1e8 */,
-    minUserTurnsBeforeFeedback: 5,
-    minUserTurnsBetweenFeedback: 10,
-    hideThanksAfterMs: 5000,
-    onForModels: ["*"],
-    probability: 0.005,
-  }),
-    (lfr = {
-      probability: 0,
-    }));
-});
+// [unwrapped __esm module fYo]
+((afr = {
+  minTimeBeforeFeedbackMs: 600000,
+  minTimeBetweenFeedbackMs: 3600000,
+  minTimeBetweenGlobalFeedbackMs: 100000000 /* 1e8 */,
+  minUserTurnsBeforeFeedback: 5,
+  minUserTurnsBetweenFeedback: 10,
+  hideThanksAfterMs: 5000,
+  onForModels: ["*"],
+  probability: 0.005,
+}),
+  (lfr = {
+    probability: 0,
+  }));
 function BNe({
   hideThanksAfterMs: e,
   otherSurveyActive: t = false,

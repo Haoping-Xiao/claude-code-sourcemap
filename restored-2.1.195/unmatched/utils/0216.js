@@ -3,10 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kss = E(() => {
-  cYc = /\w*$/;
-  xss = uYc;
-});
+// [unwrapped __esm module kss]
+cYc = /\w*$/;
+xss = uYc;
 function dYc(e) {
   return Lss ? Object(Lss.call(e)) : {};
 }

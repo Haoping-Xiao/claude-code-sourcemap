@@ -4,18 +4,17 @@
 // class=new  jaccard=0.0091  score=0.4521  fileCov=0.0092
 // note: nearest: node_modules/fast-xml-parser/lib/fxp.cjs (0.0091); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OI = E(() => {
-  Sup = /&(?:amp|lt|gt);/g, gua = {
-    "&amp;": "&",
-    "&lt;": "<",
-    "&gt;": ">"
-  };
-  Eup = /&(?:amp|lt|gt|quot|apos);/g, Aup = {
-    ...gua,
-    "&quot;": '"',
-    "&apos;": "'"
-  };
-});
+// [unwrapped __esm module OI]
+Sup = /&(?:amp|lt|gt);/g, gua = {
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">"
+};
+Eup = /&(?:amp|lt|gt|quot|apos);/g, Aup = {
+  ...gua,
+  "&quot;": '"',
+  "&apos;": "'"
+};
 function PNn(e) {
   let t = e.indexOf(`
 `),

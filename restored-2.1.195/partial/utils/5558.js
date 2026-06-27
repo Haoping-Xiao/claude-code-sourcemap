@@ -4,24 +4,9 @@
 // class=partial  jaccard=0.1941  score=1  fileCov=0.1941
 // note: low-confidence suggestion: src/hooks/useSettingsChange.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var gpr = E(() => {
-  Ece();
-  ft();
-  Zf();
-  kt();
-  rq();
-  ty();
-  Vv();
-  fd();
-  je();
-  At();
-  ys();
-  sp();
-  ih();
-  yLe();
-  zTt = R(require("path"));
-  KTt = uym();
-});
+// [unwrapped __esm module gpr] deps: Ece, ft, Zf, kt, rq, ty, Vv, fd, je, At, ys, sp, ih, yLe
+zTt = R(require("path"));
+KTt = uym();
 function pAc(e, t, n) {
   let r = x7e.useCallback(async () => {
     if (!e) return;

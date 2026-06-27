@@ -4,88 +4,81 @@
 // class=modified (alt of src/utils/modelCost.ts)  jaccard=0.0761  score=0.1349  fileCov=0.1485
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var jG = E(() => {
-  kt();
-  ft();
-  er();
-  NE();
-  QO();
-  Ao();
-  ((gye = {
-    inputTokens: 3,
-    outputTokens: 15,
-    promptCacheWriteTokens: 3.75,
-    promptCacheWrite1hTokens: 6,
-    promptCacheReadTokens: 0.3,
+// [unwrapped __esm module jG] deps: kt, ft, er, NE, QO, Ao
+((gye = {
+  inputTokens: 3,
+  outputTokens: 15,
+  promptCacheWriteTokens: 3.75,
+  promptCacheWrite1hTokens: 6,
+  promptCacheReadTokens: 0.3,
+  webSearchRequests: 0.01,
+}),
+  (Coi = {
+    inputTokens: 15,
+    outputTokens: 75,
+    promptCacheWriteTokens: 18.75,
+    promptCacheWrite1hTokens: 30,
+    promptCacheReadTokens: 1.5,
     webSearchRequests: 0.01,
   }),
-    (Coi = {
-      inputTokens: 15,
-      outputTokens: 75,
-      promptCacheWriteTokens: 18.75,
-      promptCacheWrite1hTokens: 30,
-      promptCacheReadTokens: 1.5,
-      webSearchRequests: 0.01,
-    }),
-    (ule = {
-      inputTokens: 5,
-      outputTokens: 25,
-      promptCacheWriteTokens: 6.25,
-      promptCacheWrite1hTokens: 10,
-      promptCacheReadTokens: 0.5,
-      webSearchRequests: 0.01,
-    }),
-    (xoi = {
-      inputTokens: 30,
-      outputTokens: 150,
-      promptCacheWriteTokens: 37.5,
-      promptCacheWrite1hTokens: 60,
-      promptCacheReadTokens: 3,
-      webSearchRequests: 0.01,
-    }),
-    (pAn = {
-      inputTokens: 10,
-      outputTokens: 50,
-      promptCacheWriteTokens: 12.5,
-      promptCacheWrite1hTokens: 20,
-      promptCacheReadTokens: 1,
-      webSearchRequests: 0.01,
-    }),
-    (I2r = {
-      inputTokens: 0.8,
-      outputTokens: 4,
-      promptCacheWriteTokens: 1,
-      promptCacheWrite1hTokens: 1.6,
-      promptCacheReadTokens: 0.08,
-      webSearchRequests: 0.01,
-    }),
-    (x2r = {
-      inputTokens: 1,
-      outputTokens: 5,
-      promptCacheWriteTokens: 1.25,
-      promptCacheWrite1hTokens: 2,
-      promptCacheReadTokens: 0.1,
-      webSearchRequests: 0.01,
-    }),
-    (k2r = ule));
-  Z2e = {
-    [$_(QBr.firstParty)]: I2r,
-    [$_(ZBr.firstParty)]: x2r,
-    [$_(JBr.firstParty)]: gye,
-    [$_(XBr.firstParty)]: gye,
-    [$_(eUr.firstParty)]: gye,
-    [$_(tUr.firstParty)]: gye,
-    [$_(nUr.firstParty)]: gye,
-    [$_(rUr.firstParty)]: Coi,
-    [$_(oUr.firstParty)]: Coi,
-    [$_(sUr.firstParty)]: ule,
-    [$_(iUr.firstParty)]: ule,
-    [$_(aUr.firstParty)]: ule,
-    [$_(lUr.firstParty)]: ule,
-    [$_(MIe.firstParty)]: pAn,
-    [$_(y7s.firstParty)]: pAn,
-  };
-});
+  (ule = {
+    inputTokens: 5,
+    outputTokens: 25,
+    promptCacheWriteTokens: 6.25,
+    promptCacheWrite1hTokens: 10,
+    promptCacheReadTokens: 0.5,
+    webSearchRequests: 0.01,
+  }),
+  (xoi = {
+    inputTokens: 30,
+    outputTokens: 150,
+    promptCacheWriteTokens: 37.5,
+    promptCacheWrite1hTokens: 60,
+    promptCacheReadTokens: 3,
+    webSearchRequests: 0.01,
+  }),
+  (pAn = {
+    inputTokens: 10,
+    outputTokens: 50,
+    promptCacheWriteTokens: 12.5,
+    promptCacheWrite1hTokens: 20,
+    promptCacheReadTokens: 1,
+    webSearchRequests: 0.01,
+  }),
+  (I2r = {
+    inputTokens: 0.8,
+    outputTokens: 4,
+    promptCacheWriteTokens: 1,
+    promptCacheWrite1hTokens: 1.6,
+    promptCacheReadTokens: 0.08,
+    webSearchRequests: 0.01,
+  }),
+  (x2r = {
+    inputTokens: 1,
+    outputTokens: 5,
+    promptCacheWriteTokens: 1.25,
+    promptCacheWrite1hTokens: 2,
+    promptCacheReadTokens: 0.1,
+    webSearchRequests: 0.01,
+  }),
+  (k2r = ule));
+Z2e = {
+  [$_(QBr.firstParty)]: I2r,
+  [$_(ZBr.firstParty)]: x2r,
+  [$_(JBr.firstParty)]: gye,
+  [$_(XBr.firstParty)]: gye,
+  [$_(eUr.firstParty)]: gye,
+  [$_(tUr.firstParty)]: gye,
+  [$_(nUr.firstParty)]: gye,
+  [$_(rUr.firstParty)]: Coi,
+  [$_(oUr.firstParty)]: Coi,
+  [$_(sUr.firstParty)]: ule,
+  [$_(iUr.firstParty)]: ule,
+  [$_(aUr.firstParty)]: ule,
+  [$_(lUr.firstParty)]: ule,
+  [$_(MIe.firstParty)]: pAn,
+  [$_(y7s.firstParty)]: pAn,
+};
 function Doi() {
   if (!ut(process.env.CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY)) return false;
   if (fr() !== "firstParty") return false;

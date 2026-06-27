@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0169  score=0.6041  fileCov=0.0171
 // note: nearest: src/ink/ink.tsx (0.0169); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G5i = E(() => {
-  l0e();
-  Ine = R(rt(), 1);
-});
+// [unwrapped __esm module G5i] deps: l0e
+Ine = R(rt(), 1);
 function yat() {
   let {
       focusManager: e,

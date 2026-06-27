@@ -4,14 +4,8 @@
 // class=partial  jaccard=0.1868  score=0.2821  fileCov=0.3561
 // note: low-confidence suggestion: src/components/permissions/FilePermissionDialog/usePermissionHandler.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var _Hc = E(() => {
-  ft();
-  Ye();
-  kne();
-  Hu();
-  Yf();
-  hHc = require("os"), k7e = require("path"), kNe = R(se(), 1);
-});
+// [unwrapped __esm module _Hc] deps: ft, Ye, kne, Hu, Yf
+hHc = require("os"), k7e = require("path"), kNe = R(se(), 1);
 function C_m(e, t, n, r) {
   switch (e.type) {
     case "accept-once":

@@ -4,28 +4,22 @@
 // class=partial  jaccard=0.0659  score=0.3815  fileCov=0.0738
 // note: low-confidence suggestion: src/tools/AgentTool/agentToolUtils.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var UWc = E(() => {
-  zb();
-  BZ();
-  pZo();
-  rhr();
-  $Wc();
-  NWc = require("crypto");
-  dOm = ve(() => dt.object({
-    scope: dt.discriminatedUnion("type", [dt.object({
-      type: dt.literal("user"),
-      user_id: dt.string().min(1)
-    }), dt.object({
-      type: dt.literal("rbac_group"),
-      rbac_group_id: dt.string().min(1)
-    }), dt.object({
-      type: dt.literal("organization")
-    })]),
-    amount: dt.string().regex(/^\d{1,18}$/, "must be a whole-number decimal string of cents").nullable(),
-    period: dt.enum(["daily", "weekly", "monthly"]).default("monthly"),
-    currency: dt.literal("USD").optional()
-  }));
-});
+// [unwrapped __esm module UWc] deps: zb, BZ, pZo, rhr, $Wc
+NWc = require("crypto");
+dOm = ve(() => dt.object({
+  scope: dt.discriminatedUnion("type", [dt.object({
+    type: dt.literal("user"),
+    user_id: dt.string().min(1)
+  }), dt.object({
+    type: dt.literal("rbac_group"),
+    rbac_group_id: dt.string().min(1)
+  }), dt.object({
+    type: dt.literal("organization")
+  })]),
+  amount: dt.string().regex(/^\d{1,18}$/, "must be a whole-number decimal string of cents").nullable(),
+  period: dt.enum(["daily", "weekly", "monthly"]).default("monthly"),
+  currency: dt.literal("USD").optional()
+}));
 function FWc(e, t) {
   let n = gOm(t),
     r = crn(e ?? "") ? L2r(e ?? "", n) : k2r;

@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.3406  score=0.5908  fileCov=0.4457
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jgc = E(() => {
-  Xr();
-  Jt();
-  sr();
-  Ygc();
-});
 function Qum(e) {
   ((e.buffer = ""), (e.timer = void 0));
 }

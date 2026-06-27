@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.1078  score=0.3993  fileCov=0.1287
 // note: low-confidence suggestion: src/ink/bidi.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lWi = E(() => {
-  aWi = IGd;
-});
+// [unwrapped __esm module lWi]
+aWi = IGd;
 function xGd() {
   if (fJr === void 0) fJr = typeof process.env.WT_SESSION === "string" || process.env.TERM_PROGRAM === "vscode";
   return fJr;

@@ -4,9 +4,8 @@
 // class=modified  jaccard=0.4159  score=0.5667  fileCov=0.6098
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ioo = E(() => {
-  O2t = new Set(["Frame", "FrameRead", "TeamCreate", "TeamDelete", "SuggestBackgroundPR"]);
-});
+// [unwrapped __esm module Ioo]
+O2t = new Set(["Frame", "FrameRead", "TeamCreate", "TeamDelete", "SuggestBackgroundPR"]);
 function aop(e, t) {
   let { min: n, max: r } = t,
     o = new Set();

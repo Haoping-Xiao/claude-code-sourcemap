@@ -4,14 +4,9 @@
 // class=modified  jaccard=0.3125  score=0.3603  fileCov=0.7023
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wOe = E(() => {
-  ft();
-  Wit();
-  Kit();
-  Tne();
-  ((vOe = R(rt(), 1)), (W$o = R(se(), 1)));
-  Rq = nkf;
-});
+// [unwrapped __esm module wOe] deps: ft, Wit, Kit, Tne
+((vOe = R(rt(), 1)), (W$o = R(se(), 1)));
+Rq = nkf;
 var YLl = {};
 _t(YLl, {
   runSideQuestion: () => runSideQuestion,

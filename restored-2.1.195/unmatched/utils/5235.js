@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0156  score=0.1265  fileCov=0.0174
 // note: nearest: src/utils/worktree.ts (0.0156); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Wnc = E(() => {
-  At();
-  vHt = require("fs/promises"), car = require("path"), NXf = /<command-name>\/([\w:-]+)<\/command-name>/g, BXf = /"name":"mcp__([^"]+?)__([^"]+)"/g, qXf = /"customTitle":"([^"]+)"/, VXf = /"prNumber":(\d+)/, zXf = /"role":"user"[^}]*"content":"([^"]+)"/;
-});
+// [unwrapped __esm module Wnc] deps: At
+vHt = require("fs/promises"), car = require("path"), NXf = /<command-name>\/([\w:-]+)<\/command-name>/g, BXf = /"name":"mcp__([^"]+?)__([^"]+)"/g, qXf = /"customTitle":"([^"]+)"/, VXf = /"prNumber":(\d+)/, zXf = /"role":"user"[^}]*"content":"([^"]+)"/;
 var Vnc = {};
 _t(Vnc, {
   default: () => rJf

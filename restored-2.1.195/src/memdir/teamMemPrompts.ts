@@ -4,19 +4,14 @@
 // class=modified  jaccard=0.2773  score=0.3695  fileCov=0.5261
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MM = E(() => {
-  ft();
-  Un();
-  At();
-  Uh();
-  ((O3e = require("fs/promises")), (FD = require("path")));
-  Yw = class Yw extends Error {
-    constructor(e) {
-      super(e);
-      this.name = "PathTraversalError";
-    }
-  };
-});
+// [unwrapped __esm module MM] deps: ft, Un, At, Uh
+((O3e = require("fs/promises")), (FD = require("path")));
+Yw = class Yw extends Error {
+  constructor(e) {
+    super(e);
+    this.name = "PathTraversalError";
+  }
+};
 function $Ni(e, t = !1) {
   let n = mm(),
     r = cT(),

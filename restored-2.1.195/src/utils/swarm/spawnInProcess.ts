@@ -4,30 +4,17 @@
 // class=modified  jaccard=0.3097  score=0.5187  fileCov=0.4345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hP = E(() => {
-  ft();
-  dn();
-  je();
-  fn();
-  At();
-  Bi();
-  sa();
-  vn();
-  Jt();
-  Mp();
-  d9t();
-  hN();
-  ((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));
-  lZp = {
-    realpath: false,
-    retries: {
-      retries: 10,
-      minTimeout: 5,
-      maxTimeout: 100,
-    },
-    onCompromised: () => {},
-  };
-});
+// [unwrapped __esm module hP] deps: ft, dn, je, fn, At, Bi, sa, vn, Jt, Mp, d9t, hN
+((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));
+lZp = {
+  realpath: false,
+  retries: {
+    retries: 10,
+    minTimeout: 5,
+    maxTimeout: 100,
+  },
+  onCompromised: () => {},
+};
 function hZp(e, t) {
   if (t) return "plan";
   if (e === "plan" || e === "dontAsk") return "default";

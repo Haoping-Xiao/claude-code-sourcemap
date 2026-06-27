@@ -4,14 +4,6 @@
 // class=modified (alt of src/utils/computerUse/appNames.ts)  jaccard=0.1177  score=0.815  fileCov=0.1209
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ZSe = E(() => {
-  je();
-  k7();
-  y1();
-  Un();
-  kt();
-  Pzr();
-});
 function uxp(e, t) {
   if (ixp.some((n) => e.startsWith(n))) return true;
   if (t) {

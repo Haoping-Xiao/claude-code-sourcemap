@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0285  score=0.2537  fileCov=0.0311
 // note: nearest: src/tools/WebFetchTool/WebFetchTool.ts (0.0285); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OIo = E(() => {
-  Il();
-  At();
-  Jt();
-  Ccl = require("crypto");
-});
+// [unwrapped __esm module OIo] deps: Il, At, Jt
+Ccl = require("crypto");
 function xcl({
   url: e,
   prompt: t

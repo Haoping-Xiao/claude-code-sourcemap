@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.3241  score=0.5946  fileCov=0.4161
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var NNi = E(() => {
-  UNt();
-  Uh();
-  MM();
-  p0n = require("path");
-});
+// [unwrapped __esm module NNi] deps: UNt, Uh, MM
+p0n = require("path");
 function FNt(e) {
   let t = e.trim(),
     n = t.split(`

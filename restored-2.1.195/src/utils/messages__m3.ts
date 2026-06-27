@@ -4,21 +4,6 @@
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0097  score=0.7227  fileCov=0.0097
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MEl = E(() => {
-  dn();
-  ty();
-  NB();
-  Lo();
-  je();
-  co();
-  _a();
-  Mp();
-  YI();
-  K0();
-  v7n();
-  dMe();
-  hP();
-});
 function jzt(e) {
   if (e.type !== "user") return false;
   let t = e.message?.content;

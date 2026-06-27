@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4165  score=0.6277  fileCov=0.5531
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var d2r = E(() => {
-  je();
-});
 class LD {
   static instance = null;
   status = {

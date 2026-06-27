@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.4465  score=0.8086  fileCov=0.4993
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var gBn = E(() => {
-  Wba();
-  fn();
-});
 function Yba(e) {
   let t = Kba.c(10),
     { patch: n, dim: r, width: o } = e,

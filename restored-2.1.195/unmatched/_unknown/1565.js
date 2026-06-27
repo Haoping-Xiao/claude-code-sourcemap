@@ -3,10 +3,7 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vui = E(() => {
-  b4r();
-  Hui();
-  Tui = R(PHn(), 1);
-});
+// [unwrapped __esm module vui] deps: b4r, Hui
+Tui = R(PHn(), 1);
 var wui = () => {};
 var E4r;

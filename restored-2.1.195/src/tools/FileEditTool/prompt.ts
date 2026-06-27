@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.1325  score=0.1926  fileCov=0.2979
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rvl = E(() => {
-  Yf();
-  oLt();
-});
 function zSf(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
 }

@@ -4,25 +4,17 @@
 // class=partial  jaccard=0.1512  score=0.8019  fileCov=0.157
 // note: low-confidence suggestion: src/tools/BriefTool/upload.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vyl = E(() => {
-  Hp();
-  Xr();
-  wQ();
-  Rc();
-  dn();
-  je();
-  Jt();
-  Eyl = require("crypto"), Ayl = require("fs/promises"), V7n = require("path"), imf = {
-    ".png": "image/png",
-    ".jpg": "image/jpeg",
-    ".jpeg": "image/jpeg",
-    ".gif": "image/gif",
-    ".webp": "image/webp"
-  };
-  cmf = ve(() => H.object({
-    file_uuid: H.string()
-  }));
-});
+// [unwrapped __esm module vyl] deps: Hp, Xr, wQ, Rc, dn, je, Jt
+Eyl = require("crypto"), Ayl = require("fs/promises"), V7n = require("path"), imf = {
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".gif": "image/gif",
+  ".webp": "image/webp"
+};
+cmf = ve(() => H.object({
+  file_uuid: H.string()
+}));
 function wyl(e) {
   return dmf[v$e.extname(e).toLowerCase()];
 }

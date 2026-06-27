@@ -4,12 +4,10 @@
 // class=partial  jaccard=0.2426  score=0.6099  fileCov=0.2872
 // note: low-confidence suggestion: node_modules/@opentelemetry/sdk-trace-base/build/src/platform/node/RandomIdGenerator.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var CUa = E(() => {
-  wUa();
-  DVe = class DVe extends kyo {
-    onShutdown() {}
-  };
-});
+// [unwrapped __esm module CUa] deps: wUa
+DVe = class DVe extends kyo {
+  onShutdown() {}
+};
 class Yft {
   generateTraceId = IUa(16);
   generateSpanId = IUa(8);

@@ -4,28 +4,8 @@
 // class=new  jaccard=0.0043  score=0.4707  fileCov=0.0043
 // note: nearest: src/screens/REPL.tsx (0.0043); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var p0c = E(() => {
-  ft();
-  GF();
-  LQt();
-  xar();
-  ag();
-  Un();
-  kt();
-  fd();
-  je();
-  RE();
-  At();
-  vn();
-  bJt();
-  Y9();
-  _a();
-  aR();
-  qar();
-  IWo();
-  l0c();
-  c0c = require("crypto"), rvt = require("fs/promises"), u0c = require("path");
-});
+// [unwrapped __esm module p0c] deps: ft, GF, LQt, xar, ag, Un, kt, fd, je, RE, At, vn, bJt, Y9, _a, aR, qar, IWo, l0c
+c0c = require("crypto"), rvt = require("fs/promises"), u0c = require("path");
 function f0c(e, t, n) {
   let r = () => {
     try {

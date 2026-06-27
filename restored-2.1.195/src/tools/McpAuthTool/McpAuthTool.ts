@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.2753  score=0.4474  fileCov=0.4171
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var cqe = E(() => {
-  ZCa();
-});
 function ovp() {
   return Oe.isSSH() || ut(process.env.CLAUDE_CODE_REMOTE) || da();
 }

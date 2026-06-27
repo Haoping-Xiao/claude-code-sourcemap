@@ -4,24 +4,8 @@
 // class=modified (alt of src/utils/crypto.ts)  jaccard=0.2752  score=0.2752  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Xko = E(() => {
-  ft();
-  dn();
-  kt();
-  tfe();
-  fp();
-  At();
-  vn();
-  Jt();
-  K6n();
-  k6e();
-  Wml();
-  jko();
-  Uoe();
-  D6e();
-  $7();
-  qml = require("crypto");
-});
+// [unwrapped __esm module Xko] deps: ft, dn, kt, tfe, fp, At, vn, Jt, K6n, k6e, Wml, jko, Uoe, D6e, $7
+qml = require("crypto");
 var lpf = "",
   cpf = "'worktree'",
   upf = "",

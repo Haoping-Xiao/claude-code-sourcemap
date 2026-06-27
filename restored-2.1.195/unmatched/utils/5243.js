@@ -4,29 +4,8 @@
 // class=new  jaccard=0.0098  score=0.1728  fileCov=0.0102
 // note: nearest: src/bridge/bridgeMain.ts (0.0098); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kYe = E(() => {
-  lH();
-  dn();
-  Un();
-  kt();
-  er();
-  Lo();
-  je();
-  At();
-  Hpe();
-  ANo();
-  Is();
-  QEe();
-  Jt();
-  VQ();
-  YOe();
-  Gfe();
-  qGo();
-  WL();
-  q$();
-  YGo();
-  _Z = require("fs/promises"), JGo = require("path"), AQt = R(Uj(), 1), EQt = require("timers/promises");
-});
+// [unwrapped __esm module kYe] deps: lH, dn, Un, kt, er, Lo, je, At, Hpe, ANo, Is, QEe, Jt, VQ, YOe, Gfe, qGo, WL, q$, YGo
+_Z = require("fs/promises"), JGo = require("path"), AQt = R(Uj(), 1), EQt = require("timers/promises");
 async function TQt() {
   let e = await eV({
     onStarting: HQt

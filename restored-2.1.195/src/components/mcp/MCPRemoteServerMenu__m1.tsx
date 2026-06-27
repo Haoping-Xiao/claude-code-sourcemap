@@ -4,13 +4,6 @@
 // class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0566  score=0.4724  fileCov=0.0604
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var pdo = E(() => {
-  Vb();
-  je();
-  Jt();
-  Un();
-  udo();
-});
 function _Tp(e) {
   if (!po.isAxiosError(e)) return false;
   let t = e.response?.status;

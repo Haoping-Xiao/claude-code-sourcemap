@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0282  score=0.2197  fileCov=0.0314
 // note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0282); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Zta = E(() => {
-  _ue();
-  Xta();
-  xWe();
-});
 function $tp(e) {
   let t = Number(e);
   if (t < 0 || t > this.length) throw ict(t, this.length);

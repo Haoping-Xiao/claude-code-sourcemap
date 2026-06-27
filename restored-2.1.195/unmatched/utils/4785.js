@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0293  score=0.2816  fileCov=0.0317
 // note: nearest: src/ink/Ansi.tsx (0.0293); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var irr = E(() => {
-  At();
-  vdt();
-  nDe();
-  Xh();
-  i5();
-  GBo();
-  L2l = R(lt(), 1), t1e = R(rt(), 1), qBo = R(se(), 1);
-});
+// [unwrapped __esm module irr] deps: At, vdt, nDe, Xh, i5, GBo
+L2l = R(lt(), 1), t1e = R(rt(), 1), qBo = R(se(), 1);
 function lrr() {
   let e = D2l.c(3),
     t;

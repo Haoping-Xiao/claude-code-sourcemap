@@ -4,13 +4,12 @@
 // class=modified  jaccard=0.5639  score=0.8293  fileCov=0.6379
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var VLl = E(() => {
-  qLl = {
-    isEnabled: () => false,
-    isHidden: true,
-    name: "stub",
-  };
-});
+// [unwrapped __esm module VLl]
+qLl = {
+  isEnabled: () => false,
+  isHidden: true,
+  name: "stub",
+};
 function nkf({ children: e, ref: t, stickyScroll: n, followGrowth: r, ...o }) {
   let s = vOe.useRef(null),
     [, i] = vOe.useState(0),

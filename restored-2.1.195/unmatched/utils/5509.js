@@ -4,14 +4,8 @@
 // class=new  jaccard=0.0344  score=0.4618  fileCov=0.0358
 // note: nearest: src/hooks/useReplBridge.tsx (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var lzo = E(() => {
-  cne();
-  Vbc();
-  azo();
-  id();
-  co();
-  Yz = R(rt(), 1);
-});
+// [unwrapped __esm module lzo] deps: cne, Vbc, azo, id, co
+Yz = R(rt(), 1);
 function zbc({
   sessionKey: e,
   sendResponse: t,

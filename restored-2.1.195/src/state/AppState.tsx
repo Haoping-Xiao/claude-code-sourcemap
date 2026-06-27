@@ -4,27 +4,8 @@
 // class=modified  jaccard=0.1725  score=0.6543  fileCov=0.1897
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var C4n = E(() => {
-  Zf();
-  zqe();
-  ORt();
-  er();
-  je();
-  Cp();
-  Q9();
-  fn();
-  PM();
-  Hu();
-  $I();
-  __();
-  Gy();
-  fre();
-  qho();
-  Jt();
-  vf();
-  dr();
-  nNa = require("path");
-});
+// [unwrapped __esm module C4n] deps: Zf, zqe, ORt, er, je, Cp, Q9, fn, PM, Hu, $I, __, Gy, fre, qho, Jt, vf, dr
+nNa = require("path");
 var iNa = {};
 _t(iNa, {
   AppStateProvider: () => AppStateProvider,

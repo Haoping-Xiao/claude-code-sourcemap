@@ -4,12 +4,10 @@
 // class=new  jaccard=0.0311  score=0.2082  fileCov=0.0352
 // note: nearest: src/utils/advisor.ts (0.0311); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aSs = E(() => {
-  iSs();
-  VRu = sSs(function (e, t, n) {
-    return e + (n ? "_" : "") + t.toLowerCase();
-  }), cpn = VRu;
-});
+// [unwrapped __esm module aSs] deps: iSs
+VRu = sSs(function (e, t, n) {
+  return e + (n ? "_" : "") + t.toLowerCase();
+}), cpn = VRu;
 function lSs(e) {
   return `tool_${cpn(e)}`;
 }

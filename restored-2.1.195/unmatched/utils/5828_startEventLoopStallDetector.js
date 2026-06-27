@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0207  score=0.0861  fileCov=0.0266
 // note: nearest: src/utils/heapDumpService.ts (0.0207); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var g1c = E(() => {
-  dn();
-  c_();
-  At();
-  Jt();
-  b8n();
-});
 var _1c = {};
 _t(_1c, {
   startEventLoopStallDetector: () => startEventLoopStallDetector,

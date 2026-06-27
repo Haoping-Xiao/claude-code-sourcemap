@@ -4,10 +4,8 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0215  score=0.5216  fileCov=0.022
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ric = E(() => {
-  sp();
-  Mlr = require("crypto");
-});
+// [unwrapped __esm module Ric] deps: sp
+Mlr = require("crypto");
 async function* bzt(e, t, n, r, o, s, i = lp) {
   let a = r.getAppState(),
     l = r.agentId ?? Rt();

@@ -4,124 +4,97 @@
 // class=modified (alt of src/utils/config.ts)  jaccard=0.1516  score=0.5453  fileCov=0.1735
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var er = E(() => {
-  Qi();
-  ghe();
-  ft();
-  Uh();
-  kt();
-  Xzr();
-  Lo();
-  fd();
-  Ld();
-  je();
-  Mm();
-  wr();
-  fn();
-  At();
-  oc();
-  ys();
-  sa();
-  Rd();
-  Hu();
-  qd();
-  W0r();
-  hY();
-  Sx();
-  T3e();
-  Jt();
-  BRt();
-  ((FVo = require("crypto")),
-    (Ucc = require("fs")),
-    (HS = require("path")),
-    (asm = (lH(), ro(Rkn))),
-    ($Vo = new Set()),
-    (JYe = {
-      allowedTools: [],
-      mcpContextUris: [],
-      mcpServers: {},
-      enabledMcpjsonServers: [],
-      disabledMcpjsonServers: [],
-      hasTrustDialogAccepted: false,
-      projectOnboardingSeenCount: 0,
-      hasClaudeMdExternalIncludesApproved: false,
-      hasClaudeMdExternalIncludesWarningShown: false,
-    }));
-  ((I7 = Cme()),
-    (wcr = [
-      "apiKeyHelper",
-      "installMethod",
-      "autoUpdates",
-      "autoUpdatesProtectedForNative",
-      "theme",
-      "verbose",
-      "preferredNotifChannel",
-      "shiftEnterKeyBindingInstalled",
-      "editorMode",
-      "hasUsedBackslashReturn",
-      "autoCompactEnabled",
-      "autoScrollEnabled",
-      "showTurnDuration",
-      "externalEditorContext",
-      "showMessageTimestamps",
-      "diffTool",
-      "env",
-      "tipsHistory",
-      "todoFeatureEnabled",
-      "showExpandedTodos",
-      "briefTranscript",
-      "diffSidebarOpen",
-      "messageIdleNotifThresholdMs",
-      "autoConnectIde",
-      "autoInstallIdeExtension",
-      "fileCheckpointingEnabled",
-      "terminalProgressBarEnabled",
-      "showStatusInTerminalTab",
-      "taskCompleteNotifEnabled",
-      "inputNeededNotifEnabled",
-      "agentPushNotifEnabled",
-      "respectGitignore",
-      "claudeInChromeDefaultEnabled",
-      "hasCompletedClaudeInChromeOnboarding",
-      "lspRecommendationDisabled",
-      "lspRecommendationNeverPlugins",
-      "lspRecommendationIgnoredCount",
-      "copyFullResponse",
-      "copyOnSelect",
-      "leftArrowOpensAgents",
-      "defaultToAgentsView",
-      "permissionExplainerEnabled",
-      "prStatusFooterEnabled",
-      "remoteControlAtStartup",
-      "autoUploadSessions",
-      "autoAddRemoteControlDaemonWorker",
-      "remoteDialogSeen",
-    ]));
-  Fcc = ["allowedTools", "hasTrustDialogAccepted", "hasCompletedProjectOnboarding"];
-  ((dsm = {
-    ...I7,
-    autoUpdates: false,
-  }),
-    (LoA = {
-      ...JYe,
-    }));
-  p2 = {
-    config: null,
-    mtime: 0,
-  };
-  Ci(async () => {
-    fsm();
-  });
-  Ime = Cn(() => {
-    let e = yr(),
-      t = qf(e);
-    if (t) return t9(t);
-    return t9(HS.resolve(e));
-  });
-  ((ysm = oTt), (_sm = sTt), (bsm = kZt), (Ssm = CZt), (Esm = UVo));
-  ((Hsm = NVo), (Tsm = dsm));
-  r1i(() => x0());
+// [unwrapped __esm module er] deps: Qi, ghe, ft, Uh, kt, Xzr, Lo, fd, Ld, je, Mm, wr, fn, At, oc, ys, sa, Rd, Hu, qd, W0r, hY, Sx, T3e, Jt, BRt
+((FVo = require("crypto")),
+  (Ucc = require("fs")),
+  (HS = require("path")),
+  (asm = (lH(), ro(Rkn))),
+  ($Vo = new Set()),
+  (JYe = {
+    allowedTools: [],
+    mcpContextUris: [],
+    mcpServers: {},
+    enabledMcpjsonServers: [],
+    disabledMcpjsonServers: [],
+    hasTrustDialogAccepted: false,
+    projectOnboardingSeenCount: 0,
+    hasClaudeMdExternalIncludesApproved: false,
+    hasClaudeMdExternalIncludesWarningShown: false,
+  }));
+((I7 = Cme()),
+  (wcr = [
+    "apiKeyHelper",
+    "installMethod",
+    "autoUpdates",
+    "autoUpdatesProtectedForNative",
+    "theme",
+    "verbose",
+    "preferredNotifChannel",
+    "shiftEnterKeyBindingInstalled",
+    "editorMode",
+    "hasUsedBackslashReturn",
+    "autoCompactEnabled",
+    "autoScrollEnabled",
+    "showTurnDuration",
+    "externalEditorContext",
+    "showMessageTimestamps",
+    "diffTool",
+    "env",
+    "tipsHistory",
+    "todoFeatureEnabled",
+    "showExpandedTodos",
+    "briefTranscript",
+    "diffSidebarOpen",
+    "messageIdleNotifThresholdMs",
+    "autoConnectIde",
+    "autoInstallIdeExtension",
+    "fileCheckpointingEnabled",
+    "terminalProgressBarEnabled",
+    "showStatusInTerminalTab",
+    "taskCompleteNotifEnabled",
+    "inputNeededNotifEnabled",
+    "agentPushNotifEnabled",
+    "respectGitignore",
+    "claudeInChromeDefaultEnabled",
+    "hasCompletedClaudeInChromeOnboarding",
+    "lspRecommendationDisabled",
+    "lspRecommendationNeverPlugins",
+    "lspRecommendationIgnoredCount",
+    "copyFullResponse",
+    "copyOnSelect",
+    "leftArrowOpensAgents",
+    "defaultToAgentsView",
+    "permissionExplainerEnabled",
+    "prStatusFooterEnabled",
+    "remoteControlAtStartup",
+    "autoUploadSessions",
+    "autoAddRemoteControlDaemonWorker",
+    "remoteDialogSeen",
+  ]));
+Fcc = ["allowedTools", "hasTrustDialogAccepted", "hasCompletedProjectOnboarding"];
+((dsm = {
+  ...I7,
+  autoUpdates: false,
+}),
+  (LoA = {
+    ...JYe,
+  }));
+p2 = {
+  config: null,
+  mtime: 0,
+};
+Ci(async () => {
+  fsm();
 });
+Ime = Cn(() => {
+  let e = yr(),
+    t = qf(e);
+  if (t) return t9(t);
+  return t9(HS.resolve(e));
+});
+((ysm = oTt), (_sm = sTt), (bsm = kZt), (Ssm = CZt), (Esm = UVo));
+((Hsm = NVo), (Tsm = dsm));
+r1i(() => x0());
 var CWt = {};
 _t(CWt, {
   trackDatadogEvent: () => trackDatadogEvent,

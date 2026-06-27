@@ -4,13 +4,9 @@
 // class=modified  jaccard=0.4065  score=0.6053  fileCov=0.5532
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var EW = E(() => {
-  ZS();
-  one();
-  jh();
-  Q7 = R(rt(), 1);
-  ((g8 = Q7.createContext(null)), (CLn = g8.Provider));
-});
+// [unwrapped __esm module EW] deps: ZS, one, jh
+Q7 = R(rt(), 1);
+((g8 = Q7.createContext(null)), (CLn = g8.Provider));
 function WWi(e) {
   return Object.freeze({
     type: "stdout",

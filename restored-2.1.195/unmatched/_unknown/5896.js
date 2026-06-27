@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0263  score=0.1838  fileCov=0.0298
 // note: nearest: node_modules/jsonwebtoken/sign.js (0.0263); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ann = E(() => {
-  sB();
-  Zmr();
-  k2c();
-  wm();
-});
 var bDm = (e, t) => {
     if (t instanceof Uint8Array) return;
     if (!BXo(t)) throw TypeError(NXo(e, t, ...Z_, "Uint8Array"));

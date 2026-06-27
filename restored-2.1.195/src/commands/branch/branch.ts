@@ -4,27 +4,6 @@
 // class=modified  jaccard=0.4313  score=0.6214  fileCov=0.5849
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Y$o = E(() => {
-  ft();
-  X6();
-  F8();
-  dn();
-  S_();
-  $S();
-  og();
-  Il();
-  co();
-  kpe();
-  uft();
-  l8e();
-  Mp();
-  HO();
-  jv();
-  lRo();
-  tQ();
-  qRe();
-  SAe();
-});
 var J$o = {};
 _t(J$o, {
   deriveFirstPrompt: () => deriveFirstPrompt,

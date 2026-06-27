@@ -4,13 +4,8 @@
 // class=new  jaccard=0.021  score=0.2398  fileCov=0.0225
 // note: nearest: src/commands/effort/effort.tsx (0.021); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var t1l = E(() => {
-  $7t();
-  np();
-  Ye();
-  str();
-  ZOl = R(lt(), 1), Ktr = R(rt(), 1), oNo = R(se(), 1);
-});
+// [unwrapped __esm module t1l] deps: $7t, np, Ye, str
+ZOl = R(lt(), 1), Ktr = R(rt(), 1), oNo = R(se(), 1);
 var n1l = {};
 _t(n1l, {
   call: () => call

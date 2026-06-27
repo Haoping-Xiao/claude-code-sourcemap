@@ -4,10 +4,6 @@
 // class=modified  jaccard=0.453  score=0.6875  fileCov=0.5704
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var GEc = E(() => {
-  Ao();
-  I7e();
-});
 function dpr(e, t) {
   if (t === void 0) return;
   for (let n of e) if (n.type === "user" && n.uuid === t) n.verifiedSlackHumanTurn = true;

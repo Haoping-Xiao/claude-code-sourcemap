@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.4062  score=0.9521  fileCov=0.4147
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var K1a = E(() => {
-  ih();
-});
 function J1a(e) {
   let t = Y1a.c(3),
     { children: n } = e,

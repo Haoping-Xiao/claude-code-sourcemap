@@ -4,9 +4,6 @@
 // class=new  jaccard=0.0054  score=0.2638  fileCov=0.0055
 // note: nearest: src/utils/config.ts (0.0054); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iYr = E(() => {
-  je();
-});
 function oBi(e) {
   let t = new Map();
   if (!e) return t;

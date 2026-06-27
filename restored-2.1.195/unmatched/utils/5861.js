@@ -4,19 +4,6 @@
 // class=new  jaccard=0.0237  score=0.2603  fileCov=0.0254
 // note: nearest: src/tasks/LocalAgentTask/LocalAgentTask.tsx (0.0237); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var NUc = E(() => {
-  kt();
-  je();
-  Mm();
-  At();
-  ys();
-  lE();
-  B9o();
-  Xh();
-  $Yo();
-  dOe();
-  OUc();
-});
 function wLm(e) {
   if (!zJ(e)) return false;
   if ("isBackgrounded" in e && e.isBackgrounded === false) return false;

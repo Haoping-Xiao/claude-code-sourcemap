@@ -4,12 +4,6 @@
 // class=partial  jaccard=0.205  score=1  fileCov=0.205
 // note: low-confidence suggestion: src/vim/types.ts; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var C1o = E(() => {
-  MGe();
-  m0();
-  sr();
-  A1o();
-});
 function I1o(e) {
   return e in wtr;
 }

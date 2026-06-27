@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0084  score=0.2852  fileCov=0.0085
 // note: nearest: node_modules/node-forge/lib/rsa.js (0.0084); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var B2c = E(() => {
-  egr();
-  wm();
-});
 var IDm = async e => {
     if (e instanceof Uint8Array) return {
       kty: "oct",

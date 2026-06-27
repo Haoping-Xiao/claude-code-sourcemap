@@ -4,22 +4,16 @@
 // class=new  jaccard=0.0394  score=0.2756  fileCov=0.044
 // note: nearest: src/utils/Shell.ts (0.0394); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var AXo = E(() => {
-  Mm();
-  wr();
-  At();
-  kt();
-  c_();
-  P3 = require("fs/promises"), XUc = require("path"), {
-    dirname: zUc,
-    isAbsolute: Lmr,
-    join: ILm,
-    normalize: JUc,
-    relative: QUc,
-    sep: ZUc
-  } = XUc.posix;
-  SXo = tFc(Oe.CLAUDE_STAGE_FILE_ROOT);
-});
+// [unwrapped __esm module AXo] deps: Mm, wr, At, kt, c_
+P3 = require("fs/promises"), XUc = require("path"), {
+  dirname: zUc,
+  isAbsolute: Lmr,
+  join: ILm,
+  normalize: JUc,
+  relative: QUc,
+  sep: ZUc
+} = XUc.posix;
+SXo = tFc(Oe.CLAUDE_STAGE_FILE_ROOT);
 var oFc = {};
 _t(oFc, {
   runHeadlessBashCommand: () => runHeadlessBashCommand

@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0078  score=1  fileCov=0.0078
 // note: nearest: src/tools.ts (0.0078); dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DSl = E(() => {
-  ql();
-  kSl();
-  Ye();
-  mq = R(se(), 1);
-});
+// [unwrapped __esm module DSl] deps: ql, kSl, Ye
+mq = R(se(), 1);
 var PSl = {};
 _t(PSl, {
   PushNotificationTool: () => PushNotificationTool

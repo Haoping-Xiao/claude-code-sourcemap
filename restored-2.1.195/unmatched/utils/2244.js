@@ -4,13 +4,6 @@
 // class=new  jaccard=0.0349  score=0.0457  fileCov=0.1284
 // note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/shared/auth-utils.js (0.0349); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var P3e = E(() => {
-  ft();
-  gb();
-  fn();
-  o8();
-  PM();
-});
 function X1d(e) {
   if (!e.startsWith("/")) return false;
   try {

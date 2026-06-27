@@ -4,18 +4,17 @@
 // class=new  jaccard=0.0024  score=0.2956  fileCov=0.0024
 // note: nearest: src/screens/REPL.tsx (0.0024); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xtc = E(() => {
-  x7f = {
-    type: "local-jsx",
-    name: "daemon",
-    description: "Manage background services and routines",
-    immediate: true,
-    requires: {
-      ink: true
-    },
-    load: () => Promise.resolve().then(() => (TGo(), HGo))
-  }, k7f = x7f;
-});
+// [unwrapped __esm module Xtc]
+x7f = {
+  type: "local-jsx",
+  name: "daemon",
+  description: "Manage background services and routines",
+  immediate: true,
+  requires: {
+    ink: true
+  },
+  load: () => Promise.resolve().then(() => (TGo(), HGo))
+}, k7f = x7f;
 function cQt() {
   return true;
 }

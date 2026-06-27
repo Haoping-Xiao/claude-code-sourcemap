@@ -4,15 +4,6 @@
 // class=new  jaccard=0.0496  score=0.4203  fileCov=0.0532
 // note: nearest: src/tasks/LocalAgentTask/LocalAgentTask.tsx (0.0496); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var yyt = E(() => {
-  ft();
-  np();
-  $S();
-  hyt();
-  bm();
-  OI();
-  sre();
-});
 function Ktf(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "monitor_ws";
 }

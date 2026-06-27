@@ -4,17 +4,8 @@
 // class=modified  jaccard=0.2617  score=0.5198  fileCov=0.3452
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kpe = E(() => {
-  BE();
-  je();
-  sr();
-  DD();
-  rle();
-  Ao();
-  vM();
-  Ls();
-  gF_ = [...hye, "inherit"];
-});
+// [unwrapped __esm module kpe] deps: BE, je, sr, DD, rle, Ao, vM, Ls
+gF_ = [...hye, "inherit"];
 function Rht(e) {
   let t = e.replace(/[^A-Za-z0-9._:/@[\]-]/g, "");
   if (t.length === 0) return "(unrecognized model name)";

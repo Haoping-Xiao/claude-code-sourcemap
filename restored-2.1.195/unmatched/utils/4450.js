@@ -4,13 +4,8 @@
 // class=new  jaccard=0.0037  score=0.2049  fileCov=0.0037
 // note: nearest: src/utils/attachments.ts (0.0037); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rwl = E(() => {
-  Uh();
-  M7();
-  sr();
-  LDo();
-  twl = require("fs/promises"), HKt = require("path");
-});
+// [unwrapped __esm module rwl] deps: Uh, M7, sr, LDo
+twl = require("fs/promises"), HKt = require("path");
 async function swl(e, t) {
   let n;
   try {

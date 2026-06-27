@@ -4,20 +4,8 @@
 // class=modified  jaccard=0.2801  score=0.4375  fileCov=0.4378
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mYl = E(() => {
-  si();
-  Ye();
-  ps();
-  IL();
-  M7();
-  tQ();
-  ty();
-  kpe();
-  Coe();
-  AN();
-  VAt();
-  ((s4o = R(lt(), 1)), (lm = R(se(), 1)));
-});
+// [unwrapped __esm module mYl] deps: si, Ye, ps, IL, M7, tQ, ty, kpe, Coe, AN, VAt
+((s4o = R(lt(), 1)), (lm = R(se(), 1)));
 function Nsr(e) {
   let t = gYl.c(17),
     { agentName: n, currentColor: r, onConfirm: o } = e,

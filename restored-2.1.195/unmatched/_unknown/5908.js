@@ -4,19 +4,8 @@
 // class=new  jaccard=0.0105  score=0.0568  fileCov=0.0127
 // note: nearest: node_modules/node-forge/lib/pkcs7.js (0.0105); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var tJo = E(() => {
-  Xmr();
-  GXo();
-  qXo();
-  VXo();
-  sB();
-  Enn();
-  wm();
-  eJo();
-  Hnn();
-  JXo();
-  rgr = xDm;
-});
+// [unwrapped __esm module tJo] deps: Xmr, GXo, qXo, VXo, sB, Enn, wm, eJo, Hnn, JXo
+rgr = xDm;
 class JNe {
   constructor(e) {
     if (!(e instanceof Uint8Array)) throw TypeError("plaintext must be an instance of Uint8Array");

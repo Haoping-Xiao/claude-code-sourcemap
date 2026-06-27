@@ -4,16 +4,6 @@
 // class=modified  jaccard=0.2953  score=0.4401  fileCov=0.4729
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wTl = E(() => {
-  wr();
-  BGt();
-  kDe();
-  u_();
-  lf();
-  nC();
-  EI();
-  lC();
-});
 function ITl(e, { verbose: t, theme: n }) {
   let { command: r } = e;
   if (!r) return null;

@@ -4,18 +4,8 @@
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.1201  score=0.306  fileCov=0.1651
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Ykl = E(() => {
-  co();
-  E5();
-  vMe();
-  ql();
-  Ye();
-  oc();
-  es();
-  KI();
-  bH();
-  X_ = R(se(), 1);
-});
+// [unwrapped __esm module Ykl] deps: co, E5, vMe, ql, Ye, oc, es, KI, bH
+X_ = R(se(), 1);
 function yCf(e) {
   if (hCf.has(e)) return true;
   if (e.startsWith("/proc/") && (e.endsWith("/fd/0") || e.endsWith("/fd/1") || e.endsWith("/fd/2")))

@@ -4,44 +4,32 @@
 // class=modified  jaccard=0.211  score=0.8173  fileCov=0.2214
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bMe = E(() => {
-  b5e();
-  Hu();
-  sr();
-  Rm();
-  je();
-  Dpe();
-  At();
-  oc();
-  Hel();
-  uDe();
-  u_();
-  ((bvo = /\\u[0-9a-fA-F]{4}/), (Svo = /[\u0080-\uffff]/));
-  xZp = {
-    "<fnr>": "<function_results>",
-    "<n>": "<name>",
-    "</n>": "</name>",
-    "<o>": "<output>",
-    "</o>": "</output>",
-    "<e>": "<error>",
-    "</e>": "</error>",
-    "<s>": "<system>",
-    "</s>": "</system>",
-    "<r>": "<result>",
-    "</r>": "</result>",
-    "< META_START >": "<META_START>",
-    "< META_END >": "<META_END>",
-    "< EOT >": "<EOT>",
-    "< META >": "<META>",
-    "< SOS >": "<SOS>",
-    "\n\nH:": `
+// [unwrapped __esm module bMe] deps: b5e, Hu, sr, Rm, je, Dpe, At, oc, Hel, uDe, u_
+((bvo = /\\u[0-9a-fA-F]{4}/), (Svo = /[\u0080-\uffff]/));
+xZp = {
+  "<fnr>": "<function_results>",
+  "<n>": "<name>",
+  "</n>": "</name>",
+  "<o>": "<output>",
+  "</o>": "</output>",
+  "<e>": "<error>",
+  "</e>": "</error>",
+  "<s>": "<system>",
+  "</s>": "</system>",
+  "<r>": "<result>",
+  "</r>": "</result>",
+  "< META_START >": "<META_START>",
+  "< META_END >": "<META_END>",
+  "< EOT >": "<EOT>",
+  "< META >": "<META>",
+  "< SOS >": "<SOS>",
+  "\n\nH:": `
 
 Human:`,
-    "\n\nA:": `
+  "\n\nA:": `
 
 Assistant:`,
-  };
-});
+};
 async function Oel(e, t, n = 3) {
   let r = await N9t(e);
   if (r === null) return null;

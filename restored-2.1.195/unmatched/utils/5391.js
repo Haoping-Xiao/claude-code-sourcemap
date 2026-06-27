@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0267  score=0.3391  fileCov=0.0281
 // note: nearest: node_modules/node-fetch/lib/index.js (0.0267); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var een = E(() => {
-  ys();
-  Hu();
-  Jbe();
-  Kfc = require("fs/promises");
-});
+// [unwrapped __esm module een] deps: ys, Hu, Jbe
+Kfc = require("fs/promises");
 function p8o(e, t = "$") {
   let n = [],
     r = new WeakSet(),

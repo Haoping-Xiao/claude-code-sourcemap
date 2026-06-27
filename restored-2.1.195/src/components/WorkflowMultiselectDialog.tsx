@@ -4,20 +4,18 @@
 // class=modified  jaccard=0.1512  score=0.355  fileCov=0.2085
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var wUl = E(() => {
-  wr();
-  vUl = {
-    type: "local-jsx",
-    name: "logout",
-    description: "Sign out from your Anthropic account",
-    isEnabled: () => !Oe.DISABLE_LOGOUT_COMMAND,
-    fleetHostCall: async (e) => {
-      let { fleetHostLogout: t } = await Promise.resolve().then(() => (hVn(), rAo));
-      return t(e);
-    },
-    load: () => Promise.resolve().then(() => (hVn(), rAo)),
-  };
-});
+// [unwrapped __esm module wUl] deps: wr
+vUl = {
+  type: "local-jsx",
+  name: "logout",
+  description: "Sign out from your Anthropic account",
+  isEnabled: () => !Oe.DISABLE_LOGOUT_COMMAND,
+  fleetHostCall: async (e) => {
+    let { fleetHostLogout: t } = await Promise.resolve().then(() => (hVn(), rAo));
+    return t(e);
+  },
+  load: () => Promise.resolve().then(() => (hVn(), rAo)),
+};
 function xUl(e) {
   let t = CUl.c(14),
     { onSubmit: n, defaultSelections: r } = e,

@@ -4,36 +4,25 @@
 // class=partial  jaccard=0.0813  score=0.1324  fileCov=0.1738
 // note: low-confidence suggestion: src/utils/model/modelSupportOverrides.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var DJa = E(() => {
-  Ye();
-  BE();
-  rle();
-  sr();
-  Vl();
-  gm();
-  EC();
-  wb();
-  vH();
-  jHo();
-  GHo = R(lt(), 1), vF = R(rt(), 1), Zh = R(se(), 1), tMe = ["sonnet", "opus", "haiku", "fable"], z9n = {
-    sonnet: "Sonnet",
-    opus: "Opus",
-    haiku: "Haiku",
-    fable: "Fable"
-  }, pJp = {
-    sonnet: "ANTHROPIC_DEFAULT_SONNET_MODEL",
-    opus: "ANTHROPIC_DEFAULT_OPUS_MODEL",
-    haiku: "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-    fable: "ANTHROPIC_DEFAULT_FABLE_MODEL"
-  };
-  RJa = {
-    auth: "auth failed",
-    permission: "no InvokeModel permission",
-    model: "not enabled in this account",
-    network: "unreachable",
-    other: "request failed"
-  };
-});
+// [unwrapped __esm module DJa] deps: Ye, BE, rle, sr, Vl, gm, EC, wb, vH, jHo
+GHo = R(lt(), 1), vF = R(rt(), 1), Zh = R(se(), 1), tMe = ["sonnet", "opus", "haiku", "fable"], z9n = {
+  sonnet: "Sonnet",
+  opus: "Opus",
+  haiku: "Haiku",
+  fable: "Fable"
+}, pJp = {
+  sonnet: "ANTHROPIC_DEFAULT_SONNET_MODEL",
+  opus: "ANTHROPIC_DEFAULT_OPUS_MODEL",
+  haiku: "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+  fable: "ANTHROPIC_DEFAULT_FABLE_MODEL"
+};
+RJa = {
+  auth: "auth failed",
+  permission: "no InvokeModel permission",
+  model: "not enabled in this account",
+  network: "unreachable",
+  other: "request failed"
+};
 function Vc(e) {
   let t = PJa.c(10),
     {

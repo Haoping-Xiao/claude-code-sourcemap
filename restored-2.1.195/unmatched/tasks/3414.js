@@ -4,9 +4,8 @@
 // class=new  jaccard=0.027  score=0.1636  fileCov=0.0313
 // note: nearest: src/cli/transports/SSETransport.ts (0.027); dir inferred from dep-graph -> tasks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Kgo = E(() => {
-  MOa = require("crypto");
-});
+// [unwrapped __esm module Kgo]
+MOa = require("crypto");
 function ePp(e) {
   if (e === void 0 || e === null) return "UNSPECIFIED";
   if (typeof e === "number") return ZDp[e] ?? "UNSPECIFIED";

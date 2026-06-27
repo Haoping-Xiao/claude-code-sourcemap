@@ -4,50 +4,8 @@
 // class=partial  jaccard=0.0672  score=0.1616  fileCov=0.1032
 // note: low-confidence suggestion: src/ink/terminal.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $zo = E(() => {
-  ft();
-  ft();
-  Zrr();
-  sYe();
-  mE();
-  E8e();
-  Ko();
-  gm();
-  AN();
-  X0();
-  WTe();
-  fH();
-  Ed();
-  HN();
-  _i();
-  wOe();
-  Ye();
-  kt();
-  jc();
-  uo();
-  fh();
-  sA();
-  BE();
-  QOe();
-  oc();
-  aE();
-  xW();
-  _Tt();
-  vn();
-  bm();
-  co();
-  I1();
-  Ao();
-  Sdr();
-  DE();
-  __();
-  y3();
-  y_();
-  _a();
-  aS();
-  uJt();
-  IEc = R(lt(), 1), Qz = R(rt(), 1), iy = R(se(), 1), qTt = (Eoe(), ro(Ope));
-});
+// [unwrapped __esm module $zo] deps: ft, ft, Zrr, sYe, mE, E8e, Ko, gm, AN, X0, WTe, fH, Ed, HN, _i, wOe, Ye, kt, jc, uo, fh, sA, BE, QOe, oc, aE, xW, _Tt, vn, bm, co, I1, Ao, Sdr, DE, __, y3, y_, _a, aS, uJt
+IEc = R(lt(), 1), Qz = R(rt(), 1), iy = R(se(), 1), qTt = (Eoe(), ro(Ope));
 function kEc() {
   Mhm();
 }

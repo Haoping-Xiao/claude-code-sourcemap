@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.1569  score=0.7804  fileCov=0.1641
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var UFo = E(() => {
-  co();
-  ((BWl = new Set([_N, Jv])), (UWl = new WeakMap()));
-});
+// [unwrapped __esm module UFo] deps: co
+((BWl = new Set([_N, Jv])), (UWl = new WeakMap()));
 function uor(e) {
   if (e >= 70) return "horizontal";
   return "compact";

@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0283  score=0.205  fileCov=0.0317
 // note: nearest: node_modules/bignumber.js/bignumber.js (0.0283); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TXn = E(() => {
-  Un();
-  jc();
-  Ls();
-  qd();
-});
 function Uhf(e) {
   let t = e.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 16) || "anon",
     n = ZSl.randomBytes(6).toString("hex");

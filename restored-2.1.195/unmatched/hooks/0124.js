@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0568  score=0.3458  fileCov=0.0636
 // note: nearest: src/utils/suggestions/slackChannelSuggestions.ts (0.0568); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Yyr = E(() => {
-  crs = globalThis.process?.getBuiltinModule?.("async_hooks"), sJe = crs ? e => crs.AsyncResource.bind(e) : e => e;
-});
+// [unwrapped __esm module Yyr]
+crs = globalThis.process?.getBuiltinModule?.("async_hooks"), sJe = crs ? e => crs.AsyncResource.bind(e) : e => e;
 function ut(e) {
   if (!e) return false;
   if (typeof e === "boolean") return e;

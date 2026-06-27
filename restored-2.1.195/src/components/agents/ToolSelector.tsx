@@ -4,12 +4,8 @@
 // class=modified  jaccard=0.4399  score=0.8045  fileCov=0.4926
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var a4o = E(() => {
-  Ye();
-  kpe();
-  Vl();
-  ((yYl = R(lt(), 1)), (KAt = R(se(), 1)));
-});
+// [unwrapped __esm module a4o] deps: Ye, kpe, Vl
+((yYl = R(lt(), 1)), (KAt = R(se(), 1)));
 function _Yl() {
   return {
     READ_ONLY: {

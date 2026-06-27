@@ -4,19 +4,9 @@
 // class=modified  jaccard=0.5279  score=0.8515  fileCov=0.5814
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var o6n = E(() => {
-  ft();
-  kt();
-  Lo();
-  Yf();
-  _$();
-  fn();
-  xW();
-  BGt();
-  sr();
-  J8n = require("fs/promises");
-  UZp = /^data:([^;]+);base64,(.+)$/;
-});
+// [unwrapped __esm module o6n] deps: ft, kt, Lo, Yf, _$, fn, xW, BGt, sr
+J8n = require("fs/promises");
+UZp = /^data:([^;]+);base64,(.+)$/;
 function GZp(e) {
   let t = 0;
   for (let n of e) {

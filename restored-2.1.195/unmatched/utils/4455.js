@@ -4,29 +4,26 @@
 // class=new  jaccard=0.0363  score=0.074  fileCov=0.0664
 // note: nearest: src/services/teamMemorySync/index.ts (0.0363); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Iwl = E(() => {
-  Xr();
-  Jt();
-  vwl = require("string_decoder"), vAf = ve(() => H.looseObject({
-    type: H.string()
-  })), wAf = ve(() => H.looseObject({
-    type: H.literal("memory"),
-    id: H.string(),
-    path: H.string(),
-    content: H.string(),
-    content_sha256: H.string()
-  })), CAf = ve(() => H.looseObject({
-    type: H.literal("complete"),
-    memory_count: H.number().int().nonnegative(),
-    error_count: H.number().int().nonnegative().optional()
-  }));
-  OJn = class OJn extends Error {
-    constructor(e) {
-      super(`NDJSON line exceeds ${e} bytes`);
-      this.name = "LineTooLongError";
-    }
-  };
-});
+// [unwrapped __esm module Iwl] deps: Xr, Jt
+vwl = require("string_decoder"), vAf = ve(() => H.looseObject({
+  type: H.string()
+})), wAf = ve(() => H.looseObject({
+  type: H.literal("memory"),
+  id: H.string(),
+  path: H.string(),
+  content: H.string(),
+  content_sha256: H.string()
+})), CAf = ve(() => H.looseObject({
+  type: H.literal("complete"),
+  memory_count: H.number().int().nonnegative(),
+  error_count: H.number().int().nonnegative().optional()
+}));
+OJn = class OJn extends Error {
+  constructor(e) {
+    super(`NDJSON line exceeds ${e} bytes`);
+    this.name = "LineTooLongError";
+  }
+};
 function kAf(e) {
   return xwl.createHash("sha256").update(e, "utf8").digest("hex");
 }

@@ -4,11 +4,6 @@
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0188  score=0.474  fileCov=0.0192
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Iic = E(() => {
-  ft();
-  iKe();
-  sr();
-});
 async function sOe(e, t, n = lp) {
   let r = t?.getAppState(),
     o = Rt();

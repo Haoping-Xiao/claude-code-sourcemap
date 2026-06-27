@@ -3,11 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ZXe = E(() => {
-  don();
-  won();
-  Nie = Z8c;
-});
+// [unwrapped __esm module ZXe] deps: don, won
+Nie = Z8c;
 function e6c(e) {
   return Nie(e) ? Ron(e) : Wts(e);
 }

@@ -4,35 +4,8 @@
 // class=new  jaccard=0.0028  score=0.4788  fileCov=0.0028
 // note: nearest: src/screens/REPL.tsx (0.0028); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $al = E(() => {
-  ft();
-  Xa();
-  hal();
-  _al();
-  _i();
-  IBt();
-  Ye();
-  uo();
-  ii();
-  M8t();
-  ZPe();
-  oc();
-  es();
-  uf();
-  Rd();
-  co();
-  sr();
-  Q8();
-  gDe();
-  AN();
-  eKn();
-  Hde();
-  Pyt();
-  LCo();
-  Cal();
-  fIo();
-  rKn = R(lt(), 1), Pal = require("path"), s_t = R(rt(), 1), Hi = R(se(), 1);
-});
+// [unwrapped __esm module $al] deps: ft, Xa, hal, _al, _i, IBt, Ye, uo, ii, M8t, ZPe, oc, es, uf, Rd, co, sr, Q8, gDe, AN, eKn, Hde, Pyt, LCo, Cal, fIo
+rKn = R(lt(), 1), Pal = require("path"), s_t = R(rt(), 1), Hi = R(se(), 1);
 function Nal() {
   let e = Oal.c(2),
     t = Uu("app:toggleTranscript", "Global", "ctrl+o"),

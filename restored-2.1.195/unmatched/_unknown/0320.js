@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kvr = E(() => {
-  xvr();
-  xvr();
-  fcs = H;
-});
+// [unwrapped __esm module kvr] deps: xvr, xvr
+fcs = H;
 var ol;

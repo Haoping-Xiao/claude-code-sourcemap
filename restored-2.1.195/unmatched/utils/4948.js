@@ -4,18 +4,16 @@
 // class=new  jaccard=0.0029  score=0.1165  fileCov=0.0029
 // note: nearest: src/screens/REPL.tsx (0.0029); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var n9l = E(() => {
-  fn();
-  t9l = {
-    type: "local-jsx",
-    name: "setup-vertex",
-    description: "Reconfigure Google Vertex AI authentication, project, region, or model pins",
-    get isHidden() {
-      return !ut(process.env.CLAUDE_CODE_USE_VERTEX);
-    },
-    load: () => Promise.resolve().then(() => (e9l(), ZVl))
-  };
-});
+// [unwrapped __esm module n9l] deps: fn
+t9l = {
+  type: "local-jsx",
+  name: "setup-vertex",
+  description: "Reconfigure Google Vertex AI authentication, project, region, or model pins",
+  get isHidden() {
+    return !ut(process.env.CLAUDE_CODE_USE_VERTEX);
+  },
+  load: () => Promise.resolve().then(() => (e9l(), ZVl))
+};
 function U2o(e, t) {
   return {
     action: "blocked",

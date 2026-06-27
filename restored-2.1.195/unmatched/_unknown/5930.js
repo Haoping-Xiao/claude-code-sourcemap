@@ -4,10 +4,6 @@
 // class=new  jaccard=0.0189  score=0.2489  fileCov=0.0201
 // note: nearest: node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js (0.0189); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ujc = E(() => {
-  Ann();
-  wm();
-});
 function PDm(e) {
   switch (typeof e === "string" && e.slice(0, 2)) {
     case "RS":

@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var uBs = E(() => {
-  aBs();
-  g9u = $hn;
-});
+// [unwrapped __esm module uBs] deps: aBs
+g9u = $hn;

@@ -4,20 +4,17 @@
 // class=modified  jaccard=0.3733  score=0.6058  fileCov=0.493
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var MOl = E(() => {
-  Tc();
-  xOl();
-  ((Wtr = require("zlib")), (tNo = Mfe * jOe));
-  kOl = WDf();
-  ROl = qDf();
-  YDf = {
-    9617: 0.25,
-    9618: 0.5,
-    9619: 0.75,
-    9608: 1,
-  };
-  ((QDf = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), (ZDf = ePf()));
-});
+// [unwrapped __esm module MOl] deps: Tc, xOl
+((Wtr = require("zlib")), (tNo = Mfe * jOe));
+kOl = WDf();
+ROl = qDf();
+YDf = {
+  9617: 0.25,
+  9618: 0.5,
+  9619: 0.75,
+  9608: 1,
+};
+((QDf = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), (ZDf = ePf()));
 async function OOl(e, t) {
   try {
     let n = nNo.join(qE(), "screenshots");

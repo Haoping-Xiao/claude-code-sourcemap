@@ -4,12 +4,6 @@
 // class=modified  jaccard=0.5438  score=0.7447  fileCov=0.6684
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var E$o = E(() => {
-  ft();
-  er();
-  sa();
-  Hu();
-});
 function oer() {
   return $d.join(kI(), "known_marketplaces.json");
 }

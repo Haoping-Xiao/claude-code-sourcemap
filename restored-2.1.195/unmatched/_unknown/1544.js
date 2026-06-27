@@ -4,12 +4,8 @@
 // class=new  jaccard=0.0301  score=1  fileCov=0.0301
 // note: nearest: node_modules/google-auth-library/build/src/auth/awsrequestsigner.js (0.0301); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var t4r = E(() => {
-  lMt();
-  uMt();
-  _je();
-  SHn = {}, e4r = [];
-});
+// [unwrapped __esm module t4r] deps: lMt, uMt, _je
+SHn = {}, e4r = [];
 var AHn = ({
   headers: e
 }, t, n) => {

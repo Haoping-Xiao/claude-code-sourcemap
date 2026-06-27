@@ -4,19 +4,14 @@
 // class=modified  jaccard=0.3296  score=1  fileCov=0.3296
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lpt = E(() => {
-  Un();
-  GY();
-  oo();
-  fn();
-  fRa = {
-    enabled: false,
-    pixelValidation: false,
-    clipboardPasteMultiline: true,
-    mouseAnimation: true,
-    hideBeforeAction: true,
-    autoTargetDisplay: true,
-    clipboardGuard: true,
-    coordinateMode: "pixels",
-  };
-});
+// [unwrapped __esm module lpt] deps: Un, GY, oo, fn
+fRa = {
+  enabled: false,
+  pixelValidation: false,
+  clipboardPasteMultiline: true,
+  mouseAnimation: true,
+  hideBeforeAction: true,
+  autoTargetDisplay: true,
+  clipboardGuard: true,
+  coordinateMode: "pixels",
+};

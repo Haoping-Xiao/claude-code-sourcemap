@@ -4,34 +4,30 @@
 // class=new  jaccard=0.0101  score=0.2724  fileCov=0.0104
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0101); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GRc = E(() => {
-  Ye();
-  vYo();
-  URc();
-  wYo = R(se(), 1), jRc = [...(FRc ? [FRc] : []), BRc, {
-    id: "marketplace-plugin-suggestion",
-    compute: async () => {
-      let e = await NRc({
-          theme: "dark"
-        }),
-        t = e?.pluginId;
-      if (!e || !t) return null;
-      return _fr(e, "startup"), {
-        key: "marketplace-plugin-suggestion",
-        kind: "upsell",
-        jsx: wYo.jsxs(w, {
-          color: "suggestion",
-          children: ["plugin suggestion: ", t, wYo.jsxs(w, {
-            color: "text",
-            dimColor: true,
-            children: [" ", "\xB7 /plugin"]
-          })]
-        }),
-        priority: "low"
-      };
-    }
-  }];
-});
+// [unwrapped __esm module GRc] deps: Ye, vYo, URc
+wYo = R(se(), 1), jRc = [...(FRc ? [FRc] : []), BRc, {
+  id: "marketplace-plugin-suggestion",
+  compute: async () => {
+    let e = await NRc({
+        theme: "dark"
+      }),
+      t = e?.pluginId;
+    if (!e || !t) return null;
+    return _fr(e, "startup"), {
+      key: "marketplace-plugin-suggestion",
+      kind: "upsell",
+      jsx: wYo.jsxs(w, {
+        color: "suggestion",
+        children: ["plugin suggestion: ", t, wYo.jsxs(w, {
+          color: "text",
+          dimColor: true,
+          children: [" ", "\xB7 /plugin"]
+        })]
+      }),
+      priority: "low"
+    };
+  }
+}];
 function WRc(e = jRc) {
   let {
       addNotification: t

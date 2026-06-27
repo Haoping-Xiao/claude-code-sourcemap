@@ -3,9 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var FXo = E(() => {
-  wm();
-});
 var dDm = (...e) => {
     let t = e.filter(Boolean);
     if (t.length === 0 || t.length === 1) return true;

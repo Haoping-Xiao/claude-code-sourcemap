@@ -4,18 +4,8 @@
 // class=new  jaccard=0.0044  score=0.0491  fileCov=0.0048
 // note: nearest: src/cli/print.ts (0.0044); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var iqc = E(() => {
-  Ece();
-  dn();
-  kt();
-  je();
-  At();
-  Is();
-  Jt();
-  WL();
-  q$();
-  nqc = require("events"), T2 = require("fs/promises"), mve = require("path");
-});
+// [unwrapped __esm module iqc] deps: Ece, dn, kt, je, At, Is, Jt, WL, q$
+nqc = require("events"), T2 = require("fs/promises"), mve = require("path");
 async function aqc(e, t = {}) {
   let n,
     r,

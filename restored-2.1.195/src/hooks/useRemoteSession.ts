@@ -4,30 +4,28 @@
 // class=modified  jaccard=0.2876  score=0.3987  fileCov=0.508
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Kbc = E(() => {
-  BKt();
-  ((jTe = R(rt(), 1)),
-    (ggm = {
-      ...{
-        [LQ.kind]: async (e, t, n) => {
-          let r = LQ.payload().safeParse(t);
-          if (!r.success)
-            return {
+// [unwrapped __esm module Kbc] deps: BKt
+((jTe = R(rt(), 1)),
+  (ggm = {
+    ...{
+      [LQ.kind]: async (e, t, n) => {
+        let r = LQ.payload().safeParse(t);
+        if (!r.success)
+          return {
+            behavior: "cancelled",
+          };
+        let o = await e(LQ, r.data, n);
+        return o === "cancelled"
+          ? {
               behavior: "cancelled",
+            }
+          : {
+              behavior: "completed",
+              result: o,
             };
-          let o = await e(LQ, r.data, n);
-          return o === "cancelled"
-            ? {
-                behavior: "cancelled",
-              }
-            : {
-                behavior: "completed",
-                result: o,
-              };
-        },
       },
-    }));
-});
+    },
+  }));
 function Jbc({
   config: e,
   setMessages: t,

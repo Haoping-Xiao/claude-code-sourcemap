@@ -4,9 +4,8 @@
 // class=new  jaccard=0.0193  score=0.0773  fileCov=0.0251
 // note: nearest: src/ink/render-node-to-output.ts (0.0193); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var rJt = E(() => {
-  Por = R(lt(), 1), n2 = R(rt(), 1), nJt = R(se(), 1), $ql = n2.createContext(null), Oql = n2.createContext(null), Nql = n2.createContext(null), Bql = n2.createContext(null);
-});
+// [unwrapped __esm module rJt]
+Por = R(lt(), 1), n2 = R(rt(), 1), nJt = R(se(), 1), $ql = n2.createContext(null), Oql = n2.createContext(null), Nql = n2.createContext(null), Bql = n2.createContext(null);
 class y2o {
   out;
   cols;

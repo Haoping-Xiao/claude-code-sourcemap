@@ -4,13 +4,8 @@
 // class=modified  jaccard=0.1251  score=0.2662  fileCov=0.1909
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var S1l = E(() => {
-  si();
-  Ye();
-  es();
-  gm();
-  ((_1l = R(lt(), 1)), (fse = R(se(), 1)));
-});
+// [unwrapped __esm module S1l] deps: si, Ye, es, gm
+((_1l = R(lt(), 1)), (fse = R(se(), 1)));
 function VPf() {
   let e = Xtr.c(2);
   return null;

@@ -4,19 +4,13 @@
 // class=modified  jaccard=0.4989  score=0.6518  fileCov=0.6802
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ctc = E(() => {
-  iu();
-  Xa();
-  Tc();
-  je();
-  loe();
-  ((atc = R(cAt(), 1)),
-    (OYf = {
-      type: "utf8",
-      errorCorrectionLevel: "L",
-      small: true,
-    }));
-});
+// [unwrapped __esm module ctc] deps: iu, Xa, Tc, je, loe
+((atc = R(cAt(), 1)),
+  (OYf = {
+    type: "utf8",
+    errorCorrectionLevel: "L",
+    small: true,
+  }));
 function utc(e) {
   let t = new AbortController();
   function n() {

@@ -3,9 +3,8 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Con = E(() => {
-  XXe = B8c;
-});
+// [unwrapped __esm module Con]
+XXe = B8c;
 var jwt = {};
 _t(jwt, {
   default: () => Oie

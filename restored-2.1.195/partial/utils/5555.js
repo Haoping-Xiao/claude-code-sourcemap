@@ -4,9 +4,6 @@
 // class=partial  jaccard=0.1996  score=1  fileCov=0.1996
 // note: low-confidence suggestion: node_modules/@inquirer/core/dist/esm/lib/use-memo.mjs; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fzo = E(() => {
-  co();
-});
 function rtn(e, t) {
   if (e && t && t.length > 0) return oE([...e, ...t], "name");
   return e || [];

@@ -4,11 +4,8 @@
 // class=new  jaccard=0.0034  score=0.486  fileCov=0.0034
 // note: nearest: src/cli/print.ts (0.0034); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var B9n = E(() => {
-  ft();
-  PVt();
-  VJ = Ape.getInstance();
-});
+// [unwrapped __esm module B9n] deps: ft, PVt
+VJ = Ape.getInstance();
 function uE(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "in_process_teammate";
 }

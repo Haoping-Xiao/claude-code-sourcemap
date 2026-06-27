@@ -4,28 +4,19 @@
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0132  score=0.2202  fileCov=0.0138
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var tdr = E(() => {
-  Xa();
-  w4();
-  lPn();
-  ZS();
-  Ye();
-  uo();
-  Mne();
-  Pne();
-  ((kTt = R(lt(), 1)),
-    (qz = R(se(), 1)),
-    (Hdm = {
-      r: 153,
-      g: 153,
-      b: 153,
-    }),
-    (Tdm = {
-      r: 185,
-      g: 185,
-      b: 185,
-    }));
-});
+// [unwrapped __esm module tdr] deps: Xa, w4, lPn, ZS, Ye, uo, Mne, Pne
+((kTt = R(lt(), 1)),
+  (qz = R(se(), 1)),
+  (Hdm = {
+    r: 153,
+    g: 153,
+    b: 153,
+  }),
+  (Tdm = {
+    r: 185,
+    g: 185,
+    b: 185,
+  }));
 function Dhc() {
   return ndr.join(tr(), "cache", "my-closed-issues.json");
 }

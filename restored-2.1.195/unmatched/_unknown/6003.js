@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0106  score=0.1372  fileCov=0.0113
 // note: nearest: node_modules/@growthbook/growthbook/dist/esm/feature-repository.mjs (0.0106); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xGc = E(() => {
-  vGc();
-  nrn();
-  AR();
-});
 async function OQo(e, t, n) {
   let r = await bGc(e, t, n),
     o = Fgr(r.protectedHeader, r.plaintext, n),

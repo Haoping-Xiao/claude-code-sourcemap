@@ -4,19 +4,13 @@
 // class=new  jaccard=0.016  score=0.2099  fileCov=0.017
 // note: nearest: src/services/teamMemorySync/secretScanner.ts (0.016); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Wso = E(() => {
-  je();
-  At();
-  Jt();
-  Fso();
-  Gso();
-  Yip = {
-    gdrive: "Google Drive",
-    github: "GitHub",
-    outlin: "Outline",
-    mcpres: "MCP resource"
-  };
-});
+// [unwrapped __esm module Wso] deps: je, At, Jt, Fso, Gso
+Yip = {
+  gdrive: "Google Drive",
+  github: "GitHub",
+  outlin: "Outline",
+  mcpres: "MCP resource"
+};
 var Zip,
   qso = 2000,
   Vso = () => Rt(),

@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.125  score=1  fileCov=0.125
 // note: low-confidence suggestion: node_modules/@mixmark-io/domino/lib/style_parser.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aJo = E(() => {
-  RDm = /^(\d+|\d+\.\d+) ?(seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)$/i;
-});
+// [unwrapped __esm module aJo]
+RDm = /^(\d+|\d+\.\d+) ?(seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)$/i;
 var X2c = e => e.toLowerCase().replace(/^application\//, ""),
   LDm = (e, t) => {
     if (typeof e === "string") return t.includes(e);

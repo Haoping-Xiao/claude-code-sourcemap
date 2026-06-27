@@ -4,13 +4,12 @@
 // class=modified  jaccard=0.263  score=0.4936  fileCov=0.3601
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fp = E(() => {
-  Sia = require("events");
-  fap = new FinalizationRegistry(({ parentSignalRef: e, handler: t }) => {
-    e.deref()?.removeEventListener("abort", t);
-  });
-  map = new Set(["user-cancel", "remote-cancel", "interrupt"]);
+// [unwrapped __esm module fp]
+Sia = require("events");
+fap = new FinalizationRegistry(({ parentSignalRef: e, handler: t }) => {
+  e.deref()?.removeEventListener("abort", t);
 });
+map = new Set(["user-cancel", "remote-cancel", "interrupt"]);
 function lre(e) {
   if (
     e?.type === "assistant" &&

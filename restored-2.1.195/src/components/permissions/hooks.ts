@@ -4,116 +4,97 @@
 // class=modified  jaccard=0.1012  score=0.1483  fileCov=0.2413
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var h0o = E(() => {
-  Xr();
-  jc();
-  ii();
-  S_();
-  u8t();
-  Z6();
-  fn();
-  h7n();
-  hyt();
-  _$();
-  lg();
-  _m();
-  S$();
-  N6e();
-  xgl();
-  yyt();
-  wX();
-  Pgl();
-  Ogl = require("net");
-  Jpf = {
-    message: `timeout_ms must be \u2264 ${f0o}`,
-    path: ["timeout_ms"],
-  };
-  ((eff = ve(() =>
-    H.strictObject({
-      ...Xpf(),
-      command: Kpf().optional().describe(Vpf),
-      ws: Ypf().optional(),
-    })
-      .refine((e) => Zpf(e.command, e.ws), "exactly one of command or ws")
-      .refine(Qpf, Jpf),
-  )),
-    (tff = ve(() =>
-      H.object({
-        taskId: H.string().describe("ID of the background monitor task."),
-        timeoutMs: H.number().describe("Timeout deadline in milliseconds (0 when persistent)."),
-        persistent: H.boolean()
-          .optional()
-          .describe("No timeout \u2014 runs until TaskStop or session end."),
-      }),
-    )));
-  ((off = {
-    name: yT,
-    maxResultSizeChars: 10000 /* 1e4 */,
-    shouldDefer: true,
-    userFacingName: kgl,
-    getToolUseSummary: Dgl,
-    getActivityDescription(e) {
-      return e?.description ? `Monitoring: ${e.description}` : "Monitoring";
+// [unwrapped __esm module h0o] deps: Xr, jc, ii, S_, u8t, Z6, fn, h7n, hyt, _$, lg, _m, S$, N6e, xgl, yyt, wX, Pgl
+Ogl = require("net");
+Jpf = {
+  message: `timeout_ms must be \u2264 ${f0o}`,
+  path: ["timeout_ms"],
+};
+((eff = ve(() =>
+  H.strictObject({
+    ...Xpf(),
+    command: Kpf().optional().describe(Vpf),
+    ws: Ypf().optional(),
+  })
+    .refine((e) => Zpf(e.command, e.ws), "exactly one of command or ws")
+    .refine(Qpf, Jpf),
+)),
+  (tff = ve(() =>
+    H.object({
+      taskId: H.string().describe("ID of the background monitor task."),
+      timeoutMs: H.number().describe("Timeout deadline in milliseconds (0 when persistent)."),
+      persistent: H.boolean()
+        .optional()
+        .describe("No timeout \u2014 runs until TaskStop or session end."),
+    }),
+  )));
+((off = {
+  name: yT,
+  maxResultSizeChars: 10000 /* 1e4 */,
+  shouldDefer: true,
+  userFacingName: kgl,
+  getToolUseSummary: Dgl,
+  getActivityDescription(e) {
+    return e?.description ? `Monitoring: ${e.description}` : "Monitoring";
+  },
+  isEnabled() {
+    return jW() && Su();
+  },
+  isConcurrencySafe() {
+    return true;
+  },
+  renderToolUseMessage: Rgl,
+  renderToolResultMessage: Lgl,
+  get outputSchema() {
+    return tff();
+  },
+  mapToolResultToToolResultBlockParam(e, t) {
+    return {
+      tool_use_id: t,
+      type: "tool_result",
+      content: `Monitor started (task ${e.taskId}, ${e.persistent ? "persistent \u2014 runs until TaskStop or session end" : `timeout ${e.timeoutMs}ms`}). You will be notified on each event. Keep working \u2014 do not poll or sleep. Events may arrive while you are waiting for the user \u2014 an event is not their reply.`,
+    };
+  },
+}),
+  (sff = ti({
+    ...off,
+    searchHint:
+      "watch, monitor, or keep an eye on a process/log/command or WebSocket \u2014 stream each stdout line as a live notification",
+    async description() {
+      return Loo + Doo + Roo();
     },
-    isEnabled() {
-      return jW() && Su();
+    async prompt() {
+      return Loo + Doo + Roo();
     },
-    isConcurrencySafe() {
-      return true;
+    get inputSchema() {
+      return eff();
     },
-    renderToolUseMessage: Rgl,
-    renderToolResultMessage: Lgl,
-    get outputSchema() {
-      return tff();
+    toAutoClassifierInput(e) {
+      return e.ws ? `websocket ${e.ws.url}` : (e.command ?? "");
     },
-    mapToolResultToToolResultBlockParam(e, t) {
-      return {
-        tool_use_id: t,
-        type: "tool_result",
-        content: `Monitor started (task ${e.taskId}, ${e.persistent ? "persistent \u2014 runs until TaskStop or session end" : `timeout ${e.timeoutMs}ms`}). You will be notified on each event. Keep working \u2014 do not poll or sleep. Events may arrive while you are waiting for the user \u2014 an event is not their reply.`,
-      };
+    async checkPermissions(e, t) {
+      if (e.ws) return rff(e.ws);
+      return V6t(
+        {
+          ...e,
+          command: e.command,
+        },
+        t,
+      );
     },
-  }),
-    (sff = ti({
-      ...off,
-      searchHint:
-        "watch, monitor, or keep an eye on a process/log/command or WebSocket \u2014 stream each stdout line as a live notification",
-      async description() {
-        return Loo + Doo + Roo();
-      },
-      async prompt() {
-        return Loo + Doo + Roo();
-      },
-      get inputSchema() {
-        return eff();
-      },
-      toAutoClassifierInput(e) {
-        return e.ws ? `websocket ${e.ws.url}` : (e.command ?? "");
-      },
-      async checkPermissions(e, t) {
-        if (e.ws) return rff(e.ws);
-        return V6t(
+    async call(e, t) {
+      if (e.ws)
+        return Igl(
           {
             ...e,
-            command: e.command,
+            ...m0o(e),
+            ws: e.ws,
           },
           t,
         );
-      },
-      async call(e, t) {
-        if (e.ws)
-          return Igl(
-            {
-              ...e,
-              ...m0o(e),
-              ws: e.ws,
-            },
-            t,
-          );
-        return nff(e.command, e, t);
-      },
-    })));
-});
+      return nff(e.command, e, t);
+    },
+  })));
 function rfe(e) {
   return e;
 }

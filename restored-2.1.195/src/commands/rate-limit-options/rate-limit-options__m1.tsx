@@ -4,17 +4,16 @@
 // class=modified (alt of src/commands/rate-limit-options/rate-limit-options.tsx)  jaccard=0.0801  score=0.1232  fileCov=0.1861
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hQl = E(() => {
-  ((G6f = {
-    type: "local-jsx",
-    name: "pro-trial-expired",
-    description: "Options shown when the Pro plan Claude Code trial has ended",
-    isEnabled: () => true,
-    isHidden: true,
-    load: () => Promise.resolve().then(() => (mQl(), pQl)),
-  }),
-    (gQl = G6f));
-});
+// [unwrapped __esm module hQl]
+((G6f = {
+  type: "local-jsx",
+  name: "pro-trial-expired",
+  description: "Options shown when the Pro plan Claude Code trial has ended",
+  isEnabled: () => true,
+  isHidden: true,
+  load: () => Promise.resolve().then(() => (mQl(), pQl)),
+}),
+  (gQl = G6f));
 function W6f() {
   return !FX() && !Oe.DISABLE_UPGRADE_COMMAND && Di() !== "enterprise";
 }

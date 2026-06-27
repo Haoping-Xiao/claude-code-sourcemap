@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.1905  score=0.3591  fileCov=0.2885
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var rze = E(() => {
-  ft();
-  IXn();
-  lH();
-});
 async function eHe({
   agentId: e,
   prompt: t,

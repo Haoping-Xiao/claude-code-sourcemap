@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0047  score=0.1549  fileCov=0.0048
 // note: nearest: src/screens/REPL.tsx (0.0047); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fAc = E(() => {
-  Zf();
-  Un();
-  ty();
-  vn();
-  Eue();
-  gpr();
-  x7e = R(rt(), 1);
-});
+// [unwrapped __esm module fAc] deps: Zf, Un, ty, vn, Eue, gpr
+x7e = R(rt(), 1);
 function fym(e, t) {
   let n = t.manifest.userConfig ? m$(Tre(t)) : void 0,
     r = o => {

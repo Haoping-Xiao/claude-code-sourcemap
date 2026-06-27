@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.3307  score=0.4678  fileCov=0.5302
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var ole = E(() => {
-  e1();
-  Eld = {};
-});
+// [unwrapped __esm module ole] deps: e1
+Eld = {};
 async function R7s() {
   let t = Dt().oauthAccount?.accountUuid,
     n = lI();

@@ -4,12 +4,6 @@
 // class=partial  jaccard=0.1786  score=1  fileCov=0.1786
 // note: low-confidence suggestion: src/types/generated/google/protobuf/timestamp.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var aW = E(() => {
-  ft();
-  fn();
-  Ls();
-  qd();
-});
 function l$d() {
   return {
     seconds: 0,

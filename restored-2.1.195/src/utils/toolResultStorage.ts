@@ -4,44 +4,40 @@
 // class=modified  jaccard=0.3858  score=0.7448  fileCov=0.4445
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var uDe = E(() => {
-  Qi();
-  Un();
-  oc();
-  ade = class ade extends Error {
-    tokenCount;
-    maxTokens;
-    constructor(e, t) {
-      super(
-        `File content (${e} tokens) exceeds maximum allowed tokens (${t}). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.`,
-      );
-      this.tokenCount = e;
-      this.maxTokens = t;
-      this.name = "MaxFileReadTokenExceededError";
-    }
+// [unwrapped __esm module uDe] deps: Qi, Un, oc
+ade = class ade extends Error {
+  tokenCount;
+  maxTokens;
+  constructor(e, t) {
+    super(
+      `File content (${e} tokens) exceeds maximum allowed tokens (${t}). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.`,
+    );
+    this.tokenCount = e;
+    this.maxTokens = t;
+    this.name = "MaxFileReadTokenExceededError";
+  }
+};
+((jSe = Cn(() => {
+  let e = at("tengu_amber_wren", {}),
+    t =
+      typeof e?.maxSizeBytes === "number" && Number.isFinite(e.maxSizeBytes) && e.maxSizeBytes > 0
+        ? e.maxSizeBytes
+        : t0r,
+    r =
+      fvp() ??
+      (typeof e?.maxTokens === "number" && Number.isFinite(e.maxTokens) && e.maxTokens > 0
+        ? e.maxTokens
+        : pvp),
+    o = typeof e?.includeMaxSizeInPrompt === "boolean" ? e.includeMaxSizeInPrompt : void 0,
+    s = typeof e?.targetedRangeNudge === "boolean" ? e.targetedRangeNudge : void 0;
+  return {
+    maxSizeBytes: t,
+    maxTokens: r,
+    includeMaxSizeInPrompt: o,
+    targetedRangeNudge: s,
   };
-  ((jSe = Cn(() => {
-    let e = at("tengu_amber_wren", {}),
-      t =
-        typeof e?.maxSizeBytes === "number" && Number.isFinite(e.maxSizeBytes) && e.maxSizeBytes > 0
-          ? e.maxSizeBytes
-          : t0r,
-      r =
-        fvp() ??
-        (typeof e?.maxTokens === "number" && Number.isFinite(e.maxTokens) && e.maxTokens > 0
-          ? e.maxTokens
-          : pvp),
-      o = typeof e?.includeMaxSizeInPrompt === "boolean" ? e.includeMaxSizeInPrompt : void 0,
-      s = typeof e?.targetedRangeNudge === "boolean" ? e.targetedRangeNudge : void 0;
-    return {
-      maxSizeBytes: t,
-      maxTokens: r,
-      includeMaxSizeInPrompt: o,
-      targetedRangeNudge: s,
-    };
-  })),
-    (pqe = Cn(() => at("tengu_tab_read_sep", false))));
-});
+})),
+  (pqe = Cn(() => at("tengu_tab_read_sep", false))));
 function mIa(e, t, n = e4t) {
   if (!Number.isFinite(t)) return t;
   let o = at(gvp, {})?.[e];

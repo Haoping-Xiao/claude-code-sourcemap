@@ -4,24 +4,6 @@
 // class=modified  jaccard=0.4044  score=1  fileCov=0.4044
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bDc = E(() => {
-  er();
-  je();
-  Mm();
-  At();
-  vn();
-  lE();
-  $g();
-  Xh();
-  WI();
-  NKe();
-  $Yo();
-  zsr();
-  ZC();
-  II();
-  dn();
-  kt();
-});
 async function SDc(e) {
   if ((T("performStartupChecks called"), !ad())) {
     T("Trust not accepted for current directory - skipping plugin installations");

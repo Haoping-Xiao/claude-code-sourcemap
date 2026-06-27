@@ -4,14 +4,6 @@
 // class=new  jaccard=0.0017  score=0.2268  fileCov=0.0017
 // note: nearest: src/main.tsx (0.0017); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var a1c = E(() => {
-  kt();
-  dn();
-  oo();
-  er();
-  Ls();
-  dr();
-});
 function c1c({
   remote: e,
   isNonInteractiveSession: t,

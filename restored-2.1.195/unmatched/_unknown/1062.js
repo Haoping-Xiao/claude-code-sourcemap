@@ -4,12 +4,6 @@
 // class=new  jaccard=0.0149  score=1  fileCov=0.0149
 // note: nearest: node_modules/@aws-sdk/client-bedrock-runtime/dist-cjs/index.js (0.0149); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KGs = E(() => {
-  WGs();
-  qGs();
-  VGs();
-  zGs();
-});
 var YGs = e => {
     let {
       httpAuthSchemes: t,

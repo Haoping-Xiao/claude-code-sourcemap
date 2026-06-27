@@ -4,14 +4,8 @@
 // class=modified  jaccard=0.3891  score=0.5289  fileCov=0.5954
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _1o = E(() => {
-  kt();
-  Ye();
-  er();
-  Fy();
-  vi();
-  ((NMl = R(lt(), 1)), (BMl = R(rt(), 1)), (Dfe = R(se(), 1)));
-});
+// [unwrapped __esm module _1o] deps: kt, Ye, er, Fy, vi
+((NMl = R(lt(), 1)), (BMl = R(rt(), 1)), (Dfe = R(se(), 1)));
 function jMl(e) {
   let t = FMl.c(17),
     { currentVersion: n, onChoice: r } = e,

@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.2422  score=0.3554  fileCov=0.4319
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var aKn = E(() => {
-  yC();
-  S_();
-  kut();
-});
 function Xal(e) {
   let t = WMe.c(56),
     { message: n, addMargin: r, verbose: o, isTranscriptMode: s } = e;

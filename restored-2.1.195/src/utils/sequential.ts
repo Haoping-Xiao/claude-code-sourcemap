@@ -4,21 +4,10 @@
 // class=modified  jaccard=0.5221  score=0.726  fileCov=0.6502
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vn = E(() => {
-  Qi();
-  ft();
-  np();
-  Epn();
-  jZe();
-  fn();
-  At();
-  qd();
-  Jt();
-  sr();
-  Tpn = [];
-  WZe = [];
-  qag = Cn(() => process.argv.includes("--hard-fail"));
-});
+// [unwrapped __esm module vn] deps: Qi, ft, np, Epn, jZe, fn, At, qd, Jt, sr
+Tpn = [];
+WZe = [];
+qag = Cn(() => process.argv.includes("--hard-fail"));
 function qZe(e) {
   let t = [],
     n = false;

@@ -4,40 +4,8 @@
 // class=modified (alt of src/components/mcp/CapabilitiesSection.tsx)  jaccard=0.0527  score=0.057  fileCov=0.4099
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qnr = E(() => {
-  si();
-  kt();
-  O0();
-  _i();
-  jh();
-  Ye();
-  ps();
-  Cre();
-  Yle();
-  cqe();
-  a5();
-  BI();
-  Yfe();
-  g$();
-  uo();
-  oo();
-  vy();
-  At();
-  vn();
-  sr();
-  Cc();
-  mE();
-  Bs();
-  vi();
-  f_();
-  Ko();
-  gm();
-  gKe();
-  EC();
-  Mg();
-  LBo();
-  ((BT = R(rt(), 1)), (ns = R(se(), 1)));
-});
+// [unwrapped __esm module qnr] deps: si, kt, O0, _i, jh, Ye, ps, Cre, Yle, cqe, a5, BI, Yfe, g$, uo, oo, vy, At, vn, sr, Cc, mE, Bs, vi, f_, Ko, gm, gKe, EC, Mg, LBo
+((BT = R(rt(), 1)), (ns = R(se(), 1)));
 function iXt({
   server: e,
   serverToolsCount: t,

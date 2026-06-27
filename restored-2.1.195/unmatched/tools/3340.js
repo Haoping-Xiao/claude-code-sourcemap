@@ -4,11 +4,6 @@
 // class=new  jaccard=0.0588  score=0.0671  fileCov=0.3215
 // note: nearest: node_modules/convert-to-spaces/dist/index.js (0.0588); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ymo = E(() => {
-  vGt();
-  MM();
-  zH();
-});
 function D2n(e) {
   return e.replace(/`[^`\n]+`/g, (t, n) => {
     let r = e[n - 1];

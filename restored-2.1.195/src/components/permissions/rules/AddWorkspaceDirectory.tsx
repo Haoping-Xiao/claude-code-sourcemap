@@ -4,362 +4,351 @@
 // class=modified  jaccard=0.1559  score=0.2459  fileCov=0.2985
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var OUt = E(() => {
-  si();
-  Xa();
-  _i();
-  Tc();
-  Ye();
-  es();
-  sr();
-  B_();
-  ((OZr = R(lt(), 1)), (NZr = R(rt(), 1)), (pT = R(se(), 1)), ($Zr = /\s+/g));
-  nKd = NZr.memo(function (t) {
-    let n = OZr.c(98),
-      { item: r, maxColumnWidth: o, isSelected: s, allowWrap: i } = t,
-      a = i === void 0 ? true : i,
-      l = br().columns;
-    if (Nzi(r.id)) {
-      let ne;
-      if (n[0] !== r.id) ((ne = eKd(r.id)), (n[0] = r.id), (n[1] = ne));
-      else ne = n[1];
-      let oe = ne,
-        re = s ? "suggestion" : void 0,
-        ee = !s,
-        ce = r.id.startsWith("file-"),
-        ae = r.id.startsWith("mcp-resource-"),
-        de;
-      if (n[2] !== r.id)
-        ((de = r.id.startsWith("mcp-template-value::")), (n[2] = r.id), (n[3] = de));
-      else de = n[3];
-      let Ee = de,
-        me = r.id.startsWith("mcp-template::"),
-        pe = r.description ? 3 : 0,
-        ge;
-      if (ce || me || Ee) {
-        let He;
-        if (n[4] !== r.description)
-          ((He = r.description ? Math.min(20, rn(r.description)) : 0),
-            (n[4] = r.description),
-            (n[5] = He));
-        else He = n[5];
-        let ye = He,
-          ue = l - 2 - 4 - pe - ye,
-          we;
-        if (n[6] !== Ee || n[7] !== r.displayText || n[8] !== ue)
-          ((we = Ee ? UV(r.displayText, ue) : JJe(r.displayText, ue)),
-            (n[6] = Ee),
-            (n[7] = r.displayText),
-            (n[8] = ue),
-            (n[9] = we));
-        else we = n[9];
-        ge = we;
-      } else if (ae) {
-        let He;
-        if (n[10] !== r.displayText)
-          ((He = Rs(r.displayText, 30)), (n[10] = r.displayText), (n[11] = He));
-        else He = n[11];
-        ge = He;
-      } else ge = r.displayText;
-      let he = l - 2 - rn(ge) - pe - 4,
-        ie;
-      if (r.description) {
-        let He = Math.max(0, he),
-          ye;
-        if (n[12] !== r.description || n[13] !== He)
-          ((ye = Rs(r.description.replace($Zr, " "), He)),
-            (n[12] = r.description),
-            (n[13] = He),
-            (n[14] = ye));
-        else ye = n[14];
-        ie = `${oe} ${ge} \u2013 ${ye}`;
-      } else ie = `${oe} ${ge}`;
-      let le;
-      if (n[15] !== ee || n[16] !== ie || n[17] !== re)
-        ((le = pT.jsx(w, {
-          color: re,
-          dimColor: ee,
-          wrap: "truncate",
-          children: ie,
-        })),
-          (n[15] = ee),
-          (n[16] = ie),
-          (n[17] = re),
-          (n[18] = le));
-      else le = n[18];
-      return le;
-    }
-    let d =
-        r.description || r.tag || r.kind !== void 0 || r.sourceTag ? Math.floor(l * 0.4) : l - 4,
-      p = Math.min(o ?? rn(r.displayText) + 5, d),
-      f = r.color || (s ? "suggestion" : void 0),
-      m = !s,
-      g;
-    if (n[19] !== r.id) ((g = r.id.startsWith("emoji:")), (n[19] = r.id), (n[20] = g));
-    else g = n[20];
-    let h = g,
-      y = h ? (s ? `${nt.pointer} ` : "  ") : "",
-      b = rn(y),
-      _ = h && s,
-      S = r.displayText;
-    if (rn(S) > p - 2) {
-      let ne;
-      if (n[21] !== S) ((ne = S.includes("/") || S.includes("\\")), (n[21] = S), (n[22] = ne));
-      else ne = n[22];
-      let oe = ne,
-        re;
-      if (n[23] !== p || n[24] !== S || n[25] !== oe)
-        ((re = oe ? UV(S, p - 2) : Rs(S, p - 2)),
-          (n[23] = p),
-          (n[24] = S),
-          (n[25] = oe),
-          (n[26] = re));
-      else re = n[26];
-      S = re;
-    }
-    let A;
-    if (n[27] !== p || n[28] !== S || n[29] !== b)
-      ((A = " ".repeat(Math.max(0, p - rn(S) - b))),
-        (n[27] = p),
-        (n[28] = S),
-        (n[29] = b),
-        (n[30] = A));
-    else A = n[30];
-    let v = A,
-      C = r.tag ? `[${r.tag}] ` : "",
-      x = rn(C),
-      I,
-      k,
-      D,
-      P,
-      O;
-    if (n[31] !== r) {
-      let { kindLaneText: ne, kindLabel: oe, sourceText: re } = Uzi(r);
-      ((k = ne),
-        (D = re),
-        (I = oe === "skill" ? "skill" : oe === "agent" ? "background" : void 0),
-        (P = rn(k)),
-        (O = rn(D)),
-        (n[31] = r),
-        (n[32] = I),
-        (n[33] = k),
-        (n[34] = D),
-        (n[35] = P),
-        (n[36] = O));
-    } else ((I = n[32]), (k = n[33]), (D = n[34]), (P = n[35]), (O = n[36]));
-    let L = P + O,
-      M = Math.max(0, l - p - x - L - 4),
-      N,
-      B,
-      $,
-      q,
-      W;
-    if (
-      n[37] !== a ||
-      n[38] !== _ ||
-      n[39] !== l ||
-      n[40] !== M ||
-      n[41] !== p ||
-      n[42] !== S ||
-      n[43] !== s ||
-      n[44] !== r.description ||
-      n[45] !== r.query ||
-      n[46] !== I ||
-      n[47] !== k ||
-      n[48] !== L ||
-      n[49] !== v ||
-      n[50] !== y ||
-      n[51] !== m ||
-      n[52] !== D ||
-      n[53] !== C ||
-      n[54] !== x ||
-      n[55] !== f
-    ) {
-      W = Symbol.for("react.early_return_sentinel");
-      e: {
-        let ne = r.description ? r.description.replace($Zr, " ").trim() : "",
-          [oe, re] = a ? oKd(ne, M) : [Rs(ne, M), ""];
-        N = s ? "suggestion" : void 0;
-        let ee;
-        if (n[61] !== _ || n[62] !== y || n[63] !== m || n[64] !== f)
-          ((ee = y
-            ? pT.jsx(w, {
-                color: f,
-                dimColor: m,
-                bold: _,
-                children: y,
-              })
-            : null),
-            (n[61] = _),
-            (n[62] = y),
-            (n[63] = m),
-            (n[64] = f),
-            (n[65] = ee));
-        else ee = n[65];
-        let ce;
-        if (n[66] !== _ || n[67] !== S || n[68] !== r.query || n[69] !== m || n[70] !== f)
-          ((ce = pT.jsx(MZr, {
-            text: S,
-            query: r.query,
-            color: f,
-            dimColor: m,
-            bold: _,
-          })),
-            (n[66] = _),
-            (n[67] = S),
-            (n[68] = r.query),
-            (n[69] = m),
-            (n[70] = f),
-            (n[71] = ce));
-        else ce = n[71];
-        let ae;
-        if (n[72] !== _ || n[73] !== v || n[74] !== m || n[75] !== f)
-          ((ae = pT.jsx(w, {
-            color: f,
-            dimColor: m,
-            bold: _,
-            children: v,
-          })),
-            (n[72] = _),
-            (n[73] = v),
-            (n[74] = m),
-            (n[75] = f),
-            (n[76] = ae));
-        else ae = n[76];
-        let de;
-        if (n[77] !== I || n[78] !== k)
-          ((de = k
-            ? pT.jsx(w, {
-                color: I,
-                dimColor: I === void 0,
-                children: k,
-              })
-            : null),
-            (n[77] = I),
-            (n[78] = k),
-            (n[79] = de));
-        else de = n[79];
-        let Ee;
-        if (n[80] !== C)
-          ((Ee = C
-            ? pT.jsx(w, {
-                dimColor: true,
-                children: C,
-              })
-            : null),
-            (n[80] = C),
-            (n[81] = Ee));
-        else Ee = n[81];
-        let me;
-        if (n[82] !== D)
-          ((me = D
-            ? pT.jsx(w, {
-                dimColor: true,
-                children: D,
-              })
-            : null),
-            (n[82] = D),
-            (n[83] = me));
-        else me = n[83];
-        if (
-          ((B = pT.jsxs(w, {
-            wrap: "truncate",
-            children: [
-              ee,
-              ce,
-              ae,
-              de,
-              Ee,
-              me,
-              pT.jsx(MZr, {
-                text: oe,
-                query: r.query,
-                color: N,
-                dimColor: !s,
-                bold: _,
-                contiguousOnly: true,
-              }),
-            ],
-          })),
-          !re)
-        ) {
-          W = B;
-          break e;
-        }
-        (($ = p + x + L), (q = Rs(re, Math.max(0, l - $ - 4))));
-      }
-      ((n[37] = a),
-        (n[38] = _),
-        (n[39] = l),
-        (n[40] = M),
-        (n[41] = p),
-        (n[42] = S),
-        (n[43] = s),
-        (n[44] = r.description),
-        (n[45] = r.query),
-        (n[46] = I),
-        (n[47] = k),
-        (n[48] = L),
-        (n[49] = v),
-        (n[50] = y),
-        (n[51] = m),
-        (n[52] = D),
-        (n[53] = C),
-        (n[54] = x),
-        (n[55] = f),
-        (n[56] = N),
-        (n[57] = B),
-        (n[58] = $),
-        (n[59] = q),
-        (n[60] = W));
-    } else ((N = n[56]), (B = n[57]), ($ = n[58]), (q = n[59]), (W = n[60]));
-    if (W !== Symbol.for("react.early_return_sentinel")) return W;
-    let V = q,
-      Y;
-    if (n[84] !== $) ((Y = " ".repeat($)), (n[84] = $), (n[85] = Y));
-    else Y = n[85];
-    let z = !s,
-      K;
-    if (n[86] !== _ || n[87] !== N || n[88] !== V || n[89] !== r.query || n[90] !== z)
-      ((K = pT.jsx(MZr, {
-        text: V,
-        query: r.query,
-        color: N,
-        dimColor: z,
-        bold: _,
-        contiguousOnly: true,
-      })),
-        (n[86] = _),
-        (n[87] = N),
-        (n[88] = V),
-        (n[89] = r.query),
-        (n[90] = z),
-        (n[91] = K));
-    else K = n[91];
-    let Z;
-    if (n[92] !== K || n[93] !== Y)
-      ((Z = pT.jsxs(w, {
+// [unwrapped __esm module OUt] deps: si, Xa, _i, Tc, Ye, es, sr, B_
+((OZr = R(lt(), 1)), (NZr = R(rt(), 1)), (pT = R(se(), 1)), ($Zr = /\s+/g));
+nKd = NZr.memo(function (t) {
+  let n = OZr.c(98),
+    { item: r, maxColumnWidth: o, isSelected: s, allowWrap: i } = t,
+    a = i === void 0 ? true : i,
+    l = br().columns;
+  if (Nzi(r.id)) {
+    let ne;
+    if (n[0] !== r.id) ((ne = eKd(r.id)), (n[0] = r.id), (n[1] = ne));
+    else ne = n[1];
+    let oe = ne,
+      re = s ? "suggestion" : void 0,
+      ee = !s,
+      ce = r.id.startsWith("file-"),
+      ae = r.id.startsWith("mcp-resource-"),
+      de;
+    if (n[2] !== r.id) ((de = r.id.startsWith("mcp-template-value::")), (n[2] = r.id), (n[3] = de));
+    else de = n[3];
+    let Ee = de,
+      me = r.id.startsWith("mcp-template::"),
+      pe = r.description ? 3 : 0,
+      ge;
+    if (ce || me || Ee) {
+      let He;
+      if (n[4] !== r.description)
+        ((He = r.description ? Math.min(20, rn(r.description)) : 0),
+          (n[4] = r.description),
+          (n[5] = He));
+      else He = n[5];
+      let ye = He,
+        ue = l - 2 - 4 - pe - ye,
+        we;
+      if (n[6] !== Ee || n[7] !== r.displayText || n[8] !== ue)
+        ((we = Ee ? UV(r.displayText, ue) : JJe(r.displayText, ue)),
+          (n[6] = Ee),
+          (n[7] = r.displayText),
+          (n[8] = ue),
+          (n[9] = we));
+      else we = n[9];
+      ge = we;
+    } else if (ae) {
+      let He;
+      if (n[10] !== r.displayText)
+        ((He = Rs(r.displayText, 30)), (n[10] = r.displayText), (n[11] = He));
+      else He = n[11];
+      ge = He;
+    } else ge = r.displayText;
+    let he = l - 2 - rn(ge) - pe - 4,
+      ie;
+    if (r.description) {
+      let He = Math.max(0, he),
+        ye;
+      if (n[12] !== r.description || n[13] !== He)
+        ((ye = Rs(r.description.replace($Zr, " "), He)),
+          (n[12] = r.description),
+          (n[13] = He),
+          (n[14] = ye));
+      else ye = n[14];
+      ie = `${oe} ${ge} \u2013 ${ye}`;
+    } else ie = `${oe} ${ge}`;
+    let le;
+    if (n[15] !== ee || n[16] !== ie || n[17] !== re)
+      ((le = pT.jsx(w, {
+        color: re,
+        dimColor: ee,
         wrap: "truncate",
-        children: [Y, K],
+        children: ie,
       })),
-        (n[92] = K),
-        (n[93] = Y),
-        (n[94] = Z));
-    else Z = n[94];
-    let J;
-    if (n[95] !== B || n[96] !== Z)
-      ((J = pT.jsxs(U, {
-        flexDirection: "column",
-        children: [B, Z],
-      })),
-        (n[95] = B),
-        (n[96] = Z),
-        (n[97] = J));
-    else J = n[97];
-    return J;
-  });
-  Bzi = NZr.memo(jGe);
+        (n[15] = ee),
+        (n[16] = ie),
+        (n[17] = re),
+        (n[18] = le));
+    else le = n[18];
+    return le;
+  }
+  let d = r.description || r.tag || r.kind !== void 0 || r.sourceTag ? Math.floor(l * 0.4) : l - 4,
+    p = Math.min(o ?? rn(r.displayText) + 5, d),
+    f = r.color || (s ? "suggestion" : void 0),
+    m = !s,
+    g;
+  if (n[19] !== r.id) ((g = r.id.startsWith("emoji:")), (n[19] = r.id), (n[20] = g));
+  else g = n[20];
+  let h = g,
+    y = h ? (s ? `${nt.pointer} ` : "  ") : "",
+    b = rn(y),
+    _ = h && s,
+    S = r.displayText;
+  if (rn(S) > p - 2) {
+    let ne;
+    if (n[21] !== S) ((ne = S.includes("/") || S.includes("\\")), (n[21] = S), (n[22] = ne));
+    else ne = n[22];
+    let oe = ne,
+      re;
+    if (n[23] !== p || n[24] !== S || n[25] !== oe)
+      ((re = oe ? UV(S, p - 2) : Rs(S, p - 2)),
+        (n[23] = p),
+        (n[24] = S),
+        (n[25] = oe),
+        (n[26] = re));
+    else re = n[26];
+    S = re;
+  }
+  let A;
+  if (n[27] !== p || n[28] !== S || n[29] !== b)
+    ((A = " ".repeat(Math.max(0, p - rn(S) - b))),
+      (n[27] = p),
+      (n[28] = S),
+      (n[29] = b),
+      (n[30] = A));
+  else A = n[30];
+  let v = A,
+    C = r.tag ? `[${r.tag}] ` : "",
+    x = rn(C),
+    I,
+    k,
+    D,
+    P,
+    O;
+  if (n[31] !== r) {
+    let { kindLaneText: ne, kindLabel: oe, sourceText: re } = Uzi(r);
+    ((k = ne),
+      (D = re),
+      (I = oe === "skill" ? "skill" : oe === "agent" ? "background" : void 0),
+      (P = rn(k)),
+      (O = rn(D)),
+      (n[31] = r),
+      (n[32] = I),
+      (n[33] = k),
+      (n[34] = D),
+      (n[35] = P),
+      (n[36] = O));
+  } else ((I = n[32]), (k = n[33]), (D = n[34]), (P = n[35]), (O = n[36]));
+  let L = P + O,
+    M = Math.max(0, l - p - x - L - 4),
+    N,
+    B,
+    $,
+    q,
+    W;
+  if (
+    n[37] !== a ||
+    n[38] !== _ ||
+    n[39] !== l ||
+    n[40] !== M ||
+    n[41] !== p ||
+    n[42] !== S ||
+    n[43] !== s ||
+    n[44] !== r.description ||
+    n[45] !== r.query ||
+    n[46] !== I ||
+    n[47] !== k ||
+    n[48] !== L ||
+    n[49] !== v ||
+    n[50] !== y ||
+    n[51] !== m ||
+    n[52] !== D ||
+    n[53] !== C ||
+    n[54] !== x ||
+    n[55] !== f
+  ) {
+    W = Symbol.for("react.early_return_sentinel");
+    e: {
+      let ne = r.description ? r.description.replace($Zr, " ").trim() : "",
+        [oe, re] = a ? oKd(ne, M) : [Rs(ne, M), ""];
+      N = s ? "suggestion" : void 0;
+      let ee;
+      if (n[61] !== _ || n[62] !== y || n[63] !== m || n[64] !== f)
+        ((ee = y
+          ? pT.jsx(w, {
+              color: f,
+              dimColor: m,
+              bold: _,
+              children: y,
+            })
+          : null),
+          (n[61] = _),
+          (n[62] = y),
+          (n[63] = m),
+          (n[64] = f),
+          (n[65] = ee));
+      else ee = n[65];
+      let ce;
+      if (n[66] !== _ || n[67] !== S || n[68] !== r.query || n[69] !== m || n[70] !== f)
+        ((ce = pT.jsx(MZr, {
+          text: S,
+          query: r.query,
+          color: f,
+          dimColor: m,
+          bold: _,
+        })),
+          (n[66] = _),
+          (n[67] = S),
+          (n[68] = r.query),
+          (n[69] = m),
+          (n[70] = f),
+          (n[71] = ce));
+      else ce = n[71];
+      let ae;
+      if (n[72] !== _ || n[73] !== v || n[74] !== m || n[75] !== f)
+        ((ae = pT.jsx(w, {
+          color: f,
+          dimColor: m,
+          bold: _,
+          children: v,
+        })),
+          (n[72] = _),
+          (n[73] = v),
+          (n[74] = m),
+          (n[75] = f),
+          (n[76] = ae));
+      else ae = n[76];
+      let de;
+      if (n[77] !== I || n[78] !== k)
+        ((de = k
+          ? pT.jsx(w, {
+              color: I,
+              dimColor: I === void 0,
+              children: k,
+            })
+          : null),
+          (n[77] = I),
+          (n[78] = k),
+          (n[79] = de));
+      else de = n[79];
+      let Ee;
+      if (n[80] !== C)
+        ((Ee = C
+          ? pT.jsx(w, {
+              dimColor: true,
+              children: C,
+            })
+          : null),
+          (n[80] = C),
+          (n[81] = Ee));
+      else Ee = n[81];
+      let me;
+      if (n[82] !== D)
+        ((me = D
+          ? pT.jsx(w, {
+              dimColor: true,
+              children: D,
+            })
+          : null),
+          (n[82] = D),
+          (n[83] = me));
+      else me = n[83];
+      if (
+        ((B = pT.jsxs(w, {
+          wrap: "truncate",
+          children: [
+            ee,
+            ce,
+            ae,
+            de,
+            Ee,
+            me,
+            pT.jsx(MZr, {
+              text: oe,
+              query: r.query,
+              color: N,
+              dimColor: !s,
+              bold: _,
+              contiguousOnly: true,
+            }),
+          ],
+        })),
+        !re)
+      ) {
+        W = B;
+        break e;
+      }
+      (($ = p + x + L), (q = Rs(re, Math.max(0, l - $ - 4))));
+    }
+    ((n[37] = a),
+      (n[38] = _),
+      (n[39] = l),
+      (n[40] = M),
+      (n[41] = p),
+      (n[42] = S),
+      (n[43] = s),
+      (n[44] = r.description),
+      (n[45] = r.query),
+      (n[46] = I),
+      (n[47] = k),
+      (n[48] = L),
+      (n[49] = v),
+      (n[50] = y),
+      (n[51] = m),
+      (n[52] = D),
+      (n[53] = C),
+      (n[54] = x),
+      (n[55] = f),
+      (n[56] = N),
+      (n[57] = B),
+      (n[58] = $),
+      (n[59] = q),
+      (n[60] = W));
+  } else ((N = n[56]), (B = n[57]), ($ = n[58]), (q = n[59]), (W = n[60]));
+  if (W !== Symbol.for("react.early_return_sentinel")) return W;
+  let V = q,
+    Y;
+  if (n[84] !== $) ((Y = " ".repeat($)), (n[84] = $), (n[85] = Y));
+  else Y = n[85];
+  let z = !s,
+    K;
+  if (n[86] !== _ || n[87] !== N || n[88] !== V || n[89] !== r.query || n[90] !== z)
+    ((K = pT.jsx(MZr, {
+      text: V,
+      query: r.query,
+      color: N,
+      dimColor: z,
+      bold: _,
+      contiguousOnly: true,
+    })),
+      (n[86] = _),
+      (n[87] = N),
+      (n[88] = V),
+      (n[89] = r.query),
+      (n[90] = z),
+      (n[91] = K));
+  else K = n[91];
+  let Z;
+  if (n[92] !== K || n[93] !== Y)
+    ((Z = pT.jsxs(w, {
+      wrap: "truncate",
+      children: [Y, K],
+    })),
+      (n[92] = K),
+      (n[93] = Y),
+      (n[94] = Z));
+  else Z = n[94];
+  let J;
+  if (n[95] !== B || n[96] !== Z)
+    ((J = pT.jsxs(U, {
+      flexDirection: "column",
+      children: [B, Z],
+    })),
+      (n[95] = B),
+      (n[96] = Z),
+      (n[97] = J));
+  else J = n[97];
+  return J;
 });
+Bzi = NZr.memo(jGe);
 function Fzi() {
   let e = NUt.c(1),
     t;

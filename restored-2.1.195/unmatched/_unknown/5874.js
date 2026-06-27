@@ -4,10 +4,8 @@
 // class=new  jaccard=0.0221  score=1  fileCov=0.0221
 // note: nearest: node_modules/node-forge/lib/util.js (0.0221); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var YP = E(() => {
-  RXo();
-  IS = new TextEncoder(), fx = new TextDecoder();
-});
+// [unwrapped __esm module YP] deps: RXo
+IS = new TextEncoder(), fx = new TextDecoder();
 var Fmr = e => {
     let t = e;
     if (typeof t === "string") t = IS.encode(t);

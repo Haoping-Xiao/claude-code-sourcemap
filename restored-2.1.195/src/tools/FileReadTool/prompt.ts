@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2245  score=0.3106  fileCov=0.4475
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var S0n = E(() => {
-  Ao();
-  ANd = new Set(["pdf"]);
-});
+// [unwrapped __esm module S0n] deps: Ao
+ANd = new Set(["pdf"]);
 function YNi() {
   return KNi;
 }

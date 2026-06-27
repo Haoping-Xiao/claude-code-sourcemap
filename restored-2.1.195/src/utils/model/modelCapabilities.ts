@@ -4,70 +4,45 @@
 // class=modified  jaccard=0.1994  score=0.375  fileCov=0.2987
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Yxe = E(() => {
-  PR();
-  Qi();
-  og();
-  oo();
-  xAn();
-  Ld();
-  Gx();
-  Ao();
-  Ls();
-  Mh();
-  ft();
-  Rc();
-  wFe();
-  je();
-  Mm();
-  fn();
-  drt();
-  Jt();
-  sr();
-  dn();
-  Un();
-  kt();
-  yje();
-  frt();
-  cvi = require("crypto");
-  ((Rkd = Cn(() => xe("provider_route"))),
-    (Lkd = {
-      __auth: {
-        provider: null,
-        tokenCache: null,
-        resolution: null,
-        error: null,
-        extraHeaders: {},
-      },
-    }));
-  TCn = class TCn extends Error {
-    idleMs;
-    bytesReceived;
-    ttfbMs;
-    bodyReadPending;
-    cfRay;
-    sleptMs;
-    constructor(e, t = 0, n, r = true, o, s = 0) {
-      super(`stream idle: no bytes for ${e}ms`);
-      ((this.name = "StreamIdleTimeoutError"),
-        (this.idleMs = e),
-        (this.bytesReceived = t),
-        (this.ttfbMs = n),
-        (this.bodyReadPending = r),
-        (this.cfRay = o),
-        (this.sleptMs = s));
-    }
-  };
-  uvi = class uvi extends Error {
-    sleptMs;
-    code = "StreamSuspended";
-    constructor(e) {
-      super("Stream watchdog detected system suspend; aborting to retry on a fresh connection");
-      this.sleptMs = e;
-      this.name = "StreamSuspendedError";
-    }
-  };
-});
+// [unwrapped __esm module Yxe] deps: PR, Qi, og, oo, xAn, Ld, Gx, Ao, Ls, Mh, ft, Rc, wFe, je, Mm, fn, drt, Jt, sr, dn, Un, kt, yje, frt
+cvi = require("crypto");
+((Rkd = Cn(() => xe("provider_route"))),
+  (Lkd = {
+    __auth: {
+      provider: null,
+      tokenCache: null,
+      resolution: null,
+      error: null,
+      extraHeaders: {},
+    },
+  }));
+TCn = class TCn extends Error {
+  idleMs;
+  bytesReceived;
+  ttfbMs;
+  bodyReadPending;
+  cfRay;
+  sleptMs;
+  constructor(e, t = 0, n, r = true, o, s = 0) {
+    super(`stream idle: no bytes for ${e}ms`);
+    ((this.name = "StreamIdleTimeoutError"),
+      (this.idleMs = e),
+      (this.bytesReceived = t),
+      (this.ttfbMs = n),
+      (this.bodyReadPending = r),
+      (this.cfRay = o),
+      (this.sleptMs = s));
+  }
+};
+uvi = class uvi extends Error {
+  sleptMs;
+  code = "StreamSuspended";
+  constructor(e) {
+    super("Stream watchdog detected system suspend; aborting to retry on a fresh connection");
+    this.sleptMs = e;
+    this.name = "StreamSuspendedError";
+  }
+};
 function hvi() {
   return C9r.join(tr(), "cache");
 }

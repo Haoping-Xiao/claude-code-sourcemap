@@ -3,11 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gkr = E(() => {
-  hEs();
-  yEs = Math.max;
-  Cpn = zDu;
-});
+// [unwrapped __esm module Gkr] deps: hEs
+yEs = Math.max;
+Cpn = zDu;
 function KDu(e) {
   return function () {
     return e;

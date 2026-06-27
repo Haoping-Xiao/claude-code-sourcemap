@@ -4,9 +4,6 @@
 // class=modified  jaccard=0.416  score=0.7162  fileCov=0.4981
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Pzr = E(() => {
-  Un();
-});
 var E3e = {};
 _t(E3e, {
   shutdown1PEventLogging: () => shutdown1PEventLogging,

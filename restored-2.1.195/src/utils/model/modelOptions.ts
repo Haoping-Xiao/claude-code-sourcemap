@@ -4,10 +4,8 @@
 // class=modified  jaccard=0.2152  score=0.3357  fileCov=0.3747
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var mio = E(() => {
-  Un();
-  fio = {};
-});
+// [unwrapped __esm module mio] deps: Un
+fio = {};
 function Cap() {
   return AAn() ? " \xB7 Set by your organization" : "";
 }

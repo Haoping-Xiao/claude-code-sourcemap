@@ -4,9 +4,8 @@
 // class=partial  jaccard=0.0846  score=1  fileCov=0.0846
 // note: low-confidence suggestion: node_modules/@smithy/types/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bzs = E(() => {
-  Nzs = R(ZH(), 1);
-});
+// [unwrapped __esm module Bzs]
+Nzs = R(ZH(), 1);
 var Uzs = e => {
     let t = [];
     for (let n in mnt) {

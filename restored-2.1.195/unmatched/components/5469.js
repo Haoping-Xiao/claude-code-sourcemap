@@ -4,15 +4,8 @@
 // class=new  jaccard=0.0148  score=0.2789  fileCov=0.0153
 // note: nearest: src/components/PromptInput/PromptInput.tsx (0.0148); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Qyc = E(() => {
-  WQr();
-  P1o();
-  p8();
-  Ye();
-  _Ge();
-  _Zr();
-  Tdr = R(rt(), 1), x6o = R(se(), 1);
-});
+// [unwrapped __esm module Qyc] deps: WQr, P1o, p8, Ye, _Ge, _Zr
+Tdr = R(rt(), 1), x6o = R(se(), 1);
 function dfm() {
   let e = $en.c(8),
     t = Dc(),

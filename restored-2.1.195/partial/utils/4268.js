@@ -4,26 +4,25 @@
 // class=partial  jaccard=0.0813  score=0.3424  fileCov=0.0964
 // note: low-confidence suggestion: src/tools/AgentTool/agentToolUtils.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var g$e = E(() => {
-  xb = {
-    input_tokens: 0,
-    cache_creation_input_tokens: 0,
-    cache_read_input_tokens: 0,
-    output_tokens: 0,
-    server_tool_use: {
-      web_search_requests: 0,
-      web_fetch_requests: 0
-    },
-    service_tier: "standard",
-    cache_creation: {
-      ephemeral_1h_input_tokens: 0,
-      ephemeral_5m_input_tokens: 0
-    },
-    inference_geo: "",
-    iterations: [],
-    speed: "standard"
-  };
-});
+// [unwrapped __esm module g$e]
+xb = {
+  input_tokens: 0,
+  cache_creation_input_tokens: 0,
+  cache_read_input_tokens: 0,
+  output_tokens: 0,
+  server_tool_use: {
+    web_search_requests: 0,
+    web_fetch_requests: 0
+  },
+  service_tier: "standard",
+  cache_creation: {
+    ephemeral_1h_input_tokens: 0,
+    ephemeral_5m_input_tokens: 0
+  },
+  inference_geo: "",
+  iterations: [],
+  speed: "standard"
+};
 function Vdf(e) {
   return L6e.join(_ml(), `${e}.json`);
 }

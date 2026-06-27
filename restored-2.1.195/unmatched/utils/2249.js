@@ -4,11 +4,9 @@
 // class=new  jaccard=0.0155  score=0.1053  fileCov=0.0178
 // note: nearest: src/tools/TaskUpdateTool/TaskUpdateTool.ts (0.0155); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var PNt = E(() => {
-  Iv();
-  uNd = ["name", "description", "metadata"], dNd = /^[a-z0-9_-]+$/;
-  zKr = ["In the body, link to related memories with `[[name]]`, where `name` is the other memory's `name:` slug. Link liberally \u2014 a `[[name]]` that doesn't match an existing memory yet is fine; it marks something worth writing later, not an error."];
-});
+// [unwrapped __esm module PNt] deps: Iv
+uNd = ["name", "description", "metadata"], dNd = /^[a-z0-9_-]+$/;
+zKr = ["In the body, link to related memories with `[[name]]`, where `name` is the other memory's `name:` slug. Link liberally \u2014 a `[[name]]` that doesn't match an existing memory yet is fine; it marks something worth writing later, not an error."];
 function RNi(e, t, n, r) {
   let o = t ? `at \`${e}\` (private to this user) and \`${t}\` (shared with all users of this project). ${a0n}` : `at \`${e}\`. ${P_e}`,
     s = t ? " `user` memories are always private; default `feedback` to private, `project` and `reference` to team. Never write secrets or credentials to the team directory." : "",

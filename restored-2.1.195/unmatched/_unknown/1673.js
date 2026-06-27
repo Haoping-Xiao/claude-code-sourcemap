@@ -3,7 +3,5 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $fi = E(() => {
-  K3r();
-  Pfi = Dfi();
-});
+// [unwrapped __esm module $fi] deps: K3r
+Pfi = Dfi();

@@ -4,11 +4,6 @@
 // class=modified (alt of src/components/LogSelector.tsx)  jaccard=0.0563  score=0.1478  fileCov=0.0833
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var b7o = E(() => {
-  Kv();
-  ty();
-  fn();
-});
 var iOc = {};
 _t(iOc, {
   parsePrIdentifier: () => parsePrIdentifier,

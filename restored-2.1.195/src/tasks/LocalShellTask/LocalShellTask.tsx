@@ -4,35 +4,16 @@
 // class=modified  jaccard=0.3114  score=0.6107  fileCov=0.3885
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var S_ = E(() => {
-  ft();
-  np();
-  dn();
-  yC();
-  ii();
-  jv();
-  i$();
-  $S();
-  fp();
-  ZPe();
-  je();
-  bm();
-  y_();
-  bH();
-  xF();
-  K6n();
-  OI();
-  vDo();
-  CDo = new Map();
-  G7n = {
-    name: "LocalAgentTask",
-    type: "local_agent",
-    async kill(e, t, n, r) {
-      HAe(e, t, r);
-    },
-  };
-  Jbt = new Map();
-});
+// [unwrapped __esm module S_] deps: ft, np, dn, yC, ii, jv, i$, $S, fp, ZPe, je, bm, y_, bH, xF, K6n, OI, vDo
+CDo = new Map();
+G7n = {
+  name: "LocalAgentTask",
+  type: "local_agent",
+  async kill(e, t, n, r) {
+    HAe(e, t, r);
+  },
+};
+Jbt = new Map();
 function Nvl(e) {
   if (e === void 0) return;
   return parseInt(process.env.CLAUDE_SUBAGENT_BG_SHELL_MAX_MS || "", 10) || wEf;

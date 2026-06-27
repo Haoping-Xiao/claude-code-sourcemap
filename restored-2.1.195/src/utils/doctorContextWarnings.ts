@@ -4,11 +4,6 @@
 // class=modified  jaccard=0.4082  score=0.9585  fileCov=0.4155
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Cnr = E(() => {
-  ft();
-  U1();
-  er();
-});
 async function Z$f() {
   if (gce()) return null;
   let e = XRe(await Wv());

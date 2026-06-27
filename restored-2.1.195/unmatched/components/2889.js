@@ -3,11 +3,6 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cda = E(() => {
-  B_();
-  ql();
-  kLe();
-  Jt();
-  YNn = R(se(), 1);
-});
+// [unwrapped __esm module cda] deps: B_, ql, kLe, Jt
+YNn = R(se(), 1);
 var jup, Gup, QW;
