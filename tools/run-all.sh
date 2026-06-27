@@ -5,6 +5,7 @@
 set -euo pipefail
 
 VERSION="${1:-2.1.195}"
+export VERSION
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 

@@ -43,10 +43,11 @@ async function wakaru(code) {
   }
 }
 
-const MOD_DIR = "work/2.1.195/modules";
-const REPORT = "work/2.1.195/match-report.json";
-const REF_ROOT = "restored-src";
-const OUT = "restored-2.1.195";
+const VERSION = process.env.VERSION || "2.1.195";
+const MOD_DIR = process.env.MOD_DIR || `work/${VERSION}/modules`;
+const REPORT = process.env.MATCH_REPORT || `work/${VERSION}/match-report.json`;
+const REF_ROOT = process.env.REF_ROOT || "restored-src";
+const OUT = process.env.OUT_DIR || `restored-${VERSION}`;
 
 const report = JSON.parse(readFileSync(REPORT, "utf-8"));
 const entries = Object.entries(report.report);

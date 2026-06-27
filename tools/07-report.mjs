@@ -12,10 +12,12 @@ import { join } from "path";
 import { parse } from "@babel/parser";
 import { fingerprintTokens } from "./lib/strings.mjs";
 
-const report = JSON.parse(readFileSync("work/2.1.195/match-report.json", "utf-8"));
-const ref = JSON.parse(readFileSync("work/2.1.195/ref-2.1.88.index.json", "utf-8"));
-const restoreManifest = JSON.parse(readFileSync("restored-2.1.195/restore-manifest.json", "utf-8"));
-const MOD_DIR = "work/2.1.195/modules";
+const VERSION = process.env.VERSION || "2.1.195";
+const OUT_DIR = process.env.OUT_DIR || `restored-${VERSION}`;
+const report = JSON.parse(readFileSync(process.env.MATCH_REPORT || `work/${VERSION}/match-report.json`, "utf-8"));
+const ref = JSON.parse(readFileSync(process.env.REF_INDEX || `work/${VERSION}/ref-2.1.88.index.json`, "utf-8"));
+const restoreManifest = JSON.parse(readFileSync(`${OUT_DIR}/restore-manifest.json`, "utf-8"));
+const MOD_DIR = process.env.MOD_DIR || `work/${VERSION}/modules`;
 const entries = Object.entries(report.report);
 
 // ── 1) 覆盖率统计 ───────────────────────────────────────────────────────────
@@ -70,7 +72,7 @@ let parsed = 0, failed = 0;
 const fails = [];
 for (let i = 0; i < srcFiles.length; i += step) {
   const f = srcFiles[i];
-  const p = join("restored-2.1.195", f.out);
+  const p = join(OUT_DIR, f.out);
   if (!existsSync(p)) continue;
   const code = readFileSync(p, "utf-8");
   try {
