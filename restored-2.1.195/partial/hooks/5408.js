@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kmc
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=partial  jaccard=0.0601  score=0.3089  fileCov=0.0695
-// note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; dir inferred from dep-graph -> hooks; 1 renamed
+// note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kmc] deps: hooks/useTerminalSize.ts, utils/concurrentSessions.ts, components/AwsAuthStatusBox.tsx, @anthropic-ai/bedrock-sdk/client.mjs, ink/components/Box.tsx
 zmc = R(lt(), 1), ZN = R(se(), 1);

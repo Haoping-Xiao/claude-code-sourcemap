@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module V9o
 // matched 2.1.88 source: node_modules/@aws-sdk/credential-provider-http/dist-cjs/fromHttp/checkUrl.js
 // class=partial  jaccard=0.0782  score=0.2032  fileCov=0.1129
-// note: low-confidence suggestion: node_modules/@aws-sdk/credential-provider-http/dist-cjs/fromHttp/checkUrl.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/@aws-sdk/credential-provider-http/dist-cjs/fromHttp/checkUrl.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function Ppc(e) {
   let t;

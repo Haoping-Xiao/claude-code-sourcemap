@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mm
 // matched 2.1.88 source: src/utils/git/gitConfigParser.ts
 // class=partial  jaccard=0.2012  score=1  fileCov=0.2012
-// note: low-confidence suggestion: src/utils/git/gitConfigParser.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/git/gitConfigParser.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mm] deps: utils/fsOperations.ts, utils/fsOperations.ts
 ATs = require("path");

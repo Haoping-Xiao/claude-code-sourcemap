@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ko
 // matched 2.1.88 source: src/components/ConfigurableShortcutHint.tsx
 // class=partial  jaccard=0.2434  score=0.5237  fileCov=0.3126
-// note: low-confidence suggestion: src/components/ConfigurableShortcutHint.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/ConfigurableShortcutHint.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ko] deps: stack-utils/index.js, @xmldom/xmldom/lib/entities.js
 U6i = R(lt(), 1), DUt = R(se(), 1);

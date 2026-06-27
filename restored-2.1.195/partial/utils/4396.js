@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iAl
 // matched 2.1.88 source: src/tools/WebSearchTool/WebSearchTool.ts
 // class=partial  jaccard=0.0777  score=0.1422  fileCov=0.1464
-// note: low-confidence suggestion: src/tools/WebSearchTool/WebSearchTool.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/WebSearchTool/WebSearchTool.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iAl] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, utils/config.ts, components/CustomSelect/select.tsx, commands/add-dir/validation.ts, constants/oauth.ts, tools/WebFetchTool/WebFetchTool.ts, tools/WebFetchTool/utils.ts, ink/terminal-focus-state.ts, commands/insights.ts, hooks/useTerminalSize.ts, dn, services/mockRateLimits.ts, @mixmark-io/domino/lib/htmlelts.js, utils/concurrentSessions.ts, Il, utils/debug.ts, main.tsx, RE, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/nativeInstaller/download.ts, utils/file.ts, utils/task/diskOutput.ts, utils/plans.ts, utils/concurrentSessions.ts, @xmldom/xmldom/lib/entities.js, tools/AgentTool/builtInAgents.ts
 sze = require("fs/promises"), O$e = require("path"), tHe = R(se(), 1);

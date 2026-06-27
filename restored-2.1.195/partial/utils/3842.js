@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S9e
 // matched 2.1.88 source: src/utils/staticRender.tsx
 // class=partial  jaccard=0.2344  score=0.7144  fileCov=0.2586
-// note: low-confidence suggestion: src/utils/staticRender.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/staticRender.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function Lzp() {}
 function V_(e) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xge
 // matched 2.1.88 source: src/utils/truncate.ts
 // class=partial  jaccard=0.1687  score=0.7776  fileCov=0.1773
-// note: low-confidence suggestion: src/utils/truncate.ts; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/utils/truncate.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xge]
 R7c = /\x1b\[[34]8;[25];/;

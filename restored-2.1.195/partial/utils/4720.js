@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xBl
 // matched 2.1.88 source: src/commands/memory/index.ts
 // class=partial  jaccard=0.1437  score=0.2098  fileCov=0.3134
-// note: low-confidence suggestion: src/commands/memory/index.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/commands/memory/index.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module xBl]

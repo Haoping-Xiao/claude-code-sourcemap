@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Er
 // matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs
 // class=partial  jaccard=0.0973  score=0.5335  fileCov=0.1063
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs; dir inferred from dep-graph -> bridge; 0 renamed
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/messages.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _Er] deps: utils/bash/ParsedCommand.ts
 cwe = class cwe extends cp {

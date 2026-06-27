@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Wi
 // matched 2.1.88 source: src/ink/render-to-screen.ts
 // class=partial  jaccard=0.0805  score=1  fileCov=0.0805
-// note: low-confidence suggestion: src/ink/render-to-screen.ts; dir inferred from dep-graph -> ink; 0 renamed
+// note: low-confidence suggestion: src/ink/render-to-screen.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function OWi(e, t) {
   let n = t.toLowerCase();

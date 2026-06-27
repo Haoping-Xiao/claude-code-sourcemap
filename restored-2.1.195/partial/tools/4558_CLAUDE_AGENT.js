@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HLl
 // matched 2.1.88 source: src/tools/AgentTool/forkSubagent.ts
 // class=partial  jaccard=0.1531  score=0.6557  fileCov=0.1665
-// note: low-confidence suggestion: src/tools/AgentTool/forkSubagent.ts; dir inferred from dep-graph -> tools; 1 renamed
+// note: low-confidence suggestion: src/tools/AgentTool/forkSubagent.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: CLAUDE_AGENT
 // [unwrapped __esm module HLl] deps: commands/insights.ts

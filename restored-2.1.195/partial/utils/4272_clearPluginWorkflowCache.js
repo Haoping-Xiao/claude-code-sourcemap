@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Lml
 // matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
 // class=partial  jaccard=0.0705  score=0.1819  fileCov=0.1033
-// note: low-confidence suggestion: src/utils/plugins/loadPluginAgents.ts; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/utils/plugins/loadPluginAgents.ts; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: loadPluginWorkflows, clearPluginWorkflowCache
 // [unwrapped __esm module Lml] deps: utils/diff.ts, services/analytics/growthbook.ts, utils/debug.ts, utils/markdownConfigLoader.ts, services/mockRateLimits.ts, utils/sessionActivity.ts, screens/REPL.tsx, utils/teammateContext.ts, Il, utils/model/agent.ts, utils/fsOperations.ts, utils/debug.ts, utils/tempfile.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/git.ts, utils/messages.ts, utils/systemPrompt.ts, utils/agentContext.ts, utils/permissions/permissionSetup.ts, bridge/debugUtils.ts, utils/fsOperations.ts, services/teamMemorySync/secretScanner.ts, utils/concurrentSessions.ts, tasks/RemoteAgentTask/RemoteAgentTask.tsx, utils/model/check1mAccess.ts, utils/sessionUrl.ts, WAe, constants/prompts.ts, tools/AgentTool/built-in/exploreAgent.ts, tools/AgentTool/built-in/exploreAgent.ts, commands/insights.ts, tools/AgentTool/loadAgentsDir.ts, tools/SkillTool/UI.tsx, tools/BriefTool/prompt.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, tasks/LocalAgentTask/LocalAgentTask.tsx, utils/transcriptSearch.ts, tools/AgentTool/AgentTool.tsx

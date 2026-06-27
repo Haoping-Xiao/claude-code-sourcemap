@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E8e
 // matched 2.1.88 source: src/components/FileEditToolDiff.tsx
 // class=partial  jaccard=0.2313  score=0.489  fileCov=0.305
-// note: low-confidence suggestion: src/components/FileEditToolDiff.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/FileEditToolDiff.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E8e] deps: hooks/useTerminalSize.ts
 Bel = R(lt(), 1), Uel = R(se(), 1);

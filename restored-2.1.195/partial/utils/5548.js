@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qEc
 // matched 2.1.88 source: src/utils/queueProcessor.ts
 // class=partial  jaccard=0.2096  score=0.5944  fileCov=0.2446
-// note: low-confidence suggestion: src/utils/queueProcessor.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/queueProcessor.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function VEc(e) {
   if (e.skipSlashCommands && e.origin?.kind === "peer") return false;

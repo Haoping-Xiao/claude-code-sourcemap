@@ -27,6 +27,9 @@ $NODE tools/04-build-ref-index.mjs restored-src "work/$VERSION/ref-2.1.88.index.
 echo "==> [5/7] 跨版本模块匹配"
 $NODE tools/05-match-modules.mjs "work/$VERSION/modules" "work/$VERSION/ref-2.1.88.index.json" "work/$VERSION/match-report.json"
 
+echo "==> [5.4/7] 厂商指纹分类 (识别 2.1.88 未含的第三方模块)"
+$NODE tools/bun-demincer/src/match-vendors.mjs "work/$VERSION/modules" --db tools/bun-demincer/data/vendor-fingerprints-1000.json --out "work/$VERSION/vendor-overrides.json" --no-move || echo "  (vendor 指纹分类失败, 非致命)"
+
 echo "==> [5.5/7] 跨版本命名对齐 (用 2.1.88 恢复声明原名)"
 $NODE tools/09-align-names.mjs
 

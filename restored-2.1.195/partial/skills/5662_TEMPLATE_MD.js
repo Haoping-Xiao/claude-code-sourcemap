@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kxc
 // matched 2.1.88 source: src/skills/bundled/verifyContent.ts
 // class=partial  jaccard=0.0988  score=0.2354  fileCov=0.1456
-// note: low-confidence suggestion: src/skills/bundled/verifyContent.ts; dir inferred from dep-graph -> skills; 2 renamed
+// note: low-confidence suggestion: src/skills/bundled/verifyContent.ts; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TEMPLATE_MD, SKILL_MD
 var Xxc = `---

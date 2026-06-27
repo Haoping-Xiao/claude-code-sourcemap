@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xol
 // matched 2.1.88 source: src/components/ToolUseLoader.tsx
 // class=partial  jaccard=0.1955  score=0.3229  fileCov=0.3314
-// note: low-confidence suggestion: src/components/ToolUseLoader.tsx; dir inferred from dep-graph -> hooks; 0 renamed
+// note: low-confidence suggestion: src/components/ToolUseLoader.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function koe({
   isError: e,

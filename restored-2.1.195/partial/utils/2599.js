@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module glt
 // matched 2.1.88 source: src/utils/plugins/pluginStartupCheck.ts
 // class=partial  jaccard=0.0728  score=0.2727  fileCov=0.0903
-// note: low-confidence suggestion: src/utils/plugins/pluginStartupCheck.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/utils/plugins/pluginStartupCheck.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module glt] deps: utils/settings/settings.ts
 reo = new Map();

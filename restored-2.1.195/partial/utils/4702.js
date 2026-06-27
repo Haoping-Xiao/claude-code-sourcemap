@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ONl
 // matched 2.1.88 source: src/components/sandbox/SandboxDoctorSection.tsx
 // class=partial  jaccard=0.2472  score=0.3513  fileCov=0.4548
-// note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ONl] deps: utils/config.ts, hooks/useTerminalSize.ts, undici/lib/mock/mock-agent.js, components/AgentProgressLine.tsx, screens/REPL.tsx
 bnr = R(lt(), 1), kEt = R(rt(), 1), pR = R(se(), 1);

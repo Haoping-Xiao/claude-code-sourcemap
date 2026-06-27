@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TIo
 // matched 2.1.88 source: node_modules/uuid/dist/rng.js
 // class=partial  jaccard=0.1235  score=1  fileCov=0.1235
-// note: low-confidence suggestion: node_modules/uuid/dist/rng.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/uuid/dist/rng.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TIo] deps: services/analytics/index.ts, utils/worktree.ts
 $ll = require("crypto");

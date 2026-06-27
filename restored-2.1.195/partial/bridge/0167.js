@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YSr
 // matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
 // class=partial  jaccard=0.2055  score=0.3826  fileCov=0.3075
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs; dir inferred from dep-graph -> bridge; 0 renamed
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YSr] deps: @anthropic-ai/sdk/resources/beta/skills/versions.mjs, @anthropic-ai/sdk/resources/beta/skills/versions.mjs, @anthropic-ai/sdk/resources/beta/models.mjs, @anthropic-ai/sdk/resources/beta/models.mjs, @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 pUe = class pUe extends cp {

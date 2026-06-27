@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gAn
 // matched 2.1.88 source: src/utils/model/modelCapabilities.ts
 // class=partial  jaccard=0.1346  score=0.679  fileCov=0.1438
-// note: low-confidence suggestion: src/utils/model/modelCapabilities.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/model/modelCapabilities.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gAn] deps: lodash-es/_createBaseFor.js, lodash-es/memoize.js, @modelcontextprotocol/sdk/dist/esm/types.js, utils/http.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/constants.ts, utils/log.ts, utils/proxy.ts, utils/fsOperations.ts, utils/status.tsx
 Roi = require("fs"), fAn = require("fs/promises"), P2r = require("path"), Loi = ve(() => H.object({

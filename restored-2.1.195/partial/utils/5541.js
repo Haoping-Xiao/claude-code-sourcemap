@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $zo
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=partial  jaccard=0.0672  score=0.1616  fileCov=0.1032
-// note: low-confidence suggestion: src/ink/terminal.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/ink/terminal.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $zo] deps: services/analytics/index.ts, services/analytics/index.ts, commands/rename/rename.ts, commands/ultraplan.tsx, components/ThemePicker.tsx, components/FileEditToolDiff.tsx, components/ConfigurableShortcutHint.tsx, undici/lib/mock/mock-agent.js, ink/styles.ts, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, react/cjs/react.production.js, context/notifications.tsx, utils/plugins/pluginPolicy.ts, components/design-system/Ratchet.tsx, utils/sideQuestion.ts, hooks/useTerminalSize.ts, utils/debug.ts, utils/semver.ts, context/notifications.tsx, commands/insights.ts, services/PromptSuggestion/promptSuggestion.ts, has-flag/index.js, utils/editor.ts, utils/nativeInstaller/download.ts, utils/ide.ts, utils/imageResizer.ts, utils/processUserInput/processTextPrompt.ts, utils/sequential.ts, utils/messageQueueManager.ts, utils/messages.ts, hooks/usePasteHandler.ts, utils/agentContext.ts, components/AutoModeOptInDialog.tsx, utils/permissions/PermissionMode.ts, utils/markdownConfigLoader.ts, commands/memory/memory.tsx, utils/stats.ts, utils/plans.ts, utils/telemetry/pluginTelemetry.ts, uJt
 IEc = R(lt(), 1), Qz = R(rt(), 1), iy = R(se(), 1), qTt = (Eoe(), ro(Ope));

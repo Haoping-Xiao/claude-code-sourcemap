@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ttl
 // matched 2.1.88 source: src/tools/FileWriteTool/UI.tsx
 // class=partial  jaccard=0.2412  score=0.4395  fileCov=0.3483
-// note: low-confidence suggestion: src/tools/FileWriteTool/UI.tsx; dir inferred from dep-graph -> ink; 5 renamed
+// note: low-confidence suggestion: src/tools/FileWriteTool/UI.tsx; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function vtl(e) {
   let t = e.split(oyt);

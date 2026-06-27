@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module t4o
 // matched 2.1.88 source: src/tools/AgentTool/agentDisplay.ts
 // class=partial  jaccard=0.1395  score=0.8044  fileCov=0.1444
-// note: low-confidence suggestion: src/tools/AgentTool/agentDisplay.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/AgentTool/agentDisplay.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module t4o] deps: services/analytics/index.ts, context/notifications.tsx, utils/sessionActivity.ts, utils/toolPool.ts
 eYl = R(rt(), 1);

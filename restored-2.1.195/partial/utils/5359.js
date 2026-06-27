@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U9o
 // matched 2.1.88 source: src/state/onChangeAppState.ts
 // class=partial  jaccard=0.1392  score=0.2007  fileCov=0.3123
-// note: low-confidence suggestion: src/state/onChangeAppState.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/state/onChangeAppState.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U9o] deps: context/notifications.tsx, utils/debug.ts, utils/nativeInstaller/installer.ts, context/notifications.tsx, utils/debug.ts, utils/git/gitConfigParser.ts, utils/errors.ts, utils/sequential.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/loadPluginCommands.ts, utils/plugins/loadPluginHooks.ts, utils/plugins/pluginBlocklist.ts, services/lsp/config.ts, utils/plugins/lspPluginIntegration.ts, hooks/useManagePlugins.ts, commands/plugin/ManagePlugins.tsx, utils/plugins/loadPluginAgents.ts, hooks/notifs/useSettingsErrors.tsx
 jZt = R(rt(), 1);

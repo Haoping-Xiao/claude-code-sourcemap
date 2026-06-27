@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vyl
 // matched 2.1.88 source: src/tools/BriefTool/upload.ts
 // class=partial  jaccard=0.1512  score=0.8019  fileCov=0.157
-// note: low-confidence suggestion: src/tools/BriefTool/upload.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/BriefTool/upload.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vyl] deps: axios/lib/axios.js, @modelcontextprotocol/sdk/dist/esm/types.js, tools/BriefTool/upload.ts, constants/oauth.ts, dn, utils/debug.ts, utils/fsOperations.ts
 Eyl = require("crypto"), Ayl = require("fs/promises"), V7n = require("path"), imf = {

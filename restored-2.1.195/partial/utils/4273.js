@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vko
 // matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
 // class=partial  jaccard=0.0985  score=0.4108  fileCov=0.1146
-// note: low-confidence suggestion: src/utils/plugins/loadPluginAgents.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/plugins/loadPluginAgents.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vko] deps: lodash-es/memoize.js, dn, node-fetch/lib/index.js, utils/pdfUtils.ts, p-map/index.js, utils/debug.ts, utils/fsOperations.ts, utils/plugins/loadPluginAgents.ts
 Pml = require("path");

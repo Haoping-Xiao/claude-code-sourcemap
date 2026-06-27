@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vi
 // matched 2.1.88 source: src/components/design-system/Dialog.tsx
 // class=partial  jaccard=0.175  score=0.5708  fileCov=0.2016
-// note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/design-system/Dialog.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vi] deps: react/cjs/react.production.js, commander/lib/command.js, screens/REPL.tsx, hooks/useTerminalSize.ts, ink/components/ScrollBox.tsx, components/PromptInput/PromptInput.tsx, context/modalContext.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx
 Pzi = R(lt(), 1), hbe = R(rt(), 1), N0 = R(se(), 1), Dzi = N0.jsxs(Tn, {

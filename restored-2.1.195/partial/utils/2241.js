@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module o8
 // matched 2.1.88 source: src/utils/settings/pluginOnlyPolicy.ts
 // class=partial  jaccard=0.2036  score=1  fileCov=0.2036
-// note: low-confidence suggestion: src/utils/settings/pluginOnlyPolicy.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/utils/settings/pluginOnlyPolicy.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function isRestrictedToPluginOnly(surface) {
   let t = yn("policySettings")?.strictPluginOnlyCustomization;

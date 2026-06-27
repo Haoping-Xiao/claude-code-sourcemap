@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module x4o
 // matched 2.1.88 source: src/commands/advisor.ts
 // class=partial  jaccard=0.0659  score=0.3231  fileCov=0.0765
-// note: low-confidence suggestion: src/commands/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/commands/advisor.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function N8f() {
   return P1e() && !Ir() && at("tengu_c4e_slash_upsell", false);

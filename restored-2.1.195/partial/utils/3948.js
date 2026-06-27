@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Z9n
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/MethodStep.tsx
 // class=partial  jaccard=0.0752  score=0.1264  fileCov=0.1567
-// note: low-confidence suggestion: src/components/agents/new-agent-creation/wizard-steps/MethodStep.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/components/agents/new-agent-creation/wizard-steps/MethodStep.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z9n]
 rMe = {

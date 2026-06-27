@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module drt
 // matched 2.1.88 source: src/utils/sleep.ts
 // class=partial  jaccard=0.2107  score=0.2566  fileCov=0.5411
-// note: low-confidence suggestion: src/utils/sleep.ts; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/utils/sleep.ts; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withTimeout, sleep
 // [unwrapped __esm module drt] deps: zod/v4/classic/schemas.js, services/analytics/index.ts, utils/env.ts, utils/debug.ts, utils/errors.ts, utils/errors.ts

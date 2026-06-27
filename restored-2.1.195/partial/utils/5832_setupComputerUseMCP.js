@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B1c
 // matched 2.1.88 source: src/utils/computerUse/setup.ts
 // class=partial  jaccard=0.2038  score=0.5904  fileCov=0.2373
-// note: low-confidence suggestion: src/utils/computerUse/setup.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/utils/computerUse/setup.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setupComputerUseMCP
 // [unwrapped __esm module B1c] deps: services/analytics/index.ts, tools/AgentTool/agentColorManager.ts, utils/tasks.ts, utils/swarm/backends/detection.ts, utils/swarm/spawnInProcess.ts

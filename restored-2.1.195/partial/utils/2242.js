@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L7
 // matched 2.1.88 source: src/utils/hooks/hooksConfigSnapshot.ts
 // class=partial  jaccard=0.1956  score=0.6046  fileCov=0.2243
-// note: low-confidence suggestion: src/utils/hooks/hooksConfigSnapshot.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/hooks/hooksConfigSnapshot.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module L7] deps: utils/settings/settings.ts
 V1d = new Set(["plugin", "policySettings", "built-in", "builtin", "bundled"]);

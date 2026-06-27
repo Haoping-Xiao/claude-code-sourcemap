@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j_e
 // matched 2.1.88 source: src/utils/systemTheme.ts
 // class=partial  jaccard=0.1226  score=0.5185  fileCov=0.1384
-// note: low-confidence suggestion: src/utils/systemTheme.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/systemTheme.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module j_e] deps: services/analytics/firstPartyEventLoggingExporter.ts, components/Settings/Config.tsx, utils/plugins/schemas.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/fsOperations.ts, utils/theme.ts
 _it = require("fs"), Ace = require("fs/promises"), a8 = require("path");

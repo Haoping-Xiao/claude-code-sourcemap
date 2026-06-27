@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tPc
 // matched 2.1.88 source: src/hooks/notifs/useSettingsErrors.tsx
 // class=partial  jaccard=0.1936  score=0.6234  fileCov=0.2192
-// note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tPc] deps: context/notifications.tsx, services/analytics/growthbook.ts
 ZDc = R(rt(), 1);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F1a
 // matched 2.1.88 source: src/ink/events/terminal-event.ts
 // class=partial  jaccard=0.1552  score=0.3432  fileCov=0.2208
-// note: low-confidence suggestion: src/ink/events/terminal-event.ts; dir inferred from dep-graph -> ink; 0 renamed
+// note: low-confidence suggestion: src/ink/events/terminal-event.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F1a] deps: ink/events/terminal-event.ts
 Bho = class Bho extends yne {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I1
 // matched 2.1.88 source: src/hooks/usePasteHandler.ts
 // class=partial  jaccard=0.2387  score=0.431  fileCov=0.3485
-// note: low-confidence suggestion: src/hooks/usePasteHandler.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/usePasteHandler.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I1] deps: utils/imageResizer.ts, services/analytics/growthbook.ts, ink/styles.ts, utils/fastMode.ts, utils/agentContext.ts, utils/status.tsx
 G6d = {

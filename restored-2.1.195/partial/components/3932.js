@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q9n
 // matched 2.1.88 source: src/components/Spinner/SpinnerGlyph.tsx
 // class=partial  jaccard=0.1606  score=0.2933  fileCov=0.262
-// note: low-confidence suggestion: src/components/Spinner/SpinnerGlyph.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/Spinner/SpinnerGlyph.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q9n] deps: marked/lib/marked.esm.js, hooks/useTerminalSize.ts, ink/line-width-cache.ts, @xmldom/xmldom/lib/entities.js
 lJa = R(lt(), 1), Wg = R(se(), 1), IXp = {

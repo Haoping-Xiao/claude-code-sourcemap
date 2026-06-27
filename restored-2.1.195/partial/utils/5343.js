@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cTt
 // matched 2.1.88 source: src/components/MCPServerDialogCopy.tsx
 // class=partial  jaccard=0.1859  score=0.3115  fileCov=0.3155
-// note: low-confidence suggestion: src/components/MCPServerDialogCopy.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/components/MCPServerDialogCopy.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function MCPServerDialogCopy() {
   let e = gdc.c(1),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jKl
 // matched 2.1.88 source: src/commands/brief.ts
 // class=partial  jaccard=0.0663  score=0.6771  fileCov=0.0685
-// note: low-confidence suggestion: src/commands/brief.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/commands/brief.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jKl] deps: utils/cronScheduler.ts
 TVf = {

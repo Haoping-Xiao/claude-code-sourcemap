@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R_c
 // matched 2.1.88 source: src/hooks/usePrStatus.ts
 // class=partial  jaccard=0.1971  score=0.2904  fileCov=0.3804
-// note: low-confidence suggestion: src/hooks/usePrStatus.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/usePrStatus.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R_c] deps: context/notifications.tsx, components/messageActions.tsx
 x_c = R(rt(), 1);

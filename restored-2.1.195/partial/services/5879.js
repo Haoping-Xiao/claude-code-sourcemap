@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Xo
 // matched 2.1.88 source: node_modules/@aws-crypto/util/build/isEmptyData.js
 // class=partial  jaccard=0.1082  score=0.1834  fileCov=0.2086
-// note: low-confidence suggestion: node_modules/@aws-crypto/util/build/isEmptyData.js; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: node_modules/@aws-crypto/util/build/isEmptyData.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $Xo] deps: services/PromptSuggestion/promptSuggestion.ts, Vmr
 zmr = oDm;

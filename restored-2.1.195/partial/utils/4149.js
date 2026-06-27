@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uIo
 // matched 2.1.88 source: src/utils/ghPrStatus.ts
 // class=partial  jaccard=0.145  score=0.3361  fileCov=0.2031
-// note: low-confidence suggestion: src/utils/ghPrStatus.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/utils/ghPrStatus.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uIo] deps: ink/supports-hyperlinks.ts, dn, utils/debug.ts, main.tsx
 bal = R(rt(), 1);

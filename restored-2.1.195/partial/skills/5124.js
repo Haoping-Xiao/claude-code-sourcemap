@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AA
 // matched 2.1.88 source: src/skills/bundledSkills.ts
 // class=partial  jaccard=0.0791  score=0.8468  fileCov=0.0802
-// note: low-confidence suggestion: src/skills/bundledSkills.ts; dir inferred from dep-graph -> skills; 0 renamed
+// note: low-confidence suggestion: src/skills/bundledSkills.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AA] deps: dn, utils/debug.ts, utils/task/diskOutput.ts, utils/attachments.ts
 IJt = require("fs"), Zsr = require("fs/promises"), $se = require("path"), YXl = [];

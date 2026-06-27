@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GUa
 // matched 2.1.88 source: node_modules/@opentelemetry/otlp-exporter-base/build/src/otlp-export-delegate.js
 // class=partial  jaccard=0.0875  score=0.4214  fileCov=0.0995
-// note: low-confidence suggestion: node_modules/@opentelemetry/otlp-exporter-base/build/src/otlp-export-delegate.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/@opentelemetry/otlp-exporter-base/build/src/otlp-export-delegate.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GUa] deps: axios/lib/axios.js, constants/oauth.ts, utils/telemetry/bigqueryExporter.ts, services/analytics/index.ts, utils/http.ts, utils/config.ts, utils/debug.ts, utils/errors.ts, utils/slashCommandParsing.ts, utils/fsOperations.ts
 MVe = R(Nh(), 1), Pyo = R(e5t(), 1);

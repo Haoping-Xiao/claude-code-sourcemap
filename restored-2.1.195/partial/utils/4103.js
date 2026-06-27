@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L8t
 // matched 2.1.88 source: src/commands/extra-usage/extra-usage-noninteractive.ts
 // class=partial  jaccard=0.1438  score=0.2595  fileCov=0.2439
-// note: low-confidence suggestion: src/commands/extra-usage/extra-usage-noninteractive.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/commands/extra-usage/extra-usage-noninteractive.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module L8t] deps: utils/http.ts, undici/lib/web/fetch/response.js, components/LogoV2/Clawd.tsx

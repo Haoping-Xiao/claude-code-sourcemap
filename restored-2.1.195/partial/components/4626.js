@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CMl
 // matched 2.1.88 source: src/components/CustomSelect/select.tsx
 // class=partial  jaccard=0.222  score=0.4649  fileCov=0.2982
-// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CMl] deps: components/CustomSelect/use-multi-select-state.ts, services/teamMemorySync/secretScanner.ts, components/CustomSelect/use-multi-select-state.ts
 POe = R(rt(), 1), vMl = require("util");

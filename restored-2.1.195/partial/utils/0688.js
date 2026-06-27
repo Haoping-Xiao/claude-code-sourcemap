@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bi
 // matched 2.1.88 source: src/constants/files.ts
 // class=partial  jaccard=0.11  score=1  fileCov=0.11
-// note: low-confidence suggestion: src/constants/files.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/constants/files.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function mRt(e) {
   let t = e.slice(e.lastIndexOf(".")).toLowerCase();

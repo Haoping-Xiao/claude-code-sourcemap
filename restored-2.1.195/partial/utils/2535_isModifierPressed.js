@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MGe
 // matched 2.1.88 source: vendor/modifiers-napi-src/index.ts
 // class=partial  jaccard=0.19  score=0.4643  fileCov=0.2433
-// note: low-confidence suggestion: vendor/modifiers-napi-src/index.ts; dir inferred from dep-graph -> utils; 3 renamed
+// note: low-confidence suggestion: vendor/modifiers-napi-src/index.ts; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: prewarm, isModifierPressed, getModifiers
 // [unwrapped __esm module MGe] deps: marked/lib/marked.esm.js, utils/truncate.ts, ink/line-width-cache.ts

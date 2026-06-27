@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B$c
 // matched 2.1.88 source: src/components/design-system/Dialog.tsx
 // class=partial  jaccard=0.1266  score=0.1679  fileCov=0.3393
-// note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/components/design-system/Dialog.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ChromeAutoEnableDialog
 // [unwrapped __esm module B$c] deps: utils/debug.ts, hooks/useTerminalSize.ts, services/mcp/useManageMCPConnections.ts, utils/config.ts, utils/sequential.ts, components/design-system/Dialog.tsx

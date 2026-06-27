@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jc
 // matched 2.1.88 source: src/utils/semver.ts
 // class=partial  jaccard=0.0997  score=0.1303  fileCov=0.2981
-// note: low-confidence suggestion: src/utils/semver.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/semver.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jc] deps: constants/oauth.ts, utils/http.ts, utils/betas.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/settings/constants.ts, utils/status.tsx, utils/log.ts, types/generated/google/protobuf/timestamp.ts, utils/signal.ts, services/policyLimits/index.ts
 l1i = require("fs"), c1i = require("path");

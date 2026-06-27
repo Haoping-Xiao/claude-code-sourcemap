@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GXt
 // matched 2.1.88 source: src/components/LogoV2/feedConfigs.tsx
 // class=partial  jaccard=0.1286  score=0.4717  fileCov=0.1503
-// note: low-confidence suggestion: src/components/LogoV2/feedConfigs.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/components/LogoV2/feedConfigs.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function zWl(e) {
   let {

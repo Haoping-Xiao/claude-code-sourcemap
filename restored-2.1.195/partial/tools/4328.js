@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $yl
 // matched 2.1.88 source: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts
 // class=partial  jaccard=0.2173  score=0.5251  fileCov=0.2704
-// note: low-confidence suggestion: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts; dir inferred from dep-graph -> tools; 0 renamed
+// note: low-confidence suggestion: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $yl] deps: constants/keys.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, axios/lib/utils.js, utils/markdownConfigLoader.ts, tools/ScheduleCronTool/prompt.ts
 Amf = Cn(async () => (await Gf("gh")) !== null);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cwc
 // matched 2.1.88 source: src/skills/bundled/loop.ts
 // class=partial  jaccard=0.0821  score=0.3167  fileCov=0.0998
-// note: low-confidence suggestion: src/skills/bundled/loop.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/skills/bundled/loop.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function uwc() {
   Nd({

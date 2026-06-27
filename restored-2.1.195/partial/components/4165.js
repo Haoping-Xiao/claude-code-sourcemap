@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gll
 // matched 2.1.88 source: src/components/messages/UserToolResultMessage/utils.tsx
 // class=partial  jaccard=0.1587  score=0.5249  fileCov=0.1853
-// note: low-confidence suggestion: src/components/messages/UserToolResultMessage/utils.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/messages/UserToolResultMessage/utils.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gll] deps: components/messages/HookProgressMessage.tsx, hooks/useTerminalSize.ts, context/notifications.tsx, services/mockRateLimits.ts, commands/add-dir/validation.ts, ink/styles.ts
 fll = R(lt(), 1), O8t = R(rt(), 1), zMe = R(se(), 1);

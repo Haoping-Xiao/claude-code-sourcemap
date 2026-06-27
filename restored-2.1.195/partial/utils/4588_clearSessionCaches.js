@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JSt
 // matched 2.1.88 source: src/commands/clear/caches.ts
 // class=partial  jaccard=0.1098  score=0.6245  fileCov=0.1176
-// note: low-confidence suggestion: src/commands/clear/caches.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/commands/clear/caches.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: clearSessionCaches
 // [unwrapped __esm module JSt] deps: utils/markdownConfigLoader.ts, components/TrustDialog/utils.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, utils/config.ts, utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, constants/files.ts, utils/fsOperations.ts, utils/git.ts, hooks/fileSuggestions.ts, utils/worktree.ts, utils/sequential.ts, utils/file.ts, utils/ripgrep.ts, utils/settings/settings.ts, bootstrap/state.ts

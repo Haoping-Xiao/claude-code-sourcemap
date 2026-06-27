@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rPl
 // matched 2.1.88 source: src/commands/branch/index.ts
 // class=partial  jaccard=0.1701  score=0.306  fileCov=0.2769
-// note: low-confidence suggestion: src/commands/branch/index.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/commands/branch/index.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rPl]
 m0f = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module v5
 // matched 2.1.88 source: src/components/permissions/PermissionRequestTitle.tsx
 // class=partial  jaccard=0.1346  score=0.1604  fileCov=0.4554
-// note: low-confidence suggestion: src/components/permissions/PermissionRequestTitle.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/permissions/PermissionRequestTitle.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v5] deps: commander/lib/command.js, hooks/useTerminalSize.ts
 P1a = R(lt(), 1), M1a = R(se(), 1);

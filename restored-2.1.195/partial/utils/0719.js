@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NB
 // matched 2.1.88 source: src/types/permissions.ts
 // class=partial  jaccard=0.1594  score=0.6833  fileCov=0.1721
-// note: low-confidence suggestion: src/types/permissions.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/types/permissions.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NB]
 yY = ["acceptEdits", "auto", "bypassPermissions", "default", "dontAsk", "plan"], Jvs = [...yY], yM = Jvs;

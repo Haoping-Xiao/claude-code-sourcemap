@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YOe
 // matched 2.1.88 source: node_modules/mute-stream/lib/index.js
 // class=partial  jaccard=0.1247  score=0.5708  fileCov=0.1376
-// note: low-confidence suggestion: node_modules/mute-stream/lib/index.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/mute-stream/lib/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YOe] deps: utils/errors.ts, constants/files.ts, utils/bash/ShellSnapshot.ts, fast-xml-parser/lib/fxp.cjs
 gNl = require("fs"), zQ = require("fs/promises"), CNo = require("os"), wKe = require("path");

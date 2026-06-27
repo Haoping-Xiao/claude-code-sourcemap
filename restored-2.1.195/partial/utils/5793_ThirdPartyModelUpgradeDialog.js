@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j$c
 // matched 2.1.88 source: src/components/design-system/Dialog.tsx
 // class=partial  jaccard=0.0913  score=0.1702  fileCov=0.1646
-// note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/components/design-system/Dialog.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ThirdPartyModelUpgradeDialog
 // [unwrapped __esm module j$c] deps: utils/debug.ts, hooks/useTerminalSize.ts, dn, utils/claudeInChrome/common.ts, utils/config.ts, context/modalContext.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx

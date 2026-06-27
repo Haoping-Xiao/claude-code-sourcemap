@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sQt
 // matched 2.1.88 source: node_modules/chokidar/esm/index.js
 // class=partial  jaccard=0.0842  score=0.3233  fileCov=0.1023
-// note: low-confidence suggestion: node_modules/chokidar/esm/index.js; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: node_modules/chokidar/esm/index.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sQt] deps: @modelcontextprotocol/sdk/dist/esm/types.js, lH, utils/errors.ts, utils/platform.ts, utils/fsOperations.ts, hooks/useReplBridge.tsx, commands/bridge-kick.ts, cli/print.ts
 hGo = ve(() => H.object({

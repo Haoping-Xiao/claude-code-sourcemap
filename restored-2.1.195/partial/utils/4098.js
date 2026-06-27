@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ezn
 // matched 2.1.88 source: src/components/LogoV2/Clawd.tsx
 // class=partial  jaccard=0.2421  score=0.3856  fileCov=0.3943
-// note: low-confidence suggestion: src/components/LogoV2/Clawd.tsx; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/components/LogoV2/Clawd.tsx; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function Clawd(t0) {
   let t = hCo.c(26),

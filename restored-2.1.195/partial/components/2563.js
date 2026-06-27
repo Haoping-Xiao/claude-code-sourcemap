@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module PUt
 // matched 2.1.88 source: src/components/design-system/StatusIcon.tsx
 // class=partial  jaccard=0.1147  score=0.3395  fileCov=0.1477
-// note: low-confidence suggestion: src/components/design-system/StatusIcon.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/design-system/StatusIcon.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module PUt]
 W6i = R(rt(), 1);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lWi
 // matched 2.1.88 source: src/ink/bidi.ts
 // class=partial  jaccard=0.1078  score=0.3993  fileCov=0.1287
-// note: low-confidence suggestion: src/ink/bidi.ts; dir inferred from dep-graph -> ink; 1 renamed
+// note: low-confidence suggestion: src/ink/bidi.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lWi]
 aWi = IGd;

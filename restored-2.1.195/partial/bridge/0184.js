@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hEr
 // matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
 // class=partial  jaccard=0.2273  score=0.4656  fileCov=0.3075
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs; dir inferred from dep-graph -> bridge; 0 renamed
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hEr] deps: @anthropic-ai/sdk/resources/beta/skills/versions.mjs, @anthropic-ai/sdk/resources/beta/skills/versions.mjs, @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 MJe = class MJe extends cp {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oLc
 // matched 2.1.88 source: src/hooks/notifs/useStartupNotification.ts
 // class=partial  jaccard=0.153  score=0.3884  fileCov=0.2015
-// note: low-confidence suggestion: src/hooks/notifs/useStartupNotification.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/notifs/useStartupNotification.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oLc] deps: services/analytics/index.ts, context/notifications.tsx, utils/sequential.ts, utils/plugins/officialMarketplaceStartupCheck.ts, hooks/notifs/useSettingsErrors.tsx
 nLc = R(lt(), 1), Tfr = R(rt(), 1);

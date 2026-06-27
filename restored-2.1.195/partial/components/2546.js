@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Ge
 // matched 2.1.88 source: src/ink/focus.ts
 // class=partial  jaccard=0.0991  score=0.7598  fileCov=0.1023
-// note: low-confidence suggestion: src/ink/focus.ts; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/ink/focus.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $Ge] deps: react/cjs/react.production.js
 dbe = R(rt(), 1);

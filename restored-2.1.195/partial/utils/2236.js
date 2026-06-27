@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zkn
 // matched 2.1.88 source: src/Tool.ts
 // class=partial  jaccard=0.0658  score=0.6653  fileCov=0.0681
-// note: low-confidence suggestion: src/Tool.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/Tool.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zkn] deps: utils/status.tsx
 b1d = [PKr, tNi, nNi], Jkn = new Set(b1d);

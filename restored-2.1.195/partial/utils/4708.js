@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zNo
 // matched 2.1.88 source: src/hooks/notifs/useModelMigrationNotifications.tsx
 // class=partial  jaccard=0.1265  score=0.4716  fileCov=0.1474
-// note: low-confidence suggestion: src/hooks/notifs/useModelMigrationNotifications.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/notifs/useModelMigrationNotifications.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function wnr() {
   if (r_() !== void 0) return false;

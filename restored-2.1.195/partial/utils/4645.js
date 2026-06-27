@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dse
 // matched 2.1.88 source: src/hooks/useSearchInput.ts
 // class=partial  jaccard=0.0872  score=0.5149  fileCov=0.095
-// note: low-confidence suggestion: src/hooks/useSearchInput.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/useSearchInput.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dse] deps: utils/Cursor.ts, utils/pasteStore.ts, vendor/modifiers-napi-src/index.ts, components/design-system/Ratchet.tsx, hooks/useSearchInput.ts
 use = R(rt(), 1);

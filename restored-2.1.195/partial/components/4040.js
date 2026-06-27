@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Unl
 // matched 2.1.88 source: src/utils/markdown.ts
 // class=partial  jaccard=0.1022  score=0.2847  fileCov=0.1375
-// note: low-confidence suggestion: src/utils/markdown.ts; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/utils/markdown.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Unl] deps: components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, utils/truncate.ts, hooks/useTerminalSize.ts, @xmldom/xmldom/lib/entities.js
 Nnl = R(lt(), 1), r8t = R(se(), 1);

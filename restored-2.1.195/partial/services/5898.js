@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XXo
 // matched 2.1.88 source: node_modules/qrcode/lib/core/polynomial.js
 // class=partial  jaccard=0.1367  score=0.2541  fileCov=0.2284
-// note: low-confidence suggestion: node_modules/qrcode/lib/core/polynomial.js; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: node_modules/qrcode/lib/core/polynomial.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XXo] deps: node-forge/lib/util.js, @aws-crypto/util/build/isEmptyData.js, undici/lib/core/tree.js, pkce-challenge/dist/index.node.js, services/PromptSuggestion/promptSuggestion.ts, node-forge/lib/aes.js
 Tnn = TDm;

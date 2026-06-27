@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module X0
 // matched 2.1.88 source: src/components/ManagedSettingsSecurityDialog/utils.ts
 // class=partial  jaccard=0.2489  score=0.5408  fileCov=0.3155
-// note: low-confidence suggestion: src/components/ManagedSettingsSecurityDialog/utils.ts; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/ManagedSettingsSecurityDialog/utils.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X0] deps: hooks/useTerminalSize.ts, ink/styles.ts
 O1a = R(lt(), 1), hVe = R(se(), 1);

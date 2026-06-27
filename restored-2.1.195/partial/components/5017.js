@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gzl
 // matched 2.1.88 source: src/components/CustomSelect/select.tsx
 // class=partial  jaccard=0.0858  score=0.2888  fileCov=0.1089
-// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gzl] deps: @xmldom/xmldom/lib/entities.js, components/ScrollKeybindingHandler.tsx, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, tools/BashTool/BashTool.tsx, tools/WebFetchTool/WebFetchTool.ts, tools/TaskStopTool/prompt.ts, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/ConfigurableShortcutHint.tsx
 fzl = R(lt(), 1), Ojo = R(rt(), 1), Vq = R(se(), 1);

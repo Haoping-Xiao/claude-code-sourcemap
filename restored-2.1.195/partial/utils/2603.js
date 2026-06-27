@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $g
 // matched 2.1.88 source: src/utils/plugins/pluginIdentifier.ts
 // class=partial  jaccard=0.156  score=0.1896  fileCov=0.4683
-// note: low-confidence suggestion: src/utils/plugins/pluginIdentifier.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/plugins/pluginIdentifier.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $g] deps: utils/plugins/schemas.ts
 leo = {

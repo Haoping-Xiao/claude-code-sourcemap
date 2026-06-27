@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OXo
 // matched 2.1.88 source: node_modules/undici/lib/core/tree.js
 // class=partial  jaccard=0.0625  score=0.2051  fileCov=0.0825
-// note: low-confidence suggestion: node_modules/undici/lib/core/tree.js; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: node_modules/undici/lib/core/tree.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OXo] deps: services/PromptSuggestion/promptSuggestion.ts
 Mvt = sDm;

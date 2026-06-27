@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kt
 // matched 2.1.88 source: src/utils/debug.ts
 // class=partial  jaccard=0.1011  score=0.502  fileCov=0.1124
-// note: low-confidence suggestion: src/utils/debug.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/debug.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kt]
 Msn = wrs();

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mjc
 // matched 2.1.88 source: node_modules/@mixmark-io/domino/lib/NavigatorID.js
 // class=partial  jaccard=0.0628  score=0.2544  fileCov=0.077
-// note: low-confidence suggestion: node_modules/@mixmark-io/domino/lib/NavigatorID.js; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: node_modules/@mixmark-io/domino/lib/NavigatorID.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mjc] deps: services/PromptSuggestion/promptSuggestion.ts
 fjc = ODm;

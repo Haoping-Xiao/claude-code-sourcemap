@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bLc
 // matched 2.1.88 source: src/hooks/usePromptsFromClaudeInChrome.tsx
 // class=partial  jaccard=0.1281  score=0.4794  fileCov=0.1488
-// note: low-confidence suggestion: src/hooks/usePromptsFromClaudeInChrome.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/hooks/usePromptsFromClaudeInChrome.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bLc] deps: services/analytics/index.ts, tools/SendMessageTool/SendMessageTool.ts, utils/claudeInChrome/common.ts, dom-mutator/dist/dom-mutator.cjs.production.min.js, utils/debug.ts, utils/errors.ts, utils/plans.ts, utils/cronScheduler.ts
 yLc = require("fs"), kYo = R(rt(), 1);

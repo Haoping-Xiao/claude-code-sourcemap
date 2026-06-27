@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module og
 // matched 2.1.88 source: src/utils/teammateContext.ts
 // class=partial  jaccard=0.2219  score=0.507  fileCov=0.2829
-// note: low-confidence suggestion: src/utils/teammateContext.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/teammateContext.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module og] deps: services/analytics/index.ts
 qoi = require("async_hooks"), WPt = new qoi.AsyncLocalStorage();

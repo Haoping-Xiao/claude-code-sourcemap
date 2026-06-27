@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U7o
 // matched 2.1.88 source: node_modules/@opentelemetry/core/build/src/platform/node/performance.js
 // class=partial  jaccard=0.2392  score=0.6957  fileCov=0.2672
-// note: low-confidence suggestion: node_modules/@opentelemetry/core/build/src/platform/node/performance.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/@opentelemetry/core/build/src/platform/node/performance.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U7o] deps: services/analytics/index.ts, utils/fileRead.ts, utils/git/gitConfigParser.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, constants/files.ts, utils/plugins/loadPluginAgents.ts, utils/plugins/cacheUtils.ts, utils/fsOperations.ts, proxy-from-env/index.js, utils/debug.ts, utils/heapDumpService.ts
 SR = require("fs/promises"), nB = require("path"), xNc = require("perf_hooks");

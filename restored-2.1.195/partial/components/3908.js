@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TVt
 // matched 2.1.88 source: src/commands/plugin/PluginOptionsDialog.tsx
 // class=partial  jaccard=0.0683  score=0.209  fileCov=0.092
-// note: low-confidence suggestion: src/commands/plugin/PluginOptionsDialog.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/commands/plugin/PluginOptionsDialog.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TVt] deps: @xmldom/xmldom/lib/entities.js, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, components/ScrollKeybindingHandler.tsx, components/CustomSelect/select.tsx, components/design-system/Dialog.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx
 yHo = R(lt(), 1), hHo = R(rt(), 1), z_ = R(se(), 1);

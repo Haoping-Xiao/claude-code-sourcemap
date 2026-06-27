@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Omo
 // matched 2.1.88 source: src/utils/bash/prefix.ts
 // class=partial  jaccard=0.2398  score=0.8064  fileCov=0.2544
-// note: low-confidence suggestion: src/utils/bash/prefix.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/bash/prefix.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Omo] deps: screens/REPL.tsx, utils/bash/registry.ts
 DDe = JC(async e => $mo.find(n => n.name === e) || (await P0p(e)) || null, e => e);

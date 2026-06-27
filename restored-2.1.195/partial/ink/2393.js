@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a0e
 // matched 2.1.88 source: src/ink/components/ClockContext.tsx
 // class=partial  jaccard=0.1845  score=0.5109  fileCov=0.224
-// note: low-confidence suggestion: src/ink/components/ClockContext.tsx; dir inferred from dep-graph -> ink; 0 renamed
+// note: low-confidence suggestion: src/ink/components/ClockContext.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module a0e] deps: ink/components/TerminalFocusContext.tsx
 ZXr = R(rt(), 1);

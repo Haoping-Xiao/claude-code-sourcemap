@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q5l
 // matched 2.1.88 source: src/components/LogoV2/LogoV2.tsx
 // class=partial  jaccard=0.0649  score=0.6374  fileCov=0.0673
-// note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q5l] deps: hooks/useTerminalSize.ts, services/analytics/growthbook.ts, utils/signal.ts, utils/config.ts
 zXt = R(rt(), 1), e2o = R(se(), 1);

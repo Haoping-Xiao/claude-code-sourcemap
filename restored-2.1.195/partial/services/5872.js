@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rB
 // matched 2.1.88 source: node_modules/pkce-challenge/dist/index.node.js
 // class=partial  jaccard=0.1029  score=1  fileCov=0.1029
-// note: low-confidence suggestion: node_modules/pkce-challenge/dist/index.node.js; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: node_modules/pkce-challenge/dist/index.node.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rB]
 Ru = crypto;

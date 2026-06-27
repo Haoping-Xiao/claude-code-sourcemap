@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uEr
 // matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs
 // class=partial  jaccard=0.1247  score=0.4416  fileCov=0.1481
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs; dir inferred from dep-graph -> bridge; 0 renamed
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uEr] deps: @anthropic-ai/sdk/internal/uploads.mjs, utils/bash/ParsedCommand.ts, vscode-jsonrpc/lib/node/ril.js
 vIt = class vIt extends cp {

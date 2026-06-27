@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module p7o
 // matched 2.1.88 source: src/components/permissions/PermissionDialog.tsx
 // class=partial  jaccard=0.1515  score=0.5127  fileCov=0.177
-// note: low-confidence suggestion: src/components/permissions/PermissionDialog.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/permissions/PermissionDialog.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p7o] deps: hooks/useTerminalSize.ts, utils/config.ts, components/design-system/Dialog.tsx, components/design-system/Dialog.tsx
 DMc = R(lt(), 1), zme = R(se(), 1);

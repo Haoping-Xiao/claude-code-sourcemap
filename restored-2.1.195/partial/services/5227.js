@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vnc
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=partial  jaccard=0.0803  score=0.1916  fileCov=0.1214
-// note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; dir inferred from dep-graph -> services; 1 renamed
+// note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vnc] deps: services/analytics/index.ts
 fXf = {

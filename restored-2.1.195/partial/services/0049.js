@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ayr
 // matched 2.1.88 source: node_modules/lodash-es/_SetCache.js
 // class=partial  jaccard=0.1384  score=1  fileCov=0.1384
-// note: low-confidence suggestion: node_modules/lodash-es/_SetCache.js; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: node_modules/lodash-es/_SetCache.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ayr] deps: lodash-es/_Stack.js, lodash-es/_hashDelete.js, lodash-es/_SetCache.js
 gon.prototype.add = gon.prototype.push = yts;

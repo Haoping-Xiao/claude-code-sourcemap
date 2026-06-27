@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zhc
 // matched 2.1.88 source: src/utils/suggestions/commandSuggestions.ts
 // class=partial  jaccard=0.085  score=0.4232  fileCov=0.0962
-// note: low-confidence suggestion: src/utils/suggestions/commandSuggestions.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/utils/suggestions/commandSuggestions.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function tyc(e, t) {
   let n = e.indexOf(" ");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B1
 // matched 2.1.88 source: src/tools/SkillTool/prompt.ts
 // class=partial  jaccard=0.0817  score=0.2219  fileCov=0.1144
-// note: low-confidence suggestion: src/tools/SkillTool/prompt.ts; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: src/tools/SkillTool/prompt.ts; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module B1] deps: services/analytics/index.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, utils/profilerBase.ts, utils/fsOperations.ts, utils/plugins/pluginDirectories.ts
 _ct = require("fs/promises"), bct = require("path");

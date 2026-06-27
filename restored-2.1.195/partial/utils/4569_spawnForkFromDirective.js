@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VYt
 // matched 2.1.88 source: src/tools/AgentTool/AgentTool.tsx
 // class=partial  jaccard=0.0852  score=0.5353  fileCov=0.092
-// note: low-confidence suggestion: src/tools/AgentTool/AgentTool.tsx; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/tools/AgentTool/AgentTool.tsx; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: spawnForkFromDirective, deriveForkName
 // [unwrapped __esm module VYt] deps: utils/errors.ts, utils/markdownConfigLoader.ts, screens/REPL.tsx, cli/print.ts, utils/messages.ts

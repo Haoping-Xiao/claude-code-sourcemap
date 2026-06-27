@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UNl
 // matched 2.1.88 source: src/components/design-system/LoadingState.tsx
 // class=partial  jaccard=0.1232  score=0.3269  fileCov=0.1651
-// note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 0 renamed
+// note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UNl] deps: hooks/useTerminalSize.ts, utils/bash/bashParser.ts, screens/REPL.tsx, components/AgentProgressLine.tsx
 NNl = R(lt(), 1), xHe = R(se(), 1);

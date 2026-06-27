@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $S
 // matched 2.1.88 source: node_modules/google-auth-library/build/src/crypto/node/crypto.js
 // class=partial  jaccard=0.1376  score=0.5446  fileCov=0.1555
-// note: low-confidence suggestion: node_modules/google-auth-library/build/src/crypto/node/crypto.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/google-auth-library/build/src/crypto/node/crypto.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $S]
 Fns = new RegExp(`^${Uns}$`), ozc = new RegExp(`^a(?:${Uns}-)?[0-9a-f]{16}$`);

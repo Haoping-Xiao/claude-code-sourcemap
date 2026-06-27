@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qNo
 // matched 2.1.88 source: src/hooks/notifs/useMcpConnectivityStatus.tsx
 // class=partial  jaccard=0.1285  score=0.7122  fileCov=0.1356
-// note: low-confidence suggestion: src/hooks/notifs/useMcpConnectivityStatus.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/hooks/notifs/useMcpConnectivityStatus.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qNo] deps: hooks/useTerminalSize.ts, components/ValidationErrorsList.tsx, components/AgentProgressLine.tsx
 jNl = R(lt(), 1), Mq = R(se(), 1);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pyr
 // matched 2.1.88 source: node_modules/lodash-es/_equalObjects.js
 // class=partial  jaccard=0.1875  score=0.8058  fileCov=0.1964
-// note: low-confidence suggestion: node_modules/lodash-es/_equalObjects.js; dir inferred from dep-graph -> utils; 1 renamed
+// note: low-confidence suggestion: node_modules/lodash-es/_equalObjects.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pyr] deps: lodash-es/_arrayPush.js, tslib/tslib.js, OBe
 Wwt = t6c;

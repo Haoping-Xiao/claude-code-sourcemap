@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lJ
 // matched 2.1.88 source: src/components/StructuredDiff/Fallback.tsx
 // class=partial  jaccard=0.0651  score=0.7602  fileCov=0.0665
-// note: low-confidence suggestion: src/components/StructuredDiff/Fallback.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/StructuredDiff/Fallback.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lJ] deps: @xmldom/xmldom/lib/entities.js, hooks/useTerminalSize.ts
 exa = R(lt(), 1), gqe = R(se(), 1);

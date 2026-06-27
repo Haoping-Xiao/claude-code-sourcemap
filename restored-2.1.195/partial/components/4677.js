@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I1l
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
 // class=partial  jaccard=0.1461  score=0.5643  fileCov=0.1647
-// note: low-confidence suggestion: src/components/ScrollKeybindingHandler.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/ScrollKeybindingHandler.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I1l]
 Qtr = R(rt(), 1);

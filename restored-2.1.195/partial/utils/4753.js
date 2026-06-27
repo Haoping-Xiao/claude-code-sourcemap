@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Fl
 // matched 2.1.88 source: src/commands/install-github-app/WarningsStep.tsx
 // class=partial  jaccard=0.248  score=0.3126  fileCov=0.5456
-// note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function WarningsStep(t0) {
   let t = bFl.c(9),

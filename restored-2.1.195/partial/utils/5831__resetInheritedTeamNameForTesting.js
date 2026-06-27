@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module M1c
 // matched 2.1.88 source: src/tools/shared/spawnMultiAgent.ts
 // class=partial  jaccard=0.0696  score=0.5225  fileCov=0.0743
-// note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sessionTeamName, initializeSessionTeam, _resetInheritedTeamNameForTesting
 // [unwrapped __esm module M1c] deps: dn, utils/debug.ts, @anthropic-ai/bedrock-sdk/client.mjs, utils/fsOperations.ts, utils/telemetry/pluginTelemetry.ts, utils/deepLink/registerProtocol.ts, utils/deepLink/registerProtocol.ts, utils/deepLink/protocolHandler.ts

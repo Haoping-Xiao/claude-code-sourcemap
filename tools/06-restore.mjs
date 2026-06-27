@@ -77,6 +77,17 @@ if (existsSync(AUTO_RENAMES_PATH)) {
   try { AUTO_RENAMES = JSON.parse(readFileSync(AUTO_RENAMES_PATH, "utf-8")); } catch {}
   console.log(`[06] loaded auto-aligned renames for ${Object.keys(AUTO_RENAMES).length} modules from ${AUTO_RENAMES_PATH}`);
 }
+// 厂商指纹覆盖 (match-vendors.mjs 产物): moduleVar -> package, 识别 2.1.88 未含的第三方模块。
+let VENDOR_OVERRIDES = {};
+const VENDOR_OVERRIDES_PATH = process.env.VENDOR_OVERRIDES || `work/${VERSION}/vendor-overrides.json`;
+if (existsSync(VENDOR_OVERRIDES_PATH)) {
+  try {
+    const ov = JSON.parse(readFileSync(VENDOR_OVERRIDES_PATH, "utf-8")).overrides || {};
+    for (const f in ov) if (ov[f].moduleName) VENDOR_OVERRIDES[ov[f].moduleName] = ov[f].package || "_unknown";
+  } catch {}
+  console.log(`[06] loaded ${Object.keys(VENDOR_OVERRIDES).length} vendor fingerprint overrides from ${VENDOR_OVERRIDES_PATH}`);
+}
+
 function mergedRenames(name) {
   const a = AUTO_RENAMES[name], b = AI_RENAMES[name];
   if (!a && !b) return undefined;
@@ -478,10 +489,12 @@ for (const { name, m } of standalone) {
   let dir, note, cls;
   const inf = inferred[name];
   const sub = inf ? "/" + inf : "/_unknown";
-  if (m.class === "partial") { dir = "partial" + sub; cls = "partial"; note = m.match ? `low-confidence suggestion: ${m.match.path}` : ""; nPartial++; }
-  else if (m.vendor) { dir = "vendor/_unmatched"; cls = "vendor"; note = m.match ? `nearest: ${m.match.path}` : ""; nVendor++; }
+  const vendorPkg = VENDOR_OVERRIDES[name];
+  if (m.vendor) { dir = "vendor/_unmatched"; cls = "vendor"; note = m.match ? `nearest: ${m.match.path}` : ""; nVendor++; }
+  else if (vendorPkg) { dir = "vendor/" + vendorPkg; cls = "vendor"; note = `identified by fingerprint: ${vendorPkg}`; nVendor++; }
+  else if (m.class === "partial") { dir = "partial" + sub; cls = "partial"; note = m.match ? `low-confidence suggestion: ${m.match.path}` : ""; nPartial++; }
   else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
-  if (inf) note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
+  if (inf && cls === "new") note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
   const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: mergedRenames(name), paramRenames: PARAM_RENAMES[name] });
   if (!r.ok) nParseFail++;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NVt
 // matched 2.1.88 source: src/components/Spinner/useShimmerAnimation.ts
 // class=partial  jaccard=0.2153  score=0.7424  fileCov=0.2327
-// note: low-confidence suggestion: src/components/Spinner/useShimmerAnimation.ts; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/Spinner/useShimmerAnimation.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NVt] deps: hooks/useTerminalSize.ts, @xmldom/xmldom/lib/entities.js
 pJa = R(lt(), 1), K4 = R(se(), 1), cJa = ube(), uJa = [...cJa, ...[...cJa].reverse()], kXp = {

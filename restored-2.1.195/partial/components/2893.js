@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module w4
 // matched 2.1.88 source: node_modules/highlight.js/lib/languages/reasonml.js
 // class=partial  jaccard=0.0925  score=0.5688  fileCov=0.0995
-// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/reasonml.js; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/reasonml.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tdp = e => ({
     name: "Cedar",

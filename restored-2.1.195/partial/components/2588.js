@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B_
 // matched 2.1.88 source: src/components/PromptInput/PromptInputFooterSuggestions.tsx
 // class=partial  jaccard=0.1796  score=0.2612  fileCov=0.365
-// note: low-confidence suggestion: src/components/PromptInput/PromptInputFooterSuggestions.tsx; dir inferred from dep-graph -> components; 2 renamed
+// note: low-confidence suggestion: src/components/PromptInput/PromptInputFooterSuggestions.tsx; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module B_] deps: hooks/useTerminalSize.ts
 Ozi = R(lt(), 1), slt = R(se(), 1);

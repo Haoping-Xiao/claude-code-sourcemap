@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EJt
 // matched 2.1.88 source: src/components/permissions/rules/PermissionRuleDescription.tsx
 // class=partial  jaccard=0.1891  score=0.2462  fileCov=0.4493
-// note: low-confidence suggestion: src/components/permissions/rules/PermissionRuleDescription.tsx; dir inferred from dep-graph -> components; 1 renamed
+// note: low-confidence suggestion: src/components/permissions/rules/PermissionRuleDescription.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module EJt]
 szl = R(lt(), 1), NAt = R(rt(), 1), lzl = R(se(), 1), izl = NAt.createContext({

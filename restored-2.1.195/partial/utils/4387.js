@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LEl
 // matched 2.1.88 source: src/tools/shared/spawnMultiAgent.ts
 // class=partial  jaccard=0.0993  score=0.399  fileCov=0.1167
-// note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function registerOutOfProcessTeammateTask(setAppState) {
   let t = await Moe(setAppState);

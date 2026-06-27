@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xLe
 // matched 2.1.88 source: src/context/stats.tsx
 // class=partial  jaccard=0.082  score=1  fileCov=0.082
-// note: low-confidence suggestion: src/context/stats.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/context/stats.tsx; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function tda(e) {
   let t = Jua.c(2),

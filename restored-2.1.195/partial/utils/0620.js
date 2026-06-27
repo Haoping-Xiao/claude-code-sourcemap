@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iEs
 // matched 2.1.88 source: node_modules/lodash-es/isPlainObject.js
 // class=partial  jaccard=0.2441  score=1  fileCov=0.2441
-// note: low-confidence suggestion: node_modules/lodash-es/isPlainObject.js; dir inferred from dep-graph -> utils; 2 renamed
+// note: low-confidence suggestion: node_modules/lodash-es/isPlainObject.js; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iEs] deps: ZXe, lodash-es/_baseIsArguments.js
 sEs = $Du;

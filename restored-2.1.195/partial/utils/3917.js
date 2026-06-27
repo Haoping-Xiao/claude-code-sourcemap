@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xXa
 // matched 2.1.88 source: src/services/tips/tipHistory.ts
 // class=partial  jaccard=0.1282  score=0.1848  fileCov=0.2952
-// note: low-confidence suggestion: src/services/tips/tipHistory.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/services/tips/tipHistory.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xXa] deps: utils/http.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, screens/REPL.tsx, utils/fsOperations.ts, services/analytics/growthbook.ts, services/mcp/officialRegistry.ts, utils/semver.ts
 cht = require("fs/promises"), HHo = require("path");
