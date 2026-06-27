@@ -1,129 +1,80 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Ric
+// restored from claude-code 2.1.195 (deminified) — module Iic
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0215  score=0.5216  fileCov=0.022
+// class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0188  score=0.474  fileCov=0.0192
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Ric] deps: sp
-Mlr = require("crypto");
-async function* bzt(e, t, n, r, o, s, i = lp) {
-  let a = r.getAppState(),
-    l = r.agentId ?? Rt();
-  if (!M$("PreToolUse", a, l)) return;
-  T(`executePreToolHooks called for tool: ${e}`, {
-    level: "verbose",
-  });
-  let c = {
-    ...Td(o, void 0, r),
-    hook_event_name: "PreToolUse",
-    tool_name: e,
-    tool_input: n,
-    tool_use_id: t,
-  };
-  yield* TC({
-    hookInput: c,
-    toolUseID: t,
-    matchQuery: e,
-    signal: s,
-    timeoutMs: i,
-    toolUseContext: r,
-  });
-}
-async function* Szt(e, t, n, r, o, s, i, a = lp, l) {
-  let c = {
-    ...Td(s, void 0, o),
-    hook_event_name: "PostToolUse",
-    tool_name: e,
-    tool_input: n,
-    tool_response: r,
-    tool_use_id: t,
-    duration_ms: l,
-  };
-  yield* TC({
-    hookInput: c,
-    toolUseID: t,
-    matchQuery: e,
-    signal: i,
-    timeoutMs: a,
-    toolUseContext: o,
+async function sOe(e, t, n = lp) {
+  let r = t?.getAppState(),
+    o = Rt();
+  if (!M$("StopFailure", r, o)) return;
+  let s =
+      zl(
+        e.message.content,
+        `
+`,
+      ).trim() || void 0,
+    i = e.error ?? "unknown",
+    a = {
+      ...Td(void 0, void 0, t),
+      hook_event_name: "StopFailure",
+      error: i,
+      error_details: e.errorDetails,
+      last_assistant_message: s,
+    };
+  await Kk({
+    getAppState: t?.getAppState,
+    hookInput: a,
+    timeoutMs: n,
+    matchQuery: i,
   });
 }
-async function* Ezt(e, t, n, r, o, s, i, a, l = lp, c) {
-  let u = o.getAppState(),
-    d = o.agentId ?? Rt();
-  if (!M$("PostToolUseFailure", u, d)) return;
-  let p = {
-    ...Td(i, void 0, o),
-    hook_event_name: "PostToolUseFailure",
-    tool_name: e,
-    tool_input: n,
-    tool_use_id: t,
-    error: r,
-    is_interrupt: s,
-    duration_ms: c,
-  };
+async function* OAe(e, t, n = lp, r = false, o, s, i, a) {
+  let l = o ? "SubagentStop" : "Stop",
+    c = s?.getAppState(),
+    u = s?.agentId ?? Rt();
+  if (!M$(l, c, u)) return;
+  let d = i ? MI(i) : void 0,
+    p = d
+      ? zl(
+          d.message.content,
+          `
+`,
+        ).trim() || void 0
+      : void 0,
+    f = s
+      ? {
+          background_tasks: wic(s.taskRegistry.all()),
+          session_crons: Cic(),
+        }
+      : void 0,
+    m = o
+      ? {
+          ...Td(e, void 0, s),
+          hook_event_name: "SubagentStop",
+          stop_hook_active: r,
+          agent_id: o,
+          agent_transcript_path: uk(o),
+          agent_type: a ?? "",
+          last_assistant_message: p,
+          ...f,
+        }
+      : {
+          ...Td(e, void 0, s),
+          hook_event_name: "Stop",
+          stop_hook_active: r,
+          last_assistant_message: p,
+          ...f,
+        },
+    g;
   yield* TC({
-    hookInput: p,
-    toolUseID: t,
-    matchQuery: e,
-    signal: a,
-    timeoutMs: l,
-    toolUseContext: o,
+    hookInput: m,
+    extendedHookInput: g,
+    toolUseID: xic.randomUUID(),
+    signal: t,
+    timeoutMs: n,
+    toolUseContext: s,
+    messages: i,
   });
 }
-async function* wSt(e, t, n, r, o, s = lp) {
-  let i = n.getAppState(),
-    a = n.agentId ?? Rt();
-  if (!M$("PostToolBatch", i, a)) return;
-  let l = {
-    ...Td(r, void 0, n),
-    hook_event_name: "PostToolBatch",
-    tool_calls: e,
-  };
-  yield* TC({
-    hookInput: l,
-    toolUseID: t,
-    signal: o,
-    timeoutMs: s,
-    toolUseContext: n,
-  });
-}
-async function* tKt(e, t, n, r, o, s, i, a = lp) {
-  let l = o.getAppState(),
-    c = o.agentId ?? Rt();
-  if (!M$("PermissionDenied", l, c)) return;
-  let u = {
-    ...Td(s, void 0, o),
-    hook_event_name: "PermissionDenied",
-    tool_name: e,
-    tool_input: n,
-    tool_use_id: t,
-    reason: r,
-  };
-  yield* TC({
-    hookInput: u,
-    toolUseID: t,
-    matchQuery: e,
-    signal: i,
-    timeoutMs: a,
-    toolUseContext: o,
-  });
-}
-async function* jAe(e, t, n, r, o, s, i, a = lp) {
-  T(`executePermissionRequestHooks called for tool: ${e}`);
-  let l = {
-    ...Td(o, void 0, r),
-    hook_event_name: "PermissionRequest",
-    tool_name: e,
-    tool_input: n,
-    permission_suggestions: s,
-  };
-  yield* TC({
-    hookInput: l,
-    toolUseID: t,
-    matchQuery: e,
-    signal: i,
-    timeoutMs: a,
-    toolUseContext: r,
-  });
-}
+var xic;

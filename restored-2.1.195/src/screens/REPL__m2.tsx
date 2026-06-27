@@ -1,307 +1,244 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module sYe
+// restored from claude-code 2.1.195 (deminified) — module wRc
 // matched 2.1.88 source: src/screens/REPL.tsx
-// class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0082  score=0.1436  fileCov=0.0086
+// class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0073  score=0.2039  fileCov=0.0076
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module sYe] deps: ft, Xa, Un, kt, jc, JJ, Zor, fd, er, je, At, vn, bm, _a, xF, gP, d9l, uJt, yYt
-((W2o = {
-  simple_plan: p9l(),
-  visual_plan: f9l(),
-  three_subagents_with_critique: m9l(),
-}),
-  (FoE = Object.keys(W2o)));
-((h9l = {
-  timeEstimate: "a few minutes",
-  dialogBody:
-    "Interactive planning on the web where you can edit and leave targeted comments on Claude's plan.",
-  dialogPipeline: "Plan \u2192 Edit \u2192 Execute",
-  usageBlurb: [
-    "Remote plan mode with rich web editing experience.",
-    "Runs in Claude Code on the web. When the plan is ready,",
-    "you can execute it in the web session or send it back here.",
-    "You can continue to work while the plan is generated remotely.",
-  ],
-}),
-  (lWf = {
-    simple_plan: h9l,
-    visual_plan: h9l,
-    three_subagents_with_critique: {
-      timeEstimate: "~10\u201330 min",
-      dialogBody:
-        "Interactive planning on the web where you can edit and leave targeted comments on Claude's plan.",
-      dialogPipeline: "Scope \u2192 Critique \u2192 Edit \u2192 Execute",
-      usageBlurb: [
-        "Advanced multi-agent plan mode.",
-        "Runs in Claude Code on the web. When the plan is ready,",
-        "you can execute it in the web session or send it back here.",
-        "You can continue to work while the plan is generated remotely.",
-      ],
-    },
-  }));
-_9l = {
-  type: "local-jsx",
-  name: "ultraplan",
-  get description() {
-    return `Draft an editable plan in Claude Code on the web (${tsr().timeEstimate}) \xB7 See ${E1e}`;
-  },
-  argumentHint: "<prompt>",
-  isEnabled: () => tme(),
-  load: () =>
-    Promise.resolve({
-      call: hWf,
-    }),
+// [unwrapped __esm module wRc] deps: kt, Ye, ps, wr, Ko, dYo, yYo, SRc, TRc, pfr
+((_Yo = R(lt(), 1)), (vRc = R(rt(), 1)), ($C = R(se(), 1)));
+_wm = {
+  bad: "Bad",
+  fine: "Fine",
+  good: "Good",
+  not_sure: "Unsure",
 };
-function K2o(e) {
-  if (!e.bundleSeedEnabled) return null;
-  return e.cloneViable
-    ? "This will try to clone your git remote and fall back to uploading this repository."
-    : "This will upload your repository to Claude Code on the web.";
-}
-function b9l(e) {
-  let t = z2o.c(24),
-    { sourcePromise: n, onChoice: r } = e;
-  Wh("ultraplan-launch");
-  let [o] = A1e.useState(AWf),
-    [s] = A1e.useState(EWf),
-    i;
-  if (t[0] !== s) ((i = tsr(s)), (t[0] = s), (t[1] = i));
-  else i = t[1];
-  let a = i,
-    l = Ht(SWf),
-    c = Ho(),
-    u;
-  if (t[2] !== n || t[3] !== o)
-    ((u = () => (o ? (n ?? RAt().catch(bWf)) : null)), (t[2] = n), (t[3] = o), (t[4] = u));
-  else u = t[4];
-  let [d] = A1e.useState(u),
-    p;
-  if (t[5] !== r || t[6] !== s || t[7] !== l || t[8] !== c || t[9] !== o)
-    ((p = function (_) {
-      let S = _ === "run" && l;
-      if (
-        (G("tengu_ultraplan_dialog_choice", {
-          choice: $e(_),
-          first_run: o,
-          bridge_disconnected: S,
-          prompt_identifier: $e(s),
-        }),
-        S)
-      )
-        c(_Wf);
-      if (_ !== "cancel" && o)
-        (G("tengu_ultraplan_first_launch", {
-          prompt_identifier: $e(s),
-        }),
-          gn(yWf));
-      r(_, {
-        disconnectedBridge: S,
-        promptIdentifier: s,
-      });
-    }),
-      (t[5] = r),
-      (t[6] = s),
-      (t[7] = l),
-      (t[8] = c),
-      (t[9] = o),
-      (t[10] = p));
-  else p = t[10];
-  let f = p,
-    m;
-  if (t[11] !== f) ((m = () => f("cancel")), (t[11] = f), (t[12] = m));
-  else m = t[12];
-  let g;
-  if (t[13] === Symbol.for("react.memo_cache_sentinel"))
-    ((g = sx.jsx(w, {
-      dimColor: true,
-      children: "Loading\u2026",
-    })),
-      (t[13] = g));
-  else g = t[13];
-  let h;
-  if (t[14] !== a || t[15] !== f || t[16] !== l || t[17] !== o || t[18] !== d)
-    ((h = sx.jsx(A1e.Suspense, {
-      fallback: g,
-      children: sx.jsx(HWf, {
-        showTerms: o,
-        sourcePromise: d,
-        copy: a,
-        replBridgeEnabled: l,
-        onChoice: f,
-      }),
-    })),
-      (t[14] = a),
-      (t[15] = f),
-      (t[16] = l),
-      (t[17] = o),
-      (t[18] = d),
-      (t[19] = h));
-  else h = t[19];
-  let y;
-  if (t[20] !== a.timeEstimate || t[21] !== m || t[22] !== h)
-    ((y = sx.jsx(zn, {
-      title: "Run ultraplan in the cloud?",
-      subtitle: a.timeEstimate,
-      onCancel: m,
-      children: h,
-    })),
-      (t[20] = a.timeEstimate),
-      (t[21] = m),
-      (t[22] = h),
-      (t[23] = y));
-  else y = t[23];
-  return y;
-}
-function yWf(e) {
-  return e.hasSeenUltraplanTerms
-    ? e
-    : {
-        ...e,
-        hasSeenUltraplanTerms: true,
-      };
-}
-function _Wf(e) {
-  if (!e.replBridgeEnabled) return e;
-  return {
-    ...e,
-    replBridgeEnabled: false,
-    replBridgeExplicit: false,
-    replBridgeOutboundOnly: false,
-  };
-}
-function bWf() {
+Ewm = {
+  good: "tell us what went well",
+  bad: "tell us what went wrong",
+  fine: "tell us more",
+  not_sure: "tell us more",
+};
+function gfr(e) {
+  if (e.postCompact !== "closed") return "postCompact";
+  if (e.longContext !== "closed") return "longContext";
+  if (e.memory !== "closed") return "memory";
+  if (e.feedback !== "closed") return "feedback";
+  if (e.frustration !== "closed") return "frustration";
   return null;
 }
-function SWf(e) {
-  return e.replBridgeEnabled;
-}
-function EWf() {
-  return esr();
-}
-function AWf() {
-  return !Dt().hasSeenUltraplanTerms;
-}
-function HWf(e) {
-  let t = z2o.c(22),
-    { showTerms: n, sourcePromise: r, copy: o, replBridgeEnabled: s, onChoice: i } = e,
-    a = r ? A1e.use(r) : null,
-    l;
-  if (t[0] !== a) ((l = a && K2o(a)), (t[0] = a), (t[1] = l));
-  else l = t[1];
-  let c = l,
-    u;
-  if (t[2] !== o.dialogBody || t[3] !== o.dialogPipeline || t[4] !== s || t[5] !== n || t[6] !== c)
-    ((u = n
-      ? sx.jsxs(sx.Fragment, {
-          children: [
-            sx.jsx(w, {
-              dimColor: true,
-              children: o.dialogBody,
-            }),
-            sx.jsxs(U, {
-              flexDirection: "column",
-              children: [
-                c &&
-                  sx.jsx(w, {
-                    dimColor: true,
-                    children: c,
-                  }),
-                sx.jsxs(w, {
-                  dimColor: true,
-                  children: [
-                    "More information: ",
-                    sx.jsx(xs, {
-                      url: E1e,
-                      children: E1e,
-                    }),
-                  ],
-                }),
-              ],
-            }),
-            sx.jsx(w, {
-              children: "Proceed?",
-            }),
-          ],
-        })
-      : sx.jsxs(sx.Fragment, {
-          children: [
-            sx.jsxs(U, {
-              flexDirection: "column",
-              children: [
-                sx.jsx(w, {
-                  dimColor: true,
-                  children: o.dialogBody,
-                }),
-                s &&
-                  sx.jsx(w, {
-                    dimColor: true,
-                    children: "This will disable Remote Control for this session.",
-                  }),
-              ],
-            }),
-            !s &&
-              sx.jsx(w, {
-                dimColor: true,
-                children: o.dialogPipeline,
-              }),
-          ],
+function IRc(e) {
+  let t = CRc.c(47),
+    {
+      postCompactSurvey: n,
+      longContextSurvey: r,
+      memorySurvey: o,
+      feedbackSurvey: s,
+      frustrationDetection: i,
+      setInputValue: a,
+      handleSurveyRequestFeedback: l,
+    } = e,
+    c = jQn();
+  switch (
+    gfr({
+      postCompact: n.state,
+      longContext: r.state,
+      memory: o.state,
+      feedback: s.state,
+      frustration: i.state,
+    })
+  ) {
+    case "postCompact": {
+      let d;
+      if (
+        t[0] !== l ||
+        t[1] !== c ||
+        t[2] !== n.appearanceId ||
+        t[3] !== n.handleSelect ||
+        t[4] !== n.handleUndo ||
+        t[5] !== n.lastResponse ||
+        t[6] !== n.state ||
+        t[7] !== a
+      )
+        ((d = uvt.jsx(cvt, {
+          state: n.state,
+          lastResponse: n.lastResponse,
+          handleSelect: n.handleSelect,
+          handleUndo: n.handleUndo,
+          inputValue: c,
+          setInputValue: a,
+          onRequestFeedback: l,
+          appearanceId: n.appearanceId,
+          surveyType: "post_compact",
         })),
-      (t[2] = o.dialogBody),
-      (t[3] = o.dialogPipeline),
-      (t[4] = s),
-      (t[5] = n),
-      (t[6] = c),
-      (t[7] = u));
-  else u = t[7];
-  let d = n ? "Yes" : "Run ultraplan",
-    p = s
-      ? "Disable remote control and launch in Claude Code on the web"
-      : "launch in Claude Code on the web",
-    f;
-  if (t[8] !== d || t[9] !== p)
-    ((f = {
-      label: d,
-      value: "run",
-      description: p,
-    }),
-      (t[8] = d),
-      (t[9] = p),
-      (t[10] = f));
-  else f = t[10];
-  let m = n ? "No" : "Not now",
-    g;
-  if (t[11] !== m)
-    ((g = {
-      label: m,
-      value: "cancel",
-    }),
-      (t[11] = m),
-      (t[12] = g));
-  else g = t[12];
-  let h;
-  if (t[13] !== f || t[14] !== g) ((h = [f, g]), (t[13] = f), (t[14] = g), (t[15] = h));
-  else h = t[15];
-  let y;
-  if (t[16] !== i || t[17] !== h)
-    ((y = sx.jsx(Sr, {
-      options: h,
-      onChange: i,
-    })),
-      (t[16] = i),
-      (t[17] = h),
-      (t[18] = y));
-  else y = t[18];
-  let b;
-  if (t[19] !== u || t[20] !== y)
-    ((b = sx.jsxs(U, {
-      flexDirection: "column",
-      gap: 1,
-      children: [u, y],
-    })),
-      (t[19] = u),
-      (t[20] = y),
-      (t[21] = b));
-  else b = t[21];
-  return b;
+          (t[0] = l),
+          (t[1] = c),
+          (t[2] = n.appearanceId),
+          (t[3] = n.handleSelect),
+          (t[4] = n.handleUndo),
+          (t[5] = n.lastResponse),
+          (t[6] = n.state),
+          (t[7] = a),
+          (t[8] = d));
+      else d = t[8];
+      return d;
+    }
+    case "longContext": {
+      let d;
+      if (
+        t[9] !== l ||
+        t[10] !== c ||
+        t[11] !== r.appearanceId ||
+        t[12] !== r.handleSelect ||
+        t[13] !== r.handleUndo ||
+        t[14] !== r.lastResponse ||
+        t[15] !== r.question ||
+        t[16] !== r.state ||
+        t[17] !== a
+      )
+        ((d = uvt.jsx(cvt, {
+          state: r.state,
+          lastResponse: r.lastResponse,
+          handleSelect: r.handleSelect,
+          handleUndo: r.handleUndo,
+          inputValue: c,
+          setInputValue: a,
+          onRequestFeedback: l,
+          appearanceId: r.appearanceId,
+          surveyType: "long_context",
+          message: r.question,
+        })),
+          (t[9] = l),
+          (t[10] = c),
+          (t[11] = r.appearanceId),
+          (t[12] = r.handleSelect),
+          (t[13] = r.handleUndo),
+          (t[14] = r.lastResponse),
+          (t[15] = r.question),
+          (t[16] = r.state),
+          (t[17] = a),
+          (t[18] = d));
+      else d = t[18];
+      return d;
+    }
+    case "memory": {
+      let d = o.evaluation ?? void 0,
+        p;
+      if (
+        t[19] !== l ||
+        t[20] !== c ||
+        t[21] !== o.appearanceId ||
+        t[22] !== o.handleSelect ||
+        t[23] !== o.handleTranscriptSelect ||
+        t[24] !== o.handleUndo ||
+        t[25] !== o.lastResponse ||
+        t[26] !== o.state ||
+        t[27] !== a ||
+        t[28] !== d
+      )
+        ((p = uvt.jsx(cvt, {
+          state: o.state,
+          lastResponse: o.lastResponse,
+          handleSelect: o.handleSelect,
+          handleUndo: o.handleUndo,
+          handleTranscriptSelect: o.handleTranscriptSelect,
+          inputValue: c,
+          setInputValue: a,
+          onRequestFeedback: l,
+          appearanceId: o.appearanceId,
+          surveyType: "memory",
+          message: "How well did Claude use its memory? (optional)",
+          memoryEvaluation: d,
+          showNotSure: true,
+        })),
+          (t[19] = l),
+          (t[20] = c),
+          (t[21] = o.appearanceId),
+          (t[22] = o.handleSelect),
+          (t[23] = o.handleTranscriptSelect),
+          (t[24] = o.handleUndo),
+          (t[25] = o.lastResponse),
+          (t[26] = o.state),
+          (t[27] = a),
+          (t[28] = d),
+          (t[29] = p));
+      else p = t[29];
+      return p;
+    }
+    case "feedback": {
+      let d;
+      if (
+        t[30] !== s.appearanceId ||
+        t[31] !== s.handleSelect ||
+        t[32] !== s.handleTranscriptSelect ||
+        t[33] !== s.handleUndo ||
+        t[34] !== s.lastResponse ||
+        t[35] !== s.state ||
+        t[36] !== s.transcriptBundlePath ||
+        t[37] !== l ||
+        t[38] !== c ||
+        t[39] !== a
+      )
+        ((d = uvt.jsx(cvt, {
+          state: s.state,
+          lastResponse: s.lastResponse,
+          handleSelect: s.handleSelect,
+          handleUndo: s.handleUndo,
+          handleTranscriptSelect: s.handleTranscriptSelect,
+          transcriptBundlePath: s.transcriptBundlePath,
+          inputValue: c,
+          setInputValue: a,
+          onRequestFeedback: l,
+          appearanceId: s.appearanceId,
+          surveyType: "session",
+        })),
+          (t[30] = s.appearanceId),
+          (t[31] = s.handleSelect),
+          (t[32] = s.handleTranscriptSelect),
+          (t[33] = s.handleUndo),
+          (t[34] = s.lastResponse),
+          (t[35] = s.state),
+          (t[36] = s.transcriptBundlePath),
+          (t[37] = l),
+          (t[38] = c),
+          (t[39] = a),
+          (t[40] = d));
+      else d = t[40];
+      return d;
+    }
+    case "frustration": {
+      let d;
+      if (
+        t[41] !== i.handleTranscriptSelect ||
+        t[42] !== i.state ||
+        t[43] !== i.transcriptBundlePath ||
+        t[44] !== c ||
+        t[45] !== a
+      )
+        ((d = uvt.jsx(cvt, {
+          state: i.state,
+          lastResponse: null,
+          handleSelect: Twm,
+          handleUndo: Hwm,
+          handleTranscriptSelect: i.handleTranscriptSelect,
+          transcriptBundlePath: i.transcriptBundlePath,
+          inputValue: c,
+          setInputValue: a,
+        })),
+          (t[41] = i.handleTranscriptSelect),
+          (t[42] = i.state),
+          (t[43] = i.transcriptBundlePath),
+          (t[44] = c),
+          (t[45] = a),
+          (t[46] = d));
+      else d = t[46];
+      return d;
+    }
+    case null:
+      return null;
+    default:
+      return null;
+  }
 }
-var z2o, A1e, sx;
+function Hwm() {}
+function Twm() {}
+var CRc, uvt;

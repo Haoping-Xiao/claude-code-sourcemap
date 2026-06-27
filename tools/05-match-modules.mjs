@@ -86,34 +86,40 @@ for (const name of names) {
   let bestByScore = null, bestByUniq = null;
   for (const [fi] of overlap) {
     const f = fileList[fi];
-    let ov = 0, uniq = 0;
+    let ov = 0, uniq = 0, uniqStr = 0, uniqProp = 0;
     for (const s of S) {
       if (f.set.has(s)) {
         ov += idf[s] ?? IDF_UNKNOWN;
-        if (df[s] === 1) uniq++;
+        if (df[s] === 1) { uniq++; if (s.charCodeAt(0) === 115 /* 's' (str:) */) uniqStr++; else uniqProp++; }
       }
     }
     const score = moduleWeight > 0 ? ov / moduleWeight : 0;       // 模块被该文件覆盖比例
     const fileCov = f.weight > 0 ? ov / f.weight : 0;             // 该文件被模块覆盖比例
     const jacc = (moduleWeight + f.weight - ov) > 0 ? ov / (moduleWeight + f.weight - ov) : 0;
-    const cand = { rel: f.rel, app: f.app, score, fileCov, jacc, uniq };
+    const cand = { rel: f.rel, app: f.app, score, fileCov, jacc, uniq, uniqStr, uniqProp };
     if (!bestByScore || score > bestByScore.score || (score === bestByScore.score && fileCov > bestByScore.fileCov)) bestByScore = cand;
-    if (!bestByUniq || uniq > bestByUniq.uniq || (uniq === bestByUniq.uniq && score > bestByUniq.score)) bestByUniq = cand;
+    // 选独有命中最强者: 先看 str 独有, 再看总独有, 再看覆盖率
+    if (!bestByUniq || cand.uniqStr > bestByUniq.uniqStr ||
+        (cand.uniqStr === bestByUniq.uniqStr && cand.uniq > bestByUniq.uniq) ||
+        (cand.uniqStr === bestByUniq.uniqStr && cand.uniq === bestByUniq.uniq && score > bestByUniq.score)) bestByUniq = cand;
   }
 
-  // 若存在"独有字符串命中>=2"的候选, 以其为准 (身份确证); 否则取覆盖率最高者。
-  const best = (bestByUniq && bestByUniq.uniq >= 2) ? bestByUniq : bestByScore;
+  // 有独有 token 证据时以其候选为准 (身份确证); 否则取覆盖率最高者。
+  const uniqWin = bestByUniq && (bestByUniq.uniqStr >= 1 || bestByUniq.uniqProp >= 3 || bestByUniq.uniq >= 2);
+  const best = uniqWin ? bestByUniq : bestByScore;
 
   let cls, vendor = false;
   const j = best ? best.jacc : 0;
-  const u = best ? best.uniq : 0;
+  const us = best ? best.uniqStr : 0;
+  const up = best ? best.uniqProp : 0;
   if (!best) {
     cls = "new";
-  } else if (u >= 2) {
-    // 独有字符串确证: 至少 modified; jaccard 高则 unchanged
-    cls = (j >= 0.80 && best.fileCov >= 0.55) ? "unchanged" : "modified";
-  } else if (u === 1 && j >= 0.08) {
-    cls = "modified";
+  } else if (us >= 2 && j >= 0.80 && best.fileCov >= 0.55) {
+    cls = "unchanged";                 // 多个独有字符串 + 高双向重合 => 基本未变
+  } else if (us >= 1) {
+    cls = "modified";                  // 至少一个文件独有字符串 => 身份确证 (即便改动很大)
+  } else if (up >= 3 || best.uniq >= 2) {
+    cls = "modified";                  // 多个独有属性名 => 身份确证
   } else if (j >= 0.80 && best.fileCov >= 0.55) {
     cls = "unchanged";
   } else if (j >= 0.25) {
@@ -138,7 +144,7 @@ for (const name of names) {
     nExports: (meta.exports || []).length,
     size: meta.size,
     nStrings: S.size,
-    match: best ? { path: best.rel, app: best.app, score: +best.score.toFixed(4), fileCov: +best.fileCov.toFixed(4), jaccard: +best.jacc.toFixed(4), uniqueHits: best.uniq } : null,
+    match: best ? { path: best.rel, app: best.app, score: +best.score.toFixed(4), fileCov: +best.fileCov.toFixed(4), jaccard: +best.jacc.toFixed(4), uniqueHits: best.uniq, uniqStr: best.uniqStr, uniqProp: best.uniqProp } : null,
     class: cls,
     vendor,
   };

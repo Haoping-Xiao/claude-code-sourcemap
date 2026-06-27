@@ -1,244 +1,151 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module wRc
+// restored from claude-code 2.1.195 (deminified) — module rio
 // matched 2.1.88 source: src/screens/REPL.tsx
-// class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0073  score=0.2039  fileCov=0.0076
-// note: deminified; 0 identifiers renamed from _t exports
+// class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0052  score=0.1324  fileCov=0.0054
+// note: deminified; 13 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module wRc] deps: kt, Ye, ps, wr, Ko, dYo, yYo, SRc, TRc, pfr
-((_Yo = R(lt(), 1)), (vRc = R(rt(), 1)), ($C = R(se(), 1)));
-_wm = {
-  bad: "Bad",
-  fine: "Fine",
-  good: "Good",
-  not_sure: "Unsure",
-};
-Ewm = {
-  good: "tell us what went well",
-  bad: "tell us what went wrong",
-  fine: "tell us more",
-  not_sure: "tell us more",
-};
-function gfr(e) {
-  if (e.postCompact !== "closed") return "postCompact";
-  if (e.longContext !== "closed") return "longContext";
-  if (e.memory !== "closed") return "memory";
-  if (e.feedback !== "closed") return "feedback";
-  if (e.frustration !== "closed") return "frustration";
-  return null;
+// module exports: userAbortReason, unwrapAbortReason, serverFallbackTombstoneAbortReason, isUserInitiatedAbortReason, isUserAttributableAbortKind, isServerFallbackDiscard, createRecoveryAbortController, createChildAbortController, createAbortController, classifyAbortReasonForTelemetry, attachDetachableAbortRelay, SERVER_FALLBACK_TOMBSTONE_REASON, RECOVERY_ABORT_TIMEOUT_MS
+// [unwrapped __esm module rio] deps: ft, oo, BE, wr, Wct, Ao, Un, kt, ZE, ZU, Xso
+fia = {};
+rap = new Set(["claude-sonnet-4-6", "claude-opus-4-6"]);
+function cap(e) {
+  return e?.compacted === true && e.turnCounter < 3 ? (e?.consecutiveRapidRefills ?? 0) + 1 : 0;
 }
-function IRc(e) {
-  let t = CRc.c(47),
-    {
-      postCompactSurvey: n,
-      longContextSurvey: r,
-      memorySurvey: o,
-      feedbackSurvey: s,
-      frustrationDetection: i,
-      setInputValue: a,
-      handleSurveyRequestFeedback: l,
-    } = e,
-    c = jQn();
-  switch (
-    gfr({
-      postCompact: n.state,
-      longContext: r.state,
-      memory: o.state,
-      feedback: s.state,
-      frustration: i.state,
-    })
-  ) {
-    case "postCompact": {
-      let d;
-      if (
-        t[0] !== l ||
-        t[1] !== c ||
-        t[2] !== n.appearanceId ||
-        t[3] !== n.handleSelect ||
-        t[4] !== n.handleUndo ||
-        t[5] !== n.lastResponse ||
-        t[6] !== n.state ||
-        t[7] !== a
-      )
-        ((d = uvt.jsx(cvt, {
-          state: n.state,
-          lastResponse: n.lastResponse,
-          handleSelect: n.handleSelect,
-          handleUndo: n.handleUndo,
-          inputValue: c,
-          setInputValue: a,
-          onRequestFeedback: l,
-          appearanceId: n.appearanceId,
-          surveyType: "post_compact",
-        })),
-          (t[0] = l),
-          (t[1] = c),
-          (t[2] = n.appearanceId),
-          (t[3] = n.handleSelect),
-          (t[4] = n.handleUndo),
-          (t[5] = n.lastResponse),
-          (t[6] = n.state),
-          (t[7] = a),
-          (t[8] = d));
-      else d = t[8];
-      return d;
-    }
-    case "longContext": {
-      let d;
-      if (
-        t[9] !== l ||
-        t[10] !== c ||
-        t[11] !== r.appearanceId ||
-        t[12] !== r.handleSelect ||
-        t[13] !== r.handleUndo ||
-        t[14] !== r.lastResponse ||
-        t[15] !== r.question ||
-        t[16] !== r.state ||
-        t[17] !== a
-      )
-        ((d = uvt.jsx(cvt, {
-          state: r.state,
-          lastResponse: r.lastResponse,
-          handleSelect: r.handleSelect,
-          handleUndo: r.handleUndo,
-          inputValue: c,
-          setInputValue: a,
-          onRequestFeedback: l,
-          appearanceId: r.appearanceId,
-          surveyType: "long_context",
-          message: r.question,
-        })),
-          (t[9] = l),
-          (t[10] = c),
-          (t[11] = r.appearanceId),
-          (t[12] = r.handleSelect),
-          (t[13] = r.handleUndo),
-          (t[14] = r.lastResponse),
-          (t[15] = r.question),
-          (t[16] = r.state),
-          (t[17] = a),
-          (t[18] = d));
-      else d = t[18];
-      return d;
-    }
-    case "memory": {
-      let d = o.evaluation ?? void 0,
-        p;
-      if (
-        t[19] !== l ||
-        t[20] !== c ||
-        t[21] !== o.appearanceId ||
-        t[22] !== o.handleSelect ||
-        t[23] !== o.handleTranscriptSelect ||
-        t[24] !== o.handleUndo ||
-        t[25] !== o.lastResponse ||
-        t[26] !== o.state ||
-        t[27] !== a ||
-        t[28] !== d
-      )
-        ((p = uvt.jsx(cvt, {
-          state: o.state,
-          lastResponse: o.lastResponse,
-          handleSelect: o.handleSelect,
-          handleUndo: o.handleUndo,
-          handleTranscriptSelect: o.handleTranscriptSelect,
-          inputValue: c,
-          setInputValue: a,
-          onRequestFeedback: l,
-          appearanceId: o.appearanceId,
-          surveyType: "memory",
-          message: "How well did Claude use its memory? (optional)",
-          memoryEvaluation: d,
-          showNotSure: true,
-        })),
-          (t[19] = l),
-          (t[20] = c),
-          (t[21] = o.appearanceId),
-          (t[22] = o.handleSelect),
-          (t[23] = o.handleTranscriptSelect),
-          (t[24] = o.handleUndo),
-          (t[25] = o.lastResponse),
-          (t[26] = o.state),
-          (t[27] = a),
-          (t[28] = d),
-          (t[29] = p));
-      else p = t[29];
-      return p;
-    }
-    case "feedback": {
-      let d;
-      if (
-        t[30] !== s.appearanceId ||
-        t[31] !== s.handleSelect ||
-        t[32] !== s.handleTranscriptSelect ||
-        t[33] !== s.handleUndo ||
-        t[34] !== s.lastResponse ||
-        t[35] !== s.state ||
-        t[36] !== s.transcriptBundlePath ||
-        t[37] !== l ||
-        t[38] !== c ||
-        t[39] !== a
-      )
-        ((d = uvt.jsx(cvt, {
-          state: s.state,
-          lastResponse: s.lastResponse,
-          handleSelect: s.handleSelect,
-          handleUndo: s.handleUndo,
-          handleTranscriptSelect: s.handleTranscriptSelect,
-          transcriptBundlePath: s.transcriptBundlePath,
-          inputValue: c,
-          setInputValue: a,
-          onRequestFeedback: l,
-          appearanceId: s.appearanceId,
-          surveyType: "session",
-        })),
-          (t[30] = s.appearanceId),
-          (t[31] = s.handleSelect),
-          (t[32] = s.handleTranscriptSelect),
-          (t[33] = s.handleUndo),
-          (t[34] = s.lastResponse),
-          (t[35] = s.state),
-          (t[36] = s.transcriptBundlePath),
-          (t[37] = l),
-          (t[38] = c),
-          (t[39] = a),
-          (t[40] = d));
-      else d = t[40];
-      return d;
-    }
-    case "frustration": {
-      let d;
-      if (
-        t[41] !== i.handleTranscriptSelect ||
-        t[42] !== i.state ||
-        t[43] !== i.transcriptBundlePath ||
-        t[44] !== c ||
-        t[45] !== a
-      )
-        ((d = uvt.jsx(cvt, {
-          state: i.state,
-          lastResponse: null,
-          handleSelect: Twm,
-          handleUndo: Hwm,
-          handleTranscriptSelect: i.handleTranscriptSelect,
-          transcriptBundlePath: i.transcriptBundlePath,
-          inputValue: c,
-          setInputValue: a,
-        })),
-          (t[41] = i.handleTranscriptSelect),
-          (t[42] = i.state),
-          (t[43] = i.transcriptBundlePath),
-          (t[44] = c),
-          (t[45] = a),
-          (t[46] = d));
-      else d = t[46];
-      return d;
-    }
-    case null:
-      return null;
+function p1n(e) {
+  let t = cap(e);
+  return {
+    action: t >= 3 ? "trip" : "proceed",
+    consecutiveRapidRefills: t,
+  };
+}
+function oio(e, t) {
+  return {
+    compacted: true,
+    turnId: e,
+    turnCounter: 0,
+    consecutiveFailures: 0,
+    consecutiveRapidRefills: t,
+  };
+}
+var bia = 3,
+  sio =
+    "Autocompact is thrashing: the context refilled to the limit within 3 turns of the previous compact, 3 times in a row. A file being read or a tool output is likely too large for the context window. Try reading in smaller chunks, or use /clear to start fresh.";
+var cio = {};
+function createAbortController(e = uap) {
+  let t = new AbortController();
+  return (Sia.setMaxListeners(e, t.signal), t);
+}
+function dap(e) {
+  let t = this.deref();
+  e.deref()?.abort(t?.signal.reason);
+}
+function pap(e) {
+  let t = this.deref(),
+    n = e.deref();
+  if (t && n) t.signal.removeEventListener("abort", n);
+}
+function Eia(e, t, n) {
+  let r = new WeakRef(t),
+    o = new WeakRef(e);
+  if (e.signal.aborted) {
+    n.call(o, r);
+    return;
+  }
+  let s = n.bind(o, r);
+  (e.signal.addEventListener("abort", s, {
+    once: true,
+  }),
+    fap.register(t, {
+      parentSignalRef: new WeakRef(e.signal),
+      handler: s,
+    }),
+    t.signal.addEventListener("abort", pap.bind(o, new WeakRef(s)), {
+      once: true,
+    }));
+}
+function createChildAbortController(e, t) {
+  let n = createAbortController(t);
+  return (Eia(e, n, dap), n);
+}
+function attachDetachableAbortRelay(e, t) {
+  if (e.signal.aborted) return (t.abort(e.signal.reason), () => {});
+  let n = () => t.abort(e.signal.reason);
+  return (
+    e.signal.addEventListener("abort", n, {
+      once: true,
+    }),
+    () => e.signal.removeEventListener("abort", n)
+  );
+}
+function userAbortReason(e) {
+  return new DOMException(e, "AbortError");
+}
+function unwrapAbortReason(e) {
+  return e instanceof DOMException && e.name === "AbortError" ? e.message : e;
+}
+function isUserInitiatedAbortReason(e) {
+  return map.has(unwrapAbortReason(e));
+}
+function isServerFallbackDiscard(e) {
+  return e.aborted && unwrapAbortReason(e.reason) === SERVER_FALLBACK_TOMBSTONE_REASON;
+}
+function serverFallbackTombstoneAbortReason() {
+  return new DOMException(SERVER_FALLBACK_TOMBSTONE_REASON, "AbortError");
+}
+function classifyAbortReasonForTelemetry(e) {
+  switch (unwrapAbortReason(e)) {
+    case "user-cancel":
+      return "user_cancel";
+    case "remote-cancel":
+      return "remote_cancel";
+    case "interrupt":
+      return "interrupt";
+    case "background":
+      return "background";
+    case "recovery-timeout":
+      return "recovery_timeout";
+    case SERVER_FALLBACK_TOMBSTONE_REASON:
+      return "server_fallback_tombstone";
     default:
-      return null;
+      return "turn_teardown";
   }
 }
-function Hwm() {}
-function Twm() {}
-var CRc, uvt;
+function isUserAttributableAbortKind(e) {
+  switch (e) {
+    case "user_cancel":
+    case "remote_cancel":
+    case "interrupt":
+    case "background":
+      return true;
+    case "turn_teardown":
+    case "recovery_timeout":
+    case "server_fallback_tombstone":
+      return false;
+  }
+}
+function gap(e) {
+  let t = this.deref();
+  if (!t || !isUserInitiatedAbortReason(t.signal.reason)) return;
+  e.deref()?.abort(t.signal.reason);
+}
+function hap(e) {
+  e.deref()?.abort(userAbortReason("recovery-timeout"));
+}
+function createRecoveryAbortController(e, t = RECOVERY_ABORT_TIMEOUT_MS) {
+  let n = createAbortController();
+  if ((Eia(e, n, gap), n.signal.aborted)) return n;
+  let r = setTimeout(hap, t, new WeakRef(n));
+  return (
+    r.unref(),
+    n.signal.addEventListener("abort", clearTimeout.bind(void 0, r), {
+      once: true,
+    }),
+    n
+  );
+}
+var Sia,
+  uap = 50,
+  fap,
+  map,
+  SERVER_FALLBACK_TOMBSTONE_REASON = "server-fallback-tombstone",
+  RECOVERY_ABORT_TIMEOUT_MS = 600000;

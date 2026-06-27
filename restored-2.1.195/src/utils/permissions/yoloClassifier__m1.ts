@@ -1,304 +1,175 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Epe
+// restored from claude-code 2.1.195 (deminified) — module RHo
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
-// class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0583  score=0.2713  fileCov=0.0691
+// class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0607  score=0.3295  fileCov=0.0693
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-function qXa(e) {
-  let t = e.replace(/[\x00-\x1f\x7f-\x9f]/g, "");
-  return Ix(t, Z7p);
-}
-function eXp(e) {
-  return e.map(
-    (t) => `## ${t.id}
-Situation: ${t.situation}
-Feature: ${t.feature}
-Action: ${t.action}`,
-  ).join(`
-
-`);
-}
-function tXp(e) {
-  return `You are watching someone use Claude Code. Occasionally \u2014 very occasionally \u2014 you may notice a moment where a brief suggestion would genuinely help them.
-
-Your default output is: no tip. The user is working. They don't need interruption. Saying nothing is almost always correct.
-
-Only speak up when ALL of these are true:
-1. You see a clear PATTERN in the conversation (not a one-off moment)
-2. There is a specific feature that would help with what they are experiencing
-3. The user appears to NOT already know about the feature
-4. The suggestion would feel helpful, not interrupting
-
-When you do tip:
-- Reference what the user is doing specifically. Not "did you know about X" but "you're doing Y, and X would help."
-- 1-2 sentences maximum.
-- Include a command or shortcut they can try.
-- Sound like a colleague who knows a useful trick \u2014 not a tutorial popup.
-
-When to absolutely stay silent:
-- User is in productive flow (getting things done smoothly)
-- Conversation feels urgent or time-sensitive
-- You are not confident the suggestion is relevant
-- The current turn is routine work with no friction
-
-The catalog below lists all tips. The user message includes <eligible_ids> \u2014 a subset pre-filtered for this user's experience level and local state (tips already shown, features not enabled, etc) \u2014 and <ineligible_ids>, the remainder that local state has already ruled out. Only pick a feature_id from eligible_ids. Picking an id from ineligible_ids is always wrong: that tip has been vetoed for a reason the transcript cannot show, and it will be discarded. Your job is to match situations within eligible_ids, not to second-guess whether a tip is too advanced. Use numStartups for tone: under 50, phrase as "you can X"; over 50, phrase as a peer pointing out a shortcut.
-
-The strongest signal for a tip is when Claude said it CANNOT do something
-that a feature would enable ("I don't have access to your database",
-"I don't have context from our previous conversation"). These capability-gap
-moments are the highest-value tips because the user just experienced the need.
-
-When teamMcpServers or teamSkills appear in session_metadata, those are
-tools the user's teammates already use \u2014 and they directly outrank a generic
-suggestion. If a tip is about MCP or skills and team data is present, name
-the specific tool and the count: "11 teammates use the Atlassian MCP \u2014 claude
-mcp add atlassian" instead of "you can connect MCP servers". Only do this
-when the team data actually matches the situation; do not pad an unrelated
-tip with team stats.
-
-<situations>
-${eXp(e)}
-</situations>
-
-## Examples
-
-Example 1 \u2014 tip (Claude says it lacks prior context):
-Transcript: User: Can you continue the refactor from yesterday? Assistant: I don't have context from our earlier conversation \u2014 could you describe what we were working on?
-numStartups: 8
-Decision: has_tip=true, tip="Looks like you're picking up previous work \u2014 claude --resume lets you continue with full context.", feature_id="previous-session-reference", action="claude --resume"
-
-Example 2 \u2014 no tip (user in productive flow):
-Transcript: User: Fix the login validation. Assistant: [reads file, makes changes]. User: Great, now add tests.
-numStartups: 30
-Decision: has_tip=false. User is getting things done. No friction. No tip needed.
-
-Example 3 \u2014 no tip (no situation matches):
-Transcript: User: Use a subagent to explore the payment module. Assistant: [spawns agent]. User: Now /compact and let's refactor.
-numStartups: 150
-Decision: has_tip=false. Productive flow; nothing in the catalog describes this transcript.
-
-Example 4 \u2014 tip (correction spiral):
-Transcript: User: Refactor auth. Assistant: [makes changes]. User: No, keep the middleware. Assistant: [revises]. User: That's still wrong, I want both to work.
-numStartups: 25
-Decision: has_tip=true, tip="We've been going back and forth on this. Starting fresh with /clear and a more specific prompt usually converges faster.", feature_id="correction-spiral", action="/clear"`;
-}
-function kHo(e, t) {
-  let n = iXp(t),
-    r = [],
-    o = new Map(),
-    s = e.slice(-30);
-  for (let i of s) {
-    if ((i.type === "user" || i.type === "assistant") && i.isVirtual) continue;
-    if (i.type === "user") {
-      if (i.isMeta) continue;
-      let a = i.message.content;
-      if (typeof a === "string") r.push(`User: ${LVt(a, 1000)}`);
-      else if (Array.isArray(a)) {
-        for (let l of a)
-          if (l.type === "text") r.push(`User: ${LVt(l.text, 1000)}`);
-          else if (l.type === "tool_result") {
-            let c =
-                typeof l.content === "string"
-                  ? l.content.length
-                  : Array.isArray(l.content)
-                    ? l.content.reduce((d, p) => d + (p.type === "text" ? p.text.length : 0), 0)
-                    : 0,
-              u = o.get(l.tool_use_id) ?? "tool";
-            r.push(`[${u} result${l.is_error ? " (error)" : ""}: ${c} chars]`);
-          }
-      }
-    } else if (i.type === "system" && i.subtype === "local_command")
-      r.push(`User (local command): ${LVt(i.content, 300)}`);
-    else if (i.type === "assistant") {
-      if (i.isMeta) continue;
-      for (let a of i.message.content)
-        if (a.type === "text") r.push(`Assistant: ${LVt(a.text, 300)}`);
-        else if (a.type === "tool_use")
-          (o.set(a.id, a.name), r.push(`Assistant (tool call): ${a.name} ${sXp(a, n)}`));
-    }
-  }
-  return r.join(`
-`);
-}
-function LVt(e, t) {
-  return e.length > t ? Ix(e, t) + "\u2026" : e;
-}
-function sXp(e, t) {
-  let n = t.get(e.name),
-    r = e.input ?? {},
-    o;
-  if (n)
-    try {
-      let s = n.toAutoClassifierInput(r) ?? r;
-      o = typeof s === "string" ? s : De(s);
-    } catch {
-      o = De(r);
-    }
-  else o = De(r);
-  return LVt(o, oXp);
-}
-function iXp(e) {
-  let t = new Map();
-  for (let n of e) {
-    t.set(n.name, n);
-    for (let r of n.aliases ?? []) t.set(r, n);
-  }
-  return t;
-}
-function aXp(e) {
-  let t = [`numStartups: ${e.numStartups}`, `turnCount: ${e.turnCount}`];
-  if (e.mcpServers.length > 0) t.push(`mcpServers: ${e.mcpServers.join(", ")}`);
-  if (e.teamMcpServers.length > 0)
-    t.push(
-      `teamMcpServers (used by teammates, count is users): ${e.teamMcpServers.map((n) => `${n.name} (${n.userCount})`).join(", ")}`,
-    );
-  if (e.teamSkills.length > 0)
-    t.push(
-      `teamSkills (used by teammates, count is users): ${e.teamSkills.map((n) => `${n.name} (${n.userCount})`).join(", ")}`,
-    );
-  return `<session_metadata>
-${t.join(`
-`)}
-</session_metadata>`;
-}
-function VXa() {
-  async function e(t, n, r, o, s) {
-    let i = kHo(t, n);
-    if (i.length === 0) return RVt;
-    let a = o.map((d) => d.id).join(","),
-      l = new Set(o.map((d) => d.id)),
-      c = M9n.filter((d) => !l.has(d.id))
-        .map((d) => d.id)
-        .join(","),
-      u = Date.now();
-    try {
-      let d = await yN({
-          model: WG(),
-          system: [
-            {
-              type: "text",
-              text: tXp(M9n),
-              cache_control: {
-                type: "ephemeral",
-              },
-            },
-          ],
-          skipSystemPromptPrefix: true,
-          messages: [
-            {
-              role: "user",
-              content: [
-                {
-                  type: "text",
-                  text: `${aXp(r)}
-
-<eligible_ids>${a}</eligible_ids>
-<ineligible_ids>${c}</ineligible_ids>
-
-<transcript>
-${i}
-</transcript>`,
-                },
-              ],
-            },
-          ],
-          tools: [rXp],
-          tool_choice: {
-            type: "tool",
-            name: xHo,
-          },
-          max_tokens: 512,
-          temperature: 0,
-          signal: s,
-          querySource: "context_tip_classifier",
-        }),
-        p = Date.now() - u,
-        f = $9n(d.content, xHo);
-      if (!f)
-        return (
-          T("[context-tips] no tool_use block in response"),
-          fht({
-            outcome: "parse_failure",
-            durationMs: p,
-            eligibleIds: a,
-            usage: d.usage,
-          }),
-          Le("tips_context_classify", "tips_context_classify_no_tool_use"),
-          RVt
-        );
-      let m = O9n(f, nXp());
-      if (!m)
-        return (
-          T("[context-tips] response failed schema parse"),
-          fht({
-            outcome: "parse_failure",
-            durationMs: p,
-            eligibleIds: a,
-            usage: d.usage,
-          }),
-          Le("tips_context_classify", "tips_context_classify_parse_failed"),
-          RVt
-        );
-      let g =
-          m.has_tip && m.tip && m.feature_id
-            ? {
-                tip: qXa(m.tip),
-                featureId: m.feature_id,
-                action: m.action ? qXa(m.action) : void 0,
-              }
-            : void 0,
-        h = g && o.some((b) => b.id === g.featureId);
-      return (
-        fht({
-          outcome: g ? (h ? "tip" : "tip_ineligible") : "no_tip",
-          featureId: m.feature_id ?? "none",
-          classifierLogId: d.id,
-          durationMs: p,
-          eligibleIds: a,
-          usage: d.usage,
-        }),
-        xe("tips_context_classify"),
-        h
-          ? {
-              tip: g,
-              classifierLogId: d.id,
-            }
-          : RVt
-      );
-    } catch (d) {
-      let p = Date.now() - u,
-        f = be(d);
-      return (
-        T(`[context-tips] classifier error: ${f}`),
-        fht({
-          outcome: "error",
-          durationMs: p,
-          eligibleIds: a,
-          error: f,
-        }),
-        Le("tips_context_classify", "tips_context_classify_request_failed"),
-        RVt
-      );
-    }
-  }
-  return {
-    classify: e,
+// [unwrapped __esm module RHo] deps: Xr, je, At, Ao, pht, Epe, Jt, sr, dn, kt, wHo
+((RVt = {}),
+  (nXp = ve(() =>
+    H.object({
+      has_tip: H.boolean(),
+      tip: H.string().optional(),
+      feature_id: H.string().optional(),
+      action: H.string().optional(),
+    }),
+  )),
+  (rXp = {
+    name: xHo,
+    description:
+      "Emit a contextual tip, or decline. Declining (has_tip: false) is the expected outcome most of the time.",
+    input_schema: {
+      type: "object",
+      properties: {
+        has_tip: {
+          type: "boolean",
+          description: "Whether to show a tip. false is the expected default.",
+        },
+        tip: {
+          type: "string",
+          description:
+            "1-2 sentence tip referencing what the user is doing. Only when has_tip is true.",
+        },
+        feature_id: {
+          type: "string",
+          description:
+            'Situation ID from the catalog (e.g. "correction-spiral"). Only when has_tip is true.',
+        },
+        action: {
+          type: "string",
+          description: 'Command or shortcut to try (e.g. "/mcp"). Optional.',
+        },
+      },
+      required: ["has_tip"],
+    },
+  }));
+function KXa(e, t, n, r) {
+  e.pending = {
+    tip: t,
+    classifierLogId: n,
+    shownAtMessageCount: r,
   };
 }
-function fht(e) {
-  G("tengu_context_tip_classifier_outcome", {
+function YXa(e, t, n) {
+  if (!e.pending) return Promise.resolve();
+  if (t.length < e.pending.shownAtMessageCount) return ((e.pending = null), Promise.resolve());
+  let r = t.slice(e.pending.shownAtMessageCount);
+  if (r.length < 4) return Promise.resolve();
+  let o = e.pending;
+  e.pending = null;
+  let s = o.tip.featureId,
+    i = o.classifierLogId;
+  return dXp(r, n, o).catch((a) => {
+    let l = be(a);
+    (T(`[context-tips] reception error: ${l}`),
+      N9n({
+        outcome: "error",
+        featureId: s,
+        classifierLogId: i,
+        error: l,
+      }),
+      Le("tips_context_reception_score", "tips_context_reception_request_failed"));
+  });
+}
+async function dXp(e, t, n) {
+  let r = kHo(e, t);
+  if (r.length === 0) {
+    N9n({
+      outcome: "no_transcript",
+      featureId: n.tip.featureId,
+      classifierLogId: n.classifierLogId,
+    });
+    return;
+  }
+  let o = `<tip_shown>
+Feature: ${n.tip.featureId}
+Tip: ${n.tip.tip}
+Suggested action: ${n.tip.action ?? "(none)"}
+</tip_shown>`,
+    s = Date.now(),
+    i = await yN({
+      model: WG(),
+      system: [
+        {
+          type: "text",
+          text: lXp,
+          cache_control: {
+            type: "ephemeral",
+          },
+        },
+      ],
+      skipSystemPromptPrefix: true,
+      messages: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: `${o}
+
+<transcript_after_tip>
+${r}
+</transcript_after_tip>`,
+            },
+          ],
+        },
+      ],
+      tools: [cXp],
+      tool_choice: {
+        type: "tool",
+        name: LHo,
+      },
+      max_tokens: 128,
+      temperature: 0,
+      signal: AbortSignal.timeout(10000 /* 1e4 */),
+      querySource: "context_tip_reception",
+    }),
+    a = Date.now() - s,
+    l = $9n(i.content, LHo),
+    c = l && O9n(l, uXp());
+  if (!c) {
+    (N9n({
+      outcome: "parse_failure",
+      featureId: n.tip.featureId,
+      classifierLogId: n.classifierLogId,
+      durationMs: a,
+    }),
+      Le("tips_context_reception_score", "tips_context_reception_parse_failed"));
+    return;
+  }
+  (T(
+    `[context-tips] reception: feature=${n.tip.featureId} acted_on=${c.acted_on} reception=${c.reception}`,
+  ),
+    N9n({
+      outcome: "scored",
+      featureId: n.tip.featureId,
+      classifierLogId: n.classifierLogId,
+      receptionClassifierLogId: i.id,
+      actedOn: c.acted_on,
+      reception: c.reception,
+      durationMs: a,
+      usage: i.usage,
+    }),
+    xe("tips_context_reception_score"));
+}
+function N9n(e) {
+  G("tengu_context_tip_reception", {
     outcome: $e(e.outcome),
+    featureId: e.featureId,
     ...(e.classifierLogId && {
       classifierLogId: e.classifierLogId,
     }),
+    ...(e.receptionClassifierLogId && {
+      receptionClassifierLogId: e.receptionClassifierLogId,
+    }),
+    ...(e.actedOn !== void 0 && {
+      actedOn: e.actedOn,
+    }),
+    ...(e.reception && {
+      reception: $e(e.reception),
+    }),
     ...(e.durationMs !== void 0 && {
       durationMs: e.durationMs,
-    }),
-    ...(e.eligibleIds && {
-      eligibleIds: e.eligibleIds,
-    }),
-    ...(e.featureId && {
-      featureId: e.featureId,
     }),
     ...(e.usage && {
       inputTokens: e.usage.input_tokens,
@@ -310,9 +181,26 @@ function fht(e) {
     }),
   });
 }
-var Z7p = 200,
-  RVt,
-  xHo = "emit_context_tip",
-  nXp,
-  rXp,
-  oXp = 500;
+var zXa,
+  lXp = `You evaluate whether a tip shown to a Claude Code user was well-received.
+
+You receive:
+1. The tip that was shown (suggested feature + action)
+2. A transcript of what happened AFTER the tip was shown
+
+Rate two things:
+
+acted_on \u2014 did the user try the suggested action?
+- true: the user's next message or a later message used the suggested command/feature, or they asked about it
+- false: no sign they tried it
+
+reception \u2014 how was the tip received?
+- "positive": user used the feature, thanked for the tip, or the suggestion clearly helped
+- "neutral": user kept working without acknowledging the tip (most common \u2014 not a bad signal)
+- "negative": user expressed frustration, the tip was clearly wrong for their situation, or they said to stop showing tips
+- "unknown": transcript too short or ambiguous to judge
+
+Be conservative: "neutral" is the expected default. Only mark "positive" or "negative" when the signal is clear.`,
+  LHo = "rate_tip_reception",
+  cXp,
+  uXp;

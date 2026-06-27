@@ -1,752 +1,1013 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module vnc
+// restored from claude-code 2.1.195 (deminified) — module Oyc
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
-// class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0803  score=0.1916  fileCov=0.1214
+// class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0545  score=0.128  fileCov=0.0866
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module vnc] deps: ft
-((fXf = {
-  type: "local-jsx",
-  name: "goal",
-  description: "Set a goal Claude checks before stopping",
-  argumentHint: "[<condition> | clear]",
-  immediate: true,
-  load: () => Promise.resolve().then(() => (Enc(), bnc)),
-}),
-  (mXf = {
-    type: "local",
-    name: "goal",
-    supportsNonInteractive: true,
-    thinClientDispatch: "post-text",
-    description: "Set a goal \u2014 keep working until the condition is met",
-    get isHidden() {
-      return !Ir();
-    },
-    isEnabled: () => Ir() || da(),
-    load: () => Promise.resolve().then(() => (Hnc(), Anc)),
-  }),
-  (gXf = fXf));
-function hXf(e) {
+// [unwrapped __esm module Oyc] deps: ft, loe, Xa, Ed, tC, Ye, ps, uo, sa, Fh, Bs, vi, f_, Ko
+((Myc = require("path")), (y7e = R(rt(), 1)), (FP = R(se(), 1)));
+function kZ(e) {
+  return MF(e) || uE(e);
+}
+function Byc(e) {
+  return e.type === "in_process_teammate" ? e.identity.agentName : e.agentType;
+}
+function Npm(e) {
+  return e.type === "in_process_teammate" ? e.identity.agentId : e.agentId;
+}
+function Bpm(e) {
+  return e.type === "in_process_teammate" ? e.pendingUserMessages.length : e.pendingMessages.length;
+}
+function Upm(e, t) {
+  return (
+    e?.type === "in_process_teammate" &&
+    e.isIdle &&
+    e.evictAfter !== void 0 &&
+    e.evictAfter > 0 &&
+    e.evictAfter <= t &&
+    e.pendingUserMessages.length === 0 &&
+    !e.awaitingPlanApproval
+  );
+}
+function Fpm(e, t) {
+  let n = t ? e[t] : void 0,
+    r = MF(n) ? n.agentId : void 0,
+    o = MF(n) ? Xse(e, n) : void 0,
+    s = Uyc(e, t),
+    i = Object.values(e).filter(
+      (d) =>
+        kZ(d) &&
+        (d.evictAfter !== 0 || s.has(d.id)) &&
+        (Xse(e, d) === r || Xse(e, d) === o || s.has(d.id)),
+    ),
+    a = new Set(i.map((d) => d.id)),
+    l = new Map();
+  for (let d of i) {
+    let p = Xse(e, d),
+      f = p !== void 0 && a.has(p) ? p : void 0,
+      m = l.get(f);
+    if (m) m.push(d);
+    else l.set(f, [d]);
+  }
+  for (let d of l.values()) d.sort((p, f) => p.startTime - f.startTime);
+  let c = [];
+  function u(d) {
+    for (let p of l.get(d) ?? []) (c.push(p), u(p.id));
+  }
+  return (u(void 0), c);
+}
+function Xse(e, t) {
+  if (t.type === "in_process_teammate" || !t.parentAgentId) return;
+  let n = e[t.parentAgentId];
+  return MF(n) && n.evictAfter !== 0 ? t.parentAgentId : void 0;
+}
+function Uyc(e, t) {
+  let n = t ? e[t] : void 0,
+    r = new Set();
+  for (let o = kZ(n) ? n : void 0; o && !r.has(o.id); ) {
+    r.add(o.id);
+    let s = Xse(e, o),
+      i = s ? e[s] : void 0;
+    o = kZ(i) ? i : void 0;
+  }
+  return r;
+}
+function jpm(e, t) {
+  let n = 0,
+    r = new Set(),
+    o = Xse(e, t);
+  while (o && !r.has(o)) {
+    (r.add(o), n++);
+    let s = e[o];
+    o = MF(s) ? Xse(e, s) : void 0;
+  }
+  return n;
+}
+function Gpm(e, t) {
+  let n = 0;
+  for (let r of Object.values(e)) {
+    if (!MF(r) || r.evictAfter === 0) continue;
+    let o = Xse(e, r),
+      s = new Set();
+    while (o && !s.has(o)) {
+      if (o === t) {
+        n++;
+        break;
+      }
+      s.add(o);
+      let i = e[o];
+      o = MF(i) ? Xse(e, i) : void 0;
+    }
+  }
+  return n;
+}
+function Nme(e, t, n) {
+  return Fpm(e, n).filter((r) => t[r.id]?.content !== "");
+}
+function Fyc(e, t, n) {
+  if (e < 1) return e;
+  for (let r = Math.min(e, t.length) - 1; r >= 0; r--) {
+    let o = n.indexOf(t[r]);
+    if (o !== -1) return o + 1;
+  }
+  return 0;
+}
+function Men() {
+  return 2 + Math.max(rn(nt.circle), rn(gc)) + 1;
+}
+function jyc(e) {
+  switch (e) {
+    case "completed":
+      return "success";
+    case "failed":
+    case "killed":
+      return "error";
+    default:
+      return;
+  }
+}
+function I6o(e) {
+  if (e.type === "in_process_teammate") return !KHe(e.status);
+  return !KHe(e.status) || sw(e);
+}
+function Wpm(e, t, n, r) {
+  let o = Bpm(e),
+    s = o > 0 ? `${o} queued` : "",
+    i = e.progress?.tokenCount,
+    a = e.progress?.lastActivity ? nt.arrowDown : nt.arrowUp,
+    l = i !== void 0 && i > 0 ? `${a} ${ou(i)} tokens` : "";
+  if (e.type === "in_process_teammate") {
+    if (e.status === "running" && e.shutdownRequested)
+      return {
+        elapsed: "stopping",
+        tokenText: "",
+        queuedText: s,
+        queuedCount: o,
+      };
+    if (e.status === "running" && e.awaitingPlanApproval)
+      return {
+        elapsed: "awaiting approval",
+        tokenText: "",
+        queuedText: s,
+        queuedCount: o,
+      };
+    if (e.isIdle)
+      return {
+        elapsed: "idle",
+        tokenText: "",
+        queuedText: s,
+        queuedCount: o,
+      };
+    if (KHe(e.status)) {
+      let f = n ?? e.startTime,
+        m = e.endTime ?? t;
+      return {
+        elapsed: Yi(Math.max(0, m - f)),
+        tokenText: l,
+        queuedText: s,
+        queuedCount: o,
+      };
+    }
+    let p = n ?? e.startTime;
+    return {
+      elapsed: Yi(Math.max(0, t - p)),
+      tokenText: l,
+      queuedText: s,
+      queuedCount: o,
+    };
+  }
+  let c = !KHe(e.status);
+  if (c && e.isIdle)
+    return {
+      elapsed: "waiting",
+      tokenText: "",
+      queuedText: s,
+      queuedCount: o,
+    };
+  if (e.status === "completed" && r && !sw(e))
+    return {
+      elapsed: "idle",
+      tokenText: "",
+      queuedText: s,
+      queuedCount: o,
+    };
+  let u = e.totalPausedMs ?? 0,
+    d = Math.max(0, c ? t - e.startTime - u : (e.endTime ?? e.startTime) - e.startTime - u);
   return {
-    id: e.taskId,
-    type: "local_workflow",
-    description: e.summary ?? "Dynamic workflow",
-    status: e.status,
-    startTime: e.startTime,
-    endTime: e.startTime + e.durationMs,
-    toolUseId: void 0,
-    outputFile: "",
-    outputOffset: 0,
-    notified: true,
-    script: e.script,
-    scriptPath: e.scriptPath,
-    prompt: e.script,
-    summary: e.summary,
-    workflowName: e.workflowName,
-    phases: e.phases,
-    defaultModel: e.defaultModel,
-    workflowRunId: e.runId,
-    workflowProgress: e.workflowProgress,
-    progressVersion: 0,
-    agentCount: e.agentCount,
-    totalTokens: e.totalTokens ?? 0,
-    totalToolCalls: e.totalToolCalls ?? 0,
-    logs: e.logs,
-    result: e.result,
-    error: e.error,
+    elapsed: Yi(d),
+    tokenText: l,
+    queuedText: s,
+    queuedCount: o,
   };
 }
-function wnc(e) {
-  let t = OGo.c(139),
-    { onDone: n } = e;
-  Wh("workflow-history-dialog");
-  let { rows: r } = bb(br()),
-    o = Ht(vXf);
-  Ho();
-  let s = $T(),
-    i;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((i = []), (t[0] = i));
-  else i = t[0];
-  let [a, l] = _me.useState(i),
-    [c, u] = _me.useState(true),
-    d,
-    p;
-  if (t[1] === Symbol.for("react.memo_cache_sentinel"))
-    ((d = () => {
-      let me = false;
-      return (
-        Sml().then((pe) => {
-          if (!me) (l(pe), u(false));
-        }),
-        () => {
-          me = true;
+function qpm(e, t, n) {
+  let r = KHe(e.status),
+    o = r ? (e.endTime ?? e.startTime) : n,
+    s = Math.max(0, o - e.startTime - (e.totalPausedMs ?? 0)),
+    i = e.totalTokens > 0 ? ` \xB7 ${nt.arrowDown} ${ou(e.totalTokens)} tokens` : "",
+    a = t.failedCount > 0 ? ` \xB7 ${t.failedCount} failed` : "",
+    l = e.workflowName ?? e.summary ?? e.description ?? "Dynamic workflow",
+    c = bi(e.description ?? e.summary ?? "", ":").trim();
+  return {
+    name: l,
+    description: c === l ? "" : c,
+    statusText: `${t.done}/${t.total} agents done${a} \xB7 ${Yi(s)}${i}`,
+    bulletColor: r ? jyc(e.status) : t.failedCount > 0 ? "error" : void 0,
+  };
+}
+function Gyc({ showWorkflows: e = false } = {}) {
+  let t = Ht((z) => z.tasks),
+    n = Dc(),
+    r = Ht((z) => z.taskDecorations),
+    o = Ht((z) => z.viewingAgentTaskId),
+    s = Ht((z) => z.agentNameRegistry),
+    i = Ht((z) => z.coordinatorTaskIndex),
+    a = Ht((z) => z.footerSelection === "tasks"),
+    l = Ht((z) => z.footerSelection === "workflows"),
+    c = Ht((z) => z.workflowFooterIndex),
+    u = a ? i : void 0,
+    d = Ho(),
+    p = $T(),
+    f = Nme(t, r, o),
+    m = Object.values(t).some(kZ),
+    g = xZ.useMemo(() => (e ? Pen(t) : []), [t, e]),
+    h = g.length > 0,
+    y = xZ.useMemo(() => g.map((z) => l7n(z.workflowProgress, z.agentCount)), [g]),
+    b = xZ.useRef(t);
+  b.current = t;
+  let _ = xZ.useRef(e);
+  _.current = e;
+  let [, S] = xZ.useState(0);
+  Gc(
+    () => {
+      let z = Date.now(),
+        K = false,
+        Z = [];
+      for (let J of Object.values(b.current)) {
+        if (J.type === "local_workflow") {
+          if (J.status === "running") {
+            if (_.current) K = true;
+          } else if ((J.evictAfter ?? 1 / 0) <= z) p.evictTerminal(J.id);
+          continue;
         }
-      );
-    }),
-      (p = []),
-      (t[1] = d),
-      (t[2] = p));
-  else ((d = t[1]), (p = t[2]));
-  _me.useEffect(d, p);
-  let f;
-  if (t[3] !== a || t[4] !== o) {
-    let pe = Object.values(o ?? {}).filter(TXf),
-      ge = new Set(pe.map(HXf).filter(AXf)),
-      he = a.filter((le) => !ge.has(le.runId)).map(EXf);
-    ((f = [...pe.map(SXf), ...he].sort(bXf)), (t[3] = a), (t[4] = o), (t[5] = f));
-  } else f = t[5];
-  let m = f,
-    g;
-  if (t[6] === Symbol.for("react.memo_cache_sentinel"))
-    ((g = {
-      mode: "list",
-    }),
-      (t[6] = g));
-  else g = t[6];
-  let [h, y] = _me.useState(g),
-    [b, _] = _me.useState(0),
-    S = _me.useRef(false),
-    A;
-  if (t[7] !== c || t[8] !== m[0] || t[9] !== m.length || t[10] !== h.mode)
-    ((A = () => {
-      if (!c && m.length === 1 && h.mode === "list" && !S.current)
-        ((S.current = true),
-          y({
-            mode: "detail",
-            itemId: m[0].task.id,
-          }));
-    }),
-      (t[7] = c),
-      (t[8] = m[0]),
-      (t[9] = m.length),
-      (t[10] = h.mode),
-      (t[11] = A));
-  else A = t[11];
-  let v;
-  if (t[12] !== c || t[13] !== m || t[14] !== h.mode)
-    ((v = [c, m, h.mode]), (t[12] = c), (t[13] = m), (t[14] = h.mode), (t[15] = v));
-  else v = t[15];
-  _me.useEffect(A, v);
-  let C = m[b],
-    x;
-  if (t[16] === Symbol.for("react.memo_cache_sentinel")) ((x = () => _(_Xf)), (t[16] = x));
-  else x = t[16];
-  let I;
-  if (t[17] !== m.length)
-    ((I = () => _((me) => Math.min(m.length - 1, me + 1))), (t[17] = m.length), (t[18] = I));
-  else I = t[18];
-  let k;
-  if (t[19] !== C)
-    ((k = () => {
-      if (C)
-        y({
-          mode: "detail",
-          itemId: C.task.id,
-        });
-    }),
-      (t[19] = C),
-      (t[20] = k));
-  else k = t[20];
-  let D;
-  if (t[21] !== k || t[22] !== I)
-    ((D = {
-      "confirm:previous": x,
-      "confirm:next": I,
-      "confirm:yes": k,
-    }),
-      (t[21] = k),
-      (t[22] = I),
-      (t[23] = D));
-  else D = t[23];
-  let P = h.mode === "list",
-    O;
-  if (t[24] !== P)
-    ((O = {
-      context: "Confirmation",
-      isActive: P,
-    }),
-      (t[24] = P),
-      (t[25] = O));
-  else O = t[25];
-  No(D, O);
-  let L = C !== void 0 && C.task.script.length > 0,
-    M;
-  if (t[26] !== C || t[27] !== L || t[28] !== s || t[29] !== h.mode)
-    ((M = (me) => {
-      if (h.mode !== "list") return;
-      if (me.ctrl || me.meta) return;
-      if (me.key === "x" && C?.task.status === "running") (me.preventDefault(), qAe(C.task.id, s));
-      else if (me.key === "s" && L && C)
-        (me.preventDefault(),
-          y({
-            mode: "save",
-            itemId: C.task.id,
-          }));
-    }),
-      (t[26] = C),
-      (t[27] = L),
-      (t[28] = s),
-      (t[29] = h.mode),
-      (t[30] = M));
-  else M = t[30];
-  let N = M,
-    B;
-  if (t[31] !== m.length || t[32] !== n)
-    ((B = () => {
-      if (S.current && m.length <= 1)
-        n("Dynamic workflows dialog dismissed", {
-          display: "system",
-        });
-      else
-        ((S.current = false),
-          y({
-            mode: "list",
-          }));
-    }),
-      (t[31] = m.length),
-      (t[32] = n),
-      (t[33] = B));
-  else B = t[33];
-  let $ = B;
-  if (h.mode === "detail") {
-    let me;
-    if (t[34] !== m || t[35] !== h.itemId) {
-      let Ie;
-      if (t[37] !== h.itemId)
-        ((Ie = (Ve) => Ve.task.id === h.itemId), (t[37] = h.itemId), (t[38] = Ie));
-      else Ie = t[38];
-      ((me = m.find(Ie)), (t[34] = m), (t[35] = h.itemId), (t[36] = me));
-    } else me = t[36];
-    let pe = me;
-    if (!pe)
-      return (
-        y({
-          mode: "list",
-        }),
-        null
-      );
-    let ge = pe.task.status === "running",
-      he = pe.task,
-      ie;
-    if (t[39] !== n)
-      ((ie = (Ie) =>
-        Ie
-          ? n(Ie, {
-              display: "system",
-            })
-          : n()),
-        (t[39] = n),
-        (t[40] = ie));
-    else ie = t[40];
-    let le;
-    if (t[41] !== ge || t[42] !== pe.task.id || t[43] !== s)
-      ((le = ge ? () => qAe(pe.task.id, s) : void 0),
-        (t[41] = ge),
-        (t[42] = pe.task.id),
-        (t[43] = s),
-        (t[44] = le));
-    else le = t[44];
-    let He;
-    if (t[45] !== ge || t[46] !== pe.task.id || t[47] !== s)
-      ((He = ge ? () => R6e(pe.task.id, s) : void 0),
-        (t[45] = ge),
-        (t[46] = pe.task.id),
-        (t[47] = s),
-        (t[48] = He));
-    else He = t[48];
-    let ye;
-    if (t[49] !== n)
-      ((ye = (Ie) =>
-        n(Ie, {
-          shouldQuery: true,
-          display: "system",
-          metaMessages: [Ie],
-        })),
-        (t[49] = n),
-        (t[50] = ye));
-    else ye = t[50];
-    let ue;
-    if (t[51] !== ge || t[52] !== pe.task.id || t[53] !== s)
-      ((ue = ge ? (Ie) => $6t(pe.task.id, Ie, s) : void 0),
-        (t[51] = ge),
-        (t[52] = pe.task.id),
-        (t[53] = s),
-        (t[54] = ue));
-    else ue = t[54];
-    let we;
-    if (t[55] !== ge || t[56] !== pe.task.id || t[57] !== s)
-      ((we = ge ? (Ie) => O6t(pe.task.id, Ie, s) : void 0),
-        (t[55] = ge),
-        (t[56] = pe.task.id),
-        (t[57] = s),
-        (t[58] = we));
-    else we = t[58];
-    let Ce;
-    if (
-      t[59] !== $ ||
-      t[60] !== pe.task.id ||
-      t[61] !== he ||
-      t[62] !== ie ||
-      t[63] !== le ||
-      t[64] !== He ||
-      t[65] !== ye ||
-      t[66] !== ue ||
-      t[67] !== we
-    )
-      ((Ce = dw.jsx(
-        yJt,
-        {
-          workflow: he,
-          onDone: ie,
-          onBack: $,
-          onKill: le,
-          onPause: He,
-          onResume: ye,
-          onSkipAgent: ue,
-          onRetryAgent: we,
-        },
-        pe.task.id,
-      )),
-        (t[59] = $),
-        (t[60] = pe.task.id),
-        (t[61] = he),
-        (t[62] = ie),
-        (t[63] = le),
-        (t[64] = He),
-        (t[65] = ye),
-        (t[66] = ue),
-        (t[67] = we),
-        (t[68] = Ce));
-    else Ce = t[68];
-    return Ce;
-  }
-  if (h.mode === "save") {
-    let me, pe, ge;
-    if (t[69] !== m || t[70] !== h.itemId) {
-      ge = Symbol.for("react.early_return_sentinel");
-      e: {
-        let He;
-        if (t[74] !== h.itemId)
-          ((He = (ue) => ue.task.id === h.itemId), (t[74] = h.itemId), (t[75] = He));
-        else He = t[75];
-        if (((me = m.find(He)), !me || me.task.script.length === 0)) {
-          (y({
-            mode: "list",
-          }),
-            (ge = null));
-          break e;
-        }
-        let ye = ZI(me.task.script);
-        pe = !("error" in ye) ? ye.meta.name : N_e(me.task.summary ?? me.task.description);
+        if (!kZ(J)) continue;
+        if (KHe(J.status)) {
+          if (J.evictAfter !== void 0 && J.evictAfter <= z) p.evictTerminal(J.id);
+        } else if (J.evictAfter !== void 0 && J.evictAfter > 0 && J.evictAfter <= z) Z.push(J.id);
+        else if (!KHe(J.status) && !J.isIdle) K = true;
       }
-      ((t[69] = m), (t[70] = h.itemId), (t[71] = me), (t[72] = pe), (t[73] = ge));
-    } else ((me = t[71]), (pe = t[72]), (ge = t[73]));
-    if (ge !== Symbol.for("react.early_return_sentinel")) return ge;
-    let he = pe,
-      ie;
-    if (t[76] !== n)
-      ((ie = (He) => {
-        if (He)
-          n(He, {
-            display: "system",
-          });
-        else
-          y({
-            mode: "list",
-          });
-      }),
-        (t[76] = n),
-        (t[77] = ie));
-    else ie = t[77];
-    let le;
-    if (t[78] !== he || t[79] !== me.task.script || t[80] !== ie)
-      ((le = dw.jsx(psr, {
-        script: me.task.script,
-        defaultName: he,
-        onDone: ie,
-      })),
-        (t[78] = he),
-        (t[79] = me.task.script),
-        (t[80] = ie),
-        (t[81] = le));
-    else le = t[81];
-    return le;
-  }
-  let q = On(m, yXf),
-    W = m.length - q,
-    V,
-    Y,
-    z,
-    K,
-    Z,
-    J,
-    ne,
-    oe,
-    re,
-    ee,
-    ce,
-    ae;
-  if (
-    t[82] !== W ||
-    t[83] !== N ||
-    t[84] !== c ||
-    t[85] !== m ||
-    t[86] !== n ||
-    t[87] !== r ||
-    t[88] !== q ||
-    t[89] !== C?.task.status ||
-    t[90] !== L ||
-    t[91] !== b
-  ) {
-    let me = _b(r - 7, 3, m.length),
-      { windowStart: pe, windowEnd: ge, moreAbove: he, moreBelow: ie } = yXt(b, m.length, me),
-      le = m.slice(pe, ge),
-      He;
-    if (t[104] !== n)
-      ((He = () =>
-        n("Dynamic workflows dialog dismissed", {
-          display: "system",
-        })),
-        (t[104] = n),
-        (t[105] = He));
-    else He = t[105];
-    let ye = He;
-    if (
-      ((Y = U),
-      (re = "column"),
-      (ee = 0),
-      (ce = true),
-      (ae = N),
-      (V = zn),
-      (z = "Dynamic workflows"),
-      t[106] !== W || t[107] !== m.length || t[108] !== q)
-    )
-      ((K =
-        m.length === 0
-          ? void 0
-          : dw.jsx(w, {
-              dimColor: true,
-              children: dw.jsxs(Tn, {
-                children: [q > 0 && `${q} running`, W > 0 && `${W} completed`],
+      if (Z.length > 0)
+        d((J) => {
+          let ne;
+          for (let oe of Z) {
+            let re = J.tasks[oe];
+            if (Upm(re, z))
+              ((ne ??= {
+                ...J.tasks,
               }),
-            })),
-        (t[106] = W),
-        (t[107] = m.length),
-        (t[108] = q),
-        (t[109] = K));
-    else K = t[109];
-    ((Z = ye), (J = "background"));
-    let ue;
-    if (t[110] !== m.length)
-      ((ue =
-        m.length > 0 &&
-        dw.jsx(ht, {
-          chord: ["up", "down"],
-          action: "select",
-        })),
-        (t[110] = m.length),
-        (t[111] = ue));
-    else ue = t[111];
-    let we;
-    if (t[112] !== m.length)
-      ((we =
-        m.length > 0 &&
-        dw.jsx(ht, {
-          chord: "enter",
-          action: "view",
-        })),
-        (t[112] = m.length),
-        (t[113] = we));
-    else we = t[113];
-    let Ce;
-    if (t[114] !== C?.task.status)
-      ((Ce =
-        C?.task.status === "running" &&
-        dw.jsx(ht, {
-          chord: "x",
-          action: "stop",
-        })),
-        (t[114] = C?.task.status),
-        (t[115] = Ce));
-    else Ce = t[115];
-    let Ie;
-    if (t[116] !== L)
-      ((Ie =
-        L &&
-        dw.jsx(ht, {
-          chord: "s",
-          action: "save",
-        })),
-        (t[116] = L),
-        (t[117] = Ie));
-    else Ie = t[117];
-    let Ve;
-    if (t[118] === Symbol.for("react.memo_cache_sentinel"))
-      ((Ve = dw.jsx(ht, {
-        chord: "escape",
-        action: "close",
-      })),
-        (t[118] = Ve));
-    else Ve = t[118];
-    if (t[119] !== ue || t[120] !== we || t[121] !== Ce || t[122] !== Ie)
-      ((ne = dw.jsxs(Tn, {
-        children: [ue, we, Ce, Ie, Ve],
-      })),
-        (t[119] = ue),
-        (t[120] = we),
-        (t[121] = Ce),
-        (t[122] = Ie),
-        (t[123] = ne));
-    else ne = t[123];
-    ((oe = c
-      ? dw.jsx(Vc, {
-          message: "Loading dynamic workflow history\u2026",
-          dimColor: true,
-        })
-      : m.length === 0
-        ? dw.jsx(Fl, {
-            children: "No dynamic workflows in this session.",
-          })
-        : dw.jsxs(U, {
-            flexDirection: "column",
-            children: [
-              he > 0 &&
-                dw.jsxs(w, {
-                  dimColor: true,
-                  children: ["  ", nt.arrowUp, " ", he, " more above"],
-                }),
-              le.map((Ze, Be) =>
-                dw.jsx(
-                  wXf,
-                  {
-                    item: Ze,
-                    isSelected: pe + Be === b,
-                  },
-                  Ze.task.id,
-                ),
+                (ne[oe] = {
+                  ...re,
+                  evictAfter: 0,
+                }));
+          }
+          return ne
+            ? {
+                ...J,
+                tasks: ne,
+              }
+            : J;
+        });
+      if (K) S((J) => J + 1);
+    },
+    m || h ? 1000 : null,
+  );
+  let A = xZ.useMemo(() => {
+      let z = new Map();
+      for (let [K, Z] of s) z.set(Z, K);
+      return z;
+    }, [s]),
+    v = o !== void 0 && kZ(t[o]);
+  if (f.length === 0 && !h && !v) return null;
+  let C = Date.now(),
+    x = g.map((z, K) => qpm(z, y[K], C)),
+    I = u ?? 0,
+    k = _b(I >= 1 ? I - 1 : f.findIndex((z) => z.id === o), 0, Math.max(0, f.length - 1)),
+    { windowStart: D, windowEnd: P, moreAbove: O, moreBelow: L } = yXt(k, f.length, Nyc),
+    M = Uyc(t, o),
+    N = f.map((z) => (M.has(z.id) ? 0 : Gpm(t, Npm(z)))),
+    B = f.map((z) => jpm(t, z)),
+    $ = (z) => (z > 0 ? ` (+${z})` : ""),
+    q = Math.min(
+      28,
+      Math.max(
+        4,
+        ...f.map((z, K) =>
+          r[z.id]?.content === void 0 ? 2 * B[K] + rn(A.get(z.id) ?? Byc(z)) + rn($(N[K])) : 0,
+        ),
+        ...x.map((z) => rn(z.name)),
+      ),
+    ),
+    W = n.getState().transcripts,
+    V = f.map((z) => Wpm(z, C, W[z.id]?.turnStartTime, A.has(z.id))),
+    Y = Math.max(
+      0,
+      ...V.map((z, K) =>
+        r[f[K].id]?.content === void 0
+          ? rn([z.elapsed, z.tokenText, z.queuedText].filter(Boolean).join(" \xB7 "))
+          : 0,
+      ),
+      ...x.map((z) => rn(z.statusText)),
+    );
+  return Au.jsxs(U, {
+    flexDirection: "column",
+    marginTop: 1,
+    children: [
+      (f.length > 0 || v) &&
+        Au.jsx(tfm, {
+          isSelected: u === 0,
+          isViewed: o === void 0,
+          labelWidth: q,
+          moreAbove: O,
+          onClick: () => Wq(d),
+        }),
+      f.slice(D, P).map((z, K) => {
+        let Z = D + K,
+          J = B[Z],
+          ne = Xse(t, z),
+          oe = ne !== void 0 && f.findIndex((ee) => ee.id === ne) >= D,
+          re;
+        if (J > 0 && oe) {
+          let ee = f.slice(Z + 1).some((ce) => Xse(t, ce) === ne);
+          re = Ff("  ", J - 1) + (ee ? FO.branch : FO.last) + " ";
+        }
+        return Au.jsx(
+          nfm,
+          {
+            task: z,
+            name: A.get(z.id),
+            decoration: r[z.id],
+            isSelected: u === Z + 1,
+            isViewed: o === z.id,
+            treeConnector: re,
+            descendantSuffix: $(N[Z]),
+            labelWidth: q,
+            statusWidth: Y,
+            statusParts: V[Z],
+            onClick: () => Hz(z.id, d),
+          },
+          z.id,
+        );
+      }),
+      f.length > Nyc &&
+        Au.jsx(U, {
+          justifyContent: "flex-end",
+          children: Au.jsx(w, {
+            dimColor: true,
+            children: L > 0 ? `${r9} ${L} more` : " ",
+          }),
+        }),
+      g.map((z, K) =>
+        Au.jsx(
+          rfm,
+          {
+            parts: x[K],
+            isSelected: l && c === K,
+            labelWidth: q,
+            statusWidth: Y,
+            onClick: () =>
+              d((Z) =>
+                Z.workflowDetail?.taskId === z.id
+                  ? Z
+                  : {
+                      ...Z,
+                      workflowDetail: {
+                        taskId: z.id,
+                      },
+                    },
               ),
-              ie > 0 &&
-                dw.jsxs(w, {
-                  dimColor: true,
-                  children: ["  ", nt.arrowDown, " ", ie, " more below"],
+          },
+          z.id,
+        ),
+      ),
+    ],
+  });
+}
+function Wyc() {
+  let e = $Tt.c(12),
+    t = Ht(Jpm),
+    n = Ht(Xpm),
+    r = Ht(Ypm),
+    o = Ht(Kpm),
+    s = Ht(zpm),
+    i = Ht(Vpm),
+    a = Uu("chat:killAgents", "Chat", "ctrl+x ctrl+k"),
+    { columns: l } = br(),
+    c = l >= 90,
+    u;
+  if (o === "tasks" && s >= 0) {
+    let p;
+    if (e[0] !== s || e[1] !== a || e[2] !== c || e[3] !== n || e[4] !== t || e[5] !== r) {
+      let f = Nme(t, n, r),
+        m = s >= 1 ? f[s - 1] : void 0;
+      ((p = m
+        ? Au.jsxs(Tn, {
+            children: [
+              Au.jsx(ht, {
+                chord: "enter",
+                action: "view",
+              }),
+              Au.jsx(ht, {
+                chord: "x",
+                action: I6o(m) ? "stop" : "clear",
+              }),
+              c &&
+                On(f, I6o) > 1 &&
+                Au.jsx(ht, {
+                  chord: a,
+                  action: "stop all agents",
+                  format: {
+                    keyCase: "lower",
+                  },
                 }),
             ],
+          })
+        : Au.jsxs(Tn, {
+            children: [
+              Au.jsx(ht, {
+                chord: ["up", "down"],
+                action: "select",
+              }),
+              Au.jsx(ht, {
+                chord: "enter",
+                action: "view",
+              }),
+            ],
           })),
-      (t[82] = W),
-      (t[83] = N),
-      (t[84] = c),
-      (t[85] = m),
-      (t[86] = n),
-      (t[87] = r),
-      (t[88] = q),
-      (t[89] = C?.task.status),
-      (t[90] = L),
-      (t[91] = b),
-      (t[92] = V),
-      (t[93] = Y),
-      (t[94] = z),
-      (t[95] = K),
-      (t[96] = Z),
-      (t[97] = J),
-      (t[98] = ne),
-      (t[99] = oe),
-      (t[100] = re),
-      (t[101] = ee),
-      (t[102] = ce),
-      (t[103] = ae));
-  } else
-    ((V = t[92]),
-      (Y = t[93]),
-      (z = t[94]),
-      (K = t[95]),
-      (Z = t[96]),
-      (J = t[97]),
-      (ne = t[98]),
-      (oe = t[99]),
-      (re = t[100]),
-      (ee = t[101]),
-      (ce = t[102]),
-      (ae = t[103]));
-  let de;
-  if (
-    t[124] !== V ||
-    t[125] !== z ||
-    t[126] !== K ||
-    t[127] !== Z ||
-    t[128] !== J ||
-    t[129] !== ne ||
-    t[130] !== oe
-  )
-    ((de = dw.jsx(V, {
-      title: z,
-      subtitle: K,
-      onCancel: Z,
-      color: J,
-      inputGuide: ne,
-      children: oe,
-    })),
-      (t[124] = V),
-      (t[125] = z),
-      (t[126] = K),
-      (t[127] = Z),
-      (t[128] = J),
-      (t[129] = ne),
-      (t[130] = oe),
-      (t[131] = de));
-  else de = t[131];
-  let Ee;
-  if (
-    t[132] !== Y ||
-    t[133] !== re ||
-    t[134] !== ee ||
-    t[135] !== ce ||
-    t[136] !== ae ||
-    t[137] !== de
-  )
-    ((Ee = dw.jsx(Y, {
-      flexDirection: re,
-      tabIndex: ee,
-      autoFocus: ce,
-      onKeyDown: ae,
-      children: de,
-    })),
-      (t[132] = Y),
-      (t[133] = re),
-      (t[134] = ee),
-      (t[135] = ce),
-      (t[136] = ae),
-      (t[137] = de),
-      (t[138] = Ee));
-  else Ee = t[138];
-  return Ee;
+        (e[0] = s),
+        (e[1] = a),
+        (e[2] = c),
+        (e[3] = n),
+        (e[4] = t),
+        (e[5] = r),
+        (e[6] = p));
+    } else p = e[6];
+    u = p;
+  } else if (o === "workflows") {
+    let p;
+    if (e[7] !== t || e[8] !== i) {
+      let f = Pen(t)[i];
+      ((p = f
+        ? Au.jsxs(Tn, {
+            children: [
+              Au.jsx(ht, {
+                chord: "enter",
+                action: "view",
+              }),
+              Au.jsx(ht, {
+                chord: "x",
+                action: KHe(f.status) ? "clear" : "stop",
+              }),
+            ],
+          })
+        : Au.jsxs(Tn, {
+            children: [
+              Au.jsx(ht, {
+                chord: ["up", "down"],
+                action: "select",
+              }),
+              Au.jsx(ht, {
+                chord: "enter",
+                action: "view",
+              }),
+            ],
+          })),
+        (e[7] = t),
+        (e[8] = i),
+        (e[9] = p));
+    } else p = e[9];
+    u = p;
+  }
+  let d;
+  if (e[10] !== u)
+    ((d =
+      u !== void 0
+        ? Au.jsx(w, {
+            dimColor: true,
+            wrap: "truncate",
+            children: u,
+          })
+        : null),
+      (e[10] = u),
+      (e[11] = d));
+  else d = e[11];
+  return d;
 }
-function yXf(e) {
-  return e.task.status === "running";
+function Vpm(e) {
+  return e.workflowFooterIndex;
 }
-function _Xf(e) {
-  return Math.max(0, e - 1);
+function zpm(e) {
+  return e.coordinatorTaskIndex;
 }
-function bXf(e, t) {
-  return t.task.startTime - e.task.startTime;
+function Kpm(e) {
+  return e.footerSelection;
 }
-function SXf(e) {
-  return {
-    task: e,
-  };
+function Ypm(e) {
+  return e.viewingAgentTaskId;
 }
-function EXf(e) {
-  return {
-    task: hXf(e),
-    snapshot: e,
-  };
+function Xpm(e) {
+  return e.taskDecorations;
 }
-function AXf(e) {
-  return !!e;
-}
-function HXf(e) {
-  return e.workflowRunId;
-}
-function TXf(e) {
-  return e.type === "local_workflow";
-}
-function vXf(e) {
+function Jpm(e) {
   return e.tasks;
 }
-function wXf(e) {
-  let t = OGo.c(27),
-    { item: n, isSelected: r } = e,
-    o = n.task,
-    s = n.snapshot,
-    i,
-    a;
-  e: switch (o.status) {
-    case "completed": {
-      ((i = nt.tick), (a = "success"));
-      break e;
-    }
-    case "failed":
-    case "killed": {
-      ((i = nt.cross), (a = "error"));
-      break e;
-    }
-    default:
-      ((i = "\u27F3"), (a = void 0));
-  }
-  let l = s?.totalTokens ?? o.totalTokens ?? 0,
-    c;
-  if (t[0] !== o.endTime) ((c = o.endTime ?? Date.now()), (t[0] = o.endTime), (t[1] = c));
-  else c = t[1];
-  let u = Math.max(0, c - o.startTime - (o.totalPausedMs ?? 0)),
-    d;
-  if (t[2] !== o.agentCount)
-    ((d = o.agentCount > 0 ? `${o.agentCount} ${bn(o.agentCount, "agent")}` : null),
-      (t[2] = o.agentCount),
-      (t[3] = d));
-  else d = t[3];
-  let p;
-  if (t[4] !== l) ((p = l > 0 ? `${gl(l)} tok` : null), (t[4] = l), (t[5] = p));
-  else p = t[5];
-  let f;
-  if (t[6] !== u) ((f = Yi(u)), (t[6] = u), (t[7] = f));
-  else f = t[7];
-  let m;
-  if (t[8] !== d || t[9] !== p || t[10] !== f)
-    ((m = [d, p, f].filter(Boolean)), (t[8] = d), (t[9] = p), (t[10] = f), (t[11] = m));
-  else m = t[11];
-  let g = m,
-    h = o.workflowName ?? o.summary ?? o.description,
-    y = h.length > 50 ? h.slice(0, 49) + "\u2026" : h,
-    b = r ? nt.pointer + " " : "  ",
-    _;
-  if (t[12] !== b)
-    ((_ = dw.jsx(w, {
-      children: b,
+function Adr() {
+  let e = $Tt.c(4),
+    t = Ht(efm),
+    n = Ht(Zpm),
+    r = Ht(Qpm),
+    o;
+  if (e[0] !== n || e[1] !== t || e[2] !== r)
+    ((o = Nme(t, n, r)), (e[0] = n), (e[1] = t), (e[2] = r), (e[3] = o));
+  else o = e[3];
+  let s = o.length,
+    i = r !== void 0 && kZ(t[r]);
+  return s > 0 || i ? s + 1 : 0;
+}
+function Qpm(e) {
+  return e.viewingAgentTaskId;
+}
+function Zpm(e) {
+  return e.taskDecorations;
+}
+function efm(e) {
+  return e.tasks;
+}
+function tfm(e) {
+  let t = $Tt.c(16),
+    { isSelected: n, isViewed: r, labelWidth: o, moreAbove: s, onClick: i } = e,
+    [a, l] = xZ.useState(false),
+    c = n || a ? nt.pointer + " " : "  ",
+    u = r ? gc : nt.circle,
+    d = s > 0 ? `${Wee} ${s} more` : "",
+    p,
+    f;
+  if (t[0] === Symbol.for("react.memo_cache_sentinel"))
+    ((p = () => l(true)), (f = () => l(false)), (t[0] = p), (t[1] = f));
+  else ((p = t[0]), (f = t[1]));
+  let m = o + Men(),
+    g = !n && !r && !a,
+    h;
+  if (t[2] !== u || t[3] !== r || t[4] !== c || t[5] !== g)
+    ((h = Au.jsxs(w, {
+      dimColor: g,
+      bold: r,
+      children: [c, u, " main"],
     })),
-      (t[12] = b),
-      (t[13] = _));
-  else _ = t[13];
-  let S = r ? "suggestion" : void 0,
-    A;
-  if (t[14] !== i || t[15] !== a)
-    ((A = dw.jsx(w, {
-      color: a,
-      children: i,
+      (t[2] = u),
+      (t[3] = r),
+      (t[4] = c),
+      (t[5] = g),
+      (t[6] = h));
+  else h = t[6];
+  let y;
+  if (t[7] !== m || t[8] !== h)
+    ((y = Au.jsx(U, {
+      width: m,
+      flexShrink: 0,
+      children: h,
     })),
-      (t[14] = i),
-      (t[15] = a),
-      (t[16] = A));
-  else A = t[16];
-  let v = g.join(" \xB7 "),
+      (t[7] = m),
+      (t[8] = h),
+      (t[9] = y));
+  else y = t[9];
+  let b;
+  if (t[10] !== d)
+    ((b =
+      d &&
+      Au.jsx(w, {
+        dimColor: true,
+        children: d,
+      })),
+      (t[10] = d),
+      (t[11] = b));
+  else b = t[11];
+  let _;
+  if (t[12] !== i || t[13] !== y || t[14] !== b)
+    ((_ = Au.jsxs(U, {
+      justifyContent: "space-between",
+      onClick: i,
+      onMouseEnter: p,
+      onMouseLeave: f,
+      children: [y, b],
+    })),
+      (t[12] = i),
+      (t[13] = y),
+      (t[14] = b),
+      (t[15] = _));
+  else _ = t[15];
+  return _;
+}
+function nfm(e) {
+  let t = $Tt.c(79),
+    {
+      task: n,
+      name: r,
+      decoration: o,
+      labelWidth: s,
+      statusWidth: i,
+      statusParts: a,
+      isSelected: l,
+      isViewed: c,
+      treeConnector: u,
+      descendantSuffix: d,
+      onClick: p,
+    } = e,
+    [f, m] = xZ.useState(false),
+    { elapsed: g, tokenText: h, queuedText: y, queuedCount: b } = a,
+    _ = n.progress?.summary || n.description,
+    S = l || f,
+    A = S ? nt.pointer + " " : "  ",
+    v = c ? gc : nt.circle,
     C;
-  if (t[17] !== v)
-    ((C = dw.jsxs(w, {
-      dimColor: true,
-      children: ["  ", v],
+  if (t[0] !== n) ((C = I6o(n) ? void 0 : jyc(n.status)), (t[0] = n), (t[1] = C));
+  else C = t[1];
+  let x = C,
+    I = !S && !c,
+    k;
+  if (t[2] !== I || t[3] !== c || t[4] !== A)
+    ((k = Au.jsx(w, {
+      dimColor: I,
+      bold: c,
+      children: A,
     })),
-      (t[17] = v),
-      (t[18] = C));
-  else C = t[18];
+      (t[2] = I),
+      (t[3] = c),
+      (t[4] = A),
+      (t[5] = k));
+  else k = t[5];
+  let D;
+  if (t[6] !== I || t[7] !== u)
+    ((D =
+      u !== void 0 &&
+      Au.jsx(w, {
+        dimColor: I,
+        children: u,
+      })),
+      (t[6] = I),
+      (t[7] = u),
+      (t[8] = D));
+  else D = t[8];
+  let P = !x && I,
+    O;
+  if (t[9] !== v || t[10] !== x || t[11] !== c || t[12] !== P)
+    ((O = Au.jsxs(w, {
+      color: x,
+      dimColor: P,
+      bold: c,
+      children: [v, " "],
+    })),
+      (t[9] = v),
+      (t[10] = x),
+      (t[11] = c),
+      (t[12] = P),
+      (t[13] = O));
+  else O = t[13];
+  let L;
+  if (t[14] !== k || t[15] !== D || t[16] !== O)
+    ((L = Au.jsxs(Au.Fragment, {
+      children: [k, D, O],
+    })),
+      (t[14] = k),
+      (t[15] = D),
+      (t[16] = O),
+      (t[17] = L));
+  else L = t[17];
+  let M = L,
+    N;
+  if (t[18] !== u) ((N = u ? rn(u) : 0), (t[18] = u), (t[19] = N));
+  else N = t[19];
+  let B = N,
+    $ = Men() + B,
+    q = Math.max(0, s - B);
+  if (o?.content !== void 0) {
+    let me, pe;
+    if (t[20] === Symbol.for("react.memo_cache_sentinel"))
+      ((me = () => m(true)), (pe = () => m(false)), (t[20] = me), (t[21] = pe));
+    else ((me = t[20]), (pe = t[21]));
+    let ge;
+    if (t[22] !== M || t[23] !== $)
+      ((ge = Au.jsx(U, {
+        width: $,
+        flexShrink: 0,
+        children: M,
+      })),
+        (t[22] = M),
+        (t[23] = $),
+        (t[24] = ge));
+    else ge = t[24];
+    let he;
+    if (t[25] !== o.content)
+      ((he = Au.jsx(bd, {
+        children: o.content,
+      })),
+        (t[25] = o.content),
+        (t[26] = he));
+    else he = t[26];
+    let ie;
+    if (t[27] !== I || t[28] !== c || t[29] !== he)
+      ((ie = Au.jsx(U, {
+        flexGrow: 1,
+        width: 0,
+        children: Au.jsx(w, {
+          dimColor: I,
+          bold: c,
+          wrap: "truncate",
+          children: he,
+        }),
+      })),
+        (t[27] = I),
+        (t[28] = c),
+        (t[29] = he),
+        (t[30] = ie));
+    else ie = t[30];
+    let le;
+    if (t[31] !== p || t[32] !== ge || t[33] !== ie)
+      ((le = Au.jsxs(U, {
+        onClick: p,
+        onMouseEnter: me,
+        onMouseLeave: pe,
+        children: [ge, ie],
+      })),
+        (t[31] = p),
+        (t[32] = ge),
+        (t[33] = ie),
+        (t[34] = le));
+    else le = t[34];
+    return le;
+  }
+  let W, V;
+  if (t[35] === Symbol.for("react.memo_cache_sentinel"))
+    ((W = () => m(true)), (V = () => m(false)), (t[35] = W), (t[36] = V));
+  else ((W = t[35]), (V = t[36]));
+  let Y;
+  if (t[37] !== M || t[38] !== $)
+    ((Y = Au.jsx(U, {
+      width: $,
+      flexShrink: 0,
+      children: M,
+    })),
+      (t[37] = M),
+      (t[38] = $),
+      (t[39] = Y));
+  else Y = t[39];
+  let z = !r && I,
+    K;
+  if (t[40] !== r || t[41] !== n) ((K = r ?? Byc(n)), (t[40] = r), (t[41] = n), (t[42] = K));
+  else K = t[42];
+  let Z;
+  if (t[43] !== d)
+    ((Z =
+      d &&
+      Au.jsx(w, {
+        dimColor: true,
+        children: d,
+      })),
+      (t[43] = d),
+      (t[44] = Z));
+  else Z = t[44];
+  let J;
+  if (t[45] !== c || t[46] !== z || t[47] !== K || t[48] !== Z)
+    ((J = Au.jsxs(w, {
+      bold: c,
+      dimColor: z,
+      wrap: "truncate",
+      children: [K, Z],
+    })),
+      (t[45] = c),
+      (t[46] = z),
+      (t[47] = K),
+      (t[48] = Z),
+      (t[49] = J));
+  else J = t[49];
+  let ne;
+  if (t[50] !== q || t[51] !== J)
+    ((ne = Au.jsx(U, {
+      width: q,
+      flexShrink: 0,
+      children: J,
+    })),
+      (t[50] = q),
+      (t[51] = J),
+      (t[52] = ne));
+  else ne = t[52];
+  let oe;
+  if (t[53] !== I || t[54] !== _ || t[55] !== c)
+    ((oe = Au.jsx(U, {
+      flexGrow: 1,
+      width: 0,
+      paddingLeft: 2,
+      children: Au.jsx(w, {
+        dimColor: I,
+        bold: c,
+        wrap: "truncate",
+        children: _,
+      }),
+    })),
+      (t[53] = I),
+      (t[54] = _),
+      (t[55] = c),
+      (t[56] = oe));
+  else oe = t[56];
+  let re;
+  if (t[57] !== g || t[58] !== h)
+    ((re = [g, h].filter(Boolean)), (t[57] = g), (t[58] = h), (t[59] = re));
+  else re = t[59];
+  let ee = re.join(" \xB7 "),
+    ce;
+  if (t[60] !== g || t[61] !== b || t[62] !== y || t[63] !== h)
+    ((ce =
+      b > 0 &&
+      Au.jsxs(w, {
+        color: "warning",
+        children: [g || h ? " \xB7 " : "", y],
+      })),
+      (t[60] = g),
+      (t[61] = b),
+      (t[62] = y),
+      (t[63] = h),
+      (t[64] = ce));
+  else ce = t[64];
+  let ae;
+  if (t[65] !== I || t[66] !== c || t[67] !== ee || t[68] !== ce)
+    ((ae = Au.jsxs(w, {
+      dimColor: I,
+      bold: c,
+      children: [ee, ce],
+    })),
+      (t[65] = I),
+      (t[66] = c),
+      (t[67] = ee),
+      (t[68] = ce),
+      (t[69] = ae));
+  else ae = t[69];
+  let de;
+  if (t[70] !== i || t[71] !== ae)
+    ((de = Au.jsx(U, {
+      minWidth: i,
+      flexShrink: 0,
+      marginLeft: 1,
+      justifyContent: "flex-end",
+      children: ae,
+    })),
+      (t[70] = i),
+      (t[71] = ae),
+      (t[72] = de));
+  else de = t[72];
+  let Ee;
+  if (t[73] !== p || t[74] !== Y || t[75] !== ne || t[76] !== oe || t[77] !== de)
+    ((Ee = Au.jsxs(U, {
+      onClick: p,
+      onMouseEnter: W,
+      onMouseLeave: V,
+      children: [Y, ne, oe, de],
+    })),
+      (t[73] = p),
+      (t[74] = Y),
+      (t[75] = ne),
+      (t[76] = oe),
+      (t[77] = de),
+      (t[78] = Ee));
+  else Ee = t[78];
+  return Ee;
+}
+function rfm(e) {
+  let t = $Tt.c(33),
+    { parts: n, labelWidth: r, statusWidth: o, isSelected: s, onClick: i } = e,
+    [a, l] = xZ.useState(false),
+    c = s || a,
+    u = c ? nt.pointer + " " : "  ",
+    d = n.bulletColor,
+    p = !c,
+    f,
+    m;
+  if (t[0] === Symbol.for("react.memo_cache_sentinel"))
+    ((f = () => l(true)), (m = () => l(false)), (t[0] = f), (t[1] = m));
+  else ((f = t[0]), (m = t[1]));
+  let g;
+  if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((g = Men()), (t[2] = g));
+  else g = t[2];
+  let h;
+  if (t[3] !== p || t[4] !== u)
+    ((h = Au.jsx(w, {
+      dimColor: p,
+      children: u,
+    })),
+      (t[3] = p),
+      (t[4] = u),
+      (t[5] = h));
+  else h = t[5];
+  let y = !d && p,
+    b;
+  if (t[6] !== d || t[7] !== y)
+    ((b = Au.jsxs(w, {
+      color: d,
+      dimColor: y,
+      children: [nt.circle, " "],
+    })),
+      (t[6] = d),
+      (t[7] = y),
+      (t[8] = b));
+  else b = t[8];
+  let _;
+  if (t[9] !== h || t[10] !== b)
+    ((_ = Au.jsxs(U, {
+      width: g,
+      flexShrink: 0,
+      children: [h, b],
+    })),
+      (t[9] = h),
+      (t[10] = b),
+      (t[11] = _));
+  else _ = t[11];
+  let S;
+  if (t[12] !== p || t[13] !== n.name)
+    ((S = Au.jsx(w, {
+      dimColor: p,
+      wrap: "truncate",
+      children: n.name,
+    })),
+      (t[12] = p),
+      (t[13] = n.name),
+      (t[14] = S));
+  else S = t[14];
+  let A;
+  if (t[15] !== r || t[16] !== S)
+    ((A = Au.jsx(U, {
+      width: r,
+      flexShrink: 0,
+      children: S,
+    })),
+      (t[15] = r),
+      (t[16] = S),
+      (t[17] = A));
+  else A = t[17];
+  let v;
+  if (t[18] !== p || t[19] !== n.description)
+    ((v = Au.jsx(U, {
+      flexGrow: 1,
+      width: 0,
+      paddingLeft: 2,
+      children: Au.jsx(w, {
+        dimColor: p,
+        wrap: "truncate",
+        children: n.description,
+      }),
+    })),
+      (t[18] = p),
+      (t[19] = n.description),
+      (t[20] = v));
+  else v = t[20];
+  let C;
+  if (t[21] !== p || t[22] !== n.statusText)
+    ((C = Au.jsx(w, {
+      dimColor: p,
+      children: n.statusText,
+    })),
+      (t[21] = p),
+      (t[22] = n.statusText),
+      (t[23] = C));
+  else C = t[23];
   let x;
-  if (t[19] !== y || t[20] !== C || t[21] !== S || t[22] !== A)
-    ((x = dw.jsxs(w, {
-      color: S,
-      children: [A, " ", y, C],
+  if (t[24] !== o || t[25] !== C)
+    ((x = Au.jsx(U, {
+      minWidth: o,
+      flexShrink: 0,
+      marginLeft: 1,
+      justifyContent: "flex-end",
+      children: C,
     })),
-      (t[19] = y),
-      (t[20] = C),
-      (t[21] = S),
-      (t[22] = A),
-      (t[23] = x));
-  else x = t[23];
+      (t[24] = o),
+      (t[25] = C),
+      (t[26] = x));
+  else x = t[26];
   let I;
-  if (t[24] !== x || t[25] !== _)
-    ((I = dw.jsxs(U, {
-      children: [_, x],
+  if (t[27] !== i || t[28] !== v || t[29] !== x || t[30] !== _ || t[31] !== A)
+    ((I = Au.jsxs(U, {
+      onClick: i,
+      onMouseEnter: f,
+      onMouseLeave: m,
+      children: [_, A, v, x],
     })),
-      (t[24] = x),
-      (t[25] = _),
-      (t[26] = I));
-  else I = t[26];
+      (t[27] = i),
+      (t[28] = v),
+      (t[29] = x),
+      (t[30] = _),
+      (t[31] = A),
+      (t[32] = I));
+  else I = t[32];
   return I;
 }
-var OGo, _me, dw;
+var $Tt,
+  xZ,
+  Au,
+  Nyc = 5;

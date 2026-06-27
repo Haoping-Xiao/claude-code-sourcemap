@@ -1,79 +1,129 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Tic
+// restored from claude-code 2.1.195 (deminified) — module Ric
 // matched 2.1.88 source: src/utils/hooks.ts
-// class=modified (alt of src/utils/hooks.ts)  jaccard=0.0216  score=0.3457  fileCov=0.0225
+// class=modified (alt of src/utils/hooks.ts)  jaccard=0.0262  score=0.356  fileCov=0.0275
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-async function* qjt(e, t, n, r, o, s, i = lp, a) {
-  let l = {
-    ...Td(void 0, t),
-    hook_event_name: "SessionStart",
-    source: e,
-    agent_type: r,
-    model: o,
-    session_title: n ?? Gg(t !== void 0 ? Fb(t) : Rt()),
+// [unwrapped __esm module Ric] deps: sp
+Mlr = require("crypto");
+async function* bzt(e, t, n, r, o, s, i = lp) {
+  let a = r.getAppState(),
+    l = r.agentId ?? Rt();
+  if (!M$("PreToolUse", a, l)) return;
+  T(`executePreToolHooks called for tool: ${e}`, {
+    level: "verbose",
+  });
+  let c = {
+    ...Td(o, void 0, r),
+    hook_event_name: "PreToolUse",
+    tool_name: e,
+    tool_input: n,
+    tool_use_id: t,
   };
   yield* TC({
-    hookInput: l,
-    toolUseID: Dlr.randomUUID(),
+    hookInput: c,
+    toolUseID: t,
     matchQuery: e,
     signal: s,
     timeoutMs: i,
-    forceSyncExecution: a,
+    toolUseContext: r,
   });
 }
-async function* Vjt(e, t, n = lp, r) {
-  let o = {
-    ...Td(void 0),
-    hook_event_name: "Setup",
-    trigger: e,
+async function* Szt(e, t, n, r, o, s, i, a = lp, l) {
+  let c = {
+    ...Td(s, void 0, o),
+    hook_event_name: "PostToolUse",
+    tool_name: e,
+    tool_input: n,
+    tool_response: r,
+    tool_use_id: t,
+    duration_ms: l,
   };
   yield* TC({
-    hookInput: o,
-    toolUseID: Dlr.randomUUID(),
+    hookInput: c,
+    toolUseID: t,
     matchQuery: e,
-    signal: t,
-    timeoutMs: n,
-    forceSyncExecution: r,
+    signal: i,
+    timeoutMs: a,
+    toolUseContext: o,
   });
 }
-async function* J8t(e, t, n, r = lp, o) {
-  let s = {
-    ...Td(void 0),
-    hook_event_name: "SubagentStart",
-    agent_id: e,
-    agent_type: t,
+async function* Ezt(e, t, n, r, o, s, i, a, l = lp, c) {
+  let u = o.getAppState(),
+    d = o.agentId ?? Rt();
+  if (!M$("PostToolUseFailure", u, d)) return;
+  let p = {
+    ...Td(i, void 0, o),
+    hook_event_name: "PostToolUseFailure",
+    tool_name: e,
+    tool_input: n,
+    tool_use_id: t,
+    error: r,
+    is_interrupt: s,
+    duration_ms: c,
   };
   yield* TC({
-    hookInput: s,
-    toolUseID: Dlr.randomUUID(),
-    matchQuery: t,
-    signal: n,
-    timeoutMs: r,
-    getAppState: o,
+    hookInput: p,
+    toolUseID: t,
+    matchQuery: e,
+    signal: a,
+    timeoutMs: l,
+    toolUseContext: o,
   });
 }
-async function oKe(e, t) {
-  let { getAppState: n, setAppState: r, signal: o } = t || {},
-    s = {
-      ...Td(void 0),
-      hook_event_name: "SessionEnd",
-      reason: e,
-    },
-    i = await Kk({
-      getAppState: n,
-      hookInput: s,
-      matchQuery: e,
-      signal: o,
-      timeoutMs: Plr,
-    });
-  for (let a of i)
-    if (!a.succeeded && a.output)
-      process.stderr.write(`SessionEnd hook [${a.command}] failed: ${a.output}
-`);
-  if (r) {
-    let a = Rt();
-    wIo(r, a);
-  }
+async function* wSt(e, t, n, r, o, s = lp) {
+  let i = n.getAppState(),
+    a = n.agentId ?? Rt();
+  if (!M$("PostToolBatch", i, a)) return;
+  let l = {
+    ...Td(r, void 0, n),
+    hook_event_name: "PostToolBatch",
+    tool_calls: e,
+  };
+  yield* TC({
+    hookInput: l,
+    toolUseID: t,
+    signal: o,
+    timeoutMs: s,
+    toolUseContext: n,
+  });
 }
-var Dlr;
+async function* tKt(e, t, n, r, o, s, i, a = lp) {
+  let l = o.getAppState(),
+    c = o.agentId ?? Rt();
+  if (!M$("PermissionDenied", l, c)) return;
+  let u = {
+    ...Td(s, void 0, o),
+    hook_event_name: "PermissionDenied",
+    tool_name: e,
+    tool_input: n,
+    tool_use_id: t,
+    reason: r,
+  };
+  yield* TC({
+    hookInput: u,
+    toolUseID: t,
+    matchQuery: e,
+    signal: i,
+    timeoutMs: a,
+    toolUseContext: o,
+  });
+}
+async function* jAe(e, t, n, r, o, s, i, a = lp) {
+  T(`executePermissionRequestHooks called for tool: ${e}`);
+  let l = {
+    ...Td(o, void 0, r),
+    hook_event_name: "PermissionRequest",
+    tool_name: e,
+    tool_input: n,
+    permission_suggestions: s,
+  };
+  yield* TC({
+    hookInput: l,
+    toolUseID: t,
+    matchQuery: e,
+    signal: i,
+    timeoutMs: a,
+    toolUseContext: r,
+  });
+}

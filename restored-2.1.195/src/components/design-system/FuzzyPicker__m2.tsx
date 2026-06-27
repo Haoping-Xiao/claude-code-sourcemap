@@ -1,114 +1,88 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module _rr
+// restored from claude-code 2.1.195 (deminified) — module ojl
 // matched 2.1.88 source: src/components/design-system/FuzzyPicker.tsx
-// class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.0747  score=0.1787  fileCov=0.1138
+// class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.074  score=0.1903  fileCov=0.1081
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module _rr] deps: FJr, m8, ps
-s1e = R(rt(), 1);
-function ljl() {
-  return bz.useContext(ajl);
+// [unwrapped __esm module ojl] deps: si, kt, Cc, lJ, Bs, f_, Ko, Xce, Ye, ps, er, At, vq, gHe, lE, yrr, Xh, ZC, dr, sr
+((njl = R(lt(), 1)), (X$ = R(rt(), 1)), (Ks = R(se(), 1)));
+function yXt(e, t, n) {
+  let r = _b(e - n + 1, 0, Math.max(0, t - n)),
+    o = Math.min(r + n, t);
+  return {
+    windowStart: r,
+    windowEnd: o,
+    moreAbove: r,
+    moreBelow: t - o,
+  };
 }
-function WNf({
-  children: e,
+function sjl({
+  count: e,
   visibleCount: t,
-  onSelect: n,
-  onFocus: r,
-  isDisabled: o = false,
-  wrap: s = false,
-  overflowHint: i = "glyph",
-  emptyMessage: a,
+  containerRef: n,
+  isDisabled: r = false,
+  onAccept: o,
+  onRowKeyDown: s,
+  onCursorChange: i,
+  edge: a = "clamp",
 }) {
-  let l = bz.useRef(null),
-    c = bz.Children.toArray(e),
-    u = c.length,
-    d = sjl({
-      count: u,
-      visibleCount: t,
-      containerRef: l,
-      isDisabled: o,
-      edge: s ? "wrap" : "clamp",
-      onAccept: n,
-    }),
-    p = bz.useRef(r);
-  if (
-    ((p.current = r),
-    bz.useEffect(() => {
-      if (u > 0) p.current?.(d.cursor);
-    }, [d.cursor, u]),
-    M0(l, !o),
-    u === 0)
-  )
-    return Uq.jsx(U, {
-      ref: l,
-      flexDirection: "column",
-      tabIndex: 0,
-      children:
-        a &&
-        Uq.jsx(w, {
-          dimColor: true,
-          children: a,
-        }),
+  let [l, c] = s1e.useState(0),
+    u = NLn(n),
+    d = Math.max(0, e - 1),
+    p = _b(l, 0, d);
+  function f(b) {
+    c((_) => {
+      let A = _b(_, 0, d) + b;
+      if (a === "wrap" && e > 0) return ((A % e) + e) % e;
+      return _b(A, 0, d);
     });
-  let f = i === "glyph" && t === 1 ? "count" : i,
-    m = c.slice(d.windowStart, d.windowEnd);
-  return Uq.jsxs(U, {
-    ref: l,
-    flexDirection: "column",
-    ...d.bind,
-    children: [
-      f === "count" &&
-        d.moreAbove > 0 &&
-        Uq.jsx(U, {
-          paddingLeft: 2,
-          children: Uq.jsxs(w, {
-            dimColor: true,
-            children: [Wee, " ", d.moreAbove, " more above"],
-          }),
-        }),
-      m.map((g, h) => {
-        let y = d.windowStart + h,
-          b = d.isCursor(y),
-          _ = h === 0 && d.moreAbove > 0,
-          S = h === m.length - 1 && d.moreBelow > 0;
-        return Uq.jsx(
-          ajl.Provider,
-          {
-            value: b,
-            children: Uq.jsx(mH, {
-              isFocused: b,
-              showScrollUp: f === "glyph" && _,
-              showScrollDown: f === "glyph" && S,
-              styled: false,
-              children: g,
-            }),
-          },
-          bz.isValidElement(g) ? (g.key ?? y) : y,
-        );
-      }),
-      f === "count" &&
-        d.moreBelow > 0 &&
-        Uq.jsx(U, {
-          paddingLeft: 2,
-          children: Uq.jsxs(w, {
-            dimColor: true,
-            children: [r9, " ", d.moreBelow, " more below"],
-          }),
-        }),
-    ],
-  });
+  }
+  s1e.useEffect(() => {
+    if (l !== p) c(p);
+  }, [l, p]);
+  let m = s1e.useRef(i);
+  m.current = i;
+  let g = s1e.useRef(null);
+  (s1e.useEffect(() => {
+    if (e === 0) {
+      g.current = null;
+      return;
+    }
+    if (g.current !== p) ((g.current = p), m.current?.(p));
+  }, [p, e]),
+    No(
+      {
+        "select:next": () => f(1),
+        "select:previous": () => f(-1),
+        "select:pageDown": () => f(t),
+        "select:pageUp": () => f(-t),
+        "select:first": () => c(0),
+        "select:last": () => c(d),
+      },
+      {
+        context: "Select",
+        isActive: u && !r && e > 0,
+      },
+    ));
+  function h(b) {
+    if (r || e === 0) return;
+    if (b.key === "return" && o) {
+      (o(p), b.preventDefault(), b.stopImmediatePropagation());
+      return;
+    }
+    s?.(b, p);
+  }
+  let y = yXt(p, e, t);
+  return {
+    cursor: p,
+    ...y,
+    isCursor: (b) => b === p && e > 0,
+    hasFocus: u,
+    setCursor: (b) => c(_b(b, 0, d)),
+    bind: {
+      tabIndex: 0,
+      onKeyDown: h,
+    },
+  };
 }
-function qNf(e) {
-  let t = ijl.c(2),
-    { children: n } = e,
-    r;
-  if (t[0] !== n)
-    ((r = Uq.jsx(Uq.Fragment, {
-      children: n,
-    })),
-      (t[0] = n),
-      (t[1] = r));
-  else r = t[1];
-  return r;
-}
-var ijl, bz, Uq, ajl, JEt;
+var s1e;

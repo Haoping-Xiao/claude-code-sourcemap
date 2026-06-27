@@ -1,312 +1,116 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Jt
+// restored from claude-code 2.1.195 (deminified) — module fHa
 // matched 2.1.88 source: src/utils/fsOperations.ts
-// class=modified (alt of src/utils/fsOperations.ts)  jaccard=0.1473  score=0.6834  fileCov=0.1581
+// class=modified (alt of src/utils/fsOperations.ts)  jaccard=0.1055  score=0.3113  fileCov=0.1375
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module Jt] deps: ft, je
-((Wge = require("fs")),
-  (C8m = (() => {
-    let e = process.env.CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS;
-    if (e !== void 0) {
-      let t = Number(e);
-      if (!Number.isNaN(t) && t >= 0) return t;
-    }
-    return 1 / 0;
-  })()),
-  (f7c = {
-    [Symbol.dispose]() {},
-  }));
-gy = m7c;
-function GIt(e, t) {
-  if ((Fc(t) && !qp(t)) || Tw(t)) return;
-  let n = s_.resolve(t),
-    r = s_.parse(n).root,
-    o = r,
-    s = n
-      .slice(r.length)
-      .split(/[\\/]+/)
-      .filter(Boolean),
-    i = 0,
-    a = 64;
-  while (s.length > 0 && i < a) {
-    let l = s_.join(o, s[0]);
-    if (Tw(l)) return s.length === 1 ? l : s_.join(l, ...s.slice(1));
-    let c;
+// [unwrapped __commonJS module fHa] (exports=MGy, module=pHa)
+var MGy = {};
+var pHa = {
+  exports: MGy,
+};
+var iF = Jb(),
+  z4t = require("path"),
+  pSp = yre().mkdirsSync,
+  fSp = buo().utimesMillisSync,
+  K4t = J5e();
+function mSp(e, t, n) {
+  if (typeof n === "function")
+    n = {
+      filter: n,
+    };
+  ((n = n || {}),
+    (n.clobber = "clobber" in n ? !!n.clobber : true),
+    (n.overwrite = "overwrite" in n ? !!n.overwrite : n.clobber),
+    n.preserveTimestamps);
+  let { srcStat: r, destStat: o } = K4t.checkPathsSync(e, t, "copy", n);
+  return (K4t.checkParentPathsSync(e, r, t, "copy"), gSp(o, e, t, n));
+}
+function gSp(e, t, n, r) {
+  if (r.filter && !r.filter(t, n)) return;
+  let o = z4t.dirname(n);
+  if (!iF.existsSync(o)) pSp(o);
+  return cHa(e, t, n, r);
+}
+function hSp(e, t, n, r) {
+  if (r.filter && !r.filter(t, n)) return;
+  return cHa(e, t, n, r);
+}
+function cHa(e, t, n, r) {
+  let s = (r.dereference ? iF.statSync : iF.lstatSync)(t);
+  if (s.isDirectory()) return HSp(s, e, t, n, r);
+  else if (s.isFile() || s.isCharacterDevice() || s.isBlockDevice()) return ySp(s, e, t, n, r);
+  else if (s.isSymbolicLink()) return wSp(e, t, n, r);
+  else if (s.isSocket()) throw Error(`Cannot copy a socket file: ${t}`);
+  else if (s.isFIFO()) throw Error(`Cannot copy a FIFO pipe: ${t}`);
+  throw Error(`Unknown file: ${t}`);
+}
+function ySp(e, t, n, r, o) {
+  if (!t) return uHa(e, n, r, o);
+  return _Sp(e, n, r, o);
+}
+function _Sp(e, t, n, r) {
+  if (r.overwrite) return (iF.unlinkSync(n), uHa(e, t, n, r));
+  else if (r.errorOnExist) throw Error(`'${n}' already exists`);
+}
+function uHa(e, t, n, r) {
+  if ((iF.copyFileSync(t, n), r.preserveTimestamps)) bSp(e.mode, t, n);
+  return Euo(n, e.mode);
+}
+function bSp(e, t, n) {
+  if (SSp(e)) ESp(n, e);
+  return ASp(t, n);
+}
+function SSp(e) {
+  return (e & 128) === 0;
+}
+function ESp(e, t) {
+  return Euo(e, t | 128);
+}
+function Euo(e, t) {
+  return iF.chmodSync(e, t);
+}
+function ASp(e, t) {
+  let n = iF.statSync(e);
+  return fSp(t, n.atime, n.mtime);
+}
+function HSp(e, t, n, r, o) {
+  if (!t) return TSp(e.mode, n, r, o);
+  return dHa(n, r, o);
+}
+function TSp(e, t, n, r) {
+  return (iF.mkdirSync(n), dHa(t, n, r), Euo(n, e));
+}
+function dHa(e, t, n) {
+  iF.readdirSync(e).forEach((r) => vSp(r, e, t, n));
+}
+function vSp(e, t, n, r) {
+  let o = z4t.join(t, e),
+    s = z4t.join(n, e),
+    { destStat: i } = K4t.checkPathsSync(o, s, "copy", r);
+  return hSp(i, o, s, r);
+}
+function wSp(e, t, n, r) {
+  let o = iF.readlinkSync(t);
+  if (r.dereference) o = z4t.resolve(process.cwd(), o);
+  if (!e) return iF.symlinkSync(o, n);
+  else {
+    let s;
     try {
-      c = e.lstatSync(l);
-    } catch {
-      return;
+      s = iF.readlinkSync(n);
+    } catch (i) {
+      if (i.code === "EINVAL" || i.code === "UNKNOWN") return iF.symlinkSync(o, n);
+      throw i;
     }
-    if (!c.isSymbolicLink()) {
-      (s.shift(), (o = l));
-      continue;
-    }
-    i++;
-    let u;
-    try {
-      u = e.readlinkSync(l);
-    } catch {
-      return;
-    }
-    let d = s_.isAbsolute(u) ? u : s_.resolve(o, u);
-    if ((Fc(d) && !qp(d)) || Tw(d)) return (s.shift(), s.length === 0 ? d : s_.join(d, ...s));
-    s.shift();
-    let p = s_.parse(d).root || s_.sep;
-    ((o = p),
-      (s = [
-        ...d
-          .slice(p.length)
-          .split(/[\\/]+/)
-          .filter(Boolean),
-        ...s,
-      ]));
-  }
-  return;
-}
-function jd(e, t) {
-  if ((Fc(t) && !qp(t)) || Tw(t))
-    return {
-      resolvedPath: t,
-      isSymlink: !1,
-      isCanonical: !1,
-    };
-  let n = GIt(e, t);
-  if (n !== void 0)
-    return {
-      resolvedPath: n,
-      isSymlink: !0,
-      isCanonical: !1,
-    };
-  try {
-    let r = e.realpathSync(t);
-    return {
-      resolvedPath: r,
-      isSymlink: r !== t,
-      isCanonical: !0,
-    };
-  } catch (r) {
-    return {
-      resolvedPath: t,
-      isSymlink: !1,
-      isCanonical: !1,
-    };
+    if (r.dereference) s = z4t.resolve(process.cwd(), s);
+    if (K4t.isSrcSubdir(o, s))
+      throw Error(`Cannot copy '${o}' to a subdirectory of itself, '${s}'.`);
+    if (iF.statSync(n).isDirectory() && K4t.isSrcSubdir(s, o))
+      throw Error(`Cannot overwrite '${s}' with '${o}'.`);
+    return CSp(o, n);
   }
 }
-function fee(e, t, n) {
-  let { resolvedPath: r } = jd(e, t);
-  if (n.has(r)) return !0;
-  return (n.add(r), !1);
+function CSp(e, t) {
+  return (iF.unlinkSync(t), iF.symlinkSync(e, t));
 }
-function eae(e, t) {
-  if ((Fc(t) && !qp(t)) || Tw(t)) return t;
-  let n = GIt(e, t);
-  if (n !== void 0) return n;
-  let r = t,
-    o = [];
-  while (r !== s_.dirname(r)) {
-    let s, i;
-    try {
-      s = e.readlinkSync(r);
-    } catch (a) {
-      i = on(a);
-    }
-    if (s !== void 0) {
-      let a = s_.isAbsolute(s) ? s : s_.resolve(s_.dirname(r), s);
-      if ((Fc(a) && !qp(a)) || Tw(a)) return o.length === 0 ? a : s_.join(a, ...o);
-      try {
-        let l = e.realpathSync(r);
-        return o.length === 0 ? l : s_.join(l, ...o);
-      } catch {
-        let l = r,
-          c = 0,
-          u = 64;
-        while (c < u) {
-          let d;
-          try {
-            d = e.readlinkSync(l);
-          } catch {
-            break;
-          }
-          let p = s_.isAbsolute(d) ? d : s_.resolve(s_.dirname(l), d);
-          if ((Fc(p) && !qp(p)) || Tw(p)) {
-            l = p;
-            break;
-          }
-          let f;
-          try {
-            f = e.lstatSync(p);
-          } catch {
-            l = p;
-            break;
-          }
-          if (!f.isSymbolicLink()) {
-            l = p;
-            break;
-          }
-          ((l = p), c++);
-        }
-        return o.length === 0 ? l : s_.join(l, ...o);
-      }
-    }
-    if (i === "ENOENT") {
-      (o.unshift(s_.basename(r)), (r = s_.dirname(r)));
-      continue;
-    }
-    try {
-      let a = e.realpathSync(r);
-      if (a !== r) return o.length === 0 ? a : s_.join(a, ...o);
-    } catch {}
-    return;
-  }
-  return;
-}
-function i_(e) {
-  let t = e;
-  if (t === "~") t = NEr.homedir().normalize("NFC");
-  else if (t.startsWith("~/")) t = s_.join(NEr.homedir().normalize("NFC"), t.slice(2));
-  let n = new Set(),
-    r = qt();
-  if ((n.add(t), (Fc(t) && !qp(t)) || Tw(t))) return Array.from(n);
-  let o = GIt(r, t);
-  if (o !== void 0) return (n.add(o), Array.from(n));
-  try {
-    let a = t,
-      l = new Set(),
-      c = 64;
-    for (let u = 0; u < c; u++) {
-      if (l.has(a)) break;
-      l.add(a);
-      let d, p;
-      try {
-        d = r.readlinkSync(a);
-      } catch (m) {
-        p = on(m);
-      }
-      if (d === void 0) {
-        if (p === "ENOENT") {
-          if (a === t) {
-            let m = eae(r, t);
-            if (m !== void 0) n.add(m);
-          }
-        }
-        break;
-      }
-      let f = s_.isAbsolute(d) ? d : s_.resolve(s_.dirname(a), d);
-      if ((n.add(f), (Fc(f) && !qp(f)) || Tw(f))) return Array.from(n);
-      a = f;
-    }
-  } catch {}
-  let { resolvedPath: s, isSymlink: i } = jd(r, t);
-  if (i && s !== t) n.add(s);
-  return Array.from(n);
-}
-function qt() {
-  return g7c;
-}
-async function Min(e, t, n) {
-  await using r = await ov.open(e, "r");
-  let o = (await r.stat()).size;
-  if (o <= t) return null;
-  let s = Math.min(o - t, n),
-    i = Buffer.allocUnsafe(s),
-    a = 0;
-  while (a < s) {
-    let { bytesRead: l } = await r.read(i, a, s - a, t + a);
-    if (l === 0) break;
-    a += l;
-  }
-  return {
-    content: i.toString("utf8", 0, a),
-    bytesRead: a,
-    bytesTotal: o,
-  };
-}
-async function vx(e, t) {
-  await using n = await ov.open(e, "r");
-  let r = (await n.stat()).size;
-  if (r === 0)
-    return {
-      content: "",
-      bytesRead: 0,
-      bytesTotal: 0,
-    };
-  let o = Math.max(0, r - t),
-    s = r - o,
-    i = Buffer.allocUnsafe(s),
-    a = 0;
-  while (a < s) {
-    let { bytesRead: l } = await n.read(i, a, s - a, o + a);
-    if (l === 0) break;
-    a += l;
-  }
-  return {
-    content: i.toString("utf8", 0, a),
-    bytesRead: a,
-    bytesTotal: r,
-  };
-}
-async function* ris(e, t = 65536) {
-  let n = await ov.open(e, "r"),
-    r = Buffer.alloc(t),
-    o = 0,
-    s = [],
-    i = 0;
-  try {
-    while (!0) {
-      let { bytesRead: a } = await n.read(r, 0, t, o);
-      if (a === 0) break;
-      o += a;
-      let l = r.subarray(0, a),
-        c = 0;
-      while (c < a) {
-        let u = l.indexOf(10, c);
-        if (u === -1) {
-          (s.push(Buffer.from(l.subarray(c))), (i += a - c));
-          break;
-        }
-        if (i === 0) yield l.subarray(c, u);
-        else (yield Buffer.concat([...s, l.subarray(c, u)], i + (u - c)), (s = []), (i = 0));
-        c = u + 1;
-      }
-    }
-  } finally {
-    await n.close();
-  }
-  if (i > 0) yield s.length === 1 ? s[0] : Buffer.concat(s, i);
-}
-async function* $in(e) {
-  let n = await ov.open(e, "r");
-  try {
-    let o = (await n.stat()).size,
-      s = Buffer.alloc(0),
-      i = Buffer.alloc(4096);
-    while (o > 0) {
-      let a = Math.min(4096, o);
-      ((o -= a), await n.read(i, 0, a, o));
-      let l = Buffer.concat([i.subarray(0, a), s]),
-        c = l.indexOf(10);
-      if (c === -1) {
-        s = l;
-        continue;
-      }
-      s = Buffer.from(l.subarray(0, c));
-      let u = l.toString("utf8", c + 1).split(`
-`);
-      for (let d = u.length - 1; d >= 0; d--) {
-        let p = u[d];
-        if (p) yield p;
-      }
-    }
-    if (s.length > 0) yield s.toString("utf8");
-  } finally {
-    await n.close();
-  }
-}
-var Lp,
-  ov,
-  NEr,
-  s_,
-  Pin = "\u2192",
-  BEr,
-  g7c;
+pHa.exports = mSp;

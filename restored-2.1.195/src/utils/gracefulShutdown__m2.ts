@@ -1,188 +1,426 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module QOa
+// restored from claude-code 2.1.195 (deminified) — module cuc
 // matched 2.1.88 source: src/utils/gracefulShutdown.ts
-// class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.0325  score=0.0619  fileCov=0.0641
-// note: deminified; 0 identifiers renamed from _t exports
+// class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.0491  score=0.0869  fileCov=0.1014
+// note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module QOa]
-((VOa = require("os")), (zOa = require("path")));
-KOa = new Set(["cli.js", "cli", "sdk.mjs", "browser-sdk.js", "agentSdk.js"]);
-YOa = ["src/", "packages/"];
-function CPp() {
-  if (o4n !== void 0) return o4n;
-  let e = oW(),
-    t = pho.createHash("sha256").update(e).digest("hex");
-  return ((o4n = parseInt(t.slice(0, 8), 16) % wPp), o4n);
-}
-function IPp(e, t) {
-  let n = t
-    .slice(0, 3)
-    .map((r) => `${r.function ?? "?"}@${r.file}`)
-    .join("|");
-  return pho
-    .createHash("sha256")
-    .update(
-      `${e}
-${n}`,
-    )
-    .digest("hex")
-    .slice(0, 16);
-}
-function kPp() {
+// module exports: runPtyHost, createRing
+// [unwrapped __esm module cuc] deps: Is, aEe
+((qse = require("fs/promises")), (iNe = require("path")));
+var fuc = {};
+async function runPtyHost(e) {
+  let t = e.indexOf("--");
+  if (!e.includes("--bg-spare", t + 1)) await luc();
+  if (t < 3 || t === e.length - 1)
+    return PZt(void 0, "bad argv: --bg-pty-host <sock> <cols> <rows> -- <file> [args...]");
+  let n = e[0];
+  (process.on("uncaughtException", (N) => PZt(n, `uncaught: ${N?.stack ?? String(N)}`)),
+    process.on("unhandledRejection", (N) =>
+      PZt(n, `unhandledRejection: ${N?.stack ?? String(N)}`),
+    ));
+  let r = Number(e[1]) || 200,
+    o = Number(e[2]) || 50,
+    s = e[t + 1],
+    i = e.slice(t + 2),
+    a = process.env.CLAUDE_PTY_HOST_EXEC === "1";
+  delete process.env.CLAUDE_PTY_HOST_EXEC;
+  let l = process.env.CLAUDE_BG_PTY_AUTH;
+  delete process.env.CLAUDE_BG_PTY_AUTH;
+  let c = process.env.CLAUDE_BG_SOCKET_TOKENS_PATH;
+  if (c) {
+    let N = await SSt(c);
+    if (N?.ptyAuth) l = N.ptyAuth;
+    else if (!l) QVo(n, "tokens-file unreadable; DATA gate fail-open");
+    if (a) (delete process.env.CLAUDE_BG_SOCKET_TOKENS_PATH, await Lcr.unlink(c).catch(() => {}));
+  }
+  if (Vt() !== "windows")
+    try {
+      Dcr.setPriority(0, Math.min(Dcr.getPriority(0) + 5, 19));
+    } catch {}
+  let u = createRing(c7t),
+    d = new Set(),
+    p = new WeakMap(),
+    f = new WeakSet(),
+    m = new WeakSet(),
+    g = false,
+    h = false,
+    y = process.ppid,
+    b = 0,
+    _ = null,
+    S = Xsm(process.env.CLAUDE_PTY_RECORD, r, o);
+  function A(N) {
+    for (let B of d) {
+      if (B.destroyed) {
+        d.delete(B);
+        continue;
+      }
+      if (B.writableLength > Ksm) {
+        (B.destroy(), d.delete(B));
+        continue;
+      }
+      B.write(N);
+    }
+  }
+  let v, C;
   try {
-    let e = As();
-    if (!e) return;
-    let t = mo(ya(e));
-    return xPp.has(t) ? t : "other";
+    ((v = new Bun.Terminal({
+      cols: r,
+      rows: o,
+      data(N, B) {
+        h = true;
+        let $ = Buffer.from(B);
+        if ((u.push($), S?.write($), d.size)) A(u7t($));
+      },
+    })),
+      (C = Bun.spawn([s, ...i], {
+        cwd: process.cwd(),
+        env: {
+          ...process.env,
+          TERM: "xterm-256color",
+        },
+        terminal: v,
+        windowsHide: true,
+        detached: false,
+      })));
+  } catch (N) {
+    PZt(n, `spawn failed: ${String(N)}`);
+  }
+  function x(N, B) {
+    if (!N.destroyed) N.write(B);
+  }
+  function I(N) {
+    switch (N.t) {
+      case "resize": {
+        let B = Number(N.cols),
+          $ = Number(N.rows);
+        if (B > 0 && B <= xfe && $ > 0 && $ <= xfe && !g) {
+          if ((v.resize(B, $), Vt() !== "windows"))
+            try {
+              process.kill(-process.pid, "SIGWINCH");
+            } catch {}
+        }
+        return;
+      }
+      case "kill": {
+        let B = N.sig === "SIGKILL" ? "SIGKILL" : "SIGTERM";
+        try {
+          C.kill(B);
+        } catch {}
+        if (B === "SIGTERM")
+          setTimeout(() => {
+            if (!g)
+              try {
+                C.kill("SIGKILL");
+              } catch {}
+          }, 5000).unref();
+        return;
+      }
+      default:
+        return;
+    }
+  }
+  await Lcr.unlink(n).catch(() => {});
+  let k = uuc.createServer((N) => {
+    (N.on("error", () => N.destroy()),
+      N.once("close", () => d.delete(N)),
+      x(
+        N,
+        UL({
+          t: "hello",
+          replPid: C.pid,
+          version: {
+            ISSUES_EXPLAINER:
+              "report the issue at https://github.com/anthropics/claude-code/issues",
+            PACKAGE_URL: "@anthropic-ai/claude-code",
+            README_URL: "https://code.claude.com/docs/en/overview",
+            VERSION: "2.1.195",
+            FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+            BUILD_TIME: "2026-06-26T01:00:56Z",
+            GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+          }.VERSION,
+        }),
+      ));
+    for (let $ of u.chunks) x(N, u7t($));
+    if (
+      (x(
+        N,
+        UL({
+          t: "live",
+        }),
+      ),
+      d.add(N),
+      (b = 0),
+      p.set(N, {
+        armed: false,
+        missed: 0,
+      }),
+      x(
+        N,
+        UL({
+          t: "ping",
+        }),
+      ),
+      g)
+    ) {
+      (x(
+        N,
+        UL({
+          t: "exit",
+          code: O,
+          signal: M,
+        }),
+      ),
+        N.end());
+      return;
+    }
+    let B = Yer(
+      ($) => {
+        if ($.kind === lKe) {
+          if (l && !f.has(N)) {
+            if (!m.has(N))
+              (m.add(N),
+                x(
+                  N,
+                  UL({
+                    t: "auth-required",
+                  }),
+                ));
+            return;
+          }
+          if (!g) {
+            if ((v.write($.payload), a && Vt() !== "windows")) {
+              let q = $.payload.includes(3) ? "SIGINT" : $.payload.includes(28) ? "SIGQUIT" : null;
+              if (q) {
+                _ = q;
+                try {
+                  process.kill(-process.pid, q);
+                } catch {}
+                setImmediate(() => {
+                  _ = null;
+                });
+              }
+            }
+          }
+        } else if ($.kind === l7t)
+          if ($.ctrl.t === "pong") {
+            let q = p.get(N);
+            if (q) ((q.armed = true), (q.missed = 0));
+          } else if ($.ctrl.t === "auth") {
+            if (Joe($.ctrl.token, l)) f.add(N);
+          } else I($.ctrl);
+      },
+      () => N.destroy(),
+    );
+    N.on("data", B);
+  });
+  (k.on("error", (N) => {
+    try {
+      C.kill("SIGTERM");
+    } catch {}
+    PZt(n, `server error: ${String(N)}`);
+  }),
+    k.listen(n),
+    k.unref());
+  let D, P;
+  if (Vt() !== "windows") {
+    let N = Number(process.env.CLAUDE_PTY_HEARTBEAT_MS) || 60000,
+      B = 3;
+    ((P = setInterval(() => {
+      if (g) return;
+      for (let W of d) {
+        let V = p.get(W);
+        if (!V?.armed) continue;
+        if ((V.missed++, V.missed >= 3)) (W.destroy(), d.delete(W));
+        else
+          x(
+            W,
+            UL({
+              t: "ping",
+            }),
+          );
+      }
+    }, N)),
+      P.unref());
+    let $ = Number(process.env.CLAUDE_PTY_ORPHAN_CHECK_MS) || 2000,
+      q = 30;
+    ((D = setInterval(() => {
+      if (g) return;
+      if (process.ppid === y || d.size > 0) {
+        b = 0;
+        return;
+      }
+      if (++b < q) return;
+      (clearInterval(D),
+        clearInterval(P),
+        QVo(n, `orphan watchdog: ppid ${y}\u2192${process.ppid}, no client for ${q * $}ms`),
+        sv("ptyhost_orphan_watchdog"));
+      try {
+        C.kill("SIGTERM");
+      } catch {}
+      setTimeout(() => {
+        if (!g)
+          try {
+            C.kill("SIGKILL");
+          } catch {}
+      }, 5000).unref();
+    }, $)),
+      D.unref());
+  }
+  for (let N of ["SIGTERM", "SIGINT", "SIGHUP"])
+    process.on(N, () => {
+      if (_ === N) return;
+      try {
+        C.kill(N === "SIGHUP" ? "SIGTERM" : N);
+      } catch {}
+    });
+  if (a && Vt() !== "windows")
+    process.on("SIGQUIT", () => {
+      if (_ === "SIGQUIT") return;
+      try {
+        C.kill("SIGQUIT");
+      } catch {}
+    });
+  let O = 0;
+  O = await C.exited;
+  let L = 0;
+  for (let N = 0; N < 20; N++)
+    if (((h = false), await Nn(5), h)) L = 0;
+    else if (++L >= 2) break;
+  let M = C.signalCode ?? void 0;
+  if (((g = true), a))
+    try {
+      let N = XQ(n),
+        B = Buffer.concat(u.chunks).subarray(-4096),
+        $ = 0;
+      while ($ < 3 && $ < B.length && (B[$] & 192) === 128) $++;
+      let q = B.subarray($).toString("utf8");
+      oj(
+        N,
+        JSON.stringify({
+          code: O,
+          signal: M,
+          tail: q,
+        }),
+        384,
+      );
+    } catch {}
+  if (D) clearInterval(D);
+  if (P) clearInterval(P);
+  if ((v.close(), S?.close(), a && Vt() !== "windows")) {
+    _ = "SIGHUP";
+    try {
+      process.kill(-process.pid, "SIGHUP");
+    } catch {}
+  }
+  if (
+    (A(
+      UL({
+        t: "exit",
+        code: O,
+        signal: M,
+      }),
+    ),
+    d.size === 0)
+  ) {
+    if (a)
+      try {
+        aNe.writeFileSync(DP(n), Buffer.concat(u.chunks));
+      } catch {}
+    await Promise.race([new Promise((N) => k.once("connection", () => N())), Nn(5000)]);
+  }
+  for (let N of d) N.end();
+  if (
+    (await Promise.race([
+      new Promise((N) => k.close(() => N())),
+      Nn(2000, void 0, {
+        unref: true,
+      }),
+    ]),
+    Vt() !== "windows")
+  )
+    await Lcr.unlink(n).catch(() => {});
+  process.exit(O);
+}
+function createRing(e) {
+  let t = [],
+    n = 0,
+    r = 0;
+  function o() {
+    if (n > 0) ((t = t.slice(n)), (n = 0));
+  }
+  return {
+    get chunks() {
+      return (o(), t);
+    },
+    push(s) {
+      (t.push(s), (r += s.length));
+      while (r > e && t.length - n > 1) {
+        r -= t[n++].length;
+        for (let i = 0; i < 3; ) {
+          let a = t[n],
+            l = 0;
+          while (i + l < 3 && l < a.length && (a[l] & 192) === 128) l++;
+          if (l > 0) ((t[n] = a.subarray(l)), (r -= l), (i += l));
+          if (t[n].length > 0 || t.length - n === 1) break;
+          n++;
+        }
+      }
+      if (n >= t.length - n) o();
+    },
+  };
+}
+function Xsm(e, t, n) {
+  if (!e) return;
+  let r = process.hrtime.bigint(),
+    o;
+  try {
+    o = aNe.createWriteStream(e, {
+      flags: "w",
+    });
   } catch {
     return;
   }
-}
-function LPp() {
-  try {
-    let e = dNt(),
-      t = Wzr(),
-      n = {},
-      r = 0;
-    for (let [o, s] of Object.entries(e))
-      if (typeof s === "boolean" && t.has(o)) {
-        if (((n[o] = s), ++r >= RPp)) break;
-      }
-    return n;
-  } catch {
-    return {};
-  }
-}
-function DPp(e) {
-  let t = e.issues;
-  if (!Array.isArray(t) || t.length === 0) return;
-  let n = t.map((r) => r?.code).filter((r) => typeof r === "string" && /^[a-z_]{1,40}$/.test(r));
-  return `${t.length} issue(s): ${n.join(",")}`;
-}
-function PPp(e, t) {
-  let n = (e.name && e.name !== "Error" ? e.name : e.constructor?.name) || "Error",
-    r = yUe(n.replace(/_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS$/, "")) ?? "Error",
-    o = e.telemetryMessage,
-    s = Tca(e, typeof o === "string" ? o : (DPp(e) ?? e.message ?? String(e))),
-    i = H4(s),
-    a = dho(e, {
-      redactedMessage: i,
-    }),
-    l = {
-      ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
-      PACKAGE_URL: "@anthropic-ai/claude-code",
-      README_URL: "https://code.claude.com/docs/en/overview",
-      VERSION: "2.1.195",
-      FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
-      BUILD_TIME: "2026-06-26T01:00:56Z",
-      GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
-    }.VERSION,
-    c = IPp(r, a.frames),
-    u = CPp(),
-    d = kPp(),
-    p = typeof Bun !== "undefined" && true,
-    f = xd(e),
-    m = process.env.CLAUDE_CODE_ENTRYPOINT ?? "cli",
-    g = /^[A-Za-z0-9_.-]{1,63}$/.test(m) ? m : "unknown",
-    h = exe(),
-    y = SCt(),
-    b = UPp(e1a.release());
-  return {
-    ddtags: [
-      `service:${ZOa}`,
-      "team:claude-code",
-      `version:${l}`,
-      "env:external",
-      `origin:${t}`,
-      `platform:${Vt()}`,
-      `os_release:${b}`,
-      `user_bucket:${u}`,
-      `entrypoint:${g}`,
-      `node_version:${process.versions.node}`,
-      "bun_version:1.4.0",
-      `is_native_runtime:${p}`,
-      ...(d ? [`model:${d}`] : []),
-      ...(f ? [`error_code:${f}`] : []),
-      ...(h ? [`session_kind:${h}`] : []),
-      ...(h ? [`has_attacher:${fy() !== null ? "1" : "0"}`] : []),
-      ...(y ? [`renderer_mode:${y}`] : []),
-    ].join(","),
-    service: ZOa,
-    hostname: "claude-code",
-    status: "error",
-    message: `${r}: ${i}`.slice(0, 4000),
-    timestamp: new Date().toISOString(),
-    error: {
-      kind: r,
-      message: i.slice(0, 4000),
-      stack: a.formatted.slice(0, 16000),
-      fingerprint: c,
-      handling: t === "logError" ? "handled" : "unhandled",
-    },
-    version: l,
-    env: "external",
-    user_bucket: u,
-    origin: t,
-    host_platform: Vt(),
-    host_os_release: b,
-    host_name_redacted: HWt().slice(0, 12),
-    entrypoint: g,
-    node_version: process.versions.node,
-    bun_version: "1.4.0",
-    ...(d && {
-      model: d,
-    }),
-    error_frames: a.frames.slice(0, 20),
-    feature_flags: LPp(),
-  };
-}
-function NPp(e) {
-  let { frames: t } = dho(e, {
-      maxFrames: 20,
-    }),
-    n = t[0];
-  if (!n || t.some(JOa)) return false;
-  return OPp.some((r) => n.file === r.topFile && n.function === r.topFunction);
-}
-function BPp(e) {
-  let t = e.constructor?.name || e.name || "";
-  if (MPp.has(t)) return true;
-  let n = e.message ?? "";
-  return $Pp.some(
-    (r) =>
-      n.startsWith(r.messagePrefix) &&
-      (
-        e.stack
-          ?.split(
-            `
-`,
-          )
-          .find((o) => o.trim().startsWith("at ")) ?? ""
-      ).includes(r.topFrameIncludes),
+  o.on("error", () => {
+    (o?.destroy(), (o = void 0));
+  });
+  let s = Buffer.allocUnsafe(8);
+  return (
+    s.writeUInt32BE(t, 0),
+    s.writeUInt32BE(n, 4),
+    o.write(s),
+    {
+      write(i) {
+        if (!o) return;
+        let a = Buffer.allocUnsafe(8 + i.length),
+          l = Number((process.hrtime.bigint() - r) / 1000n);
+        (a.writeUInt32BE(l >>> 0, 0), a.writeUInt32BE(i.length, 4), i.copy(a, 8), o.write(a));
+      },
+      close() {
+        o?.end();
+      },
+    }
   );
 }
-function UPp(e) {
-  let t = /^(\d+)\.(\d+)/.exec(e);
-  return t ? `${t[1]}.${t[2]}` : "unknown";
-}
-function AWt(e, t = "logError") {
-  if (!qOa()) return;
+function QVo(e, t) {
   try {
-    let n = Zr(e);
-    if (t === "logError" && BPp(n)) return;
-    if ((t === "unhandled_rejection" || t === "uncaught_exception") && NPp(n)) return;
-    if (sho()) return;
-    let r = PPp(n, t);
-    iho(r);
+    let n = GL(e);
+    (aNe.mkdirSync(duc.dirname(n), {
+      recursive: true,
+    }),
+      aNe.appendFileSync(
+        n,
+        `${new Date().toISOString()} ${t}
+`,
+      ));
   } catch {}
 }
-var pho,
-  e1a,
-  ZOa = "claude-code-error-tracking",
-  wPp = 30,
-  o4n,
-  xPp,
-  RPp = 50,
-  MPp,
-  $Pp,
-  OPp;
+function PZt(e, t) {
+  if (e) QVo(e, t);
+  process.exit(1);
+}
+var aNe,
+  Lcr,
+  uuc,
+  Dcr,
+  duc,
+  Ksm = 1048576;

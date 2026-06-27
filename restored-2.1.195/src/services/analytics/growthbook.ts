@@ -1,375 +1,111 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module y1
+// restored from claude-code 2.1.195 (deminified) — module Un
 // matched 2.1.88 source: src/services/analytics/growthbook.ts
-// class=modified  jaccard=0.337  score=0.6797  fileCov=0.4006
-// note: deminified; 27 identifiers renamed from _t exports
+// class=modified  jaccard=0.0296  score=0.9478  fileCov=0.0296
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// module exports: stopPeriodicGrowthBookRefresh, setupPeriodicGrowthBookRefresh, setGrowthBookConfigOverride, resetGrowthBook, refreshGrowthBookFeatures, refreshGrowthBookAfterAuthChange, onGrowthBookRefresh, isGrowthBookEnabled, isFeatureFromExperiment, initializeGrowthBook, hasGrowthBookEnvOverride, hasFreshGrowthBookFeatures, getUserAttributes, getNonDefaultFeatureKeys, getGrowthBookConfigOverrides, getFeatureValue_DEPRECATED, getFeatureValue_CACHED_WITH_REFRESH, getFeatureValue_CACHED_MAY_BE_ …
-// [unwrapped __esm module y1] deps: rzr, IB, er, je, fn, vn, Is, Jt, sG, Ote, aW, IOi, Un, Du, Pzr
-((xOi = R(Hst(), 1)), (hkn = R(Bte(), 1)), (Mzr = require("crypto")));
-A7 = [];
-var Kzr = {};
-function DOi(e) {
-  try {
-    Promise.resolve(e()).catch((t) => {
-      ke(t);
-    });
-  } catch (t) {
-    ke(t);
-  }
-}
-function onGrowthBookRefresh(e) {
-  let t = true,
-    n = Pst.subscribe(() => DOi(e));
-  if (e8.size > 0)
-    queueMicrotask(() => {
-      if (t && e8.size > 0) DOi(e);
-    });
-  return () => {
-    ((t = false), n());
-  };
-}
-function cNt() {
-  if (!Fzr) Fzr = true;
-  return POi;
-}
-function hasGrowthBookEnvOverride(e) {
-  let t = cNt();
-  return t !== null && e in t;
-}
-function isFeatureFromExperiment(e) {
-  if (gke.has(e)) return true;
-  if (!isGrowthBookEnabled()) return false;
-  return (Dt().cachedExperimentFeatures ?? []).includes(e);
-}
-function uNt() {
-  return;
-}
-function getAllGrowthBookFeatures() {
-  if (e8.size > 0) return Object.fromEntries(e8);
-  return Dt().cachedGrowthBookFeatures ?? {};
-}
-function hasFreshGrowthBookFeatures() {
-  return e8.size > 0;
-}
-function getNonDefaultFeatureKeys() {
-  return bkn;
-}
-function getGrowthBookConfigOverrides() {
-  return uNt() ?? {};
-}
-function setGrowthBookConfigOverride(e, t) {
-  return;
-}
-function clearGrowthBookConfigOverrides() {
-  return;
-}
-function Skn(e) {
-  if (Uzr.has(e)) return;
-  let t = gke.get(e);
-  if (t)
-    (Uzr.add(e),
-      Nzr({
-        experimentId: t.experimentId,
-        variationId: t.variationId,
-        userAttributes: getUserAttributes(),
-        experimentMetadata: {
-          feature_id: e,
-        },
-      }));
-}
-async function MOi(e) {
-  let t = e.getPayload();
-  if (!t?.features || Object.keys(t.features).length === 0) return false;
-  (gke.clear(), bkn.clear());
-  let n = {},
-    r = [];
-  for (let [o, s] of Object.entries(t.features)) {
-    let i = s;
-    if (i === null || typeof i !== "object") {
-      r.push(`${o}:${i === null ? "null" : typeof i}`);
-      continue;
+// [unwrapped __esm module Un] deps: Sms, IB, ft, er, je, Lx, wr, At, Gx, vn, Y9, dr, ih, Jt, Ote, sst, y1
+((gke = new Map()),
+  (bkn = new Set()),
+  (e8 = new Map()),
+  (aNt = new Set()),
+  (Uzr = new Set()),
+  (Pst = Mi()));
+((jzr = Cn(() => {
+  if (!uW()) return null;
+  let e = qzr(),
+    t = Rms(),
+    n = "https://api.anthropic.com/",
+    o =
+      ad() || hJe() || Ir()
+        ? K9()
+        : {
+            headers: {},
+            error: "trust not established",
+          },
+    s = !o.error;
+  Gzr = s;
+  let i = new cdn({
+    apiHost: n,
+    clientKey: t,
+    attributes: e,
+    remoteEval: true,
+    cacheKeyAttributes: ["id", "organizationUUID"],
+    ...(!o.error && {
+      apiHostRequestHeaders: o.headers,
+    }),
+    ...false,
+  });
+  if (((H_e = i), !s))
+    return {
+      client: i,
+      initialized: Promise.resolve(),
+    };
+  let a = i
+    .init({
+      timeout: 5000,
+    })
+    .then(async (l) => {
+      if (H_e !== i) return;
+      let c = await MOi(i);
+      if (H_e !== i) return;
+      if (c) {
+        for (let u of aNt) Skn(u);
+        (aNt.clear(), $Oi(), Pst.emit());
+      }
+    })
+    .catch((l) => {});
+  return (
+    (sNt = () => H_e?.destroy()),
+    (iNt = () => H_e?.destroy()),
+    process.on("beforeExit", sNt),
+    process.on("exit", iNt),
+    {
+      client: i,
+      initialized: a,
     }
-    if ("value" in i && !("defaultValue" in i))
-      n[o] = {
-        ...i,
-        defaultValue: i.value,
-      };
-    else n[o] = i;
-    if (i.source === "experiment" && i.experimentResult) {
-      let { experimentResult: a, experiment: l } = i;
-      if (l?.key && a.variationId !== void 0)
-        gke.set(o, {
-          experimentId: l.key,
-          variationId: a.variationId,
-        });
+  );
+})),
+  (iL = Cn(async () => {
+    let e = jzr();
+    if (!e) return null;
+    if (!Gzr) {
+      if (ad() || hJe() || Ir()) {
+        if (!K9().error) {
+          if ((Mst(), (e = jzr()), !e)) return null;
+        }
+      }
     }
-    if (i.source !== void 0 && i.source !== "defaultValue" && i.source !== "unknownFeature")
-      bkn.add(o);
-  }
-  if (r.length > 0) {
-    if (!Bzr)
-      ((Bzr = true),
-        ke(Error(`processRemoteEvalPayload: skipped non-object features [${r.join(", ")}]`)));
-    if (Object.keys(n).length === 0) return false;
-  }
-  (await e.setPayload({
-    ...t,
-    features: n,
-  }),
-    e8.clear());
-  for (let [o, s] of Object.entries(n)) {
-    let i = "value" in s ? s.value : s.defaultValue;
-    if (i !== void 0) e8.set(o, i);
-  }
-  return true;
-}
-function $Oi() {
-  let e = Object.fromEntries(e8),
-    t = Array.from(gke.keys()).sort();
-  gn((n) => ({
-    ...n,
-    cachedGrowthBookFeatures: e,
-    cachedExperimentFeatures: t,
-    cachedGrowthBookFeaturesAt: Date.now(),
-  }));
-}
-function isGrowthBookEnabled() {
-  return !Oe.DISABLE_GROWTHBOOK && cW();
-}
-function getApiBaseUrlHost() {
-  let e = process.env.ANTHROPIC_BASE_URL;
-  if (!e) return;
-  try {
-    let t = new URL(e).host;
-    if (t === "api.anthropic.com") return;
-    return t;
-  } catch {
-    return;
-  }
-}
-function getUserAttributes() {
-  let e = ywi(),
-    t = e.email,
-    n = Dr()?.autoUpdatesChannel,
-    r = void 0,
-    o = getApiBaseUrlHost(),
-    s = Q2(),
-    i = void 0,
-    a = e.accountUuid || process.env.CLAUDE_CODE_ACCOUNT_UUID || i?.accountUuid,
-    l =
-      e.organizationUuid ||
-      process.env.CLAUDE_CODE_ORGANIZATION_UUID ||
-      i?.organizationUuid ||
-      void 0;
-  return {
-    id: e.deviceId,
-    sessionId: e.sessionId,
-    deviceID: e.deviceId,
-    platform: e.platform,
-    ...(o && {
-      apiBaseUrlHost: o,
-    }),
-    ...(l && {
-      organizationUUID: l,
-    }),
-    ...(a && {
-      accountUUID: a,
-    }),
-    ...(e.userType && {
-      userType: e.userType,
-    }),
-    ...(e.subscriptionType && {
-      subscriptionType: e.subscriptionType,
-    }),
-    ...(e.rateLimitTier && {
-      rateLimitTier: e.rateLimitTier,
-    }),
-    ...(e.firstTokenTime && {
-      firstTokenTime: e.firstTokenTime,
-    }),
-    ...(t && {
-      email: t,
-    }),
-    ...(e.appVersion && {
-      appVersion: e.appVersion,
-    }),
-    ...(e.githubActionsMetadata && {
-      githubActionsMetadata: e.githubActionsMetadata,
-    }),
-    ...(r && {
-      releaseChannel: r,
-    }),
-    ...(s && {
-      entrypoint: s,
-    }),
-    ...(Lg().hasUsedRemoteSession && {
-      hasUsedRemoteSession: true,
-    }),
-    ...(Dt().hasRemoteEnvironment && {
-      hasRemoteEnvironment: true,
-    }),
-  };
-}
-async function NOi(e, t, n) {
-  let r = cNt();
-  if (r && e in r) return r[e];
-  let o = uNt();
-  if (o && e in o) return o[e];
-  if (!isGrowthBookEnabled()) return t;
-  let s = await initializeGrowthBook();
-  if (!s) return t;
-  let i;
-  if (e8.has(e)) i = e8.get(e);
-  else i = s.getFeatureValue(e, t);
-  if (n) Skn(e);
-  return i;
-}
-async function getFeatureValue_DEPRECATED(e, t) {
-  return NOi(e, t, true);
-}
-function getFeatureValue_CACHED_MAY_BE_STALE(e, t) {
-  let n = cNt();
-  if (n && e in n) return n[e];
-  let r = uNt();
-  if (r && e in r) return r[e];
-  if (!isGrowthBookEnabled()) return t;
-  if (gke.has(e)) Skn(e);
-  else aNt.add(e);
-  if (e8.has(e)) return e8.get(e);
-  try {
-    let o = Dt().cachedGrowthBookFeatures?.[e];
-    return o !== void 0 ? o : t;
-  } catch {
-    return t;
-  }
-}
-function getFeatureValue_CACHED_WITH_REFRESH(e, t, n) {
-  return getFeatureValue_CACHED_MAY_BE_STALE(e, t);
-}
-async function checkSecurityRestrictionGate(e) {
-  let t = cNt();
-  if (t && e in t) return Boolean(t[e]);
-  let n = uNt();
-  if (n && e in n) return Boolean(n[e]);
-  if (!isGrowthBookEnabled()) return false;
-  if (lNt) await lNt;
-  let r = Dt().cachedGrowthBookFeatures?.[e];
-  if (r !== void 0) return Boolean(r);
+    return (await e.initialized, BOi(), e.client);
+  })));
+pwi(at);
+qwi(at);
+function Hkn(e, t) {
+  let n = e.toLowerCase();
+  for (let r of t)
+    if (typeof r === "string" && r.length > 0 && n.includes(r.toLowerCase())) return true;
   return false;
 }
-async function checkGate_CACHED_OR_BLOCKING(e) {
-  let t = cNt();
-  if (t && e in t) return Boolean(t[e]);
-  let n = uNt();
-  if (n && e in n) return Boolean(n[e]);
-  if (!isGrowthBookEnabled()) return false;
-  if (Dt().cachedGrowthBookFeatures?.[e] === true) {
-    if (gke.has(e)) Skn(e);
-    else aNt.add(e);
-    return true;
+function w7(e) {
+  let t = e
+    .toLowerCase()
+    .replace(/\u0131/g, "i")
+    .replace(/\u017f/g, "s");
+  return (
+    t
+      .replace(/[\u200c-\u200f\u202a-\u202e\u206a-\u206f\ufeff]/g, "")
+      .replace(/:.*$/, "")
+      .replace(/[. ]+$/, "") || t
+  );
+}
+function H3e(e, t, n) {
+  let r = e.slice(t.length).split(UOi.sep),
+    o = r.length - 1;
+  for (let s = 0; s < r.length; s++) {
+    let i = w7(r[s]);
+    if (gOd.has(i)) return true;
+    if (s === o && n?.has(i)) return true;
   }
-  return NOi(e, false, true);
+  return false;
 }
-function refreshGrowthBookAfterAuthChange() {
-  if (!isGrowthBookEnabled()) return;
-  try {
-    (resetGrowthBook(),
-      Pst.emit(),
-      (lNt = initializeGrowthBook()
-        .catch((e) => (ke(Zr(e)), null))
-        .finally(() => {
-          lNt = null;
-        })));
-  } catch (e) {
-    ke(Zr(e));
-  }
-}
-function resetGrowthBook() {
-  if ((stopPeriodicGrowthBookRefresh(), sNt)) (process.off("beforeExit", sNt), (sNt = null));
-  if (iNt) (process.off("exit", iNt), (iNt = null));
-  (H_e?.destroy(),
-    (H_e = null),
-    (Gzr = false),
-    (Bzr = false),
-    (lNt = null),
-    gke.clear(),
-    bkn.clear(),
-    aNt.clear(),
-    Uzr.clear(),
-    e8.clear(),
-    jzr.cache?.clear?.(),
-    initializeGrowthBook.cache?.clear?.(),
-    (POi = null),
-    (Fzr = false));
-}
-function mOd() {
-  return 21600000;
-}
-function getClientDataAtis() {
-  let e = x0()?.atis;
-  return typeof e === "string" && e.length > 0 ? e : void 0;
-}
-async function refreshGrowthBookFeatures() {
-  if (!isGrowthBookEnabled()) return;
-  try {
-    let e = await initializeGrowthBook();
-    if (!e) return;
-    if (
-      (await e.refreshFeatures({
-        skipCache: true,
-      }),
-      e !== H_e)
-    )
-      return;
-    let t = await MOi(e);
-    if (e !== H_e) return;
-    if (t) ($Oi(), Pst.emit());
-  } catch (e) {
-    ke(Zr(e));
-  }
-}
-function setupPeriodicGrowthBookRefresh() {
-  if (!isGrowthBookEnabled()) return;
-  if (A3e) clearInterval(A3e);
-  if (
-    ((A3e = setInterval(() => {
-      refreshGrowthBookFeatures();
-    }, mOd())),
-    A3e.unref?.(),
-    !Dst)
-  )
-    ((Dst = () => {
-      stopPeriodicGrowthBookRefresh();
-    }),
-      process.once("beforeExit", Dst));
-}
-function stopPeriodicGrowthBookRefresh() {
-  if (A3e) (clearInterval(A3e), (A3e = null));
-  if (Dst) (process.removeListener("beforeExit", Dst), (Dst = null));
-}
-async function getDynamicConfig_BLOCKS_ON_INIT(e, t) {
-  return getFeatureValue_DEPRECATED(e, t);
-}
-function getDynamicConfig_CACHED_MAY_BE_STALE(e, t) {
-  return getFeatureValue_CACHED_MAY_BE_STALE(e, t);
-}
-var H_e = null,
-  Bzr = false,
-  sNt = null,
-  iNt = null,
-  Gzr = false,
-  gke,
-  bkn,
-  e8,
-  aNt,
-  Uzr,
-  lNt = null,
-  Pst,
-  POi = null,
-  Fzr = false,
-  jzr,
-  initializeGrowthBook,
-  ATIS_REQUEST_HEADER = "x-cc-atis",
-  A3e = null,
-  Dst = null;
+var UOi, gOd;

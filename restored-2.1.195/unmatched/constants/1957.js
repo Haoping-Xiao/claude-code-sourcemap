@@ -1,5 +1,0 @@
-// ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module RAi
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> constants; 0 renamed
-// ─────────────────────────────────────────────────────────────────────────

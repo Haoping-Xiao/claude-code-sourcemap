@@ -1,144 +1,133 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module OM
+// restored from claude-code 2.1.195 (deminified) — module one
 // matched 2.1.88 source: src/ink/termio/csi.ts
-// class=modified  jaccard=0.2972  score=0.5323  fileCov=0.4023
+// class=modified  jaccard=0.177  score=1  fileCov=0.177
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module OM] deps: one
-((PYr = l8 + String.fromCharCode(gW.CSI)),
-  (Eit = {
-    PARAM_START: 48,
-    PARAM_END: 63,
-    INTERMEDIATE_START: 32,
-    INTERMEDIATE_END: 47,
-    FINAL_START: 64,
-    FINAL_END: 126,
-  }));
-((hb = {
-  CUU: 65,
-  CUD: 66,
-  CUF: 67,
-  CUB: 68,
-  CNL: 69,
-  CPL: 70,
-  CHA: 71,
-  CUP: 72,
-  CHT: 73,
-  HPA: 96,
-  HPR: 97,
-  VPA: 100,
-  VPR: 101,
-  HVP: 102,
-  ED: 74,
-  EL: 75,
-  ECH: 88,
-  IL: 76,
-  DL: 77,
-  ICH: 64,
-  DCH: 80,
-  SU: 83,
-  SD: 84,
-  SM: 104,
-  RM: 108,
-  SGR: 109,
-  DSR: 110,
-  DECSCUSR: 113,
-  DECSTBM: 114,
-  SCOSC: 115,
-  SCORC: 117,
-  CBT: 90,
+// [unwrapped __esm module one]
+((rne = {
+  NUL: 0,
+  SOH: 1,
+  STX: 2,
+  ETX: 3,
+  EOT: 4,
+  ENQ: 5,
+  ACK: 6,
+  BEL: 7,
+  BS: 8,
+  HT: 9,
+  LF: 10,
+  VT: 11,
+  FF: 12,
+  CR: 13,
+  SO: 14,
+  SI: 15,
+  DLE: 16,
+  DC1: 17,
+  DC2: 18,
+  DC3: 19,
+  DC4: 20,
+  NAK: 21,
+  SYN: 22,
+  ETB: 23,
+  CAN: 24,
+  EM: 25,
+  SUB: 26,
+  ESC: 27,
+  FS: 28,
+  GS: 29,
+  RS: 30,
+  US: 31,
+  DEL: 127,
 }),
-  (SUi = ["toEnd", "toStart", "all", "scrollback"]),
-  (EUi = ["toEnd", "toStart", "all"]),
-  (MYr = [
-    {
-      style: "block",
-      blinking: true,
-    },
-    {
-      style: "block",
-      blinking: true,
-    },
-    {
-      style: "block",
-      blinking: false,
-    },
-    {
-      style: "underline",
-      blinking: true,
-    },
-    {
-      style: "underline",
-      blinking: false,
-    },
-    {
-      style: "bar",
-      blinking: true,
-    },
-    {
-      style: "bar",
-      blinking: false,
-    },
-  ]));
-LBd = mh("G");
-dH = mh("H");
-((D6h = mh("s")), (P6h = mh("u")));
-((Oke = mh(2, "K")), (Jx = mh(2, "J")), (Ait = mh(3, "J")));
-((c8 = mh("r")),
-  (wUi = mh("200~")),
-  (CUi = mh("201~")),
-  (X3e = mh("I")),
-  (Nke = mh("O")),
-  (IUi = mh(">1u")),
-  (Tce = mh("<u")),
-  (xUi = mh(">4;2m")),
-  (G_e = mh(">4m")));
-class kUi {
-  proc;
-  constructor(e = process) {
-    this.proc = e;
-  }
-  isJetBrainsIdeTerminal() {
-    return this.proc.env.TERMINAL_EMULATOR === "JetBrains-JediTerm";
-  }
-  isMicrosoftWindowsTerminal() {
-    return this.proc.platform === "win32" && !!this.proc.env.WT_SESSION;
-  }
-  isGhostty() {
-    return this.proc.env.TERM === "xterm-ghostty" || this.proc.env.TERM_PROGRAM === "ghostty";
-  }
-  isMintty() {
-    if (this.proc.env.TERM_PROGRAM === "mintty") return true;
-    if (this.proc.platform === "win32" && this.proc.env.MSYSTEM) return true;
-    return false;
-  }
-  windowsConsoleSupportsVirtualTerminalSequences() {
-    if (this.isMicrosoftWindowsTerminal()) return true;
-    if (
-      this.proc.platform === "win32" &&
-      this.proc.env.TERM_PROGRAM === "vscode" &&
-      this.proc.env.TERM_PROGRAM_VERSION
-    )
-      return true;
-    if (this.isMintty()) return true;
-    return false;
-  }
-  hasGeometricShapesInkBleedBug() {
-    return this.isGhostty();
-  }
-  hasOsc52ClipboardUtf8Bug() {
-    if (this.proc.env.TERM_PROGRAM !== "vscode") return false;
-    let e = DBd(this.proc.env.TERM_PROGRAM_VERSION);
-    return e !== null && e >= 1123000 && e < 1125000;
-  }
-  macCmdClickArrivesWithoutSgrModifierBit() {
-    return this.proc.platform === "darwin" && this.proc.env.TERM_PROGRAM === "ghostty";
-  }
+  (gW = {
+    CSI: 91,
+    OSC: 93,
+    DCS: 80,
+    APC: 95,
+    PM: 94,
+    SOS: 88,
+    ST: 92,
+  }));
+function _Ui(e) {
+  return e >= Eit.PARAM_START && e <= Eit.PARAM_END;
 }
-function DBd(e) {
-  if (!e) return null;
-  let t = /^(\d+)\.(\d+)\.(\d+)/.exec(e);
-  if (!t) return null;
-  return +t[1] * 1000000 /* 1e6 */ + +t[2] * 1000 + +t[3];
+function YNt(e) {
+  return e >= Eit.INTERMEDIATE_START && e <= Eit.INTERMEDIATE_END;
 }
-var E1;
+function bUi(e) {
+  return e >= Eit.FINAL_START && e <= Eit.FINAL_END;
+}
+function mh(...e) {
+  if (e.length === 0) return PYr;
+  if (e.length === 1) return `${PYr}${e[0]}`;
+  let t = e.slice(0, -1),
+    n = e.at(-1);
+  return `${PYr}${t.join($ke)}${n}`;
+}
+function AUi(e = 1) {
+  return e === 0 ? "" : mh(e, "A");
+}
+function $Yr(e = 1) {
+  return e === 0 ? "" : mh(e, "B");
+}
+function kBd(e = 1) {
+  return e === 0 ? "" : mh(e, "C");
+}
+function RBd(e = 1) {
+  return e === 0 ? "" : mh(e, "D");
+}
+function W0n(e) {
+  return mh(e, "G");
+}
+function hW(e, t) {
+  return mh(e, t, "H");
+}
+function Hce(e, t) {
+  let n = "";
+  if (e < 0) n += RBd(-e);
+  else if (e > 0) n += kBd(e);
+  if (t < 0) n += AUi(-t);
+  else if (t > 0) n += $Yr(t);
+  return n;
+}
+function HUi() {
+  return mh("K");
+}
+function q0n(e) {
+  if (e <= 0) return "";
+  let t = "";
+  for (let n = 0; n < e; n++) if (((t += Oke), n < e - 1)) t += AUi(1);
+  return ((t += LBd), t);
+}
+function TUi(e = 1) {
+  return e === 0 ? "" : mh(e, "S");
+}
+function vUi(e = 1) {
+  return e === 0 ? "" : mh(e, "T");
+}
+function B7(e, t) {
+  return mh(e, t, "r");
+}
+var PYr,
+  Eit,
+  hb,
+  SUi,
+  EUi,
+  MYr,
+  LBd,
+  dH,
+  D6h,
+  P6h,
+  Oke,
+  Jx,
+  Ait,
+  c8,
+  wUi,
+  CUi,
+  X3e,
+  Nke,
+  IUi,
+  Tce,
+  xUi,
+  G_e;

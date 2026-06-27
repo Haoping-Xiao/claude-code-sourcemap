@@ -1,338 +1,74 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module TRc
+// restored from claude-code 2.1.195 (deminified) — module LDl
 // matched 2.1.88 source: src/commands/feedback/index.ts
-// class=modified  jaccard=0.0298  score=0.0374  fileCov=0.1274
+// class=modified  jaccard=0.1278  score=0.2198  fileCov=0.2338
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// [unwrapped __esm module TRc] deps: Xa, Ye, hse, pfr
-((ARc = R(lt(), 1)),
-  (tK = R(se(), 1)),
-  (gwm = ["y", "n", "d"]),
-  (ERc = {
-    y: "yes",
-    n: "no",
-    d: "dont_ask_again",
-  }),
-  (hwm = [
-    {
-      key: "y",
-      label: "Yes",
-      width: 10,
-    },
-    {
-      key: "n",
-      label: "No",
-      width: 10,
-    },
-    {
-      key: "d",
-      label: "Don't ask again",
-    },
-  ]));
-function cvt(e) {
-  let t = _Yo.c(33),
-    {
-      state: n,
-      lastResponse: r,
-      handleSelect: o,
-      handleUndo: s,
-      handleTranscriptSelect: i,
-      inputValue: a,
-      setInputValue: l,
-      onRequestFeedback: c,
-      appearanceId: u,
-      surveyType: d,
-      message: p,
-      memoryEvaluation: f,
-      showNotSure: m,
-      transcriptBundlePath: g,
-    } = e,
-    h = m === void 0 ? false : m;
-  if (n === "closed") return null;
-  if (n === "pending") {
-    let _;
-    if (t[0] !== s || t[1] !== r)
-      ((_ = $C.jsx(bwm, {
-        lastResponse: r,
-        onUndo: s,
-      })),
-        (t[0] = s),
-        (t[1] = r),
-        (t[2] = _));
-    else _ = t[2];
-    return _;
+// [unwrapped __esm module LDl]
+((Fkf = {
+  aliases: ["share", "bug"],
+  type: "local-jsx",
+  name: "feedback",
+  description: "Submit feedback, report a bug, or share your conversation",
+  argumentHint: "[report]",
+  requires: {
+    ink: true,
+  },
+  load: () => Promise.resolve().then(() => (RDl(), xDl)),
+}),
+  (yOo = Fkf));
+function PDl(e, t) {
+  let n = Uo([...i_(e.requestedPath), e.canonicalPath]),
+    r = Uo([e.canonicalPath, KYt(e.canonicalPath)]),
+    o = (i, a, l) => l.some((c) => jkf(i, a, c));
+  for (let i of cz(t)) {
+    if (i.ruleValue.toolName !== DDl) continue;
+    let a = i.ruleValue.ruleContent;
+    if (a === void 0 || o(a, i.source, n))
+      return {
+        result: "blockedByRule",
+        rule: i,
+      };
   }
-  if (n === "thanks") {
-    let _;
-    if (t[3] !== u || t[4] !== a || t[5] !== r || t[6] !== c || t[7] !== l || t[8] !== d)
-      ((_ = $C.jsx(Awm, {
-        lastResponse: r,
-        inputValue: a,
-        setInputValue: l,
-        onRequestFeedback: c,
-        appearanceId: u,
-        surveyType: d,
-      })),
-        (t[3] = u),
-        (t[4] = a),
-        (t[5] = r),
-        (t[6] = c),
-        (t[7] = l),
-        (t[8] = d),
-        (t[9] = _));
-    else _ = t[9];
-    return _;
+  let s = bHe(t).filter((i) => i.ruleValue.toolName === DDl);
+  if (s.length === 0)
+    return {
+      result: "allowed",
+    };
+  for (let i of s) {
+    let a = i.ruleValue.ruleContent;
+    if (a === void 0 || o(a, i.source, r))
+      return {
+        result: "allowed",
+      };
   }
-  if (n === "submitted") {
-    if (g) {
-      let S;
-      if (t[10] === Symbol.for("react.memo_cache_sentinel"))
-        ((S = $C.jsxs(w, {
-          color: "success",
-          children: ["\u2713", " Transcript bundle saved"],
-        })),
-          (t[10] = S));
-      else S = t[10];
-      let A;
-      if (t[11] !== g)
-        ((A = $C.jsx(w, {
-          dimColor: true,
-          wrap: "wrap",
-          children: g,
-        })),
-          (t[11] = g),
-          (t[12] = A));
-      else A = t[12];
-      let v;
-      if (t[13] === Symbol.for("react.memo_cache_sentinel"))
-        ((v = $C.jsx(w, {
-          wrap: "wrap",
-          children:
-            "Send this file to your Anthropic account representative or attach it to your support request.",
-        })),
-          (t[13] = v));
-      else v = t[13];
-      let C;
-      if (t[14] !== A)
-        ((C = $C.jsxs(U, {
-          marginTop: 1,
-          flexDirection: "column",
-          children: [S, A, v],
-        })),
-          (t[14] = A),
-          (t[15] = C));
-      else C = t[15];
-      return C;
-    }
-    let _;
-    if (t[16] === Symbol.for("react.memo_cache_sentinel"))
-      ((_ = $C.jsx(U, {
-        marginTop: 1,
-        children: $C.jsxs(w, {
-          color: "success",
-          children: ["\u2713", " Thanks for sharing your transcript!"],
-        }),
-      })),
-        (t[16] = _));
-    else _ = t[16];
-    return _;
-  }
-  if (n === "submitting") {
-    let _;
-    if (t[17] === Symbol.for("react.memo_cache_sentinel"))
-      ((_ = $C.jsx(U, {
-        marginTop: 1,
-        children: $C.jsxs(w, {
-          dimColor: true,
-          children: ["Sharing transcript", "\u2026"],
-        }),
-      })),
-        (t[17] = _));
-    else _ = t[17];
-    return _;
-  }
-  if (n === "transcript_prompt") {
-    if (!i) return null;
-    if (a && !mfr(a.toLowerCase())) return null;
-    let _;
-    if (t[18] !== i || t[19] !== a || t[20] !== l)
-      ((_ = $C.jsx(HRc, {
-        onSelect: i,
-        inputValue: a,
-        setInputValue: l,
-      })),
-        (t[18] = i),
-        (t[19] = a),
-        (t[20] = l),
-        (t[21] = _));
-    else _ = t[21];
-    return _;
-  }
-  let y = a.length === 1 ? pRc(a) : a;
-  if (y && !hYo(y, h)) return null;
-  if (f) {
-    let _;
-    if (t[22] !== o || t[23] !== a || t[24] !== f || t[25] !== l)
-      ((_ = $C.jsx(bRc, {
-        evaluation: f,
-        onSelect: o,
-        inputValue: a,
-        setInputValue: l,
-      })),
-        (t[22] = o),
-        (t[23] = a),
-        (t[24] = f),
-        (t[25] = l),
-        (t[26] = _));
-    else _ = t[26];
-    return _;
-  }
-  let b;
-  if (t[27] !== o || t[28] !== a || t[29] !== p || t[30] !== l || t[31] !== h)
-    ((b = $C.jsx(ffr, {
-      onSelect: o,
-      inputValue: a,
-      setInputValue: l,
-      message: p,
-      showNotSure: h,
-    })),
-      (t[27] = o),
-      (t[28] = a),
-      (t[29] = p),
-      (t[30] = l),
-      (t[31] = h),
-      (t[32] = b));
-  else b = t[32];
-  return b;
+  return {
+    result: "outsideAllowedPatterns",
+    allowedPatterns: s.map((i) => i.ruleValue.ruleContent).filter((i) => i !== void 0),
+  };
 }
-function bwm(e) {
-  let t = _Yo.c(7),
-    { lastResponse: n, onUndo: r } = e,
-    o;
-  if (t[0] !== r)
-    ((o = (c, u) => {
-      if (u.escape) return (r(), true);
-    }),
-      (t[0] = r),
-      (t[1] = o));
-  else o = t[1];
-  Zat(o);
-  let s = n && n !== "dismissed" ? _wm[n] : "",
-    i;
-  if (t[2] !== s)
-    ((i = $C.jsx(w, {
-      color: "text",
-      children: s,
-    })),
-      (t[2] = s),
-      (t[3] = i));
-  else i = t[3];
-  let a;
-  if (t[4] === Symbol.for("react.memo_cache_sentinel"))
-    ((a = $C.jsx(ht, {
-      chord: "escape",
-      action: "undo",
-    })),
-      (t[4] = a));
-  else a = t[4];
-  let l;
-  if (t[5] !== i)
-    ((l = $C.jsx(U, {
-      marginTop: 1,
-      children: $C.jsxs(w, {
-        dimColor: true,
-        children: ["Feedback: ", i, " \xB7", " ", a],
-      }),
-    })),
-      (t[5] = i),
-      (t[6] = l));
-  else l = t[6];
-  return l;
+function jkf(e, t, n) {
+  let { relativePattern: r, root: o } = zYt(e, t),
+    s = tKe(o ?? $t(), n);
+  if (s === ".." || s.startsWith("../")) return false;
+  let i = r
+    .replace(/\/{2,}/g, "/")
+    .replace(/^\//, "")
+    .replace(/\/$/, "");
+  return Gkf(i).test(s);
 }
-function Awm({
-  lastResponse: e,
-  inputValue: t,
-  setInputValue: n,
-  onRequestFeedback: r,
-  appearanceId: o,
-  surveyType: s,
-}) {
-  let i = e && e !== "dismissed" ? e : null,
-    a = i ? "/feedback" : null,
-    l = Oe.DISABLE_FEEDBACK_COMMAND || Oe.DISABLE_BUG_COMMAND,
-    u = Boolean(r && i && !(a === "/feedback" && l)),
-    d = ofr(),
-    p = vRc.useRef(d);
-  return (
-    (p.current = d),
-    lvt({
-      inputValue: t,
-      setInputValue: n,
-      isValidDigit: Swm,
-      enabled: u,
-      once: true,
-      mountDelayMs: 0,
-      onDigit: () => {
-        if (
-          (G("tengu_feedback_survey_event", {
-            ...p.current,
-            event_type: We("followup_accepted"),
-            response: Oo(e),
-            ...(o && {
-              appearance_id: o,
-            }),
-            ...(s && {
-              survey_type: $e(s),
-            }),
-          }),
-          i && a === "/feedback" && o && s)
-        )
-          wDl({
-            appearanceId: o,
-            response: i,
-            surveyType: s,
-            setAt: Date.now(),
-          });
-        if (a) r?.(a);
-      },
-    }),
-    $C.jsxs(U, {
-      marginTop: 1,
-      flexDirection: "column",
-      children: [
-        $C.jsx(w, {
-          color: "success",
-          children: "Thanks for the feedback!",
-        }),
-        u && i && a
-          ? $C.jsxs(w, {
-              dimColor: true,
-              children: [
-                "(Optional) Press [",
-                $C.jsx(w, {
-                  color: "ansi:cyan",
-                  children: "1",
-                }),
-                "] to",
-                " ",
-                Ewm[i],
-                " \xB7 ",
-                a,
-              ],
-            })
-          : l
-            ? null
-            : $C.jsx(w, {
-                dimColor: true,
-                children: "Use /feedback to share detailed feedback anytime.",
-              }),
-      ],
-    })
-  );
+function Gkf(e) {
+  let t = "^";
+  for (let n = 0; n < e.length; n++) {
+    let r = e[n];
+    if (n === 0 && r === "*" && e[1] === "*" && e[2] === "/") ((t += "(?:.*/)?"), (n += 2));
+    else if (r === "/" && e[n + 1] === "*" && e[n + 2] === "*") ((t += "(/.*)?"), (n += 2));
+    else if (r === "*") {
+      if (e[n + 1] === "*") ((t += ".*"), n++);
+      else t += "[^/]+";
+    } else if ("\\^$.|?+()[]{}".includes(r)) t += `\\${r}`;
+    else t += r;
+  }
+  return new RegExp(`${t}$`, "i");
 }
-var _Yo,
-  vRc,
-  $C,
-  _wm,
-  Swm = (e) => e === "1",
-  Ewm;
+var DDl = "Cd";
