@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mgs = Q(($tg, Pgs) => {
-  Pgs.exports = SyntaxError;
-});
+// [unwrapped __commonJS module Mgs] (exports=$tg, module=Pgs)
+var $tg = {};
+var Pgs = {
+  exports: $tg
+};
+Pgs.exports = SyntaxError;

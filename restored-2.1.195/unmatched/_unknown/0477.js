@@ -3,10 +3,13 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ags = Q((xtg, Egs) => {
-  var Qyu = YIr();
-  Egs.exports = Zyu;
-  function Zyu(e, t, n) {
-    return Qyu(e, t, null, n);
-  }
-});
+// [unwrapped __commonJS module Ags] (exports=xtg, module=Egs)
+var xtg = {};
+var Egs = {
+  exports: xtg
+};
+var Qyu = YIr();
+Egs.exports = Zyu;
+function Zyu(e, t, n) {
+  return Qyu(e, t, null, n);
+}

@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Pvc = Q((HJA, xSm) => {
-  xSm.exports = `// Output emitters: vendor React, per-component files (.jsx / .d.ts /
+// [unwrapped __commonJS module Pvc] (exports=HJA, module=xSm)
+var HJA = {};
+var xSm = {
+  exports: HJA
+};
+xSm.exports = `// Output emitters: vendor React, per-component files (.jsx / .d.ts /
 // .prompt.md / <Name>.html), README.md, .ds-build-meta.json.
 // Previews are self-contained (render from window.<GLOBAL>) \u2014 the compiled
 // preview .tsx module (owned .design-sync/previews/ or the generated
@@ -687,4 +691,3 @@ export function emitBuildMeta({ OUT, GLOBAL, PKG, VERSION, PROVIDER, OVERRIDES, 
   return components.length;
 }
 `;
-});

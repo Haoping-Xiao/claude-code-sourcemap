@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Gvc = Q((LJA, NSm) => {
-  NSm.exports = `// The hash recipes \u2014 single source of truth for every consumer that must
+// [unwrapped __commonJS module Gvc] (exports=LJA, module=NSm)
+var LJA = {};
+var NSm = {
+  exports: LJA
+};
+NSm.exports = `// The hash recipes \u2014 single source of truth for every consumer that must
 // agree byte-for-byte: package-build.mjs writes the recipe outputs into
 // _ds_sync.json (the uploaded sidecar future syncs diff against) and stamps
 // per-component sourceKeys into .stories-map.json; package-capture.mjs /
@@ -228,4 +232,3 @@ export function scriptsShaFor() {
   return h.digest('hex').slice(0, 16);
 }
 `;
-});

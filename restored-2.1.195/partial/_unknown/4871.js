@@ -4,9 +4,12 @@
 // class=partial  jaccard=0.2106  score=0.3798  fileCov=0.321
 // note: low-confidence suggestion: src/commands/mobile/mobile.tsx; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var cAt = Q((IzS, mGl) => {
-  mGl.exports = fGl();
-});
+// [unwrapped __commonJS module cAt] (exports=IzS, module=mGl)
+var IzS = {};
+var mGl = {
+  exports: IzS
+};
+mGl.exports = fGl();
 var hGl = {};
 _t(hGl, {
   call: () => call

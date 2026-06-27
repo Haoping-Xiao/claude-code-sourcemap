@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tdn = Q((Otg, $gs) => {
-  $gs.exports = TypeError;
-});
+// [unwrapped __commonJS module Tdn] (exports=Otg, module=$gs)
+var Otg = {};
+var $gs = {
+  exports: Otg
+};
+$gs.exports = TypeError;

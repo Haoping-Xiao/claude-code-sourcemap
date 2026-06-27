@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cvc = Q((hJA, ASm) => {
-  ASm.exports = `// esbuild bundling: dist entry \u2192 IIFE at window.<GLOBAL>, plus the
+// [unwrapped __commonJS module Cvc] (exports=hJA, module=ASm)
+var hJA = {};
+var ASm = {
+  exports: hJA
+};
+ASm.exports = `// esbuild bundling: dist entry \u2192 IIFE at window.<GLOBAL>, plus the
 // \`/* @ds-bundle: {...} */\` first-line header the claude.ai/design app's
 // self-check parses.
 
@@ -331,4 +335,3 @@ export function stampHeader(bundleJs, { namespace, components, inlinedExternals 
   writeFileSync(bundleJs, \`/* @ds-bundle: \${headerJson} */\\n\` + body);
 }
 `;
-});

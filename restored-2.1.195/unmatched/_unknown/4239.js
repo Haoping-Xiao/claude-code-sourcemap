@@ -3,12 +3,15 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mpl = Q((tpb, Ppl) => {
-  var Zcf = {
-    setTimeout,
-    clearTimeout,
-    setInterval,
-    clearInterval
-  };
-  Ppl.exports = Zcf;
-});
+// [unwrapped __commonJS module Mpl] (exports=tpb, module=Ppl)
+var tpb = {};
+var Ppl = {
+  exports: tpb
+};
+var Zcf = {
+  setTimeout,
+  clearTimeout,
+  setInterval,
+  clearInterval
+};
+Ppl.exports = Zcf;

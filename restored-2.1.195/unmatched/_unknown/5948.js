@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dnn = Q((szH, Wjc) => {
-  Wjc.exports = e => !!e && e.constructor === Object;
-});
+// [unwrapped __commonJS module Dnn] (exports=szH, module=Wjc)
+var szH = {};
+var Wjc = {
+  exports: szH
+};
+Wjc.exports = e => !!e && e.constructor === Object;

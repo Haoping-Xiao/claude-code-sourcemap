@@ -4,36 +4,39 @@
 // class=new  jaccard=0.026  score=0.0964  fileCov=0.0344
 // note: nearest: node_modules/undici/lib/web/fetch/formdata.js (0.026); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var H3c = Q((LzH, A3c) => {
-  var wMm = g3c(),
-    {
-      OPError: CMm,
-      RPError: IMm
-    } = Xme(),
-    xMm = E3c(),
-    kMm = kJo(),
-    {
-      CLOCK_TOLERANCE: RMm,
-      HTTP_OPTIONS: LMm
-    } = Egr(),
-    DMm = Mnn(),
-    {
-      setDefaults: PMm
-    } = zvt();
-  A3c.exports = {
-    Issuer: wMm,
-    Strategy: xMm,
-    TokenSet: kMm,
-    errors: {
-      OPError: CMm,
-      RPError: IMm
-    },
-    custom: {
-      setHttpOptionsDefaults: PMm,
-      http_options: LMm,
-      clock_tolerance: RMm
-    },
-    generators: DMm
-  };
-});
+// [unwrapped __commonJS module H3c] (exports=LzH, module=A3c)
+var LzH = {};
+var A3c = {
+  exports: LzH
+};
+var wMm = g3c(),
+  {
+    OPError: CMm,
+    RPError: IMm
+  } = Xme(),
+  xMm = E3c(),
+  kMm = kJo(),
+  {
+    CLOCK_TOLERANCE: RMm,
+    HTTP_OPTIONS: LMm
+  } = Egr(),
+  DMm = Mnn(),
+  {
+    setDefaults: PMm
+  } = zvt();
+A3c.exports = {
+  Issuer: wMm,
+  Strategy: xMm,
+  TokenSet: kMm,
+  errors: {
+    OPError: CMm,
+    RPError: IMm
+  },
+  custom: {
+    setHttpOptionsDefaults: PMm,
+    http_options: LMm,
+    clock_tolerance: RMm
+  },
+  generators: DMm
+};
 var nXe, gQo, DzH, PzH, MzH, xgr, Yvt;

@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Wgs = Q((Ftg, Ggs) => {
-  Ggs.exports = Math.max;
-});
+// [unwrapped __commonJS module Wgs] (exports=Ftg, module=Ggs)
+var Ftg = {};
+var Ggs = {
+  exports: Ftg
+};
+Ggs.exports = Math.max;

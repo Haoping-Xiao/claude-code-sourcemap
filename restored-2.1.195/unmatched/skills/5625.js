@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kvc = Q((bJA, vSm) => {
-  vSm.exports = `// Storybook source adapter. Builds (or copies) storybook-static, parses
+// [unwrapped __commonJS module kvc] (exports=bJA, module=vSm)
+var bJA = {};
+var vSm = {
+  exports: bJA
+};
+vSm.exports = `// Storybook source adapter. Builds (or copies) storybook-static, parses
 // index.json into the component list, resolves each component's story SOURCE
 // file, and pairs index story names to the module's export keys \u2014 the inputs
 // preview-gen-storybook.mjs needs to compile story modules as previews.
@@ -348,4 +352,3 @@ module.exports=\${proxy('window.React', '{jsx:jsx,jsxs:jsx,jsxDEV:jsx,Fragment:u
   }
 }
 `;
-});

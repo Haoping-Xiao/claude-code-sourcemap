@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tvc = Q((fJA, bSm) => {
-  bSm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module Tvc] (exports=fJA, module=bSm)
+var fJA = {};
+var bSm = {
+  exports: fJA
+};
+bSm.exports = `#!/usr/bin/env node
 // Validation for a package-build.mjs output dir. File-shape checks ensure
 // the bundle is complete and well-formed; a render check opens every
 // <Name>.html (or a --render-sample subset) and flags empty, blank, and
@@ -809,4 +813,3 @@ const warnNote = warnings ? \` (\${warnings} warning(s) \u2014 review above, non
 console.error(errors ? \`\\n\${errors} error(s) \u2014 open a <Name>.html in a browser via \\\`npx serve \${OUT}\\\` to inspect.\` : \`\\n\u2713 bundle is complete\${warnNote}\`);
 process.exit(errors ? 1 : 0);
 `;
-});

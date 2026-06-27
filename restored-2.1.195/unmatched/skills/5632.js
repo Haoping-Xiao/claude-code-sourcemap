@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ovc = Q((wJA, LSm) => {
-  LSm.exports = `// Per-component doc discovery + guidelines copy. Heuristic probe (sibling \u2192
+// [unwrapped __commonJS module Ovc] (exports=wJA, module=LSm)
+var wJA = {};
+var LSm = {
+  exports: wJA
+};
+LSm.exports = `// Per-component doc discovery + guidelines copy. Heuristic probe (sibling \u2192
 // docsDir \u2192 stories.mdx) with cfg overrides (docsMap, docsDir, guidelinesGlob),
 // plus a minimal-transform .md/.mdx ingester. The output goes into <Name>.prompt.md
 // so the design agent gets usage judgment alongside the structured API contract.
@@ -289,4 +293,3 @@ export function previewExamples(previewPath) {
   return out;
 }
 `;
-});

@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var G4i = Q((MYh, j4i) => {
-  j4i.exports = F4i();
-});
+// [unwrapped __commonJS module G4i] (exports=MYh, module=j4i)
+var MYh = {};
+var j4i = {
+  exports: MYh
+};
+j4i.exports = F4i();

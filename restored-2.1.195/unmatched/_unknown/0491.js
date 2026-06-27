@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Kgs = Q((Gtg, zgs) => {
-  zgs.exports = Math.pow;
-});
+// [unwrapped __commonJS module Kgs] (exports=Gtg, module=zgs)
+var Gtg = {};
+var zgs = {
+  exports: Gtg
+};
+zgs.exports = Math.pow;

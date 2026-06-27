@@ -4,8 +4,12 @@
 // class=modified  jaccard=0.2968  score=0.4661  fileCov=0.4497
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var m9l = Q((_oE, oWf) => {
-  oWf.exports = `<system-reminder>
+// [unwrapped __commonJS module m9l] (exports=_oE, module=oWf)
+var _oE = {};
+var oWf = {
+  exports: _oE,
+};
+oWf.exports = `<system-reminder>
 Produce an exceptionally thorough implementation plan using multi-agent exploration.
 
 Instructions:
@@ -35,7 +39,6 @@ Your final plan should include:
 - Potential risks and mitigations
 </system-reminder>
 `;
-});
 function sWf() {
   return at("tengu_ultraplan_timeout_seconds", 5400) * 1000;
 }

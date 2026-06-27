@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fvc = Q((kJA, $Sm) => {
-  $Sm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module Fvc] (exports=kJA, module=$Sm)
+var kJA = {};
+var $Sm = {
+  exports: kJA
+};
+$Sm.exports = `#!/usr/bin/env node
 // Capture harness for matching self-contained previews (<Name>.html rendering
 // from _ds_bundle.js) against the repo's own storybook render \u2014 the fidelity
 // ground truth. This script captures the TWO TRUE IMAGES per story and pairs
@@ -758,4 +762,3 @@ console.error(\`\\ncompare: \${report.length} component(s) \u2014 \${skipped.len
 console.error('Grade from the true images: Read each _screenshots/compare/<group>__<Name>.png sheet (raw/ PNGs are the full-res authority), then Write the verdicts to .design-sync/.cache/compare/<Name>.grade.json (a recapture clears the old grade \u2014 its contract changed).');
 process.exit(hard.length ? 1 : 0);
 `;
-});

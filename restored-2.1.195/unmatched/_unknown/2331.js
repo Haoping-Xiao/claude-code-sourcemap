@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vRn = Q(($Kh, oji) => {
-  var s2d = j7(),
-    i2d = (e, t, n) => s2d(e, t, n) >= 0;
-  oji.exports = i2d;
-});
+// [unwrapped __commonJS module vRn] (exports=$Kh, module=oji)
+var $Kh = {};
+var oji = {
+  exports: $Kh
+};
+var s2d = j7(),
+  i2d = (e, t, n) => s2d(e, t, n) >= 0;
+oji.exports = i2d;

@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Z2i = Q((RKh, Q2i) => {
-  var YFd = HRn(),
-    XFd = (e, t) => e.sort((n, r) => YFd(r, n, t));
-  Q2i.exports = XFd;
-});
+// [unwrapped __commonJS module Z2i] (exports=RKh, module=Q2i)
+var RKh = {};
+var Q2i = {
+  exports: RKh
+};
+var YFd = HRn(),
+  XFd = (e, t) => e.sort((n, r) => YFd(r, n, t));
+Q2i.exports = XFd;

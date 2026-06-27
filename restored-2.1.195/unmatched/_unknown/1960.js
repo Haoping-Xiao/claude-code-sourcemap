@@ -3,9 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jAi = Q((TOh, FAi) => {
-  var Vwd = UAi();
-  FAi.exports = {
-    pkg: Vwd
-  };
-});
+// [unwrapped __commonJS module jAi] (exports=TOh, module=FAi)
+var TOh = {};
+var FAi = {
+  exports: TOh
+};
+var Vwd = UAi();
+FAi.exports = {
+  pkg: Vwd
+};

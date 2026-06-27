@@ -4,9 +4,12 @@
 // class=modified  jaccard=0.6628  score=0.8972  fileCov=0.7173
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var lt = Q((X8h, HBi) => {
-  HBi.exports = ABi();
-});
+// [unwrapped __commonJS module lt] (exports=X8h, module=HBi)
+var X8h = {};
+var HBi = {
+  exports: X8h,
+};
+HBi.exports = ABi();
 class Qte {
   _didStopImmediatePropagation = false;
   didStopImmediatePropagation() {

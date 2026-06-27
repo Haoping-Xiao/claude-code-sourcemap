@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hWn = Q((OS_, rGa) => {
-  rGa.exports = nGa();
-});
+// [unwrapped __commonJS module hWn] (exports=OS_, module=rGa)
+var OS_ = {};
+var rGa = {
+  exports: OS_
+};
+rGa.exports = nGa();

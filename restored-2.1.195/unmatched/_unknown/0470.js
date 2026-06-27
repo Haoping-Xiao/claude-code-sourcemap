@@ -3,17 +3,20 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var WIr = Q((Atg, dgs) => {
-  var ugs = cgs();
-  dgs.exports = Pyu;
-  function Pyu(e) {
-    var t = false;
-    return ugs(function () {
-      t = true;
-    }), function (r, o) {
-      if (t) e(r, o);else ugs(function () {
-        e(r, o);
-      });
-    };
-  }
-});
+// [unwrapped __commonJS module WIr] (exports=Atg, module=dgs)
+var Atg = {};
+var dgs = {
+  exports: Atg
+};
+var ugs = cgs();
+dgs.exports = Pyu;
+function Pyu(e) {
+  var t = false;
+  return ugs(function () {
+    t = true;
+  }), function (r, o) {
+    if (t) e(r, o);else ugs(function () {
+      e(r, o);
+    });
+  };
+}

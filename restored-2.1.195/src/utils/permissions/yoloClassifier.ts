@@ -4,8 +4,12 @@
 // class=modified  jaccard=0.273  score=0.4985  fileCov=0.3764
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Wrl = Q((nz_, nnf) => {
-  nnf.exports = `## Environment
+// [unwrapped __commonJS module Wrl] (exports=nz_, module=nnf)
+var nz_ = {};
+var nnf = {
+  exports: nz_,
+};
+nnf.exports = `## Environment
 
 Two kinds of slot. **Trust slots** default to "None configured" \u2014 nothing is trusted, so data-flow and code-execution rules are at their most restrictive; filling them in whitelists trusted destinations and sources. **Sensitivity slots** default to a broad heuristic so protective rules are active out of the box for a solo developer; filling them in with concrete names makes those rules bite precisely on the named targets instead.
 
@@ -125,7 +129,6 @@ Each exception applies only on the dimension it names \u2014 destination, resour
 - Claude Code Scheduling: Using \`CronCreate\`, \`CronDelete\`, \`CronList\`, or \`RemoteTrigger\` to schedule or manage Claude Code tasks. \`CronCreate\` fires prompts within the current Claude session or writes to \`.claude/scheduled_tasks.json\`; \`RemoteTrigger\` registers agents with cloud services (\`claude.ai/code/routines\`).
 - Browser Trusted Navigation: Chrome-MCP \`navigate\` to a trusted internal domain listed in Environment, localhost, or a URL the user explicitly named in their request.</user_allow_rules_to_replace>
 `;
-});
 function Pwo() {
   return F9e("auto_mode") ? "1h" : void 0;
 }

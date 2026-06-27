@@ -4,19 +4,19 @@
 // class=partial  jaccard=0.1858  score=1  fileCov=0.1858
 // note: low-confidence suggestion: node_modules/@smithy/querystring-builder/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var KLr = Q(jCs => {
-  var zLr = FCs();
-  function TNu(e) {
-    let t = [];
-    for (let n of Object.keys(e).sort()) {
-      let r = e[n];
-      if (n = zLr.escapeUri(n), Array.isArray(r)) for (let o = 0, s = r.length; o < s; o++) t.push(`${n}=${zLr.escapeUri(r[o])}`);else {
-        let o = n;
-        if (r || typeof r === "string") o += `=${zLr.escapeUri(r)}`;
-        t.push(o);
-      }
+// [unwrapped __commonJS module KLr] (exports=jCs)
+var jCs = {};
+var zLr = FCs();
+function TNu(e) {
+  let t = [];
+  for (let n of Object.keys(e).sort()) {
+    let r = e[n];
+    if (n = zLr.escapeUri(n), Array.isArray(r)) for (let o = 0, s = r.length; o < s; o++) t.push(`${n}=${zLr.escapeUri(r[o])}`);else {
+      let o = n;
+      if (r || typeof r === "string") o += `=${zLr.escapeUri(r)}`;
+      t.push(o);
     }
-    return t.join("&");
   }
-  jCs.buildQueryString = TNu;
-});
+  return t.join("&");
+}
+jCs.buildQueryString = TNu;

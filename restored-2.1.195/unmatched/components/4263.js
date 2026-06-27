@@ -4,291 +4,294 @@
 // class=new  jaccard=0.0064  score=0.0344  fileCov=0.0077
 // note: nearest: src/cli/print.ts (0.0064); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dko = Q((VYn, lml) => {
-  (function (e, t) {
-    typeof VYn === "object" && typeof lml !== "undefined" ? t(VYn) : typeof define === "function" && define.amd ? define(["exports"], t) : (e = typeof globalThis !== "undefined" ? globalThis : e || self, t((e.acorn = e.acorn || {}, e.acorn.walk = {})));
-  })(VYn, function (e) {
-    function t(y, b, _, S, A) {
-      if (!_) _ = h;
+// [unwrapped __commonJS module Dko] (exports=VYn, module=lml)
+var VYn = {};
+var lml = {
+  exports: VYn
+};
+(function (e, t) {
+  typeof VYn === "object" && typeof lml !== "undefined" ? t(VYn) : typeof define === "function" && define.amd ? define(["exports"], t) : (e = typeof globalThis !== "undefined" ? globalThis : e || self, t((e.acorn = e.acorn || {}, e.acorn.walk = {})));
+})(VYn, function (e) {
+  function t(y, b, _, S, A) {
+    if (!_) _ = h;
+    (function v(C, x, I) {
+      var k = I || C.type;
+      if (g(_, k, C, x, v), b[k]) b[k](C, x);
+    })(y, S, A);
+  }
+  function n(y, b, _, S, A) {
+    var v = [];
+    if (!_) _ = h;
+    (function C(x, I, k) {
+      var D = k || x.type,
+        P = x !== v[v.length - 1];
+      if (P) v.push(x);
+      if (g(_, D, x, I, C), b[D]) b[D](x, I || v, v);
+      if (P) v.pop();
+    })(y, S, A);
+  }
+  function r(y, b, _, S, A) {
+    var v = _ ? p(_, S || void 0) : S;
+    (function C(x, I, k) {
+      v[k || x.type](x, I, C);
+    })(y, b, A);
+  }
+  function o(y) {
+    if (typeof y === "string") return function (b) {
+      return b === y;
+    };else if (!y) return function () {
+      return true;
+    };else return y;
+  }
+  var s = function (b, _) {
+    this.node = b, this.state = _;
+  };
+  function i(y, b, _, S, A) {
+    if (!_) _ = h;
+    var v;
+    (function C(x, I, k) {
+      var D = k || x.type;
+      if (g(_, D, x, I, C), v !== x) b(x, I, D), v = x;
+    })(y, S, A);
+  }
+  function a(y, b, _, S) {
+    if (!_) _ = h;
+    var A = [],
+      v;
+    (function C(x, I, k) {
+      var D = k || x.type,
+        P = x !== A[A.length - 1];
+      if (P) A.push(x);
+      if (g(_, D, x, I, C), v !== x) b(x, I || A, A, D), v = x;
+      if (P) A.pop();
+    })(y, S);
+  }
+  function l(y, b, _, S, A, v) {
+    if (!A) A = h;
+    S = o(S);
+    try {
+      (function C(x, I, k) {
+        var D = k || x.type;
+        if ((b == null || x.start <= b) && (_ == null || x.end >= _)) g(A, D, x, I, C);
+        if ((b == null || x.start === b) && (_ == null || x.end === _) && S(D, x)) throw new s(x, I);
+      })(y, v);
+    } catch (C) {
+      if (C instanceof s) return C;
+      throw C;
+    }
+  }
+  function c(y, b, _, S, A) {
+    if (_ = o(_), !S) S = h;
+    try {
       (function v(C, x, I) {
         var k = I || C.type;
-        if (g(_, k, C, x, v), b[k]) b[k](C, x);
-      })(y, S, A);
+        if (C.start > b || C.end < b) return;
+        if (g(S, k, C, x, v), _(k, C)) throw new s(C, x);
+      })(y, A);
+    } catch (v) {
+      if (v instanceof s) return v;
+      throw v;
     }
-    function n(y, b, _, S, A) {
-      var v = [];
-      if (!_) _ = h;
-      (function C(x, I, k) {
-        var D = k || x.type,
-          P = x !== v[v.length - 1];
-        if (P) v.push(x);
-        if (g(_, D, x, I, C), b[D]) b[D](x, I || v, v);
-        if (P) v.pop();
-      })(y, S, A);
+  }
+  function u(y, b, _, S, A) {
+    if (_ = o(_), !S) S = h;
+    try {
+      (function v(C, x, I) {
+        if (C.end < b) return;
+        var k = I || C.type;
+        if (C.start >= b && _(k, C)) throw new s(C, x);
+        g(S, k, C, x, v);
+      })(y, A);
+    } catch (v) {
+      if (v instanceof s) return v;
+      throw v;
     }
-    function r(y, b, _, S, A) {
-      var v = _ ? p(_, S || void 0) : S;
-      (function C(x, I, k) {
-        v[k || x.type](x, I, C);
-      })(y, b, A);
+  }
+  function d(y, b, _, S, A) {
+    if (_ = o(_), !S) S = h;
+    var v;
+    return function C(x, I, k) {
+      if (x.start > b) return;
+      var D = k || x.type;
+      if (x.end <= b && (!v || v.node.end < x.end) && _(D, x)) v = new s(x, I);
+      g(S, D, x, I, C);
+    }(y, A), v;
+  }
+  function p(y, b) {
+    var _ = Object.create(b || h);
+    for (var S in y) _[S] = y[S];
+    return _;
+  }
+  function f(y, b, _) {
+    _(y, b);
+  }
+  function m(y, b, _) {}
+  function g(y, b, _, S, A) {
+    if (y[b] == null) throw Error("No walker function defined for node type " + b);
+    y[b](_, S, A);
+  }
+  var h = {};
+  h.Program = h.BlockStatement = h.StaticBlock = function (y, b, _) {
+    for (var S = 0, A = y.body; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b, "Statement");
     }
-    function o(y) {
-      if (typeof y === "string") return function (b) {
-        return b === y;
-      };else if (!y) return function () {
-        return true;
-      };else return y;
+  }, h.Statement = f, h.EmptyStatement = m, h.ExpressionStatement = h.ParenthesizedExpression = h.ChainExpression = function (y, b, _) {
+    return _(y.expression, b, "Expression");
+  }, h.IfStatement = function (y, b, _) {
+    if (_(y.test, b, "Expression"), _(y.consequent, b, "Statement"), y.alternate) _(y.alternate, b, "Statement");
+  }, h.LabeledStatement = function (y, b, _) {
+    return _(y.body, b, "Statement");
+  }, h.BreakStatement = h.ContinueStatement = m, h.WithStatement = function (y, b, _) {
+    _(y.object, b, "Expression"), _(y.body, b, "Statement");
+  }, h.SwitchStatement = function (y, b, _) {
+    _(y.discriminant, b, "Expression");
+    for (var S = 0, A = y.cases; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
     }
-    var s = function (b, _) {
-      this.node = b, this.state = _;
-    };
-    function i(y, b, _, S, A) {
-      if (!_) _ = h;
-      var v;
-      (function C(x, I, k) {
-        var D = k || x.type;
-        if (g(_, D, x, I, C), v !== x) b(x, I, D), v = x;
-      })(y, S, A);
+  }, h.SwitchCase = function (y, b, _) {
+    if (y.test) _(y.test, b, "Expression");
+    for (var S = 0, A = y.consequent; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b, "Statement");
     }
-    function a(y, b, _, S) {
-      if (!_) _ = h;
-      var A = [],
-        v;
-      (function C(x, I, k) {
-        var D = k || x.type,
-          P = x !== A[A.length - 1];
-        if (P) A.push(x);
-        if (g(_, D, x, I, C), v !== x) b(x, I || A, A, D), v = x;
-        if (P) A.pop();
-      })(y, S);
+  }, h.ReturnStatement = h.YieldExpression = h.AwaitExpression = function (y, b, _) {
+    if (y.argument) _(y.argument, b, "Expression");
+  }, h.ThrowStatement = h.SpreadElement = function (y, b, _) {
+    return _(y.argument, b, "Expression");
+  }, h.TryStatement = function (y, b, _) {
+    if (_(y.block, b, "Statement"), y.handler) _(y.handler, b);
+    if (y.finalizer) _(y.finalizer, b, "Statement");
+  }, h.CatchClause = function (y, b, _) {
+    if (y.param) _(y.param, b, "Pattern");
+    _(y.body, b, "Statement");
+  }, h.WhileStatement = h.DoWhileStatement = function (y, b, _) {
+    _(y.test, b, "Expression"), _(y.body, b, "Statement");
+  }, h.ForStatement = function (y, b, _) {
+    if (y.init) _(y.init, b, "ForInit");
+    if (y.test) _(y.test, b, "Expression");
+    if (y.update) _(y.update, b, "Expression");
+    _(y.body, b, "Statement");
+  }, h.ForInStatement = h.ForOfStatement = function (y, b, _) {
+    _(y.left, b, "ForInit"), _(y.right, b, "Expression"), _(y.body, b, "Statement");
+  }, h.ForInit = function (y, b, _) {
+    if (y.type === "VariableDeclaration") _(y, b);else _(y, b, "Expression");
+  }, h.DebuggerStatement = m, h.FunctionDeclaration = function (y, b, _) {
+    return _(y, b, "Function");
+  }, h.VariableDeclaration = function (y, b, _) {
+    for (var S = 0, A = y.declarations; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
     }
-    function l(y, b, _, S, A, v) {
-      if (!A) A = h;
-      S = o(S);
-      try {
-        (function C(x, I, k) {
-          var D = k || x.type;
-          if ((b == null || x.start <= b) && (_ == null || x.end >= _)) g(A, D, x, I, C);
-          if ((b == null || x.start === b) && (_ == null || x.end === _) && S(D, x)) throw new s(x, I);
-        })(y, v);
-      } catch (C) {
-        if (C instanceof s) return C;
-        throw C;
-      }
+  }, h.VariableDeclarator = function (y, b, _) {
+    if (_(y.id, b, "Pattern"), y.init) _(y.init, b, "Expression");
+  }, h.Function = function (y, b, _) {
+    if (y.id) _(y.id, b, "Pattern");
+    for (var S = 0, A = y.params; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b, "Pattern");
     }
-    function c(y, b, _, S, A) {
-      if (_ = o(_), !S) S = h;
-      try {
-        (function v(C, x, I) {
-          var k = I || C.type;
-          if (C.start > b || C.end < b) return;
-          if (g(S, k, C, x, v), _(k, C)) throw new s(C, x);
-        })(y, A);
-      } catch (v) {
-        if (v instanceof s) return v;
-        throw v;
-      }
+    _(y.body, b, y.expression ? "Expression" : "Statement");
+  }, h.Pattern = function (y, b, _) {
+    if (y.type === "Identifier") _(y, b, "VariablePattern");else if (y.type === "MemberExpression") _(y, b, "MemberPattern");else _(y, b);
+  }, h.VariablePattern = m, h.MemberPattern = f, h.RestElement = function (y, b, _) {
+    return _(y.argument, b, "Pattern");
+  }, h.ArrayPattern = function (y, b, _) {
+    for (var S = 0, A = y.elements; S < A.length; S += 1) {
+      var v = A[S];
+      if (v) _(v, b, "Pattern");
     }
-    function u(y, b, _, S, A) {
-      if (_ = o(_), !S) S = h;
-      try {
-        (function v(C, x, I) {
-          if (C.end < b) return;
-          var k = I || C.type;
-          if (C.start >= b && _(k, C)) throw new s(C, x);
-          g(S, k, C, x, v);
-        })(y, A);
-      } catch (v) {
-        if (v instanceof s) return v;
-        throw v;
-      }
+  }, h.ObjectPattern = function (y, b, _) {
+    for (var S = 0, A = y.properties; S < A.length; S += 1) {
+      var v = A[S];
+      if (v.type === "Property") {
+        if (v.computed) _(v.key, b, "Expression");
+        _(v.value, b, "Pattern");
+      } else if (v.type === "RestElement") _(v.argument, b, "Pattern");
     }
-    function d(y, b, _, S, A) {
-      if (_ = o(_), !S) S = h;
-      var v;
-      return function C(x, I, k) {
-        if (x.start > b) return;
-        var D = k || x.type;
-        if (x.end <= b && (!v || v.node.end < x.end) && _(D, x)) v = new s(x, I);
-        g(S, D, x, I, C);
-      }(y, A), v;
+  }, h.Expression = f, h.ThisExpression = h.Super = h.MetaProperty = m, h.ArrayExpression = function (y, b, _) {
+    for (var S = 0, A = y.elements; S < A.length; S += 1) {
+      var v = A[S];
+      if (v) _(v, b, "Expression");
     }
-    function p(y, b) {
-      var _ = Object.create(b || h);
-      for (var S in y) _[S] = y[S];
-      return _;
+  }, h.ObjectExpression = function (y, b, _) {
+    for (var S = 0, A = y.properties; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
     }
-    function f(y, b, _) {
-      _(y, b);
+  }, h.FunctionExpression = h.ArrowFunctionExpression = h.FunctionDeclaration, h.SequenceExpression = function (y, b, _) {
+    for (var S = 0, A = y.expressions; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b, "Expression");
     }
-    function m(y, b, _) {}
-    function g(y, b, _, S, A) {
-      if (y[b] == null) throw Error("No walker function defined for node type " + b);
-      y[b](_, S, A);
+  }, h.TemplateLiteral = function (y, b, _) {
+    for (var S = 0, A = y.quasis; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
     }
-    var h = {};
-    h.Program = h.BlockStatement = h.StaticBlock = function (y, b, _) {
-      for (var S = 0, A = y.body; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b, "Statement");
-      }
-    }, h.Statement = f, h.EmptyStatement = m, h.ExpressionStatement = h.ParenthesizedExpression = h.ChainExpression = function (y, b, _) {
-      return _(y.expression, b, "Expression");
-    }, h.IfStatement = function (y, b, _) {
-      if (_(y.test, b, "Expression"), _(y.consequent, b, "Statement"), y.alternate) _(y.alternate, b, "Statement");
-    }, h.LabeledStatement = function (y, b, _) {
-      return _(y.body, b, "Statement");
-    }, h.BreakStatement = h.ContinueStatement = m, h.WithStatement = function (y, b, _) {
-      _(y.object, b, "Expression"), _(y.body, b, "Statement");
-    }, h.SwitchStatement = function (y, b, _) {
-      _(y.discriminant, b, "Expression");
-      for (var S = 0, A = y.cases; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-    }, h.SwitchCase = function (y, b, _) {
-      if (y.test) _(y.test, b, "Expression");
-      for (var S = 0, A = y.consequent; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b, "Statement");
-      }
-    }, h.ReturnStatement = h.YieldExpression = h.AwaitExpression = function (y, b, _) {
-      if (y.argument) _(y.argument, b, "Expression");
-    }, h.ThrowStatement = h.SpreadElement = function (y, b, _) {
-      return _(y.argument, b, "Expression");
-    }, h.TryStatement = function (y, b, _) {
-      if (_(y.block, b, "Statement"), y.handler) _(y.handler, b);
-      if (y.finalizer) _(y.finalizer, b, "Statement");
-    }, h.CatchClause = function (y, b, _) {
-      if (y.param) _(y.param, b, "Pattern");
-      _(y.body, b, "Statement");
-    }, h.WhileStatement = h.DoWhileStatement = function (y, b, _) {
-      _(y.test, b, "Expression"), _(y.body, b, "Statement");
-    }, h.ForStatement = function (y, b, _) {
-      if (y.init) _(y.init, b, "ForInit");
-      if (y.test) _(y.test, b, "Expression");
-      if (y.update) _(y.update, b, "Expression");
-      _(y.body, b, "Statement");
-    }, h.ForInStatement = h.ForOfStatement = function (y, b, _) {
-      _(y.left, b, "ForInit"), _(y.right, b, "Expression"), _(y.body, b, "Statement");
-    }, h.ForInit = function (y, b, _) {
-      if (y.type === "VariableDeclaration") _(y, b);else _(y, b, "Expression");
-    }, h.DebuggerStatement = m, h.FunctionDeclaration = function (y, b, _) {
-      return _(y, b, "Function");
-    }, h.VariableDeclaration = function (y, b, _) {
-      for (var S = 0, A = y.declarations; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-    }, h.VariableDeclarator = function (y, b, _) {
-      if (_(y.id, b, "Pattern"), y.init) _(y.init, b, "Expression");
-    }, h.Function = function (y, b, _) {
-      if (y.id) _(y.id, b, "Pattern");
-      for (var S = 0, A = y.params; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b, "Pattern");
-      }
-      _(y.body, b, y.expression ? "Expression" : "Statement");
-    }, h.Pattern = function (y, b, _) {
-      if (y.type === "Identifier") _(y, b, "VariablePattern");else if (y.type === "MemberExpression") _(y, b, "MemberPattern");else _(y, b);
-    }, h.VariablePattern = m, h.MemberPattern = f, h.RestElement = function (y, b, _) {
-      return _(y.argument, b, "Pattern");
-    }, h.ArrayPattern = function (y, b, _) {
-      for (var S = 0, A = y.elements; S < A.length; S += 1) {
-        var v = A[S];
-        if (v) _(v, b, "Pattern");
-      }
-    }, h.ObjectPattern = function (y, b, _) {
-      for (var S = 0, A = y.properties; S < A.length; S += 1) {
-        var v = A[S];
-        if (v.type === "Property") {
-          if (v.computed) _(v.key, b, "Expression");
-          _(v.value, b, "Pattern");
-        } else if (v.type === "RestElement") _(v.argument, b, "Pattern");
-      }
-    }, h.Expression = f, h.ThisExpression = h.Super = h.MetaProperty = m, h.ArrayExpression = function (y, b, _) {
-      for (var S = 0, A = y.elements; S < A.length; S += 1) {
-        var v = A[S];
-        if (v) _(v, b, "Expression");
-      }
-    }, h.ObjectExpression = function (y, b, _) {
-      for (var S = 0, A = y.properties; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-    }, h.FunctionExpression = h.ArrowFunctionExpression = h.FunctionDeclaration, h.SequenceExpression = function (y, b, _) {
-      for (var S = 0, A = y.expressions; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b, "Expression");
-      }
-    }, h.TemplateLiteral = function (y, b, _) {
-      for (var S = 0, A = y.quasis; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-      for (var C = 0, x = y.expressions; C < x.length; C += 1) {
-        var I = x[C];
-        _(I, b, "Expression");
-      }
-    }, h.TemplateElement = m, h.UnaryExpression = h.UpdateExpression = function (y, b, _) {
-      _(y.argument, b, "Expression");
-    }, h.BinaryExpression = h.LogicalExpression = function (y, b, _) {
-      _(y.left, b, "Expression"), _(y.right, b, "Expression");
-    }, h.AssignmentExpression = h.AssignmentPattern = function (y, b, _) {
-      _(y.left, b, "Pattern"), _(y.right, b, "Expression");
-    }, h.ConditionalExpression = function (y, b, _) {
-      _(y.test, b, "Expression"), _(y.consequent, b, "Expression"), _(y.alternate, b, "Expression");
-    }, h.NewExpression = h.CallExpression = function (y, b, _) {
-      if (_(y.callee, b, "Expression"), y.arguments) for (var S = 0, A = y.arguments; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b, "Expression");
-      }
-    }, h.MemberExpression = function (y, b, _) {
-      if (_(y.object, b, "Expression"), y.computed) _(y.property, b, "Expression");
-    }, h.ExportNamedDeclaration = h.ExportDefaultDeclaration = function (y, b, _) {
-      if (y.declaration) _(y.declaration, b, y.type === "ExportNamedDeclaration" || y.declaration.id ? "Statement" : "Expression");
-      if (y.source) _(y.source, b, "Expression");
-      if (y.attributes) for (var S = 0, A = y.attributes; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-    }, h.ExportAllDeclaration = function (y, b, _) {
-      if (y.exported) _(y.exported, b);
-      if (_(y.source, b, "Expression"), y.attributes) for (var S = 0, A = y.attributes; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-    }, h.ImportAttribute = function (y, b, _) {
-      _(y.value, b, "Expression");
-    }, h.ImportDeclaration = function (y, b, _) {
-      for (var S = 0, A = y.specifiers; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-      if (_(y.source, b, "Expression"), y.attributes) for (var C = 0, x = y.attributes; C < x.length; C += 1) {
-        var I = x[C];
-        _(I, b);
-      }
-    }, h.ImportExpression = function (y, b, _) {
-      if (_(y.source, b, "Expression"), y.options) _(y.options, b, "Expression");
-    }, h.ImportSpecifier = h.ImportDefaultSpecifier = h.ImportNamespaceSpecifier = h.Identifier = h.PrivateIdentifier = h.Literal = m, h.TaggedTemplateExpression = function (y, b, _) {
-      _(y.tag, b, "Expression"), _(y.quasi, b, "Expression");
-    }, h.ClassDeclaration = h.ClassExpression = function (y, b, _) {
-      return _(y, b, "Class");
-    }, h.Class = function (y, b, _) {
-      if (y.id) _(y.id, b, "Pattern");
-      if (y.superClass) _(y.superClass, b, "Expression");
-      _(y.body, b);
-    }, h.ClassBody = function (y, b, _) {
-      for (var S = 0, A = y.body; S < A.length; S += 1) {
-        var v = A[S];
-        _(v, b);
-      }
-    }, h.MethodDefinition = h.PropertyDefinition = h.Property = function (y, b, _) {
-      if (y.computed) _(y.key, b, "Expression");
-      if (y.value) _(y.value, b, "Expression");
-    }, e.ancestor = n, e.base = h, e.findNodeAfter = u, e.findNodeAround = c, e.findNodeAt = l, e.findNodeBefore = d, e.full = i, e.fullAncestor = a, e.make = p, e.recursive = r, e.simple = t;
-  });
+    for (var C = 0, x = y.expressions; C < x.length; C += 1) {
+      var I = x[C];
+      _(I, b, "Expression");
+    }
+  }, h.TemplateElement = m, h.UnaryExpression = h.UpdateExpression = function (y, b, _) {
+    _(y.argument, b, "Expression");
+  }, h.BinaryExpression = h.LogicalExpression = function (y, b, _) {
+    _(y.left, b, "Expression"), _(y.right, b, "Expression");
+  }, h.AssignmentExpression = h.AssignmentPattern = function (y, b, _) {
+    _(y.left, b, "Pattern"), _(y.right, b, "Expression");
+  }, h.ConditionalExpression = function (y, b, _) {
+    _(y.test, b, "Expression"), _(y.consequent, b, "Expression"), _(y.alternate, b, "Expression");
+  }, h.NewExpression = h.CallExpression = function (y, b, _) {
+    if (_(y.callee, b, "Expression"), y.arguments) for (var S = 0, A = y.arguments; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b, "Expression");
+    }
+  }, h.MemberExpression = function (y, b, _) {
+    if (_(y.object, b, "Expression"), y.computed) _(y.property, b, "Expression");
+  }, h.ExportNamedDeclaration = h.ExportDefaultDeclaration = function (y, b, _) {
+    if (y.declaration) _(y.declaration, b, y.type === "ExportNamedDeclaration" || y.declaration.id ? "Statement" : "Expression");
+    if (y.source) _(y.source, b, "Expression");
+    if (y.attributes) for (var S = 0, A = y.attributes; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
+    }
+  }, h.ExportAllDeclaration = function (y, b, _) {
+    if (y.exported) _(y.exported, b);
+    if (_(y.source, b, "Expression"), y.attributes) for (var S = 0, A = y.attributes; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
+    }
+  }, h.ImportAttribute = function (y, b, _) {
+    _(y.value, b, "Expression");
+  }, h.ImportDeclaration = function (y, b, _) {
+    for (var S = 0, A = y.specifiers; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
+    }
+    if (_(y.source, b, "Expression"), y.attributes) for (var C = 0, x = y.attributes; C < x.length; C += 1) {
+      var I = x[C];
+      _(I, b);
+    }
+  }, h.ImportExpression = function (y, b, _) {
+    if (_(y.source, b, "Expression"), y.options) _(y.options, b, "Expression");
+  }, h.ImportSpecifier = h.ImportDefaultSpecifier = h.ImportNamespaceSpecifier = h.Identifier = h.PrivateIdentifier = h.Literal = m, h.TaggedTemplateExpression = function (y, b, _) {
+    _(y.tag, b, "Expression"), _(y.quasi, b, "Expression");
+  }, h.ClassDeclaration = h.ClassExpression = function (y, b, _) {
+    return _(y, b, "Class");
+  }, h.Class = function (y, b, _) {
+    if (y.id) _(y.id, b, "Pattern");
+    if (y.superClass) _(y.superClass, b, "Expression");
+    _(y.body, b);
+  }, h.ClassBody = function (y, b, _) {
+    for (var S = 0, A = y.body; S < A.length; S += 1) {
+      var v = A[S];
+      _(v, b);
+    }
+  }, h.MethodDefinition = h.PropertyDefinition = h.Property = function (y, b, _) {
+    if (y.computed) _(y.key, b, "Expression");
+    if (y.value) _(y.value, b, "Expression");
+  }, e.ancestor = n, e.base = h, e.findNodeAfter = u, e.findNodeAround = c, e.findNodeAt = l, e.findNodeBefore = d, e.full = i, e.fullAncestor = a, e.make = p, e.recursive = r, e.simple = t;
 });
 function m$e(e) {
   return Object.setPrototypeOf(e, null), delete e.constructor, delete e.prototype, e;

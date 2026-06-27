@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dgs = Q((Mtg, Lgs) => {
-  Lgs.exports = ReferenceError;
-});
+// [unwrapped __commonJS module Dgs] (exports=Mtg, module=Lgs)
+var Mtg = {};
+var Lgs = {
+  exports: Mtg
+};
+Lgs.exports = ReferenceError;

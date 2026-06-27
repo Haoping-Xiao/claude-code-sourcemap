@@ -3,17 +3,20 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Iwa = Q((RWy, Cwa) => {
-  Cwa.exports = {
-    ...Q5e(),
-    ...aUn(),
-    ...Cva(),
-    ...rwa(),
-    ...mwa(),
-    ...bre(),
-    ...wwa(),
-    ...uUn(),
-    ...VLe(),
-    ...r3t()
-  };
-});
+// [unwrapped __commonJS module Iwa] (exports=RWy, module=Cwa)
+var RWy = {};
+var Cwa = {
+  exports: RWy
+};
+Cwa.exports = {
+  ...Q5e(),
+  ...aUn(),
+  ...Cva(),
+  ...rwa(),
+  ...mwa(),
+  ...bre(),
+  ...wwa(),
+  ...uUn(),
+  ...VLe(),
+  ...r3t()
+};

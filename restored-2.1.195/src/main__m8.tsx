@@ -4,9 +4,12 @@
 // class=modified (alt of src/main.tsx)  jaccard=0.0095  score=0.1884  fileCov=0.0099
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fes = Q((ONm, rVc) => {
-  rVc.exports = require("/$bunfs/root/audio-capture.node");
-});
+// [unwrapped __commonJS module fes] (exports=ONm, module=rVc)
+var ONm = {};
+var rVc = {
+  exports: ONm,
+};
+rVc.exports = require("/$bunfs/root/audio-capture.node");
 function aon(e) {
   let t = false,
     n,

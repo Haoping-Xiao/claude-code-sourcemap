@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var $vc = Q((vJA, RSm) => {
-  RSm.exports = `// generatePreviewSource (storybook shape) \u2014 emits the preview wrapper body
+// [unwrapped __commonJS module $vc] (exports=vJA, module=RSm)
+var vJA = {};
+var RSm = {
+  exports: vJA
+};
+RSm.exports = `// generatePreviewSource (storybook shape) \u2014 emits the preview wrapper body
 // (written to the generated cache, .design-sync/.cache/previews/<Name>.tsx)
 // for one component by IMPORTING THE STORY MODULE itself and
 // exposing each story as a component. The whole module comes along \u2014 hooks,
@@ -141,4 +145,3 @@ export function generatePreviewSource(c, opts) {
 \`;
 }
 `;
-});

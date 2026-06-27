@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mvc = Q((TJA, kSm) => {
-  kSm.exports = `// Preview .tsx files \u2014 one per component; named exports become labeled cells
+// [unwrapped __commonJS module Mvc] (exports=TJA, module=kSm)
+var TJA = {};
+var kSm = {
+  exports: TJA
+};
+kSm.exports = `// Preview .tsx files \u2014 one per component; named exports become labeled cells
 // in <Name>.html, compiled to ds-bundle/_preview/<Name>.js (IIFE \u2192
 // window.__dsPreview) by buildPreviews. Two homes: .design-sync/previews/
 // (user-authored, committed, markerless, always wins) and
@@ -187,4 +191,3 @@ export async function buildPreviews({ components, previewDir, genDir, OUT, react
   return built;
 }
 `;
-});

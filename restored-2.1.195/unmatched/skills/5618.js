@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Hvc = Q((pJA, _Sm) => {
-  _Sm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module Hvc] (exports=pJA, module=_Sm)
+var pJA = {};
+var _Sm = {
+  exports: pJA
+};
+_Sm.exports = `#!/usr/bin/env node
 // Convert a React design system into the claude.ai/design DS-project layout.
 // Two source shapes feed the same Source seam (see lib/source-*.mjs):
 // storybook (.storybook/ + storybook-static) and package (dist + .d.ts,
@@ -1009,4 +1013,3 @@ if (SKIP_DTS) {
 
 console.error(\`\u2713 wrote \${OUT}: _ds_bundle.js + styles.css + \${count} component previews\`);
 `;
-});

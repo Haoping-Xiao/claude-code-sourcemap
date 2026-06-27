@@ -4,7 +4,10 @@
 // class=partial  jaccard=0.1949  score=1  fileCov=0.1949
 // note: low-confidence suggestion: node_modules/fs-extra/lib/mkdirs/utils.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var GAa = Q((IGy, jAa) => {
-  var CGy = require("path");
-  jAa.exports.checkPath = function (t) {};
-});
+// [unwrapped __commonJS module GAa] (exports=IGy, module=jAa)
+var IGy = {};
+var jAa = {
+  exports: IGy
+};
+var CGy = require("path");
+jAa.exports.checkPath = function (t) {};

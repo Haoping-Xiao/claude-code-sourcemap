@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ivc = Q((yJA, HSm) => {
-  HSm.exports = `// .d.ts extraction via ts-morph (real TS checker). Resolves the apparent
+// [unwrapped __commonJS module Ivc] (exports=yJA, module=HSm)
+var yJA = {};
+var HSm = {
+  exports: yJA
+};
+HSm.exports = `// .d.ts extraction via ts-morph (real TS checker). Resolves the apparent
 // structural type of each <Name>Props \u2014 unwraps Omit/Pick, follows extends
 // chains and intersections, resolves \`(typeof X)[number]\` / mapped types to
 // literal unions.
@@ -547,4 +551,3 @@ export function jsdocFor(name, ctx) {
     ?.trim().replace(/\\s+/g, ' ').replace(/[^\\w\\s.,()'/:+-]/g, '').slice(0, 140) ?? '';
 }
 `;
-});

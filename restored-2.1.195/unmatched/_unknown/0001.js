@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pes = Q(($Nm, nVc) => {
-  nVc.exports = require("/$bunfs/root/image-processor.node");
-});
+// [unwrapped __commonJS module pes] (exports=$Nm, module=nVc)
+var $Nm = {};
+var nVc = {
+  exports: $Nm
+};
+nVc.exports = require("/$bunfs/root/image-processor.node");

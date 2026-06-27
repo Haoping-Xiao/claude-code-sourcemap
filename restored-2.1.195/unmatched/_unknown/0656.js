@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var OAs = Q((hug, $As) => {
-  $As.exports = /^#!(.*)/;
-});
+// [unwrapped __commonJS module OAs] (exports=hug, module=$As)
+var hug = {};
+var $As = {
+  exports: hug
+};
+$As.exports = /^#!(.*)/;

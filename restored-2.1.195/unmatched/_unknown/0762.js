@@ -4,27 +4,27 @@
 // class=new  jaccard=0.0292  score=0.6861  fileCov=0.0296
 // note: nearest: node_modules/follow-redirects/index.js (0.0292); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TY = Q(yIs => {
-  var KNu = gIs(),
-    hIs = e => {
-      if (typeof e === "string") return hIs(new URL(e));
-      let {
-          hostname: t,
-          pathname: n,
-          port: r,
-          protocol: o,
-          search: s
-        } = e,
-        i;
-      if (s) i = KNu.parseQueryString(s);
-      return {
+// [unwrapped __commonJS module TY] (exports=yIs)
+var yIs = {};
+var KNu = gIs(),
+  hIs = e => {
+    if (typeof e === "string") return hIs(new URL(e));
+    let {
         hostname: t,
-        port: r ? parseInt(r) : void 0,
+        pathname: n,
+        port: r,
         protocol: o,
-        path: n,
-        query: i
-      };
+        search: s
+      } = e,
+      i;
+    if (s) i = KNu.parseQueryString(s);
+    return {
+      hostname: t,
+      port: r ? parseInt(r) : void 0,
+      protocol: o,
+      path: n,
+      query: i
     };
-  yIs.parseUrl = hIs;
-});
+  };
+yIs.parseUrl = hIs;
 var c2e;

@@ -4,7 +4,7 @@
 // class=partial  jaccard=0.209  score=1  fileCov=0.209
 // note: low-confidence suggestion: node_modules/@smithy/is-array-buffer/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var LPs = Q(RPs => {
-  var I3u = e => typeof ArrayBuffer === "function" && e instanceof ArrayBuffer || Object.prototype.toString.call(e) === "[object ArrayBuffer]";
-  RPs.isArrayBuffer = I3u;
-});
+// [unwrapped __commonJS module LPs] (exports=RPs)
+var RPs = {};
+var I3u = e => typeof ArrayBuffer === "function" && e instanceof ArrayBuffer || Object.prototype.toString.call(e) === "[object ArrayBuffer]";
+RPs.isArrayBuffer = I3u;

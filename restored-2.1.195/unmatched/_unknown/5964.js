@@ -4,6 +4,9 @@
 // class=new  jaccard=0.0378  score=0.8871  fileCov=0.038
 // note: nearest: src/utils/slowOperations.ts (0.0378); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nnn = Q((EzH, S4c) => {
-  S4c.exports = globalThis.structuredClone || (e => JSON.parse(JSON.stringify(e)));
-});
+// [unwrapped __commonJS module Nnn] (exports=EzH, module=S4c)
+var EzH = {};
+var S4c = {
+  exports: EzH
+};
+S4c.exports = globalThis.structuredClone || (e => JSON.parse(JSON.stringify(e)));

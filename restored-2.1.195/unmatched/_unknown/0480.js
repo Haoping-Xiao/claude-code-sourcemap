@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Cgs = Q((Ltg, wgs) => {
-  wgs.exports = Error;
-});
+// [unwrapped __commonJS module Cgs] (exports=Ltg, module=wgs)
+var Ltg = {};
+var wgs = {
+  exports: Ltg
+};
+wgs.exports = Error;

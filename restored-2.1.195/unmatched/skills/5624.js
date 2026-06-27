@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var xvc = Q((_JA, TSm) => {
-  TSm.exports = `// CSS handling: token-file copy, @font-face extraction, and the final
+// [unwrapped __commonJS module xvc] (exports=_JA, module=TSm)
+var _JA = {};
+var TSm = {
+  exports: _JA
+};
+TSm.exports = `// CSS handling: token-file copy, @font-face extraction, and the final
 // styles.css writer (the styles entry point \u2014 an @import list, never inlined CSS).
 // Storybook-only fallbacks live in css-fallback.mjs.
 
@@ -167,4 +171,3 @@ export function writeStylesCss({ out, tokenFiles, bundleCss, fontRules, remoteIm
   console.error('[CSS_RUNTIME] no static CSS found (tokens/component/fonts/remote all empty) \u2014 wrote a self-styling styles.css. Expected for CSS-in-JS DSes; if this DS does ship a stylesheet, set cfg.cssEntry to it. If cfg.cssEntry is ALREADY set and renders verify, this line refers only to the scrape \u2014 do not chase it.');
 }
 `;
-});

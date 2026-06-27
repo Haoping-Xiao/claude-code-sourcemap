@@ -4,11 +4,14 @@
 // class=modified  jaccard=0.647  score=0.9742  fileCov=0.6582
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var bWi = Q((yQh, hJr) => {
-  var _Wi = yWi();
-  hJr.exports = _Wi;
-  hJr.exports.default = _Wi;
-});
+// [unwrapped __commonJS module bWi] (exports=yQh, module=hJr)
+var yQh = {};
+var hJr = {
+  exports: yQh,
+};
+var _Wi = yWi();
+hJr.exports = _Wi;
+hJr.exports.default = _Wi;
 function SWi(e, t, n, r = 0, o) {
   let s = rn(t),
     i = e.length;

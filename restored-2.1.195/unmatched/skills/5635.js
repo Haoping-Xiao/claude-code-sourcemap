@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Uvc = Q((xJA, MSm) => {
-  MSm.exports = `// One chromium page visit against the reference storybook-static: fiber-walk
+// [unwrapped __commonJS module Uvc] (exports=xJA, module=MSm)
+var xJA = {};
+var MSm = {
+  exports: xJA
+};
+MSm.exports = `// One chromium page visit against the reference storybook-static: fiber-walk
 // provider detection. Fallback diagnostic for when
 // the .storybook/preview decorator bundle fails (or doesn't exist) and
 // previews show context/provider errors \u2014 it infers the provider chain the
@@ -142,4 +146,3 @@ if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.m
   process.exit(0);
 }
 `;
-});

@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Tgr = Q((SzH, b4c) => {
-  b4c.exports.keystores = new WeakMap();
-});
+// [unwrapped __commonJS module Tgr] (exports=SzH, module=b4c)
+var SzH = {};
+var b4c = {
+  exports: SzH
+};
+b4c.exports.keystores = new WeakMap();

@@ -13,6 +13,7 @@ import { join, dirname } from "path";
 import { parse } from "@babel/parser";
 import _traverse from "@babel/traverse";
 import _generate from "@babel/generator";
+import * as t from "@babel/types";
 import * as prettier from "prettier";
 import { createRequire } from "module";
 
@@ -107,21 +108,32 @@ function unwrapEsm(ast) {
       if (d.init && d.init.type === "CallExpression" && d.init.callee.type === "Identifier" &&
           d.init.callee.name.length <= 2 && d.init.arguments.length === 1) {
         const arg = d.init.arguments[0];
-        if (arg.type === "ArrowFunctionExpression" && arg.params.length === 0 && arg.body.type === "BlockStatement") {
+        const isArrow = arg.type === "ArrowFunctionExpression" || arg.type === "FunctionExpression";
+        const modName = d.id.type === "Identifier" ? d.id.name : "?";
+        if (isArrow && arg.body.type === "BlockStatement" && arg.params.length === 0) {
+          // __esm 惰性模块: 0 参
           const inner = arg.body.body.slice();
           const deps = [];
           while (inner.length) {
             const names = isInitCall(inner[0]);
             if (names) { deps.push(...names); inner.shift(); } else break;
           }
-          const modName = d.id.type === "Identifier" ? d.id.name : "?";
-          // 用注释承载 unwrap 信息, 不引入多余语句: 挂到第一条 inner 上
           if (inner.length) {
             inner[0].leadingComments = [{ type: "CommentLine", value: ` [unwrapped __esm module ${modName}]${deps.length ? " deps: " + deps.join(", ") : ""}` }, ...(inner[0].leadingComments || [])];
           }
           out.push(...inner);
-          unwrapped++;
-          handled = true;
+          unwrapped++; handled = true;
+        } else if (isArrow && arg.body.type === "BlockStatement" && arg.params.length >= 1 && arg.params.length <= 2 &&
+                   arg.params.every((p) => p.type === "Identifier")) {
+          // __commonJS 模块: (exports[, module]) 参; 注入自包含的 exports/module 声明
+          const exP = arg.params[0].name;
+          const modP = arg.params[1] ? arg.params[1].name : null;
+          const prelude = [];
+          prelude.push(t.variableDeclaration("var", [t.variableDeclarator(t.identifier(exP), t.objectExpression([]))]));
+          if (modP) prelude.push(t.variableDeclaration("var", [t.variableDeclarator(t.identifier(modP), t.objectExpression([t.objectProperty(t.identifier("exports"), t.identifier(exP))]))]));
+          prelude[0].leadingComments = [{ type: "CommentLine", value: ` [unwrapped __commonJS module ${modName}] (exports=${exP}${modP ? ", module=" + modP : ""})` }];
+          out.push(...prelude, ...arg.body.body);
+          unwrapped++; handled = true;
         }
       }
     }

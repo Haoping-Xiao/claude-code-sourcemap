@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Bvc = Q((IJA, PSm) => {
-  PSm.exports = `// Shared by probe.mjs, compare.mjs, and package-capture.mjs. Kept standalone
+// [unwrapped __commonJS module Bvc] (exports=IJA, module=PSm)
+var IJA = {};
+var PSm = {
+  exports: IJA
+};
+PSm.exports = `// Shared by probe.mjs, compare.mjs, and package-capture.mjs. Kept standalone
 // (node builtins only) so serving files never drags in the build toolchain
 // (esbuild, ts-morph).
 // Also runnable directly \u2014 \`node http-serve.mjs <dir>\` serves <dir> and
@@ -40,4 +44,3 @@ if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.m
   console.log(\`serving \${resolve(process.argv[2] ?? '.')} at http://127.0.0.1:\${port}/ (Ctrl-C to stop)\`);
 }
 `;
-});

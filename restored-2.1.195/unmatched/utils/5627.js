@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Lvc = Q((EJA, CSm) => {
-  CSm.exports = `// How story modules resolve at preview-compile time. Small on purpose and
+// [unwrapped __commonJS module Lvc] (exports=EJA, module=CSm)
+var EJA = {};
+var CSm = {
+  exports: EJA
+};
+CSm.exports = `// How story modules resolve at preview-compile time. Small on purpose and
 // FORKABLE: copy to .design-sync/overrides/story-imports.mjs (declare in
 // cfg.libOverrides) when a repo's layout needs different rules \u2014 this seam
 // owns ALL resolution policy, so a fork never touches generation or build
@@ -264,4 +268,3 @@ export function storyImportPlugins({ PKG, GLOBAL, extraEntries = [], exported, c
   };
 }
 `;
-});

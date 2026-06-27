@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Wvc = Q((DJA, BSm) => {
-  BSm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module Wvc] (exports=DJA, module=BSm)
+var DJA = {};
+var BSm = {
+  exports: DJA
+};
+BSm.exports = `#!/usr/bin/env node
 // Two-partition diff: fresh local build vs the uploaded project's
 // _ds_sync.json sidecar. The partitions answer DIFFERENT questions:
 //
@@ -242,4 +246,3 @@ if (!remote) {
 writeFileSync(join(OUT, '.sync-diff.json'), JSON.stringify(out, null, 2) + '\\n');
 console.error(\`\u2192 \${join(OUT, '.sync-diff.json')}\`);
 `;
-});

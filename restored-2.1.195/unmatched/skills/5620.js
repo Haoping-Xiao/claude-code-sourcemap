@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var vvc = Q((mJA, SSm) => {
-  SSm.exports = `// Shared filesystem + string helpers used across the converter modules.
+// [unwrapped __commonJS module vvc] (exports=mJA, module=SSm)
+var mJA = {};
+var SSm = {
+  exports: mJA
+};
+SSm.exports = `// Shared filesystem + string helpers used across the converter modules.
 // Pure functions only \u2014 no process globals, no CLI parsing. One exception:
 // gitWorkspaceRoot reads HOME/USERPROFILE for its containment guard, so the
 // home bound has a single definition instead of one per caller.
@@ -223,4 +227,3 @@ export function validateConfig(cfg) {
   return errors;
 }
 `;
-});

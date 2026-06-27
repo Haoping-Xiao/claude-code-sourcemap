@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var XIr = Q((Rtg, vgs) => {
-  vgs.exports = Object;
-});
+// [unwrapped __commonJS module XIr] (exports=Rtg, module=vgs)
+var Rtg = {};
+var vgs = {
+  exports: Rtg
+};
+vgs.exports = Object;

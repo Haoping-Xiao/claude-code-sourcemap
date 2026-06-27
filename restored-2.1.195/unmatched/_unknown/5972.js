@@ -3,9 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var l3c = Q((IzH, a3c) => {
-  var iMm = Sgr();
-  a3c.exports = new iMm({
-    max: 100
-  });
+// [unwrapped __commonJS module l3c] (exports=IzH, module=a3c)
+var IzH = {};
+var a3c = {
+  exports: IzH
+};
+var iMm = Sgr();
+a3c.exports = new iMm({
+  max: 100
 });

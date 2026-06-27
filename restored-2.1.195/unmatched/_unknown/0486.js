@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ngs = Q((Ntg, Ogs) => {
-  Ogs.exports = URIError;
-});
+// [unwrapped __commonJS module Ngs] (exports=Ntg, module=Ogs)
+var Ntg = {};
+var Ogs = {
+  exports: Ntg
+};
+Ogs.exports = URIError;

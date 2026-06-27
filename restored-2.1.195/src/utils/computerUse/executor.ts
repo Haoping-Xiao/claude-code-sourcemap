@@ -4,12 +4,15 @@
 // class=modified  jaccard=0.1499  score=0.8359  fileCov=0.1544
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var hRa = Q((zXy, gRa) => {
-  var VXy = require("path");
-  gRa.exports = {
-    isSupported: false,
-  };
-});
+// [unwrapped __commonJS module hRa] (exports=zXy, module=gRa)
+var zXy = {};
+var gRa = {
+  exports: zXy,
+};
+var VXy = require("path");
+gRa.exports = {
+  isSupported: false,
+};
 function fJ() {
   if (ifo) return ifo;
   let e = hRa();

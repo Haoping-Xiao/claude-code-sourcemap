@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wvc = Q((gJA, ESm) => {
-  ESm.exports = `// Source-shape detection \u2014 shared by both adapters so cfg.shape can override
+// [unwrapped __commonJS module wvc] (exports=gJA, module=ESm)
+var gJA = {};
+var ESm = {
+  exports: gJA
+};
+ESm.exports = `// Source-shape detection \u2014 shared by both adapters so cfg.shape can override
 // the result without either shape's lib importing the other.
 
 import { existsSync } from 'node:fs';
@@ -41,4 +45,3 @@ export function detectShape({ INPUTS, SB_STATIC, SB_CONFIG_DIR }) {
   return shape;
 }
 `;
-});

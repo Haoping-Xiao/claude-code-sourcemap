@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var A7r = Q((MKh, rji) => {
-  var r2d = j7(),
-    o2d = (e, t, n) => r2d(e, t, n) !== 0;
-  rji.exports = o2d;
-});
+// [unwrapped __commonJS module A7r] (exports=MKh, module=rji)
+var MKh = {};
+var rji = {
+  exports: MKh
+};
+var r2d = j7(),
+  o2d = (e, t, n) => r2d(e, t, n) !== 0;
+rji.exports = o2d;

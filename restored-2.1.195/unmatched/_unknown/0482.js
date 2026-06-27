@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rgs = Q((Ptg, kgs) => {
-  kgs.exports = RangeError;
-});
+// [unwrapped __commonJS module Rgs] (exports=Ptg, module=kgs)
+var Ptg = {};
+var kgs = {
+  exports: Ptg
+};
+kgs.exports = RangeError;

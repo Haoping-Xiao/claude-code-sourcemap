@@ -4,8 +4,12 @@
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.2165  score=0.5146  fileCov=0.2721
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var qvc = Q((PJA, USm) => {
-  USm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module qvc] (exports=PJA, module=USm)
+var PJA = {};
+var USm = {
+  exports: PJA,
+};
+USm.exports = `#!/usr/bin/env node
 // resync.mjs \u2014 THE re-sync path: one driver for the mechanical whole of a
 // re-sync, emitting ONE machine-readable verdict (stdout + <out>/.resync-verdict.json):
 //
@@ -423,7 +427,6 @@ try {
 process.stdout.write(JSON.stringify(verdict, null, 2) + '\\n');
 process.exit(ok ? 0 : (firstFailExit ?? 1));
 `;
-});
 var Vvc = {};
 _t(Vvc, {
   SKILL_MD: () => SKILL_MD,

@@ -3,16 +3,19 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var sGe = Q((yKh, H2i) => {
-  var A2i = kU(),
-    wFd = (e, t, n = false) => {
-      if (e instanceof A2i) return e;
-      try {
-        return new A2i(e, t);
-      } catch (r) {
-        if (!n) return null;
-        throw r;
-      }
-    };
-  H2i.exports = wFd;
-});
+// [unwrapped __commonJS module sGe] (exports=yKh, module=H2i)
+var yKh = {};
+var H2i = {
+  exports: yKh
+};
+var A2i = kU(),
+  wFd = (e, t, n = false) => {
+    if (e instanceof A2i) return e;
+    try {
+      return new A2i(e, t);
+    } catch (r) {
+      if (!n) return null;
+      throw r;
+    }
+  };
+H2i.exports = wFd;

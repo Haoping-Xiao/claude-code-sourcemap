@@ -4,20 +4,23 @@
 // class=modified  jaccard=0.2755  score=0.5211  fileCov=0.3688
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var kso = Q((Zxy, Csa) => {
-  var vsa = Tsa(),
-    kip = ujt();
-  function wsa(e, t, n = false) {
-    if (t && (t.windows === null || t.windows === void 0))
-      t = {
-        ...t,
-        windows: kip.isWindows(),
-      };
-    return vsa(e, t, n);
-  }
-  Object.assign(wsa, vsa);
-  Csa.exports = wsa;
-});
+// [unwrapped __commonJS module kso] (exports=Zxy, module=Csa)
+var Zxy = {};
+var Csa = {
+  exports: Zxy,
+};
+var vsa = Tsa(),
+  kip = ujt();
+function wsa(e, t, n = false) {
+  if (t && (t.windows === null || t.windows === void 0))
+    t = {
+      ...t,
+      windows: kip.isWindows(),
+    };
+  return vsa(e, t, n);
+}
+Object.assign(wsa, vsa);
+Csa.exports = wsa;
 function Isa(e) {
   return Bun.hash(e).toString(36);
 }

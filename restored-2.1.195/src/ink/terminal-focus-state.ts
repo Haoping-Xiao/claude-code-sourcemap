@@ -4,9 +4,12 @@
 // class=modified  jaccard=0.27  score=0.9372  fileCov=0.275
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var se = Q((I6h, hUi) => {
-  hUi.exports = gUi();
-});
+// [unwrapped __commonJS module se] (exports=I6h, module=hUi)
+var I6h = {};
+var hUi = {
+  exports: I6h,
+};
+hUi.exports = gUi();
 function LYr(e) {
   ((RYr = e ? "focused" : "blurred"), A_r(e));
   for (let t of kYr) t();

@@ -4,15 +4,15 @@
 // class=modified  jaccard=0.4918  score=0.7782  fileCov=0.5721
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Y7a = Q((uHo) => {
-  var z7a = TYa();
-  Object.keys(z7a).forEach(function (e) {
-    uHo[e] = z7a[e];
-  });
-  var K7a = V7a();
-  Object.keys(K7a).forEach(function (e) {
-    uHo[e] = K7a[e];
-  });
+// [unwrapped __commonJS module Y7a] (exports=uHo)
+var uHo = {};
+var z7a = TYa();
+Object.keys(z7a).forEach(function (e) {
+  uHo[e] = z7a[e];
+});
+var K7a = V7a();
+Object.keys(K7a).forEach(function (e) {
+  uHo[e] = K7a[e];
 });
 async function bpe(e, t) {
   let n = wc("preferredNotifChannel", "auto").value;

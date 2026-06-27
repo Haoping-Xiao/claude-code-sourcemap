@@ -4,223 +4,226 @@
 // class=partial  jaccard=0.1078  score=0.3113  fileCov=0.1415
 // note: low-confidence suggestion: node_modules/zod-to-json-schema/dist/esm/zodToJsonSchema.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var ofs = Q((VQm, Biu) => {
-  Biu.exports = {
-    $schema: "http://json-schema.org/draft-07/schema#",
-    $id: "http://json-schema.org/draft-07/schema#",
-    title: "Core schema meta-schema",
-    definitions: {
-      schemaArray: {
-        type: "array",
-        minItems: 1,
-        items: {
-          $ref: "#"
-        }
-      },
-      nonNegativeInteger: {
-        type: "integer",
-        minimum: 0
-      },
-      nonNegativeIntegerDefault0: {
-        allOf: [{
-          $ref: "#/definitions/nonNegativeInteger"
-        }, {
-          default: 0
-        }]
-      },
-      simpleTypes: {
-        enum: ["array", "boolean", "integer", "null", "number", "object", "string"]
-      },
-      stringArray: {
-        type: "array",
-        items: {
-          type: "string"
-        },
-        uniqueItems: true,
-        default: []
+// [unwrapped __commonJS module ofs] (exports=VQm, module=Biu)
+var VQm = {};
+var Biu = {
+  exports: VQm
+};
+Biu.exports = {
+  $schema: "http://json-schema.org/draft-07/schema#",
+  $id: "http://json-schema.org/draft-07/schema#",
+  title: "Core schema meta-schema",
+  definitions: {
+    schemaArray: {
+      type: "array",
+      minItems: 1,
+      items: {
+        $ref: "#"
       }
     },
-    type: ["object", "boolean"],
-    properties: {
-      $id: {
-        type: "string",
-        format: "uri-reference"
-      },
-      $schema: {
-        type: "string",
-        format: "uri"
-      },
-      $ref: {
-        type: "string",
-        format: "uri-reference"
-      },
-      $comment: {
-        type: "string"
-      },
-      title: {
-        type: "string"
-      },
-      description: {
-        type: "string"
-      },
-      default: true,
-      readOnly: {
-        type: "boolean",
-        default: false
-      },
-      examples: {
-        type: "array",
-        items: true
-      },
-      multipleOf: {
-        type: "number",
-        exclusiveMinimum: 0
-      },
-      maximum: {
-        type: "number"
-      },
-      exclusiveMaximum: {
-        type: "number"
-      },
-      minimum: {
-        type: "number"
-      },
-      exclusiveMinimum: {
-        type: "number"
-      },
-      maxLength: {
+    nonNegativeInteger: {
+      type: "integer",
+      minimum: 0
+    },
+    nonNegativeIntegerDefault0: {
+      allOf: [{
         $ref: "#/definitions/nonNegativeInteger"
-      },
-      minLength: {
-        $ref: "#/definitions/nonNegativeIntegerDefault0"
-      },
-      pattern: {
-        type: "string",
-        format: "regex"
-      },
-      additionalItems: {
-        $ref: "#"
-      },
+      }, {
+        default: 0
+      }]
+    },
+    simpleTypes: {
+      enum: ["array", "boolean", "integer", "null", "number", "object", "string"]
+    },
+    stringArray: {
+      type: "array",
       items: {
-        anyOf: [{
-          $ref: "#"
-        }, {
-          $ref: "#/definitions/schemaArray"
-        }],
-        default: true
+        type: "string"
       },
-      maxItems: {
-        $ref: "#/definitions/nonNegativeInteger"
-      },
-      minItems: {
-        $ref: "#/definitions/nonNegativeIntegerDefault0"
-      },
-      uniqueItems: {
-        type: "boolean",
-        default: false
-      },
-      contains: {
+      uniqueItems: true,
+      default: []
+    }
+  },
+  type: ["object", "boolean"],
+  properties: {
+    $id: {
+      type: "string",
+      format: "uri-reference"
+    },
+    $schema: {
+      type: "string",
+      format: "uri"
+    },
+    $ref: {
+      type: "string",
+      format: "uri-reference"
+    },
+    $comment: {
+      type: "string"
+    },
+    title: {
+      type: "string"
+    },
+    description: {
+      type: "string"
+    },
+    default: true,
+    readOnly: {
+      type: "boolean",
+      default: false
+    },
+    examples: {
+      type: "array",
+      items: true
+    },
+    multipleOf: {
+      type: "number",
+      exclusiveMinimum: 0
+    },
+    maximum: {
+      type: "number"
+    },
+    exclusiveMaximum: {
+      type: "number"
+    },
+    minimum: {
+      type: "number"
+    },
+    exclusiveMinimum: {
+      type: "number"
+    },
+    maxLength: {
+      $ref: "#/definitions/nonNegativeInteger"
+    },
+    minLength: {
+      $ref: "#/definitions/nonNegativeIntegerDefault0"
+    },
+    pattern: {
+      type: "string",
+      format: "regex"
+    },
+    additionalItems: {
+      $ref: "#"
+    },
+    items: {
+      anyOf: [{
         $ref: "#"
-      },
-      maxProperties: {
-        $ref: "#/definitions/nonNegativeInteger"
-      },
-      minProperties: {
-        $ref: "#/definitions/nonNegativeIntegerDefault0"
-      },
-      required: {
-        $ref: "#/definitions/stringArray"
-      },
+      }, {
+        $ref: "#/definitions/schemaArray"
+      }],
+      default: true
+    },
+    maxItems: {
+      $ref: "#/definitions/nonNegativeInteger"
+    },
+    minItems: {
+      $ref: "#/definitions/nonNegativeIntegerDefault0"
+    },
+    uniqueItems: {
+      type: "boolean",
+      default: false
+    },
+    contains: {
+      $ref: "#"
+    },
+    maxProperties: {
+      $ref: "#/definitions/nonNegativeInteger"
+    },
+    minProperties: {
+      $ref: "#/definitions/nonNegativeIntegerDefault0"
+    },
+    required: {
+      $ref: "#/definitions/stringArray"
+    },
+    additionalProperties: {
+      $ref: "#"
+    },
+    definitions: {
+      type: "object",
       additionalProperties: {
         $ref: "#"
       },
-      definitions: {
-        type: "object",
-        additionalProperties: {
-          $ref: "#"
-        },
-        default: {}
+      default: {}
+    },
+    properties: {
+      type: "object",
+      additionalProperties: {
+        $ref: "#"
       },
-      properties: {
-        type: "object",
-        additionalProperties: {
-          $ref: "#"
-        },
-        default: {}
-      },
-      patternProperties: {
-        type: "object",
-        additionalProperties: {
-          $ref: "#"
-        },
-        propertyNames: {
-          format: "regex"
-        },
-        default: {}
-      },
-      dependencies: {
-        type: "object",
-        additionalProperties: {
-          anyOf: [{
-            $ref: "#"
-          }, {
-            $ref: "#/definitions/stringArray"
-          }]
-        }
+      default: {}
+    },
+    patternProperties: {
+      type: "object",
+      additionalProperties: {
+        $ref: "#"
       },
       propertyNames: {
-        $ref: "#"
+        format: "regex"
       },
-      const: true,
-      enum: {
-        type: "array",
-        items: true,
-        minItems: 1,
-        uniqueItems: true
-      },
-      type: {
+      default: {}
+    },
+    dependencies: {
+      type: "object",
+      additionalProperties: {
         anyOf: [{
-          $ref: "#/definitions/simpleTypes"
+          $ref: "#"
         }, {
-          type: "array",
-          items: {
-            $ref: "#/definitions/simpleTypes"
-          },
-          minItems: 1,
-          uniqueItems: true
+          $ref: "#/definitions/stringArray"
         }]
-      },
-      format: {
-        type: "string"
-      },
-      contentMediaType: {
-        type: "string"
-      },
-      contentEncoding: {
-        type: "string"
-      },
-      if: {
-        $ref: "#"
-      },
-      then: {
-        $ref: "#"
-      },
-      else: {
-        $ref: "#"
-      },
-      allOf: {
-        $ref: "#/definitions/schemaArray"
-      },
-      anyOf: {
-        $ref: "#/definitions/schemaArray"
-      },
-      oneOf: {
-        $ref: "#/definitions/schemaArray"
-      },
-      not: {
-        $ref: "#"
       }
     },
-    default: true
-  };
-});
+    propertyNames: {
+      $ref: "#"
+    },
+    const: true,
+    enum: {
+      type: "array",
+      items: true,
+      minItems: 1,
+      uniqueItems: true
+    },
+    type: {
+      anyOf: [{
+        $ref: "#/definitions/simpleTypes"
+      }, {
+        type: "array",
+        items: {
+          $ref: "#/definitions/simpleTypes"
+        },
+        minItems: 1,
+        uniqueItems: true
+      }]
+    },
+    format: {
+      type: "string"
+    },
+    contentMediaType: {
+      type: "string"
+    },
+    contentEncoding: {
+      type: "string"
+    },
+    if: {
+      $ref: "#"
+    },
+    then: {
+      $ref: "#"
+    },
+    else: {
+      $ref: "#"
+    },
+    allOf: {
+      $ref: "#/definitions/schemaArray"
+    },
+    anyOf: {
+      $ref: "#/definitions/schemaArray"
+    },
+    oneOf: {
+      $ref: "#/definitions/schemaArray"
+    },
+    not: {
+      $ref: "#"
+    }
+  },
+  default: true
+};

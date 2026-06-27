@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Fji = Q((JKh, Uji) => {
-  var cjd = kRn(),
-    ujd = (e, t, n) => cjd(e, t, "<", n);
-  Uji.exports = ujd;
-});
+// [unwrapped __commonJS module Fji] (exports=JKh, module=Uji)
+var JKh = {};
+var Uji = {
+  exports: JKh
+};
+var cjd = kRn(),
+  ujd = (e, t, n) => cjd(e, t, "<", n);
+Uji.exports = ujd;

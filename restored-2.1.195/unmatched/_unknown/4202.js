@@ -3,12 +3,15 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var E6e = Q((_db, pul) => {
-  var txo;
-  try {
-    txo = cul();
-  } catch (e) {
-    txo = dul();
-  }
-  pul.exports = txo;
-});
+// [unwrapped __commonJS module E6e] (exports=_db, module=pul)
+var _db = {};
+var pul = {
+  exports: _db
+};
+var txo;
+try {
+  txo = cul();
+} catch (e) {
+  txo = dul();
+}
+pul.exports = txo;

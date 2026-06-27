@@ -4,22 +4,25 @@
 // class=modified  jaccard=0.3167  score=0.4439  fileCov=0.5249
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var V9i = Q((isy, q9i) => {
-  /*!
-  Copyright 2013 Lovell Fuller and others.
-  SPDX-License-Identifier: Apache-2.0
-  */
-  var abe = s9i();
-  l9i()(abe);
-  m9i()(abe);
-  h9i()(abe);
-  E9i()(abe);
-  D9i()(abe);
-  M9i()(abe);
-  U9i()(abe);
-  W9i()(abe);
-  q9i.exports = abe;
-});
+// [unwrapped __commonJS module V9i] (exports=isy, module=q9i)
+var isy = {};
+var q9i = {
+  exports: isy,
+};
+/*!
+Copyright 2013 Lovell Fuller and others.
+SPDX-License-Identifier: Apache-2.0
+*/
+var abe = s9i();
+l9i()(abe);
+m9i()(abe);
+h9i()(abe);
+E9i()(abe);
+D9i()(abe);
+M9i()(abe);
+U9i()(abe);
+W9i()(abe);
+q9i.exports = abe;
 async function lbe() {
   if (EDn) return EDn.default;
   if (dm())

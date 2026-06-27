@@ -3,16 +3,19 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var pVi = Q((Loy, dVi) => {
-  var uVi = Rat(),
-    gqd = (e, t, n = false) => {
-      if (e instanceof uVi) return e;
-      try {
-        return new uVi(e, t);
-      } catch (r) {
-        if (!n) return null;
-        throw r;
-      }
-    };
-  dVi.exports = gqd;
-});
+// [unwrapped __commonJS module pVi] (exports=Loy, module=dVi)
+var Loy = {};
+var dVi = {
+  exports: Loy
+};
+var uVi = Rat(),
+  gqd = (e, t, n = false) => {
+    if (e instanceof uVi) return e;
+    try {
+      return new uVi(e, t);
+    } catch (r) {
+      if (!n) return null;
+      throw r;
+    }
+  };
+dVi.exports = gqd;

@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var jvc = Q((RJA, OSm) => {
-  OSm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module jvc] (exports=RJA, module=OSm)
+var RJA = {};
+var OSm = {
+  exports: RJA
+};
+OSm.exports = `#!/usr/bin/env node
 // package-capture \u2014 capture harness for the PACKAGE shape's ABSOLUTE grading.
 // There is no storybook here, so there is no reference render to compare
 // against: this photographs each authored preview story alone (via the
@@ -262,4 +266,3 @@ console.error(\`\\npackage-capture: \${report.length} component(s) \u2014 \${ski
 console.error('Grade from the sheets: Read each _screenshots/review/<group>__<Name>.png, then Write verdicts to .design-sync/.cache/review/<Name>.grade.json (keys must equal the cell labels exactly).');
 process.exit(errors.length ? 1 : 0);
 `;
-});

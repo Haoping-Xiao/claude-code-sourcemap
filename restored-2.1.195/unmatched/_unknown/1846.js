@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var twn = Q((jkh, U_i) => {
-  var SEd = a7(),
-    EEd = (e, t, n) => SEd(e, t, n) >= 0;
-  U_i.exports = EEd;
-});
+// [unwrapped __commonJS module twn] (exports=jkh, module=U_i)
+var jkh = {};
+var U_i = {
+  exports: jkh
+};
+var SEd = a7(),
+  EEd = (e, t, n) => SEd(e, t, n) >= 0;
+U_i.exports = EEd;

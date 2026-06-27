@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Rvc = Q((SJA, wSm) => {
-  wSm.exports = `// Non-storybook \`package\` adapter. Bundles dist/ when present (the authoritative
+// [unwrapped __commonJS module Rvc] (exports=SJA, module=wSm)
+var SJA = {};
+var wSm = {
+  exports: SJA
+};
+wSm.exports = `// Non-storybook \`package\` adapter. Bundles dist/ when present (the authoritative
 // component list comes from shipped .d.ts; with no dist it synthesizes an
 // entry from src/ as a last resort) and opportunistically enriches each
 // component from src/ \u2014 JSDoc and dir-derived group. Every enrichment miss
@@ -160,4 +164,3 @@ export async function resolvePackage(ctx) {
   return { shape: 'package', entry, components, synthEntry, exported };
 }
 `;
-});

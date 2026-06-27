@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var D_i = Q(($kh, L_i) => {
-  var lEd = Zvn(),
-    cEd = (e, t) => e.sort((n, r) => lEd(n, r, t));
-  L_i.exports = cEd;
-});
+// [unwrapped __commonJS module D_i] (exports=$kh, module=L_i)
+var $kh = {};
+var L_i = {
+  exports: $kh
+};
+var lEd = Zvn(),
+  cEd = (e, t) => e.sort((n, r) => lEd(n, r, t));
+L_i.exports = cEd;

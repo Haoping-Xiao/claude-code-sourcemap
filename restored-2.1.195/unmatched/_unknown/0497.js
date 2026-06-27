@@ -3,14 +3,17 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var shs = Q((Ytg, ohs) => {
-  var wdn = Object.defineProperty || false;
-  if (wdn) try {
-    wdn({}, "a", {
-      value: 1
-    });
-  } catch (e) {
-    wdn = false;
-  }
-  ohs.exports = wdn;
-});
+// [unwrapped __commonJS module shs] (exports=Ytg, module=ohs)
+var Ytg = {};
+var ohs = {
+  exports: Ytg
+};
+var wdn = Object.defineProperty || false;
+if (wdn) try {
+  wdn({}, "a", {
+    value: 1
+  });
+} catch (e) {
+  wdn = false;
+}
+ohs.exports = wdn;

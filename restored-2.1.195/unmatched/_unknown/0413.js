@@ -3,11 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Xps = Q(QCr => {
-  Object.defineProperty(QCr, "__esModule", {
-    value: true
-  });
-  var Iiu = Yps(),
-    xiu = [Iiu.default];
-  QCr.default = xiu;
+// [unwrapped __commonJS module Xps] (exports=QCr)
+var QCr = {};
+Object.defineProperty(QCr, "__esModule", {
+  value: true
 });
+var Iiu = Yps(),
+  xiu = [Iiu.default];
+QCr.default = xiu;

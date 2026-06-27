@@ -4,9 +4,12 @@
 // class=modified  jaccard=0.1972  score=0.962  fileCov=0.1988
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var nRn = Q((Fzh, pFi) => {
-  pFi.exports = dFi();
-});
+// [unwrapped __commonJS module nRn] (exports=Fzh, module=pFi)
+var Fzh = {};
+var pFi = {
+  exports: Fzh,
+};
+pFi.exports = dFi();
 var XYr = () => {};
 function lRn(e) {
   return {

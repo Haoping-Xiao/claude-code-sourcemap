@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Nvc = Q((CJA, DSm) => {
-  DSm.exports = `#!/usr/bin/env node
+// [unwrapped __commonJS module Nvc] (exports=CJA, module=DSm)
+var CJA = {};
+var DSm = {
+  exports: CJA
+};
+DSm.exports = `#!/usr/bin/env node
 // Targeted preview recompile \u2014 the fast inner loop for the compare/grading
 // workflow, and the ONLY rebuild parallel subagents may run. Recompiles
 // the component's preview .tsx (owned .design-sync/previews/ first, else
@@ -301,4 +305,3 @@ if (sidecar) {
 console.error(\`\u2713 rebuilt \${built.size}/\${targets.length} preview(s)\${failed ? \` \u2014 \${failed} failed to compile (fix the .tsx and re-run)\` : ''}\`);
 process.exit(failed ? 1 : 0);
 `;
-});

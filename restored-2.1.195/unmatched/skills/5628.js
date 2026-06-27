@@ -3,8 +3,12 @@
 // class=new  (no 2.1.88 match)
 // note: dir inferred from dep-graph -> skills; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Dvc = Q((AJA, ISm) => {
-  ISm.exports = `// Storybook-only CSS fallbacks \u2014 storybook-static's iframe.html is the source
+// [unwrapped __commonJS module Dvc] (exports=AJA, module=ISm)
+var AJA = {};
+var ISm = {
+  exports: AJA
+};
+ISm.exports = `// Storybook-only CSS fallbacks \u2014 storybook-static's iframe.html is the source
 // for both the compiled-stylesheet fallback (when _ds_bundle.css is a
 // bundler-resolve-only stub) and remote webfont <link> scraping.
 
@@ -104,4 +108,3 @@ export function scrapeRemoteImports(sbStatic) {
   return out;
 }
 `;
-});

@@ -4,18 +4,21 @@
 // class=partial  jaccard=0.1369  score=0.4354  fileCov=0.1665
 // note: low-confidence suggestion: node_modules/google-auth-library/build/src/crypto/node/crypto.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Mnn = Q((fzH, t4c) => {
-  var {
-      createHash: oPm,
-      randomBytes: sPm
-    } = require("crypto"),
-    e4c = Lnn(),
-    _gr = (e = 32) => e4c.encode(sPm(e));
-  t4c.exports = {
-    random: _gr,
-    state: _gr,
-    nonce: _gr,
-    codeVerifier: _gr,
-    codeChallenge: e => e4c.encode(oPm("sha256").update(e).digest())
-  };
-});
+// [unwrapped __commonJS module Mnn] (exports=fzH, module=t4c)
+var fzH = {};
+var t4c = {
+  exports: fzH
+};
+var {
+    createHash: oPm,
+    randomBytes: sPm
+  } = require("crypto"),
+  e4c = Lnn(),
+  _gr = (e = 32) => e4c.encode(sPm(e));
+t4c.exports = {
+  random: _gr,
+  state: _gr,
+  nonce: _gr,
+  codeVerifier: _gr,
+  codeChallenge: e => e4c.encode(oPm("sha256").update(e).digest())
+};

@@ -4,102 +4,102 @@
 // class=modified  jaccard=0.2942  score=0.4042  fileCov=0.5194
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var _Ol = Q((jtr) => {
-  (function (e) {
-    ((e.black = "\x1B[30m"),
-      (e.red = "\x1B[31m"),
-      (e.green = "\x1B[32m"),
-      (e.yellow = "\x1B[33m"),
-      (e.blue = "\x1B[34m"),
-      (e.magenta = "\x1B[35m"),
-      (e.cyan = "\x1B[36m"),
-      (e.lightgray = "\x1B[37m"),
-      (e.default = "\x1B[39m"),
-      (e.darkgray = "\x1B[90m"),
-      (e.lightred = "\x1B[91m"),
-      (e.lightgreen = "\x1B[92m"),
-      (e.lightyellow = "\x1B[93m"),
-      (e.lightblue = "\x1B[94m"),
-      (e.lightmagenta = "\x1B[95m"),
-      (e.lightcyan = "\x1B[96m"),
-      (e.white = "\x1B[97m"),
-      (e.reset = "\x1B[0m"));
-    function t(n, r) {
-      return r === void 0 ? n : r + n + e.reset;
-    }
-    ((e.colored = t),
-      (e.plot = function (n, r = void 0) {
-        if (typeof n[0] == "number") n = [n];
-        r = typeof r !== "undefined" ? r : {};
-        let o = typeof r.min !== "undefined" ? r.min : n[0][0],
-          s = typeof r.max !== "undefined" ? r.max : n[0][0];
-        for (let S = 0; S < n.length; S++)
-          for (let A = 0; A < n[S].length; A++)
-            ((o = Math.min(o, n[S][A])), (s = Math.max(s, n[S][A])));
-        let i = [
-            "\u253C",
-            "\u2524",
-            "\u2576",
-            "\u2574",
-            "\u2500",
-            "\u2570",
-            "\u256D",
-            "\u256E",
-            "\u256F",
-            "\u2502",
-          ],
-          a = Math.abs(s - o),
-          l = typeof r.offset !== "undefined" ? r.offset : 3,
-          c = typeof r.padding !== "undefined" ? r.padding : "           ",
-          u = typeof r.height !== "undefined" ? r.height : a,
-          d = typeof r.colors !== "undefined" ? r.colors : [],
-          p = a !== 0 ? u / a : 1,
-          f = Math.round(o * p),
-          m = Math.round(s * p),
-          g = Math.abs(m - f),
-          h = 0;
-        for (let S = 0; S < n.length; S++) h = Math.max(h, n[S].length);
-        h = h + l;
-        let y = typeof r.symbols !== "undefined" ? r.symbols : i,
-          b =
-            typeof r.format !== "undefined"
-              ? r.format
-              : function (S) {
-                  return (c + S.toFixed(2)).slice(-c.length);
-                },
-          _ = Array(g + 1);
-        for (let S = 0; S <= g; S++) {
-          _[S] = Array(h);
-          for (let A = 0; A < h; A++) _[S][A] = " ";
-        }
-        for (let S = f; S <= m; ++S) {
-          let A = b(g > 0 ? s - ((S - f) * a) / g : S, S - f);
-          ((_[S - f][Math.max(l - A.length, 0)] = A), (_[S - f][l - 1] = S == 0 ? y[0] : y[1]));
-        }
-        for (let S = 0; S < n.length; S++) {
-          let A = d[S % d.length],
-            v = Math.round(n[S][0] * p) - f;
-          _[g - v][l - 1] = t(y[0], A);
-          for (let C = 0; C < n[S].length - 1; C++) {
-            let x = Math.round(n[S][C + 0] * p) - f,
-              I = Math.round(n[S][C + 1] * p) - f;
-            if (x == I) _[g - x][C + l] = t(y[4], A);
-            else {
-              ((_[g - I][C + l] = t(x > I ? y[5] : y[6], A)),
-                (_[g - x][C + l] = t(x > I ? y[7] : y[8], A)));
-              let k = Math.min(x, I),
-                D = Math.max(x, I);
-              for (let P = k + 1; P < D; P++) _[g - P][C + l] = t(y[9], A);
-            }
+// [unwrapped __commonJS module _Ol] (exports=jtr)
+var jtr = {};
+(function (e) {
+  ((e.black = "\x1B[30m"),
+    (e.red = "\x1B[31m"),
+    (e.green = "\x1B[32m"),
+    (e.yellow = "\x1B[33m"),
+    (e.blue = "\x1B[34m"),
+    (e.magenta = "\x1B[35m"),
+    (e.cyan = "\x1B[36m"),
+    (e.lightgray = "\x1B[37m"),
+    (e.default = "\x1B[39m"),
+    (e.darkgray = "\x1B[90m"),
+    (e.lightred = "\x1B[91m"),
+    (e.lightgreen = "\x1B[92m"),
+    (e.lightyellow = "\x1B[93m"),
+    (e.lightblue = "\x1B[94m"),
+    (e.lightmagenta = "\x1B[95m"),
+    (e.lightcyan = "\x1B[96m"),
+    (e.white = "\x1B[97m"),
+    (e.reset = "\x1B[0m"));
+  function t(n, r) {
+    return r === void 0 ? n : r + n + e.reset;
+  }
+  ((e.colored = t),
+    (e.plot = function (n, r = void 0) {
+      if (typeof n[0] == "number") n = [n];
+      r = typeof r !== "undefined" ? r : {};
+      let o = typeof r.min !== "undefined" ? r.min : n[0][0],
+        s = typeof r.max !== "undefined" ? r.max : n[0][0];
+      for (let S = 0; S < n.length; S++)
+        for (let A = 0; A < n[S].length; A++)
+          ((o = Math.min(o, n[S][A])), (s = Math.max(s, n[S][A])));
+      let i = [
+          "\u253C",
+          "\u2524",
+          "\u2576",
+          "\u2574",
+          "\u2500",
+          "\u2570",
+          "\u256D",
+          "\u256E",
+          "\u256F",
+          "\u2502",
+        ],
+        a = Math.abs(s - o),
+        l = typeof r.offset !== "undefined" ? r.offset : 3,
+        c = typeof r.padding !== "undefined" ? r.padding : "           ",
+        u = typeof r.height !== "undefined" ? r.height : a,
+        d = typeof r.colors !== "undefined" ? r.colors : [],
+        p = a !== 0 ? u / a : 1,
+        f = Math.round(o * p),
+        m = Math.round(s * p),
+        g = Math.abs(m - f),
+        h = 0;
+      for (let S = 0; S < n.length; S++) h = Math.max(h, n[S].length);
+      h = h + l;
+      let y = typeof r.symbols !== "undefined" ? r.symbols : i,
+        b =
+          typeof r.format !== "undefined"
+            ? r.format
+            : function (S) {
+                return (c + S.toFixed(2)).slice(-c.length);
+              },
+        _ = Array(g + 1);
+      for (let S = 0; S <= g; S++) {
+        _[S] = Array(h);
+        for (let A = 0; A < h; A++) _[S][A] = " ";
+      }
+      for (let S = f; S <= m; ++S) {
+        let A = b(g > 0 ? s - ((S - f) * a) / g : S, S - f);
+        ((_[S - f][Math.max(l - A.length, 0)] = A), (_[S - f][l - 1] = S == 0 ? y[0] : y[1]));
+      }
+      for (let S = 0; S < n.length; S++) {
+        let A = d[S % d.length],
+          v = Math.round(n[S][0] * p) - f;
+        _[g - v][l - 1] = t(y[0], A);
+        for (let C = 0; C < n[S].length - 1; C++) {
+          let x = Math.round(n[S][C + 0] * p) - f,
+            I = Math.round(n[S][C + 1] * p) - f;
+          if (x == I) _[g - x][C + l] = t(y[4], A);
+          else {
+            ((_[g - I][C + l] = t(x > I ? y[5] : y[6], A)),
+              (_[g - x][C + l] = t(x > I ? y[7] : y[8], A)));
+            let k = Math.min(x, I),
+              D = Math.max(x, I);
+            for (let P = k + 1; P < D; P++) _[g - P][C + l] = t(y[9], A);
           }
         }
-        return _.map(function (S) {
-          return S.join("");
-        }).join(`
+      }
+      return _.map(function (S) {
+        return S.join("");
+      }).join(`
 `);
-      }));
-  })(typeof jtr === "undefined" ? (jtr.asciichart = {}) : jtr);
-});
+    }));
+})(typeof jtr === "undefined" ? (jtr.asciichart = {}) : jtr);
 async function EOl(e) {
   while (Gtr) await Gtr;
   let t;

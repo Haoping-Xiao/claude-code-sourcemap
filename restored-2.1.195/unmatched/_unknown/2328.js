@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var TRn = Q((DKh, tji) => {
-  var ZFd = j7(),
-    e2d = (e, t, n) => ZFd(e, t, n) < 0;
-  tji.exports = e2d;
-});
+// [unwrapped __commonJS module TRn] (exports=DKh, module=tji)
+var DKh = {};
+var tji = {
+  exports: DKh
+};
+var ZFd = j7(),
+  e2d = (e, t, n) => ZFd(e, t, n) < 0;
+tji.exports = e2d;

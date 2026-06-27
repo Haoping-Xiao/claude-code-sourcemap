@@ -3,14 +3,17 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var kYa = Q((IYa, xYa) => {
-  (function () {
-    var e;
-    xYa.exports = e = class {
-      constructor() {}
-      handleError(n) {
-        throw Error(n);
-      }
-    };
-  }).call(IYa);
-});
+// [unwrapped __commonJS module kYa] (exports=IYa, module=xYa)
+var IYa = {};
+var xYa = {
+  exports: IYa
+};
+(function () {
+  var e;
+  xYa.exports = e = class {
+    constructor() {}
+    handleError(n) {
+      throw Error(n);
+    }
+  };
+}).call(IYa);

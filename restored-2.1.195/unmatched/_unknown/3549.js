@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var t2a = Q((M__, e2a) => {
-  e2a.exports = s_o();
-});
+// [unwrapped __commonJS module t2a] (exports=M__, module=e2a)
+var M__ = {};
+var e2a = {
+  exports: M__
+};
+e2a.exports = s_o();

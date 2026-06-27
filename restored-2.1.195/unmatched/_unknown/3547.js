@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var o_o = Q((D__, JFa) => {
-  JFa.exports = {};
-});
+// [unwrapped __commonJS module o_o] (exports=D__, module=JFa)
+var D__ = {};
+var JFa = {
+  exports: D__
+};
+JFa.exports = {};

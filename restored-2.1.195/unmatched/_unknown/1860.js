@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var Ebi = Q((n0h, Sbi) => {
-  var AAd = iwn(),
-    HAd = (e, t, n) => AAd(e, t, ">", n);
-  Sbi.exports = HAd;
-});
+// [unwrapped __commonJS module Ebi] (exports=n0h, module=Sbi)
+var n0h = {};
+var Sbi = {
+  exports: n0h
+};
+var AAd = iwn(),
+  HAd = (e, t, n) => AAd(e, t, ">", n);
+Sbi.exports = HAd;

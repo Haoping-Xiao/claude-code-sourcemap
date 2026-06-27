@@ -3,8 +3,11 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var wVi = Q((Boy, vVi) => {
-  var wqd = CGe(),
-    Cqd = (e, t, n) => wqd(e, t, n) > 0;
-  vVi.exports = Cqd;
-});
+// [unwrapped __commonJS module wVi] (exports=Boy, module=vVi)
+var Boy = {};
+var vVi = {
+  exports: Boy
+};
+var wqd = CGe(),
+  Cqd = (e, t, n) => wqd(e, t, n) > 0;
+vVi.exports = Cqd;

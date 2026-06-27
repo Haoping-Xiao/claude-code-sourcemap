@@ -3,6 +3,9 @@
 // class=new  (no 2.1.88 match)
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var hsi = Q((Dsh, gsi) => {
-  gsi.exports = msi();
-});
+// [unwrapped __commonJS module hsi] (exports=Dsh, module=gsi)
+var Dsh = {};
+var gsi = {
+  exports: Dsh
+};
+gsi.exports = msi();

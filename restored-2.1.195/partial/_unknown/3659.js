@@ -4,19 +4,22 @@
 // class=partial  jaccard=0.0668  score=0.6327  fileCov=0.0695
 // note: low-confidence suggestion: node_modules/protobufjs/src/common.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
-var fGa = Q((US_, Gjp) => {
-  Gjp.exports = {
-    nested: {
-      google: {
-        nested: {
-          protobuf: {
-            nested: {
-              SourceContext: {
-                fields: {
-                  fileName: {
-                    type: "string",
-                    id: 1
-                  }
+// [unwrapped __commonJS module fGa] (exports=US_, module=Gjp)
+var US_ = {};
+var Gjp = {
+  exports: US_
+};
+Gjp.exports = {
+  nested: {
+    google: {
+      nested: {
+        protobuf: {
+          nested: {
+            SourceContext: {
+              fields: {
+                fileName: {
+                  type: "string",
+                  id: 1
                 }
               }
             }
@@ -24,5 +27,5 @@ var fGa = Q((US_, Gjp) => {
         }
       }
     }
-  };
-});
+  }
+};
