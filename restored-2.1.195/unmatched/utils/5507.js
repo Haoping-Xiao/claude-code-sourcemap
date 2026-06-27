@@ -1,0 +1,67 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Vbc
+// matched 2.1.88 source: src/tools/MCPTool/classifyForCollapse.ts
+// class=new  jaccard=0.002  score=0.1712  fileCov=0.0021
+// note: nearest: src/tools/MCPTool/classifyForCollapse.ts (0.002); dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var Vbc = E(() => {
+  Xr();
+  ii();
+  Jt();
+});
+async function zdr(e) {
+  let t = e.tool,
+    n = y0o(t);
+  if (n !== void 0) return {
+    dialog: n.dialog,
+    descriptor: n.build(e)
+  };
+  if (z9t(t)) {
+    let r = K9t(t, e.input);
+    if (r !== null) {
+      let o = e.remoteWorkspace === !0,
+        s = o && Tnl(t) && !e.signal?.aborted ? await mgm(r) : void 0;
+      return {
+        dialog: fMe,
+        descriptor: h6n({
+          ...e,
+          filePath: r,
+          remoteWorkspace: o,
+          remoteOldContent: s
+        })
+      };
+    }
+  }
+  if (t === cl) return {
+    dialog: _8e,
+    descriptor: m6n({
+      ...e,
+      classifierState: "none",
+      toolPermissionContext: e.toolPermissionContext
+    })
+  };
+  return {
+    dialog: kMe,
+    descriptor: yP(e)
+  };
+}
+async function mgm(e) {
+  if (!LO("fileRead")) return;
+  try {
+    let t = await vc(Ju().sendControlRequest({
+      subtype: "read_file",
+      path: e,
+      max_bytes: _ur
+    }), fgm, "remote read_file timed out");
+    if (t.truncated === !0) return;
+    return t.contents;
+  } catch (t) {
+    let n = t instanceof Error ? t.message : String(t);
+    if (n.includes("ENOENT") || n.includes("no such file")) return null;
+    T(`buildForwardedPermissionDialog: remote read_file failed for ${e}: ${n}`, {
+      level: "error"
+    });
+    return;
+  }
+}
+var fgm = 1e4;

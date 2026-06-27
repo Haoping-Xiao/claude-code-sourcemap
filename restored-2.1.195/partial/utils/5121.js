@@ -1,0 +1,26 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module VXl
+// matched 2.1.88 source: src/utils/advisor.ts
+// class=partial  jaccard=0.0611  score=0.3534  fileCov=0.0688
+// note: low-confidence suggestion: src/utils/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var VXl = E(() => {
+  _oe();
+  qXl = {
+    type: "local-jsx",
+    name: "advisor",
+    description: "Let Claude consult a stronger model at key moments",
+    get argumentHint() {
+      return `[${[...zht(), "off"].join("|")}]`;
+    },
+    isEnabled: () => F6(),
+    get isHidden() {
+      return !F6();
+    },
+    load: () => Promise.resolve().then(() => (WXl(), GXl))
+  };
+});
+function P1e() {
+  if (!_u()) return !1;
+  return K4e();
+}

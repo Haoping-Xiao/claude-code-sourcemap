@@ -196,6 +196,46 @@ for (const [target, list] of byTarget) {
   }
 }
 
+// ── 2.5) 依赖图推断目录: 给 partial/new 模块按"已匹配邻居"的多数票归类 ────────
+const graph = JSON.parse(readFileSync(join(MOD_DIR, "graph.json"), "utf-8")).modules;
+function topSeg(p) {
+  const s = p.replace(/^src\//, "").split("/");
+  return s.length > 1 ? s[0] : "_root";
+}
+// 已匹配 app 模块 -> 顶层目录
+const nameToDir = {};
+for (const [name, m] of entries) {
+  if ((m.class === "unchanged" || m.class === "modified") && m.match && m.match.app && !m.vendor) {
+    nameToDir[name] = topSeg(m.match.path);
+  }
+}
+// 反向依赖
+const rdeps = Object.create(null);
+for (const n in graph) for (const d of (graph[n].deps || [])) (rdeps[d] || (rdeps[d] = [])).push(n);
+// 两轮 flood-fill 推断
+const inferred = {};
+function voteDir(name, useInferred) {
+  const nbs = new Set([...(graph[name]?.deps || []), ...(rdeps[name] || [])]);
+  const votes = {};
+  for (const nb of nbs) {
+    const d = nameToDir[nb] || (useInferred ? inferred[nb] : null);
+    if (d) votes[d] = (votes[d] || 0) + 1;
+  }
+  let best = null, bn = 0;
+  for (const d in votes) if (votes[d] > bn) { bn = votes[d]; best = d; }
+  return best;
+}
+const standaloneSet = new Set(standalone.filter((x) => !x.m.vendor).map((x) => x.name));
+for (let pass = 0; pass < 2; pass++) {
+  for (const name of standaloneSet) {
+    const d = voteDir(name, pass > 0);
+    if (d) inferred[name] = d;
+  }
+}
+let nInferred = 0;
+for (const n of standaloneSet) if (inferred[n]) nInferred++;
+console.log(`[06] inferred directory for ${nInferred}/${standaloneSet.size} unmatched(app) modules via dep-graph`);
+
 // ── 3) 写 partial / new / unmatched-vendor ─────────────────────────────────
 
 for (const { name, m } of standalone) {
@@ -205,9 +245,12 @@ for (const { name, m } of standalone) {
   const base = m.file.replace(/^\d+_?/, "").replace(/\.js$/, "") || "module";
   const idBase = m.file.replace(/\.js$/, "");
   let dir, note, cls;
-  if (m.class === "partial") { dir = "partial"; cls = "partial"; note = m.match ? `low-confidence suggestion: ${m.match.path}` : ""; nPartial++; }
+  const inf = inferred[name];
+  const sub = inf ? "/" + inf : "/_unknown";
+  if (m.class === "partial") { dir = "partial" + sub; cls = "partial"; note = m.match ? `low-confidence suggestion: ${m.match.path}` : ""; nPartial++; }
   else if (m.vendor) { dir = "vendor/_unmatched"; cls = "vendor"; note = m.match ? `nearest: ${m.match.path}` : ""; nVendor++; }
-  else { dir = "unmatched"; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
+  else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
+  if (inf) note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
   const r = await deobfuscate(content, { pretty: false });
   if (!r.ok) nParseFail++;

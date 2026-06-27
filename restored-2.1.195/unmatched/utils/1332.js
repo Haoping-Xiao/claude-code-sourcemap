@@ -1,0 +1,34 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module CQs
+// class=new  (no 2.1.88 match)
+// note: dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var CQs = E(() => {
+  NJs();
+  I2e();
+  SQs();
+  kD();
+  kD();
+  Pnt = R(eT(), 1), sEn = R(Zhe(), 1), FIe = R(Dx(), 1), EQs = R(yd(), 1), AQs = R(eye(), 1), iEn = R(zO(), 1), UIe = R(RB(), 1), aEn = R(PG(), 1), HQs = R(tye(), 1), TQs = R(Kae(), 1), vQs = R(sye(), 1);
+});
+var IQs = e => ({
+    setHttpHandler(t) {
+      e.httpHandler = t;
+    },
+    httpHandler() {
+      return e.httpHandler;
+    },
+    updateHttpClientConfig(t, n) {
+      e.httpHandler?.updateHttpClientConfig(t, n);
+    },
+    httpHandlerConfigs() {
+      return e.httpHandler.httpHandlerConfigs();
+    }
+  }),
+  xQs = e => ({
+    httpHandler: e.httpHandler()
+  });
+var kQs = () => {};
+var RQs = () => {};
+var LQs = () => {};
+var DQs = () => {};

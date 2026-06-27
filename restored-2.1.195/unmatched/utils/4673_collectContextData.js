@@ -1,0 +1,50 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module T1l
+// class=new  (no 2.1.88 match)
+// note: dir inferred from dep-graph -> utils; 2 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var T1l = E(() => {
+  A1l();
+  id();
+  mZn();
+  At();
+  uf();
+  co();
+  LPe();
+  lNo();
+  cNo = R(se(), 1);
+});
+var uNo = {};
+_t(uNo, {
+  collectContextData: () => collectContextData,
+  call: () => call
+});
+async function collectContextData(e) {
+  let {
+      messages: t,
+      getAppState: n,
+      options: {
+        mainLoopModel: r,
+        tools: o,
+        agentDefinitions: s,
+        customSystemPrompt: i,
+        appendSystemPrompt: a,
+        excludeDynamicSections: l
+      }
+    } = e,
+    c = Py(t),
+    u = n();
+  return fZn(c, r, async () => u.toolPermissionContext, o, s, void 0, {
+    options: {
+      customSystemPrompt: i,
+      appendSystemPrompt: a
+    }
+  }, void 0, c, u.autoCompactWindow, l);
+}
+async function call(e, t) {
+  let n = await collectContextData(t);
+  return {
+    type: "text",
+    value: N7t(n)
+  };
+}
