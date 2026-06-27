@@ -1,0 +1,24 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module zOc
+// matched 2.1.88 source: src/migrations/migrateOpusToOpus1m.ts
+// class=modified  jaccard=0.3153  score=0.414  fileCov=0.5693
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var zOc = E(() => {
+  dn();
+  er();
+  Oxm = {
+    "subscription-switch": "subscriptionNoticeCount",
+  };
+});
+function KOc() {
+  if (!nT()) return;
+  if (yn("userSettings")?.model !== "opus") return;
+  let t = "opus[1m]",
+    n = zo(t) === zo(Uw()) ? void 0 : t;
+  (io("userSettings", {
+    model: n,
+  }),
+    G("tengu_opus_to_opus1m_migration", {}),
+    xe("migration_opus_to_opus1m"));
+}

@@ -1,0 +1,35 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module EEs
+// matched 2.1.88 source: node_modules/mimic-fn/index.js
+// class=partial  jaccard=0.1788  score=1  fileCov=0.1788
+// note: low-confidence suggestion: node_modules/mimic-fn/index.js; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var EEs = E(() => {
+  bEs();
+  LEr();
+  Gon();
+  YDu = !UJe ? rJe : function (e, t) {
+    return UJe(e, "toString", {
+      configurable: !0,
+      enumerable: !1,
+      value: _Es(t),
+      writable: !0
+    });
+  }, SEs = YDu;
+});
+function ZDu(e) {
+  var t = 0,
+    n = 0;
+  return function () {
+    var r = QDu(),
+      o = JDu - (r - n);
+    if (n = r, o > 0) {
+      if (++t >= XDu) return arguments[0];
+    } else t = 0;
+    return e.apply(void 0, arguments);
+  };
+}
+var XDu = 800,
+  JDu = 16,
+  QDu,
+  AEs;

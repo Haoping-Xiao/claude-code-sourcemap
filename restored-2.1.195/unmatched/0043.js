@@ -1,0 +1,19 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module mts
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var mts = E(() => {
+  $wt();
+  fts = h9c;
+});
+function GXe(e) {
+  var t = -1,
+    n = e == null ? 0 : e.length;
+  this.clear();
+  while (++t < n) {
+    var r = e[t];
+    this.set(r[0], r[1]);
+  }
+}
+var $Be;

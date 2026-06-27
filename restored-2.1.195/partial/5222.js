@@ -1,0 +1,54 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module fnc
+// matched 2.1.88 source: src/commands/voice/index.ts
+// class=partial  jaccard=0.148  score=0.1833  fileCov=0.4346
+// note: low-confidence suggestion: src/commands/voice/index.ts; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var fnc = E(() => {
+  dQt();
+  oXf = {
+    type: "local",
+    name: "voice",
+    description: "Toggle voice mode",
+    argumentHint: "[hold|tap|off]",
+    availability: ["claude-ai"],
+    isEnabled: () => cQt(),
+    get isHidden() {
+      return !AHt();
+    },
+    supportsNonInteractive: !1,
+    load: () => Promise.resolve().then(() => (dnc(), unc))
+  }, sXf = oXf;
+});
+var mnc = {};
+_t(mnc, {
+  default: () => lXf
+});
+var iXf = async (e, t) => {
+    let n = await KGt(t.abortController.signal);
+    switch (n.kind) {
+      case "ok":
+      case "api-error":
+        return {
+          type: "text",
+          value: n.text
+        };
+      case "no-turn":
+        return {
+          type: "text",
+          value: "Nothing to recap yet \u2014 send a message first."
+        };
+      case "aborted":
+        return {
+          type: "text",
+          value: "Recap cancelled."
+        };
+      case "failed":
+        return {
+          type: "text",
+          value: "Couldn't generate a recap. Run with --debug for details."
+        };
+    }
+  },
+  aXf,
+  lXf;

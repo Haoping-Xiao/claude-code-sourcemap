@@ -1,0 +1,16 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module tzs
+// matched 2.1.88 source: node_modules/@smithy/types/dist-cjs/index.js
+// class=new  jaccard=0.0427  score=1  fileCov=0.0427
+// note: nearest: node_modules/@smithy/types/dist-cjs/index.js (0.0427); 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var tzs = E(() => {
+  J6s();
+  Q6s();
+  Z6s();
+  ezs();
+});
+var nzs = () => {};
+var rzs = "__smithy_context";
+var ozs = () => {};
+var szs;

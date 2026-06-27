@@ -1,0 +1,65 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module bH
+// matched 2.1.88 source: src/Task.ts
+// class=modified  jaccard=0.4226  score=0.9281  fileCov=0.4369
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var bH = E(() => {
+  ft();
+  je();
+  At();
+  ys();
+  vn();
+  Yf();
+  ((tNe = require("fs")),
+    (Wse = require("fs/promises")),
+    (C5o = require("path")),
+    (Zsc = tNe.constants.O_NOFOLLOW ?? 0));
+  Qsc = new Set();
+  vlr = new Map();
+});
+function AC(e) {
+  return e === "completed" || e === "failed" || e === "killed";
+}
+function Hze(e) {
+  for (let t of Object.values(e))
+    if (
+      Cem.has(t.type) &&
+      !AC(t.status) &&
+      !(t.type === "in_process_teammate" && t.isIdle) &&
+      !(t.type === "remote_agent" && t.isLongRunning)
+    )
+      return !0;
+  return !1;
+}
+function JQn(e) {
+  for (let t of Object.values(e)) if (t.type === "local_bash" && !AC(t.status)) return !0;
+  return !1;
+}
+function xem(e) {
+  return Iem[e] ?? "x";
+}
+function iN(e) {
+  let t = xem(e),
+    n = nic.randomBytes(8),
+    r = t;
+  for (let o = 0; o < 8; o++) r += tic[n[o] % tic.length];
+  return r;
+}
+function LT(e, t, n, r) {
+  return {
+    id: e,
+    type: t,
+    status: "pending",
+    description: n,
+    toolUseId: r,
+    startTime: Date.now(),
+    outputFile: jm(e),
+    outputOffset: 0,
+    notified: !1,
+  };
+}
+var nic,
+  Cem,
+  Iem,
+  tic = "0123456789abcdefghijklmnopqrstuvwxyz";

@@ -1,0 +1,60 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Two
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var Two = E(() => {
+  u_();
+  nC();
+  sr();
+  B6n = new Set([ka, Wc, RI]);
+});
+var byt = "LSP",
+  vwo = `Interact with Language Server Protocol (LSP) servers to get code intelligence features.
+
+Supported operations:
+- goToDefinition: Find where a symbol is defined
+- findReferences: Find all references to a symbol
+- hover: Get hover information (documentation, type info) for a symbol
+- documentSymbol: Get all symbols (functions, classes, variables) in a document
+- workspaceSymbol: Search for symbols matching a query across the entire workspace
+- goToImplementation: Find implementations of an interface or abstract method
+- prepareCallHierarchy: Get call hierarchy item at a position (functions/methods)
+- incomingCalls: Find all functions/methods that call the function at a position
+- outgoingCalls: Find all functions/methods called by the function at a position
+
+All operations require:
+- filePath: The file to operate on
+- line: The line number (1-based, as shown in editors)
+- character: The character offset (1-based, as shown in editors)
+
+The workspaceSymbol operation also takes:
+- query: The symbol name or partial name to search for. Always provide it \u2014 most language servers return no results for an empty query.
+
+Note: LSP servers must be configured for the file type. If no server is available, an error will be returned.`;
+function xL(e, t) {
+  let {
+      signalB: n,
+      timeoutMs: r
+    } = t ?? {},
+    o = Sl();
+  if (e?.aborted || n?.aborted) return o.abort(), {
+    signal: o.signal,
+    cleanup: () => {}
+  };
+  let s,
+    i = () => {
+      if (s !== void 0) clearTimeout(s);
+      o.abort();
+    };
+  if (r !== void 0) s = setTimeout(i, r), s.unref?.();
+  e?.addEventListener("abort", i), n?.addEventListener("abort", i);
+  let a = () => {
+    if (s !== void 0) clearTimeout(s);
+    e?.removeEventListener("abort", i), n?.removeEventListener("abort", i);
+  };
+  return {
+    signal: o.signal,
+    cleanup: a
+  };
+}

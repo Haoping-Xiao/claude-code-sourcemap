@@ -1,0 +1,34 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module uni
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var uni = E(() => {
+  wti();
+  I2e();
+  oni();
+  pb();
+  pb();
+  PEn = R(eT(), 1), MEn = R(Zhe(), 1), WIe = R(Dx(), 1), sni = R(eye(), 1), $En = R(zO(), 1), GIe = R(RB(), 1), OEn = R(PG(), 1), ini = R(tye(), 1), ani = R(Kae(), 1), lni = R(sye(), 1);
+});
+var dni = e => ({
+    setHttpHandler(t) {
+      e.httpHandler = t;
+    },
+    httpHandler() {
+      return e.httpHandler;
+    },
+    updateHttpClientConfig(t, n) {
+      e.httpHandler?.updateHttpClientConfig(t, n);
+    },
+    httpHandlerConfigs() {
+      return e.httpHandler.httpHandlerConfigs();
+    }
+  }),
+  pni = e => ({
+    httpHandler: e.httpHandler()
+  });
+var fni = () => {};
+var mni = () => {};
+var gni = () => {};
+var hni = () => {};

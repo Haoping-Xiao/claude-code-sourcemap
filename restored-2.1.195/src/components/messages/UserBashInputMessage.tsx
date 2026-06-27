@@ -1,0 +1,56 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Ail
+// matched 2.1.88 source: src/components/messages/UserBashInputMessage.tsx
+// class=modified  jaccard=0.638  score=1  fileCov=0.638
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var Ail = E(() => {
+  Xa();
+  Ye();
+  es();
+  co();
+  ((Sil = R(lt(), 1)), (Zyt = R(se(), 1)));
+});
+function Wzn(e) {
+  let t = Hil.c(8),
+    { param: n, addMargin: r } = e,
+    { text: o } = n,
+    s;
+  if (t[0] !== o) ((s = xl(o, "bash-input")), (t[0] = o), (t[1] = s));
+  else s = t[1];
+  let i = s;
+  if (!i) return null;
+  let a = r ? 1 : 0,
+    l;
+  if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+    ((l = P8t.jsx(w, {
+      color: "bashBorder",
+      children: "! ",
+    })),
+      (t[2] = l));
+  else l = t[2];
+  let c;
+  if (t[3] !== i)
+    ((c = P8t.jsx(w, {
+      color: "text",
+      children: i,
+    })),
+      (t[3] = i),
+      (t[4] = c));
+  else c = t[4];
+  let u;
+  if (t[5] !== a || t[6] !== c)
+    ((u = P8t.jsxs(U, {
+      flexDirection: "row",
+      marginTop: a,
+      backgroundColor: "bashMessageBackgroundColor",
+      paddingRight: 1,
+      children: [l, c],
+    })),
+      (t[5] = a),
+      (t[6] = c),
+      (t[7] = u));
+  else u = t[7];
+  return u;
+}
+var Hil, P8t;

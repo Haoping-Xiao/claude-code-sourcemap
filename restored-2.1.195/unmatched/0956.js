@@ -1,0 +1,112 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module ABs
+// matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js
+// class=new  jaccard=0.0565  score=0.0834  fileCov=0.1494
+// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js (0.0565); 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var ABs = E(() => {
+  HBs = {
+    name: "@aws-sdk/client-sso",
+    description: "AWS SDK for JavaScript Sso Client for Node.js, Browser and React Native",
+    version: "3.936.0",
+    scripts: {
+      build: "concurrently 'yarn:build:cjs' 'yarn:build:es' 'yarn:build:types'",
+      "build:cjs": "node ../../scripts/compilation/inline client-sso",
+      "build:es": "tsc -p tsconfig.es.json",
+      "build:include:deps": "lerna run --scope $npm_package_name --include-dependencies build",
+      "build:types": "tsc -p tsconfig.types.json",
+      "build:types:downlevel": "downlevel-dts dist-types dist-types/ts3.4",
+      clean: "rimraf ./dist-* && rimraf *.tsbuildinfo",
+      "extract:docs": "api-extractor run --local",
+      "generate:client": "node ../../scripts/generate-clients/single-service --solo sso"
+    },
+    main: "./dist-cjs/index.js",
+    types: "./dist-types/index.d.ts",
+    module: "./dist-es/index.js",
+    sideEffects: !1,
+    dependencies: {
+      "@aws-crypto/sha256-browser": "5.2.0",
+      "@aws-crypto/sha256-js": "5.2.0",
+      "@aws-sdk/core": "3.936.0",
+      "@aws-sdk/middleware-host-header": "3.936.0",
+      "@aws-sdk/middleware-logger": "3.936.0",
+      "@aws-sdk/middleware-recursion-detection": "3.936.0",
+      "@aws-sdk/middleware-user-agent": "3.936.0",
+      "@aws-sdk/region-config-resolver": "3.936.0",
+      "@aws-sdk/types": "3.936.0",
+      "@aws-sdk/util-endpoints": "3.936.0",
+      "@aws-sdk/util-user-agent-browser": "3.936.0",
+      "@aws-sdk/util-user-agent-node": "3.936.0",
+      "@smithy/config-resolver": "^4.4.3",
+      "@smithy/core": "^3.18.5",
+      "@smithy/fetch-http-handler": "^5.3.6",
+      "@smithy/hash-node": "^4.2.5",
+      "@smithy/invalid-dependency": "^4.2.5",
+      "@smithy/middleware-content-length": "^4.2.5",
+      "@smithy/middleware-endpoint": "^4.3.12",
+      "@smithy/middleware-retry": "^4.4.12",
+      "@smithy/middleware-serde": "^4.2.6",
+      "@smithy/middleware-stack": "^4.2.5",
+      "@smithy/node-config-provider": "^4.3.5",
+      "@smithy/node-http-handler": "^4.4.5",
+      "@smithy/protocol-http": "^5.3.5",
+      "@smithy/smithy-client": "^4.9.8",
+      "@smithy/types": "^4.9.0",
+      "@smithy/url-parser": "^4.2.5",
+      "@smithy/util-base64": "^4.3.0",
+      "@smithy/util-body-length-browser": "^4.2.0",
+      "@smithy/util-body-length-node": "^4.2.1",
+      "@smithy/util-defaults-mode-browser": "^4.3.11",
+      "@smithy/util-defaults-mode-node": "^4.2.14",
+      "@smithy/util-endpoints": "^3.2.5",
+      "@smithy/util-middleware": "^4.2.5",
+      "@smithy/util-retry": "^4.2.5",
+      "@smithy/util-utf8": "^4.2.0",
+      tslib: "^2.6.2"
+    },
+    devDependencies: {
+      "@tsconfig/node18": "18.2.4",
+      "@types/node": "^18.19.69",
+      concurrently: "7.0.0",
+      "downlevel-dts": "0.10.1",
+      rimraf: "3.0.2",
+      typescript: "~5.8.3"
+    },
+    engines: {
+      node: ">=18.0.0"
+    },
+    typesVersions: {
+      "<4.0": {
+        "dist-types/*": ["dist-types/ts3.4/*"]
+      }
+    },
+    files: ["dist-*/**"],
+    author: {
+      name: "AWS SDK for JavaScript Team",
+      url: "https://aws.amazon.com/javascript/"
+    },
+    license: "Apache-2.0",
+    browser: {
+      "./dist-es/runtimeConfig": "./dist-es/runtimeConfig.browser"
+    },
+    "react-native": {
+      "./dist-es/runtimeConfig": "./dist-es/runtimeConfig.native"
+    },
+    homepage: "https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-sso",
+    repository: {
+      type: "git",
+      url: "https://github.com/aws/aws-sdk-js-v3.git",
+      directory: "clients/client-sso"
+    }
+  };
+});
+var TBs = e => typeof ArrayBuffer === "function" && e instanceof ArrayBuffer || Object.prototype.toString.call(e) === "[object ArrayBuffer]";
+var Bhn,
+  vBs = (e, t = 0, n = e.byteLength - t) => {
+    if (!TBs(e)) throw TypeError(`The "input" argument must be ArrayBuffer. Received type ${typeof e} (${e})`);
+    return Bhn.Buffer.from(e, t, n);
+  },
+  wBs = (e, t) => {
+    if (typeof e !== "string") throw TypeError(`The "input" argument must be of type string. Received type ${typeof e} (${e})`);
+    return t ? Bhn.Buffer.from(e, t) : Bhn.Buffer.from(e);
+  };

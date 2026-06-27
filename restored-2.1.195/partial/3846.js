@@ -1,0 +1,61 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module FEe
+// matched 2.1.88 source: src/utils/readEditContext.ts
+// class=partial  jaccard=0.0958  score=0.1094  fileCov=0.4356
+// note: low-confidence suggestion: src/utils/readEditContext.ts; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var FEe = E(() => {
+  dn();
+  Un();
+  kt();
+  Du();
+  w4t();
+  Rx();
+  er();
+  je();
+  wr();
+  fn();
+  At();
+  Bi();
+  ys();
+  Yp();
+  vn();
+  uAo();
+  Is();
+  qd();
+  dr();
+  EVn();
+  Jt();
+  Tza = require("fs"), Hk = require("fs/promises"), H9e = require("os"), x6 = require("path"), T9e = R(Uj(), 1);
+  vza = class vza extends NIt {};
+});
+function Mza() {
+  return Pza.join(tr(), ".last-update-result.json");
+}
+async function w9e(e) {
+  try {
+    await qs().atomicWrite(Mza(), De(e));
+  } catch (t) {
+    T(`Failed to record update result: ${t}`, {
+      level: "error"
+    });
+  }
+}
+async function vVn() {
+  let e;
+  try {
+    e = await qs().read(Mza());
+  } catch (t) {
+    if (!wn(t)) T(`Failed to read update result: ${t}`, {
+      level: "error"
+    });
+    return null;
+  }
+  try {
+    let t = Gzp().safeParse(Ft(e));
+    return t.success ? t.data : null;
+  } catch {
+    return null;
+  }
+}
+var Pza, Gzp;

@@ -1,0 +1,246 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module ZE
+// matched 2.1.88 source: src/utils/shell/prefix.ts
+// class=modified  jaccard=0.3951  score=0.8589  fileCov=0.4226
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var ZE = E(() => {
+  Ls();
+  Zkn();
+  ii();
+  Fze();
+  oo();
+  Vw();
+  xAn();
+  er();
+  BE();
+  Cp();
+  wr();
+  fn();
+  At();
+  IHo();
+  vn();
+  co();
+  Ao();
+  u$();
+  dn();
+  Un();
+  z1();
+  H5e();
+  yje();
+  Uge();
+  ft();
+  TM();
+  RF();
+  aW();
+  Un();
+  _oe();
+  og();
+  oo();
+  Vw();
+  BE();
+  je();
+  Mm();
+  Cp();
+  NE();
+  p6e();
+  OKt();
+  Sbe();
+  jG();
+  Rze();
+  X4();
+  sr();
+  m1();
+  GX();
+  Lne();
+  LX();
+  Wct();
+  I1n();
+  Rd();
+  xUt();
+  rle();
+  I1();
+  Ao();
+  aze();
+  Jt();
+  cMo();
+  m5();
+  kt();
+  Du();
+  yde();
+  DMo();
+  Yxe();
+  tP();
+  gSe();
+  MQn();
+  frt();
+  cYt();
+  Tac();
+  mio();
+  mLe();
+  vQn();
+  AVe();
+  ((ZHt = require("crypto")), (fqo = (Eoe(), ro(Ope))));
+});
+function Zac(e) {
+  let { toolName: t, policySpec: n, eventName: r, querySource: o, preCheck: s } = e,
+    i = JC(
+      (a, l, c) => {
+        let u = Mnm(a, l, c, t, n, r, o, s);
+        return (
+          u.catch(() => {
+            if (i.cache.get(a) === u) i.cache.delete(a);
+          }),
+          u
+        );
+      },
+      (a) => a,
+      200,
+    );
+  return i;
+}
+function elc(e, t) {
+  let n = JC(
+    (r, o, s) => {
+      let i = $nm(r, o, s, e, t);
+      return (
+        i.catch(() => {
+          if (n.cache.get(r) === i) n.cache.delete(r);
+        }),
+        i
+      );
+    },
+    (r) => r,
+    200,
+  );
+  return n;
+}
+async function Mnm(e, t, n, r, o, s, i, a) {
+  if (a) {
+    let d = a(e);
+    if (d !== null) return d;
+  }
+  let l,
+    c = Date.now(),
+    u = null;
+  try {
+    l = setTimeout(
+      (m, g) => {
+        let h = `[${m}Tool] Pre-flight check is taking longer than expected. Run with ANTHROPIC_LOG=debug to check for failed or slow API requests.`;
+        if (g)
+          process.stderr.write(
+            De({
+              level: "warn",
+              message: h,
+            }) +
+              `
+`,
+          );
+        else console.warn(wt.yellow(`\u26A0\uFE0F  ${h}`));
+      },
+      1e4,
+      r,
+      n,
+    );
+    let d = await R$({
+      systemPrompt: Sc([
+        `Your task is to process ${r} commands that an AI coding agent wants to run.
+
+${o}`,
+      ]),
+      userPrompt: `Command: ${e}`,
+      signal: t,
+      options: {
+        enablePromptCaching: !0,
+        querySource: i,
+        agents: [],
+        isNonInteractiveSession: n,
+        hasAppendSystemPrompt: !1,
+        mcpTools: [],
+        agentContext: of(),
+      },
+    });
+    clearTimeout(l);
+    let p = Date.now() - c,
+      f =
+        typeof d.message.content === "string"
+          ? d.message.content
+          : Array.isArray(d.message.content)
+            ? (d.message.content.find((m) => m.type === "text")?.text ?? "none")
+            : "none";
+    if (K1(f))
+      (G(s, {
+        success: !1,
+        error: We("API error"),
+        durationMs: p,
+      }),
+        (u = null));
+    else if (f === "command_injection_detected")
+      (G(s, {
+        success: !1,
+        error: We("command_injection_detected"),
+        durationMs: p,
+      }),
+        (u = {
+          commandPrefix: null,
+        }));
+    else if (f === "git" || Pnm.has(f.toLowerCase()))
+      (G(s, {
+        success: !1,
+        error: We("dangerous_shell_prefix"),
+        durationMs: p,
+      }),
+        (u = {
+          commandPrefix: null,
+        }));
+    else if (f === "none")
+      (G(s, {
+        success: !1,
+        error: We('prefix "none"'),
+        durationMs: p,
+      }),
+        (u = {
+          commandPrefix: null,
+        }));
+    else if (!e.startsWith(f))
+      (G(s, {
+        success: !1,
+        error: We("command did not start with prefix"),
+        durationMs: p,
+      }),
+        (u = {
+          commandPrefix: null,
+        }));
+    else
+      (G(s, {
+        success: !0,
+        durationMs: p,
+      }),
+        (u = {
+          commandPrefix: f,
+        }));
+    return u;
+  } catch (d) {
+    throw (clearTimeout(l), d);
+  }
+}
+async function $nm(e, t, n, r, o) {
+  let s = await o(e),
+    [i, ...a] = await Promise.all([
+      r(e, t, n),
+      ...s.map(async (c) => ({
+        subcommand: c,
+        prefix: await r(c, t, n),
+      })),
+    ]);
+  if (!i) return null;
+  let l = a.reduce((c, { subcommand: u, prefix: d }) => {
+    if (d) c.set(u, d);
+    return c;
+  }, new Map());
+  return {
+    ...i,
+    subcommandPrefixes: l,
+  };
+}
+var Pnm;

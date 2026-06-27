@@ -1,0 +1,16 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Gkr
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var Gkr = E(() => {
+  hEs();
+  yEs = Math.max;
+  Cpn = zDu;
+});
+function KDu(e) {
+  return function () {
+    return e;
+  };
+}
+var _Es;

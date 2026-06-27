@@ -1,0 +1,14 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Hoc
+// class=new  (no 2.1.88 match)
+// note: 1 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var Hoc = E(() => {
+  kWo();
+});
+var Toc = {};
+_t(Toc, {
+  stopNonInteractive: () => stopNonInteractive,
+  default: () => kQf
+});
+var IQf, stopNonInteractive, kQf;

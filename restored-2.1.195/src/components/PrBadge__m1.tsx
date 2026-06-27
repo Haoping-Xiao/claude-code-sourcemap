@@ -1,0 +1,47 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module _al
+// matched 2.1.88 source: src/components/PrBadge.tsx
+// class=modified (alt of src/components/PrBadge.tsx)  jaccard=0.5836  score=0.7771  fileCov=0.7009
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var _al = E(() => {
+  Ye();
+  r_t = R(rt(), 1);
+});
+function Sal(e, t) {
+  if (!e || !t) return null;
+  let n = e.kind === "cr" && !1;
+  return {
+    prefix: "PR",
+    label: `#${e.number}`,
+    url: t,
+    dedupUrl: e.url,
+    color: Csf(e.reviewState),
+  };
+}
+function Csf(e) {
+  switch (e) {
+    case "approved":
+      return "success";
+    case "changes_requested":
+      return "error";
+    case "pending":
+      return "warning";
+    case "merged":
+      return "merged";
+    default:
+      return;
+  }
+}
+function cIo(e, t, n) {
+  return;
+}
+function Eal(e, t, n) {
+  bal.useEffect(() => {
+    if (t === void 0) return;
+    cIo(e, t, n === "cr");
+  }, [e, t, n]);
+}
+var bal,
+  wsf = !1,
+  lIo = "current-pr";

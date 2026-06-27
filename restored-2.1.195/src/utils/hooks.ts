@@ -1,0 +1,3107 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module $ic
+// matched 2.1.88 source: src/utils/hooks.ts
+// class=modified  jaccard=0.3648  score=0.6349  fileCov=0.4616
+// note: deminified; 28 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var $ic = E(() => {
+  _ic();
+  bic();
+  Sic();
+  Aic();
+  Hic();
+  N5o();
+  Tic();
+  vic();
+  kic();
+  Ric();
+  Lic();
+  TIo();
+  Pic();
+  Mic();
+  zem = {
+    PreToolUse: bzt,
+    PostToolUse: Szt,
+    PostToolUseFailure: Ezt,
+    PostToolBatch: wSt,
+    PermissionDenied: tKt,
+    PermissionRequest: jAe,
+    Notification: cJ,
+    Stop: OAe,
+    SubagentStop: OAe,
+    StopFailure: sOe,
+    TeammateIdle: oYt,
+    TaskCreated: Rzt,
+    TaskCompleted: Z6e,
+    UserPromptSubmit: aZt,
+    UserPromptExpansion: G8t,
+    SessionStart: qjt,
+    SessionEnd: oKe,
+    Setup: Vjt,
+    SubagentStart: J8t,
+    PreCompact: RQ,
+    PostCompact: eOe,
+    ConfigChange: vRe,
+    CwdChanged: Gjt,
+    FileChanged: Wjt,
+    InstructionsLoaded: o5e,
+    Elicitation: W3t,
+    ElicitationResult: q3t,
+    WorktreeCreate: WYe,
+    WorktreeRemove: QHt,
+    MessageDisplay: JHt,
+  };
+});
+var _1a = {};
+_t(_1a, {
+  shouldSkipHookDueToTrust: () => shouldSkipHookDueToTrust,
+  persistHookOutput: () => persistHookOutput,
+  parseElicitationHookOutput: () => parseElicitationHookOutput,
+  isPluginEligibleForCredentials: () => isPluginEligibleForCredentials,
+  isBareMcpServerMatcher: () => isBareMcpServerMatcher,
+  hasInstructionsLoadedHook: () => hasInstructionsLoadedHook,
+  hasHookForEvent: () => hasHookForEvent,
+  hasBlockingResult: () => hasBlockingResult,
+  getUserPromptSubmitHookBlockingMessage: () => getUserPromptSubmitHookBlockingMessage,
+  getTelemetryHookName: () => getTelemetryHookName,
+  getTeammateIdleHookMessage: () => getTeammateIdleHookMessage,
+  getTaskCreatedHookMessage: () => getTaskCreatedHookMessage,
+  getTaskCompletedHookMessage: () => getTaskCompletedHookMessage,
+  getStopHookMessage: () => getStopHookMessage,
+  getSessionEndHookTimeoutMs: () => getSessionEndHookTimeoutMs,
+  getPreToolHookBlockingMessage: () => getPreToolHookBlockingMessage,
+  getPluginHookCounts: () => getPluginHookCounts,
+  getMatchingHooks: () => getMatchingHooks,
+  getAnthropicCredentialsForOfficialPluginHook: () => getAnthropicCredentialsForOfficialPluginHook,
+  flushPendingAsyncRewakeHooks: () => flushPendingAsyncRewakeHooks,
+  executeWorktreeRemoveHook: () => QHt,
+  executeWorktreeCreateHook: () => WYe,
+  executeUserPromptSubmitHooks: () => aZt,
+  executeUserPromptExpansionHooks: () => G8t,
+  executeTeammateIdleHooks: () => oYt,
+  executeTaskCreatedHooks: () => Rzt,
+  executeTaskCompletedHooks: () => Z6e,
+  executeSubagentStartHooks: () => J8t,
+  executeStopHooks: () => OAe,
+  executeStopFailureHooks: () => sOe,
+  executeStatusLineCommand: () => executeStatusLineCommand,
+  executeSetupHooks: () => Vjt,
+  executeSessionStartHooks: () => qjt,
+  executeSessionEndHooks: () => oKe,
+  executePreToolHooks: () => bzt,
+  executePreCompactHooks: () => RQ,
+  executePostToolUseFailureHooks: () => Ezt,
+  executePostToolHooks: () => Szt,
+  executePostToolBatchHooks: () => wSt,
+  executePostCompactHooks: () => eOe,
+  executePermissionRequestHooks: () => jAe,
+  executePermissionDeniedHooks: () => tKt,
+  executeNotificationHooks: () => cJ,
+  executeMessageDisplayHooks: () => JHt,
+  executeInstructionsLoadedHooks: () => o5e,
+  executeHooksOutsideREPL: () => executeHooksOutsideREPL,
+  executeHooks: () => executeHooks,
+  executeFileSuggestionCommand: () => executeFileSuggestionCommand,
+  executeFileChangedHooks: () => Wjt,
+  executeElicitationResultHooks: () => q3t,
+  executeElicitationHooks: () => W3t,
+  executeCwdChangedHooks: () => Gjt,
+  executeConfigChangeHooks: () => vRe,
+  emitHookMetrics: () => emitHookMetrics,
+  createBaseHookInput: () => createBaseHookInput,
+  applyHookSessionTitle: () => $lr,
+  _resetBareMcpServerMatcherWarningsForTesting: () => Zem,
+  SESSION_END_HOOK_TIMEOUT_MS_DEFAULT: () => SESSION_END_HOOK_TIMEOUT_MS_DEFAULT,
+  HOOK_EVENT_REGISTRY: () => zem,
+  ASYNC_REWAKE_FLUSH_TIMEOUT_MS: () => ASYNC_REWAKE_FLUSH_TIMEOUT_MS,
+});
+function Bic() {
+  return Yem;
+}
+async function flushPendingAsyncRewakeHooks() {
+  let e = Bic();
+  if (e.size === 0) return;
+  let t = Promise.allSettled([...e]);
+  await Promise.race([
+    t,
+    Nn(ASYNC_REWAKE_FLUSH_TIMEOUT_MS, void 0, {
+      unref: !0,
+    }),
+  ]);
+}
+function getSessionEndHookTimeoutMs() {
+  let e = process.env.CLAUDE_CODE_SESSIONEND_HOOKS_TIMEOUT_MS,
+    t = e ? parseInt(e, 10) : NaN;
+  if (Number.isFinite(t) && t > 0) return t;
+  let n = 0,
+    r = N_() ? [] : (eG()?.SessionEnd ?? []),
+    o = [...(CU()?.SessionEnd ?? []), ...r];
+  for (let s of o)
+    for (let i of s.hooks) if (i.timeout && i.timeout * 1000 > n) n = i.timeout * 1000;
+  return Math.max(SESSION_END_HOOK_TIMEOUT_MS_DEFAULT, Math.min(n, Kem));
+}
+function Oic({
+  processId: e,
+  hookId: t,
+  shellCommand: n,
+  asyncResponse: r,
+  hookEvent: o,
+  hookName: s,
+  command: i,
+  asyncRewake: a,
+  rewakeMessage: l,
+  rewakeSummary: c,
+  pluginId: u,
+}) {
+  if (a) {
+    let d = n.result.then(async (f) => {
+        await new Promise((y) => setImmediate(y));
+        let m = await n.taskOutput.getStdout(),
+          g = n.taskOutput.getStderr();
+        (n.cleanup(),
+          Ok({
+            hookId: t,
+            hookName: s,
+            hookEvent: o,
+            output: m + g,
+            stdout: m,
+            stderr: g,
+            exitCode: f.code,
+            outcome: f.code === 0 ? "success" : "error",
+          }));
+        let h;
+        if (u)
+          for (let y of m.split(`
+`)) {
+            let b = y.trim();
+            if (!b.startsWith("{")) continue;
+            try {
+              let _ = Ft(b);
+              if ("async" in _) continue;
+              if (eO(_)) {
+                if (
+                  (emitHookMetrics(_.metrics, u, o),
+                  typeof _.rewakeSummary === "string" && _.rewakeSummary.trim() && jlr(u))
+                )
+                  h = _.rewakeSummary.trim().replace(/\s+/g, " ").slice(0, Xem);
+              }
+              break;
+            } catch {}
+          }
+        if (f.code === 2) {
+          let y = `Stop hook blocking error from command "${s}":`,
+            b = "Stop hook feedback";
+          if (l !== void 0) y = l;
+          if (h !== void 0) b = h;
+          else if (c !== void 0) b = c;
+          let _ = aw(`${y} ${g || m}`);
+          Ad({
+            value: `<${Oc}>
+<${Zu}>${ec(b)}</${Zu}>
+</${Oc}>
+${_}`,
+            mode: "task-notification",
+            agentId: ls(),
+            priority: "next",
+            stopHookActive: !0,
+          });
+        }
+      }),
+      p = Bic();
+    return (p.add(d), d.finally(() => p.delete(d)), !0);
+  }
+  if (
+    !n.background(e, {
+      skipSpill: !0,
+    })
+  )
+    return !1;
+  return (
+    d0l({
+      processId: e,
+      hookId: t,
+      asyncResponse: r,
+      hookEvent: o,
+      hookName: s,
+      command: i,
+      shellCommand: n,
+      pluginId: u,
+    }),
+    !0
+  );
+}
+function shouldSkipHookDueToTrust() {
+  return !yke();
+}
+function createBaseHookInput(e, t, n) {
+  let r = t ?? Rt(),
+    o = n?.agentType ?? TO(),
+    s = n?.options?.mainLoopModel,
+    i = n?.getAppState?.().effortValue;
+  for (let l of n?.permissionLayers ?? [])
+    if (l.kind === "effort" && l.effort !== void 0) i = l.effort;
+  let a =
+    s && n?.getAppState && Kw(s)
+      ? {
+          level: RM(s, i),
+        }
+      : void 0;
+  return {
+    session_id: r,
+    transcript_path: Pk(r),
+    cwd: $t(),
+    permission_mode: e,
+    agent_id: n?.agentId,
+    agent_type: o,
+    effort: a,
+  };
+}
+function Fic(e) {
+  let t = Ft(e),
+    n = XHt().safeParse(t);
+  if (n.success)
+    return (
+      T("Successfully parsed and validated hook JSON output"),
+      hic(t, n.data),
+      {
+        json: n.data,
+      }
+    );
+  let r = n.error.issues,
+    o = r[0],
+    s = o ? `${o.path.join(".") || "(root)"}: ${o.message}` : "unknown error";
+  if (
+    t &&
+    typeof t === "object" &&
+    "hookSpecificOutput" in t &&
+    t.hookSpecificOutput &&
+    typeof t.hookSpecificOutput === "object" &&
+    !Array.isArray(t.hookSpecificOutput) &&
+    !("hookEventName" in t.hookSpecificOutput)
+  )
+    s = 'hookSpecificOutput is missing required field "hookEventName"';
+  let i = r.slice(1).map((a) => `  - ${a.path.join(".") || "(root)"}: ${a.message}`).join(`
+`);
+  return {
+    validationError: `Hook JSON output validation failed \u2014 ${s}${
+      i
+        ? `
+` + i
+        : ""
+    }
+
+The hook's output was: ${De(t, null, 2)}`,
+  };
+}
+async function persistHookOutput(e, t, n, r = zca) {
+  if (e.length <= r) return e;
+  let o = await pDe(e, `hook-${t}-${n}`);
+  if (mDe(o))
+    return (
+      G("tengu_hook_output_persisted", {
+        source: $e(n),
+        originalSizeBytes: e.length,
+        persistedSizeBytes: 0,
+        truncatedFallback: !0,
+      }),
+      `${e.slice(0, r)}
+
+[Hook ${n} truncated at ${r} chars \u2014 persist-to-disk failed: ${o.error}]`
+    );
+  let s = fDe(o);
+  return (
+    G("tengu_hook_output_persisted", {
+      source: $e(n),
+      originalSizeBytes: o.originalSize,
+      persistedSizeBytes: s.length,
+      truncatedFallback: !1,
+    }),
+    s
+  );
+}
+function Ulr(e) {
+  let t = e.trim();
+  if (!t.startsWith("{"))
+    return (
+      T("Hook output does not start with {, treating as plain text"),
+      {
+        plainText: e,
+      }
+    );
+  try {
+    let n = Fic(t);
+    if ("json" in n) return n;
+    let r = `${n.validationError}
+
+Expected schema:
+${De(
+  {
+    continue: "boolean (optional)",
+    suppressOutput: "boolean (optional)",
+    stopReason: "string (optional)",
+    decision: '"approve" | "block" (optional)',
+    reason: "string (optional)",
+    systemMessage: "string (optional)",
+    terminalSequence: "string (optional)",
+    permissionDecision: '"allow" | "deny" | "ask" (optional)',
+    hookSpecificOutput: {
+      "for PreToolUse": {
+        hookEventName: '"PreToolUse"',
+        permissionDecision: '"allow" | "deny" | "ask" | "defer" (optional)',
+        permissionDecisionReason: "string (optional)",
+        updatedInput: "object (optional) - Modified tool input to use",
+      },
+      "for UserPromptSubmit": {
+        hookEventName: '"UserPromptSubmit"',
+        additionalContext: "string (required)",
+      },
+      "for PostToolUse": {
+        hookEventName: '"PostToolUse"',
+        additionalContext: "string (optional)",
+      },
+      "for PostToolBatch": {
+        hookEventName: '"PostToolBatch"',
+        additionalContext: "string (optional)",
+      },
+      "for Stop / SubagentStop": {
+        hookEventName: '"Stop" | "SubagentStop"',
+        additionalContext:
+          "string (optional) - Feedback for the model; the conversation continues so the model can act on it",
+      },
+    },
+  },
+  null,
+  2,
+)}`;
+    return (
+      T(r),
+      {
+        plainText: e,
+        validationError: r,
+      }
+    );
+  } catch (n) {
+    return (
+      T(`Failed to parse hook output as JSON: ${n}`),
+      {
+        plainText: e,
+      }
+    );
+  }
+}
+function jic(e) {
+  let t = e.trim();
+  if (t === "") {
+    let n = XHt().safeParse({});
+    if (n.success)
+      return (
+        T("HTTP hook returned empty body, treating as empty JSON object"),
+        {
+          json: n.data,
+        }
+      );
+  }
+  if (!t.startsWith("{")) {
+    let n = `HTTP hook must return JSON, but got non-JSON response body: ${t.length > 200 ? t.slice(0, 200) + "\u2026" : t}`;
+    return (
+      T(n),
+      {
+        validationError: n,
+      }
+    );
+  }
+  try {
+    let n = Fic(t);
+    if ("json" in n) return n;
+    return (T(n.validationError), n);
+  } catch (n) {
+    let r = `HTTP hook must return valid JSON, but parsing failed: ${n}`;
+    return (
+      T(r),
+      {
+        validationError: r,
+      }
+    );
+  }
+}
+function Blr({
+  json: e,
+  command: t,
+  hookName: n,
+  toolUseID: r,
+  hookEvent: o,
+  expectedHookEvent: s,
+  stdout: i,
+  stderr: a,
+  exitCode: l,
+  durationMs: c,
+}) {
+  let u = {},
+    d = e;
+  if (d.continue === !1) {
+    if (((u.preventContinuation = !0), d.stopReason)) u.stopReason = d.stopReason;
+  }
+  if (e.decision)
+    switch (e.decision) {
+      case "approve":
+        u.permissionBehavior = "allow";
+        break;
+      case "block":
+        ((u.permissionBehavior = "deny"),
+          (u.blockingError = {
+            blockingError: e.reason || "Blocked by hook",
+            command: t,
+          }));
+        break;
+      default:
+        throw Error(`Unknown hook decision type: ${e.decision}. Valid types are: approve, block`);
+    }
+  if (e.systemMessage) u.systemMessage = e.systemMessage;
+  if (e.terminalSequence) {
+    let p = OFo(e.terminalSequence);
+    if (p !== null) u.terminalSequence = p;
+    else
+      T(
+        `Hook ${n} (${o}) returned a terminalSequence that was rejected by the allowlist (only OSC 0/1/2/9/99/777 and BEL are permitted)`,
+      );
+  }
+  if (
+    e.hookSpecificOutput?.hookEventName === "PreToolUse" &&
+    e.hookSpecificOutput.permissionDecision
+  )
+    switch (e.hookSpecificOutput.permissionDecision) {
+      case "allow":
+        u.permissionBehavior = "allow";
+        break;
+      case "deny":
+        ((u.permissionBehavior = "deny"),
+          (u.blockingError = {
+            blockingError: e.reason || "Blocked by hook",
+            command: t,
+          }));
+        break;
+      case "ask":
+        u.permissionBehavior = "ask";
+        break;
+      case "defer":
+        u.permissionBehavior = "defer";
+        break;
+      default:
+        throw Error(
+          `Unknown hook permissionDecision type: ${e.hookSpecificOutput.permissionDecision}. Valid types are: allow, deny, ask, defer`,
+        );
+    }
+  if (u.permissionBehavior !== void 0 && e.reason !== void 0)
+    u.hookPermissionDecisionReason = e.reason;
+  if (e.hookSpecificOutput) {
+    if (s && e.hookSpecificOutput.hookEventName !== s)
+      throw Error(
+        `Hook returned incorrect event name: expected '${s}' but got '${e.hookSpecificOutput.hookEventName}'. Full stdout: ${De(e, null, 2)}`,
+      );
+    switch (e.hookSpecificOutput.hookEventName) {
+      case "PreToolUse":
+        if (e.hookSpecificOutput.permissionDecision)
+          switch (e.hookSpecificOutput.permissionDecision) {
+            case "allow":
+              u.permissionBehavior = "allow";
+              break;
+            case "deny":
+              ((u.permissionBehavior = "deny"),
+                (u.blockingError = {
+                  blockingError:
+                    e.hookSpecificOutput.permissionDecisionReason || e.reason || "Blocked by hook",
+                  command: t,
+                }));
+              break;
+            case "ask":
+              u.permissionBehavior = "ask";
+              break;
+            case "defer":
+              u.permissionBehavior = "defer";
+              break;
+          }
+        if (
+          ((u.hookPermissionDecisionReason = e.hookSpecificOutput.permissionDecisionReason),
+          e.hookSpecificOutput.updatedInput)
+        )
+          u.updatedInput = e.hookSpecificOutput.updatedInput;
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "UserPromptSubmit":
+        ((u.additionalContext = e.hookSpecificOutput.additionalContext),
+          (u.sessionTitle = e.hookSpecificOutput.sessionTitle),
+          (u.suppressOriginalPrompt = e.hookSpecificOutput.suppressOriginalPrompt));
+        break;
+      case "UserPromptExpansion":
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "SessionStart":
+        if (
+          ((u.additionalContext = e.hookSpecificOutput.additionalContext),
+          (u.initialUserMessage = e.hookSpecificOutput.initialUserMessage),
+          (u.sessionTitle = e.hookSpecificOutput.sessionTitle),
+          "watchPaths" in e.hookSpecificOutput && e.hookSpecificOutput.watchPaths)
+        )
+          u.watchPaths = e.hookSpecificOutput.watchPaths;
+        u.reloadSkills = e.hookSpecificOutput.reloadSkills;
+        break;
+      case "Setup":
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "SubagentStart":
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "PostToolUse":
+        if (
+          ((u.additionalContext = e.hookSpecificOutput.additionalContext),
+          e.hookSpecificOutput.updatedToolOutput !== void 0)
+        )
+          u.updatedToolOutput = e.hookSpecificOutput.updatedToolOutput;
+        if (e.hookSpecificOutput.updatedMCPToolOutput)
+          u.updatedMCPToolOutput = e.hookSpecificOutput.updatedMCPToolOutput;
+        break;
+      case "PostToolUseFailure":
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "PostToolBatch":
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "Stop":
+      case "SubagentStop":
+        u.additionalContext = e.hookSpecificOutput.additionalContext;
+        break;
+      case "PermissionDenied":
+        u.retry = e.hookSpecificOutput.retry;
+        break;
+      case "PermissionRequest":
+        if (e.hookSpecificOutput.decision) {
+          if (
+            ((u.permissionRequestResult = e.hookSpecificOutput.decision),
+            (u.permissionBehavior =
+              e.hookSpecificOutput.decision.behavior === "allow" ? "allow" : "deny"),
+            e.hookSpecificOutput.decision.behavior === "allow" &&
+              e.hookSpecificOutput.decision.updatedInput)
+          )
+            u.updatedInput = e.hookSpecificOutput.decision.updatedInput;
+        }
+        break;
+      case "Elicitation":
+        if (e.hookSpecificOutput.action) {
+          if (
+            ((u.elicitationResponse = {
+              action: e.hookSpecificOutput.action,
+              content: e.hookSpecificOutput.content,
+            }),
+            e.hookSpecificOutput.action === "decline")
+          )
+            u.blockingError = {
+              blockingError: e.reason || "Elicitation denied by hook",
+              command: t,
+            };
+        }
+        break;
+      case "ElicitationResult":
+        if (e.hookSpecificOutput.action) {
+          if (
+            ((u.elicitationResultResponse = {
+              action: e.hookSpecificOutput.action,
+              content: e.hookSpecificOutput.content,
+            }),
+            e.hookSpecificOutput.action === "decline")
+          )
+            u.blockingError = {
+              blockingError: e.reason || "Elicitation result blocked by hook",
+              command: t,
+            };
+        }
+        break;
+      case "MessageDisplay":
+        u.displayContent = e.hookSpecificOutput.displayContent;
+        break;
+    }
+  }
+  return {
+    ...u,
+    message: u.blockingError
+      ? ai({
+          type: "hook_blocking_error",
+          hookName: n,
+          toolUseID: r,
+          hookEvent: o,
+          blockingError: u.blockingError,
+        })
+      : ai({
+          type: "hook_success",
+          hookName: n,
+          toolUseID: r,
+          hookEvent: o,
+          content: "",
+          stdout: i,
+          stderr: a,
+          exitCode: l,
+          command: t,
+          durationMs: c,
+        }),
+  };
+}
+async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
+  let p = t === "SessionStart" || t === "Setup" || t === "SessionEnd",
+    f = Date.now(),
+    m,
+    g = !1,
+    h = Vt() === "windows",
+    y = e.shell ?? XWe(),
+    b = y === "powershell",
+    _ = e.args !== void 0;
+  if (_ && /\s/.test(e.command) && !/[\\/]/.test(e.command))
+    T(
+      `Hook command "${e.command}" has both "args" and whitespace in "command". Exec form treats "command" as a single executable name; move the rest into "args". Example: { "command": "node", "args": ["script.js"] }.`,
+      {
+        level: "warn",
+      },
+    );
+  let S = h && !b && !_ ? (ge) => ge.replaceAll("\\", "/") : (ge) => ge,
+    A = rc(),
+    v = e.command,
+    C;
+  for (let [ge, he] of [
+    ["CLAUDE_PLUGIN_ROOT", l || u],
+    ["CLAUDE_PLUGIN_DATA", l],
+  ]) {
+    if (he) continue;
+    let ie = "${" + ge + "}";
+    if (!e.command.includes(ie) && !e.args?.some((He) => He.includes(ie))) continue;
+    let le = eTe(e);
+    throw Error(
+      u
+        ? `Hook command references \${${ge}} but only \${CLAUDE_PLUGIN_ROOT} is available for skill hooks (\${CLAUDE_PLUGIN_DATA} is plugin-only). Command: ${le}`
+        : `Hook command references \${${ge}} but the hook is not associated with a plugin. This variable is only available in hooks defined in a plugin's hooks/hooks.json file, not in settings.json. Command: ${le}`,
+    );
+  }
+  if (l) {
+    if (!(await ed(l)))
+      throw Error(
+        `Plugin directory does not exist: ${l}` +
+          (c ? ` (${c} \u2014 run /plugin to reinstall)` : ""),
+      );
+    if (c) C = m$(c);
+    if (!_) {
+      if (b) {
+        let ge = S(l);
+        v = v.replaceAll("${CLAUDE_PLUGIN_ROOT}", () => ge);
+        let he = S(A);
+        if (((v = v.replaceAll("${CLAUDE_PROJECT_DIR}", () => he)), c)) {
+          let ie = S(Rue(c));
+          v = v.replaceAll("${CLAUDE_PLUGIN_DATA}", () => ie);
+        }
+      }
+      if (C) v = $Se(v, C);
+    }
+  }
+  let x;
+  if (e.args !== void 0) {
+    let ge = l ?? u,
+      he = l && c ? c : void 0,
+      ie = (le) => {
+        if (!le.includes("${")) return le;
+        if (((le = le.replaceAll("${CLAUDE_PROJECT_DIR}", () => A)), ge))
+          le = le.replaceAll("${CLAUDE_PLUGIN_ROOT}", () => ge);
+        if (he) le = le.replaceAll("${CLAUDE_PLUGIN_DATA}", () => Rue(he));
+        if (C) le = $Se(le, C);
+        return le;
+      };
+    x = [ie(e.command), e.args.map(ie)];
+  }
+  let I = eTe(e);
+  if (h && !b && !_) v = Bpn(v);
+  let k =
+      !b && !_ && process.env.CLAUDE_CODE_SHELL_PREFIX
+        ? Z2n(process.env.CLAUDE_CODE_SHELL_PREFIX, v)
+        : v,
+    D = e.timeout ? e.timeout * 1000 : lp,
+    P = {
+      ...DM(),
+      ...Upt(o),
+      CLAUDE_PROJECT_DIR: S(A),
+    },
+    { columns: O, rows: L } = process.stdout;
+  if (O) P.COLUMNS = String(O);
+  if (L) P.LINES = String(L);
+  if (l) {
+    if (((P.CLAUDE_PLUGIN_ROOT = S(l)), c)) P.CLAUDE_PLUGIN_DATA = S(Rue(c));
+  }
+  if ((Object.assign(P, getAnthropicCredentialsForOfficialPluginHook(c)), C))
+    for (let [ge, he] of Object.entries(C)) {
+      let ie = ge.replace(/[^A-Za-z0-9_]/g, "_").toUpperCase();
+      P[`CLAUDE_PLUGIN_OPTION_${ie}`] = String(he);
+    }
+  if (u) P.CLAUDE_PLUGIN_ROOT = S(u);
+  if (
+    !b &&
+    (t === "SessionStart" || t === "Setup" || t === "CwdChanged" || t === "FileChanged") &&
+    a !== void 0
+  )
+    P.CLAUDE_ENV_FILE = await fca(t, a);
+  let M = $t(),
+    N = (await ed(M)) ? M : yr();
+  if (N !== M)
+    T(`Hooks: cwd ${M} not found, falling back to original cwd`, {
+      level: "warn",
+    });
+  let B = !h,
+    $;
+  if (x)
+    $ = Nlr.spawn(x[0], x[1], {
+      env: P,
+      cwd: N,
+      detached: B,
+      windowsHide: !0,
+    });
+  else if (y === "powershell") {
+    let ge = await d6();
+    if (!ge)
+      throw Error(
+        `Hook "${e.command}" has shell: 'powershell' but no PowerShell executable (pwsh or powershell) was found on PATH. Install PowerShell, or remove "shell": "powershell" to use bash.`,
+      );
+    $ = Nlr.spawn(ge, WGt(k), {
+      env: P,
+      cwd: N,
+      detached: B,
+      windowsHide: !0,
+    });
+  } else {
+    let ge = h ? Hhe() : null;
+    if (h && !ge)
+      throw Error(
+        `Hook "${e.command}" requires bash but Git Bash was not found. Install Git for Windows (https://git-scm.com/downloads/win), or add "shell": "powershell" to this hook's config.`,
+      );
+    let he = h ? ge : !0;
+    if (h && ge) Npn(P, ge);
+    $ = Nlr.spawn(k, [], {
+      env: P,
+      cwd: N,
+      shell: he,
+      detached: B,
+      windowsHide: !0,
+    });
+  }
+  let q = new Tb(`hook_${$.pid}`, null),
+    W = rjn($, s, D, q),
+    V = !1,
+    Y = !1,
+    z = !Ir() || _Ct();
+  if ((e.async || (e.asyncRewake && z)) && !d) {
+    let ge = `async_hook_${$.pid}`;
+    T(`Hooks: Config-based async hook, backgrounding process ${ge}`);
+    let he = (le) => {
+      T(
+        `Async hook stdin write failed (${on(le) ?? le}); hook command likely exited without reading stdin`,
+      );
+    };
+    $.stdin.on("error", he);
+    try {
+      ($.stdin.write(
+        r +
+          `
+`,
+        "utf8",
+      ),
+        $.stdin.end());
+    } catch (le) {
+      he(le);
+    }
+    if (
+      ((Y = !0),
+      Oic({
+        processId: ge,
+        hookId: i,
+        shellCommand: W,
+        asyncResponse: {
+          async: !0,
+          asyncTimeout: D,
+        },
+        hookEvent: t,
+        hookName: n,
+        command: I,
+        asyncRewake: e.asyncRewake,
+        rewakeMessage: e.rewakeMessage,
+        rewakeSummary: e.rewakeSummary,
+        pluginId: c,
+      }))
+    )
+      return {
+        stdout: "",
+        stderr: "",
+        output: "",
+        status: 0,
+        backgrounded: !0,
+      };
+  }
+  let K = "",
+    Z = "",
+    J = "";
+  ($.stdout.setEncoding("utf8"), $.stderr.setEncoding("utf8"));
+  let ne = !1,
+    oe = null,
+    re = new Promise((ge) => {
+      oe = ge;
+    });
+  ($.stdout.on("data", (ge) => {
+    if (((K += ge), (J += ge), !ne)) {
+      let he = Gd(K).trim();
+      if (!he.includes("}")) return;
+      ((ne = !0), T(`Hooks: Checking first line for async: ${he}`));
+      try {
+        let ie = Ft(he);
+        if ((T(`Hooks: Parsed initial response: ${De(ie)}`), vme(ie) && !d)) {
+          let le = `async_hook_${$.pid}`;
+          if (
+            (T(`Hooks: Detected async hook, backgrounding process ${le}`),
+            Oic({
+              processId: le,
+              hookId: i,
+              shellCommand: W,
+              asyncResponse: ie,
+              hookEvent: t,
+              hookName: n,
+              command: I,
+              pluginId: c,
+            }))
+          )
+            ((V = !0),
+              oe?.({
+                stdout: K,
+                stderr: Z,
+                output: J,
+                status: 0,
+              }));
+        } else if (vme(ie) && d)
+          T("Hooks: Detected async hook but forceSyncExecution is true, waiting for completion");
+        else T("Hooks: Initial response is not async, continuing normal processing");
+      } catch (ie) {
+        T(`Hooks: Failed to parse initial response as JSON: ${ie}`);
+      }
+    }
+  }),
+    $.stderr.on("data", (ge) => {
+      ((Z += ge), (J += ge));
+    }));
+  let ee = DZn({
+      hookId: i,
+      hookName: n,
+      hookEvent: t,
+      getOutput: async () => ({
+        stdout: K,
+        stderr: Z,
+        output: J,
+      }),
+    }),
+    ce = new Promise((ge) => {
+      $.stdout.on("end", () => ge());
+    }),
+    ae = new Promise((ge) => {
+      $.stderr.on("end", () => ge());
+    }),
+    de = Y
+      ? Promise.resolve()
+      : new Promise((ge, he) => {
+          ($.stdin.on("error", (ie) => {
+            he(ie);
+          }),
+            $.stdin.write(
+              r +
+                `
+`,
+              "utf8",
+            ),
+            $.stdin.end(),
+            ge());
+        }),
+    Ee = new Promise((ge, he) => {
+      $.on("error", he);
+    }),
+    me = !1;
+  $.on("exit", () => {
+    if (!s.aborted) me = !0;
+  });
+  let pe = new Promise((ge) => {
+    let he = null;
+    $.on("close", (ie) => {
+      ((he = ie ?? 1),
+        Promise.all([ce, ae]).then(() => {
+          ge({
+            stdout: K,
+            stderr: Z,
+            output: J,
+            status: he,
+            aborted: s.aborted && !me,
+          });
+        }));
+    });
+  });
+  try {
+    if (p)
+      In("info", "hook_spawn_started", {
+        hook_event_name: t,
+        index: a,
+      });
+    await Promise.race([de, Ee]);
+    let ge = await Promise.race([re, pe, Ee]);
+    return (
+      (m = ge.status),
+      (g = ge.aborted ?? !1),
+      {
+        ...ge,
+        stdout: B2n(ge.stdout),
+        stderr: B2n(ge.stderr),
+        output: B2n(ge.output),
+      }
+    );
+  } catch (ge) {
+    let he = on(ge);
+    if (((m = 1), he === "EPIPE")) {
+      T("EPIPE error while writing to hook stdin (hook command likely closed early)");
+      let ie = "Hook command closed stdin before hook input was fully written (EPIPE)";
+      return {
+        stdout: "",
+        stderr: ie,
+        output: ie,
+        status: 1,
+      };
+    } else if (he === "ABORT_ERR")
+      return (
+        (g = !0),
+        {
+          stdout: "",
+          stderr: "Hook cancelled",
+          output: "Hook cancelled",
+          status: 1,
+          aborted: !0,
+        }
+      );
+    else {
+      let le = `Error occurred while executing hook command: ${be(ge)}`;
+      return {
+        stdout: "",
+        stderr: le,
+        output: le,
+        status: 1,
+      };
+    }
+  } finally {
+    if (p)
+      In("info", "hook_spawn_completed", {
+        hook_event_name: t,
+        index: a,
+        duration_ms: Date.now() - f,
+        exit_code: m,
+        aborted: g,
+      });
+    if ((ee(), !V)) W.cleanup();
+  }
+}
+function isBareMcpServerMatcher(e) {
+  if (!/^[a-zA-Z0-9_|, -]+$/.test(e)) return !1;
+  return e
+    .split(/[|,]/)
+    .map((t) => t.trim())
+    .some((t) => t.startsWith("mcp__") && !t.slice(5).includes("__"));
+}
+function Zem() {
+  U5o.clear();
+}
+function etm(e, t) {
+  if (!t || !Qem.has(e) || U5o.has(t) || !isBareMcpServerMatcher(t)) return;
+  U5o.add(t);
+  let n =
+    t
+      .split(/[|,]/)
+      .map((r) => r.trim())
+      .find((r) => r.startsWith("mcp__") && !r.slice(5).includes("__")) ?? t;
+  T(
+    `Hook matcher \`${n}\` matches no tool (it is compared as an exact string). To match all tools from this server, use \`${n}__.*\`. See CHANGELOG v2.1.195.`,
+    {
+      level: "warn",
+    },
+  );
+}
+function ttm(e, t, n, r) {
+  if (!t || t === "*") return !0;
+  if ((n ? /^[a-zA-Z0-9_|, -]+$/ : /^[a-zA-Z0-9_|]+$/).test(t))
+    return t
+      .split(n ? /[|,]/ : "|")
+      .map((i) => i.trim())
+      .filter(Boolean)
+      .flatMap((i) => omn(wD(i), r))
+      .includes(e);
+  try {
+    let s = new RegExp(t);
+    if (s.test(e)) return !0;
+    for (let i of rmn(e)) if (s.test(i)) return !0;
+    for (let i of smn(e, r)) if (s.test(i)) return !0;
+    return !1;
+  } catch {
+    return (T(`Invalid regex pattern in hook matcher: ${t}`), !1);
+  }
+}
+async function ntm(e, t) {
+  if (
+    e.hook_event_name !== "PreToolUse" &&
+    e.hook_event_name !== "PostToolUse" &&
+    e.hook_event_name !== "PostToolUseFailure" &&
+    e.hook_event_name !== "PermissionRequest" &&
+    e.hook_event_name !== "PermissionDenied"
+  )
+    return;
+  let n = wD(e.tool_name),
+    r = t && _l(t, e.tool_name),
+    o = r?.inputSchema.safeParse(e.tool_input),
+    s =
+      o?.success && r?.preparePermissionMatcher ? await r.preparePermissionMatcher(o.data) : void 0;
+  return (i) => {
+    let a = Ig(i);
+    if (wD(a.toolName) !== n) return !1;
+    if (!a.ruleContent) return !0;
+    return s ? s(a.ruleContent) : !1;
+  };
+}
+function Wic(e) {
+  return e.hook.type === "callback" && e.hook.internal === !0;
+}
+function lZt(e, t) {
+  return `${e.pluginRoot ?? e.skillRoot ?? ""}\x00${t}`;
+}
+function jlr(e) {
+  let t = e.lastIndexOf("@");
+  if (t <= 0) return !1;
+  let n = e.slice(t + 1);
+  if (SCe.has(n)) return !0;
+  return !1;
+}
+function getPluginHookCounts(e) {
+  let t = e.filter((r) => r.pluginId);
+  if (t.length === 0) return;
+  let n = {};
+  for (let r of t) {
+    let o = jlr(r.pluginId) ? r.pluginId : "third-party";
+    n[o] = (n[o] || 0) + 1;
+  }
+  return n;
+}
+function isPluginEligibleForCredentials(e) {
+  if (!jlr(e)) return !1;
+  let t = e.lastIndexOf("@"),
+    n = e.slice(0, t);
+  return (at("tengu_amber_lattice", {}).plugins ?? []).includes(n);
+}
+function getAnthropicCredentialsForOfficialPluginHook(e) {
+  if (!e || !isPluginEligibleForCredentials(e)) return {};
+  if (!Jl()) return {};
+  if (Vi()) return {};
+  if (process.env.ANTHROPIC_UNIX_SOCKET) return {};
+  try {
+    if (bo()) {
+      let n = Ws()?.accessToken;
+      return n
+        ? {
+            ANTHROPIC_AUTH_TOKEN: n,
+          }
+        : {};
+    }
+    let t = lI();
+    return t
+      ? {
+          ANTHROPIC_API_KEY: t,
+        }
+      : {};
+  } catch {
+    return {};
+  }
+}
+function emitHookMetrics(e, t, n) {
+  if (!e || !t) return;
+  if (!jlr(t)) return;
+  let r = Object.entries(e)
+    .slice(0, rtm)
+    .filter(([, o]) => typeof o === "boolean" || typeof o === "number");
+  (G("tengu_hook_plugin_metrics", {
+    ...Object.fromEntries(r),
+    pluginId: t,
+    hookEvent: $e(n),
+  }),
+    Jc("hook_plugin_metrics", {
+      ...Object.fromEntries(r),
+      plugin_id: t,
+      hook_event: n,
+    }));
+}
+function zic(e) {
+  let t = {};
+  for (let n of e) t[n.hook.type] = (t[n.hook.type] || 0) + 1;
+  return t;
+}
+function otm(e, t, n) {
+  let r = lc("hooks"),
+    o = r ? [] : [...(CU()?.[n] ?? [])],
+    s = N_(),
+    i = s && !Tl() ? R7() : null;
+  if (!r && !s) {
+    let l = eG()?.[n];
+    if (l) for (let c of l) o.push(c);
+  }
+  let a = r ? void 0 : U2()?.[n];
+  if (a)
+    for (let l of a) {
+      if (s && "pluginRoot" in l && !i?.has(l.pluginId)) continue;
+      o.push(l);
+    }
+  if (!hce() && e !== void 0) {
+    let l = XMe(e, t, n).get(n);
+    if (l) for (let c of l) o.push(c);
+  }
+  if (!hce() && e !== void 0) {
+    let l = Vll(e, t, n).get(n);
+    if (l) for (let c of l) o.push(c);
+  }
+  return o;
+}
+function hasHookForEvent(e, t, n) {
+  let r = CU()?.[e];
+  if (r && r.length > 0) return !0;
+  if (!N_()) {
+    let s = eG()?.[e];
+    if (s && s.length > 0) return !0;
+  }
+  let o = U2()?.[e];
+  if (o && o.length > 0) return !0;
+  if (t?.sessionHooks.get(n)?.hooks[e]) return !0;
+  return !1;
+}
+async function getMatchingHooks(e, t, n, r, o) {
+  try {
+    let s = otm(e, t, n),
+      i = void 0;
+    switch (r.hook_event_name) {
+      case "PreToolUse":
+      case "PostToolUse":
+      case "PostToolUseFailure":
+      case "PermissionRequest":
+      case "PermissionDenied":
+        i = r.tool_name;
+        break;
+      case "UserPromptExpansion":
+        i = r.command_name;
+        break;
+      case "SessionStart":
+        i = r.source;
+        break;
+      case "Setup":
+        i = r.trigger;
+        break;
+      case "PreCompact":
+      case "PostCompact":
+        i = r.trigger;
+        break;
+      case "Notification":
+        i = r.notification_type;
+        break;
+      case "SessionEnd":
+        i = r.reason;
+        break;
+      case "StopFailure":
+        i = r.error;
+        break;
+      case "SubagentStart":
+        i = r.agent_type;
+        break;
+      case "SubagentStop":
+        i = r.agent_type;
+        break;
+      case "TeammateIdle":
+      case "TaskCreated":
+      case "TaskCompleted":
+        break;
+      case "Elicitation":
+        i = r.mcp_server_name;
+        break;
+      case "ElicitationResult":
+        i = r.mcp_server_name;
+        break;
+      case "ConfigChange":
+        i = r.source;
+        break;
+      case "InstructionsLoaded":
+        i = r.load_reason;
+        break;
+      case "FileChanged":
+        i = Nic.basename(r.file_path);
+        break;
+      default:
+        break;
+    }
+    let a = Jem.has(r.hook_event_name);
+    for (let x of s) etm(n, x.matcher);
+    (T(`Getting matching hook commands for ${n} with query: ${i}`, {
+      level: "verbose",
+    }),
+      T(`Found ${s.length} hook matchers in settings`, {
+        level: "verbose",
+      }));
+    let l = e?.toolPermissionContext.toolAliases,
+      u = (i ? s.filter((x) => !x.matcher || ttm(i, x.matcher, a, l)) : s).flatMap((x) => {
+        let I = "pluginRoot" in x ? x.pluginRoot : void 0,
+          k = "pluginId" in x ? x.pluginId : void 0,
+          D = "skillRoot" in x ? x.skillRoot : void 0,
+          P = I
+            ? "pluginName" in x
+              ? `plugin:${x.pluginName}`
+              : "plugin"
+            : D
+              ? "skillName" in x
+                ? `skill:${x.skillName}`
+                : "skill"
+              : "settings",
+          O = !x.matcher || x.matcher === "*" || x.matcher === ".*";
+        return x.hooks.map((L) => ({
+          hook: L,
+          pluginRoot: I,
+          pluginId: k,
+          skillRoot: D,
+          hookSource: P,
+          matcherIsMatchAll: O,
+        }));
+      });
+    if (u.every((x) => x.hook.type === "callback" || x.hook.type === "function")) return u;
+    let d = (x) => x.if ?? "",
+      p = Array.from(
+        new Map(
+          u
+            .filter((x) => x.hook.type === "command")
+            .map((x) => [
+              lZt(
+                x,
+                `${x.hook.shell ?? XWe()}\x00${x.hook.command}\x00${De(x.hook.args ?? null)}\x00${d(x.hook)}`,
+              ),
+              x,
+            ]),
+        ).values(),
+      ),
+      f = Array.from(
+        new Map(
+          u
+            .filter((x) => x.hook.type === "prompt")
+            .map((x) => [lZt(x, `${x.hook.prompt}\x00${d(x.hook)}`), x]),
+        ).values(),
+      ),
+      m = Array.from(
+        new Map(
+          u
+            .filter((x) => x.hook.type === "agent")
+            .map((x) => [lZt(x, `${x.hook.prompt}\x00${d(x.hook)}`), x]),
+        ).values(),
+      ),
+      g = Array.from(
+        new Map(
+          u
+            .filter((x) => x.hook.type === "http")
+            .map((x) => [lZt(x, `${x.hook.url}\x00${d(x.hook)}`), x]),
+        ).values(),
+      ),
+      h = Array.from(
+        new Map(
+          u
+            .filter((x) => x.hook.type === "mcp_tool")
+            .map((x) => {
+              let I = x.hook;
+              return [lZt(x, `${I.server}\x00${I.tool}\x00${De(I.input ?? {})}\x00${d(I)}`), x];
+            }),
+        ).values(),
+      ),
+      y = u.filter((x) => x.hook.type === "callback"),
+      b = u.filter((x) => x.hook.type === "function"),
+      _ = [...p, ...f, ...m, ...g, ...h, ...y, ...b],
+      A = _.some(
+        (x) =>
+          (x.hook.type === "command" ||
+            x.hook.type === "prompt" ||
+            x.hook.type === "agent" ||
+            x.hook.type === "http" ||
+            x.hook.type === "mcp_tool") &&
+          x.hook.if,
+      )
+        ? await ntm(r, o)
+        : void 0,
+      v = _.filter((x) => {
+        if (
+          x.hook.type !== "command" &&
+          x.hook.type !== "prompt" &&
+          x.hook.type !== "agent" &&
+          x.hook.type !== "http" &&
+          x.hook.type !== "mcp_tool"
+        )
+          return !0;
+        let I = x.hook.if;
+        if (!I) return !0;
+        if (!A)
+          return (
+            T(
+              `Hook if condition "${I}" cannot be evaluated for non-tool event ${r.hook_event_name}`,
+            ),
+            !1
+          );
+        if (A(I)) return !0;
+        return (T(`Skipping hook due to if condition "${I}" not matching`), !1);
+      }),
+      C =
+        n === "SessionStart" || n === "Setup"
+          ? v.filter((x) => {
+              if (x.hook.type === "http")
+                return (
+                  T(
+                    `Skipping HTTP hook ${x.hook.url} \u2014 HTTP hooks are not supported for ${n}`,
+                  ),
+                  !1
+                );
+              return !0;
+            })
+          : v;
+    return (
+      T(
+        `Matched ${C.length} unique hooks for query "${i || "no match query"}" (${u.length} before deduplication)`,
+        {
+          level: "verbose",
+        },
+      ),
+      C
+    );
+  } catch {
+    return [];
+  }
+}
+function getPreToolHookBlockingMessage(e, t) {
+  return `${e} hook error: ${t.blockingError}`;
+}
+function getStopHookMessage(e) {
+  return `Stop hook feedback:
+${e.blockingError}`;
+}
+function getTeammateIdleHookMessage(e) {
+  return `TeammateIdle hook feedback:
+${e.blockingError}`;
+}
+function getTaskCreatedHookMessage(e) {
+  return `TaskCreated hook feedback:
+${e.blockingError}`;
+}
+function getTaskCompletedHookMessage(e) {
+  return `TaskCompleted hook feedback:
+${e.blockingError}`;
+}
+function getUserPromptSubmitHookBlockingMessage(e) {
+  return `UserPromptSubmit operation blocked by hook:
+${e.blockingError}`;
+}
+async function* executeHooks({
+  hookInput: e,
+  extendedHookInput: t,
+  toolUseID: n,
+  matchQuery: r,
+  signal: o,
+  timeoutMs: s = lp,
+  toolUseContext: i,
+  getAppState: a,
+  messages: l,
+  forceSyncExecution: c,
+  suppressPerInvocationTelemetry: u,
+}) {
+  if (Mj()) return;
+  let d = e.hook_event_name,
+    p = r ? `${d}:${r}` : d;
+  if (shouldSkipHookDueToTrust()) {
+    T(`Skipping ${p} hook execution - workspace trust not accepted`);
+    return;
+  }
+  let f = i ? i.getAppState() : a?.(),
+    m = i?.agentId ?? Rt(),
+    g = await getMatchingHooks(f, m, d, e, i?.options?.tools);
+  if (g.length === 0) return;
+  if (o?.aborted) return;
+  let h = g.filter(($) => !Wic($));
+  if (h.length > 0) {
+    if (!u) {
+      let $ = getPluginHookCounts(h),
+        q = zic(h),
+        W = On(h, (V) => V.matcherIsMatchAll);
+      G("tengu_run_hook", {
+        hookName: p,
+        numCommands: h.length,
+        numMatchAllMatchers: W,
+        numSpecificMatchers: h.length - W,
+        hookTypeCounts: De(q),
+        ...($ && {
+          pluginHookCounts: De($),
+        }),
+      });
+    }
+  } else {
+    let $ = Date.now(),
+      q = i
+        ? {
+            getAppState: i.getAppState,
+            applyAttributionOp: i.applyAttributionOp,
+          }
+        : void 0;
+    for (let [V, { hook: Y }] of g.entries())
+      if (Y.type === "callback") await Y.callback(e, n, o, V, q);
+    let W = Date.now() - $;
+    (Kve()?.observe("hook_duration_ms", W),
+      G("tengu_repl_hook_finished", {
+        hookName: p,
+        numCommands: g.length,
+        numSuccess: g.length,
+        numBlocking: 0,
+        numNonBlockingError: 0,
+        numCancelled: 0,
+        totalDurationMs: W,
+      }));
+    return;
+  }
+  let y = mC() && sg(),
+    b = y || ude() ? De(atm(g)) : "[]",
+    _ = getTelemetryHookName(d, r);
+  if (!u)
+    Jc("hook_execution_start", {
+      hook_event: d,
+      hook_name: _,
+      num_hooks: String(g.length),
+      managed_only: String(hce()),
+      hook_source: hce() ? "policySettings" : "merged",
+      safe_mode: String(Tl()),
+      ...(y && {
+        hook_definitions: b,
+      }),
+    });
+  let S = u ? void 0 : pka(d, _, g.length, b);
+  for (let { hook: $ } of g)
+    yield {
+      message: {
+        type: "progress",
+        data: {
+          type: "hook_progress",
+          hookEvent: d,
+          hookName: p,
+          command: o2($),
+          ...($.type === "prompt" && {
+            promptText: $.prompt,
+          }),
+          ...("statusMessage" in $ &&
+            $.statusMessage != null && {
+              statusMessage: $.statusMessage,
+            }),
+        },
+        parentToolUseID: n,
+        toolUseID: n,
+        timestamp: new Date().toISOString(),
+        uuid: qYe.randomUUID(),
+      },
+    };
+  let A = Date.now(),
+    v,
+    C;
+  function x($) {
+    if (v !== void 0) return v;
+    try {
+      return (v = {
+        ok: !0,
+        value: De(e),
+      });
+    } catch (q) {
+      return (
+        ke(
+          Error(`Failed to stringify hook ${p} input`, {
+            cause: q,
+          }),
+        ),
+        (v = {
+          ok: !1,
+          error: q,
+        })
+      );
+    }
+  }
+  let I = g.map(async function* ({ hook: $, pluginRoot: q, pluginId: W, skillRoot: V }, Y) {
+      if ($.type === "callback") {
+        let ee = $.timeout ? $.timeout * 1000 : s,
+          { signal: ce, cleanup: ae } = xL(o, {
+            timeoutMs: ee,
+          });
+        yield itm({
+          toolUseID: n,
+          hook: $,
+          hookEvent: d,
+          hookInput: e,
+          signal: ce,
+          hookIndex: Y,
+          toolUseContext: i,
+        }).finally(ae);
+        return;
+      }
+      if ($.type === "function") {
+        if (!l) {
+          yield {
+            message: ai({
+              type: "hook_error_during_execution",
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              content: "Messages not provided for function hook",
+            }),
+            outcome: "non_blocking_error",
+            hook: $,
+          };
+          return;
+        }
+        yield stm({
+          hook: $,
+          messages: l,
+          hookName: p,
+          toolUseID: n,
+          hookEvent: d,
+          timeoutMs: s,
+          signal: o,
+        });
+        return;
+      }
+      let z = $.timeout ? $.timeout * 1000 : s,
+        { signal: K, cleanup: Z } = xL(o, {
+          timeoutMs: z,
+        }),
+        J = qYe.randomUUID(),
+        ne = Date.now(),
+        oe = o2($),
+        re = eTe($);
+      try {
+        let ee = x(W);
+        if (!ee.ok) {
+          (yield {
+            message: ai({
+              type: "hook_error_during_execution",
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              content: `Failed to prepare hook input: ${be(ee.error)}`,
+              command: oe,
+              durationMs: Date.now() - ne,
+            }),
+            outcome: "non_blocking_error",
+            hook: $,
+          },
+            Z());
+          return;
+        }
+        let ce = ee.value;
+        if ($.type === "prompt") {
+          if (!i)
+            throw Error(
+              `prompt-type hooks are not supported for ${d} events (no conversation context is available). Use a command-type hook instead.`,
+            );
+          if (i.agentId?.startsWith(Rlr)) {
+            (Z(),
+              yield {
+                message: ai({
+                  type: "hook_cancelled",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                }),
+                outcome: "cancelled",
+                hook: $,
+              });
+            return;
+          }
+          let ge = await cic($, p, d, ce, K, i, l, n);
+          if (ge.message?.type === "attachment") {
+            let he = ge.message.attachment;
+            if (he.type === "hook_success" || he.type === "hook_non_blocking_error")
+              ((he.command = oe), (he.durationMs = Date.now() - ne));
+          }
+          (yield ge, Z?.());
+          return;
+        }
+        if ($.type === "agent") {
+          if (!i)
+            throw Error(
+              `agent-type hooks are not supported for ${d} events (no conversation context is available). Use a command-type hook instead.`,
+            );
+          if (i.agentId?.startsWith(Rlr)) {
+            (Z(),
+              yield {
+                message: ai({
+                  type: "hook_cancelled",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                }),
+                outcome: "cancelled",
+                hook: $,
+              });
+            return;
+          }
+          let ge = await pic($, p, d, ce, K, i, n, "agent_type" in e ? e.agent_type : void 0);
+          if (ge.message?.type === "attachment") {
+            let he = ge.message.attachment;
+            if (he.type === "hook_success" || he.type === "hook_non_blocking_error")
+              ((he.command = oe), (he.durationMs = Date.now() - ne));
+          }
+          (yield ge, Z?.());
+          return;
+        }
+        if ($.type === "http") {
+          LZn(J, p, d);
+          let ge = await $5o($, d, ce, o, s);
+          if ((Z?.(), ge.aborted)) {
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: "Hook cancelled",
+              stdout: "",
+              stderr: "",
+              exitCode: void 0,
+              outcome: "cancelled",
+            }),
+              yield {
+                message: ai({
+                  type: "hook_cancelled",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                }),
+                outcome: "cancelled",
+                hook: $,
+              });
+            return;
+          }
+          if (ge.error || !ge.ok) {
+            let le = ge.error || `HTTP ${ge.statusCode} from ${$.url}`;
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: le,
+              stdout: "",
+              stderr: le,
+              exitCode: ge.statusCode,
+              outcome: "error",
+            }),
+              yield {
+                message: ai({
+                  type: "hook_non_blocking_error",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                  stderr: le,
+                  stdout: "",
+                  exitCode: ge.statusCode ?? 0,
+                }),
+                outcome: "non_blocking_error",
+                hook: $,
+              });
+            return;
+          }
+          let { json: he, validationError: ie } = jic(ge.body);
+          if (ie) {
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: ge.body,
+              stdout: ge.body,
+              stderr: ie,
+              exitCode: ge.statusCode,
+              outcome: "error",
+            }),
+              yield {
+                message: ai({
+                  type: "hook_non_blocking_error",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                  stderr: ie,
+                  stdout: ge.body,
+                  exitCode: ge.statusCode ?? 0,
+                }),
+                outcome: "non_blocking_error",
+                hook: $,
+              });
+            return;
+          }
+          if (he && vme(he)) {
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: ge.body,
+              stdout: ge.body,
+              stderr: "",
+              exitCode: ge.statusCode,
+              outcome: "success",
+            }),
+              yield {
+                outcome: "success",
+                hook: $,
+              });
+            return;
+          }
+          if (he) {
+            let le = Blr({
+              json: he,
+              command: $.url,
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              expectedHookEvent: d,
+              stdout: ge.body,
+              stderr: "",
+              exitCode: ge.statusCode,
+            });
+            (emitHookMetrics(he.metrics, W, d),
+              Ok({
+                hookId: J,
+                hookName: p,
+                hookEvent: d,
+                output: ge.body,
+                stdout: ge.body,
+                stderr: "",
+                exitCode: ge.statusCode,
+                outcome: "success",
+              }),
+              yield {
+                ...le,
+                outcome: "success",
+                hook: $,
+              });
+            return;
+          }
+          return;
+        }
+        if ($.type === "mcp_tool") {
+          LZn(J, p, d);
+          let ge = await O5o($, d, e, i?.options.mcpClients, o, s);
+          if ((Z?.(), ge.aborted)) {
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: "Hook cancelled",
+              stdout: "",
+              stderr: "",
+              exitCode: void 0,
+              outcome: "cancelled",
+            }),
+              yield {
+                message: ai({
+                  type: "hook_cancelled",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                }),
+                outcome: "cancelled",
+                hook: $,
+              });
+            return;
+          }
+          if (ge.error || !ge.ok) {
+            let le = ge.error || "MCP tool returned an error";
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: le,
+              stdout: ge.body,
+              stderr: le,
+              exitCode: 1,
+              outcome: "error",
+            }),
+              yield {
+                message: ai({
+                  type: "hook_non_blocking_error",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                  stderr: le,
+                  stdout: ge.body,
+                  exitCode: 1,
+                }),
+                outcome: "non_blocking_error",
+                hook: $,
+              });
+            return;
+          }
+          let { json: he, validationError: ie } = Ulr(ge.body);
+          if (ie) {
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: ge.body,
+              stdout: ge.body,
+              stderr: ie,
+              exitCode: 1,
+              outcome: "error",
+            }),
+              yield {
+                message: ai({
+                  type: "hook_non_blocking_error",
+                  hookName: p,
+                  toolUseID: n,
+                  hookEvent: d,
+                  stderr: ie,
+                  stdout: ge.body,
+                  exitCode: 1,
+                }),
+                outcome: "non_blocking_error",
+                hook: $,
+              });
+            return;
+          }
+          if (
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: ge.body,
+              stdout: ge.body,
+              stderr: "",
+              exitCode: 0,
+              outcome: "success",
+            }),
+            he && eO(he))
+          ) {
+            let le = Blr({
+              json: he,
+              command: oe,
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              expectedHookEvent: d,
+              stdout: ge.body,
+              stderr: "",
+              exitCode: 0,
+            });
+            (emitHookMetrics(he.metrics, W, d),
+              yield {
+                ...le,
+                outcome: "success",
+                hook: $,
+              });
+            return;
+          }
+          yield {
+            message: ai({
+              type: "hook_success",
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              content: `${wt.bold(p)} completed`,
+              stdout: ge.body,
+              stderr: "",
+              command: oe,
+              durationMs: Date.now() - ne,
+            }),
+            outcome: "success",
+            hook: $,
+          };
+          return;
+        }
+        LZn(J, p, d);
+        let ae = await Flr($, d, p, ce, Wqe(e), K, J, Y, q, W, V, c);
+        Z?.();
+        let de = Date.now() - ne;
+        if (ae.backgrounded) {
+          yield {
+            outcome: "success",
+            hook: $,
+          };
+          return;
+        }
+        if (ae.aborted) {
+          (Ok({
+            hookId: J,
+            hookName: p,
+            hookEvent: d,
+            output: ae.output,
+            stdout: ae.stdout,
+            stderr: ae.stderr,
+            exitCode: ae.status,
+            outcome: "cancelled",
+          }),
+            yield {
+              message: ai({
+                type: "hook_cancelled",
+                hookName: p,
+                toolUseID: n,
+                hookEvent: d,
+                command: oe,
+                durationMs: de,
+              }),
+              outcome: "cancelled",
+              hook: $,
+            });
+          return;
+        }
+        let { json: Ee, plainText: me, validationError: pe } = Ulr(ae.stdout);
+        if (pe) {
+          (Ok({
+            hookId: J,
+            hookName: p,
+            hookEvent: d,
+            output: ae.output,
+            stdout: ae.stdout,
+            stderr: pe,
+            exitCode: 1,
+            outcome: "error",
+          }),
+            yield {
+              message: ai({
+                type: "hook_non_blocking_error",
+                hookName: p,
+                toolUseID: n,
+                hookEvent: d,
+                stderr: pe,
+                stdout: ae.stdout,
+                exitCode: 1,
+                command: oe,
+                durationMs: de,
+              }),
+              outcome: "non_blocking_error",
+              hook: $,
+            });
+          return;
+        }
+        if (Ee) {
+          if (vme(Ee)) {
+            yield {
+              outcome: "success",
+              hook: $,
+            };
+            return;
+          }
+          let ge = Blr({
+            json: Ee,
+            command: oe,
+            hookName: p,
+            toolUseID: n,
+            hookEvent: d,
+            expectedHookEvent: d,
+            stdout: ae.stdout,
+            stderr: ae.stderr,
+            exitCode: ae.status,
+            durationMs: de,
+          });
+          if (
+            (emitHookMetrics(Ee.metrics, W, d),
+            eO(Ee) && !Ee.suppressOutput && me && ae.status === 0)
+          ) {
+            let he = `${wt.bold(p)} completed`;
+            (Ok({
+              hookId: J,
+              hookName: p,
+              hookEvent: d,
+              output: ae.output,
+              stdout: ae.stdout,
+              stderr: ae.stderr,
+              exitCode: ae.status,
+              outcome: "success",
+            }),
+              yield {
+                ...ge,
+                message:
+                  ge.message ||
+                  ai({
+                    type: "hook_success",
+                    hookName: p,
+                    toolUseID: n,
+                    hookEvent: d,
+                    content: he,
+                    stdout: ae.stdout,
+                    stderr: ae.stderr,
+                    exitCode: ae.status,
+                    command: oe,
+                    durationMs: de,
+                  }),
+                outcome: "success",
+                hook: $,
+              });
+            return;
+          }
+          if (ae.status === 2 && !ge.blockingError)
+            ge.blockingError = {
+              blockingError: `[${re}]: ${ae.stderr || "No stderr output"}`,
+              command: re,
+            };
+          (Ok({
+            hookId: J,
+            hookName: p,
+            hookEvent: d,
+            output: ae.output,
+            stdout: ae.stdout,
+            stderr: ae.stderr,
+            exitCode: ae.status,
+            outcome: ae.status === 0 ? "success" : "error",
+          }),
+            yield {
+              ...ge,
+              outcome: ge.blockingError ? "blocking" : "success",
+              hook: $,
+            });
+          return;
+        }
+        if (ae.status === 0) {
+          Ok({
+            hookId: J,
+            hookName: p,
+            hookEvent: d,
+            output: ae.output,
+            stdout: ae.stdout,
+            stderr: ae.stderr,
+            exitCode: ae.status,
+            outcome: "success",
+          });
+          let ge = await persistHookOutput(ae.stdout.trim(), J, "stdout");
+          yield {
+            message: ai({
+              type: "hook_success",
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              content: ge,
+              stdout: ae.stdout,
+              stderr: ae.stderr,
+              exitCode: ae.status,
+              command: oe,
+              durationMs: de,
+            }),
+            outcome: "success",
+            hook: $,
+          };
+          return;
+        }
+        if (
+          ae.status === 2 &&
+          (d === "Stop" ||
+            d === "SubagentStop" ||
+            d === "TaskCompleted" ||
+            d === "TeammateIdle" ||
+            (W && d === "UserPromptSubmit")) &&
+          !ae.stdout.trim() &&
+          /no such file|can't open/i.test(ae.stderr)
+        ) {
+          (Ok({
+            hookId: J,
+            hookName: p,
+            hookEvent: d,
+            output: ae.output,
+            stdout: ae.stdout,
+            stderr: ae.stderr,
+            exitCode: ae.status,
+            outcome: "error",
+          }),
+            yield {
+              message: ai({
+                type: "hook_non_blocking_error",
+                hookName: p,
+                toolUseID: n,
+                hookEvent: d,
+                stderr:
+                  `Hook script appears to be missing \u2014 "${re}" exited 2 with: ${ae.stderr.trim()}. Treating as non-blocking. ` +
+                  (W
+                    ? `Run \`/plugin\` to reinstall '${W}' or remove it from settings.`
+                    : "If this is a plugin hook, check the plugin install (run /plugin)."),
+                stdout: ae.stdout,
+                exitCode: ae.status,
+                command: oe,
+                durationMs: de,
+              }),
+              outcome: "non_blocking_error",
+              hook: $,
+            });
+          return;
+        }
+        if (ae.status === 2) {
+          (Ok({
+            hookId: J,
+            hookName: p,
+            hookEvent: d,
+            output: ae.output,
+            stdout: ae.stdout,
+            stderr: ae.stderr,
+            exitCode: ae.status,
+            outcome: "error",
+          }),
+            yield {
+              blockingError: {
+                blockingError: `[${re}]: ${ae.stderr || "No stderr output"}`,
+                command: re,
+              },
+              outcome: "blocking",
+              hook: $,
+            });
+          return;
+        }
+        (Ok({
+          hookId: J,
+          hookName: p,
+          hookEvent: d,
+          output: ae.output,
+          stdout: ae.stdout,
+          stderr: ae.stderr,
+          exitCode: ae.status,
+          outcome: "error",
+        }),
+          yield {
+            message: ai({
+              type: "hook_non_blocking_error",
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              stderr: `Failed with non-blocking status code: ${ae.stderr.trim() || "No stderr output"}`,
+              stdout: ae.stdout,
+              exitCode: ae.status,
+              command: oe,
+              durationMs: de,
+            }),
+            outcome: "non_blocking_error",
+            hook: $,
+          });
+        return;
+      } catch (ee) {
+        Z?.();
+        let ce = ee instanceof Error ? ee.message : String(ee);
+        (Ok({
+          hookId: J,
+          hookName: p,
+          hookEvent: d,
+          output: `Failed to run: ${ce}`,
+          stdout: "",
+          stderr: `Failed to run: ${ce}`,
+          exitCode: 1,
+          outcome: "error",
+        }),
+          yield {
+            message: ai({
+              type: "hook_non_blocking_error",
+              hookName: p,
+              toolUseID: n,
+              hookEvent: d,
+              stderr: `Failed to run: ${ce}`,
+              stdout: "",
+              exitCode: 1,
+              command: oe,
+              durationMs: Date.now() - ne,
+            }),
+            outcome: "non_blocking_error",
+            hook: $,
+          });
+        return;
+      }
+    }),
+    k = {
+      success: 0,
+      blocking: 0,
+      non_blocking_error: 0,
+      cancelled: 0,
+    },
+    D = {
+      additionalContextChars: 0,
+      systemMessageChars: 0,
+      initialUserMessageChars: 0,
+      hookSuccessStdoutChars: 0,
+    },
+    P = new Map(g.map(($) => [$.hook, $.pluginId])),
+    O = new Map();
+  function L($, q, W) {
+    let V = P.get($);
+    if (!V || W === 0) return;
+    let Y = O.get(V);
+    if (!Y)
+      ((Y = {
+        additionalContextChars: 0,
+        systemMessageChars: 0,
+        initialUserMessageChars: 0,
+        hookSuccessStdoutChars: 0,
+      }),
+        O.set(V, Y));
+    Y[q] += W;
+  }
+  let M = 0,
+    N;
+  for await (let $ of fKn(I)) {
+    if (
+      (k[$.outcome]++,
+      $.message?.type === "attachment" && $.message.attachment.type === "hook_success")
+    ) {
+      let W = $.message.attachment.stdout?.length ?? 0;
+      ((D.hookSuccessStdoutChars += W), L($.hook, "hookSuccessStdoutChars", W));
+    }
+    if ($.updatedToolOutput !== void 0)
+      (T(`Hook ${d} (${o2($.hook)}) replaced tool output`),
+        yield {
+          updatedToolOutput: $.updatedToolOutput,
+        });
+    if ($.updatedMCPToolOutput !== void 0 && $.updatedToolOutput === void 0)
+      (T(`Hook ${d} (${o2($.hook)}) replaced tool output (updatedMCPToolOutput)`),
+        yield {
+          updatedMCPToolOutput: $.updatedMCPToolOutput,
+        });
+    if ($.displayContent !== void 0)
+      yield {
+        displayContent: $.displayContent,
+      };
+    if ($.preventContinuation)
+      (T(`Hook ${d} (${o2($.hook)}) requested preventContinuation`),
+        yield {
+          preventContinuation: !0,
+          stopReason: $.stopReason,
+        });
+    let q =
+      $.hook?.type === "prompt"
+        ? {
+            hook: $.hook,
+            stopReason: $.stopReason,
+            impossible: $.impossible,
+          }
+        : {};
+    if ($.blockingError)
+      (yield {
+        blockingError: $.blockingError,
+        suppressOriginalPrompt: $.suppressOriginalPrompt,
+        ...q,
+      },
+        (N = "deny"));
+    if ($.message)
+      yield {
+        message: $.message,
+        ...q,
+      };
+    if ((M++, $.systemMessage)) {
+      ((D.systemMessageChars += $.systemMessage.length),
+        L($.hook, "systemMessageChars", $.systemMessage.length));
+      let W = await persistHookOutput($.systemMessage, `${n}-${M}`, "systemMessage");
+      yield {
+        message: ai({
+          type: "hook_system_message",
+          content: W,
+          hookName: p,
+          toolUseID: n,
+          hookEvent: d,
+        }),
+      };
+    }
+    if ($.terminalSequence) NFo($.terminalSequence);
+    if ($.additionalContext)
+      ((D.additionalContextChars += $.additionalContext.length),
+        L($.hook, "additionalContextChars", $.additionalContext.length),
+        T(
+          `Hook ${d} (${o2($.hook)}) provided additionalContext (${$.additionalContext.length} chars)`,
+        ),
+        yield {
+          additionalContexts: [
+            await persistHookOutput($.additionalContext, `${n}-${M}`, "additionalContext"),
+          ],
+        });
+    if ($.initialUserMessage)
+      ((D.initialUserMessageChars += $.initialUserMessage.length),
+        L($.hook, "initialUserMessageChars", $.initialUserMessage.length),
+        T(
+          `Hook ${d} (${o2($.hook)}) provided initialUserMessage (${$.initialUserMessage.length} chars)`,
+        ),
+        yield {
+          initialUserMessage: await persistHookOutput(
+            $.initialUserMessage,
+            `${n}-${M}`,
+            "initialUserMessage",
+          ),
+        });
+    if ($.watchPaths && $.watchPaths.length > 0)
+      (T(`Hook ${d} (${o2($.hook)}) provided ${$.watchPaths.length} watchPaths`),
+        yield {
+          watchPaths: $.watchPaths,
+        });
+    if ($.reloadSkills)
+      (T(`Hook ${d} (${o2($.hook)}) requested reloadSkills`),
+        yield {
+          reloadSkills: !0,
+        });
+    if ($.sessionTitle)
+      (T(`Hook ${d} (${o2($.hook)}) provided sessionTitle (${[...$.sessionTitle].length} chars)`),
+        yield {
+          sessionTitle: $.sessionTitle,
+        });
+    if ($.permissionBehavior)
+      switch (
+        (T(
+          `Hook ${d} (${o2($.hook)}) returned permissionDecision: ${$.permissionBehavior}${$.hookPermissionDecisionReason ? ` (reason: ${$.hookPermissionDecisionReason})` : ""}`,
+        ),
+        $.permissionBehavior)
+      ) {
+        case "deny":
+          N = "deny";
+          break;
+        case "defer":
+          if (N !== "deny") N = "defer";
+          break;
+        case "ask":
+          if (N !== "deny" && N !== "defer") N = "ask";
+          break;
+        case "allow":
+          if (!N) N = "allow";
+          break;
+        case "passthrough":
+          break;
+      }
+    if ($.permissionBehavior && N === $.permissionBehavior) {
+      let W =
+        $.updatedInput && ($.permissionBehavior === "allow" || $.permissionBehavior === "ask")
+          ? $.updatedInput
+          : void 0;
+      if (W)
+        T(`Hook ${d} (${o2($.hook)}) modified tool input keys: [${Object.keys(W).join(", ")}]`);
+      yield {
+        permissionBehavior: N,
+        hookPermissionDecisionReason: $.hookPermissionDecisionReason,
+        hookSource: g.find((V) => V.hook === $.hook)?.hookSource,
+        updatedInput: W,
+      };
+    }
+    if ($.updatedInput && $.permissionBehavior === void 0)
+      (T(
+        `Hook ${d} (${o2($.hook)}) modified tool input keys: [${Object.keys($.updatedInput).join(", ")}]`,
+      ),
+        yield {
+          updatedInput: $.updatedInput,
+        });
+    if ($.permissionRequestResult)
+      yield {
+        permissionRequestResult: $.permissionRequestResult,
+      };
+    if ($.retry)
+      yield {
+        retry: $.retry,
+      };
+    if ($.elicitationResponse)
+      yield {
+        elicitationResponse: $.elicitationResponse,
+      };
+    if ($.elicitationResultResponse)
+      yield {
+        elicitationResultResponse: $.elicitationResultResponse,
+      };
+    if (f && $.hook.type !== "callback") {
+      let W = Rt(),
+        Y = zll(f, W, d, r ?? "", $.hook);
+      if (Y?.onHookSuccess && $.outcome === "success")
+        try {
+          Y.onHookSuccess($.hook, $);
+        } catch (z) {
+          ke(
+            Error("Session hook success callback failed", {
+              cause: z,
+            }),
+          );
+        }
+    }
+  }
+  let B = Date.now() - A;
+  for (let $ of new Set(P.values())) if ($) Zj($);
+  if (!u) {
+    Kve()?.observe("hook_duration_ms", B);
+    for (let [$, q] of O) {
+      let { name: W, marketplace: V } = Qo($);
+      G("tengu_hook_plugin_injected", {
+        hookName: p,
+        ...x8(W, V),
+        ...q,
+      });
+    }
+    if (
+      (G("tengu_repl_hook_finished", {
+        hookName: p,
+        numCommands: g.length,
+        numSuccess: k.success,
+        numBlocking: k.blocking,
+        numNonBlockingError: k.non_blocking_error,
+        numCancelled: k.cancelled,
+        totalDurationMs: B,
+        ...D,
+      }),
+      Jc("hook_execution_complete", {
+        hook_event: d,
+        hook_name: _,
+        num_hooks: String(g.length),
+        num_success: String(k.success),
+        num_blocking: String(k.blocking),
+        num_non_blocking_error: String(k.non_blocking_error),
+        num_cancelled: String(k.cancelled),
+        total_duration_ms: String(B),
+        managed_only: String(hce()),
+        hook_source: hce() ? "policySettings" : "merged",
+        safe_mode: String(Tl()),
+        ...(y && {
+          hook_definitions: b,
+        }),
+      }),
+      S)
+    )
+      fka(S, {
+        numSuccess: k.success,
+        numBlocking: k.blocking,
+        numNonBlockingError: k.non_blocking_error,
+        numCancelled: k.cancelled,
+      });
+    if (k.non_blocking_error > 0) Le(EFe(d), "hook_non_blocking_error");
+    else if (k.cancelled > 0) It(EFe(d), "hook_cancelled");
+    else xe(EFe(d));
+  }
+}
+function Olr(e, t) {
+  if (!e || !eO(e) || !e.terminalSequence) return;
+  let n = OFo(e.terminalSequence);
+  if (n !== null) NFo(n);
+  else
+    T(
+      `Hook ${t} returned a terminalSequence that was rejected by the allowlist (only OSC 0/1/2/9/99/777 and BEL are permitted)`,
+    );
+}
+function hasBlockingResult(e) {
+  return e.some((t) => t.blocked);
+}
+async function executeHooksOutsideREPL({
+  getAppState: e,
+  hookInput: t,
+  matchQuery: n,
+  signal: r,
+  timeoutMs: o = lp,
+}) {
+  let s = t.hook_event_name,
+    i = n ? `${s}:${n}` : s;
+  if (Mj()) return (T(`Skipping hooks for ${i} due to 'disableAllHooks' managed setting`), []);
+  if (shouldSkipHookDueToTrust())
+    return (T(`Skipping ${i} hook execution - workspace trust not accepted`), []);
+  let a = e ? e() : void 0,
+    l = Rt(),
+    c = await getMatchingHooks(a, l, s, t);
+  if (c.length === 0) return [];
+  if (r?.aborted) return [];
+  let u = c.filter((g) => !Wic(g));
+  if (u.length > 0) {
+    let g = getPluginHookCounts(u),
+      h = zic(u),
+      y = On(u, (b) => b.matcherIsMatchAll);
+    G("tengu_run_hook", {
+      hookName: i,
+      numCommands: u.length,
+      numMatchAllMatchers: y,
+      numSpecificMatchers: u.length - y,
+      hookTypeCounts: De(h),
+      ...(g && {
+        pluginHookCounts: De(g),
+      }),
+    });
+  }
+  let d;
+  try {
+    d = De(t);
+  } catch (g) {
+    return (ke(g), Le(EFe(s), "hook_input_stringify_failed"), []);
+  }
+  let p,
+    f = c.map(async ({ hook: g, pluginRoot: h, pluginId: y, skillRoot: b }, _) => {
+      if (g.type === "callback") {
+        let x = g.timeout ? g.timeout * 1000 : o,
+          { signal: I, cleanup: k } = xL(r, {
+            timeoutMs: x,
+          });
+        try {
+          let D = qYe.randomUUID(),
+            P = await g.callback(t, D, I, _);
+          if ((k?.(), vme(P)))
+            return (
+              T(`${i} [callback] returned async response, returning empty output`),
+              {
+                command: "callback",
+                succeeded: !0,
+                output: "",
+                blocked: !1,
+              }
+            );
+          let O =
+              s === "WorktreeCreate" &&
+              eO(P) &&
+              P.hookSpecificOutput?.hookEventName === "WorktreeCreate"
+                ? P.hookSpecificOutput.worktreePath
+                : P.systemMessage || "",
+            L = eO(P) && P.decision === "block";
+          return (
+            Olr(P, i),
+            T(`${i} [callback] completed successfully`),
+            {
+              command: "callback",
+              succeeded: !0,
+              output: O,
+              blocked: L,
+            }
+          );
+        } catch (D) {
+          k?.();
+          let P = D instanceof Error ? D.message : String(D);
+          return (
+            T(`${i} [callback] failed to run: ${P}`, {
+              level: "error",
+            }),
+            (p ??= "hook_callback_failed"),
+            {
+              command: "callback",
+              succeeded: !1,
+              output: P,
+              blocked: !1,
+            }
+          );
+        }
+      }
+      if (g.type === "prompt")
+        return (
+          (p ??= "hook_type_unsupported"),
+          {
+            command: g.prompt,
+            succeeded: !1,
+            output: "Prompt stop hooks are not yet supported outside REPL",
+            blocked: !1,
+          }
+        );
+      if (g.type === "mcp_tool") {
+        let x = `${g.server}/${g.tool}`;
+        try {
+          let I = await O5o(g, s, t, void 0, r, o);
+          if (I.aborted)
+            return (
+              (p ??= "hook_cancelled"),
+              {
+                command: x,
+                succeeded: !1,
+                output: "Hook cancelled",
+                blocked: !1,
+              }
+            );
+          if (I.error || !I.ok)
+            return (
+              (p ??= "hook_mcp_tool_failed"),
+              {
+                command: x,
+                succeeded: !1,
+                output: I.error || "MCP tool returned an error",
+                blocked: !1,
+              }
+            );
+          let { json: k, validationError: D } = Ulr(I.body);
+          if (D) throw Error(D);
+          let P = k && eO(k) ? k : void 0,
+            O = P?.decision === "block";
+          if (P) emitHookMetrics(P.metrics, y, s);
+          return (
+            Olr(k, i),
+            {
+              command: x,
+              succeeded: !0,
+              output: O ? P?.reason || "" : I.body,
+              blocked: O,
+              watchPaths:
+                P?.hookSpecificOutput && "watchPaths" in P.hookSpecificOutput
+                  ? P.hookSpecificOutput.watchPaths
+                  : void 0,
+              systemMessage: P?.systemMessage,
+            }
+          );
+        } catch (I) {
+          let k = I instanceof Error ? I.message : String(I);
+          return (
+            T(`${i} [${x}] failed to run: ${k}`, {
+              level: "error",
+            }),
+            (p ??= "hook_mcp_exec_failed"),
+            {
+              command: x,
+              succeeded: !1,
+              output: k,
+              blocked: !1,
+            }
+          );
+        }
+      }
+      if (g.type === "agent")
+        return (
+          (p ??= "hook_type_unsupported"),
+          {
+            command: g.prompt,
+            succeeded: !1,
+            output: "Agent stop hooks are not yet supported outside REPL",
+            blocked: !1,
+          }
+        );
+      if (g.type === "function")
+        return (
+          ke(
+            Error(
+              `Function hook reached executeHooksOutsideREPL for ${s}. Function hooks should only be used in REPL context (Stop hooks).`,
+            ),
+          ),
+          (p ??= "hook_type_unsupported"),
+          {
+            command: "function",
+            succeeded: !1,
+            output: "Internal error: function hook executed outside REPL context",
+            blocked: !1,
+          }
+        );
+      if (g.type === "http")
+        try {
+          let x = await $5o(g, s, d, r, o);
+          if (x.aborted)
+            return (
+              T(`${i} [${g.url}] cancelled`),
+              (p ??= "hook_cancelled"),
+              {
+                command: g.url,
+                succeeded: !1,
+                output: "Hook cancelled",
+                blocked: !1,
+              }
+            );
+          if (x.error || !x.ok) {
+            let O = x.error || `HTTP ${x.statusCode} from ${g.url}`;
+            return (
+              T(`${i} [${g.url}] failed: ${O}`, {
+                level: "error",
+              }),
+              (p ??= "hook_http_request_failed"),
+              {
+                command: g.url,
+                succeeded: !1,
+                output: O,
+                blocked: !1,
+              }
+            );
+          }
+          let { json: I, validationError: k } = jic(x.body);
+          if (k) throw Error(k);
+          if (I && !vme(I))
+            T(`Parsed JSON output from HTTP hook: ${De(I)}`, {
+              level: "verbose",
+            });
+          if (I && eO(I)) emitHookMetrics(I.metrics, y, s);
+          Olr(I, i);
+          let D = I && eO(I) && I.decision === "block",
+            P = D
+              ? (I && eO(I) && I.reason) || ""
+              : s === "WorktreeCreate"
+                ? I && eO(I) && I.hookSpecificOutput?.hookEventName === "WorktreeCreate"
+                  ? I.hookSpecificOutput.worktreePath
+                  : ""
+                : x.body;
+          return {
+            command: g.url,
+            succeeded: !0,
+            output: P,
+            blocked: !!D,
+          };
+        } catch (x) {
+          let I = x instanceof Error ? x.message : String(x);
+          return (
+            T(`${i} [${g.url}] failed to run: ${I}`, {
+              level: "error",
+            }),
+            (p ??= "hook_http_exec_failed"),
+            {
+              command: g.url,
+              succeeded: !1,
+              output: I,
+              blocked: !1,
+            }
+          );
+        }
+      let S = g.timeout ? g.timeout * 1000 : o,
+        A = eTe(g),
+        { signal: v, cleanup: C } = xL(r, {
+          timeoutMs: S,
+        });
+      try {
+        let x = await Flr(g, s, i, d, Wqe(t), v, qYe.randomUUID(), _, h, y, b);
+        if ((C?.(), x.aborted))
+          return (
+            T(`${i} [${A}] cancelled`),
+            (p ??= "hook_cancelled"),
+            {
+              command: A,
+              succeeded: !1,
+              output: "Hook cancelled",
+              blocked: !1,
+            }
+          );
+        T(`${i} [${A}] completed with status ${x.status}`);
+        let { json: I, validationError: k } = Ulr(x.stdout);
+        if (k) throw Error(k);
+        if (I && !vme(I))
+          T(`Parsed JSON output from hook: ${De(I)}`, {
+            level: "verbose",
+          });
+        if (I && eO(I)) emitHookMetrics(I.metrics, y, s);
+        Olr(I, i);
+        let D = I && eO(I) && I.decision === "block",
+          P = x.status === 2 || !!D,
+          O = D
+            ? (I && eO(I) && I.reason) || x.stderr || ""
+            : x.status === 0
+              ? x.stdout || ""
+              : x.stderr || "",
+          L =
+            I && eO(I) && I.hookSpecificOutput && "watchPaths" in I.hookSpecificOutput
+              ? I.hookSpecificOutput.watchPaths
+              : void 0,
+          M = I && eO(I) ? I.systemMessage : void 0;
+        if (x.status !== 0 && !P) p ??= "hook_nonzero_exit";
+        return {
+          command: A,
+          succeeded: x.status === 0,
+          output: O,
+          blocked: P,
+          watchPaths: L,
+          systemMessage: M,
+        };
+      } catch (x) {
+        C?.();
+        let I = x instanceof Error ? x.message : String(x);
+        return (
+          T(`${i} [${A}] failed to run: ${I}`, {
+            level: "error",
+          }),
+          (p ??= "hook_exec_failed"),
+          {
+            command: A,
+            succeeded: !1,
+            output: I,
+            blocked: !1,
+          }
+        );
+      }
+    }),
+    m = await Promise.all(f);
+  if (p) Le(EFe(s), p);
+  else xe(EFe(s));
+  for (let g of new Set(c.map((h) => h.pluginId))) if (g) Zj(g);
+  return m;
+}
+function hasInstructionsLoadedHook() {
+  let e = CU()?.InstructionsLoaded;
+  if (e && e.length > 0) return !0;
+  if (!N_()) {
+    let n = eG()?.InstructionsLoaded;
+    if (n && n.length > 0) return !0;
+  }
+  let t = U2()?.InstructionsLoaded;
+  if (t && t.length > 0) return !0;
+  return !1;
+}
+function parseElicitationHookOutput(e, t) {
+  if (e.blocked && !e.succeeded)
+    return {
+      blockingError: {
+        blockingError: e.output || "Elicitation blocked by hook",
+        command: e.command,
+      },
+    };
+  if (!e.output.trim()) return {};
+  let n = e.output.trim();
+  if (!n.startsWith("{")) return {};
+  try {
+    let r = XHt().parse(Ft(n));
+    if (vme(r)) return {};
+    if (!eO(r)) return {};
+    if (r.decision === "block" || e.blocked)
+      return {
+        blockingError: {
+          blockingError: r.reason || "Elicitation blocked by hook",
+          command: e.command,
+        },
+      };
+    let o = r.hookSpecificOutput;
+    if (!o || o.hookEventName !== t) return {};
+    if (!o.action) return {};
+    let i = {
+      response: {
+        action: o.action,
+        content: o.content,
+      },
+    };
+    if (o.action === "decline")
+      i.blockingError = {
+        blockingError:
+          r.reason ||
+          (t === "Elicitation"
+            ? "Elicitation denied by hook"
+            : "Elicitation result blocked by hook"),
+        command: e.command,
+      };
+    return i;
+  } catch {
+    return {};
+  }
+}
+async function executeStatusLineCommand(e, t, n = 5000, r = !1) {
+  if (Mj()) return;
+  if (lc("statusLine")) return;
+  if (shouldSkipHookDueToTrust()) {
+    T("Skipping StatusLine command execution - workspace trust not accepted");
+    return;
+  }
+  let o = nKe(jo()?.statusLine);
+  if (!o || o.type !== "command") return;
+  let s = t || AbortSignal.timeout(n);
+  try {
+    let i = De(e),
+      a = await Flr(o, "StatusLine", "statusLine", i, Wqe(e), s, qYe.randomUUID());
+    if (a.aborted) return;
+    let l = a.stderr.trim();
+    if (l) T(`StatusLine [${o.command}] stderr: ${l}`);
+    if (a.status === 0) {
+      let c = a.stdout
+        .trim()
+        .split(
+          `
+`,
+        )
+        .flatMap((u) => u.trim() || []).join(`
+`);
+      if (c) {
+        if (r) T(`StatusLine [${o.command}] completed with status ${a.status}`);
+        return c;
+      }
+    } else if (r)
+      T(`StatusLine [${o.command}] completed with status ${a.status}`, {
+        level: "warn",
+      });
+    return;
+  } catch (i) {
+    T(`Status hook failed: ${i}`, {
+      level: "error",
+    });
+    return;
+  }
+}
+async function executeFileSuggestionCommand(e, t, n = 5000) {
+  if (Mj()) return [];
+  if (lc("fileSuggestion")) return [];
+  if (shouldSkipHookDueToTrust())
+    return (T("Skipping FileSuggestion command execution - workspace trust not accepted"), []);
+  let r = Fer(jo()?.fileSuggestion);
+  if (!r || r.type !== "command") return [];
+  let o = t || AbortSignal.timeout(n);
+  try {
+    let s = De(e),
+      i = {
+        type: "command",
+        command: r.command,
+      },
+      a = await Flr(i, "FileSuggestion", "FileSuggestion", s, Wqe(e), o, qYe.randomUUID());
+    if (a.aborted || a.status !== 0) return [];
+    return a.stdout
+      .split(
+        `
+`,
+      )
+      .map((l) => l.trim())
+      .filter(Boolean);
+  } catch (s) {
+    return (
+      T(`File suggestion helper failed: ${s}`, {
+        level: "error",
+      }),
+      []
+    );
+  }
+}
+async function stm({
+  hook: e,
+  messages: t,
+  hookName: n,
+  toolUseID: r,
+  hookEvent: o,
+  timeoutMs: s,
+  signal: i,
+}) {
+  let a = e.timeout ?? s,
+    { signal: l, cleanup: c } = xL(i, {
+      timeoutMs: a,
+    });
+  try {
+    if (l.aborted)
+      return (
+        c(),
+        {
+          outcome: "cancelled",
+          hook: e,
+        }
+      );
+    let u = await new Promise((d, p) => {
+      let f = () => p(Error("Function hook cancelled"));
+      (l.addEventListener("abort", f),
+        Promise.resolve(e.callback(t, l))
+          .then((m) => {
+            (l.removeEventListener("abort", f), d(m));
+          })
+          .catch((m) => {
+            (l.removeEventListener("abort", f), p(m));
+          }));
+    });
+    if ((c(), u))
+      return {
+        outcome: "success",
+        hook: e,
+      };
+    return {
+      blockingError: {
+        blockingError: e.errorMessage,
+        command: "function",
+      },
+      outcome: "blocking",
+      hook: e,
+    };
+  } catch (u) {
+    if (
+      (c(),
+      u instanceof Error && (u.message === "Function hook cancelled" || u.name === "AbortError"))
+    )
+      return {
+        outcome: "cancelled",
+        hook: e,
+      };
+    return (
+      ke(u),
+      {
+        message: ai({
+          type: "hook_error_during_execution",
+          hookName: n,
+          toolUseID: r,
+          hookEvent: o,
+          content: u instanceof Error ? u.message : "Function hook execution error",
+        }),
+        outcome: "non_blocking_error",
+        hook: e,
+      }
+    );
+  }
+}
+async function itm({
+  toolUseID: e,
+  hook: t,
+  hookEvent: n,
+  hookInput: r,
+  signal: o,
+  hookIndex: s,
+  toolUseContext: i,
+}) {
+  let a = i
+      ? {
+          getAppState: i.getAppState,
+          applyAttributionOp: i.applyAttributionOp,
+        }
+      : void 0,
+    l = await t.callback(r, e, o, s, a);
+  if (vme(l))
+    return {
+      outcome: "success",
+      hook: t,
+    };
+  return {
+    ...Blr({
+      json: l,
+      command: "callback",
+      hookName: `${n}:Callback`,
+      toolUseID: e,
+      hookEvent: n,
+      expectedHookEvent: n,
+      stdout: void 0,
+      stderr: void 0,
+      exitCode: void 0,
+    }),
+    outcome: "success",
+    hook: t,
+  };
+}
+function getTelemetryHookName(e, t) {
+  if (!t) return e;
+  if (sg()) return `${e}:${t}`;
+  switch (e) {
+    case "PreToolUse":
+    case "PostToolUse":
+    case "PostToolUseFailure":
+    case "PermissionRequest":
+    case "PermissionDenied":
+      return `${e}:${Ui(t)}`;
+    case "Elicitation":
+    case "ElicitationResult":
+      return `${e}:mcp_server`;
+    case "SubagentStart":
+      return e;
+    default:
+      return `${e}:${t}`;
+  }
+}
+function atm(e) {
+  return e.map(({ hook: t }) => {
+    if (t.type === "command")
+      return {
+        type: "command",
+        command: eTe(t),
+      };
+    else if (t.type === "prompt")
+      return {
+        type: "prompt",
+        prompt: t.prompt,
+      };
+    else if (t.type === "http")
+      return {
+        type: "http",
+        command: t.url,
+      };
+    else if (t.type === "mcp_tool")
+      return {
+        type: "mcp_tool",
+        command: `${t.server}/${t.tool}`,
+      };
+    else if (t.type === "function")
+      return {
+        type: "function",
+        name: "function",
+      };
+    else if (t.type === "callback")
+      return {
+        type: "callback",
+        name: "callback",
+      };
+    return {
+      type: "unknown",
+    };
+  });
+}
+var Nic,
+  Nlr,
+  qYe,
+  SESSION_END_HOOK_TIMEOUT_MS_DEFAULT = 1500,
+  Kem = 60000,
+  Yem,
+  ASYNC_REWAKE_FLUSH_TIMEOUT_MS = 30000,
+  Xem = 300,
+  Jem,
+  Qem,
+  U5o,
+  rtm = 20;

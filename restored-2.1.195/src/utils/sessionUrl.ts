@@ -1,0 +1,46 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module HO
+// matched 2.1.88 source: src/utils/sessionUrl.ts
+// class=modified  jaccard=0.3609  score=0.5044  fileCov=0.5592
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var HO = E(() => {
+  $S();
+  ((qon = require("crypto")),
+    (szc = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));
+});
+function Xwt() {
+  let e = process.env.CLAUDE_CODE_REMOTE_SESSION_ID?.trim();
+  return e ? Ywt(e, Wns) : null;
+}
+function Uyr(e) {
+  if (e.toLowerCase().endsWith(".jsonl"))
+    return {
+      sessionId: Gns.randomUUID(),
+      ingressUrl: null,
+      isUrl: !1,
+      jsonlFile: e,
+      isJsonlFile: !0,
+    };
+  if (yD(e))
+    return {
+      sessionId: e,
+      ingressUrl: null,
+      isUrl: !1,
+      jsonlFile: null,
+      isJsonlFile: !1,
+    };
+  try {
+    let t = new URL(e);
+    return {
+      sessionId: Xwt() ?? Ywt(t.href, Wns),
+      ingressUrl: t.href,
+      isUrl: !0,
+      jsonlFile: null,
+      isJsonlFile: !1,
+    };
+  } catch {}
+  return null;
+}
+var Gns,
+  Wns = "3ab19d7e-9f35-45c2-926e-75e271cc60b3";

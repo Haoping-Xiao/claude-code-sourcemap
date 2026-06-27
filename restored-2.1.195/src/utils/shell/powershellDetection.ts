@@ -1,0 +1,82 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module U2n
+// matched 2.1.88 source: src/utils/shell/powershellDetection.ts
+// class=modified  jaccard=0.2805  score=0.318  fileCov=0.7037
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var U2n = E(() => {
+  aW();
+  kt();
+  $pt();
+  er();
+  je();
+  _k();
+  lE();
+  $g();
+  WI();
+  hPa = new Set();
+});
+async function PGt(e) {
+  try {
+    return (await Fqe.stat(e)).isFile() ? e : null;
+  } catch {
+    return null;
+  }
+}
+async function Jkp(e) {
+  let t;
+  try {
+    t = await Fqe.readlink(e);
+  } catch {
+    return null;
+  }
+  return PGt(t);
+}
+async function Qkp() {
+  let e = await Gf("pwsh");
+  if (e) {
+    if (Vt() === "linux") {
+      let n = await Fqe.realpath(e).catch(() => e);
+      if (e.startsWith("/snap/") || n.startsWith("/snap/")) {
+        let r = (await PGt("/opt/microsoft/powershell/7/pwsh")) ?? (await PGt("/usr/bin/pwsh"));
+        if (r) {
+          let o = await Fqe.realpath(r).catch(() => r);
+          if (!r.startsWith("/snap/") && !o.startsWith("/snap/"))
+            return (It("shell_powershell_detect", "snap_workaround"), r);
+        }
+      }
+    }
+    return (xe("shell_powershell_detect"), e);
+  }
+  if (Vt() === "windows") {
+    let n = process.env.ProgramFiles,
+      r = process.env.LOCALAPPDATA,
+      o = process.env.USERPROFILE,
+      s =
+        (n ? await PGt(F2n.join(n, "PowerShell", "7", "pwsh.exe")) : null) ??
+        (r ? await Jkp(F2n.join(r, "Microsoft", "WindowsApps", "pwsh.exe")) : null) ??
+        (o ? await PGt(F2n.join(o, ".dotnet", "tools", "pwsh.exe")) : null);
+    if (s) return (It("shell_powershell_detect", "windows_fallback_path"), s);
+  }
+  let t = await Gf("powershell");
+  if (t) return (It("shell_powershell_detect", "fell_back_to_powershell_5"), t);
+  return null;
+}
+function d6() {
+  if (!vmo) vmo = Qkp();
+  return vmo;
+}
+async function MGt() {
+  let e = await d6();
+  if (!e) return null;
+  return e
+    .split(/[/\\]/)
+    .pop()
+    .toLowerCase()
+    .replace(/\.exe$/, "") === "pwsh"
+    ? "core"
+    : "desktop";
+}
+var Fqe,
+  F2n,
+  vmo = null;

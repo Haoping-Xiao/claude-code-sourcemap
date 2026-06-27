@@ -1,0 +1,29 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module BPa
+// matched 2.1.88 source: src/utils/bash/registry.ts
+// class=modified  jaccard=0.3486  score=1  fileCov=0.3486
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var BPa = E(() => {
+  wPa();
+  IPa();
+  kPa();
+  LPa();
+  PPa();
+  $Pa();
+  NPa();
+  $mo = [xPa, OPa, RPa, vPa, CPa, MPa, DPa];
+});
+async function P0p(e) {
+  if (!e || e.includes("/") || e.includes("\\")) return null;
+  if (e.includes("..")) return null;
+  if (e.startsWith("-") && e !== "-") return null;
+  if (gG() && dm()) return null;
+  try {
+    let t = await import(`@withfig/autocomplete/build/${e}.js`);
+    return t.default || t;
+  } catch {
+    return null;
+  }
+}
+var DDe;

@@ -1,0 +1,40 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module bk
+// matched 2.1.88 source: src/utils/tasks.ts
+// class=new  jaccard=0.0591  score=1  fileCov=0.0591
+// note: nearest: src/utils/tasks.ts (0.0591); 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var bk = E(() => {
+  Xr();
+  ft();
+  db();
+  je();
+  fn();
+  At();
+  vn();
+  ih();
+  Jt();
+  Mp();
+  Sj();
+  gOa = require("fs/promises"), pft = require("path"), hOa = Mi();
+  _Oa = hOa.subscribe;
+  rVe = ve(() => H.enum(["pending", "in_progress", "completed"])), UDp = ve(() => H.object({
+    id: H.string(),
+    subject: H.string(),
+    description: H.string(),
+    activeForm: H.string().optional(),
+    owner: H.string().optional(),
+    status: rVe(),
+    blocks: H.array(H.string()),
+    blockedBy: H.array(H.string()),
+    metadata: H.record(H.string(), H.unknown()).optional()
+  })), pWt = {
+    retries: {
+      retries: 30,
+      minTimeout: 5,
+      maxTimeout: 100
+    },
+    onCompromised: e => ke(e)
+  };
+});
+var qDp, VDp, hft;

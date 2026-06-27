@@ -1,0 +1,121 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module OM
+// matched 2.1.88 source: src/utils/env.ts
+// class=new  jaccard=0.0367  score=0.3999  fileCov=0.0389
+// note: nearest: src/utils/env.ts (0.0367); 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var OM = E(() => {
+  one();
+  PYr = l8 + String.fromCharCode(gW.CSI), Eit = {
+    PARAM_START: 48,
+    PARAM_END: 63,
+    INTERMEDIATE_START: 32,
+    INTERMEDIATE_END: 47,
+    FINAL_START: 64,
+    FINAL_END: 126
+  };
+  hb = {
+    CUU: 65,
+    CUD: 66,
+    CUF: 67,
+    CUB: 68,
+    CNL: 69,
+    CPL: 70,
+    CHA: 71,
+    CUP: 72,
+    CHT: 73,
+    HPA: 96,
+    HPR: 97,
+    VPA: 100,
+    VPR: 101,
+    HVP: 102,
+    ED: 74,
+    EL: 75,
+    ECH: 88,
+    IL: 76,
+    DL: 77,
+    ICH: 64,
+    DCH: 80,
+    SU: 83,
+    SD: 84,
+    SM: 104,
+    RM: 108,
+    SGR: 109,
+    DSR: 110,
+    DECSCUSR: 113,
+    DECSTBM: 114,
+    SCOSC: 115,
+    SCORC: 117,
+    CBT: 90
+  }, SUi = ["toEnd", "toStart", "all", "scrollback"], EUi = ["toEnd", "toStart", "all"], MYr = [{
+    style: "block",
+    blinking: !0
+  }, {
+    style: "block",
+    blinking: !0
+  }, {
+    style: "block",
+    blinking: !1
+  }, {
+    style: "underline",
+    blinking: !0
+  }, {
+    style: "underline",
+    blinking: !1
+  }, {
+    style: "bar",
+    blinking: !0
+  }, {
+    style: "bar",
+    blinking: !1
+  }];
+  LBd = mh("G");
+  dH = mh("H");
+  D6h = mh("s"), P6h = mh("u");
+  Oke = mh(2, "K"), Jx = mh(2, "J"), Ait = mh(3, "J");
+  c8 = mh("r"), wUi = mh("200~"), CUi = mh("201~"), X3e = mh("I"), Nke = mh("O"), IUi = mh(">1u"), Tce = mh("<u"), xUi = mh(">4;2m"), G_e = mh(">4m");
+});
+class kUi {
+  proc;
+  constructor(e = process) {
+    this.proc = e;
+  }
+  isJetBrainsIdeTerminal() {
+    return this.proc.env.TERMINAL_EMULATOR === "JetBrains-JediTerm";
+  }
+  isMicrosoftWindowsTerminal() {
+    return this.proc.platform === "win32" && !!this.proc.env.WT_SESSION;
+  }
+  isGhostty() {
+    return this.proc.env.TERM === "xterm-ghostty" || this.proc.env.TERM_PROGRAM === "ghostty";
+  }
+  isMintty() {
+    if (this.proc.env.TERM_PROGRAM === "mintty") return !0;
+    if (this.proc.platform === "win32" && this.proc.env.MSYSTEM) return !0;
+    return !1;
+  }
+  windowsConsoleSupportsVirtualTerminalSequences() {
+    if (this.isMicrosoftWindowsTerminal()) return !0;
+    if (this.proc.platform === "win32" && this.proc.env.TERM_PROGRAM === "vscode" && this.proc.env.TERM_PROGRAM_VERSION) return !0;
+    if (this.isMintty()) return !0;
+    return !1;
+  }
+  hasGeometricShapesInkBleedBug() {
+    return this.isGhostty();
+  }
+  hasOsc52ClipboardUtf8Bug() {
+    if (this.proc.env.TERM_PROGRAM !== "vscode") return !1;
+    let e = DBd(this.proc.env.TERM_PROGRAM_VERSION);
+    return e !== null && e >= 1123000 && e < 1125000;
+  }
+  macCmdClickArrivesWithoutSgrModifierBit() {
+    return this.proc.platform === "darwin" && this.proc.env.TERM_PROGRAM === "ghostty";
+  }
+}
+function DBd(e) {
+  if (!e) return null;
+  let t = /^(\d+)\.(\d+)\.(\d+)/.exec(e);
+  if (!t) return null;
+  return +t[1] * 1e6 + +t[2] * 1000 + +t[3];
+}
+var E1;

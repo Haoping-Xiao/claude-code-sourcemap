@@ -1,0 +1,73 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module S_e
+// matched 2.1.88 source: src/utils/computerUse/common.ts
+// class=modified  jaccard=0.4814  score=0.6587  fileCov=0.6413
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var S_e = E(() => {
+  wr();
+  $$d = {
+    "iTerm.app": "com.googlecode.iterm2",
+    Apple_Terminal: "com.apple.Terminal",
+    ghostty: "com.mitchellh.ghostty",
+    kitty: "net.kovidgoyal.kitty",
+    WarpTerminal: "dev.warp.Warp-Stable",
+    vscode: "com.microsoft.VSCode",
+  };
+  ckn = {
+    screenshotFiltering: "native",
+    platform: "darwin",
+  };
+});
+function ukn(e) {
+  let t = O$d;
+  if (!t) return !1;
+  let n, r;
+  try {
+    ((n = new URL(e)), (r = new URL(t)));
+  } catch {
+    return !1;
+  }
+  if (
+    (n.protocol === "wss:"
+      ? `https://${n.host}`
+      : n.protocol === "ws:"
+        ? `http://${n.host}`
+        : n.origin) !== r.origin
+  )
+    return !1;
+  return wzr.some((s) => n.pathname.includes(s));
+}
+function mOi(e) {
+  if (!ukn(e)) return !1;
+  let t;
+  try {
+    t = new URL(e);
+  } catch {
+    return !1;
+  }
+  let n = t.searchParams.get("mcp_url");
+  if (!n) return !1;
+  try {
+    let r = new URL(n);
+    return N$d.has(r.hostname) && r.pathname === "/devices/mcp";
+  } catch {
+    return !1;
+  }
+}
+function dke(e) {
+  if (!("url" in e) || typeof e.url !== "string") return;
+  try {
+    let t = new URL(e.url);
+    return (
+      (t.search = ""),
+      (t.username = ""),
+      (t.password = ""),
+      (t.hash = ""),
+      t.toString().replace(/\/$/, "")
+    );
+  } catch {
+    return;
+  }
+}
+var wzr, O$d, N$d;

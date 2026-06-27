@@ -1,0 +1,91 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module T6o
+// matched 2.1.88 source: src/utils/permissions/getNextPermissionMode.ts
+// class=modified  jaccard=0.447  score=0.6378  fileCov=0.5992
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var T6o = E(() => {
+  yC();
+});
+function xyc(e) {
+  let t = e.match(/^@([\w-]+)\s+(.+)$/s);
+  if (!t) return null;
+  let [, n, r] = t;
+  if (!n || !r) return null;
+  let o = r.trim();
+  if (!o) return null;
+  return {
+    recipientName: n,
+    message: o,
+  };
+}
+async function kyc(e, t, n, r) {
+  if (!n || !r)
+    return {
+      success: !1,
+      error: "no_team_context",
+    };
+  if (!Object.values(n.teammates ?? {}).find((s) => s.name === e))
+    return {
+      success: !1,
+      error: "unknown_recipient",
+      recipientName: e,
+    };
+  return (
+    await r(
+      e,
+      {
+        from: "user",
+        text: t,
+        timestamp: new Date().toISOString(),
+      },
+      n.teamName,
+    ),
+    {
+      success: !0,
+      recipientName: e,
+    }
+  );
+}
+function _dr(e) {
+  {
+    let t = Zv(),
+      n = v6o(),
+      r = !!e.isAutoModeAvailable && t && !n;
+    if (!r)
+      T(
+        `[auto-mode] canCycleToAuto=false: ctx.isAutoModeAvailable=${e.isAutoModeAvailable} isAutoModeGateEnabled=${t} dismissed=${n} reason=${Pz()}`,
+      );
+    return r;
+  }
+  return !1;
+}
+function v6o() {
+  return Boolean(Dt().autoModeOptInDismissed) && !ROe();
+}
+function bdr(e, t) {
+  switch (e.mode) {
+    case "default":
+      return "acceptEdits";
+    case "acceptEdits":
+      return "plan";
+    case "plan":
+      if (e.isBypassPermissionsModeAvailable) return "bypassPermissions";
+      if (_dr(e)) return "auto";
+      return "default";
+    case "bypassPermissions":
+      if (_dr(e)) return "auto";
+      return "default";
+    case "dontAsk":
+      return "default";
+    default:
+      return "default";
+  }
+}
+function Ryc(e, t, n) {
+  let r = bdr(e, t);
+  return {
+    nextMode: r,
+    context: AZ(e.mode, r, e, n),
+  };
+}

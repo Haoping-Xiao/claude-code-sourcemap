@@ -1,0 +1,32 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module u3c
+// matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/jwtclient.js
+// class=new  jaccard=0.0489  score=0.4334  fileCov=0.0522
+// note: nearest: node_modules/google-auth-library/build/src/auth/jwtclient.js (0.0489); 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var u3c = Q((xzH, c3c) => {
+  var aMm = /^\d+$/;
+  function lMm(e) {
+    if (e.includes("://")) return !0;
+    let t = e.replace(/(\/|\?)/g, "#").split("#")[0];
+    if (t.includes(":")) {
+      let n = t.indexOf(":"),
+        r = t.slice(n + 1);
+      if (!aMm.test(r)) return !0;
+    }
+    return !1;
+  }
+  function cMm(e) {
+    if (!e.includes("@")) return !1;
+    let t = e.split("@"),
+      n = t[t.length - 1];
+    return !(n.includes(":") || n.includes("/") || n.includes("?"));
+  }
+  function uMm(e) {
+    if (typeof e !== "string") throw TypeError("input must be a string");
+    let t;
+    if (lMm(e)) t = e;else if (cMm(e)) t = `acct:${e}`;else t = `https://${e}`;
+    return t.split("#")[0];
+  }
+  c3c.exports = uMm;
+});

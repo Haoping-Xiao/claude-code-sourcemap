@@ -1,0 +1,222 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module l0o
+// matched 2.1.88 source: src/utils/swarm/permissionSync.ts
+// class=modified  jaccard=0.389  score=0.6974  fileCov=0.4679
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var l0o = E(() => {
+  Xr();
+  $pf = Dy({
+    kind: "permission_workflow",
+    payload: ve(() =>
+      H.custom(
+        (e) =>
+          typeof e === "object" &&
+          e !== null &&
+          "requestId" in e &&
+          "toolName" in e &&
+          "permissionResult" in e &&
+          "script" in e,
+      ),
+    ),
+    result: ve(() => H.custom((e) => typeof e === "object" && e !== null && "behavior" in e)),
+    default: {
+      behavior: "cancelled",
+    },
+  });
+});
+function Opf() {
+  return `perm-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+}
+function d7n(e) {
+  let t = e.teamName || rp(),
+    n = e.workerId || PD(),
+    r = e.workerName || Oh(),
+    o = e.workerColor || Sv();
+  if (!t) throw Error("Team name is required for permission requests");
+  if (!n) throw Error("Worker ID is required for permission requests");
+  if (!r) throw Error("Worker name is required for permission requests");
+  return {
+    id: Opf(),
+    workerId: n,
+    workerName: r,
+    workerColor: o,
+    teamName: t,
+    toolName: e.toolName,
+    toolUseId: e.toolUseId,
+    description: e.description,
+    input: e.input,
+    permissionSuggestions: e.permissionSuggestions || [],
+    createdAt: Date.now(),
+  };
+}
+function Npf(e) {
+  if (!(e || rp())) return !1;
+  let n = PD();
+  return !n || n === "team-lead";
+}
+function X_t() {
+  let e = rp(),
+    t = PD();
+  return !!e && !!t && !Npf();
+}
+async function _gl(e) {
+  let t = e || rp();
+  if (!t) return null;
+  let n = await hoe(t);
+  if (!n) return (T(`[PermissionSync] Team file not found for team: ${t}`), null);
+  return n.members.find((o) => o.agentId === n.leadAgentId)?.name || Hd;
+}
+async function p7n(e) {
+  let t = await _gl(e.teamName);
+  if (!t) return (T("[PermissionSync] Cannot send permission request: leader name not found"), !1);
+  try {
+    let n = zTo({
+      request_id: e.id,
+      agent_id: e.workerName,
+      tool_name: e.toolName,
+      tool_use_id: e.toolUseId,
+      description: e.description,
+      input: e.input,
+      permission_suggestions: e.permissionSuggestions,
+    });
+    return (
+      await fg(
+        t,
+        {
+          from: e.workerName,
+          text: De(n),
+          timestamp: new Date().toISOString(),
+          color: e.workerColor,
+        },
+        e.teamName,
+      ),
+      T(`[PermissionSync] Sent permission request ${e.id} to leader ${t} via mailbox`),
+      !0
+    );
+  } catch (n) {
+    return (T(`[PermissionSync] Failed to send permission request via mailbox: ${n}`), ke(n), !1);
+  }
+}
+async function f7n(e, t, n, r) {
+  let o = r || rp();
+  if (!o) return (T("[PermissionSync] Cannot send permission response: team name not found"), !1);
+  try {
+    let s = KTo({
+      request_id: n,
+      subtype: t.decision === "approved" ? "success" : "error",
+      error: t.feedback,
+      updated_input: t.updatedInput,
+      permission_updates: t.permissionUpdates,
+    });
+    return (
+      await fg(
+        e,
+        {
+          from: Hd,
+          text: De(s),
+          timestamp: new Date().toISOString(),
+        },
+        o,
+      ),
+      T(`[PermissionSync] Sent permission response for ${n} to worker ${e} via mailbox`),
+      !0
+    );
+  } catch (s) {
+    return (T(`[PermissionSync] Failed to send permission response via mailbox: ${s}`), ke(s), !1);
+  }
+}
+function bgl() {
+  return `sandbox-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+}
+async function Sgl(e, t, n) {
+  let r = n || rp();
+  if (!r)
+    return (
+      T("[PermissionSync] Cannot send sandbox permission request: team name not found"),
+      Le("swarm_sandbox_permission_request", "no_team_name"),
+      !1
+    );
+  let o = await _gl(r);
+  if (!o)
+    return (
+      T("[PermissionSync] Cannot send sandbox permission request: leader name not found"),
+      Le("swarm_sandbox_permission_request", "no_leader"),
+      !1
+    );
+  let s = PD(),
+    i = Oh(),
+    a = Sv();
+  if (!s || !i)
+    return (
+      T("[PermissionSync] Cannot send sandbox permission request: worker ID or name not found"),
+      Le("swarm_sandbox_permission_request", "no_worker_identity"),
+      !1
+    );
+  try {
+    let l = YTo({
+      requestId: t,
+      workerId: s,
+      workerName: i,
+      workerColor: a,
+      host: e,
+    });
+    return (
+      await fg(
+        o,
+        {
+          from: i,
+          text: De(l),
+          timestamp: new Date().toISOString(),
+          color: a,
+        },
+        r,
+      ),
+      T(
+        `[PermissionSync] Sent sandbox permission request ${t} for host ${e} to leader ${o} via mailbox`,
+      ),
+      xe("swarm_sandbox_permission_request"),
+      !0
+    );
+  } catch (l) {
+    return (
+      T(`[PermissionSync] Failed to send sandbox permission request via mailbox: ${l}`),
+      ke(l),
+      Le("swarm_sandbox_permission_request", "mailbox_write_failed"),
+      !1
+    );
+  }
+}
+async function m7n(e, t, n, r, o) {
+  let s = o || rp();
+  if (!s)
+    return (T("[PermissionSync] Cannot send sandbox permission response: team name not found"), !1);
+  try {
+    let i = XTo({
+      requestId: t,
+      host: n,
+      allow: r,
+    });
+    return (
+      await fg(
+        e,
+        {
+          from: Hd,
+          text: De(i),
+          timestamp: new Date().toISOString(),
+        },
+        s,
+      ),
+      T(
+        `[PermissionSync] Sent sandbox permission response for ${t} (host: ${n}, allow: ${r}) to worker ${e} via mailbox`,
+      ),
+      !0
+    );
+  } catch (i) {
+    return (
+      T(`[PermissionSync] Failed to send sandbox permission response via mailbox: ${i}`),
+      ke(i),
+      !1
+    );
+  }
+}

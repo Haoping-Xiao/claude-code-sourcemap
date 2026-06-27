@@ -1,0 +1,87 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module gga
+// matched 2.1.88 source: node_modules/highlight.js/lib/languages/llvm.js
+// class=partial  jaccard=0.0923  score=0.6536  fileCov=0.0971
+// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/llvm.js; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var gga = Q((RFy, mga) => {
+  function Smp(e) {
+    if (!e) return null;
+    if (typeof e === "string") return e;
+    return e.source;
+  }
+  function iBn(...e) {
+    return e.map(n => Smp(n)).join("");
+  }
+  function Emp(e) {
+    let t = /([-a-zA-Z$._][\w$.-]*)/,
+      n = {
+        className: "type",
+        begin: /\bi\d+(?=\s|\b)/
+      },
+      r = {
+        className: "operator",
+        relevance: 0,
+        begin: /=/
+      },
+      o = {
+        className: "punctuation",
+        relevance: 0,
+        begin: /,/
+      },
+      s = {
+        className: "number",
+        variants: [{
+          begin: /0[xX][a-fA-F0-9]+/
+        }, {
+          begin: /-?\d+(?:[.]\d+)?(?:[eE][-+]?\d+(?:[.]\d+)?)?/
+        }],
+        relevance: 0
+      },
+      i = {
+        className: "symbol",
+        variants: [{
+          begin: /^\s*[a-z]+:/
+        }],
+        relevance: 0
+      },
+      a = {
+        className: "variable",
+        variants: [{
+          begin: iBn(/%/, t)
+        }, {
+          begin: /%\d+/
+        }, {
+          begin: /#\d+/
+        }]
+      },
+      l = {
+        className: "title",
+        variants: [{
+          begin: iBn(/@/, t)
+        }, {
+          begin: /@\d+/
+        }, {
+          begin: iBn(/!/, t)
+        }, {
+          begin: iBn(/!\d+/, t)
+        }, {
+          begin: /!\d+/
+        }]
+      };
+    return {
+      name: "LLVM IR",
+      keywords: "begin end true false declare define global constant private linker_private internal available_externally linkonce linkonce_odr weak weak_odr appending dllimport dllexport common default hidden protected extern_weak external thread_local zeroinitializer undef null to tail target triple datalayout volatile nuw nsw nnan ninf nsz arcp fast exact inbounds align addrspace section alias module asm sideeffect gc dbg linker_private_weak attributes blockaddress initialexec localdynamic localexec prefix unnamed_addr ccc fastcc coldcc x86_stdcallcc x86_fastcallcc arm_apcscc arm_aapcscc arm_aapcs_vfpcc ptx_device ptx_kernel intel_ocl_bicc msp430_intrcc spir_func spir_kernel x86_64_sysvcc x86_64_win64cc x86_thiscallcc cc c signext zeroext inreg sret nounwind noreturn noalias nocapture byval nest readnone readonly inlinehint noinline alwaysinline optsize ssp sspreq noredzone noimplicitfloat naked builtin cold nobuiltin noduplicate nonlazybind optnone returns_twice sanitize_address sanitize_memory sanitize_thread sspstrong uwtable returned type opaque eq ne slt sgt sle sge ult ugt ule uge oeq one olt ogt ole oge ord uno ueq une x acq_rel acquire alignstack atomic catch cleanup filter inteldialect max min monotonic nand personality release seq_cst singlethread umax umin unordered xchg add fadd sub fsub mul fmul udiv sdiv fdiv urem srem frem shl lshr ashr and or xor icmp fcmp phi call trunc zext sext fptrunc fpext uitofp sitofp fptoui fptosi inttoptr ptrtoint bitcast addrspacecast select va_arg ret br switch invoke unwind unreachable indirectbr landingpad resume malloc alloca free load store getelementptr extractelement insertelement shufflevector getresult extractvalue insertvalue atomicrmw cmpxchg fence argmemonly double",
+      contains: [n, e.COMMENT(/;\s*$/, null, {
+        relevance: 0
+      }), e.COMMENT(/;/, /$/), e.QUOTE_STRING_MODE, {
+        className: "string",
+        variants: [{
+          begin: /"/,
+          end: /[^\\]"/
+        }]
+      }, l, o, r, a, i, s]
+    };
+  }
+  mga.exports = Emp;
+});

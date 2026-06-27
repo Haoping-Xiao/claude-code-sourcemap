@@ -1,0 +1,13 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module xvs
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var xvs = E(() => {
+  Cvs();
+  Ivs = lOu;
+});
+function cOu(e) {
+  return Ipn(Cpn(e, void 0, Ivs), e + "");
+}
+var kfn;

@@ -1,0 +1,15 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module kMa
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var kMa = E(() => {
+  Zmo();
+  IMa();
+  xMa = SRp;
+});
+function ERp(e) {
+  var t = Ub(e) ? djn : xMa;
+  return t(e);
+}
+var HL;

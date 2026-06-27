@@ -1,0 +1,46 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module TZr
+// matched 2.1.88 source: src/keybindings/useShortcutDisplay.ts
+// class=modified  jaccard=0.608  score=1  fileCov=0.608
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var TZr = E(() => {
+  YZe();
+  Lo();
+  ys();
+  Hu();
+  id();
+  je();
+  ((iX = require("path")),
+    (D6i = new bG({
+      max: M6i,
+      ttl: $6i,
+    })),
+    (P6i = new bG({
+      max: M6i,
+      ttl: $6i,
+    })));
+});
+function $0(e, t, n) {
+  let r = KE(),
+    o = r ? uQr(e, t, r.bindings) : void 0,
+    s = o === void 0,
+    i = r ? "action_not_found" : "no_context",
+    a = gPn.useRef(!1);
+  if (
+    (gPn.useEffect(() => {
+      if (s && !a.current)
+        ((a.current = !0),
+          G("tengu_keybinding_fallback_used", {
+            action: e,
+            context: $e(t),
+            fallback: n,
+            reason: $e(i),
+          }));
+    }, [s, e, t, n, i]),
+    o === void 0)
+  )
+    return n;
+  return o === null ? "" : nX(o);
+}
+var gPn;

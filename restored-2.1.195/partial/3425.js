@@ -1,0 +1,58 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module SEe
+// matched 2.1.88 source: src/hooks/notifs/useCanSwitchToExistingSubscription.tsx
+// class=partial  jaccard=0.1373  score=0.2454  fileCov=0.2375
+// note: low-confidence suggestion: src/hooks/notifs/useCanSwitchToExistingSubscription.tsx; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var SEe = E(() => {
+  A1a();
+  Hft = R(rt(), 1), xho = Hft.createContext(!0);
+});
+async function T1a() {
+  if (bo()) return null;
+  let e = await R7s();
+  if (!e) return null;
+  if (e.account.has_claude_max && !FX()) return "Max";
+  if (e.account.has_claude_pro && !Taa()) return "Pro";
+  return null;
+}
+function v1a() {
+  return (Dt().seenNotifications?.[LWt] ?? 0) < kho;
+}
+function zPp() {
+  gn(e => {
+    let t = e.seenNotifications ?? {};
+    return {
+      ...e,
+      seenNotifications: {
+        ...t,
+        [LWt]: (t[LWt] ?? 0) + 1
+      }
+    };
+  }), G("tengu_switch_to_subscription_notice_shown", {});
+}
+function w1a(e) {
+  let t = H1a.c(3),
+    {
+      subscriptionType: n
+    } = e;
+  b6("subscription-switch", zPp);
+  let r;
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) r = DWt.jsxs(w, {
+    color: "text",
+    dimColor: !0,
+    children: [" ", "\xB7 /login to activate"]
+  }), t[0] = r;else r = t[0];
+  let o;
+  if (t[1] !== n) o = DWt.jsx(U, {
+    children: DWt.jsxs(w, {
+      color: "suggestion",
+      children: ["Use your existing Claude ", n, " plan with Claude Code", r]
+    })
+  }), t[1] = n, t[2] = o;else o = t[2];
+  return o;
+}
+var H1a,
+  DWt,
+  LWt = "subscription-switch",
+  kho = 3;

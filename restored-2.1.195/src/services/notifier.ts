@@ -1,0 +1,130 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Y7a
+// matched 2.1.88 source: src/services/notifier.ts
+// class=modified  jaccard=0.5991  score=0.7681  fileCov=0.7315
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var Y7a = Q((uHo) => {
+  var z7a = TYa();
+  Object.keys(z7a).forEach(function (e) {
+    uHo[e] = z7a[e];
+  });
+  var K7a = V7a();
+  Object.keys(K7a).forEach(function (e) {
+    uHo[e] = K7a[e];
+  });
+});
+async function bpe(e, t) {
+  let n = wc("preferredNotifChannel", "auto").value;
+  await cJ(e);
+  let r = await H7p(n, e, t);
+  if (r === "error") Le("notification_show", "send_failed");
+  else xe("notification_show");
+  G("tengu_notification_method_used", {
+    configured_channel: $e(n),
+    method_used: r,
+    term: Oe.terminal,
+    attacher_term: fy()?.terminal ?? null,
+  });
+}
+async function H7p(e, t, n) {
+  let r = t.title || X7a;
+  try {
+    switch (e) {
+      case "auto":
+        return T7p(t, n);
+      case "iterm2":
+        return (n.notifyITerm2(t), "iterm2");
+      case "iterm2_with_bell":
+        return (n.notifyITerm2(t), n.notifyBell(), "iterm2_with_bell");
+      case "kitty":
+        return (
+          n.notifyKitty({
+            ...t,
+            title: r,
+            id: J7a(),
+          }),
+          "kitty"
+        );
+      case "ghostty":
+        return (
+          n.notifyGhostty({
+            ...t,
+            title: r,
+          }),
+          "ghostty"
+        );
+      case "terminal_bell":
+        return (n.notifyBell(), "terminal_bell");
+      case "notifications_disabled":
+        return "disabled";
+      default:
+        return "none";
+    }
+  } catch {
+    return "error";
+  }
+}
+async function T7p(e, t) {
+  let n = e.title || X7a;
+  switch (fy()?.terminal ?? Oe.terminal) {
+    case "Apple_Terminal": {
+      if (await v7p()) return (t.notifyBell(), "terminal_bell");
+      return "no_method_available";
+    }
+    case "iTerm.app":
+      return (t.notifyITerm2(e), "iterm2");
+    case "kitty":
+      return (
+        t.notifyKitty({
+          ...e,
+          title: n,
+          id: J7a(),
+        }),
+        "kitty"
+      );
+    case "ghostty":
+      return (
+        t.notifyGhostty({
+          ...e,
+          title: n,
+        }),
+        "ghostty"
+      );
+    default:
+      return "no_method_available";
+  }
+}
+function J7a() {
+  return Math.floor(Math.random() * 1e4);
+}
+async function v7p() {
+  try {
+    if ((fy()?.terminal ?? Oe.terminal) !== "Apple_Terminal") return !1;
+    let t = (
+      await $n("osascript", [
+        "-e",
+        'tell application "Terminal" to name of current settings of front window',
+      ])
+    ).stdout.trim();
+    if (!t) return !1;
+    let n = await $n("defaults", ["export", "com.apple.Terminal", "-"]);
+    if (n.code !== 0) return !1;
+    let i = (await Promise.resolve().then(() => R(Y7a(), 1))).parse(n.stdout)?.[
+      "Window Settings"
+    ]?.[t];
+    if (!i) return !1;
+    return i.Bell === !1;
+  } catch (e) {
+    return (
+      T(
+        `Failed to read Apple Terminal bell setting: ${e instanceof Error ? e.message : String(e)}`,
+        {
+          level: "error",
+        },
+      ),
+      !1
+    );
+  }
+}
+var X7a = "Claude Code";

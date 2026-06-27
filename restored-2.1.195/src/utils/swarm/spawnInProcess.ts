@@ -1,0 +1,180 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module hP
+// matched 2.1.88 source: src/utils/swarm/spawnInProcess.ts
+// class=modified  jaccard=0.2769  score=0.5038  fileCov=0.3807
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var hP = E(() => {
+  ft();
+  dn();
+  je();
+  fn();
+  At();
+  Bi();
+  sa();
+  vn();
+  Jt();
+  Mp();
+  d9t();
+  hN();
+  ((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));
+  lZp = {
+    realpath: !1,
+    retries: {
+      retries: 10,
+      minTimeout: 5,
+      maxTimeout: 100,
+    },
+    onCompromised: () => {},
+  };
+});
+function hZp(e, t) {
+  if (t) return "plan";
+  if (e === "plan" || e === "dontAsk") return "default";
+  return e;
+}
+async function $ht(e, t) {
+  let { name: n, teamName: r, prompt: o, color: s, planModeRequired: i, model: a } = e,
+    { taskRegistry: l } = t,
+    c = pte(n, r),
+    u = iN("in_process_teammate"),
+    d = e.resumableAgentId ?? rM(n);
+  T(`[spawnInProcessTeammate] Spawning ${c} (taskId: ${u})`);
+  try {
+    let p = Sl(),
+      f = Rt(),
+      m = {
+        agentId: c,
+        agentName: n,
+        teamName: r,
+        color: s,
+        planModeRequired: i,
+        parentSessionId: f,
+        resumableAgentId: d,
+      },
+      g = LAn({
+        agentId: c,
+        agentName: n,
+        teamName: r,
+        color: s,
+        planModeRequired: i,
+        parentSessionId: f,
+        abortController: p,
+      });
+    if (zSe()) bFn(c, n, f);
+    let h = e.description ?? `${o.substring(0, 50)}${o.length > 50 ? "..." : ""}`,
+      y = {
+        ...LT(u, "in_process_teammate", h, t.toolUseId),
+        type: "in_process_teammate",
+        status: "running",
+        identity: m,
+        prompt: e.description ?? o,
+        model: a,
+        abortController: p,
+        awaitingPlanApproval: !1,
+        permissionMode: e.permissionMode ?? hZp(Fr(t).mode, i),
+        isIdle: !1,
+        shutdownRequested: !1,
+        lastReportedToolCount: 0,
+        lastReportedTokenCount: 0,
+        pendingUserMessages: [],
+      };
+    l.register(y);
+    let b = t.getAppState(),
+      _ = b.agentNameRegistry.get(n);
+    if (_ !== d) {
+      let S = _ !== void 0 ? b.tasks[_] : void 0,
+        v =
+          _ !== void 0 &&
+          (S?.status === "running" ||
+            El(S) ||
+            Object.values(b.tasks).some(
+              (C) => uE(C) && C.status === "running" && C.identity.resumableAgentId === _,
+            ))
+            ? t.agentLifecycle.allocateName(n)
+            : n;
+      if (v !== n)
+        T(
+          `[spawnInProcessTeammate] name "${n}" already routes to live ${_}; registry entry uses "${v}" instead`,
+        );
+      t.agentLifecycle.registerName(v, d);
+    }
+    return (
+      T(`[spawnInProcessTeammate] Registered ${c} in AppState`),
+      xe("swarm_in_process_spawn"),
+      {
+        ok: !0,
+        agentId: c,
+        identity: m,
+        taskId: u,
+        abortController: p,
+        teammateContext: g,
+      }
+    );
+  } catch (p) {
+    let f = p instanceof Error ? p.message : "Unknown error during spawn";
+    return (
+      T(`[spawnInProcessTeammate] Failed to spawn ${c}: ${f}`),
+      Le("swarm_in_process_spawn", "spawn_failed"),
+      {
+        ok: !1,
+        agentId: c,
+        error: f,
+      }
+    );
+  }
+}
+function uMe(e, t, n) {
+  let r = !1,
+    o = null,
+    s = null,
+    i,
+    a;
+  if (
+    (t.update(e, (l) => {
+      if (l.status !== "running") return l;
+      return (
+        (o = l.identity.teamName),
+        (s = l.identity.agentId),
+        (i = l.toolUseId),
+        (a = l.description),
+        l.abortController?.abort(),
+        (r = !0),
+        l.onIdleCallbacks?.forEach((c) => c()),
+        {
+          ...l,
+          status: "killed",
+          notified: !0,
+          endTime: Date.now(),
+          onIdleCallbacks: [],
+          pendingUserMessages: [],
+          abortController: void 0,
+          currentWorkAbortController: void 0,
+          evictAfter: void 0,
+        }
+      );
+    }),
+    r && s)
+  )
+    n((l) => {
+      if (!l.teamContext?.teammates?.[s]) return l;
+      let { [s]: c, ...u } = l.teamContext.teammates;
+      return {
+        ...l,
+        teamContext: {
+          ...l.teamContext,
+          teammates: u,
+        },
+      };
+    });
+  if (o && s) m9t(o, s);
+  if (r)
+    (jy(e),
+      xf(e, "stopped", {
+        toolUseId: i,
+        summary: a,
+      }),
+      setTimeout((l, c) => l.evictTerminal(c), Oht, t, e));
+  if (s) _qe(s);
+  return (xe("swarm_in_process_kill"), r);
+}

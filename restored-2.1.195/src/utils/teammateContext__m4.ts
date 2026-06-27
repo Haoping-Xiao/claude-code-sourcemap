@@ -1,0 +1,55 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Yyr
+// matched 2.1.88 source: src/utils/teammateContext.ts
+// class=modified (alt of src/utils/teammateContext.ts)  jaccard=0.3514  score=0.3514  fileCov=1
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var Yyr = E(() => {
+  ((crs = globalThis.process?.getBuiltinModule?.("async_hooks")),
+    (sJe = crs ? (e) => crs.AsyncResource.bind(e) : (e) => e));
+});
+function ut(e) {
+  if (!e) return !1;
+  if (typeof e === "boolean") return e;
+  let t = String(e).toLowerCase().trim();
+  return ["1", "true", "yes", "on"].includes(t);
+}
+function ml(e) {
+  if (e === void 0) return !1;
+  if (typeof e === "boolean") return !e;
+  let t = String(e).toLowerCase().trim();
+  return ["0", "false", "no", "off"].includes(t);
+}
+function Uie(e) {
+  if (!e || e.startsWith("-") || e.startsWith("/")) return !1;
+  if (e.includes("..")) return !1;
+  if (e.split("/").some((t) => t === "." || t === "")) return !1;
+  return /^[a-zA-Z0-9/._+@-]+$/.test(e);
+}
+function Mi() {
+  let e = new Set();
+  return {
+    subscribe(t) {
+      let n = sJe(t);
+      return (
+        e.add(n),
+        () => {
+          e.delete(n);
+        }
+      );
+    },
+    emit(...t) {
+      let n;
+      for (let r of e)
+        try {
+          r(...t);
+        } catch (o) {
+          (n ??= []).push(o);
+        }
+      if (n) throw n.length === 1 ? n[0] : AggregateError(n, "Signal listener(s) threw");
+    },
+    clear() {
+      e.clear();
+    },
+  };
+}

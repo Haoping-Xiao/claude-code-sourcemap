@@ -1,0 +1,65 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module YWl
+// matched 2.1.88 source: src/commands/install-github-app/ErrorStep.tsx
+// class=modified (alt of src/commands/install-github-app/ErrorStep.tsx)  jaccard=0.3299  score=1  fileCov=0.3299
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var YWl = E(() => {
+  Tc();
+  Ye();
+  es();
+  B_();
+  ((VWl = R(lt(), 1)), (VN = R(se(), 1)));
+});
+function QWl(e) {
+  let t = XWl.c(10),
+    { feeds: n, maxWidth: r } = e,
+    o;
+  if (t[0] !== n) {
+    let c = n.map(Vjf);
+    ((o = Math.max(...c)), (t[0] = n), (t[1] = o));
+  } else o = t[1];
+  let i = Math.min(o, r),
+    a;
+  if (t[2] !== i || t[3] !== n) {
+    let c;
+    if (t[5] !== i || t[6] !== n.length)
+      ((c = (u, d) =>
+        mAt.jsxs(
+          JWl.Fragment,
+          {
+            children: [
+              mAt.jsx(KWl, {
+                config: u,
+                actualWidth: i,
+              }),
+              d < n.length - 1 &&
+                mAt.jsx(qh, {
+                  color: "claude",
+                  width: i,
+                }),
+            ],
+          },
+          d,
+        )),
+        (t[5] = i),
+        (t[6] = n.length),
+        (t[7] = c));
+    else c = t[7];
+    ((a = n.map(c)), (t[2] = i), (t[3] = n), (t[4] = a));
+  } else a = t[4];
+  let l;
+  if (t[8] !== a)
+    ((l = mAt.jsx(U, {
+      flexDirection: "column",
+      children: a,
+    })),
+      (t[8] = a),
+      (t[9] = l));
+  else l = t[9];
+  return l;
+}
+function Vjf(e) {
+  return zWl(e);
+}
+var XWl, JWl, mAt;

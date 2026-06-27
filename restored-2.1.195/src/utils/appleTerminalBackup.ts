@@ -1,0 +1,117 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module HUt
+// matched 2.1.88 source: src/utils/appleTerminalBackup.ts
+// class=modified  jaccard=0.6432  score=0.8146  fileCov=0.7534
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var HUt = E(() => {
+  Qi();
+  dn();
+  er();
+  Lo();
+  oc();
+  ys();
+  E8i = require("path");
+  H8i = Cn(() => {
+    let e = Lg();
+    if (e.hasCompletedProjectOnboarding || e.projectOnboardingSeenCount >= 4 || process.env.IS_DEMO)
+      return !1;
+    return !A8i();
+  });
+});
+function r6d(e) {
+  gn((t) => ({
+    ...t,
+    appleTerminalSetupInProgress: !0,
+    appleTerminalBackupPath: e,
+  }));
+}
+function Wat() {
+  gn((e) => ({
+    ...e,
+    appleTerminalSetupInProgress: !1,
+  }));
+}
+function o6d() {
+  let e = Dt();
+  return {
+    inProgress: e.appleTerminalSetupInProgress ?? !1,
+    backupPath: e.appleTerminalBackupPath || null,
+  };
+}
+function qat() {
+  return w8i.join(v8i.homedir(), "Library", "Preferences", "com.apple.Terminal.plist");
+}
+async function C8i() {
+  let e = qat(),
+    t = `${e}.bak`;
+  try {
+    let { code: n } = await $n("defaults", ["export", "com.apple.Terminal", e]);
+    if (n !== 0) return null;
+    try {
+      await VQr.stat(e);
+    } catch {
+      return null;
+    }
+    return (await $n("defaults", ["export", "com.apple.Terminal", t]), r6d(t), t);
+  } catch (n) {
+    if (Vo(n)) return (T(`backupTerminalPreferences: config write failed: ${n}`), null);
+    return (ke(n), null);
+  }
+}
+async function kDn() {
+  let { inProgress: e, backupPath: t } = o6d();
+  if (!e)
+    return {
+      status: "no_backup",
+    };
+  if (!t)
+    return (
+      Wat(),
+      {
+        status: "no_backup",
+      }
+    );
+  try {
+    await VQr.stat(t);
+  } catch {
+    return (
+      Wat(),
+      {
+        status: "no_backup",
+      }
+    );
+  }
+  let n = !1;
+  try {
+    let { code: r } = await $n("defaults", ["import", "com.apple.Terminal", t]);
+    if (r !== 0)
+      return {
+        status: "failed",
+        backupPath: t,
+      };
+    return (
+      (n = !0),
+      await $n("killall", ["cfprefsd"]),
+      Wat(),
+      {
+        status: "restored",
+      }
+    );
+  } catch (r) {
+    if (Vo(r)) T(`checkAndRestoreTerminalBackup: config write failed: ${r}`);
+    else ke(r);
+    try {
+      Wat();
+    } catch {}
+    return n
+      ? {
+          status: "restored",
+        }
+      : {
+          status: "failed",
+          backupPath: t,
+        };
+  }
+}
+var VQr, v8i, w8i;

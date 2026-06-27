@@ -1,0 +1,240 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module xDa
+// matched 2.1.88 source: src/services/lsp/LSPClient.ts
+// class=modified  jaccard=0.7733  score=0.9318  fileCov=0.8197
+// note: deminified; 1 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var xDa = Q((qe_, IDa) => {
+  IDa.exports = CDa();
+});
+var RDa = {};
+_t(RDa, {
+  createLSPClient: () => createLSPClient,
+});
+function createLSPClient(e, t) {
+  let n,
+    r,
+    o,
+    s = !1,
+    i = !1,
+    a,
+    l = !1,
+    c = [],
+    u = [];
+  function d() {
+    if (i) throw a || Error(`LSP server ${e} failed to start`);
+  }
+  return {
+    get capabilities() {
+      return o;
+    },
+    get isInitialized() {
+      return s;
+    },
+    async start(p, f, m) {
+      try {
+        if (
+          ((n = kDa.spawn(p, f, {
+            stdio: ["pipe", "pipe", "pipe"],
+            env: {
+              ...DM(),
+              ...m?.env,
+            },
+            cwd: m?.cwd,
+            windowsHide: !0,
+          })),
+          !n.stdout || !n.stdin)
+        )
+          throw Error("LSP server process stdio not available");
+        let g = n;
+        if (
+          (await new Promise((b, _) => {
+            let S = () => {
+                (v(), b());
+              },
+              A = (C) => {
+                (v(), _(C));
+              },
+              v = () => {
+                (g.removeListener("spawn", S), g.removeListener("error", A));
+              };
+            (g.once("spawn", S), g.once("error", A));
+          }),
+          g.pid)
+        )
+          (skn("lsp", g.pid),
+            g.once("close", () => {
+              if (g.pid) eOi(g.pid);
+            }));
+        if (n.stderr)
+          n.stderr.on("data", (b) => {
+            let _ = b.toString().trim();
+            if (_) T(`[LSP SERVER ${e}] ${_}`);
+          });
+        (n.on("error", (b) => {
+          if (!l)
+            ((i = !0),
+              (a = b),
+              T(`LSP server ${e} failed to start: ${b.message}`, {
+                level: "error",
+              }));
+        }),
+          n.on("exit", (b, _) => {
+            if (b !== 0 && b !== null && !l) {
+              ((s = !1), (i = !1), (a = void 0));
+              let S = Error(`LSP server ${e} crashed with exit code ${b}`);
+              (T(`LSP server ${e} crashed with exit code ${b}`, {
+                level: "error",
+              }),
+                t?.(S));
+            }
+          }),
+          n.stdin.on("error", (b) => {
+            if (!l) T(`LSP server ${e} stdin error: ${b.message}`);
+          }));
+        let h = new CDe.StreamMessageReader(n.stdout),
+          y = new CDe.StreamMessageWriter(n.stdin);
+        ((r = CDe.createMessageConnection(h, y)),
+          r.onError(([b, _, S]) => {
+            if (!l)
+              ((i = !0),
+                (a = b),
+                T(`LSP server ${e} connection error: ${b.message}`, {
+                  level: "error",
+                }));
+          }),
+          r.onClose(() => {
+            if (!l) ((s = !1), T(`LSP server ${e} connection closed`));
+          }),
+          r.listen(),
+          r
+            .trace(CDe.Trace.Verbose, {
+              log: (b) => {
+                T(`[LSP PROTOCOL ${e}] ${b}`);
+              },
+            })
+            .catch((b) => {
+              T(`Failed to enable tracing for ${e}: ${b.message}`);
+            }));
+        for (let { method: b, handler: _ } of c)
+          (r.onNotification(b, _), T(`Applied queued notification handler for ${e}.${b}`));
+        c.length = 0;
+        for (let { method: b, handler: _ } of u)
+          (r.onRequest(b, _), T(`Applied queued request handler for ${e}.${b}`));
+        ((u.length = 0), T(`LSP client started for ${e}`));
+      } catch (g) {
+        if (Vo(g))
+          T(`LSP server ${e} failed to start: ${be(g)}`, {
+            level: "error",
+          });
+        else i6(Error(`LSP server ${e} failed to start: ${be(g)}`), "LSP server failed to start");
+        throw g;
+      }
+    },
+    async initialize(p) {
+      if (!r) throw Error("LSP client not started");
+      d();
+      try {
+        let f = await r.sendRequest("initialize", p);
+        return (
+          (o = f.capabilities),
+          await r.sendNotification("initialized", {}),
+          (s = !0),
+          T(`LSP server ${e} initialized`),
+          f
+        );
+      } catch (f) {
+        throw (
+          T(`LSP server ${e} initialize failed: ${f.message}`, {
+            level: "error",
+          }),
+          f
+        );
+      }
+    },
+    async sendRequest(p, f) {
+      if (!r) throw Error("LSP client not started");
+      if ((d(), !s)) throw Error("LSP server not initialized");
+      try {
+        return await r.sendRequest(p, f);
+      } catch (m) {
+        throw (
+          T(`LSP server ${e} request ${p} failed: ${m.message}`, {
+            level: "error",
+          }),
+          m
+        );
+      }
+    },
+    async sendNotification(p, f) {
+      if (!r) throw Error("LSP client not started");
+      d();
+      try {
+        await r.sendNotification(p, f);
+      } catch (m) {
+        T(`LSP server ${e} notification ${p} failed (continuing): ${m.message}`, {
+          level: "error",
+        });
+      }
+    },
+    onNotification(p, f) {
+      if (!r) {
+        (c.push({
+          method: p,
+          handler: f,
+        }),
+          T(`Queued notification handler for ${e}.${p} (connection not ready)`));
+        return;
+      }
+      (d(), r.onNotification(p, f));
+    },
+    onRequest(p, f) {
+      if (!r) {
+        (u.push({
+          method: p,
+          handler: f,
+        }),
+          T(`Queued request handler for ${e}.${p} (connection not ready)`));
+        return;
+      }
+      (d(), r.onRequest(p, f));
+    },
+    async stop() {
+      let p;
+      l = !0;
+      try {
+        if (r) (await r.sendRequest("shutdown", {}), await r.sendNotification("exit", {}));
+      } catch (f) {
+        let m = f;
+        (T(`LSP server ${e} stop failed: ${m.message}`, {
+          level: "error",
+        }),
+          (p = m));
+      } finally {
+        if (r) {
+          try {
+            r.dispose();
+          } catch (f) {
+            T(`Connection disposal failed for ${e}: ${be(f)}`);
+          }
+          r = void 0;
+        }
+        if (n) {
+          if ((n.removeAllListeners("error"), n.removeAllListeners("exit"), n.stdin))
+            n.stdin.removeAllListeners("error");
+          if (n.stderr) n.stderr.removeAllListeners("data");
+          try {
+            n.kill();
+          } catch (f) {
+            T(`Process kill failed for ${e} (may already be dead): ${be(f)}`);
+          }
+          n = void 0;
+        }
+        if (((s = !1), (o = void 0), (l = !1), p)) ((i = !0), (a = p));
+        T(`LSP client stopped for ${e}`);
+      }
+      if (p) throw p;
+    },
+  };
+}
+var kDa, CDe;
