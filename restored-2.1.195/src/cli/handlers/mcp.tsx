@@ -421,17 +421,17 @@ async function mcpGetHandler(name, t) {
     await name.waitUntilExit(),
     await ki(0));
 }
-async function mcpAddJsonHandler(name, json, options, r) {
+async function mcpAddJsonHandler(name, json, n, options) {
   let o, s;
   try {
-    o = Ndt(r.scope);
-    let i = Ia(options, false);
+    o = Ndt(options.scope);
+    let i = Ia(n, false);
     if (i === null)
       T("mcp add-json: user-provided JSON was empty, invalid, or null", {
         level: "error",
       });
     let l =
-      r.clientSecret &&
+      options.clientSecret &&
       i &&
       typeof i === "object" &&
       "type" in i &&

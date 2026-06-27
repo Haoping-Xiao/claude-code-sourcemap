@@ -107,13 +107,21 @@ if (existsSync(LOCAL_RENAMES_PATH)) {
   try { LOCAL_RENAMES = JSON.parse(readFileSync(LOCAL_RENAMES_PATH, "utf-8")); } catch {}
   console.log(`[06] loaded local renames for ${Object.keys(LOCAL_RENAMES).length} modules from ${LOCAL_RENAMES_PATH}`);
 }
-// 合并某模块的 参数 + 局部 per-function 重命名
+// LLM 局部重命名 (12-llm-rename 产物, 需 API key 时才有); 与算法对齐结果合并。
+let LLM_LOCAL_RENAMES = {};
+const LLM_LOCAL_RENAMES_PATH = process.env.LLM_LOCAL_RENAMES || `work/${VERSION}/llm-local-renames.json`;
+if (existsSync(LLM_LOCAL_RENAMES_PATH)) {
+  try { LLM_LOCAL_RENAMES = JSON.parse(readFileSync(LLM_LOCAL_RENAMES_PATH, "utf-8")); } catch {}
+  console.log(`[06] loaded LLM local renames for ${Object.keys(LLM_LOCAL_RENAMES).length} modules from ${LLM_LOCAL_RENAMES_PATH}`);
+}
+// 合并某模块的 参数 + 局部(算法) + 局部(LLM) per-function 重命名 (算法优先, 因为是 2.1.88 校验过的)
 function scopedRenamesFor(name) {
-  const p = PARAM_RENAMES[name], l = LOCAL_RENAMES[name];
-  if (!p && !l) return null;
+  const p = PARAM_RENAMES[name], l = LOCAL_RENAMES[name], g = LLM_LOCAL_RENAMES[name];
+  if (!p && !l && !g) return null;
   const out = {};
-  for (const fn in (p || {})) out[fn] = { ...(p[fn]) };
-  for (const fn in (l || {})) out[fn] = { ...(out[fn] || {}), ...(l[fn]) };
+  for (const fn in (g || {})) out[fn] = { ...(g[fn]) };              // LLM 最低优先
+  for (const fn in (l || {})) out[fn] = { ...(out[fn] || {}), ...(l[fn]) }; // 算法局部覆盖 LLM
+  for (const fn in (p || {})) out[fn] = { ...(out[fn] || {}), ...(p[fn]) }; // 参数(2.1.88 位对齐)最高
   return out;
 }
 

@@ -420,32 +420,32 @@ async function u0f() {
     );
   }
 }
-async function generateFileSuggestions(partialPath, t, n = !1) {
+async function generateFileSuggestions(e, partialPath, n = !1) {
   if (vl()) {
-    if (!t && !n) return [];
-    return d0f(t);
+    if (!partialPath && !n) return [];
+    return d0f(partialPath);
   }
-  if (!t && !n) return [];
+  if (!partialPath && !n) return [];
   if (Fer(Dr().fileSuggestion)?.type === "command") {
     let s = {
       ...Td(),
-      query: t,
+      query: partialPath,
     };
     return (await COo(s)).slice(0, AOo).map(jer);
   }
-  if (t === "" || t === "." || t === "./") {
+  if (partialPath === "" || partialPath === "." || partialPath === "./") {
     let s = await u0f();
-    return (startBackgroundCacheRefresh(partialPath), s.slice(0, AOo).map(jer));
+    return (startBackgroundCacheRefresh(e), s.slice(0, AOo).map(jer));
   }
   let o = Date.now();
   try {
-    let s = partialPath.fileListRefreshPromise !== null;
-    startBackgroundCacheRefresh(partialPath);
-    let i = t,
+    let s = e.fileListRefreshPromise !== null;
+    startBackgroundCacheRefresh(e);
+    let i = partialPath,
       a = "." + jN.sep;
-    if (t.startsWith(a)) i = t.substring(2);
+    if (partialPath.startsWith(a)) i = partialPath.substring(2);
     if (i.startsWith("~")) i = ds(i);
-    let l = partialPath.fileIndex ? a0f(partialPath.fileIndex, i) : [],
+    let l = e.fileIndex ? a0f(e.fileIndex, i) : [],
       c = Date.now() - o;
     return (
       T(
@@ -455,7 +455,7 @@ async function generateFileSuggestions(partialPath, t, n = !1) {
         duration_ms: c,
         cache_hit: !s,
         result_count: l.length,
-        query_length: t.length,
+        query_length: partialPath.length,
       }),
       l
     );

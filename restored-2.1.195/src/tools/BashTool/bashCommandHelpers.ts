@@ -15,8 +15,8 @@ async function segmentedCommandPermissionResult(
   input,
   segments,
   bashToolHasPermissionFn,
+  r,
   checkers,
-  o,
   s,
   i,
 ) {
@@ -25,7 +25,7 @@ async function segmentedCommandPermissionResult(
     let m = segments[f].trim();
     if (!m) {
       let h = bashToolHasPermissionFn[f],
-        y = await checkers({
+        y = await r({
           ...input,
           command: h,
         });
@@ -47,7 +47,7 @@ async function segmentedCommandPermissionResult(
       );
       continue;
     }
-    let g = await checkers({
+    let g = await r({
       ...input,
       command: m,
     });
@@ -68,7 +68,7 @@ async function segmentedCommandPermissionResult(
   if (
     segments.filter((f) => {
       let m = f.trim();
-      return o.isNormalizedCdCommand(m);
+      return checkers.isNormalizedCdCommand(m);
     }).length > 1
   ) {
     for (let [, m] of segmentResults)
@@ -96,15 +96,15 @@ async function segmentedCommandPermissionResult(
   {
     let f, m;
     if (s)
-      ((f = s.some((h) => o.isNormalizedCdCommand(h.text))),
-        (m = s.some((h) => o.isNormalizedGitCommand(h.text))));
+      ((f = s.some((h) => checkers.isNormalizedCdCommand(h.text))),
+        (m = s.some((h) => checkers.isNormalizedGitCommand(h.text))));
     else {
       ((f = false), (m = false));
       for (let h of segments)
         for (let y of By(h)) {
           let b = y.trim();
-          if (o.isNormalizedCdCommand(b)) f = true;
-          if (o.isNormalizedGitCommand(b)) m = true;
+          if (checkers.isNormalizedCdCommand(b)) f = true;
+          if (checkers.isNormalizedGitCommand(b)) m = true;
         }
     }
     if (m && (s ? xjn(s, $t()) : ZGt(input.command))) {

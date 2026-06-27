@@ -152,8 +152,8 @@ async function runHeadless(
   tools,
   sdkMcpConfigs,
   agents,
+  a,
   options,
-  l,
 ) {
   if ((PLr(), DMe())) oNc();
   if (rnn()) DNc();
@@ -179,25 +179,29 @@ async function runHeadless(
       event: We("startup"),
       durationMs: Math.round(process.uptime() * 1000),
       mcpNonBlocking: Vve(),
-      mcpClientCount: l.configuredMcpServerCount,
-      resumed: !!(l.resume || l.continue),
+      mcpClientCount: options.configuredMcpServerCount,
+      resumed: !!(options.resume || options.continue),
     }),
     await Tft())
   )
     await k1a();
-  if ((wC("after_grove_check"), iL().catch((J) => ke(Zr(J))), l.resumeSessionAt && !l.resume)) {
+  if (
+    (wC("after_grove_check"),
+    iL().catch((J) => ke(Zr(J))),
+    options.resumeSessionAt && !options.resume)
+  ) {
     (process.stderr.write(`Error: --resume-session-at requires --resume
 `),
       Bc(1));
     return;
   }
-  if (l.rewindFiles && !l.resume) {
+  if (options.rewindFiles && !options.resume) {
     (process.stderr.write(`Error: --rewind-files requires --resume
 `),
       Bc(1));
     return;
   }
-  if (l.rewindFiles && inputPrompt) {
+  if (options.rewindFiles && inputPrompt) {
     (process.stderr
       .write(`Error: --rewind-files is a standalone operation and cannot be used with a prompt
 `),
@@ -207,7 +211,7 @@ async function runHeadless(
   sbr(typeof inputPrompt !== "string");
   let d = Date.now(),
     p,
-    f = Boolean(l.sdkUrl) && process.env.CLAUDE_CODE_ENVIRONMENT_KIND !== "bridge";
+    f = Boolean(options.sdkUrl) && process.env.CLAUDE_CODE_ENVIRONMENT_KIND !== "bridge";
   function m(J, ne) {
     if (!f) return;
     ((p = J),
@@ -216,8 +220,8 @@ async function runHeadless(
 `));
   }
   m("connecting_transport");
-  let structuredIO = VLm(inputPrompt, l);
-  if (l.sdkUrl || l.outputFormat === "stream-json") fwo(structuredIO);
+  let structuredIO = VLm(inputPrompt, options);
+  if (options.sdkUrl || options.outputFormat === "stream-json") fwo(structuredIO);
   if (
     ut(process.env.CLAUDE_CODE_SDK_HAS_OAUTH_REFRESH) &&
     K9r.has(process.env.CLAUDE_CODE_ENTRYPOINT ?? "")
@@ -227,7 +231,7 @@ async function runHeadless(
     let J = Number(process.env.CLAUDE_CODE_HOST_AUTH_REFRESH_TIMEOUT_MS) || void 0;
     F_r(() => structuredIO.requestHostAuthTokenRefresh(J));
   }
-  if (l.outputFormat === "stream-json") pUc();
+  if (options.outputFormat === "stream-json") pUc();
   let h = {
       current: [],
     },
@@ -237,7 +241,7 @@ async function runHeadless(
     b = xo.getSandboxUnavailableReason();
   if (b) {
     if (xo.isSandboxRequired()) {
-      if (l.outputFormat === "stream-json")
+      if (options.outputFormat === "stream-json")
         (reportTurnFailed(structuredIO.sessionState, `Sandbox required but unavailable: ${b}`),
           await structuredIO.write({
             type: "result",
@@ -304,10 +308,10 @@ Error: sandbox required but unavailable: ${b}
     }
     pa("after_sandbox_init");
   }
-  if (l.setupTrigger)
+  if (options.setupTrigger)
     await rve({
       kind: "setup",
-      trigger: l.setupTrigger,
+      trigger: options.setupTrigger,
     });
   (wC("before_loadInitialMessages"),
     pa("before_loadInitialMessages", {
@@ -321,24 +325,24 @@ Error: sandbox required but unavailable: ${b}
       deferredToolUse: C,
       agentSetting: x,
     } = await loadInitialMessages(setAppState, {
-      continue: l.continue,
-      teleport: l.teleport,
-      resume: l.resume,
-      resumeSessionAt: l.resumeSessionAt,
-      forkSession: l.forkSession,
-      outputFormat: l.outputFormat,
-      sessionStartHooksPromise: l.sessionStartHooksPromise,
+      continue: options.continue,
+      teleport: options.teleport,
+      resume: options.resume,
+      resumeSessionAt: options.resumeSessionAt,
+      forkSession: options.forkSession,
+      outputFormat: options.outputFormat,
+      sessionStartHooksPromise: options.sessionStartHooksPromise,
       restoredWorkerState: structuredIO.restoredWorkerState,
       hydratePrefetch: structuredIO.hydratePrefetch,
-      sdkUrl: l.sdkUrl,
+      sdkUrl: options.sdkUrl,
     });
   h.current = initialMessages;
   let I = Sca();
   if (I) structuredIO.prependUserMessage(I);
-  if (!l.agent && !TO() && x) {
+  if (!options.agent && !TO() && x) {
     let { agentDefinition: J } = VTe(x, void 0, {
-      activeAgents: options,
-      allAgents: options,
+      activeAgents: a,
+      allAgents: a,
     });
     if (J) {
       if (
@@ -346,19 +350,19 @@ Error: sandbox required but unavailable: ${b}
           ...ne,
           agent: J.agentType,
         })),
-        !l.systemPrompt && !Sh(J))
+        !options.systemPrompt && !Sh(J))
       ) {
         let ne = J.getSystemPrompt();
-        if (ne) l.systemPrompt = ne;
+        if (ne) options.systemPrompt = ne;
       }
       FYe(J.agentType);
     }
   }
-  if (l.forkSession) etn(initialMessages);
+  if (options.forkSession) etn(initialMessages);
   let k = w7e(initialMessages, appState.mainLoopModel, (J) =>
       initialMessages.push(cc(J, "warning")),
     ),
-    D = k ? C7e(initialMessages, k, Boolean(l.forkSession)) : void 0;
+    D = k ? C7e(initialMessages, k, Boolean(options.forkSession)) : void 0;
   if (D)
     setAppState((J) =>
       J.mainLoopModel === D
@@ -371,10 +375,10 @@ Error: sandbox required but unavailable: ${b}
   if (initialMessages.length === 0 && process.exitCode !== void 0) return;
   let P;
   if (
-    l.restrictedStartupModel &&
-    shouldWarnRestrictedStartupModel(l.userSpecifiedModel, l.restrictedStartupModel)
+    options.restrictedStartupModel &&
+    shouldWarnRestrictedStartupModel(options.userSpecifiedModel, options.restrictedStartupModel)
   ) {
-    let J = moe(l.restrictedStartupModel, As());
+    let J = moe(options.restrictedStartupModel, As());
     if (
       !initialMessages.some(
         (oe) => oe.type === "system" && oe.subtype === "informational" && oe.content.includes(J),
@@ -383,33 +387,33 @@ Error: sandbox required but unavailable: ${b}
       initialMessages.push(cc(J, "warning"));
     P = cc(J, "warning");
   }
-  if (l.rewindFiles) {
-    let J = initialMessages.find((re) => re.uuid === l.rewindFiles);
+  if (options.rewindFiles) {
+    let J = initialMessages.find((re) => re.uuid === options.rewindFiles);
     if (!J || J.type !== "user") {
       (process.stderr
-        .write(`Error: --rewind-files requires a user message UUID, but ${l.rewindFiles} is not a user message in this session
+        .write(`Error: --rewind-files requires a user message UUID, but ${options.rewindFiles} is not a user message in this session
 `),
         Bc(1));
       return;
     }
     let ne = getAppState(),
-      oe = await handleRewindFiles(l.rewindFiles, ne, false);
+      oe = await handleRewindFiles(options.rewindFiles, ne, false);
     if (!oe.canRewind) {
       (process.stderr.write(`Error: ${oe.error || "Unexpected error"}
 `),
         Bc(1));
       return;
     }
-    (process.stdout.write(`Files rewound to state at message ${l.rewindFiles}
+    (process.stdout.write(`Files rewound to state at message ${options.rewindFiles}
 `),
       Bc(0));
     return;
   }
-  let O = typeof l.resume === "string" && l.resume.trim().length > 0,
-    L = Boolean(l.sdkUrl);
+  let O = typeof options.resume === "string" && options.resume.trim().length > 0,
+    L = Boolean(options.sdkUrl);
   if (!inputPrompt && !L && !C && !I) {
     (process.stderr.write(
-      O || l.continue
+      O || options.continue
         ? `Error: No deferred tool marker found in the resumed session. Either the session was not deferred, the marker is stale (tool already ran), or it exceeds the tail-scan window. Provide a prompt to continue the conversation.
 `
         : `Error: Input must be provided either through stdin or as a prompt argument when using --print
@@ -418,7 +422,7 @@ Error: sandbox required but unavailable: ${b}
       Bc(1));
     return;
   }
-  if (l.outputFormat === "stream-json" && !l.verbose) {
+  if (options.outputFormat === "stream-json" && !options.verbose) {
     (process.stderr.write(`Error: When using --print, --output-format=stream-json requires --verbose
 `),
       Bc(1));
@@ -427,7 +431,7 @@ Error: sandbox required but unavailable: ${b}
   let M = Woe(appState.mcp.tools, appState.toolPermissionContext),
     N = [...sdkMcpConfigs, ...M];
   y.current = N;
-  let B = l.sdkUrl ? "stdio" : l.permissionPromptToolName,
+  let B = options.sdkUrl ? "stdio" : options.permissionPromptToolName,
     $ = (J) => {
       (structuredIO.sessionState.notifyStateChanged("requires_action", J),
         iFc?.runClassifierSummaryForBlocked(J, structuredIO.sessionState));
@@ -436,7 +440,8 @@ Error: sandbox required but unavailable: ${b}
     iFc?.runClassifierSummaryForBlocked(J, structuredIO.sessionState);
   };
   let q = getCanUseToolFn(B, structuredIO, () => getAppState().mcp.tools, $);
-  if (l.permissionPromptToolName) N = N.filter((J) => !Ql(J, l.permissionPromptToolName));
+  if (options.permissionPromptToolName)
+    N = N.filter((J) => !Ql(J, options.permissionPromptToolName));
   if (ut(process.env.CLAUDE_CODE_RESUME_INTERRUPTED_TURN)) {
     let J = await structuredIO.restoredWorkerState,
       ne = J?.internal?.running_background_tasks,
@@ -512,7 +517,7 @@ Error: sandbox required but unavailable: ${b}
     m("transcript_hydrated", `messages=${initialMessages.length}`),
     await OSn(),
     wC("after_modelStrings"));
-  let W = l.outputFormat === "json" && l.verbose,
+  let W = options.outputFormat === "json" && options.verbose,
     V = [],
     lastMessage,
     z = 0,
@@ -529,15 +534,15 @@ Error: sandbox required but unavailable: ${b}
     getAppState,
     setAppState,
     commands,
+    a,
     options,
-    l,
     A,
     v,
     C,
   )) {
     if ((z++, z === 1)) m("first_message_drained", `type=${J.type}`);
     if (!K && J.type === "system" && J.subtype === "init") ((K = true), m("system_init_emitted"));
-    if (l.outputFormat === "stream-json" && l.verbose) {
+    if (options.outputFormat === "stream-json" && options.verbose) {
       if ((await structuredIO.write(J), K && P)) {
         let ne = P;
         ((P = void 0),
@@ -578,7 +583,7 @@ Error: sandbox required but unavailable: ${b}
       lastMessage = J;
     }
   }
-  switch (l.outputFormat) {
+  switch (options.outputFormat) {
     case "json":
       if (!lastMessage || lastMessage.type !== "result") {
         (process.stderr.write(`Error: No messages returned from query
@@ -589,7 +594,7 @@ Error: sandbox required but unavailable: ${b}
           Bc(1));
         return;
       }
-      if (l.verbose) {
+      if (options.verbose) {
         $i(
           De(V) +
             `
@@ -630,10 +635,10 @@ Error: sandbox required but unavailable: ${b}
           $i("Execution error");
           break;
         case "error_max_turns":
-          $i(`Error: Reached max turns (${l.maxTurns})`);
+          $i(`Error: Reached max turns (${options.maxTurns})`);
           break;
         case "error_max_budget_usd":
-          $i(`Error: Exceeded USD budget (${l.maxBudgetUsd})`);
+          $i(`Error: Exceeded USD budget (${options.maxBudgetUsd})`);
           break;
         case "error_max_structured_output_retries":
           $i("Error: Failed to provide valid structured output after maximum retries");
@@ -747,8 +752,8 @@ function runHeadlessStreaming(
   setAppState,
   agents,
   options,
-  d,
   turnInterruptionState,
+  p,
   f,
   m,
 ) {
@@ -770,7 +775,7 @@ function runHeadlessStreaming(
     (x5e(() => {
       for (let Gn of VX()) output.enqueue(Gn);
     }),
-    d.outputFormat === "stream-json" && d.sessionMirror)
+    turnInterruptionState.outputFormat === "stream-json" && turnInterruptionState.sessionMirror)
   )
     r5o((Gn, cr) => {
       structuredIO.write({
@@ -838,7 +843,7 @@ function runHeadlessStreaming(
       pendingLastEmittedEntry: null,
     },
     N;
-  if (d.enableAuthStatus)
+  if (turnInterruptionState.enableAuthStatus)
     N = LD.getInstance().subscribe((cr) => {
       output.enqueue({
         type: "auth_status",
@@ -907,18 +912,16 @@ function runHeadlessStreaming(
     pendingSeeds = QU(V1),
     K = [],
     Z = process.env.CLAUDE_CODE_RESUME_INTERRUPTED_TURN;
-  if (turnInterruptionState && turnInterruptionState.kind !== "none" && Z)
-    (T(`[print.ts] Auto-resuming interrupted turn (kind: ${turnInterruptionState.kind})`),
-      t9t(mutableMessages, turnInterruptionState.message),
+  if (p && p.kind !== "none" && Z)
+    (T(`[print.ts] Auto-resuming interrupted turn (kind: ${p.kind})`),
+      t9t(mutableMessages, p.message),
       j_({
         mode: "prompt",
         agentId: ls(),
-        value: turnInterruptionState.message.message.content,
-        uuid: turnInterruptionState.message.isMeta
-          ? px.randomUUID()
-          : (turnInterruptionState.message.uuid ?? px.randomUUID()),
-        isMeta: turnInterruptionState.message.isMeta,
-        origin: turnInterruptionState.message.origin,
+        value: p.message.message.content,
+        uuid: p.message.isMeta ? px.randomUUID() : (p.message.uuid ?? px.randomUUID()),
+        isMeta: p.message.isMeta,
+        origin: p.message.origin,
       }));
   let J = Xct(),
     ne = J.filter((Gn) => !Gn.disabled),
@@ -953,13 +956,16 @@ function runHeadlessStreaming(
         }),
       };
     }),
-    ee = d.userSpecifiedModel;
+    ee = turnInterruptionState.userSpecifiedModel;
   eNa(() => {
     ee = void 0;
   });
   let ce =
-      d.thinkingConfig && d.thinkingConfig.type !== "disabled" ? d.thinkingConfig.display : void 0,
-    ae = d.thinkingConfig;
+      turnInterruptionState.thinkingConfig &&
+      turnInterruptionState.thinkingConfig.type !== "disabled"
+        ? turnInterruptionState.thinkingConfig.display
+        : void 0,
+    ae = turnInterruptionState.thinkingConfig;
   function de(Gn, cr) {
     let Lt = scc(Gn, bj(cr));
     if ((mutableMessages.push(...Lt), Oe.CLAUDE_CODE_REMOTE)) {
@@ -1204,9 +1210,10 @@ function runHeadlessStreaming(
           ((En = gr.resolvedTools), (bt = gr.allowedAgentTypes));
         }
       }
-      if (d.permissionPromptToolName) En = En.filter((Qn) => !Ql(Qn, d.permissionPromptToolName));
+      if (turnInterruptionState.permissionPromptToolName)
+        En = En.filter((Qn) => !Ql(Qn, turnInterruptionState.permissionPromptToolName));
       let Jn = Hsn();
-      if (Jn && !d.jsonSchema) {
+      if (Jn && !turnInterruptionState.jsonSchema) {
         let Qn = Lct(Jn);
         if ("tool" in Qn) En = [...En, Qn.tool];
       }
@@ -1216,9 +1223,9 @@ function runHeadlessStreaming(
       ? process.env.CLAUDE_CODE_SYSTEM_PROMPT_GB_FEATURE
       : void 0,
     ct = () => {
-      if (!Et) return d.systemPrompt;
+      if (!Et) return turnInterruptionState.systemPrompt;
       let Gn = at(Et, "");
-      return typeof Gn === "string" && Gn.length > 0 ? Gn : d.systemPrompt;
+      return typeof Gn === "string" && Gn.length > 0 ? Gn : turnInterruptionState.systemPrompt;
     },
     bridgeHandle = null,
     gt = false,
@@ -1451,7 +1458,7 @@ function runHeadlessStreaming(
   if (!md())
     if (Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL) {
       ((ze =
-        d.outputFormat === "stream-json"
+        turnInterruptionState.outputFormat === "stream-json"
           ? (En) =>
               void structuredIO.write({
                 type: "system",
@@ -1556,7 +1563,7 @@ function runHeadlessStreaming(
   }
   let ir = true,
     Rr = () => {
-      if (!ir || d.outputFormat !== "stream-json") return;
+      if (!ir || turnInterruptionState.outputFormat !== "stream-json") return;
       zv({
         type: "system",
         subtype: "commands_changed",
@@ -1740,7 +1747,7 @@ function runHeadlessStreaming(
                   };
               }
               let Xn = Yn.map((To) => To.uuid).filter((To) => To !== void 0);
-              if (d.replayUserMessages && Yn.length > 1) {
+              if (turnInterruptionState.replayUserMessages && Yn.length > 1) {
                 for (let To of Yn)
                   if (To.uuid && To.uuid !== Sn.uuid)
                     output.enqueue({
@@ -1858,7 +1865,7 @@ function runHeadlessStreaming(
                       `
 `,
                     );
-              await CAn(Da.workload ?? d.workload, () =>
+              await CAn(Da.workload ?? turnInterruptionState.workload, () =>
                 SFn(Qs, async () => {
                   let To = false,
                     ji = false,
@@ -1894,16 +1901,16 @@ function runHeadlessStreaming(
                           sdkClients,
                           dynamicMcpState.clients,
                         ),
-                      verbose: d.verbose,
+                      verbose: turnInterruptionState.verbose,
                       mcpClients: zr,
                       thinkingConfig: ae,
-                      maxTurns: d.maxTurns,
-                      maxBudgetUsd: d.maxBudgetUsd,
-                      taskBudget: d.taskBudget,
+                      maxTurns: turnInterruptionState.maxTurns,
+                      maxBudgetUsd: turnInterruptionState.maxBudgetUsd,
+                      taskBudget: turnInterruptionState.taskBudget,
                       canUseTool: canUseTool,
                       userSpecifiedModel: ee,
-                      fallbackModel: d.fallbackModel,
-                      jsonSchema: Hsn() ?? d.jsonSchema,
+                      fallbackModel: turnInterruptionState.fallbackModel,
+                      jsonSchema: Hsn() ?? turnInterruptionState.jsonSchema,
                       mutableMessages: mutableMessages,
                       sessionEnvVars: V,
                       isolationLatch: Y,
@@ -1919,17 +1926,17 @@ function runHeadlessStreaming(
                         pendingSeeds.clear();
                       },
                       customSystemPrompt: ct(),
-                      appendSystemPrompt: d.appendSystemPrompt,
-                      planModeInstructions: d.planModeInstructions,
-                      appendSubagentSystemPrompt: d.appendSubagentSystemPrompt,
-                      toolAliases: d.toolAliases,
-                      excludeDynamicSections: d.excludeDynamicSections,
+                      appendSystemPrompt: turnInterruptionState.appendSystemPrompt,
+                      planModeInstructions: turnInterruptionState.planModeInstructions,
+                      appendSubagentSystemPrompt: turnInterruptionState.appendSubagentSystemPrompt,
+                      toolAliases: turnInterruptionState.toolAliases,
+                      excludeDynamicSections: turnInterruptionState.excludeDynamicSections,
                       getAppState: getAppState,
                       setAppState: setAppState,
                       abortController: abortController,
-                      replayUserMessages: d.replayUserMessages,
-                      includePartialMessages: d.includePartialMessages,
-                      forwardSubagentText: d.forwardSubagentText,
+                      replayUserMessages: turnInterruptionState.replayUserMessages,
+                      includePartialMessages: turnInterruptionState.includePartialMessages,
+                      forwardSubagentText: turnInterruptionState.forwardSubagentText,
                       onCommandLifecycle: structuredIO.onCommandLifecycle,
                       sessionState: structuredIO.sessionState,
                       requestDialog: _Ct() ? createPrintRequestDialog(structuredIO) : void 0,
@@ -1993,7 +2000,7 @@ function runHeadlessStreaming(
                         for (let cn of VX()) output.enqueue(cn);
                         let zt = getAppState();
                         if (Da.shouldQuery === false) {
-                          if (d.sessionMirror) await IC();
+                          if (turnInterruptionState.sessionMirror) await IC();
                           output.enqueue(ot);
                         } else if (
                           UUc({
@@ -2014,7 +2021,7 @@ function runHeadlessStreaming(
                             emit: (cn) => output.enqueue(cn),
                           });
                         else {
-                          if (d.sessionMirror) await IC();
+                          if (turnInterruptionState.sessionMirror) await IC();
                           yXo({
                             message: ot,
                             held: C,
@@ -2067,7 +2074,7 @@ function runHeadlessStreaming(
                 vt(),
                 bridgeHandle?.sendResult(),
                 cXo().snapshot(uXo(), {}).catch(ke),
-                d.promptSuggestions &&
+                turnInterruptionState.promptSuggestions &&
                   Da.shouldQuery !== false &&
                   !HT() &&
                   !ml(process.env.CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION))
@@ -2193,7 +2200,7 @@ function runHeadlessStreaming(
           }),
           C.length > 0)
         ) {
-          if (d.sessionMirror) await IC();
+          if (turnInterruptionState.sessionMirror) await IC();
           if ((_Xo(C, (Yn) => output.enqueue(Yn)), suggestionState.pendingSuggestion)) {
             if (
               (output.enqueue(suggestionState.pendingSuggestion),
@@ -2220,7 +2227,7 @@ function runHeadlessStreaming(
           }),
             (y = true));
         try {
-          if (d.sessionMirror) await IC();
+          if (turnInterruptionState.sessionMirror) await IC();
           (reportTurnFailed(structuredIO.sessionState, be(Sn)),
             await structuredIO.write({
               type: "result",
@@ -2542,12 +2549,7 @@ function runHeadlessStreaming(
     }
   }
   let So = new Set();
-  if (
-    f &&
-    turnInterruptionState &&
-    turnInterruptionState.kind !== "none" &&
-    Oe.CLAUDE_CODE_RESUME_INTERRUPTED_TURN
-  )
+  if (f && p && p.kind !== "none" && Oe.CLAUDE_CODE_RESUME_INTERRUPTED_TURN)
     for (let Gn of f) So.add(Gn);
   structuredIO.setUnexpectedResponseCallback(async (Gn) => {
     await handleOrphanedPermissionResponse({
@@ -2634,14 +2636,14 @@ function runHeadlessStreaming(
               re,
               oe,
               structuredIO,
-              !!d.enableAuthStatus,
-              d,
+              !!turnInterruptionState.enableAuthStatus,
+              turnInterruptionState,
               options,
               getAppState,
               setAppState,
             );
             if (nr.restrictedAgentModel) me(nr.restrictedAgentModel);
-            if (d.promptSuggestions && Sjn())
+            if (turnInterruptionState.promptSuggestions && Sjn())
               setAppState((Yn) => {
                 if (Yn.promptSuggestionEnabled) return Yn;
                 return {
@@ -2734,8 +2736,8 @@ function runHeadlessStreaming(
                       allAgents: Ue,
                     },
                     customSystemPrompt: ct(),
-                    appendSystemPrompt: d.appendSystemPrompt,
-                    excludeDynamicSections: d.excludeDynamicSections,
+                    appendSystemPrompt: turnInterruptionState.appendSystemPrompt,
+                    excludeDynamicSections: turnInterruptionState.excludeDynamicSections,
                   },
                 });
               Ut(Lt, {
@@ -3612,14 +3614,15 @@ function runHeadlessStreaming(
               let Qs = PUc({
                 requestedAgent: Yn.agent,
                 agents: Ue,
-                systemPrompt: d.systemPrompt,
+                systemPrompt: turnInterruptionState.systemPrompt,
                 preAgentSystemPrompt: tt,
               });
               if (!Qs.ok) {
                 Fn(Lt, Qs.error);
                 continue;
               }
-              ((d.systemPrompt = Qs.systemPrompt), (tt = Qs.preAgentSystemPrompt));
+              ((turnInterruptionState.systemPrompt = Qs.systemPrompt),
+                (tt = Qs.preAgentSystemPrompt));
               let To = Qs.agentDefinition?.agentType;
               setAppState((ji) =>
                 ji.agent === To
@@ -3852,8 +3855,8 @@ function runHeadlessStreaming(
                         getAppState: getAppState,
                         setAppState: setAppState,
                         customSystemPrompt: ct(),
-                        appendSystemPrompt: d.appendSystemPrompt,
-                        excludeDynamicSections: d.excludeDynamicSections,
+                        appendSystemPrompt: turnInterruptionState.appendSystemPrompt,
+                        excludeDynamicSections: turnInterruptionState.excludeDynamicSections,
                         thinkingConfig: ae,
                         agents: Ue,
                       }),
@@ -4090,13 +4093,16 @@ function runHeadlessStreaming(
           } else Fn(Lt, `Unsupported control request subtype: ${Lt.request.subtype}`);
           continue;
         } else if (Lt.type === "control_response") {
-          if (d.replayUserMessages) output.enqueue(Lt);
+          if (turnInterruptionState.replayUserMessages) output.enqueue(Lt);
           continue;
         } else if (Lt.type === "keep_alive") continue;
         else if (Lt.type === "update_environment_variables") continue;
         else if (Lt.type === "assistant" || Lt.type === "system") {
           let xn = csr([Lt]);
-          if ((mutableMessages.push(...xn), Lt.type === "assistant" && d.replayUserMessages))
+          if (
+            (mutableMessages.push(...xn),
+            Lt.type === "assistant" && turnInterruptionState.replayUserMessages)
+          )
             output.enqueue(Lt);
           continue;
         }
@@ -4192,7 +4198,7 @@ function runHeadlessStreaming(
                 runtime_dup: Yn,
               }),
               T(`Skipping duplicate user message: ${Lt.uuid}`),
-              d.replayUserMessages)
+              turnInterruptionState.replayUserMessages)
             ) {
               T(`Sending acknowledgment for duplicate user message: ${Lt.uuid}`);
               let Xn = TTt(Lt);

@@ -249,8 +249,8 @@ async function pluginInitHandler(e, t, n) {
   (r.push(`  ${S ? `Disable: ${S}. ` : "Disable: in /plugin. "}Remove: delete the directory.`),
     vZ(e, r, 0));
 }
-async function pluginListHandler(options, t) {
-  if (t.cowork) O2(true);
+async function pluginListHandler(e, options) {
+  if (options.cowork) O2(true);
   G("tengu_plugin_list_command", {});
   let n = ex(),
     { getPluginEditableScopes: r } = await Promise.resolve().then(() => (NKe(), h2l)),
@@ -269,7 +269,7 @@ async function pluginListHandler(options, t) {
     y = (A, v) =>
       !("orphan" in A && A.orphan) &&
       (A.source === v.source || ("plugin" in A && A.plugin === v.name));
-  if (t.json) {
+  if (options.json) {
     let A = new Map(allLoadedPlugins.map((x) => [x.source, x])),
       v = [];
     for (let x of pluginIds.sort()) {
@@ -366,7 +366,7 @@ async function pluginListHandler(options, t) {
         notes: [zM(x)],
       });
     let C;
-    if (t.available) {
+    if (options.available) {
       let x = [];
       try {
         let [I, k] = await Promise.all([om(), OEt()]),
@@ -487,7 +487,7 @@ async function pluginListHandler(options, t) {
       b.push(`  ${nt.pointer} ${A.source}: ${nt.cross} ${iS(A)}`, "");
   }
   xe("cli_plugin_list");
-  let S = await options();
+  let S = await e();
   (S.render(
     Jp.jsx(V_, {
       children: Jp.jsx(w, {
@@ -521,11 +521,11 @@ function Kam(e) {
   else s = t[3];
   return s;
 }
-async function marketplaceAddHandler(source, options, n) {
-  if (n.cowork) O2(true);
+async function marketplaceAddHandler(source, t, options) {
+  if (options.cowork) O2(true);
   let r, o, s;
   try {
-    let a = await trr(options);
+    let a = await trr(t);
     if (!a)
       return (
         Le("cli_marketplace_add", "cli_marketplace_add_invalid_source"),
@@ -536,13 +536,13 @@ async function marketplaceAddHandler(source, options, n) {
         Le("cli_marketplace_add", "cli_marketplace_add_parse_failed"),
         ws(`${nt.cross} ${a.error}`)
       );
-    if (((s = n.scope ?? "user"), s !== "user" && s !== "project" && s !== "local"))
+    if (((s = options.scope ?? "user"), s !== "user" && s !== "project" && s !== "local"))
       return ws(`${nt.cross} Invalid scope '${s}'. Use: user, project, or local`);
-    if (((o = KD(s)), (r = a), n.sparse && n.sparse.length > 0))
+    if (((o = KD(s)), (r = a), options.sparse && options.sparse.length > 0))
       if (r.source === "github" || r.source === "git")
         r = {
           ...r,
-          sparsePaths: n.sparse,
+          sparsePaths: options.sparse,
         };
       else
         return ws(
@@ -614,8 +614,8 @@ async function marketplaceAddHandler(source, options, n) {
     await source.waitUntilExit(),
     process.exit(0));
 }
-async function marketplaceListHandler(options, t) {
-  if (t.cowork) O2(true);
+async function marketplaceListHandler(e, options) {
+  if (options.cowork) O2(true);
   let n;
   try {
     n = await om();
@@ -626,7 +626,7 @@ async function marketplaceListHandler(options, t) {
     );
   }
   let r = Object.keys(n);
-  if (t.json) {
+  if (options.json) {
     let i = r.sort().map((a) => {
       let l = n[a],
         c = l?.source,
@@ -692,7 +692,7 @@ async function marketplaceListHandler(options, t) {
       })));
   }
   xe("cli_marketplace_list");
-  let s = await options();
+  let s = await e();
   (s.render(
     Jp.jsx(V_, {
       children: o,
@@ -857,12 +857,12 @@ function elm(e) {
   else o = t[1];
   return o;
 }
-async function pluginInstallHandler(plugin, options, n) {
-  if (n.cowork) O2(true);
-  let r = n.scope || "user";
-  if (n.cowork && r !== "user") ws("--cowork can only be used with user scope");
+async function pluginInstallHandler(plugin, t, options) {
+  if (options.cowork) O2(true);
+  let r = options.scope || "user";
+  if (options.cowork && r !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(r)) ws(`Invalid scope: ${r}. Must be one of: ${JL.join(", ")}.`);
-  let { name: o, marketplace: s } = Qo(options);
+  let { name: o, marketplace: s } = Qo(t);
   G("tengu_plugin_install_command", {
     _PROTO_plugin_name: o,
     ...(s && {
@@ -870,11 +870,11 @@ async function pluginInstallHandler(plugin, options, n) {
     }),
     scope: r,
   });
-  let i = Spc(options, r, n.config).then((a) => (xe("cli_plugin_install"), a));
+  let i = Spc(t, r, options.config).then((a) => (xe("cli_plugin_install"), a));
   (plugin.render(
     Jp.jsx(fNe.Suspense, {
       fallback: Jp.jsx(w, {
-        children: `Installing plugin "${options}"...`,
+        children: `Installing plugin "${t}"...`,
       }),
       children: Jp.jsx(elm, {
         promise: i,
@@ -884,12 +884,12 @@ async function pluginInstallHandler(plugin, options, n) {
     await plugin.waitUntilExit(),
     await ki(0));
 }
-async function pluginUninstallHandler(plugin, options, n) {
-  if (n.cowork) O2(true);
-  let r = n.scope || "user";
-  if (n.cowork && r !== "user") ws("--cowork can only be used with user scope");
+async function pluginUninstallHandler(plugin, t, options) {
+  if (options.cowork) O2(true);
+  let r = options.scope || "user";
+  if (options.cowork && r !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(r)) ws(`Invalid scope: ${r}. Must be one of: ${JL.join(", ")}.`);
-  let { name: o, marketplace: s } = Qo(options);
+  let { name: o, marketplace: s } = Qo(t);
   G("tengu_plugin_uninstall_command", {
     _PROTO_plugin_name: o,
     ...(s && {
@@ -897,12 +897,12 @@ async function pluginUninstallHandler(plugin, options, n) {
     }),
     scope: r,
   });
-  let i = await Apc(options, r, n.keepData, n.prune, n.yes);
+  let i = await Apc(t, r, options.keepData, options.prune, options.yes);
   (xe("cli_plugin_uninstall"),
     plugin.render(
       Jp.jsx(V_, {
         children: Jp.jsx(w, {
-          children: n.prune ? i : `${nt.tick} ${i}`,
+          children: options.prune ? i : `${nt.tick} ${i}`,
         }),
       }),
     ),
@@ -933,16 +933,18 @@ async function pluginPruneHandler(e, t) {
     await e.waitUntilExit(),
     process.exit(0));
 }
-async function pluginEnableHandler(plugin, options, n) {
-  if (n.cowork) O2(true);
+async function pluginEnableHandler(plugin, t, options) {
+  if (options.cowork) O2(true);
   let r;
-  if (n.scope) {
-    if (!JL.includes(n.scope)) ws(`Invalid scope "${n.scope}". Valid scopes: ${JL.join(", ")}`);
-    r = n.scope;
+  if (options.scope) {
+    if (!JL.includes(options.scope))
+      ws(`Invalid scope "${options.scope}". Valid scopes: ${JL.join(", ")}`);
+    r = options.scope;
   }
-  if (n.cowork && r !== void 0 && r !== "user") ws("--cowork can only be used with user scope");
-  if (n.cowork && r === void 0) r = "user";
-  let { name: o, marketplace: s } = Qo(options);
+  if (options.cowork && r !== void 0 && r !== "user")
+    ws("--cowork can only be used with user scope");
+  if (options.cowork && r === void 0) r = "user";
+  let { name: o, marketplace: s } = Qo(t);
   G("tengu_plugin_enable_command", {
     _PROTO_plugin_name: o,
     ...(s && {
@@ -952,13 +954,13 @@ async function pluginEnableHandler(plugin, options, n) {
   });
   let i;
   try {
-    if (((i = await zEt(options, r)), !i.success)) throw Error(i.message);
+    if (((i = await zEt(t, r)), !i.success)) throw Error(i.message);
     G("tengu_plugin_enabled_cli", {
-      ...e4(i.pluginId || options, R0()),
+      ...e4(i.pluginId || t, R0()),
       scope: Oo(i.scope),
     });
   } catch (a) {
-    return (Le("cli_plugin_enable", "cli_plugin_enable_failed"), dNe(a, "enable", options));
+    return (Le("cli_plugin_enable", "cli_plugin_enable_failed"), dNe(a, "enable", t));
   }
   (xe("cli_plugin_enable"),
     plugin.render(
@@ -970,23 +972,25 @@ async function pluginEnableHandler(plugin, options, n) {
     ),
     await plugin.waitUntilExit());
 }
-async function pluginDisableHandler(plugin, options, n) {
-  if (n.all && options) ws("Cannot use --all with a specific plugin");
-  if (!n.all && !options) ws("Please specify a plugin name or use --all to disable all plugins");
-  if (n.cowork) O2(true);
+async function pluginDisableHandler(plugin, t, options) {
+  if (options.all && t) ws("Cannot use --all with a specific plugin");
+  if (!options.all && !t) ws("Please specify a plugin name or use --all to disable all plugins");
+  if (options.cowork) O2(true);
   let r;
-  if (n.all) {
-    if (n.scope) ws("Cannot use --scope with --all");
+  if (options.all) {
+    if (options.scope) ws("Cannot use --scope with --all");
     (G("tengu_plugin_disable_command", {}), (r = await wpc()));
   } else {
     let o;
-    if (n.scope) {
-      if (!JL.includes(n.scope)) ws(`Invalid scope "${n.scope}". Valid scopes: ${JL.join(", ")}`);
-      o = n.scope;
+    if (options.scope) {
+      if (!JL.includes(options.scope))
+        ws(`Invalid scope "${options.scope}". Valid scopes: ${JL.join(", ")}`);
+      o = options.scope;
     }
-    if (n.cowork && o !== void 0 && o !== "user") ws("--cowork can only be used with user scope");
-    if (n.cowork && o === void 0) o = "user";
-    let { name: s, marketplace: i } = Qo(options);
+    if (options.cowork && o !== void 0 && o !== "user")
+      ws("--cowork can only be used with user scope");
+    if (options.cowork && o === void 0) o = "user";
+    let { name: s, marketplace: i } = Qo(t);
     (G("tengu_plugin_disable_command", {
       _PROTO_plugin_name: s,
       ...(i && {
@@ -994,7 +998,7 @@ async function pluginDisableHandler(plugin, options, n) {
       }),
       scope: $e(o ?? "auto"),
     }),
-      (r = await vpc(options, o)));
+      (r = await vpc(t, o)));
   }
   (xe("cli_plugin_disable"),
     plugin.render(

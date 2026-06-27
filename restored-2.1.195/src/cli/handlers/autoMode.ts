@@ -121,11 +121,11 @@ Please critique these custom rules.`,
 function ahr(e) {
   return (e ?? []).some((t) => t !== Syt);
 }
-function formatRulesForCritique(section, userRules, defaultRules) {
-  let r = userRules.filter((a) => a !== Syt);
-  if (r.length === 0) return "";
-  let o = userRules.length !== r.length,
-    s = r.map((a) => "- " + a).join(`
+function formatRulesForCritique(section, t, defaultRules) {
+  let userRules = t.filter((a) => a !== Syt);
+  if (userRules.length === 0) return "";
+  let o = t.length !== userRules.length,
+    s = userRules.map((a) => "- " + a).join(`
 `),
     i = defaultRules.map((a) => "- " + a).join(`
 `);

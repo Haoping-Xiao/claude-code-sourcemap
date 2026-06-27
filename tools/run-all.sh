@@ -36,6 +36,9 @@ $NODE tools/09-align-names.mjs
 echo "==> [5.6/7] 函数级局部变量名对齐 (属性指纹 -> 2.1.88 真名)"
 $NODE tools/11-align-locals.mjs
 
+echo "==> [5.7/7] (可选) LLM 变量名还原 (需 GEMINI/OPENAI/ANTHROPIC API key)"
+$NODE tools/12-llm-rename.mjs || echo "  (LLM 步骤跳过/失败, 非致命)"
+
 echo "==> [6/7] 生成还原源码树 restored-$VERSION/"
 $NODE tools/06-restore.mjs
 

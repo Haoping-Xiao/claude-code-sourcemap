@@ -13,21 +13,21 @@ function ZEe(e, t) {
 function iMe(e) {
   return;
 }
-function fileHistoryMakeSnapshot(captured, messageId) {
+function fileHistoryMakeSnapshot(updateFileHistoryState, messageId) {
   switch (messageId.kind) {
     case "track":
       try {
-        let n = captured.snapshots.at(-1);
-        if (!n) return captured;
-        let r = (captured.trackSequence ?? 0) + 1;
+        let n = updateFileHistoryState.snapshots.at(-1);
+        if (!n) return updateFileHistoryState;
+        let r = (updateFileHistoryState.trackSequence ?? 0) + 1;
         if (n.trackedFileBackups[messageId.trackingPath])
           return {
-            ...captured,
+            ...updateFileHistoryState,
             trackSequence: r,
           };
-        let o = captured.trackedFiles.has(messageId.trackingPath)
-            ? captured.trackedFiles
-            : new Set(captured.trackedFiles).add(messageId.trackingPath),
+        let o = updateFileHistoryState.trackedFiles.has(messageId.trackingPath)
+            ? updateFileHistoryState.trackedFiles
+            : new Set(updateFileHistoryState.trackedFiles).add(messageId.trackingPath),
           s = {
             ...n,
             trackedFileBackups: {
@@ -36,9 +36,9 @@ function fileHistoryMakeSnapshot(captured, messageId) {
             },
           },
           i = {
-            ...captured,
+            ...updateFileHistoryState,
             snapshots: (() => {
-              let a = captured.snapshots.slice();
+              let a = updateFileHistoryState.snapshots.slice();
               return ((a[a.length - 1] = s), a);
             })(),
             trackedFiles: o,
@@ -57,16 +57,16 @@ function fileHistoryMakeSnapshot(captured, messageId) {
           i
         );
       } catch (n) {
-        return (ke(n), G("tengu_file_history_track_edit_failed", {}), captured);
+        return (ke(n), G("tengu_file_history_track_edit_failed", {}), updateFileHistoryState);
       }
     case "snapshot":
       try {
         let n = {
             ...messageId.trackedFileBackups,
           },
-          r = captured.snapshots.at(-1);
+          r = updateFileHistoryState.snapshots.at(-1);
         if (r)
-          for (let l of captured.trackedFiles) {
+          for (let l of updateFileHistoryState.trackedFiles) {
             if (l in n) continue;
             let c = r.trackedFileBackups[l];
             if (c) n[l] = c;
@@ -77,34 +77,34 @@ function fileHistoryMakeSnapshot(captured, messageId) {
             trackedFileBackups: n,
             timestamp: o,
           },
-          i = [...captured.snapshots, s],
+          i = [...updateFileHistoryState.snapshots, s],
           a = {
-            ...captured,
+            ...updateFileHistoryState,
             snapshots: i.length > UQa ? i.slice(-UQa) : i,
-            snapshotSequence: (captured.snapshotSequence ?? 0) + 1,
+            snapshotSequence: (updateFileHistoryState.snapshotSequence ?? 0) + 1,
           };
         return (
           FQa(a),
-          lQp(captured, a).catch(ke),
+          lQp(updateFileHistoryState, a).catch(ke),
           VVt(messageId.messageId, s, false).catch((l) => {
             ke(Error(`FileHistory: Failed to record snapshot: ${l}`));
           }),
           T(
-            `FileHistory: Added snapshot for ${messageId.messageId}, tracking ${captured.trackedFiles.size} files`,
+            `FileHistory: Added snapshot for ${messageId.messageId}, tracking ${updateFileHistoryState.trackedFiles.size} files`,
           ),
           G("tengu_file_history_snapshot_success", {
-            trackedFilesCount: captured.trackedFiles.size,
+            trackedFilesCount: updateFileHistoryState.trackedFiles.size,
             snapshotCount: a.snapshots.length,
           }),
           a
         );
       } catch (n) {
-        return (ke(n), G("tengu_file_history_snapshot_failed", {}), captured);
+        return (ke(n), G("tengu_file_history_snapshot_failed", {}), updateFileHistoryState);
       }
     case "touch":
       return {
-        ...captured,
-        trackSequence: (captured.trackSequence ?? 0) + 1,
+        ...updateFileHistoryState,
+        trackSequence: (updateFileHistoryState.trackSequence ?? 0) + 1,
       };
   }
 }
