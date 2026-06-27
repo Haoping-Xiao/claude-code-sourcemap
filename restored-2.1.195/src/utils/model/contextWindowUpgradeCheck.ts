@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module nsl
 // matched 2.1.88 source: src/utils/model/contextWindowUpgradeCheck.ts
 // class=modified  jaccard=0.6139  score=1  fileCov=0.6139
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nsl] deps: Ye
 ((esl = R(lt(), 1)), (tCo = R(se(), 1)));
-function orf() {
+function getAvailableUpgrade() {
   let e = GG();
   if (e === "opus" && ure())
     return {
@@ -22,8 +22,8 @@ function orf() {
     };
   return null;
 }
-function J8e(e) {
-  let t = orf();
+function getUpgradeMessage(e) {
+  let t = getAvailableUpgrade();
   if (!t) return null;
   switch (e) {
     case "warning":

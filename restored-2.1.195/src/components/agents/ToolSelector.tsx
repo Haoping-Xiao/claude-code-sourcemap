@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module a4o
 // matched 2.1.88 source: src/components/agents/ToolSelector.tsx
 // class=modified  jaccard=0.4399  score=0.8045  fileCov=0.4926
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module a4o] deps: Ye, kpe, Vl
 ((yYl = R(lt(), 1)), (KAt = R(se(), 1)));
-function _Yl() {
+function getToolBuckets() {
   return {
     READ_ONLY: {
       name: "Read-only tools",
@@ -66,7 +66,7 @@ function $Vf(e) {
       .sort((n, r) => n.serverName.localeCompare(r.serverName))
   );
 }
-function Fsr(e) {
+function ToolSelector(e) {
   let t = bYl.c(69),
     { tools: n, initialTools: r, onComplete: o, onCancel: s } = e,
     i;
@@ -142,7 +142,7 @@ function Fsr(e) {
   let P = D,
     O;
   if (t[20] !== a) {
-    let de = _Yl();
+    let de = getToolBuckets();
     ((O = {
       readOnly: [],
       edit: [],
@@ -211,7 +211,7 @@ function Fsr(e) {
       label: `${v ? nt.checkboxOn : nt.checkboxOff} All tools`,
       action: de,
     });
-    let Ee = _Yl();
+    let Ee = getToolBuckets();
     [
       {
         id: "bucket-readonly",

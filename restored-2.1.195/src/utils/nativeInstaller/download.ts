@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MPe
 // matched 2.1.88 source: src/utils/nativeInstaller/download.ts
 // class=modified  jaccard=0.2738  score=0.5701  fileCov=0.345
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MPe] deps: oo, FEe, er, Lo, wr, fn, Bi, ys, kgt, A9e, IVn, Is, tre, OB, lg, S9, hY, mCe, RCe, lj, EVn, Jt, _0
 ((Xqt = require("fs/promises")), (PPe = require("os")), (lA = require("path")));
@@ -10,7 +10,7 @@ var Oza = () => {};
 function vAo(e, t) {
   return SFe(e) ? kSe.get(e, t) : lb.get(e, t);
 }
-async function Zzp(e = "latest", t, n) {
+async function getLatestVersionFromBinaryRepo(e = "latest", t, n) {
   let r = Date.now(),
     o = 0;
   try {
@@ -67,7 +67,7 @@ async function Zzp(e = "latest", t, n) {
     );
   }
 }
-async function Jqt(e) {
+async function getLatestVersion(e) {
   if (/^v?\d+\.\d+\.\d+(-\S+)?$/.test(e)) {
     let n = e.startsWith("v") ? e.slice(1) : e;
     if (/^99\.99\./.test(n))
@@ -78,12 +78,12 @@ async function Jqt(e) {
   if (t !== "stable" && t !== "latest" && t !== "rc")
     throw Error(`Invalid channel: ${e}. Use 'latest' or 'stable'`);
   if (t === "rc") throw Error(`Invalid channel: ${e}. Use 'stable' or 'latest'`);
-  return Zzp(t, jza);
+  return getLatestVersionFromBinaryRepo(t, jza);
 }
 function nKp() {
   return Number(process.env.CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING) || eKp;
 }
-async function rKp(e, t, n, r = {}) {
+async function downloadAndVerifyBinary(e, t, n, r = {}) {
   let o,
     s = false;
   for (let i = 1; i <= AAo; i++) {
@@ -131,7 +131,7 @@ async function rKp(e, t, n, r = {}) {
   }
   throw o ?? Error("Download failed after all retries");
 }
-async function oKp(e, t, n, r) {
+async function downloadVersionFromBinaryRepo(e, t, n, r) {
   let o = qt();
   await o.rm(t, {
     recursive: true,
@@ -181,7 +181,7 @@ async function oKp(e, t, n, r) {
   await o.mkdir(t);
   let p = Fza.join(t, u);
   try {
-    let f = await rKp(d, c, p, r || {}),
+    let f = await downloadAndVerifyBinary(d, c, p, r || {}),
       m = Date.now() - i;
     if (f) It("update_download", "update_download_checksum_retry");
     else xe("update_download");
@@ -212,7 +212,7 @@ async function oKp(e, t, n, r) {
   }
 }
 async function Gza(e, t) {
-  return (await oKp(e, t, jza), "binary");
+  return (await downloadVersionFromBinaryRepo(e, t, jza), "binary");
 }
 function HAo(e) {
   if (ab(e) && e.response) return e.response.status;

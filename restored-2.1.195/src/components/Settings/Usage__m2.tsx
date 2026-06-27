@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wAe
 // matched 2.1.88 source: src/components/Settings/Usage.tsx
 // class=modified (alt of src/components/Settings/Usage.tsx)  jaccard=0.0267  score=0.0353  fileCov=0.0991
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PlainAwait, ExtraUsageDialog
 // [unwrapped __esm module wAe]
@@ -441,7 +441,7 @@ function Mrf({
         onCancel: () => g("not_enabled"),
       });
     case "enabled":
-      return is.jsx(Nrf, {
+      return is.jsx(LimitBar, {
         step: t,
         currency: a,
         onAction: (C) => b(C, t),
@@ -671,7 +671,7 @@ function Orf(e) {
   else d = t[14];
   return d;
 }
-function Nrf(e) {
+function LimitBar(e) {
   let t = lq.c(52),
     { step: n, currency: r, onAction: o, onCancel: s } = e,
     { columns: i } = br(),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cMo
 // matched 2.1.88 source: src/services/api/logging.ts
 // class=modified  jaccard=0.1299  score=0.3946  fileCov=0.1623
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cMo] deps: je, fn, At, Jt, aS
 ((lMo = require("crypto")), (aYt = require("fs/promises")), (tZn = require("path")));
@@ -71,7 +71,7 @@ function ukl() {
   if (isNaN(e)) return;
   return Math.floor((Date.now() - e) / 60000);
 }
-function dkl({
+function logAPIQuery({
   model: e,
   messagesLength: t,
   temperature: n,
@@ -112,7 +112,7 @@ function dkl({
     ...uMo(),
   });
 }
-function dMo({
+function logAPIError({
   error: e,
   model: t,
   messageCount: n,
@@ -405,7 +405,7 @@ function pkl(e, t) {
     },
   );
 }
-function Swf({
+function logAPISuccess({
   model: e,
   preNormalizedModel: t,
   messageCount: n,
@@ -547,7 +547,7 @@ function Swf({
   }),
     aCt($));
 }
-function fkl({
+function logAPISuccessAndDuration({
   model: e,
   preNormalizedModel: t,
   start: n,
@@ -627,7 +627,7 @@ function fkl({
   let Y = Math.max(0, Math.round(performance.now() - n)),
     z = Math.max(0, Math.round(performance.now() - r));
   (s_r(z, Y),
-    Swf({
+    logAPISuccess({
       model: e,
       preNormalizedModel: t,
       messageCount: a,

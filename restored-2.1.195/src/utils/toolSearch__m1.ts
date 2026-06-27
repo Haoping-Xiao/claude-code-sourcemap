@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module rSe
 // matched 2.1.88 source: src/utils/toolSearch.ts
 // class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.1194  score=0.7819  fileCov=0.1235
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rSe] deps: ft, dn, Un, kt, F2t, N8, je, fn
 xop = (KWe(), ro(zWe));
-function Foo(e) {
+function parseAutoPercentage(e) {
   if (!e.startsWith("auto:")) return null;
   let t = e.slice(5),
     n = parseInt(t, 10);
@@ -21,10 +21,10 @@ function $op(e) {
   if (!e) return false;
   return e === "auto" || e.startsWith("auto:");
 }
-function V2t() {
+function getToolSearchMode() {
   if (F4e()) return "standard";
   let e = process.env.ENABLE_TOOL_SEARCH,
-    t = e ? Foo(e) : null;
+    t = e ? parseAutoPercentage(e) : null;
   if (t === 0) return "tst";
   if (t === 100) return "standard";
   if ($op(e)) return "tst-auto";
@@ -32,7 +32,7 @@ function V2t() {
   if (ml(process.env.ENABLE_TOOL_SEARCH)) return "standard";
   return "tst";
 }
-function Nop() {
+function getUnsupportedToolReferencePatterns() {
   try {
     let e = at("tengu_tool_search_unsupported_models", null);
     if (Array.isArray(e)) return e;
@@ -70,12 +70,12 @@ function goa() {
 }
 function CX(e) {
   let t = e.toLowerCase(),
-    n = Nop();
+    n = getUnsupportedToolReferencePatterns();
   for (let r of n) if (t.includes(r.toLowerCase())) return false;
   return true;
 }
-function o$() {
-  let e = V2t();
+function isToolSearchEnabledOptimistic() {
+  let e = getToolSearchMode();
   if (e === "standard") {
     if (!BRe)
       ((BRe = true),

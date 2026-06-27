@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wrl
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified  jaccard=0.273  score=0.4985  fileCov=0.3764
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module Wrl] (exports=nz_, module=nnf)
 var nz_ = {};
@@ -150,16 +150,16 @@ function sol() {
     src: "default",
   };
 }
-function V6n() {
+function getDefaultExternalAutoModeRules() {
   return {
-    allow: j6n("user_allow_rules_to_replace"),
-    soft_deny: j6n("user_soft_deny_rules_to_replace"),
-    hard_deny: j6n("user_hard_deny_rules_to_replace"),
-    environment: j6n("user_environment_to_replace"),
+    allow: extractTaggedBullets("user_allow_rules_to_replace"),
+    soft_deny: extractTaggedBullets("user_soft_deny_rules_to_replace"),
+    hard_deny: extractTaggedBullets("user_hard_deny_rules_to_replace"),
+    environment: extractTaggedBullets("user_environment_to_replace"),
   };
 }
 function iol(e) {
-  let t = V6n(),
+  let t = getDefaultExternalAutoModeRules(),
     n = (r) => r;
   return {
     allow: Eyt(e?.allow, t.allow, n),
@@ -168,7 +168,7 @@ function iol(e) {
     environment: Eyt(e?.environment, t.environment, n),
   };
 }
-function j6n(e) {
+function extractTaggedBullets(e) {
   let t = Mwo.match(new RegExp(`<${e}>([\\s\\S]*?)</${e}>`));
   if (!t) return [];
   let n = [];
@@ -182,7 +182,7 @@ ${o}`;
   }
   return n;
 }
-function aol() {
+function buildDefaultExternalSystemPrompt() {
   return F6n(!1, {
     editRemovalVisibility: !1,
   })
@@ -206,12 +206,12 @@ function G6n() {
 async function qrl(e, t, n, r) {
   return;
 }
-function inf() {
+function getAutoModeClassifierErrorDumpPath() {
   return F8e.join(YU(), "auto-mode-classifier-errors", `${Rt()}.txt`);
 }
-async function anf(e, t, n, r) {
+async function dumpErrorPrompts(e, t, n, r) {
   try {
-    let o = inf();
+    let o = getAutoModeClassifierErrorDumpPath();
     await U8e.mkdir(F8e.dirname(o), {
       recursive: !0,
     });
@@ -312,7 +312,7 @@ function Vrl(e, t) {
   if (!t) return Rwo(e);
   return Rwo(e);
 }
-function uol(e, t, n = !0) {
+function buildTranscriptEntries(e, t, n = !0) {
   let r = [],
     o = new Set(),
     s = AAe() ? dnf(e) : null,
@@ -490,7 +490,7 @@ function $wo(e) {
   }
   return t;
 }
-function dol(e, t, n) {
+function toCompactBlock(e, t, n) {
   if (e.type === "tool_use") {
     let r = n.get(e.name);
     if (!r) return "";
@@ -561,15 +561,15 @@ function _nf(e, t) {
   return pol(e, $wo(t));
 }
 function pol(e, t) {
-  return e.content.map((n) => dol(n, e.role, t)).join("");
+  return e.content.map((n) => toCompactBlock(n, e.role, t)).join("");
 }
 function fol(e, t) {
   let n = $wo(t);
-  return uol(e, !1, !1)
+  return buildTranscriptEntries(e, !1, !1)
     .map((r) => pol(r, n))
     .join("");
 }
-function bnf() {
+function buildClaudeMdMessage() {
   let e = Dbr();
   if (e === null) return null;
   let t = col("user_claude_md", m8t(e));
@@ -678,10 +678,10 @@ ${c.map((h) => `- ${h}`).join(`
     });
   return g;
 }
-function wnf(e, t) {
+function isUsingExternalPermissions(e, t) {
   let r = at("tengu_auto_mode_config", {})?.s1SuffixByModel?.[e];
   if (r !== void 0) return r;
-  return t === "both" ? Tnf : Hnf;
+  return t === "both" ? Tnf : XML_S1_SUFFIX;
 }
 function Cnf(e) {
   return at("tengu_auto_mode_config", {})?.s2SuffixByModel?.[e] ?? vnf;
@@ -726,7 +726,7 @@ function xnf(e) {
   if (U4e(e)) return [void 0, 2048];
   return [!1, 0];
 }
-async function knf(e, t, n, r, o, s, i, a, l, c, u) {
+async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
   let d = l === "both" ? "xml_2stage" : l === "fast" ? "xml_fast" : "xml_thinking",
     p,
     f,
@@ -764,7 +764,7 @@ async function knf(e, t, n, r, o, s, i, a, l, c, u) {
   try {
     if (l !== "thinking") {
       let z = Date.now(),
-        K = wnf(o, l),
+        K = isUsingExternalPermissions(o, l),
         Z = [
           ...I,
           ...(K?.trim()
@@ -1053,12 +1053,12 @@ async function knf(e, t, n, r, o, s, i, a, l, c, u) {
           promptLengths: s,
         }
       );
-    let P = Nnf(k);
+    let P = detectPromptTooLong(k);
     T(`Auto mode classifier (XML) error: ${be(k)}`, {
       level: "warn",
     });
     let O =
-        (await anf(zl(t), n, k, {
+        (await dumpErrorPrompts(zl(t), n, k, {
           ...a,
           model: o,
         })) ?? void 0,
@@ -1233,15 +1233,15 @@ async function Hyt(e, t, n, r, o, s) {
   let l = !1,
     c = await Anf(r, l),
     u = zl(c),
-    d = uol(e, l, s.recordPresumed ?? !s.isSubagentLoop),
-    p = bnf(),
+    d = buildTranscriptEntries(e, l, s.recordPresumed ?? !s.isSubagentLoop),
+    p = buildClaudeMdMessage(),
     f = p ? [p] : [],
     m = a.length,
     g = 0,
     h = [];
   for (let O of d)
     for (let L of O.content) {
-      let M = dol(L, O.role, i);
+      let M = toCompactBlock(L, O.role, i);
       if (M === "") continue;
       switch (O.role) {
         case "user":
@@ -1294,7 +1294,7 @@ async function Hyt(e, t, n, r, o, s) {
       messages: e.length,
       action: a,
     },
-    D = (O, L, M) => knf(f, c, y, h, O, b, L, k, x, I, M),
+    D = (O, L, M) => classifyYoloActionXml(f, c, y, h, O, b, L, k, x, I, M),
     P = await D(C, o);
   if (!o.aborted && P.unavailable && Onf(P.errorKind)) {
     let O = Pnf(C),
@@ -1398,9 +1398,9 @@ function bol() {
       };
 }
 function Mnf() {
-  return Sol().value;
+  return resolveTwoStageClassifier().value;
 }
-function Sol() {
+function resolveTwoStageClassifier() {
   let t = at("tengu_auto_mode_config", {})?.twoStageClassifier;
   if (t === "fast" || t === "thinking")
     return {
@@ -1494,7 +1494,7 @@ function Onf(e) {
   }
   return !1;
 }
-function Nnf(e) {
+function detectPromptTooLong(e) {
   if (!(e instanceof Error)) return;
   if (!e.message.toLowerCase().includes("prompt is too long")) return;
   return Ljt(e.message);
@@ -1546,7 +1546,7 @@ var rol,
   hnf,
   ynf = 2000,
   Snf,
-  Hnf = `
+  XML_S1_SUFFIX = `
 Err on the side of blocking. <block> immediately.`,
   Tnf = `
 Err on the side of blocking. Stage 1 does NOT apply user intent or ALLOW exceptions \u2014 stage 2 will handle those. Judge the action by its full effect \u2014 what it runs, sends, publishes, or enables \u2014 not its surface form. Block if ANY rule could apply. <block> immediately.`,

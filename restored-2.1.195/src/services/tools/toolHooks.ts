@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module mzt
 // matched 2.1.88 source: src/services/tools/toolHooks.ts
 // class=modified  jaccard=0.5296  score=0.7633  fileCov=0.6337
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function* gzt(e, t, n, r, o, s, i, a, l, c) {
+async function* runPostToolUseHooks(e, t, n, r, o, s, i, a, l, c) {
   if (w$e(t)) return;
   if (e.options.bareFork) return;
   let u = Date.now();
@@ -114,7 +114,7 @@ async function* gzt(e, t, n, r, o, s, i, a, l, c) {
     ke(d);
   }
 }
-async function* hzt(e, t, n, r, o, s, i, a, l, c, u) {
+async function* runPostToolUseFailureHooks(e, t, n, r, o, s, i, a, l, c, u) {
   if (w$e(t)) return;
   if (e.options.bareFork) return;
   let d = Date.now();
@@ -205,7 +205,7 @@ async function* hzt(e, t, n, r, o, s, i, a, l, c, u) {
     ke(p);
   }
 }
-async function yzt(e, t, n, r, o, s, i) {
+async function resolveHookPermissionDecision(e, t, n, r, o, s, i) {
   if (w$e(t))
     return {
       decision: {
@@ -279,7 +279,7 @@ async function yzt(e, t, n, r, o, s, i) {
     input: u,
   };
 }
-async function* _zt(e, t, n, r, o, s, i, a) {
+async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
   if (w$e(t)) return;
   if (e.options.bareFork) return;
   let l = Date.now(),

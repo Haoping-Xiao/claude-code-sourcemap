@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $zo
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=partial  jaccard=0.0672  score=0.1616  fileCov=0.1032
-// note: low-confidence suggestion: src/ink/terminal.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/ink/terminal.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $zo] deps: ft, ft, Zrr, sYe, mE, E8e, Ko, gm, AN, X0, WTe, fH, Ed, HN, _i, wOe, Ye, kt, jc, uo, fh, sA, BE, QOe, oc, aE, xW, _Tt, vn, bm, co, I1, Ao, Sdr, DE, __, y3, y_, _a, aS, uJt
 IEc = R(lt(), 1), Qz = R(rt(), 1), iy = R(se(), 1), qTt = (Eoe(), ro(Ope));
@@ -31,7 +31,7 @@ function Mhm() {
     stylepool_overflowed: t.overflowed,
     atlas_glyph_keys: n.atlasKeys,
     atlas_keys_saturated: n.saturated,
-    term_program: $e($hm()),
+    term_program: $e(isSynchronizedOutputSupported()),
     is_xtermjs: yb(),
     session_age_bucket: $e(Ohm(Gie())),
     proactive_reset_count: r.count,
@@ -39,7 +39,7 @@ function Mhm() {
   }), t2i()) xe("render_stylepool");
   if (t.overflowed && n2i()) It("render_stylepool", "cap_hit");
 }
-function $hm() {
+function isSynchronizedOutputSupported() {
   if (process.env.CURSOR_TRACE_ID !== void 0) return "cursor";
   switch (process.env.TERM_PROGRAM) {
     case "vscode":

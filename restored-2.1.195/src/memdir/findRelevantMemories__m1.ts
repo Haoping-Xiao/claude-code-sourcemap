@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module put
 // matched 2.1.88 source: src/memdir/findRelevantMemories.ts
 // class=modified (alt of src/memdir/findRelevantMemories.ts)  jaccard=0.064  score=0.1842  fileCov=0.0892
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module put] deps: Xr, ft, uut, mSe, z1, ole, wr, NX, Ao, dr
 ySe = Dy({
@@ -79,7 +79,7 @@ function wla(e, t, n, r) {
     ],
   };
 }
-var X1n = "memdir_relevance",
+var selectRelevantMemories = "memdir_relevance",
   Qio = "memdir_aki_extract";
 function Zio() {
   return false;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ttl
 // matched 2.1.88 source: src/tools/FileWriteTool/UI.tsx
 // class=partial  jaccard=0.2412  score=0.4395  fileCov=0.3483
-// note: low-confidence suggestion: src/tools/FileWriteTool/UI.tsx; dir inferred from dep-graph -> ink; 0 renamed
+// note: low-confidence suggestion: src/tools/FileWriteTool/UI.tsx; dir inferred from dep-graph -> ink; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function vtl(e) {
   let t = e.split(oyt);
@@ -12,7 +12,7 @@ function Aef(e, t) {
   let n = lGe(e, t).height;
   return e.endsWith(oyt) ? n - 1 : n;
 }
-function Hef(e) {
+function FileWriteToolCreatedMessage(e) {
   let t = f6n.c(31),
     {
       filePath: n,
@@ -76,7 +76,7 @@ function Hef(e) {
   }), t[27] = S, t[28] = A, t[29] = h, t[30] = v;else v = t[30];
   return v;
 }
-function wtl(e) {
+function userFacingName(e) {
   if (e?.file_path?.startsWith(gS())) return "Updated plan";
   return "Write";
 }
@@ -143,7 +143,7 @@ function Tef(e) {
   }), t[5] = r, t[6] = n, t[7] = c, t[8] = s, t[9] = u;else u = t[9];
   let d = u,
     p;
-  if (t[10] !== d || t[11] !== a || t[12] !== n || t[13] !== c || t[14] !== o || t[15] !== s) p = uA.jsx(vef, {
+  if (t[10] !== d || t[11] !== a || t[12] !== n || t[13] !== c || t[14] !== o || t[15] !== s) p = uA.jsx(WriteRejectionBody, {
     promise: a,
     filePath: n,
     firstLine: c,
@@ -158,7 +158,7 @@ function Tef(e) {
   }), t[17] = d, t[18] = p, t[19] = f;else f = t[19];
   return f;
 }
-function vef(e) {
+function WriteRejectionBody(e) {
   let t = f6n.c(8),
     {
       promise: n,
@@ -229,7 +229,7 @@ async function wef(e, t) {
     };
   }
 }
-function ktl(e, {
+function renderToolUseErrorMessage(e, {
   verbose: t
 }) {
   if (!t && typeof e === "string" && xl(e, "tool_use_error")) return uA.jsx(qn, {
@@ -243,7 +243,7 @@ function ktl(e, {
     verbose: t
   });
 }
-function Rtl({
+function renderToolResultMessage({
   filePath: e = "",
   content: t,
   structuredPatch: n,
@@ -276,7 +276,7 @@ function Rtl({
             })]
           });
         }
-        return uA.jsx(Hef, {
+        return uA.jsx(FileWriteToolCreatedMessage, {
           filePath: e,
           content: t,
           verbose: a

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module n4l
 // matched 2.1.88 source: src/commands/plugin/PluginSettings.tsx
 // class=modified  jaccard=0.3793  score=0.5421  fileCov=0.5581
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n4l] deps: si, Ye, je, At, vrr, sr
 ((Zjl = R(lt(), 1)), (e4l = R(rt(), 1)), (EUo = R(se(), 1)));
-function $Bf(e) {
+function MarketplaceList(e) {
   let t = AXt.c(4),
     { onComplete: n } = e,
     r,
@@ -137,7 +137,7 @@ function WBf() {
   else t = e[0];
   return t;
 }
-function AUo(e) {
+function getExtraMarketplaceSourceInfo(e) {
   let t = [],
     n = [
       {
@@ -166,8 +166,8 @@ function AUo(e) {
     isInPolicy: o,
   };
 }
-function r4l(e) {
-  let { editableSources: t, isInPolicy: n } = AUo(e);
+function buildMarketplaceAction(e) {
+  let { editableSources: t, isInPolicy: n } = getExtraMarketplaceSourceInfo(e);
   if (t.length > 0)
     return {
       kind: "remove-extra-marketplace",
@@ -189,7 +189,7 @@ function r4l(e) {
     },
   };
 }
-function qBf(e) {
+function buildPluginAction(e) {
   return {
     kind: "navigate",
     tab: "installed",
@@ -206,13 +206,13 @@ function Irr(e) {
   if (e.type === "marketplace-not-found") return true;
   return false;
 }
-function HUo(e) {
+function getPluginNameFromError(e) {
   if ("pluginId" in e && e.pluginId) return e.pluginId;
   if ("plugin" in e && e.plugin) return e.plugin;
   if (e.source.includes("@")) return bi(e.source, "@");
   return;
 }
-function zBf(e, t, n, r, o, s, i, a) {
+function buildErrorRows(e, t, n, r, o, s, i, a) {
   let l = [];
   for (let d of s) {
     let p = "pluginId" in d ? d.pluginId : "plugin" in d ? d.plugin : void 0;
@@ -228,8 +228,8 @@ function zBf(e, t, n, r, o, s, i, a) {
   let c = new Set();
   for (let d of e) {
     c.add(d.name);
-    let p = r4l(d.name),
-      f = AUo(d.name),
+    let p = buildMarketplaceAction(d.name),
+      f = getExtraMarketplaceSourceInfo(d.name),
       m = f.isInPolicy ? "managed" : f.editableSources[0]?.scope;
     l.push({
       label: d.name,
@@ -246,8 +246,8 @@ function zBf(e, t, n, r, o, s, i, a) {
     let p = "marketplace" in d ? d.marketplace : d.source;
     if (c.has(p)) continue;
     c.add(p);
-    let f = r4l(p),
-      m = AUo(p),
+    let f = buildMarketplaceAction(p),
+      m = getExtraMarketplaceSourceInfo(p),
       g = m.isInPolicy ? "managed" : m.editableSources[0]?.scope;
     l.push({
       label: p,
@@ -274,7 +274,7 @@ function zBf(e, t, n, r, o, s, i, a) {
   }
   let u = new Set();
   for (let d of n) {
-    let p = HUo(d);
+    let p = getPluginNameFromError(d);
     if (p && u.has(p)) continue;
     if (p) u.add(p);
     let f = "marketplace" in d ? d.marketplace : void 0,
@@ -284,7 +284,7 @@ function zBf(e, t, n, r, o, s, i, a) {
       message: a1e(d),
       guidance: FKe(d),
       action: p
-        ? qBf(p)
+        ? buildPluginAction(p)
         : {
             kind: "none",
           },
@@ -340,7 +340,7 @@ function KBf(e, t) {
     if (Object.keys(o).length > 0) io(n, o);
   }
 }
-function YBf(e) {
+function ErrorsTabContent(e) {
   let t = AXt.c(26),
     { setViewState: n, setActiveTab: r, markPluginsChanged: o } = e,
     s = Ht(oUf),
@@ -384,7 +384,7 @@ function YBf(e) {
     v = s.filter(ZBf),
     C = s.filter(QBf),
     x = Ese(),
-    I = zBf(b, A, v, C, m, S, i, x),
+    I = buildErrorRows(b, A, v, C, m, S, i, x),
     k;
   if (t[3] !== n)
     ((k = () => {
@@ -665,7 +665,7 @@ function QBf(e) {
     e.type === "marketplace-blocked-by-policy"
   )
     return false;
-  return HUo(e) === void 0;
+  return getPluginNameFromError(e) === void 0;
 }
 function ZBf(e) {
   if (Irr(e)) return false;
@@ -675,7 +675,7 @@ function ZBf(e) {
     e.type === "marketplace-blocked-by-policy"
   )
     return false;
-  return HUo(e) !== void 0;
+  return getPluginNameFromError(e) !== void 0;
 }
 function eUf(e) {
   return e.name;
@@ -692,7 +692,7 @@ function rUf(e) {
 function oUf(e) {
   return e.plugins.errors;
 }
-function sUf(e) {
+function getInitialViewState(e) {
   switch (e.type) {
     case "help":
       return {
@@ -797,12 +797,12 @@ function sUf(e) {
       };
   }
 }
-function iUf(e) {
+function getInitialTab(e) {
   if (e.type === "manage-plugins") return "installed";
   if (e.type === "manage-marketplaces") return "marketplaces";
   return "discover";
 }
-function o4l({
+function PluginSettings({
   onComplete: e,
   args: t,
   showMcpRedirectMessage: n,
@@ -811,10 +811,10 @@ function o4l({
   commands: s,
 }) {
   let i = Ujl(t),
-    a = sUf(i),
+    a = getInitialViewState(i),
     [l, c] = UT.useState(a),
     u = UT.useRef(new Set()),
-    [d, p] = UT.useState(iUf(a)),
+    [d, p] = UT.useState(getInitialTab(a)),
     [f, m] = UT.useState(l.type === "add-marketplace" ? l.initialValue || "" : ""),
     [g, h] = UT.useState(0),
     [y, b] = UT.useState(null),
@@ -1042,7 +1042,7 @@ function o4l({
       null
     );
   if (l.type === "marketplace-list")
-    return oa.jsx($Bf, {
+    return oa.jsx(MarketplaceList, {
       onComplete: e,
     });
   if (l.type === "plugin-list")
@@ -1139,7 +1139,7 @@ function o4l({
         oa.jsx(sm, {
           id: "errors",
           title: I,
-          children: oa.jsx(YBf, {
+          children: oa.jsx(ErrorsTabContent, {
             setViewState: c,
             setActiveTab: p,
             markPluginsChanged: P,

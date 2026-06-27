@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KXl
 // matched 2.1.88 source: src/skills/bundledSkills.ts
 // class=modified  jaccard=0.3087  score=0.4903  fileCov=0.4545
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KXl] deps: ft, Un, kt, oo, x4o
 zXl = [
@@ -34,7 +34,7 @@ zXl = [
     description: "Monitor and autofix any issues with the current PR",
   }),
 ];
-function Nd(e) {
+function registerBundledSkill(e) {
   let { files: t } = e,
     n,
     r = e.getPromptForCommand,
@@ -46,12 +46,12 @@ function Nd(e) {
     r = async (l, c) => {
       i ??= (async () => {
         let p = o ? await t() : t;
-        return F8f(e.name, p);
+        return extractBundledSkillFiles(e.name, p);
       })();
       let u = await i,
         d = await a(l, c);
       if (u === null) return d;
-      return z8f(d, u);
+      return prependBaseDir(d, u);
     };
   }
   let s = {
@@ -95,7 +95,7 @@ function k4o() {
 function XXl(e) {
   return $se.join(eir(), e);
 }
-async function F8f(e, t) {
+async function extractBundledSkillFiles(e, t) {
   let n = XXl(e);
   try {
     return (await j8f(n, t), xe("skill_bundled_extract"), n);
@@ -112,7 +112,7 @@ async function F8f(e, t) {
 async function j8f(e, t) {
   let n = new Map();
   for (let [r, o] of Object.entries(t)) {
-    let s = V8f(e, r),
+    let s = resolveSkillFilePath(e, r),
       i = $se.dirname(s),
       a = [s, o],
       l = n.get(i);
@@ -137,13 +137,13 @@ async function q8f(e, t) {
     await n.close();
   }
 }
-function V8f(e, t) {
+function resolveSkillFilePath(e, t) {
   let n = $se.normalize(t);
   if ($se.isAbsolute(n) || n.split($se.sep).includes("..") || n.split("/").includes(".."))
     throw Error(`bundled skill file path escapes skill dir: ${t}`);
   return $se.join(e, n);
 }
-function z8f(e, t) {
+function prependBaseDir(e, t) {
   let n = `Base directory for this skill: ${t}
 
 `;

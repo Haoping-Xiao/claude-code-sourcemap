@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BCa
 // matched 2.1.88 source: src/services/mcp/xaa.ts
 // class=modified (alt of src/services/mcp/xaa.ts)  jaccard=0.0391  score=0.1158  fileCov=0.0558
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BCa] deps: oke, Xr, At, vn, Mh, Jt
 BUn = NCa();
@@ -218,7 +218,7 @@ async function Rdo(e, t) {
     sn(e, `clear tokenless stub failed: ${be(o)}`);
   }
 }
-async function GCa({
+async function exchangeJwtAuthGrant({
   serverName: e,
   endpoint: t,
   token: n,
@@ -261,7 +261,7 @@ async function GCa({
     else throw u;
   }
 }
-async function FSe(e, t, { preserveStepUpState: n = !1 } = {}) {
+async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {}) {
   let r = wl(),
     o = await r.readAsync();
   if (!o?.mcpOAuth) {
@@ -294,7 +294,7 @@ async function FSe(e, t, { preserveStepUpState: n = !1 } = {}) {
                 : "client_secret_basic";
           if ((sn(e, `Revoking tokens via ${d} (${f})`), i.refreshToken))
             try {
-              await GCa({
+              await exchangeJwtAuthGrant({
                 serverName: e,
                 endpoint: d,
                 token: i.refreshToken,
@@ -309,7 +309,7 @@ async function FSe(e, t, { preserveStepUpState: n = !1 } = {}) {
             }
           if (i.accessToken)
             try {
-              await GCa({
+              await exchangeJwtAuthGrant({
                 serverName: e,
                 endpoint: d,
                 token: i.accessToken,

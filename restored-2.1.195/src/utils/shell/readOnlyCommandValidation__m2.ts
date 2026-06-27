@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TKo
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0104  score=0.1494  fileCov=0.0111
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function nkc(e, t) {
   if (e) {
@@ -26,7 +26,7 @@ async function rkc(e, t) {
     MNe
   );
   if (fr() !== "firstParty" || Vi()) return r();
-  let o = await cTm(e, t);
+  let o = await GH_READ_ONLY_COMMANDS(e, t);
   if (t.aborted) return MNe;
   if (o === null) return MNe;
   if (o.length === 0) return r();
@@ -73,7 +73,7 @@ Body: ${(i.body ?? "").slice(0, 200)}`,
     return (ke(i), MNe);
   }
 }
-async function cTm(e, t) {
+async function GH_READ_ONLY_COMMANDS(e, t) {
   for (let n of [["--author", "@me"], []]) {
     let r = await Gr(
       "gh",

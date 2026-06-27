@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module k$c
 // matched 2.1.88 source: src/components/BypassPermissionsModeDialog.tsx
 // class=modified  jaccard=0.4682  score=0.6566  fileCov=0.62
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: BypassPermissionsModeDialog
 // [unwrapped __esm module k$c] deps: Eor, Ye, kt, Fy, RLe, FZt, yFo, bFo
@@ -13,7 +13,7 @@ function BypassPermissionsModeDialog(e) {
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = []), (t[0] = r));
   else r = t[0];
-  umr.useEffect(ixm, r);
+  umr.useEffect(_temp, r);
   let o = umr.useRef(false),
     s;
   if (t[1] !== n)
@@ -92,7 +92,7 @@ function BypassPermissionsModeDialog(e) {
   else u = t[6];
   return u;
 }
-function ixm() {
+function _temp() {
   G("tengu_bypass_permissions_mode_dialog_shown", {});
 }
 var R$c, umr, ove;

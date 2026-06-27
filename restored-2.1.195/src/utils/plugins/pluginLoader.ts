@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module D$o
 // matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
 // class=modified  jaccard=0.311  score=0.3814  fileCov=0.6276
-// note: deminified; 30 identifiers renamed (exports/displayName/curated)
+// note: deminified; 43 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolvePluginRoot, resolvePluginPath, resolveContainedPluginPath, probeSeedCacheAnyVersion, mergePluginSources, loadSkillsAsPlugins, loadPluginManifest, loadAllPluginsForPreview, loadAllPluginsCacheOnly, loadAllPlugins, installFromNpm, installFromGitSubdir, gitClone, getVersionedZipCachePath, getVersionedCachePathIn, getVersionedCachePath, getPluginCachePath, getLegacyCachePath, getEnabledPluginBinPaths, generateTemporaryCacheNameForPlugin, displaySkillsDirPath, createPluginFrom …
 function displaySkillsDirPath(e) {
@@ -306,7 +306,7 @@ async function copyPluginToVersionedCache(e, t, n, r, o, s) {
   if (i) return (await JZn(l, c), T(`Successfully cached plugin ${t} as ZIP at ${c}`), c);
   return (T(`Successfully cached plugin ${t} at ${l}`), l);
 }
-function QRl(e) {
+function validateGitUrl(e) {
   try {
     let t = new URL(e);
     if (!["https:", "http:", "file:"].includes(t.protocol)) {
@@ -425,22 +425,22 @@ async function gitClone(e, t, n, r) {
   }
   YD("plugin_clone", e, "success", performance.now() - i);
 }
-async function nLl(e, t, n, r) {
-  let o = QRl(e);
+async function installFromGit(e, t, n, r) {
+  let o = validateGitUrl(e);
   await gitClone(o, t, n, r);
   let s = n ? ` (ref: ${n})` : "";
   T(`Cloned repository from ${o}${s} to ${t}`);
 }
-async function Hxf(e, t, n, r) {
+async function installFromGitHub(e, t, n, r) {
   if (!/^[a-zA-Z0-9-_.]+\/[a-zA-Z0-9-_.]+$/.test(e))
     throw Error(`Invalid GitHub repository format: ${e}. Expected format: owner/repo`);
   let o = eRe() ? `https://github.com/${e}.git` : `git@${JH}:${e}.git`;
-  return nLl(o, t, n, r);
+  return installFromGit(o, t, n, r);
 }
 function Txf(e) {
   if (/^[a-zA-Z0-9-_.]+\/[a-zA-Z0-9-_.]+$/.test(e))
     return eRe() ? `https://github.com/${e}.git` : `git@${JH}:${e}.git`;
-  return QRl(e);
+  return validateGitUrl(e);
 }
 async function installFromGitSubdir(e, t, n, r, o) {
   if (!(await sWe()))
@@ -533,7 +533,7 @@ async function installFromGitSubdir(e, t, n, r, o) {
     });
   }
 }
-async function vxf(e, t, n) {
+async function installFromLocal(e, t, n) {
   if (!(await ed(e))) throw Error(`Source path does not exist: ${e}`);
   if (n) await copyDir(e, t, e, t, n);
   else await copyDir(e, t);
@@ -580,7 +580,7 @@ async function cachePlugin(e, t) {
       (s = !0),
       typeof e === "string")
     )
-      await vxf(e, o, t?.containmentRoot);
+      await installFromLocal(e, o, t?.containmentRoot);
     else
       switch (e.source) {
         case "npm":
@@ -590,10 +590,10 @@ async function cachePlugin(e, t) {
           });
           break;
         case "github":
-          await Hxf(e.repo, o, e.ref, e.sha);
+          await installFromGitHub(e.repo, o, e.ref, e.sha);
           break;
         case "url":
-          await nLl(e.url, o, e.ref, e.sha);
+          await installFromGit(e.url, o, e.ref, e.sha);
           break;
         case "git-subdir":
           i = await installFromGitSubdir(e.url, o, e.path, e.ref, e.sha);
@@ -716,7 +716,7 @@ JSON parse error: ${p}`)
     }
   );
 }
-async function WRl(e, t) {
+async function loadPluginHooks(e, t) {
   if (!(await ed(e)))
     throw Error(
       `Hooks file not found at ${e} for plugin ${t}. If the manifest declares hooks, the file must exist.`,
@@ -776,7 +776,7 @@ function resolveContainedPluginPath(e, t) {
   if (o.startsWith("..") || Es.resolve(o) === o) return null;
   return r;
 }
-async function kq(e, t, n, r, o, s, i, a, l = !1) {
+async function validatePluginPaths(e, t, n, r, o, s, i, a, l = !1) {
   let c = await Promise.all(
       e.map(async (d) => {
         let p = resolveContainedPluginPath(t, d);
@@ -1098,7 +1098,16 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
   if (_) u.agentsPath = k;
   if (a.agents) {
     let W = Array.isArray(a.agents) ? a.agents : [a.agents],
-      V = await kq(W, e, a.name, t, "agents", "Agent", "specified in manifest but", s);
+      V = await validatePluginPaths(
+        W,
+        e,
+        a.name,
+        t,
+        "agents",
+        "Agent",
+        "specified in manifest but",
+        s,
+      );
     if (V.length > 0) u.agentsPaths = V;
   }
   let D = Es.join(e, "skills");
@@ -1107,14 +1116,24 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
     let W = Array.isArray(a.skills) ? a.skills : [a.skills],
       V = Es.resolve(D),
       Y = Es.resolve(e),
-      z = (await kq(W, e, a.name, t, "skills", "Skill", "specified in manifest but", s, !0)).filter(
-        (K) => {
-          let Z = Es.resolve(K);
-          if (Z === V) return !1;
-          if (y === JE && Z === Y) return !1;
-          return !0;
-        },
-      );
+      z = (
+        await validatePluginPaths(
+          W,
+          e,
+          a.name,
+          t,
+          "skills",
+          "Skill",
+          "specified in manifest but",
+          s,
+          !0,
+        )
+      ).filter((K) => {
+        let Z = Es.resolve(K);
+        if (Z === V) return !1;
+        if (y === JE && Z === Y) return !1;
+        return !0;
+      });
     if (z.length > 0) u.skillsPaths = z;
   } else if (!S && y !== JE) {
     if (await ed(Es.join(e, "SKILL.md"))) u.skillsPaths = [e];
@@ -1123,7 +1142,7 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
   if (v) u.outputStylesPath = P;
   if (A) {
     let W = Array.isArray(A) ? A : [A],
-      V = await kq(
+      V = await validatePluginPaths(
         W,
         e,
         a.name,
@@ -1140,13 +1159,31 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
   let L = a.experimental?.themes ?? a.themes;
   if (L) {
     let W = Array.isArray(L) ? L : [L],
-      V = await kq(W, e, a.name, t, "themes", "Theme", "specified in manifest but", s);
+      V = await validatePluginPaths(
+        W,
+        e,
+        a.name,
+        t,
+        "themes",
+        "Theme",
+        "specified in manifest but",
+        s,
+      );
     if (V.length > 0) u.themesPaths = V;
   }
   if (x) u.workflowsPath = Es.join(e, "workflows");
   if (a.workflows) {
     let W = Array.isArray(a.workflows) ? a.workflows : [a.workflows],
-      V = await kq(W, e, a.name, t, "workflows", "Workflow", "specified in manifest but", s);
+      V = await validatePluginPaths(
+        W,
+        e,
+        a.name,
+        t,
+        "workflows",
+        "Workflow",
+        "specified in manifest but",
+        s,
+      );
     if (V.length > 0) u.workflowsPaths = V;
   }
   let M,
@@ -1154,7 +1191,7 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
     B = Es.join(e, "hooks", "hooks.json");
   if (await ed(B))
     try {
-      M = await WRl(B, a.name);
+      M = await loadPluginHooks(B, a.name);
       try {
         N.add(await cd.realpath(B));
       } catch {
@@ -1235,7 +1272,7 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
           continue;
         }
         try {
-          let K = await WRl(Y, a.name);
+          let K = await loadPluginHooks(Y, a.name);
           try {
             ((M = zRl(M, K)),
               N.add(z),
@@ -1274,7 +1311,7 @@ async function createPluginFromPath(e, t, n, r, o = !0) {
   if (M) u.hooksConfig = M;
   let $ = await wxf(e, a, t, s);
   if ($) u.monitors = $;
-  let q = await Ixf(e, a);
+  let q = await loadPluginSettings(e, a);
   if (q) u.settings = q;
   return {
     plugin: u,
@@ -1290,7 +1327,7 @@ function VRl(e) {
   if (Object.keys(n).length === 0) return;
   return n;
 }
-async function Ixf(e, t) {
+async function loadPluginSettings(e, t) {
   let n = Es.join(e, "settings.json"),
     r = !1;
   try {
@@ -1337,7 +1374,7 @@ function zRl(e, t) {
     else n[r] = [...(n[r] || []), ...o];
   return n;
 }
-async function M$o({ cacheOnly: e, preview: t = !1 }) {
+async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
   let n = jo(),
     r = {
       ...tWe(),
@@ -1547,7 +1584,16 @@ async function M$o({ cacheOnly: e, preview: t = !1 }) {
         }
         let P = await (e
           ? xxf(I.entry, I.marketplaceInstallLocation, x?.source, S, A === !0, s, i, D?.installPath)
-          : kxf(I.entry, I.marketplaceInstallLocation, x?.source, S, A === !0, s, i, D?.version));
+          : loadPluginFromMarketplaceEntry(
+              I.entry,
+              I.marketplaceInstallLocation,
+              x?.source,
+              S,
+              A === !0,
+              s,
+              i,
+              D?.version,
+            ));
         if (P && D?.resolvedVersion !== void 0) P.resolvedVersion = D.resolvedVersion;
         return P;
       }),
@@ -1687,9 +1733,9 @@ async function xxf(e, t, n, r, o, s, i, a) {
       );
     }
   }
-  return sLl(e, r, o, s, i, l);
+  return finishLoadingPluginFromPath(e, r, o, s, i, l);
 }
-async function kxf(e, t, n, r, o, s, i, a) {
+async function loadPluginFromMarketplaceEntry(e, t, n, r, o, s, i, a) {
   T(`Loading plugin ${e.name} from source: ${De(e.source)}`);
   let l;
   if (typeof e.source === "string") {
@@ -1794,9 +1840,9 @@ async function kxf(e, t, n, r, o, s, i, a) {
       );
     }
   }
-  return sLl(e, r, o, s, i, l);
+  return finishLoadingPluginFromPath(e, r, o, s, i, l);
 }
-async function sLl(e, t, n, r, o, s) {
+async function finishLoadingPluginFromPath(e, t, n, r, o, s) {
   let i = [],
     {
       plugin: a,
@@ -1813,7 +1859,7 @@ async function sLl(e, t, n, r, o, s) {
   ) {
     let p = Array.isArray(e.skills) ? e.skills : [e.skills];
     if (p.length > 0) {
-      let f = await kq(
+      let f = await validatePluginPaths(
         p,
         s,
         e.name,
@@ -1956,7 +2002,16 @@ async function sLl(e, t, n, r, o, s) {
     }
     if (e.agents) {
       let m = Array.isArray(e.agents) ? e.agents : [e.agents],
-        g = await kq(m, s, e.name, t, "agents", "Agent", "from marketplace entry", i);
+        g = await validatePluginPaths(
+          m,
+          s,
+          e.name,
+          t,
+          "agents",
+          "Agent",
+          "from marketplace entry",
+          i,
+        );
       if (g.length > 0) a.agentsPaths = g;
     }
     if (e.skills) {
@@ -1965,9 +2020,19 @@ async function sLl(e, t, n, r, o, s) {
       );
       let m = Array.isArray(e.skills) ? e.skills : [e.skills],
         g = Es.resolve(Es.join(s, "skills")),
-        h = (await kq(m, s, e.name, t, "skills", "Skill", "from marketplace entry", i, !0)).filter(
-          (y) => Es.resolve(y) !== g,
-        );
+        h = (
+          await validatePluginPaths(
+            m,
+            s,
+            e.name,
+            t,
+            "skills",
+            "Skill",
+            "from marketplace entry",
+            i,
+            !0,
+          )
+        ).filter((y) => Es.resolve(y) !== g);
       if (
         (T(`Found ${h.length} valid skill paths for plugin ${e.name}, setting skillsPaths`),
         h.length > 0)
@@ -1976,13 +2041,31 @@ async function sLl(e, t, n, r, o, s) {
     } else T(`Plugin ${e.name} has no entry.skills defined`);
     if (e.outputStyles) {
       let m = Array.isArray(e.outputStyles) ? e.outputStyles : [e.outputStyles],
-        g = await kq(m, s, e.name, t, "output-styles", "Output style", "from marketplace entry", i);
+        g = await validatePluginPaths(
+          m,
+          s,
+          e.name,
+          t,
+          "output-styles",
+          "Output style",
+          "from marketplace entry",
+          i,
+        );
       if (g.length > 0) a.outputStylesPaths = g;
     }
     let f = e.experimental?.themes ?? e.themes;
     if (f) {
       let m = Array.isArray(f) ? f : [f],
-        g = await kq(m, s, e.name, t, "themes", "Theme", "from marketplace entry", i);
+        g = await validatePluginPaths(
+          m,
+          s,
+          e.name,
+          t,
+          "themes",
+          "Theme",
+          "from marketplace entry",
+          i,
+        );
       if (g.length > 0) a.themesPaths = g;
     }
     if (e.hooks) a.hooksConfig = e.hooks;
@@ -2111,15 +2194,34 @@ async function sLl(e, t, n, r, o, s) {
     }
     if (e.agents) {
       let f = Array.isArray(e.agents) ? e.agents : [e.agents],
-        m = await kq(f, s, e.name, t, "agents", "Agent", "from marketplace entry", i);
+        m = await validatePluginPaths(
+          f,
+          s,
+          e.name,
+          t,
+          "agents",
+          "Agent",
+          "from marketplace entry",
+          i,
+        );
       if (m.length > 0) a.agentsPaths = [...(a.agentsPaths || []), ...m];
     }
     if (e.skills) {
       let f = Array.isArray(e.skills) ? e.skills : [e.skills],
         m = Es.resolve(Es.join(s, "skills")),
-        g = (await kq(f, s, e.name, t, "skills", "Skill", "from marketplace entry", i, !0)).filter(
-          (h) => Es.resolve(h) !== m,
-        );
+        g = (
+          await validatePluginPaths(
+            f,
+            s,
+            e.name,
+            t,
+            "skills",
+            "Skill",
+            "from marketplace entry",
+            i,
+            !0,
+          )
+        ).filter((h) => Es.resolve(h) !== m);
       if (g.length > 0) {
         let h = new Set((a.skillsPaths || []).map((b) => Es.resolve(b))),
           y = g.filter((b) => !h.has(Es.resolve(b)));
@@ -2128,13 +2230,31 @@ async function sLl(e, t, n, r, o, s) {
     }
     if (e.outputStyles) {
       let f = Array.isArray(e.outputStyles) ? e.outputStyles : [e.outputStyles],
-        m = await kq(f, s, e.name, t, "output-styles", "Output style", "from marketplace entry", i);
+        m = await validatePluginPaths(
+          f,
+          s,
+          e.name,
+          t,
+          "output-styles",
+          "Output style",
+          "from marketplace entry",
+          i,
+        );
       if (m.length > 0) a.outputStylesPaths = [...(a.outputStylesPaths || []), ...m];
     }
     let p = e.experimental?.themes ?? e.themes;
     if (p) {
       let f = Array.isArray(p) ? p : [p],
-        m = await kq(f, s, e.name, t, "themes", "Theme", "from marketplace entry", i);
+        m = await validatePluginPaths(
+          f,
+          s,
+          e.name,
+          t,
+          "themes",
+          "Theme",
+          "from marketplace entry",
+          i,
+        );
       if (m.length > 0) a.themesPaths = [...(a.themesPaths || []), ...m];
     }
     if (e.hooks)
@@ -2157,7 +2277,7 @@ async function resolvePluginRoot(e) {
     return Es.join(e, t[0].name);
   return e;
 }
-async function Lxf(e) {
+async function loadSessionOnlyPlugins(e) {
   if (e.length === 0)
     return {
       plugins: [],
@@ -2515,9 +2635,9 @@ function mergePluginSources(e) {
   };
 }
 async function loadAllPluginsForPreview() {
-  return $$o(
+  return assemblePluginLoadResult(
     () =>
-      M$o({
+      loadPluginsFromMarketplaces({
         cacheOnly: !0,
         preview: !0,
       }),
@@ -2537,7 +2657,7 @@ async function getEnabledPluginBinPaths() {
       return !0;
     });
 }
-async function $$o(e, t) {
+async function assemblePluginLoadResult(e, t) {
   let n = yr(),
     r = Lpt();
   if (r && (PV().length > 0 || MV().length > 0 || aee().length > 0))
@@ -2577,7 +2697,7 @@ async function $$o(e, t) {
     },
     [a, l, c] = await Promise.all([
       e(),
-      s.length > 0 ? Lxf(s) : Promise.resolve(i),
+      s.length > 0 ? loadSessionOnlyPlugins(s) : Promise.resolve(i),
       loadSkillsAsPlugins(),
     ]),
     u = oeo(),
@@ -2638,7 +2758,7 @@ function clearPluginCache(e) {
     n_();
   ars();
 }
-function Pxf(e) {
+function mergePluginSettings(e) {
   let t;
   for (let n of e) {
     if (!n.settings) continue;
@@ -2652,7 +2772,7 @@ function Pxf(e) {
   return t;
 }
 function cachePluginSettings(e) {
-  let t = Pxf(e);
+  let t = mergePluginSettings(e);
   if ((irs(t), t && Object.keys(t).length > 0))
     (n_(), T(`Cached plugin settings with keys: ${Object.keys(t).join(", ")}`));
 }

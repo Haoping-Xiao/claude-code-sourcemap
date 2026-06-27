@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jS
 // matched 2.1.88 source: src/utils/path.ts
 // class=modified  jaccard=0.294  score=0.5072  fileCov=0.4115
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jS] deps: Rm, fn, Jkr, BFe
 ((Qkr = require("events")),
@@ -15,7 +15,7 @@ _Pu = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 ((Fpn = Buffer.from('{"type":"attribution-snapshot"')),
   (TPu = Buffer.from('{"type":"system"')),
   (vPu = Buffer.from([iRt])));
-function ds(e, t) {
+function expandPath(e, t) {
   let n = t ?? $t() ?? qt().cwd();
   if (typeof e !== "string") throw TypeError(`Path must be a string, received ${typeof e}`);
   if (typeof n !== "string")
@@ -40,7 +40,7 @@ function eet(e) {
   return t.startsWith("..") ? e : t;
 }
 function MB(e) {
-  let t = ds(e);
+  let t = expandPath(e);
   if (t.startsWith("\\\\") || t.startsWith("//")) return MO.dirname(t);
   try {
     if (qt().statSync(t).isDirectory()) return t;

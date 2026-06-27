@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rnr
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
 // class=modified  jaccard=0.3314  score=0.558  fileCov=0.4494
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rnr]
 ((R1l = R(lt(), 1)),
@@ -104,7 +104,7 @@ function qMf(e = false, t = 1, n = false, r = true) {
     accelEnabled: r,
   };
 }
-function B1l() {
+function initAndLogWheelAccel() {
   let e = T1(),
     t = wc("wheelScrollAccelerationEnabled", true).value;
   return (
@@ -114,7 +114,7 @@ function B1l() {
     qMf(e.useDecayCurve, e.base, e.wheelFlood, t)
   );
 }
-function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = false }) {
+function ScrollKeybindingHandler({ scrollRef: e, isActive: t, onScroll: n, isModal: r = false }) {
   let o = Z_e(),
     s = nnr(),
     { addNotification: i } = Li(),
@@ -171,7 +171,7 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = false }) {
         if (!b || b.getScrollHeight() <= b.getViewportHeight()) return false;
         if (T1() !== u.current) ((u.current = T1()), (c.current = null));
         if (g) s4n();
-        ((c.current ??= B1l()), (c.current.base = T1().base));
+        ((c.current ??= initAndLogWheelAccel()), (c.current.base = T1().base));
         let _ = performance.now(),
           S = N1l(c.current, -1, _);
         (HJr(b), AJr(-1, S, c.current, _), JMf(b, S, g), n?.(false, b));
@@ -181,7 +181,7 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = false }) {
         if (!b || b.getScrollHeight() <= b.getViewportHeight()) return false;
         if (T1() !== u.current) ((u.current = T1()), (c.current = null));
         if (g) s4n();
-        ((c.current ??= B1l()), (c.current.base = T1().base));
+        ((c.current ??= initAndLogWheelAccel()), (c.current.base = T1().base));
         let _ = performance.now(),
           S = N1l(c.current, 1, _);
         (HJr(b), AJr(1, S, c.current, _));

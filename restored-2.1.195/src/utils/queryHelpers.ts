@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module CLo
 // matched 2.1.88 source: src/utils/queryHelpers.ts
 // class=modified  jaccard=0.2908  score=0.4517  fileCov=0.4495
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ZXn(e, t = null) {
+function isResultSuccessful(e, t = null) {
   if (!e) return false;
   if (e.type === "assistant") {
     let n = EU(e.message.content);
@@ -17,7 +17,7 @@ function ZXn(e, t = null) {
   }
   return t === "end_turn";
 }
-function* __t(e, t) {
+function* normalizeMessage(e, t) {
   switch (e.type) {
     case "assistant": {
       let n = e.supersedesUuids;
@@ -202,7 +202,7 @@ async function* fHl(e, t, n, r) {
     }
   }
 }
-async function* mHl(e, t, n, r) {
+async function* handleOrphanedPermission(e, t, n, r) {
   let o = !Z3(),
     { permissionResult: s, assistantMessage: i } = e,
     { toolUseID: a } = s;
@@ -303,7 +303,7 @@ async function* mHl(e, t, n, r) {
     }
   }
 }
-function Obt(e, t, n = b_f) {
+function extractReadFilesFromMessages(e, t, n = b_f) {
   let r = QU(n),
     o = new Map(),
     s = new Map(),

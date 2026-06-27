@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oat
 // matched 2.1.88 source: src/ink/components/App.tsx
 // class=modified  jaccard=0.2308  score=0.5234  fileCov=0.2923
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oat]
 ((WGi = R(rt(), 1)), (Dce = WGi.createContext(null)));
@@ -10,7 +10,7 @@ function oJr() {
   if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return false;
   return true;
 }
-async function qGi(e) {
+async function App(e) {
   let [t] = await Promise.all([e.send(jUi()), e.flush()]);
   if (t) {
     let s = t.name;
@@ -38,7 +38,7 @@ async function qGi(e) {
       `DECSTBM: ${$Rn ? "enabled" : "gated"} (TMUX=${process.env.TMUX ? "set" : "unset"} ZELLIJ=${process.env.ZELLIJ != null ? "set" : "unset"} TERM_PROGRAM=${process.env.TERM_PROGRAM ?? "unset"} TERM=${process.env.TERM ?? "unset"})`,
     ));
 }
-function _Gd(e, t, n, r) {
+function processKeysInBatch(e, t, n, r) {
   if (
     t.some(
       (s) =>

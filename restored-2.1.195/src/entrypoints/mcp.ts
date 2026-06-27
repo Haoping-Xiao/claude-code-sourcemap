@@ -2,16 +2,16 @@
 // restored from claude-code 2.1.195 (deminified) — module Zcr
 // matched 2.1.88 source: src/entrypoints/mcp.ts
 // class=modified  jaccard=0.0886  score=0.3363  fileCov=0.1073
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startMCPServer, createMCPServer
 async function startMCPServer(e, t, n) {
   Uy(e);
-  let r = createMCPServer(t, n),
+  let r = Udc(t, n),
     o = new oFe();
   await r.connect(o);
 }
-function createMCPServer(e, t) {
+function Udc(e, t) {
   XTl(pDo());
   let n = QU(V1),
     r = new mhe(

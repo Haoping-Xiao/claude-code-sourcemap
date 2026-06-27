@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bH
 // matched 2.1.88 source: src/Task.ts
 // class=modified  jaccard=0.2685  score=0.6705  fileCov=0.3094
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bH] deps: ft, je, At, ys, vn, Yf
 ((tNe = require("fs")),
@@ -11,14 +11,14 @@
   (Zsc = tNe.constants.O_NOFOLLOW ?? 0));
 Qsc = new Set();
 vlr = new Map();
-function AC(e) {
+function isTerminalTaskStatus(e) {
   return e === "completed" || e === "failed" || e === "killed";
 }
 function Hze(e) {
   for (let t of Object.values(e))
     if (
       Cem.has(t.type) &&
-      !AC(t.status) &&
+      !isTerminalTaskStatus(t.status) &&
       !(t.type === "in_process_teammate" && t.isIdle) &&
       !(t.type === "remote_agent" && t.isLongRunning)
     )
@@ -26,7 +26,8 @@ function Hze(e) {
   return false;
 }
 function JQn(e) {
-  for (let t of Object.values(e)) if (t.type === "local_bash" && !AC(t.status)) return true;
+  for (let t of Object.values(e))
+    if (t.type === "local_bash" && !isTerminalTaskStatus(t.status)) return true;
   return false;
 }
 function xem(e) {
@@ -36,7 +37,7 @@ function iN(e) {
   let t = xem(e),
     n = nic.randomBytes(8),
     r = t;
-  for (let o = 0; o < 8; o++) r += tic[n[o] % tic.length];
+  for (let o = 0; o < 8; o++) r += TASK_ID_ALPHABET[n[o] % TASK_ID_ALPHABET.length];
   return r;
 }
 function LT(e, t, n, r) {
@@ -55,4 +56,4 @@ function LT(e, t, n, r) {
 var nic,
   Cem,
   Iem,
-  tic = "0123456789abcdefghijklmnopqrstuvwxyz";
+  TASK_ID_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyz";

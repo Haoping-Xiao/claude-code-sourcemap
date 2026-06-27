@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Qzn
 // matched 2.1.88 source: src/components/messages/AttachmentMessage.tsx
 // class=modified  jaccard=0.3697  score=0.501  fileCov=0.5853
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qzn] deps: np, sA, co, Lyt, ql, Ail, ZCo, xil, Lil, Mil, Nil, eIo, Zil, nal, Gzn
 ((dal = R(lt(), 1)), (n3 = R(se(), 1)));
-function pal(e) {
+function AttachmentMessage(e) {
   let t = t_t.c(222),
     { attachment: n, addMargin: r, verbose: o, isTranscriptMode: s } = e;
   if (el() && n.type === "teammate_mailbox") {
@@ -957,7 +957,7 @@ function pal(e) {
     case "task_status": {
       let i;
       if (t[214] !== n)
-        ((i = Ts.jsx(Asf, {
+        ((i = Ts.jsx(TaskStatusMessage, {
           attachment: n,
         })),
           (t[214] = n),
@@ -1123,14 +1123,14 @@ function Esf(e) {
   if (e.summary) return true;
   return !(Qv(pAe(), e.text) || Qv(h8e(), e.text));
 }
-function Asf(e) {
+function TaskStatusMessage(e) {
   let t = t_t.c(4),
     { attachment: n } = e;
   if (Ozn() && n.status === "killed") return null;
   if (el() && n.taskType === "in_process_teammate") {
     let o;
     if (t[0] !== n)
-      ((o = Ts.jsx(Hsf, {
+      ((o = Ts.jsx(TeammateTaskStatus, {
         attachment: n,
       })),
         (t[0] = n),
@@ -1140,7 +1140,7 @@ function Asf(e) {
   }
   let r;
   if (t[2] !== n)
-    ((r = Ts.jsx(fal, {
+    ((r = Ts.jsx(GenericTaskStatus, {
       attachment: n,
     })),
       (t[2] = n),
@@ -1148,7 +1148,7 @@ function Asf(e) {
   else r = t[3];
   return r;
 }
-function fal(e) {
+function GenericTaskStatus(e) {
   let t = t_t.c(6),
     { attachment: n } = e,
     r =
@@ -1197,7 +1197,7 @@ function fal(e) {
   else i = t[5];
   return i;
 }
-function Hsf(e) {
+function TeammateTaskStatus(e) {
   let t = t_t.c(13),
     { attachment: n } = e,
     r;
@@ -1207,7 +1207,7 @@ function Hsf(e) {
   if (o?.type !== "in_process_teammate") {
     let d;
     if (t[2] !== n)
-      ((d = Ts.jsx(fal, {
+      ((d = Ts.jsx(GenericTaskStatus, {
         attachment: n,
       })),
         (t[2] = n),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nXo
 // matched 2.1.88 source: src/cli/structuredIO.ts
 // class=modified  jaccard=0.1256  score=0.1456  fileCov=0.4765
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nXo] deps: Jt
 nLm = /\u2028|\u2029/g;
@@ -78,7 +78,7 @@ function sLm(e, t, n, r) {
     input: t,
   };
 }
-class dnn {
+class StructuredIO {
   input;
   replayUserMessages;
   structuredInput;
@@ -518,7 +518,7 @@ class dnn {
       });
       let f = xvt.randomUUID();
       try {
-        let m = pLm(t, s, l, r, c).then((A) => ({
+        let m = executePermissionRequestHooksForSDK(t, s, l, r, c).then((A) => ({
           source: "hook",
           decision: A,
         }));
@@ -795,7 +795,7 @@ class dnn {
 function rXo(e) {
   (console.error(e), process.exit(1));
 }
-async function pLm(e, t, n, r, o) {
+async function executePermissionRequestHooksForSDK(e, t, n, r, o) {
   let s = Fr(r).mode,
     i = jAe(e.name, t, n, r, s, o, r.abortController.signal);
   for await (let a of i)

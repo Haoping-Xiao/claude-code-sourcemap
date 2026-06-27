@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B0r
 // matched 2.1.88 source: src/utils/ripgrep.ts
 // class=modified (alt of src/utils/ripgrep.ts)  jaccard=0.0608  score=0.4001  fileCov=0.0669
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: execSyncWithDefaults_BLOCKS_EVENT_LOOP_WILL_FREEZE_UI_MAKE_SURE_YOU_KNOW_WHAT_YOU_ARE_DOING, execFileNoThrowWithCwd, execFileNoThrow
 function execFileNoThrow(
@@ -24,7 +24,7 @@ function execFileNoThrow(
     input: n.input,
   });
 }
-function f$u(e) {
+function ripGrep(e) {
   return on(e) === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" || e?.isMaxBuffer === true;
 }
 function m$u(e, t) {
@@ -93,7 +93,7 @@ function execFileNoThrowWithCwd(
           T(`execFileNoThrow spawn failed: ${on(f)} ${m}`, {
             level: "error",
           });
-        else if (f$u(f))
+        else if (ripGrep(f))
           T(`execFileNoThrow maxBuffer exceeded: ${m}`, {
             level: "error",
           });

@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module sYl
 // matched 2.1.88 source: src/components/agents/agentFileUtils.ts
 // class=modified  jaccard=0.459  score=0.6312  fileCov=0.6272
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sYl]
 cme = {
   FOLDER_NAME: ".claude",
   AGENTS_DIR: "agents",
 };
-function RVf(e, t, n, r, o, s, i, a) {
+function formatAgentAsMarkdown(e, t, n, r, o, s, i, a) {
   let l = t
       .replaceAll("\\", "\\\\")
       .replaceAll('"', '\\"')
@@ -48,7 +48,7 @@ description: "${l}"${u}${d}${p}${f}${m}
 ${r}
 `;
 }
-function $sr(e) {
+function getAgentDirectoryPath(e) {
   switch (e) {
     case "flagSettings":
       throw Error(`Cannot get directory path for ${e} agents`);
@@ -67,19 +67,19 @@ function iYl(e) {
     case "projectSettings":
       return Lse.join(".", cme.FOLDER_NAME, cme.AGENTS_DIR);
     default:
-      return $sr(e);
+      return getAgentDirectoryPath(e);
   }
 }
 function o4o(e) {
-  let t = $sr(e.source);
+  let t = getAgentDirectoryPath(e.source);
   return Lse.join(t, `${e.agentType}.md`);
 }
-function Osr(e) {
+function getActualAgentFilePath(e) {
   if (e.source === "built-in") return "Built-in";
   if (e.source === "plugin") throw Error("Cannot get file path for plugin agents");
   let t = e.filename || e.agentType;
   if (e.baseDir) return Lse.join(e.baseDir, `${t}.md`);
-  let n = $sr(e.source);
+  let n = getAgentDirectoryPath(e.source);
   return Lse.join(n, `${t}.md`);
 }
 function aYl(e) {
@@ -87,7 +87,7 @@ function aYl(e) {
   let t = iYl(e.source);
   return Lse.join(t, `${e.agentType}.md`);
 }
-function lYl(e) {
+function getActualRelativeAgentFilePath(e) {
   if (Sh(e)) return "Built-in";
   if (sfe(e)) return `Plugin: ${e.plugin || "Unknown"}`;
   if (e.source === "flagSettings") return "CLI argument";
@@ -96,17 +96,17 @@ function lYl(e) {
   return Lse.join(t, `${n}.md`);
 }
 async function LVf(e) {
-  let t = $sr(e);
+  let t = getAgentDirectoryPath(e);
   return (await qt().mkdir(t), t);
 }
-async function cYl(e, t, n, r, o, s = true, i, a, l, c) {
+async function saveAgentToFile(e, t, n, r, o, s = true, i, a, l, c) {
   if (e === "built-in") throw Error("Cannot save built-in agents");
   await LVf(e);
   let u = o4o({
       source: e,
       agentType: t,
     }),
-    d = RVf(t, n, r, o, i, a, l, c);
+    d = formatAgentAsMarkdown(t, n, r, o, i, a, l, c);
   try {
     await pYl(u, d, s ? "wx" : "w");
   } catch (p) {
@@ -114,9 +114,9 @@ async function cYl(e, t, n, r, o, s = true, i, a, l, c) {
     throw p;
   }
 }
-async function uYl(e, t) {
+async function updateAgentFile(e, t) {
   if (e.source === "built-in") throw Error("Cannot update built-in agents");
-  let n = Osr(e),
+  let n = getActualAgentFilePath(e),
     r = await qAt.readFile(n, "utf-8"),
     { frontmatter: o, content: s } = Bm(r, n),
     i = {
@@ -140,9 +140,9 @@ ${Pkn(i)}---
 ${s}`,
   );
 }
-async function dYl(e) {
+async function deleteAgentFromFile(e) {
   if (e.source === "built-in") throw Error("Cannot delete built-in agents");
-  let t = Osr(e);
+  let t = getActualAgentFilePath(e);
   try {
     await qAt.unlink(t);
   } catch (n) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module s1o
 // matched 2.1.88 source: src/components/Settings/Config.tsx
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0476  score=0.3224  fileCov=0.0529
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseConfigShorthand, listConfigKeys, getConfigArgumentCompletions, applyConfigShorthand, _resetSettableConfigKeysForTesting
 // [unwrapped __esm module s1o] deps: Ye, er, Rnt, Fh, DE, __, je, kt, dn, SC, EHe, DD, vM, Ao, h7t, gb, j_e, BRt, m0, aE, dr, HU, ft, UX, G4, fn, Un, lH, rze, S7t, n1o, sre, sA, NDe, cAe, L0o, NE, uf, rtr, Xa
@@ -49,7 +49,7 @@ function rRf(e, t) {
   return t.find((r) => r.id.toLowerCase() === n);
 }
 function applyConfigShorthand(e, t, n) {
-  let { settings: r } = iEt(a1o(t, n));
+  let { settings: r } = iEt(Config(t, n));
   return e.map(({ key: o, raw: s }) => sRf(o, s, r));
 }
 function sRf(e, t, n) {
@@ -124,7 +124,7 @@ function sRf(e, t, n) {
   }
 }
 function listConfigKeys(e) {
-  let { settings: t } = iEt(a1o(e));
+  let { settings: t } = iEt(Config(e));
   return t
     .flatMap((n) => {
       if (n.consentGated) return [];
@@ -183,7 +183,7 @@ function aRf() {
         mcpClients: [],
       },
     },
-    { settings: t } = iEt(a1o(e));
+    { settings: t } = iEt(Config(e));
   return (
     (E7t = t.flatMap((n) => {
       if (n.consentGated) return [];
@@ -205,7 +205,7 @@ function aRf() {
 function lRf() {
   E7t = void 0;
 }
-function a1o(e, t) {
+function Config(e, t) {
   let n = e.getAppState(),
     r = Dr(),
     o = sEt(),

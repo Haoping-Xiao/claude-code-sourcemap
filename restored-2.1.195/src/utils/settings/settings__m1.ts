@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oLt
 // matched 2.1.88 source: src/utils/settings/settings.ts
 // class=modified (alt of src/utils/settings/settings.ts)  jaccard=0.1198  score=0.3085  fileCov=0.1638
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oLt] deps: qee, Jt, sr, lmn, Ows, lj, Bws
 g1u = ve(() => _M().strict());
@@ -21,22 +21,22 @@ function iLt(e) {
   let t = new Set(e.allowedSources);
   return (t.add("flagSettings"), t.add("policySettings"), fv.filter((n) => t.has(n)));
 }
-function A1u() {
+function getManagedSettingsFilePath() {
   return qO.join(QC(), "managed-settings.json");
 }
 function aLt(e) {
   if (Vt() === "wsl" && e.wslInherits?.()) {
-    let t = sLt(NO);
+    let t = loadManagedFileSettings(NO);
     if (t.settings) return t;
-    let n = sLt(QC());
+    let n = loadManagedFileSettings(QC());
     return {
       settings: n.settings,
       errors: [...t.errors, ...n.errors],
     };
   }
-  return sLt(QC());
+  return loadManagedFileSettings(QC());
 }
-function sLt(e) {
+function loadManagedFileSettings(e) {
   let t = [],
     n = {},
     r = false,
@@ -69,7 +69,7 @@ function sLt(e) {
     errors: t,
   };
 }
-function lLt(e, t) {
+function handleFileSystemError(e, t) {
   if (wn(e)) T(`Broken symlink or missing file encountered for settings.json at path: ${t}`);
   else
     T(`settings file read failed at ${t}: ${e}`, {
@@ -217,7 +217,7 @@ function gLr(e, t, n) {
       errors: s,
     };
   } catch (r) {
-    if ((lLt(r, e), wn(r)))
+    if ((handleFileSystemError(r, e), wn(r)))
       return {
         settings: null,
         errors: [],
@@ -235,7 +235,7 @@ function gLr(e, t, n) {
     };
   }
 }
-function fmn(e, t) {
+function getSettingsRootPathForSource(e, t) {
   switch (e) {
     case "userSettings":
       return qO.resolve(tr());
@@ -247,7 +247,7 @@ function fmn(e, t) {
       return t.flagPath ? qO.dirname(qO.resolve(t.flagPath)) : qO.resolve(t.cwd);
   }
 }
-function H1u(e) {
+function getUserSettingsFilePath(e) {
   if (e.coworkPlugins || ut(process.env.CLAUDE_CODE_USE_COWORK_PLUGINS))
     return "cowork_settings.json";
   return "settings.json";
@@ -255,17 +255,17 @@ function H1u(e) {
 function CCe(e, t) {
   switch (e) {
     case "userSettings":
-      return qO.join(fmn(e, t), H1u(t));
+      return qO.join(getSettingsRootPathForSource(e, t), getUserSettingsFilePath(t));
     case "projectSettings":
     case "localSettings":
-      return qO.join(fmn(e, t), kG(e));
+      return qO.join(getSettingsRootPathForSource(e, t), getRelativeSettingsFilePathForSource(e));
     case "policySettings":
-      return A1u();
+      return getManagedSettingsFilePath();
     case "flagSettings":
       return t.flagPath;
   }
 }
-function kG(e) {
+function getRelativeSettingsFilePathForSource(e) {
   switch (e) {
     case "projectSettings":
       return qO.join(".claude", "settings.json");
@@ -459,7 +459,7 @@ function SY(e, t, n) {
   }
   return;
 }
-function SLr(e) {
+function loadSettingsFromDisk(e) {
   if (mLr)
     return {
       settings: {},
@@ -532,7 +532,7 @@ function SLr(e) {
 function w1u(e) {
   let t = a0();
   if (t !== null) return t;
-  let n = SLr(e);
+  let n = loadSettingsFromDisk(e);
   return (Kon(n), n);
 }
 function C1u(e) {

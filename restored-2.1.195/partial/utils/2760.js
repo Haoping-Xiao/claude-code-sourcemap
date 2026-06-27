@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B1
 // matched 2.1.88 source: src/tools/SkillTool/prompt.ts
 // class=partial  jaccard=0.0817  score=0.2219  fileCov=0.1144
-// note: low-confidence suggestion: src/tools/SkillTool/prompt.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/SkillTool/prompt.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module B1] deps: ft, je, fn, At, es, ys, Jbe
 _ct = require("fs/promises"), bct = require("path");
@@ -21,7 +21,7 @@ function qWe(e, t = Ora) {
 function $2t(e) {
   return e.whenToUse ? `${e.description} - ${e.whenToUse}` : e.description;
 }
-function eop(e) {
+function formatCommandsWithinBudget(e) {
   return e.type === "prompt" && e.source === "bundled";
 }
 function Nra(e, t, n, r, o = Ora) {
@@ -62,7 +62,7 @@ function Nra(e, t, n, r, o = Ora) {
     budgetFromEnv: i,
     bytesPerToken: o
   };
-  let f = S => eop(S.cmd) || n?.has(S.cmd.name),
+  let f = S => formatCommandsWithinBudget(S.cmd) || n?.has(S.cmd.name),
     m = u.reduce((S, A) => f(A) ? S + A.entryLen + 1 : S, 0),
     g = u.filter(S => !f(S));
   if (r) {

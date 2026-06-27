@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gOl
 // matched 2.1.88 source: src/components/Settings/Usage.tsx
 // class=modified  jaccard=0.2187  score=0.2754  fileCov=0.5149
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gOl] deps: Ye, ps, F1o, vn, Cc, Bs
 ((UOe = R(lt(), 1)),
@@ -40,7 +40,7 @@
     plugins: [],
     mcpServers: [],
   }));
-function K1o(e) {
+function LimitBar(e) {
   let t = EKe.c(35),
     {
       title: n,
@@ -242,7 +242,7 @@ function hOl() {
           l,
           c,
           s
-            ? vd.jsx(LDf, {
+            ? vd.jsx(Usage, {
                 maxWidth: r,
               })
             : vd.jsx(w, {
@@ -339,7 +339,7 @@ function RDf(e) {
   else ((o = t[1]), (s = t[2]));
   return (vHe.useEffect(o, s), n);
 }
-function LDf(e) {
+function Usage(e) {
   let t = EKe.c(54),
     { maxWidth: n } = e,
     [r, o] = vHe.useState(R7t),
@@ -546,7 +546,7 @@ function LDf(e) {
       return (
         Y &&
         vd.jsx(
-          K1o,
+          LimitBar,
           {
             title: V,
             limit: Y,
@@ -565,7 +565,7 @@ function LDf(e) {
   if (t[28] !== n || t[29] !== r.cinder_cove)
     ((D =
       r.cinder_cove &&
-      vd.jsx(K1o, {
+      vd.jsx(LimitBar, {
         title: "Claude Code and Cowork credit",
         limit: r.cinder_cove,
         maxWidth: n,
@@ -595,7 +595,7 @@ function LDf(e) {
   if (t[33] !== n || t[34] !== r.extra_usage)
     ((O =
       r.extra_usage &&
-      vd.jsx(PDf, {
+      vd.jsx(ExtraUsageSection, {
         extraUsage: r.extra_usage,
         maxWidth: n,
       })),
@@ -693,7 +693,7 @@ function DDf(e) {
     alwaysShowDateInReset: true,
   };
 }
-function PDf(e) {
+function ExtraUsageSection(e) {
   let t = EKe.c(22),
     { extraUsage: n, maxWidth: r } = e,
     o = Di();
@@ -742,7 +742,7 @@ function PDf(e) {
   if (t[8] !== n.utilization) {
     let b = new Date(),
       _ = new Date(b.getFullYear(), b.getMonth() + 1, 1);
-    ((d = K1o),
+    ((d = LimitBar),
       (m = z1o),
       (p = n.utilization),
       (f = _.toISOString()),

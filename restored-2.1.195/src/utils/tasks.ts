@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Fgo
 // matched 2.1.88 source: src/utils/tasks.ts
 // class=modified  jaccard=0.251  score=0.8777  fileCov=0.2601
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fgo]
 (($Dp = ["id", "task_id"]), (ODp = ["active_form"]));
@@ -16,7 +16,7 @@ function dWt() {
   } catch {}
 }
 function bOa(e) {
-  return pft.join(T5(e), FDp);
+  return pft.join(T5(e), HIGH_WATER_MARK_FILE);
 }
 async function Ggo(e) {
   let t = bOa(e);
@@ -123,7 +123,7 @@ async function HOa(e, t) {
     if (r) await r();
   }
 }
-async function Bre(e, t) {
+async function getTask(e, t) {
   let n = mft(e, t);
   try {
     let r = await qs().read(n),
@@ -139,7 +139,7 @@ async function Bre(e, t) {
   }
 }
 async function TOa(e, t, n) {
-  let r = await Bre(e, t);
+  let r = await getTask(e, t);
   if (!r) return null;
   let o = {
       ...r,
@@ -151,7 +151,7 @@ async function TOa(e, t, n) {
 }
 async function hEe(e, t, n) {
   let r = mft(e, t);
-  if (!(await Bre(e, t))) return null;
+  if (!(await getTask(e, t))) return null;
   let s;
   try {
     return ((s = await Ay(r, pWt)), await TOa(e, t, n));
@@ -197,12 +197,12 @@ async function W4(e) {
     return [];
   }
   let r = n.filter((s) => s.endsWith(".json")).map((s) => s.replace(".json", ""));
-  return (await Promise.all(r.map((s) => Bre(e, s))))
+  return (await Promise.all(r.map((s) => getTask(e, s))))
     .filter((s) => s !== null)
     .sort((s, i) => Number(s.id) - Number(i.id));
 }
 async function qgo(e, t, n) {
-  let [r, o] = await Promise.all([Bre(e, t), Bre(e, n)]);
+  let [r, o] = await Promise.all([getTask(e, t), getTask(e, n)]);
   if (!r || !o) return false;
   if (!r.blocks.includes(n))
     await hEe(e, t, {
@@ -227,18 +227,18 @@ async function Vgo(e) {
   } catch {}
   return t;
 }
-async function vOa(e, t, n, r = {}) {
+async function claimTask(e, t, n, r = {}) {
   let o = mft(e, t);
-  if (!(await Bre(e, t)))
+  if (!(await getTask(e, t)))
     return {
       success: false,
       reason: "task_not_found",
     };
-  if (r.checkAgentBusy) return WDp(e, t, n);
+  if (r.checkAgentBusy) return claimTaskWithBusyCheck(e, t, n);
   let i;
   try {
     i = await Ay(o, pWt);
-    let a = await Bre(e, t);
+    let a = await getTask(e, t);
     if (!a)
       return {
         success: false,
@@ -285,7 +285,7 @@ async function vOa(e, t, n, r = {}) {
     if (i) await i();
   }
 }
-async function WDp(e, t, n) {
+async function claimTaskWithBusyCheck(e, t, n) {
   let r = await Vgo(e),
     o;
   try {
@@ -345,7 +345,7 @@ async function WDp(e, t, n) {
     if (o) await o();
   }
 }
-async function gft(e, t, n, r) {
+async function unassignTeammateTasks(e, t, n, r) {
   let s = (await W4(e)).filter((l) => l.status !== "completed" && (l.owner === t || l.owner === n));
   for (let l of s)
     await hEe(e, l.id, {
@@ -373,5 +373,5 @@ var gOa,
   _Oa,
   rVe,
   UDp,
-  FDp = ".highwatermark",
+  HIGH_WATER_MARK_FILE = ".highwatermark",
   pWt;

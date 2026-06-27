@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module F6o
 // matched 2.1.88 source: src/components/PromptInput/PromptInputFooterLeftSide.tsx
 // class=modified  jaccard=0.2467  score=0.4231  fileCov=0.3718
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F6o] deps: ft, Ed, tC, rJt, gNo, M_c, _i, wOe, Ye, ps, dn, uo, er, Lo, es, uf, ggo, sa, Yf, sr, gDe, LW, B_, CH, RLe, $_c, SNo
 ((Xfm = R(lt(), 1)), (U6o = R(rt(), 1)), (N_c = R(se(), 1)));
-function U_c(e) {
+function PromptInputFooterLeftSide(e) {
   let t = Idr.c(58),
     {
       exitMessage: n,
@@ -267,7 +267,7 @@ function U_c(e) {
     t[51] !== h ||
     t[52] !== l
   )
-    ((ge = li.jsx(emm, {
+    ((ge = li.jsx(ModeIndicator, {
       mode: a,
       toolPermissionContext: l,
       showHint: me,
@@ -316,7 +316,7 @@ function U_c(e) {
 function Zfm(e) {
   return e.settings?.prUrlTemplate;
 }
-function emm({
+function ModeIndicator({
   mode: e,
   toolPermissionContext: t,
   showHint: n,
@@ -683,7 +683,7 @@ function emm({
       ),
     ),
     le = [...[]],
-    He = n ? nmm(s, q, W, $, C, O) : [];
+    He = n ? getSpinnerHintParts(s, q, W, $, C, O) : [];
   if (re)
     le.push(
       li.jsx(
@@ -917,7 +917,7 @@ function emm({
     ],
   });
 }
-function nmm(e, t, n, r, o, s) {
+function getSpinnerHintParts(e, t, n, r, o, s) {
   let i = o === "tasks" ? "hide tasks" : "show tasks",
     a = r;
   return [

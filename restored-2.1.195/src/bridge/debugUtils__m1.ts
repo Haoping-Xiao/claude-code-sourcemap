@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module Cde
 // matched 2.1.88 source: src/bridge/debugUtils.ts
 // class=modified (alt of src/bridge/debugUtils.ts)  jaccard=0.1228  score=0.2007  fileCov=0.2405
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cde] deps: kt, je, At, Jt
 ((IDp = ["session_ingress_token", "environment_secret", "access_token", "secret", "token"]),
   (xDp = new RegExp(`"(${IDp.join("|")})"\\s*:\\s*"([^"]*)"`, "g")));
-function DDp(e) {
+function describeAxiosError(e) {
   if (!e || typeof e !== "object") return;
   let t = "error" in e ? e.error : e;
   if (t && typeof t === "object" && "reason" in t && typeof t.reason === "string") return t.reason;
@@ -51,7 +51,7 @@ async function lWt(e, t, n, r, o, s, i) {
     );
   }
   if (!((d.status >= 200 && d.status < 300) || d.status === 409)) {
-    let f = DDp(d.data),
+    let f = describeAxiosError(d.data),
       m = _J(d.data);
     return (
       T(`[bridge] ${e}-pr failed ${d.status}${f ? ` [${f}]` : ""}${m ? `: ${m}` : ""}`),

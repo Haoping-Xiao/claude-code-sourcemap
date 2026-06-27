@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KFn
 // matched 2.1.88 source: src/utils/computerUse/escHotkey.ts
 // class=modified  jaccard=0.3946  score=0.6557  fileCov=0.4978
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KFn] deps: je
 lRa = class lRa extends Error {
@@ -11,7 +11,7 @@ lRa = class lRa extends Error {
   }
 };
 ((cRa = iRa), (uRa = aRa));
-function dRa(e) {
+function registerEscHotkey(e) {
   if (uGt) return true;
   if (!U4().hotkey.registerEscape(e))
     return (
@@ -23,7 +23,7 @@ function dRa(e) {
     );
   return (cRa(), (uGt = true), T("[cu-esc] registered"), xe("computeruse_esc_register"), true);
 }
-function pRa() {
+function unregisterEscHotkey() {
   if (!uGt) return;
   try {
     U4().hotkey.unregister();

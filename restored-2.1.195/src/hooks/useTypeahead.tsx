@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Syc
 // matched 2.1.88 source: src/hooks/useTypeahead.tsx
 // class=modified  jaccard=0.1183  score=0.1943  fileCov=0.2323
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Syc] deps: ior, JSt, BI, Ryt, IL, es, vn
 byc = require("path");
@@ -14,7 +14,7 @@ function kpm(e, t, n) {
     r > 0 && o >= 0 && e.slice(0, o) + e.slice(n) === t && /^[a-z0-9_+-]*:$/.test(e.slice(o, n))
   );
 }
-function g7e(e) {
+function isPathMetadata(e) {
   return (
     typeof e === "object" &&
     e !== null &&
@@ -46,7 +46,7 @@ function A6o(e) {
   else if (r) return n === "bash" ? `${t}${a}` : `@${t}${a}`;
   else return t;
 }
-function H6o(e, t, n, r, o, s) {
+function applyShellSuggestion(e, t, n, r, o, s) {
   let l = t.slice(0, n).lastIndexOf(" ") + 1,
     c;
   if (s === "variable") c = "$" + e.displayText + " ";
@@ -63,7 +63,7 @@ function PTt(e, t, n, r, o, s) {
     c = l + e.displayText + " " + t.slice(n);
   (o(c), s(l.length + e.displayText.length + 1));
 }
-async function Rpm(e, t, n) {
+async function generateBashSuggestions(e, t, n) {
   if (vl()) return [];
   try {
     if (hdr) hdr.abort();
@@ -143,7 +143,7 @@ function Lpm(e) {
 function Tyc(e, t) {
   return !e && t.includes(" ") && !t.endsWith(" ");
 }
-function vyc({
+function useTypeahead({
   commands: e,
   onInputChange: t,
   onSubmit: n,
@@ -718,7 +718,7 @@ function vyc({
             let gt;
             if (ne.current === "bash-path") {
               let st = o.slice(0, s).lastIndexOf(" ") + 1,
-                xt = g7e(Je.metadata) && Je.metadata.type === "directory",
+                xt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                 vt = Je.displayText + (xt ? "" : " ");
               gt = o.slice(0, st) + vt + o.slice(s);
               let jt = st + vt.length;
@@ -727,12 +727,12 @@ function vyc({
             } else if (ne.current === "command-arg") {
               let st = o.indexOf(" "),
                 xt = o.slice(0, st + 1),
-                vt = g7e(Je.metadata) && Je.metadata.type === "directory" ? "/" : " ";
+                vt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory" ? "/" : " ";
               if (
                 ((gt = xt + Je.id + vt),
                 t(gt),
                 r(gt.length),
-                g7e(Je.metadata) && Je.metadata.type === "directory")
+                isPathMetadata(Je.metadata) && Je.metadata.type === "directory")
               )
                 (l((jt) => ({
                   ...jt,
@@ -743,7 +743,7 @@ function vyc({
             } else {
               let xt = UTe(o, s, true) ?? UTe(o, s, false);
               if (xt) {
-                let vt = g7e(Je.metadata) && Je.metadata.type === "directory",
+                let vt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                   jt = Hyc(o, Je.id, xt.startPos, xt.token.length, vt);
                 if (((gt = jt.newInput), t(gt), r(jt.cursorPos), vt))
                   (l((en) => ({
@@ -759,7 +759,7 @@ function vyc({
           let Je = c[Et];
           if (Je) {
             let gt = Je.metadata;
-            (H6o(Je, o, s, t, r, gt?.completionType), ae());
+            (applyShellSuggestion(Je, o, s, t, r, gt?.completionType), ae());
           }
         } else if (S === "agent" && c.length > 0 && c[Et]?.id?.startsWith("dm-")) {
           let Je = c[Et];
@@ -816,12 +816,12 @@ function vyc({
         let Ke, Et;
         if (i === "bash") {
           Ke = "shell";
-          let ct = await Rpm(o, s, y);
+          let ct = await generateBashSuggestions(o, s, y);
           if (ct.length === 1) {
             let Je = ct[0];
             if (Je) {
               let gt = Je.metadata;
-              H6o(Je, o, s, t, r, gt?.completionType);
+              applyShellSuggestion(Je, o, s, t, r, gt?.completionType);
             }
             Et = [];
           } else Et = ct;
@@ -880,7 +880,10 @@ function vyc({
         } else if (S === "shell" && ct < c.length) {
           if (Je) {
             let gt = Je.metadata;
-            (H6o(Je, o, s, t, r, gt?.completionType), Ee.cancel(), he.cancel(), ae());
+            (applyShellSuggestion(Je, o, s, t, r, gt?.completionType),
+              Ee.cancel(),
+              he.cancel(),
+              ae());
           }
         } else if (S === "agent" && ct < c.length && Je?.id?.startsWith("dm-"))
           (PTt(Je, o, s, gdr, t, r), Ee.cancel(), he.cancel(), ae());
@@ -917,7 +920,7 @@ function vyc({
                 return;
               }
               let xt = o.slice(0, s).lastIndexOf(" ") + 1,
-                vt = g7e(Je.metadata) && Je.metadata.type === "directory",
+                vt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                 jt = Je.displayText + (vt ? "" : " "),
                 en = o.slice(0, xt) + jt + o.slice(s);
               (t(en), r(xt + jt.length), ae());
@@ -927,7 +930,7 @@ function vyc({
               if ((Ee.cancel(), he.cancel(), Ke !== void 0)) {
                 let xt = o.indexOf(" "),
                   vt = o.slice(0, xt + 1),
-                  jt = g7e(Je.metadata) && Je.metadata.type === "directory",
+                  jt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                   en = vt + Je.id + (jt ? "/" : " ");
                 if ((t(en), r(en.length), jt)) ie(en, en.length);
                 else ae();
@@ -938,7 +941,7 @@ function vyc({
             }
             let st = UTe(o, s, true) ?? UTe(o, s, false);
             if (st) {
-              let xt = g7e(Je.metadata) && Je.metadata.type === "directory",
+              let xt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                 vt = Hyc(o, Je.id, st.startPos, st.token.length, xt);
               (t(vt.newInput), r(vt.cursorPos));
             }

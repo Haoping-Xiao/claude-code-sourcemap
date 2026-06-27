@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module N6l
 // matched 2.1.88 source: src/components/design-system/FuzzyPicker.tsx
 // class=modified  jaccard=0.2627  score=0.3266  fileCov=0.5731
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N6l] deps: ft
 ((Cjo = {
@@ -29,7 +29,7 @@
     },
     load: () => Promise.resolve().then(() => (O6l(), $6l)),
   }));
-function Hsr({
+function FuzzyPicker({
   title: e,
   placeholder: t = "Type to search\u2026",
   initialQuery: n,
@@ -213,7 +213,7 @@ function Hsr({
       isFocused: true,
       isTerminalFocused: C,
     }),
-    ie = OH.jsx(aqf, {
+    ie = OH.jsx(List, {
       visible: Ee,
       windowStart: O,
       visibleCount: W,
@@ -321,7 +321,7 @@ function Hsr({
     }),
   });
 }
-function aqf(e) {
+function List(e) {
   let t = B6l.c(36),
     {
       visible: n,

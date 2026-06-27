@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u7o
 // matched 2.1.88 source: src/utils/preflightChecks.tsx
 // class=modified  jaccard=0.353  score=0.5297  fileCov=0.5141
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module u7o] deps: ft, kt, je, Ao, Ls
 PZ = {
@@ -11,7 +11,7 @@ PZ = {
   opus: "Opus",
   haiku: "Haiku",
 };
-async function VIm() {
+async function checkEndpoints() {
   try {
     let e = $s(),
       t = new URL(e.TOKEN_URL),
@@ -66,7 +66,7 @@ async function VIm() {
     );
   }
 }
-function RMc(e) {
+function PreflightStep(e) {
   let t = kMc.c(14),
     { onSuccess: n } = e,
     [r, o] = Svt.useState(null),
@@ -77,7 +77,7 @@ function RMc(e) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((l = () => {
       (async function () {
-        let h = await VIm();
+        let h = await checkEndpoints();
         (o(h), i(false));
       })();
     }),

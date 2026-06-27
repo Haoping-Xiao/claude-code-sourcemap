@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module gIl
 // matched 2.1.88 source: src/services/tools/StreamingToolExecutor.ts
 // class=modified  jaccard=0.4459  score=0.6717  fileCov=0.5701
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-class aHe {
+class StreamingToolExecutor {
   toolDefinitions;
   canUseTool;
   now;

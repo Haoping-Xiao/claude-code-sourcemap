@@ -17,7 +17,7 @@
     sep: ZUc,
   } = XUc.posix));
 SXo = tFc(Oe.CLAUDE_STAGE_FILE_ROOT);
-async function runHeadlessBashCommand(e) {
+async function exec(e) {
   let { command: t } = e,
     n = e.cwd ?? $t(),
     { file: r, args: o } =

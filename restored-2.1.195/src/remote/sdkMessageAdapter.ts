@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gen
 // matched 2.1.88 source: src/remote/sdkMessageAdapter.ts
 // class=modified  jaccard=0.3178  score=0.3957  fileCov=0.6174
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function jbc(e) {
   return (
@@ -24,7 +24,7 @@ function sgm(e) {
     error: e.error,
   };
 }
-function igm(e) {
+function convertStreamEvent(e) {
   return {
     type: "stream_event",
     event: e.event,
@@ -33,7 +33,7 @@ function igm(e) {
     }),
   };
 }
-function agm(e) {
+function convertResultMessage(e) {
   if (e.subtype === "success")
     return {
       type: "system",
@@ -64,7 +64,7 @@ function lgm(e) {
     timestamp: new Date().toISOString(),
   };
 }
-function cgm(e) {
+function convertStatusMessage(e) {
   if (!e.status) return null;
   return {
     type: "system",
@@ -76,7 +76,7 @@ function cgm(e) {
     timestamp: new Date().toISOString(),
   };
 }
-function ugm(e) {
+function convertToolProgressMessage(e) {
   return {
     type: "system",
     subtype: "informational",
@@ -87,7 +87,7 @@ function ugm(e) {
     toolUseID: e.tool_use_id,
   };
 }
-function dgm(e) {
+function convertCompactBoundaryMessage(e) {
   return {
     type: "system",
     subtype: "compact_boundary",
@@ -98,7 +98,7 @@ function dgm(e) {
     compactMetadata: fJt(e.compact_metadata),
   };
 }
-function ANe(e, t) {
+function convertSDKMessage(e, t) {
   switch (e.type) {
     case "control_request":
     case "control_response":
@@ -150,14 +150,14 @@ function ANe(e, t) {
     case "stream_event":
       return {
         type: "stream_event",
-        event: igm(e),
+        event: convertStreamEvent(e),
       };
     case "result": {
       if (e.subtype === "success")
         return {
           type: "ignored",
         };
-      let n = agm(e);
+      let n = convertResultMessage(e);
       return n
         ? {
             type: "message",
@@ -181,7 +181,7 @@ function ANe(e, t) {
               type: "stream_request_start",
             },
           };
-        let n = cgm(e);
+        let n = convertStatusMessage(e);
         return n
           ? {
               type: "message",
@@ -194,7 +194,7 @@ function ANe(e, t) {
       if (e.subtype === "compact_boundary")
         return {
           type: "message",
-          message: dgm(e),
+          message: convertCompactBoundaryMessage(e),
         };
       if (e.subtype === "model_refusal_fallback")
         return {
@@ -314,7 +314,7 @@ function ANe(e, t) {
     case "tool_progress":
       return {
         type: "message",
-        message: ugm(e),
+        message: convertToolProgressMessage(e),
       };
     case "auth_status":
       return (

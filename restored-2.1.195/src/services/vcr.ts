@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GX
 // matched 2.1.88 source: src/services/vcr.ts
 // class=modified  jaccard=0.3501  score=0.6361  fileCov=0.4377
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GX] deps: Qi, ft, TM, Ioo, kt, frt, ii, LX, mZn, Vw, BE, je, fn, Jt, IX, yZn
 Qwf = Cn(
@@ -34,7 +34,7 @@ Qwf = Cn(
 function SZn() {
   return false;
 }
-async function rCf(e, t, n) {
+async function withFixture(e, t, n) {
   if (!SZn()) return await n();
   let r = fYt.createHash("sha1").update(De(e)).digest("hex").slice(0, 12),
     o = xSt.join(process.env.CLAUDE_CODE_TEST_FIXTURES_ROOT ?? $t(), `fixtures/${t}-${r}.json`);
@@ -60,7 +60,7 @@ async function rCf(e, t, n) {
     s
   );
 }
-async function EZn(e, t) {
+async function withVCR(e, t) {
   if (!SZn()) return await t();
   let n = lk(
       e.filter((i) => {
@@ -70,9 +70,9 @@ async function EZn(e, t) {
         return true;
       }),
     ),
-    r = sCf(
+    r = mapMessages(
       n.map((i) => i.message.content),
-      kMo,
+      dehydrateValue,
     ),
     o = xSt.join(
       process.env.CLAUDE_CODE_TEST_FIXTURES_ROOT ?? $t(),
@@ -84,7 +84,10 @@ async function EZn(e, t) {
         encoding: "utf8",
       }),
     );
-    return (i.output.forEach(oCf), i.output.map((a, l) => Okl(a, lCf, l, fYt.randomUUID())));
+    return (
+      i.output.forEach(oCf),
+      i.output.map((a, l) => Okl(a, hydrateValue, l, fYt.randomUUID()))
+    );
   } catch (i) {
     if (on(i) !== "ENOENT") throw i;
   }
@@ -102,7 +105,7 @@ ${De(r, null, 2)}`);
       De(
         {
           input: r,
-          output: s.map((i, a) => Okl(i, kMo, a)),
+          output: s.map((i, a) => Okl(i, dehydrateValue, a)),
         },
         null,
         2,
@@ -121,7 +124,7 @@ function oCf(e) {
     r = WY(t, n);
   boe(r, n, t);
 }
-function sCf(e, t) {
+function mapMessages(e, t) {
   return e.map((n) => {
     if (typeof n === "string") return t(n);
     return n.map((r) => {
@@ -185,7 +188,7 @@ function bZn(e, t) {
     return t(n, r, e);
   });
 }
-function aCf(e, t, n, r) {
+function mapAssistantMessage(e, t, n, r) {
   return {
     uuid: r ?? `UUID-${n}`,
     requestId: "REQUEST_ID",
@@ -221,10 +224,10 @@ function aCf(e, t, n, r) {
   };
 }
 function Okl(e, t, n, r) {
-  if (e.type === "assistant") return aCf(e, t, n, r);
+  if (e.type === "assistant") return mapAssistantMessage(e, t, n, r);
   else return e;
 }
-function kMo(e) {
+function dehydrateValue(e) {
   if (typeof e !== "string") return e;
   let t = $t(),
     n = tr(),
@@ -246,7 +249,7 @@ function kMo(e) {
     return "Files modified by user: [FILES]";
   return r;
 }
-function lCf(e) {
+function hydrateValue(e) {
   if (typeof e !== "string") return e;
   return e
     .replaceAll("[NUM]", "1")
@@ -257,7 +260,7 @@ function lCf(e) {
 async function* RMo(e, t) {
   if (!SZn()) return yield* t();
   let n = [],
-    r = await EZn(e, async () => {
+    r = await withVCR(e, async () => {
       for await (let o of t())
         if (o.type === "fallback_request" && o.creditCode !== null)
           n.push({
@@ -273,10 +276,10 @@ async function* RMo(e, t) {
   }
   yield* n;
 }
-async function LMo(e, t, n) {
+async function withTokenCountVCR(e, t, n) {
   if (!SZn()) return await n();
   let r = $t().replace(/[^a-zA-Z0-9]/g, "-"),
-    o = kMo(
+    o = dehydrateValue(
       De({
         messages: e,
         tools: t,
@@ -286,7 +289,7 @@ async function LMo(e, t, n) {
       .replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "[UUID]")
       .replace(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z?/g, "[TIMESTAMP]");
   return (
-    await rCf(o, "token-count", async () => ({
+    await withFixture(o, "token-count", async () => ({
       tokenCount: await n(),
     }))
   ).tokenCount;

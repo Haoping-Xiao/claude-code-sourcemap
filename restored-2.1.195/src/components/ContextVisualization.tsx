@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S1l
 // matched 2.1.88 source: src/components/ContextVisualization.tsx
 // class=modified  jaccard=0.1251  score=0.2662  fileCov=0.1909
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S1l] deps: si, Ye, es, gm
 ((_1l = R(lt(), 1)), (fse = R(se(), 1)));
@@ -57,7 +57,7 @@ function Ytr(e) {
   else a = t[8];
   return a;
 }
-function aNo(e) {
+function ContextVisualization(e) {
   let t = Xtr.c(116),
     { data: n, isRemote: r, collapseDetailSections: o } = e,
     s = r === void 0 ? false : r,
@@ -200,7 +200,7 @@ function aNo(e) {
       ((we = (Be, Me) => {
         let Ue = gl(Be.tokens),
           tt = Be.isDeferred ? "N/A" : `${((Be.tokens / c) * 100).toFixed(1)}%`,
-          bt = Be.name === Jtr,
+          bt = Be.name === RESERVED_CATEGORY_NAME,
           Ke = Be.name,
           Et = Be.isDeferred ? " " : bt ? "\u26DD" : "\u26C1";
         return Pi.jsxs(
@@ -842,7 +842,7 @@ function fMf(e, t) {
       },
       t,
     );
-  if (e.categoryName === Jtr)
+  if (e.categoryName === RESERVED_CATEGORY_NAME)
     return Pi.jsx(
       w,
       {
@@ -861,15 +861,17 @@ function fMf(e, t) {
   );
 }
 function mMf(e) {
-  return e.name === Jtr;
+  return e.name === RESERVED_CATEGORY_NAME;
 }
 function gMf(e) {
   return e.isDeferred && e.name.includes("MCP");
 }
 function hMf(e) {
-  return e.tokens > 0 && e.name !== "Free space" && e.name !== Jtr && !e.isDeferred;
+  return (
+    e.tokens > 0 && e.name !== "Free space" && e.name !== RESERVED_CATEGORY_NAME && !e.isDeferred
+  );
 }
 var Xtr,
   Pi,
-  Jtr = "Autocompact buffer",
+  RESERVED_CATEGORY_NAME = "Autocompact buffer",
   zPf;

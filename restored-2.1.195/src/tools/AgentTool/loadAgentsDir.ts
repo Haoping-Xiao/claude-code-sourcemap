@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wer
 // matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
 // class=modified  jaccard=0.335  score=0.7121  fileCov=0.3875
-// note: deminified; 14 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toAgentInfos, parseAgentsFromJson, parseAgentFromMarkdown, parseAgentFromJson, normalizeAgentType, isPluginAgent, isCustomAgent, isBuiltInAgent, hasRequiredMcpServers, getBuiltInAgents, getAgentDefinitionsWithOverrides, getActiveAgentsFromList, filterAgentsByMcpRequirements, clearAgentDefinitionsCache, agentMcpSpecsToScopedConfigs
 function agentMcpSpecsToScopedConfigs(e) {
@@ -90,14 +90,14 @@ function filterAgentsByMcpRequirements(e, t) {
 function clearAgentDefinitionsCache() {
   (getAgentDefinitionsWithOverrides.cache?.clear?.(), _q.cache?.clear?.(), ZZn());
 }
-function Gxf(e) {
+function getParseError(e) {
   let { name: t, description: n } = e;
   if (!t || typeof t !== "string") return 'Missing required "name" field in frontmatter';
   if (t.startsWith("-")) return 'Invalid "name": names must not start with "-"';
   if (!n || typeof n !== "string") return 'Missing required "description" field in frontmatter';
   return "Unknown parsing error";
 }
-function Wxf(e, t) {
+function parseHooksFromFrontmatter(e, t) {
   if (!e.hooks) return;
   let n = IG().safeParse(e.hooks);
   if (!n.success) {
@@ -284,7 +284,7 @@ function parseAgentFromMarkdown(e, t, n, r, o) {
           null
         );
       }).filter((W) => W !== null);
-    let B = Wxf(n, s),
+    let B = parseHooksFromFrontmatter(n, s),
       $ = r.trim();
     return {
       baseDir: t,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module X6
 // matched 2.1.88 source: src/utils/api.ts
 // class=modified  jaccard=0.3116  score=0.6031  fileCov=0.3919
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X6] deps: IB, wr, sa, Lo, ft, rit, aR, YWe, dr, er, BE, QMo, fh, MMe, nC, lf, u_, Ao, Zf, G4, EI, lC, f6, vAe, wer, Yf, j9t, fn, k0, Oot, jv, Un, kt, T3e, Vw, qRe, je, Izt, GNt, Bot, LMe, K$e, _m, qfn
 ((zYe = require("os")),
@@ -59,7 +59,7 @@ async function nnm(e, t) {
     ).trim() || n
   );
 }
-async function hZn(e, t) {
+async function toolToAPISchema(e, t) {
   let n = fr(),
     r = t.model ? Qtm(t.model) : void 0,
     o = ph(t.model) ? "L:" : "",
@@ -124,7 +124,7 @@ async function hZn(e, t) {
       p = Object.keys(u).filter((f) => !d.has(f));
     if (p.length > 0)
       return (
-        rnm(p),
+        logStripOnce(p),
         {
           name: u.name,
           description: u.description,
@@ -137,7 +137,7 @@ async function hZn(e, t) {
   }
   return u;
 }
-function rnm(e) {
+function logStripOnce(e) {
   if (pac) return;
   ((pac = true),
     T(`[betas] Stripped from tool schemas: [${e.join(", ")}] (experimental betas disabled)`));
@@ -147,15 +147,15 @@ function onm(e) {
   if (t === void 0) ((t = De(e)), fac.set(e, t));
   return t;
 }
-function gac(e) {
-  let [t] = dqo(e),
+function logAPIPrefix(e) {
+  let [t] = splitSysPromptPrefix(e),
     n = t?.text;
   G("tengu_sysprompt_block", {
     length: n?.length ?? 0,
     hash: n ? mac.createHash("sha256").update(n).digest("hex") : "",
   });
 }
-function dqo(e, t) {
+function splitSysPromptPrefix(e, t) {
   let n = Qxe(),
     r = e.findIndex((c) => c === Oae);
   if (n && t?.skipGlobalCacheForSystemPrompt && r === -1) {
@@ -283,7 +283,7 @@ function ekl(e, t) {
 `),
   ].filter(Boolean);
 }
-function ZQn(e, t) {
+function prependUserContext(e, t) {
   if (Object.entries(t).length === 0) return e;
   return [
     Rn({
@@ -303,7 +303,7 @@ ${r}`,
     ...e,
   ];
 }
-async function hac(e, t) {
+async function logContextMetrics(e, t) {
   if (Rj()) return;
   let [{ tools: n }, r, o, s] = await Promise.all([yGt(e), F$(t), uS(), hH()]),
     i = s.gitStatus?.length ?? 0,
@@ -347,7 +347,7 @@ async function hac(e, t) {
     non_mcp_tools_tokens: y,
   });
 }
-function yac(e, t, n) {
+function normalizeToolInput(e, t, n) {
   switch (e.name) {
     case Ds: {
       try {
@@ -488,7 +488,7 @@ function Xlr(e) {
   }
   return e;
 }
-function _ac(e, t) {
+function normalizeToolInputForAPI(e, t) {
   switch (e.name) {
     case jD: {
       if (t && typeof t === "object" && ("plan" in t || "planFilePath" in t)) {

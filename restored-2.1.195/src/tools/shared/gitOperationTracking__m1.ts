@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ift
 // matched 2.1.88 source: src/tools/shared/gitOperationTracking.ts
 // class=modified (alt of src/tools/shared/gitOperationTracking.ts)  jaccard=0.2433  score=0.3686  fileCov=0.4173
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ift] deps: zb, dn, Un, Pw, je, fn, At, Bi, sa, q$a, Mx, SG, qd, Mh, ih, Jt
 ((X$a = require("fs/promises")),
@@ -94,7 +94,7 @@ lDp = Ahe(async (e) => {
 }, 30000);
 cDp = /^https:\/\/([\w.-]+)\/([\w.-]+)\/([\w.-]+)\/pull\/(\d+)\b/;
 K$a = /rate limit/i;
-function aft(e, t = "") {
+function gitCmdRe(e, t = "") {
   return new RegExp(`\\bgit(?:\\s+-[cC]\\s+\\S+|\\s+--\\S+=\\S+)*\\s+${e}\\b${t}`);
 }
 function Ojn(e) {
@@ -122,7 +122,7 @@ function TDp(e) {
   return t?.[1] ? parseInt(t[1], 10) : void 0;
 }
 function lOa(e, t) {
-  let n = e.split(aft(t))[1];
+  let n = e.split(gitCmdRe(t))[1];
   if (!n) return;
   for (let r of n.trim().split(/\s+/)) {
     if (/^(?:[\d*]*[<>]|[&|;])/.test(r)) break;
@@ -131,7 +131,7 @@ function lOa(e, t) {
   }
   return;
 }
-function lft(e, t) {
+function detectGitOperation(e, t) {
   let n = {},
     r = bDp.test(e);
   if (dOa.test(e) || r) {
@@ -192,7 +192,7 @@ function lft(e, t) {
   }
   return n;
 }
-function Njn(e, t, n) {
+function trackGitOperations(e, t, n) {
   if (t !== 0) return;
   if (dOa.test(e)) {
     if (

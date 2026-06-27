@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Ofo
 // matched 2.1.88 source: src/utils/claudeInChrome/chromeNativeHost.ts
 // class=modified  jaccard=0.7599  score=0.9176  fileCov=0.8155
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sendChromeMessage, runChromeNativeHost
 // [unwrapped __esm module Ofo] deps: fIr, jun, k7, dn, y1, kt, ZSe, W2e, G1, oo, er, je, wr, fn, Ls, u9, Mh, Epe, VM
 ((iTt = require("util")),
   ($sm = new Set(["bridge_status", "error_type", "tool_name"])),
   (Kcc = ["ask", "skip_all_permission_checks", "follow_a_plan"]));
-function pw(e, ...t) {
+function log(e, ...t) {
   if (Jcc) {
     let n = new Date().toISOString(),
       r = t.length > 0 ? " " + De(t) : "",
@@ -26,9 +26,9 @@ function sendChromeMessage(e) {
 }
 async function runChromeNativeHost() {
   return yl("chrome_native_host_run", async () => {
-    pw("Initializing...");
-    let e = new euc(),
-      t = new tuc();
+    log("Initializing...");
+    let e = new ChromeNativeHost(),
+      t = new ChromeMessageReader();
     await e.start();
     while (true) {
       let n = await t.read();
@@ -38,7 +38,7 @@ async function runChromeNativeHost() {
     await e.stop();
   });
 }
-class euc {
+class ChromeNativeHost {
   mcpClients = new Map();
   nextClientId = 1;
   server = null;
@@ -64,28 +64,28 @@ class euc {
             process.kill(r, 0);
           } catch {
             (await f2.unlink(Zcc.join(e, n)).catch(() => {}),
-              pw(`Removed stale socket for PID ${r}`));
+              log(`Removed stale socket for PID ${r}`));
           }
         }
       } catch {}
     }
     if (
-      (pw(`Creating socket listener: ${this.socketPath}`),
+      (log(`Creating socket listener: ${this.socketPath}`),
       (this.server = Qcc.createServer((e) => this.handleMcpClient(e))),
       await new Promise((e, t) => {
         (this.server.listen(this.socketPath, () => {
-          (pw("Socket server listening for connections"), (this.running = true), e());
+          (log("Socket server listening for connections"), (this.running = true), e());
         }),
           this.server.on("error", (n) => {
-            (pw("Socket server error:", n), t(n));
+            (log("Socket server error:", n), t(n));
           }));
       }),
       xcr.platform() !== "win32")
     )
       try {
-        (await f2.chmod(this.socketPath, 384), pw("Socket permissions set to 0600"));
+        (await f2.chmod(this.socketPath, 384), log("Socket permissions set to 0600"));
       } catch (e) {
-        pw("Failed to set socket permissions:", e);
+        log("Failed to set socket permissions:", e);
       }
   }
   async stop() {
@@ -98,12 +98,12 @@ class euc {
         (this.server = null));
     if (xcr.platform() !== "win32" && this.socketPath) {
       try {
-        (await f2.unlink(this.socketPath), pw("Cleaned up socket file"));
+        (await f2.unlink(this.socketPath), log("Cleaned up socket file"));
       } catch {}
       try {
         let e = flt();
         if ((await f2.readdir(e)).length === 0)
-          (await f2.rmdir(e), pw("Removed empty socket directory"));
+          (await f2.rmdir(e), log("Removed empty socket directory"));
       } catch {}
     }
     this.running = false;
@@ -119,7 +119,7 @@ class euc {
     try {
       t = Ft(e);
     } catch (o) {
-      (pw("Invalid JSON from Chrome:", o.message),
+      (log("Invalid JSON from Chrome:", o.message),
         sendChromeMessage(
           De({
             type: "error",
@@ -130,7 +130,7 @@ class euc {
     }
     let n = Gsm().safeParse(t);
     if (!n.success) {
-      (pw("Invalid message from Chrome:", n.error.message),
+      (log("Invalid message from Chrome:", n.error.message),
         sendChromeMessage(
           De({
             type: "error",
@@ -140,9 +140,9 @@ class euc {
       return;
     }
     let r = n.data;
-    switch ((pw(`Handling Chrome message type: ${r.type}`), r.type)) {
+    switch ((log(`Handling Chrome message type: ${r.type}`), r.type)) {
       case "ping":
-        (pw("Responding to ping"),
+        (log("Responding to ping"),
           sendChromeMessage(
             De({
               type: "pong",
@@ -160,7 +160,7 @@ class euc {
         break;
       case "tool_response": {
         if (this.mcpClients.size > 0) {
-          pw(`Forwarding tool response to ${this.mcpClients.size} MCP clients`);
+          log(`Forwarding tool response to ${this.mcpClients.size} MCP clients`);
           let { type: o, ...s } = r,
             i = Buffer.from(De(s), "utf-8"),
             a = Buffer.alloc(4);
@@ -170,14 +170,14 @@ class euc {
             try {
               u.socket.write(l);
             } catch (d) {
-              pw(`Failed to send to MCP client ${c}:`, d);
+              log(`Failed to send to MCP client ${c}:`, d);
             }
         }
         break;
       }
       case "notification": {
         if (this.mcpClients.size > 0) {
-          pw(`Forwarding notification to ${this.mcpClients.size} MCP clients`);
+          log(`Forwarding notification to ${this.mcpClients.size} MCP clients`);
           let { type: o, ...s } = r,
             i = Buffer.from(De(s), "utf-8"),
             a = Buffer.alloc(4);
@@ -187,13 +187,13 @@ class euc {
             try {
               u.socket.write(l);
             } catch (d) {
-              pw(`Failed to send notification to MCP client ${c}:`, d);
+              log(`Failed to send notification to MCP client ${c}:`, d);
             }
         }
         break;
       }
       default:
-        (pw(`Unknown message type: ${r.type}`),
+        (log(`Unknown message type: ${r.type}`),
           sendChromeMessage(
             De({
               type: "error",
@@ -210,7 +210,7 @@ class euc {
         buffer: Buffer.alloc(0),
       };
     (this.mcpClients.set(t, n),
-      pw(`MCP client ${t} connected. Total clients: ${this.mcpClients.size}`),
+      log(`MCP client ${t} connected. Total clients: ${this.mcpClients.size}`),
       sendChromeMessage(
         De({
           type: "mcp_connected",
@@ -221,7 +221,7 @@ class euc {
         while (n.buffer.length >= 4) {
           let o = n.buffer.readUInt32LE(0);
           if (o === 0 || o > YVo) {
-            (pw(`Invalid message length from MCP client ${t}: ${o}`), e.destroy());
+            (log(`Invalid message length from MCP client ${t}: ${o}`), e.destroy());
             return;
           }
           if (n.buffer.length < 4 + o) break;
@@ -229,7 +229,7 @@ class euc {
           n.buffer = n.buffer.slice(4 + o);
           try {
             let i = Ft(s.toString("utf-8"));
-            (pw(`Forwarding tool request from MCP client ${t}: ${i.method}`),
+            (log(`Forwarding tool request from MCP client ${t}: ${i.method}`),
               sendChromeMessage(
                 De({
                   type: "tool_request",
@@ -238,15 +238,15 @@ class euc {
                 }),
               ));
           } catch (i) {
-            pw(`Failed to parse tool request from MCP client ${t}:`, i);
+            log(`Failed to parse tool request from MCP client ${t}:`, i);
           }
         }
       }),
       e.on("error", (r) => {
-        pw(`MCP client ${t} error: ${r}`);
+        log(`MCP client ${t} error: ${r}`);
       }),
       e.on("close", () => {
-        (pw(`MCP client ${t} disconnected. Remaining clients: ${this.mcpClients.size - 1}`),
+        (log(`MCP client ${t} disconnected. Remaining clients: ${this.mcpClients.size - 1}`),
           this.mcpClients.delete(t),
           sendChromeMessage(
             De({
@@ -256,7 +256,7 @@ class euc {
       }));
   }
 }
-class tuc {
+class ChromeMessageReader {
   buffer = Buffer.alloc(0);
   pendingResolve = null;
   closed = false;
@@ -278,7 +278,9 @@ class tuc {
     if (this.buffer.length < 4) return;
     let e = this.buffer.readUInt32LE(0);
     if (e === 0 || e > YVo) {
-      (pw(`Invalid message length: ${e}`), this.pendingResolve(null), (this.pendingResolve = null));
+      (log(`Invalid message length: ${e}`),
+        this.pendingResolve(null),
+        (this.pendingResolve = null));
       return;
     }
     if (this.buffer.length < 4 + e) return;

@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module QZe
 // matched 2.1.88 source: src/utils/windowsPaths.ts
 // class=modified (alt of src/utils/windowsPaths.ts)  jaccard=0.1148  score=0.5058  fileCov=0.1294
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QZe] deps: Rm
 ((FEs = require("child_process")), (jEs = require("fs")), (GEs = require("path")));
 XZe = new Map();
 pPu = new Set([".com", ".exe", ".bat", ".cmd"]);
-function Opn() {
+function setShellIfWindows() {
   if (Vt() === "windows") {
     let e = Hhe();
     if (e) ((process.env.SHELL = e), T(`Using bash path: "${e}"`));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HUt
 // matched 2.1.88 source: src/utils/appleTerminalBackup.ts
 // class=modified  jaccard=0.447  score=0.7142  fileCov=0.5444
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HUt] deps: Qi, dn, er, Lo, oc, ys
 E8i = require("path");
@@ -32,11 +32,11 @@ function o6d() {
     backupPath: e.appleTerminalBackupPath || null,
   };
 }
-function qat() {
+function getTerminalPlistPath() {
   return w8i.join(v8i.homedir(), "Library", "Preferences", "com.apple.Terminal.plist");
 }
-async function C8i() {
-  let e = qat(),
+async function backupTerminalPreferences() {
+  let e = getTerminalPlistPath(),
     t = `${e}.bak`;
   try {
     let { code: n } = await $n("defaults", ["export", "com.apple.Terminal", e]);
@@ -52,7 +52,7 @@ async function C8i() {
     return (ke(n), null);
   }
 }
-async function kDn() {
+async function checkAndRestoreTerminalBackup() {
   let { inProgress: e, backupPath: t } = o6d();
   if (!e)
     return {

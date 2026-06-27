@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module H7n
 // matched 2.1.88 source: src/hooks/useSwarmPermissionPoller.ts
 // class=modified  jaccard=0.2904  score=0.5918  fileCov=0.3631
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module H7n] deps: Xr, DE, jgl
 ((tbt = ve(() =>
@@ -45,7 +45,7 @@
       }),
     ]),
   )));
-function lff(e) {
+function parsePermissionUpdates(e) {
   if (!Array.isArray(e)) return [];
   let t = nbt(),
     n = [];
@@ -59,11 +59,11 @@ function lff(e) {
   }
   return n;
 }
-function T7n(e) {
+function registerPermissionCallback(e) {
   (rbt.set(e.requestId, e),
     T(`[SwarmPermissionPoller] Registered callback for request ${e.requestId}`));
 }
-function Ggl(e) {
+function unregisterPermissionCallback(e) {
   (rbt.delete(e), T(`[SwarmPermissionPoller] Unregistered callback for request ${e}`));
 }
 function Wgl(e) {
@@ -72,7 +72,7 @@ function Wgl(e) {
 function qgl() {
   (rbt.clear(), z6t.clear());
 }
-function obt(e) {
+function processMailboxPermissionResponse(e) {
   let t = rbt.get(e.requestId);
   if (!t)
     return (
@@ -86,20 +86,20 @@ function obt(e) {
     rbt.delete(e.requestId),
     e.decision === "approved")
   ) {
-    let n = lff(e.permissionUpdates),
+    let n = parsePermissionUpdates(e.permissionUpdates),
       r = e.updatedInput;
     t.onAllow(r, n);
   } else t.onReject(e.feedback);
   return true;
 }
-function Vgl(e) {
+function registerSandboxPermissionCallback(e) {
   (z6t.set(e.requestId, e),
     T(`[SwarmPermissionPoller] Registered sandbox callback for request ${e.requestId}`));
 }
 function zgl(e) {
   return z6t.has(e);
 }
-function Kgl(e) {
+function processSandboxPermissionResponse(e) {
   let t = z6t.get(e.requestId);
   if (!t)
     return (

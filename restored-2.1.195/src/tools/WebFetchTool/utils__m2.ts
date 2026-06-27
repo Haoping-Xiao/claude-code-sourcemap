@@ -92,7 +92,7 @@ async function getFrameShareStatus(e, t) {
     shared: n.data.shared,
   };
 }
-async function readArtifactContent(e, t) {
+async function getWithPermittedRedirects(e, t) {
   let n = await gfl(e, "artifact_webfetch_read", t);
   if (n.err !== null) return n;
   let { ver: r, assetToken: o } = n,

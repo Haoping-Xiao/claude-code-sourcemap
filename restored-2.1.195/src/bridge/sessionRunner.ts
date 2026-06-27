@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rGo
 // matched 2.1.88 source: src/bridge/sessionRunner.ts
 // class=modified  jaccard=0.6905  score=0.9953  fileCov=0.6928
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Gir(e) {
   return e.replace(/[^a-zA-Z0-9_-]/g, "_");
@@ -13,7 +13,7 @@ function GYf(e, t) {
   if (r) return `${n} ${r}`;
   return n;
 }
-function WYf(e, t, n) {
+function extractActivities(e, t, n) {
   let r;
   try {
     r = Ft(e);
@@ -81,7 +81,7 @@ function WYf(e, t, n) {
   }
   return s;
 }
-function qYf(e) {
+function extractUserMessageText(e) {
   if (e.parent_tool_use_id != null || e.isSynthetic || e.isReplay) return;
   let n = e.message?.content,
     r;
@@ -103,7 +103,7 @@ function VYf(e) {
   }
   return t.join(" ");
 }
-function sGo(e) {
+function createSessionSpawner(e) {
   return {
     spawn(t, n) {
       let r = Gir(t.sessionId),
@@ -206,7 +206,7 @@ function sGo(e) {
                   `
 `,
               );
-            let _ = WYf(b, t.sessionId, e.onDebug);
+            let _ = extractActivities(b, t.sessionId, e.onDebug);
             for (let S of _) {
               if (u.length >= UYf) u.shift();
               (u.push(S), (d = S), e.onActivity?.(t.sessionId, S));
@@ -222,7 +222,7 @@ function sGo(e) {
                   if (A.request?.subtype === "can_use_tool" && e.onPermissionRequest)
                     e.onPermissionRequest(t.sessionId, S, t.accessToken);
                 } else if (A.type === "user" && !m && t.onFirstUserMessage) {
-                  let v = qYf(A);
+                  let v = extractUserMessageText(A);
                   if (v) ((m = true), t.onFirstUserMessage(v));
                 }
               }

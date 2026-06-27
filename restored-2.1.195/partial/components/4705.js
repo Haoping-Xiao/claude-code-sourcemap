@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qNo
 // matched 2.1.88 source: src/hooks/notifs/useMcpConnectivityStatus.tsx
 // class=partial  jaccard=0.1285  score=0.7122  fileCov=0.1356
-// note: low-confidence suggestion: src/hooks/notifs/useMcpConnectivityStatus.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/hooks/notifs/useMcpConnectivityStatus.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qNo] deps: Ye, hse, xoe
 jNl = R(lt(), 1), Mq = R(se(), 1);
@@ -12,18 +12,18 @@ function VL(e, t) {
     level: "info"
   });
 }
-function K7t(e, t) {
+function _temp(e, t) {
   if (e.config.type === "claudeai-proxy") return t(e.name);
   return e.config.type !== "sse-ide" && e.config.type !== "ws-ide";
 }
 function GNl(e, t) {
-  return On(e, n => n.type === "needs-auth" && K7t(n, t));
+  return On(e, n => n.type === "needs-auth" && _temp(n, t));
 }
 function WNl(e, t) {
   let n = [];
   for (let r of e) {
     if (r.type !== "failed" && r.type !== "needs-auth") continue;
-    if (K7t(r, t)) n.push(r);
+    if (_temp(r, t)) n.push(r);
   }
   return n;
 }

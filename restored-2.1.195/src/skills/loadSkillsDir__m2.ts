@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TXn
 // matched 2.1.88 source: src/skills/loadSkillsDir.ts
 // class=modified (alt of src/skills/loadSkillsDir.ts)  jaccard=0.0263  score=0.1559  fileCov=0.0307
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Uhf(e) {
   let t =
@@ -20,7 +20,7 @@ function B$(e) {
     .filter((t) => t !== "" && t !== ".")
     .join("/");
 }
-function LRo(e) {
+function getSkillsPath(e) {
   let t = B$(e).toLowerCase();
   return (
     t === "claude.md" || t.startsWith("claude.md/") || t === ".claude" || t.startsWith(".claude/")

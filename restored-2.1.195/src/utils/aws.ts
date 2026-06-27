@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module jnt
 // matched 2.1.88 source: src/utils/aws.ts
 // class=modified  jaccard=0.5618  score=0.9719  fileCov=0.5711
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ioi(e) {
+function isAwsCredentialsProviderError(e) {
   return e?.name === "CredentialsProviderError";
 }
-function soi(e) {
+function isValidAwsStsOutput(e) {
   if (!e || typeof e !== "object") return false;
   let t = e;
   return (
@@ -22,8 +22,8 @@ function soi(e) {
 function aoi(e) {
   if (!e || typeof e !== "object") return null;
   let t = e;
-  if (soi(t.Credentials)) return t.Credentials;
-  if (soi(t)) return t;
+  if (isValidAwsStsOutput(t.Credentials)) return t.Credentials;
+  if (isValidAwsStsOutput(t)) return t;
   return null;
 }
 async function loi() {
@@ -32,7 +32,7 @@ async function loi() {
   );
   await new e().send(new t({}));
 }
-async function coi() {
+async function clearAwsIniCache() {
   try {
     T("Clearing AWS credential provider cache");
     let { fromIni: e } = await Promise.resolve().then(() => (jnt(), Fnt));

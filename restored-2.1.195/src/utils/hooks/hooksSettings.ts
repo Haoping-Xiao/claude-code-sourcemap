@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oKl
 // matched 2.1.88 source: src/utils/hooks/hooksSettings.ts
 // class=modified  jaccard=0.5145  score=0.8519  fileCov=0.565
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oKl] deps: oo
 ((aVf = {
@@ -16,7 +16,7 @@
   load: () => Promise.resolve().then(() => (rKl(), nKl)),
 }),
   (Jjo = aVf));
-function eTe(e) {
+function getHookDisplayText(e) {
   switch (e.type) {
     case "command":
       return e.args ? [e.command, ...e.args].join(" ") : e.command;
@@ -36,7 +36,7 @@ function eTe(e) {
 }
 function o2(e) {
   if ("statusMessage" in e && e.statusMessage) return e.statusMessage;
-  return eTe(e);
+  return getHookDisplayText(e);
 }
 function iKl(e) {
   let t = [];
@@ -76,7 +76,7 @@ function iKl(e) {
         });
   return t;
 }
-function aKl(e) {
+function hookSourceDescriptionDisplayString(e) {
   switch (e) {
     case "userSettings":
       return "User settings (~/.claude/settings.json)";
@@ -94,7 +94,7 @@ function aKl(e) {
       return e;
   }
 }
-function Qjo(e) {
+function hookSourceHeaderDisplayString(e) {
   switch (e) {
     case "userSettings":
       return "User Settings";
@@ -112,7 +112,7 @@ function Qjo(e) {
       return e;
   }
 }
-function lKl(e) {
+function hookSourceInlineDisplayString(e) {
   switch (e) {
     case "userSettings":
       return "User";

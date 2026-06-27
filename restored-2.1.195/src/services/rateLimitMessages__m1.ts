@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xjt
 // matched 2.1.88 source: src/services/rateLimitMessages.ts
 // class=modified (alt of src/services/rateLimitMessages.ts)  jaccard=0.1148  score=0.161  fileCov=0.2859
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xjt] deps: oo, e1, Cp, wr, es, NX, Ao, d5e, Un, mSe
 ((Cio = new Set(["org_level_disabled_until", "org_spend_cap_reached"])),
@@ -60,7 +60,7 @@ function kaa(e) {
 function f5e() {
   return p5e;
 }
-function Raa(e) {
+function getEarlyWarningText(e) {
   let t = {};
   for (let [n, r] of [
     ["five_hour", "5h"],
@@ -129,7 +129,7 @@ async function Laa() {
     let e = await alp();
     R1n(e.headers, Fw());
   } catch (e) {
-    if (e instanceof Fo) L1n(e);
+    if (e instanceof Fo) getLimitReachedText(e);
   }
 }
 function llp(e, t) {
@@ -179,7 +179,7 @@ function ulp(e, t) {
   }
   return null;
 }
-function Daa(e) {
+function getRateLimitMessage(e) {
   let t = e.get("anthropic-ratelimit-unified-status") || "allowed",
     n = e.get("anthropic-ratelimit-unified-reset"),
     r = n ? Number(n) : void 0,
@@ -297,8 +297,8 @@ function R1n(e, t, n = !1) {
     return;
   }
   let o = wio(e);
-  p5e = Raa(o);
-  let s = Daa(o);
+  p5e = getEarlyWarningText(o);
+  let s = getRateLimitMessage(o);
   if ((Paa(o), !L_(ck, s))) kjt(s);
   if (s.overageInUse === !0) {
     if (
@@ -314,7 +314,7 @@ function R1n(e, t, n = !1) {
     k1n.forEach((a) => a(t, s.isUsingOverage === !0, n));
   }
 }
-function L1n(e) {
+function getLimitReachedText(e) {
   if (!tut(bo()) || e.status !== 429) return;
   try {
     let { status: t, isUsingOverage: n } = ck,
@@ -326,7 +326,7 @@ function L1n(e) {
       };
     if (e.headers) {
       let l = wio(e.headers);
-      ((p5e = Raa(l)), (i = Daa(l)), Paa(l));
+      ((p5e = getEarlyWarningText(l)), (i = getRateLimitMessage(l)), Paa(l));
     }
     if (
       ((i.status = "rejected"),

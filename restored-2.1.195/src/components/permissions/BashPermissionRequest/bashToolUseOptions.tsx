@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Tpr
 // matched 2.1.88 source: src/components/permissions/BashPermissionRequest/bashToolUseOptions.tsx
 // class=modified  jaccard=0.3174  score=0.5235  fileCov=0.4463
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Tpr] deps: Ed, uo, Sdr, __
 ZAc = R(lt(), 1);
@@ -10,7 +10,7 @@ function o_m(e) {
   let { commandWithoutRedirections: t, redirections: n } = vde(e);
   return n.length > 0 ? t : e;
 }
-function eHc({
+function bashToolUseOptions({
   suggestions: e = [],
   decisionReason: t,
   onRejectFeedbackChange: n,

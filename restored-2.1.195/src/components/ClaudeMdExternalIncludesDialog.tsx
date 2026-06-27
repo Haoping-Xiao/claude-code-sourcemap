@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ptr
 // matched 2.1.88 source: src/components/ClaudeMdExternalIncludesDialog.tsx
 // class=modified  jaccard=0.3086  score=0.4581  fileCov=0.486
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: recordExternalIncludesDecision, ClaudeMdExternalIncludesDialog
 // [unwrapped __esm module ptr] deps: sFn, v5, kt, NE, Xa, Ye, ps, uo, Cp, rle, Ao, LMl, c5e, dr, Cc, mE, Bs, Ko, zX, eE, m1o
@@ -28,7 +28,7 @@ function ClaudeMdExternalIncludesDialog(e) {
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((s = []), (t[0] = s));
   else s = t[0];
-  BMl.useEffect(ZRf, s);
+  BMl.useEffect(_temp, s);
   let i;
   if (t[1] !== n)
     ((i = (y) => {
@@ -130,7 +130,7 @@ function QRf(e, t) {
     t,
   );
 }
-function ZRf() {
+function _temp() {
   G("tengu_claude_md_includes_dialog_shown", {});
 }
 var NMl, BMl, Dfe;

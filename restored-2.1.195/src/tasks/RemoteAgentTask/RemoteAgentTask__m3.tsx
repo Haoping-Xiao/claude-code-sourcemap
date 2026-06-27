@@ -2,19 +2,19 @@
 // restored from claude-code 2.1.195 (deminified) — module sYo
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0373  score=0.1418  fileCov=0.0482
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sYo] deps: Vb, ft, np, yC, je, vn, b0c, y4t, bm, OI, dn, wUn
 oYo = new WeakMap();
 function svt(e, t) {
   try {
-    let n = Evm(e);
-    (wvm(n), Hvm(n, t), Tvm(n, t), vvm(n, t));
+    let n = extractTodoListFromLog(e);
+    (wvm(n), enqueueUltraplanFailureNotification(n, t), Tvm(n, t), vvm(n, t));
   } catch (n) {
     ke(n);
   }
 }
-function Evm(e) {
+function extractTodoListFromLog(e) {
   let t = [],
     n = new Map(),
     r = new Set(),
@@ -111,7 +111,7 @@ function Avm(e) {
   return e.map((t) => (iYo(t) && typeof t.text === "string" ? t.text : "")).join(`
 `);
 }
-function Hvm({ asyncAgents: e, notifiedTaskIds: t }, n) {
+function enqueueUltraplanFailureNotification({ asyncAgents: e, notifiedTaskIds: t }, n) {
   let r = 0;
   for (let o of e.values()) {
     if (t.has(o.agentId) || n.get(o.agentId)) continue;

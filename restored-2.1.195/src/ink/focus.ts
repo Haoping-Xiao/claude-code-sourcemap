@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module H3i
 // matched 2.1.88 source: src/ink/focus.ts
 // class=modified  jaccard=0.2831  score=0.4778  fileCov=0.4099
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module H3i] deps: qit
 n0e = class n0e extends yne {
@@ -177,7 +177,7 @@ function _ne(e, t) {
   }
   return false;
 }
-function zit(e) {
+function getRootNode(e) {
   let t = e;
   while (t) {
     if (t.focusManager) return t;
@@ -186,6 +186,6 @@ function zit(e) {
   throw Error("Node is not in a tree with a FocusManager");
 }
 function bne(e) {
-  return zit(e).focusManager;
+  return getRootNode(e).focusManager;
 }
 var T3i = 32;

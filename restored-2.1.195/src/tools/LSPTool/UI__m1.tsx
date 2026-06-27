@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module nbl
 // matched 2.1.88 source: src/tools/LSPTool/UI.tsx
 // class=modified (alt of src/tools/LSPTool/UI.tsx)  jaccard=0.2594  score=0.6648  fileCov=0.2984
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function $gf(e) {
+function LSPResultSummary(e) {
   let t = rbl.c(24),
     { operation: n, resultCount: r, fileCount: o, content: s, verbose: i } = e,
     a;
@@ -127,7 +127,7 @@ function $gf(e) {
 function obl() {
   return "LSP";
 }
-function sbl(e, { verbose: t }) {
+function renderToolUseMessage(e, { verbose: t }) {
   if (!e.operation) return null;
   let n = [];
   if (
@@ -154,7 +154,7 @@ function sbl(e, { verbose: t }) {
   }
   return n.join(", ");
 }
-function ibl(e, { verbose: t }) {
+function renderToolUseErrorMessage(e, { verbose: t }) {
   if (!t && typeof e === "string" && xl(e, "tool_use_error"))
     return Lk.jsx(qn, {
       children: Lk.jsx(w, {
@@ -169,7 +169,7 @@ function ibl(e, { verbose: t }) {
 }
 function abl(e, t, { verbose: n }) {
   if (e.resultCount !== void 0 && e.fileCount !== void 0)
-    return Lk.jsx($gf, {
+    return Lk.jsx(LSPResultSummary, {
       operation: e.operation,
       resultCount: e.resultCount,
       fileCount: e.fileCount,

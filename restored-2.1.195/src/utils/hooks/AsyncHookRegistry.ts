@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module PZn
 // matched 2.1.88 source: src/utils/hooks/AsyncHookRegistry.ts
 // class=modified  jaccard=0.6772  score=0.9167  fileCov=0.7216
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module PZn] deps: qfn, je, tA
 CCf = ["SessionStart", "Setup"];
-function d0l({
+function registerPendingAsyncHook({
   processId: e,
   hookId: t,
   asyncResponse: n,
@@ -72,7 +72,7 @@ async function zMo(e, t, n) {
       outcome: n,
     }));
 }
-async function p0l() {
+async function checkForAsyncHookResponses() {
   let e = [],
     t = Afe.size;
   T(`Hooks: Found ${t} total hooks in registry`);
@@ -190,14 +190,14 @@ async function p0l() {
   if (o) (T("Invalidating session env cache after SessionStart hook completed"), Eut());
   return (T(`Hooks: checkForNewResponses returning ${e.length} responses`), e);
 }
-function f0l(e) {
+function removeDeliveredAsyncHooks(e) {
   for (let t of e) {
     let n = Afe.get(t);
     if (n && n.responseAttachmentSent)
       (T(`Hooks: Removing delivered hook ${t}`), n.stopProgressInterval(), Afe.delete(t));
   }
 }
-async function KMo() {
+async function finalizePendingAsyncHooks() {
   let e = Array.from(Afe.values());
   (await Promise.all(
     e.map(async (t) => {

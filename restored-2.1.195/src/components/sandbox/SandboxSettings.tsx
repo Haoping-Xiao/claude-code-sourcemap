@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module yXl
 // matched 2.1.88 source: src/components/sandbox/SandboxSettings.tsx
 // class=modified  jaccard=0.4047  score=0.5516  fileCov=0.6032
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yXl] deps: Ye, lg, Vl, hse, kP
 ((H4o = R(lt(), 1)), (BP = R(se(), 1)));
-function _Xl(e) {
+function SandboxSettings(e) {
   let t = T4o.c(29),
     { onComplete: n, depCheck: r } = e,
     o;
@@ -123,7 +123,7 @@ function _Xl(e) {
       sm,
       {
         title: "Mode",
-        children: EA.jsx(u8f, {
+        children: EA.jsx(SandboxModeTab, {
           showSocketWarning: p,
           options: S,
           currentMode: b,
@@ -245,7 +245,7 @@ function _Xl(e) {
   else V = t[28];
   return V;
 }
-function u8f(e) {
+function SandboxModeTab(e) {
   let t = T4o.c(19),
     {
       showSocketWarning: n,

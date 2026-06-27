@@ -13,7 +13,7 @@
 function isArtifactHardDisabled() {
   return Oe.CLAUDE_CODE_DISABLE_ARTIFACT || a0()?.settings.disableArtifact === true;
 }
-function isArtifactSdkDefaultOff() {
+function initializeEntrypoint() {
   let e = Oe.CLAUDE_CODE_ENTRYPOINT;
   return RZe() || e === "claude-code-github-action" || e === "mcp" || q0t() || spn();
 }
@@ -25,7 +25,7 @@ function isArtifactToolEligible() {
   if (e === "local-agent" || e?.startsWith("claude-coworker")) return false;
   if (Vi()) return false;
   if (ml(Oe.CLAUDE_CODE_ARTIFACT)) return false;
-  if (!ut(Oe.CLAUDE_CODE_ARTIFACT) && isArtifactSdkDefaultOff()) return false;
+  if (!ut(Oe.CLAUDE_CODE_ARTIFACT) && initializeEntrypoint()) return false;
   return true;
 }
 function isArtifactToolEnabled() {

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module DQa
 // matched 2.1.88 source: src/components/TeleportError.tsx
 // class=modified  jaccard=0.2416  score=0.4223  fileCov=0.3609
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DQa] deps: si, Ye, je, sa, Fy, vi, B_, Ko, EC
 ((X9e = R(rt(), 1)), (wk = R(se(), 1)));
-function c8n(e) {
+function TeleportError(e) {
   let t = PQa.c(20),
     { onComplete: n, errorsToIgnore: r } = e,
     o = r === void 0 ? zJp : r,

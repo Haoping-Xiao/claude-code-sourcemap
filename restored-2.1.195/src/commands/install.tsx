@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uTt
 // matched 2.1.88 source: src/commands/install.tsx
 // class=modified  jaccard=0.4633  score=0.6356  fileCov=0.6309
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: install
 // [unwrapped __esm module uTt] deps: Xr, ft, ag, oo, er, je, Cp, At, OMe, Ao, DE, __, Fh
@@ -11,13 +11,13 @@ _am = H.object({
   status_detail: H.string(),
   needs_action: H.string(),
 });
-function bam() {
+function getInstallationPath() {
   let e = Oe.platform === "win32",
     t = apc.homedir();
   if (e) return lpc.join(t, ".local", "bin", "claude.exe").replaceAll("/", "\\");
   return "~/.local/bin/claude";
 }
-function spc(e) {
+function SetupNotes(e) {
   let t = ipc.c(5),
     { messages: n } = e;
   if (n.length === 0) return null;
@@ -72,7 +72,7 @@ function Sam(e, t) {
     t,
   );
 }
-function Eam({ onDone: e, force: t, target: n }) {
+function Install({ onDone: e, force: t, target: n }) {
   let [r, o] = our.useState({
       type: "checking",
     }),
@@ -198,7 +198,7 @@ function Eam({ onDone: e, force: t, target: n }) {
             children: "Setting up launcher and shell integration...",
           }),
         r.type === "set-up" &&
-          Tm.jsx(spc, {
+          Tm.jsx(SetupNotes, {
             messages: r.messages,
           }),
         r.type === "success" &&
@@ -245,7 +245,7 @@ function Eam({ onDone: e, force: t, target: n }) {
                       }),
                       Tm.jsx(w, {
                         color: "text",
-                        children: bam(),
+                        children: getInstallationPath(),
                       }),
                     ],
                   }),
@@ -275,7 +275,7 @@ function Eam({ onDone: e, force: t, target: n }) {
                 }),
               }),
               r.setupMessages.length > 0 &&
-                Tm.jsx(spc, {
+                Tm.jsx(SetupNotes, {
                   messages: r.setupMessages,
                 }),
             ],

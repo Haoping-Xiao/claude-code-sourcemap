@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module z1
 // matched 2.1.88 source: src/services/api/errorUtils.ts
 // class=modified  jaccard=0.3625  score=0.467  fileCov=0.6185
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module z1] deps: PR, Ree, ft, TM, og, oo, Vw, e1, er, vn, NX, Ao, qd, kt, ZE, Yxe, Ijt, xjt
 ((rlp = [
@@ -61,7 +61,7 @@
 function Dio(e) {
   return que.has(e) ? kh(e) : We("other");
 }
-function tF(e) {
+function extractConnectionErrorDetails(e) {
   if (!e || typeof e !== "object") return null;
   let t = e,
     n = 5,
@@ -90,15 +90,15 @@ function tF(e) {
   return null;
 }
 function flp(e) {
-  let t = tF(e);
+  let t = extractConnectionErrorDetails(e);
   return t !== null && out.has(t.code);
 }
-function dLe(e) {
-  let t = tF(e);
+function getSSLErrorHint(e) {
+  let t = extractConnectionErrorDetails(e);
   if (!t?.isSSLError) return null;
   return `SSL certificate error (${t.code}). If you are behind a corporate proxy or TLS-intercepting firewall, set NODE_EXTRA_CA_CERTS to your CA bundle path, or ask IT to allowlist *.anthropic.com. Run /doctor for details.`;
 }
-function Lio(e) {
+function sanitizeMessageHTML(e) {
   if (e.includes("<!DOCTYPE html") || e.includes("<html")) {
     let t = e.match(/<title>([^<]+)<\/title>/);
     if (t && t[1]) return t[1].trim();
@@ -109,7 +109,7 @@ function Lio(e) {
 function mlp(e) {
   let t = e.message;
   if (!t) return "";
-  return Lio(t);
+  return sanitizeMessageHTML(t);
 }
 function glp(e) {
   return (
@@ -125,18 +125,18 @@ function Maa(e) {
   let n = e.error,
     r = n?.error?.message;
   if (typeof r === "string" && r.length > 0) {
-    let s = Lio(r);
+    let s = sanitizeMessageHTML(r);
     if (s.length > 0) return s;
   }
   let o = n?.message;
   if (typeof o === "string" && o.length > 0) {
-    let s = Lio(o);
+    let s = sanitizeMessageHTML(o);
     if (s.length > 0) return s;
   }
   return null;
 }
-function sut(e) {
-  let t = tF(e);
+function formatAPIError(e) {
+  let t = extractConnectionErrorDetails(e);
   if (t) {
     let { code: r, isSSLError: o } = t;
     if (r === "ETIMEDOUT")
@@ -184,8 +184,8 @@ function Pio(e) {
     message: e.message,
     status: e.status,
     requestId: e.requestID ?? void 0,
-    formatted: sut(e),
-    connection: tF(e),
+    formatted: formatAPIError(e),
+    connection: extractConnectionErrorDetails(e),
     isNetworkDown: flp(e),
     rateLimits:
       n || o

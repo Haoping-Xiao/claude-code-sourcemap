@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module e$e
 // matched 2.1.88 source: src/tools/AgentTool/runAgent.ts
 // class=modified  jaccard=0.2554  score=0.367  fileCov=0.4563
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module e$e] deps: ft, Zf, ft, MMe, np, F8, dn, kt, Du, pre, Ire, Ryt, s8t, SAe, F8t, Vv, Il, je, Cp, At, q0, ys, uf, p6e, TIo, Yll, vn, co, __, Gy, CIo, $g, L7, q8t, I8, M8e, aS, II, u$, HO, bKn, acl
 ((g_t = require("crypto")), (Gif = new Set(["clear", "resume", "help", "exit", "feedback"])));
-async function Yif(e, t, n) {
+async function initializeAgentMcpServers(e, t, n) {
   if (!e.mcpServers?.length)
     return {
       clients: t,
@@ -156,7 +156,7 @@ async function Yif(e, t, n) {
     cleanup: d,
   };
 }
-function Xif(e) {
+function isRecordableMessage(e) {
   return (
     e.type === "assistant" ||
     e.type === "user" ||
@@ -173,7 +173,7 @@ function mcl(e) {
 function Qif(e) {
   T(`Failed to write agent metadata: ${e}`);
 }
-async function* o3({
+async function* runAgent({
   agentDefinition: e,
   promptMessages: t,
   toolUseContext: n,
@@ -222,7 +222,7 @@ async function* o3({
     bFn(K, e.agentType, ze);
   }
   let Z,
-    J = i ? Hwo(i) : [],
+    J = i ? filterIncompleteToolCalls(i) : [],
     ne = [...J, ...t],
     oe = i !== void 0 ? IKn(J) : void 0,
     re = i !== void 0 ? aSe(n.readFileState) : QU(V1),
@@ -401,7 +401,7 @@ async function* o3({
       agentClients: Je,
       tools: gt,
       cleanup: st,
-    } = await Yif(e, n.options.mcpClients, O),
+    } = await initializeAgentMcpServers(e, n.options.mcpClients, O),
     { isToolDisallowed: xt } = Bwo(e.disallowedTools),
     vt = gt.filter((ze) => !xt(ze)),
     jt = vt.length > 0 ? oE([...Ve, ...vt], "name") : Ve;
@@ -640,7 +640,7 @@ async function* o3({
         yield ze;
         continue;
       }
-      if (Xif(ze)) {
+      if (isRecordableMessage(ze)) {
         if (ze.type !== "progress") {
           if (nn) (nn.push(ze), (Ln = Bpe(nn, ze, Ln)));
         }
@@ -826,7 +826,7 @@ async function* o3({
     }
   }
 }
-function Hwo(e) {
+function filterIncompleteToolCalls(e) {
   let t = new Set();
   for (let n of e)
     if (n?.type === "user") {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module URn
 // matched 2.1.88 source: src/ink/termio/tokenize.ts
 // class=modified  jaccard=0.4335  score=0.8369  fileCov=0.4735
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Qke(e) {
   let t = "ground",
@@ -11,11 +11,11 @@ function Qke(e) {
     o = e?.forOutput ?? false;
   return {
     feed(s) {
-      let i = S4i(s, t, n, false, r, o);
+      let i = tokenize(s, t, n, false, r, o);
       return ((t = i.state.state), (n = i.state.buffer), i.tokens);
     },
     flush() {
-      let s = S4i("", t, n, true, r, o);
+      let s = tokenize("", t, n, true, r, o);
       return ((t = s.state.state), (n = s.state.buffer), s.tokens);
     },
     reset() {
@@ -26,7 +26,7 @@ function Qke(e) {
     },
   };
 }
-function S4i(e, t, n, r, o, s) {
+function tokenize(e, t, n, r, o, s) {
   let i = [],
     a = {
       state: t,

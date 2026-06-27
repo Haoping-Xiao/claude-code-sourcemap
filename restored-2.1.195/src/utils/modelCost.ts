@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NE
 // matched 2.1.88 source: src/utils/modelCost.ts
 // class=modified  jaccard=0.2748  score=0.4322  fileCov=0.43
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NE] deps: Hp, Rc, Un, ft, id, kt, oo, er, je, fn, mye, Ao, Ls, qd, dr, ih
 Jdd = [
@@ -66,9 +66,9 @@ function L2r(e, t) {
   let o = Dt().additionalModelCostsCache,
     s = o?.[e] ?? o?.[n];
   if (s) return s;
-  return (npd(e, n), Z2e[mo(Uw())] ?? k2r);
+  return (trackUnknownModelCost(e, n), Z2e[mo(Uw())] ?? k2r);
 }
-function npd(e, t) {
+function trackUnknownModelCost(e, t) {
   (G("tengu_unknown_model_cost", {
     model: e,
     shortName: t,

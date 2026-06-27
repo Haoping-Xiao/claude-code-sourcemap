@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TPc
 // matched 2.1.88 source: src/utils/cronTasksLock.ts
 // class=modified  jaccard=0.254  score=0.482  fileCov=0.3494
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TPc] deps: je, At, gM
 ((hvt = require("fs/promises")),
@@ -33,7 +33,7 @@ async function wPc(e) {
   let n = QCm().safeParse(Ia(t, false));
   return n.success ? n.data : void 0;
 }
-async function vPc(e, t) {
+async function tryCreateExclusive(e, t) {
   let n = Ftn(t),
     r = De(e);
   try {
@@ -68,10 +68,10 @@ async function vPc(e, t) {
 function jYo(e) {
   (Yfr?.(),
     (Yfr = Ci(async () => {
-      await Gtn(e);
+      await releaseSchedulerLock(e);
     })));
 }
-async function GYo(e) {
+async function tryAcquireSchedulerLock(e) {
   let t = e?.dir;
   await HPc(t ?? rc());
   let n = e?.lockIdentity ?? Rt(),
@@ -81,7 +81,7 @@ async function GYo(e) {
       procStart: fte(),
       acquiredAt: Date.now(),
     };
-  if (await vPc(r, t))
+  if (await tryCreateExclusive(r, t))
     return (
       (Utn = void 0),
       jYo(e),
@@ -100,11 +100,11 @@ async function GYo(e) {
     return false;
   }
   if (o) T(`[ScheduledTasks] recovering stale scheduler lock from PID ${o.pid}`);
-  if ((await rie.unlink(Ftn(t)).catch(() => {}), await vPc(r, t)))
+  if ((await rie.unlink(Ftn(t)).catch(() => {}), await tryCreateExclusive(r, t)))
     return ((Utn = void 0), jYo(e), true);
   return false;
 }
-async function Gtn(e) {
+async function releaseSchedulerLock(e) {
   (Yfr?.(), (Yfr = void 0), (Utn = void 0));
   let t = e?.dir,
     n = e?.lockIdentity ?? Rt(),

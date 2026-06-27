@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uDe
 // matched 2.1.88 source: src/utils/toolResultStorage.ts
 // class=modified  jaccard=0.3858  score=0.7448  fileCov=0.4445
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uDe] deps: Qi, Un, oc
 ade = class ade extends Error {
@@ -48,7 +48,7 @@ function hvp() {
   return QUn.join(aj(yr()), Rt());
 }
 function lde() {
-  return QUn.join(hvp(), Pdo);
+  return QUn.join(hvp(), TOOL_RESULTS_SUBDIR);
 }
 function T3t(e, t) {
   let n = t ? "json" : "txt";
@@ -59,7 +59,7 @@ async function GSe() {
     await qs().mkdir(lde());
   } catch {}
 }
-async function pDe(e, t) {
+async function persistToolResult(e, t) {
   let n = Array.isArray(e);
   if (n) {
     if (e.some((l) => l.type !== "text"))
@@ -75,11 +75,11 @@ async function pDe(e, t) {
   } catch (a) {
     if (on(a) !== "EEXIST")
       return (
-        T(`Failed to persist tool result to ${r}: ${fIa(Zr(a))}`, {
+        T(`Failed to persist tool result to ${r}: ${getFileSystemErrorMessage(Zr(a))}`, {
           level: "error",
         }),
         {
-          error: fIa(Zr(a)),
+          error: getFileSystemErrorMessage(Zr(a)),
         }
       );
   }
@@ -92,8 +92,8 @@ async function pDe(e, t) {
     hasMore: i,
   };
 }
-function fDe(e) {
-  let t = `${dDe}
+function buildLargeToolResultMessage(e) {
+  let t = `${PERSISTED_OUTPUT_TAG}
 `;
   return (
     (t += `Output too large (${Ra(e.originalSize)}). Full output saved to: ${e.filepath}
@@ -108,18 +108,22 @@ function fDe(e) {
 `
       : `
 `),
-    (t += Mdo),
+    (t += PERSISTED_OUTPUT_CLOSING_TAG),
     t
   );
 }
 async function Wdt(e, t, n) {
   let r = e.mapToolResultToToolResultBlockParam(t, n);
-  return hIa(r, e.name, mIa(e.name, e.maxResultSizeChars, e.persistenceThresholdCeiling));
+  return maybePersistLargeToolResult(
+    r,
+    e.name,
+    mIa(e.name, e.maxResultSizeChars, e.persistenceThresholdCeiling),
+  );
 }
 async function gIa(e, t, n, r) {
-  return hIa(e, t, mIa(t, n, r));
+  return maybePersistLargeToolResult(e, t, mIa(t, n, r));
 }
-function yvp(e) {
+function isToolResultContentEmpty(e) {
   if (!e) return true;
   if (typeof e === "string") return e.trim() === "";
   if (!Array.isArray(e)) return false;
@@ -133,9 +137,9 @@ function yvp(e) {
       (typeof t.text !== "string" || t.text.trim() === ""),
   );
 }
-async function hIa(e, t, n) {
+async function maybePersistLargeToolResult(e, t, n) {
   let r = e.content;
-  if (yvp(r))
+  if (isToolResultContentEmpty(r))
     return (
       G("tengu_tool_empty_result", {
         toolName: Ui(t),
@@ -150,9 +154,9 @@ async function hIa(e, t, n) {
   let o = SIa(r),
     s = n ?? qca;
   if (o <= s) return e;
-  let i = await pDe(r, e.tool_use_id);
+  let i = await persistToolResult(r, e.tool_use_id);
   if (mDe(i)) return e;
-  let a = fDe(i);
+  let a = buildLargeToolResultMessage(i);
   return (
     G("tengu_tool_result_persisted", {
       toolName: Ui(t),
@@ -197,13 +201,16 @@ function yIa(e) {
     replacements: new Map(e.replacements),
   };
 }
-function _Ia(e, t) {
+function provisionContentReplacementState(e, t) {
   if (!at("tengu_hawthorn_steeple", false)) return;
   if (e) return ZUn(e, t ?? []);
   return w3t();
 }
 function _vp(e) {
-  return typeof e === "string" && (e.startsWith(dDe) || e === mvp);
+  return (
+    typeof e === "string" &&
+    (e.startsWith(PERSISTED_OUTPUT_TAG) || e === TOOL_RESULT_CLEARED_MESSAGE)
+  );
 }
 function bIa(e) {
   return (
@@ -217,7 +224,7 @@ function SIa(e) {
   if (typeof e === "string") return e.length;
   return e.reduce((t, n) => t + (n.type === "text" ? n.text.length : 0), 0);
 }
-function bvp(e) {
+function buildToolNameMap(e) {
   let t = new Map();
   for (let n of e) {
     if (n.type !== "assistant") continue;
@@ -311,16 +318,16 @@ function Hvp(e, t) {
   });
 }
 async function Tvp(e) {
-  let t = await pDe(e.content, e.toolUseId);
+  let t = await persistToolResult(e.content, e.toolUseId);
   if (mDe(t)) return null;
   return {
-    content: fDe(t),
+    content: buildLargeToolResultMessage(t),
     originalSize: t.originalSize,
   };
 }
-async function vvp(e, t, n = new Set()) {
+async function enforceToolResultBudget(e, t, n = new Set()) {
   let r = EIa(e),
-    o = n.size > 0 ? bvp(e) : void 0,
+    o = n.size > 0 ? buildToolNameMap(e) : void 0,
     s = (m) => o !== void 0 && n.has(o.get(m) ?? ""),
     i = Vca,
     a = new Map(),
@@ -393,7 +400,7 @@ async function vvp(e, t, n = new Set()) {
 }
 async function AIa(e, t, n, r) {
   if (!t) return e;
-  let o = await vvp(e, t, r);
+  let o = await enforceToolResultBudget(e, t, r);
   if (o.newlyReplaced.length > 0) n?.(o.newlyReplaced);
   return o.messages;
 }
@@ -417,7 +424,7 @@ function eFn(e, t, n) {
   if (!e) return;
   return ZUn(t, n, e.replacements);
 }
-function fIa(e) {
+function getFileSystemErrorMessage(e) {
   let t = e;
   if (t.code)
     switch (t.code) {
@@ -439,9 +446,9 @@ function fIa(e) {
   return e.message;
 }
 var QUn,
-  Pdo = "tool-results",
-  dDe = "<persisted-output>",
-  Mdo = "</persisted-output>",
-  mvp = "[Old tool result content cleared]",
+  TOOL_RESULTS_SUBDIR = "tool-results",
+  PERSISTED_OUTPUT_TAG = "<persisted-output>",
+  PERSISTED_OUTPUT_CLOSING_TAG = "</persisted-output>",
+  TOOL_RESULT_CLEARED_MESSAGE = "[Old tool result content cleared]",
   gvp = "tengu_velvet_ibis",
   Gdt = 2000;

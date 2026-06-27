@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module s6n
 // matched 2.1.88 source: src/components/permissions/NotebookEditPermissionRequest/NotebookEditToolDiff.tsx
 // class=modified  jaccard=0.3952  score=0.5911  fileCov=0.5438
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module s6n] deps: o6n, ys, Hu, _m, Jt
 kvo = class kvo extends Error {
@@ -36,7 +36,7 @@ function ttl(e) {
   if (t[4] !== r || t[5] !== e)
     ((o = bN.jsx(i6n.Suspense, {
       fallback: null,
-      children: bN.jsx(JZp, {
+      children: bN.jsx(NotebookEditToolDiffInner, {
         ...e,
         promise: r,
       }),
@@ -53,7 +53,7 @@ function YZp() {
 function XZp(e) {
   return Ia(e);
 }
-function JZp(e) {
+function NotebookEditToolDiffInner(e) {
   let t = Rvo.c(34),
     {
       notebook_path: n,

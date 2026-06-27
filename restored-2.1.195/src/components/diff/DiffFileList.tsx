@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module SNo
 // matched 2.1.88 source: src/components/diff/DiffFileList.tsx
 // class=modified  jaccard=0.2764  score=0.389  fileCov=0.4883
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SNo] deps: _i, Ye, Lo, oc, sr, vKe, LW, B_, Kut
 ((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));
-function X1l(e) {
+function DiffFileList(e) {
   let t = onr.c(36),
     { files: n, selectedIndex: r } = e,
     { columns: o } = br(),
@@ -73,7 +73,7 @@ function X1l(e) {
     if (t[21] !== b || t[22] !== r || t[23] !== i)
       ((_ = (S, A) =>
         WN.jsx(
-          t$f,
+          FileItem,
           {
             file: S,
             isSelected: i + A === r,
@@ -128,7 +128,7 @@ function X1l(e) {
   else g = t[35];
   return g;
 }
-function t$f(e) {
+function FileItem(e) {
   let t = onr.c(14),
     { file: n, isSelected: r, maxPathWidth: o } = e,
     s;

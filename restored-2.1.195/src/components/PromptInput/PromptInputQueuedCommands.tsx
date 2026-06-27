@@ -2,32 +2,32 @@
 // restored from claude-code 2.1.195 (deminified) — module Z_c
 // matched 2.1.88 source: src/components/PromptInput/PromptInputQueuedCommands.tsx
 // class=modified  jaccard=0.1695  score=0.3147  fileCov=0.2687
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z_c] deps: si, Ye, IL, Mp, sA
 ((Y6o = R(lt(), 1)), (E7e = R(se(), 1)));
-function Cmm(e) {
+function isIdleNotification(e) {
   try {
     return Ft(e)?.type === "idle_notification";
   } catch {
     return false;
   }
 }
-function Imm(e) {
+function createOverflowNotificationMessage(e) {
   return `<${Oc}>
 <${Zu}>+${e} more tasks completed</${Zu}>
 <${up}>completed</${up}>
 </${Oc}>`;
 }
-function xmm(e) {
-  let t = e.filter((a) => typeof a.value !== "string" || !Cmm(a.value)),
+function processQueuedCommands(e) {
+  let t = e.filter((a) => typeof a.value !== "string" || !isIdleNotification(a.value)),
     n = t.filter((a) => a.mode === "task-notification"),
     r = t.filter((a) => a.mode !== "task-notification");
   if (n.length <= J6o) return [...r, ...n];
   let o = n.slice(0, J6o - 1),
     s = n.length - (J6o - 1),
     i = {
-      value: Imm(s),
+      value: createOverflowNotificationMessage(s),
       mode: "task-notification",
       agentId: ls(),
     };
@@ -51,8 +51,8 @@ function kmm() {
         s = null;
         break e;
       }
-      let f = xmm(p),
-        m = mS(f.map(Rmm)),
+      let f = processQueuedCommands(p),
+        m = mS(f.map(PromptInputQueuedCommandsImpl)),
         g;
       if (e[2] !== m || e[3] !== f)
         ((g = {
@@ -140,7 +140,7 @@ function kmm() {
   else d = e[19];
   return d;
 }
-function Rmm(e) {
+function PromptInputQueuedCommandsImpl(e) {
   let t = e.value;
   if (e.mode === "bash" && typeof t === "string") t = `<bash-input>${t}</bash-input>`;
   return Rn({

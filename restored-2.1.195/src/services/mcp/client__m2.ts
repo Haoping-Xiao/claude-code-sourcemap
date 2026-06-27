@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GNn
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0143  score=0.3718  fileCov=0.0146
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GNn] deps: Xr
 But = Dy({
@@ -39,7 +39,7 @@ function Slo(e, t) {
   let r = hc(t);
   return e.filter((o) => hc(o.name) === r);
 }
-function WNn(e, t) {
+function ensureConnectedClient(e, t) {
   let [n] = Slo(e, t);
   if (!n)
     throw new mi(

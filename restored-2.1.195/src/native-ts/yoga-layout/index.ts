@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nRn
 // matched 2.1.88 source: src/native-ts/yoga-layout/index.ts
 // class=modified  jaccard=0.1972  score=0.962  fileCov=0.1988
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module nRn] (exports=Fzh, module=pFi)
 var Fzh = {};
@@ -354,7 +354,7 @@ class aRn {
     return this.layout.margin[e7r(e)];
   }
   setWidth(e) {
-    ((this.style.width = une(e)), this.markDirty());
+    ((this.style.width = parseDimension(e)), this.markDirty());
   }
   setWidthPercent(e) {
     ((this.style.width = U7(e)), this.markDirty());
@@ -363,7 +363,7 @@ class aRn {
     ((this.style.width = q_e), this.markDirty());
   }
   setHeight(e) {
-    ((this.style.height = une(e)), this.markDirty());
+    ((this.style.height = parseDimension(e)), this.markDirty());
   }
   setHeightPercent(e) {
     ((this.style.height = U7(e)), this.markDirty());
@@ -372,25 +372,25 @@ class aRn {
     ((this.style.height = q_e), this.markDirty());
   }
   setMinWidth(e) {
-    ((this.style.minWidth = une(e)), this.markDirty());
+    ((this.style.minWidth = parseDimension(e)), this.markDirty());
   }
   setMinWidthPercent(e) {
     ((this.style.minWidth = U7(e)), this.markDirty());
   }
   setMinHeight(e) {
-    ((this.style.minHeight = une(e)), this.markDirty());
+    ((this.style.minHeight = parseDimension(e)), this.markDirty());
   }
   setMinHeightPercent(e) {
     ((this.style.minHeight = U7(e)), this.markDirty());
   }
   setMaxWidth(e) {
-    ((this.style.maxWidth = une(e)), this.markDirty());
+    ((this.style.maxWidth = parseDimension(e)), this.markDirty());
   }
   setMaxWidthPercent(e) {
     ((this.style.maxWidth = U7(e)), this.markDirty());
   }
   setMaxHeight(e) {
-    ((this.style.maxHeight = une(e)), this.markDirty());
+    ((this.style.maxHeight = parseDimension(e)), this.markDirty());
   }
   setMaxHeightPercent(e) {
     ((this.style.maxHeight = U7(e)), this.markDirty());
@@ -413,7 +413,7 @@ class aRn {
     this.markDirty();
   }
   setFlexBasis(e) {
-    ((this.style.flexBasis = une(e)), this.markDirty());
+    ((this.style.flexBasis = parseDimension(e)), this.markDirty());
   }
   setFlexBasisPercent(e) {
     ((this.style.flexBasis = U7(e)), this.markDirty());
@@ -446,7 +446,7 @@ class aRn {
     ((this.style.positionType = e), this.markDirty());
   }
   setPosition(e, t) {
-    ((this.style.position[e] = une(t)),
+    ((this.style.position[e] = parseDimension(t)),
       (this._hasPosition = rRn(this.style.position)),
       this.markDirty());
   }
@@ -464,7 +464,7 @@ class aRn {
   }
   setBoxSizing(e) {}
   setMargin(e, t) {
-    let n = une(t);
+    let n = parseDimension(t);
     if (((this.style.margin[e] = n), n.unit === 3)) this._hasAutoMargin = true;
     else this._hasAutoMargin = mFi(this.style.margin);
     ((this._hasMargin = this._hasAutoMargin || rRn(this.style.margin)), this.markDirty());
@@ -482,7 +482,7 @@ class aRn {
       this.markDirty());
   }
   setPadding(e, t) {
-    ((this.style.padding[e] = une(t)),
+    ((this.style.padding[e] = parseDimension(t)),
       (this._hasPadding = rRn(this.style.padding)),
       this.markDirty());
   }
@@ -495,7 +495,7 @@ class aRn {
       this.markDirty());
   }
   setGap(e, t) {
-    ((this.style.gap[e] = une(t)), this.markDirty());
+    ((this.style.gap[e] = parseDimension(t)), this.markDirty());
   }
   setGapPercent(e, t) {
     ((this.style.gap[e] = U7(t)), this.markDirty());
@@ -1410,7 +1410,7 @@ function wit(e, t, n, r) {
   else o = Math.floor(o) + (s >= 0.4999 ? 1 : 0);
   return o / t;
 }
-function une(e) {
+function parseDimension(e) {
   if (e === void 0) return u8;
   if (e === "auto") return q_e;
   if (typeof e === "number") return Number.isFinite(e) ? lRn(e) : u8;

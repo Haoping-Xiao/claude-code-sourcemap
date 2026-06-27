@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Du
 // matched 2.1.88 source: src/services/analytics/firstPartyEventLoggingExporter.ts
 // class=modified  jaccard=0.2478  score=0.5883  fileCov=0.2998
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Du] deps: Qi, wr, Q9, TM, Vw, Ao, ft, fn, Ist, Tzr, S_e, Yle, kst, QH, oo, Ld, sa, Is, og, Jt, Mp, pke, fb
 ((_Oi = require("path")),
@@ -142,7 +142,7 @@ K$d = new Set([
 function oNt() {
   return gkn.join(tr(), "telemetry");
 }
-class Dzr {
+class FirstPartyEventLoggingExporter {
   endpoint;
   timeout;
   maxBatchSize;
@@ -186,7 +186,7 @@ class Dzr {
     return (await this.loadEventsFromCurrentBatch()).length;
   }
   getCurrentBatchFilePath() {
-    return gkn.join(oNt(), `${wOi}${Rt()}.${vOi}.json`);
+    return gkn.join(oNt(), `${FILE_PREFIX}${Rt()}.${vOi}.json`);
   }
   async loadEventsFromFile(e) {
     try {
@@ -246,7 +246,7 @@ class Dzr {
   }
   async retryPreviousBatches() {
     try {
-      let e = `${wOi}${Rt()}.`,
+      let e = `${FILE_PREFIX}${Rt()}.`,
         t;
       try {
         t = (await E7.readdir(oNt()))
@@ -351,7 +351,7 @@ class Dzr {
           events: s,
         });
       } catch (i) {
-        r = Q$d(i);
+        r = getAxiosErrorContext(i);
         for (let a = o; a < t.length; a++) n.push(...t[a]);
         break;
       }
@@ -544,7 +544,7 @@ class Dzr {
     await Promise.all(this.pendingExports);
   }
 }
-function Q$d(e) {
+function getAxiosErrorContext(e) {
   if (!po.isAxiosError(e)) return be(e);
   let t = [],
     n = e.response?.headers?.["request-id"];
@@ -559,4 +559,4 @@ var mke,
   E7,
   gkn,
   vOi,
-  wOi = "1p_failed_events.";
+  FILE_PREFIX = "1p_failed_events.";

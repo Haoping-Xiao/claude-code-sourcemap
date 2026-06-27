@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W$l
 // matched 2.1.88 source: src/components/Settings/Config.tsx
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.2515  score=0.4737  fileCov=0.3489
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module W$l] deps: er
 ((M1o = [
@@ -104,7 +104,7 @@
   (RLf = new Map(M1o.flatMap((e) => j$l[e].map((t) => [t, e])))),
   (N$l = new Map(M1o.flatMap((e, t) => j$l[e].map((n, r) => [n, t * 1000 + r])))));
 B$l = M1o.indexOf("Advanced") * 1000 + 999;
-function K$l({
+function Config({
   onClose: e,
   context: t,
   setTabsHidden: n,
@@ -1150,10 +1150,13 @@ function K$l({
                                                                             : void 0,
                                                                           dimColor: un,
                                                                           wrap: "truncate-end",
-                                                                          children: Zo.jsx(X$l, {
-                                                                            value:
-                                                                              fe.value.toString(),
-                                                                          }),
+                                                                          children: Zo.jsx(
+                                                                            NotifChannelLabel,
+                                                                            {
+                                                                              value:
+                                                                                fe.value.toString(),
+                                                                            },
+                                                                          ),
                                                                         })
                                                                       : fe.id === "permissionMode"
                                                                         ? Zo.jsx(w, {
@@ -1323,7 +1326,7 @@ function K$l({
                               }),
   });
 }
-function X$l(e) {
+function NotifChannelLabel(e) {
   let t = N1o.c(4),
     { value: n } = e;
   switch (n) {
@@ -1409,7 +1412,7 @@ function LLf(e, t) {
     return `disabled (${Lgt(t.autoUpdaterDisabledReason)})`;
   if (e.id === "notifChannel" && !t.revampSections)
     return GU(
-      X$l({
+      NotifChannelLabel({
         value: n,
       }),
     );

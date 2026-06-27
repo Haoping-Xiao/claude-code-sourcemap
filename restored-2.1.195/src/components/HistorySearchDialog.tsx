@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module OTt
 // matched 2.1.88 source: src/components/HistorySearchDialog.tsx
 // class=modified  jaccard=0.2556  score=0.37  fileCov=0.4525
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OTt] deps: si, Xa, _i, m8, Tc, Ye, nk, uo, rme, gq, S_, T6o, c7n, es, sr, dMe, Bs, Ko, _rr, YHe
 (($Tt = R(lt(), 1)), (xZ = R(rt(), 1)), (Au = R(se(), 1)));
-function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
+function HistorySearchDialog({ initialQuery: e, onSelect: t, onCancel: n }) {
   Wh("history-search");
   let { columns: r } = br(),
     [o, s] = Jse.useState("everywhere"),

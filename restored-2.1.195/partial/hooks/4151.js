@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Cal
 // matched 2.1.88 source: src/components/design-system/LoadingState.tsx
 // class=partial  jaccard=0.1633  score=0.3435  fileCov=0.2374
-// note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 0 renamed
+// note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cal] deps: Ye
 Tal = R(lt(), 1), K6 = R(se(), 1);
-function xal() {
+function LoadingState() {
   let e = Ial.c(1),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = dIo.jsx(qn, {

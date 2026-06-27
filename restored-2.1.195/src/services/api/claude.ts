@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Bac
 // matched 2.1.88 source: src/services/api/claude.ts
 // class=modified  jaccard=0.2691  score=0.3745  fileCov=0.4887
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 14 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bac] deps: TM, lf, je, K0, dn, Dac, q8, lNn
 ((Mac = new Set()), ($ac = new Map()));
-function W8e(e) {
+function getExtraBodyParams(e) {
   let t = process.env.CLAUDE_CODE_EXTRA_BODY,
     n = {};
   if (t)
@@ -57,7 +57,7 @@ function Uac(e) {
   }
   return true;
 }
-function Toe({ scope: e, ttl: t } = {}) {
+function getCacheControl({ scope: e, ttl: t } = {}) {
   return {
     type: "ephemeral",
     ...(t && {
@@ -68,7 +68,7 @@ function Toe({ scope: e, ttl: t } = {}) {
     }),
   };
 }
-function F9e(e) {
+function should1hCacheTTL(e) {
   if (ut(process.env.FORCE_PROMPT_CACHING_5M)) return false;
   if (
     ut(process.env.ENABLE_PROMPT_CACHING_1H) ||
@@ -106,7 +106,7 @@ function pnm(e, t, n) {
     type: "disabled",
   };
 }
-function fnm(e, t, n, r, o) {
+function configureEffortParams(e, t, n, r, o) {
   if (!Kw(o)) {
     delete t.effort;
     return;
@@ -115,7 +115,7 @@ function fnm(e, t, n, r, o) {
   if (e === void 0) r.push(Wnt);
   else if (typeof e === "string") ((t.effort = e), r.push(Wnt));
 }
-function mnm(e, t, n) {
+function configureTaskBudgetParams(e, t, n) {
   if (!e || "task_budget" in t || !CM()) return;
   if (
     ((t.task_budget = {
@@ -133,7 +133,7 @@ function gnm(e, t, n, r) {
   if (!e || "format" in t || !j4e(r) || !gle(r, "structured_outputs")) return;
   if (((t.format = e), !n.includes(lte))) n.push(lte);
 }
-function uLe() {
+function getAPIMetadata() {
   let e = {},
     t = process.env.CLAUDE_CODE_EXTRA_METADATA;
   if (t) {
@@ -158,7 +158,7 @@ function uLe() {
     user_id: De(r),
   };
 }
-async function Wac(e, t) {
+async function verifyApiKey(e, t) {
   if (t) return true;
   try {
     let n = Fw(),
@@ -189,8 +189,8 @@ async function Wac(e, t) {
                 ...(r.length > 0 && {
                   betas: fI(r),
                 }),
-                metadata: uLe(),
-                ...W8e(),
+                metadata: getAPIMetadata(),
+                ...getExtraBodyParams(),
               }),
               true
             );
@@ -239,7 +239,7 @@ function hnm(e, t = false, n, r) {
             type: "text",
             text: e.message.content,
             ...(n && {
-              cache_control: Toe({
+              cache_control: getCacheControl({
                 ttl: r,
               }),
             }),
@@ -255,7 +255,7 @@ function hnm(e, t = false, n, r) {
           ...(i === o.length - 1
             ? n
               ? {
-                  cache_control: Toe({
+                  cache_control: getCacheControl({
                     ttl: r,
                   }),
                 }
@@ -287,7 +287,7 @@ function Fac(e) {
         },
       ];
 }
-function ynm(e, t = false, n, r) {
+function assistantMessageToMessageParam(e, t = false, n, r) {
   if (t)
     if (typeof e.message.content === "string")
       return {
@@ -297,7 +297,7 @@ function ynm(e, t = false, n, r) {
             type: "text",
             text: e.message.content,
             ...(n && {
-              cache_control: Toe({
+              cache_control: getCacheControl({
                 ttl: r,
               }),
             }),
@@ -315,7 +315,7 @@ function ynm(e, t = false, n, r) {
           !Pj(o)
             ? n
               ? {
-                  cache_control: Toe({
+                  cache_control: getCacheControl({
                     ttl: r,
                   }),
                 }
@@ -328,7 +328,7 @@ function ynm(e, t = false, n, r) {
     content: e.message.content,
   };
 }
-async function yYe({
+async function queryModelWithoutStreaming({
   messages: e,
   systemPrompt: t,
   thinkingConfig: n,
@@ -338,7 +338,7 @@ async function yYe({
 }) {
   let i;
   for await (let a of RMo(e, async function* () {
-    yield* zac(e, t, n, r, o, s);
+    yield* queryModel(e, t, n, r, o, s);
   }))
     if (a.type === "assistant") i = a;
   if (!i) {
@@ -356,10 +356,10 @@ async function* ybt({
   options: s,
 }) {
   return yield* RMo(e, async function* () {
-    yield* zac(e, t, n, r, o, s);
+    yield* queryModel(e, t, n, r, o, s);
   });
 }
-function _nm(e) {
+function shouldDeferLspTool(e) {
   if (!("isLsp" in e) || !e.isLsp) return false;
   let t = kpt();
   return t.status === "pending" || t.status === "not-started";
@@ -409,7 +409,7 @@ function Vac(e, t) {
     }
   );
 }
-async function* jac(e, t, n, r, o, s) {
+async function* executeNonStreamingRequest(e, t, n, r, o, s) {
   let i = bnm(),
     a = 0,
     l = tcr(
@@ -699,7 +699,7 @@ function Inm(e, t) {
     midConvFallback: a,
   };
 }
-async function* zac(e, t, n, r, o, s) {
+async function* queryModel(e, t, n, r, o, s) {
   let i = mo(s.model);
   if (
     !bo() &&
@@ -790,7 +790,7 @@ async function* zac(e, t, n, r, o, s) {
     if (!p.includes(v)) p.push(v);
   }
   let C = Qxe(),
-    x = (En) => b && (_.has(En.name) || _nm(En)),
+    x = (En) => b && (_.has(En.name) || shouldDeferLspTool(En)),
     I = C && S.some((En) => En.isMcp === true && !x(En));
   if (C && !p.includes(qnt)) p.push(qnt);
   let k = C ? (I ? "none" : "system_prompt") : "none",
@@ -873,7 +873,7 @@ async function* zac(e, t, n, r, o, s) {
   )),
     gac(t));
   let W = s.enablePromptCaching ?? Uac(h),
-    V = F9e(s.querySource) ? "1h" : void 0;
+    V = should1hCacheTTL(s.querySource) ? "1h" : void 0;
   if (
     YY(s.agentContext) &&
     (s.querySource.startsWith("repl_main_thread") || s.querySource === "sdk")
@@ -924,7 +924,7 @@ async function* zac(e, t, n, r, o, s) {
       queryDepth: s.queryTracking?.depth,
       cacheDiagnosis: re,
       effortValue: ce,
-      extraBodyParams: W8e(),
+      extraBodyParams: getExtraBodyParams(),
       messagesForAPI: B,
     });
   }
@@ -1012,13 +1012,13 @@ async function* zac(e, t, n, r, o, s) {
         T(`auto-mode 3P: sending afk-mode beta '${T0?.header}' to bedrock via body.anthropic_beta`);
       let gr =
           Jn === "bedrock" ? [...O9r(En.model), ...(v ? [v] : []), ...(Qn && T0 ? [T0] : [])] : [],
-        fo = W8e(gr),
+        fo = getExtraBodyParams(gr),
         cs = {
           ...(fo.output_config ?? {}),
         };
       (delete fo.output_config,
-        fnm(ce, cs, fo, Sn, u),
-        mnm(s.taskBudget, cs, Sn),
+        configureEffortParams(ce, cs, fo, Sn, u),
+        configureTaskBudgetParams(s.taskBudget, cs, Sn),
         gnm(s.outputFormat, cs, Sn, s.model));
       let Gs = oIl(s.serverRefusalFallback, En.model, Sn, P);
       ((Ze = Gs.fallbacks !== void 0),
@@ -1029,7 +1029,7 @@ async function* zac(e, t, n, r, o, s) {
           Jn === "bedrock" ? fo : void 0,
         ),
         (Et = Sn.includes(o1)));
-      let la = qct(u),
+      let la = getMaxOutputTokensForModel(u),
         Fi = Math.min(En?.maxTokensOverride || s.maxOutputTokensOverride || la, la),
         xn = ut(process.env.CLAUDE_CODE_DISABLE_THINKING),
         nr = n.type !== "disabled" && !xn,
@@ -1100,7 +1100,7 @@ async function* zac(e, t, n, r, o, s) {
       Be = Se && Zlr(B);
       let qe = {
           model: dp(s.model),
-          messages: knm(Qac(B, Se), vs, V, s.skipCacheWrite, s.forkPointUuid),
+          messages: addCacheBreakpoints(Qac(B, Se), vs, V, s.skipCacheWrite, s.forkPointUuid),
           system: Y,
           tools: rii(Z, s.model),
           tool_choice: zr,
@@ -1108,7 +1108,7 @@ async function* zac(e, t, n, r, o, s) {
             (!ji || us.length > 0) && {
               betas: fI(N9r(us)),
             }),
-          metadata: uLe(),
+          metadata: getAPIMetadata(),
           max_tokens: Fi,
           thinking: Xn,
           ...(X !== void 0 && {
@@ -2869,7 +2869,7 @@ async function* zac(e, t, n, r, o, s) {
           message: oi,
           requestId: Pa,
           creditCode: nc,
-        } = yield* jac(
+        } = yield* executeNonStreamingRequest(
           {
             model: s.model,
             source: s.querySource,
@@ -2989,7 +2989,7 @@ async function* zac(e, t, n, r, o, s) {
           message: Qn,
           requestId: gr,
           creditCode: fo,
-        } = yield* jac(
+        } = yield* executeNonStreamingRequest(
           {
             model: s.model,
             source: s.querySource,
@@ -3373,7 +3373,7 @@ function aZn(e, t) {
     speed: t.speed,
   };
 }
-function knm(e, t, n, r = false, o) {
+function addCacheBreakpoints(e, t, n, r = false, o) {
   let s = (u) => {
       let d = u;
       while (d >= 0 && e[d].type === "api_system") d--;
@@ -3412,7 +3412,7 @@ function knm(e, t, n, r = false, o) {
           role: "system",
           content: u.message.content,
         };
-      return ynm(u, p, t, n);
+      return assistantMessageToMessageParam(u, p, t, n);
     })
   );
 }
@@ -3424,7 +3424,7 @@ function Rnm(e, t, n) {
     text: r.text,
     ...(t &&
       r.cacheScope !== null && {
-        cache_control: Toe({
+        cache_control: getCacheControl({
           scope: r.cacheScope,
           ttl: n?.cacheTtl,
         }),
@@ -3458,7 +3458,7 @@ async function R$({
           }),
         ];
         return [
-          await yYe({
+          await queryModelWithoutStreaming({
             messages: i,
             systemPrompt: e,
             thinkingConfig: {
@@ -3510,7 +3510,7 @@ async function hbt({
           }),
         ];
         return [
-          await yYe({
+          await queryModelWithoutStreaming({
             messages: i,
             systemPrompt: e,
             thinkingConfig: {
@@ -3549,7 +3549,7 @@ function Dnm(e, t) {
     max_tokens: n,
   };
 }
-function qct(e) {
+function getMaxOutputTokensForModel(e) {
   let t = Xxe(e);
   return Fue(
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS",

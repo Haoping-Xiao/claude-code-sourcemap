@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _gc
 // matched 2.1.88 source: src/cli/transports/ccrClient.ts
 // class=modified  jaccard=0.3065  score=0.4609  fileCov=0.4777
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _gc] deps: Jt
 s7e = class s7e extends Error {
@@ -89,7 +89,7 @@ function Agc(e) {
 function Hgc(e) {
   return e instanceof _Ne && e.reason === "worker_register_failed" && !yNe(e.httpStatus);
 }
-class den {
+class CCRClient {
   workerEpoch = 0;
   heartbeatIntervalMs;
   heartbeatJitterFraction;

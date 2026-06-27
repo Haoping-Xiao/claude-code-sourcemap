@@ -2,10 +2,10 @@
 // restored from claude-code 2.1.195 (deminified) — module cDe
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/prompt.ts
 // class=modified  jaccard=0.3935  score=0.3935  fileCov=1
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 var ide = "ReadMcpResourceTool",
-  sIa = `
+  DESCRIPTION = `
 Reads a specific resource from an MCP server.
 - server: The name of the MCP server to read from
 - uri: The URI of the resource to read
@@ -13,7 +13,7 @@ Reads a specific resource from an MCP server.
 Usage examples:
 - Read a resource from a server: \`readMcpResource({ server: "myserver", uri: "my-resource-uri" })\`
 `,
-  iIa = `
+  PROMPT = `
 Reads a specific resource from an MCP server, identified by server name and resource URI.
 
 Parameters:

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yZn
 // matched 2.1.88 source: src/utils/toolSearch.ts
 // class=modified  jaccard=0.4108  score=0.6837  fileCov=0.5071
-// note: deminified; 9 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: summarizeByServerPrefix, isToolSearchToolAvailable, isToolSearchEnabled, isToolReferenceBlock, isMcpLadderNonblockingEnabled, getDeferredToolsDelta, getAutoToolSearchCharThreshold, extractDiscoveredToolNames, DEFERRED_DELTA_LIST_CAP
 // [unwrapped __esm module yZn] deps: Xr, Un
@@ -93,7 +93,7 @@ async function isToolSearchEnabled(e, t, n, r, o) {
     case "tst":
       return (i(true, a, "tst_enabled"), true);
     case "tst-auto": {
-      let { enabled: l, debugDescription: c, metrics: u } = await nCf(t, n, r, e);
+      let { enabled: l, debugDescription: c, metrics: u } = await checkAutoThreshold(t, n, r, e);
       if (l)
         return (
           T(`Auto tool search enabled: ${c}` + (o ? ` [source: ${o}]` : "")),
@@ -113,10 +113,10 @@ async function isToolSearchEnabled(e, t, n, r, o) {
 function isToolReferenceBlock(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "tool_reference";
 }
-function eCf(e) {
+function isToolReferenceWithName(e) {
   return isToolReferenceBlock(e) && "tool_name" in e && typeof e.tool_name === "string";
 }
-function tCf(e) {
+function isToolResultBlockWithContent(e) {
   return (
     typeof e === "object" &&
     e !== null &&
@@ -142,8 +142,8 @@ function extractDiscoveredToolNames(e) {
     let o = r.message?.content;
     if (!Array.isArray(o)) continue;
     for (let s of o)
-      if (tCf(s)) {
-        for (let i of s.content) if (eCf(i)) t.add(i.tool_name);
+      if (isToolResultBlockWithContent(s)) {
+        for (let i of s.content) if (isToolReferenceWithName(i)) t.add(i.tool_name);
       }
   }
   if (t.size > 0)
@@ -226,7 +226,7 @@ function summarizeByServerPrefix(e) {
     .map(([n, r]) => (r > 1 ? `${n} (${r})` : n))
     .join(", ");
 }
-async function nCf(e, t, n, r) {
+async function checkAutoThreshold(e, t, n, r) {
   let o = await Qwf(e, t, n, r);
   if (o !== null) {
     let a = Mkl(r);

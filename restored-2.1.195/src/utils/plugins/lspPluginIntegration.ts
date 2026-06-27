@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _pt
 // matched 2.1.88 source: src/utils/plugins/lspPluginIntegration.ts
 // class=modified  jaccard=0.4506  score=0.8076  fileCov=0.5049
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _pt] deps: YZe, je, At, Jt, dn, ypt
 ((rLa = require("crypto")),
@@ -17,7 +17,7 @@ function qxp(e, t) {
   if (o.startsWith("..") || ADe.resolve(o) === o) return null;
   return r;
 }
-async function Mqe(e, t = []) {
+async function loadPluginLspServers(e, t = []) {
   let n = {},
     r = ADe.join(e.path, ".lsp.json");
   try {
@@ -58,12 +58,12 @@ async function Mqe(e, t = []) {
     }
   }
   if (e.manifest.lspServers) {
-    let o = await Vxp(e.manifest.lspServers, e, t);
+    let o = await loadLspServersFromManifest(e.manifest.lspServers, e, t);
     if (o) Object.assign(n, o);
   }
   return Object.keys(n).length > 0 ? n : void 0;
 }
-async function Vxp(e, t, n) {
+async function loadLspServersFromManifest(e, t, n) {
   let r = {},
     o = Array.isArray(e) ? e : [e];
   for (let s of o)
@@ -140,7 +140,7 @@ async function Vxp(e, t, n) {
       }
   return Object.keys(r).length > 0 ? r : void 0;
 }
-function zxp(e, t, n, r) {
+function resolvePluginLspEnvironment(e, t, n, r) {
   let o = [],
     s = (l) => {
       let c = vre(l, t);
@@ -197,7 +197,7 @@ function p2n(e) {
   }
   return t;
 }
-function Kxp(e, t) {
+function addPluginScopeToLspServers(e, t) {
   let n = {};
   for (let [r, o] of Object.entries(e)) {
     let s = `plugin:${t}:${r}`;
@@ -211,11 +211,11 @@ function Kxp(e, t) {
 }
 async function cLa(e, t = []) {
   if (!e.enabled) return;
-  let n = e.lspServers || (await Mqe(e, t));
+  let n = e.lspServers || (await loadPluginLspServers(e, t));
   if (!n) return;
   let r = e.manifest.userConfig ? m$(Tre(e)) : void 0,
     o = {};
-  for (let [s, i] of Object.entries(n)) o[s] = zxp(i, e, r, t);
-  return Kxp(o, e.name);
+  for (let [s, i] of Object.entries(n)) o[s] = resolvePluginLspEnvironment(i, e, r, t);
+  return addPluginScopeToLspServers(o, e.name);
 }
 var Nfo, ADe;

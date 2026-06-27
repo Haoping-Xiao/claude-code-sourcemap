@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module gq
 // matched 2.1.88 source: src/tools/BashTool/UI.tsx
 // class=modified  jaccard=0.2707  score=0.5154  fileCov=0.3631
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gq] deps: xF, uo
 AHl = R(rt(), 1);
-function T$e(e) {
+function BackgroundHint(e) {
   let t = THl.c(10),
     n;
   if (t[0] !== e) ((n = e === void 0 ? {} : e), (t[0] = e), (t[1] = n));

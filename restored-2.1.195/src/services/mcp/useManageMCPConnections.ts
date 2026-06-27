@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bBo
 // matched 2.1.88 source: src/services/mcp/useManageMCPConnections.ts
 // class=modified  jaccard=0.4268  score=0.676  fileCov=0.5365
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bBo] deps: Qi, Zf, LMe
 Onr = Cn(async (e, t) => {
@@ -16,15 +16,15 @@ Onr = Cn(async (e, t) => {
   }));
 }, NFl);
 if (!(Onr.cache instanceof Map)) Onr.cache = new Map();
-function Bnr(e) {
+function getErrorKey(e) {
   let t = "plugin" in e ? e.plugin : "no-plugin";
   return `${e.type}:${e.source}:${t}`;
 }
 function GFl(e, t) {
   if (t.length === 0) return;
   e((n) => {
-    let r = new Set(n.plugins.errors.map((s) => Bnr(s))),
-      o = t.filter((s) => !r.has(Bnr(s)));
+    let r = new Set(n.plugins.errors.map((s) => getErrorKey(s))),
+      o = t.filter((s) => !r.has(getErrorKey(s)));
     if (o.length === 0) return n;
     return {
       ...n,
@@ -38,8 +38,8 @@ function GFl(e, t) {
 function WFl(e, t) {
   if (t.length === 0) return;
   e((n) => {
-    let r = new Set(n.plugins.warnings.map((s) => Bnr(s))),
-      o = t.filter((s) => !r.has(Bnr(s)));
+    let r = new Set(n.plugins.warnings.map((s) => getErrorKey(s))),
+      o = t.filter((s) => !r.has(getErrorKey(s)));
     if (o.length === 0) return n;
     return {
       ...n,
@@ -50,7 +50,7 @@ function WFl(e, t) {
     };
   });
 }
-function qFl(e, t = false) {
+function useManageMCPConnections(e, t = false) {
   let n = da(),
     r = Dc(),
     o = Ht((P) => P.authVersion),
@@ -242,7 +242,7 @@ function qFl(e, t = false) {
                   return;
                 }
                 if (Y !== "stdio" && Y !== "sdk") {
-                  let z = N1f(Y);
+                  let z = getTransportDisplayName(Y);
                   sn(
                     P.name,
                     `${z} transport closed/disconnected, attempting automatic reconnection`,
@@ -878,7 +878,7 @@ function qFl(e, t = false) {
     toggleMcpServer: D,
   };
 }
-function N1f(e) {
+function getTransportDisplayName(e) {
   switch (e) {
     case "http":
       return "HTTP";

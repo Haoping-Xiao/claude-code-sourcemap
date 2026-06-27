@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gKn
 // matched 2.1.88 source: src/utils/hooks/sessionHooks.ts
 // class=modified  jaccard=0.2398  score=0.6032  fileCov=0.2847
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gKn] deps: zwt, eis, Ull, BBe, _Ue, jll, IRr, xin
 ((Lif = kfn(function (e, t) {
@@ -55,9 +55,9 @@ function hKn(e, t) {
   }
 }
 function W8t(e, t, n, r, o, s, i) {
-  qll(e, t, n, r, o, s, i);
+  removeFunctionHook(e, t, n, r, o, s, i);
 }
-function Wll(e, t, n, r, o, s, i) {
+function addFunctionHook(e, t, n, r, o, s, i) {
   let a = i?.id || `function-hook-${Date.now()}-${Math.random()}`,
     l = {
       type: "function",
@@ -66,9 +66,9 @@ function Wll(e, t, n, r, o, s, i) {
       callback: o,
       errorMessage: s,
     };
-  return (qll(e, t, n, r, l), a);
+  return (removeFunctionHook(e, t, n, r, l), a);
 }
-function qll(e, t, n, r, o, s, i) {
+function removeFunctionHook(e, t, n, r, o, s, i) {
   (e((a) => {
     let l = a.sessionHooks.get(t) ?? {
         hooks: {},
@@ -128,7 +128,7 @@ function qll(e, t, n, r, o, s, i) {
   }),
     T(`Added session hook for event ${n} in session ${t}`));
 }
-function vIo(e, t, n, r) {
+function removeSessionHook(e, t, n, r) {
   (e((o) => {
     let s = o.sessionHooks.get(t);
     if (!s) return o;
@@ -225,7 +225,7 @@ function zll(e, t, n, r, o) {
     }
   return;
 }
-function wIo(e, t) {
+function clearSessionHooks(e, t) {
   (e((n) => (n.sessionHooks.delete(t), n)), T(`Cleared all session hooks for session ${t}`));
 }
 function f6e(e) {
@@ -234,10 +234,10 @@ function f6e(e) {
       W8t(e, t, n, r, o, void 0, s);
     },
     remove(t, n, r) {
-      vIo(e, t, n, r);
+      removeSessionHook(e, t, n, r);
     },
     clear(t) {
-      wIo(e, t);
+      clearSessionHooks(e, t);
     },
   };
 }

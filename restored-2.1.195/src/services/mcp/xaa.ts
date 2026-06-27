@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g$
 // matched 2.1.88 source: src/services/mcp/xaa.ts
 // class=modified  jaccard=0.4887  score=0.5974  fileCov=0.7287
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module g$] deps: ft, Lo, wr, lT, vn, vf, dr, Jt, Kv, Ox, bCe, kst
 ((RCa = require("crypto")),
@@ -39,10 +39,10 @@ function NUn(e) {
     return e.replace(/\/$/, "");
   }
 }
-function y3t(e) {
+function redactTokens(e) {
   return (typeof e === "string" ? e : De(e)).replace($Tp, (n, r) => `"${r}":"[REDACTED]"`);
 }
-async function BTp(e, t) {
+async function discoverProtectedResource(e, t) {
   let n;
   try {
     n = await lIn(e, void 0, t?.fetchFn ?? BUn);
@@ -60,7 +60,7 @@ async function BTp(e, t) {
     authorization_servers: n.authorization_servers,
   };
 }
-async function UTp(e, t) {
+async function discoverAuthorizationServer(e, t) {
   let n = await J4e(e, {
     fetchFn: t?.fetchFn ?? BUn,
   });
@@ -79,15 +79,15 @@ async function UTp(e, t) {
     token_endpoint_auth_methods_supported: n.token_endpoint_auth_methods_supported,
   };
 }
-async function FTp(e) {
+async function requestJwtAuthorizationGrant(e) {
   let t = e.fetchFn ?? BUn,
     n = new URLSearchParams({
-      grant_type: PTp,
-      requested_token_type: $Ca,
+      grant_type: TOKEN_EXCHANGE_GRANT,
+      requested_token_type: ID_JAG_TOKEN_TYPE,
       audience: e.audience,
       resource: e.resource,
       subject_token: e.idToken,
-      subject_token_type: MTp,
+      subject_token_type: ID_TOKEN_TYPE,
       client_id: e.clientId,
     });
   if (e.clientSecret) n.set("client_secret", e.clientSecret);
@@ -100,7 +100,7 @@ async function FTp(e) {
     body: n,
   });
   if (!r.ok) {
-    let a = y3t(await r.text()).slice(0, 200),
+    let a = redactTokens(await r.text()).slice(0, 200),
       l = r.status < 500;
     throw new USe(`XAA: token exchange failed: HTTP ${r.status}: ${a}`, l);
   }
@@ -115,11 +115,14 @@ async function FTp(e) {
   }
   let s = OTp().safeParse(o);
   if (!s.success)
-    throw new USe(`XAA: token exchange response did not match expected shape: ${y3t(o)}`, true);
+    throw new USe(
+      `XAA: token exchange response did not match expected shape: ${redactTokens(o)}`,
+      true,
+    );
   let i = s.data;
   if (!i.access_token)
-    throw new USe(`XAA: token exchange response missing access_token: ${y3t(i)}`, true);
-  if (i.issued_token_type !== $Ca)
+    throw new USe(`XAA: token exchange response missing access_token: ${redactTokens(i)}`, true);
+  if (i.issued_token_type !== ID_JAG_TOKEN_TYPE)
     throw new USe(
       `XAA: token exchange returned unexpected issued_token_type: ${i.issued_token_type}`,
       true,
@@ -130,11 +133,11 @@ async function FTp(e) {
     scope: i.scope,
   };
 }
-async function jTp(e) {
+async function exchangeJwtAuthGrant(e) {
   let t = e.fetchFn ?? BUn,
     n = e.authMethod ?? "client_secret_basic",
     r = new URLSearchParams({
-      grant_type: OCa,
+      grant_type: JWT_BEARER_GRANT,
       assertion: e.assertion,
     });
   if (e.scope) r.set("scope", e.scope);
@@ -153,7 +156,7 @@ async function jTp(e) {
     body: r,
   });
   if (!s.ok) {
-    let l = y3t(await s.text()).slice(0, 200);
+    let l = redactTokens(await s.text()).slice(0, 200);
     throw Error(`XAA: jwt-bearer grant failed: HTTP ${s.status}: ${l}`);
   }
   let i;
@@ -163,13 +166,14 @@ async function jTp(e) {
     throw Error(`XAA: jwt-bearer grant returned non-JSON (captive portal?) at ${e.tokenEndpoint}`);
   }
   let a = NTp().safeParse(i);
-  if (!a.success) throw Error(`XAA: jwt-bearer response did not match expected shape: ${y3t(i)}`);
+  if (!a.success)
+    throw Error(`XAA: jwt-bearer response did not match expected shape: ${redactTokens(i)}`);
   return a.data;
 }
-async function Ido(e, t, n = "xaa", r) {
+async function performCrossAppAccess(e, t, n = "xaa", r) {
   let o = NCa(r);
   sn(n, `XAA: discovering PRM for ${e}`);
-  let s = await BTp(e, {
+  let s = await discoverProtectedResource(e, {
     fetchFn: o,
   });
   sn(n, `XAA: discovered resource=${s.resource} ASes=[${s.authorization_servers.join(", ")}]`);
@@ -178,7 +182,7 @@ async function Ido(e, t, n = "xaa", r) {
   for (let p of s.authorization_servers) {
     let f;
     try {
-      f = await UTp(p, {
+      f = await discoverAuthorizationServer(p, {
         fetchFn: o,
       });
     } catch (m) {
@@ -186,7 +190,7 @@ async function Ido(e, t, n = "xaa", r) {
       a.push(`${p}: ${m instanceof Error ? m.message : String(m)}`);
       continue;
     }
-    if (f.grant_types_supported && !f.grant_types_supported.includes(OCa)) {
+    if (f.grant_types_supported && !f.grant_types_supported.includes(JWT_BEARER_GRANT)) {
       a.push(
         `${p}: does not advertise jwt-bearer grant (supported: ${f.grant_types_supported.join(", ")})`,
       );
@@ -207,7 +211,7 @@ async function Ido(e, t, n = "xaa", r) {
         : "client_secret_basic";
   (sn(n, `XAA: AS issuer=${i.issuer} token_endpoint=${i.token_endpoint} auth_method=${c}`),
     sn(n, "XAA: exchanging id_token for ID-JAG at IdP"));
-  let u = await FTp({
+  let u = await requestJwtAuthorizationGrant({
     tokenEndpoint: t.idpTokenEndpoint,
     audience: i.issuer,
     resource: s.resource,
@@ -217,7 +221,7 @@ async function Ido(e, t, n = "xaa", r) {
     fetchFn: o,
   });
   (sn(n, "XAA: ID-JAG obtained"), sn(n, "XAA: exchanging ID-JAG for access_token at AS"));
-  let d = await jTp({
+  let d = await exchangeJwtAuthGrant({
     tokenEndpoint: i.token_endpoint,
     assertion: u.jwtAuthGrant,
     clientId: t.clientId,
@@ -234,10 +238,10 @@ async function Ido(e, t, n = "xaa", r) {
   );
 }
 var DTp = 30000,
-  PTp = "urn:ietf:params:oauth:grant-type:token-exchange",
-  OCa = "urn:ietf:params:oauth:grant-type:jwt-bearer",
-  $Ca = "urn:ietf:params:oauth:token-type:id-jag",
-  MTp = "urn:ietf:params:oauth:token-type:id_token",
+  TOKEN_EXCHANGE_GRANT = "urn:ietf:params:oauth:grant-type:token-exchange",
+  JWT_BEARER_GRANT = "urn:ietf:params:oauth:grant-type:jwt-bearer",
+  ID_JAG_TOKEN_TYPE = "urn:ietf:params:oauth:token-type:id-jag",
+  ID_TOKEN_TYPE = "urn:ietf:params:oauth:token-type:id_token",
   BUn,
   USe,
   $Tp,

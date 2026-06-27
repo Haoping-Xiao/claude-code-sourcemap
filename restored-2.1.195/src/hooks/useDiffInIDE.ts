@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Sfl
 // matched 2.1.88 source: src/hooks/useDiffInIDE.ts
 // class=modified  jaccard=0.306  score=0.7892  fileCov=0.3332
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Efl(e, t, n, r) {
+function computeEditsFromContents(e, t, n, r) {
   let o = r === "single",
     s = yMe({
       filePath: e,
@@ -16,7 +16,7 @@ function Efl(e, t, n, r) {
   if (o && s.length > 1) ke(Error(`Unexpected number of hunks: ${s.length}. Expected 1 hunk.`));
   return Lel(s);
 }
-async function Afl(e, t, n, r) {
+async function showDiffInIDE(e, t, n, r) {
   let o = false,
     s = ds(e),
     i = "";
@@ -29,7 +29,7 @@ async function Afl(e, t, n, r) {
     if (o) return;
     o = true;
     try {
-      await Ako(r, l);
+      await closeTabInIDE(r, l);
     } catch (c) {
       T(`Failed to close diff tab in IDE: ${c instanceof Error ? c.message : String(c)}`, {
         level: "error",
@@ -61,7 +61,7 @@ async function Afl(e, t, n, r) {
         l,
       ),
       f = Array.isArray(p) ? p : [p];
-    if (tdf(f))
+    if (isSaveMessage(f))
       return (
         a(),
         {
@@ -69,7 +69,7 @@ async function Afl(e, t, n, r) {
           newContent: f[1].text,
         }
       );
-    else if (Zuf(f))
+    else if (isClosedMessage(f))
       return (
         a(),
         {
@@ -77,7 +77,7 @@ async function Afl(e, t, n, r) {
           newContent: c,
         }
       );
-    else if (edf(f))
+    else if (isRejectedMessage(f))
       return (
         a(),
         {
@@ -96,7 +96,7 @@ async function Afl(e, t, n, r) {
     );
   }
 }
-async function Ako(e, t) {
+async function closeTabInIDE(e, t) {
   try {
     if (!t || t.type !== "connected") throw Error("IDE client not available");
     (await Rre(
@@ -114,7 +114,7 @@ async function Ako(e, t) {
       It("ide_close_diff_tab", "ide_close_diff_tab_failed"));
   }
 }
-function Zuf(e) {
+function isClosedMessage(e) {
   return (
     Array.isArray(e) &&
     typeof e[0] === "object" &&
@@ -125,7 +125,7 @@ function Zuf(e) {
     e[0].text === "TAB_CLOSED"
   );
 }
-function edf(e) {
+function isRejectedMessage(e) {
   return (
     Array.isArray(e) &&
     typeof e[0] === "object" &&
@@ -136,7 +136,7 @@ function edf(e) {
     e[0].text === "DIFF_REJECTED"
   );
 }
-function tdf(e) {
+function isSaveMessage(e) {
   return (
     Array.isArray(e) &&
     e[0]?.type === "text" &&

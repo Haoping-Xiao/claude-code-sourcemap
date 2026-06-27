@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module z6l
 // matched 2.1.88 source: src/upstreamproxy/upstreamproxy.ts
 // class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0316  score=0.1191  fileCov=0.0412
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module z6l]
 ((gqf = {
@@ -15,7 +15,7 @@
   load: () => Promise.resolve().then(() => (V6l(), q6l)),
 }),
   (Rjo = gqf));
-function Y6l(e, t, n, r) {
+function setNonDumpable(e, t, n, r) {
   let o = Vt();
   if (o === "windows" || !K6l.isAbsolute(e)) return;
   let s;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Gl
 // matched 2.1.88 source: src/utils/releaseNotes.ts
 // class=modified  jaccard=0.158  score=0.3307  fileCov=0.2323
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $Gl]
 SFo = {
@@ -14,13 +14,13 @@ SFo = {
   },
   load: () => Promise.resolve().then(() => (MGl(), DGl)),
 };
-function EFo() {
+function getChangelogCachePath() {
   return BXt.join(tr(), "cache", "changelog.md");
 }
 async function NGl() {
   let e = Dt();
   if (!e.cachedChangelog) return;
-  let t = EFo();
+  let t = getChangelogCachePath();
   try {
     (await qs().mkdir(BXt.dirname(t)), await qs().writeExclusive(t, e.cachedChangelog));
   } catch {}
@@ -29,12 +29,12 @@ async function NGl() {
 async function AFo() {
   if (Ir()) return;
   if (Vi()) return;
-  let e = V2f,
+  let e = RAW_CHANGELOG_URL,
     t = await lb.get(e);
   if (t.status === 200) {
     let n = t.data;
     if (n === zKe) return;
-    let r = EFo();
+    let r = getChangelogCachePath();
     (await qs().mkdir(BXt.dirname(r)), await qs().write(r, n), (zKe = n));
     let o = Date.now();
     gn((s) => ({
@@ -45,7 +45,7 @@ async function AFo() {
 }
 async function UXt() {
   if (zKe !== null) return zKe;
-  let e = EFo();
+  let e = getChangelogCachePath();
   try {
     let t = await qs().read(e);
     return ((zKe = t), t);
@@ -172,6 +172,7 @@ function z2f(e, t) {
 var BXt,
   Yrr,
   q2f = 5,
-  OGl = "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
-  V2f = "https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md",
+  CHANGELOG_URL = "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+  RAW_CHANGELOG_URL =
+    "https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/CHANGELOG.md",
   zKe = null;

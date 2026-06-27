@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module d7l
 // matched 2.1.88 source: src/components/agents/new-agent-creation/CreateAgentWizard.tsx
 // class=modified  jaccard=0.1453  score=0.5307  fileCov=0.1667
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module d7l] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, d4o
 ((c7l = R(lt(), 1)), (qsr = R(rt(), 1)), (wz = R(se(), 1)));
-function f7l(e) {
+function CreateAgentWizard(e) {
   let t = p7l.c(17),
     { tools: n, existingAgents: r, onComplete: o, onCancel: s } = e,
     i;

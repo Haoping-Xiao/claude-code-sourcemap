@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ghl
 // matched 2.1.88 source: src/utils/swarm/backends/TmuxBackend.ts
 // class=modified  jaccard=0.6082  score=0.8177  fileCov=0.7037
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: respawnPaneWithCommand, TmuxBackend
 function yhl(e) {
@@ -20,7 +20,7 @@ function _ff() {
     n = hhl;
   return ((hhl = t), n.then(() => e));
 }
-function _hl(e) {
+function getTmuxColorName(e) {
   return {
     red: "red",
     blue: "blue",
@@ -77,14 +77,14 @@ class TmuxBackend {
     await respawnPaneWithCommand(o, e, t);
   }
   async setPaneBorderColor(e, t, n = false) {
-    let r = _hl(t),
+    let r = getTmuxColorName(t),
       o = n ? jF : i3;
     (await o(["set-option", "-p", "-t", e, "window-style", `bg=default,fg=${r}`]),
       await o(["set-option", "-p", "-t", e, "pane-border-style", `fg=${r}`]),
       await o(["set-option", "-p", "-t", e, "pane-active-border-style", `fg=${r}`]));
   }
   async setPaneTitle(e, t, n, r = false) {
-    let o = _hl(n),
+    let o = getTmuxColorName(n),
       s = r ? jF : i3;
     (await s(["select-pane", "-t", e, "-T", t]),
       await s([

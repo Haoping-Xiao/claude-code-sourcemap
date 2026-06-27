@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module PR
 // matched 2.1.88 source: src/utils/errors.ts
 // class=modified  jaccard=0.3397  score=0.7414  fileCov=0.3853
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function lh(e) {
   try {
@@ -20,12 +20,12 @@ function Zr(e) {
 function be(e) {
   return e instanceof Error ? e.message : String(e);
 }
-function on(e) {
+function getErrnoCode(e) {
   if (e && typeof e === "object" && "code" in e && typeof e.code === "string") return e.code;
   return;
 }
 function xd(e) {
-  let t = on(e);
+  let t = getErrnoCode(e);
   return t && /^[A-Z][A-Z0-9_]{0,63}$/.test(t) ? t : void 0;
 }
 function BK(e) {
@@ -66,10 +66,10 @@ function gd(e) {
   return e !== null && typeof e === "object" && "errno" in e && typeof e.errno === "number";
 }
 function wn(e) {
-  return on(e) === "ENOENT";
+  return getErrnoCode(e) === "ENOENT";
 }
 function Qie(e) {
-  return on(e) === "EISDIR";
+  return getErrnoCode(e) === "EISDIR";
 }
 function sss(e) {
   if (e && typeof e === "object" && "path" in e && typeof e.path === "string") return e.path;
@@ -86,8 +86,8 @@ function iss(e, t = 5) {
   return [r, ...o.slice(0, t)].join(`
 `);
 }
-function Vo(e) {
-  let t = on(e);
+function isFsInaccessible(e) {
+  let t = getErrnoCode(e);
   return (
     t === "ENOENT" ||
     t === "EACCES" ||
@@ -104,7 +104,7 @@ function R_(e, t) {
   let n = e.response?.status;
   return n === void 0 || n === 401 || n === 403 || n === 429;
 }
-function $A(e) {
+function classifyAxiosError(e) {
   let t = be(e);
   if (!e || typeof e !== "object" || !("isAxiosError" in e) || !e.isAxiosError)
     return {

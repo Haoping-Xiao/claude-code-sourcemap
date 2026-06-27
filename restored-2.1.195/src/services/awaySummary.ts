@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gjn
 // matched 2.1.88 source: src/services/awaySummary.ts
 // class=modified  jaccard=0.0848  score=0.1334  fileCov=0.1888
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gjn] deps: ft, id, Un, Ld, je, fn
 ARp = new Set(["remote", "remote_cowork", "remote_desktop", "remote_mobile"]);
@@ -40,7 +40,7 @@ async function IRp(e) {
   hjn?.abort();
   let t = new AbortController();
   hjn = t;
-  let n = await KGt(t.signal);
+  let n = await generateAwaySummary(t.signal);
   if (t.signal.aborted) return;
   if (n.kind !== "ok") {
     if (n.kind !== "no-turn") Le("ccr_recap_generate", n.kind);
@@ -55,7 +55,7 @@ async function IRp(e) {
   }),
     xe("ccr_recap_generate"));
 }
-async function KGt(e) {
+async function generateAwaySummary(e) {
   let t = Tde();
   if (!t)
     return (

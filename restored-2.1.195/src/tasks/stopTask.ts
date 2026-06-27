@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pyl
 // matched 2.1.88 source: src/tasks/stopTask.ts
 // class=modified  jaccard=0.2473  score=0.3366  fileCov=0.4824
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pyl] deps: j7n, S_, Z6, d8t, JJ
 lyl = (tfe(), ro(Bko)).LocalWorkflowTask;
@@ -30,7 +30,7 @@ function emf(e, t, n) {
   }
   return false;
 }
-async function mbt(e, t) {
+async function stopTask(e, t) {
   let { taskRegistry: n, setAppState: r, callerAgentId: o, killedBy: s = "user" } = t,
     i = n.get(e);
   if (!i) throw new W6e(`No task found with ID: ${e}`, "not_found");

@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module aS
 // matched 2.1.88 source: src/utils/telemetry/pluginTelemetry.ts
 // class=modified  jaccard=0.2973  score=0.3764  fileCov=0.5861
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Abe(e, t) {
   let n = t ? `${e}@${t.toLowerCase()}` : e;
   return eFt(n);
 }
-function eWe(e, t, n) {
+function getTelemetryPluginScope(e, t, n) {
   if (t === FKd) return "default-bundle";
   if (zD(t)) return "official";
   if (t !== void 0 && JRt.has(t.toLowerCase())) return "community";
@@ -81,14 +81,14 @@ function Elt({
     skillNameHash: GKd(t, i),
   };
 }
-function geo(e, t, n) {
+function getEnabledVia(e, t, n) {
   if (e.isBuiltin) return "default-enable";
   if (t?.has(e.name)) return "org-policy";
   if (n.some((r) => e.path.startsWith(r.endsWith(meo.sep) ? r : r + meo.sep))) return "seed-mount";
   return "user-install";
 }
 function WKd(e, t, n = null) {
-  let r = eWe(e, t, n),
+  let r = getTelemetryPluginScope(e, t, n),
     o = jKd(r) || wKi(e, t);
   return {
     plugin_id_hash: Abe(e, t),
@@ -155,12 +155,12 @@ function OKi(e, t) {
   for (let n of e)
     try {
       let { marketplace: r } = Qo(n.repository);
-      if (Q0e(eWe(n.name, r, t))) SKi(n.name, r);
+      if (Q0e(getTelemetryPluginScope(n.name, r, t))) SKi(n.name, r);
     } catch (r) {
       ke(r);
     }
 }
-function NKi(e, t, n) {
+function logPluginsEnabledForSession(e, t, n) {
   let r = sg(),
     o = Dt().numStartups,
     s = Date.now(),
@@ -175,8 +175,8 @@ function NKi(e, t, n) {
             sessionsSinceLastUse: 0,
             daysSinceLastUse: 0,
           },
-      p = eWe(a.name, l, t),
-      f = geo(a, t, n),
+      p = getTelemetryPluginScope(a.name, l, t),
+      f = getEnabledVia(a, t, n),
       m = (a.skillsPath ? 1 : 0) + (a.skillsPaths?.length ?? 0),
       g = (a.commandsPath ? 1 : 0) + (a.commandsPaths?.length ?? 0),
       h = (a.agentsPath ? 1 : 0) + (a.agentsPaths?.length ?? 0),
@@ -225,7 +225,7 @@ function NKi(e, t, n) {
   }
   if (i.length > 0) jPn(i);
 }
-function lX(e) {
+function classifyPluginCommandError(e) {
   let t = String(e?.message ?? e);
   if (
     /ENOTFOUND|ECONNREFUSED|EAI_AGAIN|ETIMEDOUT|ECONNRESET|network|Could not resolve|Connection refused|timed out/i.test(
@@ -238,7 +238,7 @@ function lX(e) {
   if (/invalid|malformed|schema|validation|parse error/i.test(t)) return "validation";
   return "unknown";
 }
-function BKi(e, t, n) {
+function logPluginLoadErrors(e, t, n) {
   for (let r of e) {
     let { name: o, marketplace: s } = Qo(r.source),
       i = "plugin" in r && r.plugin ? r.plugin : o;

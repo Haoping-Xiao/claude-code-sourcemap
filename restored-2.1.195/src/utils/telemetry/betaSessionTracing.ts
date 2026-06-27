@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wxa
 // matched 2.1.88 source: src/utils/telemetry/betaSessionTracing.ts
 // class=modified  jaccard=0.4913  score=0.8307  fileCov=0.546
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Ydt() {
   return ut(process.env.OTEL_LOG_USER_PROMPTS);
@@ -10,12 +10,12 @@ function Ydt() {
 function kxa() {
   (D3t.clear(), tpo.clear());
 }
-function mC() {
+function isBetaTracingEnabled() {
   if (!(ut(process.env.ENABLE_BETA_TRACING_DETAILED) && Boolean(process.env.BETA_TRACING_ENDPOINT)))
     return false;
   return Ir() || at("tengu_trace_lantern", false);
 }
-function iP(e, t = Iwp) {
+function truncateContent(e, t = Iwp) {
   if (e.length <= t)
     return {
       content: e,
@@ -45,7 +45,7 @@ function epo(e) {
     /^<system-reminder>\n?([\s\S]*?)\n?<\/system-reminder>$/.exec(e.trim())?.[1]?.trim() || null
   );
 }
-function kwp(e, t) {
+function formatMessagesForContext(e, t) {
   let n = [],
     r = [];
   for (let o of e) {
@@ -86,9 +86,9 @@ ${De(i.content)}`);
     systemReminders: r,
   };
 }
-function Rxa(e, t) {
-  if (!mC() || !Ydt()) return;
-  let { content: n, truncated: r } = iP(`[USER PROMPT]
+function addBetaInteractionAttributes(e, t) {
+  if (!isBetaTracingEnabled() || !Ydt()) return;
+  let { content: n, truncated: r } = truncateContent(`[USER PROMPT]
 ${t}`);
   e.setAttributes({
     new_context: n,
@@ -98,8 +98,8 @@ ${t}`);
     }),
   });
 }
-function Lxa(e, t, n) {
-  if (!mC()) return;
+function addBetaLLMRequestAttributes(e, t, n) {
+  if (!isBetaTracingEnabled()) return;
   if (t?.systemPrompt) {
     let r = xwp(t.systemPrompt),
       o = t.systemPrompt.slice(0, 500);
@@ -107,7 +107,7 @@ function Lxa(e, t, n) {
       e.setAttribute("system_prompt_preview", o);
     if ((e.setAttribute("system_prompt_length", t.systemPrompt.length), Ydt() && !D3t.has(r))) {
       D3t.add(r);
-      let { content: s, truncated: i } = iP(t.systemPrompt);
+      let { content: s, truncated: i } = truncateContent(t.systemPrompt);
       Jc("system_prompt", {
         system_prompt_hash: r,
         system_prompt: s,
@@ -122,7 +122,7 @@ function Lxa(e, t, n) {
     let r = Rt();
     if (Cxa !== r) {
       Cxa = r;
-      let { content: o, truncated: s } = iP(t.userSystemPrompt);
+      let { content: o, truncated: s } = truncateContent(t.userSystemPrompt);
       e.setAttributes({
         user_system_prompt: o,
         ...(s && {
@@ -156,7 +156,7 @@ function Lxa(e, t, n) {
       for (let { name: s, hash: i, json: a } of o)
         if (!D3t.has(`tool_${i}`)) {
           D3t.add(`tool_${i}`);
-          let { content: l, truncated: c } = iP(a);
+          let { content: l, truncated: c } = truncateContent(a);
           Jc("tool", {
             tool_name: Ui(s),
             tool_hash: i,
@@ -180,7 +180,7 @@ function Lxa(e, t, n) {
     let i = n.slice(s).filter((c) => c.type === "user" || c.type === "api_system");
     if (i.length > 0) {
       let c = Ydt(),
-        { contextParts: u, systemReminders: d } = kwp(i, c);
+        { contextParts: u, systemReminders: d } = formatMessagesForContext(i, c);
       if ((e.setAttribute("new_context_message_count", i.length), d.length > 0))
         e.setAttribute("system_reminders_count", d.length);
       if (u.length > 0 && c) {
@@ -189,7 +189,7 @@ function Lxa(e, t, n) {
 ---
 
 `),
-          { content: f, truncated: m } = iP(p);
+          { content: f, truncated: m } = truncateContent(p);
         e.setAttributes({
           new_context: f,
           ...(m && {
@@ -204,7 +204,7 @@ function Lxa(e, t, n) {
 ---
 
 `),
-          { content: f, truncated: m } = iP(p);
+          { content: f, truncated: m } = truncateContent(p);
         e.setAttributes({
           system_reminders: f,
           ...(m && {
@@ -223,18 +223,18 @@ function Lxa(e, t, n) {
       });
   }
 }
-function Dxa(e, t) {
-  if (!mC() || !Ydt() || !t) return;
+function addBetaLLMResponseAttributes(e, t) {
+  if (!isBetaTracingEnabled() || !Ydt() || !t) return;
   if (t.modelOutput !== void 0) {
-    let { content: n, truncated: r } = iP(t.modelOutput);
+    let { content: n, truncated: r } = truncateContent(t.modelOutput);
     if (((e["response.model_output"] = n), r))
       ((e["response.model_output_truncated"] = true),
         (e["response.model_output_original_length"] = t.modelOutput.length));
   }
 }
-function Pxa(e, t, n) {
-  if (!mC() || !sg()) return;
-  let { content: r, truncated: o } = iP(`[TOOL INPUT: ${t}]
+function addBetaToolInputAttributes(e, t, n) {
+  if (!isBetaTracingEnabled() || !sg()) return;
+  let { content: r, truncated: o } = truncateContent(`[TOOL INPUT: ${t}]
 ${n}`);
   e.setAttributes({
     tool_input: r,
@@ -245,8 +245,8 @@ ${n}`);
   });
 }
 function Mxa(e, t, n) {
-  if (!mC() || !Rst()) return;
-  let { content: r, truncated: o } = iP(`[TOOL RESULT: ${t}]
+  if (!isBetaTracingEnabled() || !Rst()) return;
+  let { content: r, truncated: o } = truncateContent(`[TOOL RESULT: ${t}]
 ${n}`);
   if (((e.new_context = r), o))
     ((e.new_context_truncated = true), (e.new_context_original_length = n.length));

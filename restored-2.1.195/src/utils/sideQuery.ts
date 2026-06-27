@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IHo
 // matched 2.1.88 source: src/utils/sideQuery.ts
 // class=modified  jaccard=0.0827  score=0.2033  fileCov=0.1223
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IHo]
 jXa = require("crypto");
@@ -14,7 +14,7 @@ function Q7p(e) {
   let r = n.find((o) => o.type === "text");
   return r?.type === "text" ? r.text : "";
 }
-async function yN(e) {
+async function sideQuery(e) {
   let {
       model: t,
       system: n,

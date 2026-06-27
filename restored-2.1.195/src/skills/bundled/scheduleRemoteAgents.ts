@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $wc
 // matched 2.1.88 source: src/skills/bundled/scheduleRemoteAgents.ts
 // class=modified  jaccard=0.2586  score=0.3908  fileCov=0.4333
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerScheduleRemoteAgentsSkill
 // [unwrapped __esm module $wc] deps: ft, rSe, Un, jc, G1, wX, sre, WW, tSe, Ld, fn, AA
@@ -28,14 +28,14 @@ function rAm(e) {
   let r = e.slice(7).slice(2),
     o = 0n;
   for (let i of r) {
-    let a = nAm.indexOf(i);
+    let a = BASE58.indexOf(i);
     if (a === -1) return null;
     o = o * 58n + BigInt(a);
   }
   let s = o.toString(16).padStart(32, "0");
   return `${s.slice(0, 8)}-${s.slice(8, 12)}-${s.slice(12, 16)}-${s.slice(16, 20)}-${s.slice(20, 32)}`;
 }
-function oAm(e) {
+function getConnectedClaudeAIConnectors(e) {
   let t = [];
   for (let n of e) {
     if (n.type !== "connected") continue;
@@ -57,7 +57,7 @@ function sAm(e) {
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
 }
-function iAm(e) {
+function formatConnectorsInfo(e) {
   if (e.length === 0)
     return "No connected MCP connectors found. The user may need to connect servers at https://claude.ai/customize/connectors";
   let t = ["Connected connectors (available for routines):"];
@@ -68,7 +68,7 @@ function iAm(e) {
   return t.join(`
 `);
 }
-function Nwc(e) {
+function formatSetupNotes(e) {
   return `\u26A0 Heads-up:
 ${e.map((n) => `- ${n}`).join(`
 `)}`;
@@ -80,7 +80,7 @@ async function aAm() {
   if (!t) return null;
   return `https://${t.host}/${t.owner}/${t.name}`;
 }
-function lAm(e) {
+function buildPrompt(e) {
   let {
       userTimezone: t,
       nowUtcIso: n,
@@ -99,12 +99,12 @@ function lAm(e) {
         ? `
 ## Setup Notes
 
-${Nwc(c)}
+${formatSetupNotes(c)}
 `
         : "",
     f =
       c.length > 0
-        ? `${Nwc(c)}
+        ? `${formatSetupNotes(c)}
 
 ${Owc}`
         : Owc,
@@ -372,7 +372,7 @@ function registerScheduleRemoteAgentsSkill() {
           o.push(S);
         }
       }
-      let a = oAm(t.options.mcpClients);
+      let a = getConnectedClaudeAIConnectors(t.options.mcpClients);
       if (a.length === 0)
         o.push(
           "No MCP connectors \u2014 connect at https://claude.ai/customize/connectors if needed.",
@@ -390,7 +390,7 @@ function registerScheduleRemoteAgentsSkill() {
           minute: "2-digit",
         }),
         p = at("tengu_mocha_barista", false),
-        f = iAm(a),
+        f = formatConnectorsInfo(a),
         m = await aAm(),
         g = ["Available environments:"];
       for (let b of n) g.push(`- ${b.name} (id: ${b.environment_id}, kind: ${b.kind})`);
@@ -399,7 +399,7 @@ function registerScheduleRemoteAgentsSkill() {
       return [
         {
           type: "text",
-          text: lAm({
+          text: buildPrompt({
             userTimezone: l,
             nowUtcIso: u,
             nowLocal: d,
@@ -417,5 +417,5 @@ function registerScheduleRemoteAgentsSkill() {
     },
   });
 }
-var nAm = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",
+var BASE58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",
   Owc = "What would you like to do with scheduled cloud agents?";

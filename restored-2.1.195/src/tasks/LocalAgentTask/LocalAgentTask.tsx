@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vDo
 // matched 2.1.88 source: src/tasks/LocalAgentTask/LocalAgentTask.tsx
 // class=modified  jaccard=0.323  score=0.5413  fileCov=0.4447
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vDo] deps: ih
 wJn = Mi();
@@ -17,7 +17,7 @@ function J6n() {
 function Gwo(e) {
   return e.latestInputTokens + e.cumulativeOutputTokens;
 }
-function Q6n(e, t, n, r) {
+function updateProgressFromMessage(e, t, n, r) {
   if (t.type === "progress" && t.data.type === "repl_tool_call" && t.data.phase === "start") {
     let { toolName: s, toolInput: i } = t.data,
       a = r ? Aze(s, i, r) : void 0;
@@ -72,7 +72,7 @@ function Xoe(e) {
 function EEf(e, t) {
   (CDo.delete(e), bAe(e, wDo, t));
   let n = t.get(e);
-  if (El(n) && n.status === "completed" && Xoe(n).size === 0) (jy(e), IJn(e, t));
+  if (isLocalAgentTask(n) && n.status === "completed" && Xoe(n).size === 0) (jy(e), IJn(e, t));
 }
 function sw(e) {
   return e.status === "completed" && Xoe(e).size > 0;
@@ -82,21 +82,21 @@ function IDo(e, t) {
   if (t.park && (e.keepaliveReasons?.size ?? 0) > 0) return;
   return Date.now() + nfe;
 }
-function El(e) {
+function isLocalAgentTask(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "local_agent";
 }
-function Vhl(e, t) {
+function isPanelAgentTask(e, t) {
   if (!e) return;
   let n = t.get(e);
-  return El(n) && n.agentType !== "main-session" ? e : void 0;
+  return isLocalAgentTask(n) && n.agentType !== "main-session" ? e : void 0;
 }
 function MF(e) {
-  return El(e) && e.agentType !== "main-session";
+  return isLocalAgentTask(e) && e.agentType !== "main-session";
 }
 function VAe(e, t, n) {
   if (!e) return;
   n.update(e, (r) => {
-    if (!El(r) || Xoe(r).has(t)) return r;
+    if (!isLocalAgentTask(r) || Xoe(r).has(t)) return r;
     return {
       ...r,
       keepaliveReasons: new Set(Xoe(r)).add(t),
@@ -106,7 +106,7 @@ function VAe(e, t, n) {
 function bAe(e, t, n) {
   if (!e) return;
   n.update(e, (r) => {
-    if (!El(r) || !Xoe(r).has(t)) return r;
+    if (!isLocalAgentTask(r) || !Xoe(r).has(t)) return r;
     let o = new Set(Xoe(r));
     o.delete(t);
     let s = o.size === 0 && AC(r.status) && !r.retain;
@@ -123,18 +123,18 @@ function bAe(e, t, n) {
 function hcl(e, t) {
   if (!e) return false;
   let n = t.get(e);
-  return El(n) && Xoe(n).size > 0;
+  return isLocalAgentTask(n) && Xoe(n).size > 0;
 }
 function Cyt(e, t) {
   if (!e) return false;
   let n = t.get(e);
-  if (!El(n)) return false;
+  if (!isLocalAgentTask(n)) return false;
   for (let r of Xoe(n)) if (r.startsWith("agent:")) return true;
   return false;
 }
 function ezn(e, t) {
   let n = t.get(e);
-  if (!El(n)) return;
+  if (!isLocalAgentTask(n)) return;
   let r = new Set();
   for (let o of qX())
     if (o.mode === "task-notification" && o.agentId === Bu(e) && o.taskId) r.add(o.taskId);
@@ -143,7 +143,7 @@ function ezn(e, t) {
     let s = o.slice(6);
     if (r.has(s)) continue;
     let i = t.get(s);
-    if (!i || (El(i) && i.notified)) bAe(e, o, t);
+    if (!i || (isLocalAgentTask(i) && i.notified)) bAe(e, o, t);
   }
 }
 function oze(e, t, n, r = {}) {
@@ -165,7 +165,7 @@ function PXn(e, t, n) {
 }
 function CJn(e, t) {
   let n = t.get(e);
-  if (!El(n) || n.pendingMessages.length === 0) return [];
+  if (!isLocalAgentTask(n) || n.pendingMessages.length === 0) return [];
   let r = n.pendingMessages;
   return (
     t.update(e, (o) => ({
@@ -175,7 +175,7 @@ function CJn(e, t) {
     r
   );
 }
-function q8e({
+function enqueueAgentNotification({
   taskId: e,
   description: t,
   status: n,
@@ -204,7 +204,7 @@ function q8e({
   }),
     (m ??= d));
   let g = m ? s.get(m) : void 0,
-    y = (El(g) && sw(g) && !Ir()) || (El(g) && g.status === "running");
+    y = (isLocalAgentTask(g) && sw(g) && !Ir()) || (isLocalAgentTask(g) && g.status === "running");
   if (!(p && y)) bAe(m, `agent:${e}`, s);
   if (!p) {
     T(
@@ -260,11 +260,11 @@ function q8e({
 }
 function IJn(e, t) {
   let n = t.get(e);
-  if (El(n) && sw(n) && !Ir()) return;
+  if (isLocalAgentTask(n) && sw(n) && !Ir()) return;
   let r = ALe((o) => {
     if (o.mode !== "task-notification" || o.agentId !== Bu(e)) return false;
     let s = o.taskId ? t.get(o.taskId) : void 0;
-    return El(s) && s.ownerAgentId === e;
+    return isLocalAgentTask(s) && s.ownerAgentId === e;
   });
   for (let o of r)
     Ad({
@@ -272,11 +272,11 @@ function IJn(e, t) {
       agentId: ls(),
     });
 }
-function HAe(e, t, n = "user") {
+function killAsyncAgent(e, t, n = "user") {
   let r = t.get(e);
-  if (El(r) && sw(r) && !r.notified) {
+  if (isLocalAgentTask(r) && sw(r) && !r.notified) {
     let s = r.result;
-    q8e({
+    enqueueAgentNotification({
       taskId: e,
       description: r.description,
       status: "killed",
@@ -323,10 +323,10 @@ function HAe(e, t, n = "user") {
   )
     (IJn(e, t), jy(e));
 }
-function Mvl(e, t, n = "user") {
-  for (let [r, o] of Object.entries(e)) if (El(o) && sw(o)) HAe(r, t, n);
+function killAllRunningAgentTasks(e, t, n = "user") {
+  for (let [r, o] of Object.entries(e)) if (isLocalAgentTask(o) && sw(o)) killAsyncAgent(r, t, n);
   for (let [r, o] of Object.entries(e))
-    if (o.type === "local_agent" && o.status === "running") HAe(r, t, n);
+    if (o.type === "local_agent" && o.status === "running") killAsyncAgent(r, t, n);
 }
 function Iyt(e, t) {
   t.update(e, (n) => {
@@ -500,7 +500,7 @@ function X6n(e, t, n) {
   )
     (Le("task_local_agent", "task_local_agent_failed"), IJn(e, n));
 }
-function ubt({
+function registerAsyncAgent({
   agentId: e,
   ownerAgentId: t,
   parentAgentId: n,
@@ -637,7 +637,7 @@ function zhl({
 }
 function izt(e, t) {
   let n = t.get(e);
-  if (!El(n) || n.isBackgrounded || (AC(n.status) && !sw(n))) return false;
+  if (!isLocalAgentTask(n) || n.isBackgrounded || (AC(n.status) && !sw(n))) return false;
   t.update(e, (o) => ({
     ...o,
     isBackgrounded: true,
@@ -649,7 +649,7 @@ function izt(e, t) {
 function Khl(e, t) {
   Jbt.delete(e);
   let n = t.get(e);
-  if (!El(n) || n.isBackgrounded || Cyt(e, t)) return;
+  if (!isLocalAgentTask(n) || n.isBackgrounded || Cyt(e, t)) return;
   t.remove(e);
 }
 var Pvl = 5,

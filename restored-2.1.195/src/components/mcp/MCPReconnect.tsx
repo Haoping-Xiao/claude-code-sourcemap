@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xBo
 // matched 2.1.88 source: src/components/mcp/MCPReconnect.tsx
 // class=modified  jaccard=0.458  score=0.6928  fileCov=0.5747
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xBo] deps: si, ft, Xa, fH, _i, m8, Ye, ps, a5, g$, je, sr, Cc, vKe, Bs, vi, Ko, inr
 ((rXt = R(lt(), 1)),
@@ -10,7 +10,7 @@
   (_3 = R(rt(), 1)),
   (uc = R(se(), 1)),
   (e2l = ["project", "local", "user", "enterprise", "agent"]));
-function kBo(e) {
+function MCPReconnect(e) {
   let t = r2l.c(25),
     { serverName: n, onComplete: r } = e,
     [o] = na(),

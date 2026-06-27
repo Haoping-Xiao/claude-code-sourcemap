@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module voc
 // matched 2.1.88 source: src/commands/insights.ts
 // class=modified  jaccard=0.4668  score=0.9259  fileCov=0.485
-// note: deminified; 8 identifiers renamed (exports/displayName/curated)
+// note: deminified; 23 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: normalizeSessionMeta, generateUsageReport, extractToolStats, detectMultiClauding, default, deduplicateSessionBranches, buildInsightsResponsePrompt, buildExportData, aggregateData
 // [unwrapped __esm module voc] deps: Ld
@@ -35,7 +35,7 @@ function GQt() {
 function Jar() {
   return Rz.join(GQt(), "facets");
 }
-function RWo() {
+function getSessionMetaDir() {
   return Rz.join(GQt(), "session-meta");
 }
 function MQf(e) {
@@ -198,7 +198,7 @@ function extractToolStats(e) {
 function $Qf(e) {
   return !Number.isNaN(e.created.getTime()) && !Number.isNaN(e.modified.getTime());
 }
-function DWo(e) {
+function logToSessionMeta(e) {
   let t = extractToolStats(e),
     n = qg(e) || "unknown",
     r = e.created.toISOString(),
@@ -265,9 +265,9 @@ function deduplicateSessionBranches(e) {
   }
   return [...t.values()];
 }
-function NQf(e) {
+function formatTranscriptForFacets(e) {
   let t = [],
-    n = DWo(e);
+    n = logToSessionMeta(e);
   (t.push(`Session: ${n.session_id.slice(0, 8)}`),
     t.push(`Date: ${n.start_time}`),
     t.push(`Project: ${n.project_path}`),
@@ -296,7 +296,7 @@ async function UQf(e) {
   try {
     let t = await hbt({
       systemPrompt: Sc([]),
-      userPrompt: BQf + e,
+      userPrompt: SUMMARIZE_CHUNK_PROMPT + e,
       signal: new AbortController().signal,
       options: {
         model: Coc(),
@@ -314,14 +314,14 @@ async function UQf(e) {
     return e.slice(0, 2000);
   }
 }
-async function FQf(e) {
-  let t = NQf(e);
+async function formatTranscriptWithSummarization(e) {
+  let t = formatTranscriptForFacets(e);
   if (t.length <= 30000) return t;
   let n = 25000,
     r = [];
   for (let a = 0; a < t.length; a += n) r.push(t.slice(a, a + n));
   let o = await Promise.all(r.map(UQf)),
-    s = DWo(e);
+    s = logToSessionMeta(e);
   return (
     [
       `Session: ${s.session_id.slice(0, 8)}`,
@@ -346,7 +346,7 @@ async function jQf(e) {
         encoding: "utf-8",
       }),
       r = Ft(n);
-    if (!Poc(r)) {
+    if (!isValidSessionFacets(r)) {
       try {
         await l2.unlink(t);
       } catch {}
@@ -370,7 +370,7 @@ async function GQf(e) {
   });
 }
 async function WQf(e) {
-  let t = Rz.join(RWo(), `${e}.json`);
+  let t = Rz.join(getSessionMetaDir(), `${e}.json`);
   try {
     let n = await l2.readFile(t, {
       encoding: "utf-8",
@@ -398,10 +398,10 @@ function normalizeSessionMeta(e) {
 }
 async function qQf(e) {
   try {
-    await l2.mkdir(RWo(), {
+    await l2.mkdir(getSessionMetaDir(), {
       recursive: true,
     });
-    let t = Rz.join(RWo(), `${e.session_id}.json`);
+    let t = Rz.join(getSessionMetaDir(), `${e.session_id}.json`);
     await l2.writeFile(t, De(e, null, 2), {
       encoding: "utf-8",
       mode: 384,
@@ -414,10 +414,10 @@ async function qQf(e) {
     ke(t);
   }
 }
-async function VQf(e, t) {
+async function extractFacetsFromAPI(e, t) {
   try {
-    let n = await FQf(e),
-      r = `${PQf}${n}
+    let n = await formatTranscriptWithSummarization(e),
+      r = `${FACET_EXTRACTION_PROMPT}${n}
 
 RESPOND WITH ONLY A VALID JSON OBJECT matching this schema:
 {
@@ -450,7 +450,7 @@ RESPOND WITH ONLY A VALID JSON OBJECT matching this schema:
       i = zl(o.message.content).match(/\{[\s\S]*\}/);
     if (!i) return null;
     let a = Ft(i[0]);
-    if (!Poc(a)) return null;
+    if (!isValidSessionFacets(a)) return null;
     return {
       ...a,
       session_id: t,
@@ -631,7 +631,7 @@ function aggregateData(e, t) {
     n
   );
 }
-async function woc(e, t) {
+async function generateSectionInsight(e, t) {
   try {
     let n = await hbt({
         systemPrompt: Sc([]),
@@ -684,7 +684,7 @@ DATA:
     );
   }
 }
-async function KQf(e, t) {
+async function generateParallelInsights(e, t) {
   let n = Array.from(t.values())
       .slice(0, 50)
       .map((b) => `- ${b.brief_summary} (${b.outcome}, ${b.claude_helpfulness})`).join(`
@@ -738,7 +738,7 @@ FRICTION DETAILS:
 USER INSTRUCTIONS TO CLAUDE:
 ` +
       (o || "None captured"),
-    a = await Promise.all(zQf.map((b) => woc(b, i))),
+    a = await Promise.all(zQf.map((b) => generateSectionInsight(b, i))),
     l = {};
   for (let { name: b, result: _ } of a) if (_) l[b] = _;
   let c =
@@ -805,14 +805,14 @@ ${f}
 ${m}`,
       maxTokens: 8192,
     },
-    y = await woc(h, "");
+    y = await generateSectionInsight(h, "");
   if (y.result) l.at_a_glance = y.result;
   return l;
 }
-function Xar(e) {
+function escapeHtmlWithBold(e) {
   return ip(e).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 }
-function STe(e, t, n = 6, r) {
+function generateBarChart(e, t, n = 6, r) {
   let o;
   if (r) o = r.filter((i) => i in e && (e[i] ?? 0) > 0).map((i) => [i, e[i] ?? 0]);
   else
@@ -832,7 +832,7 @@ function STe(e, t, n = 6, r) {
   }).join(`
 `);
 }
-function JQf(e) {
+function generateResponseTimeHistogram(e) {
   if (e.length === 0) return '<p class="empty">No response time data</p>';
   let t = {
     "2-10s": 0,
@@ -863,7 +863,7 @@ function JQf(e) {
   }).join(`
 `);
 }
-function QQf(e) {
+function generateTimeOfDayChart(e) {
   if (e.length === 0) return '<p class="empty">No time data</p>';
   let t = [
       {
@@ -905,7 +905,7 @@ function ZQf(e) {
   for (let n of e) t[n] = (t[n] || 0) + 1;
   return De(t);
 }
-function eZf(e, t) {
+function generateHtmlReport(e, t) {
   let n = (I) => {
       if (!I) return "";
       return I.split(
@@ -933,10 +933,10 @@ function eZf(e, t) {
     <div class="at-a-glance">
       <div class="glance-title">At a Glance</div>
       <div class="glance-sections">
-        ${r.whats_working ? `<div class="glance-section"><strong>What's working:</strong> ${Xar(r.whats_working)} <a href="#section-wins" class="see-more">Impressive Things You Did \u2192</a></div>` : ""}
-        ${r.whats_hindering ? `<div class="glance-section"><strong>What's hindering you:</strong> ${Xar(r.whats_hindering)} <a href="#section-friction" class="see-more">Where Things Go Wrong \u2192</a></div>` : ""}
-        ${r.quick_wins ? `<div class="glance-section"><strong>Quick wins to try:</strong> ${Xar(r.quick_wins)} <a href="#section-features" class="see-more">Features to Try \u2192</a></div>` : ""}
-        ${r.ambitious_workflows ? `<div class="glance-section"><strong>Ambitious workflows:</strong> ${Xar(r.ambitious_workflows)} <a href="#section-horizon" class="see-more">On the Horizon \u2192</a></div>` : ""}
+        ${r.whats_working ? `<div class="glance-section"><strong>What's working:</strong> ${escapeHtmlWithBold(r.whats_working)} <a href="#section-wins" class="see-more">Impressive Things You Did \u2192</a></div>` : ""}
+        ${r.whats_hindering ? `<div class="glance-section"><strong>What's hindering you:</strong> ${escapeHtmlWithBold(r.whats_hindering)} <a href="#section-friction" class="see-more">Where Things Go Wrong \u2192</a></div>` : ""}
+        ${r.quick_wins ? `<div class="glance-section"><strong>Quick wins to try:</strong> ${escapeHtmlWithBold(r.quick_wins)} <a href="#section-features" class="see-more">Features to Try \u2192</a></div>` : ""}
+        ${r.ambitious_workflows ? `<div class="glance-section"><strong>Ambitious workflows:</strong> ${escapeHtmlWithBold(r.ambitious_workflows)} <a href="#section-horizon" class="see-more">On the Horizon \u2192</a></div>` : ""}
       </div>
     </div>
     `
@@ -1567,22 +1567,22 @@ function eZf(e, t) {
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">What You Wanted</div>
-        ${STe(e.goal_categories, "#2563eb")}
+        ${generateBarChart(e.goal_categories, "#2563eb")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Top Tools Used</div>
-        ${STe(e.tool_counts, "#0891b2")}
+        ${generateBarChart(e.tool_counts, "#0891b2")}
       </div>
     </div>
 
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">Languages</div>
-        ${STe(e.languages, "#10b981")}
+        ${generateBarChart(e.languages, "#10b981")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Session Types</div>
-        ${STe(e.session_types || {}, "#8b5cf6")}
+        ${generateBarChart(e.session_types || {}, "#8b5cf6")}
       </div>
     </div>
 
@@ -1591,7 +1591,7 @@ function eZf(e, t) {
     <!-- Response Time Distribution -->
     <div class="chart-card" style="margin: 24px 0;">
       <div class="chart-title">User Response Time Distribution</div>
-      ${JQf(e.user_response_times)}
+      ${generateResponseTimeHistogram(e.user_response_times)}
       <div style="font-size: 12px; color: #64748b; margin-top: 8px;">
         Median: ${e.median_response_time.toFixed(1)}s &bull; Average: ${e.avg_response_time.toFixed(1)}s
       </div>
@@ -1645,11 +1645,11 @@ function eZf(e, t) {
           </select>
           <input type="number" id="custom-offset" placeholder="UTC offset" style="display: none; width: 80px; font-size: 12px; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
         </div>
-        ${QQf(e.message_hours)}
+        ${generateTimeOfDayChart(e.message_hours)}
       </div>
       <div class="chart-card">
         <div class="chart-title">Tool Errors Encountered</div>
-        ${Object.keys(e.tool_error_categories).length > 0 ? STe(e.tool_error_categories, "#dc2626") : '<p class="empty">No tool errors</p>'}
+        ${Object.keys(e.tool_error_categories).length > 0 ? generateBarChart(e.tool_error_categories, "#dc2626") : '<p class="empty">No tool errors</p>'}
       </div>
     </div>
 
@@ -1658,11 +1658,11 @@ function eZf(e, t) {
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">What Helped Most (Claude's Capabilities)</div>
-        ${STe(e.success, "#16a34a")}
+        ${generateBarChart(e.success, "#16a34a")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Outcomes</div>
-        ${STe(e.outcomes, "#8b5cf6", 6, XQf)}
+        ${generateBarChart(e.outcomes, "#8b5cf6", 6, XQf)}
       </div>
     </div>
 
@@ -1671,11 +1671,11 @@ function eZf(e, t) {
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">Primary Friction Types</div>
-        ${STe(e.friction, "#dc2626")}
+        ${generateBarChart(e.friction, "#dc2626")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Inferred Satisfaction (model-estimated)</div>
-        ${STe(e.satisfaction, "#eab308", 6, YQf)}
+        ${generateBarChart(e.satisfaction, "#eab308", 6, YQf)}
       </div>
     </div>
 
@@ -1807,7 +1807,7 @@ async function generateUsageReport(e) {
     for (let q of B)
       for (let W of q) {
         if (c(W) || !$Qf(W)) continue;
-        let V = DWo(W);
+        let V = logToSessionMeta(W);
         if ((i.push(V), LWo(V, $.get(V.session_id)))) $.set(V.session_id, V);
         l.set(V.session_id, W);
       }
@@ -1849,7 +1849,7 @@ async function generateUsageReport(e) {
     let N = h.slice(M, M + _),
       B = await Promise.all(
         N.map(async ({ log: q, sessionId: W }) => {
-          let V = await VQf(q, W);
+          let V = await extractFacetsFromAPI(q, W);
           return {
             sessionId: W,
             newFacets: V,
@@ -1872,8 +1872,8 @@ async function generateUsageReport(e) {
   for (let [M, N] of g) if (!S(M)) v.set(M, N);
   let C = aggregateData(A, v);
   C.total_sessions_scanned = r;
-  let x = await KQf(C, g),
-    I = eZf(C, x);
+  let x = await generateParallelInsights(C, g),
+    I = generateHtmlReport(C, x);
   try {
     await l2.mkdir(GQt(), {
       recursive: true,
@@ -1908,7 +1908,7 @@ function BHt(e) {
 function rZf(e) {
   return e ? Object.keys(e) : [];
 }
-function buildInsightsResponsePrompt({
+function usageReport({
   insightsJson: e,
   reportUrl: t,
   htmlPath: n,
@@ -1937,7 +1937,7 @@ ${t}
 Want to dig into any section or try one of the suggestions?
 </message>`;
 }
-function Poc(e) {
+function isValidSessionFacets(e) {
   if (!e || typeof e !== "object") return false;
   let t = e;
   return (
@@ -1956,7 +1956,7 @@ var l2,
   Rz,
   LQf,
   DQf,
-  PQf = `Analyze this Claude Code session and extract structured facets.
+  FACET_EXTRACTION_PROMPT = `Analyze this Claude Code session and extract structured facets.
 
 CRITICAL GUIDELINES:
 
@@ -1983,7 +1983,7 @@ CRITICAL GUIDELINES:
 
 SESSION:
 `,
-  BQf = `Summarize this portion of a Claude Code session transcript. Focus on:
+  SUMMARIZE_CHUNK_PROMPT = `Summarize this portion of a Claude Code session transcript. Focus on:
 1. What the user asked for
 2. What Claude did (tools used, files modified)
 3. Any friction or issues

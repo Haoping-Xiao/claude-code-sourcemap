@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module aCo
 // matched 2.1.88 source: src/utils/model/validateModel.ts
 // class=modified  jaccard=0.5127  score=0.6422  fileCov=0.7177
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function asl() {
   lCo.clear();
 }
-async function S8t(e, t) {
+async function validateModel(e, t) {
   let n = e.trim();
   if (!n)
     return {
@@ -62,12 +62,12 @@ async function S8t(e, t) {
       }
     );
   } catch (r) {
-    return arf(r, n);
+    return handleValidationError(r, n);
   }
 }
-function arf(e, t) {
+function handleValidationError(e, t) {
   if (e instanceof iUe) {
-    let r = lrf(t),
+    let r = get3PFallbackSuggestion(t),
       o = r ? `. Try '${r}' instead` : "";
     return {
       valid: false,
@@ -111,7 +111,7 @@ function arf(e, t) {
     error: `Unable to validate model: ${e instanceof Error ? e.message : String(e)}`,
   };
 }
-function lrf(e) {
+function get3PFallbackSuggestion(e) {
   if (td()) return;
   let t = e.toLowerCase();
   if (t.includes("fable-5") || t.includes("fable_5"))

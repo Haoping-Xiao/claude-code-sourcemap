@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ste
 // matched 2.1.88 source: src/bridge/jwtUtils.ts
 // class=modified  jaccard=0.6467  score=0.9219  fileCov=0.6842
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ste] deps: ft, wFe, je, vn, dr, rle, QO, Ls
 uUr = Object.keys(yc);
@@ -21,7 +21,7 @@ function dUr(e) {
     n = Math.round((e % 60000) / 1000);
   return n > 0 ? `${t}m ${n}s` : `${t}m`;
 }
-function v7s(e) {
+function decodeJwtPayload(e) {
   let n = (e.startsWith("sk-ant-si-") ? e.slice(10) : e).split(".");
   if (n.length !== 3 || !n[1]) return null;
   try {
@@ -30,12 +30,17 @@ function v7s(e) {
     return null;
   }
 }
-function tPt(e) {
-  let t = v7s(e);
+function decodeJwtExpiry(e) {
+  let t = decodeJwtPayload(e);
   if (t !== null && typeof t === "object" && "exp" in t && typeof t.exp === "number") return t.exp;
   return null;
 }
-function NSn({ getAccessToken: e, onRefresh: t, label: n, refreshBufferMs: r = bld }) {
+function createTokenRefreshScheduler({
+  getAccessToken: e,
+  onRefresh: t,
+  label: n,
+  refreshBufferMs: r = bld,
+}) {
   let o = new Map(),
     s = new Map(),
     i = new Map();
@@ -44,7 +49,7 @@ function NSn({ getAccessToken: e, onRefresh: t, label: n, refreshBufferMs: r = b
     return (i.set(f, m), m);
   }
   function l(f, m) {
-    let g = tPt(m);
+    let g = decodeJwtExpiry(m);
     if (!g) {
       T(
         `[${n}:token] Could not decode JWT expiry for sessionId=${f}, token prefix=${m.slice(0, 15)}\u2026, keeping existing timer`,

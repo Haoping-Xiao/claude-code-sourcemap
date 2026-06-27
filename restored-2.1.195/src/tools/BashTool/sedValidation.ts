@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jDe
 // matched 2.1.88 source: src/tools/BashTool/sedValidation.ts
 // class=modified  jaccard=0.308  score=0.8274  fileCov=0.3291
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jDe] deps: zqe, Yqe, ii, h6, dr, m1
 FDe = {
@@ -18,7 +18,7 @@ function p$a(e, t) {
     else if (!t.includes(n)) return false;
   return true;
 }
-function l$a(e, t) {
+function isLinePrintingCommand(e, t) {
   let n = oA(e);
   if (n[0] !== "sed") return false;
   let o = n.slice(1).filter((a) => a.startsWith("-") && a !== "--");
@@ -59,7 +59,7 @@ function zRp(e) {
   if (!e) return false;
   return /^(?:\d+|\d+,\d+)?p$/.test(e);
 }
-function c$a(e, t, n, r) {
+function isSubstitutionCommand(e, t, n, r) {
   let o = r?.allowFileWrites ?? false;
   if (!o && n) return false;
   let s = oA(e);
@@ -95,7 +95,7 @@ function Qpt(e, t) {
   if (vjn(e) || Bp(e)) return false;
   let r;
   try {
-    r = XRp(e);
+    r = extractSedExpressions(e);
   } catch (l) {
     return false;
   }
@@ -103,11 +103,11 @@ function Qpt(e, t) {
     s = false,
     i = false;
   if (n)
-    ((s = l$a(e, r)),
-      (i = c$a(e, r, o, {
+    ((s = isLinePrintingCommand(e, r)),
+      (i = isSubstitutionCommand(e, r, o, {
         allowFileWrites: true,
       })));
-  else ((s = l$a(e, r)), (i = c$a(e, r, o)));
+  else ((s = isLinePrintingCommand(e, r)), (i = isSubstitutionCommand(e, r, o)));
   if (!s && !i) return false;
   for (let l of r) if (i && l.includes(";")) return false;
   for (let l of r) if (u$a(l)) return false;
@@ -182,7 +182,7 @@ function YRp(e) {
   }
   return null;
 }
-function XRp(e) {
+function extractSedExpressions(e) {
   let t = [],
     n = oA(e);
   if (n[0] !== "sed") return t;
@@ -277,7 +277,7 @@ function u$a(e) {
   }
   return false;
 }
-function m$a(e, t) {
+function checkSedConstraints(e, t) {
   let n = By(e.command),
     r;
   for (let o of n) {

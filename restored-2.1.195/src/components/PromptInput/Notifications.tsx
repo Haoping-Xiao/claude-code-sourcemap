@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Uhc
 // matched 2.1.88 source: src/components/PromptInput/Notifications.tsx
 // class=modified  jaccard=0.2592  score=0.5583  fileCov=0.3261
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Uhc] deps: Ed, Ye, Un, kt, $hc, vn
 ((Nhc = R(lt(), 1)), (odr = R(rt(), 1)), (rdr = R(se(), 1)));
-function idr(e) {
+function Notifications(e) {
   let t = jhc.c(40),
     {
       apiKeyStatus: n,
@@ -148,7 +148,7 @@ function idr(e) {
       alignItems: "flex-end",
       flexShrink: 1,
       overflowX: "hidden",
-      children: sy.jsx(Kdm, {
+      children: sy.jsx(NotificationContent, {
         isInOverageMode: q,
         isTeamOrEnterprise: k,
         apiKeyStatus: n,
@@ -232,7 +232,7 @@ function Vdm(e) {
 function zdm(e) {
   return e.autoCompactWindow;
 }
-function Kdm({
+function NotificationContent({
   isInOverageMode: e,
   isTeamOrEnterprise: t,
   apiKeyStatus: n,

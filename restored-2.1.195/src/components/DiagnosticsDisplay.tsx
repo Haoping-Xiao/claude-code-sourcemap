@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module i6e
 // matched 2.1.88 source: src/components/DiagnosticsDisplay.tsx
 // class=modified  jaccard=0.3867  score=0.6312  fileCov=0.4995
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function cil(e) {
+function DiagnosticsDisplay(e) {
   let t = iil.c(13),
     { attachment: n, verbose: r, isTranscriptMode: o } = e;
   if (n.files.length === 0) return null;
@@ -15,7 +15,7 @@ function cil(e) {
     a = n.files.length;
   if (r || o) {
     let l;
-    if (t[2] !== n.files) ((l = n.files.map(Iof)), (t[2] = n.files), (t[3] = l));
+    if (t[2] !== n.files) ((l = n.files.map(_temp3)), (t[2] = n.files), (t[3] = l));
     else l = t[3];
     let c;
     if (t[4] !== l)
@@ -68,7 +68,7 @@ function cil(e) {
     return d;
   }
 }
-function Iof(e, t) {
+function _temp3(e, t) {
   return z6.jsxs(
     lil.Fragment,
     {

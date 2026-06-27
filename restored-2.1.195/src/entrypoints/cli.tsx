@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Dqc
 // matched 2.1.88 source: src/entrypoints/cli.tsx
 // class=modified  jaccard=0.2421  score=0.4629  fileCov=0.3366
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Dqc]
 LNm = new Set(["update", "upgrade"]);
@@ -67,7 +67,7 @@ function DNm(e) {
     rest: i,
   };
 }
-async function PNm() {
+async function main() {
   let e = lon(process.argv);
   if (e) (console.error(e), process.exit(1));
   let t = process.argv.slice(2);
@@ -522,4 +522,4 @@ async function PNm() {
   let { main: p } = await Promise.resolve().then(() => (Qtn(), phr));
   (n("cli_after_main_import"), await p(), n("cli_after_main_complete"));
 }
-PNm();
+main();

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/PreviewBox.tsx
 // class=modified  jaccard=0.2328  score=0.5828  fileCov=0.2793
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MAc] deps: mE, v5, Ko, eE, gm, EC, Ye, ps, E0o
 ((zTe = R(lt(), 1)), (YTt = R(rt(), 1)), (zu = R(se(), 1)));
@@ -18,7 +18,7 @@ function $Ac(e) {
   let o = r,
     s;
   if (t[2] !== o || t[3] !== e)
-    ((s = eie.jsx(Mym, {
+    ((s = eie.jsx(PreviewBoxBody, {
       ...e,
       highlight: o,
     })),
@@ -28,7 +28,7 @@ function $Ac(e) {
   else s = t[4];
   return s;
 }
-function Mym(e) {
+function PreviewBoxBody(e) {
   let t = Yzo.c(37),
     { content: n, maxLines: r, minHeight: o, minWidth: s, maxWidth: i, highlight: a } = e,
     l = s === void 0 ? 40 : s,

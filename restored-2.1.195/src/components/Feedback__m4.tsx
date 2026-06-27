@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module hnr
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0127  score=0.0698  fileCov=0.0153
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hnr] deps: Rd, Is, sr, VQ, zOe, YOe, Gfe, WL, q$, IKe
 IEt = require("fs/promises");
-function L$f(e) {
+function GITHUB_ISSUES_REPO_URL(e) {
   let t = ynr.c(19),
     { promise: n } = e,
     r = xEt.use(n),
@@ -191,7 +191,7 @@ function kNl() {
               dimColor: true,
               children: "Probing background server\u2026",
             }),
-            children: jk.jsx(L$f, {
+            children: jk.jsx(GITHUB_ISSUES_REPO_URL, {
               promise: n,
             }),
           }),

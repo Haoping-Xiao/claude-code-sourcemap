@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f_c
 // matched 2.1.88 source: src/components/tasks/BackgroundTaskStatus.tsx
 // class=partial  jaccard=0.0863  score=0.4096  fileCov=0.0986
-// note: low-confidence suggestion: src/components/tasks/BackgroundTaskStatus.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/components/tasks/BackgroundTaskStatus.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f_c] deps: Xa, Ed, Ye, uo, d_c
 M6o = R(lt(), 1), NTt = R(se(), 1);
@@ -20,7 +20,7 @@ function O6o(e) {
   let a;
   if (t[2] !== i) a = l_t(i), t[2] = i, t[3] = a;else a = t[3];
   let l;
-  if (t[4] !== r || t[5] !== a || t[6] !== n) l = FTe.jsx(Lfm, {
+  if (t[4] !== r || t[5] !== a || t[6] !== n) l = FTe.jsx(AgentPill, {
     selected: n,
     onClick: r,
     children: a
@@ -39,7 +39,7 @@ function O6o(e) {
 function Rfm(e) {
   return e.tasks;
 }
-function Lfm(e) {
+function AgentPill(e) {
   let t = $6o.c(8),
     {
       selected: n,

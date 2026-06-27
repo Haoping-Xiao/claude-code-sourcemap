@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Osl
 // matched 2.1.88 source: src/components/messages/AssistantTextMessage.tsx
 // class=modified  jaccard=0.1203  score=0.2527  fileCov=0.1867
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Osl] deps: qyt, Ye, Un, Vyt, Ijt, oo, e1, wr, d5e, ql
 ((Msl = R(lt(), 1)), (Izn = R(rt(), 1)), (zyt = R(se(), 1)));
@@ -19,7 +19,7 @@ function oof() {
   else n = e[0];
   return n;
 }
-function sof() {
+function InvalidApiKeyMessage() {
   let e = D8t.c(2),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -47,7 +47,7 @@ function sof() {
   else n = e[1];
   return n;
 }
-function RCo(e) {
+function AssistantTextMessage(e) {
   let t = D8t.c(32),
     { param: n, addMargin: r, shouldShowDot: o, verbose: s, onOpenRateLimitOptions: i } = e,
     { text: a } = n;
@@ -104,7 +104,8 @@ function RCo(e) {
     }
     case N1n: {
       let l;
-      if (t[6] === Symbol.for("react.memo_cache_sentinel")) ((l = ld.jsx(sof, {})), (t[6] = l));
+      if (t[6] === Symbol.for("react.memo_cache_sentinel"))
+        ((l = ld.jsx(InvalidApiKeyMessage, {})), (t[6] = l));
       else l = t[6];
       return l;
     }

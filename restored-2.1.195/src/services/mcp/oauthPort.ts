@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I8r
 // matched 2.1.88 source: src/services/mcp/oauthPort.ts
 // class=modified  jaccard=0.3982  score=0.6528  fileCov=0.5052
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I8r]
 ERd = {
@@ -12,14 +12,14 @@ ERd = {
   '"': "&quot;",
   "'": "&#39;",
 };
-function T1t(e = k8r) {
+function buildRedirectUri(e = k8r) {
   return `http://localhost:${e}/callback`;
 }
 function TRd() {
   let e = parseInt(process.env.MCP_OAUTH_CALLBACK_PORT || "", 10);
   return e > 0 ? e : void 0;
 }
-async function pIn(e) {
+async function findAvailablePort(e) {
   let t = TRd();
   if (t) return t;
   if (e && (await x8r(e))) return e;

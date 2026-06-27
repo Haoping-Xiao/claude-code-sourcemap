@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module vq
 // matched 2.1.88 source: src/utils/plugins/marketplaceHelpers.ts
 // class=modified  jaccard=0.3396  score=0.8696  fileCov=0.3578
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vq] deps: Zf, G4, ty, Qbe, Vv, je, At, vn, d$o, _k, eer, vYt, A5e, YZn, Xh, i5, dOe
 ((nse = require("fs/promises")),
   (IYt = require("path")),
   (UIf = (Vko(), ro($ml)).clearPluginWorkflowCache));
-function MSt(e, t) {
+function formatFailureDetails(e, t) {
   let r = e
       .slice(0, 2)
       .map((i) => {
@@ -20,7 +20,7 @@ function MSt(e, t) {
     s = o > 0 ? ` and ${o} more` : "";
   return `${r}${s}`;
 }
-function zze(e) {
+function getMarketplaceSourceDisplay(e) {
   switch (e.source) {
     case "github":
       return e.repo;
@@ -70,7 +70,7 @@ async function rse(e) {
     failures: n,
   };
 }
-function $St(e, t) {
+function formatMarketplaceLoadingErrors(e, t) {
   if (e.length === 0) return null;
   if (t > 0)
     return {
@@ -91,7 +91,7 @@ function zIf(e) {
 function KIf(e) {
   return e.map((t) => `${t.name}: ${t.error}`).join("; ");
 }
-function mHe(e) {
+function formatSourceForDisplay(e) {
   switch (e.source) {
     case "github":
       return `github:${e.repo}${e.ref ? `@${e.ref}` : ""}`;
@@ -117,7 +117,10 @@ function mHe(e) {
       return "unknown source";
   }
 }
-async function uRl({ configuredMarketplaceCount: e, failedMarketplaceCount: t }) {
+async function detectEmptyMarketplaceReason({
+  configuredMarketplaceCount: e,
+  failedMarketplaceCount: t,
+}) {
   if (!(await sWe())) return "git-not-installed";
   let r = _5();
   if (r !== null) {

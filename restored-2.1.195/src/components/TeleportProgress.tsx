@@ -107,7 +107,7 @@ function TeleportProgress(e) {
   else m = t[15];
   return m;
 }
-async function teleportWithProgress(e, t) {
+async function STEPS(e, t) {
   let n = () => {};
   function r() {
     let [a, l] = qFc.useState("validating");

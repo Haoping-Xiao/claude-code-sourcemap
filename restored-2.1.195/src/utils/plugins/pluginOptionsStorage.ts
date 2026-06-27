@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vdt
 // matched 2.1.88 source: src/utils/plugins/pluginOptionsStorage.ts
 // class=modified  jaccard=0.3474  score=0.6728  fileCov=0.418
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vdt] deps: Gwe, w4t, Rx, CZe, je, rCa, eqe, At, ys, vn, R9, dr, Jt, aCa, dFt
 ((SUn = require("crypto")), (nqe = require("fs/promises")), (Hre = require("path")));
@@ -26,7 +26,7 @@ function EUn(e, t) {
 function AUn() {
   (m$.cache?.clear?.(), lTp.cache?.clear?.());
 }
-async function wdt(e, t, n) {
+async function savePluginOptions(e, t, n) {
   let r = {},
     o = {};
   for (let [u, d] of Object.entries(t))
@@ -87,7 +87,7 @@ async function wdt(e, t, n) {
   }
   AUn();
 }
-async function Cdt(e) {
+async function deletePluginOptions(e) {
   if (jo().pluginConfigs?.[e]) {
     let n = {
         [e]: void 0,
@@ -179,7 +179,7 @@ function $Se(e, t) {
     return String(o);
   });
 }
-function HUn(e, t, n, r) {
+function substituteUserConfigInContent(e, t, n, r) {
   return e.replace(/\$\{user_config\.([^}]+)\}/g, (o, s) => {
     if (n[s]?.sensitive === true) return `[sensitive option '${s}' not available in skill content]`;
     let i = t[s];

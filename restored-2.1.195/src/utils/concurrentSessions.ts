@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mp
 // matched 2.1.88 source: src/utils/concurrentSessions.ts
 // class=modified  jaccard=0.1767  score=0.3632  fileCov=0.256
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mp] deps: Sj, ft, wr, Sj
 Xoi = require("child_process");
@@ -19,13 +19,13 @@ function XY() {
 function JPt() {
   return Tye.join(tr(), "sessions");
 }
-function exe() {
+function envSessionKind() {
   let e = process.env.CLAUDE_CODE_SESSION_KIND;
   if (e === "bg" || e === "daemon" || e === "daemon-worker") return e;
   return;
 }
 function Js() {
-  return exe() === "bg";
+  return envSessionKind() === "bg";
 }
 function OAn() {
   return process.env.CLAUDE_BG_BACKEND === "daemon";
@@ -53,11 +53,11 @@ function NAn() {
     t
   );
 }
-async function tsi() {
+async function registerSession() {
   if (PD() != null || lje()) return false;
   let e = XY();
   njr = e.promise;
-  let t = exe() ?? "interactive",
+  let t = envSessionKind() ?? "interactive",
     n = JPt(),
     r = Tye.join(n, `${process.pid}.json`);
   (process.on("exit", () => {
@@ -112,12 +112,12 @@ async function tsi() {
         }),
       ),
       oee((s) => {
-        XPt({
+        updatePidFile({
           sessionId: s,
         });
       }),
       e_r((s) => {
-        XPt({
+        updatePidFile({
           cwd: s,
         });
       }),
@@ -129,7 +129,7 @@ async function tsi() {
     e.resolve();
   }
 }
-async function XPt(e) {
+async function updatePidFile(e) {
   let t = Tye.join(JPt(), `${process.pid}.json`),
     n = njr.then(async () => {
       try {
@@ -149,19 +149,19 @@ async function XPt(e) {
 }
 async function JY(e) {
   if (!e) return;
-  await XPt({
+  await updatePidFile({
     name: e,
     updatedAt: Date.now(),
   });
 }
 async function nsi(e) {
-  await XPt({
+  await updatePidFile({
     bridgeSessionId: e,
   });
 }
 async function BAn(e) {
   let t = Date.now();
-  await XPt({
+  await updatePidFile({
     ...e,
     updatedAt: t,
     ...(e.status !== void 0 && {
@@ -169,7 +169,7 @@ async function BAn(e) {
     }),
   });
 }
-async function QPt() {
+async function countConcurrentSessions() {
   let e = JPt(),
     t;
   try {

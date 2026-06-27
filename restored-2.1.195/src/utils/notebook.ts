@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module o6n
 // matched 2.1.88 source: src/utils/notebook.ts
 // class=modified  jaccard=0.5279  score=0.8515  fileCov=0.5814
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module o6n] deps: ft, kt, Lo, Yf, _$, fn, xW, BGt, sr
 J8n = require("fs/promises");
@@ -21,7 +21,7 @@ function xvo(e) {
     { truncatedContent: n } = Xel(t);
   return n;
 }
-function WZp(e) {
+function extractImage(e) {
   for (let t of ["image/png", "image/jpeg"]) {
     let n = e[t];
     if (typeof n !== "string") continue;
@@ -34,7 +34,7 @@ function WZp(e) {
   }
   return;
 }
-function qZp(e) {
+function processOutput(e) {
   switch (e.output_type) {
     case "stream":
       return {
@@ -46,7 +46,7 @@ function qZp(e) {
       return {
         output_type: e.output_type,
         text: xvo(e.data?.["text/plain"]),
-        image: e.data && WZp(e.data),
+        image: e.data && extractImage(e.data),
       };
     case "error":
       return {
@@ -57,7 +57,7 @@ ${e.traceback.join(`
       };
   }
 }
-function Jel(e, t, n, r) {
+function processCell(e, t, n, r) {
   let o = e.id ?? `cell-${t}`,
     s = {
       cellType: e.cell_type,
@@ -67,7 +67,7 @@ function Jel(e, t, n, r) {
     };
   if (e.cell_type === "code") s.language = n;
   if (e.cell_type === "code" && e.outputs?.length) {
-    let i = e.outputs.map(qZp);
+    let i = e.outputs.map(processOutput);
     if (!r && GZp(i)) {
       let a = Su()
         ? `${Co} with: cat <notebook_path> | jq '.cells[${t}].outputs'`
@@ -82,7 +82,7 @@ function Jel(e, t, n, r) {
   }
   return s;
 }
-function VZp(e) {
+function cellContentToToolResult(e) {
   let t = [];
   if (e.cellType !== "code") t.push(`<cell_type>${e.cellType}</cell_type>`);
   if (e.language !== "python" && e.cellType === "code")
@@ -112,11 +112,11 @@ ${e.text}`,
   return t;
 }
 function KZp(e) {
-  let t = VZp(e),
+  let t = cellContentToToolResult(e),
     n = e.outputs?.flatMap(zZp);
   return [t, ...(n ?? [])];
 }
-async function Qel(e, t) {
+async function readNotebook(e, t) {
   let n = ds(e),
     o = (await qt().readFileBytes(n)).toString("utf-8"),
     s;
@@ -135,9 +135,9 @@ async function Qel(e, t) {
   if (t) {
     let a = s.cells.find((l) => l.id === t);
     if (!a) throw Error(`Cell with ID "${t}" not found in notebook`);
-    return [Jel(a, s.cells.indexOf(a), i, true)];
+    return [processCell(a, s.cells.indexOf(a), i, true)];
   }
-  return s.cells.map((a, l) => Jel(a, l, i, false));
+  return s.cells.map((a, l) => processCell(a, l, i, false));
 }
 function Zel(e, t) {
   let n = e.flatMap(KZp);

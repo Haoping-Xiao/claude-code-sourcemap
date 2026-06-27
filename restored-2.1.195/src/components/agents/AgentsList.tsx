@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module AYl
 // matched 2.1.88 source: src/components/agents/AgentsList.tsx
 // class=modified  jaccard=0.1788  score=0.2967  fileCov=0.3102
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AYl] deps: iu, si, uo, Ye, ps, IL, ty, y3, f_, VAt, i4o, a4o, l4o, c4o
 ((aZ = R(rt(), 1)), (Pse = R(se(), 1)));
-function vYl(e) {
+function AgentsList(e) {
   let t = XAt.c(75),
     {
       source: n,

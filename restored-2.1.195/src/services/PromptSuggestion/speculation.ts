@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module y6e
 // matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
 // class=modified  jaccard=0.5102  score=0.7923  fileCov=0.589
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module y6e] deps: Gst, ft, lze, dHl, ii, u_, lf, nC, Il, je, fn, At, oc, PB, ik, co, Hu, $I, _a, CLo
 rKt = new Map();
@@ -31,7 +31,7 @@ function Nbt(e, t) {
     },
   };
 }
-async function w_f(e, t, n) {
+async function copyOverlayToMain(e, t, n) {
   let r = !0,
     o;
   try {
@@ -88,28 +88,28 @@ async function w_f(e, t, n) {
   }
   return r;
 }
-function tJn(e, t, n, r, o, s, i) {
+function logSpeculation(e, t, n, r, o, s, i) {
   G("tengu_speculation", {
     speculation_id: e,
     outcome: $e(t),
     duration_ms: Date.now() - n,
     suggestion_length: r,
-    tools_executed: xLo(o),
+    tools_executed: countToolsInMessages(o),
     completed: s !== null,
     boundary_type: s?.type,
-    boundary_tool: C_f(s),
+    boundary_tool: getBoundaryTool(s),
     boundary_detail: I_f(s),
     ...i,
   });
 }
-function xLo(e) {
+function countToolsInMessages(e) {
   let t = e
     .filter(kLo)
     .flatMap((n) => n.message.content)
     .filter((n) => typeof n === "object" && n !== null && "type" in n);
   return On(t, (n) => n.type === "tool_result" && !n.is_error);
 }
-function C_f(e) {
+function getBoundaryTool(e) {
   if (!e) return;
   switch (e.type) {
     case "bash":
@@ -136,7 +136,7 @@ function I_f(e) {
 function kLo(e) {
   return e.type === "user" && "message" in e && Array.isArray(e.message.content);
 }
-function x_f(e) {
+function prepareMessagesForInjection(e) {
   let t = (s) =>
       typeof s === "object" &&
       s !== null &&
@@ -205,7 +205,7 @@ function ILo(e) {
 function fgo() {
   return (T("[Speculation] enabled=false"), !1);
 }
-async function R_f(e, t, n, r, o) {
+async function generatePipelinedSuggestion(e, t, n, r, o) {
   try {
     let s = e.toolUseContext.getAppState(),
       i = cgo(s);
@@ -242,9 +242,9 @@ async function R_f(e, t, n, r, o) {
     T(`[Speculation] Pipelined suggestion failed: ${be(s)}`);
   }
 }
-async function mgo(e, t, n, r = !1, o) {
+async function startSpeculation(e, t, n, r = !1, o) {
   if (!fgo()) return;
-  dfe(n);
+  abortSpeculation(n);
   let s = gHl.randomUUID().slice(0, 8),
     i = c$(t.toolUseContext.abortController);
   if (i.signal.aborted) return;
@@ -485,8 +485,8 @@ async function mgo(e, t, n, r = !1, o) {
         outputTokens: f.totalUsage.output_tokens,
       },
     })),
-      T(`[Speculation] Complete: ${xLo(l.current)} tools`),
-      R_f(p.current, e, l.current, n, i));
+      T(`[Speculation] Complete: ${countToolsInMessages(l.current)} tools`),
+      generatePipelinedSuggestion(p.current, e, l.current, n, i));
   } catch (f) {
     if ((i.abort(), f instanceof Error && f.name === "AbortError")) {
       (oKt(u), ILo(n));
@@ -494,7 +494,7 @@ async function mgo(e, t, n, r = !1, o) {
     }
     (oKt(u),
       ke(f instanceof Error ? f : Error("Speculation failed")),
-      tJn(s, "error", a, e.length, l.current, null, {
+      logSpeculation(s, "error", a, e.length, l.current, null, {
         error_type: f instanceof Error ? f.name : "Unknown",
         error_message: be(f).slice(0, 200),
         error_phase: We("start"),
@@ -504,7 +504,7 @@ async function mgo(e, t, n, r = !1, o) {
       ILo(n));
   }
 }
-async function L_f(e, t, n) {
+async function acceptSpeculation(e, t, n) {
   if (e.status !== "active") return null;
   let {
       id: r,
@@ -518,7 +518,7 @@ async function L_f(e, t, n) {
     u = o.current,
     d = eJn(r),
     p = Date.now();
-  if ((i(), n > 0)) await w_f(d, s.current, CK());
+  if ((i(), n > 0)) await copyOverlayToMain(d, s.current, CK());
   oKt(d);
   let f = e.boundary,
     m = Math.min(p, f?.completedAt ?? 1 / 0) - a;
@@ -537,7 +537,7 @@ async function L_f(e, t, n) {
         ? `[Speculation] Accept ${r}: still running, using ${u.length} messages`
         : `[Speculation] Accept ${r}: already complete`,
     ),
-    tJn(r, "accepted", a, l, u, f, {
+    logSpeculation(r, "accepted", a, l, u, f, {
       message_count: u.length,
       time_saved_ms: m,
       is_pipelined: c,
@@ -574,7 +574,7 @@ async function L_f(e, t, n) {
     }
   );
 }
-function dfe(e, t = "user_typed") {
+function abortSpeculation(e, t = "user_typed") {
   e((n) => {
     if (n.speculation.status !== "active") return n;
     let {
@@ -588,7 +588,7 @@ function dfe(e, t = "user_typed") {
     } = n.speculation;
     return (
       T(`[Speculation] Aborting ${r} (${t})`),
-      tJn(r, "aborted", s, a, l.current, i, {
+      logSpeculation(r, "aborted", s, a, l.current, i, {
         abort_reason: t,
         is_pipelined: c,
       }),
@@ -601,7 +601,7 @@ function dfe(e, t = "user_typed") {
     );
   });
 }
-async function _Hl(e, t, n, r, o) {
+async function handleSpeculationAccept(e, t, n, r, o) {
   try {
     let { setMessages: s, readFileState: i, cwd: a } = o;
     n((y) => {
@@ -618,13 +618,13 @@ async function _Hl(e, t, n, r, o) {
       };
     });
     let l = e.messagesRef.current,
-      c = x_f(l),
+      c = prepareMessagesForInjection(l),
       u = Rn({
         content: r,
         promptSource: "suggestion_accepted",
       });
     s((y) => [...y, u]);
-    let d = await L_f(e, n, c.length),
+    let d = await acceptSpeculation(e, n, c.length),
       p = d?.boundary?.type === "complete";
     if (!p) {
       let y = c.findLastIndex((b) => b.type !== "assistant");
@@ -662,7 +662,7 @@ async function _Hl(e, t, n, r, o) {
           ...c,
         ],
       };
-      mgo(y, S, n, !0);
+      startSpeculation(y, S, n, !0);
     }
     return {
       queryRequired: !p,
@@ -670,12 +670,20 @@ async function _Hl(e, t, n, r, o) {
   } catch (s) {
     return (
       ke(s instanceof Error ? s : Error("handleSpeculationAccept failed")),
-      tJn(e.id, "error", e.startTime, e.suggestionLength, e.messagesRef.current, e.boundary, {
-        error_type: s instanceof Error ? s.name : "Unknown",
-        error_message: be(s).slice(0, 200),
-        error_phase: We("accept"),
-        is_pipelined: e.isPipelined,
-      }),
+      logSpeculation(
+        e.id,
+        "error",
+        e.startTime,
+        e.suggestionLength,
+        e.messagesRef.current,
+        e.boundary,
+        {
+          error_type: s instanceof Error ? s.name : "Unknown",
+          error_message: be(s).slice(0, 200),
+          error_phase: We("accept"),
+          is_pipelined: e.isPipelined,
+        },
+      ),
       Le("prompt_suggestion_speculate", "accept_failed"),
       oKt(eJn(e.id)),
       ILo(n),

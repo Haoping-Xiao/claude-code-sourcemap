@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pMo
 // matched 2.1.88 source: src/utils/forkedAgent.ts
 // class=modified  jaccard=0.3896  score=0.5346  fileCov=0.5896
-// note: deminified; 14 identifiers renamed (exports/displayName/curated)
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withDisallowedCommandTools, withAllowedCommandTools, saveCacheSafeParams, runForkedAgent, prepareForkedCommandContext, isMainThreadCacheWarm, getLastCacheSafeParams, forkPointUuidOf, extractResultText, createSubagentContext, createGetAppStateWithForkedToolScoping, createCacheSafeParams, FORKED_AGENT_DEFAULT_MAX_TURNS, ASYNC_SHARED_APP_STATE_KEYS
 // [unwrapped __esm module pMo]
@@ -376,7 +376,7 @@ async function runForkedAgent({
       turnCount: D,
     });
   return (
-    Ewf({
+    logForkAgentQueryEvent({
       forkLabel: o,
       querySource: r,
       durationMs: P,
@@ -390,7 +390,7 @@ async function runForkedAgent({
     }
   );
 }
-function Ewf({
+function logForkAgentQueryEvent({
   forkLabel: e,
   querySource: t,
   durationMs: n,

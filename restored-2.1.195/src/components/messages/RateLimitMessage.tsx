@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Vyt
 // matched 2.1.88 source: src/components/messages/RateLimitMessage.tsx
 // class=modified  jaccard=0.2708  score=0.3809  fileCov=0.4838
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vyt] deps: z1
 Czn = R(rt(), 1);
-function rof({
+function getUpsellMessage({
   shouldShowUpsell: e,
   isMax20x: t,
   isExtraUsageCommandEnabled: n,
@@ -37,7 +37,7 @@ function rof({
   if (!c) return "/upgrade to increase your usage limit.";
   return "/upgrade or /usage-credits to finish what you\u2019re working on.";
 }
-function $sl(e) {
+function RateLimitMessage(e) {
   let t = Msl.c(32),
     { text: n, onOpenRateLimitOptions: r } = e,
     o;
@@ -127,7 +127,7 @@ function $sl(e) {
       ae = g || A,
       de;
     if (t[19] !== y || t[20] !== L || t[21] !== ce || t[22] !== ae)
-      ((de = rof({
+      ((de = getUpsellMessage({
         shouldShowUpsell: d,
         isMax20x: c,
         isExtraUsageCommandEnabled: x,

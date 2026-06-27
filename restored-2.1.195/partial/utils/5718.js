@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module bLc
 // matched 2.1.88 source: src/hooks/usePromptsFromClaudeInChrome.tsx
 // class=partial  jaccard=0.1281  score=0.4794  fileCov=0.1488
-// note: low-confidence suggestion: src/hooks/usePromptsFromClaudeInChrome.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/usePromptsFromClaudeInChrome.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bLc] deps: ft, KKt, ag, id, je, At, _a, hLc
 yLc = require("fs"), kYo = R(rt(), 1);
-function ELc(e, t) {
+function usePromptsFromClaudeInChrome(e, t) {
   let n = SLc.c(6);
   ktn.useRef(void 0);
   let r;

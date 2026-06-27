@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dtc
 // matched 2.1.88 source: src/bridge/pollConfig.ts
 // class=modified (alt of src/bridge/pollConfig.ts)  jaccard=0.4649  score=1  fileCov=0.4649
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dtc]
 _Ht = {
@@ -15,7 +15,7 @@ _Ht = {
   reclaim_older_than_ms: 5000,
   session_keepalive_interval_v2_ms: 120000,
 };
-function U1e() {
+function getPollIntervalConfig() {
   let e = T7("tengu_bridge_poll_interval_config", _Ht, 300000),
     t = BYf().safeParse(e);
   return t.success ? t.data : _Ht;

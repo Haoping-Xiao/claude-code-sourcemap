@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Oyc
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0545  score=0.128  fileCov=0.0866
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Oyc] deps: ft, loe, Xa, Ed, tC, Ye, ps, uo, sa, Fh, Bs, vi, f_, Ko
 ((Myc = require("path")), (y7e = R(rt(), 1)), (FP = R(se(), 1)));
@@ -323,7 +323,7 @@ function Gyc({ showWorkflows: e = false } = {}) {
     marginTop: 1,
     children: [
       (f.length > 0 || v) &&
-        Au.jsx(tfm, {
+        Au.jsx(Item, {
           isSelected: u === 0,
           isViewed: o === void 0,
           labelWidth: q,
@@ -392,7 +392,7 @@ function Gyc({ showWorkflows: e = false } = {}) {
     ],
   });
 }
-function Wyc() {
+function BackgroundTasksDialog() {
   let e = $Tt.c(12),
     t = Ht(Jpm),
     n = Ht(Xpm),
@@ -542,7 +542,7 @@ function Zpm(e) {
 function efm(e) {
   return e.tasks;
 }
-function tfm(e) {
+function Item(e) {
   let t = $Tt.c(16),
     { isSelected: n, isViewed: r, labelWidth: o, moreAbove: s, onClick: i } = e,
     [a, l] = xZ.useState(false),

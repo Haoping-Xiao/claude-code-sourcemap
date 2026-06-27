@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module acl
 // matched 2.1.88 source: src/utils/processUserInput/processSlashCommand.tsx
 // class=modified  jaccard=0.2787  score=0.5092  fileCov=0.381
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runUserPromptExpansionHook, processSlashCommand, processPromptSlashCommand, looksLikeCommand, isSlashCommandBlockedByEndedByModel, formatSkillLoadingMetadata
 function isSlashCommandBlockedByEndedByModel(e, t) {
   if (!t) return false;
   return !(e && e.type !== "prompt" && Gif.has(e.name));
 }
-async function qif(e, t, n, r, o, s, i = []) {
+async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
   let a = rM(),
     { sanitizedName: l, skillNameHash: c } = Elt({
       rawName: e.name,
@@ -350,7 +350,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       nextInput: B,
       submitNextInput: $,
       engineDeferredSlash: q,
-    } = await zif(p, f, s, o, t, n, a, l, i),
+    } = await getMessagesForSlashCommand(p, f, s, o, t, n, a, l, i),
     { sanitizedName: W, skillNameHash: V } = Elt({
       rawName: p,
       canonicalName: M.name,
@@ -486,7 +486,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
     engineDeferredSlash: q,
   };
 }
-async function zif(e, t, n, r, o, s, i, a, l) {
+async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
   let c = h6e(e, r.options.commands),
     u = cSs(Y8t().has(e) ? e : "custom");
   if (!Ik(c)) {
@@ -755,10 +755,10 @@ async function zif(e, t, n, r, o, s, i, a, l) {
           if ("blocked" in d) return (Le(u, "cmd_hook_blocked"), d.blocked);
           if (c.getEffort?.(t) !== void 0 && !r.options.isNonInteractiveSession) Dj();
           if (c.context === "fork") {
-            let f = await qif(c, t, r, o, n, a ?? RL, d.hookMessages);
+            let f = await executeForkedSlashCommand(c, t, r, o, n, a ?? RL, d.hookMessages);
             return (xe(u), f);
           }
-          let p = await pcl(c, t, r, o, s, l, d.hookMessages);
+          let p = await getMessagesForPromptSlashCommand(c, t, r, o, s, l, d.hookMessages);
           return (xe(u), p);
         } catch (d) {
           if (d instanceof ru)
@@ -828,7 +828,7 @@ function formatSkillLoadingMetadata(e, t = "loading") {
   return [`<${zC}>${e}</${zC}>`, `<${rj}>${e}</${rj}>`, "<skill-format>true</skill-format>"].join(`
 `);
 }
-function lcl(e, t) {
+function formatSlashCommandLoadingMetadata(e, t) {
   return [
     `<${zC}>${e}</${zC}>`,
     `<${rj}>/${e}</${rj}>`,
@@ -836,11 +836,11 @@ function lcl(e, t) {
   ].filter(Boolean).join(`
 `);
 }
-function ccl(e, t) {
-  if (e.userInvocable !== false) return lcl(e.name, t);
+function formatCommandLoadingMetadata(e, t) {
+  if (e.userInvocable !== false) return formatSlashCommandLoadingMetadata(e.name, t);
   if (e.loadedFrom === "skills" || e.loadedFrom === "plugin" || e.loadedFrom === "mcp")
     return formatSkillLoadingMetadata(e.name, e.progressMessage);
-  return lcl(e.name, t);
+  return formatSlashCommandLoadingMetadata(e.name, t);
 }
 async function runUserPromptExpansionHook(e, t, n) {
   let r = [],
@@ -918,11 +918,11 @@ async function processPromptSlashCommand(e, t, n, r, o = []) {
     throw Error(
       `Unexpected ${s.type} command. Expected 'prompt' command. Use /${e} directly in the main conversation.`,
     );
-  return pcl(s, t, r, [], o);
+  return getMessagesForPromptSlashCommand(s, t, r, [], o);
 }
-async function pcl(e, t, n, r = [], o = [], s, i = []) {
+async function getMessagesForPromptSlashCommand(e, t, n, r = [], o = [], s, i = []) {
   if (Gv() && !n.agentId) {
-    let b = ccl(e, t),
+    let b = formatCommandLoadingMetadata(e, t),
       _ = [`Skill "/${e.name}" is available for workers.`];
     if (e.description) _.push(`Description: ${e.description}`);
     if (e.whenToUse) _.push(`When to use: ${e.whenToUse}`);
@@ -974,7 +974,7 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
       method: d,
     });
   n.options.activeSkill = t$e(e);
-  let p = ccl(e, t),
+  let p = formatCommandLoadingMetadata(e, t),
     f = wN(e.allowedTools ?? []),
     m = wN(e.disallowedTools ?? []);
   if (m.length > 0) yKn(n.setToolPermissionContext, m, "union");

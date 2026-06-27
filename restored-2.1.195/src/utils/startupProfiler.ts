@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jin
 // matched 2.1.88 source: src/utils/startupProfiler.ts
 // class=modified  jaccard=0.3121  score=0.4989  fileCov=0.4546
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: profileReport, profileCheckpoint, logStartupPerf, isDetailedProfilingEnabled, getStartupPerfLogPath, getStartupPerfJsonPath, addStartupContext
 function addStartupContext(e) {
@@ -18,7 +18,7 @@ function profileCheckpoint(e, { once: t = false } = {}) {
   if ((oG().mark(e), QIt)) gAr.push(process.memoryUsage());
   return true;
 }
-function Lis() {
+function getReport() {
   if (!QIt) return "Startup profiling not enabled";
   let t = oG().getEntriesByType("mark");
   if (t.length === 0) return "No profiling checkpoints recorded";
@@ -57,7 +57,7 @@ function $is() {
   let e = getStartupPerfLogPath(),
     t = JIt.dirname(e);
   (qt().mkdirSync(t),
-    fwe(e, Lis(), {
+    fwe(e, getReport(), {
       encoding: "utf8",
       flush: true,
     }));
@@ -67,7 +67,7 @@ function $is() {
     JSON.stringify(
       {
         metadata:
-          Fis({
+          PHASE_DEFINITIONS({
             late: false,
           }) ?? {},
         marks: o.map((s) => ({
@@ -86,7 +86,7 @@ function $is() {
     },
   ),
     T("Startup profiling report:"),
-    T(Lis()));
+    T(getReport()));
 }
 function isDetailedProfilingEnabled() {
   return QIt;
@@ -97,7 +97,7 @@ function getStartupPerfLogPath() {
 function getStartupPerfJsonPath() {
   return JIt.join(tr(), "startup-perf", `${Rt()}.json`);
 }
-function Fis({ late: e }) {
+function PHASE_DEFINITIONS({ late: e }) {
   let n = oG().getEntriesByType("mark");
   if (n.length === 0) return null;
   let r = new Map();
@@ -141,7 +141,7 @@ function logStartupPerf(
   },
 ) {
   if (!Ois) return;
-  let t = Fis({
+  let t = PHASE_DEFINITIONS({
     late: e,
   });
   if (t === null) return;

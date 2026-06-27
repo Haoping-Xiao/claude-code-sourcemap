@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MVl
 // matched 2.1.88 source: src/components/LogSelector.tsx
 // class=modified  jaccard=0.1323  score=0.4939  fileCov=0.1531
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MVl] deps: Ye, Vl
 ((DVl = R(lt(), 1)), (aJt = R(rt(), 1)), (x2o = R(se(), 1)));
@@ -34,7 +34,7 @@ function LGf(e, t, n) {
     after: c.replace(/\s+/g, " ").trimEnd() + (i < e.length ? "\u2026" : ""),
   };
 }
-function R2o(e, t, n) {
+function buildLogLabel(e, t, n) {
   let { isGroupHeader: r = false, isChild: o = false, forkCount: s = 0 } = n || {},
     i = r && s > 0 ? vGf : o ? wGf : 0,
     a = r && s > 0 ? ` (+${s} other ${s === 1 ? "session" : "sessions"})` : "",
@@ -49,7 +49,7 @@ function L2o(e, t) {
     i = r && e.projectPath ? ` \xB7 ${e.projectPath}` : "";
   return o + s + i;
 }
-function Bor({
+function LogSelector({
   logs: e,
   maxHeight: t = 1 / 0,
   forceWidth: n,
@@ -252,7 +252,7 @@ function Bor({
               log: Kn,
               indexInFiltered: Nt,
             },
-            label: R2o(Kn, nn),
+            label: buildLogLabel(Kn, nn),
             description: Fn
               ? `${Mo}
   ${Fn}`
@@ -275,7 +275,7 @@ function Bor({
                 log: Mo,
                 indexInFiltered: js,
               },
-              label: R2o(Mo, nn, {
+              label: buildLogLabel(Mo, nn, {
                 isChild: true,
               }),
               description: cr
@@ -294,7 +294,7 @@ function Bor({
             log: Kn,
             indexInFiltered: Nt,
           },
-          label: R2o(Kn, nn, {
+          label: buildLogLabel(Kn, nn, {
             isGroupHeader: true,
             forkCount: xi,
           }),
@@ -977,7 +977,7 @@ function Bor({
     }),
   });
 }
-function DGf(e) {
+function extractSearchableText(e) {
   if (e.type !== "user" && e.type !== "assistant") return "";
   let t = "message" in e ? e.message?.content : void 0;
   if (!t) return "";
@@ -999,7 +999,7 @@ function PGf(e) {
         ? e.messages
         : [...e.messages.slice(0, $Vl), ...e.messages.slice(-$Vl)]
     )
-      .map(DGf)
+      .map(extractSearchableText)
       .filter(Boolean)
       .join(" "),
     o =

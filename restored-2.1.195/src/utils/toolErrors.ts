@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q0o
 // matched 2.1.88 source: src/utils/toolErrors.ts
 // class=modified  jaccard=0.5092  score=0.6934  fileCov=0.6572
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Z0o(e) {
   switch (e) {
@@ -33,11 +33,11 @@ function fzt(e) {
       return e.reason;
   }
 }
-function YAe(e) {
+function formatError(e) {
   if (e instanceof ru) return e.message || Jv;
   if (!(e instanceof Error)) return String(e);
   let n =
-    eRo(e)
+    getErrorParts(e)
       .filter(Boolean)
       .join(
         `
@@ -55,7 +55,7 @@ function YAe(e) {
 
 ${s}`;
 }
-function eRo(e) {
+function getErrorParts(e) {
   if (e instanceof oM) return [`Exit code ${e.code}`, e.interrupted ? Jv : "", e.stderr, e.stdout];
   let t = [e.message];
   if ("stderr" in e && typeof e.stderr === "string") t.push(e.stderr);
@@ -70,7 +70,7 @@ function jyl(e) {
     return r === 0 ? o : `${String(t)}.${o}`;
   }, "");
 }
-function Y6e(e, t) {
+function formatZodValidationError(e, t) {
   let n = t.issues
       .filter((a) => a.code === "invalid_type" && a.message.includes("received undefined"))
       .map((a) => jyl(a.path)),

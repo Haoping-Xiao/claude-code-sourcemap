@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module fvc
 // matched 2.1.88 source: src/tools/MCPTool/classifyForCollapse.ts
 // class=modified  jaccard=0.0062  score=0.0646  fileCov=0.0068
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function mvc(e) {
   return i9(ost, e);
 }
-function mSm(e) {
+function READ_TOOLS(e) {
   let t = e.trim(),
     n = mvc;
   return [
@@ -85,7 +85,7 @@ function gvc() {
       return [
         {
           type: "text",
-          text: mSm(e),
+          text: READ_TOOLS(e),
         },
       ];
     },

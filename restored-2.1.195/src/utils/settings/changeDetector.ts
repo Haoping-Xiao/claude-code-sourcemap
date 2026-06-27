@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hna
 // matched 2.1.88 source: src/utils/settings/changeDetector.ts
 // class=modified  jaccard=0.3848  score=0.6186  fileCov=0.5045
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Q$n(e, t) {
   let n = e.get(t);
@@ -43,7 +43,7 @@ function Sro(e, t) {
     r = J$n(`domain:${t}`);
   return n.includes("*") ? _na(n, r) : n === r;
 }
-function anp(e) {
+function initialize(e) {
   let t = e?.stabilityThreshold ?? Ena,
     n = e?.pollInterval ?? Ana,
     r = e?.mdmPollInterval ?? snp,
@@ -62,7 +62,7 @@ function anp(e) {
     if (vl()) return;
     if (u || d) return;
     ((u = true), v(), (f = Ci(h)));
-    let I = await lnp(),
+    let I = await getWatchTargets(),
       { dirs: k, settingsFiles: D, dropInDir: P } = I;
     if (((m = I.realpathToCanonical), d)) return;
     if (k.length === 0) return;
@@ -128,7 +128,7 @@ function anp(e) {
       return;
     }
     (T(`Detected change to ${k}${I !== k ? ` (via symlink target ${I})` : ""}`),
-      vRe(Sna(D), k).then((O) => {
+      vRe(settingSourceToConfigChangeSource(D), k).then((O) => {
         if (act(O)) {
           T(`ConfigChange hook blocked change to ${k}`);
           return;
@@ -157,7 +157,7 @@ function anp(e) {
   }
   function A(I, k) {
     (p.delete(I),
-      vRe(Sna(k), I).then((D) => {
+      vRe(settingSourceToConfigChangeSource(k), I).then((D) => {
         if (act(D)) {
           T(`ConfigChange hook blocked deletion of ${I}`);
           return;
@@ -214,7 +214,7 @@ function anp(e) {
     notifyChange: x,
   };
 }
-async function lnp() {
+async function getWatchTargets() {
   let e = new Map(),
     t = new Set(),
     n = new Map(),
@@ -280,7 +280,7 @@ async function lnp() {
     realpathToCanonical: n,
   };
 }
-function Sna(e) {
+function settingSourceToConfigChangeSource(e) {
   switch (e) {
     case "userSettings":
       return "user_settings";

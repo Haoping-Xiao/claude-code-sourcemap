@@ -2,20 +2,20 @@
 // restored from claude-code 2.1.195 (deminified) — module Zdr
 // matched 2.1.88 source: src/utils/deepLink/registerProtocol.ts
 // class=modified  jaccard=0.4895  score=0.9024  fileCov=0.5168
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zdr] deps: cDe
 qgm = /^[\w.-]+\/[\w.-]+$/;
-function epr() {
-  return Qse.join(Ore(), "applications", xSc);
+function linuxDesktopPath() {
+  return Qse.join(Ore(), "applications", DESKTOP_FILE_NAME);
 }
-function RSc(e) {
+function linuxExecLine(e) {
   return `Exec="${e}" --handle-uri %u`;
 }
-function LSc(e) {
+function windowsCommandValue(e) {
   return `"${e}" --handle-uri "%1"`;
 }
-async function Kgm(e) {
+async function registerMacos(e) {
   let t = Qse.join(zen, "Contents");
   try {
     await lV.promises.rm(zen, {
@@ -32,9 +32,9 @@ async function Kgm(e) {
 <plist version="1.0">
 <dict>
   <key>CFBundleIdentifier</key>
-  <string>${Szo}</string>
+  <string>${MACOS_BUNDLE_ID}</string>
   <key>CFBundleName</key>
-  <string>${Ezo}</string>
+  <string>${APP_NAME}</string>
   <key>CFBundleExecutable</key>
   <string>claude</string>
   <key>CFBundleVersion</key>
@@ -67,22 +67,22 @@ async function Kgm(e) {
     ),
     T(`Registered ${aV}:// protocol handler at ${zen}`));
 }
-async function Ygm(e) {
-  await lV.promises.mkdir(Qse.dirname(epr()), {
+async function registerLinux(e) {
+  await lV.promises.mkdir(Qse.dirname(linuxDesktopPath()), {
     recursive: true,
   });
   let t = `[Desktop Entry]
-Name=${Ezo}
+Name=${APP_NAME}
 Comment=Handle ${aV}:// deep links for Claude Code
-${RSc(e)}
+${linuxExecLine(e)}
 Type=Application
 NoDisplay=true
 MimeType=x-scheme-handler/${aV};
 `;
-  await lV.promises.writeFile(epr(), t);
+  await lV.promises.writeFile(linuxDesktopPath(), t);
   let n = await Gf("xdg-mime");
   if (n) {
-    let { code: r } = await $n(n, ["default", xSc, `x-scheme-handler/${aV}`], {
+    let { code: r } = await $n(n, ["default", DESKTOP_FILE_NAME, `x-scheme-handler/${aV}`], {
       useCwd: false,
     });
     if (r !== 0)
@@ -90,13 +90,13 @@ MimeType=x-scheme-handler/${aV};
         code: "XDG_MIME_FAILED",
       });
   }
-  T(`Registered ${aV}:// protocol handler at ${epr()}`);
+  T(`Registered ${aV}:// protocol handler at ${linuxDesktopPath()}`);
 }
-async function Xgm(e) {
+async function registerWindows(e) {
   for (let t of [
-    ["add", bzo, "/ve", "/d", `URL:${Ezo}`, "/f"],
+    ["add", bzo, "/ve", "/d", `URL:${APP_NAME}`, "/f"],
     ["add", bzo, "/v", "URL Protocol", "/d", "", "/f"],
-    ["add", kSc, "/ve", "/d", LSc(e), "/f"],
+    ["add", kSc, "/ve", "/d", windowsCommandValue(e), "/f"],
   ]) {
     let { code: n } = await $n("reg", t, {
       useCwd: false,
@@ -112,13 +112,13 @@ async function Jgm(e) {
   let t = e ?? (await DSc());
   switch ("linux") {
     case "darwin":
-      await Kgm(t);
+      await registerMacos(t);
       break;
     case "linux":
-      await Ygm(t);
+      await registerLinux(t);
       break;
     case "win32":
-      await Xgm(t);
+      await registerWindows(t);
       break;
     default:
       throw Error("Unsupported platform: linux");
@@ -138,12 +138,12 @@ async function Qgm(e) {
       case "darwin":
         return (await lV.promises.readlink(_zo)) === e;
       case "linux":
-        return (await lV.promises.readFile(epr(), "utf8")).includes(RSc(e));
+        return (await lV.promises.readFile(linuxDesktopPath(), "utf8")).includes(linuxExecLine(e));
       case "win32": {
         let { stdout: t, code: n } = await $n("reg", ["query", kSc, "/ve"], {
           useCwd: false,
         });
-        return n === 0 && t.includes(LSc(e));
+        return n === 0 && t.includes(windowsCommandValue(e));
       }
       default:
         return false;
@@ -152,7 +152,7 @@ async function Qgm(e) {
     return false;
   }
 }
-async function PSc() {
+async function ensureDeepLinkProtocolRegistered() {
   if (Dr().disableDeepLinkRegistration === "disable") return;
   if (!["darwin", "linux", "win32"].includes("linux")) return;
   let e = await DSc();
@@ -189,10 +189,10 @@ async function PSc() {
 var lV,
   ISc,
   Qse,
-  Szo = "com.anthropic.claude-code-url-handler",
-  Ezo = "Claude Code URL Handler",
-  xSc = "claude-code-url-handler.desktop",
-  Vgm = "Claude Code URL Handler.app",
+  MACOS_BUNDLE_ID = "com.anthropic.claude-code-url-handler",
+  APP_NAME = "Claude Code URL Handler",
+  DESKTOP_FILE_NAME = "claude-code-url-handler.desktop",
+  MACOS_APP_NAME = "Claude Code URL Handler.app",
   zen,
   _zo,
   bzo,

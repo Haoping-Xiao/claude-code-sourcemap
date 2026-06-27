@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _oe
 // matched 2.1.88 source: src/cost-tracker.ts
 // class=modified  jaccard=0.4788  score=0.8048  fileCov=0.5416
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _oe] deps: ft, Un, Vw, je, RE, fn, Ao, vM, Ls, dr
 del = {
@@ -74,7 +74,7 @@ function P9t(e) {
 function yel(e, t = 4) {
   return `$${e > 0.5 ? TZp(e, 100).toFixed(2) : e.toFixed(t)}`;
 }
-function AZp() {
+function formatModelUsage() {
   let e = WC();
   if (Object.keys(e).length === 0)
     return "Usage:                 0 input, 0 output, 0 cache read, 0 cache write";
@@ -147,9 +147,9 @@ function _el() {
   if (l > 0) a.push(`cache hit: ${Math.round((s / l) * 100)}%`);
   return a.length > 0 ? `breakdown \xB7 ${a.join(" \xB7 ")}` : null;
 }
-function hMe() {
+function formatTotalCost() {
   let e = yel(jb()) + (h_r() ? " (costs may be inaccurate due to usage of unknown models)" : ""),
-    t = AZp();
+    t = formatModelUsage();
   return wt.dim(`Total cost:            ${e}
 Total duration (API):  ${Yi(WH())}
 Total duration (wall): ${Yi(Gie())}
@@ -182,7 +182,7 @@ function vZp(e, t, n) {
     r
   );
 }
-function boe(e, t, n, r, o, s, i, a, l) {
+function addToTotalSessionCost(e, t, n, r, o, s, i, a, l) {
   let c = vZp(e, t, n);
   i_r(e, c, n);
   let u = xM(r),
@@ -228,7 +228,7 @@ function boe(e, t, n, r, o, s, i, a, l) {
       cache_creation_input_tokens: f.cache_creation_input_tokens ?? 0,
       cost_usd_micros: Math.round(m * 1000000 /* 1e6 */),
     }),
-      (p += boe(m, f, f.model, r, void 0, s, i, a, l)));
+      (p += addToTotalSessionCost(m, f, f.model, r, void 0, s, i, a, l)));
   }
   return p;
 }

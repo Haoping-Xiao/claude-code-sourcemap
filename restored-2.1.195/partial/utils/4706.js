@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module gz
 // matched 2.1.88 source: src/hooks/notifs/useSettingsErrors.tsx
 // class=partial  jaccard=0.1259  score=0.5184  fileCov=0.1426
-// note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function Hnr() {
+function useSettingsErrors() {
   let e = qNl.c(5),
     t = Ho(),
     [n, r] = Anr.useState(Y$f),

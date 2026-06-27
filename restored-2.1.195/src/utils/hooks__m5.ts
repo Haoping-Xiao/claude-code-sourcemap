@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aKn
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0086  score=0.0381  fileCov=0.011
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Xal(e) {
   let t = WMe.c(56),
@@ -257,7 +257,7 @@ function Xal(e) {
   if (n.subtype === "stop_hook_summary") {
     let p;
     if (t[45] !== r || t[46] !== s || t[47] !== n || t[48] !== o)
-      ((p = Xi.jsx(Gsf, {
+      ((p = Xi.jsx(getPreToolHookBlockingMessage, {
         message: n,
         addMargin: r,
         verbose: o,
@@ -298,7 +298,7 @@ function Xal(e) {
   else d = t[55];
   return d;
 }
-function Gsf(e) {
+function getPreToolHookBlockingMessage(e) {
   let t = WMe.c(51),
     { message: n, addMargin: r, verbose: o, isTranscriptMode: s } = e,
     {

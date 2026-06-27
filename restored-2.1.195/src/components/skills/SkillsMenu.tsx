@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W9l
 // matched 2.1.88 source: src/components/skills/SkillsMenu.tsx
 // class=modified  jaccard=0.1237  score=0.1623  fileCov=0.3423
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module W9l] deps: ft, Bke, wr, uf
 ((XWf = {
@@ -57,7 +57,7 @@ function z9l(e) {
       return wG(e);
   }
 }
-function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
+function SkillsMenu({ onExit: e, commands: t, bytesPerToken: n }) {
   let [r, o] = r2.useState(false),
     s = r2.useMemo(() => {
       let B = t.filter(

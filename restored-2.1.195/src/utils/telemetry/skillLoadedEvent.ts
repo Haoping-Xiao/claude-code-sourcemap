@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xOc
 // matched 2.1.88 source: src/utils/telemetry/skillLoadedEvent.ts
 // class=modified  jaccard=0.1923  score=0.3039  fileCov=0.3435
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xOc] deps: Du, gb, fn, PM, Sbe, o8, $g, vf, dr, aS, II
 COc = require("path");
@@ -18,7 +18,7 @@ function Dxm(e) {
     }),
   );
 }
-async function ROc(e, t, n) {
+async function logSkillsLoaded(e, t, n) {
   let r = await mA(e),
     o = evl(),
     s = new Set(o),

@@ -2,10 +2,10 @@
 // restored from claude-code 2.1.195 (deminified) — module FOo
 // matched 2.1.88 source: src/utils/contextSuggestions.ts
 // class=modified (alt of src/utils/contextSuggestions.ts)  jaccard=0.0201  score=0.0434  fileCov=0.0363
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-function K0f(e) {
+function getLargeToolSuggestion(e) {
   let t = JPl.c(52),
     { onDone: n, context: r } = e,
     o = Ht(Y0f),
@@ -273,7 +273,7 @@ var JPl,
       G("tengu_autocompact_dialog_opened", {
         source: We("dialog"),
       }),
-      IP.jsx(K0f, {
+      IP.jsx(getLargeToolSuggestion, {
         onDone: e,
         context: t,
       })

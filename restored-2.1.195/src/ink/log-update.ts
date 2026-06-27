@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module nWi
 // matched 2.1.88 source: src/ink/log-update.ts
 // class=modified  jaccard=0.4008  score=0.8041  fileCov=0.4442
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nWi]
 ((TGd = []), (vGd = []));
-class cJr {
+class LogUpdate {
   options;
   state;
   constructor(e) {
@@ -81,13 +81,14 @@ class cJr {
       l = Math.max(0, e.screen.height - Math.min(e.viewport.height, t.viewport.height)),
       c = e.screen.height >= e.viewport.height ? 1 : 0,
       u = l + c;
-    if (this.forceReset) return ((this.forceReset = false), jBt(t, "clear", s, n, u));
+    if (this.forceReset)
+      return ((this.forceReset = false), fullResetSequence_CAUSES_FLICKER(t, "clear", s, n, u));
     if (
       t.viewport.height < e.viewport.height ||
       (t.viewport.height > e.viewport.height && a) ||
       (e.viewport.width !== 0 && t.viewport.width !== e.viewport.width)
     )
-      return jBt(t, "resize", s, n, u);
+      return fullResetSequence_CAUSES_FLICKER(t, "resize", s, n, u);
     let d = [];
     if (n && t.scrollHint && r) {
       let { top: O, bottom: L, delta: M } = t.scrollHint;
@@ -107,7 +108,7 @@ class cJr {
         T(
           `Full reset (shrink->below): prevHeight=${e.screen.height}, nextHeight=${t.screen.height}, viewport=${e.viewport.height}`,
         ),
-        jBt(t, "offscreen", s, n, u)
+        fullResetSequence_CAUSES_FLICKER(t, "offscreen", s, n, u)
       );
     let m = new uJr(e.cursor, t.viewport.width),
       g = Math.max(t.screen.height, 1) - Math.max(e.screen.height, 1),
@@ -115,7 +116,8 @@ class cJr {
       y = g > 0;
     if (h) {
       let O = e.screen.height - t.screen.height;
-      if (O > e.viewport.height) return jBt(t, "offscreen", this.options.stylePool, n, u);
+      if (O > e.viewport.height)
+        return fullResetSequence_CAUSES_FLICKER(t, "offscreen", this.options.stylePool, n, u);
       m.txn((L) => [
         [
           {
@@ -196,7 +198,7 @@ class cJr {
           let B = N.hyperlink;
           A = d0e(m.diff, A, B);
           let $ = s.transition(S, N.styleId);
-          if (sWi(m, N, $)) S = N.styleId;
+          if (writeCellWithStyleStr(m, N, $)) S = N.styleId;
         } else if (M) {
           let B = S,
             $ = A;
@@ -224,7 +226,7 @@ class cJr {
       }),
       k)
     )
-      return jBt(t, "offscreen", s, n, u, {
+      return fullResetSequence_CAUSES_FLICKER(t, "offscreen", s, n, u, {
         triggerY: D,
         prevLine: rWi(e.screen, D),
         nextLine: rWi(t.screen, D),
@@ -310,7 +312,7 @@ function rWi(e, t) {
   for (let r = 0; r < e.width; r++) n += Z3i(e, r, t) ?? " ";
   return n.trimEnd();
 }
-function jBt(e, t, n, r, o, s) {
+function fullResetSequence_CAUSES_FLICKER(e, t, n, r, o, s) {
   let i = r ? 0 : Math.min(o, Math.max(0, e.screen.height - e.viewport.height + 1)),
     a = new uJr(
       {
@@ -363,7 +365,7 @@ function oWi(e, t, n, r, o) {
       let h = g.hyperlink;
       i = d0e(e.diff, i, h);
       let y = o.transition(s, g.styleId);
-      if (sWi(e, g, y)) ((s = g.styleId), (a = g.styleId));
+      if (writeCellWithStyleStr(e, g, y)) ((s = g.styleId), (a = g.styleId));
     }
     ((s = GBt(e.diff, o, s, o.none)),
       (i = d0e(e.diff, i, void 0)),
@@ -377,7 +379,7 @@ function oWi(e, t, n, r, o) {
   }
   return (GBt(e.diff, o, s, o.none), d0e(e.diff, i, void 0), e);
 }
-function sWi(e, t, n) {
+function writeCellWithStyleStr(e, t, n) {
   let r = t.width === 1 ? Math.max(2, rn(t.char)) : 1,
     o = e.cursor.x,
     s = e.viewportWidth;

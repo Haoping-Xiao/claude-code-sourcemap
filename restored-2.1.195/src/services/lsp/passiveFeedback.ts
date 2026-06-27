@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NDa
 // matched 2.1.88 source: src/services/lsp/passiveFeedback.ts
 // class=modified  jaccard=0.4031  score=0.5942  fileCov=0.5562
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NDa] deps: je, At, dn, dLa, $Da, ypt
 ((rEe = R(require("path"))), (xpt = require("url")));
@@ -20,7 +20,7 @@ function Pkp(e) {
       return "Error";
   }
 }
-function Mkp(e) {
+function formatDiagnosticsForAttachment(e) {
   let t;
   try {
     t = e.uri.startsWith("file://") ? BDa.fileURLToPath(e.uri) : e.uri;
@@ -57,7 +57,7 @@ function Mkp(e) {
     },
   ];
 }
-function UDa(e) {
+function registerLSPNotificationHandlers(e) {
   let t = e.getAllServers(),
     n = [],
     r = 0,
@@ -108,7 +108,7 @@ function UDa(e) {
               return;
             }
           }
-          let d = Mkp(u),
+          let d = formatDiagnosticsForAttachment(u),
             p = d[0];
           if (!p || d.length === 0 || p.diagnostics.length === 0) {
             T(`Skipping empty diagnostics from ${a} for ${u.uri}`);

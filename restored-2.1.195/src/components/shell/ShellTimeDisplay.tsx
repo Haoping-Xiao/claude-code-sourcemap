@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module lEe
 // matched 2.1.88 source: src/components/shell/ShellTimeDisplay.tsx
 // class=modified  jaccard=0.1958  score=0.3311  fileCov=0.3241
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lEe] deps: eUt, Ye, d4t
 ((ijn = R(rt(), 1)), (_Ma = R(se(), 1)));
-function Vqe(e) {
+function ShellTimeDisplay(e) {
   let t = bMa.c(10),
     { elapsedTimeSeconds: n, timeoutMs: r } = e;
   if (n === void 0 && !r) return null;

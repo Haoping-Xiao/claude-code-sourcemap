@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JZl
 // matched 2.1.88 source: src/commands/branch/branch.ts
 // class=modified (alt of src/commands/branch/branch.ts)  jaccard=0.1286  score=0.2994  fileCov=0.184
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JZl] deps: At, BFe, cDe, jS, Jt
 ((N3o = require("fs")), (hme = require("fs/promises")), (vYe = require("path")));
@@ -112,7 +112,7 @@ async function ZZl(e, t = {}) {
 }
 function OKf(e, t, n) {
   let r = MKf(e, t);
-  return tec(r, t, n, () => {
+  return createFork(r, t, n, () => {
     let s = e.length,
       i = e.toString("utf-8", 0, Math.min(s, Mw)),
       a = e.toString("utf-8", Math.max(0, s - Mw));
@@ -123,7 +123,7 @@ function OKf(e, t, n) {
 }
 function eec(e, t, n) {
   let r = $Kf(e, t);
-  return tec(r, t, n, () => NKf(e));
+  return createFork(r, t, n, () => NKf(e));
 }
 function NKf(e) {
   let t, n;
@@ -135,7 +135,7 @@ function NKf(e) {
   }
   return t || n || QEs(e) || void 0;
 }
-function tec(e, t, n, r) {
+function createFork(e, t, n, r) {
   let o = e.transcript.filter((p) => !p.isSidechain);
   if (o.length === 0) throw Error(`Session ${t} has no messages to fork`);
   if (n.upToMessageId) {

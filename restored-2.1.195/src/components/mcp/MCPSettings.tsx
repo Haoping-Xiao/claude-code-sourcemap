@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Xnr
 // matched 2.1.88 source: src/components/mcp/MCPSettings.tsx
 // class=modified  jaccard=0.394  score=0.8141  fileCov=0.433
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xnr] deps: Ox, g$, uo, sr, Cc, mE, Bs, vi, B_, Ko
 ((i2l = R(lt(), 1)), (PHe = R(se(), 1)));
-function Jnr(e) {
+function MCPSettings(e) {
   let t = a2l.c(76),
     { onComplete: n } = e,
     r = Ht(rNf),

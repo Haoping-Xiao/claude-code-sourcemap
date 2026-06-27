@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vzl
 // matched 2.1.88 source: src/components/Passes/Passes.tsx
 // class=modified  jaccard=0.2648  score=0.3965  fileCov=0.4435
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vzl] deps: NE, Isr
 ((Zqf = {
@@ -35,7 +35,7 @@
     load: () => Promise.resolve().then(() => (Wzl(), Gzl)),
   }),
   (qjo = Zqf));
-function Kzl({ onDone: e }) {
+function Passes({ onDone: e }) {
   let [t, n] = lme.useState(true),
     [r, o] = lme.useState([]),
     [s, i] = lme.useState(false),

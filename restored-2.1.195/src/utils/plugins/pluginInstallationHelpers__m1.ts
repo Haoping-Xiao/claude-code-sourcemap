@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YPn
 // matched 2.1.88 source: src/utils/plugins/pluginInstallationHelpers.ts
 // class=modified (alt of src/utils/plugins/pluginInstallationHelpers.ts)  jaccard=0.0602  score=0.1422  fileCov=0.0946
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function jKi(e) {
   if (e === null || typeof e !== "object") return;
@@ -140,7 +140,7 @@ function GKi(e, t) {
   }
   return n;
 }
-async function WKi(e, t, n, r = new Set(), o) {
+async function formatResolutionError(e, t, n, r = new Set(), o) {
   let s = Qo(e).marketplace,
     i = [],
     a = new Set(),

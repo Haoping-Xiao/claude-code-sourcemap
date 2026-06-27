@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Mil
 // matched 2.1.88 source: src/components/messages/UserMemoryInputMessage.tsx
 // class=modified  jaccard=0.3882  score=0.5741  fileCov=0.5451
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mil] deps: Xa, Ye, co, AN
 ((Vzn = R(lt(), 1)), (vN = R(se(), 1)));
-function Kof() {
+function getSavingMessage() {
   return HL(["Got it.", "Good to know.", "Noted."]);
 }
-function Oil(e) {
+function UserMemoryInputMessage(e) {
   let t = $il.c(10),
     { text: n, addMargin: r } = e,
     o;
@@ -17,7 +17,7 @@ function Oil(e) {
   else o = t[1];
   let s = o,
     i;
-  if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((i = Kof()), (t[2] = i));
+  if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((i = getSavingMessage()), (t[2] = i));
   else i = t[2];
   let a = i;
   if (!s) return null;

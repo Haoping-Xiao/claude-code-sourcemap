@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module MEl
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0097  score=0.7227  fileCov=0.0097
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function jzt(e) {
+function buildMessageLookups(e) {
   if (e.type !== "user") return false;
   let t = e.message?.content;
   if (typeof t === "string") return $El.some((n) => t.startsWith(n));
@@ -22,8 +22,8 @@ function jzt(e) {
     })
   );
 }
-var _N = "[Request interrupted by user]",
-  Jv = "[Request interrupted by user for tool use]",
-  uQ =
+var INTERRUPT_MESSAGE = "[Request interrupted by user]",
+  INTERRUPT_MESSAGE_FOR_TOOL_USE = "[Request interrupted by user for tool use]",
+  CANCEL_MESSAGE =
     "The user doesn't want to take this action right now. STOP what you are doing and wait for the user to tell you how to proceed.",
   $El;

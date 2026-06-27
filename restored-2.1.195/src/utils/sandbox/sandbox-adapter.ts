@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Nna
 // matched 2.1.88 source: src/utils/sandbox/sandbox-adapter.ts
 // class=modified  jaccard=0.1557  score=0.2708  fileCov=0.2681
-// note: deminified; 14 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldForceSandboxOn, shouldAllowManagedSandboxDomainsOnly, resolveSandboxFilesystemPath, resolvePathPatternForSandbox, isHostAllowedBySandboxNetworkPolicy, getTenguSandboxGbConfig, getEffectiveFilesystemPolicy, detectWorktreeGitCommonDir, convertToSandboxRuntimeConfig, addToExcludedCommands, addSandboxAllowWriteDirectory, SandboxViolationStore, SandboxManager, SandboxInitFailedError, SandboxBridgeUnavailableError, HOST_CEL_POLICIES
 // [unwrapped __esm module Nna]
@@ -374,7 +374,7 @@ function convertToSandboxRuntimeConfig(e) {
       argv0: O,
     },
     N =
-      bI() && fce() && !$We()
+      bI() && fce() && !getSandboxEnabledSetting()
         ? {
             allowedDomains: void 0,
             deniedDomains: [],
@@ -419,7 +419,7 @@ function addSandboxAllowWriteDirectory(e, t) {
   if (iOn.get(t) === e) return;
   (iOn.set(t, e), xro());
 }
-function _np() {
+function scrubBareGitRepoFiles() {
   for (let e of cct) {
     let t = e.slice(e.lastIndexOf(za.sep) + 1);
     try {
@@ -488,7 +488,7 @@ function shouldForceSandboxOn() {
   if (!getTenguSandboxGbConfig().disableNoSandbox) return false;
   return !bI() && !ut(process.env.IS_SANDBOX) && !h1.getIsBubblewrapSandbox();
 }
-function $We() {
+function getSandboxEnabledSetting() {
   try {
     if (shouldForceSandboxOn()) return true;
     return jo()?.sandbox?.enabled ?? false;
@@ -509,7 +509,7 @@ function Anp() {
 }
 function Fna() {
   let e = jo();
-  return $We() && cOn() && (e?.sandbox?.failIfUnavailable ?? false);
+  return getSandboxEnabledSetting() && cOn() && (e?.sandbox?.failIfUnavailable ?? false);
 }
 function cOn() {
   try {
@@ -523,15 +523,15 @@ function cOn() {
   }
 }
 function uOn() {
-  if (bI() && true && !$We()) return fce();
+  if (bI() && true && !getSandboxEnabledSetting()) return fce();
   if (Cro) return false;
   if (!lOn()) return false;
   if (h2t().errors.length > 0) return false;
   if (!cOn()) return false;
-  return $We();
+  return getSandboxEnabledSetting();
 }
-function Hnp() {
-  if (!$We()) return;
+function getSandboxUnavailableReason() {
+  if (!getSandboxEnabledSetting()) return;
   if (!cOn()) return;
   if (!lOn()) {
     let t = Vt();
@@ -551,11 +551,11 @@ function Hnp() {
   }
   return;
 }
-function Tnp() {
+function getLinuxGlobPatternWarnings() {
   let e = Vt();
   if (e !== "linux" && e !== "wsl") return [];
   try {
-    if (!$We()) return [];
+    if (!getSandboxEnabledSetting()) return [];
     let n = jo()?.permissions || {},
       r = [],
       o = (s) => {
@@ -607,7 +607,7 @@ function Cnp() {
 }
 async function Inp(e, t, n, r) {
   if (uOn()) {
-    if (!Hue) (It("sandbox_exec", "sandbox_exec_lazy_init"), await jna());
+    if (!Hue) (It("sandbox_exec", "sandbox_exec_lazy_init"), await initialize());
     if (Hue) await Hue;
     if (!Hue) {
       Le("sandbox_exec", "sandbox_exec_not_initialized");
@@ -638,7 +638,7 @@ async function Inp(e, t, n, r) {
     throw o;
   }
 }
-async function jna(e) {
+async function initialize(e) {
   if (Hue) return Hue;
   if (!uOn()) return;
   let t = e

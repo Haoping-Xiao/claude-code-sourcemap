@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zf
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified  jaccard=0.2224  score=0.3996  fileCov=0.3341
-// note: deminified; 132 identifiers renamed (exports/displayName/curated)
+// note: deminified; 149 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeRemoteAgentMetadata, writeAgentMetadata, worktreeStateSignal, updateCCRTipFromAckedBatch, transcriptCursorEnd, trackSessionWrite, touchSessionTranscript, subscribeSessionTitleChanged, subscribeSessionAgentNameChanged, snapshotSessionMetadata, setSessionFileForTesting, setRemoteIngressUrlForTesting, setInternalEventWriter, setInternalEventReader, sessionIdExists, searchSessionsByCustomTitle, saveWorktreeState, savePermissionMode, saveMode, saveIsolationLatch, saveCustomTitle …
 // [unwrapped __esm module Zf] deps: fn, PLl, WLl, VLl, uDl, dDl, LDl, UDl, rPl, cPl, HPl, UOo, VPl, YPl, nMl, s1l, f1l, v1l, sNl, lBl, xBl, LBl, VBl, rUl, sUl, aUl, gUl, AUl, TUl, wUl, vFl, kFl, RFl, u4l, _Gl, SGl, $Gl, KGl, oWl, VVl, JVl, n9l, X2o, k9l, L9l, P9l, W9l, e8l, s8l, s6l, E6l, T6l, w6l, I6l, sYe, N6l, z6l, ozl, lH, Ire, Dzl, Ozl, Vzl, Zzl, oKl, DKl, jKl, WKl, KKl, H7l, k7l, N7l, F7l, W7l, J7l, Z7l, tXl, rXl, oXl, iXl, lXl, uXl, vXl, DXl, $Xl, BXl, VXl, KXl, vn, At, LMe, je, II, dn, rq, a8t, X4, AA, glt, vYt, Qi, ft, oo, Ls, JXl, rir, EJl, xJl, KJl, iQl, o3o, qyt, hQl, TQl, wQl, UQl, VQl, KQl, XQl, QQl, eZl, vf, dr
@@ -353,7 +353,7 @@ function transcriptCursorEnd(e, t, n) {
   }
   return e.length;
 }
-function HZf(e) {
+function isLegacyProgressEntry(e) {
   return (
     typeof e === "object" &&
     e !== null &&
@@ -452,22 +452,22 @@ async function readAgentMetadata(e) {
     throw n;
   }
 }
-function gsc() {
+function getRemoteAgentsDir() {
   let e = M2() ?? Jh(yr());
   return vh.join(e, Rt(), "remote-agents");
 }
-function t5o(e) {
-  return vh.join(gsc(), `remote-agent-${e}.meta.json`);
+function getRemoteAgentMetadataPath(e) {
+  return vh.join(getRemoteAgentsDir(), `remote-agent-${e}.meta.json`);
 }
 async function writeRemoteAgentMetadata(e, t) {
-  let n = t5o(e);
+  let n = getRemoteAgentMetadataPath(e);
   (await Hl.mkdir(vh.dirname(n), {
     recursive: !0,
   }),
     await Hl.writeFile(n, De(t)));
 }
 async function readRemoteAgentMetadata(e) {
-  let t = t5o(e);
+  let t = getRemoteAgentMetadataPath(e);
   try {
     let n = await Hl.readFile(t, "utf-8");
     return Ft(n);
@@ -477,7 +477,7 @@ async function readRemoteAgentMetadata(e) {
   }
 }
 async function deleteRemoteAgentMetadata(e) {
-  let t = t5o(e);
+  let t = getRemoteAgentMetadataPath(e);
   try {
     await Hl.unlink(t);
   } catch (n) {
@@ -486,7 +486,7 @@ async function deleteRemoteAgentMetadata(e) {
   }
 }
 async function listRemoteAgentMetadata() {
-  let e = gsc(),
+  let e = getRemoteAgentsDir(),
     t;
   try {
     t = await Hl.readdir(e, {
@@ -626,7 +626,7 @@ async function bsc(e) {
 }
 function Kc() {
   if (!X1e) {
-    if (((X1e = new Ssc()), !esc))
+    if (((X1e = new Project()), !esc))
       (Ci(async () => {
         await X1e?.flush();
         try {
@@ -670,7 +670,7 @@ function setInternalEventReader(e, t) {
 function setRemoteIngressUrlForTesting(e) {
   Kc().setRemoteIngressUrl(e);
 }
-class Ssc {
+class Project {
   currentSessionTag;
   currentSessionTitle;
   currentSessionAiTitle;
@@ -2045,7 +2045,7 @@ function removeExtraFields(e) {
     return o;
   });
 }
-function osc(e) {
+function applyPreservedSegmentRelinks(e) {
   let t,
     n = -1,
     r = -1,
@@ -2202,7 +2202,7 @@ function buildConversationChain(e, t, n) {
     s = l;
   }
   r.reverse();
-  let i = BZf(e, r, o);
+  let i = recoverOrphanedParallelToolResults(e, r, o);
   return ($Zf(t, i, o, n ?? xsc(e)), i);
 }
 function xsc(e) {
@@ -2244,7 +2244,7 @@ function NZf(e, t, n) {
   }
   return o;
 }
-function BZf(e, t, n) {
+function recoverOrphanedParallelToolResults(e, t, n) {
   let r = t.filter((d) => d.type === "assistant");
   if (r.length === 0) return t;
   let o = new Map();
@@ -2462,7 +2462,7 @@ async function loadTranscriptFromFile(e) {
     throw new TranscriptFileFormatError("No messages found in JSON file", "no_messages");
   return XWo(o, 0, void 0, void 0, void 0, void 0, e);
 }
-function UZf(e) {
+function hasVisibleUserContent(e) {
   if (e.type !== "user") return !1;
   if (e.isMeta) return !1;
   let t = e.message?.content;
@@ -2472,21 +2472,21 @@ function UZf(e) {
     return t.some((n) => n.type === "text" || n.type === "image" || n.type === "document");
   return !1;
 }
-function FZf(e) {
+function hasVisibleAssistantContent(e) {
   if (e.type !== "assistant") return !1;
   let t = e.message?.content;
   if (!t || !Array.isArray(t)) return !1;
   return t.some((n) => n.type === "text" && typeof n.text === "string" && n.text.trim().length > 0);
 }
-function p5o(e) {
+function countVisibleMessages(e) {
   let t = 0;
   for (let n of e)
     switch (n.type) {
       case "user":
-        if (UZf(n)) t++;
+        if (hasVisibleUserContent(n)) t++;
         break;
       case "assistant":
-        if (FZf(n)) t++;
+        if (hasVisibleAssistantContent(n)) t++;
         break;
       case "attachment":
       case "system":
@@ -2509,7 +2509,7 @@ function XWo(e, t = 0, n, r, o, s, i, a, l, c) {
     created: f,
     modified: m,
     firstPrompt: p,
-    messageCount: p5o(e),
+    messageCount: countVisibleMessages(e),
     isSidechain: d.isSidechain,
     teamName: d.teamName,
     sessionKind: d.sessionKind,
@@ -2526,7 +2526,7 @@ function XWo(e, t = 0, n, r, o, s, i, a, l, c) {
     projectPath: d.cwd,
   };
 }
-async function jZf(e) {
+async function trackSessionBranchingAnalytics(e) {
   let t = new Map(),
     n = 0;
   for (let i of e) {
@@ -2561,7 +2561,7 @@ async function fetchLogs(e) {
     }));
     if (((s = zQt(s.concat(i))), e !== void 0)) s = s.slice(0, e);
   }
-  return (await jZf(s), s);
+  return (await trackSessionBranchingAnalytics(s), s);
 }
 function ETe(e, t) {
   if (isTranscriptPersistenceDisabled()) return;
@@ -3012,7 +3012,7 @@ async function loadFullLog(e) {
       rewindAnchorUuid: n.rewindAnchorUuid,
       messages: removeExtraFields(L),
       firstPrompt: c5o(L),
-      messageCount: p5o(L),
+      messageCount: countVisibleMessages(L),
       summary: O ? o.get(O.uuid) : e.summary,
       customTitle: M ? s.get(M) : e.customTitle,
       ...ZEe({}, M ? i.has(M) : iMe(e)),
@@ -3049,7 +3049,7 @@ async function loadFullLog(e) {
 async function searchSessionsByCustomTitle(e, t) {
   let { limit: n, exact: r } = t || {},
     o = await tAe(yr()),
-    s = await Dsc(o),
+    s = await getStatOnlyLogsForWorktrees(o),
     { logs: i } = await enrichLogs(s, 0, s.length),
     a = e.toLowerCase().trim(),
     l = i.filter((d) => {
@@ -3114,7 +3114,7 @@ function Rsc(e, t, n) {
   }
   return n.at(-1);
 }
-function JZf(e) {
+function walkChainBeforeParse(e) {
   let o = Buffer.from('{"parentUuid":'),
     s = Buffer.from('"uuid":"'),
     i = Buffer.from('"isSidechain":true'),
@@ -3440,7 +3440,7 @@ async function loadTranscriptFile(e, t) {
     N = !1,
     B = new Map(),
     $ = (V) => {
-      if (HZf(V)) {
+      if (isLegacyProgressEntry(V)) {
         let Y = V.parentUuid;
         B.set(V.uuid, Y && B.has(Y) ? (B.get(Y) ?? null) : Y);
         return;
@@ -3514,16 +3514,16 @@ async function loadTranscriptFile(e, t) {
           ),
           K = ZZf(e, z.lastAttributionOffset, z.lastAttributionLength);
         if (K) v.set(K.messageId, K);
-        return q(osc(n));
+        return q(applyPreservedSegmentRelinks(n));
       }
     }
     let V = await Hl.readFile(e);
-    if (!t?.keepAllLeaves && V.length > oCe) V = JZf(V);
+    if (!t?.keepAllLeaves && V.length > oCe) V = walkChainBeforeParse(V);
     for (let Y of fCe(V)) $(Y);
   } catch (V) {
     if (!Vo(V)) throw (ke(V), V);
   }
-  return q(osc(n));
+  return q(applyPreservedSegmentRelinks(n));
   function q(V) {
     if (!t?.keepAllLeaves && M) return W(new Set());
     let Y = new Set(),
@@ -3770,7 +3770,7 @@ async function tem(e) {
     return [];
   }
   let r = n.filter((l) => l.isDirectory()).map((l) => vh.join(t, l.name)),
-    s = (await Promise.all(r.map((l) => sem(l, e)))).flat(),
+    s = (await Promise.all(r.map((l) => getLogsWithoutIndex(l, e)))).flat(),
     i = new Map();
   for (let l of s) {
     let c = `${l.sessionId ?? ""}:${l.leafUuid ?? ""}`,
@@ -3819,7 +3819,7 @@ async function loadSameRepoMessageLogs(e, t, n = Elr) {
 }
 async function loadSameRepoMessageLogsProgressive(e, t, n = Elr) {
   T(`/resume: loading sessions for cwd=${yr()}, worktrees=[${e.join(", ")}]`);
-  let r = await Dsc(e, t);
+  let r = await getStatOnlyLogsForWorktrees(e, t);
   T(`/resume: found ${r.length} session files on disk`);
   let { logs: o, nextIndex: s } = await enrichLogs(r, 0, n);
   return (
@@ -3833,7 +3833,7 @@ async function loadSameRepoMessageLogsProgressive(e, t, n = Elr) {
     }
   );
 }
-async function Dsc(e, t) {
+async function getStatOnlyLogsForWorktrees(e, t) {
   let n = oF(),
     r = yr(),
     o = (S) => S.replaceAll("\\", "/"),
@@ -3949,7 +3949,7 @@ async function QWo(e, t, n, r = !1) {
         if (!m) return null;
         let g = Buffer.allocUnsafe(Mw);
         try {
-          let h = await Psc(m.path, m.size, g);
+          let h = await readLiteMetadata(m.path, m.size, g);
           if (
             h.projectPath &&
             (() => {
@@ -4082,7 +4082,7 @@ function collectReplIds(e, t = new Set()) {
     }
   return t;
 }
-function rem(e, t) {
+function transformMessagesForExternalTranscript(e, t) {
   return e.flatMap((n) => {
     if (n.type === "assistant" && Array.isArray(n.message.content)) {
       let r = n.message.content,
@@ -4155,7 +4155,7 @@ function cleanMessagesForLogging(e, t = e) {
   let n = e.filter(isLoggableMessage);
   if (getUserType() === "ant") return n;
   let r = t instanceof Set ? t : collectReplIds(t);
-  return rem(n, r);
+  return transformMessagesForExternalTranscript(n, r);
 }
 async function getLogByIndex(e) {
   return (await loadMessageLogs())[e] || null;
@@ -4308,7 +4308,7 @@ async function loadAllLogsFromSessionFile(e, t) {
       created: new Date(k.timestamp),
       modified: new Date(x.timestamp),
       firstPrompt: c5o(I),
-      messageCount: p5o(I),
+      messageCount: countVisibleMessages(I),
       isSidechain: k.isSidechain ?? !1,
       sessionId: D,
       leafUuid: x.uuid,
@@ -4335,7 +4335,7 @@ async function loadAllLogsFromSessionFile(e, t) {
   }
   return C;
 }
-async function sem(e, t) {
+async function getLogsWithoutIndex(e, t) {
   let n = await getSessionFilesWithMtime(e);
   if (n.size === 0) return [];
   let r;
@@ -4351,7 +4351,7 @@ async function sem(e, t) {
     }
   return o;
 }
-async function Psc(e, t, n) {
+async function readLiteMetadata(e, t, n) {
   let { head: r, tail: o } = await ZEs(e, t, n);
   if (!r)
     return {
@@ -4373,7 +4373,12 @@ async function Psc(e, t, n) {
     d = EG(r, "agentSetting"),
     p = EG(r, "entrypoint") ?? Kb(o, "entrypoint"),
     f = r.includes("<command-name>/loop</command-name>"),
-    m = Kb(o, "lastPrompt") || iem(r) || ssc(r, "content", 200) || ssc(r, "text", 200) || "",
+    m =
+      Kb(o, "lastPrompt") ||
+      extractFirstPromptFromChunk(r) ||
+      ssc(r, "content", 200) ||
+      ssc(r, "text", 200) ||
+      "",
     g = Kb(o, "customTitle") ?? Kb(r, "customTitle"),
     h = Kb(o, "aiTitle") ?? Kb(r, "aiTitle"),
     y = aem(o, "summary", "summary"),
@@ -4411,7 +4416,7 @@ async function Psc(e, t, n) {
     prRepository: A,
   };
 }
-function iem(e) {
+function extractFirstPromptFromChunk(e) {
   let t = 0,
     n = !1,
     r = "";
@@ -4559,9 +4564,9 @@ async function getSessionFilesLite(e, t, n) {
     i
   );
 }
-async function lem(e, t) {
+async function enrichLog(e, t) {
   if (!e.isLite || !e.fullPath) return e;
-  let n = await Psc(e.fullPath, e.fileSize ?? 0, t),
+  let n = await readLiteMetadata(e.fullPath, e.fileSize ?? 0, t),
     r = (l) => l,
     s =
       (n.projectPath !== void 0 && r(vh.dirname(e.fullPath)) === r(Jh(n.projectPath))) ||
@@ -4607,7 +4612,7 @@ async function enrichLogs(e, t, n) {
   while (s < e.length && r.length < n) {
     let l = e[s];
     s++;
-    let c = await lem(l, o);
+    let c = await enrichLog(l, o);
     if (c) r.push(c);
   }
   let i = s - t,

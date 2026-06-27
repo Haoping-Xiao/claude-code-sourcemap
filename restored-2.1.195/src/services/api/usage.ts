@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d5e
 // matched 2.1.88 source: src/services/api/usage.ts
 // class=modified  jaccard=0.1916  score=0.2921  fileCov=0.3577
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function x1n(e) {
   if (e?.is_enabled === true) return true;
@@ -30,7 +30,7 @@ function nut(e, t) {
       },
     }));
 }
-async function Wue() {
+async function fetchUtilization() {
   return yl("api_usage_fetch", async () => {
     if (!bo() || !cI()) return {};
     let e = 0,

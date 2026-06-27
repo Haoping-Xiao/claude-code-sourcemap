@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VBl
 // matched 2.1.88 source: src/components/IdeAutoConnectDialog.tsx
 // class=modified  jaccard=0.2293  score=0.3349  fileCov=0.421
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VBl]
 ((WOf = {
@@ -15,7 +15,7 @@
   load: () => Promise.resolve().then(() => (qBl(), GBl)),
 }),
   (oBo = WOf));
-function zBl(e) {
+function IdeAutoConnectDialog(e) {
   let t = sBo.c(9),
     { onComplete: n } = e,
     r;
@@ -84,7 +84,7 @@ function KBl() {
   let e = Dt();
   return !uF() && e.autoConnectIde !== true && e.hasIdeAutoConnectDialogBeenShown !== true;
 }
-function YBl(e) {
+function IdeDisableAutoConnectDialog(e) {
   let t = sBo.c(10),
     { onComplete: n } = e,
     r;

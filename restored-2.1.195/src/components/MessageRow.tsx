@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module S5l
 // matched 2.1.88 source: src/components/MessageRow.tsx
 // class=modified  jaccard=0.3807  score=0.6476  fileCov=0.4801
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S5l] deps: Tc, Ye
 ((_5l = R(lt(), 1)), (KFo = R(se(), 1)));
-function H5l(e, t, n, r) {
+function hasContentAfterIndex(e, t, n, r) {
   for (let o = t + 1; o < e.length; o++) {
     let s = e[o];
     if (s?.type === "assistant") {
@@ -30,7 +30,7 @@ function H5l(e, t, n, r) {
   }
   return false;
 }
-function o4f(e) {
+function MessageRowImpl(e) {
   let t = E5l.c(73),
     {
       message: n,
@@ -285,7 +285,7 @@ function i4f(e, t) {
   let n = jHe(e);
   return !!n && t.has(n);
 }
-function a4f(e, t) {
+function allToolsResolved(e, t) {
   if (e.type === "grouped_tool_use")
     return e.messages.every((r) => {
       let o = r.message.content[0];
@@ -310,7 +310,7 @@ function l4f(e, t) {
     r = t.latestBashOutputUUID === t.message.uuid;
   if (n !== r) return false;
   let o = i4f(e.message, e.streamingToolUseIDs),
-    s = a4f(e.message, e.lookups.resolvedToolUseIDs);
+    s = allToolsResolved(e.message, e.lookups.resolvedToolUseIDs);
   if (o || !s) return false;
   return true;
 }

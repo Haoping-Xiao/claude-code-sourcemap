@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module Ngc
 // matched 2.1.88 source: src/components/MessageSelector.tsx
 // class=modified  jaccard=0.3721  score=0.5486  fileCov=0.5363
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: selectableUserMessagesFilter, replayableUserMessagesFilter, messagesAfterAreOnlySynthetic, MessageSelector
 // [unwrapped __esm module Ngc] deps: ft, ft, SC, QXn, loe, Rur, sVe, xur, GF, Zf, Ed, Ye, ag, rSe, id, Un, kt, Cre, cqe, a5, Yfe, Hur, uo, gq, pMe, IL, fd, Ld, er, Lo, je, BR, At, NE, sF, vn, bm, YZt, co, Ao, vM, DE, __, tA, y_, _a, q8t, xNt, HN
 ((bE = R(rt(), 1)), (Dme = R(se(), 1)));
 $gc = Promise.resolve();
-function q8o(e) {
+function isSummarizeOption(e) {
   return e === "summarize" || e === "summarize_up_to";
 }
 function MessageSelector({
@@ -182,7 +182,7 @@ ${le}`));
       else P(void 0);
       return;
     }
-    if (q8o(ie)) {
+    if (isSummarizeOption(ie)) {
       (t(), N(true), $(ie), d(void 0));
       try {
         let ye = ie === "summarize_up_to" ? "up_to" : "from",
@@ -333,7 +333,7 @@ ${le}`);
               borderLeft: true,
               borderLeftDimColor: true,
               children: [
-                ul.jsx(Bgc, {
+                ul.jsx(UserMessageOption, {
                   userMessage: D,
                   color: "text",
                   isCurrent: false,
@@ -349,7 +349,7 @@ ${le}`);
               canRestoreCode: !!ge,
               diffStatsForRestore: O,
             }),
-            M && q8o(B)
+            M && isSummarizeOption(B)
               ? ul.jsxs(U, {
                   flexDirection: "row",
                   gap: 1,
@@ -446,7 +446,7 @@ ${le}`);
                                     children: ["/resume ", l, " (previous session)"],
                                   }),
                                 })
-                              : ul.jsx(Bgc, {
+                              : ul.jsx(UserMessageOption, {
                                   userMessage: ie,
                                   color: ye ? "suggestion" : void 0,
                                   isCurrent: ue,
@@ -507,7 +507,7 @@ ${le}`);
     ],
   });
 }
-function Fum(e) {
+function getRestoreOptionConversationText(e) {
   switch (e) {
     case "summarize":
       return "Messages after this point will be summarized.";
@@ -526,7 +526,7 @@ function jum(e) {
     { selectedRestoreOption: n, canRestoreCode: r, diffStatsForRestore: o } = e,
     s = r && (n === "both" || n === "code"),
     i;
-  if (t[0] !== n) ((i = Fum(n)), (t[0] = n), (t[1] = i));
+  if (t[0] !== n) ((i = getRestoreOptionConversationText(n)), (t[0] = n), (t[1] = i));
   else i = t[1];
   let a;
   if (t[2] !== i)
@@ -540,9 +540,9 @@ function jum(e) {
   let l;
   if (t[4] !== o || t[5] !== n || t[6] !== s)
     ((l =
-      !q8o(n) &&
+      !isSummarizeOption(n) &&
       (s
-        ? ul.jsx(Gum, {
+        ? ul.jsx(RestoreCodeConfirmation, {
             diffStatsForRestore: o,
           })
         : ul.jsx(w, {
@@ -566,7 +566,7 @@ function jum(e) {
   else c = t[10];
   return c;
 }
-function Gum(e) {
+function RestoreCodeConfirmation(e) {
   let t = Mur.c(15),
     { diffStatsForRestore: n } = e;
   if (n === void 0) return;
@@ -631,7 +631,7 @@ function Gum(e) {
   else i = t[14];
   return i;
 }
-function Bgc(e) {
+function UserMessageOption(e) {
   let t = Mur.c(30),
     { userMessage: n, color: r, dimColor: o, isCurrent: s, paddingRight: i } = e,
     { columns: a } = br();

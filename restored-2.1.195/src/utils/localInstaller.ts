@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LPe
 // matched 2.1.88 source: src/utils/localInstaller.ts
 // class=modified  jaccard=0.3379  score=0.5871  fileCov=0.4432
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LPe] deps: EW, Ye
 ((dza = R(lt(), 1)), (pza = R(rt(), 1)), (fza = require("stream")), (ygt = R(se(), 1)));
@@ -26,7 +26,7 @@ function _Vn() {
 function hza() {
   return bgt.join(_Vn(), "claude");
 }
-function yza() {
+function isRunningFromLocalInstallation() {
   return (process.argv[1] || "").includes("/.claude/local/node_modules/");
 }
 async function gza(e, t, n) {
@@ -44,7 +44,7 @@ async function gza(e, t, n) {
     throw r;
   }
 }
-async function Dzp() {
+async function ensureLocalPackageEnvironment() {
   try {
     let e = _Vn();
     (await qt().mkdir(e),
@@ -80,9 +80,9 @@ exec "${e}/node_modules/.bin/claude" "$@"`,
     );
   }
 }
-async function qqt(e, t) {
+async function installOrUpdateClaudePackage(e, t) {
   try {
-    if (!(await Dzp()))
+    if (!(await ensureLocalPackageEnvironment()))
       return (Le("update_apply", "update_apply_env_setup_failed"), "install_failed");
     let n = t ? t : e === "stable" ? "stable" : "latest",
       r = await Gr(
@@ -127,7 +127,7 @@ async function qqt(e, t) {
     return (Le("update_apply", "update_apply_local_exception"), ke(n), "install_failed");
   }
 }
-async function E9e() {
+async function localInstallationExists() {
   try {
     return (await Sgt.access(bgt.join(_Vn(), "node_modules", ".bin", "claude")), true);
   } catch {

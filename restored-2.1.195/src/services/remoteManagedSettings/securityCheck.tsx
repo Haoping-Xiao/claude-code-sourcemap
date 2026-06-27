@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gre
 // matched 2.1.88 source: src/services/remoteManagedSettings/securityCheck.tsx
 // class=modified  jaccard=0.2328  score=0.4589  fileCov=0.3209
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Gre] deps: kt, je, fn, lT, ED, Y9
 ((aNa = require("fs")), (lNa = require("tty")));
@@ -41,7 +41,7 @@ async function cNa(e, t) {
     xe("remote_managed_settings_security_check");
   return n;
 }
-async function dNa(e, t) {
+async function checkManagedSettingsSecurity(e, t) {
   if (!t || !g4n(Cft(t))) return "no_check_needed";
   if (!N1a(e, t)) return "no_check_needed";
   if (!Ax()) return "no_check_needed";

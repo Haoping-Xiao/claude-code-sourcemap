@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wFe
 // matched 2.1.88 source: src/constants/xml.ts
 // class=modified  jaccard=0.621  score=0.7426  fileCov=0.7913
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wFe] deps: Qi, wr
 VSs = new Map();
@@ -36,19 +36,19 @@ IDu = Cn(async () => {
   }
   return (VSs.set(e, t), t);
 }, Lkr);
-var rj = "command-name",
-  zC = "command-message",
-  hpn = "command-args",
+var COMMAND_NAME_TAG = "command-name",
+  COMMAND_MESSAGE_TAG = "command-message",
+  COMMAND_ARGS_TAG = "command-args",
   J0t = "bash-input",
   Q0t = "bash-stdout",
   wae = "bash-stderr",
   Pkr = "bash-exit-code",
-  KC = "local-command-stdout",
-  aY = "local-command-stderr",
-  CFe = "local-command-caveat",
+  LOCAL_COMMAND_STDOUT_TAG = "local-command-stdout",
+  LOCAL_COMMAND_STDERR_TAG = "local-command-stderr",
+  LOCAL_COMMAND_CAVEAT_TAG = "local-command-caveat",
   KSs,
   Cae = "tick",
-  Oc = "task-notification",
+  TASK_NOTIFICATION_TAG = "task-notification",
   Dp = "task-id",
   YC = "tool-use-id",
   Qwe = "task-type",
@@ -56,16 +56,16 @@ var rj = "command-name",
   up = "status",
   Zu = "summary",
   Mkr = "worktree",
-  $kr = "worktreePath",
-  Okr = "worktreeBranch",
-  IFe = "remote-review",
-  NZe = "remote-review-progress",
-  DB = "teammate-message",
+  WORKTREE_PATH_TAG = "worktreePath",
+  WORKTREE_BRANCH_TAG = "worktreeBranch",
+  REMOTE_REVIEW_TAG = "remote-review",
+  REMOTE_REVIEW_PROGRESS_TAG = "remote-review-progress",
+  TEAMMATE_MESSAGE_TAG = "teammate-message",
   xFe = "channel",
   kFe = '<channel source="',
-  BZe = "cross-session-message",
+  CROSS_SESSION_MESSAGE_TAG = "cross-session-message",
   ypn = "agent-message",
-  bhe = "fork-boilerplate",
-  Z0t = "Your directive: ",
+  FORK_BOILERPLATE_TAG = "fork-boilerplate",
+  FORK_DIRECTIVE_PREFIX = "Your directive: ",
   _G,
   Iae;

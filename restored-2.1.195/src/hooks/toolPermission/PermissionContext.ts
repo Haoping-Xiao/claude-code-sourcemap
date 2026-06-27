@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U_t
 // matched 2.1.88 source: src/hooks/toolPermission/PermissionContext.ts
 // class=modified  jaccard=0.4026  score=0.6649  fileCov=0.5051
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U_t] deps: FAe, ih
 ((xdf = ["sandbox", "permission", "worker-sandbox", "elicitation", "dialog"]),
@@ -61,7 +61,7 @@ function RYn(e) {
     },
   };
 }
-function LYn(e, t, n, r, o, s, i) {
+function createPermissionContext(e, t, n, r, o, s, i) {
   let a = r.message.id,
     l = Fr(n).mode;
   function c(d, p) {

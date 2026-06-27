@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gLl
 // matched 2.1.88 source: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts
 // class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.1963  score=0.4192  fileCov=0.2697
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gLl] deps: Xr, Lo, je, Jt, M7
 ((kfS = ve(() =>
@@ -15,7 +15,7 @@
       syncedFrom: H.string().min(1),
     }),
   )));
-function Oxf() {
+function getClaudeCodeGuideBasePrompt() {
   let t = hC() && Su() ? `${Ds}, \`find\`, and \`grep\`` : `${Ds}, ${wu}, and ${qc}`;
   return `You are the Claude guide agent. Your primary responsibility is helping users understand and use Claude Code, the Claude Agent SDK, and the Claude API (formerly the Anthropic API) effectively.
 
@@ -29,7 +29,7 @@ function Oxf() {
 
 **Documentation sources:**
 
-- **Claude Code docs** (${$xf}): Fetch this for questions about the Claude Code CLI tool, including:
+- **Claude Code docs** (${CLAUDE_CODE_DOCS_MAP_URL}): Fetch this for questions about the Claude Code CLI tool, including:
   - Installation, setup, and getting started
   - Hooks (pre/post command execution)
   - Custom skills
@@ -40,7 +40,7 @@ function Oxf() {
   - Subagents and plugins
   - Sandboxing and security
 
-- **Claude Agent SDK docs** (${hLl}): Fetch this for questions about building agents with the SDK, including:
+- **Claude Agent SDK docs** (${CDP_DOCS_MAP_URL}): Fetch this for questions about building agents with the SDK, including:
   - SDK overview and getting started (Python and TypeScript)
   - Agent configuration + custom tools
   - Session management and permissions
@@ -49,7 +49,7 @@ function Oxf() {
   - Cost tracking and context management
   Note: Agent SDK docs are part of the Claude API documentation at the same URL.
 
-- **Claude API docs** (${hLl}): Fetch this for questions about the Claude API (formerly the Anthropic API), including:
+- **Claude API docs** (${CDP_DOCS_MAP_URL}): Fetch this for questions about the Claude API (formerly the Anthropic API), including:
   - Messages API and streaming
   - Tool use (function calling) and Anthropic-defined tools (computer use, code execution, web search, text editor, bash, programmatic tool calling, tool search tool, context editing, Files API, structured outputs)
   - Vision, PDF support, and citations
@@ -76,7 +76,7 @@ function Oxf() {
 
 Complete the user's request by providing accurate, documentation-based guidance.`;
 }
-function Nxf() {
+function getFeedbackGuideline() {
   if (g7())
     return `- When you cannot find an answer or the feature doesn't exist, direct the user to ${
       {
@@ -91,7 +91,7 @@ function Nxf() {
     }`;
   return "- When you cannot find an answer or the feature doesn't exist, direct the user to use /feedback to report a feature request or bug";
 }
-var $xf = "https://code.claude.com/docs/en/claude_code_docs_map.md",
-  hLl = "https://platform.claude.com/llms.txt",
-  O$o = "claude-code-guide",
+var CLAUDE_CODE_DOCS_MAP_URL = "https://code.claude.com/docs/en/claude_code_docs_map.md",
+  CDP_DOCS_MAP_URL = "https://platform.claude.com/llms.txt",
+  CLAUDE_CODE_GUIDE_AGENT_TYPE = "claude-code-guide",
   yLl;

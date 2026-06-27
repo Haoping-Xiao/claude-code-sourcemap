@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module P9l
 // matched 2.1.88 source: src/utils/deepLink/terminalLauncher.ts
 // class=modified (alt of src/utils/deepLink/terminalLauncher.ts)  jaccard=0.0421  score=0.0812  fileCov=0.0802
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module P9l]
 D9l = {
@@ -142,7 +142,7 @@ function N9l({ onDone: e, showDemoRuler: t = true, editorSensitivity: n = null }
           }),
           hR.jsx(M9l, {
             label: "Terminal",
-            value: qWf(o),
+            value: detectWindowsTerminal(o),
           }),
           n &&
             hR.jsx(M9l, {
@@ -201,14 +201,14 @@ function WWf(e) {
   let t = _b(Math.round(e), O9l, ssr);
   return "\u25A0".repeat(t) + Ff("\xB7", ssr - t);
 }
-function qWf(e) {
-  let t = [VWf(e), Mpn(e.platform)];
+function detectWindowsTerminal(e) {
+  let t = [MACOS_TERMINALS(e), Mpn(e.platform)];
   if (e.wheelFlood) t.push("high-rate wheel events");
   else if (e.xtermJs) t.push("xterm.js");
   else if (e.wtSession) t.push("Windows Terminal");
   return t.join(" \xB7 ");
 }
-function VWf(e) {
+function MACOS_TERMINALS(e) {
   if (process.env.CURSOR_TRACE_ID !== void 0) return "Cursor";
   let t = process.env.VSCODE_GIT_ASKPASS_MAIN ?? "";
   if (t.includes("cursor")) return "Cursor (remote)";

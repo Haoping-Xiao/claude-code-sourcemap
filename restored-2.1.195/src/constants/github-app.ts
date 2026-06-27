@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kUl
 // matched 2.1.88 source: src/constants/github-app.ts
 // class=modified  jaccard=0.1473  score=0.1575  fileCov=0.6945
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kUl] deps: Ye, Cc, w7t, Bs, vi, Ko
 ((CUl = R(lt(), 1)),
@@ -40,8 +40,9 @@
       }),
     ],
   })));
-var RUl = "Add Claude Code GitHub Workflow",
-  Vfe = "https://github.com/anthropics/claude-code-action/blob/main/docs/setup.md",
+var PR_TITLE = "Add Claude Code GitHub Workflow",
+  GITHUB_ACTION_SETUP_DOCS_URL =
+    "https://github.com/anthropics/claude-code-action/blob/main/docs/setup.md",
   LUl = `name: Claude Code
 
 on:
@@ -93,7 +94,7 @@ jobs:
           # claude_args: '--allowed-tools Bash(gh pr *)'
 
 `,
-  DUl = `## \uD83E\uDD16 Installing Claude Code GitHub App
+  PR_BODY = `## \uD83E\uDD16 Installing Claude Code GitHub App
 
 This PR adds a GitHub Actions workflow that enables Claude Code integration in our repository.
 
@@ -134,7 +135,7 @@ allowed_tools: Bash(npm install),Bash(npm run build),Bash(npm run lint),Bash(npm
 There's more information in the [Claude Code action repo](https://github.com/anthropics/claude-code-action).
 
 After merging this PR, let's try mentioning @claude in a comment on any PR to get started!`,
-  PUl = `name: Claude Code Review
+  CODE_REVIEW_PLUGIN_WORKFLOW_CONTENT = `name: Claude Code Review
 
 on:
   pull_request:

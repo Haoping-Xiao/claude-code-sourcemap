@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h0o
 // matched 2.1.88 source: src/components/permissions/hooks.ts
 // class=modified  jaccard=0.1012  score=0.1483  fileCov=0.2413
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h0o] deps: Xr, jc, ii, S_, u8t, Z6, fn, h7n, hyt, _$, lg, _m, S$, N6e, xgl, yyt, wX, Pgl
 Ogl = require("net");
@@ -119,7 +119,7 @@ function b7n(e, t) {
     },
     p = y0o(n.tool);
   if (p !== void 0) {
-    Z_t(e, d, {
+    usePermissionRequestLogging(e, d, {
       dialog: p.dialog,
       buildDescriptor: ({ input: f, permissionResult: m }) =>
         p.build({
@@ -142,7 +142,7 @@ function b7n(e, t) {
       let g = wfl(n.tool, f, n.toolUseContext),
         h = Date.now(),
         y;
-      Z_t(e, d, {
+      usePermissionRequestLogging(e, d, {
         dialog: fMe,
         buildDescriptor: ({ input: b, permissionResult: _ }) => {
           let S = K9t(n.tool, b) ?? m,
@@ -185,7 +185,7 @@ function b7n(e, t) {
       });
       return;
     }
-    Z_t(e, d, {
+    usePermissionRequestLogging(e, d, {
       dialog: kMe,
       buildDescriptor: ({ input: g, permissionResult: h }) =>
         yP({
@@ -206,7 +206,7 @@ function b7n(e, t) {
       m = typeof f.command === "string" ? f.command : "",
       g = T8e(m);
     if (g !== null) {
-      Z_t(e, d, {
+      usePermissionRequestLogging(e, d, {
         dialog: fMe,
         buildDescriptor: ({ input: y, permissionResult: b }) => {
           let _ = typeof y.command === "string" ? y.command : "",
@@ -228,7 +228,7 @@ function b7n(e, t) {
       return;
     }
     let h = Fr(n.toolUseContext);
-    Z_t(e, d, {
+    usePermissionRequestLogging(e, d, {
       dialog: _8e,
       buildDescriptor: ({ input: y, permissionResult: b }) =>
         m6n({
@@ -246,7 +246,7 @@ function b7n(e, t) {
     });
     return;
   }
-  Z_t(e, d, {
+  usePermissionRequestLogging(e, d, {
     dialog: kMe,
     buildDescriptor: ({ input: f, permissionResult: m }) =>
       yP({
@@ -261,7 +261,7 @@ function b7n(e, t) {
       }),
   });
 }
-function Z_t(e, t, n) {
+function usePermissionRequestLogging(e, t, n) {
   let {
       ctx: r,
       description: o,

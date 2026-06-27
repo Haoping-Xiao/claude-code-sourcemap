@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hQl
 // matched 2.1.88 source: src/commands/rate-limit-options/rate-limit-options.tsx
 // class=modified (alt of src/commands/rate-limit-options/rate-limit-options.tsx)  jaccard=0.0801  score=0.1232  fileCov=0.1861
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hQl]
 ((G6f = {
@@ -26,7 +26,7 @@ function yQl(e, t, n = null) {
     s = n === null ? EYe : t === 1 ? Math.ceil((n + q6f) / EYe) * EYe : n;
   return Math.min(V6f, Math.max(s, o));
 }
-function bQl({ balance: e, onDone: t, context: n }) {
+function RateLimitOptionsMenu({ balance: e, onDone: t, context: n }) {
   let [r, o] = cZ.useState(null),
     [s] = na(),
     i = Wpe(),

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module bmc
 // matched 2.1.88 source: src/components/CostThresholdDialog.tsx
 // class=modified  jaccard=0.3699  score=0.6353  fileCov=0.4697
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bmc] deps: Fy, vi
 ((ymc = R(lt(), 1)), (A8o = R(se(), 1)));
-function Emc(e) {
+function CostThresholdDialog(e) {
   let t = Smc.c(7),
     { onDone: n } = e,
     r;

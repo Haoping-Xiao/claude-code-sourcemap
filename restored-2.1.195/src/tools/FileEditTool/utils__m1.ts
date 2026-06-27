@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hel
 // matched 2.1.88 source: src/tools/FileEditTool/utils.ts
 // class=modified (alt of src/tools/FileEditTool/utils.ts)  jaccard=0.0834  score=0.4721  fileCov=0.092
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hel] deps: oc, ys
 wZp = new Ael();
@@ -179,7 +179,7 @@ function Evo({ filePath: e, fileContents: t, edits: n }) {
       }),
       updatedFile: "",
     };
-  let r = mvo(t, n);
+  let r = getPatchForEdits(t, n);
   return {
     patch: yMe({
       filePath: e,
@@ -194,7 +194,7 @@ function kel(e, t) {
     !e && t.length === 1 && t[0] !== void 0 && t[0].old_string === "" && t[0].new_string === ""
   );
 }
-function mvo(e, t) {
+function getPatchForEdits(e, t) {
   if (kel(e, t)) return "";
   let n = e,
     r = [];
@@ -216,7 +216,7 @@ function mvo(e, t) {
   if (n === e) throw Error("Original and edited file match exactly. Failed to apply edit.");
   return n;
 }
-function Rel(e, t) {
+function getSnippetForTwoFileDiff(e, t) {
   let n = but("file.txt", "file.txt", e, t, void 0, void 0, {
     context: 8,
     timeout: W8n,
@@ -364,12 +364,12 @@ function RZp(e, t, n) {
     s = null,
     i = null;
   try {
-    r = mvo(n, e);
+    r = getPatchForEdits(n, e);
   } catch (a) {
     o = be(a);
   }
   try {
-    s = mvo(n, t);
+    s = getPatchForEdits(n, t);
   } catch (a) {
     i = be(a);
   }

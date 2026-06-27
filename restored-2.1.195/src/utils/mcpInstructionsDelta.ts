@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hYt
 // matched 2.1.88 source: src/utils/mcpInstructionsDelta.ts
 // class=modified  jaccard=0.4948  score=0.8305  fileCov=0.5504
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function qze(e) {
   return e.type === "image" && e.content.length > 0;
@@ -14,7 +14,7 @@ function o0l(e) {
     .map((n) => n.id);
   return t.length > 0 ? t : void 0;
 }
-function s0l(e, t, n) {
+function getMcpInstructionsDelta(e, t, n) {
   let r = new Set(),
     o = 0,
     s = 0;

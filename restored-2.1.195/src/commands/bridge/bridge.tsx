@@ -2,10 +2,10 @@
 // restored from claude-code 2.1.195 (deminified) — module uHt
 // matched 2.1.88 source: src/commands/bridge/bridge.tsx
 // class=modified  jaccard=0.2486  score=0.459  fileCov=0.3517
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-function Vzf(e) {
+function BridgeToggle(e) {
   let t = E3o.c(18),
     { onDone: n, name: r, context: o } = e,
     s = Ho(),
@@ -65,7 +65,7 @@ function Vzf(e) {
       let b = false;
       return (
         (async () => {
-          let _ = await dZl();
+          let _ = await checkBridgePrerequisites();
           if (b) return;
           if (_?.kind === "error") {
             (G("tengu_bridge_command", {
@@ -103,7 +103,7 @@ function Vzf(e) {
   if ((gme.useEffect(h, y), c)) {
     let b;
     if (t[11] !== n)
-      ((b = zk.jsx(Jzf, {
+      ((b = zk.jsx(BridgeDisconnectDialog, {
         onDone: n,
       })),
         (t[11] = n),
@@ -142,7 +142,7 @@ function Vzf(e) {
               }));
             return;
           }
-          let S = await dZl();
+          let S = await checkBridgePrerequisites();
           if (S?.kind === "error") {
             n(S.message, {
               display: "system",
@@ -192,7 +192,7 @@ function Yzf(e) {
 function Xzf(e) {
   return e.replBridgeConnected;
 }
-function Jzf(e) {
+function BridgeDisconnectDialog(e) {
   let t = E3o.c(64),
     { onDone: n } = e;
   Wh("bridge-disconnect-dialog");
@@ -510,7 +510,7 @@ function sKf(e) {
 function iKf(e) {
   return e.replBridgeSessionUrl;
 }
-async function dZl() {
+async function checkBridgePrerequisites() {
   let e = await wir();
   if (e)
     return {
@@ -542,7 +542,7 @@ async function dZl() {
 }
 async function call(e, t, n) {
   let r = n.trim() || void 0;
-  return zk.jsx(Vzf, {
+  return zk.jsx(BridgeToggle, {
     onDone: e,
     name: r,
     context: t,

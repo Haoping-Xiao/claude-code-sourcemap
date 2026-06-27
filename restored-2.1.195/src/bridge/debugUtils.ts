@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module uft
 // matched 2.1.88 source: src/bridge/debugUtils.ts
 // class=modified  jaccard=0.2572  score=0.8041  fileCov=0.2744
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function RDp(e) {
+function redactSecrets(e) {
   return e.replace(xDp, (t, n, r) => {
     if (r.length < kDp) return `"${n}":"[REDACTED]"`;
     let o = `${r.slice(0, 8)}...${r.slice(-4)}`;
@@ -20,13 +20,13 @@ function Ugo(e) {
   if (t.length <= Bjn) return t;
   return t.slice(0, Bjn) + `... (${t.length} chars)`;
 }
-function dft(e) {
+function debugBody(e) {
   let t = typeof e === "string" ? e : De(e),
-    n = RDp(t);
+    n = redactSecrets(t);
   if (n.length <= Bjn) return n;
   return n.slice(0, Bjn) + `... (${n.length} chars)`;
 }
-function mOa(e) {
+function describeAxiosError(e) {
   let t = be(e);
   if (e && typeof e === "object" && "response" in e) {
     let n = e.response;
@@ -70,7 +70,7 @@ function _J(e) {
     return e.error.message;
   return;
 }
-function bJ(e, t, n) {
+function logBridgeSkip(e, t, n) {
   if (t) T(t);
   G("tengu_bridge_repl_skipped", {
     reason: e,

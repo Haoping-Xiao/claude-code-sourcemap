@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ypt
 // matched 2.1.88 source: src/services/lsp/LSPDiagnosticRegistry.ts
 // class=modified  jaccard=0.5419  score=0.797  fileCov=0.6288
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function oLa({ serverName: e, files: t }) {
+function registerPendingLSPDiagnostic({ serverName: e, files: t }) {
   let n = rLa.randomUUID();
   (T(`LSP Diagnostics: Registering ${t.length} diagnostic file(s) from ${e} (ID: ${n})`),
     Pre.set(n, {
@@ -37,7 +37,7 @@ function sLa(e) {
     code: e.code || null,
   });
 }
-function Wxp(e) {
+function deduplicateDiagnosticFiles(e) {
   let t = new Map(),
     n = [];
   for (let r of e) {
@@ -69,7 +69,7 @@ function Wxp(e) {
   }
   return n.filter((r) => r.diagnostics.length > 0);
 }
-function iLa() {
+function checkForLSPDiagnostics() {
   T(`LSP Diagnostics: Checking registry - ${Pre.size} pending`);
   let e = [],
     t = new Set(),
@@ -80,7 +80,7 @@ function iLa() {
   let r,
     o = false;
   try {
-    r = Wxp(e);
+    r = deduplicateDiagnosticFiles(e);
   } catch (u) {
     let d = Zr(u);
     (i6(
@@ -149,15 +149,15 @@ function iLa() {
     },
   ];
 }
-function aLa() {
+function clearAllLSPDiagnostics() {
   (T(`LSP Diagnostics: Clearing ${Pre.size} pending diagnostic(s)`), Pre.clear());
 }
-function lLa() {
+function resetAllLSPDiagnosticState() {
   (T(`LSP Diagnostics: Resetting all state (${Pre.size} pending, ${EDe.size} files tracked)`),
     Pre.clear(),
     EDe.clear());
 }
-function u2n(e) {
+function clearDeliveredDiagnosticsForFile(e) {
   if (EDe.has(e)) (T(`LSP Diagnostics: Clearing delivered diagnostics for ${e}`), EDe.delete(e));
 }
 function d2n(e) {

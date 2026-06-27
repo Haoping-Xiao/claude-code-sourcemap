@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I1l
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
 // class=partial  jaccard=0.1461  score=0.5643  fileCov=0.1647
-// note: low-confidence suggestion: src/components/ScrollKeybindingHandler.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/ScrollKeybindingHandler.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I1l]
 Qtr = R(rt(), 1);
@@ -34,7 +34,7 @@ function k1l(e, t) {
     if (wMf(n)) e.clearSelection();
   };
 }
-function Ztr(e) {
+function ScrollKeybindingHandler(e) {
   let t = JNt(),
     n = TUe(e),
     r = n === 1 ? "char" : "chars",

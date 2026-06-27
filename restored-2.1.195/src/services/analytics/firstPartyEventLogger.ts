@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Pzr
 // matched 2.1.88 source: src/services/analytics/firstPartyEventLogger.ts
 // class=modified  jaccard=0.416  score=0.7162  fileCov=0.4981
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shutdown1PEventLogging, shouldSampleEvent, reinitialize1PEventLoggingIfConfigChanged, logGrowthBookExperimentTo1P, logEventTo1PAwaitable, logEventTo1PAsync, logEventTo1P, is1PEventLoggingEnabled, initialize1PEventLogging, getEventSamplingConfig, _reset1PStateForTesting, _getPreInitQueueForTesting
 function getEventSamplingConfig() {
-  return zx(eOd, {});
+  return zx(EVENT_SAMPLING_CONFIG_NAME, {});
 }
 function shouldSampleEvent(e) {
   let n = getEventSamplingConfig()[e];
@@ -18,7 +18,7 @@ function shouldSampleEvent(e) {
   return Math.random() < r ? r : 0;
 }
 function ROi() {
-  return zx(tOd, {});
+  return zx(BATCH_CONFIG_NAME, {});
 }
 function nOd() {
   return A7;
@@ -214,8 +214,8 @@ async function reinitialize1PEventLoggingIfConfigChanged() {
 var xOi,
   hkn,
   Mzr,
-  eOd = "tengu_event_sampling_config",
-  tOd = "tengu_1p_event_batch_config",
+  EVENT_SAMPLING_CONFIG_NAME = "tengu_event_sampling_config",
+  BATCH_CONFIG_NAME = "tengu_1p_event_batch_config",
   Wte = null,
   E_e = null,
   $zr = null,

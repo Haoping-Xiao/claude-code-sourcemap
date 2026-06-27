@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VPl
 // matched 2.1.88 source: src/commands/compact/compact.ts
 // class=modified  jaccard=0.2322  score=0.321  fileCov=0.4563
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module VPl] deps: IKt, Lo, sa, hze, Bqe, _m, K$e
@@ -72,7 +72,7 @@ ${c6(i)}`;
   },
 }),
   (qPl = B0f));
-async function F0f(e, t, n) {
+async function compactViaReactive(e, t, n) {
   (t.onCompactEvent?.({
     type: "compact_progress",
     event: {
@@ -176,7 +176,7 @@ async function F0f(e, t, n) {
         ...p.result,
         userDisplayMessage: m,
       },
-      displayText: G0f(t, m),
+      displayText: buildDisplayText(t, m),
     };
   } catch (l) {
     throw ((o = l instanceof Error ? l.message : "reactive compaction failed"), l);
@@ -285,7 +285,7 @@ async function j0f(e, t, n, r) {
     }
   );
 }
-function G0f(e, t) {
+function buildDisplayText(e, t) {
   let n = J8e("tip"),
     r = eC("app:toggleTranscript", "Global", "ctrl+o"),
     o = [
@@ -328,7 +328,7 @@ var call = async (e, t) => {
   if (((r = Py(r)), r.length === 0)) throw Error("No messages to compact");
   let o = e.trim();
   try {
-    return await F0f(r, t, o);
+    return await compactViaReactive(r, t, o);
   } catch (s) {
     if (n.signal.aborted) throw new ru("Compaction canceled.");
     else if (Xie(s, CSt))

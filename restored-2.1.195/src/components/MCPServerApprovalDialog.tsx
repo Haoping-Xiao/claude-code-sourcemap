@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module A9o
 // matched 2.1.88 source: src/components/MCPServerApprovalDialog.tsx
 // class=modified  jaccard=0.4466  score=0.6756  fileCov=0.5685
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A9o] deps: Ye
 ((gdc = R(lt(), 1)), (qcr = R(se(), 1)));
-function hdc({ serverName: e, isPluginServer: t = !1, onDone: n }) {
+function MCPServerApprovalDialog({ serverName: e, isPluginServer: t = !1, onDone: n }) {
   function r(o) {
     switch (
       (G("tengu_mcp_dialog_choice", {

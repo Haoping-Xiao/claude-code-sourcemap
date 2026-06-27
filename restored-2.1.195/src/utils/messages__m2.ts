@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IXn
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0135  score=0.2772  fileCov=0.014
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IXn]
 $El = [
@@ -60,7 +60,7 @@ function Ayf(e) {
   }
   return false;
 }
-function kXn(e) {
+function normalizeMessages(e) {
   let t = 0;
   for (let n = e.length - 1; n >= 0; n--) {
     let r = e[n];
@@ -106,7 +106,7 @@ function OEl(e) {
   let t = e.message?.content;
   return Array.isArray(t) && t.length > 0 && t.every((n) => n.type === "tool_result");
 }
-function Hyf(e) {
+function normalizeMessagesForAPI(e) {
   if (e.type === "system") return true;
   if (e.type === "assistant") {
     let t = e.message?.stop_reason;
@@ -125,7 +125,7 @@ function Gzt(e) {
       else if (n && OEl(o));
       else break;
     } else if (o.type === "assistant") {
-      if (!Hyf(o)) break;
+      if (!normalizeMessagesForAPI(o)) break;
       n = false;
     }
     t--;

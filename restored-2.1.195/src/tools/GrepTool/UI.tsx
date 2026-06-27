@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Otl
 // matched 2.1.88 source: src/tools/GrepTool/UI.tsx
 // class=modified  jaccard=0.3088  score=0.4748  fileCov=0.469
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Otl] deps: fn, Yf, Is, q9t, tre
 QJ = require("path");
-function Gvo(e) {
+function SearchResultSummary(e) {
   let t = Ntl.c(26),
     { count: n, countLabel: r, secondaryCount: o, secondaryLabel: s, content: i, verbose: a } = e,
     l;
@@ -115,13 +115,13 @@ function Gvo(e) {
   else g = t[25];
   return g;
 }
-function Btl({ pattern: e, path: t }, { verbose: n }) {
+function renderToolUseMessage({ pattern: e, path: t }, { verbose: n }) {
   if (!e) return null;
   let r = [`pattern: "${e}"`];
   if (t) r.push(`path: "${n ? t : kd(t)}"`);
   return r.join(", ");
 }
-function Utl(e, { verbose: t }) {
+function renderToolUseErrorMessage(e, { verbose: t }) {
   if (!t && typeof e === "string" && xl(e, "tool_use_error")) {
     if (xl(e, "tool_use_error")?.includes($B))
       return XI.jsx(qn, {
@@ -142,7 +142,7 @@ function Utl(e, { verbose: t }) {
     verbose: t,
   });
 }
-function Ftl(
+function renderToolResultMessage(
   {
     mode: e = "files_with_matches",
     filenames: t,
@@ -155,14 +155,14 @@ function Ftl(
   { verbose: a },
 ) {
   if (e === "content")
-    return XI.jsx(Gvo, {
+    return XI.jsx(SearchResultSummary, {
       count: o ?? 0,
       countLabel: "lines",
       content: r,
       verbose: a,
     });
   if (e === "count")
-    return XI.jsx(Gvo, {
+    return XI.jsx(SearchResultSummary, {
       count: s ?? 0,
       countLabel: "matches",
       secondaryCount: n,
@@ -172,7 +172,7 @@ function Ftl(
     });
   let l = t.map((c) => c).join(`
 `);
-  return XI.jsx(Gvo, {
+  return XI.jsx(SearchResultSummary, {
     count: n,
     countLabel: "files",
     content: l,

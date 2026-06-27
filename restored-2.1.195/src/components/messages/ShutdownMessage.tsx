@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module uil
 // matched 2.1.88 source: src/components/messages/ShutdownMessage.tsx
 // class=modified  jaccard=0.2895  score=0.4625  fileCov=0.4364
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uil] deps: Ye, Pqe, Lo, sr, ql
 ((iil = R(lt(), 1)), (ail = require("path")), (lil = R(rt(), 1)), (z6 = R(se(), 1)));
-function Rof(e) {
+function ShutdownRequestDisplay(e) {
   let t = GCo.c(5),
     { request: n } = e,
     r = `Shutdown request from ${n.from}`,
@@ -37,7 +37,7 @@ function Rof(e) {
   else s = t[4];
   return s;
 }
-function Lof(e) {
+function ShutdownRejectedDisplay(e) {
   let t = GCo.c(6),
     { response: n } = e,
     r = `Shutdown rejected by ${n.from}`,
@@ -79,18 +79,18 @@ function Lof(e) {
 function dil(e) {
   let t = Qv(w9t(), e);
   if (t)
-    return aQ.jsx(Rof, {
+    return aQ.jsx(ShutdownRequestDisplay, {
       request: t,
     });
   if (Qv(pAe(), e)) return null;
   let n = Qv($8n(), e);
   if (n)
-    return aQ.jsx(Lof, {
+    return aQ.jsx(ShutdownRejectedDisplay, {
       response: n,
     });
   return null;
 }
-function pil(e) {
+function getShutdownMessageSummary(e) {
   let t = Qv(w9t(), e);
   if (t) return `[Shutdown Request from ${t.from}]${t.reason ? ` ${t.reason}` : ""}`;
   let n = Qv(pAe(), e);

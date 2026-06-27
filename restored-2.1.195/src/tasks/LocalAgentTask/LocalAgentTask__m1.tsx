@@ -279,7 +279,7 @@ function skipWorkflowAgent(e, t, n) {
 function retryWorkflowAgent(e, t, n) {
   return fml(e, t, "user-retry", n);
 }
-function enqueueWorkflowNotification({
+function enqueueAgentNotification({
   taskId: e,
   summary: t,
   status: n,

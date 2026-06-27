@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module e1e
 // matched 2.1.88 source: src/utils/plugins/parseMarketplaceInput.ts
 // class=modified  jaccard=0.5697  score=0.9389  fileCov=0.5916
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module e1e] deps: w8, je, At, vbe, lE, $g, vfe, Xh, WI
 dNf = ["user", "project", "local"];
-async function trr(e) {
+async function parseMarketplaceInput(e) {
   let t = e.trim(),
     n = qt(),
     r = t.match(/^([a-zA-Z0-9._-]+@[^:]+:.+?(?:\.git)?)(#(.+))?$/);

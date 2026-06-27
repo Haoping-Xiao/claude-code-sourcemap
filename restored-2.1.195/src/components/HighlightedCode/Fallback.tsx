@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Fel
 // matched 2.1.88 source: src/components/HighlightedCode/Fallback.tsx
 // class=modified  jaccard=0.4096  score=0.7881  fileCov=0.4603
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fel] deps: _i, Ye, bMe, je, Dpe, At, vn, X8n, sr, E8e, T4t
 ((vvo = R(lt(), 1)), (Jht = R(rt(), 1)), (A8e = R(se(), 1)));
@@ -55,7 +55,7 @@ function Wel(e) {
   let d = u,
     p;
   if (t[9] !== c || t[10] !== d)
-    ((p = Qht.jsx($Zp, {
+    ((p = Qht.jsx(Highlighted, {
       codeWithSpaces: c,
       language: d,
     })),
@@ -75,7 +75,7 @@ function Wel(e) {
   else f = t[14];
   return f;
 }
-function $Zp(e) {
+function Highlighted(e) {
   let t = Cvo.c(8),
     { codeWithSpaces: n, language: r } = e,
     o;

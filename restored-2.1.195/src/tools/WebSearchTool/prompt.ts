@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module YWe
 // matched 2.1.88 source: src/tools/WebSearchTool/prompt.ts
 // class=modified  jaccard=0.3646  score=0.5699  fileCov=0.503
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YWe] deps: Qi
 sSe = Cn(Koo);
-function Eoa(e) {
+function getWebSearchPrompt(e) {
   let t = Soa();
   if (ph(e))
     return `Search the web. Returns result blocks with titles and URLs. US-only.

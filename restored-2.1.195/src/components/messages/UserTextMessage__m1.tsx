@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MJl
 // matched 2.1.88 source: src/components/messages/UserTextMessage.tsx
 // class=modified (alt of src/components/messages/UserTextMessage.tsx)  jaccard=0.043  score=0.0513  fileCov=0.2094
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MJl] deps: Jt
 PJl = require("fs/promises");
@@ -56,7 +56,7 @@ function MJt(e) {
     remaining: e.slice(n),
   };
 }
-function NJl(e) {
+function UserTextMessage(e) {
   if (
     e.startsWith("<bash-stdout") ||
     e.startsWith("<bash-stderr") ||
@@ -92,7 +92,7 @@ function NJl(e) {
 function z4o(e) {
   if (e.tool_use_result !== void 0) return true;
   let t = e.message?.content;
-  if (typeof t === "string") return NJl(t);
+  if (typeof t === "string") return UserTextMessage(t);
   return (
     Array.isArray(t) &&
     t.some(
@@ -101,7 +101,10 @@ function z4o(e) {
         n !== null &&
         "type" in n &&
         (n.type === "tool_result" ||
-          (n.type === "text" && "text" in n && typeof n.text === "string" && NJl(n.text))),
+          (n.type === "text" &&
+            "text" in n &&
+            typeof n.text === "string" &&
+            UserTextMessage(n.text))),
     )
   );
 }

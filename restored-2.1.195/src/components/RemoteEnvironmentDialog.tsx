@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module XJl
 // matched 2.1.88 source: src/components/RemoteEnvironmentDialog.tsx
 // class=modified  jaccard=0.2051  score=0.2885  fileCov=0.415
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function eQl(e) {
+function RemoteEnvironmentDialog(e) {
   let t = n3o.c(28),
     { onDone: n } = e,
     [r, o] = uTe.useState("loading"),
@@ -144,7 +144,7 @@ function eQl(e) {
     if (t[17] !== n || t[18] !== v)
       ((C = lx.jsxs(zn, {
         title: gir,
-        subtitle: ZJl,
+        subtitle: SETUP_HINT,
         onCancel: n,
         children: [A, v],
       })),
@@ -164,7 +164,7 @@ function eQl(e) {
     t[25] !== u ||
     t[26] !== i
   )
-    ((S = lx.jsx(N6f, {
+    ((S = lx.jsx(MultipleEnvironmentsContent, {
       targets: i,
       selectedTarget: l,
       selectedTargetSource: u,
@@ -201,7 +201,7 @@ function JJl(e) {
     value: t,
   };
 }
-function N6f(e) {
+function MultipleEnvironmentsContent(e) {
   let t = n3o.c(24),
     {
       targets: n,
@@ -249,7 +249,7 @@ function N6f(e) {
   if (t[9] === Symbol.for("react.memo_cache_sentinel"))
     ((h = lx.jsx(w, {
       dimColor: true,
-      children: ZJl,
+      children: SETUP_HINT,
     })),
       (t[9] = h));
   else h = t[9];
@@ -331,4 +331,4 @@ var n3o,
   uTe,
   lx,
   gir = "Select remote environment",
-  ZJl = "Configure environments at: https://claude.ai/code";
+  SETUP_HINT = "Configure environments at: https://claude.ai/code";

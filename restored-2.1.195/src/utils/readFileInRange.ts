@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module kPo
 // matched 2.1.88 source: src/utils/readFileInRange.ts
 // class=modified  jaccard=0.5118  score=0.8598  fileCov=0.5584
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function mSt(e, t = 0, n, r, o, s) {
+async function readFileInRange(e, t = 0, n, r, o, s) {
   o?.throwIfAborted();
   let i = s?.truncateOnByteLimit ?? false,
     a = await RQn.stat(e);

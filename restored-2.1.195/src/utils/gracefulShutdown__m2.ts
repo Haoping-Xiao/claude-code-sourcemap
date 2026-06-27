@@ -7,7 +7,7 @@
 // module exports: runPtyHost, createRing
 // [unwrapped __esm module cuc] deps: Is, aEe
 ((qse = require("fs/promises")), (iNe = require("path")));
-async function runPtyHost(e) {
+async function setupGracefulShutdown(e) {
   let t = e.indexOf("--");
   if (!e.includes("--bg-spare", t + 1)) await luc();
   if (t < 3 || t === e.length - 1)

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module _i
 // matched 2.1.88 source: src/components/design-system/Ratchet.tsx
 // class=modified  jaccard=0.2902  score=0.6668  fileCov=0.3394
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _i] deps: oat
 K5i = R(rt(), 1);
-function Eat(e) {
+function Ratchet(e) {
   let t = Y5i.c(10),
     { children: n, lock: r } = e,
     o = r === void 0 ? "always" : r,

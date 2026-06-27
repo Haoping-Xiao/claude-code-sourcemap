@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hIl
 // matched 2.1.88 source: src/utils/queryProfiler.ts
 // class=modified  jaccard=0.5317  score=0.7815  fileCov=0.6246
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function* _Il(e, t) {
   let n = Symbol.asyncIterator in e ? e[Symbol.asyncIterator]() : e[Symbol.iterator](),
@@ -38,11 +38,15 @@ async function* _Il(e, t) {
     Promise.resolve(n.return?.(void 0)).catch(() => {});
   }
 }
-function jKt() {
+function startQueryProfile() {
   if (!FKt) return;
-  (oG().clearMarks(), IPo.clear(), (CPo = null), bIl++, jp("query_user_input_received"));
+  (oG().clearMarks(),
+    IPo.clear(),
+    (CPo = null),
+    bIl++,
+    queryCheckpoint("query_user_input_received"));
 }
-function jp(e) {
+function queryCheckpoint(e) {
   if (!FKt) return;
   let t = oG();
   if (
@@ -54,11 +58,11 @@ function jp(e) {
     if (n.length > 0) CPo = n.at(-1)?.startTime ?? 0;
   }
 }
-function SIl() {
+function endQueryProfile() {
   if (!FKt) return;
-  jp("query_profile_end");
+  queryCheckpoint("query_profile_end");
 }
-function wTf(e, t) {
+function getSlowWarning(e, t) {
   if (t === "query_user_input_received") return "";
   if (e > 1000) return " \u26A0\uFE0F  VERY SLOW";
   if (e > 100) return " \u26A0\uFE0F  SLOW";
@@ -67,7 +71,7 @@ function wTf(e, t) {
   if (t.includes("client_creation") && e > 50) return " \u26A0\uFE0F  client creation";
   return "";
 }
-function CTf() {
+function getQueryProfileReport() {
   if (!FKt) return "Query profiling not enabled (set CLAUDE_CODE_PROFILE_QUERY=1)";
   let t = oG().getEntriesByType("mark");
   if (t.length === 0) return "No query profiling checkpoints recorded";
@@ -84,7 +88,7 @@ function CTf() {
     let u = c.startTime - r,
       d = c.startTime - o;
     if (
-      (n.push(Xin(u, d, c.name, IPo.get(c.name), 10, 9, wTf(d, c.name))),
+      (n.push(Xin(u, d, c.name, IPo.get(c.name), 10, 9, getSlowWarning(d, c.name))),
       c.name === "query_api_request_sent")
     )
       s = u;
@@ -103,13 +107,13 @@ function CTf() {
       n.push(`  - Network latency: ${gee(u)}ms (${p}%)`));
   } else n.push(`Total time: ${gee(l)}ms`);
   return (
-    n.push(ITf(t, r)),
+    n.push(getPhaseSummary(t, r)),
     n.push("=".repeat(80)),
     n.join(`
 `)
   );
 }
-function ITf(e, t) {
+function getPhaseSummary(e, t) {
   let n = [
       {
         name: "Context loading",
@@ -172,7 +176,7 @@ function ITf(e, t) {
 }
 function wQn() {
   if (!FKt) return;
-  T(CTf());
+  T(getQueryProfileReport());
 }
 var FKt,
   IPo,

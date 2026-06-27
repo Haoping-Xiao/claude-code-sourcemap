@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I6e
 // matched 2.1.88 source: src/services/mcp/channelPermissions.ts
 // class=modified  jaccard=0.4174  score=0.6723  fileCov=0.524
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I6e] deps: Xr, ft, np, oo, je, Ls, $g, dr, OI, j_t
 ((G_t = ve(() =>
@@ -24,7 +24,7 @@
     }),
   )),
   (Wfl = /^[a-zA-Z_][a-zA-Z0-9_]*$/));
-function zfl() {
+function isChannelPermissionRelayEnabled() {
   return at("tengu_harbor_permissions", false);
 }
 function Vfl(e) {
@@ -32,7 +32,7 @@ function Vfl(e) {
   for (let r = 0; r < e.length; r++) ((t ^= e.charCodeAt(r)), (t = Math.imul(t, 16777619)));
   t = t >>> 0;
   let n = "";
-  for (let r = 0; r < 5; r++) ((n += Ldf[t % 25]), (t = Math.floor(t / 25)));
+  for (let r = 0; r < 5; r++) ((n += ID_ALPHABET[t % 25]), (t = Math.floor(t / 25)));
   return n;
 }
 function Kfl(e) {
@@ -43,7 +43,7 @@ function Kfl(e) {
   }
   return t;
 }
-function Yfl(e) {
+function truncateForPreview(e) {
   try {
     let t = De(e);
     return t.length > 200 ? t.slice(0, 200) + "\u2026" : t;
@@ -51,7 +51,7 @@ function Yfl(e) {
     return "(unserializable)";
   }
 }
-function Xfl(e, t) {
+function filterPermissionRelayClients(e, t) {
   return e.filter(
     (n) =>
       n.type === "connected" &&
@@ -87,5 +87,5 @@ function Jfl() {
     },
   };
 }
-var Ldf = "abcdefghijkmnopqrstuvwxyz",
+var ID_ALPHABET = "abcdefghijkmnopqrstuvwxyz",
   Ddf;

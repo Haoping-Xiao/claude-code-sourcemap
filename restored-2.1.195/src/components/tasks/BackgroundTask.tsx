@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module h8l
 // matched 2.1.88 source: src/components/tasks/BackgroundTask.tsx
 // class=modified  jaccard=0.4402  score=0.6269  fileCov=0.5964
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h8l] deps: Ye
 ((cjo = R(lt(), 1)), (iYe = R(se(), 1)));
-function _8l(e) {
+function BackgroundTask(e) {
   let t = y8l.c(107),
     { task: n, maxActivityWidth: r } = e,
     o = r ?? 40;

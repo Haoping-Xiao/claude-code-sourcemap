@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QRc
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceStartupCheck.ts
 // class=modified  jaccard=0.5667  score=0.835  fileCov=0.6382
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QRc] deps: gz
 XRc = R(rt(), 1);
@@ -13,7 +13,7 @@ function CYo(e) {
   let t = Hfr.INITIAL_DELAY_MS * Math.pow(Hfr.BACKOFF_MULTIPLIER, e);
   return Math.min(t, Hfr.MAX_DELAY_MS);
 }
-function Mwm(e) {
+function shouldRetryInstallation(e) {
   if (!e.officialMarketplaceAutoInstallAttempted) return true;
   if (e.officialMarketplaceAutoInstalled) return false;
   let t = e.officialMarketplaceAutoInstallFailReason,
@@ -25,9 +25,9 @@ function Mwm(e) {
   if (r && o < r) return false;
   return t === "unknown" || t === "git_unavailable" || t === "gcs_unavailable" || t === void 0;
 }
-async function eLc() {
+async function checkAndInstallOfficialMarketplace() {
   let e = Dt();
-  if (!Mwm(e)) {
+  if (!shouldRetryInstallation(e)) {
     let n = e.officialMarketplaceAutoInstalled
       ? "already_installed"
       : (e.officialMarketplaceAutoInstallFailReason ?? "already_attempted");

@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module jir
 // matched 2.1.88 source: src/bridge/bridgeApi.ts
 // class=modified  jaccard=0.687  score=0.87  fileCov=0.7656
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Jq(e, t) {
+function validateBridgeId(e, t) {
   if (!e || !MYf.test(e)) throw Error(`Invalid ${t}: contains unsafe characters`);
   return e;
 }
-function eGo(e) {
+function createBridgeApiClient(e) {
   function t(a) {
     e.onDebug?.(a);
   }
@@ -78,7 +78,7 @@ function eGo(e) {
             "Registration",
           );
           return (
-            dTe(l.status, l.data, "Registration"),
+            handleErrorStatus(l.status, l.data, "Registration"),
             t(
               `[bridge:api] POST /v1/environments/bridge -> ${l.status} environment_id=${l.data.environment_id}`,
             ),
@@ -102,7 +102,7 @@ function eGo(e) {
       );
     },
     async pollForWork(a, l, c, u) {
-      Jq(a, "environmentId");
+      validateBridgeId(a, "environmentId");
       let d = n;
       n = 0;
       let p = await po.get(`${e.baseUrl}/v1/environments/${a}/work/poll`, {
@@ -117,7 +117,7 @@ function eGo(e) {
         signal: c,
         validateStatus: (f) => f < 500,
       });
-      if ((dTe(p.status, p.data, "Poll", p.headers), !p.data)) {
+      if ((handleErrorStatus(p.status, p.data, "Poll", p.headers), !p.data)) {
         if (((n = d + 1), n === 1 || n % r === 0))
           t(
             `[bridge:api] GET .../work/poll -> ${p.status} (no work, ${n} consecutive empty polls)`,
@@ -133,7 +133,9 @@ function eGo(e) {
       );
     },
     async acknowledgeWork(a, l, c) {
-      (Jq(a, "environmentId"), Jq(l, "workId"), t(`[bridge:api] POST .../work/${l}/ack`));
+      (validateBridgeId(a, "environmentId"),
+        validateBridgeId(l, "workId"),
+        t(`[bridge:api] POST .../work/${l}/ack`));
       let u = await po.post(
         `${e.baseUrl}/v1/environments/${a}/work/${l}/ack`,
         {},
@@ -143,12 +145,12 @@ function eGo(e) {
           validateStatus: (d) => d < 500,
         },
       );
-      (dTe(u.status, u.data, "Acknowledge"),
+      (handleErrorStatus(u.status, u.data, "Acknowledge"),
         t(`[bridge:api] POST .../work/${l}/ack -> ${u.status}`));
     },
     async stopWork(a, l, c) {
-      (Jq(a, "environmentId"),
-        Jq(l, "workId"),
+      (validateBridgeId(a, "environmentId"),
+        validateBridgeId(l, "workId"),
         t(`[bridge:api] POST .../work/${l}/stop force=${c}`));
       let u = await i(
         async (d) =>
@@ -165,10 +167,11 @@ function eGo(e) {
           ),
         "StopWork",
       );
-      (dTe(u.status, u.data, "StopWork"), t(`[bridge:api] POST .../work/${l}/stop -> ${u.status}`));
+      (handleErrorStatus(u.status, u.data, "StopWork"),
+        t(`[bridge:api] POST .../work/${l}/stop -> ${u.status}`));
     },
     async deregisterEnvironment(a) {
-      (Jq(a, "environmentId"), t(`[bridge:api] DELETE /v1/environments/bridge/${a}`));
+      (validateBridgeId(a, "environmentId"), t(`[bridge:api] DELETE /v1/environments/bridge/${a}`));
       let l = await i(
         async (c) =>
           po.delete(`${e.baseUrl}/v1/environments/bridge/${a}`, {
@@ -178,11 +181,11 @@ function eGo(e) {
           }),
         "Deregister",
       );
-      (dTe(l.status, l.data, "Deregister"),
+      (handleErrorStatus(l.status, l.data, "Deregister"),
         t(`[bridge:api] DELETE /v1/environments/bridge/${a} -> ${l.status}`));
     },
     async archiveSession(a) {
-      (Jq(a, "sessionId"), t(`[bridge:api] POST /v1/sessions/${a}/archive`));
+      (validateBridgeId(a, "sessionId"), t(`[bridge:api] POST /v1/sessions/${a}/archive`));
       let l = await i(
         async (c) =>
           po.post(
@@ -200,15 +203,15 @@ function eGo(e) {
         t(`[bridge:api] POST /v1/sessions/${a}/archive -> 409 (already archived)`);
         return;
       }
-      (dTe(l.status, l.data, "ArchiveSession"),
+      (handleErrorStatus(l.status, l.data, "ArchiveSession"),
         t(`[bridge:api] POST /v1/sessions/${a}/archive -> ${l.status}`));
     },
     async reconnectSession(a, l) {
       return yl(
         "bridge_session_reconnect",
         async () => {
-          (Jq(a, "environmentId"),
-            Jq(l, "sessionId"),
+          (validateBridgeId(a, "environmentId"),
+            validateBridgeId(l, "sessionId"),
             t(`[bridge:api] POST /v1/environments/${a}/bridge/reconnect session_id=${l}`));
           let c = await i(
             async (u) =>
@@ -225,14 +228,16 @@ function eGo(e) {
               ),
             "ReconnectSession",
           );
-          (dTe(c.status, c.data, "ReconnectSession"),
+          (handleErrorStatus(c.status, c.data, "ReconnectSession"),
             t(`[bridge:api] POST .../bridge/reconnect -> ${c.status}`));
         },
         stc,
       );
     },
     async heartbeatWork(a, l, c) {
-      (Jq(a, "environmentId"), Jq(l, "workId"), t(`[bridge:api] POST .../work/${l}/heartbeat`));
+      (validateBridgeId(a, "environmentId"),
+        validateBridgeId(l, "workId"),
+        t(`[bridge:api] POST .../work/${l}/heartbeat`));
       let u = await po.post(
         `${e.baseUrl}/v1/environments/${a}/work/${l}/heartbeat`,
         {},
@@ -243,7 +248,7 @@ function eGo(e) {
         },
       );
       return (
-        dTe(u.status, u.data, "Heartbeat"),
+        handleErrorStatus(u.status, u.data, "Heartbeat"),
         t(
           `[bridge:api] POST .../work/${l}/heartbeat -> ${u.status} lease_extended=${u.data.lease_extended} state=${u.data.state}`,
         ),
@@ -251,7 +256,7 @@ function eGo(e) {
       );
     },
     async sendPermissionResponseEvent(a, l, c) {
-      Jq(a, "sessionId");
+      validateBridgeId(a, "sessionId");
       let { url: u, body: d } = zjn(e.baseUrl, a, [l], e.useCcrV2Routing?.() ?? false);
       t(`[bridge:api] POST ${u} type=${l.type}`);
       let p = await po.post(u, d, {
@@ -259,23 +264,23 @@ function eGo(e) {
         timeout: 10000 /* 1e4 */,
         validateStatus: (f) => f < 500,
       });
-      (dTe(p.status, p.data, "SendPermissionResponseEvent"),
+      (handleErrorStatus(p.status, p.data, "SendPermissionResponseEvent"),
         t(`[bridge:api] POST ${u} -> ${p.status}`),
         t(`[bridge:api] >>> ${dft(d)}`),
         t(`[bridge:api] <<< ${dft(p.data)}`));
     },
   };
 }
-function dTe(e, t, n, r) {
+function handleErrorStatus(e, t, n, r) {
   if (e === 200 || e === 204) return;
   let o = _J(t),
-    s = $Yf(t);
+    s = extractErrorTypeFromData(t);
   switch (e) {
     case 401:
       throw new Qq(`${n}: Authentication failed (401)${o ? `: ${o}` : ""}. ${Z8e}`, 401, s);
     case 403:
       throw new Qq(
-        ZJt(s)
+        isExpiredErrorType(s)
           ? "Remote Control session expired."
           : `${n}: Access denied (403)${o ? `: ${o}` : ""}. Check your organization permissions.`,
         403,
@@ -309,11 +314,11 @@ function dTe(e, t, n, r) {
       });
   }
 }
-function ZJt(e) {
+function isExpiredErrorType(e) {
   if (!e) return false;
   return e.includes("expired") || e.includes("lifetime");
 }
-function tGo(e) {
+function isSuppressible403(e) {
   if (e.status !== 403) return false;
   return e.message.includes("external_poll_sessions") || e.message.includes("environments:manage");
 }
@@ -325,7 +330,7 @@ function stc(e) {
   }
   return "request_failed";
 }
-function $Yf(e) {
+function extractErrorTypeFromData(e) {
   if (e && typeof e === "object") {
     if (
       "error" in e &&

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Svl
 // matched 2.1.88 source: src/utils/collapseReadSearch.ts
 // class=modified  jaccard=0.4555  score=0.71  fileCov=0.5595
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function iEf(e) {
   let t = e;
@@ -123,7 +123,7 @@ function U8t(e, t) {
   }
   return null;
 }
-function cEf(e) {
+function getCollapsibleToolInfo(e) {
   if (e.type === "assistant") {
     let t = e.message.content[0];
     return t?.type === "tool_use" ? t.name : null;
@@ -134,7 +134,7 @@ function cEf(e) {
 function uEf(e, t) {
   let n = Avl.get(e);
   if (n?.tools === t) return n.info;
-  let r = cEf(e),
+  let r = getCollapsibleToolInfo(e),
     o = r === null ? void 0 : (_l(t, r) ?? _l(xAe(), r));
   if (n && o === n.resolvedTool) return ((n.tools = t), n.info);
   let s = dEf(e, t);
@@ -214,10 +214,10 @@ function ADo(e) {
   let t = e.message.content[0];
   return t?.type === "text" && Cvl(t.text);
 }
-function pEf(e) {
+function isPreToolHookSummary(e) {
   return e.type === "system" && e.subtype === "stop_hook_summary" && e.hookLabel === "PreToolUse";
 }
-function Ivl(e) {
+function shouldSkipMessage(e) {
   if (e.type === "assistant") {
     let t = e.message.content[0];
     if (t?.type === "thinking" || t?.type === "redacted_thinking") return true;
@@ -353,7 +353,7 @@ function Tvl() {
       (e.gitOpBashCount = 0));
   return e;
 }
-function bEf(e) {
+function createCollapsedGroup(e) {
   let t = e.messages[0],
     n = e.readFilePaths.size > 0 ? e.readFilePaths.size : e.readOperationCount,
     r = e.memoryReadFilePaths.size,
@@ -410,7 +410,7 @@ function Rvl(e, t) {
     i;
   function a() {
     if (o.messages.length === 0) return;
-    r.push(bEf(o));
+    r.push(createCollapsedGroup(o));
     let l = new Set();
     for (let c of s) {
       if (c.type === "attachment" && c.attachment.type === "hook_permission_decision") {
@@ -479,7 +479,7 @@ function Rvl(e, t) {
       o.messages.push(l);
     } else if (gEf(l, o.toolUseIds)) {
       if ((o.messages.push(l), Ns() && o.bashCommands?.size)) _Ef(l, o);
-    } else if (o.messages.length > 0 && pEf(l))
+    } else if (o.messages.length > 0 && isPreToolHookSummary(l))
       ((o.hookCount += l.hookCount),
         (o.hookTotalMs +=
           l.totalDurationMs ?? l.hookInfos.reduce((d, p) => d + (p.durationMs ?? 0), 0)),
@@ -497,7 +497,7 @@ function Rvl(e, t) {
         if (Number.isFinite(d) && d > 0) o.thoughtForMs += Math.min(d, mIo);
       }
       o.messages.push(u.message);
-    } else if (Ivl(l) || ADo(l)) {
+    } else if (shouldSkipMessage(l) || ADo(l)) {
       if (o.messages.length > 0) s.push(l);
       else r.push(l);
     } else (a(), r.push(l));
@@ -568,7 +568,7 @@ function Dvl(e, t, n, r = false) {
     let l = r && a === e.length;
     if (l) {
       let b = a - 1;
-      while (b >= s && Ivl(e[b])) b--;
+      while (b >= s && shouldSkipMessage(e[b])) b--;
       let _ = b >= s ? e[b] : void 0;
       if (_?.type === "assistant" && _.message.stop_reason !== null && (Hvl(_) || ADo(_)))
         l = false;
@@ -713,7 +713,7 @@ function wvl(e, t, n, r) {
   else i.otherToolCount = s;
   return i;
 }
-function pKn(e, t, n, r = 0, o, s = 0) {
+function getSearchReadSummaryText(e, t, n, r = 0, o, s = 0) {
   let i = [];
   if (o) {
     let { memorySearchCount: l, memoryReadCount: c, memoryWriteCount: u } = o;
@@ -778,7 +778,7 @@ function j9n(e) {
     else if (s.isRead) n++;
     else break;
   }
-  if (t + n >= 2) return pKn(t, n, true);
+  if (t + n >= 2) return getSearchReadSummaryText(t, n, true);
   for (let o = e.length - 1; o >= 0; o--)
     if (e[o]?.activityDescription) return e[o].activityDescription;
   return;

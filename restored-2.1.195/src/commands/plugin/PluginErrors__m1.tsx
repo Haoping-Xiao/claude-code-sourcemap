@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module NKe
 // matched 2.1.88 source: src/commands/plugin/PluginErrors.tsx
 // class=modified (alt of src/commands/plugin/PluginErrors.tsx)  jaccard=0.0207  score=0.098  fileCov=0.0255
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NKe] deps: Lo, je, At, vn, dr, KPn, _k, lE, $g, vfe, ZC
 m2l = require("path");
-async function MHe(e) {
+async function formatErrorMessage(e) {
   let t = new Map();
   for (let a of e) {
     if (a.type !== "dependency-unsatisfied" || a.reason !== "not-found") continue;
@@ -101,7 +101,7 @@ async function $Bo(e) {
 async function $Et(e) {
   let t = await $Bo(e);
   if (t.length === 0) return null;
-  let { installed: n, marketplaceMissing: r } = await MHe(t),
+  let { installed: n, marketplaceMissing: r } = await formatErrorMessage(t),
     o = new Set(n),
     s = Uo(t.map((i) => i.dependency)).filter((i) => !o.has(i));
   return {

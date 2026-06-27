@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module uBl
 // matched 2.1.88 source: src/components/memory/MemoryFileSelector.tsx
 // class=modified  jaccard=0.394  score=0.692  fileCov=0.4778
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function fBl(e) {
+function MemoryFileSelector(e) {
   let t = dBl.c(68),
     { onSelect: n, onCancel: r } = e,
     o = hz.use(Wv()),
@@ -68,7 +68,7 @@ function fBl(e) {
     if (t[0] === Symbol.for("react.memo_cache_sentinel"))
       ((Ie = {
         label: "Open auto-memory folder",
-        value: `${X7t}${mm()}`,
+        value: `${OPEN_FOLDER_PREFIX}${mm()}`,
         description: "",
       }),
         (t[0] = Ie));
@@ -78,7 +78,7 @@ function fBl(e) {
       if (t[1] === Symbol.for("react.memo_cache_sentinel"))
         ((Ve = {
           label: "Open team memory folder",
-          value: `${X7t}${cT()}`,
+          value: `${OPEN_FOLDER_PREFIX}${cT()}`,
           description: "",
         }),
           (t[1] = Ve));
@@ -90,7 +90,7 @@ function fBl(e) {
         let Ze = cit(Ve.agentType, Ve.memory);
         p.push({
           label: `Open ${wt.bold(Ve.agentType)} agent memory`,
-          value: `${X7t}${Ze}`,
+          value: `${OPEN_FOLDER_PREFIX}${Ze}`,
           description: `${Ve.memory} scope`,
         });
       }
@@ -343,8 +343,8 @@ function fBl(e) {
   let ye;
   if (t[54] !== n)
     ((ye = (Ie) => {
-      if (Ie.startsWith(X7t)) {
-        let Ve = Ie.slice(X7t.length);
+      if (Ie.startsWith(OPEN_FOLDER_PREFIX)) {
+        let Ve = Ie.slice(OPEN_FOLDER_PREFIX.length);
         pBl
           .mkdir(Ve, {
             recursive: true,
@@ -425,4 +425,4 @@ var dBl,
   hz,
   JQ,
   knr,
-  X7t = "__open_folder__";
+  OPEN_FOLDER_PREFIX = "__open_folder__";

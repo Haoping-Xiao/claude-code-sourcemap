@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wUl
 // matched 2.1.88 source: src/components/WorkflowMultiselectDialog.tsx
 // class=modified  jaccard=0.1512  score=0.355  fileCov=0.2085
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wUl] deps: wr
 vUl = {
@@ -16,7 +16,7 @@ vUl = {
   },
   load: () => Promise.resolve().then(() => (hVn(), rAo)),
 };
-function xUl(e) {
+function WorkflowMultiselectDialog(e) {
   let t = CUl.c(14),
     { onSubmit: n, defaultSelections: r } = e,
     [o, s] = IUl.useState(false),

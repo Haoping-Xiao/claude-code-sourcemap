@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I8
 // matched 2.1.88 source: src/utils/telemetryAttributes.ts
 // class=modified (alt of src/utils/telemetryAttributes.ts)  jaccard=0.0538  score=0.2055  fileCov=0.0679
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I8] deps: er, ih
 ((RKd = Mi()), (X0e = new Map()));
@@ -17,7 +17,7 @@ function DKd(e) {
     return null;
   }
 }
-function WPn() {
+function getTelemetryAttributes() {
   let e = km(),
     t = ZBe(e) ? e.jwt : void 0;
   if (t === kKi) return GPn;

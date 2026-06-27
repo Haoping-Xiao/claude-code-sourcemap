@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module MDc
 // matched 2.1.88 source: src/hooks/notifs/useIDEStatusIndicator.tsx
 // class=modified  jaccard=0.4395  score=0.9056  fileCov=0.4606
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MDc] deps: ft, Zf, uo, fut, vn, Eue
 $tn = R(rt(), 1);
-function ODc(e) {
+function useIDEStatusIndicator(e) {
   let t = $Dc.c(20),
     { ideSelection: n, mcpClients: r, ideInstallationStatus: o } = e,
     { addNotification: s, removeNotification: i } = Li(),

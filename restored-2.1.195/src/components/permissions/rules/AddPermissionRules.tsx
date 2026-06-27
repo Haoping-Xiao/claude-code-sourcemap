@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module $jo
 // matched 2.1.88 source: src/components/permissions/rules/AddPermissionRules.tsx
 // class=modified  jaccard=0.474  score=0.7799  fileCov=0.5472
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $jo] deps: Ye, RN
 ((czl = R(lt(), 1)), (ZHe = R(se(), 1)));
-function Hqf(e) {
+function optionForPermissionSaveDestination(e) {
   switch (e) {
     case "localSettings":
       return {
@@ -28,7 +28,7 @@ function Hqf(e) {
       };
   }
 }
-function dzl(e) {
+function AddPermissionRules(e) {
   let t = uzl.c(26),
     {
       onAddRules: n,
@@ -39,7 +39,8 @@ function dzl(e) {
       setToolPermissionContext: a,
     } = e,
     l;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((l = DRt.map(Hqf)), (t[0] = l));
+  if (t[0] === Symbol.for("react.memo_cache_sentinel"))
+    ((l = DRt.map(optionForPermissionSaveDestination)), (t[0] = l));
   else l = t[0];
   let c = l,
     u;

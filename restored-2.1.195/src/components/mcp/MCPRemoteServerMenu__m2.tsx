@@ -67,7 +67,7 @@ function fpc(e, t) {
 
 `;
 }
-async function mcpLoginHandler(e, t) {
+async function MCPRemoteServerMenu(e, t) {
   await my("tengu_mcp_login", {});
   let n = await gpc(e, "cli_mcp_login"),
     r = r6(e, n);

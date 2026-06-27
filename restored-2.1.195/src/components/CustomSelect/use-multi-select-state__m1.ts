@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tC
 // matched 2.1.88 source: src/components/CustomSelect/use-multi-select-state.ts
 // class=modified (alt of src/components/CustomSelect/use-multi-select-state.ts)  jaccard=0.0642  score=0.1086  fileCov=0.1355
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tC] deps: HI, uo
 ((V6i = R(lt(), 1)),
@@ -262,7 +262,7 @@ function Szd() {
 function Ezd() {
   return "";
 }
-function Y6i({
+function useMultiSelectState({
   options: e,
   defaultValue: t = [],
   onChange: n,

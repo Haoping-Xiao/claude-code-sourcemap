@@ -2,10 +2,10 @@
 // restored from claude-code 2.1.195 (deminified) — module Rct
 // matched 2.1.88 source: src/tools/GrepTool/prompt.ts
 // class=modified  jaccard=0.4727  score=0.6186  fileCov=0.6672
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 var s$ = "TodoWrite";
-function Yoo(e) {
+function getDescription(e) {
   if (ph(e))
     return `Content search built on ripgrep. Prefer this over \`grep\`/\`rg\` via ${Co} \u2014 results integrate with the permission UI and file links.
 

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vdc
 // matched 2.1.88 source: src/cli/handlers/mcp.tsx
 // class=modified  jaccard=0.2892  score=0.3831  fileCov=0.5412
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mcpServeHandler, mcpResetChoicesHandler, mcpRemoveHandler, mcpListHandler, mcpGetHandler, mcpAddJsonHandler, mcpAddFromDesktopHandler
 // [unwrapped __esm module Vdc] deps: bCe, je, At, Rd, Is
@@ -18,7 +18,7 @@ function nam(e) {
   }
   return be(e).replace(/\s+/g, " ").trim();
 }
-async function Jdc(e, t) {
+async function checkMcpServerHealth(e, t) {
   try {
     let n = await aP(e, t);
     if (n.type === "connected") {
@@ -294,7 +294,7 @@ async function mcpListHandler(e) {
       async ([i, a]) => ({
         name: i,
         server: o[i] ?? a,
-        status: n.has(i) ? Zdc : (await Jdc(i, a)).status,
+        status: n.has(i) ? Zdc : (await checkMcpServerHealth(i, a)).status,
       }),
       {
         concurrency: hpt(),
@@ -355,7 +355,7 @@ async function mcpGetHandler(e, t) {
           ? {
               status: lam,
             }
-          : await Jdc(t, s),
+          : await checkMcpServerHealth(t, s),
     l =
       Qdc({
         [t]: s,

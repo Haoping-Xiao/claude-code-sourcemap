@@ -2,18 +2,18 @@
 // restored from claude-code 2.1.195 (deminified) — module f1l
 // matched 2.1.88 source: src/utils/contextSuggestions.ts
 // class=modified  jaccard=0.5397  score=0.8198  fileCov=0.6124
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f1l] deps: rtr
 ((d1l = u1l("vim", "Editor mode")), (p1l = u1l("output-style", "Output style")));
 function h1l(e) {
   let t = [];
   return (
-    BPf(e, t),
+    checkNearCapacity(e, t),
     UPf(e, t),
-    jPf(e, t),
-    GPf(e, t),
-    WPf(e, t),
+    checkReadResultBloat(e, t),
+    checkMemoryBloat(e, t),
+    checkAutoCompactDisabled(e, t),
     t.sort((n, r) => {
       if (n.severity !== r.severity) return n.severity === "warning" ? -1 : 1;
       return (r.savingsTokens ?? 0) - (n.savingsTokens ?? 0);
@@ -21,7 +21,7 @@ function h1l(e) {
     t
   );
 }
-function BPf(e, t) {
+function checkNearCapacity(e, t) {
   if (e.percentage >= g1l)
     t.push({
       severity: "warning",
@@ -39,11 +39,11 @@ function UPf(e, t) {
     let r = n.callTokens + n.resultTokens,
       o = (r / e.rawMaxTokens) * 100;
     if (o < m1l || r < iNo) continue;
-    let s = FPf(n.name, r, o);
+    let s = getLargeToolSuggestion(n.name, r, o);
     if (s) t.push(s);
   }
 }
-function FPf(e, t, n) {
+function getLargeToolSuggestion(e, t, n) {
   let r = gl(t);
   switch (e) {
     case Co:
@@ -92,7 +92,7 @@ function FPf(e, t, n) {
       return null;
   }
 }
-function jPf(e, t) {
+function checkReadResultBloat(e, t) {
   if (!e.messageBreakdown) return;
   let r = e.messageBreakdown.toolCallsByType.find((a) => a.name === Ds);
   if (!r) return;
@@ -109,7 +109,7 @@ function jPf(e, t) {
       savingsTokens: Math.floor(r.resultTokens * 0.3),
     });
 }
-function GPf(e, t) {
+function checkMemoryBloat(e, t) {
   let n = e.memoryFiles.reduce((o, s) => o + s.tokens, 0),
     r = (n / e.rawMaxTokens) * 100;
   if (r >= OPf && n >= NPf) {
@@ -126,7 +126,7 @@ function GPf(e, t) {
     });
   }
 }
-function WPf(e, t) {
+function checkAutoCompactDisabled(e, t) {
   if (!e.isAutoCompactEnabled && !Oe.DISABLE_COMPACT && e.percentage >= 50 && e.percentage < g1l)
     t.push({
       severity: "info",

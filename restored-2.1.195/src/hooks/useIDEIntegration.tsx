@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module T0c
 // matched 2.1.88 source: src/hooks/useIDEIntegration.tsx
 // class=modified  jaccard=0.3967  score=0.7944  fileCov=0.4421
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module T0c] deps: azo, EW, Ye, HVt, uo, ii, LL, je, co, DE, __, Hoe, Jt, qJ, cAe, hN, J_t, hP, xF, bk, Mp, Sj, YI, sbt
 ((cYo = require("crypto")), (ONe = R(rt(), 1)));
-function C0c(e) {
+function useIDEIntegration(e) {
   let t = v0c.c(7),
     {
       autoConnectIdeFlag: n,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vWt
 // matched 2.1.88 source: src/utils/gracefulShutdown.ts
 // class=modified  jaccard=0.177  score=0.3012  fileCov=0.3005
-// note: deminified; 19 identifiers renamed (exports/displayName/curated)
+// note: deminified; 20 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: flushAnalyticsSinks, setupGracefulShutdown, resetShutdownState, releaseShutdownClaim, recordUncaughtAndCheckBreaker, protoDataString, ownDataString, markStartupActionStarted, isShuttingDown, hasProxyInChain, gracefulShutdownSync, gracefulShutdown, getPendingShutdownForTesting, exitIfStartupNeverMounted, emitScrollTelemetrySummary, disarmOrphanCheck, cleanupTerminalModes, claimShutdown, STARTUP_MOUNT_GRACE_MS
 // [unwrapped __esm module vWt]
@@ -77,7 +77,7 @@ claude ${o}--resume ${n}
         (c4n = true));
     } catch {}
 }
-function _ho(e) {
+function forceExit(e) {
   if (XDe !== void 0) (clearTimeout(XDe), (XDe = void 0));
   try {
     Cu.get(process.stdout)?.drainStdin();
@@ -98,7 +98,7 @@ function gracefulShutdownSync(e = 0, t = "other", n) {
         }),
           cleanupTerminalModes(),
           yho(),
-          _ho(e));
+          forceExit(e));
       })
       .catch(() => {})));
 }
@@ -231,7 +231,7 @@ async function gracefulShutdown(e = 0, t = "other", n) {
     s = o();
   ((XDe = setTimeout(
     (l) => {
-      (cleanupTerminalModes(), yho(), _ho(l));
+      (cleanupTerminalModes(), yho(), forceExit(l));
     },
     Math.max(5000, s + 3500),
     e,
@@ -285,7 +285,7 @@ async function gracefulShutdown(e = 0, t = "other", n) {
 `,
       );
     } catch {}
-  _ho(e);
+  forceExit(e);
 }
 function l1a(e) {
   if (!e.error_message) return {};

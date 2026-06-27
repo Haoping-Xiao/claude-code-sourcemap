@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module lmn
 // matched 2.1.88 source: src/utils/settings/types.ts
 // class=modified  jaccard=0.1713  score=0.2628  fileCov=0.3299
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lmn] deps: Xr, Ox, QH, sr, xws
 ((cLr = ve(() => Lws())), (Rws = ve(() => Lws("allow"))));
-function $ws(e) {
+function PermissionsSchema(e) {
   return H.object({
     allow: H.array(Rws()).optional().describe("List of permission rules for allowed operations"),
     deny: H.array(cLr()).optional().describe("List of permission rules for denied operations"),
@@ -25,7 +25,7 @@ function $ws(e) {
       .describe("Additional directories to include in the permission scope"),
   }).passthrough();
 }
-function uLr(e) {
+function SettingsSchema(e) {
   return H.object({
     $schema: H.string().optional().describe("JSON Schema reference for Claude Code settings"),
     apiKeyHelper: H.string()
@@ -184,7 +184,7 @@ function uLr(e) {
       .describe(
         "Include built-in commit and PR workflow instructions in Claude's system prompt (default: true)",
       ),
-    permissions: $ws(e).optional().describe("Tool usage permissions configuration"),
+    permissions: PermissionsSchema(e).optional().describe("Tool usage permissions configuration"),
     model: H.string().optional().describe("Override the default model used by Claude Code"),
     fallbackModel: H.array(H.string())
       .optional()
@@ -972,7 +972,7 @@ function dLr(e) {
 function $et(e) {
   return "serverName" in e && e.serverName !== void 0;
 }
-function dmn(e) {
+function isMcpServerCommandEntry(e) {
   return "serverCommand" in e && e.serverCommand !== void 0;
 }
 function pmn(e) {

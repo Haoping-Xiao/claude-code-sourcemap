@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pfr
 // matched 2.1.88 source: src/components/FeedbackSurvey/FeedbackSurveyView.tsx
 // class=modified  jaccard=0.1614  score=0.5768  fileCov=0.183
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pfr] deps: Ye, Yj, ps
 ((qme = R(rt(), 1)),
@@ -23,7 +23,7 @@ function hYo(e, t = false) {
   if (e === "4") return t;
   return e === "0" || e === "1" || e === "2" || e === "3";
 }
-function ffr(e) {
+function FeedbackSurveyView(e) {
   let t = hRc.c(25),
     {
       onSelect: n,
@@ -34,7 +34,7 @@ function ffr(e) {
       mountDelayMs: a,
       showNotSure: l,
     } = e,
-    c = s === void 0 ? pwm : s,
+    c = s === void 0 ? DEFAULT_MESSAGE : s,
     u = i === void 0 ? true : i,
     d = l === void 0 ? false : l,
     p;
@@ -131,4 +131,4 @@ var hRc,
   uwm,
   gRc,
   dwm = 10,
-  pwm = "How is Claude doing this session? (optional)";
+  DEFAULT_MESSAGE = "How is Claude doing this session? (optional)";

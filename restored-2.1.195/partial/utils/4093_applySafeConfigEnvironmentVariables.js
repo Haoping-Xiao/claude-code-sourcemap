@@ -66,7 +66,7 @@ function grf(e) {
 function Oyt(e, t) {
   return frf(prf(drf(grf(crf(e)), t)));
 }
-function applySafeConfigEnvironmentVariables() {
+function TRUSTED_SETTING_SOURCES() {
   if (lsl(), E8t === void 0) E8t = Nyt.hostOrchestrated ? new Set(Object.keys(process.env)) : null;
   Byt = {}, Object.assign(process.env, Oyt(Dt().env, "globalConfig"));
   for (let e of hrf) {

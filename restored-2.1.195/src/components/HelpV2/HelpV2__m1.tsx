@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Z7l
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0438  score=0.1079  fileCov=0.0686
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z7l]
 Q7l = {
@@ -44,7 +44,7 @@ function J9f() {
       })`
     : e;
 }
-function Q9f(e) {
+function HelpV2(e) {
   let t = eXl.c(21),
     { onDone: n } = e,
     r;
@@ -260,7 +260,7 @@ var eXl,
   Jsr,
   yR,
   Z9f = async (e) =>
-    yR.jsx(Q9f, {
+    yR.jsx(HelpV2, {
       onDone: e,
     }),
   e8f,

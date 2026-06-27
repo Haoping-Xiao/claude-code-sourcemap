@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Amo
 // matched 2.1.88 source: src/utils/claudeCodeHints.ts
 // class=modified  jaccard=0.1987  score=0.3285  fileCov=0.3347
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Amo] deps: ft, db, gb, je, fn, At, Iv, vf, L7, lj, YPn, WI, ZC
 ((Mpt = require("fs/promises")), (u6 = require("path")));
@@ -35,7 +35,7 @@
     license: (e) => typeof e === "string",
     keywords: (e) => Array.isArray(e) && e.every((t) => typeof t === "string"),
   }));
-function LGt(e, t) {
+function extractClaudeCodeHints(e, t) {
   if (!e.includes("<claude-code-hint"))
     return {
       hints: [],

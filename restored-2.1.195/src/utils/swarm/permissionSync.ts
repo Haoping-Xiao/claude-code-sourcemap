@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module l0o
 // matched 2.1.88 source: src/utils/swarm/permissionSync.ts
 // class=modified  jaccard=0.3296  score=0.7651  fileCov=0.3667
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l0o] deps: Xr
 $pf = Dy({
@@ -26,7 +26,7 @@ $pf = Dy({
 function Opf() {
   return `perm-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 }
-function d7n(e) {
+function createPermissionRequest(e) {
   let t = e.teamName || rp(),
     n = e.workerId || PD(),
     r = e.workerName || Oh(),
@@ -58,15 +58,15 @@ function X_t() {
     t = PD();
   return !!e && !!t && !Npf();
 }
-async function _gl(e) {
+async function getLeaderName(e) {
   let t = e || rp();
   if (!t) return null;
   let n = await hoe(t);
   if (!n) return (T(`[PermissionSync] Team file not found for team: ${t}`), null);
   return n.members.find((o) => o.agentId === n.leadAgentId)?.name || Hd;
 }
-async function p7n(e) {
-  let t = await _gl(e.teamName);
+async function sendPermissionRequestViaMailbox(e) {
+  let t = await getLeaderName(e.teamName);
   if (!t)
     return (T("[PermissionSync] Cannot send permission request: leader name not found"), false);
   try {
@@ -101,7 +101,7 @@ async function p7n(e) {
     );
   }
 }
-async function f7n(e, t, n, r) {
+async function sendPermissionResponseViaMailbox(e, t, n, r) {
   let o = r || rp();
   if (!o)
     return (T("[PermissionSync] Cannot send permission response: team name not found"), false);
@@ -137,7 +137,7 @@ async function f7n(e, t, n, r) {
 function bgl() {
   return `sandbox-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 }
-async function Sgl(e, t, n) {
+async function sendSandboxPermissionRequestViaMailbox(e, t, n) {
   let r = n || rp();
   if (!r)
     return (
@@ -145,7 +145,7 @@ async function Sgl(e, t, n) {
       Le("swarm_sandbox_permission_request", "no_team_name"),
       false
     );
-  let o = await _gl(r);
+  let o = await getLeaderName(r);
   if (!o)
     return (
       T("[PermissionSync] Cannot send sandbox permission request: leader name not found"),
@@ -195,7 +195,7 @@ async function Sgl(e, t, n) {
     );
   }
 }
-async function m7n(e, t, n, r, o) {
+async function sendSandboxPermissionResponseViaMailbox(e, t, n, r, o) {
   let s = o || rp();
   if (!s)
     return (

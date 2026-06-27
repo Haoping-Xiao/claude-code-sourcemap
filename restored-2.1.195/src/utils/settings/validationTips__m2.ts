@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xjt
 // matched 2.1.88 source: src/utils/settings/validationTips.ts
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0521  score=0.0968  fileCov=0.1015
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xjt] deps: _1
 Pca = new Set();
@@ -85,7 +85,7 @@ function sup(e, t) {
   }
   return r;
 }
-function Cut() {
+function TIP_MATCHERS() {
   if (T5e()) return vut("policySettings");
   let e = [];
   for (let t of $w()) e.push(...vut(t));

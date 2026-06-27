@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LL
 // matched 2.1.88 source: src/utils/sessionActivity.ts
 // class=modified  jaccard=0.2254  score=0.3372  fileCov=0.4045
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LL] deps: ii, AIo, Qhl, MIo, RN, xMe, $pe, Ppe, I8e, pyt, T6t, q0o, Dyl, v_l, C_l, HU, mRo, hRo, jjn, R8e, N_l, gAe, V9t, fbl, m4t, H3t, I3t, Q1n, Dgo, uwo, Ebl, Rbl, Bbl, Gbl, zbl, Qbl, dre, IX, bk, i$, ZWe, Gy, f6, wr, fn, _m, jv
 ((Yyf = [
@@ -45,7 +45,7 @@ function ZAl() {
 function Zzt() {
   return gLo.get(hLo()) ?? null;
 }
-function eHl(e) {
+function startHeartbeatTimer(e) {
   (_Lo(e),
     (e.heartbeatTimer = setInterval(
       (t) => {
@@ -61,7 +61,7 @@ function eHl(e) {
       e,
     )));
 }
-function o_f(e) {
+function startIdleTimer(e) {
   if ((_Lo(e), e.activityCallback === null)) return;
   e.idleTimer = setTimeout(
     (t) => {
@@ -76,7 +76,8 @@ function _Lo(e) {
 }
 function tHl(e) {
   let t = ZAl();
-  if (((t.activityCallback = e), t.refcount > 0 && t.heartbeatTimer === null)) eHl(t);
+  if (((t.activityCallback = e), t.refcount > 0 && t.heartbeatTimer === null))
+    startHeartbeatTimer(t);
 }
 function nHl() {
   let e = Zzt();
@@ -98,7 +99,7 @@ function bLo(e) {
 function sHl() {
   return Zzt()?.mainLoopRefcount ?? 0;
 }
-function zXn(e, t) {
+function startSessionActivity(e, t) {
   let n = ZAl();
   if ((n.refcount++, t === void 0)) (n.mainLoopRefcount++, yLo?.(n.mainLoopRefcount));
   if ((n.activeReasons.set(e, (n.activeReasons.get(e) ?? 0) + 1), n.refcount === 1)) {
@@ -106,7 +107,7 @@ function zXn(e, t) {
       ((n.oldestActivityStartedAt = Date.now()),
       n.activityCallback !== null && n.heartbeatTimer === null)
     )
-      eHl(n);
+      startHeartbeatTimer(n);
   }
   if (n.cleanupHandle === null) {
     let r = hLo();
@@ -137,7 +138,7 @@ function KXn(e, t) {
   if (r > 0) n.activeReasons.set(e, r);
   else n.activeReasons.delete(e);
   if (n.refcount === 0 && n.heartbeatTimer !== null)
-    (clearInterval(n.heartbeatTimer), (n.heartbeatTimer = null), o_f(n));
+    (clearInterval(n.heartbeatTimer), (n.heartbeatTimer = null), startIdleTimer(n));
 }
 var QAl = 30000,
   r_f = "cli",

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Dgt
 // matched 2.1.88 source: src/utils/status.tsx
 // class=modified  jaccard=0.408  score=0.6438  fileCov=0.5269
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function OVn(e) {
   let t = e.map((n) => n.filter((r) => !r.antOnly));
@@ -11,7 +11,7 @@ function OVn(e) {
 function rKa() {
   return [];
 }
-function oKa(e, t = null, n) {
+function buildIDEProperties(e, t = null, n) {
   let r = e?.find((o) => o.name === "ide");
   if (t) {
     let o = yk(t.ideType),
@@ -78,7 +78,7 @@ function oKa(e, t = null, n) {
   }
   return [];
 }
-function sKa(e = [], t) {
+function buildMcpProperties(e = [], t) {
   let n = e.filter((s) => s.name !== "ide");
   if (!n.length) return [];
   let r = {
@@ -119,7 +119,7 @@ function sKa(e = [], t) {
     },
   ];
 }
-async function iKa() {
+async function buildMemoryDiagnostics() {
   if (gce()) return [];
   let e = await Wv(),
     t = XRe(e),
@@ -133,7 +133,7 @@ async function iKa() {
     n
   );
 }
-function aKa() {
+function buildSettingSourcesProperties() {
   return [
     {
       label: "Setting sources",
@@ -193,7 +193,7 @@ async function cKa() {
     t.push("No write permissions for auto-updates");
   return t;
 }
-function NVn() {
+function buildAccountProperties() {
   let e = X4e();
   if (!e) return [];
   let t = [];
@@ -229,7 +229,7 @@ function NVn() {
     });
   return t;
 }
-function BVn() {
+function buildAPIProviderProperties() {
   let e = fr(),
     t = [];
   if (e !== "firstParty") {

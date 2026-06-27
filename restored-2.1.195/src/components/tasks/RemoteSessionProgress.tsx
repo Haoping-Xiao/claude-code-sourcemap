@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module f8l
 // matched 2.1.88 source: src/components/tasks/RemoteSessionProgress.tsx
 // class=modified  jaccard=0.4149  score=0.7  fileCov=0.5046
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f8l] deps: Yyt, Ye, ps, ii, LL, es, co, Bs, vi, Ko, eIo, rjo, YHe
 ((d8l = R(lt(), 1)), (AS = R(se(), 1)));
-function ajo(e, t, n, r) {
+function formatReviewStageCounts(e, t, n, r) {
   if (!e) return `${t} found \xB7 ${n} verified`;
   if (e === "synthesizing") {
     let o = [`${n} verified`];
@@ -54,7 +54,7 @@ function sjo(e, t, n) {
   else if (e > r.current && t !== o.current) ((r.current += 1), (o.current = t));
   return r.current;
 }
-function s5f(e) {
+function ReviewRainbowLine(e) {
   let t = lsr.c(20),
     { session: n } = e,
     r = G_(),
@@ -140,7 +140,7 @@ function s5f(e) {
   }
   let b;
   if (t[7] !== m || t[8] !== a || t[9] !== h || t[10] !== g)
-    ((b = !a ? "setting up" : ajo(a.stage, m, g, h)),
+    ((b = !a ? "setting up" : formatReviewStageCounts(a.stage, m, g, h)),
       (t[7] = m),
       (t[8] = a),
       (t[9] = h),
@@ -186,13 +186,13 @@ function s5f(e) {
   else x = t[19];
   return x;
 }
-function pJt(e) {
+function RemoteSessionProgress(e) {
   let t = lsr.c(11),
     { session: n } = e;
   if (n.isRemoteReview) {
     let a;
     if (t[0] !== n)
-      ((a = $H.jsx(s5f, {
+      ((a = $H.jsx(ReviewRainbowLine, {
         session: n,
       })),
         (t[0] = n),

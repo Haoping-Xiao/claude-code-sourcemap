@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module adr
 // matched 2.1.88 source: src/hooks/useArrowKeyHistory.tsx
 // class=modified  jaccard=0.3692  score=0.6509  fileCov=0.4604
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module adr] deps: si, Ed, kt, uo, ft, nbe, HN, Cen, Ye, id, mLe, Vyt, ZU, X8o, oo, QOe, fn, es, jjt, aE, e6o, Cc, n6o, Ahc, Pzn, vhc, Ihc, Rhc
 ((jhc = R(lt(), 1)),
@@ -33,7 +33,7 @@ async function Xdm(e, t) {
     ((p7e = null), (ldr = 0), (i6o = void 0));
   }
 }
-function Whc(e, t, n, r, o, s) {
+function useArrowKeyHistory(e, t, n, r, o, s) {
   let [i, a] = wS.useState(0),
     [l, c] = wS.useState(null),
     u = wS.useRef(0),

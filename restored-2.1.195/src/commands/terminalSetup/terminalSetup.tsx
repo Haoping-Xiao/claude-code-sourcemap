@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module YQr
 // matched 2.1.88 source: src/commands/terminalSetup/terminalSetup.tsx
 // class=modified  jaccard=0.4376  score=0.6226  fileCov=0.5956
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldOfferTerminalSetup, setupTerminal, readVSCodeScrollSensitivity, markBackslashReturnUsed, isShiftEnterKeyBindingInstalled, installVSCodeGpuAccelerationOff, hasUsedBackslashReturn, getNativeCSIuTerminalDisplayName, enableITerm2ClipboardAccess, call
 // [unwrapped __esm module YQr] deps: f0e, AW, db, je, At, Bi
 ((I8i = require("os")), (qce = require("path")));
-function MDn() {
+function isVSCodeRemoteSSH() {
   let e = process.env.VSCODE_GIT_ASKPASS_MAIN ?? "",
     t = process.env.PATH ?? "";
   return (
@@ -46,28 +46,28 @@ async function setupTerminal(e) {
   let t = "";
   switch (Oe.terminal) {
     case "Apple_Terminal":
-      t = await l6d(e);
+      t = await enableOptionAsMetaForTerminal(e);
       break;
     case "vscode":
-      ((t = await QQr("VSCode", e)),
+      ((t = await installBindingsForVSCodeTerminal("VSCode", e)),
         (t += await JQr("VSCode", e)),
         (t += await installVSCodeGpuAccelerationOff("VSCode", e)));
       break;
     case "cursor":
-      ((t = await QQr("Cursor", e)),
+      ((t = await installBindingsForVSCodeTerminal("Cursor", e)),
         (t += await JQr("Cursor", e)),
         (t += await installVSCodeGpuAccelerationOff("Cursor", e)));
       break;
     case "windsurf":
-      ((t = await QQr("Devin Desktop", e)),
+      ((t = await installBindingsForVSCodeTerminal("Devin Desktop", e)),
         (t += await JQr("Devin Desktop", e)),
         (t += await installVSCodeGpuAccelerationOff("Devin Desktop", e)));
       break;
     case "alacritty":
-      t = await c6d(e);
+      t = await installBindingsForAlacritty(e);
       break;
     case "zed":
-      t = await u6d(e);
+      t = await installBindingsForZed(e);
       break;
     case null:
       break;
@@ -187,7 +187,7 @@ function rZr(e) {
 }
 async function readVSCodeScrollSensitivity() {
   let e = a6d();
-  if (!e || MDn()) return null;
+  if (!e || isVSCodeRemoteSSH()) return null;
   try {
     let t = await CI.readFile(UU.join(await ODn(e), "settings.json"), {
         encoding: "utf-8",
@@ -222,7 +222,7 @@ function a6d() {
 }
 async function JQr(e, t) {
   let n = wt.dim(`For smoother scrolling, set "${TUt}": ${vUt} in ${e} settings.`);
-  if (MDn()) return `${n}${Ha}`;
+  if (isVSCodeRemoteSSH()) return `${n}${Ha}`;
   let r = UU.join(await ODn(e), "settings.json");
   try {
     let o = "{}",
@@ -272,7 +272,7 @@ async function installVSCodeGpuAccelerationOff(e, t) {
   let n = wt.dim(
     `To fix garbled text, set "${LDn}": "${XQr}" in ${e} settings (undo: set it back to "auto").`,
   );
-  if (MDn()) return (It("terminal_setup_gpu_accel", "remote_ssh"), `${n}${Ha}`);
+  if (isVSCodeRemoteSSH()) return (It("terminal_setup_gpu_accel", "remote_ssh"), `${n}${Ha}`);
   let r = UU.join(await ODn(e), "settings.json");
   try {
     let o = "{}",
@@ -333,8 +333,8 @@ async function installVSCodeGpuAccelerationOff(e, t) {
     );
   }
 }
-async function QQr(e = "VSCode", t) {
-  if (MDn())
+async function installBindingsForVSCodeTerminal(e = "VSCode", t) {
+  if (isVSCodeRemoteSSH())
     return `${Io("warning", t)(`Cannot install keybindings from a remote ${e} session.`)}${Ha}${Ha}${e} keybindings must be installed on your local machine, not the remote server.${Ha}${Ha}To install the Shift+Enter keybinding:${Ha}1. Open ${e} on your local machine (not connected to remote)${Ha}2. Open the Command Palette (Cmd/Ctrl+Shift+P) \u2192 "Preferences: Open Keyboard Shortcuts (JSON)"${Ha}3. Add this keybinding (the file must be a JSON array):${Ha}${Ha}${wt.dim(`[
   {
     "key": "shift+enter",
@@ -404,7 +404,7 @@ async function QQr(e = "VSCode", t) {
     );
   }
 }
-async function x8i(e) {
+async function enableOptionAsMetaForProfile(e) {
   let { code: t } = await $n("/usr/libexec/PlistBuddy", [
     "-c",
     `Add :'Window Settings':'${e}':useOptionAsMetaKey bool true`,
@@ -426,7 +426,7 @@ async function x8i(e) {
   }
   return true;
 }
-async function k8i(e) {
+async function disableAudioBellForProfile(e) {
   let { code: t } = await $n("/usr/libexec/PlistBuddy", [
     "-c",
     `Add :'Window Settings':'${e}':Bell bool false`,
@@ -448,7 +448,7 @@ async function k8i(e) {
   }
   return true;
 }
-async function l6d(e) {
+async function enableOptionAsMetaForTerminal(e) {
   let t = (PEs() ?? 0) >= 27;
   try {
     if (!(await C8i()))
@@ -467,13 +467,13 @@ async function l6d(e) {
     if (i !== 0 || !s.trim()) throw Error("Failed to read startup Terminal.app profile");
     let a = false,
       l = r.trim(),
-      c = t ? false : await x8i(l),
-      u = await k8i(l);
+      c = t ? false : await enableOptionAsMetaForProfile(l),
+      u = await disableAudioBellForProfile(l);
     if (c || u) a = true;
     let d = s.trim();
     if (d !== l) {
-      let m = t ? false : await x8i(d),
-        g = await k8i(d);
+      let m = t ? false : await enableOptionAsMetaForProfile(d),
+        g = await disableAudioBellForProfile(d);
       if (m || g) a = true;
     }
     if (!a)
@@ -502,7 +502,7 @@ async function l6d(e) {
     else throw Error(`${o} No backup was available to restore from.`);
   }
 }
-async function c6d(e) {
+async function installBindingsForAlacritty(e) {
   let n = [],
     r = process.env.XDG_CONFIG_HOME;
   if (r) n.push(UU.join(r, "alacritty", "alacritty.toml"));
@@ -571,7 +571,7 @@ chars = "\\u001B\\r"
     );
   }
 }
-async function u6d(e) {
+async function installBindingsForZed(e) {
   let t = UU.join(Dne.homedir(), ".config", "zed"),
     n = UU.join(t, "keymap.json");
   try {

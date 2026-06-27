@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SEc
 // matched 2.1.88 source: src/hooks/useCanUseTool.tsx
 // class=modified  jaccard=0.3379  score=0.6838  fileCov=0.4005
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function EEc(e, t) {
   return W1.includes(e)
@@ -11,7 +11,7 @@ function EEc(e, t) {
       })
     : De(t);
 }
-function _hm(e) {
+function useCanUseTool(e) {
   let t = AEc.c(10),
     n = ks(),
     { recordDenial: r, getDenials: o, removeDenial: s } = BAt(),

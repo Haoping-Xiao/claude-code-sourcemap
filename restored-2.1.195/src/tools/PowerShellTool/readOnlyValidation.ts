@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wbt
 // matched 2.1.88 source: src/tools/PowerShellTool/readOnlyValidation.ts
 // class=modified  jaccard=0.647  score=0.8664  fileCov=0.7187
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Wbt] deps: Qi, Lo, Is, bde, xue, sr, ULo, dze
 ((JHl = require("fs")),
@@ -473,7 +473,7 @@ function qLo(e) {
   }
   return false;
 }
-function VLo(e, t, n) {
+function isAllowlistedCommand(e, t, n) {
   if (n.mode === "bypassPermissions" || n.mode === "dontAsk")
     return {
       behavior: "passthrough",

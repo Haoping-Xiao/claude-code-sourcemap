@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mNa
 // matched 2.1.88 source: src/services/remoteManagedSettings/index.ts
 // class=modified  jaccard=0.2877  score=0.4751  fileCov=0.4216
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mNa] deps: Xr
 fNa = ve(() =>
@@ -12,7 +12,7 @@ fNa = ve(() =>
     settings: H.record(H.string(), H.unknown()),
   }),
 );
-function Zho() {
+function initializeRemoteManagedSettingsLoadingPromise() {
   if ((yNa(), nPe)) return;
   if (HJ())
     nPe = new Promise((e) => {
@@ -36,7 +36,7 @@ function Zho() {
         ));
     });
 }
-function uMp() {
+function getRemoteManagedSettingsEndpoint() {
   let e = km();
   if (e) return `${e.url}/managed/settings`;
   return `${$s().BASE_API_URL}/api/claude_code/settings`;
@@ -62,7 +62,7 @@ function yNa() {
     if (tyo()) await bVe();
   });
 }
-function pMp() {
+function getRemoteSettingsAuthHeaders() {
   let e = km();
   if (e)
     return {
@@ -95,13 +95,13 @@ function pMp() {
     error: "No authentication available",
   };
 }
-async function fMp(e, t = {}) {
+async function fetchWithRetry(e, t = {}) {
   let n = await dMp();
   if (n) return n;
   let r = null,
     o = km() && !t.background ? 0 : aMp;
   for (let s = 1; s <= o + 1; s++) {
-    if (((r = await _Na(e)), r.success)) return r;
+    if (((r = await fetchRemoteManagedSettings(e)), r.success)) return r;
     if (r.skipRetry) return r;
     if (s > o) return r;
     let i = TJ(s);
@@ -109,11 +109,11 @@ async function fMp(e, t = {}) {
   }
   return r;
 }
-async function _Na(e, t = !1) {
+async function fetchRemoteManagedSettings(e, t = !1) {
   let n;
   try {
     (await ch(), await oxe());
-    let r = pMp();
+    let r = getRemoteSettingsAuthHeaders();
     if (((n = r.accessToken), r.error))
       return {
         success: !1,
@@ -121,7 +121,7 @@ async function _Na(e, t = !1) {
         errorKind: "no_auth_available",
         skipRetry: !0,
       };
-    let o = uMp(),
+    let o = getRemoteManagedSettingsEndpoint(),
       s = {
         ...r.headers,
         "User-Agent": dy(),
@@ -226,7 +226,10 @@ async function _Na(e, t = !1) {
           await ZB(n);
           let l = Ws()?.accessToken;
           if (l && l !== n)
-            return (G("tengu_remote_settings_401_force_refresh_retry", {}), _Na(e, !0));
+            return (
+              G("tengu_remote_settings_401_force_refresh_retry", {}),
+              fetchRemoteManagedSettings(e, !0)
+            );
         }
         return {
           success: !1,
@@ -260,7 +263,7 @@ async function _Na(e, t = !1) {
     }
   }
 }
-async function hNa(e) {
+async function saveSettings(e) {
   try {
     let t = Lfn(),
       n = await kft.open(t, "w", 384);
@@ -284,7 +287,7 @@ async function bNa() {
     await kft.unlink(e);
   } catch {}
 }
-async function nyo(e = {}) {
+async function fetchAndLoadRemoteManagedSettings(e = {}) {
   if (!HJ())
     return {
       settings: null,
@@ -304,7 +307,7 @@ async function nyo(e = {}) {
   let n = xhe(),
     r = n ? m4n(n) : void 0;
   try {
-    let o = await fMp(r, e);
+    let o = await fetchWithRetry(r, e);
     if (!o.success) {
       if (
         (Le("remote_managed_settings_pull", o.errorKind ?? "remote_managed_settings_fetch_failed"),
@@ -350,7 +353,7 @@ async function nyo(e = {}) {
         );
       return (
         wet(s),
-        await hNa(o.salvagedSettings ?? s),
+        await saveSettings(o.salvagedSettings ?? s),
         T("Remote settings: Applied new settings successfully"),
         xe("remote_managed_settings_pull", {
           status: We("updated"),
@@ -363,7 +366,7 @@ async function nyo(e = {}) {
     }
     return (
       wet(s),
-      await hNa({}),
+      await saveSettings({}),
       T("Remote settings: Saved empty sentinel (404 response)"),
       xe("remote_managed_settings_pull", {
         status: We("no_content"),
@@ -396,9 +399,9 @@ async function L4n() {
     });
   if (xhe() && E6) (E6(), (E6 = null));
   try {
-    let { settings: e, fetchSucceeded: t } = await nyo();
+    let { settings: e, fetchSucceeded: t } = await fetchAndLoadRemoteManagedSettings();
     if (HJ() && !Ihe()) ENa();
-    if (e !== null) R4n();
+    if (e !== null) loadRemoteManagedSettings();
     return t;
   } finally {
     SNa();
@@ -407,19 +410,19 @@ async function L4n() {
 function SNa() {
   if (E6) (E6(), (E6 = null));
 }
-async function SVe() {
-  if ((ANa(), _Ve(), (nPe = null), (E6 = null), !HJ())) return (R4n(), !0);
-  Zho();
+async function refreshRemoteManagedSettings() {
+  if ((ANa(), _Ve(), (nPe = null), (E6 = null), !HJ())) return (loadRemoteManagedSettings(), !0);
+  initializeRemoteManagedSettingsLoadingPromise();
   let e;
   try {
-    ({ fetchSucceeded: e } = await nyo());
+    ({ fetchSucceeded: e } = await fetchAndLoadRemoteManagedSettings());
   } finally {
     SNa();
   }
   if ((T("Remote settings: Refreshed after auth change"), !Ihe())) ENa();
-  return (R4n(), e);
+  return (loadRemoteManagedSettings(), e);
 }
-function R4n() {
+function loadRemoteManagedSettings() {
   try {
     (Dvs(), n$.notifyChange("policySettings"));
   } catch (e) {
@@ -445,11 +448,12 @@ async function gMp() {
   let e = xhe(),
     t = e ? De(e) : null;
   try {
-    await nyo({
+    await fetchAndLoadRemoteManagedSettings({
       background: !0,
     });
     let n = xhe();
-    if ((n ? De(n) : null) !== t) (T("Remote settings: Changed during background poll"), R4n());
+    if ((n ? De(n) : null) !== t)
+      (T("Remote settings: Changed during background poll"), loadRemoteManagedSettings());
   } catch {}
 }
 function ENa() {

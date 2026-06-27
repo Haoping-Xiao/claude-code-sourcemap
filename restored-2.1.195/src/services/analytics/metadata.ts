@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kst
 // matched 2.1.88 source: src/services/analytics/metadata.ts
 // class=modified  jaccard=0.4716  score=0.7383  fileCov=0.5663
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kst]
 ((wzr = [
@@ -34,7 +34,7 @@ function sg() {
 function Rst() {
   return ut(process.env.OTEL_LOG_TOOL_CONTENT);
 }
-function hOi(e, t) {
+function isAnalyticsToolDetailsLoggingEnabled(e, t) {
   if (process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent") return true;
   if (e === "claudeai-proxy") return true;
   if (t && pOi(t)) return true;
@@ -43,9 +43,9 @@ function hOi(e, t) {
 }
 function fke(e, t) {
   if (xzr.has(e)) return true;
-  if (t === void 0) return hOi(void 0, void 0);
+  if (t === void 0) return isAnalyticsToolDetailsLoggingEnabled(void 0, void 0);
   if ("url" in t && mOi(t.url)) return true;
-  return hOi(t.type, dke(t));
+  return isAnalyticsToolDetailsLoggingEnabled(t.type, dke(t));
 }
 function lW(e, t) {
   if (!t) return {};
@@ -68,7 +68,7 @@ function fkn(e) {
     mcpToolName: r,
   };
 }
-function kzr(e, t, n) {
+function extractSkillName(e, t, n) {
   if (e !== "Skill") return;
   if (typeof t === "object" && t !== null && "skill" in t && typeof t.skill === "string")
     return t.skill;
@@ -115,13 +115,13 @@ function nNt(e, t, n) {
   }
   let i = fkn(e);
   if (i) ((r.mcp_server_name = i.serverName), (r.mcp_tool_name = i.mcpToolName));
-  let a = kzr(e, t, n);
+  let a = extractSkillName(e, t, n);
   if (a) r.skill_name = a;
   let l = Rzr(e, t);
   if (l) r.subagent_type = l;
   return r;
 }
-function Izr(e, t = 0) {
+function truncateToolInputValue(e, t = 0) {
   if (typeof e === "string") {
     if (e.length > B$d) return `${e.slice(0, U$d)}\u2026[${e.length} chars]`;
     return e;
@@ -129,21 +129,21 @@ function Izr(e, t = 0) {
   if (typeof e === "number" || typeof e === "boolean" || e === null || e === void 0) return e;
   if (t >= F$d) return "<nested>";
   if (Array.isArray(e)) {
-    let n = e.slice(0, dkn).map((r) => Izr(r, t + 1));
+    let n = e.slice(0, dkn).map((r) => truncateToolInputValue(r, t + 1));
     if (e.length > dkn) n.push(`\u2026[${e.length} items]`);
     return n;
   }
   if (typeof e === "object") {
     let n = Object.entries(e).filter(([o]) => !o.startsWith("_")),
-      r = n.slice(0, dkn).map(([o, s]) => [o, Izr(s, t + 1)]);
+      r = n.slice(0, dkn).map(([o, s]) => [o, truncateToolInputValue(s, t + 1)]);
     if (n.length > dkn) r.push(["\u2026", `${n.length} keys`]);
     return Object.fromEntries(r);
   }
   return String(e);
 }
-function SOi(e) {
+function extractToolInputForTelemetry(e) {
   if (!sg()) return;
-  let t = Izr(e),
+  let t = truncateToolInputValue(e),
     n = De(t);
   if (n.length > yOi) n = n.slice(0, yOi) + "\u2026[truncated]";
   return n;
@@ -211,7 +211,7 @@ function Z9(e) {
   if (K$d.has(e)) return kh(e);
   return We("other");
 }
-function Y$d() {
+function getAgentIdentification() {
   let e = WPt.getStore();
   if (e) {
     let a = {
@@ -327,7 +327,7 @@ async function mkn(e = {}) {
     sweBenchRunId: process.env.SWE_BENCH_RUN_ID || "",
     sweBenchInstanceId: process.env.SWE_BENCH_INSTANCE_ID || "",
     sweBenchTaskId: process.env.SWE_BENCH_TASK_ID || "",
-    ...Y$d(),
+    ...getAgentIdentification(),
     ...(Di() && {
       subscriptionType: Di(),
     }),
@@ -339,7 +339,7 @@ async function mkn(e = {}) {
     }),
   };
 }
-function TOi(e, t, n = {}) {
+function to1PEventFormat(e, t, n = {}) {
   let {
       envContext: r,
       processMetrics: o,

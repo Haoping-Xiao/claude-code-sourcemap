@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module UX
 // matched 2.1.88 source: src/utils/imageValidation.ts
 // class=modified (alt of src/utils/imageValidation.ts)  jaccard=0.2325  score=0.5653  fileCov=0.2831
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UX] deps: ft, wr, Rd, k0, Oot, Ao, c5e, Ls, Fh
 Jct = `Send feedback with /feedback or learn more: ${u5e}`;
 daa = `They may flag safe, normal content as well. ${Vap}`;
-function Eaa(e) {
+function isBase64ImageBlock(e) {
   if (typeof e !== "object" || e === null) return false;
   if (!("type" in e) || e.type !== "image") return false;
   if (!("source" in e) || typeof e.source !== "object" || e.source === null) return false;
@@ -41,12 +41,12 @@ function Cjt(e, t) {
     let s = o.message;
     if (!("content" in s) || !Array.isArray(s.content)) continue;
     for (let i of s.content) {
-      if (Eaa(i)) {
+      if (isBase64ImageBlock(i)) {
         Aaa(i, ++r, t, n);
         continue;
       }
       if (Yap(i)) {
-        for (let a of i.content) if (Eaa(a)) Aaa(a, ++r, t, n);
+        for (let a of i.content) if (isBase64ImageBlock(a)) Aaa(a, ++r, t, n);
       }
     }
   }

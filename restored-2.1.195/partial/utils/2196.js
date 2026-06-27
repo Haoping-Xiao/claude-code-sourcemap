@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Cv
 // matched 2.1.88 source: src/utils/teleport/api.ts
 // class=partial  jaccard=0.1584  score=0.3764  fileCov=0.2147
-// note: low-confidence suggestion: src/utils/teleport/api.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/teleport/api.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cv] deps: Hp, Rc, H0, Gx, Xr, dn, oo, je, BR, At, vn, Ls, Jt
 _zr = require("crypto"), oOi = [2000, 4000, 8000, 16000], yzr = oOi.length;
@@ -42,7 +42,7 @@ function R$d(e) {
       }
   }
 }
-async function _3e(e, t, n, r = {}, o = false) {
+async function fetchCodeSessionsFromSessionsAPI(e, t, n, r = {}, o = false) {
   if (!r.bypassEssentialTrafficOnly && true && Vi()) return {
     ok: false,
     reason: "essential-traffic-only"
@@ -119,14 +119,14 @@ async function _3e(e, t, n, r = {}, o = false) {
   } catch (u) {
     if (l !== null && !o && !r.isBackground && po.isAxiosError(u) && u.response?.status === 401) {
       let d = await aOi(l);
-      if (d === "retry") return _3e(e, t, n, r, true);
+      if (d === "retry") return fetchCodeSessionsFromSessionsAPI(e, t, n, r, true);
       if (d !== null) return d;
     }
     throw u;
   }
   if (l !== null && c.status === 401 && !o && !r.isBackground) {
     let u = await aOi(l);
-    if (u === "retry") return _3e(e, t, n, r, true);
+    if (u === "retry") return fetchCodeSessionsFromSessionsAPI(e, t, n, r, true);
     if (u !== null) return u;
   }
   return {

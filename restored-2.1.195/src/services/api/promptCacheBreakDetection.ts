@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b5e
 // matched 2.1.88 source: src/services/api/promptCacheBreakDetection.ts
 // class=modified  jaccard=0.4509  score=0.5934  fileCov=0.6526
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function tca() {
   return process.env.CLAUDE_CODE_ENTRYPOINT === "claude-desktop";
@@ -57,12 +57,12 @@ function S5e() {
 function mcp(e) {
   return e.includes("haiku");
 }
-function iNn(e, t) {
+function getTrackingKey(e, t) {
   if (e === "compact") return "repl_main_thread";
   for (let n of dcp) if (e.startsWith(n)) return t || e;
   return null;
 }
-function Jla(e) {
+function stripCacheControl(e) {
   return e.map((t) => {
     if (!("cache_control" in t)) return t;
     let { cache_control: n, ...r } = t;
@@ -166,7 +166,7 @@ function bcp(e) {
   for (let n of e) t += mao(n)?.length ?? 0;
   return t;
 }
-function Scp(e, t, n) {
+function buildDiffableContent(e, t, n) {
   let r = e.map((s) => s.text).join(`
 
 `),
@@ -193,7 +193,7 @@ ${r}
 ${o}
 `;
 }
-function oca(e) {
+function recordPromptState(e) {
   try {
     let {
         system: t,
@@ -213,10 +213,10 @@ function oca(e) {
         extraBodyParams: g,
         messagesForAPI: h,
       } = e,
-      y = iNn(r, s);
+      y = getTrackingKey(r, s);
     if (!y) return;
-    let b = Jla(t).filter((de) => !Qla(de)),
-      _ = Jla(n),
+    let b = stripCacheControl(t).filter((de) => !Qla(de)),
+      _ = stripCacheControl(n),
       S = Sut(b),
       A = Sut(_),
       v = Sut(
@@ -227,7 +227,7 @@ function oca(e) {
       I = () => b.map((de) => Sut(de)),
       k = () => b.map((de) => mao(de)?.length ?? 0),
       D = bcp(b),
-      P = () => Scp(t, n, o),
+      P = () => buildDiffableContent(t, n, o),
       O = i ?? false,
       L = [...l].sort(),
       M = m === void 0 ? "" : String(m),
@@ -375,8 +375,8 @@ function oca(e) {
     ke(t);
   }
 }
-async function sca(e, t, n, r, o, s, i) {
-  let a = iNn(e, o);
+async function checkResponseForCacheBreak(e, t, n, r, o, s, i) {
+  let a = getTrackingKey(e, o);
   if (!a) return;
   let l = V8.get(a);
   if (!l) return;
@@ -527,12 +527,12 @@ function ica(e, t) {
   }
 }
 function aca(e, t) {
-  let n = iNn(e, t),
+  let n = getTrackingKey(e, t),
     r = n ? V8.get(n) : void 0;
   if (r) ((r.cacheDeletionsPending = true), S5e());
 }
 function Bjt(e, t) {
-  let n = t ?? iNn(e),
+  let n = t ?? getTrackingKey(e),
     r = n ? V8.get(n) : void 0;
   if (r) ((r.prevCacheReadTokens = null), S5e());
 }

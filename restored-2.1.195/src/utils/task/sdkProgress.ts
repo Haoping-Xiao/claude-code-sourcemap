@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hoe
 // matched 2.1.88 source: src/utils/task/sdkProgress.ts
 // class=modified  jaccard=0.3309  score=0.3588  fileCov=0.8095
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hoe] deps: PR, ft, dn, Un, kt, pke, ZE, tP, G1, lf, EI, lC, dqe, Lx, EAe, BE, je, wr, fn, At, sF, co, DD, xUt, Ao, Ls, dr, Epe, Jt, sr, m1, u$, Ote, pht, dyt, Yf, p8t, QH, Cwo
 ((rol = require("crypto")), (U8e = require("fs/promises")), (F8e = require("path")));
@@ -35,7 +35,7 @@ Prior tool calls may carry a harness-authored "outcome" annotation: ` +
 ((lol = /\r\n?|[\u2028\u2029\u0085\v\f]/g), (gnf = /[\p{Cf}\p{Default_Ignorable_Code_Point}]/gu));
 hnf = /[\u2028\u2029\u0085]/g;
 Snf = /[^a-zA-Z0-9._-]/g;
-function vyt(e) {
+function emitTaskProgress(e) {
   zv({
     type: "system",
     subtype: "task_progress",

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xxl
 // matched 2.1.88 source: src/query.ts
 // class=modified  jaccard=0.2256  score=0.2964  fileCov=0.4858
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xxl] deps: kt, Du, fb, lT
 ((zxl = ["um", "user", "Hmm", "User", "Benutzer", "Human", "usr", "usem", "Mensch", "usuario"]),
@@ -16,7 +16,7 @@ function ewf() {
   let e = Oe.CLAUDE_CODE_FABLE_BRIDGE_DIALOG_TIMEOUT_MS;
   return e !== void 0 && e > 0 ? e : 60000;
 }
-function* twf(e, t, n, r) {
+function* yieldMissingToolResultBlocks(e, t, n, r) {
   for (let o of e) {
     let s = o.message.content.filter((i) => i.type === "tool_use");
     for (let i of s) {
@@ -131,7 +131,7 @@ function Sfe(e, t, n) {
     .markApiFailure(r, XE(), n.error, K8(n) ?? n.errorDetails ?? "")
     .catch(() => {});
 }
-function Qxl(e) {
+function isWithheldMaxOutputTokens(e) {
   return e?.type === "assistant" && e.apiError === "max_output_tokens";
 }
 function swf(e, t) {
@@ -155,7 +155,7 @@ async function* CN(e) {
   let t = [],
     n;
   try {
-    n = yield* iwf(e, t);
+    n = yield* queryLoop(e, t);
   } finally {
     let r = e.toolUseContext.agentId;
     if (r) uQn(r, "subagent_exit", e.querySource);
@@ -187,7 +187,7 @@ async function* CN(e) {
   }
   return n;
 }
-async function* iwf(e, t) {
+async function* queryLoop(e, t) {
   let {
       systemPrompt: n,
       userContext: r,
@@ -1301,7 +1301,7 @@ async function* iwf(e, t) {
             let Mo = !1;
             if (ZCl(Ut)) Mo = !0;
             if (gPo(Ut)) ((Mo = !0), pn.push(Ut));
-            if (Qxl(Ut)) Mo = !0;
+            if (isWithheldMaxOutputTokens(Ut)) Mo = !0;
             if (!Mo) {
               if (pn.length > 0) (yield* pn, (pn.length = 0));
               if (
@@ -1569,7 +1569,7 @@ async function* iwf(e, t) {
             : [],
         ),
       );
-      yield* twf(ie, it, p, Tt);
+      yield* yieldMissingToolResultBlocks(ie, it, p, Tt);
       let un = jl({
         content: it,
         now: p.now,
@@ -1831,7 +1831,7 @@ async function* iwf(e, t) {
           }
         );
       }
-      if ((Yxl(ie, Me), Qxl(Ne))) {
+      if ((Yxl(ie, Me), isWithheldMaxOutputTokens(Ne))) {
         if (V < owf) {
           let pt = Rn({
             content:

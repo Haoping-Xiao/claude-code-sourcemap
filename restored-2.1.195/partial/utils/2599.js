@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module glt
 // matched 2.1.88 source: src/utils/plugins/pluginStartupCheck.ts
 // class=partial  jaccard=0.0728  score=0.2727  fileCov=0.0903
-// note: low-confidence suggestion: src/utils/plugins/pluginStartupCheck.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/plugins/pluginStartupCheck.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module glt] deps: dr
 reo = new Map();
@@ -29,7 +29,7 @@ function OPn() {
   }
   return r;
 }
-function HKd(e) {
+function getPluginEditableScopes(e) {
   switch (e.overriddenBy) {
     case "projectSettings":
       return `To opt out, set "enabledPlugins": {"${e.pluginId}": false} in .claude/settings.local.json.`;
@@ -45,5 +45,5 @@ function HKd(e) {
 }
 function seo(e) {
   let t = wG(e.overriddenBy);
-  return `"${e.pluginId}" is enabled by ${t} settings, which override your user setting. ${HKd(e)}`;
+  return `"${e.pluginId}" is enabled by ${t} settings, which override your user setting. ${getPluginEditableScopes(e)}`;
 }

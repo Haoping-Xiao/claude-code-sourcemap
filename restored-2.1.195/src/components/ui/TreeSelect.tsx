@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module LVl
 // matched 2.1.88 source: src/components/ui/TreeSelect.tsx
 // class=modified  jaccard=0.4686  score=0.6618  fileCov=0.6161
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LVl] deps: Ye, ps, LL, wpe, es, _a, Cc, Bs, Ko, CH, qXt
 ((kVl = R(lt(), 1)), (Nor = R(rt(), 1)), (S3 = R(se(), 1)));
-function PVl(e) {
+function TreeSelect(e) {
   let t = DVl.c(48),
     {
       nodes: n,

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Yil
 // matched 2.1.88 source: src/components/messages/UserPromptMessage.tsx
 // class=modified  jaccard=0.2455  score=0.5177  fileCov=0.3183
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yil] deps: si, nIo, Ye, oIo, m1, LW
 ((Xzn = R(lt(), 1)), (fE = R(se(), 1)));
-function Qil(e) {
+function UserPromptMessage(e) {
   let t = Jil.c(23),
     { addMargin: n, param: r, isTranscriptMode: o, timestamp: s } = e,
     { text: i } = r,

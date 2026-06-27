@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module peo
 // matched 2.1.88 source: src/utils/telemetryAttributes.ts
 // class=modified  jaccard=0.1929  score=0.2903  fileCov=0.3653
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module peo] deps: zb, ft, Jt
 LKd = ve(() =>
@@ -52,7 +52,7 @@ function LKi(e) {
   }
   return true;
 }
-function QGe() {
+function getTelemetryAttributes() {
   let e = oW(),
     t = Rt(),
     n = WPn(),

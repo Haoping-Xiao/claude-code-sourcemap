@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module FIl
 // matched 2.1.88 source: src/services/autoDream/autoDream.ts
 // class=modified  jaccard=0.3216  score=0.5792  fileCov=0.4197
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function avf() {
+function getConfig() {
   let e = at("tengu_onyx_plover", null);
   return {
     minHours:
@@ -25,10 +25,10 @@ function lvf() {
 function cvf() {
   return false;
 }
-function zIl() {
+function initAutoDream() {
   let e = 0;
   VIl = async function (n, r) {
-    let o = avf(),
+    let o = getConfig(),
       s = cvf();
     if (!s && !lvf()) return;
     let i;
@@ -126,7 +126,7 @@ ${c.map((P) => `- ${P}`).join(`
           overrides: {
             abortController: m,
           },
-          onMessage: uvf(g, f),
+          onMessage: makeDreamProgressWatcher(g, f),
           skipCacheWrite: hSt(),
         });
       ((h = "completion"), iyl(g, f));
@@ -179,7 +179,7 @@ ${c.map((P) => `- ${P}`).join(`
     }
   };
 }
-function uvf(e, t) {
+function makeDreamProgressWatcher(e, t) {
   return (n) => {
     if (n.type !== "assistant") return;
     let r = "",

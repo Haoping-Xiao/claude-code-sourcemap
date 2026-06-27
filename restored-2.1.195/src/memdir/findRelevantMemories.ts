@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QMo
 // matched 2.1.88 source: src/memdir/findRelevantMemories.ts
 // class=modified  jaccard=0.232  score=0.3486  fileCov=0.4095
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QMo] deps: Qi, Un, wr, dr
 xCf = ["off", "infinite", "fixed", "countdown"];
@@ -62,7 +62,16 @@ async function _0l(e, t, n, r, o = new Set(), s = Promise.resolve([])) {
       },
     ],
     d = new Map((a?.memories ?? []).map((y) => [y.filename, y])),
-    { selectedMemories: p, selectedKnowledgeIds: f } = await $Cf(e, t, n, u, d, i, r, c),
+    { selectedMemories: p, selectedKnowledgeIds: f } = await selectRelevantMemories(
+      e,
+      t,
+      n,
+      u,
+      d,
+      i,
+      r,
+      c,
+    ),
     m = new Map(c.map((y) => [y.id, y])),
     g = Uo(f)
       .map((y) => m.get(y))
@@ -79,7 +88,7 @@ async function _0l(e, t, n, r, o = new Set(), s = Promise.resolve([])) {
     knowledge: g,
   };
 }
-async function $Cf(e, t, n, r, o, s, i, a) {
+async function selectRelevantMemories(e, t, n, r, o, s, i, a) {
   let l =
       a.length > 0
         ? `

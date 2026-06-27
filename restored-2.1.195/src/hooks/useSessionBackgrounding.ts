@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module N0c
 // matched 2.1.88 source: src/hooks/useSessionBackgrounding.ts
 // class=modified  jaccard=0.6628  score=0.8717  fileCov=0.7344
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N0c] deps: si, ft, gq, ft, Ger, tC, _i, Ye, uo, db, oc, bm, co, KI, y_, gP, Ost, Vl, vi
 ((M0c = require("fs/promises")), ($0c = require("path")), (ivt = R(rt(), 1)), (NNe = R(se(), 1)));
-function B0c({
+function useSessionBackgrounding({
   setMessages: e,
   setIsLoading: t,
   resetLoadingState: n,

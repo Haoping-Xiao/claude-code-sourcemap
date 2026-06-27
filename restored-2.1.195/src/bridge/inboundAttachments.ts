@@ -2,10 +2,10 @@
 // restored from claude-code 2.1.195 (deminified) — module j8o
 // matched 2.1.88 source: src/bridge/inboundAttachments.ts
 // class=modified  jaccard=0.5943  score=0.8533  fileCov=0.662
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveInboundAttachments, resolveAndPrepend, prependPathRefs, extractInboundAttachments
-function a7e(e) {
+function debug(e) {
   T(`[bridge:inbound-attach] ${e}`);
 }
 function extractInboundAttachments(e) {
@@ -19,10 +19,10 @@ function kum(e) {
 function Rum() {
   return yen.join(tr(), "uploads", Rt());
 }
-async function Lum(e) {
+async function resolveOne(e) {
   let t = LN();
   if (!t) {
-    a7e("skip: no oauth token");
+    debug("skip: no oauth token");
     return;
   }
   let n;
@@ -37,12 +37,12 @@ async function Lum(e) {
         validateStatus: () => true,
       });
     if (l.status !== 200) {
-      a7e(`fetch ${e.file_uuid} failed: status=${l.status}`);
+      debug(`fetch ${e.file_uuid} failed: status=${l.status}`);
       return;
     }
     n = Buffer.from(l.data);
   } catch (a) {
-    a7e(`fetch ${e.file_uuid} threw: ${a}`);
+    debug(`fetch ${e.file_uuid} threw: ${a}`);
     return;
   }
   let r = kum(e.file_name),
@@ -55,16 +55,16 @@ async function Lum(e) {
     }),
       await Dur.writeFile(i, n));
   } catch (a) {
-    a7e(`write ${i} failed: ${a}`);
+    debug(`write ${i} failed: ${a}`);
     return;
   }
-  return (a7e(`resolved ${e.file_uuid} \u2192 ${i} (${n.length} bytes)`), i);
+  return (debug(`resolved ${e.file_uuid} \u2192 ${i} (${n.length} bytes)`), i);
 }
 async function resolveInboundAttachments(e) {
   if (e.length === 0) return "";
-  if ((a7e(`resolving ${e.length} attachment(s)`), !LN()))
-    return (a7e("skip: no oauth token"), It("bridge_attachment_resolve", "no_token"), "");
-  let n = (await Promise.all(e.map(Lum))).filter((r) => r !== void 0);
+  if ((debug(`resolving ${e.length} attachment(s)`), !LN()))
+    return (debug("skip: no oauth token"), It("bridge_attachment_resolve", "no_token"), "");
+  let n = (await Promise.all(e.map(resolveOne))).filter((r) => r !== void 0);
   if (n.length === 0) return (Le("bridge_attachment_resolve", "all_failed"), "");
   if (n.length < e.length) It("bridge_attachment_resolve", "partial_failed");
   else xe("bridge_attachment_resolve");

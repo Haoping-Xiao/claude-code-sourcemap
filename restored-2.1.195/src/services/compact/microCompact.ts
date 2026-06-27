@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mLe
 // matched 2.1.88 source: src/services/compact/microCompact.ts
 // class=modified  jaccard=0.1011  score=0.251  fileCov=0.1448
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mLe] deps: ft, je, wr, vn, Yf, Jt, zb, kt, Du
 ((Zla = require("fs")), (sNn = require("fs/promises")), (eca = require("path")));
@@ -51,7 +51,7 @@ hcp = new Set([
   "content",
   "cache_control",
 ]);
-function Tcp(e) {
+function calculateToolResultTokens(e) {
   if (!e.content) return 0;
   if (typeof e.content === "string") return If(e.content);
   return e.content.reduce((t, n) => {
@@ -60,7 +60,7 @@ function Tcp(e) {
     return t;
   }, 0);
 }
-function vcp(e) {
+function estimateMessageTokens(e) {
   let t = [];
   for (let n of e)
     if (n.type === "assistant" && Array.isArray(n.message.content)) {
@@ -81,10 +81,10 @@ function uca(e, t) {
   return n;
 }
 function wcp(e) {
-  return typeof e === "string" && (e === aNn || e.startsWith(Ecp));
+  return typeof e === "string" && (e === TIME_BASED_MC_CLEARED_MESSAGE || e.startsWith(Ecp));
 }
 function hao(e, t) {
-  let n = vcp(e),
+  let n = estimateMessageTokens(e),
     r = Math.max(1, t),
     o = new Set(n.slice(-r)),
     s = new Set(n.filter((l) => !o.has(l))),
@@ -95,7 +95,7 @@ function hao(e, t) {
       if (l.type !== "user" || !Array.isArray(l.message.content)) continue;
       for (let c of l.message.content)
         if (c.type === "tool_result" && s.has(c.tool_use_id) && !wcp(c.content))
-          ((i += Tcp(c)), a.push(c));
+          ((i += calculateToolResultTokens(c)), a.push(c));
     }
   return {
     clearSet: s,
@@ -114,8 +114,8 @@ function Ujt(e, t, n) {
         let l =
           Array.isArray(i.content) &&
           i.content.some((c) => c.type === "image" || c.type === "document")
-            ? aNn
-            : (n?.get(i.tool_use_id) ?? aNn);
+            ? TIME_BASED_MC_CLEARED_MESSAGE
+            : (n?.get(i.tool_use_id) ?? TIME_BASED_MC_CLEARED_MESSAGE);
         if (i.content === l) return i;
         return (
           (o = true),
@@ -136,14 +136,14 @@ function Ujt(e, t, n) {
       : r;
   });
 }
-async function dca(e, t, n) {
+async function maybeTimeBasedMicrocompact(e, t, n) {
   let { keepSet: r, tokensSaved: o, candidates: s } = hao(e, n.keepRecent);
   if (o < gao) return null;
   let i = new Set(s.map((c) => c.tool_use_id)),
     a = new Map();
   for (let c of s) {
     let u = c.content ? await n.persist?.(c.content, c.tool_use_id) : null;
-    a.set(c.tool_use_id, u ?? aNn);
+    a.set(c.tool_use_id, u ?? TIME_BASED_MC_CLEARED_MESSAGE);
   }
   let l = Ujt(e, i, a);
   if (
@@ -169,7 +169,7 @@ async function dca(e, t, n) {
     clearedContent: a,
   };
 }
-var aNn = "[Old tool result content cleared]",
+var TIME_BASED_MC_CLEARED_MESSAGE = "[Old tool result content cleared]",
   Ecp = "<persisted-output>",
   gao = 20000,
   Acp = 2000,

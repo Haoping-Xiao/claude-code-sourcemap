@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gKe
 // matched 2.1.88 source: src/components/Settings/Status.tsx
 // class=modified  jaccard=0.0948  score=0.2015  fileCov=0.1518
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gKe] deps: _i, m8, Tc, Ye, PUt
 ((mKe = R(lt(), 1)),
@@ -17,7 +17,7 @@
 Km = Object.assign(HRf, {
   Row: ARf,
 });
-function CRf() {
+function buildPrimarySection() {
   let e = Rt(),
     t = Oe.CLAUDE_CODE_TMUX_SESSION,
     r =
@@ -176,7 +176,7 @@ function kRf(e) {
   }
   return n;
 }
-function HMl(e) {
+function Status(e) {
   let t = ltr.c(20),
     { context: n, diagnosticsPromise: r } = e,
     o = Ht(PRf),
@@ -185,7 +185,7 @@ function HMl(e) {
     a;
   if (t[0] !== n || t[1] !== o || t[2] !== s || t[3] !== i)
     ((a = OVn([
-      CRf(),
+      buildPrimarySection(),
       xRf({
         mainLoopModel: o,
         mcp: s,

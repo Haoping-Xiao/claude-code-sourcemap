@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rit
 // matched 2.1.88 source: src/ink/colorize.ts
 // class=modified  jaccard=0.7699  score=0.8658  fileCov=0.8742
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rit]
 mRn = new Set();
@@ -80,7 +80,7 @@ function rFd(e, t, n) {
     g = (e - p) ** 2 + (t - f) ** 2 + (n - m) ** 2;
   return (e - d) ** 2 + (t - d) ** 2 + (n - d) ** 2 < g ? u : a;
 }
-function Lit(e, t) {
+function applyTextStyles(e, t) {
   let n = e;
   if (t.inverse) n = oGe(n);
   if (t.strikethrough) n = wt.strikethrough(n);
@@ -88,13 +88,13 @@ function Lit(e, t) {
   if (t.italic) n = wt.italic(n);
   if (t.bold) n = wt.bold(n);
   if (t.dim) n = wt.dim(n);
-  if (t.color) n = zke(n, t.color, "foreground");
-  if (t.backgroundColor) n = zke(n, t.backgroundColor, "background");
+  if (t.color) n = colorize(n, t.color, "foreground");
+  if (t.backgroundColor) n = colorize(n, t.backgroundColor, "background");
   return n;
 }
 function V_e(e, t) {
   if (!t) return e;
-  return zke(e, t, "foreground");
+  return colorize(e, t, "foreground");
 }
 var zUd,
   KUd,
@@ -111,7 +111,7 @@ var zUd,
   p7r,
   oFd,
   sFd,
-  zke = (e, t, n) => {
+  colorize = (e, t, n) => {
     if (!t) return e;
     if (t.startsWith("ansi:"))
       switch (t.substring(5)) {

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module O8e
 // matched 2.1.88 source: src/services/toolUseSummary/toolUseSummaryGenerator.ts
 // class=modified  jaccard=0.5205  score=0.7254  fileCov=0.6482
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function tIl({
+async function generateToolUseSummary({
   tools: e,
   signal: t,
   isNonInteractiveSession: n,
@@ -14,8 +14,8 @@ async function tIl({
   if (e.length === 0) return null;
   try {
     let s = e.map((c) => {
-        let u = eIl(c.input, 300),
-          d = eIl(c.output, 300);
+        let u = truncateJson(c.input, 300),
+          d = truncateJson(c.output, 300);
         return `Tool: ${c.name}
 Input: ${u}
 Output: ${d}`;
@@ -29,7 +29,7 @@ Output: ${d}`;
         : "",
       l = (
         await R$({
-          systemPrompt: Sc([bTf]),
+          systemPrompt: Sc([TOOL_USE_SUMMARY_SYSTEM_PROMPT]),
           userPrompt: `${i}Tools completed:
 
 ${s}
@@ -66,7 +66,7 @@ Label:`,
     );
   }
 }
-function eIl(e, t) {
+function truncateJson(e, t) {
   try {
     let n = De(e);
     if (n.length <= t) return n;
@@ -75,7 +75,7 @@ function eIl(e, t) {
     return "[unable to serialize]";
   }
 }
-var bTf = `Write a short summary label describing what these tool calls accomplished. It appears as a single-line row in a mobile app and truncates around 30 characters, so think git-commit-subject, not sentence.
+var TOOL_USE_SUMMARY_SYSTEM_PROMPT = `Write a short summary label describing what these tool calls accomplished. It appears as a single-line row in a mobile app and truncates around 30 characters, so think git-commit-subject, not sentence.
 
 Keep the verb in past tense and the most distinctive noun. Drop articles, connectors, and long location context first.
 

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ZSe
 // matched 2.1.88 source: src/utils/computerUse/appNames.ts
 // class=modified (alt of src/utils/computerUse/appNames.ts)  jaccard=0.1177  score=0.815  fileCov=0.1209
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function uxp(e, t) {
+function isUserFacingPath(e, t) {
   if (ixp.some((n) => e.startsWith(n))) return true;
   if (t) {
     let n = t.endsWith("/") ? `${t}Applications/` : `${t}/Applications/`;
@@ -40,7 +40,7 @@ function xRa(e, t) {
   let { alwaysKept: n, rest: r } = e.reduce(
       (i, a) => {
         if (lxp.has(a.bundleId)) i.alwaysKept.push(a.displayName);
-        else if (uxp(a.path, t) && !dxp(a.displayName)) i.rest.push(a.displayName);
+        else if (isUserFacingPath(a.path, t) && !dxp(a.displayName)) i.rest.push(a.displayName);
         return i;
       },
       {

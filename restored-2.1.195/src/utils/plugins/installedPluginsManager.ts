@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lE
 // matched 2.1.88 source: src/utils/plugins/installedPluginsManager.ts
 // class=modified  jaccard=0.3394  score=0.5089  fileCov=0.5047
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lE] deps: Ree, Sae, Qi, xpn, Xr, dn, Un, Rx, Pw, je, fn, At, Bi, ys, sa, Mx, vf, dr, ICe, Jt, I8, KPn, vq, dFt, iWe, _k, gHe, oWe, S$o, B1, $g, i5, WI, ZC, E$o
 ((gRl = require("fs/promises")), ($d = require("path")));
@@ -47,13 +47,13 @@ G$ = Cn(async (e) => {
   return ((t[e].lastUpdated = new Date().toISOString()), await sse(t), r);
 });
 rer = new Map();
-function DYt() {
+function getInstalledPluginsFilePath() {
   return lz.join(kI(), "installed_plugins.json");
 }
-function dxf() {
+function getInstalledPluginsV2FilePath() {
   return lz.join(kI(), "installed_plugins_v2.json");
 }
-function vRl() {
+function clearInstalledPluginsCache() {
   ((ase = null), (Yze = null), T("Cleared installed plugins cache"));
 }
 function PYt(e, t, n) {
@@ -69,16 +69,16 @@ function PYt(e, t, n) {
     recovered: n,
   });
 }
-function pxf() {
+function migrateToSinglePluginFile() {
   if (LYt) return;
   let e = qt(),
-    t = DYt(),
-    n = dxf();
+    t = getInstalledPluginsFilePath(),
+    n = getInstalledPluginsV2FilePath();
   try {
     try {
       (e.renameSync(n, t), T("Renamed installed_plugins_v2.json to installed_plugins.json"));
-      let i = ex();
-      (HRl(i), (LYt = true));
+      let i = loadInstalledPluginsV2();
+      (cleanupLegacyCache(i), (LYt = true));
       return;
     } catch (i) {
       let a = on(i);
@@ -106,7 +106,7 @@ function pxf() {
         T(
           `Converted installed_plugins.json from V1 to V2 format (${Object.keys(i.plugins).length} plugins)`,
         ),
-        HRl(a));
+        cleanupLegacyCache(a));
     }
     LYt = true;
   } catch (r) {
@@ -121,7 +121,7 @@ function pxf() {
     (PYt("migrate-single-file", r, true), (LYt = true));
   }
 }
-function HRl(e) {
+function cleanupLegacyCache(e) {
   let t = qt(),
     n = fOe();
   try {
@@ -156,7 +156,7 @@ function HRl(e) {
 }
 function v$o() {
   let e = qt(),
-    t = DYt(),
+    t = getInstalledPluginsFilePath(),
     n;
   try {
     n = e.readFileSync(t, {
@@ -192,9 +192,9 @@ function w$o(e) {
     plugins: t,
   };
 }
-function ex() {
+function loadInstalledPluginsV2() {
   if (ase !== null) return ase;
-  let e = DYt();
+  let e = getInstalledPluginsFilePath();
   try {
     let t = v$o();
     if (t) {
@@ -241,9 +241,9 @@ function ex() {
     );
   }
 }
-function NSt(e) {
+function saveInstalledPluginsV2(e) {
   let t = qt(),
-    n = DYt();
+    n = getInstalledPluginsFilePath();
   try {
     t.mkdirSync(kI());
     let r = De(e, null, 2);
@@ -258,8 +258,8 @@ function NSt(e) {
     );
   }
 }
-function aer(e, t, n) {
-  let r = BL(),
+function removePluginInstallation(e, t, n) {
+  let r = loadInstalledPluginsFromDisk(),
     o = r.plugins[e];
   if (!o) return;
   if (
@@ -267,11 +267,11 @@ function aer(e, t, n) {
     r.plugins[e].length === 0)
   )
     delete r.plugins[e];
-  (NSt(r), T(`Removed installation for ${e} at scope ${t}`));
+  (saveInstalledPluginsV2(r), T(`Removed installation for ${e} at scope ${t}`));
 }
 function wRl(e) {
   if (e.length === 0) return;
-  let t = BL(),
+  let t = loadInstalledPluginsFromDisk(),
     n = false;
   for (let { oldId: r, newId: o } of e) {
     let s = t.plugins[r];
@@ -283,13 +283,13 @@ function wRl(e) {
     n = true;
   }
   if (!n) return;
-  (NSt(t), fxf());
+  (saveInstalledPluginsV2(t), fxf());
 }
 function MYt() {
-  if (Yze === null) Yze = ex();
+  if (Yze === null) Yze = loadInstalledPluginsV2();
   return Yze;
 }
-function BL() {
+function loadInstalledPluginsFromDisk() {
   try {
     let e = v$o();
     if (e) {
@@ -315,8 +315,8 @@ function BL() {
     );
   }
 }
-function CRl(e, t, n, r, o, s, i) {
-  let a = BL(),
+function updateInstallationPathOnDisk(e, t, n, r, o, s, i) {
+  let a = loadInstalledPluginsFromDisk(),
     l = a.plugins[e];
   if (!l) {
     T(`Cannot update ${e} on disk: plugin not found in installed plugins`);
@@ -328,17 +328,17 @@ function CRl(e, t, n, r, o, s, i) {
     if (i !== void 0) c.resolvedVersion = i;
     else delete c.resolvedVersion;
     if (((c.lastUpdated = new Date().toISOString()), s !== void 0)) c.gitCommitSha = s;
-    let u = DYt();
+    let u = getInstalledPluginsFilePath();
     (oj(u, De(a, null, 2)), (ase = null), T(`Updated ${e} on disk to version ${o} at ${r}`));
   } else T(`Cannot update ${e} on disk: no installation for scope ${t}`);
 }
 function fxf() {
   Yze = null;
 }
-async function IRl() {
-  pxf();
+async function initializeVersionedPlugins() {
+  migrateToSinglePluginFile();
   try {
-    await I$o();
+    await migrateFromEnabledPlugins();
   } catch (t) {
     if (gd(t) || t instanceof SyntaxError)
       T(`Plugin migration skipped (fs/parse error): ${be(t)}`, {
@@ -350,13 +350,13 @@ async function IRl() {
   let e = MYt();
   T(`Initialized versioned plugins system with ${Object.keys(e.plugins).length} plugins`);
 }
-function ARl(e) {
+function removeAllPluginsForMarketplace(e) {
   if (!e)
     return {
       orphanedPaths: [],
       removedPluginIds: [],
     };
-  let t = BL(),
+  let t = loadInstalledPluginsFromDisk(),
     n = `@${e}`,
     r = new Set(),
     o = [];
@@ -365,7 +365,7 @@ function ARl(e) {
     for (let i of t.plugins[s] ?? []) if (i.installPath) r.add(i.installPath);
     (delete t.plugins[s], o.push(s), T(`Removed installed plugin for marketplace removal: ${s}`));
   }
-  if (o.length > 0) NSt(t);
+  if (o.length > 0) saveInstalledPluginsV2(t);
   return {
     orphanedPaths: Array.from(r),
     removedPluginIds: o,
@@ -379,19 +379,19 @@ function ler(...e) {
   return t ? `v${t}` : void 0;
 }
 function b5(e) {
-  let n = ex().plugins[e];
+  let n = loadInstalledPluginsV2().plugins[e];
   if (!n || n.length === 0) return false;
   if (!n.some(_Oe)) return false;
   return jo().enabledPlugins?.[e] !== void 0;
 }
 function Xze(e) {
-  let n = ex().plugins[e];
+  let n = loadInstalledPluginsV2().plugins[e];
   if (!n || n.length === 0) return false;
   if (!n.some((o) => o.scope === "user" || o.scope === "managed")) return false;
   return jo().enabledPlugins?.[e] !== void 0;
 }
-function C$o(e, t, n = "user", r) {
-  let o = BL(),
+function addInstalledPlugin(e, t, n = "user", r) {
+  let o = loadInstalledPluginsFromDisk(),
     s = o.plugins[e] || [],
     i = s.findIndex((d) => d.scope === n && d.projectPath === r),
     a = i >= 0 && s[i]?.auto !== true,
@@ -417,20 +417,20 @@ function C$o(e, t, n = "user", r) {
   if (u) s[i] = c;
   else s.push(c);
   ((o.plugins[e] = s),
-    NSt(o),
+    saveInstalledPluginsV2(o),
     (Yze = null),
     T(`${u ? "Updated" : "Added"} installed plugin: ${e} (scope: ${n})`));
 }
 function xRl(e, t, n) {
-  let r = BL(),
+  let r = loadInstalledPluginsFromDisk(),
     s = r.plugins[e]?.find((i) => i.scope === t && i.projectPath === n);
   if (s?.auto !== true) return false;
-  return (delete s.auto, NSt(r), (Yze = null), true);
+  return (delete s.auto, saveInstalledPluginsV2(r), (Yze = null), true);
 }
 async function ier(e) {
   return (await _Rt(e)) ?? void 0;
 }
-async function TRl(e, t) {
+async function getPluginVersionFromManifest(e, t) {
   let n = qt(),
     r = lz.join(e, ".claude-plugin", "plugin.json");
   try {
@@ -442,7 +442,7 @@ async function TRl(e, t) {
     return (T(`Could not extract version from manifest for ${t}`), "unknown");
   }
 }
-async function I$o() {
+async function migrateFromEnabledPlugins() {
   let e = new Set(
       Object.entries(yn("policySettings")?.enabledPlugins || {})
         .filter(([d, p]) => d.includes("@") && p === true)
@@ -502,7 +502,7 @@ async function I$o() {
     l = {};
   if (s)
     l = {
-      ...ex().plugins,
+      ...loadInstalledPluginsV2().plugins,
     };
   let c = 0,
     u = 0;
@@ -562,7 +562,11 @@ async function I$o() {
           A = void 0;
         if (typeof y.source === "string") {
           let v = lz.join(b, y.source);
-          if (((S = await TRl(v, d)), (A = await ier(v)), S === "unknown" && y.version))
+          if (
+            ((S = await getPluginVersionFromManifest(v, d)),
+            (A = await ier(v)),
+            S === "unknown" && y.version)
+          )
             S = y.version;
           if (S === "unknown" && A) S = A.substring(0, 12);
           _ = BN(d, S);
@@ -588,7 +592,7 @@ async function I$o() {
             !("sha" in y.source && y.source.sha) &&
             !y.version &&
             /^[0-9a-f]{12}(-[0-9a-f]{8})?$/.test(k) &&
-            (await TRl(I, d)) === "unknown";
+            (await getPluginVersionFromManifest(I, d)) === "unknown";
           if (((S = D ? void 0 : k), D))
             T(
               `External plugin ${d} is ref-tracked (cache dir ${k} is a git SHA, no manifest version), recording without a version so the loader re-clones it each load`,
@@ -617,7 +621,7 @@ async function I$o() {
     }
   }
   if (!s || c > 0 || u > 0)
-    (NSt({
+    (saveInstalledPluginsV2({
       version: 2,
       plugins: l,
     }),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ejn
 // matched 2.1.88 source: src/utils/Shell.ts
 // class=modified  jaccard=0.3207  score=0.5394  fileCov=0.4416
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ejn] deps: fn, kv, bUt
 ((sMa = require("fs/promises")), (iMa = require("path")), (aMa = require("path/posix")));
@@ -17,7 +17,7 @@ async function zmo(e) {
     return n === 0;
   }
 }
-async function sRp() {
+async function findSuitableShell() {
   let e = process.env.CLAUDE_CODE_SHELL;
   if (e)
     if ((e.includes("bash") || e.includes("zsh")) && (await zmo(e)))
@@ -56,7 +56,7 @@ async function sRp() {
   return c;
 }
 async function iRp() {
-  let e = await sRp();
+  let e = await findSuitableShell();
   return {
     provider: await rMa(e),
   };
@@ -72,7 +72,7 @@ async function Ymo() {
 function mMa() {
   Kmo.cache?.clear?.();
 }
-async function Ede(e, t, n, r) {
+async function exec(e, t, n, r) {
   let {
       timeout: o,
       onProgress: s,
@@ -273,7 +273,7 @@ async function Ede(e, t, n, r) {
               .trim();
             if (Vt() === "windows") V = NFe(V);
             if (o_(V) !== _) {
-              if ((Uy(V, _), !MFe())) (Eut(), _ca(_, V));
+              if ((setCwd(V, _), !MFe())) (Eut(), _ca(_, V));
             }
           } catch {
             G("tengu_shell_set_cwd", {
@@ -298,7 +298,7 @@ async function Ede(e, t, n, r) {
     return (O.clear(), T(`Shell exec error: ${be(N)}`), tjn(be(N)));
   }
 }
-function Uy(e, t) {
+function setCwd(e, t) {
   let n = njn.isAbsolute(e) ? e : njn.resolve(t || qt().cwd(), e),
     r;
   try {

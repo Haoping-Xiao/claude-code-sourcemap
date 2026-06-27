@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dMe
 // matched 2.1.88 source: src/tasks/InProcessTeammateTask/InProcessTeammateTask.tsx
 // class=modified  jaccard=0.2555  score=0.7715  fileCov=0.2764
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function ael(e, t) {
   t.update(e, (n) => {
@@ -20,7 +20,7 @@ function WTo(e, t, n) {
     messages: JPe(r.messages, t),
   }));
 }
-function h9t(e, t, n, r) {
+function injectUserMessageToTeammate(e, t, n, r) {
   let o = n.get(e);
   if (!o || AC(o.status)) {
     T(`Dropping message for teammate task ${e}: task status is "${o?.status}"`);

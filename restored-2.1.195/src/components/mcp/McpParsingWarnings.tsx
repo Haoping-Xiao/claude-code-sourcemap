@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module cNl
 // matched 2.1.88 source: src/components/mcp/McpParsingWarnings.tsx
 // class=modified  jaccard=0.2295  score=0.3134  fileCov=0.4615
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cNl] deps: Ye, xne, bEt, xoe
 ((aNl = R(lt(), 1)), (qOe = R(se(), 1)));
-function u$f(e) {
+function McpConfigErrorSection(e) {
   let t = ENo.c(38),
     { scope: n, parsingErrors: r, warnings: o } = e,
     s = r.length > 0,
@@ -184,7 +184,7 @@ function u$f(e) {
 function d$f(e) {
   return e.file;
 }
-function SEt() {
+function McpParsingWarnings() {
   let e = ENo.c(3),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) {
@@ -295,7 +295,7 @@ function p$f(e, t) {
 function f$f(e) {
   let { scope: t, config: n } = e;
   return Lb.jsx(
-    u$f,
+    McpConfigErrorSection,
     {
       scope: t,
       parsingErrors: snr(n.errors, "fatal"),

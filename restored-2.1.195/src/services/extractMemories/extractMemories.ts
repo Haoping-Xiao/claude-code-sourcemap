@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xIl
 // matched 2.1.88 source: src/services/extractMemories/extractMemories.ts
 // class=modified  jaccard=0.2607  score=0.661  fileCov=0.3009
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isAllowedAutoMemWritePath, initExtractMemories, executeExtractMemories, drainPendingExtraction, createAutoMemCanUseTool
 function LPo(e) {
@@ -33,7 +33,7 @@ function WTf(e, t) {
     let o = r.message.content;
     if (!Array.isArray(o)) continue;
     for (let s of o) {
-      let i = PIl(s);
+      let i = getWrittenFilePath(s);
       if (i !== void 0 && C7(i)) return true;
     }
   }
@@ -61,7 +61,7 @@ function qTf(e, t) {
   if (!n) return e.some(LIl);
   return false;
 }
-function $Qn(e, t) {
+function denyAutoMemTool(e, t) {
   return (
     T(`[autoMem] denied ${e.name}: ${t}`),
     G("tengu_auto_mem_tool_denied", {
@@ -133,7 +133,8 @@ function isAllowedAutoMemWritePath(e) {
 }
 function createAutoMemCanUseTool(e) {
   return async (t, n, r) => {
-    if (bD()) return $Qn(t, "Memory is paused. Run /pause-memory to resume automemory.");
+    if (bD())
+      return denyAutoMemTool(t, "Memory is paused. Run /pause-memory to resume automemory.");
     if (t.name === Fm)
       return {
         behavior: "allow",
@@ -141,7 +142,7 @@ function createAutoMemCanUseTool(e) {
       };
     if (t.name === Ds || t.name === qc || t.name === wu) {
       let s = Bbt(t, n, r.getAppState().toolPermissionContext);
-      if (s) return $Qn(t, s.message);
+      if (s) return denyAutoMemTool(t, s.message);
       return {
         behavior: "allow",
         updatedInput: n,
@@ -165,7 +166,7 @@ function createAutoMemCanUseTool(e) {
         }
       }
       let i = t.name === Co;
-      return $Qn(
+      return denyAutoMemTool(
         t,
         `Only read-only shell commands and ${i ? "rm" : "Remove-Item"} with all paths inside ${e} are permitted in this context (${i ? "ls, find, grep, cat, stat, wc, head, tail, and similar" : "Get-ChildItem, Get-Content, Select-Object -First/-Last, and similar"})`,
       );
@@ -179,13 +180,13 @@ function createAutoMemCanUseTool(e) {
         };
     }
     let o = Su() ? Co : Ss;
-    return $Qn(
+    return denyAutoMemTool(
       t,
       `only ${Ds}, ${qc}, ${wu}, read-only ${o}, and ${ka}/${Wc} within ${e} are allowed`,
     );
   };
 }
-function PIl(e) {
+function getWrittenFilePath(e) {
   if (e.type !== "tool_use" || (e.name !== ka && e.name !== Wc)) return;
   let t = e.input;
   if (typeof t === "object" && t !== null && "file_path" in t) {
@@ -201,7 +202,7 @@ function KTf(e) {
     let r = n.message.content;
     if (!Array.isArray(r)) continue;
     for (let o of r) {
-      let s = PIl(o);
+      let s = getWrittenFilePath(o);
       if (s !== void 0 && isAllowedAutoMemWritePath(s)) t.push(s);
     }
   }

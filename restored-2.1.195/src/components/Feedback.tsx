@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module SDl
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified  jaccard=0.2136  score=0.4004  fileCov=0.314
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SDl] deps: SGe, jh, dn, uo, At, ik
 ((Lkf = R(lt(), 1)), (mOo = R(rt(), 1)), (Dkf = R(se(), 1)));
-function TDl({
+function Feedback({
   abortSignal: e,
   messages: t,
   initialDescription: n,
@@ -69,7 +69,7 @@ function TDl({
           signal: e,
           surveyFeedbackSource: a,
         }),
-        P ? Promise.resolve(null) : Okf(p, e),
+        P ? Promise.resolve(null) : generateTitle(p, e),
       ]);
       if ((C(W), q.success)) (g(q.feedbackId), c("done"));
       else {
@@ -113,7 +113,7 @@ function TDl({
     if (l === "done") {
       if ((q.preventDefault(), s === "share")) return;
       if (!P && q.key === "return" && v) {
-        let W = $kf(m ?? "", v, p, dOo());
+        let W = createGitHubIssueUrl(m ?? "", v, p, dOo());
         ac(W);
       }
       if (b)
@@ -517,7 +517,7 @@ function TDl({
     }),
   });
 }
-function $kf(e, t, n, r) {
+function createGitHubIssueUrl(e, t, n, r) {
   let o = xc(t),
     i = `**Bug Description**
 ${xc(n)}
@@ -575,7 +575,7 @@ ${xc(n)}
   if (_ >= b.length - 2) b = b.slice(0, _);
   return c + d + b + h + p + f;
 }
-async function Okf(e, t) {
+async function generateTitle(e, t) {
   try {
     let n = await R$({
         systemPrompt: Sc([

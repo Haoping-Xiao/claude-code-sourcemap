@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module b1c
 // matched 2.1.88 source: src/utils/deepLink/terminalLauncher.ts
 // class=modified  jaccard=0.4487  score=0.6654  fileCov=0.5794
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function Gxm() {
+async function detectMacosTerminal() {
   let e = Dt().deepLinkTerminal;
   if (e) {
     let n = Smr.find((r) => r.app === e);
@@ -60,7 +60,7 @@ async function Gxm() {
     command: "Terminal",
   };
 }
-async function Wxm() {
+async function detectLinuxTerminal() {
   let e = process.env.TERMINAL;
   if (e) {
     let n = await Gf(e);
@@ -86,7 +86,7 @@ async function Wxm() {
   }
   return null;
 }
-async function qxm() {
+async function detectWindowsTerminal() {
   let e = await Gf("wt.exe");
   if (e)
     return {
@@ -113,16 +113,16 @@ async function qxm() {
 async function Vxm() {
   switch ("linux") {
     case "darwin":
-      return Gxm();
+      return detectMacosTerminal();
     case "linux":
-      return Wxm();
+      return detectLinuxTerminal();
     case "win32":
-      return qxm();
+      return detectWindowsTerminal();
     default:
       return null;
   }
 }
-async function v1c(e, t) {
+async function launchInTerminal(e, t) {
   let n = await Vxm();
   if (!n)
     return (
@@ -140,16 +140,16 @@ async function v1c(e, t) {
   if (t.query) r.push(`--prefill=${t.query}`);
   switch ("linux") {
     case "darwin":
-      return w1c(n, e, r, t);
+      return launchMacosTerminal(n, e, r, t);
     case "linux":
-      return zxm(n, e, r, t);
+      return launchLinuxTerminal(n, e, r, t);
     case "win32":
-      return Kxm(n, e, t);
+      return launchWindowsTerminal(n, e, t);
     default:
       return false;
   }
 }
-async function w1c(e, t, n, r) {
+async function launchMacosTerminal(e, t, n, r) {
   let { cwd: o } = r;
   switch (e.command) {
     case "iTerm": {
@@ -224,7 +224,7 @@ end tell`,
   }
   return (
     T(`Failed to launch ${e.name}, falling back to Terminal.app`),
-    w1c(
+    launchMacosTerminal(
       {
         name: "Terminal.app",
         command: "Terminal",
@@ -235,7 +235,7 @@ end tell`,
     )
   );
 }
-async function zxm(e, t, n, r) {
+async function launchLinuxTerminal(e, t, n, r) {
   let { cwd: o } = r,
     s,
     i;
@@ -269,11 +269,11 @@ async function zxm(e, t, n, r) {
       ((s = ["-e", t, ...Hvt(r)]), (i = o));
       break;
   }
-  return C1c(e.command, s, {
+  return spawnDetached(e.command, s, {
     cwd: i,
   });
 }
-async function Kxm(e, t, n) {
+async function launchWindowsTerminal(e, t, n) {
   let r = [],
     o = Hvt(n),
     s = n.cwd;
@@ -294,12 +294,12 @@ async function Kxm(e, t, n) {
       break;
     }
   }
-  return C1c(e.command, r, {
+  return spawnDetached(e.command, r, {
     windowsVerbatimArguments: e.name === "Command Prompt",
     cwd: n.cwd,
   });
 }
-async function C1c(e, t, n = {}) {
+async function spawnDetached(e, t, n = {}) {
   let r = (o) =>
     new Promise((s) => {
       let i = (l) => {

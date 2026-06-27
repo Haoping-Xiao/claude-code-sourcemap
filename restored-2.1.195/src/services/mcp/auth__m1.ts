@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bKn
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.0099  score=0.0572  fileCov=0.0119
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bKn]
 ((Dif = new Set([Y8e, woe])),
@@ -104,7 +104,7 @@ function DAe() {
 }
 function vKn() {
   return (
-    (IIo ??= Oif()
+    (IIo ??= ClaudeAuthProvider()
       .catch(
         (e) => (
           T(`FotW eligibility refresh failed: ${e}`, {
@@ -119,7 +119,7 @@ function vKn() {
     IIo
   );
 }
-async function Oif() {
+async function ClaudeAuthProvider() {
   let e = V8t();
   if (!e || e.audience !== "claimant") return null;
   let { campaign: t, orgId: n } = e;

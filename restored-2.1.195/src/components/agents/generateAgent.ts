@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module BYl
 // matched 2.1.88 source: src/components/agents/generateAgent.ts
 // class=modified  jaccard=0.4403  score=0.9094  fileCov=0.4605
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BYl] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
 ((OYl = R(lt(), 1)), (Gsr = R(rt(), 1)), (Kq = R(se(), 1)));
-async function FYl(e, t, n, r) {
+async function generateAgent(e, t, n, r) {
   let o =
       n.length > 0
         ? `
@@ -20,7 +20,7 @@ IMPORTANT: The following identifiers already exist and must NOT be used: ${n.joi
     }),
     a = await uS(),
     l = ZQn([i], a),
-    c = lu() ? UYl + n9f : UYl,
+    c = lu() ? UYl + AGENT_MEMORY_INSTRUCTIONS : UYl,
     p = (
       await yYe({
         messages: lk(l),
@@ -69,7 +69,7 @@ IMPORTANT: The following identifiers already exist and must NOT be used: ${n.joi
   );
 }
 var UYl,
-  n9f = `
+  AGENT_MEMORY_INSTRUCTIONS = `
 
 7. **Agent Memory Instructions**: If the user mentions "memory", "remember", "learn", "persist", or similar concepts, OR if the agent would benefit from building up knowledge across conversations (e.g., code reviewers learning patterns, architects learning codebase structure, etc.), include domain-specific memory update instructions in the systemPrompt.
 

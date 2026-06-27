@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cho
 // matched 2.1.88 source: src/utils/nativeInstaller/download.ts
 // class=modified (alt of src/utils/nativeInstaller/download.ts)  jaccard=0.0105  score=0.1793  fileCov=0.0111
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cho] deps: Rc, oo, Ls, qd, Un, jc
 r4n = R(Uj(), 1);
@@ -37,7 +37,7 @@ function XOa(e) {
 function JOa(e) {
   return (e.file[0] === "/" && KOa.has(e.file.slice(1))) || YOa.some((t) => e.file.startsWith(t));
 }
-function HPp(e) {
+function downloadVersionFromArtifactory(e) {
   let t = e.split(/[/\\]/),
     n = -1;
   for (let i = t.length - 1; i >= 0; i--)
@@ -64,7 +64,7 @@ function TPp(e) {
   if (r) return r;
   if (t.startsWith("node:")) return t;
   if (t === "native") return t;
-  let o = HPp(t);
+  let o = downloadVersionFromArtifactory(t);
   if (o) return o;
   return uho;
 }

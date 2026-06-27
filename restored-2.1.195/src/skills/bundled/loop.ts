@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kwc
 // matched 2.1.88 source: src/skills/bundled/loop.ts
 // class=modified  jaccard=0.0788  score=0.087  fileCov=0.4558
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerLoopSkill
 function Lwc() {
@@ -64,7 +64,7 @@ function JEm() {
 2. Briefly confirm: what's scheduled, the cron expression, the human-readable cadence, that recurring tasks auto-expire after ${ire} days, and that the user can cancel sooner with ${m4} (include the job ID).${Pwc()}
 3. **Then immediately execute the parsed prompt now** \u2014 don't wait for the first cron fire. If it's a slash command, invoke it via the Skill tool; otherwise act on it directly.`;
 }
-function QEm(e) {
+function buildPrompt(e) {
   return `# /loop \u2014 schedule a recurring prompt
 
 Parse the input below into \`[interval] <prompt\u2026>\` and schedule it with ${DI}.
@@ -314,7 +314,7 @@ ${p}`;
       return [
         {
           type: "text",
-          text: QEm(n),
+          text: buildPrompt(n),
         },
       ];
     },

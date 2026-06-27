@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oke
 // matched 2.1.88 source: src/utils/browser.ts
 // class=modified  jaccard=0.1794  score=0.2519  fileCov=0.3841
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oke] deps: bwi, Vb, H1t, H1t, h8r
 sL = class sL extends Error {
@@ -10,7 +10,7 @@ sL = class sL extends Error {
     super(e ?? "Unauthorized");
   }
 };
-function bRd(e) {
+function validateUrl(e) {
   let t;
   try {
     t = new URL(e);
@@ -79,7 +79,7 @@ function kwi() {
 }
 async function ac(e) {
   try {
-    return (bRd(e), await Rwi(e));
+    return (validateUrl(e), await Rwi(e));
   } catch (t) {
     return false;
   }

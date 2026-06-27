@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AKt
 // matched 2.1.88 source: src/tools/BashTool/commandSemantics.ts
 // class=modified  jaccard=0.1892  score=0.4166  fileCov=0.2574
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function OEf(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
@@ -26,7 +26,7 @@ function Kvl(e) {
       }
     : null;
 }
-function UEf(e) {
+function COMMAND_SEMANTICS(e) {
   let t = GEf(e);
   if (t === "git") {
     let r = FEf(e);
@@ -37,7 +37,7 @@ function UEf(e) {
       });
   }
   let n = BEf.get(t);
-  return n !== void 0 ? n : NEf;
+  return n !== void 0 ? n : DEFAULT_SEMANTIC;
 }
 function FEf(e) {
   let r = (By(e).at(-1) || e).trim().split(/\s+/);
@@ -60,13 +60,13 @@ function GEf(e) {
   return jEf(n);
 }
 function Yvl(e, t, n, r) {
-  let s = UEf(e)(t, n, r);
+  let s = COMMAND_SEMANTICS(e)(t, n, r);
   return {
     isError: s.isError,
     message: s.message,
   };
 }
-var NEf = (e, t, n) => ({
+var DEFAULT_SEMANTIC = (e, t, n) => ({
     isError: e !== 0,
     message: e !== 0 ? `Command failed with exit code ${e}` : void 0,
   }),

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module m7l
 // matched 2.1.88 source: src/tasks/LocalAgentTask/LocalAgentTask.tsx
 // class=partial  jaccard=0.0783  score=0.277  fileCov=0.0984
-// note: low-confidence suggestion: src/tasks/LocalAgentTask/LocalAgentTask.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/tasks/LocalAgentTask/LocalAgentTask.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module m7l] deps: Uh, wb, xYl, $Yl, BYl, WYl, zYl, XYl, ZYl, n7l, s7l, l7l, d7l
 p7l = R(lt(), 1), wJt = R(se(), 1);
-function o9f(e) {
+function enqueueAgentNotification(e) {
   return e.type === "local_agent" && e.agentType !== "main-session" && e.status !== "completed" && e.status !== "failed" && e.status !== "killed";
 }
 function s9f(e) {
@@ -38,7 +38,7 @@ function g7l(e) {
   } else d = t[1];
   let p = d,
     f;
-  if (t[2] !== r) f = Object.values(r).filter(o9f).sort(c9f), t[2] = r, t[3] = f;else f = t[3];
+  if (t[2] !== r) f = Object.values(r).filter(enqueueAgentNotification).sort(c9f), t[2] = r, t[3] = f;else f = t[3];
   let m = f,
     g;
   if (t[4] !== r) g = Object.values(r).filter(s9f).sort(l9f).slice(0, 5), t[4] = r, t[5] = g;else g = t[5];

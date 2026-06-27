@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GMl
 // matched 2.1.88 source: src/components/OutputStylePicker.tsx
 // class=modified  jaccard=0.2421  score=0.3328  fileCov=0.4707
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GMl] deps: Ye, mE, vi
 ((FMl = R(lt(), 1)), (cEt = R(se(), 1)));
@@ -10,10 +10,10 @@ function WMl(e) {
   return Object.entries(e).map(([t, n]) => ({
     label: n?.name ?? eLf,
     value: t,
-    description: n?.description ?? tLf,
+    description: n?.description ?? DEFAULT_OUTPUT_STYLE_DESCRIPTION,
   }));
 }
-function VMl(e) {
+function OutputStylePicker(e) {
   let t = qMl.c(26),
     { initialStyle: n, onComplete: r, onCancel: o, isStandaloneCommand: s } = e,
     i;
@@ -134,4 +134,5 @@ var qMl,
   I7t,
   AHe,
   eLf = "Default",
-  tLf = "Claude completes coding tasks efficiently and provides concise responses";
+  DEFAULT_OUTPUT_STYLE_DESCRIPTION =
+    "Claude completes coding tasks efficiently and provides concise responses";

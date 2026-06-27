@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DLc
 // matched 2.1.88 source: src/components/SandboxViolationExpandedView.tsx
 // class=modified  jaccard=0.4155  score=0.5931  fileCov=0.5812
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DLc] deps: Ye, lg, Vl, X0
 ((LLc = R(lt(), 1)), (D3 = R(se(), 1)));
@@ -13,7 +13,7 @@ function Zwm(e) {
     o = e.getHours() < 12 ? "am" : "pm";
   return `${t}:${n}:${r}${o}`;
 }
-function LYo() {
+function SandboxViolationExpandedView() {
   let e = PLc.c(15),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((t = []), (e[0] = t));

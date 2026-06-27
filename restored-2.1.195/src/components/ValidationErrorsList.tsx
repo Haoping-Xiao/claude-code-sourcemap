@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hse
 // matched 2.1.88 source: src/components/ValidationErrorsList.tsx
 // class=modified  jaccard=0.2586  score=0.5762  fileCov=0.3194
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hse] deps: Ye
 ((FNl = R(lt(), 1)), (Snr = R(se(), 1)));
@@ -12,7 +12,7 @@ function Enr(e) {
   if (n.length === 0) return null;
   let r, o, s;
   if (t[0] !== n) {
-    let a = n.reduce(z$f, {}),
+    let a = n.reduce(_temp, {}),
       l = Object.keys(a).sort();
     ((r = U),
       (o = "column"),
@@ -47,7 +47,7 @@ function Enr(e) {
                   Mq.jsx(U, {
                     flexDirection: "column",
                     marginTop: 1,
-                    children: Array.from(d.values()).map(W$f),
+                    children: Array.from(d.values()).map(_temp3),
                   }),
               ],
             },
@@ -73,7 +73,7 @@ function Enr(e) {
   else i = t[7];
   return i;
 }
-function W$f(e, t) {
+function _temp3(e, t) {
   return Mq.jsxs(
     U,
     {
@@ -124,7 +124,7 @@ function V$f(e, t) {
   if (e.path && !t.path) return 1;
   return (e.path || "").localeCompare(t.path || "");
 }
-function z$f(e, t) {
+function _temp(e, t) {
   let n = t.file || "(file not specified)";
   if (!e[n]) e[n] = [];
   return (e[n].push(t), e);

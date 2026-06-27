@@ -168,7 +168,7 @@ async function createFork(e, t, n) {
     contentReplacementRecords: m,
   };
 }
-async function ckf(e) {
+async function getUniqueForkName(e) {
   let t = `${e} (Branch)`;
   if (
     (
@@ -191,7 +191,7 @@ async function ckf(e) {
   while (o.has(i)) i++;
   return `${e} (Branch ${i})`;
 }
-async function branchAndResume(e, t, n = {}) {
+async function rDl(e, t, n = {}) {
   let r = Rt(),
     o = Gg(r);
   try {
@@ -204,7 +204,7 @@ async function branchAndResume(e, t, n = {}) {
       } = await createFork(e.messages, n.customTitle, n.extraMessages),
       u = new Date(),
       d = deriveFirstPrompt(l.find((b) => b.type === "user")),
-      p = i?.replace(/\s+/g, " ").trim() ?? (await ckf(d)),
+      p = i?.replace(/\s+/g, " ").trim() ?? (await getUniqueForkName(d)),
       f = i ? "user" : "auto";
     (await Aq(s, p, a, f),
       await Pze(s, p, a, f),
@@ -245,7 +245,7 @@ async function branchAndResume(e, t, n = {}) {
 }
 async function call(e, t, n) {
   return (
-    await branchAndResume(t, e, {
+    await rDl(t, e, {
       customTitle: n?.trim() || void 0,
     }),
     null

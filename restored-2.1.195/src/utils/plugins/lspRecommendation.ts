@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GLc
 // matched 2.1.88 source: src/utils/plugins/lspRecommendation.ts
 // class=modified  jaccard=0.5263  score=0.9698  fileCov=0.535
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GLc] deps: je, Is, _0
 ((FLc = new Map()),
@@ -13,7 +13,7 @@
 function iCm(e) {
   return SCe.has(e.toLowerCase());
 }
-function aCm(e) {
+function extractLspInfoFromManifest(e) {
   if (!e) return null;
   if (typeof e === "string")
     return (
@@ -48,7 +48,7 @@ function qLc(e) {
     command: n,
   };
 }
-async function lCm() {
+async function getLspPluginsFromMarketplaces() {
   let e = new Map();
   try {
     let t = await om();
@@ -59,7 +59,7 @@ async function lCm() {
           s = iCm(n);
         for (let i of o.plugins) {
           if (!i.lspServers) continue;
-          let a = aCm(i.lspServers);
+          let a = extractLspInfoFromManifest(i.lspServers);
           if (!a) continue;
           let l = `${i.name}@${n}`;
           e.set(l, {
@@ -79,12 +79,12 @@ async function lCm() {
   }
   return e;
 }
-async function zLc(e) {
+async function getMatchingLspPlugins(e) {
   if (cCm()) return (T("[lspRecommendation] Recommendations are disabled"), []);
   let t = VLc.extname(e).toLowerCase();
   if (!t) return (T("[lspRecommendation] No file extension found"), []);
   T(`[lspRecommendation] Looking for LSP plugins for ${t}`);
-  let n = await lCm(),
+  let n = await getLspPluginsFromMarketplaces(),
     o = Dt().lspRecommendationNeverPlugins ?? [],
     s = [];
   for (let [a, l] of n) {
@@ -128,7 +128,7 @@ async function zLc(e) {
     }))
   );
 }
-function KLc(e) {
+function addToNeverSuggest(e) {
   (gn((t) => {
     let n = t.lspRecommendationNeverPlugins ?? [];
     if (n.includes(e)) return t;
@@ -139,7 +139,7 @@ function KLc(e) {
   }),
     T(`[lspRecommendation] Added ${e} to never suggest`));
 }
-function YLc() {
+function incrementIgnoredCount() {
   (gn((e) => {
     let t = (e.lspRecommendationIgnoredCount ?? 0) + 1;
     return {

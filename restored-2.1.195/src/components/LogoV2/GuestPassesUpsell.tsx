@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZKe
 // matched 2.1.88 source: src/components/LogoV2/GuestPassesUpsell.tsx
 // class=modified  jaccard=0.2765  score=0.5282  fileCov=0.3671
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function A4f() {
   let e = vor();
@@ -25,7 +25,7 @@ function rql() {
   if (n.hasVisitedPasses) return false;
   return true;
 }
-function H4f() {
+function incrementGuestPassesSeenCount() {
   let e = 0;
   (gn(
     (t) => (
@@ -40,7 +40,7 @@ function H4f() {
       seen_count: e,
     }));
 }
-function T4f() {
+function GuestPassesUpsell() {
   let e = o2o.c(1),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) {
@@ -75,11 +75,11 @@ function T4f() {
 }
 function oql() {
   let e = o2o.c(1);
-  b6("guest-passes", H4f);
+  b6("guest-passes", incrementGuestPassesSeenCount);
   let t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
     ((t = y1e.jsx(U, {
-      children: y1e.jsx(T4f, {}),
+      children: y1e.jsx(GuestPassesUpsell, {}),
     })),
       (e[0] = t));
   else t = e[0];

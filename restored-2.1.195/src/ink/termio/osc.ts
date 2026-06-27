@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bke
 // matched 2.1.88 source: src/ink/termio/osc.ts
 // class=modified  jaccard=0.2961  score=0.4815  fileCov=0.4348
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bke]
 E1 = new kUi();
@@ -40,7 +40,7 @@ function Qx(e) {
   if (t === "screen") return `\x1BP${e.replaceAll("\x1B", "\x1B\x1B")}\x1B\\`;
   return e;
 }
-function JNt() {
+function getClipboardPath() {
   if (!XNt())
     switch (Vt()) {
       case "macos":
@@ -96,9 +96,9 @@ async function NBd(e) {
     o.code === 0
   );
 }
-async function AI(e) {
+async function setClipboard(e) {
   let t = OYr.Buffer.from(e, "utf8").toString("base64");
-  if (!XNt()) PUi(e);
+  if (!XNt()) copyNative(e);
   await NBd(e);
   let n = BYr(),
     r = XNt(),
@@ -106,7 +106,7 @@ async function AI(e) {
     s = n === "tmux" ? "raw+dcs" : n === "screen" ? "dcs" : "raw";
   if (
     (T(
-      `clipboard: setClipboard mux=${n ?? "none"} ssh=${r} native=${!r} predicted=${JNt()} emit=${s} bytes=${e.length}`,
+      `clipboard: setClipboard mux=${n ?? "none"} ssh=${r} native=${!r} predicted=${getClipboardPath()} emit=${s} bytes=${e.length}`,
     ),
     n === "tmux")
   )
@@ -114,7 +114,7 @@ async function AI(e) {
   if (n === "screen") return Qx(o);
   return QS(wy.CLIPBOARD, "c", t);
 }
-function PUi(e) {
+function copyNative(e) {
   let t = {
     input: e,
     useCwd: false,
@@ -127,7 +127,7 @@ function PUi(e) {
     case "linux":
       if (typeof sne !== "string")
         UYr().then(() => {
-          if (typeof sne === "string") PUi(e);
+          if (typeof sne === "string") copyNative(e);
         });
       else if (sne === "wl-copy") ($n("wl-copy", [], t), $n("wl-copy", ["--primary"], t));
       else if (sne === "xclip")
@@ -190,7 +190,7 @@ async function QNt(e = "clipboard") {
       return "";
   }
 }
-function MUi(e) {
+function parseOSC(e) {
   let t = e.indexOf(";"),
     n = t >= 0 ? e.slice(0, t) : e,
     r = t >= 0 ? e.slice(t + 1) : "",
@@ -248,7 +248,7 @@ function MUi(e) {
   if (o === wy.TAB_STATUS)
     return {
       type: "tabStatus",
-      action: UBd(r),
+      action: parseTabStatus(r),
     };
   return {
     type: "unknown",
@@ -276,7 +276,7 @@ function LUi(e) {
   }
   return null;
 }
-function UBd(e) {
+function parseTabStatus(e) {
   let t = {};
   for (let [n, r] of FBd(e))
     switch (n) {
@@ -328,7 +328,7 @@ function jBd(e) {
 function eGe() {
   return false;
 }
-function OUi(e) {
+function tabStatus(e) {
   let t = [],
     n = (r) =>
       r.type === "rgb"

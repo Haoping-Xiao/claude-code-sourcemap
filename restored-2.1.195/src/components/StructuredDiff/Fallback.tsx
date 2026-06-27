@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gBn
 // matched 2.1.88 source: src/components/StructuredDiff/Fallback.tsx
 // class=modified  jaccard=0.4465  score=0.8086  fileCov=0.4993
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Yba(e) {
   let t = Kba.c(10),
@@ -10,7 +10,7 @@ function Yba(e) {
     [s] = na(),
     i;
   if (t[0] !== r || t[1] !== n.lines || t[2] !== n.oldStart || t[3] !== s || t[4] !== o)
-    ((i = l_p(n.lines, n.oldStart, o, r, s)),
+    ((i = formatDiff(n.lines, n.oldStart, o, r, s)),
       (t[0] = r),
       (t[1] = n.lines),
       (t[2] = n.oldStart),
@@ -43,7 +43,7 @@ function r_p(e, t) {
     t,
   );
 }
-function o_p(e) {
+function transformLinesToObjects(e) {
   return e.map((t) => {
     if (t.startsWith("+"))
       return {
@@ -109,7 +109,7 @@ function i_p(e, t) {
     ignoreCase: false,
   });
 }
-function a_p(e, t, n, r, o) {
+function generateWordDiffElements(e, t, n, r, o) {
   let { type: s, i, wordDiff: a, matchedLine: l, originalCode: c } = e;
   if (!a || !l) return null;
   let u = s === "remove" ? c : l.originalCode,
@@ -211,9 +211,9 @@ function a_p(e, t, n, r, o) {
     );
   });
 }
-function l_p(e, t, n, r, o) {
+function formatDiff(e, t, n, r, o) {
   let s = Math.max(1, Math.floor(n)),
-    i = o_p(e),
+    i = transformLinesToObjects(e),
     a = s_p(i),
     l = c_p(a, t),
     c = Math.max(...l.map(({ i: d }) => d), 0),
@@ -221,7 +221,7 @@ function l_p(e, t, n, r, o) {
   return l.flatMap((d) => {
     let { type: p, code: f, i: m, wordDiff: g, matchedLine: h } = d;
     if (g && h) {
-      let A = a_p(d, s, u, r, o);
+      let A = generateWordDiffElements(d, s, u, r, o);
       if (A !== null) return A;
     }
     let y = 2,

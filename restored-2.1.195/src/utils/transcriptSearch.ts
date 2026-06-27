@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BFo
 // matched 2.1.88 source: src/utils/transcriptSearch.ts
 // class=modified  jaccard=0.781  score=1  fileCov=0.781
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BFo] deps: one, jh
 Ojf = new Set([0, 1, 2, 9, 99, 777]);
@@ -10,10 +10,10 @@ jXt = [];
 function aor(e) {
   let t = UWl.get(e);
   if (t !== void 0) return t;
-  let n = Fjf(e).toLowerCase();
+  let n = computeSearchText(e).toLowerCase();
   return (UWl.set(e, n), n);
 }
-function Fjf(e) {
+function computeSearchText(e) {
   let t = "";
   switch (e.type) {
     case "user": {
@@ -24,7 +24,7 @@ function Fjf(e) {
         for (let i of o)
           if (i.type === "text") {
             if (!BWl.has(i.text)) s.push(i.text);
-          } else if (i.type === "tool_result") s.push(Gjf(e.toolUseResult));
+          } else if (i.type === "tool_result") s.push(toolResultSearchText(e.toolUseResult));
         t = s.join(`
 `);
       }
@@ -35,7 +35,7 @@ function Fjf(e) {
       if (Array.isArray(o))
         t = o.flatMap((s) => {
           if (s.type === "text") return [s.text];
-          if (s.type === "tool_use") return [jjf(s.input)];
+          if (s.type === "tool_use") return [toolUseSearchText(s.input)];
           return [];
         }).join(`
 `);
@@ -71,13 +71,14 @@ function Fjf(e) {
   let n = t,
     r = n.indexOf("<system-reminder>");
   while (r >= 0) {
-    let o = n.indexOf(NWl, r);
+    let o = n.indexOf(SYSTEM_REMINDER_CLOSE, r);
     if (o < 0) break;
-    ((n = n.slice(0, r) + n.slice(o + NWl.length)), (r = n.indexOf("<system-reminder>")));
+    ((n = n.slice(0, r) + n.slice(o + SYSTEM_REMINDER_CLOSE.length)),
+      (r = n.indexOf("<system-reminder>")));
   }
   return n;
 }
-function jjf(e) {
+function toolUseSearchText(e) {
   if (!e || typeof e !== "object") return "";
   let t = e,
     n = [];
@@ -102,7 +103,7 @@ function jjf(e) {
   return n.join(`
 `);
 }
-function Gjf(e) {
+function toolResultSearchText(e) {
   if (!e || typeof e !== "object") return typeof e === "string" ? e : "";
   let t = e;
   if (typeof t.stdout === "string") {
@@ -133,6 +134,6 @@ function Gjf(e) {
   return n.join(`
 `);
 }
-var NWl = "</system-reminder>",
+var SYSTEM_REMINDER_CLOSE = "</system-reminder>",
   BWl,
   UWl;

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module A9e
 // matched 2.1.88 source: src/utils/shellConfig.ts
 // class=modified  jaccard=0.3757  score=0.5236  fileCov=0.5708
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A9e] deps: dn, er, je, fn, At, Bi, ys, vn, Jt
 ((Sgt = require("fs/promises")), (bgt = require("path")));
-function DPe(e) {
+function getShellConfigPaths(e) {
   let t = e?.homedir ?? dAo.homedir(),
     n = e?.env ?? process.env,
     r = e?.platform ?? "linux",
@@ -71,7 +71,7 @@ async function SVn(e, t) {
   }
 }
 async function pAo(e) {
-  let t = DPe(e);
+  let t = getShellConfigPaths(e);
   for (let n of Object.values(t)) {
     let r = await Vqt(n);
     if (!r) continue;

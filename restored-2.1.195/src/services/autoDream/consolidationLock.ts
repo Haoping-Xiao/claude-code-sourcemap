@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module O7n
 // matched 2.1.88 source: src/services/autoDream/consolidationLock.ts
 // class=modified  jaccard=0.3622  score=0.8993  fileCov=0.3775
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module O7n] deps: BFe, jS
 ((dbt = require("fs/promises")), (pbt = require("path")));
 function j0o() {
-  return tyl.join(mm(), Xff);
+  return tyl.join(mm(), LOCK_FILE);
 }
 async function N7n() {
   try {
@@ -16,7 +16,7 @@ async function N7n() {
     return 0;
   }
 }
-async function nyl() {
+async function tryAcquireConsolidationLock() {
   let e = j0o(),
     t,
     n;
@@ -48,7 +48,7 @@ async function nyl() {
   if (parseInt(r.trim(), 10) !== process.pid) return null;
   return t ?? 0;
 }
-async function B7n(e) {
+async function rollbackConsolidationLock(e) {
   let t = j0o();
   try {
     if (e === 0) {
@@ -68,5 +68,5 @@ async function ryl(e) {
 }
 var a3,
   tyl,
-  Xff = ".consolidate-lock",
+  LOCK_FILE = ".consolidate-lock",
   Jff = 3600000;

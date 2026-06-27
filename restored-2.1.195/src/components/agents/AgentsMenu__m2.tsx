@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ntc
 // matched 2.1.88 source: src/components/agents/AgentsMenu.tsx
 // class=modified (alt of src/components/agents/AgentsMenu.tsx)  jaccard=0.025  score=0.0451  fileCov=0.0533
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ntc] deps: ft, lH, Vl, Fy, vi, TVt, gm, iQt, VQ, zOe, Qir, Ye, er, At, vn, Jbe
 ((bGo = R(lt(), 1)), (pTe = require("path")), (xYe = R(rt(), 1)), (Zq = R(se(), 1)));
@@ -22,7 +22,7 @@ async function jtc() {
     daemonAlive: t,
   };
 }
-function Gtc({ task: e, onBack: t, onEdit: n, onDone: r, refresh: o }) {
+function AgentsMenu({ task: e, onBack: t, onEdit: n, onDone: r, refresh: o }) {
   let [s, i] = EHt.useState(false),
     [a, l] = EHt.useState(false);
   async function c() {

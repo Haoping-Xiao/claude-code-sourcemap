@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I9r
 // matched 2.1.88 source: src/utils/context.ts
 // class=modified  jaccard=0.1358  score=0.2348  fileCov=0.2437
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I9r] deps: Ree, Qi, Xr, Rc, Yxe, og, oo, je, fn, Rd, qd, Jt, Ls
 ((mvi = require("fs")),
@@ -127,7 +127,7 @@ function Vkd(e) {
   if (typeof n !== "number" || !Number.isInteger(n) || n <= 0) return null;
   return n;
 }
-function Xxe(e) {
+function getModelMaxOutputTokens(e) {
   let t,
     n,
     r = mo(e);
@@ -160,7 +160,7 @@ function Xxe(e) {
   };
 }
 function wvi(e) {
-  return Xxe(e).upperLimit - 1;
+  return getModelMaxOutputTokens(e).upperLimit - 1;
 }
 var YOt = 200000,
   Pte = 200000,

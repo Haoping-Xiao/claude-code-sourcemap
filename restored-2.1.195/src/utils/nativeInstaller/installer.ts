@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IAo
 // matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
 // class=modified  jaccard=0.4171  score=0.679  fileCov=0.5196
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 22 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IAo] deps: Pw, je, fn, At, ys, YS, vn, Jt
 Qqt = require("path");
@@ -25,12 +25,12 @@ function aoe() {
   }
   return `${e}-${t}`;
 }
-function RVn(e) {
+function getBinaryName(e) {
   return e.startsWith("win32") ? "claude.exe" : "claude";
 }
-function mpe() {
+function getBaseDirectories() {
   let e = aoe(),
-    t = RVn(e);
+    t = getBinaryName(e);
   return {
     versions: Df.join(Ore(), "claude", "versions"),
     staging: Df.join(VPa(), "claude", "staging"),
@@ -48,7 +48,7 @@ async function k9e(e) {
   }
 }
 async function LAo(e) {
-  let t = mpe(),
+  let t = getBaseDirectories(),
     n = [t.versions, t.staging, t.locks];
   await Promise.all(
     n.map((s) =>
@@ -79,8 +79,8 @@ async function LAo(e) {
     installPath: o,
   };
 }
-async function Zza(e, t, n = 0) {
-  let r = mpe(),
+async function tryWithVersionLock(e, t, n = 0) {
+  let r = getBaseDirectories(),
     o = eVt(r, e);
   if (
     (await Ic.mkdir(r.locks, {
@@ -126,7 +126,7 @@ async function Zza(e, t, n = 0) {
         is_lifetime_lock: false,
         attempts: a,
       }),
-      MVn(e, Error("Lock held by another process")),
+      logLockAcquisitionError(e, Error("Lock held by another process")),
       false
     );
   }
@@ -153,7 +153,7 @@ async function Zza(e, t, n = 0) {
           is_pid_based: false,
           is_lifetime_lock: false,
         }),
-        MVn(e, i),
+        logLockAcquisitionError(e, i),
         false
       );
     }
@@ -178,7 +178,7 @@ async function Zza(e, t, n = 0) {
     if (s) await s();
   }
 }
-async function eKa(e, t) {
+async function atomicMoveToInstallPath(e, t) {
   await Ic.mkdir(Df.dirname(t), {
     recursive: true,
   });
@@ -195,7 +195,7 @@ async function eKa(e, t) {
     throw r;
   }
 }
-async function dKp(e, t) {
+async function installVersionFromPackage(e, t) {
   try {
     let n = Df.join(e, "node_modules", "@anthropic-ai"),
       o = (await Ic.readdir(n)).find((i) => i.startsWith("claude-cli-native-"));
@@ -219,7 +219,7 @@ async function dKp(e, t) {
         Error("Native binary not found in staged package")
       );
     }
-    (await eKa(s, t),
+    (await atomicMoveToInstallPath(s, t),
       await Ic.rm(e, {
         recursive: true,
         force: true,
@@ -248,10 +248,10 @@ async function dKp(e, t) {
     throw n;
   }
 }
-async function pKp(e, t) {
+async function installVersionFromBinary(e, t) {
   try {
     let n = aoe(),
-      r = RVn(n),
+      r = getBinaryName(n),
       o = Df.join(e, r);
     try {
       await Ic.stat(o);
@@ -264,7 +264,7 @@ async function pKp(e, t) {
         Error("Staged binary not found")
       );
     }
-    (await eKa(o, t),
+    (await atomicMoveToInstallPath(o, t),
       await Ic.rm(e, {
         recursive: true,
         force: true,
@@ -285,12 +285,12 @@ async function pKp(e, t) {
   }
 }
 async function fKp(e, t, n) {
-  if (n === "npm") await dKp(e, t);
-  else await pKp(e, t);
+  if (n === "npm") await installVersionFromPackage(e, t);
+  else await installVersionFromBinary(e, t);
 }
-async function Kza(e, t) {
+async function performVersionUpdate(e, t) {
   let { stagingPath: n, installPath: r } = await LAo(e),
-    { executable: o } = mpe(),
+    { executable: o } = getBaseDirectories(),
     s = ut("true") ? `${n}.${process.pid}.${Date.now()}` : n,
     i = !(await tKa(e)) || t;
   if (i) {
@@ -302,7 +302,7 @@ async function Kza(e, t) {
     let l = await Gza(e, s);
     await fKp(s, r, l);
   } else T(`Version ${e} already installed, updating symlink`);
-  if ((await hKp(o), !(await yKp(o, r)) && !(await k9e(o)))) {
+  if ((await removeDirectoryIfEmpty(o), !(await updateSymlink(o, r)) && !(await k9e(o)))) {
     let l = false;
     try {
       (await Ic.stat(r), (l = true));
@@ -325,9 +325,9 @@ function mKp() {
     return (T(`getCanaryVersion: GB read failed, falling through: ${be(e)}`), null);
   }
 }
-async function gKp(e, t = false) {
+async function updateLatest(e, t = false) {
   let n = Date.now(),
-    { executable: r } = mpe(),
+    { executable: r } = getBaseDirectories(),
     o = !/^v?\d+\.\d+\.\d+(-\S+)?$/.test(e),
     { maxVersion: s, forceDowngradeEnabled: i } = await v9e(),
     a =
@@ -455,19 +455,19 @@ async function gKp(e, t = false) {
     });
   let c = false,
     u;
-  if (ut("true")) ((c = await Kza(l, t)), (u = Date.now() - n));
+  if (ut("true")) ((c = await performVersionUpdate(l, t)), (u = Date.now() - n));
   else {
     let { installPath: d } = await LAo(l);
-    if (t) await bKp(d);
-    let p = await Zza(
+    if (t) await forceRemoveLock(d);
+    let p = await tryWithVersionLock(
       d,
       async () => {
-        c = await Kza(l, t);
+        c = await performVersionUpdate(l, t);
       },
       3,
     );
     if (((u = Date.now() - n), !p)) {
-      let f = mpe(),
+      let f = getBaseDirectories(),
         m;
       if ($Pe()) {
         let g = eVt(f, d);
@@ -502,7 +502,7 @@ async function gKp(e, t = false) {
     }
   );
 }
-async function hKp(e) {
+async function removeDirectoryIfEmpty(e) {
   try {
     (await Ic.rmdir(e), T(`Removed empty directory at ${e}`));
   } catch (t) {
@@ -511,7 +511,7 @@ async function hKp(e) {
       T(`Could not remove directory at ${e}: ${t}`);
   }
 }
-async function yKp(e, t) {
+async function updateSymlink(e, t) {
   if (aoe().startsWith("win32"))
     try {
       let i = Df.dirname(e);
@@ -595,13 +595,13 @@ async function yKp(e, t) {
     );
   }
 }
-async function R9e(e = false) {
+async function checkInstall(e = false) {
   if (ut(process.env.DISABLE_INSTALLATION_CHECKS)) return [];
   let t = await GEe();
   if (t === "development") return [];
   let n = Dt();
   if (!(e || t === "native" || n.installMethod === "native")) return [];
-  let o = mpe(),
+  let o = getBaseDirectories(),
     s = [],
     i = [],
     a = Df.dirname(o.executable),
@@ -686,18 +686,18 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ${g} && source ${g}`,
   else It("native_check_install", i[0]);
   return s;
 }
-function L9e(e, t = false) {
-  if (t) return Yza(e, t);
+function installLatest(e, t = false) {
+  if (t) return installLatestImpl(e, t);
   if (PVn) return (T("installLatest: joining in-flight call"), PVn);
-  let n = Yza(e, t);
+  let n = installLatestImpl(e, t);
   PVn = n;
   let r = () => {
     PVn = null;
   };
   return (n.then(r, r), n);
 }
-async function Yza(e, t = false) {
-  let n = await gKp(e, t);
+async function installLatestImpl(e, t = false) {
+  let n = await updateLatest(e, t);
   if (!n.success)
     return {
       latestVersion: null,
@@ -716,7 +716,7 @@ async function Yza(e, t = false) {
         'Native installer: Set installMethod to "native" and disabled legacy auto-updater for protection',
       ));
   return (
-    tVt(),
+    cleanupOldVersions(),
     {
       latestVersion: n.latestVersion,
       wasUpdated: n.success && !n.wasSkipped,
@@ -737,8 +737,8 @@ function eVt(e, t) {
   let n = Df.basename(t);
   return Df.join(e.locks, `${n}.lock`);
 }
-async function D9e() {
-  let e = mpe();
+async function lockCurrentVersion() {
+  let e = getBaseDirectories();
   if (!process.execPath.includes(e.versions)) return;
   let t = Df.resolve(process.execPath);
   try {
@@ -754,7 +754,7 @@ async function D9e() {
           is_pid_based: true,
           is_lifetime_lock: true,
         }),
-          MVn(t, Error("Lock already held by another process")));
+          logLockAcquisitionError(t, Error("Lock already held by another process")));
         return;
       }
       (G("tengu_version_lock_acquired", {
@@ -796,7 +796,7 @@ async function D9e() {
           is_pid_based: false,
           is_lifetime_lock: true,
         }),
-          MVn(t, o));
+          logLockAcquisitionError(t, o));
         return;
       }
     }
@@ -812,13 +812,13 @@ async function D9e() {
     });
   }
 }
-function MVn(e, t) {
+function logLockAcquisitionError(e, t) {
   T(`NON-FATAL: Lock acquisition failed for ${e} (expected in multi-process scenarios): ${be(t)}`, {
     level: "error",
   });
 }
-async function bKp(e) {
-  let t = mpe(),
+async function forceRemoveLock(e) {
+  let t = getBaseDirectories(),
     n = eVt(t, e);
   try {
     (await Ic.unlink(n), T(`Force-removed lock file at ${n}`));
@@ -826,9 +826,9 @@ async function bKp(e) {
     T(`Failed to force-remove lock file: ${be(r)}`);
   }
 }
-async function tVt() {
+async function cleanupOldVersions() {
   await Promise.resolve();
-  let e = mpe(),
+  let e = getBaseDirectories(),
     t = Date.now() - 3600000;
   if (aoe().startsWith("win32")) {
     let s = Df.dirname(e.executable);
@@ -971,7 +971,7 @@ async function tVt() {
         c.map(async (f) => {
           try {
             if (
-              await Zza(f.path, async () => {
+              await tryWithVersionLock(f.path, async () => {
                 await Ic.unlink(f.path);
               })
             )
@@ -1009,8 +1009,8 @@ async function SKp(e) {
   let t = await Ic.realpath(e);
   return t.endsWith(".js") || t.includes("node_modules");
 }
-async function nVt() {
-  let e = mpe();
+async function removeInstalledSymlink() {
+  let e = getBaseDirectories();
   try {
     if (await SKp(e.executable)) {
       (T(`Skipping removal of ${e.executable} - appears to be npm-managed`),
@@ -1031,7 +1031,7 @@ async function nVt() {
       Le("native_remove_symlink", "unlink_failed"));
   }
 }
-async function DAo() {
+async function cleanupShellAliases() {
   let e = [],
     t = DPe(),
     n = false;
@@ -1063,7 +1063,7 @@ async function DAo() {
   else xe("native_cleanup_aliases");
   return e;
 }
-async function EKp(e) {
+async function manualRemoveNpmPackage(e) {
   try {
     let t = await Gr("npm", ["config", "get", "prefix"]);
     if (t.code !== 0 || !t.stdout)
@@ -1116,7 +1116,7 @@ async function EKp(e) {
     );
   }
 }
-async function Xza(e) {
+async function attemptNpmUninstall(e) {
   let { code: t, stderr: n } = await Gr("npm", ["uninstall", "-g", e], {
     cwd: process.cwd(),
   });
@@ -1133,7 +1133,7 @@ async function Xza(e) {
         level: "error",
       }),
         T("Attempting manual removal due to ENOTEMPTY error"));
-      let r = await EKp(e);
+      let r = await manualRemoveNpmPackage(e);
       if (r.success)
         return {
           success: true,
@@ -1159,13 +1159,13 @@ async function Xza(e) {
     success: false,
   };
 }
-async function PAo() {
+async function cleanupNpmInstallations() {
   let e = [],
     t = [],
     n = 0,
     r = false,
     o = false,
-    s = await Xza("@anthropic-ai/claude-code");
+    s = await attemptNpmUninstall("@anthropic-ai/claude-code");
   if (s.success) {
     if ((n++, s.warning)) t.push(s.warning);
   } else if (s.error) (e.push(s.error), (r = true));
@@ -1189,7 +1189,7 @@ async function PAo() {
       GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
     }.PACKAGE_URL !== "@anthropic-ai/claude-code"
   ) {
-    let a = await Xza(
+    let a = await attemptNpmUninstall(
       {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
         PACKAGE_URL: "@anthropic-ai/claude-code",

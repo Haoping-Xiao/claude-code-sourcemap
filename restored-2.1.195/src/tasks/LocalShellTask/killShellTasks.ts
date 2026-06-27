@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module c8t
 // matched 2.1.88 source: src/tasks/LocalShellTask/killShellTasks.ts
 // class=modified  jaccard=0.3495  score=0.6293  fileCov=0.4401
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function yAe(e, t) {
+function killTask(e, t) {
   let n,
     r = false;
   if (
@@ -53,10 +53,10 @@ function vrl(e, t) {
   }
   return false;
 }
-function wrl(e, t) {
+function killShellTasksForAgent(e, t) {
   for (let [n, r] of Object.entries(t.all()))
     if (vT(r) && r.agentId === e && r.status === "running")
       (T(`killShellTasksForAgent: killing orphaned shell task ${n} (agent ${e} exiting)`),
-        yAe(n, t));
+        killTask(n, t));
   ALe((n) => n.agentId === e);
 }

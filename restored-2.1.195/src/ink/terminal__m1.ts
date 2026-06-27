@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZS
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=modified (alt of src/ink/terminal.ts)  jaccard=0.1711  score=0.4051  fileCov=0.2285
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZS] deps: ft, wr, fn, P7r, Bke, OM, q7, jh
 a4i = R(Uj(), 1);
@@ -23,7 +23,7 @@ $Rn = $7r();
 function T1() {
   let e = _Bt(),
     t = fy(),
-    n = t?.wheelFlood ?? N7r(),
+    n = t?.wheelFlood ?? isXtermJs(),
     r = t ? JV.includes(t.terminal ?? "") : E1.isJetBrainsIdeTerminal(),
     o = t?.wtSession ?? !!process.env.WT_SESSION,
     s = yb();
@@ -55,7 +55,7 @@ function T1() {
     Rce
   );
 }
-function N7r() {
+function isXtermJs() {
   if (process.env.CURSOR_TRACE_ID !== void 0) return true;
   if (process.env.VSCODE_GIT_ASKPASS_MAIN?.includes("cursor")) return true;
   if (process.env.TERM_PROGRAM === "vscode") {

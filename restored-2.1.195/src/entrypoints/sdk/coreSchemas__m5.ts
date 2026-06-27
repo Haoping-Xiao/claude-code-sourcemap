@@ -78,7 +78,7 @@ function TRp() {
 function isPostTurnSummaryVisibleInCli() {
   return false;
 }
-function classifiedToPostTurnSummary(e) {
+function SDKPostTurnSummaryMessageSchema(e) {
   return {
     status_category: e.state === "blocked" ? "blocked" : "review_ready",
     status_detail: e.detail,

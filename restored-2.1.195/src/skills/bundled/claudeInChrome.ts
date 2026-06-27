@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UTc
 // matched 2.1.88 source: src/skills/bundled/claudeInChrome.ts
 // class=modified  jaccard=0.1772  score=0.3325  fileCov=0.275
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UTc] deps: fh, G1, sa, AA
 Wbm = `After you finish implementing the change:
@@ -11,7 +11,7 @@ Wbm = `After you finish implementing the change:
 3. **Test end-to-end** \u2014 Follow the e2e test recipe from the coordinator's prompt (below). If the recipe says to skip e2e for this unit, skip it.
 4. **Commit and push** \u2014 Commit all changes with a clear message, push the branch, and create a PR with \`gh pr create\`. Use a descriptive title. If \`gh\` is not available or the push fails, note it in your final message.
 5. **Report** \u2014 End with a single line: \`PR: <url>\` so the coordinator can track it. If no PR was created, end with \`PR: none \u2014 <reason>\`.`;
-function FTc() {
+function registerClaudeInChromeSkill() {
   Nd({
     name: "claude-in-chrome",
     menuDescription: "Let Claude browse and interact with pages in your Chrome",

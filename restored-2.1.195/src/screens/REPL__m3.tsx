@@ -91,7 +91,7 @@ function isServerFallbackDiscard(e) {
 function serverFallbackTombstoneAbortReason() {
   return new DOMException(SERVER_FALLBACK_TOMBSTONE_REASON, "AbortError");
 }
-function classifyAbortReasonForTelemetry(e) {
+function REPL(e) {
   switch (unwrapAbortReason(e)) {
     case "user-cancel":
       return "user_cancel";

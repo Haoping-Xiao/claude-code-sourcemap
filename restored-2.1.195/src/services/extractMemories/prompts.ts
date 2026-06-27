@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module MQn
 // matched 2.1.88 source: src/services/extractMemories/prompts.ts
 // class=modified  jaccard=0.1581  score=0.3815  fileCov=0.2126
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function IIl(e, t, n) {
+function opener(e, t, n) {
   let r = Su(),
     o = r ? Co : Ss,
     s = r

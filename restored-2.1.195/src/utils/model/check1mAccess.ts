@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module u$
 // matched 2.1.88 source: src/utils/model/check1mAccess.ts
 // class=modified  jaccard=0.5737  score=0.91  fileCov=0.6082
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function wia() {
+function isExtraUsageEnabled() {
   let e = Dt().cachedExtraUsageDisabledReason;
   if (e === void 0) return false;
   if (e === null) return true;
@@ -30,11 +30,11 @@ function wia() {
 }
 function ure() {
   if (Sye()) return false;
-  if (bo()) return wia();
+  if (bo()) return isExtraUsageEnabled();
   return true;
 }
 function uSe() {
   if (Sye()) return false;
-  if (bo()) return wia();
+  if (bo()) return isExtraUsageEnabled();
   return true;
 }

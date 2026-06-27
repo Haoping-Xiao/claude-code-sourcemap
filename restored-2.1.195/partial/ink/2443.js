@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _5i
 // matched 2.1.88 source: src/ink/Ansi.tsx
 // class=partial  jaccard=0.2022  score=1  fileCov=0.2022
-// note: low-confidence suggestion: src/ink/Ansi.tsx; dir inferred from dep-graph -> ink; 0 renamed
+// note: low-confidence suggestion: src/ink/Ansi.tsx; dir inferred from dep-graph -> ink; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function LWd(e) {
   let n = new MLn().feed(e),
@@ -35,13 +35,13 @@ function DWd(e) {
   if (e.underline !== "none") t.underline = true;
   if (e.strikethrough) t.strikethrough = true;
   if (e.inverse) t.inverse = true;
-  let n = b5i(e.fg);
+  let n = colorToString(e.fg);
   if (n) t.color = n;
-  let r = b5i(e.bg);
+  let r = colorToString(e.bg);
   if (r) t.backgroundColor = r;
   return t;
 }
-function b5i(e) {
+function colorToString(e) {
   switch (e.type) {
     case "named":
       return PWd[e.name];

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rbc
 // matched 2.1.88 source: src/commands/extra-usage/extra-usage-core.ts
 // class=modified (alt of src/commands/extra-usage/extra-usage-core.ts)  jaccard=0.0266  score=0.066  fileCov=0.0425
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rbc] deps: _i, Z6o, tzo
 ((Ibc = R(lt(), 1)), (kbc = R(se(), 1)));
@@ -65,7 +65,7 @@ function Lbc(e, t) {
         case "needs_payment_setup":
           e({
             key: WTt,
-            text: `To claim ${i} in usage credits, add a payment method at ${tgm}, then run /${n.command} again to claim (claiming turns on extra usage billing)`,
+            text: `To claim ${i} in usage credits, add a payment method at ${runExtraUsage}, then run /${n.command} again to claim (claiming turns on extra usage billing)`,
             priority: "immediate",
             requeueOnPreempt: true,
             timeoutMs: Odr,
@@ -77,5 +77,5 @@ function Lbc(e, t) {
 var nzo,
   Odr = 30000,
   egm = 60000,
-  tgm = "https://claude.ai/settings/usage",
+  runExtraUsage = "https://claude.ai/settings/usage",
   WTt = "fotw-claim";

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eVe
 // matched 2.1.88 source: src/hooks/toolPermission/permissionLogging.ts
 // class=modified  jaccard=0.2644  score=0.3291  fileCov=0.5735
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eVe] deps: iu, eco
 ((P$a = require("path")),
@@ -65,7 +65,7 @@ async function xgo(e, t, n, r) {
     }),
   };
 }
-function FLp(e) {
+function sourceToString(e) {
   if (e.type === "classifier") return "classifier";
   switch (e.type) {
     case "hook":
@@ -102,7 +102,7 @@ function jLp(e, t, n) {
     permission_mode: $e(n),
   };
 }
-function GLp(e, t, n, r, o) {
+function logApprovalEvent(e, t, n, r, o) {
   if (n === "config") {
     (G("tengu_tool_use_granted_in_config", {
       ...nft(t, e.name, void 0),
@@ -143,7 +143,7 @@ function GLp(e, t, n, r, o) {
       break;
   }
 }
-function WLp(e, t, n, r, o) {
+function logRejectionEvent(e, t, n, r, o) {
   if (n === "config") {
     (G("tengu_tool_use_denied_in_config", {
       ...nft(t, e.name, void 0),
@@ -165,14 +165,14 @@ function WLp(e, t, n, r, o) {
   }),
     xe(n.type === "hook" ? "permission_auto_deny_hook" : "permission_user_deny"));
 }
-function O$a(e, t, n) {
+function logPermissionDecision(e, t, n) {
   let { tool: r, input: o, toolUseContext: s, messageId: i, toolUseID: a, permissionMode: l } = e,
     { decision: c, source: u } = t,
     d = n !== void 0 ? Date.now() - n : void 0,
     p = jLp(r, o, l);
-  if (t.decision === "accept") GLp(r, i, t.source, d, p);
-  else WLp(r, i, t.source, d, p);
-  let f = u === "config" ? "config" : FLp(u);
+  if (t.decision === "accept") logApprovalEvent(r, i, t.source, d, p);
+  else logRejectionEvent(r, i, t.source, d, p);
+  let f = u === "config" ? "config" : sourceToString(u);
   if (Igo(r.name)) xgo(r, o, c, f).then((g) => fCt()?.add(1, g));
   if (!s.toolDecisions) s.toolDecisions = {};
   s.toolDecisions[a] = {

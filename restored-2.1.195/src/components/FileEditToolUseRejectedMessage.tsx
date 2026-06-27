@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Uvo
 // matched 2.1.88 source: src/components/FileEditToolUseRejectedMessage.tsx
 // class=modified  jaccard=0.3113  score=0.4642  fileCov=0.486
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Uvo] deps: _i, Ye, ql, T4t
 ((htl = R(lt(), 1)), (DF = R(se(), 1)));
-function TMe(e) {
+function FileEditToolUseRejectedMessage(e) {
   let t = _tl.c(38),
     {
       file_path: n,

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module jko
 // matched 2.1.88 source: src/utils/transcriptSearch.ts
 // class=partial  jaccard=0.0907  score=0.6616  fileCov=0.0951
-// note: low-confidence suggestion: src/utils/transcriptSearch.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/transcriptSearch.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jko] deps: je, At, D6e
 Aml = require("crypto"), Y_t = require("fs/promises"), e7n = require("path");
-function t7n(e) {
+function toolUseSearchText(e) {
   if (typeof e !== "object" || e === null) return "";
   let t = e;
   for (let n of ["command", "file_path", "path", "pattern", "query", "prompt"]) {

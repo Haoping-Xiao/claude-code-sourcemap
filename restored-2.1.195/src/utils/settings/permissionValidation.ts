@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xws
 // matched 2.1.88 source: src/utils/settings/permissionValidation.ts
 // class=modified  jaccard=0.3675  score=0.5526  fileCov=0.523
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xws]
 imn = {
@@ -72,7 +72,7 @@ function amn(e) {
     examples: ["mcp__puppeteer__*", "mcp__github__get_*"],
   };
 }
-function lLr(e, t) {
+function validatePermissionRule(e, t) {
   if (!e || e.trim() === "")
     return {
       valid: false,
@@ -180,9 +180,9 @@ function lLr(e, t) {
     valid: true,
   };
 }
-function Lws(e) {
+function PermissionRuleSchema(e) {
   return H.string().superRefine((t, n) => {
-    let r = lLr(t, e);
+    let r = validatePermissionRule(t, e);
     if (!r.valid) {
       let o = r.error;
       if (r.suggestion) o += `. ${r.suggestion}`;

@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module rjo
 // matched 2.1.88 source: src/components/tasks/taskStatusUtils.tsx
 // class=modified  jaccard=0.461  score=0.771  fileCov=0.5341
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rjo] deps: Ye, ii, Rd
 l8l = R(se(), 1);
-function KHe(e) {
+function isTerminalStatus(e) {
   return e === "completed" || e === "failed" || e === "killed";
 }
-function c8l(e, t) {
+function getTaskStatusIcon(e, t) {
   let { isIdle: n, awaitingApproval: r, hasError: o, shutdownRequested: s } = t ?? {};
   if (o) return nt.cross;
   if (r) return nt.questionMarkPrefix;
@@ -23,7 +23,7 @@ function c8l(e, t) {
   if (e === "paused") return nt.hamburger;
   return nt.bullet;
 }
-function u8l(e, t) {
+function getTaskStatusColor(e, t) {
   let { isIdle: n, awaitingApproval: r, hasError: o, shutdownRequested: s } = t ?? {};
   if (o) return "error";
   if (r) return "warning";
@@ -35,7 +35,7 @@ function u8l(e, t) {
   if (e === "paused") return "warning";
   return "background";
 }
-function DAt(e) {
+function describeTeammateActivity(e) {
   if (e.shutdownRequested) return "stopping";
   if (e.awaitingPlanApproval) return "awaiting approval";
   if (e.isIdle) return "idle";
@@ -45,7 +45,7 @@ function DAt(e) {
     "working"
   );
 }
-function PAt(e) {
+function shouldHideTasksFooter(e) {
   return (
     wH(e) && e.type !== "local_workflow" && !(Ozn() && (MF(e) || e.type === "in_process_teammate"))
   );

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Y2o
 // matched 2.1.88 source: src/components/GlobalSearchDialog.tsx
 // class=modified  jaccard=0.0372  score=0.0779  fileCov=0.0664
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Y2o] deps: sYe, tC, Ye, kt, uo, Zor, er, Vl, vi
 ((z2o = R(lt(), 1)), (A1e = R(rt(), 1)), (sx = R(se(), 1)));
-function S9l(e) {
+function GlobalSearchDialog(e) {
   let t = nsr.c(24),
     { subtitle: n, body: r, scope: o, onProceed: s, onCancel: i } = e;
   Wh("ultrareview-launch");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bko
 // matched 2.1.88 source: src/tools/WebFetchTool/WebFetchTool.ts
 // class=partial  jaccard=0.0844  score=0.3994  fileCov=0.0967
-// note: low-confidence suggestion: src/tools/WebFetchTool/WebFetchTool.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/WebFetchTool/WebFetchTool.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function EYn(e) {
   return bfl.STATUS_CODES[e] ?? "Unknown Status";
@@ -15,7 +15,7 @@ Retry-After: ${e.retryAfter}` : "";
 
 The response body was not retrieved. If this URL requires authentication, use an authenticated tool (e.g. \`gh\` for GitHub, or an MCP-provided fetch tool) instead of WebFetch.`;
 }
-function _fl(e) {
+function webFetchToolInputToPermissionRuleContent(e) {
   try {
     let t = FF.inputSchema.safeParse(e);
     if (!t.success) return `input:${e.toString()}`;
@@ -27,7 +27,7 @@ function _fl(e) {
     return `input:${e.toString()}`;
   }
 }
-function Sko(e) {
+function buildSuggestions(e) {
   return [{
     type: "addRules",
     destination: "localSettings",

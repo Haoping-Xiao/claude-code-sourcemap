@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module s8l
 // matched 2.1.88 source: src/state/teammateViewHelpers.ts
 // class=modified  jaccard=0.3352  score=0.6544  fileCov=0.4074
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module s8l]
 ((o5f = {
@@ -14,7 +14,7 @@
   load: () => Promise.resolve().then(() => (r8l(), t8l)),
 }),
   (o8l = o5f));
-function ejo(e) {
+function isLocalAgent(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "local_agent";
 }
 function tjo(e) {
@@ -38,14 +38,14 @@ function njo(e) {
     evictAfter: AC(e.status) ? Date.now() + i8l : void 0,
   };
 }
-function Hz(e, t) {
+function enterTeammateView(e, t) {
   (G("tengu_transcript_view_enter", {}),
     t((n) => {
       let r = n.tasks[e],
         o = n.viewingAgentTaskId,
         s = o !== void 0 ? n.tasks[o] : void 0,
         i = o !== void 0 && o !== e && tjo(s),
-        a = tjo(r) && ((ejo(r) && !r.retain) || r.evictAfter !== void 0),
+        a = tjo(r) && ((isLocalAgent(r) && !r.retain) || r.evictAfter !== void 0),
         l = n.viewingAgentTaskId !== e || n.viewSelectionMode !== "viewing-agent";
       if (!a && !l && !i) return n;
       let c = n.tasks;
@@ -58,7 +58,7 @@ function Hz(e, t) {
         )
           c[o] = njo(s);
         if (a)
-          c[e] = ejo(r)
+          c[e] = isLocalAgent(r)
             ? {
                 ...r,
                 retain: true,
@@ -77,7 +77,7 @@ function Hz(e, t) {
       };
     }));
 }
-function Wq(e) {
+function exitTeammateView(e) {
   (G("tengu_transcript_view_exit", {}),
     e((t) => {
       let n = t.viewingAgentTaskId,
@@ -101,7 +101,7 @@ function Wq(e) {
 function a8l(e, t) {
   t((n) => {
     let r = n.tasks[e];
-    if (!ejo(r)) return n;
+    if (!isLocalAgent(r)) return n;
     if (r.status === "running") return n;
     if (r.evictAfter === 0) return n;
     let o = n.viewingAgentTaskId === e;

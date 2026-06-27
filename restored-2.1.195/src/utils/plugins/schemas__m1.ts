@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bCe
 // matched 2.1.88 source: src/utils/plugins/schemas.ts
 // class=modified (alt of src/utils/plugins/schemas.ts)  jaccard=0.0434  score=0.4161  fileCov=0.0462
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bCe] deps: Xr
 ((WRr = ve(() =>
@@ -165,7 +165,7 @@ function kOu(e) {
     return false;
   }
 }
-function ZRr(e, t) {
+function validateOfficialNameSource(e, t) {
   let n = e.toLowerCase();
   if (!QRr.has(n)) return null;
   if (t.source === "github") {

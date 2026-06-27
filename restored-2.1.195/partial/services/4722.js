@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LBl
 // matched 2.1.88 source: src/components/CustomSelect/select.tsx
 // class=partial  jaccard=0.0909  score=0.2886  fileCov=0.1171
-// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> services; 0 renamed
+// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> services; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LBl] deps: ft, Uh
 NOf = {
@@ -19,7 +19,7 @@ NOf = {
     return "pause-memory";
   }
 }, tBo = NOf;
-function nBo(e) {
+function Select(e) {
   let t = DBl.c(14),
     {
       commands: n,

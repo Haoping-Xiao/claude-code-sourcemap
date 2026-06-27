@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q$o
 // matched 2.1.88 source: src/commands/btw/btw.tsx
 // class=modified  jaccard=0.1767  score=0.2468  fileCov=0.3834
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module Q$o] deps: ft, ag, kt, At, vn, y_, _a, Jt, sr
@@ -12,7 +12,7 @@
   (ker = require("fs/promises")),
   (ZLl = require("readline")),
   (eDl = require("stream/promises")));
-function fkf({ question: e, context: t, onDone: n }) {
+function BtwSideQuestion({ question: e, context: t, onDone: n }) {
   let [r, o] = UN.useState(null),
     [s, i] = UN.useState(false),
     [a, l] = UN.useState(null),
@@ -461,7 +461,7 @@ async function call(e, t, n) {
       ...o,
       btwUseCount: o.btwUseCount + 1,
     })),
-    H_.jsx(fkf, {
+    H_.jsx(BtwSideQuestion, {
       question: r,
       context: t,
       onDone: e,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AVe
 // matched 2.1.88 source: src/services/policyLimits/index.ts
 // class=modified  jaccard=0.2223  score=0.3159  fileCov=0.4289
-// note: deminified; 12 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForPolicyLimitsToLoad, stopBackgroundPolling, startBackgroundPolling, shouldAwaitPolicyLimitsOnStartup, refreshPolicyLimits, recordPolicyLimitsStartupAwaitResult, logPolicyLimitsCacheStateAtFirstPrompt, loadPolicyLimits, initializePolicyLimitsLoadingPromise, clearPolicyLimitsCache, _resetPolicyLimitsForTesting, POLICY_LIMITS_COLD_AWAIT_MS, FAIL_CLOSED_SHADOW_CACHE_TTL_MS
 // [unwrapped __esm module AVe] deps: PR, uee, d2r, je, vn, co, Ls, ft, oo, fn, At, NE, Ao, Mh, dn, Un, kt, H5e, Ijt, yje, tP, gSe, lZn, lZn
@@ -88,7 +88,7 @@ function initializePolicyLimitsLoadingPromise() {
         )));
     });
 }
-function Wom() {
+function getPolicyLimitsEndpoint() {
   return `${$s().BASE_API_URL}/api/claude_code/policy_limits`;
 }
 function SVo(e) {
@@ -100,7 +100,7 @@ function SVo(e) {
   }
   return e;
 }
-function qom(e) {
+function computeChecksum(e) {
   let t = SVo(e),
     n = De(t);
   return `sha256:${kcc.createHash("sha256").update(n).digest("hex")}`;
@@ -122,10 +122,10 @@ function Vom() {
   if (bo() && Ws()?.accessToken) return "oauth";
   return e ? "api_key" : "oauth";
 }
-async function zom(e) {
+async function fetchWithRetry(e) {
   let t = null;
   for (let n = 1; n <= hVo + 1; n++) {
-    if (((t = await Kom(e)), (t.attempts = n), t.success)) return t;
+    if (((t = await fetchPolicyLimits(e)), (t.attempts = n), t.success)) return t;
     if (t.skipRetry) return t;
     if (n > hVo) return t;
     let r = TJ(n);
@@ -133,7 +133,7 @@ async function zom(e) {
   }
   return t;
 }
-async function Kom(e) {
+async function fetchPolicyLimits(e) {
   let t;
   try {
     t = await qCn();
@@ -147,7 +147,7 @@ async function Kom(e) {
         tokenRefreshOutcome: t,
         skipRetry: true,
       };
-    let r = Wom(),
+    let r = getPolicyLimitsEndpoint(),
       o = {
         ...n.headers,
         "User-Agent": dy(),
@@ -227,7 +227,7 @@ async function Kom(e) {
     }
   }
 }
-async function Yom(e) {
+async function saveCachedRestrictions(e) {
   try {
     let t = Ske();
     (await XYe.writeFile(t, De(e, null, 2), {
@@ -264,7 +264,7 @@ function Xom(e) {
       return "other";
   }
 }
-async function Mcc(e, t = false) {
+async function fetchAndLoadPolicyLimits(e, t = false) {
   let n = e === "policy_limits_load" && !bVo;
   if (n) bVo = true;
   if (!SU()) return null;
@@ -272,11 +272,11 @@ async function Mcc(e, t = false) {
   let r = bNt(),
     o = Dcc();
   if (r && !yNt()) C_e(r);
-  let s = r ? qom(r) : void 0,
+  let s = r ? computeChecksum(r) : void 0,
     i = Vom(),
     a = Date.now();
   try {
-    let l = await zom(s);
+    let l = await fetchWithRetry(s);
     if (n)
       ((tTt = l.success ? "succeeded" : "failed"),
         (gcr = l.success ? void 0 : (l.errorCode ?? "request_failed")));
@@ -320,7 +320,7 @@ async function Mcc(e, t = false) {
     let u = l.response ?? rKr;
     return (
       C_e(u),
-      await Yom(u),
+      await saveCachedRestrictions(u),
       T(
         Object.keys(u.restrictions).length > 0
           ? "Policy limits: Applied new restrictions successfully"
@@ -379,7 +379,7 @@ async function loadPolicyLimits({ startupAwaited: e = false } = {}) {
     });
   let t = wme;
   try {
-    if ((await Mcc("policy_limits_load", e), SU())) startBackgroundPolling();
+    if ((await fetchAndLoadPolicyLimits("policy_limits_load", e), SU())) startBackgroundPolling();
   } finally {
     if (t) {
       if ((t(), wme === t)) {
@@ -401,12 +401,12 @@ async function clearPolicyLimitsCache() {
     await XYe.unlink(Ske());
   } catch {}
 }
-async function Jom() {
+async function pollPolicyLimits() {
   if (!SU()) return;
   let e = yNt(),
     t = e ? De(e) : null;
   try {
-    await Mcc("policy_limits_poll");
+    await fetchAndLoadPolicyLimits("policy_limits_poll");
     let n = yNt();
     if ((n ? De(n) : null) !== t) T("Policy limits: Changed during background poll");
   } catch {}
@@ -415,7 +415,7 @@ function startBackgroundPolling() {
   if (mcr !== null) return;
   if (!SU()) return;
   if (
-    ((mcr = Dkn(() => void Jom(), Fom, {
+    ((mcr = Dkn(() => void pollPolicyLimits(), Fom, {
       unref: true,
     })),
     !xcc)

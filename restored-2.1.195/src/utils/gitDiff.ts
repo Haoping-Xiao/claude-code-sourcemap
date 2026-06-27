@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module a6n
 // matched 2.1.88 source: src/utils/gitDiff.ts
 // class=modified  jaccard=0.4907  score=0.7785  fileCov=0.5703
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module a6n] deps: kt
 Dvo = require("crypto");
 async function ftl(e) {
   if (!(await cb())) return null;
-  if (await gtl()) return null;
-  let n = await dtl("HEAD", e);
+  if (await isInTransientGitState()) return null;
+  let n = await fetchGitDiff("HEAD", e);
   if (n === null) return null;
   if (n.stats.filesCount > $vo)
     return {
@@ -21,7 +21,7 @@ async function ftl(e) {
     };
   let r = Mvo - n.perFileStats.size;
   if (r > 0) {
-    let i = await fef(r, e);
+    let i = await fetchUntrackedFiles(r, e);
     if (i) {
       n.stats.filesCount += i.size;
       for (let [a, l] of i) n.perFileStats.set(a, l);
@@ -35,7 +35,7 @@ async function ftl(e) {
         kind: "working-tree",
       },
     };
-  let o = await pef(e);
+  let o = await getDiffRef(e);
   if (o === null)
     return {
       ...n,
@@ -44,7 +44,7 @@ async function ftl(e) {
         kind: "working-tree",
       },
     };
-  let s = await dtl(o.mergeBase, e);
+  let s = await fetchGitDiff(o.mergeBase, e);
   if (s === null || s.stats.filesCount === 0)
     return {
       ...n,
@@ -63,7 +63,7 @@ async function ftl(e) {
     },
   };
 }
-async function dtl(e, t) {
+async function fetchGitDiff(e, t) {
   let { stdout: n, code: r } = await $n(go(), ["--no-optional-locks", "diff", e, "--shortstat"], {
     timeout: nyt,
     preserveOutputOnError: false,
@@ -87,7 +87,7 @@ async function dtl(e, t) {
 }
 async function mtl(e, t = "HEAD") {
   if (!(await cb())) return null;
-  if (await gtl()) return null;
+  if (await isInTransientGitState()) return null;
   let { stdout: r, code: o } = await $n(go(), ["--no-optional-locks", "diff", t, "--shortstat"], {
     timeout: nyt,
     preserveOutputOnError: false,
@@ -107,7 +107,7 @@ async function mtl(e, t = "HEAD") {
     abortSignal: e,
   });
   if (i !== 0) return null;
-  return def(s);
+  return parseGitDiff(s);
 }
 function uef(e) {
   let t = e
@@ -148,7 +148,7 @@ function uef(e) {
     perFileStats: s,
   };
 }
-function def(e) {
+function parseGitDiff(e) {
   let t = new Map(),
     n = new Set();
   if (!e.trim())
@@ -211,7 +211,7 @@ function def(e) {
     skippedLarge: n,
   };
 }
-async function gtl() {
+async function isInTransientGitState() {
   let e = await TRt($t());
   if (!e) return false;
   return (
@@ -225,7 +225,7 @@ async function gtl() {
     )
   ).some(Boolean);
 }
-async function pef(e) {
+async function getDiffRef(e) {
   let [t, n] = await Promise.all([ub(), vD()]);
   if (!t || t === "HEAD" || t === n) return null;
   if (n.startsWith("-")) return null;
@@ -254,7 +254,7 @@ async function pef(e) {
     baseBranch: n,
   };
 }
-async function fef(e, t) {
+async function fetchUntrackedFiles(e, t) {
   let { stdout: n, code: r } = await $n(
     go(),
     ["--no-optional-locks", "ls-files", "--others", "--exclude-standard", "--full-name"],
@@ -294,7 +294,7 @@ function c6n(e) {
     linesRemoved: parseInt(t[3] ?? "0", 10),
   };
 }
-async function u6n(e) {
+async function fetchSingleFileGitDiff(e) {
   let t = Tu(HMe.dirname(e));
   if (!t) return null;
   let n = HMe.relative(t, e).split(HMe.sep).join("/"),

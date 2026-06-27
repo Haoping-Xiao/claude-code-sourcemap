@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module tEc
 // matched 2.1.88 source: src/hooks/useGlobalKeybindings.tsx
 // class=modified  jaccard=0.4648  score=0.8242  fileCov=0.5159
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Izo(e) {
+function GlobalKeybindingHandlers(e) {
   let t = nEc.c(37),
     {
       screen: n,

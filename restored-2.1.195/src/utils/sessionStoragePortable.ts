@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BFe
 // matched 2.1.88 source: src/utils/sessionStoragePortable.ts
 // class=modified  jaccard=0.37  score=0.5901  fileCov=0.498
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BFe] deps: Rm, QZe
 ((WEs = require("child_process")), (qEs = require("util")), (yPu = qEs.promisify(WEs.execFile)));
@@ -102,7 +102,7 @@ async function JEs(e, t, n) {
     throw (r.destroy(), o);
   }
 }
-function Gpn(e) {
+function extractFirstPromptFromHead(e) {
   let t = 0,
     n = {
       commandFallback: "",
@@ -366,10 +366,10 @@ async function rCe(e, t) {
   }
   return;
 }
-function HPu() {
+function compactBoundaryMarker() {
   return (APu ??= Buffer.from('"compact_boundary"'));
 }
-function tAs(e) {
+function parseBoundaryLine(e) {
   try {
     let t = JSON.parse(e);
     if (t.type !== "system" || t.subtype !== "compact_boundary") return null;
@@ -405,7 +405,7 @@ function CPu(e, t, n) {
   else if (e.carryLen < Fpn.length) return 0;
   else {
     if (Upn(r, TPu, 0, e.carryLen)) {
-      let i = tAs(r.toString("utf-8", 0, e.carryLen) + t.toString("utf-8", 0, o));
+      let i = parseBoundaryLine(r.toString("utf-8", 0, e.carryLen) + t.toString("utf-8", 0, o));
       if (i?.hasPreservedSegment) e.hasPreservedSegment = true;
       else if (i)
         ((e.out.len = 0),
@@ -429,7 +429,7 @@ function IPu(e, t, n) {
     if (r !== -1 && r < s) r = t.indexOf(n, s);
     if (Upn(t, Fpn, s, c)) (UFe(e.out, t, o, s), (i = s), (a = c), (o = c));
     else if (r >= s && r < Math.min(s + wPu, c)) {
-      let u = tAs(t.toString("utf-8", s, l));
+      let u = parseBoundaryLine(t.toString("utf-8", s, l));
       if (u?.hasPreservedSegment) e.hasPreservedSegment = true;
       else if (u)
         ((e.out.len = 0),
@@ -487,7 +487,7 @@ function RPu(e) {
   }
 }
 async function qpn(e, t) {
-  let n = HPu(),
+  let n = compactBoundaryMarker(),
     r = EPu,
     o = {
       out: {

@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module pre
 // matched 2.1.88 source: src/services/compact/autoCompact.ts
 // class=modified  jaccard=0.1076  score=0.174  fileCov=0.2198
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pre] deps: dre, ft, ft, put, $pe, lf, jv, Q1n, Vv, er, BE, tao, Il, je, Cp, At, ik, q0, mwo, sp, vn, Ekl, co, Ao, Hu, KI, tA, aze, y_, _Le, _a, Jt, bH, aS, m5, u$, GX, dn, Un, kt, pke, fb, ZE, tP, lZn, mLe, H5e, gNn, U1, q8, Iao
 Tq = class Tq extends Error {};
 function Pwf(e) {
   return e instanceof Tq || K1(be(e)) || Xie(e, cZn) || Xie(e, bMo);
 }
-function Rkl(e, t, n) {
+function autoCompactIfNeeded(e, t, n) {
   let r = (e?.consecutiveFailures ?? 0) + 1;
   if (r >= Lkl)
     (T(
@@ -69,7 +69,7 @@ function Mwf(e, t, n, r = 0) {
 function $wf() {
   return ut(process.env.CLAUDE_CODE_COLD_COMPACT);
 }
-async function Owf(e, t, n, r, o = 0) {
+async function shouldAutoCompact(e, t, n, r, o = 0) {
   if (Gct(r)) return false;
   if (tLe(r)) return false;
   if (!pC()) return false;
@@ -92,7 +92,7 @@ async function* eMo(e, t, n, r, o, s, i) {
     };
   let a = t.options.mainLoopModel,
     l = t.options.autoCompactWindow;
-  if (!(await Owf(e, a, l, r, s)))
+  if (!(await shouldAutoCompact(e, a, l, r, s)))
     return {
       kind: "not_needed",
     };
@@ -196,7 +196,7 @@ async function* eMo(e, t, n, r, o, s, i) {
         thresholdSource: f,
         routedThroughReactive: true,
       };
-    return Rkl(o, true, f);
+    return autoCompactIfNeeded(o, true, f);
   }
   let g = {
       isRecompactionInChain: o?.compacted === true,
@@ -230,7 +230,7 @@ async function* eMo(e, t, n, r, o, s, i) {
           level: "error",
         });
       else ke(y);
-    return Rkl(o, false, void 0);
+    return autoCompactIfNeeded(o, false, void 0);
   }
 }
 function Nwf(e, t) {

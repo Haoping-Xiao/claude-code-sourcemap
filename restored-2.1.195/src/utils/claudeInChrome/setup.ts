@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module PFl
 // matched 2.1.88 source: src/utils/claudeInChrome/setup.ts
 // class=modified  jaccard=0.3773  score=0.5025  fileCov=0.6024
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSuppressChromeOffer, shouldEnableClaudeInChrome, shouldAutoEnableClaudeInChrome, setupClaudeInChrome, markClaudeInChromeUnwiredIfChrome, markClaudeInChromeUnwired, isClaudeInChromeWiredThisSession, isChromeExtensionInstalled, installChromeNativeHostManifest, getClaudeInChromeMcpServerConfig, _resetShouldAutoEnableForTesting, _resetClaudeInChromeWiredForTesting
 // [unwrapped __esm module PFl] deps: At
@@ -86,7 +86,7 @@ function setupClaudeInChrome() {
   if (e) {
     let o = `"${process.execPath}" --chrome-native-host`;
     return (
-      $Fl(o)
+      createWrapperScript(o)
         .then((s) => installChromeNativeHostManifest(s))
         .catch((s) =>
           T(`[Claude in Chrome] Failed to install native host: ${s}`, {
@@ -113,7 +113,7 @@ function setupClaudeInChrome() {
       ),
       s = tZ.join(o, ".."),
       i = tZ.join(s, "cli.js");
-    $Fl(`"${process.execPath}" "${i}" --chrome-native-host`)
+    createWrapperScript(`"${process.execPath}" "${i}" --chrome-native-host`)
       .then((l) => installChromeNativeHostManifest(l))
       .catch((l) =>
         T(`[Claude in Chrome] Failed to install native host: ${l}`, {
@@ -138,7 +138,7 @@ function setupClaudeInChrome() {
     );
   }
 }
-function P1f() {
+function getNativeMessagingHostsDirs() {
   if (Vt() === "windows") {
     let t = OFl.homedir(),
       n = process.env.APPDATA || tZ.join(t, "AppData", "Local");
@@ -148,10 +148,10 @@ function P1f() {
 }
 async function installChromeNativeHostManifest(e) {
   return yl("chrome_native_host_install", async () => {
-    let t = P1f();
+    let t = getNativeMessagingHostsDirs();
     if (t.length === 0) throw Error("Claude in Chrome Native Host not supported on this platform");
     let n = {
-        name: fBo,
+        name: NATIVE_HOST_IDENTIFIER,
         description: "Claude Code Browser Extension Native Host",
         path: e,
         type: "stdio",
@@ -175,14 +175,14 @@ async function installChromeNativeHostManifest(e) {
     }
     if (Vt() === "windows") {
       let s = tZ.join(t[0], MFl);
-      M1f(s);
+      registerWindowsNativeHosts(s);
     }
     if (o)
       isChromeExtensionInstalled()
         .then((s) => {
           if (s)
             (T("[Claude in Chrome] First-time install detected, opening reconnect page in browser"),
-              JUt(R1f).catch(ke));
+              JUt(CHROME_EXTENSION_RECONNECT_URL).catch(ke));
           else
             T(
               "[Claude in Chrome] First-time install detected, but extension not installed, skipping reconnect",
@@ -198,10 +198,10 @@ async function installChromeNativeHostManifest(e) {
         );
   });
 }
-function M1f(e) {
+function registerWindowsNativeHosts(e) {
   let t = JZr();
   for (let { browser: n, key: r } of t) {
-    let o = `${r}\\${fBo}`;
+    let o = `${r}\\${NATIVE_HOST_IDENTIFIER}`;
     Gr("reg", ["add", o, "/ve", "/t", "REG_SZ", "/d", e, "/f"]).then((s) => {
       if (s.code === 0)
         T(`[Claude in Chrome] Registered native host for ${n} in Windows registry: ${o}`);
@@ -212,7 +212,7 @@ function M1f(e) {
     });
   }
 }
-async function $Fl(e) {
+async function createWrapperScript(e) {
   let t = Vt(),
     n = tZ.join(tr(), "chrome"),
     r = t === "windows" ? tZ.join(n, "chrome-native-host.bat") : tZ.join(n, "chrome-native-host"),
@@ -268,8 +268,8 @@ var _se,
   OFl,
   tZ,
   pBo,
-  R1f = "https://clau.de/chrome/reconnect",
-  fBo = "com.anthropic.claude_code_browser_extension",
+  CHROME_EXTENSION_RECONNECT_URL = "https://clau.de/chrome/reconnect",
+  NATIVE_HOST_IDENTIFIER = "com.anthropic.claude_code_browser_extension",
   MFl,
   Q7t = void 0,
   Z7t = false;

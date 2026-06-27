@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SEe
 // matched 2.1.88 source: src/hooks/notifs/useCanSwitchToExistingSubscription.tsx
 // class=modified  jaccard=0.1657  score=0.3148  fileCov=0.2593
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SEe] deps: A1a
 ((Hft = R(rt(), 1)), (xho = Hft.createContext(true)));
@@ -17,7 +17,7 @@ async function T1a() {
 function v1a() {
   return (Dt().seenNotifications?.[LWt] ?? 0) < kho;
 }
-function zPp() {
+function _temp2() {
   (gn((e) => {
     let t = e.seenNotifications ?? {};
     return {
@@ -33,7 +33,7 @@ function zPp() {
 function w1a(e) {
   let t = H1a.c(3),
     { subscriptionType: n } = e;
-  b6("subscription-switch", zPp);
+  b6("subscription-switch", _temp2);
   let r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((r = DWt.jsxs(w, {

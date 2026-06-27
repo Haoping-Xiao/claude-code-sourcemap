@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gwc
 // matched 2.1.88 source: src/skills/bundled/updateConfig.ts
 // class=modified  jaccard=0.3143  score=0.5846  fileCov=0.4047
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function $Em() {
   let e = zK(_M(), {
@@ -10,7 +10,7 @@ function $Em() {
   });
   return De(e, null, 2);
 }
-function _wc() {
+function registerUpdateConfigSkill() {
   Nd({
     name: "update-config",
     menuDescription: "Change settings: hooks, permissions, environment variables",
@@ -22,11 +22,11 @@ function _wc() {
       if (e.startsWith("[hooks-only]")) {
         let r = e.slice(12).trim(),
           o =
-            hwc +
+            HOOKS_DOCS +
             `
 
 ` +
-            ywc;
+            HOOK_VERIFICATION_FLOW;
         if (r)
           o += `
 
@@ -156,7 +156,7 @@ Plugin syntax: \`plugin-name@source\` where source is \`claude-code-marketplace\
 - \`spinnerTipsOverride\`: Override spinner tips (\`{ "excludeDefault": true, "tips": ["Custom tip"] }\`)
 - \`syntaxHighlightingDisabled\`: Disable diff highlighting
 `,
-  hwc = `## Hooks Configuration
+  HOOKS_DOCS = `## Hooks Configuration
 
 Hooks run commands at specific points in Claude Code's lifecycle.
 
@@ -314,7 +314,7 @@ echo '{"systemMessage": "Session complete!"}'
 }
 \`\`\`
 `,
-  ywc = `## Constructing a Hook (with verification)
+  HOOK_VERIFICATION_FLOW = `## Constructing a Hook (with verification)
 
 Given an event, matcher, target file, and desired behavior, follow this flow. Each step catches a different failure class \u2014 a hook that silently does nothing is worse than no hook.
 

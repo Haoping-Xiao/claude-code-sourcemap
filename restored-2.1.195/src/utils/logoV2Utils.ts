@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module UFo
 // matched 2.1.88 source: src/utils/logoV2Utils.ts
 // class=modified  jaccard=0.1569  score=0.7804  fileCov=0.1641
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UFo] deps: co
 ((BWl = new Set([_N, Jv])), (UWl = new WeakMap()));
-function uor(e) {
+function getLayoutMode(e) {
   if (e >= 70) return "horizontal";
   return "compact";
 }
@@ -35,7 +35,7 @@ function GWl(e, t, n) {
   let r = Math.max(rn(e), rn(t), rn(n), 20);
   return Math.min(r + 4, FWl);
 }
-function dor(e) {
+function formatWelcomeMessage(e) {
   if (!e || e.length > Wjf) return "Welcome back!";
   return `Welcome back ${e}!`;
 }
@@ -71,7 +71,7 @@ function h1e(e, t) {
   if (p.length === 0) return `${a}${n}${r}${n}${l}`;
   return `${a}${n}${r}${n}${p.join(n)}${n}${l}`;
 }
-function fAt() {
+function getLogoDisplayData() {
   let e =
       process.env.DEMO_VERSION ??
       `${

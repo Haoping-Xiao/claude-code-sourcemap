@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module vbl
 // matched 2.1.88 source: src/tools/ExitWorktreeTool/ExitWorktreeTool.ts
 // class=modified (alt of src/tools/ExitWorktreeTool/ExitWorktreeTool.ts)  jaccard=0.0884  score=0.4266  fileCov=0.1003
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vbl] deps: ql, Ye
 cfe = R(se(), 1);
-async function wbl(e, t) {
+async function countWorktreeChanges(e, t) {
   let n = await $n(go(), ["-C", e, "status", "--porcelain"]);
   if (n.code !== 0) return null;
   let r = On(

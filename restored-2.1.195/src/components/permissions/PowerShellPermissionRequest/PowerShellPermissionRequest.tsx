@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DHc
 // matched 2.1.88 source: src/components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx
 // class=modified  jaccard=0.2586  score=0.4573  fileCov=0.373
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Cpr(e, t, n = {}) {
   switch (e) {
@@ -56,7 +56,7 @@ function Cpr(e, t, n = {}) {
       };
   }
 }
-function PHc({ payload: e, answer: t }) {
+function PowerShellPermissionRequest({ payload: e, answer: t }) {
   let n = Ho(),
     r = e.command,
     o = vpr({

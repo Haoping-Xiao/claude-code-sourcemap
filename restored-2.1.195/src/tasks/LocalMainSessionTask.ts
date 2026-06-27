@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vEl
 // matched 2.1.88 source: src/tasks/LocalMainSessionTask.ts
 // class=modified  jaccard=0.216  score=0.3006  fileCov=0.4343
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vEl] deps: Xr, ft, jc, ii, At, Jt, K0, Wso, Fso, Gso
 ((wXn = require("fs")),
@@ -254,10 +254,10 @@ cyf = ti({
 function yyf() {
   let e = xEl.randomBytes(8),
     t = "s";
-  for (let n = 0; n < 8; n++) t += wEl[e[n] % wEl.length];
+  for (let n = 0; n < 8; n++) t += TASK_ID_ALPHABET[e[n] % TASK_ID_ALPHABET.length];
   return t;
 }
-function _yf(e, t, n, r) {
+function registerMainSessionTask(e, t, n, r) {
   let o = yyf();
   ZAe(o, uk(Bu(o)));
   let s = r ?? Sl(),
@@ -292,7 +292,7 @@ function _yf(e, t, n, r) {
     }
   );
 }
-function CEl(e, t, n) {
+function completeMainSessionTask(e, t, n) {
   let r = t ? "completed" : "failed",
     o,
     s;
@@ -325,11 +325,11 @@ function CEl(e, t, n) {
     summary: s,
   });
 }
-function Fzt(e) {
+function isMainSessionTask(e) {
   if (typeof e !== "object" || e === null || !("type" in e) || !("agentType" in e)) return false;
   return e.type === "local_agent" && e.agentType === "main-session";
 }
-function kEl({
+function startBackgroundSession({
   messages: e,
   queryParams: t,
   description: n,
@@ -337,7 +337,7 @@ function kEl({
   agentDefinition: o,
   setAppState: s,
 }) {
-  let { taskId: i, abortSignal: a } = _yf(n, r, o);
+  let { taskId: i, abortSignal: a } = registerMainSessionTask(n, r, o);
   Kpe(e, i).catch((u) => T(`bg-session initial transcript write failed: ${u}`));
   let l = t.toolUseContext.agentContext,
     c = {
@@ -467,9 +467,9 @@ function kEl({
                   },
             ));
         }
-        CEl(i, true, r);
+        completeMainSessionTask(i, true, r);
       } catch (p) {
-        (ke(p), CEl(i, false, r));
+        (ke(p), completeMainSessionTask(i, false, r));
       } finally {
         if (d) u.push(...d.preserved);
       }
@@ -479,5 +479,5 @@ function kEl({
 }
 var xEl,
   hyf,
-  wEl = "0123456789abcdefghijklmnopqrstuvwxyz",
+  TASK_ID_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyz",
   IEl = 5;

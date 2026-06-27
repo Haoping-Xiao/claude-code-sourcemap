@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module wQ
 // matched 2.1.88 source: src/tools/BriefTool/upload.ts
 // class=modified  jaccard=0.3937  score=0.5696  fileCov=0.5604
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: uploadBriefAttachment, escapeContentDispositionFilename
 // [unwrapped __esm module wQ] deps: Rc, oo, Ls
 _yl = require("os");
-function amf(e) {
+function guessMimeType(e) {
   let t = V7n.extname(e).toLowerCase();
   return imf[t] ?? "application/octet-stream";
 }
@@ -17,7 +17,7 @@ function escapeContentDispositionFilename(e) {
     .replaceAll("\\", "\\\\")
     .replaceAll('"', '\\"');
 }
-function V6e(e) {
+function debug(e) {
   T(`[brief:upload] ${e}`);
 }
 function lmf() {
@@ -26,25 +26,25 @@ function lmf() {
 async function uploadBriefAttachment(e, t, n) {
   if (!n.replBridgeEnabled) return;
   if (t > Syl) {
-    (V6e(`skip ${e}: ${t} bytes exceeds ${Syl} limit`),
+    (debug(`skip ${e}: ${t} bytes exceeds ${Syl} limit`),
       It("bridge_attachment_upload", "too_large"));
     return;
   }
   let r = LN();
   if (!r) {
-    (V6e("skip: no oauth token"), It("bridge_attachment_upload", "no_token"));
+    (debug("skip: no oauth token"), It("bridge_attachment_upload", "no_token"));
     return;
   }
   let o;
   try {
     o = await Ayl.readFile(e);
   } catch (d) {
-    (V6e(`read failed for ${e}: ${d}`), It("bridge_attachment_upload", "read_failed"));
+    (debug(`read failed for ${e}: ${d}`), It("bridge_attachment_upload", "read_failed"));
     return;
   }
   let i = `${lmf()}/api/oauth/file_upload`,
     a = V7n.basename(e),
-    l = amf(a),
+    l = guessMimeType(a),
     c = `----FormBoundary${Eyl.randomUUID()}`,
     u = Buffer.concat([
       Buffer.from(`--${c}\r
@@ -69,7 +69,7 @@ Content-Type: ${l}\r
       validateStatus: () => true,
     });
     if (d.status !== 201) {
-      V6e(`upload failed for ${e}: status=${d.status} body=${De(d.data).slice(0, 200)}`);
+      debug(`upload failed for ${e}: status=${d.status} body=${De(d.data).slice(0, 200)}`);
       let f = d.status,
         m =
           f === 401
@@ -88,17 +88,17 @@ Content-Type: ${l}\r
     }
     let p = cmf().safeParse(d.data);
     if (!p.success) {
-      (V6e(`unexpected response shape for ${e}: ${p.error.message}`),
+      (debug(`unexpected response shape for ${e}: ${p.error.message}`),
         It("bridge_attachment_upload", "bad_response"));
       return;
     }
     return (
-      V6e(`uploaded ${e} \u2192 ${p.data.file_uuid} (${t} bytes)`),
+      debug(`uploaded ${e} \u2192 ${p.data.file_uuid} (${t} bytes)`),
       xe("bridge_attachment_upload"),
       p.data.file_uuid
     );
   } catch (d) {
-    (V6e(`upload threw for ${e}: ${d}`),
+    (debug(`upload threw for ${e}: ${d}`),
       It("bridge_attachment_upload", po.isCancel(d) ? "aborted" : "network_error"));
     return;
   }

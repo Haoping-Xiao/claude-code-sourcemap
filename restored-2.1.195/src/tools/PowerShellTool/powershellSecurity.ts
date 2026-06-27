@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mTl
 // matched 2.1.88 source: src/tools/PowerShellTool/powershellSecurity.ts
 // class=modified  jaccard=0.1833  score=0.4099  fileCov=0.249
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mTl] deps: ZLo, bde, lTl, dze
 cTl = new Set(["pwsh", "pwsh.exe", "powershell", "powershell.exe"]);
@@ -354,7 +354,7 @@ async function ATl(e) {
   if (!t.valid) return true;
   return (await ETl(t, e)).some(({ element: r }) => zm(r.name) === "git");
 }
-async function HTl(e, t) {
+async function checkDynamicCommandName(e, t) {
   let n = Fr(t),
     r = uKt(e.command),
     o = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oyc
 // matched 2.1.88 source: src/utils/suggestions/commandSuggestions.ts
 // class=modified  jaccard=0.1651  score=0.2253  fileCov=0.3817
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oyc]
 rpm = {
@@ -121,7 +121,7 @@ rpm = {
   ultrareview: "agent",
   workflows: "agent",
 };
-function opm(e) {
+function getCommandFuse(e) {
   if (c6o?.commands === e) return c6o.fuse;
   let t = e
       .filter((r) => !r.isHidden)
@@ -183,7 +183,7 @@ function opm(e) {
     n
   );
 }
-function iyc(e) {
+function isCommandMetadata(e) {
   return (
     typeof e === "object" && e !== null && "name" in e && typeof e.name === "string" && "type" in e
   );
@@ -208,11 +208,11 @@ function udr(e, t) {
 }
 function d6o(e, t) {
   if (!e) return null;
-  let n = f6o("/" + e, t);
+  let n = generateCommandSuggestions("/" + e, t);
   if (n.length === 0) return null;
   let r = e.toLowerCase();
   for (let o of n) {
-    if (!iyc(o.metadata)) continue;
+    if (!isCommandMetadata(o.metadata)) continue;
     for (let s of [o.metadata.name, xu(o.metadata)])
       if (s.toLowerCase().startsWith(r)) {
         let i = s.slice(e.length);
@@ -245,7 +245,7 @@ function ipm(e) {
 function apm(e) {
   return `/${e} `;
 }
-function cdr(e) {
+function getCommandId(e) {
   let t = e.name;
   if (e.type === "prompt") {
     if (e.source === "plugin" && e.pluginInfo?.repository)
@@ -276,7 +276,7 @@ function dpm(e) {
       return;
   }
 }
-function u6o(e, t, n, r) {
+function createCommandSuggestionItem(e, t, n, r) {
   let o = xu(e),
     s = n ? ` (${n})` : "",
     i = e.type === "prompt" && e.kind === "workflow",
@@ -284,7 +284,7 @@ function u6o(e, t, n, r) {
       (t ? (e.menuDescription ?? e.description) : i ? e.description : yse(e)) +
       (e.type === "prompt" && e.argNames?.length ? ` (arguments: ${e.argNames.join(", ")})` : "");
   return {
-    id: cdr(e),
+    id: getCommandId(e),
     displayText: `/${o}${s}`,
     tag: i ? "dynamic workflow" : void 0,
     description: l,
@@ -297,7 +297,7 @@ function u6o(e, t, n, r) {
     }),
   };
 }
-function f6o(e, t) {
+function generateCommandSuggestions(e, t) {
   if (!f7e(e)) return [];
   if (ipm(e)) return [];
   t = EYt(t);
@@ -315,14 +315,14 @@ function f6o(e, t) {
         .filter((A) => A.score > 0)
         .sort((A, v) => v.score - A.score);
     for (let A of f.slice(0, 5)) p.push(A.cmd);
-    let m = new Set(p.map((A) => cdr(A))),
+    let m = new Set(p.map((A) => getCommandId(A))),
       g = [],
       h = [],
       y = [],
       b = [],
       _ = [];
     d.forEach((A) => {
-      if (m.has(cdr(A))) return;
+      if (m.has(getCommandId(A))) return;
       if (A.type === "local" || A.type === "local-jsx") g.push(A);
       else if (A.type === "prompt" && (A.source === "userSettings" || A.source === "localSettings"))
         h.push(A);
@@ -337,13 +337,13 @@ function f6o(e, t) {
       y.sort(S),
       b.sort(S),
       _.sort(S),
-      [...p, ...g, ...h, ...y, ...b, ..._].map((A) => u6o(A, r))
+      [...p, ...g, ...h, ...y, ...b, ..._].map((A) => createCommandSuggestionItem(A, r))
     );
   }
   let o = (d) => xu(d).toLowerCase() === n || d.name.toLowerCase() === n,
     s = t.find((d) => d.isHidden && o(d));
   if (s && t.some((d) => !d.isHidden && o(d))) s = void 0;
-  let u = opm(t)
+  let u = getCommandFuse(t)
     .search(n)
     .filter((d) => !Poe(d.item.command))
     .map((d) => {
@@ -394,15 +394,15 @@ function f6o(e, t) {
     .map((d) => {
       let p = d.r.item.command,
         f = lpm(n, p.aliases);
-      return u6o(p, r, f, n);
+      return createCommandSuggestionItem(p, r, f, n);
     });
   if (s) {
-    let d = cdr(s);
-    if (!u.some((p) => p.id === d)) return [u6o(s, r, void 0, n), ...u];
+    let d = getCommandId(s);
+    if (!u.some((p) => p.id === d)) return [createCommandSuggestionItem(s, r, void 0, n), ...u];
   }
   return u;
 }
-function m6o(e, t, n, r, o, s) {
+function applyCommandSuggestion(e, t, n, r, o, s) {
   if (typeof e !== "string") {
     let c = kyt(e.metadata);
     if (c) {
@@ -417,7 +417,7 @@ function m6o(e, t, n, r, o, s) {
   let i, a;
   if (typeof e === "string") ((i = e), (a = t ? h6e(i, n) : void 0));
   else {
-    if (!iyc(e.metadata)) return null;
+    if (!isCommandMetadata(e.metadata)) return null;
     let c = e.matchedAlias;
     ((i = c && fA(c, n) === e.metadata ? c : e.metadata.name), (a = e.metadata));
   }

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b$c
 // matched 2.1.88 source: src/components/TrustDialog/TrustDialog.tsx
 // class=modified  jaccard=0.211  score=0.2965  fileCov=0.4226
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TrustDialog
 // [unwrapped __esm module b$c] deps: dr, er, WGe, QH, fre
@@ -70,11 +70,11 @@ function TrustDialog(e) {
   else q = t[10];
   let V = q.length > 0,
     Y;
-  if (t[11] !== r) ((Y = r?.some(txm) ?? false), (t[11] = r), (t[12] = Y));
+  if (t[11] !== r) ((Y = r?.some(_temp2) ?? false), (t[11] = r), (t[12] = Y));
   else Y = t[12];
   let z = Y,
     K;
-  if (t[13] !== r) ((K = r?.some(ZIm) ?? false), (t[13] = r), (t[14] = K));
+  if (t[13] !== r) ((K = r?.some(_temp4) ?? false), (t[13] = r), (t[14] = K));
   else K = t[14];
   let Z = K,
     J = p.length > 0 || z || Z,
@@ -369,7 +369,7 @@ function QIm(e) {
     hasTrustDialogAccepted: true,
   };
 }
-function ZIm(e) {
+function _temp4(e) {
   return (
     e.type === "prompt" &&
     (e.loadedFrom === "skills" || e.loadedFrom === "plugin") &&
@@ -380,7 +380,7 @@ function ZIm(e) {
 function exm(e) {
   return e === Co || e.startsWith(Co + "(");
 }
-function txm(e) {
+function _temp2(e) {
   return (
     e.type === "prompt" &&
     e.loadedFrom === "commands_DEPRECATED" &&

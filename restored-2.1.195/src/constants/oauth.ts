@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $ms
 // matched 2.1.88 source: src/constants/oauth.ts
 // class=modified  jaccard=0.3022  score=0.6501  fileCov=0.3609
-// note: deminified; 14 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: preservableScopesFrom, getOauthConfig, fileSuffixForOauthConfig, PRESERVABLE_EXPANSION_SCOPES, OAUTH_BETA_HEADER, MCP_CLIENT_METADATA_URL, LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS, DESIGN_OAUTH_SCOPES, CONSOLE_OAUTH_SCOPES, CLAUDE_AI_PROFILE_SCOPE, CLAUDE_AI_OAUTH_SCOPES, CLAUDE_AI_INFERENCE_SCOPE, ALL_OAUTH_SCOPES, ALLOWED_OAUTH_BASE_URLS
 // [unwrapped __esm module $ms] deps: Eae
@@ -96,7 +96,7 @@ function preservableScopesFrom(e) {
   let t = PRESERVABLE_EXPANSION_SCOPES;
   return e.filter((n) => t.includes(n));
 }
-function Fhu() {
+function getLocalOauthConfig() {
   let e = process.env.CLAUDE_LOCAL_OAUTH_API_BASE?.replace(/\/$/, "") ?? "http://localhost:8000",
     t = process.env.CLAUDE_LOCAL_OAUTH_APPS_BASE?.replace(/\/$/, "") ?? "http://localhost:4000",
     n = process.env.CLAUDE_LOCAL_OAUTH_CONSOLE_BASE?.replace(/\/$/, "") ?? "http://localhost:3000";
@@ -122,7 +122,7 @@ function getOauthConfig() {
   let e = (() => {
       switch (Nms()) {
         case "local":
-          return Fhu();
+          return getLocalOauthConfig();
         case "staging":
           return Uhu ?? Oms;
         case "prod":
@@ -160,7 +160,7 @@ function getOauthConfig() {
 var LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS = 31536000,
   CLAUDE_AI_INFERENCE_SCOPE = "user:inference",
   CLAUDE_AI_PROFILE_SCOPE = "user:profile",
-  Bhu = "org:create_api_key",
+  CONSOLE_SCOPE = "org:create_api_key",
   OAUTH_BETA_HEADER = "oauth-2025-04-20",
   CONSOLE_OAUTH_SCOPES,
   CLAUDE_AI_OAUTH_SCOPES,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xHt
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0085  score=0.064  fileCov=0.0098
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xHt] deps: lH, jGo, Gfe, kYe, WL, q$, CHt, IKe, kLn, ZS, OM, dn, kt, je, At, YS, sa, zH, Vke, _ht, aR, FAe, ag
 ((PYe = require("fs/promises")), (vrc = require("path")));
@@ -98,7 +98,7 @@ function Drc(e) {
 function Prc() {
   return xQt;
 }
-function kQt(e) {
+function main(e) {
   if (!e) return [];
   return [
     ...(e.model ? ["--model", e.model] : []),
@@ -122,7 +122,7 @@ async function Car(e, t, n, r, o, s, i) {
     l = a.slice(0, 8),
     c = r ?? $t(),
     u = o ? ["--routine", o] : ["--agent", e.name],
-    d = [...xQt, ...u, ...kQt(s)],
+    d = [...xQt, ...u, ...main(s)],
     p = _c(l);
   try {
     (await a2.mkdir(LHt.join(p, "tmp"), {
@@ -314,7 +314,7 @@ async function Iar(e, t = false, n, r) {
           a = r;
         if (a === void 0 && n?.agent) (wq(), (a = await IQt(i).catch(() => [])));
         let l = DHt(n, a).name,
-          c = await SZ([...xQt, "--agent", l, ...kQt(n)], o, "spare", i);
+          c = await SZ([...xQt, "--agent", l, ...main(n)], o, "spare", i);
         if (!c.ok) {
           (await Sme(s, {
             internal: true,
@@ -389,7 +389,7 @@ async function Orc(e, t) {
   let s = IHt(
     eue({
       template: r,
-      respawnFlags: [...xQt, "--agent", r.name, ...kQt(n.defaults)],
+      respawnFlags: [...xQt, "--agent", r.name, ...main(n.defaults)],
       intent: e,
       sessionId: n.sessionId,
       cwd: n.cwd,

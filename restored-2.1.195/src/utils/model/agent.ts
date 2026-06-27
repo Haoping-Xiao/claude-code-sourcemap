@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module c9t
 // matched 2.1.88 source: src/utils/model/agent.ts
 // class=modified  jaccard=0.2632  score=0.5855  fileCov=0.3234
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function BTo() {
   return "inherit";
 }
-function foe(e, t, n, r, o) {
+function getAgentModel(e, t, n, r, o) {
   let s = () =>
       VR({
         permissionMode: r ?? "default",
@@ -77,12 +77,12 @@ function QZa(e, t) {
       return false;
   }
 }
-function I8n(e) {
+function getAgentModelDisplay(e) {
   if (!e) return "Inherit from parent (default)";
   if (e === "inherit") return "Inherit from parent";
   return Cx(e);
 }
-function ZZa() {
+function getAgentModelOptions() {
   let e = [];
   if ((fle() || !td() || fr() === "anthropicAws") && xa(tje()))
     e.push({

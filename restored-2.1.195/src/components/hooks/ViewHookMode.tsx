@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module AKl
 // matched 2.1.88 source: src/components/hooks/ViewHookMode.tsx
 // class=modified  jaccard=0.2961  score=0.3742  fileCov=0.5867
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AKl] deps: Ye, WAt, sr, Vl, vi, B_, Ko
 ((SKl = R(lt(), 1)), (gYe = R(se(), 1)));
-function TKl(e) {
+function ViewHookMode(e) {
   let t = HKl.c(45),
     { selectedHook: n, eventSupportsMatcher: r, onCancel: o } = e,
     s;
@@ -162,7 +162,7 @@ function TKl(e) {
       (t[26] = y));
   else y = t[26];
   let b;
-  if (t[27] !== n.config) ((b = dVf(n.config)), (t[27] = n.config), (t[28] = b));
+  if (t[27] !== n.config) ((b = getContentFieldLabel(n.config)), (t[27] = n.config), (t[28] = b));
   else b = t[28];
   let _;
   if (t[29] !== b)
@@ -233,7 +233,7 @@ function TKl(e) {
   else I = t[44];
   return I;
 }
-function dVf(e) {
+function getContentFieldLabel(e) {
   switch (e.type) {
     case "command":
       return "Command";

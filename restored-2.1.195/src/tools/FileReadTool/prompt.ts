@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S0n
 // matched 2.1.88 source: src/tools/FileReadTool/prompt.ts
 // class=modified  jaccard=0.2245  score=0.3106  fileCov=0.4475
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S0n] deps: Ao
 ANd = new Set(["pdf"]);
@@ -10,9 +10,9 @@ function YNi() {
   return KNi;
 }
 function A0n(e) {
-  return e.startsWith(HNd) || e.startsWith(KNi);
+  return e.startsWith(FILE_UNCHANGED_STUB) || e.startsWith(KNi);
 }
-function eBi(e, t, n, r) {
+function renderPromptTemplate(e, t, n, r) {
   if (ph(e))
     return `Reads a file from the local filesystem.
 
@@ -45,16 +45,17 @@ var Ds = "Read",
   zNi = `
 - Do NOT re-read a file you just edited to verify \u2014 Edit/Write would have errored if the change failed, and the harness tracks file state for you.`,
   E0n = " (file state is current in your context \u2014 no need to Read it back)",
-  HNd =
+  FILE_UNCHANGED_STUB =
     "File unchanged since last read. The content from the earlier Read tool_result in this conversation is still current \u2014 refer to that instead of re-reading.",
   KNi =
     "Wasted call \u2014 file unchanged since your last Read. Refer to that earlier tool_result instead.",
   WNt = "[Truncated: PARTIAL view \u2014 ",
   fit = 2000,
-  XNi = "Read a file from the local filesystem.",
-  oYr = "- Results are returned using cat -n format, with line numbers starting at 1",
+  DESCRIPTION = "Read a file from the local filesystem.",
+  LINE_FORMAT_INSTRUCTION =
+    "- Results are returned using cat -n format, with line numbers starting at 1",
   JNi,
-  QNi =
+  OFFSET_INSTRUCTION_DEFAULT =
     "- You can optionally specify a line offset and limit (especially handy for long files), but it's recommended to read the whole file by not providing these parameters",
-  ZNi =
+  OFFSET_INSTRUCTION_TARGETED =
     "- When you already know which part of the file you need, only read that part. This can be important for larger files.";

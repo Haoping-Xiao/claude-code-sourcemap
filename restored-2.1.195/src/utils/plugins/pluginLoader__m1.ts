@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module KPn
 // matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
 // class=modified (alt of src/utils/plugins/pluginLoader.ts)  jaccard=0.0184  score=0.2494  fileCov=0.0195
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KPn] deps: ft, dr
 ((heo = require("path")), (UKi = ["settings.json", "settings.local.json"]));
 function nWe(e, t, n) {
-  let r = qKd(t, n);
+  let r = loadPluginManifest(t, n);
   if (typeof e !== "object" || e === null || Array.isArray(e))
     return {
       ok: false,
@@ -57,7 +57,7 @@ Validation errors: ${u}`,
     manifest: a.success ? a.data : void 0,
   };
 }
-function qKd(e, t) {
+function loadPluginManifest(e, t) {
   switch (e) {
     case "plugin-json":
       return `Plugin ${t.pluginName} has an invalid manifest file at ${t.manifestPath}.`;

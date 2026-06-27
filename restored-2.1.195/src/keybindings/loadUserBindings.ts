@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pqi
 // matched 2.1.88 source: src/keybindings/loadUserBindings.ts
 // class=modified  jaccard=0.4334  score=0.69  fileCov=0.5382
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pqi] deps: Xr, sr, JLn, QLn
 a5d = ve(() =>
@@ -12,7 +12,7 @@ a5d = ve(() =>
   }),
 );
 dqi = Cat;
-function E8() {
+function isKeybindingCustomizationEnabled() {
   return at("tengu_keybinding_customization_release", true);
 }
 function _5d() {
@@ -31,7 +31,7 @@ function _5d() {
   };
   return e;
 }
-function gqi(e, t) {
+function logCustomBindingsLoadedOncePerDay(e, t) {
   let n = new Date().toISOString().slice(0, 10);
   if (e.lastCustomBindingsLogDate === n) return;
   ((e.lastCustomBindingsLogDate = n),
@@ -39,20 +39,20 @@ function gqi(e, t) {
       user_binding_count: t,
     }));
 }
-function rbe() {
+function getKeybindingsPath() {
   return tDn.join(tr(), "keybindings.json");
 }
 function sQr() {
   return XLn(wat);
 }
-async function b5d(e) {
+async function loadKeybindings(e) {
   let t = sQr();
-  if (!E8() || lc("keybindings"))
+  if (!isKeybindingCustomizationEnabled() || lc("keybindings"))
     return {
       bindings: t,
       warnings: [],
     };
-  let n = rbe();
+  let n = getKeybindingsPath();
   try {
     let r = await eDn.readFile(n, "utf-8"),
       o = Ft(r),
@@ -100,7 +100,7 @@ async function b5d(e) {
     let i = XLn(s);
     T(`[keybindings] Loaded ${i.length} user bindings from ${n}`);
     let a = [...t, ...i];
-    gqi(e, i.length);
+    logCustomBindingsLoadedOncePerDay(e, i.length);
     let c = [...rQr(r), ...oQr(s, a)];
     if (c.length > 0) T(`[keybindings] Found ${c.length} validation issue(s)`);
     return (
@@ -146,7 +146,7 @@ function lUt(e) {
       warnings: e.warnings,
     };
   let t = sQr();
-  if (!E8() || lc("keybindings"))
+  if (!isKeybindingCustomizationEnabled() || lc("keybindings"))
     return (
       (e.bindings = t),
       (e.warnings = []),
@@ -155,7 +155,7 @@ function lUt(e) {
         warnings: e.warnings,
       }
     );
-  let n = rbe();
+  let n = getKeybindingsPath();
   try {
     let r = mqi.readFileSync(n, "utf-8"),
       o = Ft(r),
@@ -205,7 +205,7 @@ function lUt(e) {
     let i = XLn(s);
     (T(`[keybindings] Loaded ${i.length} user bindings from ${n}`),
       (e.bindings = [...t, ...i]),
-      gqi(e, i.length));
+      logCustomBindingsLoadedOncePerDay(e, i.length));
     let a = rQr(r);
     if (((e.warnings = [...a, ...oQr(s, e.bindings)]), e.warnings.length > 0))
       T(`[keybindings] Found ${e.warnings.length} validation issue(s)`);
@@ -245,13 +245,13 @@ function lUt(e) {
     );
   }
 }
-async function hqi(e) {
+async function initializeKeybindingWatcher(e) {
   if (e.initialized || e.disposed) return;
-  if (!E8() || lc("keybindings")) {
+  if (!isKeybindingCustomizationEnabled() || lc("keybindings")) {
     T("[keybindings] Skipping file watcher - user customization disabled");
     return;
   }
-  let t = rbe(),
+  let t = getKeybindingsPath(),
     n = tDn.dirname(t);
   try {
     if (!(await eDn.stat(n)).isDirectory()) {
@@ -278,9 +278,9 @@ async function hqi(e) {
       interval: 2000,
       atomic: true,
     })),
-    e.watcher.on("add", (r) => fqi(e, r)),
-    e.watcher.on("change", (r) => fqi(e, r)),
-    e.watcher.on("unlink", (r) => S5d(e, r)),
+    e.watcher.on("add", (r) => handleChange(e, r)),
+    e.watcher.on("change", (r) => handleChange(e, r)),
+    e.watcher.on("unlink", (r) => handleDelete(e, r)),
     e.watcher.on("error", (r) =>
       T(`[keybindings] watcher error: ${be(r)}`, {
         level: "warn",
@@ -289,10 +289,10 @@ async function hqi(e) {
     Ci(e),
     xe("keybinding_watcher_init"));
 }
-async function fqi(e, t) {
+async function handleChange(e, t) {
   T(`[keybindings] Detected change to ${t}`);
   try {
-    let n = await b5d(e);
+    let n = await loadKeybindings(e);
     ((e.bindings = n.bindings),
       (e.warnings = n.warnings),
       e.changed.emit(n),
@@ -302,7 +302,7 @@ async function fqi(e, t) {
       It("keybinding_hot_reload", "keybinding_reload_failed"));
   }
 }
-function S5d(e, t) {
+function handleDelete(e, t) {
   T(`[keybindings] Detected deletion of ${t}`);
   let n = sQr();
   ((e.bindings = n),

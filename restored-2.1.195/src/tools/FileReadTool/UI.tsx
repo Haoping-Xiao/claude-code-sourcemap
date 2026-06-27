@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BMo
 // matched 2.1.88 source: src/tools/FileReadTool/UI.tsx
 // class=modified  jaccard=0.2057  score=0.3017  fileCov=0.3926
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BMo] deps: Lne, At, Bi, es, ys, sr, K0
 ((Fkl = require("crypto")),
@@ -52,7 +52,7 @@ function vZn(e) {
   }
   return null;
 }
-function Wkl({ file_path: e, offset: t, limit: n, pages: r }, { verbose: o }) {
+function renderToolUseMessage({ file_path: e, offset: t, limit: n, pages: r }, { verbose: o }) {
   if (!e) return null;
   if (vZn(e)) return "";
   let s = o ? e : kd(e);
@@ -92,7 +92,7 @@ function qkl({ file_path: e }) {
     children: [" ", t],
   });
 }
-function Vkl(e) {
+function renderToolResultMessage(e) {
   switch (e.type) {
     case "image": {
       let { originalSize: t } = e.file,
@@ -180,7 +180,7 @@ function Vkl(e) {
       });
   }
 }
-function zkl(e, { verbose: t }) {
+function renderToolUseErrorMessage(e, { verbose: t }) {
   if (!t && typeof e === "string") {
     if (e.includes($B))
       return X_.jsx(qn, {
@@ -202,7 +202,7 @@ function zkl(e, { verbose: t }) {
     verbose: t,
   });
 }
-function Kkl(e) {
+function userFacingName(e) {
   if (e?.file_path?.startsWith(gS())) return "Reading Plan";
   if (e?.file_path && vZn(e.file_path)) return "Read agent output";
   return "Read";

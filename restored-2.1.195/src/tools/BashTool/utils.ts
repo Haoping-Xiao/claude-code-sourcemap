@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kel
 // matched 2.1.88 source: src/tools/BashTool/utils.ts
 // class=modified  jaccard=0.2922  score=0.9365  fileCov=0.2981
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kel] deps: _i, Ye, Dpe, sr, E8e, AMe, Kut
 ((Vel = R(lt(), 1)), (Zht = R(se(), 1)));
@@ -28,7 +28,7 @@ function Yel(e) {
     data: t[2],
   };
 }
-function e6n(e, t) {
+function buildImageToolResult(e, t) {
   let n = Yel(e);
   if (!n) return null;
   let r = oX(Buffer.from(n.data, "base64"));
@@ -48,7 +48,7 @@ function e6n(e, t) {
     ],
   };
 }
-async function t6n(e, t, n, r) {
+async function resizeShellImageOutput(e, t, n, r) {
   let o = e;
   if (t) {
     if ((n ?? (await J8n.stat(t)).size) > FZp) return null;
@@ -61,7 +61,7 @@ async function t6n(e, t, n, r) {
     l = await x0e(i, i.length, a, r);
   return `data:image/${l.mediaType};base64,${l.buffer.toString("base64")}`;
 }
-function Xel(e) {
+function formatOutput(e) {
   let t = B9t(e);
   if (t)
     return {
@@ -103,7 +103,7 @@ function Xel(e) {
     isImage: t,
   };
 }
-function r6n(e) {
+function resetCwdIfOutsideProject(e) {
   let t = $t(),
     n = yr(),
     r = Brs();
@@ -121,5 +121,5 @@ var J8n,
   Q8n = 25,
   UZp,
   FZp = 20971520,
-  n6n = (e) => `${e.trim()}
+  stdErrAppendShellResetMessage = (e) => `${e.trim()}
 Shell cwd was reset to ${$t()}`;

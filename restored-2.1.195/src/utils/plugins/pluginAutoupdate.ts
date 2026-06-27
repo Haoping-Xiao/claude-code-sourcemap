@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XEt
 // matched 2.1.88 source: src/utils/plugins/pluginAutoupdate.ts
 // class=modified  jaccard=0.2132  score=0.3309  fileCov=0.3746
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XEt] deps: ft, glt, je, fn, At, ys, Hu, vq, vbe, _k, lE, e1e, B1, $g, vfe, Xh, i5, WI, NKe, OYt, ZC, dr, sr, I8
 ((Ase = require("path")), (jEt = R(Uj(), 1)));
@@ -29,7 +29,7 @@ async function UNf() {
   }
   return n;
 }
-async function FNf(e, t, n) {
+async function updatePlugin(e, t, n) {
   let r = false,
     o = false,
     s = null;
@@ -87,7 +87,7 @@ async function tUo(e) {
         if (!d || d.length === 0) return null;
         let p = d.filter(_Oe);
         if (p.length === 0) return null;
-        return FNf(c, p, o);
+        return updatePlugin(c, p, o);
       }),
     ),
     i = [],
@@ -108,7 +108,7 @@ async function tUo(e) {
 async function jNf(e) {
   return tUo(e);
 }
-function tjl() {
+function autoUpdateMarketplacesAndPluginsInBackground() {
   return (async () => {
     if (o1e()) {
       T("Plugin autoupdate: skipped (auto-updater disabled)");

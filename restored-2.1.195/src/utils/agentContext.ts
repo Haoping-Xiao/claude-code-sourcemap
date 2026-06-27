@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ao
 // matched 2.1.88 source: src/utils/agentContext.ts
 // class=modified  jaccard=0.1844  score=0.2835  fileCov=0.3453
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ao] deps: ft, oo, BE, RE, fn, ste, jG, dr, Ls, NE, Xa, QO, gAn, vM, vM, DD, je, Myn
 i1 = new Set();
@@ -44,14 +44,14 @@ function qG(e) {
 function ZIe(e) {
   return e.agentType === "subagent";
 }
-function G2r(e) {
+function getSubagentLogName(e) {
   if (!ZIe(e) || !e.subagentName) return;
   return e.isBuiltIn ? e.subagentName : "user-defined";
 }
 function rje(e) {
   try {
     if (!ZIe(e)) return {};
-    let t = G2r(e);
+    let t = getSubagentLogName(e);
     if (t === void 0) return {};
     return {
       subagent_type: t,

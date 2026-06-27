@@ -7,7 +7,7 @@
 // module exports: ThirdPartyModelUpgradeDialog
 // [unwrapped __esm module j$c] deps: kt, Ye, dn, VM, er, Cc, Bs, Fy, vi, Ko
 U$c = R(lt(), 1), pmr = R(rt(), 1), oie = R(se(), 1);
-function ThirdPartyModelUpgradeDialog(e) {
+function Dialog(e) {
   let t = G$c.c(27),
     {
       tierLabel: n,

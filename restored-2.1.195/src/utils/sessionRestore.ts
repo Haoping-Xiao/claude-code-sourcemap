@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Bzo
 // matched 2.1.88 source: src/utils/sessionRestore.ts
 // class=modified  jaccard=0.207  score=0.3407  fileCov=0.3453
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Ghm(e) {
+function extractTodosFromTranscript(e) {
   for (let t = e.length - 1; t >= 0; t--) {
     let n = e[t];
     if (n?.type !== "assistant") continue;
@@ -35,7 +35,7 @@ function Qen(e, t) {
     ((Bzo(), ro(Nzo)).restoreGoalFromTranscript(e.messages, t),
     !EH() && e.messages && e.messages.length > 0)
   ) {
-    let n = Ghm(e.messages);
+    let n = extractTodosFromTranscript(e.messages);
     if (n.length > 0) {
       let r = Rt();
       t((o) => ({
@@ -58,7 +58,7 @@ function Zen(e, t) {
     color: t === "default" ? void 0 : t,
   };
 }
-function VTe(e, t, n) {
+function restoreAgentFromSession(e, t, n) {
   if (t)
     return {
       agentDefinition: t,
@@ -346,7 +346,7 @@ function FEc(e) {
   }
   (Uy(t.originalCwd), _D($t()), mY(), bS()?.refreshGitBranch?.());
 }
-async function upr(e, t, n) {
+async function processResumedConversation(e, t, n) {
   let r;
   if (((r = n.modeApi?.matchSessionMode(e.mode)), r)) e.messages.push(cc(r, "warning"));
   if (!t.forkSession) {
@@ -372,7 +372,7 @@ async function upr(e, t, n) {
     !t.forkSession)
   )
     (ttn(e.worktreeSession), Hme());
-  let { agentDefinition: o, agentType: s } = VTe(
+  let { agentDefinition: o, agentType: s } = restoreAgentFromSession(
       e.agentSetting,
       n.mainThreadAgentDefinition,
       n.agentDefinitions,

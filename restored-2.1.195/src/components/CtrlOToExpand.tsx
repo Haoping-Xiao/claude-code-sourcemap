@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d4t
 // matched 2.1.88 source: src/components/CtrlOToExpand.tsx
 // class=modified  jaccard=0.2953  score=0.5076  fileCov=0.4138
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module d4t]
 ((Uua = R(rt(), 1)), (wLe = Uua.createContext(false)));
@@ -20,7 +20,7 @@ function p4t(e) {
   else r = t[1];
   return r;
 }
-function NI() {
+function CtrlOToExpand() {
   let e = Alo.c(3),
     t = Elo.useContext(jua),
     n = Elo.useContext(wLe),
@@ -49,7 +49,7 @@ function NI() {
   else s = e[2];
   return s;
 }
-function Gua() {
+function ctrlOToExpand() {
   let e = eC("app:toggleTranscript", "Global", "ctrl+o");
   return wt.dim(`(${e} to expand)`);
 }

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yf
 // matched 2.1.88 source: src/utils/task/diskOutput.ts
 // class=modified  jaccard=0.0368  score=0.059  fileCov=0.0893
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yf] deps: Qi, Uh, M7, u_, $7, ft, Un, lf, EI, Rm, Lo, fn, ys, Hu, KI, Is, y_, vf, mCe, RCe, dr, xue, kv, K0, sj, Tkn, $I, QH, Gy, w5e
 ((Fsc = require("crypto")),
@@ -137,7 +137,7 @@ function jm(e) {
 function Clr(e) {
   return (Qsc.add(e), e.finally(() => Qsc.delete(e)).catch(() => {}), e);
 }
-class W2n {
+class DiskTaskOutput {
   #e;
   #t = null;
   #n = [];
@@ -228,7 +228,7 @@ class W2n {
 }
 function wem(e) {
   let t = vlr.get(e);
-  if (!t) ((t = new W2n(e)), vlr.set(e, t));
+  if (!t) ((t = new DiskTaskOutput(e)), vlr.set(e, t));
   return t;
 }
 function YZa(e, t) {
@@ -272,7 +272,7 @@ async function EHl(e, t, n = eic) {
     };
   }
 }
-async function fRo(e, t = eic) {
+async function getTaskOutput(e, t = eic) {
   try {
     let { content: n, bytesTotal: r, bytesRead: o } = await vx(jm(e), t);
     if (r > o)

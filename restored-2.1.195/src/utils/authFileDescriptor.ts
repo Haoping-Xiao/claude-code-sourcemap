@@ -2,15 +2,15 @@
 // restored from claude-code 2.1.195 (deminified) — module db
 // matched 2.1.88 source: src/utils/authFileDescriptor.ts
 // class=modified  jaccard=0.4578  score=0.6453  fileCov=0.6118
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module db] deps: Pw, At
 (($7s = require("async_hooks")), (uI = require("fs/promises")));
 kld = new $7s.AsyncLocalStorage();
-function CUr(e, t, n) {
+function maybePersistTokenForSubprocesses(e, t, n) {
   if (!ut(process.env.CLAUDE_CODE_REMOTE)) return;
   try {
-    (YSn.mkdirSync(XSn, {
+    (YSn.mkdirSync(CCR_TOKEN_DIR, {
       recursive: true,
       mode: 448,
     }),
@@ -25,7 +25,7 @@ function CUr(e, t, n) {
     });
   }
 }
-function sPt(e, t) {
+function readTokenFromWellKnownFile(e, t) {
   try {
     let r = qt()
       .readFileSync(e, {
@@ -42,12 +42,18 @@ function sPt(e, t) {
     return null;
   }
 }
-function B7s({ envVar: e, wellKnownPath: t, label: n, getCached: r, setCached: o }) {
+function getCredentialFromFd({
+  envVar: e,
+  wellKnownPath: t,
+  label: n,
+  getCached: r,
+  setCached: o,
+}) {
   let s = r();
   if (s !== void 0) return s;
   let i = process.env[e];
   if (!i) {
-    let l = sPt(t, n);
+    let l = readTokenFromWellKnownFile(t, n);
     return (o(l), l);
   }
   let a = parseInt(i, 10);
@@ -72,12 +78,17 @@ function B7s({ envVar: e, wellKnownPath: t, label: n, getCached: r, setCached: o
         o(null),
         null
       );
-    return (T(`Successfully read ${n} from file descriptor ${a}`), o(c), CUr(t, c, n), c);
+    return (
+      T(`Successfully read ${n} from file descriptor ${a}`),
+      o(c),
+      maybePersistTokenForSubprocesses(t, c, n),
+      c
+    );
   } catch (l) {
     T(`Failed to read ${n} from file descriptor ${a}: ${be(l)}`, {
       level: "error",
     });
-    let c = sPt(t, n);
+    let c = readTokenFromWellKnownFile(t, n);
     return (o(c), c);
   }
 }
@@ -108,10 +119,10 @@ function Dld() {
       });
   }
 }
-function b9() {
+function getOAuthTokenFromFileDescriptor() {
   return (
     Dld(),
-    B7s({
+    getCredentialFromFd({
       envVar: "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
       wellKnownPath: Rld,
       label: "OAuth token",
@@ -120,8 +131,8 @@ function b9() {
     })
   );
 }
-function iPt() {
-  return B7s({
+function getApiKeyFromFileDescriptor() {
+  return getCredentialFromFd({
     envVar: "CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR",
     wellKnownPath: Lld,
     label: "API key",
@@ -131,7 +142,7 @@ function iPt() {
 }
 var YSn,
   N7s,
-  XSn = "/home/claude/.claude/remote",
+  CCR_TOKEN_DIR = "/home/claude/.claude/remote",
   Rld,
   Lld,
   JSn,

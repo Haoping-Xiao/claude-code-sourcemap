@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module v5
 // matched 2.1.88 source: src/components/permissions/PermissionRequestTitle.tsx
 // class=partial  jaccard=0.1346  score=0.1604  fileCov=0.4554
-// note: low-confidence suggestion: src/components/permissions/PermissionRequestTitle.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/permissions/PermissionRequestTitle.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v5] deps: O0, Ye
 P1a = R(lt(), 1), M1a = R(se(), 1);
-function ZDe(e) {
+function PermissionRequestTitle(e) {
   let t = $1a.c(18),
     {
       title: n,

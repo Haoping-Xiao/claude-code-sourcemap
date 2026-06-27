@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xsr
 // matched 2.1.88 source: src/commands/fast/fast.tsx
 // class=modified (alt of src/commands/fast/fast.tsx)  jaccard=0.1037  score=0.3045  fileCov=0.136
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xsr] deps: iu, Xa, Ye, Fh, nne, f0e
 ((Nzl = R(lt(), 1)), (Fjo = R(se(), 1)));
@@ -78,7 +78,7 @@ function jjo() {
     color: "warning",
   };
 }
-function ksr(e, t) {
+function applyFastMode(e, t) {
   if (
     (zIe(),
     io("userSettings", {
@@ -117,12 +117,12 @@ function ksr(e, t) {
       };
     });
 }
-async function Rsr(e, t, n, r, o) {
+async function handleFastModeShortcut(e, t, n, r, o) {
   let s = lle();
   if (s) return `Fast mode unavailable: ${s}`;
   let { mainLoopModel: i } = t();
   if (
-    (ksr(e, n),
+    (applyFastMode(e, n),
     G("tengu_fast_mode_toggled", {
       enabled: e,
       source: $e(r),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IXl
 // matched 2.1.88 source: src/commands/chrome/chrome.tsx
 // class=modified  jaccard=0.2385  score=0.3551  fileCov=0.4206
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module IXl] deps: Xr, Vl, Ye, dn, er, je, At, Jt
@@ -16,7 +16,7 @@
       osPlatform: H.string().optional(),
     }),
   )));
-function _8f(e) {
+function ClaudeInChromeMenu(e) {
   let t = xXl.c(47),
     { onDone: n, isExtensionInstalled: r, configEnabled: o, isClaudeAISubscriber: s, isWSL: i } = e,
     a = Ht(T8f),
@@ -53,7 +53,7 @@ function _8f(e) {
     ((D = function (K) {
       e: switch (K) {
         case "install-extension": {
-          (c(A8f), f(true), k(g8f));
+          (c(A8f), f(true), k(CHROME_EXTENSION_URL));
           break e;
         }
         case "reconnect": {
@@ -63,11 +63,11 @@ function _8f(e) {
                 if ((g(Z), Z)) f(false);
               })
               .catch(ke),
-            k(y8f));
+            k(CHROME_RECONNECT_URL));
           break e;
         }
         case "manage-permissions": {
-          (c(S8f), k(h8f));
+          (c(S8f), k(CHROME_PERMISSIONS_URL));
           break e;
         }
         case "toggle-default": {
@@ -383,9 +383,9 @@ function T8f(e) {
 var xXl,
   nHt,
   hg,
-  g8f = "https://claude.ai/chrome",
-  h8f = "https://clau.de/chrome/permissions",
-  y8f = "https://clau.de/chrome/reconnect",
+  CHROME_EXTENSION_URL = "https://claude.ai/chrome",
+  CHROME_PERMISSIONS_URL = "https://clau.de/chrome/permissions",
+  CHROME_RECONNECT_URL = "https://clau.de/chrome/reconnect",
   call = async function (e) {
     let t = await Kfe().catch(
         (s) => (
@@ -401,7 +401,7 @@ var xXl,
       n = Dt(),
       r = bo(),
       o = Oe.isWslEnvironment();
-    return hg.jsx(_8f, {
+    return hg.jsx(ClaudeInChromeMenu, {
       onDone: e,
       isExtensionInstalled: t,
       configEnabled: n.claudeInChromeDefaultEnabled,

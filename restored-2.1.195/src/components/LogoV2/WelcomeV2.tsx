@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cNe
 // matched 2.1.88 source: src/components/LogoV2/WelcomeV2.tsx
 // class=modified  jaccard=0.4482  score=0.5552  fileCov=0.6994
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cNe] deps: si, ZUt, mdc, inr, Ye, S6, dn, a4n, kt, Cre, BI, Kv, Apo, Ox, cTt, g$, w9o, C5, er, je, At, Yp, Rd, Is, zH, Dgt, L7, dr, LPe, JN, I9o
 ((Kdc = R(lt(), 1)),
@@ -11,7 +11,7 @@
   (eur = R(rt(), 1)),
   (TS = R(se(), 1)));
 lam = `${nt.cross} Rejected (see disabledMcpjsonServers in settings)`;
-function uNe() {
+function WelcomeV2() {
   let e = N9o.c(36),
     [t] = na(),
     n = Sd(),
@@ -50,7 +50,7 @@ function uNe() {
   if (Oe.terminal === "Apple_Terminal") {
     let A;
     if (e[1] !== t)
-      ((A = ko.jsx(gam, {
+      ((A = ko.jsx(AppleTerminalWelcomeV2, {
         theme: t,
         welcomeMessage: "Welcome to Claude Code",
       })),
@@ -451,7 +451,7 @@ function uNe() {
   else S = e[35];
   return S;
 }
-function gam(e) {
+function AppleTerminalWelcomeV2(e) {
   let t = N9o.c(44),
     { theme: n, welcomeMessage: r } = e;
   if (["light", "light-daltonized", "light-ansi"].includes(n)) {

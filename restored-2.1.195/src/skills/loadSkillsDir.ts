@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module aDo
 // matched 2.1.88 source: src/skills/loadSkillsDir.ts
 // class=modified  jaccard=0.229  score=0.3208  fileCov=0.4447
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function $Sf(e, t) {
   if (t === "policySettings") return !1;
   return e === "skills" || e === "commands_DEPRECATED" || e === "plugin";
 }
-function _ze(e, t) {
+function getSkillsPath(e, t) {
   switch (e) {
     case "policySettings":
       return rm.join(QC(), ".claude", t);
@@ -35,7 +35,7 @@ async function OSf(e) {
     return null;
   }
 }
-function NSf(e, t) {
+function parseHooksFromFrontmatter(e, t) {
   if (!e.hooks) return;
   let n = IG().safeParse(e.hooks);
   if (!n.success) {
@@ -52,7 +52,7 @@ function BSf(e) {
   if (t.length === 0 || t.every((n) => n === "**")) return;
   return t;
 }
-function uDo(e, t, n, r = "Skill") {
+function parseSkillFrontmatterFields(e, t, n, r = "Skill") {
   let o = AU(e.description, n),
     s = o ?? ffe(t, r),
     i = e["user-invocable"] === void 0 ? !0 : qst(e["user-invocable"]),
@@ -79,7 +79,7 @@ function uDo(e, t, n, r = "Skill") {
     model: l,
     disableModelInvocation: qst(e["disable-model-invocation"]),
     userInvocable: i,
-    hooks: NSf(e, n),
+    hooks: parseHooksFromFrontmatter(e, n),
     executionContext: e.context === "fork" ? "fork" : void 0,
     agent: e.agent != null ? String(e.agent) : void 0,
     effort: u,
@@ -101,7 +101,7 @@ function USf(e) {
     `To read a supporting file this skill references by a relative path \u2014 for example "templates/invoice.md" \u2014 call ${ide} with server "${e.server}" and uri "${e.uri}/templates/invoice.md".${t}`
   );
 }
-function mKt({
+function createSkillCommand({
   skillName: e,
   displayName: t,
   description: n,
@@ -332,10 +332,10 @@ async function zbt(e, t) {
         let g = rHe(c, f),
           h = a.name;
         w3e("skill", p);
-        let y = uDo(p, g, h),
+        let y = parseSkillFrontmatterFields(p, g, h),
           b = BSf(p);
         return {
-          skill: mKt({
+          skill: createSkillCommand({
             ...y,
             skillName: h,
             markdownContent: g,
@@ -365,7 +365,7 @@ async function zbt(e, t) {
 function dDo(e) {
   return /^skill\.md$/i.test(rm.basename(e));
 }
-function FSf(e) {
+function transformSkillFiles(e) {
   let t = new Map();
   for (let r of e) {
     let o = rm.dirname(r.filePath),
@@ -406,7 +406,7 @@ function GSf(e, t) {
 function WSf(e) {
   return dDo(e.filePath) ? jSf(e.filePath, e.baseDir) : GSf(e.filePath, e.baseDir);
 }
-async function qSf(e, t) {
+async function loadSkillsFromCommandsDir(e, t) {
   try {
     let [n, r] = await Promise.all([
         _q("commands", e),
@@ -424,7 +424,7 @@ async function qSf(e, t) {
         ),
       ]),
       o = [...n, ...r.flat()],
-      s = FSf(o),
+      s = transformSkillFiles(o),
       i = [],
       a = !1;
     for (let { baseDir: l, filePath: c, frontmatter: u, content: d, source: p } of s)
@@ -438,9 +438,9 @@ async function qSf(e, t) {
             source: p,
           });
         w3e("skill", u);
-        let h = uDo(u, d, g, "Custom command");
+        let h = parseSkillFrontmatterFields(u, d, g, "Custom command");
         i.push({
-          skill: mKt({
+          skill: createSkillCommand({
             ...h,
             skillName: g,
             displayName: void 0,
@@ -533,7 +533,7 @@ function JTl(e) {
     }
   });
 }
-async function iyt(e, t) {
+async function discoverSkillDirsForPaths(e, t) {
   if (lc("skills")) return [];
   let n = qt(),
     r = t.endsWith(rm.sep) ? t.slice(0, -1) : t,
@@ -562,7 +562,7 @@ async function iyt(e, t) {
 function QTl(e) {
   return `${e.type === "prompt" ? (e.skillRoot ?? "") : ""}\x00${e.name}`;
 }
-async function ayt(e) {
+async function addSkillDirectories(e) {
   if (lc("skills") || !Om("projectSettings") || VE("skills")) {
     T("[skills] Dynamic skill discovery skipped: projectSettings disabled or plugin-only policy");
     return;
@@ -595,7 +595,7 @@ function ZTl() {
     )
     .map(([, e]) => e);
 }
-function lyt(e, t) {
+function activateConditionalSkillsForPaths(e, t) {
   if ((yKt()?.conditionalSkills.size ?? 0) === 0) return [];
   let n = [];
   for (let [r, o] of yq().conditionalSkills) {

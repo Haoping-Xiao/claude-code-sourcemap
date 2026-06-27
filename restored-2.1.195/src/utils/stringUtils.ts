@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ED
 // matched 2.1.88 source: src/utils/stringUtils.ts
 // class=modified  jaccard=0.4101  score=0.6358  fileCov=0.536
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ED] deps: FK
 h7c = new Set(["EPIPE", "EIO", "ENXIO", "EBADF"]);
@@ -121,7 +121,7 @@ function jK(e) {
 function nae(e) {
   return e.replaceAll("\u3000", " ");
 }
-function Fin(e, t = ",", n = uis) {
+function safeJoinLines(e, t = ",", n = uis) {
   let o = "";
   for (let s of e) {
     let i = o ? t : "",
@@ -136,7 +136,7 @@ function Fin(e, t = ",", n = uis) {
   }
   return o;
 }
-class qIt {
+class EndTruncatingAccumulator {
   maxSize;
   content = "";
   isTruncated = false;

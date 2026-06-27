@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Tnt
 // matched 2.1.88 source: src/utils/billing.ts
 // class=modified  jaccard=0.4426  score=0.8181  fileCov=0.4909
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function BSn() {
+function hasConsoleBillingAccess() {
   if (Oe.DISABLE_COST_WARNINGS) return false;
   let e = bo();
   if (e && zB()) return true;
@@ -18,7 +18,7 @@ function BSn() {
   if (!o || !s) return false;
   return ["admin", "billing"].includes(o) || ["workspace_admin", "workspace_billing"].includes(s);
 }
-function eH() {
+function hasClaudeAiBillingAccess() {
   if (w7s !== null) return w7s;
   if (!bo()) return false;
   let e = Di();

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lT
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
 // class=modified (alt of src/utils/permissions/permissionSetup.ts)  jaccard=0.0754  score=0.3586  fileCov=0.0871
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function C1i(e) {
   let t = TU(e.cli.effort);
@@ -10,11 +10,11 @@ function C1i(e) {
   if (e.settings.ultracode === true) return "xhigh";
   return Tke(e.settings.effortLevel);
 }
-function QOd() {
+function verifyAutoModeGateAccess() {
   let e = at("tengu_auto_mode_config", k1i);
   return e !== k1i && e?.enabled === "disabled";
 }
-function D1i(e) {
+function initialPermissionModeFromCLI(e) {
   let { cli: t, env: n, settings: r, agentFrontmatter: o } = e,
     s = t.permissionMode,
     i = t.dangerouslySkipPermissions,
@@ -33,7 +33,7 @@ function D1i(e) {
   let l = at("tengu_disable_bypass_permissions_mode", false),
     c = r.permissions?.disableBypassPermissionsMode === "disable",
     u = l || c,
-    d = QOd(),
+    d = verifyAutoModeGateAccess(),
     p = [],
     f;
   if (i)

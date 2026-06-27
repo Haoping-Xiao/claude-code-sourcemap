@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kzo
 // matched 2.1.88 source: src/components/permissions/ComputerUseApproval/ComputerUseApproval.tsx
 // class=modified  jaccard=0.4691  score=0.6929  fileCov=0.5922
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kzo] deps: yfe, tne, hNe
 ((CAc = R(rt(), 1)),
@@ -15,11 +15,11 @@ function LAc(e) {
     o;
   if (t[0] !== r || t[1] !== n)
     ((o = n.tccState
-      ? SE.jsx(Sym, {
+      ? SE.jsx(ComputerUseTccPanel, {
           tccState: n.tccState,
           onDone: () => r(RAc),
         })
-      : SE.jsx(Aym, {
+      : SE.jsx(ComputerUseAppListPanel, {
           request: n,
           onDone: r,
         })),
@@ -29,7 +29,7 @@ function LAc(e) {
   else o = t[2];
   return o;
 }
-function Sym(e) {
+function ComputerUseTccPanel(e) {
   let t = ypr.c(26),
     { tccState: n, onDone: r } = e,
     o;
@@ -179,7 +179,7 @@ function Sym(e) {
   else h = t[25];
   return h;
 }
-function Aym(e) {
+function ComputerUseAppListPanel(e) {
   let t = ypr.c(48),
     { request: n, onDone: r } = e,
     o;
@@ -249,7 +249,7 @@ function Aym(e) {
               ]
             : [],
         ),
-        $ = n.apps.filter((W) => !W.resolved || !s.has(W.resolved.bundleId)).map(vym),
+        $ = n.apps.filter((W) => !W.resolved || !s.has(W.resolved.bundleId)).map(_temp2),
         q = {
           ...pJ,
           ...Object.fromEntries(c.map(Tym)),
@@ -458,7 +458,7 @@ function Hym(e) {
 function Tym(e) {
   return [e, true];
 }
-function vym(e) {
+function _temp2(e) {
   return {
     bundleId: e.resolved?.bundleId ?? e.requestedName,
     reason: e.resolved ? "user_denied" : "not_installed",

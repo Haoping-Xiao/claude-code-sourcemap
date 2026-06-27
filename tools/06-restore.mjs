@@ -62,6 +62,18 @@ if (existsSync(AI_RENAMES_PATH)) {
   try { AI_RENAMES = JSON.parse(readFileSync(AI_RENAMES_PATH, "utf-8")); } catch {}
   console.log(`[06] loaded AI/manual renames for ${Object.keys(AI_RENAMES).length} modules from ${AI_RENAMES_PATH}`);
 }
+// 自动跨版本对齐重命名 (09-align-names.mjs 产物); 手工 ai-renames 优先级更高(后合并)。
+let AUTO_RENAMES = {};
+const AUTO_RENAMES_PATH = process.env.AUTO_RENAMES || `work/${VERSION}/auto-renames.json`;
+if (existsSync(AUTO_RENAMES_PATH)) {
+  try { AUTO_RENAMES = JSON.parse(readFileSync(AUTO_RENAMES_PATH, "utf-8")); } catch {}
+  console.log(`[06] loaded auto-aligned renames for ${Object.keys(AUTO_RENAMES).length} modules from ${AUTO_RENAMES_PATH}`);
+}
+function mergedRenames(name) {
+  const a = AUTO_RENAMES[name], b = AI_RENAMES[name];
+  if (!a && !b) return undefined;
+  return { ...(a || {}), ...(b || {}) }; // 手工覆盖自动
+}
 
 // ── helpers ───────────────────────────────────────────────────────────────
 
@@ -360,7 +372,7 @@ for (const [target, list] of byTarget) {
       m.vendor ? nVendor++ : nUnchanged++;
     } else {
       const pretty = !m.vendor; // app 文件用 prettier, vendor 用 babel 输出
-      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: AI_RENAMES[name] });
+      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: mergedRenames(name) });
       if (!r.ok) nParseFail++;
       nRenamed += r.renamed;
       const clsLabel = m.vendor ? "vendor" : m.class;
@@ -431,7 +443,7 @@ for (const { name, m } of standalone) {
   else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
   if (inf) note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
-  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: AI_RENAMES[name] });
+  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: mergedRenames(name) });
   if (!r.ok) nParseFail++;
   nRenamed += r.renamed;
   const rel = `${dir}/${idBase}.js`;

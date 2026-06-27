@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aYo
 // matched 2.1.88 source: src/hooks/useInboxPoller.ts
 // class=modified  jaccard=0.4001  score=0.7322  fileCov=0.4686
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aYo] deps: ft, np, dn, WW, F2t, N8, je, vn, bm, tA, OI
 ((_vm = new RegExp(`<${Dp}>([^<]+)</${Dp}>`, "g")), (bvm = `<${Oc}>`), (Svm = `<${up}>`));
@@ -25,7 +25,7 @@ function Ivm(e) {
     isMcp: t,
   };
 }
-function H0c({
+function useInboxPoller({
   enabled: e,
   isLoading: t,
   focusedInputDialog: n,

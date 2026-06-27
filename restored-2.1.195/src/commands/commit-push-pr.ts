@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UOo
 // matched 2.1.88 source: src/commands/commit-push-pr.ts
 // class=modified  jaccard=0.1196  score=0.3408  fileCov=0.1556
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UOo] deps: jc
 ((O0f = {
@@ -18,7 +18,7 @@
   load: () => Promise.resolve().then(() => (UPl(), NPl)),
 }),
   (FPl = O0f));
-function GPl(e, t, n) {
+function getPromptContent(e, t, n) {
   let { commit: r, pr: o } = wze(),
     s = c6(r),
     i = c6(n ?? o),

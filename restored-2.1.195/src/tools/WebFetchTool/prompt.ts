@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Eue
 // matched 2.1.88 source: src/tools/WebFetchTool/prompt.ts
 // class=modified  jaccard=0.1964  score=0.305  fileCov=0.3556
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Eue] deps: Ece, id, fd, je, At, sp, vn, Is, ih, Jt, vf, Cfn, hY, RCe, dr, Sx, Smn
 ((LWe = require("fs/promises")), (t$ = R(require("path"))), (inp = Ena + Ana + 200));
@@ -21,9 +21,9 @@ ${
     ? `- Exception: claude.ai/code/artifact/{uuid} URLs (including preview.claude.ai) ARE fetchable \u2014 WebFetch uses your claude.ai login. Use WebFetch for these, not curl or a headless browser (those return the SPA shell or a Cloudflare 403, not the content).
 `
     : ""
-}${cnp}`;
+}${DESCRIPTION}`;
 }
-function Tna(e, t, n) {
+function makeSecondaryModelPrompt(e, t, n) {
   return `
 Web page content:
 ---
@@ -43,7 +43,7 @@ ${
 }
 `;
 }
-var cnp = `
+var DESCRIPTION = `
 - Fetches content from a specified URL and processes it using an AI model
 - Takes a URL and a prompt as input
 - Fetches the URL content, converts HTML to markdown

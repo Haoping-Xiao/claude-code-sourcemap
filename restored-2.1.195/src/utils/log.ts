@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module qd
 // matched 2.1.88 source: src/utils/log.ts
 // class=modified  jaccard=0.2368  score=0.8415  fileCov=0.2478
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function DFe(e, t) {
+function getLogDisplayTitle(e, t) {
   let n = e.firstPrompt?.startsWith(`<${Cae}>`),
     r = e.firstPrompt ? FZe(e.firstPrompt) : "",
     o = r && !n,
@@ -27,7 +27,7 @@ function PDu(e) {
   if (Tpn.length >= DDu) Tpn.shift();
   Tpn.push(e);
 }
-function oEs(e) {
+function attachErrorLogSink(e) {
   if (Nee !== null) return;
   if (((Nee = e), WZe.length > 0)) {
     let t = [...WZe];
@@ -102,7 +102,7 @@ function sn(e, t) {
     Nee.logMCPDebug(e, t);
   } catch {}
 }
-function vpn(e, t) {
+function captureAPIRequest(e, t) {
   if (!t || !t.startsWith("repl_main_thread")) return;
   let { messages: n, ...r } = e;
   (xbr(r), Rbr(null));

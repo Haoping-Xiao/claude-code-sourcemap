@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eJl
 // matched 2.1.88 source: src/components/WorktreeExitDialog.tsx
 // class=modified  jaccard=0.47  score=0.6214  fileCov=0.6586
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eJl] deps: fH, _i, Ye, kt, uf, Vl, vi, zX
 ((QXl = R(lt(), 1)), (aTe = R(se(), 1)));
@@ -29,7 +29,7 @@ function sHt(e) {
     });
   (Y8f(), gS.cache.clear?.());
 }
-function oJl(e) {
+function WorktreeExitDialog(e) {
   let t = tJl.c(29),
     { onDone: n, onCancel: r } = e,
     [o, s] = M1e.useState("loading"),

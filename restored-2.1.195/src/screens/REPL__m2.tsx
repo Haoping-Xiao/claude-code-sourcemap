@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wRc
 // matched 2.1.88 source: src/screens/REPL.tsx
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0073  score=0.2039  fileCov=0.0076
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wRc] deps: kt, Ye, ps, wr, Ko, dYo, yYo, SRc, TRc, pfr
 ((_Yo = R(lt(), 1)), (vRc = R(rt(), 1)), ($C = R(se(), 1)));
@@ -26,7 +26,7 @@ function gfr(e) {
   if (e.frustration !== "closed") return "frustration";
   return null;
 }
-function IRc(e) {
+function REPL(e) {
   let t = CRc.c(47),
     {
       postCompactSurvey: n,

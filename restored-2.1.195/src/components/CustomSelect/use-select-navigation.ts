@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dzi
 // matched 2.1.88 source: src/components/CustomSelect/use-select-navigation.ts
 // class=modified  jaccard=0.6669  score=0.8694  fileCov=0.7412
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dzi]
 vPn = class vPn extends Map {
@@ -30,7 +30,7 @@ vPn = class vPn extends Map {
     ((this.first = n), (this.last = r));
   }
 };
-function wPn({
+function reducer({
   visibleOptionCount: e = 5,
   options: t,
   initialFocusValue: n,

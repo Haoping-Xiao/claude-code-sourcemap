@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I5c
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0612  score=0.1829  fileCov=0.0842
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ultrareviewHandler
 // [unwrapped __esm module I5c] deps: kt, Yp, lH, JN
@@ -52,7 +52,7 @@ Cancelled. The remote review is still running \u2014 view it at ${a.sessionUrl}`
     }));
   let l;
   try {
-    l = await u1m(a.sessionId, i.signal, s * 60 * 1000);
+    l = await startRemoteSessionPolling(a.sessionId, i.signal, s * 60 * 1000);
   } catch (f) {
     return (
       await Qu("cli_ultrareview", "cli_ultrareview_poll_failed", {
@@ -114,7 +114,7 @@ function c1m(e) {
   } catch {}
   return null;
 }
-async function u1m(e, t, n) {
+async function startRemoteSessionPolling(e, t, n) {
   let r = Date.now() + n,
     o = null,
     s = 0,

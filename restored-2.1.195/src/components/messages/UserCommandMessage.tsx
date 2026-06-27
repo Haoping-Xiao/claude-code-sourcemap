@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module xil
 // matched 2.1.88 source: src/components/messages/UserCommandMessage.tsx
 // class=modified  jaccard=0.3787  score=0.5254  fileCov=0.5755
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xil] deps: qzn, co, OI
 ((wil = R(lt(), 1)), (Iil = R(se(), 1)));
-function Ril(e) {
+function UserCommandMessage(e) {
   let t = kil.c(19),
     { addMargin: n, param: r } = e,
     { text: o } = r,

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ddc
 // matched 2.1.88 source: src/components/MCPServerDesktopImportDialog.tsx
 // class=modified  jaccard=0.2964  score=0.4646  fileCov=0.4501
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function fdc(e) {
+function MCPServerDesktopImportDialog(e) {
   let t = pdc.c(36),
     { servers: n, scope: r, onDone: o } = e,
     s;

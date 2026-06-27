@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module o7n
 // matched 2.1.88 source: src/utils/markdownConfigLoader.ts
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0599  score=0.3196  fileCov=0.0686
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module o7n] deps: LMe
 Oml = [];
@@ -69,7 +69,7 @@ async function Nml(e, t) {
     )
   ).filter((s) => s !== null);
 }
-async function Bml(e) {
+async function loadMarkdownFilesForSubdir(e) {
   let t = Kko.join(tr(), "workflows"),
     n = ipf(e),
     [r, ...o] = await Promise.all([

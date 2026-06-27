@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xUc
 // matched 2.1.88 source: src/components/FeedbackSurvey/useFeedbackSurvey.tsx
 // class=modified (alt of src/components/FeedbackSurvey/useFeedbackSurvey.tsx)  jaccard=0.1646  score=0.7633  fileCov=0.1734
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function kUc() {
   if (!at("tengu_vscode_feedback_survey", false)) return;
@@ -17,9 +17,9 @@ function kUc() {
   };
 }
 function RUc(e) {
-  if (dXo(e)) SLm(e);
+  if (useFeedbackSurvey(e)) SLm(e);
 }
-function dXo(e) {
+function useFeedbackSurvey(e) {
   if (!Us("allow_product_feedback")) return false;
   if (Fte() || Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return false;
   return (

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TRc
 // matched 2.1.88 source: src/components/FeedbackSurvey/FeedbackSurvey.tsx
 // class=modified  jaccard=0.2695  score=0.3158  fileCov=0.6477
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TRc] deps: Xa, Ye, hse, pfr
 ((ARc = R(lt(), 1)),
@@ -29,7 +29,7 @@
       label: "Don't ask again",
     },
   ]));
-function cvt(e) {
+function FeedbackSurvey(e) {
   let t = _Yo.c(33),
     {
       state: n,
@@ -65,7 +65,7 @@ function cvt(e) {
   if (n === "thanks") {
     let _;
     if (t[3] !== u || t[4] !== a || t[5] !== r || t[6] !== c || t[7] !== l || t[8] !== d)
-      ((_ = $C.jsx(Awm, {
+      ((_ = $C.jsx(FeedbackSurveyThanks, {
         lastResponse: r,
         inputValue: a,
         setInputValue: l,
@@ -249,7 +249,7 @@ function bwm(e) {
   else l = t[6];
   return l;
 }
-function Awm({
+function FeedbackSurveyThanks({
   lastResponse: e,
   inputValue: t,
   setInputValue: n,

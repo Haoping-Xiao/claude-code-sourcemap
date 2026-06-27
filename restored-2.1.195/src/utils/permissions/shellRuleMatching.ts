@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $I
 // matched 2.1.88 source: src/utils/permissions/shellRuleMatching.ts
 // class=modified  jaccard=0.2319  score=0.6699  fileCov=0.2619
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $I] deps: je, dr, Jt, Yf, QH, fre
 Gca = require("path");
@@ -28,7 +28,7 @@ function Wca(e) {
   while (r >= 0 && t[r] === "\\") (n++, r--);
   return n % 2 === 0;
 }
-function X8(e, t, n = false, r = false) {
+function ESCAPED_STAR_PLACEHOLDER(e, t, n = false, r = false) {
   let o = e.trim(),
     s = r ? o.replace(/[ \t]+/g, " ") : o,
     i = r ? t.replace(/[ \t]+/g, " ") : t,
@@ -60,7 +60,7 @@ function X8(e, t, n = false, r = false) {
   let m = "s" + (n ? "i" : "");
   return new RegExp(`^${p}$`, m).test(i);
 }
-function kNn(e) {
+function parsePermissionRule(e) {
   let t = Qjt(e);
   if (t !== null)
     return {
@@ -77,7 +77,7 @@ function kNn(e) {
     command: e,
   };
 }
-function RNn(e, t) {
+function suggestionForExactCommand(e, t) {
   return [
     {
       type: "addRules",

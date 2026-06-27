@@ -32,12 +32,12 @@ function getSessionCache() {
   return hNt;
 }
 function getCachePath() {
-  return c1i.join(tr(), IOd);
+  return c1i.join(tr(), CACHE_FILENAME);
 }
 function isPolicyLimitsEligible() {
-  return getPolicyLimitsIneligibleReason() === void 0;
+  return _Nt() === void 0;
 }
-function getPolicyLimitsIneligibleReason(e = {}) {
+function _Nt(e = {}) {
   if (fr() !== "firstParty") return "third_party_provider";
   if (!e.skipBaseUrlCheck && !_u()) return "custom_base_url";
   try {
@@ -65,7 +65,7 @@ function loadCachedResponse() {
     return null;
   }
 }
-function isPolicyAllowed(e) {
+function ESSENTIAL_TRAFFIC_DENY_ON_MISS(e) {
   let t = u1i();
   if (!t) {
     if (kOd.has(e)) {
@@ -81,13 +81,13 @@ function isPolicyAllowed(e) {
   return true;
 }
 function policyDeniedReason(e, t, n) {
-  if (isPolicyAllowed(e)) return null;
+  if (ESSENTIAL_TRAFFIC_DENY_ON_MISS(e)) return null;
   if (getResponseFromCache() === null)
     return `Couldn't verify your organization's policy for ${t.charAt(0).toLowerCase() + t.slice(1)}. Check your network connection and try again.`;
   return `${t} ${n} disabled by your organization's policy. Contact your organization admin to enable ${n === "are" ? "them" : "it"}.`;
 }
 function policyDenyKind(e) {
-  if (isPolicyAllowed(e)) return null;
+  if (ESSENTIAL_TRAFFIC_DENY_ON_MISS(e)) return null;
   return getResponseFromCache() === null ? "cache_miss" : "org_denied";
 }
 function isPolicyEnforced(e) {
@@ -109,7 +109,7 @@ function u1i() {
 }
 var l1i,
   c1i,
-  IOd = "policy-limits.json",
+  CACHE_FILENAME = "policy-limits.json",
   hNt = null,
   xOd,
   kOd,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wAo
 // matched 2.1.88 source: src/utils/nativeInstaller/pidLock.ts
 // class=modified  jaccard=0.4315  score=0.8329  fileCov=0.4724
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wAo] deps: dn, kt, Du, w4t, Rx, CZe, je, At, Bi, ys, Oza, Jt, CAo, uAo
 ((Uza = require("crypto")), (xVn = require("fs/promises")), (Fza = require("path")));
@@ -50,7 +50,7 @@ function x9e(e) {
     return null;
   }
 }
-function Zqt(e) {
+function isLockActive(e) {
   let t = x9e(e);
   if (!t) return false;
   let { pid: n, execPath: r } = t;
@@ -72,10 +72,10 @@ function Zqt(e) {
 function cKp(e, t) {
   oj(e, De(t, null, 2));
 }
-async function Wza(e, t) {
+async function tryAcquireLock(e, t) {
   let n = qt(),
     r = Qqt.basename(e);
-  if (Zqt(t)) {
+  if (isLockActive(t)) {
     let s = x9e(t);
     return (T(`Cannot acquire lock for ${r} - held by PID ${s?.pid}`), null);
   }
@@ -101,8 +101,8 @@ async function Wza(e, t) {
     return (T(`Failed to acquire lock for ${r}: ${s}`), null);
   }
 }
-async function qza(e, t) {
-  let n = await Wza(e, t);
+async function acquireProcessLifetimeLock(e, t) {
+  let n = await tryAcquireLock(e, t);
   if (!n) return false;
   let r = () => {
     try {
@@ -112,7 +112,7 @@ async function qza(e, t) {
   return (process.on("exit", r), process.on("SIGINT", r), process.on("SIGTERM", r), true);
 }
 async function Vza(e, t, n) {
-  let r = await Wza(e, t);
+  let r = await tryAcquireLock(e, t);
   if (!r) return false;
   try {
     return (await n(), true);
@@ -144,7 +144,7 @@ function zza(e) {
   }
   return n;
 }
-function DVn(e) {
+function cleanupStaleLocks(e) {
   let t = qt(),
     n = 0;
   try {
@@ -159,7 +159,7 @@ function DVn(e) {
           }),
             n++,
             T(`Cleaned up legacy directory lock: ${o}`));
-        else if (!Zqt(s)) (t.unlinkSync(s), n++, T(`Cleaned up stale lock: ${o}`));
+        else if (!isLockActive(s)) (t.unlinkSync(s), n++, T(`Cleaned up stale lock: ${o}`));
       } catch {}
     }
   } catch (r) {

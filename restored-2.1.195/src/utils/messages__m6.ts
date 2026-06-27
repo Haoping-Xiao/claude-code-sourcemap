@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zCo
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0036  score=0.0858  fileCov=0.0037
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zCo] deps: Mce, AW, Ye, uo, ql
 ((hil = R(lt(), 1)), (yil = require("url")), (CAe = R(se(), 1)));
@@ -17,7 +17,7 @@ function jzn(e) {
     )
   );
 }
-function Nof(e) {
+function wrapCommandText(e) {
   for (let o of D8n)
     if (e.endsWith(o)) {
       e = e.slice(0, -o.length);
@@ -131,7 +131,7 @@ function bil(e) {
   if (t[0] !== n || t[1] !== l || t[2] !== a || t[3] !== i) {
     m = Symbol.for("react.early_return_sentinel");
     e: {
-      let { messages: b, unparsed: _ } = Nof(i),
+      let { messages: b, unparsed: _ } = wrapCommandText(i),
         S = b.filter(Gof);
       if (((g = _.trim()), S.length === 0 && !g)) {
         m = null;

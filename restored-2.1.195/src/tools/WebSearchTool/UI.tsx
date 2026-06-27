@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L_l
 // matched 2.1.88 source: src/tools/WebSearchTool/UI.tsx
 // class=modified  jaccard=0.2925  score=0.4122  fileCov=0.5017
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module L_l] deps: Hp, zb, je, RE, At, Ls, kM, BIo
 vgf = ve(() =>
@@ -31,7 +31,10 @@ function Cgf(e) {
   for (let n of e) if (n != null && typeof n !== "string") t++;
   return t;
 }
-function D_l({ query: e, allowed_domains: t, blocked_domains: n }, { verbose: r }) {
+function renderToolUseMessage(
+  { query: e, allowed_domains: t, blocked_domains: n },
+  { verbose: r },
+) {
   if (!e) return null;
   let o = "";
   if (e) o += `"${e}"`;
@@ -41,7 +44,7 @@ function D_l({ query: e, allowed_domains: t, blocked_domains: n }, { verbose: r 
   }
   return o;
 }
-function P_l(e) {
+function renderToolUseProgressMessage(e) {
   if (e.length === 0) return null;
   let t = e.at(-1);
   if (!t?.data) return null;
@@ -65,7 +68,7 @@ function P_l(e) {
       return null;
   }
 }
-function M_l(e) {
+function renderToolResultMessage(e) {
   let t = e.searchCount ?? Cgf(e.results ?? []),
     n =
       e.durationSeconds >= 1

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tHc
 // matched 2.1.88 source: src/utils/permissions/permissionExplainer.ts
 // class=modified  jaccard=0.3788  score=0.5761  fileCov=0.5251
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function p_m(e) {
   if (typeof e === "string") return e;
@@ -34,7 +34,13 @@ function f_m(e, t = 1000) {
 function Zzo() {
   return Dt().permissionExplainerEnabled !== false;
 }
-async function nHc({ toolName: e, toolInput: t, toolDescription: n, messages: r, signal: o }) {
+async function generatePermissionExplanation({
+  toolName: e,
+  toolInput: t,
+  toolDescription: n,
+  messages: r,
+  signal: o,
+}) {
   if (!Zzo()) return null;
   let s = Date.now();
   try {
@@ -61,7 +67,7 @@ Explain this command in context.`,
       c = As(),
       u = await yN({
         model: c,
-        system: c_m,
+        system: SYSTEM_PROMPT,
         messages: [
           {
             role: "user",
@@ -132,7 +138,7 @@ var s_m,
   i_m = 1,
   a_m = 2,
   l_m = 3,
-  c_m =
+  SYSTEM_PROMPT =
     "Analyze shell commands and explain what they do, why you're running them, and potential risks.",
   u_m,
   d_m;

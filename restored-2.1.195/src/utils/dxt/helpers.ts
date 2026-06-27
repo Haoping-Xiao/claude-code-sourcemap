@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ndo
 // matched 2.1.88 source: src/utils/dxt/helpers.ts
 // class=modified  jaccard=0.3426  score=0.8581  fileCov=0.3631
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function eTp(e) {
+async function validateManifest(e) {
   let { McpbManifestSchema: t } = await Promise.resolve().then(() => (ndo(), tdo)),
     n = t.safeParse(e);
   if (!n.success) {
@@ -19,16 +19,16 @@ async function eTp(e) {
   }
   return n.data;
 }
-async function tTp(e) {
+async function parseAndValidateManifestFromText(e) {
   let t;
   try {
     t = Ft(e);
   } catch (n) {
     throw Error(`Invalid JSON in manifest.json: ${be(n)}`);
   }
-  return eTp(t);
+  return validateManifest(t);
 }
 async function rdo(e) {
   let t = new TextDecoder().decode(e);
-  return tTp(t);
+  return parseAndValidateManifestFromText(t);
 }

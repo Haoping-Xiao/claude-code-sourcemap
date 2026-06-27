@@ -2,17 +2,17 @@
 // restored from claude-code 2.1.195 (deminified) — module VNo
 // matched 2.1.88 source: src/utils/permissions/shadowedRuleDetection.ts
 // class=modified  jaccard=0.4596  score=1  fileCov=0.4596
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VNo] deps: id, uo, Dgt, gz, S4n
 ((qNl = R(lt(), 1)), (Anr = R(rt(), 1)));
-function X$f(e) {
+function isSharedSettingSource(e) {
   return e === "projectSettings" || e === "policySettings" || e === "command";
 }
 function Tnr(e) {
   return COe(e);
 }
-function VNl(e, t, n) {
+function generateFixSuggestion(e, t, n) {
   let r = Tnr(t.source),
     o = Tnr(n.source),
     s = t.ruleValue.toolName;
@@ -32,7 +32,7 @@ function J$f(e, t, n) {
       shadowed: false,
     };
   if (r === Co && n.sandboxAutoAllowEnabled) {
-    if (!X$f(s.source))
+    if (!isSharedSettingSource(s.source))
       return {
         shadowed: false,
       };
@@ -60,7 +60,7 @@ function Q$f(e, t) {
     shadowType: "deny",
   };
 }
-function vnr(e, t) {
+function detectUnreachableRules(e, t) {
   let n = [],
     r = bHe(e),
     o = kHe(e),
@@ -74,7 +74,7 @@ function vnr(e, t) {
         reason: `Blocked by "${a.shadowedBy.ruleValue.toolName}" deny rule (from ${c})`,
         shadowedBy: a.shadowedBy,
         shadowType: "deny",
-        fix: VNl("deny", a.shadowedBy, i),
+        fix: generateFixSuggestion("deny", a.shadowedBy, i),
       });
       continue;
     }
@@ -86,7 +86,7 @@ function vnr(e, t) {
         reason: `Shadowed by "${l.shadowedBy.ruleValue.toolName}" ask rule (from ${c})`,
         shadowedBy: l.shadowedBy,
         shadowType: "ask",
-        fix: VNl("ask", l.shadowedBy, i),
+        fix: generateFixSuggestion("ask", l.shadowedBy, i),
       });
     }
   }

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module WJa
 // matched 2.1.88 source: src/utils/swarm/It2SetupPrompt.tsx
 // class=modified (alt of src/utils/swarm/It2SetupPrompt.tsx)  jaccard=0.0414  score=0.1015  fileCov=0.0654
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WJa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH
 ((jJa = R(lt(), 1)), (K9n = R(rt(), 1)), (O6 = R(se(), 1)));
-function qJa() {
+function It2SetupPrompt() {
   let { goBack: e, goNext: t, updateWizardData: n, wizardData: r } = Eu(),
     [o, s] = Y9n.useState({
       phase: "checking",

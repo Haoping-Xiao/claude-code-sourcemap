@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B6a
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
 // class=modified  jaccard=0.2604  score=0.6634  fileCov=0.3
-// note: deminified; 9 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseOtelHeadersEnvVar, parseExporterTypes, isTelemetryEnabled, isBigQueryMetricsEnabled, initializeTelemetry, getOtlpLogExporters, getOTLPExporterConfig, flushTelemetry, bootstrapTelemetry
 function ZEo(e, t) {
@@ -16,7 +16,7 @@ function bootstrapTelemetry() {
     !process.env.OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE)
   )
     process.env.OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE = "delta";
-  if (mC() && !Cge()) Y6a();
+  if (mC() && !Cge()) initializeBetaTracing();
 }
 function K6a() {
   let e = J_r();
@@ -56,7 +56,7 @@ function K6a() {
     p = r.merge(o).merge(a).merge(d).merge(NJ.resourceFromAttributes(l));
   return (Q_r(p), p);
 }
-function Y6a() {
+function initializeBetaTracing() {
   let e = K6a(),
     t = new Oyo(),
     n = new DVe(t, {
@@ -128,7 +128,7 @@ function parseExporterTypes(e) {
     .map((t) => t.trim())
     .filter((t) => t !== "none");
 }
-async function bzp() {
+async function getOtlpReaders() {
   let e = parseExporterTypes(process.env.OTEL_METRICS_EXPORTER),
     t = LK(process.env.OTEL_METRIC_EXPORT_INTERVAL, yzp);
   T(
@@ -227,7 +227,7 @@ async function getOtlpLogExporters() {
     } else throw Error(`Unknown exporter type set in OTEL_LOGS_EXPORTER env var: ${o}`);
   return r;
 }
-async function Szp() {
+async function getOtlpTraceExporters() {
   let e = parseExporterTypes(process.env.OTEL_TRACES_EXPORTER),
     t = [];
   for (let n of e)
@@ -302,11 +302,11 @@ async function initializeTelemetry() {
     ),
     t)
   )
-    e.push(...(await bzp()));
+    e.push(...(await getOtlpReaders()));
   if (isBigQueryMetricsEnabled()) e.push(Ezp());
   let n = K6a();
   if (mC()) {
-    if (!Cge()) Y6a();
+    if (!Cge()) initializeBetaTracing();
     let s = new kPe.MeterProvider({
       resource: n,
       views: [],
@@ -381,7 +381,7 @@ async function initializeTelemetry() {
     }
   }
   if (t && lpo()) {
-    let s = await Szp();
+    let s = await getOtlpTraceExporters();
     if (s.length > 0) {
       let i = s.map(
           (l) =>

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZYt
 // matched 2.1.88 source: src/hooks/fileSuggestions.ts
 // class=modified  jaccard=0.5205  score=0.7823  fileCov=0.6087
-// note: deminified; 13 identifiers renamed (exports/displayName/curated)
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startBackgroundCacheRefresh, resetFileIndexCache, pathListSignature, normalizeGitPathsAsync, globalFileIndexCache, getPathsForSuggestions, getDirectoryNamesAsync, getDirectoryNames, generateFileSuggestions, findLongestCommonPrefix, filterIgnoredAsync, createFileIndexCache, applyFileSuggestion
 function createFileIndexCache() {
@@ -77,7 +77,7 @@ async function normalizeGitPathsAsync(e, t, n) {
   }
   return r;
 }
-async function t0f(e, t) {
+async function mergeUntrackedIntoNormalizedCache(e, t) {
   if (t.length === 0) return;
   if (!e.fileIndex) return;
   let n = await getDirectoryNamesAsync(t),
@@ -93,7 +93,7 @@ async function t0f(e, t) {
         `[FileIndex] rebuilt index with ${e.cachedTrackedFiles.length} tracked + ${t.length} untracked files`,
       ));
 }
-async function GDl(e, t, n) {
+async function loadRipgrepIgnorePatterns(e, t, n) {
   let r = `${t}:${n}`;
   if (e.ignorePatternsCacheKey === r) return e.ignorePatternsCache;
   let o = qt(),
@@ -127,7 +127,7 @@ async function filterIgnoredAsync(e, t) {
   }
   return n;
 }
-async function n0f(e, t, n) {
+async function getFilesUsingGit(e, t, n) {
   let r = Date.now(),
     o = e.cacheGeneration;
   T("[FileIndex] getFilesUsingGit called");
@@ -169,7 +169,7 @@ async function n0f(e, t, n) {
         )
         .filter(Boolean);
       u = await normalizeGitPathsAsync(f, s, i);
-      let m = await GDl(e, s, i);
+      let m = await loadRipgrepIgnorePatterns(e, s, i);
       if (m) {
         let g = u.length;
         ((u = await filterIgnoredAsync(m, u)),
@@ -215,13 +215,16 @@ async function n0f(e, t, n) {
                 )
                 .filter(Boolean),
               y = await normalizeGitPathsAsync(h, s, i),
-              b = await GDl(e, s, i);
+              b = await loadRipgrepIgnorePatterns(e, s, i);
             if (b && y.length > 0) {
               let _ = y.length;
               ((y = await filterIgnoredAsync(b, y)),
                 T(`[FileIndex] applied ignore patterns to untracked: ${_} -> ${y.length} files`));
             }
-            return (T(`[FileIndex] background untracked fetch: ${y.length} files`), t0f(e, y));
+            return (
+              T(`[FileIndex] background untracked fetch: ${y.length} files`),
+              mergeUntrackedIntoNormalizedCache(e, y)
+            );
           }
         })
         .catch((g) => {
@@ -261,9 +264,9 @@ function zDl(e, t, n, r) {
 async function o0f(e) {
   return (await Promise.all(XDl.map((n) => _q(n, e)))).flatMap((n) => n.map((r) => r.filePath));
 }
-async function s0f(e, t, n) {
+async function getProjectFiles(e, t, n) {
   T(`[FileIndex] getProjectFiles called, respectGitignore=${n}`);
-  let r = await n0f(e, t, n);
+  let r = await getFilesUsingGit(e, t, n);
   if (r !== null) return (T(`[FileIndex] using git ls-files result (${r.length} files)`), r);
   T("[FileIndex] git ls-files returned null, falling back to ripgrep");
   let o = Date.now(),
@@ -310,7 +313,7 @@ async function getPathsForSuggestions(e) {
       o = Dt(),
       s = r.respectGitignore ?? o.respectGitignore ?? !0,
       i = $t(),
-      [a, l] = await Promise.all([s0f(e, t, s), o0f(i)]);
+      [a, l] = await Promise.all([getProjectFiles(e, t, s), o0f(i)]);
     e.cachedConfigFiles = l;
     let c = [...a, ...l],
       u = await getDirectoryNamesAsync(c);

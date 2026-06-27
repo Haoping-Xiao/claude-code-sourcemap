@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module mE
 // matched 2.1.88 source: src/components/ThemePicker.tsx
 // class=modified  jaccard=0.4334  score=0.6034  fileCov=0.6061
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function lEt(e) {
+function ThemePicker(e) {
   let t = xMl.c(88),
     {
       onThemeSelect: n,

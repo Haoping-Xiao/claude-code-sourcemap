@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ruc
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0115  score=0.0824  fileCov=0.0132
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ruc] deps: zb, dn, Jt, VM
 ((f2 = require("fs/promises")),
@@ -47,7 +47,7 @@ Your organization requires version ${n} or older. Install an approved version us
   }
   return null;
 }
-function suc(e) {
+function GITHUB_ISSUES_REPO_URL(e) {
   try {
     let t = e.parent ? e : null;
     while (t?.parent?.parent) t = t.parent;

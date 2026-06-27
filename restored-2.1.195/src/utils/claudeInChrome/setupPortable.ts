@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RFl
 // matched 2.1.88 source: src/utils/claudeInChrome/setupPortable.ts
 // class=modified  jaccard=0.2599  score=0.7877  fileCov=0.2795
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RFl]
 cBo = {
@@ -11,9 +11,9 @@ cBo = {
   name: "stub",
 };
 function x1f() {
-  return [I1f];
+  return [PROD_EXTENSION_ID];
 }
-async function k1f(e, t) {
+async function detectExtensionInstallationPortable(e, t) {
   if (e.length === 0)
     return (
       t?.("[Claude in Chrome] No browser paths to check"),
@@ -62,8 +62,8 @@ async function k1f(e, t) {
   );
 }
 async function DFl(e, t) {
-  return (await k1f(e, t)).isInstalled;
+  return (await detectExtensionInstallationPortable(e, t)).isInstalled;
 }
 var uBo,
   LFl,
-  I1f = "fcoeoabgfenejglbffodgkkbkcdhcgfn";
+  PROD_EXTENSION_ID = "fcoeoabgfenejglbffodgkkbkcdhcgfn";

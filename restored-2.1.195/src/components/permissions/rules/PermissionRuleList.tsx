@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vzl
 // matched 2.1.88 source: src/components/permissions/rules/PermissionRuleList.tsx
 // class=modified  jaccard=0.312  score=0.5016  fileCov=0.4522
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vzl] deps: si, ft, Vl, Ye, Csr, kP
 ((Azl = R(lt(), 1)), (Hzl = R(rt(), 1)), (pYe = R(se(), 1)));
@@ -24,7 +24,7 @@ function Rqf(e) {
   else s = t[3];
   return s;
 }
-function Lqf(e) {
+function getRuleBehaviorLabel(e) {
   switch (e) {
     case "allow":
       return "allowed";
@@ -34,7 +34,7 @@ function Lqf(e) {
       return "ask";
   }
 }
-function Dqf(e) {
+function RuleDetails(e) {
   let t = FAt.c(29),
     { rule: n, onDelete: r, onCancel: o } = e,
     s;
@@ -132,7 +132,8 @@ function Dqf(e) {
     return S;
   }
   let m;
-  if (t[17] !== n.ruleBehavior) ((m = Lqf(n.ruleBehavior)), (t[17] = n.ruleBehavior), (t[18] = m));
+  if (t[17] !== n.ruleBehavior)
+    ((m = getRuleBehaviorLabel(n.ruleBehavior)), (t[17] = n.ruleBehavior), (t[18] = m));
   else m = t[18];
   let g;
   if (t[19] !== m)
@@ -293,7 +294,7 @@ function Pqf(e) {
   else I = t[30];
   return I;
 }
-function Njo(e) {
+function PermissionRulesTab(e) {
   let t = FAt.c(27),
     n,
     r,
@@ -378,7 +379,7 @@ function Njo(e) {
   else f = t[26];
   return f;
 }
-function wzl(e) {
+function PermissionRuleList(e) {
   let t = FAt.c(119),
     { onExit: n, initialTab: r, onRetryDenials: o } = e,
     { getDenials: s, removeDenial: i } = BAt(),
@@ -733,7 +734,7 @@ function wzl(e) {
     else ze = t[45];
     let Mt;
     if (t[46] !== vt || t[47] !== A)
-      ((Mt = mu.jsx(Dqf, {
+      ((Mt = mu.jsx(RuleDetails, {
         rule: A,
         onDelete: vt,
         onCancel: ze,
@@ -928,7 +929,7 @@ function wzl(e) {
     ((kr = mu.jsx(sm, {
       id: "allow",
       title: "Allow",
-      children: mu.jsx(Njo, {
+      children: mu.jsx(PermissionRulesTab, {
         tab: "allow",
         ...en,
       }),
@@ -941,7 +942,7 @@ function wzl(e) {
     ((Mr = mu.jsx(sm, {
       id: "ask",
       title: "Ask",
-      children: mu.jsx(Njo, {
+      children: mu.jsx(PermissionRulesTab, {
         tab: "ask",
         ...en,
       }),
@@ -954,7 +955,7 @@ function wzl(e) {
     ((fe = mu.jsx(sm, {
       id: "deny",
       title: "Deny",
-      children: mu.jsx(Njo, {
+      children: mu.jsx(PermissionRulesTab, {
         tab: "deny",
         ...en,
       }),

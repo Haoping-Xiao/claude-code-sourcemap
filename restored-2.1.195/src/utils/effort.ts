@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HU
 // matched 2.1.88 source: src/utils/effort.ts
 // class=modified  jaccard=0.1078  score=0.2187  fileCov=0.1754
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Kw(e) {
   let t = W9(e, "effort");
@@ -225,7 +225,7 @@ function RM(e, t) {
 function lL(e, t) {
   return Kw(e) ? RM(e, t) : void 0;
 }
-function Kst(e, t) {
+function getEffortSuffix(e, t) {
   if (t === void 0) return "";
   let n = x7(e, t);
   if (n === void 0) return "";
@@ -238,7 +238,7 @@ function x_e(e) {
   if (typeof e === "string") return uce(e) ? e : "high";
   return "high";
 }
-function YOd(e) {
+function getEffortLevelDescription(e) {
   switch (e) {
     case "low":
       return "Quick, straightforward implementation with minimal overhead";
@@ -252,9 +252,9 @@ function YOd(e) {
       return `Maximum capability with deepest reasoning. ${TNt}`;
   }
 }
-function bKr(e) {
+function getEffortValueDescription(e) {
   if (typeof e === "string") {
-    let t = YOd(e);
+    let t = getEffortLevelDescription(e);
     if (e === "high" && Aye() && at("tengu_slate_finch", !1))
       return `${t} \xB7 burns fastest \u2014 medium handles most tasks`;
     return t;

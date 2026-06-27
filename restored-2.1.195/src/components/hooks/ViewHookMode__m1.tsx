@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module A8l
 // matched 2.1.88 source: src/components/hooks/ViewHookMode.tsx
 // class=modified (alt of src/components/hooks/ViewHookMode.tsx)  jaccard=0.0471  score=0.0674  fileCov=0.1355
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A8l] deps: Yyt, Ye, ps, sr, Bs, vi, Ko
 ((S8l = R(lt(), 1)), (uw = R(se(), 1)));
-function T8l(e) {
+function ViewHookMode(e) {
   let t = H8l.c(71),
     { teammate: n, onDone: r, onKill: o, onBack: s, onForeground: i } = e,
     [a] = na(),

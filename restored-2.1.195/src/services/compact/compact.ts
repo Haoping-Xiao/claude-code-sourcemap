@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lZn
 // matched 2.1.88 source: src/services/compact/compact.ts
 // class=modified  jaccard=0.4034  score=0.6075  fileCov=0.5456
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lZn]
 NN = class NN extends Error {
@@ -60,7 +60,7 @@ function wwf(e) {
     };
   return e;
 }
-function kao(e) {
+function stripImagesFromMessages(e) {
   return e.map((t) => {
     if (t.type === "attachment") {
       let s = wwf(t.attachment);
@@ -231,7 +231,10 @@ function Iwf(e) {
   });
 }
 function Ckl(e, t) {
-  let n = e[0]?.type === "user" && e[0].isMeta && e[0].message.content === Hkl ? e.slice(1) : e,
+  let n =
+      e[0]?.type === "user" && e[0].isMeta && e[0].message.content === PTL_RETRY_MARKER
+        ? e.slice(1)
+        : e,
     r = Tut(n);
   if (r.length < 2) return null;
   let o = iut(t),
@@ -246,7 +249,7 @@ function Ckl(e, t) {
   if (i[0]?.type === "assistant")
     return [
       Rn({
-        content: Hkl,
+        content: PTL_RETRY_MARKER,
         isMeta: true,
       }),
       ...i,
@@ -311,7 +314,7 @@ function SMo(e, t) {
 
 ${t}`;
 }
-async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
+async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c, u) {
   let d = s ? "compact_auto" : "compact_manual",
     p,
     f,
@@ -325,7 +328,8 @@ async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
       },
     });
   try {
-    if (e.length === 0) throw (Le(d, "compact_not_enough_messages"), Error(CSt));
+    if (e.length === 0)
+      throw (Le(d, "compact_not_enough_messages"), Error(ERROR_MESSAGE_NOT_ENOUGH_MESSAGES));
     f = eA(e);
     let y = t.getAppState();
     (Hut(Fr(t), "summary"),
@@ -379,7 +383,7 @@ async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
       D = 0;
     for (;;) {
       if (
-        ((I = await kkl({
+        ((I = await streamCompactSummary({
           messages: C,
           summaryRequest: v,
           appState: y,
@@ -404,7 +408,7 @@ async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
             ptlAttempts: D,
           }),
           Le(d, "compact_prompt_too_long"),
-          Error(cZn)
+          Error(ERROR_MESSAGE_PROMPT_TOO_LONG)
         );
       (G("tengu_compact_ptl_retry", {
         attempt: D,
@@ -447,13 +451,16 @@ async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
     if ((t.readFileState.clear(), t.loadedNestedMemoryPaths))
       for (let Ee of Object.keys(t.loadedNestedMemoryPaths)) delete t.loadedNestedMemoryPaths[Ee];
     y5e(t.memorySelector);
-    let [O, L] = await Promise.all([gQn(P, t, mQn), bQn(t)]),
+    let [O, L] = await Promise.all([
+        createPostCompactFileAttachments(P, t, mQn),
+        createAsyncAgentAttachmentsIfNeeded(t),
+      ]),
       M = [...O, ...L],
-      N = hQn(t.agentId);
+      N = createPlanAttachmentIfNeeded(t.agentId);
     if (N) M.push(N);
     let B = await _Qn(t);
     if (B) M.push(B);
-    let $ = yQn(t.agentId);
+    let $ = createSkillAttachmentIfNeeded(t.agentId);
     if ($) M.push($);
     for (let Ee of $Ae(t.options.tools, t.options.mainLoopModel, [], {
       callSite: "compact_full",
@@ -564,7 +571,8 @@ async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
       }
     );
   } catch (y) {
-    if (((p = y instanceof Error ? y.message : "compaction failed"), !s)) xkl(y, c);
+    if (((p = y instanceof Error ? y.message : "compaction failed"), !s))
+      addErrorNotificationIfNeeded(y, c);
     throw y;
   } finally {
     if (
@@ -619,7 +627,7 @@ async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
     });
   }
 }
-async function Ikl(e, t, n, r, o, s = "from", i, a) {
+async function partialCompactConversation(e, t, n, r, o, s = "from", i, a) {
   let l,
     c,
     u,
@@ -705,7 +713,7 @@ User context: ${o}`;
       x = 0;
     for (;;) {
       if (
-        ((v = await kkl({
+        ((v = await streamCompactSummary({
           messages: S,
           summaryRequest: b,
           appState: n.getAppState(),
@@ -728,7 +736,7 @@ User context: ${o}`;
             ptlAttempts: x,
           }),
           Le("compact_partial", "compact_partial_prompt_too_long"),
-          Error(cZn)
+          Error(ERROR_MESSAGE_PROMPT_TOO_LONG)
         );
       (G("tengu_compact_ptl_retry", {
         attempt: x,
@@ -767,13 +775,16 @@ User context: ${o}`;
     if ((n.readFileState.clear(), n.loadedNestedMemoryPaths))
       for (let oe of Object.keys(n.loadedNestedMemoryPaths)) delete n.loadedNestedMemoryPaths[oe];
     y5e(n.memorySelector);
-    let [k, D] = await Promise.all([gQn(I, n, mQn, f), bQn(n)]),
+    let [k, D] = await Promise.all([
+        createPostCompactFileAttachments(I, n, mQn, f),
+        createAsyncAgentAttachmentsIfNeeded(n),
+      ]),
       P = [...k, ...D],
-      O = hQn(n.agentId);
+      O = createPlanAttachmentIfNeeded(n.agentId);
     if (O) P.push(O);
     let L = await _Qn(n);
     if (L) P.push(L);
-    let M = yQn(n.agentId);
+    let M = createSkillAttachmentIfNeeded(n.agentId);
     if (M) P.push(M);
     for (let oe of $Ae(n.options.tools, n.options.mainLoopModel, f, {
       callSite: "compact_partial",
@@ -872,7 +883,11 @@ User context: ${o}`;
       }
     );
   } catch (p) {
-    throw ((l = p instanceof Error ? p.message : "partial compaction failed"), xkl(p, i), p);
+    throw (
+      (l = p instanceof Error ? p.message : "partial compaction failed"),
+      addErrorNotificationIfNeeded(p, i),
+      p
+    );
   } finally {
     (n.onCompactEvent?.({
       type: "stream_mode",
@@ -908,8 +923,12 @@ User context: ${o}`;
       }));
   }
 }
-function xkl(e, t) {
-  if (!Xie(e, t3) && !Xie(e, CSt) && !be(e).startsWith(abt))
+function addErrorNotificationIfNeeded(e, t) {
+  if (
+    !Xie(e, ERROR_MESSAGE_USER_ABORT) &&
+    !Xie(e, ERROR_MESSAGE_NOT_ENOUGH_MESSAGES) &&
+    !be(e).startsWith(abt)
+  )
     (t?.({
       key: "error-compacting-conversation",
       text: "Error compacting conversation",
@@ -933,7 +952,7 @@ function xwf(e) {
 function ENn(e, t) {
   return (Array.isArray(t) ? t : t !== void 0 ? [t] : []).filter((r) => !XIe(e, r));
 }
-function Rao() {
+function createCompactCanUseTool() {
   return async () => ({
     behavior: "deny",
     message: "Tool use is not allowed during compaction",
@@ -943,7 +962,7 @@ function Rao() {
     },
   });
 }
-async function kkl({
+async function streamCompactSummary({
   messages: e,
   summaryRequest: t,
   appState: n,
@@ -973,7 +992,7 @@ async function kkl({
         let S = await dk({
             promptMessages: [t],
             cacheSafeParams: s,
-            canUseTool: Rao(),
+            canUseTool: createCompactCanUseTool(),
             querySource: "compact",
             forkLabel: "compact",
             maxTurns: 1,
@@ -1005,7 +1024,7 @@ async function kkl({
             });
           return yNn(S.messages) ?? A;
         }
-        if (r.abortController.signal.aborted) throw Error(t3);
+        if (r.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
         (T(`Compact cache sharing: no text in response, falling back. Response: ${De(A)}`, {
           level: "warn",
         }),
@@ -1023,7 +1042,8 @@ async function kkl({
             assistantErrorKind: Oo(A?.error ?? void 0),
           }));
       } catch (S) {
-        if (r.abortController.signal.aborted || Xie(S, t3)) throw Error(t3);
+        if (r.abortController.signal.aborted || Xie(S, ERROR_MESSAGE_USER_ABORT))
+          throw Error(ERROR_MESSAGE_USER_ABORT);
         (ke(S),
           G("tengu_compact_cache_sharing_fallback", {
             reason: We("error"),
@@ -1042,7 +1062,7 @@ async function kkl({
           ? oE([Vg, $jt, ...r.options.tools.filter((S) => S.isMcp)], "name")
           : [Vg],
       p = [...Py(e), t],
-      f = kao(i ? Cwf(p) : p),
+      f = stripImagesFromMessages(i ? Cwf(p) : p),
       m = i ? Iwf(f) : f,
       g = r.options.mainLoopModel,
       h = r.agentId === void 0;
@@ -1132,7 +1152,7 @@ async function kkl({
         }
         let k = v.at(-1);
         if (k) return k.isApiErrorMessage ? k : (yNn(v) ?? k);
-        if (r.abortController.signal.aborted) throw Error(t3);
+        if (r.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
         throw (
           T(`Compact streaming failed. hasStartedStreaming=${A}`, {
             level: "error",
@@ -1143,7 +1163,7 @@ async function kkl({
             hasStartedStreaming: A,
             promptCacheSharingEnabled: l,
           }),
-          Error(bMo)
+          Error(ERROR_MESSAGE_INCOMPLETE_RESPONSE)
         );
       } catch (C) {
         let x = b[_ + 1];
@@ -1185,8 +1205,8 @@ async function kkl({
     clearInterval(c);
   }
 }
-async function gQn(e, t, n, r = []) {
-  let o = kwf(r),
+async function createPostCompactFileAttachments(e, t, n, r = []) {
+  let o = collectReadToolFilePaths(r),
     s = Object.entries(e)
       .map(([l, c]) => ({
         filename: l,
@@ -1220,7 +1240,7 @@ async function gQn(e, t, n, r = []) {
     return false;
   });
 }
-function hQn(e) {
+function createPlanAttachmentIfNeeded(e) {
   let t = bP(e);
   if (!t) return null;
   let n = _P(e);
@@ -1230,7 +1250,7 @@ function hQn(e) {
     planContent: t,
   });
 }
-function yQn(e) {
+function createSkillAttachmentIfNeeded(e) {
   let t = Zbr(e);
   if (t.size === 0) return null;
   let n = 0,
@@ -1268,7 +1288,7 @@ async function _Qn(e) {
     }),
   });
 }
-async function bQn(e) {
+async function createAsyncAgentAttachmentsIfNeeded(e) {
   let t = e.getAppState();
   return Object.values(t.tasks)
     .filter((r) => r.type === "local_agent")
@@ -1287,7 +1307,7 @@ async function bQn(e) {
       ];
     });
 }
-function kwf(e) {
+function collectReadToolFilePaths(e) {
   let t = new Set();
   for (let r of e) {
     if (r.type !== "user" || !Array.isArray(r.message.content)) continue;
@@ -1309,8 +1329,8 @@ function kwf(e) {
 }
 function Rwf(e, t) {
   if (If(e) <= t) return e;
-  let n = t * 4 - Tkl.length;
-  return e.slice(0, n) + Tkl;
+  let n = t * 4 - SKILL_TRUNCATION_MARKER.length;
+  return e.slice(0, n) + SKILL_TRUNCATION_MARKER;
 }
 function Lwf(e, t) {
   let n = ds(e);
@@ -1329,14 +1349,16 @@ var mQn = 5,
   Twf = 5000,
   vwf = 25000,
   Akl = 100,
-  CSt = "Not enough messages to compact.",
+  ERROR_MESSAGE_NOT_ENOUGH_MESSAGES = "Not enough messages to compact.",
   wkl = 3,
-  Hkl = "[earlier conversation truncated for compaction retry]",
-  cZn = "Conversation too long. Press esc twice to go up a few messages and try again.",
-  t3 = "API Error: Request was aborted.",
+  PTL_RETRY_MARKER = "[earlier conversation truncated for compaction retry]",
+  ERROR_MESSAGE_PROMPT_TOO_LONG =
+    "Conversation too long. Press esc twice to go up a few messages and try again.",
+  ERROR_MESSAGE_USER_ABORT = "API Error: Request was aborted.",
   abt = "Compaction blocked by PreCompact hook",
-  bMo = "Compaction interrupted \xB7 This may be due to network issues \u2014 please try again.",
+  ERROR_MESSAGE_INCOMPLETE_RESPONSE =
+    "Compaction interrupted \xB7 This may be due to network issues \u2014 please try again.",
   Tq,
-  Tkl = `
+  SKILL_TRUNCATION_MARKER = `
 
 [... skill content truncated for compaction; use Read on the skill path if you need the full text]`;

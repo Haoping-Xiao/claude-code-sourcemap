@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vFl
 // matched 2.1.88 source: src/commands/install-slack-app/install-slack-app.ts
 // class=modified  jaccard=0.189  score=0.2516  fileCov=0.4316
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module vFl] deps: wr
@@ -22,7 +22,7 @@ async function call() {
       ...t,
       slackAppInstallCount: (t.slackAppInstallCount ?? 0) + 1,
     })),
-    await ac(wFl))
+    await ac(SLACK_APP_URL))
   )
     return {
       type: "text",
@@ -31,7 +31,7 @@ async function call() {
   else
     return {
       type: "text",
-      value: `Couldn't open browser. Visit: ${wFl}`,
+      value: `Couldn't open browser. Visit: ${SLACK_APP_URL}`,
     };
 }
-var wFl = "https://slack.com/marketplace/A08SF47R6P4-claude";
+var SLACK_APP_URL = "https://slack.com/marketplace/A08SF47R6P4-claude";

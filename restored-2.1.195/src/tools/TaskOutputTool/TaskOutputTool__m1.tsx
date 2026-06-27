@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module pRo
 // matched 2.1.88 source: src/tools/TaskOutputTool/TaskOutputTool.tsx
 // class=modified (alt of src/tools/TaskOutputTool/TaskOutputTool.tsx)  jaccard=0.2157  score=0.6427  fileCov=0.2451
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function cXn(e) {
+async function getTaskOutputData(e) {
   let t;
   if (e.type === "local_bash") {
     let o = e.shellCommand?.taskOutput;
@@ -51,7 +51,7 @@ async function cXn(e) {
     };
   return n;
 }
-async function Hgf(e, t, n, r) {
+async function waitForTaskCompletion(e, t, n, r) {
   let o = Date.now();
   while (Date.now() - o < n) {
     if (r?.signal.aborted) throw new ru();
@@ -62,7 +62,7 @@ async function Hgf(e, t, n, r) {
   }
   return t().tasks?.[e] ?? null;
 }
-function Tgf(e) {
+function TaskOutputResultDisplay(e) {
   let t = x_l.c(54),
     { content: n, verbose: r, theme: o } = e,
     s = r === void 0 ? false : r,

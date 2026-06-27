@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module v7n
 // matched 2.1.88 source: src/utils/swarm/backends/InProcessBackend.ts
 // class=modified  jaccard=0.7005  score=0.9585  fileCov=0.7224
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-class thl {
+class InProcessBackend {
   type = "in-process";
   context = null;
   setContext(e) {
@@ -139,5 +139,5 @@ class thl {
   }
 }
 function nhl() {
-  return new thl();
+  return new InProcessBackend();
 }

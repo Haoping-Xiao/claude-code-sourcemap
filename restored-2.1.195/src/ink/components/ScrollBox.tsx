@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VLl
 // matched 2.1.88 source: src/ink/components/ScrollBox.tsx
 // class=modified  jaccard=0.5639  score=0.8293  fileCov=0.6379
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VLl]
 qLl = {
@@ -10,7 +10,7 @@ qLl = {
   isHidden: true,
   name: "stub",
 };
-function nkf({ children: e, ref: t, stickyScroll: n, followGrowth: r, ...o }) {
+function ScrollBox({ children: e, ref: t, stickyScroll: n, followGrowth: r, ...o }) {
   let s = vOe.useRef(null),
     [, i] = vOe.useState(0),
     a = vOe.useRef(new Set()),

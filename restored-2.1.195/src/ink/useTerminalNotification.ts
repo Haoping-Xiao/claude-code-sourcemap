@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xJr
 // matched 2.1.88 source: src/ink/useTerminalNotification.ts
 // class=modified  jaccard=0.766  score=0.9715  fileCov=0.7836
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function XBt(e) {
   let t = "";
@@ -12,7 +12,7 @@ function XBt(e) {
   }
   return t;
 }
-function Z7() {
+function useTerminalNotification() {
   let e = Q7.useContext(g8);
   if (!e) throw Error("useTerminalNotification must be used within TerminalWriteProvider");
   let t = Q7.useCallback(

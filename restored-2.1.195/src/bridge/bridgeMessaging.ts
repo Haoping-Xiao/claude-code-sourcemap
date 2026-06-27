@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rir
 // matched 2.1.88 source: src/bridge/bridgeMessaging.ts
 // class=modified  jaccard=0.3463  score=0.4276  fileCov=0.6453
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rir] deps: Ld
 nir = ["exit", "quit", ":q", ":q!", ":wq", ":wq!"];
@@ -46,10 +46,10 @@ function lTe(e) {
   return e.filter((t) => typeof t === "string" && t.length > 0 && t.length <= 64).slice(0, 32);
 }
 var xJt = 32;
-function M4o(e) {
+function isSDKMessage(e) {
   return e !== null && typeof e === "object" && "type" in e && typeof e.type === "string";
 }
-function s6f(e) {
+function isSDKControlResponse(e) {
   return (
     e !== null &&
     typeof e === "object" &&
@@ -58,7 +58,7 @@ function s6f(e) {
     "response" in e
   );
 }
-function i6f(e) {
+function isSDKControlRequest(e) {
   return (
     e !== null &&
     typeof e === "object" &&
@@ -68,7 +68,7 @@ function i6f(e) {
     "request" in e
   );
 }
-function $4o(e) {
+function isEligibleBridgeMessage(e) {
   if ((e.type === "user" || e.type === "assistant") && e.isVirtual) return false;
   return (
     e.type === "user" ||
@@ -90,18 +90,18 @@ function mJl(e) {
   if (!n) return;
   return FZe(n) || void 0;
 }
-function gJl(e, t, n, r, o, s) {
+function handleIngressMessage(e, t, n, r, o, s) {
   try {
     let i = oir(Ft(e));
-    if (s6f(i)) {
+    if (isSDKControlResponse(i)) {
       (T("[bridge:repl] Ingress message type=control_response"), o?.(i));
       return;
     }
-    if (i6f(i)) {
+    if (isSDKControlRequest(i)) {
       (T(`[bridge:repl] Inbound control_request subtype=${i.request.subtype}`), s?.(i));
       return;
     }
-    if (!M4o(i)) return;
+    if (!isSDKMessage(i)) return;
     let a = "uuid" in i && typeof i.uuid === "string" ? i.uuid : void 0;
     if (a && t.has(a)) {
       T(`[bridge:repl] Ignoring echo: type=${i.type} uuid=${a}`);
@@ -126,7 +126,7 @@ function gJl(e, t, n, r, o, s) {
       Le("bridge_message_receive", "bridge_message_receive_parse_failed"));
   }
 }
-function hJl(e, t) {
+function handleServerControlRequest(e, t) {
   let {
     transport: n,
     sessionId: r,
@@ -159,7 +159,7 @@ function hJl(e, t) {
       response: {
         subtype: "error",
         request_id: e.request_id,
-        error: a6f,
+        error: OUTBOUND_ONLY_ERROR,
       },
     };
     let C = {
@@ -568,7 +568,7 @@ function hJl(e, t) {
       `[bridge:repl] Sent control_response for ${e.request.subtype} request_id=${e.request_id} result=${A.response.subtype}`,
     ));
 }
-function O4o(e) {
+function makeResultMessage(e) {
   return {
     type: "result",
     subtype: "success",
@@ -650,4 +650,5 @@ class iHt {
   }
 }
 var kJt,
-  a6f = "This session is outbound-only. Enable Remote Control locally to allow inbound control.";
+  OUTBOUND_ONLY_ERROR =
+    "This session is outbound-only. Enable Remote Control locally to allow inbound control.";

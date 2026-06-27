@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module lUo
 // matched 2.1.88 source: src/commands/plugin/PluginErrors.tsx
 // class=modified  jaccard=0.6233  score=0.719  fileCov=0.8241
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function a1e(e) {
+function formatErrorMessage(e) {
   switch (e.type) {
     case "path-not-found":
       return `${e.component} path not found: ${e.path}`;
@@ -77,7 +77,7 @@ function a1e(e) {
   }
   return iS(e);
 }
-function FKe(e) {
+function getErrorGuidance(e) {
   switch (e.type) {
     case "path-not-found":
       return "Check that the path in your manifest or marketplace config is correct";

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XKe
 // matched 2.1.88 source: src/commands/rename/generateSessionName.ts
 // class=modified  jaccard=0.2939  score=0.3839  fileCov=0.5562
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XKe] deps: Xr, ft, kt, ZE, og, je, wr, sF, Rd, co, qd, dr
 Z2f = ve(() =>
@@ -63,7 +63,7 @@ async function ejf(e) {
     return null;
   }
 }
-async function pAt(e, t, n) {
+async function generateSessionName(e, t, n) {
   if (n?.preferFork && at("tengu_rename_full_session_fork", false) && hMo()) {
     let o = await ejf(t);
     if (o) return o;

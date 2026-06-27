@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pjl
 // matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
 // class=modified  jaccard=0.3095  score=0.466  fileCov=0.4797
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pjl]
 uUo = ["on", "name-only", "user-invocable-only", "off"];
@@ -138,7 +138,7 @@ function hBf(e) {
     t,
   );
 }
-async function yBf(e, t) {
+async function checkIfLocalPlugin(e, t) {
   let r = (await G$(t))?.plugins.find((o) => o.name === e);
   if (r && typeof r.source === "string")
     return `Local plugins cannot be updated remotely. To update, modify the source at: ${r.source}`;
@@ -210,7 +210,7 @@ function $jl(e) {
   else c = t[14];
   return c;
 }
-function Njl({
+function ManagePlugins({
   setViewState: e,
   setResult: t,
   onManageComplete: n,
@@ -1101,7 +1101,7 @@ function Njl({
           label: M.pendingUpdate ? "Unmark for update" : "Mark for update",
           action: async () => {
             try {
-              let Xo = await yBf(Qo(ln).name, M.marketplace);
+              let Xo = await checkIfLocalPlugin(Qo(ln).name, M.marketplace);
               if (Xo) {
                 de(Xo);
                 return;

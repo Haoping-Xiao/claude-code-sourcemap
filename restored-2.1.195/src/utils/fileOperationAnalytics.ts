@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j9t
 // matched 2.1.88 source: src/utils/fileOperationAnalytics.ts
 // class=modified  jaccard=0.4332  score=1  fileCov=0.4332
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module j9t] deps: ft, Lo, sa, P3e, dr
 eyt = require("path");
@@ -12,7 +12,7 @@ function ief(e) {
 function aef(e) {
   return kh(Dvo.createHash("sha256").update(e).digest("hex"));
 }
-function Soe(e) {
+function logFileOperation(e) {
   let t = {
     operation: $e(e.operation),
     tool: $e(e.tool),

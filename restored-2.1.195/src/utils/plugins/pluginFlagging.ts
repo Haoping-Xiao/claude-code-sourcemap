@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ujl
 // matched 2.1.88 source: src/utils/plugins/pluginFlagging.ts
 // class=modified  jaccard=0.2834  score=0.4918  fileCov=0.4007
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ujl] deps: Qi, je, Un, c_
 ((brr = R(rt(), 1)), (VNf = new Set(["good", "warn", "poor"])));
@@ -26,9 +26,9 @@ KNf = Cn(async () => {
   }
 });
 function fjl() {
-  return pjl.join(kI(), YNf);
+  return pjl.join(kI(), FLAGGED_PLUGINS_FILENAME);
 }
-function JNf(e) {
+function parsePluginsData(e) {
   let t = Ft(e);
   if (
     typeof t !== "object" ||
@@ -55,7 +55,7 @@ async function Srr() {
     let e = await i1e.readFile(fjl(), {
       encoding: "utf-8",
     });
-    return JNf(e);
+    return parsePluginsData(e);
   } catch {
     return {};
   }
@@ -101,7 +101,7 @@ async function mjl() {
 function QEt() {
   return Fq ?? {};
 }
-async function gjl(e) {
+async function addFlaggedPlugin(e) {
   if (Fq === null) Fq = await Srr();
   let t = {
     ...Fq,
@@ -138,6 +138,6 @@ async function yjl(e) {
 var djl,
   i1e,
   pjl,
-  YNf = "flagged-plugins.json",
+  FLAGGED_PLUGINS_FILENAME = "flagged-plugins.json",
   XNf = 172800000,
   Fq = null;

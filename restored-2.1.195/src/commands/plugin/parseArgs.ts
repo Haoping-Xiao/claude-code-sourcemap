@@ -7,7 +7,7 @@
 // module exports: getPluginArgumentCompletions
 // [unwrapped __esm module w7l] deps: PEt, xrr
 v7l = R(se(), 1);
-async function getPluginArgumentCompletions(e, t) {
+async function parsePluginArgs(e, t) {
   if (e.length === 0)
     return ZAt(
       [

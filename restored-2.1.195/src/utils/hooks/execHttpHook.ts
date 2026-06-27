@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fic
 // matched 2.1.88 source: src/utils/hooks/execHttpHook.ts
 // class=modified  jaccard=0.5286  score=0.8542  fileCov=0.5811
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fic] deps: MAe, kt, ii, fh, i$, LL, $S, fp, Vv, EAe, je, At, ys, co, Ao, Gy, y_, Jt, P5o
 M5o = require("crypto");
@@ -35,7 +35,7 @@ function jem() {
 function Gem(e) {
   return e.replace(/[\r\n\x00]/g, "");
 }
-function Wem(e, t) {
+function interpolateEnvVars(e, t) {
   let n = e.replace(/\$\{([A-Z_][A-Z0-9_]*)\}|\$([A-Z_][A-Z0-9_]*)/g, (r, o, s) => {
     let i = o ?? s;
     if (!t.has(i))
@@ -49,7 +49,7 @@ function Wem(e, t) {
   });
   return Gem(n);
 }
-async function $5o(e, t, n, r, o = lp) {
+async function execHttpHook(e, t, n, r, o = lp) {
   let s = jem();
   if (s.allowedUrls !== void 0) {
     if (!s.allowedUrls.some((u) => d3t(e.url, u))) {
@@ -78,7 +78,7 @@ async function $5o(e, t, n, r, o = lp) {
       let m = e.allowedEnvVars ?? [],
         g = s.allowedEnvVars !== void 0 ? m.filter((y) => s.allowedEnvVars.includes(y)) : m,
         h = new Set(g);
-      for (let [y, b] of Object.entries(e.headers)) c[y] = Wem(b, h);
+      for (let [y, b] of Object.entries(e.headers)) c[y] = interpolateEnvVars(b, h);
     }
     let u = await Fem(),
       d = !u && ID() !== void 0 && !g9(e.url);

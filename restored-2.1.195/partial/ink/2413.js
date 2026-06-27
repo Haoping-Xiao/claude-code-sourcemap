@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module lWi
 // matched 2.1.88 source: src/ink/bidi.ts
 // class=partial  jaccard=0.1078  score=0.3993  fileCov=0.1287
-// note: low-confidence suggestion: src/ink/bidi.ts; dir inferred from dep-graph -> ink; 0 renamed
+// note: low-confidence suggestion: src/ink/bidi.ts; dir inferred from dep-graph -> ink; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lWi]
 aWi = IGd;
-function xGd() {
+function needsBidi() {
   if (fJr === void 0) fJr = typeof process.env.WT_SESSION === "string" || process.env.TERM_PROGRAM === "vscode";
   return fJr;
 }
@@ -15,7 +15,7 @@ function kGd() {
   return pJr;
 }
 function cWi(e) {
-  if (!xGd() || e.length === 0) return e;
+  if (!needsBidi() || e.length === 0) return e;
   let t = e.map(l => l.value.replace(/[\u061C\u202A-\u202E\u2066-\u2069]/g, "\uFFFD")).join("");
   if (!PGd(t)) return e;
   let n = kGd(),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OMe
 // matched 2.1.88 source: src/utils/permissions/bypassPermissionsKillswitch.ts
 // class=modified  jaccard=0.2517  score=0.4089  fileCov=0.3957
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OMe] deps: BWt, Vet, er, Lx, fn, WGe, u9, Mh, vf, dr, _1
 Nyt = {
@@ -43,7 +43,7 @@ function dsl() {
     );
   }, []);
 }
-async function T8t(e, t, n, r) {
+async function checkAndDisableAutoModeIfNeeded(e, t, n, r) {
   {
     if (pCo) return;
     pCo = true;
@@ -100,7 +100,7 @@ function psl() {
     if (da()) return;
     if (i.current) i.current = false;
     else fCo();
-    T8t(o.getState().toolPermissionContext, r, n, s);
+    checkAndDisableAutoModeIfNeeded(o.getState().toolPermissionContext, r, n, s);
   }, [e, t, n]);
 }
 var A8t,

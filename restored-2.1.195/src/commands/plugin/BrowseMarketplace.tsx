@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module frr
 // matched 2.1.88 source: src/commands/plugin/BrowseMarketplace.tsx
 // class=modified  jaccard=0.2898  score=0.5266  fileCov=0.3918
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module frr]
 _z = R(rt(), 1);
-function O2l({
+function BrowseMarketplace({
   error: e,
   setError: t,
   result: n,

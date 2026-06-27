@@ -79,7 +79,7 @@
         .optional(),
     }),
   )));
-async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
+async function main(e, t, n, r, o, s, i, a, l, c) {
   let u = r_(),
     d = typeof n === "string" ? n : void 0,
     p = Array.from(o.values())
@@ -318,7 +318,7 @@ function hQf(e) {
               Y = void 0;
             }
           }
-          let z = await spawnBackgroundFork(o, r, a, l, c, u, d, "command", s, {
+          let z = await main(o, r, a, l, c, u, d, "command", s, {
             replyOnResume: i,
             providedSessionId: Y,
           });

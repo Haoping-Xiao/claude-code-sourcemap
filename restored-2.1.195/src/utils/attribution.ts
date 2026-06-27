@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K$e
 // matched 2.1.88 source: src/utils/attribution.ts
 // class=modified  jaccard=0.3393  score=0.677  fileCov=0.4049
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function sCl() {
   if (Oe.CLAUDE_CODE_SUPPRESS_SESSION_ATTRIBUTION) return null;
@@ -36,11 +36,11 @@ ${t}`
   };
 }
 function wze() {
-  let e = tHf(),
+  let e = getAttributionTexts(),
     t = sCl();
   return t ? eHf(e, t) : e;
 }
-function tHf() {
+function getAttributionTexts() {
   let e = As(),
     t = tH(e) ? TAn(MIe.firstParty) : iCl(e) ? TAn(e) : "Claude",
     n = `\uD83E\uDD16 Generated with [Claude Code](${L5e})`,
@@ -89,7 +89,7 @@ function rCl(e) {
   for (let t of KSs) if (e.includes(`<${t}>`)) return true;
   return false;
 }
-function nHf(e) {
+function countUserPromptsInMessages(e) {
   let t = 0;
   for (let n of e) {
     if (n.type !== "user") continue;
@@ -120,7 +120,7 @@ function rHf(e) {
       !("isMeta" in n && n.isMeta) &&
       !("isCompactSummary" in n && n.isCompactSummary),
   );
-  return nHf(t);
+  return countUserPromptsInMessages(t);
 }
 async function oHf(e) {
   let t = e.attribution;
@@ -134,7 +134,7 @@ async function oHf(e) {
     return (ke(s), null);
   }
 }
-function iHf(e) {
+function countMemoryFileAccessFromEntries(e) {
   let t = 0;
   for (let n of e) {
     if (n.type !== "assistant") continue;
@@ -147,7 +147,7 @@ function iHf(e) {
   }
   return t;
 }
-async function aHf() {
+async function getTranscriptStats() {
   try {
     let e = em(),
       t = (await oCl.stat(e)).size,
@@ -159,7 +159,7 @@ async function aHf() {
       i = s >= 0 ? o.slice(s + 1) : o;
     return {
       promptCount: rHf(i),
-      memoryAccessCount: iHf(i),
+      memoryAccessCount: countMemoryFileAccessFromEntries(i),
     };
   } catch {
     return {
@@ -170,7 +170,7 @@ async function aHf() {
 }
 async function aCl(e) {
   let t = sCl(),
-    n = await lHf(e, t);
+    n = await getEnhancedPRAttribution(e, t);
   if (!t || n.includes(t)) return n;
   return n
     ? `${n}
@@ -178,7 +178,7 @@ async function aCl(e) {
 ${t}`
     : t;
 }
-async function lHf(e, t) {
+async function getEnhancedPRAttribution(e, t) {
   let n = Dr();
   if (n.attribution?.pr) return n.attribution.pr;
   if (n.includeCoAuthoredBy === false) return "";
@@ -191,7 +191,7 @@ async function lHf(e, t) {
   }
   let [s, { promptCount: i, memoryAccessCount: a }, l] = await Promise.all([
       oHf(o),
-      aHf(),
+      getTranscriptStats(),
       Ajn(BDe()),
     ]),
     c = s?.summary.claudePercent ?? 0;

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module wgc
 // matched 2.1.88 source: src/bridge/codeSessionApi.ts
 // class=modified  jaccard=0.54  score=0.6539  fileCov=0.7562
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Cgc(e) {
+function oauthHeaders(e) {
   return {
     Authorization: `Bearer ${e}`,
     "Content-Type": "application/json",
@@ -12,7 +12,7 @@ function Cgc(e) {
     "User-Agent": dy(),
   };
 }
-async function O8o(e, t, n, r, o, s, i, a) {
+async function createCodeSession(e, t, n, r, o, s, i, a) {
   let l = `${e}/v1/code/sessions`,
     c = {
       cwd: i ?? $t(),
@@ -39,7 +39,7 @@ async function O8o(e, t, n, r, o, s, i, a) {
         config: c,
       },
       {
-        headers: Cgc(t),
+        headers: oauthHeaders(t),
         timeout: r,
         validateStatus: (p) => p < 500,
       },
@@ -84,9 +84,9 @@ function Eum(e, t) {
   if (t?.includes("trusted device")) return "untrusted_device";
   return;
 }
-async function N8o(e, t, n, r, o) {
+async function fetchRemoteCredentials(e, t, n, r, o) {
   let s = `${t}/v1/code/sessions/${e}/bridge`,
-    i = Cgc(n);
+    i = oauthHeaders(n);
   if (o) i["X-Trusted-Device-Token"] = o;
   let a;
   try {

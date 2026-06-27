@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dre
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.0097  score=0.036  fileCov=0.0131
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dre] deps: Gve, ula
 oE = jlp;
@@ -12,7 +12,7 @@ function V1n(e) {
   if (n?.details?.error_visibility !== "user_facing") return null;
   return n.message ?? null;
 }
-async function z1n() {
+async function ClaudeAuthProvider() {
   let e = A0();
   if (e) return ((e.isEnabled = true), await Nn(300), xe("api_overage_enable"), true);
   try {

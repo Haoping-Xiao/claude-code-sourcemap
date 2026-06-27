@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SGl
 // matched 2.1.88 source: src/components/Spinner.tsx
 // class=modified (alt of src/components/Spinner.tsx)  jaccard=0.0387  score=0.1761  fileCov=0.0473
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SGl]
 bGl = {
@@ -213,7 +213,7 @@ function IGl({ onDone: e }) {
     }),
   });
 }
-function xGl(e) {
+function SpinnerWithVerbInner(e) {
   let t = $Xt.c(14),
     { text: n } = e,
     r = rn(n),
@@ -269,7 +269,7 @@ function xGl(e) {
   else h = t[13];
   return h;
 }
-function kGl() {
+function BriefIdleStatus() {
   let e = $Xt.c(11),
     [t, n] = uAt.useState(0),
     r = wGl[t],

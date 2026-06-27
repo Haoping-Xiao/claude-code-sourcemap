@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module P5o
 // matched 2.1.88 source: src/utils/hooks/execPromptHook.ts
 // class=modified  jaccard=0.2443  score=0.4701  fileCov=0.3372
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module P5o] deps: Xr, i$, wGt
 iZt = ve(() =>
@@ -14,7 +14,7 @@ iZt = ve(() =>
       .optional(),
   }),
 );
-async function cic(e, t, n, r, o, s, i, a) {
+async function execPromptHook(e, t, n, r, o, s, i, a) {
   let l = a || `hook-${lic.randomUUID()}`,
     c = n === "Stop" || n === "SubagentStop";
   try {

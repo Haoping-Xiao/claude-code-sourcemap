@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module _ll
 // matched 2.1.88 source: src/components/messages/UserToolResultMessage/UserToolResultMessage.tsx
 // class=modified  jaccard=0.3297  score=0.6263  fileCov=0.4104
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _ll] deps: ii, f4
 ((hll = R(lt(), 1)), (iif = new Set([j1])));
-function Sll(e) {
+function UserToolResultMessage(e) {
   let t = bll.c(30),
     {
       param: n,

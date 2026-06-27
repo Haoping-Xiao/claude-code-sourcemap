@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tQ
 // matched 2.1.88 source: src/tools/AgentTool/built-in/exploreAgent.ts
 // class=modified  jaccard=0.1347  score=0.1981  fileCov=0.2964
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tQ] deps: Xr, ft, ZWe, Hde, Brl, dn, Un, kt, Du, l8t, Ox, ii, S_, $S, fp, sA, Il, je, Two, f6, RE, fn, At, Sbe, co, pht, QH, Hoe, $g, K6n, aS, II, u$, R8e, lf, I8e, EI, gAe, lC, jv, fut, fh
 ((Bnf = (RX(), ro(Q2t)).ARTIFACT_TOOL_NAME), (Aol = new Set([s$, cC, ZD, kX, yL])));
@@ -48,7 +48,7 @@ Tol = ve(() =>
 );
 Fwo = xVt + kVt + 60000;
 Wnf = new Set([ss]);
-function qnf() {
+function getExploreSystemPrompt() {
   let e = Su(),
     t = e ? Co : Ss,
     n = hC() && e,
@@ -92,7 +92,7 @@ NOTE: You are meant to be a fast agent that returns output as quickly as possibl
 
 Complete the user's search request efficiently and report your findings clearly.`;
 }
-function TAe(e, t) {
+function EXPLORE_AGENT(e, t) {
   if (e.agentType !== Upe.agentType || e.source !== "built-in") return e.model;
   if (!at("tengu_quartz_heron", !1)) return "haiku";
   return Knf(t) ? kol : "inherit";

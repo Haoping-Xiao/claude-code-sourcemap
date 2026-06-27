@@ -2,19 +2,19 @@
 // restored from claude-code 2.1.195 (deminified) — module g6o
 // matched 2.1.88 source: src/utils/suggestions/slackChannelSuggestions.ts
 // class=modified  jaccard=0.3916  score=1  fileCov=0.3916
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function myc(e) {
   return e.find((t) => t.type === "connected" && t.name.includes("slack"));
 }
-async function hpm(e, t) {
+async function fetchChannels(e, t) {
   let n = myc(e);
   if (!n || n.type !== "connected") return [];
   try {
     let o = (
       await n.client.callTool(
         {
-          name: gpm,
+          name: SLACK_SEARCH_TOOL,
           arguments: {
             query: t,
             limit: 20,
@@ -86,7 +86,7 @@ function Epm(e, t) {
       ((n = s), (r = o.length));
   return n;
 }
-async function yyc(e, t) {
+async function getSlackChannelSuggestions(e, t) {
   if (!t) return [];
   let n = Spm(t),
     r = t.toLowerCase(),
@@ -94,7 +94,7 @@ async function yyc(e, t) {
   if (!o)
     if (ddr === n && ken) o = await ken;
     else {
-      ((ddr = n), (ken = hpm(e, n)), (o = await ken), DTt.set(n, o));
+      ((ddr = n), (ken = fetchChannels(e, n)), (o = await ken), DTt.set(n, o));
       let s = pdr.size;
       for (let i of o) pdr.add(i);
       if (pdr.size !== s) (dyc++, pyc.emit());
@@ -110,7 +110,7 @@ async function yyc(e, t) {
       displayText: `#${s}`,
     }));
 }
-var gpm = "slack_search_channels",
+var SLACK_SEARCH_TOOL = "slack_search_channels",
   DTt,
   pdr,
   dyc = 0,

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module _pc
 // matched 2.1.88 source: src/services/plugins/pluginCliCommands.ts
 // class=modified  jaccard=0.2016  score=0.2756  fileCov=0.4291
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function dNe(e, t, n) {
+function handlePluginCommandError(e, t, n) {
   let r = lX(e);
   if (r === "unknown") ke(e);
   else
@@ -84,7 +84,7 @@ async function Lam(e, t) {
     ` \u2014 run /plugin configure ${e} in Claude Code, or pass --config KEY=VALUE.`
   );
 }
-async function Spc(e, t = "user", n) {
+async function installPlugin(e, t = "user", n) {
   try {
     let r = await Q2l(e, t);
     if (!r.success) throw Error(r.message);
@@ -111,7 +111,7 @@ async function Spc(e, t = "user", n) {
 ${o}`
       : r.message;
   } catch (r) {
-    dNe(r, "install", e);
+    handlePluginCommandError(r, "install", e);
   }
 }
 async function Epc(e) {
@@ -119,7 +119,7 @@ async function Epc(e) {
     { enabled: n, disabled: r } = await mp();
   return zKi(BL().plugins, [...n, ...r], e, t);
 }
-async function Apc(e, t = "user", n = false, r = false, o = false) {
+async function uninstallPlugin(e, t = "user", n = false, r = false, o = false) {
   try {
     let s = await OHe(e, t, !n);
     if (!s.success) throw Error(s.message);
@@ -150,7 +150,7 @@ async function Apc(e, t = "user", n = false, r = false, o = false) {
 ${c}`;
     }
   } catch (s) {
-    dNe(s, "uninstall", e);
+    handlePluginCommandError(s, "uninstall", e);
   }
 }
 async function Hpc(e = "user", { dryRun: t = false, yes: n = false } = {}) {
@@ -162,7 +162,7 @@ async function Hpc(e = "user", { dryRun: t = false, yes: n = false } = {}) {
       deleteDataDir: true,
     });
   } catch (r) {
-    dNe(r, "prune");
+    handlePluginCommandError(r, "prune");
   }
 }
 async function Tpc(e, t, n) {
@@ -219,7 +219,7 @@ async function Dam() {
     e.close();
   }
 }
-async function vpc(e, t) {
+async function disablePlugin(e, t) {
   try {
     let n = await KEt(e, t);
     if (!n.success) throw Error(n.message);
@@ -231,19 +231,19 @@ async function vpc(e, t) {
       `${nt.tick} ${n.message}`
     );
   } catch (n) {
-    dNe(n, "disable", e);
+    handlePluginCommandError(n, "disable", e);
   }
 }
-async function wpc() {
+async function disableAllPlugins() {
   try {
     let e = await Z2l();
     if (!e.success) throw Error(e.message);
     return (G("tengu_plugin_disabled_all_cli", {}), `${nt.tick} ${e.message}`);
   } catch (e) {
-    dNe(e, "disable-all");
+    handlePluginCommandError(e, "disable-all");
   }
 }
-async function Cpc(e, t) {
+async function updatePluginCli(e, t) {
   try {
     $i(`Checking for updates for plugin "${e}" at ${t} scope\u2026
 `);
@@ -261,7 +261,7 @@ async function Cpc(e, t) {
       });
     (xe("cli_plugin_update"), await ki(0));
   } catch (n) {
-    dNe(n, "update", e);
+    handlePluginCommandError(n, "update", e);
   }
 }
 var bpc;

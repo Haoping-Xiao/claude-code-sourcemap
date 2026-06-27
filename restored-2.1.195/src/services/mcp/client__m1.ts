@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hfo
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.2113  score=0.3936  fileCov=0.3132
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hfo] deps: spt, jun, Vb, k7, y1, ZSe, er, je, kRa, KFn, lpt, mfo
 LRa = require("os");
@@ -139,13 +139,13 @@ function Axp(e) {
   if (t <= 0) return 0;
   return Math.min(Math.max(t, 1000), zRa(e));
 }
-function i2n() {
+function getMcpAuthCachePath() {
   return s2n.join(tr(), "mcp-needs-auth-cache.json");
 }
 function kfo() {
   if (!fpt)
     fpt = qs()
-      .read(i2n())
+      .read(getMcpAuthCachePath())
       .then((e) => Ft(e))
       .catch(() => ({}));
   return fpt;
@@ -177,7 +177,7 @@ function Rfo(e, t) {
         }),
       };
       let r = qs(),
-        o = i2n();
+        o = getMcpAuthCachePath();
       (await r.mkdir(s2n.dirname(o)), await r.write(o, De(n)), (fpt = null));
     })
     .catch(() => {});
@@ -187,7 +187,7 @@ function hGt(e) {
     .then(async () => {
       let n = await kfo();
       if (!(e in n)) return;
-      (delete n[e], await qs().write(i2n(), De(n)), (fpt = null));
+      (delete n[e], await qs().write(getMcpAuthCachePath(), De(n)), (fpt = null));
     })
     .catch(() => {});
   return ((n2n = t), t);
@@ -195,7 +195,7 @@ function hGt(e) {
 function JUn() {
   ((fpt = null),
     qs()
-      .delete(i2n())
+      .delete(getMcpAuthCachePath())
       .catch(() => {}));
 }
 function hde(e) {
@@ -231,7 +231,7 @@ function Tfo(e, t, n) {
     }),
   });
 }
-function vfo(e, t, n, r) {
+function handleRemoteAuthFailure(e, t, n, r) {
   let o = r instanceof OQe,
     s = o ? r.issues[0] : void 0,
     i = s
@@ -337,7 +337,7 @@ function Cxp(e) {
     });
   };
 }
-function Ixp(e) {
+function createClaudeAiProxyFetch(e) {
   return async (t, n) => {
     let r = async () => {
       await ch();
@@ -471,12 +471,12 @@ function KRa(e) {
     r = (e?.timeout !== void 0 && e.timeout >= 1000 ? e.timeout : void 0) ?? (t > 0 ? t : void 0);
   return r !== void 0 ? Math.min(Math.max(r, URa), VRa) : URa;
 }
-function t2n(e, t) {
+function wrapFetchWithTimeout(e, t) {
   let n = KRa(t);
   return async (r, o) => {
     if ((o?.method ?? "GET").toUpperCase() === "GET") return e(r, o);
     let i = new Headers(o?.headers);
-    if (!i.has("accept")) i.set("accept", Lxp);
+    if (!i.has("accept")) i.set("accept", MCP_STREAMABLE_HTTP_ACCEPT);
     if (ZDt()) {
       let u = EFn();
       if (u && !i.has("traceparent")) i.set("traceparent", u);
@@ -565,7 +565,7 @@ async function ST(e, t) {
   )
     mpt.cache.delete(e);
 }
-async function CSe(e) {
+async function ensureConnectedClient(e) {
   if (e.config.type === "sdk") return e;
   let t = await aP(e.name, e.config);
   if (t.type !== "connected")
@@ -630,7 +630,7 @@ async function XRa(e, t, n, r, o) {
 }
 async function Rre(e, t, n) {
   return (
-    await Pfo({
+    await callMCPTool({
       client: n,
       tool: e,
       args: t,
@@ -640,7 +640,7 @@ async function Rre(e, t, n) {
     })
   ).content;
 }
-async function iJ(e, t) {
+async function reconnectMcpServerImpl(e, t) {
   try {
     (dye(), await ST(e, t));
     let n = await aP(e, t);
@@ -739,7 +739,7 @@ async function JRa(e, t) {
     clearTimeout(n);
   }
 }
-async function Dqe(e, t) {
+async function getMcpToolsCommandsAndResources(e, t) {
   let n = false,
     r = Object.entries(t ?? (await M4()).servers),
     o = [];
@@ -893,7 +893,7 @@ async function Dqe(e, t) {
     };
   (await Promise.all([FRa(d, hpt(), g), FRa(p, a2n(), g)]), await Promise.all(m));
 }
-function yGt(e) {
+function prefetchAllMcpResources(e) {
   return new Promise((t) => {
     let n = 0,
       r = 0;
@@ -908,7 +908,7 @@ function yGt(e) {
     let o = [],
       s = [],
       i = [];
-    Dqe((a) => {
+    getMcpToolsCommandsAndResources((a) => {
       if ((o.push(a.client), s.push(...a.tools), i.push(...a.commands), r++, r >= n)) {
         let l = i.reduce((c, u) => {
           let d = u.name.length + (u.description ?? "").length + (u.argumentHint ?? "").length;
@@ -935,7 +935,7 @@ function yGt(e) {
     });
   });
 }
-async function xfo(e, t, n, r = false) {
+async function transformResultContent(e, t, n, r = false) {
   switch (e.type) {
     case "text": {
       let o = {
@@ -950,7 +950,12 @@ async function xfo(e, t, n, r = false) {
     }
     case "audio": {
       let o = e;
-      return await Ifo(Buffer.from(o.data, "base64"), o.mimeType, t, `[Audio from ${t}] `);
+      return await persistBlobToTextBlock(
+        Buffer.from(o.data, "base64"),
+        o.mimeType,
+        t,
+        `[Audio from ${t}] `,
+      );
     }
     case "image": {
       if (BRa(e.mimeType)) {
@@ -961,7 +966,12 @@ async function xfo(e, t, n, r = false) {
         });
         return [o];
       }
-      return await Ifo(Buffer.from(String(e.data), "base64"), e.mimeType, t, `[Image from ${t}] `);
+      return await persistBlobToTextBlock(
+        Buffer.from(String(e.data), "base64"),
+        e.mimeType,
+        t,
+        `[Image from ${t}] `,
+      );
     }
     case "resource": {
       let o = e.resource,
@@ -987,7 +997,7 @@ async function xfo(e, t, n, r = false) {
               text: s,
             });
           return (l.push(a), l);
-        } else return await Ifo(Buffer.from(o.blob, "base64"), o.mimeType, t, s);
+        } else return await persistBlobToTextBlock(Buffer.from(o.blob, "base64"), o.mimeType, t, s);
       return [];
     }
     case "resource_link": {
@@ -1005,7 +1015,7 @@ async function xfo(e, t, n, r = false) {
       return [];
   }
 }
-async function Ifo(e, t, n, r) {
+async function persistBlobToTextBlock(e, t, n, r) {
   let o = `mcp-${hc(n)}-blob-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
     s = await fqe(e, t, o);
   if ("error" in s)
@@ -1038,7 +1048,7 @@ function fGt(e, t = 2) {
   }
   return typeof e;
 }
-async function Bxp(e, t, n, r) {
+async function transformMCPResult(e, t, n, r) {
   if (e && typeof e === "object") {
     if ("toolResult" in e)
       return {
@@ -1053,7 +1063,7 @@ async function Bxp(e, t, n, r) {
           (l) => l && typeof l === "object" && "type" in l && l.type !== "text",
         );
         if (a.length > 0) {
-          let l = (await Promise.all(a.map((c) => xfo(c, n, r, true)))).flat();
+          let l = (await Promise.all(a.map((c) => transformResultContent(c, n, r, true)))).flat();
           if (l.length > 0) {
             let c = [
               ...l,
@@ -1077,7 +1087,9 @@ async function Bxp(e, t, n, r) {
       };
     }
     if ("content" in e && Array.isArray(e.content)) {
-      let s = (await Promise.all(e.content.map((i) => xfo(i, n, r, true)))).flat();
+      let s = (
+        await Promise.all(e.content.map((i) => transformResultContent(i, n, r, true)))
+      ).flat();
       return {
         content: s,
         type: "contentArray",
@@ -1092,8 +1104,8 @@ function jRa(e) {
   if (!e || typeof e === "string") return false;
   return e.some((t) => t.type === "image");
 }
-async function Uxp(e, t, n, r, o = false) {
-  let { content: s, type: i, schema: a } = await Bxp(e, t, n, r);
+async function processMCPResult(e, t, n, r, o = false) {
+  let { content: s, type: i, schema: a } = await transformMCPResult(e, t, n, r);
   if (n === "ide") return s;
   if (o && !jRa(s)) return s;
   if (!(await Tlo(s))) return s;
@@ -1178,7 +1190,7 @@ function Lfo(e) {
       : []
   ).filter((r) => qvr.safeParse(r).success);
 }
-async function Dfo({
+async function callMCPToolWithUrlElicitationRetry({
   client: e,
   clientConnection: t,
   tool: n,
@@ -1187,7 +1199,7 @@ async function Dfo({
   signal: s,
   setAppState: i,
   onProgress: a,
-  callToolFn: l = Pfo,
+  callToolFn: l = callMCPTool,
   requestDialog: c,
   hasResultSizeAnnotation: u = false,
   imageLimits: d,
@@ -1326,7 +1338,7 @@ function Fxp(e, t) {
     )
   );
 }
-async function Pfo({
+async function callMCPTool({
   client: { client: e, name: t, config: n, transportErrorState: r },
   tool: o,
   args: s,
@@ -1458,7 +1470,7 @@ async function Pfo({
         success: true,
       });
     return {
-      content: await Uxp(D, o, t, u, c),
+      content: await processMCPResult(D, o, t, u, c),
       _meta: D._meta,
       structuredContent: D.structuredContent,
     };
@@ -1487,7 +1499,7 @@ async function Pfo({
               P.finally(() => Cfo.delete(D)).catch(() => {}));
           let L = await P;
           if (L.type === "connected")
-            return Pfo({
+            return callMCPTool({
               client: L,
               tool: o,
               args: s,
@@ -1567,7 +1579,7 @@ function jxp(e) {
   if (e.message.content[0]?.type !== "tool_use") return;
   return e.message.content[0].id;
 }
-async function QRa(e, t) {
+async function connectToServer(e, t) {
   let n = [],
     r = [],
     o = [],
@@ -1700,7 +1712,7 @@ var GRa,
   n2n,
   Rxp,
   URa = 60000,
-  Lxp = "application/json, text/event-stream",
+  MCP_STREAMABLE_HTTP_ACCEPT = "application/json, text/event-stream",
   Dxp,
   Cfo,
   aP,

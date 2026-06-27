@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module djo
 // matched 2.1.88 source: src/components/tasks/ShellDetailDialog.tsx
 // class=modified  jaccard=0.3145  score=0.4269  fileCov=0.5444
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module djo] deps: si, Xa, Yyt, Ye, JJ, fh, G1, vy, At, es, H1e, co, sr, gP, Vl, Bs, Fy, vi, Ko, gm, d_t, ljo
 ((usr = R(lt(), 1)), (R8l = R(rt(), 1)), (aYe = R(rt(), 1)), (fa = R(se(), 1)));
@@ -35,7 +35,7 @@ async function D8l(e) {
     };
   }
 }
-function P8l(e) {
+function ShellDetailDialog(e) {
   let t = pjo.c(61),
     { shell: n, onDone: r, onKillShell: o, onBack: s } = e,
     { columns: i } = br(),
@@ -265,7 +265,7 @@ function P8l(e) {
         z,
         T_.jsx(T1e.Suspense, {
           fallback: K,
-          children: T_.jsx(_5f, {
+          children: T_.jsx(ShellOutputContent, {
             outputPromise: u,
             columns: i,
           }),
@@ -307,7 +307,7 @@ function P8l(e) {
   else ne = t[60];
   return ne;
 }
-function _5f(e) {
+function ShellOutputContent(e) {
   let t = pjo.c(19),
     { outputPromise: n, columns: r } = e,
     { content: o, bytesTotal: s } = T1e.use(n);
@@ -344,7 +344,7 @@ function _5f(e) {
   } else ((i = t[3]), (a = t[4]));
   let l = r - 6,
     c;
-  if (t[5] !== a) ((c = a.map(b5f)), (t[5] = a), (t[6] = c));
+  if (t[5] !== a) ((c = a.map(_temp2)), (t[5] = a), (t[6] = c));
   else c = t[6];
   let u;
   if (t[7] !== l || t[8] !== c)
@@ -387,7 +387,7 @@ function _5f(e) {
   else m = t[18];
   return m;
 }
-function b5f(e, t) {
+function _temp2(e, t) {
   return T_.jsx(
     w,
     {

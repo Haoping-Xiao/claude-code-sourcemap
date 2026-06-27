@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module zfc
 // matched 2.1.88 source: src/utils/processUserInput/processUserInput.ts
 // class=modified  jaccard=0.3597  score=0.5669  fileCov=0.4961
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zfc] deps: c8o, RN, kt, At, co, dr, u8o, _m, K0, OI
 ((d8o = require("crypto")), (t7e = R(se(), 1)));
-async function bTt({
+async function processUserInput({
   input: e,
   preExpansionInput: t,
   suppressWorkflowKeyword: n,
@@ -32,7 +32,28 @@ async function bTt({
   let A = typeof e === "string" ? e : null;
   if (r === "prompt" && A !== null && !h) c?.(A);
   jp("query_process_user_input_base_start");
-  let v = await hcm(e, r, o, s, i, a, l, u, d, p, f, Fr(s).mode, m, g, h, y, t, _, n, S);
+  let v = await processUserInputBase(
+    e,
+    r,
+    o,
+    s,
+    i,
+    a,
+    l,
+    u,
+    d,
+    p,
+    f,
+    Fr(s).mode,
+    m,
+    g,
+    h,
+    y,
+    t,
+    _,
+    n,
+    S,
+  );
   if ((jp("query_process_user_input_base_end"), !d))
     yKn(s.setToolPermissionContext, v.disallowedTools ?? []);
   if (b === false) v.shouldQuery = false;
@@ -98,7 +119,7 @@ Original prompt: ${C}`;
   if ((Zc("prompt_submit_hooks_ms", performance.now() - I, I), x)) await $lr(x);
   return (jp("query_hooks_end"), v);
 }
-async function hcm(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m, g, h, y, b, _) {
+async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m, g, h, y, b, _) {
   let S = Wfc({
       isNonInteractive: r.options.isNonInteractiveSession,
       isMeta: m,

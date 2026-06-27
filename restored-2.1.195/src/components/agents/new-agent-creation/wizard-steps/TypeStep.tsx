@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module l7l
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/TypeStep.tsx
 // class=modified  jaccard=0.2013  score=0.3215  fileCov=0.3501
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l7l] deps: Cc, Bs, Ko, wb, vH, l4o
 ((i7l = R(lt(), 1)), (L1e = R(se(), 1)));
-function u7l(e) {
+function TypeStep(e) {
   let t = c7l.c(15),
     { goNext: n, goBack: r, updateWizardData: o, wizardData: s } = Eu(),
     [i, a] = qsr.useState(s.agentType || ""),

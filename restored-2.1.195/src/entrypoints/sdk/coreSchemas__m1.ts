@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Iic
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0188  score=0.474  fileCov=0.0192
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function sOe(e, t, n = lp) {
   let r = t?.getAppState(),
@@ -29,7 +29,7 @@ async function sOe(e, t, n = lp) {
     matchQuery: i,
   });
 }
-async function* OAe(e, t, n = lp, r = false, o, s, i, a) {
+async function* HOOK_EVENTS(e, t, n = lp, r = false, o, s, i, a) {
   let l = o ? "SubagentStop" : "Stop",
     c = s?.getAppState(),
     u = s?.agentId ?? Rt();

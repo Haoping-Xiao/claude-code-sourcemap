@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module FCo
 // matched 2.1.88 source: src/components/messages/AssistantToolUseMessage.tsx
 // class=modified  jaccard=0.3417  score=0.4592  fileCov=0.5719
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FCo] deps: Xa, Ye
 ((eil = R(lt(), 1)), (FMe = R(se(), 1)));
-function oil(e) {
+function AssistantToolUseMessage(e) {
   let t = nil.c(180),
     {
       param: n,
@@ -249,7 +249,7 @@ function oil(e) {
               t[129] !== o ||
               t[130] !== i
             )
-              ((Ve = til(
+              ((Ve = renderToolUseProgressMessage(
                 ce,
                 o,
                 p,
@@ -294,7 +294,7 @@ function oil(e) {
             t[137] !== i
           )
             ((we = he.success
-              ? vof(ce, he.data, {
+              ? renderToolUseMessage(ce, he.data, {
                   theme: g,
                   verbose: i,
                   commands: s,
@@ -604,8 +604,8 @@ function oil(e) {
             }),
           })
         : M
-          ? wof(ce)
-          : til(
+          ? renderToolUseQueuedMessage(ce)
+          : renderToolUseProgressMessage(
               ce,
               o,
               p,
@@ -674,7 +674,7 @@ function Hof(e) {
 function Tof(e) {
   return e.pendingWorkerRequest;
 }
-function vof(e, t, { theme: n, verbose: r, commands: o }) {
+function renderToolUseMessage(e, t, { theme: n, verbose: r, commands: o }) {
   let s = Pae(t);
   if (s !== null) return s;
   try {
@@ -695,7 +695,15 @@ function vof(e, t, { theme: n, verbose: r, commands: o }) {
     );
   }
 }
-function til(e, t, n, r, o, { verbose: s, inProgressToolCallCount: i, isTranscriptMode: a }, l) {
+function renderToolUseProgressMessage(
+  e,
+  t,
+  n,
+  r,
+  o,
+  { verbose: s, inProgressToolCallCount: i, isTranscriptMode: a },
+  l,
+) {
   let c = o.filter((u) => u.data.type !== "hook_progress");
   try {
     let u =
@@ -732,7 +740,7 @@ function til(e, t, n, r, o, { verbose: s, inProgressToolCallCount: i, isTranscri
     );
   }
 }
-function wof(e) {
+function renderToolUseQueuedMessage(e) {
   try {
     return e.renderToolUseQueuedMessage?.();
   } catch (t) {

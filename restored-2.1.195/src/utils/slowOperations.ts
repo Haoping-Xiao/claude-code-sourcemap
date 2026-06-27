@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eis
 // matched 2.1.88 source: src/utils/slowOperations.ts
 // class=modified  jaccard=0.2325  score=0.8511  fileCov=0.2424
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eis] deps: Owt, lss, UIt, uss, hss, DEr, PEr, Ass, Tss, Pyr, xin, qwt, wss, $ss, OEr, P2, Uwt, Wss, D2, Yss, OBe, FJe
 VH = {};
@@ -34,7 +34,7 @@ Zss = Din;
 function m7c() {
   return f7c;
 }
-function De(e, t, n) {
+function jsonStringify(e, t, n) {
   using r = gy`JSON.stringify(${e})`;
   return JSON.stringify(e, t, n);
 }
@@ -58,11 +58,11 @@ function nis(e) {
 function qge(e) {
   return JSON.parse(e);
 }
-function sM(e, t) {
+function clone(e, t) {
   using n = gy`structuredClone(${e})`;
   return structuredClone(e, t);
 }
-function fwe(e, t, n) {
+function writeFileSync_DEPRECATED(e, t, n) {
   using r = gy`fs.writeFileSync(${e}, ${t})`;
   if (n !== null && typeof n === "object" && "flush" in n && n.flush === !0) {
     let s = typeof n === "object" && "encoding" in n ? n.encoding : void 0,

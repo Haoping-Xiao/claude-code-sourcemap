@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $ic
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified  jaccard=0.2542  score=0.3472  fileCov=0.4868
-// note: deminified; 28 identifiers renamed (exports/displayName/curated)
+// note: deminified; 38 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSkipHookDueToTrust, persistHookOutput, parseElicitationHookOutput, isPluginEligibleForCredentials, isBareMcpServerMatcher, hasInstructionsLoadedHook, hasHookForEvent, hasBlockingResult, getUserPromptSubmitHookBlockingMessage, getTelemetryHookName, getTeammateIdleHookMessage, getTaskCreatedHookMessage, getTaskCompletedHookMessage, getStopHookMessage, getSessionEndHookTimeoutMs, getPreToolHookBlockingMessage, getPluginHookCounts, getMatchingHooks, getAnthropicCredentialsForO …
 // [unwrapped __esm module $ic] deps: _ic, bic, Sic, Aic, Hic, N5o, Tic, vic, kic, Ric, Lic, TIo, Pic, Mic
@@ -63,7 +63,7 @@ function getSessionEndHookTimeoutMs() {
     for (let i of s.hooks) if (i.timeout && i.timeout * 1000 > n) n = i.timeout * 1000;
   return Math.max(SESSION_END_HOOK_TIMEOUT_MS_DEFAULT, Math.min(n, Kem));
 }
-function Oic({
+function executeInBackground({
   processId: e,
   hookId: t,
   shellCommand: n,
@@ -179,7 +179,7 @@ function createBaseHookInput(e, t, n) {
     effort: a,
   };
 }
-function Fic(e) {
+function validateHookJson(e) {
   let t = Ft(e),
     n = XHt().safeParse(t);
   if (n.success)
@@ -242,7 +242,7 @@ async function persistHookOutput(e, t, n, r = zca) {
     s
   );
 }
-function Ulr(e) {
+function parseHookOutput(e) {
   let t = e.trim();
   if (!t.startsWith("{"))
     return (
@@ -252,7 +252,7 @@ function Ulr(e) {
       }
     );
   try {
-    let n = Fic(t);
+    let n = validateHookJson(t);
     if ("json" in n) return n;
     let r = `${n.validationError}
 
@@ -312,7 +312,7 @@ ${De(
     );
   }
 }
-function jic(e) {
+function parseHttpHookOutput(e) {
   let t = e.trim();
   if (t === "") {
     let n = XHt().safeParse({});
@@ -334,7 +334,7 @@ function jic(e) {
     );
   }
   try {
-    let n = Fic(t);
+    let n = validateHookJson(t);
     if ("json" in n) return n;
     return (T(n.validationError), n);
   } catch (n) {
@@ -347,7 +347,7 @@ function jic(e) {
     );
   }
 }
-function Blr({
+function processHookJSONOutput({
   json: e,
   command: t,
   hookName: n,
@@ -567,7 +567,7 @@ function Blr({
         }),
   };
 }
-async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
+async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
   let p = t === "SessionStart" || t === "Setup" || t === "SessionEnd",
     f = Date.now(),
     m,
@@ -735,7 +735,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
     }
     if (
       ((Y = true),
-      Oic({
+      executeInBackground({
         processId: ge,
         hookId: i,
         shellCommand: W,
@@ -780,7 +780,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
           let le = `async_hook_${$.pid}`;
           if (
             (T(`Hooks: Detected async hook, backgrounding process ${le}`),
-            Oic({
+            executeInBackground({
               processId: le,
               hookId: i,
               shellCommand: W,
@@ -948,7 +948,7 @@ function etm(e, t) {
     },
   );
 }
-function ttm(e, t, n, r) {
+function matchesPattern(e, t, n, r) {
   if (!t || t === "*") return true;
   if ((n ? /^[a-zA-Z0-9_|, -]+$/ : /^[a-zA-Z0-9_|]+$/).test(t))
     return t
@@ -1171,29 +1171,31 @@ async function getMatchingHooks(e, t, n, r, o) {
         level: "verbose",
       }));
     let l = e?.toolPermissionContext.toolAliases,
-      u = (i ? s.filter((x) => !x.matcher || ttm(i, x.matcher, a, l)) : s).flatMap((x) => {
-        let I = "pluginRoot" in x ? x.pluginRoot : void 0,
-          k = "pluginId" in x ? x.pluginId : void 0,
-          D = "skillRoot" in x ? x.skillRoot : void 0,
-          P = I
-            ? "pluginName" in x
-              ? `plugin:${x.pluginName}`
-              : "plugin"
-            : D
-              ? "skillName" in x
-                ? `skill:${x.skillName}`
-                : "skill"
-              : "settings",
-          O = !x.matcher || x.matcher === "*" || x.matcher === ".*";
-        return x.hooks.map((L) => ({
-          hook: L,
-          pluginRoot: I,
-          pluginId: k,
-          skillRoot: D,
-          hookSource: P,
-          matcherIsMatchAll: O,
-        }));
-      });
+      u = (i ? s.filter((x) => !x.matcher || matchesPattern(i, x.matcher, a, l)) : s).flatMap(
+        (x) => {
+          let I = "pluginRoot" in x ? x.pluginRoot : void 0,
+            k = "pluginId" in x ? x.pluginId : void 0,
+            D = "skillRoot" in x ? x.skillRoot : void 0,
+            P = I
+              ? "pluginName" in x
+                ? `plugin:${x.pluginName}`
+                : "plugin"
+              : D
+                ? "skillName" in x
+                  ? `skill:${x.skillName}`
+                  : "skill"
+                : "settings",
+            O = !x.matcher || x.matcher === "*" || x.matcher === ".*";
+          return x.hooks.map((L) => ({
+            hook: L,
+            pluginRoot: I,
+            pluginId: k,
+            skillRoot: D,
+            hookSource: P,
+            matcherIsMatchAll: O,
+          }));
+        },
+      );
     if (u.every((x) => x.hook.type === "callback" || x.hook.type === "function")) return u;
     let d = (x) => x.if ?? "",
       p = Array.from(
@@ -1390,7 +1392,7 @@ async function* executeHooks({
     return;
   }
   let y = mC() && sg(),
-    b = y || ude() ? De(atm(g)) : "[]",
+    b = y || ude() ? De(getHookDefinitionsForTelemetry(g)) : "[]",
     _ = getTelemetryHookName(d, r);
   if (!u)
     Jc("hook_execution_start", {
@@ -1458,7 +1460,7 @@ async function* executeHooks({
           { signal: ce, cleanup: ae } = xL(o, {
             timeoutMs: ee,
           });
-        yield itm({
+        yield executeHookCallback({
           toolUseID: n,
           hook: $,
           hookEvent: d,
@@ -1484,7 +1486,7 @@ async function* executeHooks({
           };
           return;
         }
-        yield stm({
+        yield executeFunctionHook({
           hook: $,
           messages: l,
           hookName: p,
@@ -1632,7 +1634,7 @@ async function* executeHooks({
               });
             return;
           }
-          let { json: he, validationError: ie } = jic(ge.body);
+          let { json: he, validationError: ie } = parseHttpHookOutput(ge.body);
           if (ie) {
             (Ok({
               hookId: J,
@@ -1677,7 +1679,7 @@ async function* executeHooks({
             return;
           }
           if (he) {
-            let le = Blr({
+            let le = processHookJSONOutput({
               json: he,
               command: $.url,
               hookName: p,
@@ -1761,7 +1763,7 @@ async function* executeHooks({
               });
             return;
           }
-          let { json: he, validationError: ie } = Ulr(ge.body);
+          let { json: he, validationError: ie } = parseHookOutput(ge.body);
           if (ie) {
             (Ok({
               hookId: J,
@@ -1801,7 +1803,7 @@ async function* executeHooks({
             }),
             he && eO(he))
           ) {
-            let le = Blr({
+            let le = processHookJSONOutput({
               json: he,
               command: oe,
               hookName: p,
@@ -1838,7 +1840,7 @@ async function* executeHooks({
           return;
         }
         LZn(J, p, d);
-        let ae = await Flr($, d, p, ce, Wqe(e), K, J, Y, q, W, V, c);
+        let ae = await execCommandHook($, d, p, ce, Wqe(e), K, J, Y, q, W, V, c);
         Z?.();
         let de = Date.now() - ne;
         if (ae.backgrounded) {
@@ -1873,7 +1875,7 @@ async function* executeHooks({
             });
           return;
         }
-        let { json: Ee, plainText: me, validationError: pe } = Ulr(ae.stdout);
+        let { json: Ee, plainText: me, validationError: pe } = parseHookOutput(ae.stdout);
         if (pe) {
           (Ok({
             hookId: J,
@@ -1910,7 +1912,7 @@ async function* executeHooks({
             };
             return;
           }
-          let ge = Blr({
+          let ge = processHookJSONOutput({
             json: Ee,
             command: oe,
             hookName: p,
@@ -2526,7 +2528,7 @@ async function executeHooksOutsideREPL({
                 blocked: false,
               }
             );
-          let { json: k, validationError: D } = Ulr(I.body);
+          let { json: k, validationError: D } = parseHookOutput(I.body);
           if (D) throw Error(D);
           let P = k && eO(k) ? k : void 0,
             O = P?.decision === "block";
@@ -2615,7 +2617,7 @@ async function executeHooksOutsideREPL({
               }
             );
           }
-          let { json: I, validationError: k } = jic(x.body);
+          let { json: I, validationError: k } = parseHttpHookOutput(x.body);
           if (k) throw Error(k);
           if (I && !vme(I))
             T(`Parsed JSON output from HTTP hook: ${De(I)}`, {
@@ -2658,7 +2660,7 @@ async function executeHooksOutsideREPL({
           timeoutMs: S,
         });
       try {
-        let x = await Flr(g, s, i, d, Wqe(t), v, qYe.randomUUID(), _, h, y, b);
+        let x = await execCommandHook(g, s, i, d, Wqe(t), v, qYe.randomUUID(), _, h, y, b);
         if ((C?.(), x.aborted))
           return (
             T(`${i} [${A}] cancelled`),
@@ -2671,7 +2673,7 @@ async function executeHooksOutsideREPL({
             }
           );
         T(`${i} [${A}] completed with status ${x.status}`);
-        let { json: I, validationError: k } = Ulr(x.stdout);
+        let { json: I, validationError: k } = parseHookOutput(x.stdout);
         if (k) throw Error(k);
         if (I && !vme(I))
           T(`Parsed JSON output from hook: ${De(I)}`, {
@@ -2791,7 +2793,7 @@ async function executeStatusLineCommand(e, t, n = 5000, r = false) {
   let s = t || AbortSignal.timeout(n);
   try {
     let i = De(e),
-      a = await Flr(o, "StatusLine", "statusLine", i, Wqe(e), s, qYe.randomUUID());
+      a = await execCommandHook(o, "StatusLine", "statusLine", i, Wqe(e), s, qYe.randomUUID());
     if (a.aborted) return;
     let l = a.stderr.trim();
     if (l) T(`StatusLine [${o.command}] stderr: ${l}`);
@@ -2834,7 +2836,15 @@ async function executeFileSuggestionCommand(e, t, n = 5000) {
         type: "command",
         command: r.command,
       },
-      a = await Flr(i, "FileSuggestion", "FileSuggestion", s, Wqe(e), o, qYe.randomUUID());
+      a = await execCommandHook(
+        i,
+        "FileSuggestion",
+        "FileSuggestion",
+        s,
+        Wqe(e),
+        o,
+        qYe.randomUUID(),
+      );
     if (a.aborted || a.status !== 0) return [];
     return a.stdout
       .split(
@@ -2852,7 +2862,7 @@ async function executeFileSuggestionCommand(e, t, n = 5000) {
     );
   }
 }
-async function stm({
+async function executeFunctionHook({
   hook: e,
   messages: t,
   hookName: n,
@@ -2923,7 +2933,7 @@ async function stm({
     );
   }
 }
-async function itm({
+async function executeHookCallback({
   toolUseID: e,
   hook: t,
   hookEvent: n,
@@ -2945,7 +2955,7 @@ async function itm({
       hook: t,
     };
   return {
-    ...Blr({
+    ...processHookJSONOutput({
       json: l,
       command: "callback",
       hookName: `${n}:Callback`,
@@ -2979,7 +2989,7 @@ function getTelemetryHookName(e, t) {
       return `${e}:${t}`;
   }
 }
-function atm(e) {
+function getHookDefinitionsForTelemetry(e) {
   return e.map(({ hook: t }) => {
     if (t.type === "command")
       return {

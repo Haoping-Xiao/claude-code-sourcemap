@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ahl
 // matched 2.1.88 source: src/utils/swarm/backends/registry.ts
 // class=modified  jaccard=0.5236  score=0.6655  fileCov=0.7107
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resetBackendDetection, registerTmuxBackend, registerITermBackend, markInProcessFallback, isInProcessEnabled, globalBackendRegistry, getTeammateExecutor, getResolvedTeammateMode, getInProcessBackend, getCachedDetectionResult, getCachedBackend, getBackendByType, ensureBackendsRegistered, detectAndGetBackend, createBackendRegistry
 // [unwrapped __esm module Ahl] deps: dn, je, Bi, qJ, cAe, d9t
@@ -42,12 +42,12 @@ function registerITermBackend(e, t) {
   }
   vhl = e;
 }
-function k7n(e) {
+function createTmuxBackend(e) {
   if (!e.TmuxBackendClass)
     throw Error("TmuxBackend not registered. Import TmuxBackend.ts before using the registry.");
   return new e.TmuxBackendClass();
 }
-function I0o(e) {
+function createITermBackend(e) {
   if (!e.ITermBackendClass)
     throw Error("ITermBackend not registered. Import ITermBackend.ts before using the registry.");
   return new e.ITermBackendClass();
@@ -74,7 +74,7 @@ async function detectAndGetBackend(e = globalBackendRegistry) {
         )
       );
     T("[BackendRegistry] Selected: iterm2 (explicit teammateMode)");
-    let o = I0o(e);
+    let o = createITermBackend(e);
     return (
       (e.cachedBackend = o),
       (e.cachedDetectionResult = {
@@ -90,7 +90,7 @@ async function detectAndGetBackend(e = globalBackendRegistry) {
     n = $6();
   if ((T(`[BackendRegistry] Environment: insideTmux=${t}, inITerm2=${n}`), t)) {
     T("[BackendRegistry] Selected: tmux (running inside tmux session)");
-    let o = k7n(e);
+    let o = createTmuxBackend(e);
     return (
       (e.cachedBackend = o),
       (e.cachedDetectionResult = {
@@ -109,7 +109,7 @@ async function detectAndGetBackend(e = globalBackendRegistry) {
       let i = await lht();
       if ((T(`[BackendRegistry] iTerm2 detected, it2 CLI available: ${i}`), i)) {
         T("[BackendRegistry] Selected: iterm2 (native iTerm2 with it2 CLI)");
-        let a = I0o(e);
+        let a = createITermBackend(e);
         return (
           (e.cachedBackend = a),
           (e.cachedDetectionResult = {
@@ -125,7 +125,7 @@ async function detectAndGetBackend(e = globalBackendRegistry) {
     let s = await YPe();
     if ((T(`[BackendRegistry] it2 not available, tmux available: ${s}`), s)) {
       T("[BackendRegistry] Selected: tmux (fallback in iTerm2, it2 setup recommended)");
-      let i = k7n(e);
+      let i = createTmuxBackend(e);
       return (
         (e.cachedBackend = i),
         (e.cachedDetectionResult = {
@@ -146,7 +146,7 @@ async function detectAndGetBackend(e = globalBackendRegistry) {
   let r = await YPe();
   if ((T(`[BackendRegistry] Not in tmux or iTerm2, tmux available: ${r}`), r)) {
     T("[BackendRegistry] Selected: tmux (external session mode)");
-    let o = k7n(e);
+    let o = createTmuxBackend(e);
     return (
       (e.cachedBackend = o),
       (e.cachedDetectionResult = {
@@ -161,10 +161,10 @@ async function detectAndGetBackend(e = globalBackendRegistry) {
   throw (
     T("[BackendRegistry] ERROR: No pane backend available"),
     Le("swarm_backend_detect", "no_backend_available"),
-    Error(Aff())
+    Error(getTmuxInstallInstructions())
   );
 }
-function Aff() {
+function getTmuxInstallInstructions() {
   switch (Vt()) {
     case "macos":
       return `To use agent swarms, install tmux:
@@ -189,9 +189,9 @@ Then start a tmux session with: tmux new-session -s claude`;
 function getBackendByType(e, t = globalBackendRegistry) {
   switch (e) {
     case "tmux":
-      return k7n(t);
+      return createTmuxBackend(t);
     case "iterm2":
-      return I0o(t);
+      return createITermBackend(t);
   }
 }
 function getCachedBackend(e = globalBackendRegistry) {
@@ -239,9 +239,9 @@ function getInProcessBackend(e = globalBackendRegistry) {
 async function getTeammateExecutor(e = !1, t = globalBackendRegistry) {
   if (e && isInProcessEnabled(t))
     return (T("[BackendRegistry] Using in-process executor"), getInProcessBackend(t));
-  return (T("[BackendRegistry] Using pane backend executor"), Cff(t));
+  return (T("[BackendRegistry] Using pane backend executor"), getPaneBackendExecutor(t));
 }
-async function Cff(e) {
+async function getPaneBackendExecutor(e) {
   if (!e.cachedPaneBackendExecutor) {
     let t = await detectAndGetBackend(e);
     ((e.cachedPaneBackendExecutor = mhl(t.backend)),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZZo
 // matched 2.1.88 source: src/utils/debug.ts
 // class=modified (alt of src/utils/debug.ts)  jaccard=0.0286  score=0.0382  fileCov=0.1018
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tailLog, parseArgs, daemonMain
 // [unwrapped __esm module ZZo] deps: vX, Lo, jS, Jt, iQt, zOe, YOe, Qir, QJt
@@ -133,7 +133,7 @@ function zT(e) {
 `,
   );
 }
-function pBe(e, t) {
+function getDebugFilePath(e, t) {
   let n = [];
   for (let r = 0; r < e.length; r++) {
     let o = e[r];
@@ -184,7 +184,7 @@ async function daemonMain(e) {
   if (wNm.has(a) && !lce()) return bke(`daemon ${a}`);
   switch ((_kn(), a)) {
     case "list": {
-      pBe(i, ["--json"]);
+      getDebugFilePath(i, ["--json"]);
       let { handleListAllKinds: l } = await Promise.resolve().then(() => (ZZo(), QZo));
       await l(i.includes("--json"), n);
       return;
@@ -196,7 +196,7 @@ async function daemonMain(e) {
       return;
     }
     case "hub": {
-      if ((pBe(i, []), !process.stdin.isTTY || !process.stdout.isTTY)) {
+      if ((getDebugFilePath(i, []), !process.stdin.isTTY || !process.stdout.isTTY)) {
         Qy("Interactive hub requires a TTY. See `claude daemon --help`.");
         return;
       }
@@ -250,7 +250,7 @@ async function daemonMain(e) {
       return hV(g);
     }
     case "install": {
-      if ((pBe(i, []), !_ke()))
+      if ((getDebugFilePath(i, []), !_ke()))
         return (
           zT(
             `\`claude daemon ${a}\` is disabled in this version \u2014 the daemon runs on demand and exits when the last client disconnects.`,
@@ -314,7 +314,7 @@ async function daemonMain(e) {
     }
     case "start":
     case "restart": {
-      if ((pBe(i, []), !_ke()))
+      if ((getDebugFilePath(i, []), !_ke()))
         return (
           zT(
             `\`claude daemon ${a}\` is disabled in this version \u2014 the daemon runs on demand and exits when the last client disconnects.`,
@@ -370,7 +370,7 @@ async function daemonMain(e) {
       return hV(l.ok ? 0 : 1);
     }
     case "uninstall": {
-      pBe(i, []);
+      getDebugFilePath(i, []);
       let l = await AEt();
       if (
         (await yU("tengu_daemon_control", {
@@ -387,7 +387,7 @@ async function daemonMain(e) {
     }
     case "stop": {
       let l = i.includes("--keep-workers");
-      pBe(i, ["--keep-workers", "--any"]);
+      getDebugFilePath(i, ["--keep-workers", "--any"]);
       let c = (h) =>
           l || h === 0 ? "stopped" : `stopped (terminated ${h} ${bn(h, "background session")})`,
         u = async (h, y) => {
@@ -467,7 +467,7 @@ async function daemonMain(e) {
       return u(true, g);
     }
     case "status": {
-      pBe(i, []);
+      getDebugFilePath(i, []);
       let l = await uR();
       if (!l) {
         Qy("not running");
@@ -538,7 +538,7 @@ async function daemonMain(e) {
     }
     case "logs":
     case "log": {
-      (pBe(i, []), await tailLog(r));
+      (getDebugFilePath(i, []), await tailLog(r));
       return;
     }
     default:

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xyl
 // matched 2.1.88 source: src/services/tools/toolExecution.ts
 // class=modified (alt of src/services/tools/toolExecution.ts)  jaccard=0.0524  score=0.1916  fileCov=0.0672
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xyl]
 Mmf = new Set([
@@ -28,10 +28,10 @@ function rRo(e, t, n, r, o) {
   let s = {},
     i = [],
     a = [...t.options.tools, ...e];
-  for (let l of e) s[l.name] = $mf(l, t, n, r, i, a, o);
+  for (let l of e) s[l.name] = checkPermissionsAndCallTool(l, t, n, r, i, a, o);
   return s;
 }
-function $mf(e, t, n, r, o, s, i) {
+function checkPermissionsAndCallTool(e, t, n, r, o, s, i) {
   let a = async (l, c) => {
     let u = c?.toolUseID ?? `repl_${Qyl.randomUUID()}`,
       d = (g) => (

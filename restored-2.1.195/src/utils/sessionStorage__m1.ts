@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nec
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0304  score=0.93  fileCov=0.0305
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nec] deps: db, BFe, jS, Jt
 ((zJt = require("crypto")), (Pir = require("path")));
@@ -13,7 +13,7 @@ async function rec(e, t) {
   let r = n.filePath.replace(/\.jsonl$/, "");
   return Mir.join(r, "subagents");
 }
-async function oec(e) {
+async function getAgentTranscriptPath(e) {
   let t = [];
   async function n(r) {
     let o;
@@ -35,7 +35,7 @@ async function oec(e) {
   }
   return (await n(e), t);
 }
-function BKf(e) {
+function hasVisibleAssistantContent(e) {
   let t = [],
     n = 10,
     r = e.length,
@@ -74,14 +74,14 @@ async function sec(e, t) {
   if (!FS(e)) return [];
   let n = await rec(e, t?.dir);
   if (!n) return [];
-  return (await oec(n)).map((o) => o.agentId);
+  return (await getAgentTranscriptPath(n)).map((o) => o.agentId);
 }
 async function iec(e, t, n) {
   if (!FS(e)) return [];
   if (!t) return [];
   let r = await rec(e, n?.dir);
   if (!r) return [];
-  let s = (await oec(r)).find((l) => l.agentId === t);
+  let s = (await getAgentTranscriptPath(r)).find((l) => l.agentId === t);
   if (!s) return [];
   let i;
   try {
@@ -98,7 +98,7 @@ async function iec(e, t, n) {
 }
 function B3o(e, t, n) {
   if (e.length === 0) return [];
-  let r = BKf(e),
+  let r = hasVisibleAssistantContent(e),
     s = UKf(r)
       .filter((i) => i.type === "user" || i.type === "assistant")
       .map((i) => P3o(i, n));

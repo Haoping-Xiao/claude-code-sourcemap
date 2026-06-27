@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module m4o
 // matched 2.1.88 source: src/utils/plugins/refresh.ts
 // class=modified  jaccard=0.4017  score=0.6511  fileCov=0.5119
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function iTe(e) {
+async function refreshActivePlugins(e) {
   (T("refreshActivePlugins: clearing all plugin caches"), vRl(), Ah(), Mtl());
   let t = await OT();
   mMa();
@@ -38,7 +38,7 @@ async function iTe(e) {
       enabled: o,
       disabled: s,
       commands: n,
-      errors: N9f(g.plugins.errors, i),
+      errors: mergePluginErrors(g.plugins.errors, i),
       warnings: B9f(g.plugins.warnings, p),
       needsRefresh: false,
     },
@@ -86,12 +86,12 @@ async function iTe(e) {
     }
   );
 }
-function N9f(e, t) {
+function mergePluginErrors(e, t) {
   let n = e.filter((s) => s.source === "lsp-manager" || s.source.startsWith("plugin:")),
-    r = new Set(t.map(D7l));
-  return [...n.filter((s) => !r.has(D7l(s))), ...t];
+    r = new Set(t.map(errorKey));
+  return [...n.filter((s) => !r.has(errorKey(s))), ...t];
 }
-function D7l(e) {
+function errorKey(e) {
   return e.type === "generic-error"
     ? `generic-error:${e.source}:${e.error}`
     : `${e.type}:${e.source}`;

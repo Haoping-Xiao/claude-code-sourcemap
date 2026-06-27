@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zZn
 // matched 2.1.88 source: src/utils/plugins/loadPluginCommands.ts
 // class=modified (alt of src/utils/plugins/loadPluginCommands.ts)  jaccard=0.2906  score=0.7397  fileCov=0.3237
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zZn] deps: je, ys
 ((p$o = require("path")), (RIf = /^skill\.md$/i));
@@ -62,7 +62,7 @@ async function DIf(e, t, n) {
     r.sort((s, i) => s.filePath.localeCompare(i.filePath))
   );
 }
-function PIf(e) {
+function transformPluginSkillFiles(e) {
   let t = new Map();
   for (let r of e) {
     let o = Bk.dirname(r.filePath),
@@ -92,16 +92,16 @@ async function K0l(
   i = new Set(),
 ) {
   let a = await DIf(e, e, i),
-    l = PIf(a),
+    l = transformPluginSkillFiles(a),
     c = [];
   for (let u of l) {
     let d = LIf(u.filePath, u.baseDir, t),
-      p = TYt(d, u, n, r, o, f$o(u.filePath), s);
+      p = createPluginCommand(d, u, n, r, o, f$o(u.filePath), s);
     if (p) c.push(p);
   }
   return c;
 }
-function TYt(
+function createPluginCommand(
   e,
   t,
   n,
@@ -257,7 +257,7 @@ ${l}`
 function KZn() {
   Vze.cache?.clear?.();
 }
-async function Y0l(e, t, n, r, o, s) {
+async function loadSkillsFromDirectory(e, t, n, r, o, s) {
   let i = qt(),
     a = [],
     l = Bk.join(e, "SKILL.md"),
@@ -292,7 +292,7 @@ async function Y0l(e, t, n, r, o, s) {
           frontmatter: d,
           content: rHe(l, p),
         },
-        y = TYt(g, h, n, r, o, !0, {
+        y = createPluginCommand(g, h, n, r, o, !0, {
           isSkillMode: !0,
         });
       if (y)
@@ -347,7 +347,7 @@ async function Y0l(e, t, n, r, o, s) {
               frontmatter: g,
               content: rHe(f, h),
             },
-            _ = TYt(y, b, n, r, o, !0, {
+            _ = createPluginCommand(y, b, n, r, o, !0, {
               isSkillMode: !0,
             });
           if (_)

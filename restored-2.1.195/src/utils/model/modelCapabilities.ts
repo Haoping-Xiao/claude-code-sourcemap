@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yxe
 // matched 2.1.88 source: src/utils/model/modelCapabilities.ts
 // class=modified  jaccard=0.1994  score=0.375  fileCov=0.2987
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yxe] deps: PR, Qi, og, oo, xAn, Ld, Gx, Ao, Ls, Mh, ft, Rc, wFe, je, Mm, fn, drt, Jt, sr, dn, Un, kt, yje, frt
 cvi = require("crypto");
@@ -46,7 +46,7 @@ uvi = class uvi extends Error {
 function hvi() {
   return C9r.join(tr(), "cache");
 }
-function yvi() {
+function getCachePath() {
   return C9r.join(hvi(), "model-capabilities.json");
 }
 function _vi() {
@@ -57,14 +57,14 @@ function Gkd(e) {
 }
 function bvi(e) {
   if (!_vi()) return;
-  let t = w9r(yvi());
+  let t = w9r(getCachePath());
   if (!t || t.length === 0) return;
   let n = e.toLowerCase(),
     r = t.find((o) => o.id.toLowerCase() === n);
   if (r) return r;
   return t.find((o) => n.includes(o.id.toLowerCase()));
 }
-async function Svi() {
+async function refreshModelCapabilities() {
   if (!_vi()) return;
   if (Vi()) return;
   try {
@@ -81,7 +81,7 @@ async function Svi() {
       if (i.success) n.push(i.data);
     }
     if (n.length === 0) return;
-    let r = yvi(),
+    let r = getCachePath(),
       o = Gkd(n);
     if (L_(w9r(r), o)) {
       T("[modelCapabilities] cache unchanged, skipping write");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NDc
 // matched 2.1.88 source: src/hooks/notifs/useTeammateShutdownNotification.ts
 // class=modified  jaccard=0.2624  score=0.594  fileCov=0.3198
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NDc] deps: Ed, aE, id, q6o
 (($Dc = R(lt(), 1)), (qfr = R(rt(), 1)));
@@ -12,9 +12,9 @@ function BDc(e) {
   return t?.[1] ? parseInt(t[1], 10) : 1;
 }
 function TCm(e, t) {
-  return UDc(BDc(e) + 1);
+  return makeSpawnNotif(BDc(e) + 1);
 }
-function UDc(e) {
+function makeSpawnNotif(e) {
   return {
     key: "teammate-spawn",
     kind: "event",
@@ -25,9 +25,9 @@ function UDc(e) {
   };
 }
 function vCm(e, t) {
-  return FDc(BDc(e) + 1);
+  return makeShutdownNotif(BDc(e) + 1);
 }
-function FDc(e) {
+function makeShutdownNotif(e) {
   return {
     key: "teammate-shutdown",
     kind: "event",
@@ -37,7 +37,7 @@ function FDc(e) {
     fold: vCm,
   };
 }
-function jDc() {
+function useTeammateLifecycleNotification() {
   let e = Ht((o) => o.tasks),
     { addNotification: t } = Li(),
     n = Otn.useRef(new Set()),
@@ -46,8 +46,9 @@ function jDc() {
     if (Ju() !== null) return;
     for (let [o, s] of Object.entries(e)) {
       if (!uE(s)) continue;
-      if (s.status === "running" && !n.current.has(o)) (n.current.add(o), t(UDc(1)));
-      if (s.status === "completed" && !r.current.has(o)) (r.current.add(o), t(FDc(1)));
+      if (s.status === "running" && !n.current.has(o)) (n.current.add(o), t(makeSpawnNotif(1)));
+      if (s.status === "completed" && !r.current.has(o))
+        (r.current.add(o), t(makeShutdownNotif(1)));
     }
   }, [e, t]);
 }

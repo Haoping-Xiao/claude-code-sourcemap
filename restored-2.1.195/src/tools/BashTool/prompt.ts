@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IKt
 // matched 2.1.88 source: src/tools/BashTool/prompt.ts
 // class=modified  jaccard=0.4475  score=0.6098  fileCov=0.6271
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IKt] deps: ft, GF, np, u_, lf, nC, h6, je, RE, Rd, vn, QO, Ao, ste, JDo, y_, jS, dr, K$e
 oCl = require("fs/promises");
@@ -20,14 +20,14 @@ function lCl() {
   if (!q1()) return e;
   return `${e} Do not use PowerShell here-strings (\`@'\u2026'@\`) or backtick continuation here \u2014 for multi-line strings use a heredoc.`;
 }
-function cCl() {
+function getBackgroundUsageNote() {
   if (Oe.CLAUDE_CODE_DISABLE_BACKGROUND_TASKS) return null;
   return "You can use the `run_in_background` parameter to run the command in the background. Only use this if you don't need the result immediately and are OK being notified when the command completes later. You do not need to check the output right away - you'll be notified when it finishes. You do not need to use '&' at the end of the command when using this parameter.";
 }
 function uCl() {
   return "";
 }
-function cHf(e) {
+function getCommitAndPRInstructions(e) {
   if (!Ejt()) return "";
   let n = EH() ? cC : s$,
     { commit: r, pr: o } = wze(),
@@ -172,7 +172,7 @@ function Cze(e) {
   let t = e.length - QDo;
   return [...e.slice(0, QDo), `... and ${t} more (truncated for prompt size)`];
 }
-function dCl() {
+function getSimpleSandboxSection() {
   if (!xo.isSandboxingEnabled()) return "";
   let e = xo.getFsReadConfig(),
     t = xo.getFsWriteConfig(),
@@ -300,9 +300,9 @@ ${l}`
   }`;
 }
 function dHf(e) {
-  let t = cCl() !== null,
+  let t = getBackgroundUsageNote() !== null,
     n = uHf(e),
-    r = dCl(),
+    r = getSimpleSandboxSection(),
     o = hC()
       ? "`cat`, `head`, `tail`, `sed`, `awk`, or `echo`"
       : "`find`, `grep`, `cat`, `head`, `tail`, `sed`, `awk`, or `echo`",
@@ -328,7 +328,7 @@ function dHf(e) {
   ].join(`
 `);
 }
-function pCl(e, t) {
+function getSimplePrompt(e, t) {
   if (ph(e)) return dHf(t);
   let n = hC(),
     r = [
@@ -381,8 +381,8 @@ function pCl(e, t) {
             "If you must sleep, keep the duration short to avoid blocking the user.",
           ]),
     ],
-    l = cCl(),
-    c = cHf(t),
+    l = getBackgroundUsageNote(),
+    c = getCommitAndPRInstructions(t),
     u = [
       "If your command will create new directories or files, first use this tool to run `ls` to verify the parent directory exists and is the correct location.",
       'Always quote file paths that contain spaces with double quotes in your command (e.g., cd "path with spaces/file.txt")',
@@ -415,7 +415,7 @@ function pCl(e, t) {
     "",
     "# Instructions",
     ...oz(u),
-    dCl(),
+    getSimpleSandboxSection(),
     ...(c ? ["", c] : []),
   ].join(`
 `);

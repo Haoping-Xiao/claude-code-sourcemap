@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module f1c
 // matched 2.1.88 source: src/utils/sessionState.ts
 // class=modified  jaccard=0.1574  score=0.2399  fileCov=0.3138
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-class Ztn {
+class notifySessionStateChanged {
   onStateChanged;
   onWaitingOnUserChanged;
   onTurnStarting;

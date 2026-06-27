@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $5c
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0278  score=0.1063  fileCov=0.0363
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: importConversationsHandler, importConversations
 // [unwrapped __esm module $5c] deps: iu, lH, VQ, dn, kt, Du, FEe, YQr, er, je, MPe, wr, Yp, kgt, A9e, wAo, BJ, IVn, ED, LOe, dr
@@ -46,7 +46,7 @@ ${s.extracted_content}
     r
   );
 }
-async function E1m(e, t, n, r) {
+async function buildTranscriptEntries(e, t, n, r) {
   let o = {
     parentUuid: e.parent_message_uuid ?? null,
     isSidechain: false,
@@ -249,7 +249,9 @@ async function importConversations(e, t) {
     for (let c of l.chat_messages) for (let u of c.files ?? []) i[u.file_uuid] = u.file_name;
   for (let l of n.conversations) {
     let c = Ywt(l.uuid, _1m),
-      u = await Promise.all(l.chat_messages.map((f) => E1m(f, t.cwd, c, n.files))),
+      u = await Promise.all(
+        l.chat_messages.map((f) => buildTranscriptEntries(f, t.cwd, c, n.files)),
+      ),
       d =
         u.map((f) => De(f)).join(`
 `) +

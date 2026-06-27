@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module mio
 // matched 2.1.88 source: src/utils/model/modelOptions.ts
 // class=modified  jaccard=0.2152  score=0.3357  fileCov=0.3747
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mio] deps: Un
 fio = {};
 function Cap() {
   return AAn() ? " \xB7 Set by your organization" : "";
 }
-function E1n(e) {
+function getDefaultOptionForUser(e) {
   if (bo())
     return {
       value: null,
@@ -32,7 +32,7 @@ function v1n() {
 function gio() {
   return rU(O_());
 }
-function Uia() {
+function getCustomSonnetOption() {
   let e = process.env.ANTHROPIC_DEFAULT_SONNET_MODEL;
   if (v1n() && e) {
     let t = Sy(e);
@@ -46,7 +46,7 @@ function Uia() {
     };
   }
 }
-function yio() {
+function getSonnet46Option() {
   let e = !td();
   return {
     value: e ? Vp().sonnet46 : "sonnet",
@@ -77,7 +77,7 @@ function _io() {
     descriptionForModel: "Fable 5 - most capable for your hardest and longest-running tasks",
   };
 }
-function jia() {
+function getCustomOpusOption() {
   let e = process.env.ANTHROPIC_DEFAULT_OPUS_MODEL;
   if (v1n() && e) {
     let t = Sy(e);
@@ -91,7 +91,7 @@ function jia() {
     };
   }
 }
-function Iap() {
+function getOpus41Option() {
   return {
     value: Vp().opus41,
     label: "Opus 4.1",
@@ -125,7 +125,7 @@ function Jia(e = false) {
     descriptionForModel: "Opus 4.8 - best for everyday, complex tasks",
   };
 }
-function Gia() {
+function getSonnet46_1MOption() {
   let e = !td();
   return {
     value: e ? Vp().sonnet46 + "[1m]" : "sonnet[1m]",
@@ -161,7 +161,7 @@ function Wia(e = false) {
     descriptionForModel: "Opus 4.8 with 1M context window - for long sessions with large codebases",
   };
 }
-function qia() {
+function getCustomHaikuOption() {
   let e = process.env.ANTHROPIC_DEFAULT_HAIKU_MODEL;
   if (v1n() && e)
     return {
@@ -171,7 +171,7 @@ function qia() {
       descriptionForModel: `${process.env.ANTHROPIC_DEFAULT_HAIKU_MODEL_DESCRIPTION ?? "Custom Haiku model"} (${e})`,
     };
 }
-function Qia() {
+function getHaiku45Option() {
   let e = !td();
   return {
     value: "haiku",
@@ -181,7 +181,7 @@ function Qia() {
       "Haiku 4.5 - fastest for quick answers. Lower cost but less capable than Sonnet 4.6.",
   };
 }
-function Dap() {
+function getHaiku35Option() {
   return {
     value: "haiku",
     label: "Haiku",
@@ -191,7 +191,7 @@ function Dap() {
   };
 }
 function Pap() {
-  return WG() === Vp().haiku45 ? Qia() : Dap();
+  return WG() === Vp().haiku45 ? getHaiku45Option() : getHaiku35Option();
 }
 function Eio() {
   if (Di() === "pro" && at("tengu_gypsum_kite", false)) return " \xB7 ~2\xD7 usage vs Sonnet";
@@ -205,7 +205,7 @@ function Aio(e = false) {
     description: `Opus 4.8 \xB7 ${vjt}${Eio()}${t || !e ? "" : ` \xB7 ${eU(ule)}`}`,
   };
 }
-function Via() {
+function getMaxSonnet46_1MOption() {
   let e = !td(),
     t = bo() ? " \xB7 Draws from usage credits" : "";
   return {
@@ -240,14 +240,14 @@ function eaa(e = false, t = false) {
     label: "Opus",
   };
 }
-function $ap() {
+function getOpusPlanOption() {
   return {
     value: "opusplan",
     label: "Opus Plan Mode",
     description: "Use Opus in plan mode, Sonnet otherwise",
   };
 }
-function hio(e, t) {
+function getModelFamilyInfo(e, t) {
   let n = bio(Uw());
   if (n !== "opus" && n !== "sonnet") return e;
   let r = n === "opus" && nT();
@@ -256,7 +256,7 @@ function hio(e, t) {
     s;
   if (n === "sonnet") {
     let i = jx();
-    if (mo(i) === "claude-sonnet-4-6") s = o ? taa : yio();
+    if (mo(i) === "claude-sonnet-4-6") s = o ? taa : getSonnet46Option();
     else {
       let a = $h(dp(i)) ?? "Sonnet";
       s = {
@@ -285,41 +285,41 @@ function hio(e, t) {
 function Oap(e = false) {
   if (bo()) {
     if (mle() || QIe() || Eye()) {
-      let a = [E1n(e)];
+      let a = [getDefaultOptionForUser(e)];
       if (!nT() && ure() && !gio()) a.push(zia());
-      if ((a.push(taa), uSe())) a.push(Via());
-      return (a.push(Kia), hio(a, e));
+      if ((a.push(taa), uSe())) a.push(getMaxSonnet46_1MOption());
+      return (a.push(Kia), getModelFamilyInfo(a, e));
     }
-    let i = [E1n(e)];
-    if (uSe()) i.push(Via());
+    let i = [getDefaultOptionForUser(e)];
+    if (uSe()) i.push(getMaxSonnet46_1MOption());
     if (nT()) i.push(eaa());
     else if ((i.push(Aio(false)), ure() && !gio())) i.push(zia());
-    return (i.push(Kia), hio(i, e));
+    return (i.push(Kia), getModelFamilyInfo(i, e));
   }
   if (td()) {
-    let i = [E1n(e)],
-      a = jia();
+    let i = [getDefaultOptionForUser(e)],
+      a = getCustomOpusOption();
     if (a !== void 0) i.push(a);
     else if (!nT() && ure() && !gio()) i.push(Wia(e));
-    let l = Uia();
+    let l = getCustomSonnetOption();
     if (l !== void 0) i.push(l);
-    else if ((i.push(yio()), uSe())) i.push(Gia());
-    i.push(qia() ?? Qia());
+    else if ((i.push(getSonnet46Option()), uSe())) i.push(getSonnet46_1MOption());
+    i.push(getCustomHaikuOption() ?? getHaiku45Option());
     let c = Fia();
     if (c !== void 0) Yct(i, c);
     else if (fr() === "anthropicAws" && pSe("fable5")) Yct(i, _io());
-    return hio(i, e);
+    return getModelFamilyInfo(i, e);
   }
-  let t = [E1n(e)],
-    n = Uia();
+  let t = [getDefaultOptionForUser(e)],
+    n = getCustomSonnetOption();
   if (n !== void 0) t.push(n);
   else if (pSe("sonnet46")) {
-    if ((t.push(yio()), uSe())) t.push(Gia());
+    if ((t.push(getSonnet46Option()), uSe())) t.push(getSonnet46_1MOption());
   }
-  let r = jia();
+  let r = getCustomOpusOption();
   if (r !== void 0) t.push(r);
   else {
-    if (pSe("opus41")) t.push(Iap());
+    if (pSe("opus41")) t.push(getOpus41Option());
     if (pSe("opus48")) {
       if ((t.push(Jia()), ure() && !rU(Vp().opus48))) t.push(Wia());
     }
@@ -330,7 +330,7 @@ function Oap(e = false) {
       if ((t.push(xap()), ure())) t.push(Rap(e));
     }
   }
-  let o = qia();
+  let o = getCustomHaikuOption();
   if (o !== void 0) t.push(o);
   else if (pSe("haiku45") || pSe("haiku35")) t.push(Pap());
   let s = Fia();
@@ -406,7 +406,7 @@ function raa() {
 }
 function Xct(e = false) {
   let t = new Set(),
-    n = Bap(e).filter((i) => {
+    n = getModelOptions(e).filter((i) => {
       if (i.value === null) return true;
       if (t.has(i.value))
         return (
@@ -438,7 +438,7 @@ function Xct(e = false) {
   if (s.length === 0) return o;
   return [...o.filter((i) => i.disabled !== true), ...s];
 }
-function Bap(e) {
+function getModelOptions(e) {
   let t = Oap(e),
     n = process.env.ANTHROPIC_CUSTOM_MODEL_OPTION;
   if (n && !t.some((l) => l.value === n))
@@ -473,7 +473,7 @@ function Bap(e) {
   if (i !== void 0 && i !== null) s = i;
   else if (a !== void 0 && a !== null) s = a;
   if (s === null || t.some((l) => l.value === s)) return iLe(t);
-  else if (s === "opusplan") return iLe([...t, $ap()]);
+  else if (s === "opusplan") return iLe([...t, getOpusPlanOption()]);
   else if (H1n(s)) {
     let l = {
         value: s,

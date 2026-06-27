@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Y7a
 // matched 2.1.88 source: src/services/notifier.ts
 // class=modified  jaccard=0.4918  score=0.7782  fileCov=0.5721
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module Y7a] (exports=uHo)
 var uHo = {};
@@ -14,10 +14,10 @@ var K7a = V7a();
 Object.keys(K7a).forEach(function (e) {
   uHo[e] = K7a[e];
 });
-async function bpe(e, t) {
+async function sendNotification(e, t) {
   let n = wc("preferredNotifChannel", "auto").value;
   await cJ(e);
-  let r = await H7p(n, e, t);
+  let r = await sendToChannel(n, e, t);
   if (r === "error") Le("notification_show", "send_failed");
   else xe("notification_show");
   G("tengu_notification_method_used", {
@@ -27,12 +27,12 @@ async function bpe(e, t) {
     attacher_term: fy()?.terminal ?? null,
   });
 }
-async function H7p(e, t, n) {
+async function sendToChannel(e, t, n) {
   let r = t.title || X7a;
   try {
     switch (e) {
       case "auto":
-        return T7p(t, n);
+        return sendAuto(t, n);
       case "iterm2":
         return (n.notifyITerm2(t), "iterm2");
       case "iterm2_with_bell":
@@ -65,11 +65,11 @@ async function H7p(e, t, n) {
     return "error";
   }
 }
-async function T7p(e, t) {
+async function sendAuto(e, t) {
   let n = e.title || X7a;
   switch (fy()?.terminal ?? Oe.terminal) {
     case "Apple_Terminal": {
-      if (await v7p()) return (t.notifyBell(), "terminal_bell");
+      if (await isAppleTerminalBellDisabled()) return (t.notifyBell(), "terminal_bell");
       return "no_method_available";
     }
     case "iTerm.app":
@@ -98,7 +98,7 @@ async function T7p(e, t) {
 function J7a() {
   return Math.floor(Math.random() * 10000 /* 1e4 */);
 }
-async function v7p() {
+async function isAppleTerminalBellDisabled() {
   try {
     if ((fy()?.terminal ?? Oe.terminal) !== "Apple_Terminal") return false;
     let t = (

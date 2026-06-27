@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tSa
 // matched 2.1.88 source: src/tools/MCPTool/UI.tsx
 // class=modified  jaccard=0.2103  score=0.4837  fileCov=0.2711
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tSa] deps: _i, Ye, ql, T4t
 ((p_p = R(lt(), 1)), (eSa = R(se(), 1)));
@@ -17,7 +17,7 @@ function rSa(e, { verbose: t }) {
     })
     .join(", ");
 }
-function oSa(e) {
+function renderToolUseProgressMessage(e) {
   let t = e.at(-1);
   if (!t?.data)
     return pS.jsx(qn, {
@@ -74,10 +74,10 @@ function oSa(e) {
     }),
   });
 }
-function hBn(e, t, { verbose: n, input: r }) {
+function renderToolResultMessage(e, t, { verbose: n, input: r }) {
   let o = e;
   if (!n) {
-    let c = y_p(o, r);
+    let c = trySlackSendCompact(o, r);
     if (c !== null)
       return pS.jsx(qn, {
         height: 1,
@@ -197,7 +197,7 @@ function g_p(e, { maxChars: t, maxKeys: n }) {
   if (s.length === 0 || s.length > n) return null;
   return s;
 }
-function y_p(e, t) {
+function trySlackSendCompact(e, t) {
   let n = e;
   if (Array.isArray(e)) {
     let c = e.find((u) => u.type === "text");

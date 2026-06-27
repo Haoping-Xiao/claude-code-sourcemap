@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pdo
 // matched 2.1.88 source: src/components/mcp/MCPRemoteServerMenu.tsx
 // class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0566  score=0.4724  fileCov=0.0604
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function _Tp(e) {
   if (!po.isAxiosError(e)) return false;
@@ -58,7 +58,7 @@ function kUn() {
 function OSe() {
   return `${$s().CLAUDE_AI_ORIGIN}/customize/connectors`;
 }
-function oDe(e) {
+function MCPRemoteServerMenu(e) {
   let t = Lc()?.organizationUuid;
   if (!t || !e.id) return null;
   let n = $s().CLAUDE_AI_ORIGIN,

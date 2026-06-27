@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yC
 // matched 2.1.88 source: src/utils/ShellCommand.ts
 // class=modified  jaccard=0.357  score=0.492  fileCov=0.5653
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yC] deps: bH
 nic = require("crypto");
@@ -63,7 +63,7 @@ class R5o {
       (this.#o = () => {}));
   }
 }
-class L5o {
+class ShellCommandImpl {
   #e = "running";
   #t;
   #n;
@@ -156,7 +156,7 @@ class L5o {
       }),
       this.#o.once("exit", this.#A.bind(this)),
       this.#o.once("error", this.#S.bind(this)),
-      (this.#l = setTimeout(L5o.#g, this.#p, this)),
+      (this.#l = setTimeout(ShellCommandImpl.#g, this.#p, this)),
       this.taskOutput.stdoutToFile)
     )
       this.#R();
@@ -265,9 +265,9 @@ ${t}`
   }
 }
 function rjn(e, t, n, r, o = false, s = wlr) {
-  return new L5o(e, t, n, r, o, s);
+  return new ShellCommandImpl(e, t, n, r, o, s);
 }
-class iic {
+class AbortedShellCommand {
   status = "killed";
   result;
   taskOutput;
@@ -289,7 +289,7 @@ class iic {
   cleanup() {}
 }
 function gMa() {
-  return new iic();
+  return new AbortedShellCommand();
 }
 function oic(e) {
   for (let t of [-e, e])
@@ -300,7 +300,7 @@ function oic(e) {
     }
   return true;
 }
-function tjn(e) {
+function createFailedCommand(e) {
   let t = new Tb(iN("local_bash"), null);
   return {
     status: "completed",

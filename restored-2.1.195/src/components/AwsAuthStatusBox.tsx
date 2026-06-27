@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module R6
 // matched 2.1.88 source: src/components/AwsAuthStatusBox.tsx
 // class=modified  jaccard=0.4587  score=0.5786  fileCov=0.6889
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R6] deps: Ye, RLn, m0e
 ((Q7a = R(lt(), 1)), (S9n = R(se(), 1)));
-function A9n() {
+function AwsAuthStatusBox() {
   let e = Z7a.c(10),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))

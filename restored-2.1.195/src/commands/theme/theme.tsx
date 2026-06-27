@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j6l
 // matched 2.1.88 source: src/commands/theme/theme.tsx
 // class=modified  jaccard=0.1544  score=0.202  fileCov=0.3958
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module j6l] deps: gKn, Xa, Ye, ps, j_e, je, sr, Mke, vKe, Bs, xjo, Ko, eE, Mg
@@ -11,7 +11,7 @@
   (Tz = R(rt(), 1)),
   (Nf = R(se(), 1)),
   (cqf = NRr + NRr));
-function fqf(e) {
+function ThemePickerCommand(e) {
   let t = G6l.c(25),
     { onDone: n } = e,
     [r, o] = na(),
@@ -133,6 +133,6 @@ var G6l,
   W6l,
   _Jt,
   call = async (e, t) =>
-    _Jt.jsx(fqf, {
+    _Jt.jsx(ThemePickerCommand, {
       onDone: e,
     });

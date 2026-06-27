@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module VAt
 // matched 2.1.88 source: src/skills/bundled/keybindings.ts
 // class=modified (alt of src/skills/bundled/keybindings.ts)  jaccard=0.0112  score=0.0539  fileCov=0.014
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VAt] deps: hY, ty, Lo, fn, At, Iv, ys, sYl
 ((qAt = require("fs/promises")), (Lse = require("path")));
-function fYl(e) {
+function inferContextFromAction(e) {
   let t = s4o.c(48),
     { agent: n, tools: r, onBack: o } = e,
     s;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wnc
 // matched 2.1.88 source: src/context.ts
 // class=modified (alt of src/context.ts)  jaccard=0.0173  score=0.0492  fileCov=0.0261
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
 // [unwrapped __esm module Wnc] deps: At
@@ -43,7 +43,7 @@ async function XXf(e) {
   }
   return {};
 }
-async function JXf(e) {
+async function getGitStatus(e) {
   let t = yr(),
     n = aj(t),
     r = await Gnc(n, e),

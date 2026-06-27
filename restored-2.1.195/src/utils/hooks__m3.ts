@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Tic
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0216  score=0.3457  fileCov=0.0225
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function* qjt(e, t, n, r, o, s, i = lp, a) {
+async function* processHookJSONOutput(e, t, n, r, o, s, i = lp, a) {
   let l = {
     ...Td(void 0, t),
     hook_event_name: "SessionStart",
@@ -53,7 +53,7 @@ async function* J8t(e, t, n, r = lp, o) {
     getAppState: o,
   });
 }
-async function oKe(e, t) {
+async function executeSessionEndHooks(e, t) {
   let { getAppState: n, setAppState: r, signal: o } = t || {},
     s = {
       ...Td(void 0),

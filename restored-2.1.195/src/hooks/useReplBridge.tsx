@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module G8o
 // matched 2.1.88 source: src/hooks/useReplBridge.tsx
 // class=modified  jaccard=0.2778  score=0.3759  fileCov=0.5156
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module G8o] deps: Hp, Xr, ft, dn, je, fn, wQ
 ((Lgc = require("crypto")), (Dur = require("fs/promises")), (yen = require("path")));
@@ -27,7 +27,7 @@ function Pum(e, t) {
     displayName: xu(r),
   };
 }
-function Ogc(e, t, n, r, o, s, i, a) {
+function useReplBridge(e, t, n, r, o, s, i, a) {
   let l = ks(),
     c = bE.useRef(null),
     u = bE.useRef(void 0),

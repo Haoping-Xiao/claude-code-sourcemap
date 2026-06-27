@@ -8,7 +8,7 @@
 function getBuiltinCommands() {
   return qQt();
 }
-async function mZf(e) {
+async function getSkills(e) {
   let t = null;
   try {
     let [n, r] = await Promise.all([
@@ -168,7 +168,7 @@ function yZf(e, t, n) {
 }
 function clearCommandMemoizationCaches() {
   (olr.cache?.clear?.(),
-    getSkillToolCommands.cache?.clear?.(),
+    aC.cache?.clear?.(),
     getSlashCommandToolSkills.cache?.clear?.(),
     gZf?.(),
     Promise.resolve()
@@ -255,7 +255,7 @@ function isSkillExcludedFromModel(e) {
 function isSkillOff(e) {
   return getSkillOverride(e) === "off";
 }
-function isSkillToolCommand(e) {
+function getSkillToolCommands(e) {
   return (
     e.type === "prompt" &&
     !e.disableModelInvocation &&
@@ -427,7 +427,7 @@ var K1e,
   olr,
   _Zf,
   $Wo = null,
-  getSkillToolCommands,
+  aC,
   getSlashCommandToolSkills,
   REMOTE_SAFE_COMMANDS,
   BRIDGE_SAFE_COMMANDS,

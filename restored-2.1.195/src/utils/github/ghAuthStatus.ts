@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Lnc
 // matched 2.1.88 source: src/utils/github/ghAuthStatus.ts
 // class=modified  jaccard=0.3744  score=0.485  fileCov=0.6213
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lnc] deps: HU
 ((IXf = {
@@ -15,7 +15,7 @@
   load: () => Promise.resolve().then(() => (knc(), Inc)),
 }),
   (xXf = IXf));
-async function aar() {
+async function getGhAuthStatus() {
   if (!(await Gf("gh"))) return "not_installed";
   try {
     let { exitCode: t } = await pv("gh", ["auth", "token"], {

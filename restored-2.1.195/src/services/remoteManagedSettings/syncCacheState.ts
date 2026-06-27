@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kvs
 // matched 2.1.88 source: src/services/remoteManagedSettings/syncCacheState.ts
 // class=modified  jaccard=0.1047  score=1  fileCov=0.1047
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kvs] deps: Evs, IRr
 ((uOu = kfn(function (e, t) {
@@ -28,7 +28,7 @@ function Ihe() {
   return;
 }
 function Lfn() {
-  return Ihe() ?? Rvs.join(tr(), dOu);
+  return Ihe() ?? Rvs.join(tr(), SETTINGS_FILENAME);
 }
 function pOu() {
   try {
@@ -48,7 +48,7 @@ function xhe() {
   return null;
 }
 var Rvs,
-  dOu = "remote-settings.json",
+  SETTINGS_FILENAME = "remote-settings.json",
   $Rt = null,
   xRr,
   kRr = false;

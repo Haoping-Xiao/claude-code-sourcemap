@@ -20,7 +20,7 @@ function nkm() {
 function rkm() {
   Isn(void 0);
 }
-async function initializeSessionTeam(e) {
+async function handleSpawnInProcess(e) {
   let t = e?.existingTeamName || nkm(),
     n = t ?? sessionTeamName(Rt()),
     r = pte(Hd, n),

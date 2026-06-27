@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module ayc
 // matched 2.1.88 source: src/utils/suggestions/shellHistoryCompletion.ts
 // class=modified  jaccard=0.3203  score=0.6162  fileCov=0.4001
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ayc] deps: ior, oyc, Zf, Un, Ire, Ryt, wr, e$e, M8e
 syc = /[:_-]/g;
 spm = new Set(["add-dir", "resume", "plugin", "plugins", "marketplace"]);
-async function mpm() {
+async function getShellHistoryCommands() {
   let e = Date.now();
   if (m7e && e - lyc < fpm) return m7e;
   let t = [],
@@ -34,7 +34,7 @@ function cyc(e) {
 async function uyc(e) {
   if (!e || e.length < 2) return null;
   if (!e.trim()) return null;
-  let n = await mpm();
+  let n = await getShellHistoryCommands();
   for (let r of n)
     if (r.startsWith(e) && r !== e)
       return {

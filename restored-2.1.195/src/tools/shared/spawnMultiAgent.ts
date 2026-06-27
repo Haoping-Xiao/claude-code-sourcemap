@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L0o
 // matched 2.1.88 source: src/tools/shared/spawnMultiAgent.ts
 // class=modified  jaccard=0.391  score=0.6328  fileCov=0.5057
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function L7n(e) {
   let t = Dt().teammateDefaultModel;
@@ -36,7 +36,7 @@ function D0o(e) {
 async function Iff(e) {
   return (await $n(M6, ["has-session", "-t", e])).code === 0;
 }
-async function xff(e) {
+async function ensureSession(e) {
   if (!(await Iff(e))) {
     let n = await $n(M6, ["new-session", "-d", "-s", e]);
     if (n.code !== 0)
@@ -50,7 +50,7 @@ function Phl() {
   if (process.env[sht]) return process.env[sht];
   return dm() ? process.execPath : process.argv[1];
 }
-function Mhl(e) {
+function buildInheritedCliFlags(e) {
   let t = [],
     { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = e || {};
   if (n);
@@ -160,7 +160,7 @@ function kff(e, t) {
   while (r.has(`${n}-${o}`.toLowerCase())) o++;
   return `${n}-${o}`;
 }
-async function Rff(e, t) {
+async function handleSpawnSplitPane(e, t) {
   let { setAppState: n, getAppState: r } = t,
     { name: o, prompt: s, agent_type: i, cwd: a, plan_mode_required: l } = e,
     c = P0o(e.model, r().mainLoopModel);
@@ -227,7 +227,7 @@ async function Rff(e, t) {
         ]
           .filter(Boolean)
           .join(" "),
-        x = Mhl({
+        x = buildInheritedCliFlags({
           planModeRequired: l,
           permissionMode: u.toolPermissionContext.mode,
           effortValue: u.effortValue,
@@ -273,7 +273,7 @@ async function Rff(e, t) {
             },
           },
         })),
-        $hl(t.taskRegistry, {
+        registerOutOfProcessTeammateTask(t.taskRegistry, {
           teammateId: m,
           sanitizedName: f,
           teamName: d,
@@ -306,7 +306,7 @@ async function Rff(e, t) {
     },
   );
 }
-async function Lff(e, t) {
+async function handleSpawnSeparateWindow(e, t) {
   let { setAppState: n, getAppState: r } = t,
     { name: o, prompt: s, agent_type: i, cwd: a, plan_mode_required: l } = e,
     c = P0o(e.model, r().mainLoopModel);
@@ -338,7 +338,7 @@ async function Lff(e, t) {
     t.teammateColors,
     async ({ sanitizedName: f, teammateId: m, teammateColor: g }, h, y) => {
       let b = `teammate-${k8n(f)}`;
-      await xff(P6);
+      await ensureSession(P6);
       let _ = await $n(M6, ["new-window", "-t", P6, "-n", b, "-P", "-F", "#{pane_id}", "--", KPe]);
       if (_.code !== 0)
         throw (
@@ -363,7 +363,7 @@ async function Lff(e, t) {
         ]
           .filter(Boolean)
           .join(" "),
-        C = Mhl({
+        C = buildInheritedCliFlags({
           planModeRequired: l,
           permissionMode: u.toolPermissionContext.mode,
           effortValue: u.effortValue,
@@ -416,7 +416,7 @@ async function Lff(e, t) {
             },
           },
         })),
-        $hl(t.taskRegistry, {
+        registerOutOfProcessTeammateTask(t.taskRegistry, {
           teammateId: m,
           sanitizedName: f,
           teamName: d,
@@ -449,7 +449,7 @@ async function Lff(e, t) {
     },
   );
 }
-function $hl(
+function registerOutOfProcessTeammateTask(
   e,
   {
     teammateId: t,
@@ -502,7 +502,7 @@ function $hl(
       },
     ));
 }
-async function Lhl(e, t) {
+async function handleSpawnInProcess(e, t) {
   let { setAppState: n, getAppState: r } = t,
     { name: o, prompt: s, agent_type: i, plan_mode_required: a } = e,
     l = P0o(e.model, r().mainLoopModel);
@@ -637,10 +637,10 @@ async function Lhl(e, t) {
     },
   );
 }
-async function Dff(e, t, n) {
+async function handleSpawn(e, t, n) {
   if (e.prompt && kF(e.prompt))
     throw (Le("subagent_launch", "subagent_teammate_protocol_frame_prompt"), Error(I9t));
-  if (U6e()) return Lhl(e, t);
+  if (U6e()) return handleSpawnInProcess(e, t);
   try {
     await A$e();
   } catch (o) {
@@ -649,11 +649,11 @@ async function Dff(e, t, n) {
       T(`[handleSpawn] No pane backend available, falling back to in-process: ${be(o)}`),
       k0o(),
       Pff(n),
-      Lhl(e, t)
+      handleSpawnInProcess(e, t)
     );
   }
-  if (e.use_splitpane !== !1) return Rff(e, t);
-  return Lff(e, t);
+  if (e.use_splitpane !== !1) return handleSpawnSplitPane(e, t);
+  return handleSpawnSeparateWindow(e, t);
 }
 function Pff(e) {
   if (Dhl) return;
@@ -672,6 +672,6 @@ function Pff(e) {
   });
 }
 async function Ohl(e, t, n) {
-  return Dff(e, t, n);
+  return handleSpawn(e, t, n);
 }
 var Dhl = !1;

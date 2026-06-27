@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZCo
 // matched 2.1.88 source: src/components/AgentProgressLine.tsx
 // class=modified (alt of src/components/AgentProgressLine.tsx)  jaccard=0.0547  score=0.1009  fileCov=0.1068
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZCo] deps: Ye, co
 ((Hil = R(lt(), 1)), (P8t = R(se(), 1)));
@@ -28,7 +28,7 @@ function Vof(e) {
     cwdResetWarning: n,
   };
 }
-function l6e(e) {
+function AgentProgressLine(e) {
   let t = vil.c(34),
     { content: n, verbose: r, timeoutMs: o } = e,
     {

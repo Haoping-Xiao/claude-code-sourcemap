@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module lEc
 // matched 2.1.88 source: src/hooks/useBackgroundTaskNavigation.ts
 // class=partial  jaccard=0.1965  score=0.6786  fileCov=0.2167
-// note: low-confidence suggestion: src/hooks/useBackgroundTaskNavigation.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/hooks/useBackgroundTaskNavigation.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lEc] deps: ft, kt, uo, gq, Cp, Ao, OTt, Hde, Ed, tC, CTt, kne, ps, rSe, fb, ydr, rme, S_, q6e, bm, tA, dMe
 GTe = R(rt(), 1);
-function cEc({
+function useBackgroundTaskNavigation({
   inputOwnsEscape: e,
   isTranscriptScreen: t
 }) {

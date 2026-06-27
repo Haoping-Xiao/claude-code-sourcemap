@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module mSe
 // matched 2.1.88 source: src/services/rateLimitMessages.ts
 // class=modified  jaccard=0.2126  score=0.3235  fileCov=0.3829
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function vaa(e) {
   return Jap.some((t) => e.startsWith(t));
 }
-function waa(e, t) {
+function getRateLimitMessage(e, t) {
   if (e.isUsingOverage) {
     if (e.overageStatus === "allowed_warning")
       return {
@@ -27,7 +27,7 @@ function waa(e, t) {
       o = r === "team" || r === "enterprise",
       s = Lc()?.hasExtraUsageEnabled === !0;
     if (o && s && !eH()) return null;
-    let i = elp(e);
+    let i = getEarlyWarningText(e);
     if (i)
       return {
         message: i,
@@ -37,12 +37,12 @@ function waa(e, t) {
   return null;
 }
 function Iio(e, t) {
-  let n = waa(e, t);
+  let n = getRateLimitMessage(e, t);
   if (n && n.severity === "error") return n.message;
   return null;
 }
 function xio(e, t) {
-  let n = waa(e, t);
+  let n = getRateLimitMessage(e, t);
   if (n && n.severity === "warning") return n.message;
   return null;
 }
@@ -66,14 +66,14 @@ function Qap(e, t) {
   if (!n && e.overageDisabledReason && Cio.has(e.overageDisabledReason)) {
     let u = Di();
     if (u === "team" || u === "enterprise")
-      return jX(
+      return formatLimitReachedText(
         "org's monthly spend limit",
         r
           ? " \xB7 run /usage-credits to raise it, or visit claude.ai/admin-settings/usage"
           : " \xB7 run /usage-credits to ask your admin for a higher limit",
         t,
       );
-    return jX(
+    return formatLimitReachedText(
       r ? "monthly spend limit" : "org's monthly spend limit",
       r
         ? " \xB7 raise it at claude.ai/settings/usage"
@@ -97,7 +97,7 @@ function Qap(e, t) {
     }
     if (e.overageDisabledReason && Cio.has(e.overageDisabledReason)) {
       let d = a ? ` \xB7 resets ${a}` : "";
-      return jX("org's monthly usage limit", d, t);
+      return formatLimitReachedText("org's monthly usage limit", d, t);
     }
     if (
       e.overageDisabledReason === "seat_tier_level_disabled" ||
@@ -113,25 +113,30 @@ function Qap(e, t) {
       return "Your usage allocation has been disabled by your admin \xB7 run /usage-credits to ask your admin for a higher limit";
     if (e.overageDisabledReason === "group_zero_credit_limit")
       return "Your group's usage limit is set to $0 \xB7 run /usage-credits to ask your admin for a higher limit";
-    if (n) return jX("usage limit", o, t);
-    return jX("limit", u, t);
+    if (n) return formatLimitReachedText("usage limit", o, t);
+    return formatLimitReachedText("limit", u, t);
   }
   if (c) return c;
-  if (n) return jX("usage limit", o, t);
-  return jX("usage limit", l, t);
+  if (n) return formatLimitReachedText("usage limit", o, t);
+  return formatLimitReachedText("usage limit", l, t);
 }
 function Zap(e, t, n) {
   if (e.rateLimitType === "seven_day_sonnet") {
     let r = Di();
-    return jX(r === "pro" || r === "enterprise" ? "weekly limit" : "Sonnet limit", t, n);
+    return formatLimitReachedText(
+      r === "pro" || r === "enterprise" ? "weekly limit" : "Sonnet limit",
+      t,
+      n,
+    );
   }
-  if (e.rateLimitType === "seven_day_opus") return jX("Opus limit", t, n);
-  if (e.rateLimitType === "seven_day_overage_included") return jX("Fable 5 limit", t, n);
-  if (e.rateLimitType === "seven_day") return jX("weekly limit", t, n);
-  if (e.rateLimitType === "five_hour") return jX("session limit", t, n);
+  if (e.rateLimitType === "seven_day_opus") return formatLimitReachedText("Opus limit", t, n);
+  if (e.rateLimitType === "seven_day_overage_included")
+    return formatLimitReachedText("Fable 5 limit", t, n);
+  if (e.rateLimitType === "seven_day") return formatLimitReachedText("weekly limit", t, n);
+  if (e.rateLimitType === "five_hour") return formatLimitReachedText("session limit", t, n);
   return null;
 }
-function elp(e) {
+function getEarlyWarningText(e) {
   let t = null;
   switch (e.rateLimitType) {
     case "seven_day":
@@ -158,7 +163,7 @@ function elp(e) {
   let n = e.utilization ? Math.floor(e.utilization * 100) : void 0,
     r = e.rateLimitType === "overage" && zB(),
     o = e.resetsAt && !r ? mee(e.resetsAt, !0) : void 0,
-    s = tlp(e.rateLimitType);
+    s = getWarningUpsellText(e.rateLimitType);
   if (n && o) {
     let a = `You've used ${n}% of your ${t} \xB7 resets ${o}`;
     return s ? `${a} \xB7 ${s}` : a;
@@ -175,7 +180,7 @@ function elp(e) {
   let i = `Approaching ${t}`;
   return s ? `${i} \xB7 ${s}` : i;
 }
-function tlp(e) {
+function getWarningUpsellText(e) {
   let t = Di(),
     n = Lc()?.hasExtraUsageEnabled === !0,
     r = eH();
@@ -225,7 +230,7 @@ function Iaa(e, t, n) {
     };
   return null;
 }
-function kio(e, t) {
+function getUsingOverageText(e, t) {
   let n = e.resetsAt ? mee(e.resetsAt, !0) : "",
     r = "";
   if (e.rateLimitType === "five_hour") r = "session limit";
@@ -248,7 +253,7 @@ function kio(e, t) {
   let i = n && !o ? ` \xB7 Your ${r} resets ${n}` : "";
   return `You're now using ${s}${i}`;
 }
-function jX(e, t, n) {
+function formatLimitReachedText(e, t, n) {
   return `You've hit your ${e}${t}`;
 }
 var Cio, Jap;

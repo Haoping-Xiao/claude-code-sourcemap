@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Eor
 // matched 2.1.88 source: src/components/LogoV2/ChannelsNotice.tsx
 // class=modified  jaccard=0.3457  score=0.512  fileCov=0.5156
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Eor] deps: Un, wr
 yAt = {
@@ -14,9 +14,9 @@ yAt = {
     "New here? Type /powerup for a 5-minute tour \u2014 modes, undo, " +
     "@-mentions, and how to teach Claude your rules.",
 };
-function P5l() {
+function ChannelsNotice() {
   let e = L5l.c(30),
-    [t] = D5l.useState(m4f),
+    [t] = D5l.useState(_temp),
     { channels: n, disabled: r, is3P: o, policyBlocked: s, list: i, unmatched: a } = t;
   if (n.length === 0) return null;
   let l = n.some(f4f),
@@ -156,9 +156,9 @@ function d4f(e) {
     w,
     {
       color: "warning",
-      children: [VXt(e.entry), " \xB7 ", e.why],
+      children: [formatEntry(e.entry), " \xB7 ", e.why],
     },
-    `${VXt(e.entry)}:${e.why}`,
+    `${formatEntry(e.entry)}:${e.why}`,
   );
 }
 function p4f(e) {
@@ -166,15 +166,15 @@ function p4f(e) {
     w,
     {
       color: "warning",
-      children: [VXt(e.entry), " \xB7 ", e.why],
+      children: [formatEntry(e.entry), " \xB7 ", e.why],
     },
-    `${VXt(e.entry)}:${e.why}`,
+    `${formatEntry(e.entry)}:${e.why}`,
   );
 }
 function f4f(e) {
   return !e.dev;
 }
-function m4f() {
+function _temp() {
   let e = MA();
   if (e.length === 0)
     return {
@@ -185,7 +185,7 @@ function m4f() {
       list: "",
       unmatched: [],
     };
-  let t = e.map(VXt).join(", "),
+  let t = e.map(formatEntry).join(", "),
     n = yn("policySettings"),
     r = $Yn(n?.allowedChannelPlugins);
   return {
@@ -194,13 +194,13 @@ function m4f() {
     is3P: fr() !== "firstParty",
     policyBlocked: q_t(n),
     list: t,
-    unmatched: g4f(e, r),
+    unmatched: findUnmatched(e, r),
   };
 }
-function VXt(e) {
+function formatEntry(e) {
   return e.kind === "plugin" ? `plugin:${e.name}@${e.marketplace}` : `server:${e.name}`;
 }
-function g4f(e, t) {
+function findUnmatched(e, t) {
   let n = ["enterprise", "user", "project", "local"],
     r = new Set();
   for (let l of n) for (let c of Object.keys(bT(l).servers)) r.add(c);

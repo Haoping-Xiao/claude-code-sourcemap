@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JN
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0104  score=0.0556  fileCov=0.0126
-// note: deminified; 18 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withStdinPositional, stripSessionIdFlag, stripResumeFlags, stripBgFlags, stopHandler, spawnBgSession, rmHandler, respawnHandler, readBgStdin, preSeedReplBgJob, parseResumeTarget, logsHandler, handleBgFlag, formatBgHints, flagsWithoutPositional, detailForStderr, bgVerbExtraArgsNote, attachHandler
 function KJf(e) {
@@ -79,7 +79,7 @@ async function spawnBgSession(e, t, n = "shell", r, o, s, i) {
       await Eme.mkdir(EWo.join(u, "tmp"), {
         recursive: true,
       }),
-      await YJf(e, n, r, o, s, {
+      await run(e, n, r, o, s, {
         sessionId: l,
         short: c,
         jobDir: u,
@@ -99,7 +99,7 @@ async function spawnBgSession(e, t, n = "shell", r, o, s, i) {
     };
   }
 }
-async function YJf(e, t, n, r, o, s) {
+async function run(e, t, n, r, o, s) {
   let { sessionId: i, short: a, jobDir: l, freshDir: c } = s,
     u = MHt(e),
     d = u >= 0 ? e.slice(0, u) : e,

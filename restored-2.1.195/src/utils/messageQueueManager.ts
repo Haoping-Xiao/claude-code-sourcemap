@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kut
 // matched 2.1.88 source: src/utils/messageQueueManager.ts
 // class=modified  jaccard=0.3915  score=0.6731  fileCov=0.4835
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Zca(e) {
   Qca = e;
@@ -11,7 +11,7 @@ function eua() {
   return Qca;
 }
 var Qca = null;
-function ASe(e, t) {
+function logOperation(e, t) {
   let n = Rt(),
     r = {
       type: "queue-operation",
@@ -30,7 +30,7 @@ function mup(e) {
 function XW(e) {
   return mup(e.mode) && !e.isMeta && Y1(e.origin);
 }
-function rua(e, t) {
+function NON_EDITABLE_MODES(e, t) {
   let n = typeof t === "boolean" ? t : false;
   if (e.origin?.kind === "channel") return true;
   if (e.origin?.kind === "task-notification") return true;
@@ -53,7 +53,7 @@ function tua(e) {
 `,
       );
 }
-function nua(e, t) {
+function extractImagesFromValue(e, t) {
   if (typeof e === "string") return [];
   let n = [],
     r = 0;
@@ -69,7 +69,7 @@ function nua(e, t) {
         r++);
   return n;
 }
-function gup() {
+function popAllEditable() {
   let e = [],
     t = Object.freeze([]),
     n = Mi(),
@@ -118,7 +118,7 @@ function gup() {
       timestamp: L.timestamp ?? new Date().toISOString(),
     }),
       o(),
-      ASe("enqueue", typeof L.value === "string" ? L.value : void 0));
+      logOperation("enqueue", typeof L.value === "string" ? L.value : void 0));
   }
   function b(L) {
     (e.push({
@@ -127,7 +127,7 @@ function gup() {
       timestamp: L.timestamp ?? new Date().toISOString(),
     }),
       o(),
-      ASe("enqueue", typeof L.value === "string" ? L.value : void 0));
+      logOperation("enqueue", typeof L.value === "string" ? L.value : void 0));
   }
   function _(L) {
     if (e.length === 0) return;
@@ -141,13 +141,13 @@ function gup() {
     }
     if (M === -1) return;
     let [B] = e.splice(M, 1);
-    return (o(), ASe("dequeue"), B);
+    return (o(), logOperation("dequeue"), B);
   }
   function S() {
     if (e.length === 0) return [];
     let L = [...e];
     ((e.length = 0), o());
-    for (let M of L) ASe("dequeue");
+    for (let M of L) logOperation("dequeue");
     return L;
   }
   function A(L) {
@@ -171,7 +171,7 @@ function gup() {
       else N.push(B);
     if (M.length === 0) return [];
     ((e.length = 0), e.push(...N), o());
-    for (let B of M) ASe("dequeue");
+    for (let B of M) logOperation("dequeue");
     return M;
   }
   function C(L) {
@@ -179,14 +179,14 @@ function gup() {
     let M = e.length;
     for (let N = e.length - 1; N >= 0; N--) if (L.includes(e[N])) e.splice(N, 1);
     if (e.length !== M) o();
-    for (let N of L) ASe("remove");
+    for (let N of L) logOperation("remove");
   }
   function x(L) {
     let M = [];
     for (let N = e.length - 1; N >= 0; N--) if (L(e[N])) M.unshift(e.splice(N, 1)[0]);
     if (M.length > 0) {
       o();
-      for (let N of M) ASe("remove");
+      for (let N of M) logOperation("remove");
     }
     return M;
   }
@@ -227,10 +227,10 @@ function gup() {
       if (z.pastedContents) {
         for (let Z of Object.values(z.pastedContents)) if (Z.type === "image") V.push(Z);
       }
-      let K = nua(z.value, Y);
+      let K = extractImagesFromValue(z.value, Y);
       (V.push(...K), (Y += K.length));
     }
-    for (let z of N) ASe("popAll", typeof z.value === "string" ? z.value : void 0);
+    for (let z of N) logOperation("popAll", typeof z.value === "string" ? z.value : void 0);
     return (
       (e.length = 0),
       e.push(...B),
@@ -253,8 +253,8 @@ function gup() {
     if ($.pastedContents) {
       for (let K of Object.values($.pastedContents)) if (K.type === "image") Y.push(K);
     }
-    (Y.push(...nua($.value, Date.now())),
-      ASe("popOne", typeof $.value === "string" ? $.value : void 0));
+    (Y.push(...extractImagesFromValue($.value, Date.now())),
+      logOperation("popOne", typeof $.value === "string" ? $.value : void 0));
     let z = e.indexOf($);
     if (z !== -1) (e.splice(z, 1), o());
     return {

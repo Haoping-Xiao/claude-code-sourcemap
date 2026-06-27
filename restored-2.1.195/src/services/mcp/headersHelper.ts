@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xka
 // matched 2.1.88 source: src/services/mcp/headersHelper.ts
 // class=modified  jaccard=0.3122  score=0.5365  fileCov=0.4275
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xka] deps: AW, Ye, xLe, Rd, Jt
 ((ypo = R(se(), 1)),
@@ -43,7 +43,7 @@ var _po = null,
 function Jwp(e) {
   return e.scope === "project" || e.scope === "local";
 }
-async function Qwp(e, t) {
+async function getMcpHeadersFromHelper(e, t) {
   if (!t.headersHelper) return null;
   if ("scope" in t && Jwp(t) && !Ir()) {
     if (!ad()) {
@@ -139,7 +139,7 @@ async function TFn(e, t) {
   }
   if (r.length > 0)
     sn(e, `Header values reference unset environment variables: ${Uo(r).join(", ")}`);
-  let o = (await Qwp(e, t)) || {};
+  let o = (await getMcpHeadersFromHelper(e, t)) || {};
   return {
     ...n,
     ...o,

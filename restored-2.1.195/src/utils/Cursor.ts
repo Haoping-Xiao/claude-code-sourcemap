@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zj
 // matched 2.1.88 source: src/utils/Cursor.ts
 // class=modified  jaccard=0.4427  score=0.8785  fileCov=0.4715
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zj] deps: ft, dn, db, fd, je, fn, At, ys, vn, iZr, Jt, Mp
 lZr = require("path");
@@ -19,7 +19,7 @@ class Ul {
     this.offset = Math.max(0, Math.min(this.text.length, t));
   }
   static fromText(e, t, n = 0, r = 0) {
-    return new Ul(new t6i(e, t - 1), n, r);
+    return new Ul(new MeasuredText(e, t - 1), n, r);
   }
   getViewportStartLine(e) {
     if (e === void 0 || e <= 0) return 0;
@@ -647,7 +647,7 @@ class ZDn {
     return this.text.length + (this.endsWithNewline ? 1 : 0);
   }
 }
-class t6i {
+class MeasuredText {
   columns;
   _wrappedLines;
   text;

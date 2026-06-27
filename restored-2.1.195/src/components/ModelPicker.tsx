@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module m1o
 // matched 2.1.88 source: src/components/ModelPicker.tsx
 // class=modified  jaccard=0.172  score=0.3117  fileCov=0.2772
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function hKe(e) {
+function ModelPicker(e) {
   let t = h1o.c(102),
     {
       initial: n,
@@ -18,7 +18,7 @@ function hKe(e) {
       skipSettingsWrite: u,
     } = e,
     d = Ho(),
-    p = n === null ? C7t : n,
+    p = n === null ? NO_PREFERENCE : n,
     [f, m] = $Oe.useState(p),
     g = Ht(XRf),
     [h] = na(),
@@ -62,7 +62,7 @@ function hKe(e) {
     let Ln;
     if (t[11] !== h)
       ((Ln = (Hn) => {
-        let kr = Hn.value === null ? C7t : Hn.value,
+        let kr = Hn.value === null ? NO_PREFERENCE : Hn.value,
           Mr = dtr(kr),
           fe = Mr ? RMl(Mr) : void 0,
           Re = (
@@ -247,7 +247,7 @@ function hKe(e) {
     }
     let Hn = dtr(Ln),
       kr = y && Hn && Kw(Hn) && v !== "ultracode" ? v : void 0;
-    if (Ln === C7t) {
+    if (Ln === NO_PREFERENCE) {
       o(null, kr);
       return;
     }
@@ -303,7 +303,7 @@ function hKe(e) {
   let Ke;
   if (t[65] !== Ze || t[66] !== s)
     ((Ke = (Ln) => {
-      if (s) s(Ln === C7t ? null : Ln);
+      if (s) s(Ln === NO_PREFERENCE ? null : Ln);
       Ze(Ln);
     }),
       (t[65] = Ze),
@@ -556,7 +556,7 @@ function XRf(e) {
 }
 function dtr(e) {
   if (!e) return;
-  return e === C7t ? Ey() : zo(e);
+  return e === NO_PREFERENCE ? Ey() : zo(e);
 }
 function OMl(e) {
   let t = h1o.c(5),
@@ -594,4 +594,4 @@ function g1o(e) {
 var h1o,
   $Oe,
   Xg,
-  C7t = "__NO_PREFERENCE__";
+  NO_PREFERENCE = "__NO_PREFERENCE__";

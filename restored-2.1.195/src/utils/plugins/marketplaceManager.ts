@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module E$o
 // matched 2.1.88 source: src/utils/plugins/marketplaceManager.ts
 // class=modified  jaccard=0.5438  score=0.7447  fileCov=0.6684
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 29 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function oer() {
+function getKnownMarketplacesFile() {
   return $d.join(kI(), "known_marketplaces.json");
 }
-function mOe() {
+function getMarketplacesCacheDir() {
   return $d.join(kI(), "marketplaces");
 }
 function gOe() {
@@ -53,7 +53,7 @@ function ZIf(e) {
     return "an --add-dir directory's settings";
   return null;
 }
-function exf(e) {
+function getMarketplaceDeclaringSource(e) {
   let t = ["localSettings", "projectSettings", "userSettings"];
   for (let n of t) if (yn(n)?.extraKnownMarketplaces?.[e]) return n;
   return null;
@@ -67,9 +67,9 @@ function RYt(e, t, n = "userSettings") {
       extraKnownMarketplaces: o,
     }));
 }
-async function om() {
+async function loadKnownMarketplacesConfig() {
   let e = qt(),
-    t = oer();
+    t = getKnownMarketplacesFile();
   try {
     let n = await e.readFile(t, {
         encoding: "utf-8",
@@ -100,27 +100,27 @@ async function om() {
 }
 async function wP() {
   try {
-    return await om();
+    return await loadKnownMarketplacesConfig();
   } catch {
     return {};
   }
 }
-async function sse(e) {
+async function saveKnownMarketplacesConfig(e) {
   let t = Pet().safeParse(e),
-    n = oer();
+    n = getKnownMarketplacesFile();
   if (!t.success) throw new _B(`Invalid marketplace config: ${t.error.message}`, n, e);
   let r = qt(),
     o = $d.join(n, "..");
   (await r.mkdir(o), oj(n, De(t.data, null, 2)));
 }
-async function ser() {
+async function registerSeedMarketplaces() {
   let e = kue();
   if (e.length === 0) return !1;
-  let t = await om(),
+  let t = await loadKnownMarketplacesConfig(),
     n = new Set(),
     r = 0;
   for (let o of e) {
-    let s = await txf(o);
+    let s = await readSeedKnownMarketplaces(o);
     if (!s) continue;
     for (let [i, a] of Object.entries(s)) {
       if (n.has(i)) continue;
@@ -142,10 +142,15 @@ async function ser() {
       ((t[i] = c), r++);
     }
   }
-  if (r > 0) return (await sse(t), T(`Synced ${r} marketplace(s) from seed dir(s)`), !0);
+  if (r > 0)
+    return (
+      await saveKnownMarketplacesConfig(t),
+      T(`Synced ${r} marketplace(s) from seed dir(s)`),
+      !0
+    );
   return !1;
 }
-async function txf(e) {
+async function readSeedKnownMarketplaces(e) {
   let t = $d.join(e, "known_marketplaces.json");
   try {
     let n = await qt().readFile(t, {
@@ -173,7 +178,7 @@ async function nxf(e, t) {
     r = $d.join(e, "marketplaces", `${t}.json`);
   for (let o of [n, r])
     try {
-      return (await kYt(o), o);
+      return (await readCachedMarketplace(o), o);
     } catch {}
   return null;
 }
@@ -194,7 +199,7 @@ async function hRl(e, t) {
     stdin: "ignore",
   });
 }
-async function oxf(e, t, n) {
+async function gitPull(e, t, n) {
   T(`git pull: cwd=${e} ref=${t ?? "default"}`);
   let r = {
       ...R8(),
@@ -215,22 +220,22 @@ async function oxf(e, t, n) {
       stdin: "ignore",
       env: r,
     });
-    if (i.code !== 0) return ner(i);
+    if (i.code !== 0) return enhanceGitPullErrorMessages(i);
     let a = await Gr(go(), [...o, "checkout", t], {
       cwd: e,
       timeout: hHe(),
       stdin: "ignore",
       env: r,
     });
-    if (a.code !== 0) return ner(a);
+    if (a.code !== 0) return enhanceGitPullErrorMessages(a);
     let l = await Gr(go(), [...o, "pull", "origin", t], {
       cwd: e,
       timeout: hHe(),
       stdin: "ignore",
       env: r,
     });
-    if (l.code !== 0) return ner(l);
-    return (await fRl(e, o, r, n?.sparsePaths), l);
+    if (l.code !== 0) return enhanceGitPullErrorMessages(l);
+    return (await gitSubmoduleUpdate(e, o, r, n?.sparsePaths), l);
   }
   let s = await Gr(go(), [...o, "pull", "origin", "HEAD"], {
     cwd: e,
@@ -238,10 +243,10 @@ async function oxf(e, t, n) {
     stdin: "ignore",
     env: r,
   });
-  if (s.code !== 0) return ner(s);
-  return (await fRl(e, o, r, n?.sparsePaths), s);
+  if (s.code !== 0) return enhanceGitPullErrorMessages(s);
+  return (await gitSubmoduleUpdate(e, o, r, n?.sparsePaths), s);
 }
-async function fRl(e, t, n, r) {
+async function gitSubmoduleUpdate(e, t, n, r) {
   if (r && r.length > 0) return;
   if (
     !(await qt()
@@ -277,7 +282,7 @@ async function fRl(e, t, n, r) {
       level: "warn",
     });
 }
-function ner(e) {
+function enhanceGitPullErrorMessages(e) {
   if (e.code === 0) return e;
   if (e.error?.includes("timed out")) {
     let t = Math.round(hHe() / 1000);
@@ -322,7 +327,7 @@ Original error: ${e.stderr}`,
     };
   return e;
 }
-async function yRl() {
+async function isGitHubSshLikelyConfigured() {
   try {
     let e = await $n(
         "ssh",
@@ -354,7 +359,7 @@ async function yRl() {
     );
   }
 }
-function sxf(e) {
+function isAuthenticationError(e) {
   return (
     e.includes("Authentication failed") ||
     e.includes("could not read Username") ||
@@ -367,7 +372,7 @@ function mRl(e) {
   if (e.includes("://")) return null;
   return e.match(/^[^@]+@([^:]+):/)?.[1] ?? null;
 }
-async function ixf(e, t, n, r, o) {
+async function gitClone(e, t, n, r, o) {
   let s = r && r.length > 0,
     i = {
       ...R8(),
@@ -476,7 +481,7 @@ Original error: ${c.stderr}`,
 
 Original error: ${c.stderr}`,
       };
-    if (sxf(c.stderr))
+    if (isAuthenticationError(c.stderr))
       return {
         ...c,
         stderr: `HTTPS authentication failed. Please ensure your credential helper is configured (e.g., gh auth login).
@@ -504,7 +509,7 @@ Original error: ${c.stderr}`,
     };
   return c;
 }
-function Cq(e, t) {
+function safeCallProgress(e, t) {
   if (!e) return;
   try {
     e(t);
@@ -514,7 +519,7 @@ function Cq(e, t) {
     });
   }
 }
-async function axf(e, t, n) {
+async function reconcileSparseCheckout(e, t, n) {
   let r = {
     ...R8(),
     ...(n && {
@@ -544,14 +549,14 @@ async function axf(e, t, n) {
     stderr: "",
   };
 }
-async function Tfe(e, t, n, r, o, s) {
+async function cacheMarketplaceFromGit(e, t, n, r, o, s) {
   let i = qt(),
     a = Math.round(hHe() / 1000);
-  Cq(o, `Refreshing marketplace cache (timeout: ${a}s)\u2026`);
-  let l = await axf(t, r, s?.skipLfs);
+  safeCallProgress(o, `Refreshing marketplace cache (timeout: ${a}s)\u2026`);
+  let l = await reconcileSparseCheckout(t, r, s?.skipLfs);
   if (l.code === 0) {
     let m = performance.now(),
-      g = await oxf(t, n, {
+      g = await gitPull(t, n, {
         disableCredentialHelper: s?.disableCredentialHelper,
         sparsePaths: r,
         skipLfs: s?.skipLfs,
@@ -626,7 +631,7 @@ Technical details: ${be(m)}`);
       T(`Found stale marketplace directory at ${t}, moving aside to allow re-clone`, {
         level: "warn",
       }),
-      Cq(o, "Found stale directory, cleaning up and re-cloning\u2026"));
+      safeCallProgress(o, "Found stale directory, cleaning up and re-cloning\u2026"));
   } catch (m) {
     if (!wn(m))
       throw Error(`Failed to clean up existing marketplace directory. Please manually delete the directory at ${t} and try again.
@@ -634,9 +639,9 @@ Technical details: ${be(m)}`);
 Technical details: ${be(m)}`);
   }
   let d = n ? ` (ref: ${n})` : "";
-  Cq(o, `Cloning repository (timeout: ${a}s): ${Kze(e)}${d}`);
+  safeCallProgress(o, `Cloning repository (timeout: ${a}s): ${Kze(e)}${d}`);
   let p = performance.now(),
-    f = await ixf(e, t, n, r, s?.skipLfs);
+    f = await gitClone(e, t, n, r, s?.skipLfs);
   if (
     (YD(
       "marketplace_clone",
@@ -669,9 +674,9 @@ Technical details: ${be(m)}`);
         force: !0,
       });
     } catch {}
-  Cq(o, "Clone complete, validating marketplace\u2026");
+  safeCallProgress(o, "Clone complete, validating marketplace\u2026");
 }
-function lxf(e) {
+function redactHeaders(e) {
   return xw(e, () => "***REDACTED***");
 }
 function Kze(e) {
@@ -685,15 +690,15 @@ function Kze(e) {
   } catch {}
   return e;
 }
-async function _Rl(e, t, n, r) {
+async function cacheMarketplaceFromUrl(e, t, n, r) {
   let o = qt(),
     s = Kze(e);
   if (
-    (Cq(r, `Downloading marketplace from ${s}`),
+    (safeCallProgress(r, `Downloading marketplace from ${s}`),
     T(`Downloading marketplace from URL: ${s}`),
     n && Object.keys(n).length > 0)
   )
-    T(`Using custom headers: ${De(lxf(n))}`);
+    T(`Using custom headers: ${De(redactHeaders(n))}`);
   let i = {
       ...n,
       "User-Agent": "Claude-Code-Plugin-Manager",
@@ -722,7 +727,7 @@ Technical details: ${d.message}`);
     }
     throw Error(`Failed to download marketplace from ${s}: ${be(d)}`);
   }
-  Cq(r, "Validating marketplace data");
+  safeCallProgress(r, "Validating marketplace data");
   let c = bY()
     .extend({
       plugins: H.array(H.unknown()),
@@ -738,11 +743,11 @@ Technical details: ${d.message}`);
       )
     );
   (YD("marketplace_url", e, "success", performance.now() - l),
-    Cq(r, "Saving marketplace to cache"));
+    safeCallProgress(r, "Saving marketplace to cache"));
   let u = $d.join(t, "..");
   (await o.mkdir(u), oj(t, De(a.data, null, 2)));
 }
-function cxf(e) {
+function getCachePathForSource(e) {
   let n = (
     e.source === "github"
       ? e.repo.replaceAll("/", "-")
@@ -756,7 +761,7 @@ function cxf(e) {
   ).replace(/[^a-zA-Z0-9\-_]/g, "-");
   return n === "" ? "temp_" + Date.now() : n;
 }
-async function A$o(e, t) {
+async function parseFileWithSchema(e, t) {
   let r = await qt().readFile(e, {
       encoding: "utf-8",
     }),
@@ -775,38 +780,41 @@ async function A$o(e, t) {
     );
   return s.data;
 }
-async function H$o(e, t) {
+async function loadAndCacheMarketplace(e, t) {
   if (!_H(e)) throw Error(`Marketplace source '${mHe(e)}' is blocked by enterprise policy.`);
   let n = qt(),
-    r = mOe();
+    r = getMarketplacesCacheDir();
   await n.mkdir(r);
   let o,
     s,
     i = !1,
-    a = cxf(e);
+    a = getCachePathForSource(e);
   try {
     switch (e.source) {
       case "url": {
-        ((o = $d.join(r, `${a}.json`)), (i = !0), await _Rl(e.url, o, e.headers, t), (s = o));
+        ((o = $d.join(r, `${a}.json`)),
+          (i = !0),
+          await cacheMarketplaceFromUrl(e.url, o, e.headers, t),
+          (s = o));
         break;
       }
       case "github": {
         let f = `git@${JH}:${e.repo}.git`,
           m = `https://github.com/${e.repo}.git`;
         if (((o = $d.join(r, a)), (i = !0), eRe())) {
-          (Cq(t, `Cloning via HTTPS: ${m}`),
+          (safeCallProgress(t, `Cloning via HTTPS: ${m}`),
             await hRl(o, m),
-            await Tfe(m, o, e.ref, e.sparsePaths, t, {
+            await cacheMarketplaceFromGit(m, o, e.ref, e.sparsePaths, t, {
               skipLfs: e.skipLfs,
             }),
             (s = $d.join(o, e.path || ".claude-plugin/marketplace.json")));
           break;
         }
         let g = null;
-        if (await yRl()) {
-          Cq(t, `Cloning via SSH: ${f}`);
+        if (await isGitHubSshLikelyConfigured()) {
+          safeCallProgress(t, `Cloning via SSH: ${f}`);
           try {
-            await Tfe(f, o, e.ref, e.sparsePaths, t, {
+            await cacheMarketplaceFromGit(f, o, e.ref, e.sparsePaths, t, {
               skipLfs: e.skipLfs,
             });
           } catch (y) {
@@ -814,7 +822,7 @@ async function H$o(e, t) {
               T(`SSH clone failed for ${e.repo}: ${g.message}`, {
                 level: "error",
               }),
-              Cq(t, `SSH clone failed, retrying with HTTPS: ${m}`),
+              safeCallProgress(t, `SSH clone failed, retrying with HTTPS: ${m}`),
               T(
                 `SSH clone failed for ${e.repo} despite SSH being configured, falling back to HTTPS`,
                 {
@@ -826,7 +834,7 @@ async function H$o(e, t) {
                 force: !0,
               }));
             try {
-              (await Tfe(m, o, e.ref, e.sparsePaths, t, {
+              (await cacheMarketplaceFromGit(m, o, e.ref, e.sparsePaths, t, {
                 skipLfs: e.skipLfs,
               }),
                 (g = null));
@@ -841,12 +849,12 @@ async function H$o(e, t) {
             }
           }
         } else {
-          (Cq(t, `SSH not configured, cloning via HTTPS: ${m}`),
+          (safeCallProgress(t, `SSH not configured, cloning via HTTPS: ${m}`),
             T(`SSH not configured for GitHub, using HTTPS for ${e.repo}`, {
               level: "info",
             }));
           try {
-            await Tfe(m, o, e.ref, e.sparsePaths, t, {
+            await cacheMarketplaceFromGit(m, o, e.ref, e.sparsePaths, t, {
               skipLfs: e.skipLfs,
             });
           } catch (y) {
@@ -854,7 +862,7 @@ async function H$o(e, t) {
               T(`HTTPS git clone failed for marketplace ${e.repo}: ${g.message}`, {
                 level: "error",
               }),
-              Cq(t, `HTTPS clone failed, retrying with SSH: ${f}`),
+              safeCallProgress(t, `HTTPS clone failed, retrying with SSH: ${f}`),
               T(`HTTPS clone failed for ${e.repo} (${g.message}), falling back to SSH`, {
                 level: "info",
               }),
@@ -863,7 +871,7 @@ async function H$o(e, t) {
                 force: !0,
               }));
             try {
-              (await Tfe(f, o, e.ref, e.sparsePaths, t, {
+              (await cacheMarketplaceFromGit(f, o, e.ref, e.sparsePaths, t, {
                 skipLfs: e.skipLfs,
               }),
                 (g = null));
@@ -882,7 +890,7 @@ async function H$o(e, t) {
       case "git": {
         ((o = $d.join(r, a)),
           (i = !0),
-          await Tfe(e.url, o, e.ref, e.sparsePaths, t, {
+          await cacheMarketplaceFromGit(e.url, o, e.ref, e.sparsePaths, t, {
             skipLfs: e.skipLfs,
           }),
           (s = $d.join(o, e.path || ".claude-plugin/marketplace.json")));
@@ -927,7 +935,7 @@ async function H$o(e, t) {
     T(`Reading marketplace from ${s}`);
     let l;
     try {
-      l = await A$o(s, bY());
+      l = await parseFileWithSchema(s, bY());
     } catch (f) {
       if (wn(f)) throw Error(`Marketplace file not found at ${s}`);
       throw Error(`Failed to parse marketplace file at ${s}: ${be(f)}`);
@@ -988,7 +996,7 @@ Technical details: ${g}`);
     throw l;
   }
 }
-async function yOe(e, t) {
+async function addMarketplaceSource(e, t) {
   let n = e;
   if (s9(e) && !$d.isAbsolute(e.path))
     n = {
@@ -1012,7 +1020,7 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
   git@your-github-host.com:${n.repo}.git`;
     throw Error(p);
   }
-  let r = await om();
+  let r = await loadKnownMarketplacesConfig();
   for (let [c, u] of Object.entries(r))
     if (L_(u.source, n))
       return (
@@ -1023,10 +1031,10 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
           resolvedSource: n,
         }
       );
-  let { marketplace: o, cachePath: s } = await H$o(n, t),
+  let { marketplace: o, cachePath: s } = await loadAndCacheMarketplace(n, t),
     i = ZRr(o.name, n);
   if (i) throw Error(i);
-  let a = await om(),
+  let a = await loadKnownMarketplacesConfig(),
     l = a[o.name];
   if (l) {
     let c = hOe(l.installLocation);
@@ -1037,7 +1045,7 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
     if (
       (T(`Marketplace '${o.name}' exists with different source \u2014 overwriting`), !s9(l.source))
     ) {
-      let u = $d.resolve(mOe()),
+      let u = $d.resolve(getMarketplacesCacheDir()),
         d = $d.resolve(l.installLocation),
         p = $d.resolve(s);
       if (d === p);
@@ -1062,7 +1070,7 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
       installLocation: s,
       lastUpdated: new Date().toISOString(),
     }),
-    await sse(a),
+    await saveKnownMarketplacesConfig(a),
     T(`Added marketplace source: ${o.name}`),
     {
       name: o.name,
@@ -1071,8 +1079,8 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
     }
   );
 }
-async function OSt(e, t) {
-  let n = await om();
+async function removeMarketplaceSource(e, t) {
+  let n = await loadKnownMarketplacesConfig();
   if (!n[e]) throw Error(`Marketplace '${e}' not found`);
   let r = n[e],
     o = hOe(r.installLocation),
@@ -1097,9 +1105,9 @@ async function OSt(e, t) {
       Boolean(yn("policySettings")?.extraKnownMarketplaces?.[e]);
   }
   if (!i) {
-    (delete n[e], await sse(n));
+    (delete n[e], await saveKnownMarketplacesConfig(n));
     let u = qt(),
-      d = mOe(),
+      d = getMarketplacesCacheDir(),
       p = $d.join(d, e);
     (await u.rm(p, {
       recursive: !0,
@@ -1157,27 +1165,27 @@ async function OSt(e, t) {
   for (let u of c) (await Cdt(u), await Sct(u));
   (Slt(c), T(`Removed marketplace source: ${e}`));
 }
-async function kYt(e) {
+async function readCachedMarketplace(e) {
   let t = $d.join(e, ".claude-plugin", "marketplace.json");
   try {
-    return await A$o(t, bY());
+    return await parseFileWithSchema(t, bY());
   } catch (n) {
     if (n instanceof _B) throw n;
     let r = on(n);
     if (r !== "ENOENT" && r !== "ENOTDIR") throw n;
   }
-  return await A$o(e, bY());
+  return await parseFileWithSchema(e, bY());
 }
-async function Iq(e) {
+async function getMarketplaceCacheOnly(e) {
   let t = qt(),
-    n = oer();
+    n = getKnownMarketplacesFile();
   try {
     let r = await t.readFile(n, {
         encoding: "utf-8",
       }),
       s = Ft(r)[e];
     if (!s) return null;
-    return await kYt(s.installLocation);
+    return await readCachedMarketplace(s.installLocation);
   } catch (r) {
     if (wn(r)) return null;
     return (
@@ -1192,14 +1200,14 @@ async function T$o(e) {
   let { name: t, marketplace: n } = Qo(e);
   if (!t || !n) return null;
   let r = qt(),
-    o = oer();
+    o = getKnownMarketplacesFile();
   try {
     let s = await r.readFile(o, {
         encoding: "utf-8",
       }),
       a = Ft(s)[n];
     if (!a) return null;
-    let l = await Iq(n);
+    let l = await getMarketplaceCacheOnly(n);
     if (!l) return null;
     let c = l.plugins.find((u) => u.name === t);
     if (!c) return null;
@@ -1211,13 +1219,13 @@ async function T$o(e) {
     return null;
   }
 }
-async function EL(e) {
+async function getPluginById(e) {
   let t = await T$o(e);
   if (t) return t;
   let { name: n, marketplace: r } = Qo(e);
   if (!n || !r) return null;
   try {
-    let s = (await om())[r];
+    let s = (await loadKnownMarketplacesConfig())[r];
     if (!s) return null;
     let a = (await G$(r)).plugins.find((l) => l.name === n);
     if (!a) return null;
@@ -1234,8 +1242,8 @@ async function EL(e) {
     );
   }
 }
-async function bRl() {
-  let e = await om();
+async function refreshAllMarketplaces() {
+  let e = await loadKnownMarketplacesConfig();
   for (let [t, n] of Object.entries(e)) {
     if (hOe(n.installLocation)) {
       T(`Skipping seed-managed marketplace '${t}' in bulk refresh`);
@@ -1248,7 +1256,7 @@ async function bRl() {
     }
     let r = !1;
     if (t === xI) {
-      if ((await xYt(n.installLocation, mOe())) !== null) {
+      if ((await xYt(n.installLocation, getMarketplacesCacheDir())) !== null) {
         (xe("plugin_official_marketplace_fetch"), (e[t].lastUpdated = new Date().toISOString()));
         continue;
       }
@@ -1260,7 +1268,7 @@ async function bRl() {
       r = !0;
     }
     try {
-      let { cachePath: o } = await H$o(n.source);
+      let { cachePath: o } = await loadAndCacheMarketplace(n.source);
       if (((e[t].lastUpdated = new Date().toISOString()), (e[t].installLocation = o), r))
         It("plugin_official_marketplace_fetch", "gcs_failed_git_fallback");
     } catch (o) {
@@ -1270,7 +1278,7 @@ async function bRl() {
       });
     }
   }
-  await sse(e);
+  await saveKnownMarketplacesConfig(e);
 }
 function ise(e, t, n) {
   let r = `${e}:${n?.disableCredentialHelper ? 1 : 0}`,
@@ -1280,10 +1288,10 @@ function ise(e, t, n) {
     return o.promise;
   }
   let s = t ? [t] : [],
-    a = uxf(
+    a = refreshMarketplace(
       e,
       (l) => {
-        for (let c of s) Cq(c, l);
+        for (let c of s) safeCallProgress(c, l);
       },
       n,
     ).finally(() => rer.delete(r));
@@ -1295,8 +1303,8 @@ function ise(e, t, n) {
     a
   );
 }
-async function uxf(e, t, n) {
-  let r = await om(),
+async function refreshMarketplace(e, t, n) {
+  let r = await loadKnownMarketplacesConfig(),
     o = r[e];
   if (!o)
     throw Error(
@@ -1324,7 +1332,7 @@ async function uxf(e, t, n) {
         `Marketplace '${e}' is seed-managed (${l}) and its content is controlled by the seed image. To update: ask your admin to update the seed.`,
       );
     if (!s9(a)) {
-      let c = $d.resolve(mOe()),
+      let c = $d.resolve(getMarketplacesCacheDir()),
         u = $d.resolve(i);
       if (u !== c && !u.startsWith(c + $d.sep)) {
         let d = xy("plugin marketplace remove", e);
@@ -1334,13 +1342,13 @@ async function uxf(e, t, n) {
       }
     }
     if (e === xI) {
-      if ((await xYt(i, mOe())) !== null) {
+      if ((await xYt(i, getMarketplacesCacheDir())) !== null) {
         (xe("plugin_official_marketplace_fetch"),
           (r[e] = {
             ...o,
             lastUpdated: new Date().toISOString(),
           }),
-          await sse(r));
+          await saveKnownMarketplacesConfig(r));
         return;
       }
       if (!at("tengu_plugin_official_mkt_git_fallback", !0))
@@ -1361,13 +1369,14 @@ async function uxf(e, t, n) {
       if (a.source === "github") {
         let u = `git@${JH}:${a.repo}.git`,
           d = `https://github.com/${a.repo}.git`;
-        if (eRe()) (await hRl(i, d), await Tfe(d, i, a.ref, a.sparsePaths, t, c));
+        if (eRe())
+          (await hRl(i, d), await cacheMarketplaceFromGit(d, i, a.ref, a.sparsePaths, t, c));
         else {
-          let p = await yRl(),
+          let p = await isGitHubSshLikelyConfigured(),
             f = p ? u : d,
             m = p ? d : u;
           try {
-            await Tfe(f, i, a.ref, a.sparsePaths, t, c);
+            await cacheMarketplaceFromGit(f, i, a.ref, a.sparsePaths, t, c);
           } catch {
             (T(
               `Marketplace refresh failed with ${p ? "SSH" : "HTTPS"} for ${a.repo}, falling back to ${p ? "HTTPS" : "SSH"}`,
@@ -1375,12 +1384,12 @@ async function uxf(e, t, n) {
                 level: "info",
               },
             ),
-              await Tfe(m, i, a.ref, a.sparsePaths, t, c));
+              await cacheMarketplaceFromGit(m, i, a.ref, a.sparsePaths, t, c));
           }
         }
-      } else await Tfe(a.url, i, a.ref, a.sparsePaths, t, c);
+      } else await cacheMarketplaceFromGit(a.url, i, a.ref, a.sparsePaths, t, c);
       try {
-        await kYt(i);
+        await readCachedMarketplace(i);
       } catch {
         let u = a.source === "github" ? a.repo : Kze(a.url),
           d =
@@ -1402,10 +1411,11 @@ You can remove this marketplace with: ${p}`
 You can remove this marketplace from /plugin or by editing known_marketplaces.json.`),
         );
       }
-    } else if (a.source === "url") await _Rl(a.url, i, a.headers, t);
-    else if (s9(a)) (Cq(t, "Validating local marketplace"), await kYt(i));
+    } else if (a.source === "url") await cacheMarketplaceFromUrl(a.url, i, a.headers, t);
+    else if (s9(a))
+      (safeCallProgress(t, "Validating local marketplace"), await readCachedMarketplace(i));
     else throw Error("Unsupported marketplace source type for refresh");
-    if (((r[e].lastUpdated = new Date().toISOString()), await sse(r), s))
+    if (((r[e].lastUpdated = new Date().toISOString()), await saveKnownMarketplacesConfig(r), s))
       It("plugin_official_marketplace_fetch", "gcs_failed_git_fallback");
     T(`Successfully refreshed marketplace: ${e}`);
   } catch (i) {
@@ -1419,8 +1429,8 @@ You can remove this marketplace from /plugin or by editing known_marketplaces.js
     );
   }
 }
-async function SRl(e, t) {
-  let n = await om(),
+async function setMarketplaceAutoUpdate(e, t) {
+  let n = await loadKnownMarketplacesConfig(),
     r = n[e];
   if (!r)
     throw Error(
@@ -1441,8 +1451,8 @@ async function SRl(e, t) {
     ...r,
     autoUpdate: t,
   }),
-    await sse(n));
-  let i = exf(e);
+    await saveKnownMarketplacesConfig(n));
+  let i = getMarketplaceDeclaringSource(e);
   if (i) {
     let a = yn(i)?.extraKnownMarketplaces?.[e];
     if (a)
@@ -1464,7 +1474,7 @@ async function ERl(e) {
   if (e) n = e;
   else
     try {
-      n = await om();
+      n = await loadKnownMarketplacesConfig();
     } catch (o) {
       return (
         T(`syncDeclaredAutoUpdateToJson: failed to load known_marketplaces.json: ${be(o)}`, {
@@ -1486,7 +1496,7 @@ async function ERl(e) {
       (r = !0),
       T(`Synced autoUpdate=${s.autoUpdate} from settings for marketplace: ${o}`));
   }
-  if (r) await sse(n);
+  if (r) await saveKnownMarketplacesConfig(n);
   return r;
 }
 var gRl,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xec
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0212  score=0.0882  fileCov=0.0272
-// note: deminified; 13 identifiers renamed (exports/displayName/curated)
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tool, tagSession, startup, resolveSettings, renameSession, query, parseDirectConnectUrl, listSubagents, listSessions, importSessionToStore, getSubagentMessages, getSessionMessages, getSessionInfo, forkSession, foldSessionSummary, filterEscalatingDefaultMode, deleteSession, createSdkMcpServer, SYSTEM_PROMPT_DYNAMIC_BOUNDARY, InMemorySessionStore, HOOK_EVENTS, EXIT_REASONS, DirectConnectTransport, DirectConnectError, AbortError
 // [unwrapped __esm module xec] deps: ys, RCe, Sx, ICe
@@ -141,7 +141,7 @@ async function Nec(e, t, n, r, o = 60000) {
     throw (await $ir(a), l);
   }
 }
-function V3o(e, t, n, r) {
+function isLegacyProgressEntry(e, t, n, r) {
   let {
       systemPrompt: o,
       settings: s,
@@ -460,7 +460,7 @@ function query({ prompt: e, options: t }) {
         transport: i,
         abortController: a,
         processEnv: l,
-      } = V3o(
+      } = isLegacyProgressEntry(
         {
           ...t,
         },
@@ -501,7 +501,11 @@ function query({ prompt: e, options: t }) {
       s
     );
   }
-  let { queryInstance: n, transport: r, abortController: o } = V3o(t, typeof e === "string");
+  let {
+    queryInstance: n,
+    transport: r,
+    abortController: o,
+  } = isLegacyProgressEntry(t, typeof e === "string");
   return (z3o(n, r, e, o), n);
 }
 async function startup({ options: e, initializeTimeoutMs: t = 60000 } = {}) {
@@ -533,7 +537,7 @@ async function startup({ options: e, initializeTimeoutMs: t = 60000 } = {}) {
         if (d) return;
         ((d = true), u.close());
       },
-      a = V3o(
+      a = isLegacyProgressEntry(
         n && r && r !== e?.resume
           ? {
               ...e,
@@ -600,7 +604,7 @@ async function getSessionInfo(e, t) {
   return qZl(e, t);
 }
 async function renameSession(e, t, n) {
-  if (n?.sessionStore) return AYf(n.sessionStore, e, t, n.dir);
+  if (n?.sessionStore) return Project(n.sessionStore, e, t, n.dir);
   return zZl(e, t, n);
 }
 async function tagSession(e, t, n) {
@@ -878,7 +882,7 @@ async function EYf(e, t, n) {
   let o = Fec(r, bYf(r));
   return fbt(t, o) ?? void 0;
 }
-async function AYf(e, t, n, r) {
+async function Project(e, t, n, r) {
   if (!FS(t)) throw Error(`Invalid sessionId: ${t}`);
   if (!n.trim()) throw Error("title must be non-empty");
   let o = pZ(r);

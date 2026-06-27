@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module c_
 // matched 2.1.88 source: src/services/mcp/officialRegistry.ts
 // class=modified  jaccard=0.1093  score=0.1388  fileCov=0.34
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module c_] deps: Hp, Rc, oo, je, RE, Gx, Ls, qd, kM, Cv
 Os = {
@@ -98,7 +98,7 @@ async function M$d(e) {
   }
   return t;
 }
-async function dOi() {
+async function prefetchOfficialMcpUrls() {
   if (Vi()) return;
   if (zve()) return;
   let e = at("tengu_mcp_directory_bff", false),

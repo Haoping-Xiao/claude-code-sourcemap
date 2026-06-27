@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d8n
 // matched 2.1.88 source: src/utils/fileHistory.ts
 // class=modified  jaccard=0.5478  score=0.8312  fileCov=0.6164
-// note: deminified; 11 identifiers renamed (exports/displayName/curated)
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: reduceFileHistoryState, fileHistoryTrackEdit, fileHistoryRewind, fileHistoryRestoreStateFromLog, fileHistoryMakeSnapshot, fileHistoryHasAnyChanges, fileHistoryGetDiffStats, fileHistoryEnabled, fileHistoryCanRestore, copyFileHistoryForResume, checkOriginFileChanged
 // [unwrapped __esm module d8n] deps: Hp, Rc, je, Mm, fn, At, vn, kM, Cv, dn
@@ -13,7 +13,7 @@ function ZEe(e, t) {
 function iMe(e) {
   return;
 }
-function reduceFileHistoryState(e, t) {
+function fileHistoryMakeSnapshot(e, t) {
   switch (t.kind) {
     case "track":
       try {
@@ -140,7 +140,7 @@ async function fileHistoryTrackEdit(e, t, n, r) {
   }
   let a;
   try {
-    a = await WQa(n, 1);
+    a = await createBackup(n, 1);
   } catch (c) {
     (T(`FileHistory: failed to back up ${n}: ${c instanceof Error ? c.message : String(c)}`, {
       level: "error",
@@ -158,7 +158,7 @@ async function fileHistoryTrackEdit(e, t, n, r) {
     isAddingFile: l,
   });
 }
-async function fileHistoryMakeSnapshot(e, t, n) {
+async function Z9e(e, t, n) {
   if (!fileHistoryEnabled()) return;
   let r = e();
   if (!r) return;
@@ -198,7 +198,7 @@ async function fileHistoryMakeSnapshot(e, t, n) {
               o[i] = l;
               return;
             }
-            o[i] = await WQa(a, c);
+            o[i] = await createBackup(a, c);
           } catch (a) {
             (T(`FileHistory: Failed to back up ${i}: ${a}`, {
               level: "error",
@@ -229,7 +229,7 @@ async function fileHistoryRewind(e, t) {
     );
   try {
     T(`FileHistory: [Rewind] Rewinding to snapshot for ${t}`);
-    let o = await rQp(n, r);
+    let o = await applySnapshot(n, r);
     (T(`FileHistory: [Rewind] Finished rewinding to ${t}`),
       G("tengu_file_history_rewind_success", {
         trackedFilesCount: n.trackedFiles.size,
@@ -270,7 +270,7 @@ async function fileHistoryGetDiffStats(e, t) {
               }),
               null
             );
-          let d = await sQp(l, u === null ? void 0 : u);
+          let d = await computeDiffStatsForFile(l, u === null ? void 0 : u);
           if (d?.insertions || d?.deletions)
             return {
               filePath: l,
@@ -326,7 +326,7 @@ async function fileHistoryHasAnyChanges(e, t) {
     }
   return false;
 }
-async function rQp(e, t) {
+async function applySnapshot(e, t) {
   let n = [];
   for (let r of e.trackedFiles)
     try {
@@ -351,7 +351,7 @@ async function rQp(e, t) {
         continue;
       }
       if (await checkOriginFileChanged(o, i))
-        (await aQp(o, i), T(`FileHistory: [Rewind] Restored ${o} from ${i}`), n.push(o));
+        (await restoreBackup(o, i), T(`FileHistory: [Rewind] Restored ${o} from ${i}`), n.push(o));
     } catch (o) {
       (T(
         `FileHistory: [Rewind] Failed to restore ${r}: ${o instanceof Error ? o.message : String(o)}`,
@@ -366,7 +366,7 @@ async function rQp(e, t) {
   return n;
 }
 async function checkOriginFileChanged(e, t, n) {
-  let r = Q9e(t),
+  let r = resolveBackupPath(t),
     o = n ?? null;
   if (!o)
     try {
@@ -396,12 +396,12 @@ function oQp(e, t, n) {
   if (e.mtimeMs < t.mtimeMs) return false;
   return n();
 }
-async function sQp(e, t) {
+async function computeDiffStatsForFile(e, t) {
   let n = [],
     r = 0,
     o = 0;
   try {
-    let s = t ? Q9e(t) : void 0,
+    let s = t ? resolveBackupPath(t) : void 0,
       [i, a] = await Promise.all([p8n(e), s ? p8n(s) : null]);
     if (i === null && a === null)
       return {
@@ -426,11 +426,11 @@ async function sQp(e, t) {
 function iQp(e, t) {
   return `${jQa.createHash("sha256").update(e).digest("hex").slice(0, 16)}@v${t}`;
 }
-function Q9e(e, t) {
+function resolveBackupPath(e, t) {
   let n = tr();
   return U6.join(n, "file-history", t || Rt(), e);
 }
-async function WQa(e, t) {
+async function createBackup(e, t) {
   if (e === null)
     return {
       backupFileName: null,
@@ -438,7 +438,7 @@ async function WQa(e, t) {
       backupTime: new Date(),
     };
   let n = iQp(e, t),
-    r = Q9e(n),
+    r = resolveBackupPath(n),
     o;
   try {
     o = await IH.stat(e);
@@ -473,8 +473,8 @@ async function WQa(e, t) {
     }
   );
 }
-async function aQp(e, t) {
-  let n = Q9e(t),
+async function restoreBackup(e, t) {
+  let n = resolveBackupPath(t),
     r;
   try {
     r = await IH.stat(n);
@@ -565,7 +565,7 @@ async function copyFileHistoryForResume(e, t) {
             !(
               await Promise.allSettled(
                 c.map(async ({ backupFileName: p }) => {
-                  let f = Q9e(p, o),
+                  let f = resolveBackupPath(p, o),
                     m = U6.join(i, p);
                   try {
                     await IH.link(f, m);
@@ -631,12 +631,12 @@ async function lQp(e, t) {
     if (i?.backupFileName === a?.backupFileName && i?.version === a?.version) continue;
     let l = null;
     if (i?.backupFileName) {
-      let u = Q9e(i.backupFileName);
+      let u = resolveBackupPath(i.backupFileName);
       l = await p8n(u);
     }
     let c = null;
     if (a?.backupFileName) {
-      let u = Q9e(a.backupFileName);
+      let u = resolveBackupPath(a.backupFileName);
       c = await p8n(u);
     }
     if (l !== c) ELe(s, l, c);

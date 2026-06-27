@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RTs
 // matched 2.1.88 source: src/utils/git/gitFilesystem.ts
 // class=modified  jaccard=0.5437  score=0.7142  fileCov=0.6949
-// note: deminified; 22 identifiers renamed (exports/displayName/curated)
+// note: deminified; 25 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveRef, resolveGitDir, resetGitFileWatcher, removeWatchedRepo, reanchorGitFileWatcher, readWorktreeHeadSha, readRawSymref, readGitHead, onRepoBranchChange, isValidGitSha, isShallowClone, getWorktreeCountFromFs, getRemoteUrlForDir, getHeadForDir, getCommonDir, getCachedRemoteUrl, getCachedHead, getCachedDefaultBranch, getCachedBranchForRepo, getCachedBranch, clearResolveGitDirCache, addWatchedRepo
 // [unwrapped __esm module RTs]
@@ -110,7 +110,7 @@ async function readRawSymref(e, t, n) {
   } catch {}
   return null;
 }
-class MTs {
+class GitFileWatcher {
   gitDir = null;
   commonDir = null;
   initialized = false;
@@ -300,19 +300,19 @@ async function I$u() {
   if (t.type === "branch") return (await resolveRef(e, `refs/heads/${t.name}`)) ?? "";
   return t.sha;
 }
-async function pfn(e) {
+async function computeRemoteUrl(e) {
   return (await gRt(e, "remote", "origin", "pushurl")) || (await gRt(e, "remote", "origin", "url"));
 }
 async function x$u() {
   let e = await resolveGitDir();
   if (!e) return null;
-  let t = await pfn(e);
+  let t = await computeRemoteUrl(e);
   if (t) return t;
   let n = await getCommonDir(e);
-  if (n && n !== e) return pfn(n);
+  if (n && n !== e) return computeRemoteUrl(n);
   return null;
 }
-async function k$u() {
+async function computeDefaultBranch() {
   let e = await resolveGitDir();
   if (!e) return "main";
   let t = (await getCommonDir(e)) ?? e,
@@ -331,7 +331,7 @@ function getCachedRemoteUrl() {
   return Lae.get("remoteUrl", x$u);
 }
 function getCachedDefaultBranch() {
-  return Lae.get("defaultBranch", k$u);
+  return Lae.get("defaultBranch", computeDefaultBranch);
 }
 function addWatchedRepo(e) {
   return Lae.addRepo(e);
@@ -376,10 +376,10 @@ async function readWorktreeHeadSha(e) {
 async function getRemoteUrlForDir(e) {
   let t = await resolveGitDir(e);
   if (!t) return null;
-  let n = await pfn(t);
+  let n = await computeRemoteUrl(t);
   if (n) return n;
   let r = await getCommonDir(t);
-  if (r && r !== t) return pfn(r);
+  if (r && r !== t) return computeRemoteUrl(r);
   return null;
 }
 async function isShallowClone() {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i5
 // matched 2.1.88 source: src/utils/plugins/mcpPluginIntegration.ts
 // class=modified  jaccard=0.379  score=0.6645  fileCov=0.4687
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module i5] deps: Qi, Gwe, ft, je, At, SG, R9, dr, vdt, B1
 ((m$ = Cn((e) => {
@@ -21,7 +21,7 @@
       ...o,
     };
   })));
-async function mCa(e, t, n) {
+async function loadMcpServersFromMcpb(e, t, n) {
   try {
     T(`Loading MCP servers from MCPB: ${t}`);
     let r = e.repository,
@@ -77,7 +77,7 @@ async function mCa(e, t, n) {
     return null;
   }
 }
-async function wre(e, t = []) {
+async function loadPluginMcpServers(e, t = []) {
   if (Oe.CLAUDE_CODE_SKIP_PLUGIN_MCP_SERVERS) {
     T(
       `Skipping plugin MCP server discovery for "${e.name}" (CLAUDE_CODE_SKIP_PLUGIN_MCP_SERVERS is set)`,
@@ -111,7 +111,7 @@ async function wre(e, t = []) {
         );
       return false;
     },
-    s = await ido(e.path, ".mcp.json");
+    s = await loadMcpServersFromFile(e.path, ".mcp.json");
   if (s)
     n = {
       ...n,
@@ -122,14 +122,14 @@ async function wre(e, t = []) {
     if (typeof i === "string") {
       if (o(i));
       else if (n6(i)) {
-        let a = await mCa(e, i, t);
+        let a = await loadMcpServersFromMcpb(e, i, t);
         if (a)
           n = {
             ...n,
             ...a,
           };
       } else {
-        let a = await ido(e.path, i);
+        let a = await loadMcpServersFromFile(e.path, i);
         if (a)
           n = {
             ...n,
@@ -142,8 +142,8 @@ async function wre(e, t = []) {
           try {
             if (typeof l === "string") {
               if (o(l)) return null;
-              if (n6(l)) return await mCa(e, l, t);
-              return await ido(e.path, l);
+              if (n6(l)) return await loadMcpServersFromMcpb(e, l, t);
+              return await loadMcpServersFromFile(e.path, l);
             }
             return l;
           } catch (c) {
@@ -170,7 +170,7 @@ async function wre(e, t = []) {
   }
   return Object.keys(n).length > 0 ? n : void 0;
 }
-async function ido(e, t) {
+async function loadMcpServersFromFile(e, t) {
   let n = qt(),
     r = gCa.join(e, t),
     o;
@@ -226,7 +226,7 @@ function ado(e) {
   }
   return r;
 }
-function cTp(e, t, n, r) {
+function addPluginScopeToServers(e, t, n, r) {
   let o = {};
   for (let [s, i] of Object.entries(e)) {
     let a = `plugin:${t}:${s}`,
@@ -257,7 +257,7 @@ function uTp(e, t) {
     },
   );
 }
-function pTp(e, t, n, r, o, s) {
+function resolvePluginMcpEnvironment(e, t, n, r, o, s) {
   let i = [],
     a,
     l,
@@ -358,15 +358,15 @@ function pTp(e, t, n, r, o, s) {
       }
     : d;
 }
-async function TUn(e, t = []) {
+async function extractMcpServersFromPlugins(e, t = []) {
   if (!e.enabled) return;
-  let n = e.mcpServers || (await wre(e, t));
+  let n = e.mcpServers || (await loadPluginMcpServers(e, t));
   if (!n) return;
   let r = {};
   for (let [o, s] of Object.entries(n)) {
     let i = uTp(e, o);
     try {
-      r[o] = pTp(s, e, i, t, e.name, o);
+      r[o] = resolvePluginMcpEnvironment(s, e, i, t, e.name, o);
     } catch (a) {
       t?.push({
         type: "generic-error",
@@ -376,6 +376,6 @@ async function TUn(e, t = []) {
       });
     }
   }
-  return cTp(r, e.name, e.source, e.path);
+  return addPluginScopeToServers(r, e.name, e.source, e.path);
 }
 var gCa, ldo, dTp;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WQr
 // matched 2.1.88 source: src/projectOnboardingState.ts
 // class=modified  jaccard=0.4087  score=0.795  fileCov=0.4568
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WQr] deps: Ed, Ye, kne, DGe
 jat = R(rt(), 1);
@@ -25,7 +25,7 @@ function BU(e) {
 function AUt(e) {
   return e === "!";
 }
-function qQr() {
+function getSteps() {
   let e = qt().existsSync(E8i.join($t(), "CLAUDE.md")),
     t = iAs($t());
   return [
@@ -46,7 +46,7 @@ function qQr() {
   ];
 }
 function A8i() {
-  return qQr()
+  return getSteps()
     .filter(({ isCompletable: e, isEnabled: t }) => e && t)
     .every(({ isComplete: e }) => e);
 }

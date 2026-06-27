@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ioo
 // matched 2.1.88 source: src/utils/cron.ts
 // class=modified  jaccard=0.4159  score=0.5667  fileCov=0.6098
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ioo]
 O2t = new Set(["Frame", "FrameRead", "TeamCreate", "TeamDelete", "SuggestBackgroundPR"]);
@@ -92,7 +92,7 @@ function Act(e, t) {
   }
   return null;
 }
-function lop(e, t) {
+function formatLocalTime(e, t) {
   return new Date(2000, 0, 1, t, e).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
@@ -109,7 +109,7 @@ function cop(e, t) {
     })
   );
 }
-function r$(e, t) {
+function cronToHuman(e, t) {
   let n = t?.utc ?? false,
     r = e.trim().split(/\s+/);
   if (r.length !== 5) return e;
@@ -137,7 +137,7 @@ function r$(e, t) {
   if (!o.match(/^\d+$/) || !s.match(/^\d+$/)) return e;
   let u = parseInt(o, 10),
     d = parseInt(s, 10),
-    p = n ? cop : lop;
+    p = n ? cop : formatLocalTime;
   if (i === "*" && a === "*" && l === "*") return `Every day at ${p(u, d)}`;
   if (i === "*" && a === "*" && l.match(/^\d$/)) {
     let f = parseInt(l, 10) % 7,
@@ -204,13 +204,13 @@ function Hct(e) {
     }
     return {
       cron: s,
-      human: r$(s),
+      human: cronToHuman(s),
     };
   }
   if (F1(t) !== null)
     return {
       cron: t,
-      human: r$(t),
+      human: cronToHuman(t),
     };
   return {
     error: "use an interval (5m, 2h, 1d) or 5-field cron (*/5 * * * *)",

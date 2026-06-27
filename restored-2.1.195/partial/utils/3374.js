@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ljn
 // matched 2.1.88 source: src/tools/BashTool/UI.tsx
 // class=partial  jaccard=0.1147  score=0.4979  fileCov=0.1297
-// note: low-confidence suggestion: src/tools/BashTool/UI.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/BashTool/UI.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ljn] deps: Ye, es
 bMa = R(lt(), 1), ajn = R(se(), 1);
-function qpt(e) {
+function BackgroundHint(e) {
   let t = SMa.c(30),
     {
       output: n,

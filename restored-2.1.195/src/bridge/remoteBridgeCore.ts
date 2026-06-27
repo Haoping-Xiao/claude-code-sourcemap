@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module B8o
 // matched 2.1.88 source: src/bridge/remoteBridgeCore.ts
 // class=modified  jaccard=0.4224  score=0.5275  fileCov=0.6795
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Igc(e) {
+function oauthHeaders(e) {
   return {
     Authorization: `Bearer ${e}`,
     "Content-Type": "application/json",
@@ -13,7 +13,7 @@ function Igc(e) {
     "User-Agent": dy(),
   };
 }
-async function xgc(e) {
+async function initEnvLessBridgeCore(e) {
   let {
       baseUrl: t,
       orgUUID: n,
@@ -70,7 +70,7 @@ async function xgc(e) {
     { getOriginalCwd: ee } = await Promise.resolve().then(() => (ft(), twe)),
     { getMainLoopModel: ce } = await Promise.resolve().then(() => (Ao(), F2r));
   async function ae() {
-    let fe = await i7e(
+    let fe = await withRetry(
       () =>
         O8o(
           t,
@@ -99,7 +99,7 @@ async function xgc(e) {
     ((de = z),
       T(`[remote-bridge] Reattaching to session ${de}`),
       In("info", "bridge_repl_v2_session_reattached"),
-      await i7e(() => Hum(de, t, re(), n, ne.http_timeout_ms), "unarchiveSession", ne));
+      await withRetry(() => Hum(de, t, re(), n, ne.http_timeout_ms), "unarchiveSession", ne));
   else {
     let fe = await ae();
     if (!fe)
@@ -111,7 +111,11 @@ async function xgc(e) {
       );
     de = fe;
   }
-  let Ee = await i7e(() => gen(de, t, re(), ne.http_timeout_ms), "fetchRemoteCredentials", ne);
+  let Ee = await withRetry(
+    () => gen(de, t, re(), ne.http_timeout_ms),
+    "fetchRemoteCredentials",
+    ne,
+  );
   if (J && Ee === null) {
     (T(`[remote-bridge] Reattach to ${de} failed; falling back to fresh session`),
       In("info", "bridge_repl_v2_reattach_fallback"));
@@ -119,7 +123,7 @@ async function xgc(e) {
     if (fe)
       ((de = fe),
         (J = false),
-        (Ee = await i7e(
+        (Ee = await withRetry(
           () => gen(de, t, re(), ne.http_timeout_ms),
           "fetchRemoteCredentials (post-fallback)",
           ne,
@@ -134,7 +138,7 @@ async function xgc(e) {
       Le("bridge_connect", "bridge_connect_creds_failed"),
       !J)
     )
-      hen(de, t, re(), n, ne.http_timeout_ms);
+      archiveSession(de, t, re(), n, ne.http_timeout_ms);
     return null;
   }
   (T(`[remote-bridge] Fetched bridge credentials (expires_in=${Ee.expires_in}s)`), f?.(de));
@@ -163,7 +167,7 @@ async function xgc(e) {
       Le("bridge_connect", "bridge_connect_transport_failed"),
       !J)
     )
-      hen(de, t, re(), n, ne.http_timeout_ms);
+      archiveSession(de, t, re(), n, ne.http_timeout_ms);
     return null;
   }
   (T(`[remote-bridge] v2 transport created (epoch=${Ee.worker_epoch})`), N?.("ready"));
@@ -272,7 +276,7 @@ async function xgc(e) {
         }
         Ce = true;
         try {
-          let Re = await i7e(
+          let Re = await withRetry(
             () => gen(fe, t, Te, ne.http_timeout_ms),
             "fetchRemoteCredentials (proactive)",
             ne,
@@ -440,7 +444,7 @@ async function xgc(e) {
         if (!ue) N?.("failed", "JWT refresh failed: no OAuth token");
         return;
       }
-      let it = await i7e(
+      let it = await withRetry(
         () => gen(de, t, Ne, ne.http_timeout_ms),
         "fetchRemoteCredentials (recovery)",
         ne,
@@ -460,7 +464,7 @@ async function xgc(e) {
           let Er = Qt !== void 0 && Qt !== (Te ?? "") ? Qt : void 0;
           if (!Er) continue;
           ((Tt = true),
-            (it = await i7e(
+            (it = await withRetry(
               () => gen(de, t, Er, ne.http_timeout_ms),
               "fetchRemoteCredentials (recovery re-poll)",
               ne,
@@ -566,13 +570,13 @@ async function xgc(e) {
     let fe = ne.teardown_archive_timeout_ms,
       Te = Date.now(),
       Re = o(),
-      Ne = await hen(de, t, Re, n, fe),
+      Ne = await archiveSession(de, t, Re, n, fe),
       it = fe - (Date.now() - Te);
     if (Ne === 401 && s && it >= 200)
       try {
         (await Promise.race([s(Re ?? ""), Nn(it)]),
           (Re = o()),
-          (Ne = await hen(de, t, Re, n, Math.max(1, fe - (Date.now() - Te)))));
+          (Ne = await archiveSession(de, t, Re, n, Math.max(1, fe - (Date.now() - Te)))));
       } catch (un) {
         T(`[remote-bridge] Teardown 401 retry threw: ${be(un)}`, {
           level: "error",
@@ -759,7 +763,7 @@ async function xgc(e) {
       },
       teardown: Ln,
       async archive() {
-        await hen(de, t, o(), n, ne.teardown_archive_timeout_ms);
+        await archiveSession(de, t, o(), n, ne.teardown_archive_timeout_ms);
       },
       [Symbol.asyncDispose]() {
         return kr.teardown({
@@ -770,7 +774,7 @@ async function xgc(e) {
     Mr = Ci(kr);
   return kr;
 }
-async function i7e(e, t, n) {
+async function withRetry(e, t, n) {
   let r = n.init_retry_max_attempts;
   for (let o = 1; o <= r; o++) {
     let s = await e();
@@ -812,7 +816,7 @@ async function gen(e, t, n, r) {
       }
     : s;
 }
-async function hen(e, t, n, r, o) {
+async function archiveSession(e, t, n, r, o) {
   if (!n) return "no_token";
   let s = oP(e);
   try {
@@ -821,7 +825,7 @@ async function hen(e, t, n, r, o) {
       {},
       {
         headers: {
-          ...Igc(n),
+          ...oauthHeaders(n),
           "anthropic-beta": "ccr-byoc-2025-07-29",
           "x-organization-uuid": r,
         },
@@ -847,7 +851,7 @@ async function Hum(e, t, n, r, o) {
       {},
       {
         headers: {
-          ...Igc(n),
+          ...oauthHeaders(n),
           "anthropic-beta": "ccr-byoc-2025-07-29",
           "x-organization-uuid": r,
         },

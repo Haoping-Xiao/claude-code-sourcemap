@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qPn
 // matched 2.1.88 source: src/utils/telemetry/events.ts
 // class=modified  jaccard=0.2035  score=0.2522  fileCov=0.513
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qPn] deps: Qi, ft, oo, er, Lx, wr, Q9, fn, peo
 $Kd = {
@@ -40,7 +40,7 @@ function iFt(e) {
 function MKi() {
   return Oe.OTEL_LOG_ASSISTANT_RESPONSES ?? Oe.OTEL_LOG_USER_PROMPTS;
 }
-async function Jc(e, t = {}) {
+async function logOTelEvent(e, t = {}) {
   let n = {
       ...QGe(),
       "event.name": e,
@@ -72,7 +72,7 @@ async function Jc(e, t = {}) {
 }
 function Ebe(e) {
   if (e.from === e.to) return;
-  Jc("permission_mode_changed", {
+  logOTelEvent("permission_mode_changed", {
     from_mode: e.from,
     to_mode: e.to,
     ...(e.trigger && {
@@ -81,7 +81,7 @@ function Ebe(e) {
   });
 }
 function J0e(e) {
-  Jc("compaction", {
+  logOTelEvent("compaction", {
     trigger: e.trigger,
     success: String(e.success),
     duration_ms: String(Math.round(e.durationMs)),
@@ -104,7 +104,7 @@ function $Ki(e) {
   feo = true;
   try {
     let t = e.name !== "Error" ? e.name : e.constructor?.name || "Error";
-    Jc("internal_error", {
+    logOTelEvent("internal_error", {
       error_name: yUe(t) ?? "Error",
       error_code: xd(e),
     });
@@ -113,14 +113,14 @@ function $Ki(e) {
   }
 }
 function x1(e) {
-  Jc("at_mention", {
+  logOTelEvent("at_mention", {
     mention_type: e.mentionType,
     success: String(e.success),
   });
 }
 function ZGe(e) {
   let t = e.error !== void 0 ? $A(e.error) : null;
-  Jc("auth", {
+  logOTelEvent("auth", {
     action: e.action,
     success: String(e.success),
     auth_method: e.authMethod,

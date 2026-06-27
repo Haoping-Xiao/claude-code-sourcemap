@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module N2l
 // matched 2.1.88 source: src/commands/plugin/DiscoverPlugins.tsx
 // class=modified  jaccard=0.2936  score=0.4925  fileCov=0.421
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N2l] deps: si, Cc, vKe, Bs, B_, f_, CH, gm, Pfe, dse, _i, Ye, ps, vy, je, At, es, Ao, vq, _k, gHe, lE, e1e, oWe, pXt, vfe, WI, sr, g0, irr, VBo, zBo, frr
 (($2l = R(lt(), 1)), (J_ = R(rt(), 1)), (hi = R(se(), 1)));
-function U2l({
+function DiscoverPlugins({
   error: e,
   setError: t,
   result: n,
@@ -549,7 +549,7 @@ function U2l({
               children: ae,
             }),
           }),
-        pi.jsx(LNf, {
+        pi.jsx(EmptyStateMessage, {
           reason: Ee,
         }),
         pi.jsx(U, {
@@ -692,7 +692,7 @@ function U2l({
             children: [" ", nt.arrowDown, " more below"],
           }),
         }),
-      pi.jsx(RNf, {
+      pi.jsx(DiscoverPluginsKeyHint, {
         hasSelection: V.size > 0,
         canToggle: q < $.length && !$[q]?.isInstalled,
         canView: q < $.length,
@@ -700,7 +700,7 @@ function U2l({
     ],
   });
 }
-function RNf(e) {
+function DiscoverPluginsKeyHint(e) {
   let t = YBo.c(12),
     { hasSelection: n, canToggle: r, canView: o } = e,
     s;
@@ -779,7 +779,7 @@ function RNf(e) {
   else u = t[11];
   return u;
 }
-function LNf(e) {
+function EmptyStateMessage(e) {
   let t = YBo.c(7),
     { reason: n } = e;
   switch (n) {

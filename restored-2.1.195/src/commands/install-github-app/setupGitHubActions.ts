@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module hFl
 // matched 2.1.88 source: src/commands/install-github-app/setupGitHubActions.ts
 // class=modified  jaccard=0.5704  score=0.8863  fileCov=0.6155
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hFl] deps: pz, R6, gm, Ye
 ((mFl = R(lt(), 1)), (im = R(se(), 1)));
-async function b1f(e, t, n, r, o, s, i) {
+async function createWorkflowFile(e, t, n, r, o, s, i) {
   let a = await $n("gh", ["api", `repos/${e}/contents/${n}`, "--jq", ".sha"]),
     l = null;
   if (a.code === 0) l = a.stdout.trim();
@@ -66,7 +66,7 @@ Need help? Common issues:
     throw Error(`Failed to create workflow file ${n}: ${p.stderr}${f}`);
   }
 }
-async function yFl(e, t, n, r, o = false, s, i, a) {
+async function setupGitHubActions(e, t, n, r, o = false, s, i, a) {
   try {
     G("tengu_setup_github_actions_started", {
       skip_workflow: o,
@@ -144,7 +144,7 @@ async function yFl(e, t, n, r, o = false, s, i, a) {
           content: PUl,
           message: "Claude Code Review workflow",
         });
-      for (let h of g) await b1f(e, f, h.path, h.content, n, h.message, a);
+      for (let h of g) await createWorkflowFile(e, f, h.path, h.content, n, h.message, a);
     }
     if ((r(), t)) {
       let m = await $n("gh", ["secret", "set", n, "--body", t, "--repo", e]);

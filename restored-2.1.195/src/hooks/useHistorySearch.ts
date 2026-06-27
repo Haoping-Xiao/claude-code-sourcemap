@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module qhc
 // matched 2.1.88 source: src/hooks/useHistorySearch.ts
 // class=modified  jaccard=0.3256  score=0.8064  fileCov=0.3532
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qhc] deps: Ed, Cc, adr, zj, Ye
 ((wS = R(rt(), 1)), (a6o = R(se(), 1)));
-function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
+function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
   let [d, p] = qT.useState(""),
     [f, m] = qT.useState(false),
     [g, h] = qT.useState(""),

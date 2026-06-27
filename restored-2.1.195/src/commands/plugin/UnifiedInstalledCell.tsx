@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Cjl
 // matched 2.1.88 source: src/commands/plugin/UnifiedInstalledCell.tsx
 // class=modified  jaccard=0.404  score=0.4629  fileCov=0.7606
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cjl] deps: Ye, uo, Ao, sr, G1o
 ((vjl = R(lt(), 1)), (MP = R(se(), 1)));
-function xjl(e) {
+function UnifiedInstalledCell(e) {
   let t = Ijl.c(181),
     { item: n, isSelected: r, health: o } = e,
     [s] = na();

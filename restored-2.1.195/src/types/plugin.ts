@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nC
 // matched 2.1.88 source: src/types/plugin.ts
 // class=modified  jaccard=0.3373  score=0.4134  fileCov=0.6469
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function teo(e) {
   return /^\w[\w.@-]*$/.test(e);
@@ -23,7 +23,7 @@ function fKi(e) {
     e.source.endsWith("@skills-dir")
   );
 }
-function iS(e) {
+function getPluginErrorMessage(e) {
   switch (e.type) {
     case "generic-error":
       return e.error;

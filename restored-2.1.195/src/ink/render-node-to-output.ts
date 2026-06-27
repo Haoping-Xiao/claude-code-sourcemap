@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gGe
 // matched 2.1.88 source: src/ink/render-node-to-output.ts
 // class=modified  jaccard=0.392  score=0.6974  fileCov=0.4723
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gGe]
 ((lat = []),
@@ -180,7 +180,7 @@ function tWd(e, t, n) {
   }
   return t;
 }
-function vLn(
+function renderNodeToOutput(
   e,
   t,
   n,
@@ -515,7 +515,7 @@ function vLn(
                       y1: nn,
                       y2: Ln,
                     }),
-                    vLn(st, t, n, {
+                    renderNodeToOutput(st, t, n, {
                       offsetX: pe,
                       offsetY: ge,
                       prevScreen: void 0,
@@ -630,7 +630,7 @@ function LWi(e, t, n, r, o, s, i, a) {
       f = p.dirty,
       m = p.style.position === "absolute";
     if (
-      (vLn(p, t, n, {
+      (renderNodeToOutput(p, t, n, {
         offsetX: r,
         offsetY: o,
         prevScreen: s || c || (l && !m) ? void 0 : i,
@@ -709,7 +709,7 @@ function vJr(e, t, n, r, o, s, i, a, l, c, u = false) {
     }
     let h = m.dirty;
     if (
-      (vLn(m, t, n, {
+      (renderNodeToOutput(m, t, n, {
         offsetX: r,
         offsetY: o,
         prevScreen: s || d ? void 0 : i,

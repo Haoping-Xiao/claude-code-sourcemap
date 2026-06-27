@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module NOo
 // matched 2.1.88 source: src/components/DesktopHandoff.tsx
 // class=modified  jaccard=0.3824  score=0.7681  fileCov=0.4323
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NOo] deps: ft, je, Bi, oc
 DPl = R(Uj(), 1);
-function P0f() {
+function getDownloadUrl() {
   switch ("linux") {
     case "win32":
       return "https://claude.ai/api/desktop/win32/x64/exe/latest/redirect";
@@ -14,7 +14,7 @@ function P0f() {
       return "https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect";
   }
 }
-function $Pl({ onDone: e }) {
+function DesktopHandoff({ onDone: e }) {
   let [t, n] = uKe.useState(XF?.state ?? "checking"),
     [r, o] = uKe.useState(XF?.error ?? null),
     [s, i] = uKe.useState(XF?.downloadMessage ?? ""),
@@ -39,7 +39,7 @@ function $Pl({ onDone: e }) {
   function c(d) {
     if (d.key === "escape" || ((d.ctrl || d.meta) && (d.key === "c" || d.key === "d"))) {
       (d.preventDefault(),
-        l(`Cancelled. Learn more about Claude Desktop at ${BOo}`, {
+        l(`Cancelled. Learn more about Claude Desktop at ${DESKTOP_DOCS_URL}`, {
           display: "system",
         }));
       return;
@@ -55,17 +55,17 @@ function $Pl({ onDone: e }) {
     if (t === "prompt-download") {
       if (d.key === "y" || d.key === "Y")
         (d.preventDefault(),
-          ac(P0f()).catch(() => {}),
+          ac(getDownloadUrl()).catch(() => {}),
           l(
             `Starting download. Re-run /desktop once you\u2019ve installed the app.
-Learn more at ${BOo}`,
+Learn more at ${DESKTOP_DOCS_URL}`,
             {
               display: "system",
             },
           ));
       else if (d.key === "n" || d.key === "N")
         (d.preventDefault(),
-          l(`The desktop app is required for /desktop. Learn more at ${BOo}`, {
+          l(`The desktop app is required for /desktop. Learn more at ${DESKTOP_DOCS_URL}`, {
             display: "system",
           }));
     }
@@ -197,5 +197,5 @@ Learn more at ${BOo}`,
 }
 var uKe,
   Rfe,
-  BOo = "https://clau.de/desktop",
+  DESKTOP_DOCS_URL = "https://clau.de/desktop",
   XF = null;

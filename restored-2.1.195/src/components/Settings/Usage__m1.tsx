@@ -7,7 +7,7 @@
 // module exports: formatRateLimits, formatBehaviors, call
 // [unwrapped __esm module R6l] deps: $7t
 k6l = R(se(), 1);
-function formatRateLimits(e) {
+function Usage(e) {
   let { rate_limits: t, subscription_type: n } = e;
   if (!t) return null;
   let r = n === "max" || n === "team" || n === null,
@@ -94,7 +94,7 @@ var call = async () => {
       let n = await L7t({
           includeBehaviors: Ir(),
         }),
-        r = formatRateLimits(n);
+        r = Usage(n);
       if (r)
         t += `
 

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Iuc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0054  score=0.0323  fileCov=0.0065
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Iuc] deps: kt, je, Jt, RNo, q$
 ((wuc = require("net")), (Tuc = [100, 250, 500, 1000, 2000]));
@@ -166,7 +166,7 @@ function aim(e, t) {
       return true;
   }
 }
-class Oz {
+class run {
   dispatch;
   spawnPty;
   getAuthSnapshot;
@@ -603,7 +603,7 @@ class Oz {
     if (e.rows) this.ptyRows = e.rows;
   }
   static spawn(e, t, n, r) {
-    let o = new Oz(e, t ?? r9o(), n, "cold");
+    let o = new run(e, t ?? r9o(), n, "cold");
     if (r?.afterUpgrade)
       return (
         (o.attempt = 1),
@@ -616,7 +616,7 @@ class Oz {
     return (o.doSpawn(e.reattachEnv).catch(ke), o);
   }
   static claim(e, t) {
-    let n = new Oz(e, t.spawnPty, t.getAuthSnapshot, "spare", {
+    let n = new run(e, t.spawnPty, t.getAuthSnapshot, "spare", {
       pid: t.pid,
       attempt: 1,
       state: "running",
@@ -675,7 +675,7 @@ class Oz {
     }
     let o = await KR(t.pid);
     if (o && t.procStart !== o) return null;
-    let s = new Oz(t.dispatch, n, r, "adopted", {
+    let s = new run(t.dispatch, n, r, "adopted", {
       pid: t.pid,
       attempt: t.attempt,
       startedAt: t.startedAt,
@@ -721,7 +721,7 @@ class Oz {
     return s;
   }
   static unverified(e, t) {
-    let n = new Oz(t.dispatch, void 0, void 0, "adopted", {
+    let n = new run(t.dispatch, void 0, void 0, "adopted", {
       pid: t.pid,
       attempt: t.attempt,
       startedAt: t.startedAt,

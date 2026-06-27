@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module xYl
 // matched 2.1.88 source: src/components/agents/validateAgent.ts
 // class=modified  jaccard=0.6795  score=0.9081  fileCov=0.7297
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xYl] deps: Ye, ps, Cc, Bs, Ko, wb, vH, i4o
 ((CYl = R(lt(), 1)), (nTe = R(se(), 1)));
-function u4o(e) {
+function validateAgentType(e) {
   if (!e) return "Agent type is required";
   if (!/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$/.test(e))
     return "Agent type must start and end with alphanumeric characters and contain only letters, numbers, and hyphens";
@@ -14,12 +14,12 @@ function u4o(e) {
   if (e.length > 50) return "Agent type must be less than 50 characters";
   return null;
 }
-function kYl(e, t, n) {
+function validateAgent(e, t, n) {
   let r = [],
     o = [];
   if (!e.agentType) r.push("Agent type is required");
   else {
-    let i = u4o(e.agentType);
+    let i = validateAgentType(e.agentType);
     if (i) r.push(i);
     let a = n.find((l) => l.agentType === e.agentType && l.source !== e.source);
     if (a) r.push(`Agent type "${e.agentType}" already exists in ${jsr(a.source)}`);

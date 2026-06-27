@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E5e
 // matched 2.1.88 source: src/utils/hooks/fileChangedWatcher.ts
 // class=modified  jaccard=0.3572  score=0.622  fileCov=0.4562
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E5e] deps: ft, je, fn, At, ys
 ((hLe = require("fs/promises")), (Fjt = require("path")));
@@ -13,7 +13,7 @@
   filechanged: 3,
 }),
   (uNn = /^(setup|sessionstart|cwdchanged|filechanged)-hook-(\d+)\.sh$/));
-function Icp() {
+function startWatching() {
   let e = null,
     t,
     n = [],

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module O6n
 // matched 2.1.88 source: src/utils/hooks/registerFrontmatterHooks.ts
 // class=modified  jaccard=0.3763  score=0.7291  fileCov=0.4374
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module O6n] deps: Awo
 ((Xtf = ["stream_event", "stream_request_start", "response_length", ...Ewo]), (Jtf = new Set(Xtf)));
-function $rl(e, t, n, r, o = false) {
+function registerFrontmatterHooks(e, t, n, r, o = false) {
   if (!n || Object.keys(n).length === 0) return;
   let s = 0;
   for (let i of GO) {

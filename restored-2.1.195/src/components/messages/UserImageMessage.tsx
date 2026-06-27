@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module VCo
 // matched 2.1.88 source: src/components/messages/UserImageMessage.tsx
 // class=modified  jaccard=0.1722  score=0.3051  fileCov=0.2832
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VCo] deps: AN, Ye, YI, E8e, R6, WCo, Bzn
 ((qCo = R(lt(), 1)), (AP = R(se(), 1)));
-function Fzn(e) {
+function UserImageMessage(e) {
   let t = hil.c(12),
     { imageId: n, addMargin: r } = e,
     o = dT((f) => (n !== void 0 ? (f.storedImagePaths.get(n) ?? null) : null)) ?? null,

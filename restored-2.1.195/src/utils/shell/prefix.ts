@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZE
 // matched 2.1.88 source: src/utils/shell/prefix.ts
 // class=modified  jaccard=0.4438  score=0.8662  fileCov=0.4765
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZE] deps: Ls, Zkn, ii, Fze, oo, Vw, xAn, er, BE, Cp, wr, fn, At, IHo, vn, co, Ao, u$, dn, Un, z1, H5e, yje, Uge, ft, TM, RF, aW, Un, _oe, og, oo, Vw, BE, je, Mm, Cp, NE, p6e, OKt, Sbe, jG, Rze, X4, sr, m1, GX, Lne, LX, Wct, I1n, Rd, xUt, rle, I1, Ao, aze, Jt, cMo, m5, kt, Du, yde, DMo, Yxe, tP, gSe, MQn, frt, cYt, Tac, mio, mLe, vQn, AVe
 ((ZHt = require("crypto")), (fqo = (Eoe(), ro(Ope))));
@@ -10,7 +10,7 @@ function Zac(e) {
   let { toolName: t, policySpec: n, eventName: r, querySource: o, preCheck: s } = e,
     i = JC(
       (a, l, c) => {
-        let u = Mnm(a, l, c, t, n, r, o, s);
+        let u = getCommandPrefixImpl(a, l, c, t, n, r, o, s);
         return (
           u.catch(() => {
             if (i.cache.get(a) === u) i.cache.delete(a);
@@ -39,7 +39,7 @@ function elc(e, t) {
   );
   return n;
 }
-async function Mnm(e, t, n, r, o, s, i, a) {
+async function getCommandPrefixImpl(e, t, n, r, o, s, i, a) {
   if (a) {
     let d = a(e);
     if (d !== null) return d;

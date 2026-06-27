@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FDn
 // matched 2.1.88 source: src/utils/pasteStore.ts
 // class=modified  jaccard=0.3682  score=0.6874  fileCov=0.4423
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FDn]
 ((zat = R(rt(), 1)),
@@ -37,9 +37,9 @@ function j8i(e) {
   return GDn.join(sZr(), `${e}.txt`);
 }
 function G8i(e, t) {
-  return (jDn.set(e, t), _6d(e, t));
+  return (jDn.set(e, t), storePastedText(e, t));
 }
-async function _6d(e, t) {
+async function storePastedText(e, t) {
   try {
     let n = qs(),
       r = sZr();
@@ -55,7 +55,7 @@ async function _6d(e, t) {
       It("paste_store", "paste_store_write_failed"));
   }
 }
-async function W8i(e) {
+async function retrievePastedText(e) {
   let t = jDn.get(e);
   if (t !== void 0) return t;
   let n = Vce.get(e);
@@ -68,7 +68,7 @@ async function W8i(e) {
     return null;
   }
 }
-async function q8i(e) {
+async function cleanupOldPastes(e) {
   let t = qs(),
     n = sZr(),
     r;

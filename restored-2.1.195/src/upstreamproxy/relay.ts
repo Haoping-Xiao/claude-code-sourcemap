@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qpc
 // matched 2.1.88 source: src/upstreamproxy/relay.ts
 // class=modified  jaccard=0.1301  score=0.185  fileCov=0.305
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qpc]
 mNe = require("fs/promises");
@@ -129,20 +129,20 @@ function vlm(e, t, n) {
     ctx: n,
   };
 }
-async function Zpc(e) {
+async function startUpstreamProxyRelay(e) {
   let t = "Basic " + Buffer.from(`${e.sessionId}:${e.token}`).toString("base64"),
     n = `Bearer ${e.token}`,
     r = {
       ...Elm,
       ...e.limits,
     },
-    o = wlm(e.wsUrl, t, n, r, {
+    o = startBunRelay(e.wsUrl, t, n, r, {
       statusProvider: e.statusProvider,
       failures: [],
     });
   return (T(`[agent-proxy] relay listening on 127.0.0.1:${o.port}`), o);
 }
-function wlm(e, t, n, r, o) {
+function startBunRelay(e, t, n, r, o) {
   let s = [],
     i = Bun.listen({
       hostname: "127.0.0.1",
@@ -412,7 +412,7 @@ function xlm(e, t, n, r, o, s) {
           (t.paused = false),
           (t.pending = [...a, ...t.pending]),
           (t.pendingBytes = t.pending.reduce((d, p) => d + p.length, 0)),
-          K9o(e, t, r, o, s));
+          openTunnel(e, t, r, o, s));
       };
     ((t.pooledDeadline = () => {
       if (((t.openTimer = void 0), t.closed || t.established)) return;
@@ -442,7 +442,7 @@ function xlm(e, t, n, r, o, s) {
       rfc(t, i.ws, o));
     return;
   }
-  K9o(e, t, r, o, s);
+  openTunnel(e, t, r, o, s);
 }
 function klm(e) {
   let { pool: t, limits: n } = e;
@@ -627,7 +627,7 @@ X-Agent-Proxy-Client-Process: ${e.clientProcess}\r
   for (let o of e.pending) X9o(t, o);
   ((e.pending = []), (e.pendingBytes = 0), efc(e));
 }
-function K9o(e, t, n, r, o) {
+function openTunnel(e, t, n, r, o) {
   let s = {
       "Content-Type": "application/proto",
       Authorization: o,
@@ -652,7 +652,7 @@ function K9o(e, t, n, r, o) {
         (T(
           `[agent-proxy] ws open failed (${c}); retry ${t.wsAttempt}/${t.limits.openMaxAttempts - 1} in ${u}ms`,
         ),
-          (t.openTimer = setTimeout(K9o, u, e, t, n, r, o)));
+          (t.openTimer = setTimeout(openTunnel, u, e, t, n, r, o)));
         return;
       }
       (T(`[agent-proxy] ws open failed (${c}); attempts exhausted`),

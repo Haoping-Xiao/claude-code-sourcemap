@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R8r
 // matched 2.1.88 source: src/services/mcp/xaaIdpLogin.ts
 // class=modified  jaccard=0.4929  score=0.7618  fileCov=0.5827
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R8r] deps: Is
 ((Lwi = require("http")),
@@ -53,7 +53,7 @@ async function Owi(e, t, n) {
   }));
 }
 async function Nwi(e, t) {
-  let n = Uwi(t),
+  let n = jwtExp(t),
     r = n ? n * 1000 : Date.now() + 3600000;
   return (await Owi(e, t, r), r);
 }
@@ -118,7 +118,7 @@ async function fIn(e) {
     sn("xaa", `clearIdpClientSecret(${t}) failed: ${be(n)}`);
   }
 }
-async function mIn(e) {
+async function discoverOidc(e) {
   let t = e.endsWith("/") ? e : e + "/",
     n = new URL(".well-known/openid-configuration", t),
     r = await fetch(n, {
@@ -143,7 +143,7 @@ async function mIn(e) {
     throw Error(`XAA IdP: refusing non-HTTPS token endpoint: ${s.data.token_endpoint}`);
   return s.data;
 }
-function Uwi(e) {
+function jwtExp(e) {
   let t = e.split(".");
   if (t.length !== 3) return;
   try {
@@ -153,7 +153,7 @@ function Uwi(e) {
     return;
   }
 }
-function CRd(e, t, n, r) {
+function waitForCallback(e, t, n, r) {
   let o = null,
     s = null,
     i = null,
@@ -269,13 +269,13 @@ function CRd(e, t, n, r) {
       s.unref());
   });
 }
-async function gIn(e) {
+async function acquireIdpIdToken(e) {
   return yl("mcp_xaa_idp_login", async () => {
     let { idpIssuer: t, idpClientId: n } = e,
       r = await Q4e(t);
     if (r) return (sn("xaa", `Using cached id_token for ${t}`), r);
     sn("xaa", `No cached id_token for ${t}; starting OIDC login`);
-    let o = await mIn(t),
+    let o = await discoverOidc(t),
       s = e.callbackPort ?? (await pIn()),
       i = T1t(s),
       a = Dwi.randomBytes(32).toString("base64url"),
@@ -292,7 +292,7 @@ async function gIn(e) {
         scope: "openid",
         state: a,
       }),
-      d = await CRd(s, a, e.abortSignal, () => {
+      d = await waitForCallback(s, a, e.abortSignal, () => {
         if ((e.onAuthorizationUrl(c.toString()), !e.skipBrowserOpen))
           (sn("xaa", "Opening browser to IdP authorization endpoint"), ac(c.toString()));
       }),
@@ -312,7 +312,7 @@ async function gIn(e) {
           }),
       });
     if (!p.id_token) throw Error("XAA IdP: token response missing id_token (check scope=openid)");
-    let f = Uwi(p.id_token),
+    let f = jwtExp(p.id_token),
       m = f ? f * 1000 : Date.now() + (p.expires_in ?? 3600) * 1000;
     try {
       (await Owi(t, p.id_token, m),

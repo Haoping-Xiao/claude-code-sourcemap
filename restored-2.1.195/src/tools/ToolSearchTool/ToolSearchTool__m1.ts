@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fut
 // matched 2.1.88 source: src/tools/ToolSearchTool/ToolSearchTool.ts
 // class=modified (alt of src/tools/ToolSearchTool/ToolSearchTool.ts)  jaccard=0.165  score=0.744  fileCov=0.1749
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: outputSchema, inputSchema, clearToolSearchDescriptionCache, ToolSearchTool
 function Klp(e) {
@@ -11,7 +11,7 @@ function Klp(e) {
     .sort()
     .join(",");
 }
-function Cla(e) {
+function maybeInvalidateCache(e) {
   let t = Klp(e);
   if (eao !== t)
     (T("ToolSearchTool: cache invalidated - deferred tools changed"),

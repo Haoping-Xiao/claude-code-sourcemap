@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IGo
 // matched 2.1.88 source: src/services/voice.ts
 // class=modified  jaccard=0.4621  score=0.6432  fileCov=0.6214
-// note: deminified; 14 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeNativePlaybackData, stopNativeRecording, stopNativePlayback, startNativeRecording, startNativePlayback, microphoneAuthorizationStatus, isNativeRecordingActive, isNativePlaying, isNativeAudioAvailable, stopRecording, startRecording, requestMicrophonePermission, checkVoiceDependencies, checkRecordingAvailability, _resetArecordProbeForTesting, _resetAlsaCardsForTesting
 // [unwrapped __esm module IGo] deps: Hp, Rc, oo, je, fn, At, Gx, u9, qd, Mh, Jt, Un
@@ -76,7 +76,7 @@ function microphoneAuthorizationStatus() {
 }
 var pQt = null,
   tnc = false;
-function iar() {
+function loadAudioNapi() {
   return (
     (rnc ??= (async () => {
       let e = Date.now(),
@@ -101,7 +101,7 @@ async function gTe(e) {
     ).code === 0
   );
 }
-function inc() {
+function probeArecord() {
   return (
     (kGo ??= new Promise((e) => {
       let t = sar.spawn(
@@ -149,7 +149,7 @@ function inc() {
 function K7f() {
   kGo = null;
 }
-function PGo() {
+function linuxHasAlsaCards() {
   return (
     (RGo ??= snc.readFile("/proc/asound/cards", "utf8").then(
       (e) => {
@@ -164,7 +164,7 @@ function PGo() {
 function Y7f() {
   RGo = null;
 }
-async function anc() {
+async function detectPackageManager() {
   if (await gTe("apt-get"))
     return {
       cmd: "sudo",
@@ -186,7 +186,7 @@ async function anc() {
   return null;
 }
 async function checkVoiceDependencies() {
-  if ((await iar()).isNativeAudioAvailable() && (await PGo()))
+  if ((await loadAudioNapi()).isNativeAudioAvailable() && (await linuxHasAlsaCards()))
     return {
       available: true,
       missing: [],
@@ -200,7 +200,7 @@ async function checkVoiceDependencies() {
     };
   let t = [];
   if (!(await gTe("sox"))) t.push("sox (rec command)");
-  let n = t.length > 0 ? await anc() : null;
+  let n = t.length > 0 ? await detectPackageManager() : null;
   return {
     available: t.length === 0,
     missing: t,
@@ -208,7 +208,7 @@ async function checkVoiceDependencies() {
   };
 }
 async function requestMicrophonePermission() {
-  if (!(await iar()).isNativeAudioAvailable()) return true;
+  if (!(await loadAudioNapi()).isNativeAudioAvailable()) return true;
   if (
     await startRecording(
       (n) => {},
@@ -229,7 +229,7 @@ async function checkRecordingAvailability() {
 
 To use voice mode, run Claude Code locally instead.`,
     };
-  if ((await iar()).isNativeAudioAvailable() && (await PGo()))
+  if ((await loadAudioNapi()).isNativeAudioAvailable() && (await linuxHasAlsaCards()))
     return {
       available: true,
       reason: null,
@@ -243,7 +243,7 @@ To use voice mode, run Claude Code locally instead.`,
 ` +
     "If WSLg is not available (for example WSL1), run Claude Code in native Windows instead.";
   if (await gTe("arecord")) {
-    let r = await inc();
+    let r = await probeArecord();
     if (r.ok)
       return {
         available: true,
@@ -263,7 +263,7 @@ To use voice mode, run Claude Code locally instead.`,
       reason: t,
     };
   if (!n) {
-    let r = await anc();
+    let r = await detectPackageManager();
     return {
       available: false,
       reason: r
@@ -283,8 +283,8 @@ This usually means the host has no microphone (for example, a remote server). Ru
 }
 async function startRecording(e, t, n) {
   T("[voice] startRecording called, platform=linux");
-  let r = await iar(),
-    o = r.isNativeAudioAvailable() && (await PGo()),
+  let r = await loadAudioNapi(),
+    o = r.isNativeAudioAvailable() && (await linuxHasAlsaCards()),
     s = n?.silenceDetection !== false;
   if (o) {
     if (HHt || r.isNativeRecordingActive()) (r.stopNativeRecording(), (HHt = false));
@@ -300,10 +300,10 @@ async function startRecording(e, t, n) {
     )
       return ((HHt = true), true);
   }
-  if ((await gTe("arecord")) && (await inc()).ok) return eXf(e, t);
-  return Z7f(e, t, n);
+  if ((await gTe("arecord")) && (await probeArecord()).ok) return eXf(e, t);
+  return startSoxRecording(e, t, n);
 }
-function Z7f(e, t, n) {
+function startSoxRecording(e, t, n) {
   let r = n?.silenceDetection !== false,
     o = [
       "-q",

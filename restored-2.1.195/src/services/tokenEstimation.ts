@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module DMo
 // matched 2.1.88 source: src/services/tokenEstimation.ts
 // class=modified  jaccard=0.322  score=0.8087  fileCov=0.3485
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DMo] deps: wpn, Sae, RF, jG, Lo, wr, fn, At, co, Jt
 ((fYt = require("crypto")), (pHe = require("fs/promises")), (xSt = require("path")));
-function Bkl(e) {
+function hasThinkingBlocks(e) {
   for (let t of e)
     if (t.role === "assistant" && Array.isArray(t.content)) {
       for (let n of t.content)
@@ -20,7 +20,7 @@ function Bkl(e) {
     }
   return false;
 }
-function cCf(e) {
+function stripToolSearchFieldsFromMessages(e) {
   return e.map((t) => {
     if (!Array.isArray(t.content)) return t;
     let n = t.content.map((r) => {
@@ -64,7 +64,7 @@ function cCf(e) {
 }
 async function Ukl(e) {
   if (!e) return 0;
-  return P5e(
+  return countMessagesTokensWithAPI(
     [
       {
         role: "user",
@@ -74,16 +74,16 @@ async function Ukl(e) {
     [],
   );
 }
-async function P5e(e, t, n) {
+async function countMessagesTokensWithAPI(e, t, n) {
   return (
     (e = MMo(e)),
     LMo(e, t, async () => {
       try {
         let r = n ?? As(),
           o = V9(r),
-          s = Bkl(e);
+          s = hasThinkingBlocks(e);
         if (l_(r) === "bedrock")
-          return dCf({
+          return countTokensWithBedrock({
             model: dp(r),
             messages: e,
             tools: t,
@@ -128,17 +128,17 @@ async function P5e(e, t, n) {
           }),
           km())
         )
-          return vMo(e, t).catch(() => null);
+          return countTokensViaHaikuFallback(e, t).catch(() => null);
         return null;
       }
     })
   );
 }
-async function vMo(e, t) {
+async function countTokensViaHaikuFallback(e, t) {
   return (
     (e = MMo(e)),
     LMo(e, t, async () => {
-      let n = Bkl(e),
+      let n = hasThinkingBlocks(e),
         r = ut(process.env.CLAUDE_CODE_USE_VERTEX) && Yie(Fw()) === "global",
         o = ut(process.env.CLAUDE_CODE_USE_BEDROCK) && n,
         s = ut(process.env.CLAUDE_CODE_USE_VERTEX) && n,
@@ -149,7 +149,7 @@ async function vMo(e, t) {
           source: "count_tokens",
           agentContext: of(),
         }),
-        l = cCf(e),
+        l = stripToolSearchFieldsFromMessages(e),
         c =
           l.length > 0
             ? l
@@ -188,10 +188,10 @@ async function vMo(e, t) {
 }
 function qv(e, t) {
   let n = 0;
-  for (let r of e) n += uCf(r, t);
+  for (let r of e) n += roughTokenCountEstimationForMessage(r, t);
   return n;
 }
-function uCf(e, t) {
+function roughTokenCountEstimationForMessage(e, t) {
   if (
     (e.type === "assistant" || e.type === "user" || e.type === "api_system") &&
     e.message?.content
@@ -205,7 +205,13 @@ function uCf(e, t) {
   }
   return 0;
 }
-async function dCf({ model: e, messages: t, tools: n, betas: r, containsThinking: o }) {
+async function countTokensWithBedrock({
+  model: e,
+  messages: t,
+  tools: n,
+  betas: r,
+  containsThinking: o,
+}) {
   try {
     let s = await h7s(),
       i = YBr(e) ? e : await DIe(e);

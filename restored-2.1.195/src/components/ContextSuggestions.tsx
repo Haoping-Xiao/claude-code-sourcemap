@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module y1l
 // matched 2.1.88 source: src/components/ContextSuggestions.tsx
 // class=modified  jaccard=0.2748  score=0.4046  fileCov=0.4615
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function b1l(e) {
+function ContextSuggestions(e) {
   let t = _1l.c(5),
     { suggestions: n } = e;
   if (n.length === 0) return null;

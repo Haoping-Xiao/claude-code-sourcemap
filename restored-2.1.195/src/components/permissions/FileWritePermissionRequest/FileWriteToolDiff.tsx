@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AMe
 // matched 2.1.88 source: src/components/permissions/FileWritePermissionRequest/FileWriteToolDiff.tsx
 // class=modified  jaccard=0.2868  score=0.4253  fileCov=0.4683
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AMe] deps: w4, Ye, oc, uf, t0e, sr, qel, gBn
 ((Ivo = R(lt(), 1)),
@@ -124,7 +124,7 @@
     else v = n[20];
     return v;
   })));
-function zel(e) {
+function FileWriteToolDiff(e) {
   let t = Vel.c(15),
     { file_path: n, content: r, fileExists: o, oldContent: s } = e,
     { columns: i } = br(),

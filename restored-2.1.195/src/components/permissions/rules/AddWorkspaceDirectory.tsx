@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OUt
 // matched 2.1.88 source: src/components/permissions/rules/AddWorkspaceDirectory.tsx
 // class=modified  jaccard=0.1559  score=0.2459  fileCov=0.2985
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OUt] deps: si, Xa, _i, Tc, Ye, es, sr, B_
 ((OZr = R(lt(), 1)), (NZr = R(rt(), 1)), (pT = R(se(), 1)), ($Zr = /\s+/g));
@@ -349,7 +349,7 @@ nKd = NZr.memo(function (t) {
   return J;
 });
 Bzi = NZr.memo(jGe);
-function Fzi() {
+function PermissionDescription() {
   let e = NUt.c(1),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -362,7 +362,7 @@ function Fzi() {
   else t = e[0];
   return t;
 }
-function iKd(e) {
+function DirectoryDisplay(e) {
   let t = NUt.c(5),
     { path: n } = e,
     r;
@@ -375,7 +375,8 @@ function iKd(e) {
       (t[1] = r));
   else r = t[1];
   let o;
-  if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((o = $v.jsx(Fzi, {})), (t[2] = o));
+  if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+    ((o = $v.jsx(PermissionDescription, {})), (t[2] = o));
   else o = t[2];
   let s;
   if (t[3] !== r)
@@ -389,7 +390,7 @@ function iKd(e) {
   else s = t[4];
   return s;
 }
-function aKd(e) {
+function DirectoryInput(e) {
   let t = NUt.c(14),
     { value: n, onChange: r, onSubmit: o, error: s, suggestions: i, selectedSuggestion: a } = e,
     l;
@@ -460,7 +461,7 @@ function aKd(e) {
   return p;
 }
 function lKd() {}
-function BUt(e) {
+function AddWorkspaceDirectory(e) {
   let t = NUt.c(36),
     { onAddDirectory: n, onCancel: r, permissionContext: o, directoryPath: s } = e,
     [i, a] = GGe.useState(""),
@@ -621,7 +622,7 @@ function BUt(e) {
           flexDirection: "column",
           gap: 1,
           children: [
-            $v.jsx(iKd, {
+            $v.jsx(DirectoryDisplay, {
               path: s,
             }),
             $v.jsx(Sr, {
@@ -635,8 +636,8 @@ function BUt(e) {
           flexDirection: "column",
           gap: 1,
           children: [
-            $v.jsx(Fzi, {}),
-            $v.jsx(aKd, {
+            $v.jsx(PermissionDescription, {}),
+            $v.jsx(DirectoryInput, {
               value: i,
               onChange: a,
               onSubmit: C,

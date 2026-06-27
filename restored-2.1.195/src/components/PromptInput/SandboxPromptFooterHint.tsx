@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ihc
 // matched 2.1.88 source: src/components/PromptInput/SandboxPromptFooterHint.tsx
 // class=modified  jaccard=0.4749  score=0.6699  fileCov=0.6199
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ihc] deps: iu, Xa, ZS, Ye, uo, es, cne, Pne
 ((bNe = R(rt(), 1)),
@@ -13,7 +13,7 @@
     g: 0,
     b: 0,
   }));
-function khc() {
+function SandboxPromptFooterHint() {
   let e = xhc.c(7),
     [t, n] = xTt.useState(0),
     r = xTt.useRef(null),

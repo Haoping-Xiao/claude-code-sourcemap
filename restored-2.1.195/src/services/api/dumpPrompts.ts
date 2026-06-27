@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mwo
 // matched 2.1.88 source: src/services/api/dumpPrompts.ts
 // class=modified  jaccard=0.2109  score=0.8186  fileCov=0.2213
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Ntf(e) {
   return Erl.createHash("sha256").update(e).digest("hex");
@@ -16,7 +16,7 @@ function Hrl() {
 function Ftf(e) {
   return;
 }
-function jtf(e) {
+function getDumpPromptsPath(e) {
   return L6n.join(tr(), "dump-prompts", `${e ?? Rt()}.jsonl`);
 }
 function Gtf(e, t) {
@@ -43,7 +43,7 @@ function Wtf(e, t, n, r) {
   }
 }
 function Trl(e) {
-  let t = jtf(e);
+  let t = getDumpPromptsPath(e);
   return async (n, r) => {
     let o = R6n.get(e) ?? {
       initialized: false,

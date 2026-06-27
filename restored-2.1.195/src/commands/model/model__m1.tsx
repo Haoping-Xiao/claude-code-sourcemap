@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OJt
 // matched 2.1.88 source: src/commands/model/model.tsx
 // class=modified (alt of src/commands/model/model.tsx)  jaccard=0.1203  score=0.1919  fileCov=0.2439
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module OJt] deps: BE, DD, Ao, Ls
@@ -82,7 +82,7 @@ UJl = {
     },
   },
 };
-function R6f({ hasConversationMessages: e, onDone: t }) {
+function ModelPickerWrapper({ hasConversationMessages: e, onDone: t }) {
   let n = Ht((b) => b.mainLoopModel),
     r = Ht((b) => b.mainLoopModelForSession),
     o = Ht((b) => b.fastMode),
@@ -463,7 +463,7 @@ var GJl,
       );
       return;
     }
-    return fme.jsx(R6f, {
+    return fme.jsx(ModelPickerWrapper, {
       onDone: e,
       hasConversationMessages: t.messages.length > 0,
     });

@@ -2,15 +2,15 @@
 // restored from claude-code 2.1.195 (deminified) — module Qvc
 // matched 2.1.88 source: src/skills/bundled/keybindings.ts
 // class=modified (alt of src/skills/bundled/keybindings.ts)  jaccard=0.2951  score=0.973  fileCov=0.2975
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function gEm() {
+function generateContextsTable() {
   return _Ko(
     ["Context", "Description"],
     Cat.map((e) => [`\`${e}\``, uqi[e]]),
   );
 }
-function hEm() {
+function generateActionsTable() {
   let e = {};
   for (let t of wat)
     for (let [n, r] of Object.entries(t.bindings))
@@ -27,12 +27,12 @@ function hEm() {
     nQr.map((t) => {
       let n = e[t],
         r = n ? n.keys.map((s) => `\`${s}\``).join(", ") : "(none)",
-        o = n ? n.context : yEm(t);
+        o = n ? n.context : inferContextFromAction(t);
       return [`\`${t}\``, r, o];
     }),
   );
 }
-function yEm(e) {
+function inferContextFromAction(e) {
   let t = e.split(":")[0];
   return (
     {
@@ -57,7 +57,7 @@ function yEm(e) {
     }[t ?? ""] ?? "Unknown"
   );
 }
-function _Em() {
+function generateReservedShortcuts() {
   let e = [];
   e.push("### Non-rebindable (errors)");
   for (let t of aUt) e.push(`- \`${t.key}\` \u2014 ${t.reason}`);
@@ -71,7 +71,7 @@ function _Em() {
   return e.join(`
 `);
 }
-function Zvc() {
+function registerKeybindingsSkill() {
   Nd({
     name: "keybindings-help",
     description:
@@ -80,9 +80,9 @@ function Zvc() {
     userInvocable: false,
     isEnabled: E8,
     async getPromptForCommand(e) {
-      let t = gEm(),
-        n = hEm(),
-        r = _Em(),
+      let t = generateContextsTable(),
+        n = generateActionsTable(),
+        r = generateReservedShortcuts(),
         o = [
           HEm,
           TEm,

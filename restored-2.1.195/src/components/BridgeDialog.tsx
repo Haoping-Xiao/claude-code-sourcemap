@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Edr
 // matched 2.1.88 source: src/components/BridgeDialog.tsx
 // class=modified  jaccard=0.2527  score=0.4813  fileCov=0.3472
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Edr] deps: kt, Ye, er, dr, mE, vi
 ((Lyc = R(lt(), 1)), (Dyc = R(rt(), 1)), (h7e = R(se(), 1)));
-function $yc({ onDone: e }) {
+function BridgeDialog({ onDone: e }) {
   Wh("bridge-dialog");
   let t = Ht((L) => L.replBridgeConnected),
     n = Ht((L) => L.replBridgeSessionActive),

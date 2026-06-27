@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module str
 // matched 2.1.88 source: src/components/Settings/Config.tsx
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0121  score=0.1018  fileCov=0.0135
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module str] deps: s1o, G4, kt, sre, HU, oo, er, wr, lT, NE, aE, __, qd, Fh, dr
 oRf = new Map([
@@ -10,7 +10,7 @@ oRf = new Map([
   ["autoUpdatesChannel", "/channel"],
   ["showExternalIncludesDialog", "/config (External CLAUDE.md row)"],
 ]);
-function cR(e) {
+function NotifChannelLabel(e) {
   let t = v7t.c(46),
     {
       title: n,

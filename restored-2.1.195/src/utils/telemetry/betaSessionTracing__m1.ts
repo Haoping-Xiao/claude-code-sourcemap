@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MAe
 // matched 2.1.88 source: src/utils/telemetry/betaSessionTracing.ts
 // class=modified (alt of src/utils/telemetry/betaSessionTracing.ts)  jaccard=0.0269  score=0.1079  fileCov=0.0345
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MAe] deps: AVe, ZU, pre, hut, lNn, O8e, Cao, dQn, kt, dn, Du, lT, I1n, xW, Cp, ii, At, vn, WSe, tP, je, vM, co, q8, nIl, Fze, Vv, bPo, ft, ag, Ld, bm, kut, OKt, Ao, _oe, Oot, UX, vQn, BKt, put, NX, wr, I1, u$, mIl, sp, l8t, ALo, gIl, hIl, lze, Rze, K0, _a, kxl, Pxl, Oxl, ft, Nxl, fp, tMo, Hu, tSe, i$, Il, Vxl, Xxl
 rMo = new Set(["interrupt", "refusal-fallback-edit"]);
@@ -49,7 +49,7 @@ async function dwf(e, t, n) {
       await aYt.writeFile(t, n));
   }
 }
-function skl(e, t, n) {
+function truncateContent(e, t, n) {
   let r = rkl();
   if (r.mode === "disabled") return;
   let o = De(t);
@@ -116,7 +116,7 @@ function pwf(e) {
 function nZn(e, t) {
   if (!okl()) return;
   let n = pwf(e);
-  skl("api_request_body", n, {
+  truncateContent("api_request_body", n, {
     model: e.model,
     query_source: t,
   });
@@ -129,7 +129,7 @@ function akl(e, t) {
       ...n.message,
       content: ikl(r),
     };
-  skl("api_response_body", o, {
+  truncateContent("api_response_body", o, {
     model: t.model,
     query_source: t.querySource,
     request_id: t.requestId ?? void 0,

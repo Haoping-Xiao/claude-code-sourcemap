@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vna
 // matched 2.1.88 source: src/utils/ripgrep.ts
 // class=modified  jaccard=0.2913  score=0.8583  fileCov=0.306
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function xna(e) {
   if (e.code === "ENOENT" && p2t().mode === "system") {
@@ -21,10 +21,10 @@ function DWe() {
     argv0: e.argv0,
   };
 }
-function wna(e) {
+function isEagainError(e) {
   return e.includes("os error 11") || e.includes("Resource temporarily unavailable");
 }
-function Cna(e, t, n, r, o = false) {
+function ripGrepRaw(e, t, n, r, o = false) {
   let { rgPath: s, rgArgs: i, argv0: a } = DWe(),
     l = o ? ["-j", "1"] : [],
     c = [...i, ...l, ...e, t],
@@ -89,7 +89,7 @@ function Cna(e, t, n, r, o = false) {
     r,
   );
 }
-async function fnp(e, t, n) {
+async function ripGrepFileCount(e, t, n) {
   let { rgPath: r, rgArgs: o, argv0: s } = DWe();
   return new Promise((i, a) => {
     let l = d2t.spawn(r, [...o, ...e, t], {
@@ -122,7 +122,7 @@ async function fnp(e, t, n) {
       }));
   });
 }
-async function Aue(e, t, n) {
+async function ripGrep(e, t, n) {
   return (
     Rna().catch((r) => {
       ke(r);
@@ -150,10 +150,10 @@ async function Aue(e, t, n) {
           o(xna(i));
           return;
         }
-        if (!c && wna(l)) {
+        if (!c && isEagainError(l)) {
           (T("rg EAGAIN error detected, retrying with single-threaded mode (-j 1)"),
             G("tengu_ripgrep_eagain_retry", {}),
-            Cna(
+            ripGrepRaw(
               e,
               t,
               n,
@@ -187,7 +187,7 @@ async function Aue(e, t, n) {
           (T(`rg error (signal=${i.signal}, code=${i.code}, stderr: ${l}), ${g.length} results`),
           i.code !== 2 && i.code !== "ABORT_ERR")
         )
-          if (p || f || m || wna(l))
+          if (p || f || m || isEagainError(l))
             T(`rg failed (signal=${i.signal}, code=${i.code}): ${i.message}`, {
               level: "error",
             });
@@ -207,7 +207,7 @@ async function Aue(e, t, n) {
         }
         r(g);
       };
-      Cna(e, t, n, (i, a, l) => {
+      ripGrepRaw(e, t, n, (i, a, l) => {
         s(i, a, l, false);
       });
     })

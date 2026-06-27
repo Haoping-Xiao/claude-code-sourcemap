@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module k7
 // matched 2.1.88 source: src/utils/claudeInChrome/mcpServer.ts
 // class=modified  jaccard=0.0866  score=0.0947  fileCov=0.5026
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runClaudeInChromeMcpServer, createChromeContext
 // [unwrapped __esm module k7] deps: Qi, er, je, vn, DD, Ao, Ls, jG, Rx, aW, Du
@@ -217,7 +217,7 @@ Dsm = Cn(() => {
 function Osm(e) {
   return Kcc.some((t) => t === e);
 }
-function Nsm() {
+function getChromeBridgeUrl() {
   if (ut(process.env.USE_LOCAL_OAUTH) || ut(process.env.LOCAL_BRIDGE)) return "ws://localhost:8765";
   if (ut(process.env.USE_STAGING_OAUTH)) return "wss://bridge-staging.claudeusercontent.com";
   return "wss://bridge.claudeusercontent.com";
@@ -227,7 +227,7 @@ function Bsm() {
 }
 function createChromeContext(e) {
   let t = new Xcc(),
-    n = Nsm();
+    n = getChromeBridgeUrl();
   t.info(`Bridge URL: ${n}`);
   let r,
     o = !1,
@@ -249,8 +249,8 @@ function createChromeContext(e) {
     },
     onToolCallDisconnected: () => {
       if (o)
-        return `Browser extension is not connected: the OAuth token Claude Code is using belongs to a different claude.ai account than the one Claude Code is logged in as. If CLAUDE_CODE_OAUTH_TOKEN is set in your shell or CI profile, unset it (or re-mint it for this account), then run /logout and /login in Claude Code and make sure the browser extension is signed into the same claude.ai account. If you continue to experience issues, please report a bug: ${zcc}`;
-      return `Browser extension is not connected. Please ensure the Claude browser extension is installed and running (${Msm}), and that you are logged into claude.ai with the same account as Claude Code. If this is your first time connecting to Chrome, you may need to restart Chrome for the installation to take effect. If you continue to experience issues, please report a bug: ${zcc}`;
+        return `Browser extension is not connected: the OAuth token Claude Code is using belongs to a different claude.ai account than the one Claude Code is logged in as. If CLAUDE_CODE_OAUTH_TOKEN is set in your shell or CI profile, unset it (or re-mint it for this account), then run /logout and /login in Claude Code and make sure the browser extension is signed into the same claude.ai account. If you continue to experience issues, please report a bug: ${BUG_REPORT_URL}`;
+      return `Browser extension is not connected. Please ensure the Claude browser extension is installed and running (${EXTENSION_DOWNLOAD_URL}), and that you are logged into claude.ai with the same account as Claude Code. If this is your first time connecting to Chrome, you may need to restart Chrome for the installation to take effect. If you continue to experience issues, please report a bug: ${BUG_REPORT_URL}`;
     },
     onExtensionPaired: (a, l) => {
       (gn((c) => {
@@ -376,7 +376,8 @@ class Xcc {
   }
 }
 var iTt,
-  Msm = "https://claude.ai/chrome",
-  zcc = "https://github.com/anthropics/claude-code/issues/new?labels=bug,claude-in-chrome",
+  EXTENSION_DOWNLOAD_URL = "https://claude.ai/chrome",
+  BUG_REPORT_URL =
+    "https://github.com/anthropics/claude-code/issues/new?labels=bug,claude-in-chrome",
   $sm,
   Kcc;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gUc
 // matched 2.1.88 source: src/utils/queryContext.ts
 // class=modified  jaccard=0.2844  score=0.3991  fileCov=0.4975
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function aXo({
   tools: e,
@@ -38,7 +38,7 @@ async function aXo({
     systemContext: l,
   };
 }
-async function hUc({
+async function buildSideQuestionFallbackParams({
   tools: e,
   commands: t,
   mcpClients: n,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oWe
 // matched 2.1.88 source: src/utils/plugins/fetchTelemetry.ts
 // class=modified  jaccard=0.3026  score=0.8175  fileCov=0.3245
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oWe]
 Alt = {
@@ -25,7 +25,7 @@ function KKd(e) {
 function YKd(e) {
   return e.includes(`anthropics/${xI}`);
 }
-function YD(e, t, n, r, o) {
+function logPluginFetch(e, t, n, r, o) {
   G("tengu_plugin_remote_fetch", {
     source: $e(e),
     host: t ? KKd(t) : "unknown",
@@ -37,7 +37,7 @@ function YD(e, t, n, r, o) {
     }),
   });
 }
-function k8(e) {
+function classifyFetchError(e) {
   let t = String(e?.message ?? e);
   if (/ENOTFOUND|ECONNREFUSED|EAI_AGAIN|Could not resolve host|Connection refused/i.test(t))
     return "dns_or_refused";

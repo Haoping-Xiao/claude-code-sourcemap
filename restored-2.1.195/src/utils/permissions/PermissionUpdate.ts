@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fre
 // matched 2.1.88 source: src/utils/permissions/PermissionUpdate.ts
 // class=modified  jaccard=0.5714  score=0.884  fileCov=0.6177
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fre] deps: ft, er, je, wr, PB, ys, Rd, vn, vf, dr, Jt, QH
 rup = ["allow", "deny", "ask"];
@@ -18,7 +18,7 @@ function Jjt(e) {
     }
   });
 }
-function My(e, t) {
+function applyPermissionUpdate(e, t) {
   switch (t.type) {
     case "setMode":
       if (t.mode === "bypassPermissions" && !e.isBypassPermissionsModeAvailable)
@@ -127,14 +127,14 @@ function My(e, t) {
 }
 function T4(e, t) {
   let n = e;
-  for (let r of t) n = My(n, r);
+  for (let r of t) n = applyPermissionUpdate(n, r);
   return n;
 }
-function Pao(e) {
+function supportsPersistence(e) {
   return e === "localSettings" || e === "userSettings" || e === "projectSettings";
 }
-function zue(e) {
-  if (!Pao(e.destination)) return;
+function persistPermissionUpdate(e) {
+  if (!supportsPersistence(e.destination)) return;
   if (e.type === "setMode" && e.mode === "bypassPermissions") {
     T(
       `setMode:'bypassPermissions' is session-scoped; not persisting as defaultMode to ${e.destination}`,
@@ -220,7 +220,7 @@ function zue(e) {
   }
 }
 function Y8(e) {
-  for (let t of e) zue(t);
+  for (let t of e) persistPermissionUpdate(t);
 }
 function v5e(e, t = "session") {
   let n = xNn(e);

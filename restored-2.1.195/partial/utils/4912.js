@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q5l
 // matched 2.1.88 source: src/components/LogoV2/LogoV2.tsx
 // class=partial  jaccard=0.0649  score=0.6374  fileCov=0.0673
-// note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q5l] deps: Ye, Un, GY, er
 zXt = R(rt(), 1), e2o = R(se(), 1);
@@ -26,7 +26,7 @@ function Y5l(e) {
 function b4f() {
   Tor = null;
 }
-function X5l() {
+function LogoV2() {
   let e = V5l.c(7),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = Lc(), e[0] = t;else t = e[0];

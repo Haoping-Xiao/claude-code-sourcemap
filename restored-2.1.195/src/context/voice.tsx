@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qLn
 // matched 2.1.88 source: src/context/voice.tsx
 // class=modified  jaccard=0.435  score=0.9427  fileCov=0.4469
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: useVoiceState, useSetVoiceState, useGetVoiceState, VoiceProvider
 // [unwrapped __esm module qLn] deps: iu, ft, At, Hu, Yf
@@ -26,14 +26,14 @@ function VoiceProvider(e) {
 function XWd() {
   return uL(KWd);
 }
-function YJr() {
+function useVoiceStore() {
   let e = E0e.useContext(Z5i);
   if (!e) throw Error("useVoiceState must be used within a VoiceProvider");
   return e;
 }
 function useVoiceState(e) {
   let t = KJr.c(3),
-    n = YJr(),
+    n = useVoiceStore(),
     r;
   if (t[0] !== e || t[1] !== n) ((r = () => e(n.getState())), (t[0] = e), (t[1] = n), (t[2] = r));
   else r = t[2];
@@ -41,9 +41,9 @@ function useVoiceState(e) {
   return E0e.useSyncExternalStore(n.subscribe, o, o);
 }
 function useSetVoiceState() {
-  return YJr().setState;
+  return useVoiceStore().setState;
 }
 function useGetVoiceState() {
-  return YJr().getState;
+  return useVoiceStore().getState;
 }
 var KJr, E0e, tqi, KWd, Z5i;

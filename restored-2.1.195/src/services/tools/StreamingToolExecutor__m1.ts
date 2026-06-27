@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module __l
 // matched 2.1.88 source: src/services/tools/StreamingToolExecutor.ts
 // class=modified (alt of src/services/tools/StreamingToolExecutor.ts)  jaccard=0.0651  score=0.2178  fileCov=0.0849
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module __l] deps: ql, Ye, Kyt
 ((f_l = R(rt(), 1)), (x$e = R(se(), 1)));
@@ -43,7 +43,7 @@ ${r}`,
     return;
   }
 }
-function S_l(e) {
+function StreamingToolExecutor(e) {
   let t = [];
   for (let n of e.values()) {
     if (n.phase === "start" || n.phase === "executing") continue;

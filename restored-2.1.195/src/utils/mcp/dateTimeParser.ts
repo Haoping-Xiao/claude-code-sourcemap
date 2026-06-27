@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module K8o
 // matched 2.1.88 source: src/utils/mcp/dateTimeParser.ts
 // class=modified  jaccard=0.5677  score=0.7073  fileCov=0.742
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K8o] deps: ft, EW, Ye, HVt
 _en = R(rt(), 1);
-async function zgc(e, t, n) {
+async function parseNaturalLanguageDateTime(e, t, n) {
   let r = new Date(),
     o = r.toISOString(),
     s = -r.getTimezoneOffset(),

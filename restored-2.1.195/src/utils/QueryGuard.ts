@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Pmc
 // matched 2.1.88 source: src/utils/QueryGuard.ts
 // class=modified  jaccard=0.632  score=0.9352  fileCov=0.661
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pmc] deps: fd, je, At, Is
 Imc = require("child_process");
-class T8o {
+class QueryGuard {
   _status = "idle";
   _generation = 0;
   _changed = Mi();

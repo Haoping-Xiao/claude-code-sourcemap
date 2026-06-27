@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module Bot
 // matched 2.1.88 source: src/utils/thinking.ts
 // class=modified (alt of src/utils/thinking.ts)  jaccard=0.1229  score=0.3827  fileCov=0.1533
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function xCn() {
   return Dr().showThinkingSummaries ?? false;
 }
-function B4e() {
+function isUltrathinkEnabled() {
   return at("tengu_turtle_carbon", true);
 }
 function kvi(e) {
@@ -29,7 +29,7 @@ function q9(e, t = false) {
   let n = t ? Qkd : Jkd;
   return n[e % n.length];
 }
-function D9r(e) {
+function modelSupportsThinking(e) {
   let t = W9(e, "thinking");
   if (t !== void 0) return t;
   return !mo(e).includes("claude-3-");
@@ -53,7 +53,7 @@ function U4e(e) {
   if (JB(t, "rejects_disabled_thinking")) return true;
   return ZO(l_(e));
 }
-function Uot(e) {
+function modelSupportsAdaptiveThinking(e) {
   let t = W9(e, "adaptive_thinking");
   if (t !== void 0) return t;
   let n = mo(e);

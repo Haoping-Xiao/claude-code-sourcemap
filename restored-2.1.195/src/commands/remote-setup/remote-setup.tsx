@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $nc
 // matched 2.1.88 source: src/commands/remote-setup/remote-setup.tsx
 // class=modified  jaccard=0.4989  score=0.7114  fileCov=0.6255
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module $nc] deps: TM, Rc, Rx, c_, je, Cv
@@ -24,7 +24,7 @@ BGo = class BGo {
     return "[REDACTED:gh-token]";
   }
 };
-async function kXf() {
+async function checkLoginState() {
   if (!(await Pnc()))
     return {
       status: "not_signed_in",
@@ -54,7 +54,7 @@ async function kXf() {
     token: new BGo(n),
   };
 }
-function RXf(e, t) {
+function errorMessage(e, t) {
   switch (e.kind) {
     case "not_signed_in":
       return `Login failed. Please visit ${t} and login using the GitHub App`;
@@ -66,14 +66,14 @@ function RXf(e, t) {
       return "Couldn't reach the server. Check your connection.";
   }
 }
-function LXf({ onDone: e }) {
+function Web({ onDone: e }) {
   let [t, n] = THt.useState({
       name: "checking",
     }),
     r = THt.useRef(!1);
   THt.useEffect(() => {
     (G("tengu_remote_setup_started", {}),
-      kXf().then(async (a) => {
+      checkLoginState().then(async (a) => {
         if (r.current) return;
         switch (a.status) {
           case "not_signed_in":
@@ -126,7 +126,7 @@ function LXf({ onDone: e }) {
           result: We("import_failed"),
           error_kind: $e(l.error.kind),
         }),
-          e(RXf(l.error, lar())));
+          e(errorMessage(l.error, lar())));
         return;
       }
       let c = !0;
@@ -207,7 +207,7 @@ function LXf({ onDone: e }) {
   });
 }
 async function call(e) {
-  return mZ.jsx(LXf, {
+  return mZ.jsx(Web, {
     onDone: e,
   });
 }

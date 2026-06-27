@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kv
 // matched 2.1.88 source: src/services/mcp/utils.ts
 // class=modified  jaccard=0.3896  score=0.7044  fileCov=0.4658
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kv] deps: Sae, Qi, ghe, Xr, ft, w8, VM, S_e, er, gb, Lo, je, At, ys, Rd, QH, nDe, $g, Xh, vf, hY, L7, dr, lj, Jt, cdo, dn, kt, Yle, a5, sst, MPn, bCe, kst, g$
 ((oJ = require("fs/promises")), (NSe = require("path")));
@@ -65,7 +65,7 @@ function Odt(e, t) {
   };
   return (delete n[t], n);
 }
-function aDe(e) {
+function hashMcpConfig(e) {
   let { scope: t, pluginSource: n, pluginPath: r, configError: o, ...s } = e,
     i = s;
   if ((delete i.tools, i.type === "stdio" || (i.type === void 0 && "command" in i)))
@@ -89,7 +89,7 @@ function DCa(e, t) {
         return (sn(l.name, "excludeStalePluginClients: marking stale (removed)"), true);
       return false;
     }
-    if (aDe(l.config) !== aDe(c))
+    if (hashMcpConfig(l.config) !== hashMcpConfig(c))
       return (sn(l.name, "excludeStalePluginClients: marking stale (config hash changed)"), true);
     return false;
   });
@@ -114,7 +114,7 @@ function DCa(e, t) {
     stale: n,
   };
 }
-function cF(e) {
+function describeMcpConfigFilePath(e) {
   switch (e) {
     case "user":
       return b0();
@@ -134,7 +134,7 @@ function cF(e) {
       return e;
   }
 }
-function h3t(e) {
+function getScopeLabel(e) {
   switch (e) {
     case "local":
       return "Local config (private to you in this project)";
@@ -154,13 +154,13 @@ function h3t(e) {
       return e;
   }
 }
-function Ndt(e) {
+function ensureConfigScope(e) {
   if (!e) return "local";
   if (!WRr().options.includes(e))
     throw Error(`Invalid scope: ${e}. Must be one of: ${WRr().options.join(", ")}`);
   return e;
 }
-function PCa(e) {
+function ensureTransport(e) {
   if (!e) return "stdio";
   if (e === "streamable-http") return "http";
   if (e !== "stdio" && e !== "sse" && e !== "http")
@@ -169,7 +169,7 @@ function PCa(e) {
     );
   return e;
 }
-function vdo(e) {
+function parseHeaders(e) {
   let t = {};
   for (let n of e) {
     let r = n.indexOf(":");
@@ -189,14 +189,14 @@ function g3t(e) {
     return "approved";
   return "pending";
 }
-function aqe(e) {
+function getProjectMcpServerStatus(e) {
   let t = g3t(e);
   if (t !== "pending") return t;
   if (xCt() && uj() && Om("projectSettings")) return "approved";
   if (Ir() && Om("projectSettings")) return "approved";
   return "pending";
 }
-function ITp(e) {
+function getMcpServerScopeFromToolName(e) {
   if (
     !gk({
       name: e,
@@ -211,7 +211,7 @@ function ITp(e) {
 }
 function wdo(e) {
   if (!gk(e)) return null;
-  return e.mcpInfo?.scope ?? ITp(e.name);
+  return e.mcpInfo?.scope ?? getMcpServerScopeFromToolName(e.name);
 }
 function xTp(e) {
   return e.type === "stdio" || e.type === void 0;

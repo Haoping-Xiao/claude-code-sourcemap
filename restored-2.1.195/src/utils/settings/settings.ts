@@ -95,7 +95,7 @@ function getSettingsWithErrors() {
   let t = SLr(cj());
   return (pa("loadSettingsFromDisk_end"), Kon(t), t);
 }
-function getManagedFileSettingsPresence() {
+function getManagedSettingsFilePath() {
   let e = [QC()];
   if (Vt() === "wsl" && Vee()) e.unshift(NO);
   for (let t of e) {

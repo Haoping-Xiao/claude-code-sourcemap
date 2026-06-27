@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DTl
 // matched 2.1.88 source: src/tools/PowerShellTool/PowerShellTool.tsx
 // class=modified (alt of src/tools/PowerShellTool/PowerShellTool.tsx)  jaccard=0.141  score=0.4003  fileCov=0.1787
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isAutobackgroundingAllowed, detectBlockedSleepPattern, PowerShellTool
 // [unwrapped __esm module DTl] deps: Ko, E5, ql, kLe, cjn, ljn, Ye
@@ -80,7 +80,7 @@ function OTl() {
     !xo.areUnsandboxedCommandsAllowed()
   );
 }
-async function* xSf({
+async function* runPowerShellCommand({
   input: e,
   abortController: t,
   taskRegistry: n,
@@ -348,7 +348,7 @@ var W$e,
   MTl = 2000,
   HSf = 1000,
   TSf,
-  $Tl =
+  WINDOWS_SANDBOX_POLICY_REFUSAL =
     "Enterprise policy requires sandboxing, but sandboxing is not available on native Windows. Shell command execution is blocked on this platform by policy.",
   pKt,
   vSf = "command contains control characters that would be hidden in the approval dialog",

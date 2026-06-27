@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EVn
 // matched 2.1.88 source: src/utils/autoUpdater.ts
 // class=modified  jaccard=0.2322  score=0.2691  fileCov=0.6286
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module EVn] deps: At, A9e
 ((_za = require("fs")),
@@ -10,7 +10,7 @@
   (dAo = require("os")),
   (Agt = require("path")),
   (bza = /^\s*alias\s+claude\s*=/));
-async function wza() {
+async function assertMinVersion() {
   try {
     let e = await v7("tengu_version_config", {
       minVersion: "0.0.0",
@@ -64,7 +64,7 @@ async function AVn() {
   return (await v9e()).maxVersion;
 }
 async function v9e() {
-  let e = await Iza(),
+  let e = await getMaxVersionConfig(),
     t = !1,
     n = e.external || void 0,
     r = n ? (T9e.parse(n)?.version ?? void 0) : void 0;
@@ -93,9 +93,9 @@ function wgt(e, t, n) {
   );
 }
 async function Cza() {
-  return (await Iza()).external_message || void 0;
+  return (await getMaxVersionConfig()).external_message || void 0;
 }
-async function Iza() {
+async function getMaxVersionConfig() {
   try {
     return await v7("tengu_max_version_config", {});
   } catch (e) {
@@ -116,17 +116,17 @@ function HVn(e) {
   }
   return null;
 }
-function Cgt(e) {
+function shouldSkipVersion(e) {
   let t = HVn(e);
   if (t) T(`Skipping update to ${e}: ${t}`);
   return t !== null;
 }
-function xza() {
+function getLockFilePath() {
   return x6.join(tr(), ".update.lock");
 }
-async function $zp() {
+async function acquireLock() {
   let e = qt(),
-    t = xza();
+    t = getLockFilePath();
   try {
     let n = await e.stat(t);
     if (Date.now() - n.mtimeMs < Eza) return !1;
@@ -180,7 +180,7 @@ async function $zp() {
 }
 async function Ozp() {
   let e = qt(),
-    t = xza();
+    t = getLockFilePath();
   try {
     if (
       (await e.readFile(t, {
@@ -202,7 +202,7 @@ function mAo() {
     return "bun";
   return Oe.isRunningWithBun() && !dm() ? "bun" : "npm";
 }
-async function kza() {
+async function getInstallationPrefix() {
   let e = mAo() === "bun",
     t = null;
   if (e)
@@ -223,15 +223,15 @@ async function kza() {
   return t.stdout.trim() || null;
 }
 async function Nzp() {
-  let e = await kza();
+  let e = await getInstallationPrefix();
   if (!e) return [];
   if (mAo() === "bun") return [x6.join(e, "claude")];
   if (Vt() === "windows") return [x6.join(e, "claude.cmd"), x6.join(e, "claude.exe")];
   return [x6.join(e, "bin", "claude")];
 }
-async function Rza() {
+async function checkGlobalInstallPermissions() {
   try {
-    let e = await kza();
+    let e = await getInstallationPrefix();
     if (!e)
       return {
         hasPermissions: !1,
@@ -266,7 +266,7 @@ async function Rza() {
     );
   }
 }
-async function Igt(e) {
+async function getLatestVersion(e) {
   let t = e === "stable" ? "stable" : "latest",
     n = await Gr(
       "npm",
@@ -317,7 +317,7 @@ async function Igt(e) {
   }
   return (xe("update_check"), n.stdout.trim() || null);
 }
-async function Lza() {
+async function getNpmDistTags() {
   let e = await Gr(
     "npm",
     [
@@ -364,7 +364,7 @@ async function Lza() {
     );
   }
 }
-async function zqt(e) {
+async function getLatestVersionFromGcs(e) {
   if (Vi()) return null;
   let t = 0;
   try {
@@ -415,11 +415,14 @@ async function Bzp(e) {
   }
 }
 async function TVn(e, t) {
-  let [n, r] = await Promise.all([Bzp(e), zqt(t)]);
+  let [n, r] = await Promise.all([Bzp(e), getLatestVersionFromGcs(t)]);
   return n ?? r;
 }
 async function Dza() {
-  let [e, t] = await Promise.all([zqt("latest"), zqt("stable")]);
+  let [e, t] = await Promise.all([
+    getLatestVersionFromGcs("latest"),
+    getLatestVersionFromGcs("stable"),
+  ]);
   return {
     latest: e,
     stable: t,
@@ -428,8 +431,8 @@ async function Dza() {
 function xgt() {
   return Tgt;
 }
-async function Kqt(e) {
-  if (!(await $zp()))
+async function installGlobalPackage(e) {
+  if (!(await acquireLock()))
     return (
       It("update_apply", "update_apply_lock_contention"),
       T("Another process is currently installing an update", {
@@ -452,7 +455,7 @@ async function Kqt(e) {
       }
     );
   try {
-    await Uzp();
+    await removeClaudeAliasesFromShellConfigs();
     let t = mAo();
     if (t === "npm" && Oe.isNpmFromWindowsPath())
       return (
@@ -715,7 +718,7 @@ To fix this issue:
     await Ozp();
   }
 }
-async function Uzp() {
+async function removeClaudeAliasesFromShellConfigs() {
   let e = DPe();
   for (let [, t] of Object.entries(e))
     try {

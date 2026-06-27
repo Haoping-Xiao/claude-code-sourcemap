@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jfc
 // matched 2.1.88 source: src/cli/print.ts
 // class=modified (alt of src/cli/print.ts)  jaccard=0.0676  score=0.2343  fileCov=0.0867
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jfc]
 bur = class bur extends TypeError {
@@ -47,7 +47,7 @@ async function* Scm(e, t, n) {
     reason: "completed",
   };
 }
-function Aur({
+function runHeadlessStreaming({
   run: e,
   queryParams: t,
   commands: n = [],

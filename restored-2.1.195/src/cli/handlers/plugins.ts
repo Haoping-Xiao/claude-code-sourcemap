@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W9o
 // matched 2.1.88 source: src/cli/handlers/plugins.ts
 // class=modified  jaccard=0.2674  score=0.3271  fileCov=0.5944
-// note: deminified; 16 identifiers renamed (exports/displayName/curated)
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: pluginValidateHandler, pluginUpdateHandler, pluginUninstallHandler, pluginTagHandler, pluginPruneHandler, pluginListHandler, pluginInstallHandler, pluginInitHandler, pluginEnableHandler, pluginDisableHandler, pluginDetailsHandler, marketplaceUpdateHandler, marketplaceRemoveHandler, marketplaceListHandler, marketplaceAddHandler, handleMarketplaceError, VALID_UPDATE_SCOPES, VALID_INSTALLABLE_SCOPES
 // [unwrapped __esm module W9o] deps: Pw, At, Jt, ZC
@@ -15,7 +15,7 @@ function handleMarketplaceError(e, t) {
   }),
     ws(`${nt.cross} Failed to ${t}: ${be(e)}`));
 }
-function q9o(e) {
+function printValidationResult(e) {
   let t = [];
   if (e.errors.length > 0)
     (t.push(`${nt.cross} Found ${e.errors.length} ${bn(e.errors.length, "error")}:`, ""),
@@ -50,8 +50,9 @@ async function pluginValidateHandler(e, t, n) {
     return;
   }
   let { allSuccess: s, noErrors: i, hasWarnings: a } = Wjl([r, ...o], n),
-    l = [`Validating ${r.fileType} manifest: ${r.filePath}`, "", ...q9o(r)];
-  for (let c of o) (l.push(`Validating ${c.fileType}: ${c.filePath}`, ""), l.push(...q9o(c)));
+    l = [`Validating ${r.fileType} manifest: ${r.filePath}`, "", ...printValidationResult(r)];
+  for (let c of o)
+    (l.push(`Validating ${c.fileType}: ${c.filePath}`, ""), l.push(...printValidationResult(c)));
   if (s) l.push(a ? `${nt.tick} Validation passed with warnings` : `${nt.tick} Validation passed`);
   else if (i && a) l.push(`${nt.cross} Validation failed (--strict treats warnings as errors)`);
   else l.push(`${nt.cross} Validation failed`);
@@ -205,7 +206,7 @@ async function pluginInitHandler(e, t, n) {
   }
   for (let A of p) r.push(`  kept existing ${A} (use --force to overwrite)`);
   let f = await bXt(a);
-  if (!f.success || f.warnings.length > 0) r.push(...q9o(f));
+  if (!f.success || f.warnings.length > 0) r.push(...printValidationResult(f));
   if (!f.success) {
     (Le("cli_plugin_init", "self_validate_failed"), vZ(e, r, 1));
     return;

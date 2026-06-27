@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qbe
 // matched 2.1.88 source: src/memdir/memoryAge.ts
 // class=modified  jaccard=0.1737  score=0.2876  fileCov=0.3049
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qbe] deps: IB, Zf, ft, np, Tc, kt, je, At, es, vn, Ect
 POn = Cn(
@@ -30,7 +30,7 @@ Important:
 function rop(e) {
   return Math.max(0, Math.floor((Date.now() - e) / 86400000));
 }
-function Coo(e) {
+function memoryFreshnessText(e) {
   let t = rop(e);
   if (t <= 1) return "";
   return (
@@ -39,8 +39,8 @@ function Coo(e) {
     "claims about code behavior or file:line citations may be outdated. Verify against current code before asserting as fact."
   );
 }
-function Ura(e) {
-  let t = Coo(e);
+function memoryFreshnessNote(e) {
+  let t = memoryFreshnessText(e);
   if (!t) return "";
   return `<system-reminder>${t}</system-reminder>
 `;

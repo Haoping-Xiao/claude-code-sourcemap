@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module d4o
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx
 // class=modified  jaccard=0.2531  score=0.4146  fileCov=0.3939
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function LYl(e) {
+function ConfirmStep(e) {
   let t = RYl.c(88),
     { tools: n, existingAgents: r, onSave: o, onSaveAndEdit: s, error: i } = e,
     { goBack: a, wizardData: l } = Eu(),
@@ -62,7 +62,7 @@ function LYl(e) {
     if (t[30] !== p.whenToUse) ((Z = Rs(p.whenToUse, 240)), (t[30] = p.whenToUse), (t[31] = Z));
     else Z = t[31];
     let J = Z,
-      ne = t9f,
+      ne = _temp,
       oe;
     if (t[32] !== p.memory)
       ((oe = lu()
@@ -444,7 +444,7 @@ function e9f(e, t) {
     t,
   );
 }
-function t9f(e) {
+function _temp(e) {
   if (e === void 0) return "All tools";
   if (e.length === 0) return "None";
   if (e.length === 1) return e[0] || "None";

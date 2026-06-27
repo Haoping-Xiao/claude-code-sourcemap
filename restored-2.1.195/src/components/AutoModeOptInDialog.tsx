@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Sdr
 // matched 2.1.88 source: src/components/AutoModeOptInDialog.tsx
 // class=modified  jaccard=0.5209  score=0.6328  fileCov=0.7465
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: AutoModeOptInDialog, AUTO_MODE_DESCRIPTION
 function AutoModeOptInDialog(e) {
@@ -11,7 +11,7 @@ function AutoModeOptInDialog(e) {
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((s = []), (t[0] = s));
   else s = t[0];
-  Dyc.useEffect(Opm, s);
+  Dyc.useEffect(_temp, s);
   let i;
   if (t[1] !== n || t[2] !== r)
     ((i = function (A) {
@@ -159,7 +159,7 @@ function $pm(e) {
     autoModeOptInDismissed: void 0,
   };
 }
-function Opm() {
+function _temp() {
   G("tengu_auto_mode_opt_in_dialog_shown", {});
 }
 var Lyc,

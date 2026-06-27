@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q7
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=modified  jaccard=0.3441  score=0.4787  fileCov=0.5503
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q7] deps: OM
 p_ = {
@@ -33,7 +33,7 @@ p_ = {
   (n4d = RU(p_.MOUSE_NORMAL) + RU(p_.MOUSE_BUTTON) + RU(p_.MOUSE_ANY) + RU(p_.MOUSE_SGR)),
   (r4d = RU(p_.MOUSE_NORMAL) + RU(p_.MOUSE_SGR)),
   (kce = W7(p_.MOUSE_SGR) + W7(p_.MOUSE_ANY) + W7(p_.MOUSE_BUTTON) + W7(p_.MOUSE_NORMAL)));
-function iGe() {
+function isProgressReportingAvailable() {
   let e = fy()?.progressReporting;
   if (e !== void 0) return e;
   if (!process.stdout.isTTY) return false;
@@ -48,7 +48,7 @@ function iGe() {
 function c4i(e) {
   l4i = e;
 }
-function LU() {
+function isSynchronizedOutputSupported() {
   if (process.env.CLAUDE_BG_BACKEND === "daemon") return fy()?.syncOutput !== false;
   if (process.env.TMUX) return false;
   if (ut(process.env.CLAUDE_CODE_FORCE_SYNC_OUTPUT)) return true;
@@ -109,7 +109,7 @@ function d4i(e) {
 function _Bt() {
   return MRn;
 }
-function yb() {
+function isXtermJs() {
   if (fy()?.isVscodeTerm) return true;
   if (process.env.TERM_PROGRAM === "vscode") return true;
   return MRn?.startsWith("xterm.js") ?? false;
@@ -135,14 +135,14 @@ function f4i() {
 function $7r() {
   if (process.env.CLAUDE_BG_BACKEND === "daemon") return false;
   return (
-    LU() &&
+    isSynchronizedOutputSupported() &&
     process.env.ZELLIJ == null &&
     !E1.isJetBrainsIdeTerminal() &&
-    !yb() &&
+    !isXtermJs() &&
     Oe.WT_SESSION == null
   );
 }
-function O7r(e, t, n = false, r) {
+function writeDiffToTerminal(e, t, n = false, r) {
   let o = r !== void 0 && r > 1 ? r - 1 : void 0;
   if (t.length === 0) return;
   let s = !n,

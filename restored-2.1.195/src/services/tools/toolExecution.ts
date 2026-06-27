@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ALo
 // matched 2.1.88 source: src/services/tools/toolExecution.ts
 // class=modified  jaccard=0.2864  score=0.362  fileCov=0.5784
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ALo]
 s_f = Object.freeze({
@@ -10,7 +10,7 @@ s_f = Object.freeze({
     ["claude/endTurn"]: !0,
   }),
 });
-function XXn(e) {
+function classifyToolError(e) {
   if (e instanceof Error) {
     let t = xd(e);
     if (t) return `Error:${t}`;
@@ -104,7 +104,7 @@ function lHl(e) {
     isSad: !1,
   };
 }
-function l_f(e, t) {
+function ruleSourceToOTelSource(e, t) {
   switch (e) {
     case "session":
       return t === "allow" ? "user_temporary" : "user_reject";
@@ -115,7 +115,7 @@ function l_f(e, t) {
       return "config";
   }
 }
-function c_f(e, t) {
+function decisionReasonToOTelSource(e, t) {
   if (!e) return "config";
   switch (e.type) {
     case "permissionPromptTool": {
@@ -124,7 +124,7 @@ function c_f(e, t) {
       return t === "allow" ? "user_temporary" : "user_reject";
     }
     case "rule":
-      return l_f(e.rule.source, t);
+      return ruleSourceToOTelSource(e.rule.source, t);
     case "hook":
       return "hook";
     case "mode":
@@ -188,7 +188,7 @@ function d_f(e, t) {
   if (!n) return;
   return t.find((r) => hc(r.name) === n.serverName);
 }
-async function* eKt(e, t, n, r, o) {
+async function* runToolUse(e, t, n, r, o) {
   let s = e.name,
     i = _l(r.options.tools, s, r.options.toolAliases);
   if (!i) {
@@ -321,7 +321,8 @@ async function* eKt(e, t, n, r, o) {
         });
       return;
     }
-    for await (let y of p_f(i, e.id, g, r, n, t, a, l, d, p, f, o)) yield y;
+    for await (let y of streamedCheckPermissionsAndCallTool(i, e.id, g, r, n, t, a, l, d, p, f, o))
+      yield y;
   } catch (h) {
     let y = h instanceof Error ? h.message : String(h),
       b = i ? ` (${i.name})` : "";
@@ -349,10 +350,10 @@ async function* eKt(e, t, n, r, o) {
     };
   }
 }
-function p_f(e, t, n, r, o, s, i, a, l, c, u, d) {
+function streamedCheckPermissionsAndCallTool(e, t, n, r, o, s, i, a, l, c, u, d) {
   let p = new E4();
   return (
-    m_f(e, t, n, r, o, s, i, a, l, c, u, d, (f) => {
+    checkPermissionsAndCallTool(e, t, n, r, o, s, i, a, l, c, u, d, (f) => {
       if (f.type !== "progress") {
         p.enqueue(f);
         return;
@@ -395,7 +396,7 @@ function p_f(e, t, n, r, o, s, i, a, l, c, u, d) {
     p
   );
 }
-function f_f(e, t, n) {
+function buildSchemaNotSentHint(e, t, n) {
   if (!o$()) return null;
   if (!F$e(n)) return null;
   if (!y4(e)) return null;
@@ -464,7 +465,7 @@ function cHl(e, t) {
   let r = n.error.issues.filter((o) => o.code !== "unrecognized_keys");
   return r.length > 0 ? r : null;
 }
-async function m_f(e, t, n, r, o, s, i, a, l, c, u, d, p) {
+async function checkPermissionsAndCallTool(e, t, n, r, o, s, i, a, l, c, u, d, p) {
   let f = TLo(e.name),
     m = De(n).length;
   if (QFe(n)) {
@@ -541,7 +542,7 @@ Common causes: unescaped backslashes in file paths (use / or \\\\), unescaped co
       J += `
 
 ${oe}`;
-    let re = f_f(e, r.messages, r.options.tools);
+    let re = buildSchemaNotSentHint(e, r.messages, r.options.tools);
     if (re)
       (G("tengu_deferred_tool_schema_not_sent", {
         toolName: Ui(e.name),
@@ -837,7 +838,7 @@ ${oe}`;
     $.behavior !== "ask" && r.toolDecisions?.[t] === void 0)
   ) {
     let J = $.behavior === "allow" ? "accept" : "reject",
-      ne = c_f($.decisionReason, $.behavior),
+      ne = decisionReasonToOTelSource($.decisionReason, $.behavior),
       oe = nNt(e.name, S, e.userFacingName?.(void 0));
     if (
       (Jc("tool_decision", {
@@ -1437,7 +1438,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
         level: "warn",
       });
     let re = be(J),
-      ee = XXn(J);
+      ee = classifyToolError(J);
     if (
       (upo({
         success: !1,

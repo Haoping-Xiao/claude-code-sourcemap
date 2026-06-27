@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mye
 // matched 2.1.88 source: src/utils/fastMode.ts
 // class=modified  jaccard=0.262  score=0.3149  fileCov=0.6095
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mye] deps: IB, Xr, foi
 ((jdd = ve(() =>
@@ -120,9 +120,9 @@ function dAn() {
 }
 function Fx() {
   if (!sc()) return !1;
-  return lle() === null;
+  return getFastModeUnavailableReason() === null;
 }
-function Xdd(e, t) {
+function getDisabledReasonMessage(e, t) {
   switch (e) {
     case "free":
       return t === "oauth"
@@ -138,7 +138,7 @@ function Xdd(e, t) {
       return "Fast mode is currently unavailable";
   }
 }
-function lle() {
+function getFastModeUnavailableReason() {
   if (!sc())
     return fr() !== "firstParty"
       ? "Fast mode is only available when using the Anthropic API directly"
@@ -170,7 +170,7 @@ function lle() {
       if (ut(process.env.CLAUDE_CODE_SKIP_FAST_MODE_NETWORK_ERRORS) || t) return null;
     }
     let n = Ws() !== null ? "oauth" : "api-key",
-      r = Xdd(s1.reason, n);
+      r = getDisabledReasonMessage(s1.reason, n);
     return (T(`Fast mode unavailable: ${r}`), r);
   }
   return null;
@@ -218,7 +218,7 @@ function hoi() {
     date: o,
   };
 }
-function v2r() {
+function getFastModeRuntimeState() {
   if (Knt.status === "cooldown" && Date.now() >= Knt.resetAt) {
     if (sc() && !A2r)
       (T("Fast mode cooldown expired, re-enabling fast mode"), (A2r = !0), _oi.emit());
@@ -228,7 +228,7 @@ function v2r() {
   }
   return Knt;
 }
-function Eoi(e, t) {
+function triggerFastModeCooldown(e, t) {
   if (!sc()) return;
   ((Knt = {
     status: "cooldown",
@@ -249,7 +249,7 @@ function zIe() {
     status: "active",
   };
 }
-function Aoi() {
+function handleFastModeRejectedByAPI() {
   if (s1.status === "disabled") return;
   ((s1 = {
     status: "disabled",
@@ -264,7 +264,7 @@ function Aoi() {
     })),
     w2r.emit(!1));
 }
-function Qdd(e) {
+function getOverageDisabledMessage(e) {
   switch (e) {
     case "out_of_credits":
       return "Fast mode disabled \xB7 usage credits exhausted";
@@ -292,8 +292,8 @@ function PPt(e) {
     e === "org_level_disabled_until" || e === "org_spend_cap_reached" || e === "out_of_credits"
   );
 }
-function voi(e) {
-  let t = Qdd(e);
+function handleFastModeOverageRejection(e) {
+  let t = getOverageDisabledMessage(e);
   if (
     (T(`Fast mode overage rejection: ${e ?? "unknown"} \u2014 ${t}`),
     G("tengu_fast_mode_overage_rejected", {
@@ -311,7 +311,7 @@ function voi(e) {
   Hoi.emit(t);
 }
 function cle() {
-  return v2r().status === "cooldown";
+  return getFastModeRuntimeState().status === "cooldown";
 }
 function QB(e, t) {
   let n = sc() && Fx() && !!t && rg(e);
@@ -319,7 +319,7 @@ function QB(e, t) {
   if (n) return "on";
   return "off";
 }
-async function Zdd(e) {
+async function fetchFastModeStatus(e) {
   let t = `${$s().BASE_API_URL}/api/claude_code_penguin_mode`,
     n =
       "accessToken" in e
@@ -336,7 +336,7 @@ async function Zdd(e) {
     })
   ).data;
 }
-function C2r() {
+function resolveFastModeStatusFromCache() {
   if (!sc()) return;
   if (s1.status !== "pending") return;
   if (dAn()) {
@@ -357,8 +357,8 @@ function C2r() {
           reason: "unknown",
         };
 }
-async function Ynt() {
-  if ((C2r(), Vi())) return;
+async function prefetchFastModeStatus() {
+  if ((resolveFastModeStatusFromCache(), Vi())) return;
   if (!sc()) return;
   if (dAn()) {
     s1 = {
@@ -399,7 +399,7 @@ async function Ynt() {
               }
             : null;
     if (!i) throw Error("No auth available");
-    return Zdd(i);
+    return fetchFastModeStatus(i);
   };
   async function o() {
     try {

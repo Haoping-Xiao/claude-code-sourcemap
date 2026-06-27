@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ill
 // matched 2.1.88 source: src/components/messages/UserToolResultMessage/UserToolSuccessMessage.tsx
 // class=partial  jaccard=0.2333  score=0.4126  fileCov=0.3493
-// note: low-confidence suggestion: src/components/messages/UserToolResultMessage/UserToolSuccessMessage.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/messages/UserToolResultMessage/UserToolSuccessMessage.tsx; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ill] deps: _i, Ye, ii, b8t
 oll = R(lt(), 1), cKn = R(se(), 1);
@@ -82,7 +82,7 @@ function pll(e) {
     };
   });
 }
-function mll(e) {
+function UserToolSuccessMessage(e) {
   let t = fll.c(42),
     {
       message: n,

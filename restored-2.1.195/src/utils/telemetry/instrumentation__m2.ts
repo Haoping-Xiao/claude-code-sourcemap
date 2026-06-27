@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sZo
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.0377  score=0.1618  fileCov=0.0469
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sZo]
 mV = R(QQo(), 1);
@@ -57,7 +57,7 @@ function w$m(e) {
   return Array.isArray(t) && t.every((n) => typeof n === "string") ? t : void 0;
 }
 async function gWc(e) {
-  let t = D$m(e),
+  let t = getOtlpReaders(e),
     n = e.managed,
     r;
   if (n?.policies)
@@ -198,7 +198,7 @@ function yWc(e, t) {
   }
   return s;
 }
-function D$m(e) {
+function getOtlpReaders(e) {
   if (e.telemetry.forward_to.length === 0) return null;
   let t = e.listen.public_url;
   if (!t)

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ole
 // matched 2.1.88 source: src/services/oauth/getOauthProfile.ts
 // class=modified  jaccard=0.3307  score=0.4678  fileCov=0.5302
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ole] deps: e1
 Eld = {};
-async function R7s() {
+async function getOauthProfileFromApiKey() {
   let t = Dt().oauthAccount?.accountUuid,
     n = lI();
   if (!t || !n) return;
@@ -31,7 +31,7 @@ async function R7s() {
     else ke(o);
   }
 }
-async function OIe(e) {
+async function getOauthProfileFromOauthToken(e) {
   let t = `${$s().BASE_API_URL}/api/oauth/profile`;
   try {
     let n = await po.get(t, {

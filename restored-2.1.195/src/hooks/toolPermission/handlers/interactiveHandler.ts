@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rko
 // matched 2.1.88 source: src/hooks/toolPermission/handlers/interactiveHandler.ts
 // class=modified  jaccard=0.2634  score=0.5584  fileCov=0.3327
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rko] deps: Jt, Un
 Ddf = [
@@ -43,7 +43,7 @@ function Pdf(e, t) {
     } else n.push(r);
   if (n.length > 0) e.persistPermissions(n);
 }
-function Zfl(e) {
+function handleInteractivePermission(e) {
   let {
       ctx: t,
       description: n,

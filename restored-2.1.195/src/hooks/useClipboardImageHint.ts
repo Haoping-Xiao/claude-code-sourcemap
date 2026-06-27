@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DGe
 // matched 2.1.88 source: src/hooks/useClipboardImageHint.ts
 // class=modified  jaccard=0.2321  score=0.3544  fileCov=0.4022
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DGe] deps: dn, ADn, je, Bi, ys, HDn, xW, vn, Is, OB, bUt, kv
 ((m8i = require("crypto")),
@@ -14,7 +14,7 @@
   }));
 IDn = /\.(png|jpe?g|gif|webp)$/i;
 y8i = /^(?:[A-Za-z]:\\|\\\\)/;
-function xDn(e, t) {
+function useClipboardImageHint(e, t) {
   let { addNotification: n } = Li(),
     r = jat.useRef(e),
     o = jat.useRef(0),
@@ -32,7 +32,7 @@ function xDn(e, t) {
         if (await g8i())
           ((o.current = l),
             n({
-              key: e6d,
+              key: NOTIFICATION_KEY,
               kind: "contextual",
               text: `Image in clipboard \xB7 ${eC("chat:imagePaste", "Chat", "ctrl+v")} to paste`,
               priority: "immediate",
@@ -46,6 +46,6 @@ function xDn(e, t) {
   }, [e, t, n, i]);
 }
 var jat,
-  e6d = "clipboard-image-hint",
+  NOTIFICATION_KEY = "clipboard-image-hint",
   t6d = 1000,
   n6d = 30000;

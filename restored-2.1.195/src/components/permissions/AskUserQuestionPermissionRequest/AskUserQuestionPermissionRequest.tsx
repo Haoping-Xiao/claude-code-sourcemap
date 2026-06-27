@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx
 // class=modified  jaccard=0.2666  score=0.489  fileCov=0.3697
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KAc]
 xNe = R(rt(), 1);
@@ -24,7 +24,7 @@ function YAc(e) {
   let o = r,
     s;
   if (t[2] !== o || t[3] !== e)
-    ((s = atn.jsx(zym, {
+    ((s = atn.jsx(AskUserQuestionPermissionRequestBody, {
       ...e,
       highlight: o,
     })),
@@ -34,7 +34,7 @@ function YAc(e) {
   else s = t[4];
   return s;
 }
-function zym(e) {
+function AskUserQuestionPermissionRequestBody(e) {
   let t = Xzo.c(83),
     { payload: n, answer: r, highlight: o } = e,
     s = n.questions,

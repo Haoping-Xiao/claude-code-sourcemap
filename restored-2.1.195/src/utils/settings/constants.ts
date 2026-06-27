@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rd
 // matched 2.1.88 source: src/utils/settings/constants.ts
 // class=modified  jaccard=0.6584  score=0.8162  fileCov=0.7729
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rd] deps: cvs, je, vn, SG, Jt
 Eet = require("fs/promises");
@@ -17,7 +17,7 @@ Ia = Object.assign(
     cache: uvs.cache,
   },
 );
-function wG(e) {
+function getSettingSourceName(e) {
   switch (e) {
     case "userSettings":
       return "user";
@@ -31,7 +31,7 @@ function wG(e) {
       return "managed";
   }
 }
-function Tet(e) {
+function getSourceDisplayName(e) {
   switch (e) {
     case "userSettings":
       return "User";
@@ -51,7 +51,7 @@ function Tet(e) {
       return "MCP";
   }
 }
-function fvs(e) {
+function getSettingSourceDisplayNameLowercase(e) {
   switch (e) {
     case "userSettings":
       return "user settings";
@@ -75,7 +75,7 @@ function fvs(e) {
       return "MCP server policy";
   }
 }
-function mvs(e) {
+function getSettingSourceDisplayNameCapitalized(e) {
   switch (e) {
     case "userSettings":
       return "User settings";
@@ -99,7 +99,7 @@ function mvs(e) {
       return "MCP server policy";
   }
 }
-function gvs(e) {
+function parseSettingSourcesFlag(e) {
   if (e === "") return [];
   let t = e.split(",").map((r) => r.trim()),
     n = [];

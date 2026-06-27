@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uAc
 // matched 2.1.88 source: src/utils/skills/skillChangeDetector.ts
 // class=modified  jaccard=0.3809  score=0.623  fileCov=0.4949
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uAc] deps: dre
 cAc = R(rt(), 1);
@@ -12,7 +12,7 @@ async function cym() {
   for (let n of e) t.set(n.name, n.type === "prompt" ? (n.contentHash ?? "") : "");
   return t;
 }
-function uym(e) {
+function initialize(e) {
   let t = e?.stabilityThreshold ?? nym,
     n = e?.pollInterval ?? rym,
     r = e?.reloadDebounce ?? oym,
@@ -39,7 +39,7 @@ function uym(e) {
       _ = JTl(() => {
         (w5(), l.emit());
       });
-    if (((m = await dym()), m.length === 0)) return;
+    if (((m = await getWatchablePaths()), m.length === 0)) return;
     ((h = await s().catch(() => null)),
       T(`Watching for changes in skill/command directories: ${m.join(", ")}...`),
       (u = v(o)));
@@ -157,7 +157,7 @@ function uym(e) {
     _checkIdleTransitionForTest: C,
   };
 }
-async function dym() {
+async function getWatchablePaths() {
   let e = qt(),
     t = [],
     n = _ze("userSettings", "skills");

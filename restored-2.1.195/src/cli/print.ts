@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sFc
 // matched 2.1.88 source: src/cli/print.ts
 // class=modified  jaccard=0.2726  score=0.4545  fileCov=0.4052
-// note: deminified; 23 identifiers renamed (exports/displayName/curated)
+// note: deminified; 29 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForPendingMcpBeforeFirstCommand, shouldWarnRestrictedStartupModel, shouldIgnoreStaleEndSession, runHeadless, restoreDeclaredDialogKinds, resolveDefaultPickRepoint, reportTurnFailed, reconcileMcpServers, modelOverrideToAdoptAfterTurn, mergeMcpClientLists, loadInitialMessages, kickOffBackgroundPluginInstall, joinPromptValues, isRestartedWorkerEpoch, handleOrphanedPermissionResponse, handleMcpSetServers, getCanUseToolFn, findRewindAnchors, createPrintRequestDialog, createKeepAl …
 // [unwrapped __esm module sFc] deps: np, dn, Lo, Bi, u8o, OI
@@ -381,7 +381,7 @@ Error: sandbox required but unavailable: ${b}
       return;
     }
     let ne = t(),
-      oe = await xFc(l.rewindFiles, ne, false);
+      oe = await handleRewindFiles(l.rewindFiles, ne, false);
     if (!oe.canRewind) {
       (process.stderr.write(`Error: ${oe.error || "Unexpected error"}
 `),
@@ -506,7 +506,23 @@ Error: sandbox required but unavailable: ${b}
     z = 0,
     K = false;
   (wC("before_runHeadlessStreaming"), m("starting_query_loop"));
-  for await (let J of wFc(g, _.mcp.clients, o, N, S, q, i, t, n, r, a, l, A, v, C)) {
+  for await (let J of runHeadlessStreaming(
+    g,
+    _.mcp.clients,
+    o,
+    N,
+    S,
+    q,
+    i,
+    t,
+    n,
+    r,
+    a,
+    l,
+    A,
+    v,
+    C,
+  )) {
     if ((z++, z === 1)) m("first_message_drained", `type=${J.type}`);
     if (!K && J.type === "system" && J.subtype === "init") ((K = true), m("system_init_emitted"));
     if (l.outputFormat === "stream-json" && l.verbose) {
@@ -707,7 +723,7 @@ function findRewindAnchors(e, t) {
     precedingAssistantUuid: r,
   };
 }
-function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
+function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
   let g = false,
     h,
     y = false,
@@ -1721,7 +1737,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               let Jr = a(),
                 zr = mergeMcpClientLists(Jr.mcp.clients, ge, Ie.clients);
               He(zr);
-              for (let To of zr) HXo(To);
+              for (let To of zr) reregisterChannelHandlerAfterReconnect(To);
               let to = Ke(Jr);
               for (let To of Xn) e.onCommandLifecycle?.(To, "started");
               if (Sn.mode === "task-notification") {
@@ -2263,7 +2279,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 j_({
                   mode: "prompt",
                   agentId: ls(),
-                  value: lFc,
+                  value: SHUTDOWN_TEAM_PROMPT,
                   uuid: px.randomUUID(),
                 }),
                 eo());
@@ -2284,7 +2300,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           (j_({
             mode: "prompt",
             agentId: ls(),
-            value: lFc,
+            value: SHUTDOWN_TEAM_PROMPT,
             uuid: px.randomUUID(),
           }),
             eo());
@@ -2571,7 +2587,12 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             let xn = Lt.request;
             l((nr) => ({
               ...nr,
-              toolPermissionContext: WLm(xn, Lt.request_id, nr.toolPermissionContext, P),
+              toolPermissionContext: handleSetPermissionMode(
+                xn,
+                Lt.request_id,
+                nr.toolPermissionContext,
+                P,
+              ),
               isUltraplanMode: xn.ultraplan ?? nr.isUltraplanMode,
             }));
           } else if (Lt.request.subtype === "set_model") {
@@ -2676,7 +2697,11 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             Ut(Lt);
           } else if (Lt.request.subtype === "rewind_files") {
             let xn = a(),
-              nr = await xFc(Lt.request.user_message_id, xn, Lt.request.dry_run ?? false);
+              nr = await handleRewindFiles(
+                Lt.request.user_message_id,
+                xn,
+                Lt.request.dry_run ?? false,
+              );
             if (nr.canRewind || Lt.request.dry_run) Ut(Lt, nr);
             else Fn(Lt, nr.error ?? "Unexpected error");
           } else if (Lt.request.subtype === "cancel_async_message") {
@@ -2995,7 +3020,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 }),
                 Xn.client.type === "connected")
               )
-                (He([Xn.client]), HXo(Xn.client), Ut(Lt));
+                (He([Xn.client]), reregisterChannelHandlerAfterReconnect(Xn.client), Ut(Lt));
               else {
                 let zr =
                   Xn.client.type === "failed"
@@ -3135,7 +3160,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 })),
                 Jr.client.type === "connected")
               )
-                (He([Jr.client]), HXo(Jr.client), Ut(Lt));
+                (He([Jr.client]), reregisterChannelHandlerAfterReconnect(Jr.client), Ut(Lt));
               else {
                 let to =
                   Jr.client.type === "failed"
@@ -3206,7 +3231,12 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             }
           } else if (Lt.request.subtype === "channel_enable") {
             let xn = a();
-            qLm(Lt.request_id, Lt.request.serverName, [...xn.mcp.clients, ...ge, ...Ie.clients], P);
+            handleChannelEnable(
+              Lt.request_id,
+              Lt.request.serverName,
+              [...xn.mcp.clients, ...ge, ...Ie.clients],
+              P,
+            );
           } else if (Lt.request.subtype === "mcp_authenticate") {
             let { serverName: xn, redirectUri: nr } = Lt.request,
               Yn = a(),
@@ -4480,7 +4510,7 @@ async function dFc(e, t, n, r, o, s) {
   }
   return u;
 }
-async function xFc(e, t, n) {
+async function handleRewindFiles(e, t, n) {
   if (!K_())
     return {
       canRewind: false,
@@ -4512,7 +4542,7 @@ async function xFc(e, t, n) {
     canRewind: true,
   };
 }
-function WLm(e, t, n, r) {
+function handleSetPermissionMode(e, t, n, r) {
   if (e.mode === "bypassPermissions") {
     if (wU())
       return (
@@ -4574,7 +4604,7 @@ function WLm(e, t, n, r) {
     }
   );
 }
-function qLm(e, t, n, r) {
+function handleChannelEnable(e, t, n, r) {
   let o = (f) =>
       r.enqueue({
         type: "control_response",
@@ -4640,7 +4670,7 @@ function qLm(e, t, n, r) {
       },
     }));
 }
-function HXo(e) {
+function reregisterChannelHandlerAfterReconnect(e) {
   if (e.type !== "connected") return;
   if (V_t(e.name, e.capabilities, e.config.pluginSource).action !== "register") return;
   let n = p$e(e.name, MA()),
@@ -5634,7 +5664,7 @@ var V7e,
   aFc,
   $Lm,
   OLm,
-  lFc = `<system-reminder>
+  SHUTDOWN_TEAM_PROMPT = `<system-reminder>
 You are running in non-interactive mode and cannot return a response to the user until your team is shut down.
 
 You MUST shut down your team before preparing your final response:

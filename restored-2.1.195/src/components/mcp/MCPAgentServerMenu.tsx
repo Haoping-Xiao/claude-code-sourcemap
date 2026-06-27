@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZFl
 // matched 2.1.88 source: src/components/mcp/MCPAgentServerMenu.tsx
 // class=modified  jaccard=0.3162  score=0.4105  fileCov=0.5791
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZFl] deps: np, kt, Yfe
 JFl = {
@@ -13,7 +13,7 @@ JFl = {
   "needs-auth": "needs authentication",
   "needs-approval": "pending approval",
 };
-function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
+function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
   let [r] = na(),
     [o, s] = bse.useState(false),
     [i, a] = bse.useState(null),

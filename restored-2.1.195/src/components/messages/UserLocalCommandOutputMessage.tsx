@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Lil
 // matched 2.1.88 source: src/components/messages/UserLocalCommandOutputMessage.tsx
 // class=modified  jaccard=0.3431  score=0.6565  fileCov=0.4182
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lil] deps: si, np, Ye, co
 ((kil = R(lt(), 1)), (Vpe = R(se(), 1)));
-function Pil(e) {
+function UserLocalCommandOutputMessage(e) {
   let t = Vzn.c(2),
     { content: n } = e,
     r;
@@ -16,7 +16,7 @@ function Pil(e) {
     if (((r = []), o?.trim() && o.trim() !== zw))
       r.push(
         vN.jsx(
-          Dil,
+          IndentedContent,
           {
             children: o.trim(),
           },
@@ -26,7 +26,7 @@ function Pil(e) {
     if (s?.trim())
       r.push(
         vN.jsx(
-          Dil,
+          IndentedContent,
           {
             children: s.trim(),
           },
@@ -38,13 +38,13 @@ function Pil(e) {
   if (r.length === 0) return null;
   return r;
 }
-function Dil(e) {
+function IndentedContent(e) {
   let t = Vzn.c(5),
     { children: n } = e;
   if (n.startsWith(`${mv} `) || n.startsWith(`${BO} `)) {
     let s;
     if (t[0] !== n)
-      ((s = vN.jsx(zof, {
+      ((s = vN.jsx(CloudLaunchContent, {
         children: n,
       })),
         (t[0] = n),
@@ -80,7 +80,7 @@ function Dil(e) {
   else o = t[4];
   return o;
 }
-function zof(e) {
+function CloudLaunchContent(e) {
   let t = Vzn.c(19),
     { children: n } = e,
     r = n[0],

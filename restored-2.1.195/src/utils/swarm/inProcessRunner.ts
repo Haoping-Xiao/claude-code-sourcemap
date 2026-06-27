@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sbt
 // matched 2.1.88 source: src/utils/swarm/inProcessRunner.ts
 // class=modified  jaccard=0.3849  score=0.6551  fileCov=0.4827
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TEAMMATE_SYSTEM_PROMPT_ADDENDUM
 // [unwrapped __esm module sbt] deps: je, H7n
@@ -27,7 +27,7 @@ Just writing a response in text is not visible to others on your team - you MUST
 
 The user interacts primarily with the team lead. Your work is coordinated through the task system and teammate messaging.
 `;
-function uff(e, t, n, r) {
+function createInProcessCanUseTool(e, t, n, r) {
   return async (o, s, i, a, l, c) => {
     let u = c ?? (await lbt(o, s, i, a, l, void 0, r));
     if (u.behavior !== "ask") return u;
@@ -204,7 +204,7 @@ function uff(e, t, n, r) {
     });
   };
 }
-function ofe(e, t, n) {
+function updateTaskState(e, t, n) {
   n.update(e, (r) => (r.type === "in_process_teammate" ? t(r) : r));
 }
 async function dff(e, t, n, r) {
@@ -223,7 +223,7 @@ async function Zgl(e, t, n, r) {
   let o = E9t(e, r);
   await dff(e, De(o), t, n);
 }
-function pff(e) {
+function findAvailableTask(e) {
   let t = new Set(e.filter((n) => n.status !== "completed").map((n) => n.id));
   return e.find((n) => {
     if (n.status !== "pending") return false;
@@ -231,7 +231,7 @@ function pff(e) {
     return n.blockedBy.every((r) => !t.has(r));
   });
 }
-function fff(e) {
+function formatTaskAsPrompt(e) {
   let t = `Complete all open tasks. Start with task #${e.id}: 
 
  ${e.subject}`;
@@ -241,10 +241,10 @@ function fff(e) {
 ${e.description}`;
   return t;
 }
-async function ehl(e, t) {
+async function tryClaimNextTask(e, t) {
   try {
     let n = await W4(e),
-      r = pff(n);
+      r = findAvailableTask(n);
     if (!r) return;
     let o = await vOa(e, r.id, t);
     if (!o.success) {
@@ -256,14 +256,14 @@ async function ehl(e, t) {
         status: "in_progress",
       }),
       T(`[inProcessRunner] Claimed task #${r.id}: ${r.subject}`),
-      fff(r)
+      formatTaskAsPrompt(r)
     );
   } catch (n) {
     T(`[inProcessRunner] Error checking task list: ${n}`);
     return;
   }
 }
-async function mff(e, t, n, r, o, s, i) {
+async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
   T(`[inProcessRunner] ${e.agentName} starting poll loop (abort=${t.signal.aborted})`);
   let l = Date.now(),
     c = 0;
@@ -275,7 +275,7 @@ async function mff(e, t, n, r, o, s, i) {
     if (d && d.type === "in_process_teammate" && d.pendingUserMessages.length > 0) {
       let m = d.pendingUserMessages[0];
       return (
-        ofe(
+        updateTaskState(
           n,
           (g) => ({
             ...g,
@@ -363,7 +363,7 @@ async function mff(e, t, n, r, o, s, i) {
           if (C && A.from === Hd) {
             let x = owo(C.mode);
             (T(`[inProcessRunner] ${e.agentName} applying lead mode_set_request: ${x}`),
-              ofe(
+              updateTaskState(
                 n,
                 (I) =>
                   I.permissionMode === x
@@ -407,7 +407,7 @@ async function mff(e, t, n, r, o, s, i) {
     } catch (m) {
       T(`[inProcessRunner] ${e.agentName} poll error: ${m}`);
     }
-    let f = await ehl(s, e.agentName);
+    let f = await tryClaimNextTask(s, e.agentName);
     if (f)
       return {
         type: "new_message",
@@ -422,7 +422,7 @@ async function mff(e, t, n, r, o, s, i) {
     }
   );
 }
-async function gff(e) {
+async function runInProcessTeammate(e) {
   let {
       identity: t,
       taskId: n,
@@ -517,7 +517,7 @@ ${V}`);
     N = void 0,
     B = false,
     $ = false;
-  if (!g) await ehl(t.parentSessionId, t.agentName);
+  if (!g) await tryClaimNextTask(t.parentSessionId, t.agentName);
   try {
     S.updateTranscript(n, (z) => {
       let K = z.messages;
@@ -537,7 +537,7 @@ ${V}`);
     while (!l.signal.aborted && !B) {
       T(`[inProcessRunner] ${t.agentId} processing prompt: ${M.substring(0, 50)}...`);
       let z = Sl();
-      ofe(
+      updateTaskState(
         n,
         (ye) => ({
           ...ye,
@@ -614,7 +614,7 @@ ${V}`);
       if (
         (await RAn(i, async () =>
           x9(v, async () => {
-            (ofe(
+            (updateTaskState(
               n,
               (ye) => ({
                 ...ye,
@@ -633,11 +633,11 @@ ${V}`);
               agentDefinition: me,
               promptMessages: Z,
               toolUseContext: a,
-              canUseTool: uff(
+              canUseTool: createInProcessCanUseTool(
                 t,
                 z,
                 (ue) => {
-                  ofe(
+                  updateTaskState(
                     n,
                     (we) => ({
                       ...we,
@@ -714,7 +714,7 @@ ${V}`);
               }
               (ce.push(ye), D.push(ye), (ge = Bpe(D, ye, ge)), Q6n(re, ye, ee, C));
               let ue = g8t(re);
-              (ofe(
+              (updateTaskState(
                 n,
                 (we) => ({
                   ...we,
@@ -750,7 +750,7 @@ ${V}`);
         ).finally(() => {
           if (ge) (D.push(...ge.preserved), (ge = null));
         }),
-        ofe(
+        updateTaskState(
           n,
           (ye) => ({
             ...ye,
@@ -774,7 +774,7 @@ ${V}`);
       let ie = a.getAppState().tasks[n],
         le = ie?.type === "in_process_teammate" && ie.isIdle;
       if (
-        (ofe(
+        (updateTaskState(
           n,
           (ye) => (
             ye.onIdleCallbacks?.forEach((ue) => ue()),
@@ -795,7 +795,7 @@ ${V}`);
         });
       else T(`[inProcessRunner] Skipping duplicate idle notification for ${t.agentName}`);
       T(`[inProcessRunner] ${t.agentId} finished prompt, waiting for next`);
-      let He = await mff(t, l, n, a.getAppState, S, t.parentSessionId, g);
+      let He = await waitForNextPromptOrShutdown(t, l, n, a.getAppState, S, t.parentSessionId, g);
       switch (He.type) {
         case "shutdown_request":
           (T(`[inProcessRunner] ${t.agentId} received shutdown request - passing to model`),
@@ -847,7 +847,7 @@ ${V}`);
     let V = false,
       Y;
     if (
-      (ofe(
+      (updateTaskState(
         n,
         (z) => {
           if (z.status !== "running") return ((V = true), z);
@@ -892,7 +892,7 @@ ${V}`);
     let V = false,
       Y;
     if (
-      (ofe(
+      (updateTaskState(
         n,
         (z) => {
           if (z.status !== "running") return ((V = true), z);
@@ -944,9 +944,9 @@ ${V}`);
     );
   }
 }
-function ibt(e) {
+function startInProcessTeammate(e) {
   let t = e.identity.agentId;
-  gff(e).catch((n) => {
+  runInProcessTeammate(e).catch((n) => {
     T(`[inProcessRunner] Unhandled error in ${t}: ${n}`);
   });
 }

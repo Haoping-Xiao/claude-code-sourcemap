@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module w5e
 // matched 2.1.88 source: src/services/mcp/vscodeSdkMcp.ts
 // class=modified  jaccard=0.3211  score=0.4776  fileCov=0.495
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module w5e]
 ((lup = new RegExp("\x00ESCAPED_STAR\x00", "g")),
@@ -16,14 +16,14 @@ var e4t = 50000,
   Vca = 200000,
   nP = 50,
   zca = 10000; /* 1e4 */
-function pup() {
+function readAutoModeEnabledState() {
   let e = at("tengu_auto_mode_config", {})?.enabled;
   return e === "enabled" || e === "disabled" || e === "opt-in" ? e : "opt-in";
 }
 function ELe(e, t, n) {
   return;
 }
-function Yca(e, t) {
+function setupVscodeSdkMcp(e, t) {
   let n = e.find((r) => r.name === "claude-vscode");
   if (n && n.type === "connected") {
     ((Kca = n),
@@ -48,7 +48,7 @@ function Yca(e, t) {
         fable5_launch_show: t?.fable5LaunchShow ?? false,
         startup_announcement: t?.startupAnnouncement ?? false,
       },
-      o = pup();
+      o = readAutoModeEnabledState();
     ((r.tengu_auto_mode_state = o === "opt-in" ? "enabled" : o),
       n.client
         .notification({

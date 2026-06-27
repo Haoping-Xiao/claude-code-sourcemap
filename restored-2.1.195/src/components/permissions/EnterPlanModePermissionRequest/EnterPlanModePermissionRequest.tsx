@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pHc
 // matched 2.1.88 source: src/components/permissions/EnterPlanModePermissionRequest/EnterPlanModePermissionRequest.tsx
 // class=modified  jaccard=0.2019  score=0.2982  fileCov=0.3848
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pHc] deps: Vl, X0, Ye, VM
 ((uHc = R(lt(), 1)), (Ume = R(se(), 1)));
@@ -26,7 +26,7 @@ function H_m(e) {
       };
   }
 }
-function mHc(e) {
+function EnterPlanModePermissionRequest(e) {
   let t = fHc.c(11),
     { payload: n, answer: r } = e,
     o = Ht(T_m),

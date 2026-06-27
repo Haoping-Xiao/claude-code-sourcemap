@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module M$l
 // matched 2.1.88 source: src/hooks/useVimInput.ts
 // class=modified  jaccard=0.3456  score=0.5115  fileCov=0.5159
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function D1o(e) {
+function useVimInput(e) {
   let {
       value: t,
       onChange: n,
@@ -518,7 +518,7 @@ function D1o(e) {
 }
 function O$l(e) {
   let { inputFilter: t } = e,
-    n = D1o({
+    n = useVimInput({
       value: e.value,
       onChange: e.onChange,
       columns: e.columns,

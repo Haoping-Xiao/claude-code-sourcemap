@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Ol
 // matched 2.1.88 source: src/utils/statsCache.ts
 // class=modified  jaccard=0.2942  score=0.4042  fileCov=0.5194
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module _Ol] (exports=jtr)
 var jtr = {};
@@ -113,7 +113,7 @@ async function EOl(e) {
   }
 }
 function AOl() {
-  return SOl.join(tr(), $Df);
+  return SOl.join(tr(), STATS_CACHE_FILENAME);
 }
 function Y1o() {
   return {
@@ -155,7 +155,7 @@ function ODf(e) {
     shotDistribution: e.shotDistribution,
   };
 }
-async function HOl() {
+async function loadStatsCache() {
   let e = AOl();
   try {
     let t = await qs().read(e),
@@ -169,7 +169,7 @@ async function HOl() {
           ),
           Y1o()
         );
-      return (T(`Migrated stats cache from v${n.version} to v${AKe}`), await M7t(r), r);
+      return (T(`Migrated stats cache from v${n.version} to v${AKe}`), await saveStatsCache(r), r);
     }
     if (
       !Array.isArray(n.dailyActivity) ||
@@ -183,7 +183,7 @@ async function HOl() {
     return (T(`Failed to load stats cache: ${be(t)}`), Y1o());
   }
 }
-async function M7t(e) {
+async function saveStatsCache(e) {
   let t = AOl();
   try {
     let n = tr();
@@ -278,17 +278,17 @@ function X1o(e, t, n) {
     totalSpeculationTimeSavedMs: e.totalSpeculationTimeSavedMs + t.totalSpeculationTimeSavedMs,
   };
 }
-function pse(e) {
+function toDateString(e) {
   let n = e.toISOString().split("T")[0];
   if (!n) throw Error("Invalid ISO date string");
   return n;
 }
 function J1o() {
-  return pse(new Date());
+  return toDateString(new Date());
 }
 function TOl() {
   let e = new Date();
-  return (e.setDate(e.getDate() - 1), pse(e));
+  return (e.setDate(e.getDate() - 1), toDateString(e));
 }
 function HKe(e, t) {
   return e < t;
@@ -296,5 +296,5 @@ function HKe(e, t) {
 var SOl,
   AKe = 4,
   MDf = 1,
-  $Df = "stats-cache.json",
+  STATS_CACHE_FILENAME = "stats-cache.json",
   Gtr = null;

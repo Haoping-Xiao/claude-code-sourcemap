@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hka
 // matched 2.1.88 source: src/services/mcp/elicitationHandler.ts
 // class=modified  jaccard=0.5444  score=0.7486  fileCov=0.6662
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hka] deps: fpo
 Owp = ppo;
@@ -17,7 +17,7 @@ gka = class gka extends Error {
 function Bwp(e) {
   return e.mode === "url" ? "url" : "form";
 }
-function Uwp(e, t, n) {
+function findElicitationInQueue(e, t, n) {
   return e.findIndex(
     (r) =>
       r.serverName === t &&
@@ -26,7 +26,7 @@ function Uwp(e, t, n) {
       r.params.elicitationId === n,
   );
 }
-function yka(e, t, n, r) {
+function registerElicitationHandler(e, t, n, r) {
   try {
     (e.setRequestHandler(uhe, async (o, s) => {
       if (r) r.pendingElicitations++;
@@ -36,7 +36,7 @@ function yka(e, t, n, r) {
         mode: $e(i),
       });
       try {
-        let a = await j3t(t, o.params, s.signal);
+        let a = await runElicitationHooks(t, o.params, s.signal);
         if (a)
           return (
             sn(t, `Elicitation resolved by hook: ${De(a)}`),
@@ -91,7 +91,7 @@ function yka(e, t, n, r) {
               }));
           });
         sn(t, `Elicitation response: ${De(u)}`);
-        let d = await G3t(t, u, s.signal, i, l);
+        let d = await runElicitationResultHooks(t, u, s.signal, i, l);
         return (xe("mcp_elicitation_handle"), d);
       } catch (a) {
         return (
@@ -115,7 +115,7 @@ function yka(e, t, n, r) {
         let i = false;
         if (
           (n((a) => {
-            let l = Uwp(a.elicitation.queue, t, s);
+            let l = findElicitationInQueue(a.elicitation.queue, t, s);
             if (l === -1) return a;
             i = true;
             let c = [...a.elicitation.queue];
@@ -140,7 +140,7 @@ function yka(e, t, n, r) {
     return;
   }
 }
-async function j3t(e, t, n) {
+async function runElicitationHooks(e, t, n) {
   try {
     let r = t.mode === "url" ? "url" : "form",
       o = "url" in t ? t.url : void 0,
@@ -169,7 +169,7 @@ async function j3t(e, t, n) {
     return;
   }
 }
-async function G3t(e, t, n, r, o) {
+async function runElicitationResultHooks(e, t, n, r, o) {
   try {
     let { elicitationResultResponse: s, blockingError: i } = await q3t({
       serverName: e,

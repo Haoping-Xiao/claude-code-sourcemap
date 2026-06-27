@@ -2,15 +2,15 @@
 // restored from claude-code 2.1.195 (deminified) — module Yjo
 // matched 2.1.88 source: src/commands/privacy-settings/privacy-settings.tsx
 // class=modified  jaccard=0.3169  score=0.4029  fileCov=0.5973
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module Yjo] deps: kt, Ye, vft, mE, Bs, vi, Ko
 ((AJt = R(lt(), 1)), (fYe = R(rt(), 1)), (Al = R(se(), 1)));
 async function call(e) {
-  if (!(await Tft())) return (e(tKl), null);
+  if (!(await Tft())) return (e(FALLBACK_MESSAGE), null);
   let [n, r] = await Promise.all([Fre(), JDe()]);
-  if (!n.success) return (e(tKl), null);
+  if (!n.success) return (e(FALLBACK_MESSAGE), null);
   let o = n.data,
     s = r.success ? r.data : null;
   async function i(l) {
@@ -54,5 +54,5 @@ async function call(e) {
   });
 }
 var Xjo,
-  tKl =
+  FALLBACK_MESSAGE =
     "Review and manage your privacy settings at https://claude.ai/settings/data-privacy-controls";

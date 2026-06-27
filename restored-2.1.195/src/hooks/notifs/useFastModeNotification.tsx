@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module GDc
 // matched 2.1.88 source: src/hooks/notifs/useFastModeNotification.tsx
 // class=modified  jaccard=0.4046  score=0.8348  fileCov=0.4398
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GDc] deps: Ed, id, uo
 Otn = R(rt(), 1);
-function KDc() {
+function useFastModeNotification() {
   let e = zDc.c(13),
     { addNotification: t } = Li(),
     n = Ht(xCm),
@@ -20,7 +20,7 @@ function KDc() {
       return woi((u) => {
         if (u)
           t({
-            key: VDc,
+            key: ORG_CHANGED_KEY,
             kind: "event",
             color: "fastMode",
             priority: "immediate",
@@ -29,7 +29,7 @@ function KDc() {
         else if (n)
           (r(ICm),
             t({
-              key: VDc,
+              key: ORG_CHANGED_KEY,
               kind: "event",
               color: "warning",
               priority: "immediate",
@@ -53,7 +53,7 @@ function KDc() {
       return Toi((u) => {
         (r(CCm),
           t({
-            key: wCm,
+            key: OVERAGE_REJECTED_KEY,
             kind: "feedback",
             color: "warning",
             priority: "immediate",
@@ -77,10 +77,10 @@ function KDc() {
           let m = Yi(p - Date.now(), {
               hideTrailingZeros: !0,
             }),
-            g = kCm(f, m);
+            g = getCooldownMessage(f, m);
           t({
-            key: WDc,
-            invalidates: [qDc],
+            key: COOLDOWN_STARTED_KEY,
+            invalidates: [COOLDOWN_EXPIRED_KEY],
             text: g,
             color: "warning",
             priority: "immediate",
@@ -88,9 +88,9 @@ function KDc() {
         }),
         d = Soi(() => {
           t({
-            key: qDc,
+            key: COOLDOWN_EXPIRED_KEY,
             kind: "event",
-            invalidates: [WDc],
+            invalidates: [COOLDOWN_STARTED_KEY],
             color: "fastMode",
             text: "Fast limit reset \xB7 now using fast mode",
             priority: "immediate",
@@ -123,7 +123,7 @@ function ICm(e) {
 function xCm(e) {
   return e.fastMode;
 }
-function kCm(e, t) {
+function getCooldownMessage(e, t) {
   switch (e) {
     case "overloaded":
       return `Fast mode overloaded and is temporarily unavailable \xB7 resets in ${t}`;
@@ -133,7 +133,7 @@ function kCm(e, t) {
 }
 var zDc,
   Vfr,
-  WDc = "fast-mode-cooldown-started",
-  qDc = "fast-mode-cooldown-expired",
-  VDc = "fast-mode-org-changed",
-  wCm = "fast-mode-overage-rejected";
+  COOLDOWN_STARTED_KEY = "fast-mode-cooldown-started",
+  COOLDOWN_EXPIRED_KEY = "fast-mode-cooldown-expired",
+  ORG_CHANGED_KEY = "fast-mode-org-changed",
+  OVERAGE_REJECTED_KEY = "fast-mode-overage-rejected";

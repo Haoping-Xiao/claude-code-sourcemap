@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Zrr
 // matched 2.1.88 source: src/commands/rename/rename.ts
 // class=modified  jaccard=0.1658  score=0.3982  fileCov=0.2212
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renameSystemReminder, performRename, call
 function renameSystemReminder(e) {
   let t = Ner(e);
   return aw(`The user named this session "${t}". This may indicate the session's focus or intent.`);
 }
-async function performRename(e, t) {
+async function call(e, t) {
   if (wf())
     return {
       message:
@@ -42,8 +42,8 @@ async function performRename(e, t) {
     }
   );
 }
-async function call(e, t, n) {
-  let { message: r, newName: o, isGenerated: s } = await performRename(n, t);
+async function tjf(e, t, n) {
+  let { message: r, newName: o, isGenerated: s } = await call(n, t);
   return (
     e(r, {
       display: "system",

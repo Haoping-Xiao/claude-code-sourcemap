@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ZU
 // matched 2.1.88 source: src/utils/analyzeContext.ts
 // class=modified  jaccard=0.5229  score=0.8859  fileCov=0.5606
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function ISt(e, t) {
+async function countTokensWithFallback(e, t) {
   try {
     let n = await P5e(e, t);
     if (n !== null) return n;
@@ -26,7 +26,7 @@ async function ISt(e, t) {
     );
   }
 }
-async function iOe(e, t, n, r) {
+async function countToolDefinitionTokens(e, t, n, r) {
   let o = await Promise.all(
       e.map((i) =>
         hZn(i, {
@@ -37,7 +37,7 @@ async function iOe(e, t, n, r) {
         }),
       ),
     ),
-    s = await ISt([], o);
+    s = await countTokensWithFallback([], o);
   if (s === null || s === 0) {
     let i = e.map((a) => a.name).join(", ");
     T(
@@ -82,7 +82,7 @@ async function Uwf(e, t) {
 `);
     if (u.length > 0)
       s =
-        (await ISt(
+        (await countTokensWithFallback(
           [
             {
               role: "user",
@@ -100,7 +100,7 @@ async function Uwf(e, t) {
     };
   let i = await Promise.all(
       o.map(({ content: c }) =>
-        ISt(
+        countTokensWithFallback(
           [
             {
               role: "user",
@@ -137,7 +137,7 @@ async function Fwf() {
     };
   let r = await Promise.all(
     e.map(async (o) => {
-      let s = await ISt(
+      let s = await countTokensWithFallback(
         [
           {
             role: "user",
@@ -164,7 +164,7 @@ async function Fwf() {
     memoryFileDetails: t,
   };
 }
-async function jwf(e, t, n, r, o) {
+async function countBuiltInToolTokens(e, t, n, r, o) {
   let s = e.filter((h) => !h.isMcp);
   if (s.length < 1)
     return {
@@ -178,7 +178,7 @@ async function jwf(e, t, n, r, o) {
     l = await i(r ?? "", e, t, n?.activeAgents ?? [], "analyzeBuiltIn"),
     c = s.filter((h) => !a(h)),
     u = s.filter((h) => a(h)),
-    d = c.length > 0 ? await iOe(c, t, n, r) : 0,
+    d = c.length > 0 ? await countToolDefinitionTokens(c, t, n, r) : 0,
     p = [],
     f = [],
     m = 0,
@@ -200,7 +200,7 @@ async function jwf(e, t, n, r, o) {
               h.add(S.name);
         }
     }
-    let y = await Promise.all(u.map((b) => iOe([b], t, n, r)));
+    let y = await Promise.all(u.map((b) => countToolDefinitionTokens([b], t, n, r)));
     for (let [b, _] of u.entries()) {
       let S = Math.max(0, (y[b] || 0) - pZn),
         A = h.has(_.name);
@@ -216,7 +216,7 @@ async function jwf(e, t, n, r, o) {
         m += S;
     }
   } else if (u.length > 0) {
-    let h = await iOe(u, t, n, r);
+    let h = await countToolDefinitionTokens(u, t, n, r);
     return {
       builtInToolTokens: d + h,
       deferredBuiltinDetails: [],
@@ -246,14 +246,14 @@ async function Gwf(e, t, n) {
       },
     };
   return {
-    slashCommandTokens: await iOe([o], t, n),
+    slashCommandTokens: await countToolDefinitionTokens([o], t, n),
     commandInfo: {
       totalCommands: r.totalCommands,
       includedCommands: r.includedCommands,
     },
   };
 }
-async function Wwf(e, t, n, r) {
+async function countSkillTokens(e, t, n, r) {
   try {
     let o = await VWe($t()),
       s = Dkl(e);
@@ -266,7 +266,7 @@ async function Wwf(e, t, n, r) {
           skillFrontmatter: [],
         },
       };
-    let i = await iOe([s], t, n),
+    let i = await countToolDefinitionTokens([s], t, n),
       a = rH(r),
       l = o.map((u) => {
         let d = u.type === "prompt" ? u.source : "plugin",
@@ -301,10 +301,10 @@ async function Wwf(e, t, n, r) {
     );
   }
 }
-async function qwf(e, t, n, r, o) {
+async function countMcpToolTokens(e, t, n, r, o) {
   let s = e.filter((b) => b.isMcp),
     i = [],
-    a = await iOe(s, t, n, r),
+    a = await countToolDefinitionTokens(s, t, n, r),
     l = Math.max(0, (a || 0) - pZn),
     c = await Promise.all(
       s.map(async (b) =>
@@ -367,7 +367,7 @@ async function Vwf(e) {
     r = 0,
     o = await Promise.all(
       t.map((s) =>
-        ISt(
+        countTokensWithFallback(
           [
             {
               role: "user",
@@ -403,7 +403,7 @@ function zwf(e, t) {
     } else t.assistantMessageTokens += o;
   }
 }
-function Kwf(e, t, n) {
+function processUserMessage(e, t, n) {
   if (typeof e.message.content === "string") {
     let r = If(e.message.content);
     t.userMessageTokens += r;
@@ -427,7 +427,7 @@ function Ywf(e, t) {
   let o = e.attachment.type || "unknown";
   t.attachmentsByType.set(o, (t.attachmentsByType.get(o) || 0) + r);
 }
-async function Xwf(e, t) {
+async function approximateMessageTokens(e, t) {
   let n = {
       totalTokens: 0,
       toolCallTokens: 0,
@@ -451,11 +451,11 @@ async function Xwf(e, t) {
     }
   for (let s of e)
     if (s.type === "assistant") zwf(s, n);
-    else if (s.type === "user") Kwf(s, n, r);
+    else if (s.type === "user") processUserMessage(s, n, r);
     else if (s.type === "attachment") Ywf(s, n);
   let o = t
     ? 0
-    : await ISt(
+    : await countTokensWithFallback(
         lk(e).map((s) => {
           if (s.type === "assistant")
             return {
@@ -468,7 +468,7 @@ async function Xwf(e, t) {
       );
   return ((n.totalTokens = o ?? 0), n);
 }
-async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
+async function analyzeContextUsage(e, t, n, r, o, s, i, a, l, c, u) {
   let d = VR({
       permissionMode: (await n()).mode,
       mainLoopModel: t,
@@ -510,13 +510,13 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
     ] = await Promise.all([
       Uwf(h, u && i?.options.customSystemPrompt === void 0),
       Fwf(),
-      jwf(r, n, o, d, e),
-      qwf(r, n, o, d, e),
+      countBuiltInToolTokens(r, n, o, d, e),
+      countMcpToolTokens(r, n, o, d, e),
       Vwf(o),
       Gwf(r, n, o),
-      Xwf(e, S !== null),
+      approximateMessageTokens(e, S !== null),
     ]),
-    z = (await Wwf(r, n, o, d)).skillInfo,
+    z = (await countSkillTokens(r, n, o, d)).skillInfo,
     K = z.skillFrontmatter.reduce((Et, ct) => Et + ct.tokens, 0),
     Z = V.totalTokens + C,
     J = pC(),
@@ -576,8 +576,8 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
   let ee = 0,
     ce;
   if (!(J && m === "auto")) {
-    if (J && ne !== void 0) ((ee = f - ne), (ce = AMo));
-    else if (!J) ((ee = cia), (ce = HMo));
+    if (J && ne !== void 0) ((ee = f - ne), (ce = RESERVED_CATEGORY_NAME));
+    else if (!J) ((ee = cia), (ce = MANUAL_COMPACT_BUFFER_NAME));
   }
   if (S !== null) {
     let Et = oe.reduce((gt, st) => gt + (st.isDeferred ? 0 : st.tokens), 0),
@@ -649,8 +649,15 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
     return ct;
   }
   let we = [],
-    Ce = ye.find((Et) => Et.name === AMo || Et.name === HMo),
-    Ie = ye.filter((Et) => Et.name !== AMo && Et.name !== HMo && Et.name !== "Free space");
+    Ce = ye.find(
+      (Et) => Et.name === RESERVED_CATEGORY_NAME || Et.name === MANUAL_COMPACT_BUFFER_NAME,
+    ),
+    Ie = ye.filter(
+      (Et) =>
+        Et.name !== RESERVED_CATEGORY_NAME &&
+        Et.name !== MANUAL_COMPACT_BUFFER_NAME &&
+        Et.name !== "Free space",
+    );
   for (let Et of Ie) {
     let ct = ue(Et);
     for (let Je of ct) if (we.length < le) we.push(Je);
@@ -756,6 +763,6 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
     apiUsage: _,
   };
 }
-var AMo = "Autocompact buffer",
-  HMo = "Compact buffer",
+var RESERVED_CATEGORY_NAME = "Autocompact buffer",
+  MANUAL_COMPACT_BUFFER_NAME = "Compact buffer",
   pZn = 500;

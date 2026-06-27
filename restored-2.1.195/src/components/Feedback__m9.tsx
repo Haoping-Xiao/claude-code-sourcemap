@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Smn
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.008  score=0.0373  fileCov=0.0101
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Smn] deps: ih
 Fet = Mi();
@@ -20,7 +20,7 @@ async function Emn(e, t) {
     );
   let r = M1u(n.path);
   if (r) return (Le("settings_policy_helper", "bad_path"), `policyHelper failed: ${r}`);
-  let o = await uCs(n);
+  let o = await GITHUB_ISSUES_REPO_URL(n);
   if ("error" in o)
     return (Le("settings_policy_helper", o.code), `policyHelper failed: ${o.error}`);
   return (
@@ -53,7 +53,7 @@ function Fae() {
 function cCs() {
   return Phe?.warnings ?? [];
 }
-async function uCs(e) {
+async function GITHUB_ISSUES_REPO_URL(e) {
   let t = e.timeoutMs ?? L1u,
     {
       stdout: n,
@@ -142,7 +142,7 @@ function $1u(e) {
     (n) => {
       if (xLr) return;
       ((xLr = true),
-        uCs(n)
+        GITHUB_ISSUES_REPO_URL(n)
           .then((r) => {
             if ("error" in r) {
               (T(`policyHelper refresh failed (retaining current policy): ${r.error}`, {

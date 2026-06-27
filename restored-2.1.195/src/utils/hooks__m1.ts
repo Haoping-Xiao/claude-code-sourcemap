@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module yic
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0279  score=0.3776  fileCov=0.0292
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function RQ(e, t, n = lp) {
+async function executePreCompactHooks(e, t, n = lp) {
   let r = {
       ...Td(void 0),
       hook_event_name: "PreCompact",
@@ -51,7 +51,7 @@ async function RQ(e, t, n = lp) {
     }),
   };
 }
-async function eOe(e, t, n = lp) {
+async function executePostCompactHooks(e, t, n = lp) {
   let r = {
       ...Td(void 0),
       hook_event_name: "PostCompact",

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Pyt
 // matched 2.1.88 source: src/components/messages/AdvisorMessage.tsx
 // class=modified  jaccard=0.3305  score=0.4827  fileCov=0.5118
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pyt] deps: Xa, lzn, Xol, Ye
 ((czn = R(rt(), 1)), (eCo = R(se(), 1)));
-function Qol(e) {
+function AdvisorMessage(e) {
   let t = Jol.c(30),
     {
       block: n,

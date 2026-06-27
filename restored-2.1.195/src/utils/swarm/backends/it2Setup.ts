@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module rhl
 // matched 2.1.88 source: src/utils/swarm/backends/it2Setup.ts
 // class=modified  jaccard=0.5708  score=0.7922  fileCov=0.6714
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function ohl() {
+async function detectPythonPackageManager() {
   if ((await $n("which", ["uv"])).code === 0)
     return (T("[it2Setup] Found uv (will use uv tool install)"), "uvx");
   if ((await $n("which", ["pipx"])).code === 0)
@@ -18,7 +18,7 @@ async function ohl() {
 async function hff() {
   return (await $n("which", ["it2"])).code === 0;
 }
-async function shl(e) {
+async function installIt2(e) {
   T(`[it2Setup] Installing it2 using ${e}`);
   let t;
   switch (e) {
@@ -67,7 +67,7 @@ async function shl(e) {
     }
   );
 }
-async function ihl() {
+async function verifyIt2Setup() {
   if ((T("[it2Setup] Verifying it2 setup..."), !(await hff())))
     return (
       Le("swarm_iterm2_it2_verify", "not_installed"),
@@ -110,7 +110,7 @@ async function ihl() {
     }
   );
 }
-function ahl() {
+function getPythonApiInstructions() {
   return [
     "Almost done! Enable the Python API in iTerm2:",
     "",
@@ -119,7 +119,7 @@ function ahl() {
     "After enabling, you may need to restart iTerm2.",
   ];
 }
-function lhl() {
+function markIt2SetupComplete() {
   if (Dt().iterm2It2SetupComplete !== !0)
     (gn((t) => ({
       ...t,
@@ -127,7 +127,7 @@ function lhl() {
     })),
       T("[it2Setup] Marked it2 setup as complete"));
 }
-function chl(e) {
+function setPreferTmuxOverIterm2(e) {
   if (Dt().preferTmuxOverIterm2 !== e)
     (gn((n) => ({
       ...n,

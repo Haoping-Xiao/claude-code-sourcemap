@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module WYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/LocationStep.tsx
 // class=modified  jaccard=0.4113  score=0.6306  fileCov=0.5419
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WYl] deps: PR, HN, Ye, ps, fp, y3, Cc, Bs, f_, EC, Mg, wb, vH, jYl
 ((Mse = R(rt(), 1)), (s2 = R(se(), 1)));
-function VYl() {
+function LocationStep() {
   let e = qYl.c(11),
     { goNext: t, updateWizardData: n, cancel: r } = Eu(),
     o;

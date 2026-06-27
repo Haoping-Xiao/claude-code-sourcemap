@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gP
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified  jaccard=0.3226  score=0.618  fileCov=0.403
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gP] deps: ree, Hp, iu, ft, Un, kt, jc, Xr, SC, Kgo, cWt, SJ, sTo, Rc, S6, fb, ZE, d8n, H0, C5, og, oo, QSn, VDe, er, wpe, Lo, je, BR, fn, At, Bi, rit, es, sa, Mx, Rd, vn, co, Ao, Ls, iWe, _a, dr, Jt, Cv, b8n, Ide, CTo
 ((wht = require("crypto")), (H8n = R(se(), 1)));
@@ -40,14 +40,14 @@ function VZa(e) {
 function VQp(e) {
   return qQp.includes(e ?? "");
 }
-async function KQp(e) {
+async function persistRemoteAgentMetadata(e) {
   try {
     await OTo(e.taskId, e);
   } catch (t) {
     T(`persistRemoteAgentMetadata failed: ${String(t)}`);
   }
 }
-async function aAe(e) {
+async function removeRemoteAgentMetadata(e) {
   try {
     await l9t(e);
   } catch (t) {
@@ -68,7 +68,7 @@ async function Ipe({ allowBundle: e = false, cwd: t } = {}) {
     eligible: true,
   };
 }
-function poe(e) {
+function formatPreconditionError(e) {
   switch (e.type) {
     case "not_logged_in":
       return "Please run /login and sign in with your Claude.ai account (not Console).";
@@ -83,7 +83,7 @@ ${aWt}`;
       return "Cloud sessions are disabled by your organization's policy. Contact your organization admin to enable them.";
   }
 }
-function PTo(e, t, n, r, o) {
+function enqueueRemoteNotification(e, t, n, r, o) {
   if (!MTo(e, r)) return;
   if (n === "completed") xe("task_remote_agent");
   else if (n === "failed") Le("task_remote_agent", "task_remote_agent_failed");
@@ -123,7 +123,7 @@ function MTo(e, t) {
     n
   );
 }
-function YQp(e) {
+function extractReviewFromLog(e) {
   for (let o = e.length - 1; o >= 0; o--) {
     let s = e[o];
     if (s?.type === "system" && (s.subtype === "hook_progress" || s.subtype === "hook_response")) {
@@ -216,7 +216,7 @@ function $To(e) {
     return;
   }
 }
-function QQp(e, t, n, r) {
+function enqueueRemoteReviewNotification(e, t, n, r) {
   if (!MTo(e, n)) return;
   let o = $To(t);
   xe("task_remote_agent", {
@@ -247,7 +247,7 @@ The user launched this review with --fix: apply these findings to the local work
     priority: "next",
   });
 }
-function zZa(e, t, n, r) {
+function enqueueUltraplanFailureNotification(e, t, n, r) {
   if (!MTo(e, n)) return;
   Le("task_remote_agent", "task_remote_agent_review_failed", {
     remote_task_type: We("ultrareview"),
@@ -272,9 +272,9 @@ Cloud review did not produce output (${s}). Tell the user to retry /code-review 
 function ZQp(e) {
   let t = oZp(e);
   if (t.length > 0) return t;
-  return eZp(e);
+  return extractTodoListFromLog(e);
 }
-function eZp(e) {
+function extractTodoListFromLog(e) {
   let t = e.findLast(
     (o) =>
       o.type === "assistant" &&
@@ -340,7 +340,7 @@ function oZp(e) {
     }
   return [...n.values(), ...t.values()];
 }
-function lAe(e) {
+function registerRemoteAgentTask(e) {
   let {
       remoteTaskType: t,
       session: n,
@@ -373,7 +373,7 @@ function lAe(e) {
     remoteTaskMetadata: u,
   };
   (o.taskRegistry.register(p),
-    KQp({
+    persistRemoteAgentMetadata({
       taskId: d,
       remoteTaskType: t,
       sessionId: n.id,
@@ -387,21 +387,21 @@ function lAe(e) {
       isLongRunning: c,
       remoteTaskMetadata: u,
     }));
-  let f = KZa(d, o);
+  let f = startRemoteSessionPolling(d, o);
   return {
     taskId: d,
     sessionId: n.id,
     cleanup: f,
   };
 }
-async function a9t(e) {
+async function restoreRemoteAgentTasks(e) {
   try {
-    await yl("task_remote_agent_restore", () => sZp(e));
+    await yl("task_remote_agent_restore", () => restoreRemoteAgentTasksImpl(e));
   } catch (t) {
     T(`restoreRemoteAgentTasks failed: ${String(t)}`);
   }
 }
-async function sZp(e) {
+async function restoreRemoteAgentTasksImpl(e) {
   let t = await NTo();
   if (t.length === 0) return;
   for (let n of t) {
@@ -410,12 +410,13 @@ async function sZp(e) {
       r = (await b_e(n.sessionId)).session_status;
     } catch (s) {
       if (s instanceof Error && s.message.startsWith("Session not found:"))
-        (T(`restoreRemoteAgentTasks: dropping ${n.taskId} (404: ${String(s)})`), aAe(n.taskId));
+        (T(`restoreRemoteAgentTasks: dropping ${n.taskId} (404: ${String(s)})`),
+          removeRemoteAgentMetadata(n.taskId));
       else T(`restoreRemoteAgentTasks: skipping ${n.taskId} (recoverable: ${String(s)})`);
       continue;
     }
     if (r === "archived") {
-      aAe(n.taskId);
+      removeRemoteAgentMetadata(n.taskId);
       continue;
     }
     let o = {
@@ -436,10 +437,10 @@ async function sZp(e) {
       pollStartedAt: Date.now(),
       remoteTaskMetadata: n.remoteTaskMetadata,
     };
-    (e.taskRegistry.register(o), Iht(n.taskId), KZa(n.taskId, e));
+    (e.taskRegistry.register(o), Iht(n.taskId), startRemoteSessionPolling(n.taskId, e));
   }
 }
-function KZa(e, t) {
+function startRemoteSessionPolling(e, t) {
   let n = true,
     r = 1000,
     o = 1800000,
@@ -485,9 +486,9 @@ function KZa(e, t) {
                 }
               : I,
           ),
-            PTo(e, d.title, "completed", t.taskRegistry, d.toolUseId),
+            enqueueRemoteNotification(e, d.title, "completed", t.taskRegistry, d.toolUseId),
             jy(e),
-            aAe(e));
+            removeRemoteAgentMetadata(e));
           return;
         }
         let m =
@@ -504,9 +505,9 @@ function KZa(e, t) {
                   }
                 : k,
             ),
-              PTo(e, I, "completed", t.taskRegistry, d.toolUseId),
+              enqueueRemoteNotification(e, I, "completed", t.taskRegistry, d.toolUseId),
               jy(e),
-              aAe(e));
+              removeRemoteAgentMetadata(e));
             return;
           }
         }
@@ -587,10 +588,12 @@ function KZa(e, t) {
         if (g || A || v) {
           let I = g && g.subtype !== "success" ? "failed" : "completed";
           if (d.isRemoteReview) {
-            let k = c ?? YQp(l),
+            let k = c ?? extractReviewFromLog(l),
               D = k ? JQp(k) : null;
             if (k && I === "completed" && D === null) {
-              (QQp(e, k, t.taskRegistry, d.applyFixesOnComplete), jy(e), aAe(e));
+              (enqueueRemoteReviewNotification(e, k, t.taskRegistry, d.applyFixesOnComplete),
+                jy(e),
+                removeRemoteAgentMetadata(e));
               return;
             }
             t.taskRegistry.update(e, (O) => ({
@@ -605,10 +608,14 @@ function KZa(e, t) {
                   : v && !A
                     ? "poll_timeout"
                     : "no_review_output";
-            (zZa(e, P, t.taskRegistry, D ?? void 0), jy(e), aAe(e));
+            (enqueueUltraplanFailureNotification(e, P, t.taskRegistry, D ?? void 0),
+              jy(e),
+              removeRemoteAgentMetadata(e));
             return;
           }
-          (PTo(e, d.title, I, t.taskRegistry, d.toolUseId), jy(e), aAe(e));
+          (enqueueRemoteNotification(e, d.title, I, t.taskRegistry, d.toolUseId),
+            jy(e),
+            removeRemoteAgentMetadata(e));
           return;
         }
       } catch (d) {
@@ -624,9 +631,13 @@ function KZa(e, t) {
               status: "failed",
               endTime: Date.now(),
             })),
-              zZa(e, "poll_timeout_after_api_error", t.taskRegistry),
+              enqueueUltraplanFailureNotification(
+                e,
+                "poll_timeout_after_api_error",
+                t.taskRegistry,
+              ),
               jy(e),
-              aAe(e));
+              removeRemoteAgentMetadata(e));
             return;
           }
         } catch {}

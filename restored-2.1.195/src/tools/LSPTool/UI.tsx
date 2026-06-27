@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lbl
 // matched 2.1.88 source: src/tools/LSPTool/UI.tsx
 // class=modified  jaccard=0.3817  score=0.5442  fileCov=0.5611
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lbl] deps: Q8, E5, ql, Ye, oc, co, nbl
 ((rbl = R(lt(), 1)),
@@ -46,7 +46,7 @@
       plural: "callees",
     },
   }));
-function Ugf(e, t) {
+function renderToolUseMessage(e, t) {
   let n = dbl.pathToFileURL(t).href,
     r = {
       line: e.line - 1,

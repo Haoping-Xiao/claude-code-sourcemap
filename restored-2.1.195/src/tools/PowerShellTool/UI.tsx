@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wTl
 // matched 2.1.88 source: src/tools/PowerShellTool/UI.tsx
 // class=modified  jaccard=0.2953  score=0.4401  fileCov=0.4729
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function ITl(e, { verbose: t, theme: n }) {
   let { command: r } = e;
@@ -57,7 +57,7 @@ function kTl() {
     }),
   });
 }
-function RTl(e, t, { verbose: n, theme: r, tools: o, style: s }) {
+function renderToolResultMessage(e, t, { verbose: n, theme: r, tools: o, style: s }) {
   let a = t.at(-1)?.data?.timeoutMs,
     {
       stdout: l,

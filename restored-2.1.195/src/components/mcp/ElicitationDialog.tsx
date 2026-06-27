@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jgc
 // matched 2.1.88 source: src/components/mcp/ElicitationDialog.tsx
 // class=modified  jaccard=0.3406  score=0.5908  fileCov=0.4457
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Qum(e) {
   ((e.buffer = ""), (e.timer = void 0));
@@ -33,7 +33,7 @@ function Zum() {
   else i = e[4];
   return i;
 }
-function edm(e, t) {
+function formatDateDisplay(e, t) {
   try {
     let n = new Date(e);
     if (Number.isNaN(n.getTime())) return e;
@@ -66,7 +66,7 @@ function Bur(e) {
   if (n.params.mode === "url") {
     let i;
     if (t[0] !== n || t[1] !== r || t[2] !== o)
-      ((i = Ps.jsx(ndm, {
+      ((i = Ps.jsx(ElicitationURLDialog, {
         event: n,
         onResponse: r,
         onWaitingDismiss: o,
@@ -80,7 +80,7 @@ function Bur(e) {
   }
   let s;
   if (t[4] !== n || t[5] !== r)
-    ((s = Ps.jsx(tdm, {
+    ((s = Ps.jsx(ElicitationFormDialog, {
       event: n,
       onResponse: r,
     })),
@@ -90,7 +90,7 @@ function Bur(e) {
   else s = t[6];
   return s;
 }
-function tdm({ event: e, onResponse: t }) {
+function ElicitationFormDialog({ event: e, onResponse: t }) {
   let { serverName: n, signal: r } = e,
     o = e.params,
     { message: s, requestedSchema: i } = o,
@@ -111,7 +111,7 @@ function tdm({ event: e, onResponse: t }) {
     [m, g] = Q_.useState(() => {
       let le = {};
       for (let [He, ye] of Object.entries(i.properties))
-        if (ven(ye) && ye?.default !== void 0) {
+        if (isTextField(ye) && ye?.default !== void 0) {
           let ue = Sen(String(ye.default), ye);
           if (!ue.isValid) le[He] = ue.error;
         }
@@ -146,7 +146,7 @@ function tdm({ event: e, onResponse: t }) {
     [b, _] = Q_.useState(c ? 0 : void 0),
     [S, A] = Q_.useState(() => {
       let le = y[0];
-      if (le && ven(le.schema)) {
+      if (le && isTextField(le.schema)) {
         let He = p[le.name];
         if (He === void 0) return "";
         return String(He);
@@ -176,7 +176,7 @@ function tdm({ event: e, onResponse: t }) {
   );
   let { columns: $, rows: q } = br(),
     W = b !== void 0 ? y[b] : void 0,
-    Y = W !== void 0 && ven(W.schema) && !Pme(W.schema) && !u;
+    Y = W !== void 0 && isTextField(W.schema) && !Pme(W.schema) && !u;
   (Wh("elicitation"), ben("Claude Code needs your input", "elicitation_dialog"));
   let z = Q_.useCallback(
     (le) => {
@@ -185,7 +185,7 @@ function tdm({ event: e, onResponse: t }) {
         return;
       }
       let He = y[le];
-      if (He && ven(He.schema) && !Pme(He.schema)) {
+      if (He && isTextField(He.schema) && !Pme(He.schema)) {
         let ye = p[He.name],
           ue = ye !== void 0 ? String(ye) : "";
         (A(ue), C(ue.length));
@@ -640,7 +640,7 @@ ${s}`,
     }),
   });
 }
-function ndm({ event: e, onResponse: t, onWaitingDismiss: n }) {
+function ElicitationURLDialog({ event: e, onResponse: t, onWaitingDismiss: n }) {
   let { serverName: r, signal: o, waitingState: s } = e,
     i = e.params,
     { message: a, url: l } = i,
@@ -1144,7 +1144,7 @@ function rdm(e) {
                   italic: true,
                   children: "not set",
                 });
-        } else if (ven(P)) {
+        } else if (isTextField(P)) {
           if (L)
             z = Ps.jsx(Ta, {
               value: d,
@@ -1158,7 +1158,7 @@ function rdm(e) {
               showCursor: true,
             });
           else {
-            let Z = N && Ten(P) ? edm(String(M), P) : String(M);
+            let Z = N && Ten(P) ? formatDateDisplay(String(M), P) : String(M);
             z = N
               ? Ps.jsx(w, {
                   children: Z,
@@ -1298,5 +1298,5 @@ function rdm(e) {
 var Nur,
   Q_,
   Ps,
-  ven = (e) => ["string", "number", "integer"].includes(e.type),
+  isTextField = (e) => ["string", "number", "integer"].includes(e.type),
   Qgc = "\u280B\u2819\u2839\u2838\u283C\u2834\u2826\u2827\u2807\u280F";

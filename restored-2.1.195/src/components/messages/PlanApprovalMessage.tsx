@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Bzn
 // matched 2.1.88 source: src/components/messages/PlanApprovalMessage.tsx
 // class=modified  jaccard=0.3191  score=0.5254  fileCov=0.4483
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bzn] deps: Ye, YI, R6
 ((fil = R(lt(), 1)), (a6e = R(se(), 1)));
-function Pof(e) {
+function PlanApprovalRequestDisplay(e) {
   let t = qCo.c(8),
     { request: n } = e,
     r = `Plan Approval Request from ${n.from}`,
@@ -48,7 +48,7 @@ function Pof(e) {
   else i = t[7];
   return i;
 }
-function Mof(e) {
+function PlanApprovalResponseDisplay(e) {
   let t = qCo.c(12),
     { response: n, senderName: r } = e;
   if (n.approved) {
@@ -131,18 +131,18 @@ function Mof(e) {
 function Uzn(e, t) {
   let n = Qv(T9t(), e);
   if (n)
-    return AP.jsx(Pof, {
+    return AP.jsx(PlanApprovalRequestDisplay, {
       request: n,
     });
   let r = Qv(v9t(), e);
   if (r)
-    return AP.jsx(Mof, {
+    return AP.jsx(PlanApprovalResponseDisplay, {
       response: r,
       senderName: t,
     });
   return null;
 }
-function $of(e) {
+function getPlanApprovalSummary(e) {
   let t = Qv(T9t(), e);
   if (t) return `[Plan Approval Request from ${t.from}]`;
   let n = Qv(v9t(), e);
@@ -154,7 +154,7 @@ function $of(e) {
     else return `[Plan Rejected] ${n.feedback || "Please revise your plan"}`;
   return null;
 }
-function Oof(e) {
+function getIdleNotificationSummary(e) {
   let t = ["Agent idle"];
   if (e.completedTaskId) {
     let n = e.completedStatus || "completed";
@@ -164,12 +164,12 @@ function Oof(e) {
   return t.join(" \xB7 ");
 }
 function gil(e) {
-  let t = $of(e);
+  let t = getPlanApprovalSummary(e);
   if (t) return t;
   let n = pil(e);
   if (n) return n;
   let r = Qv(m8e(), e);
-  if (r) return Oof(r);
+  if (r) return getIdleNotificationSummary(r);
   let o = mil(e);
   if (o) return o;
   let s = Qv(h8e(), e);

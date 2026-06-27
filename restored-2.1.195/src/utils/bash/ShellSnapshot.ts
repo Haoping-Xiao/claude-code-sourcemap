@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module aEe
 // matched 2.1.88 source: src/utils/bash/ShellSnapshot.ts
 // class=modified  jaccard=0.5496  score=0.6814  fileCov=0.7396
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aEe]
 ((qPa = require("os")), (FGt = require("path")));
-function Fmo(e, t, n = [], r = []) {
+function createArgv0ShellFunction(e, t, n = [], r = []) {
   let o = n.length > 0 ? `${n.join(" ")} \${1+"$@"}` : '${1+"$@"}',
     s = Vt() === "windows",
     i = jGt.join(Sde(), s ? "claude.exe" : "claude"),
@@ -42,7 +42,7 @@ function q0p() {
   if (e.argv0)
     return {
       type: "function",
-      snippet: Fmo("rg", e.argv0),
+      snippet: createArgv0ShellFunction("rg", e.argv0),
     };
   let t = ja([e.rgPath]),
     n = e.rgArgs.map((o) => ja([o]));
@@ -51,13 +51,13 @@ function q0p() {
     snippet: e.rgArgs.length > 0 ? `${t} ${n.join(" ")}` : t,
   };
 }
-function z0p() {
+function createFindGrepShellIntegration() {
   if (!hC()) return null;
   return [
     "unalias find 2>/dev/null || true",
     "unalias grep 2>/dev/null || true",
-    Fmo("find", "bfs", ["-S", "dfs", "-regextype", "findutils-default"]),
-    Fmo(
+    createArgv0ShellFunction("find", "bfs", ["-S", "dfs", "-regextype", "findutils-default"]),
+    createArgv0ShellFunction(
       "grep",
       "ugrep",
       ["-G", "--ignore-files", "--hidden", "-I", ...V0p.map((e) => `--exclude-dir=${e}`)],
@@ -82,11 +82,11 @@ function z0p() {
 function K0p() {
   return null;
 }
-function jmo(e) {
+function getConfigFile(e) {
   let t = e.includes("zsh") ? ".zshrc" : e.includes("bash") ? ".bashrc" : ".profile";
   return jGt.join(Q2n.homedir(), t);
 }
-function Y0p(e) {
+function getUserSnapshotContent(e) {
   let t = e.endsWith(".zshrc"),
     n = "";
   if (t)
@@ -145,7 +145,7 @@ function Y0p(e) {
     n
   );
 }
-async function X0p(e) {
+async function getClaudeCodeSnapshotContent(e) {
   let t = process.env.PATH;
   if (Vt() === "windows") {
     let l = await pv(e, ["-lc", 'echo "$PATH"'], {
@@ -183,7 +183,7 @@ RIPGREP_FUNC_END
   o += `
       echo "fi" >> "$SNAPSHOT_FILE"
   `;
-  let s = z0p();
+  let s = createFindGrepShellIntegration();
   if (s !== null)
     o += `
       # Shadow find/grep with embedded bfs/ugrep (ant-native only)
@@ -212,11 +212,15 @@ ${a}
     o
   );
 }
-async function J0p(e, t, n) {
-  let r = jmo(e),
+async function getSnapshotScript(e, t, n) {
+  let r = getConfigFile(e),
     o = r.endsWith(".zshrc"),
-    s = n ? Y0p(r) : !o ? 'echo "shopt -s expand_aliases" >> "$SNAPSHOT_FILE"' : "",
-    i = await X0p(e);
+    s = n
+      ? getUserSnapshotContent(r)
+      : !o
+        ? 'echo "shopt -s expand_aliases" >> "$SNAPSHOT_FILE"'
+        : "",
+    i = await getClaudeCodeSnapshotContent(e);
   return `SNAPSHOT_FILE=${ja([t])}
       ${n ? `source "${r}" < /dev/null` : "# No user config file to source"}
 
@@ -278,13 +282,13 @@ var zPa,
   Gmo = "CLAUDE_CODE_EXECPATH",
   W0p = "CLAUDE_CODE_INVOKED_SKILLS",
   V0p,
-  KPa = async (e) => {
+  createAndSaveSnapshot = async (e) => {
     let t = e.includes("zsh") ? "zsh" : e.includes("bash") ? "bash" : "sh";
     return (
       T(`Creating shell snapshot for ${t} (${e})`),
       new Promise(async (n) => {
         try {
-          let r = jmo(e);
+          let r = getConfigFile(e);
           T(`Looking for shell config file: ${r}`);
           let o = await ed(r);
           if (!o)
@@ -299,7 +303,7 @@ var zPa,
           await J2n.mkdir(a, {
             recursive: true,
           });
-          let c = await J0p(e, l, o);
+          let c = await getSnapshotScript(e, l, o);
           (T(`Creating snapshot at: ${l}`),
             T(`Execution timeout: ${X2n}ms`),
             zPa.execFile(
@@ -327,7 +331,7 @@ var zPa,
                     T(`  - Error signal: ${f?.signal}`),
                     T(`  - Error killed: ${f?.killed}`),
                     T(`  - Shell path: ${e}`),
-                    T(`  - Config file: ${jmo(e)}`),
+                    T(`  - Config file: ${getConfigFile(e)}`),
                     T(`  - Config file exists: ${o}`),
                     T(`  - Working directory: ${$t()}`),
                     T(`  - Claude home: ${tr()}`),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E6l
 // matched 2.1.88 source: src/commands/createMovedToPluginCommand.ts
 // class=modified  jaccard=0.3359  score=0.5395  fileCov=0.4709
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E6l] deps: jc, oo
 ((X5f = {
@@ -17,7 +17,7 @@
   load: () => Promise.resolve().then(() => (b6l(), _6l)),
 }),
   (S6l = X5f));
-function A6l({
+function createMovedToPluginCommand({
   name: e,
   description: t,
   progressMessage: n,

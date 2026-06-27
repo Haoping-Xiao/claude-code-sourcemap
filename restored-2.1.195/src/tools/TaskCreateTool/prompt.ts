@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pbl
 // matched 2.1.88 source: src/tools/TaskCreateTool/prompt.ts
 // class=modified  jaccard=0.2346  score=0.2735  fileCov=0.6229
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pbl] deps: sr
 ((Qgf = new Set(["subject", "description", "activeForm", "metadata"])),
@@ -23,7 +23,7 @@
     "addBlocks",
     "addBlockedBy",
   ])));
-function $bl() {
+function getPrompt() {
   let e = el() ? " and potentially assigned to teammates" : "",
     t = el()
       ? "- Include enough detail in the description for another agent to understand and complete the task\n- New tasks are created with status 'pending' and no owner - use TaskUpdate with the `owner` parameter to assign them\n"
@@ -69,4 +69,4 @@ All tasks are created with status \`pending\`.
 ${t}- Check TaskList first to avoid creating duplicate tasks
 `;
 }
-var Mbl = "Create a new task in the task list";
+var DESCRIPTION = "Create a new task in the task list";

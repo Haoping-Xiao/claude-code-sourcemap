@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rnl
 // matched 2.1.88 source: src/utils/markdown.ts
 // class=modified  jaccard=0.3274  score=0.6019  fileCov=0.4179
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rnl]
 iwo = class iwo extends Error {
@@ -82,15 +82,15 @@ function S6n(e, t, n = null) {
     b6n(),
     ug
       .lexer(RMe(e))
-      .map((r) => oR(r, t, 0, null, null, n))
+      .map((r) => formatToken(r, t, 0, null, null, n))
       .join("")
       .trim()
   );
 }
-function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
+function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
   switch (e.type) {
     case "blockquote": {
-      let l = (e.tokens ?? []).map((u) => oR(u, t, 0, null, null, s, false, a)).join(""),
+      let l = (e.tokens ?? []).map((u) => formatToken(u, t, 0, null, null, s, false, a)).join(""),
         c = wt.dim(Kvs);
       return l
         .split(SP)
@@ -114,11 +114,13 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
     case "codespan":
       return Io("permission", t)(e.text);
     case "em":
-      return wt.italic((e.tokens ?? []).map((l) => oR(l, t, 0, null, o, s, i, a)).join(""));
+      return wt.italic(
+        (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, o, s, i, a)).join(""),
+      );
     case "strong":
-      return wt.bold((e.tokens ?? []).map((l) => oR(l, t, 0, null, o, s, i, a)).join(""));
+      return wt.bold((e.tokens ?? []).map((l) => formatToken(l, t, 0, null, o, s, i, a)).join(""));
     case "del": {
-      let l = (e.tokens ?? []).map((c) => oR(c, t, 0, null, o, s, i, a)).join("");
+      let l = (e.tokens ?? []).map((c) => formatToken(c, t, 0, null, o, s, i, a)).join("");
       return u4i() && wt.level > 0 ? wt.strikethrough(l) : `~~${l}~~`;
     }
     case "heading":
@@ -126,20 +128,24 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
         case 1:
           return (
             wt.bold.italic.underline(
-              (e.tokens ?? []).map((l) => oR(l, t, 0, null, null, s, false, a)).join(""),
+              (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join(""),
             ) +
             SP +
             SP
           );
         case 2:
           return (
-            wt.bold((e.tokens ?? []).map((l) => oR(l, t, 0, null, null, s, false, a)).join("")) +
+            wt.bold(
+              (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join(""),
+            ) +
             SP +
             SP
           );
         default:
           return (
-            wt.bold((e.tokens ?? []).map((l) => oR(l, t, 0, null, null, s, false, a)).join("")) +
+            wt.bold(
+              (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join(""),
+            ) +
             SP +
             SP
           );
@@ -159,7 +165,7 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
         return (e.text && e.text !== p ? `${e.text} (${p})` : p) + l;
       }
       let c = a ? rtf(e.href) : e.href,
-        u = (e.tokens ?? []).map((p) => oR(p, t, 0, null, e, s, false, a)).join(""),
+        u = (e.tokens ?? []).map((p) => formatToken(p, t, 0, null, e, s, false, a)).join(""),
         d = Ja(u);
       if (d && d !== e.href)
         return (
@@ -177,18 +183,20 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
     }
     case "list":
       return e.items
-        .map((l, c) => oR(l, t, n, e.ordered ? e.start + c : null, e, s, false, a))
+        .map((l, c) => formatToken(l, t, n, e.ordered ? e.start + c : null, e, s, false, a))
         .join("");
     case "list_item":
       return (e.tokens ?? [])
         .map((l) => {
-          let c = oR(l, t, n + 1, r, e, s, false, a);
+          let c = formatToken(l, t, n + 1, r, e, s, false, a);
           if (l.type === "code" || l.type === "blockquote" || l.type === "hr") return c;
           return `${"  ".repeat(n)}${c}`;
         })
         .join("");
     case "paragraph":
-      return (e.tokens ?? []).map((l) => oR(l, t, 0, null, null, s, false, a)).join("") + SP;
+      return (
+        (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join("") + SP
+      );
     case "space":
       return SP;
     case "br":
@@ -197,7 +205,7 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
       if (o?.type === "link") return e.text;
       if (o?.type === "list_item") {
         let l = e.tokens
-            ? e.tokens.map((p) => oR(p, t, n, r, e, s, true, a)).join("")
+            ? e.tokens.map((p) => formatToken(p, t, n, r, e, s, true, a)).join("")
             : Pnl(awo(e.text, t, a)),
           c = r === null ? "-" : `${dtf(n, r)}.`,
           u = o.tokens?.[0] === e,
@@ -207,7 +215,7 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
       return i ? Pnl(awo(e.text, t, a)) : awo(e.text, t, a);
     case "table": {
       let c = function (p) {
-          return Ja(p?.map((f) => oR(f, t, 0, null, null, s, false, a)).join("") ?? "");
+          return Ja(p?.map((f) => formatToken(f, t, 0, null, null, s, false, a)).join("") ?? "");
         },
         l = e,
         u = l.header.map((p, f) => {
@@ -221,7 +229,8 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
         d = "| ";
       return (
         l.header.forEach((p, f) => {
-          let m = p.tokens?.map((b) => oR(b, t, 0, null, null, s, false, a)).join("") ?? "",
+          let m =
+              p.tokens?.map((b) => formatToken(b, t, 0, null, null, s, false, a)).join("") ?? "",
             g = c(p.tokens),
             h = u[f],
             y = l.align?.[f];
@@ -237,7 +246,9 @@ function oR(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
         l.rows.forEach((p) => {
           ((d += "| "),
             p.forEach((f, m) => {
-              let g = f.tokens?.map((_) => oR(_, t, 0, null, null, s, false, a)).join("") ?? "",
+              let g =
+                  f.tokens?.map((_) => formatToken(_, t, 0, null, null, s, false, a)).join("") ??
+                  "",
                 h = c(f.tokens),
                 y = u[m],
                 b = l.align?.[m];

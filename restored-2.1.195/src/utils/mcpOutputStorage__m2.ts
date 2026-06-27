@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RFn
 // matched 2.1.88 source: src/utils/mcpOutputStorage.ts
 // class=modified (alt of src/utils/mcpOutputStorage.ts)  jaccard=0.0319  score=0.0596  fileCov=0.0644
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RFn] deps: Xr, fn, vn, Jt
 ((jka = require("crypto")),
@@ -17,7 +17,7 @@
     }),
   )));
 var dJ = 1e6;
-function Lpo(e, t) {
+function extensionForMimeType(e, t) {
   let n = e?.toLowerCase();
   if (n === "application/gzip" || n === "application/x-gzip") return "tar.gz";
   if (n === "application/zip") return "zip";
@@ -77,7 +77,7 @@ async function Yka(e, t) {
       message: `Archive ${t.url} digest mismatch: index declared ${i}, got ${s}`,
     };
   let a = i ?? s,
-    l = Lpo(t.mimeType ?? o, t.url);
+    l = extensionForMimeType(t.mimeType ?? o, t.url);
   if (l === null)
     return {
       errorCode: "skill_mcp_archive_unsupported_format",

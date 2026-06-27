@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module t1t
 // matched 2.1.88 source: src/utils/auth.ts
 // class=modified  jaccard=0.3055  score=0.3817  fileCov=0.6049
-// note: deminified; 112 identifiers renamed (exports/displayName/curated)
+// note: deminified; 120 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withOAuthRefreshLock, waitForRotatedEnvToken, validateForceLoginOrg, toAccountInfo, shouldUseWIFAuth, saveOAuthTokensIfNeeded, saveApiKey, restoreGatewayAuth, resetEnvDerivedAuthCaches, resetAwsAuthRefreshCooldown, resetAuthFailureTracking, removeApiKey, refreshGcpCredentialsIfNeeded, refreshGcpAuth, refreshAwsAuth, refreshAndGetAwsCredentials, readFreshOAuthAccessToken, prefetchGcpCredentialsIfSafe, prefetchAwsCredentialsAndBedRockInfoIfSafe, prefetchApiKeyFromApiKeyHelperIfSaf …
 // [unwrapped __esm module t1t]
@@ -232,7 +232,7 @@ function getModelAccessCache() {
       typeof t.entitled === "boolean",
   );
 }
-function hasAnthropicDirectApiKey() {
+function getApiKeyFromConfigOrMacOSKeychain() {
   if (process.env.ANTHROPIC_AUTH_TOKEN) return false;
   let { key: e, source: t } = getAnthropicApiKeyWithSource();
   if (!e || t === "/login managed key") return false;
@@ -320,7 +320,7 @@ function getAnthropicApiKeyWithSource(e = {}) {
       source: "apiKeyHelper",
     };
   }
-  let o = getApiKeyFromConfigOrMacOSKeychain();
+  let o = V4e();
   if (o) return o;
   return {
     key: null,
@@ -331,7 +331,7 @@ function getConfiguredApiKeyHelper() {
   if (md()) return yn("flagSettings")?.apiKeyHelper;
   return (jo() || {}).apiKeyHelper;
 }
-function Kvi() {
+function isApiKeyHelperFromProjectOrLocalSettings() {
   let e = getConfiguredApiKeyHelper();
   if (!e) return false;
   let t = yn("projectSettings"),
@@ -380,7 +380,7 @@ async function getApiKeyFromApiKeyHelper(e) {
     if (Date.now() - z9.timestamp < t) return z9.value;
     if (!u_e)
       u_e = {
-        promise: Fvi(e, false, qot),
+        promise: _runAndCache(e, false, qot),
         startedAt: null,
       };
     return z9.value;
@@ -388,15 +388,15 @@ async function getApiKeyFromApiKeyHelper(e) {
   if (u_e) return u_e.promise;
   return (
     (u_e = {
-      promise: Fvi(e, true, qot),
+      promise: _runAndCache(e, true, qot),
       startedAt: Date.now(),
     }),
     u_e.promise
   );
 }
-async function Fvi(e, t, n) {
+async function _runAndCache(e, t, n) {
   try {
-    let r = await l0d(e);
+    let r = await _executeApiKeyHelper(e);
     if (n !== qot) return r;
     if (r !== null)
       z9 = {
@@ -432,10 +432,10 @@ async function Fvi(e, t, n) {
     if (n === qot) u_e = null;
   }
 }
-async function l0d(e) {
+async function _executeApiKeyHelper(e) {
   let t = getConfiguredApiKeyHelper();
   if (!t) return null;
-  if (Kvi()) {
+  if (isApiKeyHelperFromProjectOrLocalSettings()) {
     if (!ad() && !e) {
       let s = Error(
         `Security: apiKeyHelper executed before workspace trust is confirmed. If you see this message, post in ${
@@ -478,10 +478,10 @@ function clearApiKeyHelperCache() {
   (qot++, (z9 = null), (u_e = null));
 }
 function prefetchApiKeyFromApiKeyHelperIfSafe(e) {
-  if (Kvi() && !ad()) return;
+  if (isApiKeyHelperFromProjectOrLocalSettings() && !ad()) return;
   getApiKeyFromApiKeyHelper(e);
 }
-async function p0d() {
+async function runAwsAuthRefresh() {
   let e = getConfiguredAwsAuthRefresh(),
     t = F9r;
   if (!e) return false;
@@ -578,7 +578,7 @@ function refreshAwsAuth(e, t) {
     })
   );
 }
-async function m0d() {
+async function getAwsCredsFromCredentialExport() {
   let e = X9r();
   if (!e) return null;
   if (isAwsCredentialExportFromProjectSettings()) {
@@ -665,7 +665,7 @@ async function checkGcpCredentialsValid() {
     return false;
   }
 }
-async function y0d() {
+async function runGcpAuthRefresh() {
   let e = e8r();
   if (!e) return false;
   if (isGcpAuthRefreshFromProjectSettings()) {
@@ -805,7 +805,7 @@ async function saveApiKey(e) {
       },
     };
   }),
-    getApiKeyFromConfigOrMacOSKeychain.cache.clear?.(),
+    V4e.cache.clear?.(),
     tHn(),
     getApiKeyFromConfigOrMacOSKeychainAsync.cache?.clear?.());
 }
@@ -820,7 +820,7 @@ async function removeApiKey() {
       ...e,
       primaryApiKey: void 0,
     })),
-    getApiKeyFromConfigOrMacOSKeychain.cache.clear?.(),
+    V4e.cache.clear?.(),
     tHn(),
     getApiKeyFromConfigOrMacOSKeychainAsync.cache?.clear?.());
 }
@@ -927,7 +927,7 @@ function clearOAuthTokenCache() {
 function resetEnvDerivedAuthCaches() {
   (getClaudeAIOAuthTokens.cache?.clear?.(),
     getClaudeAIOAuthTokensAsync.cache?.clear?.(),
-    getApiKeyFromConfigOrMacOSKeychain.cache?.clear?.(),
+    V4e.cache?.clear?.(),
     getApiKeyFromConfigOrMacOSKeychainAsync.cache?.clear?.(),
     clearApiKeyHelperCache(),
     clearAwsCredentialsCache(),
@@ -936,7 +936,7 @@ function resetEnvDerivedAuthCaches() {
     $te(),
     c_e());
 }
-async function A0d() {
+async function invalidateOAuthCacheIfDiskChanged() {
   try {
     let { mtimeMs: e } = await l1t.stat(V9r.join(BY(), ".credentials.json"));
     if (e !== Wvi) ((Wvi = e), clearOAuthTokenCache());
@@ -949,7 +949,7 @@ async function A0d() {
 function handleOAuth401Error(e) {
   let t = U9r.get(e);
   if (t) return t;
-  let n = T0d(e).finally(() => {
+  let n = handleOAuth401ErrorImpl(e).finally(() => {
     U9r.delete(e);
   });
   return (U9r.set(e, n), n);
@@ -985,7 +985,7 @@ function noteAuthRecoveryOutcome(e) {
 function resetAuthFailureTracking() {
   r1t = null;
 }
-async function T0d(e) {
+async function handleOAuth401ErrorImpl(e) {
   clearOAuthTokenCache();
   let t = await getClaudeAIOAuthTokensAsync();
   if (!t?.refreshToken) {
@@ -1177,19 +1177,19 @@ function checkAndRefreshOAuthTokenIfNeededWithOutcome(e = 0, t = false, n) {
   if (e === 0 && !t) {
     if (n1t) return n1t;
     return (
-      (n1t = G9r(e, t).finally(() => {
+      (n1t = checkAndRefreshOAuthTokenIfNeededImpl(e, t).finally(() => {
         n1t = null;
       })),
       n1t
     );
   }
-  return G9r(e, t, n);
+  return checkAndRefreshOAuthTokenIfNeededImpl(e, t, n);
 }
 function isExpectedOAuthRefreshError(e, { isDefaultFirstPartyClient: t }) {
   return NIe(e) || (!t && EUr(e)) || R_(e);
 }
-async function G9r(e, t, n) {
-  await A0d();
+async function checkAndRefreshOAuthTokenIfNeededImpl(e, t, n) {
+  await invalidateOAuthCacheIfDiskChanged();
   let o = await getClaudeAIOAuthTokensAsync();
   if (!t) {
     if (o && !ate(o.expiresAt)) return "not_needed";
@@ -1219,7 +1219,7 @@ async function G9r(e, t, n) {
             retryCount: e + 1,
           }),
           await Nn(1000 + Math.random() * 1000),
-          G9r(e + 1, t, s)
+          checkAndRefreshOAuthTokenIfNeededImpl(e + 1, t, s)
         );
       return (
         G("tengu_oauth_token_refresh_lock_retry_limit_reached", {
@@ -1971,7 +1971,7 @@ var q9r,
   h0d = 3600000,
   _0d = 180000,
   refreshGcpCredentialsIfNeeded,
-  getApiKeyFromConfigOrMacOSKeychain,
+  V4e,
   FCn,
   getClaudeAIOAuthTokens,
   Wvi = 0,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module __
 // matched 2.1.88 source: src/utils/markdownConfigLoader.ts
 // class=modified  jaccard=0.2878  score=0.7807  fileCov=0.3132
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module __] deps: ft, INt, xNt, Lo, wr, Q9, fn, vf, lmn, dr, _1, L3e, Gy, fre, Un, qLn, kt, EI, lC, LL, ys, Vw, je, Yp, Ao, Ls, Is, _m, aS, CYn, wYn, $I, QH, qho, rcr, rcr, L3e
 ((Clc = require("path")), (Ilc = require("path")), (nO = (Eoe(), ro(Ope))));
@@ -93,7 +93,7 @@ function O6e(e, t) {
   }
   return s;
 }
-async function yrm(e, t) {
+async function findMarkdownFilesNative(e, t) {
   let n = [],
     r = new Set();
   async function o(s) {
@@ -146,14 +146,14 @@ async function yrm(e, t) {
   }
   return (await o(e), n);
 }
-async function Kbt(e) {
+async function loadMarkdownFiles(e) {
   let t = ut("true"),
     n = AbortSignal.timeout(3000),
     r = null,
     o;
   try {
     o = t
-      ? await yrm(e, n)
+      ? await findMarkdownFilesNative(e, n)
       : await Aue(["--files", "--hidden", "--follow", "--no-ignore", "--glob", "*.md"], e, n);
   } catch (i) {
     if (Vo(i)) return [];

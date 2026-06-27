@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/GenerateStep.tsx
 // class=modified  jaccard=0.4124  score=0.5904  fileCov=0.5777
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jYl] deps: ft, S4, ZE, ii, fh, og, Fze, co, Uh, kt, Jt
 UYl = `You are an elite AI agent architect specializing in crafting high-performance agent configurations. Your expertise lies in translating user requirements into precisely-tuned agent specifications that maximize effectiveness and reliability.
@@ -77,7 +77,7 @@ Key principles for your system prompts:
 
 Remember: The agents you create should be autonomous experts capable of handling their designated tasks with minimal additional guidance. Your system prompts are their complete operational manual.
 `;
-function GYl() {
+function GenerateStep() {
   let { updateWizardData: e, goBack: t, goToStep: n, wizardData: r } = Eu(),
     [o, s] = Mse.useState(r.generationPrompt || ""),
     [i, a] = Mse.useState(!1),

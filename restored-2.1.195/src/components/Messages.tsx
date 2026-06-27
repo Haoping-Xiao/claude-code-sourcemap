@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module yVl
 // matched 2.1.88 source: src/components/Messages.tsx
 // class=modified  jaccard=0.257  score=0.5176  fileCov=0.3379
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yVl] deps: Mql, Ye, m0e, v2o, je, At, vn, co, UFo
 ((Am = R(rt(), 1)), (Ise = R(se(), 1)), (dVl = new WeakMap()));
 pVl = new WeakMap();
-function mGf(e, t, n) {
+function filterForBriefTool(e, t, n) {
   let r = new Set(t),
     o = new Set(n),
     s = new Set(),
@@ -153,7 +153,7 @@ function nYe(e) {
   else u = t[5];
   return u;
 }
-function w5l(e, t, n, r, o, s) {
+function shouldRenderStatically(e, t, n, r, o, s) {
   if (o === "transcript") return true;
   switch (e.type) {
     case "attachment":
@@ -193,7 +193,7 @@ var I2o,
   C2o = 30,
   hGf = 50,
   EVl = 200,
-  _Gf = ({
+  MessagesImpl = ({
     messages: e,
     tools: t,
     commands: n,
@@ -296,7 +296,7 @@ var I2o,
           ),
           Mr = [bVl, pGf],
           fe = [bVl],
-          Te = !he && (SVl() || !fGf()) ? (P ? mGf(kr, Mr, fe) : gGf(kr, fe)) : kr,
+          Te = !he && (SVl() || !fGf()) ? (P ? filterForBriefTool(kr, Mr, fe) : gGf(kr, fe)) : kr,
           Re = ie ? Te.slice(-C2o) : Te,
           Ne = ie && Te.length > C2o,
           { messages: it } = PWl(Re, t, r),

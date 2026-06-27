@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module l$
 // matched 2.1.88 source: src/tools/AgentTool/forkSubagent.ts
 // class=modified  jaccard=0.2371  score=0.4473  fileCov=0.3354
-// note: deminified; 8 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isInForkChild, isForkSubagentEnabled, getForkSubagentSource, buildWorktreeNotice, buildForkedMessages, buildChildMessage, _resetForkSubagentSourceTelemetryForTesting, FORK_SUBAGENT_TYPE, FORK_AGENT
 // [unwrapped __esm module l$] deps: ZWe, dn, kt, ii, fh, RX, Nue, u_, lf, i$, HU, wr, fn, _m, F8
@@ -71,7 +71,7 @@ function buildForkedMessages(e, t) {
       content: [
         {
           type: "text",
-          text: usp,
+          text: FORK_PLACEHOLDER_RESULT,
         },
       ],
     })),
@@ -112,4 +112,4 @@ var Boa,
   YOn = null,
   FORK_SUBAGENT_TYPE = "fork",
   FORK_AGENT,
-  usp = "Fork started \u2014 processing in background";
+  FORK_PLACEHOLDER_RESULT = "Fork started \u2014 processing in background";

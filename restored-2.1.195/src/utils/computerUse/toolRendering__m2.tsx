@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $po
 // matched 2.1.88 source: src/utils/computerUse/toolRendering.tsx
 // class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.0614  score=0.0821  fileCov=0.1963
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setChromeBinding, getClaudeInChromePermissionOverrides, _resetChromeBindingForTesting
 // [unwrapped __esm module $po] deps: tQe, VM
@@ -137,7 +137,7 @@ function s0a(e) {
     url: n.href,
   };
 }
-async function RCp(e) {
+async function getComputerUseMCPRenderingOverrides(e) {
   let t = nGt;
   if (!t) return;
   try {
@@ -337,7 +337,7 @@ function getClaudeInChromePermissionOverrides(e) {
             }
           );
       } else if (a && typeof a.input.tabId === "number") {
-        let d = await RCp(a.input.tabId);
+        let d = await getComputerUseMCPRenderingOverrides(a.input.tabId);
         if (!d)
           return (
             Le("chrome_permission_prompt", "tab_url_unresolved"),

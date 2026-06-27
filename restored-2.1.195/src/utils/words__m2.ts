@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Oot
 // matched 2.1.88 source: src/utils/words.ts
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0032  score=0.0942  fileCov=0.0033
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function XOt(e) {
+function NOUNS(e) {
   if (Mte(e)) return "falcon";
   if (e === "claude-sonnet-4-5") return "sonnet_4_5";
   if (e === "claude-haiku-4-5") return "haiku_4_5";
@@ -14,7 +14,7 @@ function XOt(e) {
   return "base";
 }
 function Not(e, t) {
-  let n = XOt(t);
+  let n = NOUNS(t);
   return n === "base" ? e : `${e}_${n}`;
 }
 function i_e(e) {

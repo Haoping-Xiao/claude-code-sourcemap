@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DSn
 // matched 2.1.88 source: src/utils/model/bedrock.ts
 // class=modified (alt of src/utils/model/bedrock.ts)  jaccard=0.1231  score=0.5049  fileCov=0.14
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function G2e(e, t, n) {
   if (n) {
@@ -11,7 +11,7 @@ function G2e(e, t, n) {
   }
   return e.find((r) => r.includes(t)) ?? null;
 }
-async function g7s() {
+async function createBedrockClient() {
   let { BedrockClient: e } = await Promise.resolve().then(() => (NDt(), ODt)),
     t = await nj(),
     n = ut(process.env.CLAUDE_CODE_SKIP_BEDROCK_AUTH),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Oze
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0059  score=0.0473  fileCov=0.0067
-// note: deminified; 18 identifiers renamed (exports/displayName/curated)
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: worktreeOwnershipFields, summarizeToolCalls, stashBgStructuredResult, setWorktreeOwnership, setPermissionBlock, scanLinkRecords, markTurnActive, markTurnAborted, markApiFailure, findLatestRealUserAsk, ensurePermissionBridge, createClassifierJobState, classifyAndPushDebounced, classifyAndPush, classify, captureLatestAsk, captureIntent, LINK_SCAN_MAX_BYTES
 // [unwrapped __esm module Oze] deps: ft, ft, GF, yfe, ESt, p8, HI, OM, fd, je, Kke, wr, At, Hpe, bm, Jt, nne, ag
@@ -75,7 +75,7 @@ function yxl(e) {
   if (gxl()?.disableThinking) return [false, 0];
   return [void 0, fxl];
 }
-function Ivf() {
+function main() {
   return process.argv.some(
     (e) =>
       e === "-c" ||
@@ -93,7 +93,7 @@ function zPo(e) {
 }
 function xvf(e, t, n) {
   if (!Js() || e.dispatchEmitted) return;
-  if (((e.dispatchEmitted = true), Ivf())) return;
+  if (((e.dispatchEmitted = true), main())) return;
   G("tengu_bg_agent_dispatch", {
     agent: t,
     source: process.env.CLAUDE_BG_SOURCE ?? "shell",

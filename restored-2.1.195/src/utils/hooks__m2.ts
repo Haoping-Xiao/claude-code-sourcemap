@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Ric
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0262  score=0.356  fileCov=0.0275
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ric] deps: sp
 Mlr = require("crypto");
-async function* bzt(e, t, n, r, o, s, i = lp) {
+async function* executePreToolHooks(e, t, n, r, o, s, i = lp) {
   let a = r.getAppState(),
     l = r.agentId ?? Rt();
   if (!M$("PreToolUse", a, l)) return;
@@ -48,7 +48,7 @@ async function* Szt(e, t, n, r, o, s, i, a = lp, l) {
     toolUseContext: o,
   });
 }
-async function* Ezt(e, t, n, r, o, s, i, a, l = lp, c) {
+async function* processHookJSONOutput(e, t, n, r, o, s, i, a, l = lp, c) {
   let u = o.getAppState(),
     d = o.agentId ?? Rt();
   if (!M$("PostToolUseFailure", u, d)) return;
@@ -109,7 +109,7 @@ async function* tKt(e, t, n, r, o, s, i, a = lp) {
     toolUseContext: o,
   });
 }
-async function* jAe(e, t, n, r, o, s, i, a = lp) {
+async function* executePermissionRequestHooks(e, t, n, r, o, s, i, a = lp) {
   T(`executePermissionRequestHooks called for tool: ${e}`);
   let l = {
     ...Td(o, void 0, r),

@@ -39,7 +39,7 @@ function XFl(e, t) {
           : `"${t}" is pending approval \u2014 approve it in the terminal first`,
     );
 }
-async function call(e, t) {
+async function MCPToggle(e, t) {
   let n = e.trim(),
     r = t.getMcp().clients.filter((_) => _.name !== "ide"),
     o = n.toLowerCase();

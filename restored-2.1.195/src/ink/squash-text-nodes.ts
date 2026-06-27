@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module K_e
 // matched 2.1.88 source: src/ink/squash-text-nodes.ts
 // class=modified  jaccard=0.6395  score=1  fileCov=0.6395
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K_e]
 ((Cy = new WeakMap()), (wBt = new WeakMap()));
-function KRn(e, t = {}, n, r = []) {
+function squashTextNodesToSegments(e, t = {}, n, r = []) {
   let o = e.textStyles
     ? {
         ...t,
@@ -22,10 +22,11 @@ function KRn(e, t = {}, n, r = []) {
           styles: o,
           hyperlink: n,
         });
-    } else if (s.nodeName === "ink-text" || s.nodeName === "ink-virtual-text") KRn(s, o, n, r);
+    } else if (s.nodeName === "ink-text" || s.nodeName === "ink-virtual-text")
+      squashTextNodesToSegments(s, o, n, r);
     else if (s.nodeName === "ink-link") {
       let i = s.attributes.href;
-      KRn(s, o, i || n, r);
+      squashTextNodesToSegments(s, o, i || n, r);
     }
   }
   return r;

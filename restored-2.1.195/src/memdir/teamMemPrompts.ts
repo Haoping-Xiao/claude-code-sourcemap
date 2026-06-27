@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MM
 // matched 2.1.88 source: src/memdir/teamMemPrompts.ts
 // class=modified  jaccard=0.2773  score=0.3695  fileCov=0.5261
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MM] deps: ft, Un, At, Uh
 ((O3e = require("fs/promises")), (FD = require("path")));
@@ -12,7 +12,7 @@ Yw = class Yw extends Error {
     this.name = "PathTraversalError";
   }
 };
-function $Ni(e, t = !1) {
+function buildCombinedMemoryPrompt(e, t = !1) {
   let n = mm(),
     r = cT(),
     o = t

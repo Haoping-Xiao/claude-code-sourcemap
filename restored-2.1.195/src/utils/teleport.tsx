@@ -2,27 +2,27 @@
 // restored from claude-code 2.1.195 (deminified) — module CTo
 // matched 2.1.88 source: src/utils/teleport.tsx
 // class=modified  jaccard=0.4221  score=0.5171  fileCov=0.6967
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 24 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: validateSessionRepository, validateGitState, toServerErrorType, toServerErrorReason, teleportToRemoteWithErrorHandling, teleportToRemote, teleportResumeCodeSession, teleportFromSessionsAPI, subscribeRemoteSessionToPR, processMessagesForTeleportResume, pollRemoteSessionEvents, interruptRemoteSession, checkOutTeleportedSessionBranch, awaitRemoteSessionResult, archiveRemoteSession
 // [unwrapped __esm module CTo] deps: kt, dn, Un, E8n, Lo, je, Bi, sa, sr, kv
 vht = require("fs/promises");
-function MQp(e) {
+function createTeleportResumeSystemMessage(e) {
   if (e === null) return cc("Session resumed", "suggestion");
   let t = e instanceof qb ? e.formattedMessage : e.message;
   return cc(`Session resumed without branch: ${t}`, "warning");
 }
-function $Qp() {
+function createTeleportResumeUserMessage() {
   return Rn({
     content: `This session is being continued from another machine. Application state may have changed. The updated working directory is ${yr()}`,
     isMeta: !0,
   });
 }
-async function NQp(e, t) {
+async function generateTitleAndBranch(e, t) {
   let n = Rs(e, 75),
     r = "claude/task";
   try {
-    let o = OQp.replace("{description}", e),
+    let o = SESSION_TITLE_AND_BRANCH_PROMPT.replace("{description}", e),
       i = (
         await R$({
           systemPrompt: Sc([]),
@@ -100,7 +100,7 @@ async function validateGitState() {
       )
     );
 }
-async function BQp(e) {
+async function fetchFromOrigin(e) {
   let t = e ? ["fetch", "origin", `${e}:${e}`] : ["fetch", "origin"],
     n = R8(),
     { code: r, stderr: o } = await $n(go(), t, {
@@ -121,7 +121,7 @@ async function BQp(e) {
         level: "error",
       });
 }
-async function UQp(e) {
+async function ensureUpstreamIsSet(e) {
   let { code: t } = await $n(go(), ["rev-parse", "--abbrev-ref", `${e}@{upstream}`]);
   if (t === 0) {
     T(`Branch '${e}' already has upstream set`);
@@ -135,7 +135,7 @@ async function UQp(e) {
     else T(`Successfully set upstream for '${e}'`);
   } else T(`Remote branch 'origin/${e}' does not exist, skipping upstream setup`);
 }
-async function FQp(e) {
+async function checkoutBranch(e) {
   let { code: t, stderr: n } = await $n(go(), ["checkout", e]);
   if (t !== 0) {
     T(`Local checkout failed, trying to checkout from origin: ${n}`);
@@ -155,18 +155,18 @@ async function FQp(e) {
 `),
       )
     );
-  await UQp(e);
+  await ensureUpstreamIsSet(e);
 }
-async function A8n() {
+async function getCurrentBranch() {
   let { stdout: e } = await $n(go(), ["branch", "--show-current"]);
   return e.trim();
 }
 function processMessagesForTeleportResume(e, t) {
-  return [...n9t(e), $Qp(), MQp(t)];
+  return [...n9t(e), createTeleportResumeUserMessage(), createTeleportResumeSystemMessage(t)];
 }
 async function checkOutTeleportedSessionBranch(e) {
   try {
-    let t = await A8n();
+    let t = await getCurrentBranch();
     if ((T(`Current branch before teleport: '${t}'`), e)) {
       if (!Uie(e))
         throw new qb(
@@ -174,16 +174,16 @@ async function checkOutTeleportedSessionBranch(e) {
           wt.red(`Invalid branch name from cloud session
 `),
         );
-      (T(`Switching to branch '${e}'...`), await BQp(e), await FQp(e));
-      let r = await A8n();
+      (T(`Switching to branch '${e}'...`), await fetchFromOrigin(e), await checkoutBranch(e));
+      let r = await getCurrentBranch();
       T(`Branch after checkout: '${r}'`);
     } else T("No branch specified, staying on current branch");
     return {
-      branchName: await A8n(),
+      branchName: await getCurrentBranch(),
       branchError: null,
     };
   } catch (t) {
-    let n = await A8n(),
+    let n = await getCurrentBranch(),
       r = Zr(t);
     return {
       branchName: n,
@@ -329,7 +329,7 @@ This repo is ${wt.bold(c)}.
     );
   }
 }
-async function jQp(e, t) {
+async function handleTeleportPrerequisites(e, t) {
   let n = vZa(await oTo(), t);
   if (n.size > 0)
     (G("tengu_teleport_errors_detected", {
@@ -421,7 +421,7 @@ function toServerErrorReason(e) {
   }
 }
 async function teleportToRemoteWithErrorHandling(e, t) {
-  await jQp(e, new Set(["needsGitStash"]));
+  await handleTeleportPrerequisites(e, new Set(["needsGitStash"]));
   let r,
     o,
     s,
@@ -1013,7 +1013,7 @@ async function teleportToRemote(e) {
       v;
     if (e.title && e.reuseOutcomeBranch) ((A = e.title), (v = e.reuseOutcomeBranch));
     else {
-      let V = await NQp(e.description || GQp(t) || "Background task", n);
+      let V = await generateTitleAndBranch(e.description || GQp(t) || "Background task", n);
       ((A = e.title || V.title), (v = e.reuseOutcomeBranch || V.branchName));
     }
     let C = !1,
@@ -1384,7 +1384,7 @@ function subscribeRemoteSessionToPR(e, t, n) {
 }
 var wht,
   H8n,
-  OQp = `You are coming up with a succinct title and git branch name for a coding session based on the provided description. The title should be clear, concise, and accurately reflect the content of the coding task.
+  SESSION_TITLE_AND_BRANCH_PROMPT = `You are coming up with a succinct title and git branch name for a coding session based on the provided description. The title should be clear, concise, and accurately reflect the content of the coding task.
 You should keep it short and simple, ideally no more than 6 words. Avoid using jargon or overly technical terms unless absolutely necessary. The title should be easy to understand for anyone reading it.
 Use sentence case for the title (capitalize only the first word and proper nouns), not Title Case.
 

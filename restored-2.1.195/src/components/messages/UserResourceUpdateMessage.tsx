@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Zil
 // matched 2.1.88 source: src/components/messages/UserResourceUpdateMessage.tsx
 // class=modified  jaccard=0.2187  score=0.5131  fileCov=0.2759
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zil] deps: ft, Ye, Un, uo, wr, vn, sr, Yil
 ((Jil = R(lt(), 1)), (iIo = R(se(), 1)));
-function ssf(e) {
+function parseUpdates(e) {
   let t = [],
     n =
       /<mcp-resource-update\s+server="([^"]+)"\s+uri="([^"]+)"[^>]*>(?:[\s\S]*?<reason>([^<]+)<\/reason>)?/g,
@@ -38,7 +38,7 @@ function isf(e) {
   if (e.length > 40) return e.slice(0, 39) + "\u2026";
   return e;
 }
-function tal(e) {
+function UserResourceUpdateMessage(e) {
   let t = eal.c(12),
     { addMargin: n, param: r } = e,
     { text: o } = r,
@@ -50,12 +50,12 @@ function tal(e) {
   if (t[0] !== n || t[1] !== o) {
     c = Symbol.for("react.early_return_sentinel");
     e: {
-      let d = ssf(o);
+      let d = parseUpdates(o);
       if (d.length === 0) {
         c = null;
         break e;
       }
-      ((s = U), (i = "column"), (a = n ? 1 : 0), (l = d.map(asf)));
+      ((s = U), (i = "column"), (a = n ? 1 : 0), (l = d.map(_temp)));
     }
     ((t[0] = n), (t[1] = o), (t[2] = s), (t[3] = i), (t[4] = a), (t[5] = l), (t[6] = c));
   } else ((s = t[2]), (i = t[3]), (a = t[4]), (l = t[5]), (c = t[6]));
@@ -75,7 +75,7 @@ function tal(e) {
   else u = t[11];
   return u;
 }
-function asf(e, t) {
+function _temp(e, t) {
   return IAe.jsx(
     U,
     {

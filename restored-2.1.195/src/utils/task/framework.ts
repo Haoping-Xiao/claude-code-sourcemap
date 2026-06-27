@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ypt
 // matched 2.1.88 source: src/utils/task/framework.ts
 // class=modified  jaccard=0.2837  score=0.4276  fileCov=0.4573
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ypt] deps: ft, jDe, S$, eWt, fp, er, Il, je, At, ik, q0, es, vn, co, Yf, y6e, y_, _a, _m, Jt, dn, kt, Yqe
 ((gHl = require("crypto")),
@@ -20,7 +20,7 @@ function DLo(e, t) {
 function $L(e, t) {
   return {
     register(n) {
-      M_f(n, t);
+      registerTask(n, t);
     },
     update(n, r) {
       D_f(n, t, r);
@@ -64,7 +64,7 @@ function $L(e, t) {
       $_f(n, t);
     },
     applyOffsetsAndEvict(n, r) {
-      O_f(t, n, r);
+      applyTaskOffsetsAndEvictions(t, n, r);
     },
     get(n) {
       return e().tasks[n];
@@ -119,7 +119,7 @@ function P_f(e, t) {
   if (i !== s && i !== void 0) n.is_backgrounded = i;
   return Object.keys(n).length > 0 ? n : null;
 }
-function M_f(e, t) {
+function registerTask(e, t) {
   let n = false;
   if (
     (t((r) => {
@@ -193,7 +193,7 @@ function Ubt(e) {
   let t = e.tasks ?? {};
   return Object.values(t).filter((n) => n.status === "running");
 }
-async function SHl(e) {
+async function generateTaskAttachments(e) {
   let t = [],
     n = {},
     r = [];
@@ -221,7 +221,7 @@ async function SHl(e) {
     evictedTaskIds: r,
   };
 }
-function O_f(e, t, n) {
+function applyTaskOffsetsAndEvictions(e, t, n) {
   let r = Object.keys(t);
   if (r.length === 0 && n.length === 0) return;
   let o = [];

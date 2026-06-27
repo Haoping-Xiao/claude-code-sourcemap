@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Cnr
 // matched 2.1.88 source: src/utils/doctorContextWarnings.ts
 // class=modified  jaccard=0.4082  score=0.9585  fileCov=0.4155
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function Z$f() {
+async function checkClaudeMdFiles() {
   if (gce()) return null;
   let e = XRe(await Wv());
   if (e.length === 0) return null;
@@ -24,7 +24,7 @@ async function Z$f() {
     threshold: t,
   };
 }
-async function eOf(e) {
+async function checkAgentDescriptions(e) {
   if (!e) return null;
   let t = Y7t(e);
   if (t <= xKe) return null;
@@ -49,7 +49,7 @@ async function eOf(e) {
     threshold: xKe,
   };
 }
-async function tOf(e) {
+async function checkUnreachableRules(e) {
   let t = await e(),
     n = xo.isSandboxingEnabled() && xo.isAutoAllowBashIfSandboxedEnabled(),
     r = vnr(t, {
@@ -67,7 +67,11 @@ async function tOf(e) {
   };
 }
 async function zNl(e, t) {
-  let [n, r, o] = await Promise.all([Z$f(), eOf(e), tOf(t)]);
+  let [n, r, o] = await Promise.all([
+    checkClaudeMdFiles(),
+    checkAgentDescriptions(e),
+    checkUnreachableRules(t),
+  ]);
   return {
     claudeMdWarning: n,
     agentWarning: r,

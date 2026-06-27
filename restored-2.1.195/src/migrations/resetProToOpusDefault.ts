@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module s1c
 // matched 2.1.88 source: src/migrations/resetProToOpusDefault.ts
 // class=modified  jaccard=0.3473  score=0.6954  fileCov=0.4096
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function i1c() {
+function resetProToOpusDefault() {
   if (Dt().opusProMigrationComplete) return;
   if (fr() !== "firstParty" || !Aye()) {
     (gn((r) => ({

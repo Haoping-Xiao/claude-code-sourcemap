@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pw
 // matched 2.1.88 source: src/utils/fileRead.ts
 // class=modified  jaccard=0.3671  score=0.5204  fileCov=0.5547
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pw] deps: At
 ((Vkr = require("crypto")),
@@ -34,7 +34,7 @@ function Dpn(e) {
       else n++;
   return t > n ? "CRLF" : "LF";
 }
-function Bee(e) {
+function readFileSyncWithMetadata(e) {
   let t = qt(),
     { resolvedPath: n, isSymlink: r } = jd(t, e);
   if (r) T(`Reading through symlink: ${e} -> ${n}`);
@@ -55,7 +55,7 @@ function Bee(e) {
   };
 }
 function XC(e) {
-  return Bee(e).content;
+  return readFileSyncWithMetadata(e).content;
 }
 async function LEs(e) {
   let t = qt(),

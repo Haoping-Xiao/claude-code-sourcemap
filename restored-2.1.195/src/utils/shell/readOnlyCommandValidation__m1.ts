@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tdr
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0132  score=0.2202  fileCov=0.0138
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tdr] deps: Xa, w4, lPn, ZS, Ye, uo, Mne, Pne
 ((kTt = R(lt(), 1)),
@@ -23,7 +23,7 @@ function Dhc() {
 function Ldm(e) {
   return new Date(e - Rdm * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
-async function Phc() {
+async function GH_READ_ONLY_COMMANDS() {
   if (Ir()) return null;
   if (Vi()) return null;
   let e = Dt(),

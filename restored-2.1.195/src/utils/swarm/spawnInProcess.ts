@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hP
 // matched 2.1.88 source: src/utils/swarm/spawnInProcess.ts
 // class=modified  jaccard=0.3097  score=0.5187  fileCov=0.4345
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hP] deps: ft, dn, je, fn, At, Bi, sa, vn, Jt, Mp, d9t, hN
 ((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));
@@ -20,7 +20,7 @@ function hZp(e, t) {
   if (e === "plan" || e === "dontAsk") return "default";
   return e;
 }
-async function $ht(e, t) {
+async function spawnInProcessTeammate(e, t) {
   let { name: n, teamName: r, prompt: o, color: s, planModeRequired: i, model: a } = e,
     { taskRegistry: l } = t,
     c = pte(n, r),
@@ -111,7 +111,7 @@ async function $ht(e, t) {
     );
   }
 }
-function uMe(e, t, n) {
+function killInProcessTeammate(e, t, n) {
   let r = false,
     o = null,
     s = null,

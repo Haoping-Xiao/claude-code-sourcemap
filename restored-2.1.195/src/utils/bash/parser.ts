@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ybe
 // matched 2.1.88 source: src/utils/bash/parser.ts
 // class=modified  jaccard=0.4498  score=0.8497  fileCov=0.4887
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseCommandRaw, parseCommand, findCommandNode, extractCommandArguments, PARSE_ABORTED
 // [unwrapped __esm module Ybe]
@@ -68,7 +68,7 @@ async function parseCommand(e) {
     let t = hL().parse(e);
     if (!t) return null;
     let n = findCommandNode(t, null),
-      r = hrp(n);
+      r = extractEnvVars(n);
     return {
       rootNode: t,
       envVars: r,
@@ -129,7 +129,7 @@ function findCommandNode(e, t) {
   }
   return null;
 }
-function hrp(e) {
+function extractEnvVars(e) {
   if (!e || e.type !== "command") return [];
   let t = [];
   for (let n of e.children)

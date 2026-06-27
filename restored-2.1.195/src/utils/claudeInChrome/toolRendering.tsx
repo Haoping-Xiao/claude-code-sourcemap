@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Upo
 // matched 2.1.88 source: src/utils/claudeInChrome/toolRendering.tsx
 // class=modified  jaccard=0.6073  score=0.6621  fileCov=0.8801
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderChromeToolResultMessage, getClaudeInChromeMCPToolOverrides
 // [unwrapped __esm module Upo] deps: tQe, Oun, ft, dn, ii, Il, At, xW, I1, DFn, Jt, sr, VM, $po
 ((l0a = require("url")), (eGt = new Map()));
 ICp = new RegExp(`^${z0e}\\(([^)]+)\\)$`);
 LCp = new Set(["image/png", "image/jpeg", "image/gif", "image/webp"]);
-function BCp(e, t, n) {
+function renderChromeToolUseMessage(e, t, n) {
   let r = e.tabId;
   if (typeof r === "number") QZr(r);
   let o = [];
@@ -79,7 +79,7 @@ function BCp(e, t, n) {
   }
   return o.join(", ") || null;
 }
-function UCp(e) {
+function renderChromeViewTabLink(e) {
   if (!vI()) return null;
   if (typeof e !== "object" || e === null || !("tabId" in e)) return null;
   let t =
@@ -89,7 +89,7 @@ function UCp(e) {
         ? parseInt(e.tabId, 10)
         : NaN;
   if (isNaN(t)) return null;
-  let n = `${NCp}${t}`;
+  let n = `${CHROME_EXTENSION_FOCUS_TAB_URL_BASE}${t}`;
   return Tqe.jsxs(w, {
     children: [
       " ",
@@ -178,10 +178,10 @@ function getClaudeInChromeMCPToolOverrides(e) {
       return `Claude in Chrome[${e.replace(/_mcp$/, "")}]`;
     },
     renderToolUseMessage(t, { verbose: n }) {
-      return BCp(t, e, n);
+      return renderChromeToolUseMessage(t, e, n);
     },
     renderToolUseTag(t) {
-      return UCp(t);
+      return renderChromeViewTabLink(t);
     },
     renderToolResultMessage(t, n, { verbose: r }) {
       if (!jCp(t)) return null;
@@ -194,4 +194,4 @@ function jCp(e) {
   return typeof e === "object" && e !== null;
 }
 var Tqe,
-  NCp = "https://clau.de/chrome/tab/";
+  CHROME_EXTENSION_FOCUS_TAB_URL_BASE = "https://clau.de/chrome/tab/";

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hwl
 // matched 2.1.88 source: src/services/teamMemorySync/index.ts
 // class=modified  jaccard=0.2623  score=0.3664  fileCov=0.4802
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hwl] deps: Xr
 ((fAf = ve(() =>
@@ -52,7 +52,7 @@
       }).optional(),
     }),
   )));
-function NDo(e, t, n) {
+function getTeamMemorySyncEndpoint(e, t, n) {
   let r = n ? `&view=${n}` : "";
   if (e === "team") return `/api/claude_code/team_memory?repo=${encodeURIComponent(t)}${r}`;
   return `/api/claude_code/memory?scope=user&repo=${encodeURIComponent(t)}${r}`;
@@ -96,7 +96,7 @@ function BDo(e, t) {
     aborted: false,
   };
 }
-function MJn(e) {
+function hashContent(e) {
   return "sha256:" + bwl.createHash("sha256").update(e, "utf8").digest("hex");
 }
 function $Jn() {
@@ -129,12 +129,12 @@ function Hwl(e) {
     }),
   };
 }
-async function gAf(e, t) {
+async function fetchTeamMemoryOnce(e, t) {
   let n = z$e(e.scope);
   try {
     let r = {};
     if (t) r["If-None-Match"] = `"${t.replaceAll('"', "")}"`;
-    let o = await Os.get(NDo(e.scope, e.repoSlug), {
+    let o = await Os.get(getTeamMemorySyncEndpoint(e.scope, e.repoSlug), {
       refreshOAuth: true,
       headers: r,
       timeout: ODo,
@@ -242,9 +242,9 @@ async function gAf(e, t) {
     }
   }
 }
-async function hAf(e) {
+async function fetchTeamMemoryHashes(e) {
   try {
-    let t = await Os.get(NDo(e.scope, e.repoSlug, "hashes"), {
+    let t = await Os.get(getTeamMemorySyncEndpoint(e.scope, e.repoSlug, "hashes"), {
       refreshOAuth: true,
       timeout: ODo,
       validateStatus: (i) => i === 200 || i === 404,
@@ -319,7 +319,7 @@ async function hAf(e) {
 async function yAf(e, t) {
   let n = null;
   for (let r = 1; r <= MDo + 1; r++) {
-    if (((n = await gAf(e, t)), n.success || n.skipRetry)) return n;
+    if (((n = await fetchTeamMemoryOnce(e, t)), n.success || n.skipRetry)) return n;
     if (r > MDo) return n;
     let o = TJ(r);
     (T(`${z$e(e.scope)}: retry ${r}/${MDo}`, {
@@ -329,7 +329,7 @@ async function yAf(e, t) {
   }
   return n;
 }
-function _Af(e) {
+function batchDeltaByBytes(e) {
   let t = Object.keys(e).sort();
   if (t.length === 0) return [];
   let n = Buffer.byteLength('{"entries":{}}', "utf8"),
@@ -344,7 +344,7 @@ function _Af(e) {
   }
   return (o.push(s), o);
 }
-async function bAf(e, t, n, r) {
+async function uploadTeamMemory(e, t, n, r) {
   let o = z$e(e.scope);
   try {
     let s = {
@@ -355,7 +355,7 @@ async function bAf(e, t, n, r) {
       entries: t,
     };
     if (r.length > 0) i.soft_delete_keys = [...r];
-    let a = await Os.put(NDo(e.scope, e.repoSlug), i, {
+    let a = await Os.put(getTeamMemorySyncEndpoint(e.scope, e.repoSlug), i, {
       refreshOAuth: true,
       headers: s,
       timeout: ODo,
@@ -422,7 +422,7 @@ async function bAf(e, t, n, r) {
     };
   }
 }
-async function SAf(e, t) {
+async function readLocalTeamMemory(e, t) {
   let n = z$e(e),
     r = Swl(e),
     o = {},
@@ -521,7 +521,7 @@ async function SAf(e, t) {
     skippedSecrets: i,
   };
 }
-async function EAf(e, t, n) {
+async function writeRemoteEntriesToLocal(e, t, n) {
   let r = z$e(e),
     o = await Promise.all(
       Object.entries(t).map(async ([c, u]) => {
@@ -577,7 +577,7 @@ async function EAf(e, t, n) {
               };
             if (e === "user") {
               let g = n.get(c);
-              if (!(g !== void 0 && MJn(m) === g))
+              if (!(g !== void 0 && hashContent(m) === g))
                 return (
                   T(
                     `${r}: keeping local "${c}" \u2014 not overwriting with server copy (unproven stale mirror; pinned out of push delta until locally edited)`,
@@ -588,7 +588,7 @@ async function EAf(e, t, n) {
                   {
                     relPath: c,
                     outcome: "kept_divergent",
-                    hashAtPull: MJn(m),
+                    hashAtPull: hashContent(m),
                   }
                 );
             }
@@ -711,7 +711,7 @@ async function AAf(e, t) {
             });
           return false;
         }
-        if (MJn(u) !== c)
+        if (hashContent(u) !== c)
           return (
             T(
               `${r}: keeping locally-modified tombstoned "${i}" (diverged from server mirror) \u2014 not reaping`,
@@ -750,7 +750,7 @@ function vKt() {
 }
 async function jDo(e, t) {
   if (e.pullPromise) return e.pullPromise;
-  let n = HAf(e, t);
+  let n = pullTeamMemory(e, t);
   e.pullPromise = n;
   try {
     return await n;
@@ -758,7 +758,7 @@ async function jDo(e, t) {
     e.pullPromise = null;
   }
 }
-async function HAf(e, t) {
+async function pullTeamMemory(e, t) {
   let n = t?.skipEtagCache ?? false,
     r = Date.now(),
     o = z$e(e.scope);
@@ -880,7 +880,7 @@ async function HAf(e, t) {
     unwrittenKeys: p,
     keptDivergentHashes: f,
     keptUnreadable: m,
-  } = await EAf(e.scope, a, u);
+  } = await writeRemoteEntriesToLocal(e.scope, a, u);
   ((e.keptDivergentHashes = f), (e.keptUnreadable = m));
   let g = await AAf(e, c);
   if (d > 0 || g > 0) {
@@ -913,7 +913,7 @@ async function HAf(e, t) {
     }
   );
 }
-async function GDo(e) {
+async function pushTeamMemory(e) {
   let t = Date.now(),
     n = z$e(e.scope),
     r = 0;
@@ -976,7 +976,7 @@ async function GDo(e) {
       );
     }
   }
-  let o = await SAf(e.scope, e.serverMaxEntries),
+  let o = await readLocalTeamMemory(e.scope, e.serverMaxEntries),
     s = o.entries,
     i = o.diskKeys,
     a = o.diskTrusted,
@@ -1008,7 +1008,7 @@ async function GDo(e) {
   }
   let u = new Map();
   for (let [m, g] of Object.entries(s)) {
-    let h = MJn(g);
+    let h = hashContent(g);
     if (e.tombstonedKeys.has(m)) {
       let y = e.tombstonedPriorHashes.get(m);
       if (e.scope !== "user" || y === void 0 || y === h) {
@@ -1053,7 +1053,7 @@ async function GDo(e) {
         }
       );
     }
-    let y = _Af(g);
+    let y = batchDeltaByBytes(g);
     if (y.length === 0) y.push({});
     let b;
     for (let v = 0; v < y.length; v++) {
@@ -1079,7 +1079,7 @@ async function GDo(e) {
         );
       let C = y[v],
         x = v === 0 ? c : [];
-      if (((b = await bAf(e, C, e.lastKnownChecksum, x)), !b.success)) break;
+      if (((b = await uploadTeamMemory(e, C, e.lastKnownChecksum, x)), !b.success)) break;
       for (let I of Object.keys(C))
         (e.serverChecksums.set(I, u.get(I)),
           e.keptDivergentHashes.delete(I),
@@ -1190,7 +1190,7 @@ async function GDo(e) {
       T(`${n}: conflict (412), probing server hashes (attempt ${m + 1}/${PJn})`, {
         level: "info",
       }));
-    let _ = await hAf(e);
+    let _ = await fetchTeamMemoryHashes(e);
     if (!_.success) {
       let v = _.errorType === "parse" ? void 0 : _.errorType;
       return (

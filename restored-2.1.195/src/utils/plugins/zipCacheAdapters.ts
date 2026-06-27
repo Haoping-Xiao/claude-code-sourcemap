@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module MUc
 // matched 2.1.88 source: src/utils/plugins/zipCacheAdapters.ts
 // class=modified  jaccard=0.2245  score=0.9312  fileCov=0.2283
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function ALm() {
+async function readZipCacheKnownMarketplaces() {
   try {
     let e = await fXo.readFile(_$o(), "utf-8"),
       t = Pet().safeParse(Ft(e));
@@ -26,13 +26,13 @@ async function HLm(e) {
 async function TLm(e, t) {
   let n = wYt();
   if (!n) return;
-  let r = await vLm(t);
+  let r = await readMarketplaceJsonContent(t);
   if (r !== null) {
     let o = sRl(e);
     await XZn(Rmr.join(n, o), r);
   }
 }
-async function vLm(e) {
+async function readMarketplaceJsonContent(e) {
   let t = [Rmr.join(e, ".claude-plugin", "marketplace.json"), Rmr.join(e, "marketplace.json"), e];
   for (let n of t)
     try {
@@ -40,7 +40,7 @@ async function vLm(e) {
     } catch {}
   return null;
 }
-async function $Uc() {
+async function syncMarketplacesToZipCache() {
   let e = await wP();
   for (let [r, o] of Object.entries(e)) {
     if (!o.installLocation) continue;
@@ -51,7 +51,7 @@ async function $Uc() {
     }
   }
   let n = {
-    ...(await ALm()),
+    ...(await readZipCacheKnownMarketplaces()),
     ...e,
   };
   await HLm(n);

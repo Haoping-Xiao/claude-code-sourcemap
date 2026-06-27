@@ -2,16 +2,16 @@
 // restored from claude-code 2.1.195 (deminified) — module sTo
 // matched 2.1.88 source: src/services/api/sessionIngress.ts
 // class=modified  jaccard=0.5668  score=0.7658  fileCov=0.6856
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sTo] deps: VDe, Yp, fH, Ye, WVt, Fy, vi, eE, DQa
 ((PQa = R(lt(), 1)), (qVt = R(rt(), 1)), (XJ = R(se(), 1)), (zJp = new Set()));
 function XJp(e) {
   let t = iTo.get(e);
-  if (!t) ((t = qZe(async (n, r, o) => await JJp(e, n, r, o))), iTo.set(e, t));
+  if (!t) ((t = qZe(async (n, r, o) => await appendSessionLogImpl(e, n, r, o))), iTo.set(e, t));
   return t;
 }
-async function JJp(e, t, n, r) {
+async function appendSessionLogImpl(e, t, n, r) {
   for (let o = 1; o <= u8n; o++) {
     try {
       let i = J9e.get(e),
@@ -43,7 +43,7 @@ async function JJp(e, t, n, r) {
           (J9e.set(e, c),
             T(`Session 409: adopting server lastUuid=${c} from header, retrying entry ${t.uuid}`));
         else {
-          let u = await aTo(e, n, r),
+          let u = await fetchSessionLogsFromUrl(e, n, r),
             d = QJp(u);
           if (d)
             (J9e.set(e, d),
@@ -100,7 +100,7 @@ async function JJp(e, t, n, r) {
   }
   return false;
 }
-async function MQa(e, t, n) {
+async function appendSessionLog(e, t, n) {
   let r = XS();
   if (!r)
     return (
@@ -114,7 +114,7 @@ async function MQa(e, t, n) {
   };
   return XJp(e)(t, n, o);
 }
-async function $Qa(e, t) {
+async function getSessionLogs(e, t) {
   let n = XS();
   if (!n)
     return (
@@ -125,23 +125,23 @@ async function $Qa(e, t) {
   let r = {
       Authorization: `Bearer ${n}`,
     },
-    o = await aTo(e, t, r);
+    o = await fetchSessionLogsFromUrl(e, t, r);
   if (o && o.length > 0) {
     let s = o.at(-1);
     if (s && "uuid" in s && s.uuid) J9e.set(e, s.uuid);
   }
   return o;
 }
-async function OQa(e, t, n) {
+async function getSessionLogsViaOAuth(e, t, n) {
   let r = `${$s().BASE_API_URL}/v1/session_ingress/session/${e}`;
   T(`[session-ingress] Fetching session logs from: ${r}`);
   let o = {
     ...aH(t),
     "x-organization-uuid": n,
   };
-  return await aTo(e, r, o);
+  return await fetchSessionLogsFromUrl(e, r, o);
 }
-async function NQa(e, t, n, r) {
+async function getTeleportEvents(e, t, n, r) {
   let o = `${$s().BASE_API_URL}/v1/code/sessions/${e}/teleport-events`,
     s = {
       ...aH(t),
@@ -227,7 +227,7 @@ async function NQa(e, t, n, r) {
   else xe("api_teleport_events_fetch");
   return (T(`[teleport] Fetched ${i.length} events over ${l} page(s) for ${e}`), i);
 }
-async function aTo(e, t, n) {
+async function fetchSessionLogsFromUrl(e, t, n) {
   try {
     let r = await po.get(t, {
       headers: n,

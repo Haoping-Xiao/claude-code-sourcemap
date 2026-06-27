@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gNo
 // matched 2.1.88 source: src/hooks/useTurnDiffs.ts
 // class=modified  jaccard=0.6809  score=0.9183  fileCov=0.7248
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gNo] deps: l0e, G9t
 ((qQ = R(rt(), 1)),
@@ -10,7 +10,7 @@
     hunks: new Map(),
     skippedLarge: new Set(),
   }));
-function AMf(e) {
+function isFileEditResult(e) {
   if (!e || typeof e !== "object") return false;
   let t = e,
     n = typeof t.filePath === "string",
@@ -18,7 +18,7 @@ function AMf(e) {
     o = t.type === "create" && typeof t.content === "string";
   return n && (r || o);
 }
-function HMf(e) {
+function isFileWriteOutput(e) {
   return "type" in e && (e.type === "create" || e.type === "update");
 }
 function TMf(e) {
@@ -50,7 +50,7 @@ function w1l(e) {
     linesRemoved: n,
   };
 }
-function C1l(e) {
+function useTurnDiffs(e) {
   let t = Qtr.useRef({
     completedTurns: [],
     currentTurn: null,
@@ -90,7 +90,7 @@ function C1l(e) {
           }));
       } else if (n.currentTurn && s.toolUseResult) {
         let a = s.toolUseResult;
-        if (AMf(a)) {
+        if (isFileEditResult(a)) {
           let { filePath: l, structuredPatch: c } = a,
             u = "type" in a && a.type === "create",
             d = n.currentTurn.files.get(l);
@@ -103,7 +103,7 @@ function C1l(e) {
               linesRemoved: 0,
             }),
               n.currentTurn.files.set(l, d));
-          if (u && c.length === 0 && HMf(a)) {
+          if (u && c.length === 0 && isFileWriteOutput(a)) {
             let f = a.content.split(`
 `),
               m = {

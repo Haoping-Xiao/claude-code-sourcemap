@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rur
 // matched 2.1.88 source: src/bridge/codeSessionApi.ts
 // class=partial  jaccard=0.0957  score=0.245  fileCov=0.1356
-// note: low-confidence suggestion: src/bridge/codeSessionApi.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/bridge/codeSessionApi.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 async function rum() {
   let e = Oe.CLAUDE_CLIENT_PRESENCE_FILE;
@@ -15,7 +15,7 @@ async function rum() {
     return false;
   }
 }
-function dgc(e, t, n) {
+function oauthHeaders(e, t, n) {
   if (Vi()) return num;
   let r = {
       sessionId: e,

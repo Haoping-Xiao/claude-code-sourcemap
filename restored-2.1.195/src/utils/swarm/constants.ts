@@ -2,20 +2,20 @@
 // restored from claude-code 2.1.195 (deminified) — module loe
 // matched 2.1.88 source: src/utils/swarm/constants.ts
 // class=modified  jaccard=0.583  score=0.832  fileCov=0.6607
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function zPe(e) {
   if (!e?.excludeDefault) return false;
   return e.tips.length > 0;
 }
-function wVt() {
+function getSwarmSocketName() {
   return `claude-swarm-${process.pid}`;
 }
 var Hd = "team-lead",
   TXa,
-  P6 = "claude-swarm",
+  SWARM_SESSION_NAME = "claude-swarm",
   oht = "swarm-view",
   M6 = "tmux",
-  _Ho = "claude-hidden",
+  HIDDEN_SESSION_NAME = "claude-hidden",
   KPe = "cat",
-  sht = "CLAUDE_CODE_TEAMMATE_COMMAND";
+  TEAMMATE_COMMAND_ENV_VAR = "CLAUDE_CODE_TEAMMATE_COMMAND";

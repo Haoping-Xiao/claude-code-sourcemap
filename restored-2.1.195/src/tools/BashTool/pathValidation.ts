@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Tjn
 // matched 2.1.88 source: src/tools/BashTool/pathValidation.ts
 // class=modified  jaccard=0.0425  score=0.184  fileCov=0.0523
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Xqe(e, t, n) {
   return {
@@ -16,7 +16,7 @@ function Xqe(e, t, n) {
     suggestions: [],
   };
 }
-function wjn(e, t, n, r, o) {
+function checkDangerousRemovalPaths(e, t, n, r, o) {
   let s = Zpt[e],
     i = s(t),
     { resolvedPath: a } = jd(qt(), n),
@@ -176,7 +176,7 @@ function Ego(e) {
     return n;
   };
 }
-function y$a(e, t, n = []) {
+function parsePatternCommand(e, t, n = []) {
   let r = [],
     o = false,
     s = false,
@@ -223,7 +223,7 @@ function E$a(e, t) {
     if (r.length === 2 && r[0] === "-" && e.startsWith(r) && e !== r) return e.slice(2);
   return;
 }
-function rLp(e, t, n, r, o, s) {
+function validateCommandPaths(e, t, n, r, o, s) {
   let i = Zpt[e],
     a = i(t),
     l = s ?? Jqe[e];
@@ -308,12 +308,12 @@ function rLp(e, t, n, r, o, s) {
     message: `Path validation passed for ${e} command`,
   };
 }
-function H$a(e, t) {
+function createPathChecker(e, t) {
   return (n, r, o, s) => {
-    let i = rLp(e, n, r, o, s, t);
+    let i = validateCommandPaths(e, n, r, o, s, t);
     if (i.behavior === "deny") return i;
     if (e === "rm" || e === "rmdir") {
-      let a = wjn(e, n, r, o, s);
+      let a = checkDangerousRemovalPaths(e, n, r, o, s);
       if (a.behavior !== "passthrough") return a;
     }
     if (i.behavior === "passthrough") return i;
@@ -351,7 +351,7 @@ function H$a(e, t) {
 function oLp(e) {
   return oA(e);
 }
-function sLp(e, t, n, r) {
+function validateSinglePathCommand(e, t, n, r) {
   let o = A5(e),
     s = oLp(o);
   if (s.length === 0)
@@ -367,10 +367,10 @@ function sLp(e, t, n, r) {
       message: `Command '${l}' is not a path-restricted command`,
     };
   let c = l === "sed" && Qpt(o) ? "read" : void 0;
-  return H$a(l, c)(a, t, n, r);
+  return createPathChecker(l, c)(a, t, n, r);
 }
 function iLp(e, t, n, r) {
-  let o = mEe(e.argv);
+  let o = stripWrappersFromArgv(e.argv);
   if (o.length === 0)
     return {
       behavior: "passthrough",
@@ -384,14 +384,14 @@ function iLp(e, t, n, r) {
       message: `Command '${a}' is not a path-restricted command`,
     };
   let l = a === "sed" && Qpt(A5(e.text)) ? "read" : void 0;
-  return H$a(a, l)(i, t, n, r);
+  return createPathChecker(a, l)(i, t, n, r);
 }
 function T$a(e) {
   if (!e) return e;
   let t = e.replace(/^.*[\\/]/, "");
   return t === "rm" || t === "rmdir" ? t : e;
 }
-function aLp(e, t, n, r) {
+function validateOutputRedirections(e, t, n, r) {
   if (r && e.length > 0)
     return {
       behavior: "ask",
@@ -442,7 +442,7 @@ function aLp(e, t, n, r) {
     message: "No unsafe redirections found",
   };
 }
-function Cjn(e, t, n, r, o, s) {
+function checkPathConstraints(e, t, n, r, o, s) {
   if (!s && />>\s*>\s*\(|>\s*>\s*\(|<\s*\(/.test(e.command))
     return {
       behavior: "ask",
@@ -542,7 +542,7 @@ function Cjn(e, t, n, r, o, s) {
     }
     return;
   }
-  let p = aLp(a, t, n, r),
+  let p = validateOutputRedirections(a, t, n, r),
     f = d(p);
   if (f) return f;
   if (s)
@@ -553,7 +553,7 @@ function Cjn(e, t, n, r, o, s) {
   else {
     let m = By(e.command);
     for (let g of m) {
-      let h = d(sLp(g, t, n, r));
+      let h = d(validateSinglePathCommand(g, t, n, r));
       if (h) return h;
     }
   }
@@ -630,7 +630,7 @@ function lLp(e) {
     denyCheckOutputRedirections: n,
   };
 }
-function cLp(e) {
+function skipTimeoutFlags(e) {
   let t = 1;
   while (t < e.length) {
     let n = e[t],
@@ -674,7 +674,7 @@ function dLp(e) {
   }
   return t < e.length ? t : -1;
 }
-function mEe(e) {
+function stripWrappersFromArgv(e) {
   let t = e;
   for (;;) {
     let n = t[0]?.replace(/^.*[\\/]/, ""),
@@ -690,7 +690,7 @@ function mEe(e) {
           : t[0];
     if (r === "time" || r === "nohup") t = t.slice(t[1] === "--" ? 2 : 1);
     else if (r === "timeout") {
-      let o = cLp(t);
+      let o = skipTimeoutFlags(t);
       if (o < 0 || !t[o] || !/^\d+(?:\.\d+)?[smhd]?$/.test(t[o])) return t;
       t = t.slice(o + 1);
     } else if (r === "nice") {

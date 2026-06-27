@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RHo
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0607  score=0.3295  fileCov=0.0693
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RHo] deps: Xr, je, At, Ao, pht, Epe, Jt, sr, dn, kt, wHo
 ((RVt = {}),
@@ -59,7 +59,7 @@ function YXa(e, t, n) {
   e.pending = null;
   let s = o.tip.featureId,
     i = o.classifierLogId;
-  return dXp(r, n, o).catch((a) => {
+  return classifyYoloActionXml(r, n, o).catch((a) => {
     let l = be(a);
     (T(`[context-tips] reception error: ${l}`),
       N9n({
@@ -71,7 +71,7 @@ function YXa(e, t, n) {
       Le("tips_context_reception_score", "tips_context_reception_request_failed"));
   });
 }
-async function dXp(e, t, n) {
+async function classifyYoloActionXml(e, t, n) {
   let r = kHo(e, t);
   if (r.length === 0) {
     N9n({

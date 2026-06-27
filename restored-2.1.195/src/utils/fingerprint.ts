@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pht
 // matched 2.1.88 source: src/utils/fingerprint.ts
 // class=modified  jaccard=0.2228  score=0.3208  fileCov=0.4216
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function J7p(e) {
   let t = e.find((r) => r.type === "user" && !r.isMeta);
@@ -17,7 +17,7 @@ function J7p(e) {
 }
 function CHo(e, t) {
   let r = [4, 7, 20].map((i) => e[i] || "0").join(""),
-    o = `${X7p}${r}${t}`;
+    o = `${FINGERPRINT_SALT}${r}${t}`;
   return jXa.createHash("sha256").update(o).digest("hex").slice(0, 3);
 }
 function GXa(e) {
@@ -36,4 +36,4 @@ function GXa(e) {
   );
 }
 var jXa,
-  X7p = "59cf53e54c78";
+  FINGERPRINT_SALT = "59cf53e54c78";

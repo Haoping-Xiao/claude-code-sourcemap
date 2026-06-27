@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module l6l
 // matched 2.1.88 source: src/components/ResumeTask.tsx
 // class=modified  jaccard=0.2529  score=0.3979  fileCov=0.4097
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l6l] deps: ft, kt, dn, At, gP
 ((i6l = R(lt(), 1)), (Esr = R(rt(), 1)));
-function u6l({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
+function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
   let { rows: r } = br(),
     [o, s] = kse.useState([]),
     [i, a] = kse.useState(null),
@@ -36,7 +36,7 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
         s(B);
       } catch (L) {
         let M = L instanceof Error ? L.message : String(L);
-        (T(`Error loading code sessions: ${M}`), d(z5f(M)));
+        (T(`Error loading code sessions: ${M}`), d(determineErrorType(M)));
       } finally {
         (c(false), f(false));
       }
@@ -239,7 +239,7 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
     ],
   });
 }
-function z5f(e) {
+function determineErrorType(e) {
   let t = e.toLowerCase();
   if (t.includes("fetch") || t.includes("network") || t.includes("timeout")) return "network";
   if (

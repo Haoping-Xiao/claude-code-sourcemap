@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module N8t
 // matched 2.1.88 source: src/tools/AgentTool/UI.tsx
 // class=modified  jaccard=0.3319  score=0.5577  fileCov=0.4505
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N8t]
 RAe = {
@@ -14,7 +14,7 @@ RAe = {
   baseDir: "built-in",
   getSystemPrompt: pif,
 };
-function r3(e) {
+function hasProgressMessage(e) {
   if (!("message" in e)) return false;
   let t = e.message;
   return t != null && typeof t === "object" && "type" in t;
@@ -23,8 +23,8 @@ function wll(e) {
   let t = e.data.message.message.content[0];
   return t?.type === "tool_use" || t?.type === "tool_result";
 }
-function Cll(e, t, n) {
-  if (!r3(e.data)) return null;
+function getSearchOrReadInfo(e, t, n) {
+  if (!hasProgressMessage(e.data)) return null;
   let r = e.data.message;
   if (r.type === "assistant") return U8t(r.message.content[0], t);
   if (r.type === "user") {
@@ -36,9 +36,9 @@ function Cll(e, t, n) {
   }
   return null;
 }
-function fif(e, t, n) {
+function processProgressMessages(e, t, n) {
   return e
-    .filter((l) => r3(l.data) && l.data.message.type !== "user")
+    .filter((l) => hasProgressMessage(l.data) && l.data.message.type !== "user")
     .map((l) => ({
       type: "original",
       message: l,
@@ -56,7 +56,7 @@ function fif(e, t, n) {
     o = null;
   }
 }
-function B8t(e) {
+function AgentPromptDisplay(e) {
   let t = dKn.c(3),
     { prompt: n, dim: r } = e,
     o;
@@ -179,7 +179,7 @@ function yif(e) {
   return c;
 }
 function _if(e) {
-  if (!r3(e.data)) return false;
+  if (!hasProgressMessage(e.data)) return false;
   let t = e.data.message;
   if (t.type === "user" && t.toolUseResult === void 0) return false;
   return true;
@@ -188,9 +188,13 @@ function bif(e) {
   return e.data;
 }
 function Sif(e) {
-  return r3(e.data);
+  return hasProgressMessage(e.data);
 }
-function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = false }) {
+function renderToolResultMessage(
+  e,
+  t,
+  { tools: n, verbose: r, theme: o, isTranscriptMode: s = false },
+) {
   let i = e;
   if (i.status === "remote_launched")
     return ia.jsx(U, {
@@ -248,7 +252,7 @@ function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = false
         s &&
           h &&
           ia.jsx(qn, {
-            children: ia.jsx(B8t, {
+            children: ia.jsx(AgentPromptDisplay, {
               prompt: h,
               theme: o,
             }),
@@ -281,7 +285,7 @@ function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = false
       s &&
         p &&
         ia.jsx(qn, {
-          children: ia.jsx(B8t, {
+          children: ia.jsx(AgentPromptDisplay, {
             prompt: p,
             theme: o,
           }),
@@ -374,7 +378,7 @@ function kll(e, t) {
     children: n,
   });
 }
-function KMe(
+function renderToolUseProgressMessage(
   e,
   {
     tools: t,
@@ -389,17 +393,17 @@ function KMe(
       height: 1,
       children: ia.jsx(w, {
         dimColor: true,
-        children: Tll,
+        children: INITIALIZING_TEXT,
       }),
     });
   let i = (o ?? 1) * mif + gif,
     a = !s && r && r.rows && r.rows < i,
     l = () => {
       let y = On(e, (S) => {
-          if (!r3(S.data)) return false;
+          if (!hasProgressMessage(S.data)) return false;
           return S.data.message.message.content.some((v) => v.type === "tool_use");
         }),
-        b = e.findLast((S) => r3(S.data) && S.data.message.type === "assistant"),
+        b = e.findLast((S) => hasProgressMessage(S.data) && S.data.message.type === "assistant"),
         _ = null;
       if (b?.data.message.type === "assistant") {
         let S = b.data.message.message.usage;
@@ -443,26 +447,28 @@ function KMe(
       }),
     });
   }
-  let c = fif(e, t, true),
+  let c = processProgressMessages(e, t, true),
     u = s ? c : c.slice(-Hll),
     d = s ? [] : c.slice(0, Math.max(0, c.length - Hll)),
     p = On(d, (y) => {
       if (y.type === "summary") return y.searchCount + y.readCount + y.replCount > 0;
       let b = y.message.data;
-      if (!r3(b)) return false;
+      if (!hasProgressMessage(b)) return false;
       return b.message.message.content.some((_) => _.type === "tool_use");
     }),
     f = e[0]?.data,
-    m = f && r3(f) ? f.prompt : void 0;
+    m = f && hasProgressMessage(f) ? f.prompt : void 0;
   if (u.length === 0 && !(s && m))
     return ia.jsx(qn, {
       height: 1,
       children: ia.jsx(w, {
         dimColor: true,
-        children: Tll,
+        children: INITIALIZING_TEXT,
       }),
     });
-  let { lookups: g, inProgressToolUseIDs: h } = j8t(e.filter((y) => r3(y.data)).map((y) => y.data));
+  let { lookups: g, inProgressToolUseIDs: h } = j8t(
+    e.filter((y) => hasProgressMessage(y.data)).map((y) => y.data),
+  );
   return ia.jsx(qn, {
     children: ia.jsxs(U, {
       flexDirection: "column",
@@ -473,7 +479,7 @@ function KMe(
               m &&
               ia.jsx(U, {
                 marginBottom: 1,
-                children: ia.jsx(B8t, {
+                children: ia.jsx(AgentPromptDisplay, {
                   prompt: m,
                 }),
               }),
@@ -527,7 +533,7 @@ function KMe(
 function Rll(e, { progressMessagesForMessage: t, tools: n, verbose: r, isTranscriptMode: o }) {
   return ia.jsxs(ia.Fragment, {
     children: [
-      KMe(t, {
+      renderToolUseProgressMessage(t, {
         tools: n,
         verbose: r,
         isTranscriptMode: o,
@@ -539,7 +545,7 @@ function Rll(e, { progressMessagesForMessage: t, tools: n, verbose: r, isTranscr
 function Lll(e, { progressMessagesForMessage: t, tools: n, verbose: r, isTranscriptMode: o }) {
   return ia.jsxs(ia.Fragment, {
     children: [
-      KMe(t, {
+      renderToolUseProgressMessage(t, {
         tools: n,
         verbose: r,
         isTranscriptMode: o,
@@ -553,11 +559,11 @@ function Lll(e, { progressMessagesForMessage: t, tools: n, verbose: r, isTranscr
 }
 function Aif(e) {
   let t = On(e, (o) => {
-      if (!r3(o.data)) return false;
+      if (!hasProgressMessage(o.data)) return false;
       let s = o.data.message;
       return s.type === "user" && s.message.content.some((i) => i.type === "tool_result");
     }),
-    n = e.findLast((o) => r3(o.data) && o.data.message.type === "assistant"),
+    n = e.findLast((o) => hasProgressMessage(o.data) && o.data.message.type === "assistant"),
     r = null;
   if (n?.data.message.type === "assistant") {
     let o = n.data.message.message.usage;
@@ -572,11 +578,11 @@ function Aif(e) {
     tokens: r,
   };
 }
-function Dll(e, t) {
+function renderGroupedAgentToolUse(e, t) {
   let { shouldAnimate: n, tools: r, addMargin: o = true } = t,
     s = e.map(({ param: p, isResolved: f, isError: m, progressMessages: g, result: h }) => {
       let y = Aif(g),
-        b = Hif(g, r),
+        b = extractLastToolInfo(g, r),
         _ = EIo().safeParse(p.input),
         S = h?.output?.status === "teammate_spawned",
         A,
@@ -721,10 +727,10 @@ function SIo(e) {
   if (!e?.subagent_type) return;
   return JEe(e.subagent_type);
 }
-function Hif(e, t) {
+function extractLastToolInfo(e, t) {
   let n = new Map();
   for (let i of e) {
-    if (!r3(i.data)) continue;
+    if (!hasProgressMessage(i.data)) continue;
     if (i.data.message.type === "assistant") {
       for (let a of i.data.message.message.content) if (a.type === "tool_use") n.set(a.id, a);
     }
@@ -733,9 +739,9 @@ function Hif(e, t) {
     o = 0;
   for (let i = e.length - 1; i >= 0; i--) {
     let a = e[i];
-    if (!r3(a.data)) continue;
+    if (!hasProgressMessage(a.data)) continue;
     if (!wll(a)) continue;
-    let l = Cll(a, t, n);
+    let l = getSearchOrReadInfo(a, t, n);
     if (l && (l.isSearch || l.isRead)) {
       if (a.data.message.type === "user") {
         if (l.isSearch) r++;
@@ -745,7 +751,7 @@ function Hif(e, t) {
   }
   if (r + o >= 2) return pKn(r, o, true);
   let s = e.findLast((i) => {
-    if (!r3(i.data)) return false;
+    if (!hasProgressMessage(i.data)) return false;
     let a = i.data.message;
     return a.type === "user" && a.message.content.some((l) => l.type === "tool_result");
   });
@@ -777,4 +783,4 @@ var dKn,
   Hll = 3,
   mif = 9,
   gif = 7,
-  Tll = "Initializing\u2026";
+  INITIALIZING_TEXT = "Initializing\u2026";

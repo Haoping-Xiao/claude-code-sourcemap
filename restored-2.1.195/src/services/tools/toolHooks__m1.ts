@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Fyl
 // matched 2.1.88 source: src/services/tools/toolHooks.ts
 // class=modified (alt of src/services/tools/toolHooks.ts)  jaccard=0.0468  score=0.3846  fileCov=0.0506
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fyl] deps: ZE, tP, Rd, co, Ao, Jt
 Uyl = require("crypto");
-function Z7n(e, t, n, r) {
+function runPostToolUseHooks(e, t, n, r) {
   if (e !== ka && e !== Wc) return null;
   if (typeof n !== "object" || n === null || !("file_path" in n) || typeof n.file_path !== "string")
     return null;

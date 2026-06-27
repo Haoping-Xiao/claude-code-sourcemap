@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bqe
 // matched 2.1.88 source: src/utils/argumentSubstitution.ts
 // class=modified  jaccard=0.2947  score=0.6492  fileCov=0.3505
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function bmo(e) {
   if (!e || !e.trim()) return [];
@@ -21,7 +21,7 @@ function KDa(e, t) {
   if (n.length === 0) return;
   return n.map((r) => `[${r}]`).join(" ");
 }
-function Rpt(e, t, n = true, r = [], o) {
+function substituteArguments(e, t, n = true, r = [], o) {
   if (t === void 0 || t === null) return e;
   let s = (p) => {
       let f = (p ?? "").replaceAll(_mo, "");

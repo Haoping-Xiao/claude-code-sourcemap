@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module T6o
 // matched 2.1.88 source: src/utils/permissions/getNextPermissionMode.ts
 // class=modified  jaccard=0.3122  score=0.4844  fileCov=0.4676
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function xyc(e) {
   let t = e.match(/^@([\w-]+)\s+(.+)$/s);
@@ -44,7 +44,7 @@ async function kyc(e, t, n, r) {
     }
   );
 }
-function _dr(e) {
+function canCycleToAuto(e) {
   {
     let t = Zv(),
       n = v6o(),
@@ -60,7 +60,7 @@ function _dr(e) {
 function v6o() {
   return Boolean(Dt().autoModeOptInDismissed) && !ROe();
 }
-function bdr(e, t) {
+function getNextPermissionMode(e, t) {
   switch (e.mode) {
     case "default":
       return "acceptEdits";
@@ -68,10 +68,10 @@ function bdr(e, t) {
       return "plan";
     case "plan":
       if (e.isBypassPermissionsModeAvailable) return "bypassPermissions";
-      if (_dr(e)) return "auto";
+      if (canCycleToAuto(e)) return "auto";
       return "default";
     case "bypassPermissions":
-      if (_dr(e)) return "auto";
+      if (canCycleToAuto(e)) return "auto";
       return "default";
     case "dontAsk":
       return "default";
@@ -80,7 +80,7 @@ function bdr(e, t) {
   }
 }
 function Ryc(e, t, n) {
-  let r = bdr(e, t);
+  let r = getNextPermissionMode(e, t);
   return {
     nextMode: r,
     context: AZ(e.mode, r, e, n),

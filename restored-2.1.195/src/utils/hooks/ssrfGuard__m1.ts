@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module h7n
 // matched 2.1.88 source: src/utils/hooks/ssrfGuard.ts
 // class=modified (alt of src/utils/hooks/ssrfGuard.ts)  jaccard=0.0562  score=0.0846  fileCov=0.1433
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h7n] deps: sr
 ((Agl = require("dns")), (d0o = require("net")));
-async function Wpf(e, t) {
+async function ssrfError(e, t) {
   let n = new URL(e),
     r = n.hostname.replace(/^\[|\]$/g, "");
   if (wgl.isIP(r))
@@ -74,7 +74,7 @@ async function Igl(e, t) {
         }),
     }),
     f = h9(s),
-    m = await Wpf(s, {
+    m = await ssrfError(s, {
       proxy: f,
       tls: HY(),
     }),

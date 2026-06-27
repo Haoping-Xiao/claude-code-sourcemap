@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module h7t
 // matched 2.1.88 source: src/commands/model/model.tsx
 // class=modified  jaccard=0.1489  score=0.3696  fileCov=0.1995
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function y7t(e) {
+async function SetModelAndClose(e) {
   let t = e === "default" ? null : e;
   if (t && cte(t, v9()))
     return (
@@ -31,7 +31,7 @@ async function y7t(e) {
           "Opus with 1M context is not available for your account. Learn more: https://code.claude.com/docs/en/model-config#extended-context-with-1m",
       }
     );
-  if (t && YOo(t))
+  if (t && isSonnet1mUnavailable(t))
     return (
       Le("model_switch", "sonnet_1m_unavailable"),
       {
@@ -105,7 +105,7 @@ async function y7t(e) {
     );
   }
 }
-function etr(e, t, n, r) {
+function ModelPickerWrapper(e, t, n, r) {
   let o = t().fastMode;
   if (
     (Wie(),
@@ -155,7 +155,7 @@ function KOo(e) {
   let t = e.toLowerCase();
   return !ure() && !nT() && t.includes("opus") && t.includes("[1m]");
 }
-function YOo(e) {
+function isSonnet1mUnavailable(e) {
   let t = e.toLowerCase();
   return !uSe() && (t.includes("sonnet[1m]") || t.includes("sonnet-4-6[1m]"));
 }
@@ -171,7 +171,7 @@ function XOo(e, t, n, r) {
   if (o === 0 || o === r) return false;
   return Zer(e) !== Zer(n ?? t);
 }
-function ttr(e, t = (n) => n) {
+function ShowModelAndClose(e, t = (n) => n) {
   let n = xP(e.mainLoopModel),
     r = e.effortValue !== void 0 ? ` (effort: ${e.effortValue})` : "";
   if (e.mainLoopModelForSession)

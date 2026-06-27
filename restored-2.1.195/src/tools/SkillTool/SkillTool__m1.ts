@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Tcl
 // matched 2.1.88 source: src/tools/SkillTool/SkillTool.ts
 // class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.1817  score=0.6092  fileCov=0.2057
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Tcl] deps: Q8, E5, b8t, Bs, zX, d_t, ql, Ye, s8t, co, sr
 JI = R(se(), 1);
@@ -33,7 +33,7 @@ function vcl(e, t) {
   }
   return false;
 }
-async function iaf(e, t, n, r, o, s, i) {
+async function executeForkedSkill(e, t, n, r, o, s, i) {
   let a = Date.now(),
     l = rM(),
     c = mQ().has(t),

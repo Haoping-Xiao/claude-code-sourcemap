@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module wYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ColorStep.tsx
 // class=modified  jaccard=0.426  score=0.6187  fileCov=0.5776
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wYl] deps: si, Xa, _i, Ye, r4o, vKe, LW, kP
 ((XAt = R(lt(), 1)), (YAt = R(rt(), 1)), (kl = R(se(), 1)));
-function IYl() {
+function ColorStep() {
   let e = CYl.c(14),
     { goNext: t, goBack: n, updateWizardData: r, wizardData: o } = Eu(),
     s;

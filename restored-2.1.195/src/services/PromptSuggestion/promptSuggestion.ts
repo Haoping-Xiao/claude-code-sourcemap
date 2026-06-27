@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module sA
 // matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
 // class=modified  jaccard=0.5673  score=0.8278  fileCov=0.6432
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function _jn() {
   return "user_intent";
 }
-function bjn() {
+function shouldEnablePromptSuggestion() {
   let e = process.env.CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION;
   if (ml(e))
     return (
@@ -66,7 +66,7 @@ function Sjn() {
 function KMa() {
   if (Kqe) (Kqe.abort(), (Kqe = null));
 }
-function cgo(e) {
+function getSuggestionSuppressReason(e) {
   if (!e.promptSuggestionEnabled) return "disabled";
   if (e.pendingWorkerRequest || e.pendingSandboxRequest) return "pending_permission";
   if (e.elicitation.queue.length > 0) return "elicitation_active";
@@ -74,42 +74,43 @@ function cgo(e) {
   if (ck.status !== "allowed") return "rate_limit";
   return null;
 }
-async function ugo(e, t, n, r, o) {
-  if (e.signal.aborted) return (b$("aborted", void 0, void 0, o), null);
+async function tryGenerateSuggestion(e, t, n, r, o) {
+  if (e.signal.aborted) return (logSuggestionSuppressed("aborted", void 0, void 0, o), null);
   if (On(t, (f) => f.type === "assistant") < 2)
-    return (b$("early_conversation", void 0, void 0, o), null);
+    return (logSuggestionSuppressed("early_conversation", void 0, void 0, o), null);
   let i = MI(t);
-  if (i?.isApiErrorMessage) return (b$("last_response_error", void 0, void 0, o), null);
+  if (i?.isApiErrorMessage)
+    return (logSuggestionSuppressed("last_response_error", void 0, void 0, o), null);
   let a = PRp(i);
-  if (a) return (b$(a, void 0, void 0, o), null);
+  if (a) return (logSuggestionSuppressed(a, void 0, void 0, o), null);
   let l = n(),
-    c = cgo(l);
-  if (c) return (b$(c, void 0, void 0, o), null);
+    c = getSuggestionSuppressReason(l);
+  if (c) return (logSuggestionSuppressed(c, void 0, void 0, o), null);
   let u = _jn(),
-    { suggestion: d, generationRequestId: p } = await dgo(e, u, r);
-  if (e.signal.aborted) return (b$("aborted", void 0, void 0, o), null);
-  if (!d) return (b$("empty", void 0, u, o), null);
-  if (pgo(d, u, o)) return null;
+    { suggestion: d, generationRequestId: p } = await generateSuggestion(e, u, r);
+  if (e.signal.aborted) return (logSuggestionSuppressed("aborted", void 0, void 0, o), null);
+  if (!d) return (logSuggestionSuppressed("empty", void 0, u, o), null);
+  if (shouldFilterSuggestion(d, u, o)) return null;
   return {
     suggestion: d,
     promptId: u,
     generationRequestId: p,
   };
 }
-async function YMa(e, t) {
+async function executePromptSuggestion(e, t) {
   if (!e.querySource?.startsWith("repl_main_thread")) return;
   let n = N7(),
     r = Js(),
     o = r && t?.tempo === "blocked" && !t.block;
   if (r ? n !== "focused" && !o : n === "blurred") {
-    b$(r ? "bg_unattached" : "unfocused", void 0, void 0, "cli");
+    logSuggestionSuppressed(r ? "bg_unattached" : "unfocused", void 0, void 0, "cli");
     return;
   }
   Kqe = new AbortController();
   let s = Kqe,
     i = g6(e);
   try {
-    let a = await ugo(s, e.messages, e.toolUseContext.getAppState, i, "cli");
+    let a = await tryGenerateSuggestion(s, e.messages, e.toolUseContext.getAppState, i, "cli");
     if (!a) return;
     if (
       (e.toolUseContext.setAppState((l) => ({
@@ -129,7 +130,7 @@ async function YMa(e, t) {
       mgo(a.suggestion, e, e.toolUseContext.setAppState, false, i);
   } catch (a) {
     if (a instanceof Error && (a.name === "AbortError" || a.name === "APIUserAbortError")) {
-      b$("aborted", void 0, void 0, "cli");
+      logSuggestionSuppressed("aborted", void 0, void 0, "cli");
       return;
     }
     (Le("prompt_suggestion_generate", "api_error"), ke(Zr(a)));
@@ -156,7 +157,7 @@ function PRp(e) {
     o = t.output_tokens ?? 0;
   return n + r + o > DRp ? "cache_cold" : null;
 }
-async function dgo(e, t, n) {
+async function generateSuggestion(e, t, n) {
   let r = MRp[t],
     o = async () => ({
       behavior: "deny",
@@ -216,8 +217,8 @@ async function dgo(e, t, n) {
     }
   );
 }
-function pgo(e, t, n) {
-  if (!e) return (b$("empty", void 0, t, n), true);
+function shouldFilterSuggestion(e, t, n) {
+  if (!e) return (logSuggestionSuppressed("empty", void 0, t, n), true);
   let r = e.toLowerCase(),
     o = e.trim().split(/\s+/).length,
     s = [
@@ -288,10 +289,10 @@ function pgo(e, t, n) {
           ),
       ],
     ];
-  for (let [i, a] of s) if (a()) return (b$(i, e, t, n), true);
+  for (let [i, a] of s) if (a()) return (logSuggestionSuppressed(i, e, t, n), true);
   return false;
 }
-function XMa(e, t, n, r, o) {
+function logSuggestionOutcome(e, t, n, r, o) {
   let s = Math.round((t.length / (e.length || 1)) * 100) / 100,
     i = t === e,
     a = Math.max(0, Date.now() - n);
@@ -312,7 +313,7 @@ function XMa(e, t, n, r, o) {
     ...false,
   });
 }
-function b$(e, t, n, r) {
+function logSuggestionSuppressed(e, t, n, r) {
   let o = n ?? _jn();
   G("tengu_prompt_suggestion", {
     ...(r && {

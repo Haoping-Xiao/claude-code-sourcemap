@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module VDe
 // matched 2.1.88 source: src/utils/background/remote/remoteSession.ts
 // class=modified  jaccard=0.2576  score=0.6462  fileCov=0.2999
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function DOa({ allowBundle: e = false, cwd: t } = {}) {
+async function checkBackgroundRemoteSessionEligibility({ allowBundle: e = false, cwd: t } = {}) {
   let n = [];
   if (!Us("allow_remote_sessions"))
     return (

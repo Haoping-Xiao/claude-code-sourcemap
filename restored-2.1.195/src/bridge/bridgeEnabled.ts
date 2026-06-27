@@ -2,17 +2,17 @@
 // restored from claude-code 2.1.195 (deminified) — module _F
 // matched 2.1.88 source: src/bridge/bridgeEnabled.ts
 // class=modified  jaccard=0.1017  score=0.1121  fileCov=0.5217
-// note: deminified; 23 identifiers renamed (exports/displayName/curated)
+// note: deminified; 22 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isRunningInRemoteEnvironment, isRemoteControlInternalEventsEnabled, isRemoteControlHardDisabled, isPreviewHmrEnabled, isPolicyLimitsCacheLoaded, isPersistentRemoteSessionEnabled, isCseShimEnabled, isCcrV2SendEventsEnabled, isCcrMirrorEnabled, isBridgeEnabledBlocking, isBridgeEnabled, hasBridgeEntitlement, getRemoteControlPolicyVerdict, getCcrAutoConnectDefault, getBridgeGrowthBookDebugLines, getBridgeEntitlementBlocker, getBridgeDoctorInfo, getBridgeDisabledReason, getBridgeAuth …
 // [unwrapped __esm module _F] deps: Hp, Rc, oo, fd, je, At, Gx, Jt, dn, kt, AVe, cho, jc, oKr
 ((kcc = require("crypto")), (Rcc = require("fs")), (XYe = require("fs/promises")));
 Pcc = Date.now();
-function hasBridgeEntitlement() {
+function K8e() {
   return Jl() && rTt() && at("tengu_ccr_bridge", !1);
 }
 function getBridgeEntitlementBlocker() {
-  if (hasBridgeEntitlement()) return null;
+  if (K8e()) return null;
   if (!Ecr()) return "not_signed_in";
   if (!rTt()) return "api_key_auth";
   if (!Acr()) return "no_profile_scope";
@@ -27,7 +27,7 @@ function isRemoteControlHardDisabled() {
 function isBridgeEnabled() {
   if (Scr()) return !0;
   if (isRemoteControlHardDisabled()) return !1;
-  return !isRunningInRemoteEnvironment() && hasBridgeEntitlement();
+  return !isRunningInRemoteEnvironment() && K8e();
 }
 async function isBridgeEnabledBlocking() {
   if (Scr()) return !0;

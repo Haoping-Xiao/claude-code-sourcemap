@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rpo
 // matched 2.1.88 source: src/utils/telemetry/perfettoTracing.ts
 // class=modified  jaccard=0.3618  score=0.9278  fileCov=0.3723
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rpo]
 (($xa = R(qi(), 1)), (Oxa = require("async_hooks")));
@@ -36,11 +36,11 @@ function VSe() {
 function _Fn() {
   return `span_${++Lwp}`;
 }
-function jxa() {
+function initializePerfettoTracing() {
   let e = process.env.CLAUDE_CODE_PERFETTO_TRACE;
   T(`[Perfetto] initializePerfettoTracing called, env value: ${e}`);
 }
-function Dwp(e) {
+function emitProcessMetadata(e) {
   if (!s6) return;
   if (
     (opo.push({
@@ -91,7 +91,7 @@ function bFn(e, t, n) {
     processId: Fxa(e),
     threadId: Uxa(t),
   };
-  (yFn.set(e, r), Bxa++, Dwp(r));
+  (yFn.set(e, r), Bxa++, emitProcessMetadata(r));
 }
 function _qe(e) {
   if (!s6) return;
@@ -127,7 +127,7 @@ function Gxa(e) {
     t
   );
 }
-function Wxa(e, t) {
+function endLLMRequestPerfettoSpan(e, t) {
   if (!s6 || !e) return;
   let n = SL.get(e);
   if (!n) return;
@@ -327,7 +327,7 @@ function Vxa(e, t) {
   }),
     SL.delete(e));
 }
-function zxa(e) {
+function startUserInputPerfettoSpan(e) {
   if (!s6) return "";
   let t = _Fn(),
     n = P3t();
@@ -389,7 +389,7 @@ function Yxa(e, t, n) {
     args: n,
   });
 }
-function Xxa(e) {
+function startInteractionPerfettoSpan(e) {
   if (!s6) return "";
   let t = _Fn(),
     n = P3t();

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module oEc
 // matched 2.1.88 source: src/hooks/useCommandKeybindings.tsx
 // class=modified  jaccard=0.3338  score=1  fileCov=0.3338
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oEc] deps: Ed, hNe, HI, ps, id, dn, Un, kt, uo, tEc
 ((nEc = R(lt(), 1)), (rEc = R(rt(), 1)));
-function xzo(e) {
+function CommandKeybindingHandlers(e) {
   let t = sEc.c(8),
     { onSubmit: n, isActive: r } = e,
     o = KE(),

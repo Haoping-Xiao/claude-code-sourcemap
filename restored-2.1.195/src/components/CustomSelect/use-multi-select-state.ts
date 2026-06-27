@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module TMl
 // matched 2.1.88 source: src/components/CustomSelect/use-multi-select-state.ts
 // class=modified  jaccard=0.3471  score=0.6041  fileCov=0.4493
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TMl] deps: ft, fH, Ye, j_t, I6e, GY, atr, uo, Lo, je, wr, oc, Ls, LOe, _a, dr, MAo, Cc, gm, gKe
 ((ltr = R(lt(), 1)), (ctr = R(rt(), 1)), (hA = R(se(), 1)));
-function wMl({
+function useMultiSelectState({
   isDisabled: e = false,
   visibleOptionCount: t = 5,
   options: n,

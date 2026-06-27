@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R5c
 // matched 2.1.88 source: src/cli/handlers/autoMode.ts
 // class=modified  jaccard=0.217  score=0.4359  fileCov=0.3017
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: autoModeDefaultsHandler, autoModeCritiqueHandler, autoModeConfigHandler
 // [unwrapped __esm module R5c] deps: iu, kAt, MMe, np, dn, Un, _F, jc, JJ, fp, At, Jt, sr, Gor, Cv, gP, JN
@@ -55,10 +55,10 @@ Run \`claude auto-mode defaults\` to see the default rules for reference.`,
     s = V6n(),
     i = aol(),
     a =
-      lhr("allow", n?.allow ?? [], s.allow) +
-      lhr("soft_deny", n?.soft_deny ?? [], s.soft_deny) +
-      lhr("hard_deny", n?.hard_deny ?? [], s.hard_deny) +
-      lhr("environment", n?.environment ?? [], s.environment);
+      formatRulesForCritique("allow", n?.allow ?? [], s.allow) +
+      formatRulesForCritique("soft_deny", n?.soft_deny ?? [], s.soft_deny) +
+      formatRulesForCritique("hard_deny", n?.hard_deny ?? [], s.hard_deny) +
+      formatRulesForCritique("environment", n?.environment ?? [], s.environment);
   e.render(
     pve.jsxs(w, {
       children: [
@@ -121,7 +121,7 @@ Please critique these custom rules.`,
 function ahr(e) {
   return (e ?? []).some((t) => t !== Syt);
 }
-function lhr(e, t, n) {
+function formatRulesForCritique(e, t, n) {
   let r = t.filter((a) => a !== Syt);
   if (r.length === 0) return "";
   let o = t.length !== r.length,

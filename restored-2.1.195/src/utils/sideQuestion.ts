@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wOe
 // matched 2.1.88 source: src/utils/sideQuestion.ts
 // class=modified  jaccard=0.3125  score=0.3603  fileCov=0.7023
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runSideQuestion, resetBtwHistory, getBtwHistory, findBtwTriggerPositions, createBtwHistoryState, clearBtwHistory, appendBtwHistory, _setGlobalBtwHistoryStateForTesting
 // [unwrapped __esm module wOe] deps: ft, Wit, Kit, Tne
@@ -119,7 +119,7 @@ ${e}`,
             }
           : void 0,
       }),
-      { response: c, synthetic: u } = akf(l.messages);
+      { response: c, synthetic: u } = extractSideQuestionResponse(l.messages);
     if (o && c && !u) appendBtwHistory(e, c);
     return {
       response: c,
@@ -137,7 +137,7 @@ ${e}`,
     throw l;
   }
 }
-function akf(e) {
+function extractSideQuestionResponse(e) {
   let t = e.flatMap((r) => (r.type === "assistant" ? r.message.content : []));
   if (t.length > 0) {
     let r = zl(

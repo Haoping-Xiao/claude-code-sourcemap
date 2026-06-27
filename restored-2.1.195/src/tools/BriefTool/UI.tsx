@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module l3
 // matched 2.1.88 source: src/tools/BriefTool/UI.tsx
 // class=modified  jaccard=0.2652  score=0.4507  fileCov=0.3918
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l3] deps: ft, Un, wr, Bot, f4
 gmf = `In brief mode, plain assistant text is hidden from the user \u2014 only ${j1} reaches them. Call it now with your substantive reply for this turn. Do not mention this reminder; the message should read as if you wrote it unprompted, addressing only what the user actually asked. If you genuinely have nothing useful to tell the user, you may end the turn without calling it.`;
 function xyl() {
   return "";
 }
-function kyl(e, t, n) {
+function renderToolResultMessage(e, t, n) {
   let r = (e.attachments?.length ?? 0) > 0;
   if (!e.message && !r) return null;
   if (n?.isTranscriptMode)
@@ -110,7 +110,7 @@ function pzt(e) {
     { attachments: n } = e;
   if (!n || n.length === 0) return null;
   let r;
-  if (t[0] !== n) ((r = n.map(ymf)), (t[0] = n), (t[1] = r));
+  if (t[0] !== n) ((r = n.map(_temp)), (t[0] = n), (t[1] = r));
   else r = t[1];
   let o;
   if (t[2] !== r)
@@ -124,7 +124,7 @@ function pzt(e) {
   else o = t[3];
   return o;
 }
-function ymf(e) {
+function _temp(e) {
   return MT.jsxs(
     U,
     {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZUt
 // matched 2.1.88 source: src/tools/SkillTool/SkillTool.ts
 // class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.0369  score=0.3245  fileCov=0.04
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZUt]
 gKi = Symbol("skip");
@@ -58,11 +58,11 @@ function _Ki() {
   for (let n of e) {
     let r = reo.get(n.name);
     if (!r?.skills) continue;
-    for (let o of r.skills) t.push(AKd(o));
+    for (let o of r.skills) t.push(SAFE_SKILL_PROPERTIES(o));
   }
   return t;
 }
-function AKd(e) {
+function SAFE_SKILL_PROPERTIES(e) {
   let t = {
     type: "prompt",
     name: e.name,

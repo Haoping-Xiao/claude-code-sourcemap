@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module T3o
 // matched 2.1.88 source: src/utils/errorLogSink.ts
 // class=modified  jaccard=0.5311  score=0.9424  fileCov=0.5489
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initializeErrorLogSink, getMCPLogsPath, getErrorsPath, _flushLogWritersForTesting, _clearLogWritersForTesting
 // [unwrapped __esm module T3o] deps: db, Pw, At, Jt, zOe
@@ -64,7 +64,7 @@ function w3o(e) {
 function fKf(e, t) {
   return;
 }
-function mKf(e) {
+function extractServerMessage(e) {
   if (typeof e === "string") return e;
   if (e && typeof e === "object") {
     let t = e;
@@ -86,7 +86,7 @@ function gKf(e) {
   if (po.isAxiosError(e) && e.config?.url) {
     let r = [`url=${e.config.url}`];
     if (e.response?.status !== void 0) r.push(`status=${e.response.status}`);
-    let o = mKf(e.response?.data);
+    let o = extractServerMessage(e.response?.data);
     if (o) r.push(`body=${o}`);
     n = `[${r.join(",")}] `;
   }
@@ -97,7 +97,7 @@ function gKf(e) {
       error: `${n}${t}`,
     }));
 }
-function hKf(e, t) {
+function logMCPErrorImpl(e, t) {
   T(`MCP server "${e}" ${t}`, {
     level: "error",
   });
@@ -124,7 +124,7 @@ function yKf(e, t) {
 function initializeErrorLogSink() {
   (oEs({
     logError: gKf,
-    logMCPError: hKf,
+    logMCPError: logMCPErrorImpl,
     logMCPDebug: yKf,
     getErrorsPath: getErrorsPath,
     getMCPLogsPath: getMCPLogsPath,

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Ynr
 // matched 2.1.88 source: src/components/mcp/MCPToolListView.tsx
 // class=modified  jaccard=0.3374  score=0.5255  fileCov=0.4851
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ynr] deps: Ye, Ox, sr, Cc, vKe, lJ, vi
 ((s2l = R(lt(), 1)), (Knr = R(rt(), 1)), (DH = R(se(), 1)));
-function lXt(e) {
+function MCPToolListView(e) {
   let t = i2l.c(24),
     { server: n, onSelectTool: r, onBack: o } = e,
     s = Ht(Q1f),

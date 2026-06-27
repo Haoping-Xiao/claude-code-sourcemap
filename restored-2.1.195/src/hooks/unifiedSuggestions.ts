@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h6o
 // matched 2.1.88 source: src/hooks/unifiedSuggestions.ts
 // class=modified  jaccard=0.3274  score=0.5283  fileCov=0.4626
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h6o] deps: zb, je, ih, Jt
 ((DTt = new Map()), (pdr = new Set()), (pyc = Mi()), (fyc = pyc.subscribe));
@@ -11,7 +11,7 @@ ypm = ve(() =>
     results: dt.string(),
   }),
 );
-function _yc(e) {
+function createSuggestionFromSource(e) {
   switch (e.type) {
     case "file":
       return {
@@ -66,7 +66,7 @@ function Hpm(e, t, n = false) {
     return (ke(r), []);
   }
 }
-async function _6o(e, t, n, r, o = false, s = {}) {
+async function generateUnifiedSuggestions(e, t, n, r, o = false, s = {}) {
   if (!t && !o) return [];
   let [i, a] = await Promise.all([t7t(e, t, o), Promise.resolve(Hpm(r, t, o))]),
     l = i.map((f) => ({
@@ -97,7 +97,7 @@ async function _6o(e, t, n, r, o = false, s = {}) {
         uriTemplate: f.uriTemplate,
         name: f.name || f.uriTemplate,
       }));
-  if (!t) return [...l, ...c, ...u, ...a].slice(0, Ren).map(_yc);
+  if (!t) return [...l, ...c, ...u, ...a].slice(0, Ren).map(createSuggestionFromSource);
   let d = [...c, ...u, ...a],
     p = [];
   for (let f of l)
@@ -151,7 +151,7 @@ async function _6o(e, t, n, r, o = false, s = {}) {
     p
       .slice(0, Ren)
       .map((f) => f.source)
-      .map(_yc)
+      .map(createSuggestionFromSource)
   );
 }
 async function mdr(e, t, n, r) {

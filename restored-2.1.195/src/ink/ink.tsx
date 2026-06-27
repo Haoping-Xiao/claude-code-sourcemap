@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EW
 // matched 2.1.88 source: src/ink/ink.tsx
 // class=modified  jaccard=0.4065  score=0.6053  fileCov=0.5532
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module EW] deps: ZS, one, jh
 Q7 = R(rt(), 1);
@@ -13,7 +13,7 @@ function WWi(e) {
     content: hW(e, 1),
   });
 }
-class uat {
+class Ink {
   options;
   log;
   terminal;
@@ -577,7 +577,7 @@ class uat {
   lastLiveCountSampleAt = 0;
   shouldSampleLiveCounts() {
     let e = performance.now();
-    if (e - this.lastLiveCountSampleAt < uat.LIVE_COUNTS_INTERVAL_MS) return false;
+    if (e - this.lastLiveCountSampleAt < Ink.LIVE_COUNTS_INTERVAL_MS) return false;
     return ((this.lastLiveCountSampleAt = e), true);
   }
   onRenderScreenReader() {

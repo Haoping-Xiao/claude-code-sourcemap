@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mDl
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0949  score=0.189  fileCov=0.1602
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mDl] deps: ft, je, wr, ys, sa, y_, oOo
 ((Ler = require("fs/promises")),
@@ -92,8 +92,8 @@ function Mer() {
       return e.reason;
     case "bundle":
       if (e.cause === "no_creds")
-        return `/feedback requires Anthropic credentials (OAuth or API key). Report issues at ${gDl}`;
-      return `/feedback is not available when using ${e.label}. Report issues at ${gDl}`;
+        return `/feedback requires Anthropic credentials (OAuth or API key). Report issues at ${GITHUB_ISSUES_REPO_URL}`;
+      return `/feedback is not available when using ${e.label}. Report issues at ${GITHUB_ISSUES_REPO_URL}`;
   }
 }
 function dOo() {
@@ -309,7 +309,7 @@ function sOo(e) {
     ke(Error(t));
   }
 }
-async function iOo(e, t) {
+async function submitFeedback(e, t) {
   if (Vi())
     return {
       success: !1,
@@ -427,7 +427,7 @@ async function iOo(e, t) {
     };
   }
 }
-async function KSt({
+async function Feedback({
   messages: e,
   description: t,
   surface: n,
@@ -448,7 +448,7 @@ async function KSt({
       excludeThirdPartyTranscripts: !0,
     }),
     u = l.latestAssistantMessageId,
-    d = await iOo(l, i),
+    d = await submitFeedback(l, i),
     p = d,
     f = 0;
   if (!p.success && p.payloadTooLarge) {
@@ -463,7 +463,7 @@ async function KSt({
     } = l;
     if (
       ((f = 1),
-      (p = await iOo(
+      (p = await submitFeedback(
         {
           ...S,
           transcript: [],
@@ -479,7 +479,7 @@ async function KSt({
       !p.success && p.payloadTooLarge)
     )
       ((f = 2),
-        (p = await iOo(
+        (p = await submitFeedback(
           {
             ...S,
             transcript: [],
@@ -617,7 +617,7 @@ var hDl,
   yDl,
   Per,
   lOo,
-  gDl = "https://github.com/anthropics/claude-code/issues",
+  GITHUB_ISSUES_REPO_URL = "https://github.com/anthropics/claude-code/issues",
   cOo,
   uOo,
   vkf = 4194304,

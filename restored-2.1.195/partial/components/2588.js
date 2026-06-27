@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module B_
 // matched 2.1.88 source: src/components/PromptInput/PromptInputFooterSuggestions.tsx
 // class=partial  jaccard=0.1796  score=0.2612  fileCov=0.365
-// note: low-confidence suggestion: src/components/PromptInput/PromptInputFooterSuggestions.tsx; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/PromptInput/PromptInputFooterSuggestions.tsx; dir inferred from dep-graph -> components; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module B_] deps: Ye
 Ozi = R(lt(), 1), slt = R(se(), 1);
-function eKd(e) {
+function getIcon(e) {
   if (e.startsWith("file-")) return "+";
   if (e.startsWith("mcp-resource-")) return mv;
   if (e.startsWith("mcp-template")) return mv;
@@ -82,7 +82,7 @@ function MZr(e) {
 function Nzi(e) {
   return e.startsWith("file-") || e.startsWith("mcp-resource-") || e.startsWith("mcp-template") || e.startsWith("agent-");
 }
-function jGe({
+function PromptInputFooterSuggestions({
   suggestions: e,
   selectedSuggestion: t,
   maxColumnWidth: n,

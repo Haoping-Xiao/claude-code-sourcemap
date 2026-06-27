@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HSr
 // matched 2.1.88 source: src/constants/oauth.ts
 // class=modified (alt of src/constants/oauth.ts)  jaccard=0.0193  score=0.053  fileCov=0.0296
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function qsn(e) {
   if (!e) return;
@@ -144,8 +144,8 @@ async function Fzc(e) {
 }
 var eos = "urn:ietf:params:oauth:grant-type:jwt-bearer",
   tos = "refresh_token",
-  Gsn = "/v1/oauth/token",
-  Nge = "oauth-2025-04-20",
+  getLocalOauthConfig = "/v1/oauth/token",
+  OAUTH_BETA_HEADER = "oauth-2025-04-20",
   Wsn = "oidc-federation-2026-04-01",
   nos = 120,
   owe = 30,

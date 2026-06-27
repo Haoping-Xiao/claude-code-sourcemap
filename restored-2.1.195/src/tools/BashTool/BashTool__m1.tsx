@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fCl
 // matched 2.1.88 source: src/tools/BashTool/BashTool.tsx
 // class=modified (alt of src/tools/BashTool/BashTool.tsx)  jaccard=0.1281  score=0.4296  fileCov=0.1544
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function _Hf(e) {
   let t = By(e);
@@ -83,7 +83,7 @@ function THf(e) {
   if (!r) return true;
   return !SHf.includes(r);
 }
-function vHf(e) {
+function detectBlockedSleepPattern(e) {
   let t = By(e);
   if (t.length === 0) return null;
   let n = t[0]?.trim() ?? "",
@@ -94,7 +94,7 @@ function vHf(e) {
   let s = t.slice(1).join(" ").trim();
   return s ? `sleep ${o} followed by: ${s}` : `standalone sleep ${o}`;
 }
-async function wHf(e, t, n) {
+async function applySedEdit(e, t, n) {
   let { filePath: r, newContent: o } = e,
     s = ds(r),
     i = i_(s),
@@ -162,7 +162,7 @@ function SCl(e) {
     return [...e.reasons.values()].every((t) => SCl(t.decisionReason));
   return false;
 }
-async function* xHf({
+async function* runShellCommand({
   input: e,
   abortController: t,
   taskRegistry: n,

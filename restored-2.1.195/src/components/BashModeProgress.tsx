@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Gfc
 // matched 2.1.88 source: src/components/BashModeProgress.tsx
 // class=modified  jaccard=0.407  score=0.5591  fileCov=0.5994
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Wfc({ isNonInteractive: e, isMeta: t, callerSource: n }) {
   if (e) return "sdk";
   if (t) return "system";
   return n ?? "typed";
 }
-function QZt(e) {
+function BashModeProgress(e) {
   let t = qfc.c(8),
     { input: n, progress: r, verbose: o } = e,
     s = `<bash-input>${n}</bash-input>`,

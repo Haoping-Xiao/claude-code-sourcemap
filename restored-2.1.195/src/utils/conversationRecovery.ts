@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _ht
 // matched 2.1.88 source: src/utils/conversationRecovery.ts
 // class=modified  jaccard=0.3138  score=0.4577  fileCov=0.4994
-// note: deminified; 10 identifiers renamed (exports/displayName/curated)
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: restoreSkillStateFromMessages, removeInterruptedMessage, loadMessagesFromJsonlPath, loadConversationForResume, getResumePrompt, findLiveNonInteractiveSession, dropRetractedMessages, deserializeMessagesWithInterruptDetection, deserializeMessages, dedupeSessionStartHookMessages
 // [unwrapped __esm module _ht] deps: np, je, fn, At, Hpe, YS, Is, Jt, OI
@@ -11,7 +11,7 @@
   (fTo = require("path")),
   (dQp = ["interactive", "bg", "daemon", "daemon-worker"]));
 fQp = ["busy", "shell", "idle", "waiting"];
-function AQp(e) {
+function migrateLegacyAttachmentTypes(e) {
   if (e.type !== "attachment") return e;
   let t = e.attachment;
   if (EQp.has(t.type)) return null;
@@ -76,7 +76,7 @@ function deserializeMessagesWithInterruptDetection(e, t, n, r) {
     let o = dropRetractedMessages(e),
       s = 0,
       i = o
-        .map(AQp)
+        .map(migrateLegacyAttachmentTypes)
         .filter((y) => y !== null)
         .flatMap((y) => {
           let b = HQp(y);
@@ -116,7 +116,7 @@ function deserializeMessagesWithInterruptDetection(e, t, n, r) {
           ? {
               kind: "none",
             }
-          : TQp(p),
+          : detectTurnInterruption(p),
       m =
         r !== void 0 &&
         f.kind !== "none" &&
@@ -157,7 +157,7 @@ function deserializeMessagesWithInterruptDetection(e, t, n, r) {
     throw (ke(o), o);
   }
 }
-function TQp(e) {
+function detectTurnInterruption(e) {
   if (e.length === 0)
     return {
       kind: "none",
@@ -189,7 +189,7 @@ function TQp(e) {
         kind: "none",
       };
     if (Sht(n)) {
-      if (EZa(n, e, t))
+      if (isTerminalToolResult(n, e, t))
         return {
           kind: "none",
         };
@@ -231,7 +231,7 @@ function TQp(e) {
         return {
           kind: "none",
         };
-      if (o.type === "user" && Sht(o) && EZa(o, e, r))
+      if (o.type === "user" && Sht(o) && isTerminalToolResult(o, e, r))
         return {
           kind: "none",
         };
@@ -250,7 +250,7 @@ function SZa(e) {
     n = typeof t === "string" ? t : t.length === 1 && t[0].type === "text" ? t[0].text : void 0;
   return n === _N || n === Jv;
 }
-function EZa(e, t, n) {
+function isTerminalToolResult(e, t, n) {
   let r = e.message.content;
   if (!Array.isArray(r)) return false;
   let o = r[0];

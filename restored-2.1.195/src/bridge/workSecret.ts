@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gtc
 // matched 2.1.88 source: src/bridge/workSecret.ts
 // class=modified  jaccard=0.2355  score=0.3396  fileCov=0.4345
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gtc] deps: Jt, kv, Cde
 ((ftc = require("child_process")),
@@ -29,7 +29,7 @@ jYf = {
   NotebookEditTool: "Editing notebook",
   LSP: "LSP",
 };
-function htc(e) {
+function decodeWorkSecret(e) {
   let t = Buffer.from(e, "base64url").toString("utf-8"),
     n = Ft(t);
   if (!n || typeof n !== "object" || !("version" in n) || n.version !== 1)
@@ -42,7 +42,7 @@ function htc(e) {
   if (typeof r.api_base_url !== "string") throw Error("Invalid work secret: missing api_base_url");
   return n;
 }
-function ytc(e, t) {
+function buildSdkUrl(e, t) {
   let n = e.includes("localhost") || e.includes("127.0.0.1"),
     r = n ? "ws" : "wss",
     o = n ? "v2" : "v1",
@@ -55,10 +55,10 @@ function iGo(e, t) {
     r = t.slice(t.lastIndexOf("_") + 1);
   return n.length >= 4 && n === r;
 }
-function tQt(e, t) {
+function buildCCRv2SdkUrl(e, t) {
   return `${e.replace(/\/+$/, "")}/v1/code/sessions/${t}`;
 }
-async function Wir(e, t) {
+async function registerWorker(e, t) {
   let n = await po.post(
       `${e}/worker/register`,
       {},

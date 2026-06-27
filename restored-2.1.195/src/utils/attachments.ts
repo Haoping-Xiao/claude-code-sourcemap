@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b0l
 // matched 2.1.88 source: src/utils/attachments.ts
 // class=modified  jaccard=0.3191  score=0.6063  fileCov=0.4025
-// note: deminified; 42 identifiers renamed (exports/displayName/curated)
+// note: deminified; 62 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tryGetPDFReference, suppressNextSkillListing, startRelevantMemoryPrefetch, seedSentSkillNames, resetSentSkillNames, readMemoriesForSurfacing, parseAtMentionedFileLines, memoryHeader, memoryFilesToAttachments, logDiagnosticsInjected, getToolSearchUsageReminderAttachments, getTodoReminderMode, getSkillListingAttachments, getQueuedCommandAttachments, getPlanModeExitAttachment, getPlanModeAttachmentTurnCount, getMemoryUpdateAttachments, getMcpInstructionsDeltaAttachment, getDirector …
 // [unwrapped __esm module b0l] deps: dn, je, At, Rd, Ao, Epe, Jt, RPo
@@ -36,10 +36,10 @@ async function getAttachments(e, t, n, r, o, s, i) {
     d = !t.agentId,
     p = e
       ? [
-          Yg("at_mentioned_files", () => eIf(e, u)),
-          Yg("mcp_resources", () => nIf(e, u)),
-          Yg("agent_mentions", () =>
-            Promise.resolve(tIf(e, t.options.agentDefinitions.activeAgents)),
+          maybe("at_mentioned_files", () => processAtMentionedFiles(e, u)),
+          maybe("mcp_resources", () => processMcpResourceAttachments(e, u)),
+          maybe("agent_mentions", () =>
+            Promise.resolve(processAgentMentions(e, t.options.agentDefinitions.activeAgents)),
           ),
         ]
       : [],
@@ -49,10 +49,10 @@ async function getAttachments(e, t, n, r, o, s, i) {
       return () => (_ ??= EH() ? gIf(o, t) : fIf(o, t));
     })(),
     g = [
-      Yg("queued_commands", () => getQueuedCommandAttachments(r, a)),
-      Yg("date_change", () => Promise.resolve(getDateChangeAttachments(o))),
-      Yg("ultrathink_effort", () => Promise.resolve(VCf(e))),
-      Yg("deferred_tools_delta", () =>
+      maybe("queued_commands", () => getQueuedCommandAttachments(r, a)),
+      maybe("date_change", () => Promise.resolve(getDateChangeAttachments(o))),
+      maybe("ultrathink_effort", () => Promise.resolve(getUltrathinkEffortAttachment(e))),
+      maybe("deferred_tools_delta", () =>
         Promise.resolve(
           getDeferredToolsDeltaAttachment(
             t.options.tools,
@@ -66,8 +66,8 @@ async function getAttachments(e, t, n, r, o, s, i) {
           ),
         ),
       ),
-      Yg("agent_listing_delta", () => Promise.resolve(getAgentListingDeltaAttachment(t, o))),
-      Yg("mcp_instructions_delta", () =>
+      maybe("agent_listing_delta", () => Promise.resolve(getAgentListingDeltaAttachment(t, o))),
+      maybe("mcp_instructions_delta", () =>
         Promise.resolve(
           getMcpInstructionsDeltaAttachment(
             t.options.mcpClients,
@@ -77,28 +77,31 @@ async function getAttachments(e, t, n, r, o, s, i) {
           ),
         ),
       ),
-      Yg("changed_files", () => getChangedFiles(u)),
-      Yg("nested_memory", () => oIf(u)),
-      Yg("dynamic_skill", () => cIf(u)),
-      Yg("skill_listing", () => getSkillListingAttachments(u)),
-      Yg("plan_mode", () => GCf(e, o, t, i)),
-      Yg("plan_mode_exit", () => getPlanModeExitAttachment(o, t)),
-      Yg("auto_mode", () => WCf(o, t)),
-      Yg("auto_mode_exit", () => qCf(o, t)),
-      Yg("todo_reminders", m),
+      maybe("changed_files", () => getChangedFiles(u)),
+      maybe("nested_memory", () => oIf(u)),
+      maybe("dynamic_skill", () => getDynamicSkillAttachments(u)),
+      maybe("skill_listing", () => getSkillListingAttachments(u)),
+      maybe("plan_mode", () => getPlanModeAttachments(e, o, t, i)),
+      maybe("plan_mode_exit", () => getPlanModeExitAttachment(o, t)),
+      maybe("auto_mode", () => WCf(o, t)),
+      maybe("auto_mode_exit", () => qCf(o, t)),
+      maybe("todo_reminders", m),
       ...(Jzr() !== null
         ? [
-            Yg("tool_search_usage_reminder", () =>
+            maybe("tool_search_usage_reminder", () =>
               getToolSearchUsageReminderAttachments(o, t, async () => (await m()).length > 0),
             ),
           ]
         : []),
       ...(el()
-        ? [Yg("teammate_mailbox", async () => bIf(t)), Yg("team_context", async () => SIf(o ?? []))]
+        ? [
+            maybe("teammate_mailbox", async () => bIf(t)),
+            maybe("team_context", async () => getTeamContextAttachment(o ?? [])),
+          ]
         : []),
-      Yg("agent_pending_messages", async () => getAgentPendingMessageAttachments(t)),
-      Yg("critical_system_reminder", () => Promise.resolve(YCf(t))),
-      Yg("total_tokens_reminder", () =>
+      maybe("agent_pending_messages", async () => getAgentPendingMessageAttachments(t)),
+      maybe("critical_system_reminder", () => Promise.resolve(YCf(t))),
+      maybe("total_tokens_reminder", () =>
         Promise.resolve(e === null ? AIf(o ?? [], t.options.mainLoopModel) : []),
       ),
     ],
@@ -106,31 +109,31 @@ async function getAttachments(e, t, n, r, o, s, i) {
       ? [
           ...(JS()
             ? [
-                Yg("workflow_keyword_request", () =>
+                maybe("workflow_keyword_request", () =>
                   Promise.resolve(
                     i?.isRegularUserPrompt && !i.suppressWorkflowKeyword && Fkn()
                       ? zCf(i.preExpansionInput ?? e)
                       : [],
                   ),
                 ),
-                Yg("ultra_effort_enter", () =>
+                maybe("ultra_effort_enter", () =>
                   Promise.resolve(i?.isRegularUserPrompt ? KCf(o, t) : []),
                 ),
               ]
             : []),
-          Yg("ide_selection", async () => JCf(n, t)),
-          Yg("ide_opened_file", async () => ZCf(n, t)),
-          Yg("output_style", () => XCf()),
-          Yg("diagnostics", async () => uIf(t)),
-          Yg("lsp_diagnostics", async () => dIf(t)),
-          Yg("unified_tasks", async () => yIf(t)),
-          Yg("async_hook_responses", async () => _If()),
-          Yg("memory_update", () => Promise.resolve(getMemoryUpdateAttachments(t))),
-          Yg("token_usage", async () =>
+          maybe("ide_selection", async () => getSelectedLinesFromIDE(n, t)),
+          maybe("ide_opened_file", async () => getOpenedFileFromIDE(n, t)),
+          maybe("output_style", () => getOutputStyleAttachment()),
+          maybe("diagnostics", async () => uIf(t)),
+          maybe("lsp_diagnostics", async () => getLSPDiagnosticAttachments(t)),
+          maybe("unified_tasks", async () => yIf(t)),
+          maybe("async_hook_responses", async () => getAsyncHookResponseAttachments()),
+          maybe("memory_update", () => Promise.resolve(getMemoryUpdateAttachments(t))),
+          maybe("token_usage", async () =>
             Promise.resolve(EIf(o ?? [], t.options.mainLoopModel, t.options.autoCompactWindow)),
           ),
-          Yg("budget_usd", async () => Promise.resolve(TIf(t.options.maxBudgetUsd))),
-          Yg("output_token_usage", async () => Promise.resolve(HIf())),
+          maybe("budget_usd", async () => Promise.resolve(TIf(t.options.maxBudgetUsd))),
+          maybe("output_token_usage", async () => Promise.resolve(HIf())),
         ]
       : [],
     [y, b] = await Promise.all([Promise.all(g), Promise.all(h)]);
@@ -139,7 +142,7 @@ async function getAttachments(e, t, n, r, o, s, i) {
     [...f.flat(), ...y.flat(), ...b.flat()].filter((_) => _ !== void 0 && _ !== null)
   );
 }
-async function Yg(e, t) {
+async function maybe(e, t) {
   let n = Date.now();
   try {
     let r = await t(),
@@ -284,7 +287,7 @@ function jCf(e) {
   }
   return t;
 }
-async function GCf(e, t, n, r) {
+async function getPlanModeAttachments(e, t, n, r) {
   if (Fr(n).mode !== "plan") return [];
   if (t && t.length > 0) {
     let { turnCount: u, foundPlanModeAttachment: d } = getPlanModeAttachmentTurnCount(t);
@@ -331,7 +334,7 @@ async function getPlanModeExitAttachment(e, t) {
     },
   ];
 }
-function w0l(e) {
+function getAutoModeAttachmentTurnCount(e) {
   for (let t = e.length - 1; t >= 0; t--) {
     let n = e[t];
     if (n?.type !== "attachment") continue;
@@ -343,7 +346,7 @@ function w0l(e) {
 async function WCf(e, t) {
   if (Fr(t).mode !== "auto") return [];
   if (ph(t.options.mainLoopModel)) return [];
-  if (w0l(e ?? [])) return [];
+  if (getAutoModeAttachmentTurnCount(e ?? [])) return [];
   return [
     {
       type: "auto_mode",
@@ -353,7 +356,7 @@ async function WCf(e, t) {
 async function qCf(e, t) {
   if (!Kbr()) return [];
   if ((B2(false), Fr(t).mode === "auto" || (NCf?.isAutoModeActive() ?? false))) return [];
-  if (!w0l(e ?? [])) return [];
+  if (!getAutoModeAttachmentTurnCount(e ?? [])) return [];
   return [
     {
       type: "auto_mode_exit",
@@ -375,7 +378,7 @@ function getDateChangeAttachments(e) {
     },
   ];
 }
-function VCf(e) {
+function getUltrathinkEffortAttachment(e) {
   if (!B4e() || !e || !kvi(e)) return [];
   return (
     G("tengu_ultrathink", {}),
@@ -537,7 +540,7 @@ function YCf(e) {
     },
   ];
 }
-async function XCf() {
+async function getOutputStyleAttachment() {
   let t = jo()?.outputStyle || "default";
   if (t === "default") return [];
   let n = await qZn();
@@ -549,7 +552,7 @@ async function XCf() {
     },
   ];
 }
-async function JCf(e, t) {
+async function getSelectedLinesFromIDE(e, t) {
   if (e?.source === "diff" && e.text)
     return [
       {
@@ -598,7 +601,7 @@ function getDirectoriesToProcess(e, t) {
     }
   );
 }
-function QCf(e) {
+function isInstructionsMemoryType(e) {
   return e === "User" || e === "Project" || e === "Local" || e === "Managed";
 }
 function memoryFilesToAttachments(e, t, n) {
@@ -626,7 +629,7 @@ function memoryFilesToAttachments(e, t, n) {
           isPartialView: s.contentDiffersFromDisk,
           keepContent: true,
         }),
-        o && QCf(s.type))
+        o && isInstructionsMemoryType(s.type))
       ) {
         let i = s.globs ? "path_glob_match" : s.parent ? "include" : "nested_traversal";
         o5e(s.path, s.type, i, {
@@ -639,7 +642,7 @@ function memoryFilesToAttachments(e, t, n) {
   }
   return r;
 }
-async function x0l(e, t, n) {
+async function getNestedMemoryAttachmentsForFile(e, t, n) {
   if (Oe.CLAUDE_CODE_DISABLE_CLAUDE_MDS) return [];
   let r = [];
   try {
@@ -667,12 +670,12 @@ async function x0l(e, t, n) {
   }
   return r;
 }
-async function ZCf(e, t) {
+async function getOpenedFileFromIDE(e, t) {
   if (!e?.filePath || e.text) return [];
   let n = Fr(t);
   if (kSt(e.filePath, n)) return [];
   return [
-    ...(await x0l(e.filePath, t, {
+    ...(await getNestedMemoryAttachmentsForFile(e.filePath, t, {
       toolPermissionContext: n,
     })),
     {
@@ -681,7 +684,7 @@ async function ZCf(e, t) {
     },
   ];
 }
-async function eIf(e, t) {
+async function processAtMentionedFiles(e, t) {
   let n = extractAtMentionedFiles(e);
   if (n.length === 0) return [];
   let r = Fr(t);
@@ -752,7 +755,7 @@ async function eIf(e, t) {
     )
   ).filter(Boolean);
 }
-function tIf(e, t) {
+function processAgentMentions(e, t) {
   let n = extractAgentMentions(e);
   if (n.length === 0) return [];
   return n
@@ -782,7 +785,7 @@ function tIf(e, t) {
     })
     .filter((o) => o !== null);
 }
-async function nIf(e, t) {
+async function processMcpResourceAttachments(e, t) {
   let n = extractMcpResourceMentions(e);
   if (n.length === 0) return [];
   let r = t.options.mcpClients || [];
@@ -953,14 +956,14 @@ async function oIf(e) {
   let r = Fr(e),
     o = [];
   for (let s of t) {
-    let i = await x0l(s, e, {
+    let i = await getNestedMemoryAttachmentsForFile(s, e, {
       toolPermissionContext: r,
     });
     o.push(...i);
   }
   return ((t.length = 0), o);
 }
-async function sIf(e, t, n, r, o, s, i) {
+async function getRelevantMemoryAttachments(e, t, n, r, o, s, i) {
   let a = extractAgentMentions(e).flatMap((h) => {
       let y = h.replace("agent-", ""),
         b = t.find((_) => _.agentType === y);
@@ -1071,7 +1074,7 @@ function startRelevantMemoryPrefetch(e, t, n, r) {
       },
       forkContextMessages: [...e],
     },
-    d = sIf(
+    d = getRelevantMemoryAttachments(
       i,
       t.options.agentDefinitions.activeAgents,
       o,
@@ -1107,7 +1110,7 @@ function startRelevantMemoryPrefetch(e, t, n, r) {
     p
   );
 }
-function lIf(e) {
+function isToolResultBlock(e) {
   return (
     typeof e === "object" &&
     e !== null &&
@@ -1116,7 +1119,7 @@ function lIf(e) {
   );
 }
 function P0l(e) {
-  return Array.isArray(e) && e.some(lIf);
+  return Array.isArray(e) && e.some(isToolResultBlock);
 }
 function filterDuplicateMemoryAttachments(e, t) {
   return e
@@ -1139,7 +1142,7 @@ function filterDuplicateMemoryAttachments(e, t) {
     })
     .filter((n) => n !== null);
 }
-async function cIf(e) {
+async function getDynamicSkillAttachments(e) {
   let t = [],
     n = e.dynamicSkillDirTriggers;
   if (n && n.length > 0) {
@@ -1317,7 +1320,7 @@ async function uIf(e) {
     ]
   );
 }
-async function dIf(e) {
+async function getLSPDiagnosticAttachments(e) {
   if (!e.options.tools.some((t) => Ql(t, Co) || Ql(t, Ss))) return [];
   T("LSP Diagnostics: getLSPDiagnosticAttachments called");
   try {
@@ -1529,7 +1532,7 @@ function createAttachmentMessage(
     timestamp: (e.type === "queued_command" && e.timestamp) || t.now(),
   };
 }
-function pIf(e) {
+function getTodoReminderTurnCounts(e) {
   let t = -1,
     n = -1,
     r = 0,
@@ -1560,7 +1563,7 @@ async function fIf(e, t) {
   if (FZn && t.options.tools.some((o) => Ql(o, FZn))) return [];
   if (!e || e.length === 0) return [];
   if (getTodoReminderMode() === "off") return [];
-  let { turnsSinceLastTodoWrite: n, turnsSinceLastReminder: r } = pIf(e);
+  let { turnsSinceLastTodoWrite: n, turnsSinceLastReminder: r } = getTodoReminderTurnCounts(e);
   if (
     n >= TODO_REMINDER_CONFIG.TURNS_SINCE_WRITE &&
     r >= TODO_REMINDER_CONFIG.TURNS_BETWEEN_REMINDERS
@@ -1577,7 +1580,7 @@ async function fIf(e, t) {
   }
   return [];
 }
-function mIf(e) {
+function getTaskReminderTurnCounts(e) {
   let t = -1,
     n = -1,
     r = 0,
@@ -1609,7 +1612,7 @@ async function gIf(e, t) {
   if (!t.options.tools.some((o) => Ql(o, ZD))) return [];
   if (!e || e.length === 0) return [];
   if (getTodoReminderMode() === "off") return [];
-  let { turnsSinceLastTaskManagement: n, turnsSinceLastReminder: r } = mIf(e);
+  let { turnsSinceLastTaskManagement: n, turnsSinceLastReminder: r } = getTaskReminderTurnCounts(e);
   if (
     n >= TODO_REMINDER_CONFIG.TURNS_SINCE_WRITE &&
     r >= TODO_REMINDER_CONFIG.TURNS_BETWEEN_REMINDERS
@@ -1745,7 +1748,7 @@ function getMemoryUpdateAttachments(e) {
     inContextPaths: o.paths.filter(r),
   }));
 }
-async function _If() {
+async function getAsyncHookResponseAttachments() {
   let e = await p0l();
   if (e.length === 0) return [];
   T(`Hooks: getAsyncHookResponseAttachments found ${e.length} responses`);
@@ -1786,7 +1789,7 @@ async function bIf(e) {
   if (!el()) return [];
   return [];
 }
-function SIf(e) {
+function getTeamContextAttachment(e) {
   let t = rp(),
     n = PD(),
     r = Oh();

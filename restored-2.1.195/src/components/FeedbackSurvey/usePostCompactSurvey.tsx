@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tRc
 // matched 2.1.88 source: src/components/FeedbackSurvey/usePostCompactSurvey.tsx
 // class=modified  jaccard=0.3807  score=0.7019  fileCov=0.4541
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tRc] deps: aW, Un, kt, Uh, jc, uo, lf, er, wr, fn, Xbt, co, qd, aS, pYo, xtn, gYo
 nD = R(rt(), 1);
@@ -16,7 +16,7 @@ function Xvm(e, t) {
   }
   return false;
 }
-function rRc(e, t, n, r) {
+function usePostCompactSurvey(e, t, n, r) {
   let o = nRc.c(25),
     s = n === void 0 ? false : n,
     i;
@@ -30,8 +30,8 @@ function rRc(e, t, n, r) {
   else d = o[2];
   let p = UNe.useRef(d),
     f = UNe.useRef(null),
-    m = ewm,
-    g = Zvm,
+    m = _temp,
+    g = _temp2,
     h;
   if (o[3] === Symbol.for("react.memo_cache_sentinel"))
     ((h = {
@@ -54,7 +54,7 @@ function rRc(e, t, n, r) {
   if (o[4] !== l)
     ((C = () => {
       if (!l) return;
-      u(at(Kvm, false));
+      u(at(POST_COMPACT_SURVEY_GATE, false));
     }),
       (x = [l]),
       (o[4] = l),
@@ -132,7 +132,7 @@ function Jvm(e) {
 function Qvm(e) {
   return pA(e);
 }
-function Zvm(e, t) {
+function _temp2(e, t) {
   (G("tengu_post_compact_survey_event", {
     event_type: We("responded"),
     appearance_id: e,
@@ -145,7 +145,7 @@ function Zvm(e, t) {
       survey_type: "post_compact",
     }));
 }
-function ewm(e) {
+function _temp(e) {
   (G("tengu_post_compact_survey_event", {
     event_type: We("appeared"),
     appearance_id: e,
@@ -159,5 +159,5 @@ function ewm(e) {
 var nRc,
   UNe,
   zvm = 5000,
-  Kvm = "tengu_post_compact_survey",
+  POST_COMPACT_SURVEY_GATE = "tengu_post_compact_survey",
   Yvm = 0.2;

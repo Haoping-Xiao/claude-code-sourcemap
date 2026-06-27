@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E8n
 // matched 2.1.88 source: src/utils/teleport/gitBundle.ts
 // class=modified  jaccard=0.4668  score=0.593  fileCov=0.6869
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E8n] deps: Hp, TM, Lo, je, At, Ls, dn, kt, GY
 ((xZa = require("crypto")),
@@ -57,7 +57,7 @@ async function UZa(e) {
     inPackCount: r,
   };
 }
-async function PQp(e, t, n, r, o, s) {
+async function _bundleWithFallback(e, t, n, r, o, s) {
   let i = r ? ["refs/seed/stash"] : [],
     a = (_) =>
       Gr(go(), ["bundle", "create", t, _, ...i], {
@@ -179,7 +179,7 @@ async function PQp(e, t, n, r, o, s) {
     failReason: "too_large",
   };
 }
-async function wTo(e, t) {
+async function createAndUploadGitBundle(e, t) {
   let n = t?.cwd ?? $t(),
     r = Tu(n);
   if (!r)
@@ -247,7 +247,7 @@ async function wTo(e, t) {
   let l = Jst("ccr-seed", ".bundle");
   try {
     let c = NZa(),
-      u = await PQp(r, l, c, a, t?.signal, t?.baseRef);
+      u = await _bundleWithFallback(r, l, c, a, t?.signal, t?.baseRef);
     if (!u.ok)
       return (
         T(`[gitBundle] ${u.error}`),

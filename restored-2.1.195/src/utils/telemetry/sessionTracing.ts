@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xdt
 // matched 2.1.88 source: src/utils/telemetry/sessionTracing.ts
 // class=modified  jaccard=0.3075  score=0.5006  fileCov=0.4435
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xdt] deps: ft, fd, je, fn, At, Jt, Mp
 ((opo = []), (tN = []), (SL = new Map()), (yFn = new Map()), (ipo = new Map()));
@@ -34,7 +34,7 @@ function tka(e, t) {
   if (!t) return;
   (e.setAttribute("tool_use_id", t), e.setAttribute("gen_ai.tool.call.id", t));
 }
-function y$() {
+function getTracer() {
   return dg.trace.getTracer("com.anthropic.claude_code.tracing", "1.0.0");
 }
 function dF() {
@@ -61,12 +61,12 @@ function Eqe(e, t = {}) {
     ...t,
   };
 }
-function Pwp(e) {
+function startInteractionSpan(e) {
   let t = zSe() ? Xxa(e) : void 0,
     n = dF();
   if (!f5()) {
     if (t) {
-      let c = dg.trace.getActiveSpan() || y$().startSpan("dummy");
+      let c = dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
       return (
         _De(hDe, {
           span: c,
@@ -80,9 +80,9 @@ function Pwp(e) {
         c
       );
     }
-    return dg.trace.getActiveSpan() || y$().startSpan("dummy");
+    return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
-  let r = y$(),
+  let r = getTracer(),
     s = ut(process.env.OTEL_LOG_USER_PROMPTS) ? e : "<REDACTED>";
   Qxa++;
   let i = Eqe("interaction", {
@@ -118,7 +118,7 @@ function Pwp(e) {
 }
 function SFn(e, t) {
   let n = dF();
-  Pwp(e);
+  startInteractionSpan(e);
   let r = dF();
   try {
     return qSe.with(r, t);
@@ -126,7 +126,7 @@ function SFn(e, t) {
     if (dF() === r) qSe.enterWith(n);
   }
 }
-function dde() {
+function endInteractionSpan() {
   let e = Jdt(hDe);
   if (!e) return;
   if (e.perfettoSpanId) Jxa(e.perfettoSpanId);
@@ -141,7 +141,7 @@ function dde() {
     e.span.end(),
     bDe(hDe, e));
 }
-function nka(e, t, n, r, o) {
+function startLLMRequestSpan(e, t, n, r, o) {
   let s = zSe()
       ? Gxa({
           model: e,
@@ -152,7 +152,7 @@ function nka(e, t, n, r, o) {
     i = dF();
   if (!f5()) {
     if (s) {
-      let d = dg.trace.getActiveSpan() || y$().startSpan("dummy");
+      let d = dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
       return (
         yDe.set(d, {
           span: d,
@@ -166,9 +166,9 @@ function nka(e, t, n, r, o) {
         d
       );
     }
-    return dg.trace.getActiveSpan() || y$().startSpan("dummy");
+    return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
-  let a = y$(),
+  let a = getTracer(),
     l = dF().getValue(bqe),
     c = Eqe("llm_request", {
       model: e,
@@ -219,7 +219,7 @@ function $wp(e) {
   );
   return dg.trace.getSpanContext(t);
 }
-function cpo(e, t) {
+function endLLMRequestSpan(e, t) {
   if (!e) return;
   let n = yDe.get(e);
   if (!n || n.ended) return;
@@ -280,12 +280,12 @@ function cpo(e, t) {
   }
   n.span.end();
 }
-function oka(e, t, n, r, o) {
+function startToolSpan(e, t, n, r, o) {
   let s = zSe() ? qxa(e, n) : void 0,
     i = dF();
   if (!f5()) {
     if (s) {
-      let u = dg.trace.getActiveSpan() || y$().startSpan("dummy");
+      let u = dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
       return (
         _De(bqe, {
           span: u,
@@ -300,9 +300,9 @@ function oka(e, t, n, r, o) {
         u
       );
     }
-    return dg.trace.getActiveSpan() || y$().startSpan("dummy");
+    return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
-  let a = y$(),
+  let a = getTracer(),
     l = Eqe("tool", {
       tool_name: e,
       ...n,
@@ -330,12 +330,12 @@ function oka(e, t, n, r, o) {
     c
   );
 }
-function ska() {
+function startToolBlockedOnUserSpan() {
   let e = zSe() ? zxa("tool_permission") : void 0,
     t = dF();
   if (!f5()) {
     if (e) {
-      let s = dg.trace.getActiveSpan() || y$().startSpan("dummy");
+      let s = dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
       return (
         _De(M3t, {
           span: s,
@@ -349,9 +349,9 @@ function ska() {
         s
       );
     }
-    return dg.trace.getActiveSpan() || y$().startSpan("dummy");
+    return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
-  let n = y$(),
+  let n = getTracer(),
     r = Eqe("tool.blocked_on_user"),
     o = n.startSpan(
       "claude_code.tool.blocked_on_user",
@@ -390,10 +390,10 @@ function N3t(e, t) {
   if (t) o.source = t;
   (n.span.setAttributes(o), n.span.end(), bDe(M3t, n));
 }
-function ika(e) {
+function startToolExecutionSpan(e) {
   let t = dF();
-  if (!f5()) return dg.trace.getActiveSpan() || y$().startSpan("dummy");
-  let n = y$(),
+  if (!f5()) return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
+  let n = getTracer(),
     r = Eqe("tool.execution"),
     o = n.startSpan(
       "claude_code.tool.execution",
@@ -453,7 +453,7 @@ function Qdt(e, t, n) {
   if (n !== void 0) s.result_tokens = n;
   (r.span.setAttributes(s), r.span.end(), bDe(bqe, r));
 }
-function aka(e, t) {
+function addToolContentEvent(e, t) {
   if (!f5() || !Rst()) return;
   let n = Jdt(bqe);
   if (!n) return;
@@ -481,7 +481,7 @@ function EFn() {
 }
 function B3t(e, t) {
   if (!ude()) return;
-  return y$().startSpan(
+  return getTracer().startSpan(
     e,
     {
       attributes: {
@@ -521,7 +521,7 @@ function cka(e) {
         parent_agent_id: e.parentAgentId,
       }),
     }),
-    r = y$().startSpan(
+    r = getTracer().startSpan(
       "claude_code.subagent.spawn",
       {
         attributes: n,
@@ -549,9 +549,9 @@ function uka(e, t) {
 function dka() {
   return mC() || ude();
 }
-function pka(e, t, n, r) {
-  if (!dka()) return dg.trace.getActiveSpan() || y$().startSpan("dummy");
-  let o = y$(),
+function startHookSpan(e, t, n, r) {
+  if (!dka()) return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
+  let o = getTracer(),
     s = dF(),
     { content: i } = iP(r),
     a = Eqe("hook", {

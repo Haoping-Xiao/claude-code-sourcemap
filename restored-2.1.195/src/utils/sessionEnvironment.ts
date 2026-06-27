@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lNn
 // matched 2.1.88 source: src/utils/sessionEnvironment.ts
 // class=modified  jaccard=0.4595  score=1  fileCov=0.4595
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lNn] deps: u_, lf, nC, EI, lC, TX, Rct, je, _m, Jt, dn, kt, mLe, U1, hut
 Hcp = new Set([Ds, ...W1, qc, wu, GW, Sb, ka, Wc]);
@@ -14,7 +14,7 @@ async function fca(e, t) {
   let n = e.toLowerCase();
   return Fjt.join(await yao(), `${n}-hook-${t}.sh`);
 }
-async function mca() {
+async function clearCwdEnvFiles() {
   try {
     let e = await yao(),
       t = await hLe.readdir(e);
@@ -30,10 +30,10 @@ async function mca() {
     if (on(e) !== "ENOENT") T(`Failed to clear cwd env files: ${be(e)}`);
   }
 }
-function Eut() {
+function invalidateSessionEnvCache() {
   (T("Invalidating session environment cache"), (gLe = void 0), (cNn = void 0));
 }
-async function gca() {
+async function getSessionEnvironmentScript() {
   let e = Rt();
   if (gLe !== void 0 && cNn === e) return gLe;
   let t = [],

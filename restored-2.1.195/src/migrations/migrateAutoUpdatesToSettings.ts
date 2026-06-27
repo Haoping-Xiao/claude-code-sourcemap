@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module OOc
 // matched 2.1.88 source: src/migrations/migrateAutoUpdatesToSettings.ts
 // class=modified  jaccard=0.44  score=0.7218  fileCov=0.5298
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OOc] deps: kt, pke, DD, Ls, dr
 $xm = {};
-function NOc() {
+function migrateAutoUpdatesToSettings() {
   let e = Dt();
   if (e.autoUpdates !== false || e.autoUpdatesProtectedForNative === true) return;
   try {

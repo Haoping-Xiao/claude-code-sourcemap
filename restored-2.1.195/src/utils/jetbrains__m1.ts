@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module sFn
 // matched 2.1.88 source: src/utils/jetbrains.ts
 // class=modified (alt of src/utils/jetbrains.ts)  jaccard=0.3061  score=0.9748  fileCov=0.3086
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sFn] deps: nJe, XIa
 mqe = iwp;
-function lwp(e) {
+function buildCommonPluginDirectoryPaths(e) {
   let t = x3t.homedir(),
     n = [],
     r = JIa[e.toLowerCase()];
@@ -44,7 +44,7 @@ function lwp(e) {
 async function cwp(e) {
   let t = [],
     n = qt(),
-    r = lwp(e),
+    r = buildCommonPluginDirectoryPaths(e),
     o = JIa[e.toLowerCase()];
   if (!o) return t;
   let s = o.map((i) => new RegExp("^" + i));
@@ -73,7 +73,7 @@ async function cwp(e) {
 async function uwp(e) {
   let t = await cwp(e);
   for (let n of t) {
-    let r = eN.join(n, awp);
+    let r = eN.join(n, PLUGIN_PREFIX);
     try {
       return (await qt().stat(r), true);
     } catch {}
@@ -89,6 +89,6 @@ async function QIa(e, t = false) {
 }
 var x3t,
   eN,
-  awp = "claude-code-jetbrains-plugin",
+  PLUGIN_PREFIX = "claude-code-jetbrains-plugin",
   JIa,
   qdo;

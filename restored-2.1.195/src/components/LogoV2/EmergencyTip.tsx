@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module G5l
 // matched 2.1.88 source: src/components/LogoV2/EmergencyTip.tsx
 // class=modified  jaccard=0.3006  score=0.5196  fileCov=0.4164
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module G5l] deps: Ye, gm
 ((F5l = R(lt(), 1)), (QKe = R(se(), 1)));
-function W5l() {
+function EmergencyTip() {
   let e = zXt.useMemo(t2o, []),
     t = zXt.useMemo(() => Dt().lastShownEmergencyTip, []),
     n = n2o(e) && (e.persistent || e.tip !== t);
@@ -44,7 +44,7 @@ function W5l() {
   });
 }
 function t2o() {
-  return zx(y4f, _4f);
+  return zx(CONFIG_NAME, _4f);
 }
 function n2o(e) {
   if (!e.tip) return false;
@@ -53,5 +53,5 @@ function n2o(e) {
 }
 var zXt,
   e2o,
-  y4f = "tengu-top-of-feed-tip",
+  CONFIG_NAME = "tengu-top-of-feed-tip",
   _4f;

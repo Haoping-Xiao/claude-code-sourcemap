@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module H1e
 // matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
 // class=modified  jaccard=0.3413  score=0.5307  fileCov=0.4889
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module H1e] deps: ft, np, co, KI, CLo
 w8l = require("crypto");
-function ujo(e, t, n) {
+function formatToolUseSummary(e, t, n) {
   if (e === jD) return "Review the plan in Claude Code on the web";
   if (!t || typeof t !== "object") return e;
   if (e === mf && "questions" in t) {
@@ -31,7 +31,7 @@ function ujo(e, t, n) {
     }
   return e;
 }
-function f5f(e) {
+function UltraplanSessionDetail(e) {
   let t = usr.c(78),
     { session: n, onDone: r, onBack: o, onKill: s } = e,
     i = n.status === "running" || n.status === "pending",
@@ -50,7 +50,8 @@ function f5f(e) {
   }
   let f = 1 + u,
     m;
-  if (t[0] !== p) ((m = p ? ujo(p.name, p.input, 60) : null), (t[0] = p), (t[1] = m));
+  if (t[0] !== p)
+    ((m = p ? formatToolUseSummary(p.name, p.input, 60) : null), (t[0] = p), (t[1] = m));
   else m = t[1];
   let g;
   if (t[2] !== d || t[3] !== f || t[4] !== m)
@@ -437,7 +438,7 @@ function m5f(e) {
   else p = t[14];
   return p;
 }
-function g5f(e) {
+function reviewCountsLine(e) {
   let t = e.reviewProgress;
   if (!t) return e.status === "completed" ? "done" : "setting up";
   let n = t.bugsVerified,
@@ -449,7 +450,7 @@ function g5f(e) {
   }
   return ajo(t.stage, t.bugsFound, n, r);
 }
-function h5f(e) {
+function ReviewSessionDetail(e) {
   let t = usr.c(57),
     { session: n, onDone: r, onBack: o, onKill: s } = e,
     i = n.status === "completed",
@@ -663,7 +664,7 @@ function h5f(e) {
       (t[33] = O));
   else O = t[33];
   let L;
-  if (t[34] !== n) ((L = g5f(n)), (t[34] = n), (t[35] = L));
+  if (t[34] !== n) ((L = reviewCountsLine(n)), (t[34] = n), (t[35] = L));
   else L = t[35];
   let M;
   if (t[36] !== L)
@@ -740,7 +741,13 @@ function h5f(e) {
   else V = t[56];
   return V;
 }
-function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o }) {
+function RemoteSessionDetailDialog({
+  session: e,
+  toolUseContext: t,
+  onDone: n,
+  onBack: r,
+  onKill: o,
+}) {
   let [s, i] = aYe.useState(false),
     [a, l] = aYe.useState(null),
     c = aYe.useMemo(() => {
@@ -752,14 +759,14 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
     u = e.status === "running" || e.status === "pending",
     d = sQ(e.startTime, u, 1000, 0, e.endTime);
   if (e.isUltraplan)
-    return fa.jsx(f5f, {
+    return fa.jsx(UltraplanSessionDetail, {
       session: e,
       onDone: n,
       onBack: r,
       onKill: o,
     });
   if (e.isRemoteReview)
-    return fa.jsx(h5f, {
+    return fa.jsx(ReviewSessionDetail, {
       session: e,
       onDone: n,
       onBack: r,

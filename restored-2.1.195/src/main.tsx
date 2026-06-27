@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module F5c
 // matched 2.1.88 source: src/main.tsx
 // class=modified  jaccard=0.2757  score=0.4843  fileCov=0.3903
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startDeferredPrefetches, main
 // [unwrapped __esm module F5c] deps: SGo, Lne, eqe, fn, xW, jS, Jt, HO, JN
 ((FZ = require("fs/promises")), (gV = require("path")), (N5c = /^[a-zA-Z0-9_-]+$/));
-function C1m() {
+function logManagedSettings() {
   try {
     let e = yn("policySettings");
     if (e) {
@@ -86,7 +86,7 @@ function x1m() {
     auto_mode_rule_word_count: n,
   };
 }
-function k1m() {
+function getCertEnvVarTelemetry() {
   let e = {};
   if (process.env.NODE_EXTRA_CA_CERTS) e.has_node_extra_ca_certs = true;
   if (process.env.CLAUDE_CODE_CLIENT_CERT) e.has_client_cert = true;
@@ -95,7 +95,7 @@ function k1m() {
   if (process.env.CLAUDE_CODE_CERT_STORE) e.cert_store = process.env.CLAUDE_CODE_CERT_STORE;
   return e;
 }
-async function R1m(e) {
+async function logStartupTelemetry(e) {
   if (Rj()) return;
   let [t, n, r] = await Promise.all([cb(), dCe(), aar()]),
     o = tMc(),
@@ -117,7 +117,7 @@ async function R1m(e) {
     nondefault_settings: s.join(","),
     set_user_settings_count: i.length,
     set_user_settings: i.join(","),
-    ...k1m(),
+    ...getCertEnvVarTelemetry(),
     ...x1m(),
   });
 }
@@ -145,7 +145,7 @@ function L1m() {
       ));
   NGl().catch(() => {});
 }
-function D1m() {
+function prefetchSystemContextIfSafe() {
   if (Ir()) {
     (In("info", "prefetch_system_context_non_interactive"), hH());
     return;
@@ -158,7 +158,7 @@ function startDeferredPrefetches() {
   if (
     (hwi(),
     uS(),
-    D1m(),
+    prefetchSystemContextIfSafe(),
     yfr(),
     ut(process.env.CLAUDE_CODE_USE_BEDROCK) && !ut(process.env.CLAUDE_CODE_SKIP_BEDROCK_AUTH))
   )
@@ -236,7 +236,7 @@ async function main() {
   (pa("main_client_type_determined"),
     E7o(),
     pa("main_before_run"),
-    await $1m(),
+    await run(),
     pa("main_after_run"));
 }
 async function M1m(e, t) {
@@ -265,7 +265,7 @@ async function M1m(e, t) {
   }
   return e;
 }
-async function $1m() {
+async function run() {
   pa("run_function_start");
   let e = new idc().configureHelp(LTe()).enablePositionalOptions();
   pa("run_commander_initialized");
@@ -884,7 +884,7 @@ ${J5o()}`);
         }
         let ee;
         if (el()) {
-          let Wn = B1m(a);
+          let Wn = extractTeammateOptions(a);
           ee = Wn;
           let Cs = Wn.agentId || Wn.agentName || Wn.teamName,
             Ya = Wn.agentId && Wn.agentName && Wn.teamName;
@@ -1629,7 +1629,7 @@ ${pn}`
           }
           if (((vs = Wn ?? mel()), vs)) T(`[AdvisorTool] Advisor model: ${vs}`);
         }
-        if ((dhr(a), !Ir() && !qie() && Dr().defaultView === "chat")) {
+        if ((maybeActivateBrief(a), !Ir() && !qie() && Dr().defaultView === "chat")) {
           let { isBriefEntitled: Wn } = (l3(), ro(CQ));
           if (Wn()) Ige(true);
         }
@@ -1998,7 +1998,7 @@ ${pn}`
           Ci(async () => {
             In("info", "exited");
           }),
-          O1m({
+          logTenguInit({
             onAntSandboxDetection: nc.updateContext,
             hasInitialPrompt: Boolean(i),
             hasStdin: Boolean(pn),
@@ -2032,7 +2032,7 @@ ${pn}`
         if (
           (Pfl(it.alwaysAllowRules),
           Hut(null, "initialization"),
-          C1m(),
+          logManagedSettings(),
           tsi().then((Wn) => {
             if (!Wn) return;
             if (So) JY(So);
@@ -2506,7 +2506,7 @@ ${pn}`
           numStartups: (Wn.numStartups ?? 0) + 1,
         })),
           setImmediate(() => {
-            (R1m(Dt()), W5c());
+            (logStartupTelemetry(Dt()), W5c());
           }));
         let TE = null,
           RA = false,
@@ -2576,7 +2576,7 @@ ${pn}`
               XT,
             );
             if (Yc.restoredAgentDef) Qn = Yc.restoredAgentDef;
-            (dhr(a),
+            (maybeActivateBrief(a),
               await DZo(a),
               G("tengu_continue", {
                 success: true,
@@ -3035,7 +3035,7 @@ Usage: claude --cloud "your task description"`,
                 }
               : void 0);
           if (et) {
-            (dhr(a), await DZo(a));
+            (maybeActivateBrief(a), await DZo(a));
             let Xe = Avt(Je, et.restoredAgentDef ?? Qn, {
               strictMcpConfig: Ln,
             });
@@ -3082,7 +3082,7 @@ Usage: claude --cloud "your task description"`,
           let Wn = bg && C_.length === 0 ? bg : void 0;
           if (
             (pa("action_after_hooks"),
-            dhr(a),
+            maybeActivateBrief(a),
             await DZo(a),
             Z1e(MZo?.isCoordinatorMode() ? "coordinator" : "normal"),
             a.deepLinkOrigin)
@@ -3504,7 +3504,7 @@ Usage: claude --cloud "your task description"`,
     e
   );
 }
-async function O1m({
+async function logTenguInit({
   onAntSandboxDetection: e,
   hasInitialPrompt: t,
   hasStdin: n,
@@ -3586,7 +3586,7 @@ async function O1m({
   }
 }
 async function DZo(e) {}
-function dhr(e) {
+function maybeActivateBrief(e) {
   let t = e.brief,
     n = Oe.CLAUDE_CODE_BRIEF;
   if (!t && !n) return;
@@ -3604,7 +3604,7 @@ function N1m() {
     A1,
   );
 }
-function B1m(e) {
+function extractTeammateOptions(e) {
   if (typeof e !== "object" || e === null) return {};
   let t = e,
     n = t.teammateMode;

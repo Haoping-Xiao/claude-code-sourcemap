@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module C7n
 // matched 2.1.88 source: src/utils/swarm/spawnUtils.ts
 // class=modified  jaccard=0.223  score=0.366  fileCov=0.3632
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module C7n]
 ((Y6t = [
@@ -32,7 +32,7 @@ function dhl() {
   if (process.env[sht]) return process.env[sht];
   return dm() ? process.execPath : process.argv[1];
 }
-function phl(e) {
+function buildInheritedCliFlags(e) {
   let t = [],
     { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = e || {};
   if (n);
@@ -61,7 +61,7 @@ function phl(e) {
   else if (c === false) t.push("--no-chrome");
   return t.join(" ");
 }
-function Q6t() {
+function buildInheritedEnvVars() {
   let e = ["CLAUDECODE=1", "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1"];
   for (let n of yff) {
     let r = process.env[n];

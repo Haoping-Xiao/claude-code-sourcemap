@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module v2o
 // matched 2.1.88 source: src/components/VirtualMessageList.tsx
 // class=modified  jaccard=0.4576  score=0.6163  fileCov=0.6399
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v2o] deps: si, fH, tC, rJt, Jql, QBt, _i, fGe, wOe, oat, HI, Ye, nk, vy, uf, vWt, Fh, sr, eVl, Coe, LW, eE, YFo, OUt, rVl, iVl
 ((tYe = R(lt(), 1)),
@@ -21,10 +21,10 @@ function w2o(e) {
   if (e === void 0) return null;
   let t = pVl.get(e);
   if (t !== void 0) return t;
-  let n = iGf(e);
+  let n = computeStickyPromptText(e);
   return (pVl.set(e, n), n);
 }
-function iGf(e) {
+function computeStickyPromptText(e) {
   let t = null;
   if (e.type === "user") {
     if (e.isMeta || e.isVisibleInTranscriptOnly) return null;
@@ -49,7 +49,7 @@ function iGf(e) {
   if (n.startsWith("<") || n === "") return null;
   return n;
 }
-function aGf({
+function VirtualItem({
   itemKey: e,
   msg: t,
   idx: n,
@@ -82,7 +82,7 @@ function aGf({
     }),
   });
 }
-function mVl({
+function VirtualMessageList({
   messages: e,
   scrollRef: t,
   columns: n,
@@ -489,7 +489,7 @@ function mVl({
             Ce = we && de === ue,
             Ie = a?.(le);
           return Ise.jsx(
-            aGf,
+            VirtualItem,
             {
               itemKey: ue,
               msg: le,

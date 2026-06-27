@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qpo
 // matched 2.1.88 source: src/utils/computerUse/computerUseLock.ts
 // class=modified  jaccard=0.2726  score=0.5631  fileCov=0.3457
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qpo] deps: spt, Xr
 GFn = Dy({
@@ -15,20 +15,20 @@ GFn = Dy({
     flags: pJ,
   },
 });
-function NIp(e) {
+function isComputerUseLock(e) {
   if (typeof e !== "object" || e === null) return false;
   return (
     "sessionId" in e && typeof e.sessionId === "string" && "pid" in e && typeof e.pid === "number"
   );
 }
 function ipt() {
-  return Z0a.join(tr(), OIp);
+  return Z0a.join(tr(), LOCK_FILENAME);
 }
 async function aGt() {
   try {
     let e = await JSe.readFile(ipt(), "utf8"),
       t = Ft(e);
-    return NIp(t) ? t : void 0;
+    return isComputerUseLock(t) ? t : void 0;
   } catch {
     return;
   }
@@ -56,10 +56,10 @@ async function efo(e) {
 function tfo() {
   (lGt?.(),
     (lGt = Ci(async () => {
-      await BIp();
+      await releaseComputerUseLock();
     })));
 }
-async function tRa() {
+async function checkComputerUseLock() {
   let e = await aGt();
   if (!e)
     return {
@@ -89,7 +89,7 @@ async function tRa() {
 function nfo() {
   return lGt !== void 0;
 }
-async function nRa() {
+async function tryAcquireComputerUseLock() {
   let e = Rt(),
     t = {
       sessionId: e,
@@ -133,7 +133,7 @@ async function nRa() {
     }
   );
 }
-async function BIp() {
+async function releaseComputerUseLock() {
   let e = nfo();
   (lGt?.(), (lGt = void 0));
   let t = await aGt();
@@ -156,7 +156,7 @@ function VFn() {
 }
 var JSe,
   Z0a,
-  OIp = "computer-use.lock",
+  LOCK_FILENAME = "computer-use.lock",
   lGt,
   Zpo,
   Q0a,

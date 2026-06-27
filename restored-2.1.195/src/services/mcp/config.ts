@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a5
 // matched 2.1.88 source: src/services/mcp/config.ts
 // class=modified  jaccard=0.3224  score=0.4808  fileCov=0.4946
-// note: deminified; 31 identifiers renamed (exports/displayName/curated)
+// note: deminified; 34 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: unwrapCcrProxyUrl, suppressedConnectorsEqual, shouldSkipClaudeAiFetchForEnterpriseLockdown, shouldAllowManagedMcpServersOnly, setMcpServerEnabled, removeMcpConfig, readRawMcpJsonServersFromCwd, parseMcpConfigFromFilePath, parseMcpConfig, isMcpServerDisabled, isMcpServerDenied, isMcpServerBlockedAtConnectTime, isMcpServerAllowedByPolicy, isBuiltinInProcessMcpServer, getMcpServerSignature, getMcpScopeConflicts, getMcpConfigsByScope, getMcpConfigByName, getEnterpriseMcpFilePath, ge …
 // [unwrapped __esm module a5] deps: Hp, iu, Qi, TM, Rc, kt, oo, er, gb, je, fn, Gx, Ls, qd, dr, dn, pdo, bCe
@@ -180,7 +180,7 @@ function RUn(e, t) {
       };
   return n;
 }
-async function wCa(e) {
+async function writeMcpjsonFile(e) {
   let t = NSe.join($t(), ".mcp.json"),
     n;
   try {
@@ -380,7 +380,7 @@ async function dedupClaudeAiMcpServers(e, t) {
     suppressed: s,
   };
 }
-function HTp() {
+function getMcpAllowlistSettings() {
   if (shouldAllowManagedMcpServersOnly()) return yn("policySettings") ?? {};
   return Dr();
 }
@@ -407,7 +407,7 @@ function isMcpServerDenied(e, t) {
 }
 function isMcpServerAllowedByPolicy(e, t) {
   if (isMcpServerDenied(e, t)) return false;
-  let n = HTp();
+  let n = getMcpAllowlistSettings();
   if (!n.allowedMcpServers) return true;
   if (n.allowedMcpServers.length === 0) return false;
   let r = n.allowedMcpServers.some(dmn),
@@ -482,7 +482,7 @@ function filterDynamicMcpServersByPolicy(e) {
     blocked: n,
   };
 }
-function wTp(e) {
+function expandEnvVars(e) {
   let t = [];
   function n(o) {
     let { expanded: s, missingVars: i } = gre(o);
@@ -576,7 +576,7 @@ async function addMcpConfig(e, t, n) {
       let s = await readRawMcpJsonServersFromCwd();
       s[e] = o;
       try {
-        await wCa({
+        await writeMcpjsonFile({
           mcpServers: s,
         });
       } catch (i) {
@@ -619,7 +619,7 @@ async function removeMcpConfig(e, t) {
       if (!Object.hasOwn(n, e)) throw Error(`No MCP server named "${e}" in .mcp.json`);
       delete n[e];
       try {
-        await wCa({
+        await writeMcpjsonFile({
           mcpServers: n,
         });
       } catch (r) {
@@ -1054,7 +1054,7 @@ function parseMcpConfig(e) {
     }
     let g = m;
     if (n) {
-      let { expanded: h, missingVars: y } = wTp(m);
+      let { expanded: h, missingVars: y } = expandEnvVars(m);
       if (y.length > 0)
         l(
           c,

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module WAt
 // matched 2.1.88 source: src/utils/hooks/hooksConfigManager.ts
 // class=partial  jaccard=0.2224  score=0.9044  fileCov=0.2278
-// note: low-confidence suggestion: src/utils/hooks/hooksConfigManager.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/hooks/hooksConfigManager.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WAt] deps: ft, vf, dr, pQ
 sKl = require("path");
-function uKl(e, t) {
+function groupHooksByEventAndMatcher(e, t) {
   let n = {
       PreToolUse: {},
       PostToolUse: {},

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yLe
 // matched 2.1.88 source: src/utils/sessionStart.ts
 // class=modified  jaccard=0.3638  score=0.7033  fileCov=0.4298
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yLe] deps: ih
 rF = Mi();
@@ -14,7 +14,7 @@ function Aut() {
   let e = Tao;
   return ((Tao = void 0), e);
 }
-async function z8(
+async function processSessionStartHooks(
   e,
   { sessionId: t, sessionTitle: n, agentType: r, model: o, forceSyncExecution: s } = {},
 ) {
@@ -85,7 +85,7 @@ async function z8(
   }
   return i;
 }
-async function Eca(e, { forceSyncExecution: t } = {}) {
+async function processSetupHooks(e, { forceSyncExecution: t } = {}) {
   if (lc("hooks")) return [];
   let n = [],
     r = [];

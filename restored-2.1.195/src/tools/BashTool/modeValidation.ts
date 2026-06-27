@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module xCl
 // matched 2.1.88 source: src/tools/BashTool/modeValidation.ts
 // class=modified  jaccard=0.4982  score=1  fileCov=0.4982
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function WHf(e) {
   return GHf.includes(e);
 }
-function qHf(e, t) {
+function validateCommandForMode(e, t) {
   let n = A5(e),
     [r] = n.split(/\s+/);
   if (!r)
@@ -31,7 +31,7 @@ function qHf(e, t) {
     message: `No mode-specific handling for '${r}' in ${t.mode} mode`,
   };
 }
-function kCl(e, t) {
+function checkPermissionMode(e, t) {
   if (t.mode === "bypassPermissions")
     return {
       behavior: "passthrough",
@@ -45,7 +45,7 @@ function kCl(e, t) {
   let n = By(e.command),
     r = false;
   for (let o of n) {
-    let s = qHf(o, t);
+    let s = validateCommandForMode(o, t);
     if (s.behavior === "ask" || s.behavior === "deny") return s;
     if (s.behavior === "passthrough")
       return {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Iao
 // matched 2.1.88 source: src/commands/compact/compact.ts
 // class=modified (alt of src/commands/compact/compact.ts)  jaccard=0.0431  score=0.0971  fileCov=0.072
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Iao]
 ((Qcp = `Your task is to create a detailed summary of the RECENT portion of the conversation \u2014 the messages that follow earlier retained context. The earlier messages are being kept intact and do NOT need to be summarized. Focus your summary on what was discussed, learned, and accomplished in the recent messages only.
@@ -228,7 +228,7 @@ function tup(e, t, n) {
     step: Lca(t, n, e),
   };
 }
-async function SNn(e, t, n) {
+async function compactViaReactive(e, t, n) {
   let r = zjt(e),
     o = r.length;
   if (o < 2)

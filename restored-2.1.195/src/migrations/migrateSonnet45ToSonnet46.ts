@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ZOc
 // matched 2.1.88 source: src/migrations/migrateSonnet45ToSonnet46.ts
 // class=modified  jaccard=0.5981  score=0.9156  fileCov=0.633
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function e1c() {
+function migrateSonnet45ToSonnet46() {
   if (fr() !== "firstParty") return;
   if (!Aye() && !mle() && !QIe()) return;
   let e = yn("userSettings")?.model;

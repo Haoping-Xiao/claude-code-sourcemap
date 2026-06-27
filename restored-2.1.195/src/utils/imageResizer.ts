@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Lne
 // matched 2.1.88 source: src/utils/imageResizer.ts
 // class=modified  jaccard=0.4695  score=0.6659  fileCov=0.6141
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lne]
 H8 = {
@@ -11,7 +11,7 @@ H8 = {
   maxBase64Size: 5242880,
   targetRawSize: 3932160,
 };
-function i8i(e) {
+function classifyImageError(e) {
   if (e instanceof Error) {
     let n = e;
     if (
@@ -81,7 +81,7 @@ function c8i(e) {
   for (let n = 0; n < e.length; n++) t = ((t << 5) + t + e.charCodeAt(n)) | 0;
   return t >>> 0;
 }
-async function x0e(e, t, n, r) {
+async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
   if (e.length === 0) throw new NU("Image file is empty (0 bytes)");
   try {
     let o = await lbe(),
@@ -272,7 +272,7 @@ async function x0e(e, t, n, r) {
     };
   } catch (o) {
     if (o instanceof NU) throw o;
-    let s = i8i(o),
+    let s = classifyImageError(o),
       i = be(o);
     if (a8i(s, o)) ke(o);
     else
@@ -346,7 +346,7 @@ async function FM({ data: e, mediaType: t, limits: n }) {
     o = t?.includes("/") ? t.split("/")[1] || "png" : t || "png",
     s;
   try {
-    s = await x0e(r, r.length, o, n);
+    s = await maybeResizeAndDownsampleImageBuffer(r, r.length, o, n);
   } catch (l) {
     if (l instanceof NU)
       return (
@@ -392,7 +392,7 @@ async function u8i(e, t) {
     limits: t,
   });
 }
-async function d8i(e, t, n) {
+async function compressImageBuffer(e, t, n) {
   let r = n?.split("/")[1] || "jpeg",
     o = r === "jpg" ? "jpeg" : r;
   try {
@@ -407,7 +407,7 @@ async function d8i(e, t, n) {
         maxBytes: t,
         originalSize: l,
       };
-    if (l <= t) return _Ut(e, a, l);
+    if (l <= t) return maybeResizeAndDownsampleImageBlock(e, a, l);
     let u = await q8d(c, s);
     if (u) return u;
     if (a === "png") {
@@ -418,7 +418,7 @@ async function d8i(e, t, n) {
     if (d) return d;
     return await Y8d(c, s);
   } catch (s) {
-    let i = i8i(s),
+    let i = classifyImageError(s),
       a = be(s);
     if (a8i(i, s)) ke(s);
     else
@@ -450,13 +450,13 @@ async function d8i(e, t, n) {
 async function p8i(e, t, n) {
   let r = Math.floor(t / 0.125),
     o = Math.floor(r * 0.75);
-  return d8i(e, o, n);
+  return compressImageBuffer(e, o, n);
 }
 async function f8i(e, t) {
   if (e.source.type !== "base64") return e;
   let n = Buffer.from(e.source.data, "base64");
   if (n.length <= t) return e;
-  let r = await d8i(n, t);
+  let r = await compressImageBuffer(n, t);
   return {
     type: "image",
     source: {
@@ -466,7 +466,7 @@ async function f8i(e, t) {
     },
   };
 }
-function _Ut(e, t, n) {
+function maybeResizeAndDownsampleImageBlock(e, t, n) {
   let r = t === "jpg" ? "jpeg" : t;
   return {
     base64: e.toString("base64"),
@@ -485,7 +485,8 @@ async function q8d(e, t) {
       });
     i = V8d(i, e.format);
     let a = await i.toBuffer();
-    if (a.length <= e.maxBytes) return _Ut(a, e.format, e.originalSize);
+    if (a.length <= e.maxBytes)
+      return maybeResizeAndDownsampleImageBlock(a, e.format, e.originalSize);
   }
   return null;
 }
@@ -521,7 +522,7 @@ async function z8d(e, t) {
       colors: 64,
     })
     .toBuffer();
-  if (n.length <= e.maxBytes) return _Ut(n, "png", e.originalSize);
+  if (n.length <= e.maxBytes) return maybeResizeAndDownsampleImageBlock(n, "png", e.originalSize);
   return null;
 }
 async function K8d(e, t, n) {
@@ -534,7 +535,7 @@ async function K8d(e, t, n) {
       quality: t,
     })
     .toBuffer();
-  if (r.length <= e.maxBytes) return _Ut(r, "jpeg", e.originalSize);
+  if (r.length <= e.maxBytes) return maybeResizeAndDownsampleImageBlock(r, "jpeg", e.originalSize);
   return null;
 }
 async function Y8d(e, t) {
@@ -547,9 +548,9 @@ async function Y8d(e, t) {
       quality: 20,
     })
     .toBuffer();
-  return _Ut(n, "jpeg", e.originalSize);
+  return maybeResizeAndDownsampleImageBlock(n, "jpeg", e.originalSize);
 }
-function Uat(e, t) {
+function createImageMetadataText(e, t) {
   let { originalWidth: n, originalHeight: r, displayWidth: o, displayHeight: s } = e;
   if (!n || !r || !o || !s || o <= 0 || s <= 0) {
     if (t) return `[Image source: ${t}]`;

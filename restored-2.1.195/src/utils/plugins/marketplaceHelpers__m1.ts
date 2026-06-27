@@ -2,20 +2,20 @@
 // restored from claude-code 2.1.195 (deminified) — module wGt
 // matched 2.1.88 source: src/utils/plugins/marketplaceHelpers.ts
 // class=modified (alt of src/utils/plugins/marketplaceHelpers.ts)  jaccard=0.1752  score=0.4783  fileCov=0.2167
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 14 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sideloadFlagsBlockedMessage, localPluginDirsBlockedMessage, isSourceInBlocklist, isSourceAllowedByPolicy, isPluginBlockedByPolicy, isMarketplaceSourceDeclaredByPolicy, isGitUrlHostAmbiguous, getStrictKnownMarketplaces, getPluginTrustMessage, getPluginSuggestionMarketplaces, getHostPatternsFromAllowlist, getBlockedMarketplaces, extractHostFromSource, areSideloadFlagsDisabledByPolicy, areLocalPluginDirsAllowedByPolicy
-function isPluginBlockedByPolicy(e) {
+function getStrictKnownMarketplaces(e) {
   return yn("policySettings")?.enabledPlugins?.[e] === false;
 }
-function getStrictKnownMarketplaces() {
+function _5() {
   let e = yn("policySettings");
   if (!e?.strictKnownMarketplaces) return null;
   return e.strictKnownMarketplaces;
 }
 function areLocalPluginDirsAllowedByPolicy() {
   if (getBlockedMarketplaces()?.some((t) => t.source === "skills-dir")) return false;
-  let e = getStrictKnownMarketplaces();
+  let e = _5();
   return e === null || e.some((t) => t.source === "skills-dir");
 }
 function localPluginDirsBlockedMessage(e) {
@@ -41,10 +41,10 @@ function getPluginSuggestionMarketplaces() {
 function isMarketplaceSourceDeclaredByPolicy(e, t) {
   let n = yn("policySettings"),
     r = n?.extraKnownMarketplaces?.[e]?.source;
-  if (r && QDa(t, r)) return true;
+  if (r && getMarketplaceSourceDisplay(t, r)) return true;
   return n?.strictKnownMarketplaces?.some((o) => tPa(t, o)) ?? false;
 }
-function QDa(e, t) {
+function getMarketplaceSourceDisplay(e, t) {
   if (e.source !== t.source) return false;
   switch (e.source) {
     case "url":
@@ -137,7 +137,7 @@ function ePa(e, t) {
   }
 }
 function getHostPatternsFromAllowlist() {
-  let e = getStrictKnownMarketplaces();
+  let e = _5();
   if (!e) return [];
   return e.filter((t) => t.source === "hostPattern").map((t) => t.hostPattern);
 }
@@ -236,7 +236,7 @@ function Fkp(e, t) {
   }
   return false;
 }
-function isSourceInBlocklist(e) {
+function isSourceAllowedByPolicy(e) {
   let t = getBlockedMarketplaces();
   if (t === null) return false;
   return t.some((n) => {
@@ -245,10 +245,10 @@ function isSourceInBlocklist(e) {
     return Fkp(e, n);
   });
 }
-function isSourceAllowedByPolicy(e) {
+function _H(e) {
   if (e.source === "git" && isGitUrlHostAmbiguous(e.url)) return false;
-  if (isSourceInBlocklist(e)) return false;
-  let t = getStrictKnownMarketplaces();
+  if (isSourceAllowedByPolicy(e)) return false;
+  let t = _5();
   if (t === null) return true;
   return t.some((n) => tPa(e, n));
 }
@@ -257,6 +257,6 @@ function tPa(e, t) {
   if (t.source === "hostPattern") return ZDa(e, t);
   if (t.source === "pathPattern") return ePa(e, t);
   if (t.source === "skills-dir") return false;
-  return QDa(e, t);
+  return getMarketplaceSourceDisplay(e, t);
 }
 var Ukp;

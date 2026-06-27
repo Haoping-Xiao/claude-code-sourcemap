@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Kmc
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=partial  jaccard=0.0601  score=0.3089  fileCov=0.0695
-// note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; dir inferred from dep-graph -> hooks; 0 renamed
+// note: low-confidence suggestion: src/components/tasks/BackgroundTasksDialog.tsx; dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kmc] deps: Ye, Mp, R6, EC, Vmc
 zmc = R(lt(), 1), ZN = R(se(), 1);
 function NTe(e) {
   return Vm(xc(e).replace(/\s+/g, " ").trim(), Bcm);
 }
-function Ymc(e) {
+function toListItem(e) {
   let t = [];
   for (let n of Object.values(e)) {
     let r = Ucm.has(n.status);

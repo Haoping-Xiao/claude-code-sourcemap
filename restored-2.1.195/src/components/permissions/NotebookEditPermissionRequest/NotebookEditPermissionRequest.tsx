@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g6n
 // matched 2.1.88 source: src/components/permissions/NotebookEditPermissionRequest/NotebookEditPermissionRequest.tsx
 // class=modified  jaccard=0.1985  score=0.2434  fileCov=0.5183
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function z9t(e) {
   switch (e) {
@@ -54,7 +54,7 @@ function Hnl(e, t) {
 function Jvo(e, t) {
   return t ? IMe.posix.basename(e) : IMe.basename(e);
 }
-function etf(e, t, n, r, o) {
+function NotebookEditPermissionRequest(e, t, n, r, o) {
   if (e === xH) {
     let c = xH.inputSchema.parse(t);
     return {
@@ -195,7 +195,7 @@ function h6n(e) {
       subtitle: i,
       question: a,
       content: l,
-    } = etf(n, e.input, e.theme, r, e.remoteOldContent),
+    } = NotebookEditPermissionRequest(n, e.input, e.theme, r, e.remoteOldContent),
     c = vnl(e.filePath, o, r);
   return {
     ...t,

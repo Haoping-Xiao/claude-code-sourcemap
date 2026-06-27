@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gzi
 // matched 2.1.88 source: src/components/CustomSelect/select.tsx
 // class=modified  jaccard=0.3761  score=0.5145  fileCov=0.583
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gzi] deps: RZr
 CPn = R(rt(), 1);
@@ -41,7 +41,7 @@ function Sr(e) {
   }
   let r;
   if (t[8] !== e)
-    ((r = Zl.jsx(kzd, {
+    ((r = Zl.jsx(Select, {
       ...e,
     })),
       (t[8] = e),
@@ -49,7 +49,7 @@ function Sr(e) {
   else r = t[9];
   return r;
 }
-function kzd(e) {
+function Select(e) {
   let t = IPn.c(86),
     {
       isDisabled: n,

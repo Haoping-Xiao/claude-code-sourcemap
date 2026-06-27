@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module c4o
 // matched 2.1.88 source: src/components/agents/AgentEditor.tsx
 // class=modified  jaccard=0.3954  score=0.6626  fileCov=0.4951
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function EYl({ agent: e, tools: t, onSaved: n, onBack: r }) {
+function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
   let o = Ho(),
     [s, i] = aZ.useState("menu"),
     [a, l] = aZ.useState(0),

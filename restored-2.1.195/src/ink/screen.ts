@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OXr
 // matched 2.1.88 source: src/ink/screen.ts
 // class=modified  jaccard=0.2722  score=0.6486  fileCov=0.3194
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function I3d(e, t) {
   let n = 0,
@@ -235,7 +235,7 @@ function pGe(e, t, n) {
 function B3d(e, t) {
   return e.hyperlinkPool.intern(t);
 }
-function Y7(e, t, n, r, o) {
+function createScreen(e, t, n, r, o) {
   if ((TI(e, "createScreen width"), TI(t, "createScreen height"), !Number.isInteger(e) || e < 0))
     e = Math.max(0, Math.floor(e) || 0);
   if (!Number.isInteger(t) || t < 0) t = Math.max(0, Math.floor(t) || 0);
@@ -256,7 +256,7 @@ function Y7(e, t, n, r, o) {
     softWrap: new Int32Array(t),
   };
 }
-function GXr(e, t, n) {
+function resetScreen(e, t, n) {
   if ((TI(t, "resetScreen width"), TI(n, "resetScreen height"), !Number.isInteger(t) || t < 0))
     t = Math.max(0, Math.floor(t) || 0);
   if (!Number.isInteger(n) || n < 0) n = Math.max(0, Math.floor(n) || 0);

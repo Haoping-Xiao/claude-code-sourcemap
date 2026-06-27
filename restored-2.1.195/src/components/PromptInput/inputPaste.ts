@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sbc
 // matched 2.1.88 source: src/components/PromptInput/inputPaste.ts
 // class=modified  jaccard=0.3833  score=0.796  fileCov=0.4251
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sbc] deps: ft, I0n, HI, wr, uf
 FTt = R(rt(), 1);
@@ -18,13 +18,13 @@ function Omm(e, t, n = false) {
     i = e.slice(-o),
     a = e.slice(r, -o),
     l = L0e(a),
-    u = Nmm(t, l);
+    u = formatTruncatedTextRef(t, l);
   return {
     truncatedText: s + u + i,
     placeholderContent: a,
   };
 }
-function Nmm(e, t) {
+function formatTruncatedTextRef(e, t) {
   return `[...Truncated text #${e} +${t} lines...]`;
 }
 function abc(e, t) {

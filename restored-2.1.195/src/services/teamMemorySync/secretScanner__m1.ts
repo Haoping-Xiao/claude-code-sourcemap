@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sr
 // matched 2.1.88 source: src/services/teamMemorySync/secretScanner.ts
 // class=modified (alt of src/services/teamMemorySync/secretScanner.ts)  jaccard=0.0471  score=0.4587  fileCov=0.0499
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sr]
 ((_7c = /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/),
@@ -33,7 +33,7 @@ function YJe(e) {
       });
   return t;
 }
-function xc(e) {
+function redactSecrets(e) {
   mis ??= yis(true);
   for (let t of mis)
     e = e.replace(t.re, (n, r) => {
@@ -45,15 +45,15 @@ function xc(e) {
   return e;
 }
 function Vge(e) {
-  if (typeof e === "string") return xc(e);
+  if (typeof e === "string") return redactSecrets(e);
   if (Array.isArray(e)) return e.map(Vge);
   if (e !== null && typeof e === "object") {
     let t = {};
     for (let [n, r] of Object.entries(e))
       if (typeof r === "string") {
         let o = `${n}: `,
-          s = xc(o + r);
-        t[n] = s.startsWith(o) ? s.slice(o.length) : xc(r);
+          s = redactSecrets(o + r);
+        t[n] = s.startsWith(o) ? s.slice(o.length) : redactSecrets(r);
       } else t[n] = Vge(r);
     return t;
   }
@@ -90,7 +90,7 @@ function H7c(e) {
 }
 var gis,
   dis = "[^\\s,;&}\\])]+",
-  his =
+  SECRET_RULES =
     "-----BEGIN[ A-Z0-9_-]{0,100}PRIVATE KEY(?: BLOCK)?-----[\\s\\S-]{64,}?-----END[ A-Z0-9_-]{0,100}PRIVATE KEY(?: BLOCK)?-----",
   b7c,
   pis,

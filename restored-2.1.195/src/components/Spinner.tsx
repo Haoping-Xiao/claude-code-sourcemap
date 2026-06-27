@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UHo
 // matched 2.1.88 source: src/components/Spinner.tsx
 // class=modified  jaccard=0.2256  score=0.4141  fileCov=0.3315
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UHo] deps: si, Xa, Tc, Ye, kt, z1, es, g0, Bs, RLe, q9n, NVt, OHo, Pne
 ((NHo = R(lt(), 1)),
@@ -29,7 +29,7 @@ function wH(e) {
   if ("isBackgrounded" in e && e.isBackgrounded === false) return false;
   return true;
 }
-function wJa(e) {
+function SpinnerWithVerb(e) {
   let t = FVt.c(15),
     {
       mode: n,
@@ -49,7 +49,7 @@ function wJa(e) {
   if (qie() && (m || at("tengu_kairos_brief", false)) && p && !f) {
     let h;
     if (t[0] !== n || t[1] !== r)
-      ((h = $f.jsx(eJp, {
+      ((h = $f.jsx(BriefSpinner, {
         mode: n,
         overrideMessage: r,
       })),
@@ -73,7 +73,7 @@ function wJa(e) {
     t[12] !== u ||
     t[13] !== c
   )
-    ((g = $f.jsx(ZXp, {
+    ((g = $f.jsx(SpinnerWithVerbInner, {
       ...e,
       mode: n,
       overrideMessage: r,
@@ -107,7 +107,7 @@ function JXp(e) {
 function QXp(e) {
   return e.isBriefOnly;
 }
-function ZXp({
+function SpinnerWithVerbInner({
   mode: e,
   loadingStartTimeRef: t,
   totalPausedMsRef: n,
@@ -275,7 +275,7 @@ function ZXp({
     ],
   });
 }
-function eJp(e) {
+function BriefSpinner(e) {
   let t = FVt.c(34),
     { mode: n, overrideMessage: r } = e,
     o = G_(),
@@ -420,7 +420,7 @@ function nJp(e) {
 function rJp() {
   return HL(zpt()) ?? "Working";
 }
-function CJa() {
+function BriefIdleStatus() {
   let e = FVt.c(9),
     t = Ht(sJp),
     n = Ht(oJp),

@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Y4
 // matched 2.1.88 source: src/utils/getWorktreePaths.ts
 // class=modified  jaccard=0.4904  score=0.8486  fileCov=0.5374
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Y4] deps: b5e, ft, id, kt, C5e, je, wr, fn, At, oc, vn, _a, Fh
 ((jQa = require("crypto")),
   (IH = require("fs/promises")),
   (U6 = require("path")),
   (GQa = require("util")));
-async function tAe(e) {
+async function getWorktreePaths(e) {
   let t = Date.now(),
     { stdout: n, code: r } = await Gr(go(), ["worktree", "list", "--porcelain"], {
       cwd: e,

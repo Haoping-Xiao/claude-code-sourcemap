@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rCa
 // matched 2.1.88 source: src/utils/dxt/zip.ts
 // class=modified  jaccard=0.624  score=0.9568  fileCov=0.6421
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function odo(e) {
   if (kae(e)) return false;
@@ -11,7 +11,7 @@ function odo(e) {
   if (yUn.isAbsolute(t)) return false;
   return true;
 }
-function nTp(e, t, n = oCa) {
+function validateZipFile(e, t, n = oCa) {
   t.fileCount++;
   let r;
   if (t.fileCount > n.MAX_FILE_COUNT)
@@ -35,7 +35,7 @@ function nTp(e, t, n = oCa) {
         isValid: true,
       };
 }
-async function nde(e, t = oCa) {
+async function unzipFile(e, t = oCa) {
   let { unzipSync: n } = await Promise.resolve().then(() => (Y5e(), G4t)),
     o = {
       fileCount: 0,
@@ -45,7 +45,7 @@ async function nde(e, t = oCa) {
     },
     s = n(new Uint8Array(e), {
       filter: (i) => {
-        let a = nTp(i, o, t);
+        let a = validateZipFile(i, o, t);
         if (!a.isValid) throw Error(a.error);
         return true;
       },

@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module _Fl
 // matched 2.1.88 source: src/commands/install-github-app/WarningsStep.tsx
 // class=partial  jaccard=0.248  score=0.3126  fileCov=0.5456
-// note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function SFl(e) {
+function WarningsStep(e) {
   let t = bFl.c(9),
     {
       warnings: n,
@@ -28,7 +28,7 @@ function SFl(e) {
     })]
   }), t[1] = s;else s = t[1];
   let i;
-  if (t[2] !== n) i = n.map(S1f), t[2] = n, t[3] = i;else i = t[3];
+  if (t[2] !== n) i = n.map(_temp2), t[2] = n, t[3] = i;else i = t[3];
   let a;
   if (t[4] === Symbol.for("react.memo_cache_sentinel")) a = Wk.jsx(ht, {
     chord: "enter",
@@ -69,7 +69,7 @@ function SFl(e) {
   }), t[7] = i, t[8] = u;else u = t[8];
   return u;
 }
-function S1f(e, t) {
+function _temp2(e, t) {
   return Wk.jsxs(U, {
     flexDirection: "column",
     marginBottom: 1,

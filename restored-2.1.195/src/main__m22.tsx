@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QGo
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0024  score=0.0619  fileCov=0.0024
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QGo] deps: lH, kt, er, wr, VQ, zOe, YOe, kYe
 Src = require("readline");
@@ -61,7 +61,7 @@ function LYe(e) {
 }
 var Arc = "allow_routines",
   Hrc = "Routines are disabled by your organization's policy.";
-async function Aar(e, t) {
+async function run(e, t) {
   if (t.launch.mode !== "exec" || !e) return null;
   try {
     let n = await nR(XQ(e), 8192);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gsr
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=modified  jaccard=0.3175  score=0.5158  fileCov=0.4523
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gsr] deps: si, Xa, tC, Tc, Ye, ps, tfe, Qko, Uoe, N8l, n0o, c7n, $7, es, sr, g0, vi, B_, mjo
 ((sme = R(lt(), 1)), (OP = R(rt(), 1)), (aa = R(se(), 1)));
@@ -23,7 +23,12 @@ function B5f(e, t) {
     .filter(wH)
     .filter((r) => !(r.type === "local_agent" && r.id === t));
 }
-function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }) {
+function BackgroundTasksDialog({
+  onDone: e,
+  toolUseContext: t,
+  initialDetailTaskId: n,
+  onBack: r,
+}) {
   let o = Ht((K) => K.tasks),
     s = Ht((K) => K.foregroundedTaskId),
     i = Ho(),
@@ -68,7 +73,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
     } = xse.useMemo(() => {
       let J = Object.values(c ?? {})
           .filter(wH)
-          .map(U5f)
+          .map(toListItem)
           .sort((pe, ge) => {
             let he = pe.status,
               ie = ge.status;
@@ -531,7 +536,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         flexDirection: "column",
                         children: g.map((K) =>
                           Ba.jsx(
-                            JHe,
+                            Item,
                             {
                               item: K,
                               isSelected: K.id === x?.id,
@@ -563,7 +568,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         flexDirection: "column",
                         children: S.map((K) =>
                           Ba.jsx(
-                            JHe,
+                            Item,
                             {
                               item: K,
                               isSelected: K.id === x?.id,
@@ -595,7 +600,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         flexDirection: "column",
                         children: A.map((K) =>
                           Ba.jsx(
-                            JHe,
+                            Item,
                             {
                               item: K,
                               isSelected: K.id === x?.id,
@@ -627,7 +632,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         flexDirection: "column",
                         children: h.map((K) =>
                           Ba.jsx(
-                            JHe,
+                            Item,
                             {
                               item: K,
                               isSelected: K.id === x?.id,
@@ -662,7 +667,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         flexDirection: "column",
                         children: y.map((K) =>
                           Ba.jsx(
-                            JHe,
+                            Item,
                             {
                               item: K,
                               isSelected: K.id === x?.id,
@@ -702,7 +707,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         flexDirection: "column",
                         children: _.map((K) =>
                           Ba.jsx(
-                            JHe,
+                            Item,
                             {
                               item: K,
                               isSelected: K.id === x?.id,
@@ -730,7 +735,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                       flexDirection: "column",
                       children: v.map((K) =>
                         Ba.jsx(
-                          JHe,
+                          Item,
                           {
                             item: K,
                             isSelected: K.id === x?.id,
@@ -745,7 +750,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
     }),
   });
 }
-function U5f(e) {
+function toListItem(e) {
   switch (e.type) {
     case "local_bash":
       return {
@@ -821,7 +826,7 @@ function U5f(e) {
       };
   }
 }
-function JHe(e) {
+function Item(e) {
   let t = Ejo.c(14),
     { item: n, isSelected: r } = e,
     { columns: o } = br(),
@@ -911,7 +916,7 @@ function F5f(e) {
               }),
               s.map((f) =>
                 Ba.jsx(
-                  JHe,
+                  Item,
                   {
                     item: f,
                     isSelected: f.id === r,
@@ -921,7 +926,7 @@ function F5f(e) {
               ),
               d.map((f) =>
                 Ba.jsx(
-                  JHe,
+                  Item,
                   {
                     item: f,
                     isSelected: f.id === r,

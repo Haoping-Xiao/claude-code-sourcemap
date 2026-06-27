@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SGo
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0224  score=0.0584  fileCov=0.035
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderDaemonHubStandalone, call, DaemonHub
 // [unwrapped __esm module SGo] deps: ft, Vl, Fy, vi, TVt, gm, VQ, QJt, Ye, vX, je, At, vn
@@ -395,7 +395,7 @@ function Vtc(e) {
       children: [
         oe,
         re,
-        zc.jsx(C7f, {
+        zc.jsx(GITHUB_ISSUES_REPO_URL, {
           data: r,
           message: ee,
         }),
@@ -619,7 +619,7 @@ function w7f(e) {
   if (e.lock === null) return ["uninstall"];
   return ["stop", "uninstall"];
 }
-function C7f(e) {
+function GITHUB_ISSUES_REPO_URL(e) {
   let t = ear.c(22),
     { data: n, message: r } = e;
   if (r) {

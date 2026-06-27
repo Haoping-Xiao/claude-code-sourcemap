@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E3t
 // matched 2.1.88 source: src/utils/sanitization.ts
 // class=modified  jaccard=0.6069  score=1  fileCov=0.6069
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function cvp(e) {
   let t = e.replace(/[\p{Cf}\p{Co}\p{Cn}]/gu, "");
@@ -25,7 +25,7 @@ function lDe(e) {
   }
   return t;
 }
-function Ddo(e) {
+function partiallySanitizeUnicode(e) {
   let t = e,
     n = "",
     r = 0,
@@ -37,12 +37,13 @@ function Ddo(e) {
     );
   return t;
 }
-function B4(e) {
-  if (typeof e === "string") return Ddo(e);
-  if (Array.isArray(e)) return e.map(B4);
+function recursivelySanitizeUnicode(e) {
+  if (typeof e === "string") return partiallySanitizeUnicode(e);
+  if (Array.isArray(e)) return e.map(recursivelySanitizeUnicode);
   if (e !== null && typeof e === "object") {
     let t = {};
-    for (let [n, r] of Object.entries(e)) t[B4(n)] = B4(r);
+    for (let [n, r] of Object.entries(e))
+      t[recursivelySanitizeUnicode(n)] = recursivelySanitizeUnicode(r);
     return t;
   }
   return e;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yMc
 // matched 2.1.88 source: src/utils/githubRepoPathMapping.ts
 // class=modified  jaccard=0.1801  score=0.3177  fileCov=0.2938
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yMc] deps: er, je
 RIm = {
@@ -46,7 +46,7 @@ class t7o {
     };
   }
 }
-async function bMc() {
+async function updateGithubRepoPathMapping() {
   try {
     let e = await uCe();
     if (!e) {
@@ -101,7 +101,7 @@ async function SMc(e, t) {
     return false;
   }
 }
-function EMc(e, t) {
+function removePathFromRepo(e, t) {
   let n = Dt(),
     r = e.toLowerCase(),
     o = n.githubRepoPaths?.[r] ?? [],

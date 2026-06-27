@@ -12,7 +12,7 @@
 function t6f() {
   return HL(e6f) ?? "Goodbye!";
 }
-async function call(e) {
+async function ExitFlow(e) {
   if (Js()) return (e(), SHe(), null);
   let t = Gm() !== null,
     n = Ker();

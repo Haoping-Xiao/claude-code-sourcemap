@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aEl
 // matched 2.1.88 source: src/tools/MCPTool/classifyForCollapse.ts
 // class=modified (alt of src/tools/MCPTool/classifyForCollapse.ts)  jaccard=0.0035  score=0.0236  fileCov=0.0041
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DesignSyncTool, DesignSyncPreconditionError
 // [unwrapped __esm module aEl] deps: Rc, H0, oo, je, At, Ls, qd, HXn
@@ -17,7 +17,7 @@ function qhf(e) {
     });
   return [...n, ...r];
 }
-function zhf(e) {
+function READ_TOOLS(e) {
   return (
     e === "list_projects" ||
     e === "get_project" ||

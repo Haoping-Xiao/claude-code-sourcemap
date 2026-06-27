@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VBo
 // matched 2.1.88 source: src/commands/plugin/pluginDetailsHelpers.tsx
 // class=modified  jaccard=0.3041  score=0.3589  fileCov=0.6657
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VBo] deps: si, Ye, WI
 ((D2l = R(lt(), 1)), (arr = R(se(), 1)));
@@ -16,7 +16,7 @@ function crr(e) {
     ["LSP Servers", e.lspServers ?? []],
   ].filter(([, n]) => n.length > 0);
 }
-function n1e(e) {
+function extractGitHubRepo(e) {
   if (
     e.entry.source &&
     typeof e.entry.source === "object" &&
@@ -28,7 +28,7 @@ function n1e(e) {
     return e.entry.source.repo;
   return null;
 }
-function UEt(e, t) {
+function buildPluginDetailsMenuOptions(e, t) {
   let n = [
     {
       label: "Install for you (user scope)",
@@ -61,7 +61,7 @@ function UEt(e, t) {
     n
   );
 }
-function P2l(e) {
+function PluginSelectionKeyHint(e) {
   let t = BEt.c(12),
     { hasSelection: n, canToggle: r, canView: o } = e,
     s;

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module s7l
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ToolsStep.tsx
 // class=modified  jaccard=0.2924  score=0.4492  fileCov=0.4557
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module s7l] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
 ((r7l = R(lt(), 1)), (Wsr = R(rt(), 1)), (H3 = R(se(), 1)));
-function a7l(e) {
+function ToolsStep(e) {
   let t = i7l.c(10),
     { tools: n } = e,
     { goNext: r, goBack: o, updateWizardData: s, wizardData: i } = Eu(),

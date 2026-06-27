@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wen
 // matched 2.1.88 source: src/assistant/sessionHistory.ts
 // class=modified  jaccard=0.2213  score=0.3982  fileCov=0.3325
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function qdr(e) {
   let { accessToken: t } = await Lj();
@@ -42,7 +42,7 @@ async function Gbc(e, t, n) {
     hasMore: i !== null,
   };
 }
-async function Wbc(e, t = Wdr, n) {
+async function fetchLatestEvents(e, t = Wdr, n) {
   let r = await Gbc(
     e,
     {
@@ -56,7 +56,7 @@ async function Wbc(e, t = Wdr, n) {
     else xe("assistant_history_load");
   return r;
 }
-async function Vdr(e, t, n = Wdr) {
+async function fetchOlderEvents(e, t, n = Wdr) {
   return Gbc(
     e,
     {

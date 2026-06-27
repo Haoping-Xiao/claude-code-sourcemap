@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SC
 // matched 2.1.88 source: src/utils/config.ts
 // class=modified  jaccard=0.3563  score=0.5887  fileCov=0.4744
-// note: deminified; 41 identifiers renamed (exports/displayName/curated)
+// note: deminified; 46 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSkipPluginAutoupdate, setPathTrusted, setClientDataCacheKeyGetter, saveGlobalConfig, saveCurrentProjectConfig, resetTrustDialogAcceptedCache, resetLocalSettingsGitTrackedCache, recordFirstStartTime, isWorkspacePersistedTrusted, isProjectScopeTrustAccepted, isProjectConfigKey, isPathTrusted, isLocalSettingsGitTracked, isGlobalConfigKey, isAutoUpdaterDisabled, hasClientDataCacheSlot, getWorkspacePersistedTrustKey, getUserClaudeRulesDir, getRemoteControlAtStartup, getRawCurre …
 function Cme() {
@@ -150,7 +150,7 @@ function sTt(e) {
   return n || r;
 }
 function CZt() {
-  let e = oTt(b0(), Cme);
+  let e = getConfig(b0(), Cme);
   if (vcr && p2.config)
     return {
       ...p2.config,
@@ -161,7 +161,7 @@ function saveGlobalConfig(e) {
   let t = null;
   try {
     if (
-      kZt(b0(), Cme, (r) => {
+      saveConfigWithLock(b0(), Cme, (r) => {
         let o = e(r);
         if (o === r) return r;
         return (
@@ -199,7 +199,7 @@ function saveGlobalConfig(e) {
       Icr(t, "save_global"));
   }
 }
-function fsm() {
+function reportConfigCacheStats() {
   let e = TZt + Tcr;
   if (e > 0)
     G("tengu_config_cache_stats", {
@@ -209,7 +209,7 @@ function fsm() {
     });
   ((TZt = 0), (Tcr = 0));
 }
-function OVo(e) {
+function migrateConfigFields(e) {
   if ((delete e.showSpinnerTree, e.installMethod !== void 0)) return e;
   let t = e,
     n = "unknown",
@@ -295,7 +295,7 @@ function gsm() {
           let r = Ia(TG(n), false);
           if (r === null || typeof r !== "object") return;
           ((p2 = {
-            config: OVo({
+            config: migrateConfigFields({
               ...Cme(),
               ...r,
             }),
@@ -328,7 +328,7 @@ function getGlobalConfig() {
     try {
       e = qt().statSync(b0());
     } catch {}
-    let t = OVo(oTt(b0(), Cme));
+    let t = migrateConfigFields(getConfig(b0(), Cme));
     return (
       (p2 = {
         config: t,
@@ -344,7 +344,7 @@ function getGlobalConfig() {
       t
     );
   } catch {
-    return OVo(oTt(b0(), Cme));
+    return migrateConfigFields(getConfig(b0(), Cme));
   }
 }
 function getExplicitRemoteControlAtStartup() {
@@ -394,7 +394,7 @@ function Icr(e, t) {
     n
   );
 }
-function kZt(e, t, n) {
+function saveConfigWithLock(e, t, n) {
   let r = t(),
     o = HS.dirname(e),
     s = qt();
@@ -430,7 +430,7 @@ function kZt(e, t, n) {
       } catch (m) {
         if (on(m) !== "ENOENT") throw m;
       }
-    let u = oTt(e, t),
+    let u = getConfig(e, t),
       d = false;
     if (e === b0()) {
       let m = p2.config;
@@ -528,7 +528,7 @@ function enableConfigs() {
   let e = Date.now();
   (In("info", "enable_configs_started"), (BVo = true));
   try {
-    oTt(b0(), Cme, true);
+    getConfig(b0(), Cme, true);
   } catch (t) {
     throw ((DVo = t), t);
   }
@@ -539,7 +539,7 @@ function enableConfigs() {
 function jVo() {
   return HS.join(tr(), "backups");
 }
-function UVo(e) {
+function findMostRecentBackup(e) {
   let t = qt(),
     n = HS.basename(e),
     r = jVo();
@@ -566,7 +566,7 @@ function UVo(e) {
   } catch {}
   return null;
 }
-function oTt(e, t, n) {
+function getConfig(e, t, n) {
   if (!BVo) throw Error("Config accessed before allowed.");
   let r = qt();
   try {
@@ -589,7 +589,7 @@ function oTt(e, t, n) {
   } catch (o) {
     let s = on(o);
     if (((vcr = o instanceof _B), s === "ENOENT")) {
-      let i = UVo(e);
+      let i = findMostRecentBackup(e);
       if (i)
         process.stderr.write(`
 Claude configuration file not found at: ${e}
@@ -646,7 +646,7 @@ Claude configuration file at ${e} is corrupted: ${o.message}
           level: "error",
         });
       }
-      let a = UVo(e);
+      let a = findMostRecentBackup(e);
       if (!RVo && !$Vo.has(e)) {
         ($Vo.add(e), (RVo = true));
         try {
@@ -688,7 +688,7 @@ function saveCurrentProjectConfig(e) {
     n = null;
   try {
     if (
-      kZt(b0(), Cme, (o) => {
+      saveConfigWithLock(b0(), Cme, (o) => {
         let s = o.projects?.[t] ?? DEFAULT_PROJECT_CONFIG,
           i = e(s);
         if (i === s) return o;
@@ -738,7 +738,7 @@ function deleteProjectConfig(e) {
   let t = null,
     n = null;
   try {
-    let r = kZt(b0(), Cme, (o) => {
+    let r = saveConfigWithLock(b0(), Cme, (o) => {
       if (!o.projects?.[e]) return ((n = false), o);
       n = true;
       let { [e]: s, ...i } = o.projects;
@@ -782,7 +782,7 @@ function deleteProjectConfig(e) {
 function deleteCurrentProjectConfigFields(e) {
   return Gcc(e, {
     projectPath: getProjectPathForConfig,
-    saveWithLock: (t) => kZt(b0(), Cme, t),
+    saveWithLock: (t) => saveConfigWithLock(b0(), Cme, t),
     writeCache: IZt,
     readConfigFallback: CZt,
     wouldLoseAuth: sTt,

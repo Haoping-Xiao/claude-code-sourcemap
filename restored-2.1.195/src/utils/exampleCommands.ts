@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ubc
 // matched 2.1.88 source: src/utils/exampleCommands.ts
 // class=modified  jaccard=0.1419  score=0.7531  fileCov=0.1488
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ubc] deps: lbc
 Uen = R(rt(), 1);
@@ -26,7 +26,7 @@ function Fmm(e, t) {
     }
   return n.length >= t ? n : [];
 }
-async function jmm() {
+async function getFrequentlyModifiedFiles() {
   if (Oe.platform === "win32") return [];
   if (!(await cb())) return [];
   try {

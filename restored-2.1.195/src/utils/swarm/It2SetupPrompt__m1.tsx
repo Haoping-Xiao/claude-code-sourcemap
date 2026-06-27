@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AQa
 // matched 2.1.88 source: src/utils/swarm/It2SetupPrompt.tsx
 // class=modified (alt of src/utils/swarm/It2SetupPrompt.tsx)  jaccard=0.0453  score=0.1282  fileCov=0.0654
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AQa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, Z9n
 ((_Qa = R(lt(), 1)),
@@ -10,7 +10,7 @@
   (SQa = require("path")),
   (t8n = R(rt(), 1)),
   (B6 = R(se(), 1)));
-function HQa() {
+function It2SetupPrompt() {
   let { goBack: e, goNext: t, updateWizardData: n, wizardData: r } = Eu(),
     [o, s] = n8n.useState({
       phase: "checking",

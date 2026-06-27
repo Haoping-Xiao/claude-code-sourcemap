@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module JBl
 // matched 2.1.88 source: src/commands/ide/ide.tsx
 // class=modified  jaccard=0.5103  score=0.7408  fileCov=0.6212
-// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatWorkspaceFolders, call, IDE_CONNECTION_TIMEOUT_MS, IDECommandFlow
 // [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi
 ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
-function VOf(e) {
+function IDEScreen(e) {
   let t = J7t.c(39),
     { availableIDEs: n, unavailableIDEs: r, selectedIDE: o, onClose: s, onSelect: i } = e,
     a;
@@ -119,7 +119,7 @@ https://docs.claude.com/s/claude-code-jetbrains`
   if (t[24] !== n)
     ((v =
       n.length !== 0 &&
-      n.some(KOf) &&
+      n.some(_temp2) &&
       _A.jsx(U, {
         marginTop: 1,
         children: _A.jsx(w, {
@@ -219,19 +219,19 @@ function zOf(e, t) {
     t,
   );
 }
-function KOf(e) {
+function _temp2(e) {
   return e.name === "VS Code" || e.name === "Visual Studio Code";
 }
 function YOf(e, t) {
   return ((e[t.name] = (e[t.name] || 0) + 1), e);
 }
-async function XOf(e, t) {
+async function findCurrentIDE(e, t) {
   let n = t?.ide;
   if (!n || (n.type !== "sse-ide" && n.type !== "ws-ide")) return null;
   for (let r of e) if (r.url === n.url) return r;
   return null;
 }
-function JOf(e) {
+function IDEOpenSelection(e) {
   let t = J7t.c(18),
     { availableIDEs: n, onSelectIDE: r, onDone: o } = e,
     s;
@@ -305,7 +305,7 @@ function QOf(e) {
     value: e.port.toString(),
   };
 }
-function ZOf(e) {
+function RunningIDESelector(e) {
   let t = J7t.c(15),
     { runningIDEs: n, onSelectIDE: r, onDone: o } = e,
     [s, i] = Oq.useState(n[0] ?? ""),
@@ -401,7 +401,7 @@ async function call(e, t, n) {
       u = c ? c.worktreePath : $t(),
       p = (await pFn(true)).filter((f) => f.isValid);
     if (p.length === 0) return (e("No IDEs with Claude Code extension detected."), null);
-    return _A.jsx(JOf, {
+    return _A.jsx(IDEOpenSelection, {
       availableIDEs: p,
       onSelectIDE: async (f) => {
         if (!f) {
@@ -442,7 +442,7 @@ Please ${wt.bold("restart your IDE")} completely for it to take effect`);
           else e(`Installed extension to ${wt.bold(yk(d))}`);
       };
     if (c.length > 1)
-      return _A.jsx(ZOf, {
+      return _A.jsx(RunningIDESelector, {
         runningIDEs: c,
         onSelectIDE: u,
         onDone: () => {
@@ -459,7 +459,7 @@ Please ${wt.bold("restart your IDE")} completely for it to take effect`);
   }
   let i = s.filter((c) => c.isValid),
     a = s.filter((c) => !c.isValid),
-    l = await XOf(i, r);
+    l = await findCurrentIDE(i, r);
   return _A.jsx(IDECommandFlow, {
     availableIDEs: i,
     unavailableIDEs: a,
@@ -547,7 +547,7 @@ function IDECommandFlow({
       dimColor: true,
       children: ["Connecting to ", i.name, "\u2026"],
     });
-  return _A.jsx(VOf, {
+  return _A.jsx(IDEScreen, {
     availableIDEs: e,
     unavailableIDEs: t,
     selectedIDE: n,

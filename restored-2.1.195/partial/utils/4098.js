@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Ezn
 // matched 2.1.88 source: src/components/LogoV2/Clawd.tsx
 // class=partial  jaccard=0.2421  score=0.3856  fileCov=0.3943
-// note: low-confidence suggestion: src/components/LogoV2/Clawd.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/components/LogoV2/Clawd.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function rQ(e) {
+function Clawd(e) {
   let t = hCo.c(26),
     n;
   if (t[0] !== e) n = e === void 0 ? {} : e, t[0] = e, t[1] = n;else n = t[1];
@@ -15,7 +15,7 @@ function rQ(e) {
   if (Sd()) return null;
   if (Oe.terminal === "Apple_Terminal") {
     let y;
-    if (t[2] !== o) y = kL.jsx(Erf, {
+    if (t[2] !== o) y = kL.jsx(AppleTerminalClawd, {
       pose: o
     }), t[2] = o, t[3] = y;else y = t[3];
     return y;
@@ -74,7 +74,7 @@ function rQ(e) {
   }), t[23] = m, t[24] = u, t[25] = h;else h = t[25];
   return h;
 }
-function Erf(e) {
+function AppleTerminalClawd(e) {
   let t = hCo.c(10),
     {
       pose: n

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module U9o
 // matched 2.1.88 source: src/state/onChangeAppState.ts
 // class=partial  jaccard=0.1392  score=0.2007  fileCov=0.3123
-// note: low-confidence suggestion: src/state/onChangeAppState.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/state/onChangeAppState.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U9o] deps: Ed, kt, yde, uo, je, Mm, At, vn, eer, vYt, A5e, tpc, _Gt, nDe, B9o, Arr, Xh, gz
 jZt = R(rt(), 1);
-function rpc(e) {
+function externalMetadataToAppState(e) {
   return t => {
     let n = t.toolPermissionContext;
     if (typeof e.permission_mode === "string") {

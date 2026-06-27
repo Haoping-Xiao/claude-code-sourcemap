@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E2l
 // matched 2.1.88 source: src/utils/plugins/installCounts.ts
 // class=modified  jaccard=0.07  score=0.1102  fileCov=0.1613
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E2l] deps: kt, Cc, Bs, f_, Ko, EC, Mg, Ye, je, At, vq, vbe, lE, e1e, OBo, Xh
 ((b2l = R(lt(), 1)), (BKe = R(rt(), 1)), (PH = R(se(), 1)));
@@ -28,7 +28,7 @@ async function yNf() {
     return null;
   }
 }
-async function _Nf(e) {
+async function INSTALL_COUNTS_CACHE_FILENAME(e) {
   try {
     (await qt().mkdir(kI()),
       await eg(v2l(), De(e), 384),
@@ -39,7 +39,7 @@ async function _Nf(e) {
     });
   }
 }
-async function bNf() {
+async function fetchInstallCountsFromGitHub() {
   T(`Fetching plugin catalog from ${dXt}`);
   let e = performance.now();
   try {
@@ -60,9 +60,9 @@ function w2l() {
       let e = await yNf();
       if (e) return (YD("plugin_catalog", dXt, "cache_hit", 0), e.catalog);
       try {
-        let t = await bNf();
+        let t = await fetchInstallCountsFromGitHub();
         return (
-          await _Nf({
+          await INSTALL_COUNTS_CACHE_FILENAME({
             version: UBo,
             fetchedAt: new Date().toISOString(),
             catalog: t,

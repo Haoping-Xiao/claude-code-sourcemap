@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tSe
 // matched 2.1.88 source: src/tools/TaskStopTool/prompt.ts
 // class=modified  jaccard=0.0537  score=0.0537  fileCov=1
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveLoopFileFire, resolveLoopDefaultFire, resolveAutonomousLoopFire, resetAutonomousLoopDelivered, readLoopFile, logAutonomousLoopActivation, isLoopPersistentPreambleEnabled, isLoopFileSentinel, isLoopDefaultSentinel, isLoopDefaultPromptEnabled, isAutonomousLoopSentinel, getAutonomousLoopPreamble, LOOP_FILE_SENTINEL, LOOP_FILE_DYNAMIC_SENTINEL, AUTONOMOUS_LOOP_PREAMBLE
 // [unwrapped __esm module tSe]
@@ -33,7 +33,7 @@ One short sentence on what you chose and why. Goes to telemetry and is shown bac
 `;
 var yL = "TaskList";
 var QD = "TaskStop",
-  roa = `
+  DESCRIPTION = `
 - Stops a running background task by its ID
 - Takes a task_id parameter identifying the task to stop
 - Returns a success or failure status

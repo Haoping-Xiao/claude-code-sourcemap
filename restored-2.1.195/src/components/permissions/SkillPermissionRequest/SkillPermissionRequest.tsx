@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NHc
 // matched 2.1.88 source: src/components/permissions/SkillPermissionRequest/SkillPermissionRequest.tsx
 // class=modified  jaccard=0.2144  score=0.4359  fileCov=0.2967
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NHc] deps: mE, X0, gIo, Ye, UX
 (($Hc = R(lt(), 1)), (YTe = R(se(), 1)));
@@ -71,7 +71,7 @@ function U_m(e) {
   if (!e.showAlwaysAllow) return false;
   return e.skill.indexOf(" ") > 0;
 }
-function UHc(e) {
+function SkillPermissionRequest(e) {
   let t = BHc.c(51),
     { payload: n, answer: r } = e,
     o;

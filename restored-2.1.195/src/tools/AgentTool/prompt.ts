@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module O0o
 // matched 2.1.88 source: src/tools/AgentTool/prompt.ts
 // class=modified  jaccard=0.1046  score=0.2166  fileCov=0.1683
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Mff(e) {
+function getToolsDescription(e) {
   let { tools: t, disallowedTools: n } = e,
     r = t && t.length > 0,
     o = n && n.length > 0;
@@ -18,11 +18,11 @@ function Mff(e) {
   return "All tools";
 }
 function jhl(e, t) {
-  let n = Mff(e),
+  let n = getToolsDescription(e),
     r = (t && e.whenToUseLean) || e.whenToUse;
   return `- ${e.agentType}: ${r} (Tools: ${n})`;
 }
-async function Ghl(e, t, n) {
+async function getPrompt(e, t, n) {
   let r = DX(),
     o = r && (n ?? !0),
     s = o

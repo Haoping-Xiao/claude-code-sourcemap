@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ide
 // matched 2.1.88 source: src/utils/background/remote/preconditions.ts
 // class=modified  jaccard=0.4959  score=0.889  fileCov=0.5287
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function Vjn() {
   if (!bo()) return false;
@@ -29,7 +29,7 @@ async function _ft(e) {
   });
   return r === 0 && n.trim() === "true";
 }
-async function oVe(e, t, n) {
+async function checkGithubAppInstalled(e, t, n) {
   try {
     let r = Ws()?.accessToken;
     if (!r)
@@ -71,7 +71,7 @@ async function oVe(e, t, n) {
     return (T(`checkGithubAppInstalled error: ${be(r)}`), false);
   }
 }
-async function JDp() {
+async function checkGithubTokenSynced() {
   try {
     let e = Ws()?.accessToken;
     if (!e) return (T("checkGithubTokenSynced: No access token found"), false);
@@ -98,13 +98,13 @@ async function JDp() {
     return (T(`checkGithubTokenSynced error: ${be(e)}`), false);
   }
 }
-async function LOa(e, t) {
-  if (await oVe(e, t))
+async function checkRepoForRemoteAccess(e, t) {
+  if (await checkGithubAppInstalled(e, t))
     return {
       hasAccess: true,
       method: "github-app",
     };
-  if (at("tengu_cobalt_lantern", false) && (await JDp()))
+  if (at("tengu_cobalt_lantern", false) && (await checkGithubTokenSynced()))
     return {
       hasAccess: true,
       method: "token-sync",

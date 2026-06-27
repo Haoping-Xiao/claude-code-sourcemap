@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module q$a
 // matched 2.1.88 source: src/utils/ghPrStatus.ts
 // class=modified  jaccard=0.1142  score=0.1209  fileCov=0.6732
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q$a] deps: Bi, _0, Mx
 Pgo = new Map();
-function Q$a(e, t) {
+function deriveReviewState(e, t) {
   if (e) return "draft";
   switch (t) {
     case "APPROVED":
@@ -21,12 +21,12 @@ async function Z$a() {
   if (!(await cb())) return null;
   let [t, n] = await Promise.all([ub(), vD()]);
   if (t === n) return null;
-  return (() => (oWt() ? eDp(t) : YLp(n)))();
+  return (() => (oWt() ? eDp(t) : fetchPrStatus(n)))();
 }
 function oWt() {
   return at("tengu_harbor_prism", false);
 }
-async function YLp(e) {
+async function fetchPrStatus(e) {
   let { stdout: t, code: n } = await $n(
     "gh",
     ["pr", "view", "--json", "number,url,reviewDecision,isDraft,headRefName,state"],
@@ -43,7 +43,7 @@ async function YLp(e) {
     return {
       number: r.number,
       url: r.url,
-      reviewState: Q$a(r.isDraft, r.reviewDecision),
+      reviewState: deriveReviewState(r.isDraft, r.reviewDecision),
     };
   } catch {
     return null;
@@ -167,7 +167,7 @@ async function eDp(e) {
   return {
     number: c.number,
     url: c.url,
-    reviewState: Q$a(c.isDraft, u),
+    reviewState: deriveReviewState(c.isDraft, u),
   };
 }
 async function tDp(e, t, n) {

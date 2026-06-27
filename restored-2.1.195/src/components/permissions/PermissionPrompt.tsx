@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module AHc
 // matched 2.1.88 source: src/components/permissions/PermissionPrompt.tsx
 // class=modified  jaccard=0.3956  score=0.662  fileCov=0.4957
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AHc] deps: Vl, Bs, Ko, _Hc, X0, Ye, ps, kt, Du, uo, u_, Lo, aE, Yf
 ((bHc = R(lt(), 1)), (SHc = require("path")), (RNe = R(rt(), 1)), (EE = R(se(), 1)));
-function DNe(e) {
+function PermissionPrompt(e) {
   let t = HHc.c(57),
     { options: n, onSelect: r, onCancel: o, question: s, toolAnalyticsContext: i } = e,
     a = s === void 0 ? "Do you want to proceed?" : s,

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module h7l
 // matched 2.1.88 source: src/components/agents/AgentsMenu.tsx
 // class=modified  jaccard=0.2429  score=0.3305  fileCov=0.4784
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h7l] deps: si, Xa, Ye, uo, rme, es, sr, g0, B_, gm, kP
 ((Vsr = R(lt(), 1)), (CJt = R(rt(), 1)), (NH = R(se(), 1)));
-function y7l(e) {
+function AgentsMenu(e) {
   let t = p4o.c(215),
     { tools: n, onExit: r } = e,
     o;
@@ -102,16 +102,16 @@ function y7l(e) {
   if (t[11] !== b) ((Y = b.filter(S9f)), (t[11] = b), (t[12] = Y));
   else Y = t[12];
   let z;
-  if (t[13] !== b) ((z = b.filter(b9f)), (t[13] = b), (t[14] = z));
+  if (t[13] !== b) ((z = b.filter(_temp5)), (t[13] = b), (t[14] = z));
   else z = t[14];
   let K;
-  if (t[15] !== b) ((K = b.filter(_9f)), (t[15] = b), (t[16] = K));
+  if (t[15] !== b) ((K = b.filter(_temp6)), (t[15] = b), (t[16] = K));
   else K = t[16];
   let Z;
-  if (t[17] !== b) ((Z = b.filter(y9f)), (t[17] = b), (t[18] = Z));
+  if (t[17] !== b) ((Z = b.filter(_temp7)), (t[17] = b), (t[18] = Z));
   else Z = t[18];
   let J;
-  if (t[19] !== b) ((J = b.filter(h9f)), (t[19] = b), (t[20] = J));
+  if (t[19] !== b) ((J = b.filter(_temp8)), (t[19] = b), (t[20] = J));
   else J = t[20];
   let ne;
   if (t[21] !== b) ((ne = b.filter(g9f)), (t[21] = b), (t[22] = ne));
@@ -1019,16 +1019,16 @@ function m9f(e) {
 function g9f(e) {
   return e.source === "flagSettings";
 }
-function h9f(e) {
+function _temp8(e) {
   return e.source === "localSettings";
 }
-function y9f(e) {
+function _temp7(e) {
   return e.source === "policySettings";
 }
-function _9f(e) {
+function _temp6(e) {
   return e.source === "projectSettings";
 }
-function b9f(e) {
+function _temp5(e) {
   return e.source === "userSettings";
 }
 function S9f(e) {

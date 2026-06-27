@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gSe
 // matched 2.1.88 source: src/services/api/errors.ts
 // class=modified  jaccard=0.1275  score=0.2816  fileCov=0.189
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 25 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gSe]
 ((dlp = new Set([
@@ -37,14 +37,14 @@
     "FailedToOpenSocket",
   ])),
   (que = new Set(["ECONNRESET", "EPIPE", "ConnectionClosed", "StreamSuspended"])));
-function K1(e) {
+function startsWithApiErrorPrefix(e) {
   return e.startsWith(Eb) || e.startsWith(`Please run /login \xB7 ${Eb}`);
 }
 function hSe(e) {
   if (!e.isApiErrorMessage) return !1;
   let t = e.message.content;
   if (!Array.isArray(t)) return !1;
-  return t.some((n) => n.type === "text" && n.text.startsWith(nF));
+  return t.some((n) => n.type === "text" && n.text.startsWith(PROMPT_TOO_LONG_ERROR_MESSAGE));
 }
 function Ljt(e) {
   let t = e.match(/prompt is too long[^0-9]*(\d+)\s*tokens?\s*>\s*(\d+)/i);
@@ -64,14 +64,14 @@ function Gaa(e) {
   let { actualTokens: t, limitTokens: n, conversationTokensEstimate: r } = e;
   if (t === void 0 || n === void 0)
     return (
-      `${nF} \xB7 this conversation is a single ` +
+      `${PROMPT_TOO_LONG_ERROR_MESSAGE} \xB7 this conversation is a single ` +
       "exchange and cannot be compacted \u2014 the request size comes mostly " +
       "from system prompt, tool definitions, or attachments."
     );
   if (r >= t * ylp)
-    return `${nF} \xB7 the request is ~${t} tokens (limit ${n}) and this conversation's own content is most of it. A single-exchange conversation cannot be compacted; start with less content (smaller files or pasted text).`;
+    return `${PROMPT_TOO_LONG_ERROR_MESSAGE} \xB7 the request is ~${t} tokens (limit ${n}) and this conversation's own content is most of it. A single-exchange conversation cannot be compacted; start with less content (smaller files or pasted text).`;
   return (
-    `${nF} \xB7 the request is ~${t} tokens (limit ${n}) but this conversation is only ~${r} tokens \u2014 the rest is system prompt, ` +
+    `${PROMPT_TOO_LONG_ERROR_MESSAGE} \xB7 the request is ~${t} tokens (limit ${n}) but this conversation is only ~${r} tokens \u2014 the rest is system prompt, ` +
     "tool definitions, and attachment content. A single-exchange conversation cannot be compacted; reduce attached files/tools or start with less context."
   );
 }
@@ -137,28 +137,28 @@ function Baa() {
   if (e === "anthropicAws") return ` If it persists, check ${Naa}.`;
   return ` If it persists, check your ${ote[e]} service status.`;
 }
-function jio() {
+function getPdfTooLargeErrorMessage() {
   let e = `max ${J9i} pages, ${Ra(yUt)}`;
   return Ir()
     ? `PDF too large (${e}). Try reading the file a different way (e.g., extract text with pdftotext).`
     : `PDF too large (${e}). Double press esc to go back and try again, or use pdftotext to convert to text first.`;
 }
-function Gio() {
+function getPdfPasswordProtectedErrorMessage() {
   return Ir()
     ? "PDF is password protected. Try using a CLI tool to extract or convert the PDF."
     : "PDF is password protected. Please double press esc to edit your message and try again.";
 }
-function Wio() {
+function getPdfInvalidErrorMessage() {
   return Ir()
     ? "The PDF file was not valid. Try converting it to text first (e.g., pdftotext)."
     : "The PDF file was not valid. Double press esc to go back and try again with a different file.";
 }
-function D1n() {
+function getImageTooLargeErrorMessage() {
   return Ir()
     ? "Image was too large. Try resizing the image or using a different approach."
     : "Image was too large. Double press esc to go back and try again with a smaller image.";
 }
-function qio() {
+function getRequestTooLargeErrorMessage() {
   let e = `max ${Ra(X9i)}`;
   return Ir()
     ? `Request too large (${e}). Try with a smaller file.`
@@ -171,10 +171,10 @@ function lut(e) {
       : "Double press esc to edit your message, or re-read the file if you still need it.";
   return `${Eb}: ${t} in the conversation could not be processed and was removed. ${n}`;
 }
-function wlp() {
+function getTokenRevokedErrorMessage() {
   return Ir()
     ? "Your account does not have access to Claude. Please login again or contact your administrator."
-    : U1n;
+    : TOKEN_REVOKED_ERROR_MESSAGE;
 }
 function Clp() {
   return vlp;
@@ -182,7 +182,7 @@ function Clp() {
 function Uaa() {
   return ut(process.env.CLAUDE_CODE_REMOTE);
 }
-function Ilp(e, t, n) {
+function logToolUseToolResultMismatch(e, t, n) {
   try {
     let r = -1;
     for (let u = 0; u < n.length; u++) {
@@ -305,7 +305,7 @@ function Ilp(e, t, n) {
     });
   } catch (r) {}
 }
-function qaa(e) {
+function isValidAPIMessage(e) {
   return (
     typeof e === "object" &&
     e !== null &&
@@ -408,27 +408,27 @@ function Yio(e) {
   return t?.[1] ? t[1].toLowerCase() : null;
 }
 function G1n(e, t, n) {
-  let r = klp(e, t, n);
+  let r = getAssistantMessageFromError(e, t, n);
   if (e instanceof Fo && typeof e.status === "number") r.apiErrorStatus = e.status;
   let o = n?.requestId || (e instanceof Fo ? e.requestID || e.error?.request_id : void 0);
   if (o) r.requestId = o;
   return r;
 }
-function klp(e, t, n) {
+function getAssistantMessageFromError(e, t, n) {
   if (e instanceof DK || (e instanceof Hx && e.message.toLowerCase().includes("timeout")))
     return jl({
-      content: aut,
+      content: API_TIMEOUT_ERROR_MESSAGE,
       error: "server_error",
     });
   if (e instanceof eut || e instanceof NU)
     return jl({
-      content: D1n(),
+      content: getImageTooLargeErrorMessage(),
       error: "invalid_request",
       errorDetails: e.message,
     });
-  if (e instanceof Error && e.message.includes(m5e))
+  if (e instanceof Error && e.message.includes(CUSTOM_OFF_SWITCH_MESSAGE))
     return jl({
-      content: m5e,
+      content: CUSTOM_OFF_SWITCH_MESSAGE,
       error: "rate_limit",
     });
   if (e instanceof Error && e.message.includes(g5e))
@@ -503,25 +503,25 @@ function klp(e, t, n) {
   }
   if (Oio(e) || Djt(e))
     return jl({
-      content: nF,
+      content: PROMPT_TOO_LONG_ERROR_MESSAGE,
       error: "invalid_request",
       errorDetails: e.message,
     });
   if (e instanceof Error && /maximum of \d+ PDF pages/.test(e.message))
     return jl({
-      content: jio(),
+      content: getPdfTooLargeErrorMessage(),
       error: "invalid_request",
       errorDetails: e.message,
     });
   if (e instanceof Error && e.message.includes("The PDF specified is password protected"))
     return jl({
-      content: Gio(),
+      content: getPdfPasswordProtectedErrorMessage(),
       error: "invalid_request",
       errorDetails: e.message,
     });
   if (e instanceof Error && e.message.includes("The PDF specified was not valid"))
     return jl({
-      content: Wio(),
+      content: getPdfInvalidErrorMessage(),
       error: "invalid_request",
       errorDetails: e.message,
     });
@@ -532,7 +532,7 @@ function klp(e, t, n) {
     e.message.includes("maximum")
   )
     return jl({
-      content: D1n(),
+      content: getImageTooLargeErrorMessage(),
       error: "invalid_request",
       errorDetails: e.message,
     });
@@ -576,12 +576,12 @@ function klp(e, t, n) {
   if (e instanceof Fo && e.status === 413) {
     if (e.message.toLowerCase().includes("context window"))
       return jl({
-        content: nF,
+        content: PROMPT_TOO_LONG_ERROR_MESSAGE,
         error: "invalid_request",
         errorDetails: e.message,
       });
     return jl({
-      content: qio(),
+      content: getRequestTooLargeErrorMessage(),
       error: "invalid_request",
       errorDetails: `request_too_large: ${e.message}`,
     });
@@ -594,7 +594,7 @@ function klp(e, t, n) {
     if (n?.messages && n?.messagesForAPI) {
       let s = e.message.match(/toolu_[A-Za-z0-9_]+/),
         i = s ? s[0] : null;
-      if (i) Ilp(i, n.messages, n.messagesForAPI);
+      if (i) logToolUseToolResultMismatch(i, n.messages, n.messagesForAPI);
     }
     {
       let i = Ir() ? "" : " Run /rewind to recover the conversation.";
@@ -633,7 +633,7 @@ function klp(e, t, n) {
     });
   if (Nio(e))
     return jl({
-      content: $1n,
+      content: CREDIT_BALANCE_TOO_LOW_ERROR_MESSAGE,
       error: "billing_error",
     });
   if (e instanceof Fo && e.status === 400 && O1n(e)) {
@@ -642,7 +642,9 @@ function klp(e, t, n) {
       let i = WE();
       return jl({
         error: "invalid_request",
-        content: i ? Bio : Uio,
+        content: i
+          ? ORG_DISABLED_ERROR_MESSAGE_ENV_KEY_WITH_OAUTH
+          : ORG_DISABLED_ERROR_MESSAGE_ENV_KEY,
       });
     }
   }
@@ -650,7 +652,7 @@ function klp(e, t, n) {
     if (Uaa())
       return jl({
         error: "authentication_failed",
-        content: Oaa,
+        content: CCR_AUTH_ERROR_MESSAGE,
       });
     if (fr() === "gateway")
       return jl({
@@ -660,13 +662,16 @@ function klp(e, t, n) {
     let { source: s } = Ty();
     return jl({
       error: "authentication_failed",
-      content: s === "ANTHROPIC_API_KEY" || s === "apiKeyHelper" ? B1n : N1n,
+      content:
+        s === "ANTHROPIC_API_KEY" || s === "apiKeyHelper"
+          ? INVALID_API_KEY_ERROR_MESSAGE_EXTERNAL
+          : INVALID_API_KEY_ERROR_MESSAGE,
     });
   }
   if (e instanceof Fo && e.status === 403 && e.message.includes("OAuth token has been revoked"))
     return jl({
       error: "authentication_failed",
-      content: wlp(),
+      content: getTokenRevokedErrorMessage(),
     });
   if (
     e instanceof Fo &&
@@ -703,7 +708,7 @@ function klp(e, t, n) {
     if (Uaa())
       return jl({
         error: "authentication_failed",
-        content: Oaa,
+        content: CCR_AUTH_ERROR_MESSAGE,
       });
     let s = sut(e);
     return jl({
@@ -717,7 +722,7 @@ function klp(e, t, n) {
     e.message.toLowerCase().includes("model id")
   ) {
     let s = Faa(),
-      i = jaa(t);
+      i = get3PModelFallbackSuggestion(t);
     return jl({
       content: i
         ? `${Eb} (${t}): ${e.message}.${s ? ` Try ${s} to switch to ${i}.` : ` Try switching to ${i}.`}`
@@ -727,7 +732,7 @@ function klp(e, t, n) {
   }
   if (e instanceof Fo && e.status === 404) {
     let s = Faa(),
-      i = jaa(t);
+      i = get3PModelFallbackSuggestion(t);
     return jl({
       content: i
         ? `The model ${t} is not available on your ${fr()} deployment. ${s ? `Try ${s} to switch to ${i}` : `Try switching to ${i}`}, or ask your admin to enable this model.`
@@ -736,9 +741,9 @@ function klp(e, t, n) {
     });
   }
   let r = Baa();
-  if (e instanceof Error && e.message.includes(Rjt))
+  if (e instanceof Error && e.message.includes(REPEATED_529_ERROR_MESSAGE))
     return jl({
-      content: `${Eb}: ${Rjt}. The API is at capacity \u2014 this is usually temporary. Try again in a moment.${r}`,
+      content: `${Eb}: ${REPEATED_529_ERROR_MESSAGE}. The API is at capacity \u2014 this is usually temporary. Try again in a moment.${r}`,
       error: "server_error",
     });
   if (e instanceof Fo && typeof e.status === "number" && e.status >= 500) {
@@ -778,7 +783,7 @@ function Faa() {
   if (!Ir()) return "/model";
   return Q2() === "sdk-cli" ? "--model" : void 0;
 }
-function jaa(e) {
+function get3PModelFallbackSuggestion(e) {
   if (td()) return;
   let t = e.toLowerCase();
   if (t.includes("fable-5") || t.includes("fable_5"))
@@ -791,7 +796,7 @@ function jaa(e) {
   if (t.includes("sonnet-4-5") || t.includes("sonnet_4_5")) return Vp().sonnet40;
   return;
 }
-function W1n(e) {
+function classifyAPIError(e) {
   if (e instanceof Error && e.message === "Request was aborted.") return "aborted";
   if (
     e instanceof DK ||
@@ -799,13 +804,19 @@ function W1n(e) {
     (e instanceof Error && e.message.startsWith("Stream idle timeout"))
   )
     return "api_timeout";
-  if (e instanceof Error && e.message.includes(Rjt)) return "repeated_529";
-  if (e instanceof Error && (e.message.includes(m5e) || e.message.includes(g5e)))
+  if (e instanceof Error && e.message.includes(REPEATED_529_ERROR_MESSAGE)) return "repeated_529";
+  if (
+    e instanceof Error &&
+    (e.message.includes(CUSTOM_OFF_SWITCH_MESSAGE) || e.message.includes(g5e))
+  )
     return "capacity_off_switch";
   if (e instanceof Fo && e.status === 429) return "rate_limit";
   if (e instanceof Fo && (e.status === 529 || e.message?.includes('"type":"overloaded_error"')))
     return "server_overload";
-  if (e instanceof Error && (e.message.toLowerCase().includes(nF.toLowerCase()) || Djt(e)))
+  if (
+    e instanceof Error &&
+    (e.message.toLowerCase().includes(PROMPT_TOO_LONG_ERROR_MESSAGE.toLowerCase()) || Djt(e))
+  )
     return "prompt_too_long";
   if (e instanceof Error && /maximum of \d+ PDF pages/.test(e.message)) return "pdf_too_large";
   if (e instanceof Error && e.message.includes("The PDF specified is password protected"))
@@ -883,7 +894,10 @@ function W1n(e) {
     e.message.toLowerCase().includes("request body is not valid json")
   )
     return "request_body_invalid_json";
-  if (e instanceof Error && e.message.toLowerCase().includes($1n.toLowerCase()))
+  if (
+    e instanceof Error &&
+    e.message.toLowerCase().includes(CREDIT_BALANCE_TOO_LOW_ERROR_MESSAGE.toLowerCase())
+  )
     return "credit_balance_low";
   if (
     e instanceof Error &&
@@ -947,14 +961,14 @@ function W1n(e) {
   if (t && (que.has(t.code) || out.has(t.code))) return "connection_error";
   return "unknown";
 }
-function q1n(e) {
+function categorizeRetryableAPIError(e) {
   if (e.status === 529 || e.message?.includes('"type":"overloaded_error"')) return "overloaded";
   if (e.status === 429) return "rate_limit";
   if (e.status === 401 || e.status === 403) return "authentication_failed";
   if (e.status !== void 0 && e.status >= 408) return "server_error";
   return "unknown";
 }
-function h5e(e, t, n, r) {
+function getErrorMessageIfRefusal(e, t, n, r) {
   if (e !== "refusal") return;
   let o = t?.explanation?.trimEnd() ?? null;
   G("tengu_refusal_api_response", {
@@ -1065,16 +1079,16 @@ function Kaa(e) {
   return cJe() && e.isApiErrorMessage === !0 && e.errorDetails !== void 0 && Mio(e.errorDetails);
 }
 var Eb = "API Error",
-  nF = "Prompt is too long",
+  PROMPT_TOO_LONG_ERROR_MESSAGE = "Prompt is too long",
   ylp = 0.8,
   blp,
   Slp,
-  $1n = "Credit balance is too low",
-  N1n = "Not logged in \xB7 Please run /login",
-  B1n = "Invalid API key \xB7 Fix external API key",
-  Bio =
+  CREDIT_BALANCE_TOO_LOW_ERROR_MESSAGE = "Credit balance is too low",
+  INVALID_API_KEY_ERROR_MESSAGE = "Not logged in \xB7 Please run /login",
+  INVALID_API_KEY_ERROR_MESSAGE_EXTERNAL = "Invalid API key \xB7 Fix external API key",
+  ORG_DISABLED_ERROR_MESSAGE_ENV_KEY_WITH_OAUTH =
     "Your ANTHROPIC_API_KEY belongs to a disabled organization \xB7 Unset the environment variable to use your subscription instead",
-  Uio =
+  ORG_DISABLED_ERROR_MESSAGE_ENV_KEY =
     "Your ANTHROPIC_API_KEY belongs to a disabled organization \xB7 Update or unset the environment variable",
   Elp =
     "Your organization has disabled API key authentication \xB7 Unset ANTHROPIC_API_KEY to use your claude.ai account instead",
@@ -1084,15 +1098,17 @@ var Eb = "API Error",
     "Your organization has disabled API key authentication \xB7 Unset the apiKeyHelper setting and run /login to sign in with your claude.ai account",
   Tlp =
     "Your organization has disabled API key authentication \xB7 Run /login to sign in with your claude.ai account",
-  U1n = "OAuth token revoked \xB7 Please run /login",
-  Oaa = "Authentication error \xB7 This may be a temporary network issue, please try again",
+  TOKEN_REVOKED_ERROR_MESSAGE = "OAuth token revoked \xB7 Please run /login",
+  CCR_AUTH_ERROR_MESSAGE =
+    "Authentication error \xB7 This may be a temporary network issue, please try again",
   Fio =
     "Authentication error \xB7 The gateway could not authenticate with its upstream provider \u2014 contact your gateway administrator",
   Naa = "https://status.claude.com",
-  Rjt = "Repeated 529 Overloaded errors",
-  m5e = "Opus is experiencing high load, please use /model to switch to Sonnet",
+  REPEATED_529_ERROR_MESSAGE = "Repeated 529 Overloaded errors",
+  CUSTOM_OFF_SWITCH_MESSAGE =
+    "Opus is experiencing high load, please use /model to switch to Sonnet",
   g5e = "Fable is experiencing high load, please use /model to switch to Sonnet",
-  aut = "Request timed out",
+  API_TIMEOUT_ERROR_MESSAGE = "Request timed out",
   vlp =
     "Your organization has disabled Claude subscription access for Claude Code \xB7 Use an Anthropic API key instead, or ask your admin to enable access",
   xlp = "cannot be used as an advisor when the request model is";

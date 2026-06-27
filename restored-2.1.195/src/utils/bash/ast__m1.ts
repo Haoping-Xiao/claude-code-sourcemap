@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xRe
 // matched 2.1.88 source: src/utils/bash/ast.ts
 // class=modified (alt of src/utils/bash/ast.ts)  jaccard=0.1101  score=0.1836  fileCov=0.2155
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xRe] deps: kt, Ybe
 ((mrp = new Set(["export", "declare", "typeset", "readonly", "local", "unset", "unsetenv"])),
@@ -11,13 +11,13 @@
   (Uro = new Set(["command", "declaration_command"])));
 wue = Symbol("parse-aborted");
 function Bp(e) {
-  return e.includes(Cue) || e.includes(cg);
+  return e.includes(CMDSUB_PLACEHOLDER) || e.includes(VAR_PLACEHOLDER);
 }
 function bOn(e) {
-  return e.replaceAll(Cue, "$(\u2026)").replaceAll(cg, "${\u2026}");
+  return e.replaceAll(CMDSUB_PLACEHOLDER, "$(\u2026)").replaceAll(VAR_PLACEHOLDER, "${\u2026}");
 }
 function fra(e) {
-  return e.startsWith(Cue) || e.startsWith(cg);
+  return e.startsWith(CMDSUB_PLACEHOLDER) || e.startsWith(VAR_PLACEHOLDER);
 }
 function gra(e) {
   if (!e) return -2;
@@ -172,9 +172,9 @@ async function mct(e) {
         commands: [],
         bareAssignmentNames: [],
       }
-    : UWe(e, t);
+    : parseForSecurityFromAst(e, t);
 }
-function UWe(e, t) {
+function parseForSecurityFromAst(e, t) {
   if (noo.test(e))
     return {
       kind: "too-complex",
@@ -283,7 +283,7 @@ function Crp(e) {
   let t = [],
     n = new Map(),
     r = [],
-    o = FW(e, t, n, r);
+    o = collectCommands(e, t, n, r);
   if (o) return o;
   return {
     kind: "simple",
@@ -291,13 +291,13 @@ function Crp(e) {
     bareAssignmentNames: r,
   };
 }
-function FW(e, t, n, r) {
+function collectCommands(e, t, n, r) {
   if (e.type === "command") {
-    let o = Rrp(e, [], t, n, r);
+    let o = walkCommand(e, [], t, n, r);
     if (o.kind !== "simple") return o;
     return (t.push(...o.commands), null);
   }
-  if (e.type === "redirected_statement") return Irp(e, t, n, r);
+  if (e.type === "redirected_statement") return walkRedirectedStatement(e, t, n, r);
   if (e.type === "comment") return null;
   if (pra.has(e.type)) {
     let o = e.type === "pipeline",
@@ -321,19 +321,19 @@ function FW(e, t, n, r) {
             for (let p of n.keys()) l.add(p);
             let d = i ?? n;
             a = new Map(d);
-            for (let [p, f] of n) if (d.get(p) !== f) a.set(p, cg);
-            for (let p of d.keys()) if (!n.has(p)) a.set(p, cg);
+            for (let [p, f] of n) if (d.get(p) !== f) a.set(p, VAR_PLACEHOLDER);
+            for (let p of d.keys()) if (!n.has(p)) a.set(p, VAR_PLACEHOLDER);
           } else a = new Map(i ?? n);
         } else if (l !== null) {
-          for (let d of l) n.set(d, cg);
+          for (let d of l) n.set(d, VAR_PLACEHOLDER);
           ((l = null), (a = n));
         }
         continue;
       }
-      let u = FW(c, t, a, r);
+      let u = collectCommands(c, t, a, r);
       if (u) return u;
     }
-    if (l !== null) for (let c of l) n.set(c, cg);
+    if (l !== null) for (let c of l) n.set(c, VAR_PLACEHOLDER);
     if (o) H2t(n, a);
     return null;
   }
@@ -342,7 +342,7 @@ function FW(e, t, n, r) {
     for (let s of e.children) {
       if (!s) continue;
       if (s.type === "!") continue;
-      let i = FW(s, t, n, r);
+      let i = collectCommands(s, t, n, r);
       if (i) return i;
     }
     if (t.length === o)
@@ -373,7 +373,7 @@ function FW(e, t, n, r) {
         case "raw_string":
         case "string":
         case "concatenation": {
-          let l = Iue(a, t, s, r);
+          let l = walkArgument(a, t, s, r);
           if (typeof l !== "string") return l;
           if (/^[+-].*m/.test(l))
             return {
@@ -436,7 +436,7 @@ function FW(e, t, n, r) {
           break;
         }
         case "variable_assignment": {
-          let l = Jro(a, t, s, r);
+          let l = walkVariableAssignment(a, t, s, r);
           if ("kind" in l) return l;
           (jro(n, l, o > 0), r.push(l.name), i.push(`${l.name}=${l.value}`));
           break;
@@ -457,7 +457,7 @@ function FW(e, t, n, r) {
           break;
         }
         default:
-          return Yh(a);
+          return tooComplex(a);
       }
     }
     return (
@@ -472,7 +472,7 @@ function FW(e, t, n, r) {
   }
   if (e.type === "variable_assignment") {
     let o = t.length,
-      s = Jro(e, t, n, r);
+      s = walkVariableAssignment(e, t, n, r);
     if ("kind" in s) return s;
     if (Zro(s.name))
       return {
@@ -489,7 +489,7 @@ function FW(e, t, n, r) {
     return (jro(n, s, o > 0), r.push(s.name), null);
   }
   if (e.type === "for_statement") {
-    if (bI()) return Yh(e);
+    if (bI()) return tooComplex(e);
     let o = null,
       s = null;
     for (let l of e.children) {
@@ -507,11 +507,11 @@ function FW(e, t, n, r) {
         let c = aoo(l, t, n, r);
         if (c) return c;
       } else {
-        let c = Iue(l, t, n, r);
+        let c = walkArgument(l, t, n, r);
         if (typeof c !== "string") return c;
       }
     }
-    if (o === null || s === null) return Yh(e);
+    if (o === null || s === null) return tooComplex(e);
     if (o === "PS4" || o === "IFS" || Zro(o) || moo.has(o) || Wro.has(o) || Era.has(o))
       return {
         kind: "too-complex",
@@ -531,13 +531,13 @@ function FW(e, t, n, r) {
     for (let l of s.children) {
       if (!l) continue;
       if (l.type === "do" || l.type === "done" || l.type === ";") continue;
-      let c = FW(l, t, a, r);
+      let c = collectCommands(l, t, a, r);
       if (c) return c;
     }
     return (H2t(n, a), null);
   }
   if (e.type === "if_statement" || e.type === "while_statement") {
-    if (e.type === "while_statement" && bI()) return Yh(e);
+    if (e.type === "while_statement" && bI()) return tooComplex(e);
     let o = null,
       s = null;
     if (e.type === "while_statement") ((o = new Set(n.keys())), (s = new Map(n)), Fro(n, e));
@@ -564,7 +564,7 @@ function FW(e, t, n, r) {
         for (let p of a.children) {
           if (!p) continue;
           if (p.type === "do" || p.type === "done" || p.type === ";") continue;
-          let f = FW(p, t, d, r);
+          let f = collectCommands(p, t, d, r);
           if (f) return f;
         }
         H2t(n, d);
@@ -576,7 +576,7 @@ function FW(e, t, n, r) {
           if (!p) continue;
           if (p.type === "elif" || p.type === "else" || p.type === "then" || p.type === ";")
             continue;
-          let f = FW(p, t, d, r);
+          let f = collectCommands(p, t, d, r);
           if (f) return f;
         }
         H2t(n, d);
@@ -584,7 +584,7 @@ function FW(e, t, n, r) {
       }
       let l = new Map(n),
         c = t.length,
-        u = FW(a, t, l, r);
+        u = collectCommands(a, t, l, r);
       if (u) return u;
       if (!i) {
         for (let [d, p] of l) {
@@ -606,7 +606,7 @@ function FW(e, t, n, r) {
                 reason: `'${d}' was tracked as literal '${p}' but condition may unset it (&&-short-circuit) \u2014 cannot prove downstream value`,
                 nodeType: e.type,
               };
-            n.set(d, cg);
+            n.set(d, VAR_PLACEHOLDER);
           }
         for (let d = c; d < t.length; d++) {
           let p = t[d];
@@ -620,7 +620,7 @@ function FW(e, t, n, r) {
                     reason: `'read ${m}' in condition may not execute (||/pipeline/subshell); cannot prove it overwrites tracked literal '${g}'`,
                     nodeType: e.type,
                   };
-                n.set(m, cg);
+                n.set(m, VAR_PLACEHOLDER);
               }
             let f = n.get("REPLY");
             if (f !== void 0 && !Bp(f))
@@ -629,7 +629,7 @@ function FW(e, t, n, r) {
                 reason: `'read' in condition may write stdin to REPLY; cannot prove it overwrites tracked literal '${f}'`,
                 nodeType: e.type,
               };
-            n.set("REPLY", cg);
+            n.set("REPLY", VAR_PLACEHOLDER);
           }
         }
       } else H2t(n, l);
@@ -644,7 +644,7 @@ function FW(e, t, n, r) {
     for (let s of e.children) {
       if (!s) continue;
       if (s.type === "(" || s.type === ")") continue;
-      let i = FW(s, t, o, r);
+      let i = collectCommands(s, t, o, r);
       if (i) return i;
     }
     return null;
@@ -662,7 +662,7 @@ function FW(e, t, n, r) {
           };
         continue;
       }
-      let i = yra(s, o, t, n, r);
+      let i = walkTestExpr(s, o, t, n, r);
       if (i) return i;
     }
     return (
@@ -686,7 +686,7 @@ function FW(e, t, n, r) {
           o.push(a.text);
           break;
         case "variable_name":
-          if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(a.text)) return Yh(a);
+          if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(a.text)) return tooComplex(a);
           if ((o.push(a.text), (i = true), s)) break;
           if (kRe(a.text))
             return {
@@ -697,16 +697,16 @@ function FW(e, t, n, r) {
           n.set(a.text, "");
           break;
         case "word": {
-          let l = Iue(a, t, n, r);
+          let l = walkArgument(a, t, n, r);
           if (typeof l !== "string") return l;
           if (l.startsWith("-")) {
-            if (i) return Yh(a);
-            if (l !== "-f" && l !== "-v") return Yh(a);
+            if (i) return tooComplex(a);
+            if (l !== "-f" && l !== "-v") return tooComplex(a);
             if (l === "-f") s = true;
             o.push(l);
             break;
           }
-          if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(l)) return Yh(a);
+          if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(l)) return tooComplex(a);
           if ((o.push(l), (i = true), s)) break;
           if (kRe(l))
             return {
@@ -718,7 +718,7 @@ function FW(e, t, n, r) {
           break;
         }
         default:
-          return Yh(a);
+          return tooComplex(a);
       }
     }
     return (
@@ -731,9 +731,9 @@ function FW(e, t, n, r) {
       null
     );
   }
-  return Yh(e);
+  return tooComplex(e);
 }
-function yra(e, t, n, r, o) {
+function walkTestExpr(e, t, n, r, o) {
   switch (e.type) {
     case "unary_expression":
     case "binary_expression":
@@ -741,7 +741,7 @@ function yra(e, t, n, r, o) {
     case "parenthesized_expression": {
       for (let s of e.children) {
         if (!s) continue;
-        let i = yra(s, t, n, r, o);
+        let i = walkTestExpr(s, t, n, r, o);
         if (i) return i;
       }
       return null;
@@ -802,7 +802,7 @@ function yra(e, t, n, r, o) {
       }
       return (t.push(e.text), null);
     default: {
-      let s = Iue(e, n, r, o);
+      let s = walkArgument(e, n, r, o);
       if (typeof s !== "string") return s;
       if (/]].*[;\n&|<>]/s.test(s))
         return {
@@ -815,7 +815,7 @@ function yra(e, t, n, r, o) {
     }
   }
 }
-function Irp(e, t, n, r) {
+function walkRedirectedStatement(e, t, n, r) {
   let o = [],
     s = null,
     i = [],
@@ -833,16 +833,16 @@ function Irp(e, t, n, r) {
       u.type === "unset_command"
     )
       s = u;
-    else return Yh(u);
+    else return tooComplex(u);
   }
   if (!s) {
     for (let u of i) {
-      let d = Kro(u, t, n, r);
+      let d = walkFileRedirect(u, t, n, r);
       if ("kind" in d) return d;
       o.push(d);
     }
     for (let u of a) {
-      let d = Yro(u);
+      let d = walkHeredocRedirect(u);
       if (d) return d;
     }
     return (
@@ -860,32 +860,32 @@ function Irp(e, t, n, r) {
   if (s.type === "list") {
     let u = s.children;
     if (u.length === 3 && u[0] && u[1]?.type === "&&" && u[2]) {
-      let d = FW(u[0], t, n, r);
+      let d = collectCommands(u[0], t, n, r);
       if (d) return d;
       c = new Map(n);
-      let p = FW(u[2], t, n, r);
+      let p = collectCommands(u[2], t, n, r);
       if (p) return p;
     } else {
-      let d = FW(s, t, n, r);
+      let d = collectCommands(s, t, n, r);
       if (d) return d;
       c = n;
     }
   } else if (pra.has(s.type)) {
-    let u = FW(s, t, n, r);
+    let u = collectCommands(s, t, n, r);
     if (u) return u;
     c = n;
   } else {
     c = new Map(n);
-    let u = FW(s, t, n, r);
+    let u = collectCommands(s, t, n, r);
     if (u) return u;
   }
   for (let u of i) {
-    let d = Kro(u, t, c, r);
+    let d = walkFileRedirect(u, t, c, r);
     if ("kind" in d) return d;
     o.push(d);
   }
   for (let u of a) {
-    let d = Yro(u);
+    let d = walkHeredocRedirect(u);
     if (d) return d;
   }
   if (o.length > 0)
@@ -901,7 +901,7 @@ function Irp(e, t, n, r) {
       });
   return null;
 }
-function Kro(e, t, n, r) {
+function walkFileRedirect(e, t, n, r) {
   let o = null,
     s = null,
     i;
@@ -953,11 +953,11 @@ function Kro(e, t, n, r) {
         nodeType: e.type,
       };
     else if (a.type === "word" || a.type === "number") {
-      if (a.children.length > 0) return Yh(a);
-      if (qro.test(a.text)) return Yh(a);
-      if (Vro.test(a.text)) return Yh(a);
-      if (zro.test(a.text)) return Yh(a);
-      if (/(?:^|[^\\])(?:\\\\)*[`$]/.test(a.text)) return Yh(a);
+      if (a.children.length > 0) return tooComplex(a);
+      if (qro.test(a.text)) return tooComplex(a);
+      if (Vro.test(a.text)) return tooComplex(a);
+      if (zro.test(a.text)) return tooComplex(a);
+      if (/(?:^|[^\\])(?:\\\\)*[`$]/.test(a.text)) return tooComplex(a);
       s = a.text.replace(/\\([\s\S])/g, (l, c) =>
         c ===
         `
@@ -967,11 +967,11 @@ function Kro(e, t, n, r) {
       );
     } else if (a.type === "raw_string") s = Ara(a.text);
     else if (a.type === "string") {
-      let l = Sra(a, t, n, r);
+      let l = walkString(a, t, n, r);
       if (typeof l !== "string") return l;
       s = l;
     } else if (a.type === "concatenation") {
-      let l = Iue(a, t, n, r);
+      let l = walkArgument(a, t, n, r);
       if (typeof l !== "string") return l;
       if (/(?:^|[^\\])(?:\\\\)*[`$]/.test(a.text))
         return {
@@ -981,7 +981,7 @@ function Kro(e, t, n, r) {
           nodeType: "concatenation",
         };
       s = l;
-    } else return Yh(a);
+    } else return tooComplex(a);
   }
   if (!o || s === null)
     return {
@@ -1029,7 +1029,7 @@ function Kro(e, t, n, r) {
     fd: i,
   };
 }
-function Yro(e) {
+function walkHeredocRedirect(e) {
   let t = null,
     n = null,
     r = false;
@@ -1039,7 +1039,7 @@ function Yro(e) {
     else if (s.type === "heredoc_body") n = s;
     else if (s.type === "<<-") r = true;
     else if (s.type === "<<" || s.type === "heredoc_end" || s.type === "file_descriptor");
-    else return Yh(s);
+    else return tooComplex(s);
   }
   if (n === null)
     return {
@@ -1070,7 +1070,7 @@ function Yro(e) {
   if (n)
     for (let s of n.children) {
       if (!s) continue;
-      if (s.type !== "heredoc_content") return Yh(s);
+      if (s.type !== "heredoc_content") return tooComplex(s);
     }
   if (t !== null && n !== null) {
     let s = t.startsWith("\\") ? t.slice(1) : t.slice(1, -1);
@@ -1102,9 +1102,9 @@ function xrp(e, t, n, r) {
   for (let o of e.children) {
     if (!o) continue;
     if (o.type === "<<<") continue;
-    let s = Iue(o, t, n, r);
+    let s = walkArgument(o, t, n, r);
     if (typeof s !== "string") return s;
-    if (SOn.test(s)) return Yh(o);
+    if (SOn.test(s)) return tooComplex(o);
   }
   return null;
 }
@@ -1201,7 +1201,7 @@ function krp(e, t, n, r) {
   else if (c === "getopts") {
     let u = a[1] === "--" ? 1 : 0;
     if (a[2 + u]) i(a[2 + u]);
-    (o.push("OPTARG"), n.set("OPTIND", cg));
+    (o.push("OPTARG"), n.set("OPTIND", VAR_PLACEHOLDER));
   } else if (c === "wait")
     for (let u = 1; u < a.length; u++) {
       let d = a[u];
@@ -1308,8 +1308,9 @@ function krp(e, t, n, r) {
           break;
         }
       }
-    if (!u) (n.set("PWD", cg), n.set("OLDPWD", cg));
-    if (c === "pushd" || c === "popd") (n.set("DIRSTACK", cg), n.set("dirstack", cg));
+    if (!u) (n.set("PWD", VAR_PLACEHOLDER), n.set("OLDPWD", VAR_PLACEHOLDER));
+    if (c === "pushd" || c === "popd")
+      (n.set("DIRSTACK", VAR_PLACEHOLDER), n.set("dirstack", VAR_PLACEHOLDER));
   }
   if (c !== void 0 && t.length > 0 && bra.has(c)) for (let u of t) i(u.name);
   for (let u of o) {
@@ -1319,11 +1320,11 @@ function krp(e, t, n, r) {
         reason: `'${c ?? t[0]?.name}' writes shell variable ${u} (exec-influencing / integer-attr / IFS) \u2014 value cannot be statically verified`,
         nodeType: "command",
       };
-    n.set(u, cg);
+    n.set(u, VAR_PLACEHOLDER);
   }
   return (r.push(...s), null);
 }
-function Rrp(e, t, n, r, o) {
+function walkCommand(e, t, n, r, o) {
   let s = [],
     i = [],
     a = [...t];
@@ -1340,7 +1341,7 @@ function Rrp(e, t, n, r, o) {
               nodeType: "variable_assignment",
             };
         }
-        let d = Jro(u, n, r, o);
+        let d = walkVariableAssignment(u, n, r, o);
         if ("kind" in d) return d;
         if (wra(d.name, d.value))
           return {
@@ -1357,10 +1358,10 @@ function Rrp(e, t, n, r, o) {
       case "command_name": {
         let d = u.children[0] ?? u;
         if (bI()) {
-          if (d.type === "simple_expansion" || d.type === "expansion") return Yh(d);
-          if ((d.type === "string" || d.type === "concatenation") && Hra(d)) return Yh(d);
+          if (d.type === "simple_expansion" || d.type === "expansion") return tooComplex(d);
+          if ((d.type === "string" || d.type === "concatenation") && Hra(d)) return tooComplex(d);
         }
-        let p = Iue(d, n, r, o);
+        let p = walkArgument(d, n, r, o);
         if (typeof p !== "string") return p;
         s.push(p);
         break;
@@ -1371,7 +1372,7 @@ function Rrp(e, t, n, r, o) {
       case "string":
       case "concatenation":
       case "arithmetic_expansion": {
-        let d = Iue(u, n, r, o);
+        let d = walkArgument(u, n, r, o);
         if (typeof d !== "string") return d;
         if (/^--?[\nA-Za-z0-9_]/.test(d) && Bp(d))
           return {
@@ -1383,13 +1384,13 @@ function Rrp(e, t, n, r, o) {
         break;
       }
       case "simple_expansion": {
-        let d = HOn(u, r, false);
+        let d = resolveSimpleExpansion(u, r, false);
         if (typeof d !== "string") return d;
         s.push(d);
         break;
       }
       case "file_redirect": {
-        let d = Kro(u, n, r, o);
+        let d = walkFileRedirect(u, n, r, o);
         if ("kind" in d) return d;
         a.push(d);
         break;
@@ -1400,7 +1401,7 @@ function Rrp(e, t, n, r, o) {
         break;
       }
       default:
-        return Yh(u);
+        return tooComplex(u);
     }
   }
   {
@@ -1435,12 +1436,12 @@ function aoo(e, t, n, r) {
   for (let s of e.children) {
     if (!s) continue;
     if (s.type === "$(" || s.type === "`" || s.type === ")") continue;
-    let i = FW(s, t, o, r);
+    let i = collectCommands(s, t, o, r);
     if (i) return i;
   }
   return null;
 }
-function Iue(e, t, n, r) {
+function walkArgument(e, t, n, r) {
   if (!e)
     return {
       kind: "too-complex",
@@ -1488,7 +1489,7 @@ function Iue(e, t, n, r) {
     case "raw_string":
       return Ara(e.text);
     case "string":
-      return Sra(e, t, n, r);
+      return walkString(e, t, n, r);
     case "concatenation": {
       if (qro.test(e.text))
         return {
@@ -1529,7 +1530,7 @@ function Iue(e, t, n, r) {
             nodeType: "concatenation",
             differential: true,
           };
-        let c = Iue(l, t, n, r);
+        let c = walkArgument(l, t, n, r);
         if (typeof c !== "string") return c;
         o += c;
       }
@@ -1556,17 +1557,17 @@ function Iue(e, t, n, r) {
       return o;
     }
     case "arithmetic_expansion": {
-      let o = loo(e);
+      let o = walkArithmetic(e);
       if (o) return o;
-      return cg;
+      return VAR_PLACEHOLDER;
     }
     case "simple_expansion":
-      return HOn(e, n, false);
+      return resolveSimpleExpansion(e, n, false);
     default:
-      return Yh(e);
+      return tooComplex(e);
   }
 }
-function Sra(e, t, n, r) {
+function walkString(e, t, n, r) {
   let o = "",
     s = -1,
     i = false,
@@ -1619,8 +1620,8 @@ function Sra(e, t, n, r) {
         break;
       }
       case "command_substitution": {
-        let u = Drp(c);
-        if (u === "DANGEROUS") return Yh(c);
+        let u = extractSafeCatHeredoc(c);
+        if (u === "DANGEROUS") return tooComplex(c);
         if (u !== null) {
           let p = u.replace(/\n+$/, "");
           if (
@@ -1635,7 +1636,7 @@ function Sra(e, t, n, r) {
               };
             ((o +=
               `
-` + Cue),
+` + CMDSUB_PLACEHOLDER),
               (a = true));
             break;
           }
@@ -1644,11 +1645,11 @@ function Sra(e, t, n, r) {
         }
         let d = aoo(c, t, n, r);
         if (d) return d;
-        ((o += Cue), (i = true));
+        ((o += CMDSUB_PLACEHOLDER), (i = true));
         break;
       }
       case "simple_expansion": {
-        let u = HOn(c, n, true);
+        let u = resolveSimpleExpansion(c, n, true);
         if (typeof u !== "string") return u;
         {
           let d = e.children[e.children.indexOf(c) + 1],
@@ -1673,17 +1674,18 @@ function Sra(e, t, n, r) {
         break;
       }
       case "arithmetic_expansion": {
-        let u = loo(c);
+        let u = walkArithmetic(c);
         if (u) return u;
-        ((o += cg), (i = true));
+        ((o += VAR_PLACEHOLDER), (i = true));
         break;
       }
       default:
-        return Yh(c);
+        return tooComplex(c);
     }
   }
   if (i) {
-    if ([...o.replaceAll(Cue, "").replaceAll(cg, "")].length <= 1) return Yh(e);
+    if ([...o.replaceAll(CMDSUB_PLACEHOLDER, "").replaceAll(VAR_PLACEHOLDER, "")].length <= 1)
+      return tooComplex(e);
   }
   if (!a && !i && !l && e.text.length > 2) {
     let c = e.text.slice(1, -1);
@@ -1698,7 +1700,7 @@ function Sra(e, t, n, r) {
   }
   return o;
 }
-function loo(e) {
+function walkArithmetic(e) {
   for (let t of e.children) {
     if (!t) continue;
     if (t.children.length === 0) {
@@ -1715,17 +1717,17 @@ function loo(e) {
       case "unary_expression":
       case "ternary_expression":
       case "parenthesized_expression": {
-        let n = loo(t);
+        let n = walkArithmetic(t);
         if (n) return n;
         break;
       }
       default:
-        return Yh(t);
+        return tooComplex(t);
     }
   }
   return null;
 }
-function Drp(e) {
+function extractSafeCatHeredoc(e) {
   let t = null;
   for (let o of e.children) {
     if (!o) continue;
@@ -1745,7 +1747,7 @@ function Drp(e) {
       if (i?.type !== "command_name" || i.text !== "cat") return null;
       n = true;
     } else if (o.type === "heredoc_redirect") {
-      if (Yro(o) !== null) return null;
+      if (walkHeredocRedirect(o) !== null) return null;
       for (let s of o.children) {
         if (s?.type === "<<-") return null;
         if (s?.type === "heredoc_body") r = s.text;
@@ -1757,7 +1759,7 @@ function Drp(e) {
   if (/\bsystem\s*\(/.test(r)) return "DANGEROUS";
   return r;
 }
-function Jro(e, t, n, r) {
+function walkVariableAssignment(e, t, n, r) {
   let o = null,
     s = "",
     i = false;
@@ -1770,13 +1772,13 @@ function Jro(e, t, n, r) {
     } else if (a.type === "command_substitution") {
       let l = aoo(a, t, n, r);
       if (l) return l;
-      s = Cue;
+      s = CMDSUB_PLACEHOLDER;
     } else if (a.type === "simple_expansion") {
-      let l = HOn(a, n, true);
+      let l = resolveSimpleExpansion(a, n, true);
       if (typeof l !== "string") return l;
       s = l;
     } else {
-      let l = Iue(a, t, n, r);
+      let l = walkArgument(a, t, n, r);
       if (typeof l !== "string") return l;
       s = l;
     }
@@ -1832,7 +1834,7 @@ function Jro(e, t, n, r) {
     isAppend: i,
   };
 }
-function HOn(e, t, n) {
+function resolveSimpleExpansion(e, t, n) {
   let r = null,
     o = false;
   for (let i of e.children) {
@@ -1845,37 +1847,37 @@ function HOn(e, t, n) {
       break;
     }
   }
-  if (r === null) return Yh(e);
+  if (r === null) return tooComplex(e);
   let s = t.get(r);
   if (s !== void 0) {
-    if (Era.has(r)) return n && Wro.has(r) && r !== "BASHPID" ? cg : Yh(e);
+    if (Era.has(r)) return n && Wro.has(r) && r !== "BASHPID" ? VAR_PLACEHOLDER : tooComplex(e);
     if (Bp(s)) {
-      if (!n) return Yh(e);
+      if (!n) return tooComplex(e);
       return s;
     }
     if (!n) {
-      if (s === "") return Yh(e);
-      if (ora.test(s)) return Yh(e);
+      if (s === "") return tooComplex(e);
+      if (ora.test(s)) return tooComplex(e);
     }
     return s;
   }
   if (r === "HOME") {
     let i = dra.homedir();
-    if (!n && (i === "" || ora.test(i))) return Yh(e);
+    if (!n && (i === "" || ora.test(i))) return tooComplex(e);
     return i;
   }
   if (n) {
-    if (Wro.has(r)) return cg;
-    if (o && (Erp.has(r) || /^[0-9]+$/.test(r))) return cg;
+    if (Wro.has(r)) return VAR_PLACEHOLDER;
+    if (o && (Erp.has(r) || /^[0-9]+$/.test(r))) return VAR_PLACEHOLDER;
   }
-  return Yh(e);
+  return tooComplex(e);
 }
 function Fro(e, t) {
   T2t(t, e);
 }
 function ara(e, t) {
   let n = () => {
-    for (let r of t.keys()) t.set(r, cg);
+    for (let r of t.keys()) t.set(r, VAR_PLACEHOLDER);
   };
   for (let r of e) {
     if (
@@ -1887,7 +1889,7 @@ function ara(e, t) {
     )
       continue;
     if (r.type === "variable_name") {
-      t.set(r.text.replace(/\\/g, ""), cg);
+      t.set(r.text.replace(/\\/g, ""), VAR_PLACEHOLDER);
       continue;
     }
     if (r.type === "word") {
@@ -1897,7 +1899,7 @@ function ara(e, t) {
         continue;
       }
       if (/^\\?[A-Za-z_][A-Za-z0-9_]*$/.test(r.text)) {
-        t.set(r.text.replace(/^\\/, ""), cg);
+        t.set(r.text.replace(/^\\/, ""), VAR_PLACEHOLDER);
         continue;
       }
     }
@@ -1960,14 +1962,14 @@ function T2t(e, t) {
   if (e.type === "variable_assignment") {
     for (let n of e.children)
       if (n?.type === "variable_name") {
-        t.set(n.text, cg);
+        t.set(n.text, VAR_PLACEHOLDER);
         break;
       }
   }
   if (e.type === "for_statement") {
     for (let n of e.children)
       if (n?.type === "variable_name") {
-        t.set(n.text, cg);
+        t.set(n.text, VAR_PLACEHOLDER);
         break;
       }
   }
@@ -1995,17 +1997,17 @@ function T2t(e, t) {
         if (/^-[-pvV]*$/.test(p)) (o.shift(), s.shift());
         else if (/^[A-Za-z_]\w*(\[[^\]]*\])?\+?=/.test(p)) {
           let f = p.match(/^[A-Za-z_][A-Za-z0-9_]*/)[0];
-          (t.set(f, cg), o.shift(), s.shift());
+          (t.set(f, VAR_PLACEHOLDER), o.shift(), s.shift());
         } else break;
       }
       ((n = o.shift()), s.shift());
     }
     let a = o,
       l = (p) => {
-        if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(p)) t.set(p, cg);
+        if (/^[A-Za-z_][A-Za-z0-9_]*$/.test(p)) t.set(p, VAR_PLACEHOLDER);
       };
     if (n === "read") {
-      t.set("REPLY", cg);
+      t.set("REPLY", VAR_PLACEHOLDER);
       let p = 0,
         f = false;
       while (p < a.length) {
@@ -2037,7 +2039,7 @@ function T2t(e, t) {
         (l(m), p++);
       }
     } else if (n === "mapfile" || n === "readarray") {
-      t.set("MAPFILE", cg);
+      t.set("MAPFILE", VAR_PLACEHOLDER);
       for (let p = 0; p < a.length; p++) {
         let f = a[p];
         if (f.startsWith("-")) {
@@ -2065,10 +2067,11 @@ function T2t(e, t) {
       ) {
         let r = n.text.replace(/['"\\]/g, ""),
           o = /^([A-Za-z_][A-Za-z0-9_]*)\+?=/.exec(r);
-        if (o) t.set(o[1], cg);
+        if (o) t.set(o[1], VAR_PLACEHOLDER);
         else {
           let s = r.indexOf("=");
-          if (s > 0 && r.lastIndexOf("$", s - 1) !== -1) for (let i of [...t.keys()]) t.set(i, cg);
+          if (s > 0 && r.lastIndexOf("$", s - 1) !== -1)
+            for (let i of [...t.keys()]) t.set(i, VAR_PLACEHOLDER);
         }
       }
   }
@@ -2077,19 +2080,19 @@ function T2t(e, t) {
 function H2t(e, t) {
   for (let [n, r] of t) {
     let o = e.get(n);
-    if (o !== void 0 && o !== r) e.set(n, cg);
+    if (o !== void 0 && o !== r) e.set(n, VAR_PLACEHOLDER);
   }
-  for (let n of e.keys()) if (!t.has(n)) e.set(n, cg);
+  for (let n of e.keys()) if (!t.has(n)) e.set(n, VAR_PLACEHOLDER);
 }
 function jro(e, t, n = false) {
   if (n) {
-    e.set(t.name, cg);
+    e.set(t.name, VAR_PLACEHOLDER);
     return;
   }
   if (t.isAppend && !e.has(t.name)) return;
   let r = e.get(t.name);
   if (r !== void 0 && r !== t.value && !t.isAppend && !Bp(t.value)) {
-    e.set(t.name, cg);
+    e.set(t.name, VAR_PLACEHOLDER);
     return;
   }
   let o = t.isAppend ? (r ?? "") + t.value : t.value;
@@ -2129,7 +2132,7 @@ function Tra(e, t) {
   }
   return null;
 }
-function Yh(e) {
+function tooComplex(e) {
   return {
     kind: "too-complex",
     reason:
@@ -2158,7 +2161,7 @@ function Zro(e) {
 function kRe(e) {
   return Zro(e) || e === "IFS" || e === "PS4" || e === "PROMPT4" || moo.has(e);
 }
-function Cra(e) {
+function checkSemantics(e) {
   let t = null;
   for (let n of e) {
     let r = n.argv;
@@ -2280,7 +2283,7 @@ function Cra(e) {
         ok: false,
         reason: "Empty command name \u2014 argv[0] may not reflect what bash runs",
       };
-    if (o.includes(Cue) || o.includes(cg))
+    if (o.includes(CMDSUB_PLACEHOLDER) || o.includes(VAR_PLACEHOLDER))
       return {
         ok: false,
         reason: "Command name is runtime-determined (placeholder argv[0])",
@@ -2358,7 +2361,9 @@ function Cra(e) {
             };
           if (
             u === "prompt" &&
-            ($rp.test(c) || (c[0] === "-" && /[A-Za-z_][A-Za-z0-9_]*\[/.test(c)) || c.includes(Cue))
+            ($rp.test(c) ||
+              (c[0] === "-" && /[A-Za-z_][A-Za-z0-9_]*\[/.test(c)) ||
+              c.includes(CMDSUB_PLACEHOLDER))
           )
             return {
               ok: false,
@@ -2384,7 +2389,7 @@ function Cra(e) {
                     };
                   else if (d === "-p") {
                     let f = c.slice(u + 1);
-                    if (/[A-Za-z_][A-Za-z0-9_]*\[/.test(f) || f.includes(Cue))
+                    if (/[A-Za-z_][A-Za-z0-9_]*\[/.test(f) || f.includes(CMDSUB_PLACEHOLDER))
                       return {
                         ok: false,
                         reason: `'read -p' fused remainder '${f}' contains a subscripted identifier or cmdsub \u2014 on zsh (-p is no-arg) this may reach matheval via a following option and run $(cmd)`,
@@ -2636,8 +2641,8 @@ function Cra(e) {
 var dra,
   pra,
   Gro,
-  Cue = "__CMDSUB_OUTPUT__",
-  cg = "__TRACKED_VAR__",
+  CMDSUB_PLACEHOLDER = "__CMDSUB_OUTPUT__",
+  VAR_PLACEHOLDER = "__TRACKED_VAR__",
   ora,
   _rp,
   brp,

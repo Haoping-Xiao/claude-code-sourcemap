@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module n9l
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.0093  score=0.1071  fileCov=0.0101
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n9l] deps: fn
 t9l = {
@@ -24,7 +24,7 @@ function U2o(e, t) {
     },
   };
 }
-async function o9l() {
+async function ClaudeAuthProvider() {
   let e = process.env.CLAUDE_CODE_ULTRAREVIEW_PREFLIGHT_FIXTURE;
   if (e) {
     let t = r9l().safeParse(Ft(e));

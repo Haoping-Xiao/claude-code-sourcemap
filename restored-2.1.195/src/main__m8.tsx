@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fes
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0095  score=0.1884  fileCov=0.0099
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module fes] (exports=ONm, module=rVc)
 var ONm = {};
@@ -10,7 +10,7 @@ var rVc = {
   exports: ONm,
 };
 rVc.exports = require("/$bunfs/root/audio-capture.node");
-function aon(e) {
+function run(e) {
   let t = false,
     n,
     r = {
@@ -131,7 +131,7 @@ function dy() {
     }.VERSION
   }`;
 }
-function _x() {
+function main() {
   switch (process.env.CLAUDE_CODE_ENTRYPOINT) {
     case "claude-vscode":
       return "claude_code_vscode";

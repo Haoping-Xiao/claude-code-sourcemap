@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module bUt
 // matched 2.1.88 source: src/utils/imagePaste.ts
 // class=modified  jaccard=0.0628  score=0.1694  fileCov=0.0907
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bUt] deps: At
 X8d = /[\u2018-\u201F]/;
-function J8d() {
+function getClipboardCommands() {
   let t = qE(),
     n = "claude_cli_latest_screenshot.png",
     r = {
@@ -82,7 +82,7 @@ async function g8i() {
 async function k0e(e) {
   let t;
   try {
-    t = J8d();
+    t = getClipboardCommands();
   } catch (o) {
     return (ke(o), Le("clipboard_read", "construct_failed"), null);
   }
@@ -134,23 +134,23 @@ function h8i(e) {
     return e.slice(1, -1);
   return e;
 }
-function _8i(e) {
+function stripBackslashEscapes(e) {
   if (Vt() === "wsl" && y8i.test(e)) return e;
   let r = `__DOUBLE_BACKSLASH_${m8i.randomBytes(8).toString("hex")}__`;
   return e.replaceAll("\\\\", r).replace(/\\(.)/g, "$1").replace(new RegExp(r, "g"), "\\");
 }
 function GQr(e) {
   let t = h8i(e.trim()),
-    n = _8i(t);
+    n = stripBackslashEscapes(t);
   return IDn.test(n);
 }
 function Z8d(e) {
   let t = h8i(e.trim()),
-    n = _8i(t);
+    n = stripBackslashEscapes(t);
   if (IDn.test(n)) return n;
   return null;
 }
-async function b8i(e, t) {
+async function tryReadImageFromPath(e, t) {
   let n = Z8d(e);
   if (!n) return null;
   let r = n;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eTc
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0112  score=0.1479  fileCov=0.012
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eTc] deps: ft, Ko, AMe, X0, dtn, Ye, Du, KHc, Uoe, y3, Jt, nKo
 ((YHc = R(lt(), 1)),
@@ -67,7 +67,7 @@ var oTc,
       request: e,
       onDone: t,
     }),
-  Z_m = ({ payload: e, answer: t }) => {
+  callMCPToolWithUrlElicitationRetry = ({ payload: e, answer: t }) => {
     let n = {
       serverName: e.serverName,
       requestId: `dialog-${e.params.elicitationId}`,

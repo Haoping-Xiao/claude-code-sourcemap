@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wYe
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
 // class=modified  jaccard=0.4312  score=0.7464  fileCov=0.5052
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runBridgeLoop, runBridgeHeadless, parseArgs, isServerError, isConnectionError, bridgeMain, BridgeHeadlessPermanentError
 function Stc(e) {
@@ -19,7 +19,7 @@ function Htc() {
   if (dm() || !process.argv[1]) return [];
   return [process.argv[1]];
 }
-function ZYf(e, t, n) {
+function safeSpawn(e, t, n) {
   try {
     return e.spawn(t, n);
   } catch (r) {
@@ -224,7 +224,8 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           s.logVerbose(`Session ${me} interrupted`);
           break;
       }
-      if (he !== "interrupted" && ie) (_.add(ie), $(nQt(r, t, ie, s, a.stopWorkBaseDelayMs)));
+      if (he !== "interrupted" && ie)
+        (_.add(ie), $(stopWorkWithRetry(r, t, ie, s, a.stopWorkBaseDelayMs)));
       let we = he === "failed" && !p.aborted && !J;
       if (we) A.add(me);
       let Ce = S.get(me);
@@ -359,7 +360,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           (s.logError(`Failed to decode work secret for workId=${pe.id}: ${ue}`),
           G("tengu_bridge_work_secret_failed", {}),
           _.add(pe.id),
-          $(nQt(r, t, pe.id, s, a.stopWorkBaseDelayMs)),
+          $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)),
           he)
         ) {
           let we = P.signal();
@@ -448,7 +449,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                     level: "error",
                   });
                 else ke(Error(`registerWorker failed: ${vt}`));
-                (_.add(pe.id), $(nQt(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
+                (_.add(pe.id), $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
               }
             if (!Ie) break;
           } else Ce = ytc(e.sessionIngressUrl, ye);
@@ -475,7 +476,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                   level: "error",
                 }),
                 _.add(pe.id),
-                $(nQt(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
+                $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
               break;
             }
           }
@@ -483,7 +484,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           let Ue = oP(ye),
             tt = ++k;
           D.set(ye, tt);
-          let bt = ZYf(
+          let bt = safeSpawn(
             o,
             {
               sessionId: ye,
@@ -534,7 +535,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                     force: true,
                   }),
                 ));
-            (_.add(pe.id), $(nQt(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
+            (_.add(pe.id), $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
             break;
           }
           let Ke = bt,
@@ -807,7 +808,7 @@ function pGo(e) {
 function rQt(e) {
   return e >= 1000 ? `${(e / 1000).toFixed(1)}s` : `${Math.round(e)}ms`;
 }
-async function nQt(e, t, n, r, o = 1000) {
+async function stopWorkWithRetry(e, t, n, r, o = 1000) {
   for (let i = 1; i <= 3; i++)
     try {
       (await e.stopWork(t, n, false),
@@ -875,13 +876,13 @@ async function uGo(e, t, n) {
     t.logStatus(`removed worktree ${e.worktreePath}`);
   else t.logStatus(`worktree removal failed, kept: ${e.worktreePath}`);
 }
-function n7f(e) {
+function parseSpawnValue(e) {
   if (e === "session") return "single-session";
   if (e === "same-dir") return "same-dir";
   if (e === "worktree") return "worktree";
   return `--spawn requires one of: ${t7f.join(", ")} (got: ${e ?? "<missing>"})`;
 }
-function r7f(e) {
+function parseCapacityValue(e) {
   let t = e === void 0 ? NaN : parseInt(e, 10);
   if (isNaN(t) || t < 1) return `--capacity requires a positive integer (got: ${e ?? "<missing>"})`;
   return t;
@@ -924,13 +925,13 @@ function parseArgs(e) {
     else if (y === "--spawn" || y.startsWith("--spawn=")) {
       if (l !== void 0) return g("--spawn may only be specified once");
       let b = y.startsWith("--spawn=") ? y.slice(8) : e[++h],
-        _ = n7f(b);
+        _ = parseSpawnValue(b);
       if (_ === "single-session" || _ === "same-dir" || _ === "worktree") l = _;
       else return g(_);
     } else if (y === "--capacity" || y.startsWith("--capacity=")) {
       if (c !== void 0) return g("--capacity may only be specified once");
       let b = y.startsWith("--capacity=") ? y.slice(11) : e[++h],
-        _ = r7f(b);
+        _ = parseCapacityValue(b);
       if (typeof _ === "number") c = _;
       else return g(_);
     } else if (y === "--create-session-in-dir") u = true;
@@ -1632,7 +1633,7 @@ async function runBridgeHeadless(e, t) {
       permissionMode: e.permissionMode,
       onDebug: r,
     }),
-    M = d7f(r);
+    M = createHeadlessBridgeLogger(r);
   M.printBanner(k, P);
   let N;
   if (e.createSessionOnStart) {
@@ -1693,7 +1694,7 @@ async function runBridgeHeadless(e, t) {
     if (B) clearInterval(B);
   }
 }
-function d7f(e) {
+function createHeadlessBridgeLogger(e) {
   let t = () => {};
   return {
     printBanner: (n, r) =>

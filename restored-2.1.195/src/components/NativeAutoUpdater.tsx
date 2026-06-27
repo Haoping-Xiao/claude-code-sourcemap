@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ihc
 // matched 2.1.88 source: src/components/NativeAutoUpdater.tsx
 // class=modified  jaccard=0.2536  score=0.4185  fileCov=0.3915
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ihc] deps: kt, Du, J8o, Ye, uo, FEe, er, je, MPe, fn, kgt, A9e, BJ, LOe, gm
 ((Q8o = require("path")), (Gz = R(rt(), 1)), (WT = R(se(), 1)));
-function adm(e) {
+function getErrorType(e) {
   if (e.includes("timeout")) return "timeout";
   if (e.includes("Checksum mismatch")) return "checksum_mismatch";
   if (e.includes("ENOENT") || e.includes("not found")) return "not_found";
@@ -44,7 +44,12 @@ function adm(e) {
     return "swap_failure";
   return "unknown";
 }
-function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verbose: r }) {
+function NativeAutoUpdater({
+  isUpdating: e,
+  onChangeIsUpdating: t,
+  showSuccessMessage: n,
+  verbose: r,
+}) {
   let o = Ht((b) => b.autoUpdaterResult),
     s = Ho(),
     [i, a] = CZ.useState({
@@ -172,7 +177,7 @@ function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
           version_to: null,
           error_code: null,
         }));
-      let C = adm(v),
+      let C = getErrorType(v),
         x = xd(S) ?? "none";
       (G("tengu_native_auto_updater_fail", {
         latency_ms: A,

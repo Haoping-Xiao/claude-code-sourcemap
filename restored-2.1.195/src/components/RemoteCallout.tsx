@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hir
 // matched 2.1.88 source: src/components/RemoteCallout.tsx
 // class=modified  jaccard=0.2161  score=0.274  fileCov=0.5056
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hir] deps: Xr, Un
 ((oZl = {
@@ -49,7 +49,7 @@
       should_show_app_upgrade_message: H.boolean().default(false),
     }),
   )));
-function sZl({ onDone: e }) {
+function RemoteCallout({ onDone: e }) {
   let t = HYe.useRef(e);
   t.current = e;
   let n = HYe.useCallback(() => {

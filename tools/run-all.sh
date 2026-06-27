@@ -27,6 +27,9 @@ $NODE tools/04-build-ref-index.mjs restored-src "work/$VERSION/ref-2.1.88.index.
 echo "==> [5/7] 跨版本模块匹配"
 $NODE tools/05-match-modules.mjs "work/$VERSION/modules" "work/$VERSION/ref-2.1.88.index.json" "work/$VERSION/match-report.json"
 
+echo "==> [5.5/7] 跨版本命名对齐 (用 2.1.88 恢复声明原名)"
+$NODE tools/09-align-names.mjs
+
 echo "==> [6/7] 生成还原源码树 restored-$VERSION/"
 $NODE tools/06-restore.mjs
 

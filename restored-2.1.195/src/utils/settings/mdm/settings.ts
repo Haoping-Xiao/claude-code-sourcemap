@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ymn
 // matched 2.1.88 source: src/utils/settings/mdm/settings.ts
 // class=modified  jaccard=0.2905  score=0.7674  fileCov=0.3185
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ymn] deps: mCe
 Jws = require("child_process");
-function x1u() {
+function startMdmSettingsLoad() {
   if (_mn) return;
   _mn = (async () => {
     let e = Date.now(),
@@ -27,7 +27,7 @@ function x1u() {
   })();
 }
 async function Uet() {
-  if (!_mn) x1u();
+  if (!_mn) startMdmSettingsLoad();
   await _mn;
 }
 function Uae() {
@@ -59,7 +59,7 @@ function TLr(e, t) {
     errors: o,
   };
 }
-function Zws(e, t = "Settings") {
+function parseRegQueryStdout(e, t = "Settings") {
   let n = e.split(/\r?\n/),
     r = t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
     o = new RegExp(`^\\s+${r}\\s+REG_(?:EXPAND_)?SZ\\s+(.*)$`, "i");
@@ -85,7 +85,7 @@ function oCs(e) {
   }
   let n = null;
   if (e.hklmStdout) {
-    let i = Zws(e.hklmStdout);
+    let i = parseRegQueryStdout(e.hklmStdout);
     if (i) n = TLr(i, `Registry: ${Ifn}\\${vet}`);
   }
   if (n) t.push(...n.errors);
@@ -99,7 +99,7 @@ function oCs(e) {
     o = MRt(),
     s = false;
   if (o) {
-    if (((s = n?.settings.wslInheritsWindowsSettings === true || R1u()), !s))
+    if (((s = n?.settings.wslInheritsWindowsSettings === true || hasManagedSettingsFile()), !s))
       return {
         mdm: r,
         hkcu: xCe,
@@ -122,7 +122,7 @@ function oCs(e) {
       wslInherits: s,
     };
   if (e.hkcuStdout) {
-    let i = Zws(e.hkcuStdout);
+    let i = parseRegQueryStdout(e.hkcuStdout);
     if (i) {
       let a = TLr(i, `Registry: ${xfn}\\${vet}`);
       if (!o || a.settings.wslInheritsWindowsSettings === true) {
@@ -193,7 +193,7 @@ function CLr() {
   } catch {}
   return e.join("\x01");
 }
-function R1u() {
+function hasManagedSettingsFile() {
   function e(t) {
     try {
       let n = Ia(XC(t), false);

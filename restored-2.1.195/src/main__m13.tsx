@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DOc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0067  score=0.1372  fileCov=0.007
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function MOc(e) {
   let { regularMcpConfigs: t, claudeaiConfigPromise: n, state: r } = e,
@@ -26,7 +26,7 @@ function MOc(e) {
         o,
         () =>
           n.then((p) =>
-            Mxm({
+            run({
               claudeaiConfigs: p,
               regularMcpConfigs: t,
               state: r,
@@ -156,7 +156,7 @@ async function H7o(e, t, n) {
       `[MCP] ${n}: ${l}/${s.length} not ready after ${i}ms \u2014 proceeding; background connection continues`,
     );
 }
-async function Mxm(e) {
+async function run(e) {
   let { claudeaiConfigs: t, regularMcpConfigs: n, state: r, deferConnect: o } = e;
   if (Object.keys(t).length > 0) {
     let l = new Set();

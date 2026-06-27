@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Val
 // matched 2.1.88 source: src/tasks/pillLabel.ts
 // class=modified  jaccard=0.5028  score=0.5918  fileCov=0.7697
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Val]
 qal = ["Baked", "Brewed", "Churned", "Cogitated", "Cooked", "Crunched", "Saut\xE9ed", "Worked"];
-function l_t(e) {
+function getPillLabel(e) {
   let t = e[0];
   if (!t) return null;
   let n = e.length;

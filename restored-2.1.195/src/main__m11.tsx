@@ -16,7 +16,7 @@ Ajr();
 ((MZo = (l$(), ro(qW))), (G5c = (Eoe(), ro(Ope))));
 pa("main_tsx_imports_loaded");
 if (I1m()) process.exit(1);
-async function runBgSpare(e) {
+async function run(e) {
   let t = e[0];
   if (!t)
     (process.stderr.write(`[bg-spare] missing claim sock path

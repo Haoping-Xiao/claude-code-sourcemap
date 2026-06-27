@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Cao
 // matched 2.1.88 source: src/services/compact/prompt.ts
 // class=modified  jaccard=0.1454  score=0.3835  fileCov=0.1897
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function yNn(e) {
   let t = (r) =>
@@ -23,7 +23,7 @@ function _Nn(e) {
       ?.text.trim() || null
   );
 }
-function Rca(e, t = "from") {
+function NO_TOOLS_PREAMBLE(e, t = "from") {
   let r =
     `CRITICAL: Respond with TEXT ONLY. Do NOT call any tools.
 
@@ -252,7 +252,7 @@ ${r.trim()}`,
     t.trim()
   );
 }
-function Kjt(e, t, n, r, o) {
+function getCompactUserSummaryMessage(e, t, n, r, o) {
   let i = `This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
 
 ${Zcp(e)}`;

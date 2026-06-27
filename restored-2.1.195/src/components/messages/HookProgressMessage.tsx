@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pzn
 // matched 2.1.88 source: src/components/messages/HookProgressMessage.tsx
 // class=modified  jaccard=0.3899  score=0.4899  fileCov=0.6565
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pzn]
 Qsl = R(rt(), 1);
@@ -23,7 +23,7 @@ s6e = class s6e extends Qsl.Component {
     return this.props.children;
   }
 };
-function Mzn(e) {
+function HookProgressMessage(e) {
   let t = Zsl.c(22),
     { hookEvent: n, lookups: r, toolUseID: o, isTranscriptMode: s } = e,
     i;

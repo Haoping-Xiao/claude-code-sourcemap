@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qhl
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0265  score=0.3446  fileCov=0.0279
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qhl] deps: Xr, ql, Ye, ii, wr, Jt
 ((F0o = R(se(), 1)),
@@ -81,7 +81,7 @@ Jhl = ti({
     });
   },
 });
-function fbt(e, t, n) {
+function readLiteMetadata(e, t, n) {
   let { head: r, tail: o, mtime: s, size: i } = t,
     a = r.indexOf(`
 `),
@@ -164,7 +164,7 @@ async function Zhl(e, t) {
   let n = await Wpn(e.filePath);
   if (!n) return null;
   if (!t && KEs(n.head, n.tail)) return null;
-  let r = fbt(e.sessionId, n, e.projectPath);
+  let r = readLiteMetadata(e.sessionId, n, e.projectPath);
   if (!r) return null;
   if (e.mtime) r.lastModified = e.mtime;
   return r;

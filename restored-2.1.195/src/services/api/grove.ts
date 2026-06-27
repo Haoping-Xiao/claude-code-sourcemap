@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module p4n
 // matched 2.1.88 source: src/services/api/grove.ts
 // class=modified  jaccard=0.2664  score=0.6271  fileCov=0.3166
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p4n] deps: Ye, kt, W2e, oo, er, d5e, SEe
 ((H1a = R(lt(), 1)), (DWt = R(se(), 1)));
-async function Rho() {
+async function markGroveNoticeViewed() {
   try {
     (await oL(async () => {
       let e = await Os.post("/api/oauth/account/grove_notice_viewed", {});
@@ -22,7 +22,7 @@ async function Rho() {
       Le("api_grove_notice_mark_viewed", "request_failed"));
   }
 }
-async function f4n(e) {
+async function getGroveSettings(e) {
   try {
     (await oL(async () => {
       let t = await Os.patch("/api/oauth/account/settings", {
@@ -40,7 +40,7 @@ async function f4n(e) {
       Le("api_grove_settings_update", "request_failed"));
   }
 }
-async function Tft() {
+async function isQualifiedForGrove() {
   if (!Y4e()) return false;
   let e = Lc()?.accountUuid;
   if (!e) return false;
@@ -49,18 +49,18 @@ async function Tft() {
   if (!n)
     return (
       T("Grove: No cache, fetching config in background (dialog skipped this session)"),
-      C1a(e),
+      fetchAndStoreGroveConfig(e),
       false
     );
   if (r - n.timestamp > I1a)
     return (
       T("Grove: Cache stale, returning cached data and refreshing in background"),
-      C1a(e),
+      fetchAndStoreGroveConfig(e),
       n.grove_enabled
     );
   return (T("Grove: Using fresh cached config"), n.grove_enabled);
 }
-async function C1a(e) {
+async function fetchAndStoreGroveConfig(e) {
   try {
     let t = await JDe();
     if (!t.success) return;
@@ -102,7 +102,7 @@ function Lho(e, t, n) {
     return a === null || a === void 0;
   }
 }
-async function k1a() {
+async function checkGroveForNonInteractive() {
   let [e, t] = await Promise.all([Fre(), JDe()]);
   if (Lho(e, t, false)) {
     let r = t.success ? t.data : null;
@@ -116,7 +116,7 @@ async function k1a() {
 An update to our Consumer Terms and Privacy Policy will take effect on October 8, 2025. Run \`claude\` to review the updated terms.
 
 `),
-        await Rho());
+        await markGroveNoticeViewed());
     else
       (VJe(`
 [ACTION REQUIRED] An update to our Consumer Terms and Privacy Policy has taken effect on October 8, 2025. You must run \`claude\` to review the updated terms.

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TEc
 // matched 2.1.88 source: src/components/permissions/PermissionRuleExplanation.tsx
 // class=modified  jaccard=0.3933  score=0.5253  fileCov=0.6102
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TEc] deps: PR, kt, Du, EJt, Ed, Ye, uo, S$, Il, je, At, vn, Gy, _m, Jt, rvo, S7n, SEc, L6t
 ((AEc = R(lt(), 1)), (wNe = R(se(), 1)));
@@ -23,7 +23,7 @@ function CEc(e) {
   }
   return;
 }
-function Pzo(e, t, n) {
+function stringsForDecisionReason(e, t, n) {
   if (!e) return null;
   if (e.type === "classifier") {
     if (e.classifier === "auto-mode")
@@ -42,7 +42,7 @@ ${e.reason}`,
   if (e.type === "subcommandResults") {
     let r = CEc(e);
     if (r)
-      return Pzo(
+      return stringsForDecisionReason(
         {
           type: "rule",
           rule: r,
@@ -52,7 +52,7 @@ ${e.reason}`,
       );
     for (let o of e.reasons.values())
       if (o.behavior === "ask" || o.behavior === "passthrough") {
-        let s = Pzo(o.decisionReason, t, n);
+        let s = stringsForDecisionReason(o.decisionReason, t, n);
         if (s) return s;
       }
   }
@@ -95,14 +95,14 @@ ${e.reason}`
       return null;
   }
 }
-function _2(e) {
+function PermissionRuleExplanation(e) {
   let t = wEc.c(12),
     { permissionResult: n, toolType: r } = e,
     o = Ht(Shm),
     s = n?.decisionReason,
     i;
   if (t[0] !== o || t[1] !== s || t[2] !== r)
-    ((i = Pzo(s, r, o)), (t[0] = o), (t[1] = s), (t[2] = r), (t[3] = i));
+    ((i = stringsForDecisionReason(s, r, o)), (t[0] = o), (t[1] = s), (t[2] = r), (t[3] = i));
   else i = t[3];
   let a = i;
   if (!a) return null;

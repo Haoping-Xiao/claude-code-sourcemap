@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module X6l
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0038  score=0.1452  fileCov=0.0039
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X6l] deps: je, At, Is
 K6l = require("path");
-async function w1e(e = {}) {
+async function run(e = {}) {
   let { cmd: t, prefixArgs: n } = e.launcher ?? CF(),
     r = ML(),
     o = e.extraArgs ?? [],

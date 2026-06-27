@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ZYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ModelStep.tsx
 // class=modified  jaccard=0.2743  score=0.4119  fileCov=0.4509
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZYl] deps: Ye, Cc, Vl, Bs, Ko, wb, vH
 ((JYl = R(lt(), 1)), (sTe = R(se(), 1)));
-function t7l() {
+function ModelStep() {
   let e = e7l.c(8),
     { goNext: t, goBack: n, updateWizardData: r, wizardData: o } = Eu(),
     s;

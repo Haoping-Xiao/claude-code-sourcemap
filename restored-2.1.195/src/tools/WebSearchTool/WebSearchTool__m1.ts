@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module $_l
 // matched 2.1.88 source: src/tools/WebSearchTool/WebSearchTool.ts
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.1026  score=0.8999  fileCov=0.1038
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $_l] deps: ql, Ye, es
 XAe = R(se(), 1);
-function Rgf(e) {
+function makeToolSchema(e) {
   return {
     type: "web_search_20250305",
     name: "web_search",
@@ -15,7 +15,7 @@ function Rgf(e) {
     max_uses: 8,
   };
 }
-function Lgf(e, t, n) {
+function makeOutputFromSearchResponse(e, t, n) {
   let r = [],
     o = "",
     s = true,

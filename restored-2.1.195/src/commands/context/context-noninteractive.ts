@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module A1l
 // matched 2.1.88 source: src/commands/context/context-noninteractive.ts
 // class=modified  jaccard=0.3083  score=0.7559  fileCov=0.3424
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A1l] deps: Ye, y1l, oc, es, Ao, vf, sr, S1l, xoe
 ((Xtr = R(lt(), 1)), (Pi = R(se(), 1)));
 zPf = ["Project", "User", "Managed", "Plugin", "MCP", "Built-in"];
-function N7t(e, t) {
+function formatContextAsMarkdownTable(e, t) {
   let {
       categories: n,
       totalTokens: r,

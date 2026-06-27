@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eqe
 // matched 2.1.88 source: src/utils/systemDirectories.ts
 // class=modified  jaccard=0.6218  score=0.7649  fileCov=0.7687
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eqe] deps: je, At, ys, Hu
 ((yUn = require("path")),
@@ -12,7 +12,7 @@
     MAX_FILE_COUNT: 1e5,
     MAX_COMPRESSION_RATIO: 50,
   }));
-function iCa(e) {
+function getSystemDirectories(e) {
   let t = e?.platform ?? Vt(),
     n = e?.homedir ?? sCa.homedir(),
     r = e?.env ?? process.env,

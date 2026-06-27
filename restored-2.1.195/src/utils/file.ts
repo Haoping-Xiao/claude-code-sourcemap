@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hu
 // matched 2.1.88 source: src/utils/file.ts
 // class=modified  jaccard=0.2419  score=0.3572  fileCov=0.4285
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hu] deps: Rm, Lo, ys, Is, sj, jS
 ((Vpn = require("os")), (MO = require("path")));
@@ -134,7 +134,7 @@ async function aCe(e, t, n, r) {
     );
   return Math.floor(i.mtimeMs);
 }
-function Kpn(e) {
+function detectFileEncoding(e) {
   try {
     let t = qt(),
       { resolvedPath: n } = jd(t, e);
@@ -281,7 +281,7 @@ function aAs(e, t) {
     } catch {}
   throw e;
 }
-function aRt(
+function writeFileSyncAndFlush_DEPRECATED(
   e,
   t,
   n = {
@@ -607,7 +607,7 @@ async function r0r(
     throw u;
   }
 }
-function lAs() {
+function getDesktopPath() {
   let e = Vt(),
     t = e0r.homedir();
   if (e === "macos") return Wf.join(t, "Desktop");
@@ -667,4 +667,4 @@ var Zkr,
   set =
     "File is read-only \u2014 it has not been opened for edit in Perforce. Run `p4 edit <file>` to check it out, then retry. Do not chmod the file writable; that bypasses Perforce tracking.",
   zpn,
-  $B = "Note: your current working directory is";
+  FILE_NOT_FOUND_CWD_NOTE = "Note: your current working directory is";

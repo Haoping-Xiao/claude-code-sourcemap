@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GPc
 // matched 2.1.88 source: src/screens/REPL.tsx
 // class=modified  jaccard=0.1934  score=0.318  fileCov=0.3305
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TranscriptHelpMenu, REPL
 function hIm() {
@@ -10,7 +10,7 @@ function hIm() {
     outcome: $e("abandoned"),
   });
 }
-function qPc(e) {
+function TranscriptModeFooter(e) {
   let t = Wtn.c(17),
     { showAllInTranscript: n, virtualScroll: r, searchBadge: o, suppressShowAll: s, status: i } = e,
     a = s === void 0 ? false : s,
@@ -305,7 +305,7 @@ function TranscriptHelpMenu() {
   else S = e[22];
   return S;
 }
-function _Im({
+function TranscriptSearchBar({
   jumpRef: e,
   count: t,
   current: n,
@@ -4798,7 +4798,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                   children: [Xt, hn, !N && qo.jsx(LYo, {})],
                 }),
                 bottom: dge
-                  ? qo.jsx(_Im, {
+                  ? qo.jsx(TranscriptSearchBar, {
                       jumpRef: R2,
                       initialQuery: "",
                       count: HBe,
@@ -4817,7 +4817,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                     })
                   : nn
                     ? qo.jsx(TranscriptHelpMenu, {})
-                    : qo.jsx(qPc, {
+                    : qo.jsx(TranscriptModeFooter, {
                         showAllInTranscript: vt,
                         virtualScroll: true,
                         status: Hn || void 0,
@@ -4835,7 +4835,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                   Xt,
                   hn,
                   !N && qo.jsx(LYo, {}),
-                  qo.jsx(qPc, {
+                  qo.jsx(TranscriptModeFooter, {
                     showAllInTranscript: vt,
                     virtualScroll: false,
                     suppressShowAll: en,

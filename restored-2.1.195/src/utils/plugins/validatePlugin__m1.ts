@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vrr
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
 // class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0545  score=0.1061  fileCov=0.1007
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vrr] deps: Xr, At, Iv, Jt, YPn, her, ZC, D$o
 ((Gq = require("fs/promises")),
@@ -48,7 +48,7 @@
   (Gjl = new Set(["themes", "monitors", "outputStyles", "evals"])));
 async function wrr(e, t = {}) {
   let n = [],
-    r = await IBf(e);
+    r = await validateMarketplaceManifest(e);
   if (!r.ok)
     return {
       ok: false,
@@ -206,7 +206,7 @@ async function Crr(e, t) {
 function EXt(e, t) {
   return t === void 0 ? `${e.pluginName} ${e.version}` : t.replaceAll("%s", e.version);
 }
-async function IBf(e) {
+async function validateMarketplaceManifest(e) {
   let t = rx.resolve(e),
     n;
   try {

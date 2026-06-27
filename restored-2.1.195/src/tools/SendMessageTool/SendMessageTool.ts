@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WEl
 // matched 2.1.88 source: src/tools/SendMessageTool/SendMessageTool.ts
 // class=modified  jaccard=0.2248  score=0.6212  fileCov=0.2605
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: inFlightTeammateResumes, SendMessageTool, SendMessagePreconditionError
 // [unwrapped __esm module WEl] deps: ql, Ye, Jt
@@ -30,7 +30,7 @@ function $Xn(e) {
   if (e.agentId) return zEl(e, e.agentId);
   return Oh() || (wf() ? "teammate" : Hd);
 }
-async function xyf(e, t, n, r) {
+async function handleMessage(e, t, n, r) {
   let o = r.getAppState(),
     s = rp(o.teamContext);
   if (!s)
@@ -81,7 +81,7 @@ async function xyf(e, t, n, r) {
     },
   };
 }
-async function kyf(e, t, n) {
+async function handleShutdownRequest(e, t, n) {
   let r = n.getAppState(),
     o = rp(r.teamContext),
     s = $Xn(n),
@@ -112,7 +112,7 @@ async function kyf(e, t, n) {
     }
   );
 }
-async function Ryf(e, t) {
+async function handleShutdownApproval(e, t) {
   let n = rp(),
     r = PD(),
     o = Oh() || "teammate";
@@ -181,7 +181,7 @@ async function Ryf(e, t) {
     },
   };
 }
-async function Lyf(e, t) {
+async function handleShutdownRejection(e, t) {
   let n = rp(),
     r = Oh() || "teammate",
     o = QTo({
@@ -209,7 +209,7 @@ async function Lyf(e, t) {
     }
   );
 }
-async function Dyf(e, t, n, r) {
+async function handlePlanApproval(e, t, n, r) {
   let o = r.getAppState(),
     s = o.teamContext?.teamName;
   if (!wM(o.teamContext))
@@ -247,7 +247,7 @@ async function Dyf(e, t, n, r) {
     }
   );
 }
-async function Pyf(e, t, n, r) {
+async function handlePlanRejection(e, t, n, r) {
   let o = r.getAppState(),
     s = o.teamContext?.teamName;
   if (!wM(o.teamContext))

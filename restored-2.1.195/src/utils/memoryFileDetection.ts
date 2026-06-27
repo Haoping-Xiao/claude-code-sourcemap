@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module M8t
 // matched 2.1.88 source: src/utils/memoryFileDetection.ts
 // class=modified  jaccard=0.2591  score=0.786  fileCov=0.2787
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function nEf(e) {
   return e.split(q$e.win32.sep).join(q$e.posix.sep);
@@ -11,7 +11,7 @@ function sHe(e) {
   let t = nEf(e);
   return bDo ? t.toLowerCase() : t;
 }
-function bKt(e) {
+function detectSessionFileType(e) {
   let t = tr(),
     n = sHe(e),
     r = sHe(t);
@@ -19,7 +19,7 @@ function bKt(e) {
   if (n.includes("/projects/") && n.endsWith(".jsonl")) return "session_transcript";
   return null;
 }
-function vJn(e) {
+function detectSessionPatternType(e) {
   let t = e.split(q$e.win32.sep).join(q$e.posix.sep);
   if (t.includes(".jsonl") || (t.includes("projects") && t.includes("*.jsonl")))
     return "session_transcript";
@@ -41,11 +41,11 @@ function rEf(e) {
 function Eze(e) {
   if (Sze(e)) return true;
   if (P7(e)) return true;
-  if (bKt(e) !== null) return true;
+  if (detectSessionFileType(e) !== null) return true;
   if (rEf(e)) return true;
   return false;
 }
-function SDo(e) {
+function isMemoryDirectory(e) {
   let t = q$e.normalize(e),
     n = sHe(t);
   if (lu() && (n.includes("/agent-memory/") || n.includes("/agent-memory-local/"))) return true;
@@ -83,12 +83,12 @@ function gvl(e) {
   for (let l of a) {
     let c = l.replace(/[,;|&>]+$/, ""),
       u = bDo ? NFe(c) : c;
-    if (Eze(u) || SDo(u)) return true;
+    if (Eze(u) || isMemoryDirectory(u)) return true;
   }
   return false;
 }
-function hvl(e) {
-  if (vJn(e) !== null) return true;
+function isAutoManagedMemoryPattern(e) {
+  if (detectSessionPatternType(e) !== null) return true;
   if (
     lu() &&
     (e.replaceAll("\\", "/").includes("agent-memory/") ||

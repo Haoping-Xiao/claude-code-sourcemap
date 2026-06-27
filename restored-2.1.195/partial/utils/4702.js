@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ONl
 // matched 2.1.88 source: src/components/sandbox/SandboxDoctorSection.tsx
 // class=partial  jaccard=0.2472  score=0.3513  fileCov=0.4548
-// note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ONl] deps: SC, Ye, gm, xoe, BNo
 bnr = R(lt(), 1), kEt = R(rt(), 1), pR = R(se(), 1);
-function BNl() {
+function SandboxDoctorSection() {
   let e = NNl.c(2);
   if (!xo.isSupportedPlatform()) return null;
   if (!xo.isSandboxEnabledInSettings()) return null;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GYr
 // matched 2.1.88 source: src/utils/fullscreen.ts
 // class=modified  jaccard=0.1792  score=0.2418  fileCov=0.409
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GYr]
 jYr = new Set();
@@ -17,14 +17,15 @@ function qBd() {
     downsellGateCached: void 0,
   };
 }
-function VBd() {
+function isTmuxControlModeEnvHeuristic() {
   if (!process.env.TMUX) return false;
   if (process.env.TERM_PROGRAM !== "iTerm.app") return false;
   let e = process.env.TERM ?? "";
   return !e.startsWith("screen") && !e.startsWith("tmux");
 }
-function zBd(e) {
-  if (((e.tmuxControlModeProbed = VBd()), e.tmuxControlModeProbed)) return;
+function probeTmuxControlModeSync(e) {
+  if (((e.tmuxControlModeProbed = isTmuxControlModeEnvHeuristic()), e.tmuxControlModeProbed))
+    return;
   if (!process.env.TMUX) return;
   if (process.env.TERM_PROGRAM) return;
   let t = JZe("tmux");
@@ -45,7 +46,7 @@ function zBd(e) {
   e.tmuxControlModeProbed = n.stdout.trim() === "1";
 }
 function ane(e = ine) {
-  if (e.tmuxControlModeProbed === void 0) zBd(e);
+  if (e.tmuxControlModeProbed === void 0) probeTmuxControlModeSync(e);
   return e.tmuxControlModeProbed ?? false;
 }
 function WYr() {
@@ -57,7 +58,7 @@ function qYr() {
     Oe.CLAUDE_CODE_NO_FLICKER === false || ut(process.env.CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN)
   );
 }
-function Ns(e = ine) {
+function isFullscreenEnvEnabled(e = ine) {
   if (Q2() === "local-agent") return false;
   if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return true;
   if (UD()) return false;
@@ -152,9 +153,9 @@ function Tit() {
   return "full";
 }
 function lne(e = ine) {
-  return Ax() && Ns(e);
+  return Ax() && isFullscreenEnvEnabled(e);
 }
-async function YUi(e = ine) {
+async function maybeGetTmuxMouseHint(e = ine) {
   if (!process.env.TMUX) return null;
   if (!lne(e) || ane(e)) return null;
   if (e.checkedTmuxMouseHint) return null;

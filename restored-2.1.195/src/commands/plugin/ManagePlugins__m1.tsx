@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module Arr
 // matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
 // class=modified (alt of src/commands/plugin/ManagePlugins.tsx)  jaccard=0.0665  score=0.5063  fileCov=0.0711
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: scaleCharsToTokens, getPluginInventory, computePluginTokenCost
 // [unwrapped __esm module Arr] deps: je, At, ys, vn, Jt, B1
 ((djl = require("crypto")), (i1e = require("fs/promises")), (pjl = require("path")));
-async function getPluginInventory(e, t) {
+async function PluginComponentsDisplay(e, t) {
   if (t === "builtin") {
     let f = yKi(e.name);
     if (!f) throw Error(`Built-in plugin ${e.name} not found`);
@@ -100,7 +100,7 @@ async function rUo(e, t) {
     n = await Ajl(e, Ejl);
   } catch (l) {
     return (
-      iUo(e, l),
+      getBaseFileNames(e, l),
       {
         alwaysOn: "",
         onInvoke: "",
@@ -197,7 +197,7 @@ async function Sjl(e) {
         withFileTypes: true,
       });
     } catch (s) {
-      iUo(r, s);
+      getBaseFileNames(r, s);
       continue;
     }
     for (let s of o)
@@ -247,7 +247,7 @@ async function nBf(e) {
         withFileTypes: true,
       });
     } catch (i) {
-      iUo(o, i);
+      getBaseFileNames(o, i);
       continue;
     }
     for (let i of s) {
@@ -260,7 +260,7 @@ async function nBf(e) {
   }
   return t;
 }
-function iUo(e, t) {
+function getBaseFileNames(e, t) {
   (T(`Failed to read plugin components from ${e}: ${be(t)}`, {
     level: "error",
   }),

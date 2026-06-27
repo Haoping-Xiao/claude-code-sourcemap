@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module rDc
 // matched 2.1.88 source: src/hooks/useClaudeCodeHintRecommendation.tsx
 // class=modified  jaccard=0.472  score=0.9421  fileCov=0.4861
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rDc] deps: Ye, Vl, X0
 ((tDc = R(lt(), 1)), (Mfr = R(rt(), 1)), (Xk = R(se(), 1)));
-function sDc() {
+function useClaudeCodeHintRecommendation() {
   let e = oDc.c(11),
     t = $fr.useSyncExternalStore(fPa, Tmo),
     { addNotification: n } = Li(),

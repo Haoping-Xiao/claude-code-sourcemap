@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module XLc
 // matched 2.1.88 source: src/hooks/usePluginRecommendationBase.tsx
 // class=modified  jaccard=0.262  score=0.4226  fileCov=0.4082
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XLc] deps: GLc, er, je, _k, lE, WI, ZC
 VLc = require("path");
-function Rfr() {
+function usePluginRecommendationBase() {
   let e = JLc.c(6),
     [t, n] = kfr.useState(null),
     r = kfr.useRef(false),
@@ -47,7 +47,7 @@ function Rfr() {
   else l = e[5];
   return l;
 }
-async function Lfr(e, t, n, r, o) {
+async function installPluginAndNotify(e, t, n, r, o) {
   try {
     let s = await EL(e);
     if (!s) throw Error(`Plugin ${e} not found in marketplace`);

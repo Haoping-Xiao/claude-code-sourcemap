@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ik
 // matched 2.1.88 source: src/utils/claudemd.ts
 // class=modified (alt of src/utils/claudemd.ts)  jaccard=0.1798  score=0.2853  fileCov=0.3272
-// note: deminified; 23 identifiers renamed (exports/displayName/curated)
+// note: deminified; 26 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stripHtmlComments, shouldShowClaudeMdExternalIncludesWarning, resetGetMemoryFilesCache, processMemoryFile, processMdRules, processConditionedMdRules, isSyntheticMemoryPath, isMemoryFilePath, hasExternalClaudeMdIncludes, getMemoryFilesForNestedDirectory, getMemoryFiles, getMaxMemoryCharacterCount, getManagedAndUserConditionalRules, getLargeMemoryFiles, getExternalClaudeMdIncludes, getConditionalRulesForCwdLevelDirectory, getClaudeMds, getAllMemoryFilePaths, filterInjectedMemoryFi …
 // [unwrapped __esm module ik] deps: YZe
@@ -71,7 +71,7 @@ function $sa(e) {
     stripped: n,
   };
 }
-function Oip(e, t, n, r) {
+function parseMemoryFileContent(e, t, n, r) {
   let o = bh.extname(t).toLowerCase();
   if (o && !Pip.has(o))
     return (
@@ -116,7 +116,7 @@ function Nip(e) {
     rawContent: e,
   };
 }
-function Bip(e, t) {
+function handleMemoryFileReadError(e, t) {
   let n = on(e);
   if (n === "ENOENT" || n === "EISDIR") return;
   if (n === "EACCES")
@@ -130,10 +130,10 @@ async function Osa(e, t, n) {
     let o = await qt().readFile(e, {
       encoding: "utf-8",
     });
-    return Oip(o, e, t, n);
+    return parseMemoryFileContent(o, e, t, n);
   } catch (r) {
     return (
-      Bip(r, e),
+      handleMemoryFileReadError(r, e),
       {
         info: null,
         includePaths: [],
@@ -303,14 +303,14 @@ async function processMdRules({
 function Nsa(e) {
   return e === "User" || e === "Project" || e === "Local" || e === "Managed";
 }
-function Wip() {
+function nextEagerLoadReason() {
   if (!Lso) return;
   Lso = false;
   let e = Rso;
   return ((Rso = "session_start"), e);
 }
 function clearMemoryFileCaches() {
-  getMemoryFiles.cache?.clear?.();
+  Wv.cache?.clear?.();
 }
 function resetGetMemoryFilesCache(e = "session_start") {
   ((Rso = e), (Lso = true), clearMemoryFileCaches());
@@ -334,7 +334,7 @@ async function getManagedAndUserConditionalRules(e, t) {
   }
   return n;
 }
-async function getMemoryFilesForNestedDirectory(e, t, n) {
+async function getMemoryFiles(e, t, n) {
   if (Oe.CLAUDE_CODE_DISABLE_CLAUDE_MDS) return [];
   let r = [];
   if (Om("projectSettings")) {
@@ -400,7 +400,7 @@ async function shouldShowClaudeMdExternalIncludesWarning() {
   let e = Lg();
   if (e.hasClaudeMdExternalIncludesApproved || e.hasClaudeMdExternalIncludesWarningShown)
     return false;
-  return hasExternalClaudeMdIncludes(await getMemoryFiles(true));
+  return hasExternalClaudeMdIncludes(await Wv(true));
 }
 function isMemoryFilePath(e) {
   let t = bh.basename(e);
@@ -422,13 +422,13 @@ var Rsa,
   Lsa,
   ksa = false,
   MANAGED_SETTINGS_CLAUDEMD_PATH = "<managed-settings>",
-  Dip =
+  MEMORY_INSTRUCTION_PROMPT =
     "Codebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.",
   MAX_CLAUDE_MD_TOKEN_CONTEXT_RATIO = 0.05,
   MIN_MEMORY_CHARACTER_COUNT = 40000,
   Pip,
   Fip = 5,
-  getMemoryFiles,
+  Wv,
   Rso = "session_start",
   Lso = true,
   getClaudeMds = (e, t) => {
@@ -455,7 +455,7 @@ ${i}`);
       }
     }
     if (n.length === 0) return "";
-    return `${Dip}
+    return `${MEMORY_INSTRUCTION_PROMPT}
 
 ${n.join(`
 

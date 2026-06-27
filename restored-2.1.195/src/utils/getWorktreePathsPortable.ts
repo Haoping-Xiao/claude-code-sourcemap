@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module Jkr
 // matched 2.1.88 source: src/utils/getWorktreePathsPortable.ts
 // class=modified  jaccard=0.3867  score=0.7168  fileCov=0.4565
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jkr]
 ((gPu = /^(?:\s*<[a-z][\w-]*[\s>]|\[Request interrupted by user[^\]]*\])/),
   (hPu = /<command-name>(.*?)<\/command-name>/));
-async function e9(e) {
+async function getWorktreePathsPortable(e) {
   let t = JZe("git");
   if (t === null) return [];
   try {

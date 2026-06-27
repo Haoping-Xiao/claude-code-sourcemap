@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uIo
 // matched 2.1.88 source: src/utils/ghPrStatus.ts
 // class=partial  jaccard=0.145  score=0.3361  fileCov=0.2031
-// note: low-confidence suggestion: src/utils/ghPrStatus.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/utils/ghPrStatus.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uIo] deps: AW, dn, je, wr
 bal = R(rt(), 1);
@@ -33,7 +33,7 @@ function u6e(e) {
   }, b = [h, r, f], t[4] = f, t[5] = r, t[6] = h, t[7] = y, t[8] = b;else y = t[7], b = t[8];
   Hal.useEffect(y, b);
   let _;
-  if (t[9] !== i || t[10] !== o) _ = i ?? ksf(o), t[9] = i, t[10] = o, t[11] = _;else _ = t[11];
+  if (t[9] !== i || t[10] !== o) _ = i ?? deriveReviewState(o), t[9] = i, t[10] = o, t[11] = _;else _ = t[11];
   let S = _,
     A = !l && (a || !S && !s),
     v;
@@ -78,7 +78,7 @@ function u6e(e) {
 function xsf(e) {
   return e.settings?.prUrlTemplate;
 }
-function ksf(e) {
+function deriveReviewState(e) {
   switch (e) {
     case "approved":
       return "success";

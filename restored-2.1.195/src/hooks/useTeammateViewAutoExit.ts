@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module hEc
 // matched 2.1.88 source: src/hooks/useTeammateViewAutoExit.ts
 // class=modified  jaccard=0.3948  score=0.7288  fileCov=0.4628
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hEc] deps: ft, sA, Lzo, hP, fEc, Mp
 mEc = R(rt(), 1);
-function yEc() {
+function useTeammateViewAutoExit() {
   let e = Ho(),
     t = Ht((c) => c.viewingAgentTaskId),
     n = Ht((c) => (c.viewingAgentTaskId ? c.tasks[c.viewingAgentTaskId] : void 0)),

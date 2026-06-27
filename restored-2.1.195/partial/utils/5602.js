@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module fTc
 // matched 2.1.88 source: src/commands/ide/ide.tsx
 // class=partial  jaccard=0.0711  score=0.9676  fileCov=0.0713
-// note: low-confidence suggestion: src/commands/ide/ide.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/commands/ide/ide.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function mTc(e) {
+function IDECommandFlow(e) {
   let [t, n] = Rpr.useState([]);
   Rpr.useEffect(() => {
     if (vl() || Js()) return;

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module $Da
 // matched 2.1.88 source: src/services/lsp/LSPServerManager.ts
 // class=modified  jaccard=0.6572  score=0.8153  fileCov=0.7721
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $Da] deps: Lo, je, At, dn
 ((DDa = R(require("path"))), (PDa = require("url")));
-function ODa() {
+function createLSPServerManager() {
   let e = new Map(),
     t = new Map(),
     n = new Map(),

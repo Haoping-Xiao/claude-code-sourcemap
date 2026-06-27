@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sVe
 // matched 2.1.88 source: src/bridge/trustedDevice.ts
 // class=modified  jaccard=0.3061  score=0.3552  fileCov=0.6888
-// note: deminified; 15 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: untrustedDeviceHint, recoverFromUntrustedDevice, readStoredTrustedDeviceToken, isTrustedDeviceUnenrolled, isTrustedDeviceGateEnabled, isTrustedDeviceActiveForOrg, isProactiveEnrollmentDisabled, getTrustedDeviceUnenrolledReason, getTrustedDeviceToken, getAttestationFilterPolicy, enrollTrustedDeviceIfNeeded, enrollTrustedDevice, clearTrustedDeviceTokenCache, clearTrustedDeviceToken, _resetEnrollBackoffForTesting, PROACTIVE_ENROLLMENT_DISABLED_MESSAGE
 // [unwrapped __esm module sVe] deps: Xr, dn, je, At
@@ -40,11 +40,11 @@ function Qgo() {
   return (jc(), ro(SNt));
 }
 function isTrustedDeviceGateEnabled() {
-  if (!at(Xjn, false)) return false;
+  if (!at(TRUSTED_DEVICE_GATE, false)) return false;
   return Qgo().isPolicyAllowed(mWt);
 }
 function isTrustedDeviceActiveForOrg() {
-  if (!at(Xjn, false)) return false;
+  if (!at(TRUSTED_DEVICE_GATE, false)) return false;
   return Qgo().isPolicyEnforced(mWt);
 }
 function getAttestationFilterPolicy() {
@@ -127,8 +127,8 @@ async function enrollTrustedDevice({ serverRequested: e = false } = {}) {
   } = (oo(), ro(pU));
   if (!Jl() || !t()) return;
   try {
-    if (!(await _U(Xjn))) {
-      T(`[trusted-device] Gate ${Xjn} is off, skipping enrollment`);
+    if (!(await _U(TRUSTED_DEVICE_GATE))) {
+      T(`[trusted-device] Gate ${TRUSTED_DEVICE_GATE} is off, skipping enrollment`);
       return;
     }
     if (isProactiveEnrollmentDisabled()) {
@@ -213,7 +213,7 @@ async function enrollTrustedDevice({ serverRequested: e = false } = {}) {
   }
 }
 var UOa,
-  Xjn = "tengu_sessions_elevated_auth_enforcement",
+  TRUSTED_DEVICE_GATE = "tengu_sessions_elevated_auth_enforcement",
   mWt = "require_trusted_devices",
   FOa = "tengu_sessions_elevated_auth_disable_proactive_enrollment",
   oPp = 300000,

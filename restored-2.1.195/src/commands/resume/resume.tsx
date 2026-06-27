@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module O2o
 // matched 2.1.88 source: src/commands/resume/resume.tsx
 // class=modified  jaccard=0.346  score=0.6295  fileCov=0.4344
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: filterResumableSessions, call
 // [unwrapped __esm module O2o] deps: ft, Is, _a
 BVl = require("path");
-function UVl(e) {
+function resumeHelpMessage(e) {
   switch (e.resultType) {
     case "sessionNotFound":
       return `Session ${wt.bold(e.arg)} was not found.`;
@@ -50,7 +50,7 @@ function N2o(e) {
   else a = t[6];
   return a;
 }
-function WGf({ onDone: e, onResume: t }) {
+function ResumeCommand({ onDone: e, onResume: t }) {
   let [n, r] = Az.useState([]),
     [o, s] = Az.useState([]),
     [i, a] = Az.useState(true),
@@ -192,7 +192,7 @@ var FVl,
       o = n?.trim();
     if (!o)
       return E3.jsx(
-        WGf,
+        ResumeCommand,
         {
           onDone: e,
           onResume: r,
@@ -233,7 +233,7 @@ var FVl,
         }
       }
       if (c.length > 1) {
-        let u = UVl({
+        let u = resumeHelpMessage({
           resultType: "multipleMatches",
           arg: o,
           count: c.length,
@@ -245,7 +245,7 @@ var FVl,
         });
       }
     }
-    let l = UVl({
+    let l = resumeHelpMessage({
       resultType: "sessionNotFound",
       arg: o,
     });

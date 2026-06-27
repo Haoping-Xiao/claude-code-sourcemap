@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KGl
 // matched 2.1.88 source: src/utils/sessionTitle.ts
 // class=modified  jaccard=0.3688  score=0.5258  fileCov=0.5526
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KGl]
 ((X2f = {
@@ -37,7 +37,7 @@ function vFo(e, t) {
 function JGl(e) {
   return e.find(xut);
 }
-function Qrr(e) {
+function extractConversationText(e) {
   let t = [];
   for (let r of e) {
     if (r.type !== "user" && r.type !== "assistant") continue;
@@ -53,7 +53,7 @@ function Qrr(e) {
 `);
   return n.length > YGl ? n.slice(-YGl) : n;
 }
-async function vse(e, t) {
+async function generateSessionTitle(e, t) {
   let n = e.trim();
   if (n.length < J2f) return null;
   let r = Dr().language,

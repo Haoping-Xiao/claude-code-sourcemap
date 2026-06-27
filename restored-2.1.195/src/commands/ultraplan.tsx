@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m9l
 // matched 2.1.88 source: src/commands/ultraplan.tsx
 // class=modified  jaccard=0.2968  score=0.4661  fileCov=0.4497
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module m9l] (exports=_oE, module=oWf)
 var _oE = {};
@@ -58,14 +58,14 @@ function tsr(e) {
 function cWf(e) {
   return iWf(W2o[e]);
 }
-function uWf(e, t, n) {
+function buildUltraplanPrompt(e, t, n) {
   let r = [];
   if (t) r.push("Here is a draft plan to refine:", "", t, "");
   if ((r.push(cWf(n)), e)) r.push("", e);
   return r.join(`
 `);
 }
-function dWf(e, t, n, r, o, s) {
+function startDetachedPoll(e, t, n, r, o, s) {
   let i = $L(r, o),
     a = Date.now(),
     l = !1,
@@ -207,12 +207,12 @@ Session: ${n}`,
     }
   })();
 }
-function pWf(e) {
+function buildLaunchMessage(e) {
   let t = e ? `${Roe} ` : "";
   return `${mv} ultraplan
 ${t}Starting Claude Code on the web\u2026`;
 }
-function fWf(e) {
+function buildSessionReadyMessage(e) {
   return `${mv} ultraplan \xB7 Monitor progress in Claude Code on the web ${e}
 You can continue working \u2014 when the ${mv} fills, press \u2193 to view results`;
 }
@@ -220,12 +220,12 @@ function mWf(e) {
   return `${BO} ultraplan ready \xB7 ${e}
 Press ${r9} to view results`;
 }
-function y9l(e) {
+function buildAlreadyActiveMessage(e) {
   return e
     ? `ultraplan: already polling. Open ${e} to check status, or wait for the plan to land here.`
     : "ultraplan: already launching. Please wait for the session to start.";
 }
-async function q2o(e, t, n, r) {
+async function stopUltraplan(e, t, n, r) {
   (await a8e.kill(e, n, r),
     r((s) =>
       s.ultraplanSessionUrl || s.ultraplanPendingChoice || s.ultraplanLaunching
@@ -275,7 +275,7 @@ Session: ${o}`,
       isMeta: !0,
     }));
 }
-async function dJt(e) {
+async function launchUltraplan(e) {
   let {
     arg: t,
     source: n,
@@ -302,7 +302,7 @@ async function dJt(e) {
       G("tengu_ultraplan_create_failed", {
         reason: We(u ? "already_polling" : "already_launching"),
       }),
-      y9l(u)
+      buildAlreadyActiveMessage(u)
     );
   if (!t && !r)
     return [
@@ -311,7 +311,7 @@ async function dJt(e) {
       "",
       ...tsr().usageBlurb,
       "",
-      `Terms: ${E1e}`,
+      `Terms: ${CCR_TERMS_URL}`,
     ].join(`
 `);
   return (
@@ -323,7 +323,7 @@ async function dJt(e) {
             ultraplanLaunching: !0,
           },
     ),
-    gWf({
+    launchDetached({
       arg: t,
       source: n,
       seedPlan: r,
@@ -333,10 +333,10 @@ async function dJt(e) {
       signal: a,
       onStatusMessage: c,
     }),
-    pWf(l)
+    buildLaunchMessage(l)
   );
 }
-async function gWf(e) {
+async function launchDetached(e) {
   let {
       arg: t,
       source: n,
@@ -367,7 +367,7 @@ ${b}`,
       return;
     }
     let u = e.promptIdentifier ?? esr(),
-      d = uWf(t, r, u),
+      d = buildUltraplanPrompt(t, r, u),
       p,
       f,
       m,
@@ -408,7 +408,7 @@ ${b}`,
       ultraplanSessionUrl: h,
       ultraplanLaunching: void 0,
     })),
-      a?.(fWf(h)),
+      a?.(buildSessionReadyMessage(h)),
       G("tengu_ultraplan_launched", {
         has_seed_plan: Boolean(r),
         prompt_identifier: $e(u),
@@ -427,7 +427,7 @@ ${b}`,
       },
       isUltraplan: !0,
     });
-    (dWf(y, g.id, h, o, s, a),
+    (startDetachedPoll(y, g.id, h, o, s, a),
       Ci(async () => {
         if (o().ultraplanSessionUrl === h) await X5(g.id, 1500);
       }));
@@ -472,13 +472,13 @@ ${b}`,
     );
   }
 }
-var E1e = "https://code.claude.com/docs/en/claude-code-on-the-web",
+var CCR_TERMS_URL = "https://code.claude.com/docs/en/claude-code-on-the-web",
   W2o,
   g9l = "simple_plan",
   FoE,
   h9l,
   lWf,
-  hWf = async (e, t, n) => {
+  call = async (e, t, n) => {
     let r = OZn(n).trim();
     if (!Us("allow_remote_sessions"))
       return (
@@ -493,7 +493,7 @@ var E1e = "https://code.claude.com/docs/en/claude-code-on-the-web",
         null
       );
     if (!r) {
-      let a = await dJt({
+      let a = await launchUltraplan({
         arg: r,
         source: "slash",
         getAppState: t.getAppState,
@@ -514,7 +514,7 @@ var E1e = "https://code.claude.com/docs/en/claude-code-on-the-web",
         G("tengu_ultraplan_create_failed", {
           reason: We(o ? "already_polling" : "already_launching"),
         }),
-        e(y9l(o), {
+        e(buildAlreadyActiveMessage(o), {
           display: "system",
         }),
         null

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J5l
 // matched 2.1.88 source: src/services/api/referral.ts
 // class=modified  jaccard=0.2569  score=0.5321  fileCov=0.3318
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module J5l] deps: Ye, oo, er, dr, mVe, SEe
 ((V5l = R(lt(), 1)), (z5l = R(rt(), 1)), (KXt = R(se(), 1)));
@@ -83,7 +83,7 @@ function vor() {
   if (!e) return null;
   return Dt().passesEligibilityCache?.[e]?.remaining_passes ?? null;
 }
-async function Q5l() {
+async function fetchAndStorePassesEligibility() {
   if (YXt) return (T("Passes: Reusing in-flight eligibility fetch"), YXt);
   let e = Lc()?.organizationUuid;
   if (!e) return null;
@@ -125,7 +125,7 @@ async function Q5l() {
     YXt
   );
 }
-async function r2o() {
+async function getCachedOrFetchPassesEligibility() {
   if (!tql()) return null;
   let e = Lc()?.organizationUuid;
   if (!e) return null;
@@ -134,11 +134,12 @@ async function r2o() {
   if (!n)
     return (
       T("Passes: No cache, fetching eligibility in background (command unavailable this session)"),
-      Q5l(),
+      fetchAndStorePassesEligibility(),
       null
     );
   if (r - n.timestamp > Z5l) {
-    (T("Passes: Cache stale, returning cached data and refreshing in background"), Q5l());
+    (T("Passes: Cache stale, returning cached data and refreshing in background"),
+      fetchAndStorePassesEligibility());
     let { timestamp: i, ...a } = n;
     return a;
   }
@@ -148,7 +149,7 @@ async function r2o() {
 }
 async function nql() {
   if (Vi()) return;
-  r2o();
+  getCachedOrFetchPassesEligibility();
 }
 var Z5l = 86400000,
   YXt = null;

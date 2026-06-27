@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sp
 // matched 2.1.88 source: src/utils/worktree.ts
 // class=modified  jaccard=0.2653  score=0.4289  fileCov=0.4102
-// note: deminified; 32 identifiers renamed (exports/displayName/curated)
+// note: deminified; 34 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: worktreeBranchName, validateWorktreeSlug, unlockAgentWorktree, unlinkWorktreeReparsePoints, symlinkDirectories, stripGitProgress, restoreWorktreeSession, resolveExistingWorktreeTarget, removeAgentWorktree, reapJobWorktreeIfSafe, persistWorktreeSession, parsePRReference, listRegisteredWorktrees, killTmuxSession, keepWorktree, isWorktreeWriteDestUnsafe, isTmuxAvailable, hasWorktreeChanges, getTmuxInstallInstructions, getCurrentWorktreeSession, getAgentWorktreeChanges, generateTmux …
 // [unwrapped __esm module sp] deps: ft, oc, ojn, jqe, Lo, qmo, E5e, _1, z2n, $pt, Cp, Is, Ls, qd, sj, kDe, _m, ejn, i5, B1, o8, ft, er, ZYt, PM, _a, dr, kt, dn, Du, I8, aS, II, $g, ZC, Un, m5, D5o, K0, iu, WAt, je, Mm, sr, BFo, QH, vn, EAe, MZn, bm, co, np, OI, PZn, Vv, oo, p6e, ii, dic, fic, mic, gic, pQ, Jt, gb, fn, At, yic
@@ -150,7 +150,7 @@ function restoreWorktreeSession(e) {
 function generateTmuxSessionName(e, t) {
   return `${Bd.basename(e)}_${t}`.replace(/[/.]/g, "_");
 }
-function uZt(e) {
+function worktreesDir(e) {
   return Bd.join(e, ".claude", "worktrees");
 }
 function tac(e) {
@@ -160,7 +160,7 @@ function worktreeBranchName(e) {
   return `worktree-${tac(e)}`;
 }
 function nac(e, t) {
-  return Bd.join(uZt(e), tac(t));
+  return Bd.join(worktreesDir(e), tac(t));
 }
 async function zlr(e) {
   try {
@@ -193,7 +193,7 @@ async function oac(e) {
     return null;
   }
 }
-async function K5o(e, t, n) {
+async function getOrCreateWorktree(e, t, n) {
   let r = nac(e, t),
     o = worktreeBranchName(t),
     s = await mfn(r);
@@ -259,7 +259,7 @@ async function K5o(e, t, n) {
       }
     }
   }
-  await eu.mkdir(uZt(e), {
+  await eu.mkdir(worktreesDir(e), {
     recursive: !0,
   });
   let a = R8(),
@@ -491,7 +491,7 @@ async function copyWorktreeIncludeFiles(e, t) {
   if (u.length > 0) T(`Copied ${u.length} files from .worktreeinclude: ${u.join(", ")}`);
   return u;
 }
-async function Y5o(e, t) {
+async function performPostCreationSetup(e, t) {
   let n = await eu.realpath(t).catch(() => null),
     r = kG("localSettings"),
     o = Bd.join(e, r);
@@ -607,10 +607,18 @@ async function createWorktreeForSession(e, t, n, r) {
       );
     let a = await ub(),
       l = Date.now(),
-      { worktreePath: c, worktreeBranch: u, headCommit: d, existed: p } = await K5o(i, t, r),
+      {
+        worktreePath: c,
+        worktreeBranch: u,
+        headCommit: d,
+        existed: p,
+      } = await getOrCreateWorktree(i, t, r),
       f;
     if (p) T(`Resuming existing worktree at: ${c}`);
-    else (T(`Created worktree at: ${c} on branch: ${u}`), await Y5o(i, c), (f = Date.now() - l));
+    else
+      (T(`Created worktree at: ${c} on branch: ${u}`),
+        await performPostCreationSetup(i, c),
+        (f = Date.now() - l));
     s = {
       originalCwd: o,
       worktreePath: c,
@@ -712,7 +720,7 @@ async function resolveExistingWorktreeTarget(
         : `Cannot enter worktree: the current working directory ${o} is not inside the repository at ${s}.`,
     );
   if (t) {
-    let f = uZt(a),
+    let f = worktreesDir(a),
       m;
     try {
       m = await eu.realpath(f);
@@ -974,12 +982,12 @@ async function createAgentWorktree(e, t) {
     worktreeBranch: s,
     headCommit: i,
     existed: a,
-  } = await K5o(r, e, {
+  } = await getOrCreateWorktree(r, e, {
     ...t,
     fromCwd: n,
   });
   if (!a) {
-    (T(`Created agent worktree at: ${o} on branch: ${s}`), await Y5o(r, o));
+    (T(`Created agent worktree at: ${o} on branch: ${s}`), await performPostCreationSetup(r, o));
     let l = await zPt(),
       c = await Gr(
         go(),
@@ -1009,7 +1017,7 @@ async function createAgentWorktree(e, t) {
     }
   );
 }
-async function getAgentWorktreeChanges(e, t) {
+async function SHt(e, t) {
   let n = await Gr(go(), ["status", "--porcelain"], {
     cwd: e,
   });
@@ -1194,7 +1202,7 @@ async function aac(e, t) {
 async function cleanupStaleAgentWorktrees(e) {
   let t = qf($t());
   if (!t) return 0;
-  let n = uZt(t),
+  let n = worktreesDir(t),
     r;
   try {
     r = await eu.readdir(n);
@@ -1229,7 +1237,7 @@ async function cleanupStaleAgentWorktrees(e) {
 async function reapJobWorktreeIfSafe(e, t, n, r, o) {
   if (r) return !1;
   let s = qf(n ?? e);
-  if (!s || Bd.resolve(Bd.dirname(e)) !== Bd.resolve(uZt(s))) return !1;
+  if (!s || Bd.resolve(Bd.dirname(e)) !== Bd.resolve(worktreesDir(s))) return !1;
   let i;
   try {
     i = (await eu.stat(e)).mtimeMs;
@@ -1252,7 +1260,7 @@ async function reapJobWorktreeIfSafe(e, t, n, r, o) {
   return removeAgentWorktree(e, t, s, !1, "job_retention_sweep");
 }
 async function hasWorktreeChanges(e, t) {
-  let { dirty: n, commitsAhead: r } = await getAgentWorktreeChanges(e, t);
+  let { dirty: n, commitsAhead: r } = await SHt(e, t);
   return n || r > 0;
 }
 async function execIntoTmuxWorktree(e) {
@@ -1319,7 +1327,7 @@ async function execIntoTmuxWorktree(e) {
       };
     ((i = Bd.basename(C)), (s = nac(C, n)));
     try {
-      let x = await K5o(
+      let x = await getOrCreateWorktree(
         C,
         n,
         o !== null
@@ -1332,7 +1340,8 @@ async function execIntoTmuxWorktree(e) {
             },
       );
       if (!x.existed)
-        (console.log(`Created worktree: ${s} (based on ${x.baseBranch})`), await Y5o(C, s));
+        (console.log(`Created worktree: ${s} (based on ${x.baseBranch})`),
+          await performPostCreationSetup(C, s));
     } catch (x) {
       return {
         handled: !1,

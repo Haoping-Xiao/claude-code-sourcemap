@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Zkn
 // matched 2.1.88 source: src/Tool.ts
 // class=partial  jaccard=0.0658  score=0.6653  fileCov=0.0681
-// note: low-confidence suggestion: src/Tool.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/Tool.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zkn] deps: Ls
 b1d = [PKr, tNi, nNi], Jkn = new Set(b1d);
-function kke(e) {
+function filterToolProgressMessages(e) {
   return e.filter(t => t.data?.type !== "hook_progress");
 }
 function Ql(e, t) {

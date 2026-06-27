@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zdo
 // matched 2.1.88 source: src/utils/ide.ts
 // class=modified (alt of src/utils/ide.ts)  jaccard=0.2117  score=0.6405  fileCov=0.2403
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zdo] deps: Q9, Ye, ps, dn, er, wr, aE, lJ, vi, gDe, Ko
 ((nxa = R(lt(), 1)), (FI = R(se(), 1)));
@@ -46,7 +46,7 @@ function Kdt(e = false) {
 }
 async function uFn() {
   try {
-    let e = await mwp();
+    let e = await getIdeLockfilesPaths();
     return (
       await Promise.all(
         e.map(async (n) => {
@@ -130,7 +130,7 @@ async function fxa(e) {
     );
   }
 }
-async function Ydo(e, t, n = 500) {
+async function checkIdeConnection(e, t, n = 500) {
   try {
     return new Promise((r) => {
       let o = uxa.createConnection({
@@ -152,7 +152,7 @@ async function Ydo(e, t, n = 500) {
     return false;
   }
 }
-async function mwp() {
+async function getIdeLockfilesPaths() {
   let e = [h$.join(tr(), "ide")];
   if (process.env.CLAUDE_CONFIG_DIR?.trim())
     e.push(h$.join(dxa.homedir(), ".claude", "ide").normalize("NFC"));
@@ -212,9 +212,9 @@ async function gwp() {
       if (n.pid) {
         if (!pxa(n.pid)) {
           if (Vt() !== "wsl") o = true;
-          else if (!(await Ydo(r, n.port))) o = true;
+          else if (!(await checkIdeConnection(r, n.port))) o = true;
         }
-      } else if (!(await Ydo(r, n.port))) o = true;
+      } else if (!(await checkIdeConnection(r, n.port))) o = true;
       if (o)
         try {
           await qt().unlink(t);
@@ -228,9 +228,9 @@ async function gwp() {
     ke(e);
   }
 }
-async function hwp(e) {
+async function maybeInstallIDEExtension(e) {
   try {
-    let t = await _wp(e);
+    let t = await installIDEExtension(e);
     if (
       (G("tengu_ext_installed", {
         ide_type: $e(e),
@@ -280,7 +280,7 @@ async function aFn() {
       await Nn(1000, e);
       continue;
     }
-    let n = await pFn(false);
+    let n = await detectIDEs(false);
     if (e.aborted) return null;
     if (n.length === 1) return n[0];
     await Nn(1000, e);
@@ -290,7 +290,7 @@ async function aFn() {
 function dFn() {
   if (hqe) (hqe.abort(), (hqe = null));
 }
-async function pFn(e) {
+async function detectIDEs(e) {
   let t = [];
   try {
     let n = process.env.CLAUDE_CODE_SSE_PORT,
@@ -367,7 +367,7 @@ async function pFn(e) {
   }
   return t;
 }
-async function mxa(e) {
+async function maybeNotifyIDEConnected(e) {
   await e.notification({
     method: "ide_connected",
     params: {
@@ -378,7 +378,7 @@ async function mxa(e) {
 function yqe(e) {
   return e.some((t) => t.type === "connected" && t.name === "ide");
 }
-async function ixa(e) {
+async function isIDEExtensionInstalled(e) {
   if (lFn(e)) {
     let t = await fFn(e);
     if (t)
@@ -395,11 +395,11 @@ async function ixa(e) {
   } else if (kre(e)) return await QIa(e);
   return false;
 }
-async function _wp(e) {
+async function installIDEExtension(e) {
   if (lFn(e)) {
     let t = await fFn(e);
     if (t) {
-      let n = await bwp(t);
+      let n = await getInstalledVSCodeExtensionVersion(t);
       if (!n || qte(n, axa())) {
         await Nn(500);
         let r = await Gr(t, ["--force", "--install-extension", "anthropic.claude-code"], {
@@ -435,7 +435,7 @@ function axa() {
     GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
   }.VERSION;
 }
-async function bwp(e) {
+async function getInstalledVSCodeExtensionVersion(e) {
   let { stdout: t } = await $n(e, ["--list-extensions", "--show-versions"], {
       env: Jdo(),
     }),
@@ -448,7 +448,7 @@ async function bwp(e) {
   }
   return null;
 }
-function gxa(e) {
+function supportedIdeConfigs(e) {
   let t = e.toLowerCase();
   if (t.includes("windsurf") || t.includes("devin")) return "windsurf";
   if (t.includes("cursor")) return "cursor";
@@ -478,18 +478,18 @@ async function fFn(e, t) {
   let o = Vt() === "windows" ? ".cmd" : "";
   return n[0] + o;
 }
-async function yxa() {
+async function isCursorInstalled() {
   return (await $n("cursor", ["--version"])).code === 0;
 }
-async function _xa() {
+async function isWindsurfInstalled() {
   if ((await $n("windsurf", ["--version"])).code === 0) return true;
   return (await $n("devin-desktop", ["--version"])).code === 0;
 }
-async function bxa() {
+async function isVSCodeInstalled() {
   let e = await $n("code", ["--help"]);
   return e.code === 0 && Boolean(e.stdout?.includes("Visual Studio Code"));
 }
-async function Awp() {
+async function detectRunningIDEsImpl() {
   let e = [];
   try {
     let t = Vt();
@@ -557,7 +557,7 @@ async function Awp() {
   return e;
 }
 async function Qdo() {
-  let e = await Awp();
+  let e = await detectRunningIDEsImpl();
   return ((Xdo = e), e);
 }
 async function Sxa() {
@@ -566,9 +566,9 @@ async function Sxa() {
 }
 function R3t(e) {
   let t = e.find((n) => n.type === "connected" && n.name === "ide");
-  return Zdo(t);
+  return getIdeClientName(t);
 }
-function Zdo(e) {
+function getIdeClientName(e) {
   let t = e?.config;
   return t?.type === "sse-ide" || t?.type === "ws-ide"
     ? hxa(t.ideName)
@@ -596,20 +596,20 @@ function p5(e) {
   let t = e.find((n) => n.type === "connected" && n.name === "ide");
   return t?.type === "connected" ? t : void 0;
 }
-async function Exa(e) {
+async function closeOpenDiffs(e) {
   try {
     await Rre("closeAllDiffTabs", {}, e);
   } catch (t) {}
 }
-async function Axa(e, t, n, r, o) {
+async function initializeIdeIntegration(e, t, n, r, o) {
   aFn().then(e);
   let s = Dt().autoInstallIdeExtension ?? true;
   if (!ut(process.env.CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL) && s) {
     let i = t ?? Kdo();
     if (i) {
       if (lFn(i))
-        ixa(i).then(async (a) => {
-          hwp(i)
+        isIDEExtensionInstalled(i).then(async (a) => {
+          maybeInstallIDEExtension(i)
             .catch((l) => ({
               installed: false,
               error: l.message || "Installation failed",
@@ -622,7 +622,7 @@ async function Axa(e, t, n, r, o) {
             });
         });
       else if (kre(i))
-        ixa(i).then(async (a) => {
+        isIDEExtensionInstalled(i).then(async (a) => {
           if (a && !sxa().hasIdeOnboardingDialogBeenShown()) n();
         });
     }

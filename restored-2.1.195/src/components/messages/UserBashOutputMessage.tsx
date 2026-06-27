@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module qzn
 // matched 2.1.88 source: src/components/messages/UserBashOutputMessage.tsx
 // class=modified  jaccard=0.3571  score=0.6325  fileCov=0.4506
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qzn] deps: Ko, ql, kLe, ljn, Ye
 ((vil = R(lt(), 1)), (TN = R(se(), 1)), (Til = /(?:^|\n)(Shell cwd was reset to .+)$/));
-function Cil(e) {
+function UserBashOutputMessage(e) {
   let t = wil.c(10),
     { content: n, verbose: r } = e,
     o;

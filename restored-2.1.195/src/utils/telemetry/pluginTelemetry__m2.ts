@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module aUo
 // matched 2.1.88 source: src/utils/telemetry/pluginTelemetry.ts
 // class=modified (alt of src/utils/telemetry/pluginTelemetry.ts)  jaccard=0.0302  score=0.137  fileCov=0.0373
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aUo] deps: glt, U1, q8, rq, je, At, Iv, vn, pq, Jt, lE, $g
 ((Hse = R(require("fs/promises"))), (jq = R(require("path"))));
-async function _Xt() {
+async function getEnabledVia() {
   try {
     if (!mp.cache?.has(void 0)) return [];
     if (_5() !== null) return [];

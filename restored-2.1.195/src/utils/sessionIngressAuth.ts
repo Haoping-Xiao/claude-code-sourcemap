@@ -2,12 +2,12 @@
 // restored from claude-code 2.1.195 (deminified) — module Ist
 // matched 2.1.88 source: src/utils/sessionIngressAuth.ts
 // class=modified  jaccard=0.4625  score=0.8447  fileCov=0.5054
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ist] deps: kt, fd, Lx, fn
 ((mzr = require("fs")), (Q$i = new Map()));
 ((T$d = ["bash_shell", "mcp_stdio", "lsp", "other"]), (Cst = new Map()));
-function x$d() {
+function getTokenFromFileDescriptor() {
   let e = Sbr();
   if (e !== void 0) return e;
   let t = process.env.CLAUDE_CODE_WEBSOCKET_AUTH_FILE_DESCRIPTOR;
@@ -59,9 +59,9 @@ function x$d() {
 function XS() {
   let e = process.env.CLAUDE_CODE_SESSION_ACCESS_TOKEN;
   if (e) return e;
-  return x$d();
+  return getTokenFromFileDescriptor();
 }
-function cke() {
+function getSessionIngressAuthHeaders() {
   let e = XS();
   if (!e) return {};
   if (e.startsWith("sk-ant-sid")) {

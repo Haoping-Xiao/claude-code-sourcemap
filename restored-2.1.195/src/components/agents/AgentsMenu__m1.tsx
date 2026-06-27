@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iQt
 // matched 2.1.88 source: src/components/agents/AgentsMenu.tsx
 // class=modified (alt of src/components/agents/AgentsMenu.tsx)  jaccard=0.0267  score=0.0529  fileCov=0.0512
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iQt] deps: Ece, Ree, Sae, Xr, db, je, At, Rd, Is, sQt
 ((Dtc = require("fs/promises")), (W1e = require("path")));
@@ -25,7 +25,7 @@ async function Mtc() {
     isRunning: n,
   }));
 }
-function $tc(e) {
+function AgentsMenu(e) {
   let t = bGo.c(41),
     { server: n, onBack: r, onDone: o, refresh: s } = e,
     [i, a] = xYe.useState(false),

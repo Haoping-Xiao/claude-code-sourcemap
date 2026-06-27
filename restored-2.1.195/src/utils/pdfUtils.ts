@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $7
 // matched 2.1.88 source: src/utils/pdfUtils.ts
 // class=modified  jaccard=0.4421  score=0.9184  fileCov=0.4601
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $7] deps: ft, Rm, Lo, je, At, ys, jS
 ((_0n = require("fs/promises")), (uit = require("path")));
@@ -34,7 +34,7 @@ function rYr(e) {
     lastPage: o,
   };
 }
-function dit() {
+function isPDFSupported() {
   return !As().toLowerCase().includes("claude-3-haiku");
 }
 function pit(e) {

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module eFl
 // matched 2.1.88 source: src/commands/install-github-app/ExistingWorkflowStep.tsx
 // class=modified  jaccard=0.2925  score=0.3395  fileCov=0.6788
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eFl] deps: lJ, pz, R6, Ye
 ((QUl = R(lt(), 1)), (KL = R(se(), 1)));
-function nFl(e) {
+function ExistingWorkflowStep(e) {
   let t = tFl.c(15),
     { repoName: n, onSelectAction: r } = e,
     o;

@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module aCa
 // matched 2.1.88 source: src/utils/plugins/mcpbHandler.ts
 // class=modified  jaccard=0.6852  score=0.9369  fileCov=0.7184
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aCa] deps: je, Is
 ((sCa = require("os")), (tqe = require("path")));
 function n6(e) {
   return e.endsWith(".mcpb") || e.endsWith(".dxt");
 }
-function lCa(e) {
+function isUrl(e) {
   return e.startsWith("http://") || e.startsWith("https://");
 }
 function rTp(e) {
@@ -18,14 +18,14 @@ function rTp(e) {
 function cCa(e) {
   return Hre.join(e, ".mcpb-cache");
 }
-function uCa(e, t) {
+function getMetadataPath(e, t) {
   let n = SUn.createHash("md5").update(t).digest("hex").substring(0, 8);
   return Hre.join(e, `${n}.metadata.json`);
 }
 function dCa(e, t) {
   return `${e}/${t}`;
 }
-function rqe(e, t) {
+function loadMcpServerUserConfig(e, t) {
   try {
     let r = jo().pluginConfigs?.[e]?.mcpServers?.[t],
       o = wl().read()?.pluginSecrets?.[dCa(e, t)];
@@ -46,7 +46,7 @@ function rqe(e, t) {
     );
   }
 }
-async function bUn(e, t, n, r) {
+async function saveMcpServerUserConfig(e, t, n, r) {
   try {
     let o = {},
       s = {};
@@ -120,7 +120,7 @@ async function bUn(e, t, n, r) {
     );
   }
 }
-function eDe(e, t) {
+function validateUserConfig(e, t) {
   let n = [];
   for (let [r, o] of Object.entries(t)) {
     let s = e[r];
@@ -151,7 +151,7 @@ function eDe(e, t) {
     errors: n,
   };
 }
-async function _Un(e, t, n = {}) {
+async function generateMcpConfig(e, t, n = {}) {
   let { getMcpConfigForManifest: r } = await Promise.resolve().then(() => (ndo(), tdo)),
     o = await r({
       manifest: e,
@@ -166,9 +166,9 @@ async function _Un(e, t, n = {}) {
   }
   return o;
 }
-async function pCa(e, t) {
+async function loadCacheMetadata(e, t) {
   let n = qt(),
-    r = uCa(e, t);
+    r = getMetadataPath(e, t);
   try {
     let o = await n.readFile(r, {
       encoding: "utf-8",
@@ -185,10 +185,10 @@ async function pCa(e, t) {
   }
 }
 async function sdo(e, t, n) {
-  let r = uCa(e, t);
+  let r = getMetadataPath(e, t);
   (await qt().mkdir(e), await nqe.writeFile(r, De(n, null, 2), "utf-8"));
 }
-async function oTp(e, t, n) {
+async function downloadMcpb(e, t, n) {
   if ((T(`Downloading MCPB from ${e}`), n)) n(`Downloading ${e}...`);
   let r = performance.now(),
     o = false;
@@ -226,7 +226,7 @@ async function oTp(e, t, n) {
     );
   }
 }
-async function sTp(e, t, n, r) {
+async function extractMcpbContents(e, t, n, r) {
   if (r) r("Extracting files...");
   await qt().mkdir(t);
   let o = 0,
@@ -254,10 +254,10 @@ async function sTp(e, t, n, r) {
   }
   if ((T(`Extracted ${o} files to ${t}`), r)) r(`Extraction complete (${o} files)`);
 }
-async function iTp(e, t) {
+async function checkMcpbChanged(e, t) {
   let n = qt(),
     r = cCa(t),
-    o = await pCa(r, e);
+    o = await loadCacheMetadata(r, e);
   if (!o) return true;
   try {
     await n.stat(o.extractedPath);
@@ -269,7 +269,7 @@ async function iTp(e, t) {
       });
     return true;
   }
-  if (!lCa(e)) {
+  if (!isUrl(e)) {
     let s = Hre.join(t, e),
       i;
     try {
@@ -294,12 +294,12 @@ async function iTp(e, t) {
   }
   return false;
 }
-async function c3t(e, t, n, r, o, s) {
+async function loadMcpbFile(e, t, n, r, o, s) {
   let i = qt(),
     a = cCa(t);
   (await i.mkdir(a), T(`Loading MCPB from source: ${e}`));
-  let l = await pCa(a, e);
-  if (l && !(await iTp(e, t))) {
+  let l = await loadCacheMetadata(a, e);
+  if (l && !(await checkMcpbChanged(e, t))) {
     T(`Using cached MCPB from ${l.extractedPath} (hash: ${l.contentHash})`);
     let S = Hre.join(l.extractedPath, "manifest.json"),
       A;
@@ -318,9 +318,9 @@ async function c3t(e, t, n, r, o, s) {
       C = await rdo(v);
     if (C.user_config && Object.keys(C.user_config).length > 0) {
       let I = C.name,
-        k = rqe(n, I),
+        k = loadMcpServerUserConfig(n, I),
         D = o || k || {},
-        P = eDe(D, C.user_config);
+        P = validateUserConfig(D, C.user_config);
       if (s || !P.valid)
         return {
           status: "needs-config",
@@ -331,8 +331,8 @@ async function c3t(e, t, n, r, o, s) {
           existingConfig: k || {},
           validationErrors: P.valid ? [] : P.errors,
         };
-      if (o) await bUn(n, I, o, C.user_config ?? {});
-      let O = await _Un(C, l.extractedPath, D);
+      if (o) await saveMcpServerUserConfig(n, I, o, C.user_config ?? {});
+      let O = await generateMcpConfig(C, l.extractedPath, D);
       return {
         manifest: C,
         mcpConfig: O,
@@ -340,7 +340,7 @@ async function c3t(e, t, n, r, o, s) {
         contentHash: l.contentHash,
       };
     }
-    let x = await _Un(C, l.extractedPath);
+    let x = await generateMcpConfig(C, l.extractedPath);
     return {
       manifest: C,
       mcpConfig: x,
@@ -349,9 +349,9 @@ async function c3t(e, t, n, r, o, s) {
     };
   }
   let c, u, d;
-  if (lCa(e)) {
+  if (isUrl(e)) {
     let S = SUn.createHash("md5").update(e).digest("hex").substring(0, 8);
-    ((u = Hre.join(a, `${S}.mcpb`)), (c = await oTp(e, u, r)));
+    ((u = Hre.join(a, `${S}.mcpb`)), (c = await downloadMcpb(e, u, r)));
   } else {
     let S = Hre.join(t, e);
     if (r) r(`Loading ${e}...`);
@@ -390,11 +390,13 @@ async function c3t(e, t, n, r, o, s) {
     throw (ke(S), S);
   }
   let y = Hre.join(a, p);
-  if ((await sTp(f, y, m, r), h.user_config && Object.keys(h.user_config).length > 0)) {
+  if (
+    (await extractMcpbContents(f, y, m, r), h.user_config && Object.keys(h.user_config).length > 0)
+  ) {
     let S = h.name,
-      A = rqe(n, S),
+      A = loadMcpServerUserConfig(n, S),
       v = o || A || {},
-      C = eDe(v, h.user_config);
+      C = validateUserConfig(v, h.user_config);
     if (!C.valid) {
       let k = {
         source: e,
@@ -417,9 +419,9 @@ async function c3t(e, t, n, r, o, s) {
         }
       );
     }
-    if (o) await bUn(n, S, o, h.user_config ?? {});
+    if (o) await saveMcpServerUserConfig(n, S, o, h.user_config ?? {});
     if (r) r("Generating MCP server configuration...");
-    let x = await _Un(h, y, v),
+    let x = await generateMcpConfig(h, y, v),
       I = {
         source: e,
         contentHash: p,
@@ -439,7 +441,7 @@ async function c3t(e, t, n, r, o, s) {
     );
   }
   if (r) r("Generating MCP server configuration...");
-  let b = await _Un(h, y),
+  let b = await generateMcpConfig(h, y),
     _ = {
       source: e,
       contentHash: p,

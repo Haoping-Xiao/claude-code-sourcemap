@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hRa
 // matched 2.1.88 source: src/utils/computerUse/executor.ts
 // class=modified  jaccard=0.1499  score=0.8359  fileCov=0.1544
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: unhideComputerUseApps, createCliExecutor
 // [unwrapped __commonJS module hRa] (exports=zXy, module=gRa)
@@ -26,14 +26,14 @@ function lfo(e, t, n) {
     o = Math.round(t * n);
   return MFn(r, o, Fpo);
 }
-async function cfo() {
+async function readClipboardViaPbpaste() {
   let { stdout: e, code: t } = await $n("pbpaste", [], {
     useCwd: false,
   });
   if (t !== 0) throw Error(`pbpaste exited with code ${t}`);
   return e;
 }
-async function ufo(e) {
+async function writeClipboardViaPbcopy(e) {
   let { code: t } = await $n("pbcopy", [], {
     input: e,
     useCwd: false,
@@ -64,20 +64,21 @@ async function zIp(e, t, n) {
     await bRa(e, r);
   }
 }
-async function KIp(e, t) {
+async function typeViaClipboard(e, t) {
   let n;
   try {
-    n = await cfo();
+    n = await readClipboardViaPbpaste();
   } catch {
     T("[computer-use] pbpaste before paste failed; proceeding without restore");
   }
   try {
-    if ((await ufo(t), (await cfo()) !== t)) throw Error("Clipboard write did not round-trip.");
+    if ((await writeClipboardViaPbcopy(t), (await readClipboardViaPbpaste()) !== t))
+      throw Error("Clipboard write did not round-trip.");
     (await e.keys(["command", "v"]), await Nn(100));
   } finally {
     if (typeof n === "string")
       try {
-        await ufo(n);
+        await writeClipboardViaPbcopy(n);
       } catch {
         T("[computer-use] clipboard restore after paste failed");
       }

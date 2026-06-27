@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K0c
 // matched 2.1.88 source: src/components/FeedbackSurvey/useMemorySurvey.tsx
 // class=modified  jaccard=0.3587  score=0.5277  fileCov=0.5282
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K0c] deps: ft, yfe, W0c, V0c, aW, kt, Ye, fb, eKe, jc, er, wr, fn, co, Ao, qd, dr, aS, dYo, pYo, fYo, xtn, gYo
 MC = R(rt(), 1);
@@ -17,7 +17,7 @@ function Vvm(e) {
 }
 function J0c() {
   return (
-    at(Gvm, false) &&
+    at(MEMORY_SURVEY_GATE, false) &&
     lu() &&
     !Fte() &&
     Us("allow_product_feedback") &&
@@ -27,7 +27,7 @@ function J0c() {
 function Q0c() {
   return false;
 }
-function Z0c(e) {
+function hasMemoryFileRead(e) {
   for (let t of e) {
     if (t.type !== "assistant") continue;
     let n = t.message.content;
@@ -40,7 +40,12 @@ function Z0c(e) {
   }
   return false;
 }
-function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false } = {}) {
+function useMemorySurvey(
+  e,
+  t,
+  n = false,
+  { enabled: r = true, otherSurveyActive: o = false } = {},
+) {
   let s = nD.useRef(new Set()),
     i = nD.useRef(false),
     a = nD.useRef(e);
@@ -50,7 +55,7 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
     d = nD.useRef(null),
     p = nD.useCallback((D, P, O) => {
       let L = d.current;
-      (G(ufr, {
+      (G(MEMORY_SURVEY_EVENT, {
         event_type: $e(D),
         appearance_id: P,
         response: Oo(O),
@@ -69,10 +74,10 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
     g = nD.useCallback((D, P) => p("responded", D, P), [p]),
     h = nD.useCallback((D) => false, []),
     y = nD.useCallback((D) => {
-      (G(ufr, {
+      (G(MEMORY_SURVEY_EVENT, {
         event_type: We("transcript_prompt_appeared"),
         appearance_id: D,
-        trigger: $e(dfr),
+        trigger: $e(TRANSCRIPT_SHARE_TRIGGER),
       }),
         Jc("feedback_survey", {
           event_type: "transcript_prompt_appeared",
@@ -82,10 +87,10 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
     }, []),
     b = nD.useCallback(async (D, P) => {
       if (
-        (G(ufr, {
+        (G(MEMORY_SURVEY_EVENT, {
           event_type: `transcript_share_${P}`,
           appearance_id: D,
-          trigger: $e(dfr),
+          trigger: $e(TRANSCRIPT_SHARE_TRIGGER),
         }),
         P === "dont_ask_again")
       )
@@ -94,12 +99,12 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
           transcriptShareDismissed: true,
         }));
       if (P === "yes") {
-        let O = await ifr(a.current, dfr, D);
+        let O = await ifr(a.current, TRANSCRIPT_SHARE_TRIGGER, D);
         return (
-          G(ufr, {
+          G(MEMORY_SURVEY_EVENT, {
             event_type: We(O.success ? "transcript_share_submitted" : "transcript_share_failed"),
             appearance_id: D,
-            trigger: $e(dfr),
+            trigger: $e(TRANSCRIPT_SHARE_TRIGGER),
             error_code: O.errorCode,
           }),
           O.success
@@ -139,7 +144,7 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
       if (!k || s.current.has(k.uuid)) return;
       let D = zl(k.message.content, " ");
       if (!qvm.test(D)) return;
-      if ((s.current.add(k.uuid), !i.current)) i.current = Z0c(e);
+      if ((s.current.add(k.uuid), !i.current)) i.current = hasMemoryFileRead(e);
       if (!i.current) return;
       if (X0c() || Math.random() < Y0c()) v();
     }, [r, o, _, t, n, k, e, v]),
@@ -157,7 +162,7 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
       s.current.add(k.uuid);
       let D = l.evaluation;
       if (!Vvm(D.classification)) return;
-      if (!i.current) i.current = Z0c(a.current);
+      if (!i.current) i.current = hasMemoryFileRead(a.current);
       if (!i.current) return;
       if (D.classification !== "harmed" && !X0c() && Math.random() >= Y0c()) return;
       ((d.current = D), u(D), v());
@@ -176,8 +181,8 @@ function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false 
 var nD,
   Fvm = 5000,
   jvm = 60000,
-  Gvm = "tengu_dunwich_bell",
-  ufr = "tengu_memory_survey_event",
+  MEMORY_SURVEY_GATE = "tengu_dunwich_bell",
+  MEMORY_SURVEY_EVENT = "tengu_memory_survey_event",
   Wvm = "tengu_velvet_moth",
-  dfr = "memory_survey",
+  TRANSCRIPT_SHARE_TRIGGER = "memory_survey",
   qvm;

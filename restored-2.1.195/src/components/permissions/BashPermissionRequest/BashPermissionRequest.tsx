@@ -2,15 +2,15 @@
 // restored from claude-code 2.1.195 (deminified) — module eKo
 // matched 2.1.88 source: src/components/permissions/BashPermissionRequest/BashPermissionRequest.tsx
 // class=modified  jaccard=0.2431  score=0.4588  fileCov=0.3408
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eKo] deps: Ye, N0e, ps, kt, rHc, LUt, V9n
 ((ctn = R(lt(), 1)), (tie = R(rt(), 1)), (WP = R(se(), 1)));
-function S_m() {
+function ClassifierCheckingSubtitle() {
   let e = aHc.c(6),
-    [t, n] = BVt("requesting", iHc, false),
+    [t, n] = BVt("requesting", CHECKING_TEXT, false),
     r;
-  if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((r = [...iHc]), (e[0] = r));
+  if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((r = [...CHECKING_TEXT]), (e[0] = r));
   else r = e[0];
   let o;
   if (e[1] !== n)
@@ -100,7 +100,7 @@ function utn(e, t, n = {}) {
     updatedInput: t.input,
   };
 }
-function lHc({ payload: e, answer: t }) {
+function BashPermissionRequestInner({ payload: e, answer: t }) {
   let n = Ho(),
     r = e.command,
     o = e.permissionResult.decisionReason,
@@ -296,7 +296,7 @@ function lHc({ payload: e, answer: t }) {
       return;
       switch (e.classifierState) {
         case "pending":
-          return PC.jsx(S_m, {});
+          return PC.jsx(ClassifierCheckingSubtitle, {});
         case "no-match":
         case "error":
           return PC.jsx(w, {
@@ -391,4 +391,4 @@ function lHc({ payload: e, answer: t }) {
 var aHc,
   UH,
   PC,
-  iHc = "Attempting to auto-approve\u2026";
+  CHECKING_TEXT = "Attempting to auto-approve\u2026";

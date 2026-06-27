@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gpt
 // matched 2.1.88 source: src/components/FallbackToolUseErrorMessage.tsx
 // class=modified  jaccard=0.3098  score=0.6604  fileCov=0.3685
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function hMa(e) {
   if (typeof e === "string") return dRp(e, 9);
@@ -49,7 +49,7 @@ var Jmo = 10;
 function sjn(e) {
   return e.replace(/<sandbox_violations>[\s\S]*?<\/sandbox_violations>/g, "");
 }
-function AT(e) {
+function FallbackToolUseErrorMessage(e) {
   let t = yMa.c(24),
     { result: n, verbose: r } = e,
     o,

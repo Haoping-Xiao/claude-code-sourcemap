@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module n7l
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/PromptStep.tsx
 // class=modified  jaccard=0.2555  score=0.3812  fileCov=0.4365
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n7l] deps: Cc, Bs, Ko, wb, vH, a4o
 ((e7l = R(lt(), 1)), (R1e = R(se(), 1)));
-function o7l() {
+function PromptStep() {
   let e = r7l.c(20),
     { goNext: t, goBack: n, updateWizardData: r, wizardData: o } = Eu(),
     [s, i] = Wsr.useState(o.systemPrompt || ""),

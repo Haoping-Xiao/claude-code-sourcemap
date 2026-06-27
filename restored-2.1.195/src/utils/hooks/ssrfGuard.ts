@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u0o
 // matched 2.1.88 source: src/utils/hooks/ssrfGuard.ts
 // class=modified  jaccard=0.4582  score=0.8974  fileCov=0.4835
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Q_t(e) {
   let t = d0o.isIP(e);
@@ -70,12 +70,12 @@ function Gpf(e) {
   }
   return null;
 }
-function Tgl(e, t, n) {
+function ssrfGuardedLookup(e, t, n) {
   let r = "all" in t && t.all === true,
     o = d0o.isIP(e);
   if (o !== 0) {
     if (Q_t(e)) {
-      n(Egl(e, e), "");
+      n(ssrfError(e, e), "");
       return;
     }
     let s = o === 6 ? 6 : 4;
@@ -101,7 +101,7 @@ function Tgl(e, t, n) {
       }
       for (let { address: c } of i)
         if (Q_t(c)) {
-          n(Egl(e, c), "");
+          n(ssrfError(e, c), "");
           return;
         }
       let a = i[0];
@@ -128,7 +128,7 @@ function Tgl(e, t, n) {
     },
   );
 }
-function Egl(e, t) {
+function ssrfError(e, t) {
   let n = Error(
     `HTTP hook blocked: ${e} resolves to ${t} (private/link-local address). Loopback (127.0.0.1, ::1) is allowed for local dev.`,
   );

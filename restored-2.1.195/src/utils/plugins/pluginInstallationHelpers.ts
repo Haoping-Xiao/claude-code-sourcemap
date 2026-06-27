@@ -2,21 +2,21 @@
 // restored from claude-code 2.1.195 (deminified) — module OYt
 // matched 2.1.88 source: src/utils/plugins/pluginInstallationHelpers.ts
 // class=modified  jaccard=0.2913  score=0.3876  fileCov=0.5396
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OYt] deps: je, Bi, gM, Mx, iWe
 ((RRl = require("crypto")), (uer = R(Uj(), 1)));
 function ORl() {
   return new Date().toISOString();
 }
-function ger(e, t) {
+function validatePathWithinBase(e, t) {
   let n = xq.resolve(e, t),
     r = xq.resolve(e) + xq.sep;
   if (!n.startsWith(r) && n !== xq.resolve(e))
     throw Error(`Path traversal detected: "${t}" would escape the base directory`);
   return n;
 }
-async function NYt(e, t, n = "user", r, o, s, i, a) {
+async function cacheAndRegisterPlugin(e, t, n = "user", r, o, s, i, a) {
   let l = typeof t.source === "string" && o ? o : t.source,
     c =
       s &&
@@ -112,7 +112,7 @@ function NRl(e, t = "user", n) {
     n,
   );
 }
-function L$o(e) {
+function formatResolutionError(e) {
   switch (e.reason) {
     case "cycle":
       return `Dependency cycle: ${e.chain.join(" \u2192 ")}`;
@@ -255,7 +255,7 @@ function PRl({
   }
   return new Map(e.map((u) => [u, l.has(u)]));
 }
-async function BYt({
+async function installResolvedPlugin({
   pluginId: e,
   entry: t,
   scope: n,
@@ -418,7 +418,9 @@ async function BYt({
       message: B.message,
     };
   function $(me) {
-    return eLt(me.entry.source) ? ger(me.marketplaceInstallLocation, me.entry.source) : void 0;
+    return eLt(me.entry.source)
+      ? validatePathWithinBase(me.marketplaceInstallLocation, me.entry.source)
+      : void 0;
   }
   let q = new Set(),
     W = A.closure;
@@ -513,7 +515,7 @@ async function BYt({
           }
         }
       }
-      let Ve = await NYt(
+      let Ve = await cacheAndRegisterPlugin(
         ye,
         Ie,
         n,
@@ -788,7 +790,7 @@ function MRl({ reason: e, errorKind: t, pluginId: n, entry: r, marketplaceName: 
     }),
   });
 }
-async function bOe({
+async function installPluginFromMarketplace({
   pluginId: e,
   entry: t,
   marketplaceName: n,
@@ -797,7 +799,7 @@ async function bOe({
 }) {
   try {
     let i = (await EL(e))?.marketplaceInstallLocation,
-      a = await BYt({
+      a = await installResolvedPlugin({
         pluginId: e,
         entry: t,
         scope: r,
@@ -828,7 +830,7 @@ async function bOe({
         case "resolution-failed":
           return {
             success: !1,
-            error: L$o(a.resolution),
+            error: formatResolutionError(a.resolution),
           };
         case "blocked-by-policy":
           return {

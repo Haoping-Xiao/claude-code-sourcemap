@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module OLc
 // matched 2.1.88 source: src/hooks/notifs/useLspInitializationNotification.tsx
 // class=modified  jaccard=0.3534  score=0.8419  fileCov=0.3785
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OLc] deps: Ed, ft, uo, __
 Dtn = R(rt(), 1);
-function BLc() {
+function useLspInitializationNotification() {
   let e = NLc.c(12),
     t = Ho(),
     [n, r] = pvt.useState(rCm),

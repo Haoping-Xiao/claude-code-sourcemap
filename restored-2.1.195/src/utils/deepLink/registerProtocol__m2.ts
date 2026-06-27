@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module kme
 // matched 2.1.88 source: src/utils/deepLink/registerProtocol.ts
 // class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.0587  score=0.3802  fileCov=0.0649
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function zsm() {
+async function MACOS_SYMLINK_PATH() {
   let e = iNe.join(Ore(), "claude");
   if (!process.execPath.startsWith(iNe.join(e, "versions") + iNe.sep)) return null;
   let t = iNe.join(e, "ClaudeCode.app", "Contents", "MacOS"),
@@ -36,7 +36,7 @@ async function luc() {
     delete process.env.CLAUDE_BG_TCC_DISCLAIMED;
     return;
   }
-  let e = (await zsm()) ?? process.execPath;
+  let e = (await MACOS_SYMLINK_PATH()) ?? process.execPath;
   try {
     let t = require("bun:ffi"),
       { symbols: n } = t.dlopen("/usr/lib/libSystem.B.dylib", {

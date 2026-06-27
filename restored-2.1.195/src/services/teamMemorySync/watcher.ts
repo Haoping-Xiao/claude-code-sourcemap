@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qwl
 // matched 2.1.88 source: src/services/teamMemorySync/watcher.ts
 // class=modified  jaccard=0.1427  score=0.1747  fileCov=0.4378
-// note: deminified; 7 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopMemoryWatcher, startMemoryWatcher, rebuildStoreSet, notifyMemoryWrite, maybeResyncStaleStores, isPermanentFailure, _startFileWatcherForTesting, _resyncTimerForTesting, _resetWatcherStateForTesting, _multiStoreStateForTesting, _lastSyncCompletedAtForTesting, _armResyncTimerForTesting, UNLINK_RECOVERABLE_REASONS_BY_SCOPE
 // [unwrapped __esm module qwl] deps: Uh, vGt, MM, je, wr, At, zH, Jt, dn, Un, kt, i0n, WKr, Iwl
@@ -76,7 +76,7 @@ function Vwl(e, t, n) {
       ...n,
     });
 }
-async function Jwl(e, t = "watch") {
+async function executePush(e, t = "watch") {
   let n = kb[e],
     r = e === "team" ? p3 : e === "user" ? bq : null;
   if (r) {
@@ -201,7 +201,7 @@ function FAf(e) {
   }
   if (t.pushSuppressedReason !== null) return;
   if (!t.hasPendingChanges) return;
-  t.currentPushPromise = Jwl(e);
+  t.currentPushPromise = executePush(e);
 }
 function maybeResyncStaleStores() {
   try {
@@ -215,7 +215,7 @@ function maybeResyncStaleStores() {
       if (o.pushSuppressedReason !== null || o.pushInProgress) continue;
       if (o.lastSyncCompletedAt === null || t - o.lastSyncCompletedAt <= e) continue;
       if (!Qwl(n)) continue;
-      o.currentPushPromise = Jwl(n, "periodic");
+      o.currentPushPromise = executePush(n, "periodic");
     }
   } catch (e) {
     T(`memory-watcher: stale-store check failed: ${be(e)}`, {
@@ -404,14 +404,14 @@ async function GAf() {
     return;
   }
   if (e && n === null && !r) kb.team.syncState = BDo("team", o);
-  if (kb.team.syncState) await zwl("team");
-  if (kb.user.syncState) await zwl("user");
+  if (kb.team.syncState) await startTeamMemoryWatcher("team");
+  if (kb.user.syncState) await startTeamMemoryWatcher("user");
   if (kb.team.syncState || kb.user.syncState || p3 || bq) {
     let s = kb.user.syncState || bq;
     await KDo(s ? mm() : cT());
   }
 }
-async function zwl(e) {
+async function startTeamMemoryWatcher(e) {
   let t = kb[e];
   if (!t.syncState) return;
   if (t.syncState.pulled) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YZn
 // matched 2.1.88 source: src/utils/plugins/zipCache.ts
 // class=modified  jaccard=0.3667  score=0.6342  fileCov=0.465
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YZn] deps: Qi, dn, w8, je, Iv, ys, pq, Xh, zZn
 Z0l = require("path");
@@ -55,17 +55,17 @@ function wYt() {
   let e = process.env.CLAUDE_CODE_PLUGIN_CACHE_DIR;
   return e ? LR(e) : void 0;
 }
-function _$o() {
+function getZipCacheKnownMarketplacesPath() {
   let e = wYt();
   if (!e) throw Error("Plugin zip cache is not enabled");
   return KF.join(e, "known_marketplaces.json");
 }
-function nRl() {
+function getZipCacheMarketplacesDir() {
   let e = wYt();
   if (!e) throw Error("Plugin zip cache is not enabled");
   return KF.join(e, "marketplaces");
 }
-function rRl() {
+function getZipCachePluginsDir() {
   let e = wYt();
   if (!e) throw Error("Plugin zip cache is not enabled");
   return KF.join(e, "plugins");
@@ -77,7 +77,7 @@ function MIf() {
     cleanupHandle: null,
   };
 }
-function NIf() {
+function cleanupSessionPluginCache() {
   let e = OIf(),
     t = tRl.get(e);
   if (t) return t;
@@ -99,8 +99,8 @@ function NIf() {
     n
   );
 }
-async function CYt() {
-  let e = NIf();
+async function getSessionPluginCachePath() {
+  let e = cleanupSessionPluginCache();
   if (e.path) return e.path;
   if (!e.promise)
     e.promise = (async () => {
@@ -131,16 +131,16 @@ async function XZn(e, t) {
     throw s;
   }
 }
-async function BIf(e) {
+async function createZipFromDirectory(e) {
   let t = {};
-  await oRl(e, "", t, new Set());
+  await collectFilesForZip(e, "", t, new Set());
   let { zipSync: r } = await Promise.resolve().then(() => (Y5e(), G4t)),
     o = r(t, {
       level: 6,
     });
   return (T(`Created ZIP from ${e}: ${Object.keys(t).length} files, ${o.length} bytes`), o);
 }
-async function oRl(e, t, n, r) {
+async function collectFilesForZip(e, t, n, r) {
   let o = t ? KF.join(e, t) : e,
     s;
   try {
@@ -174,7 +174,7 @@ async function oRl(e, t, n, r) {
       continue;
     }
     if (c.isSymbolicLink()) continue;
-    if (c.isDirectory()) await oRl(e, l, n, r);
+    if (c.isDirectory()) await collectFilesForZip(e, l, n, r);
     else if (c.isFile())
       try {
         let u = await NL.readFile(a);
@@ -190,7 +190,7 @@ async function oRl(e, t, n, r) {
       }
   }
 }
-async function uOe(e, t) {
+async function extractZipToDirectory(e, t) {
   let n = await qt().readFileBytes(e),
     r = await nde(n),
     o = ZLe(n);
@@ -208,7 +208,7 @@ async function uOe(e, t) {
   T(`Extracted ZIP to ${t}: ${Object.keys(r).length} entries`);
 }
 async function JZn(e, t) {
-  let n = await BIf(e);
+  let n = await createZipFromDirectory(e);
   (await XZn(t, n),
     await NL.rm(e, {
       recursive: true,
@@ -219,7 +219,7 @@ function sRl(e) {
   let t = e.replace(/[^a-zA-Z0-9\-_]/g, "-");
   return KF.join("marketplaces", `${t}.json`);
 }
-function iRl(e) {
+function isMarketplaceSourceSupportedByZipCache(e) {
   return ["github", "git", "url", "settings"].includes(e.source);
 }
 var y$o,

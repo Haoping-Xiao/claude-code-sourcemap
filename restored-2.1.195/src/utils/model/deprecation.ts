@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pir
 // matched 2.1.88 source: src/utils/model/deprecation.ts
 // class=modified  jaccard=0.1428  score=0.2606  fileCov=0.24
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pir] deps: dn, je, vn, co, Cv, MJl, Y4o
 $Jt = class $Jt extends Error {
@@ -68,12 +68,12 @@ function jJl(e) {
 function mir(e) {
   if (!e) return null;
   let t = fir(e);
-  if (!t.isDeprecated || !t.remappedTo) return Z4o(e);
+  if (!t.isDeprecated || !t.remappedTo) return getModelDeprecationWarning(e);
   let n = O_(),
     r = $h(n) ?? n;
   return `\u26A0 ${t.modelName.replace(/^Claude /, "")} remaps to ${r}. CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP=1 opts out`;
 }
-function Z4o(e) {
+function getModelDeprecationWarning(e) {
   if (!e) return null;
   let t = fir(e);
   if (!t.isDeprecated) return null;

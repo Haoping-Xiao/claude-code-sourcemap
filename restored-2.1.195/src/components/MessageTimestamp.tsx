@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module y5l
 // matched 2.1.88 source: src/components/MessageTimestamp.tsx
 // class=modified  jaccard=0.4456  score=0.6357  fileCov=0.5985
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module y5l] deps: Tc, Ye
 ((g5l = R(lt(), 1)), (zFo = R(se(), 1)));
-function b5l(e) {
+function MessageTimestamp(e) {
   let t = _5l.c(10),
     { message: n, isTranscriptMode: r, showMessageTimestamps: o } = e,
     s = o === void 0 ? false : o;

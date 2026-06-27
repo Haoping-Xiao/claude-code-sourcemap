@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wxc
 // matched 2.1.88 source: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts
 // class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.0645  score=0.124  fileCov=0.1186
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerClaudeCodeSkill, CLAUDE_CODE_SKILL_NAME, CLAUDE_CODE_SKILL_DESCRIPTION
 // [unwrapped __esm module wxc] deps: bxc, Exc, Hxc
@@ -14,7 +14,7 @@
 function Cxc() {
   return (NHm ??= Promise.resolve().then(() => (wxc(), vxc)));
 }
-function UHm(e, t) {
+function CLAUDE_CODE_GUIDE_AGENT(e, t) {
   let n = [],
     o = e.options.commands.filter((f) => !f.isHidden),
     s = (f) => f.type !== "prompt" || f.source === "builtin" || f.source === "bundled",
@@ -105,7 +105,7 @@ ${f.join(`
 }
 function FHm(e, t, n, r) {
   let o = [e],
-    s = UHm(n, r);
+    s = CLAUDE_CODE_GUIDE_AGENT(n, r);
   if (s)
     o.push(`---
 

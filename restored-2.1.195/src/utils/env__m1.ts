@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rx
 // matched 2.1.88 source: src/utils/env.ts
 // class=modified (alt of src/utils/env.ts)  jaccard=0.1974  score=0.4109  fileCov=0.2754
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rx] deps: Hp, CZe, Hp
 lb = {
@@ -35,7 +35,7 @@ async function xZe(e) {
     return false;
   }
 }
-function hEu() {
+function isConductor() {
   return process.env.__CFBundleIdentifier === "com.conductor.app";
 }
 function ikr(e) {
@@ -48,7 +48,7 @@ function ikr(e) {
     /appdata[\\/]local[\\/](programs[\\/])?devin[\\/]/.test(t)
   );
 }
-function yEu() {
+function detectTerminal() {
   if (process.env.CURSOR_TRACE_ID) return "cursor";
   let e = process.env.VSCODE_GIT_ASKPASS_MAIN?.toLowerCase() ?? "";
   if (e.includes("cursor")) return "cursor";

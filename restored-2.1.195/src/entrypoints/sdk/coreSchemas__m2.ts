@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module kic
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0162  score=0.704  fileCov=0.0163
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kic] deps: ft, sp, co, y_, Iic
 xic = require("crypto");
-async function* oYt(e, t, n, r, o = lp, s) {
+async function* HOOK_EVENTS(e, t, n, r, o = lp, s) {
   let i = {
     ...Td(n),
     hook_event_name: "TeammateIdle",

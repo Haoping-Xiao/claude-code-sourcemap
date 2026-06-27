@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dQt
 // matched 2.1.88 source: src/services/voiceStreamSTT.ts
 // class=modified  jaccard=0.3473  score=0.5855  fileCov=0.4606
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sanitizeKeytermsForHeader, probeVoiceConnectivity, isVoiceStreamAvailable, isTypedInterimsEnabled, connectVoiceStream, FINALIZE_TIMEOUTS_MS
 function rar(e, t, n) {
@@ -78,7 +78,7 @@ async function connectVoiceStream(e, t) {
       }),
       stt_provider: "deepgram-nova3",
     }),
-    i = `${r}${D7f}?${s.toString()}`;
+    i = `${r}${VOICE_STREAM_PATH}?${s.toString()}`;
   T(`[voice_stream] Connecting to ${i}`);
   let a = {
     Authorization: `Bearer ${n.accessToken}`,
@@ -141,7 +141,7 @@ async function connectVoiceStream(e, t) {
             }
             setTimeout(() => {
               if (((m = true), u.readyState === fTe.default.OPEN))
-                (T("[voice_stream] Sending CloseStream (finalize)"), u.send(R7f));
+                (T("[voice_stream] Sending CloseStream (finalize)"), u.send(CLOSE_STREAM_MSG));
             }, 0);
           })
         );
@@ -159,11 +159,11 @@ async function connectVoiceStream(e, t) {
       (p = true),
       (f = true),
       T("[voice_stream] Sending initial KeepAlive"),
-      u.send(Jtc),
+      u.send(KEEPALIVE_MSG),
       (d = setInterval(
         (x) => {
           if (x.readyState === fTe.default.OPEN)
-            (T("[voice_stream] Sending periodic KeepAlive"), x.send(Jtc));
+            (T("[voice_stream] Sending periodic KeepAlive"), x.send(KEEPALIVE_MSG));
         },
         P7f,
         u,
@@ -283,10 +283,10 @@ async function connectVoiceStream(e, t) {
   );
 }
 var fTe,
-  Jtc = '{"type":"KeepAlive"}',
-  R7f = '{"type":"CloseStream"}',
+  KEEPALIVE_MSG = '{"type":"KeepAlive"}',
+  CLOSE_STREAM_MSG = '{"type":"CloseStream"}',
   L7f = () => {},
-  D7f = "/api/ws/speech_to_text/voice_stream",
+  VOICE_STREAM_PATH = "/api/ws/speech_to_text/voice_stream",
   P7f = 8000,
   FINALIZE_TIMEOUTS_MS,
   $7f = 1500,

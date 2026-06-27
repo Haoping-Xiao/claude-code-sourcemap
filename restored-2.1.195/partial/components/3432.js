@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module X0
 // matched 2.1.88 source: src/components/ManagedSettingsSecurityDialog/utils.ts
 // class=partial  jaccard=0.2489  score=0.5408  fileCov=0.3155
-// note: low-confidence suggestion: src/components/ManagedSettingsSecurityDialog/utils.ts; dir inferred from dep-graph -> components; 0 renamed
+// note: low-confidence suggestion: src/components/ManagedSettingsSecurityDialog/utils.ts; dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X0] deps: Ye, PWt
 O1a = R(lt(), 1), hVe = R(se(), 1);
-function Cft(e) {
+function extractDangerousSettings(e) {
   if (!e) return {
     shellSettings: {},
     envVars: {},
@@ -41,8 +41,8 @@ function g4n(e) {
   return Object.keys(e.shellSettings).length > 0 || Object.keys(e.envVars).length > 0 || e.hasHooks || e.hasClaudeMd;
 }
 function N1a(e, t) {
-  let n = Cft(e),
-    r = Cft(t);
+  let n = extractDangerousSettings(e),
+    r = extractDangerousSettings(t);
   if (!g4n(r)) return false;
   if (!g4n(n)) return true;
   let o = De({

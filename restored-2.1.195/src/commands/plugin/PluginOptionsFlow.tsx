@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GBo
 // matched 2.1.88 source: src/commands/plugin/PluginOptionsFlow.tsx
 // class=modified  jaccard=0.3237  score=0.5258  fileCov=0.4571
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GBo] deps: TVt, fn
 ((x2l = R(lt(), 1)), (k2l = R(rt(), 1)), (R2l = R(se(), 1)));
@@ -63,7 +63,7 @@ function srr(e) {
   else d = t[6];
   let p;
   if (t[7] !== o || t[8] !== s || t[9] !== d)
-    ((p = qBo.jsx(WBo, {
+    ((p = qBo.jsx(PluginOptionsFlow, {
       plugin: o,
       pluginId: s,
       onDone: d,
@@ -75,7 +75,7 @@ function srr(e) {
   else p = t[10];
   return p;
 }
-function WBo({ plugin: e, pluginId: t, onDone: n }) {
+function PluginOptionsFlow({ plugin: e, pluginId: t, onDone: n }) {
   let [r] = t1e.useState(() => {
       let u = [],
         d = u3t(e);

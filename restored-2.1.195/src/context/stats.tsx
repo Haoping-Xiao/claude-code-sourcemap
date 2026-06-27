@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m8o
 // matched 2.1.88 source: src/context/stats.tsx
 // class=modified  jaccard=0.4307  score=0.9324  fileCov=0.4446
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module m8o]
 ((Zfc = R(lt(), 1)), (Tur = R(rt(), 1)), (rmc = R(se(), 1)), (emc = Tur.createContext(void 0)));
@@ -64,7 +64,7 @@ function h8o() {
     },
   };
 }
-function imc(e) {
+function StatsProvider(e) {
   let t = smc.c(7),
     { store: n, children: r } = e,
     o;

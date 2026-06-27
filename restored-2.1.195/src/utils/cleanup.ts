@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gzo
 // matched 2.1.88 source: src/utils/cleanup.ts
 // class=modified  jaccard=0.1321  score=0.2473  fileCov=0.2209
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gzo] deps: Xr, dn, Pw, Hpe, Jt, ag
 ((pSc = require("crypto")), (HNe = require("fs/promises")), (mzo = require("path")));
@@ -13,7 +13,7 @@ ySc = ve(() =>
     ts: H.number(),
   }),
 );
-function bgm() {
+function cleanupOldMessageFilesInBackground() {
   if (!Om("userSettings") && jo()?.cleanupPeriodDays === void 0)
     return (
       T(
@@ -45,7 +45,7 @@ function TNe(e, t) {
     errors: e.errors + t.errors,
   };
 }
-function Sgm(e) {
+function convertFileNameToDate(e) {
   let t = bi(e, ".").replace(/T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z/, "T$1:$2:$3.$4Z");
   return new Date(t);
 }
@@ -58,7 +58,7 @@ async function bSc(e, t, n) {
     let o = await qt().readdir(e);
     for (let s of o)
       try {
-        if (Sgm(s.name) < t)
+        if (convertFileNameToDate(s.name) < t)
           if ((await qt().unlink(tu.join(e, s.name)), n)) r.messages++;
           else r.errors++;
       } catch (i) {
@@ -393,7 +393,7 @@ async function A7e(e, t, n) {
   }
   return (await y2(i, s), o);
 }
-function wgm() {
+function cleanupOldFileHistoryBackups() {
   return A7e("file-history");
 }
 function Cgm() {
@@ -694,11 +694,11 @@ async function Wgm() {
   return t;
 }
 async function ASc() {
-  if ((await Ffc(), !bgm())) return;
+  if ((await Ffc(), !cleanupOldMessageFilesInBackground())) return;
   (await Egm(),
     await Agm(),
     await vgm(),
-    await wgm(),
+    await cleanupOldFileHistoryBackups(),
     await Cgm(),
     await Igm(),
     await xgm(),

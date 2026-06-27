@@ -2,18 +2,18 @@
 // restored from claude-code 2.1.195 (deminified) — module qdt
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/UI.tsx
 // class=modified  jaccard=0.307  score=0.5249  fileCov=0.4251
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qdt] deps: Un, kt, db, fh, uDe, je, At, es, sr, K0
 HIa = require("path");
-function vIa(e) {
+function renderToolUseMessage(e) {
   if (!e.uri || !e.server) return null;
   return `Read resource "${e.uri}" from server "${e.server}"`;
 }
-function wIa() {
+function userFacingName() {
   return "readMcpResource";
 }
-function CIa(e, t, { verbose: n }) {
+function renderToolResultMessage(e, t, { verbose: n }) {
   if (e?.error)
     return Vdt.jsx(J1, {
       content: e.error,

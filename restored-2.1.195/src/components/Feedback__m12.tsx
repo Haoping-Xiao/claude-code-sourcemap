@@ -2009,7 +2009,7 @@ function tvm(e) {
 function nvm(e) {
   return e.doneAt !== void 0 || !!e.failed;
 }
-function FleetView({
+function Feedback({
   onAction: e,
   initialJobId: t,
   enteredViaLeftArrow: n,
@@ -5325,7 +5325,7 @@ async function mountFleetView(e, t) {
               },
               children: ur.jsx(zLn, {
                 children: ur.jsx(TT, {
-                  children: ur.jsx(FleetView, {
+                  children: ur.jsx(Feedback, {
                     onAction: I,
                     initialJobId: a,
                     enteredViaLeftArrow: u,

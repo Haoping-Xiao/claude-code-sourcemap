@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module WTe
 // matched 2.1.88 source: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx
 // class=modified  jaccard=0.3423  score=0.6082  fileCov=0.4392
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WTe] deps: iu, Ye, uo, QH, m0e
 ((wEc = R(lt(), 1)), (v7e = R(se(), 1)));
-function Mzo(e, t) {
+function buildPermissionUpdates(e, t) {
   let n = [
     {
       type: "setMode",
@@ -56,7 +56,7 @@ function Ahm(e, t, n) {
     })
     .catch(ke);
 }
-function Hhm({
+function buildPlanApprovalOptions({
   showClearContext: e,
   showUltraplan: t,
   usedPercent: n,
@@ -188,7 +188,7 @@ function ipr(e, t) {
     return {
       behavior: "allow",
       updatedInput: d,
-      permissionUpdates: Mzo(m, o),
+      permissionUpdates: buildPermissionUpdates(m, o),
       feedback: s,
     };
   if (e === "no") {
@@ -201,7 +201,7 @@ function ipr(e, t) {
   }
   return null;
 }
-function xEc(e) {
+function ExitPlanModePermissionRequest(e) {
   let t = IEc.c(106),
     { payload: n, answer: r } = e,
     o = Ht(Phm),
@@ -239,7 +239,7 @@ function xEc(e) {
     let Mr;
     if (t[13] !== A) ((Mr = A && !v6o()), (t[13] = A), (t[14] = Mr));
     else Mr = t[14];
-    ((M = Hhm({
+    ((M = buildPlanApprovalOptions({
       showClearContext: m,
       showUltraplan: _,
       usedPercent: m ? Thm(k, S) : null,

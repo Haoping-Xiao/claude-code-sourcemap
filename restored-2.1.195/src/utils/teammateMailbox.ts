@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Nht
 // matched 2.1.88 source: src/utils/teammateMailbox.ts
 // class=modified  jaccard=0.2945  score=0.3912  fileCov=0.5439
-// note: deminified; 49 identifiers renamed (exports/displayName/curated)
+// note: deminified; 45 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeToMailbox, sendShutdownRequestToMailbox, readUnreadMessages, readMailbox, planApprovalResumeText, parseFrameForDisplay, messageIdentityKey, markSingleMessageAsRead, markMessagesAsReadByPredicate, markMessagesAsRead, isTeamPermissionUpdate, isTaskAssignment, isStructuredProtocolMessage, isShutdownRequest, isShutdownApproved, isSandboxPermissionResponse, isSandboxPermissionRequest, isPlanApprovalResponse, isPlanApprovalRequest, isPermissionResponse, isPermissionRequest, isMod …
 // [unwrapped __esm module Nht]
@@ -31,7 +31,7 @@ function getInboxPath(e, t) {
     i = P8n.join(s, `${o}.json`);
   return (T(`[TeammateMailbox] getInboxPath: agent=${e}, team=${n}, fullPath=${i}`), i);
 }
-async function yZp(e) {
+async function ensureInboxDir(e) {
   let t = e || rp() || "default",
     n = fft(t),
     r = P8n.join(nwe(), n, "inboxes");
@@ -58,7 +58,7 @@ async function readUnreadMessages(e, t) {
   return (T(`[TeammateMailbox] readUnreadMessages: ${r.length} unread of ${n.length} total`), r);
 }
 async function writeToMailbox(e, t, n) {
-  await yZp(n);
+  await ensureInboxDir(n);
   let r = getInboxPath(e, n),
     o = `${r}.lock`;
   T(`[TeammateMailbox] writeToMailbox: recipient=${e}, from=${t.from}, path=${r}`);
@@ -183,7 +183,7 @@ async function clearMailbox(e, t) {
     await o?.();
   }
 }
-function formatTeammateMessage(e) {
+function Uht(e) {
   let t = e.color ? ` color="${ip(e.color)}"` : "",
     n = e.summary ? ` summary="${ip(e.summary)}"` : "",
     r = HLe(DB, e.text);
@@ -192,7 +192,7 @@ ${r}
 </${DB}>`;
 }
 function formatTeammateMessages(e, t) {
-  let n = e.map(formatTeammateMessage).join(`
+  let n = e.map(Uht).join(`
 
 `);
   return t.recipientIsLead
@@ -300,7 +300,7 @@ function isSandboxPermissionResponse(e) {
   } catch {}
   return null;
 }
-function createShutdownRequestMessage(e) {
+function ShutdownRequestMessageSchema(e) {
   return {
     type: "shutdown_request",
     requestId: e.requestId,
@@ -309,7 +309,7 @@ function createShutdownRequestMessage(e) {
     timestamp: new Date().toISOString(),
   };
 }
-function createShutdownApprovedMessage(e) {
+function ShutdownApprovedMessageSchema(e) {
   return {
     type: "shutdown_approved",
     requestId: e.requestId,
@@ -319,7 +319,7 @@ function createShutdownApprovedMessage(e) {
     backendType: e.backendType,
   };
 }
-function createShutdownRejectedMessage(e) {
+function ShutdownRejectedMessageSchema(e) {
   return {
     type: "shutdown_rejected",
     requestId: e.requestId,
@@ -332,7 +332,7 @@ async function sendShutdownRequestToMailbox(e, t, n) {
   let r = t || rp(),
     o = Oh() || Hd,
     s = nrt("shutdown", e),
-    i = createShutdownRequestMessage({
+    i = ShutdownRequestMessageSchema({
       requestId: s,
       from: o,
       reason: n,
@@ -356,7 +356,7 @@ async function sendShutdownRequestToMailbox(e, t, n) {
 }
 function isShutdownRequest(e) {
   try {
-    let t = ShutdownRequestMessageSchema().safeParse(Ft(e));
+    let t = w9t().safeParse(Ft(e));
     if (t.success) return t.data;
   } catch {}
   return null;
@@ -370,7 +370,7 @@ function isPlanApprovalRequest(e) {
 }
 function isShutdownApproved(e) {
   try {
-    let t = ShutdownApprovedMessageSchema().safeParse(Ft(e));
+    let t = pAe().safeParse(Ft(e));
     if (t.success) return t.data;
   } catch {}
   return null;
@@ -400,7 +400,7 @@ function isTeamPermissionUpdate(e) {
     return false;
   }
 }
-function createModeSetRequestMessage(e) {
+function ModeSetRequestMessageSchema(e) {
   return {
     type: "mode_set_request",
     mode: e.mode,
@@ -409,7 +409,7 @@ function createModeSetRequestMessage(e) {
 }
 function isModeSetRequest(e) {
   try {
-    let t = ModeSetRequestMessageSchema().safeParse(Ft(e));
+    let t = cel().safeParse(Ft(e));
     if (t.success) return t.data;
   } catch {}
   return null;
@@ -508,12 +508,12 @@ var P8n,
   IdleNotificationMessageSchema,
   PlanApprovalRequestMessageSchema,
   PlanApprovalResponseMessageSchema,
-  ShutdownRequestMessageSchema,
-  ShutdownApprovedMessageSchema,
-  ShutdownRejectedMessageSchema,
+  w9t,
+  pAe,
+  $8n,
   TaskAssignmentMessageSchema,
   TaskCompletedMessageSchema,
   TeammateTerminatedMessageSchema,
-  ModeSetRequestMessageSchema,
+  cel,
   PROTOCOL_FRAME_PROMPT_ERROR =
     "Teammate prompt must not be a mailbox protocol frame (permission/mode/plan/shutdown JSON) \u2014 pass plain-text instructions";

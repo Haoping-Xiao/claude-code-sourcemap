@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module D$c
 // matched 2.1.88 source: src/components/DevChannelsDialog.tsx
 // class=modified  jaccard=0.3295  score=0.4435  fileCov=0.5617
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DevChannelsDialog
 // [unwrapped __esm module D$c] deps: kt, Ye, Yp, dr, Fy, vi
@@ -41,7 +41,7 @@ function DevChannelsDialog(e) {
       (t[3] = l));
   else ((a = t[2]), (l = t[3]));
   let c;
-  if (t[4] !== n) ((c = n.map(lxm).join(", ")), (t[4] = n), (t[5] = c));
+  if (t[4] !== n) ((c = n.map(_temp2).join(", ")), (t[4] = n), (t[5] = c));
   else c = t[5];
   let u;
   if (t[6] !== c)
@@ -85,7 +85,7 @@ function DevChannelsDialog(e) {
   else p = t[12];
   return p;
 }
-function lxm(e) {
+function _temp2(e) {
   return e.kind === "plugin" ? `plugin:${e.name}@${e.marketplace}` : `server:${e.name}`;
 }
 function cxm() {

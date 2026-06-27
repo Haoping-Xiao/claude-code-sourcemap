@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module OUc
 // matched 2.1.88 source: src/utils/plugins/headlessPluginInstall.ts
 // class=modified  jaccard=0.5086  score=0.8985  fileCov=0.5397
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OUc] deps: je, Jt, lE, ZC, dOe
 ((fXo = require("fs/promises")), (Rmr = require("path")));
-async function mXo(e) {
+async function installPluginsForHeadless(e) {
   let t = az();
   T(`installPluginsForHeadless: starting${t ? " (zip cache mode)" : ""}`);
   let n = await ser();

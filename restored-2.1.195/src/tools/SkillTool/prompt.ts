@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ect
 // matched 2.1.88 source: src/tools/SkillTool/prompt.ts
 // class=modified  jaccard=0.2906  score=0.6956  fileCov=0.333
-// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getSkillToolInfo, getSkillInfo, getPrompt, getLimitedSkillToolCommands, formatCommandsWithinBudget, clearPromptCache
 function Hoo(e) {
@@ -10,7 +10,7 @@ function Hoo(e) {
     n = WWe();
   return t.length > n ? t.slice(0, n - 1) + "\u2026" : t;
 }
-function top(e) {
+function formatCommandDescription(e) {
   let t = xu(e);
   if (e.name !== t && e.type === "prompt" && e.source === "plugin")
     T(`Skill prompt: showing "${e.name}" (userFacingName="${t}")`);
@@ -31,7 +31,7 @@ function formatCommandsWithinBudget(e, t, n, r) {
         );
       return {
         cmd: h,
-        full: top(h),
+        full: formatCommandDescription(h),
       };
     }),
     a = i.reduce((h, y) => h + rn(y.full), 0) + (i.length - 1);

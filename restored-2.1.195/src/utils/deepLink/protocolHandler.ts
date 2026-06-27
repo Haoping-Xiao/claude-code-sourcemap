@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I1c
 // matched 2.1.88 source: src/utils/deepLink/protocolHandler.ts
 // class=modified  jaccard=0.284  score=0.376  fileCov=0.5372
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForUrlEvent, handleUrlSchemeLaunch, handleDeepLinkUri
 // [unwrapped __esm module I1c] deps: er, je, Bi, _0
@@ -77,7 +77,7 @@ async function handleDeepLinkUri(e) {
   }
   T(`Parsed deep link action: ${De(t)}`);
   let n = await R1c.realpath(process.execPath).catch(() => process.execPath),
-    { cwd: r, resolvedRepo: o } = await ekm(t),
+    { cwd: r, resolvedRepo: o } = await resolveCwd(t),
     s = o ? await a_c(r) : void 0,
     i;
   try {
@@ -112,7 +112,7 @@ async function handleUrlSchemeLaunch() {
     return null;
   }
 }
-async function ekm(e) {
+async function resolveCwd(e) {
   if (e.cwd)
     return {
       cwd: e.cwd,

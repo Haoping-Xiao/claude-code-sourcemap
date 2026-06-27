@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S_
 // matched 2.1.88 source: src/tasks/LocalShellTask/LocalShellTask.tsx
 // class=modified  jaccard=0.3114  score=0.6107  fileCov=0.3885
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S_] deps: ft, np, dn, yC, ii, jv, i$, $S, fp, ZPe, je, bm, y_, bH, xF, K6n, OI, vDo
 CDo = new Map();
@@ -29,7 +29,7 @@ function xEf(e) {
       .pop() ?? "";
   return IEf.some((n) => n.test(t));
 }
-function xDo(e, t, n, r, o) {
+function startStallWatchdog(e, t, n, r, o) {
   if (n === "monitor") return () => {};
   let s = jm(e),
     i = 0,
@@ -55,7 +55,7 @@ function xDo(e, t, n, r, o) {
                   ? `
 <${YC}>${r}</${YC}>`
                   : "",
-                f = `${Qbt}"${t}" appears to be waiting for interactive input`,
+                f = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" appears to be waiting for interactive input`,
                 m = `<${Oc}>
 <${Dp}>${e}</${Dp}>${p}
 <${pM}>${s}</${pM}>
@@ -86,7 +86,7 @@ The command is likely blocked on an interactive prompt. Stop this task and re-ru
     }
   );
 }
-function SKt(e, t, n, r, o, s, i = "bash", a) {
+function enqueueShellNotification(e, t, n, r, o, s, i = "bash", a) {
   let l = false;
   if (
     (o.update(e, (f) => {
@@ -121,13 +121,13 @@ function SKt(e, t, n, r, o, s, i = "bash", a) {
   else
     switch (n) {
       case "completed":
-        c = `${Qbt}"${t}" completed${r !== void 0 ? ` (exit code ${r})` : ""}`;
+        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" completed${r !== void 0 ? ` (exit code ${r})` : ""}`;
         break;
       case "failed":
-        c = `${Qbt}"${t}" failed${r !== void 0 ? ` with exit code ${r}` : ""}`;
+        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" failed${r !== void 0 ? ` with exit code ${r}` : ""}`;
         break;
       case "killed":
-        c = `${Qbt}"${t}" was stopped`;
+        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" was stopped`;
         break;
     }
   let u = jm(e),
@@ -164,7 +164,9 @@ function Bvl(e, t, n, r, o, s) {
       let l = n.get(e);
       if (l?.status !== "running" || l.notified || Date.now() - Ex() < CEf || dSr() || Hze(n.all()))
         return;
-      (xe("task_local_shell_pressure_reap"), SKt(e, t, "killed", void 0, n, r, o, s), yAe(e, n));
+      (xe("task_local_shell_pressure_reap"),
+        enqueueShellNotification(e, t, "killed", void 0, n, r, o, s),
+        yAe(e, n));
     };
     (process.on("memoryPressure", a), (i = () => process.off("memoryPressure", a)));
   }
@@ -195,7 +197,7 @@ async function E$e(e, t) {
   o.background(u, {
     capMs: a !== "monitor" ? Nvl(i) : void 0,
   });
-  let f = xDo(u, r, a, s, i);
+  let f = startStallWatchdog(u, r, a, s, i);
   return (
     o.result.then(async (m) => {
       (f(), await kJn(o));
@@ -214,7 +216,7 @@ async function E$e(e, t) {
           endTime: Date.now(),
         };
       }),
-        SKt(u, r, g ? "killed" : V$e(m), m.code, l, s, a, i),
+        enqueueShellNotification(u, r, g ? "killed" : V$e(m), m.code, l, s, a, i),
         p?.(),
         jy(u));
     }),
@@ -223,7 +225,7 @@ async function E$e(e, t) {
     }
   );
 }
-function Uvl(e, t) {
+function spawnShellTask(e, t) {
   let { taskId: n, command: r, description: o, toolUseId: s, kind: i, agentId: a } = e,
     l = {
       ...LT(n, "local_bash", o, s),
@@ -258,7 +260,7 @@ function Uvl(e, t) {
       );
       let d = a !== void 0 ? t.get(a) : void 0,
         p = El(d) && (d.status === "running" || sw(d));
-      (SKt(n, o, u, c.code, t, s, i, p ? Bu(a) : void 0), jy(n));
+      (enqueueShellNotification(n, o, u, c.code, t, s, i, p ? Bu(a) : void 0), jy(n));
     }));
 }
 function yJn(e, t, n) {
@@ -291,7 +293,7 @@ function Fvl(e, t) {
       isBackgrounded: true,
     };
   });
-  let l = xDo(e, o, i, s, a);
+  let l = startStallWatchdog(e, o, i, s, a);
   return (
     r.result.then(async (c) => {
       (l(), await kJn(r));
@@ -310,7 +312,7 @@ function Fvl(e, t) {
           endTime: Date.now(),
         };
       }),
-        SKt(e, o, u ? "killed" : V$e(c), c.code, t, s, i, a),
+        enqueueShellNotification(e, o, u ? "killed" : V$e(c), c.code, t, s, i, a),
         jy(e));
     }),
     true
@@ -362,7 +364,7 @@ function _Jn(e, t, n, r, o) {
       isBackgrounded: true,
     };
   });
-  let a = xDo(e, n, void 0, o, i),
+  let a = startStallWatchdog(e, n, void 0, o, i),
     l = Bvl(e, n, r, o, void 0, i);
   return (
     t.result.then(async (c) => {
@@ -382,7 +384,7 @@ function _Jn(e, t, n, r, o) {
           endTime: Date.now(),
         };
       }),
-        SKt(e, n, u ? "killed" : V$e(c), c.code, r, o, void 0, i),
+        enqueueShellNotification(e, n, u ? "killed" : V$e(c), c.code, r, o, void 0, i),
         l(),
         jy(e));
     }),
@@ -442,7 +444,7 @@ async function kJn(e) {
   }
 }
 var Ovl,
-  Qbt = "Background command ",
+  BACKGROUND_BASH_SUMMARY_PREFIX = "Background command ",
   HEf = 5000,
   TEf = 45000,
   vEf = 1024,

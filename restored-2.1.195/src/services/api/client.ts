@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ACn
 // matched 2.1.88 source: src/services/api/client.ts
 // class=modified  jaccard=0.1316  score=0.3155  fileCov=0.1842
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ACn]
 kkd = ["https://www.googleapis.com/auth/cloud-platform"];
-function Kxe() {
+function createStderrLogger() {
   return {
     error: (e, ...t) => console.error("[Anthropic SDK ERROR]", e, ...t),
     warn: (e, ...t) => console.error("[Anthropic SDK WARN]", e, ...t),
@@ -14,7 +14,7 @@ function Kxe() {
     debug: (e, ...t) => console.error("[Anthropic SDK DEBUG]", e, ...t),
   };
 }
-async function G9({
+async function getAnthropicClient({
   apiKey: e,
   maxRetries: t,
   model: n,
@@ -65,7 +65,7 @@ async function G9({
     });
   if (!g && !km()) await Dkd(p, Ir());
   await Pyn();
-  let h = Ukd(r, o),
+  let h = buildFetch(r, o),
     y = l_(n);
   Rkd();
   let b = y === "bedrock" || y === "mantle" ? await nj() : void 0,
@@ -104,7 +104,7 @@ async function G9({
       baseURL: v.url,
       authToken: v.jwt,
       ...(wO() && {
-        logger: Kxe(),
+        logger: createStderrLogger(),
       }),
     });
   }
@@ -140,7 +140,7 @@ async function G9({
           },
         }),
         ...(wO() && {
-          logger: Kxe(),
+          logger: createStderrLogger(),
         }),
       };
     return O
@@ -169,7 +169,7 @@ async function G9({
         azureADTokenProvider: C,
       }),
       ...(wO() && {
-        logger: Kxe(),
+        logger: createStderrLogger(),
       }),
     };
     return new v(x);
@@ -197,7 +197,7 @@ async function G9({
           },
         }),
         ...(wO() && {
-          logger: Kxe(),
+          logger: createStderrLogger(),
         }),
       };
     if (!process.env.ANTHROPIC_AWS_API_KEY && !C) {
@@ -245,7 +245,7 @@ async function G9({
         awsSessionToken: D.sessionToken,
       }),
       ...(wO() && {
-        logger: Kxe(),
+        logger: createStderrLogger(),
       }),
     });
   }
@@ -276,7 +276,7 @@ async function G9({
         region: Yie(n),
         googleAuth: k,
         ...(wO() && {
-          logger: Kxe(),
+          logger: createStderrLogger(),
         }),
       };
     return new v(D);
@@ -299,7 +299,7 @@ async function G9({
           ...C?.extraHeaders,
         },
         ...(wO() && {
-          logger: Kxe(),
+          logger: createStderrLogger(),
         }),
       });
     }
@@ -310,7 +310,7 @@ async function G9({
     ...false,
     ..._,
     ...(wO() && {
-      logger: Kxe(),
+      logger: createStderrLogger(),
     }),
   };
   return new G2(A);
@@ -551,23 +551,23 @@ function Bkd(e) {
   if (!dvi()) return false;
   return lvi(e) && lvi(fr());
 }
-function Ukd(e, t) {
+function buildFetch(e, t) {
   let n = e ?? globalThis.fetch,
     r = fr(),
     o = pvi(r);
   return async (s, i) => {
     let a = new Headers(i?.headers);
-    if (o && !a.has(Mot)) a.set(Mot, cvi.randomUUID());
+    if (o && !a.has(CLIENT_REQUEST_ID_HEADER)) a.set(CLIENT_REQUEST_ID_HEADER, cvi.randomUUID());
     if (o) {
       let p = v9r();
       if (p !== void 0) a.set(T9r, p);
     }
     try {
       let p = s instanceof Request ? s.url : String(s),
-        f = a.get(Mot);
+        f = a.get(CLIENT_REQUEST_ID_HEADER);
       if (
         (T(
-          `[API REQUEST] ${new URL(p).pathname}${f ? ` ${Mot}=${f}` : ""} source=${t ?? "unknown"}`,
+          `[API REQUEST] ${new URL(p).pathname}${f ? ` ${CLIENT_REQUEST_ID_HEADER}=${f}` : ""} source=${t ?? "unknown"}`,
         ),
         HUe() === "verbose")
       )
@@ -619,7 +619,7 @@ function Fkd(e) {
 var cvi,
   Rkd,
   Lkd,
-  Mot = "x-client-request-id",
+  CLIENT_REQUEST_ID_HEADER = "x-client-request-id",
   Mkd = 10000 /* 1e4 */,
   $kd = 1800000,
   Okd = 180000,

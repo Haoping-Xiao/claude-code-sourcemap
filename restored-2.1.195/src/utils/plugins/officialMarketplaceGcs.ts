@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module gHe
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceGcs.ts
 // class=modified  jaccard=0.4636  score=0.5723  fileCov=0.7095
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function xYt(e, t) {
+async function fetchOfficialMarketplaceFromGcs(e, t) {
   let n = ose.resolve(t),
     r = ose.resolve(e);
   if (r !== n && !r.startsWith(n + ose.sep))
@@ -21,7 +21,7 @@ async function xYt(e, t) {
     a,
     l;
   try {
-    let c = await kSe.get(`${dRl}/latest`, {
+    let c = await kSe.get(`${GCS_BASE}/latest`, {
       responseType: "text",
       timeout: 10000 /* 1e4 */,
     });
@@ -34,7 +34,7 @@ async function xYt(e, t) {
       )) === i
     )
       return ((s = "noop"), i);
-    let p = await kSe.get(`${dRl}/${i}.zip`, {
+    let p = await kSe.get(`${GCS_BASE}/${i}.zip`, {
         responseType: "arraybuffer",
         timeout: 60000,
       }),
@@ -51,8 +51,8 @@ async function xYt(e, t) {
         recursive: true,
       }));
     for (let [_, S] of Object.entries(m)) {
-      if (!_.startsWith(pRl)) continue;
-      let A = _.slice(pRl.length);
+      if (!_.startsWith(ARC_PREFIX)) continue;
+      let A = _.slice(ARC_PREFIX.length);
       if (!A || A.endsWith("/")) continue;
       let v = ose.join(h, A);
       (await W$.mkdir(ose.dirname(v), {
@@ -90,7 +90,7 @@ async function xYt(e, t) {
     );
   } catch (c) {
     return (
-      (l = XIf(c)),
+      (l = classifyGcsError(c)),
       T(`Official marketplace GCS fetch failed: ${be(c)}`, {
         level: "warn",
       }),
@@ -115,7 +115,7 @@ async function xYt(e, t) {
     });
   }
 }
-function XIf(e) {
+function classifyGcsError(e) {
   if (ab(e)) {
     if (e.code === "ECONNABORTED") return "timeout";
     if (e.response) return `http_${e.response.status}`;
@@ -131,6 +131,6 @@ function XIf(e) {
 }
 var W$,
   ose,
-  dRl = "https://downloads.claude.ai/claude-code-releases/plugins/claude-plugins-official",
-  pRl = "marketplaces/claude-plugins-official/",
+  GCS_BASE = "https://downloads.claude.ai/claude-code-releases/plugins/claude-plugins-official",
+  ARC_PREFIX = "marketplaces/claude-plugins-official/",
   YIf;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mJa
 // matched 2.1.88 source: src/components/Spinner/SpinnerAnimationRow.tsx
 // class=modified  jaccard=0.1947  score=0.2425  fileCov=0.4971
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function gJa(e) {
   let t = Math.max(0, e) / 1000,
@@ -97,7 +97,7 @@ function KXp(e, t, n) {
     s = WM(NXp, BXp, GM(o));
   return qM(n && t > 0 ? WM(s, n, GM(t)) : s);
 }
-function HJa({
+function SpinnerAnimationRow({
   mode: e,
   reducedMotion: t,
   hasActiveTools: n,
@@ -293,7 +293,7 @@ function HJa({
               {
                 flexDirection: "row",
                 children: [
-                  Mf.jsx(YXp, {
+                  Mf.jsx(SpinnerModeGlyph, {
                     mode: e,
                   }),
                   Mf.jsxs(w, {
@@ -529,7 +529,7 @@ function BHo(e) {
   else v = t[22];
   return v;
 }
-function YXp(e) {
+function SpinnerModeGlyph(e) {
   let t = NHo.c(2),
     { mode: n } = e;
   switch (n) {

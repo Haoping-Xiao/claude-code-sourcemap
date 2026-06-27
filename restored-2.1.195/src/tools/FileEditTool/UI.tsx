@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module ivl
 // matched 2.1.88 source: src/tools/FileEditTool/UI.tsx
 // class=modified  jaccard=0.282  score=0.5756  fileCov=0.3561
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function TJn(e) {
+function userFacingName(e) {
   if (!e) return "Update";
   if (e.file_path?.startsWith(gS())) return "Updated plan";
   if (e.edits != null) return "Update";
@@ -23,7 +23,7 @@ function avl({ file_path: e }, { verbose: t }) {
     children: t ? e : kd(e),
   });
 }
-function lvl(
+function renderToolResultMessage(
   { filePath: e = "", structuredPatch: t, originalFile: n },
   r,
   { style: o, verbose: s },
@@ -70,7 +70,7 @@ function cvl(e, t) {
     verbose: r,
   });
 }
-function uvl(e, t) {
+function renderToolUseErrorMessage(e, t) {
   let { verbose: n } = t;
   if (!n && typeof e === "string" && xl(e, "tool_use_error")) {
     let r = xl(e, "tool_use_error");

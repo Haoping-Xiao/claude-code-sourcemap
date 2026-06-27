@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module OBo
 // matched 2.1.88 source: src/commands/plugin/AddMarketplace.tsx
 // class=modified  jaccard=0.3576  score=0.51  fileCov=0.5449
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OBo] deps: At, ys, Mx
 ((y2l = require("os")), (_2l = require("path")));
-function S2l(e) {
+function AddMarketplace(e) {
   let t = b2l.c(41),
     {
       inputValue: n,

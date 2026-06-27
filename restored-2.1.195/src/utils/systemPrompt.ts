@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kpe
 // matched 2.1.88 source: src/utils/systemPrompt.ts
 // class=modified  jaccard=0.2617  score=0.5198  fileCov=0.3452
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kpe] deps: BE, je, sr, DD, rle, Ao, vM, Ls
 gF_ = [...hye, "inherit"];
@@ -14,7 +14,7 @@ function Rht(e) {
 function moe(e, t) {
   return `Model "${Rht(e)}" is restricted by your organization's settings. Using ${Rht(t)} instead.`;
 }
-function Z5({
+function buildEffectiveSystemPrompt({
   mainThreadAgentDefinition: e,
   toolUseContext: t,
   customSystemPrompt: n,

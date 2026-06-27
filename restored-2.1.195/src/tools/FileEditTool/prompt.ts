@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rvl
 // matched 2.1.88 source: src/tools/FileEditTool/prompt.ts
 // class=modified  jaccard=0.1325  score=0.1926  fileCov=0.2979
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function zSf(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
@@ -31,14 +31,14 @@ function ovl(e) {
       }
     : null;
 }
-function KSf() {
+function getPreReadInstruction() {
   return `
 - You must use your \`${Ds}\` tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file.`;
 }
 function svl(e) {
-  return YSf(e);
+  return getDefaultEditDescription(e);
 }
-function YSf(e) {
+function getDefaultEditDescription(e) {
   let t = pqe();
   if (ph(e))
     return `Performs exact string replacement in a file.
@@ -52,7 +52,7 @@ function YSf(e) {
       : "\n- The edit will FAIL if `old_string` is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use `replace_all` to change every instance of `old_string`.";
   return `Performs exact string replacements in files.
 
-Usage:${KSf()}
+Usage:${getPreReadInstruction()}
 - When editing text from Read tool output, ensure you preserve the exact indentation (tabs/spaces) as it appears AFTER the line number prefix. The line number prefix format is: ${n}. Everything after that is the actual file content to match. Never include any part of the line number prefix in the old_string or new_string.
 - ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required.
 - Only use emojis if the user explicitly requests it. Avoid adding emojis to files unless asked.${r}

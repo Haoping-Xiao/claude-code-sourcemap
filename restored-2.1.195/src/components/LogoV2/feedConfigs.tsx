@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module ZWl
 // matched 2.1.88 source: src/components/LogoV2/feedConfigs.tsx
 // class=modified  jaccard=0.2537  score=0.9537  fileCov=0.2569
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZWl] deps: Ye, LW, YWl
 ((XWl = R(lt(), 1)), (JWl = R(rt(), 1)), (mAt = R(se(), 1)));
-function t5l(e) {
+function createWhatsNewFeed(e) {
   let t = e.map((r) => ({
       text: r,
     })),
@@ -18,7 +18,7 @@ function t5l(e) {
     emptyMessage: "Check the Claude Code changelog for updates",
   };
 }
-function n5l(e) {
+function createProjectOnboardingFeed(e) {
   let n = e
       .filter(({ isEnabled: o }) => o)
       .sort((o, s) => Number(o.isComplete) - Number(s.isComplete))

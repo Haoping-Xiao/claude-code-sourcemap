@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module NGo
 // matched 2.1.88 source: src/commands/remote-setup/api.ts
 // class=modified  jaccard=0.2215  score=0.6281  fileCov=0.2549
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function Dnc(e) {
+async function importGithubToken(e) {
   let t;
   try {
     t = await Os.post(

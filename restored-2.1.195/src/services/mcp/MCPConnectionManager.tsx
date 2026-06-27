@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VFl
 // matched 2.1.88 source: src/services/mcp/MCPConnectionManager.tsx
 // class=modified  jaccard=0.4508  score=0.8372  fileCov=0.4941
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VFl] deps: ft, ft, oo, cco, Yle, BI, Ire, Z4e, Vb, gKn, Gwe, yBn, kt, Kv, je, Yp, dr, ft, Ed, SGe, uo, DHe, At, vn, bm, gz, sr, I6e, Rko, a5, AFn, Ox, g$
 ((kC = R(rt(), 1)), (SBo = (Mpo(), ro(Ppo)).fetchMcpSkillsForClient));
@@ -12,12 +12,12 @@ function Unr() {
 function KFl() {
   return HBo;
 }
-function LEt() {
+function useMcpReconnect() {
   let e = LKe.useContext(EBo);
   if (!e) throw Error("useMcpReconnect must be used within MCPConnectionManager");
   return e.reconnectMcpServer;
 }
-function ZOe() {
+function useMcpToggleEnabled() {
   let e = LKe.useContext(EBo);
   if (!e) throw Error("useMcpToggleEnabled must be used within MCPConnectionManager");
   return e.toggleMcpServer;

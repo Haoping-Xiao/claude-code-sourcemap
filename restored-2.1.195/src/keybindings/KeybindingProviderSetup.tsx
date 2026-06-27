@@ -92,7 +92,7 @@ function XPp({ children: e }) {
       handlerRegistryRef: l,
       preDispatchRef: u,
       keyHandlerRegistry: d,
-      children: ePe.jsx(KeybindingRoot, {
+      children: ePe.jsx(ChordInterceptor, {
         bindings: t,
         pendingChordRef: o,
         setPendingChord: g,
@@ -105,7 +105,7 @@ function XPp({ children: e }) {
     })
   );
 }
-function KeybindingRoot(e) {
+function ChordInterceptor(e) {
   let t = Fho.c(28),
     {
       bindings: n,

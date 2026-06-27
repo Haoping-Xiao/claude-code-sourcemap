@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RF
 // matched 2.1.88 source: src/utils/diff.ts
 // class=modified  jaccard=0.4422  score=0.7556  fileCov=0.5161
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function q8n(e, t) {
   if (t === 0) return e;
@@ -13,12 +13,12 @@ function q8n(e, t) {
   }));
 }
 function M9t(e) {
-  return e.replaceAll("&", bel).replaceAll("$", Sel);
+  return e.replaceAll("&", AMPERSAND_TOKEN).replaceAll("$", DOLLAR_TOKEN);
 }
 function Eel(e) {
-  return e.replaceAll(bel, "&").replaceAll(Sel, "$");
+  return e.replaceAll(AMPERSAND_TOKEN, "&").replaceAll(DOLLAR_TOKEN, "$");
 }
-function $9t(e, t, n) {
+function countLinesChanged(e, t, n) {
   let r = 0,
     o = 0;
   if (e.length === 0 && n) r = (n.match(/\n/g)?.length ?? 0) + 1;
@@ -89,5 +89,5 @@ function j6({ filePath: e, fileContents: t, edits: n, ignoreWhitespace: r = fals
 }
 var Kht = 3,
   W8n = 5000,
-  bel = "<<:AMPERSAND_TOKEN:>>",
-  Sel = "<<:DOLLAR_TOKEN:>>";
+  AMPERSAND_TOKEN = "<<:AMPERSAND_TOKEN:>>",
+  DOLLAR_TOKEN = "<<:DOLLAR_TOKEN:>>";

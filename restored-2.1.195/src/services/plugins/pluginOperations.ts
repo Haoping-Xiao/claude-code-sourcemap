@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K2l
 // matched 2.1.88 source: src/services/plugins/pluginOperations.ts
 // class=modified  jaccard=0.2894  score=0.3985  fileCov=0.5139
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K2l] deps: si, Ye, je, At, V2l
 ((mrr = R(rt(), 1)), (JBo = R(se(), 1)));
@@ -16,7 +16,7 @@ function QBo(e, t) {
     return `This plugin is loaded via --plugin-dir for this session with no marketplace backing \u2014 it cannot be ${n}. Drop the --plugin-dir flag to stop loading it, or \`claude plugin disable\` to turn it off.`;
   return `This plugin is loaded from ${fM(Ase.join(tr(), "skills"))}/ with no marketplace backing \u2014 it cannot be ${n}. Delete the directory to remove it; \`claude plugin disable\` to turn it off; edits there take effect after /reload-plugins.`;
 }
-function ZBo(e) {
+function assertInstallableScope(e) {
   if (!JL.includes(e)) throw Error(`Invalid scope "${e}". Must be one of: ${JL.join(", ")}`);
 }
 function GEt(e) {
@@ -25,7 +25,7 @@ function GEt(e) {
 function WEt(e) {
   return e === "project" || e === "local" ? yr() : void 0;
 }
-function X2l(e) {
+function isPluginEnabledAtProjectScope(e) {
   let t = yn("projectSettings")?.enabledPlugins;
   if (!t) return !1;
   let n = Une(Object.keys(t), e);
@@ -124,8 +124,8 @@ function grr(e) {
     projectPath: r[0].projectPath,
   };
 }
-async function Q2l(e, t = "user") {
-  ZBo(t);
+async function installPluginOp(e, t = "user") {
+  assertInstallableScope(t);
   let { name: n, marketplace: r } = Qo(e);
   if (U0(r))
     return {
@@ -272,8 +272,8 @@ async function Q2l(e, t = "user") {
     scope: t,
   };
 }
-async function OHe(e, t = "user", n = !0) {
-  ZBo(t);
+async function uninstallPluginOp(e, t = "user", n = !0) {
+  assertInstallableScope(t);
   let { marketplace: r } = Qo(e);
   if (U0(r))
     return {
@@ -361,7 +361,7 @@ async function OHe(e, t = "user", n = !0) {
     reverseDependents: v.length > 0 ? v : void 0,
   };
 }
-async function eUo(e, t, n, r) {
+async function setPluginEnabledOp(e, t, n, r) {
   let o = t ? "enable" : "disable",
     { marketplace: s } = Qo(e);
   if (hKi(e) || s === JE || s === Bne) {
@@ -420,7 +420,7 @@ async function eUo(e, t, n, r) {
       scope: S,
     };
   }
-  if (n) ZBo(n);
+  if (n) assertInstallableScope(n);
   let i,
     a,
     l = Y2l(e);
@@ -555,12 +555,12 @@ async function eUo(e, t, n, r) {
   };
 }
 async function zEt(e, t) {
-  return eUo(e, !0, t);
+  return setPluginEnabledOp(e, !0, t);
 }
 async function KEt(e, t) {
-  return eUo(e, !1, t);
+  return setPluginEnabledOp(e, !1, t);
 }
-async function Z2l() {
+async function disableAllPluginsOp() {
   let e = Ese();
   if (e.size === 0)
     return {
@@ -570,7 +570,7 @@ async function Z2l() {
   let t = [],
     n = [];
   for (let [r] of e) {
-    let o = await eUo(r, !1, void 0, {
+    let o = await setPluginEnabledOp(r, !1, void 0, {
       bypassDependentsBlock: !0,
     });
     if (o.success) t.push(r);
@@ -588,7 +588,7 @@ ${n.join(`
     message: `Disabled ${t.length} ${bn(t.length, "plugin")}`,
   };
 }
-async function YEt(e, t) {
+async function updatePluginOp(e, t) {
   let { name: n, marketplace: r } = Qo(e);
   if (U0(r))
     return {
@@ -659,7 +659,7 @@ async function YEt(e, t) {
       scope: t,
     };
   }
-  return NNf({
+  return performPluginUpdate({
     pluginId: s,
     pluginName: n,
     entry: d,
@@ -670,7 +670,7 @@ async function YEt(e, t) {
     refreshWarning: c,
   });
 }
-async function NNf({
+async function performPluginUpdate({
   pluginId: e,
   pluginName: t,
   entry: n,

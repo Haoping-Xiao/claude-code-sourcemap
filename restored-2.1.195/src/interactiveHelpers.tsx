@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module y7o
 // matched 2.1.88 source: src/interactiveHelpers.tsx
 // class=modified  jaccard=0.0626  score=0.1693  fileCov=0.0903
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module y7o] deps: Ye, Fy, vi
 ((G$c = R(lt(), 1)), (rK = R(se(), 1)));
@@ -121,7 +121,7 @@ function cO(e, t, n) {
 async function F7e(e, t) {
   (e.render(t), gmr(), await e.waitUntilExit(), await ki(0));
 }
-async function z$c(e, t, n, r, o, s, i) {
+async function showSetupScreens(e, t, n, r, o, s, i) {
   let a = null;
   if (Js() || Oe.CLAUDE_BRIDGE_REATTACH_SESSION)
     return (
@@ -595,7 +595,7 @@ async function Axm(e) {
         }));
   if (l) (G("tengu_vertex_upgrade_relaunch", {}), await K$c(e));
 }
-function Y$c(e) {
+function getRenderContext(e) {
   let t = 0,
     n = lN(e);
   if (n.stdin) G("tengu_stdin_interactive", {});

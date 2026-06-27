@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uXl
 // matched 2.1.88 source: src/components/sandbox/SandboxConfigTab.tsx
 // class=modified  jaccard=0.3821  score=0.4891  fileCov=0.6359
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uXl]
 cXl = {
@@ -10,7 +10,7 @@ cXl = {
   isHidden: true,
   name: "stub",
 };
-function pXl() {
+function SandboxConfigTab() {
   let e = dXl.c(3),
     t = xo.isSandboxingEnabled(),
     n;

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module b8t
 // matched 2.1.88 source: src/components/CompactSummary.tsx
 // class=modified  jaccard=0.3985  score=0.4992  fileCov=0.6641
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module b8t] deps: Lyt, ql
 ((jol = R(lt(), 1)), (Zwo = R(se(), 1)));
-function Wol(e) {
+function CompactSummary(e) {
   let t = Gol.c(24),
     { message: n, screen: r } = e,
     o = r === "transcript",

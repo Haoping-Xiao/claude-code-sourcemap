@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K9e
 // matched 2.1.88 source: src/components/ConsoleOAuthFlow.tsx
 // class=modified  jaccard=0.2302  score=0.3454  fileCov=0.4083
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ConsoleOAuthFlow
 // [unwrapped __esm module K9e] deps: FK, QEe
@@ -61,7 +61,7 @@ function ConsoleOAuthFlow({
     L = typeof l.forceLoginOrgUUID === "string" && !O ? l.forceLoginOrgUUID : void 0,
     [M, N] = k$.useState(false),
     [B, $] = k$.useState(false),
-    q = br().columns - kQa.length - 1;
+    q = br().columns - PASTE_HERE_MSG.length - 1;
   (k$.useEffect(() => {
     if (m === "claudeai") G("tengu_oauth_claudeai_forced", {});
     else if (m === "console") G("tengu_oauth_console_forced", {});
@@ -386,7 +386,7 @@ function ConsoleOAuthFlow({
         Ai.jsx(U, {
           flexDirection: "column",
           gap: 1,
-          children: Ai.jsx(VJp, {
+          children: Ai.jsx(OAuthStatusMessage, {
             oauthStatus: S,
             mode: r,
             startingMessage: n,
@@ -463,7 +463,7 @@ function qJp(e) {
   else s = t[3];
   return s;
 }
-function VJp(e) {
+function OAuthStatusMessage(e) {
   let t = rTo.c(85),
     {
       oauthStatus: n,
@@ -1031,7 +1031,7 @@ function VJp(e) {
           Ai.jsxs(U, {
             children: [
               Ai.jsx(w, {
-                children: kQa,
+                children: PASTE_HERE_MSG,
               }),
               Ai.jsx(Ta, {
                 value: u,
@@ -1201,4 +1201,4 @@ function VJp(e) {
 var rTo,
   k$,
   Ai,
-  kQa = "Paste code here if prompted > ";
+  PASTE_HERE_MSG = "Paste code here if prompted > ";

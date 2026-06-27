@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Dfc
 // matched 2.1.88 source: src/utils/imageStore.ts
 // class=modified  jaccard=0.4355  score=0.9204  fileCov=0.4525
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Mfc() {
   return XZt.join(tr(), Pfc, Rt());
@@ -23,7 +23,7 @@ function hTt(e, t) {
   return (Bfc(t, e.id, n), n);
 }
 async function yTt(e, t) {
-  let n = await Nfc(e);
+  let n = await storeImage(e);
   if (n) Bfc(t, e.id, n);
   return n;
 }
@@ -31,7 +31,7 @@ async function Ofc(e, t) {
   let n = new Map();
   for (let [r, o] of Object.entries(e))
     if (o.type === "image") {
-      let s = await Nfc(o);
+      let s = await storeImage(o);
       if (s) n.set(Number(r), s);
     }
   if (n.size > 0)
@@ -47,7 +47,7 @@ async function Ofc(e, t) {
     });
   return n;
 }
-async function Nfc(e) {
+async function storeImage(e) {
   if (e.type !== "image") return null;
   try {
     await mcm();
@@ -88,7 +88,7 @@ function Ufc(e, t, n) {
     }
   return (r.set(t, n), r);
 }
-async function Ffc() {
+async function cleanupOldImageCaches() {
   let e = qt(),
     t = XZt.join(tr(), Pfc),
     n = Rt();

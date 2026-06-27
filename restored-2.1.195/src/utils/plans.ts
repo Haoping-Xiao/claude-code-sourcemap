@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _a
 // matched 2.1.88 source: src/utils/plans.ts
 // class=modified  jaccard=0.1286  score=0.2401  fileCov=0.2167
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _a] deps: Qi, kt, ft, v0n, Zf, np, d8n, jv, $S, Pw, Rm, fd, Ld, Lo, je, Mm, fn, At, es, ys, QVt, sa, Yp, Rd, vn, co, Hu, y_, jS, ih, Jt, X4, sr, Mp, HO
 ((c2 = require("fs")),
@@ -121,7 +121,7 @@ function bP(e) {
 function Osc(e) {
   return e.messages.find((t) => t.slug)?.slug;
 }
-async function _8n(e, t) {
+async function copyPlanForResume(e, t) {
   let n = Osc(e);
   if (!n) return false;
   let r = t ?? Rt();
@@ -136,14 +136,14 @@ async function _8n(e, t) {
     }
     if (H0n() === null) return false;
     T(`Plan file missing during resume: ${o}. Attempting recovery.`);
-    let i = dem(e.messages, "plan"),
+    let i = findFileSnapshotEntry(e.messages, "plan"),
       a = null;
     if (i && i.content.length > 0)
       ((a = i.content),
         T(`Plan recovered from file snapshot, ${a.length} chars`, {
           level: "info",
         }));
-    else if (((a = uem(e)), a))
+    else if (((a = recoverPlanFromMessages(e)), a))
       T(`Plan recovered from message history, ${a.length} chars`, {
         level: "info",
       });
@@ -175,7 +175,7 @@ async function Nsc(e, t) {
     return (ke(a), false);
   }
 }
-function uem(e) {
+function recoverPlanFromMessages(e) {
   for (let t = e.messages.length - 1; t >= 0; t--) {
     let n = e.messages[t];
     if (!n) continue;
@@ -203,7 +203,7 @@ function uem(e) {
   }
   return null;
 }
-function dem(e, t) {
+function findFileSnapshotEntry(e, t) {
   for (let n = e.length - 1; n >= 0; n--) {
     let r = e[n];
     if (

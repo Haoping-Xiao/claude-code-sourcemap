@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xqo
 // matched 2.1.88 source: src/utils/permissions/permissions.ts
 // class=modified  jaccard=0.2158  score=0.2582  fileCov=0.5677
-// note: deminified; 24 identifiers renamed (exports/displayName/curated)
+// note: deminified; 28 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toolAlwaysAllowedRule, syncPermissionRulesFromDisk, sameTurnSiblingContextEnabledWithSource, permissionRuleSourceDisplayString, isNonDeniableTool, hasPermissionsToUseToolWithSink, hasPermissionsToUseTool, guardHookUpdatedInput, getRuleByContentsForToolName, getRuleByContentsForTool, getInputParamRule, getDenyRules, getDenyRuleForTool, getDenyRuleForAgent, getAskRules, getAskRuleForTool, getAllowRules, findSafetyCheckReason, filterDeniedAgents, deletePermissionRule, createPermiss …
 // [unwrapped __esm module xqo] deps: G1, lf, EI, lC, dqe, LX, pht
@@ -293,7 +293,7 @@ function guardHookUpdatedInput(e, t) {
     );
   return null;
 }
-async function nrm(e, t, n, r, o, s) {
+async function runPermissionRequestHooksForHeadlessAgent(e, t, n, r, o, s) {
   try {
     for await (let i of jAe(e.name, n, t, r, o, s, r.abortController.signal)) {
       if (!i.permissionRequestResult) continue;
@@ -383,7 +383,7 @@ function eTt(e, t) {
       };
     });
 }
-function srm(e, t, n, r, o, s) {
+function handleDenialLimitExceeded(e, t, n, r, o, s) {
   if (!gkl(e)) return null;
   let i = e.totalDenials >= rZn.maxTotal,
     a = Fr(s).shouldAvoidPermissionPrompts,
@@ -523,7 +523,7 @@ async function checkRuleBasedPermissions(e, t, n) {
     return a;
   return null;
 }
-async function arm(e, t, n, r) {
+async function hasPermissionsToUseToolInner(e, t, n, r) {
   if (n.abortController.signal.aborted) throw new ru();
   let o = Fr(n),
     s = getDenyRuleForTool(o, e);
@@ -624,7 +624,7 @@ async function arm(e, t, n, r) {
   if (p)
     return {
       behavior: "allow",
-      updatedInput: _lc(l, t),
+      updatedInput: getUpdatedInputOrFallback(l, t),
       decisionReason: {
         type: "mode",
         mode: d,
@@ -634,7 +634,7 @@ async function arm(e, t, n, r) {
   if (m && !(Fr(n).chromeClassifierFloorEnabled === true && kqo.isChromeMcpToolName(Rhe(e))))
     return {
       behavior: "allow",
-      updatedInput: _lc(l, t),
+      updatedInput: getUpdatedInputOrFallback(l, t),
       decisionReason: {
         type: "rule",
         rule: m,
@@ -722,7 +722,7 @@ function syncPermissionRulesFromDisk(e, t) {
   let r = Alc(t, "replaceRules");
   return T4(n, r);
 }
-function _lc(e, t) {
+function getUpdatedInputOrFallback(e, t) {
   return ("updatedInput" in e ? e.updatedInput : void 0) ?? t;
 }
 function findSafetyCheckReason(e, t = () => true) {
@@ -754,7 +754,7 @@ var kqo,
       : a;
   },
   orm = async (e, t, n, r, o, s, i) => {
-    let a = await arm(
+    let a = await hasPermissionsToUseToolInner(
       e,
       t,
       {
@@ -1094,7 +1094,7 @@ var kqo,
             T(`Auto mode classifier blocked action: ${x.reason}`, {
               level: "warn",
             }));
-          let O = srm(P, x.reason, r, e, a, n);
+          let O = handleDenialLimitExceeded(P, x.reason, r, e, a, n);
           if (O) {
             if (u === "dontAsk")
               return {
@@ -1132,7 +1132,14 @@ var kqo,
       }
       let f = Fr(n);
       if (f.shouldAvoidPermissionPrompts) {
-        let m = await nrm(e, a.updatedInput ?? t, o, n, Hqe(e, f), a.suggestions);
+        let m = await runPermissionRequestHooksForHeadlessAgent(
+          e,
+          a.updatedInput ?? t,
+          o,
+          n,
+          Hqe(e, f),
+          a.suggestions,
+        );
         if (m) return m;
         return {
           behavior: "deny",

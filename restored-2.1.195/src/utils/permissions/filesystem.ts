@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KI
 // matched 2.1.88 source: src/utils/permissions/filesystem.ts
 // class=modified  jaccard=0.1764  score=0.3882  fileCov=0.2443
-// note: deminified; 37 identifiers renamed (exports/displayName/curated)
+// note: deminified; 40 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: untypeDenyReasonForAskPropagation, toPosixPath, relativePath, patternWithRoot, pathInWorkingPath, pathInAllowedWorkingPath, normalizeTrustedSymlink, normalizePatternsToPath, normalizeCaseForComparison, matchingRuleForInput, matchingAllowRuleForAllPaths, matchesPathRule, isUntrustedUncPath, isScratchpadEnabled, isClaudeSettingsPath, getScratchpadDir, getResolvedWorkingDirPaths, getProjectTempDir, getFileReadIgnorePatterns, getClaudeTempDirName, getClaudeTempDir, getClaudeSkillSco …
 // [unwrapped __esm module KI] deps: Qi, ft, db, Lo, je, fn, At, iYr, ys, vn, dr, Ost
@@ -97,7 +97,7 @@ function isClaudeSettingsPath(e) {
     return true;
   return fem().some((r) => normalizeCaseForComparison(r) === n);
 }
-function mem(e) {
+function isClaudeConfigFilePath(e) {
   if (isClaudeSettingsPath(e)) return true;
   let t = Rl.join(yr(), ".claude", "commands"),
     n = Rl.join(yr(), ".claude", "agents"),
@@ -190,7 +190,7 @@ function eNe(e, t) {
 function isUntrustedUncPath(e, t) {
   return Fc(e) && !qp(e) && !eNe(e, t);
 }
-function Ysc(e) {
+function isDangerousFilePathToAutoEdit(e) {
   let t = 0;
   for (let n of getResolvedWorkingDirPaths(yr())) {
     let r = ds(n).split(Rl.sep);
@@ -217,7 +217,7 @@ function Ysc(e) {
 }
 function Bsc(e) {
   let t = ds(e).split(Rl.sep),
-    n = Ysc(t),
+    n = isDangerousFilePathToAutoEdit(t),
     r = 0;
   for (let o = n; o < t.length; o++) if (w7(t[o]) === ".claude") r++;
   return r;
@@ -242,7 +242,7 @@ function Sem(e, t, n) {
     s = o.at(-1);
   if (Fc(e) && !qp(e) && !eNe(e, n)) return true;
   let i = false,
-    a = Ysc(o);
+    a = isDangerousFilePathToAutoEdit(o);
   for (let l = 0; l < o.length; l++) {
     let c = o[l],
       u = w7(c);
@@ -319,7 +319,7 @@ function checkPathSafetyForAutoEdit(e, t, n, r, o) {
           message: `Claude requested permissions to write to ${e}, but you haven't granted it yet.`,
           classifierApprovable: true,
         };
-    } else if (mem(a))
+    } else if (isClaudeConfigFilePath(a))
       return {
         safe: false,
         message: `Claude requested permissions to write to ${e}, but you haven't granted it yet.`,
@@ -368,7 +368,7 @@ function pathInWorkingPath(
   if (kae(a)) return false;
   return !Rl.posix.isAbsolute(a);
 }
-function Eem(e) {
+function rootPathForSource(e) {
   switch (e) {
     case "cliArg":
     case "command":
@@ -468,7 +468,7 @@ function patternWithRoot(e, t) {
   else if (e.startsWith(Tme))
     return {
       relativePattern: e,
-      root: Eem(t),
+      root: rootPathForSource(t),
     };
   let n = e;
   if (e.startsWith(`.${Tme}`)) n = e.slice(2);

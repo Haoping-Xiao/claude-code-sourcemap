@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cPl
 // matched 2.1.88 source: src/commands/copy/copy.tsx
 // class=modified  jaccard=0.4284  score=0.6095  fileCov=0.5904
-// note: deminified; 5 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tableTokenToMarkdown, normalizeTablesInMarkdown, fileExtension, collectRecentAssistantTexts, call
 // [unwrapped __esm module cPl] deps: IL
@@ -119,7 +119,7 @@ async function SPl(e, t) {
     r
   );
 }
-async function ROo(e, t) {
+async function copyOrWriteToFile(e, t) {
   let n = await AI(e);
   if (n) process.stdout.write(n);
   let r =
@@ -159,7 +159,7 @@ function H0f(e, t) {
   }
   return r + "\u2026";
 }
-function T0f(e) {
+function CopyPicker(e) {
   let t = dPl.c(35),
     { fullText: n, codeBlocks: r, messageAge: o, onDone: s } = e,
     i = mPl.useRef("full"),
@@ -225,7 +225,7 @@ function T0f(e) {
           always: true,
           message_age: o,
         });
-        let L = await ROo(P.text, P.filename);
+        let L = await copyOrWriteToFile(P.text, P.filename);
         s(`${L}
 Preference saved. Use /config to change copyFullResponse`);
         return;
@@ -235,7 +235,7 @@ Preference saved. Use /config to change copyFullResponse`);
         block_count: r.length,
         message_age: o,
       });
-      let O = await ROo(P.text, P.filename);
+      let O = await copyOrWriteToFile(P.text, P.filename);
       s(O);
     }),
       (t[9] = r.length),
@@ -426,10 +426,10 @@ var dPl,
         block_count: a.length,
         message_age: o,
       });
-      let c = await ROo(i, gPl);
+      let c = await copyOrWriteToFile(i, gPl);
       return (e(c), null);
     }
-    return UQ.jsx(T0f, {
+    return UQ.jsx(CopyPicker, {
       fullText: i,
       codeBlocks: a,
       messageAge: o,

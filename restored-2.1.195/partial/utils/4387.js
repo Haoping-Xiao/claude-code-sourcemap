@@ -2,13 +2,13 @@
 // restored from claude-code 2.1.195 (deminified) — module LEl
 // matched 2.1.88 source: src/tools/shared/spawnMultiAgent.ts
 // class=partial  jaccard=0.0993  score=0.399  fileCov=0.1167
-// note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-async function DEl(e) {
+async function registerOutOfProcessTeammateTask(e) {
   let t = await Moe(e);
   return t?.taskKind === "in_process_teammate" ? t : null;
 }
-async function PEl({
+async function buildInheritedCliFlags({
   resumableAgentId: e,
   prompt: t,
   senderName: n,

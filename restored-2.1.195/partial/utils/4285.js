@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module c7n
 // matched 2.1.88 source: src/components/tasks/InProcessTeammateDetailDialog.tsx
 // class=partial  jaccard=0.1156  score=0.2277  fileCov=0.1903
-// note: low-confidence suggestion: src/components/tasks/InProcessTeammateDetailDialog.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: src/components/tasks/InProcessTeammateDetailDialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function cgl(e, {
   verbose: t
@@ -96,11 +96,11 @@ function dgl(e) {
       }) : null]
     })
   });
-  return A_.jsx(Ipf, {
+  return A_.jsx(InProcessTeammateDetailDialog, {
     taskId: e.taskId
   });
 }
-function Ipf(e) {
+function InProcessTeammateDetailDialog(e) {
   let t = o0o.c(21),
     {
       taskId: n

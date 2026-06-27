@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lwo
 // matched 2.1.88 source: src/tools/ExitPlanModeTool/UI.tsx
 // class=modified  jaccard=0.1009  score=0.1971  fileCov=0.1714
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lwo] deps: AN, ql, Ye
 ((Gnl = R(lt(), 1)), (k8e = R(se(), 1)));
@@ -100,7 +100,7 @@ function qnl(e, t, { theme: n }) {
     ],
   });
 }
-function Vnl({ plan: e }, { theme: t }) {
+function renderToolUseRejectedMessage({ plan: e }, { theme: t }) {
   let n = e ?? bP() ?? "No plan found";
   return HC.jsx(U, {
     flexDirection: "column",

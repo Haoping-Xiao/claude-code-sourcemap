@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QAc
 // matched 2.1.88 source: src/components/permissions/shellPermissionHelpers.tsx
 // class=modified  jaccard=0.2919  score=0.4699  fileCov=0.4351
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QAc] deps: WLn, GAc, VAc, KAc, tC, HN, w4, Tc, Ye, ps, kt, uo, eVe, lT, xW, _Tt, vn, e8t, I1, KI
 ((Xzo = R(lt(), 1)), (bpr = R(rt(), 1)), (atn = R(se(), 1)));
@@ -98,7 +98,7 @@ function ltn(e) {
     ],
   });
 }
-function Spr(e, t, n) {
+function generateShellSuggestionsLabel(e, t, n) {
   let r = e.filter((p) => p.type === "addRules").flatMap((p) => p.rules || []),
     o = r.filter((p) => p.toolName === "Read"),
     s = r.filter((p) => p.toolName === t),

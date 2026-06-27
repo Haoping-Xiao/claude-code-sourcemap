@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eco
 // matched 2.1.88 source: src/native-ts/color-diff/index.ts
 // class=modified  jaccard=0.3099  score=0.8691  fileCov=0.3251
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eco] deps: bda, iba, vn
 ((Tba = new Set()), (vba = new Set()));
@@ -25,7 +25,7 @@ function _L(e) {
     a: 0,
   };
 }
-function Dba(e) {
+function detectColorMode(e) {
   if (e.includes("ansi")) return "ansi";
   return wt.level >= 3 ? "truecolor" : "color256";
 }
@@ -67,12 +67,12 @@ function Uyp(e, t, n, r) {
   }
   return o + tco;
 }
-function Fyp(e) {
+function defaultSyntaxThemeName(e) {
   if (e.includes("ansi")) return "ansi";
   if (e.includes("dark")) return "Monokai Extended";
   return "GitHub";
 }
-function Pba(e, t) {
+function buildTheme(e, t) {
   let n = e.includes("dark"),
     r = e.includes("ansi"),
     o = e.includes("daltonized"),
@@ -182,7 +182,7 @@ function Mba(e, t) {
       return t.foreground;
   }
 }
-function $ba(e, t) {
+function detectLanguage(e, t) {
   let n = fBn.basename(e),
     r = fBn.extname(e).slice(1),
     o = bi(n, "."),
@@ -209,14 +209,14 @@ function $ba(e, t) {
   }
   return null;
 }
-function qyp(e, t, n) {
+function scopeColor(e, t, n) {
   if (!e) return n.foreground;
   if (e === "keyword" && jyp.has(t.trim())) return n.scopes.get("_storage") ?? n.foreground;
   return n.scopes.get(e) ?? n.scopes.get(bi(e, ".")) ?? n.foreground;
 }
 function Oba(e, t, n, r) {
   if (typeof e === "string") {
-    let s = qyp(n, e, t);
+    let s = scopeColor(n, e, t);
     r.push([
       {
         foreground: s,
@@ -229,7 +229,7 @@ function Oba(e, t, n, r) {
   let o = e.scope ?? e.kind ?? n;
   for (let s of e.children) Oba(s, t, o, r);
 }
-function Vyp(e) {
+function hasRootNode(e) {
   return (
     typeof e === "object" &&
     e !== null &&
@@ -239,7 +239,7 @@ function Vyp(e) {
     "children" in e.rootNode
   );
 }
-function Nba(e, t, n) {
+function highlightLine(e, t, n) {
   let r =
     t +
     `
@@ -254,7 +254,7 @@ function Nba(e, t, n) {
   } catch {
     return [[pBn(n), r]];
   }
-  if (!Vyp(o.emitter)) {
+  if (!hasRootNode(o.emitter)) {
     if (!kba)
       ((kba = true),
         ke(
@@ -505,10 +505,10 @@ class oco {
     ((this.hunk = e), (this.filePath = n), (this.firstLine = t), (this.prefixContent = r ?? null));
   }
   render(e, t, n) {
-    let r = Dba(e),
-      o = Pba(e, r),
+    let r = detectColorMode(e),
+      o = buildTheme(e, r),
       i = {
-        lang: $ba(this.filePath, this.firstLine),
+        lang: detectLanguage(this.filePath, this.firstLine),
         stack: null,
       };
     this.prefixContent;
@@ -548,7 +548,7 @@ class oco {
     let f = [];
     for (let m = 0; m < d.length; m++) {
       let { lineNumber: g, marker: h, code: y } = d[m],
-        b = h === "-" ? [[pBn(o), y]] : Nba(i, y, o),
+        b = h === "-" ? [[pBn(o), y]] : highlightLine(i, y, o),
         _ = {
           marker: h,
           lineNumber: g,
@@ -567,21 +567,21 @@ class sco {
     ((this.code = e), (this.filePath = t));
   }
   render(e, t, n) {
-    let r = Dba(e),
-      o = Pba(e, r),
+    let r = detectColorMode(e),
+      o = buildTheme(e, r),
       s = this.code.split(`
 `);
     if (s.at(-1) === "") s.pop();
     let i = s[0] ?? null,
       l = {
-        lang: $ba(this.filePath, i),
+        lang: detectLanguage(this.filePath, i),
         stack: null,
       },
       c = String(s.length).length,
       u = Math.max(1, t - c - 2),
       d = [];
     for (let p = 0; p < s.length; p++) {
-      let f = Nba(l, s[p], o),
+      let f = highlightLine(l, s[p], o),
         m = {
           marker: null,
           lineNumber: p + 1,
@@ -595,7 +595,7 @@ class sco {
 function Gba(e) {
   let t = process.env.CLAUDE_CODE_SYNTAX_HIGHLIGHT ?? process.env.BAT_THEME;
   return {
-    theme: Fyp(e),
+    theme: defaultSyntaxThemeName(e),
     source: null,
   };
 }

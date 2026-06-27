@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R9
 // matched 2.1.88 source: src/utils/errors.ts
 // class=modified (alt of src/utils/errors.ts)  jaccard=0.0484  score=0.0968  fileCov=0.0881
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function oxe() {
   let e = km();
@@ -47,7 +47,7 @@ async function hfd(e, t) {
     })),
       T("[gateway-refresh] refreshed gateway JWT"));
   } catch (n) {
-    if (vjr(n) === "invalid_grant") {
+    if (classifyAxiosError(n) === "invalid_grant") {
       if (km() !== e) {
         T("[gateway-refresh] auth changed mid-refresh; discarding invalid_grant");
         return;
@@ -96,7 +96,7 @@ async function Xsi(e, t, n) {
   }
   xge(r);
 }
-function vjr(e) {
+function classifyAxiosError(e) {
   if (!e || typeof e !== "object" || !("isAxiosError" in e) || !e.isAxiosError) return;
   let t = e.response?.data;
   if (typeof t === "object" && t !== null && "error" in t) {

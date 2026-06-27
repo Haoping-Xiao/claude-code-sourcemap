@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bBl
 // matched 2.1.88 source: src/utils/editor.ts
 // class=modified  jaccard=0.2783  score=0.7829  fileCov=0.3016
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bBl] deps: Ye, Lo
 ((EOf = R(lt(), 1)), (gBl = require("os")), (hBl = require("path")), (_Bl = R(se(), 1)));
@@ -30,7 +30,7 @@ function COf(e, t, n) {
   if (e === "subl") return [`${t}:${n}`];
   return [t];
 }
-function EBl(e, t) {
+function openFileInExternalEditor(e, t) {
   let n = $q();
   if (!n) return false;
   let r = n.split(" "),

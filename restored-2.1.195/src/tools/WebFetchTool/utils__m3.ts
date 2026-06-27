@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vGc
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
 // class=modified (alt of src/tools/WebFetchTool/utils.ts)  jaccard=0.0188  score=0.05  fileCov=0.0291
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function ern(e) {
   let t = u$m.exec(e);
@@ -53,7 +53,7 @@ function sXe(e, t) {
   if (!Number.isFinite(t)) throw TypeError(`Invalid ${e} input`);
   return t;
 }
-function Fgr(e, t, n = {}) {
+function checkDomainBlocklist(e, t, n = {}) {
   let r;
   try {
     r = JSON.parse(oK.decode(t));

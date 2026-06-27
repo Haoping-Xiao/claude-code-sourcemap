@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wpe
 // matched 2.1.88 source: src/services/api/filesApi.ts
 // class=modified  jaccard=0.4905  score=0.6238  fileCov=0.6966
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wpe] deps: kt, Lo, ft, dn, $S, NB, Vv, je, wr, Y4, QVt, vn, co, KI, _Le, _a, jS, X4, K0
 ((bht = require("path")),
@@ -45,7 +45,7 @@ function TTo(e, t) {
   }
 }
 var b8n = () => {};
-function LZa() {
+function getDefaultApiBaseUrl() {
   return (
     process.env.ANTHROPIC_BASE_URL ||
     process.env.CLAUDE_CODE_API_BASE_URL ||
@@ -57,7 +57,7 @@ function DZa() {
     throw Error("Files API is unavailable on third-party providers (data-residency)");
   if (T9("hipaa")) throw Error("Files API is unavailable for HIPAA-regulated organizations");
 }
-function vTo(e) {
+function logDebugError(e) {
   T(`[files-api] ${e}`, {
     level: "error",
   });
@@ -65,7 +65,7 @@ function vTo(e) {
 function iAe(e) {
   T(`[files-api] ${e}`);
 }
-async function PZa(e, t) {
+async function retryWithBackoff(e, t) {
   let n = "";
   for (let r = 1; r <= S8n; r++) {
     let o = await t(r);
@@ -77,9 +77,9 @@ async function PZa(e, t) {
   }
   throw Error(`${n} after ${S8n} attempts`);
 }
-async function IQp(e, t) {
+async function downloadFile(e, t) {
   DZa();
-  let r = `${t.baseUrl || LZa()}/v1/files/${e}/content`,
+  let r = `${t.baseUrl || getDefaultApiBaseUrl()}/v1/files/${e}/content`,
     o = {
       Authorization: `Bearer ${t.oauthToken}`,
       "anthropic-version": RZa,
@@ -87,7 +87,7 @@ async function IQp(e, t) {
     };
   return (
     iAe(`Downloading file ${e} from ${r}`),
-    PZa(`Download file ${e}`, async () => {
+    retryWithBackoff(`Download file ${e}`, async () => {
       try {
         let s = await po.get(r, {
           headers: o,
@@ -120,10 +120,10 @@ async function IQp(e, t) {
     })
   );
 }
-function xQp(e, t, n) {
+function buildDownloadPath(e, t, n) {
   let r = K5.normalize(n);
   if (r.startsWith(".."))
-    return (vTo(`Invalid file path: ${n}. Path must not traverse above workspace`), null);
+    return (logDebugError(`Invalid file path: ${n}. Path must not traverse above workspace`), null);
   let o = K5.join(e, t, "uploads"),
     i = [K5.join(e, t, "uploads") + K5.sep, K5.sep + "uploads" + K5.sep].find((l) =>
       r.startsWith(l),
@@ -131,9 +131,9 @@ function xQp(e, t, n) {
     a = i ? r.slice(i.length) : r;
   return K5.join(o, a);
 }
-async function kQp(e, t) {
+async function downloadAndSaveFile(e, t) {
   let { fileId: n, relativePath: r } = e,
-    o = xQp($t(), t.sessionId, r);
+    o = buildDownloadPath($t(), t.sessionId, r);
   if (!o)
     return {
       fileId: n,
@@ -142,7 +142,7 @@ async function kQp(e, t) {
       error: `Invalid file path: ${r}`,
     };
   try {
-    let s = await IQp(n, t),
+    let s = await downloadFile(n, t),
       i = K5.dirname(o);
     return (
       await Tht.mkdir(i, {
@@ -159,7 +159,7 @@ async function kQp(e, t) {
     );
   } catch (s) {
     return (
-      vTo(`Failed to download file ${n}: ${be(s)}`),
+      logDebugError(`Failed to download file ${n}: ${be(s)}`),
       {
         fileId: n,
         path: o,
@@ -184,11 +184,11 @@ async function LQp(e, t, n) {
   for (let l = 0; l < a; l++) i.push(s());
   return (await Promise.all(i), r);
 }
-async function MZa(e, t, n = RQp) {
+async function downloadSessionFiles(e, t, n = RQp) {
   if (e.length === 0) return [];
   iAe(`Downloading ${e.length} file(s) for session ${t.sessionId}`);
   let r = Date.now(),
-    o = await LQp(e, (a) => kQp(a, t), n),
+    o = await LQp(e, (a) => downloadAndSaveFile(a, t), n),
     s = Date.now() - r,
     i = On(o, (a) => a.success);
   if ((iAe(`Downloaded ${i}/${e.length} file(s) in ${s}ms`), i === e.length))
@@ -197,9 +197,9 @@ async function MZa(e, t, n = RQp) {
   else Le("api_files_download", "all_failed");
   return o;
 }
-async function $Za(e, t, n, r) {
+async function uploadFile(e, t, n, r) {
   DZa();
-  let s = `${n.baseUrl || LZa()}/v1/files`,
+  let s = `${n.baseUrl || getDefaultApiBaseUrl()}/v1/files`,
     i = {
       Authorization: `Bearer ${n.oauthToken}`,
       "anthropic-version": RZa,
@@ -261,7 +261,7 @@ user_data\r
     ));
   let p = Buffer.concat(d);
   try {
-    return await PZa(`Upload file ${t}`, async () => {
+    return await retryWithBackoff(`Upload file ${t}`, async () => {
       try {
         let f = await po.post(s, p, {
           headers: {
@@ -348,7 +348,7 @@ user_data\r
     );
   }
 }
-function OZa(e) {
+function parseFileSpecs(e) {
   let t = [],
     n = e.flatMap((r) => r.split(" ").filter(Boolean));
   for (let r of n) {
@@ -357,7 +357,7 @@ function OZa(e) {
     let s = r.substring(0, o),
       i = r.substring(o + 1);
     if (!s || !i) {
-      vTo(`Invalid file spec: ${r}. Both file_id and path are required`);
+      logDebugError(`Invalid file spec: ${r}. Both file_id and path are required`);
       continue;
     }
     t.push({

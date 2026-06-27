@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module uEc
 // matched 2.1.88 source: src/utils/swarm/reconnection.ts
 // class=modified  jaccard=0.5615  score=0.8308  fileCov=0.6341
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function dEc() {
+function computeInitialTeamContext() {
   let e = ije();
   if (!e?.teamName || !e?.agentName) {
     T("[Reconnection] computeInitialTeamContext: No teammate context set (not a teammate)");
@@ -38,7 +38,7 @@ function dEc() {
     }
   );
 }
-function pEc(e, t, n) {
+function initializeTeammateContextFromSession(e, t, n) {
   let r = J4(t);
   if (!r) {
     T(

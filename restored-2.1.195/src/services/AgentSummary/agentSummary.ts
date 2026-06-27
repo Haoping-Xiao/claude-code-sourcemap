@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Orl
 // matched 2.1.88 source: src/services/AgentSummary/agentSummary.ts
 // class=modified  jaccard=0.404  score=0.7363  fileCov=0.4724
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function Ztf(e) {
+function buildSummaryPrompt(e) {
   return `Describe your most recent action in 3-5 words using present tense (-ing). Name the file or function, not the branch. Do not use tools.
 ${
   e
@@ -23,7 +23,7 @@ Bad (too vague): "Investigating the issue"
 Bad (too long): "Reviewing full branch diff and AgentTool.tsx integration"
 Bad (branch name): "Analyzed adam/background-summary branch diff"`;
 }
-function Nrl(e, t, n, r, o, s = {}) {
+function startAgentSummarization(e, t, n, r, o, s = {}) {
   let i = s.intervalMs ?? Qtf,
     { forkContextMessages: a, ...l } = n,
     c = null,
@@ -74,7 +74,7 @@ function Nrl(e, t, n, r, o, s = {}) {
         C = await dk({
           promptMessages: [
             Rn({
-              content: Ztf(p),
+              content: buildSummaryPrompt(p),
             }),
           ],
           cacheSafeParams: A,

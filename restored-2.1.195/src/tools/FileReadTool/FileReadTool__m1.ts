@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ykl
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.1201  score=0.306  fileCov=0.1651
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ykl] deps: co, E5, vMe, ql, Ye, oc, es, KI, bH
 X_ = R(se(), 1);
@@ -22,7 +22,7 @@ function bCf(e) {
     s = o === " " ? _Cf : " ";
   return e.replace(`${o}${r[3]}${r[4]}`, `${s}${r[3]}${r[4]}`);
 }
-function SCf(e) {
+function detectSessionFileType(e) {
   let t = tr();
   if (!e.startsWith(t)) return null;
   let n = e.split(IZn.win32.sep).join(IZn.posix.sep);
@@ -50,7 +50,7 @@ async function Xkl(e, t, n) {
   let i = (await Ukl(e)) ?? o;
   if (i > r) throw new ade(i, r);
 }
-function wZn(e, t, n, r) {
+function createImageResponse(e, t, n, r) {
   return {
     type: "image",
     file: {
@@ -66,7 +66,7 @@ function jMo(e) {
     ? Error(e.message)
     : new mi(e.message, `PDF extraction failed (${e.reason})`);
 }
-async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
+async function callInner(e, t, n, r, o, s, i, a, l, c, u, d) {
   if (r === "ipynb") {
     let L = await Qel(n),
       M = De(L),
@@ -125,7 +125,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
       }
     } catch {}
   if (Qkl.has(r) || f) {
-    let L = await GMo(n, l, void 0, p),
+    let L = await readImageWithTokenBudget(n, l, void 0, p),
       M = u.nestedMemoryAttachmentTriggers;
     if (M && !M.includes(t)) M.push(t);
     Soe({
@@ -340,7 +340,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
     filePath: t,
     content: A,
   });
-  let P = SCf(t),
+  let P = detectSessionFileType(t),
     O = jte(t);
   return (
     G("tengu_session_file_read", {
@@ -365,7 +365,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
     }
   );
 }
-async function GMo(e, t = jSe().maxTokens, n, r) {
+async function readImageWithTokenBudget(e, t = jSe().maxTokens, n, r) {
   let o = await qt().readFileBytes(e, n),
     s = o.length;
   if (s === 0) throw new mi(`Image file is empty: ${e}`, "Image file is empty");
@@ -379,10 +379,10 @@ async function GMo(e, t = jSe().maxTokens, n, r) {
     l;
   try {
     let f = await x0e(o, s, a, r);
-    l = wZn(f.buffer, f.mediaType, s, f.dimensions);
+    l = createImageResponse(f.buffer, f.mediaType, s, f.dimensions);
   } catch (f) {
     if (f instanceof NU) throw f;
-    (ke(f), (l = wZn(o, a, s)));
+    (ke(f), (l = createImageResponse(o, a, s)));
   }
   let c = l.file.dimensions,
     u = c?.displayWidth,
@@ -420,7 +420,7 @@ async function GMo(e, t = jSe().maxTokens, n, r) {
             quality: 20,
           })
           .toBuffer();
-        return wZn(g, "jpeg", s);
+        return createImageResponse(g, "jpeg", s);
       } catch (m) {
         return (
           T(
@@ -429,7 +429,7 @@ async function GMo(e, t = jSe().maxTokens, n, r) {
               level: "error",
             },
           ),
-          wZn(o, a, s)
+          createImageResponse(o, a, s)
         );
       }
     }

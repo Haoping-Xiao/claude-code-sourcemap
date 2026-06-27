@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GEc
 // matched 2.1.88 source: src/utils/handlePromptSubmit.ts
 // class=modified  jaccard=0.453  score=0.6875  fileCov=0.5704
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function dpr(e, t) {
   if (t === void 0) return;
@@ -11,7 +11,7 @@ function dpr(e, t) {
 function Zhm() {
   Bc(0);
 }
-async function ppr(e) {
+async function handlePromptSubmit(e) {
   let {
       helpers: t,
       queryGuard: n,
@@ -38,7 +38,7 @@ async function ppr(e) {
     { setCursorOffset: v, clearBuffer: C, resetHistory: x } = t;
   if (_?.length) {
     (jKt(),
-      await WEc({
+      await executeUserInput({
         inputSource: "queued",
         queuedCommands: _,
         messages: c,
@@ -71,7 +71,7 @@ async function ppr(e) {
   if (I.trim() === "") return;
   if (k !== "bash" && !A && nir.includes(I.trim())) {
     if (o.find((V) => V.name === "exit"))
-      ppr({
+      handlePromptSubmit({
         ...e,
         input: "/exit",
       });
@@ -208,7 +208,7 @@ async function ppr(e) {
     },
   };
   (xe("prompt_submit"),
-    await WEc({
+    await executeUserInput({
       inputSource: e.inputSource ?? "typed",
       queuedCommands: [q],
       messages: c,
@@ -231,7 +231,7 @@ async function ppr(e) {
       deferSlashToEngine: e.deferSlashToEngine,
     }));
 }
-async function WEc(e) {
+async function executeUserInput(e) {
   let {
       messages: t,
       mainLoopModel: n,

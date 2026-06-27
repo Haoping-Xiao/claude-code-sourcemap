@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zzl
 // matched 2.1.88 source: src/components/grove/Grove.tsx
 // class=modified  jaccard=0.24  score=0.3669  fileCov=0.4097
-// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PrivacySettingsDialog, GroveDialog
 // [unwrapped __esm module Zzl] deps: ZKe
@@ -22,7 +22,7 @@ Vjo = {
   },
   load: () => Promise.resolve().then(() => (Qzl(), Xzl)),
 };
-function rVf() {
+function GracePeriodContentBody() {
   let e = AJt.c(9),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -378,7 +378,7 @@ function GroveDialog(e) {
       flexDirection: "column",
       gap: 1,
       flexGrow: 1,
-      children: a?.notice_is_grace_period ? Al.jsx(rVf, {}) : Al.jsx(oVf, {}),
+      children: a?.notice_is_grace_period ? Al.jsx(GracePeriodContentBody, {}) : Al.jsx(oVf, {}),
     })),
       (t[14] = a?.notice_is_grace_period),
       (t[15] = b));
@@ -389,7 +389,7 @@ function GroveDialog(e) {
       flexShrink: 0,
       children: Al.jsx(w, {
         color: "professionalBlue",
-        children: nVf,
+        children: NEW_TERMS_ASCII,
       }),
     })),
       (t[16] = _));
@@ -480,7 +480,7 @@ function PrivacySettingsDialog(e) {
     a;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((a = []), (t[0] = a));
   else a = t[0];
-  fYe.useEffect(sVf, a);
+  fYe.useEffect(_temp2, a);
   let l;
   if (t[1] !== r || t[2] !== s)
     ((l = function (_) {
@@ -615,13 +615,13 @@ function PrivacySettingsDialog(e) {
   else y = t[19];
   return y;
 }
-function sVf() {
+function _temp2() {
   G("tengu_grove_privacy_settings_viewed", {});
 }
 var AJt,
   fYe,
   Al,
-  nVf = ` _____________
+  NEW_TERMS_ASCII = ` _____________
  |          \\  \\
  | NEW TERMS \\__\\
  |              |

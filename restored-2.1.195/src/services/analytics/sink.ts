@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CRa
 // matched 2.1.88 source: src/services/analytics/sink.ts
 // class=modified  jaccard=0.1935  score=0.3913  fileCov=0.2768
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: createLinkedTransportPair, shouldTrackDatadog, initializeAnalyticsSink
 class _fo {
@@ -35,7 +35,7 @@ function createLinkedTransportPair() {
 function shouldTrackDatadog() {
   if (S3e("datadog")) return false;
   try {
-    return at(rxp, false);
+    return at(DATADOG_GATE_NAME, false);
   } catch {
     return false;
   }
@@ -87,5 +87,5 @@ function initializeAnalyticsSink() {
     logEventAsync: sxp,
   });
 }
-var rxp = "tengu_log_datadog_events",
+var DATADOG_GATE_NAME = "tengu_log_datadog_events",
   Sfo = false;

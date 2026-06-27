@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mpc
 // matched 2.1.88 source: src/utils/caCertsConfig.ts
 // class=modified  jaccard=0.4691  score=0.7333  fileCov=0.5656
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mpc] deps: Rc
 llm = new Set([
@@ -10,14 +10,14 @@ llm = new Set([
   "api-staging.anthropic.com",
   ...ydn.map((e) => new URL(e).hostname),
 ]);
-function $pc() {
+function applyExtraCACertsFromConfig() {
   if (process.env.NODE_EXTRA_CA_CERTS) return;
-  let e = clm();
+  let e = getExtraCertsPathFromConfig();
   if (e)
     ((process.env.NODE_EXTRA_CA_CERTS = e),
       T(`CA certs: Applied NODE_EXTRA_CA_CERTS from config to process.env: ${e}`));
 }
-function clm() {
+function getExtraCertsPathFromConfig() {
   try {
     let t = Dt()?.env,
       r = (Om("userSettings") ? yn("userSettings") : void 0)?.env;

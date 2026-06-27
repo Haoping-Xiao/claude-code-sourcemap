@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module dec
 // matched 2.1.88 source: src/utils/settings/permissionValidation.ts
 // class=modified (alt of src/utils/settings/permissionValidation.ts)  jaccard=0.0326  score=0.1182  fileCov=0.043
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dec]
 cec = Symbol.for("mcp.completable");
 (function (e) {
   e.Completable = "McpCompletable";
 })(lec || (lec = {}));
-function jKf(e) {
+function validatePermissionRule(e) {
   let t = [];
   if (e.length === 0)
     return {
@@ -60,7 +60,7 @@ function GKf(e, t) {
   }
 }
 function F3o(e) {
-  let t = jKf(e);
+  let t = validatePermissionRule(e);
   return (GKf(e, t.warnings), t.isValid);
 }
 var FKf;

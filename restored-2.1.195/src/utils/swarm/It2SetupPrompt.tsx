@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DAc
 // matched 2.1.88 source: src/utils/swarm/It2SetupPrompt.tsx
 // class=modified  jaccard=0.3034  score=0.431  fileCov=0.5062
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DAc] deps: Gpo, PFn, si, Ye, Bi, sr, Vl, vi
 ((ypr = R(lt(), 1)),
@@ -18,7 +18,7 @@ Eym = {
   filesystem: "can read/write any file",
   system_settings: "can change system settings",
 };
-function PAc(e) {
+function It2SetupPrompt(e) {
   let t = zTe.c(58),
     { onDone: n, tmuxAvailable: r } = e,
     [o, s] = YTt.useState("initial"),

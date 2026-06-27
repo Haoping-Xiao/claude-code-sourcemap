@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module lXo
 // matched 2.1.88 source: src/QueryEngine.ts
 // class=modified  jaccard=0.2472  score=0.3281  fileCov=0.5004
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-class _Uc {
+class QueryEngine {
   config;
   mutableMessages;
   abortController;
@@ -1652,7 +1652,7 @@ async function* bUc({
   orphanedPermission: ae,
   deferredToolUse: de,
 }) {
-  let Ee = new _Uc({
+  let Ee = new QueryEngine({
     cwd: u,
     tools: d,
     refreshTools: p,

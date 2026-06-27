@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module CBo
 // matched 2.1.88 source: src/components/mcp/MCPListPanel.tsx
 // class=modified  jaccard=0.3269  score=0.3977  fileCov=0.6475
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CBo] deps: si, Ye, ps, Cre, cqe, sr, Cc, mE, Bs, vi, f_, Ko, gKe, EC
 ((bse = R(rt(), 1)), (rd = R(se(), 1)));
-function t2l(e) {
+function getScopeHeading(e) {
   switch (e) {
     case "project":
       return {
@@ -179,7 +179,7 @@ function Fnr(e) {
   else a = t[7];
   return a;
 }
-function IBo({
+function MCPListPanel({
   servers: e,
   suppressedClaudeAiConnectors: t = [],
   toolCountsByServer: n = {},
@@ -314,7 +314,7 @@ function IBo({
       for (let V of e2l) {
         let Y = m.get(V);
         if (!Y || Y.length === 0) continue;
-        let z = t2l(V);
+        let z = getScopeHeading(V);
         $.push({
           key: `heading-${V}`,
           node: uc.jsx(Fnr, {
@@ -452,7 +452,7 @@ function IBo({
           }));
       }
       if (y.length > 0) {
-        let V = t2l("dynamic");
+        let V = getScopeHeading("dynamic");
         $.push({
           key: "heading-dynamic",
           node: uc.jsx(Fnr, {

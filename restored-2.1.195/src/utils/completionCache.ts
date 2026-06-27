@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module zQr
 // matched 2.1.88 source: src/utils/completionCache.ts
 // class=modified  jaccard=0.6078  score=1  fileCov=0.6078
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zQr] deps: er, je, At, Bi, vn
 ((VQr = require("fs/promises")), (v8i = require("os")), (w8i = require("path")));
-function s6d() {
+function detectShell() {
   let e = process.env.SHELL || "",
     t = I8i.homedir(),
     n = qce.join(t, ".claude");
@@ -43,8 +43,8 @@ function s6d() {
   }
   return null;
 }
-async function KQr() {
-  let e = s6d();
+async function regenerateCompletionCache() {
+  let e = detectShell();
   if (!e) return;
   T(`update: Regenerating ${e.name} completion cache`);
   let t = process.argv[1] || "claude";

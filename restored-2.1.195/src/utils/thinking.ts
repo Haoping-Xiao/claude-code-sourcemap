@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m1
 // matched 2.1.88 source: src/utils/thinking.ts
 // class=modified  jaccard=0.2084  score=0.3603  fileCov=0.3307
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module m1] deps: Un, mye, Ao, JOt, Ls, dr
 ((Jkd = [
@@ -51,7 +51,7 @@ function Lvi(e) {
     );
   return t.length > 0 ? t : void 0;
 }
-function QOt(e) {
+function modelSupportsThinking(e) {
   let t = W9(e, "interleaved_thinking");
   if (t !== void 0) return t;
   let n = mo(e),

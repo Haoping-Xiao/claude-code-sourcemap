@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QJa
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx
 // class=modified (alt of src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx)  jaccard=0.024  score=0.0437  fileCov=0.0506
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QJa] deps: Ye, Vl, wb, vH, Z9n
 ((XJa = R(lt(), 1)), (hht = R(se(), 1)));
@@ -29,7 +29,7 @@ function xJp(e) {
   if (e.pinHaiku) t.ANTHROPIC_DEFAULT_HAIKU_MODEL = e.pinHaiku;
   return t;
 }
-function tQa(e) {
+function ConfirmStep(e) {
   let t = ZJa.c(29),
     { onComplete: n } = e,
     { goBack: r, wizardData: o } = Eu(),

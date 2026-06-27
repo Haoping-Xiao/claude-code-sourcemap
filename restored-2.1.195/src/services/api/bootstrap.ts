@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hVn
 // matched 2.1.88 source: src/services/api/bootstrap.ts
 // class=modified  jaccard=0.2015  score=0.3313  fileCov=0.3398
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: fetchBootstrapData, buildBootstrapRequestConfig, buildBootstrapInputs
 // [unwrapped __esm module hVn] deps: ft, SJ, p4n, S4, Ye, dn, Un, vft, H0, _F, EVe, oo, Vw, Ld, er, Yp, vn, Ls, R9, aS, t1t, Ote
@@ -49,7 +49,7 @@ function tza(e, t) {
     ...n,
   };
 }
-async function Izp(e) {
+async function fetchBootstrapAPI(e) {
   if (fr() === "gateway") {
     if (!Oe.CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY)
       return (
@@ -136,7 +136,7 @@ async function Izp(e) {
 async function fetchBootstrapData() {
   try {
     let e = buildBootstrapInputs(),
-      t = await Izp(e);
+      t = await fetchBootstrapAPI(e);
     if (!t) return;
     xe("api_bootstrap_fetch");
     let n = t.client_data ?? null,

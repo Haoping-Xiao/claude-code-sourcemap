@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module Zor
 // matched 2.1.88 source: src/utils/ultraplan/ccrSession.ts
 // class=modified  jaccard=0.5216  score=0.7931  fileCov=0.6037
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-class l9l {
+class ExitPlanModeScanner {
   exitPlanCalls = [];
   results = new Map();
   rejectedIds = new Set();
@@ -61,7 +61,7 @@ class l9l {
         } else
           n = {
             kind: "approved",
-            plan: tWf(s.content),
+            plan: extractApprovedPlan(s.content),
           };
         break;
       }
@@ -80,9 +80,9 @@ class l9l {
     };
   }
 }
-async function c9l(e, t, n, r) {
+async function pollForApprovedExitPlanMode(e, t, n, r) {
   let o = Date.now() + t,
-    s = new l9l(),
+    s = new ExitPlanModeScanner(),
     i = {
       eventsReceived: 0,
       firstEventAt: void 0,
@@ -179,13 +179,13 @@ function u9l(e) {
 }
 function eWf(e) {
   let t = u9l(e),
-    n = `${ZGf}
+    n = `${ULTRAPLAN_TELEPORT_SENTINEL}
 `,
     r = t.indexOf(n);
   if (r === -1) return null;
   return t.slice(r + n.length).trimEnd();
 }
-function tWf(e) {
+function extractApprovedPlan(e) {
   let t = u9l(e),
     n = [
       `## Approved Plan (edited by user):
@@ -204,4 +204,4 @@ function tWf(e) {
 var a9l = 3000,
   QGf = 5,
   eme,
-  ZGf = "__ULTRAPLAN_TELEPORT_LOCAL__";
+  ULTRAPLAN_TELEPORT_SENTINEL = "__ULTRAPLAN_TELEPORT_LOCAL__";

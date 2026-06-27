@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K6n
 // matched 2.1.88 source: src/tools/AgentTool/agentToolUtils.ts
 // class=modified  jaccard=0.2657  score=0.3576  fileCov=0.5082
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Hol(e) {
   if (e) return false;
@@ -189,7 +189,7 @@ function voe(e, t, n = false, r = false, o = false, s = 0) {
     allowedAgentTypes: I,
   };
 }
-function Unf(e) {
+function countToolUses(e) {
   let t = 0;
   for (let n of e)
     if (n.type === "assistant") {
@@ -259,7 +259,7 @@ function Fnf(e) {
     ? t
     : void 0;
 }
-function Uwo(e, t, n, { suppressTelemetry: r = false } = {}) {
+function finalizeAgentTool(e, t, n, { suppressTelemetry: r = false } = {}) {
   let {
       prompt: o,
       resolvedAgentModel: s,
@@ -285,7 +285,7 @@ function Uwo(e, t, n, { suppressTelemetry: r = false } = {}) {
       }
     }
   let g = cre(f.message.usage),
-    h = Unf(e),
+    h = countToolUses(e),
     y = Date.now() - a,
     b = new Set();
   for (let _ of e) if (_.type === "assistant") b.add(_.message.id);
@@ -358,7 +358,7 @@ function Gnf(e, t, n, r, o, s, i) {
     lastToolName: s,
   });
 }
-async function jwo({
+async function classifyHandoffIfNeeded({
   agentMessages: e,
   tools: t,
   toolPermissionContext: n,
@@ -437,7 +437,7 @@ function Y6n(e) {
   }
   return;
 }
-async function V8e({
+async function runAsyncAgentLifecycle({
   taskId: e,
   abortController: t,
   makeStream: n,
@@ -642,7 +642,7 @@ async function V8e({
     if (!J) B("completed");
     let ne = i.getTranscript(e),
       oe = ne && ne.messages.length > g.length ? ne.messages : g,
-      re = Uwo(oe, e, r, {
+      re = finalizeAgentTool(oe, e, r, {
         suppressTelemetry: J,
       });
     if ((wol(re, i), J)) {
@@ -673,7 +673,7 @@ async function V8e({
 `,
     );
     {
-      let ae = await jwo({
+      let ae = await classifyHandoffIfNeeded({
         agentMessages: g,
         tools: s.options.tools,
         toolPermissionContext: Fr(s),

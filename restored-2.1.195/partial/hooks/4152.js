@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module kal
 // matched 2.1.88 source: src/components/messages/UserToolResultMessage/UserToolErrorMessage.tsx
 // class=partial  jaccard=0.1907  score=0.5129  fileCov=0.2329
-// note: low-confidence suggestion: src/components/messages/UserToolResultMessage/UserToolErrorMessage.tsx; dir inferred from dep-graph -> hooks; 0 renamed
+// note: low-confidence suggestion: src/components/messages/UserToolResultMessage/UserToolErrorMessage.tsx; dir inferred from dep-graph -> hooks; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kal] deps: Ye, ql
 Ial = R(lt(), 1), dIo = R(se(), 1);
-function tKn(e) {
+function UserToolErrorMessage(e) {
   let t = Ral.c(19),
     {
       progressMessagesForMessage: n,

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module NOl
 // matched 2.1.88 source: src/utils/stats.ts
 // class=modified  jaccard=0.5426  score=0.9443  fileCov=0.5605
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NOl] deps: dn, Bi, vn, Is, bUt, kv
 (($Ol = require("child_process")), (fEt = require("fs/promises")), (nNo = require("path")));
-async function Vtr(e, t = {}) {
+async function processSessionFiles(e, t = {}) {
   let { fromDate: n, toDate: r } = t,
     o = qt(),
     s = new Map(),
@@ -168,7 +168,7 @@ async function Vtr(e, t = {}) {
     ...{},
   };
 }
-async function BOl() {
+async function getAllSessionFiles() {
   let e = oF(),
     t = qt(),
     n;
@@ -313,8 +313,8 @@ function oPf(e, t) {
     totalSpeculationTimeSavedMs: y,
   };
 }
-async function sPf() {
-  let e = await BOl();
+async function aggregateClaudeCodeStats() {
+  let e = await getAllSessionFiles();
   if (e.length === 0) return FOl();
   let t = await EOl(async () => {
       let o = await HOl(),
@@ -322,7 +322,7 @@ async function sPf() {
         i = o;
       if (!o.lastComputedDate) {
         T("Stats cache empty, processing all historical data");
-        let a = await Vtr(e, {
+        let a = await processSessionFiles(e, {
           toDate: s,
         });
         if (a.sessionStats.length > 0 || a.dailyActivity.length > 0)
@@ -330,7 +330,7 @@ async function sPf() {
       } else if (HKe(o.lastComputedDate, s)) {
         let a = aPf(o.lastComputedDate);
         T(`Stats cache stale (${o.lastComputedDate}), processing ${a} to ${s}`);
-        let l = await Vtr(e, {
+        let l = await processSessionFiles(e, {
           fromDate: a,
           toDate: s,
         });
@@ -346,22 +346,22 @@ async function sPf() {
       return i;
     }),
     n = J1o(),
-    r = await Vtr(e, {
+    r = await processSessionFiles(e, {
       fromDate: n,
       toDate: n,
     });
   return oPf(t, r);
 }
 async function rNo(e) {
-  if (e === "all") return sPf();
-  let t = await BOl();
+  if (e === "all") return aggregateClaudeCodeStats();
+  let t = await getAllSessionFiles();
   if (t.length === 0) return FOl();
   let n = new Date(),
     r = e === "7d" ? 7 : 30,
     o = new Date(n);
   o.setDate(n.getDate() - r + 1);
   let s = pse(o),
-    i = await Vtr(t, {
+    i = await processSessionFiles(t, {
       fromDate: s,
     });
   return iPf(i);

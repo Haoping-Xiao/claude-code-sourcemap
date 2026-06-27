@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module iZr
 // matched 2.1.88 source: src/history.ts
 // class=modified  jaccard=0.2387  score=0.5216  fileCov=0.3057
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iZr] deps: dn, db, je, fn, At
 ((U8i = require("crypto")), (GDn = require("path")), (jDn = new Map()), (Vce = new Map()));
 function L0e(e) {
   return (e.match(/\r\n|\r|\n/g) || []).length;
 }
-function Kat(e, t) {
+function formatPastedTextRef(e, t) {
   if (t === 0) return `[Pasted text #${e}]`;
   return `[Pasted text #${e} +${t} lines]`;
 }
@@ -61,7 +61,7 @@ function K8i(e, t) {
 function E6d(e) {
   return Ft(e);
 }
-async function* XDn() {
+async function* makeLogEntryReader() {
   let e = zce.slice(),
     t = new Set(e.map((o) => `${o.timestamp}\x00${o.sessionId ?? ""}`));
   for (let o = e.length - 1; o >= 0; o--) yield e[o];
@@ -88,13 +88,13 @@ async function* XDn() {
   }
 }
 async function* cZr() {
-  for await (let e of XDn()) yield await qDn(e);
+  for await (let e of makeLogEntryReader()) yield await qDn(e);
 }
 async function* Y8i(e = "project") {
   let t = rc(),
     n = Rt(),
     r = new Set();
-  for await (let o of XDn()) {
+  for await (let o of makeLogEntryReader()) {
     if (!o || typeof o.project !== "string") continue;
     if (e === "project" && o.project !== t) continue;
     if (e === "session" && o.sessionId !== n) continue;
@@ -116,7 +116,7 @@ async function X8i(e) {
     n = 0,
     r = 0;
   try {
-    for await (let o of XDn()) {
+    for await (let o of makeLogEntryReader()) {
       if (!o || typeof o.project !== "string") continue;
       if (o.project !== t) continue;
       if ((n++, !e || e(o.display))) r++;
@@ -132,7 +132,7 @@ async function* QDn() {
     t = Rt(),
     n = [],
     r = 0;
-  for await (let o of XDn()) {
+  for await (let o of makeLogEntryReader()) {
     if (!o || typeof o.project !== "string") continue;
     if (o.project !== e) continue;
     if (o.sessionId === t) (yield await qDn(o), r++);
@@ -196,7 +196,7 @@ async function qDn(e) {
     pastedContents: n,
   };
 }
-async function Q8i() {
+async function immediateFlushHistory() {
   if (zce.length === 0) return;
   let e;
   try {
@@ -231,7 +231,7 @@ async function Z8i(e) {
   if (e > 5) return;
   aZr = true;
   try {
-    await Q8i();
+    await immediateFlushHistory();
   } finally {
     if (((aZr = false), zce.length > 0)) (await Nn(500), Z8i(e + 1));
   }
@@ -296,7 +296,7 @@ function Yat(e) {
     ((z8i = true),
       Ci(async () => {
         if (VDn) await VDn;
-        if (zce.length > 0) await Q8i();
+        if (zce.length > 0) await immediateFlushHistory();
       }));
   w6d(e);
 }

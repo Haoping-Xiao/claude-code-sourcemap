@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rhc
 // matched 2.1.88 source: src/components/PromptInput/VoiceIndicator.tsx
 // class=modified  jaccard=0.2594  score=0.4049  fileCov=0.4192
-// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: VoiceWarmupHint, VoiceIndicator, VoiceCursorChar
 // [unwrapped __esm module Rhc] deps: Ye, nk, lg
@@ -11,7 +11,7 @@ function VoiceIndicator(e) {
   let t = kTt.c(2),
     n;
   if (t[0] !== e)
-    ((n = qz.jsx(wdm, {
+    ((n = qz.jsx(VoiceIndicatorImpl, {
       ...e,
     })),
       (t[0] = e),
@@ -19,7 +19,7 @@ function VoiceIndicator(e) {
   else n = t[1];
   return n;
 }
-function wdm(e) {
+function VoiceIndicatorImpl(e) {
   let t = kTt.c(3),
     { voiceState: n } = e,
     r = Ht(Cdm);
@@ -56,7 +56,8 @@ function wdm(e) {
     }
     case "processing": {
       let o;
-      if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((o = qz.jsx(Idm, {})), (t[2] = o));
+      if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+        ((o = qz.jsx(ProcessingShimmer, {})), (t[2] = o));
       else o = t[2];
       return o;
     }
@@ -95,7 +96,7 @@ function VoiceWarmupHint() {
   else t = e[0];
   return t;
 }
-function Idm() {
+function ProcessingShimmer() {
   let e = kTt.c(8),
     t = G_(),
     n = Mv(t.prefersReducedMotion),

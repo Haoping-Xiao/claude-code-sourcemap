@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ygc
 // matched 2.1.88 source: src/utils/mcp/elicitationValidation.ts
 // class=modified  jaccard=0.3327  score=0.6868  fileCov=0.3922
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function c7e(e) {
   return (
@@ -41,7 +41,7 @@ function Hen(e, t) {
   let n = wTt(e).indexOf(t);
   return n >= 0 ? (Xum(e)[n] ?? t) : t;
 }
-function Jum(e) {
+function getZodSchema(e) {
   if (Pme(e)) {
     let [t, ...n] = wTt(e);
     if (!t) return H.never();
@@ -115,7 +115,7 @@ function Jum(e) {
   throw Error(`Unsupported schema: ${De(e)}`);
 }
 function Sen(e, t) {
-  let r = Jum(t).safeParse(e);
+  let r = getZodSchema(t).safeParse(e);
   if (r.success)
     return {
       value: r.data,
@@ -126,13 +126,13 @@ function Sen(e, t) {
     error: r.error.issues.map((o) => o.message).join("; "),
   };
 }
-function Ten(e) {
+function isDateTimeSchema(e) {
   return e.type === "string" && "format" in e && (e.format === "date" || e.format === "date-time");
 }
 async function Xgc(e, t, n) {
   let r = Sen(e, t);
   if (r.isValid) return r;
-  if (Ten(t) && !Kgc(e)) {
+  if (isDateTimeSchema(t) && !Kgc(e)) {
     let o = await zgc(e, t.format, n);
     if (o.success) {
       let s = Sen(o.value, t);

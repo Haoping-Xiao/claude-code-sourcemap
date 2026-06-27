@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Prs
 // matched 2.1.88 source: src/utils/envUtils.ts
 // class=modified  jaccard=0.1194  score=0.2983  fileCov=0.1661
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Prs] deps: Qi
 Lrs = Cn((e) => {
@@ -60,7 +60,7 @@ function qH() {
 function Ors() {
   return Nsn("--bare") ? "restart without --bare" : "unset CLAUDE_CODE_SIMPLE";
 }
-function Nrs(e) {
+function parseEnvVars(e) {
   let t = {};
   if (e)
     for (let n of e) {

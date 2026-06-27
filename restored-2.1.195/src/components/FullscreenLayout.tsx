@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iVl
 // matched 2.1.88 source: src/components/FullscreenLayout.tsx
 // class=modified  jaccard=0.2797  score=0.3703  fileCov=0.5334
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iVl] deps: gGe, Ye
 ((E2o = R(lt(), 1)), (sVl = R(rt(), 1)), (qHe = R(se(), 1)));
@@ -81,7 +81,7 @@ function cVl(e) {
     }
   );
 }
-function X3f(e, t) {
+function countUnseenAssistantTurns(e, t) {
   let n = 0,
     r = false;
   for (let o = t; o < e.length; o++) {
@@ -105,13 +105,13 @@ function uVl(e, t) {
   while (n < e.length && (e[n]?.type === "progress" || bor(e[n]))) n++;
   let r = e[n]?.uuid;
   if (!r) return;
-  let o = X3f(e, t);
+  let o = countUnseenAssistantTurns(e, t);
   return {
     firstUnseenUuid: r,
     count: Math.max(1, o),
   };
 }
-function T2o(e) {
+function FullscreenLayout(e) {
   let t = tYe.c(78),
     {
       scrollable: n,
@@ -191,7 +191,7 @@ function T2o(e) {
     if (t[11] !== z)
       ((Z =
         z &&
-        Od.jsx(rGf, {
+        Od.jsx(StickyPromptHeader, {
           text: z.text,
           onClick: z.scrollTo,
         })),
@@ -232,7 +232,7 @@ function T2o(e) {
       ((ee =
         !g &&
         q &&
-        Od.jsx(nGf, {
+        Od.jsx(NewMessagesPill, {
           count: y,
           onClick: f,
         })),
@@ -752,7 +752,7 @@ function tGf(e) {
   else ne = t[44];
   return ne;
 }
-function nGf(e) {
+function NewMessagesPill(e) {
   let t = tYe.c(13),
     { count: n, onClick: r } = e,
     [o, s] = oy.useState(false),
@@ -809,7 +809,7 @@ function nGf(e) {
   else f = t[12];
   return f;
 }
-function rGf(e) {
+function StickyPromptHeader(e) {
   let t = tYe.c(8),
     { text: n, onClick: r } = e,
     [o, s] = oy.useState(false),

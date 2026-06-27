@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module RBo
 // matched 2.1.88 source: src/components/mcp/CapabilitiesSection.tsx
 // class=modified  jaccard=0.5402  score=0.7144  fileCov=0.689
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RBo] deps: si, Ye, Yfe, uo, CH
 ((r2l = R(lt(), 1)), (oXt = R(rt(), 1)), (Sse = R(se(), 1)));
-function jnr(e) {
+function CapabilitiesSection(e) {
   let t = o2l.c(9),
     { serverToolsCount: n, serverPromptsCount: r, serverResourcesCount: o } = e,
     s;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CWl
 // matched 2.1.88 source: src/utils/groupToolUses.ts
 // class=modified  jaccard=0.2987  score=0.3874  fileCov=0.5661
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function IWl(e) {
   return e.type === "system" && e.subtype === "stop_hook_summary" && e.hookLabel !== void 0;
@@ -73,7 +73,7 @@ function $jf(e) {
     ((t = new Set(e.filter((n) => n.renderGroupedToolUse).map((n) => n.name))), LWl.set(e, t));
   return t;
 }
-function DWl(e) {
+function getToolUseInfo(e) {
   if (e.type === "assistant" && e.message.content[0]?.type === "tool_use") {
     let t = e.message.content[0];
     return {
@@ -84,7 +84,7 @@ function DWl(e) {
   }
   return null;
 }
-function PWl(e, t, n = false) {
+function applyGrouping(e, t, n = false) {
   if (n)
     return {
       messages: e,
@@ -105,7 +105,7 @@ function PWl(e, t, n = false) {
     if (d.length >= 2) {
       s.set(u, d);
       for (let p of d) {
-        let f = DWl(p);
+        let f = getToolUseInfo(p);
         if (f) i.add(f.toolUseId);
       }
     }
@@ -122,7 +122,7 @@ function PWl(e, t, n = false) {
   let l = [],
     c = new Set();
   for (let u of e) {
-    let d = DWl(u);
+    let d = getToolUseInfo(u);
     if (d) {
       let p = `${d.messageId}:${d.toolName}`,
         f = s.get(p);

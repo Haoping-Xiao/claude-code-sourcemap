@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nTl
 // matched 2.1.88 source: src/tools/PowerShellTool/modeValidation.ts
 // class=modified  jaccard=0.1216  score=0.3029  fileCov=0.1689
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nTl] deps: bde, Wbt, dze
 Sbf = new Set(["set-content", "add-content", "remove-item", "clear-content"]);
@@ -444,7 +444,7 @@ function sTl(e, t, n, r = false) {
     };
   let o;
   for (let s of t.statements) {
-    let i = Cbf(s, n, r);
+    let i = checkPermissionMode(s, n, r);
     if (i.behavior === "deny") return i;
     if (i.behavior === "ask" && !o) o = i;
   }
@@ -455,7 +455,7 @@ function sTl(e, t, n, r = false) {
     }
   );
 }
-function Cbf(e, t, n = false) {
+function checkPermissionMode(e, t, n = false) {
   let r = $t(),
     o;
   if (n)

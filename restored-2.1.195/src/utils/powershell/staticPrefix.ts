@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kHc
 // matched 2.1.88 source: src/utils/powershell/staticPrefix.ts
 // class=modified  jaccard=0.3824  score=0.8846  fileCov=0.4025
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function $_m(e) {
   let t = [];
@@ -10,7 +10,7 @@ function $_m(e) {
     for (let r of n.commands) if (r.elementType === "CommandAst") t.push(r);
   return t;
 }
-async function RHc(e) {
+async function extractPrefixFromElement(e) {
   if (e.nameType === "application") return null;
   let t = e.name;
   if (!t) return null;
@@ -56,13 +56,13 @@ async function LHc(e, t) {
   if (!n.valid) return [];
   let r = $_m(n);
   if (r.length <= 1) {
-    let a = r[0] ? await RHc(r[0]) : null;
+    let a = r[0] ? await extractPrefixFromElement(r[0]) : null;
     return a ? [a] : [];
   }
   let o = [];
   for (let a of r) {
     if (t?.(a)) continue;
-    let l = await RHc(a);
+    let l = await extractPrefixFromElement(a);
     if (l) o.push(l);
   }
   if (o.length === 0) return [];

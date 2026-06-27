@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QOa
 // matched 2.1.88 source: src/utils/gracefulShutdown.ts
 // class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.0325  score=0.0619  fileCov=0.0641
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QOa]
 ((VOa = require("os")), (zOa = require("path")));
@@ -165,7 +165,7 @@ function UPp(e) {
   let t = /^(\d+)\.(\d+)/.exec(e);
   return t ? `${t[1]}.${t[2]}` : "unknown";
 }
-function AWt(e, t = "logError") {
+function setupGracefulShutdown(e, t = "logError") {
   if (!qOa()) return;
   try {
     let n = Zr(e);

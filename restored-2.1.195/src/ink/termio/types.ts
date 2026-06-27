@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mce
 // matched 2.1.88 source: src/ink/termio/types.ts
 // class=modified  jaccard=0.2755  score=0.8012  fileCov=0.2957
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mce] deps: AW, mGe
 ((p5i = R(lt(), 1)), (DLn = R(se(), 1)));
@@ -155,7 +155,7 @@ function CWd(e, t) {
   }
   return null;
 }
-function m5i(e, t) {
+function colorsEqual(e, t) {
   let n = wWd(e),
     r = {
       ...t,

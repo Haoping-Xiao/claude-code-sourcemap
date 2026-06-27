@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module M9o
 // matched 2.1.88 source: src/utils/iTermBackup.ts
 // class=modified  jaccard=0.5854  score=0.9647  fileCov=0.5982
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Xcr() {
   gn((e) => ({
@@ -17,10 +17,10 @@ function Kim() {
     backupPath: e.iterm2BackupPath || null,
   };
 }
-function Yim() {
+function getITerm2PlistPath() {
   return Odc.join($dc.homedir(), "Library", "Preferences", "com.googlecode.iterm2.plist");
 }
-async function Ndc() {
+async function checkAndRestoreITerm2Backup() {
   let { inProgress: e, backupPath: t } = Kim();
   if (!e)
     return {
@@ -45,7 +45,7 @@ async function Ndc() {
   }
   try {
     return (
-      await Jcr.copyFile(t, Yim()),
+      await Jcr.copyFile(t, getITerm2PlistPath()),
       Xcr(),
       {
         status: "restored",

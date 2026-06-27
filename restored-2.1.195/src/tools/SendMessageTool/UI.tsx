@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qzt
 // matched 2.1.88 source: src/tools/SendMessageTool/UI.tsx
 // class=modified  jaccard=0.3991  score=0.5434  fileCov=0.6003
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qzt] deps: ft, rze, X6, l$, dn, S_, LL, $S, og, Il, c9t, Lo, je, At, vn, co, kpe, $g, uft, _a, l8e, bH, xF, Mp, K0, tQ, vAe, N8t, qRe, ty, SAe
 jRo = require("fs");
@@ -38,13 +38,13 @@ Your plain text output is NOT visible to other agents \u2014 to communicate, you
 }
 var BEl = "Send a message to another agent";
 var FEl = () => {};
-function jEl(e) {
+function renderToolUseMessage(e) {
   if (typeof e.message !== "object" || e.message === null) return null;
   if (e.message.type === "plan_approval_response")
     return e.message.approve ? `approve plan from: ${e.to}` : `reject plan from: ${e.to}`;
   return null;
 }
-function GEl(e, t, { verbose: n }) {
+function renderToolResultMessage(e, t, { verbose: n }) {
   let r = typeof e === "string" ? Ft(e) : e;
   if ("routing" in r && r.routing) return null;
   if ("request_id" in r && "target" in r) return null;

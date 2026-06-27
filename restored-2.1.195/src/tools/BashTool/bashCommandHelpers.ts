@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CCl
 // matched 2.1.88 source: src/tools/BashTool/bashCommandHelpers.ts
 // class=modified  jaccard=0.3843  score=0.6702  fileCov=0.474
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CCl]
 JJn = {
@@ -11,7 +11,7 @@ JJn = {
     return ((vCl = e), (XJn = BHf(e)), XJn);
   },
 };
-async function UHf(e, t, n, r, o, s, i) {
+async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
   let a = new Map();
   for (let f = 0; f < t.length; f++) {
     let m = t[f].trim();
@@ -157,16 +157,16 @@ async function FHf(e) {
   if (!e.includes(">")) return e;
   return (await JJn.parse(e))?.withoutOutputRedirections() ?? e;
 }
-async function ICl(e, t, n, r, o, s) {
+async function checkCommandOperatorPermissions(e, t, n, r, o, s) {
   let i = r && r !== wue ? nPo(e.command, r) : await JJn.parse(e.command);
   if (!i)
     return {
       behavior: "passthrough",
       message: "Failed to parse command",
     };
-  return jHf(e, t, n, i, o, s);
+  return bashToolCheckCommandOperatorPermissions(e, t, n, i, o, s);
 }
-async function jHf(e, t, n, r, o, s) {
+async function bashToolCheckCommandOperatorPermissions(e, t, n, r, o, s) {
   let i = r.getTreeSitterAnalysis();
   if (
     i
@@ -191,5 +191,5 @@ async function jHf(e, t, n, r, o, s) {
       message: "No pipes found in command",
     };
   let c = await Promise.all(l.map((u) => FHf(u)));
-  return UHf(e, c, l, t, n, o, s);
+  return segmentedCommandPermissionResult(e, c, l, t, n, o, s);
 }

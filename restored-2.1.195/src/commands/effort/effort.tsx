@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wQl
 // matched 2.1.88 source: src/commands/effort/effort.tsx
 // class=modified  jaccard=0.1503  score=0.1745  fileCov=0.5195
-// note: deminified; 9 identifiers renamed (exports/displayName/curated)
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: showCurrentEffort, rippleLevel, rippleDistance, getSliderGeometry, getEffortHelpText, executeEffort, call, UltraRippleText, RIPPLE_RAMP
 // [unwrapped __esm module wQl] deps: fh, fn
@@ -101,7 +101,7 @@ function c3o(e, t = false) {
     null
   );
 }
-function ezf(e) {
+function setEffortValue(e) {
   let t = Tke(e);
   if (NA() && t === void 0)
     return {
@@ -170,7 +170,7 @@ function showCurrentEffort(e, t, n) {
     message: `Current effort level: ${dce(s)} (${i})`,
   };
 }
-function tzf() {
+function unsetEffortLevel() {
   let e = c3o(void 0),
     t = wNt(void 0);
   if (t)
@@ -235,14 +235,14 @@ function nzf() {
 }
 function executeEffort(e) {
   let t = e.toLowerCase();
-  if (t === "auto" || t === "unset") return tzf();
+  if (t === "auto" || t === "unset") return unsetEffortLevel();
   if (t === "ultracode") return nzf();
   let n = zst(e);
   if (!n)
     return {
       message: `Invalid argument: ${e}. Valid options are: ${yir(As())}`,
     };
-  return ezf(n);
+  return setEffortValue(n);
 }
 function rzf(e) {
   let { onDone: t } = e,

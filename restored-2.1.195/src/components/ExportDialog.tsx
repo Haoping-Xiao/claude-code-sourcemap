@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module U4o
 // matched 2.1.88 source: src/components/ExportDialog.tsx
 // class=modified  jaccard=0.2987  score=0.4697  fileCov=0.4506
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U4o] deps: Hu
 ((iir = require("fs/promises")), (air = require("path")));
-function AJl({ content: e, defaultFilename: t, onDone: n }) {
+function ExportDialog({ content: e, defaultFilename: t, onDone: n }) {
   let [, r] = $1e.useState(null),
     [o, s] = $1e.useState(t),
     [i, a] = $1e.useState(t.length),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _m
 // matched 2.1.88 source: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts
 // class=modified (alt of src/tools/SyntheticOutputTool/SyntheticOutputTool.ts)  jaccard=0.2059  score=0.6028  fileCov=0.2382
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _m] deps: Un, fn, Is, sj
 W1 = [Co, Ss];
@@ -18,10 +18,10 @@ function Toa(e) {
 function Lct(e) {
   let t = Aoa.get(e);
   if (t) return t;
-  let n = qop(e);
+  let n = buildSyntheticOutputTool(e);
   return (Aoa.set(e, n), n);
 }
-function qop(e) {
+function buildSyntheticOutputTool(e) {
   try {
     let t = new Hoa.Ajv({
       allErrors: true,
@@ -61,6 +61,6 @@ function qop(e) {
 var Hoa,
   Gop,
   Wop,
-  Ip = "StructuredOutput",
+  SYNTHETIC_OUTPUT_TOOL_NAME = "StructuredOutput",
   Xoo,
   Aoa;

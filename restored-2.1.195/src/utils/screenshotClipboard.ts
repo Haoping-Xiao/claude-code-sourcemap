@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MOl
 // matched 2.1.88 source: src/utils/screenshotClipboard.ts
 // class=modified  jaccard=0.3733  score=0.6058  fileCov=0.493
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MOl] deps: Tc, xOl
 ((Wtr = require("zlib")), (tNo = Mfe * jOe));
@@ -15,7 +15,7 @@ YDf = {
   9608: 1,
 };
 ((QDf = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), (ZDf = ePf()));
-async function OOl(e, t) {
+async function copyAnsiToClipboard(e, t) {
   try {
     let n = nNo.join(qE(), "screenshots");
     await fEt.mkdir(n, {
@@ -28,7 +28,7 @@ async function OOl(e, t) {
     await fEt.writeFile(r, s);
     let i;
     try {
-      i = await nPf(r);
+      i = await copyPngToClipboard(r);
     } catch (a) {
       return (
         ke(a),
@@ -55,7 +55,7 @@ async function OOl(e, t) {
     );
   }
 }
-async function nPf(e) {
+async function copyPngToClipboard(e) {
   let t = Vt();
   if (t === "macos") {
     let r = `set the clipboard to (read (POSIX file "${e.replaceAll("\\", "\\\\").replaceAll('"', '\\"')}") as \xABclass PNGf\xBB)`,

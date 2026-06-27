@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dOe
 // matched 2.1.88 source: src/utils/plugins/cacheUtils.ts
 // class=modified  jaccard=0.2719  score=0.8045  fileCov=0.2911
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dOe] deps: fd, je, eqe, fn, ys, Jbe, kv
 ((y$o = require("crypto")), (NL = require("fs/promises")), (KF = require("path")));
@@ -13,21 +13,21 @@ function GIf() {
 function Ah() {
   (GIf(), W0(), wq(), woo(), KW());
 }
-async function pOe(e) {
+async function markPluginVersionOrphaned(e) {
   try {
     await nse.writeFile(b$o(e), `${Date.now()}`, "utf-8");
   } catch (t) {
     T(`Failed to write .orphaned_at: ${e}: ${t}`);
   }
 }
-async function lRl() {
+async function cleanupOrphanedPluginVersionsInBackground() {
   if (az()) return;
   try {
-    let e = qIf();
+    let e = getInstalledVersionPaths();
     if (!e || e.size === 0) return;
     let t = fOe(),
       n = Date.now();
-    await Promise.all([...e].map((r) => WIf(r)));
+    await Promise.all([...e].map((r) => removeOrphanedAtMarker(r)));
     for (let r of await QZn(t)) {
       let o = IYt.join(t, r);
       for (let s of await QZn(o)) {
@@ -35,20 +35,20 @@ async function lRl() {
         for (let a of await QZn(i)) {
           let l = IYt.join(i, a);
           if (e.has(l)) continue;
-          await VIf(l, n);
+          await processOrphanedPluginVersion(l, n);
         }
-        await aRl(i);
+        await removeIfEmpty(i);
       }
-      await aRl(o);
+      await removeIfEmpty(o);
     }
   } catch (e) {
     T(`Plugin cache cleanup failed: ${e}`);
   }
 }
 function b$o(e) {
-  return IYt.join(e, FIf);
+  return IYt.join(e, ORPHANED_AT_FILENAME);
 }
-async function WIf(e) {
+async function removeOrphanedAtMarker(e) {
   let t = b$o(e);
   try {
     await nse.unlink(t);
@@ -57,7 +57,7 @@ async function WIf(e) {
     T(`Failed to remove .orphaned_at: ${e}: ${n}`);
   }
 }
-function qIf() {
+function getInstalledVersionPaths() {
   try {
     let e = new Set(),
       t = BL();
@@ -67,14 +67,14 @@ function qIf() {
     return (T(`Failed to load installed plugins: ${e}`), null);
   }
 }
-async function VIf(e, t) {
+async function processOrphanedPluginVersion(e, t) {
   let n = b$o(e),
     r;
   try {
     r = (await nse.stat(n)).mtimeMs;
   } catch (o) {
     if (on(o) === "ENOENT") {
-      await pOe(e);
+      await markPluginVersionOrphaned(e);
       return;
     }
     T(`Failed to stat orphaned marker: ${e}: ${o}`);
@@ -100,7 +100,7 @@ async function VIf(e, t) {
     }
   }
 }
-async function aRl(e) {
+async function removeIfEmpty(e) {
   if ((await QZn(e)).length === 0)
     try {
       await nse.rm(e, {
@@ -127,5 +127,5 @@ async function QZn(e) {
 var nse,
   IYt,
   UIf,
-  FIf = ".orphaned_at",
+  ORPHANED_AT_FILENAME = ".orphaned_at",
   jIf = 1209600000;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R3i
 // matched 2.1.88 source: src/ink/reconciler.ts
 // class=modified (alt of src/ink/reconciler.ts)  jaccard=0.115  score=0.6667  fileCov=0.122
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R3i] deps: aGe
 CXr = v3d;
@@ -29,7 +29,7 @@ function LXr(e, t) {
   if (e._holdsRawModeRef) ((e._holdsRawModeRef = false), B3i(t, -1));
   for (let n of e.childNodes) if (n.nodeName !== "#text") LXr(n, t);
 }
-function C3d(e, t, n) {
+function applyProp(e, t, n) {
   if (t === "children") return;
   if (t === "style") {
     if ((SXr(e, n), e.yogaNode)) CXr(e.yogaNode, n);
@@ -49,7 +49,7 @@ function C3d(e, t, n) {
   }
   _Xr(e, t, n);
 }
-function U3i(e) {
+function getOwnerChain(e) {
   let t = [],
     n = new Set(),
     r = e;
@@ -70,7 +70,7 @@ function U3i(e) {
 }
 function M3i(e) {
   try {
-    let t = U3i(e);
+    let t = getOwnerChain(e);
     return t.length > 0 ? ` (owner chain: ${t.join(" > ")})` : "";
   } catch {
     return "";

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gy
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
 // class=modified  jaccard=0.3702  score=0.6074  fileCov=0.4866
-// note: deminified; 30 identifiers renamed (exports/displayName/curated)
+// note: deminified; 31 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: verifyAutoModeGateAccess, transitionPlanAutoMode, transitionPermissionMode, stripDangerousPermissionsForAutoMode, shouldPlanUseAutoMode, shouldDisableBypassPermissions, setPermissionModeWithGuards, restoreDangerousPermissions, removeDangerousPermissions, prepareContextForPlanMode, parseToolListFromCLI, parseBaseToolsFromCLI, isYoloEquivStripEnabledForEntrypoint, isOverlyBroadPowerShellAllowRule, isOverlyBroadBashAllowRule, isDefaultPermissionModeAuto, isDangerousTaskPermission,  …
 // [unwrapped __esm module Gy] deps: Uge, Sae, Ox, fh, eit, N6e, tWt, NB, sN, je, At, vn, lg, vf, sr, rcr, clc, CYn, DFn, DE, $I, QH, fre, ft, Un, kt, Du, fb, Il, Lo, RE, fn, sp, co, jG, dr, Jt, Mp, pMo, Hoe
@@ -585,7 +585,7 @@ function getAutoModeUnavailableNotification(e) {
 }
 async function verifyAutoModeGateAccess(e, t) {
   let n = await v7("tengu_auto_mode_config", {}),
-    r = zqo(n?.enabled),
+    r = parseAutoModeEnabledState(n?.enabled),
     o = Vqo();
   if (!(nO?.isAutoModeCircuitBroken() ?? false))
     nO?.setAutoModeCircuitBroken(r === "disabled" || o);
@@ -714,7 +714,7 @@ function getAutoModeUnavailableReason() {
   if (!a_e(As())) return "model";
   return null;
 }
-function zqo(e) {
+function parseAutoModeEnabledState(e) {
   if (e === "enabled" || e === "disabled" || e === "opt-in") return e;
   return frm;
 }
@@ -723,7 +723,7 @@ function getAutoModeEnabledState() {
 }
 function getAutoModeEnabledStateWithSource() {
   let t = at("tengu_auto_mode_config", {})?.enabled,
-    n = zqo(t);
+    n = parseAutoModeEnabledState(t);
   return {
     value: n,
     src: t === n ? "gb" : "default",
@@ -732,7 +732,7 @@ function getAutoModeEnabledStateWithSource() {
 function getAutoModeEnabledStateIfCached() {
   let e = at("tengu_auto_mode_config", wlc);
   if (e === wlc) return;
-  return zqo(e?.enabled);
+  return parseAutoModeEnabledState(e?.enabled);
 }
 function hasAutoModeOptInAnySource() {
   if (nO?.getAutoModeFlagCli() ?? false) return true;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jbe
 // matched 2.1.88 source: src/utils/plugins/pluginDirectories.ts
 // class=modified  jaccard=0.4218  score=0.8837  fileCov=0.4467
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jbe] deps: Qi, Is, Rm, ys, lg, xue, Yf
 ((_oo = require("os")), (ore = require("path")), (jrp = /[{}]/));
@@ -14,8 +14,8 @@ zrp = Cn((e) =>
     .replace(/\/$/, ""),
 );
 function Yrp() {
-  if (ICt()) return Mra;
-  if (ut(process.env.CLAUDE_CODE_USE_COWORK_PLUGINS)) return Mra;
+  if (ICt()) return COWORK_PLUGINS_DIR;
+  if (ut(process.env.CLAUDE_CODE_USE_COWORK_PLUGINS)) return COWORK_PLUGINS_DIR;
   return Krp;
 }
 function kI() {
@@ -65,7 +65,7 @@ async function $ra(e) {
     human: Ra(n),
   };
 }
-async function Sct(e) {
+async function deletePluginDataDir(e) {
   let t = M2t(e);
   try {
     await _ct.rm(t, {
@@ -81,4 +81,4 @@ async function Sct(e) {
 var _ct,
   bct,
   Krp = "plugins",
-  Mra = "cowork_plugins";
+  COWORK_PLUGINS_DIR = "cowork_plugins";

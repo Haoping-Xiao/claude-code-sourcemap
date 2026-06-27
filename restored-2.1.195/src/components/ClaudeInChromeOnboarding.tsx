@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $$c
 // matched 2.1.88 source: src/components/ClaudeInChromeOnboarding.tsx
 // class=modified  jaccard=0.2598  score=0.3998  fileCov=0.4258
-// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ClaudeInChromeOnboarding
 // [unwrapped __esm module $$c] deps: Ye, Yp, Fy, vi
@@ -41,7 +41,7 @@ function ClaudeInChromeOnboarding(e) {
           "Requires the Chrome extension. Get started at",
           " ",
           lO.jsx(xs, {
-            url: uxm,
+            url: CHROME_EXTENSION_URL,
           }),
         ],
       })),
@@ -68,7 +68,7 @@ function ClaudeInChromeOnboarding(e) {
           " ",
           "(",
           lO.jsx(xs, {
-            url: dxm,
+            url: CHROME_PERMISSIONS_URL,
           }),
           ")",
         ],
@@ -153,5 +153,5 @@ function fxm(e) {
 var O$c,
   dmr,
   lO,
-  uxm = "https://claude.ai/chrome",
-  dxm = "https://clau.de/chrome/permissions";
+  CHROME_EXTENSION_URL = "https://claude.ai/chrome",
+  CHROME_PERMISSIONS_URL = "https://clau.de/chrome/permissions";

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g5i
 // matched 2.1.88 source: src/ink/termio/parser.ts
 // class=modified  jaccard=0.44  score=0.6329  fileCov=0.5908
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module g5i]
 ((PLn = [
@@ -126,7 +126,7 @@ function xWd(e, t) {
       return null;
   }
 }
-function kWd(e) {
+function parseCSI(e) {
   let t = e.slice(2);
   if (t.length === 0) return null;
   let n = t.charCodeAt(t.length - 1),
@@ -456,7 +456,7 @@ class MLn {
   processSequence(e) {
     switch (RWd(e)) {
       case "csi": {
-        let n = kWd(e);
+        let n = parseCSI(e);
         if (!n) return [];
         if (Array.isArray(n)) return n;
         if (n.type === "sgr") return ((this.style = m5i(n.params, this.style)), []);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d9t
 // matched 2.1.88 source: src/utils/swarm/teamHelpers.ts
 // class=modified  jaccard=0.4781  score=0.7511  fileCov=0.5681
-// note: deminified; 23 identifiers renamed (exports/displayName/curated)
+// note: deminified; 25 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeTeamFileAsync, updateTeamFile, teamMissingError, syncTeammateMode, setMultipleMemberModes, setMemberMode, setMemberActive, sanitizeName, sanitizeAgentName, removeTeammateFromTeamFile, removeTeamMember, removeMemberFromTeam, removeMemberByAgentId, removeHiddenPaneId, registerTeamForSessionCleanup, readTeamFileAsync, readTeamFile, logTeamFileWriteFailure, getTeamFilePath, getTeamDir, cleanupTeamDirectories, cleanupSessionTeams, addHiddenPaneId
 // [unwrapped __esm module d9t]
@@ -233,7 +233,7 @@ async function setMemberActive(e, t, n) {
     T(`[TeammateTool] Cannot set member active: ${be(r)}`);
   }
 }
-async function fZp(e) {
+async function destroyWorktree(e) {
   let t = Dht.join(e, ".git"),
     n = null;
   try {
@@ -277,12 +277,12 @@ async function cleanupSessionTeams() {
     if (e.size === 0) return;
     let t = Array.from(e);
     (T(`cleanupSessionTeams: removing ${t.length} orphan team dir(s): ${t.join(", ")}`),
-      await Promise.allSettled(t.map((n) => gZp(n))),
+      await Promise.allSettled(t.map((n) => killOrphanedTeammatePanes(n))),
       await Promise.allSettled(t.map((n) => cleanupTeamDirectories(n))),
       e.clear());
   });
 }
-async function gZp(e) {
+async function killOrphanedTeammatePanes(e) {
   let t = readTeamFile(e);
   if (!t) return;
   let n = t.members.filter(
@@ -311,7 +311,7 @@ async function cleanupTeamDirectories(e) {
     if (t) {
       for (let o of t.members) if (o.worktreePath) n.push(o.worktreePath);
     }
-    for (let o of n) await fZp(o);
+    for (let o of n) await destroyWorktree(o);
     let r = getTeamDir(e);
     try {
       (await Rpe.rm(r, {

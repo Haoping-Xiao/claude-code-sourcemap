@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module $Tc
 // matched 2.1.88 source: src/skills/bundled/batch.ts
 // class=modified  jaccard=0.227  score=0.4303  fileCov=0.3245
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function qbm(e) {
+function buildPrompt(e) {
   return `# Batch: Parallel Work Orchestration
 
 You are orchestrating a large, parallelizable change across this codebase.
@@ -75,7 +75,7 @@ As background-agent completion notifications arrive, parse the \`PR: <url>\` lin
 When all agents have reported, render the final table and a one-line summary (e.g., "22/24 units landed as PRs").
 `;
 }
-function BTc() {
+function registerBatchSkill() {
   Nd({
     name: "batch",
     menuDescription: "Plan a large change; background agents each open a PR",
@@ -92,20 +92,20 @@ function BTc() {
         return [
           {
             type: "text",
-            text: zbm,
+            text: MISSING_INSTRUCTION_MESSAGE,
           },
         ];
       if (!(await cb()))
         return [
           {
             type: "text",
-            text: Vbm,
+            text: NOT_A_GIT_REPO_MESSAGE,
           },
         ];
       return [
         {
           type: "text",
-          text: qbm(t),
+          text: buildPrompt(t),
         },
       ];
     },
@@ -114,9 +114,9 @@ function BTc() {
 var OTc = 5,
   NTc = 30,
   Wbm,
-  Vbm =
+  NOT_A_GIT_REPO_MESSAGE =
     "This is not a git repository. The `/batch` command requires a git repo because it spawns agents in isolated git worktrees and creates PRs from each. Initialize a repo first, or run this from inside an existing one.",
-  zbm = `Provide an instruction describing the batch change you want to make.
+  MISSING_INSTRUCTION_MESSAGE = `Provide an instruction describing the batch change you want to make.
 
 Examples:
   /batch migrate from react to vue

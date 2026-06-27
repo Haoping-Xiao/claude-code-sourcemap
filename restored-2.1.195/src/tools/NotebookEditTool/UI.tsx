@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nnl
 // matched 2.1.88 source: src/tools/NotebookEditTool/UI.tsx
 // class=modified  jaccard=0.2679  score=0.5343  fileCov=0.3494
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nnl] deps: Lo, Ye, AMe, ql
 ((Ztl = R(lt(), 1)), (enl = require("path")), (Mpe = R(se(), 1)));
@@ -10,7 +10,7 @@ function Kvo(e) {
   if (!e?.notebook_path) return null;
   return kd(e.notebook_path);
 }
-function rnl(
+function renderToolUseMessage(
   { notebook_path: e, cell_id: t, new_source: n, cell_type: r, edit_mode: o },
   { verbose: s },
 ) {
@@ -46,7 +46,7 @@ function onl(e, { verbose: t }) {
     verbose: t,
   });
 }
-function snl(e, { verbose: t }) {
+function renderToolUseErrorMessage(e, { verbose: t }) {
   if (!t && typeof e === "string" && xl(e, "tool_use_error"))
     return rR.jsx(qn, {
       children: rR.jsx(w, {
@@ -59,7 +59,7 @@ function snl(e, { verbose: t }) {
     verbose: t,
   });
 }
-function inl({ cell_id: e, new_source: t, error: n }) {
+function renderToolResultMessage({ cell_id: e, new_source: t, error: n }) {
   if (n)
     return rR.jsx(qn, {
       children: rR.jsx(w, {

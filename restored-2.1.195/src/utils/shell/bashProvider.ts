@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module eMa
 // matched 2.1.88 source: src/utils/shell/bashProvider.ts
 // class=modified  jaccard=0.3153  score=0.7093  fileCov=0.3621
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eMa]
 tRp = /(\d?&?>+[ \t]*)[Nn][Uu][Ll](?=\s|$|[|&;)\n])/g;
-function nRp(e) {
+function getDisableExtglobCommand(e) {
   if (process.env.CLAUDE_CODE_SHELL_PREFIX)
     return "{ shopt -u extglob || setopt NO_EXTENDED_GLOB NO_BARE_GLOB_QUAL; } >/dev/null 2>&1 || true";
   if (e.includes("bash")) return "shopt -u extglob 2>/dev/null || true";
@@ -14,7 +14,7 @@ function nRp(e) {
     return "setopt NO_EXTENDED_GLOB NO_BARE_GLOB_QUAL 2>/dev/null || true";
   return null;
 }
-async function rMa(e, t) {
+async function createBashShellProvider(e, t) {
   let n,
     r = t?.skipSnapshot
       ? Promise.resolve(void 0)
@@ -66,7 +66,7 @@ async function rMa(e, t) {
 :`);
       if (ut(process.env.CLAUDE_CODE_REMOTE))
         b.push('export BUN_OPTIONS="--smol${BUN_OPTIONS:+ $BUN_OPTIONS}"');
-      let S = nRp(e);
+      let S = getDisableExtglobCommand(e);
       if (S) b.push(S);
       (b.push(`eval ${y}`), b.push(`pwd -P >| ${ja([f])}`));
       let A = b.join(" && ");

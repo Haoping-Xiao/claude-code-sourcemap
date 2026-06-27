@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bjl
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
 // class=modified  jaccard=0.2895  score=0.3799  fileCov=0.549
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bjl] deps: si, Cc, lJ, Bs, B_, f_, Ko, nUo, qnr, znr, Ynr, Xnr, Pfe, fH, dse, _i, Ye, ps, dn, kt, ujl, a5, Yfe, g$, XEt, U1, uo, w8, vy, er, je, fn, At, vn, vq, _k, lE, vdt, B1, Arr, $g, aUo, Xh, i5, WI, NKe, vf, dr, Jt, sr, lUo, II, cUo, GBo, irr, Cjl, kjl, Pjl, frr
 ((fUo = R(lt(), 1)),
@@ -181,7 +181,7 @@ function Fjl(e) {
 function yUo(e) {
   return e === null ? "null" : Array.isArray(e) ? "array" : typeof e;
 }
-function ABf(e) {
+function detectManifestType(e) {
   let t = _f.basename(e),
     n = _f.basename(_f.dirname(e));
   if (t === "plugin.json") return "plugin";
@@ -241,7 +241,7 @@ function l1e(e, t, n, r, o) {
     });
   }
 }
-function _Uo(e, t, n, r) {
+function checkPathTraversal(e, t, n, r) {
   if (e.includes(".."))
     n.push({
       path: t,
@@ -250,11 +250,11 @@ function _Uo(e, t, n, r) {
         : `Path contains ".." which could be a path traversal attempt: ${e}`,
     });
 }
-function vBf(e) {
+function marketplaceSourceHint(e) {
   let t = e.replace(/^(\.\.\/)+/, "");
   return `Plugin source paths are resolved relative to the marketplace root (the directory containing .claude-plugin/), not relative to marketplace.json. Use "${t !== e ? `./${t}` : "./plugins/my-plugin"}" instead of "${e}".`;
 }
-async function eAt(e) {
+async function validatePluginManifest(e) {
   let t = [],
     n = [],
     r = _f.resolve(e),
@@ -316,7 +316,7 @@ async function eAt(e) {
       c = _f.dirname(r),
       u = _f.basename(c) === ".claude-plugin" ? _f.dirname(c) : c,
       d = async (p, f) => {
-        if ((_Uo(p, f, t), p.includes("..") || _f.isAbsolute(p))) return;
+        if ((checkPathTraversal(p, f, t), p.includes("..") || _f.isAbsolute(p))) return;
         try {
           return await Gq.stat(_f.resolve(u, p));
         } catch (m) {
@@ -428,7 +428,7 @@ async function eAt(e) {
     fileType: "plugin",
   };
 }
-async function mUo(e) {
+async function validateMarketplaceManifest(e) {
   let t = [],
     n = [],
     r = _f.resolve(e),
@@ -480,9 +480,10 @@ async function mUo(e) {
       u.plugins.forEach((d, p) => {
         if (d && typeof d === "object" && "source" in d) {
           let f = d.source;
-          if (typeof f === "string") _Uo(f, `plugins[${p}].source`, t, vBf(f));
+          if (typeof f === "string")
+            checkPathTraversal(f, `plugins[${p}].source`, t, marketplaceSourceHint(f));
           if (f && typeof f === "object" && "path" in f && typeof f.path === "string")
-            _Uo(f.path, `plugins[${p}].source.path`, t);
+            checkPathTraversal(f.path, `plugins[${p}].source.path`, t);
         }
       });
   }
@@ -687,7 +688,7 @@ async function mUo(e) {
     fileType: "marketplace",
   };
 }
-function wBf(e, t, n) {
+function validateComponentFile(e, t, n) {
   let r = [],
     o = [],
     s = t.match(I_e);
@@ -855,7 +856,7 @@ async function CBf(e) {
     fileType: "hooks",
   };
 }
-async function Vjl(e, t) {
+async function collectMarkdown(e, t) {
   let n;
   try {
     n = await Gq.readdir(e, {
@@ -870,12 +871,12 @@ async function Vjl(e, t) {
   let r = [];
   for (let o of n) {
     let s = _f.join(e, o.name);
-    if (o.isDirectory()) r.push(...(await Vjl(s, false)));
+    if (o.isDirectory()) r.push(...(await collectMarkdown(s, false)));
     else if (o.isFile() && o.name.toLowerCase().endsWith(".md")) r.push(s);
   }
   return r;
 }
-async function Trr(e) {
+async function validatePluginContents(e) {
   let t = [],
     n = new Set(["claude.md", "claude.local.md"]),
     r = [];
@@ -909,7 +910,7 @@ async function Trr(e) {
     ["command", _f.join(e, "commands")],
   ];
   for (let [i, a] of o) {
-    let l = await Vjl(a, i === "skill");
+    let l = await collectMarkdown(a, i === "skill");
     for (let c of l) {
       let u;
       try {
@@ -932,7 +933,7 @@ async function Trr(e) {
         });
         continue;
       }
-      let d = wBf(c, u, i);
+      let d = validateComponentFile(c, u, i);
       if (d.errors.length > 0 || d.warnings.length > 0) t.push(d);
     }
   }
@@ -963,7 +964,7 @@ async function gUo(e) {
     let a = i.source;
     if (typeof a !== "string" || !a.startsWith("./") || a.includes("..")) continue;
     let l = _f.join(n, a, ".claude-plugin", "plugin.json"),
-      c = await eAt(l);
+      c = await validatePluginManifest(l);
     if (c.errors.length === 1 && c.errors[0]?.code === "ENOENT") continue;
     let u = `plugins[${s}] plugin.json \u2192 `;
     for (let d of c.errors)
@@ -979,7 +980,7 @@ async function gUo(e) {
     if (!c.success) e.success = false;
   }
 }
-async function bXt(e) {
+async function validateManifest(e) {
   let t = _f.resolve(e),
     n = null;
   try {
@@ -989,11 +990,11 @@ async function bXt(e) {
   }
   if (n?.isDirectory()) {
     let o = _f.join(t, ".claude-plugin", "marketplace.json"),
-      s = await mUo(o),
+      s = await validateMarketplaceManifest(o),
       i = s.errors[0]?.code;
     if (i !== "ENOENT" && i !== "ENOTDIR") return (await gUo(s), s);
     let a = _f.join(t, ".claude-plugin", "plugin.json"),
-      l = await eAt(a),
+      l = await validatePluginManifest(a),
       c = l.errors[0]?.code;
     if (c !== "ENOENT" && c !== "ENOTDIR") return l;
     return {
@@ -1010,11 +1011,11 @@ async function bXt(e) {
       fileType: "plugin",
     };
   }
-  switch (ABf(e)) {
+  switch (detectManifestType(e)) {
     case "plugin":
-      return eAt(e);
+      return validatePluginManifest(e);
     case "marketplace": {
-      let o = await mUo(e);
+      let o = await validateMarketplaceManifest(e);
       return (await gUo(o), o);
     }
     case "unknown": {
@@ -1024,7 +1025,7 @@ async function bXt(e) {
           }),
           s = Ft(o);
         if (Array.isArray(s.plugins)) {
-          let i = await mUo(e);
+          let i = await validateMarketplaceManifest(e);
           return (await gUo(i), i);
         }
       } catch (o) {
@@ -1042,7 +1043,7 @@ async function bXt(e) {
             fileType: "plugin",
           };
       }
-      return eAt(e);
+      return validatePluginManifest(e);
     }
   }
 }

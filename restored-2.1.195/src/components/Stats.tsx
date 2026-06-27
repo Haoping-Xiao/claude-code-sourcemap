@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jOl
 // matched 2.1.88 source: src/components/Stats.tsx
 // class=modified  jaccard=0.3171  score=0.6308  fileCov=0.3894
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jOl] deps: je, At, ys, Rd, y_, _a, _m, Q1o
 $fe = require("path");
@@ -16,7 +16,7 @@ function cPf(e) {
   let t = ztr.indexOf(e);
   return ztr[(t + 1) % ztr.length];
 }
-function uPf() {
+function createAllTimeStatsPromise() {
   return rNo("all")
     .then((e) => {
       if (!e || e.totalSessions === 0)
@@ -40,7 +40,8 @@ function zOl(e) {
   let t = mEt.c(8),
     { onClose: n } = e,
     r;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = uPf()), (t[0] = r));
+  if (t[0] === Symbol.for("react.memo_cache_sentinel"))
+    ((r = createAllTimeStatsPromise()), (t[0] = r));
   else r = t[0];
   let o = r,
     s;
@@ -66,7 +67,7 @@ function zOl(e) {
   if (t[3] !== n)
     ((u = _s.jsx(JF.Suspense, {
       fallback: c,
-      children: _s.jsx(fPf, {
+      children: _s.jsx(StatsContent, {
         allTimePromise: o,
         activeTimePromise: i,
         onClose: n,
@@ -88,7 +89,7 @@ function zOl(e) {
   else d = t[7];
   return d;
 }
-function fPf(e) {
+function StatsContent(e) {
   let t = mEt.c(50),
     { allTimePromise: n, activeTimePromise: r, onClose: o } = e,
     s = JF.use(n),
@@ -173,7 +174,7 @@ function fPf(e) {
         (z.preventDefault(), l(cPf(a)));
         return;
       }
-      if (z.ctrl && z.key === "s" && A) (z.preventDefault(), TPf(A, i, m, y, b));
+      if (z.ctrl && z.key === "s" && A) (z.preventDefault(), handleScreenshot(A, i, m, y, b));
     }),
       (t[8] = m),
       (t[9] = i),
@@ -263,7 +264,7 @@ function fPf(e) {
   if (t[28] !== i || t[29] !== v || t[30] !== a || t[31] !== A || t[32] !== p)
     ((M = _s.jsx(sm, {
       title: "Overview",
-      children: _s.jsx(mPf, {
+      children: _s.jsx(OverviewTab, {
         stats: A,
         allTimeStats: v,
         activeTimeStats: i,
@@ -282,7 +283,7 @@ function fPf(e) {
   if (t[34] !== a || t[35] !== A || t[36] !== p)
     ((N = _s.jsx(sm, {
       title: "Models",
-      children: _s.jsx(yPf, {
+      children: _s.jsx(ModelsTab, {
         stats: A,
         dateRange: a,
         isLoading: p,
@@ -403,14 +404,20 @@ function KOl(e) {
   else a = t[8];
   return a;
 }
-function mPf({ stats: e, allTimeStats: t, activeTimeStats: n, dateRange: r, isLoading: o }) {
+function OverviewTab({
+  stats: e,
+  allTimeStats: t,
+  activeTimeStats: n,
+  dateRange: r,
+  isLoading: o,
+}) {
   let { columns: s } = br(),
     i = Object.entries(e.modelUsage).sort(
       ([, p], [, f]) => f.inputTokens + f.outputTokens - (p.inputTokens + p.outputTokens),
     ),
     a = i[0],
     l = i.reduce((p, [, f]) => p + f.inputTokens + f.outputTokens, 0),
-    c = JF.useMemo(() => YOl(e, l), [e, l]),
+    c = JF.useMemo(() => generateFunFactoid(e, l), [e, l]),
     u = r === "7d" ? 7 : r === "30d" ? 30 : e.totalDays,
     d = null;
   return _s.jsxs(U, {
@@ -727,7 +734,7 @@ function mPf({ stats: e, allTimeStats: t, activeTimeStats: n, dateRange: r, isLo
     ],
   });
 }
-function YOl(e, t) {
+function generateFunFactoid(e, t) {
   let n = [];
   if (t > 0) {
     let o = gPf.filter((s) => t >= s.tokens);
@@ -748,7 +755,7 @@ function YOl(e, t) {
   let r = Math.floor(Math.random() * n.length);
   return n[r];
 }
-function yPf(e) {
+function ModelsTab(e) {
   let t = mEt.c(61),
     { stats: n, dateRange: r, isLoading: o } = e,
     { headerFocused: s, focusHeader: i } = tx(),
@@ -1213,16 +1220,16 @@ function HPf(e, t, n) {
   }
   return a;
 }
-async function TPf(e, t, n, r, o) {
+async function handleScreenshot(e, t, n, r, o) {
   r("copying\u2026");
-  let s = vPf(e, t, n),
+  let s = renderStatsToAnsi(e, t, n),
     i = await OOl(s);
   (r(i.success ? "copied!" : "copy failed"), o.setTimeout(() => r(null), 2000));
 }
-function vPf(e, t, n) {
+function renderStatsToAnsi(e, t, n) {
   let r = [];
-  if (n === "Overview") r.push(...wPf(e, t));
-  else r.push(...CPf(e));
+  if (n === "Overview") r.push(...renderOverviewToAnsi(e, t));
+  else r.push(...renderModelsToAnsi(e));
   while (r.length > 0 && Ja(r.at(-1)).trim() === "") r.pop();
   if (r.length > 0) {
     let o = r.at(-1),
@@ -1235,7 +1242,7 @@ function vPf(e, t, n) {
   return r.join(`
 `);
 }
-function wPf(e, t) {
+function renderOverviewToAnsi(e, t) {
   let n = [],
     r = O7(mW(wc("theme", "dark").value)),
     o = (y) => V_e(y, r.claude),
@@ -1278,10 +1285,10 @@ function wPf(e, t) {
     g =
       e.peakActivityHour !== null ? `${e.peakActivityHour}:00-${e.peakActivityHour + 1}:00` : "N/A";
   (n.push(l("Active days", m, "Peak hour", g)), n.push(""));
-  let h = YOl(e, d);
+  let h = generateFunFactoid(e, d);
   return (n.push(o(h)), n.push(wt.gray(`Stats from the last ${e.totalDays} days`)), n);
 }
-function CPf(e) {
+function renderModelsToAnsi(e) {
   let t = [],
     n = Object.entries(e.modelUsage).sort(
       ([, a], [, l]) => l.inputTokens + l.outputTokens - (a.inputTokens + a.outputTokens),

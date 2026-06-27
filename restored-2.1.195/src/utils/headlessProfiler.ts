@@ -2,27 +2,27 @@
 // restored from claude-code 2.1.195 (deminified) — module bPo
 // matched 2.1.88 source: src/utils/headlessProfiler.ts
 // class=modified  jaccard=0.4851  score=0.6486  fileCov=0.658
-// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function ATf() {
   let e = oG(),
     t = e.getEntriesByType("mark");
   for (let n of t) if (n.name.startsWith($Kt)) e.clearMarks(n.name);
 }
-function EPo() {
+function headlessProfilerStartTurn() {
   if (!Ir()) return;
   if (!SPo) return;
   if ((cSt++, ATf(), oG().mark(`${$Kt}turn_start`), SQn))
     T(`[headlessProfiler] Started turn ${cSt}`);
 }
-function wC(e) {
+function headlessProfilerCheckpoint(e) {
   if (!Ir()) return;
   if (!SPo) return;
   let t = oG();
   if ((t.mark(`${$Kt}${e}`), SQn))
     T(`[headlessProfiler] Checkpoint: ${e} at ${t.now().toFixed(1)}ms`);
 }
-function APo() {
+function logHeadlessProfilerTurn() {
   if (!Ir()) return;
   if (!SPo) return;
   let n = oG()
