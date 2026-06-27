@@ -1,0 +1,44 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module K_e
+// matched 2.1.88 source: src/ink/squash-text-nodes.ts
+// class=modified  jaccard=0.6395  score=1  fileCov=0.6395
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module K_e]
+((Cy = new WeakMap()), (wBt = new WeakMap()));
+function squashTextNodesToSegments(node, t = {}, inheritedHyperlink, r = []) {
+  let o = node.textStyles
+    ? {
+        ...t,
+        ...node.textStyles,
+      }
+    : t;
+  for (let s of node.childNodes) {
+    if (s === void 0) continue;
+    if (s.nodeName === "#text") {
+      if (s.nodeValue.length > 0)
+        r.push({
+          text: s.nodeValue,
+          styles: o,
+          hyperlink: inheritedHyperlink,
+        });
+    } else if (s.nodeName === "ink-text" || s.nodeName === "ink-virtual-text")
+      squashTextNodesToSegments(s, o, inheritedHyperlink, r);
+    else if (s.nodeName === "ink-link") {
+      let i = s.attributes.href;
+      squashTextNodesToSegments(s, o, i || inheritedHyperlink, r);
+    }
+  }
+  return r;
+}
+function sXr(e) {
+  let t = "";
+  for (let n of e.childNodes) {
+    if (n === void 0) continue;
+    if (n.nodeName === "#text") t += n.nodeValue;
+    else if (n.nodeName === "ink-text" || n.nodeName === "ink-virtual-text") t += sXr(n);
+    else if (n.nodeName === "ink-link") t += sXr(n);
+  }
+  return t;
+}
+var Y4i;

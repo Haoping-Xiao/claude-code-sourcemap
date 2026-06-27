@@ -1,0 +1,81 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Pic
+// matched 2.1.88 source: src/utils/hooks.ts
+// class=modified (alt of src/utils/hooks.ts)  jaccard=0.0159  score=0.3029  fileCov=0.0165
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module Pic] deps: services/analytics/index.ts, tools/SendMessageTool/SendMessageTool.ts, utils/claudeInChrome/common.ts, utils/debug.ts, utils/worktree.ts, utils/plans.ts, utils/concurrentSessions.ts
+Dic = require("crypto");
+async function executeWorktreeCreateHook(name) {
+  let t = {
+      ...Td(void 0),
+      hook_event_name: "WorktreeCreate",
+      name: name,
+    },
+    n = await Kk({
+      hookInput: t,
+      timeoutMs: lp,
+    }),
+    r = n
+      .filter((o) => o.succeeded)
+      .map((o) => Vem(o.output))
+      .find((o) => o.length > 0);
+  if (r === void 0) {
+    if (n.length === 0)
+      throw Error(
+        "WorktreeCreate hook failed: hook is configured but did not run (workspace not trusted, disableAllHooks set, or matcher mismatch)",
+      );
+    let o = n
+      .filter((s) => !s.succeeded)
+      .map((s) => `${s.command}: ${s.output.trim() || "no output"}`);
+    if (o.length === 0)
+      throw Error(
+        "WorktreeCreate hook failed: hook succeeded but returned no worktree path (command: echo the path to stdout; http/callback: return hookSpecificOutput.worktreePath)",
+      );
+    throw new mi(
+      `WorktreeCreate hook failed: ${o.join("; ")}`,
+      "WorktreeCreate hook failed (stderr redacted)",
+    );
+  }
+  return {
+    worktreePath: r,
+  };
+}
+function Vem(e) {
+  return (
+    Ja(e)
+      .split(
+        `
+`,
+      )
+      .map((t) => t.trim())
+      .filter(Boolean)
+      .at(-1) ?? ""
+  );
+}
+async function executeWorktreeRemoveHook(worktreePath) {
+  let t = CU()?.WorktreeRemove,
+    n = U2()?.WorktreeRemove,
+    r = N_() ? void 0 : eG()?.WorktreeRemove,
+    o = t && t.length > 0,
+    s = n && n.length > 0,
+    i = r && r.length > 0;
+  if (!o && !s && !i) return false;
+  let a = {
+      ...Td(void 0),
+      hook_event_name: "WorktreeRemove",
+      worktree_path: worktreePath,
+    },
+    l = await Kk({
+      hookInput: a,
+      timeoutMs: lp,
+    }),
+    c = false;
+  for (let u of l)
+    if (u.succeeded) c = true;
+    else
+      T(`WorktreeRemove hook failed [${u.command}]: ${u.output.trim()}`, {
+        level: "error",
+      });
+  return c;
+}

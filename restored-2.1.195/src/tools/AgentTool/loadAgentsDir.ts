@@ -1,0 +1,380 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module wer
+// matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
+// class=modified  jaccard=0.335  score=0.7121  fileCov=0.3875
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// module exports: toAgentInfos, parseAgentsFromJson, parseAgentFromMarkdown, parseAgentFromJson, normalizeAgentType, isPluginAgent, isCustomAgent, isBuiltInAgent, hasRequiredMcpServers, getBuiltInAgents, getAgentDefinitionsWithOverrides, getActiveAgentsFromList, filterAgentsByMcpRequirements, clearAgentDefinitionsCache, agentMcpSpecsToScopedConfigs
+function agentMcpSpecsToScopedConfigs(e) {
+  if (!e.mcpServers?.length) return {};
+  if (VE("mcp") && !L_e(e.source))
+    return (
+      T(
+        `[Agent: ${e.agentType}] Skipping frontmatter MCP servers: strictPluginOnlyCustomization locks MCP to plugin-only (agent source: ${e.source})`,
+      ),
+      {}
+    );
+  let t = {};
+  for (let n of e.mcpServers) {
+    if (typeof n === "string") continue;
+    let r = Object.entries(n);
+    if (r.length !== 1) {
+      T(`[Agent: ${e.agentType}] Invalid MCP server spec: expected exactly one key`, {
+        level: "warn",
+      });
+      continue;
+    }
+    let [o, s] = r[0];
+    if (mlt(o)) {
+      T(`[Agent: ${e.agentType}] Skipping reserved MCP server name '${o}' in frontmatter`, {
+        level: "warn",
+      });
+      continue;
+    }
+    if (s.type === "sse-ide" || s.type === "ws-ide") {
+      T(
+        `[Agent: ${e.agentType}] Skipping internal-only MCP transport '${s.type}' for '${o}' in frontmatter`,
+        {
+          level: "warn",
+        },
+      );
+      continue;
+    }
+    t[o] = {
+      ...s,
+      scope: "agent",
+    };
+  }
+  return t;
+}
+function toAgentInfos(e) {
+  return e.map((t) => ({
+    name: t.agentType,
+    description: t.whenToUse,
+    model: t.model === "inherit" ? void 0 : t.model,
+  }));
+}
+function isBuiltInAgent(e) {
+  return e.source === "built-in";
+}
+function isCustomAgent(agent) {
+  return agent.source !== "built-in" && agent.source !== "plugin";
+}
+function isPluginAgent(e) {
+  return e.source === "plugin";
+}
+function getActiveAgentsFromList(allAgents) {
+  let t = allAgents.filter((u) => u.source === "built-in"),
+    n = allAgents.filter((u) => u.source === "plugin"),
+    r = allAgents.filter((u) => u.source === "userSettings"),
+    s = [
+      ...allAgents.filter((u) => u.source === "projectSettings" && u.fromAdditionalDirectory),
+      ...allAgents
+        .filter((u) => u.source === "projectSettings" && !u.fromAdditionalDirectory)
+        .sort(WSt),
+    ],
+    i = allAgents.filter((u) => u.source === "policySettings"),
+    a = allAgents.filter((u) => u.source === "flagSettings"),
+    l = [t, n, r, s, a, i],
+    agentMap = new Map();
+  for (let u of l) for (let d of u) agentMap.set(d.agentType, d);
+  return Array.from(agentMap.values()).sort((u, d) => u.agentType.localeCompare(d.agentType));
+}
+function hasRequiredMcpServers(e, t) {
+  if (!e.requiredMcpServers || e.requiredMcpServers.length === 0) return true;
+  return e.requiredMcpServers.every((n) =>
+    t.some((r) => r.toLowerCase().includes(n.toLowerCase())),
+  );
+}
+function filterAgentsByMcpRequirements(e, t) {
+  return e.filter((n) => hasRequiredMcpServers(n, t));
+}
+function clearAgentDefinitionsCache() {
+  (getAgentDefinitionsWithOverrides.cache?.clear?.(), _q.cache?.clear?.(), ZZn());
+}
+function getParseError(frontmatter) {
+  let { name: t, description: n } = frontmatter;
+  if (!t || typeof t !== "string") return 'Missing required "name" field in frontmatter';
+  if (t.startsWith("-")) return 'Invalid "name": names must not start with "-"';
+  if (!n || typeof n !== "string") return 'Missing required "description" field in frontmatter';
+  return "Unknown parsing error";
+}
+function parseHooksFromFrontmatter(frontmatter, agentType) {
+  if (!frontmatter.hooks) return;
+  let n = IG().safeParse(frontmatter.hooks);
+  if (!n.success) {
+    T(`Invalid hooks in agent '${agentType}': ${n.error.message}`);
+    return;
+  }
+  return n.data;
+}
+function parseAgentFromJson(name, definition, n = "flagSettings") {
+  try {
+    if (name.startsWith("-"))
+      return (
+        T(`Agent '${name}' has an invalid name: names must not start with '-'`, {
+          level: "error",
+        }),
+        null
+      );
+    let r = CLl().parse(definition),
+      o = TOe(r.tools);
+    if (lu() && r.memory && o !== void 0) {
+      let l = new Set(o);
+      for (let c of [Wc, ka, Ds]) if (!l.has(c)) o = [...o, c];
+    }
+    let s = r.disallowedTools !== void 0 ? TOe(r.disallowedTools) : void 0,
+      i = r.prompt;
+    return {
+      agentType: name,
+      whenToUse: r.description,
+      ...(o !== void 0 && {
+        tools: o,
+      }),
+      ...(s !== void 0 && {
+        disallowedTools: s,
+      }),
+      getSystemPrompt: () => {
+        if (lu() && r.memory)
+          return (
+            i +
+            `
+
+` +
+            B3e(name, r.memory)
+          );
+        return i;
+      },
+      source: n,
+      ...(r.model && {
+        model: r.model,
+      }),
+      ...(r.effort !== void 0 && {
+        effort: r.effort,
+      }),
+      ...(r.permissionMode && {
+        permissionMode: r.permissionMode,
+      }),
+      ...(r.mcpServers &&
+        r.mcpServers.length > 0 && {
+          mcpServers: r.mcpServers,
+        }),
+      ...(r.hooks && {
+        hooks: r.hooks,
+      }),
+      ...(r.maxTurns !== void 0 && {
+        maxTurns: r.maxTurns,
+      }),
+      ...(r.skills &&
+        r.skills.length > 0 && {
+          skills: r.skills,
+        }),
+      ...(r.initialPrompt && {
+        initialPrompt: r.initialPrompt,
+      }),
+      ...(r.background && {
+        background: r.background,
+      }),
+      ...(r.memory && {
+        memory: r.memory,
+      }),
+      ...(r.isolation && {
+        isolation: r.isolation,
+      }),
+    };
+  } catch (r) {
+    let o = r instanceof Error ? r.message : String(r);
+    return (
+      T(`Error parsing agent '${name}' from JSON: ${o}`, {
+        level: "error",
+      }),
+      null
+    );
+  }
+}
+function parseAgentsFromJson(agentsJson, t = "flagSettings") {
+  try {
+    let n = jxf().parse(agentsJson);
+    return Object.entries(n)
+      .map(([r, o]) => parseAgentFromJson(r, o, t))
+      .filter((r) => r !== null);
+  } catch (n) {
+    let r = n instanceof Error ? n.message : String(n);
+    return (
+      T(`Error parsing agents from JSON: ${r}`, {
+        level: "error",
+      }),
+      []
+    );
+  }
+}
+function parseAgentFromMarkdown(filePath, baseDir, frontmatter, content, source) {
+  try {
+    let { name: s, description: i } = frontmatter;
+    if (!s || typeof s !== "string") return null;
+    if (s.startsWith("-"))
+      return (
+        T(`Agent file ${filePath} has invalid name '${s}': names must not start with '-'`, {
+          level: "error",
+        }),
+        null
+      );
+    if ((w3e("agent", frontmatter), !i || typeof i !== "string"))
+      return (T(`Agent file ${filePath} is missing required 'description' in frontmatter`), null);
+    i = i.replaceAll(
+      "\\n",
+      `
+`,
+    );
+    let { color: a, model: l } = frontmatter,
+      c;
+    if (typeof l === "string" && l.trim().length > 0) {
+      let W = l.trim();
+      c = W.toLowerCase() === "inherit" ? "inherit" : W;
+    }
+    let u = frontmatter.background;
+    if (u !== void 0 && u !== "true" && u !== "false" && u !== true && u !== false)
+      T(
+        `Agent file ${filePath} has invalid background value '${u}'. Must be 'true', 'false', or omitted.`,
+      );
+    let d = u === "true" || u === true ? true : void 0,
+      p = ["user", "project", "local"],
+      f = frontmatter.memory,
+      m;
+    if (f !== void 0)
+      if (p.includes(f)) m = f;
+      else
+        T(`Agent file ${filePath} has invalid memory value '${f}'. Valid options: ${p.join(", ")}`);
+    let g = ["worktree", "remote"],
+      h = frontmatter.isolation,
+      y;
+    if (h !== void 0)
+      if (g.includes(h)) y = h;
+      else
+        T(
+          `Agent file ${filePath} has invalid isolation value '${h}'. Valid options: ${g.join(", ")}`,
+        );
+    let b = frontmatter.effort,
+      _ = b !== void 0 ? TU(b) : void 0;
+    if (b !== void 0 && _ === void 0)
+      T(
+        `Agent file ${filePath} has invalid effort '${b}'. Valid options: ${xv.join(", ")} or an integer`,
+      );
+    let S = frontmatter.permissionMode,
+      A = S && yM.includes(S);
+    if (S && !A) {
+      let W = `Agent file ${filePath} has invalid permissionMode '${S}'. Valid options: ${yM.join(", ")}`;
+      T(W);
+    }
+    let v = frontmatter.maxTurns,
+      C = Mkn(v);
+    if (v !== void 0 && C === void 0)
+      T(`Agent file ${filePath} has invalid maxTurns '${v}'. Must be a positive integer.`);
+    let x = vLl.basename(filePath, ".md"),
+      I = TOe(frontmatter.tools);
+    if (lu() && m && I !== void 0) {
+      let W = new Set(I);
+      for (let V of [Wc, ka, Ds]) if (!W.has(V)) I = [...I, V];
+    }
+    let k = frontmatter.disallowedTools,
+      D = k !== void 0 ? TOe(k) : void 0,
+      P = kQ(frontmatter.skills),
+      O = frontmatter.initialPrompt,
+      L = typeof O === "string" && O.trim() ? O : void 0,
+      M = frontmatter.mcpServers,
+      N;
+    if (Array.isArray(M))
+      N = M.map((W) => {
+        let V = wLl().safeParse(W);
+        if (V.success) return V.data;
+        return (
+          T(
+            `Agent file ${filePath} has invalid mcpServers item: ${De(W)}. Error: ${V.error.message}`,
+          ),
+          null
+        );
+      }).filter((W) => W !== null);
+    let B = parseHooksFromFrontmatter(frontmatter, s),
+      $ = content.trim();
+    return {
+      baseDir: baseDir,
+      agentType: s,
+      whenToUse: i,
+      ...(I !== void 0 && {
+        tools: I,
+      }),
+      ...(D !== void 0 && {
+        disallowedTools: D,
+      }),
+      ...(P !== void 0 && {
+        skills: P,
+      }),
+      ...(L !== void 0 && {
+        initialPrompt: L,
+      }),
+      ...(N !== void 0 &&
+        N.length > 0 && {
+          mcpServers: N,
+        }),
+      ...(B !== void 0 && {
+        hooks: B,
+      }),
+      getSystemPrompt: () => {
+        if (lu() && m) {
+          let W = B3e(s, m);
+          return (
+            $ +
+            `
+
+` +
+            W
+          );
+        }
+        return $;
+      },
+      source: source,
+      filename: x,
+      ...(a &&
+        typeof a === "string" &&
+        Ky.includes(a) && {
+          color: a,
+        }),
+      ...(c !== void 0 && {
+        model: c,
+      }),
+      ...(_ !== void 0 && {
+        effort: _,
+      }),
+      ...(A && {
+        permissionMode: S,
+      }),
+      ...(C !== void 0 && {
+        maxTurns: C,
+      }),
+      ...(d && {
+        background: d,
+      }),
+      ...(m && {
+        memory: m,
+      }),
+      ...(y && {
+        isolation: y,
+      }),
+    };
+  } catch (s) {
+    let i = s instanceof Error ? s.message : String(s);
+    return (
+      T(`Error parsing agent from ${filePath}: ${i}`, {
+        level: "error",
+      }),
+      null
+    );
+  }
+}
+function normalizeAgentType(e) {
+  return e
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\p{White_Space}\p{Pd}_]+/gu, "");
+}
+var vLl, wLl, CLl, jxf, getAgentDefinitionsWithOverrides;

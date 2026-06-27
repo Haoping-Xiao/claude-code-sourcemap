@@ -1,0 +1,34 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Lic
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0049  score=0.5166  fileCov=0.005
+// note: nearest: src/screens/REPL.tsx (0.0049); dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+async function $lr(e) {
+  if (wf()) return;
+  let t = VHt(e);
+  if (!t) return;
+  let n = Rt(),
+    r = Gg(n);
+  if (t === (r && VHt(r))) return;
+  T(`Hook sessionTitle applied (${[...t].length} chars)`), await lHe(t, "hook"), await Zce(XE(), t, "user");
+}
+async function* aZt(e, t, n) {
+  let r = n.getAppState(),
+    o = n.agentId ?? Rt();
+  if (!M$("UserPromptSubmit", r, o)) return;
+  let s = {
+    ...Td(t),
+    hook_event_name: "UserPromptSubmit",
+    prompt: e,
+    session_title: Gg(Rt())
+  };
+  yield* TC({
+    hookInput: s,
+    toolUseID: Dic.randomUUID(),
+    signal: n.abortController.signal,
+    timeoutMs: Mll,
+    toolUseContext: n
+  });
+}
+var Dic;

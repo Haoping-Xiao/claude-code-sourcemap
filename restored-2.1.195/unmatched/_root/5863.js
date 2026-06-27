@@ -1,0 +1,50 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module jUc
+// matched 2.1.88 source: src/utils/sdkEventQueue.ts
+// class=new  jaccard=0.0579  score=0.1241  fileCov=0.098
+// note: nearest: src/utils/sdkEventQueue.ts (0.0579); dir inferred from dep-graph -> _root; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+function GUc() {
+  return Oe.CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS ?? CLm;
+}
+function WUc({
+  runningBackgroundTasks: e,
+  inputClosed: t,
+  hasMainThreadQueued: n,
+  hasActiveTeammates: r,
+  hasPendingNotification: o,
+  ceilingExceeded: s,
+  deadline: i,
+  swept: a,
+  now: l
+}) {
+  if (!(t && !n && !r && e.length > 0 && (s || !o && !e.some(zJ)))) return {
+    deadline: null,
+    swept: false,
+    shouldSweep: false
+  };
+  if (i === null) return {
+    deadline: s ? l : l + hXo,
+    swept: s,
+    shouldSweep: s
+  };
+  if (l < i) return {
+    deadline: i,
+    swept: a,
+    shouldSweep: false
+  };
+  return {
+    deadline: i,
+    swept: true,
+    shouldSweep: !a
+  };
+}
+function qUc(e, t) {
+  for (let n of e) if (vT(n)) T(`print wind-down: killing background shell ${n.id} ("${n.description}") after ${hXo}ms grace`), yAe(n.id, t);else T(`print wind-down: no longer waiting on background ${n.type} task ${n.id} after ${hXo}ms grace`), xf(n.id, "stopped", {
+    toolUseId: n.toolUseId,
+    summary: n.description
+  });
+  if (e.length > 0) xe("print_wind_down");
+}
+var hXo = 5000,
+  CLm = 600000;

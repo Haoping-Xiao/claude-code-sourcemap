@@ -1,0 +1,11 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module atr
+// matched 2.1.88 source: src/components/PackageManagerAutoUpdater.tsx
+// class=new  jaccard=0.0428  score=1  fileCov=0.0428
+// note: nearest: src/components/PackageManagerAutoUpdater.tsx (0.0428); dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+function jQ() {
+  let e = Dr()?.autoUpdatesChannel;
+  if (e && e !== "latest") return e;
+  return "latest";
+}

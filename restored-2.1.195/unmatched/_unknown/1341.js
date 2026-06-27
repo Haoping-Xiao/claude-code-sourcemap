@@ -1,0 +1,12 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module hEn
+// matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js
+// class=new  jaccard=0.0522  score=1  fileCov=0.0522
+// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js (0.0522); 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module hEn] deps: @aws-sdk/client-sts/dist-cjs/auth/httpAuthSchemeProvider.js, @aws-sdk/client-sts/dist-cjs/endpoint/EndpointParameters.js, @aws-sdk/client-sts/dist-cjs/index.js
+sZs = R(yo(), 1);
+Ont = class Ont extends tT.classBuilder().ep(Ux).m(function (e, t, n, r) {
+  return [sZs.getEndpointPlugin(n, e.getEndpointParameterInstructions())];
+}).s("AWSSecurityTokenServiceV20110615", "AssumeRoleWithWebIdentity", {}).n("STSClient", "AssumeRoleWithWebIdentityCommand").sc(KQs).build() {};
+var iZs, yEn;

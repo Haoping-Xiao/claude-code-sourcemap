@@ -1,0 +1,185 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module hIl
+// matched 2.1.88 source: src/utils/queryProfiler.ts
+// class=modified  jaccard=0.5317  score=0.7815  fileCov=0.6246
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+async function* _Il(e, t) {
+  let n = Symbol.asyncIterator in e ? e[Symbol.asyncIterator]() : e[Symbol.iterator](),
+    r,
+    o = t(),
+    s = 0;
+  try {
+    while (true) {
+      r ??= Promise.resolve(n.next()).then((l) => ({
+        kind: "stream",
+        r: l,
+      }));
+      let i = t();
+      if (i !== o) ((o = i), (s = 0));
+      let a = await Promise.race([
+        r,
+        i.waitForDrainable(s).then((l) => ({
+          kind: "drain",
+          gen: l,
+        })),
+      ]);
+      if (a.kind === "drain") {
+        ((s = a.gen),
+          yield {
+            type: "tool_drain_tick",
+          });
+        continue;
+      }
+      if (((r = void 0), a.r.done)) return;
+      yield a.r.value;
+    }
+  } finally {
+    Promise.resolve(n.return?.(void 0)).catch(() => {});
+  }
+}
+function startQueryProfile() {
+  if (!FKt) return;
+  (oG().clearMarks(),
+    IPo.clear(),
+    (CPo = null),
+    bIl++,
+    queryCheckpoint("query_user_input_received"));
+}
+function queryCheckpoint(name) {
+  if (!FKt) return;
+  let perf = oG();
+  if (
+    (perf.mark(name),
+    IPo.set(name, process.memoryUsage()),
+    name === "query_first_chunk_received" && CPo === null)
+  ) {
+    let n = perf.getEntriesByType("mark");
+    if (n.length > 0) CPo = n.at(-1)?.startTime ?? 0;
+  }
+}
+function endQueryProfile() {
+  if (!FKt) return;
+  queryCheckpoint("query_profile_end");
+}
+function getSlowWarning(deltaMs, name) {
+  if (name === "query_user_input_received") return "";
+  if (deltaMs > 1000) return " \u26A0\uFE0F  VERY SLOW";
+  if (deltaMs > 100) return " \u26A0\uFE0F  SLOW";
+  if (name.includes("git_status") && deltaMs > 50) return " \u26A0\uFE0F  git status";
+  if (name.includes("tool_schema") && deltaMs > 50) return " \u26A0\uFE0F  tool schemas";
+  if (name.includes("client_creation") && deltaMs > 50) return " \u26A0\uFE0F  client creation";
+  return "";
+}
+function getQueryProfileReport() {
+  if (!FKt) return "Query profiling not enabled (set CLAUDE_CODE_PROFILE_QUERY=1)";
+  let marks = oG().getEntriesByType("mark");
+  if (marks.length === 0) return "No query profiling checkpoints recorded";
+  let lines = [];
+  (lines.push("=".repeat(80)),
+    lines.push(`QUERY PROFILING REPORT - Query #${bIl}`),
+    lines.push("=".repeat(80)),
+    lines.push(""));
+  let r = marks[0]?.startTime ?? 0,
+    o = r,
+    s = 0,
+    i = 0;
+  for (let c of marks) {
+    let u = c.startTime - r,
+      d = c.startTime - o;
+    if (
+      (lines.push(Xin(u, d, c.name, IPo.get(c.name), 10, 9, getSlowWarning(d, c.name))),
+      c.name === "query_api_request_sent")
+    )
+      s = u;
+    if (c.name === "query_first_chunk_received") i = u;
+    o = c.startTime;
+  }
+  let a = marks.at(-1),
+    l = a ? a.startTime - r : 0;
+  if ((lines.push(""), lines.push("-".repeat(80)), i > 0)) {
+    let c = s,
+      u = i - s,
+      d = ((c / i) * 100).toFixed(1),
+      p = ((u / i) * 100).toFixed(1);
+    (lines.push(`Total TTFT: ${gee(i)}ms`),
+      lines.push(`  - Pre-request overhead: ${gee(c)}ms (${d}%)`),
+      lines.push(`  - Network latency: ${gee(u)}ms (${p}%)`));
+  } else lines.push(`Total time: ${gee(l)}ms`);
+  return (
+    lines.push(getPhaseSummary(marks, r)),
+    lines.push("=".repeat(80)),
+    lines.join(`
+`)
+  );
+}
+function getPhaseSummary(marks, baselineTime) {
+  let n = [
+      {
+        name: "Context loading",
+        start: "query_context_loading_start",
+        end: "query_context_loading_end",
+      },
+      {
+        name: "Autocompact",
+        start: "query_autocompact_start",
+        end: "query_autocompact_end",
+      },
+      {
+        name: "Query setup",
+        start: "query_setup_start",
+        end: "query_setup_end",
+      },
+      {
+        name: "Tool schemas",
+        start: "query_tool_schema_build_start",
+        end: "query_tool_schema_build_end",
+      },
+      {
+        name: "Message normalization",
+        start: "query_message_normalization_start",
+        end: "query_message_normalization_end",
+      },
+      {
+        name: "Client creation",
+        start: "query_client_creation_start",
+        end: "query_client_creation_end",
+      },
+      {
+        name: "Network TTFB",
+        start: "query_api_request_sent",
+        end: "query_first_chunk_received",
+      },
+      {
+        name: "Tool execution",
+        start: "query_tool_execution_start",
+        end: "query_tool_execution_end",
+      },
+    ],
+    r = new Map(marks.map((i) => [i.name, i.startTime - baselineTime])),
+    lines = [];
+  (lines.push(""), lines.push("PHASE BREAKDOWN:"));
+  for (let i of n) {
+    let a = r.get(i.start),
+      l = r.get(i.end);
+    if (a !== void 0 && l !== void 0) {
+      let c = l - a,
+        u = "\u2588".repeat(Math.min(Math.ceil(c / 10), 50));
+      lines.push(`  ${i.name.padEnd(22)} ${gee(c).padStart(10)}ms ${u}`);
+    }
+  }
+  let s = r.get("query_api_request_sent");
+  if (s !== void 0)
+    (lines.push(""),
+      lines.push(`  ${"Total pre-API overhead".padEnd(22)} ${gee(s).padStart(10)}ms`));
+  return lines.join(`
+`);
+}
+function wQn() {
+  if (!FKt) return;
+  T(getQueryProfileReport());
+}
+var FKt,
+  IPo,
+  bIl = 0,
+  CPo = null;

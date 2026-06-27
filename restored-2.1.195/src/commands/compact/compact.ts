@@ -1,0 +1,357 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module VPl
+// matched 2.1.88 source: src/commands/compact/compact.ts
+// class=modified  jaccard=0.2322  score=0.321  fileCov=0.4563
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// module exports: call
+// [unwrapped __esm module VPl] deps: tools/BashTool/prompt.ts, utils/fsOperations.ts, utils/git.ts, utils/promptShellExecution.ts, utils/argumentSubstitution.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/attribution.ts
+((N0f = [
+  "git checkout -b *",
+  "git add *",
+  "git status *",
+  "git push *",
+  "git commit *",
+  "gh pr create *",
+  "gh pr edit *",
+  "gh pr view *",
+  "gh pr merge *",
+]),
+  (jPl = [
+    ...N0f.flatMap((e) => [`Bash(${e})`, `PowerShell(${e})`]),
+    "ToolSearch",
+    "mcp__slack__send_message",
+    "mcp__claude_ai_Slack__slack_send_message",
+  ]));
+((B0f = {
+  type: "prompt",
+  name: Kwo,
+  description: "Commit, push, and open a PR",
+  allowedTools: jPl,
+  get contentLength() {
+    return GPl("main", false).length;
+  },
+  progressMessage: "creating commit and PR",
+  source: "builtin",
+  async getPromptForCommand(e, t) {
+    let [n, r] = await Promise.all([vD(), aCl(t.getAppState)]),
+      o = false,
+      s = GPl(c6(n), o, r),
+      i = e?.trim();
+    if (i)
+      s += `
+
+## Additional instructions from user
+
+${c6(i)}`;
+    return [
+      {
+        type: "text",
+        text: await pfe(
+          s,
+          {
+            ...t,
+            getAppState() {
+              let l = t.getAppState();
+              return {
+                ...l,
+                toolPermissionContext: {
+                  ...l.toolPermissionContext,
+                  alwaysAllowRules: {
+                    ...l.toolPermissionContext.alwaysAllowRules,
+                    command: jPl,
+                  },
+                },
+              };
+            },
+          },
+          `/${Kwo}`,
+        ),
+      },
+    ];
+  },
+}),
+  (qPl = B0f));
+async function compactViaReactive(messages, context, customInstructions) {
+  (context.onCompactEvent?.({
+    type: "compact_progress",
+    event: {
+      type: "hooks_start",
+      hookType: "pre_compact",
+    },
+  }),
+    context.onCompactEvent?.({
+      type: "sdk_status",
+      status: "compacting",
+    }));
+  let r = performance.now(),
+    o,
+    s = qv(messages),
+    i,
+    a;
+  try {
+    let [l, c] = await Promise.all([
+      RQ(
+        {
+          trigger: "manual",
+          customInstructions: customInstructions || null,
+        },
+        context.abortController.signal,
+      ),
+      W0f(context, messages),
+    ]);
+    uZn(l, (g) =>
+      context.onQueryEvent?.({
+        type: "notification",
+        notification: g,
+      }),
+    );
+    let u = SMo(customInstructions, l.newCustomInstructions);
+    (context.onCompactEvent?.({
+      type: "stream_mode",
+      mode: "requesting",
+    }),
+      context.onQueryEvent?.({
+        type: "response_length",
+        op: "reset",
+      }),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "compact_start",
+        },
+      }));
+    let d = await j0f(
+      customInstructions,
+      l.newCustomInstructions,
+      messages,
+      context.abortController.signal,
+    );
+    a = d.reuse;
+    let p = await (
+      d.hit
+        ? fQn({
+            ...d.finalize,
+            startTime: r,
+            cacheSafeParams: c,
+          })
+        : yPo(messages, c, {
+            customInstructions: u,
+            trigger: "manual",
+            manualPrecomputeReuse: d.reuse,
+            userWaitStartedAt: r,
+            precomputedKind: d.precomputedKind,
+            precomputedFailureCause: d.precomputedFailureCause,
+          })
+    ).catch(
+      (g) => (
+        ke(g),
+        {
+          ok: false,
+          reason: "error",
+          detail: be(g),
+        }
+      ),
+    );
+    if (!p.ok)
+      switch (p.reason) {
+        case "too_few_groups":
+          throw Error(CSt);
+        case "aborted":
+          throw Error(t3);
+        case "exhausted":
+          throw new Tq(
+            "Compaction failed \xB7 conversation could not be reduced below the context limit",
+          );
+        case "media_unstrippable":
+          throw new Tq("Compaction failed \xB7 attached media exceeds size limits");
+        case "error":
+          throw new Tq(`Error during compaction: ${p.detail || "unknown error"}`);
+      }
+    let f = p.result.boundaryMarker;
+    if (f.subtype === "compact_boundary" && "compactMetadata" in f)
+      i = f.compactMetadata.postTokens;
+    (hfe(void 0, context.setAppState), gut(), uS.cache.clear?.());
+    let m =
+      [l.userDisplayMessage, p.result.userDisplayMessage].filter(Boolean).join(`
+`) || void 0;
+    return {
+      type: "compact",
+      compactionResult: {
+        ...p.result,
+        userDisplayMessage: m,
+      },
+      displayText: buildDisplayText(context, m),
+    };
+  } catch (l) {
+    throw ((o = l instanceof Error ? l.message : "reactive compaction failed"), l);
+  } finally {
+    (context.onCompactEvent?.({
+      type: "stream_mode",
+      mode: "requesting",
+    }),
+      context.onQueryEvent?.({
+        type: "response_length",
+        op: "reset",
+      }),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "compact_end",
+        },
+      }),
+      J0e({
+        trigger: "manual",
+        success: !o,
+        durationMs: performance.now() - r,
+        preTokens: s,
+        postTokens: i,
+        error: o,
+        precomputeReuse: a,
+      }),
+      context.onCompactEvent?.({
+        type: "sdk_status",
+        status: null,
+        metadata: {
+          compactResult: o ? "failed" : "success",
+          ...(o && {
+            compactError: o,
+          }),
+        },
+      }));
+  }
+}
+async function j0f(e, t, n, r) {
+  if (e)
+    return {
+      hit: false,
+      reuse: "miss_custom_instructions",
+    };
+  if (t)
+    return {
+      hit: false,
+      reuse: "miss_hook",
+    };
+  let o = performance.now(),
+    s = await uPo(void 0, r),
+    i = performance.now() - o;
+  if (s === null)
+    return (
+      iSt("none", s, i),
+      {
+        hit: false,
+        reuse: "miss_not_ready",
+        precomputedKind: "none",
+      }
+    );
+  if (s.kind === "turn_aborted") throw (iSt("aborted", s, i), Error(t3));
+  if (s.kind === "failed")
+    return (
+      iSt("failed", s, i),
+      {
+        hit: false,
+        reuse: "miss_not_ready",
+        precomputedKind: "failed",
+        precomputedFailureCause: s.failure.cause,
+      }
+    );
+  let a = pPo(n, s.ready.precomputedAtUuid);
+  if (a === null)
+    return (
+      iSt("none", s, i),
+      cQn(s.ready, "boundary_uuid_missing", void 0),
+      {
+        hit: false,
+        reuse: "miss_not_ready",
+        precomputedKind: "none",
+      }
+    );
+  return (
+    iSt("applied", s, i),
+    {
+      hit: true,
+      reuse: "hit",
+      finalize: {
+        compactResult: s.ready.result,
+        messagesToPreserve: [...s.ready.result.messagesToPreserve, ...a],
+        preCompactMessages: n,
+        querySource: void 0,
+        trigger: "manual",
+        precomputed: true,
+        manualPrecomputeReuse: "hit",
+        precomputeTelemetry: {
+          statusAtPTL: s.statusAtPTL === "ready" ? "ready" : "pending",
+          leadMs: o - s.ready.startedAt,
+          totalMs: s.ready.readyDurationMs,
+          borrowed: false,
+          messagesSinceTokens: qv(a),
+        },
+      },
+    }
+  );
+}
+function buildDisplayText(context, userDisplayMessage) {
+  let n = J8e("tip"),
+    r = eC("app:toggleTranscript", "Global", "ctrl+o"),
+    o = [
+      ...(context.options.verbose ? [] : [`(${r} to see full summary)`]),
+      ...(userDisplayMessage ? [userDisplayMessage] : []),
+      ...(n ? [n] : []),
+    ];
+  return wt.dim(
+    "Compacted " +
+      o.join(`
+`),
+  );
+}
+async function W0f(e, t) {
+  let n = e.getAppState(),
+    r = await DL(
+      e.options.tools,
+      e.options.mainLoopModel,
+      Array.from(Fr(e).additionalWorkingDirectories.keys()),
+    ),
+    o = Z5({
+      mainThreadAgentDefinition: void 0,
+      toolUseContext: e,
+      customSystemPrompt: e.options.customSystemPrompt,
+      defaultSystemPrompt: r,
+      appendSystemPrompt: e.options.appendSystemPrompt,
+    }),
+    [s, i] = await Promise.all([uS(), hH(n.cacheBreakerPhrase)]);
+  return {
+    systemPrompt: o,
+    userContext: s,
+    systemContext: i,
+    toolUseContext: e,
+    forkContextMessages: t,
+  };
+}
+var call = async (args, context) => {
+  let { abortController: n } = context,
+    { messages: r } = context;
+  if (((r = Py(r)), r.length === 0)) throw Error("No messages to compact");
+  let o = args.trim();
+  try {
+    return await compactViaReactive(r, context, o);
+  } catch (s) {
+    if (n.signal.aborted) throw new ru("Compaction canceled.");
+    else if (Xie(s, CSt))
+      return {
+        type: "text",
+        value: CSt,
+      };
+    else if (s instanceof Tq)
+      return {
+        type: "text",
+        value: s.message,
+      };
+    else
+      throw (
+        ke(s),
+        Error(`Error during compaction: ${s instanceof Error ? s.message : String(s)}`, {
+          cause: s,
+        })
+      );
+  }
+};

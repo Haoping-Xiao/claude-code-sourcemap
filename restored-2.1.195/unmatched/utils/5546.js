@@ -1,0 +1,59 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module I7e
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.004  score=0.147  fileCov=0.0041
+// note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module I7e] deps: services/analytics/index.ts, constants/systemPromptSections.ts, tools/EnterWorktreeTool/EnterWorktreeTool.ts, utils/diff.ts, utils/debug.ts, tools/AgentTool/loadAgentsDir.ts, google-auth-library/build/src/crypto/node/crypto.js, skills/loadSkillsDir.ts, utils/claudemd.ts, state/AppStateStore.ts, utils/concurrentSessions.ts, has-flag/index.js, services/api/filesApi.ts, utils/fsOperations.ts, utils/debug.ts, main.tsx, utils/getWorktreePaths.ts, utils/teleport.tsx, utils/git.ts, services/api/claude.ts, utils/transcriptSearch.ts, utils/messages.ts, utils/model/configs.ts, commands/model/model.tsx, k0, utils/agentContext.ts, utils/model/model.ts, utils/status.tsx, utils/permissions/PermissionMode.ts, utils/permissions/filesystem.ts, utils/Shell.ts, utils/plans.ts, utils/tasks.ts, utils/todo/types.ts, utils/sessionUrl.ts, constants/prompts.ts
+OEc = require("path");
+Vhm = {
+  unknown_family: "not a model this version of Claude Code recognizes",
+  not_allowed: "not allowed by this account's model settings",
+  retired: "retired"
+};
+function Jhm(e) {
+  return e.type === "system" && e.subtype === "model_refusal_fallback";
+}
+function Qhm(e, t) {
+  if (e == null) return false;
+  let n = dp(e),
+    r = dp(t);
+  return n === r || mo(n) === mo(r);
+}
+function jEc(e) {
+  let t = e.slicedMessages.filter(Jhm),
+    n = t.at(-1);
+  if (!n) return;
+  let r = n.fallbackModel,
+    o = (() => {
+      if (!e.firstParty) return {
+        action: "keep",
+        reason: "not_first_party"
+      };
+      if (!Qhm(e.currentOverride, r)) return {
+        action: "keep",
+        reason: "writer_mismatch"
+      };
+      let s = BEc(e.keptMessages, e.initialModel);
+      if (s != null) return {
+        action: "restore",
+        value: s,
+        restoredFrom: "transcript"
+      };
+      if (e.initialModel != null) return {
+        action: "restore",
+        value: e.initialModel,
+        restoredFrom: "initial_model"
+      };
+      return {
+        action: "restore",
+        value: null,
+        restoredFrom: "settings_fallthrough"
+      };
+    })();
+  return {
+    bannersSliced: t.length,
+    model: o,
+    lastSlicedFallbackModel: r
+  };
+}

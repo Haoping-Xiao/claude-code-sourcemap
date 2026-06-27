@@ -1,0 +1,8 @@
+{
+  "_comment": "Per-module local renames merged by 06-restore.mjs (key = bundler module var). High-confidence names derived from the matched 2.1.88 source. Compatible with bun-demincer ai-rename.mjs output when an LLM API key is available.",
+  "nUc": {
+    "G7e": "ndjsonSafeStringify",
+    "rLm": "escapeJsLineTerminators",
+    "nLm": "JS_LINE_TERMINATORS"
+  }
+}

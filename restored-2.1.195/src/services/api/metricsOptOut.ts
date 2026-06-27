@@ -1,0 +1,81 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module NUa
+// matched 2.1.88 source: src/services/api/metricsOptOut.ts
+// class=modified  jaccard=0.1997  score=0.4514  fileCov=0.2637
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+async function _fetchMetricsEnabled() {
+  let e = await Os.get("/api/claude_code/organizations/metrics_enabled", {
+    auth: "async",
+    timeout: 5000,
+    bypassEssentialTrafficOnly: true,
+  });
+  if (!e.ok)
+    throw Error(
+      e.reason === "no-auth"
+        ? `Auth error: ${e.detail}`
+        : `metrics_enabled unavailable: ${e.reason}`,
+    );
+  return e.data;
+}
+async function _checkMetricsEnabledAPI() {
+  try {
+    let e = await oL(_fetchMetricsEnabled, {
+      also403Revoked: true,
+    });
+    return (
+      T(`Metrics opt-out API response: enabled=${e.metrics_logging_enabled}`),
+      xe("api_metrics_opt_out_check"),
+      {
+        enabled: e.metrics_logging_enabled,
+        hasError: false,
+      }
+    );
+  } catch (e) {
+    return (
+      T(`Failed to check metrics opt-out status: ${be(e)}`, {
+        level: "error",
+      }),
+      Le("api_metrics_opt_out_check", "request_failed"),
+      {
+        enabled: false,
+        hasError: true,
+      }
+    );
+  }
+}
+async function BUa() {
+  let e = await ROp();
+  if (e.hasError) return e;
+  let t = Dt().metricsStatusCache;
+  if (t !== void 0 && t.enabled === e.enabled && Date.now() - t.timestamp < UUa) return e;
+  return (
+    gn((r) => ({
+      ...r,
+      metricsStatusCache: {
+        enabled: e.enabled,
+        timestamp: Date.now(),
+      },
+    })),
+    e
+  );
+}
+async function FUa() {
+  if (bo() && !cI())
+    return {
+      enabled: false,
+      hasError: false,
+    };
+  let e = Dt().metricsStatusCache;
+  if (e) {
+    if (Date.now() - e.timestamp > UUa) BUa().catch(ke);
+    return {
+      enabled: e.enabled,
+      hasError: false,
+    };
+  }
+  return BUa();
+}
+var IOp = 3600000,
+  UUa = 86400000,
+  ROp;

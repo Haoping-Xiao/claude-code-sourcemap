@@ -1,0 +1,78 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module xXa
+// matched 2.1.88 source: src/services/tips/tipHistory.ts
+// class=partial  jaccard=0.1282  score=0.1848  fileCov=0.2952
+// note: low-confidence suggestion: src/services/tips/tipHistory.ts; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module xXa] deps: utils/http.ts, utils/debug.ts, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/errors.ts, screens/REPL.tsx, utils/fsOperations.ts, services/analytics/growthbook.ts, services/mcp/officialRegistry.ts, utils/semver.ts
+cht = require("fs/promises"), HHo = require("path");
+z7p = Ahe(async () => {
+  if (!Us("allow_team_discovery")) return;
+  if (!at("tengu_team_discovery", false)) return;
+  if (!bo()) return;
+  let e = await W7p();
+  if (e && Date.now() - e.fetchedAt < G7p) return e.data ?? void 0;
+  let t = await V7p();
+  return await q7p({
+    fetchedAt: Date.now(),
+    data: t
+  }), t ?? void 0;
+}, 3600000);
+function uht(e, t) {
+  let n = Dt().numStartups;
+  gn(r => {
+    let o = r.tipsHistory ?? {};
+    if (o[e] === n) return r;
+    let s = r.tipLifetimeShownCounts ?? {},
+      i = {
+        ...r,
+        tipsHistory: {
+          ...o,
+          [e]: n
+        },
+        tipLifetimeShownCounts: {
+          ...s,
+          [e]: (s[e] ?? 0) + 1
+        }
+      };
+    if (!t) return i;
+    let a = r.pluginSuggestionShownCounts ?? {};
+    return {
+      ...i,
+      pluginSuggestionShownCounts: {
+        ...a,
+        [t]: (a[t] ?? 0) + 1
+      }
+    };
+  });
+}
+function L9n(e) {
+  return Dt().tipLifetimeShownCounts?.[e] ?? 0;
+}
+function Spe(e) {
+  let t = Dt(),
+    n = t.tipsHistory?.[e];
+  if (!n) return 1 / 0;
+  return t.numStartups - n;
+}
+function kXa(e) {
+  return Dt().pluginSuggestionShownCounts?.[e] ?? 0;
+}
+function RXa(e) {
+  return Dt().pluginSuggestionDiscoverShownCounts?.[e] ?? 0;
+}
+function LXa(e) {
+  if (e.length === 0) return;
+  gn(t => {
+    let n = t.pluginSuggestionDiscoverShownCounts ?? {};
+    if (e.every(o => (n[o] ?? 0) > 0)) return t;
+    let r = {
+      ...n
+    };
+    for (let o of e) r[o] = (r[o] ?? 0) + 1;
+    return {
+      ...t,
+      pluginSuggestionDiscoverShownCounts: r
+    };
+  });
+}

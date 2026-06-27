@@ -1,0 +1,21 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module pVi
+// class=new  (no 2.1.88 match)
+// note: 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __commonJS module pVi] (exports=Loy, module=dVi)
+var Loy = {};
+var dVi = {
+  exports: Loy
+};
+var uVi = Rat(),
+  gqd = (e, t, n = false) => {
+    if (e instanceof uVi) return e;
+    try {
+      return new uVi(e, t);
+    } catch (r) {
+      if (!n) return null;
+      throw r;
+    }
+  };
+dVi.exports = gqd;

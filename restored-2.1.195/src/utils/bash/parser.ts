@@ -1,0 +1,179 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Ybe
+// matched 2.1.88 source: src/utils/bash/parser.ts
+// class=modified  jaccard=0.4498  score=0.8497  fileCov=0.4887
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// module exports: parseCommandRaw, parseCommand, findCommandNode, extractCommandArguments, PARSE_ABORTED
+// [unwrapped __esm module Ybe]
+((knp = {
+  parse: Nnp,
+}),
+  (UTy = Promise.resolve()));
+((dct = new Set(["?", "$", "@", "*", "#", "-", "!", "_"])),
+  (Rnp = new Set(["export", "declare", "typeset", "readonly", "local"])),
+  (Oro = new Set([
+    "if",
+    "then",
+    "elif",
+    "else",
+    "fi",
+    "while",
+    "until",
+    "for",
+    "in",
+    "do",
+    "done",
+    "case",
+    "esac",
+    "function",
+    "select",
+  ])));
+((crp = {
+  "=": 2,
+  "+=": 2,
+  "-=": 2,
+  "*=": 2,
+  "/=": 2,
+  "%=": 2,
+  "<<=": 2,
+  ">>=": 2,
+  "&=": 2,
+  "^=": 2,
+  "|=": 2,
+  "||": 4,
+  "&&": 5,
+  "|": 6,
+  "^": 7,
+  "&": 8,
+  "==": 9,
+  "!=": 9,
+  "<": 10,
+  ">": 10,
+  "<=": 10,
+  ">=": 10,
+  "<<": 11,
+  ">>": 11,
+  "+": 12,
+  "-": 12,
+  "*": 13,
+  "/": 13,
+  "%": 13,
+  "**": 14,
+}),
+  (urp = new Set(["=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", "&=", "^=", "|=", "**"])));
+async function parseCommand(e) {
+  if (!e || e.length > nra) return null;
+  try {
+    let t = hL().parse(e);
+    if (!t) return null;
+    let n = findCommandNode(t, null),
+      r = extractEnvVars(n);
+    return {
+      rootNode: t,
+      envVars: r,
+      commandNode: n,
+      originalCommand: e,
+    };
+  } catch {
+    return null;
+  }
+}
+async function parseCommandRaw(command) {
+  if (!command) return null;
+  if (command.length > nra)
+    return (
+      G("tengu_tree_sitter_parse_abort", {
+        cmdLength: command.length,
+        panic: false,
+      }),
+      PARSE_ABORTED
+    );
+  try {
+    let t = hL().parse(command);
+    if (t === null)
+      return (
+        G("tengu_tree_sitter_parse_abort", {
+          cmdLength: command.length,
+          panic: false,
+        }),
+        PARSE_ABORTED
+      );
+    return t;
+  } catch {
+    return (
+      G("tengu_tree_sitter_parse_abort", {
+        cmdLength: command.length,
+        panic: true,
+      }),
+      PARSE_ABORTED
+    );
+  }
+}
+function findCommandNode(node, parent) {
+  let { type: n, children: r } = node;
+  if (Uro.has(n)) return node;
+  if (n === "variable_assignment" && parent)
+    return parent.children.find((o) => Uro.has(o.type) && o.startIndex > node.startIndex) ?? null;
+  if (n === "pipeline") {
+    for (let o of r) {
+      let s = findCommandNode(o, node);
+      if (s) return s;
+    }
+    return null;
+  }
+  if (n === "redirected_statement") return r.find((o) => Uro.has(o.type)) ?? null;
+  for (let o of r) {
+    let s = findCommandNode(o, node);
+    if (s) return s;
+  }
+  return null;
+}
+function extractEnvVars(commandNode) {
+  if (!commandNode || commandNode.type !== "command") return [];
+  let t = [];
+  for (let n of commandNode.children)
+    if (n.type === "variable_assignment") t.push(n.text);
+    else if (n.type === "command_name" || n.type === "word") break;
+  return t;
+}
+function extractCommandArguments(commandNode) {
+  if (commandNode.type === "declaration_command") {
+    let r = commandNode.children[0];
+    return r && mrp.has(r.text) ? [r.text] : [];
+  }
+  let t = [],
+    n = false;
+  for (let r of commandNode.children) {
+    if (r.type === "variable_assignment") continue;
+    if (r.type === "command_name" || (!n && r.type === "word")) {
+      n = true;
+      let o = r.children[0] ?? r;
+      if (o.type === "concatenation")
+        t.push(o.children.some((s) => Bro.has(s.type)) ? o.text : o.children.map(yOn).join(""));
+      else t.push(yOn(o));
+      continue;
+    }
+    if (grp.has(r.type)) t.push(yOn(r));
+    else if (r.type === "concatenation") {
+      if (r.children.some((o) => Bro.has(o.type))) break;
+      t.push(r.children.map(yOn).join(""));
+    } else if (Bro.has(r.type)) break;
+  }
+  return t;
+}
+function yOn(e) {
+  if (e.type === "word") return e.text.replace(/\\(.)/g, "$1");
+  return yrp(e.text);
+}
+function yrp(e) {
+  return e.length >= 2 && ((e[0] === '"' && e.at(-1) === '"') || (e[0] === "'" && e.at(-1) === "'"))
+    ? e.slice(1, -1)
+    : e;
+}
+var nra = 10000 /* 1e4 */,
+  mrp,
+  grp,
+  Bro,
+  Uro,
+  PARSE_ABORTED;

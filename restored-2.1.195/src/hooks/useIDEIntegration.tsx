@@ -1,0 +1,67 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module T0c
+// matched 2.1.88 source: src/hooks/useIDEIntegration.tsx
+// class=modified  jaccard=0.3967  score=0.7944  fileCov=0.4421
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module T0c] deps: hooks/useRemoteSession.ts, ink/ink.tsx, hooks/useTerminalSize.ts, ink/styles.ts, context/notifications.tsx, services/mockRateLimits.ts, utils/sessionActivity.ts, utils/debug.ts, utils/messages.ts, utils/permissions/PermissionMode.ts, utils/markdownConfigLoader.ts, utils/task/sdkProgress.ts, utils/fsOperations.ts, utils/plugins/installCounts.ts, utils/swarm/teammateLayoutManager.ts, utils/swarm/backends/detection.ts, tools/AgentTool/runAgent.ts, utils/swarm/spawnInProcess.ts, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, utils/tasks.ts, utils/concurrentSessions.ts, utils/teammate.ts, utils/teammateMailbox.ts, utils/swarm/inProcessRunner.ts
+((cYo = require("crypto")), (ONe = R(rt(), 1)));
+function useIDEIntegration(t0) {
+  let t = v0c.c(7),
+    {
+      autoConnectIdeFlag: n,
+      ideToInstallExtension: r,
+      setDynamicMcpConfig: o,
+      setShowIdeOnboarding: s,
+      setIDEInstallationState: i,
+    } = t0,
+    a,
+    l;
+  if (t[0] !== n || t[1] !== r || t[2] !== o || t[3] !== i || t[4] !== s)
+    ((a = () => {
+      if (vl()) return;
+      if (Js() && !r) return;
+      let c = function (p) {
+          if (!p) return;
+          if (!Kdt(Boolean(n || r))) return;
+          o((m) => {
+            if (m?.ide) return m;
+            return {
+              ...m,
+              ide: {
+                type: p.url.startsWith("ws:") ? "ws-ide" : "sse-ide",
+                url: p.url,
+                ideName: p.name,
+                authToken: p.authToken,
+                ideRunningInWindows: p.ideRunningInWindows,
+                scope: "dynamic",
+              },
+            };
+          });
+        },
+        u = Sl();
+      return (
+        Axa(
+          c,
+          r,
+          () => s(true),
+          (d) => i(d),
+          u.signal,
+        ),
+        () => {
+          (u.abort(), dFn());
+        }
+      );
+    }),
+      (l = [n, r, o, s, i]),
+      (t[0] = n),
+      (t[1] = r),
+      (t[2] = o),
+      (t[3] = i),
+      (t[4] = s),
+      (t[5] = a),
+      (t[6] = l));
+  else ((a = t[5]), (l = t[6]));
+  w0c.useEffect(a, l);
+}
+var v0c, w0c;

@@ -1,0 +1,92 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module BWi
+// matched 2.1.88 source: src/ink/renderer.ts
+// class=modified  jaccard=0.4965  score=0.7403  fileCov=0.6013
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module BWi] deps: utils/debug.ts, Wit, ink/styles.ts, indent-string/index.js, ink/reconciler.ts, ink/dom.ts, ink/selection.ts
+((iWd = R(nRn(), 1)),
+  (aWd = {
+    reconcile: 0,
+    yoga: 0,
+    paint: 0,
+    scan: 0,
+    calls: 0,
+  }));
+function createRenderer(node, stylePool) {
+  let output,
+    r = hGe();
+  return (o) => {
+    let { frontFrame: s, backFrame: i, isTTY: a, terminalWidth: l, terminalRows: c } = o,
+      u = s.screen,
+      d = i.screen,
+      p = d.charPool,
+      f = d.hyperlinkPool,
+      m = node.yogaNode?.getComputedHeight(),
+      g = node.yogaNode?.getComputedWidth(),
+      h = m === void 0 || !Number.isFinite(m) || m < 0,
+      y = g === void 0 || !Number.isFinite(g) || g < 0;
+    if (!node.yogaNode || h || y) {
+      if (node.yogaNode && (h || y))
+        T(
+          `Invalid yoga dimensions: width=${g}, height=${m}, childNodes=${node.childNodes.length}, terminalWidth=${l}, terminalRows=${c}`,
+        );
+      return {
+        screen: Y7(l, 0, stylePool, p, f),
+        viewport: {
+          width: l,
+          height: c,
+        },
+        cursor: {
+          x: 0,
+          y: 0,
+          visible: true,
+        },
+      };
+    }
+    let b = Math.floor(node.yogaNode.getComputedWidth()),
+      _ = Math.floor(node.yogaNode.getComputedHeight()),
+      S = o.altScreen ? c : _;
+    if (o.altScreen && _ > c)
+      T(
+        `alt-screen: yoga height ${_} > terminalRows ${c} \u2014 ` +
+          "something is rendering outside <AlternateScreen>. Overflow clipped.",
+        {
+          level: "warn",
+        },
+      );
+    let A = d ?? Y7(b, S, stylePool, p, f);
+    if (output) output.reset(b, S, A);
+    else
+      output = new Q_e({
+        width: b,
+        height: S,
+        stylePool: stylePool,
+        screen: A,
+      });
+    (DWi(r), (r.overlayActive = o.overlayActive));
+    let v = K4i();
+    yGe(node, output, r, {
+      prevScreen: v || o.prevFrameContaminated ? void 0 : u,
+    });
+    let C = output.get(),
+      x = r.scrollDrainNode;
+    if (x) NM(x);
+    return {
+      scrollHint: o.altScreen ? r.scrollHint : null,
+      scrollDrainPending: x !== null,
+      followScroll: r.followScroll,
+      layoutShifted: r.layoutShifted,
+      screen: C,
+      viewport: {
+        width: l,
+        height: o.altScreen ? c + 1 : c,
+      },
+      cursor: {
+        x: 0,
+        y: o.altScreen ? Math.max(0, Math.min(A.height, c) - 1) : A.height,
+        visible: !a || A.height === 0,
+      },
+    };
+  };
+}

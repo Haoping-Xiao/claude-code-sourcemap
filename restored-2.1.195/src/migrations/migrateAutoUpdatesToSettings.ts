@@ -1,0 +1,41 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module OOc
+// matched 2.1.88 source: src/migrations/migrateAutoUpdatesToSettings.ts
+// class=modified  jaccard=0.44  score=0.7218  fileCov=0.5298
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module OOc] deps: utils/debug.ts, pke, utils/model/modelOptions.ts, utils/status.tsx, utils/settings/settings.ts
+$xm = {};
+function migrateAutoUpdatesToSettings() {
+  let globalConfig = Dt();
+  if (globalConfig.autoUpdates !== false || globalConfig.autoUpdatesProtectedForNative === true)
+    return;
+  try {
+    let t = yn("userSettings") || {};
+    (io("userSettings", {
+      ...t,
+      env: {
+        ...t.env,
+        DISABLE_AUTOUPDATER: "1",
+      },
+    }),
+      G("tengu_migrate_autoupdates_to_settings", {
+        was_user_preference: true,
+        already_had_env_var: !!t.env?.DISABLE_AUTOUPDATER,
+      }),
+      Oe.set("DISABLE_AUTOUPDATER", true),
+      gn((n) => {
+        let { autoUpdates: r, autoUpdatesProtectedForNative: o, ...s } = n;
+        return s;
+      }),
+      xe("migration_auto_updates_to_settings"));
+  } catch (t) {
+    (T(`Failed to migrate auto-updates: ${t}`, {
+      level: "error",
+    }),
+      G("tengu_migrate_autoupdates_error", {
+        has_error: true,
+      }),
+      Le("migration_auto_updates_to_settings", "migration_auto_updates_write_failed"));
+  }
+}

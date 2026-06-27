@@ -1,0 +1,87 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module O8e
+// matched 2.1.88 source: src/services/toolUseSummary/toolUseSummaryGenerator.ts
+// class=modified  jaccard=0.5205  score=0.7254  fileCov=0.6482
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+async function generateToolUseSummary({
+  tools: tools,
+  signal: t,
+  isNonInteractiveSession: n,
+  lastAssistantText: r,
+  agentContext: o,
+}) {
+  if (tools.length === 0) return null;
+  try {
+    let s = tools.map((c) => {
+        let u = truncateJson(c.input, 300),
+          d = truncateJson(c.output, 300);
+        return `Tool: ${c.name}
+Input: ${u}
+Output: ${d}`;
+      }).join(`
+
+`),
+      i = r
+        ? `User's intent (from assistant's last message): ${r.slice(0, 200)}
+
+`
+        : "",
+      l = (
+        await R$({
+          systemPrompt: Sc([TOOL_USE_SUMMARY_SYSTEM_PROMPT]),
+          userPrompt: `${i}Tools completed:
+
+${s}
+
+Label:`,
+          signal: t,
+          options: {
+            querySource: "tool_use_summary_generation",
+            enablePromptCaching: false,
+            agents: [],
+            isNonInteractiveSession: n,
+            hasAppendSystemPrompt: false,
+            mcpTools: [],
+            agentContext: o,
+          },
+        })
+      ).message.content
+        .filter((c) => c.type === "text")
+        .map((c) => (c.type === "text" ? c.text : ""))
+        .join("")
+        .trim();
+    if (!l) return (It("summary_tool_use_generate", "empty_response"), null);
+    return (xe("summary_tool_use_generate"), l);
+  } catch (s) {
+    if (t.aborted) return null;
+    let i = Zr(s);
+    return (
+      (i.cause = {
+        errorId: "tool_use_summary_generation_failed",
+      }),
+      ke(i),
+      Le("summary_tool_use_generate", "api_failed"),
+      null
+    );
+  }
+}
+function truncateJson(value, maxLength) {
+  try {
+    let n = De(value);
+    if (n.length <= maxLength) return n;
+    return n.slice(0, maxLength - 3) + "...";
+  } catch {
+    return "[unable to serialize]";
+  }
+}
+var TOOL_USE_SUMMARY_SYSTEM_PROMPT = `Write a short summary label describing what these tool calls accomplished. It appears as a single-line row in a mobile app and truncates around 30 characters, so think git-commit-subject, not sentence.
+
+Keep the verb in past tense and the most distinctive noun. Drop articles, connectors, and long location context first.
+
+Examples:
+- Searched in auth/
+- Fixed NPE in UserService
+- Created signup endpoint
+- Read config.json
+- Ran failing tests`;

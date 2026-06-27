@@ -1,0 +1,18 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module G0c
+// matched 2.1.88 source: src/hooks/useDynamicConfig.ts
+// class=modified  jaccard=0.3018  score=1  fileCov=0.3018
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module G0c] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, hooks/useTerminalSize.ts, screens/REPL.tsx, context/notifications.tsx, utils/profilerBase.ts, services/teamMemorySync/secretScanner.ts, @anthropic-ai/bedrock-sdk/client.mjs
+((uYo = R(lt(), 1)), (F0c = R(rt(), 1)), (FH = R(se(), 1)));
+function Itn(e, t) {
+  let [n, r] = nfr.useState(t);
+  return (
+    nfr.useEffect(() => {
+      v7(e, t).then(r);
+    }, [e, t]),
+    n
+  );
+}
+var nfr;

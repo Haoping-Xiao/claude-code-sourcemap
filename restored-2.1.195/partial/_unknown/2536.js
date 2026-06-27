@@ -1,0 +1,34 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module fZr
+// matched 2.1.88 source: src/hooks/usePasteHandler.ts
+// class=partial  jaccard=0.0613  score=0.7427  fileCov=0.0626
+// note: low-confidence suggestion: src/hooks/usePasteHandler.ts; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module fZr]
+n6i = require("module"), r6i = require("url"), nPn = require("path");
+function s6i() {
+  return;
+}
+function i6i(e) {
+  return false;
+}
+var o6i = false;
+function Kj(e, t, n, r = $6d, o) {
+  let s = ks(),
+    i = P0e.useRef(0),
+    a = P0e.useRef(void 0),
+    l = P0e.useCallback(() => {
+      if (a.current) a.current(), a.current = void 0;
+    }, []);
+  return P0e.useEffect(() => () => {
+    l();
+  }, [l]), P0e.useCallback(() => {
+    let c = Date.now();
+    if (c - i.current <= r && a.current !== void 0) l(), e(false), t();else n?.(), e(true), l(), a.current = s.setTimeout(() => {
+      e(false), a.current = void 0, o?.();
+    }, r);
+    i.current = c;
+  }, [e, t, n, o, l, s, r]);
+}
+var P0e,
+  $6d = 800;

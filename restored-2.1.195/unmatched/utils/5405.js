@@ -1,0 +1,43 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Umc
+// matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx
+// class=new  jaccard=0.0344  score=0.2991  fileCov=0.0374
+// note: nearest: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx (0.0344); dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module Umc] deps: screens/REPL.tsx, utils/concurrentSessions.ts, hooks/toolPermission/PermissionContext.ts
+nen = R(rt(), 1), Ncm = {
+  refusal_fallback_prompt: "choose: retry on fallback model or edit prompt",
+  fable_overage_consent_prompt: "choose: continue Fable 5 on usage credits or switch models"
+};
+function jmc() {
+  let e = ATt(),
+    t = e?.kind === y8e.kind;
+  Fmc.useEffect(() => {
+    if (!Js()) {
+      ASt(null);
+      return;
+    }
+    if (t && e) {
+      let n = e.payload;
+      return ASt(r => {
+        let o = r.trim();
+        if (!o || o.startsWith("!") || o.startsWith("/")) return false;
+        let s = n.questions[0];
+        if (!s) return false;
+        ASt(null);
+        let a = s.options?.find(l => l.label.toLowerCase() === o.toLowerCase())?.label ?? o;
+        return w3.answer(e.id, {
+          behavior: "allow",
+          updatedInput: {
+            ...n.input,
+            answers: {
+              [s.question]: a
+            }
+          }
+        }), true;
+      }), () => ASt(null);
+    }
+    ASt(null);
+  }, [e, t]);
+}
+var Fmc;

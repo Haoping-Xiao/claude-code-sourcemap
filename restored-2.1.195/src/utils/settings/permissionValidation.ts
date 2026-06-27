@@ -1,0 +1,202 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module xws
+// matched 2.1.88 source: src/utils/settings/permissionValidation.ts
+// class=modified  jaccard=0.3675  score=0.5526  fileCov=0.523
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module xws]
+imn = {
+  filePatternTools: ["Read", "Write", "Edit", "Glob", "NotebookRead", "NotebookEdit", "Cd"],
+  bashPrefixTools: ["Bash"],
+  customValidation: {
+    WebSearch: (e) => {
+      if (e.includes("*") || e.includes("?"))
+        return {
+          valid: false,
+          error: "WebSearch does not support wildcards",
+          suggestion: "Use exact search terms without * or ?",
+          examples: ["WebSearch(claude ai)", "WebSearch(typescript tutorial)"],
+        };
+      return {
+        valid: true,
+      };
+    },
+    WebFetch: (e) => {
+      if (e.includes("://") || e.startsWith("http"))
+        return {
+          valid: false,
+          error: "WebFetch permissions use domain format, not URLs",
+          suggestion: 'Use "domain:hostname" format',
+          examples: ["WebFetch(domain:example.com)", "WebFetch(domain:github.com)"],
+        };
+      if (!e.startsWith("domain:"))
+        return {
+          valid: false,
+          error: 'WebFetch permissions must use "domain:" prefix',
+          suggestion: 'Use "domain:hostname" format',
+          examples: ["WebFetch(domain:example.com)", "WebFetch(domain:*.google.com)"],
+        };
+      return {
+        valid: true,
+      };
+    },
+  },
+};
+function kws(e, t) {
+  let n = 0,
+    r = t - 1;
+  while (r >= 0 && e[r] === "\\") (n++, r--);
+  return n % 2 !== 0;
+}
+function aLr(e, t) {
+  let n = 0;
+  for (let r = 0; r < e.length; r++) if (e[r] === t && !kws(e, r)) n++;
+  return n;
+}
+function l1u(e) {
+  for (let t = 0; t < e.length - 1; t++)
+    if (e[t] === "(" && e[t + 1] === ")") {
+      if (!kws(e, t)) return true;
+    }
+  return false;
+}
+function amn(e) {
+  if (!HCe(e)) return null;
+  let t = eI(e);
+  if (t && !HCe(t.serverName)) return null;
+  return {
+    valid: false,
+    error: `Wildcard tool name "${e}" is not supported in allow rules`,
+    suggestion:
+      "An allow pattern must name the scope it widens \u2014 globs are permitted only in the tool position after a literal mcp__<server>__ prefix. Deny and ask rules accept wildcards anywhere",
+    examples: ["mcp__puppeteer__*", "mcp__github__get_*"],
+  };
+}
+function validatePermissionRule(rule, t) {
+  if (!rule || rule.trim() === "")
+    return {
+      valid: false,
+      error: "Permission rule cannot be empty",
+    };
+  let n = aLr(rule, "("),
+    r = aLr(rule, ")");
+  if (n !== r)
+    return {
+      valid: false,
+      error: "Mismatched parentheses",
+      suggestion: "Ensure all opening parentheses have matching closing parentheses",
+    };
+  if (l1u(rule)) {
+    let a = rule.substring(0, rule.indexOf("("));
+    if (!a)
+      return {
+        valid: false,
+        error: "Empty parentheses with no tool name",
+        suggestion: "Specify a tool name before the parentheses",
+      };
+    return {
+      valid: false,
+      error: "Empty parentheses",
+      suggestion: `Either specify a pattern or use just "${a}" without parentheses`,
+      examples: [`${a}`, `${a}(some-pattern)`],
+    };
+  }
+  let parsed = Ig(rule),
+    mcpInfo = eI(parsed.toolName);
+  if (mcpInfo) {
+    if (parsed.ruleContent !== void 0 || aLr(rule, "(") > 0)
+      return {
+        valid: false,
+        error: "MCP rules do not support patterns in parentheses",
+        suggestion: `Use "${parsed.toolName}" without parentheses, or use "mcp__${mcpInfo.serverName}__*" for all tools`,
+        examples: [
+          `mcp__${mcpInfo.serverName}`,
+          `mcp__${mcpInfo.serverName}__*`,
+          mcpInfo.toolName && mcpInfo.toolName !== "*"
+            ? `mcp__${mcpInfo.serverName}__${mcpInfo.toolName}`
+            : void 0,
+        ].filter(Boolean),
+      };
+    if (t === "allow") {
+      let a = amn(parsed.toolName);
+      if (a) return a;
+    }
+    return {
+      valid: true,
+    };
+  }
+  if (!parsed.toolName || parsed.toolName.length === 0)
+    return {
+      valid: false,
+      error: "Tool name cannot be empty",
+    };
+  if (t === "allow") {
+    let a = amn(parsed.toolName);
+    if (a) return a;
+  }
+  if (!parsed.toolName.includes("_") && parsed.toolName[0] !== parsed.toolName[0]?.toUpperCase())
+    return {
+      valid: false,
+      error: "Tool names must start with uppercase",
+      suggestion: `Use "${Cx(String(parsed.toolName))}"`,
+    };
+  let i = Iws(parsed.toolName);
+  if (i && parsed.ruleContent !== void 0) {
+    let a = i(parsed.ruleContent);
+    if (!a.valid) return a;
+  }
+  if (Cws(parsed.toolName) && parsed.ruleContent !== void 0) {
+    let a = parsed.ruleContent;
+    if (a.includes(":*") && !a.endsWith(":*"))
+      return {
+        valid: false,
+        error: "The :* pattern must be at the end",
+        suggestion: "Move :* to the end for prefix matching, or use * for wildcard matching",
+        examples: [
+          "Bash(npm run:*) - prefix matching (legacy)",
+          "Bash(npm run *) - wildcard matching",
+        ],
+      };
+    if (a === ":*")
+      return {
+        valid: false,
+        error: "Prefix cannot be empty before :*",
+        suggestion: "Specify a command prefix before :*",
+        examples: ["Bash(npm *)", "Bash(git *)"],
+      };
+  }
+  if (wws(parsed.toolName) && parsed.ruleContent !== void 0) {
+    if (parsed.ruleContent.includes(":*"))
+      return {
+        valid: false,
+        error: 'The ":*" syntax is only for Bash prefix rules',
+        suggestion: 'Use glob patterns like "*" or "**" for file matching',
+        examples: [
+          `${parsed.toolName}(*.ts) - matches .ts files`,
+          `${parsed.toolName}(src/**) - matches all files in src`,
+          `${parsed.toolName}(**/*.test.ts) - matches test files`,
+        ],
+      };
+  }
+  return {
+    valid: true,
+  };
+}
+function PermissionRuleSchema(e) {
+  return H.string().superRefine((t, n) => {
+    let r = validatePermissionRule(t, e);
+    if (!r.valid) {
+      let o = r.error;
+      if (r.suggestion) o += `. ${r.suggestion}`;
+      if (r.examples && r.examples.length > 0) o += `. Examples: ${r.examples.join(", ")}`;
+      n.addIssue({
+        code: H.ZodIssueCode.custom,
+        message: o,
+        params: {
+          received: t,
+        },
+      });
+    }
+  });
+}
+var cLr, Rws;

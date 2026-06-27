@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module put
+// matched 2.1.88 source: src/memdir/findRelevantMemories.ts
+// class=modified (alt of src/memdir/findRelevantMemories.ts)  jaccard=0.064  score=0.1842  fileCov=0.0892
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module put] deps: @modelcontextprotocol/sdk/dist/esm/types.js, services/analytics/index.ts, cli/print.ts, services/rateLimitMessages.ts, services/api/errorUtils.ts, services/oauth/getOauthProfile.ts, main.tsx, services/mcp/types.ts, utils/agentContext.ts, utils/settings/settings.ts
+ySe = Dy({
+  kind: "fable_overage_consent_prompt",
+  payload: ve(() =>
+    H.object({
+      overagesEnabled: H.boolean(),
+      balanceCents: H.number().nullable().optional(),
+      currency: H.string().nullable().optional(),
+    }),
+  ),
+  result: ve(() => H.enum(["consent", "switch_default", "cancelled"])),
+  default: "cancelled",
+});
+function pLe() {
+  return {
+    stateByDir: {},
+    lastUsage: null,
+  };
+}
+function y5e(e) {
+  if (!e) return;
+  ((e.stateByDir = {}), (e.lastUsage = null));
+}
+function Tla(e, t) {
+  return e.stateByDir[t];
+}
+function vla(e, t, n, r, o) {
+  let s = {
+    memories: n,
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: `Available memories:
+${r}`,
+            ...(o && {
+              cache_control: o,
+            }),
+          },
+        ],
+      },
+    ],
+  };
+  return ((e.stateByDir[t] = s), s);
+}
+function wla(e, t, n, r) {
+  let o = e.stateByDir[t];
+  if (!o) return;
+  e.stateByDir[t] = {
+    ...o,
+    messages: [
+      ...o.messages,
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: n,
+          },
+        ],
+      },
+      {
+        role: "assistant",
+        content: [
+          {
+            type: "text",
+            text: r,
+          },
+        ],
+      },
+    ],
+  };
+}
+var selectRelevantMemories = "memdir_relevance",
+  Qio = "memdir_aki_extract";
+function Zio() {
+  return false;
+}

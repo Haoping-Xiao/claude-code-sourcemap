@@ -1,0 +1,127 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module Orl
+// matched 2.1.88 source: src/services/AgentSummary/agentSummary.ts
+// class=modified  jaccard=0.404  score=0.7363  fileCov=0.4724
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+function buildSummaryPrompt(previousSummary) {
+  return `Describe your most recent action in 3-5 words using present tense (-ing). Name the file or function, not the branch. Do not use tools.
+${
+  previousSummary
+    ? `
+Previous: "${previousSummary}" \u2014 say something NEW.
+`
+    : ""
+}
+Good: "Reading runAgent.ts"
+Good: "Fixing null check in validate.ts"
+Good: "Running auth module tests"
+Good: "Adding retry logic to fetchUser"
+
+Bad (past tense): "Analyzed the branch diff"
+Bad (too vague): "Investigating the issue"
+Bad (too long): "Reviewing full branch diff and AgentTool.tsx integration"
+Bad (branch name): "Analyzed adam/background-summary branch diff"`;
+}
+function startAgentSummarization(taskId, agentId, cacheSafeParams, setAppState, o, s = {}) {
+  let i = s.intervalMs ?? Qtf,
+    { forkContextMessages: a, ...l } = cacheSafeParams,
+    c = null,
+    u = null,
+    d = !1,
+    p = null,
+    f = null,
+    m = !1;
+  async function g() {
+    if (d) return;
+    T(`[AgentSummary] Timer fired for agent ${agentId}`);
+    try {
+      let b = setAppState();
+      if (b.length < 3) {
+        T(`[AgentSummary] Skipping summary for ${taskId}: not enough messages (${b.length})`);
+        return;
+      }
+      let _ = Hwo(b),
+        S = `${_.length}:${_.at(-1)?.uuid ?? ""}`;
+      if (S === f) {
+        if (
+          (T(
+            `[AgentSummary] Skipping summary for ${taskId}: transcript unchanged (${_.length} messages)`,
+          ),
+          !m)
+        )
+          (G("tengu_agent_summary_skipped", {
+            reason: We("unchanged"),
+          }),
+            (m = !0));
+        return;
+      }
+      ((m = !1), (f = S));
+      let A = {
+        ...l,
+        forkContextMessages: _,
+      };
+      (T(`[AgentSummary] Forking for summary, ${_.length} messages in context`),
+        (c = new AbortController()));
+      let v = async () => ({
+          behavior: "deny",
+          message: "No tools needed for summary",
+          decisionReason: {
+            type: "other",
+            reason: "summary only",
+          },
+        }),
+        C = await dk({
+          promptMessages: [
+            Rn({
+              content: buildSummaryPrompt(p),
+            }),
+          ],
+          cacheSafeParams: A,
+          canUseTool: v,
+          querySource: "agent_summary",
+          forkLabel: "agent_summary",
+          maxTurns: 1,
+          overrides: {
+            abortController: c,
+          },
+          skipTranscript: !0,
+          skipCacheWrite: !0,
+        });
+      if (d) return;
+      for (let x of C.messages) {
+        if (x.type !== "assistant") continue;
+        if (x.isApiErrorMessage) {
+          T(`[AgentSummary] Skipping API error message for ${taskId}`);
+          continue;
+        }
+        let I = x.message.content.find((k) => k.type === "text");
+        if (I?.type === "text" && I.text.trim()) {
+          let k = I.text.trim();
+          (T(`[AgentSummary] Summary result for ${taskId}: ${k}`), (p = k), Url(taskId, k, o));
+          break;
+        }
+      }
+    } catch (b) {
+      if (!d && b instanceof Error) ke(b);
+    } finally {
+      if (((c = null), !d)) h();
+    }
+  }
+  function h() {
+    if (d) return;
+    u = setTimeout(g, i);
+  }
+  function y() {
+    if ((T(`[AgentSummary] Stopping summarization for ${taskId}`), (d = !0), u))
+      (clearTimeout(u), (u = null));
+    if (c) (c.abort(), (c = null));
+  }
+  return (
+    h(),
+    {
+      stop: y,
+    }
+  );
+}
+var Qtf = 30000;

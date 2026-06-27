@@ -1,0 +1,1398 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module lZn
+// matched 2.1.88 source: src/services/compact/compact.ts
+// class=modified  jaccard=0.4034  score=0.6075  fileCov=0.5456
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module lZn]
+NN = class NN extends Error {
+  originalModel;
+  fallbackModel;
+  reason;
+  originalError;
+  constructor(e, t, n = "overloaded", r) {
+    super(`Model fallback triggered: ${e} -> ${t}`);
+    this.originalModel = e;
+    this.fallbackModel = t;
+    this.reason = n;
+    this.originalError = r;
+    this.name = "FallbackTriggeredError";
+  }
+};
+function wwf(e) {
+  if (
+    e.type === "queued_command" &&
+    Array.isArray(e.prompt) &&
+    e.prompt.some((t) => t.type === "image" || t.type === "document")
+  )
+    return {
+      ...e,
+      prompt: e.prompt.map((t) =>
+        t.type === "image"
+          ? {
+              type: "text",
+              text: "[image]",
+            }
+          : t.type === "document"
+            ? {
+                type: "text",
+                text: "[document]",
+              }
+            : t,
+      ),
+    };
+  if (
+    e.type === "file" &&
+    (e.content.type === "image" || e.content.type === "notebook" || e.content.type === "parts")
+  )
+    return {
+      ...e,
+      content: {
+        type: "text",
+        file: {
+          filePath: e.filename,
+          content: `[${e.content.type}]`,
+          numLines: 1,
+          startLine: 1,
+          totalLines: 1,
+        },
+      },
+    };
+  return e;
+}
+function stripImagesFromMessages(messages) {
+  return messages.map((t) => {
+    if (t.type === "attachment") {
+      let s = wwf(t.attachment);
+      return s === t.attachment
+        ? t
+        : {
+            ...t,
+            attachment: s,
+          };
+    }
+    if (t.type !== "user") return t;
+    let n = t.message.content;
+    if (!Array.isArray(n)) return t;
+    let r = false,
+      o = n.flatMap((s) => {
+        if (s.type === "image")
+          return (
+            (r = true),
+            [
+              {
+                type: "text",
+                text: "[image]",
+              },
+            ]
+          );
+        if (s.type === "document")
+          return (
+            (r = true),
+            [
+              {
+                type: "text",
+                text: "[document]",
+              },
+            ]
+          );
+        if (s.type === "tool_result" && Array.isArray(s.content)) {
+          let i = false,
+            a = s.content.map((l) => {
+              if (l.type === "image")
+                return (
+                  (i = true),
+                  {
+                    type: "text",
+                    text: "[image]",
+                  }
+                );
+              if (l.type === "document")
+                return (
+                  (i = true),
+                  {
+                    type: "text",
+                    text: "[document]",
+                  }
+                );
+              return l;
+            });
+          if (i)
+            return (
+              (r = true),
+              [
+                {
+                  ...s,
+                  content: a,
+                },
+              ]
+            );
+        }
+        return [s];
+      });
+    if (!r) return t;
+    return {
+      ...t,
+      message: {
+        ...t.message,
+        content: o,
+      },
+    };
+  });
+}
+function Cwf(e) {
+  return e.filter((t) => t.type !== "attachment" || t.attachment.type === "queued_command");
+}
+function vkl(e) {
+  if (e.length <= Akl) return e;
+  let t = Akl,
+    n = e.charCodeAt(t - 1);
+  if (n >= 55296 && n <= 56319) t--;
+  return `${e.slice(0, t)}\u2026[truncated, original ${e.length} chars]`;
+}
+function _Mo(e) {
+  if (typeof e === "string") return vkl(e);
+  if (Array.isArray(e)) {
+    let t = e.map(_Mo);
+    return t.some((n, r) => n !== e[r]) ? t : e;
+  }
+  if (typeof e === "object" && e !== null) {
+    let t = e,
+      n = false,
+      r = {};
+    for (let [o, s] of Object.entries(t)) {
+      let i = _Mo(s);
+      if (i !== s) n = true;
+      r[o] = i;
+    }
+    return n ? r : e;
+  }
+  return e;
+}
+function Iwf(e) {
+  return e.map((t) => {
+    if (t.type === "assistant") {
+      let n = t.message.content;
+      if (!Array.isArray(n)) return t;
+      let r = n.some(dYt),
+        o = (r ? n.filter((s) => !dYt(s)) : n).map((s) => {
+          if (s.type !== "tool_use") return s;
+          let i = _Mo(s.input);
+          if (i === s.input) return s;
+          return (
+            (r = true),
+            {
+              ...s,
+              input: i,
+            }
+          );
+        });
+      if (!r) return t;
+      return {
+        ...t,
+        message: {
+          ...t.message,
+          content: o,
+        },
+      };
+    }
+    if (t.type === "user") {
+      let n = t.message.content;
+      if (!Array.isArray(n)) return t;
+      let r = false,
+        o = n.map((s) => {
+          if (s.type !== "tool_result") return s;
+          let i =
+              typeof s.content === "string"
+                ? s.content
+                : Array.isArray(s.content)
+                  ? s.content.map((l) => (l.type === "text" ? l.text : "")).join("")
+                  : "",
+            a = vkl(i);
+          if (s.content === a) return s;
+          return (
+            (r = true),
+            {
+              ...s,
+              content: a,
+            }
+          );
+        });
+      if (!r) return t;
+      return {
+        ...t,
+        message: {
+          ...t.message,
+          content: o,
+        },
+      };
+    }
+    return t;
+  });
+}
+function Ckl(e, t) {
+  let n =
+      e[0]?.type === "user" && e[0].isMeta && e[0].message.content === PTL_RETRY_MARKER
+        ? e.slice(1)
+        : e,
+    r = Tut(n);
+  if (r.length < 2) return null;
+  let o = iut(t),
+    s;
+  if (o !== void 0) {
+    let a = 0;
+    s = 0;
+    for (let l of r) if (((a += qv(l)), s++, a >= o)) break;
+  } else s = Math.max(1, Math.floor(r.length * 0.2));
+  if (((s = Math.min(s, r.length - 1)), s < 1)) return null;
+  let i = r.slice(s).flat();
+  if (i[0]?.type === "assistant")
+    return [
+      Rn({
+        content: PTL_RETRY_MARKER,
+        isMeta: true,
+      }),
+      ...i,
+    ];
+  return i;
+}
+function uZn(e, t, n) {
+  if (!e.blockedBy) return;
+  if (
+    (T(`Compaction blocked by PreCompact hook: ${e.blockedBy}`, {
+      level: "warn",
+    }),
+    !n?.suppressNotification)
+  )
+    t?.({
+      key: "compaction-blocked-by-hook",
+      text: "compaction blocked by PreCompact hook",
+      priority: "immediate",
+      color: "warning",
+    });
+  throw new Tq(`${abt}: ${e.blockedBy}`);
+}
+function PAe(e) {
+  return [
+    e.boundaryMarker,
+    ...e.summaryMessages,
+    ...e.messagesToKeep,
+    ...e.attachments,
+    ...e.hookResults,
+  ];
+}
+function oMo(e) {
+  return [e.boundaryMarker, ...e.summaryMessages, ...e.attachments, ...e.hookResults];
+}
+function _Po(e, t, n, r = n) {
+  let o = n.map((i) => i.uuid),
+    s = Gze([...n], r).map((i) => i.uuid);
+  if (o.length === 0) return e;
+  return {
+    ...e,
+    compactMetadata: {
+      ...e.compactMetadata,
+      ...(s.length > 0 && {
+        preservedSegment: {
+          headUuid: s[0],
+          anchorUuid: t,
+          tailUuid: s.at(-1),
+        },
+      }),
+      preservedMessages: {
+        anchorUuid: t,
+        uuids: s,
+        allUuids: o,
+      },
+    },
+  };
+}
+function SMo(e, t) {
+  if (!t) return e || void 0;
+  if (!e) return t;
+  return `${e}
+
+${t}`;
+}
+async function compactConversation(
+  messages,
+  context,
+  cacheSafeParams,
+  suppressFollowUpQuestions,
+  customInstructions,
+  s = false,
+  recompactionInfo,
+  a = false,
+  l,
+  c,
+  u,
+) {
+  let d = s ? "compact_auto" : "compact_manual",
+    p,
+    f,
+    m,
+    g = performance.now(),
+    h = B3t("claude_code.compaction", {
+      spanType: "compaction",
+      attrs: {
+        trigger: s ? "auto" : "manual",
+        message_count: messages.length,
+      },
+    });
+  try {
+    if (messages.length === 0)
+      throw (Le(d, "compact_not_enough_messages"), Error(ERROR_MESSAGE_NOT_ENOUGH_MESSAGES));
+    f = eA(messages);
+    let y = context.getAppState();
+    (Hut(Fr(context), "summary"),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "hooks_start",
+          hookType: "pre_compact",
+        },
+      }),
+      context.onCompactEvent?.({
+        type: "sdk_status",
+        status: "compacting",
+      }));
+    let b = await RQ(
+      {
+        trigger: s ? "auto" : "manual",
+        customInstructions: customInstructions ?? null,
+      },
+      context.abortController.signal,
+    );
+    (uZn(b, c, {
+      suppressNotification: s,
+    }),
+      (customInstructions = SMo(customInstructions, b.newCustomInstructions)));
+    let _ = b.userDisplayMessage;
+    (context.onCompactEvent?.({
+      type: "stream_mode",
+      mode: "requesting",
+    }),
+      u?.({
+        type: "response_length",
+        op: "reset",
+      }),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "compact_start",
+          hintText: l,
+        },
+      }));
+    let S = !a && at("tengu_compact_cache_prefix", true),
+      A = bNn(customInstructions),
+      v = Rn({
+        content: A,
+      }),
+      C = messages,
+      x = cacheSafeParams,
+      I,
+      k,
+      D = 0;
+    for (;;) {
+      if (
+        ((I = await streamCompactSummary({
+          messages: C,
+          summaryRequest: v,
+          appState: y,
+          context: context,
+          preCompactTokenCount: f,
+          cacheSafeParams: x,
+          stripNonEssential: a,
+          onResponseLength: u,
+        })),
+        (k = K8(I)),
+        !k?.startsWith(nF))
+      )
+        break;
+      D++;
+      let Ee = D <= wkl ? Ckl(C, I) : null;
+      if (!Ee)
+        throw (
+          G("tengu_compact_failed", {
+            reason: We("prompt_too_long"),
+            preCompactTokenCount: f,
+            promptCacheSharingEnabled: S,
+            ptlAttempts: D,
+          }),
+          Le(d, "compact_prompt_too_long"),
+          Error(ERROR_MESSAGE_PROMPT_TOO_LONG)
+        );
+      (G("tengu_compact_ptl_retry", {
+        attempt: D,
+        droppedMessages: C.length - Ee.length,
+        remainingMessages: Ee.length,
+      }),
+        (C = Ee),
+        (x = {
+          ...x,
+          forkContextMessages: Ee,
+        }));
+    }
+    if (!k)
+      throw (
+        T(`Compact failed: no summary text in response. Response: ${De(I)}`, {
+          level: "error",
+        }),
+        G("tengu_compact_failed", {
+          reason: We("no_summary"),
+          preCompactTokenCount: f,
+          promptCacheSharingEnabled: S,
+        }),
+        Le(d, "compact_no_summary"),
+        new Tq(
+          "Failed to generate conversation summary - response did not contain valid text content",
+        )
+      );
+    else if (I.isApiErrorMessage || K1(k))
+      throw (
+        G("tengu_compact_failed", {
+          reason: We("api_error"),
+          errorPrefix: H4(k).slice(0, 60),
+          preCompactTokenCount: f,
+          promptCacheSharingEnabled: S,
+        }),
+        Le(d, "compact_api_error"),
+        Error(k)
+      );
+    let P = mjt(context.readFileState);
+    if ((context.readFileState.clear(), context.loadedNestedMemoryPaths))
+      for (let Ee of Object.keys(context.loadedNestedMemoryPaths))
+        delete context.loadedNestedMemoryPaths[Ee];
+    y5e(context.memorySelector);
+    let [O, L] = await Promise.all([
+        createPostCompactFileAttachments(P, context, mQn),
+        createAsyncAgentAttachmentsIfNeeded(context),
+      ]),
+      M = [...O, ...L],
+      N = createPlanAttachmentIfNeeded(context.agentId);
+    if (N) M.push(N);
+    let B = await _Qn(context);
+    if (B) M.push(B);
+    let $ = createSkillAttachmentIfNeeded(context.agentId);
+    if ($) M.push($);
+    for (let Ee of $Ae(context.options.tools, context.options.mainLoopModel, [], {
+      callSite: "compact_full",
+    }))
+      M.push(ai(Ee));
+    for (let Ee of Z$e(context, [])) M.push(ai(Ee));
+    for (let Ee of kze(
+      context.options.mcpClients,
+      context.options.tools,
+      context.options.mainLoopModel,
+      [],
+    ))
+      M.push(ai(Ee));
+    context.onCompactEvent?.({
+      type: "compact_progress",
+      event: {
+        type: "hooks_start",
+        hookType: "session_start",
+      },
+    });
+    let q = await z8("compact", {
+        model: context.options.mainLoopModel,
+      }),
+      W = Math.round(performance.now() - g),
+      V = MKt(s ? "auto" : "manual", f ?? 0, messages.at(-1)?.uuid),
+      Y = xQ(messages);
+    if (Y.size > 0) V.compactMetadata.preCompactDiscoveredTools = [...Y].sort();
+    let z = em(),
+      K = LI() && Y2t(context.getReplContexts(), context.agentId),
+      Z = [
+        Rn({
+          content: Kjt(k, suppressFollowUpQuestions, z, void 0, K),
+          isCompactSummary: true,
+          isVisibleInTranscriptOnly: true,
+        }),
+      ],
+      J = OX([I]),
+      ne = qv([V, ...Z, ...M, ...q]);
+    ((V.compactMetadata.postTokens = ne), (V.compactMetadata.durationMs = W), (m = ne));
+    let oe = lre(I),
+      re = Bh(recompactionInfo?.querySource ?? context.options.querySource) ?? "unknown",
+      ee = lL(context.options.mainLoopModel, gg(context));
+    if (
+      (G("tengu_compact", {
+        preCompactTokenCount: f,
+        stripNonEssential: a,
+        postCompactTokenCount: J,
+        truePostCompactTokenCount: ne,
+        autoCompactThreshold: recompactionInfo?.autoCompactThreshold ?? -1,
+        willRetriggerNextTurn:
+          recompactionInfo !== void 0 && ne >= recompactionInfo.autoCompactThreshold,
+        isAutoCompact: s,
+        ...(ee && {
+          effort_level: $e(ee),
+        }),
+        querySource: re,
+        queryChainId: context.queryTracking?.chainId ?? "",
+        queryDepth: context.queryTracking?.depth ?? -1,
+        isRecompactionInChain: recompactionInfo?.isRecompactionInChain ?? false,
+        turnsSincePreviousCompact: recompactionInfo?.turnsSincePreviousCompact ?? -1,
+        previousCompactTurnId: recompactionInfo?.previousCompactTurnId ?? "",
+        compactionInputTokens: oe?.input_tokens,
+        compactionOutputTokens: oe?.output_tokens,
+        compactionCacheReadTokens: oe?.cache_read_input_tokens ?? 0,
+        compactionCacheCreationTokens: oe?.cache_creation_input_tokens ?? 0,
+        compactionTotalTokens: oe
+          ? oe.input_tokens +
+            (oe.cache_creation_input_tokens ?? 0) +
+            (oe.cache_read_input_tokens ?? 0) +
+            oe.output_tokens
+          : 0,
+        promptCacheSharingEnabled: S,
+        ...(() => {
+          try {
+            return eNn(Z1n(messages));
+          } catch (Ee) {
+            return (ke(Ee), {});
+          }
+        })(),
+      }),
+      WX())
+    )
+      Bjt(recompactionInfo?.querySource ?? "compact", context.agentId);
+    if (y3e(recompactionInfo?.querySource)) (aJe(), lSt());
+    context.onCompactEvent?.({
+      type: "compact_progress",
+      event: {
+        type: "hooks_start",
+        hookType: "post_compact",
+      },
+    });
+    let ae = await eOe(
+        {
+          trigger: s ? "auto" : "manual",
+          compactSummary: k,
+        },
+        context.abortController.signal,
+      ),
+      de = [_, ae.userDisplayMessage].filter(Boolean).join(`
+`);
+    return (
+      xe(d),
+      {
+        boundaryMarker: V,
+        summaryMessages: Z,
+        messagesToKeep: [],
+        attachments: M,
+        hookResults: q,
+        userDisplayMessage: de || void 0,
+        preCompactTokenCount: f,
+        postCompactTokenCount: J,
+        truePostCompactTokenCount: ne,
+        compactionUsage: oe,
+      }
+    );
+  } catch (y) {
+    if (((p = y instanceof Error ? y.message : "compaction failed"), !s))
+      addErrorNotificationIfNeeded(y, c);
+    throw y;
+  } finally {
+    if (
+      (context.onCompactEvent?.({
+        type: "stream_mode",
+        mode: "requesting",
+      }),
+      u?.({
+        type: "response_length",
+        op: "reset",
+      }),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "compact_end",
+        },
+      }),
+      J0e({
+        trigger: s ? "auto" : "manual",
+        success: !p,
+        durationMs: performance.now() - g,
+        preTokens: f,
+        postTokens: m,
+        error: p,
+      }),
+      h)
+    ) {
+      if (
+        (O3t(h, {
+          ...(f !== void 0 && {
+            pre_compact_tokens: f,
+          }),
+          ...(m !== void 0 && {
+            post_compact_tokens: m,
+          }),
+          success: !p,
+        }),
+        p)
+      )
+        Sqe(h, p);
+      h.end();
+    }
+    context.onCompactEvent?.({
+      type: "sdk_status",
+      status: null,
+      metadata: {
+        compactResult: p ? "failed" : "success",
+        ...(p && {
+          compactError: p,
+        }),
+      },
+    });
+  }
+}
+async function partialCompactConversation(
+  allMessages,
+  pivotIndex,
+  context,
+  cacheSafeParams,
+  userFeedback,
+  s = "from",
+  i,
+  a,
+) {
+  let l,
+    c,
+    u,
+    d = performance.now();
+  try {
+    let p = s === "up_to" ? allMessages.slice(0, pivotIndex) : allMessages.slice(pivotIndex),
+      f =
+        s === "up_to"
+          ? allMessages
+              .slice(pivotIndex)
+              .filter(
+                (oe) =>
+                  oe.type !== "progress" && !pA(oe) && !(oe.type === "user" && oe.isCompactSummary),
+              )
+          : allMessages.slice(0, pivotIndex).filter((oe) => oe.type !== "progress");
+    if (p.length === 0)
+      throw Error(
+        s === "up_to"
+          ? "Nothing to summarize before the selected message."
+          : "Nothing to summarize after the selected message.",
+      );
+    let m = eA(allMessages);
+    ((c = m),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "hooks_start",
+          hookType: "pre_compact",
+        },
+      }),
+      context.onCompactEvent?.({
+        type: "sdk_status",
+        status: "compacting",
+      }));
+    let g = await RQ(
+      {
+        trigger: "manual",
+        customInstructions: null,
+      },
+      context.abortController.signal,
+    );
+    uZn(g, i);
+    let h;
+    if (g.newCustomInstructions && userFeedback)
+      h = `${g.newCustomInstructions}
+
+User context: ${userFeedback}`;
+    else if (g.newCustomInstructions) h = g.newCustomInstructions;
+    else if (userFeedback) h = `User context: ${userFeedback}`;
+    (context.onCompactEvent?.({
+      type: "stream_mode",
+      mode: "requesting",
+    }),
+      a?.({
+        type: "response_length",
+        op: "reset",
+      }),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "compact_start",
+        },
+      }));
+    let y = Rca(h, s),
+      b = Rn({
+        content: y,
+      }),
+      _ = {
+        preCompactTokenCount: m,
+        direction: $e(s),
+        messagesSummarized: p.length,
+      },
+      S = s === "up_to" ? p : allMessages,
+      A =
+        s === "up_to"
+          ? {
+              ...cacheSafeParams,
+              forkContextMessages: p,
+            }
+          : cacheSafeParams,
+      v,
+      C,
+      x = 0;
+    for (;;) {
+      if (
+        ((v = await streamCompactSummary({
+          messages: S,
+          summaryRequest: b,
+          appState: context.getAppState(),
+          context: context,
+          preCompactTokenCount: m,
+          cacheSafeParams: A,
+          onResponseLength: a,
+        })),
+        (C = K8(v)),
+        !C?.startsWith(nF))
+      )
+        break;
+      x++;
+      let oe = x <= wkl ? Ckl(S, v) : null;
+      if (!oe)
+        throw (
+          G("tengu_partial_compact_failed", {
+            reason: We("prompt_too_long"),
+            ..._,
+            ptlAttempts: x,
+          }),
+          Le("compact_partial", "compact_partial_prompt_too_long"),
+          Error(ERROR_MESSAGE_PROMPT_TOO_LONG)
+        );
+      (G("tengu_compact_ptl_retry", {
+        attempt: x,
+        droppedMessages: S.length - oe.length,
+        remainingMessages: oe.length,
+        path: We("partial"),
+      }),
+        (S = oe),
+        (A = {
+          ...A,
+          forkContextMessages: oe,
+        }));
+    }
+    if (!C)
+      throw (
+        G("tengu_partial_compact_failed", {
+          reason: We("no_summary"),
+          ..._,
+        }),
+        Le("compact_partial", "compact_partial_no_summary"),
+        new Tq(
+          "Failed to generate conversation summary - response did not contain valid text content",
+        )
+      );
+    else if (v.isApiErrorMessage || K1(C))
+      throw (
+        G("tengu_partial_compact_failed", {
+          reason: We("api_error"),
+          errorPrefix: H4(C).slice(0, 60),
+          ..._,
+        }),
+        Le("compact_partial", "compact_partial_api_error"),
+        Error(C)
+      );
+    let I = mjt(context.readFileState);
+    if ((context.readFileState.clear(), context.loadedNestedMemoryPaths))
+      for (let oe of Object.keys(context.loadedNestedMemoryPaths))
+        delete context.loadedNestedMemoryPaths[oe];
+    y5e(context.memorySelector);
+    let [k, D] = await Promise.all([
+        createPostCompactFileAttachments(I, context, mQn, f),
+        createAsyncAgentAttachmentsIfNeeded(context),
+      ]),
+      P = [...k, ...D],
+      O = createPlanAttachmentIfNeeded(context.agentId);
+    if (O) P.push(O);
+    let L = await _Qn(context);
+    if (L) P.push(L);
+    let M = createSkillAttachmentIfNeeded(context.agentId);
+    if (M) P.push(M);
+    for (let oe of $Ae(context.options.tools, context.options.mainLoopModel, f, {
+      callSite: "compact_partial",
+    }))
+      P.push(ai(oe));
+    for (let oe of Z$e(context, f)) P.push(ai(oe));
+    for (let oe of kze(
+      context.options.mcpClients,
+      context.options.tools,
+      context.options.mainLoopModel,
+      f,
+    ))
+      P.push(ai(oe));
+    context.onCompactEvent?.({
+      type: "compact_progress",
+      event: {
+        type: "hooks_start",
+        hookType: "session_start",
+      },
+    });
+    let N = await z8("compact", {
+        model: context.options.mainLoopModel,
+      }),
+      B = OX([v]),
+      $ = lre(v),
+      q = lL(context.options.mainLoopModel, gg(context));
+    G("tengu_partial_compact", {
+      preCompactTokenCount: m,
+      postCompactTokenCount: B,
+      messagesKept: f.length,
+      messagesSummarized: p.length,
+      ...(q && {
+        effort_level: $e(q),
+      }),
+      direction: $e(s),
+      hasUserFeedback: !!userFeedback,
+      trigger: We("message_selector"),
+      compactionInputTokens: $?.input_tokens,
+      compactionOutputTokens: $?.output_tokens,
+      compactionCacheReadTokens: $?.cache_read_input_tokens ?? 0,
+      compactionCacheCreationTokens: $?.cache_creation_input_tokens ?? 0,
+    });
+    let W =
+        s === "up_to"
+          ? allMessages.slice(0, pivotIndex).findLast((oe) => oe.type !== "progress")?.uuid
+          : f.at(-1)?.uuid,
+      V = MKt("manual", m ?? 0, W, userFeedback, p.length),
+      Y = xQ(allMessages);
+    if (Y.size > 0) V.compactMetadata.preCompactDiscoveredTools = [...Y].sort();
+    V.compactMetadata.durationMs = Math.round(performance.now() - d);
+    let z = em(),
+      K = LI() && Y2t(context.getReplContexts(), context.agentId),
+      Z = [
+        Rn({
+          content: Kjt(C, false, z, void 0, K),
+          isCompactSummary: true,
+          ...(f.length > 0
+            ? {
+                summarizeMetadata: {
+                  messagesSummarized: p.length,
+                  userContext: userFeedback,
+                  direction: s,
+                },
+              }
+            : {
+                isVisibleInTranscriptOnly: true,
+              }),
+        }),
+      ];
+    if (WX()) Bjt(context.options.querySource ?? "compact", context.agentId);
+    (aJe(),
+      lSt(),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "hooks_start",
+          hookType: "post_compact",
+        },
+      }));
+    let J = await eOe(
+      {
+        trigger: "manual",
+        compactSummary: C,
+      },
+      context.abortController.signal,
+    );
+    ((u = qv([V, ...Z, ...f, ...P, ...N])), (V.compactMetadata.postTokens = u));
+    let ne = s === "up_to" ? (Z.at(-1)?.uuid ?? V.uuid) : V.uuid;
+    return (
+      xe("compact_partial"),
+      {
+        boundaryMarker: _Po(V, ne, f, allMessages),
+        summaryMessages: Z,
+        messagesToKeep: f,
+        attachments: P,
+        hookResults: N,
+        userDisplayMessage: J.userDisplayMessage,
+        preCompactTokenCount: m,
+        postCompactTokenCount: B,
+        compactionUsage: $,
+      }
+    );
+  } catch (p) {
+    throw (
+      (l = p instanceof Error ? p.message : "partial compaction failed"),
+      addErrorNotificationIfNeeded(p, i),
+      p
+    );
+  } finally {
+    (context.onCompactEvent?.({
+      type: "stream_mode",
+      mode: "requesting",
+    }),
+      a?.({
+        type: "response_length",
+        op: "reset",
+      }),
+      context.onCompactEvent?.({
+        type: "compact_progress",
+        event: {
+          type: "compact_end",
+        },
+      }),
+      J0e({
+        trigger: "manual",
+        success: !l,
+        durationMs: performance.now() - d,
+        preTokens: c,
+        postTokens: u,
+        error: l,
+      }),
+      context.onCompactEvent?.({
+        type: "sdk_status",
+        status: null,
+        metadata: {
+          compactResult: l ? "failed" : "success",
+          ...(l && {
+            compactError: l,
+          }),
+        },
+      }));
+  }
+}
+function addErrorNotificationIfNeeded(error, context) {
+  if (
+    !Xie(error, ERROR_MESSAGE_USER_ABORT) &&
+    !Xie(error, ERROR_MESSAGE_NOT_ENOUGH_MESSAGES) &&
+    !be(error).startsWith(abt)
+  )
+    (context?.({
+      key: "error-compacting-conversation",
+      text: "Error compacting conversation",
+      priority: "immediate",
+      color: "error",
+    }),
+      zv({
+        type: "system",
+        subtype: "notification",
+        key: "error-compacting-conversation",
+        text: "Error compacting conversation",
+        priority: "immediate",
+        color: "error",
+      }));
+}
+function xwf(e) {
+  if (!e) return We("none");
+  if (e.isApiErrorMessage) return We("api_error");
+  return $e(e.message.content[0]?.type ?? "empty");
+}
+function ENn(e, t) {
+  return (Array.isArray(t) ? t : t !== void 0 ? [t] : []).filter((r) => !XIe(e, r));
+}
+function createCompactCanUseTool() {
+  return async () => ({
+    behavior: "deny",
+    message: "Tool use is not allowed during compaction",
+    decisionReason: {
+      type: "other",
+      reason: "compaction agent should only produce text summary",
+    },
+  });
+}
+async function streamCompactSummary({
+  messages: e,
+  summaryRequest: t,
+  appState: n,
+  context: context,
+  preCompactTokenCount: o,
+  cacheSafeParams: s,
+  stripNonEssential: i = false,
+  onResponseLength: a,
+}) {
+  let l = !i && at("tengu_compact_cache_prefix", true),
+    c = oHl()
+      ? setInterval(
+          (u) => {
+            (rHl(),
+              u?.({
+                type: "sdk_status",
+                status: "compacting",
+              }));
+          },
+          30000,
+          context.onCompactEvent,
+        )
+      : void 0;
+  try {
+    if (l)
+      try {
+        let S = await dk({
+            promptMessages: [t],
+            cacheSafeParams: s,
+            canUseTool: createCompactCanUseTool(),
+            querySource: "compact",
+            forkLabel: "compact",
+            maxTurns: 1,
+            fallbackModel: ENn(context.options.mainLoopModel, context.options.fallbackModel),
+            skipCacheWrite: true,
+            skipTranscript: true,
+            overrides: {
+              abortController: context.abortController,
+            },
+          }),
+          A = MI(S.messages),
+          v = _Nn(S.messages),
+          C = On(S.messages, (x) => x.type === "assistant" && !x.isApiErrorMessage);
+        if (A && v && !A.isApiErrorMessage) {
+          if (!v.startsWith(nF))
+            G("tengu_compact_cache_sharing_success", {
+              preCompactTokenCount: o,
+              outputTokens: S.totalUsage.output_tokens,
+              cacheReadInputTokens: S.totalUsage.cache_read_input_tokens,
+              cacheCreationInputTokens: S.totalUsage.cache_creation_input_tokens,
+              cacheHitRate:
+                S.totalUsage.cache_read_input_tokens > 0
+                  ? S.totalUsage.cache_read_input_tokens /
+                    (S.totalUsage.cache_read_input_tokens +
+                      S.totalUsage.cache_creation_input_tokens +
+                      S.totalUsage.input_tokens)
+                  : 0,
+              forkAssistantMessageCount: C,
+            });
+          return yNn(S.messages) ?? A;
+        }
+        if (context.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
+        (T(`Compact cache sharing: no text in response, falling back. Response: ${De(A)}`, {
+          level: "warn",
+        }),
+          G("tengu_compact_cache_sharing_fallback", {
+            reason: We("no_text_response"),
+            preCompactTokenCount: o,
+            lastAssistantKind: xwf(A),
+            assistantTextLength: v?.length ?? 0,
+            forkAssistantMessageCount: C,
+            stopReason: Oo(
+              A?.isApiErrorMessage && A.message.stop_reason !== "refusal"
+                ? void 0
+                : (A?.message.stop_reason ?? void 0),
+            ),
+            assistantErrorKind: Oo(A?.error ?? void 0),
+          }));
+      } catch (S) {
+        if (context.abortController.signal.aborted || Xie(S, ERROR_MESSAGE_USER_ABORT))
+          throw Error(ERROR_MESSAGE_USER_ABORT);
+        (ke(S),
+          G("tengu_compact_cache_sharing_fallback", {
+            reason: We("error"),
+            preCompactTokenCount: o,
+          }));
+      }
+    let d =
+        !i &&
+        (await pYt(
+          context.options.mainLoopModel,
+          context.options.tools,
+          async () => n.toolPermissionContext,
+          context.options.agentDefinitions.activeAgents,
+          "compact",
+        ))
+          ? oE([Vg, $jt, ...context.options.tools.filter((S) => S.isMcp)], "name")
+          : [Vg],
+      p = [...Py(e), t],
+      f = stripImagesFromMessages(i ? Cwf(p) : p),
+      m = i ? Iwf(f) : f,
+      g = context.options.mainLoopModel,
+      h = context.agentId === void 0;
+    if (dut(g, context.requestDialog)) {
+      let S = bye();
+      if (S === null) {
+        if (h) Le("model_fable_consent", "compact_no_allowed_fallback");
+        throw Error(
+          "Compaction unavailable: your model policy only allows Fable 5, which requires usage credits \xB7 /model to set it up",
+        );
+      }
+      if (h) It("model_fable_consent", "compact_substituted");
+      g = S;
+    }
+    let y = ENn(g, context.options.fallbackModel),
+      b = [g, ...y.filter((S) => S !== g)],
+      _ = 0;
+    while (true) {
+      let S = b[_],
+        A = false,
+        v = [];
+      a?.({
+        type: "response_length",
+        op: "reset",
+      });
+      try {
+        let x = ybt({
+            messages: lk(m, i ? [] : context.options.tools),
+            systemPrompt: Sc([
+              "You are a helpful AI assistant tasked with summarizing conversations.",
+            ]),
+            thinkingConfig: k6n(S)
+              ? context.options.thinkingConfig
+              : {
+                  type: "disabled",
+                },
+            tools: i ? [] : d,
+            signal: context.abortController.signal,
+            options: {
+              async getToolPermissionContext() {
+                return context.getAppState().toolPermissionContext;
+              },
+              model: S,
+              fallbackModel: b[_ + 1],
+              toolChoice: void 0,
+              isNonInteractiveSession: context.options.isNonInteractiveSession,
+              hasAppendSystemPrompt: !!context.options.appendSystemPrompt,
+              maxOutputTokensOverride: Math.min(Evi, qct(S)),
+              querySource: "compact",
+              agents: context.options.agentDefinitions.activeAgents,
+              mcpTools: [],
+              agentContext: context.agentContext,
+              stickyBetas: RR(u0()),
+              effortValue: gg(context),
+              enablePromptCaching: false,
+              promptTooLongIsHandled: true,
+            },
+          })[Symbol.asyncIterator](),
+          I = await x.next();
+        while (!I.done) {
+          let D = I.value;
+          if (
+            !A &&
+            D.type === "stream_event" &&
+            D.event.type === "content_block_start" &&
+            D.event.content_block.type === "text"
+          )
+            ((A = true),
+              context.onCompactEvent?.({
+                type: "stream_mode",
+                mode: "responding",
+              }));
+          if (
+            D.type === "stream_event" &&
+            D.event.type === "content_block_delta" &&
+            D.event.delta.type === "text_delta"
+          ) {
+            let P = D.event.delta.text.length;
+            a?.({
+              type: "response_length",
+              op: "add",
+              delta: P,
+            });
+          }
+          if (D.type === "assistant") v.push(D);
+          I = await x.next();
+        }
+        let k = v.at(-1);
+        if (k) return k.isApiErrorMessage ? k : (yNn(v) ?? k);
+        if (context.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
+        throw (
+          T(`Compact streaming failed. hasStartedStreaming=${A}`, {
+            level: "error",
+          }),
+          G("tengu_compact_failed", {
+            reason: We("no_streaming_response"),
+            preCompactTokenCount: o,
+            hasStartedStreaming: A,
+            promptCacheSharingEnabled: l,
+          }),
+          Error(ERROR_MESSAGE_INCOMPLETE_RESPONSE)
+        );
+      } catch (C) {
+        let x = b[_ + 1];
+        if (x !== void 0 && dut(x, context.requestDialog)) {
+          let I = bye() ?? void 0;
+          if (((x = I !== void 0 && !XIe(b[0], I) ? I : void 0), x !== void 0)) b[_ + 1] = x;
+        }
+        if (C instanceof NN && x !== void 0) {
+          (xe("model_fallback"),
+            G("tengu_model_fallback_triggered", {
+              original_model: Cf(C.originalModel),
+              fallback_model: Cf(x),
+              chain_index: _ + 1,
+              query_source: We("compact"),
+              reason: $e(C.reason),
+              entrypoint: We("cli"),
+              queryChainId: Hr(context.queryTracking?.chainId) ?? We(""),
+              queryDepth: context.queryTracking?.depth ?? -1,
+            }),
+            T(
+              `Compact: model fallback triggered (${C.reason}), retrying summarization on the fallback model`,
+              {
+                level: "warn",
+              },
+            ),
+            context.onCompactEvent?.({
+              type: "stream_mode",
+              mode: "requesting",
+            }),
+            _++);
+          continue;
+        }
+        if (C instanceof NN && C.reason === "model_blocked")
+          throw new Tq(`${wp(C.originalModel)} is currently unavailable.`);
+        throw C;
+      }
+    }
+  } finally {
+    clearInterval(c);
+  }
+}
+async function createPostCompactFileAttachments(readFileState, toolUseContext, maxFiles, r = []) {
+  let o = collectReadToolFilePaths(r),
+    recentFiles = Object.entries(readFileState)
+      .map(([l, c]) => ({
+        filename: l,
+        ...c,
+      }))
+      .filter((l) => !Lwf(l.filename, toolUseContext.agentId) && !o.has(ds(l.filename)))
+      .sort((l, c) => c.timestamp - l.timestamp)
+      .slice(0, maxFiles),
+    results = await Promise.all(
+      recentFiles.map(async (l) => {
+        let c = await dZn(
+          l.filename,
+          {
+            ...toolUseContext,
+            fileReadingLimits: {
+              maxTokens: Hwf,
+            },
+          },
+          "tengu_post_compact_file_restore_success",
+          "tengu_post_compact_file_restore_error",
+          "compact",
+        );
+        return c ? ai(c) : null;
+      }),
+    ),
+    a = 0;
+  return results.filter((l) => {
+    if (l === null) return false;
+    let c = If(De(l));
+    if (a + c <= Awf) return ((a += c), true);
+    return false;
+  });
+}
+function createPlanAttachmentIfNeeded(agentId) {
+  let t = bP(agentId);
+  if (!t) return null;
+  let n = _P(agentId);
+  return ai({
+    type: "plan_file_reference",
+    planFilePath: n,
+    planContent: t,
+  });
+}
+function createSkillAttachmentIfNeeded(agentId) {
+  let t = Zbr(agentId);
+  if (t.size === 0) return null;
+  let n = 0,
+    r = Array.from(t.values())
+      .sort((o, s) => s.invokedAt - o.invokedAt)
+      .map((o) => ({
+        name: o.skillName,
+        path: o.skillPath,
+        content: Rwf(o.content, Twf),
+      }))
+      .filter((o) => {
+        let s = If(o.content);
+        if (n + s > vwf) return false;
+        return ((n += s), true);
+      });
+  if (r.length === 0) return null;
+  return ai({
+    type: "invoked_skills",
+    skills: r,
+  });
+}
+async function _Qn(e) {
+  if (Fr(e).mode !== "plan") return null;
+  let t = _P(e.agentId),
+    n = bP(e.agentId) !== null,
+    r = e.options?.planModeInstructions;
+  return ai({
+    type: "plan_mode",
+    reminderType: "full",
+    isSubAgent: !!e.agentId,
+    planFilePath: t,
+    planExists: n,
+    ...(r !== void 0 && {
+      customInstructions: r,
+    }),
+  });
+}
+async function createAsyncAgentAttachmentsIfNeeded(context) {
+  let appState = context.getAppState();
+  return Object.values(appState.tasks)
+    .filter((r) => r.type === "local_agent")
+    .flatMap((r) => {
+      if (r.retrieved || r.status === "pending" || r.agentId === context.agentId) return [];
+      return [
+        ai({
+          type: "task_status",
+          taskId: r.agentId,
+          taskType: "local_agent",
+          description: r.description,
+          status: r.status,
+          deltaSummary: r.status === "running" ? (r.progress?.summary ?? null) : (r.error ?? null),
+          outputFilePath: jm(r.agentId),
+        }),
+      ];
+    });
+}
+function collectReadToolFilePaths(messages) {
+  let stubIds = new Set();
+  for (let r of messages) {
+    if (r.type !== "user" || !Array.isArray(r.message.content)) continue;
+    for (let o of r.message.content)
+      if (o.type === "tool_result" && typeof o.content === "string" && A0n(o.content))
+        stubIds.add(o.tool_use_id);
+  }
+  let n = new Set();
+  for (let r of messages) {
+    if (r.type !== "assistant" || !Array.isArray(r.message.content)) continue;
+    for (let o of r.message.content) {
+      if (o.type !== "tool_use" || o.name !== Ds || stubIds.has(o.id)) continue;
+      let s = o.input;
+      if (s && typeof s === "object" && "file_path" in s && typeof s.file_path === "string")
+        n.add(ds(s.file_path));
+    }
+  }
+  return n;
+}
+function Rwf(e, t) {
+  if (If(e) <= t) return e;
+  let n = t * 4 - SKILL_TRUNCATION_MARKER.length;
+  return e.slice(0, n) + SKILL_TRUNCATION_MARKER;
+}
+function Lwf(e, t) {
+  let n = ds(e);
+  try {
+    let r = ds(_P(t));
+    if (n === r) return true;
+  } catch {}
+  try {
+    if (new Set(Skl.map((o) => ds(r5e(o)))).has(n)) return true;
+  } catch {}
+  return false;
+}
+var mQn = 5,
+  Awf = 50000,
+  Hwf = 5000,
+  Twf = 5000,
+  vwf = 25000,
+  Akl = 100,
+  ERROR_MESSAGE_NOT_ENOUGH_MESSAGES = "Not enough messages to compact.",
+  wkl = 3,
+  PTL_RETRY_MARKER = "[earlier conversation truncated for compaction retry]",
+  ERROR_MESSAGE_PROMPT_TOO_LONG =
+    "Conversation too long. Press esc twice to go up a few messages and try again.",
+  ERROR_MESSAGE_USER_ABORT = "API Error: Request was aborted.",
+  abt = "Compaction blocked by PreCompact hook",
+  ERROR_MESSAGE_INCOMPLETE_RESPONSE =
+    "Compaction interrupted \xB7 This may be due to network issues \u2014 please try again.",
+  Tq,
+  SKILL_TRUNCATION_MARKER = `
+
+[... skill content truncated for compaction; use Read on the skill path if you need the full text]`;

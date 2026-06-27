@@ -1,0 +1,164 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module tRc
+// matched 2.1.88 source: src/components/FeedbackSurvey/usePostCompactSurvey.tsx
+// class=modified  jaccard=0.3807  score=0.7019  fileCov=0.4541
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module tRc] deps: types/generated/google/protobuf/timestamp.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/metadata.ts, utils/semver.ts, context/notifications.tsx, tools/GlobTool/prompt.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/teamMemoryOps.ts, utils/messages.ts, utils/log.ts, utils/telemetry/pluginTelemetry.ts, utils/sessionStorage.ts, utils/crypto.ts, components/FeedbackSurvey/useFeedbackSurvey.tsx
+nD = R(rt(), 1);
+qvm = /\bmemor(?:y|ies)\b/i;
+function Xvm(messages, t) {
+  let n = messages.findIndex((r) => r.uuid === t);
+  if (n === -1) return false;
+  for (let r = n + 1; r < messages.length; r++) {
+    let o = messages[r];
+    if (o && (o.type === "user" || o.type === "assistant")) return true;
+  }
+  return false;
+}
+function usePostCompactSurvey(messages, isLoading, t0, t1) {
+  let o = nRc.c(25),
+    s = t0 === void 0 ? false : t0,
+    i;
+  if (o[0] !== t1) ((i = t1 === void 0 ? {} : t1), (o[0] = t1), (o[1] = i));
+  else i = o[1];
+  let { enabled: a } = i,
+    l = a === void 0 ? true : a,
+    [c, u] = UNe.useState(null),
+    d;
+  if (o[2] === Symbol.for("react.memo_cache_sentinel")) ((d = new Set()), (o[2] = d));
+  else d = o[2];
+  let p = UNe.useRef(d),
+    f = UNe.useRef(null),
+    m = _temp,
+    g = _temp2,
+    h;
+  if (o[3] === Symbol.for("react.memo_cache_sentinel"))
+    ((h = {
+      hideThanksAfterMs: zvm,
+      onOpen: m,
+      onSelect: g,
+    }),
+      (o[3] = h));
+  else h = o[3];
+  let {
+      state: y,
+      lastResponse: b,
+      appearanceId: _,
+      open: S,
+      handleSelect: A,
+      handleUndo: v,
+    } = BNe(h),
+    C,
+    x;
+  if (o[4] !== l)
+    ((C = () => {
+      if (!l) return;
+      u(at(POST_COMPACT_SURVEY_GATE, false));
+    }),
+      (x = [l]),
+      (o[4] = l),
+      (o[5] = C),
+      (o[6] = x));
+  else ((C = o[5]), (x = o[6]));
+  UNe.useEffect(C, x);
+  let I;
+  if (o[7] !== messages)
+    ((I = new Set(messages.filter(Qvm).map(Jvm))), (o[7] = messages), (o[8] = I));
+  else I = o[8];
+  let k = I,
+    D,
+    P;
+  if (
+    o[9] !== k ||
+    o[10] !== l ||
+    o[11] !== c ||
+    o[12] !== s ||
+    o[13] !== isLoading ||
+    o[14] !== messages ||
+    o[15] !== S ||
+    o[16] !== y
+  )
+    ((P = () => {
+      if (!l) return;
+      if (y !== "closed" || isLoading) return;
+      if (s) return;
+      if (c !== true) return;
+      if (Fte()) return;
+      if (!Us("allow_product_feedback")) return;
+      if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return;
+      if (f.current !== null) {
+        if (Xvm(messages, f.current)) {
+          if (((f.current = null), Math.random() < Yvm)) S();
+          return;
+        }
+      }
+      let L = Array.from(k).filter((M) => !p.current.has(M));
+      if (L.length > 0) ((p.current = new Set(k)), (f.current = L.at(-1)));
+    }),
+      (D = [l, k, y, isLoading, s, c, messages, S]),
+      (o[9] = k),
+      (o[10] = l),
+      (o[11] = c),
+      (o[12] = s),
+      (o[13] = isLoading),
+      (o[14] = messages),
+      (o[15] = S),
+      (o[16] = y),
+      (o[17] = D),
+      (o[18] = P));
+  else ((D = o[17]), (P = o[18]));
+  UNe.useEffect(P, D);
+  let O;
+  if (o[19] !== _ || o[20] !== A || o[21] !== v || o[22] !== b || o[23] !== y)
+    ((O = {
+      state: y,
+      lastResponse: b,
+      appearanceId: _,
+      handleSelect: A,
+      handleUndo: v,
+    }),
+      (o[19] = _),
+      (o[20] = A),
+      (o[21] = v),
+      (o[22] = b),
+      (o[23] = y),
+      (o[24] = O));
+  else O = o[24];
+  return O;
+}
+function Jvm(e) {
+  return e.uuid;
+}
+function Qvm(e) {
+  return pA(e);
+}
+function _temp2(appearanceId_0, selected) {
+  (G("tengu_post_compact_survey_event", {
+    event_type: We("responded"),
+    appearance_id: appearanceId_0,
+    response: $e(selected),
+  }),
+    Jc("feedback_survey", {
+      event_type: "responded",
+      appearance_id: appearanceId_0,
+      response: selected,
+      survey_type: "post_compact",
+    }));
+}
+function _temp(appearanceId) {
+  (G("tengu_post_compact_survey_event", {
+    event_type: We("appeared"),
+    appearance_id: appearanceId,
+  }),
+    Jc("feedback_survey", {
+      event_type: "appeared",
+      appearance_id: appearanceId,
+      survey_type: "post_compact",
+    }));
+}
+var nRc,
+  UNe,
+  zvm = 5000,
+  POST_COMPACT_SURVEY_GATE = "tengu_post_compact_survey",
+  Yvm = 0.2;

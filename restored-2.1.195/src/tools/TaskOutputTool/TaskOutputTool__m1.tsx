@@ -1,0 +1,354 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module pRo
+// matched 2.1.88 source: src/tools/TaskOutputTool/TaskOutputTool.tsx
+// class=modified (alt of src/tools/TaskOutputTool/TaskOutputTool.tsx)  jaccard=0.2157  score=0.6427  fileCov=0.2451
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+async function getTaskOutputData(task) {
+  let t;
+  if (task.type === "local_bash") {
+    let o = task.shellCommand?.taskOutput;
+    if (o) {
+      let s = await o.getStdout(),
+        i = o.getStderr();
+      t = [s, i].filter(Boolean).join(`
+`);
+    } else t = await fRo(task.id);
+  } else t = await fRo(task.id);
+  let n = {
+    task_id: task.id,
+    task_type: task.type,
+    status: task.status,
+    description: task.description,
+    output: t,
+  };
+  if (task.type === "local_bash")
+    return {
+      ...n,
+      exitCode: task.result?.code ?? null,
+    };
+  if (task.type === "local_agent") {
+    let r = task,
+      o = r.result
+        ? zl(
+            r.result.content,
+            `
+`,
+          )
+        : void 0;
+    return {
+      ...n,
+      prompt: r.prompt,
+      result: o || t,
+      output: o || t,
+      error: r.error,
+    };
+  }
+  if (task.type === "remote_agent")
+    return {
+      ...n,
+      prompt: task.command,
+    };
+  return n;
+}
+async function waitForTaskCompletion(taskId, getAppState, timeoutMs, abortController) {
+  let o = Date.now();
+  while (Date.now() - o < timeoutMs) {
+    if (abortController?.signal.aborted) throw new ru();
+    let a = getAppState().tasks?.[taskId];
+    if (!a) return null;
+    if (a.status !== "running" && a.status !== "pending") return a;
+    await Nn(100);
+  }
+  return getAppState().tasks?.[taskId] ?? null;
+}
+function TaskOutputResultDisplay(t0) {
+  let t = x_l.c(54),
+    { content: n, verbose: r, theme: o } = t0,
+    s = r === void 0 ? false : r,
+    i = Uu("app:toggleTranscript", "Global", "ctrl+o"),
+    a;
+  if (t[0] !== n) ((a = typeof n === "string" ? Ft(n) : n), (t[0] = n), (t[1] = a));
+  else a = t[1];
+  let result = a;
+  if (!result.task) {
+    let f;
+    if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+      ((f = nm.jsx(qn, {
+        children: nm.jsx(Fl, {
+          children: "No task output available",
+        }),
+      })),
+        (t[2] = f));
+    else f = t[2];
+    return f;
+  }
+  let { task: task } = result;
+  if (task.task_type === "local_bash") {
+    let f;
+    if (t[3] !== task.error || t[4] !== task.output)
+      ((f = {
+        stdout: task.output,
+        stderr: "",
+        isImage: false,
+        dangerouslyDisableSandbox: true,
+        returnCodeInterpretation: task.error,
+      }),
+        (t[3] = task.error),
+        (t[4] = task.output),
+        (t[5] = f));
+    else f = t[5];
+    let m = f,
+      g;
+    if (t[6] !== m || t[7] !== s)
+      ((g = nm.jsx(l6e, {
+        content: m,
+        verbose: s,
+      })),
+        (t[6] = m),
+        (t[7] = s),
+        (t[8] = g));
+    else g = t[8];
+    return g;
+  }
+  if (task.task_type === "local_agent") {
+    let f = task.result
+      ? hu(
+          task.result,
+          `
+`,
+        ) + 1
+      : 0;
+    if (result.retrieval_status === "success") {
+      if (s) {
+        let h;
+        if (t[9] !== f || t[10] !== task.description)
+          ((h = nm.jsxs(w, {
+            children: [task.description, " (", f, " lines)"],
+          })),
+            (t[9] = f),
+            (t[10] = task.description),
+            (t[11] = h));
+        else h = t[11];
+        let y;
+        if (t[12] !== task.prompt || t[13] !== o)
+          ((y =
+            task.prompt &&
+            nm.jsx(B8t, {
+              prompt: task.prompt,
+              theme: o,
+              dim: true,
+            })),
+            (t[12] = task.prompt),
+            (t[13] = o),
+            (t[14] = y));
+        else y = t[14];
+        let b;
+        if (t[15] !== task.result || t[16] !== o)
+          ((b =
+            task.result &&
+            nm.jsx(U, {
+              marginTop: 1,
+              children: nm.jsx(_Io, {
+                content: [
+                  {
+                    type: "text",
+                    text: task.result,
+                  },
+                ],
+                theme: o,
+              }),
+            })),
+            (t[15] = task.result),
+            (t[16] = o),
+            (t[17] = b));
+        else b = t[17];
+        let _;
+        if (t[18] !== task.error)
+          ((_ =
+            task.error &&
+            nm.jsxs(U, {
+              flexDirection: "column",
+              marginTop: 1,
+              children: [
+                nm.jsx(w, {
+                  color: "error",
+                  bold: true,
+                  children: "Error:",
+                }),
+                nm.jsx(U, {
+                  paddingLeft: 2,
+                  children: nm.jsx(w, {
+                    color: "error",
+                    children: task.error,
+                  }),
+                }),
+              ],
+            })),
+            (t[18] = task.error),
+            (t[19] = _));
+        else _ = t[19];
+        let S;
+        if (t[20] !== y || t[21] !== b || t[22] !== _)
+          ((S = nm.jsxs(U, {
+            flexDirection: "column",
+            paddingLeft: 2,
+            marginTop: 1,
+            children: [y, b, _],
+          })),
+            (t[20] = y),
+            (t[21] = b),
+            (t[22] = _),
+            (t[23] = S));
+        else S = t[23];
+        let A;
+        if (t[24] !== h || t[25] !== S)
+          ((A = nm.jsxs(U, {
+            flexDirection: "column",
+            children: [h, S],
+          })),
+            (t[24] = h),
+            (t[25] = S),
+            (t[26] = A));
+        else A = t[26];
+        return A;
+      }
+      let g;
+      if (t[27] !== i)
+        ((g = nm.jsx(qn, {
+          children: nm.jsxs(w, {
+            dimColor: true,
+            children: ["Read output (", i, " to expand)"],
+          }),
+        })),
+          (t[27] = i),
+          (t[28] = g));
+      else g = t[28];
+      return g;
+    }
+    if (result.retrieval_status === "timeout" || task.status === "running") {
+      let g;
+      if (t[29] === Symbol.for("react.memo_cache_sentinel"))
+        ((g = nm.jsx(qn, {
+          children: nm.jsx(w, {
+            dimColor: true,
+            children: "Task is still running\u2026",
+          }),
+        })),
+          (t[29] = g));
+      else g = t[29];
+      return g;
+    }
+    if (result.retrieval_status === "not_ready") {
+      let g;
+      if (t[30] === Symbol.for("react.memo_cache_sentinel"))
+        ((g = nm.jsx(qn, {
+          children: nm.jsx(w, {
+            dimColor: true,
+            children: "Task is still running\u2026",
+          }),
+        })),
+          (t[30] = g));
+      else g = t[30];
+      return g;
+    }
+    let m;
+    if (t[31] === Symbol.for("react.memo_cache_sentinel"))
+      ((m = nm.jsx(qn, {
+        children: nm.jsx(w, {
+          dimColor: true,
+          children: "Task not ready",
+        }),
+      })),
+        (t[31] = m));
+    else m = t[31];
+    return m;
+  }
+  if (task.task_type === "remote_agent") {
+    let f;
+    if (t[32] !== task.description || t[33] !== task.status)
+      ((f = nm.jsxs(w, {
+        children: ["\xA0\xA0", task.description, " [", task.status, "]"],
+      })),
+        (t[32] = task.description),
+        (t[33] = task.status),
+        (t[34] = f));
+    else f = t[34];
+    let m;
+    if (t[35] !== task.output || t[36] !== s)
+      ((m =
+        task.output &&
+        s &&
+        nm.jsx(U, {
+          paddingLeft: 4,
+          marginTop: 1,
+          children: nm.jsx(w, {
+            children: task.output,
+          }),
+        })),
+        (t[35] = task.output),
+        (t[36] = s),
+        (t[37] = m));
+    else m = t[37];
+    let g;
+    if (t[38] !== i || t[39] !== task.output || t[40] !== s)
+      ((g =
+        !s &&
+        task.output &&
+        nm.jsxs(w, {
+          dimColor: true,
+          children: ["     ", "(", i, " to expand)"],
+        })),
+        (t[38] = i),
+        (t[39] = task.output),
+        (t[40] = s),
+        (t[41] = g));
+    else g = t[41];
+    let h;
+    if (t[42] !== f || t[43] !== m || t[44] !== g)
+      ((h = nm.jsxs(U, {
+        flexDirection: "column",
+        children: [f, m, g],
+      })),
+        (t[42] = f),
+        (t[43] = m),
+        (t[44] = g),
+        (t[45] = h));
+    else h = t[45];
+    return h;
+  }
+  let u;
+  if (t[46] !== task.description || t[47] !== task.status)
+    ((u = nm.jsxs(w, {
+      children: ["\xA0\xA0", task.description, " [", task.status, "]"],
+    })),
+      (t[46] = task.description),
+      (t[47] = task.status),
+      (t[48] = u));
+  else u = t[48];
+  let d;
+  if (t[49] !== task.output)
+    ((d =
+      task.output &&
+      nm.jsx(U, {
+        paddingLeft: 4,
+        children: nm.jsx(w, {
+          children: task.output.slice(0, 500),
+        }),
+      })),
+      (t[49] = task.output),
+      (t[50] = d));
+  else d = t[50];
+  let p;
+  if (t[51] !== u || t[52] !== d)
+    ((p = nm.jsxs(U, {
+      flexDirection: "column",
+      children: [u, d],
+    })),
+      (t[51] = u),
+      (t[52] = d),
+      (t[53] = p));
+  else p = t[53];
+  return p;
+}
+var x_l, nm, Agf, uXn;

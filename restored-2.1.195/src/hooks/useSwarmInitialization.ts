@@ -1,0 +1,35 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module fEc
+// matched 2.1.88 source: src/hooks/useSwarmInitialization.ts
+// class=modified  jaccard=0.2859  score=0.9048  fileCov=0.2947
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+function useSwarmInitialization(setAppState, initialMessages, { enabled: n = true } = {}) {
+  mEc.useEffect(() => {
+    if (!n) return;
+    if (el()) {
+      let r = initialMessages?.[0],
+        o = r && "teamName" in r ? r.teamName : void 0,
+        s = r && "agentName" in r ? r.agentName : void 0;
+      if (o && s) {
+        pEc(setAppState, o, s);
+        let a = J4(o)?.members.find((l) => l.name === s);
+        if (a)
+          Dzo(setAppState, Rt(), {
+            teamName: o,
+            agentId: a.agentId,
+            agentName: s,
+          });
+      } else {
+        let i = ije?.();
+        if (i?.teamName && i?.agentId && i?.agentName)
+          Dzo(setAppState, Rt(), {
+            teamName: i.teamName,
+            agentId: i.agentId,
+            agentName: i.agentName,
+          });
+      }
+    }
+  }, [setAppState, initialMessages, n]);
+}
+var mEc;

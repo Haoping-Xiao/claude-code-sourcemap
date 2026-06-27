@@ -1,0 +1,343 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module ejn
+// matched 2.1.88 source: src/utils/Shell.ts
+// class=modified  jaccard=0.3207  score=0.5394  fileCov=0.4416
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module ejn] deps: @anthropic-ai/sdk/internal/utils/uuid.mjs, proxy-from-env/index.js, utils/imagePaste.ts
+((sMa = require("fs/promises")), (iMa = require("path")), (aMa = require("path/posix")));
+async function zmo(e) {
+  try {
+    return (fMa.accessSync(e, m6.constants.X_OK), true);
+  } catch (t) {
+    let { code: n } = await $n(e, ["--version"], {
+      timeout: 1000,
+      useCwd: false,
+    });
+    return n === 0;
+  }
+}
+async function findSuitableShell() {
+  let shellOverride = process.env.CLAUDE_CODE_SHELL;
+  if (shellOverride)
+    if (
+      (shellOverride.includes("bash") || shellOverride.includes("zsh")) &&
+      (await zmo(shellOverride))
+    )
+      return (T(`Using shell override: ${shellOverride}`), shellOverride);
+    else
+      T(
+        `CLAUDE_CODE_SHELL="${shellOverride}" is not a valid bash/zsh path, falling back to detection`,
+      );
+  let env_shell = process.env.SHELL,
+    n = env_shell && (env_shell.includes("bash") || env_shell.includes("zsh")),
+    r = env_shell?.includes("bash"),
+    [o, s] = await Promise.all([Gf("zsh"), Gf("bash")]),
+    i = ["/bin", "/usr/bin", "/usr/local/bin", "/opt/homebrew/bin"],
+    supportedShells = (r ? ["bash", "zsh"] : ["zsh", "bash"]).flatMap((u) =>
+      i.map((d) => `${d}/${u}`),
+    );
+  if (r) {
+    if (s) supportedShells.unshift(s);
+    if (o) supportedShells.push(o);
+  } else {
+    if (o) supportedShells.unshift(o);
+    if (s) supportedShells.push(s);
+  }
+  if (n && (await zmo(env_shell))) supportedShells.unshift(env_shell);
+  let c;
+  for (let u of supportedShells)
+    if (u && (await zmo(u))) {
+      c = u;
+      break;
+    }
+  if (!c) {
+    let u =
+      "No suitable shell found. Claude CLI requires a Posix shell environment. Please ensure you have a valid shell installed and the SHELL environment variable set.";
+    throw (
+      T(u, {
+        level: "error",
+      }),
+      Error(u)
+    );
+  }
+  return c;
+}
+async function iRp() {
+  let e = await findSuitableShell();
+  return {
+    provider: await rMa(e),
+  };
+}
+async function Ymo() {
+  try {
+    let { provider: e } = await Kmo();
+    return npn(e.shellPath);
+  } catch {
+    return "none";
+  }
+}
+function mMa() {
+  Kmo.cache?.clear?.();
+}
+async function exec(command, abortSignal, shellType, options) {
+  let {
+      timeout: o,
+      onProgress: s,
+      preventCwdChanges: i,
+      shouldUseSandbox: a,
+      shouldAutoBackground: l,
+      onStdout: c,
+      sessionEnvVars: u,
+      effortLevel: d,
+    } = options ?? {},
+    p = o || oRp,
+    provider = await lRp[shellType](),
+    m = Math.floor(Math.random() * 65536)
+      .toString(16)
+      .padStart(4, "0"),
+    g = a && OWe() !== "relaxed" ? Xst() : void 0;
+  if (g !== void 0 && !uMa) {
+    let N = qE();
+    if (g !== N)
+      ((uMa = true),
+        T(
+          `CLAUDE_CODE_TMPDIR makes the per-uid temp dir ${Buffer.byteLength(N)} bytes, too long for AF_UNIX sockets; child-process $TMPDIR falls back to ${g}. ` +
+            "Shorten CLAUDE_CODE_TMPDIR to \u2264~30 bytes if child processes should use your override.",
+          {
+            level: "warn",
+          },
+        ));
+  }
+  let { commandString: h, cwdFilePath: y } = await provider.buildExecCommand(command, {
+      id: m,
+      sandboxTmpDir: g,
+      useSandbox: a ?? false,
+    }),
+    b = h,
+    _ = Rpn(),
+    S = false;
+  try {
+    await qqe.realpath(_);
+  } catch (N) {
+    S = wn(N);
+  }
+  if (S) {
+    let N = [yr(), pMa.homedir(), vU()],
+      B = null,
+      $ = -1;
+    for (let [q, W] of N.entries())
+      try {
+        ((B = await qqe.realpath(W)), ($ = q));
+        break;
+      } catch {}
+    if (B === null)
+      return tjn(
+        `Working directory "${_}" no longer exists. Please restart Claude from an existing directory.`,
+      );
+    if ((T(`Shell CWD "${_}" no longer exists, recovering to "${B}"`), qkr(B), $ > 0))
+      return tjn(
+        `Working directory "${_}" was deleted; shell cwd recovered to "${B}". Re-issue your command (it will run from the recovered directory).`,
+      );
+    _ = B;
+  }
+  if (abortSignal.aborted) return gMa();
+  let A = provider.shellPath,
+    v = a && shellType === "powershell",
+    C = v ? "/bin/sh" : A;
+  if (bI()) {
+    let N = await mct(command);
+    RKr(
+      N.kind === "simple"
+        ? N.commands.map((B) => B.text).join(`
+`)
+        : command,
+    );
+  }
+  if (a) {
+    let N;
+    if (bI() && fce()) {
+      let B = DKr(),
+        $ = B.filesystem.denyWrite,
+        q = B.filesystem.allowWrite,
+        W = xo.getFsWriteConfig(),
+        V = xo.getConfig()?.filesystem,
+        Y = V?.allowWrite ?? [],
+        z = Uo([...q, ...Y.filter((Z) => Z !== "/" && Z.length > 0)]),
+        K = W.denyWithinAllow.filter(
+          (Z) =>
+            z.some((J) => Z === J || Z.startsWith(`${J}/`)) &&
+            !$.some((J) => Z === J || Z.startsWith(`${J}/`)),
+        );
+      N = {
+        ...B,
+        filesystem: {
+          allowWrite: z,
+          denyWrite: Uo([...$, ...K]),
+          denyRead: Uo([...B.filesystem.denyRead, ...(V?.denyRead ?? [])]),
+        },
+      };
+    }
+    if (g && !process.env.CLAUDE_TMPDIR) process.env.CLAUDE_TMPDIR = g;
+    b = await xo.wrapWithSandbox(b, C, N, abortSignal);
+  }
+  let x = v ? "/bin/sh" : A,
+    I = v ? ["-c", b] : provider.getSpawnArgs(b),
+    k = await provider.getEnvironmentOverrides(command, u),
+    D = !!c,
+    P = iN("local_bash"),
+    taskOutput = new Tb(P, s ?? null, !D);
+  await qqe.mkdir(jpt(), {
+    recursive: true,
+  });
+  let L, M;
+  if (!D) {
+    let N = m6.constants.O_NOFOLLOW ?? 0;
+    L = await qqe.open(
+      taskOutput.path,
+      m6.constants.O_WRONLY | m6.constants.O_CREAT | m6.constants.O_APPEND | N,
+    );
+  }
+  try {
+    M = a ? await Mna() : void 0;
+    let N = dMa.spawn(x, I, {
+        env: {
+          ...DM(),
+          SHELL: shellType === "bash" ? A : void 0,
+          GIT_EDITOR: "true",
+          ...k,
+          ...Upt({
+            sessionId: Rt(),
+            effortLevel: d,
+            source: "agent",
+          }),
+        },
+        cwd: _,
+        stdio: cRp(D, L?.fd, M),
+        detached: provider.detached,
+        windowsHide: true,
+      }),
+      B = rjn(N, abortSignal, p, taskOutput, l),
+      $ = B3t("claude_code.bash.subprocess", {
+        spanType: "bash.subprocess",
+        attrs: {
+          "shell.type": shellType,
+          command_length: command.length,
+          timeout_ms: p,
+          command: iP(command).content,
+        },
+      });
+    if ($) {
+      let W = GPa(command).catch(() => []);
+      B.result
+        .then(async (V) => {
+          let Y = await W;
+          if (Y.length > 0)
+            O3t($, {
+              command_prefix: Y.map((z) => iP(z).content),
+            });
+          if (
+            (O3t($, {
+              exit_code: V.code,
+              stdout_bytes: V.outputFileSize ?? Buffer.byteLength(V.stdout),
+              stderr_bytes: Buffer.byteLength(V.stderr),
+              interrupted: V.interrupted,
+              ...(V.backgroundTaskId && {
+                backgrounded: true,
+              }),
+            }),
+            V.interrupted)
+          )
+            Sqe($, `interrupted (exit ${V.code})`);
+        })
+        .catch((V) => {
+          Sqe($, be(V));
+        })
+        .finally(() => $.end())
+        .catch(() => {});
+    }
+    if (L !== void 0)
+      try {
+        await L.close();
+      } catch {}
+    if (M !== void 0)
+      try {
+        m6.closeSync(M);
+      } catch {}
+    if (N.stdout && c)
+      N.stdout.on("data", (W) => {
+        c(typeof W === "string" ? W : W.toString());
+      });
+    let q = Vt() === "windows" ? NFe(y) : y;
+    return (
+      B.result.then(async (W) => {
+        if (a) xo.cleanupAfterCommand();
+        if (W && !i && !W.backgroundTaskId)
+          try {
+            let V = m6
+              .readFileSync(q, {
+                encoding: "utf8",
+              })
+              .trim();
+            if (Vt() === "windows") V = NFe(V);
+            if (o_(V) !== _) {
+              if ((setCwd(V, _), !MFe())) (Eut(), _ca(_, V));
+            }
+          } catch {
+            G("tengu_shell_set_cwd", {
+              success: false,
+            });
+          }
+        try {
+          m6.unlinkSync(q);
+        } catch {}
+      }),
+      B
+    );
+  } catch (N) {
+    if (L !== void 0)
+      try {
+        await L.close();
+      } catch {}
+    if (M !== void 0)
+      try {
+        m6.closeSync(M);
+      } catch {}
+    return (taskOutput.clear(), T(`Shell exec error: ${be(N)}`), tjn(be(N)));
+  }
+}
+function setCwd(path, relativeTo) {
+  let n = njn.isAbsolute(path) ? path : njn.resolve(relativeTo || qt().cwd(), path),
+    r;
+  try {
+    r = qt().realpathSync(n);
+  } catch (o) {
+    if (wn(o)) throw Error(`Path "${n}" does not exist`);
+    r = n;
+  }
+  qkr(r);
+  try {
+    G("tengu_shell_set_cwd", {
+      success: true,
+    });
+  } catch (o) {}
+}
+function Xmo(e, t) {
+  Iro(e, t);
+}
+function cRp(e, t, n) {
+  let r = e ? ["pipe", "pipe", "pipe"] : ["pipe", t, t];
+  if (n !== void 0) r[Aro] = n;
+  return r;
+}
+var dMa,
+  m6,
+  qqe,
+  pMa,
+  njn,
+  fMa,
+  oRp = 1800000,
+  uMa = false,
+  Kmo,
+  aRp,
+  lRp;

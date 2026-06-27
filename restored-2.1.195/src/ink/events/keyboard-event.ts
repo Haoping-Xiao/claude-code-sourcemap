@@ -1,0 +1,32 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module iJr
+// matched 2.1.88 source: src/ink/events/keyboard-event.ts
+// class=modified  jaccard=0.6312  score=1  fileCov=0.6312
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
+// ─────────────────────────────────────────────────────────────────────────
+// [unwrapped __esm module iJr] deps: ink/events/terminal-event.ts
+sat = class sat extends yne {
+  key;
+  name;
+  sequence;
+  ctrl;
+  shift;
+  meta;
+  superKey;
+  fn;
+  constructor(e) {
+    super("keydown", {
+      bubbles: true,
+      cancelable: true,
+    });
+    ((this.key = HGd(e)),
+      (this.name = e.name ?? ""),
+      (this.sequence = e.sequence ?? ""),
+      (this.ctrl = e.ctrl),
+      (this.shift = e.shift),
+      (this.meta = e.meta || e.option),
+      (this.superKey = e.super),
+      (this.fn = e.fn));
+  }
+};
+var J_e;

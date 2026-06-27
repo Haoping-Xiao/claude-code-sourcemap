@@ -1,0 +1,13 @@
+# 中间产物与大文件（不入库）
+work/
+dist/2.1.195/npm/
+*.tgz
+# Bun 原生二进制（244MB，不入库）
+**/claude
+**/claude.exe
+# 依赖
+node_modules/
+tools/bun-demincer/node_modules/
+# 杂项
+.DS_Store
+*.log
