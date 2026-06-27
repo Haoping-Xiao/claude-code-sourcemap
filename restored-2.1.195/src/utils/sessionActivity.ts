@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LL
 // matched 2.1.88 source: src/utils/sessionActivity.ts
-// class=modified  jaccard=0.3629  score=0.6669  fileCov=0.4432
+// class=modified  jaccard=0.2254  score=0.3372  fileCov=0.4045
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var LL = E(() => {

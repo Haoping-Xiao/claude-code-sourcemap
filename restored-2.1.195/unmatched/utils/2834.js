@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uut
-// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0175  score=0.941  fileCov=0.0175
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0175); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0069  score=0.2264  fileCov=0.007
+// note: nearest: src/cli/print.ts (0.0069); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uut = E(() => {
   je();

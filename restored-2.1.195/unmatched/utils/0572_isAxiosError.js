@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CZe
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/utils/nativeInstaller/download.ts
+// class=new  jaccard=0.0143  score=0.2374  fileCov=0.015
+// note: nearest: src/utils/nativeInstaller/download.ts (0.0143); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var CZe = E(() => {
   cEu = /(^|\.)(anthropic\.com|claude\.ai|claude\.com)$/i, uEu = /(^|\.)downloads\.claude\.ai$/i;

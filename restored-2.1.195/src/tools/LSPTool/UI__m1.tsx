@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nbl
 // matched 2.1.88 source: src/tools/LSPTool/UI.tsx
-// class=modified (alt of src/tools/LSPTool/UI.tsx)  jaccard=0.2701  score=0.6998  fileCov=0.3055
+// class=modified (alt of src/tools/LSPTool/UI.tsx)  jaccard=0.2594  score=0.6648  fileCov=0.2984
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var nbl = E(() => {

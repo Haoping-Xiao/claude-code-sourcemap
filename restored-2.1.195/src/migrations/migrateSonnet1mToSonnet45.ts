@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JOc
 // matched 2.1.88 source: src/migrations/migrateSonnet1mToSonnet45.ts
-// class=modified  jaccard=0.4534  score=0.6692  fileCov=0.5843
+// class=modified  jaccard=0.3223  score=0.7697  fileCov=0.3567
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var JOc = E(() => {

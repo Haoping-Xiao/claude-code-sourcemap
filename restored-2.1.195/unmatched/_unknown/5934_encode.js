@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _jc
-// class=new  (no 2.1.88 match)
-// note: 2 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/util.js
+// class=new  jaccard=0.0203  score=0.383  fileCov=0.021
+// note: nearest: node_modules/node-forge/lib/util.js (0.0203); 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _jc = E(() => {
   sB();

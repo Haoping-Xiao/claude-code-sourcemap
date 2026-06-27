@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ykl
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
-// class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.1072  score=0.3181  fileCov=0.1392
+// class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.1201  score=0.306  fileCov=0.1651
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ykl = E(() => {

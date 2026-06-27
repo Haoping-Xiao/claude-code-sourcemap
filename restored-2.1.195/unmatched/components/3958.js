@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tTo
 // matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
-// class=new  jaccard=0.0099  score=1  fileCov=0.0099
-// note: nearest: src/utils/nativeInstaller/installer.ts (0.0099); dir inferred from dep-graph -> components; 0 renamed
+// class=new  jaccard=0.0133  score=0.4962  fileCov=0.0134
+// note: nearest: src/utils/nativeInstaller/installer.ts (0.0133); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tTo = E(() => {
   wb();

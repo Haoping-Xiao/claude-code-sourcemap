@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module K2l
 // matched 2.1.88 source: src/services/plugins/pluginOperations.ts
-// class=modified  jaccard=0.3455  score=0.4023  fileCov=0.7098
+// class=modified  jaccard=0.2894  score=0.3985  fileCov=0.5139
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var K2l = E(() => {

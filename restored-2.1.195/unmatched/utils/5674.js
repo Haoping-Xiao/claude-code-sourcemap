@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l0c
-// matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
-// class=new  jaccard=0.014  score=0.057  fileCov=0.0182
-// note: nearest: src/tools/AgentTool/loadAgentsDir.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/sessionStorage.ts
+// class=new  jaccard=0.0131  score=0.0867  fileCov=0.0152
+// note: nearest: src/utils/sessionStorage.ts (0.0131); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var l0c = E(() => {
   HI();

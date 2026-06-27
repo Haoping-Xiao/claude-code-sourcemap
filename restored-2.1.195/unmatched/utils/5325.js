@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZVo
-// matched 2.1.88 source: src/components/tasks/taskStatusUtils.tsx
-// class=new  jaccard=0.0533  score=0.2501  fileCov=0.0635
-// note: nearest: src/components/tasks/taskStatusUtils.tsx (0.0533); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
+// class=new  jaccard=0.0168  score=0.2804  fileCov=0.0176
+// note: nearest: src/services/PromptSuggestion/speculation.ts (0.0168); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ZVo = E(() => {
   ft();

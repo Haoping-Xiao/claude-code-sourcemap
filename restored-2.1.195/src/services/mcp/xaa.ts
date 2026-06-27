@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module g$
 // matched 2.1.88 source: src/services/mcp/xaa.ts
-// class=modified  jaccard=0.704  score=0.797  fileCov=0.8578
+// class=modified  jaccard=0.4887  score=0.5974  fileCov=0.7287
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var g$ = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wdr
 // matched 2.1.88 source: src/screens/REPL.tsx
-// class=new  jaccard=0.0056  score=0.2519  fileCov=0.0057
-// note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.004  score=0.283  fileCov=0.0041
+// note: nearest: src/screens/REPL.tsx (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var wdr = E(() => {
   es();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Afc
 // matched 2.1.88 source: src/upstreamproxy/upstreamproxy.ts
-// class=modified  jaccard=0.1899  score=0.3399  fileCov=0.3009
+// class=modified  jaccard=0.1466  score=0.2575  fileCov=0.2539
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Afc = E(() => {

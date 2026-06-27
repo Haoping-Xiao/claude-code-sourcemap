@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Uh
-// matched 2.1.88 source: src/utils/api.ts
-// class=new  jaccard=0.0188  score=0.5932  fileCov=0.0191
-// note: nearest: src/utils/api.ts (0.0188); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/analytics/metadata.ts
+// class=new  jaccard=0.0206  score=0.4792  fileCov=0.021
+// note: nearest: src/services/analytics/metadata.ts (0.0206); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Uh = E(() => {
   Qi();

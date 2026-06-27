@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pgc
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0076  score=0.1193  fileCov=0.0081
-// note: nearest: src/utils/sessionStorage.ts (0.0076); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0119  score=0.227  fileCov=0.0124
+// note: nearest: src/utils/sessionStorage.ts (0.0119); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pgc = E(() => {
   Hp();

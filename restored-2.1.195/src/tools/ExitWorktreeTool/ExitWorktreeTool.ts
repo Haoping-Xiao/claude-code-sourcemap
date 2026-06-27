@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rbl
 // matched 2.1.88 source: src/tools/ExitWorktreeTool/ExitWorktreeTool.ts
-// class=modified  jaccard=0.264  score=0.381  fileCov=0.4623
+// class=modified  jaccard=0.3453  score=0.5346  fileCov=0.4938
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Rbl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I2e
 // matched 2.1.88 source: src/utils/proxy.ts
-// class=modified  jaccard=0.226  score=0.371  fileCov=0.3664
+// class=modified  jaccard=0.4045  score=0.5504  fileCov=0.6042
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I2e = E(() => {

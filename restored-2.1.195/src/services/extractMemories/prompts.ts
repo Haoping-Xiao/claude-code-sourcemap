@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MQn
 // matched 2.1.88 source: src/services/extractMemories/prompts.ts
-// class=modified  jaccard=0.183  score=0.3784  fileCov=0.2616
+// class=modified  jaccard=0.1581  score=0.3815  fileCov=0.2126
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MQn = E(() => {

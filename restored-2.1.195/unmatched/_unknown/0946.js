@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T$r
 // matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
-// class=new  jaccard=0.0469  score=0.9046  fileCov=0.0472
-// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0469); 0 renamed
+// class=new  jaccard=0.0479  score=0.7577  fileCov=0.0486
+// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0479); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var T$r = E(() => {
   aIe = class aIe extends Error {

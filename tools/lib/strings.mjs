@@ -103,3 +103,37 @@ export function fingerprintSet(code, minLen = 6) {
   }
   return set;
 }
+
+// 提取对象属性名: 成员访问 `.foo`、对象字面量键 `foo:`、方法/简写。
+// esbuild/bun 默认**不重命名属性名**, 故它在 minify 前后保持一致, 是稳定指纹。
+// 去掉注释与字符串后再扫描, 避免把字符串内容误当属性。
+export function extractPropertyNames(code, minLen = 4) {
+  const set = new Set();
+  // 先去字符串与注释 (用占位符), 避免 .foo 出现在字符串里造成噪声
+  const stripped = code
+    .replace(/\/\/[^\n]*/g, " ")
+    .replace(/\/\*[\s\S]*?\*\//g, " ")
+    .replace(/"(?:[^"\\]|\\.)*"/g, '""')
+    .replace(/'(?:[^'\\]|\\.)*'/g, "''")
+    .replace(/`(?:[^`\\]|\\.)*`/g, "``");
+  // 成员访问 .prop (排除可选链 ?. 同样捕获)
+  const memRe = /\.\s*([A-Za-z_$][A-Za-z0-9_$]*)/g;
+  let m;
+  while ((m = memRe.exec(stripped)) !== null) {
+    if (m[1].length >= minLen) set.add(m[1]);
+  }
+  // 对象字面量/类成员键 foo: 或 foo( (方法)
+  const keyRe = /[{,;\s]([A-Za-z_$][A-Za-z0-9_$]*)\s*[:(]/g;
+  while ((m = keyRe.exec(stripped)) !== null) {
+    if (m[1].length >= minLen) set.add(m[1]);
+  }
+  return set;
+}
+
+// 组合指纹: 字符串(str:) + 属性名(prop:) 双通道带命名空间, 便于统一 IDF 处理。
+export function fingerprintTokens(code, { strMinLen = 6, propMinLen = 5 } = {}) {
+  const out = new Set();
+  for (const s of fingerprintSet(code, strMinLen)) out.add("str:" + s);
+  for (const p of extractPropertyNames(code, propMinLen)) out.add("prop:" + p);
+  return out;
+}

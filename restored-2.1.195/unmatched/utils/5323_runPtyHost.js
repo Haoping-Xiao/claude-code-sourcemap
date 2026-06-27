@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cuc
-// matched 2.1.88 source: node_modules/human-signals/build/src/core.js
-// class=new  jaccard=0.0498  score=0.1575  fileCov=0.068
-// note: nearest: node_modules/human-signals/build/src/core.js (0.0498); dir inferred from dep-graph -> utils; 2 renamed
+// matched 2.1.88 source: src/services/mcp/client.ts
+// class=new  jaccard=0.0116  score=0.0993  fileCov=0.0129
+// note: nearest: src/services/mcp/client.ts (0.0116); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var cuc = E(() => {
   Is();

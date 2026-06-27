@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module w$n
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/ext/descriptor/index.js
+// class=new  jaccard=0.0076  score=0.1911  fileCov=0.0079
+// note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0076); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var w$n = E(() => {
   M8();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iit
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/schemas.ts
+// class=new  jaccard=0.0154  score=0.4709  fileCov=0.0156
+// note: nearest: src/utils/plugins/schemas.ts (0.0154); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iit = E(() => {
   Xr();

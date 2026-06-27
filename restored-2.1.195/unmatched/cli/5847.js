@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iUc
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0129  score=0.4476  fileCov=0.0131
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0129); dir inferred from dep-graph -> cli; 0 renamed
+// class=new  jaccard=0.0168  score=0.5321  fileCov=0.017
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0168); dir inferred from dep-graph -> cli; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iUc = E(() => {
   M8o();

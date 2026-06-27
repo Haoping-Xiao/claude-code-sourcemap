@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q5l
-// matched 2.1.88 source: src/components/design-system/LoadingState.tsx
-// class=partial  jaccard=0.2092  score=0.3791  fileCov=0.3182
-// note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/LogoV2/LogoV2.tsx
+// class=partial  jaccard=0.0649  score=0.6374  fileCov=0.0673
+// note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var q5l = E(() => {
   Ye();

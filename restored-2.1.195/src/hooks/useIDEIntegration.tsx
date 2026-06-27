@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T0c
 // matched 2.1.88 source: src/hooks/useIDEIntegration.tsx
-// class=modified  jaccard=0.3974  score=0.8347  fileCov=0.4313
+// class=modified  jaccard=0.3967  score=0.7944  fileCov=0.4421
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var T0c = E(() => {

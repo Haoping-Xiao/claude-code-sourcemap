@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zMc
 // matched 2.1.88 source: src/components/TrustDialog/utils.ts
-// class=modified  jaccard=0.3394  score=0.8154  fileCov=0.3676
+// class=modified  jaccard=0.3094  score=0.6033  fileCov=0.3883
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zMc = E(() => {

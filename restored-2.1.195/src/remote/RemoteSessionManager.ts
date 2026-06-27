@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Y4o
 // matched 2.1.88 source: src/remote/RemoteSessionManager.ts
-// class=modified  jaccard=0.2434  score=0.2659  fileCov=0.7425
+// class=modified  jaccard=0.3098  score=0.3596  fileCov=0.691
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Y4o = E(() => {

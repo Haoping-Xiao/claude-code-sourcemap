@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module L$r
 // matched 2.1.88 source: node_modules/@aws-sdk/client-sso/dist-cjs/index.js
-// class=new  jaccard=0.0577  score=1  fileCov=0.0577
-// note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0577); 0 renamed
+// class=new  jaccard=0.0479  score=1  fileCov=0.0479
+// note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0479); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var L$r = E(() => {
   R$r();

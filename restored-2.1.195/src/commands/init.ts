@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sUl
 // matched 2.1.88 source: src/commands/init.ts
-// class=modified  jaccard=0.4323  score=1  fileCov=0.4323
+// class=modified  jaccard=0.4764  score=1  fileCov=0.4764
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sUl = E(() => {

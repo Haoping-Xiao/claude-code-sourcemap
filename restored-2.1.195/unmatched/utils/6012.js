@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VGc
-// matched 2.1.88 source: src/utils/telemetry/perfettoTracing.ts
-// class=new  jaccard=0.0146  score=0.0575  fileCov=0.0191
-// note: nearest: src/utils/telemetry/perfettoTracing.ts (0.0146); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/teleport.tsx
+// class=new  jaccard=0.0061  score=0.0875  fileCov=0.0065
+// note: nearest: src/utils/teleport.tsx (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VGc = E(() => {
   kgr();

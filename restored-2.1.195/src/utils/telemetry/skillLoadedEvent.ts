@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xOc
 // matched 2.1.88 source: src/utils/telemetry/skillLoadedEvent.ts
-// class=modified  jaccard=0.385  score=0.7031  fileCov=0.4597
+// class=modified  jaccard=0.1923  score=0.3039  fileCov=0.3435
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xOc = E(() => {

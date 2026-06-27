@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WEl
 // matched 2.1.88 source: src/tools/SendMessageTool/SendMessageTool.ts
-// class=modified  jaccard=0.2685  score=0.7837  fileCov=0.2899
+// class=modified  jaccard=0.2248  score=0.6212  fileCov=0.2605
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var WEl = E(() => {

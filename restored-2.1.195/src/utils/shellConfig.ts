@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module A9e
 // matched 2.1.88 source: src/utils/shellConfig.ts
-// class=modified  jaccard=0.3682  score=0.4741  fileCov=0.6225
+// class=modified  jaccard=0.3757  score=0.5236  fileCov=0.5708
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var A9e = E(() => {

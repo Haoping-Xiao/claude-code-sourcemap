@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module RJt
 // matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.0058  score=0.1693  fileCov=0.0059
-// note: nearest: src/cli/print.ts (0.0058); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0094  score=0.2409  fileCov=0.0097
+// note: nearest: src/cli/print.ts (0.0094); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var RJt = E(() => {
   dn();

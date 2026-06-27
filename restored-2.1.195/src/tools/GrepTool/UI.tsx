@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Otl
 // matched 2.1.88 source: src/tools/GrepTool/UI.tsx
-// class=modified  jaccard=0.3502  score=0.5839  fileCov=0.4666
+// class=modified  jaccard=0.3088  score=0.4748  fileCov=0.469
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Otl = E(() => {

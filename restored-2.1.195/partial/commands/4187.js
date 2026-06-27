@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Lcl
-// matched 2.1.88 source: src/bridge/workSecret.ts
-// class=partial  jaccard=0.1196  score=0.1895  fileCov=0.2449
-// note: low-confidence suggestion: src/bridge/workSecret.ts; dir inferred from dep-graph -> commands; 0 renamed
+// matched 2.1.88 source: src/bridge/codeSessionApi.ts
+// class=partial  jaccard=0.069  score=0.1774  fileCov=0.1014
+// note: low-confidence suggestion: src/bridge/codeSessionApi.ts; dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Lcl = E(() => {
   ql();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m8o
 // matched 2.1.88 source: src/context/stats.tsx
-// class=modified  jaccard=0.4088  score=1  fileCov=0.4088
+// class=modified  jaccard=0.4307  score=0.9324  fileCov=0.4446
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var m8o = E(() => {

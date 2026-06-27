@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jv
 // matched 2.1.88 source: src/tools/ScheduleCronTool/prompt.ts
-// class=modified  jaccard=0.4611  score=0.6488  fileCov=0.6145
+// class=modified  jaccard=0.4005  score=0.5452  fileCov=0.6015
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jv = E(() => {

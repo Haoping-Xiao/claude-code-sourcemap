@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I6e
 // matched 2.1.88 source: src/services/mcp/channelPermissions.ts
-// class=modified  jaccard=0.6599  score=0.7693  fileCov=0.8227
+// class=modified  jaccard=0.4174  score=0.6723  fileCov=0.524
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I6e = E(() => {

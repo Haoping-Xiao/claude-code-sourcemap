@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WJa
-// matched 2.1.88 source: src/commands/remote-setup/remote-setup.tsx
-// class=new  jaccard=0.0554  score=0.1657  fileCov=0.0769
-// note: nearest: src/commands/remote-setup/remote-setup.tsx (0.0554); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0126  score=0.1497  fileCov=0.0135
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0126); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var WJa = E(() => {
   Ye();

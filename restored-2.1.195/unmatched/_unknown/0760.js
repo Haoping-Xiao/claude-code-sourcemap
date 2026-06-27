@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fIs
 // matched 2.1.88 source: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js
-// class=new  jaccard=0.021  score=1  fileCov=0.021
-// note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.021); 0 renamed
+// class=new  jaccard=0.0417  score=1  fileCov=0.0417
+// note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.0417); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fIs = E(() => {
   pIs = R(by(), 1);

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sj
 // matched 2.1.88 source: src/utils/windowsPaths.ts
-// class=modified  jaccard=0.2177  score=0.5089  fileCov=0.2756
+// class=modified  jaccard=0.2019  score=0.5605  fileCov=0.2399
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sj = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zsr
 // matched 2.1.88 source: src/commands/reload-plugins/reload-plugins.ts
-// class=modified  jaccard=0.1063  score=0.203  fileCov=0.1823
+// class=modified  jaccard=0.0772  score=0.1368  fileCov=0.1505
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zsr = E(() => {

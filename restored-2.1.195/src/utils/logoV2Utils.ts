@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UFo
 // matched 2.1.88 source: src/utils/logoV2Utils.ts
-// class=modified  jaccard=0.3376  score=0.8101  fileCov=0.3666
+// class=modified  jaccard=0.1569  score=0.7804  fileCov=0.1641
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var UFo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ydc
 // matched 2.1.88 source: src/components/MCPServerMultiselectDialog.tsx
-// class=modified  jaccard=0.3936  score=0.8508  fileCov=0.4228
+// class=modified  jaccard=0.2753  score=0.4434  fileCov=0.4207
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ydc = E(() => {

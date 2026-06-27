@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KHi
 // matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/oauth2client.js
-// class=new  jaccard=0.0206  score=0.385  fileCov=0.0213
-// note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.0206); 0 renamed
+// class=new  jaccard=0.0135  score=0.53  fileCov=0.0137
+// note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.0135); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var KHi = Q(IVr => {
   Object.defineProperty(IVr, "__esModule", {

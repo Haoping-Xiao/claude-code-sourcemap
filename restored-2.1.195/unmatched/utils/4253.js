@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xYn
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0319  score=0.1524  fileCov=0.0388
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0319); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0204  score=0.1412  fileCov=0.0233
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0204); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xYn = E(() => {
   kt();

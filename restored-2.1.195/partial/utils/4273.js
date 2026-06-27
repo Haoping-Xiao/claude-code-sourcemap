@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Vko
-// matched 2.1.88 source: src/utils/plugins/loadPluginOutputStyles.ts
-// class=partial  jaccard=0.2063  score=0.4203  fileCov=0.2883
-// note: low-confidence suggestion: src/utils/plugins/loadPluginOutputStyles.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
+// class=partial  jaccard=0.0985  score=0.4108  fileCov=0.1146
+// note: low-confidence suggestion: src/utils/plugins/loadPluginAgents.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Vko = E(() => {
   Qi();

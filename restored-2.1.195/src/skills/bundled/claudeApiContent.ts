@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uxc
 // matched 2.1.88 source: src/skills/bundled/claudeApiContent.ts
-// class=modified  jaccard=0.1577  score=0.2203  fileCov=0.3569
+// class=modified  jaccard=0.1826  score=0.2371  fileCov=0.4429
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var uxc = E(() => {

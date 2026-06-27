@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module EVn
 // matched 2.1.88 source: src/utils/autoUpdater.ts
-// class=modified  jaccard=0.2499  score=0.2814  fileCov=0.6905
+// class=modified  jaccard=0.2322  score=0.2691  fileCov=0.6286
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var EVn = E(() => {

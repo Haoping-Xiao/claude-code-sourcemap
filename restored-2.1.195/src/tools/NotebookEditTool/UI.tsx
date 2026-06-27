@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nnl
 // matched 2.1.88 source: src/tools/NotebookEditTool/UI.tsx
-// class=modified  jaccard=0.2324  score=0.5752  fileCov=0.2805
+// class=modified  jaccard=0.2679  score=0.5343  fileCov=0.3494
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var nnl = E(() => {

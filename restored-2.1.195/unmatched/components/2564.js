@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gm
 // matched 2.1.88 source: src/screens/REPL.tsx
-// class=new  jaccard=0.0072  score=0.4651  fileCov=0.0073
-// note: nearest: src/screens/REPL.tsx (0.0072); dir inferred from dep-graph -> components; 0 renamed
+// class=new  jaccard=0.0057  score=0.3741  fileCov=0.0057
+// note: nearest: src/screens/REPL.tsx (0.0057); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gm = E(() => {
   si();

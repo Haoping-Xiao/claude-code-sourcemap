@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kvs
 // matched 2.1.88 source: src/services/remoteManagedSettings/syncCacheState.ts
-// class=modified  jaccard=0.221  score=1  fileCov=0.221
+// class=modified  jaccard=0.1047  score=1  fileCov=0.1047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kvs = E(() => {

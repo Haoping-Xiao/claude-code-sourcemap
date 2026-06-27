@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l0o
 // matched 2.1.88 source: src/utils/swarm/permissionSync.ts
-// class=modified  jaccard=0.389  score=0.6974  fileCov=0.4679
+// class=modified  jaccard=0.3296  score=0.7651  fileCov=0.3667
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var l0o = E(() => {

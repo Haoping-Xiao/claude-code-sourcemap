@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module z0o
 // matched 2.1.88 source: src/utils/mcpOutputStorage.ts
-// class=modified (alt of src/utils/mcpOutputStorage.ts)  jaccard=0.2914  score=0.535  fileCov=0.3902
+// class=modified (alt of src/utils/mcpOutputStorage.ts)  jaccard=0.2132  score=0.4687  fileCov=0.2811
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var z0o = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module W9o
 // matched 2.1.88 source: src/cli/handlers/plugins.ts
-// class=modified  jaccard=0.3342  score=0.3694  fileCov=0.7782
+// class=modified  jaccard=0.2674  score=0.3271  fileCov=0.5944
 // note: deminified; 16 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var W9o = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _3o
-// matched 2.1.88 source: src/utils/config.ts
-// class=new  jaccard=0.0078  score=0.2975  fileCov=0.0079
-// note: nearest: src/utils/config.ts (0.0078); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/Settings/Config.tsx
+// class=new  jaccard=0.0026  score=0.1665  fileCov=0.0026
+// note: nearest: src/components/Settings/Config.tsx (0.0026); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _3o = E(() => {
   SC();

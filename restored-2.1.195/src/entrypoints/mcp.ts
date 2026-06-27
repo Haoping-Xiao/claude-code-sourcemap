@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zcr
 // matched 2.1.88 source: src/entrypoints/mcp.ts
-// class=modified  jaccard=0.1432  score=0.3008  fileCov=0.2148
+// class=modified  jaccard=0.0886  score=0.3363  fileCov=0.1073
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Zcr = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jS
 // matched 2.1.88 source: src/utils/path.ts
-// class=modified  jaccard=0.2716  score=0.3638  fileCov=0.5174
+// class=modified  jaccard=0.294  score=0.5072  fileCov=0.4115
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jS = E(() => {

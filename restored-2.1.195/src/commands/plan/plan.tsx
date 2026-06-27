@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Dzl
 // matched 2.1.88 source: src/commands/plan/plan.tsx
-// class=modified  jaccard=0.2067  score=0.3779  fileCov=0.3133
+// class=modified  jaccard=0.1886  score=0.3382  fileCov=0.2988
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Dzl = E(() => {

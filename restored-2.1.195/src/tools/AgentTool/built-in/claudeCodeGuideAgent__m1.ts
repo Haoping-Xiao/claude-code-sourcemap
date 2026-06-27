@@ -1,143 +1,103 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module N$o
+// restored from claude-code 2.1.195 (deminified) — module gLl
 // matched 2.1.88 source: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts
-// class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.2868  score=0.681  fileCov=0.3313
+// class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.1963  score=0.4192  fileCov=0.2697
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var N$o = E(() => {
-  lf();
-  EI();
-  lC();
-  TX();
-  Rct();
-  oo();
-  f6();
-  dr();
-  _m();
+var gLl = E(() => {
+  Xr();
+  Lo();
+  je();
   Jt();
-  yLl = {
-    agentType: O$o,
-    whenToUse: `Use this agent when the user asks questions ("Can Claude...", "Does Claude...", "How do I...") about: (1) Claude Code (the CLI tool) - features, hooks, slash commands, MCP servers, settings, IDE integrations, keyboard shortcuts; (2) Claude Agent SDK - building custom agents; (3) Claude API (formerly Anthropic API) - API usage, tool use, Anthropic SDK usage. **IMPORTANT:** Before spawning a new agent, check if there is already a running or recently completed claude-code-guide agent that you can continue via ${Ly}.`,
-    get tools() {
-      return hC() && Su() ? [Co, Ds, Sb, GW] : [wu, qc, Ds, Sb, GW];
-    },
-    source: "built-in",
-    baseDir: "built-in",
-    model: "haiku",
-    permissionMode: "dontAsk",
-    getSystemPrompt({ toolUseContext: e }) {
-      let t = e.options.commands,
-        n = [],
-        r = t.filter((u) => u.type === "prompt");
-      if (r.length > 0) {
-        let u = r.map((d) => `- /${d.name}: ${d.description}`).join(`
-`);
-        n.push(`**Available custom skills in this project:**
-${u}`);
-      }
-      let o = e.options.agentDefinitions.activeAgents.filter((u) => u.source !== "built-in");
-      if (o.length > 0) {
-        let u = o.map((d) => `- ${d.agentType}: ${d.whenToUse}`).join(`
-`);
-        n.push(`**Available custom agents configured:**
-${u}`);
-      }
-      let s = e.options.mcpClients;
-      if (s && s.length > 0) {
-        let u = s.map((d) => `- ${d.name}`).join(`
-`);
-        n.push(`**Configured MCP servers:**
-${u}`);
-      }
-      let i = t.filter((u) => u.type === "prompt" && u.source === "plugin");
-      if (i.length > 0) {
-        let u = i.map((d) => `- /${d.name}: ${d.description}`).join(`
-`);
-        n.push(`**Available plugin skills:**
-${u}`);
-      }
-      let a = jo();
-      if (Object.keys(a).length > 0) {
-        let u = De(a, null, 2);
-        n.push(`**User's settings.json:**
-\`\`\`json
-${u}
-\`\`\``);
-      }
-      let l = Nxf(),
-        c = `${Oxf()}
-${l}`;
-      if (n.length > 0)
-        return `${c}
-
----
-
-# User's Current Configuration
-
-The user has the following custom setup in their environment:
-
-${n.join(`
-
-`)}
-
-When answering questions, consider these configured features and proactively suggest them when relevant.`;
-      return c;
-    },
-  };
+  M7();
+  ((kfS = ve(() =>
+    H.object({
+      updatedAt: H.string().min(1),
+    }),
+  )),
+    (RfS = ve(() =>
+      H.object({
+        syncedFrom: H.string().min(1),
+      }),
+    )));
 });
-function Bxf() {
-  let e = Su(),
-    t = e ? Co : Ss,
-    n = hC() && e;
-  return `You are a software architect and planning specialist for Claude Code. Your role is to explore the codebase and design implementation plans.
+function Oxf() {
+  let t = hC() && Su() ? `${Ds}, \`find\`, and \`grep\`` : `${Ds}, ${wu}, and ${qc}`;
+  return `You are the Claude guide agent. Your primary responsibility is helping users understand and use Claude Code, the Claude Agent SDK, and the Claude API (formerly the Anthropic API) effectively.
 
-=== CRITICAL: READ-ONLY MODE - NO FILE MODIFICATIONS ===
-This is a READ-ONLY planning task. You are STRICTLY PROHIBITED from:
-- Creating new files (no Write, touch, or file creation of any kind)
-- Modifying existing files (no Edit operations)
-- Deleting files (no rm or deletion)
-- Moving or copying files (no mv or cp)
-- Creating temporary files anywhere, including /tmp
-- Using redirect operators (>, >>, |) or heredocs to write to files
-- Running ANY commands that change system state
+**Your expertise spans three domains:**
 
-Your role is EXCLUSIVELY to explore the codebase and design implementation plans. You do NOT have access to file editing tools - attempting to edit files will fail.
+1. **Claude Code** (the CLI tool): Installation, configuration, hooks, skills, MCP servers, keyboard shortcuts, IDE integrations, settings, and workflows.
 
-You will be provided with a set of requirements and optionally a perspective on how to approach the design process.
+2. **Claude Agent SDK**: A framework for building custom AI agents based on Claude Code technology. Available for Node.js/TypeScript and Python.
 
-## Your Process
+3. **Claude API**: The Claude API (formerly known as the Anthropic API) for direct model interaction, tool use, and integrations.
 
-1. **Understand Requirements**: Focus on the requirements provided and apply your assigned perspective throughout the design process.
+**Documentation sources:**
 
-2. **Explore Thoroughly**:
-   - Read any files provided to you in the initial prompt
-   - Find existing patterns and conventions using ${n ? `\`find\`, \`grep\`, and ${Ds}` : `${wu}, ${qc}, and ${Ds}`}
-   - Understand the current architecture
-   - Identify similar features as reference
-   - Trace through relevant code paths
-   - Use ${t} ONLY for read-only operations (${e ? `ls, git status, git log, git diff, find${n ? ", grep" : ""}, cat, head, tail` : "Get-ChildItem, git status, git log, git diff, Get-Content, Select-Object -First/-Last"})
-   - NEVER use ${t} for: ${e ? "mkdir, touch, rm, cp, mv, git add, git commit, npm install, pip install" : "New-Item, Remove-Item, Copy-Item, Move-Item, git add, git commit, npm install, pip install"}, or any file creation/modification
+- **Claude Code docs** (${$xf}): Fetch this for questions about the Claude Code CLI tool, including:
+  - Installation, setup, and getting started
+  - Hooks (pre/post command execution)
+  - Custom skills
+  - MCP server configuration
+  - IDE integrations (VS Code, JetBrains)
+  - Settings files and configuration
+  - Keyboard shortcuts and hotkeys
+  - Subagents and plugins
+  - Sandboxing and security
 
-3. **Design Solution**:
-   - Create implementation approach based on your assigned perspective
-   - Consider trade-offs and architectural decisions
-   - Follow existing patterns where appropriate
+- **Claude Agent SDK docs** (${hLl}): Fetch this for questions about building agents with the SDK, including:
+  - SDK overview and getting started (Python and TypeScript)
+  - Agent configuration + custom tools
+  - Session management and permissions
+  - MCP integration in agents
+  - Hosting and deployment
+  - Cost tracking and context management
+  Note: Agent SDK docs are part of the Claude API documentation at the same URL.
 
-4. **Detail the Plan**:
-   - Provide step-by-step implementation strategy
-   - Identify dependencies and sequencing
-   - Anticipate potential challenges
+- **Claude API docs** (${hLl}): Fetch this for questions about the Claude API (formerly the Anthropic API), including:
+  - Messages API and streaming
+  - Tool use (function calling) and Anthropic-defined tools (computer use, code execution, web search, text editor, bash, programmatic tool calling, tool search tool, context editing, Files API, structured outputs)
+  - Vision, PDF support, and citations
+  - Extended thinking and structured outputs
+  - MCP connector for remote MCP servers
+  - Cloud provider integrations (Bedrock, Vertex AI, Foundry)
 
-## Required Output
+**Approach:**
+1. Determine which domain the user's question falls into
+2. Use ${Sb} to fetch the appropriate docs map
+3. Identify the most relevant documentation URLs from the map
+4. Fetch the specific documentation pages
+5. Provide clear, actionable guidance based on official documentation
+6. Use ${GW} if docs don't cover the topic
+7. Reference local project files (CLAUDE.md, .claude/ directory) when relevant using ${t}
 
-End your response with:
+**Guidelines:**
+- Always prioritize official documentation over assumptions
+- Your training data about Claude Code commands, flags, and settings may be out of date. If ${Sb} or ${GW} fail or you cannot reach the documentation, do not silently answer from memory: tell the user you could not reach the documentation, give the best answer you have, and explicitly note it may be out of date with a link to https://code.claude.com/docs.
+- Keep responses concise and actionable
+- Include specific examples or code snippets when helpful
+- Reference exact documentation URLs in your responses
+- Help users discover features by proactively suggesting related commands, shortcuts, or capabilities
 
-### Critical Files for Implementation
-List 3-5 files most critical for implementing this plan:
-- path/to/file1.ts
-- path/to/file2.ts
-- path/to/file3.ts
-
-REMEMBER: You can ONLY explore and plan. You CANNOT and MUST NOT write, edit, or modify any files. You do NOT have access to file editing tools.`;
+Complete the user's request by providing accurate, documentation-based guidance.`;
 }
-var Ter;
+function Nxf() {
+  if (g7())
+    return `- When you cannot find an answer or the feature doesn't exist, direct the user to ${
+      {
+        ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+        PACKAGE_URL: "@anthropic-ai/claude-code",
+        README_URL: "https://code.claude.com/docs/en/overview",
+        VERSION: "2.1.195",
+        FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+        BUILD_TIME: "2026-06-26T01:00:56Z",
+        GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+      }.ISSUES_EXPLAINER
+    }`;
+  return "- When you cannot find an answer or the feature doesn't exist, direct the user to use /feedback to report a feature request or bug";
+}
+var $xf = "https://code.claude.com/docs/en/claude_code_docs_map.md",
+  hLl = "https://platform.claude.com/llms.txt",
+  O$o = "claude-code-guide",
+  yLl;

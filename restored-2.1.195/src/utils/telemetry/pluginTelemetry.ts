@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aS
 // matched 2.1.88 source: src/utils/telemetry/pluginTelemetry.ts
-// class=modified  jaccard=0.3012  score=0.4185  fileCov=0.518
+// class=modified  jaccard=0.2973  score=0.3764  fileCov=0.5861
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var aS = E(() => {

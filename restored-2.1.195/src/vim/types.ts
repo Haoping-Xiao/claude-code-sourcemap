@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R1o
 // matched 2.1.88 source: src/vim/types.ts
-// class=modified  jaccard=0.4918  score=0.6601  fileCov=0.6585
+// class=modified  jaccard=0.272  score=0.6604  fileCov=0.3162
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var R1o = E(() => {

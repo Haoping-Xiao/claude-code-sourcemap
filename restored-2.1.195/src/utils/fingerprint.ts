@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pht
 // matched 2.1.88 source: src/utils/fingerprint.ts
-// class=modified  jaccard=0.1794  score=0.1973  fileCov=0.6631
+// class=modified  jaccard=0.2228  score=0.3208  fileCov=0.4216
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pht = E(() => {

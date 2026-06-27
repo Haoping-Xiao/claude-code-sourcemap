@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module AR
 // matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/util.mjs
-// class=new  jaccard=0.0461  score=0.0625  fileCov=0.1494
-// note: nearest: node_modules/@growthbook/growthbook/dist/esm/util.mjs (0.0461); 0 renamed
+// class=new  jaccard=0.0514  score=0.0952  fileCov=0.1006
+// note: nearest: node_modules/@growthbook/growthbook/dist/esm/util.mjs (0.0514); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var AR = E(() => {
   nge = class nge extends Error {

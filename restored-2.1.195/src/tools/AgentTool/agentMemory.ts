@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GNt
 // matched 2.1.88 source: src/tools/AgentTool/agentMemory.ts
-// class=modified  jaccard=0.6776  score=0.9611  fileCov=0.6967
+// class=modified  jaccard=0.4486  score=0.9266  fileCov=0.4651
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var GNt = E(() => {

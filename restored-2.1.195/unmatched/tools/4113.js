@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OCo
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0033  score=1  fileCov=0.0033
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0033); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var OCo = E(() => {
   jv();

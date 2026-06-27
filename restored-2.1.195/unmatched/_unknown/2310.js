@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S7r
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/semver/index.js
+// class=new  jaccard=0.0452  score=1  fileCov=0.0452
+// note: nearest: node_modules/semver/index.js (0.0452); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var S7r = Q((gKh, b2i) => {
   var y2i = /^[0-9]+$/,

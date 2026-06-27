@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OUc
 // matched 2.1.88 source: src/utils/plugins/headlessPluginInstall.ts
-// class=modified  jaccard=0.5429  score=0.8919  fileCov=0.5812
+// class=modified  jaccard=0.5086  score=0.8985  fileCov=0.5397
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OUc = E(() => {

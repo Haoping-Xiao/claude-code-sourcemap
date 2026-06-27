@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aMc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
+// class=new  jaccard=0.0083  score=0.2294  fileCov=0.0085
+// note: nearest: src/utils/permissions/permissionSetup.ts (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var aMc = E(() => {
   kt();

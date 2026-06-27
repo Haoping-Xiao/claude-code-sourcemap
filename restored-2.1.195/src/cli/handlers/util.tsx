@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module upc
 // matched 2.1.88 source: src/cli/handlers/util.tsx
-// class=modified  jaccard=0.2227  score=0.371  fileCov=0.3577
+// class=modified  jaccard=0.2301  score=0.3195  fileCov=0.4513
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var upc = E(() => {

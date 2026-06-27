@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module AW
 // matched 2.1.88 source: src/ink/supports-hyperlinks.ts
-// class=modified  jaccard=0.4567  score=0.7756  fileCov=0.5262
+// class=modified  jaccard=0.2631  score=0.4852  fileCov=0.3649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var AW = E(() => {

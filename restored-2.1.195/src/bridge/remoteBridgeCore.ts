@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B8o
 // matched 2.1.88 source: src/bridge/remoteBridgeCore.ts
-// class=modified  jaccard=0.4682  score=0.5716  fileCov=0.7213
+// class=modified  jaccard=0.4224  score=0.5275  fileCov=0.6795
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var B8o = E(() => {

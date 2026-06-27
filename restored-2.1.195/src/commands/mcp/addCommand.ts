@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jcr
 // matched 2.1.88 source: src/commands/mcp/addCommand.ts
-// class=modified  jaccard=0.5341  score=0.7737  fileCov=0.633
+// class=modified  jaccard=0.4644  score=0.7934  fileCov=0.5283
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jcr = E(() => {

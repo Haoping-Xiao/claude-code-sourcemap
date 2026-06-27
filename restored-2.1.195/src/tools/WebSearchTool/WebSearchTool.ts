@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hRo
 // matched 2.1.88 source: src/tools/WebSearchTool/WebSearchTool.ts
-// class=modified  jaccard=0.4346  score=0.5649  fileCov=0.6534
+// class=modified  jaccard=0.5223  score=0.673  fileCov=0.7
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hRo = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xar
-// matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.0045  score=0.0426  fileCov=0.005
-// note: nearest: src/cli/print.ts (0.0045); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/mcp/ElicitationDialog.tsx
+// class=new  jaccard=0.0262  score=0.0986  fileCov=0.0344
+// note: nearest: src/components/mcp/ElicitationDialog.tsx (0.0262); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xar = E(() => {
   LQt();

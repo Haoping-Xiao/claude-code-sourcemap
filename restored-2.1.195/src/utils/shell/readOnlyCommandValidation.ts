@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xue
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.9471  score=0.9536  fileCov=0.9929
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.8522  score=0.9153  fileCov=0.9252
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 /**

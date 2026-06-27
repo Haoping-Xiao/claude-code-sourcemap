@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q8
 // matched 2.1.88 source: src/utils/pdf.ts
-// class=modified  jaccard=0.367  score=0.4738  fileCov=0.6195
+// class=modified  jaccard=0.4127  score=0.5579  fileCov=0.6133
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var q8 = E(() => {

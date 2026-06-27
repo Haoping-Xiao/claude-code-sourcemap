@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module K0c
 // matched 2.1.88 source: src/components/FeedbackSurvey/useMemorySurvey.tsx
-// class=modified  jaccard=0.4037  score=0.7345  fileCov=0.4727
+// class=modified  jaccard=0.3587  score=0.5277  fileCov=0.5282
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var K0c = E(() => {

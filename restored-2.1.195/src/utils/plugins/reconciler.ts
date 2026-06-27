@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hDc
 // matched 2.1.88 source: src/utils/plugins/reconciler.ts
-// class=modified  jaccard=0.423  score=0.6473  fileCov=0.5497
+// class=modified  jaccard=0.4725  score=0.8026  fileCov=0.5347
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hDc = E(() => {

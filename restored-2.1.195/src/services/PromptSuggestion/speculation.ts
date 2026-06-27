@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module y6e
 // matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
-// class=modified  jaccard=0.5192  score=0.7229  fileCov=0.6483
+// class=modified  jaccard=0.5102  score=0.7923  fileCov=0.589
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var y6e = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iXr
 // matched 2.1.88 source: src/ink/tabstops.ts
-// class=modified  jaccard=0.313  score=1  fileCov=0.313
+// class=modified  jaccard=0.3512  score=1  fileCov=0.3512
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var iXr = E(() => {

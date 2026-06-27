@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ost
 // matched 2.1.88 source: src/utils/words.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.9834  score=0.9834  fileCov=1
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.9567  score=0.9662  fileCov=0.9898
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 /**

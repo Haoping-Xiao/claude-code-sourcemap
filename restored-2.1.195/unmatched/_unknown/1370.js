@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tFr
-// matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
-// class=new  jaccard=0.0103  score=1  fileCov=0.0103
-// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0103); 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js
+// class=new  jaccard=0.0498  score=0.7909  fileCov=0.0505
+// note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0498); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tFr = E(() => {
   OZs();

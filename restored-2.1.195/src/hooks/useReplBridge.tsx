@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module G8o
 // matched 2.1.88 source: src/hooks/useReplBridge.tsx
-// class=modified  jaccard=0.2577  score=0.3461  fileCov=0.5024
+// class=modified  jaccard=0.2778  score=0.3759  fileCov=0.5156
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var G8o = E(() => {

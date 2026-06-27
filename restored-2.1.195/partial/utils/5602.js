@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fTc
-// matched 2.1.88 source: src/services/mcp/types.ts
-// class=partial  jaccard=0.1933  score=1  fileCov=0.1933
-// note: low-confidence suggestion: src/services/mcp/types.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/ide/ide.tsx
+// class=partial  jaccard=0.0711  score=0.9676  fileCov=0.0713
+// note: low-confidence suggestion: src/commands/ide/ide.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fTc = E(() => {
   zj();

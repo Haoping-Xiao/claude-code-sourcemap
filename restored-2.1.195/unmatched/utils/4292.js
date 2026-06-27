@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xgl
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/mathematica.js
-// class=new  jaccard=0.0002  score=0.1431  fileCov=0.0002
-// note: nearest: node_modules/highlight.js/lib/languages/mathematica.js (0.0002); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/messages/AttachmentMessage.tsx
+// class=new  jaccard=0.0137  score=0.1562  fileCov=0.0148
+// note: nearest: src/components/messages/AttachmentMessage.tsx (0.0137); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xgl = E(() => {
   yC();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Pzn
 // matched 2.1.88 source: src/components/messages/HookProgressMessage.tsx
-// class=modified  jaccard=0.5243  score=0.8176  fileCov=0.5938
+// class=modified  jaccard=0.3899  score=0.4899  fileCov=0.6565
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Pzn = E(() => {

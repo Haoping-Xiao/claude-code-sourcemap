@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N5o
-// matched 2.1.88 source: src/entrypoints/sdk/coreTypes.ts
-// class=new  jaccard=0.0292  score=1  fileCov=0.0292
-// note: nearest: src/entrypoints/sdk/coreTypes.ts (0.0292); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
+// class=new  jaccard=0.0067  score=0.4981  fileCov=0.0067
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var N5o = E(() => {
   sp();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yec
 // matched 2.1.88 source: src/services/mcp/client.ts
-// class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0082  score=1  fileCov=0.0082
+// class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0099  score=0.2963  fileCov=0.0101
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var yec = E(() => {

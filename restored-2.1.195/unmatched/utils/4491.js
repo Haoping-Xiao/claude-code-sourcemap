@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nOe
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/bridge/bridgeMain.ts
+// class=new  jaccard=0.0061  score=0.6514  fileCov=0.0061
+// note: nearest: src/bridge/bridgeMain.ts (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var nOe = E(() => {
   dn();

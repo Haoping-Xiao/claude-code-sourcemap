@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module IKt
 // matched 2.1.88 source: src/tools/BashTool/prompt.ts
-// class=modified  jaccard=0.5224  score=0.6965  fileCov=0.6763
+// class=modified  jaccard=0.4475  score=0.6098  fileCov=0.6271
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var IKt = E(() => {

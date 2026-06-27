@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ngc
 // matched 2.1.88 source: src/components/MessageSelector.tsx
-// class=modified  jaccard=0.4908  score=0.6453  fileCov=0.6721
+// class=modified  jaccard=0.3721  score=0.5486  fileCov=0.5363
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ngc = E(() => {

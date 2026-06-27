@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module u2o
 // matched 2.1.88 source: src/utils/statusNoticeDefinitions.tsx
-// class=modified  jaccard=0.1416  score=0.1643  fileCov=0.507
+// class=modified  jaccard=0.1121  score=0.1426  fileCov=0.3438
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var u2o = E(() => {

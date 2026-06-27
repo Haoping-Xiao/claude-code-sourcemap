@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lgr
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/googleauth.js
+// class=new  jaccard=0.0075  score=0.2836  fileCov=0.0077
+// note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0075); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lgr = E(() => {
   sB();

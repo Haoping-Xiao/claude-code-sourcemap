@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module P8o
 // matched 2.1.88 source: src/cli/transports/ccrClient.ts
-// class=new  jaccard=0.0205  score=0.5848  fileCov=0.0208
-// note: nearest: src/cli/transports/ccrClient.ts (0.0205); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0282  score=0.5875  fileCov=0.0287
+// note: nearest: src/cli/transports/ccrClient.ts (0.0282); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var P8o = E(() => {
   Tnt();

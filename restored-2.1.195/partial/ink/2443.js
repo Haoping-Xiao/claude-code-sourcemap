@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _5i
 // matched 2.1.88 source: src/ink/Ansi.tsx
-// class=partial  jaccard=0.0996  score=1  fileCov=0.0996
+// class=partial  jaccard=0.2022  score=1  fileCov=0.2022
 // note: low-confidence suggestion: src/ink/Ansi.tsx; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _5i = E(() => {

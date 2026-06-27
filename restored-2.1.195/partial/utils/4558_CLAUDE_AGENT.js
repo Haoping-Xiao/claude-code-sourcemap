@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module HLl
 // matched 2.1.88 source: src/tools/AgentTool/forkSubagent.ts
-// class=partial  jaccard=0.0775  score=0.4149  fileCov=0.087
+// class=partial  jaccard=0.1531  score=0.6557  fileCov=0.1665
 // note: low-confidence suggestion: src/tools/AgentTool/forkSubagent.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var HLl = E(() => {

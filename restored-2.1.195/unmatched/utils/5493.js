@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lbc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0047  score=0.8462  fileCov=0.0047
+// note: nearest: src/screens/REPL.tsx (0.0047); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lbc = E(() => {
   zj();

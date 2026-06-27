@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rze
-// matched 2.1.88 source: src/utils/transcriptSearch.ts
-// class=new  jaccard=0.0384  score=0.0786  fileCov=0.0697
-// note: nearest: src/utils/transcriptSearch.ts (0.0384); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0057  score=0.1674  fileCov=0.0059
+// note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Rze = E(() => {
   je();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xW
 // matched 2.1.88 source: src/utils/imageResizer.ts
-// class=new  jaccard=0.0156  score=0.1876  fileCov=0.0168
-// note: nearest: src/utils/imageResizer.ts (0.0156); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0164  score=0.2317  fileCov=0.0173
+// note: nearest: src/utils/imageResizer.ts (0.0164); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xW = E(() => {
   Lne();

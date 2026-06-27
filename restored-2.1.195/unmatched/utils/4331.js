@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Fyl
-// matched 2.1.88 source: src/services/tools/toolHooks.ts
-// class=new  jaccard=0.0505  score=0.3358  fileCov=0.0561
-// note: nearest: src/services/tools/toolHooks.ts (0.0505); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/attachments.ts
+// class=new  jaccard=0.0125  score=0.5289  fileCov=0.0126
+// note: nearest: src/utils/attachments.ts (0.0125); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Fyl = E(() => {
   ZE();

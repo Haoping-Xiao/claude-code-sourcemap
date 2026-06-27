@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $7
 // matched 2.1.88 source: src/utils/pdfUtils.ts
-// class=modified  jaccard=0.4519  score=0.6853  fileCov=0.5703
+// class=modified  jaccard=0.4421  score=0.9184  fileCov=0.4601
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $7 = E(() => {

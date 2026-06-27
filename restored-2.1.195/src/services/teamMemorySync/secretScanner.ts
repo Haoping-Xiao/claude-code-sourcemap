@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zH
 // matched 2.1.88 source: src/services/teamMemorySync/secretScanner.ts
-// class=modified  jaccard=0.779  score=0.7999  fileCov=0.9676
+// class=modified  jaccard=0.5708  score=0.6341  fileCov=0.8511
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zH = E(() => {

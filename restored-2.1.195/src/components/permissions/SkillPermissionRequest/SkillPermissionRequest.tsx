@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NHc
 // matched 2.1.88 source: src/components/permissions/SkillPermissionRequest/SkillPermissionRequest.tsx
-// class=modified  jaccard=0.2397  score=0.6539  fileCov=0.2746
+// class=modified  jaccard=0.2144  score=0.4359  fileCov=0.2967
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var NHc = E(() => {

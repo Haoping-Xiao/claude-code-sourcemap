@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bKl
 // matched 2.1.88 source: src/components/hooks/SelectMatcherMode.tsx
-// class=modified  jaccard=0.1856  score=0.327  fileCov=0.3003
+// class=modified  jaccard=0.3936  score=0.5205  fileCov=0.6174
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bKl = E(() => {

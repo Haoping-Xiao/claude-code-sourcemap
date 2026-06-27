@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cui
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
+// class=new  jaccard=0.0456  score=1  fileCov=0.0456
+// note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0456); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Cui = E(() => {
   E4r = class E4r {

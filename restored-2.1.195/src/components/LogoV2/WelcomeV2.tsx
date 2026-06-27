@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cNe
 // matched 2.1.88 source: src/components/LogoV2/WelcomeV2.tsx
-// class=modified  jaccard=0.53  score=0.5958  fileCov=0.8274
+// class=modified  jaccard=0.4482  score=0.5552  fileCov=0.6994
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cNe = E(() => {

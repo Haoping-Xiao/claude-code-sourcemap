@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module A8l
 // matched 2.1.88 source: src/components/tasks/InProcessTeammateDetailDialog.tsx
-// class=modified  jaccard=0.4183  score=0.7638  fileCov=0.4804
+// class=modified  jaccard=0.4129  score=0.6263  fileCov=0.5479
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var A8l = E(() => {

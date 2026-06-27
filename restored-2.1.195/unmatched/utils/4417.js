@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GHl
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/stylus.js
-// class=new  jaccard=0.0051  score=0.0537  fileCov=0.0056
-// note: nearest: node_modules/highlight.js/lib/languages/stylus.js (0.0051); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/Settings/Config.tsx
+// class=new  jaccard=0.0041  score=0.0666  fileCov=0.0044
+// note: nearest: src/components/Settings/Config.tsx (0.0041); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var GHl = E(() => {
   ft();

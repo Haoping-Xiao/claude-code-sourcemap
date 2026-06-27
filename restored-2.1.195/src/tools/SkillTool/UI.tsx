@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module SAe
 // matched 2.1.88 source: src/tools/SkillTool/UI.tsx
-// class=modified  jaccard=0.2907  score=0.5876  fileCov=0.3653
+// class=modified  jaccard=0.224  score=0.3602  fileCov=0.3719
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var SAe = E(() => {

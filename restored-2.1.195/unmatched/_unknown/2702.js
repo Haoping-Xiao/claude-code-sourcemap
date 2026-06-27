@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $no
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/core/dist-cjs/submodules/serde/index.js
+// class=new  jaccard=0.0183  score=0.5695  fileCov=0.0186
+// note: nearest: node_modules/@smithy/core/dist-cjs/submodules/serde/index.js (0.0183); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var $no = E(() => {
   Jlt();

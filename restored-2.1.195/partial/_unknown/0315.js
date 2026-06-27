@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JTr
 // matched 2.1.88 source: node_modules/zod/v4/classic/schemas.js
-// class=partial  jaccard=0.1494  score=1  fileCov=0.1494
+// class=partial  jaccard=0.097  score=0.9557  fileCov=0.0974
 // note: low-confidence suggestion: node_modules/zod/v4/classic/schemas.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var JTr = E(() => {

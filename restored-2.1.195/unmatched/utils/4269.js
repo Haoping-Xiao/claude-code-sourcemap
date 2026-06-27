@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module D6e
-// matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.005  score=0.1982  fileCov=0.0051
-// note: nearest: src/cli/print.ts (0.005); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
+// class=new  jaccard=0.0523  score=0.2738  fileCov=0.0608
+// note: nearest: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js (0.0523); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var D6e = E(() => {
   ft();

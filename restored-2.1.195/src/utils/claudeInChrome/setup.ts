@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PFl
 // matched 2.1.88 source: src/utils/claudeInChrome/setup.ts
-// class=modified  jaccard=0.6324  score=0.8551  fileCov=0.7083
+// class=modified  jaccard=0.3773  score=0.5025  fileCov=0.6024
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var PFl = E(() => {

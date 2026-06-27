@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _ht
 // matched 2.1.88 source: src/utils/conversationRecovery.ts
-// class=modified  jaccard=0.2906  score=0.431  fileCov=0.4715
+// class=modified  jaccard=0.3138  score=0.4577  fileCov=0.4994
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _ht = E(() => {

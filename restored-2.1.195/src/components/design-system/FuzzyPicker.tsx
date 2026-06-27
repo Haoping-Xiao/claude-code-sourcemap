@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N6l
 // matched 2.1.88 source: src/components/design-system/FuzzyPicker.tsx
-// class=modified  jaccard=0.235  score=0.4329  fileCov=0.3394
+// class=modified  jaccard=0.2627  score=0.3266  fileCov=0.5731
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var N6l = E(() => {

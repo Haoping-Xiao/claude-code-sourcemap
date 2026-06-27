@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module y8o
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 1 renamed
+// matched 2.1.88 source: src/interactiveHelpers.tsx
+// class=new  jaccard=0.0202  score=0.4605  fileCov=0.0207
+// note: nearest: src/interactiveHelpers.tsx (0.0202); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var y8o = E(() => {
   er();

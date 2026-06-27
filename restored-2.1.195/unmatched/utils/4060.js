@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Awo
 // matched 2.1.88 source: src/utils/messages.ts
-// class=new  jaccard=0.0109  score=0.217  fileCov=0.0113
-// note: nearest: src/utils/messages.ts (0.0109); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.011  score=0.2365  fileCov=0.0114
+// note: nearest: src/utils/messages.ts (0.011); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Awo = E(() => {
   Ewo = ["compact_progress", "sdk_status", "stream_mode"], Ytf = new Set(Ewo);

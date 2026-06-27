@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _ro
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js
+// class=new  jaccard=0.0083  score=0.2016  fileCov=0.0086
+// note: nearest: node_modules/@smithy/core/dist-cjs/submodules/schema/index.js (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _ro = E(() => {
   Zta();

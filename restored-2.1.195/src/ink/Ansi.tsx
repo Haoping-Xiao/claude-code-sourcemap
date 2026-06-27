@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module A5i
 // matched 2.1.88 source: src/ink/Ansi.tsx
-// class=modified  jaccard=0.67  score=0.9308  fileCov=0.7051
+// class=modified  jaccard=0.5951  score=0.9244  fileCov=0.6255
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var A5i = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iqc
-// matched 2.1.88 source: src/services/mcp/client.ts
-// class=new  jaccard=0.0099  score=0.0481  fileCov=0.0123
-// note: nearest: src/services/mcp/client.ts (0.0099); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0044  score=0.0491  fileCov=0.0048
+// note: nearest: src/cli/print.ts (0.0044); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iqc = E(() => {
   Ece();

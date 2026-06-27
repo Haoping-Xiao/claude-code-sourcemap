@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ckc
-// matched 2.1.88 source: src/components/PromptInput/Notifications.tsx
-// class=new  jaccard=0.0285  score=0.3768  fileCov=0.0299
-// note: nearest: src/components/PromptInput/Notifications.tsx (0.0285); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/ink/styles.ts
+// class=new  jaccard=0.0278  score=0.3467  fileCov=0.0294
+// note: nearest: src/ink/styles.ts (0.0278); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ckc = E(() => {
   Bs();

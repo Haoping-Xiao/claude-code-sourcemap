@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DGe
 // matched 2.1.88 source: src/hooks/useClipboardImageHint.ts
-// class=modified  jaccard=0.1875  score=0.2482  fileCov=0.4337
+// class=modified  jaccard=0.2321  score=0.3544  fileCov=0.4022
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var DGe = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Mx
 // matched 2.1.88 source: src/utils/detectRepository.ts
-// class=modified  jaccard=0.5887  score=0.7816  fileCov=0.7046
+// class=modified  jaccard=0.5458  score=0.7208  fileCov=0.6921
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Mx = E(() => {

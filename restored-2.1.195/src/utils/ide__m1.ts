@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zdo
 // matched 2.1.88 source: src/utils/ide.ts
-// class=modified (alt of src/utils/ide.ts)  jaccard=0.1785  score=0.4856  fileCov=0.2202
+// class=modified (alt of src/utils/ide.ts)  jaccard=0.2117  score=0.6405  fileCov=0.2403
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zdo = E(() => {

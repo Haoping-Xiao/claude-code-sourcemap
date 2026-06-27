@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mio
 // matched 2.1.88 source: src/utils/model/modelOptions.ts
-// class=modified  jaccard=0.2132  score=0.2812  fileCov=0.4684
+// class=modified  jaccard=0.2152  score=0.3357  fileCov=0.3747
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mio = E(() => {

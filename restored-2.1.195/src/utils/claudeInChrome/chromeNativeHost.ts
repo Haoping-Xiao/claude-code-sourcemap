@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ofo
 // matched 2.1.88 source: src/utils/claudeInChrome/chromeNativeHost.ts
-// class=modified  jaccard=0.7953  score=0.8702  fileCov=0.9023
+// class=modified  jaccard=0.7599  score=0.9176  fileCov=0.8155
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ofo = E(() => {

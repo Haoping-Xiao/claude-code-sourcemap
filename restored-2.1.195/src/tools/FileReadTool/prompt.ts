@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S0n
 // matched 2.1.88 source: src/tools/FileReadTool/prompt.ts
-// class=modified  jaccard=0.3104  score=0.3926  fileCov=0.597
+// class=modified  jaccard=0.2245  score=0.3106  fileCov=0.4475
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S0n = E(() => {

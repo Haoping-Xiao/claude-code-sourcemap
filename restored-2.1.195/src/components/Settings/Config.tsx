@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rtr
 // matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=modified  jaccard=0.3101  score=0.5532  fileCov=0.4137
+// class=modified  jaccard=0.2647  score=0.5411  fileCov=0.3413
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rtr = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NNi
 // matched 2.1.88 source: src/memdir/memdir.ts
-// class=modified  jaccard=0.3053  score=0.5929  fileCov=0.3863
+// class=modified  jaccard=0.3241  score=0.5946  fileCov=0.4161
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var NNi = E(() => {

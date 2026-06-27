@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vKl
 // matched 2.1.88 source: src/components/hooks/HooksConfigMenu.tsx
-// class=modified  jaccard=0.2921  score=0.4691  fileCov=0.4363
+// class=modified  jaccard=0.2502  score=0.3919  fileCov=0.4091
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vKl = E(() => {

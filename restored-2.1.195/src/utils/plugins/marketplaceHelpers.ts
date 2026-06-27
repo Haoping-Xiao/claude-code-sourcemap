@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vq
 // matched 2.1.88 source: src/utils/plugins/marketplaceHelpers.ts
-// class=modified  jaccard=0.65  score=0.8894  fileCov=0.7071
+// class=modified  jaccard=0.3396  score=0.8696  fileCov=0.3578
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vq = E(() => {

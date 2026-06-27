@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I1
-// matched 2.1.88 source: node_modules/@inquirer/core/dist/esm/lib/key.mjs
-// class=partial  jaccard=0.0623  score=0.0778  fileCov=0.2382
-// note: low-confidence suggestion: node_modules/@inquirer/core/dist/esm/lib/key.mjs; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/hooks/usePasteHandler.ts
+// class=partial  jaccard=0.2387  score=0.431  fileCov=0.3485
+// note: low-confidence suggestion: src/hooks/usePasteHandler.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var I1 = E(() => {
   Lne();

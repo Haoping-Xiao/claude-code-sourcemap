@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WKr
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/sql.js
-// class=new  jaccard=0.0082  score=0.0563  fileCov=0.0095
-// note: nearest: node_modules/highlight.js/lib/languages/sql.js (0.0082); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/teamMemorySync/index.ts
+// class=new  jaccard=0.0238  score=0.0802  fileCov=0.0328
+// note: nearest: src/services/teamMemorySync/index.ts (0.0238); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var WKr = E(() => {
   D_e = class D_e extends Error {

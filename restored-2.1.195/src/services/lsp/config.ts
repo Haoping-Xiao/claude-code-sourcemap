@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Gt
 // matched 2.1.88 source: src/services/lsp/config.ts
-// class=modified  jaccard=0.5549  score=0.9349  fileCov=0.5773
+// class=modified  jaccard=0.4883  score=0.9019  fileCov=0.5157
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _Gt = E(() => {

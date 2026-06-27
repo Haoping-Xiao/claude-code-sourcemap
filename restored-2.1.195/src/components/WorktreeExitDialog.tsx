@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eJl
 // matched 2.1.88 source: src/components/WorktreeExitDialog.tsx
-// class=modified  jaccard=0.5675  score=0.6708  fileCov=0.7866
+// class=modified  jaccard=0.47  score=0.6214  fileCov=0.6586
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eJl = E(() => {

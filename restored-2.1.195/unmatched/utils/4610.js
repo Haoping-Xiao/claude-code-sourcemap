@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FOo
 // matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=new  jaccard=0.0222  score=0.1715  fileCov=0.0249
-// note: nearest: src/components/Settings/Config.tsx (0.0222); dir inferred from dep-graph -> utils; 1 renamed
+// class=new  jaccard=0.0148  score=0.1509  fileCov=0.0161
+// note: nearest: src/components/Settings/Config.tsx (0.0148); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var FOo = E(() => {
   kt();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ULo
 // matched 2.1.88 source: src/tools/PowerShellTool/commonParameters.ts
-// class=modified  jaccard=0.5258  score=0.5258  fileCov=1
+// class=modified  jaccard=0.3692  score=0.4068  fileCov=0.8
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ULo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ifc
 // matched 2.1.88 source: src/query.ts
-// class=modified (alt of src/query.ts)  jaccard=0.0166  score=1  fileCov=0.0166
+// class=modified (alt of src/query.ts)  jaccard=0.0065  score=1  fileCov=0.0065
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ifc = E(() => {

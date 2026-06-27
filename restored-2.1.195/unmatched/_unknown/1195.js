@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I8s
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/sharp/lib/input.js
+// class=new  jaccard=0.0109  score=0.8757  fileCov=0.0109
+// note: nearest: node_modules/sharp/lib/input.js (0.0109); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var I8s = E(() => {
   C8s();

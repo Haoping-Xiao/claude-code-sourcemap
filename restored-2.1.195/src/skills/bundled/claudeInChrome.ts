@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UTc
 // matched 2.1.88 source: src/skills/bundled/claudeInChrome.ts
-// class=modified  jaccard=0.3083  score=0.5414  fileCov=0.4173
+// class=modified  jaccard=0.1772  score=0.3325  fileCov=0.275
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var UTc = E(() => {

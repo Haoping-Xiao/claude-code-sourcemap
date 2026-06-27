@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module t4r
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/awsrequestsigner.js
+// class=new  jaccard=0.0301  score=1  fileCov=0.0301
+// note: nearest: node_modules/google-auth-library/build/src/auth/awsrequestsigner.js (0.0301); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var t4r = E(() => {
   lMt();

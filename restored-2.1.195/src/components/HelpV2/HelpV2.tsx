@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BBl
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
-// class=modified  jaccard=0.2338  score=0.4176  fileCov=0.347
+// class=modified  jaccard=0.2177  score=0.3756  fileCov=0.3412
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BBl = E(() => {

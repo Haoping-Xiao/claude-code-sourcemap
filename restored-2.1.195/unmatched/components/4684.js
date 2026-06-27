@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eNl
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 1 renamed
+// matched 2.1.88 source: src/components/diff/DiffDialog.tsx
+// class=new  jaccard=0.0298  score=0.8483  fileCov=0.0299
+// note: nearest: src/components/diff/DiffDialog.tsx (0.0298); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var eNl = E(() => {
   fH();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R6
 // matched 2.1.88 source: src/components/AwsAuthStatusBox.tsx
-// class=modified  jaccard=0.3054  score=0.5299  fileCov=0.4188
+// class=modified  jaccard=0.4587  score=0.5786  fileCov=0.6889
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var R6 = E(() => {

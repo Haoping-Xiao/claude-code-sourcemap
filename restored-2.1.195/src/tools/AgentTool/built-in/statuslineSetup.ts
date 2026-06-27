@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bLl
 // matched 2.1.88 source: src/tools/AgentTool/built-in/statuslineSetup.ts
-// class=modified  jaccard=0.6359  score=0.7042  fileCov=0.8677
+// class=modified  jaccard=0.4455  score=0.5073  fileCov=0.7853
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bLl = E(() => {

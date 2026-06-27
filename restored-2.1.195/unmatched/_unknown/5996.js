@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DQo
-// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/util.mjs
-// class=new  jaccard=0.0248  score=0.0395  fileCov=0.0622
-// note: nearest: node_modules/@growthbook/growthbook/dist/esm/util.mjs (0.0248); 0 renamed
+// matched 2.1.88 source: node_modules/eventsource/dist/index.js
+// class=new  jaccard=0.0237  score=0.0575  fileCov=0.0386
+// note: nearest: node_modules/eventsource/dist/index.js (0.0237); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var DQo = E(() => {
   AR();

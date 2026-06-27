@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pYo
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0068  score=0.5067  fileCov=0.0068
-// note: nearest: src/utils/sessionStorage.ts (0.0068); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0022  score=0.5076  fileCov=0.0022
+// note: nearest: src/utils/sessionStorage.ts (0.0022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pYo = E(() => {
   dn();

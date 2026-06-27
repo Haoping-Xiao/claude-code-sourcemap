@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DAl
 // matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
-// class=new  jaccard=0.0161  score=0.1188  fileCov=0.0182
-// note: nearest: src/components/tasks/RemoteSessionDetailDialog.tsx (0.0161); dir inferred from dep-graph -> utils; 1 renamed
+// class=new  jaccard=0.0127  score=0.1398  fileCov=0.0138
+// note: nearest: src/components/tasks/RemoteSessionDetailDialog.tsx (0.0127); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var DAl = E(() => {
   o7n();

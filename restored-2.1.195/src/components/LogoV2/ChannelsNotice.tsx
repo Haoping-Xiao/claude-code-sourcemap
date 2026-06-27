@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Eor
 // matched 2.1.88 source: src/components/LogoV2/ChannelsNotice.tsx
-// class=modified  jaccard=0.3852  score=0.4606  fileCov=0.7017
+// class=modified  jaccard=0.3457  score=0.512  fileCov=0.5156
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Eor = E(() => {

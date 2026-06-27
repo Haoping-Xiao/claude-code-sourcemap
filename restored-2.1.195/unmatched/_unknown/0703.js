@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module svs
 // matched 2.1.88 source: node_modules/jsonc-parser/lib/esm/main.js
-// class=new  jaccard=0.0264  score=1  fileCov=0.0264
-// note: nearest: node_modules/jsonc-parser/lib/esm/main.js (0.0264); 0 renamed
+// class=new  jaccard=0.0404  score=1  fileCov=0.0404
+// note: nearest: node_modules/jsonc-parser/lib/esm/main.js (0.0404); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var svs = E(() => {
   _Rr();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Pzr
 // matched 2.1.88 source: src/services/analytics/firstPartyEventLogger.ts
-// class=modified  jaccard=0.2637  score=0.5813  fileCov=0.3256
+// class=modified  jaccard=0.416  score=0.7162  fileCov=0.4981
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Pzr = E(() => {

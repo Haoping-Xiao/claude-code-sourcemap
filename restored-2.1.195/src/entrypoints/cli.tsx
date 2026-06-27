@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Dqc
 // matched 2.1.88 source: src/entrypoints/cli.tsx
-// class=modified  jaccard=0.2902  score=0.4765  fileCov=0.426
+// class=modified  jaccard=0.2421  score=0.4629  fileCov=0.3366
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Dqc = E(() => {

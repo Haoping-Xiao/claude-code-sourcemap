@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Q8
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: node_modules/react/cjs/react.production.js
+// class=new  jaccard=0.0197  score=0.448  fileCov=0.0202
+// note: nearest: node_modules/react/cjs/react.production.js (0.0197); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Q8 = E(() => {
   iu();

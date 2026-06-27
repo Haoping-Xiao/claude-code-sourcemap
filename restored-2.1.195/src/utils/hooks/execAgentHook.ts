@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dic
 // matched 2.1.88 source: src/utils/hooks/execAgentHook.ts
-// class=modified  jaccard=0.5238  score=0.7985  fileCov=0.6036
+// class=modified  jaccard=0.4582  score=0.7392  fileCov=0.5466
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dic = E(() => {

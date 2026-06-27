@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xGr
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@azure/msal-node/dist/cache/NodeStorage.mjs
+// class=new  jaccard=0.0473  score=1  fileCov=0.0473
+// note: nearest: node_modules/@azure/msal-node/dist/cache/NodeStorage.mjs (0.0473); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xGr = E(() => {
   oT();

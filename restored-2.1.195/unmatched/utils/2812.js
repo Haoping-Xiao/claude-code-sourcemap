@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module y1n
-// matched 2.1.88 source: src/utils/fastMode.ts
-// class=new  jaccard=0.0447  score=0.3043  fileCov=0.0497
-// note: nearest: src/utils/fastMode.ts (0.0447); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/mcp/config.ts
+// class=new  jaccard=0.0148  score=0.1664  fileCov=0.016
+// note: nearest: src/services/mcp/config.ts (0.0148); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var y1n = E(() => {
   oo();

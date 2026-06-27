@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jjt
 // matched 2.1.88 source: src/utils/plugins/loadPluginHooks.ts
-// class=modified  jaccard=0.2913  score=0.8019  fileCov=0.3138
+// class=modified  jaccard=0.5719  score=0.8234  fileCov=0.6518
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jjt = E(() => {

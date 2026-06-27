@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ejc
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@azure/core-rest-pipeline/dist/esm/policies/bearerTokenAuthenticationPolicy.js
+// class=new  jaccard=0.0283  score=0.1047  fileCov=0.0373
+// note: nearest: node_modules/@azure/core-rest-pipeline/dist/esm/policies/bearerTokenAuthenticationPolicy.js (0.0283); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ejc = E(() => {
   ZXo();

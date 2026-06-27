@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aAn
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/undici/lib/web/cache/cache.js
+// class=new  jaccard=0.0131  score=1  fileCov=0.0131
+// note: nearest: node_modules/undici/lib/web/cache/cache.js (0.0131); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var aAn = E(() => {
   ih();

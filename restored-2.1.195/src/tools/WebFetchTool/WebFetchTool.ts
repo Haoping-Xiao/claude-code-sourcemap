@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T6t
 // matched 2.1.88 source: src/tools/WebFetchTool/WebFetchTool.ts
-// class=modified  jaccard=0.4643  score=0.5933  fileCov=0.6811
+// class=modified  jaccard=0.3877  score=0.4911  fileCov=0.6481
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var T6t = E(() => {

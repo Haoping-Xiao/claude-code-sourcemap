@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hEn
 // matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js
-// class=new  jaccard=0.0495  score=1  fileCov=0.0495
-// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js (0.0495); 0 renamed
+// class=new  jaccard=0.0522  score=1  fileCov=0.0522
+// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js (0.0522); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var hEn = E(() => {
   kD();

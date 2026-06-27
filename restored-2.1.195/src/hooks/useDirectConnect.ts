@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dzo
 // matched 2.1.88 source: src/hooks/useDirectConnect.ts
-// class=modified  jaccard=0.0903  score=0.6391  fileCov=0.0951
+// class=modified  jaccard=0.1  score=0.5426  fileCov=0.1093
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dzo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qXt
 // matched 2.1.88 source: src/components/Messages.tsx
-// class=modified (alt of src/components/Messages.tsx)  jaccard=0.1419  score=0.6887  fileCov=0.1517
+// class=modified (alt of src/components/Messages.tsx)  jaccard=0.1421  score=0.5065  fileCov=0.165
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qXt = E(() => {

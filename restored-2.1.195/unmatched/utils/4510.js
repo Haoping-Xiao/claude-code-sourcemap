@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q0
-// matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
-// class=new  jaccard=0.0246  score=0.1914  fileCov=0.0274
-// note: nearest: src/utils/permissions/permissionSetup.ts (0.0246); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0099  score=0.3592  fileCov=0.01
+// note: nearest: src/cli/print.ts (0.0099); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var q0 = E(() => {
   ft();

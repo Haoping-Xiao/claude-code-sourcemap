@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gDe
 // matched 2.1.88 source: src/components/IdeOnboardingDialog.tsx
-// class=modified  jaccard=0.3031  score=0.3999  fileCov=0.556
+// class=modified  jaccard=0.2806  score=0.3641  fileCov=0.5501
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gDe = E(() => {

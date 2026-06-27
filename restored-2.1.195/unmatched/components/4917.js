@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dql
-// matched 2.1.88 source: src/buddy/CompanionSprite.tsx
-// class=new  jaccard=0.046  score=0.0874  fileCov=0.0884
-// note: nearest: src/buddy/CompanionSprite.tsx (0.046); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0043  score=0.107  fileCov=0.0045
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0043); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dql = E(() => {
   Xa();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k9l
 // matched 2.1.88 source: src/commands/session/index.ts
-// class=modified  jaccard=0.2566  score=0.4439  fileCov=0.3781
+// class=modified  jaccard=0.3173  score=0.5009  fileCov=0.464
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var k9l = E(() => {

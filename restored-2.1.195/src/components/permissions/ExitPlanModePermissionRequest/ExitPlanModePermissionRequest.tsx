@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WTe
 // matched 2.1.88 source: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx
-// class=modified  jaccard=0.3898  score=0.7364  fileCov=0.453
+// class=modified  jaccard=0.3423  score=0.6082  fileCov=0.4392
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var WTe = E(() => {

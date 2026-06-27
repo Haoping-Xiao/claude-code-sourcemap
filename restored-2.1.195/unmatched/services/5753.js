@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uPc
 // matched 2.1.88 source: src/utils/attachments.ts
-// class=new  jaccard=0.0107  score=0.3253  fileCov=0.0109
-// note: nearest: src/utils/attachments.ts (0.0107); dir inferred from dep-graph -> services; 0 renamed
+// class=new  jaccard=0.0157  score=0.2002  fileCov=0.0168
+// note: nearest: src/utils/attachments.ts (0.0157); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uPc = E(() => {
   ft();

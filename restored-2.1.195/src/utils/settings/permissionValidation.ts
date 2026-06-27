@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xws
 // matched 2.1.88 source: src/utils/settings/permissionValidation.ts
-// class=modified  jaccard=0.4503  score=0.5635  fileCov=0.6915
+// class=modified  jaccard=0.3675  score=0.5526  fileCov=0.523
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xws = E(() => {

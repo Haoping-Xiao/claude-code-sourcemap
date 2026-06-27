@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XEc
-// matched 2.1.88 source: src/components/PromptInput/PromptInputQueuedCommands.tsx
-// class=new  jaccard=0.0584  score=1  fileCov=0.0584
-// note: nearest: src/components/PromptInput/PromptInputQueuedCommands.tsx (0.0584); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/attachments.ts
+// class=new  jaccard=0.0046  score=0.6853  fileCov=0.0047
+// note: nearest: src/utils/attachments.ts (0.0046); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var XEc = E(() => {
   bm();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module IOa
 // matched 2.1.88 source: src/tools/TodoWriteTool/prompt.ts
-// class=modified  jaccard=0.5283  score=1  fileCov=0.5283
+// class=modified  jaccard=0.5282  score=1  fileCov=0.5282
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var IOa = E(() => {

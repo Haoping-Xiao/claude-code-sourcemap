@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k7
 // matched 2.1.88 source: src/utils/claudeInChrome/mcpServer.ts
-// class=modified  jaccard=0.0824  score=0.0884  fileCov=0.5477
+// class=modified  jaccard=0.0866  score=0.0947  fileCov=0.5026
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var k7 = E(() => {

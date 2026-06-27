@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module er
 // matched 2.1.88 source: src/utils/config.ts
-// class=modified (alt of src/utils/config.ts)  jaccard=0.2761  score=0.6603  fileCov=0.3218
+// class=modified (alt of src/utils/config.ts)  jaccard=0.1516  score=0.5453  fileCov=0.1735
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var er = E(() => {

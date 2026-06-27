@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module K9e
 // matched 2.1.88 source: src/components/ConsoleOAuthFlow.tsx
-// class=modified  jaccard=0.2705  score=0.312  fileCov=0.6704
+// class=modified  jaccard=0.2302  score=0.3454  fileCov=0.4083
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var K9e = E(() => {

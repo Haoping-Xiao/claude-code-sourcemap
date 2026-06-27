@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module als
 // matched 2.1.88 source: node_modules/zod/v4/locales/zh-CN.js
-// class=partial  jaccard=0.1134  score=0.1558  fileCov=0.294
+// class=partial  jaccard=0.2445  score=0.3217  fileCov=0.5049
 // note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var als = E(() => {

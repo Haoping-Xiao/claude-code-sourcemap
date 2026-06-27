@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l3
 // matched 2.1.88 source: src/tools/BriefTool/UI.tsx
-// class=modified  jaccard=0.2433  score=0.5128  fileCov=0.3164
+// class=modified  jaccard=0.2652  score=0.4507  fileCov=0.3918
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var l3 = E(() => {

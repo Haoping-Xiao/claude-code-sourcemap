@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gq
 // matched 2.1.88 source: src/tools/BashTool/UI.tsx
-// class=modified  jaccard=0.1786  score=0.5868  fileCov=0.2043
+// class=modified  jaccard=0.2707  score=0.5154  fileCov=0.3631
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gq = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uGc
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0128  score=0.0456  fileCov=0.0175
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0128); 0 renamed
+// class=new  jaccard=0.0188  score=0.1164  fileCov=0.0219
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0188); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uGc = E(() => {
   Qvt();

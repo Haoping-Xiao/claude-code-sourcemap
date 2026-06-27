@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZGi
 // matched 2.1.88 source: src/ink/dom.ts
-// class=new  jaccard=0.0484  score=1  fileCov=0.0484
-// note: nearest: src/ink/dom.ts (0.0484); dir inferred from dep-graph -> ink; 0 renamed
+// class=new  jaccard=0.0309  score=0.4119  fileCov=0.0323
+// note: nearest: src/ink/dom.ts (0.0309); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ZGi = E(() => {
   lJr();

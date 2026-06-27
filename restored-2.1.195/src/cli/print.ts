@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sFc
 // matched 2.1.88 source: src/cli/print.ts
-// class=modified  jaccard=0.3131  score=0.4294  fileCov=0.5361
+// class=modified  jaccard=0.2726  score=0.4545  fileCov=0.4052
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sFc = E(() => {

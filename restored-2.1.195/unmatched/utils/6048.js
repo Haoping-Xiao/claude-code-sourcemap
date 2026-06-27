@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pqc
-// matched 2.1.88 source: src/bridge/sessionRunner.ts
-// class=new  jaccard=0.0309  score=0.1048  fileCov=0.0419
-// note: nearest: src/bridge/sessionRunner.ts (0.0309); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/bridge/bridgeMain.ts
+// class=new  jaccard=0.0153  score=0.162  fileCov=0.0166
+// note: nearest: src/bridge/bridgeMain.ts (0.0153); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pqc = E(() => {
   At();

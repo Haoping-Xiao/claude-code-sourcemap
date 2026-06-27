@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gNn
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0256  score=1  fileCov=0.0256
-// note: nearest: src/utils/sessionStorage.ts (0.0256); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.018  score=0.9365  fileCov=0.018
+// note: nearest: src/utils/sessionStorage.ts (0.018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gNn = E(() => {
   Qi();

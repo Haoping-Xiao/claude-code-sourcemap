@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _ic
-// matched 2.1.88 source: src/utils/hooks.ts
-// class=new  jaccard=0.0071  score=1  fileCov=0.0071
-// note: nearest: src/utils/hooks.ts (0.0071); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
+// class=new  jaccard=0.0068  score=0.4915  fileCov=0.0069
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0068); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _ic = E(() => {
   sp();

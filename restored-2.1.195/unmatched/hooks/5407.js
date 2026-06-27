@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Vmc
-// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
-// class=new  jaccard=0.0079  score=0.2962  fileCov=0.008
-// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0079); dir inferred from dep-graph -> hooks; 0 renamed
+// matched 2.1.88 source: src/ink/components/Box.tsx
+// class=new  jaccard=0.0491  score=0.3058  fileCov=0.0553
+// note: nearest: src/ink/components/Box.tsx (0.0491); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Vmc = E(() => {
   Xa();

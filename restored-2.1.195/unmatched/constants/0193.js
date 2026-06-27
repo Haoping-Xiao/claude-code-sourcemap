@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OK
-// matched 2.1.88 source: src/upstreamproxy/upstreamproxy.ts
-// class=new  jaccard=0.0169  score=1  fileCov=0.0169
-// note: nearest: src/upstreamproxy/upstreamproxy.ts (0.0169); dir inferred from dep-graph -> constants; 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/client.mjs
+// class=new  jaccard=0.0122  score=1  fileCov=0.0122
+// note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0122); dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var OK = E(() => {
   $ge();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VJt
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/task/diskOutput.ts
+// class=new  jaccard=0.039  score=0.4357  fileCov=0.0411
+// note: nearest: src/utils/task/diskOutput.ts (0.039); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VJt = E(() => {
   Hp();

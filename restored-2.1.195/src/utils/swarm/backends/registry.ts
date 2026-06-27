@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ahl
 // matched 2.1.88 source: src/utils/swarm/backends/registry.ts
-// class=modified  jaccard=0.6148  score=0.7524  fileCov=0.7708
+// class=modified  jaccard=0.5236  score=0.6655  fileCov=0.7107
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ahl = E(() => {

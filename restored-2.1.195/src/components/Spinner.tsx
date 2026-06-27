@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UHo
 // matched 2.1.88 source: src/components/Spinner.tsx
-// class=modified  jaccard=0.2876  score=0.6597  fileCov=0.3378
+// class=modified  jaccard=0.2256  score=0.4141  fileCov=0.3315
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var UHo = E(() => {

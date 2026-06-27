@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _7o
 // matched 2.1.88 source: src/components/InvalidSettingsDialog.tsx
-// class=modified  jaccard=0.295  score=0.4306  fileCov=0.4837
+// class=modified  jaccard=0.3341  score=0.4192  fileCov=0.6221
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _7o = E(() => {

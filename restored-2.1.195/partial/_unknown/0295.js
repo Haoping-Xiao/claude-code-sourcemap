@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uls
 // matched 2.1.88 source: node_modules/zod/v4/locales/zh-CN.js
-// class=partial  jaccard=0.0804  score=0.1076  fileCov=0.2412
+// class=partial  jaccard=0.2009  score=0.26  fileCov=0.4695
 // note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uls = E(() => {

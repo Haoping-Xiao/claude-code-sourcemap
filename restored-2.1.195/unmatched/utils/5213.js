@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iQt
-// matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
-// class=new  jaccard=0.0198  score=0.0877  fileCov=0.025
-// note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0198); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0067  score=0.1108  fileCov=0.0071
+// note: nearest: src/screens/REPL.tsx (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iQt = E(() => {
   Ece();

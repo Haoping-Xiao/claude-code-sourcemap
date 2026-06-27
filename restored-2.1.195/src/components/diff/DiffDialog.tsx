@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module J1l
 // matched 2.1.88 source: src/components/diff/DiffDialog.tsx
-// class=modified  jaccard=0.4093  score=0.5326  fileCov=0.6388
+// class=modified  jaccard=0.3886  score=0.5163  fileCov=0.611
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var J1l = E(() => {

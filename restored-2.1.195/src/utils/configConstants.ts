@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module n1o
 // matched 2.1.88 source: src/utils/configConstants.ts
-// class=modified  jaccard=0.6321  score=0.7921  fileCov=0.7578
+// class=modified  jaccard=0.632  score=0.7923  fileCov=0.7576
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var n1o = E(() => {

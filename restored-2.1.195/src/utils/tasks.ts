@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Fgo
 // matched 2.1.88 source: src/utils/tasks.ts
-// class=modified  jaccard=0.4197  score=0.8822  fileCov=0.4446
+// class=modified  jaccard=0.251  score=0.8777  fileCov=0.2601
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Fgo = E(() => {

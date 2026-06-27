@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rcr
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/git/gitignore.ts
+// class=new  jaccard=0.0436  score=0.3055  fileCov=0.0484
+// note: nearest: src/utils/git/gitignore.ts (0.0436); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rcr = E(() => {
   QH();

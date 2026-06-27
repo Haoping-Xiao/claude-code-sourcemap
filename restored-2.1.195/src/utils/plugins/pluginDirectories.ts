@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Jbe
 // matched 2.1.88 source: src/utils/plugins/pluginDirectories.ts
-// class=modified  jaccard=0.397  score=1  fileCov=0.397
+// class=modified  jaccard=0.4218  score=0.8837  fileCov=0.4467
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Jbe = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wen
 // matched 2.1.88 source: src/assistant/sessionHistory.ts
-// class=modified  jaccard=0.3099  score=0.5565  fileCov=0.4116
+// class=modified  jaccard=0.2213  score=0.3982  fileCov=0.3325
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Wen = E(() => {

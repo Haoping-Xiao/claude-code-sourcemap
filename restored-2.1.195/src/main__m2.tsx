@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module j9o
 // matched 2.1.88 source: src/main.tsx
-// class=modified (alt of src/main.tsx)  jaccard=0.0223  score=0.6701  fileCov=0.0226
+// class=modified (alt of src/main.tsx)  jaccard=0.028  score=0.6853  fileCov=0.0284
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var j9o = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FTr
-// class=new  (no 2.1.88 match)
-// note: 8 renamed
+// matched 2.1.88 source: node_modules/zod/v4/classic/iso.js
+// class=new  jaccard=0.053  score=0.1978  fileCov=0.0674
+// note: nearest: node_modules/zod/v4/classic/iso.js (0.053); 8 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var FTr = E(() => {
   aM();

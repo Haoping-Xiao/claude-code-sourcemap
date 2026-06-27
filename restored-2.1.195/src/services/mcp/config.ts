@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module a5
 // matched 2.1.88 source: src/services/mcp/config.ts
-// class=modified  jaccard=0.3656  score=0.4432  fileCov=0.6763
+// class=modified  jaccard=0.3224  score=0.4808  fileCov=0.4946
 // note: deminified; 31 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var a5 = E(() => {

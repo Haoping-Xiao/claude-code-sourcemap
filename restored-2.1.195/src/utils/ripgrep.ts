@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vna
 // matched 2.1.88 source: src/utils/ripgrep.ts
-// class=modified  jaccard=0.338  score=0.8551  fileCov=0.3586
+// class=modified  jaccard=0.2913  score=0.8583  fileCov=0.306
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vna = E(() => {

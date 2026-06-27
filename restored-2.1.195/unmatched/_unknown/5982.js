@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oBe
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0144  score=0.1476  fileCov=0.0156
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0144); 0 renamed
+// class=new  jaccard=0.0223  score=0.235  fileCov=0.024
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0223); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var oBe = E(() => {
   NZ();

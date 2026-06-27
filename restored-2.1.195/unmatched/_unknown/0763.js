@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eDr
 // matched 2.1.88 source: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js
-// class=new  jaccard=0.0385  score=1  fileCov=0.0385
-// note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.0385); 0 renamed
+// class=new  jaccard=0.02  score=1  fileCov=0.02
+// note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.02); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var eDr = E(() => {
   (function (e) {

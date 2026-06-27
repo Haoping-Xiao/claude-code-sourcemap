@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module a7o
 // matched 2.1.88 source: src/utils/managedEnvConstants.ts
-// class=new  jaccard=0.0352  score=0.2603  fileCov=0.0392
-// note: nearest: src/utils/managedEnvConstants.ts (0.0352); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0296  score=0.094  fileCov=0.0415
+// note: nearest: src/utils/managedEnvConstants.ts (0.0296); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var a7o = E(() => {
   kt();

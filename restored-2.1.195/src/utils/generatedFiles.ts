@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ggo
 // matched 2.1.88 source: src/utils/generatedFiles.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.9208  score=0.9208  fileCov=1
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.8028  score=0.8779  fileCov=0.9036
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 import { basename, extname, posix, sep } from 'path'

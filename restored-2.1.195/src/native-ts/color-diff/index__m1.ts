@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wba
 // matched 2.1.88 source: src/native-ts/color-diff/index.ts
-// class=modified (alt of src/native-ts/color-diff/index.ts)  jaccard=0.2635  score=0.4664  fileCov=0.3773
+// class=modified (alt of src/native-ts/color-diff/index.ts)  jaccard=0.0782  score=0.4863  fileCov=0.0853
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Wba = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module v_l
-// matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0083  score=0.0525  fileCov=0.0097
-// note: nearest: src/bridge/bridgeMain.ts (0.0083); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0184  score=0.158  fileCov=0.0204
+// note: nearest: src/cli/print.ts (0.0184); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var v_l = E(() => {
   Xr();

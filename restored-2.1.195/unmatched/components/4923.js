@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rJt
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/ink/render-node-to-output.ts
+// class=new  jaccard=0.0193  score=0.0773  fileCov=0.0251
+// note: nearest: src/ink/render-node-to-output.ts (0.0193); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rJt = E(() => {
   Por = R(lt(), 1), n2 = R(rt(), 1), nJt = R(se(), 1), $ql = n2.createContext(null), Oql = n2.createContext(null), Nql = n2.createContext(null), Bql = n2.createContext(null);

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Mua
 // matched 2.1.88 source: src/constants/product.ts
-// class=modified  jaccard=0.7334  score=0.8049  fileCov=0.8919
+// class=modified  jaccard=0.4499  score=0.6299  fileCov=0.6115
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Mua = E(() => {

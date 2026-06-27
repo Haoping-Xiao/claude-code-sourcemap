@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dDl
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/skills/bundledSkills.ts
+// class=new  jaccard=0.0339  score=0.3579  fileCov=0.0361
+// note: nearest: src/skills/bundledSkills.ts (0.0339); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dDl = E(() => {
   tOo = {

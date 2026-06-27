@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cho
 // matched 2.1.88 source: src/utils/doctorDiagnostic.ts
-// class=new  jaccard=0.0178  score=0.2235  fileCov=0.019
-// note: nearest: src/utils/doctorDiagnostic.ts (0.0178); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0145  score=0.2383  fileCov=0.0152
+// note: nearest: src/utils/doctorDiagnostic.ts (0.0145); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var cho = E(() => {
   Rc();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _$
 // matched 2.1.88 source: src/utils/Shell.ts
-// class=new  jaccard=0.0439  score=1  fileCov=0.0439
-// note: nearest: src/utils/Shell.ts (0.0439); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0314  score=0.7364  fileCov=0.0318
+// note: nearest: src/utils/Shell.ts (0.0314); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _$ = E(() => {
   Qi();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aKo
 // matched 2.1.88 source: src/components/permissions/PermissionRequest.tsx
-// class=modified  jaccard=0.0768  score=0.4767  fileCov=0.0838
+// class=modified  jaccard=0.036  score=0.1333  fileCov=0.0471
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var aKo = E(() => {

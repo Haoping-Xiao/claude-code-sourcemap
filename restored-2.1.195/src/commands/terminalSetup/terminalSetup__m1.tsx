@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R0e
 // matched 2.1.88 source: src/commands/terminalSetup/terminalSetup.tsx
-// class=modified (alt of src/commands/terminalSetup/terminalSetup.tsx)  jaccard=0.1053  score=0.5322  fileCov=0.116
+// class=modified (alt of src/commands/terminalSetup/terminalSetup.tsx)  jaccard=0.0947  score=0.4987  fileCov=0.1047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var R0e = E(() => {

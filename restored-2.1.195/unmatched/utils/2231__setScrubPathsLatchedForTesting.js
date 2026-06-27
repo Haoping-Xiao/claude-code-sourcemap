@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module j1i
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 11 renamed
+// matched 2.1.88 source: src/main.tsx
+// class=new  jaccard=0.0009  score=0.0601  fileCov=0.001
+// note: nearest: src/main.tsx (0.0009); dir inferred from dep-graph -> utils; 11 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var j1i = E(() => {
   t1d = /[ \t\n\v\f\r'"]/;

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CRo
-// matched 2.1.88 source: src/commands/copy/copy.tsx
-// class=new  jaccard=0.0275  score=0.2449  fileCov=0.03
-// note: nearest: src/commands/copy/copy.tsx (0.0275); dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: src/tools/RemoteTriggerTool/RemoteTriggerTool.ts
+// class=new  jaccard=0.0392  score=0.3283  fileCov=0.0426
+// note: nearest: src/tools/RemoteTriggerTool/RemoteTriggerTool.ts (0.0392); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var CRo = E(() => {
   c_();

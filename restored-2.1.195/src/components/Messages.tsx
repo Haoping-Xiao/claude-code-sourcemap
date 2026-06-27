@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yVl
 // matched 2.1.88 source: src/components/Messages.tsx
-// class=modified  jaccard=0.2525  score=0.775  fileCov=0.2724
+// class=modified  jaccard=0.257  score=0.5176  fileCov=0.3379
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var yVl = E(() => {

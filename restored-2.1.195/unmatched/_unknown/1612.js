@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UHn
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/bedrock-sdk/internal/utils/values.mjs
+// class=new  jaccard=0.0523  score=1  fileCov=0.0523
+// note: nearest: node_modules/@anthropic-ai/bedrock-sdk/internal/utils/values.mjs (0.0523); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var UHn = E(() => {
   p0();

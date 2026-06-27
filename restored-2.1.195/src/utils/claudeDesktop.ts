@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jdc
 // matched 2.1.88 source: src/utils/claudeDesktop.ts
-// class=modified  jaccard=0.7378  score=0.8794  fileCov=0.8209
+// class=modified  jaccard=0.6856  score=0.9028  fileCov=0.7403
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jdc = E(() => {

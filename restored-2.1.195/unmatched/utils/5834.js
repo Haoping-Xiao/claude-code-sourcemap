@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module J1c
-// matched 2.1.88 source: src/utils/plugins/officialMarketplaceGcs.ts
-// class=new  jaccard=0.026  score=0.0481  fileCov=0.0538
-// note: nearest: src/utils/plugins/officialMarketplaceGcs.ts (0.026); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/claudeInChrome/chromeNativeHost.ts
+// class=new  jaccard=0.0319  score=0.1024  fileCov=0.0443
+// note: nearest: src/utils/claudeInChrome/chromeNativeHost.ts (0.0319); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var J1c = E(() => {
   zb();

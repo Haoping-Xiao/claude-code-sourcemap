@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vyr
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/qrcode/lib/core/qrcode.js
+// class=new  jaccard=0.0154  score=1  fileCov=0.0154
+// note: nearest: node_modules/qrcode/lib/core/qrcode.js (0.0154); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var vyr = E(() => {
   TK();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mfo
 // matched 2.1.88 source: src/utils/computerUse/toolRendering.tsx
-// class=modified  jaccard=0.6398  score=0.9571  fileCov=0.6587
+// class=modified  jaccard=0.4965  score=0.8893  fileCov=0.5292
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mfo = E(() => {

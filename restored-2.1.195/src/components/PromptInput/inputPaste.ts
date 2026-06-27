@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sbc
 // matched 2.1.88 source: src/components/PromptInput/inputPaste.ts
-// class=modified  jaccard=0.5386  score=1  fileCov=0.5386
+// class=modified  jaccard=0.3833  score=0.796  fileCov=0.4251
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sbc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module f7r
 // matched 2.1.88 source: src/utils/earlyInput.ts
-// class=modified  jaccard=0.4788  score=0.6193  fileCov=0.6786
+// class=modified  jaccard=0.7222  score=0.8461  fileCov=0.8314
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var f7r = E(() => {

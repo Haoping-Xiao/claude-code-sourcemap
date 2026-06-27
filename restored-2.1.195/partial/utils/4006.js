@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ntl
 // matched 2.1.88 source: src/tools/BashTool/sedEditParser.ts
-// class=partial  jaccard=0.2432  score=0.696  fileCov=0.2721
+// class=partial  jaccard=0.1677  score=0.6464  fileCov=0.1846
 // note: low-confidence suggestion: src/tools/BashTool/sedEditParser.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ntl = E(() => {

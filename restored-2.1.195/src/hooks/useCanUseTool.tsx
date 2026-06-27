@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module SEc
 // matched 2.1.88 source: src/hooks/useCanUseTool.tsx
-// class=modified  jaccard=0.1967  score=0.6121  fileCov=0.2247
+// class=modified  jaccard=0.3379  score=0.6838  fileCov=0.4005
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var SEc = E(() => {

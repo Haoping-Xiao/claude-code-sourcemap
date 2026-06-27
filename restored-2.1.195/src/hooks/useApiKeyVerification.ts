@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QSc
 // matched 2.1.88 source: src/hooks/useApiKeyVerification.ts
-// class=modified  jaccard=0.3345  score=0.4962  fileCov=0.5064
+// class=modified  jaccard=0.2996  score=0.5955  fileCov=0.3762
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var QSc = E(() => {

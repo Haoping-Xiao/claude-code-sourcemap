@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bmc
 // matched 2.1.88 source: src/components/CostThresholdDialog.tsx
-// class=modified  jaccard=0.5473  score=0.7717  fileCov=0.6529
+// class=modified  jaccard=0.3699  score=0.6353  fileCov=0.4697
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bmc = E(() => {

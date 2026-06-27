@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hYt
 // matched 2.1.88 source: src/utils/mcpInstructionsDelta.ts
-// class=modified  jaccard=0.4438  score=1  fileCov=0.4438
+// class=modified  jaccard=0.4948  score=0.8305  fileCov=0.5504
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hYt = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zOc
 // matched 2.1.88 source: src/migrations/migrateOpusToOpus1m.ts
-// class=modified  jaccard=0.3153  score=0.414  fileCov=0.5693
+// class=modified  jaccard=0.2426  score=0.456  fileCov=0.3415
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zOc = E(() => {

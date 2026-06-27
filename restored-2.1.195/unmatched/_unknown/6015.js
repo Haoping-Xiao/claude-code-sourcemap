@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QQo
-// matched 2.1.88 source: node_modules/undici/lib/web/fetch/index.js
-// class=new  jaccard=0.01  score=0.0304  fileCov=0.0146
-// note: nearest: node_modules/undici/lib/web/fetch/index.js (0.01); 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
+// class=new  jaccard=0.0194  score=0.0714  fileCov=0.0259
+// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0194); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QQo = Q((QGc, rrn) => {
   (function () {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ibs
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/node-fetch/lib/index.js
+// class=new  jaccard=0.0243  score=0.7625  fileCov=0.0244
+// note: nearest: node_modules/node-fetch/lib/index.js (0.0243); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ibs = E(() => {
   Eae();

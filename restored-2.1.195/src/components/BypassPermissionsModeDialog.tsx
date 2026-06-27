@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k$c
 // matched 2.1.88 source: src/components/BypassPermissionsModeDialog.tsx
-// class=modified  jaccard=0.5212  score=0.6828  fileCov=0.6878
+// class=modified  jaccard=0.4682  score=0.6566  fileCov=0.62
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var k$c = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rvl
 // matched 2.1.88 source: src/tools/FileEditTool/prompt.ts
-// class=modified  jaccard=0.2165  score=0.2569  fileCov=0.5795
+// class=modified  jaccard=0.1325  score=0.1926  fileCov=0.2979
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rvl = E(() => {

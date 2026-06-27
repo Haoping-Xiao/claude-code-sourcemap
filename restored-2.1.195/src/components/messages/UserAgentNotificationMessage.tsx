@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gzn
 // matched 2.1.88 source: src/components/messages/UserAgentNotificationMessage.tsx
-// class=modified  jaccard=0.5212  score=0.7732  fileCov=0.6152
+// class=modified  jaccard=0.3752  score=0.5656  fileCov=0.5271
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gzn = E(() => {

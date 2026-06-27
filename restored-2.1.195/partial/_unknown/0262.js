@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kas
-// matched 2.1.88 source: node_modules/zod/v4/locales/zh-CN.js
-// class=partial  jaccard=0.1164  score=0.1616  fileCov=0.294
-// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
+// matched 2.1.88 source: node_modules/zod/v4/locales/ru.js
+// class=partial  jaccard=0.2234  score=0.3435  fileCov=0.3899
+// note: low-confidence suggestion: node_modules/zod/v4/locales/ru.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var kas = E(() => {
   ep();

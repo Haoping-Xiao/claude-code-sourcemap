@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Tzr
 // matched 2.1.88 source: src/utils/computerUse/common.ts
-// class=modified (alt of src/utils/computerUse/common.ts)  jaccard=0.1373  score=0.3402  fileCov=0.1871
+// class=modified (alt of src/utils/computerUse/common.ts)  jaccard=0.1386  score=0.4767  fileCov=0.1635
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Tzr = E(() => {

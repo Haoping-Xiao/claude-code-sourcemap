@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xsr
 // matched 2.1.88 source: src/commands/fast/fast.tsx
-// class=modified (alt of src/commands/fast/fast.tsx)  jaccard=0.1285  score=0.3389  fileCov=0.1715
+// class=modified (alt of src/commands/fast/fast.tsx)  jaccard=0.1037  score=0.3045  fileCov=0.136
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xsr = E(() => {

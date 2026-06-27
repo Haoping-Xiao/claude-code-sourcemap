@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Hfo
 // matched 2.1.88 source: src/services/mcp/client.ts
-// class=modified (alt of src/services/mcp/client.ts)  jaccard=0.2565  score=0.4938  fileCov=0.348
+// class=modified (alt of src/services/mcp/client.ts)  jaccard=0.2113  score=0.3936  fileCov=0.3132
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Hfo = E(() => {

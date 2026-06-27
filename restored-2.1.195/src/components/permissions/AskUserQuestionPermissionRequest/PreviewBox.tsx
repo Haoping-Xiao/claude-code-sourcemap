@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/PreviewBox.tsx
-// class=modified  jaccard=0.2955  score=1  fileCov=0.2955
+// class=modified  jaccard=0.2328  score=0.5828  fileCov=0.2793
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MAc = E(() => {

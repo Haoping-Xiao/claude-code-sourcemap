@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $$c
 // matched 2.1.88 source: src/components/ClaudeInChromeOnboarding.tsx
-// class=modified  jaccard=0.3033  score=0.3961  fileCov=0.5642
+// class=modified  jaccard=0.2598  score=0.3998  fileCov=0.4258
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $$c = E(() => {

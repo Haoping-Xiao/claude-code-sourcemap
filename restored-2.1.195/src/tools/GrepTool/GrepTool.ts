@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gAe
 // matched 2.1.88 source: src/tools/GrepTool/GrepTool.ts
-// class=modified  jaccard=0.5506  score=0.7635  fileCov=0.6639
+// class=modified  jaccard=0.5923  score=0.8163  fileCov=0.6834
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gAe = E(() => {

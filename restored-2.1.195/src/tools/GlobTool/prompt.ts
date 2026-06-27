@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lf
 // matched 2.1.88 source: src/tools/GlobTool/prompt.ts
-// class=modified  jaccard=0.3159  score=0.3159  fileCov=1
+// class=modified  jaccard=0.316  score=0.316  fileCov=1
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lf = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module put
 // matched 2.1.88 source: src/memdir/findRelevantMemories.ts
-// class=modified (alt of src/memdir/findRelevantMemories.ts)  jaccard=0.0999  score=0.2766  fileCov=0.1353
+// class=modified (alt of src/memdir/findRelevantMemories.ts)  jaccard=0.064  score=0.1842  fileCov=0.0892
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var put = E(() => {

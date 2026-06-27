@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module g0
 // matched 2.1.88 source: src/utils/format.ts
-// class=modified  jaccard=0.8011  score=1  fileCov=0.8011
+// class=modified  jaccard=0.609  score=0.8259  fileCov=0.6987
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var g0 = E(() => {

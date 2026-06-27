@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Y4
 // matched 2.1.88 source: src/utils/getWorktreePaths.ts
-// class=modified  jaccard=0.4823  score=0.7529  fileCov=0.5729
+// class=modified  jaccard=0.4904  score=0.8486  fileCov=0.5374
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Y4 = E(() => {

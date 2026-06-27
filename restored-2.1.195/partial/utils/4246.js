@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bko
-// matched 2.1.88 source: src/components/permissions/WebFetchPermissionRequest/WebFetchPermissionRequest.tsx
-// class=partial  jaccard=0.1525  score=0.396  fileCov=0.1987
-// note: low-confidence suggestion: src/components/permissions/WebFetchPermissionRequest/WebFetchPermissionRequest.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/WebFetchTool/WebFetchTool.ts
+// class=partial  jaccard=0.0844  score=0.3994  fileCov=0.0967
+// note: low-confidence suggestion: src/tools/WebFetchTool/WebFetchTool.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bko = E(() => {
   Rc();

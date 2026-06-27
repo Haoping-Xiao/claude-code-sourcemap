@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module y3
 // matched 2.1.88 source: src/commands/memory/memory.tsx
-// class=modified  jaccard=0.4239  score=0.5785  fileCov=0.6133
+// class=modified  jaccard=0.3915  score=0.5483  fileCov=0.5779
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var y3 = E(() => {

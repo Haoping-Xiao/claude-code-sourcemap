@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UNt
 // matched 2.1.88 source: src/memdir/memoryTypes.ts
-// class=modified  jaccard=0.462  score=0.5836  fileCov=0.6891
+// class=modified  jaccard=0.4114  score=0.5331  fileCov=0.6431
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var UNt = E(() => {

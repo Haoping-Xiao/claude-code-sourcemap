@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qhc
 // matched 2.1.88 source: src/hooks/useHistorySearch.ts
-// class=modified  jaccard=0.4063  score=0.6818  fileCov=0.5014
+// class=modified  jaccard=0.3256  score=0.8064  fileCov=0.3532
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qhc = E(() => {

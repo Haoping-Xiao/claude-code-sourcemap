@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ijc
 // matched 2.1.88 source: node_modules/undici/lib/web/fetch/util.js
-// class=new  jaccard=0.0373  score=0.1219  fileCov=0.051
-// note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0373); 0 renamed
+// class=new  jaccard=0.0194  score=0.1142  fileCov=0.0229
+// note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0194); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ijc = E(() => {
   lJo();

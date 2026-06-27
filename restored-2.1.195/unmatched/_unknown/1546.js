@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module o4r
 // matched 2.1.88 source: node_modules/@smithy/signature-v4/dist-cjs/index.js
-// class=new  jaccard=0.023  score=1  fileCov=0.023
-// note: nearest: node_modules/@smithy/signature-v4/dist-cjs/index.js (0.023); 0 renamed
+// class=new  jaccard=0.0261  score=1  fileCov=0.0261
+// note: nearest: node_modules/@smithy/signature-v4/dist-cjs/index.js (0.0261); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var o4r = E(() => {
   zjr();

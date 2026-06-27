@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S7t
 // matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=new  jaccard=0.0379  score=0.387  fileCov=0.0403
-// note: nearest: src/components/Settings/Config.tsx (0.0379); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0335  score=0.2875  fileCov=0.0365
+// note: nearest: src/components/Settings/Config.tsx (0.0335); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var S7t = E(() => {
   tne();

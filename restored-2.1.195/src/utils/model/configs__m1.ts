@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module foi
 // matched 2.1.88 source: src/utils/model/configs.ts
-// class=modified (alt of src/utils/model/configs.ts)  jaccard=0.4257  score=0.4422  fileCov=0.9196
+// class=modified (alt of src/utils/model/configs.ts)  jaccard=0.3555  score=0.4423  fileCov=0.6442
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var foi = E(() => {

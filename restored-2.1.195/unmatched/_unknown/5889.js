@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m2c
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/coffeescript.js
-// class=new  jaccard=0.0114  score=0.0963  fileCov=0.0127
-// note: nearest: node_modules/highlight.js/lib/languages/coffeescript.js (0.0114); 0 renamed
+// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/util.mjs
+// class=new  jaccard=0.0258  score=0.1135  fileCov=0.0323
+// note: nearest: node_modules/@growthbook/growthbook/dist/esm/util.mjs (0.0258); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var m2c = E(() => {
   wm();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pir
 // matched 2.1.88 source: src/utils/model/deprecation.ts
-// class=modified  jaccard=0.0768  score=0.1334  fileCov=0.1532
+// class=modified  jaccard=0.1428  score=0.2606  fileCov=0.24
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pir = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qPn
 // matched 2.1.88 source: src/utils/telemetry/events.ts
-// class=modified  jaccard=0.4556  score=0.5548  fileCov=0.7182
+// class=modified  jaccard=0.2035  score=0.2522  fileCov=0.513
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qPn = E(() => {

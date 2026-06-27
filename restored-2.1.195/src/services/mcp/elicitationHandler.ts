@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hka
 // matched 2.1.88 source: src/services/mcp/elicitationHandler.ts
-// class=modified  jaccard=0.6582  score=0.787  fileCov=0.8008
+// class=modified  jaccard=0.5444  score=0.7486  fileCov=0.6662
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hka = E(() => {

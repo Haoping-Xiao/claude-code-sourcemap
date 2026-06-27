@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module f4
 // matched 2.1.88 source: src/tools/BriefTool/prompt.ts
-// class=modified (alt of src/tools/BriefTool/prompt.ts)  jaccard=0.1028  score=0.1487  fileCov=0.25
+// class=modified (alt of src/tools/BriefTool/prompt.ts)  jaccard=0.089  score=0.1214  fileCov=0.25
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var f4 = E(() => {

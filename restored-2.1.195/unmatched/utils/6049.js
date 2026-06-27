@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gqc
-// matched 2.1.88 source: src/bridge/sessionRunner.ts
-// class=new  jaccard=0.0199  score=0.0837  fileCov=0.0254
-// note: nearest: src/bridge/sessionRunner.ts (0.0199); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/bridge/bridgeMain.ts
+// class=new  jaccard=0.0064  score=0.0942  fileCov=0.0068
+// note: nearest: src/bridge/bridgeMain.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gqc = E(() => {
   dn();

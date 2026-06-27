@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hP
 // matched 2.1.88 source: src/utils/swarm/spawnInProcess.ts
-// class=modified  jaccard=0.2769  score=0.5038  fileCov=0.3807
+// class=modified  jaccard=0.3097  score=0.5187  fileCov=0.4345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hP = E(() => {

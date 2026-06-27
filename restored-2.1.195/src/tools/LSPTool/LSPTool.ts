@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fbl
 // matched 2.1.88 source: src/tools/LSPTool/LSPTool.ts
-// class=modified  jaccard=0.5575  score=0.9449  fileCov=0.5763
+// class=modified  jaccard=0.5637  score=0.9271  fileCov=0.5899
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var fbl = E(() => {

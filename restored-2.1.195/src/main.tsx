@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module F5c
 // matched 2.1.88 source: src/main.tsx
-// class=modified  jaccard=0.3334  score=0.5994  fileCov=0.4291
+// class=modified  jaccard=0.2757  score=0.4843  fileCov=0.3903
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var F5c = E(() => {

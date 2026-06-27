@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B_
 // matched 2.1.88 source: src/components/PromptInput/PromptInputFooterSuggestions.tsx
-// class=partial  jaccard=0.2484  score=0.5083  fileCov=0.327
+// class=partial  jaccard=0.1796  score=0.2612  fileCov=0.365
 // note: low-confidence suggestion: src/components/PromptInput/PromptInputFooterSuggestions.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var B_ = E(() => {

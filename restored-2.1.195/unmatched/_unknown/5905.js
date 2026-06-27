@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B2c
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/coffeescript.js
-// class=new  jaccard=0.0125  score=0.4272  fileCov=0.0127
-// note: nearest: node_modules/highlight.js/lib/languages/coffeescript.js (0.0125); 0 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
+// class=new  jaccard=0.0084  score=0.2852  fileCov=0.0085
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0084); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var B2c = E(() => {
   egr();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qzt
 // matched 2.1.88 source: src/tools/SendMessageTool/UI.tsx
-// class=modified  jaccard=0.4316  score=0.5254  fileCov=0.7073
+// class=modified  jaccard=0.3991  score=0.5434  fileCov=0.6003
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qzt = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fic
 // matched 2.1.88 source: src/utils/hooks/execHttpHook.ts
-// class=modified  jaccard=0.6302  score=0.966  fileCov=0.6445
+// class=modified  jaccard=0.5286  score=0.8542  fileCov=0.5811
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var fic = E(() => {

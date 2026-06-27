@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jit
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> ink; 0 renamed
+// matched 2.1.88 source: src/ink/termio/parser.ts
+// class=new  jaccard=0.0295  score=0.4027  fileCov=0.0308
+// note: nearest: src/ink/termio/parser.ts (0.0295); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var jit = E(() => {
   CBt();

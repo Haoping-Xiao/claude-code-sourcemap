@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wgc
 // matched 2.1.88 source: src/bridge/codeSessionApi.ts
-// class=modified  jaccard=0.7071  score=0.776  fileCov=0.8885
+// class=modified  jaccard=0.54  score=0.6539  fileCov=0.7562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wgc = E(() => {

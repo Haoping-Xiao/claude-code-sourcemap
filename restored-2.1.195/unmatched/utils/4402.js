@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MAl
-// matched 2.1.88 source: src/utils/computerUse/computerUseLock.ts
-// class=new  jaccard=0.0589  score=1  fileCov=0.0589
-// note: nearest: src/utils/computerUse/computerUseLock.ts (0.0589); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools.ts
+// class=new  jaccard=0.044  score=0.5433  fileCov=0.0457
+// note: nearest: src/tools.ts (0.044); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var MAl = E(() => {
   fn();

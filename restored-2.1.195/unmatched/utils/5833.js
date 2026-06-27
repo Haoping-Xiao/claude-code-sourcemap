@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module G1c
-// matched 2.1.88 source: node_modules/@protobufjs/fetch/index.js
-// class=new  jaccard=0.028  score=0.0358  fileCov=0.114
-// note: nearest: node_modules/@protobufjs/fetch/index.js (0.028); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/insights.ts
+// class=new  jaccard=0.0072  score=0.1338  fileCov=0.0075
+// note: nearest: src/commands/insights.ts (0.0072); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var G1c = E(() => {
   spt();

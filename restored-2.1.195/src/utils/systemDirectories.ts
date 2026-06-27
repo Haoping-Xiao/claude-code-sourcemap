@@ -1,80 +1,55 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eqe
 // matched 2.1.88 source: src/utils/systemDirectories.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8132  score=1  fileCov=0.8132
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.6218  score=0.7649  fileCov=0.7687
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-import { homedir } from 'os'
-import { join } from 'path'
-import { logForDebugging } from './debug.js'
-import { getPlatform, type Platform } from './platform.js'
-
-export type SystemDirectories = {
-  HOME: string
-  DESKTOP: string
-  DOCUMENTS: string
-  DOWNLOADS: string
-  [key: string]: string // Index signature for compatibility with Record<string, string>
-}
-
-type EnvLike = Record<string, string | undefined>
-
-type SystemDirectoriesOptions = {
-  env?: EnvLike
-  homedir?: string
-  platform?: Platform
-}
-
-/**
- * Get cross-platform system directories
- * Handles differences between Windows, macOS, Linux, and WSL
- * @param options Optional overrides for testing (env, homedir, platform)
- */
-export function getSystemDirectories(
-  options?: SystemDirectoriesOptions,
-): SystemDirectories {
-  const platform = options?.platform ?? getPlatform()
-  const homeDir = options?.homedir ?? homedir()
-  const env = options?.env ?? process.env
-
-  // Default paths used by most platforms
-  const defaults: SystemDirectories = {
-    HOME: homeDir,
-    DESKTOP: join(homeDir, 'Desktop'),
-    DOCUMENTS: join(homeDir, 'Documents'),
-    DOWNLOADS: join(homeDir, 'Downloads'),
-  }
-
-  switch (platform) {
-    case 'windows': {
-      // Windows: Use USERPROFILE if available (handles localized folder names)
-      const userProfile = env.USERPROFILE || homeDir
+var eqe = E(() => {
+  je();
+  At();
+  ys();
+  Hu();
+  ((yUn = require("path")),
+    (oCa = {
+      MAX_FILE_SIZE: 536870912,
+      MAX_TOTAL_SIZE: 1073741824,
+      MAX_FILE_COUNT: 1e5,
+      MAX_COMPRESSION_RATIO: 50,
+    }));
+});
+function iCa(e) {
+  let t = e?.platform ?? Vt(),
+    n = e?.homedir ?? sCa.homedir(),
+    r = e?.env ?? process.env,
+    o = {
+      HOME: n,
+      DESKTOP: tqe.join(n, "Desktop"),
+      DOCUMENTS: tqe.join(n, "Documents"),
+      DOWNLOADS: tqe.join(n, "Downloads"),
+    };
+  switch (t) {
+    case "windows": {
+      let s = r.USERPROFILE || n;
       return {
-        HOME: homeDir,
-        DESKTOP: join(userProfile, 'Desktop'),
-        DOCUMENTS: join(userProfile, 'Documents'),
-        DOWNLOADS: join(userProfile, 'Downloads'),
-      }
+        HOME: n,
+        DESKTOP: tqe.join(s, "Desktop"),
+        DOCUMENTS: tqe.join(s, "Documents"),
+        DOWNLOADS: tqe.join(s, "Downloads"),
+      };
     }
-
-    case 'linux':
-    case 'wsl': {
-      // Linux/WSL: Check XDG Base Directory specification first
+    case "linux":
+    case "wsl":
       return {
-        HOME: homeDir,
-        DESKTOP: env.XDG_DESKTOP_DIR || defaults.DESKTOP,
-        DOCUMENTS: env.XDG_DOCUMENTS_DIR || defaults.DOCUMENTS,
-        DOWNLOADS: env.XDG_DOWNLOAD_DIR || defaults.DOWNLOADS,
-      }
-    }
-
-    case 'macos':
+        HOME: n,
+        DESKTOP: r.XDG_DESKTOP_DIR || o.DESKTOP,
+        DOCUMENTS: r.XDG_DOCUMENTS_DIR || o.DOCUMENTS,
+        DOWNLOADS: r.XDG_DOWNLOAD_DIR || o.DOWNLOADS,
+      };
+    case "macos":
     default: {
-      // macOS and unknown platforms use standard paths
-      if (platform === 'unknown') {
-        logForDebugging(`Unknown platform detected, using default paths`)
-      }
-      return defaults
+      if (t === "unknown") T("Unknown platform detected, using default paths");
+      return o;
     }
   }
 }
+var sCa, tqe;

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Jzt
 // matched 2.1.88 source: src/tools/PowerShellTool/PowerShellTool.tsx
-// class=modified  jaccard=0.3369  score=0.627  fileCov=0.4213
+// class=modified  jaccard=0.3153  score=0.4788  fileCov=0.4801
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Jzt = E(() => {

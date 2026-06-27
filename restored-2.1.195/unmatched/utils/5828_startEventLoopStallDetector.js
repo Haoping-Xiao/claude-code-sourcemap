@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module g1c
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 2 renamed
+// matched 2.1.88 source: src/utils/heapDumpService.ts
+// class=new  jaccard=0.0207  score=0.0861  fileCov=0.0266
+// note: nearest: src/utils/heapDumpService.ts (0.0207); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var g1c = E(() => {
   dn();

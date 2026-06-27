@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KHc
-// matched 2.1.88 source: src/components/permissions/BashPermissionRequest/BashPermissionRequest.tsx
-// class=new  jaccard=0.0513  score=0.1723  fileCov=0.0681
-// note: nearest: src/components/permissions/BashPermissionRequest/BashPermissionRequest.tsx (0.0513); dir inferred from dep-graph -> utils; 3 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0098  score=0.1827  fileCov=0.0102
+// note: nearest: src/screens/REPL.tsx (0.0098); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var KHc = E(() => {
   es();

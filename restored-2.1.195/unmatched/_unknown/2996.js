@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yga
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/highlight.js/lib/languages/fix.js
+// class=new  jaccard=0.0436  score=0.0552  fileCov=0.1721
+// note: nearest: node_modules/highlight.js/lib/languages/fix.js (0.0436); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yga = Q((LFy, hga) => {
   function Amp(e) {

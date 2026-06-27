@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Qfa
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/highlight.js/lib/languages/gml.js
+// class=new  jaccard=0.007  score=0.5836  fileCov=0.007
+// note: nearest: node_modules/highlight.js/lib/languages/gml.js (0.007); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Qfa = Q((ZUy, Jfa) => {
   function rfp(e) {

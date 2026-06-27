@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N8t
 // matched 2.1.88 source: src/tools/AgentTool/UI.tsx
-// class=modified  jaccard=0.3126  score=0.5524  fileCov=0.4186
+// class=modified  jaccard=0.3319  score=0.5577  fileCov=0.4505
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var N8t = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dtn
 // matched 2.1.88 source: src/components/permissions/PermissionPrompt.tsx
-// class=modified (alt of src/components/permissions/PermissionPrompt.tsx)  jaccard=0.1662  score=0.3557  fileCov=0.2378
+// class=modified (alt of src/components/permissions/PermissionPrompt.tsx)  jaccard=0.1175  score=0.2377  fileCov=0.1886
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dtn = E(() => {

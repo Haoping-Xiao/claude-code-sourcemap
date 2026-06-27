@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pGa
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/mathematica.js
-// class=new  jaccard=0.0003  score=0.4019  fileCov=0.0003
-// note: nearest: node_modules/highlight.js/lib/languages/mathematica.js (0.0003); 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/ext/descriptor/index.js
+// class=new  jaccard=0.0368  score=0.2089  fileCov=0.0427
+// note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0368); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pGa = Q((BS_, jjp) => {
   jjp.exports = {

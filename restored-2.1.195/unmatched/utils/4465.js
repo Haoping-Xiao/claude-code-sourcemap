@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module RCl
 // matched 2.1.88 source: src/tools/BashTool/bashPermissions.ts
-// class=new  jaccard=0.0426  score=0.157  fileCov=0.0553
-// note: nearest: src/tools/BashTool/bashPermissions.ts (0.0426); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.058  score=0.2086  fileCov=0.0744
+// note: nearest: src/tools/BashTool/bashPermissions.ts (0.058); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var RCl = E(() => {
   sN();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YEl
 // matched 2.1.88 source: src/tools/SendMessageTool/SendMessageTool.ts
-// class=modified (alt of src/tools/SendMessageTool/SendMessageTool.ts)  jaccard=0.1721  score=0.3353  fileCov=0.2611
+// class=modified (alt of src/tools/SendMessageTool/SendMessageTool.ts)  jaccard=0.1948  score=0.3724  fileCov=0.2901
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var YEl = E(() => {

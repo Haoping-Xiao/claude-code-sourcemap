@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module D$r
 // matched 2.1.88 source: node_modules/@aws-sdk/client-sso/dist-cjs/index.js
-// class=new  jaccard=0.0508  score=1  fileCov=0.0508
-// note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0508); 0 renamed
+// class=new  jaccard=0.0494  score=1  fileCov=0.0494
+// note: nearest: node_modules/@aws-sdk/client-sso/dist-cjs/index.js (0.0494); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var D$r = E(() => {
   LY();

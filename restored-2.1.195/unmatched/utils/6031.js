@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZWc
-// matched 2.1.88 source: node_modules/undici/lib/core/constants.js
-// class=new  jaccard=0.0163  score=0.1475  fileCov=0.018
-// note: nearest: node_modules/undici/lib/core/constants.js (0.0163); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.005  score=0.2727  fileCov=0.0051
+// note: nearest: src/cli/print.ts (0.005); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ZWc = E(() => {
   dZo();

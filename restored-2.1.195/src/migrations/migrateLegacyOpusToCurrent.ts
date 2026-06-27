@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GOc
 // matched 2.1.88 source: src/migrations/migrateLegacyOpusToCurrent.ts
-// class=modified  jaccard=0.5639  score=0.833  fileCov=0.6358
+// class=modified  jaccard=0.5051  score=0.8751  fileCov=0.5443
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var GOc = E(() => {

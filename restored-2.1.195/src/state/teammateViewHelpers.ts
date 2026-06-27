@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s8l
 // matched 2.1.88 source: src/state/teammateViewHelpers.ts
-// class=modified  jaccard=0.4211  score=0.608  fileCov=0.5781
+// class=modified  jaccard=0.3352  score=0.6544  fileCov=0.4074
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var s8l = E(() => {

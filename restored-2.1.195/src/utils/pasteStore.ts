@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FDn
 // matched 2.1.88 source: src/utils/pasteStore.ts
-// class=modified  jaccard=0.5552  score=0.7198  fileCov=0.7083
+// class=modified  jaccard=0.3682  score=0.6874  fileCov=0.4423
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var FDn = E(() => {

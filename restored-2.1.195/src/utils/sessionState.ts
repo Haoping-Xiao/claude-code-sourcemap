@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module f1c
 // matched 2.1.88 source: src/utils/sessionState.ts
-// class=modified  jaccard=0.3051  score=0.437  fileCov=0.5028
+// class=modified  jaccard=0.1574  score=0.2399  fileCov=0.3138
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var f1c = E(() => {

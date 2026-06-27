@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bXl
 // matched 2.1.88 source: src/commands/sandbox-toggle/sandbox-toggle.tsx
-// class=modified  jaccard=0.3853  score=0.866  fileCov=0.4097
+// class=modified  jaccard=0.3816  score=0.7863  fileCov=0.4258
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bXl = E(() => {

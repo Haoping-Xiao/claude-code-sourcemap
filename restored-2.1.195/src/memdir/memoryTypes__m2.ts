@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CNi
 // matched 2.1.88 source: src/memdir/memoryTypes.ts
-// class=modified (alt of src/memdir/memoryTypes.ts)  jaccard=0.0229  score=0.1917  fileCov=0.0253
+// class=modified (alt of src/memdir/memoryTypes.ts)  jaccard=0.0203  score=0.1255  fileCov=0.0236
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var CNi = E(() => {

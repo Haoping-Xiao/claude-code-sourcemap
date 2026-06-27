@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wQl
 // matched 2.1.88 source: src/commands/effort/effort.tsx
-// class=modified  jaccard=0.1945  score=0.2154  fileCov=0.668
+// class=modified  jaccard=0.1503  score=0.1745  fileCov=0.5195
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wQl = E(() => {

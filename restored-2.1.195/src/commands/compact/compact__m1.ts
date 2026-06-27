@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Iao
 // matched 2.1.88 source: src/commands/compact/compact.ts
-// class=modified (alt of src/commands/compact/compact.ts)  jaccard=0.0665  score=0.1259  fileCov=0.1235
+// class=modified (alt of src/commands/compact/compact.ts)  jaccard=0.0431  score=0.0971  fileCov=0.072
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Iao = E(() => {

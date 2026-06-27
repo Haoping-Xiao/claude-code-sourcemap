@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gKn
 // matched 2.1.88 source: src/utils/hooks/sessionHooks.ts
-// class=modified  jaccard=0.3821  score=0.7294  fileCov=0.4452
+// class=modified  jaccard=0.2398  score=0.6032  fileCov=0.2847
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gKn = E(() => {

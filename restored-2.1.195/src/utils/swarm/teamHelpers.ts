@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module d9t
 // matched 2.1.88 source: src/utils/swarm/teamHelpers.ts
-// class=modified  jaccard=0.4908  score=0.6935  fileCov=0.6267
+// class=modified  jaccard=0.4781  score=0.7511  fileCov=0.5681
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var d9t = E(() => {

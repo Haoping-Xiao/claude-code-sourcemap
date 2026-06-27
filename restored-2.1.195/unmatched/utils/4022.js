@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ztl
 // matched 2.1.88 source: src/tools/GlobTool/GlobTool.ts
-// class=new  jaccard=0.0342  score=0.1334  fileCov=0.044
+// class=new  jaccard=0.0342  score=0.1664  fileCov=0.0413
 // note: nearest: src/tools/GlobTool/GlobTool.ts (0.0342); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ztl = E(() => {

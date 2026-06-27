@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Uhc
 // matched 2.1.88 source: src/components/PromptInput/Notifications.tsx
-// class=modified  jaccard=0.2574  score=0.6191  fileCov=0.3058
+// class=modified  jaccard=0.2592  score=0.5583  fileCov=0.3261
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Uhc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _pt
 // matched 2.1.88 source: src/utils/plugins/lspPluginIntegration.ts
-// class=modified  jaccard=0.6092  score=0.8819  fileCov=0.6633
+// class=modified  jaccard=0.4506  score=0.8076  fileCov=0.5049
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _pt = E(() => {

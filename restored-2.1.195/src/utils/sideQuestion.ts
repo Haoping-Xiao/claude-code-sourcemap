@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wOe
 // matched 2.1.88 source: src/utils/sideQuestion.ts
-// class=modified  jaccard=0.6463  score=1  fileCov=0.6463
+// class=modified  jaccard=0.3125  score=0.3603  fileCov=0.7023
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wOe = E(() => {

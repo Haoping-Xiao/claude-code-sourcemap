@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PLo
-// matched 2.1.88 source: src/tools/BashTool/BashTool.tsx
-// class=new  jaccard=0.0474  score=0.4178  fileCov=0.0507
-// note: nearest: src/tools/BashTool/BashTool.tsx (0.0474); dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/tools/PowerShellTool/PowerShellTool.tsx
+// class=new  jaccard=0.0409  score=0.4411  fileCov=0.0432
+// note: nearest: src/tools/PowerShellTool/PowerShellTool.tsx (0.0409); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var PLo = E(() => {
   nJn = ["npm", "yarn", "pnpm", "node", "python", "python3", "go", "cargo", "make", "docker", "terraform", "webpack", "vite", "jest", "pytest", "curl", "git", "dotnet", "msbuild", "nuget", "build", "test", "serve", "watch", "dev"];

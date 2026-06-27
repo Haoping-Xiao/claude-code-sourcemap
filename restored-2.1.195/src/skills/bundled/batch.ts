@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $Tc
 // matched 2.1.88 source: src/skills/bundled/batch.ts
-// class=modified  jaccard=0.1744  score=0.3397  fileCov=0.2637
+// class=modified  jaccard=0.227  score=0.4303  fileCov=0.3245
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $Tc = E(() => {

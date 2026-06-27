@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Usi
 // matched 2.1.88 source: src/utils/secureStorage/keychainPrefetch.ts
-// class=modified  jaccard=0.3112  score=0.4709  fileCov=0.4787
+// class=modified  jaccard=0.2748  score=0.3779  fileCov=0.5017
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Usi = E(() => {

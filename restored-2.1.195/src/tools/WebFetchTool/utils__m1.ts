@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lze
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
-// class=modified (alt of src/tools/WebFetchTool/utils.ts)  jaccard=0.0406  score=0.0741  fileCov=0.0825
+// class=modified (alt of src/tools/WebFetchTool/utils.ts)  jaccard=0.0326  score=0.0757  fileCov=0.0542
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lze = E(() => {

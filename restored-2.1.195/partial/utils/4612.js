@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nMl
-// matched 2.1.88 source: src/utils/extraUsage.ts
-// class=partial  jaccard=0.1757  score=0.2338  fileCov=0.414
-// note: low-confidence suggestion: src/utils/extraUsage.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/advisor.ts
+// class=partial  jaccard=0.0817  score=0.3106  fileCov=0.0998
+// note: low-confidence suggestion: src/commands/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var nMl = E(() => {
   ft();

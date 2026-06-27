@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xxl
 // matched 2.1.88 source: src/query.ts
-// class=modified  jaccard=0.1878  score=0.2562  fileCov=0.4133
+// class=modified  jaccard=0.2256  score=0.2964  fileCov=0.4858
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Xxl = E(() => {

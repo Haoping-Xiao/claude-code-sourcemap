@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module E5e
 // matched 2.1.88 source: src/utils/hooks/fileChangedWatcher.ts
-// class=modified  jaccard=0.3109  score=0.4384  fileCov=0.5167
+// class=modified  jaccard=0.3572  score=0.622  fileCov=0.4562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var E5e = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PR
 // matched 2.1.88 source: src/utils/errors.ts
-// class=modified  jaccard=0.4579  score=0.7012  fileCov=0.5689
+// class=modified  jaccard=0.3397  score=0.7414  fileCov=0.3853
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var PR = E(() => {

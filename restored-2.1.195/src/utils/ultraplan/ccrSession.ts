@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zor
 // matched 2.1.88 source: src/utils/ultraplan/ccrSession.ts
-// class=modified  jaccard=0.5478  score=0.7681  fileCov=0.6563
+// class=modified  jaccard=0.5216  score=0.7931  fileCov=0.6037
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Zor = E(() => {

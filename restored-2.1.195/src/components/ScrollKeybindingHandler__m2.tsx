@@ -1,85 +1,117 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Mg
+// restored from claude-code 2.1.195 (deminified) — module HWi
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
-// class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.0394  score=0.1658  fileCov=0.0491
+// class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.0465  score=0.2584  fileCov=0.0537
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Mg = E(() => {
+var HWi = E(() => {
   iu();
-  nbe();
-  WQr();
-  mZr();
-  lPn();
+  t0e();
+  sr();
   p8();
-  Ye();
-  _Ge();
-  _Zr();
-  ((I6i = R(rt(), 1)), (bZr = R(se(), 1)));
+  Tc();
+  ((EWi = R(bWi(), 1)),
+    (FGd = {
+      dashed: {
+        top: "\u254C",
+        left: "\u254E",
+        right: "\u254E",
+        bottom: "\u254C",
+        topLeft: " ",
+        topRight: " ",
+        bottomLeft: " ",
+        bottomRight: " ",
+      },
+      quote: {
+        top: " ",
+        left: "\u258E",
+        right: " ",
+        bottom: " ",
+        topLeft: " ",
+        topRight: " ",
+        bottomLeft: " ",
+        bottomRight: " ",
+      },
+    }));
+  AWi = jGd;
 });
-function x6i(e) {
-  let t = z6d[e.name],
-    n = {
-      upArrow: t === "upArrow",
-      downArrow: t === "downArrow",
-      leftArrow: t === "leftArrow",
-      rightArrow: t === "rightArrow",
-      pageDown: t === "pageDown",
-      pageUp: t === "pageUp",
-      wheelUp: false,
-      wheelDown: false,
-      home: t === "home",
-      end: t === "end",
-      return: t === "return",
-      escape: t === "escape",
-      tab: t === "tab",
-      backspace: t === "backspace",
-      delete: t === "delete",
-      ctrl: e.ctrl,
-      shift: e.shift,
-      super: e.superKey,
-      meta: e.meta,
+function EJr(e, t) {
+  let n = e && (t?.demoRuler ?? true);
+  if (ELn === e && _Jr === n) return;
+  if (((ELn = e), (_Jr = n), !e)) SJr = null;
+  for (let r of ALn) r();
+}
+function cat(e) {
+  return (ALn.add(e), () => ALn.delete(e));
+}
+function TWi() {
+  return SJr;
+}
+function vWi() {
+  return ELn;
+}
+function wWi() {
+  return _Jr;
+}
+function qGd() {
+  GGd = {
+    enabled: VBt,
+    events: lat,
+    position: bJr,
+  };
+  for (let e of WGd) e();
+}
+function AJr(e, t, n, r) {
+  if (ELn) {
+    SJr = {
+      wheelMode: n.wheelMode,
     };
-  return {
-    input:
-      e.name === "enter"
-        ? `
-`
-        : [...e.key].length === 1
-          ? e.key
-          : "",
-    key: n,
+    for (let s of ALn) s();
+  }
+  if (!VBt) return;
+  let o = yJr === 0 ? 1 / 0 : r - yJr;
+  ((yJr = r),
+    IWi({
+      kind: "in",
+      ts: r,
+      dir: e,
+      step: t,
+      flip: n.pendingFlip && t === 0,
+      gap: o,
+      mult: n.mult,
+      wheelMode: n.wheelMode,
+      burst: n.burstCount,
+      jbBypass: n.jbBypass,
+    }));
+}
+function CWi(e, t, n) {
+  if (!VBt) return;
+  IWi({
+    kind: "out",
+    ts: performance.now(),
+    applied: e,
+    remaining: t,
+    algo: n,
+  });
+}
+function HJr(e) {
+  if (!VBt) return;
+  bJr = {
+    top: e.getScrollTop(),
+    height: e.getScrollHeight(),
+    viewport: e.getViewportHeight(),
   };
 }
-function k6i(e, t) {
-  let n = "";
-  if (t.escape) n = "escape";
-  else if (t.return) n = "return";
-  else if (t.tab) n = "tab";
-  else if (t.backspace) n = "backspace";
-  else if (t.delete) n = "delete";
-  else if (t.upArrow) n = "up";
-  else if (t.downArrow) n = "down";
-  else if (t.leftArrow) n = "left";
-  else if (t.rightArrow) n = "right";
-  else if (t.pageUp) n = "pageup";
-  else if (t.pageDown) n = "pagedown";
-  else if (t.wheelUp) n = "wheelup";
-  else if (t.wheelDown) n = "wheeldown";
-  else if (t.home) n = "home";
-  else if (t.end) n = "end";
-  else if (
-    e ===
-    `
-`
-  )
-    n = "enter";
-  return {
-    name: n,
-    key: e,
-    ctrl: t.ctrl,
-    shift: t.shift,
-    meta: t.meta,
-    superKey: t.super,
-  };
+function IWi(e) {
+  ((lat = lat.length >= 256 ? [...lat.slice(-255), e] : [...lat, e]), qGd());
 }
-var z6d;
+var VBt = false,
+  lat,
+  bJr = null,
+  yJr = 0,
+  GGd,
+  WGd,
+  ELn = false,
+  _Jr = false,
+  SJr = null,
+  ALn;

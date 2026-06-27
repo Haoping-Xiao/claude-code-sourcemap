@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module n6o
 // matched 2.1.88 source: src/hooks/useMemoryUsage.ts
-// class=modified  jaccard=0.3391  score=0.4031  fileCov=0.6811
+// class=modified  jaccard=0.2627  score=0.3506  fileCov=0.5114
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var n6o = E(() => {

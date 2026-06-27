@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module EJl
-// matched 2.1.88 source: src/hooks/useTurnDiffs.ts
-// class=partial  jaccard=0.1116  score=0.3624  fileCov=0.1389
-// note: low-confidence suggestion: src/hooks/useTurnDiffs.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/skills/bundledSkills.ts
+// class=partial  jaccard=0.0609  score=0.3411  fileCov=0.069
+// note: low-confidence suggestion: src/skills/bundledSkills.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var EJl = E(() => {
   c6f = {

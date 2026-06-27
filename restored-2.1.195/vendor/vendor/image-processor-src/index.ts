@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kne
 // matched 2.1.88 source: vendor/image-processor-src/index.ts
-// class=vendor  jaccard=0.4784  score=1  fileCov=0.4784
+// class=vendor  jaccard=0.365  score=0.8793  fileCov=0.3842
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kne = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oke
 // matched 2.1.88 source: src/utils/browser.ts
-// class=modified  jaccard=0.1779  score=0.2243  fileCov=0.4623
+// class=modified  jaccard=0.1794  score=0.2519  fileCov=0.3841
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oke = E(() => {

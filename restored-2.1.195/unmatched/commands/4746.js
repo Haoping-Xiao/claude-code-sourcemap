@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JUl
-// matched 2.1.88 source: src/commands/install-github-app/install-github-app.tsx
-// class=new  jaccard=0.0136  score=0.2144  fileCov=0.0143
-// note: nearest: src/commands/install-github-app/install-github-app.tsx (0.0136); dir inferred from dep-graph -> commands; 0 renamed
+// matched 2.1.88 source: src/ink/components/Box.tsx
+// class=new  jaccard=0.0593  score=0.2569  fileCov=0.0715
+// note: nearest: src/ink/components/Box.tsx (0.0593); dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var JUl = E(() => {
   pz();

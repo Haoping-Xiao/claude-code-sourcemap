@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ANt
-// matched 2.1.88 source: src/skills/loadSkillsDir.ts
-// class=new  jaccard=0.035  score=0.0792  fileCov=0.059
-// note: nearest: src/skills/loadSkillsDir.ts (0.035); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/schemas.ts
+// class=new  jaccard=0.0496  score=0.2084  fileCov=0.0611
+// note: nearest: src/utils/plugins/schemas.ts (0.0496); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ANt = E(() => {
   Xr();

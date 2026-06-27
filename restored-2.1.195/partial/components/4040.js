@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Unl
 // matched 2.1.88 source: src/utils/markdown.ts
-// class=partial  jaccard=0.0781  score=0.5379  fileCov=0.0837
+// class=partial  jaccard=0.1022  score=0.2847  fileCov=0.1375
 // note: low-confidence suggestion: src/utils/markdown.ts; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Unl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gzo
 // matched 2.1.88 source: src/utils/cleanup.ts
-// class=modified  jaccard=0.1048  score=0.1562  fileCov=0.2414
+// class=modified  jaccard=0.1321  score=0.2473  fileCov=0.2209
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gzo = E(() => {

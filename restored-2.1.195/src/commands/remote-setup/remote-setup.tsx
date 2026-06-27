@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $nc
 // matched 2.1.88 source: src/commands/remote-setup/remote-setup.tsx
-// class=modified  jaccard=0.6011  score=0.7314  fileCov=0.7714
+// class=modified  jaccard=0.4989  score=0.7114  fileCov=0.6255
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $nc = E(() => {

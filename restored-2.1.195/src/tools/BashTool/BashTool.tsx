@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module RN
 // matched 2.1.88 source: src/tools/BashTool/BashTool.tsx
-// class=modified  jaccard=0.2505  score=0.3939  fileCov=0.4076
+// class=modified  jaccard=0.2672  score=0.3879  fileCov=0.4621
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var RN = E(() => {

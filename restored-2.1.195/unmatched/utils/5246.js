@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CHt
-// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0072  score=0.0298  fileCov=0.0095
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0072); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0093  score=0.0739  fileCov=0.0105
+// note: nearest: src/cli/print.ts (0.0093); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var CHt = E(() => {
   ag();

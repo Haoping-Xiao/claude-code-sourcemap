@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S$o
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceGcs.ts
-// class=partial  jaccard=0.1882  score=1  fileCov=0.1882
+// class=partial  jaccard=0.1715  score=0.7189  fileCov=0.1838
 // note: low-confidence suggestion: src/utils/plugins/officialMarketplaceGcs.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var S$o = E(() => {

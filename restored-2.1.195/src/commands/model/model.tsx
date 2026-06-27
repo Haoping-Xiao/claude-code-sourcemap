@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module h7t
 // matched 2.1.88 source: src/commands/model/model.tsx
-// class=modified  jaccard=0.2201  score=0.3596  fileCov=0.3619
+// class=modified  jaccard=0.1489  score=0.3696  fileCov=0.1995
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var h7t = E(() => {

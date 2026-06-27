@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VBo
 // matched 2.1.88 source: src/commands/plugin/pluginDetailsHelpers.tsx
-// class=modified  jaccard=0.4866  score=0.5523  fileCov=0.8035
+// class=modified  jaccard=0.3041  score=0.3589  fileCov=0.6657
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var VBo = E(() => {

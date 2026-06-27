@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module r5l
-// matched 2.1.88 source: src/bridge/bridgeApi.ts
-// class=new  jaccard=0.0116  score=0.0733  fileCov=0.0136
-// note: nearest: src/bridge/bridgeApi.ts (0.0116); dir inferred from dep-graph -> utils; 6 renamed
+// matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
+// class=new  jaccard=0.0163  score=0.1097  fileCov=0.0188
+// note: nearest: src/services/PromptSuggestion/speculation.ts (0.0163); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var r5l = E(() => {
   si();

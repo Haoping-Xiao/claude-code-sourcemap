@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sVe
 // matched 2.1.88 source: src/bridge/trustedDevice.ts
-// class=modified  jaccard=0.3214  score=0.3703  fileCov=0.7087
+// class=modified  jaccard=0.3061  score=0.3552  fileCov=0.6888
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sVe = E(() => {

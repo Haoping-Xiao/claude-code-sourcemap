@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qdt
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/UI.tsx
-// class=modified  jaccard=0.4424  score=0.8321  fileCov=0.4858
+// class=modified  jaccard=0.307  score=0.5249  fileCov=0.4251
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qdt = E(() => {

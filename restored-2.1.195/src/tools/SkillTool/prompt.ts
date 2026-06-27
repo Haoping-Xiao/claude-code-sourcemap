@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ect
 // matched 2.1.88 source: src/tools/SkillTool/prompt.ts
-// class=modified  jaccard=0.2159  score=0.4582  fileCov=0.2899
+// class=modified  jaccard=0.2906  score=0.6956  fileCov=0.333
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ect = E(() => {

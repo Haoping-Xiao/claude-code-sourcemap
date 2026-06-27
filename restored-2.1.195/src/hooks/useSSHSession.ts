@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sSc
 // matched 2.1.88 source: src/hooks/useSSHSession.ts
-// class=modified  jaccard=0.1196  score=1  fileCov=0.1196
+// class=modified  jaccard=0.1521  score=0.7387  fileCov=0.1607
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sSc = E(() => {

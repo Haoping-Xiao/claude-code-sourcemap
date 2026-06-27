@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lg
 // matched 2.1.88 source: src/utils/bash/bashParser.ts
-// class=modified  jaccard=0.1125  score=0.1245  fileCov=0.5373
+// class=modified  jaccard=0.0984  score=0.1229  fileCov=0.3304
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lg = E(() => {

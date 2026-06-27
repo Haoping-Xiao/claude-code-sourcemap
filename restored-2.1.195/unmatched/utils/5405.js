@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Umc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx
+// class=new  jaccard=0.0344  score=0.2991  fileCov=0.0374
+// note: nearest: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Umc = E(() => {
   hNe();

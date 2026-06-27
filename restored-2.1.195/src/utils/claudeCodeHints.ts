@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Amo
 // matched 2.1.88 source: src/utils/claudeCodeHints.ts
-// class=modified  jaccard=0.2144  score=0.2516  fileCov=0.5923
+// class=modified  jaccard=0.1987  score=0.3285  fileCov=0.3347
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Amo = E(() => {

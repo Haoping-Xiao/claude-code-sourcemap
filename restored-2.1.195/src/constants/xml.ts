@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wFe
 // matched 2.1.88 source: src/constants/xml.ts
-// class=modified  jaccard=0.7154  score=0.8816  fileCov=0.7914
+// class=modified  jaccard=0.621  score=0.7426  fileCov=0.7913
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wFe = E(() => {

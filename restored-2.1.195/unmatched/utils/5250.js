@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pWo
-// matched 2.1.88 source: src/utils/permissions/filesystem.ts
-// class=new  jaccard=0.0132  score=0.0438  fileCov=0.0185
-// note: nearest: src/utils/permissions/filesystem.ts (0.0132); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
+// class=new  jaccard=0.0286  score=0.0808  fileCov=0.0423
+// note: nearest: src/tools/AgentTool/loadAgentsDir.ts (0.0286); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pWo = E(() => {
   Qi();

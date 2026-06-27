@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MUc
 // matched 2.1.88 source: src/utils/plugins/zipCacheAdapters.ts
-// class=modified  jaccard=0.4443  score=1  fileCov=0.4443
+// class=modified  jaccard=0.2245  score=0.9312  fileCov=0.2283
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MUc = E(() => {

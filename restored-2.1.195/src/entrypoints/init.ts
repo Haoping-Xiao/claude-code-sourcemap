@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cur
 // matched 2.1.88 source: src/entrypoints/init.ts
-// class=modified  jaccard=0.3308  score=0.7049  fileCov=0.384
+// class=modified  jaccard=0.2593  score=0.6467  fileCov=0.3021
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cur = E(() => {

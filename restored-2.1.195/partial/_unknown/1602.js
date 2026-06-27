@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gdi
 // matched 2.1.88 source: node_modules/@smithy/core/dist-cjs/submodules/serde/index.js
-// class=partial  jaccard=0.1126  score=1  fileCov=0.1126
+// class=partial  jaccard=0.0749  score=1  fileCov=0.0749
 // note: low-confidence suggestion: node_modules/@smithy/core/dist-cjs/submodules/serde/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gdi = E(() => {

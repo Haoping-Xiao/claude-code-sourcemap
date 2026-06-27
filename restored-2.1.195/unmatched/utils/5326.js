@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yuc
-// matched 2.1.88 source: src/utils/ripgrep.ts
-// class=new  jaccard=0.031  score=0.1292  fileCov=0.0393
-// note: nearest: src/utils/ripgrep.ts (0.031); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/mcp/client.ts
+// class=new  jaccard=0.0125  score=0.1356  fileCov=0.0135
+// note: nearest: src/services/mcp/client.ts (0.0125); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yuc = E(() => {
   FAe();

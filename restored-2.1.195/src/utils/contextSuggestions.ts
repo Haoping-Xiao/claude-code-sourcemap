@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module f1l
 // matched 2.1.88 source: src/utils/contextSuggestions.ts
-// class=modified  jaccard=0.6192  score=0.768  fileCov=0.7617
+// class=modified  jaccard=0.5397  score=0.8198  fileCov=0.6124
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var f1l = E(() => {

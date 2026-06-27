@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Myn
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/python.js
-// class=new  jaccard=0.0172  score=0.462  fileCov=0.0176
-// note: nearest: node_modules/highlight.js/lib/languages/python.js (0.0172); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
+// class=new  jaccard=0.0185  score=0.6017  fileCov=0.0187
+// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0185); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Myn = E(() => {
   bDt = ["us", "eu", "apac", "jp", "au", "us-gov", "global"];

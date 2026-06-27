@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fpo
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js
+// class=new  jaccard=0.0435  score=0.2823  fileCov=0.049
+// note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0435); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fpo = E(() => {
   plo();

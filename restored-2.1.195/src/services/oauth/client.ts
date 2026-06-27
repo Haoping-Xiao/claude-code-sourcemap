@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module W2e
 // matched 2.1.88 source: src/services/oauth/client.ts
-// class=modified  jaccard=0.5672  score=0.6147  fileCov=0.8801
+// class=modified  jaccard=0.3445  score=0.6126  fileCov=0.4404
 // note: deminified; 16 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var W2e = E(() => {

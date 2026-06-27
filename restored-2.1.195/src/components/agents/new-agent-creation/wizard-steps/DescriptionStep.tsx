@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $Yl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/DescriptionStep.tsx
-// class=modified  jaccard=0.4345  score=0.7915  fileCov=0.4907
+// class=modified  jaccard=0.2721  score=0.409  fileCov=0.4484
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $Yl = E(() => {

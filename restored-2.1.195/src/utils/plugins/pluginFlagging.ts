@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ujl
 // matched 2.1.88 source: src/utils/plugins/pluginFlagging.ts
-// class=modified  jaccard=0.3044  score=0.3888  fileCov=0.5836
+// class=modified  jaccard=0.2834  score=0.4918  fileCov=0.4007
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ujl = E(() => {

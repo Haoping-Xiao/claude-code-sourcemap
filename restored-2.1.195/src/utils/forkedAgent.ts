@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pMo
 // matched 2.1.88 source: src/utils/forkedAgent.ts
-// class=modified  jaccard=0.3997  score=0.7883  fileCov=0.4478
+// class=modified  jaccard=0.3896  score=0.5346  fileCov=0.5896
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pMo = E(() => {

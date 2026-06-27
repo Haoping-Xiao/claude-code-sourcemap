@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $5c
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0169  score=0.0888  fileCov=0.0204
-// note: nearest: src/utils/sessionStorage.ts (0.0169); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0295  score=0.1785  fileCov=0.0341
+// note: nearest: src/utils/sessionStorage.ts (0.0295); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var $5c = E(() => {
   iu();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ire
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/mcp/client.ts
+// class=new  jaccard=0.0024  score=0.4802  fileCov=0.0024
+// note: nearest: src/services/mcp/client.ts (0.0024); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Ire = E(() => {
   Un();

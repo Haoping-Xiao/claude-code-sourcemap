@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module IL
 // matched 2.1.88 source: src/tools/AgentTool/agentColorManager.ts
-// class=modified  jaccard=0.494  score=0.5415  fileCov=0.8491
+// class=modified  jaccard=0.2522  score=0.2829  fileCov=0.699
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var IL = E(() => {

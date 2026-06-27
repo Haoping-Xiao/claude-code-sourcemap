@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tzo
 // matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
-// class=modified  jaccard=0.2559  score=0.4504  fileCov=0.372
+// class=modified  jaccard=0.2744  score=0.4487  fileCov=0.4139
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tzo = E(() => {

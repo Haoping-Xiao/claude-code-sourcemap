@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Kyt
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0039  score=0.3468  fileCov=0.0039
-// note: nearest: src/bridge/bridgeMain.ts (0.0039); dir inferred from dep-graph -> tools; 0 renamed
+// class=new  jaccard=0.0036  score=0.4596  fileCov=0.0036
+// note: nearest: src/bridge/bridgeMain.ts (0.0036); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Kyt = E(() => {
   wr();

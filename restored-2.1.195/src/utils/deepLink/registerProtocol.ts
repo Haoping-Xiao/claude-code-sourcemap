@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zdr
 // matched 2.1.88 source: src/utils/deepLink/registerProtocol.ts
-// class=modified  jaccard=0.6837  score=0.9167  fileCov=0.7289
+// class=modified  jaccard=0.4895  score=0.9024  fileCov=0.5168
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Zdr = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Sdc
-// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0106  score=0.347  fileCov=0.0108
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0106); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0045  score=0.1718  fileCov=0.0046
+// note: nearest: src/cli/print.ts (0.0045); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Sdc = E(() => {
   gdn();

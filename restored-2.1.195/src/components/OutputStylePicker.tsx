@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GMl
 // matched 2.1.88 source: src/components/OutputStylePicker.tsx
-// class=modified  jaccard=0.2442  score=0.3435  fileCov=0.458
+// class=modified  jaccard=0.2421  score=0.3328  fileCov=0.4707
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var GMl = E(() => {

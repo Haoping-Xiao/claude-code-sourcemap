@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BI
 // matched 2.1.88 source: src/services/mcp/client.ts
-// class=modified  jaccard=0.3339  score=0.5539  fileCov=0.4568
+// class=modified  jaccard=0.271  score=0.5437  fileCov=0.3509
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BI = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module awc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/array.ts
+// class=new  jaccard=0.0493  score=0.0537  fileCov=0.3758
+// note: nearest: src/utils/array.ts (0.0493); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var awc = E(() => {
   ft();

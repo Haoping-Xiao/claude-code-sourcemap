@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aJa
 // matched 2.1.88 source: src/components/Spinner/GlimmerMessage.tsx
-// class=modified  jaccard=0.266  score=0.7847  fileCov=0.2869
+// class=modified  jaccard=0.3978  score=0.7081  fileCov=0.4758
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var aJa = E(() => {

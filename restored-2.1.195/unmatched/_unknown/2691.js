@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module g$n
-// matched 2.1.88 source: node_modules/yaml/dist/compose/util-contains-newline.js
-// class=new  jaccard=0.0317  score=0.037  fileCov=0.1838
-// note: nearest: node_modules/yaml/dist/compose/util-contains-newline.js (0.0317); 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/ext/descriptor/index.js
+// class=new  jaccard=0.0346  score=0.1421  fileCov=0.0438
+// note: nearest: node_modules/protobufjs/ext/descriptor/index.js (0.0346); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var g$n = E(() => {
   M8();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m4o
 // matched 2.1.88 source: src/utils/plugins/refresh.ts
-// class=modified  jaccard=0.4489  score=0.9033  fileCov=0.4716
+// class=modified  jaccard=0.4017  score=0.6511  fileCov=0.5119
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var m4o = E(() => {

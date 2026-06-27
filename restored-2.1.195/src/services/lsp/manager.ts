@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FDa
 // matched 2.1.88 source: src/services/lsp/manager.ts
-// class=modified  jaccard=0.5655  score=0.6746  fileCov=0.7775
+// class=modified  jaccard=0.4034  score=0.6558  fileCov=0.5118
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var FDa = E(() => {

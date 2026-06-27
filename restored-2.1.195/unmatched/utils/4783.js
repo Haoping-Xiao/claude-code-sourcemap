@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pXt
-// matched 2.1.88 source: src/utils/plugins/mcpbHandler.ts
-// class=new  jaccard=0.0142  score=0.3052  fileCov=0.0147
-// note: nearest: src/utils/plugins/mcpbHandler.ts (0.0142); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/schemas.ts
+// class=new  jaccard=0.0354  score=0.3042  fileCov=0.0386
+// note: nearest: src/utils/plugins/schemas.ts (0.0354); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pXt = E(() => {
   Xr();

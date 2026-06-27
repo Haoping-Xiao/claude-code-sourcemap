@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module f8l
 // matched 2.1.88 source: src/components/tasks/RemoteSessionProgress.tsx
-// class=modified  jaccard=0.4767  score=0.7219  fileCov=0.584
+// class=modified  jaccard=0.4149  score=0.7  fileCov=0.5046
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var f8l = E(() => {

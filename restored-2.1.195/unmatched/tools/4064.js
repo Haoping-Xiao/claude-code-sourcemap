@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Two
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/utils/hooks/execAgentHook.ts
+// class=new  jaccard=0.0359  score=0.5712  fileCov=0.0369
+// note: nearest: src/utils/hooks/execAgentHook.ts (0.0359); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Two = E(() => {
   u_();

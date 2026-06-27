@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MPe
 // matched 2.1.88 source: src/utils/nativeInstaller/download.ts
-// class=modified  jaccard=0.2859  score=0.4816  fileCov=0.413
+// class=modified  jaccard=0.2738  score=0.5701  fileCov=0.345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MPe = E(() => {

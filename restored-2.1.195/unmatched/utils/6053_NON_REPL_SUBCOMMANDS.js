@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rqc
 // matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
-// class=new  jaccard=0.0127  score=0.4162  fileCov=0.0129
-// note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0127); dir inferred from dep-graph -> utils; 1 renamed
+// class=new  jaccard=0.0055  score=0.3323  fileCov=0.0055
+// note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0055); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Rqc = E(() => {
   lH();

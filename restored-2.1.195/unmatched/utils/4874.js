@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module SGl
-// matched 2.1.88 source: src/keybindings/defaultBindings.ts
-// class=new  jaccard=0.0188  score=0.3798  fileCov=0.0194
-// note: nearest: src/keybindings/defaultBindings.ts (0.0188); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0168  score=0.2581  fileCov=0.0177
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0168); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var SGl = E(() => {
   bGl = {

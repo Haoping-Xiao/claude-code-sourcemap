@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Le
-// matched 2.1.88 source: src/commands/add-dir/index.ts
-// class=new  jaccard=0.0274  score=0.0307  fileCov=0.2064
-// note: nearest: src/commands/add-dir/index.ts (0.0274); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/file.ts
+// class=new  jaccard=0.0195  score=0.069  fileCov=0.0264
+// note: nearest: src/utils/file.ts (0.0195); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _Le = E(() => {
   ft();

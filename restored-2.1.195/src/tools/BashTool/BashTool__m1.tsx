@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fCl
 // matched 2.1.88 source: src/tools/BashTool/BashTool.tsx
-// class=modified (alt of src/tools/BashTool/BashTool.tsx)  jaccard=0.0702  score=0.6685  fileCov=0.0727
+// class=modified (alt of src/tools/BashTool/BashTool.tsx)  jaccard=0.1281  score=0.4296  fileCov=0.1544
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var fCl = E(() => {

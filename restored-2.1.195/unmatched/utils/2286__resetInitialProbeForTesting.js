@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uf
-// matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0012  score=0.1134  fileCov=0.0012
-// note: nearest: src/main.tsx (0.0012); dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/bridge/bridgeMain.ts
+// class=new  jaccard=0.0033  score=0.1026  fileCov=0.0034
+// note: nearest: src/bridge/bridgeMain.ts (0.0033); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uf = E(() => {
   ft();

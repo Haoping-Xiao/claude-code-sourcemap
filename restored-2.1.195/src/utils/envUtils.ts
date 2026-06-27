@@ -1,91 +1,114 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module fn
+// restored from claude-code 2.1.195 (deminified) — module Prs
 // matched 2.1.88 source: src/utils/envUtils.ts
-// class=modified  jaccard=0.3888  score=0.4624  fileCov=0.7095
+// class=modified  jaccard=0.1194  score=0.2983  fileCov=0.1661
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var fn = E(() => {
-  ree();
+var Prs = E(() => {
   Qi();
-  ree();
-  ((Mrs = require("os")),
-    (hSr = require("path")),
-    (tr = Cn(
-      () => (process.env.CLAUDE_CONFIG_DIR ?? hSr.join(Mrs.homedir(), ".claude")).normalize("NFC"),
-      () => process.env.CLAUDE_CONFIG_DIR,
-    )));
-  ySr = Cn(() => ut(process.env.CLAUDE_CODE_SUPERVISED));
-  Lzc = [
-    ["claude-fable-5", "VERTEX_REGION_CLAUDE_FABLE_5"],
-    ["claude-haiku-4-5", "VERTEX_REGION_CLAUDE_HAIKU_4_5"],
-    ["claude-3-5-haiku", "VERTEX_REGION_CLAUDE_3_5_HAIKU"],
-    ["claude-3-5-sonnet", "VERTEX_REGION_CLAUDE_3_5_SONNET"],
-    ["claude-3-7-sonnet", "VERTEX_REGION_CLAUDE_3_7_SONNET"],
-    ["claude-opus-4-8", "VERTEX_REGION_CLAUDE_4_8_OPUS"],
-    ["claude-opus-4-7", "VERTEX_REGION_CLAUDE_4_7_OPUS"],
-    ["claude-opus-4-6", "VERTEX_REGION_CLAUDE_4_6_OPUS"],
-    ["claude-opus-4-5", "VERTEX_REGION_CLAUDE_4_5_OPUS"],
-    ["claude-opus-4-1", "VERTEX_REGION_CLAUDE_4_1_OPUS"],
-    ["claude-opus-4", "VERTEX_REGION_CLAUDE_4_0_OPUS"],
-    ["claude-sonnet-4-6", "VERTEX_REGION_CLAUDE_4_6_SONNET"],
-    ["claude-sonnet-4-5", "VERTEX_REGION_CLAUDE_4_5_SONNET"],
-    ["claude-sonnet-4", "VERTEX_REGION_CLAUDE_4_0_SONNET"],
-  ];
+  Lrs = Cn((e) => {
+    if (!e || e.trim() === "") return null;
+    let t = e
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (t.length === 0) return null;
+    let n = t.some((s) => s.startsWith("!")),
+      r = t.some((s) => !s.startsWith("!"));
+    if (n && r) return null;
+    let o = t.map((s) => s.replace(/^!/, "").toLowerCase());
+    return {
+      include: n ? [] : o,
+      exclude: n ? o : [],
+      isExclusive: n,
+    };
+  });
 });
-function Aa(e, t, n, r, o) {
-  if (r === "m") throw TypeError("Private method is not writable");
-  if (r === "a" && !o) throw TypeError("Private accessor was defined without a setter");
-  if (typeof t === "function" ? e !== t || !o : !t.has(e))
-    throw TypeError("Cannot write private member to an object whose class did not declare it");
-  return (r === "a" ? o.call(e, n) : o ? (o.value = n) : t.set(e, n), n);
+function nwe() {
+  return hSr.join(tr(), "teams");
 }
-function no(e, t, n, r) {
-  if (n === "a" && !r) throw TypeError("Private accessor was defined without a getter");
-  if (typeof t === "function" ? e !== t || !r : !t.has(e))
-    throw TypeError("Cannot read private member from an object whose class did not declare it");
-  return n === "m" ? r : n === "a" ? r.call(e) : r ? r.value : t.get(e);
+function AJe(e) {
+  let t = process.env.NODE_OPTIONS;
+  if (!t) return false;
+  return t.split(/\s+/).includes(e);
 }
-var $ge = () => {};
-var _Sr = function () {
-  let { crypto: e } = globalThis;
-  if (e?.randomUUID) return ((_Sr = e.randomUUID.bind(e)), e.randomUUID());
-  let t = new Uint8Array(1),
-    n = e ? () => e.getRandomValues(t)[0] : () => (Math.random() * 255) & 255;
-  return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (r) =>
-    (+r ^ (n() & (15 >> (+r / 4)))).toString(16),
-  );
-};
-function Oge(e) {
-  return (
-    typeof e === "object" &&
-    e !== null &&
-    (("name" in e && e.name === "AbortError") ||
-      ("message" in e && String(e.message).includes("FetchRequestCanceledException")))
-  );
+function LK(e, t) {
+  if (e === void 0) return t;
+  let n = parseInt(e, 10);
+  return Number.isNaN(n) ? t : n;
 }
-var GCt = (e) => {
-  if (e instanceof Error) return e;
-  if (typeof e === "object" && e !== null) {
-    try {
-      if (Object.prototype.toString.call(e) === "[object Error]") {
-        let t = Error(
-          e.message,
-          e.cause
-            ? {
-                cause: e.cause,
-              }
-            : {},
+function $rs(e) {
+  if (e !== void 0) return e;
+  let t = process.env.CLAUDE_CODE_MAX_TURNS?.trim();
+  if (!t) return;
+  let n = Number(t);
+  if (!Number.isInteger(n) || n <= 0)
+    throw Error(`CLAUDE_CODE_MAX_TURNS must be a positive integer; got "${t}"`);
+  return n;
+}
+function Nsn(e) {
+  let t = process.argv.indexOf("--");
+  return (t === -1 ? process.argv : process.argv.slice(0, t)).includes(e);
+}
+function md() {
+  return ut(process.env.CLAUDE_CODE_SIMPLE) || Nsn("--bare");
+}
+function Tl() {
+  return ut(process.env.CLAUDE_CODE_SAFE_MODE) || Nsn("--safe-mode");
+}
+function qH() {
+  return Nsn("--safe-mode") ? "restart without --safe-mode" : "unset CLAUDE_CODE_SAFE_MODE";
+}
+function Ors() {
+  return Nsn("--bare") ? "restart without --bare" : "unset CLAUDE_CODE_SIMPLE";
+}
+function Nrs(e) {
+  let t = {};
+  if (e)
+    for (let n of e) {
+      let [r, ...o] = n.split("=");
+      if (!r || o.length === 0)
+        throw Error(
+          `Invalid environment variable format: ${n}, environment variables should be added as: -e KEY1=value1 -e KEY2=value2`,
         );
-        if (e.stack) t.stack = e.stack;
-        if (e.cause && !t.cause) t.cause = e.cause;
-        if (e.name) t.name = e.name;
-        return t;
-      }
-    } catch {}
-    try {
-      return Error(JSON.stringify(e));
-    } catch {}
+      t[r] = o.join("=");
+    }
+  return t;
+}
+function Osn() {
+  return process.env.CLOUD_ML_REGION || "us-east5";
+}
+function HJe(e) {
+  switch (e) {
+    case "global":
+      return "https://aiplatform.googleapis.com";
+    case "us":
+    case "eu":
+      return `https://aiplatform.${e}.rep.googleapis.com`;
+    default:
+      return `https://${e}-aiplatform.googleapis.com`;
   }
-  return Error(e);
-};
-var ui, Fo, tf, Hx, DK, WCt, sUe, qCt, iUe, VCt, zCt, KCt, YCt;
+}
+function Brs() {
+  return ut(process.env.CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR);
+}
+function nv() {
+  return false;
+}
+function $V() {
+  return false;
+}
+function Urs() {
+  return {
+    namespace: void 0,
+    cluster: void 0,
+  };
+}
+function Yie(e) {
+  if (e) {
+    let t = Lzc.find(([n]) => e.startsWith(n));
+    if (t) return process.env[t[1]] || Osn();
+  }
+  return Osn();
+}
+var Mrs, hSr, tr, ySr, Lzc;

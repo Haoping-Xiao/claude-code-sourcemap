@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xJl
 // matched 2.1.88 source: src/commands/export/index.ts
-// class=modified  jaccard=0.358  score=0.4266  fileCov=0.6899
+// class=modified  jaccard=0.2443  score=0.2735  fileCov=0.6958
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xJl = E(() => {

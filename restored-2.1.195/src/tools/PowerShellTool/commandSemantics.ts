@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PHl
 // matched 2.1.88 source: src/tools/PowerShellTool/commandSemantics.ts
-// class=modified  jaccard=0.143  score=0.1508  fileCov=0.7336
+// class=modified  jaccard=0.1266  score=0.1672  fileCov=0.3426
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var PHl = E(() => {

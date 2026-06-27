@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UGo
-// matched 2.1.88 source: src/ink/components/App.tsx
-// class=new  jaccard=0.0384  score=0.0949  fileCov=0.0606
-// note: nearest: src/ink/components/App.tsx (0.0384); dir inferred from dep-graph -> ink; 0 renamed
+// matched 2.1.88 source: src/ink/ink.tsx
+// class=new  jaccard=0.0311  score=0.1584  fileCov=0.0373
+// note: nearest: src/ink/ink.tsx (0.0311); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var UGo = E(() => {
   Knc = new Set([1000, 1002, 1003, 1004, 1006, 2004, 2031]), Ync = /\x1b\[\?([\d;]+)([hl])/g;

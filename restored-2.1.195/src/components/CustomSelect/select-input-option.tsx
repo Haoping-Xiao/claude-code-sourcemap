@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TPn
 // matched 2.1.88 source: src/components/CustomSelect/select-input-option.tsx
-// class=modified  jaccard=0.5858  score=0.9596  fileCov=0.6006
+// class=modified  jaccard=0.4791  score=0.6034  fileCov=0.6994
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var TPn = E(() => {

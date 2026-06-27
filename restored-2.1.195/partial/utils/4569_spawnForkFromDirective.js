@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VYt
-// matched 2.1.88 source: src/utils/agentContext.ts
-// class=partial  jaccard=0.1555  score=0.2694  fileCov=0.2689
-// note: low-confidence suggestion: src/utils/agentContext.ts; dir inferred from dep-graph -> utils; 2 renamed
+// matched 2.1.88 source: src/tools/AgentTool/AgentTool.tsx
+// class=partial  jaccard=0.0852  score=0.5353  fileCov=0.092
+// note: low-confidence suggestion: src/tools/AgentTool/AgentTool.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VYt = E(() => {
   PR();

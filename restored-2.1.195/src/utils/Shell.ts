@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ejn
 // matched 2.1.88 source: src/utils/Shell.ts
-// class=modified  jaccard=0.3396  score=0.5971  fileCov=0.4405
+// class=modified  jaccard=0.3207  score=0.5394  fileCov=0.4416
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ejn = E(() => {

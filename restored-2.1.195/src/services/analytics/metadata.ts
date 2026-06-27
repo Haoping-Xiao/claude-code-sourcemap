@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kst
 // matched 2.1.88 source: src/services/analytics/metadata.ts
-// class=modified  jaccard=0.1974  score=0.3864  fileCov=0.2875
+// class=modified  jaccard=0.4716  score=0.7383  fileCov=0.5663
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kst = E(() => {

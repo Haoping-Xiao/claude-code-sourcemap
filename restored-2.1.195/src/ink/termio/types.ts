@@ -1,502 +1,324 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module g5i
+// restored from claude-code 2.1.195 (deminified) — module Mce
 // matched 2.1.88 source: src/ink/termio/types.ts
-// class=modified  jaccard=0.6925  score=0.8522  fileCov=0.7871
+// class=modified  jaccard=0.2755  score=0.8012  fileCov=0.2957
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var g5i = E(() => {
-  ((PLn = [
-    "black",
-    "red",
-    "green",
-    "yellow",
-    "blue",
-    "magenta",
-    "cyan",
-    "white",
-    "brightBlack",
-    "brightRed",
-    "brightGreen",
-    "brightYellow",
-    "brightBlue",
-    "brightMagenta",
-    "brightCyan",
-    "brightWhite",
-  ]),
-    (vWd = ["none", "single", "double", "curly", "dotted", "dashed"]));
+var Mce = E(() => {
+  AW();
+  mGe();
+  ((p5i = R(lt(), 1)), (DLn = R(se(), 1)));
 });
-function* h5i(e) {
-  let t = true;
-  for (let n = 0; n < e.length; n++)
-    if (e.charCodeAt(n) >= 128) {
-      t = false;
-      break;
-    }
-  if (t) {
-    for (let n = 0; n < e.length; n++)
-      yield {
-        value: e[n],
-        width: 1,
-      };
-    return;
-  }
-  for (let { segment: n } of BS().segment(e)) {
-    if (n.length === 1) {
-      let r = n.charCodeAt(0);
-      if (r >= 32 && r < 127) {
-        yield {
-          value: n,
-          width: 1,
-        };
-        continue;
-      }
-    }
-    yield {
-      value: n,
-      width: Math.max(1, rn(n)),
-    };
-  }
-}
-function IWd(e) {
-  if (e === "") return [];
-  return e.split(/[;:]/).map((t) => (t === "" ? 0 : parseInt(t, 10)));
-}
-function xWd(e, t) {
-  switch (e) {
-    case p_.CURSOR_VISIBLE:
-      return {
-        type: "cursor",
-        action: t
-          ? {
-              type: "show",
-            }
-          : {
-              type: "hide",
-            },
-      };
-    case p_.ALT_SCREEN_CLEAR:
-    case p_.ALT_SCREEN:
-      return {
-        type: "mode",
-        action: {
-          type: "alternateScreen",
-          enabled: t,
-        },
-      };
-    case p_.BRACKETED_PASTE:
-      return {
-        type: "mode",
-        action: {
-          type: "bracketedPaste",
-          enabled: t,
-        },
-      };
-    case p_.MOUSE_NORMAL:
-      return {
-        type: "mode",
-        action: {
-          type: "mouseTracking",
-          mode: t ? "normal" : "off",
-        },
-      };
-    case p_.MOUSE_BUTTON:
-      return {
-        type: "mode",
-        action: {
-          type: "mouseTracking",
-          mode: t ? "button" : "off",
-        },
-      };
-    case p_.MOUSE_ANY:
-      return {
-        type: "mode",
-        action: {
-          type: "mouseTracking",
-          mode: t ? "any" : "off",
-        },
-      };
-    case p_.FOCUS_EVENTS:
-      return {
-        type: "mode",
-        action: {
-          type: "focusEvents",
-          enabled: t,
-        },
-      };
-    default:
-      return null;
-  }
-}
-function kWd(e) {
-  let t = e.slice(2);
-  if (t.length === 0) return null;
-  let n = t.charCodeAt(t.length - 1),
-    r = t.slice(0, -1),
-    o = "",
-    s = r,
-    i = "";
-  if (r.length > 0 && "?>=<".includes(r[0])) ((o = r[0]), (s = r.slice(1)));
-  let a = s.charCodeAt(s.length - 1);
-  if (s.length > 0 && !(a >= 48 && a <= 59)) {
-    let d = s.match(/([^0-9;:]+)$/);
-    if (d) ((i = d[1]), (s = s.slice(0, -i.length)));
-  }
-  if (n === hb.SGR && o === "")
+function f5i(e) {
+  if (e.length === 0) return null;
+  let t = e[0];
+  if (t === "c")
     return {
-      type: "sgr",
-      params: s,
+      type: "reset",
     };
-  let l = IWd(s),
-    c = l[0] ?? 1,
-    u = l[1] ?? 1;
-  if (n === hb.CUU)
-    return {
-      type: "cursor",
-      action: {
-        type: "move",
-        direction: "up",
-        count: c,
-      },
-    };
-  if (n === hb.CUD || n === hb.VPR)
-    return {
-      type: "cursor",
-      action: {
-        type: "move",
-        direction: "down",
-        count: c,
-      },
-    };
-  if (n === hb.CUF || n === hb.HPR)
-    return {
-      type: "cursor",
-      action: {
-        type: "move",
-        direction: "forward",
-        count: c,
-      },
-    };
-  if (n === hb.CUB)
-    return {
-      type: "cursor",
-      action: {
-        type: "move",
-        direction: "back",
-        count: c,
-      },
-    };
-  if (n === hb.CNL)
-    return {
-      type: "cursor",
-      action: {
-        type: "nextLine",
-        count: c,
-      },
-    };
-  if (n === hb.CPL)
-    return {
-      type: "cursor",
-      action: {
-        type: "prevLine",
-        count: c,
-      },
-    };
-  if (n === hb.CHA || n === hb.HPA)
-    return {
-      type: "cursor",
-      action: {
-        type: "column",
-        col: c,
-      },
-    };
-  if (n === hb.CUP || n === hb.HVP)
-    return {
-      type: "cursor",
-      action: {
-        type: "position",
-        row: c,
-        col: u,
-      },
-    };
-  if (n === hb.VPA)
-    return {
-      type: "cursor",
-      action: {
-        type: "row",
-        row: c,
-      },
-    };
-  if (n === hb.ED)
-    return {
-      type: "erase",
-      action: {
-        type: "display",
-        region: SUi[l[0] ?? 0] ?? "toEnd",
-      },
-    };
-  if (n === hb.EL)
-    return {
-      type: "erase",
-      action: {
-        type: "line",
-        region: EUi[l[0] ?? 0] ?? "toEnd",
-      },
-    };
-  if (n === hb.ECH)
-    return {
-      type: "erase",
-      action: {
-        type: "chars",
-        count: c,
-      },
-    };
-  if (n === hb.IL)
-    return {
-      type: "edit",
-      action: {
-        type: "insertLines",
-        count: c,
-      },
-    };
-  if (n === hb.DL)
-    return {
-      type: "edit",
-      action: {
-        type: "deleteLines",
-        count: c,
-      },
-    };
-  if (n === hb.ICH)
-    return {
-      type: "edit",
-      action: {
-        type: "insertChars",
-        count: c,
-      },
-    };
-  if (n === hb.DCH)
-    return {
-      type: "edit",
-      action: {
-        type: "deleteChars",
-        count: c,
-      },
-    };
-  if (n === hb.SU)
-    return {
-      type: "scroll",
-      action: {
-        type: "up",
-        count: c,
-      },
-    };
-  if (n === hb.SD)
-    return {
-      type: "scroll",
-      action: {
-        type: "down",
-        count: c,
-      },
-    };
-  if (n === hb.DECSTBM)
-    return {
-      type: "scroll",
-      action: {
-        type: "setRegion",
-        top: c,
-        bottom: l[1] ?? 0,
-      },
-    };
-  if (n === hb.SCOSC)
+  if (t === "7")
     return {
       type: "cursor",
       action: {
         type: "save",
       },
     };
-  if (n === hb.SCORC)
+  if (t === "8")
     return {
       type: "cursor",
       action: {
         type: "restore",
       },
     };
-  if (n === hb.DECSCUSR && i === " ")
+  if (t === "D")
+    return {
+      type: "scroll",
+      action: {
+        type: "index",
+      },
+    };
+  if (t === "M")
+    return {
+      type: "scroll",
+      action: {
+        type: "reverseIndex",
+      },
+    };
+  if (t === "E")
     return {
       type: "cursor",
       action: {
-        type: "style",
-        ...(MYr[c] ?? MYr[0]),
+        type: "nextLine",
+        count: 1,
       },
     };
-  if (o === "?" && (n === hb.SM || n === hb.RM)) {
-    let d = n === hb.SM,
-      p = [];
-    for (let f of l) {
-      let m = xWd(f, d);
-      if (m) p.push(m);
-    }
-    return p.length
-      ? p
-      : {
-          type: "unknown",
-          sequence: e,
-        };
-  }
+  if (t === "H") return null;
+  if ("()".includes(t) && e.length >= 2) return null;
   return {
     type: "unknown",
-    sequence: e,
+    sequence: `\x1B${e}`,
   };
 }
-function RWd(e) {
-  if (e.length < 2) return "unknown";
-  if (e.charCodeAt(0) !== rne.ESC) return "unknown";
-  let t = e.charCodeAt(1);
-  if (t === 91) return "csi";
-  if (t === 93) return "osc";
-  if (t === 79) return "ss3";
-  return "esc";
+function bGe() {
+  return {
+    bold: false,
+    dim: false,
+    italic: false,
+    underline: "none",
+    blink: false,
+    inverse: false,
+    hidden: false,
+    strikethrough: false,
+    overline: false,
+    fg: {
+      type: "default",
+    },
+    bg: {
+      type: "default",
+    },
+    underlineColor: {
+      type: "default",
+    },
+  };
 }
-class MLn {
-  tokenizer;
-  forOutput;
-  tail = "";
-  constructor(e) {
-    ((this.forOutput = e?.forOutput ?? false),
-      (this.tokenizer = Qke({
-        forOutput: this.forOutput,
-      })));
+function wWd(e) {
+  if (e === "")
+    return [
+      {
+        value: 0,
+        subparams: [],
+        colon: false,
+      },
+    ];
+  let t = [],
+    n = {
+      value: null,
+      subparams: [],
+      colon: false,
+    },
+    r = "",
+    o = false;
+  for (let s = 0; s <= e.length; s++) {
+    let i = e[s];
+    if (i === ";" || i === void 0) {
+      let a = r === "" ? null : parseInt(r, 10);
+      if (o) {
+        if (a !== null) n.subparams.push(a);
+      } else n.value = a;
+      (t.push(n),
+        (n = {
+          value: null,
+          subparams: [],
+          colon: false,
+        }),
+        (r = ""),
+        (o = false));
+    } else if (i === ":") {
+      let a = r === "" ? null : parseInt(r, 10);
+      if (!o) ((n.value = a), (n.colon = true), (o = true));
+      else if (a !== null) n.subparams.push(a);
+      r = "";
+    } else if (i >= "0" && i <= "9") r += i;
   }
-  style = bGe();
-  inLink = false;
-  linkUrl;
-  flush() {
-    if (!this.tail) return [];
-    let e = this.processText(this.tail, false);
-    return ((this.tail = ""), e);
-  }
-  reset() {
-    ((this.tail = ""),
-      this.tokenizer.reset(),
-      (this.style = bGe()),
-      (this.inLink = false),
-      (this.linkUrl = void 0));
-  }
-  feed(e) {
-    let t = this.tokenizer.feed(e),
-      n = [];
-    for (let r = 0; r < t.length; r++) {
-      let o = t[r];
-      if (o.type === "text") {
-        let s = this.tail + o.value;
-        this.tail = "";
-        let i = this.forOutput && r === t.length - 1;
-        n.push(...this.processText(s, i));
-      } else {
-        if (this.tail) (n.push(...this.processText(this.tail, false)), (this.tail = ""));
-        n.push(...this.processSequence(o.value));
-      }
-    }
-    return n;
-  }
-  processText(e, t) {
-    let n = this.style;
-    if (e.indexOf("\x07") === -1) {
-      let s = [...h5i(e)];
-      return (
-        this.holdTail(s, t),
-        s.length > 0
-          ? [
-              {
-                type: "text",
-                graphemes: s,
-                style: n,
-              },
-            ]
-          : []
-      );
-    }
-    let r = [];
-    for (let s of e.split("\x07")) {
-      if (s) {
-        let i = [...h5i(s)];
-        if (i.length > 0)
-          r.push({
-            type: "text",
-            graphemes: i,
-            style: n,
-          });
-      }
-      r.push({
-        type: "bell",
-      });
-    }
-    r.pop();
-    let o = r.at(-1);
-    if (o?.type === "text") {
-      if ((this.holdTail(o.graphemes, t), o.graphemes.length === 0)) r.pop();
-    }
-    return r;
-  }
-  holdTail(e, t) {
-    if (!t || e.length === 0) return;
-    let n = e.at(-1),
-      r = n.value.charCodeAt(n.value.length - 1);
-    if (r < 32) return;
-    if (((this.tail = n.value), e.pop(), r >= 55296 && r <= 56319 && e.length > 0))
-      this.tail = e.pop().value + this.tail;
-    while (e.length > 0 && this.tail.length <= 64) {
-      let o = e.at(-1).value,
-        s = o.charCodeAt(o.length - 1),
-        i = s >= 56320 && s <= 57343 ? o.codePointAt(o.length - 2) : s;
-      if (i === 8205 || (i !== void 0 && i >= 127462 && i <= 127487))
-        ((this.tail = o + this.tail), e.pop());
-      else break;
-    }
-  }
-  processSequence(e) {
-    switch (RWd(e)) {
-      case "csi": {
-        let n = kWd(e);
-        if (!n) return [];
-        if (Array.isArray(n)) return n;
-        if (n.type === "sgr") return ((this.style = m5i(n.params, this.style)), []);
-        return [n];
-      }
-      case "osc": {
-        let n = e.slice(2);
-        if (n.endsWith("\x07")) n = n.slice(0, -1);
-        else if (n.endsWith("\x1B\\")) n = n.slice(0, -2);
-        let r = MUi(n);
-        if (r) {
-          if (r.type === "link")
-            if (r.action.type === "start") ((this.inLink = true), (this.linkUrl = r.action.url));
-            else ((this.inLink = false), (this.linkUrl = void 0));
-          return [r];
-        }
-        return [];
-      }
-      case "esc": {
-        let n = e.slice(1),
-          r = f5i(n);
-        if (r?.type === "reset")
-          ((this.style = bGe()), (this.inLink = false), (this.linkUrl = void 0));
-        return r ? [r] : [];
-      }
-      case "ss3":
-        return [
-          {
-            type: "unknown",
-            sequence: e,
-          },
-        ];
-      default:
-        return [
-          {
-            type: "unknown",
-            sequence: e,
-          },
-        ];
-    }
-  }
+  return t;
 }
+function CWd(e, t) {
+  let n = e[t];
+  if (!n) return null;
+  if (n.colon && n.subparams.length >= 1) {
+    if (n.subparams[0] === 5 && n.subparams.length >= 2)
+      return {
+        index: n.subparams[1],
+      };
+    if (n.subparams[0] === 2 && n.subparams.length >= 4) {
+      let o = n.subparams.length >= 5 ? 1 : 0;
+      return {
+        r: n.subparams[1 + o],
+        g: n.subparams[2 + o],
+        b: n.subparams[3 + o],
+      };
+    }
+  }
+  let r = e[t + 1];
+  if (!r) return null;
+  if (r.value === 5 && e[t + 2]?.value !== null && e[t + 2]?.value !== void 0)
+    return {
+      index: e[t + 2].value,
+    };
+  if (r.value === 2) {
+    let o = e[t + 2]?.value,
+      s = e[t + 3]?.value,
+      i = e[t + 4]?.value;
+    if (o !== null && o !== void 0 && s !== null && s !== void 0 && i !== null && i !== void 0)
+      return {
+        r: o,
+        g: s,
+        b: i,
+      };
+  }
+  return null;
+}
+function m5i(e, t) {
+  let n = wWd(e),
+    r = {
+      ...t,
+    },
+    o = 0;
+  while (o < n.length) {
+    let s = n[o],
+      i = s.value ?? 0;
+    if (i === 0) {
+      ((r = bGe()), o++);
+      continue;
+    }
+    if (i === 1) {
+      ((r.bold = true), o++);
+      continue;
+    }
+    if (i === 2) {
+      ((r.dim = true), o++);
+      continue;
+    }
+    if (i === 3) {
+      ((r.italic = true), o++);
+      continue;
+    }
+    if (i === 4) {
+      ((r.underline = s.colon ? (vWd[s.subparams[0]] ?? "single") : "single"), o++);
+      continue;
+    }
+    if (i === 5 || i === 6) {
+      ((r.blink = true), o++);
+      continue;
+    }
+    if (i === 7) {
+      ((r.inverse = true), o++);
+      continue;
+    }
+    if (i === 8) {
+      ((r.hidden = true), o++);
+      continue;
+    }
+    if (i === 9) {
+      ((r.strikethrough = true), o++);
+      continue;
+    }
+    if (i === 21) {
+      ((r.underline = "double"), o++);
+      continue;
+    }
+    if (i === 22) {
+      ((r.bold = false), (r.dim = false), o++);
+      continue;
+    }
+    if (i === 23) {
+      ((r.italic = false), o++);
+      continue;
+    }
+    if (i === 24) {
+      ((r.underline = "none"), o++);
+      continue;
+    }
+    if (i === 25) {
+      ((r.blink = false), o++);
+      continue;
+    }
+    if (i === 27) {
+      ((r.inverse = false), o++);
+      continue;
+    }
+    if (i === 28) {
+      ((r.hidden = false), o++);
+      continue;
+    }
+    if (i === 29) {
+      ((r.strikethrough = false), o++);
+      continue;
+    }
+    if (i === 53) {
+      ((r.overline = true), o++);
+      continue;
+    }
+    if (i === 55) {
+      ((r.overline = false), o++);
+      continue;
+    }
+    if (i >= 30 && i <= 37) {
+      ((r.fg = {
+        type: "named",
+        name: PLn[i - 30],
+      }),
+        o++);
+      continue;
+    }
+    if (i === 39) {
+      ((r.fg = {
+        type: "default",
+      }),
+        o++);
+      continue;
+    }
+    if (i >= 40 && i <= 47) {
+      ((r.bg = {
+        type: "named",
+        name: PLn[i - 40],
+      }),
+        o++);
+      continue;
+    }
+    if (i === 49) {
+      ((r.bg = {
+        type: "default",
+      }),
+        o++);
+      continue;
+    }
+    if (i >= 90 && i <= 97) {
+      ((r.fg = {
+        type: "named",
+        name: PLn[i - 90 + 8],
+      }),
+        o++);
+      continue;
+    }
+    if (i >= 100 && i <= 107) {
+      ((r.bg = {
+        type: "named",
+        name: PLn[i - 100 + 8],
+      }),
+        o++);
+      continue;
+    }
+    if (i === 38 || i === 48 || i === 58) {
+      let a = CWd(n, o);
+      if (a) {
+        let c =
+          "index" in a
+            ? {
+                type: "indexed",
+                index: a.index,
+              }
+            : {
+                type: "rgb",
+                ...a,
+              };
+        if (i === 38) r.fg = c;
+        else if (i === 48) r.bg = c;
+        else r.underlineColor = c;
+      }
+      let l = n[o + 1]?.value;
+      o += s.colon ? 1 : l === 5 ? 3 : l === 2 ? 5 : 1;
+      continue;
+    }
+    if (i === 59) {
+      ((r.underlineColor = {
+        type: "default",
+      }),
+        o++);
+      continue;
+    }
+    o++;
+  }
+  return r;
+}
+var PLn, vWd;

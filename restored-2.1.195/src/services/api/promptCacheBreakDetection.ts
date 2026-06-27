@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b5e
 // matched 2.1.88 source: src/services/api/promptCacheBreakDetection.ts
-// class=modified  jaccard=0.4578  score=0.5804  fileCov=0.6842
+// class=modified  jaccard=0.4509  score=0.5934  fileCov=0.6526
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var b5e = E(() => {

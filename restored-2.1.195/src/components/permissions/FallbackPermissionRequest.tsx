@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wHc
 // matched 2.1.88 source: src/components/permissions/FallbackPermissionRequest.tsx
-// class=modified  jaccard=0.2395  score=0.5204  fileCov=0.3073
+// class=modified  jaccard=0.182  score=0.3061  fileCov=0.31
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wHc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module U2n
 // matched 2.1.88 source: src/utils/shell/powershellDetection.ts
-// class=modified  jaccard=0.2805  score=0.318  fileCov=0.7037
+// class=modified  jaccard=0.2535  score=0.357  fileCov=0.4666
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var U2n = E(() => {

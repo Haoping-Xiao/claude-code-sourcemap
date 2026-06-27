@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $ms
 // matched 2.1.88 source: src/constants/oauth.ts
-// class=modified  jaccard=0.4201  score=0.9545  fileCov=0.4286
+// class=modified  jaccard=0.3022  score=0.6501  fileCov=0.3609
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $ms = E(() => {

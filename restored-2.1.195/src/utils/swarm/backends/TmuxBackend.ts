@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ghl
 // matched 2.1.88 source: src/utils/swarm/backends/TmuxBackend.ts
-// class=modified  jaccard=0.6988  score=0.8199  fileCov=0.8255
+// class=modified  jaccard=0.6082  score=0.8177  fileCov=0.7037
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ghl = E(() => {

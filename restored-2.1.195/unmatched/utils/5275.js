@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mic
-// matched 2.1.88 source: src/components/mcp/MCPStdioServerMenu.tsx
-// class=new  jaccard=0.0414  score=0.1366  fileCov=0.056
-// note: nearest: src/components/mcp/MCPStdioServerMenu.tsx (0.0414); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0062  score=0.3055  fileCov=0.0063
+// note: nearest: src/cli/print.ts (0.0062); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var mic = E(() => {
   Rx();

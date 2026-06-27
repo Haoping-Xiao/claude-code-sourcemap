@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Vdc
 // matched 2.1.88 source: src/cli/handlers/mcp.tsx
-// class=modified  jaccard=0.2778  score=0.356  fileCov=0.5586
+// class=modified  jaccard=0.2892  score=0.3831  fileCov=0.5412
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Vdc = E(() => {

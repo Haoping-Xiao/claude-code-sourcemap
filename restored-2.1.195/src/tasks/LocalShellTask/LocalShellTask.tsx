@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S_
 // matched 2.1.88 source: src/tasks/LocalShellTask/LocalShellTask.tsx
-// class=modified  jaccard=0.3457  score=0.5841  fileCov=0.4585
+// class=modified  jaccard=0.3114  score=0.6107  fileCov=0.3885
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S_ = E(() => {

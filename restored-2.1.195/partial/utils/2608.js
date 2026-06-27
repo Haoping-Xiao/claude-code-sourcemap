@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module II
 // matched 2.1.88 source: src/utils/plugins/addDirPluginSettings.ts
-// class=partial  jaccard=0.1149  score=1  fileCov=0.1149
+// class=partial  jaccard=0.2042  score=0.8152  fileCov=0.2141
 // note: low-confidence suggestion: src/utils/plugins/addDirPluginSettings.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var II = E(() => {

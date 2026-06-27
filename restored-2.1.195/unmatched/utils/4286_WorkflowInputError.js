@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fgl
 // matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0015  score=0.227  fileCov=0.0015
-// note: nearest: src/main.tsx (0.0015); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0026  score=0.2324  fileCov=0.0026
+// note: nearest: src/main.tsx (0.0026); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fgl = E(() => {
   zX();

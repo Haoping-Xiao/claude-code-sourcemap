@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NFt
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
+// class=new  jaccard=0.01  score=0.4148  fileCov=0.0102
+// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.01); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var NFt = E(() => {
   fZd = ["FieldValueInvalidError", "FieldListRangeError", "ForeignFieldError"];

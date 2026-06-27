@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WL
-// matched 2.1.88 source: src/utils/fileHistory.ts
-// class=new  jaccard=0.034  score=0.1432  fileCov=0.0427
-// note: nearest: src/utils/fileHistory.ts (0.034); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/git.ts
+// class=new  jaccard=0.0349  score=0.1615  fileCov=0.0426
+// note: nearest: src/utils/git.ts (0.0349); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var WL = E(() => {
   Qi();

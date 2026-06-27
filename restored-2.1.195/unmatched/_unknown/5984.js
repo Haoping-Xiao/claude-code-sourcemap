@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q3c
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0211  score=0.1587  fileCov=0.0238
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0211); 0 renamed
+// class=new  jaccard=0.0248  score=0.268  fileCov=0.0266
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0248); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var q3c = E(() => {
   NZ();

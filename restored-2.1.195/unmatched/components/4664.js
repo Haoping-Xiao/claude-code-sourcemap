@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module t1l
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 1 renamed
+// matched 2.1.88 source: src/commands/effort/effort.tsx
+// class=new  jaccard=0.021  score=0.2398  fileCov=0.0225
+// note: nearest: src/commands/effort/effort.tsx (0.021); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var t1l = E(() => {
   $7t();

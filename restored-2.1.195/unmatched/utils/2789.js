@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LX
-// matched 2.1.88 source: node_modules/@xmldom/xmldom/lib/entities.js
-// class=new  jaccard=0.0007  score=0.1103  fileCov=0.0007
-// note: nearest: node_modules/@xmldom/xmldom/lib/entities.js (0.0007); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/undici/lib/web/fetch/util.js
+// class=new  jaccard=0.0124  score=0.1389  fileCov=0.0135
+// note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0124); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var LX = E(() => {
   rSe();

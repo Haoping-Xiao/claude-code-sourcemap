@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Nyl
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/undici/lib/web/fetch/webidl.js
+// class=new  jaccard=0.0212  score=0.2031  fileCov=0.0232
+// note: nearest: node_modules/undici/lib/web/fetch/webidl.js (0.0212); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Nyl = E(() => {
   Xr();

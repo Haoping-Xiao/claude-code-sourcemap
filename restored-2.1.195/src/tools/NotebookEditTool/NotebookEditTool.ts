@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pyt
 // matched 2.1.88 source: src/tools/NotebookEditTool/NotebookEditTool.ts
-// class=modified  jaccard=0.635  score=0.788  fileCov=0.7658
+// class=modified  jaccard=0.6119  score=0.7583  fileCov=0.7602
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pyt = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module muc
 // matched 2.1.88 source: node_modules/ws/lib/websocket-server.js
-// class=new  jaccard=0.0238  score=0.3823  fileCov=0.0247
-// note: nearest: node_modules/ws/lib/websocket-server.js (0.0238); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0416  score=0.4358  fileCov=0.044
+// note: nearest: node_modules/ws/lib/websocket-server.js (0.0416); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var muc = E(() => {
   Pw();

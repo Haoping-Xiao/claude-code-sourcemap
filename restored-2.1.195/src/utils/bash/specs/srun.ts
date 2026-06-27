@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PPa
 // matched 2.1.88 source: src/utils/bash/specs/srun.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.9191  score=1  fileCov=0.9191
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.9298  score=1  fileCov=0.9298
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 import type { CommandSpec } from '../registry.js'

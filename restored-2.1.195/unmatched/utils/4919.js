@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module i2o
-// matched 2.1.88 source: src/services/api/errors.ts
-// class=new  jaccard=0.0074  score=0.086  fileCov=0.008
-// note: nearest: src/services/api/errors.ts (0.0074); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
+// class=new  jaccard=0.0084  score=0.1297  fileCov=0.0089
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0084); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var i2o = E(() => {
   zb();

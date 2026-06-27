@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q7
 // matched 2.1.88 source: src/ink/terminal.ts
-// class=modified  jaccard=0.5276  score=0.8031  fileCov=0.606
+// class=modified  jaccard=0.3441  score=0.4787  fileCov=0.5503
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var q7 = E(() => {

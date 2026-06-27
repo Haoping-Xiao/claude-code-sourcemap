@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gfc
 // matched 2.1.88 source: src/components/BashModeProgress.tsx
-// class=modified  jaccard=0.2869  score=0.8155  fileCov=0.3068
+// class=modified  jaccard=0.407  score=0.5591  fileCov=0.5994
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gfc = E(() => {

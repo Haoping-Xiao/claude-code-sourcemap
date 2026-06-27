@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ihc
 // matched 2.1.88 source: src/components/PromptInput/SandboxPromptFooterHint.tsx
-// class=modified  jaccard=0.5234  score=0.6967  fileCov=0.6779
+// class=modified  jaccard=0.4749  score=0.6699  fileCov=0.6199
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ihc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DHc
 // matched 2.1.88 source: src/components/permissions/PowerShellPermissionRequest/PowerShellPermissionRequest.tsx
-// class=modified  jaccard=0.252  score=0.574  fileCov=0.3099
+// class=modified  jaccard=0.2586  score=0.4573  fileCov=0.373
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var DHc = E(() => {

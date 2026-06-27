@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module o7n
 // matched 2.1.88 source: src/utils/markdownConfigLoader.ts
-// class=new  jaccard=0.0482  score=0.239  fileCov=0.0569
-// note: nearest: src/utils/markdownConfigLoader.ts (0.0482); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0599  score=0.3196  fileCov=0.0686
+// note: nearest: src/utils/markdownConfigLoader.ts (0.0599); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var o7n = E(() => {
   LMe();

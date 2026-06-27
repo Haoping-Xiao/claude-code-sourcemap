@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module c4o
 // matched 2.1.88 source: src/components/agents/AgentEditor.tsx
-// class=modified  jaccard=0.5672  score=0.9329  fileCov=0.5914
+// class=modified  jaccard=0.3954  score=0.6626  fileCov=0.4951
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var c4o = E(() => {

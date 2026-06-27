@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aRc
-// matched 2.1.88 source: src/components/FullscreenLayout.tsx
-// class=new  jaccard=0.0397  score=0.3314  fileCov=0.0432
-// note: nearest: src/components/FullscreenLayout.tsx (0.0397); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/ink/components/Box.tsx
+// class=new  jaccard=0.0475  score=0.2268  fileCov=0.0567
+// note: nearest: src/ink/components/Box.tsx (0.0475); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var aRc = E(() => {
   aW();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mdc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/services/mcp/config.ts
+// class=new  jaccard=0.0106  score=0.3443  fileCov=0.0108
+// note: nearest: src/services/mcp/config.ts (0.0106); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var mdc = E(() => {
   Yp();

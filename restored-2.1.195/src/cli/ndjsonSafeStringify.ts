@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nUc
 // matched 2.1.88 source: src/cli/ndjsonSafeStringify.ts
-// class=modified  jaccard=0.7454  score=1  fileCov=0.7454
+// class=modified  jaccard=0.4413  score=1  fileCov=0.4413
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var nUc = E(() => {

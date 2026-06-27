@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pdo
 // matched 2.1.88 source: src/components/mcp/MCPRemoteServerMenu.tsx
-// class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0604  score=0.6488  fileCov=0.0625
+// class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0566  score=0.4724  fileCov=0.0604
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pdo = E(() => {

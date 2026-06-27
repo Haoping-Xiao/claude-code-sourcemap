@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zfc
 // matched 2.1.88 source: src/utils/processUserInput/processUserInput.ts
-// class=modified  jaccard=0.5179  score=0.9454  fileCov=0.5339
+// class=modified  jaccard=0.3597  score=0.5669  fileCov=0.4961
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zfc = E(() => {

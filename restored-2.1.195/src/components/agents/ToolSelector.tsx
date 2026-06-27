@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module a4o
 // matched 2.1.88 source: src/components/agents/ToolSelector.tsx
-// class=modified  jaccard=0.4456  score=0.8802  fileCov=0.4744
+// class=modified  jaccard=0.4399  score=0.8045  fileCov=0.4926
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var a4o = E(() => {

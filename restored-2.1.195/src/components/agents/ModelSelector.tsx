@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module i4o
 // matched 2.1.88 source: src/components/agents/ModelSelector.tsx
-// class=modified  jaccard=0.317  score=0.545  fileCov=0.431
+// class=modified  jaccard=0.2597  score=0.3694  fileCov=0.4664
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var i4o = E(() => {

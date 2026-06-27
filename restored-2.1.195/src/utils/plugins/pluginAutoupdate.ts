@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XEt
 // matched 2.1.88 source: src/utils/plugins/pluginAutoupdate.ts
-// class=modified  jaccard=0.3562  score=0.4564  fileCov=0.6186
+// class=modified  jaccard=0.2132  score=0.3309  fileCov=0.3746
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var XEt = E(() => {

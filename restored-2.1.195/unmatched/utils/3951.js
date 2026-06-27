@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XHo
-// matched 2.1.88 source: src/services/compact/compact.ts
-// class=new  jaccard=0.0157  score=0.1017  fileCov=0.0182
-// note: nearest: src/services/compact/compact.ts (0.0157); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0058  score=0.1332  fileCov=0.006
+// note: nearest: src/screens/REPL.tsx (0.0058); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var XHo = E(() => {
   fn();

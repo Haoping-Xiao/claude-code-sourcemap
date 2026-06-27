@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module inr
 // matched 2.1.88 source: src/utils/auth.ts
-// class=new  jaccard=0.0117  score=0.5911  fileCov=0.0118
-// note: nearest: src/utils/auth.ts (0.0117); dir inferred from dep-graph -> components; 0 renamed
+// class=new  jaccard=0.0071  score=0.3898  fileCov=0.0071
+// note: nearest: src/utils/auth.ts (0.0071); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var inr = E(() => {
   Kv();

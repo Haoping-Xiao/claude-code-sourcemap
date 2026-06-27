@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kLe
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/messages/AttachmentMessage.tsx
+// class=new  jaccard=0.0117  score=0.2891  fileCov=0.012
+// note: nearest: src/components/messages/AttachmentMessage.tsx (0.0117); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var kLe = E(() => {
   _i();

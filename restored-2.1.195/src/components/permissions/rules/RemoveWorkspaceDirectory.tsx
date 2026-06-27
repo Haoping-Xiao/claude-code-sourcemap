@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _zl
 // matched 2.1.88 source: src/components/permissions/rules/RemoveWorkspaceDirectory.tsx
-// class=modified  jaccard=0.3698  score=0.7362  fileCov=0.4263
+// class=modified  jaccard=0.4028  score=0.6218  fileCov=0.5336
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _zl = E(() => {

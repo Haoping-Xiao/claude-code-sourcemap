@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mko
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
-// class=modified  jaccard=0.095  score=0.1267  fileCov=0.2749
+// class=modified  jaccard=0.0831  score=0.1215  fileCov=0.208
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mko = E(() => {

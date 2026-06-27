@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module azo
 // matched 2.1.88 source: src/hooks/useRemoteSession.ts
-// class=partial  jaccard=0.0626  score=0.4587  fileCov=0.0676
+// class=partial  jaccard=0.1068  score=0.3716  fileCov=0.1303
 // note: low-confidence suggestion: src/hooks/useRemoteSession.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var azo = E(() => {

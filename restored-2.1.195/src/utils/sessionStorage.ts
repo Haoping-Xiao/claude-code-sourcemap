@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zf
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=modified  jaccard=0.1763  score=0.2901  fileCov=0.31
+// class=modified  jaccard=0.2224  score=0.3996  fileCov=0.3341
 // note: deminified; 132 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Zf = E(() => {

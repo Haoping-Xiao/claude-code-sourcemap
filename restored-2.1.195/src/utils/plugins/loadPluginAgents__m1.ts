@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eer
 // matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
-// class=modified (alt of src/utils/plugins/loadPluginAgents.ts)  jaccard=0.2541  score=0.7641  fileCov=0.2758
+// class=modified (alt of src/utils/plugins/loadPluginAgents.ts)  jaccard=0.1864  score=0.7863  fileCov=0.1963
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eer = E(() => {

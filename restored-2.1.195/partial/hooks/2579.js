@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yzi
 // matched 2.1.88 source: src/hooks/useExitOnCtrlCD.ts
-// class=partial  jaccard=0.2395  score=1  fileCov=0.2395
+// class=partial  jaccard=0.1031  score=0.3495  fileCov=0.1275
 // note: low-confidence suggestion: src/hooks/useExitOnCtrlCD.ts; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yzi = E(() => {

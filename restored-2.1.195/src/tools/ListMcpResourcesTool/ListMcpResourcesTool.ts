@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m4t
 // matched 2.1.88 source: src/tools/ListMcpResourcesTool/ListMcpResourcesTool.ts
-// class=modified  jaccard=0.5004  score=0.6524  fileCov=0.6822
+// class=modified  jaccard=0.476  score=0.6277  fileCov=0.6632
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var m4t = E(() => {

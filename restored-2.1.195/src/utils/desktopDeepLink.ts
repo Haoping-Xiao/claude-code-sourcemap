@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m7t
 // matched 2.1.88 source: src/utils/desktopDeepLink.ts
-// class=modified  jaccard=0.5194  score=0.8031  fileCov=0.5951
+// class=modified  jaccard=0.4437  score=0.8111  fileCov=0.4948
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var m7t = E(() => {

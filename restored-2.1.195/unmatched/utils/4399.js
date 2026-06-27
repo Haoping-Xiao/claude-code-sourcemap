@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VXn
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/commander/lib/option.js
+// class=new  jaccard=0.0147  score=0.0322  fileCov=0.0263
+// note: nearest: node_modules/commander/lib/option.js (0.0147); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VXn = E(() => {
   fh();

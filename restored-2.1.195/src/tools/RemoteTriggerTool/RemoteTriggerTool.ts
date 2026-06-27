@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ASl
 // matched 2.1.88 source: src/tools/RemoteTriggerTool/RemoteTriggerTool.ts
-// class=modified  jaccard=0.3694  score=0.6143  fileCov=0.4809
+// class=modified  jaccard=0.3771  score=0.5277  fileCov=0.5692
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ASl = E(() => {

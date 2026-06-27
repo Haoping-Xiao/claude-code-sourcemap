@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mDl
 // matched 2.1.88 source: src/components/Feedback.tsx
-// class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0674  score=0.1504  fileCov=0.1089
+// class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0949  score=0.189  fileCov=0.1602
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mDl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MEt
 // matched 2.1.88 source: src/utils/plugins/pluginStartupCheck.ts
-// class=modified  jaccard=0.5461  score=0.8436  fileCov=0.6077
+// class=modified  jaccard=0.4993  score=0.8443  fileCov=0.5499
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MEt = E(() => {

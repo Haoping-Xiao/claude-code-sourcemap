@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zqe
 // matched 2.1.88 source: src/utils/swarm/backends/teammateModeSnapshot.ts
-// class=modified  jaccard=0.5868  score=0.8253  fileCov=0.67
+// class=modified  jaccard=0.487  score=0.7384  fileCov=0.5885
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zqe = E(() => {

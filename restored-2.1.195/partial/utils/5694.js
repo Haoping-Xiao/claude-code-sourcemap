@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oRc
-// matched 2.1.88 source: src/components/FeedbackSurvey/useMemorySurvey.tsx
-// class=partial  jaccard=0.1153  score=0.3741  fileCov=0.1428
-// note: low-confidence suggestion: src/components/FeedbackSurvey/useMemorySurvey.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/FeedbackSurvey/useFeedbackSurvey.tsx
+// class=partial  jaccard=0.1416  score=0.4183  fileCov=0.1763
+// note: low-confidence suggestion: src/components/FeedbackSurvey/useFeedbackSurvey.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var oRc = E(() => {
   aW();

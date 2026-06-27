@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bOr
 // matched 2.1.88 source: node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js
-// class=new  jaccard=0.0277  score=1  fileCov=0.0277
-// note: nearest: node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js (0.0277); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0303  score=1  fileCov=0.0303
+// note: nearest: node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js (0.0303); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bOr = E(() => {
   hjs();

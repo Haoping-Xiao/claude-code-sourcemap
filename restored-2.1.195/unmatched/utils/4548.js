@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vfe
-// matched 2.1.88 source: node_modules/@opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js
-// class=new  jaccard=0.0497  score=0.0878  fileCov=0.1028
-// note: nearest: node_modules/@opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js (0.0497); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0028  score=0.1395  fileCov=0.0029
+// note: nearest: src/cli/print.ts (0.0028); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var vfe = E(() => {
   kt();

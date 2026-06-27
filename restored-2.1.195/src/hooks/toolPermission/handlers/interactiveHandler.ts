@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rko
 // matched 2.1.88 source: src/hooks/toolPermission/handlers/interactiveHandler.ts
-// class=modified  jaccard=0.1289  score=0.3415  fileCov=0.1716
+// class=modified  jaccard=0.2634  score=0.5584  fileCov=0.3327
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Rko = E(() => {

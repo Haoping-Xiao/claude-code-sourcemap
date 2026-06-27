@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ihc
 // matched 2.1.88 source: src/components/NativeAutoUpdater.tsx
-// class=modified  jaccard=0.3218  score=0.3899  fileCov=0.6482
+// class=modified  jaccard=0.2536  score=0.4185  fileCov=0.3915
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ihc = E(() => {

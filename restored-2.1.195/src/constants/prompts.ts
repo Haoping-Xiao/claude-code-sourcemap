@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aR
 // matched 2.1.88 source: src/constants/prompts.ts
-// class=modified  jaccard=0.2317  score=0.3944  fileCov=0.3596
+// class=modified  jaccard=0.2107  score=0.3889  fileCov=0.3149
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var aR = E(() => {

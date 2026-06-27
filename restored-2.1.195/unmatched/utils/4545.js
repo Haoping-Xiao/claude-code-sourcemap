@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _k
 // matched 2.1.88 source: src/utils/generatedFiles.ts
-// class=new  jaccard=0.0447  score=0.2717  fileCov=0.0507
-// note: nearest: src/utils/generatedFiles.ts (0.0447); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0398  score=0.2161  fileCov=0.0465
+// note: nearest: src/utils/generatedFiles.ts (0.0398); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _k = E(() => {
   kt();

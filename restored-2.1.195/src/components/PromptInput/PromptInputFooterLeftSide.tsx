@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module F6o
 // matched 2.1.88 source: src/components/PromptInput/PromptInputFooterLeftSide.tsx
-// class=modified  jaccard=0.2853  score=0.4987  fileCov=0.4
+// class=modified  jaccard=0.2467  score=0.4231  fileCov=0.3718
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var F6o = E(() => {

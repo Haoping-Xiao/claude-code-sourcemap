@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KGs
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/client-bedrock-runtime/dist-cjs/index.js
+// class=new  jaccard=0.0149  score=1  fileCov=0.0149
+// note: nearest: node_modules/@aws-sdk/client-bedrock-runtime/dist-cjs/index.js (0.0149); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var KGs = E(() => {
   WGs();

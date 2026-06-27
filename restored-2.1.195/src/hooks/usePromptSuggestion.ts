@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Yhc
 // matched 2.1.88 source: src/hooks/usePromptSuggestion.ts
-// class=modified  jaccard=0.4788  score=1  fileCov=0.4788
+// class=modified  jaccard=0.6666  score=0.9802  fileCov=0.6757
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Yhc = E(() => {

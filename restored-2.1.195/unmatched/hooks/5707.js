@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GRc
-// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0056  score=0.2231  fileCov=0.0057
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0056); dir inferred from dep-graph -> hooks; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0101  score=0.2724  fileCov=0.0104
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0101); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var GRc = E(() => {
   Ye();

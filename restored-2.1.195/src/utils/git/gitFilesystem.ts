@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module RTs
 // matched 2.1.88 source: src/utils/git/gitFilesystem.ts
-// class=modified  jaccard=0.7053  score=0.9261  fileCov=0.7474
+// class=modified  jaccard=0.5437  score=0.7142  fileCov=0.6949
 // note: deminified; 22 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var RTs = E(() => {

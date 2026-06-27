@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BCa
 // matched 2.1.88 source: src/services/mcp/xaa.ts
-// class=modified (alt of src/services/mcp/xaa.ts)  jaccard=0.0293  score=0.0715  fileCov=0.0473
+// class=modified (alt of src/services/mcp/xaa.ts)  jaccard=0.0391  score=0.1158  fileCov=0.0558
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BCa = E(() => {

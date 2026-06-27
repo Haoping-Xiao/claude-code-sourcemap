@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qGo
 // matched 2.1.88 source: node_modules/open/index.js
-// class=new  jaccard=0.0482  score=0.1271  fileCov=0.0721
-// note: nearest: node_modules/open/index.js (0.0482); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0585  score=0.1503  fileCov=0.0873
+// note: nearest: node_modules/open/index.js (0.0585); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var qGo = E(() => {
   lH();

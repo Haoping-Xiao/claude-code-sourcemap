@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Fso
-// matched 2.1.88 source: src/bridge/remoteBridgeCore.ts
-// class=new  jaccard=0.0083  score=0.0715  fileCov=0.0093
-// note: nearest: src/bridge/remoteBridgeCore.ts (0.0083); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@azure/msal-node/dist/client/ClientCredentialClient.mjs
+// class=new  jaccard=0.0313  score=0.1518  fileCov=0.0379
+// note: nearest: node_modules/@azure/msal-node/dist/client/ClientCredentialClient.mjs (0.0313); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Fso = E(() => {
   Rc();

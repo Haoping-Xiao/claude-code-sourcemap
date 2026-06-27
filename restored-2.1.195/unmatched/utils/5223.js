@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gnc
-// matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
-// class=new  jaccard=0.0343  score=0.1547  fileCov=0.0422
-// note: nearest: src/components/tasks/RemoteSessionDetailDialog.tsx (0.0343); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.006  score=0.1749  fileCov=0.0061
+// note: nearest: src/screens/REPL.tsx (0.006); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gnc = E(() => {
   Un();

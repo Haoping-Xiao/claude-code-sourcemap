@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XWc
 // matched 2.1.88 source: src/utils/settings/settings.ts
-// class=new  jaccard=0.0393  score=0.4158  fileCov=0.0415
-// note: nearest: src/utils/settings/settings.ts (0.0393); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0246  score=0.1384  fileCov=0.029
+// note: nearest: src/utils/settings/settings.ts (0.0246); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var XWc = E(() => {
   At();

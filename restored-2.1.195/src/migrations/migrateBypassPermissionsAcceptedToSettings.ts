@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BOc
 // matched 2.1.88 source: src/migrations/migrateBypassPermissionsAcceptedToSettings.ts
-// class=modified  jaccard=0.4487  score=0.6169  fileCov=0.6221
+// class=modified  jaccard=0.3677  score=0.6753  fileCov=0.4466
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BOc = E(() => {

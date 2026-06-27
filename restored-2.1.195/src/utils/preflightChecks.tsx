@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module u7o
 // matched 2.1.88 source: src/utils/preflightChecks.tsx
-// class=modified  jaccard=0.3454  score=0.4737  fileCov=0.5604
+// class=modified  jaccard=0.353  score=0.5297  fileCov=0.5141
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var u7o = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bUo
 // matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
-// class=new  jaccard=0.0103  score=0.087  fileCov=0.0116
-// note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0103); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0083  score=0.103  fileCov=0.0089
+// note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0083); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bUo = E(() => {
   ree();

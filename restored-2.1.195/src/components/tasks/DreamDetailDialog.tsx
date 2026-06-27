@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b8l
 // matched 2.1.88 source: src/components/tasks/DreamDetailDialog.tsx
-// class=modified  jaccard=0.3814  score=0.6308  fileCov=0.491
+// class=modified  jaccard=0.3543  score=0.5037  fileCov=0.5443
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var b8l = E(() => {

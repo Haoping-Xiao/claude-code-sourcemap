@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module SDl
 // matched 2.1.88 source: src/components/Feedback.tsx
-// class=modified  jaccard=0.2597  score=0.4295  fileCov=0.3966
+// class=modified  jaccard=0.2136  score=0.4004  fileCov=0.314
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var SDl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BR
 // matched 2.1.88 source: src/utils/git.ts
-// class=modified  jaccard=0.3872  score=0.6534  fileCov=0.4873
+// class=modified  jaccard=0.2952  score=0.6301  fileCov=0.3571
 // note: deminified; 31 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BR = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xNt
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/BashTool/shouldUseSandbox.ts
+// class=new  jaccard=0.0301  score=0.2482  fileCov=0.0331
+// note: nearest: src/tools/BashTool/shouldUseSandbox.ts (0.0301); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xNt = E(() => {
   ih();

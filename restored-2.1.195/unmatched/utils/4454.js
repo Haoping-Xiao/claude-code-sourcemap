@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Twl
-// matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
-// class=new  jaccard=0.0185  score=0.0936  fileCov=0.0225
-// note: nearest: src/services/PromptSuggestion/speculation.ts (0.0185); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0078  score=0.1819  fileCov=0.0081
+// note: nearest: src/cli/print.ts (0.0078); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Twl = E(() => {
   ft();

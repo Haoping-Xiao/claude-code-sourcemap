@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module i0n
-// matched 2.1.88 source: src/components/NativeAutoUpdater.tsx
-// class=new  jaccard=0.0328  score=0.152  fileCov=0.0401
-// note: nearest: src/components/NativeAutoUpdater.tsx (0.0328); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/zod/v4/classic/schemas.js
+// class=new  jaccard=0.0187  score=0.2421  fileCov=0.0199
+// note: nearest: node_modules/zod/v4/classic/schemas.js (0.0187); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var i0n = E(() => {
   Xr();

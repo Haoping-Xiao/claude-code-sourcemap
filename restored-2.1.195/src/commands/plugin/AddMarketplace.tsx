@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OBo
 // matched 2.1.88 source: src/commands/plugin/AddMarketplace.tsx
-// class=modified  jaccard=0.2791  score=0.4171  fileCov=0.4576
+// class=modified  jaccard=0.3576  score=0.51  fileCov=0.5449
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OBo = E(() => {

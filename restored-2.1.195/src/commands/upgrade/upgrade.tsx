@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iQl
 // matched 2.1.88 source: src/commands/upgrade/upgrade.tsx
-// class=modified  jaccard=0.4607  score=0.633  fileCov=0.6286
+// class=modified  jaccard=0.4737  score=0.6757  fileCov=0.6131
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var iQl = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module W0r
-// matched 2.1.88 source: src/utils/git/gitFilesystem.ts
-// class=new  jaccard=0.0551  score=1  fileCov=0.0551
-// note: nearest: src/utils/git/gitFilesystem.ts (0.0551); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/sessionStoragePortable.ts
+// class=new  jaccard=0.0455  score=0.6478  fileCov=0.0466
+// note: nearest: src/utils/sessionStoragePortable.ts (0.0455); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var W0r = E(() => {
   vn();

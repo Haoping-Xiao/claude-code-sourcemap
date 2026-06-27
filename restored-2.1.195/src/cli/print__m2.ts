@@ -1,1060 +1,1033 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Jfc
+// restored from claude-code 2.1.195 (deminified) — module OZl
 // matched 2.1.88 source: src/cli/print.ts
-// class=modified (alt of src/cli/print.ts)  jaccard=0.0369  score=0.152  fileCov=0.0465
+// class=modified (alt of src/cli/print.ts)  jaccard=0.058  score=0.3104  fileCov=0.0665
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Jfc = E(() => {
-  bur = class bur extends TypeError {
-    violations;
-    frameType;
-    constructor(e, t) {
-      let n = e[0];
-      super(
-        `[shoji] non-serializable value on the wire: ${e.length} hard violation(s); first: ${n.kind} ${n.preview} at ${n.path}. ` +
-          "The wire cannot carry this \u2014 it must become data (an Input/Event/RPC/Handle) before it can cross the seam.",
+var OZl = E(() => {
+  qee();
+  Jt();
+  eLe();
+  dn();
+  kt();
+  Won();
+  je();
+  At();
+  $Zl = Symbol("suppressControlResponse");
+  R3o = class R3o {
+    transport;
+    isSingleUserTurn;
+    canUseTool;
+    hooks;
+    abortController;
+    jsonSchema;
+    initConfig;
+    onElicitation;
+    getOAuthToken;
+    getHostAuthToken;
+    onUserDialog;
+    pendingControlResponses = new Map();
+    cleanupPerformed = false;
+    sdkMessages;
+    inputStream = new E4();
+    initialization;
+    cancelControllers = new Map();
+    hookCallbacks = new Map();
+    nextCallbackId = 0;
+    initHooksPayload;
+    sdkMcpTransports = new Map();
+    sdkMcpServerInstances = new Map();
+    pendingMcpResponses = new Map();
+    firstResultReceivedResolve;
+    firstResultReceived = false;
+    lastErrorResultText;
+    transcriptMirrorBatcher;
+    cleanupCallbacks = [];
+    cleanupPromise;
+    setIsSingleUserTurn(e) {
+      this.isSingleUserTurn = e;
+    }
+    setTranscriptMirrorBatcher(e) {
+      this.transcriptMirrorBatcher = e;
+    }
+    reportMirrorError(e, t) {
+      let n = {
+        type: "system",
+        subtype: "mirror_error",
+        error: t,
+        key: e,
+        uuid: Age.randomUUID(),
+        session_id: e.sessionId,
+      };
+      this.inputStream.enqueue(n);
+    }
+    addCleanupCallback(e) {
+      if (this.cleanupPerformed) e();
+      else this.cleanupCallbacks.push(e);
+    }
+    isClosed() {
+      return this.cleanupPerformed;
+    }
+    hasBidirectionalNeeds() {
+      return (
+        this.sdkMcpTransports.size > 0 ||
+        (this.hooks !== void 0 && Object.keys(this.hooks).length > 0) ||
+        this.canUseTool !== void 0 ||
+        this.onElicitation !== void 0 ||
+        this.onUserDialog !== void 0 ||
+        this.getOAuthToken !== void 0 ||
+        this.getHostAuthToken !== void 0
       );
-      ((this.name = "WireViolationError"), (this.violations = e), (this.frameType = t));
     }
-  };
-});
-async function* Scm(e, t, n) {
-  let r = t.messages.filter((l) => l.uuid !== e.messageUuid),
-    { messages: o } = await bTt({
-      input: e.text,
-      mode: "prompt",
-      setToolJSX: () => {},
-      context: {
-        ...t.toolUseContext,
-        abortController: n,
-        messages: r,
-        canUseTool: t.canUseTool,
-        setMessages: () => {},
-        applyMessageOp: () => {},
-        onChangeAPIKey: () => {},
-        options: {
-          ...t.toolUseContext.options,
-          ideInstallationStatus: null,
-          theme: "dark",
-        },
-      },
-      messages: r,
-      querySource: t.querySource,
-    }),
-    i = o.find(pA)?.compactMetadata.preservedMessages,
-    a = new Set(i?.allUuids ?? i?.uuids ?? []);
-  for (let l of o) if (!a.has(l.uuid)) yield l;
-  return {
-    reason: "completed",
-  };
-}
-function Aur({
-  run: e,
-  queryParams: t,
-  commands: n = [],
-  models: r = [],
-  unavailableModels: o = [],
-  agents: s = [],
-  account: i = {},
-  outputStyle: a,
-  availableOutputStyles: l,
-  mcpServers: c = () => [],
-  mcpDelegate: u,
-  excludeDynamicSections: d,
-  settings: p = bcm(),
-  authDelegate: f,
-  mcpAuthDelegate: m,
-  ambient: g,
-  tools: h = [],
-  skills: y = [],
-  plugins: b = [],
-  pluginErrors: _ = [],
-  pluginWarnings: S = [],
-  initialModel: A,
-  initialPermissionMode: v,
-  fastModeState: C,
-  hostOwnsPermissionMode: x = false,
-}) {
-  let I = kfc({
-      commands: typeof n === "function" ? n() : n,
-      models: typeof r === "function" ? r() : r,
-      unavailableModels: typeof o === "function" ? o() : o,
-      agents: typeof s === "function" ? s() : s,
-      account: i,
-      outputStyle: a,
-      availableOutputStyles: l,
-    }),
-    k = new E4(),
-    D = 0,
-    P = null,
-    O = null,
-    L = null,
-    M = null,
-    N = null,
-    B = Rt(),
-    $ = fua();
-  if ($ !== B && $ !== Vao)
-    T(
-      `[shoji-engine] sdkEventQueue push key '${$}' \u2260 engine sessionId '${B}' \u2014 host ALS wiring likely incorrect; enqueued SdkEvents will not drain here`,
-    );
-  let q = (ie) => ({
-      ...ie,
-      session_id: B,
-      uuid: "uuid" in ie && typeof ie.uuid === "string" ? ie.uuid : Sur.randomUUID(),
-    }),
-    W = (ie) => (typeof ie === "function" ? ie() : ie),
-    V = () => {
-      let ie = W(g);
-      if (!ie) return null;
-      let le = typeof n === "function" ? n() : n,
-        He = typeof s === "function" ? s() : s;
-      return gTt({
-        ...ie,
-        sessionId: B,
-        tools: h,
-        mcpClients: c().map((ye) => ({
-          name: ye.name,
-          type: ye.status,
-        })),
-        model: O ?? W(A) ?? "",
-        permissionMode: L ?? W(v) ?? "default",
-        commands: le,
-        agents: He.map((ye) => ({
-          agentType: ye.name,
-        })),
-        skills: y,
-        plugins: b,
-        pluginErrors: _,
-        pluginWarnings: S,
-        fastModeState: W(C) ?? "off",
+    constructor(e, t, n, r, o, s = new Map(), i, a, l, c, u, d) {
+      this.transport = e;
+      this.isSingleUserTurn = t;
+      this.canUseTool = n;
+      this.hooks = r;
+      this.abortController = o;
+      this.jsonSchema = i;
+      this.initConfig = a;
+      this.onElicitation = l;
+      this.getOAuthToken = c;
+      this.getHostAuthToken = u;
+      this.onUserDialog = d;
+      for (let [p, f] of s) this.connectSdkMcpServer(p, f);
+      ((this.sdkMessages = this.readSdkMessages()),
+        this.readMessages(),
+        (this.initialization = this.initialize()),
+        this.initialization.catch(() => {}));
+    }
+    setError(e) {
+      this.inputStream.error(e);
+    }
+    async stopTask(e) {
+      await this.request({
+        subtype: "stop_task",
+        task_id: e,
       });
-    },
-    Y = false,
-    z = false,
-    K = 0,
-    Z = null,
-    J = false,
-    ne = QU(V1),
-    oe = [],
-    re = false,
-    ee = [],
-    ce = false,
-    ae = (ie) => {
-      if (oe.length >= _cm) {
-        if ((oe.shift(), !re))
-          ((re = true),
-            ke(
-              Error(
-                "[shoji-engine] pendingDenialFrames buffer is full; dropping oldest permission_denied advisory frames",
-              ),
-            ));
-      }
-      oe.push(ie);
-    };
-  function* de() {
-    while (oe.length > 0) {
-      let ie = oe.shift();
-      (T(`[shoji-engine] yield ${ie.type}/${ie.subtype}`), yield q(ie));
     }
-  }
-  function* Ee() {
-    yield* de();
-    for (let ie of Kao(B)) (T(`[shoji-engine] yield sdk-queue system/${ie.subtype}`), yield q(ie));
-  }
-  function* me() {
-    while (ee.length > 0) yield ee.shift();
-  }
-  let pe = () => {
-    if (!ce) return false;
-    let ie = Z?.toolUseContext?.getAppState;
-    return ie !== void 0 && Ubt(ie()).some((le) => zJ(le) && wH(le));
-  };
-  async function* ge() {
-    Y = false;
-    let ie = V();
-    if (ie) (T("[shoji-engine] yield system/init (first)"), yield q(ie));
-    for await (let le of k) {
-      if (Y) {
-        Y = false;
-        let Te = V();
-        if (Te) (T("[shoji-engine] yield system/init (re-emit)"), yield q(Te));
-      }
-      yield* Ee();
-      let He = Date.now(),
-        ye = {
-          origin: le.origin,
-          parent_tool_use_id: le.parent_tool_use_id,
-          priority: le.priority,
-          shouldQuery: le.shouldQuery,
-          timestamp: le.timestamp,
-        },
-        ue;
+    async backgroundTasks(e) {
+      return (
+        (
+          await this.request({
+            subtype: "background_tasks",
+            tool_use_id: e,
+          })
+        ).response.backgrounded ?? true
+      );
+    }
+    close() {
+      this.cleanup();
+    }
+    cleanup(e) {
+      if (this.cleanupPromise) return this.cleanupPromise;
+      return (
+        (this.cleanupPerformed = true),
+        (this.cleanupPromise = this.performCleanup(e)),
+        this.cleanupPromise
+      );
+    }
+    async performCleanup(e) {
+      for (let t of this.cleanupCallbacks)
+        try {
+          t();
+        } catch {}
+      if (((this.cleanupCallbacks = []), this.transcriptMirrorBatcher))
+        try {
+          await this.transcriptMirrorBatcher.flush();
+        } catch {}
       try {
-        ue = await t(le);
-      } catch (Te) {
-        (ke(Te), yield* Ee());
-        let Re = {
-          type: "result",
-          subtype: "error_during_execution",
-          is_error: true,
-          errors: [`queryParams builder failed: ${be(Te)}`],
-          duration_ms: Date.now() - He,
-          duration_api_ms: WH(),
-          num_turns: 0,
-          stop_reason: null,
-          total_cost_usd: jb(),
-          usage: f8o(),
-          modelUsage: WC(),
-          permission_denials: [],
-          uuid: Sur.randomUUID(),
-          session_id: B,
-          fast_mode_state: W(C),
-          ...ye,
-        };
-        if (pe()) ee.push(Re);
-        else (yield* me(), yield Re);
-        continue;
-      }
-      (D++, (Z = ue));
-      let we = new AbortController();
-      P = we;
-      let Ce = ue.toolUseContext?.abortController?.signal,
-        Ie = () => we.abort(Ce?.reason);
-      if (Ce?.aborted) we.abort(Ce.reason);
-      else
-        Ce?.addEventListener("abort", Ie, {
-          once: true,
-        });
-      T(`[shoji-engine] turn ${D} start`);
-      let Ve = [],
-        Ze = (Te, Re, Ne) => {
-          if (Ve.some((it) => it.tool_use_id === Re)) return;
-          Ve.push({
-            tool_name: KZt(Te.name),
-            tool_use_id: Re,
-            tool_input: Ne,
-          });
-        },
-        Be = ue.canUseTool,
-        Me = async (Te, Re, Ne, it, Tt, un) => {
-          let ze = await Be(Te, Re, Ne, it, Tt, un);
-          if (ze.behavior !== "allow") Ze(Te, Tt, Re);
-          if (ze.behavior === "deny" && URr(ze))
-            ae({
-              type: "system",
-              subtype: "permission_denied",
-              tool_name: Te.name,
-              tool_use_id: Tt,
-              agent_id: Ne.agentId,
-              decision_reason_type: ze.decisionReason?.type,
-              decision_reason: fzt(ze.decisionReason),
-              message: ze.message,
-            });
-          return ze;
-        };
-      if (ne.size > 0 && ue.toolUseContext?.readFileState) {
-        for (let [Te, Re] of ne.entries()) {
-          let Ne = ue.toolUseContext.readFileState.get(Te);
-          if (!Ne || Re.timestamp > Ne.timestamp) ue.toolUseContext.readFileState.set(Te, Re);
+        for (let n of this.cancelControllers.values()) n.abort();
+        (this.cancelControllers.clear(), this.transport.close());
+        let t = e ?? Error("Query closed before response received");
+        for (let { reject: n } of this.pendingControlResponses.values()) n(t);
+        this.pendingControlResponses.clear();
+        for (let { reject: n } of this.pendingMcpResponses.values()) n(t);
+        (this.pendingMcpResponses.clear(), this.hookCallbacks.clear());
+        for (let n of this.sdkMcpTransports.values()) n.close().catch(() => {});
+        if ((this.sdkMcpTransports.clear(), e)) this.inputStream.error(e);
+        else this.inputStream.done();
+      } catch (t) {}
+      if (this.transport.waitForExit) {
+        let t = new AbortController();
+        try {
+          await Promise.race([this.transport.waitForExit(), Nn(2000, t.signal)]);
+        } catch {
+        } finally {
+          t.abort();
         }
-        ne.clear();
       }
-      let Ue = ue.engineDeferredSlash
-          ? Scm(ue.engineDeferredSlash, ue, we)
-          : e({
-              ...ue,
-              canUseTool: Me,
-              keepPartialMessageOnAbort: true,
-              toolUseContext: {
-                ...ue.toolUseContext,
-                abortController: we,
-                onPermissionDenial: Ze,
-                permissionLayers:
-                  O !== null || (!x && L !== null) || M !== null || N !== null
-                    ? [
-                        ...(ue.toolUseContext?.permissionLayers ?? []),
-                        ...(O !== null
-                          ? [
-                              {
-                                kind: "model",
-                                mainLoopModel: O,
-                              },
-                            ]
-                          : []),
-                        ...(!x && L !== null
-                          ? [
-                              {
-                                kind: "permission_mode",
-                                mode: L,
-                              },
-                            ]
-                          : []),
-                        ...(M !== null
-                          ? [
-                              {
-                                kind: "max_thinking_tokens",
-                                maxThinkingTokens: M,
-                              },
-                            ]
-                          : []),
-                        ...(N !== null
-                          ? [
-                              {
-                                kind: "flag_settings",
-                                settings: N,
-                              },
-                            ]
-                          : []),
-                      ]
-                    : ue.toolUseContext?.permissionLayers,
-              },
-            }),
-        tt = null,
-        bt = ue.engineDeferredSlash ? 0 : 1,
-        Ke = null,
-        Et = [],
-        ct,
-        Je = "",
-        gt = false,
-        st = null,
-        xt = "",
-        vt = false,
-        jt = [],
-        en = new Set(),
-        Dn = null,
-        nn,
-        Ln;
+    }
+    next(...[e]) {
+      return this.sdkMessages.next(...[e]);
+    }
+    async return(e) {
+      return (await this.cleanup(), this.sdkMessages.return(e));
+    }
+    async throw(e) {
+      return (await this.cleanup(), this.sdkMessages.throw(e));
+    }
+    [Symbol.asyncIterator]() {
+      return this.sdkMessages;
+    }
+    async [Symbol.asyncDispose]() {
+      await this.cleanup();
+    }
+    async readMessages() {
       try {
-        let Te = await Ue.next();
-        while (!Te.done) {
-          let Re = Te.value;
-          try {
-            let Ne = p8o(Re, "output");
-            if (Ne.length > 0 && !vt)
-              ((vt = true),
-                It("shoji_engine", "wire_violation", {
-                  frame_type: $e(Re.type),
-                  violation_kind: $e(Ne[0].kind),
-                }),
-                ke(new bur(Ne, Re.type)));
-          } catch (Ne) {
-            if (!vt)
-              ((vt = true),
-                It("shoji_engine", "wire_violation", {
-                  frame_type: $e(Re.type),
-                  violation_kind: We("walker_threw"),
-                }),
-                ke(Ne));
+        for await (let e of this.transport.readMessages()) {
+          if (e.type === "control_response") {
+            let t = this.pendingControlResponses.get(e.response.request_id);
+            if (t) t.handler(e.response);
+            continue;
+          } else if (e.type === "control_request") {
+            this.handleControlRequest(e);
+            continue;
+          } else if (e.type === "control_cancel_request") {
+            this.handleControlCancelRequest(e);
+            continue;
+          } else if (e.type === "keep_alive") continue;
+          else if (e.type === "transcript_mirror") {
+            this.transcriptMirrorBatcher?.enqueue(e.filePath, e.entries);
+            continue;
           }
-          if (Re.type === "user") {
-            if (!ue.engineDeferredSlash) bt++;
-            (Et.push(Re), (Je = ""), (gt = false), (st = null), (xt = ""));
-          } else if (Re.type === "tombstone") {
-            {
-              let Ne = Re.message?.uuid,
-                it = Ne !== void 0 ? Et.findLastIndex((Tt) => Tt.uuid === Ne) : Et.length - 1;
-              if (it >= 0) Et.splice(it, 1);
-            }
-            {
-              let Ne = Re.message;
-              if (Ne?.type === "assistant") {
-                let it = Ne.message.content,
-                  Tt = Array.isArray(it)
-                    ? it.flatMap((un) => (un.type === "tool_use" && un.name === Ip ? [un.id] : []))
-                    : [];
-                if (Tt.length > 0) {
-                  for (let ze of Tt) en.add(ze);
-                  let un = (ze) => ze.toolUseID === void 0 || Tt.includes(ze.toolUseID);
-                  jt = jt.filter((ze) => !un(ze));
-                }
-              }
-            }
-            ((Je = ""), (gt = false), (st = null), (xt = ""));
-          } else if (Re.type === "assistant") {
-            if (((Dn ??= Date.now()), Et.push(Re), Re.message.stop_reason != null))
-              Ke = Re.message.stop_reason;
-            ((gt = Re.isApiErrorMessage === true), (st = Re.apiErrorStatus ?? null));
-            let Ne = EU(Re.message.content),
-              it = Ne?.type === "text" ? Ne.text : "";
-            if (gt) ((xt = it), (Je = ""));
-            else Je = a5e.has(it) ? "" : it;
-          } else if (
-            Re.type === "stream_event" &&
-            Re.event.type === "message_delta" &&
-            Re.event.delta.stop_reason != null
-          )
-            Ke = Re.event.delta.stop_reason;
-          else if (Re.type === "attachment" && Re.attachment.type === "structured_output") {
-            if (
-              !(Re.attachment.toolUseID !== void 0 ? en.has(Re.attachment.toolUseID) : en.size > 0)
-            )
-              jt = [
-                ...jt,
-                {
-                  toolUseID: Re.attachment.toolUseID,
-                  data: Re.attachment.data,
-                },
-              ];
-          } else if (Re.type === "attachment" && Re.attachment.type === "max_turns_reached")
-            ct = {
-              turnCount: Re.attachment.turnCount,
-              maxTurns: Re.attachment.maxTurns,
-            };
-          else if (Re.type === "attachment" && Re.attachment.type === "hook_deferred_tool")
-            ((nn = {
-              id: Re.attachment.toolUseID,
-              name: Re.attachment.toolName,
-              input: Re.attachment.toolInput,
-            }),
-              (Ke = "tool_deferred"));
-          if (oe.length > 0) yield* de();
           if (
-            (T(`[shoji-engine] yield ${Re.type}/${"subtype" in Re ? Re.subtype : "-"}`),
-            Re.type === "notification")
+            e.type === "system" &&
+            (e.subtype === "post_turn_summary" || e.subtype === "task_summary")
           ) {
-            let Ne = Re.notification;
-            yield q({
-              type: "system",
-              subtype: "notification",
-              key: Ne.key,
-              text: Ne.text,
-              priority: Ne.priority,
-              ...(Ne.color !== void 0 && {
-                color: Ne.color,
-              }),
-              ...(Ne.timeoutMs !== void 0 && {
-                timeout_ms: Ne.timeoutMs,
-              }),
-            });
-          } else if (Re.type === "sdk_status")
-            yield q({
-              type: "system",
-              subtype: "status",
-              status: Re.status,
-              ...(Re.metadata?.compactResult !== void 0 && {
-                compact_result: Re.metadata.compactResult,
-              }),
-              ...(Re.metadata?.compactError !== void 0 && {
-                compact_error: Re.metadata.compactError,
-              }),
-            });
-          else if (Re.type === "stream_request_start")
-            yield q({
-              type: "system",
-              subtype: "status",
-              status: "requesting",
-            });
-          else if (Re.type === "system" && Re.subtype === "compact_boundary")
-            yield q({
-              type: "system",
-              subtype: "compact_boundary",
-              uuid: Re.uuid,
-              compact_metadata: MAt(Re.compactMetadata),
-              ...(Re.logicalParentUuid !== void 0 && {
-                logical_parent_uuid: Re.logicalParentUuid,
-              }),
-            });
-          else if (Re.type === "system" && Re.subtype === "model_refusal_fallback")
-            yield q({
-              type: "system",
-              subtype: "model_refusal_fallback",
-              uuid: Re.uuid,
-              trigger: Re.trigger,
-              direction: Re.direction,
-              original_model: Re.originalModel,
-              fallback_model: Re.fallbackModel,
-              request_id: Re.requestId,
-              api_refusal_category: Re.apiRefusalCategory ?? null,
-              api_refusal_explanation: Re.apiRefusalExplanation ?? null,
-              ...(Re.retractedMessageUuids !== void 0 && {
-                retracted_message_uuids: Re.retractedMessageUuids,
-              }),
-              refused_user_message_uuid: Re.refusedUserMessageUuid ?? null,
-              content: Re.content,
-            });
-          else if (Re.type === "system" && Re.subtype === "model_refusal_no_fallback")
-            yield q({
-              type: "system",
-              subtype: "model_refusal_no_fallback",
-              uuid: Re.uuid,
-              original_model: Re.originalModel,
-              request_id: Re.requestId,
-              api_refusal_category: Re.apiRefusalCategory ?? null,
-              api_refusal_explanation: Re.apiRefusalExplanation ?? null,
-              refused_user_message_uuid: Re.refusedUserMessageUuid ?? null,
-              content: Re.content,
-            });
-          else if (Re.type === "system" && Re.subtype === "model_fallback")
-            yield q({
-              type: "system",
-              subtype: "model_fallback",
-              uuid: Re.uuid,
-              trigger: Re.trigger,
-              original_model: Re.originalModel,
-              fallback_model: Re.fallbackModel,
-              content: Re.content,
-            });
-          else if (Re.type === "system" && Re.subtype === "read_divider");
-          else yield q(Re);
-          if (Re.type === "system" && Re.subtype === "api_error")
-            yield q({
-              type: "system",
-              subtype: "api_retry",
-              attempt: Re.retryAttempt,
-              max_retries: Re.maxRetries,
-              retry_delay_ms: Re.retryInMs,
-              error_status: Re.error.status ?? null,
-              error: q1n(Re.error),
-            });
-          if (Re.type === "attachment" && Re.attachment.type === "relevant_memories") {
-            let Ne = dur(Re.attachment.memories);
-            if (Ne) {
-              let { uuid: it, session_id: Tt, ...un } = Ne;
-              yield q(un);
-            }
+            this.inputStream.enqueue(e);
+            continue;
           }
-          if (Re.type === "stream_event") {
-            if (Re.event.type === "content_block_start") K = 0;
-            else if (Re.event.type === "content_block_delta") {
-              let { delta: Ne } = Re.event;
-              if (Ne.type === "thinking_delta") {
-                let it;
-                if ("estimated_tokens" in Ne && typeof Ne.estimated_tokens === "number")
-                  it = Ne.estimated_tokens;
-                else if (typeof Ne.thinking === "string" && Ne.thinking.length > 0)
-                  it = bZt(Ne.thinking);
-                if (it !== void 0)
-                  ((K += it),
-                    yield q({
-                      type: "system",
-                      subtype: "thinking_tokens",
-                      estimated_tokens: K,
-                      estimated_tokens_delta: it,
-                    }),
-                    T("[shoji-engine] yield-twin system/thinking_tokens"));
-              } else if (Ne.type === "signature_delta" && K > 0) {
-                let it = Math.ceil(l5e(Ne.signature.length) / 4);
-                if (it > K) {
-                  let Tt = it - K;
-                  ((K = it),
-                    yield q({
-                      type: "system",
-                      subtype: "thinking_tokens",
-                      estimated_tokens: K,
-                      estimated_tokens_delta: Tt,
-                    }),
-                    T("[shoji-engine] yield-twin system/thinking_tokens"));
-                }
-              }
-            }
-          }
-          if (
-            Re.type === "system" &&
-            Re.subtype === "local_command" &&
-            typeof Re.content === "string" &&
-            (Re.content.includes(`<${KC}>`) || Re.content.includes(`<${aY}>`))
-          )
-            (yield q(mJt(Re.content, Re.uuid)),
-              T("[shoji-engine] yield-twin assistant (local_command)"));
-          if (
-            Re.type === "progress" &&
-            (Re.data.type === "bash_progress" || Re.data.type === "powershell_progress")
-          )
-            (yield q({
-              type: "tool_progress",
-              tool_use_id: Re.toolUseID,
-              tool_name: Re.data.type === "bash_progress" ? Co : Ss,
-              parent_tool_use_id: Re.parentToolUseID || null,
-              elapsed_time_seconds: Re.data.elapsedTimeSeconds,
-              task_id: Re.data.taskId,
-            }),
-              T("[shoji-engine] yield-twin tool_progress"));
-          if (Re.type === "progress" && Re.data.type === "repl_tool_call")
-            (yield q({
-              type: "tool_progress",
-              tool_use_id: Re.toolUseID,
-              tool_name: Fm,
-              parent_tool_use_id: Re.parentToolUseID || null,
-              elapsed_time_seconds: 0,
-              repl_call: {
-                inner_tool_name: Re.data.toolName,
-                inner_tool_input: Re.data.toolInput,
-                inner_tool_use_id: Re.data.toolUseId,
-                phase: Re.data.phase,
-              },
-            }),
-              T("[shoji-engine] yield-twin tool_progress repl_call"));
-          for (let Ne of Kao(B))
-            (T(`[shoji-engine] yield sdk-queue system/${Ne.subtype}`), yield q(Ne));
-          Te = await Ue.next();
+          if (e.type === "result") {
+            if (this.transcriptMirrorBatcher) await this.transcriptMirrorBatcher.flush();
+            if (
+              ((this.lastErrorResultText = e.is_error
+                ? e.subtype === "success"
+                  ? e.result
+                  : e.errors.join("; ")
+                : void 0),
+              (this.firstResultReceived = true),
+              this.firstResultReceivedResolve)
+            )
+              this.firstResultReceivedResolve();
+            if (this.isSingleUserTurn)
+              (T("[Query.readMessages] First result received for single-turn query, closing stdin"),
+                this.transport.endInput());
+          } else if (!(e.type === "system" && e.subtype === "session_state_changed"))
+            this.lastErrorResultText = void 0;
+          this.inputStream.enqueue(e);
         }
-        if (!vt) xe("shoji_engine");
-        Ln = Te.value ? Te.value.reason : void 0;
-      } catch (Te) {
-        tt = be(Te);
-      } finally {
-        (await Ue.return(void 0).catch(() => {}), Ce?.removeEventListener("abort", Ie));
-        let Te = f8o();
+        if (this.transcriptMirrorBatcher) await this.transcriptMirrorBatcher.flush();
+        if (this.firstResultReceivedResolve) this.firstResultReceivedResolve();
+        (this.inputStream.done(), this.cleanup());
+      } catch (e) {
+        if (this.transcriptMirrorBatcher) await this.transcriptMirrorBatcher.flush();
+        if (this.firstResultReceivedResolve) this.firstResultReceivedResolve();
+        if (this.lastErrorResultText !== void 0 && !(e instanceof WO)) {
+          let t = Error(`Claude Code returned an error result: ${this.lastErrorResultText}`);
+          (T(`[Query.readMessages] Replacing exit error with result text. Original: ${be(e)}`),
+            this.inputStream.error(t),
+            this.cleanup(t));
+          return;
+        }
+        (this.inputStream.error(e), this.cleanup(e));
+      }
+    }
+    async handleControlRequest(e) {
+      if (this.cancelControllers.has(e.request_id)) {
         T(
-          `[shoji-engine] turn ${D} end (turns=${bt} usage in=${Te.input_tokens} out=${Te.output_tokens} cost=$${jb().toFixed(4)} api=${WH()}ms stop=${Ke} resultLen=${Je.length})`,
+          `[Query.handleControlRequest] Duplicate delivery of in-flight request ${e.request_id} (${e.request.subtype}) \u2014 skipping`,
         );
+        return;
       }
-      let Hn = Et.at(-1) ?? {
-          type: "user",
-          message: le.message,
-        },
-        kr =
-          tt !== null
-            ? [tt]
-            : zZt(Ln) && nn === void 0 && !ZXn(Hn, Ke)
-              ? [`[ede_diagnostic] turn aborted (${Ln}) stop_reason=${Ke}`]
-              : null;
-      if (Je === "") {
-        let Te = jt.at(-1)?.data;
-        if (Te !== void 0) Je = JSON.stringify(Te);
-      }
-      let Mr = {
-          duration_ms: Date.now() - He,
-          duration_api_ms: WH(),
-          num_turns: bt,
-          stop_reason: Ke,
-          total_cost_usd: jb(),
-          usage: f8o(),
-          modelUsage: WC(),
-          permission_denials: Ve,
-          uuid: Sur.randomUUID(),
-          session_id: B,
-          terminal_reason: Ln,
-          fast_mode_state: W(C),
-          ...ye,
-        },
-        fe =
-          tt === null && nn === void 0 && ct
-            ? {
-                type: "result",
-                subtype: "error_max_turns",
-                is_error: true,
-                errors: [`Reached maximum number of turns (${ct.maxTurns})`],
-                ...Mr,
-                num_turns: ct.turnCount,
-              }
-            : kr !== null
-              ? {
-                  type: "result",
-                  subtype: "error_during_execution",
-                  is_error: true,
-                  errors: kr,
-                  ...Mr,
-                }
-              : {
-                  type: "result",
-                  subtype: "success",
-                  is_error: gt,
-                  api_error_status: st,
-                  result: gt ? xt : Je,
-                  structured_output: jt.at(-1)?.data,
-                  ttft_ms: !gt && Dn !== null ? Math.max(0, Dn - He) : void 0,
-                  deferred_tool_use: nn,
-                  ...Mr,
-                };
-      if ((yield* Ee(), pe())) ee.push(fe);
-      else (yield* me(), yield fe);
-    }
-    while (ee.length > 0 && !P?.signal.aborted && pe()) (yield* Ee(), await Nn(100));
-    if (ee.length > 0 && P?.signal.aborted && Z?.toolUseContext?.taskRegistry) {
-      let { taskRegistry: le, setAppState: He } = Z.toolUseContext;
-      lzt({
-        taskRegistry: le,
-        setAppState: He,
-      });
-    }
-    (yield* Ee(), yield* me());
-  }
-  function he(ie) {
-    try {
-      let le = p8o(ie, "input");
-      if (le.length > 0 && !z)
-        ((z = true),
-          It("shoji_engine", "wire_violation", {
-            frame_type: $e(ie.type),
-            violation_kind: $e(le[0].kind),
-          }),
-          ke(new bur(le, ie.type)));
-    } catch (le) {
-      if (!z)
-        ((z = true),
-          It("shoji_engine", "wire_violation", {
-            frame_type: $e(ie.type),
-            violation_kind: We("walker_threw"),
-          }),
-          ke(le));
-    }
-    switch (ie.type) {
-      case "turn":
-        k.enqueue(ie);
-        break;
-      case "interrupt":
-        P?.abort(ie.reason !== void 0 ? new DOMException(ie.reason, "AbortError") : void 0);
-        break;
-      case "set_model":
-        ((O = ie.model ?? null), (Y = true), T(`[shoji-engine] send set_model model=${ie.model}`));
-        break;
-      case "set_permission_mode": {
-        if (ie.mode === "bypassPermissions" && wU()) {
-          T(
-            "[shoji-engine] set_permission_mode:bypassPermissions rejected \u2014 disabled by settings",
-          );
-          break;
-        }
-        if (ie.mode === "auto" && !Zv()) {
-          T("[shoji-engine] set_permission_mode:auto rejected \u2014 gate not enabled");
-          break;
-        }
-        ((L = ie.mode), (Y = true));
-        break;
-      }
-      case "set_max_thinking_tokens":
-        ((M = ie.max_thinking_tokens),
-          T(`[shoji-engine] send set_max_thinking_tokens max=${ie.max_thinking_tokens}`));
-        break;
-      case "apply_flag_settings":
-        ((N = {
-          ...(N ?? {}),
-          ...ie.settings,
-        }),
-          T(`[shoji-engine] send apply_flag_settings keys=${Object.keys(ie.settings).join(",")}`));
-        break;
-      case "seed_read_state":
-        (ne.set(ie.path, ie.seed), T(`[shoji-engine] send seed_read_state path=${ie.path}`));
-        break;
-    }
-  }
-  return Object.assign(ge(), {
-    interrupt: async (ie) =>
-      he({
-        type: "interrupt",
-        reason: ie,
-      }),
-    setModel: async (ie) =>
-      he({
-        type: "set_model",
-        model: ie,
-      }),
-    setPermissionMode: async (ie) =>
-      he({
-        type: "set_permission_mode",
-        mode: ie,
-      }),
-    setMaxThinkingTokens: async (ie) =>
-      he({
-        type: "set_max_thinking_tokens",
-        max_thinking_tokens: ie,
-      }),
-    applyFlagSettings: (ie) => (
-      he({
-        type: "apply_flag_settings",
-        settings: ie,
-      }),
-      Promise.resolve()
-    ),
-    seedReadState: async (ie, le) => {
+      let t = new AbortController();
+      this.cancelControllers.set(e.request_id, t);
       try {
-        let He = ds(ie),
-          ye = Math.floor((await Eur.stat(He)).mtimeMs);
-        if (ye <= le) {
-          let ue = await Eur.readFile(He, "utf-8"),
-            we = (ue.charCodeAt(0) === 65279 ? ue.slice(1) : ue).replaceAll(
-              `\r
-`,
+        let n = await this.processControlRequest(e, t.signal);
+        if (this.cleanupPerformed) return;
+        if (n === $Zl) return;
+        let r = {
+          type: "control_response",
+          response: {
+            subtype: "success",
+            request_id: e.request_id,
+            response: n,
+          },
+        };
+        await Promise.resolve(
+          this.transport.write(
+            De(r) +
               `
 `,
-            );
-          he({
-            type: "seed_read_state",
-            path: He,
-            seed: {
-              content: we,
-              timestamp: ye,
-              offset: void 0,
-              limit: void 0,
-            },
-          });
-        }
-      } catch {}
-    },
-    turnCount: () => D,
-    initializationResult: () => Promise.resolve(I),
-    accountInfo: () => Promise.resolve(I.account),
-    claudeAuthenticate: async (ie) => {
-      if (!f) throw Error("claudeAuthenticate: no authDelegate wired");
-      return f.authenticate(ie);
-    },
-    claudeOAuthCallback: async (ie, le) => {
-      if (!f) throw Error("claudeOAuthCallback: no authDelegate wired");
-      return f.oauthCallback(ie, le);
-    },
-    claudeOAuthWaitForCompletion: async () => {
-      if (!f) throw Error("claudeOAuthWaitForCompletion: no authDelegate wired");
-      return f.oauthWaitForCompletion();
-    },
-    supportedModels: () => Promise.resolve(typeof r === "function" ? r() : I.models),
-    supportedCommands: () => Promise.resolve(typeof n === "function" ? n() : I.commands),
-    supportedAgents: () => Promise.resolve(typeof s === "function" ? s() : I.agents),
-    mcpServerStatus: () => Promise.resolve(c()),
-    reconnectMcpServer: async (ie) => {
-      if (!u) throw Error(`reconnectMcpServer: no mcpDelegate wired (server: ${ie})`);
-      await u.reconnect(ie);
-    },
-    toggleMcpServer: async (ie, le) => {
-      if (!u) throw Error(`toggleMcpServer: no mcpDelegate wired (server: ${ie})`);
-      await u.toggle(ie, le);
-    },
-    setMcpServers: async (ie) => {
-      if (!u)
-        throw Error(`setMcpServers: no mcpDelegate wired (${Object.keys(ie).length} server(s))`);
-      return u.setServers(ie);
-    },
-    reloadPlugins: async () => {
-      if (!u) throw Error("reloadPlugins: no mcpDelegate wired");
-      return u.reloadPlugins();
-    },
-    mcpAuthenticate: async (ie, le) => {
-      if (!m) throw Error(`mcpAuthenticate: no mcpAuthDelegate wired (server: ${ie})`);
-      return m.authenticate(ie, le);
-    },
-    mcpClearAuth: async (ie) => {
-      if (!m) throw Error(`mcpClearAuth: no mcpAuthDelegate wired (server: ${ie})`);
-      return m.clearAuth(ie);
-    },
-    mcpSubmitOAuthCallbackUrl: async (ie, le) => {
-      if (!m) throw Error(`mcpSubmitOAuthCallbackUrl: no mcpAuthDelegate wired (server: ${ie})`);
-      return m.submitOAuthCallbackUrl(ie, le);
-    },
-    getContextUsage: async () => {
-      if (Z === null) throw Error("getContextUsage: no turn received yet");
-      let { messages: ie, toolUseContext: le } = Z;
-      return await gEt({
-        messages: ie,
-        getAppState: le.getAppState,
-        options: {
-          mainLoopModel: le.options.mainLoopModel,
-          tools: le.options.tools,
-          agentDefinitions: le.options.agentDefinitions,
-          customSystemPrompt: le.options.customSystemPrompt,
-          appendSystemPrompt: le.options.appendSystemPrompt,
-          excludeDynamicSections: d,
-        },
-      });
-    },
-    stopTask: async (ie) => {
-      if (Z === null) throw Error("stopTask: no turn received yet");
-      let { taskRegistry: le, setAppState: He } = Z.toolUseContext;
-      await mbt(ie, {
-        taskRegistry: le,
-        setAppState: He,
-        source: "user",
-      });
-    },
-    backgroundTasks: async (ie) => {
-      if (Z === null) return !ie;
-      let { taskRegistry: le } = Z.toolUseContext;
-      if (ie) return xJn(ie, le);
-      return (j$e(le), true);
-    },
-    getSettings: () => Promise.resolve(p),
-    generateSessionTitle: async (ie, le) => {
-      if (le?.persist) J = true;
-      let He = (P && !P.signal.aborted ? P : new AbortController()).signal,
-        ye = await vse(ie, He);
-      if (ye && le?.persist)
-        try {
-          DQ(Rt(), ye);
-        } catch (ue) {
-          if (Vo(ue)) T(`saveAiGeneratedTitle failed: ${ue}`);
-          else ke(ue);
-        }
-      return ye;
-    },
-    messageRated: async ({
-      messageUuid: ie,
-      sentiment: le,
-      surface: He = "tool_use",
-      cleared: ye = false,
-    }) => {
-      if (Us("allow_product_feedback"))
-        G("tengu_message_rated", {
-          message_uuid: Hr(ie),
-          sentiment: $e(le),
-          surface: $e(He),
-          cleared: ye,
-        });
-    },
-    askSideQuestion: async (ie) => {
-      let { getLastCacheSafeParams: le } = await Promise.resolve().then(() => (q0(), yMo)),
-        He = le();
-      if (He === null) return null;
-      let { runSideQuestion: ye } = await Promise.resolve().then(() => (VYt(), YLl)),
-        { createAbortController: ue } = await Promise.resolve().then(() => (fp(), cio)),
-        we = await ye({
-          question: ie,
-          cacheSafeParams: {
-            ...He,
-            toolUseContext: {
-              ...He.toolUseContext,
-              abortController: ue(),
-            },
+          ),
+        );
+      } catch (n) {
+        if (this.cleanupPerformed) return;
+        let r = {
+          type: "control_response",
+          response: {
+            subtype: "error",
+            request_id: e.request_id,
+            error: be(n),
           },
-          threadHistory: false,
-        });
-      return we.response === null
-        ? null
-        : {
-            response: we.response,
-            synthetic: we.synthetic,
-          };
-    },
-    rewindFiles: async (ie, le) => {
-      if (Z === null)
-        return {
-          canRewind: false,
-          error: "rewindFiles: no turn received yet",
         };
-      let {
-          fileHistoryEnabled: He,
-          fileHistoryCanRestore: ye,
-          fileHistoryGetDiffStats: ue,
-          fileHistoryRewind: we,
-        } = await Promise.resolve().then(() => (Y4(), VQa)),
-        Ce = Z.toolUseContext.getAppState();
-      if (!He())
-        return {
-          canRewind: false,
-          error: "File rewinding is not enabled.",
-        };
-      if (!ye(Ce.fileHistory, ie))
-        return {
-          canRewind: false,
-          error: "No file checkpoint found for this message.",
-        };
-      if (le?.dryRun ?? false) {
-        let Ie = await ue(Ce.fileHistory, ie);
-        return {
-          canRewind: true,
-          filesChanged: Ie?.filesChanged,
-          insertions: Ie?.insertions,
-          deletions: Ie?.deletions,
-        };
-      }
-      try {
-        await we(() => Ce.fileHistory, ie);
-      } catch (Ie) {
-        return {
-          canRewind: false,
-          error: `Failed to rewind: ${be(Ie)}`,
-        };
-      }
-      return {
-        canRewind: true,
-      };
-    },
-    submitFeedback: async (ie, le) => {
-      let He = Mer();
-      if (He)
-        return {
-          feedback_id: null,
-          unavailable_reason: He,
-        };
-      if (Z === null)
-        return {
-          feedback_id: null,
-          unavailable_reason: "no turn received yet",
-        };
-      let ye = await KSt({
-        messages: Z.messages,
-        description: ie,
-        surface: le?.surface ?? "sdk",
-      });
-      return ye.success
-        ? {
-            feedback_id: ye.feedbackId,
-          }
-        : {
-            feedback_id: null,
-            is_zdr_org: ye.isZdrOrg,
-            failure_reason: ye.failureReason,
-            status_code: ye.statusCode,
-          };
-    },
-    streamInput: async (ie) => {
-      try {
-        for await (let le of ie) {
-          let { type: He, ...ye } = le;
-          he({
-            type: "turn",
-            ...ye,
+        try {
+          await Promise.resolve(
+            this.transport.write(
+              De(r) +
+                `
+`,
+            ),
+          );
+        } catch (o) {
+          T(`[Query.handleControlRequest] Error-response write failed: ${be(o)}`, {
+            level: "error",
           });
         }
       } finally {
-        ((ce = true), k.done());
+        this.cancelControllers.delete(e.request_id);
       }
-    },
-    readFile: async (ie, le) => {
-      if (Z === null) return null;
-      try {
-        return await ZZt(
-          ie,
-          le?.maxBytes,
-          Z.toolUseContext.getAppState().toolPermissionContext,
-          le?.encoding,
+    }
+    handleControlCancelRequest(e) {
+      let t = this.cancelControllers.get(e.request_id);
+      if (t) (t.abort(), this.cancelControllers.delete(e.request_id));
+    }
+    async processControlRequest(e, t) {
+      if (e.request.subtype === "can_use_tool") {
+        if (!this.canUseTool) throw Error("canUseTool callback is not provided.");
+        return {
+          ...(await this.canUseTool(e.request.tool_name, e.request.input, {
+            signal: t,
+            suggestions: e.request.permission_suggestions,
+            blockedPath: e.request.blocked_path,
+            decisionReason: e.request.decision_reason,
+            title: e.request.title,
+            displayName: e.request.display_name,
+            description: e.request.description,
+            toolUseID: e.request.tool_use_id,
+            agentID: e.request.agent_id,
+          })),
+          toolUseID: e.request.tool_use_id,
+        };
+      } else if (e.request.subtype === "hook_callback")
+        return await this.handleHookCallbacks(
+          e.request.callback_id,
+          e.request.input,
+          e.request.tool_use_id,
+          t,
         );
+      else if (e.request.subtype === "mcp_message") {
+        let n = e.request,
+          r = this.sdkMcpTransports.get(n.server_name);
+        if (!r) throw Error(`SDK MCP server not found: ${n.server_name}`);
+        if ("method" in n.message && "id" in n.message && n.message.id !== null)
+          return {
+            mcp_response: await this.handleMcpControlRequest(n.server_name, n, r),
+          };
+        else {
+          if (r.onmessage) r.onmessage(n.message);
+          return {
+            mcp_response: {
+              jsonrpc: "2.0",
+              result: {},
+              id: 0,
+            },
+          };
+        }
+      } else if (e.request.subtype === "elicitation") {
+        let n = e.request;
+        if (this.onElicitation)
+          return await this.onElicitation(
+            {
+              serverName: n.mcp_server_name,
+              message: n.message,
+              mode: n.mode,
+              url: n.url,
+              elicitationId: n.elicitation_id,
+              requestedSchema: n.requested_schema,
+              title: n.title,
+              displayName: n.display_name,
+              description: n.description,
+            },
+            {
+              signal: t,
+            },
+          );
+        return {
+          action: "decline",
+        };
+      } else if (e.request.subtype === "request_user_dialog") {
+        if (this.onUserDialog)
+          return await this.onUserDialog(
+            {
+              dialogKind: e.request.dialog_kind,
+              payload: e.request.payload,
+              toolUseID: e.request.tool_use_id,
+            },
+            {
+              signal: t,
+            },
+          );
+        return (
+          T(
+            `[Query] No onUserDialog handler for request_user_dialog (kind=${e.request.dialog_kind}) \u2014 staying silent so a capable client (or the worker's park deadline) settles it`,
+          ),
+          G("tengu_request_user_dialog_response_ignored", {
+            shape: $e("auto_cancel"),
+          }),
+          $Zl
+        );
+      } else if (e.request.subtype === "oauth_token_refresh") {
+        if (!this.getOAuthToken) throw Error("getOAuthToken callback is not provided.");
+        return {
+          accessToken:
+            (await this.getOAuthToken({
+              signal: t,
+            })) ?? null,
+        };
+      } else if (e.request.subtype === "host_auth_token_refresh") {
+        if (!this.getHostAuthToken) throw Error("getHostAuthToken callback is not provided.");
+        return {
+          authToken:
+            (await this.getHostAuthToken({
+              signal: t,
+            })) ?? null,
+        };
+      }
+      throw Error("Unsupported control request subtype: " + e.request.subtype);
+    }
+    async *readSdkMessages() {
+      try {
+        for await (let e of this.inputStream) yield e;
+      } finally {
+        await this.cleanup();
+      }
+    }
+    async initialize() {
+      if (this.hooks && !this.initHooksPayload) {
+        this.initHooksPayload = {};
+        for (let [r, o] of Object.entries(this.hooks))
+          if (o.length > 0)
+            this.initHooksPayload[r] = o.map((s) => {
+              let i = [];
+              for (let a of s.hooks) {
+                let l = `hook_${this.nextCallbackId++}`;
+                (this.hookCallbacks.set(l, a), i.push(l));
+              }
+              return {
+                matcher: s.matcher,
+                hookCallbackIds: i,
+                timeout: s.timeout,
+              };
+            });
+      }
+      let e = this.sdkMcpTransports.size > 0 ? Array.from(this.sdkMcpTransports.keys()) : void 0,
+        t = {
+          subtype: "initialize",
+          hooks: this.initHooksPayload,
+          sdkMcpServers: e,
+          jsonSchema: this.jsonSchema,
+          systemPrompt:
+            typeof this.initConfig?.systemPrompt === "string"
+              ? [this.initConfig.systemPrompt]
+              : this.initConfig?.systemPrompt,
+          appendSystemPrompt: this.initConfig?.appendSystemPrompt,
+          planModeInstructions: this.initConfig?.planModeInstructions,
+          appendSubagentSystemPrompt: this.initConfig?.appendSubagentSystemPrompt,
+          toolAliases: this.initConfig?.toolAliases,
+          excludeDynamicSections: this.initConfig?.excludeDynamicSections,
+          agents: this.initConfig?.agents,
+          title: this.initConfig?.title,
+          skills: Array.isArray(this.initConfig?.skills) ? this.initConfig.skills : void 0,
+          webSearchIsolationExemptMcpServers: this.initConfig?.webSearchIsolationExemptMcpServers,
+          promptSuggestions: this.initConfig?.promptSuggestions,
+          agentProgressSummaries: this.initConfig?.agentProgressSummaries,
+          forwardSubagentText: this.initConfig?.forwardSubagentText,
+          supportedDialogKinds: this.initConfig?.supportedDialogKinds,
+        };
+      return (await this.request(t)).response;
+    }
+    async interrupt() {
+      return yl("sdk_interrupt", async () => {
+        await this.request({
+          subtype: "interrupt",
+        });
+      });
+    }
+    async setPermissionMode(e) {
+      await this.request({
+        subtype: "set_permission_mode",
+        mode: e,
+      });
+    }
+    async setMcpPermissionModeOverride(e, t) {
+      return (
+        (
+          await this.request({
+            subtype: "set_mcp_permission_mode_override",
+            serverName: e,
+            mode: t,
+          })
+        ).response ?? {}
+      );
+    }
+    async setModel(e) {
+      await this.request({
+        subtype: "set_model",
+        model: e,
+      });
+    }
+    async setMaxThinkingTokens(e, t) {
+      await this.request({
+        subtype: "set_max_thinking_tokens",
+        max_thinking_tokens: e,
+        thinking_display: t,
+      });
+    }
+    async applyFlagSettings(e) {
+      return yl("sdk_apply_flag_settings", async () => {
+        await this.request({
+          subtype: "apply_flag_settings",
+          settings: e,
+        });
+      });
+    }
+    async getSettings() {
+      return (
+        await this.request({
+          subtype: "get_settings",
+        })
+      ).response;
+    }
+    async rewindFiles(e, t) {
+      return yl(
+        "sdk_rewind_files",
+        async () =>
+          (
+            await this.request({
+              subtype: "rewind_files",
+              user_message_id: e,
+              dry_run: t?.dryRun,
+            })
+          ).response,
+      );
+    }
+    async cancelAsyncMessage(e) {
+      return (
+        await this.request({
+          subtype: "cancel_async_message",
+          message_uuid: e,
+        })
+      ).response.cancelled;
+    }
+    async seedReadState(e, t) {
+      await this.request({
+        subtype: "seed_read_state",
+        path: e,
+        mtime: t,
+      });
+    }
+    async enableRemoteControl(e, t) {
+      return (
+        await this.request({
+          subtype: "remote_control",
+          enabled: e,
+          ...(t !== void 0 && {
+            name: t,
+          }),
+        })
+      ).response;
+    }
+    async submitFeedback(e, t) {
+      return (
+        await this.request({
+          subtype: "submit_feedback",
+          description: e,
+          surface: t?.surface,
+        })
+      ).response;
+    }
+    async generateSessionTitle(e, t) {
+      return yl(
+        "sdk_session_title_generate",
+        async () =>
+          (
+            await this.request({
+              subtype: "generate_session_title",
+              description: e,
+              persist: t?.persist,
+            })
+          ).response.title,
+      );
+    }
+    async askSideQuestion(e) {
+      return yl("sdk_side_question", async () => {
+        let n = (
+          await this.request({
+            subtype: "side_question",
+            question: e,
+          })
+        ).response;
+        return n.response === null
+          ? null
+          : {
+              response: n.response,
+              synthetic: n.synthetic ?? false,
+            };
+      });
+    }
+    async launchUltrareview(e, t) {
+      return (
+        await this.request({
+          subtype: "ultrareview_launch",
+          args: e,
+          confirm: t?.confirm ?? false,
+        })
+      ).response;
+    }
+    async messageRated(e) {
+      await this.request({
+        subtype: "message_rated",
+        messageUuid: e.messageUuid,
+        sentiment: e.sentiment,
+        surface: e.surface,
+        cleared: e.cleared ?? false,
+      });
+    }
+    processPendingPermissionRequests(e) {
+      for (let t of e)
+        if (t.request.subtype === "can_use_tool") this.handleControlRequest(t).catch(() => {});
+    }
+    processPendingUserDialogRequests(e) {
+      for (let t of e)
+        if (t.request.subtype === "request_user_dialog")
+          this.handleControlRequest(t).catch(() => {});
+    }
+    request(e) {
+      let t = Math.random().toString(36).substring(2, 15),
+        n = {
+          request_id: t,
+          type: "control_request",
+          request: e,
+        },
+        r = e.subtype === "initialize";
+      return new Promise((o, s) => {
+        (this.pendingControlResponses.set(t, {
+          handler: (i) => {
+            if ((this.pendingControlResponses.delete(t), i.subtype === "success")) o(i);
+            else s(Error(i.error));
+            if (!r && (i.pending_permission_requests || i.pending_user_dialog_requests))
+              T(
+                `[Query] Ignoring prompt-redelivery fields on non-initialize response (subtype=${e.subtype})`,
+              );
+            else {
+              if (i.pending_permission_requests)
+                this.processPendingPermissionRequests(i.pending_permission_requests);
+              if (i.pending_user_dialog_requests)
+                this.processPendingUserDialogRequests(i.pending_user_dialog_requests);
+            }
+          },
+          reject: s,
+        }),
+          Promise.resolve(
+            this.transport.write(
+              De(n) +
+                `
+`,
+            ),
+          ).catch((i) => {
+            (this.pendingControlResponses.delete(t), s(i));
+          }));
+      });
+    }
+    initializationResult() {
+      return this.initialization;
+    }
+    reinitialize() {
+      return yl("sdk_reinitialize", () => this.initialize());
+    }
+    async supportedCommands() {
+      return (await this.initialization).commands;
+    }
+    async supportedModels() {
+      return (await this.initialization).models;
+    }
+    async supportedAgents() {
+      return (await this.initialization).agents;
+    }
+    async reconnectMcpServer(e) {
+      await this.request({
+        subtype: "mcp_reconnect",
+        serverName: e,
+      });
+    }
+    async toggleMcpServer(e, t) {
+      return yl("sdk_mcp_toggle_server", async () => {
+        await this.request({
+          subtype: "mcp_toggle",
+          serverName: e,
+          enabled: t,
+        });
+      });
+    }
+    async enableChannel(e) {
+      return yl("sdk_mcp_enable_channel", async () => {
+        await this.request({
+          subtype: "channel_enable",
+          serverName: e,
+        });
+      });
+    }
+    async mcpAuthenticate(e, t) {
+      return (
+        await this.request({
+          subtype: "mcp_authenticate",
+          serverName: e,
+          redirectUri: t,
+        })
+      ).response;
+    }
+    async mcpClearAuth(e) {
+      return (
+        await this.request({
+          subtype: "mcp_clear_auth",
+          serverName: e,
+        })
+      ).response;
+    }
+    async mcpSubmitOAuthCallbackUrl(e, t) {
+      return (
+        await this.request({
+          subtype: "mcp_oauth_callback_url",
+          serverName: e,
+          callbackUrl: t,
+        })
+      ).response;
+    }
+    async claudeAuthenticate(e) {
+      return (
+        await this.request({
+          subtype: "claude_authenticate",
+          loginWithClaudeAi: e,
+        })
+      ).response;
+    }
+    async claudeOAuthCallback(e, t) {
+      return (
+        await this.request({
+          subtype: "claude_oauth_callback",
+          authorizationCode: e,
+          state: t,
+        })
+      ).response;
+    }
+    async claudeOAuthWaitForCompletion() {
+      return (
+        await this.request({
+          subtype: "claude_oauth_wait_for_completion",
+        })
+      ).response;
+    }
+    async mcpServerStatus() {
+      return (
+        await this.request({
+          subtype: "mcp_status",
+        })
+      ).response.mcpServers;
+    }
+    async getContextUsage() {
+      return (
+        await this.request({
+          subtype: "get_context_usage",
+        })
+      ).response;
+    }
+    async usage_EXPERIMENTAL_MAY_CHANGE_DO_NOT_RELY_ON_THIS_API_YET() {
+      return (
+        await this.request({
+          subtype: "get_usage",
+        })
+      ).response;
+    }
+    async readFile(e, t) {
+      try {
+        return (
+          await this.request({
+            subtype: "read_file",
+            path: e,
+            max_bytes: t?.maxBytes,
+            encoding: t?.encoding,
+          })
+        ).response;
       } catch {
         return null;
       }
-    },
-    launchUltrareview: async (ie, le) => {
-      if (Z === null)
-        return {
-          status: "error",
-          message: "launchUltrareview: no turn received yet",
-        };
-      let { runUltrareviewHeadless: He } = await Promise.resolve().then(() => (kAt(), i9l)),
-        { createAbortController: ye } = await Promise.resolve().then(() => (fp(), cio)),
-        { taskRegistry: ue } = Z.toolUseContext;
-      return await He(ie, {
-        confirm: le?.confirm ?? false,
-        context: {
-          abortController: ye(),
-          taskRegistry: ue,
-        },
+    }
+    async reloadPlugins() {
+      return yl(
+        "sdk_reload_plugins",
+        async () =>
+          (
+            await this.request({
+              subtype: "reload_plugins",
+            })
+          ).response,
+      );
+    }
+    async reloadSkills() {
+      return yl(
+        "sdk_reload_skills",
+        async () =>
+          (
+            await this.request({
+              subtype: "reload_skills",
+            })
+          ).response,
+      );
+    }
+    async setMcpServers(e) {
+      return yl("sdk_mcp_set_servers", async () => {
+        let t = {},
+          n = {};
+        for (let [a, l] of Object.entries(e))
+          if (l.type === "sdk" && "instance" in l) t[a] = l.instance;
+          else n[a] = l;
+        let r = new Set(this.sdkMcpServerInstances.keys()),
+          o = new Set(Object.keys(t));
+        for (let a of r) if (!o.has(a)) await this.disconnectSdkMcpServer(a);
+        for (let [a, l] of Object.entries(t)) if (!r.has(a)) this.connectSdkMcpServer(a, l);
+        let s = {};
+        for (let a of Object.keys(t))
+          s[a] = {
+            type: "sdk",
+            name: a,
+          };
+        return (
+          await this.request({
+            subtype: "mcp_set_servers",
+            servers: {
+              ...n,
+              ...s,
+            },
+          })
+        ).response;
       });
-    },
-    close: () => {
-      ((ce = true), k.done());
-    },
-  });
-}
-function f8o() {
-  let e = Object.values(WC()),
-    t = (n) => e.reduce((r, o) => r + n(o), 0);
-  return {
-    ...xb,
-    input_tokens: t((n) => n.inputTokens),
-    output_tokens: t((n) => n.outputTokens),
-    cache_read_input_tokens: t((n) => n.cacheReadInputTokens),
-    cache_creation_input_tokens: t((n) => n.cacheCreationInputTokens),
-    server_tool_use: {
-      ...xb.server_tool_use,
-      web_search_requests: t((n) => n.webSearchRequests),
-    },
+    }
+    async accountInfo() {
+      return (await this.initialization).account;
+    }
+    async streamInput(e) {
+      T("[Query.streamInput] Starting to process input stream");
+      try {
+        let t = 0;
+        for await (let n of e) {
+          if (
+            (t++,
+            T(`[Query.streamInput] Processing message ${t}: ${n.type}`),
+            this.abortController?.signal.aborted)
+          )
+            break;
+          await Promise.resolve(
+            this.transport.write(
+              De(n) +
+                `
+`,
+            ),
+          );
+        }
+        if (
+          (T(`[Query.streamInput] Finished processing ${t} messages from input stream`),
+          t > 0 && this.hasBidirectionalNeeds())
+        )
+          (T("[Query.streamInput] Has bidirectional needs, waiting for first result"),
+            await this.waitForFirstResult());
+        (T("[Query] Calling transport.endInput() to close stdin to CLI process"),
+          this.transport.endInput());
+      } catch (t) {
+        if (!(t instanceof WO)) throw t;
+      }
+    }
+    waitForFirstResult() {
+      if (this.firstResultReceived)
+        return (
+          T("[Query.waitForFirstResult] Result already received, returning immediately"),
+          Promise.resolve()
+        );
+      return new Promise((e) => {
+        if (this.abortController?.signal.aborted) {
+          e();
+          return;
+        }
+        (this.abortController?.signal.addEventListener("abort", () => e(), {
+          once: true,
+        }),
+          (this.firstResultReceivedResolve = e));
+      });
+    }
+    handleHookCallbacks(e, t, n, r) {
+      let o = this.hookCallbacks.get(e);
+      if (!o) throw Error(`No hook callback found for ID: ${e}`);
+      return o(t, n, {
+        signal: r,
+      });
+    }
+    connectSdkMcpServer(e, t) {
+      let n = new Tpo((r) => this.sendMcpServerMessageToCli(e, r));
+      (this.sdkMcpTransports.set(e, n),
+        this.sdkMcpServerInstances.set(e, t),
+        t.connect(n).catch((r) => {
+          if (this.sdkMcpTransports.get(e) === n) this.sdkMcpTransports.delete(e);
+          if (this.sdkMcpServerInstances.get(e) === t) this.sdkMcpServerInstances.delete(e);
+          T(`[Query.connectSdkMcpServer] Failed to connect MCP server '${e}': ${r}`, {
+            level: "error",
+          });
+        }));
+    }
+    async disconnectSdkMcpServer(e) {
+      let t = this.sdkMcpTransports.get(e);
+      if (t) (await t.close(), this.sdkMcpTransports.delete(e));
+      this.sdkMcpServerInstances.delete(e);
+    }
+    sendMcpServerMessageToCli(e, t) {
+      if ("id" in t && t.id !== null && t.id !== void 0) {
+        let r = `${e}:${t.id}`,
+          o = this.pendingMcpResponses.get(r);
+        if (o) {
+          (o.resolve(t), this.pendingMcpResponses.delete(r));
+          return;
+        }
+      }
+      let n = {
+        type: "control_request",
+        request_id: Age.randomUUID(),
+        request: {
+          subtype: "mcp_message",
+          server_name: e,
+          message: t,
+        },
+      };
+      Promise.resolve(
+        this.transport.write(
+          De(n) +
+            `
+`,
+        ),
+      ).catch((r) => {
+        T(`[Query.sendMcpServerMessageToCli] Transport write failed: ${r}`, {
+          level: "error",
+        });
+      });
+    }
+    handleMcpControlRequest(e, t, n) {
+      let r = "id" in t.message ? t.message.id : null,
+        o = `${e}:${r}`;
+      return new Promise((s, i) => {
+        let a = () => {
+            this.pendingMcpResponses.delete(o);
+          },
+          l = (u) => {
+            (a(), s(u));
+          },
+          c = (u) => {
+            (a(), i(u));
+          };
+        if (
+          (this.pendingMcpResponses.set(o, {
+            resolve: l,
+            reject: c,
+          }),
+          n.onmessage)
+        )
+          n.onmessage(t.message);
+        else {
+          (a(), i(Error("No message handler registered")));
+          return;
+        }
+      });
+    }
   };
+});
+class L3o {
+  send;
+  sendTimeoutMs;
+  onError;
+  maxPendingEntries;
+  maxPendingBytes;
+  backoffMs;
+  pending = [];
+  pendingEntries = 0;
+  pendingBytes = 0;
+  flushPromise = null;
+  constructor(e, t = 60000, n, r = Lir, o = Dir, s = vKf) {
+    this.send = e;
+    this.sendTimeoutMs = t;
+    this.onError = n;
+    this.maxPendingEntries = r;
+    this.maxPendingBytes = o;
+    this.backoffMs = s;
+  }
+  enqueue(e, t) {
+    let n = De(t).length;
+    if (
+      (this.pending.push({
+        filePath: e,
+        entries: t,
+        bytes: n,
+      }),
+      (this.pendingEntries += t.length),
+      (this.pendingBytes += n),
+      this.pendingEntries > this.maxPendingEntries || this.pendingBytes > this.maxPendingBytes)
+    )
+      ((this.flushPromise = this.drain()), this.flushPromise.catch(() => {}));
+  }
+  async flush() {
+    let e = this.drain();
+    if (((this.flushPromise = e), await e, this.flushPromise === e)) this.flushPromise = null;
+  }
+  async drain() {
+    let e = this.flushPromise,
+      t = this.pending.splice(0);
+    if (((this.pendingEntries = 0), (this.pendingBytes = 0), e)) await e;
+    if (t.length === 0) return;
+    await this.doFlush(t);
+  }
+  async doFlush(e) {
+    let t = new Map();
+    for (let r of e) {
+      let o = t.get(r.filePath);
+      if (o) o.push(...r.entries);
+      else t.set(r.filePath, r.entries.slice());
+    }
+    let n = this.backoffMs.length + 1;
+    for (let [r, o] of t) {
+      let s = `SessionStore.append() timed out after ${this.sendTimeoutMs}ms for ${r}`,
+        i,
+        a = 1;
+      for (; a <= n; a++)
+        try {
+          (await vc(this.send(r, o), this.sendTimeoutMs, s), (i = void 0));
+          break;
+        } catch (l) {
+          if (((i = Zr(l)), i.message === s)) break;
+          let c = this.backoffMs[a - 1];
+          if (c === void 0) break;
+          await Nn(c);
+        }
+      if (i) {
+        T(`[TranscriptMirrorBatcher] flush failed for ${r} after ${a} attempt(s): ${i}`, {
+          level: "error",
+        });
+        try {
+          this.onError?.(r, i);
+        } catch (l) {
+          T(`[TranscriptMirrorBatcher] onError callback threw: ${l}`, {
+            level: "error",
+          });
+        }
+      }
+    }
+  }
 }
-function Rme() {
-  return ut(process.env.CLAUDE_CODE_SHOJI_ENGINE) || at("tengu_shoji_engine", false);
-}
-var Sur,
-  Eur,
-  _cm = 1000,
-  bcm = () => ({
-    effective: {},
-    sources: [],
-  });
+var Lir = 500,
+  Dir = 1048576,
+  vKf;

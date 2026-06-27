@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Z6
-// matched 2.1.88 source: src/utils/bash/bashParser.ts
-// class=new  jaccard=0.0358  score=0.4466  fileCov=0.0375
-// note: nearest: src/utils/bash/bashParser.ts (0.0358); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/bash/ast.ts
+// class=new  jaccard=0.014  score=0.4658  fileCov=0.0142
+// note: nearest: src/utils/bash/ast.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Z6 = E(() => {
   ft();

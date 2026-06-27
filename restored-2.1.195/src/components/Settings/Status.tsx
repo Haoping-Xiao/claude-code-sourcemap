@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gKe
 // matched 2.1.88 source: src/components/Settings/Status.tsx
-// class=modified  jaccard=0.1699  score=0.2229  fileCov=0.4163
+// class=modified  jaccard=0.0948  score=0.2015  fileCov=0.1518
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gKe = E(() => {

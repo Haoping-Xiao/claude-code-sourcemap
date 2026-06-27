@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wrl
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
-// class=modified  jaccard=0.2702  score=0.433  fileCov=0.4182
+// class=modified  jaccard=0.273  score=0.4985  fileCov=0.3764
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Wrl = Q((nz_, nnf) => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xdt
 // matched 2.1.88 source: src/utils/telemetry/sessionTracing.ts
-// class=modified  jaccard=0.3541  score=0.5387  fileCov=0.5082
+// class=modified  jaccard=0.3075  score=0.5006  fileCov=0.4435
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Xdt = E(() => {

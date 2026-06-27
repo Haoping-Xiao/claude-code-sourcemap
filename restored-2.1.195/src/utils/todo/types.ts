@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zgo
 // matched 2.1.88 source: src/utils/todo/types.ts
-// class=modified  jaccard=0.5433  score=0.6433  fileCov=0.7774
+// class=modified  jaccard=0.5602  score=0.7575  fileCov=0.6826
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zgo = E(() => {

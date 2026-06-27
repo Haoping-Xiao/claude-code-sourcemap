@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cqe
 // matched 2.1.88 source: src/tools/McpAuthTool/McpAuthTool.ts
-// class=modified  jaccard=0.4082  score=0.4654  fileCov=0.7685
+// class=modified  jaccard=0.2753  score=0.4474  fileCov=0.4171
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cqe = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k7l
 // matched 2.1.88 source: src/commands/plugin/index.tsx
-// class=modified  jaccard=0.7175  score=1  fileCov=0.7175
+// class=modified  jaccard=0.5348  score=0.6593  fileCov=0.7391
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var k7l = E(() => {

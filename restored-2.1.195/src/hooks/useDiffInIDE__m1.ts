@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Hfl
 // matched 2.1.88 source: src/hooks/useDiffInIDE.ts
-// class=modified (alt of src/hooks/useDiffInIDE.ts)  jaccard=0.1326  score=0.3683  fileCov=0.1717
+// class=modified (alt of src/hooks/useDiffInIDE.ts)  jaccard=0.1311  score=0.3088  fileCov=0.1855
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Hfl = E(() => {

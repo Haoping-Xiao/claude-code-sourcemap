@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KBt
 // matched 2.1.88 source: src/ink/dom.ts
-// class=partial  jaccard=0.2039  score=0.678  fileCov=0.2257
+// class=partial  jaccard=0.1233  score=0.5363  fileCov=0.138
 // note: low-confidence suggestion: src/ink/dom.ts; dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var KBt = E(() => {

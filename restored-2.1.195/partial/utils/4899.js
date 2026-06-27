@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module u5l
 // matched 2.1.88 source: src/components/LogoV2/LogoV2.tsx
-// class=partial  jaccard=0.1301  score=0.4014  fileCov=0.1613
+// class=partial  jaccard=0.0733  score=0.3838  fileCov=0.0831
 // note: low-confidence suggestion: src/components/LogoV2/LogoV2.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var u5l = E(() => {

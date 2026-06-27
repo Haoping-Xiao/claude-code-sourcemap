@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yXl
 // matched 2.1.88 source: src/components/sandbox/SandboxSettings.tsx
-// class=modified  jaccard=0.5078  score=0.7286  fileCov=0.6262
+// class=modified  jaccard=0.4047  score=0.5516  fileCov=0.6032
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var yXl = E(() => {

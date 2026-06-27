@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B6a
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
-// class=modified  jaccard=0.4552  score=0.7087  fileCov=0.56
+// class=modified  jaccard=0.2604  score=0.6634  fileCov=0.3
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var B6a = E(() => {

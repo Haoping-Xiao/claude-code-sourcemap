@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iu
 // matched 2.1.88 source: node_modules/chalk/source/index.js
-// class=partial  jaccard=0.1868  score=0.3715  fileCov=0.2732
+// class=partial  jaccard=0.2369  score=0.7125  fileCov=0.262
 // note: low-confidence suggestion: node_modules/chalk/source/index.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iu = E(() => {

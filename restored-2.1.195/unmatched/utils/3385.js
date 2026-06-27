@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gjn
-// matched 2.1.88 source: src/utils/swarm/inProcessRunner.ts
-// class=new  jaccard=0.0179  score=0.1146  fileCov=0.0208
-// note: nearest: src/utils/swarm/inProcessRunner.ts (0.0179); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/compact/compact.ts
+// class=new  jaccard=0.0381  score=0.2964  fileCov=0.0418
+// note: nearest: src/services/compact/compact.ts (0.0381); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gjn = E(() => {
   ft();

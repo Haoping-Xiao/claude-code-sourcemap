@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module djo
 // matched 2.1.88 source: src/components/tasks/ShellDetailDialog.tsx
-// class=modified  jaccard=0.3798  score=0.5277  fileCov=0.5753
+// class=modified  jaccard=0.3145  score=0.4269  fileCov=0.5444
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var djo = E(() => {

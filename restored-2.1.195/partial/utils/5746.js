@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YDc
-// matched 2.1.88 source: src/context/notifications.tsx
-// class=partial  jaccard=0.0925  score=0.1281  fileCov=0.2498
-// note: low-confidence suggestion: src/context/notifications.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/hooks/notifs/useAutoModeUnavailableNotification.ts
+// class=partial  jaccard=0.1394  score=0.3597  fileCov=0.1854
+// note: low-confidence suggestion: src/hooks/notifs/useAutoModeUnavailableNotification.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var YDc = E(() => {
   Ed();

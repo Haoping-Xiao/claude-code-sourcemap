@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Pne
 // matched 2.1.88 source: node_modules/@xmldom/xmldom/lib/entities.js
-// class=new  jaccard=0.0007  score=0.1373  fileCov=0.0007
-// note: nearest: node_modules/@xmldom/xmldom/lib/entities.js (0.0007); dir inferred from dep-graph -> components; 0 renamed
+// class=new  jaccard=0.0003  score=0.1373  fileCov=0.0003
+// note: nearest: node_modules/@xmldom/xmldom/lib/entities.js (0.0003); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Pne = E(() => {
   Qi();

@@ -1,0 +1,106 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module _Fl
+// matched 2.1.88 source: src/commands/install-github-app/WarningsStep.tsx
+// class=partial  jaccard=0.248  score=0.3126  fileCov=0.5456
+// note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// ─────────────────────────────────────────────────────────────────────────
+var _Fl = E(() => {
+  kt();
+  er();
+  vy();
+  je();
+  Bi();
+  vn();
+});
+function SFl(e) {
+  let t = bFl.c(9),
+    {
+      warnings: n,
+      onContinue: r
+    } = e,
+    o;
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) o = {
+    context: "Confirmation"
+  }, t[0] = o;else o = t[0];
+  $r("confirm:yes", r, o);
+  let s;
+  if (t[1] === Symbol.for("react.memo_cache_sentinel")) s = Wk.jsxs(U, {
+    flexDirection: "column",
+    marginBottom: 1,
+    children: [Wk.jsxs(w, {
+      bold: true,
+      children: [nt.warning, " Setup Warnings"]
+    }), Wk.jsx(w, {
+      dimColor: true,
+      children: "We found some potential issues, but you can continue anyway"
+    })]
+  }), t[1] = s;else s = t[1];
+  let i;
+  if (t[2] !== n) i = n.map(S1f), t[2] = n, t[3] = i;else i = t[3];
+  let a;
+  if (t[4] === Symbol.for("react.memo_cache_sentinel")) a = Wk.jsx(ht, {
+    chord: "enter",
+    action: "continue anyway"
+  }), t[4] = a;else a = t[4];
+  let l;
+  if (t[5] === Symbol.for("react.memo_cache_sentinel")) l = Wk.jsx(U, {
+    marginTop: 1,
+    children: Wk.jsxs(w, {
+      bold: true,
+      color: "permission",
+      children: ["Press", " ", a, ", or", " ", Wk.jsx(ht, {
+        chord: "ctrl+c",
+        action: "exit and fix issues",
+        format: {
+          modCase: "title",
+          charCase: "upper"
+        }
+      })]
+    })
+  }), t[5] = l;else l = t[5];
+  let c;
+  if (t[6] === Symbol.for("react.memo_cache_sentinel")) c = Wk.jsx(U, {
+    marginTop: 1,
+    children: Wk.jsxs(w, {
+      dimColor: true,
+      children: ["You can also try the manual setup steps if needed:", " ", Wk.jsx(w, {
+        color: "claude",
+        children: Vfe
+      })]
+    })
+  }), t[6] = c;else c = t[6];
+  let u;
+  if (t[7] !== i) u = Wk.jsx(Wk.Fragment, {
+    children: Wk.jsxs(cA, {
+      children: [s, i, l, c]
+    })
+  }), t[7] = i, t[8] = u;else u = t[8];
+  return u;
+}
+function S1f(e, t) {
+  return Wk.jsxs(U, {
+    flexDirection: "column",
+    marginBottom: 1,
+    children: [Wk.jsx(w, {
+      color: "warning",
+      bold: true,
+      children: e.title
+    }), Wk.jsx(w, {
+      children: e.message
+    }), e.instructions.length > 0 && Wk.jsx(U, {
+      flexDirection: "column",
+      marginLeft: 2,
+      marginTop: 1,
+      children: e.instructions.map(E1f)
+    })]
+  }, t);
+}
+function E1f(e, t) {
+  return Wk.jsx(iE, {
+    children: Wk.jsx(w, {
+      dimColor: true,
+      children: e
+    })
+  }, t);
+}
+var bFl, Wk;

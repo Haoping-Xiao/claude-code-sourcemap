@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zHi
 // matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/oauth2client.js
-// class=new  jaccard=0.0213  score=1  fileCov=0.0213
-// note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.0213); 0 renamed
+// class=new  jaccard=0.0098  score=0.4245  fileCov=0.0099
+// note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.0098); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var zHi = Q(qwn => {
   Object.defineProperty(qwn, "__esModule", {

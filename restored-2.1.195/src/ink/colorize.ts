@@ -1,237 +1,168 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rit
 // matched 2.1.88 source: src/ink/colorize.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8108  score=0.8524  fileCov=0.9433
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.7699  score=0.8658  fileCov=0.8742
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-import chalk from 'chalk'
-import type { Color, TextStyles } from './styles.js'
-
-/**
- * xterm.js (VS Code, Cursor, code-server, Coder) has supported truecolor
- * since 2017, but code-server/Coder containers often don't set
- * COLORTERM=truecolor. chalk's supports-color doesn't recognize
- * TERM_PROGRAM=vscode (it only knows iTerm.app/Apple_Terminal), so it falls
- * through to the -256color regex → level 2. At level 2, chalk.rgb()
- * downgrades to the nearest 6×6×6 cube color: rgb(215,119,87) (Claude
- * orange) → idx 174 rgb(215,135,135) — washed-out salmon.
- *
- * Gated on level === 2 (not < 3) to respect NO_COLOR / FORCE_COLOR=0 —
- * those yield level 0 and are an explicit "no colors" request. Desktop VS
- * Code sets COLORTERM=truecolor itself, so this is a no-op there (already 3).
- *
- * Must run BEFORE the tmux clamp — if tmux is running inside a VS Code
- * terminal, tmux's passthrough limitation wins and we want level 2.
- */
-function boostChalkLevelForXtermJs(): boolean {
-  if (process.env.TERM_PROGRAM === 'vscode' && chalk.level === 2) {
-    chalk.level = 3
-    return true
-  }
-  return false
+var Rit = E(() => {
+  mRn = new Set();
+});
+function o2i(e) {
+  let t = process.argv.indexOf("--");
+  return (t === -1 ? process.argv : process.argv.slice(0, t)).some((r) => e.has(r));
 }
-
-/**
- * tmux parses truecolor SGR (\e[48;2;r;g;bm) into its cell buffer correctly,
- * but its client-side emitter only re-emits truecolor to the outer terminal if
- * the outer terminal advertises Tc/RGB capability (via terminal-overrides).
- * Default tmux config doesn't set this, so tmux emits the cell to iTerm2/etc
- * WITHOUT the bg sequence — outer terminal's buffer has bg=default → black on
- * dark profiles. Clamping to level 2 makes chalk emit 256-color (\e[48;5;Nm),
- * which tmux passes through cleanly. grey93 (255) is visually identical to
- * rgb(240,240,240).
- *
- * Users who HAVE set `terminal-overrides ,*:Tc` get a technically-unnecessary
- * downgrade, but the visual difference is imperceptible. Querying
- * `tmux show -gv terminal-overrides` to detect this would add a subprocess on
- * startup — not worth it.
- *
- * $TMUX is a pty-lifecycle env var set by tmux itself; it never comes from
- * globalSettings.env, so reading it here is correct. chalk is a singleton, so
- * this clamps ALL truecolor output (fg+bg+hex) across the entire app.
- */
-function clampChalkLevelForTmux(): boolean {
-  // bg.ts sets terminal-overrides :Tc before attach, so truecolor passes
-  // through — skip the clamp. General escape hatch for anyone who's
-  // configured their tmux correctly.
-  if (process.env.CLAUDE_CODE_TMUX_TRUECOLOR) return false
-  if (process.env.TMUX && chalk.level > 2) {
-    chalk.level = 2
-    return true
-  }
-  return false
+function JUd() {
+  if (process.env.NO_COLOR && process.env.FORCE_COLOR === void 0 && !XUd() && wt.level > 0)
+    return ((wt.level = 0), true);
+  return false;
 }
-// Computed once at module load — terminal/tmux environment doesn't change mid-session.
-// Order matters: boost first so the tmux clamp can re-clamp if tmux is running
-// inside a VS Code terminal. Exported for debugging — tree-shaken if unused.
-export const CHALK_BOOSTED_FOR_XTERMJS = boostChalkLevelForXtermJs()
-export const CHALK_CLAMPED_FOR_TMUX = clampChalkLevelForTmux()
-
-export type ColorType = 'foreground' | 'background'
-
-const RGB_REGEX = /^rgb\(\s?(\d+),\s?(\d+),\s?(\d+)\s?\)$/
-const ANSI_REGEX = /^ansi256\(\s?(\d+)\s?\)$/
-
-export const colorize = (
-  str: string,
-  color: string | undefined,
-  type: ColorType,
-): string => {
-  if (!color) {
-    return str
+function QUd() {
+  if (process.env.TERM_PROGRAM === "vscode" && wt.level === 2) return ((wt.level = 3), true);
+  return false;
+}
+function eFd() {
+  if (!process.stdout.isTTY || process.env.NO_COLOR || process.env.FORCE_COLOR !== void 0 || YUd())
+    return false;
+  let e = process.env.TERM;
+  if (e && ZUd.has(e) && wt.level < 3) return ((wt.level = 3), true);
+  return false;
+}
+function tFd() {
+  if (process.env.CLAUDE_CODE_TMUX_TRUECOLOR) return false;
+  if (process.env.TMUX && wt.level > 2) return ((wt.level = 2), true);
+  return false;
+}
+function s2i(e) {
+  if (e && wt.level > 2) return ((wt.level = 2), true);
+  return false;
+}
+function oGe(e) {
+  return "\x1B[7m" + e + "\x1B[27m";
+}
+function hRn() {
+  return i2i;
+}
+function a2i(e) {
+  let t = e !== void 0 && e < r2i ? e : r2i;
+  if (t !== wt.level) ((wt.level = t), i2i++);
+}
+function l2i(e) {
+  if (wt.level >= 3 || e.length === 0) return e;
+  let t;
+  for (let n = 0; n < e.length; n++) {
+    let r = e[n],
+      o = nFd.exec(r.code);
+    if (o)
+      ((t ??= e.slice(0, n)),
+        t.push({
+          type: "ansi",
+          code: `\x1B[${o[1]};5;${rFd(+o[2], +o[3], +o[4])}m`,
+          endCode: r.endCode,
+        }));
+    else if (t) t.push(r);
   }
-
-  if (color.startsWith('ansi:')) {
-    const value = color.substring('ansi:'.length)
-    switch (value) {
-      case 'black':
-        return type === 'foreground' ? chalk.black(str) : chalk.bgBlack(str)
-      case 'red':
-        return type === 'foreground' ? chalk.red(str) : chalk.bgRed(str)
-      case 'green':
-        return type === 'foreground' ? chalk.green(str) : chalk.bgGreen(str)
-      case 'yellow':
-        return type === 'foreground' ? chalk.yellow(str) : chalk.bgYellow(str)
-      case 'blue':
-        return type === 'foreground' ? chalk.blue(str) : chalk.bgBlue(str)
-      case 'magenta':
-        return type === 'foreground' ? chalk.magenta(str) : chalk.bgMagenta(str)
-      case 'cyan':
-        return type === 'foreground' ? chalk.cyan(str) : chalk.bgCyan(str)
-      case 'white':
-        return type === 'foreground' ? chalk.white(str) : chalk.bgWhite(str)
-      case 'blackBright':
-        return type === 'foreground'
-          ? chalk.blackBright(str)
-          : chalk.bgBlackBright(str)
-      case 'redBright':
-        return type === 'foreground'
-          ? chalk.redBright(str)
-          : chalk.bgRedBright(str)
-      case 'greenBright':
-        return type === 'foreground'
-          ? chalk.greenBright(str)
-          : chalk.bgGreenBright(str)
-      case 'yellowBright':
-        return type === 'foreground'
-          ? chalk.yellowBright(str)
-          : chalk.bgYellowBright(str)
-      case 'blueBright':
-        return type === 'foreground'
-          ? chalk.blueBright(str)
-          : chalk.bgBlueBright(str)
-      case 'magentaBright':
-        return type === 'foreground'
-          ? chalk.magentaBright(str)
-          : chalk.bgMagentaBright(str)
-      case 'cyanBright':
-        return type === 'foreground'
-          ? chalk.cyanBright(str)
-          : chalk.bgCyanBright(str)
-      case 'whiteBright':
-        return type === 'foreground'
-          ? chalk.whiteBright(str)
-          : chalk.bgWhiteBright(str)
+  return t ?? e;
+}
+function rFd(e, t, n) {
+  let r = (y) => (y < 48 ? 0 : y < 115 ? 1 : y < 155 ? 2 : y < 195 ? 3 : y < 235 ? 4 : 5),
+    o = r(e),
+    s = r(t),
+    i = r(n),
+    a = 16 + 36 * o + 6 * s + i,
+    l = Math.round((e + t + n) / 3);
+  if (l < 5) return 16;
+  if (l > 244 && o === s && s === i) return a;
+  let c = Math.max(0, Math.min(23, Math.round((l - 8) / 10))),
+    u = 232 + c,
+    d = 8 + c * 10,
+    p = p7r[o],
+    f = p7r[s],
+    m = p7r[i],
+    g = (e - p) ** 2 + (t - f) ** 2 + (n - m) ** 2;
+  return (e - d) ** 2 + (t - d) ** 2 + (n - d) ** 2 < g ? u : a;
+}
+function Lit(e, t) {
+  let n = e;
+  if (t.inverse) n = oGe(n);
+  if (t.strikethrough) n = wt.strikethrough(n);
+  if (t.underline) n = wt.underline(n);
+  if (t.italic) n = wt.italic(n);
+  if (t.bold) n = wt.bold(n);
+  if (t.dim) n = wt.dim(n);
+  if (t.color) n = zke(n, t.color, "foreground");
+  if (t.backgroundColor) n = zke(n, t.backgroundColor, "background");
+  return n;
+}
+function V_e(e, t) {
+  if (!t) return e;
+  return zke(e, t, "foreground");
+}
+var zUd,
+  KUd,
+  YUd = () => o2i(zUd),
+  XUd = () => o2i(KUd),
+  ZUd,
+  nKh,
+  rKh,
+  oKh,
+  sKh,
+  r2i,
+  i2i = 0,
+  nFd,
+  p7r,
+  oFd,
+  sFd,
+  zke = (e, t, n) => {
+    if (!t) return e;
+    if (t.startsWith("ansi:"))
+      switch (t.substring(5)) {
+        case "black":
+          return n === "foreground" ? wt.black(e) : wt.bgBlack(e);
+        case "red":
+          return n === "foreground" ? wt.red(e) : wt.bgRed(e);
+        case "green":
+          return n === "foreground" ? wt.green(e) : wt.bgGreen(e);
+        case "yellow":
+          return n === "foreground" ? wt.yellow(e) : wt.bgYellow(e);
+        case "blue":
+          return n === "foreground" ? wt.blue(e) : wt.bgBlue(e);
+        case "magenta":
+          return n === "foreground" ? wt.magenta(e) : wt.bgMagenta(e);
+        case "cyan":
+          return n === "foreground" ? wt.cyan(e) : wt.bgCyan(e);
+        case "white":
+          return n === "foreground" ? wt.white(e) : wt.bgWhite(e);
+        case "blackBright":
+          return n === "foreground" ? wt.blackBright(e) : wt.bgBlackBright(e);
+        case "redBright":
+          return n === "foreground" ? wt.redBright(e) : wt.bgRedBright(e);
+        case "greenBright":
+          return n === "foreground" ? wt.greenBright(e) : wt.bgGreenBright(e);
+        case "yellowBright":
+          return n === "foreground" ? wt.yellowBright(e) : wt.bgYellowBright(e);
+        case "blueBright":
+          return n === "foreground" ? wt.blueBright(e) : wt.bgBlueBright(e);
+        case "magentaBright":
+          return n === "foreground" ? wt.magentaBright(e) : wt.bgMagentaBright(e);
+        case "cyanBright":
+          return n === "foreground" ? wt.cyanBright(e) : wt.bgCyanBright(e);
+        case "whiteBright":
+          return n === "foreground" ? wt.whiteBright(e) : wt.bgWhiteBright(e);
+      }
+    if (t.startsWith("#")) return n === "foreground" ? wt.hex(t)(e) : wt.bgHex(t)(e);
+    if (t.startsWith("ansi256")) {
+      let r = sFd.exec(t);
+      if (!r) return e;
+      let o = Number(r[1]);
+      return n === "foreground" ? wt.ansi256(o)(e) : wt.bgAnsi256(o)(e);
     }
-  }
-
-  if (color.startsWith('#')) {
-    return type === 'foreground'
-      ? chalk.hex(color)(str)
-      : chalk.bgHex(color)(str)
-  }
-
-  if (color.startsWith('ansi256')) {
-    const matches = ANSI_REGEX.exec(color)
-
-    if (!matches) {
-      return str
+    if (t.startsWith("rgb")) {
+      let r = oFd.exec(t);
+      if (!r) return e;
+      let o = Number(r[1]),
+        s = Number(r[2]),
+        i = Number(r[3]);
+      return n === "foreground" ? wt.rgb(o, s, i)(e) : wt.bgRgb(o, s, i)(e);
     }
-
-    const value = Number(matches[1])
-
-    return type === 'foreground'
-      ? chalk.ansi256(value)(str)
-      : chalk.bgAnsi256(value)(str)
-  }
-
-  if (color.startsWith('rgb')) {
-    const matches = RGB_REGEX.exec(color)
-
-    if (!matches) {
-      return str
-    }
-
-    const firstValue = Number(matches[1])
-    const secondValue = Number(matches[2])
-    const thirdValue = Number(matches[3])
-
-    return type === 'foreground'
-      ? chalk.rgb(firstValue, secondValue, thirdValue)(str)
-      : chalk.bgRgb(firstValue, secondValue, thirdValue)(str)
-  }
-
-  return str
-}
-
-/**
- * Apply TextStyles to a string using chalk.
- * This is the inverse of parsing ANSI codes - we generate them from structured styles.
- * Theme resolution happens at component layer, not here.
- */
-export function applyTextStyles(text: string, styles: TextStyles): string {
-  let result = text
-
-  // Apply styles in reverse order of desired nesting.
-  // chalk wraps text so later calls become outer wrappers.
-  // Desired order (outermost to innermost):
-  //   background > foreground > text modifiers
-  // So we apply: text modifiers first, then foreground, then background last.
-
-  if (styles.inverse) {
-    result = chalk.inverse(result)
-  }
-
-  if (styles.strikethrough) {
-    result = chalk.strikethrough(result)
-  }
-
-  if (styles.underline) {
-    result = chalk.underline(result)
-  }
-
-  if (styles.italic) {
-    result = chalk.italic(result)
-  }
-
-  if (styles.bold) {
-    result = chalk.bold(result)
-  }
-
-  if (styles.dim) {
-    result = chalk.dim(result)
-  }
-
-  if (styles.color) {
-    // Color is now always a raw color value (theme resolution happens at component layer)
-    result = colorize(result, styles.color, 'foreground')
-  }
-
-  if (styles.backgroundColor) {
-    // backgroundColor is now always a raw color value
-    result = colorize(result, styles.backgroundColor, 'background')
-  }
-
-  return result
-}
-
-/**
- * Apply a raw color value to text.
- * Theme resolution should happen at component layer, not here.
- */
-export function applyColor(text: string, color: Color | undefined): string {
-  if (!color) {
-    return text
-  }
-  return colorize(text, color, 'foreground')
-}
+    return e;
+  };

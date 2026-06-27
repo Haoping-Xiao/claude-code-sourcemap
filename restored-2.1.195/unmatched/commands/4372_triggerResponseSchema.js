@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Sl
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> commands; 3 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js
+// class=new  jaccard=0.0077  score=0.1077  fileCov=0.0082
+// note: nearest: node_modules/@aws-sdk/core/dist-cjs/submodules/protocols/index.js (0.0077); dir inferred from dep-graph -> commands; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _Sl = E(() => {
   ql();

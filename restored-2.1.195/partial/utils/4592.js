@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rPl
-// matched 2.1.88 source: src/commands/rename/index.ts
-// class=partial  jaccard=0.1278  score=0.2863  fileCov=0.1876
-// note: low-confidence suggestion: src/commands/rename/index.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/branch/index.ts
+// class=partial  jaccard=0.1701  score=0.306  fileCov=0.2769
+// note: low-confidence suggestion: src/commands/branch/index.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rPl = E(() => {
   m0f = {

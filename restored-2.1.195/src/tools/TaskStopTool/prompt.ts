@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tSe
 // matched 2.1.88 source: src/tools/TaskStopTool/prompt.ts
-// class=modified  jaccard=0.0559  score=0.0559  fileCov=1
+// class=modified  jaccard=0.0537  score=0.0537  fileCov=1
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tSe = E(() => {

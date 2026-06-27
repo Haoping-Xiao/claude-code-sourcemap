@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rpn
 // matched 2.1.88 source: src/utils/env.ts
-// class=modified  jaccard=0.6072  score=0.8761  fileCov=0.6642
+// class=modified  jaccard=0.5631  score=0.8604  fileCov=0.6198
 // note: deminified; 144 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rpn = E(() => {

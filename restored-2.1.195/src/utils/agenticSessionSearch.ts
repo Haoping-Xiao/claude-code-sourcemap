@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gor
 // matched 2.1.88 source: src/utils/agenticSessionSearch.ts
-// class=modified  jaccard=0.1115  score=0.2355  fileCov=0.1748
+// class=modified  jaccard=0.0528  score=0.07  fileCov=0.1765
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gor = E(() => {

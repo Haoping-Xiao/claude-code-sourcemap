@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eis
 // matched 2.1.88 source: src/utils/slowOperations.ts
-// class=modified  jaccard=0.3229  score=0.8241  fileCov=0.3468
+// class=modified  jaccard=0.2325  score=0.8511  fileCov=0.2424
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eis = E(() => {

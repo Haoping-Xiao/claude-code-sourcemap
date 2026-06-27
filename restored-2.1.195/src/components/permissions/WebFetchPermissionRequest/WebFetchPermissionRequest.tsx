@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FHc
 // matched 2.1.88 source: src/components/permissions/WebFetchPermissionRequest/WebFetchPermissionRequest.tsx
-// class=modified  jaccard=0.1906  score=0.4425  fileCov=0.2508
+// class=modified  jaccard=0.1804  score=0.3131  fileCov=0.2986
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var FHc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Bjl
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
-// class=modified  jaccard=0.3316  score=0.3867  fileCov=0.6995
+// class=modified  jaccard=0.2895  score=0.3799  fileCov=0.549
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Bjl = E(() => {

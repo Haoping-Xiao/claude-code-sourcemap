@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VPl
 // matched 2.1.88 source: src/commands/compact/compact.ts
-// class=modified  jaccard=0.2404  score=0.3206  fileCov=0.4902
+// class=modified  jaccard=0.2322  score=0.321  fileCov=0.4563
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var VPl = E(() => {

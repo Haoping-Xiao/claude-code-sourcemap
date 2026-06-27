@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wso
-// matched 2.1.88 source: src/native-ts/color-diff/index.ts
-// class=new  jaccard=0.0284  score=0.2202  fileCov=0.0316
-// note: nearest: src/native-ts/color-diff/index.ts (0.0284); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/teamMemorySync/secretScanner.ts
+// class=new  jaccard=0.016  score=0.2099  fileCov=0.017
+// note: nearest: src/services/teamMemorySync/secretScanner.ts (0.016); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Wso = E(() => {
   je();

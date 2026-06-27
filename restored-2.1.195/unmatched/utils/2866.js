@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tA
 // matched 2.1.88 source: node_modules/fast-xml-parser/lib/fxp.cjs
-// class=new  jaccard=0.0172  score=0.5449  fileCov=0.0174
-// note: nearest: node_modules/fast-xml-parser/lib/fxp.cjs (0.0172); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0107  score=0.4997  fileCov=0.0108
+// note: nearest: node_modules/fast-xml-parser/lib/fxp.cjs (0.0107); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tA = E(() => {
   ft();

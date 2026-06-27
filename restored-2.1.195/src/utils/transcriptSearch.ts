@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BFo
 // matched 2.1.88 source: src/utils/transcriptSearch.ts
-// class=modified  jaccard=0.9274  score=1  fileCov=0.9274
+// class=modified  jaccard=0.781  score=1  fileCov=0.781
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BFo = E(() => {

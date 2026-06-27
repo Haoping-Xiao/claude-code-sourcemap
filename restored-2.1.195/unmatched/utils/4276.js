@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module U6t
-// matched 2.1.88 source: src/utils/slowOperations.ts
-// class=new  jaccard=0.0476  score=0.1356  fileCov=0.0684
-// note: nearest: src/utils/slowOperations.ts (0.0476); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/attachments.ts
+// class=new  jaccard=0.0096  score=0.1366  fileCov=0.0103
+// note: nearest: src/utils/attachments.ts (0.0096); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var U6t = E(() => {
   Qi();

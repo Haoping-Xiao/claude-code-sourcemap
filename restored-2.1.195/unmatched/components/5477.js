@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module v_c
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/utils/cronScheduler.ts
+// class=new  jaccard=0.0247  score=0.2631  fileCov=0.0265
+// note: nearest: src/utils/cronScheduler.ts (0.0247); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var v_c = E(() => {
   Tc();

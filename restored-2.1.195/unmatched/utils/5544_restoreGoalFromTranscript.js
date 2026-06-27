@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lpr
 // matched 2.1.88 source: src/utils/transcriptSearch.ts
-// class=new  jaccard=0.0576  score=0.2499  fileCov=0.0697
-// note: nearest: src/utils/transcriptSearch.ts (0.0576); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0532  score=0.161  fileCov=0.0737
+// note: nearest: src/utils/transcriptSearch.ts (0.0532); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lpr = E(() => {
   ft();

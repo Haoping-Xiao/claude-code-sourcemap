@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dgr
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/csharp.js
-// class=new  jaccard=0.0226  score=0.3765  fileCov=0.0235
-// note: nearest: node_modules/highlight.js/lib/languages/csharp.js (0.0226); 0 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/util.js
+// class=new  jaccard=0.0153  score=0.3148  fileCov=0.0158
+// note: nearest: node_modules/node-forge/lib/util.js (0.0153); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dgr = E(() => {
   sB();

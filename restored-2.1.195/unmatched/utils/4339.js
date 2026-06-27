@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lRo
-// matched 2.1.88 source: src/screens/REPL.tsx
-// class=new  jaccard=0.0033  score=0.1202  fileCov=0.0034
-// note: nearest: src/screens/REPL.tsx (0.0033); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/messages/AttachmentMessage.tsx
+// class=new  jaccard=0.0208  score=0.1833  fileCov=0.023
+// note: nearest: src/components/messages/AttachmentMessage.tsx (0.0208); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lRo = E(() => {
   je();

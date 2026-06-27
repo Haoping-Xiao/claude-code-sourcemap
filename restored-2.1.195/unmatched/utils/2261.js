@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iYr
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/config.ts
+// class=new  jaccard=0.0054  score=0.2638  fileCov=0.0055
+// note: nearest: src/utils/config.ts (0.0054); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iYr = E(() => {
   je();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xDa
 // matched 2.1.88 source: src/services/lsp/LSPClient.ts
-// class=modified  jaccard=0.7733  score=0.9318  fileCov=0.8197
+// class=modified  jaccard=0.6944  score=0.9246  fileCov=0.736
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xDa = Q((qe_, IDa) => {

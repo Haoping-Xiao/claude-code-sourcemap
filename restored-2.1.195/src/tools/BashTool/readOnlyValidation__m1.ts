@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zvl
 // matched 2.1.88 source: src/tools/BashTool/readOnlyValidation.ts
-// class=modified (alt of src/tools/BashTool/readOnlyValidation.ts)  jaccard=0.0327  score=0.392  fileCov=0.0345
+// class=modified (alt of src/tools/BashTool/readOnlyValidation.ts)  jaccard=0.0292  score=0.3015  fileCov=0.0313
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Zvl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WCo
 // matched 2.1.88 source: src/components/messages/TaskAssignmentMessage.tsx
-// class=modified  jaccard=0.3907  score=0.5199  fileCov=0.6112
+// class=modified  jaccard=0.2403  score=0.4111  fileCov=0.3664
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var WCo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _1
 // matched 2.1.88 source: src/utils/subprocessEnv.ts
-// class=modified  jaccard=0.3899  score=0.44  fileCov=0.7742
+// class=modified  jaccard=0.3318  score=0.4228  fileCov=0.6064
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _1 = E(() => {

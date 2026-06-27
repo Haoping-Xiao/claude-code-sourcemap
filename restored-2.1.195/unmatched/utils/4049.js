@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s8t
-// matched 2.1.88 source: src/plugins/builtinPlugins.ts
-// class=new  jaccard=0.0567  score=0.0714  fileCov=0.2165
-// note: nearest: src/plugins/builtinPlugins.ts (0.0567); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/insights.ts
+// class=new  jaccard=0.0058  score=0.1285  fileCov=0.0061
+// note: nearest: src/commands/insights.ts (0.0058); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var s8t = E(() => {
   Qi();

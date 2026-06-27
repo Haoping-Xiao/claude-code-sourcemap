@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module M8e
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/mongrule.mjs
+// class=new  jaccard=0.0363  score=0.4532  fileCov=0.038
+// note: nearest: node_modules/@growthbook/growthbook/dist/esm/mongrule.mjs (0.0363); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var M8e = E(() => {
   er();

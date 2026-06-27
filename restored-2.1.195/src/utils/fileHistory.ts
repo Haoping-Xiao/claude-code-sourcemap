@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module d8n
 // matched 2.1.88 source: src/utils/fileHistory.ts
-// class=modified  jaccard=0.672  score=0.8004  fileCov=0.8073
+// class=modified  jaccard=0.5478  score=0.8312  fileCov=0.6164
 // note: deminified; 11 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var d8n = E(() => {

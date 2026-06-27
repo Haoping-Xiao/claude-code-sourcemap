@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nXo
 // matched 2.1.88 source: src/cli/structuredIO.ts
-// class=modified  jaccard=0.2828  score=0.412  fileCov=0.4741
+// class=modified  jaccard=0.1256  score=0.1456  fileCov=0.4765
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var nXo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rct
 // matched 2.1.88 source: src/tools/GrepTool/prompt.ts
-// class=modified  jaccard=0.5177  score=0.6186  fileCov=0.7604
+// class=modified  jaccard=0.4727  score=0.6186  fileCov=0.6672
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Rct = E(() => {

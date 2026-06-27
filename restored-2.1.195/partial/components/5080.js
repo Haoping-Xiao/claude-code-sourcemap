@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m7l
 // matched 2.1.88 source: src/tasks/LocalAgentTask/LocalAgentTask.tsx
-// class=partial  jaccard=0.0906  score=0.2635  fileCov=0.1213
+// class=partial  jaccard=0.0783  score=0.277  fileCov=0.0984
 // note: low-confidence suggestion: src/tasks/LocalAgentTask/LocalAgentTask.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var m7l = E(() => {

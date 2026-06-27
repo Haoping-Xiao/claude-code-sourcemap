@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module X6l
-// matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0034  score=0.2949  fileCov=0.0034
-// note: nearest: src/main.tsx (0.0034); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/commander/lib/command.js
+// class=new  jaccard=0.0177  score=0.2  fileCov=0.019
+// note: nearest: node_modules/commander/lib/command.js (0.0177); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var X6l = E(() => {
   je();

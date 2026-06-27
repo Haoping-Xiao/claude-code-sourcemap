@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Nha
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/prolog.js
-// class=partial  jaccard=0.196  score=0.3639  fileCov=0.2981
-// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/prolog.js; 0 renamed
+// matched 2.1.88 source: node_modules/highlight.js/lib/languages/gams.js
+// class=partial  jaccard=0.1493  score=0.6703  fileCov=0.1612
+// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/gams.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Nha = Q((f2y, Oha) => {
   function igp(e) {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Tnt
 // matched 2.1.88 source: src/utils/billing.ts
-// class=modified  jaccard=0.5874  score=0.787  fileCov=0.6984
+// class=modified  jaccard=0.4426  score=0.8181  fileCov=0.4909
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Tnt = E(() => {

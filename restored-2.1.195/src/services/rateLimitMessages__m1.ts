@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xjt
 // matched 2.1.88 source: src/services/rateLimitMessages.ts
-// class=modified (alt of src/services/rateLimitMessages.ts)  jaccard=0.1341  score=0.1996  fileCov=0.2901
+// class=modified (alt of src/services/rateLimitMessages.ts)  jaccard=0.1148  score=0.161  fileCov=0.2859
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xjt = E(() => {

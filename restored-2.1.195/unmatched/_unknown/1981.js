@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MHi
-// matched 2.1.88 source: node_modules/is-inside-container/index.js
-// class=new  jaccard=0.0099  score=0.0101  fileCov=0.367
-// note: nearest: node_modules/is-inside-container/index.js (0.0099); 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/mcpb/dist/schemas-loose.js
+// class=new  jaccard=0.0144  score=0.0206  fileCov=0.0457
+// note: nearest: node_modules/@anthropic-ai/mcpb/dist/schemas-loose.js (0.0144); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var MHi = Q((WOh, iId) => {
   iId.exports = {

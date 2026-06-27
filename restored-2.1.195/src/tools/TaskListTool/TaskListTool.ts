@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Qbl
 // matched 2.1.88 source: src/tools/TaskListTool/TaskListTool.ts
-// class=modified  jaccard=0.3303  score=0.424  fileCov=0.5993
+// class=modified  jaccard=0.4856  score=0.6162  fileCov=0.6962
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Qbl = E(() => {

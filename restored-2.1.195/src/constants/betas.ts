@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TM
 // matched 2.1.88 source: src/constants/betas.ts
-// class=modified  jaccard=0.2719  score=0.2905  fileCov=0.8096
+// class=modified  jaccard=0.2577  score=0.2783  fileCov=0.7762
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var TM = E(() => {

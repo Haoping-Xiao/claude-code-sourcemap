@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ozl
 // matched 2.1.88 source: src/commands/plan/index.ts
-// class=modified  jaccard=0.5087  score=0.7148  fileCov=0.6382
+// class=modified  jaccard=0.4543  score=0.5954  fileCov=0.6573
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ozl = E(() => {

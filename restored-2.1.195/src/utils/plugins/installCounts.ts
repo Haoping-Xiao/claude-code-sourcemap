@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module E2l
 // matched 2.1.88 source: src/utils/plugins/installCounts.ts
-// class=modified  jaccard=0.1136  score=0.264  fileCov=0.1663
+// class=modified  jaccard=0.07  score=0.1102  fileCov=0.1613
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var E2l = E(() => {

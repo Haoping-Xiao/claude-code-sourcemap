@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/QuestionView.tsx
-// class=modified  jaccard=0.28  score=0.5234  fileCov=0.3758
+// class=modified  jaccard=0.3171  score=0.4773  fileCov=0.4858
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var UAc = E(() => {

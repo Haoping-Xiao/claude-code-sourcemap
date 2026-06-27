@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dIs
-// matched 2.1.88 source: src/services/mcp/xaaIdpLogin.ts
-// class=new  jaccard=0.0269  score=1  fileCov=0.0269
-// note: nearest: src/services/mcp/xaaIdpLogin.ts (0.0269); 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js
+// class=new  jaccard=0.0228  score=1  fileCov=0.0228
+// note: nearest: node_modules/@smithy/credential-provider-imds/dist-cjs/index.js (0.0228); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dIs = E(() => {
   Mmn();

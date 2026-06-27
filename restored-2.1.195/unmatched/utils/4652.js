@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lOl
 // matched 2.1.88 source: src/ink/styles.ts
-// class=new  jaccard=0.0249  score=0.0854  fileCov=0.034
-// note: nearest: src/ink/styles.ts (0.0249); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0352  score=0.1503  fileCov=0.044
+// note: nearest: src/ink/styles.ts (0.0352); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lOl = E(() => {
   G1o();

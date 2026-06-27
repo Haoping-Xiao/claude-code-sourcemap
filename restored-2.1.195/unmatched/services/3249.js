@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kIa
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: src/utils/codeIndexing.ts
+// class=new  jaccard=0.0332  score=1  fileCov=0.0332
+// note: nearest: src/utils/codeIndexing.ts (0.0332); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var kIa = E(() => {
   ft();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iTl
 // matched 2.1.88 source: src/tools/PowerShellTool/pathValidation.ts
-// class=modified  jaccard=0.6885  score=0.939  fileCov=0.7208
+// class=modified  jaccard=0.647  score=0.9362  fileCov=0.6768
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var iTl = E(() => {

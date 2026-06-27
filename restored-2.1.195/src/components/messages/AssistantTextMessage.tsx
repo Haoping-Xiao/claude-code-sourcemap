@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Osl
 // matched 2.1.88 source: src/components/messages/AssistantTextMessage.tsx
-// class=modified  jaccard=0.101  score=0.1773  fileCov=0.1901
+// class=modified  jaccard=0.1203  score=0.2527  fileCov=0.1867
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Osl = E(() => {

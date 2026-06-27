@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gy
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
-// class=modified  jaccard=0.3399  score=0.5634  fileCov=0.4615
+// class=modified  jaccard=0.3702  score=0.6074  fileCov=0.4866
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gy = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zrt
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@azure/msal-common/dist/cache/CacheManager.mjs
+// class=new  jaccard=0.0493  score=0.9632  fileCov=0.0494
+// note: nearest: node_modules/@azure/msal-common/dist/cache/CacheManager.mjs (0.0493); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var zrt = E(() => {
   JR();

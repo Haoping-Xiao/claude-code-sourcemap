@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xur
 // matched 2.1.88 source: node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs
-// class=new  jaccard=0.0282  score=0.0743  fileCov=0.0436
-// note: nearest: node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs (0.0282); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.021  score=0.0656  fileCov=0.03
+// note: nearest: node_modules/@anthropic-ai/sdk/internal/detect-platform.mjs (0.021); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xur = E(() => {
   np();

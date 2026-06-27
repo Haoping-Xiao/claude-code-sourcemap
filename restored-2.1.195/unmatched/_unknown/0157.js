@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DR
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/vscode-jsonrpc/lib/node/ril.js
+// class=new  jaccard=0.029  score=1  fileCov=0.029
+// note: nearest: node_modules/vscode-jsonrpc/lib/node/ril.js (0.029); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var DR = E(() => {
   p0();

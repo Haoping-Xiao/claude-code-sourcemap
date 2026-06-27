@@ -1,33 +1,81 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module p6e
+// restored from claude-code 2.1.195 (deminified) — module F8t
 // matched 2.1.88 source: src/utils/generators.ts
-// class=modified  jaccard=0.3244  score=0.4801  fileCov=0.5
+// class=modified  jaccard=0.331  score=0.6421  fileCov=0.4059
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var p6e = E(() => {
-  jib = Symbol("NO_VALUE");
+var F8t = E(() => {
+  Cc();
+  Q8();
+  Bs();
+  Ko();
+  zX();
+  Uol();
+  E5();
+  b8t();
+  AN();
+  d_t();
+  ql();
+  Pyt();
+  Ye();
+  ii();
+  ZPe();
+  es();
+  co();
+  Ao();
+  AIo();
+  IL();
+  N8t();
+  ((dKn = R(lt(), 1)), (ia = R(se(), 1)));
 });
-var lp = 600000,
-  Mll = 30000;
-async function* G8t(e, t, n, r, o, s, i) {
-  let a = i.getAppState(),
-    l = i.agentId ?? Rt();
-  if (!M$("UserPromptExpansion", a, l)) return;
-  let c = {
-    ...Td(s),
-    hook_event_name: "UserPromptExpansion",
-    expansion_type: e,
-    command_name: t,
-    command_args: n,
-    command_source: r,
-    prompt: o,
-  };
-  yield* TC({
-    hookInput: c,
-    toolUseID: $ll.randomUUID(),
-    signal: i.abortController.signal,
-    timeoutMs: lp,
-    toolUseContext: i,
-  });
+function xu(e) {
+  return e.userFacingName?.() ?? e.name;
 }
-var $ll;
+function Ik(e) {
+  return e.isEnabled?.() ?? true;
+}
+function YMe(e, t) {
+  let n = e?.immediate;
+  return typeof n === "function" ? n(t) : n === true;
+}
+async function Pll(e) {
+  let t;
+  do t = await e.next();
+  while (!t.done);
+  return t.value;
+}
+async function* fKn(e, t = 1 / 0) {
+  let n = (s) => {
+      let i = s.next().then(({ done: a, value: l }) => ({
+        done: a,
+        value: l,
+        generator: s,
+        promise: i,
+      }));
+      return i;
+    },
+    r = [...e],
+    o = new Set();
+  while (o.size < t && r.length > 0) {
+    let s = r.shift();
+    o.add(n(s));
+  }
+  while (o.size > 0) {
+    let { done: s, value: i, generator: a, promise: l } = await Promise.race(o);
+    if ((o.delete(l), !s)) {
+      if ((o.add(n(a)), i !== void 0)) yield i;
+    } else if (r.length > 0) {
+      let c = r.shift();
+      o.add(n(c));
+    }
+  }
+}
+async function mKn(e) {
+  let t = [];
+  for await (let n of e) t.push(n);
+  return t;
+}
+async function* HIo(e) {
+  for (let t of e) yield t;
+}
+var jib;

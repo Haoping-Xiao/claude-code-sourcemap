@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module h8l
 // matched 2.1.88 source: src/components/tasks/BackgroundTask.tsx
-// class=modified  jaccard=0.4314  score=0.7338  fileCov=0.5114
+// class=modified  jaccard=0.4402  score=0.6269  fileCov=0.5964
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var h8l = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T0o
 // matched 2.1.88 source: src/utils/swarm/backends/ITermBackend.ts
-// class=modified  jaccard=0.7814  score=0.9176  fileCov=0.8403
+// class=modified  jaccard=0.5669  score=0.8922  fileCov=0.6086
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var T0o = E(() => {

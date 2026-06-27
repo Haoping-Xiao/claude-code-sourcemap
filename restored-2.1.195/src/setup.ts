@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Bdc
 // matched 2.1.88 source: src/setup.ts
-// class=modified  jaccard=0.2927  score=0.6654  fileCov=0.3432
+// class=modified  jaccard=0.3445  score=0.7002  fileCov=0.4041
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Bdc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m1
 // matched 2.1.88 source: src/utils/thinking.ts
-// class=modified  jaccard=0.3034  score=0.409  fileCov=0.5402
+// class=modified  jaccard=0.2084  score=0.3603  fileCov=0.3307
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var m1 = E(() => {

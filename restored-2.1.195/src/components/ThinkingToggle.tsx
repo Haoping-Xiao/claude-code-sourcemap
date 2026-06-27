@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zyc
 // matched 2.1.88 source: src/components/ThinkingToggle.tsx
-// class=modified  jaccard=0.4742  score=0.6812  fileCov=0.6095
+// class=modified  jaccard=0.3263  score=0.462  fileCov=0.5262
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var zyc = E(() => {

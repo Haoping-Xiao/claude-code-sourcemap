@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jir
 // matched 2.1.88 source: src/bridge/bridgeApi.ts
-// class=modified  jaccard=0.7915  score=0.8633  fileCov=0.9049
+// class=modified  jaccard=0.687  score=0.87  fileCov=0.7656
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jir = E(() => {

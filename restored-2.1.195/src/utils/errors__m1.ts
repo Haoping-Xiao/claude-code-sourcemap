@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module At
 // matched 2.1.88 source: src/utils/errors.ts
-// class=modified (alt of src/utils/errors.ts)  jaccard=0.3341  score=0.5975  fileCov=0.4311
+// class=modified (alt of src/utils/errors.ts)  jaccard=0.2925  score=0.6803  fileCov=0.339
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var At = E(() => {

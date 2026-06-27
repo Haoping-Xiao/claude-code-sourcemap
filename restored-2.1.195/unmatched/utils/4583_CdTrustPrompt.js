@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MDl
 // matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=new  jaccard=0.013  score=0.0821  fileCov=0.0152
-// note: nearest: src/components/Settings/Config.tsx (0.013); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0087  score=0.0828  fileCov=0.0096
+// note: nearest: src/components/Settings/Config.tsx (0.0087); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var MDl = E(() => {
   Lo();

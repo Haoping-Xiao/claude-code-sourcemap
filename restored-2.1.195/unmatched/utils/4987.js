@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N8l
-// matched 2.1.88 source: src/utils/markdownConfigLoader.ts
-// class=new  jaccard=0.0395  score=0.2445  fileCov=0.0451
-// note: nearest: src/utils/markdownConfigLoader.ts (0.0395); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
+// class=new  jaccard=0.011  score=0.2273  fileCov=0.0114
+// note: nearest: src/utils/nativeInstaller/installer.ts (0.011); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var N8l = E(() => {
   je();

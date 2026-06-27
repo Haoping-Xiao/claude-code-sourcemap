@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _i
 // matched 2.1.88 source: src/components/design-system/Ratchet.tsx
-// class=modified  jaccard=0.2709  score=1  fileCov=0.2709
+// class=modified  jaccard=0.2902  score=0.6668  fileCov=0.3394
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _i = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kme
 // matched 2.1.88 source: src/utils/deepLink/registerProtocol.ts
-// class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.0469  score=0.3301  fileCov=0.0519
+// class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.0587  score=0.3802  fileCov=0.0649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kme = E(() => {

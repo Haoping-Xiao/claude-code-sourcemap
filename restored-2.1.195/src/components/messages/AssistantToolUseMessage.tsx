@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FCo
 // matched 2.1.88 source: src/components/messages/AssistantToolUseMessage.tsx
-// class=modified  jaccard=0.2158  score=0.3403  fileCov=0.371
+// class=modified  jaccard=0.3417  score=0.4592  fileCov=0.5719
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var FCo = E(() => {

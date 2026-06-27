@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rxc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 2 renamed
+// matched 2.1.88 source: src/skills/bundled/verifyContent.ts
+// class=new  jaccard=0.0565  score=0.0846  fileCov=0.1456
+// note: nearest: src/skills/bundled/verifyContent.ts (0.0565); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Rxc = E(() => {
   Un();

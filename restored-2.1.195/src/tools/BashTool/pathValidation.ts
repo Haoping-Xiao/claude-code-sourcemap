@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Tjn
 // matched 2.1.88 source: src/tools/BashTool/pathValidation.ts
-// class=modified  jaccard=0.0401  score=0.215  fileCov=0.047
+// class=modified  jaccard=0.0425  score=0.184  fileCov=0.0523
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Tjn = E(() => {

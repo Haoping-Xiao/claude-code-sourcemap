@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N_l
 // matched 2.1.88 source: src/tools/testing/TestingPermissionTool.tsx
-// class=modified  jaccard=0.1116  score=0.1165  fileCov=0.7282
+// class=modified  jaccard=0.2357  score=0.2514  fileCov=0.7911
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var N_l = E(() => {

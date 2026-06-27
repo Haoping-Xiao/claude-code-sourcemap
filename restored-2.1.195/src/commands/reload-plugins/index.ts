@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N7l
 // matched 2.1.88 source: src/commands/reload-plugins/index.ts
-// class=modified  jaccard=0.186  score=0.2143  fileCov=0.5846
+// class=modified  jaccard=0.2064  score=0.2356  fileCov=0.6248
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var N7l = E(() => {

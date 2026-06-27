@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TTl
 // matched 2.1.88 source: src/tools/PowerShellTool/prompt.ts
-// class=modified  jaccard=0.2168  score=0.2911  fileCov=0.4594
+// class=modified  jaccard=0.1423  score=0.3032  fileCov=0.2114
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var TTl = E(() => {

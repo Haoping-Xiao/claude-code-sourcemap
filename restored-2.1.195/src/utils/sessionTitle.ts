@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KGl
 // matched 2.1.88 source: src/utils/sessionTitle.ts
-// class=modified  jaccard=0.268  score=0.384  fileCov=0.4703
+// class=modified  jaccard=0.3688  score=0.5258  fileCov=0.5526
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KGl = E(() => {

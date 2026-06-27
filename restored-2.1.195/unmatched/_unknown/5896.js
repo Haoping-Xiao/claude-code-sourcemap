@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ann
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/typescript.js
-// class=new  jaccard=0.0227  score=0.1915  fileCov=0.0251
-// note: nearest: node_modules/highlight.js/lib/languages/typescript.js (0.0227); 0 renamed
+// matched 2.1.88 source: node_modules/jsonwebtoken/sign.js
+// class=new  jaccard=0.0263  score=0.1838  fileCov=0.0298
+// note: nearest: node_modules/jsonwebtoken/sign.js (0.0263); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Ann = E(() => {
   sB();

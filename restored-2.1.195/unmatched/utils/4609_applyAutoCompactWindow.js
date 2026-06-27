@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YPl
 // matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.0048  score=0.0693  fileCov=0.0051
-// note: nearest: src/cli/print.ts (0.0048); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0057  score=0.1406  fileCov=0.006
+// note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var YPl = E(() => {
   wr();

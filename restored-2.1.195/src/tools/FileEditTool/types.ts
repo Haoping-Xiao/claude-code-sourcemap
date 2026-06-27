@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module W9t
 // matched 2.1.88 source: src/tools/FileEditTool/types.ts
-// class=modified  jaccard=0.7387  score=0.8592  fileCov=0.8404
+// class=modified  jaccard=0.6754  score=0.7582  fileCov=0.8609
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var W9t = E(() => {

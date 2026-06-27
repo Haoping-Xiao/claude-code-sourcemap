@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module w9o
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/pluginBlocklist.ts
+// class=new  jaccard=0.0249  score=0.0833  fileCov=0.0342
+// note: nearest: src/utils/plugins/pluginBlocklist.ts (0.0249); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var w9o = E(() => {
   ydc();

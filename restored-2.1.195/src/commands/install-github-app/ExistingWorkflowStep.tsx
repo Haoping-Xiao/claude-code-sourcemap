@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eFl
 // matched 2.1.88 source: src/commands/install-github-app/ExistingWorkflowStep.tsx
-// class=modified  jaccard=0.3456  score=0.3914  fileCov=0.7472
+// class=modified  jaccard=0.2925  score=0.3395  fileCov=0.6788
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eFl = E(() => {

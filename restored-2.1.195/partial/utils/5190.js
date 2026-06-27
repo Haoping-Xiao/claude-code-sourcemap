@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aec
-// matched 2.1.88 source: src/utils/plugins/pluginFlagging.ts
-// class=partial  jaccard=0.075  score=1  fileCov=0.075
-// note: low-confidence suggestion: src/utils/plugins/pluginFlagging.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/jsonwebtoken/decode.js
+// class=partial  jaccard=0.1995  score=0.7285  fileCov=0.2155
+// note: low-confidence suggestion: node_modules/jsonwebtoken/decode.js; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var aec = E(() => {
   $3o();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qzn
 // matched 2.1.88 source: src/components/messages/UserBashOutputMessage.tsx
-// class=modified  jaccard=0.6113  score=1  fileCov=0.6113
+// class=modified  jaccard=0.3571  score=0.6325  fileCov=0.4506
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qzn = E(() => {

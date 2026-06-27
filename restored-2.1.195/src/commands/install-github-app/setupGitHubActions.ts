@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hFl
 // matched 2.1.88 source: src/commands/install-github-app/setupGitHubActions.ts
-// class=modified  jaccard=0.7209  score=0.8741  fileCov=0.8045
+// class=modified  jaccard=0.5704  score=0.8863  fileCov=0.6155
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hFl = E(() => {

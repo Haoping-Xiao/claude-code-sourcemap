@@ -1,85 +1,81 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Tjo
+// restored from claude-code 2.1.195 (deminified) — module s6l
 // matched 2.1.88 source: src/hooks/useTeleportResume.tsx
-// class=modified  jaccard=0.0893  score=0.2127  fileCov=0.1335
-// note: deminified; 2 identifiers renamed from _t exports
+// class=modified  jaccard=0.1859  score=0.3413  fileCov=0.2898
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var Tjo = E(() => {
-  kt();
-  l6l();
-  Ye();
-  ps();
-  rlt();
-  Ko();
-  d6l();
-  EC();
-  ((p6l = R(lt(), 1)), (f6l = R(rt(), 1)), (qq = R(se(), 1)));
+var s6l = E(() => {
+  ((q5f = {
+    type: "local-jsx",
+    name: "tasks",
+    aliases: ["bashes"],
+    description: "View and manage everything running in the background",
+    immediate: true,
+    load: () => Promise.resolve().then(() => (r6l(), t6l)),
+  }),
+    (o6l = q5f));
 });
-var _6l = {};
-_t(_6l, {
-  call: () => call,
-  Teleport: () => Teleport,
-});
-function Teleport(e) {
-  let t = g6l.c(16),
-    { onExit: n, context: r } = e,
-    o = Dc(),
-    s;
-  if (t[0] !== o) ((s = () => Boolean(o.getState().replBridgeSessionId)), (t[0] = o), (t[1] = s));
-  else s = t[1];
-  let [i] = h6l.useState(s),
-    a;
-  if (t[6] !== r || t[7] !== n)
-    ((a = (d) => {
-      (r.applyMessageOp({
-        type: "replace-all",
-        messages: d.log,
-      }),
-        n("Session resumed successfully", {
-          display: "system",
+function a6l(e) {
+  let t = i6l.c(8),
+    [n, r] = Esr.useState(false),
+    [o, s] = Esr.useState(null),
+    [i, a] = Esr.useState(null),
+    l;
+  if (t[0] !== e)
+    ((l = async (f) => {
+      (r(true),
+        s(null),
+        a(f),
+        G("tengu_teleport_resume_session", {
+          source: $e(e),
+          session_id: f.id,
         }));
+      try {
+        let m = await yl("teleport_resume", () => i8e(f.id));
+        return (
+          DCt({
+            sessionId: f.id,
+          }),
+          r(false),
+          m
+        );
+      } catch (m) {
+        let g = m,
+          h = {
+            message: g instanceof qb ? g.message : be(g),
+            formattedMessage: g instanceof qb ? g.formattedMessage : void 0,
+            isOperationError: g instanceof qb,
+          };
+        return (s(h), r(false), null);
+      }
     }),
-      (t[6] = r),
-      (t[7] = n),
-      (t[8] = a));
-  else a = t[8];
-  let l, c;
-  if (t[9] !== n)
-    ((l = () => {
-      n("Teleport cancelled", {
-        display: "system",
-      });
+      (t[0] = e),
+      (t[1] = l));
+  else l = t[1];
+  let c = l,
+    u;
+  if (t[2] === Symbol.for("react.memo_cache_sentinel"))
+    ((u = () => {
+      s(null);
     }),
-      (c = (d, p) => {
-        n(d, {
-          display: "system",
-        });
-      }),
-      (t[9] = n),
-      (t[10] = l),
-      (t[11] = c));
-  else ((l = t[10]), (c = t[11]));
-  let u;
-  if (t[12] !== a || t[13] !== l || t[14] !== c)
-    ((u = vjo.jsx(Hjo, {
-      onComplete: a,
-      onCancel: l,
-      onError: c,
-      isEmbedded: true,
-      source: "localCommand",
-    })),
-      (t[12] = a),
-      (t[13] = l),
-      (t[14] = c),
-      (t[15] = u));
-  else u = t[15];
-  return u;
+      (t[2] = u));
+  else u = t[2];
+  let d = u,
+    p;
+  if (t[3] !== o || t[4] !== n || t[5] !== c || t[6] !== i)
+    ((p = {
+      resumeSession: c,
+      isResuming: n,
+      error: o,
+      selectedSession: i,
+      clearError: d,
+    }),
+      (t[3] = o),
+      (t[4] = n),
+      (t[5] = c),
+      (t[6] = i),
+      (t[7] = p));
+  else p = t[7];
+  return p;
 }
-var g6l,
-  h6l,
-  vjo,
-  call = async (e, t) =>
-    vjo.jsx(Teleport, {
-      onExit: e,
-      context: t,
-    });
+var i6l, Esr;

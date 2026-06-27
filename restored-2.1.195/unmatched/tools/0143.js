@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tIt
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
+// class=new  jaccard=0.0211  score=0.2546  fileCov=0.0225
+// note: nearest: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js (0.0211); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tIt = E(() => {
   Fsn();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DMo
 // matched 2.1.88 source: src/services/tokenEstimation.ts
-// class=modified  jaccard=0.316  score=0.6819  fileCov=0.3706
+// class=modified  jaccard=0.322  score=0.8087  fileCov=0.3485
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var DMo = E(() => {

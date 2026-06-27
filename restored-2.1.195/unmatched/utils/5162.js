@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module p3o
-// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0064  score=0.1242  fileCov=0.0067
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0064); dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0056  score=0.2722  fileCov=0.0057
+// note: nearest: src/screens/REPL.tsx (0.0056); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var p3o = E(() => {
   G4o();

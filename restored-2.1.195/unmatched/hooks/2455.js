@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UJr
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> hooks; 0 renamed
+// matched 2.1.88 source: node_modules/react/cjs/react.production.js
+// class=new  jaccard=0.025  score=0.757  fileCov=0.0252
+// note: nearest: node_modules/react/cjs/react.production.js (0.025); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var UJr = E(() => {
   fGe();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nUo
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/react/cjs/react.production.js
+// class=new  jaccard=0.0173  score=1  fileCov=0.0173
+// note: nearest: node_modules/react/cjs/react.production.js (0.0173); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var nUo = E(() => {
   Xa();

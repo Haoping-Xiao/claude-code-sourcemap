@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _a
 // matched 2.1.88 source: src/utils/plans.ts
-// class=modified  jaccard=0.1999  score=0.2473  fileCov=0.5104
+// class=modified  jaccard=0.1286  score=0.2401  fileCov=0.2167
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _a = E(() => {

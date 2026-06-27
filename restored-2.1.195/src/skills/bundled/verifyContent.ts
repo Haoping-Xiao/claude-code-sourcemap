@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cwc
 // matched 2.1.88 source: src/skills/bundled/verifyContent.ts
-// class=modified  jaccard=0.2891  score=0.5106  fileCov=0.4
+// class=modified  jaccard=0.3134  score=0.414  fileCov=0.5633
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Cwc = E(() => {

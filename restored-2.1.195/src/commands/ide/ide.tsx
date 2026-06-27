@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JBl
 // matched 2.1.88 source: src/commands/ide/ide.tsx
-// class=modified  jaccard=0.5848  score=0.7252  fileCov=0.7512
+// class=modified  jaccard=0.5103  score=0.7408  fileCov=0.6212
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var JBl = E(() => {

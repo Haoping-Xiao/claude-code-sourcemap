@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qho
 // matched 2.1.88 source: src/utils/settings/applySettingsChange.ts
-// class=modified  jaccard=0.1438  score=0.2851  fileCov=0.2249
+// class=modified  jaccard=0.1246  score=0.2258  fileCov=0.2176
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qho = E(() => {

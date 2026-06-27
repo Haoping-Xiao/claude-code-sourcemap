@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Du
 // matched 2.1.88 source: src/services/analytics/firstPartyEventLoggingExporter.ts
-// class=modified  jaccard=0.2824  score=0.5786  fileCov=0.3556
+// class=modified  jaccard=0.2478  score=0.5883  fileCov=0.2998
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Du = E(() => {

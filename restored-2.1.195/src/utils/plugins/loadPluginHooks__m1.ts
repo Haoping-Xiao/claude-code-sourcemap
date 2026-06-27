@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module A5e
 // matched 2.1.88 source: src/utils/plugins/loadPluginHooks.ts
-// class=modified (alt of src/utils/plugins/loadPluginHooks.ts)  jaccard=0.1946  score=0.4585  fileCov=0.2527
+// class=modified (alt of src/utils/plugins/loadPluginHooks.ts)  jaccard=0.3976  score=0.7919  fileCov=0.444
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var A5e = E(() => {

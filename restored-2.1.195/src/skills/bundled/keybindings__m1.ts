@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Qvc
 // matched 2.1.88 source: src/skills/bundled/keybindings.ts
-// class=modified (alt of src/skills/bundled/keybindings.ts)  jaccard=0.2359  score=0.9574  fileCov=0.2384
+// class=modified (alt of src/skills/bundled/keybindings.ts)  jaccard=0.2951  score=0.973  fileCov=0.2975
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Qvc = E(() => {

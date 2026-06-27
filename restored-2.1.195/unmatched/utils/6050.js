@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _qc
-// matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0021  score=0.0232  fileCov=0.0023
-// note: nearest: src/main.tsx (0.0021); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/attachments.ts
+// class=new  jaccard=0.0061  score=0.0353  fileCov=0.0074
+// note: nearest: src/utils/attachments.ts (0.0061); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _qc = E(() => {
   lH();

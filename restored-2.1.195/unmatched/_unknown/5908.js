@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tJo
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/pkcs7.js
+// class=new  jaccard=0.0105  score=0.0568  fileCov=0.0127
+// note: nearest: node_modules/node-forge/lib/pkcs7.js (0.0105); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tJo = E(() => {
   Xmr();

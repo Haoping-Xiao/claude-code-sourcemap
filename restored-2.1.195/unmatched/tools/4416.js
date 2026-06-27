@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dze
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/utils/file.ts
+// class=new  jaccard=0.028  score=0.4109  fileCov=0.0292
+// note: nearest: src/utils/file.ts (0.028); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dze = E(() => {
   uze = /[\s\u0085\u180e]+/, $Lo = /^[\s\u0085\u180e]+/, V_f = /^['"\u2018-\u201F]+|['"\u2018-\u201F]+$/g;

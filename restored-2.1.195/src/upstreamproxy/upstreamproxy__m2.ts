@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module har
 // matched 2.1.88 source: src/upstreamproxy/upstreamproxy.ts
-// class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0351  score=0.1765  fileCov=0.0419
+// class=modified (alt of src/upstreamproxy/upstreamproxy.ts)  jaccard=0.0308  score=0.1086  fileCov=0.0412
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var har = E(() => {

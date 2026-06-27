@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T3e
-// matched 2.1.88 source: src/constants/outputStyles.ts
-// class=new  jaccard=0.058  score=0.5735  fileCov=0.0606
-// note: nearest: src/constants/outputStyles.ts (0.058); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
+// class=new  jaccard=0.0103  score=0.2331  fileCov=0.0107
+// note: nearest: src/utils/permissions/permissionSetup.ts (0.0103); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var T3e = E(() => {
   Xr();

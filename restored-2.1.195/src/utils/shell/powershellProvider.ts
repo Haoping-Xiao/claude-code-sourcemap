@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oMa
 // matched 2.1.88 source: src/utils/shell/powershellProvider.ts
-// class=modified  jaccard=0.4563  score=0.609  fileCov=0.6455
+// class=modified  jaccard=0.4682  score=0.6717  fileCov=0.6071
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oMa = E(() => {

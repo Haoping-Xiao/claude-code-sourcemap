@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eXn
-// matched 2.1.88 source: src/hooks/notifs/useMcpConnectivityStatus.tsx
-// class=new  jaccard=0.041  score=0.1592  fileCov=0.0524
-// note: nearest: src/hooks/notifs/useMcpConnectivityStatus.tsx (0.041); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0034  score=0.2362  fileCov=0.0034
+// note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var eXn = E(() => {
   kt();

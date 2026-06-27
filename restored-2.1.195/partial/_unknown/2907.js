@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Kda
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/asciidoc.js
-// class=partial  jaccard=0.0685  score=0.1824  fileCov=0.0989
-// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/asciidoc.js; 0 renamed
+// matched 2.1.88 source: node_modules/highlight.js/lib/languages/vbnet.js
+// class=partial  jaccard=0.077  score=0.3172  fileCov=0.0923
+// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/vbnet.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Kda = Q((JBy, zda) => {
   function Hdp(e) {

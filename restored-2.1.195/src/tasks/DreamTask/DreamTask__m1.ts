@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module j7n
 // matched 2.1.88 source: src/tasks/DreamTask/DreamTask.ts
-// class=modified (alt of src/tasks/DreamTask/DreamTask.ts)  jaccard=0.2378  score=0.7616  fileCov=0.257
+// class=modified (alt of src/tasks/DreamTask/DreamTask.ts)  jaccard=0.1853  score=0.7447  fileCov=0.1978
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var j7n = E(() => {

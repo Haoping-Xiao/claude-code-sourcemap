@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b0l
 // matched 2.1.88 source: src/utils/attachments.ts
-// class=modified  jaccard=0.2606  score=0.6799  fileCov=0.297
+// class=modified  jaccard=0.3191  score=0.6063  fileCov=0.4025
 // note: deminified; 42 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var b0l = E(() => {

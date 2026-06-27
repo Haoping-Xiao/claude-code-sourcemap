@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vft
 // matched 2.1.88 source: src/services/api/grove.ts
-// class=modified (alt of src/services/api/grove.ts)  jaccard=0.1267  score=0.4762  fileCov=0.1472
+// class=modified (alt of src/services/api/grove.ts)  jaccard=0.1508  score=0.6714  fileCov=0.1629
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vft = E(() => {

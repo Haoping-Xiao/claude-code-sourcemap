@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module E8e
-// matched 2.1.88 source: src/components/messages/SystemAPIErrorMessage.tsx
-// class=partial  jaccard=0.0937  score=0.4826  fileCov=0.1041
-// note: low-confidence suggestion: src/components/messages/SystemAPIErrorMessage.tsx; dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/FileEditToolDiff.tsx
+// class=partial  jaccard=0.2313  score=0.489  fileCov=0.305
+// note: low-confidence suggestion: src/components/FileEditToolDiff.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var E8e = E(() => {
   Ye();

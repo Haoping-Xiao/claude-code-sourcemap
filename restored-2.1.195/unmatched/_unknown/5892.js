@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VXo
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
+// class=new  jaccard=0.0115  score=0.119  fileCov=0.0125
+// note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0115); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VXo = E(() => {
   _2c();

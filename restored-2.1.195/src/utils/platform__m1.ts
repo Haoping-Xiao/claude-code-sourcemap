@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PB
 // matched 2.1.88 source: src/utils/platform.ts
-// class=modified (alt of src/utils/platform.ts)  jaccard=0.1246  score=0.6207  fileCov=0.1348
+// class=modified (alt of src/utils/platform.ts)  jaccard=0.1112  score=0.6768  fileCov=0.1175
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var PB = E(() => {

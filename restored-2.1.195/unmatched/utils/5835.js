@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lNc
-// matched 2.1.88 source: node_modules/@smithy/node-http-handler/dist-cjs/index.js
-// class=new  jaccard=0.0311  score=0.0835  fileCov=0.0473
-// note: nearest: node_modules/@smithy/node-http-handler/dist-cjs/index.js (0.0311); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/mcp/client.ts
+// class=new  jaccard=0.0141  score=0.1168  fileCov=0.0158
+// note: nearest: src/services/mcp/client.ts (0.0141); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lNc = E(() => {
   ft();

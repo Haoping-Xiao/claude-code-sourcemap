@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s6n
 // matched 2.1.88 source: src/components/permissions/NotebookEditPermissionRequest/NotebookEditToolDiff.tsx
-// class=modified  jaccard=0.4052  score=0.7832  fileCov=0.4564
+// class=modified  jaccard=0.3952  score=0.5911  fileCov=0.5438
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var s6n = E(() => {

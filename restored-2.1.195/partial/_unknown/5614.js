@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ivc
 // matched 2.1.88 source: src/skills/bundled/verify.ts
-// class=partial  jaccard=0.0641  score=0.0992  fileCov=0.1537
+// class=partial  jaccard=0.1637  score=0.2566  fileCov=0.3115
 // note: low-confidence suggestion: src/skills/bundled/verify.ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ivc = E(() => {

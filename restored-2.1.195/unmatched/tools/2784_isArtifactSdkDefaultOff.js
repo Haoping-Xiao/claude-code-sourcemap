@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZWe
 // matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0027  score=0.3433  fileCov=0.0027
-// note: nearest: src/main.tsx (0.0027); dir inferred from dep-graph -> tools; 6 renamed
+// class=new  jaccard=0.0031  score=0.1823  fileCov=0.0031
+// note: nearest: src/main.tsx (0.0031); dir inferred from dep-graph -> tools; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ZWe = E(() => {
   fh();

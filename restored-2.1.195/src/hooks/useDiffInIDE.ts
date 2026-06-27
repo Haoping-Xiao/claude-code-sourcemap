@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Sfl
 // matched 2.1.88 source: src/hooks/useDiffInIDE.ts
-// class=modified  jaccard=0.3331  score=0.7271  fileCov=0.3807
+// class=modified  jaccard=0.306  score=0.7892  fileCov=0.3332
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Sfl = E(() => {

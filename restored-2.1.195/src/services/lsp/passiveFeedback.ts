@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NDa
 // matched 2.1.88 source: src/services/lsp/passiveFeedback.ts
-// class=modified  jaccard=0.4223  score=0.5867  fileCov=0.6011
+// class=modified  jaccard=0.4031  score=0.5942  fileCov=0.5562
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var NDa = E(() => {

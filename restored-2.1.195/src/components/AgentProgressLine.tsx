@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xoe
 // matched 2.1.88 source: src/components/AgentProgressLine.tsx
-// class=modified  jaccard=0.2867  score=0.5812  fileCov=0.3614
+// class=modified  jaccard=0.2403  score=0.3389  fileCov=0.4521
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xoe = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l$e
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
-// class=new  jaccard=0.0356  score=0.0664  fileCov=0.0711
-// note: nearest: src/tools/WebFetchTool/utils.ts (0.0356); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0303  score=0.0742  fileCov=0.0488
+// note: nearest: src/tools/WebFetchTool/utils.ts (0.0303); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var l$e = E(() => {
   Cde();

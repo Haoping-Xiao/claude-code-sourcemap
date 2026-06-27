@@ -1,53 +1,34 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module se
 // matched 2.1.88 source: src/ink/terminal-focus-state.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=1  score=1  fileCov=1
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.27  score=0.9372  fileCov=0.275
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-// Terminal focus state signal — non-React access to DECSET 1004 focus events.
-// 'unknown' is the default for terminals that don't support focus reporting;
-// consumers treat 'unknown' identically to 'focused' (no throttling).
-// Subscribers are notified synchronously when focus changes, used by
-// TerminalFocusProvider to avoid polling.
-export type TerminalFocusState = 'focused' | 'blurred' | 'unknown'
-
-let focusState: TerminalFocusState = 'unknown'
-const resolvers: Set<() => void> = new Set()
-const subscribers: Set<() => void> = new Set()
-
-export function setTerminalFocused(v: boolean): void {
-  focusState = v ? 'focused' : 'blurred'
-  // Notify useSyncExternalStore subscribers
-  for (const cb of subscribers) {
-    cb()
+var se = Q((I6h, hUi) => {
+  hUi.exports = gUi();
+});
+function LYr(e) {
+  ((RYr = e ? "focused" : "blurred"), A_r(e));
+  for (let t of kYr) t();
+  if (!e) {
+    for (let t of yUi) t();
+    yUi.clear();
   }
-  if (!v) {
-    for (const resolve of resolvers) {
-      resolve()
+}
+function Sit() {
+  return RYr !== "blurred";
+}
+function N7() {
+  return RYr;
+}
+function K3e(e) {
+  return (
+    kYr.add(e),
+    () => {
+      kYr.delete(e);
     }
-    resolvers.clear()
-  }
+  );
 }
-
-export function getTerminalFocused(): boolean {
-  return focusState !== 'blurred'
-}
-
-export function getTerminalFocusState(): TerminalFocusState {
-  return focusState
-}
-
-// For useSyncExternalStore
-export function subscribeTerminalFocus(cb: () => void): () => void {
-  subscribers.add(cb)
-  return () => {
-    subscribers.delete(cb)
-  }
-}
-
-export function resetTerminalFocusState(): void {
-  focusState = 'unknown'
-  for (const cb of subscribers) {
-    cb()
-  }
-}
+var RYr = "unknown",
+  yUi,
+  kYr;

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module AIo
 // matched 2.1.88 source: src/tools/AgentTool/AgentTool.tsx
-// class=modified  jaccard=0.3238  score=0.4764  fileCov=0.5027
+// class=modified  jaccard=0.3356  score=0.5279  fileCov=0.4795
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var AIo = E(() => {

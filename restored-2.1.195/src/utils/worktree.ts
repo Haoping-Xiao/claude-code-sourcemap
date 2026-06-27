@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sp
 // matched 2.1.88 source: src/utils/worktree.ts
-// class=modified  jaccard=0.268  score=0.3822  fileCov=0.4727
+// class=modified  jaccard=0.2653  score=0.4289  fileCov=0.4102
 // note: deminified; 32 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sp = E(() => {

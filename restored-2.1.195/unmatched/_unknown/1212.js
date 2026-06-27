@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module n6s
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js
+// class=new  jaccard=0.0595  score=1  fileCov=0.0595
+// note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0595); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var n6s = E(() => {
   z8s();

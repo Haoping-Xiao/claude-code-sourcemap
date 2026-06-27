@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module IX
 // matched 2.1.88 source: src/tools/BriefTool/prompt.ts
-// class=modified  jaccard=0.1352  score=0.2274  fileCov=0.25
+// class=modified  jaccard=0.0912  score=0.1255  fileCov=0.25
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var IX = E(() => {

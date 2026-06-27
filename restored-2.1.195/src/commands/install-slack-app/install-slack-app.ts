@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vFl
 // matched 2.1.88 source: src/commands/install-slack-app/install-slack-app.ts
-// class=modified  jaccard=0.2728  score=0.3786  fileCov=0.4939
+// class=modified  jaccard=0.189  score=0.2516  fileCov=0.4316
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vFl = E(() => {

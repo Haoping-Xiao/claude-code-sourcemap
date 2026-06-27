@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fho
 // matched 2.1.88 source: src/utils/model/model.ts
-// class=partial  jaccard=0.1491  score=0.419  fileCov=0.1879
+// class=partial  jaccard=0.071  score=0.2569  fileCov=0.0893
 // note: low-confidence suggestion: src/utils/model/model.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fho = E(() => {

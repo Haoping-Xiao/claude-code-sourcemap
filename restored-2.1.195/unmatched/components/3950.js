@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nQa
-// matched 2.1.88 source: src/components/ResumeTask.tsx
-// class=new  jaccard=0.022  score=0.0407  fileCov=0.0458
-// note: nearest: src/components/ResumeTask.tsx (0.022); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/googleauth.js
+// class=new  jaccard=0.0299  score=0.1196  fileCov=0.0383
+// note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0299); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var nQa = E(() => {
   Ye();

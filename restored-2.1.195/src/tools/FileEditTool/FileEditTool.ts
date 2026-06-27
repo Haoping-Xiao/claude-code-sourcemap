@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xMe
 // matched 2.1.88 source: src/tools/FileEditTool/FileEditTool.ts
-// class=modified  jaccard=0.495  score=0.8237  fileCov=0.5537
+// class=modified  jaccard=0.4645  score=0.7025  fileCov=0.5783
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xMe = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I8e
 // matched 2.1.88 source: src/tools/GlobTool/GlobTool.ts
-// class=modified  jaccard=0.4633  score=0.7693  fileCov=0.538
+// class=modified  jaccard=0.5654  score=0.7959  fileCov=0.6613
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I8e = E(() => {

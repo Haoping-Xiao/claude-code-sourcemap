@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pqi
 // matched 2.1.88 source: src/keybindings/loadUserBindings.ts
-// class=modified  jaccard=0.5315  score=0.6698  fileCov=0.7203
+// class=modified  jaccard=0.4334  score=0.69  fileCov=0.5382
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pqi = E(() => {

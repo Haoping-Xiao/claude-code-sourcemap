@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Qir
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0136  score=0.2793  fileCov=0.0141
-// note: nearest: src/bridge/bridgeMain.ts (0.0136); dir inferred from dep-graph -> utils; 7 renamed
+// class=new  jaccard=0.0241  score=0.2787  fileCov=0.0257
+// note: nearest: src/bridge/bridgeMain.ts (0.0241); dir inferred from dep-graph -> utils; 7 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Qir = E(() => {
   IB();

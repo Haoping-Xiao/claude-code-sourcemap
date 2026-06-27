@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QGo
-// matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0084  score=0.0878  fileCov=0.0093
-// note: nearest: src/bridge/bridgeMain.ts (0.0084); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0036  score=0.0824  fileCov=0.0037
+// note: nearest: src/cli/print.ts (0.0036); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QGo = E(() => {
   lH();

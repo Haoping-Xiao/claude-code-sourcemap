@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cUc
 // matched 2.1.88 source: src/cli/remoteIO.ts
-// class=modified  jaccard=0.2478  score=0.4234  fileCov=0.374
+// class=modified  jaccard=0.3079  score=0.4294  fileCov=0.521
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cUc = E(() => {

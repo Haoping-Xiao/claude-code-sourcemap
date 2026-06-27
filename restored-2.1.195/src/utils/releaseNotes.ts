@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $Gl
 // matched 2.1.88 source: src/utils/releaseNotes.ts
-// class=modified  jaccard=0.1554  score=0.215  fileCov=0.3591
+// class=modified  jaccard=0.158  score=0.3307  fileCov=0.2323
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $Gl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module AHc
 // matched 2.1.88 source: src/components/permissions/PermissionPrompt.tsx
-// class=modified  jaccard=0.5475  score=0.8929  fileCov=0.586
+// class=modified  jaccard=0.3956  score=0.662  fileCov=0.4957
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var AHc = E(() => {

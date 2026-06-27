@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Sbe
 // matched 2.1.88 source: src/utils/plugins/pluginIdentifier.ts
-// class=modified  jaccard=0.3303  score=0.5599  fileCov=0.4462
+// class=modified  jaccard=0.2304  score=0.6873  fileCov=0.2574
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Sbe = E(() => {

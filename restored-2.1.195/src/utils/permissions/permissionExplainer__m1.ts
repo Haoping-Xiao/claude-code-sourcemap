@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rHc
 // matched 2.1.88 source: src/utils/permissions/permissionExplainer.ts
-// class=modified (alt of src/utils/permissions/permissionExplainer.ts)  jaccard=0.2308  score=0.473  fileCov=0.3108
+// class=modified (alt of src/utils/permissions/permissionExplainer.ts)  jaccard=0.2136  score=0.3374  fileCov=0.368
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rHc = E(() => {

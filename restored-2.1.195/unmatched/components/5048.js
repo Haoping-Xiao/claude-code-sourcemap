@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OKl
-// matched 2.1.88 source: src/tools/TaskUpdateTool/TaskUpdateTool.ts
-// class=new  jaccard=0.0174  score=0.0656  fileCov=0.0231
-// note: nearest: src/tools/TaskUpdateTool/TaskUpdateTool.ts (0.0174); dir inferred from dep-graph -> components; 1 renamed
+// matched 2.1.88 source: src/components/permissions/rules/PermissionRuleList.tsx
+// class=new  jaccard=0.0209  score=0.1424  fileCov=0.0239
+// note: nearest: src/components/permissions/rules/PermissionRuleList.tsx (0.0209); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var OKl = E(() => {
   si();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cea
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/src/common.js
+// class=new  jaccard=0.0186  score=0.316  fileCov=0.0194
+// note: nearest: node_modules/protobufjs/src/common.js (0.0186); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var cea = E(() => {
   Jlt();

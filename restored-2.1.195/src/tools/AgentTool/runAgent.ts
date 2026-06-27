@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module e$e
 // matched 2.1.88 source: src/tools/AgentTool/runAgent.ts
-// class=modified  jaccard=0.2164  score=0.3105  fileCov=0.4168
+// class=modified  jaccard=0.2554  score=0.367  fileCov=0.4563
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var e$e = E(() => {

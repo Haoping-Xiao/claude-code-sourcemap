@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vfc
 // matched 2.1.88 source: src/entrypoints/init.ts
-// class=modified (alt of src/entrypoints/init.ts)  jaccard=0.0922  score=1  fileCov=0.0922
+// class=modified (alt of src/entrypoints/init.ts)  jaccard=0.0879  score=0.8556  fileCov=0.0892
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vfc = E(() => {

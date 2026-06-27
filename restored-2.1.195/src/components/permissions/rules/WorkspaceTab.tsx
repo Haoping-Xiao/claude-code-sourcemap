@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Csr
 // matched 2.1.88 source: src/components/permissions/rules/WorkspaceTab.tsx
-// class=modified  jaccard=0.3914  score=0.7917  fileCov=0.4363
+// class=modified  jaccard=0.3569  score=0.4735  fileCov=0.5918
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Csr = E(() => {

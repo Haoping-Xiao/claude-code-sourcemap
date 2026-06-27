@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module znc
 // matched 2.1.88 source: src/commands/insights.ts
-// class=new  jaccard=0.0066  score=0.1017  fileCov=0.007
-// note: nearest: src/commands/insights.ts (0.0066); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.014  score=0.1987  fileCov=0.0148
+// note: nearest: src/commands/insights.ts (0.014); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var znc = E(() => {
   ft();

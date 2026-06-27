@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wUl
 // matched 2.1.88 source: src/components/WorkflowMultiselectDialog.tsx
-// class=modified  jaccard=0.16  score=0.4278  fileCov=0.2035
+// class=modified  jaccard=0.1512  score=0.355  fileCov=0.2085
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wUl = E(() => {

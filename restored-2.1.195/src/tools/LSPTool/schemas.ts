@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Z_l
 // matched 2.1.88 source: src/tools/LSPTool/schemas.ts
-// class=modified  jaccard=0.7758  score=0.8321  fileCov=0.9198
+// class=modified  jaccard=0.6158  score=0.6985  fileCov=0.8387
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Z_l = E(() => {

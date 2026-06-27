@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gz
 // matched 2.1.88 source: src/hooks/notifs/useSettingsErrors.tsx
-// class=partial  jaccard=0.1292  score=1  fileCov=0.1292
+// class=partial  jaccard=0.1259  score=0.5184  fileCov=0.1426
 // note: low-confidence suggestion: src/hooks/notifs/useSettingsErrors.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gz = E(() => {

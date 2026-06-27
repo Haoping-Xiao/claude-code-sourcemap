@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N0r
-// matched 2.1.88 source: src/tools/PowerShellTool/modeValidation.ts
-// class=new  jaccard=0.0248  score=0.2346  fileCov=0.027
-// note: nearest: src/tools/PowerShellTool/modeValidation.ts (0.0248); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/auth.ts
+// class=new  jaccard=0.0064  score=0.2997  fileCov=0.0065
+// note: nearest: src/utils/auth.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var N0r = E(() => {
   QAs();

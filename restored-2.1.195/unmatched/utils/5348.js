@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k9o
-// matched 2.1.88 source: node_modules/axios/lib/adapters/http.js
-// class=new  jaccard=0.0136  score=0.051  fileCov=0.0182
-// note: nearest: node_modules/axios/lib/adapters/http.js (0.0136); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/undici/lib/web/fetch/util.js
+// class=new  jaccard=0.0187  score=0.1245  fileCov=0.0215
+// note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0187); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var k9o = E(() => {
   je();

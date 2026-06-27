@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module t1t
 // matched 2.1.88 source: src/utils/auth.ts
-// class=modified  jaccard=0.3913  score=0.4778  fileCov=0.6835
+// class=modified  jaccard=0.3055  score=0.3817  fileCov=0.6049
 // note: deminified; 112 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var t1t = E(() => {

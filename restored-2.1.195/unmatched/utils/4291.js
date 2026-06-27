@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module h7n
-// matched 2.1.88 source: src/utils/hooks/ssrfGuard.ts
-// class=new  jaccard=0.0538  score=0.0668  fileCov=0.216
-// note: nearest: src/utils/hooks/ssrfGuard.ts (0.0538); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/mcp/client.ts
+// class=new  jaccard=0.012  score=0.1474  fileCov=0.0129
+// note: nearest: src/services/mcp/client.ts (0.012); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var h7n = E(() => {
   sr();

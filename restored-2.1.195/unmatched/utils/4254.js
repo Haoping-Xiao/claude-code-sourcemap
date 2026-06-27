@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FAe
-// matched 2.1.88 source: src/tasks/LocalMainSessionTask.ts
-// class=new  jaccard=0.0291  score=0.0905  fileCov=0.0411
-// note: nearest: src/tasks/LocalMainSessionTask.ts (0.0291); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
+// class=new  jaccard=0.0116  score=0.2128  fileCov=0.0121
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0116); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var FAe = E(() => {
   zb();

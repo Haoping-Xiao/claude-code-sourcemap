@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JLn
 // matched 2.1.88 source: src/keybindings/reservedShortcuts.ts
-// class=modified  jaccard=0.6435  score=0.7134  fileCov=0.8678
+// class=modified  jaccard=0.5023  score=0.6922  fileCov=0.6468
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var JLn = E(() => {

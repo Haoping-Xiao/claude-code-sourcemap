@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R9
 // matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/oauth2client.js
-// class=new  jaccard=0.0447  score=0.1958  fileCov=0.0547
-// note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.0447); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.04  score=0.2479  fileCov=0.0455
+// note: nearest: node_modules/google-auth-library/build/src/auth/oauth2client.js (0.04); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var R9 = E(() => {
   Rc();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Eue
 // matched 2.1.88 source: src/tools/WebFetchTool/prompt.ts
-// class=modified  jaccard=0.3402  score=0.4459  fileCov=0.5892
+// class=modified  jaccard=0.1964  score=0.305  fileCov=0.3556
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Eue = E(() => {

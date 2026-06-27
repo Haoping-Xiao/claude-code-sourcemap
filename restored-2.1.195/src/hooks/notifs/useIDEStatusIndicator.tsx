@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MDc
 // matched 2.1.88 source: src/hooks/notifs/useIDEStatusIndicator.tsx
-// class=modified  jaccard=0.4665  score=0.9441  fileCov=0.4797
+// class=modified  jaccard=0.4395  score=0.9056  fileCov=0.4606
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MDc = E(() => {

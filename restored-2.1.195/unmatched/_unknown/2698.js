@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uZi
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: src/utils/collapseHookSummaries.ts
+// class=new  jaccard=0.0571  score=0.4388  fileCov=0.0616
+// note: nearest: src/utils/collapseHookSummaries.ts (0.0571); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uZi = E(() => {
   vno();

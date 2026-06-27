@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CRa
 // matched 2.1.88 source: src/services/analytics/sink.ts
-// class=modified  jaccard=0.2016  score=0.3834  fileCov=0.2983
+// class=modified  jaccard=0.1935  score=0.3913  fileCov=0.2768
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var CRa = E(() => {

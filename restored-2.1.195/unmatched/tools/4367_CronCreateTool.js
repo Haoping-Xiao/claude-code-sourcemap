@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Xn
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 1 renamed
+// matched 2.1.88 source: src/tools.ts
+// class=new  jaccard=0.0078  score=1  fileCov=0.0078
+// note: nearest: src/tools.ts (0.0078); dir inferred from dep-graph -> tools; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _Xn = E(() => {
   B_();

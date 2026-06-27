@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dOe
 // matched 2.1.88 source: src/utils/plugins/cacheUtils.ts
-// class=modified  jaccard=0.3617  score=0.7118  fileCov=0.4237
+// class=modified  jaccard=0.2719  score=0.8045  fileCov=0.2911
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dOe = E(() => {

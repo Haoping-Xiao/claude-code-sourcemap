@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ymn
 // matched 2.1.88 source: src/utils/settings/mdm/settings.ts
-// class=modified  jaccard=0.3134  score=0.718  fileCov=0.3574
+// class=modified  jaccard=0.2905  score=0.7674  fileCov=0.3185
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ymn = E(() => {

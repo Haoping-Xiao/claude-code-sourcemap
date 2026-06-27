@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rnr
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
-// class=modified  jaccard=0.336  score=0.4626  fileCov=0.5512
+// class=modified  jaccard=0.3314  score=0.558  fileCov=0.4494
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rnr = E(() => {

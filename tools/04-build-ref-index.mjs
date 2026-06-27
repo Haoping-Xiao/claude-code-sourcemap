@@ -6,7 +6,7 @@
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from "fs";
 import { join, relative } from "path";
-import { fingerprintSet } from "./lib/strings.mjs";
+import { fingerprintTokens } from "./lib/strings.mjs";
 
 const ROOT = process.argv[2] || "restored-src";
 const OUT = process.argv[3] || "work/2.1.195/ref-2.1.88.index.json";
@@ -41,7 +41,7 @@ let done = 0;
 for (const f of files) {
   let code;
   try { code = readFileSync(f, "utf-8"); } catch { continue; }
-  const set = fingerprintSet(code, MIN_LEN);
+  const set = fingerprintTokens(code, { strMinLen: MIN_LEN, propMinLen: 5 });
   if (set.size === 0) continue;
   const rel = relative(ROOT, f);
   const isApp = rel.startsWith("src/") || rel.startsWith("src\\");

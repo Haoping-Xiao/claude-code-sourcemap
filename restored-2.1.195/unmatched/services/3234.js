@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZCa
-// matched 2.1.88 source: src/services/mcp/types.ts
-// class=new  jaccard=0.0351  score=0.1089  fileCov=0.0493
-// note: nearest: src/services/mcp/types.ts (0.0351); dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: src/components/mcp/MCPRemoteServerMenu.tsx
+// class=new  jaccard=0.0169  score=0.3077  fileCov=0.0176
+// note: nearest: src/components/mcp/MCPRemoteServerMenu.tsx (0.0169); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ZCa = E(() => {
   Un();

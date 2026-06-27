@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I7e
-// matched 2.1.88 source: src/components/MessageRow.tsx
-// class=new  jaccard=0.0438  score=0.1091  fileCov=0.0682
-// note: nearest: src/components/MessageRow.tsx (0.0438); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.004  score=0.147  fileCov=0.0041
+// note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var I7e = E(() => {
   ft();

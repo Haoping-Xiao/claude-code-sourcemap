@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uEr
-// matched 2.1.88 source: src/assistant/sessionHistory.ts
-// class=partial  jaccard=0.1107  score=0.2987  fileCov=0.1495
-// note: low-confidence suggestion: src/assistant/sessionHistory.ts; dir inferred from dep-graph -> constants; 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs
+// class=partial  jaccard=0.1247  score=0.4416  fileCov=0.1481
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/messages/batches.mjs; dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uEr = E(() => {
   Tx();

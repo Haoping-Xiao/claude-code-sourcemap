@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MAe
-// matched 2.1.88 source: src/bridge/bridgeMessaging.ts
-// class=new  jaccard=0.0524  score=0.217  fileCov=0.0646
-// note: nearest: src/bridge/bridgeMessaging.ts (0.0524); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/api/claude.ts
+// class=new  jaccard=0.0169  score=0.3216  fileCov=0.0175
+// note: nearest: src/services/api/claude.ts (0.0169); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var MAe = E(() => {
   AVe();

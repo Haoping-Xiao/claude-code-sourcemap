@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ruc
-// matched 2.1.88 source: src/components/Feedback.tsx
-// class=new  jaccard=0.0129  score=0.0796  fileCov=0.0152
-// note: nearest: src/components/Feedback.tsx (0.0129); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
+// class=new  jaccard=0.0077  score=0.0883  fileCov=0.0084
+// note: nearest: src/utils/nativeInstaller/installer.ts (0.0077); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ruc = E(() => {
   zb();

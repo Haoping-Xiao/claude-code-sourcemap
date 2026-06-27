@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module K6n
 // matched 2.1.88 source: src/tools/AgentTool/agentToolUtils.ts
-// class=modified  jaccard=0.1451  score=0.2031  fileCov=0.3371
+// class=modified  jaccard=0.2657  score=0.3576  fileCov=0.5082
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var K6n = E(() => {

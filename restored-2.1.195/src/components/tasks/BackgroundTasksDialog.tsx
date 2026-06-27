@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gsr
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
-// class=modified  jaccard=0.384  score=0.6291  fileCov=0.4964
+// class=modified  jaccard=0.3175  score=0.5158  fileCov=0.4523
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gsr = E(() => {

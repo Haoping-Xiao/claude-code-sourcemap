@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Dbe
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/util.js
+// class=new  jaccard=0.0119  score=0.1482  fileCov=0.0128
+// note: nearest: node_modules/node-forge/lib/util.js (0.0119); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Dbe = E(() => {
   U_ = hZd();

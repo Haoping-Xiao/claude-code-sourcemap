@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module voc
 // matched 2.1.88 source: src/commands/insights.ts
-// class=modified  jaccard=0.4486  score=0.8862  fileCov=0.476
+// class=modified  jaccard=0.4668  score=0.9259  fileCov=0.485
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var voc = E(() => {

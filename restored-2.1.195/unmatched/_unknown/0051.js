@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Hyr
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: src/ink/dom.ts
+// class=new  jaccard=0.0171  score=1  fileCov=0.0171
+// note: nearest: src/ink/dom.ts (0.0171); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Hyr = E(() => {
   yon = H9c;

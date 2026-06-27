@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gZs
 // matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js
-// class=partial  jaccard=0.1339  score=1  fileCov=0.1339
+// class=partial  jaccard=0.204  score=0.8758  fileCov=0.21
 // note: low-confidence suggestion: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/sts/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gZs = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module AKt
 // matched 2.1.88 source: src/tools/BashTool/commandSemantics.ts
-// class=modified  jaccard=0.3511  score=0.5348  fileCov=0.5055
+// class=modified  jaccard=0.1892  score=0.4166  fileCov=0.2574
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var AKt = E(() => {

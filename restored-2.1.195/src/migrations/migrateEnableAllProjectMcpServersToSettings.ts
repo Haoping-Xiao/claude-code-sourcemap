@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FOc
 // matched 2.1.88 source: src/migrations/migrateEnableAllProjectMcpServersToSettings.ts
-// class=modified  jaccard=0.3904  score=0.4592  fileCov=0.7226
+// class=modified  jaccard=0.313  score=0.5477  fileCov=0.422
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var FOc = E(() => {

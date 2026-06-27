@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module K0
 // matched 2.1.88 source: src/utils/mcpOutputStorage.ts
-// class=modified  jaccard=0.4887  score=0.5636  fileCov=0.7863
+// class=modified  jaccard=0.468  score=0.5717  fileCov=0.7206
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var K0 = E(() => {

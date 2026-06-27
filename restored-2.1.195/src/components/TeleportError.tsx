@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DQa
 // matched 2.1.88 source: src/components/TeleportError.tsx
-// class=modified  jaccard=0.4048  score=0.71  fileCov=0.485
+// class=modified  jaccard=0.2416  score=0.4223  fileCov=0.3609
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var DQa = E(() => {

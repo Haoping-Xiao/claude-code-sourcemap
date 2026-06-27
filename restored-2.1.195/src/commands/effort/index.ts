@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UQl
 // matched 2.1.88 source: src/commands/effort/index.ts
-// class=modified  jaccard=0.2935  score=0.5075  fileCov=0.4103
+// class=modified  jaccard=0.2074  score=0.273  fileCov=0.4629
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var UQl = E(() => {

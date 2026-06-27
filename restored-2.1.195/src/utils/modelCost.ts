@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NE
 // matched 2.1.88 source: src/utils/modelCost.ts
-// class=modified  jaccard=0.12  score=0.1605  fileCov=0.322
+// class=modified  jaccard=0.2748  score=0.4322  fileCov=0.43
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var NE = E(() => {

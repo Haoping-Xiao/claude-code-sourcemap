@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gzl
-// matched 2.1.88 source: src/components/permissions/rules/RecentDenialsTab.tsx
-// class=partial  jaccard=0.2342  score=0.4801  fileCov=0.3138
-// note: low-confidence suggestion: src/components/permissions/rules/RecentDenialsTab.tsx; dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/CustomSelect/select.tsx
+// class=partial  jaccard=0.0858  score=0.2888  fileCov=0.1089
+// note: low-confidence suggestion: src/components/CustomSelect/select.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gzl = E(() => {
   si();

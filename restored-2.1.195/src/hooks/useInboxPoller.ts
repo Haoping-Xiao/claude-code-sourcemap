@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aYo
 // matched 2.1.88 source: src/hooks/useInboxPoller.ts
-// class=modified  jaccard=0.4615  score=0.7346  fileCov=0.5538
+// class=modified  jaccard=0.4001  score=0.7322  fileCov=0.4686
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var aYo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sbt
 // matched 2.1.88 source: src/utils/swarm/inProcessRunner.ts
-// class=modified  jaccard=0.4345  score=0.7347  fileCov=0.5154
+// class=modified  jaccard=0.3849  score=0.6551  fileCov=0.4827
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sbt = E(() => {

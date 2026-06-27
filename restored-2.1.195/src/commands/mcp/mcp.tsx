@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xrr
 // matched 2.1.88 source: src/commands/mcp/mcp.tsx
-// class=modified  jaccard=0.3758  score=0.5598  fileCov=0.5335
+// class=modified  jaccard=0.3404  score=0.5726  fileCov=0.4564
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xrr = E(() => {

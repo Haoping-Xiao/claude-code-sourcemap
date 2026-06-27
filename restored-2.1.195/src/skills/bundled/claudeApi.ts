@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _xc
 // matched 2.1.88 source: src/skills/bundled/claudeApi.ts
-// class=modified  jaccard=0.3056  score=0.5833  fileCov=0.391
+// class=modified  jaccard=0.2662  score=0.6581  fileCov=0.3089
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _xc = E(() => {

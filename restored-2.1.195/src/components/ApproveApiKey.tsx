@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LMc
 // matched 2.1.88 source: src/components/ApproveApiKey.tsx
-// class=modified  jaccard=0.2003  score=0.2794  fileCov=0.4143
+// class=modified  jaccard=0.3058  score=0.4145  fileCov=0.5382
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var LMc = E(() => {

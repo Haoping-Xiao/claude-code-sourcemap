@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BFe
 // matched 2.1.88 source: src/utils/sessionStoragePortable.ts
-// class=modified  jaccard=0.3434  score=0.4312  fileCov=0.6276
+// class=modified  jaccard=0.37  score=0.5901  fileCov=0.498
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BFe = E(() => {

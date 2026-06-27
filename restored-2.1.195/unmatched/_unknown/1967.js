@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rHi
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/bignumber.js/bignumber.js
+// class=new  jaccard=0.028  score=0.2633  fileCov=0.0303
+// note: nearest: node_modules/bignumber.js/bignumber.js (0.028); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rHi = Q((kOh, nHi) => {
   var eHi = iVr(),

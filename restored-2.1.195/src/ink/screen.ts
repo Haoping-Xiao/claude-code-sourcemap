@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OXr
 // matched 2.1.88 source: src/ink/screen.ts
-// class=modified  jaccard=0.1291  score=0.2354  fileCov=0.2225
+// class=modified  jaccard=0.2722  score=0.6486  fileCov=0.3194
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OXr = E(() => {

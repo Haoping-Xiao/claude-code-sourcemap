@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I1n
 // matched 2.1.88 source: src/utils/imageValidation.ts
-// class=modified  jaccard=0.4526  score=0.822  fileCov=0.5017
+// class=modified  jaccard=0.2681  score=0.8009  fileCov=0.2872
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I1n = E(() => {

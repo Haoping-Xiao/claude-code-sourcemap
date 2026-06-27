@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ft
 // matched 2.1.88 source: src/services/analytics/index.ts
-// class=modified  jaccard=0.2648  score=0.3602  fileCov=0.5
+// class=modified  jaccard=0.3224  score=0.3917  fileCov=0.6459
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ft = E(() => {

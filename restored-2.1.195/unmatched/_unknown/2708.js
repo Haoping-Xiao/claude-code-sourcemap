@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XZi
 // matched 2.1.88 source: node_modules/flora-colossus/lib/depTypes.js
-// class=new  jaccard=0.0332  score=0.036  fileCov=0.2979
-// note: nearest: node_modules/flora-colossus/lib/depTypes.js (0.0332); 0 renamed
+// class=new  jaccard=0.0306  score=0.0345  fileCov=0.2133
+// note: nearest: node_modules/flora-colossus/lib/depTypes.js (0.0306); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var XZi = E(() => {
   (function (e) {

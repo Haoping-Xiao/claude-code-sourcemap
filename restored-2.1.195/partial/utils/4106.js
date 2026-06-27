@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qyt
 // matched 2.1.88 source: src/commands/extra-usage/index.ts
-// class=partial  jaccard=0.1338  score=0.2474  fileCov=0.2257
+// class=partial  jaccard=0.1686  score=0.3025  fileCov=0.2759
 // note: low-confidence suggestion: src/commands/extra-usage/index.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var qyt = E(() => {

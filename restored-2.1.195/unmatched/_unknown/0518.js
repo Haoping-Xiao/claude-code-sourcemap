@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I0t
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/awsclient.js
+// class=new  jaccard=0.0251  score=0.2903  fileCov=0.0268
+// note: nearest: node_modules/google-auth-library/build/src/auth/awsclient.js (0.0251); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var I0t = E(() => {
   XH();

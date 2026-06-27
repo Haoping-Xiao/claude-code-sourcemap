@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ih
 // matched 2.1.88 source: src/bootstrap/state.ts
-// class=modified  jaccard=0.518  score=0.8719  fileCov=0.5607
+// class=modified  jaccard=0.4877  score=0.5695  fileCov=0.7724
 // note: deminified; 315 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ih = E(() => {

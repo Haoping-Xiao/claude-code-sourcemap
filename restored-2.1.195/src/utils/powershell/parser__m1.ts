@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kDe
 // matched 2.1.88 source: src/utils/powershell/parser.ts
-// class=modified (alt of src/utils/powershell/parser.ts)  jaccard=0.2229  score=0.5415  fileCov=0.2748
+// class=modified (alt of src/utils/powershell/parser.ts)  jaccard=0.2151  score=0.5886  fileCov=0.2531
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kDe = E(() => {

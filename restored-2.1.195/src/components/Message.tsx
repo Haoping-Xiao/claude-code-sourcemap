@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ell
 // matched 2.1.88 source: src/components/Message.tsx
-// class=modified  jaccard=0.2939  score=0.8377  fileCov=0.3117
+// class=modified  jaccard=0.325  score=0.5464  fileCov=0.4451
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ell = E(() => {

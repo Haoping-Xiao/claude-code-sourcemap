@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wbt
 // matched 2.1.88 source: src/tools/PowerShellTool/readOnlyValidation.ts
-// class=modified  jaccard=0.6842  score=0.8639  fileCov=0.7669
+// class=modified  jaccard=0.647  score=0.8664  fileCov=0.7187
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Wbt = E(() => {

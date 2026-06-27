@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jDe
 // matched 2.1.88 source: src/tools/BashTool/sedValidation.ts
-// class=modified  jaccard=0.5072  score=0.8964  fileCov=0.5388
+// class=modified  jaccard=0.308  score=0.8274  fileCov=0.3291
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jDe = E(() => {

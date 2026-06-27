@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Dyl
 // matched 2.1.88 source: src/tools/BriefTool/BriefTool.ts
-// class=modified  jaccard=0.1636  score=0.2381  fileCov=0.3432
+// class=modified  jaccard=0.35  score=0.4919  fileCov=0.5481
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Dyl = E(() => {

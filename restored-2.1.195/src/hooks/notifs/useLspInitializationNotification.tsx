@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OLc
 // matched 2.1.88 source: src/hooks/notifs/useLspInitializationNotification.tsx
-// class=modified  jaccard=0.4449  score=1  fileCov=0.4449
+// class=modified  jaccard=0.3534  score=0.8419  fileCov=0.3785
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OLc = E(() => {

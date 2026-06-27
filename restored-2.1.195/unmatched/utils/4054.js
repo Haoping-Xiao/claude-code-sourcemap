@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l8t
-// matched 2.1.88 source: src/services/api/claude.ts
-// class=new  jaccard=0.0106  score=0.4469  fileCov=0.0107
-// note: nearest: src/services/api/claude.ts (0.0106); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/compact/compact.ts
+// class=new  jaccard=0.0114  score=0.2979  fileCov=0.0118
+// note: nearest: src/services/compact/compact.ts (0.0114); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var l8t = E(() => {
   ft();

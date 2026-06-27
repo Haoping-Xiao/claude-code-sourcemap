@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Mpo
 // matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.0052  score=0.2562  fileCov=0.0053
-// note: nearest: src/cli/print.ts (0.0052); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0056  score=0.2056  fileCov=0.0057
+// note: nearest: src/cli/print.ts (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Mpo = E(() => {
   Vb();

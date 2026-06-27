@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YSr
-// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/models.mjs
-// class=partial  jaccard=0.1298  score=0.2485  fileCov=0.2137
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/models.mjs; dir inferred from dep-graph -> constants; 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs
+// class=partial  jaccard=0.2055  score=0.3826  fileCov=0.3075
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/skills.mjs; dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var YSr = E(() => {
   zSr();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ofc
-// matched 2.1.88 source: src/tools/PowerShellTool/powershellSecurity.ts
-// class=new  jaccard=0.0055  score=0.0121  fileCov=0.01
-// note: nearest: src/tools/PowerShellTool/powershellSecurity.ts (0.0055); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
+// class=new  jaccard=0.0137  score=0.0465  fileCov=0.0191
+// note: nearest: src/utils/nativeInstaller/installer.ts (0.0137); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ofc = E(() => {
   dn();

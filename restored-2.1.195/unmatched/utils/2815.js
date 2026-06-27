@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module c5e
-// matched 2.1.88 source: src/utils/model/agent.ts
-// class=new  jaccard=0.0464  score=0.073  fileCov=0.113
-// note: nearest: src/utils/model/agent.ts (0.0464); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/model/modelOptions.ts
+// class=new  jaccard=0.0265  score=0.141  fileCov=0.0316
+// note: nearest: src/utils/model/modelOptions.ts (0.0265); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var c5e = E(() => {
   ft();

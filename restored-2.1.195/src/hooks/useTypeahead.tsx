@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Syc
 // matched 2.1.88 source: src/hooks/useTypeahead.tsx
-// class=modified  jaccard=0.0769  score=0.1093  fileCov=0.2056
+// class=modified  jaccard=0.1183  score=0.1943  fileCov=0.2323
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Syc = E(() => {

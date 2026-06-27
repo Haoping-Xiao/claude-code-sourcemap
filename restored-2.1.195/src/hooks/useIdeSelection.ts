@@ -1,52 +1,63 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module AAc
+// restored from claude-code 2.1.195 (deminified) — module SAc
 // matched 2.1.88 source: src/hooks/useIdeSelection.ts
-// class=modified  jaccard=0.1079  score=0.1622  fileCov=0.2438
+// class=modified  jaccard=0.3349  score=1  fileCov=0.3349
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var AAc = E(() => {
-  vn();
-  Xr();
-  aE();
-  ((otn = R(rt(), 1)),
-    (_ym = ve(() =>
-      H.object({
-        method: H.literal("selection_changed"),
-        params: H.object({
-          selection: H.object({
-            start: H.object({
-              line: H.number(),
-              character: H.number(),
-            }),
-            end: H.object({
-              line: H.number(),
-              character: H.number(),
-            }),
-          })
-            .nullable()
-            .optional(),
-          text: H.string().optional(),
-          filePath: H.string().optional(),
-        }),
-      }),
-    )));
+var SAc = E(() => {
+  Ye();
+  uo();
+  hYt();
+  i6e();
+  Ko();
+  lEe();
+  ((_Ac = R(lt(), 1)), (Bme = R(se(), 1)));
 });
-function HAc(e, t) {
-  switch (e.kind) {
-    case "background_hint":
-      return stn.background_hint(e, t);
-    case "bash_mode_progress":
-      return stn.bash_mode_progress(e, t);
-    case "it2_setup_prompt":
-      return stn.it2_setup_prompt(e, t);
-    case "computer_use_approval":
-      return stn.computer_use_approval(e, t);
-    case "agent_progress":
-      return stn.agent_progress(e, t);
-    default: {
-      let n = e;
-      return null;
-    }
-  }
+function EAc(e, t) {
+  let n = otn.useRef(false),
+    r = otn.useRef(null);
+  otn.useEffect(() => {
+    let o = p5(e);
+    if (r.current !== (o ?? null))
+      ((n.current = false),
+        (r.current = o || null),
+        t({
+          lineCount: 0,
+          lineStart: void 0,
+          text: void 0,
+          filePath: void 0,
+        }));
+    if (n.current || !o) return;
+    let s = (i) => {
+      if (i.selection?.start && i.selection?.end) {
+        let { start: a, end: l } = i.selection,
+          c = l.line - a.line + 1;
+        if (l.character === 0) c--;
+        let u = {
+          lineCount: c,
+          lineStart: a.line + 1,
+          text: i.text,
+          filePath: i.filePath,
+        };
+        t(u);
+      }
+    };
+    (o.client.setNotificationHandler(_ym(), (i) => {
+      if (r.current !== o) return;
+      try {
+        let a = i.params;
+        if (a.selection && a.selection.start && a.selection.end) s(a);
+        else if (a.text !== void 0)
+          s({
+            selection: null,
+            text: a.text,
+            filePath: a.filePath,
+          });
+      } catch (a) {
+        ke(a);
+      }
+    }),
+      (n.current = true));
+  }, [e, t]);
 }
-var qzo, stn;
+var otn, _ym;

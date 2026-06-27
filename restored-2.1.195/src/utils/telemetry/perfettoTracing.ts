@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rpo
 // matched 2.1.88 source: src/utils/telemetry/perfettoTracing.ts
-// class=modified  jaccard=0.3532  score=0.9587  fileCov=0.3586
+// class=modified  jaccard=0.3618  score=0.9278  fileCov=0.3723
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rpo = E(() => {

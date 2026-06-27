@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tSa
 // matched 2.1.88 source: src/tools/MCPTool/UI.tsx
-// class=modified  jaccard=0.2576  score=0.5602  fileCov=0.3228
+// class=modified  jaccard=0.2103  score=0.4837  fileCov=0.2711
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tSa = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QEe
 // matched 2.1.88 source: node_modules/commander/lib/command.js
-// class=new  jaccard=0.0248  score=0.5131  fileCov=0.0254
-// note: nearest: node_modules/commander/lib/command.js (0.0248); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0168  score=0.3522  fileCov=0.0174
+// note: nearest: node_modules/commander/lib/command.js (0.0168); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QEe = E(() => {
   aEe();

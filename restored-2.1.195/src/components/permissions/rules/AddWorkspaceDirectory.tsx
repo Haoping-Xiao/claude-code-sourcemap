@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OUt
 // matched 2.1.88 source: src/components/permissions/rules/AddWorkspaceDirectory.tsx
-// class=modified  jaccard=0.2595  score=0.4718  fileCov=0.3658
+// class=modified  jaccard=0.1559  score=0.2459  fileCov=0.2985
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OUt = E(() => {

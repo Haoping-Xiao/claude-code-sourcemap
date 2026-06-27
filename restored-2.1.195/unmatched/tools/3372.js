@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module E5
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/components/VirtualMessageList.tsx
+// class=new  jaccard=0.0192  score=0.8166  fileCov=0.0192
+// note: nearest: src/components/VirtualMessageList.tsx (0.0192); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var E5 = E(() => {
   kLe();

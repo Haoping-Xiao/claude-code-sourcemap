@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module J3l
-// matched 2.1.88 source: node_modules/@typespec/ts-http-runtime/dist/esm/util/typeGuards.js
-// class=partial  jaccard=0.1174  score=0.1174  fileCov=1
-// note: low-confidence suggestion: node_modules/@typespec/ts-http-runtime/dist/esm/util/typeGuards.js; 0 renamed
+// matched 2.1.88 source: node_modules/qrcode/lib/renderer/terminal/terminal.js
+// class=partial  jaccard=0.2189  score=0.4235  fileCov=0.3118
+// note: low-confidence suggestion: node_modules/qrcode/lib/renderer/terminal/terminal.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var J3l = Q(X3l => {
   X3l.render = function (e, t, n) {

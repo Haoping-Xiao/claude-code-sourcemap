@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module p4c
 // matched 2.1.88 source: node_modules/highlight.js/lib/languages/sql.js
-// class=new  jaccard=0.0074  score=0.038  fileCov=0.0092
-// note: nearest: node_modules/highlight.js/lib/languages/sql.js (0.0074); 0 renamed
+// class=new  jaccard=0.0091  score=0.0474  fileCov=0.0111
+// note: nearest: node_modules/highlight.js/lib/languages/sql.js (0.0091); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var p4c = Q((yzH, uPm) => {
   uPm.exports = {

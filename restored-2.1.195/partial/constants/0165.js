@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zSr
-// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/models.mjs
-// class=partial  jaccard=0.1298  score=0.2485  fileCov=0.2137
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/models.mjs; dir inferred from dep-graph -> constants; 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs
+// class=partial  jaccard=0.2107  score=0.3999  fileCov=0.3082
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs; dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var zSr = E(() => {
   Tx();

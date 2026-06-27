@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _pr
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/PreviewQuestionView.tsx
-// class=modified  jaccard=0.2504  score=0.4624  fileCov=0.3533
+// class=modified  jaccard=0.2617  score=0.4182  fileCov=0.4117
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _pr = E(() => {

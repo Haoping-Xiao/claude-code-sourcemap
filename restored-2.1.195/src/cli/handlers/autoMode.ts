@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R5c
 // matched 2.1.88 source: src/cli/handlers/autoMode.ts
-// class=modified  jaccard=0.16  score=0.3377  fileCov=0.2332
+// class=modified  jaccard=0.217  score=0.4359  fileCov=0.3017
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var R5c = E(() => {

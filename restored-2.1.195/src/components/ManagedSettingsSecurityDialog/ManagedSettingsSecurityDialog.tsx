@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Oho
 // matched 2.1.88 source: src/components/ManagedSettingsSecurityDialog/ManagedSettingsSecurityDialog.tsx
-// class=modified  jaccard=0.3187  score=0.5252  fileCov=0.4476
+// class=modified  jaccard=0.206  score=0.3257  fileCov=0.359
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Oho = E(() => {

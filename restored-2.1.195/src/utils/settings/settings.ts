@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module i2e
 // matched 2.1.88 source: src/utils/settings/settings.ts
-// class=modified  jaccard=0.441  score=0.7304  fileCov=0.5268
+// class=modified  jaccard=0.3272  score=0.5235  fileCov=0.466
 // note: deminified; 36 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var i2e = E(() => {

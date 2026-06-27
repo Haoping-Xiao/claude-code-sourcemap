@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TEc
 // matched 2.1.88 source: src/components/permissions/PermissionRuleExplanation.tsx
-// class=modified  jaccard=0.3646  score=0.5082  fileCov=0.5634
+// class=modified  jaccard=0.3933  score=0.5253  fileCov=0.6102
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var TEc = E(() => {

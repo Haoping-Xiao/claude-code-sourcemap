@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zil
 // matched 2.1.88 source: src/components/messages/UserResourceUpdateMessage.tsx
-// class=modified  jaccard=0.1962  score=0.3914  fileCov=0.2822
+// class=modified  jaccard=0.2187  score=0.5131  fileCov=0.2759
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Zil = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cds
 // matched 2.1.88 source: node_modules/ajv/dist/core.js
-// class=new  jaccard=0.0201  score=0.3121  fileCov=0.021
-// note: nearest: node_modules/ajv/dist/core.js (0.0201); 0 renamed
+// class=new  jaccard=0.0081  score=0.3  fileCov=0.0082
+// note: nearest: node_modules/ajv/dist/core.js (0.0081); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Cds = Q((tQm, Sru) => {
   Sru.exports = {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module o6n
 // matched 2.1.88 source: src/utils/notebook.ts
-// class=modified  jaccard=0.631  score=0.7759  fileCov=0.7717
+// class=modified  jaccard=0.5279  score=0.8515  fileCov=0.5814
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var o6n = E(() => {

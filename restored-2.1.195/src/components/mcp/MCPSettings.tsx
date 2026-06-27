@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xnr
 // matched 2.1.88 source: src/components/mcp/MCPSettings.tsx
-// class=modified  jaccard=0.4701  score=1  fileCov=0.4701
+// class=modified  jaccard=0.394  score=0.8141  fileCov=0.433
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Xnr = E(() => {

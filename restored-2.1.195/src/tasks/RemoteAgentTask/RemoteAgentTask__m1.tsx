@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JJ
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
-// class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.1097  score=0.4127  fileCov=0.13
+// class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0907  score=0.3906  fileCov=0.1056
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var JJ = E(() => {

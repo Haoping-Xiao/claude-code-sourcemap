@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Mvs
 // matched 2.1.88 source: src/entrypoints/sandboxTypes.ts
-// class=modified  jaccard=0.0681  score=0.1152  fileCov=0.1428
+// class=modified  jaccard=0.2947  score=0.3981  fileCov=0.5315
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Mvs = E(() => {

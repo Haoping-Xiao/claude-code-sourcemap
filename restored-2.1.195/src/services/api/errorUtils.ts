@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module z1
 // matched 2.1.88 source: src/services/api/errorUtils.ts
-// class=modified  jaccard=0.4751  score=0.5644  fileCov=0.7502
+// class=modified  jaccard=0.3625  score=0.467  fileCov=0.6185
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var z1 = E(() => {

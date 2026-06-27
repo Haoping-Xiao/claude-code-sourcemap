@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xfa
 // matched 2.1.88 source: node_modules/highlight.js/lib/languages/thrift.js
-// class=partial  jaccard=0.0835  score=0.1879  fileCov=0.1307
+// class=partial  jaccard=0.1644  score=0.4887  fileCov=0.1986
 // note: low-confidence suggestion: node_modules/highlight.js/lib/languages/thrift.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Xfa = Q((QUy, Yfa) => {

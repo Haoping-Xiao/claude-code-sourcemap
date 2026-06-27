@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module c5r
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/jws/lib/sign-stream.js
+// class=new  jaccard=0.052  score=1  fileCov=0.052
+// note: nearest: node_modules/jws/lib/sign-stream.js (0.052); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var c5r = Q((ikh, uyi) => {
   var Uvn = iot().Buffer,

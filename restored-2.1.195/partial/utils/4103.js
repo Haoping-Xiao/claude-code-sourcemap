@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module L8t
-// matched 2.1.88 source: node_modules/undici/lib/web/eventsource/eventsource-stream.js
-// class=partial  jaccard=0.1231  score=0.1822  fileCov=0.275
-// note: low-confidence suggestion: node_modules/undici/lib/web/eventsource/eventsource-stream.js; dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/commands/extra-usage/extra-usage-noninteractive.ts
+// class=partial  jaccard=0.1438  score=0.2595  fileCov=0.2439
+// note: low-confidence suggestion: src/commands/extra-usage/extra-usage-noninteractive.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var L8t = E(() => {
   oo();

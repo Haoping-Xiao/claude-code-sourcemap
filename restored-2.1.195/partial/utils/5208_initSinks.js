@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module j1e
 // matched 2.1.88 source: src/bridge/bridgePointer.ts
-// class=partial  jaccard=0.0692  score=1  fileCov=0.0692
+// class=partial  jaccard=0.0854  score=0.5525  fileCov=0.0918
 // note: low-confidence suggestion: src/bridge/bridgePointer.ts; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var j1e = E(() => {

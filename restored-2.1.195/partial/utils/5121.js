@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VXl
-// matched 2.1.88 source: src/utils/advisor.ts
-// class=partial  jaccard=0.0611  score=0.3534  fileCov=0.0688
-// note: low-confidence suggestion: src/utils/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/advisor.ts
+// class=partial  jaccard=0.092  score=0.6613  fileCov=0.0966
+// note: low-confidence suggestion: src/commands/advisor.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VXl = E(() => {
   _oe();

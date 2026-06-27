@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module m5
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js
+// class=new  jaccard=0.0133  score=0.1599  fileCov=0.0144
+// note: nearest: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js (0.0133); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var m5 = E(() => {
   ft();

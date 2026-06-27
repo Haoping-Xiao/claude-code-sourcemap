@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module H1e
 // matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
-// class=modified  jaccard=0.3645  score=0.5593  fileCov=0.5114
+// class=modified  jaccard=0.3413  score=0.5307  fileCov=0.4889
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var H1e = E(() => {

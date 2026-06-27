@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LQt
 // matched 2.1.88 source: src/utils/ShellCommand.ts
-// class=partial  jaccard=0.1547  score=0.3539  fileCov=0.2157
+// class=partial  jaccard=0.1477  score=0.441  fileCov=0.1818
 // note: low-confidence suggestion: src/utils/ShellCommand.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var LQt = E(() => {

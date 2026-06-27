@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qJ
-// matched 2.1.88 source: src/utils/plugins/installCounts.ts
-// class=new  jaccard=0.0484  score=0.1933  fileCov=0.0606
-// note: nearest: src/utils/plugins/installCounts.ts (0.0484); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/teamMemorySync/index.ts
+// class=new  jaccard=0.0211  score=0.256  fileCov=0.0225
+// note: nearest: src/services/teamMemorySync/index.ts (0.0211); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var qJ = E(() => {
   je();

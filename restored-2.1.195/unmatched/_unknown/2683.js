@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wlt
 // matched 2.1.88 source: node_modules/get-intrinsic/index.js
-// class=new  jaccard=0.0121  score=0.6287  fileCov=0.0122
-// note: nearest: node_modules/get-intrinsic/index.js (0.0121); 0 renamed
+// class=new  jaccard=0.0107  score=0.2433  fileCov=0.011
+// note: nearest: node_modules/get-intrinsic/index.js (0.0107); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Wlt = E(() => {
   mZd = new Set(["constructor", "toString", "toJSON", "valueOf"]);

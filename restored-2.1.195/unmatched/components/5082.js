@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _7l
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 1 renamed
+// matched 2.1.88 source: src/components/hooks/HooksConfigMenu.tsx
+// class=new  jaccard=0.0204  score=1  fileCov=0.0204
+// note: nearest: src/components/hooks/HooksConfigMenu.tsx (0.0204); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _7l = E(() => {
   iu();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Zmr
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0223  score=0.0684  fileCov=0.0321
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0223); 0 renamed
+// class=new  jaccard=0.0167  score=0.0901  fileCov=0.0202
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0167); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Zmr = E(() => {
   rB();

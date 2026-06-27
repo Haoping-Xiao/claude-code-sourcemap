@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b8o
 // matched 2.1.88 source: src/components/StatusLine.tsx
-// class=modified  jaccard=0.1172  score=0.3012  fileCov=0.161
+// class=modified  jaccard=0.1821  score=0.4617  fileCov=0.2311
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var b8o = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tQ
 // matched 2.1.88 source: src/tools/AgentTool/built-in/exploreAgent.ts
-// class=modified  jaccard=0.2459  score=0.4521  fileCov=0.3504
+// class=modified  jaccard=0.1347  score=0.1981  fileCov=0.2964
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tQ = E(() => {

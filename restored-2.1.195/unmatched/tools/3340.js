@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ymo
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: node_modules/convert-to-spaces/dist/index.js
+// class=new  jaccard=0.0588  score=0.0671  fileCov=0.3215
+// note: nearest: node_modules/convert-to-spaces/dist/index.js (0.0588); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ymo = E(() => {
   vGt();

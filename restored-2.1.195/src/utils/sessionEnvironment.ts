@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lNn
 // matched 2.1.88 source: src/utils/sessionEnvironment.ts
-// class=modified  jaccard=0.702  score=1  fileCov=0.702
+// class=modified  jaccard=0.4595  score=1  fileCov=0.4595
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lNn = E(() => {

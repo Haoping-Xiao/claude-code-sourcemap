@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rZl
 // matched 2.1.88 source: src/commands/brief.ts
-// class=modified  jaccard=0.2968  score=0.4157  fileCov=0.5092
+// class=modified  jaccard=0.3296  score=0.4936  fileCov=0.498
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rZl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module i$
 // matched 2.1.88 source: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts
-// class=modified  jaccard=0.3243  score=0.5361  fileCov=0.4508
+// class=modified  jaccard=0.3424  score=0.6105  fileCov=0.4382
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var i$ = E(() => {

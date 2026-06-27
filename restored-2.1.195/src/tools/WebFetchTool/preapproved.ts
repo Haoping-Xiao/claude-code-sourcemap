@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $cl
 // matched 2.1.88 source: src/tools/WebFetchTool/preapproved.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8889  score=0.9282  fileCov=0.9545
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.8755  score=0.9302  fileCov=0.937
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 // For legal and security concerns, we typically only allow Web Fetch to access

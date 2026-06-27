@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CCl
 // matched 2.1.88 source: src/tools/BashTool/bashCommandHelpers.ts
-// class=modified  jaccard=0.3022  score=0.4491  fileCov=0.4802
+// class=modified  jaccard=0.3843  score=0.6702  fileCov=0.474
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var CCl = E(() => {

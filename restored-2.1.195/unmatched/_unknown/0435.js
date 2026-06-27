@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rfs
-// matched 2.1.88 source: node_modules/@grpc/grpc-js/build/src/transport.js
-// class=new  jaccard=0.0181  score=0.4801  fileCov=0.0185
-// note: nearest: node_modules/@grpc/grpc-js/build/src/transport.js (0.0181); 0 renamed
+// matched 2.1.88 source: src/hooks/useRemoteSession.ts
+// class=new  jaccard=0.0358  score=0.2416  fileCov=0.0403
+// note: nearest: src/hooks/useRemoteSession.ts (0.0358); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Rfs = E(() => {
   kfs = {

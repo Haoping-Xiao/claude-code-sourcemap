@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Hc
-// matched 2.1.88 source: src/components/permissions/PermissionPrompt.tsx
-// class=partial  jaccard=0.244  score=0.3553  fileCov=0.4378
-// note: low-confidence suggestion: src/components/permissions/PermissionPrompt.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/permissions/FilePermissionDialog/usePermissionHandler.ts
+// class=partial  jaccard=0.1868  score=0.2821  fileCov=0.3561
+// note: low-confidence suggestion: src/components/permissions/FilePermissionDialog/usePermissionHandler.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _Hc = E(() => {
   ft();

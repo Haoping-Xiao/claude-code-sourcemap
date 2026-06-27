@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tdr
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
-// class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.013  score=0.3691  fileCov=0.0133
+// class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0132  score=0.2202  fileCov=0.0138
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tdr = E(() => {

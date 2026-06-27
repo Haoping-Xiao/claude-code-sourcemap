@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module JXo
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0121  score=0.0382  fileCov=0.0175
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0121); 0 renamed
+// class=new  jaccard=0.0061  score=0.0369  fileCov=0.0072
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0061); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var JXo = E(() => {
   XXo();

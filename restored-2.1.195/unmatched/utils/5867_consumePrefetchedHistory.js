@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $Fc
-// matched 2.1.88 source: src/services/api/errors.ts
-// class=new  jaccard=0.0111  score=0.0966  fileCov=0.0124
-// note: nearest: src/services/api/errors.ts (0.0111); dir inferred from dep-graph -> utils; 4 renamed
+// matched 2.1.88 source: src/commands/insights.ts
+// class=new  jaccard=0.0115  score=0.1397  fileCov=0.0124
+// note: nearest: src/commands/insights.ts (0.0115); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var $Fc = E(() => {
   ft();

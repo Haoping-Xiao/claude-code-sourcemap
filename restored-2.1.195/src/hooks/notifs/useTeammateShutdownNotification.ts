@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NDc
 // matched 2.1.88 source: src/hooks/notifs/useTeammateShutdownNotification.ts
-// class=modified  jaccard=0.2171  score=0.4083  fileCov=0.3167
+// class=modified  jaccard=0.2624  score=0.594  fileCov=0.3198
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var NDc = E(() => {

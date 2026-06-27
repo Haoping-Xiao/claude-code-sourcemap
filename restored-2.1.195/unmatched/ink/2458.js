@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FJr
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> ink; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0034  score=0.6869  fileCov=0.0034
+// note: nearest: src/screens/REPL.tsx (0.0034); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var FJr = E(() => {
   fGe();

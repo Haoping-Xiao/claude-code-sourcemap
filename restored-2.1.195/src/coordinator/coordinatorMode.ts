@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module F8
 // matched 2.1.88 source: src/coordinator/coordinatorMode.ts
-// class=modified  jaccard=0.2472  score=0.4146  fileCov=0.3797
+// class=modified  jaccard=0.2788  score=0.4589  fileCov=0.4153
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var F8 = E(() => {

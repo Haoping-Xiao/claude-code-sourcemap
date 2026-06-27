@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module W7l
 // matched 2.1.88 source: src/utils/heapDumpService.ts
-// class=modified  jaccard=0.5485  score=0.6441  fileCov=0.787
+// class=modified  jaccard=0.631  score=0.7791  fileCov=0.7685
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var W7l = E(() => {

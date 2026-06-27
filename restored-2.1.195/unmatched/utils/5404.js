@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hNe
 // matched 2.1.88 source: src/screens/REPL.tsx
-// class=new  jaccard=0.0063  score=0.3156  fileCov=0.0064
-// note: nearest: src/screens/REPL.tsx (0.0063); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0055  score=0.2715  fileCov=0.0056
+// note: nearest: src/screens/REPL.tsx (0.0055); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var hNe = E(() => {
   tne();

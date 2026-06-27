@@ -1,751 +1,215 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module xHt
+// restored from claude-code 2.1.195 (deminified) — module DOc
 // matched 2.1.88 source: src/main.tsx
-// class=modified (alt of src/main.tsx)  jaccard=0.0039  score=0.0458  fileCov=0.0043
+// class=modified (alt of src/main.tsx)  jaccard=0.0067  score=0.1372  fileCov=0.007
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var xHt = E(() => {
-  lH();
-  jGo();
-  Gfe();
-  kYe();
-  WL();
-  q$();
-  CHt();
-  IKe();
-  kLn();
-  ZS();
-  OM();
-  dn();
-  kt();
+var DOc = E(() => {
+  Rm();
   je();
-  At();
-  YS();
-  sa();
-  zH();
-  Vke();
-  _ht();
-  aR();
-  FAe();
-  ag();
-  ((PYe = require("fs/promises")), (vrc = require("path")));
 });
-function Rrc(e) {
-  return {
-    name: e.agentType,
-    description: e.whenToUse,
-    initialPrompt: e.initialPrompt,
-    color: e.color,
-  };
-}
-function DHt(e, t) {
-  if (!e?.agent) return Bse;
-  let n = e.agent,
-    r = n.toLowerCase(),
-    o =
-      t?.find((i) => i.name.toLowerCase() === r) ??
-      t?.find((i) => i.name.toLowerCase().endsWith(`:${r}`));
-  if (o) return o;
-  let s = yHe().find((i) => i.agentType.toLowerCase() === r);
-  if (s)
-    return {
-      ...Bse,
-      name: s.agentType,
-    };
-  if (n.includes(":"))
-    return {
-      ...Bse,
-      name: n,
-    };
-  return t
-    ? Bse
-    : {
-        ...Bse,
-        name: n,
-      };
-}
-async function IQt(e) {
-  let { activeAgents: t } = await CP(e);
-  return t.filter((n) => !Sh(n)).map(Rrc);
-}
-async function Lrc(e) {
-  let t;
-  try {
-    t = await a2.readdir(e, {
-      withFileTypes: true,
-    });
-  } catch {
-    return {};
-  }
-  let n = t
-      .filter(
-        (o) =>
-          (o.isDirectory() || o.isSymbolicLink()) && !o.name.startsWith(".") && !/\s/.test(o.name),
-      )
-      .map(async (o) => {
-        let s = LHt.join(e, o.name);
-        try {
-          return (await a2.stat(LHt.join(s, ".git")), [o.name, s]);
-        } catch {
-          return null;
-        }
-      }),
-    r = (await Promise.all(n)).filter((o) => o !== null);
-  return Object.fromEntries(r);
-}
-async function cWo(e, t, n) {
-  let r = jM(e).filter((i) => t[i.id]?.type === "image");
-  if (r.length === 0) return e;
-  let o = _c(n),
-    s = e;
-  for (let i = r.length - 1; i >= 0; i--) {
-    let a = r[i],
-      l = t[a.id],
-      c = l.sourcePath;
-    if (!c) {
-      await a2.mkdir(o, {
-        recursive: true,
-      });
-      let u = (l.mediaType ?? "image/png").split("/")[1] ?? "png";
-      ((c = LHt.join(o, `pasted-${a.id}.${u}`)),
-        await a2.writeFile(c, l.content, {
-          encoding: "base64",
-        }));
-    }
-    s = s.slice(0, a.index) + c + s.slice(a.index + a.match.length);
-  }
-  return s;
-}
-function Drc(e) {
-  xQt = e;
-}
-function Prc() {
-  return xQt;
-}
-function kQt(e) {
-  if (!e) return [];
-  return [
-    ...(e.model ? ["--model", e.model] : []),
-    ...(e.effort ? ["--effort", e.effort] : []),
-    ...(e.permissionMode ? ["--permission-mode", e.permissionMode] : []),
-    ...(e.allowBypass ? ["--allow-dangerously-skip-permissions"] : []),
-    ...(e.jsonSchema ? ["--json-schema", e.jsonSchema] : []),
-    ...(e.appendSystemPrompt ? ["--append-system-prompt", e.appendSystemPrompt] : []),
-  ];
-}
-async function Car(e, t, n, r, o, s, i) {
-  if (o) {
-    if ((await tV(), !Us(Arc)))
-      return {
-        ok: false,
-        error: Hrc,
-      };
-  }
-  T("[PERF:bg-dispatch-start]");
-  let a = n ?? CQt.randomUUID(),
-    l = a.slice(0, 8),
-    c = r ?? $t(),
-    u = o ? ["--routine", o] : ["--agent", e.name],
-    d = [...xQt, ...u, ...kQt(s)],
-    p = _c(l);
-  try {
-    (await a2.mkdir(LHt.join(p, "tmp"), {
-      recursive: true,
-    }),
-      await Kd(
-        p,
-        eue({
-          template: o
-            ? {
-                name: o,
-                description: "",
-              }
-            : e,
-          routine: o,
-          respawnFlags: d,
-          intent: t,
-          displayIntent: i,
-          ...(o &&
-            !t && {
-              tempo: "idle",
-              detail: "(idle \u2014 waiting for trigger)",
+function MOc(e) {
+  let { regularMcpConfigs: t, claudeaiConfigPromise: n, state: r } = e,
+    o = ml(process.env.MCP_CONNECTION_NONBLOCKING)
+      ? false
+      : ut(process.env.MCP_CONNECTION_NONBLOCKING) || (e.nonBlocking ?? false);
+  r_r(o);
+  let s = o,
+    i = cv(t, (u) => u.alwaysLoad === true),
+    a = cv(t, (u) => u.alwaysLoad !== true),
+    l = Object.keys(i).length > 0;
+  async function c() {
+    (pa("before_mcp_connect_user"), pa("before_mcp_connect_connector"));
+    let u = Promise.all([
+        ...(l
+          ? [H7o(false, () => T7o(i, "regular-required", r), "--mcp-config alwaysLoad servers")]
+          : []),
+        H7o(o, () => T7o(a, "regular", r, s), "--mcp-config servers"),
+      ]).then(() => pa("after_mcp_connect_user")),
+      d = H7o(
+        o,
+        () =>
+          n.then((p) =>
+            Mxm({
+              claudeaiConfigs: p,
+              regularMcpConfigs: t,
+              state: r,
+              deferConnect: s,
             }),
-          sessionId: a,
-          cwd: c,
-          originCwd: c,
-        }),
-      ));
-  } catch (y) {
-    return (
-      await a2
-        .rm(p, {
-          recursive: true,
-          force: true,
-        })
-        .catch(() => {}),
-      sS(p),
-      Le("fleet_view_dispatch", "state_write_failed", {
-        errno: xd(y) ?? "unknown",
-      }),
-      {
-        ok: false,
-        error: `Couldn't create the job \u2014 ${be(y)}`,
-      }
-    );
+          ),
+        "claude.ai connectors",
+      ).then(() => pa("after_mcp_connect_connector"));
+    await Promise.all([u, d]);
   }
-  let f = [...d, ...(t ? ["--", t] : [])],
-    m = Date.now(),
-    g = await SZ(f, a, "fleet", c),
-    h = !g.ok && g.reason === "gate_blocked";
-  if (!g.ok && !g.alive && g.reason === "ack_timeout" && Date.now() - m < 2000)
-    (T(`bg: dispatch fast-failed (${Date.now() - m}ms) \u2014 retrying once`, {
-      level: "warn",
-    }),
-      await Nn(500),
-      (g = await SZ(f, a, "fleet", c)));
-  if (!g.ok) {
-    if (g.alive)
-      return (
-        It("fleet_view_dispatch", "alive_collision"),
-        {
-          ok: false,
-          error: g.error,
-        }
-      );
-    if (!h) await yTe(l).catch(() => {});
-    return (
-      await a2
-        .rm(p, {
-          recursive: true,
-          force: true,
-        })
-        .catch(() => {}),
-      sS(p),
-      (g.reason === "gate_blocked" ? It : Le)("fleet_view_dispatch", g.reason ?? "spawn_failed"),
-      {
-        ok: false,
-        error: g.error,
-        reason: g.reason,
-      }
-    );
-  }
-  if ((T("[PERF:bg-dispatch-end]"), g.rescued)) It("fleet_view_dispatch", "rescued");
-  else xe("fleet_view_dispatch");
   return {
-    ok: true,
-    jobId: g.short,
-    sessionId: a,
+    connect: c,
   };
 }
-function RQt() {
-  return true;
+function T7o(e, t, n, r = false) {
+  let o = Object.keys(e);
+  if (o.length === 0) return [];
+  n.applyMcpUpdate((l) => ({
+    ...l,
+    clients: [
+      ...l.clients,
+      ...Object.entries(e).map(([c, u]) => ({
+        name: c,
+        type: "pending",
+        config: u,
+      })),
+    ],
+  }));
+  let s = new Map(),
+    i = o.map((l) => new Promise((c) => s.set(l, c))),
+    a = () =>
+      void Dqe((l) => {
+        (_mr(n, l), Mka(), s.get(l.client.name)?.());
+      }, e)
+        .catch((l) => T(`[MCP] ${t} connect error: ${l}`))
+        .finally(() => {
+          for (let l of s.values()) l();
+          v7o(e, n).catch((l) => T(`[MCP] ${t} retry error: ${l}`));
+        });
+  if (r) setImmediate(a);
+  else a();
+  return i;
 }
-async function Mrc(e, t, n) {
-  let r = t ?? CQt.randomUUID(),
-    o = r.slice(0, 8),
-    s = n ?? $t(),
-    i = _c(o);
-  try {
-    (await a2.mkdir(LHt.join(i, "tmp"), {
-      recursive: true,
-    }),
-      await Kd(
-        i,
-        eue({
-          template: OJf,
-          intent: e,
-          sessionId: r,
-          cwd: s,
-          originCwd: s,
-        }),
-      ));
-  } catch (l) {
-    return (
-      await a2
-        .rm(i, {
-          recursive: true,
-          force: true,
-        })
-        .catch(() => {}),
-      sS(i),
-      Le("fleet_view_dispatch_exec", "state_write_failed", {
-        errno: xd(l) ?? "unknown",
-      }),
-      {
-        ok: false,
-        error: `Couldn't create the job \u2014 ${be(l)}`,
-      }
-    );
-  }
-  let a = await SZ([], r, "fleet", s, {
-    intent: e,
-    exec: e,
-  });
-  if (!a.ok) {
-    if (a.alive)
-      return (
-        It("fleet_view_dispatch_exec", "alive_collision"),
-        {
-          ok: false,
-          error: a.error,
-        }
-      );
-    return (
-      await yTe(o).catch(() => {}),
-      await a2
-        .rm(i, {
-          recursive: true,
-          force: true,
-        })
-        .catch(() => {}),
-      sS(i),
-      Le("fleet_view_dispatch_exec", a.reason ?? "spawn_failed"),
-      {
-        ok: false,
-        error: a.error,
-        reason: a.reason,
-      }
-    );
-  }
-  return (
-    xe("fleet_view_dispatch_exec"),
-    {
-      ok: true,
-      jobId: a.short,
-      sessionId: r,
+function _mr(e, t) {
+  let { client: n, tools: r, commands: o } = t,
+    s;
+  (e.applyMcpUpdate((i) => {
+    let a = i.clients.find((l) => l.name === n.name);
+    if (!a || !Lqe(a.config, n.config)) {
+      if (n.type === "connected")
+        (sn(
+          n.name,
+          a
+            ? "applyConnectionResult: disposing orphaned connect (slot config changed mid-flight)"
+            : "applyConnectionResult: disposing orphaned connect (slot removed mid-flight)",
+        ),
+          (s = () => {
+            (n.cleanup().catch(() => {}), ST(n.name, n.config).catch(() => {}));
+          }));
+      return i;
     }
-  );
+    return {
+      ...i,
+      clients: i.clients.map((l) => (l.name === n.name ? n : l)),
+      tools: oE([...i.tools, ...r], "name"),
+      commands: oE([...i.commands, ...o], "name"),
+    };
+  }),
+    s?.());
 }
-function uWo() {
-  return _Te;
+async function v7o(e, t) {
+  let n = Object.entries(e),
+    r = () =>
+      n.filter(([s]) => {
+        let i = t.getClients().find((a) => a.name === s);
+        return i !== void 0 && MUn(i);
+      });
+  if (r().length === 0) return;
+  for (let s of Pxm) {
+    await Nn(s);
+    let i = r();
+    if (i.length === 0) {
+      T("[MCP] Retry: all remote servers recovered, stopping");
+      return;
+    }
+    T(`[MCP] Retry: ${i.length} transiently-failed remote server(s) after ${s}ms backoff`);
+    for (let [a, l] of i) aP.cache.delete(kqe(a, l));
+    await Dqe((a) => _mr(t, a), Object.fromEntries(i));
+  }
+  let o = r();
+  if (o.length > 0)
+    T(
+      `[MCP] Retry: ${o.length} remote server(s) still failed after all retries: ${o.map(([s]) => s).join(", ")}`,
+    );
 }
-function $rc(e) {
-  if (_Te?.sessionId === e) _Te.ready = true;
-}
-async function Iar(e, t = false, n, r) {
-  if (t) war = false;
-  if (_Te || RHt || war) return;
-  if (_Qt()) {
-    It("job_spare_ensure", "low_mem");
+async function H7o(e, t, n) {
+  if (e) {
+    (Promise.resolve(t()).catch(() => {}), T(`[MCP] ${n} running fully async (nonblocking)`));
     return;
   }
-  let o = CQt.randomUUID(),
-    s = o.slice(0, 8);
-  (T(`[PERF:bg-spare-start] ${s}`),
-    (RHt = (async () => {
-      try {
-        let i = await jA(e),
-          a = r;
-        if (a === void 0 && n?.agent) (wq(), (a = await IQt(i).catch(() => [])));
-        let l = DHt(n, a).name,
-          c = await SZ([...xQt, "--agent", l, ...kQt(n)], o, "spare", i);
-        if (!c.ok) {
-          (await Sme(s, {
-            internal: true,
-          }).catch(() => {}),
-            (c.reason === "gate_blocked" ? It : Le)(
-              "job_spare_ensure",
-              c.reason ?? "spawn_failed",
-            ));
-          return;
-        }
-        if (war) {
-          (await Sme(s, {
-            internal: true,
-          }),
-            It("job_spare_ensure", "discarded_after_spawn"));
-          return;
-        }
-        ((_Te = {
-          jobId: s,
-          sessionId: o,
-          cwd: i,
-          ready: false,
-          defaults: n,
-        }),
-          T(`[PERF:bg-spare-spawned] ${s}`),
-          xe("job_spare_ensure"));
-      } catch {
-        (await Sme(s, {
-          internal: true,
-        }).catch(() => {}),
-          Le("job_spare_ensure", "threw"));
-      }
-    })()));
-  try {
-    await RHt;
-  } finally {
-    RHt = null;
-  }
-}
-async function Orc(e, t) {
-  T("[PERF:bg-claim-start]");
-  let n = _Te;
-  _Te = null;
-  let r = t ?? DHt(n?.defaults),
-    o = async (i, a) => {
-      if (
-        (T(`[bg-spare] claim miss (${i})${a ? `: ${a}` : ""}`),
-        G("tengu_bg_spare_claim_fail", {
-          reason: $e(i),
-        }),
-        n)
-      ) {
-        let { removed: l, error: c } = await Sme(n.jobId, {
-          internal: true,
-          knownGone: i === "enojob",
-        });
-        if (!l)
-          return (
-            Le("job_claim_spare", "job_claim_spare_delete_failed"),
-            T(
-              `[bg-spare] deleteJob unconfirmed (${c ?? "unknown"}) \u2014 cold-dispatching with fresh sessionId; spare ${n.jobId} dir preserved`,
-              {
-                level: "warn",
-              },
-            ),
-            Car(r, e, void 0, n.cwd, void 0, n.defaults)
-          );
-      }
-      return (It("job_claim_spare", i), Car(r, e, n?.sessionId, n?.cwd, void 0, n?.defaults));
-    };
-  if (!n) return o("no-spare");
-  let s = IHt(
-    eue({
-      template: r,
-      respawnFlags: [...xQt, "--agent", r.name, ...kQt(n.defaults)],
-      intent: e,
-      sessionId: n.sessionId,
-      cwd: n.cwd,
-      originCwd: n.cwd,
-    }),
-    e,
-  );
-  try {
-    let i = await wQt(n.jobId, e, void 0, s);
-    if (i) return o(i.err === MYe ? "enojob" : "reply", i.err);
-  } catch (i) {
-    return o("reply-throw", be(i));
-  }
-  return (
-    await Kd(_c(n.jobId), s).catch(Xf),
-    T("[PERF:bg-claim-end]"),
-    xe("job_claim_spare"),
-    xe("fleet_view_dispatch"),
-    {
-      ok: true,
-      jobId: n.jobId,
-      sessionId: n.sessionId,
-    }
-  );
-}
-async function Nrc() {
-  if (((war = true), RHt)) await RHt.catch(() => {});
-  let e = _Te;
-  if (((_Te = null), e))
-    await Sme(e.jobId, {
-      internal: true,
-    });
-}
-async function PHt(e, t) {
-  if (t?.knownAlive && t.knownState && !t.force)
-    return {
-      ok: false,
-      alive: true,
-      short: t.knownState.daemonShort ?? e,
-      state: t.knownState,
-      error: `Session ${e} is already running`,
-    };
-  let n = _c(e),
-    r = t?.knownState ?? (await zi(n));
-  if (!r)
-    return (
-      Le("job_respawn", "job_respawn_state_missing"),
-      {
-        ok: false,
-        error: "Can't respawn \u2014 that job's saved state is missing",
-        alive: false,
-      }
-    );
-  let o = r.daemonShort ?? e,
-    s = Date.now(),
-    i = await wrc(o),
-    a = Date.now() - s,
-    l = i.alive;
-  if (!t?.force && l)
-    return {
-      ok: false,
-      alive: true,
-      short: o,
-      state: r,
-      error: `Session ${e} is already running`,
-    };
-  if (!t?.force && V0e(r)) {
-    if (i.daemonUp && i.present)
-      return {
-        ok: false,
-        alive: true,
-        short: o,
-        state: r,
-        error: `Session ${e} has exited; attach shows the captured output`,
-      };
-    return (
-      It("job_respawn", "exec_output_expired"),
-      {
-        ok: false,
-        alive: false,
-        state: r,
-        error: "Output no longer available \u2014 this shell command has exited",
-      }
-    );
-  }
-  if (t?.knownState) sS(n);
-  let c = t?.knownState ? ((await zi(n)) ?? r) : r,
-    u = c.daemonShort ?? e,
-    d = c.resumeSessionId ?? (yD(r.sessionId) !== null ? r.sessionId : CQt.randomUUID()),
-    p = Date.now(),
-    f = 0,
-    m = 0,
-    g = null,
-    h = null,
-    y = i.daemonUp && !i.alive && !i.present && u === o;
-  if (y) ((g = aWo(u)), (h = xae(d, c.cwd, c.linkScanPath)));
+  let r = t(),
+    o = Date.now(),
+    s;
+  if (Array.isArray(r)) s = r;
   else {
-    let z = await yTe(u, r);
-    if (((f = Date.now() - p), l && !z.confirmed))
-      return (
-        G("tengu_bg_respawn_unconfirmed_bail", {}),
-        It("job_respawn", "job_respawn_kill_unconfirmed"),
-        {
-          ok: false,
-          alive: l,
-          short: u,
-          state: r,
-          error:
-            z.error ??
-            "Couldn't stop the previous worker \u2014 supervisor may be starting, retry in a moment",
-        }
-      );
-    let K = Date.now(),
-      Z = K + 3000;
-    while (Date.now() < Z) {
-      if (!(await Crc(u))) break;
-      await Nn(100);
+    let c,
+      u = await Promise.race([
+        r,
+        new Promise((d) => {
+          c = setTimeout((p) => p("deadline"), POc, d);
+        }),
+      ]);
+    if ((clearTimeout(c), u === "deadline")) {
+      (r.catch(() => {}),
+        T(
+          `[MCP] ${n} config fetch not ready after ${POc}ms \u2014 proceeding; background connection continues`,
+        ));
+      return;
     }
-    m = Date.now() - K;
+    s = u;
   }
-  let b = Date.now(),
-    _ = await (h ?? xae(d, c.cwd, c.linkScanPath)),
-    S = Date.now() - b;
-  if (g) {
-    let z = Date.now(),
-      K = await g;
-    if (((f = Date.now() - z), K.anyMatch)) _ = await xae(d, c.cwd, c.linkScanPath);
-  }
-  let A = _.hasMessages;
-  if (!A)
-    (G("tengu_bg_respawn_no_transcript", {
-      via: $e(_.via),
-      had_link_scan_path: c.linkScanPath !== void 0,
-    }),
-      await a2
-        .rm(_.path, {
-          force: true,
-        })
-        .catch(() => {}));
-  let v = r.template === "exec" && r.respawnFlags.length === 0 ? r.intent : void 0,
-    C = LYe(c.respawnFlags),
-    x = v
-      ? []
-      : C.length > 0
-        ? C
-        : r.routine
-          ? ["--routine", r.routine]
-          : r.template !== "bg"
-            ? ["--agent", r.template]
-            : [],
-    I = x.indexOf("--agent");
-  if (!A && I !== -1 && x[I + 1]) {
-    let z = x[I + 1];
-    wq();
-    let K = await IQt(c.cwd).catch(() => {
-        return;
-      }),
-      Z = DHt(
-        {
-          agent: z,
-        },
-        K,
-      ).name;
-    if (Z !== z) x = x.with(I + 1, Z);
-  }
-  let k = c.resumeSessionId !== void 0 && d !== r.sessionId,
-    D = v ? void 0 : (t?.initialPrompt ?? c.queuedPrompt ?? (A || k ? void 0 : r.intent)),
-    P = [
-      ...(A && !v ? ["--resume", d] : []),
-      ...(t?.replyOnResume && A && !v && !D && !x.includes("--reply-on-resume")
-        ? ["--reply-on-resume"]
-        : []),
-      ...x,
-      ...(D ? ["--", D] : []),
-    ],
-    O = W0e(c.bridgeSessionId, c.bridgeSessionSeq, c.bridgeOutboundOnly),
-    L = Date.now(),
-    M =
-      v ||
-      A ||
-      r.bgIsolation === "none" ||
-      r.providerEnv ||
-      r.sessionPermissionRules ||
-      r.memoryToggledOff
-        ? {
-            ...(v && {
-              intent: v,
-              exec: v,
-            }),
-            ...(A &&
-              !v && {
-                resumeTranscriptPath: _.path,
-              }),
-            ...(r.bgIsolation === "none" && {
-              bgIsolation: "none",
-            }),
-            ...(r.providerEnv && {
-              providerEnv: r.providerEnv,
-            }),
-            ...(r.sessionPermissionRules && {
-              sessionPermissionRules: r.sessionPermissionRules,
-            }),
-            ...(r.memoryToggledOff && {
-              memoryToggledOff: true,
-            }),
-          }
-        : void 0,
-    N = await SZ(P, d, "fleet", c.cwd, M, O, e);
-  if (!N.ok && !N.alive && N.reason === "ack_timeout" && Date.now() - L < 2000)
-    (T(`bg: respawn dispatch fast-failed (${Date.now() - L}ms) \u2014 retrying once`, {
-      level: "warn",
-    }),
-      await Nn(500),
-      (N = await SZ(P, d, "fleet", c.cwd, M, O, e)));
-  let B = Date.now() - L,
-    $ = Date.now() - s;
-  if (
-    (T(
-      `[PERF:respawn] ${e}: total=${$}ms probe=${a}ms kill=${f}ms${y ? " (ceremony skipped)" : ""} wait=${m}ms transcript=${S}ms dispatch=${B}ms ok=${N.ok}`,
-    ),
-    G("tengu_bg_respawn", {
-      total_ms: $,
-      probe_ms: a,
-      kill_ms: f,
-      wait_ms: m,
-      transcript_ms: S,
-      dispatch_ms: B,
-      skipped_kill: y,
-      daemon_up: i.daemonUp,
-      was_present: i.present,
-      forced: t?.force === true,
-      ok: N.ok,
-    }),
-    !N.ok)
-  ) {
-    if (N.alive) It("job_respawn", "already_alive");
-    else Le("job_respawn", "job_respawn_spawn_failed");
-    let z = false;
-    if (!N.alive && t?.initialPrompt) {
-      let K = {
-        ...c,
-        queuedPrompt: t.initialPrompt,
-        updatedAt: new Date().toISOString(),
-      };
-      z = await Kd(n, K).then(
-        () => true,
-        (Z) => (Xf(Z), false),
-      );
-    }
-    return {
-      ok: false,
-      error: N.error,
-      alive: N.alive ?? false,
-      short: N.short,
-      state: r,
-      queued: z,
-    };
-  }
-  (G("tengu_bg_agent_action", {
-    action: We("respawn"),
-    agent: r.template,
-    wasSettled: Vh(r),
-  }),
-    sS(n));
-  let q = (await zi(n)) ?? c;
-  if (q.state === "failed" && q.updatedAt > c.updatedAt)
-    return (
-      It("job_respawn", "crashed_during_spawn"),
-      {
-        ok: true,
-        short: N.short,
-        state: q,
-      }
+  let i = nIa(),
+    a = Math.max(0, i - (Date.now() - o)),
+    l = await JRa(s, a);
+  if (l > 0)
+    T(
+      `[MCP] ${n}: ${l}/${s.length} not ready after ${i}ms \u2014 proceeding; background connection continues`,
     );
-  let W = D ? IHt(q, D) : q,
-    V = c.state === "failed" || c.state === "stopped" || !!v,
-    Y = {
-      ...W,
-      state: V ? "starting" : c.state,
-      ...(D
-        ? {
-            inFlight: void 0,
-          }
-        : {
-            ...(!V && c.tempo === "active"
-              ? B0(c.state) || c.routine
-                ? {
-                    tempo: "idle",
-                  }
-                : {
-                    tempo: "blocked",
-                    needs: PW,
-                    ...(llt.includes(c.state) && {
-                      state: "working",
-                    }),
-                  }
-              : {
-                  tempo: V ? "idle" : c.tempo,
-                }),
-            detail: V ? "" : c.detail,
-            inFlight: {
-              tasks: 0,
-              queued: 0,
-              kinds: [],
-            },
-          }),
-      ...(A
-        ? {}
-        : {
-            firstTerminalAt: null,
-          }),
-      daemonShort: N.short,
-      queuedPrompt: void 0,
-      updatedAt: new Date().toISOString(),
-      backend: "daemon",
-    };
-  return (
-    await Kd(n, Y).catch(Xf),
-    xe("job_respawn"),
-    {
-      ok: true,
-      short: N.short,
-      state: Y,
+}
+async function Mxm(e) {
+  let { claudeaiConfigs: t, regularMcpConfigs: n, state: r, deferConnect: o } = e;
+  if (Object.keys(t).length > 0) {
+    let l = new Set();
+    for (let u of Object.values(t)) {
+      let d = ode(u);
+      if (d) l.add(d);
     }
+    let c = new Set();
+    for (let [u, d] of Object.entries(n)) {
+      if (!u.startsWith("plugin:")) continue;
+      let p = ode(d);
+      if (p && l.has(p)) c.add(u);
+    }
+    if (c.size > 0) {
+      T(
+        `[MCP] Lazy dedup: suppressing ${c.size} plugin server(s) that duplicate claude.ai connectors: ${[...c].join(", ")}`,
+      );
+      for (let u of r.getClients()) {
+        if (!c.has(u.name) || u.type !== "connected") continue;
+        ((u.client.onclose = void 0), ST(u.name, u.config).catch(() => {}));
+      }
+      r.applyMcpUpdate((u) => {
+        let { clients: d, tools: p, commands: f, resources: m } = u;
+        ((d = d.filter((g) => !c.has(g.name))),
+          (p = p.filter((g) => !g.mcpInfo || !c.has(g.mcpInfo.serverName))));
+        for (let g of c) ((f = $dt(f, g)), (m = Odt(m, g)));
+        return {
+          ...u,
+          clients: d,
+          tools: p,
+          commands: f,
+          resources: m,
+        };
+      });
+    }
+  }
+  let s = cv(n, (l, c) => !c.startsWith("plugin:")),
+    { servers: i, suppressed: a } = await Ldt(t, s);
+  return (
+    r.applyMcpUpdate((l) =>
+      f3t(l.suppressedClaudeAiConnectors ?? [], a)
+        ? l
+        : {
+            ...l,
+            suppressedClaudeAiConnectors: a,
+          },
+    ),
+    T7o(i, "claudeai", r, o)
   );
 }
-var CQt,
-  a2,
-  LHt,
-  Bse,
-  xQt,
-  OJf,
-  _Te = null,
-  RHt = null,
-  war = false;
+var POc = 1000,
+  Pxm;

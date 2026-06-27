@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GEc
 // matched 2.1.88 source: src/utils/handlePromptSubmit.ts
-// class=modified  jaccard=0.321  score=0.6633  fileCov=0.3835
+// class=modified  jaccard=0.453  score=0.6875  fileCov=0.5704
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var GEc = E(() => {

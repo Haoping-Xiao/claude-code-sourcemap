@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ao
 // matched 2.1.88 source: src/utils/model/model.ts
-// class=partial  jaccard=0.2033  score=0.7563  fileCov=0.2175
+// class=partial  jaccard=0.0939  score=0.5069  fileCov=0.1033
 // note: low-confidence suggestion: src/utils/model/model.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Ao = E(() => {

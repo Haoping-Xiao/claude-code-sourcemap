@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tfe
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/mathematica.js
-// class=new  jaccard=0.0003  score=0.0614  fileCov=0.0003
-// note: nearest: node_modules/highlight.js/lib/languages/mathematica.js (0.0003); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js
+// class=new  jaccard=0.0216  score=0.0914  fileCov=0.0275
+// note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js (0.0216); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tfe = E(() => {
   ft();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module F8n
 // matched 2.1.88 source: src/services/api/claude.ts
-// class=modified (alt of src/services/api/claude.ts)  jaccard=0.0393  score=0.3759  fileCov=0.0421
+// class=modified (alt of src/services/api/claude.ts)  jaccard=0.0206  score=0.3399  fileCov=0.0214
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var F8n = E(() => {

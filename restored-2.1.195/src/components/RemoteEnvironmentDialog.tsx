@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XJl
 // matched 2.1.88 source: src/components/RemoteEnvironmentDialog.tsx
-// class=modified  jaccard=0.3356  score=0.5875  fileCov=0.439
+// class=modified  jaccard=0.2051  score=0.2885  fileCov=0.415
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var XJl = E(() => {

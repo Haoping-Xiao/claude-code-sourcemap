@@ -1,208 +1,145 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Rd
 // matched 2.1.88 source: src/utils/settings/constants.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8231  score=0.8582  fileCov=0.9526
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.6584  score=0.8162  fileCov=0.7729
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-import { getAllowedSettingSources } from '../../bootstrap/state.js'
-
-/**
- * All possible sources where settings can come from
- * Order matters - later sources override earlier ones
- */
-export const SETTING_SOURCES = [
-  // User settings (global)
-  'userSettings',
-
-  // Project settings (shared per-directory)
-  'projectSettings',
-
-  // Local settings (gitignored)
-  'localSettings',
-
-  // Flag settings (from --settings flag)
-  'flagSettings',
-
-  // Policy settings (managed-settings.json or remote settings from API)
-  'policySettings',
-] as const
-
-export type SettingSource = (typeof SETTING_SOURCES)[number]
-
-export function getSettingSourceName(source: SettingSource): string {
-  switch (source) {
-    case 'userSettings':
-      return 'user'
-    case 'projectSettings':
-      return 'project'
-    case 'localSettings':
-      return 'project, gitignored'
-    case 'flagSettings':
-      return 'cli flag'
-    case 'policySettings':
-      return 'managed'
+var Rd = E(() => {
+  cvs();
+  je();
+  vn();
+  SG();
+  Jt();
+  Eet = require("fs/promises");
+  uvs = JC(dvs, (e) => e, 50);
+  Ia = Object.assign(
+    function (t, n = true) {
+      if (!t) return null;
+      let r = t.length > tOu ? dvs(t, n) : uvs(t, n);
+      return r.ok ? r.value : null;
+    },
+    {
+      cache: uvs.cache,
+    },
+  );
+});
+function wG(e) {
+  switch (e) {
+    case "userSettings":
+      return "user";
+    case "projectSettings":
+      return "project";
+    case "localSettings":
+      return "project, gitignored";
+    case "flagSettings":
+      return "cli flag";
+    case "policySettings":
+      return "managed";
   }
 }
-
-/**
- * Get short display name for a setting source (capitalized, for context/skills UI)
- * @param source The setting source or 'plugin'/'built-in'
- * @returns Short capitalized display name like 'User', 'Project', 'Plugin'
- */
-export function getSourceDisplayName(
-  source: SettingSource | 'plugin' | 'built-in',
-): string {
-  switch (source) {
-    case 'userSettings':
-      return 'User'
-    case 'projectSettings':
-      return 'Project'
-    case 'localSettings':
-      return 'Local'
-    case 'flagSettings':
-      return 'Flag'
-    case 'policySettings':
-      return 'Managed'
-    case 'plugin':
-      return 'Plugin'
-    case 'built-in':
-      return 'Built-in'
+function Tet(e) {
+  switch (e) {
+    case "userSettings":
+      return "User";
+    case "projectSettings":
+      return "Project";
+    case "localSettings":
+      return "Local";
+    case "flagSettings":
+      return "Flag";
+    case "policySettings":
+      return "Managed";
+    case "plugin":
+      return "Plugin";
+    case "built-in":
+      return "Built-in";
+    case "mcp":
+      return "MCP";
   }
 }
-
-/**
- * Get display name for a setting or permission rule source (lowercase, for inline use)
- * @param source The setting source or permission rule source
- * @returns Display name for the source in lowercase
- */
-export function getSettingSourceDisplayNameLowercase(
-  source: SettingSource | 'cliArg' | 'command' | 'session',
-): string {
-  switch (source) {
-    case 'userSettings':
-      return 'user settings'
-    case 'projectSettings':
-      return 'shared project settings'
-    case 'localSettings':
-      return 'project local settings'
-    case 'flagSettings':
-      return 'command line arguments'
-    case 'policySettings':
-      return 'enterprise managed settings'
-    case 'cliArg':
-      return 'CLI argument'
-    case 'command':
-      return 'command configuration'
-    case 'session':
-      return 'current session'
+function fvs(e) {
+  switch (e) {
+    case "userSettings":
+      return "user settings";
+    case "projectSettings":
+      return "shared project settings";
+    case "localSettings":
+      return "project local settings";
+    case "flagSettings":
+      return "command line arguments";
+    case "policySettings":
+      return "enterprise managed settings";
+    case "cliArg":
+      return "CLI argument";
+    case "command":
+      return "command configuration";
+    case "session":
+      return "current session";
+    case "toolsNarrowing":
+      return "CLI tool narrowing";
+    case "mcpServerPolicy":
+      return "MCP server policy";
   }
 }
-
-/**
- * Get display name for a setting or permission rule source (capitalized, for UI labels)
- * @param source The setting source or permission rule source
- * @returns Display name for the source with first letter capitalized
- */
-export function getSettingSourceDisplayNameCapitalized(
-  source: SettingSource | 'cliArg' | 'command' | 'session',
-): string {
-  switch (source) {
-    case 'userSettings':
-      return 'User settings'
-    case 'projectSettings':
-      return 'Shared project settings'
-    case 'localSettings':
-      return 'Project local settings'
-    case 'flagSettings':
-      return 'Command line arguments'
-    case 'policySettings':
-      return 'Enterprise managed settings'
-    case 'cliArg':
-      return 'CLI argument'
-    case 'command':
-      return 'Command configuration'
-    case 'session':
-      return 'Current session'
+function mvs(e) {
+  switch (e) {
+    case "userSettings":
+      return "User settings";
+    case "projectSettings":
+      return "Shared project settings";
+    case "localSettings":
+      return "Project local settings";
+    case "flagSettings":
+      return "Command line arguments";
+    case "policySettings":
+      return "Enterprise managed settings";
+    case "cliArg":
+      return "CLI argument";
+    case "command":
+      return "Command configuration";
+    case "session":
+      return "Current session";
+    case "toolsNarrowing":
+      return "CLI tool narrowing";
+    case "mcpServerPolicy":
+      return "MCP server policy";
   }
 }
-
-/**
- * Parse the --setting-sources CLI flag into SettingSource array
- * @param flag Comma-separated string like "user,project,local"
- * @returns Array of SettingSource values
- */
-export function parseSettingSourcesFlag(flag: string): SettingSource[] {
-  if (flag === '') return []
-
-  const names = flag.split(',').map(s => s.trim())
-  const result: SettingSource[] = []
-
-  for (const name of names) {
-    switch (name) {
-      case 'user':
-        result.push('userSettings')
-        break
-      case 'project':
-        result.push('projectSettings')
-        break
-      case 'local':
-        result.push('localSettings')
-        break
+function gvs(e) {
+  if (e === "") return [];
+  let t = e.split(",").map((r) => r.trim()),
+    n = [];
+  for (let r of t)
+    switch (r) {
+      case "user":
+        n.push("userSettings");
+        break;
+      case "project":
+        n.push("projectSettings");
+        break;
+      case "local":
+        n.push("localSettings");
+        break;
       default:
-        throw new Error(
-          `Invalid setting source: ${name}. Valid options are: user, project, local`,
-        )
+        throw Error(`Invalid setting source: ${r}. Valid options are: user, project, local`);
     }
-  }
-
-  return result
+  return n;
 }
-
-/**
- * Get enabled setting sources with policy/flag always included
- * @returns Array of enabled SettingSource values
- */
-export function getEnabledSettingSources(): SettingSource[] {
-  const allowed = getAllowedSettingSources()
-
-  // Always include policy and flag settings
-  const result = new Set<SettingSource>(allowed)
-  result.add('policySettings')
-  result.add('flagSettings')
-  return Array.from(result)
+function $w() {
+  let e = wCt();
+  if (vRr?.allowed === e) return vRr.result;
+  let t = new Set(e);
+  (t.add("flagSettings"), t.add("policySettings"));
+  let n = fv.filter((r) => t.has(r));
+  return (
+    (vRr = {
+      allowed: e,
+      result: n,
+    }),
+    n
+  );
 }
-
-/**
- * Check if a specific source is enabled
- * @param source The source to check
- * @returns true if the source should be loaded
- */
-export function isSettingSourceEnabled(source: SettingSource): boolean {
-  const enabled = getEnabledSettingSources()
-  return enabled.includes(source)
+function Om(e) {
+  return $w().includes(e);
 }
-
-/**
- * Editable setting sources (excludes policySettings and flagSettings which are read-only)
- */
-export type EditableSettingSource = Exclude<
-  SettingSource,
-  'policySettings' | 'flagSettings'
->
-
-/**
- * List of sources where permission rules can be saved, in display order.
- * Used by permission-rule and hook-save UIs to present source options.
- */
-export const SOURCES = [
-  'localSettings',
-  'projectSettings',
-  'userSettings',
-] as const satisfies readonly EditableSettingSource[]
-
-/**
- * The JSON Schema URL for Claude Code settings
- * You can edit the contents at https://github.com/SchemaStore/schemastore/blob/master/src/schemas/json/claude-code-settings.json
- */
-export const CLAUDE_CODE_SETTINGS_SCHEMA_URL =
-  'https://json.schemastore.org/claude-code-settings.json'
+var fv, vRr, OO, DRt;

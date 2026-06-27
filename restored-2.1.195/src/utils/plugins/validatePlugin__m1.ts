@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vrr
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
-// class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.044  score=0.0869  fileCov=0.082
+// class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0545  score=0.1061  fileCov=0.1007
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vrr = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WI
-// matched 2.1.88 source: src/skills/loadSkillsDir.ts
-// class=new  jaccard=0.0393  score=0.2904  fileCov=0.0435
-// note: nearest: src/skills/loadSkillsDir.ts (0.0393); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
+// class=new  jaccard=0.0306  score=0.3938  fileCov=0.0321
+// note: nearest: src/commands/plugin/ManagePlugins.tsx (0.0306); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var WI = E(() => {
   Ree();

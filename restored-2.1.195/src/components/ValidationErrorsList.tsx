@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hse
 // matched 2.1.88 source: src/components/ValidationErrorsList.tsx
-// class=modified  jaccard=0.355  score=1  fileCov=0.355
+// class=modified  jaccard=0.2586  score=0.5762  fileCov=0.3194
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hse = E(() => {

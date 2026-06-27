@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XVo
 // matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0018  score=0.6938  fileCov=0.0018
-// note: nearest: src/main.tsx (0.0018); dir inferred from dep-graph -> utils; 4 renamed
+// class=new  jaccard=0.0023  score=0.3145  fileCov=0.0023
+// note: nearest: src/main.tsx (0.0023); dir inferred from dep-graph -> utils; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var XVo = E(() => {
   je();

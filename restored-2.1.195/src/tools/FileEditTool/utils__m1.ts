@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Hel
 // matched 2.1.88 source: src/tools/FileEditTool/utils.ts
-// class=modified (alt of src/tools/FileEditTool/utils.ts)  jaccard=0.175  score=0.5267  fileCov=0.2076
+// class=modified (alt of src/tools/FileEditTool/utils.ts)  jaccard=0.0834  score=0.4721  fileCov=0.092
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Hel = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DTl
 // matched 2.1.88 source: src/tools/PowerShellTool/PowerShellTool.tsx
-// class=modified (alt of src/tools/PowerShellTool/PowerShellTool.tsx)  jaccard=0.1165  score=0.7123  fileCov=0.1223
+// class=modified (alt of src/tools/PowerShellTool/PowerShellTool.tsx)  jaccard=0.141  score=0.4003  fileCov=0.1787
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var DTl = E(() => {

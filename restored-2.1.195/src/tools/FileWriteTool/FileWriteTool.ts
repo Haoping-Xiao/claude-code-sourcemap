@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ppe
 // matched 2.1.88 source: src/tools/FileWriteTool/FileWriteTool.ts
-// class=modified  jaccard=0.3908  score=0.6302  fileCov=0.5071
+// class=modified  jaccard=0.4181  score=0.6078  fileCov=0.5726
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ppe = E(() => {

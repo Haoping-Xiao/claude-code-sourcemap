@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YQr
 // matched 2.1.88 source: src/commands/terminalSetup/terminalSetup.tsx
-// class=modified  jaccard=0.4912  score=0.609  fileCov=0.7176
+// class=modified  jaccard=0.4376  score=0.6226  fileCov=0.5956
 // note: deminified; 10 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var YQr = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hyt
-// matched 2.1.88 source: src/utils/messages.ts
-// class=new  jaccard=0.0037  score=0.1068  fileCov=0.0038
-// note: nearest: src/utils/messages.ts (0.0037); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tasks/LocalShellTask/LocalShellTask.tsx
+// class=new  jaccard=0.0438  score=0.1565  fileCov=0.0573
+// note: nearest: src/tasks/LocalShellTask/LocalShellTask.tsx (0.0438); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var hyt = E(() => {
   $S();

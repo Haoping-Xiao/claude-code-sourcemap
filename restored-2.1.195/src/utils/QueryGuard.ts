@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Pmc
 // matched 2.1.88 source: src/utils/QueryGuard.ts
-// class=modified  jaccard=0.529  score=0.7228  fileCov=0.6636
+// class=modified  jaccard=0.632  score=0.9352  fileCov=0.661
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Pmc = E(() => {

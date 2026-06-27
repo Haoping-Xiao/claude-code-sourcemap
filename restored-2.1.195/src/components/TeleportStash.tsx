@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WVt
 // matched 2.1.88 source: src/components/TeleportStash.tsx
-// class=modified  jaccard=0.3686  score=0.4744  fileCov=0.6229
+// class=modified  jaccard=0.2694  score=0.4104  fileCov=0.4393
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var WVt = E(() => {

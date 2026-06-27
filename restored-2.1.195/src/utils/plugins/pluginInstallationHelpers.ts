@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OYt
 // matched 2.1.88 source: src/utils/plugins/pluginInstallationHelpers.ts
-// class=modified  jaccard=0.3079  score=0.3679  fileCov=0.6538
+// class=modified  jaccard=0.2913  score=0.3876  fileCov=0.5396
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OYt = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module o6s
 // matched 2.1.88 source: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js
-// class=new  jaccard=0.0408  score=1  fileCov=0.0408
-// note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0408); 0 renamed
+// class=new  jaccard=0.0226  score=1  fileCov=0.0226
+// note: nearest: node_modules/@aws-sdk/middleware-websocket/dist-cjs/index.js (0.0226); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var o6s = E(() => {
   lBr();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module X8n
-// matched 2.1.88 source: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx
-// class=new  jaccard=0.0275  score=0.8539  fileCov=0.0276
-// note: nearest: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx (0.0275); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/ink/styles.ts
+// class=new  jaccard=0.0481  score=0.7082  fileCov=0.0491
+// note: nearest: src/ink/styles.ts (0.0481); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var X8n = E(() => {
   Rm();

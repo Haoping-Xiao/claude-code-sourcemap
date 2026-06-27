@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kgt
 // matched 2.1.88 source: src/utils/nativeInstaller/packageManagers.ts
-// class=modified  jaccard=0.1477  score=0.5406  fileCov=0.169
+// class=modified  jaccard=0.1269  score=0.4107  fileCov=0.1552
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kgt = E(() => {

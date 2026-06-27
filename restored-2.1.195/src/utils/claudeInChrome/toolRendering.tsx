@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Upo
 // matched 2.1.88 source: src/utils/claudeInChrome/toolRendering.tsx
-// class=modified  jaccard=0.798  score=0.8953  fileCov=0.8802
+// class=modified  jaccard=0.6073  score=0.6621  fileCov=0.8801
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Upo = E(() => {

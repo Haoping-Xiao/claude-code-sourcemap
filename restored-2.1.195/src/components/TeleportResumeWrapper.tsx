@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module d6l
 // matched 2.1.88 source: src/components/TeleportResumeWrapper.tsx
-// class=modified  jaccard=0.2279  score=0.3865  fileCov=0.357
+// class=modified  jaccard=0.3196  score=0.4309  fileCov=0.5531
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var d6l = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oje
 // matched 2.1.88 source: src/constants/system.ts
-// class=modified  jaccard=0.3566  score=0.7146  fileCov=0.4158
+// class=modified  jaccard=0.295  score=0.5041  fileCov=0.4157
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oje = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ONl
-// matched 2.1.88 source: src/components/agents/AgentsList.tsx
-// class=partial  jaccard=0.1356  score=0.4067  fileCov=0.169
-// note: low-confidence suggestion: src/components/agents/AgentsList.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/sandbox/SandboxDoctorSection.tsx
+// class=partial  jaccard=0.2472  score=0.3513  fileCov=0.4548
+// note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ONl = E(() => {
   SC();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qel
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> hooks; 0 renamed
+// matched 2.1.88 source: src/ink/components/Box.tsx
+// class=new  jaccard=0.022  score=0.3818  fileCov=0.0228
+// note: nearest: src/ink/components/Box.tsx (0.022); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var qel = E(() => {
   Ye();

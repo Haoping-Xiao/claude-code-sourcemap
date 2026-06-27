@@ -1,215 +1,197 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module DOc
+// restored from claude-code 2.1.195 (deminified) — module fes
 // matched 2.1.88 source: src/main.tsx
-// class=modified (alt of src/main.tsx)  jaccard=0.0072  score=0.219  fileCov=0.0074
+// class=modified (alt of src/main.tsx)  jaccard=0.0095  score=0.1884  fileCov=0.0099
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DOc = E(() => {
-  Rm();
-  je();
+var fes = Q((ONm, rVc) => {
+  rVc.exports = require("/$bunfs/root/audio-capture.node");
 });
-function MOc(e) {
-  let { regularMcpConfigs: t, claudeaiConfigPromise: n, state: r } = e,
-    o = ml(process.env.MCP_CONNECTION_NONBLOCKING)
-      ? false
-      : ut(process.env.MCP_CONNECTION_NONBLOCKING) || (e.nonBlocking ?? false);
-  r_r(o);
-  let s = o,
-    i = cv(t, (u) => u.alwaysLoad === true),
-    a = cv(t, (u) => u.alwaysLoad !== true),
-    l = Object.keys(i).length > 0;
-  async function c() {
-    (pa("before_mcp_connect_user"), pa("before_mcp_connect_connector"));
-    let u = Promise.all([
-        ...(l
-          ? [H7o(false, () => T7o(i, "regular-required", r), "--mcp-config alwaysLoad servers")]
-          : []),
-        H7o(o, () => T7o(a, "regular", r, s), "--mcp-config servers"),
-      ]).then(() => pa("after_mcp_connect_user")),
-      d = H7o(
-        o,
-        () =>
-          n.then((p) =>
-            Mxm({
-              claudeaiConfigs: p,
-              regularMcpConfigs: t,
-              state: r,
-              deferConnect: s,
-            }),
-          ),
-        "claude.ai connectors",
-      ).then(() => pa("after_mcp_connect_connector"));
-    await Promise.all([u, d]);
+function aon(e) {
+  let t = false,
+    n,
+    r = {
+      addDir: [],
+      pluginDir: [],
+      pluginDirNoMcp: [],
+      settings: void 0,
+      mcpConfig: [],
+      strictMcpConfig: false,
+    },
+    o = [],
+    s = {
+      "--cwd": (i) => {
+        n = i;
+      },
+      "--settings": (i) => {
+        r.settings = i;
+      },
+      "--add-dir": (i) => r.addDir.push(i),
+      "--plugin-dir": (i) => r.pluginDir.push(i),
+      "--plugin-dir-no-mcp": (i) => r.pluginDirNoMcp.push(i),
+      "--mcp-config": (i) => r.mcpConfig.push(i),
+    };
+  for (let i = 0; i < e.length; i++) {
+    let a = e[i];
+    if (a === "agents" && !t) {
+      t = true;
+      continue;
+    }
+    if (a === "--strict-mcp-config") {
+      r.strictMcpConfig = true;
+      continue;
+    }
+    let l = a.indexOf("="),
+      c = l === -1 ? a : a.slice(0, l),
+      u = Object.hasOwn(s, c) ? s[c] : void 0;
+    if (u) {
+      if (l !== -1) u(a.slice(l + 1));
+      else if (i + 1 < e.length) u(e[++i]);
+      else o.push(a);
+      continue;
+    }
+    o.push(a);
   }
   return {
-    connect: c,
+    hasAgentsPositional: t,
+    cwdFilter: n,
+    config: r,
+    rest: o,
   };
 }
-function T7o(e, t, n, r = false) {
-  let o = Object.keys(e);
-  if (o.length === 0) return [];
-  n.applyMcpUpdate((l) => ({
-    ...l,
-    clients: [
-      ...l.clients,
-      ...Object.entries(e).map(([c, u]) => ({
-        name: c,
-        type: "pending",
-        config: u,
-      })),
-    ],
-  }));
-  let s = new Map(),
-    i = o.map((l) => new Promise((c) => s.set(l, c))),
-    a = () =>
-      void Dqe((l) => {
-        (_mr(n, l), Mka(), s.get(l.client.name)?.());
-      }, e)
-        .catch((l) => T(`[MCP] ${t} connect error: ${l}`))
-        .finally(() => {
-          for (let l of s.values()) l();
-          v7o(e, n).catch((l) => T(`[MCP] ${t} retry error: ${l}`));
-        });
-  if (r) setImmediate(a);
-  else a();
-  return i;
+function $Xe(e, t) {
+  let n = (r, o) => (r === "" || (o && r.trimStart().startsWith("{")) ? r : t(r));
+  return {
+    settings: e.settings === void 0 ? void 0 : n(e.settings, true),
+    pluginDir: e.pluginDir.map((r) => n(r, false)),
+    pluginDirNoMcp: e.pluginDirNoMcp.map((r) => n(r, false)),
+    addDir: e.addDir.map((r) => n(r, false)),
+    mcpConfig: e.mcpConfig.map((r) => n(r, true)),
+    strictMcpConfig: e.strictMcpConfig,
+  };
 }
-function _mr(e, t) {
-  let { client: n, tools: r, commands: o } = t,
-    s;
-  (e.applyMcpUpdate((i) => {
-    let a = i.clients.find((l) => l.name === n.name);
-    if (!a || !Lqe(a.config, n.config)) {
-      if (n.type === "connected")
-        (sn(
-          n.name,
-          a
-            ? "applyConnectionResult: disposing orphaned connect (slot config changed mid-flight)"
-            : "applyConnectionResult: disposing orphaned connect (slot removed mid-flight)",
-        ),
-          (s = () => {
-            (n.cleanup().catch(() => {}), ST(n.name, n.config).catch(() => {}));
-          }));
-      return i;
-    }
-    return {
-      ...i,
-      clients: i.clients.map((l) => (l.name === n.name ? n : l)),
-      tools: oE([...i.tools, ...r], "name"),
-      commands: oE([...i.commands, ...o], "name"),
-    };
-  }),
-    s?.());
+function OXe(e) {
+  return [
+    ...(e.settings ? ["--settings", e.settings] : []),
+    ...e.pluginDir.flatMap((t) => ["--plugin-dir", t]),
+    ...e.pluginDirNoMcp.flatMap((t) => ["--plugin-dir-no-mcp", t]),
+    ...e.addDir.flatMap((t) => ["--add-dir", t]),
+    ...e.mcpConfig.flatMap((t) => ["--mcp-config", t]),
+    ...(e.strictMcpConfig ? ["--strict-mcp-config"] : []),
+  ];
 }
-async function v7o(e, t) {
-  let n = Object.entries(e),
-    r = () =>
-      n.filter(([s]) => {
-        let i = t.getClients().find((a) => a.name === s);
-        return i !== void 0 && MUn(i);
-      });
-  if (r().length === 0) return;
-  for (let s of Pxm) {
-    await Nn(s);
-    let i = r();
-    if (i.length === 0) {
-      T("[MCP] Retry: all remote servers recovered, stopping");
-      return;
-    }
-    T(`[MCP] Retry: ${i.length} transiently-failed remote server(s) after ${s}ms backoff`);
-    for (let [a, l] of i) aP.cache.delete(kqe(a, l));
-    await Dqe((a) => _mr(t, a), Object.fromEntries(i));
-  }
-  let o = r();
-  if (o.length > 0)
-    T(
-      `[MCP] Retry: ${o.length} remote server(s) still failed after all retries: ${o.map(([s]) => s).join(", ")}`,
+function NXe(e) {
+  return e;
+}
+function We(e) {
+  return NXe(e);
+}
+function $e(e) {
+  return NXe(e);
+}
+function Oo(e) {
+  return e == null ? void 0 : NXe(e);
+}
+function yB(e) {
+  return NXe(String(e));
+}
+function HK(e) {
+  return NXe([...e].sort().join(","));
+}
+function kh(e) {
+  return NXe(e);
+}
+function Rwt(e, t) {
+  return t ? kh(e) : void 0;
+}
+function lon(e) {
+  let t = e.indexOf("--handle-uri");
+  if (t === -1 || !e[t + 1]) return null;
+  if (e.length > t + 2)
+    return (
+      `claude: rejected deep-link invocation \u2014 unexpected arguments after the URI.
+` +
+      "The OS protocol handler passes exactly `--handle-uri <uri>`; extra arguments indicate argument injection via the URL. If invoking --handle-uri manually, place other flags before it."
     );
+  return null;
 }
-async function H7o(e, t, n) {
-  if (e) {
-    (Promise.resolve(t()).catch(() => {}), T(`[MCP] ${n} running fully async (nonblocking)`));
-    return;
-  }
-  let r = t(),
-    o = Date.now(),
-    s;
-  if (Array.isArray(r)) s = r;
-  else {
-    let c,
-      u = await Promise.race([
-        r,
-        new Promise((d) => {
-          c = setTimeout((p) => p("deadline"), POc, d);
-        }),
-      ]);
-    if ((clearTimeout(c), u === "deadline")) {
-      (r.catch(() => {}),
-        T(
-          `[MCP] ${n} config fetch not ready after ${POc}ms \u2014 proceeding; background connection continues`,
-        ));
-      return;
-    }
-    s = u;
-  }
-  let i = nIa(),
-    a = Math.max(0, i - (Date.now() - o)),
-    l = await JRa(s, a);
-  if (l > 0)
-    T(
-      `[MCP] ${n}: ${l}/${s.length} not ready after ${i}ms \u2014 proceeding; background connection continues`,
-    );
+function dy() {
+  return `claude-code/${
+    {
+      ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+      PACKAGE_URL: "@anthropic-ai/claude-code",
+      README_URL: "https://code.claude.com/docs/en/overview",
+      VERSION: "2.1.195",
+      FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+      BUILD_TIME: "2026-06-26T01:00:56Z",
+      GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+    }.VERSION
+  }`;
 }
-async function Mxm(e) {
-  let { claudeaiConfigs: t, regularMcpConfigs: n, state: r, deferConnect: o } = e;
-  if (Object.keys(t).length > 0) {
-    let l = new Set();
-    for (let u of Object.values(t)) {
-      let d = ode(u);
-      if (d) l.add(d);
-    }
-    let c = new Set();
-    for (let [u, d] of Object.entries(n)) {
-      if (!u.startsWith("plugin:")) continue;
-      let p = ode(d);
-      if (p && l.has(p)) c.add(u);
-    }
-    if (c.size > 0) {
-      T(
-        `[MCP] Lazy dedup: suppressing ${c.size} plugin server(s) that duplicate claude.ai connectors: ${[...c].join(", ")}`,
-      );
-      for (let u of r.getClients()) {
-        if (!c.has(u.name) || u.type !== "connected") continue;
-        ((u.client.onclose = void 0), ST(u.name, u.config).catch(() => {}));
-      }
-      r.applyMcpUpdate((u) => {
-        let { clients: d, tools: p, commands: f, resources: m } = u;
-        ((d = d.filter((g) => !c.has(g.name))),
-          (p = p.filter((g) => !g.mcpInfo || !c.has(g.mcpInfo.serverName))));
-        for (let g of c) ((f = $dt(f, g)), (m = Odt(m, g)));
-        return {
-          ...u,
-          clients: d,
-          tools: p,
-          commands: f,
-          resources: m,
-        };
-      });
-    }
+function _x() {
+  switch (process.env.CLAUDE_CODE_ENTRYPOINT) {
+    case "claude-vscode":
+      return "claude_code_vscode";
+    case "remote":
+    case "remote_baku":
+    case "remote_cowork":
+    case "remote_desktop":
+    case "remote_mobile":
+      return "claude_code_remote";
+    case "claude-in-teams":
+      return "claude_code_remote";
+    case "sdk-cli":
+    case "sdk-ts":
+    case "sdk-py":
+      return "claude_code_sdk";
+    case "mcp":
+      return "claude_code_mcp";
+    case "claude-code-github-action":
+      return "claude_code_github_action";
+    case "local-agent":
+      return "claude_code_local_agent";
+    case "claude_in_slack":
+      return "claude_in_slack";
+    case "claude-in-slack":
+      return "claude-in-slack";
+    case "cli":
+    default:
+      return "claude_code_cli";
   }
-  let s = cv(n, (l, c) => !c.startsWith("plugin:")),
-    { servers: i, suppressed: a } = await Ldt(t, s);
-  return (
-    r.applyMcpUpdate((l) =>
-      f3t(l.suppressedClaudeAiConnectors ?? [], a)
-        ? l
-        : {
-            ...l,
-            suppressedClaudeAiConnectors: a,
-          },
-    ),
-    T7o(i, "claudeai", r, o)
-  );
 }
-var POc = 1000,
-  Pxm;
+function _yr(e) {
+  return `claude-code_${{
+    ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+    PACKAGE_URL: "@anthropic-ai/claude-code",
+    README_URL: "https://code.claude.com/docs/en/overview",
+    VERSION: "2.1.195",
+    FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+    BUILD_TIME: "2026-06-26T01:00:56Z",
+    GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+  }.VERSION.replace(/\./g, "-")}_${e}`;
+}
+function con() {
+  if (
+    !process.env.AI_AGENT ||
+    process.env.AI_AGENT.startsWith("claude-code_") ||
+    process.env.AI_AGENT.startsWith("claude-code/")
+  )
+    process.env.AI_AGENT = _yr("harness");
+}
+function L2(
+  e = {
+    ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
+    PACKAGE_URL: "@anthropic-ai/claude-code",
+    README_URL: "https://code.claude.com/docs/en/overview",
+    VERSION: "2.1.195",
+    FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
+    BUILD_TIME: "2026-06-26T01:00:56Z",
+    GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
+  }.BUILD_REF_NAME,
+) {
+  return "";
+}
+function oVc() {
+  ((this.__data__ = []), (this.size = 0));
+}
+var mes;

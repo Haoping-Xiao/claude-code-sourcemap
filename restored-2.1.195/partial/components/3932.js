@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q9n
-// matched 2.1.88 source: src/components/sandbox/SandboxDoctorSection.tsx
-// class=partial  jaccard=0.1464  score=0.3263  fileCov=0.2097
-// note: low-confidence suggestion: src/components/sandbox/SandboxDoctorSection.tsx; dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/Spinner/SpinnerGlyph.tsx
+// class=partial  jaccard=0.1606  score=0.2933  fileCov=0.262
+// note: low-confidence suggestion: src/components/Spinner/SpinnerGlyph.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var q9n = E(() => {
   Tc();

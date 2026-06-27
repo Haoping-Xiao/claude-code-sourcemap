@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vM
 // matched 2.1.88 source: src/utils/model/model.ts
-// class=modified  jaccard=0.3065  score=0.3768  fileCov=0.6216
+// class=modified  jaccard=0.283  score=0.3564  fileCov=0.5789
 // note: deminified; 64 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vM = E(() => {

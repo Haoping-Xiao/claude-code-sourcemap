@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I3t
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/ReadMcpResourceTool.ts
-// class=modified  jaccard=0.3694  score=0.4971  fileCov=0.5899
+// class=modified  jaccard=0.4454  score=0.5823  fileCov=0.6546
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I3t = E(() => {

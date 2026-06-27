@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ieo
 // matched 2.1.88 source: src/utils/telemetry/pluginTelemetry.ts
-// class=new  jaccard=0.0593  score=1  fileCov=0.0593
-// note: nearest: src/utils/telemetry/pluginTelemetry.ts (0.0593); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0521  score=1  fileCov=0.0521
+// note: nearest: src/utils/telemetry/pluginTelemetry.ts (0.0521); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ieo = E(() => {
   vf();

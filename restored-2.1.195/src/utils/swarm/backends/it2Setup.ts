@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rhl
 // matched 2.1.88 source: src/utils/swarm/backends/it2Setup.ts
-// class=modified  jaccard=0.6748  score=0.7647  fileCov=0.8517
+// class=modified  jaccard=0.5708  score=0.7922  fileCov=0.6714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rhl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tpc
 // matched 2.1.88 source: src/utils/plugins/pluginBlocklist.ts
-// class=modified  jaccard=0.2022  score=0.3232  fileCov=0.3506
+// class=modified  jaccard=0.1707  score=0.3527  fileCov=0.2487
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tpc = E(() => {

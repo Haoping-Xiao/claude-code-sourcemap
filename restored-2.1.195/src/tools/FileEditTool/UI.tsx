@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ivl
 // matched 2.1.88 source: src/tools/FileEditTool/UI.tsx
-// class=modified  jaccard=0.2572  score=0.5917  fileCov=0.3127
+// class=modified  jaccard=0.282  score=0.5756  fileCov=0.3561
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ivl = E(() => {

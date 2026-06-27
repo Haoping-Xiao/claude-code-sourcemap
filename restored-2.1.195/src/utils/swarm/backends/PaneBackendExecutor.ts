@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module A0o
 // matched 2.1.88 source: src/utils/swarm/backends/PaneBackendExecutor.ts
-// class=modified  jaccard=0.3677  score=0.4195  fileCov=0.7485
+// class=modified  jaccard=0.411  score=0.5055  fileCov=0.6872
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var A0o = E(() => {

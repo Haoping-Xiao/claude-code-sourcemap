@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l$
 // matched 2.1.88 source: src/tools/AgentTool/forkSubagent.ts
-// class=modified  jaccard=0.1551  score=0.3006  fileCov=0.2427
+// class=modified  jaccard=0.2371  score=0.4473  fileCov=0.3354
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var l$ = E(() => {

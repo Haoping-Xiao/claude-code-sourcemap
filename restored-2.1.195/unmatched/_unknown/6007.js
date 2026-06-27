@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DGc
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/commander/lib/argument.js
+// class=new  jaccard=0.042  score=0.2676  fileCov=0.0475
+// note: nearest: node_modules/commander/lib/argument.js (0.042); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var DGc = E(() => {
   LGc();

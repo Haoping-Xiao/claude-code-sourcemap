@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Azo
 // matched 2.1.88 source: src/utils/deepLink/registerProtocol.ts
-// class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.0887  score=0.6773  fileCov=0.0926
+// class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.077  score=0.3499  fileCov=0.0899
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Azo = E(() => {

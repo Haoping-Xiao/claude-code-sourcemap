@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $g
 // matched 2.1.88 source: src/utils/plugins/pluginIdentifier.ts
-// class=partial  jaccard=0.0862  score=0.0926  fileCov=0.5544
+// class=partial  jaccard=0.156  score=0.1896  fileCov=0.4683
 // note: low-confidence suggestion: src/utils/plugins/pluginIdentifier.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var $g = E(() => {

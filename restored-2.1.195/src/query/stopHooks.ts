@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KQn
 // matched 2.1.88 source: src/query/stopHooks.ts
-// class=modified  jaccard=0.319  score=0.4611  fileCov=0.5086
+// class=modified  jaccard=0.2815  score=0.3977  fileCov=0.4906
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KQn = E(() => {

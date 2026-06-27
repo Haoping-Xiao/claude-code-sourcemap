@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lUo
 // matched 2.1.88 source: src/commands/plugin/PluginErrors.tsx
-// class=modified  jaccard=0.6684  score=0.7402  fileCov=0.8732
+// class=modified  jaccard=0.6233  score=0.719  fileCov=0.8241
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lUo = E(() => {

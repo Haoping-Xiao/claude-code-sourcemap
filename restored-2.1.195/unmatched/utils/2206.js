@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Tkn
 // matched 2.1.88 source: src/utils/permissions/filesystem.ts
-// class=new  jaccard=0.0369  score=0.3511  fileCov=0.0396
-// note: nearest: src/utils/permissions/filesystem.ts (0.0369); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0324  score=0.2832  fileCov=0.0352
+// note: nearest: src/utils/permissions/filesystem.ts (0.0324); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Tkn = E(() => {
   UOi = require("path"), gOd = new Set([".git", "hooks", ".husky", ".githooks", "node_modules", ".vscode", ".idea", "head", "config", "objects", "refs", ".claude", "skills", "commands", "agents", ".cargo", ".devcontainer", ".yarn", ".mvn"]);

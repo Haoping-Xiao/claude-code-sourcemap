@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wOc
-// matched 2.1.88 source: src/utils/hooks/hooksSettings.ts
-// class=new  jaccard=0.0469  score=0.3954  fileCov=0.0505
-// note: nearest: src/utils/hooks/hooksSettings.ts (0.0469); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.004  score=0.2653  fileCov=0.0041
+// note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var wOc = E(() => {
   Ld();

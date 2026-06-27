@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vDo
 // matched 2.1.88 source: src/tasks/LocalAgentTask/LocalAgentTask.tsx
-// class=modified  jaccard=0.267  score=0.4189  fileCov=0.4241
+// class=modified  jaccard=0.323  score=0.5413  fileCov=0.4447
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vDo = E(() => {

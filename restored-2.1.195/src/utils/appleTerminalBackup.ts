@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module HUt
 // matched 2.1.88 source: src/utils/appleTerminalBackup.ts
-// class=modified  jaccard=0.6432  score=0.8146  fileCov=0.7534
+// class=modified  jaccard=0.447  score=0.7142  fileCov=0.5444
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var HUt = E(() => {

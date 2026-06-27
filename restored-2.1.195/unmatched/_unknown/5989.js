@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rGc
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/yaml/dist/parse/lexer.js
+// class=new  jaccard=0.0269  score=0.1344  fileCov=0.0325
+// note: nearest: node_modules/yaml/dist/parse/lexer.js (0.0269); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rGc = E(() => {
   AR();

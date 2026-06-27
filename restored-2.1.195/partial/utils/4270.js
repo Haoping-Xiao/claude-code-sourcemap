@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jko
 // matched 2.1.88 source: src/utils/transcriptSearch.ts
-// class=partial  jaccard=0.1778  score=0.7824  fileCov=0.1871
+// class=partial  jaccard=0.0907  score=0.6616  fileCov=0.0951
 // note: low-confidence suggestion: src/utils/transcriptSearch.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var jko = E(() => {

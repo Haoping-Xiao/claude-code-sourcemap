@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module a6n
 // matched 2.1.88 source: src/utils/gitDiff.ts
-// class=modified  jaccard=0.6402  score=0.7774  fileCov=0.7839
+// class=modified  jaccard=0.4907  score=0.7785  fileCov=0.5703
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var a6n = E(() => {

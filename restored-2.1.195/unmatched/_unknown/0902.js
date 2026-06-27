@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yhn
 // matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js
-// class=new  jaccard=0.0512  score=0.0723  fileCov=0.1494
-// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js (0.0512); 0 renamed
+// class=new  jaccard=0.0387  score=0.0729  fileCov=0.0762
+// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js (0.0387); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yhn = Q((XAg, P5u) => {
   P5u.exports = {

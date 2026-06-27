@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lTl
 // matched 2.1.88 source: src/tools/PowerShellTool/clmTypes.ts
-// class=modified  jaccard=0.5747  score=0.5747  fileCov=1
+// class=modified  jaccard=0.5438  score=0.5518  fileCov=0.9743
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lTl = E(() => {

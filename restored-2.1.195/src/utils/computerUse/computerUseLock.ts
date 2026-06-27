@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Qpo
 // matched 2.1.88 source: src/utils/computerUse/computerUseLock.ts
-// class=modified  jaccard=0.4561  score=0.6292  fileCov=0.6238
+// class=modified  jaccard=0.2726  score=0.5631  fileCov=0.3457
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Qpo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gbl
 // matched 2.1.88 source: src/tools/TaskGetTool/TaskGetTool.ts
-// class=modified  jaccard=0.6263  score=0.8144  fileCov=0.7305
+// class=modified  jaccard=0.7  score=0.9206  fileCov=0.745
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gbl = E(() => {

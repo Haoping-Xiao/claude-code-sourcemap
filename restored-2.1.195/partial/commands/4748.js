@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rFl
-// matched 2.1.88 source: src/commands/install-github-app/WarningsStep.tsx
-// class=partial  jaccard=0.194  score=0.2496  fileCov=0.4652
-// note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> commands; 0 renamed
+// matched 2.1.88 source: src/commands/install-github-app/InstallAppStep.tsx
+// class=partial  jaccard=0.2085  score=0.2943  fileCov=0.417
+// note: low-confidence suggestion: src/commands/install-github-app/InstallAppStep.tsx; dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rFl = E(() => {
   mE();

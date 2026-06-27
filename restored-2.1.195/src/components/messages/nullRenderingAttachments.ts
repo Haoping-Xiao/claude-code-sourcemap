@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YFo
 // matched 2.1.88 source: src/components/messages/nullRenderingAttachments.ts
-// class=modified  jaccard=0.6276  score=0.7835  fileCov=0.7593
+// class=modified  jaccard=0.5757  score=0.7673  fileCov=0.6975
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var YFo = E(() => {

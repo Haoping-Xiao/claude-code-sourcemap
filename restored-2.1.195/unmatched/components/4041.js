@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module AN
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/ink/styles.ts
+// class=new  jaccard=0.0204  score=0.5293  fileCov=0.0208
+// note: nearest: src/ink/styles.ts (0.0204); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var AN = E(() => {
   iu();

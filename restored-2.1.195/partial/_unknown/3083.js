@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Q_a
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/hsp.js
-// class=partial  jaccard=0.0845  score=0.097  fileCov=0.3972
-// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/hsp.js; 0 renamed
+// matched 2.1.88 source: node_modules/highlight.js/lib/languages/xml.js
+// class=partial  jaccard=0.2303  score=0.2907  fileCov=0.5257
+// note: low-confidence suggestion: node_modules/highlight.js/lib/languages/xml.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Q_a = Q((djy, J_a) => {
   function X_a(e) {

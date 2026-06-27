@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S7n
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/permissions/PermissionRequest.tsx
+// class=new  jaccard=0.0211  score=0.326  fileCov=0.0221
+// note: nearest: src/components/permissions/PermissionRequest.tsx (0.0211); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var S7n = E(() => {
   kt();

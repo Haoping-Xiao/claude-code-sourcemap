@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module z2c
-// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0129  score=0.0698  fileCov=0.0155
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0129); 0 renamed
+// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
+// class=new  jaccard=0.0463  score=0.157  fileCov=0.0617
+// note: nearest: node_modules/jsonwebtoken/verify.js (0.0463); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var z2c = E(() => {
   oJo();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YZn
 // matched 2.1.88 source: src/utils/plugins/zipCache.ts
-// class=modified  jaccard=0.4277  score=0.5283  fileCov=0.692
+// class=modified  jaccard=0.3667  score=0.6342  fileCov=0.465
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var YZn = E(() => {

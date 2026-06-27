@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module g6n
 // matched 2.1.88 source: src/components/permissions/NotebookEditPermissionRequest/NotebookEditPermissionRequest.tsx
-// class=modified  jaccard=0.2689  score=0.34  fileCov=0.5626
+// class=modified  jaccard=0.1985  score=0.2434  fileCov=0.5183
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var g6n = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hKl
 // matched 2.1.88 source: src/components/hooks/SelectHookMode.tsx
-// class=modified  jaccard=0.248  score=0.4253  fileCov=0.3729
+// class=modified  jaccard=0.3896  score=0.5344  fileCov=0.5898
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hKl = E(() => {

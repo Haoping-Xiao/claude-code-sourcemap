@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module FPc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 2 renamed
+// matched 2.1.88 source: src/commands/plugin/ManageMarketplaces.tsx
+// class=new  jaccard=0.008  score=0.1489  fileCov=0.0084
+// note: nearest: src/commands/plugin/ManageMarketplaces.tsx (0.008); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var FPc = E(() => {
   Un();

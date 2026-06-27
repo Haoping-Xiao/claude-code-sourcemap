@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tre
 // matched 2.1.88 source: src/utils/ripgrep.ts
-// class=modified (alt of src/utils/ripgrep.ts)  jaccard=0.2259  score=0.5974  fileCov=0.2665
+// class=modified (alt of src/utils/ripgrep.ts)  jaccard=0.2344  score=0.703  fileCov=0.2601
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tre = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gtc
 // matched 2.1.88 source: src/bridge/workSecret.ts
-// class=modified  jaccard=0.2716  score=0.4238  fileCov=0.4307
+// class=modified  jaccard=0.2355  score=0.3396  fileCov=0.4345
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gtc = E(() => {

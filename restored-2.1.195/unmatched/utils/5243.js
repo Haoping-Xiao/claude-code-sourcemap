@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kYe
-// matched 2.1.88 source: src/utils/sessionStoragePortable.ts
-// class=new  jaccard=0.0363  score=0.0764  fileCov=0.0648
-// note: nearest: src/utils/sessionStoragePortable.ts (0.0363); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/bridge/bridgeMain.ts
+// class=new  jaccard=0.0098  score=0.1728  fileCov=0.0102
+// note: nearest: src/bridge/bridgeMain.ts (0.0098); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var kYe = E(() => {
   lH();

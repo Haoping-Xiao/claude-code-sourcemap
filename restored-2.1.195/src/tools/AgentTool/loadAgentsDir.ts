@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wer
 // matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
-// class=modified  jaccard=0.3298  score=0.6576  fileCov=0.3981
+// class=modified  jaccard=0.335  score=0.7121  fileCov=0.3875
 // note: deminified; 14 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wer = E(() => {

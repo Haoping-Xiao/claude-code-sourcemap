@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module U_t
 // matched 2.1.88 source: src/hooks/toolPermission/PermissionContext.ts
-// class=modified  jaccard=0.2915  score=0.5452  fileCov=0.3852
+// class=modified  jaccard=0.4026  score=0.6649  fileCov=0.5051
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var U_t = E(() => {

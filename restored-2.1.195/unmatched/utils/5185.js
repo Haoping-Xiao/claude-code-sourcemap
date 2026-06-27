@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NZl
-// matched 2.1.88 source: src/utils/messages.ts
-// class=new  jaccard=0.009  score=0.6708  fileCov=0.0091
-// note: nearest: src/utils/messages.ts (0.009); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/sessionStorage.ts
+// class=new  jaccard=0.0344  score=0.6228  fileCov=0.0351
+// note: nearest: src/utils/sessionStorage.ts (0.0344); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var NZl = E(() => {
   je();

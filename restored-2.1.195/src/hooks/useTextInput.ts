@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Jat
 // matched 2.1.88 source: src/hooks/useTextInput.ts
-// class=modified  jaccard=0.2186  score=0.4016  fileCov=0.3242
+// class=modified  jaccard=0.3319  score=0.558  fileCov=0.4502
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Jat = E(() => {

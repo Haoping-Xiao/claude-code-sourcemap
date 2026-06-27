@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PBl
 // matched 2.1.88 source: src/components/PromptInput/PromptInputHelpMenu.tsx
-// class=modified  jaccard=0.3624  score=0.4826  fileCov=0.5927
+// class=modified  jaccard=0.2681  score=0.3913  fileCov=0.4599
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var PBl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aUl
 // matched 2.1.88 source: src/commands/init-verifiers.ts
-// class=modified  jaccard=0.43  score=0.514  fileCov=0.7245
+// class=modified  jaccard=0.4583  score=0.5127  fileCov=0.8122
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var aUl = E(() => {

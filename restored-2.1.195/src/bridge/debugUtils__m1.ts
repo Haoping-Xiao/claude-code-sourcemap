@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cde
 // matched 2.1.88 source: src/bridge/debugUtils.ts
-// class=modified (alt of src/bridge/debugUtils.ts)  jaccard=0.1516  score=0.1861  fileCov=0.4497
+// class=modified (alt of src/bridge/debugUtils.ts)  jaccard=0.1228  score=0.2007  fileCov=0.2405
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Cde = E(() => {

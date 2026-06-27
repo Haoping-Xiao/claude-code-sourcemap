@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b0c
 // matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.0104  score=0.1141  fileCov=0.0114
-// note: nearest: src/cli/print.ts (0.0104); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0106  score=0.1743  fileCov=0.0111
+// note: nearest: src/cli/print.ts (0.0106); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var b0c = E(() => {
   ft();

@@ -10,7 +10,7 @@
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { parse } from "@babel/parser";
-import { fingerprintSet } from "./lib/strings.mjs";
+import { fingerprintTokens } from "./lib/strings.mjs";
 
 const report = JSON.parse(readFileSync("work/2.1.195/match-report.json", "utf-8"));
 const ref = JSON.parse(readFileSync("work/2.1.195/ref-2.1.88.index.json", "utf-8"));
@@ -54,11 +54,11 @@ for (const [name, m] of sample) {
   const uniq = uniqueStringsOf(m.match.path);
   if (uniq.length === 0) { console.log(`  ${m.match.path}: (无独有字符串, 跳过)`); continue; }
   const content = readFileSync(join(MOD_DIR, m.file), "utf-8");
-  const modSet = fingerprintSet(content, 6);
+  const modSet = fingerprintTokens(content, { strMinLen: 6, propMinLen: 5 });
   const hit = uniq.filter((s) => modSet.has(s));
   const ok = hit.length > 0;
   if (ok) verified++;
-  const ex = hit[0] ? JSON.stringify(hit[0].slice(0, 48)) : "-";
+  const ex = hit[0] ? JSON.stringify(hit[0].replace(/^(str|prop):/, "").slice(0, 48)) : "-";
   console.log(`  [${ok ? "OK" : "??"}] ${m.match.path}  独有命中 ${hit.length}/${uniq.length}  e.g. ${ex}`);
 }
 console.log(`独有字符串验证通过: ${verified}/${sample.length}`);

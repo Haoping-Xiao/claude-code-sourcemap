@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _1o
 // matched 2.1.88 source: src/components/ChannelDowngradeDialog.tsx
-// class=modified  jaccard=0.5569  score=0.7479  fileCov=0.6856
+// class=modified  jaccard=0.3891  score=0.5289  fileCov=0.5954
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _1o = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $ic
 // matched 2.1.88 source: src/utils/hooks.ts
-// class=modified  jaccard=0.3648  score=0.6349  fileCov=0.4616
+// class=modified  jaccard=0.2542  score=0.3472  fileCov=0.4868
 // note: deminified; 28 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $ic = E(() => {

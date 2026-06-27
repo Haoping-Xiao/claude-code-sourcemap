@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dtc
 // matched 2.1.88 source: src/bridge/pollConfig.ts
-// class=modified (alt of src/bridge/pollConfig.ts)  jaccard=0.1521  score=1  fileCov=0.1521
+// class=modified (alt of src/bridge/pollConfig.ts)  jaccard=0.4649  score=1  fileCov=0.4649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dtc = E(() => {

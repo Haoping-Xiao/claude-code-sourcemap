@@ -1,53 +1,38 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nsl
 // matched 2.1.88 source: src/utils/model/contextWindowUpgradeCheck.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8169  score=1  fileCov=0.8169
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.6139  score=1  fileCov=0.6139
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-import { checkOpus1mAccess, checkSonnet1mAccess } from './check1mAccess.js'
-import { getUserSpecifiedModelSetting } from './model.js'
-
-// @[MODEL LAUNCH]: Add a branch for the new model if it supports a 1M context upgrade path.
-/**
- * Get available model upgrade for more context
- * Returns null if no upgrade available or user already has max context
- */
-function getAvailableUpgrade(): {
-  alias: string
-  name: string
-  multiplier: number
-} | null {
-  const currentModelSetting = getUserSpecifiedModelSetting()
-  if (currentModelSetting === 'opus' && checkOpus1mAccess()) {
+var nsl = E(() => {
+  Ye();
+  ((esl = R(lt(), 1)), (tCo = R(se(), 1)));
+});
+function orf() {
+  let e = GG();
+  if (e === "opus" && ure())
     return {
-      alias: 'opus[1m]',
-      name: 'Opus 1M',
+      alias: "opus[1m]",
+      name: "Opus 1M",
       multiplier: 5,
-    }
-  } else if (currentModelSetting === 'sonnet' && checkSonnet1mAccess()) {
+    };
+  else if (e === "sonnet" && uSe())
     return {
-      alias: 'sonnet[1m]',
-      name: 'Sonnet 1M',
+      alias: "sonnet[1m]",
+      name: "Sonnet 1M",
       multiplier: 5,
-    }
-  }
-
-  return null
+    };
+  return null;
 }
-
-/**
- * Get upgrade message for different contexts
- */
-export function getUpgradeMessage(context: 'warning' | 'tip'): string | null {
-  const upgrade = getAvailableUpgrade()
-  if (!upgrade) return null
-
-  switch (context) {
-    case 'warning':
-      return `/model ${upgrade.alias}`
-    case 'tip':
-      return `Tip: You have access to ${upgrade.name} with ${upgrade.multiplier}x more context`
+function J8e(e) {
+  let t = orf();
+  if (!t) return null;
+  switch (e) {
+    case "warning":
+      return `/model ${t.alias}`;
+    case "tip":
+      return `Tip: You have access to ${t.name} with ${t.multiplier}x more context`;
     default:
-      return null
+      return null;
   }
 }

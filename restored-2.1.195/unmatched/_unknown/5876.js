@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wm
-// matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
-// class=new  jaccard=0.0116  score=0.0403  fileCov=0.0159
-// note: nearest: src/services/PromptSuggestion/promptSuggestion.ts (0.0116); 0 renamed
+// matched 2.1.88 source: src/hooks/toolPermission/PermissionContext.ts
+// class=new  jaccard=0.0153  score=0.0593  fileCov=0.0201
+// note: nearest: src/hooks/toolPermission/PermissionContext.ts (0.0153); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var wm = E(() => {
   oD = class oD extends Error {

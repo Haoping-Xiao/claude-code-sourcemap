@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module i5
 // matched 2.1.88 source: src/utils/plugins/mcpPluginIntegration.ts
-// class=modified  jaccard=0.479  score=0.6313  fileCov=0.6649
+// class=modified  jaccard=0.379  score=0.6645  fileCov=0.4687
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var i5 = E(() => {

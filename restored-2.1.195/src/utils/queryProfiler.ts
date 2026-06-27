@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hIl
 // matched 2.1.88 source: src/utils/queryProfiler.ts
-// class=modified  jaccard=0.6682  score=0.8164  fileCov=0.7864
+// class=modified  jaccard=0.5317  score=0.7815  fileCov=0.6246
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hIl = E(() => {

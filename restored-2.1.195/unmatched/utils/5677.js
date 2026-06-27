@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sYo
-// matched 2.1.88 source: src/utils/messages.ts
-// class=new  jaccard=0.0104  score=0.1662  fileCov=0.011
-// note: nearest: src/utils/messages.ts (0.0104); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/attachments.ts
+// class=new  jaccard=0.022  score=0.2198  fileCov=0.0238
+// note: nearest: src/utils/attachments.ts (0.022); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var sYo = E(() => {
   Vb();

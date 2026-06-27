@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l4o
 // matched 2.1.88 source: src/components/agents/utils.ts
-// class=modified  jaccard=0.7123  score=1  fileCov=0.7123
+// class=modified  jaccard=0.5292  score=1  fileCov=0.5292
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var l4o = E(() => {

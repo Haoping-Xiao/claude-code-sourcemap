@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module G4
 // matched 2.1.88 source: src/constants/outputStyles.ts
-// class=modified  jaccard=0.4001  score=0.5956  fileCov=0.5494
+// class=modified  jaccard=0.3542  score=0.5079  fileCov=0.5392
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var G4 = E(() => {

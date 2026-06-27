@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aXa
 // matched 2.1.88 source: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js
-// class=new  jaccard=0.0452  score=0.337  fileCov=0.0496
-// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js (0.0452); dir inferred from dep-graph -> components; 0 renamed
+// class=new  jaccard=0.0221  score=0.2789  fileCov=0.0235
+// note: nearest: node_modules/@aws-sdk/nested-clients/dist-cjs/submodules/signin/index.js (0.0221); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var aXa = E(() => {
   TVt();

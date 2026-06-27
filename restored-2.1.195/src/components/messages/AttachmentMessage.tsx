@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Qzn
 // matched 2.1.88 source: src/components/messages/AttachmentMessage.tsx
-// class=modified  jaccard=0.3696  score=0.4805  fileCov=0.6158
+// class=modified  jaccard=0.3697  score=0.501  fileCov=0.5853
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Qzn = E(() => {

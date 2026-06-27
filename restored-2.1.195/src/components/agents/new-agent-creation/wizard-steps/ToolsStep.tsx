@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s7l
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ToolsStep.tsx
-// class=modified  jaccard=0.3917  score=1  fileCov=0.3917
+// class=modified  jaccard=0.2924  score=0.4492  fileCov=0.4557
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var s7l = E(() => {

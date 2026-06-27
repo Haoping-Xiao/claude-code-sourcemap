@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module PM
 // matched 2.1.88 source: src/utils/plugins/loadPluginHooks.ts
-// class=new  jaccard=0.0598  score=1  fileCov=0.0598
-// note: nearest: src/utils/plugins/loadPluginHooks.ts (0.0598); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.0491  score=0.631  fileCov=0.0505
+// note: nearest: src/utils/plugins/loadPluginHooks.ts (0.0491); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var PM = E(() => {
   fn();

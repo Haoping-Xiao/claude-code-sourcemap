@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ria
-// matched 2.1.88 source: src/utils/config.ts
-// class=new  jaccard=0.0076  score=0.1564  fileCov=0.0079
-// note: nearest: src/utils/config.ts (0.0076); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/compact/autoCompact.ts
+// class=new  jaccard=0.0337  score=0.2949  fileCov=0.0367
+// note: nearest: src/services/compact/autoCompact.ts (0.0337); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ria = E(() => {
   eLe();

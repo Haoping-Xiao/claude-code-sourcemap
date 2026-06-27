@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module __l
-// matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
-// class=new  jaccard=0.0258  score=0.2649  fileCov=0.0278
-// note: nearest: src/services/PromptSuggestion/speculation.ts (0.0258); dir inferred from dep-graph -> commands; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0088  score=0.2628  fileCov=0.0091
+// note: nearest: src/cli/print.ts (0.0088); dir inferred from dep-graph -> commands; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var __l = E(() => {
   ql();

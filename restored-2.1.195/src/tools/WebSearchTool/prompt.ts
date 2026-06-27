@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YWe
 // matched 2.1.88 source: src/tools/WebSearchTool/prompt.ts
-// class=modified  jaccard=0.4754  score=0.5698  fileCov=0.7415
+// class=modified  jaccard=0.3646  score=0.5699  fileCov=0.503
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var YWe = E(() => {

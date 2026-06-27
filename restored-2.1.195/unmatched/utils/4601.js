@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q$
-// matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0088  score=0.1522  fileCov=0.0093
-// note: nearest: src/bridge/bridgeMain.ts (0.0088); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
+// class=new  jaccard=0.0188  score=0.1421  fileCov=0.0212
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0188); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var q$ = E(() => {
   Xr();

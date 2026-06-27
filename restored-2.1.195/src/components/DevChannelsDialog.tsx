@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module D$c
 // matched 2.1.88 source: src/components/DevChannelsDialog.tsx
-// class=modified  jaccard=0.4549  score=0.6213  fileCov=0.6294
+// class=modified  jaccard=0.3295  score=0.4435  fileCov=0.5617
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var D$c = E(() => {

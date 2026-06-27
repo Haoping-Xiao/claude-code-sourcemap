@@ -1,974 +1,465 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aCa
 // matched 2.1.88 source: src/utils/plugins/mcpbHandler.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8035  score=0.9362  fileCov=0.8501
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.6852  score=0.9369  fileCov=0.7184
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-import type {
-  McpbManifest,
-  McpbUserConfigurationOption,
-} from '@anthropic-ai/mcpb'
-import axios from 'axios'
-import { createHash } from 'crypto'
-import { chmod, writeFile } from 'fs/promises'
-import { dirname, join } from 'path'
-import type { McpServerConfig } from '../../services/mcp/types.js'
-import { logForDebugging } from '../debug.js'
-import { parseAndValidateManifestFromBytes } from '../dxt/helpers.js'
-import { parseZipModes, unzipFile } from '../dxt/zip.js'
-import { errorMessage, getErrnoCode, isENOENT, toError } from '../errors.js'
-import { getFsImplementation } from '../fsOperations.js'
-import { logError } from '../log.js'
-import { getSecureStorage } from '../secureStorage/index.js'
-import {
-  getSettings_DEPRECATED,
-  updateSettingsForSource,
-} from '../settings/settings.js'
-import { jsonParse, jsonStringify } from '../slowOperations.js'
-import { getSystemDirectories } from '../systemDirectories.js'
-import { classifyFetchError, logPluginFetch } from './fetchTelemetry.js'
-/**
- * User configuration values for MCPB
- */
-export type UserConfigValues = Record<
-  string,
-  string | number | boolean | string[]
->
-
-/**
- * User configuration schema from DXT manifest
- */
-export type UserConfigSchema = Record<string, McpbUserConfigurationOption>
-
-/**
- * Result of loading an MCPB file (success case)
- */
-export type McpbLoadResult = {
-  manifest: McpbManifest
-  mcpConfig: McpServerConfig
-  extractedPath: string
-  contentHash: string
+var aCa = E(() => {
+  je();
+  Is();
+  ((sCa = require("os")), (tqe = require("path")));
+});
+function n6(e) {
+  return e.endsWith(".mcpb") || e.endsWith(".dxt");
 }
-
-/**
- * Result when MCPB needs user configuration
- */
-export type McpbNeedsConfigResult = {
-  status: 'needs-config'
-  manifest: McpbManifest
-  extractedPath: string
-  contentHash: string
-  configSchema: UserConfigSchema
-  existingConfig: UserConfigValues
-  validationErrors: string[]
+function lCa(e) {
+  return e.startsWith("http://") || e.startsWith("https://");
 }
-
-/**
- * Metadata stored for each cached MCPB
- */
-export type McpbCacheMetadata = {
-  source: string
-  contentHash: string
-  extractedPath: string
-  cachedAt: string
-  lastChecked: string
+function rTp(e) {
+  return SUn.createHash("sha256").update(e).digest("hex").substring(0, 16);
 }
-
-/**
- * Progress callback for download and extraction operations
- */
-export type ProgressCallback = (status: string) => void
-
-/**
- * Check if a source string is an MCPB file reference
- */
-export function isMcpbSource(source: string): boolean {
-  return source.endsWith('.mcpb') || source.endsWith('.dxt')
+function cCa(e) {
+  return Hre.join(e, ".mcpb-cache");
 }
-
-/**
- * Check if a source is a URL
- */
-function isUrl(source: string): boolean {
-  return source.startsWith('http://') || source.startsWith('https://')
+function uCa(e, t) {
+  let n = SUn.createHash("md5").update(t).digest("hex").substring(0, 8);
+  return Hre.join(e, `${n}.metadata.json`);
 }
-
-/**
- * Generate content hash for an MCPB file
- */
-function generateContentHash(data: Uint8Array): string {
-  return createHash('sha256').update(data).digest('hex').substring(0, 16)
+function dCa(e, t) {
+  return `${e}/${t}`;
 }
-
-/**
- * Get cache directory for MCPB files
- */
-function getMcpbCacheDir(pluginPath: string): string {
-  return join(pluginPath, '.mcpb-cache')
-}
-
-/**
- * Get metadata file path for cached MCPB
- */
-function getMetadataPath(cacheDir: string, source: string): string {
-  const sourceHash = createHash('md5')
-    .update(source)
-    .digest('hex')
-    .substring(0, 8)
-  return join(cacheDir, `${sourceHash}.metadata.json`)
-}
-
-/**
- * Compose the secureStorage key for a per-server secret bucket.
- * `pluginSecrets` is a flat map — per-server secrets share it with top-level
- * plugin options (pluginOptionsStorage.ts) using a `${pluginId}/${server}`
- * composite key. `/` can't appear in plugin IDs (`name@marketplace`) or
- * server names (MCP identifier constraints), so it's unambiguous. Keeps the
- * SecureStorageData schema unchanged and the single-keychain-entry size
- * budget (~2KB stdin-safe, see INC-3028) shared across all plugin secrets.
- */
-function serverSecretsKey(pluginId: string, serverName: string): string {
-  return `${pluginId}/${serverName}`
-}
-
-/**
- * Load user configuration for an MCP server, merging non-sensitive values
- * (from settings.json) with sensitive values (from secureStorage keychain).
- * secureStorage wins on collision — schema determines destination so
- * collision shouldn't happen, but if a user hand-edits settings.json we
- * trust the more secure source.
- *
- * Returns null only if NEITHER source has anything — callers skip
- * ${user_config.X} substitution in that case.
- *
- * @param pluginId - Plugin identifier in "plugin@marketplace" format
- * @param serverName - MCP server name from DXT manifest
- */
-export function loadMcpServerUserConfig(
-  pluginId: string,
-  serverName: string,
-): UserConfigValues | null {
+function rqe(e, t) {
   try {
-    const settings = getSettings_DEPRECATED()
-    const nonSensitive =
-      settings.pluginConfigs?.[pluginId]?.mcpServers?.[serverName]
-
-    const sensitive =
-      getSecureStorage().read()?.pluginSecrets?.[
-        serverSecretsKey(pluginId, serverName)
-      ]
-
-    if (!nonSensitive && !sensitive) {
-      return null
-    }
-
-    logForDebugging(
-      `Loaded user config for ${pluginId}/${serverName} (settings + secureStorage)`,
-    )
-    return { ...nonSensitive, ...sensitive }
-  } catch (error) {
-    const errorObj = toError(error)
-    logError(errorObj)
-    logForDebugging(
-      `Failed to load user config for ${pluginId}/${serverName}: ${error}`,
-      { level: 'error' },
-    )
-    return null
+    let r = jo().pluginConfigs?.[e]?.mcpServers?.[t],
+      o = wl().read()?.pluginSecrets?.[dCa(e, t)];
+    if (!r && !o) return null;
+    return (
+      T(`Loaded user config for ${e}/${t} (settings + secureStorage)`),
+      {
+        ...r,
+        ...o,
+      }
+    );
+  } catch (n) {
+    return (
+      T(`Failed to load user config for ${e}/${t}: ${n}`, {
+        level: "error",
+      }),
+      null
+    );
   }
 }
-
-/**
- * Save user configuration for an MCP server, splitting by `schema[key].sensitive`.
- * Mirrors savePluginOptions (pluginOptionsStorage.ts:90) for top-level options:
- *   - `sensitive: true` → secureStorage (keychain on macOS, .credentials.json 0600 elsewhere)
- *   - everything else   → settings.json pluginConfigs[pluginId].mcpServers[serverName]
- *
- * Without this split, per-channel `sensitive: true` was a false sense of
- * security — the dialog masked the input but the save went to plaintext
- * settings.json anyway. H1 #3617646 (Telegram/Discord bot tokens in
- * world-readable .env) surfaced this as the gap to close.
- *
- * Writes are skipped if nothing in that category is present.
- *
- * @param pluginId - Plugin identifier in "plugin@marketplace" format
- * @param serverName - MCP server name from DXT manifest
- * @param config - User configuration values
- * @param schema - The userConfig schema for this server (manifest.user_config
- *   or channels[].userConfig) — drives the sensitive/non-sensitive split
- */
-export function saveMcpServerUserConfig(
-  pluginId: string,
-  serverName: string,
-  config: UserConfigValues,
-  schema: UserConfigSchema,
-): void {
+async function bUn(e, t, n, r) {
   try {
-    const nonSensitive: UserConfigValues = {}
-    const sensitive: Record<string, string> = {}
-
-    for (const [key, value] of Object.entries(config)) {
-      if (schema[key]?.sensitive === true) {
-        sensitive[key] = String(value)
-      } else {
-        nonSensitive[key] = value
-      }
-    }
-
-    // Scrub ONLY keys we're writing in this call. Covers both directions
-    // across schema-version flips:
-    //  - sensitive→secureStorage ⇒ remove stale plaintext from settings.json
-    //  - nonSensitive→settings.json ⇒ remove stale entry from secureStorage
-    //    (otherwise loadMcpServerUserConfig's {...nonSensitive, ...sensitive}
-    //    would let the stale secureStorage value win on next read)
-    // Partial `config` (user only re-enters one field) leaves other fields
-    // untouched in BOTH stores — defense-in-depth against future callers.
-    const sensitiveKeysInThisSave = new Set(Object.keys(sensitive))
-    const nonSensitiveKeysInThisSave = new Set(Object.keys(nonSensitive))
-
-    // Sensitive → secureStorage FIRST. If this fails (keychain locked,
-    // .credentials.json perms), throw before touching settings.json — the
-    // old plaintext stays as a fallback instead of losing BOTH copies.
-    //
-    // Also scrub non-sensitive keys from secureStorage — schema flipped
-    // sensitive→false and they're being written to settings.json now. Without
-    // this, loadMcpServerUserConfig's merge would let the stale secureStorage
-    // value win on next read.
-    const storage = getSecureStorage()
-    const k = serverSecretsKey(pluginId, serverName)
-    const existingInSecureStorage =
-      storage.read()?.pluginSecrets?.[k] ?? undefined
-    const secureScrubbed = existingInSecureStorage
-      ? Object.fromEntries(
-          Object.entries(existingInSecureStorage).filter(
-            ([key]) => !nonSensitiveKeysInThisSave.has(key),
-          ),
+    let o = {},
+      s = {};
+    for (let [f, m] of Object.entries(n))
+      if (r[f]?.sensitive === true) s[f] = String(m);
+      else o[f] = m;
+    let i = new Set(Object.keys(s)),
+      a = new Set(Object.keys(o)),
+      l = dCa(e, t),
+      c = 0,
+      u = await wl().mutate((f) => {
+        let m = f.pluginSecrets?.[l],
+          g = m ? CB(m, (h, y) => a.has(y)) : void 0;
+        if (
+          ((c = g && m ? Object.keys(m).length - Object.keys(g).length : 0),
+          Object.keys(s).length === 0 && c === 0)
         )
-      : undefined
-    const needSecureScrub =
-      secureScrubbed &&
-      existingInSecureStorage &&
-      Object.keys(secureScrubbed).length !==
-        Object.keys(existingInSecureStorage).length
-    if (Object.keys(sensitive).length > 0 || needSecureScrub) {
-      const existing = storage.read() ?? {}
-      if (!existing.pluginSecrets) {
-        existing.pluginSecrets = {}
-      }
-      // secureStorage keyvault is a flat object — direct replace, no merge
-      // semantics to worry about (unlike settings.json's mergeWith).
-      existing.pluginSecrets[k] = {
-        ...secureScrubbed,
-        ...sensitive,
-      }
-      const result = storage.update(existing)
-      if (!result.success) {
-        throw new Error(
-          `Failed to save sensitive config to secure storage for ${k}`,
-        )
-      }
-      if (result.warning) {
-        logForDebugging(`Server secrets save warning: ${result.warning}`, {
-          level: 'warn',
-        })
-      }
-      if (needSecureScrub) {
-        logForDebugging(
-          `saveMcpServerUserConfig: scrubbed ${
-            Object.keys(existingInSecureStorage!).length -
-            Object.keys(secureScrubbed!).length
-          } stale non-sensitive key(s) from secureStorage for ${k}`,
-        )
-      }
-    }
-
-    // Non-sensitive → settings.json. Write whenever there are new non-sensitive
-    // values OR existing plaintext sensitive values to scrub — so reconfiguring
-    // a sensitive-only schema still cleans up the old settings.json. Runs
-    // AFTER the secureStorage write succeeded, so the scrub can't leave you
-    // with zero copies of the secret.
-    //
-    // updateSettingsForSource does mergeWith(diskSettings, ourSettings, ...)
-    // which PRESERVES destination keys absent from source — so simply omitting
-    // sensitive keys doesn't scrub them, the disk copy merges back in. Instead:
-    // set each sensitive key to explicit `undefined` — mergeWith (with the
-    // customizer at settings.ts:349) treats explicit undefined as a delete.
-    const settings = getSettings_DEPRECATED()
-    const existingInSettings =
-      settings.pluginConfigs?.[pluginId]?.mcpServers?.[serverName] ?? {}
-    const keysToScrubFromSettings = Object.keys(existingInSettings).filter(k =>
-      sensitiveKeysInThisSave.has(k),
-    )
-    if (
-      Object.keys(nonSensitive).length > 0 ||
-      keysToScrubFromSettings.length > 0
-    ) {
-      if (!settings.pluginConfigs) {
-        settings.pluginConfigs = {}
-      }
-      if (!settings.pluginConfigs[pluginId]) {
-        settings.pluginConfigs[pluginId] = {}
-      }
-      if (!settings.pluginConfigs[pluginId].mcpServers) {
-        settings.pluginConfigs[pluginId].mcpServers = {}
-      }
-      // Build the scrub-via-undefined map. The UserConfigValues type doesn't
-      // include undefined, but updateSettingsForSource's mergeWith customizer
-      // needs explicit undefined to delete — cast is deliberate internal
-      // plumbing (same rationale as deletePluginOptions in
-      // pluginOptionsStorage.ts:184, see CLAUDE.md's 10% case).
-      const scrubbed = Object.fromEntries(
-        keysToScrubFromSettings.map(k => [k, undefined]),
-      ) as Record<string, undefined>
-      settings.pluginConfigs[pluginId].mcpServers![serverName] = {
-        ...nonSensitive,
-        ...scrubbed,
-      } as UserConfigValues
-      const result = updateSettingsForSource('userSettings', settings)
-      if (result.error) {
-        throw result.error
-      }
-      if (keysToScrubFromSettings.length > 0) {
-        logForDebugging(
-          `saveMcpServerUserConfig: scrubbed ${keysToScrubFromSettings.length} plaintext sensitive key(s) from settings.json for ${pluginId}/${serverName}`,
-        )
-      }
-    }
-
-    logForDebugging(
-      `Saved user config for ${pluginId}/${serverName} (${Object.keys(nonSensitive).length} non-sensitive, ${Object.keys(sensitive).length} sensitive)`,
-    )
-  } catch (error) {
-    const errorObj = toError(error)
-    logError(errorObj)
-    throw new Error(
-      `Failed to save user configuration for ${pluginId}/${serverName}: ${errorObj.message}`,
-    )
-  }
-}
-
-/**
- * Validate user configuration values against DXT user_config schema
- */
-export function validateUserConfig(
-  values: UserConfigValues,
-  schema: UserConfigSchema,
-): { valid: boolean; errors: string[] } {
-  const errors: string[] = []
-
-  // Check each field in the schema
-  for (const [key, fieldSchema] of Object.entries(schema)) {
-    const value = values[key]
-
-    // Check required fields
-    if (fieldSchema.required && (value === undefined || value === '')) {
-      errors.push(`${fieldSchema.title || key} is required but not provided`)
-      continue
-    }
-
-    // Skip validation for optional fields that aren't provided
-    if (value === undefined || value === '') {
-      continue
-    }
-
-    // Type validation
-    if (fieldSchema.type === 'string') {
-      if (Array.isArray(value)) {
-        // String arrays are allowed if multiple: true
-        if (!fieldSchema.multiple) {
-          errors.push(
-            `${fieldSchema.title || key} must be a string, not an array`,
-          )
-        } else if (!value.every(v => typeof v === 'string')) {
-          errors.push(`${fieldSchema.title || key} must be an array of strings`)
-        }
-      } else if (typeof value !== 'string') {
-        errors.push(`${fieldSchema.title || key} must be a string`)
-      }
-    } else if (fieldSchema.type === 'number' && typeof value !== 'number') {
-      errors.push(`${fieldSchema.title || key} must be a number`)
-    } else if (fieldSchema.type === 'boolean' && typeof value !== 'boolean') {
-      errors.push(`${fieldSchema.title || key} must be a boolean`)
-    } else if (
-      (fieldSchema.type === 'file' || fieldSchema.type === 'directory') &&
-      typeof value !== 'string'
-    ) {
-      errors.push(`${fieldSchema.title || key} must be a path string`)
-    }
-
-    // Number range validation
-    if (fieldSchema.type === 'number' && typeof value === 'number') {
-      if (fieldSchema.min !== undefined && value < fieldSchema.min) {
-        errors.push(
-          `${fieldSchema.title || key} must be at least ${fieldSchema.min}`,
-        )
-      }
-      if (fieldSchema.max !== undefined && value > fieldSchema.max) {
-        errors.push(
-          `${fieldSchema.title || key} must be at most ${fieldSchema.max}`,
-        )
-      }
-    }
-  }
-
-  return { valid: errors.length === 0, errors }
-}
-
-/**
- * Generate MCP server configuration from DXT manifest
- */
-async function generateMcpConfig(
-  manifest: McpbManifest,
-  extractedPath: string,
-  userConfig: UserConfigValues = {},
-): Promise<McpServerConfig> {
-  // Lazy import: @anthropic-ai/mcpb barrel pulls in zod v3 schemas (~700KB of
-  // bound closures). See dxt/helpers.ts for details.
-  const { getMcpConfigForManifest } = await import('@anthropic-ai/mcpb')
-  const mcpConfig = await getMcpConfigForManifest({
-    manifest,
-    extensionPath: extractedPath,
-    systemDirs: getSystemDirectories(),
-    userConfig,
-    pathSeparator: '/',
-  })
-
-  if (!mcpConfig) {
-    const error = new Error(
-      `Failed to generate MCP server configuration from manifest "${manifest.name}"`,
-    )
-    logError(error)
-    throw error
-  }
-
-  return mcpConfig as McpServerConfig
-}
-
-/**
- * Load cache metadata for an MCPB source
- */
-async function loadCacheMetadata(
-  cacheDir: string,
-  source: string,
-): Promise<McpbCacheMetadata | null> {
-  const fs = getFsImplementation()
-  const metadataPath = getMetadataPath(cacheDir, source)
-
-  try {
-    const content = await fs.readFile(metadataPath, { encoding: 'utf-8' })
-    return jsonParse(content) as McpbCacheMetadata
-  } catch (error) {
-    const code = getErrnoCode(error)
-    if (code === 'ENOENT') return null
-    const errorObj = toError(error)
-    logError(errorObj)
-    logForDebugging(`Failed to load MCPB cache metadata: ${error}`, {
-      level: 'error',
-    })
-    return null
-  }
-}
-
-/**
- * Save cache metadata for an MCPB source
- */
-async function saveCacheMetadata(
-  cacheDir: string,
-  source: string,
-  metadata: McpbCacheMetadata,
-): Promise<void> {
-  const metadataPath = getMetadataPath(cacheDir, source)
-
-  await getFsImplementation().mkdir(cacheDir)
-  await writeFile(metadataPath, jsonStringify(metadata, null, 2), 'utf-8')
-}
-
-/**
- * Download MCPB file from URL
- */
-async function downloadMcpb(
-  url: string,
-  destPath: string,
-  onProgress?: ProgressCallback,
-): Promise<Uint8Array> {
-  logForDebugging(`Downloading MCPB from ${url}`)
-  if (onProgress) {
-    onProgress(`Downloading ${url}...`)
-  }
-
-  const started = performance.now()
-  let fetchTelemetryFired = false
-  try {
-    const response = await axios.get(url, {
-      timeout: 120000, // 2 minute timeout
-      responseType: 'arraybuffer',
-      maxRedirects: 5, // Follow redirects (like curl -L)
-      onDownloadProgress: progressEvent => {
-        if (progressEvent.total && onProgress) {
-          const percent = Math.round(
-            (progressEvent.loaded / progressEvent.total) * 100,
-          )
-          onProgress(`Downloading... ${percent}%`)
-        }
-      },
-    })
-
-    const data = new Uint8Array(response.data)
-    // Fire telemetry before writeFile — the event measures the network
-    // fetch, not disk I/O. A writeFile EACCES would otherwise match
-    // classifyFetchError's /permission denied/ → misreport as auth.
-    logPluginFetch('mcpb', url, 'success', performance.now() - started)
-    fetchTelemetryFired = true
-
-    // Save to disk (binary data)
-    await writeFile(destPath, Buffer.from(data))
-
-    logForDebugging(`Downloaded ${data.length} bytes to ${destPath}`)
-    if (onProgress) {
-      onProgress('Download complete')
-    }
-
-    return data
-  } catch (error) {
-    if (!fetchTelemetryFired) {
-      logPluginFetch(
-        'mcpb',
-        url,
-        'failure',
-        performance.now() - started,
-        classifyFetchError(error),
-      )
-    }
-    const errorMsg = errorMessage(error)
-    const fullError = new Error(
-      `Failed to download MCPB file from ${url}: ${errorMsg}`,
-    )
-    logError(fullError)
-    throw fullError
-  }
-}
-
-/**
- * Extract MCPB file and write contents to extraction directory.
- *
- * @param modes - name→mode map from `parseZipModes`. MCPB bundles can ship
- *   native MCP server binaries, so preserving the exec bit matters here.
- */
-async function extractMcpbContents(
-  unzipped: Record<string, Uint8Array>,
-  extractPath: string,
-  modes: Record<string, number>,
-  onProgress?: ProgressCallback,
-): Promise<void> {
-  if (onProgress) {
-    onProgress('Extracting files...')
-  }
-
-  // Create extraction directory
-  await getFsImplementation().mkdir(extractPath)
-
-  // Write all files. Filter directory entries from the count so progress
-  // messages use the same denominator as filesWritten (which skips them).
-  let filesWritten = 0
-  const entries = Object.entries(unzipped).filter(([k]) => !k.endsWith('/'))
-  const totalFiles = entries.length
-
-  for (const [filePath, fileData] of entries) {
-    // Directory entries (common in zip -r, Python zipfile, Java ZipOutputStream)
-    // are filtered above — writeFile would create `bin/` as an empty regular
-    // file, then mkdir for `bin/server` would fail with ENOTDIR. The
-    // mkdir(dirname(fullPath)) below creates parent dirs implicitly.
-
-    const fullPath = join(extractPath, filePath)
-    const dir = dirname(fullPath)
-
-    // Ensure directory exists (recursive handles already-existing)
-    if (dir !== extractPath) {
-      await getFsImplementation().mkdir(dir)
-    }
-
-    // Determine if text or binary
-    const isTextFile =
-      filePath.endsWith('.json') ||
-      filePath.endsWith('.js') ||
-      filePath.endsWith('.ts') ||
-      filePath.endsWith('.txt') ||
-      filePath.endsWith('.md') ||
-      filePath.endsWith('.yml') ||
-      filePath.endsWith('.yaml')
-
-    if (isTextFile) {
-      const content = new TextDecoder().decode(fileData)
-      await writeFile(fullPath, content, 'utf-8')
-    } else {
-      await writeFile(fullPath, Buffer.from(fileData))
-    }
-
-    const mode = modes[filePath]
-    if (mode && mode & 0o111) {
-      // Swallow EPERM/ENOTSUP (NFS root_squash, some FUSE mounts) — losing +x
-      // is the pre-PR behavior and better than aborting mid-extraction.
-      await chmod(fullPath, mode & 0o777).catch(() => {})
-    }
-
-    filesWritten++
-    if (onProgress && filesWritten % 10 === 0) {
-      onProgress(`Extracted ${filesWritten}/${totalFiles} files`)
-    }
-  }
-
-  logForDebugging(`Extracted ${filesWritten} files to ${extractPath}`)
-  if (onProgress) {
-    onProgress(`Extraction complete (${filesWritten} files)`)
-  }
-}
-
-/**
- * Check if an MCPB source has changed and needs re-extraction
- */
-export async function checkMcpbChanged(
-  source: string,
-  pluginPath: string,
-): Promise<boolean> {
-  const fs = getFsImplementation()
-  const cacheDir = getMcpbCacheDir(pluginPath)
-  const metadata = await loadCacheMetadata(cacheDir, source)
-
-  if (!metadata) {
-    // No cache metadata, needs loading
-    return true
-  }
-
-  // Check if extraction directory still exists
-  try {
-    await fs.stat(metadata.extractedPath)
-  } catch (error) {
-    const code = getErrnoCode(error)
-    if (code === 'ENOENT') {
-      logForDebugging(`MCPB extraction path missing: ${metadata.extractedPath}`)
-    } else {
-      logForDebugging(
-        `MCPB extraction path inaccessible: ${metadata.extractedPath}: ${error}`,
-        { level: 'error' },
-      )
-    }
-    return true
-  }
-
-  // For local files, check mtime
-  if (!isUrl(source)) {
-    const localPath = join(pluginPath, source)
-    let stats
-    try {
-      stats = await fs.stat(localPath)
-    } catch (error) {
-      const code = getErrnoCode(error)
-      if (code === 'ENOENT') {
-        logForDebugging(`MCPB source file missing: ${localPath}`)
-      } else {
-        logForDebugging(
-          `MCPB source file inaccessible: ${localPath}: ${error}`,
-          { level: 'error' },
-        )
-      }
-      return true
-    }
-
-    const cachedTime = new Date(metadata.cachedAt).getTime()
-    // Floor to match the ms precision of cachedAt (ISO string). Sub-ms
-    // precision on mtimeMs would make a freshly-cached file appear "newer"
-    // than its own cache timestamp when both happen in the same millisecond.
-    const fileTime = Math.floor(stats.mtimeMs)
-
-    if (fileTime > cachedTime) {
-      logForDebugging(
-        `MCPB file modified: ${new Date(fileTime)} > ${new Date(cachedTime)}`,
-      )
-      return true
-    }
-  }
-
-  // For URLs, we'll re-check on explicit update (handled elsewhere)
-  return false
-}
-
-/**
- * Load and extract an MCPB file, with caching and user configuration support
- *
- * @param source - MCPB file path or URL
- * @param pluginPath - Plugin directory path
- * @param pluginId - Plugin identifier in "plugin@marketplace" format (for config storage)
- * @param onProgress - Progress callback
- * @param providedUserConfig - User configuration values (for initial setup or reconfiguration)
- * @returns Success with MCP config, or needs-config status with schema
- */
-export async function loadMcpbFile(
-  source: string,
-  pluginPath: string,
-  pluginId: string,
-  onProgress?: ProgressCallback,
-  providedUserConfig?: UserConfigValues,
-  forceConfigDialog?: boolean,
-): Promise<McpbLoadResult | McpbNeedsConfigResult> {
-  const fs = getFsImplementation()
-  const cacheDir = getMcpbCacheDir(pluginPath)
-  await fs.mkdir(cacheDir)
-
-  logForDebugging(`Loading MCPB from source: ${source}`)
-
-  // Check cache first
-  const metadata = await loadCacheMetadata(cacheDir, source)
-  if (metadata && !(await checkMcpbChanged(source, pluginPath))) {
-    logForDebugging(
-      `Using cached MCPB from ${metadata.extractedPath} (hash: ${metadata.contentHash})`,
-    )
-
-    // Load manifest from cache
-    const manifestPath = join(metadata.extractedPath, 'manifest.json')
-    let manifestContent: string
-    try {
-      manifestContent = await fs.readFile(manifestPath, { encoding: 'utf-8' })
-    } catch (error) {
-      if (isENOENT(error)) {
-        const err = new Error(`Cached manifest not found: ${manifestPath}`)
-        logError(err)
-        throw err
-      }
-      throw error
-    }
-
-    const manifestData = new TextEncoder().encode(manifestContent)
-    const manifest = await parseAndValidateManifestFromBytes(manifestData)
-
-    // Check for user_config requirement
-    if (manifest.user_config && Object.keys(manifest.user_config).length > 0) {
-      // Server name from DXT manifest
-      const serverName = manifest.name
-
-      // Try to load existing config from settings.json or use provided config
-      const savedConfig = loadMcpServerUserConfig(pluginId, serverName)
-      const userConfig = providedUserConfig || savedConfig || {}
-
-      // Validate we have all required fields
-      const validation = validateUserConfig(userConfig, manifest.user_config)
-
-      // Return needs-config if: forced (reconfiguration) OR validation failed
-      if (forceConfigDialog || !validation.valid) {
+          return f;
         return {
-          status: 'needs-config',
-          manifest,
-          extractedPath: metadata.extractedPath,
-          contentHash: metadata.contentHash,
-          configSchema: manifest.user_config,
-          existingConfig: savedConfig || {},
-          validationErrors: validation.valid ? [] : validation.errors,
-        }
-      }
-
-      // Save config if it was provided (first time or reconfiguration)
-      if (providedUserConfig) {
-        saveMcpServerUserConfig(
-          pluginId,
-          serverName,
-          providedUserConfig,
-          manifest.user_config ?? {},
-        )
-      }
-
-      // Generate MCP config WITH user config
-      const mcpConfig = await generateMcpConfig(
-        manifest,
-        metadata.extractedPath,
-        userConfig,
-      )
-
-      return {
-        manifest,
-        mcpConfig,
-        extractedPath: metadata.extractedPath,
-        contentHash: metadata.contentHash,
-      }
+          ...f,
+          pluginSecrets: {
+            ...f.pluginSecrets,
+            [l]: {
+              ...g,
+              ...s,
+            },
+          },
+        };
+      });
+    if (!u.success) throw Error(`Failed to save sensitive config to secure storage for ${l}`);
+    if (u.warning)
+      T(`Server secrets save warning: ${u.warning}`, {
+        level: "warn",
+      });
+    if (c > 0)
+      T(
+        `saveMcpServerUserConfig: scrubbed ${c} stale non-sensitive key(s) from secureStorage for ${l}`,
+      );
+    let d = jo().pluginConfigs?.[e]?.mcpServers?.[t] ?? {},
+      p = Object.keys(d).filter((f) => i.has(f));
+    if (Object.keys(o).length > 0 || p.length > 0) {
+      let f = Object.fromEntries(p.map((g) => [g, void 0])),
+        m = io("userSettings", {
+          pluginConfigs: {
+            [e]: {
+              mcpServers: {
+                [t]: {
+                  ...o,
+                  ...f,
+                },
+              },
+            },
+          },
+        });
+      if (m.error) throw m.error;
+      if (p.length > 0)
+        T(
+          `saveMcpServerUserConfig: scrubbed ${p.length} plaintext sensitive key(s) from settings.json for ${e}/${t}`,
+        );
     }
-
-    // No user_config required - generate config without it
-    const mcpConfig = await generateMcpConfig(manifest, metadata.extractedPath)
-
-    return {
-      manifest,
-      mcpConfig,
-      extractedPath: metadata.extractedPath,
-      contentHash: metadata.contentHash,
+    T(
+      `Saved user config for ${e}/${t} (${Object.keys(o).length} non-sensitive, ${Object.keys(s).length} sensitive)`,
+    );
+  } catch (o) {
+    let s = Zr(o);
+    throw (
+      T(`Failed to save user config for ${e}/${t}: ${s.message}`, {
+        level: "error",
+      }),
+      Error(`Failed to save user configuration for ${e}/${t}: ${s.message}`)
+    );
+  }
+}
+function eDe(e, t) {
+  let n = [];
+  for (let [r, o] of Object.entries(t)) {
+    let s = e[r];
+    if (o.required && (s === void 0 || s === "")) {
+      n.push(`${o.title || r} is required but not provided`);
+      continue;
+    }
+    if (s === void 0 || s === "") continue;
+    if (o.type === "string") {
+      if (Array.isArray(s)) {
+        if (!o.multiple) n.push(`${o.title || r} must be a string, not an array`);
+        else if (!s.every((i) => typeof i === "string"))
+          n.push(`${o.title || r} must be an array of strings`);
+      } else if (typeof s !== "string") n.push(`${o.title || r} must be a string`);
+    } else if (o.type === "number" && typeof s !== "number")
+      n.push(`${o.title || r} must be a number`);
+    else if (o.type === "boolean" && typeof s !== "boolean")
+      n.push(`${o.title || r} must be a boolean`);
+    else if ((o.type === "file" || o.type === "directory") && typeof s !== "string")
+      n.push(`${o.title || r} must be a path string`);
+    if (o.type === "number" && typeof s === "number") {
+      if (o.min !== void 0 && s < o.min) n.push(`${o.title || r} must be at least ${o.min}`);
+      if (o.max !== void 0 && s > o.max) n.push(`${o.title || r} must be at most ${o.max}`);
     }
   }
-
-  // Not cached or changed - need to download/load and extract
-  let mcpbData: Uint8Array
-  let mcpbFilePath: string
-
-  if (isUrl(source)) {
-    // Download from URL
-    const sourceHash = createHash('md5')
-      .update(source)
-      .digest('hex')
-      .substring(0, 8)
-    mcpbFilePath = join(cacheDir, `${sourceHash}.mcpb`)
-    mcpbData = await downloadMcpb(source, mcpbFilePath, onProgress)
-  } else {
-    // Load from local path
-    const localPath = join(pluginPath, source)
-
-    if (onProgress) {
-      onProgress(`Loading ${source}...`)
-    }
-
-    try {
-      mcpbData = await fs.readFileBytes(localPath)
-      mcpbFilePath = localPath
-    } catch (error) {
-      if (isENOENT(error)) {
-        const err = new Error(`MCPB file not found: ${localPath}`)
-        logError(err)
-        throw err
-      }
-      throw error
-    }
+  return {
+    valid: n.length === 0,
+    errors: n,
+  };
+}
+async function _Un(e, t, n = {}) {
+  let { getMcpConfigForManifest: r } = await Promise.resolve().then(() => (ndo(), tdo)),
+    o = await r({
+      manifest: e,
+      extensionPath: t,
+      systemDirs: iCa(),
+      userConfig: n,
+      pathSeparator: "/",
+    });
+  if (!o) {
+    let s = Error(`Failed to generate MCP server configuration from manifest "${e.name}"`);
+    throw (ke(s), s);
   }
-
-  // Generate content hash
-  const contentHash = generateContentHash(mcpbData)
-  logForDebugging(`MCPB content hash: ${contentHash}`)
-
-  // Extract ZIP
-  if (onProgress) {
-    onProgress('Extracting MCPB archive...')
+  return o;
+}
+async function pCa(e, t) {
+  let n = qt(),
+    r = uCa(e, t);
+  try {
+    let o = await n.readFile(r, {
+      encoding: "utf-8",
+    });
+    return Ft(o);
+  } catch (o) {
+    if (on(o) === "ENOENT") return null;
+    return (
+      T(`Failed to load MCPB cache metadata: ${o}`, {
+        level: "error",
+      }),
+      null
+    );
   }
-
-  const unzipped = await unzipFile(Buffer.from(mcpbData))
-  // fflate doesn't surface external_attr — parse the central directory so
-  // native MCP server binaries keep their exec bit after extraction.
-  const modes = parseZipModes(mcpbData)
-
-  // Check for manifest.json
-  const manifestData = unzipped['manifest.json']
-  if (!manifestData) {
-    const error = new Error('No manifest.json found in MCPB file')
-    logError(error)
-    throw error
-  }
-
-  // Parse and validate manifest
-  const manifest = await parseAndValidateManifestFromBytes(manifestData)
-  logForDebugging(
-    `MCPB manifest: ${manifest.name} v${manifest.version} by ${manifest.author.name}`,
-  )
-
-  // Check if manifest has server config
-  if (!manifest.server) {
-    const error = new Error(
-      `MCPB manifest for "${manifest.name}" does not define a server configuration`,
+}
+async function sdo(e, t, n) {
+  let r = uCa(e, t);
+  (await qt().mkdir(e), await nqe.writeFile(r, De(n, null, 2), "utf-8"));
+}
+async function oTp(e, t, n) {
+  if ((T(`Downloading MCPB from ${e}`), n)) n(`Downloading ${e}...`);
+  let r = performance.now(),
+    o = false;
+  try {
+    let i = await (SFe(e) ? kSe.get : lb.get)(e, {
+        timeout: 120000,
+        responseType: "arraybuffer",
+        maxRedirects: 5,
+        onDownloadProgress: (l) => {
+          if (l.total && n) {
+            let c = Math.round((l.loaded / l.total) * 100);
+            n(`Downloading... ${c}%`);
+          }
+        },
+      }),
+      a = new Uint8Array(i.data);
+    if (
+      (YD("mcpb", e, "success", performance.now() - r),
+      (o = true),
+      await nqe.writeFile(t, Buffer.from(a)),
+      T(`Downloaded ${a.length} bytes to ${t}`),
+      n)
     )
-    logError(error)
-    throw error
+      n("Download complete");
+    return a;
+  } catch (s) {
+    if (!o) YD("mcpb", e, "failure", performance.now() - r, k8(s));
+    let i = be(s),
+      a = Error(`Failed to download MCPB file from ${e}: ${i}`);
+    throw (
+      T(`Failed to download MCPB file from ${e}: ${i}`, {
+        level: "error",
+      }),
+      a
+    );
   }
-
-  // Extract to cache directory
-  const extractPath = join(cacheDir, contentHash)
-  await extractMcpbContents(unzipped, extractPath, modes, onProgress)
-
-  // Check for user_config requirement
-  if (manifest.user_config && Object.keys(manifest.user_config).length > 0) {
-    // Server name from DXT manifest
-    const serverName = manifest.name
-
-    // Try to load existing config from settings.json or use provided config
-    const savedConfig = loadMcpServerUserConfig(pluginId, serverName)
-    const userConfig = providedUserConfig || savedConfig || {}
-
-    // Validate we have all required fields
-    const validation = validateUserConfig(userConfig, manifest.user_config)
-
-    if (!validation.valid) {
-      // Save cache metadata even though config is incomplete
-      const newMetadata: McpbCacheMetadata = {
-        source,
-        contentHash,
-        extractedPath: extractPath,
+}
+async function sTp(e, t, n, r) {
+  if (r) r("Extracting files...");
+  await qt().mkdir(t);
+  let o = 0,
+    s = Object.entries(e).filter(([a]) => !a.endsWith("/")),
+    i = s.length;
+  for (let [a, l] of s) {
+    let c = Hre.join(t, a),
+      u = Hre.dirname(c);
+    if (u !== t) await qt().mkdir(u);
+    if (
+      a.endsWith(".json") ||
+      a.endsWith(".js") ||
+      a.endsWith(".ts") ||
+      a.endsWith(".txt") ||
+      a.endsWith(".md") ||
+      a.endsWith(".yml") ||
+      a.endsWith(".yaml")
+    ) {
+      let f = new TextDecoder().decode(l);
+      await nqe.writeFile(c, f, "utf-8");
+    } else await nqe.writeFile(c, Buffer.from(l));
+    let p = n[a];
+    if (p && p & 73) await nqe.chmod(c, p & 511).catch(() => {});
+    if ((o++, r && o % 10 === 0)) r(`Extracted ${o}/${i} files`);
+  }
+  if ((T(`Extracted ${o} files to ${t}`), r)) r(`Extraction complete (${o} files)`);
+}
+async function iTp(e, t) {
+  let n = qt(),
+    r = cCa(t),
+    o = await pCa(r, e);
+  if (!o) return true;
+  try {
+    await n.stat(o.extractedPath);
+  } catch (s) {
+    if (on(s) === "ENOENT") T(`MCPB extraction path missing: ${o.extractedPath}`);
+    else
+      T(`MCPB extraction path inaccessible: ${o.extractedPath}: ${s}`, {
+        level: "error",
+      });
+    return true;
+  }
+  if (!lCa(e)) {
+    let s = Hre.join(t, e),
+      i;
+    try {
+      i = await n.stat(s);
+    } catch (l) {
+      if (on(l) === "ENOENT") T(`MCPB source file missing: ${s}`);
+      else
+        T(`MCPB source file inaccessible: ${s}: ${l}`, {
+          level: "error",
+        });
+      return true;
+    }
+    if (o.sourceMtimeMs === void 0) return true;
+    let a = Math.floor(i.mtimeMs);
+    if (a !== o.sourceMtimeMs)
+      return (
+        T(
+          `MCPB file modified: mtime ${new Date(a).toISOString()} != cached ${new Date(o.sourceMtimeMs).toISOString()}`,
+        ),
+        true
+      );
+  }
+  return false;
+}
+async function c3t(e, t, n, r, o, s) {
+  let i = qt(),
+    a = cCa(t);
+  (await i.mkdir(a), T(`Loading MCPB from source: ${e}`));
+  let l = await pCa(a, e);
+  if (l && !(await iTp(e, t))) {
+    T(`Using cached MCPB from ${l.extractedPath} (hash: ${l.contentHash})`);
+    let S = Hre.join(l.extractedPath, "manifest.json"),
+      A;
+    try {
+      A = await i.readFile(S, {
+        encoding: "utf-8",
+      });
+    } catch (I) {
+      if (wn(I)) {
+        let k = Error(`Cached manifest not found: ${S}`);
+        throw (ke(k), k);
+      }
+      throw I;
+    }
+    let v = new TextEncoder().encode(A),
+      C = await rdo(v);
+    if (C.user_config && Object.keys(C.user_config).length > 0) {
+      let I = C.name,
+        k = rqe(n, I),
+        D = o || k || {},
+        P = eDe(D, C.user_config);
+      if (s || !P.valid)
+        return {
+          status: "needs-config",
+          manifest: C,
+          extractedPath: l.extractedPath,
+          contentHash: l.contentHash,
+          configSchema: C.user_config,
+          existingConfig: k || {},
+          validationErrors: P.valid ? [] : P.errors,
+        };
+      if (o) await bUn(n, I, o, C.user_config ?? {});
+      let O = await _Un(C, l.extractedPath, D);
+      return {
+        manifest: C,
+        mcpConfig: O,
+        extractedPath: l.extractedPath,
+        contentHash: l.contentHash,
+      };
+    }
+    let x = await _Un(C, l.extractedPath);
+    return {
+      manifest: C,
+      mcpConfig: x,
+      extractedPath: l.extractedPath,
+      contentHash: l.contentHash,
+    };
+  }
+  let c, u, d;
+  if (lCa(e)) {
+    let S = SUn.createHash("md5").update(e).digest("hex").substring(0, 8);
+    ((u = Hre.join(a, `${S}.mcpb`)), (c = await oTp(e, u, r)));
+  } else {
+    let S = Hre.join(t, e);
+    if (r) r(`Loading ${e}...`);
+    try {
+      ((c = await i.readFileBytes(S)), (u = S), (d = Math.floor((await i.stat(S)).mtimeMs)));
+    } catch (A) {
+      if (wn(A)) {
+        let v = Error(`MCPB file not found: ${S}`);
+        throw (
+          T(`MCPB file not found: ${S}`, {
+            level: "error",
+          }),
+          v
+        );
+      }
+      throw A;
+    }
+  }
+  let p = rTp(c);
+  if ((T(`MCPB content hash: ${p}`), r)) r("Extracting MCPB archive...");
+  let f = await nde(Buffer.from(c)),
+    m = ZLe(c),
+    g = f["manifest.json"];
+  if (!g) {
+    let S = Error("No manifest.json found in MCPB file");
+    throw (
+      T(`No manifest.json found in MCPB file: ${u}`, {
+        level: "error",
+      }),
+      S
+    );
+  }
+  let h = await rdo(g);
+  if ((T(`MCPB manifest: ${h.name} v${h.version} by ${h.author.name}`), !h.server)) {
+    let S = Error(`MCPB manifest for "${h.name}" does not define a server configuration`);
+    throw (ke(S), S);
+  }
+  let y = Hre.join(a, p);
+  if ((await sTp(f, y, m, r), h.user_config && Object.keys(h.user_config).length > 0)) {
+    let S = h.name,
+      A = rqe(n, S),
+      v = o || A || {},
+      C = eDe(v, h.user_config);
+    if (!C.valid) {
+      let k = {
+        source: e,
+        contentHash: p,
+        extractedPath: y,
         cachedAt: new Date().toISOString(),
         lastChecked: new Date().toISOString(),
+        sourceMtimeMs: d,
+      };
+      return (
+        await sdo(a, e, k),
+        {
+          status: "needs-config",
+          manifest: h,
+          extractedPath: y,
+          contentHash: p,
+          configSchema: h.user_config,
+          existingConfig: A || {},
+          validationErrors: C.errors,
+        }
+      );
+    }
+    if (o) await bUn(n, S, o, h.user_config ?? {});
+    if (r) r("Generating MCP server configuration...");
+    let x = await _Un(h, y, v),
+      I = {
+        source: e,
+        contentHash: p,
+        extractedPath: y,
+        cachedAt: new Date().toISOString(),
+        lastChecked: new Date().toISOString(),
+        sourceMtimeMs: d,
+      };
+    return (
+      await sdo(a, e, I),
+      {
+        manifest: h,
+        mcpConfig: x,
+        extractedPath: y,
+        contentHash: p,
       }
-      await saveCacheMetadata(cacheDir, source, newMetadata)
-
-      // Return "needs configuration" status
-      return {
-        status: 'needs-config',
-        manifest,
-        extractedPath: extractPath,
-        contentHash,
-        configSchema: manifest.user_config,
-        existingConfig: savedConfig || {},
-        validationErrors: validation.errors,
-      }
-    }
-
-    // Save config if it was provided (first time or reconfiguration)
-    if (providedUserConfig) {
-      saveMcpServerUserConfig(
-        pluginId,
-        serverName,
-        providedUserConfig,
-        manifest.user_config ?? {},
-      )
-    }
-
-    // Generate MCP config WITH user config
-    if (onProgress) {
-      onProgress('Generating MCP server configuration...')
-    }
-
-    const mcpConfig = await generateMcpConfig(manifest, extractPath, userConfig)
-
-    // Save cache metadata
-    const newMetadata: McpbCacheMetadata = {
-      source,
-      contentHash,
-      extractedPath: extractPath,
+    );
+  }
+  if (r) r("Generating MCP server configuration...");
+  let b = await _Un(h, y),
+    _ = {
+      source: e,
+      contentHash: p,
+      extractedPath: y,
       cachedAt: new Date().toISOString(),
       lastChecked: new Date().toISOString(),
+      sourceMtimeMs: d,
+    };
+  return (
+    await sdo(a, e, _),
+    T(`Successfully loaded MCPB: ${h.name} (extracted to ${y})`),
+    {
+      manifest: h,
+      mcpConfig: b,
+      extractedPath: y,
+      contentHash: p,
     }
-    await saveCacheMetadata(cacheDir, source, newMetadata)
-
-    return {
-      manifest,
-      mcpConfig,
-      extractedPath: extractPath,
-      contentHash,
-    }
-  }
-
-  // No user_config required - generate config without it
-  if (onProgress) {
-    onProgress('Generating MCP server configuration...')
-  }
-
-  const mcpConfig = await generateMcpConfig(manifest, extractPath)
-
-  // Save cache metadata
-  const newMetadata: McpbCacheMetadata = {
-    source,
-    contentHash,
-    extractedPath: extractPath,
-    cachedAt: new Date().toISOString(),
-    lastChecked: new Date().toISOString(),
-  }
-  await saveCacheMetadata(cacheDir, source, newMetadata)
-
-  logForDebugging(
-    `Successfully loaded MCPB: ${manifest.name} (extracted to ${extractPath})`,
-  )
-
-  return {
-    manifest,
-    mcpConfig: mcpConfig as McpServerConfig,
-    extractedPath: extractPath,
-    contentHash,
-  }
+  );
 }
+var SUn, nqe, Hre;

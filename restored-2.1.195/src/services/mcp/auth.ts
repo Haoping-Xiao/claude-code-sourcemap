@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cre
 // matched 2.1.88 source: src/services/mcp/auth.ts
-// class=modified  jaccard=0.0291  score=0.3449  fileCov=0.0308
+// class=modified  jaccard=0.0269  score=0.322  fileCov=0.0286
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Cre = E(() => {

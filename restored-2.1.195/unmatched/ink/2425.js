@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module UWi
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> ink; 0 renamed
+// matched 2.1.88 source: src/ink/ink.tsx
+// class=new  jaccard=0.0043  score=0.5419  fileCov=0.0043
+// note: nearest: src/ink/ink.tsx (0.0043); dir inferred from dep-graph -> ink; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var UWi = E(() => {
   je();

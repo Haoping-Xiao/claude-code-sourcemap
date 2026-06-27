@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kUl
 // matched 2.1.88 source: src/constants/github-app.ts
-// class=modified  jaccard=0.1611  score=0.1679  fileCov=0.8
+// class=modified  jaccard=0.1473  score=0.1575  fileCov=0.6945
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kUl = E(() => {

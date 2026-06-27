@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jBl
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 1 renamed
+// matched 2.1.88 source: src/commands/ide/ide.tsx
+// class=new  jaccard=0.0164  score=1  fileCov=0.0164
+// note: nearest: src/commands/ide/ide.tsx (0.0164); dir inferred from dep-graph -> components; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var jBl = E(() => {
   O0();

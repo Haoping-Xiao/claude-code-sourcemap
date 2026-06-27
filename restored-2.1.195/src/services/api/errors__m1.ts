@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tP
 // matched 2.1.88 source: src/services/api/errors.ts
-// class=modified (alt of src/services/api/errors.ts)  jaccard=0.0114  score=0.1166  fileCov=0.0125
+// class=modified (alt of src/services/api/errors.ts)  jaccard=0.0093  score=0.1211  fileCov=0.01
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tP = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QMo
 // matched 2.1.88 source: src/memdir/findRelevantMemories.ts
-// class=modified  jaccard=0.1085  score=0.1775  fileCov=0.2182
+// class=modified  jaccard=0.232  score=0.3486  fileCov=0.4095
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var QMo = E(() => {

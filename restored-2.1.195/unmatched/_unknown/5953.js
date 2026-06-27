@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ygr
-// matched 2.1.88 source: node_modules/@modelcontextprotocol/sdk/dist/esm/client/sse.js
-// class=new  jaccard=0.0466  score=0.2579  fileCov=0.0539
-// note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/client/sse.js (0.0466); 0 renamed
+// matched 2.1.88 source: node_modules/node-fetch/lib/index.js
+// class=new  jaccard=0.0366  score=0.4424  fileCov=0.0383
+// note: nearest: node_modules/node-fetch/lib/index.js (0.0366); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ygr = Q((uzH, Yjc) => {
   var {

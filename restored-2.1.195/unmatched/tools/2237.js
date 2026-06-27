@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ii
-// matched 2.1.88 source: src/services/mockRateLimits.ts
-// class=new  jaccard=0.0107  score=0.4801  fileCov=0.0109
-// note: nearest: src/services/mockRateLimits.ts (0.0107); dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/Tool.ts
+// class=new  jaccard=0.0576  score=0.5496  fileCov=0.0604
+// note: nearest: src/Tool.ts (0.0576); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ii = E(() => {
   rNi = new WeakMap(), oNi = new WeakSet();

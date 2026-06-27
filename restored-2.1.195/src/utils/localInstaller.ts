@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LPe
 // matched 2.1.88 source: src/utils/localInstaller.ts
-// class=modified  jaccard=0.5471  score=0.6746  fileCov=0.7432
+// class=modified  jaccard=0.3379  score=0.5871  fileCov=0.4432
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var LPe = E(() => {

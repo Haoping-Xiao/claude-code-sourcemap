@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xBo
 // matched 2.1.88 source: src/components/mcp/MCPReconnect.tsx
-// class=modified  jaccard=0.578  score=0.7384  fileCov=0.7267
+// class=modified  jaccard=0.458  score=0.6928  fileCov=0.5747
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xBo = E(() => {

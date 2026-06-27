@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module l6l
 // matched 2.1.88 source: src/components/ResumeTask.tsx
-// class=modified  jaccard=0.3477  score=0.4829  fileCov=0.5539
+// class=modified  jaccard=0.2529  score=0.3979  fileCov=0.4097
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var l6l = E(() => {

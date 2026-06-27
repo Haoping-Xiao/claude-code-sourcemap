@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MWl
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/utils/sessionStorage.ts
+// class=new  jaccard=0.0053  score=0.7326  fileCov=0.0053
+// note: nearest: src/utils/sessionStorage.ts (0.0053); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var MWl = E(() => {
   LWl = new WeakMap();

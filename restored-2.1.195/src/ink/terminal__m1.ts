@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZS
 // matched 2.1.88 source: src/ink/terminal.ts
-// class=modified (alt of src/ink/terminal.ts)  jaccard=0.2882  score=0.8146  fileCov=0.3084
+// class=modified (alt of src/ink/terminal.ts)  jaccard=0.1711  score=0.4051  fileCov=0.2285
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ZS = E(() => {

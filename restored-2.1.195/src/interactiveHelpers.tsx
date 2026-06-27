@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module y7o
 // matched 2.1.88 source: src/interactiveHelpers.tsx
-// class=modified  jaccard=0.0882  score=0.1464  fileCov=0.1815
+// class=modified  jaccard=0.0626  score=0.1693  fileCov=0.0903
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var y7o = E(() => {

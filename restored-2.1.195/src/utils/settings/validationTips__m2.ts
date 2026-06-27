@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xjt
 // matched 2.1.88 source: src/utils/settings/validationTips.ts
-// class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0415  score=0.0755  fileCov=0.0844
+// class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0521  score=0.0968  fileCov=0.1015
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Xjt = E(() => {

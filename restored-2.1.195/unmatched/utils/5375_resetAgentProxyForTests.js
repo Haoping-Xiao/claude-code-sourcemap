@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pfc
-// matched 2.1.88 source: src/utils/readEditContext.ts
-// class=new  jaccard=0.0092  score=0.0094  fileCov=0.4356
-// note: nearest: src/utils/readEditContext.ts (0.0092); dir inferred from dep-graph -> utils; 6 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0036  score=0.0543  fileCov=0.0038
+// note: nearest: src/cli/print.ts (0.0036); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pfc = E(() => {
   dn();

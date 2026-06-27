@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S$
 // matched 2.1.88 source: src/tools/BashTool/bashPermissions.ts
-// class=modified  jaccard=0.1197  score=0.1861  fileCov=0.2512
+// class=modified  jaccard=0.0882  score=0.1299  fileCov=0.2155
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S$ = E(() => {

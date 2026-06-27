@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fXa
-// matched 2.1.88 source: src/components/mcp/ElicitationDialog.tsx
-// class=new  jaccard=0.0373  score=0.1576  fileCov=0.0466
-// note: nearest: src/components/mcp/ElicitationDialog.tsx (0.0373); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/services/api/client.ts
+// class=new  jaccard=0.0334  score=0.0925  fileCov=0.0498
+// note: nearest: src/services/api/client.ts (0.0334); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fXa = E(() => {
   Ye();

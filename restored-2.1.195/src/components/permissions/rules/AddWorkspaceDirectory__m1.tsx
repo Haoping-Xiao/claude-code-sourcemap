@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BZr
 // matched 2.1.88 source: src/components/permissions/rules/AddWorkspaceDirectory.tsx
-// class=modified (alt of src/components/permissions/rules/AddWorkspaceDirectory.tsx)  jaccard=0.1689  score=1  fileCov=0.1689
+// class=modified (alt of src/components/permissions/rules/AddWorkspaceDirectory.tsx)  jaccard=0.0915  score=0.8464  fileCov=0.0931
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BZr = E(() => {

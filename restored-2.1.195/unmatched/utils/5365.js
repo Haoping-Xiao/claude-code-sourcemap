@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module G9o
-// matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
-// class=new  jaccard=0.0435  score=0.1064  fileCov=0.0685
-// note: nearest: src/utils/plugins/validatePlugin.ts (0.0435); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
+// class=new  jaccard=0.0314  score=0.1409  fileCov=0.0388
+// note: nearest: src/utils/plugins/pluginLoader.ts (0.0314); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var G9o = E(() => {
   si();

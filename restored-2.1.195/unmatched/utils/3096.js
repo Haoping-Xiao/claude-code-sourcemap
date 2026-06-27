@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module aco
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/MCPTool/UI.tsx
+// class=new  jaccard=0.0196  score=1  fileCov=0.0196
+// note: nearest: src/tools/MCPTool/UI.tsx (0.0196); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var aco = E(() => {
   si();

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rOo
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/src/type.js
+// class=new  jaccard=0.0152  score=0.4939  fileCov=0.0155
+// note: nearest: node_modules/protobufjs/src/type.js (0.0152); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var rOo = E(() => {
   Jt();

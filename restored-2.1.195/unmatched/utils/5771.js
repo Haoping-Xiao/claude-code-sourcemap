@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pMc
-// matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0027  score=0.4137  fileCov=0.0027
-// note: nearest: src/main.tsx (0.0027); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0079  score=0.312  fileCov=0.0081
+// note: nearest: src/cli/print.ts (0.0079); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var pMc = E(() => {
   ft();

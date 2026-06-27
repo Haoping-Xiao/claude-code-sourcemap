@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Dac
-// matched 2.1.88 source: src/utils/promptCategory.ts
-// class=new  jaccard=0.0533  score=0.1123  fileCov=0.0923
-// note: nearest: src/utils/promptCategory.ts (0.0533); dir inferred from dep-graph -> utils; 3 renamed
+// matched 2.1.88 source: src/services/compact/microCompact.ts
+// class=new  jaccard=0.0259  score=0.1045  fileCov=0.0333
+// note: nearest: src/services/compact/microCompact.ts (0.0259); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Dac = E(() => {
   PR();

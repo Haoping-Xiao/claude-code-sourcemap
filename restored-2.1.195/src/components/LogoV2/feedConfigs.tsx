@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZWl
 // matched 2.1.88 source: src/components/LogoV2/feedConfigs.tsx
-// class=modified  jaccard=0.2267  score=1  fileCov=0.2267
+// class=modified  jaccard=0.2537  score=0.9537  fileCov=0.2569
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ZWl = E(() => {

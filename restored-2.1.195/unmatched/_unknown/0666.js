@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lHs
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/human-signals/build/src/core.js
+// class=new  jaccard=0.0407  score=0.4705  fileCov=0.0426
+// note: nearest: node_modules/human-signals/build/src/core.js (0.0407); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lHs = E(() => {
   iHs();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Nlc
 // matched 2.1.88 source: src/outputStyles/loadOutputStylesDir.ts
-// class=modified  jaccard=0.2934  score=0.3907  fileCov=0.5409
+// class=modified  jaccard=0.2466  score=0.3628  fileCov=0.4349
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Nlc = E(() => {

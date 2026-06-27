@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oIo
 // matched 2.1.88 source: src/components/messages/HighlightedThinkingText.tsx
-// class=modified  jaccard=0.3024  score=0.4522  fileCov=0.4773
+// class=modified  jaccard=0.1743  score=0.2431  fileCov=0.3811
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oIo = E(() => {

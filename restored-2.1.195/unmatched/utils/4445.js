@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zvl
 // matched 2.1.88 source: src/utils/bash/ast.ts
-// class=new  jaccard=0.0438  score=0.2902  fileCov=0.049
-// note: nearest: src/utils/bash/ast.ts (0.0438); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0375  score=0.2861  fileCov=0.0414
+// note: nearest: src/utils/bash/ast.ts (0.0375); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var zvl = E(() => {
   rre();

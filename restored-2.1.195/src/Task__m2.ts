@@ -1,59 +1,82 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module vic
+// restored from claude-code 2.1.195 (deminified) — module iKe
 // matched 2.1.88 source: src/Task.ts
-// class=modified (alt of src/Task.ts)  jaccard=0.3516  score=0.6938  fileCov=0.4163
+// class=modified (alt of src/Task.ts)  jaccard=0.1646  score=0.3146  fileCov=0.2567
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var vic = E(() => {
+var iKe = E(() => {
   ft();
-  $S();
-  sp();
-  _a();
-  pQ();
-  Dlr = require("crypto");
+  FQn();
+  iKn();
+  vX();
+  es();
+  sr();
+  g0();
+  DOo = {
+    local_agent: "subagent",
+    local_workflow: "workflow",
+    local_bash: "shell",
+    monitor_mcp: "monitor",
+    monitor_ws: "monitor",
+    mcp_task: "MCP task",
+    in_process_teammate: "teammate",
+    dream: "dream",
+    remote_agent: "cloud session",
+  };
 });
-function wic(e) {
-  let t = [];
-  for (let n of Object.values(e)) {
-    if (!wH(n)) continue;
-    let r = {
-      id: n.id,
-      type: DOo[n.type] ?? n.type,
-      status: n.status,
-      description: SUe(n.description, B5o),
-    };
-    switch (n.type) {
-      case "local_bash":
-        r.command = SUe(n.command, B5o);
-        break;
-      case "local_agent":
-        r.agent_type = n.agentType;
-        break;
-      case "monitor_mcp":
-        ((r.server = n.server), (r.tool = n.tool));
-        break;
-      case "mcp_task":
-        ((r.server = n.serverName), (r.tool = n.toolName));
-        break;
-      case "local_workflow":
-        r.name = n.workflowName;
-        break;
-      case "in_process_teammate":
-      case "remote_agent":
-      case "dream":
-      case "monitor_ws":
-        break;
+function u7t(e) {
+  let t = typeof e === "string" ? Buffer.from(e, "utf8") : e,
+    n = Buffer.allocUnsafe(aKe + t.length);
+  return (n.writeUInt32BE(t.length, 0), n.writeUInt8(lKe, 4), t.copy(n, aKe), n);
+}
+function UL(e) {
+  let t = Buffer.from(De(e), "utf8"),
+    n = Buffer.allocUnsafe(aKe + t.length);
+  return (n.writeUInt32BE(t.length, 0), n.writeUInt8(l7t, 4), t.copy(n, aKe), n);
+}
+function Yer(e, t) {
+  let n = Buffer.alloc(0),
+    r = false;
+  return (o) => {
+    if (r) return;
+    n = n.length === 0 ? o : Buffer.concat([n, o]);
+    while (n.length >= aKe) {
+      let s = n.readUInt32BE(0);
+      if (s > ZSt) {
+        ((r = true), t(`frame too large (${s} > ${ZSt})`));
+        return;
+      }
+      let i = aKe + s;
+      if (n.length < i) return;
+      let a = n.readUInt8(4),
+        l = n.subarray(aKe, i);
+      if (((n = n.subarray(i)), a === lKe))
+        e({
+          kind: lKe,
+          payload: Buffer.from(l),
+        });
+      else if (a === l7t) {
+        let c;
+        try {
+          c = Ft(l.toString("utf8"));
+        } catch {
+          ((r = true), t("bad ctrl json"));
+          return;
+        }
+        e({
+          kind: l7t,
+          ctrl: c,
+        });
+      } else {
+        ((r = true), t(`unknown frame kind ${a}`));
+        return;
+      }
     }
-    t.push(r);
-  }
-  return t;
+  };
 }
-function Cic(e = Hw()) {
-  return e.map((t) => ({
-    id: t.id,
-    schedule: t.cron,
-    recurring: t.recurring ?? false,
-    prompt: SUe(t.prompt, B5o),
-  }));
-}
-var B5o = 1000;
+var lKe = 0,
+  l7t = 1,
+  c7t = 262144,
+  aKe = 5,
+  ZSt = 1048576,
+  xfe = 10000; /* 1e4 */

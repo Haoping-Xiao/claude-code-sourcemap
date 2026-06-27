@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ljc
-// matched 2.1.88 source: src/skills/bundled/loremIpsum.ts
-// class=new  jaccard=0.0403  score=0.2576  fileCov=0.0456
-// note: nearest: src/skills/bundled/loremIpsum.ts (0.0403); 0 renamed
+// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
+// class=new  jaccard=0.0198  score=0.3875  fileCov=0.0204
+// note: nearest: node_modules/jsonwebtoken/verify.js (0.0198); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ljc = E(() => {
   RXo();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module c9t
 // matched 2.1.88 source: src/utils/model/agent.ts
-// class=modified  jaccard=0.2899  score=0.4534  fileCov=0.4457
+// class=modified  jaccard=0.2632  score=0.5855  fileCov=0.3234
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var c9t = E(() => {

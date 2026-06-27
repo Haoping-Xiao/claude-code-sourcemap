@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eMn
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/src/enum.js
+// class=new  jaccard=0.0226  score=0.1454  fileCov=0.0261
+// note: nearest: node_modules/protobufjs/src/enum.js (0.0226); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var eMn = E(() => {
   Qi();

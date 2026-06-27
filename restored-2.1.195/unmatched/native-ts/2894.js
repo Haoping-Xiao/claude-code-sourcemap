@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yda
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> native-ts; 0 renamed
+// matched 2.1.88 source: src/native-ts/color-diff/index.ts
+// class=new  jaccard=0.0081  score=0.5327  fileCov=0.0082
+// note: nearest: src/native-ts/color-diff/index.ts (0.0081); dir inferred from dep-graph -> native-ts; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yda = E(() => {
   hda = tdp;

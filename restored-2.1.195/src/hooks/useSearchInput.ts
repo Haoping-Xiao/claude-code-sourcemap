@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module P1o
 // matched 2.1.88 source: src/hooks/useSearchInput.ts
-// class=modified  jaccard=0.4078  score=0.5772  fileCov=0.5815
+// class=modified  jaccard=0.3474  score=0.4545  fileCov=0.5959
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var P1o = E(() => {

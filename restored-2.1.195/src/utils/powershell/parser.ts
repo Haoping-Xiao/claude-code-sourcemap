@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bde
 // matched 2.1.88 source: src/utils/powershell/parser.ts
-// class=modified  jaccard=0.4295  score=0.9864  fileCov=0.432
+// class=modified  jaccard=0.3256  score=0.7955  fileCov=0.3553
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bde = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R5i
 // matched 2.1.88 source: src/ink/styles.ts
-// class=new  jaccard=0.0249  score=1  fileCov=0.0249
-// note: nearest: src/ink/styles.ts (0.0249); dir inferred from dep-graph -> hooks; 0 renamed
+// class=new  jaccard=0.0163  score=0.5331  fileCov=0.0166
+// note: nearest: src/ink/styles.ts (0.0163); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var R5i = E(() => {
   x5i = R(lt(), 1), k5i = R(se(), 1);

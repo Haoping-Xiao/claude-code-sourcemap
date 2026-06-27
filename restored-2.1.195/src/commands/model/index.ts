@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KJl
 // matched 2.1.88 source: src/commands/model/index.ts
-// class=modified  jaccard=0.2263  score=0.2992  fileCov=0.4818
+// class=modified  jaccard=0.164  score=0.1945  fileCov=0.511
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KJl = E(() => {

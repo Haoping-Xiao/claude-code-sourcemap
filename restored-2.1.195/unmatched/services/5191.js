@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dec
-// matched 2.1.88 source: src/utils/settings/permissionValidation.ts
-// class=new  jaccard=0.0194  score=0.0663  fileCov=0.0266
-// note: nearest: src/utils/settings/permissionValidation.ts (0.0194); dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: src/utils/ide.ts
+// class=new  jaccard=0.0096  score=0.1303  fileCov=0.0102
+// note: nearest: src/utils/ide.ts (0.0096); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dec = E(() => {
   cec = Symbol.for("mcp.completable");

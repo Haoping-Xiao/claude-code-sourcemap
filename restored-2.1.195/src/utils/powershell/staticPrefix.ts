@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kHc
 // matched 2.1.88 source: src/utils/powershell/staticPrefix.ts
-// class=modified  jaccard=0.4883  score=1  fileCov=0.4883
+// class=modified  jaccard=0.3824  score=0.8846  fileCov=0.4025
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kHc = E(() => {

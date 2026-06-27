@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vy
-// matched 2.1.88 source: src/hooks/useRemoteSession.ts
-// class=new  jaccard=0.0137  score=0.0396  fileCov=0.0205
-// note: nearest: src/hooks/useRemoteSession.ts (0.0137); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@mixmark-io/domino/lib/htmlelts.js
+// class=new  jaccard=0.0057  score=0.0978  fileCov=0.0061
+// note: nearest: node_modules/@mixmark-io/domino/lib/htmlelts.js (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var vy = E(() => {
   ft();

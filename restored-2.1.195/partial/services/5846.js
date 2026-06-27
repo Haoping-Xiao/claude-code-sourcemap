@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sXo
 // matched 2.1.88 source: src/cli/transports/transportUtils.ts
-// class=partial  jaccard=0.2215  score=1  fileCov=0.2215
+// class=partial  jaccard=0.2057  score=1  fileCov=0.2057
 // note: low-confidence suggestion: src/cli/transports/transportUtils.ts; dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var sXo = E(() => {

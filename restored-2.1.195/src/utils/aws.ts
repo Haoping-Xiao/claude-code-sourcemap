@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jnt
 // matched 2.1.88 source: src/utils/aws.ts
-// class=modified  jaccard=0.6476  score=1  fileCov=0.6476
+// class=modified  jaccard=0.5618  score=0.9719  fileCov=0.5711
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var jnt = E(() => {

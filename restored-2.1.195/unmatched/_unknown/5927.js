@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sjc
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@growthbook/growthbook/dist/esm/GrowthBook.mjs
+// class=new  jaccard=0.0077  score=0.2803  fileCov=0.0079
+// note: nearest: node_modules/@growthbook/growthbook/dist/esm/GrowthBook.mjs (0.0077); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var sjc = E(() => {
   cJo();

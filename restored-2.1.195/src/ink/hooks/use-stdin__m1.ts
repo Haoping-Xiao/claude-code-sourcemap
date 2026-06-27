@@ -1,0 +1,16 @@
+// ─────────────────────────────────────────────────────────────────────────
+// restored from claude-code 2.1.195 (deminified) — module tUt
+// matched 2.1.88 source: src/ink/hooks/use-stdin.ts
+// class=modified (alt of src/ink/hooks/use-stdin.ts)  jaccard=0.391  score=1  fileCov=0.391
+// note: deminified; 0 identifiers renamed from _t exports
+// ─────────────────────────────────────────────────────────────────────────
+var tUt = E(() => {
+  wr();
+  l0e();
+  a0e();
+  eUt();
+  EGe = R(rt(), 1);
+});
+var j5i,
+  UWd = () => j5i.useContext(J7),
+  TW;

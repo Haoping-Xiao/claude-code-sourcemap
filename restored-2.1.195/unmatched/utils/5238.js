@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jGo
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0068  score=0.0842  fileCov=0.0073
-// note: nearest: src/utils/sessionStorage.ts (0.0068); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0035  score=0.1118  fileCov=0.0036
+// note: nearest: src/utils/sessionStorage.ts (0.0035); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var jGo = E(() => {
   iu();

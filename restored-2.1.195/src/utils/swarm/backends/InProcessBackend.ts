@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module v7n
 // matched 2.1.88 source: src/utils/swarm/backends/InProcessBackend.ts
-// class=modified  jaccard=0.7794  score=1  fileCov=0.7794
+// class=modified  jaccard=0.7005  score=0.9585  fileCov=0.7224
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var v7n = E(() => {

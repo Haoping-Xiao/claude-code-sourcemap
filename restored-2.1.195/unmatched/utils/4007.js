@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module F9t
 // matched 2.1.88 source: src/utils/bash/bashParser.ts
-// class=new  jaccard=0.041  score=0.2643  fileCov=0.0462
-// note: nearest: src/utils/bash/bashParser.ts (0.041); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0238  score=0.1759  fileCov=0.0268
+// note: nearest: src/utils/bash/bashParser.ts (0.0238); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var F9t = E(() => {
   Ybe();

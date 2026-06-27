@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module o5c
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/undici/lib/web/fetch/util.js
+// class=new  jaccard=0.0148  score=0.0756  fileCov=0.0181
+// note: nearest: node_modules/undici/lib/web/fetch/util.js (0.0148); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var o5c = E(() => {
   BZ();

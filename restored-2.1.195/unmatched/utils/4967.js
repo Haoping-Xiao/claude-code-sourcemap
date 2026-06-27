@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B9l
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/commands/export/export.tsx
+// class=new  jaccard=0.0405  score=0.2699  fileCov=0.0455
+// note: nearest: src/commands/export/export.tsx (0.0405); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var B9l = E(() => {
   m8();

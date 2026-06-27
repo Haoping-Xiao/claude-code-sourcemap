@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BIo
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/zod/v4/classic/schemas.js
+// class=new  jaccard=0.0088  score=0.3956  fileCov=0.0089
+// note: nearest: node_modules/zod/v4/classic/schemas.js (0.0088); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var BIo = E(() => {
   Hp();

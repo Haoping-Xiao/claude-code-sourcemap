@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gfe
-// matched 2.1.88 source: node_modules/undici/lib/web/fileapi/util.js
-// class=new  jaccard=0.0373  score=0.1105  fileCov=0.0532
-// note: nearest: node_modules/undici/lib/web/fileapi/util.js (0.0373); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
+// class=new  jaccard=0.018  score=0.192  fileCov=0.0195
+// note: nearest: src/utils/nativeInstaller/installer.ts (0.018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Gfe = E(() => {
   lH();

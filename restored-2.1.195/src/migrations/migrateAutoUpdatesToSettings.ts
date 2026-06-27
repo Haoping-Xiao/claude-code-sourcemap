@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OOc
 // matched 2.1.88 source: src/migrations/migrateAutoUpdatesToSettings.ts
-// class=modified  jaccard=0.4014  score=0.5308  fileCov=0.6221
+// class=modified  jaccard=0.44  score=0.7218  fileCov=0.5298
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OOc = E(() => {

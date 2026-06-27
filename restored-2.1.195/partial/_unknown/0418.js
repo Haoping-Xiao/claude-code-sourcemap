@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ofs
 // matched 2.1.88 source: node_modules/zod-to-json-schema/dist/esm/zodToJsonSchema.js
-// class=partial  jaccard=0.1489  score=0.2659  fileCov=0.2528
+// class=partial  jaccard=0.1078  score=0.3113  fileCov=0.1415
 // note: low-confidence suggestion: node_modules/zod-to-json-schema/dist/esm/zodToJsonSchema.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ofs = Q((VQm, Biu) => {

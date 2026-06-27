@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module D$o
 // matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
-// class=modified  jaccard=0.3645  score=0.4443  fileCov=0.6699
+// class=modified  jaccard=0.311  score=0.3814  fileCov=0.6276
 // note: deminified; 30 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var D$o = E(() => {

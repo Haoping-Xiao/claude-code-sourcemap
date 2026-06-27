@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CTo
 // matched 2.1.88 source: src/utils/teleport.tsx
-// class=modified  jaccard=0.4528  score=0.5219  fileCov=0.7737
+// class=modified  jaccard=0.4221  score=0.5171  fileCov=0.6967
 // note: deminified; 15 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var CTo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZFl
 // matched 2.1.88 source: src/components/mcp/MCPAgentServerMenu.tsx
-// class=modified  jaccard=0.2853  score=0.3561  fileCov=0.5894
+// class=modified  jaccard=0.3162  score=0.4105  fileCov=0.5791
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ZFl = E(() => {

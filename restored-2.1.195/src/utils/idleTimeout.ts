@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vUc
 // matched 2.1.88 source: src/utils/idleTimeout.ts
-// class=modified  jaccard=0.4861  score=0.7123  fileCov=0.6049
+// class=modified  jaccard=0.3145  score=0.6645  fileCov=0.3739
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vUc = E(() => {

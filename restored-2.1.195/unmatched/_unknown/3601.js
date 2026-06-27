@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module A_o
 // matched 2.1.88 source: node_modules/@grpc/grpc-js/build/src/channelz.js
-// class=new  jaccard=0.0162  score=0.0198  fileCov=0.082
-// note: nearest: node_modules/@grpc/grpc-js/build/src/channelz.js (0.0162); 0 renamed
+// class=new  jaccard=0.008  score=0.0226  fileCov=0.0122
+// note: nearest: node_modules/@grpc/grpc-js/build/src/channelz.js (0.008); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var A_o = Q(($b_, vBp) => {
   vBp.exports = {

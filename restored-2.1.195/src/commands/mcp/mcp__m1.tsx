@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Yfe
 // matched 2.1.88 source: src/commands/mcp/mcp.tsx
-// class=modified (alt of src/commands/mcp/mcp.tsx)  jaccard=0.0705  score=0.0812  fileCov=0.3485
+// class=modified (alt of src/commands/mcp/mcp.tsx)  jaccard=0.0714  score=0.0893  fileCov=0.2622
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Yfe = E(() => {

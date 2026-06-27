@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I_c
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInputQueuedCommands.tsx
+// class=new  jaccard=0.037  score=0.347  fileCov=0.0398
+// note: nearest: src/components/PromptInput/PromptInputQueuedCommands.tsx (0.037); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var I_c = E(() => {
   ag();

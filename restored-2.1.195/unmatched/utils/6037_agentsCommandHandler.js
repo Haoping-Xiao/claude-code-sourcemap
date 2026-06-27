@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T5c
-// matched 2.1.88 source: src/utils/permissions/getNextPermissionMode.ts
-// class=new  jaccard=0.0488  score=0.1291  fileCov=0.0728
-// note: nearest: src/utils/permissions/getNextPermissionMode.ts (0.0488); dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0045  score=0.1663  fileCov=0.0046
+// note: nearest: src/cli/print.ts (0.0045); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var T5c = E(() => {
   xHt();

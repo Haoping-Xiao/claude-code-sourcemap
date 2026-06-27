@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S1l
 // matched 2.1.88 source: src/components/ContextVisualization.tsx
-// class=modified  jaccard=0.1592  score=0.2601  fileCov=0.2911
+// class=modified  jaccard=0.1251  score=0.2662  fileCov=0.1909
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S1l = E(() => {

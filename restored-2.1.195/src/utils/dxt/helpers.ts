@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ndo
 // matched 2.1.88 source: src/utils/dxt/helpers.ts
-// class=modified  jaccard=0.3363  score=1  fileCov=0.3363
+// class=modified  jaccard=0.3426  score=0.8581  fileCov=0.3631
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ndo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Nht
 // matched 2.1.88 source: src/utils/teammateMailbox.ts
-// class=modified  jaccard=0.5047  score=0.7673  fileCov=0.5959
+// class=modified  jaccard=0.2945  score=0.3912  fileCov=0.5439
 // note: deminified; 49 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Nht = E(() => {

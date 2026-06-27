@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yyt
-// matched 2.1.88 source: src/tasks/LocalMainSessionTask.ts
-// class=new  jaccard=0.0507  score=0.371  fileCov=0.0555
-// note: nearest: src/tasks/LocalMainSessionTask.ts (0.0507); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tasks/LocalAgentTask/LocalAgentTask.tsx
+// class=new  jaccard=0.0496  score=0.4203  fileCov=0.0532
+// note: nearest: src/tasks/LocalAgentTask/LocalAgentTask.tsx (0.0496); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yyt = E(() => {
   ft();

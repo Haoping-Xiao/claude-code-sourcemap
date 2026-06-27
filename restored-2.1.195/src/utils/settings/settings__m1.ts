@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oLt
 // matched 2.1.88 source: src/utils/settings/settings.ts
-// class=modified (alt of src/utils/settings/settings.ts)  jaccard=0.1508  score=0.4455  fileCov=0.1857
+// class=modified (alt of src/utils/settings/settings.ts)  jaccard=0.1198  score=0.3085  fileCov=0.1638
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oLt = E(() => {

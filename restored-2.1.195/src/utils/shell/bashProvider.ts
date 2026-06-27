@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eMa
 // matched 2.1.88 source: src/utils/shell/bashProvider.ts
-// class=modified  jaccard=0.2446  score=0.5124  fileCov=0.3188
+// class=modified  jaccard=0.3153  score=0.7093  fileCov=0.3621
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eMa = E(() => {

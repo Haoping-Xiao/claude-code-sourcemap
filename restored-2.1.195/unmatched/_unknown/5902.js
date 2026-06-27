@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QXo
-// matched 2.1.88 source: node_modules/auto-bind/index.js
-// class=new  jaccard=0.0176  score=0.018  fileCov=0.4358
-// note: nearest: node_modules/auto-bind/index.js (0.0176); 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
+// class=new  jaccard=0.0159  score=0.0458  fileCov=0.0238
+// note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0159); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QXo = E(() => {
   vnn = CDm;

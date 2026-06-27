@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wHo
-// matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
-// class=new  jaccard=0.0048  score=0.0083  fileCov=0.0113
-// note: nearest: src/utils/permissions/yoloClassifier.ts (0.0048); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0049  score=0.0272  fileCov=0.006
+// note: nearest: src/cli/print.ts (0.0049); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var wHo = E(() => {
   SC();

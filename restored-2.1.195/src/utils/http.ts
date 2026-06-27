@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oo
 // matched 2.1.88 source: src/utils/http.ts
-// class=modified  jaccard=0.3375  score=0.3672  fileCov=0.8067
+// class=modified  jaccard=0.2616  score=0.3133  fileCov=0.6133
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oo = E(() => {

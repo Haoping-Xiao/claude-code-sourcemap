@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Bws
 // matched 2.1.88 source: src/utils/settings/validationTips.ts
-// class=modified  jaccard=0.3953  score=0.4195  fileCov=0.8726
+// class=modified  jaccard=0.2947  score=0.3451  fileCov=0.6684
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Bws = E(() => {

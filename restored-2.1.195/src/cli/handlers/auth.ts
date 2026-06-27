@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MAo
 // matched 2.1.88 source: src/cli/handlers/auth.ts
-// class=modified  jaccard=0.3498  score=0.5142  fileCov=0.5226
+// class=modified  jaccard=0.3486  score=0.4566  fileCov=0.5958
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MAo = E(() => {

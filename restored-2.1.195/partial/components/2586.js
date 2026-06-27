@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vi
 // matched 2.1.88 source: src/components/design-system/Dialog.tsx
-// class=partial  jaccard=0.2476  score=1  fileCov=0.2476
+// class=partial  jaccard=0.175  score=0.5708  fileCov=0.2016
 // note: low-confidence suggestion: src/components/design-system/Dialog.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var vi = E(() => {

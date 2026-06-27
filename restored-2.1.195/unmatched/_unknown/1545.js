@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module n4r
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/signature-v4/dist-cjs/index.js
+// class=new  jaccard=0.02  score=1  fileCov=0.02
+// note: nearest: node_modules/@smithy/signature-v4/dist-cjs/index.js (0.02); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var n4r = E(() => {
   _je();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ver
 // matched 2.1.88 source: src/commands/color/color.ts
-// class=modified  jaccard=0.461  score=0.8442  fileCov=0.5038
+// class=modified  jaccard=0.2706  score=0.4019  fileCov=0.4532
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ver = E(() => {

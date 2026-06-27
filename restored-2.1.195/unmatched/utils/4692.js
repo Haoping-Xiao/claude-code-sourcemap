@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zOe
-// matched 2.1.88 source: src/components/mcp/MCPRemoteServerMenu.tsx
-// class=new  jaccard=0.0266  score=0.0814  fileCov=0.0379
-// note: nearest: src/components/mcp/MCPRemoteServerMenu.tsx (0.0266); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/completionCache.ts
+// class=new  jaccard=0.0572  score=0.1101  fileCov=0.1063
+// note: nearest: src/utils/completionCache.ts (0.0572); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var zOe = E(() => {
   fn();

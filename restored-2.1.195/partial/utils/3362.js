@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module z2n
-// matched 2.1.88 source: src/utils/bash/shellQuoting.ts
-// class=partial  jaccard=0.1461  score=0.5444  fileCov=0.1664
-// note: low-confidence suggestion: src/utils/bash/shellQuoting.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/embeddedTools.ts
+// class=partial  jaccard=0.1473  score=0.4818  fileCov=0.1751
+// note: low-confidence suggestion: src/utils/embeddedTools.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var z2n = E(() => {
   Ls();

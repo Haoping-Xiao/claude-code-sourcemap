@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Y$o
 // matched 2.1.88 source: src/commands/branch/branch.ts
-// class=modified  jaccard=0.4595  score=0.6908  fileCov=0.5784
+// class=modified  jaccard=0.4313  score=0.6214  fileCov=0.5849
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Y$o = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iJo
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/jsonwebtoken/verify.js
+// class=new  jaccard=0.0314  score=0.3227  fileCov=0.0337
+// note: nearest: node_modules/jsonwebtoken/verify.js (0.0314); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var iJo = E(() => {
   sgr();

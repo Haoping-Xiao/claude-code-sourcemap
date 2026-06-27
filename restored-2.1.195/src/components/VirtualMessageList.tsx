@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module v2o
 // matched 2.1.88 source: src/components/VirtualMessageList.tsx
-// class=modified  jaccard=0.4078  score=0.5456  fileCov=0.6177
+// class=modified  jaccard=0.4576  score=0.6163  fileCov=0.6399
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var v2o = E(() => {

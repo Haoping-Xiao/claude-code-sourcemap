@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $hc
-// matched 2.1.88 source: src/commands/install-github-app/CreatingStep.tsx
-// class=new  jaccard=0.0563  score=0.1246  fileCov=0.0931
-// note: nearest: src/commands/install-github-app/CreatingStep.tsx (0.0563); dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0044  score=0.2435  fileCov=0.0044
+// note: nearest: src/screens/REPL.tsx (0.0044); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var $hc = E(() => {
   ft();

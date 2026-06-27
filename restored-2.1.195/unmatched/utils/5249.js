@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Lar
 // matched 2.1.88 source: node_modules/highlight.js/lib/languages/sql.js
-// class=new  jaccard=0.0078  score=0.5166  fileCov=0.0078
-// note: nearest: node_modules/highlight.js/lib/languages/sql.js (0.0078); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0086  score=0.2149  fileCov=0.0089
+// note: nearest: node_modules/highlight.js/lib/languages/sql.js (0.0086); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Lar = E(() => {
   vX();

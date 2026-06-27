@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VZl
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0136  score=0.2308  fileCov=0.0142
-// note: nearest: src/utils/sessionStorage.ts (0.0136); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0143  score=0.379  fileCov=0.0147
+// note: nearest: src/utils/sessionStorage.ts (0.0143); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VZl = E(() => {
   O7n();

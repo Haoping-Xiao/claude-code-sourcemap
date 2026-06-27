@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mwo
 // matched 2.1.88 source: src/services/api/dumpPrompts.ts
-// class=modified  jaccard=0.1963  score=1  fileCov=0.1963
+// class=modified  jaccard=0.2109  score=0.8186  fileCov=0.2213
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mwo = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sFn
 // matched 2.1.88 source: src/utils/jetbrains.ts
-// class=modified (alt of src/utils/jetbrains.ts)  jaccard=0.4234  score=1  fileCov=0.4234
+// class=modified (alt of src/utils/jetbrains.ts)  jaccard=0.3061  score=0.9748  fileCov=0.3086
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sFn = E(() => {

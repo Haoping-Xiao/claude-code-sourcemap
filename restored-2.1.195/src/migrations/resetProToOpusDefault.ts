@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s1c
 // matched 2.1.88 source: src/migrations/resetProToOpusDefault.ts
-// class=modified  jaccard=0.2794  score=0.5948  fileCov=0.3451
+// class=modified  jaccard=0.3473  score=0.6954  fileCov=0.4096
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var s1c = E(() => {

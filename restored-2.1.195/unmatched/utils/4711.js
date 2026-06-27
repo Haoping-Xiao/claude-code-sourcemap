@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xnr
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/commands/brief.ts
+// class=new  jaccard=0.0234  score=1  fileCov=0.0234
+// note: nearest: src/commands/brief.ts (0.0234); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var xnr = E(() => {
   cNl();

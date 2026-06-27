@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nwo
 // matched 2.1.88 source: src/tools/shared/spawnMultiAgent.ts
-// class=new  jaccard=0.0235  score=0.2215  fileCov=0.0256
-// note: nearest: src/tools/shared/spawnMultiAgent.ts (0.0235); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0273  score=0.312  fileCov=0.0291
+// note: nearest: src/tools/shared/spawnMultiAgent.ts (0.0273); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var nwo = E(() => {
   Xr();

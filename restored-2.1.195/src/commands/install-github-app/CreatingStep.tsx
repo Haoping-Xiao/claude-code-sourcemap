@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KUl
 // matched 2.1.88 source: src/commands/install-github-app/CreatingStep.tsx
-// class=modified  jaccard=0.778  score=0.852  fileCov=0.8996
+// class=modified  jaccard=0.676  score=0.7606  fileCov=0.8587
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KUl = E(() => {

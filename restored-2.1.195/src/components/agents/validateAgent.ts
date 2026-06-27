@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xYl
 // matched 2.1.88 source: src/components/agents/validateAgent.ts
-// class=modified  jaccard=0.7886  score=0.9363  fileCov=0.8333
+// class=modified  jaccard=0.6795  score=0.9081  fileCov=0.7297
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xYl = E(() => {

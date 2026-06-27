@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ghc
 // matched 2.1.88 source: src/components/AutoUpdaterWrapper.tsx
-// class=modified  jaccard=0.2573  score=1  fileCov=0.2573
+// class=modified  jaccard=0.2774  score=0.9612  fileCov=0.2806
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ghc = E(() => {

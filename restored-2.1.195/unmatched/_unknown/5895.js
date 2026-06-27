@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module k2c
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/yaml/dist/parse/lexer.js
+// class=new  jaccard=0.0264  score=0.1226  fileCov=0.0325
+// note: nearest: node_modules/yaml/dist/parse/lexer.js (0.0264); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var k2c = E(() => {
   rB();

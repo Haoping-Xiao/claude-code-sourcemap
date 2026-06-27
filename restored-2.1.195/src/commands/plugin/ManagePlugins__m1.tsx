@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Arr
 // matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
-// class=modified (alt of src/commands/plugin/ManagePlugins.tsx)  jaccard=0.0464  score=0.6756  fileCov=0.0475
+// class=modified (alt of src/commands/plugin/ManagePlugins.tsx)  jaccard=0.0665  score=0.5063  fileCov=0.0711
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Arr = E(() => {

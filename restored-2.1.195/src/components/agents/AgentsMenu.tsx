@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module h7l
 // matched 2.1.88 source: src/components/agents/AgentsMenu.tsx
-// class=modified  jaccard=0.3061  score=0.4019  fileCov=0.5623
+// class=modified  jaccard=0.2429  score=0.3305  fileCov=0.4784
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var h7l = E(() => {

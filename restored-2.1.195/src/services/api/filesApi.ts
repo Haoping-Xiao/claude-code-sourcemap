@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wpe
 // matched 2.1.88 source: src/services/api/filesApi.ts
-// class=modified  jaccard=0.5241  score=0.6631  fileCov=0.7144
+// class=modified  jaccard=0.4905  score=0.6238  fileCov=0.6966
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wpe = E(() => {

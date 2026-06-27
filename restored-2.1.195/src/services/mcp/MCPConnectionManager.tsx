@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VFl
 // matched 2.1.88 source: src/services/mcp/MCPConnectionManager.tsx
-// class=modified  jaccard=0.4396  score=1  fileCov=0.4396
+// class=modified  jaccard=0.4508  score=0.8372  fileCov=0.4941
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var VFl = E(() => {

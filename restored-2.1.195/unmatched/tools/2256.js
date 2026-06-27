@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module u_
-// matched 2.1.88 source: src/utils/markdownConfigLoader.ts
-// class=new  jaccard=0.0221  score=0.0953  fileCov=0.0279
-// note: nearest: src/utils/markdownConfigLoader.ts (0.0221); dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/utils/sessionStorage.ts
+// class=new  jaccard=0.008  score=0.2333  fileCov=0.0082
+// note: nearest: src/utils/sessionStorage.ts (0.008); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var u_ = E(() => {
   O_e = class O_e extends Error {

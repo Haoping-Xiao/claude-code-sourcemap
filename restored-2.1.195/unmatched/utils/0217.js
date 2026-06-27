@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Pss
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
+// class=new  jaccard=0.0276  score=0.9464  fileCov=0.0277
+// note: nearest: node_modules/@smithy/eventstream-codec/dist-cjs/index.js (0.0276); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Pss = E(() => {
   PBe();

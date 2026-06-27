@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module X8o
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
-// class=new  jaccard=0.0337  score=0.1389  fileCov=0.0426
-// note: nearest: src/components/HelpV2/HelpV2.tsx (0.0337); dir inferred from dep-graph -> hooks; 0 renamed
+// class=new  jaccard=0.0249  score=0.1132  fileCov=0.031
+// note: nearest: src/components/HelpV2/HelpV2.tsx (0.0249); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var X8o = E(() => {
   hut();

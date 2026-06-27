@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ahc
 // matched 2.1.88 source: src/components/TokenWarning.tsx
-// class=modified  jaccard=0.1897  score=0.575  fileCov=0.2207
+// class=modified  jaccard=0.1512  score=0.4222  fileCov=0.1907
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ahc = E(() => {

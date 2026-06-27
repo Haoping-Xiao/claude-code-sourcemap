@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mTl
 // matched 2.1.88 source: src/tools/PowerShellTool/powershellSecurity.ts
-// class=modified  jaccard=0.2237  score=0.4383  fileCov=0.3136
+// class=modified  jaccard=0.1833  score=0.4099  fileCov=0.249
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mTl = E(() => {

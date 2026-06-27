@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bBt
 // matched 2.1.88 source: src/ink/parse-keypress.ts
-// class=modified  jaccard=0.3411  score=0.4946  fileCov=0.5237
+// class=modified  jaccard=0.3443  score=0.5702  fileCov=0.4649
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bBt = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QZe
 // matched 2.1.88 source: src/utils/windowsPaths.ts
-// class=modified (alt of src/utils/windowsPaths.ts)  jaccard=0.0972  score=0.483  fileCov=0.1085
+// class=modified (alt of src/utils/windowsPaths.ts)  jaccard=0.1148  score=0.5058  fileCov=0.1294
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var QZe = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sRo
-// matched 2.1.88 source: node_modules/highlight.js/lib/languages/typescript.js
-// class=new  jaccard=0.0369  score=0.1353  fileCov=0.0483
-// note: nearest: node_modules/highlight.js/lib/languages/typescript.js (0.0369); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0087  score=0.1303  fileCov=0.0092
+// note: nearest: src/cli/print.ts (0.0087); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var sRo = E(() => {
   ii();

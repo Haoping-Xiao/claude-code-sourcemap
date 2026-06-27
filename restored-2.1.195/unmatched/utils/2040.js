@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Y9
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
+// class=new  jaccard=0.0155  score=1  fileCov=0.0155
+// note: nearest: src/utils/plugins/loadPluginAgents.ts (0.0155); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Y9 = E(() => {
   p8r();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ls
 // matched 2.1.88 source: src/utils/status.tsx
-// class=modified (alt of src/utils/status.tsx)  jaccard=0.0359  score=0.3308  fileCov=0.0388
+// class=modified (alt of src/utils/status.tsx)  jaccard=0.0378  score=0.3289  fileCov=0.041
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ls = E(() => {

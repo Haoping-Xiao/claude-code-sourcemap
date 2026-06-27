@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module xAn
 // matched 2.1.88 source: src/utils/genericProcessUtils.ts
-// class=modified  jaccard=0.2419  score=0.5128  fileCov=0.3141
+// class=modified  jaccard=0.2568  score=0.3776  fileCov=0.4454
 // note: deminified; 12 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var xAn = E(() => {

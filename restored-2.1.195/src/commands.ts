@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MWo
 // matched 2.1.88 source: src/commands.ts
-// class=modified  jaccard=0.0979  score=0.467  fileCov=0.1102
+// class=modified  jaccard=0.1703  score=0.4373  fileCov=0.2181
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MWo = E(() => {

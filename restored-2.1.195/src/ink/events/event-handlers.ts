@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TXr
 // matched 2.1.88 source: src/ink/events/event-handlers.ts
-// class=modified  jaccard=0.431  score=0.5253  fileCov=0.7059
+// class=modified  jaccard=0.322  score=0.3608  fileCov=0.7497
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var TXr = E(() => {

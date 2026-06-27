@@ -1,131 +1,90 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module DSn
+// restored from claude-code 2.1.195 (deminified) — module rle
 // matched 2.1.88 source: src/utils/model/bedrock.ts
-// class=modified  jaccard=0.1984  score=0.3874  fileCov=0.2891
+// class=modified  jaccard=0.212  score=0.7141  fileCov=0.2316
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var DSn = E(() => {
-  pSn();
-  dSn();
-  a7s();
-  l7s();
-  p7s();
-  f7s();
-  IBr();
+var rle = E(() => {
+  Qi();
+  ft();
+  oo();
+  wFe();
+  je();
+  fn();
+  Mh();
+  Myn();
+  Myn();
+  j2e = Cn(async function () {
+    let [e, { ListInferenceProfilesCommand: t }] = await Promise.all([
+        g7s(),
+        Promise.resolve().then(() => (NDt(), ODt)),
+      ]),
+      n = [],
+      r;
+    try {
+      do {
+        let o = new t({
+            ...(r && {
+              nextToken: r,
+            }),
+            typeEquals: "SYSTEM_DEFINED",
+          }),
+          s = await e.send(o, {
+            abortSignal: AbortSignal.timeout(8000),
+          });
+        if (s.inferenceProfileSummaries) n.push(...s.inferenceProfileSummaries);
+        r = s.nextToken;
+      } while (r);
+      return n
+        .filter((o) => o.inferenceProfileId?.includes("anthropic"))
+        .map((o) => o.inferenceProfileId)
+        .filter(Boolean);
+    } catch (o) {
+      throw (
+        T(`Bedrock ListInferenceProfiles failed: ${o instanceof Error ? o.message : String(o)}`, {
+          level: "error",
+        }),
+        o
+      );
+    }
+  });
+  DIe = Cn(async function (e) {
+    let t = m7s(e),
+      n = null;
+    try {
+      let [r, { GetInferenceProfileCommand: o }] = await Promise.all([
+          g7s(),
+          Promise.resolve().then(() => (NDt(), ODt)),
+        ]),
+        i = (
+          await r.send(
+            new o({
+              inferenceProfileIdentifier: t,
+            }),
+            {
+              abortSignal: AbortSignal.timeout(8000),
+            },
+          )
+        ).models?.[0]?.modelArn;
+      if (i) {
+        let a = i.lastIndexOf("/");
+        n = a >= 0 ? i.substring(a + 1) : i;
+      }
+    } catch (r) {
+      T(
+        `Failed to resolve Bedrock inference profile backing model for ${t}: ${r instanceof Error ? r.message : String(r)}`,
+        {
+          level: "error",
+        },
+      );
+    }
+    return (cSr(t, n), n);
+  }, m7s);
 });
-function G2e(e, t, n) {
-  if (n) {
-    let r = e.find((o) => o.startsWith(`${n}.`) && o.includes(t));
-    if (r) return r;
-  }
-  return e.find((r) => r.includes(t)) ?? null;
+function y9(e) {
+  let t = e.toLowerCase();
+  for (let n of Object.values(yc))
+    for (let r of Object.values(n)) if (typeof r === "string" && r.toLowerCase() === t) return n;
+  return null;
 }
-async function g7s() {
-  let { BedrockClient: e } = await Promise.resolve().then(() => (NDt(), ODt)),
-    t = await nj(),
-    n = ut(process.env.CLAUDE_CODE_SKIP_BEDROCK_AUTH),
-    r = {
-      region: t,
-      ...(process.env.ANTHROPIC_BEDROCK_BASE_URL && {
-        endpoint: process.env.ANTHROPIC_BEDROCK_BASE_URL,
-      }),
-      ...(await jtt({
-        url: process.env.ANTHROPIC_BEDROCK_BASE_URL || `https://bedrock.${t}.amazonaws.com`,
-      })),
-      ...(n && {
-        requestHandler: new (await Promise.resolve().then(() => R(PG(), 1))).NodeHttpHandler(),
-        httpAuthSchemes: [
-          {
-            schemeId: "smithy.api#noAuth",
-            identityProvider: () => async () => ({}),
-            signer: new (await Promise.resolve().then(() => R(yd(), 1))).NoAuthSigner(),
-          },
-        ],
-        httpAuthSchemeProvider: () => [
-          {
-            schemeId: "smithy.api#noAuth",
-          },
-        ],
-      }),
-    };
-  if (!n && !process.env.AWS_BEARER_TOKEN_BEDROCK) {
-    let o = await BG();
-    if (o)
-      r.credentials = {
-        accessKeyId: o.accessKeyId,
-        secretAccessKey: o.secretAccessKey,
-        sessionToken: o.sessionToken,
-      };
-  }
-  return new e(r);
-}
-async function h7s() {
-  let { BedrockRuntimeClient: e } = await Promise.resolve().then(() => (DSn(), KBr)),
-    t = await nj(),
-    n = ut(process.env.CLAUDE_CODE_SKIP_BEDROCK_AUTH),
-    r = {
-      region: t,
-      ...(process.env.ANTHROPIC_BEDROCK_BASE_URL && {
-        endpoint: process.env.ANTHROPIC_BEDROCK_BASE_URL,
-      }),
-      ...(await jtt({
-        url: process.env.ANTHROPIC_BEDROCK_BASE_URL || `https://bedrock-runtime.${t}.amazonaws.com`,
-      })),
-      ...(n && {
-        requestHandler: new (await Promise.resolve().then(() => R(PG(), 1))).NodeHttpHandler(),
-        httpAuthSchemes: [
-          {
-            schemeId: "smithy.api#noAuth",
-            identityProvider: () => async () => ({}),
-            signer: new (await Promise.resolve().then(() => R(yd(), 1))).NoAuthSigner(),
-          },
-        ],
-        httpAuthSchemeProvider: () => [
-          {
-            schemeId: "smithy.api#noAuth",
-          },
-        ],
-      }),
-    };
-  if (!n && !process.env.AWS_BEARER_TOKEN_BEDROCK) {
-    let o = await BG();
-    if (o)
-      r.credentials = {
-        accessKeyId: o.accessKeyId,
-        secretAccessKey: o.secretAccessKey,
-        sessionToken: o.sessionToken,
-      };
-  }
-  return new e(r);
-}
-function YBr(e) {
-  return e.startsWith("anthropic.");
-}
-function hld(e) {
-  if (!e.startsWith("arn:")) return e;
-  let t = e.lastIndexOf("/");
-  if (t === -1) return e;
-  return e.substring(t + 1);
-}
-function PSn(e) {
-  let t = hld(e);
-  for (let n of bDt) if (t.startsWith(`${n}.anthropic.`)) return n;
-  return;
-}
-function PIe(e, t) {
-  let n = PSn(e);
-  if (n) return e.replace(`${n}.`, `${t}.`);
-  if (YBr(e)) return `${t}.${e}`;
-  return e;
-}
-function nle(e) {
-  let t = e ?? "";
-  if (t.startsWith("us-gov-")) return "us-gov";
-  if (t.startsWith("us-")) return "us";
-  if (t.startsWith("eu-")) return "eu";
-  if (t.startsWith("ap-")) return "apac";
-  return "global";
-}
-var m7s = (e) => e.replace(/\[(1|2)m\]/gi, ""),
-  j2e,
-  DIe;
+var XBr, JBr, QBr, ZBr, eUr, tUr, nUr, rUr, oUr, sUr, iUr, aUr, lUr, MIe, y7s, yc, cUr, _7s, MSn;

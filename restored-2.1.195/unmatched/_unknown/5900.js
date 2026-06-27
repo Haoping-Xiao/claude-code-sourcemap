@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module O2c
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@azure/core-client/dist/esm/serializer.js
+// class=new  jaccard=0.0112  score=0.1941  fileCov=0.0118
+// note: nearest: node_modules/@azure/core-client/dist/esm/serializer.js (0.0112); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var O2c = E(() => {
   Xmr();

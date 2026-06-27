@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module F7l
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0015  score=0.2126  fileCov=0.0015
+// note: nearest: src/screens/REPL.tsx (0.0015); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var F7l = E(() => {
   W9f = {

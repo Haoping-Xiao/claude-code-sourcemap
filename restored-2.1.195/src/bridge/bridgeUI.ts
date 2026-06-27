@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module itc
 // matched 2.1.88 source: src/bridge/bridgeUI.ts
-// class=modified  jaccard=0.5153  score=0.7152  fileCov=0.6484
+// class=modified  jaccard=0.2676  score=0.7007  fileCov=0.3021
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var itc = E(() => {

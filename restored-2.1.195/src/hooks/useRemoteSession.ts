@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Kbc
 // matched 2.1.88 source: src/hooks/useRemoteSession.ts
-// class=modified  jaccard=0.3397  score=0.4531  fileCov=0.5759
+// class=modified  jaccard=0.2876  score=0.3987  fileCov=0.508
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Kbc = E(() => {

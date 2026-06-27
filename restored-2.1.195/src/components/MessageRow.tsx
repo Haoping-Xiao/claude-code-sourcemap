@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S5l
 // matched 2.1.88 source: src/components/MessageRow.tsx
-// class=modified  jaccard=0.4534  score=1  fileCov=0.4534
+// class=modified  jaccard=0.3807  score=0.6476  fileCov=0.4801
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S5l = E(() => {

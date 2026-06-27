@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Oso
-// matched 2.1.88 source: src/bridge/createSession.ts
-// class=new  jaccard=0.0155  score=0.0355  fileCov=0.0267
-// note: nearest: src/bridge/createSession.ts (0.0155); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/bridge/inboundAttachments.ts
+// class=new  jaccard=0.0552  score=0.1126  fileCov=0.0978
+// note: nearest: src/bridge/inboundAttachments.ts (0.0552); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Oso = E(() => {
   fn();

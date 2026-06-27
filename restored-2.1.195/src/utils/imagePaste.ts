@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bUt
 // matched 2.1.88 source: src/utils/imagePaste.ts
-// class=modified  jaccard=0.0697  score=0.1318  fileCov=0.1289
+// class=modified  jaccard=0.0628  score=0.1694  fileCov=0.0907
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var bUt = E(() => {

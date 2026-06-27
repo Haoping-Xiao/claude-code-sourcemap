@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module $Po
 // matched 2.1.88 source: src/bridge/createSession.ts
-// class=modified  jaccard=0.3162  score=0.4296  fileCov=0.5451
+// class=modified  jaccard=0.378  score=0.5129  fileCov=0.5896
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var $Po = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I8
 // matched 2.1.88 source: src/utils/telemetryAttributes.ts
-// class=modified (alt of src/utils/telemetryAttributes.ts)  jaccard=0.1026  score=0.3341  fileCov=0.129
+// class=modified (alt of src/utils/telemetryAttributes.ts)  jaccard=0.0538  score=0.2055  fileCov=0.0679
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I8 = E(() => {

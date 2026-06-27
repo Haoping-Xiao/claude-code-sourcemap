@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Ol
 // matched 2.1.88 source: src/utils/statsCache.ts
-// class=modified  jaccard=0.1897  score=0.2307  fileCov=0.5161
+// class=modified  jaccard=0.2942  score=0.4042  fileCov=0.5194
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _Ol = Q((jtr) => {

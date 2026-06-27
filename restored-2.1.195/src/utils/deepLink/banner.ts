@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module n_c
 // matched 2.1.88 source: src/utils/deepLink/banner.ts
-// class=modified  jaccard=0.1877  score=0.2607  fileCov=0.4015
+// class=modified  jaccard=0.1642  score=0.224  fileCov=0.381
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var n_c = E(() => {

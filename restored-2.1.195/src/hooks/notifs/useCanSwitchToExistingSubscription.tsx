@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module SEe
 // matched 2.1.88 source: src/hooks/notifs/useCanSwitchToExistingSubscription.tsx
-// class=modified  jaccard=0.1373  score=0.2454  fileCov=0.2375
+// class=modified  jaccard=0.1657  score=0.3148  fileCov=0.2593
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var SEe = E(() => {

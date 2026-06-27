@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BWi
 // matched 2.1.88 source: src/ink/renderer.ts
-// class=modified  jaccard=0.4595  score=0.785  fileCov=0.5256
+// class=modified  jaccard=0.4965  score=0.7403  fileCov=0.6013
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BWi = E(() => {

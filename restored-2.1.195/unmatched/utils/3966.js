@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QVt
-// matched 2.1.88 source: src/utils/fastMode.ts
-// class=new  jaccard=0.0138  score=0.1809  fileCov=0.0147
-// note: nearest: src/utils/fastMode.ts (0.0138); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/analytics/metadata.ts
+// class=new  jaccard=0.0151  score=0.1367  fileCov=0.0167
+// note: nearest: src/services/analytics/metadata.ts (0.0151); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QVt = E(() => {
   kt();

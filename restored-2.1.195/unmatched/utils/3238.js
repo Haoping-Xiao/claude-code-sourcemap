@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jdt
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js
+// class=new  jaccard=0.0207  score=0.2255  fileCov=0.0223
+// note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/types.js (0.0207); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var jdt = E(() => {
   wr();

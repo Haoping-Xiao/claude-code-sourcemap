@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eKe
 // matched 2.1.88 source: src/utils/sessionStorage.ts
-// class=new  jaccard=0.0093  score=0.5841  fileCov=0.0093
-// note: nearest: src/utils/sessionStorage.ts (0.0093); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0031  score=0.5852  fileCov=0.0031
+// note: nearest: src/utils/sessionStorage.ts (0.0031); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var eKe = E(() => {
   ft();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qNo
-// matched 2.1.88 source: src/services/mcp/types.ts
-// class=partial  jaccard=0.2262  score=0.7517  fileCov=0.2445
-// note: low-confidence suggestion: src/services/mcp/types.ts; dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/hooks/notifs/useMcpConnectivityStatus.tsx
+// class=partial  jaccard=0.1285  score=0.7122  fileCov=0.1356
+// note: low-confidence suggestion: src/hooks/notifs/useMcpConnectivityStatus.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var qNo = E(() => {
   Ye();

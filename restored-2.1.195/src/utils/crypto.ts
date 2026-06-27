@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module Von
+// restored from claude-code 2.1.195 (deminified) — module Oxl
 // matched 2.1.88 source: src/utils/crypto.ts
 // class=unchanged (adopted 2.1.88 original)  jaccard=1  score=1  fileCov=1
 // note: code ~unchanged across versions; using 2.1.88 source verbatim

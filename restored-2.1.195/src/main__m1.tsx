@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module g2
 // matched 2.1.88 source: src/main.tsx
-// class=modified (alt of src/main.tsx)  jaccard=0.0504  score=0.5208  fileCov=0.0528
+// class=modified (alt of src/main.tsx)  jaccard=0.0436  score=0.4412  fileCov=0.0461
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var g2 = E(() => {

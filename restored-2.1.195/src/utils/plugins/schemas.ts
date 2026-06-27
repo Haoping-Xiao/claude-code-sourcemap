@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZC
 // matched 2.1.88 source: src/utils/plugins/schemas.ts
-// class=modified  jaccard=0.4682  score=0.6073  fileCov=0.6714
+// class=modified  jaccard=0.3958  score=0.6182  fileCov=0.5239
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ZC = E(() => {

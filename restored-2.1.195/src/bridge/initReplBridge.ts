@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kgc
 // matched 2.1.88 source: src/bridge/initReplBridge.ts
-// class=modified  jaccard=0.3155  score=0.6358  fileCov=0.3851
+// class=modified  jaccard=0.1635  score=0.2932  fileCov=0.2698
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kgc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module IXl
 // matched 2.1.88 source: src/commands/chrome/chrome.tsx
-// class=modified  jaccard=0.2996  score=0.363  fileCov=0.6319
+// class=modified  jaccard=0.2385  score=0.3551  fileCov=0.4206
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var IXl = E(() => {

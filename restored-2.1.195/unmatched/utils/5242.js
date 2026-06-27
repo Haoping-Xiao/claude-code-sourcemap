@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YGo
-// matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0035  score=0.0518  fileCov=0.0037
-// note: nearest: src/main.tsx (0.0035); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
+// class=new  jaccard=0.0185  score=0.0662  fileCov=0.025
+// note: nearest: src/utils/nativeInstaller/installer.ts (0.0185); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var YGo = E(() => {
   kt();

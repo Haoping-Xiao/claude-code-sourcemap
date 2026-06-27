@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ED
 // matched 2.1.88 source: src/utils/stringUtils.ts
-// class=modified  jaccard=0.3897  score=0.3897  fileCov=1
+// class=modified  jaccard=0.4101  score=0.6358  fileCov=0.536
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ED = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kLn
 // matched 2.1.88 source: src/ink/ink.tsx
-// class=modified (alt of src/ink/ink.tsx)  jaccard=0.0908  score=0.7695  fileCov=0.0934
+// class=modified (alt of src/ink/ink.tsx)  jaccard=0.0493  score=0.6888  fileCov=0.0504
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var kLn = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iws
 // matched 2.1.88 source: src/schemas/hooks.ts
-// class=modified  jaccard=0.4861  score=0.5911  fileCov=0.7324
+// class=modified  jaccard=0.3959  score=0.4974  fileCov=0.6598
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var iws = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Jin
 // matched 2.1.88 source: src/utils/startupProfiler.ts
-// class=modified  jaccard=0.4213  score=0.9645  fileCov=0.4279
+// class=modified  jaccard=0.3121  score=0.4989  fileCov=0.4546
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Jin = E(() => {

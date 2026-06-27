@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s1o
 // matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0164  score=0.2099  fileCov=0.0175
+// class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0476  score=0.3224  fileCov=0.0529
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var s1o = E(() => {

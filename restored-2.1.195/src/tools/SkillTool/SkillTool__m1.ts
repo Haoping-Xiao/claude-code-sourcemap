@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Tcl
 // matched 2.1.88 source: src/tools/SkillTool/SkillTool.ts
-// class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.147  score=0.7224  fileCov=0.1558
+// class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.1817  score=0.6092  fileCov=0.2057
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Tcl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module b$c
 // matched 2.1.88 source: src/components/TrustDialog/TrustDialog.tsx
-// class=modified  jaccard=0.2814  score=0.3526  fileCov=0.5823
+// class=modified  jaccard=0.211  score=0.2965  fileCov=0.4226
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var b$c = E(() => {

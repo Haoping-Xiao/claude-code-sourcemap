@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ty
 // matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
-// class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.1222  score=0.477  fileCov=0.1411
+// class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.1911  score=0.5772  fileCov=0.2222
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ty = E(() => {

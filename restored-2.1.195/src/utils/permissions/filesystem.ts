@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KI
 // matched 2.1.88 source: src/utils/permissions/filesystem.ts
-// class=modified  jaccard=0.1564  score=0.6493  fileCov=0.1709
+// class=modified  jaccard=0.1764  score=0.3882  fileCov=0.2443
 // note: deminified; 37 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KI = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T3o
 // matched 2.1.88 source: src/utils/errorLogSink.ts
-// class=modified  jaccard=0.3935  score=0.7402  fileCov=0.4565
+// class=modified  jaccard=0.5311  score=0.9424  fileCov=0.5489
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var T3o = E(() => {

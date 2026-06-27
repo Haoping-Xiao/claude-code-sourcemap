@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Amc
 // matched 2.1.88 source: src/components/IdleReturnDialog.tsx
-// class=modified  jaccard=0.2212  score=0.3465  fileCov=0.3796
+// class=modified  jaccard=0.1424  score=0.211  fileCov=0.3047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Amc = E(() => {

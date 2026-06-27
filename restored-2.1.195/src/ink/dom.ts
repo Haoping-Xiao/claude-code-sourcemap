@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module IBt
 // matched 2.1.88 source: src/ink/dom.ts
-// class=modified  jaccard=0.3596  score=0.8693  fileCov=0.3802
+// class=modified  jaccard=0.2988  score=0.5128  fileCov=0.4173
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var IBt = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oEc
 // matched 2.1.88 source: src/hooks/useCommandKeybindings.tsx
-// class=modified  jaccard=0.2536  score=1  fileCov=0.2536
+// class=modified  jaccard=0.3338  score=1  fileCov=0.3338
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var oEc = E(() => {

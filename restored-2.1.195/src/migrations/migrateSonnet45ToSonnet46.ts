@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZOc
 // matched 2.1.88 source: src/migrations/migrateSonnet45ToSonnet46.ts
-// class=modified  jaccard=0.6387  score=0.872  fileCov=0.7048
+// class=modified  jaccard=0.5981  score=0.9156  fileCov=0.633
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ZOc = E(() => {

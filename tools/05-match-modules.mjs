@@ -5,7 +5,7 @@
 
 import { readFileSync, writeFileSync } from "fs";
 import { join } from "path";
-import { fingerprintSet } from "./lib/strings.mjs";
+import { fingerprintTokens } from "./lib/strings.mjs";
 
 const MOD_DIR = process.argv[2] || "work/2.1.195/modules";
 const REF = process.argv[3] || "work/2.1.195/ref-2.1.88.index.json";
@@ -66,7 +66,7 @@ for (const name of names) {
   try { content = readFileSync(join(MOD_DIR, meta.file), "utf-8"); } catch { continue; }
   // 去掉首行 resplit header
   content = content.replace(/^\/\/ resplit:.*\n/, "");
-  const S = fingerprintSet(content, MIN_LEN);
+  const S = fingerprintTokens(content, { strMinLen: MIN_LEN, propMinLen: 5 });
 
   let moduleWeight = 0;
   for (const s of S) moduleWeight += idf[s] ?? IDF_UNKNOWN;

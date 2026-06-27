@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module D2o
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/tools/SendMessageTool/SendMessageTool.ts
+// class=new  jaccard=0.0161  score=0.2077  fileCov=0.0172
+// note: nearest: src/tools/SendMessageTool/SendMessageTool.ts (0.0161); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var D2o = E(() => {
   iu();

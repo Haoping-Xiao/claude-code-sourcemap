@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Sec
 // matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0019  score=0.6026  fileCov=0.0019
+// class=new  jaccard=0.0019  score=0.6431  fileCov=0.0019
 // note: nearest: src/main.tsx (0.0019); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Sec = E(() => {

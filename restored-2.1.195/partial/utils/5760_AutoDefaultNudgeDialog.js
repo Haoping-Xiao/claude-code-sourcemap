@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MPc
-// matched 2.1.88 source: src/components/BypassPermissionsModeDialog.tsx
-// class=partial  jaccard=0.1343  score=0.2747  fileCov=0.208
-// note: low-confidence suggestion: src/components/BypassPermissionsModeDialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/components/AutoModeOptInDialog.tsx
+// class=partial  jaccard=0.1108  score=0.2085  fileCov=0.1913
+// note: low-confidence suggestion: src/components/AutoModeOptInDialog.tsx; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var MPc = E(() => {
   ft();

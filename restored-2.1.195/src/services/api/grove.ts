@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module p4n
 // matched 2.1.88 source: src/services/api/grove.ts
-// class=modified  jaccard=0.233  score=0.4201  fileCov=0.3435
+// class=modified  jaccard=0.2664  score=0.6271  fileCov=0.3166
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var p4n = E(() => {

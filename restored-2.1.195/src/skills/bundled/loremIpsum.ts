@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module owc
 // matched 2.1.88 source: src/skills/bundled/loremIpsum.ts
-// class=modified  jaccard=0.525  score=0.8187  fileCov=0.594
+// class=modified  jaccard=0.4285  score=0.7797  fileCov=0.4875
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var owc = E(() => {

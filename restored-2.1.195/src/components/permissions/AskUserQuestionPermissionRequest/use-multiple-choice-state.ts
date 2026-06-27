@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/use-multiple-choice-state.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=1  score=1  fileCov=1
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.8151  score=1  fileCov=0.8151
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 import { useCallback, useReducer } from 'react'

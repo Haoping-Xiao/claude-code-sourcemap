@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MPn
 // matched 2.1.88 source: src/tools/FileWriteTool/prompt.ts
-// class=modified  jaccard=0.4113  score=0.4965  fileCov=0.7056
+// class=modified  jaccard=0.346  score=0.4965  fileCov=0.533
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MPn = E(() => {

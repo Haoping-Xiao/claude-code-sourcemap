@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eDc
 // matched 2.1.88 source: src/components/LspRecommendation/LspRecommendationMenu.tsx
-// class=modified  jaccard=0.2225  score=0.2807  fileCov=0.5176
+// class=modified  jaccard=0.236  score=0.2982  fileCov=0.531
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eDc = E(() => {

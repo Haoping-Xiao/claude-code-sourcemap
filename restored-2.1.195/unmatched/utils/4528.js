@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kZn
-// matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
-// class=new  jaccard=0.0381  score=0.4741  fileCov=0.0398
-// note: nearest: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx (0.0381); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0135  score=0.7167  fileCov=0.0136
+// note: nearest: src/cli/print.ts (0.0135); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var kZn = E(() => {
   qMo = `# Claude in Chrome browser automation

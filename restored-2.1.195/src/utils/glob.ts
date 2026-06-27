@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module q9t
 // matched 2.1.88 source: src/utils/glob.ts
-// class=modified  jaccard=0.5141  score=1  fileCov=0.5141
+// class=modified  jaccard=0.5074  score=0.8675  fileCov=0.55
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var q9t = E(() => {

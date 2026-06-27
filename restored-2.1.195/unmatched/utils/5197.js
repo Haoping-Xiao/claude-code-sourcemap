@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Wec
-// matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0136  score=0.1723  fileCov=0.0145
-// note: nearest: src/bridge/bridgeMain.ts (0.0136); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0135  score=0.2245  fileCov=0.0142
+// note: nearest: src/cli/print.ts (0.0135); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Wec = E(() => {
   fp();

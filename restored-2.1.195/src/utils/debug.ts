@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module je
 // matched 2.1.88 source: src/utils/debug.ts
-// class=modified  jaccard=0.3432  score=0.7659  fileCov=0.3835
+// class=modified  jaccard=0.181  score=0.4715  fileCov=0.2271
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var je = E(() => {

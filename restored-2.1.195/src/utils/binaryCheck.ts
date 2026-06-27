@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ULc
 // matched 2.1.88 source: src/utils/binaryCheck.ts
-// class=modified  jaccard=0.5654  score=0.7348  fileCov=0.7103
+// class=modified  jaccard=0.3624  score=0.7481  fileCov=0.4128
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ULc = E(() => {

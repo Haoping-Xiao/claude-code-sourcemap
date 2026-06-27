@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Iyi
 // matched 2.1.88 source: node_modules/jws/lib/sign-stream.js
-// class=partial  jaccard=0.1917  score=1  fileCov=0.1917
+// class=partial  jaccard=0.1237  score=1  fileCov=0.1237
 // note: low-confidence suggestion: node_modules/jws/lib/sign-stream.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Iyi = Q((ukh, Cyi) => {

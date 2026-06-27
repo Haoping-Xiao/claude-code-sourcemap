@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Uvo
 // matched 2.1.88 source: src/components/FileEditToolUseRejectedMessage.tsx
-// class=modified  jaccard=0.2828  score=0.6997  fileCov=0.3218
+// class=modified  jaccard=0.3113  score=0.4642  fileCov=0.486
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Uvo = E(() => {

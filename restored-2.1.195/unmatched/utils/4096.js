@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module w8t
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/undici/lib/web/fetch/response.js
+// class=new  jaccard=0.0162  score=0.1145  fileCov=0.0185
+// note: nearest: node_modules/undici/lib/web/fetch/response.js (0.0162); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var w8t = E(() => {
   ft();

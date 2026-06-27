@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CBo
 // matched 2.1.88 source: src/components/mcp/MCPListPanel.tsx
-// class=modified  jaccard=0.3688  score=0.4138  fileCov=0.7723
+// class=modified  jaccard=0.3269  score=0.3977  fileCov=0.6475
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var CBo = E(() => {

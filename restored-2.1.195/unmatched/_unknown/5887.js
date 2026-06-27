@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Xmr
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
+// class=new  jaccard=0.0184  score=0.3971  fileCov=0.019
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0184); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Xmr = E(() => {
   jXo();

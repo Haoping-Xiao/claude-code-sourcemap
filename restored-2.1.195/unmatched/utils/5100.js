@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Z7l
-// matched 2.1.88 source: src/commands/btw/btw.tsx
-// class=new  jaccard=0.0487  score=0.1017  fileCov=0.0856
-// note: nearest: src/commands/btw/btw.tsx (0.0487); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
+// class=new  jaccard=0.0438  score=0.1079  fileCov=0.0686
+// note: nearest: src/components/HelpV2/HelpV2.tsx (0.0438); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Z7l = E(() => {
   Q7l = {

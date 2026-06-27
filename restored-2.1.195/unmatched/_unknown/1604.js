@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ydi
-// matched 2.1.88 source: node_modules/@smithy/eventstream-serde-universal/dist-cjs/index.js
-// class=new  jaccard=0.0468  score=1  fileCov=0.0468
-// note: nearest: node_modules/@smithy/eventstream-serde-universal/dist-cjs/index.js (0.0468); 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/smithy-client/dist-cjs/index.js
+// class=new  jaccard=0.0113  score=1  fileCov=0.0113
+// note: nearest: node_modules/@smithy/smithy-client/dist-cjs/index.js (0.0113); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ydi = E(() => {
   O4r();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module R8r
 // matched 2.1.88 source: src/services/mcp/xaaIdpLogin.ts
-// class=modified  jaccard=0.5547  score=0.7298  fileCov=0.6981
+// class=modified  jaccard=0.4929  score=0.7618  fileCov=0.5827
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var R8r = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NDe
 // matched 2.1.88 source: src/utils/agentSwarmsEnabled.ts
-// class=modified  jaccard=0.6473  score=1  fileCov=0.6473
+// class=modified  jaccard=0.4488  score=0.6265  fileCov=0.6128
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var NDe = E(() => {

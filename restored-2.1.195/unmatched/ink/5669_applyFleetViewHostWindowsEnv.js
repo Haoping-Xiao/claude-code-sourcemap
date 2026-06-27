@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module jpr
-// matched 2.1.88 source: src/components/PromptInput/PromptInputHelpMenu.tsx
-// class=new  jaccard=0.0328  score=1  fileCov=0.0328
-// note: nearest: src/components/PromptInput/PromptInputHelpMenu.tsx (0.0328); dir inferred from dep-graph -> ink; 2 renamed
+// matched 2.1.88 source: src/tools/PowerShellTool/readOnlyValidation.ts
+// class=new  jaccard=0.0034  score=0.1607  fileCov=0.0035
+// note: nearest: src/tools/PowerShellTool/readOnlyValidation.ts (0.0034); dir inferred from dep-graph -> ink; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var jpr = E(() => {
   HI();

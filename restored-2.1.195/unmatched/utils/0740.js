@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Smn
-// matched 2.1.88 source: src/utils/doctorDiagnostic.ts
-// class=new  jaccard=0.0157  score=0.0504  fileCov=0.0223
-// note: nearest: src/utils/doctorDiagnostic.ts (0.0157); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0038  score=0.0795  fileCov=0.0039
+// note: nearest: src/cli/print.ts (0.0038); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Smn = E(() => {
   ih();

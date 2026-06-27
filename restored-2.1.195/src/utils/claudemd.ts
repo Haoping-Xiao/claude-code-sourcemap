@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dC
 // matched 2.1.88 source: src/utils/claudemd.ts
-// class=modified  jaccard=0.3778  score=0.9771  fileCov=0.3811
+// class=modified  jaccard=0.2298  score=0.4415  fileCov=0.324
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dC = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yZn
 // matched 2.1.88 source: src/utils/toolSearch.ts
-// class=modified  jaccard=0.4559  score=0.8147  fileCov=0.5087
+// class=modified  jaccard=0.4108  score=0.6837  fileCov=0.5071
 // note: deminified; 9 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var yZn = E(() => {

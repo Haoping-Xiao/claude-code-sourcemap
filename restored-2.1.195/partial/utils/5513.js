@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tSc
 // matched 2.1.88 source: src/hooks/useRemoteSession.ts
-// class=partial  jaccard=0.1288  score=0.2788  fileCov=0.1932
+// class=partial  jaccard=0.2006  score=0.3763  fileCov=0.3004
 // note: low-confidence suggestion: src/hooks/useRemoteSession.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tSc = E(() => {

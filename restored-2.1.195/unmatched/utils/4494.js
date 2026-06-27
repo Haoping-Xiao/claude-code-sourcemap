@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yfe
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/jwa/index.js
+// class=new  jaccard=0.0271  score=0.1541  fileCov=0.0318
+// note: nearest: node_modules/jwa/index.js (0.0271); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yfe = E(() => {
   tne();

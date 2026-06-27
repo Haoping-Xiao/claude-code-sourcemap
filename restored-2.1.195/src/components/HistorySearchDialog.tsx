@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module OTt
 // matched 2.1.88 source: src/components/HistorySearchDialog.tsx
-// class=modified  jaccard=0.258  score=0.4164  fileCov=0.404
+// class=modified  jaccard=0.2556  score=0.37  fileCov=0.4525
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var OTt = E(() => {

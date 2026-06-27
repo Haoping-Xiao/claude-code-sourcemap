@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module YI
 // matched 2.1.88 source: src/utils/teammateMailbox.ts
-// class=modified (alt of src/utils/teammateMailbox.ts)  jaccard=0.1142  score=0.6407  fileCov=0.122
+// class=modified (alt of src/utils/teammateMailbox.ts)  jaccard=0.1043  score=0.3546  fileCov=0.1287
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var YI = E(() => {

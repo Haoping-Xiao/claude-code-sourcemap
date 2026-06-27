@@ -1,1244 +1,541 @@
 // ─────────────────────────────────────────────────────────────────────────
-// restored from claude-code 2.1.195 (deminified) — module JN
+// restored from claude-code 2.1.195 (deminified) — module qar
 // matched 2.1.88 source: src/main.tsx
-// class=modified (alt of src/main.tsx)  jaccard=0.008  score=0.0474  fileCov=0.0095
-// note: deminified; 18 identifiers renamed from _t exports
+// class=modified (alt of src/main.tsx)  jaccard=0.0101  score=0.0853  fileCov=0.0114
+// note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-var JN = E(() => {
-  iu();
-  FK();
-});
-var ooc = {};
-_t(ooc, {
-  withStdinPositional: () => withStdinPositional,
-  stripSessionIdFlag: () => stripSessionIdFlag,
-  stripResumeFlags: () => stripResumeFlags,
-  stripBgFlags: () => stripBgFlags,
-  stopHandler: () => stopHandler,
-  spawnBgSession: () => spawnBgSession,
-  rmHandler: () => rmHandler,
-  respawnHandler: () => respawnHandler,
-  readBgStdin: () => readBgStdin,
-  preSeedReplBgJob: () => preSeedReplBgJob,
-  parseResumeTarget: () => parseResumeTarget,
-  logsHandler: () => logsHandler,
-  handleBgFlag: () => handleBgFlag,
-  formatBgHints: () => formatBgHints,
-  flagsWithoutPositional: () => flagsWithoutPositional,
-  detailForStderr: () => detailForStderr,
-  bgVerbExtraArgsNote: () => bgVerbExtraArgsNote,
-  attachHandler: () => attachHandler,
-});
-function KJf(e) {
-  return (
-    Opn(),
-    process.env.SHELL
-      ? {
-          cmd: process.env.SHELL,
-          args: ["-c", e],
-        }
-      : Vt() === "windows"
-        ? {
-            cmd: process.env.COMSPEC || "cmd.exe",
-            args: ["/d", "/s", "/c", e],
-          }
-        : {
-            cmd: "/bin/sh",
-            args: ["-c", e],
-          }
-  );
-}
-async function preSeedReplBgJob(e, t) {
-  let n = e.slice(0, 8),
-    r = _c(n);
-  await Eme.mkdir(EWo.join(r, "tmp"), {
-    recursive: true,
-  });
-  let o = t.intent ?? "";
-  return (
-    await Kd(
-      r,
-      eue({
-        template: {
-          name: "bg",
-          description: "",
-        },
-        intent: o,
-        name: t.name,
-        nameSource: t.nameSource,
-        detail: t.detail ?? ult,
-        tempo: "blocked",
-        needs: PW,
-        sessionId: e,
-        cwd: t.cwd,
-        worktreePath: t.worktree?.path,
-        worktreeBranch: t.worktree?.branch,
-        worktreeHookBased: t.worktree?.hookBased,
-        originCwd: t.worktree?.originCwd,
-        bgIsolation: "none",
-        providerEnv: roc(),
-        sessionPermissionRules: t.sessionPermissionRules,
-        memoryToggledOff: t.memoryToggledOff,
-      }),
-    ),
-    {
-      short: n,
-      jobDir: r,
-    }
-  );
-}
-async function spawnBgSession(e, t, n = "shell", r, o, s, i) {
-  let a = rQf(e);
-  if (a)
-    return {
-      ok: false,
-      error: a,
-      reason: "gate_blocked",
-    };
-  let l = t ?? Xrc.randomUUID(),
-    c = i ?? l.slice(0, 8),
-    u = _c(c);
-  try {
-    return (
-      await Eme.mkdir(EWo.join(u, "tmp"), {
-        recursive: true,
-      }),
-      await YJf(e, n, r, o, s, {
-        sessionId: l,
-        short: c,
-        jobDir: u,
-        freshDir: t === void 0,
-      })
-    );
-  } catch (d) {
-    if (n !== "fleet" && n !== "spare")
-      await Eme.rm(u, {
-        recursive: true,
-        force: true,
-      }).catch(() => {});
-    return {
-      ok: false,
-      error: `Couldn't start the session \u2014 ${be(d)}`,
-      reason: `spawn_failed_${xd(d) ?? BK(d) ?? "unknown"}`,
-    };
-  }
-}
-async function YJf(e, t, n, r, o, s) {
-  let { sessionId: i, short: a, jobDir: l, freshDir: c } = s,
-    u = MHt(e),
-    d = u >= 0 ? e.slice(0, u) : e,
-    p = Par(d, "--agent"),
-    f = void 0,
-    m = Par(d, "--name", "-n"),
-    g = m ?? r?.name,
-    h = parseResumeTarget(d),
-    y = u >= 0 ? e.slice(u + 1).join(" ") : oQf(e, h),
-    b = kz(d),
-    _ = d.some((Y, z) => {
-      if (b.has(z)) return false;
-      if (Y === "--continue" || Y === "--resume" || Y.startsWith("--resume=")) return true;
-      let { peeled: K, rest: Z } = z1e(Y);
-      return K.includes("-c") || Z === "-c" || Z === "-r" || /^-r./.test(Z);
+var qar = E(() => {
+  zb();
+  ft();
+  np();
+  dn();
+  kt();
+  S_();
+  tfe();
+  D6e();
+  $S();
+  CWo();
+  Pw();
+  Rm();
+  je();
+  wr();
+  At();
+  iKe();
+  ys();
+  YS();
+  bm();
+  Yf();
+  y_();
+  _a();
+  Jt();
+  OI();
+  ((soc = require("crypto")),
+    (DC = require("fs/promises")),
+    (Fse = require("path")),
+    (ioc = require("timers/promises")),
+    (OQt = /^[\w-]+$/));
+  ((iQf = ve(() =>
+    dt.object({
+      taskId: dt.string().regex(OQt),
+      pid: dt.number().int().positive(),
+      procStart: dt.string().optional(),
+      startTimeTicks: dt.number().int().optional(),
+      command: dt.string(),
+      description: dt.string(),
+      outputPath: Nar(() => [bTe()]),
+      lastReportedTotalLines: dt.number().int(),
+      toolUseId: dt.string().optional(),
+      kind: dt.enum(["bash", "monitor"]).optional(),
+      agentId: dt.string().regex(OQt).optional(),
     }),
-    S = d.some((Y, z) => !b.has(z) && Y === "--fork-session"),
-    A = stripResumeFlags(d),
-    v = t === "repl" ? "none" : r?.bgIsolation,
-    C = r?.providerEnv ?? roc(),
-    x = r?.sessionPermissionRules,
-    I = r?.memoryToggledOff,
-    k = j0e(u >= 0 ? A : flagsWithoutPositional(A));
-  if (t === "shell") {
-    let Y = n ?? $t(),
-      z = T8(A),
-      K = [
-        ...A.filter((Z, J) => z[J] !== Z),
-        ...(cee(Y) ? [Y] : []),
-        ...(r?.exec && cee(r.exec) ? [r.exec] : []),
-        ...(h !== void 0 && cee(h) ? [h] : []),
-      ];
-    if (K.length > 0)
-      process.stderr
-        .write(`warning: background sessions do not support Windows network (UNC) paths; the following will be neutralized: ${K.join(", ")}
-`);
-  }
-  let D = h !== void 0 && h === i,
-    P = _ && !S ? ["--fork-session"] : [],
-    O = D ? [] : ["--session-id", i, ...P];
-  if (
-    t === "shell" &&
-    d.some((Y, z) => !b.has(z) && (Y === "--session-id" || Y.startsWith("--session-id=")))
-  )
-    process.stderr
-      .write(`warning: --bg manages the session id; ignoring --session-id (use --resume <id> to continue an existing session)
-`);
-  let L = p ? (await CP(n ?? $t())).activeAgents.find((Y) => Y.agentType === p) : void 0;
-  if (p && !L && t === "shell")
-    process.stderr.write(`warning: no agent named '${p}' \u2014 spawning with default template
-`);
-  let M = void 0,
-    N = r?.intent ?? y ?? "",
-    B =
-      !L?.initialPrompt &&
-      !r?.exec &&
-      !y &&
-      !d.some((Y, z) => !b.has(z) && Y === "--reply-on-resume"),
-    $ = false,
-    q;
-  if (t !== "fleet" && t !== "spare") {
-    let Y = c ? null : await zi(l);
-    if (Y === null)
-      q = Kd(
-        l,
-        eue({
-          template: {
-            name: r?.exec ? "exec" : (p ?? void 0 ?? "bg"),
-            description: L?.whenToUse ?? M?.description ?? "",
-            initialPrompt: L?.initialPrompt,
-            color: L?.color,
-          },
-          routine: void 0,
-          respawnFlags: k,
-          intent: N,
-          name: g,
-          nameSource: m ? "user" : r?.nameSource,
-          detail:
-            r?.detail ?? (B ? (M ? `(idle \u2014 waiting for ${Wrc(M.triggers)})` : ult) : void 0),
-          tempo: B ? (M ? "idle" : "blocked") : void 0,
-          needs: B && !M ? PW : void 0,
-          sessionId: i,
-          cwd: n ?? $t(),
-          worktreePath: r?.worktree?.path,
-          worktreeBranch: r?.worktree?.branch,
-          worktreeHookBased: r?.worktree?.hookBased,
-          originCwd: r?.worktree?.originCwd,
-          bgIsolation: v,
-          providerEnv: C,
-          sessionPermissionRules: x,
-          memoryToggledOff: I,
-        }),
-      )
-        .then(() => {
-          $ = true;
-        })
-        .catch((z) =>
-          T(`bg seed state write failed: ${be(z)}`, {
-            level: "warn",
-          }),
-        );
-    else if (k.length > 0 && Y.respawnFlags.length === 0)
-      q = Kd(l, {
-        ...Y,
-        respawnFlags: k,
-      }).catch((z) =>
-        T(`bg respawnFlags patch failed: ${be(z)}`, {
-          level: "warn",
-        }),
-      );
-  }
-  let W = {
-      proto: hp,
-      short: a,
-      sessionId: i,
-      createdAt: Date.now(),
-      source: t === "repl" ? "slash" : t,
-      cwd: n ?? $t(),
-      launch: r?.exec
+  )),
+    (aQf = ve(() =>
+      dt.object({
+        id: dt.string(),
+        cron: dt.string(),
+        prompt: dt.string(),
+        createdAt: dt.number(),
+        recurring: dt.boolean().optional(),
+        agentId: dt.string().optional(),
+        kind: dt.literal("loop").optional(),
+      }),
+    )),
+    (lQf = ve(() =>
+      dt.object({
+        taskId: dt.string().regex(OQt),
+        workflowRunId: dt.string().regex(/^wf_[a-z0-9-]{6,}$/),
+        scriptPath: dt.string(),
+        scriptSha256: dt
+          .string()
+          .regex(/^[0-9a-f]{64}$/)
+          .optional(),
+        argsJson: dt.string().optional(),
+        description: dt.string(),
+        startTime: dt.number().optional(),
+        transcriptDir: Nar(() => [oF()]),
+      }),
+    )),
+    (cQf = ve(() =>
+      dt.object({
+        agentId: dt.string().regex(OQt),
+        agentType: dt.string().optional(),
+        description: dt.string().optional(),
+        toolUseId: dt.string().optional(),
+        spawnDepth: dt.number().int().optional(),
+        startTime: dt.number().optional(),
+        transcriptPath: Nar(() => [oF()]).optional(),
+        parentAgentId: dt.string().regex(OQt).optional(),
+      }),
+    )),
+    (uQf = ve(() =>
+      dt.object({
+        writtenAtMs: dt.number(),
+        shells: dt.array(iQf()),
+        cron: dt.array(aQf()),
+        agents: dt.array(cQf()).optional(),
+        workflows: dt.array(lQf()).optional(),
+        prefill: dt
+          .object({
+            text: dt.string(),
+            boundaryUuid: dt.string().optional(),
+          })
+          .optional(),
+      }),
+    )));
+});
+var yoc = {};
+_t(yoc, {
+  spawnBackgroundFork: () => spawnBackgroundFork,
+  deriveBackgroundSeed: () => deriveBackgroundSeed,
+  call: () => call,
+});
+async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
+  let u = r_(),
+    d = typeof n === "string" ? n : void 0,
+    p = Array.from(o.values())
+      .filter((C) => C.source === "session")
+      .map((C) => C.path),
+    f = s.session ?? [],
+    m = i.session ?? [],
+    g =
+      f.length > 0 || m.length > 0
         ? {
-            mode: "exec",
-            ...KJf(r.exec),
-          }
-        : _ && h !== void 0
-          ? {
-              mode: "resume",
-              sessionId: h,
-              transcriptPath: r?.resumeTranscriptPath,
-              fork: !D && (S || P.length > 0),
-              flagArgs: [...A, ...(u >= 0 ? e.slice(u) : [])],
-            }
-          : {
-              mode: "prompt",
-              args: [...O, ...stripSessionIdFlag(e)],
-            },
-      respawnFlags: A,
-      env: {
-        ...C,
-        ...(v && {
-          CLAUDE_BG_ISOLATION: v,
-        }),
-        ...(x && {
-          CLAUDE_BG_SESSION_PERMISSION_RULES: JSON.stringify(x),
-        }),
-        ...(I && {
-          CLAUDE_BG_MEMORY_TOGGLED_OFF: "1",
-        }),
-      },
-      reattachEnv: o,
-      worktree: r?.worktree
-        ? {
-            path: r.worktree.path,
-            ownershipToken: i,
+            allow: [...f],
+            deny: [...m],
           }
         : void 0,
-      isolation: L?.isolation === "worktree" && L.source !== "built-in" ? "worktree" : "none",
-      agent: p,
-      routine: void 0,
-      seed: {
-        intent: N,
-        name: g,
+    h = s.cliArg ?? [],
+    y = i.cliArg ?? [],
+    b = Gm(),
+    _ = Boolean(b && !b.enteredExisting),
+    S = xWo();
+  await vc(IC(), 2000, "flush timeout").catch(() => {});
+  let A = [
+      ...(S !== null ? ["--resume", S, "--fork-session"] : []),
+      ...(c?.replyOnResume ? ["--reply-on-resume"] : []),
+      ...zBe(),
+      ...p.flatMap((C) => ["--add-dir", C]),
+      ...h.flatMap((C) => ["--allowed-tools", C]),
+      ...y.flatMap((C) => ["--disallowed-tools", C]),
+      ...(u ? ["--model", u] : []),
+      ...(d && vke() ? ["--effort", d] : []),
+      "--permission-mode",
+      r,
+      ...(t ? ["--", t] : []),
+    ],
+    v = await SZ(
+      A,
+      c?.providedSessionId,
+      "repl",
+      b?.worktreePath ?? yr(),
+      {
+        ...e,
+        worktree: _
+          ? {
+              path: b.worktreePath,
+              branch: b.worktreeBranch,
+              hookBased: b.hookBased ?? false,
+              originCwd: b.originalCwd,
+            }
+          : void 0,
+        sessionPermissionRules: g,
+        memoryToggledOff: bD() || void 0,
       },
-      cols: process.stdout.columns || void 0,
-      rows: process.stdout.rows || void 0,
-    },
-    [, V] = await Promise.all([q ?? Promise.resolve(), hWo(W)]);
-  if (V.ok)
-    return {
-      ok: true,
-      short: a,
-      sessionId: i,
-      idle: B,
-      name: g,
-    };
-  if (V.reason === "ack-timeout" || V.reason === "enoconn" || V.reason === "estarting") {
-    let Y = await hE({
-      proto: hp,
-      op: "list",
-    });
-    if (
-      Y.ok &&
-      Y.op === "list" &&
-      Y.jobs.some((z) => z.short === a && z.nonce === V.nonce && !z.outcome)
-    )
-      return (
-        T(`bg: daemon dispatch ${V.reason} but worker is live`, {
-          level: "warn",
-        }),
-        await my("tengu_bg_dispatch_rescued", {
-          reason_ack_timeout: V.reason === "ack-timeout",
-          reason_enoconn: V.reason === "enoconn",
-          reason_estarting: V.reason === "estarting",
-        }),
-        {
-          ok: true,
-          short: a,
-          sessionId: i,
-          idle: B,
-          name: g,
-          rescued: true,
-        }
-      );
-    if (
-      V.reason === "ack-timeout" &&
-      Y.ok &&
-      Y.op === "list" &&
-      !Y.jobs.some((z) => z.short === a)
-    ) {
-      let z = await hE(
-        {
-          proto: hp,
-          op: "dispatch",
-          d: {
-            ...W,
-            nonce: V.nonce,
-          },
-          timeoutMs: 5000,
-          auth: await jfe(),
-        },
-        {
-          timeoutMs: 6000,
-        },
-      );
-      if (z.ok && z.op === "dispatch")
-        return (
-          T(`bg: ack-timeout recovered via redispatch (${a})`, {
-            level: "warn",
-          }),
-          await my("tengu_bg_dispatch_rescued", {
-            reason_ack_timeout: true,
-            reason_enoconn: false,
-            reason_estarting: false,
-            via_redispatch: true,
-          }),
-          {
-            ok: true,
-            short: a,
-            sessionId: i,
-            idle: B,
-            name: g,
-            rescued: true,
-          }
-        );
-    }
-  }
-  if ($)
-    await Eme.rm(l, {
-      recursive: true,
-      force: true,
-    }).catch(() => {});
-  if (V.reason === "short-alive")
-    return {
+      c?.extraEnv,
+    ).catch((C) => ({
       ok: false,
-      alive: true,
-      short: a,
-      error: `Session ${a} is already running \u2014 \`claude attach ${a}\` to join it`,
-      reason: "short_alive",
-    };
-  if (V.reason === "stale-short")
-    return {
-      ok: false,
-      error: "Previous session is still shutting down \u2014 try again in a moment",
-      reason: "stale_short",
-    };
-  return {
-    ok: false,
-    error: `Couldn't reach the ${mb()} (${JJf(V.reason)})${cce("status")}`,
-    reason: V.reason === "daemon-unreachable" ? "daemon_unavailable" : V.reason.replace(/-/g, "_"),
-  };
-}
-async function handleBgFlag(e) {
-  let t = MHt(e),
-    n = t >= 0 ? e.slice(0, t) : e,
-    r = kz(n),
-    o = n.findIndex((l, c) => !r.has(c) && (l === "--exec" || l.startsWith("--exec=")));
-  if (o !== -1) {
-    let l = e[o].includes("=") ? e[o].slice(e[o].indexOf("=") + 1) : void 0,
-      c = l ?? e.slice(o + 1).join(" ");
-    if (!c.trim()) {
-      (process.stderr.write(`--exec requires a command.
-`),
-        (process.exitCode = 1));
-      return;
-    }
-    let u = stripBgFlags([...e.slice(0, o), ...(l !== void 0 ? e.slice(o + 1) : [])]),
-      d = Par(u, "--name", "-n"),
-      p = kz(u),
-      f = MHt(u),
-      m = f >= 0 ? u.slice(0, f) : u,
-      g = m.filter((b, _) => !p.has(_));
-    if (eWo(g)) {
-      (process.stderr.write(`${ZGo(u)}
-`),
-        (process.exitCode = 1));
-      return;
-    }
-    let h = m.filter(
-      (b, _) => !p.has(_) && Use(b) && !/^(-n|--name)(=|$)/.test(b) && !/^-n./.test(b),
-    );
-    if (h.length > 0)
-      process.stderr.write(`warning: --exec ignores ${h.join(" ")} (only --name composes)
-`);
-    let y = await spawnBgSession([], void 0, "shell", void 0, {
-      intent: c,
-      exec: c,
-      ...(d && {
-        name: d,
-        nameSource: "user",
-      }),
-    });
-    if (!y.ok) {
-      (await Qu("cli_bg_dispatch_exec", y.reason ?? "spawn_failed"),
-        process.stderr.write(`${y.error}
-`),
-        (process.exitCode = 1));
-      return;
-    }
-    (await uv("cli_bg_dispatch_exec"),
-      process.stdout.write(
-        formatBgHints(y.short, void 0, d || c) +
-          `
-`,
-      ));
-    return;
-  }
-  let s = stripBgFlags(e),
-    i = await readBgStdin(),
-    a = await spawnBgSession(i ? withStdinPositional(s, i) : s);
-  if (!a.ok) {
-    (await (a.reason === "gate_blocked" ? iY : Qu)("cli_bg_dispatch", a.reason ?? "spawn_failed"),
-      process.stderr.write(`${a.error}
-`),
-      (process.exitCode = 1));
-    return;
-  }
-  if (a.rescued) await iY("cli_bg_dispatch", "rescued");
-  else await uv("cli_bg_dispatch");
-  process.stdout.write(
-    formatBgHints(a.short, a.idle ? ult : void 0, a.name) +
-      `
-`,
-  );
-}
-async function readBgStdin(e = process.stdin) {
-  if (e.isTTY) return "";
-  e.setEncoding("utf8");
-  let t = "",
-    n = false,
-    r = (s) => {
-      if (n) return;
-      if (t.length + s.length > _Wo) {
-        ((t += s.slice(0, _Wo - t.length)), (n = true));
-        return;
-      }
-      t += s;
-    };
-  e.on("data", r);
-  let o = await WIt(e, 3000);
-  if ((e.off("data", r), o)) return "";
-  if (n)
-    process.stderr.write(`warning: piped stdin exceeds ${_Wo} bytes, truncated
-`);
-  return t.replace(/\r?\n$/, "");
-}
-function withStdinPositional(e, t) {
-  let n = MHt(e);
-  if (n >= 0) {
-    let s = e.slice(n + 1).join(" ");
-    return [
-      ...e.slice(0, n),
-      "--",
-      s
-        ? `${s}
-${t}`
-        : t,
-    ];
-  }
-  let r = kz(e),
-    o = -1;
-  for (let s = 0; s < e.length; s++) {
-    if (r.has(s)) continue;
-    let i = e[s];
-    if (Use(i)) {
-      if (i.includes("=")) continue;
-      let a = e[s + 1];
-      if (a === void 0) continue;
-      let { rest: l } = z1e(i);
-      if (i === "--resume" || l === "-r") {
-        if (!Use(a)) s++;
-        continue;
-      }
-      if (l.length > 2 && (/^-r./.test(l) || DW.has(l.slice(0, 2)))) continue;
-      if ((WUt.has(i) && i !== "--remote-control" && i !== "--rc") || LPn.has(l)) continue;
-      if (!r.has(s + 1) && !Use(a)) s++;
-      continue;
-    }
-    o = s;
-  }
-  if (o >= 0) {
-    let s = [...e];
-    return (
-      (s[o] = `${e[o]}
-${t}`),
-      s
-    );
-  }
-  return [...e, "--", t];
-}
-function JJf(e) {
-  switch (e) {
-    case "daemon-unreachable":
-      return "not running";
-    case "ack-timeout":
-      return "timed out";
-    case "dispatch-write":
-      return "couldn't write dispatch file";
-    case "enoconn":
-      return "socket missing";
-    case "estarting":
-      return "service still starting";
-    case "stale-short":
-      return "id collision with a prior job";
-  }
-}
-function formatBgHints(e, t, n) {
-  let r = (o, s) => wt.dim("  " + o.padEnd(26) + s);
-  return [
-    `backgrounded \xB7 ${wt.cyan(e)}${n ? ` \xB7 ${n}` : ""}${t ? wt.dim(` ${t}`) : ""}`,
-    r("claude agents", "list sessions"),
-    r(`claude attach ${e}`, "open in this terminal"),
-    r(`claude logs ${e}`, "show recent output"),
-    r(`claude stop ${e}`, "stop this session"),
-  ].join(`
-`);
-}
-function bgVerbExtraArgsNote(e) {
-  let t = new Set(["logs", "attach", "stop", "kill", "respawn", "rm"]);
-  if (e.length <= 2 || !e[0] || !t.has(e[0])) return null;
-  let n = [];
-  for (let r = 2; r < e.length; r++) {
-    let o = e[r];
-    if (
-      o === "--debug" ||
-      o === "-d" ||
-      o === "--debug-to-stderr" ||
-      o === "-d2e" ||
-      o.startsWith("--debug=") ||
-      o.startsWith("--debug-file=")
-    )
-      continue;
-    if (o === "--debug-file" && r + 1 < e.length) {
-      r++;
-      continue;
-    }
-    n.push(o);
-  }
-  if (n.length === 0) return null;
-  return `warning: extra arguments ignored: ${n.join(" ")}
-`;
-}
-function HWo() {
-  let e = bgVerbExtraArgsNote(process.argv.slice(2));
-  if (e) process.stderr.write(e);
-}
-async function TWo(e, t, n) {
-  if ((HWo(), e === "--help" || e === "-h"))
-    (process.stdout.write(`Usage: ${t}
-
-  ${n}
-`),
-      process.exit(0));
-  if (e?.startsWith("-"))
-    (process.stderr.write(`unknown option '${e}'
-Usage: ${t}
-`),
-      process.exit(1));
-  if (!e)
-    (process.stderr.write(`Usage: ${t}
-`),
-      process.exit(1));
-  let o = (await Eme.readdir(pL()).catch(() => []))
-    .filter((s) => IOe.test(s))
-    .filter((s) => s.startsWith(e));
-  if (o.length === 1) return o[0];
-  (process.stderr.write(
-    o.length === 0
-      ? `No job matching '${e}'. Run 'claude agents' to list running sessions.
-`
-      : `Ambiguous prefix '${e}', matches: ${o.join(", ")}
-`,
-  ),
-    process.exit(1));
-}
-async function logsHandler(e) {
-  let t = await TWo(
-      e,
-      "claude logs <id>",
-      "Print the background session's recent terminal output.",
-    ),
-    n = await new Promise((r) => {
-      let o = wNl(
-        t,
-        500,
-        (s) => {
-          if (s.type === "snapshot") (o(), r(s.streamTail));
-        },
-        (s) => {
-          (o(), r(s));
-        },
-      );
-    });
-  if (typeof n === "string")
-    return (
-      await Qu("cli_bg_logs", "read_failed"),
-      process.stderr.write(`Couldn't read logs for ${t} \u2014 ${Fk(n)}
-`),
-      XN(1)
-    );
-  return (await V1e(n.join("")), await uv("cli_bg_logs"), XN(0));
-}
-async function attachHandler(e) {
-  let t = await TWo(
-      e,
-      "claude attach <id>",
-      "Open the background session in this terminal. Detach with Ctrl+Z; the session keeps running.",
-    ),
-    n = await TQt();
-  if (!n.ok)
-    return (
-      await Qu("cli_bg_attach", "daemon_unavailable"),
-      process.stderr
-        .write(`Couldn't attach \u2014 ${mb()} is unavailable (${n.reason})${cce("status")}
-`),
-      XN(1)
-    );
-  let r = await yZ(t);
-  for (let o = 0; r.msg && eEt.test(r.msg) && o < 20; o++) {
-    if (o === 0 && r.msg.includes("ERESPAWNING"))
-      process.stderr.write(
-        r.outcome === "detached"
-          ? `Session not responding \u2014 restarting it\u2026
-`
-          : `Migrating job to attachable PTY\u2026
-`,
-      );
-    (await Nn(500), (r = await yZ(t)));
-  }
-  if (r.outcome === "error" && r.msg?.includes("ENOJOB")) {
-    let o = await zi(_c(t)).catch(() => null);
-    if (o?.state === "failed")
-      return (
-        await Qu("cli_bg_attach", "wake_failed_state"),
-        process.stderr
-          .write(`Session ${t} can't start \u2014 ${detailForStderr(o.detail) || "it crashed repeatedly"}
-`),
-        XN(1)
-      );
-    process.stderr.write(`Waking session ${t}\u2026
-`);
-    let s = await PHt(t).catch((i) => ({
-      ok: false,
-      alive: false,
-      short: void 0,
-      error: be(i),
+      error: `Couldn't background \u2014 ${be(C)}`,
+      reason: void 0,
     }));
-    if (s.ok || s.alive) {
-      if (s.short && s.short !== t)
-        (process.stderr.write(`Session moved to ${s.short}
-`),
-          (t = s.short));
-      r = await yZ(t);
-    } else
-      return (
-        await Qu("cli_bg_attach", "wake_failed"),
-        process.stderr.write(`Couldn't wake ${t} \u2014 ${s.error}
-`),
-        XN(1)
-      );
-  }
-  while (r.outcome === "disconnected") {
-    let o = await eV({
-      forceTransient: true,
-    });
-    if (!o.ok)
-      return (
-        await Qu("cli_bg_attach", "daemon_unavailable"),
-        process.stderr
-          .write(`Couldn't reconnect to ${t} \u2014 ${mb()} is unavailable (${o.reason})${cce("status")}
-`),
-        XN(1)
-      );
-    let s = await hE({
-      proto: hp,
-      op: "list",
-    });
-    if (s.ok && s.op === "list" && !s.jobs.some((a) => a.short === t && !a.outcome)) break;
-    if (
-      (process.stderr.write(`Reconnecting to ${t}\u2026
-`),
-      Vt() === "windows" && process.stdin.isTTY)
-    )
-      (L0(process.stdin, true), process.stdin.ref());
-    let i = dat();
-    if (i && far(i)) {
-      if (Vt() === "windows" && process.stdin.isTTY) L0(process.stdin, false);
-      r = {
-        outcome: "detached",
-      };
-      break;
+  if (!v.ok) {
+    G("tengu_background_spawn_failed", {});
+    let C = false;
+    if (a === "left_arrow" && c?.providedSessionId !== void 0 && S !== null && !v.alive) {
+      let x = _c(c.providedSessionId.slice(0, 8)),
+        I = await zi(x);
+      if (I) {
+        let k = Var.join(Var.dirname(S), `${c.providedSessionId}.jsonl`);
+        C = await OHt.copyFile(S, k)
+          .then(() =>
+            Kd(x, {
+              ...I,
+              state: "failed",
+              tempo: "idle",
+              needs: void 0,
+              block: void 0,
+              inFlight: void 0,
+              detail: "couldn't start in the background \u2014 press Enter to retry",
+              linkScanPath: k,
+              respawnFlags: j0e(Mar(A)),
+              updatedAt: new Date().toISOString(),
+            }).catch(async (D) => {
+              throw (
+                await OHt.rm(k, {
+                  force: true,
+                }).catch(() => {}),
+                D
+              );
+            }),
+          )
+          .then(
+            () => true,
+            (D) => (ke(D), false),
+          );
+      }
+      if (C && b) (Eft(null), _Ee());
     }
-    r = await yZ(t);
-    for (let a = 0; r.msg && eEt.test(r.msg) && a < 10; a++) (await Nn(200), (r = await yZ(t)));
-  }
-  if (r.outcome === "detached" && r.msg && (p7t.test(r.msg) || eEt.test(r.msg)))
-    return (
-      await Qu("cli_bg_attach", p7t.test(r.msg) ? "stalled" : "transient_exhausted"),
-      process.stderr.write(`${r.msg.replace(/^E(STALLED|RESPAWNING|STARTING):\s*/, "")}
-`),
-      XN(1)
-    );
-  if (r.outcome === "detached" && r.msg)
-    process.stderr.write(`${r.msg.replace(f7t, "")}
-`);
-  if (r.outcome === "disconnected") {
-    let o = await zi(_c(t)).catch(() => null),
-      s = o?.state === "failed" && o.detail ? ` (${detailForStderr(o.detail)})` : "";
-    process.stderr.write(`Session ${t} has exited${s}.
-`);
-  }
-  if (r.outcome === "error") {
-    let o = r.msg?.includes("ERESPAWNING")
-      ? "Job is respawning after an upgrade \u2014 try attach again in a moment."
-      : r.msg && /ENOENT|ECONNREFUSED|ESTARTING/.test(r.msg)
-        ? `${w_e()} is restarting \u2014 try again in a moment.`
-        : (r.msg ?? "unknown");
-    (process.stderr.write(`Couldn't attach to ${t} \u2014 ${o}
-`),
-      await Qu("cli_bg_attach", "transient_exhausted"));
-  } else await uv("cli_bg_attach");
-  return XN(r.outcome === "error" ? 1 : 0);
-}
-async function respawnHandler(e) {
-  if ((HWo(), e === "--help" || e === "-h")) {
-    process.stdout.write(`Usage: claude respawn <id>|--all
-
-  Restart a background session (or all of them) so it picks up the current Claude binary.
-`);
-    return;
-  }
-  if (e?.startsWith("-") && e !== "--all") {
-    (process.stderr.write(`unknown option '${e}'
-Usage: claude respawn <id>|--all
-`),
-      (process.exitCode = 1));
-    return;
-  }
-  if (!e) {
-    (process.stderr.write(`usage: claude respawn <id>|--all
-`),
-      (process.exitCode = 1));
-    return;
-  }
-  let t = await TQt();
-  if (!t.ok) {
-    (process.stderr
-      .write(`Couldn't respawn \u2014 ${mb()} is unavailable (${t.reason})${cce("status")}
-`),
-      await Qu("cli_bg_respawn", "daemon_unavailable"),
-      (process.exitCode = 1));
-    return;
-  }
-  if (e === "--all") {
-    let a = (await aX()).filter((u) => !B0(u.state.state));
-    if (a.length === 0) {
-      process.stdout.write(`no live jobs to respawn
-`);
-      return;
-    }
-    let l = 0,
-      c = 0;
-    for (let u of a) {
-      let d = await PHt(u.id, {
-        force: true,
-        knownState: u.state,
-      });
-      if (d.ok)
-        (l++,
-          process.stdout.write(`respawned ${u.id}${d.short !== u.id ? ` \u2192 ${d.short}` : ""}
-`));
-      else if (d.alive)
-        (c++,
-          (process.exitCode = 1),
-          process.stderr
-            .write(`${u.id}: still running \u2014 couldn't confirm restart, retry in a moment
-`));
-      else
-        ((process.exitCode = 1),
-          process.stderr.write(`${u.id}: ${d.error}
-`));
-    }
-    if (l === a.length) await uv("cli_bg_respawn");
-    else if (l > 0 || c > 0) await iY("cli_bg_respawn", c > 0 ? "still_alive" : "partial");
-    else await Qu("cli_bg_respawn", "spawn_failed");
-    return;
-  }
-  let r = (await Eme.readdir(pL()).catch(() => []))
-    .filter((i) => IOe.test(i))
-    .filter((i) => i.startsWith(e));
-  if (r.length !== 1) {
-    (process.stderr.write(
-      r.length === 0
-        ? `No job matching '${e}'
-`
-        : `Ambiguous prefix '${e}', matches: ${r.join(", ")}
-`,
-    ),
-      await Qu("cli_bg_respawn", r.length === 0 ? "no_match" : "ambiguous"),
-      (process.exitCode = 1));
-    return;
-  }
-  let o = r[0],
-    s = await PHt(o, {
-      force: true,
-    });
-  if (!s.ok && s.alive) {
-    (process.stderr.write(`${o}: still running \u2014 couldn't confirm restart, retry in a moment
-`),
-      await iY("cli_bg_respawn", "still_alive"),
-      (process.exitCode = 1));
-    return;
-  }
-  if (!s.ok) {
-    (process.stderr.write(`${s.error}
-`),
-      await Qu("cli_bg_respawn", "spawn_failed"),
-      (process.exitCode = 1));
-    return;
-  }
-  (await uv("cli_bg_respawn"),
-    process.stdout.write(`respawned ${o}${s.short !== o ? ` \u2192 ${s.short}` : ""}
-`));
-}
-async function stopHandler(e) {
-  let t = await TWo(
-      e,
-      "claude stop <id>",
-      "Stop a background session. Its conversation is kept; resume it later with `claude attach <id>`.",
-    ),
-    { confirmed: n, error: r } = await yTe(t);
-  if (!n) {
-    (await Qu("cli_bg_stop", "kill_unconfirmed"),
-      process.stderr.write(
-        r
-          ? `couldn't confirm ${t} was stopped \u2014 ${r}
-`
-          : `couldn't confirm ${t} was stopped \u2014 the background service may be restarting. Try again in a moment.
-`,
-      ),
-      (process.exitCode = 1));
-    return;
-  }
-  (await uv("cli_bg_stop"),
-    process.stdout.write(`stopped ${t}
-`));
-  let o = _c(t),
-    s = await zi(o);
-  if (s && !Vh(s)) {
-    let i = new Date().toISOString();
-    await Kd(o, {
-      ...s,
-      state: "stopped",
-      detail: "stopped",
-      tempo: "idle",
-      needs: void 0,
-      block: void 0,
-      inFlight: void 0,
-      updatedAt: i,
-      firstTerminalAt: s.firstTerminalAt ?? i,
-    }).catch((a) =>
-      T(`bg stop terminal write failed: ${be(a)}`, {
-        level: "warn",
-      }),
-    );
+    if (a === "left_arrow")
+      if (C) It("repl_background_fork", "queued_for_later");
+      else Le("repl_background_fork", "spawn_failed");
+    return {
+      ok: false,
+      error: v.error,
+      queued: C,
+      reason: v.reason,
+    };
   }
   if (
-    (await my("tengu_bg_agent_action", {
-      action: We("stop"),
-      source: We("cli"),
-      jobSessionId: s?.sessionId ?? "",
+    (G("tengu_background", {
+      via_flag: false,
+      via: $e(a),
     }),
-    s?.worktreePath)
+    a === "left_arrow")
   )
-    process.stdout.write(
-      wt.dim(`  worktree retained at ${s.worktreePath}
-  run 'claude rm ${t}' to remove worktree and job state
-`),
-    );
-}
-async function rmHandler(e) {
-  if ((HWo(), e === "--help" || e === "-h"))
-    (process.stdout.write(`Usage: claude rm <id>
-
-  Delete a background session and its worktree. Unlike \`stop\`, works on already-exited sessions.
-`),
-      process.exit(0));
-  if (e?.startsWith("-"))
-    (process.stderr.write(`unknown option '${e}'
-Usage: claude rm <id>
-`),
-      process.exit(1));
-  if (!e)
-    (process.stderr.write(`Usage: claude rm <id>
-`),
-      process.exit(1));
-  let n = (await Eme.readdir(pL()).catch(() => []))
-    .filter((u) => IOe.test(u))
-    .filter((u) => u.startsWith(e));
-  if (n.length !== 1)
-    (process.stderr.write(
-      n.length === 0
-        ? `No job matching '${e}'
-`
-        : `Ambiguous prefix '${e}', matches: ${n.join(", ")}
-`,
-    ),
-      process.exit(1));
-  let r = n[0],
-    o = await zi(_c(r)),
-    { removed: s, error: i, keptWorktree: a, keptReason: l } = await Sme(r);
-  if (!s) {
-    (await Qu("cli_bg_rm", "kill_unconfirmed"),
-      process.stderr
-        .write(`couldn't confirm ${r} was stopped \u2014 ${i ?? "the background service may be restarting. Try again in a moment."}
-`),
-      (process.exitCode = 1));
-    return;
+    xe("repl_background_fork");
+  if (b) (Eft(null), _Ee());
+  if (e.name === void 0 && v.sessionId) {
+    let C = v.short,
+      x = pAt(Py([...l]), AbortSignal.timeout(gQf))
+        .then((I) => (I ? Zce(C, I, "auto") : void 0))
+        .catch(() => {});
+    if (a === "command") Ci(() => x);
   }
-  if (
-    (await my("tengu_bg_agent_action", {
-      action: We("delete"),
-      source: We("cli"),
-      jobSessionId: o?.sessionId ?? "",
-    }),
-    a)
-  )
-    await iY("cli_bg_rm", "kept_worktree");
-  else await uv("cli_bg_rm");
-  let c = {
-    dirty: "has uncommitted changes",
-    branch_mismatch: "is on a different branch",
-    remove_failed: "could not be removed",
-  };
-  process.stdout.write(
-    `removed ${r}` +
-      (a
-        ? `
-  worktree ${c[l ?? "remove_failed"]} \u2014 kept at ${a}`
-        : o?.worktreePath
-          ? `
-  worktree: ${o.worktreePath}`
-          : "") +
-      `
-`,
-  );
-}
-function z1e(e) {
-  let t = [],
-    n = e;
-  while (/^-[a-zA-Z]./.test(n) && LPn.has(n.slice(0, 2)))
-    (t.push(n.slice(0, 2)), (n = `-${n.slice(2)}`));
   return {
-    peeled: t,
-    rest: n,
+    ok: true,
+    short: v.short,
+    handedOff: _,
+    hadWorktree: b !== null,
   };
 }
-function Use(e) {
-  return e.length > 1 && e.startsWith("-");
-}
-function MHt(e) {
-  let t = kz(e);
-  for (let n = 0; n < e.length; n++) if (e[n] === "--" && !t.has(n)) return n;
-  return -1;
-}
-function stripBgFlags(e) {
-  let t = MHt(e),
-    n = t >= 0 ? e.slice(0, t) : e,
-    r = kz(n),
-    o = n.filter((s, i) => r.has(i) || !zJf.includes(s));
-  return t >= 0 ? [...o, ...e.slice(t)] : o;
-}
-function Par(e, t, n) {
-  let r = kz(e),
+function deriveBackgroundSeed(e, t) {
+  let n = t,
+    r = false,
     o;
-  for (let s = 0; s < e.length; s++) {
-    if (r.has(s)) continue;
-    let i = e[s];
-    if (i === "--") break;
-    if (i === t || (n !== void 0 && i === n)) {
-      if (e[s + 1] !== void 0) ((o = e[s + 1]), s++);
-      continue;
+  for (let a = e.length - 1; a >= 0; a--) {
+    let l = e[a];
+    if (l.type === "assistant" && o === void 0) {
+      let c = K8(l);
+      if (c) o = c.replace(/\s+/g, " ").trim().slice(0, 120);
     }
-    if (i.startsWith(`${t}=`)) {
-      o = i.slice(t.length + 1);
-      continue;
-    }
-    if (n !== void 0) {
-      let { peeled: a, rest: l } = z1e(i);
-      if (l.length > 2 && l.slice(0, 2) === n) {
-        o = l.slice(2);
+    if (l.type === "user" && !l.isMeta && !bfe(l)) {
+      let c = P$(l)?.trim();
+      if (c && _fe(c)) {
+        if (c.startsWith(`<${zC}>`)) r = true;
         continue;
       }
-      if (a.length > 0 && l === n && e[s + 1] !== void 0) ((o = e[s + 1]), s++);
+      if (((r = true), !n && c)) n = c;
     }
+    if (r && n && o !== void 0) break;
   }
-  return o;
+  if (!r && !t) return null;
+  let s = Gg(Rt()),
+    i = dz(Rt());
+  return {
+    intent: (n || "(backgrounded)").slice(0, 200),
+    name: s ?? i,
+    nameSource: s ? "user" : i ? "auto" : void 0,
+    detail: o,
+  };
 }
-function kz(e) {
-  let t = new Set();
-  for (let n = 0; n < e.length; n++) {
-    if (t.has(n)) continue;
-    let r = e[n];
-    if (r === "--") break;
-    let { rest: o } = z1e(r);
-    if (r === "--resume" || o === "-r") continue;
-    if (
-      (r === "--remote-control" || r === "--rc") &&
-      e[n + 1] !== void 0 &&
-      !(e[n + 1].length > 1 && e[n + 1].startsWith("-"))
-    ) {
-      t.add(n + 1);
-      continue;
-    }
-    if (!o.includes("=") && DW.has(o) && e[n + 1] !== void 0) {
-      if ((t.add(n + 1), qGe.has(o))) {
-        let s = n + 2;
-        while (e[s] !== void 0 && !(e[s].length > 1 && e[s].startsWith("-"))) (t.add(s), s++);
-      }
-    }
-  }
-  return t;
-}
-function parseResumeTarget(e) {
-  let t = kz(e),
-    n;
-  for (let r = 0; r < e.length; r++) {
-    if (t.has(r)) continue;
-    let o = e[r];
-    if (o === "--") break;
-    if (o.startsWith("--resume=")) {
-      n = o.slice(9) || void 0;
-      continue;
-    }
-    let { rest: s } = z1e(o);
-    if (/^-r./.test(s)) {
-      n = s.slice(2);
-      continue;
-    }
-    if (o === "--resume" || s === "-r") {
-      let i = e[r + 1];
-      if (i !== void 0 && !Use(i)) ((n = i), r++);
-      else n = void 0;
-    }
-  }
-  return n;
-}
-function stripResumeFlags(e) {
-  let t = kz(e),
-    n = [];
-  for (let r = 0; r < e.length; r++) {
-    let o = e[r];
-    if (t.has(r)) {
-      n.push(o);
-      continue;
-    }
-    if (o === "--") {
-      for (let a = r; a < e.length; a++) n.push(e[a]);
-      break;
-    }
-    if (
-      o === "--fork-session" ||
-      o === "--continue" ||
-      o.startsWith("--resume=") ||
-      o.startsWith("--session-id=")
-    )
-      continue;
-    let { peeled: s, rest: i } = z1e(o);
-    if (s.length > 0 || i === "-c" || i.startsWith("-r")) {
-      let a = s.filter((d) => d !== "-c").map((d) => d[1]),
-        l = i === "-c" || /^-r./.test(i),
-        c = i === "-r",
-        u = l || c ? "" : i.slice(1);
-      if (a.length > 0 || u) n.push(`-${a.join("")}${u}`);
-      if (c && e[r + 1] !== void 0 && !Use(e[r + 1])) r++;
-      continue;
-    }
-    if (o === "--session-id") {
-      if (e[r + 1] !== void 0) r++;
-      continue;
-    }
-    if (o === "--resume") {
-      if (e[r + 1] !== void 0 && !Use(e[r + 1])) r++;
-      continue;
-    }
-    n.push(o);
-  }
-  return n;
-}
-function stripSessionIdFlag(e) {
-  let t = kz(e),
-    n = [];
-  for (let r = 0; r < e.length; r++) {
-    let o = e[r];
-    if (t.has(r)) {
-      n.push(o);
-      continue;
-    }
-    if (o === "--") {
-      for (let s = r; s < e.length; s++) n.push(e[s]);
-      break;
-    }
-    if (o.startsWith("--session-id=")) continue;
-    if (o === "--session-id") {
-      if (e[r + 1] !== void 0) r++;
-      continue;
-    }
-    n.push(o);
-  }
-  return n;
-}
-function rQf(e) {
-  let t = MHt(e),
-    n = t >= 0 ? e.slice(0, t) : e,
-    r = kz(n),
-    o = n.filter((i, a) => !r.has(a));
-  if (eWo(o)) return ZGo(n);
-  let s = Par(n, "--permission-mode");
+function hQf(e) {
+  let t = goc.c(56),
+    { onDone: n, prompt: r, seed: o, messages: s, isMidTurn: i } = e,
+    a = Ht(AQf),
+    l = Ht(EQf),
+    c = Ht(SQf),
+    u = Ht(bQf),
+    d = Ht(_Qf),
+    p = Ht(yQf),
+    f = $T(),
+    m;
+  if (t[0] !== p) ((m = a7t(p)), (t[0] = p), (t[1] = m));
+  else m = t[1];
+  let g = m,
+    h,
+    y;
+  if (t[2] !== p) {
+    let V = NYe(p);
+    ((h = UQt(p, V)),
+      (y = a7t(
+        CB(p, (Y) => BQt(Y, V)),
+        {
+          cronFilter: (Y) => !$Ht(Y, V),
+        },
+      )),
+      (t[2] = p),
+      (t[3] = h),
+      (t[4] = y));
+  } else ((h = t[3]), (y = t[4]));
+  let b;
+  if (t[5] !== h || t[6] !== y)
+    ((b = {
+      carryOverCount: h,
+      abandonable: y,
+    }),
+      (t[5] = h),
+      (t[6] = y),
+      (t[7] = b));
+  else b = t[7];
+  let { carryOverCount: _, abandonable: S } = b,
+    [A, v] = NHt.useState(S.count === 0),
+    C = NHt.useRef(false),
+    x;
   if (
-    (s === "bypassPermissions" ||
-      o.includes("--dangerously-skip-permissions") ||
-      o.includes("--allow-dangerously-skip-permissions")) &&
-    !uj() &&
-    !Dt().bypassPermissionsModeAccepted
+    t[8] !== S.count ||
+    t[9] !== c ||
+    t[10] !== u ||
+    t[11] !== d ||
+    t[12] !== _ ||
+    t[13] !== A ||
+    t[14] !== a ||
+    t[15] !== g.count ||
+    t[16] !== i ||
+    t[17] !== s ||
+    t[18] !== n ||
+    t[19] !== l ||
+    t[20] !== r ||
+    t[21] !== o ||
+    t[22] !== f ||
+    t[23] !== p
   )
-    return "--bg with bypassPermissions requires accepting the disclaimer first. Run `claude --dangerously-skip-permissions` once interactively.";
-  if (s === "auto" && !RG())
-    return "--bg with auto mode requires opting in first. Run `claude --permission-mode auto` once interactively.";
-  return null;
-}
-function oQf(e, t) {
-  let n = kz(e),
-    r;
-  for (let o = 0; o < e.length; o++) {
-    if (n.has(o)) continue;
-    let s = e[o];
-    if (Use(s)) {
-      let { rest: i } = z1e(s);
-      if ((s === "--resume" || i === "-r") && e[o + 1] !== void 0 && !Use(e[o + 1])) o++;
-      continue;
-    }
-    if (s.length > 0 && s !== t) r = s;
+    ((x = () => {
+      if (!A || C.current) return;
+      ((C.current = true),
+        (async () => {
+          let V = await Bar(p),
+            Y;
+          if (V) {
+            Y = hoc.randomUUID();
+            try {
+              let K = _c(Y.slice(0, 8));
+              (await OHt.mkdir(K, {
+                recursive: true,
+                mode: 448,
+              }),
+                await Uar(K, V.payload),
+                await V.checkpointAgents(f));
+            } catch {
+              Y = void 0;
+            }
+          }
+          let z = await spawnBackgroundFork(o, r, a, l, c, u, d, "command", s, {
+            replyOnResume: i,
+            providedSessionId: Y,
+          });
+          if (z.ok) {
+            if (V && Y) V.disown(f);
+            (G("tengu_background_fork", {
+              confirmed: S.count > 0,
+              inflight_count: g.count,
+              carryover_count: _,
+              mid_turn: i,
+              had_prompt: r.length > 0,
+              had_worktree: z.hadWorktree,
+              worktree_handed_off: z.handedOff,
+              ...War(Y ? V?.payload : null),
+            }),
+              n(),
+              await ki(0, "prompt_input_exit", {
+                suppressResumeHint: true,
+                finalMessage: $Qt(z.short, z.handedOff ? "(worktree handed off)" : void 0),
+              }));
+          } else {
+            if (Y) V?.abandon();
+            n(z.error);
+          }
+        })());
+    }),
+      (t[8] = S.count),
+      (t[9] = c),
+      (t[10] = u),
+      (t[11] = d),
+      (t[12] = _),
+      (t[13] = A),
+      (t[14] = a),
+      (t[15] = g.count),
+      (t[16] = i),
+      (t[17] = s),
+      (t[18] = n),
+      (t[19] = l),
+      (t[20] = r),
+      (t[21] = o),
+      (t[22] = f),
+      (t[23] = p),
+      (t[24] = x));
+  else x = t[24];
+  let I;
+  if (
+    t[25] !== c ||
+    t[26] !== u ||
+    t[27] !== d ||
+    t[28] !== A ||
+    t[29] !== a ||
+    t[30] !== g.count ||
+    t[31] !== i ||
+    t[32] !== s ||
+    t[33] !== n ||
+    t[34] !== l ||
+    t[35] !== r ||
+    t[36] !== o ||
+    t[37] !== f ||
+    t[38] !== p
+  )
+    ((I = [A, a, l, c, u, d, g.count, i, o, n, r, s, p, f]),
+      (t[25] = c),
+      (t[26] = u),
+      (t[27] = d),
+      (t[28] = A),
+      (t[29] = a),
+      (t[30] = g.count),
+      (t[31] = i),
+      (t[32] = s),
+      (t[33] = n),
+      (t[34] = l),
+      (t[35] = r),
+      (t[36] = o),
+      (t[37] = f),
+      (t[38] = p),
+      (t[39] = I));
+  else I = t[39];
+  if ((NHt.useEffect(x, I), A)) {
+    let V;
+    if (t[40] === Symbol.for("react.memo_cache_sentinel"))
+      ((V = FQt.jsx(w, {
+        dimColor: true,
+        children: "Backgrounding\u2026",
+      })),
+        (t[40] = V));
+    else V = t[40];
+    return V;
   }
-  return r;
+  let k;
+  if (t[41] !== g.count || t[42] !== n)
+    ((k = () => {
+      (G("tengu_background_declined", {
+        inflight_count: g.count,
+      }),
+        n());
+    }),
+      (t[41] = g.count),
+      (t[42] = n),
+      (t[43] = k));
+  else k = t[43];
+  let D = k,
+    P;
+  if (t[44] !== _)
+    ((P = _ > 0 ? ` ${_} ${bn(_, "task")} will carry over to the background session.` : ""),
+      (t[44] = _),
+      (t[45] = P));
+  else P = t[45];
+  let O = P,
+    L = `${S.summary} will be stopped.${O}`,
+    M = S.count,
+    N;
+  if (t[46] !== S.count) ((N = bn(S.count, "task")), (t[46] = S.count), (t[47] = N));
+  else N = t[47];
+  let B = `Background anyway (${M} ${N} will be stopped)`,
+    $;
+  if (t[48] === Symbol.for("react.memo_cache_sentinel")) (($ = () => v(true)), (t[48] = $));
+  else $ = t[48];
+  let q;
+  if (t[49] !== D || t[50] !== B)
+    ((q = FQt.jsx(Kl, {
+      confirmLabel: B,
+      cancelLabel: "Stay",
+      onConfirm: $,
+      onCancel: D,
+    })),
+      (t[49] = D),
+      (t[50] = B),
+      (t[51] = q));
+  else q = t[51];
+  let W;
+  if (t[52] !== D || t[53] !== q || t[54] !== L)
+    ((W = FQt.jsx(zn, {
+      title: "Background this session?",
+      subtitle: L,
+      onCancel: D,
+      children: q,
+    })),
+      (t[52] = D),
+      (t[53] = q),
+      (t[54] = L),
+      (t[55] = W));
+  else W = t[55];
+  return W;
 }
-function flagsWithoutPositional(e) {
-  let t = kz(e),
-    n = [];
-  for (let r = 0; r < e.length; r++) {
-    let o = e[r];
-    if (t.has(r)) {
-      n.push(o);
-      continue;
-    }
-    if (!Use(o)) continue;
-    if (o.includes("=")) {
-      n.push(o);
-      continue;
-    }
-    let { rest: s } = z1e(o);
-    if (DW.has(s)) {
-      n.push(o);
-      continue;
-    }
-    if (WUt.has(o)) {
-      n.push(o);
-      continue;
-    }
-    let i = e[r + 1];
-    if (i !== void 0 && !Use(i) && !t.has(r + 1)) {
-      r++;
-      continue;
-    }
-    n.push(o);
-  }
-  return n;
+function yQf(e) {
+  return e.tasks;
 }
-function roc() {
-  let e = {};
-  for (let t of RPn) {
-    let n = process.env[t];
-    if (n === void 0) continue;
-    if (n === "" && t !== "CLAUDE_SECURESTORAGE_CONFIG_DIR") continue;
-    e[t] = n;
-  }
-  return e;
+function _Qf(e) {
+  return e.toolPermissionContext.alwaysDenyRules;
 }
-function detailForStderr(e) {
-  return Vm(
-    Ja(e)
-      .replace(/[\s\x00-\x1f\x7f-\x9f]+/g, " ")
-      .trim(),
-    200,
-  );
+function bQf(e) {
+  return e.toolPermissionContext.alwaysAllowRules;
 }
-var Xrc,
-  Eme,
-  EWo,
-  zJf,
-  _Wo = 1048576;
+function SQf(e) {
+  return e.toolPermissionContext.additionalWorkingDirectories;
+}
+function EQf(e) {
+  return e.toolPermissionContext.mode;
+}
+function AQf(e) {
+  return e.effortValue;
+}
+var goc,
+  hoc,
+  OHt,
+  Var,
+  NHt,
+  FQt,
+  call = async (e, t, n) => {
+    if (Js()) return (G("tengu_background_already_bg", {}), e(), SHe(), null);
+    if (u3())
+      return (
+        e(
+          "Cannot background \u2014 session persistence is disabled, so the forked job would have nothing to resume.",
+        ),
+        null
+      );
+    let r = (n ?? "").trim(),
+      o = deriveBackgroundSeed(t.messages, r);
+    if (o === null) return (e("Nothing to background yet \u2014 send a message first."), null);
+    return FQt.jsx(hQf, {
+      onDone: e,
+      prompt: r,
+      seed: o,
+      messages: t.messages,
+      isMidTurn: t.isMidTurn ?? false,
+    });
+  },
+  gQf = 3000;

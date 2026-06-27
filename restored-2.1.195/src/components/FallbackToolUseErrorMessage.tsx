@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gpt
 // matched 2.1.88 source: src/components/FallbackToolUseErrorMessage.tsx
-// class=modified  jaccard=0.3979  score=1  fileCov=0.3979
+// class=modified  jaccard=0.3098  score=0.6604  fileCov=0.3685
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gpt = E(() => {

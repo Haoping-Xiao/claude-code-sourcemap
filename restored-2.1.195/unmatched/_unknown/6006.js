@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LGc
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/google-auth-library/build/src/auth/googleauth.js
+// class=new  jaccard=0.0076  score=0.3726  fileCov=0.0077
+// note: nearest: node_modules/google-auth-library/build/src/auth/googleauth.js (0.0076); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var LGc = E(() => {
   NZ();

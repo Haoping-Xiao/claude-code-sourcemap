@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rSe
 // matched 2.1.88 source: src/utils/toolSearch.ts
-// class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.1997  score=0.8009  fileCov=0.2101
+// class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.1194  score=0.7819  fileCov=0.1235
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rSe = E(() => {

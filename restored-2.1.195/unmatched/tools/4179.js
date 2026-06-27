@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bKn
-// matched 2.1.88 source: src/tools/AgentTool/agentToolUtils.ts
-// class=new  jaccard=0.0196  score=0.0506  fileCov=0.0311
-// note: nearest: src/tools/AgentTool/agentToolUtils.ts (0.0196); dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: src/utils/config.ts
+// class=new  jaccard=0.0193  score=0.1088  fileCov=0.0229
+// note: nearest: src/utils/config.ts (0.0193); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bKn = E(() => {
   Dif = new Set([Y8e, woe]), kab = [/^(?:bun|npm|yarn|pnpm|deno)\s+(?:run\s+)?test\b/, /^(?:\.\/)?(?:go|cargo|make|mvn|gradle|gradlew|dotnet|swift|mix|sbt|lein|rake|zig|bazel|nx|turbo)\s+test\b/, new RegExp(`^${Xll}(?:pytest|jest|vitest|rspec|phpunit|ctest)\\b`), /^(?:bun|npm|yarn|pnpm)\s+run\s+test:\S/], Rab = [/^(?:bun|npm|yarn|pnpm)\s+run\s+typecheck\b/, new RegExp(`^${Xll}(?:tsc|mypy)\\b`)];

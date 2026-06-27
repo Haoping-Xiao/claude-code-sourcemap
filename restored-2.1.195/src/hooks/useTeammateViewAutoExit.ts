@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hEc
 // matched 2.1.88 source: src/hooks/useTeammateViewAutoExit.ts
-// class=modified  jaccard=0.5538  score=1  fileCov=0.5538
+// class=modified  jaccard=0.3948  score=0.7288  fileCov=0.4628
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hEc = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tXl
 // matched 2.1.88 source: src/commands/version.ts
-// class=modified  jaccard=0.3305  score=0.5072  fileCov=0.4868
+// class=modified  jaccard=0.3016  score=0.4714  fileCov=0.4558
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tXl = E(() => {

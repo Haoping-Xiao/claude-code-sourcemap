@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Z3o
 // matched 2.1.88 source: src/hooks/useReplBridge.tsx
-// class=new  jaccard=0.0144  score=0.1742  fileCov=0.0155
-// note: nearest: src/hooks/useReplBridge.tsx (0.0144); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0056  score=0.1038  fileCov=0.0059
+// note: nearest: src/hooks/useReplBridge.tsx (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Z3o = E(() => {
   db();

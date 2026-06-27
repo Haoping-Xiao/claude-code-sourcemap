@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TY
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/follow-redirects/index.js
+// class=new  jaccard=0.0292  score=0.6861  fileCov=0.0296
+// note: nearest: node_modules/follow-redirects/index.js (0.0292); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var TY = Q(yIs => {
   var KNu = gIs(),

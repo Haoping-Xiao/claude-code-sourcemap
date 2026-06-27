@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ZKe
 // matched 2.1.88 source: src/components/LogoV2/GuestPassesUpsell.tsx
-// class=modified  jaccard=0.3619  score=0.5421  fileCov=0.5212
+// class=modified  jaccard=0.2765  score=0.5282  fileCov=0.3671
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ZKe = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module zTc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/context/notifications.tsx
+// class=new  jaccard=0.042  score=0.2735  fileCov=0.0473
+// note: nearest: src/context/notifications.tsx (0.042); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var zTc = E(() => {
   MMe();

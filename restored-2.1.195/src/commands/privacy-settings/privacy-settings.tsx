@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Yjo
 // matched 2.1.88 source: src/commands/privacy-settings/privacy-settings.tsx
-// class=modified  jaccard=0.5368  score=0.841  fileCov=0.5974
+// class=modified  jaccard=0.3169  score=0.4029  fileCov=0.5973
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Yjo = E(() => {

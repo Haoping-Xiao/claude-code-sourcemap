@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ebl
 // matched 2.1.88 source: src/tools/EnterWorktreeTool/EnterWorktreeTool.ts
-// class=modified  jaccard=0.183  score=0.2512  fileCov=0.4027
+// class=modified  jaccard=0.2828  score=0.402  fileCov=0.4883
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ebl = E(() => {

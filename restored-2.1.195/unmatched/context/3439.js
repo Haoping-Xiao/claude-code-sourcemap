@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gho
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> context; 0 renamed
+// matched 2.1.88 source: node_modules/react/cjs/react.production.js
+// class=new  jaccard=0.0159  score=0.7777  fileCov=0.016
+// note: nearest: node_modules/react/cjs/react.production.js (0.0159); dir inferred from dep-graph -> context; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Gho = E(() => {
   K1a();

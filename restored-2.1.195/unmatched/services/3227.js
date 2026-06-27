@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module udo
-// matched 2.1.88 source: node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js
-// class=new  jaccard=0.0263  score=0.1791  fileCov=0.0298
-// note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js (0.0263); dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: src/services/mcp/auth.ts
+// class=new  jaccard=0.0172  score=0.2571  fileCov=0.0181
+// note: nearest: src/services/mcp/auth.ts (0.0172); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var udo = E(() => {
   wUn();

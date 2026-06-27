@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module w5e
 // matched 2.1.88 source: src/services/mcp/vscodeSdkMcp.ts
-// class=modified  jaccard=0.348  score=0.5319  fileCov=0.5015
+// class=modified  jaccard=0.3211  score=0.4776  fileCov=0.495
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var w5e = E(() => {

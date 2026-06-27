@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _oe
 // matched 2.1.88 source: src/cost-tracker.ts
-// class=modified  jaccard=0.4704  score=0.6508  fileCov=0.6292
+// class=modified  jaccard=0.4788  score=0.8048  fileCov=0.5416
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _oe = E(() => {

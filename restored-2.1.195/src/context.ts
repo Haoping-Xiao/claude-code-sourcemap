@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S4
 // matched 2.1.88 source: src/context.ts
-// class=modified  jaccard=0.4888  score=0.7031  fileCov=0.6159
+// class=modified  jaccard=0.3799  score=0.6008  fileCov=0.5081
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S4 = E(() => {

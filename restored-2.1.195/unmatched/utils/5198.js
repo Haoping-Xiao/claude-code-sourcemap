@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QJt
 // matched 2.1.88 source: src/cli/print.ts
-// class=new  jaccard=0.0071  score=0.0659  fileCov=0.0079
-// note: nearest: src/cli/print.ts (0.0071); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0121  score=0.1413  fileCov=0.013
+// note: nearest: src/cli/print.ts (0.0121); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QJt = E(() => {
   Xr();

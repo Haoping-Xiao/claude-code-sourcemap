@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wjr
 // matched 2.1.88 source: node_modules/@anthropic-ai/sdk/client.mjs
-// class=new  jaccard=0.0244  score=0.0788  fileCov=0.0342
-// note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0244); dir inferred from dep-graph -> utils; 5 renamed
+// class=new  jaccard=0.0207  score=0.0674  fileCov=0.029
+// note: nearest: node_modules/@anthropic-ai/sdk/client.mjs (0.0207); dir inferred from dep-graph -> utils; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var wjr = E(() => {
   uee();

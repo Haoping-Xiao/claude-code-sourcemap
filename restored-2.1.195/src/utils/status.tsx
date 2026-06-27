@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Dgt
 // matched 2.1.88 source: src/utils/status.tsx
-// class=modified  jaccard=0.4768  score=0.6489  fileCov=0.6426
+// class=modified  jaccard=0.408  score=0.6438  fileCov=0.5269
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Dgt = E(() => {

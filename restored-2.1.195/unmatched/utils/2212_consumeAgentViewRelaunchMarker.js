@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module kkn
-// matched 2.1.88 source: src/utils/concurrentSessions.ts
-// class=new  jaccard=0.0389  score=0.0983  fileCov=0.0606
-// note: nearest: src/utils/concurrentSessions.ts (0.0389); dir inferred from dep-graph -> utils; 15 renamed
+// matched 2.1.88 source: node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js
+// class=new  jaccard=0.0205  score=0.0491  fileCov=0.0341
+// note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js (0.0205); dir inferred from dep-graph -> utils; 15 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var kkn = E(() => {
   fn();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module nKo
 // matched 2.1.88 source: src/components/permissions/PowerShellPermissionRequest/powershellToolUseOptions.tsx
-// class=modified  jaccard=0.4715  score=0.8381  fileCov=0.5187
+// class=modified  jaccard=0.5255  score=0.7187  fileCov=0.6616
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var nKo = E(() => {

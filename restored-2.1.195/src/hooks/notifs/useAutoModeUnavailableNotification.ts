@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module MLc
 // matched 2.1.88 source: src/hooks/notifs/useAutoModeUnavailableNotification.ts
-// class=modified  jaccard=0.2768  score=0.5733  fileCov=0.3486
+// class=modified  jaccard=0.3692  score=0.7779  fileCov=0.4127
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var MLc = E(() => {

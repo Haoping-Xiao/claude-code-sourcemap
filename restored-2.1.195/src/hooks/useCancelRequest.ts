@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module iEc
 // matched 2.1.88 source: src/hooks/useCancelRequest.ts
-// class=modified  jaccard=0.5261  score=0.922  fileCov=0.5505
+// class=modified  jaccard=0.4151  score=0.6657  fileCov=0.5245
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var iEc = E(() => {

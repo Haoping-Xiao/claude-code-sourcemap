@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bLc
 // matched 2.1.88 source: src/hooks/usePromptsFromClaudeInChrome.tsx
-// class=partial  jaccard=0.1635  score=0.4597  fileCov=0.2024
+// class=partial  jaccard=0.1281  score=0.4794  fileCov=0.1488
 // note: low-confidence suggestion: src/hooks/usePromptsFromClaudeInChrome.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bLc = E(() => {

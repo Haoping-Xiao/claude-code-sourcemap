@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QRc
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceStartupCheck.ts
-// class=modified  jaccard=0.5646  score=0.7551  fileCov=0.6911
+// class=modified  jaccard=0.5667  score=0.835  fileCov=0.6382
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var QRc = E(() => {

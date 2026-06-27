@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lEe
 // matched 2.1.88 source: src/components/shell/ShellTimeDisplay.tsx
-// class=modified  jaccard=0.2355  score=0.4801  fileCov=0.3161
+// class=modified  jaccard=0.1958  score=0.3311  fileCov=0.3241
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lEe = E(() => {

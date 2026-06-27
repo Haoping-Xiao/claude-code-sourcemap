@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gJo
-// matched 2.1.88 source: src/utils/hooks.ts
-// class=new  jaccard=0.0041  score=0.3162  fileCov=0.0042
-// note: nearest: src/utils/hooks.ts (0.0041); 0 renamed
+// matched 2.1.88 source: node_modules/eventsource/dist/index.js
+// class=new  jaccard=0.0444  score=0.4934  fileCov=0.0465
+// note: nearest: node_modules/eventsource/dist/index.js (0.0444); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var gJo = E(() => {
   Ann();

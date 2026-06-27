@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Z3c
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0257  score=0.1143  fileCov=0.0321
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0257); 0 renamed
+// class=new  jaccard=0.0177  score=0.1262  fileCov=0.0202
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0177); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Z3c = E(() => {
   Bgr();

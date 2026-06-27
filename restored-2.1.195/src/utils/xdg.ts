@@ -1,71 +1,37 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module f6
 // matched 2.1.88 source: src/utils/xdg.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=1  score=1  fileCov=1
-// note: code ~unchanged across versions; using 2.1.88 source verbatim
+// class=modified  jaccard=0.4604  score=1  fileCov=0.4604
+// note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
-/**
- * XDG Base Directory utilities for Claude CLI Native Installer
- *
- * Implements the XDG Base Directory specification for organizing
- * native installer components across appropriate system directories.
- *
- * @see https://specifications.freedesktop.org/basedir-spec/latest/
- */
-
-import { homedir as osHomedir } from 'os'
-import { join } from 'path'
-
-type EnvLike = Record<string, string | undefined>
-
-type XDGOptions = {
-  env?: EnvLike
-  homedir?: string
-}
-
-function resolveOptions(options?: XDGOptions): { env: EnvLike; home: string } {
+var f6 = E(() => {
+  ft();
+  EI();
+  lC();
+  fn();
+  _m();
+  ((j0p = new Set()), (G0p = new Set([wu, qc])));
+});
+function K2n(e) {
   return {
-    env: options?.env ?? process.env,
-    home: options?.homedir ?? process.env.HOME ?? osHomedir(),
-  }
+    env: e?.env ?? process.env,
+    home: e?.homedir ?? process.env.HOME ?? qPa.homedir(),
+  };
 }
-
-/**
- * Get XDG state home directory
- * Default: ~/.local/state
- * @param options Optional env and homedir overrides for testing
- */
-export function getXDGStateHome(options?: XDGOptions): string {
-  const { env, home } = resolveOptions(options)
-  return env.XDG_STATE_HOME ?? join(home, '.local', 'state')
+function Y2n(e) {
+  let { env: t, home: n } = K2n(e);
+  return t.XDG_STATE_HOME ?? FGt.join(n, ".local", "state");
 }
-
-/**
- * Get XDG cache home directory
- * Default: ~/.cache
- * @param options Optional env and homedir overrides for testing
- */
-export function getXDGCacheHome(options?: XDGOptions): string {
-  const { env, home } = resolveOptions(options)
-  return env.XDG_CACHE_HOME ?? join(home, '.cache')
+function VPa(e) {
+  let { env: t, home: n } = K2n(e);
+  return t.XDG_CACHE_HOME ?? FGt.join(n, ".cache");
 }
-
-/**
- * Get XDG data home directory
- * Default: ~/.local/share
- * @param options Optional env and homedir overrides for testing
- */
-export function getXDGDataHome(options?: XDGOptions): string {
-  const { env, home } = resolveOptions(options)
-  return env.XDG_DATA_HOME ?? join(home, '.local', 'share')
+function Ore(e) {
+  let { env: t, home: n } = K2n(e);
+  return t.XDG_DATA_HOME ?? FGt.join(n, ".local", "share");
 }
-
-/**
- * Get user bin directory (not technically XDG but follows the convention)
- * Default: ~/.local/bin
- * @param options Optional homedir override for testing
- */
-export function getUserBinDir(options?: XDGOptions): string {
-  const { home } = resolveOptions(options)
-  return join(home, '.local', 'bin')
+function Sde(e) {
+  let { home: t } = K2n(e);
+  return FGt.join(t, ".local", "bin");
 }
+var qPa, FGt;

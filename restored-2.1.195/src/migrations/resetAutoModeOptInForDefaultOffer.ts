@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module r1c
 // matched 2.1.88 source: src/migrations/resetAutoModeOptInForDefaultOffer.ts
-// class=modified  jaccard=0.3374  score=0.5866  fileCov=0.4426
+// class=modified  jaccard=0.3854  score=0.7473  fileCov=0.4431
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var r1c = E(() => {

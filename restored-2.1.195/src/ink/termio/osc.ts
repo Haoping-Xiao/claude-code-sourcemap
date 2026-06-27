@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Bke
 // matched 2.1.88 source: src/ink/termio/osc.ts
-// class=modified  jaccard=0.3388  score=0.4056  fileCov=0.6729
+// class=modified  jaccard=0.2961  score=0.4815  fileCov=0.4348
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Bke = E(() => {

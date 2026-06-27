@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KPn
 // matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
-// class=new  jaccard=0.0128  score=0.188  fileCov=0.0136
-// note: nearest: src/utils/plugins/pluginLoader.ts (0.0128); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0184  score=0.2494  fileCov=0.0195
+// note: nearest: src/utils/plugins/pluginLoader.ts (0.0184); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var KPn = E(() => {
   ft();

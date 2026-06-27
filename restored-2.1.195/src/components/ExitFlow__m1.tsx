@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cJl
 // matched 2.1.88 source: src/components/ExitFlow.tsx
-// class=modified (alt of src/components/ExitFlow.tsx)  jaccard=0.4807  score=0.7667  fileCov=0.5631
+// class=modified (alt of src/components/ExitFlow.tsx)  jaccard=0.2748  score=0.7408  fileCov=0.304
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cJl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Sdr
 // matched 2.1.88 source: src/components/AutoModeOptInDialog.tsx
-// class=modified  jaccard=0.5627  score=0.6746  fileCov=0.7724
+// class=modified  jaccard=0.5209  score=0.6328  fileCov=0.7465
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Sdr = E(() => {

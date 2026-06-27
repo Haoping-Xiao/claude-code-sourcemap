@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cKe
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js
+// class=new  jaccard=0.0103  score=0.3075  fileCov=0.0106
+// note: nearest: node_modules/@smithy/core/dist-cjs/submodules/cbor/index.js (0.0103); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var cKe = E(() => {
   Jt();

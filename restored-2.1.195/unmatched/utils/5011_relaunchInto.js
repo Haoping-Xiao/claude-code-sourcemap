@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Djo
 // matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=new  jaccard=0.0128  score=0.0911  fileCov=0.0147
-// note: nearest: src/components/Settings/Config.tsx (0.0128); dir inferred from dep-graph -> utils; 2 renamed
+// class=new  jaccard=0.012  score=0.0983  fileCov=0.0135
+// note: nearest: src/components/Settings/Config.tsx (0.012); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Djo = E(() => {
   ft();

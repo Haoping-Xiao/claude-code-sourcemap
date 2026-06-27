@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lC
 // matched 2.1.88 source: src/tools/PowerShellTool/PowerShellTool.tsx
-// class=new  jaccard=0.0197  score=0.6461  fileCov=0.0199
-// note: nearest: src/tools/PowerShellTool/PowerShellTool.tsx (0.0197); dir inferred from dep-graph -> tools; 0 renamed
+// class=new  jaccard=0.0136  score=0.4976  fileCov=0.0138
+// note: nearest: src/tools/PowerShellTool/PowerShellTool.tsx (0.0136); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lC = E(() => {
   k0();

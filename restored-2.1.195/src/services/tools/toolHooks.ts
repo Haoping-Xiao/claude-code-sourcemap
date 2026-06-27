@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mzt
 // matched 2.1.88 source: src/services/tools/toolHooks.ts
-// class=modified  jaccard=0.5722  score=0.7351  fileCov=0.7208
+// class=modified  jaccard=0.5296  score=0.7633  fileCov=0.6337
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mzt = E(() => {

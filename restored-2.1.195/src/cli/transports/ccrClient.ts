@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _gc
 // matched 2.1.88 source: src/cli/transports/ccrClient.ts
-// class=modified  jaccard=0.4023  score=0.4683  fileCov=0.7408
+// class=modified  jaccard=0.3065  score=0.4609  fileCov=0.4777
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _gc = E(() => {

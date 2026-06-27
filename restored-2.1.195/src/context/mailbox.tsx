@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module K1a
 // matched 2.1.88 source: src/context/mailbox.tsx
-// class=modified  jaccard=0.5092  score=1  fileCov=0.5092
+// class=modified  jaccard=0.4062  score=0.9521  fileCov=0.4147
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var K1a = E(() => {

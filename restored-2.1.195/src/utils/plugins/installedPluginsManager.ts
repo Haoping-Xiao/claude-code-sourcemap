@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lE
 // matched 2.1.88 source: src/utils/plugins/installedPluginsManager.ts
-// class=modified  jaccard=0.4525  score=0.5457  fileCov=0.726
+// class=modified  jaccard=0.3394  score=0.5089  fileCov=0.5047
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lE = E(() => {

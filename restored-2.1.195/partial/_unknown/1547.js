@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module s4r
 // matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
-// class=partial  jaccard=0.2352  score=1  fileCov=0.2352
+// class=partial  jaccard=0.2226  score=1  fileCov=0.2226
 // note: low-confidence suggestion: node_modules/@smithy/eventstream-codec/dist-cjs/index.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var s4r = E(() => {

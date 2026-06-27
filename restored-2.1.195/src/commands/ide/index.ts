@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rUl
 // matched 2.1.88 source: src/commands/ide/index.ts
-// class=modified  jaccard=0.3644  score=0.4419  fileCov=0.675
+// class=modified  jaccard=0.3606  score=0.432  fileCov=0.6855
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rUl = E(() => {

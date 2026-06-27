@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ydi
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/foundry-sdk/client.mjs
+// class=new  jaccard=0.0465  score=1  fileCov=0.0465
+// note: nearest: node_modules/@anthropic-ai/foundry-sdk/client.mjs (0.0465); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Ydi = E(() => {
   VHn();

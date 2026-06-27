@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uil
 // matched 2.1.88 source: src/components/messages/ShutdownMessage.tsx
-// class=modified  jaccard=0.4707  score=0.5689  fileCov=0.7317
+// class=modified  jaccard=0.2895  score=0.4625  fileCov=0.4364
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var uil = E(() => {

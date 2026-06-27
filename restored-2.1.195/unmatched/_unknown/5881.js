@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module o2c
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0196  score=0.0577  fileCov=0.0288
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0196); 0 renamed
+// class=new  jaccard=0.0154  score=0.0813  fileCov=0.0187
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0154); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var o2c = E(() => {
   r2c = iDm;

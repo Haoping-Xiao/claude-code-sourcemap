@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module C4n
 // matched 2.1.88 source: src/state/AppState.tsx
-// class=modified  jaccard=0.0899  score=0.7088  fileCov=0.0934
+// class=modified  jaccard=0.1725  score=0.6543  fileCov=0.1897
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var C4n = E(() => {

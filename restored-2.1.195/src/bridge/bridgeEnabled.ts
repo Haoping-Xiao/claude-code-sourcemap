@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _F
 // matched 2.1.88 source: src/bridge/bridgeEnabled.ts
-// class=modified  jaccard=0.082  score=0.089  fileCov=0.5092
+// class=modified  jaccard=0.1017  score=0.1121  fileCov=0.5217
 // note: deminified; 23 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _F = E(() => {

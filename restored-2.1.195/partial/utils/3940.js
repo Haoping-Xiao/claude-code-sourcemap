@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DJa
 // matched 2.1.88 source: src/utils/model/modelSupportOverrides.ts
-// class=partial  jaccard=0.1381  score=0.2445  fileCov=0.2409
+// class=partial  jaccard=0.0813  score=0.1324  fileCov=0.1738
 // note: low-confidence suggestion: src/utils/model/modelSupportOverrides.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var DJa = E(() => {

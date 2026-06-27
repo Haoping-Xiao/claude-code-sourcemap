@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ESt
-// matched 2.1.88 source: src/utils/teammateMailbox.ts
-// class=new  jaccard=0.0214  score=0.1096  fileCov=0.0259
-// note: nearest: src/utils/teammateMailbox.ts (0.0214); dir inferred from dep-graph -> utils; 7 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0094  score=0.1478  fileCov=0.01
+// note: nearest: src/cli/print.ts (0.0094); dir inferred from dep-graph -> utils; 7 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ESt = E(() => {
   Jt();

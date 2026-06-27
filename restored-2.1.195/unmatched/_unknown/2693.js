@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bRe
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/@grpc/grpc-js/build/src/server.js
+// class=new  jaccard=0.0062  score=0.2565  fileCov=0.0063
+// note: nearest: node_modules/@grpc/grpc-js/build/src/server.js (0.0062); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bRe = E(() => {
   M8();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mJr
 // matched 2.1.88 source: src/ink/output.ts
-// class=modified  jaccard=0.3934  score=0.8503  fileCov=0.4226
+// class=modified  jaccard=0.299  score=0.7201  fileCov=0.3383
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mJr = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module rir
 // matched 2.1.88 source: src/bridge/bridgeMessaging.ts
-// class=modified  jaccard=0.4177  score=0.4897  fileCov=0.7396
+// class=modified  jaccard=0.3463  score=0.4276  fileCov=0.6453
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var rir = E(() => {

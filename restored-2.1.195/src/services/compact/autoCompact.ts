@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module pre
 // matched 2.1.88 source: src/services/compact/autoCompact.ts
-// class=modified  jaccard=0.0587  score=0.0907  fileCov=0.1427
+// class=modified  jaccard=0.1076  score=0.174  fileCov=0.2198
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var pre = E(() => {

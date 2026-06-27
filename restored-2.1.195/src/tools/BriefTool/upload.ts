@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wQ
 // matched 2.1.88 source: src/tools/BriefTool/upload.ts
-// class=modified  jaccard=0.3618  score=0.4785  fileCov=0.5974
+// class=modified  jaccard=0.3937  score=0.5696  fileCov=0.5604
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wQ = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module QJa
-// matched 2.1.88 source: src/components/mcp/ElicitationDialog.tsx
-// class=new  jaccard=0.0396  score=0.2085  fileCov=0.0466
-// note: nearest: src/components/mcp/ElicitationDialog.tsx (0.0396); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/services/api/client.ts
+// class=new  jaccard=0.0268  score=0.084  fileCov=0.0379
+// note: nearest: src/services/api/client.ts (0.0268); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var QJa = E(() => {
   Ye();

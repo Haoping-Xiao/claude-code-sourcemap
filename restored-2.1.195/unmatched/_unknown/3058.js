@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Bya
 // matched 2.1.88 source: node_modules/highlight.js/lib/languages/sqf.js
-// class=new  jaccard=0.0085  score=0.4836  fileCov=0.0086
-// note: nearest: node_modules/highlight.js/lib/languages/sqf.js (0.0085); 0 renamed
+// class=new  jaccard=0.0277  score=0.7564  fileCov=0.028
+// note: nearest: node_modules/highlight.js/lib/languages/sqf.js (0.0277); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Bya = Q((U2y, Nya) => {
   function Kgp(e) {

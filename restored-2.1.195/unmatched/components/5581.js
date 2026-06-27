@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cHc
-// matched 2.1.88 source: src/components/permissions/BashPermissionRequest/BashPermissionRequest.tsx
-// class=new  jaccard=0.033  score=0.2666  fileCov=0.0362
-// note: nearest: src/components/permissions/BashPermissionRequest/BashPermissionRequest.tsx (0.033); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
+// class=new  jaccard=0.0124  score=0.2763  fileCov=0.0128
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0124); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var cHc = E(() => {
   Vl();

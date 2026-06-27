@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module M8o
 // matched 2.1.88 source: src/cli/transports/SSETransport.ts
-// class=modified  jaccard=0.5297  score=0.5853  fileCov=0.8479
+// class=modified  jaccard=0.4873  score=0.5589  fileCov=0.7918
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var M8o = E(() => {

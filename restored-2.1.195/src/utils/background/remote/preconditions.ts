@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ide
 // matched 2.1.88 source: src/utils/background/remote/preconditions.ts
-// class=modified  jaccard=0.6515  score=0.9002  fileCov=0.7022
+// class=modified  jaccard=0.4959  score=0.889  fileCov=0.5287
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ide = E(() => {

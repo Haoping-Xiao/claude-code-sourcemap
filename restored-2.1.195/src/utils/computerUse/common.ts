@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S_e
 // matched 2.1.88 source: src/utils/computerUse/common.ts
-// class=modified  jaccard=0.4814  score=0.6587  fileCov=0.6413
+// class=modified  jaccard=0.4923  score=0.7564  fileCov=0.585
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var S_e = E(() => {

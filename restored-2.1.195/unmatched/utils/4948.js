@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module n9l
-// matched 2.1.88 source: src/services/mcp/auth.ts
-// class=new  jaccard=0.0039  score=0.0517  fileCov=0.0042
-// note: nearest: src/services/mcp/auth.ts (0.0039); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0029  score=0.1165  fileCov=0.0029
+// note: nearest: src/screens/REPL.tsx (0.0029); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var n9l = E(() => {
   fn();

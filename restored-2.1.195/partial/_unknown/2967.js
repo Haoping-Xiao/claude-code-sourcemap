@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ima
 // matched 2.1.88 source: node_modules/highlight.js/lib/languages/groovy.js
-// class=partial  jaccard=0.1437  score=1  fileCov=0.1437
+// class=partial  jaccard=0.2017  score=1  fileCov=0.2017
 // note: low-confidence suggestion: node_modules/highlight.js/lib/languages/groovy.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ima = Q((rFy, sma) => {

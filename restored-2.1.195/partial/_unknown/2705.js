@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ono
-// matched 2.1.88 source: node_modules/yaml/dist/compose/util-contains-newline.js
-// class=partial  jaccard=0.0737  score=0.1095  fileCov=0.1838
-// note: low-confidence suggestion: node_modules/yaml/dist/compose/util-contains-newline.js; 0 renamed
+// matched 2.1.88 source: node_modules/protobufjs/src/reader.js
+// class=partial  jaccard=0.1144  score=0.2111  fileCov=0.1997
+// note: low-confidence suggestion: node_modules/protobufjs/src/reader.js; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Ono = E(() => {
   Jlt();

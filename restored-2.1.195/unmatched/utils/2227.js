@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module INt
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
-// class=new  jaccard=0.0118  score=1  fileCov=0.0118
-// note: nearest: src/utils/permissions/permissionSetup.ts (0.0118); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0048  score=1  fileCov=0.0048
+// note: nearest: src/utils/permissions/permissionSetup.ts (0.0048); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var INt = E(() => {
   Un();

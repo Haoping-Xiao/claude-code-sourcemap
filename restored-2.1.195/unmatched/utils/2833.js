@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dre
-// matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0073  score=0.0431  fileCov=0.0087
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0073); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0057  score=0.056  fileCov=0.0063
+// note: nearest: src/cli/print.ts (0.0057); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dre = E(() => {
   Gve();

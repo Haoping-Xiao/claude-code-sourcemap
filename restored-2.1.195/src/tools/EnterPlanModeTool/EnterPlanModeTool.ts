@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uwo
 // matched 2.1.88 source: src/tools/EnterPlanModeTool/EnterPlanModeTool.ts
-// class=modified  jaccard=0.2425  score=0.3703  fileCov=0.4126
+// class=modified  jaccard=0.2834  score=0.4074  fileCov=0.4821
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var uwo = E(() => {

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eAl
-// matched 2.1.88 source: src/services/api/filesApi.ts
-// class=new  jaccard=0.0138  score=0.2975  fileCov=0.0142
-// note: nearest: src/services/api/filesApi.ts (0.0138); dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/commands/insights.ts
+// class=new  jaccard=0.0026  score=0.1908  fileCov=0.0026
+// note: nearest: src/commands/insights.ts (0.0026); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var eAl = E(() => {
   WRo = new Map(), qRo = new Map();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KFn
 // matched 2.1.88 source: src/utils/computerUse/escHotkey.ts
-// class=modified  jaccard=0.3583  score=0.4866  fileCov=0.5762
+// class=modified  jaccard=0.3946  score=0.6557  fileCov=0.4978
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KFn = E(() => {

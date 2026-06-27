@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module uRc
-// matched 2.1.88 source: src/keybindings/schema.ts
-// class=new  jaccard=0.0132  score=1  fileCov=0.0132
-// note: nearest: src/keybindings/schema.ts (0.0132); dir inferred from dep-graph -> hooks; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0129  score=0.4782  fileCov=0.0131
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0129); dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var uRc = E(() => {
   Ye();

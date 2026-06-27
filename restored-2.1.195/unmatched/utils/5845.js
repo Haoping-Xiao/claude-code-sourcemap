@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module oXo
 // matched 2.1.88 source: src/utils/subprocessEnv.ts
-// class=new  jaccard=0.0322  score=0.2388  fileCov=0.0359
-// note: nearest: src/utils/subprocessEnv.ts (0.0322); dir inferred from dep-graph -> utils; 0 renamed
+// class=new  jaccard=0.0258  score=0.2389  fileCov=0.0281
+// note: nearest: src/utils/subprocessEnv.ts (0.0258); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var oXo = E(() => {
   ft();

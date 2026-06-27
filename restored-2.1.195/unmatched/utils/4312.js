@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N0o
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/AgentTool/AgentTool.tsx
+// class=new  jaccard=0.0067  score=0.5572  fileCov=0.0067
+// note: nearest: src/tools/AgentTool/AgentTool.tsx (0.0067); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var N0o = E(() => {
   oo();

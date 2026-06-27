@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Y7a
 // matched 2.1.88 source: src/services/notifier.ts
-// class=modified  jaccard=0.5991  score=0.7681  fileCov=0.7315
+// class=modified  jaccard=0.4918  score=0.7782  fileCov=0.5721
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Y7a = Q((uHo) => {

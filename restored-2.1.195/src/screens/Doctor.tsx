@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KNl
 // matched 2.1.88 source: src/screens/Doctor.tsx
-// class=modified  jaccard=0.1234  score=0.1577  fileCov=0.3621
+// class=modified  jaccard=0.1837  score=0.286  fileCov=0.3392
 // note: deminified; 8 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KNl = E(() => {

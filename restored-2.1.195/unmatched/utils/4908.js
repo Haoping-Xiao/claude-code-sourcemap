@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module M5l
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/bash/ParsedCommand.ts
+// class=new  jaccard=0.0223  score=0.5399  fileCov=0.0228
+// note: nearest: src/utils/bash/ParsedCommand.ts (0.0223); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var M5l = E(() => {
   ft();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module KBc
 // matched 2.1.88 source: src/entrypoints/sdk/controlSchemas.ts
-// class=modified  jaccard=0.3124  score=0.3203  fileCov=0.9269
+// class=modified  jaccard=0.3672  score=0.4124  fileCov=0.7703
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var KBc = E(() => {

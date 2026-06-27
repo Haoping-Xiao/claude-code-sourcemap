@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module CAl
-// matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
-// class=new  jaccard=0.0131  score=0.0441  fileCov=0.0182
-// note: nearest: src/components/tasks/RemoteSessionDetailDialog.tsx (0.0131); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/commands/insights.ts
+// class=new  jaccard=0.0033  score=0.0764  fileCov=0.0035
+// note: nearest: src/commands/insights.ts (0.0033); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var CAl = E(() => {
   VXn();

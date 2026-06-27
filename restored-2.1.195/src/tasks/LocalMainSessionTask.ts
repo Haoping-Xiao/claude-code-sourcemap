@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vEl
 // matched 2.1.88 source: src/tasks/LocalMainSessionTask.ts
-// class=modified  jaccard=0.2142  score=0.3133  fileCov=0.4037
+// class=modified  jaccard=0.216  score=0.3006  fileCov=0.4343
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var vEl = E(() => {

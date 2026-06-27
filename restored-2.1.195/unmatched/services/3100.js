@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cco
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> services; 0 renamed
+// matched 2.1.88 source: src/services/mcp/config.ts
+// class=new  jaccard=0.0111  score=0.3558  fileCov=0.0113
+// note: nearest: src/services/mcp/config.ts (0.0111); dir inferred from dep-graph -> services; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var cco = E(() => {
   ih();

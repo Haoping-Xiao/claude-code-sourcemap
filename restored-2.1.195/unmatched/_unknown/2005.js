@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module bTi
-// matched 2.1.88 source: node_modules/google-auth-library/build/src/crypto/node/crypto.js
-// class=new  jaccard=0.0432  score=0.0467  fileCov=0.3687
-// note: nearest: node_modules/google-auth-library/build/src/crypto/node/crypto.js (0.0432); 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0035  score=0.0668  fileCov=0.0037
+// note: nearest: src/cli/print.ts (0.0035); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bTi = Q(j9 => {
   Object.defineProperty(j9, "__esModule", {

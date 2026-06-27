@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module okc
-// matched 2.1.88 source: src/utils/permissions/getNextPermissionMode.ts
-// class=new  jaccard=0.0538  score=0.089  fileCov=0.12
-// note: nearest: src/utils/permissions/getNextPermissionMode.ts (0.0538); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
+// class=new  jaccard=0.0202  score=0.156  fileCov=0.0227
+// note: nearest: src/tools/AgentTool/loadAgentsDir.ts (0.0202); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var okc = E(() => {
   ft();

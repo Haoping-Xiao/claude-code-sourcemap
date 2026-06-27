@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wYe
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=modified  jaccard=0.5497  score=0.7173  fileCov=0.7018
+// class=modified  jaccard=0.4312  score=0.7464  fileCov=0.5052
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var wYe = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TYo
 // matched 2.1.88 source: src/services/tips/tipRegistry.ts
-// class=modified  jaccard=0.4028  score=0.523  fileCov=0.6367
+// class=modified  jaccard=0.3729  score=0.532  fileCov=0.5549
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var TYo = E(() => {

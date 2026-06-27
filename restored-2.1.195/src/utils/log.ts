@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module qd
 // matched 2.1.88 source: src/utils/log.ts
-// class=modified  jaccard=0.2013  score=1  fileCov=0.2013
+// class=modified  jaccard=0.2368  score=0.8415  fileCov=0.2478
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var qd = E(() => {

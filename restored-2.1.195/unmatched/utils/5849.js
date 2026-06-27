@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fUc
-// matched 2.1.88 source: node_modules/parse5/lib/common/html.js
-// class=new  jaccard=0.0161  score=0.0965  fileCov=0.019
-// note: nearest: node_modules/parse5/lib/common/html.js (0.0161); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.004  score=0.2557  fileCov=0.004
+// note: nearest: src/cli/print.ts (0.004); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var fUc = E(() => {
   fd();

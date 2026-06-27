@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module XPa
-// matched 2.1.88 source: src/utils/ShellCommand.ts
-// class=new  jaccard=0.0523  score=0.1826  fileCov=0.0683
-// note: nearest: src/utils/ShellCommand.ts (0.0523); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/screens/REPL.tsx
+// class=new  jaccard=0.0018  score=0.3078  fileCov=0.0018
+// note: nearest: src/screens/REPL.tsx (0.0018); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var XPa = E(() => {
   kt();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module VUc
-// matched 2.1.88 source: src/services/api/filesApi.ts
-// class=new  jaccard=0.0337  score=0.0903  fileCov=0.0511
-// note: nearest: src/services/api/filesApi.ts (0.0337); dir inferred from dep-graph -> utils; 6 renamed
+// matched 2.1.88 source: src/commands/insights.ts
+// class=new  jaccard=0.0117  score=0.1132  fileCov=0.0128
+// note: nearest: src/commands/insights.ts (0.0117); dir inferred from dep-graph -> utils; 6 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var VUc = E(() => {
   dn();

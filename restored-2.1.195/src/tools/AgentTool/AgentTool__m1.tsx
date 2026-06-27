@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gko
 // matched 2.1.88 source: src/tools/AgentTool/AgentTool.tsx
-// class=modified (alt of src/tools/AgentTool/AgentTool.tsx)  jaccard=0.0319  score=0.0715  fileCov=0.0545
+// class=modified (alt of src/tools/AgentTool/AgentTool.tsx)  jaccard=0.0265  score=0.0918  fileCov=0.0359
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gko = E(() => {

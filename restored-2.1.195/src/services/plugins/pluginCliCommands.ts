@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _pc
 // matched 2.1.88 source: src/services/plugins/pluginCliCommands.ts
-// class=modified  jaccard=0.2105  score=0.2514  fileCov=0.5639
+// class=modified  jaccard=0.2016  score=0.2756  fileCov=0.4291
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _pc = E(() => {

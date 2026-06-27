@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module RBo
 // matched 2.1.88 source: src/components/mcp/CapabilitiesSection.tsx
-// class=modified  jaccard=0.4643  score=0.6529  fileCov=0.6164
+// class=modified  jaccard=0.5402  score=0.7144  fileCov=0.689
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var RBo = E(() => {

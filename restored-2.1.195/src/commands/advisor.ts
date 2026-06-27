@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BXl
 // matched 2.1.88 source: src/commands/advisor.ts
-// class=modified  jaccard=0.0583  score=0.1055  fileCov=0.1153
+// class=modified  jaccard=0.0856  score=0.1455  fileCov=0.1722
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var BXl = E(() => {

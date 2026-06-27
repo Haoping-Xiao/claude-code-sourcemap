@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _os
-// matched 2.1.88 source: src/cli/handlers/auth.ts
-// class=new  jaccard=0.0164  score=0.0525  fileCov=0.0232
-// note: nearest: src/cli/handlers/auth.ts (0.0164); dir inferred from dep-graph -> tools; 0 renamed
+// matched 2.1.88 source: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
+// class=new  jaccard=0.0342  score=0.0925  fileCov=0.0514
+// note: nearest: node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js (0.0342); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var _os = E(() => {
   tIt();

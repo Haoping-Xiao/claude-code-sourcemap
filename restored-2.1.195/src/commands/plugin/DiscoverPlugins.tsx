@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module N2l
 // matched 2.1.88 source: src/commands/plugin/DiscoverPlugins.tsx
-// class=modified  jaccard=0.3109  score=0.4376  fileCov=0.5177
+// class=modified  jaccard=0.2936  score=0.4925  fileCov=0.421
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var N2l = E(() => {

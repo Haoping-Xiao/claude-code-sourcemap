@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mNa
 // matched 2.1.88 source: src/services/remoteManagedSettings/index.ts
-// class=modified  jaccard=0.3622  score=0.4612  fileCov=0.628
+// class=modified  jaccard=0.2877  score=0.4751  fileCov=0.4216
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var mNa = E(() => {

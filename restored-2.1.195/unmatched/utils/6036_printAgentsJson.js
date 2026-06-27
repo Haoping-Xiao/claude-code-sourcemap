@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module S5c
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
-// class=new  jaccard=0.0121  score=0.3627  fileCov=0.0123
-// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0121); dir inferred from dep-graph -> utils; 1 renamed
+// class=new  jaccard=0.0093  score=0.2337  fileCov=0.0096
+// note: nearest: src/entrypoints/sdk/coreSchemas.ts (0.0093); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var S5c = E(() => {
   ft();

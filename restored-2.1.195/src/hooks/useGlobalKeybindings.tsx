@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tEc
 // matched 2.1.88 source: src/hooks/useGlobalKeybindings.tsx
-// class=modified  jaccard=0.5022  score=0.9084  fileCov=0.529
+// class=modified  jaccard=0.4648  score=0.8242  fileCov=0.5159
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var tEc = E(() => {

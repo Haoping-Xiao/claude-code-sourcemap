@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module HQr
-// matched 2.1.88 source: node_modules/sharp/lib/sharp.js
-// class=new  jaccard=0.0079  score=0.0096  fileCov=0.0435
-// note: nearest: node_modules/sharp/lib/sharp.js (0.0079); 0 renamed
+// matched 2.1.88 source: src/commands/plugin/BrowseMarketplace.tsx
+// class=new  jaccard=0.0088  score=0.015  fileCov=0.0207
+// note: nearest: src/commands/plugin/BrowseMarketplace.tsx (0.0088); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var HQr = Q((Voy, lVd) => {
   lVd.exports = {

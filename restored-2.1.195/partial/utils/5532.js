@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lEc
 // matched 2.1.88 source: src/hooks/useBackgroundTaskNavigation.ts
-// class=partial  jaccard=0.1956  score=1  fileCov=0.1956
+// class=partial  jaccard=0.1965  score=0.6786  fileCov=0.2167
 // note: low-confidence suggestion: src/hooks/useBackgroundTaskNavigation.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var lEc = E(() => {

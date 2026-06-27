@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dQt
 // matched 2.1.88 source: src/services/voiceStreamSTT.ts
-// class=modified  jaccard=0.5086  score=0.6336  fileCov=0.7205
+// class=modified  jaccard=0.3473  score=0.5855  fileCov=0.4606
 // note: deminified; 6 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var dQt = E(() => {

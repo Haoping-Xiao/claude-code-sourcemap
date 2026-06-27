@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ljn
-// matched 2.1.88 source: src/components/shell/ShellProgressMessage.tsx
-// class=partial  jaccard=0.1887  score=0.5401  fileCov=0.2248
-// note: low-confidence suggestion: src/components/shell/ShellProgressMessage.tsx; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/tools/BashTool/UI.tsx
+// class=partial  jaccard=0.1147  score=0.4979  fileCov=0.1297
+// note: low-confidence suggestion: src/tools/BashTool/UI.tsx; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ljn = E(() => {
   Ye();

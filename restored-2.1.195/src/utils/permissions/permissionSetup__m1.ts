@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module lT
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
-// class=modified (alt of src/utils/permissions/permissionSetup.ts)  jaccard=0.1039  score=0.4238  fileCov=0.121
+// class=modified (alt of src/utils/permissions/permissionSetup.ts)  jaccard=0.0754  score=0.3586  fileCov=0.0871
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var lT = E(() => {

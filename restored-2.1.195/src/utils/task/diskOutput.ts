@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Yf
 // matched 2.1.88 source: src/utils/task/diskOutput.ts
-// class=modified  jaccard=0.0597  score=0.0624  fileCov=0.5718
+// class=modified  jaccard=0.0368  score=0.059  fileCov=0.0893
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Yf = E(() => {

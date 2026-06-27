@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module T1l
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 2 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0066  score=0.7367  fileCov=0.0066
+// note: nearest: src/cli/print.ts (0.0066); dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var T1l = E(() => {
   A1l();

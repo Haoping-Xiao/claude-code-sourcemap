@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module LZl
 // matched 2.1.88 source: src/main.tsx
-// class=modified (alt of src/main.tsx)  jaccard=0.0169  score=0.2077  fileCov=0.0181
+// class=modified (alt of src/main.tsx)  jaccard=0.0186  score=0.1378  fileCov=0.0211
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var LZl = E(() => {

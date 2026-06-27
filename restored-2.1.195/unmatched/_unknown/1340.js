@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module GUr
 // matched 2.1.88 source: node_modules/@aws-sdk/client-sts/dist-cjs/index.js
-// class=new  jaccard=0.028  score=1  fileCov=0.028
-// note: nearest: node_modules/@aws-sdk/client-sts/dist-cjs/index.js (0.028); 0 renamed
+// class=new  jaccard=0.0332  score=1  fileCov=0.0332
+// note: nearest: node_modules/@aws-sdk/client-sts/dist-cjs/index.js (0.0332); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var GUr = E(() => {
   kD();

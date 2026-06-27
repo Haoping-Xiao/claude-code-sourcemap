@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module EJt
-// matched 2.1.88 source: src/commands/install-github-app/CheckGitHubStep.tsx
-// class=partial  jaccard=0.063  score=0.0715  fileCov=0.3459
-// note: low-confidence suggestion: src/commands/install-github-app/CheckGitHubStep.tsx; dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/permissions/rules/PermissionRuleDescription.tsx
+// class=partial  jaccard=0.1891  score=0.2462  fileCov=0.4493
+// note: low-confidence suggestion: src/components/permissions/rules/PermissionRuleDescription.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var EJt = E(() => {
   szl = R(lt(), 1), NAt = R(rt(), 1), lzl = R(se(), 1), izl = NAt.createContext({

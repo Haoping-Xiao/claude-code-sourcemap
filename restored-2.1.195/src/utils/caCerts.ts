@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Vet
 // matched 2.1.88 source: src/utils/caCerts.ts
-// class=modified  jaccard=0.2067  score=0.3814  fileCov=0.311
+// class=modified  jaccard=0.2289  score=0.407  fileCov=0.3436
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Vet = E(() => {

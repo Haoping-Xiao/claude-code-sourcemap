@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module glt
-// matched 2.1.88 source: src/tools/AgentTool/agentDisplay.ts
-// class=partial  jaccard=0.1171  score=0.2192  fileCov=0.2009
-// note: low-confidence suggestion: src/tools/AgentTool/agentDisplay.ts; dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/pluginStartupCheck.ts
+// class=partial  jaccard=0.0728  score=0.2727  fileCov=0.0903
+// note: low-confidence suggestion: src/utils/plugins/pluginStartupCheck.ts; dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var glt = E(() => {
   dr();

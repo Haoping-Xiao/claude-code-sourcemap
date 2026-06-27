@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module mKr
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/services/api/overageCreditGrant.ts
+// class=new  jaccard=0.0229  score=0.0796  fileCov=0.0311
+// note: nearest: src/services/api/overageCreditGrant.ts (0.0229); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var mKr = E(() => {
   fn();

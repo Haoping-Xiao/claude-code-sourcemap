@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cjl
 // matched 2.1.88 source: src/commands/plugin/UnifiedInstalledCell.tsx
-// class=modified  jaccard=0.4769  score=0.5752  fileCov=0.7361
+// class=modified  jaccard=0.404  score=0.4629  fileCov=0.7606
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Cjl = E(() => {

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module HRa
 // matched 2.1.88 source: src/utils/computerUse/toolRendering.tsx
-// class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.1648  score=0.3406  fileCov=0.2421
+// class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.1598  score=0.2324  fileCov=0.3382
 // note: deminified; 2 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var HRa = E(() => {

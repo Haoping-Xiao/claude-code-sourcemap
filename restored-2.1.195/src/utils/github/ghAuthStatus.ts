@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Lnc
 // matched 2.1.88 source: src/utils/github/ghAuthStatus.ts
-// class=modified  jaccard=0.4954  score=0.5614  fileCov=0.8083
+// class=modified  jaccard=0.3744  score=0.485  fileCov=0.6213
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Lnc = E(() => {

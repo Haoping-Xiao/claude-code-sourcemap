@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module ag
 // matched 2.1.88 source: src/utils/claudeInChrome/common.ts
-// class=modified (alt of src/utils/claudeInChrome/common.ts)  jaccard=0.158  score=0.3231  fileCov=0.2361
+// class=modified (alt of src/utils/claudeInChrome/common.ts)  jaccard=0.2202  score=0.301  fileCov=0.4507
 // note: deminified; 17 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var ag = E(() => {

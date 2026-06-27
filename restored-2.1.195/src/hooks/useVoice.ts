@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module _Tc
 // matched 2.1.88 source: src/hooks/useVoice.ts
-// class=modified  jaccard=0.4014  score=0.4841  fileCov=0.7015
+// class=modified  jaccard=0.3569  score=0.5734  fileCov=0.4859
 // note: deminified; 3 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var _Tc = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module P3e
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@modelcontextprotocol/sdk/dist/esm/shared/auth-utils.js
+// class=new  jaccard=0.0349  score=0.0457  fileCov=0.1284
+// note: nearest: node_modules/@modelcontextprotocol/sdk/dist/esm/shared/auth-utils.js (0.0349); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var P3e = E(() => {
   ft();

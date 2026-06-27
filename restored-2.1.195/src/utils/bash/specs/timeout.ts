@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NPa
 // matched 2.1.88 source: src/utils/bash/specs/timeout.ts
-// class=unchanged (adopted 2.1.88 original)  jaccard=0.8666  score=1  fileCov=0.8666
+// class=unchanged (adopted 2.1.88 original)  jaccard=0.8526  score=1  fileCov=0.8526
 // note: code ~unchanged across versions; using 2.1.88 source verbatim
 // ─────────────────────────────────────────────────────────────────────────
 import type { CommandSpec } from '../registry.js'

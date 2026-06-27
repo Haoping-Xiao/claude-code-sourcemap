@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tWo
-// matched 2.1.88 source: src/main.tsx
-// class=new  jaccard=0.0014  score=0.1746  fileCov=0.0014
-// note: nearest: src/main.tsx (0.0014); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.0056  score=0.2406  fileCov=0.0057
+// note: nearest: src/cli/print.ts (0.0056); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tWo = E(() => {
   FAe();

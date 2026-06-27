@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module DFn
-// matched 2.1.88 source: src/utils/claudeInChrome/toolRendering.tsx
-// class=new  jaccard=0.0261  score=0.2541  fileCov=0.0282
-// note: nearest: src/utils/claudeInChrome/toolRendering.tsx (0.0261); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/@ant/computer-use-mcp/src/toolCalls.ts
+// class=new  jaccard=0.0064  score=0.303  fileCov=0.0065
+// note: nearest: node_modules/@ant/computer-use-mcp/src/toolCalls.ts (0.0064); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var DFn = E(() => {
   bCp = new Set(["claude-in-chrome", "Claude in Chrome"]);

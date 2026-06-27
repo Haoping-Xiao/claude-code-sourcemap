@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module BE
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/has-flag/index.js
+// class=new  jaccard=0.0564  score=0.0663  fileCov=0.2734
+// note: nearest: node_modules/has-flag/index.js (0.0564); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var BE = E(() => {
   ft();

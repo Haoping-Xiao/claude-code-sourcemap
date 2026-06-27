@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module j8o
 // matched 2.1.88 source: src/bridge/inboundAttachments.ts
-// class=modified  jaccard=0.5848  score=0.7348  fileCov=0.7412
+// class=modified  jaccard=0.5943  score=0.8533  fileCov=0.662
 // note: deminified; 4 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var j8o = E(() => {

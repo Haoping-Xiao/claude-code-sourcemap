@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cvc
 // matched 2.1.88 source: src/skills/bundled/debug.ts
-// class=modified  jaccard=0.3782  score=0.5131  fileCov=0.59
+// class=modified  jaccard=0.334  score=0.534  fileCov=0.4714
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cvc = E(() => {

@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module vno
-// class=new  (no 2.1.88 match)
-// note: 0 renamed
+// matched 2.1.88 source: node_modules/node-forge/lib/util.js
+// class=new  jaccard=0.0393  score=0.2184  fileCov=0.0458
+// note: nearest: node_modules/node-forge/lib/util.js (0.0393); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var vno = E(() => {
   Wlt();

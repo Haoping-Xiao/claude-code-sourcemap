@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module dEr
-// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/models.mjs
-// class=partial  jaccard=0.1334  score=0.262  fileCov=0.2137
-// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/models.mjs; dir inferred from dep-graph -> constants; 0 renamed
+// matched 2.1.88 source: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs
+// class=partial  jaccard=0.2492  score=0.4938  fileCov=0.3348
+// note: low-confidence suggestion: node_modules/@anthropic-ai/sdk/resources/beta/skills/versions.mjs; dir inferred from dep-graph -> constants; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var dEr = E(() => {
   Tx();

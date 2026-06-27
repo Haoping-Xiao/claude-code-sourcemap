@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Kgo
-// matched 2.1.88 source: src/services/analytics/firstPartyEventLoggingExporter.ts
-// class=new  jaccard=0.0183  score=0.1106  fileCov=0.0215
-// note: nearest: src/services/analytics/firstPartyEventLoggingExporter.ts (0.0183); dir inferred from dep-graph -> tasks; 0 renamed
+// matched 2.1.88 source: src/cli/transports/SSETransport.ts
+// class=new  jaccard=0.027  score=0.1636  fileCov=0.0313
+// note: nearest: src/cli/transports/SSETransport.ts (0.027); dir inferred from dep-graph -> tasks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Kgo = E(() => {
   MOa = require("crypto");

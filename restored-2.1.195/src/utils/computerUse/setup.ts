@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module B1c
 // matched 2.1.88 source: src/utils/computerUse/setup.ts
-// class=modified  jaccard=0.2839  score=0.6241  fileCov=0.3424
+// class=modified  jaccard=0.2038  score=0.5904  fileCov=0.2373
 // note: deminified; 1 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var B1c = E(() => {

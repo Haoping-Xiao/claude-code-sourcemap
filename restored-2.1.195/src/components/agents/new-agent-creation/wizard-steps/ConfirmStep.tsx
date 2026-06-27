@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module d4o
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx
-// class=modified  jaccard=0.206  score=0.4074  fileCov=0.2941
+// class=modified  jaccard=0.2531  score=0.4146  fileCov=0.3939
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var d4o = E(() => {

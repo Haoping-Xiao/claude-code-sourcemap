@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module I8r
 // matched 2.1.88 source: src/services/mcp/oauthPort.ts
-// class=modified  jaccard=0.5081  score=0.6531  fileCov=0.6959
+// class=modified  jaccard=0.3982  score=0.6528  fileCov=0.5052
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var I8r = E(() => {

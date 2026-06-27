@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ist
 // matched 2.1.88 source: src/utils/sessionIngressAuth.ts
-// class=modified  jaccard=0.5635  score=0.8133  fileCov=0.6472
+// class=modified  jaccard=0.4625  score=0.8447  fileCov=0.5054
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Ist = E(() => {

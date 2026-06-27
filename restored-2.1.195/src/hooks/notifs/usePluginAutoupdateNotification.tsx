@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module fDc
 // matched 2.1.88 source: src/hooks/notifs/usePluginAutoupdateNotification.tsx
-// class=modified  jaccard=0.3842  score=0.5262  fileCov=0.5873
+// class=modified  jaccard=0.3385  score=0.5062  fileCov=0.5053
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var fDc = E(() => {

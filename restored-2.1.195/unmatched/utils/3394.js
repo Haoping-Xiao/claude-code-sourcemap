@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Ago
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: node_modules/eventsource-parser/dist/index.js
+// class=new  jaccard=0.0093  score=0.011  fileCov=0.0584
+// note: nearest: node_modules/eventsource-parser/dist/index.js (0.0093); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Ago = E(() => {
   rre();

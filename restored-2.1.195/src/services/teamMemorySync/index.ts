@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hwl
 // matched 2.1.88 source: src/services/teamMemorySync/index.ts
-// class=modified  jaccard=0.1738  score=0.2339  fileCov=0.4032
+// class=modified  jaccard=0.2623  score=0.3664  fileCov=0.4802
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hwl = E(() => {

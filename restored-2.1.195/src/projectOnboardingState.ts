@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module WQr
 // matched 2.1.88 source: src/projectOnboardingState.ts
-// class=modified  jaccard=0.4524  score=0.7474  fileCov=0.5341
+// class=modified  jaccard=0.4087  score=0.795  fileCov=0.4568
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var WQr = E(() => {

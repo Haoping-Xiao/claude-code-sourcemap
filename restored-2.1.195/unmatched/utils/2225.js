@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module SKr
-// matched 2.1.88 source: src/utils/crypto.ts
-// class=new  jaccard=0.0402  score=0.0402  fileCov=1
-// note: nearest: src/utils/crypto.ts (0.0402); dir inferred from dep-graph -> utils; 0 renamed
+// matched 2.1.88 source: src/utils/plugins/pluginVersioning.ts
+// class=new  jaccard=0.0284  score=0.0823  fileCov=0.0416
+// note: nearest: src/utils/plugins/pluginVersioning.ts (0.0284); dir inferred from dep-graph -> utils; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var SKr = E(() => {
   I1i = require("crypto");

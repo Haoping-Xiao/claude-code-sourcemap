@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module wb
-// matched 2.1.88 source: src/components/Settings/Config.tsx
-// class=new  jaccard=0.03  score=0.5903  fileCov=0.0306
-// note: nearest: src/components/Settings/Config.tsx (0.03); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/PromptInput/PromptInput.tsx
+// class=new  jaccard=0.0303  score=0.3164  fileCov=0.0324
+// note: nearest: src/components/PromptInput/PromptInput.tsx (0.0303); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var wb = E(() => {
   gHo();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sea
 // matched 2.1.88 source: node_modules/@opentelemetry/api-logs/build/src/types/LogRecord.js
-// class=new  jaccard=0.0478  score=0.1166  fileCov=0.0749
-// note: nearest: node_modules/@opentelemetry/api-logs/build/src/types/LogRecord.js (0.0478); 0 renamed
+// class=new  jaccard=0.0303  score=0.0515  fileCov=0.0685
+// note: nearest: node_modules/@opentelemetry/api-logs/build/src/types/LogRecord.js (0.0303); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var sea = E(() => {
   (function (e) {

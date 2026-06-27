@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module U7n
 // matched 2.1.88 source: src/tasks/DreamTask/DreamTask.ts
-// class=modified  jaccard=0.3943  score=0.6239  fileCov=0.5173
+// class=modified  jaccard=0.3719  score=0.731  fileCov=0.4308
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var U7n = E(() => {

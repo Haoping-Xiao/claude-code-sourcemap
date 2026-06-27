@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module gSe
 // matched 2.1.88 source: src/services/api/errors.ts
-// class=modified  jaccard=0.1333  score=0.2584  fileCov=0.2159
+// class=modified  jaccard=0.1275  score=0.2816  fileCov=0.189
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var gSe = E(() => {

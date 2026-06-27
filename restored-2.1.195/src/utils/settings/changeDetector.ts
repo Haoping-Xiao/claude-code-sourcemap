@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module hna
 // matched 2.1.88 source: src/utils/settings/changeDetector.ts
-// class=modified  jaccard=0.3664  score=0.5075  fileCov=0.5686
+// class=modified  jaccard=0.3848  score=0.6186  fileCov=0.5045
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var hna = E(() => {

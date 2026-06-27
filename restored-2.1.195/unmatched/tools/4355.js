@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Izt
 // matched 2.1.88 source: src/tools/EnterWorktreeTool/EnterWorktreeTool.ts
-// class=new  jaccard=0.0412  score=0.2689  fileCov=0.0464
-// note: nearest: src/tools/EnterWorktreeTool/EnterWorktreeTool.ts (0.0412); dir inferred from dep-graph -> tools; 0 renamed
+// class=new  jaccard=0.0454  score=0.3357  fileCov=0.0499
+// note: nearest: src/tools/EnterWorktreeTool/EnterWorktreeTool.ts (0.0454); dir inferred from dep-graph -> tools; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Izt = E(() => {
   ft();

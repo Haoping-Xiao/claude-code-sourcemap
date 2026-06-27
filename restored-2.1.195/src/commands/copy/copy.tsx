@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module cPl
 // matched 2.1.88 source: src/commands/copy/copy.tsx
-// class=modified  jaccard=0.5275  score=0.75  fileCov=0.64
+// class=modified  jaccard=0.4284  score=0.6095  fileCov=0.5904
 // note: deminified; 5 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var cPl = E(() => {

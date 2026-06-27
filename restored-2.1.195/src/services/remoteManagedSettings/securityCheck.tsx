@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Gre
 // matched 2.1.88 source: src/services/remoteManagedSettings/securityCheck.tsx
-// class=modified  jaccard=0.3606  score=0.7103  fileCov=0.4228
+// class=modified  jaccard=0.2328  score=0.4589  fileCov=0.3209
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var Gre = E(() => {

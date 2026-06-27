@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module eSc
 // matched 2.1.88 source: src/server/directConnectManager.ts
-// class=modified  jaccard=0.3119  score=0.5613  fileCov=0.4125
+// class=modified  jaccard=0.4606  score=0.7494  fileCov=0.5445
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var eSc = E(() => {

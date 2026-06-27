@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module NZ
 // matched 2.1.88 source: node_modules/node-forge/lib/rsa.js
-// class=new  jaccard=0.0194  score=0.0562  fileCov=0.0288
-// note: nearest: node_modules/node-forge/lib/rsa.js (0.0194); 0 renamed
+// class=new  jaccard=0.0153  score=0.0789  fileCov=0.0187
+// note: nearest: node_modules/node-forge/lib/rsa.js (0.0153); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var NZ = E(() => {
   sK();

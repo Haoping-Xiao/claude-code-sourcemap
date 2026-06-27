@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Cal
-// matched 2.1.88 source: src/commands/install-github-app/CheckGitHubStep.tsx
-// class=partial  jaccard=0.163  score=0.2356  fileCov=0.3459
-// note: low-confidence suggestion: src/commands/install-github-app/CheckGitHubStep.tsx; dir inferred from dep-graph -> hooks; 0 renamed
+// matched 2.1.88 source: src/components/design-system/LoadingState.tsx
+// class=partial  jaccard=0.1633  score=0.3435  fileCov=0.2374
+// note: low-confidence suggestion: src/components/design-system/LoadingState.tsx; dir inferred from dep-graph -> hooks; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Cal = E(() => {
   Ye();

@@ -1,7 +1,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module sa
 // matched 2.1.88 source: src/utils/git.ts
-// class=modified (alt of src/utils/git.ts)  jaccard=0.1563  score=0.364  fileCov=0.215
+// class=modified (alt of src/utils/git.ts)  jaccard=0.1401  score=0.4304  fileCov=0.172
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var sa = E(() => {

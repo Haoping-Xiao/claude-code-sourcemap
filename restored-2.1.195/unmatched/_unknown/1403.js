@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module TFr
 // matched 2.1.88 source: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js
-// class=new  jaccard=0.0195  score=1  fileCov=0.0195
-// note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0195); 0 renamed
+// class=new  jaccard=0.0227  score=1  fileCov=0.0227
+// note: nearest: node_modules/@aws-sdk/client-cognito-identity/dist-cjs/index.js (0.0227); 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var TFr = E(() => {
   pb();

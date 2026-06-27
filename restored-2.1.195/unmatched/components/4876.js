@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module yFo
-// matched 2.1.88 source: src/components/mcp/MCPListPanel.tsx
-// class=new  jaccard=0.0213  score=0.026  fileCov=0.1041
-// note: nearest: src/components/mcp/MCPListPanel.tsx (0.0213); dir inferred from dep-graph -> components; 0 renamed
+// matched 2.1.88 source: src/components/teams/TeamsDialog.tsx
+// class=new  jaccard=0.0223  score=0.0356  fileCov=0.0564
+// note: nearest: src/components/teams/TeamsDialog.tsx (0.0223); dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var yFo = E(() => {
   Ye();

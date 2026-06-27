@@ -1,7 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module Uwc
-// class=new  (no 2.1.88 match)
-// note: dir inferred from dep-graph -> utils; 3 renamed
+// matched 2.1.88 source: src/cli/print.ts
+// class=new  jaccard=0.002  score=0.023  fileCov=0.0021
+// note: nearest: src/cli/print.ts (0.002); dir inferred from dep-graph -> utils; 3 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Uwc = E(() => {
   Un();

@@ -1,8 +1,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // restored from claude-code 2.1.195 (deminified) — module tYo
-// matched 2.1.88 source: src/bridge/bridgeMain.ts
-// class=new  jaccard=0.0058  score=0.0679  fileCov=0.0062
-// note: nearest: src/bridge/bridgeMain.ts (0.0058); dir inferred from dep-graph -> utils; 1 renamed
+// matched 2.1.88 source: src/services/mcp/client.ts
+// class=new  jaccard=0.006  score=0.08  fileCov=0.0064
+// note: nearest: src/services/mcp/client.ts (0.006); dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var tYo = E(() => {
   iu();
