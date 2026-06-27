@@ -8,20 +8,20 @@
 // [unwrapped __esm module _nc] deps: ft, Bs, vi, B_, Ko, gm, Xa, Ye, uo, es, sr, Lze
 (($Go = R(lt(), 1)), (hnc = R(rt(), 1)), (LC = R(se(), 1)));
 var Snc,
-  shouldFilterSuggestion = async (e, t, n) => {
-    let r = n.trim();
+  shouldFilterSuggestion = async (suggestion, promptId, source) => {
+    let r = source.trim();
     if (r === "")
       return Snc.jsx(ync, {
-        messages: t.messages,
+        messages: promptId.messages,
         onDone: () =>
-          e(void 0, {
+          suggestion(void 0, {
             display: "skip",
           }),
       });
     if (CQn(r)) {
-      let s = fSt(t);
+      let s = fSt(promptId);
       return (
-        e(s === null ? "No goal set" : `Goal cleared: ${s}`, {
+        suggestion(s === null ? "No goal set" : `Goal cleared: ${s}`, {
           display: "system",
         }),
         null
@@ -30,21 +30,21 @@ var Snc,
     if (r.length > uSt)
       return (
         It("goal_set", "too_long"),
-        e(`Goal condition is limited to ${uSt} characters (got ${r.length})`, {
+        suggestion(`Goal condition is limited to ${uSt} characters (got ${r.length})`, {
           display: "system",
         }),
         null
       );
-    let o = pSt(r, t);
+    let o = pSt(r, promptId);
     if (o !== null)
       return (
-        e(o, {
+        suggestion(o, {
           display: "system",
         }),
         null
       );
     return (
-      e(`Goal set: ${r}`, {
+      suggestion(`Goal set: ${r}`, {
         shouldQuery: true,
         metaMessages: [IQn(r)],
       }),

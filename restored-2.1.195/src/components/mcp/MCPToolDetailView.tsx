@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module znr] deps: si, Ye, Kv, Yfe, g$, uo, At, sr, Cc, mE, Bs, vi, Ko, gm, gKe, EC, LBo
 ((Vnr = R(rt(), 1)), (ud = R(se(), 1)));
-function MCPToolDetailView(e) {
+function MCPToolDetailView(t0) {
   let t = s2l.c(45),
-    { tool: n, server: r, onBack: o } = e,
+    { tool: n, server: r, onBack: o } = t0,
     [s, i] = Knr.useState(""),
     a,
     l;

@@ -102,14 +102,14 @@ function Y6a() {
       }),
     ));
 }
-async function initializeBetaTracing(e, t) {
+async function initializeBetaTracing(resource, t) {
   let n = process.env.BETA_TRACING_ENDPOINT;
   if (!n) return;
   let [{ OTLPTraceExporter: r }, { OTLPLogExporter: o }] = await Promise.all([
     Promise.resolve().then(() => (y_o(), h_o)),
     Promise.resolve().then(() => (b_o(), __o)),
   ]);
-  (e.setDelegate(
+  (resource.setDelegate(
     new r({
       url: `${n}/v1/traces`,
     }),

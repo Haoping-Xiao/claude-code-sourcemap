@@ -24,17 +24,17 @@ function lfc(e, t) {
   let r = `-Djavax.net.ssl.trustStore=${e} -Djavax.net.ssl.trustStorePassword=${VZt} -Djavax.net.ssl.trustStoreType=PKCS12`;
   return n ? `${r} ${n}` : r;
 }
-async function checkDownloadUtilities(e) {
+async function checkDownloadUtilities(parsed) {
   let t = [],
     n = {
       failureCodes: t,
     },
-    r = Fz.join(e.stateDir, "agent-proxy-ca.crt");
+    r = Fz.join(parsed.stateDir, "agent-proxy-ca.crt");
   try {
-    (await fw.mkdir(e.stateDir, {
+    (await fw.mkdir(parsed.stateDir, {
       recursive: true,
     }),
-      await fw.writeFile(r, e.ccrCa, "utf8"));
+      await fw.writeFile(r, parsed.ccrCa, "utf8"));
   } catch (i) {
     return (
       T(`[agent-proxy] tool trust setup skipped: cannot write CA file: ${be(i)}`, {
@@ -44,8 +44,8 @@ async function checkDownloadUtilities(e) {
       n
     );
   }
-  let o = await ifc(e.keytoolBin, Ulm),
-    s = await ifc(e.certutilBin, () => Gf("certutil"));
+  let o = await ifc(parsed.keytoolBin, Ulm),
+    s = await ifc(parsed.certutilBin, () => Gf("certutil"));
   if (
     (await Promise.all([
       (async () => {
@@ -53,7 +53,7 @@ async function checkDownloadUtilities(e) {
           T("[agent-proxy] no keytool found; skipping JVM truststore");
           return;
         }
-        let i = await Flm(o, r, Fz.join(e.stateDir, "java-truststore.p12"), t);
+        let i = await Flm(o, r, Fz.join(parsed.stateDir, "java-truststore.p12"), t);
         if (!i) return;
         if (Blm.test(i)) {
           (T(
@@ -65,7 +65,7 @@ async function checkDownloadUtilities(e) {
             t.push("jvm_unsafe_truststore_path"));
           return;
         }
-        ((n.javaTrustStorePath = i), await jlm(i, e.bazelrcPath ?? "/etc/bazel.bazelrc", t));
+        ((n.javaTrustStorePath = i), await jlm(i, parsed.bazelrcPath ?? "/etc/bazel.bazelrc", t));
       })(),
       (async () => {
         if (!s) {
@@ -74,13 +74,16 @@ async function checkDownloadUtilities(e) {
         }
         await Glm(
           r,
-          e.nssDbDirs ?? [Fz.join(Q9o.homedir(), ".pki", "nssdb"), Fz.join(Ore(), "pki", "nssdb")],
+          parsed.nssDbDirs ?? [
+            Fz.join(Q9o.homedir(), ".pki", "nssdb"),
+            Fz.join(Ore(), "pki", "nssdb"),
+          ],
           s,
           t,
         );
       })(),
-      Wlm(e.caBundlePath, e.botoConfigPath ?? Fz.join(Q9o.homedir(), ".boto"), t),
-      qlm(e, e.profileDPath ?? "/etc/profile.d/ccr-agent-proxy-ca.sh", t).then((i) => {
+      Wlm(parsed.caBundlePath, parsed.botoConfigPath ?? Fz.join(Q9o.homedir(), ".boto"), t),
+      qlm(parsed, parsed.profileDPath ?? "/etc/profile.d/ccr-agent-proxy-ca.sh", t).then((i) => {
         n.profileDPath = i;
       }),
     ]),

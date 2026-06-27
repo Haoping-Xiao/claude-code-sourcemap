@@ -102,20 +102,20 @@ async function JEs(e, t, n) {
     throw (r.destroy(), o);
   }
 }
-function extractFirstPromptFromHead(e) {
+function extractFirstPromptFromHead(head) {
   let t = 0,
     n = {
       commandFallback: "",
     };
-  while (t < e.length) {
-    let r = e.indexOf(
+  while (t < head.length) {
+    let r = head.indexOf(
         `
 `,
         t,
       ),
-      o = r >= 0 ? e.slice(t, r) : e.slice(t);
+      o = r >= 0 ? head.slice(t, r) : head.slice(t);
     if (
-      ((t = r >= 0 ? r + 1 : e.length),
+      ((t = r >= 0 ? r + 1 : head.length),
       !o.includes('"type":"user"') && !o.includes('"type": "user"'))
     )
       continue;
@@ -369,9 +369,9 @@ async function rCe(e, t) {
 function compactBoundaryMarker() {
   return (APu ??= Buffer.from('"compact_boundary"'));
 }
-function parseBoundaryLine(e) {
+function parseBoundaryLine(line) {
   try {
-    let t = JSON.parse(e);
+    let t = JSON.parse(line);
     if (t.type !== "system" || t.subtype !== "compact_boundary") return null;
     return {
       hasPreservedSegment: Boolean(

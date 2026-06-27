@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module e1e] deps: w8, je, At, vbe, lE, $g, vfe, Xh, WI
 dNf = ["user", "project", "local"];
-async function parseMarketplaceInput(e) {
-  let t = e.trim(),
+async function parseMarketplaceInput(input) {
+  let t = input.trim(),
     n = qt(),
     r = t.match(/^([a-zA-Z0-9._-]+@[^:]+:.+?(?:\.git)?)(#(.+))?$/);
   if (r?.[1]) {

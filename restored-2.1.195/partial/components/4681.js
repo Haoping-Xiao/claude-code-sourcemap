@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vKe] deps: Ye
 V1l = R(lt(), 1), z1l = R(se(), 1);
-function DiffDialog(e) {
+function DiffDialog(t0) {
   let t = K1l.c(61),
     {
       filePath: n,
@@ -16,7 +16,7 @@ function DiffDialog(e) {
       isTruncated: i,
       isUntracked: a,
       width: l
-    } = e,
+    } = t0,
     {
       columns: c
     } = br(),

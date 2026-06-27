@@ -123,12 +123,12 @@ function ICm(e) {
 function xCm(e) {
   return e.fastMode;
 }
-function getCooldownMessage(e, t) {
-  switch (e) {
+function getCooldownMessage(reason, resetIn) {
+  switch (reason) {
     case "overloaded":
-      return `Fast mode overloaded and is temporarily unavailable \xB7 resets in ${t}`;
+      return `Fast mode overloaded and is temporarily unavailable \xB7 resets in ${resetIn}`;
     case "rate_limit":
-      return `Fast limit reached and temporarily disabled \xB7 resets in ${t}`;
+      return `Fast limit reached and temporarily disabled \xB7 resets in ${resetIn}`;
   }
 }
 var zDc,

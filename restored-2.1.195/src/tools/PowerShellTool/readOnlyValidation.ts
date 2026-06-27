@@ -473,7 +473,7 @@ function qLo(e) {
   }
   return false;
 }
-function isAllowlistedCommand(e, t, n) {
+function isAllowlistedCommand(cmd, originalCommand, n) {
   if (n.mode === "bypassPermissions" || n.mode === "dontAsk")
     return {
       behavior: "passthrough",
@@ -484,12 +484,12 @@ function isAllowlistedCommand(e, t, n) {
       behavior: "passthrough",
       message: "No mode-specific validation required",
     };
-  if (!t.valid)
+  if (!originalCommand.valid)
     return {
       behavior: "passthrough",
       message: "Cannot validate mode for unparsed command",
     };
-  let r = S5(t);
+  let r = S5(originalCommand);
   if (
     r.hasSubExpressions ||
     r.hasScriptBlocks ||
@@ -504,7 +504,7 @@ function isAllowlistedCommand(e, t, n) {
       message:
         "Command contains subexpressions, script blocks, or member invocations that require approval",
     };
-  let o = G2n(t);
+  let o = G2n(originalCommand);
   if (o.length === 0)
     return {
       behavior: "passthrough",
@@ -564,7 +564,7 @@ function isAllowlistedCommand(e, t, n) {
               };
           }
         }
-      if (fze(l.name) || FLo(l, e.command)) continue;
+      if (fze(l.name) || FLo(l, cmd.command)) continue;
       if (!WLo(l.name))
         return {
           behavior: "passthrough",
@@ -588,7 +588,7 @@ function isAllowlistedCommand(e, t, n) {
             behavior: "passthrough",
             message: `Nested command '${l.name}' resolved from a path-like name and requires approval`,
           };
-        if (fze(l.name) || FLo(l, e.command)) continue;
+        if (fze(l.name) || FLo(l, cmd.command)) continue;
         if (!WLo(l.name))
           return {
             behavior: "passthrough",
@@ -603,7 +603,7 @@ function isAllowlistedCommand(e, t, n) {
   }
   return {
     behavior: "allow",
-    updatedInput: e,
+    updatedInput: cmd,
     decisionReason: {
       type: "mode",
       mode: "acceptEdits",

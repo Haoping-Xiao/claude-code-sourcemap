@@ -130,12 +130,12 @@ async function fxa(e) {
     );
   }
 }
-async function checkIdeConnection(e, t, n = 500) {
+async function checkIdeConnection(host, port, n = 500) {
   try {
     return new Promise((r) => {
       let o = uxa.createConnection({
-        host: e,
-        port: t,
+        host: host,
+        port: port,
         timeout: n,
       });
       (o.on("connect", () => {
@@ -228,12 +228,12 @@ async function gwp() {
     ke(e);
   }
 }
-async function maybeInstallIDEExtension(e) {
+async function maybeInstallIDEExtension(ideType) {
   try {
-    let t = await installIDEExtension(e);
+    let t = await installIDEExtension(ideType);
     if (
       (G("tengu_ext_installed", {
-        ide_type: $e(e),
+        ide_type: $e(ideType),
         installed_version: t == null ? void 0 : tS(t),
       }),
       xe("ide_extension_install"),
@@ -247,11 +247,11 @@ async function maybeInstallIDEExtension(e) {
       installed: true,
       error: null,
       installedVersion: t,
-      ideType: e,
+      ideType: ideType,
     };
   } catch (t) {
     (G("tengu_ext_install_error", {
-      ide_type: $e(e),
+      ide_type: $e(ideType),
       error_code: BJe(t),
     }),
       Le("ide_extension_install", "ide_extension_install_failed"));
@@ -264,7 +264,7 @@ async function maybeInstallIDEExtension(e) {
         installed: false,
         error: n,
         installedVersion: null,
-        ideType: e,
+        ideType: ideType,
       }
     );
   }
@@ -290,7 +290,7 @@ async function aFn() {
 function dFn() {
   if (hqe) (hqe.abort(), (hqe = null));
 }
-async function detectIDEs(e) {
+async function detectIDEs(includeInvalid) {
   let t = [];
   try {
     let n = process.env.CLAUDE_CODE_SSE_PORT,
@@ -333,7 +333,7 @@ async function detectIDEs(e) {
             break;
           }
         }
-      if (!u && !e) continue;
+      if (!u && !includeInvalid) continue;
       if (l) {
         if (!(r !== null && c.port === r)) {
           if (!c.pid || !pxa(c.pid)) continue;
@@ -357,7 +357,7 @@ async function detectIDEs(e) {
         ideRunningInWindows: c.runningInWindows,
       });
     }
-    if (!e && r) {
+    if (!includeInvalid && r) {
       let c = t.filter((u) => u.isValid && u.port === r);
       if (c.length === 1) return (xe("ide_detect"), c);
     }
@@ -367,8 +367,8 @@ async function detectIDEs(e) {
   }
   return t;
 }
-async function maybeNotifyIDEConnected(e) {
-  await e.notification({
+async function maybeNotifyIDEConnected(client) {
+  await client.notification({
     method: "ide_connected",
     params: {
       pid: process.pid,
@@ -378,9 +378,9 @@ async function maybeNotifyIDEConnected(e) {
 function yqe(e) {
   return e.some((t) => t.type === "connected" && t.name === "ide");
 }
-async function isIDEExtensionInstalled(e) {
-  if (lFn(e)) {
-    let t = await fFn(e);
+async function isIDEExtensionInstalled(ideType) {
+  if (lFn(ideType)) {
+    let t = await fFn(ideType);
     if (t)
       try {
         if (
@@ -392,12 +392,12 @@ async function isIDEExtensionInstalled(e) {
         )
           return true;
       } catch {}
-  } else if (kre(e)) return await QIa(e);
+  } else if (kre(ideType)) return await QIa(ideType);
   return false;
 }
-async function installIDEExtension(e) {
-  if (lFn(e)) {
-    let t = await fFn(e);
+async function installIDEExtension(ideType) {
+  if (lFn(ideType)) {
+    let t = await fFn(ideType);
     if (t) {
       let n = await getInstalledVSCodeExtensionVersion(t);
       if (!n || qte(n, axa())) {
@@ -435,8 +435,8 @@ function axa() {
     GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
   }.VERSION;
 }
-async function getInstalledVSCodeExtensionVersion(e) {
-  let { stdout: t } = await $n(e, ["--list-extensions", "--show-versions"], {
+async function getInstalledVSCodeExtensionVersion(command) {
+  let { stdout: t } = await $n(command, ["--list-extensions", "--show-versions"], {
       env: Jdo(),
     }),
     n =
@@ -568,8 +568,8 @@ function R3t(e) {
   let t = e.find((n) => n.type === "connected" && n.name === "ide");
   return getIdeClientName(t);
 }
-function getIdeClientName(e) {
-  let t = e?.config;
+function getIdeClientName(ideClient) {
+  let t = ideClient?.config;
   return t?.type === "sse-ide" || t?.type === "ws-ide"
     ? hxa(t.ideName)
     : uF()
@@ -596,16 +596,22 @@ function p5(e) {
   let t = e.find((n) => n.type === "connected" && n.name === "ide");
   return t?.type === "connected" ? t : void 0;
 }
-async function closeOpenDiffs(e) {
+async function closeOpenDiffs(ideClient) {
   try {
-    await Rre("closeAllDiffTabs", {}, e);
+    await Rre("closeAllDiffTabs", {}, ideClient);
   } catch (t) {}
 }
-async function initializeIdeIntegration(e, t, n, r, o) {
-  aFn().then(e);
+async function initializeIdeIntegration(
+  onIdeDetected,
+  ideToInstallExtension,
+  onShowIdeOnboarding,
+  onInstallationComplete,
+  o,
+) {
+  aFn().then(onIdeDetected);
   let s = Dt().autoInstallIdeExtension ?? true;
   if (!ut(process.env.CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL) && s) {
-    let i = t ?? Kdo();
+    let i = ideToInstallExtension ?? Kdo();
     if (i) {
       if (lFn(i))
         isIDEExtensionInstalled(i).then(async (a) => {
@@ -617,13 +623,15 @@ async function initializeIdeIntegration(e, t, n, r, o) {
               ideType: i,
             }))
             .then((l) => {
-              if ((r(l), l?.installed && !o?.aborted)) aFn().then(e);
-              if (!a && l?.installed === true && !sxa().hasIdeOnboardingDialogBeenShown()) n();
+              if ((onInstallationComplete(l), l?.installed && !o?.aborted))
+                aFn().then(onIdeDetected);
+              if (!a && l?.installed === true && !sxa().hasIdeOnboardingDialogBeenShown())
+                onShowIdeOnboarding();
             });
         });
       else if (kre(i))
         isIDEExtensionInstalled(i).then(async (a) => {
-          if (a && !sxa().hasIdeOnboardingDialogBeenShown()) n();
+          if (a && !sxa().hasIdeOnboardingDialogBeenShown()) onShowIdeOnboarding();
         });
     }
   }

@@ -118,51 +118,51 @@ function getAllowRules(e) {
   }
   return Lqo(e.alwaysAllowRules, "allow");
 }
-function createPermissionRequestMessage(e, t) {
-  if (t) {
-    if (t.type === "classifier")
-      return `Classifier '${t.classifier}' requires approval for this ${e} command: ${t.reason}`;
-    switch (t.type) {
+function createPermissionRequestMessage(toolName, decisionReason) {
+  if (decisionReason) {
+    if (decisionReason.type === "classifier")
+      return `Classifier '${decisionReason.classifier}' requires approval for this ${toolName} command: ${decisionReason.reason}`;
+    switch (decisionReason.type) {
       case "hook":
-        return t.reason
-          ? `Hook '${t.hookName}' blocked this action: ${t.reason}`
-          : `Hook '${t.hookName}' requires approval for this ${e} command`;
+        return decisionReason.reason
+          ? `Hook '${decisionReason.hookName}' blocked this action: ${decisionReason.reason}`
+          : `Hook '${decisionReason.hookName}' requires approval for this ${toolName} command`;
       case "rule": {
-        let r = Pp(t.rule.ruleValue),
-          o = permissionRuleSourceDisplayString(t.rule.source);
-        return `Permission rule '${r}' from ${o} requires approval for this ${e} command`;
+        let r = Pp(decisionReason.rule.ruleValue),
+          o = permissionRuleSourceDisplayString(decisionReason.rule.source);
+        return `Permission rule '${r}' from ${o} requires approval for this ${toolName} command`;
       }
       case "subcommandResults": {
         let r = [];
-        for (let [o, s] of t.reasons)
+        for (let [o, s] of decisionReason.reasons)
           if (s.behavior === "ask" || s.behavior === "passthrough")
-            if (e === "Bash") {
+            if (toolName === "Bash") {
               let { commandWithoutRedirections: i, redirections: a } = vde(o),
                 l = a.length > 0 ? i : o;
               r.push(l);
             } else r.push(o);
         if (r.length > 0) {
           let o = r.length;
-          return `This ${e} command contains multiple operations. The following ${bn(o, "part")} ${bn(o, "requires", "require")} approval: ${r.join(", ")}`;
+          return `This ${toolName} command contains multiple operations. The following ${bn(o, "part")} ${bn(o, "requires", "require")} approval: ${r.join(", ")}`;
         }
-        return `This ${e} command contains multiple operations that require approval`;
+        return `This ${toolName} command contains multiple operations that require approval`;
       }
       case "permissionPromptTool":
-        return `Tool '${t.permissionPromptToolName}' requires approval for this ${e} command`;
+        return `Tool '${decisionReason.permissionPromptToolName}' requires approval for this ${toolName} command`;
       case "sandboxOverride":
         return "Run outside of the sandbox";
       case "workingDir":
-        return t.reason;
+        return decisionReason.reason;
       case "safetyCheck":
       case "other":
-        return t.reason;
+        return decisionReason.reason;
       case "mode":
-        return `Current permission mode (${_Y(t.mode)}) requires approval for this ${e} command`;
+        return `Current permission mode (${_Y(decisionReason.mode)}) requires approval for this ${toolName} command`;
       case "asyncAgent":
-        return t.reason;
+        return decisionReason.reason;
     }
   }
-  return `Claude requested permissions to use ${e}, but you haven't granted it yet.`;
+  return `Claude requested permissions to use ${toolName}, but you haven't granted it yet.`;
 }
 function Lqo(e, t) {
   let n = [];
@@ -293,20 +293,35 @@ function guardHookUpdatedInput(e, t) {
     );
   return null;
 }
-async function runPermissionRequestHooksForHeadlessAgent(e, t, n, r, o, s) {
+async function runPermissionRequestHooksForHeadlessAgent(
+  tool,
+  input,
+  toolUseID,
+  context,
+  permissionMode,
+  suggestions,
+) {
   try {
-    for await (let i of jAe(e.name, n, t, r, o, s, r.abortController.signal)) {
+    for await (let i of jAe(
+      tool.name,
+      toolUseID,
+      input,
+      context,
+      permissionMode,
+      suggestions,
+      context.abortController.signal,
+    )) {
       if (!i.permissionRequestResult) continue;
       let a = i.permissionRequestResult;
       if (a.behavior === "allow") {
-        let l = a.updatedInput ?? t;
+        let l = a.updatedInput ?? input;
         if (a.updatedInput) {
           let c = guardHookUpdatedInput(
-            await checkRuleBasedPermissions(e, l, {
-              ...r,
-              toolUseId: n,
+            await checkRuleBasedPermissions(tool, l, {
+              ...context,
+              toolUseId: toolUseID,
             }),
-            e.name,
+            tool.name,
           );
           if (c)
             return c.behavior === "ask"
@@ -319,7 +334,7 @@ async function runPermissionRequestHooksForHeadlessAgent(e, t, n, r, o, s) {
         }
         if (a.updatedPermissions?.length) {
           let c = a.updatedPermissions;
-          (Y8(c), r.setToolPermissionContext((u) => T4(u, c)));
+          (Y8(c), context.setToolPermissionContext((u) => T4(u, c)));
         }
         return {
           behavior: "allow",
@@ -332,7 +347,8 @@ async function runPermissionRequestHooksForHeadlessAgent(e, t, n, r, o, s) {
       }
       if (a.behavior === "deny") {
         if (a.interrupt)
-          (T(`Hook interrupt: tool=${e.name} hookMessage=${a.message}`), r.abortController.abort());
+          (T(`Hook interrupt: tool=${tool.name} hookMessage=${a.message}`),
+            context.abortController.abort());
         return {
           behavior: "deny",
           message: a.message || "Permission denied by hook",
@@ -383,12 +399,19 @@ function eTt(e, t) {
       };
     });
 }
-function handleDenialLimitExceeded(e, t, n, r, o, s) {
-  if (!gkl(e)) return null;
-  let i = e.totalDenials >= rZn.maxTotal,
-    a = Fr(s).shouldAvoidPermissionPrompts,
-    l = e.totalDenials,
-    c = e.consecutiveDenials,
+function handleDenialLimitExceeded(
+  denialState,
+  appState,
+  classifierReason,
+  assistantMessage,
+  tool,
+  result,
+) {
+  if (!gkl(denialState)) return null;
+  let i = denialState.totalDenials >= rZn.maxTotal,
+    a = Fr(result).shouldAvoidPermissionPrompts,
+    l = denialState.totalDenials,
+    c = denialState.consecutiveDenials,
     u = i
       ? `${l} actions were blocked this session. Please review the transcript before continuing.`
       : `${c} consecutive actions were blocked. Please review the transcript before continuing.`;
@@ -396,10 +419,10 @@ function handleDenialLimitExceeded(e, t, n, r, o, s) {
     (G("tengu_auto_mode_denial_limit_exceeded", {
       limit: We(i ? "total" : "consecutive"),
       mode: We(a ? "headless" : "cli"),
-      messageID: n.message.id,
+      messageID: classifierReason.message.id,
       consecutiveDenials: c,
       totalDenials: l,
-      toolName: Ui(r.name),
+      toolName: Ui(assistantMessage.name),
     }),
     a)
   )
@@ -410,20 +433,20 @@ function handleDenialLimitExceeded(e, t, n, r, o, s) {
     }),
     i)
   )
-    eTt(s, {
-      ...e,
+    eTt(result, {
+      ...denialState,
       totalDenials: 0,
       consecutiveDenials: 0,
     });
-  let d = o.decisionReason?.type === "classifier" ? o.decisionReason.classifier : "auto-mode";
+  let d = tool.decisionReason?.type === "classifier" ? tool.decisionReason.classifier : "auto-mode";
   return {
-    ...o,
+    ...tool,
     decisionReason: {
       type: "classifier",
       classifier: d,
       reason: `${u}
 
-Latest blocked action: ${t}`,
+Latest blocked action: ${appState}`,
     },
   };
 }
@@ -441,9 +464,9 @@ function irm(e) {
 function Elc(e) {
   return e?.type === "mode" && e.mode === "plan";
 }
-async function checkRuleBasedPermissions(e, t, n) {
-  let r = Fr(n),
-    o = getDenyRuleForTool(r, e);
+async function checkRuleBasedPermissions(tool, input, context) {
+  let r = Fr(context),
+    o = getDenyRuleForTool(r, tool);
   if (o)
     return {
       behavior: "deny",
@@ -451,9 +474,9 @@ async function checkRuleBasedPermissions(e, t, n) {
         type: "rule",
         rule: o,
       },
-      message: `Permission to use ${e.name} has been denied.`,
+      message: `Permission to use ${tool.name} has been denied.`,
     };
-  let s = getInputParamRule(r, e, t, "deny");
+  let s = getInputParamRule(r, tool, input, "deny");
   if (s)
     return {
       behavior: "deny",
@@ -461,16 +484,16 @@ async function checkRuleBasedPermissions(e, t, n) {
         type: "rule",
         rule: s,
       },
-      message: `Permission to use ${e.name} with ${s.ruleValue.ruleContent} has been denied.`,
+      message: `Permission to use ${tool.name} with ${s.ruleValue.ruleContent} has been denied.`,
     };
-  let i = getAskRuleForTool(r, e);
+  let i = getAskRuleForTool(r, tool);
   if (i) {
     if (
       !(
-        e.name === Co &&
+        tool.name === Co &&
         xo.isSandboxingEnabled() &&
         xo.isAutoAllowBashIfSandboxedEnabled() &&
-        N$(t)
+        N$(input)
       )
     )
       return {
@@ -479,22 +502,22 @@ async function checkRuleBasedPermissions(e, t, n) {
           type: "rule",
           rule: i,
         },
-        message: createPermissionRequestMessage(e.name),
+        message: createPermissionRequestMessage(tool.name),
       };
   }
   let a = {
     behavior: "passthrough",
-    message: createPermissionRequestMessage(e.name),
+    message: createPermissionRequestMessage(tool.name),
   };
   try {
-    let c = e.inputSchema.parse(t);
-    a = await e.checkPermissions(c, n);
+    let c = tool.inputSchema.parse(input);
+    a = await tool.checkPermissions(c, context);
   } catch (c) {
     if (c instanceof ru || c instanceof tf) throw c;
     if (!lh(c)) ke(c);
   }
   if (a?.behavior === "deny") return a;
-  let l = getInputParamRule(r, e, t, "ask");
+  let l = getInputParamRule(r, tool, input, "ask");
   if (l)
     return {
       behavior: "ask",
@@ -502,17 +525,17 @@ async function checkRuleBasedPermissions(e, t, n) {
         type: "rule",
         rule: l,
       },
-      message: createPermissionRequestMessage(e.name),
+      message: createPermissionRequestMessage(tool.name),
     };
   if (a?.behavior === "ask" && acr(a.decisionReason)) return a;
-  if (e.mcpInfo?.effectiveMaxPermission === "ask") {
+  if (tool.mcpInfo?.effectiveMaxPermission === "ask") {
     let c = {
       type: "other",
       reason: blc,
     };
     return {
       behavior: "ask",
-      message: createPermissionRequestMessage(e.name, c),
+      message: createPermissionRequestMessage(tool.name, c),
       decisionReason: c,
     };
   }
@@ -523,10 +546,10 @@ async function checkRuleBasedPermissions(e, t, n) {
     return a;
   return null;
 }
-async function hasPermissionsToUseToolInner(e, t, n, r) {
-  if (n.abortController.signal.aborted) throw new ru();
-  let o = Fr(n),
-    s = getDenyRuleForTool(o, e);
+async function hasPermissionsToUseToolInner(tool, input, context, r) {
+  if (context.abortController.signal.aborted) throw new ru();
+  let o = Fr(context),
+    s = getDenyRuleForTool(o, tool);
   if (s)
     return {
       behavior: "deny",
@@ -534,9 +557,9 @@ async function hasPermissionsToUseToolInner(e, t, n, r) {
         type: "rule",
         rule: s,
       },
-      message: `Permission to use ${e.name} has been denied.`,
+      message: `Permission to use ${tool.name} has been denied.`,
     };
-  let i = getInputParamRule(o, e, t, "deny");
+  let i = getInputParamRule(o, tool, input, "deny");
   if (i)
     return {
       behavior: "deny",
@@ -544,16 +567,16 @@ async function hasPermissionsToUseToolInner(e, t, n, r) {
         type: "rule",
         rule: i,
       },
-      message: `Permission to use ${e.name} with ${i.ruleValue.ruleContent} has been denied.`,
+      message: `Permission to use ${tool.name} with ${i.ruleValue.ruleContent} has been denied.`,
     };
-  let a = getAskRuleForTool(o, e);
+  let a = getAskRuleForTool(o, tool);
   if (a) {
     if (
       !(
-        e.name === Co &&
+        tool.name === Co &&
         xo.isSandboxingEnabled() &&
         xo.isAutoAllowBashIfSandboxedEnabled() &&
-        N$(t)
+        N$(input)
       )
     )
       return {
@@ -562,22 +585,22 @@ async function hasPermissionsToUseToolInner(e, t, n, r) {
           type: "rule",
           rule: a,
         },
-        message: createPermissionRequestMessage(e.name),
+        message: createPermissionRequestMessage(tool.name),
       };
   }
   let l = {
     behavior: "passthrough",
-    message: createPermissionRequestMessage(e.name),
+    message: createPermissionRequestMessage(tool.name),
   };
   try {
-    let h = e.inputSchema.parse(t);
-    l = await e.checkPermissions(h, n);
+    let h = tool.inputSchema.parse(input);
+    l = await tool.checkPermissions(h, context);
   } catch (h) {
     if (h instanceof ru || h instanceof tf) throw h;
     if (!lh(h)) ke(h);
   }
   if (l?.behavior === "deny") return l;
-  let c = getInputParamRule(o, e, t, "ask");
+  let c = getInputParamRule(o, tool, input, "ask");
   if (c)
     return {
       behavior: "ask",
@@ -585,23 +608,23 @@ async function hasPermissionsToUseToolInner(e, t, n, r) {
         type: "rule",
         rule: c,
       },
-      message: createPermissionRequestMessage(e.name),
+      message: createPermissionRequestMessage(tool.name),
     };
-  if (e.requiresUserInteraction?.() && l?.behavior === "ask") return l;
+  if (tool.requiresUserInteraction?.() && l?.behavior === "ask") return l;
   if (l?.behavior === "ask" && acr(l.decisionReason)) return l;
-  if (e.mcpInfo?.effectiveMaxPermission === "ask") {
+  if (tool.mcpInfo?.effectiveMaxPermission === "ask") {
     let h = {
       type: "other",
       reason: blc,
     };
     return {
       behavior: "ask",
-      message: createPermissionRequestMessage(e.name, h),
+      message: createPermissionRequestMessage(tool.name, h),
       decisionReason: h,
     };
   }
-  let u = Fr(n),
-    d = Hqe(e, u),
+  let u = Fr(context),
+    d = Hqe(tool, u),
     p = d === "bypassPermissions" || (d === "plan" && u.isBypassPermissionsModeAvailable),
     f =
       p && l?.behavior === "ask"
@@ -624,17 +647,20 @@ async function hasPermissionsToUseToolInner(e, t, n, r) {
   if (p)
     return {
       behavior: "allow",
-      updatedInput: getUpdatedInputOrFallback(l, t),
+      updatedInput: getUpdatedInputOrFallback(l, input),
       decisionReason: {
         type: "mode",
         mode: d,
       },
     };
-  let m = toolAlwaysAllowedRule(Fr(n), e);
-  if (m && !(Fr(n).chromeClassifierFloorEnabled === true && kqo.isChromeMcpToolName(Rhe(e))))
+  let m = toolAlwaysAllowedRule(Fr(context), tool);
+  if (
+    m &&
+    !(Fr(context).chromeClassifierFloorEnabled === true && kqo.isChromeMcpToolName(Rhe(tool)))
+  )
     return {
       behavior: "allow",
-      updatedInput: getUpdatedInputOrFallback(l, t),
+      updatedInput: getUpdatedInputOrFallback(l, input),
       decisionReason: {
         type: "rule",
         rule: m,
@@ -645,11 +671,11 @@ async function hasPermissionsToUseToolInner(e, t, n, r) {
       ? {
           ...l,
           behavior: "ask",
-          message: createPermissionRequestMessage(e.name, l.decisionReason),
+          message: createPermissionRequestMessage(tool.name, l.decisionReason),
         }
       : l;
   if (g.behavior === "ask" && g.suggestions)
-    T(`Permission suggestions for ${e.name}: ${De(g.suggestions, null, 2)}`);
+    T(`Permission suggestions for ${tool.name}: ${De(g.suggestions, null, 2)}`);
   return g;
 }
 async function deletePermissionRule({ rule: e, initialContext: t, setToolPermissionContext: n }) {
@@ -722,8 +748,8 @@ function syncPermissionRulesFromDisk(e, t) {
   let r = Alc(t, "replaceRules");
   return T4(n, r);
 }
-function getUpdatedInputOrFallback(e, t) {
-  return ("updatedInput" in e ? e.updatedInput : void 0) ?? t;
+function getUpdatedInputOrFallback(permissionResult, fallback) {
+  return ("updatedInput" in permissionResult ? permissionResult.updatedInput : void 0) ?? fallback;
 }
 function findSafetyCheckReason(e, t = () => true) {
   if (!e) return;
@@ -753,38 +779,38 @@ var kqo,
         }
       : a;
   },
-  orm = async (e, t, n, r, o, s, i) => {
+  orm = async (tool, input, context, assistantMessage, toolUseID, s, i) => {
     let a = await hasPermissionsToUseToolInner(
-      e,
-      t,
+      tool,
+      input,
       {
-        ...n,
-        toolUseId: o,
+        ...context,
+        toolUseId: toolUseID,
       },
       s,
     );
     if (a.behavior === "allow") {
-      let l = n.getAppState();
+      let l = context.getAppState();
       {
-        let c = n.localDenialTracking ?? l.denialTracking;
-        if (Hqe(e, Fr(n)) === "auto" && c && c.consecutiveDenials > 0) {
+        let c = context.localDenialTracking ?? l.denialTracking;
+        if (Hqe(tool, Fr(context)) === "auto" && c && c.consecutiveDenials > 0) {
           let u = uYt(c);
-          eTt(n, u);
+          eTt(context, u);
         }
       }
       return a;
     }
     if (a.behavior === "ask") {
-      let l = n.getAppState(),
-        c = Fr(n),
-        u = Hqe(e, c),
-        d = kqo?.isChromeMcpToolName(Rhe(e)) ?? false,
+      let l = context.getAppState(),
+        c = Fr(context),
+        u = Hqe(tool, c),
+        d = kqo?.isChromeMcpToolName(Rhe(tool)) ?? false,
         p =
           c.chromeClassifierFloorEnabled === true &&
           c.canAutoClassifierRun === true &&
           d &&
           (a.metadata?.command?.chrome?.domainAllowed === true ||
-            toolAlwaysAllowedRule(c, e) !== null);
+            toolAlwaysAllowedRule(c, tool) !== null);
       if (u === "dontAsk" && !p)
         return {
           behavior: "deny",
@@ -792,7 +818,7 @@ var kqo,
             type: "mode",
             mode: "dontAsk",
           },
-          message: icr(e.name),
+          message: icr(tool.name),
         };
       if (Slc(u) || p) {
         let g = (P) => ({
@@ -804,8 +830,8 @@ var kqo,
           b =
             acr(a.decisionReason) &&
             true &&
-            !(irm(a.decisionReason) && !(e.isDestructive?.(t) ?? false)),
-          _ = e.mcpInfo?.effectiveMaxPermission === "ask",
+            !(irm(a.decisionReason) && !(tool.isDestructive?.(input) ?? false)),
+          _ = tool.mcpInfo?.effectiveMaxPermission === "ask",
           S = Elc(a.decisionReason);
         if (h || y || b || _ || S) {
           if (c.shouldAvoidPermissionPrompts)
@@ -824,37 +850,37 @@ var kqo,
                 reason: We(
                   h ? "safety_check" : b ? "ask_rule" : S ? "plan_mode_floor" : "org_ask_ceiling",
                 ),
-                toolName: Ui(e.name),
+                toolName: Ui(tool.name),
               }),
               a
             );
         }
-        if (e.requiresUserInteraction?.() && a.behavior === "ask")
+        if (tool.requiresUserInteraction?.() && a.behavior === "ask")
           return (
             G("tengu_auto_mode_fallback_to_ask", {
               reason: We("requires_user_interaction"),
-              toolName: Ui(e.name),
+              toolName: Ui(tool.name),
             }),
             a
           );
-        if (erm?.workflowNeedsUsageConsentPrompt(e.name, n))
+        if (erm?.workflowNeedsUsageConsentPrompt(tool.name, context))
           return (
             G("tengu_auto_mode_fallback_to_ask", {
               reason: We("workflow_usage_consent"),
-              toolName: Ui(e.name),
+              toolName: Ui(tool.name),
             }),
             a
           );
-        let A = n.localDenialTracking ?? l.denialTracking ?? oZn();
-        if ((e.name, Ss, e.name !== ss && !y))
+        let A = context.localDenialTracking ?? l.denialTracking ?? oZn();
+        if ((tool.name, Ss, tool.name !== ss && !y))
           try {
-            let P = e.inputSchema.parse(t),
+            let P = tool.inputSchema.parse(input),
               O = (B) => {
                 let $ = Ig(B);
                 return !C6e($.toolName, $.ruleContent);
               },
               L = xw(c.alwaysAllowRules, (B) => (B ?? []).filter(O)),
-              M = n.permissionLayers?.map((B) =>
+              M = context.permissionLayers?.map((B) =>
                 B.kind === "allowed_tools"
                   ? {
                       ...B,
@@ -862,11 +888,11 @@ var kqo,
                     }
                   : B,
               ),
-              N = await e.checkPermissions(P, {
-                ...n,
+              N = await tool.checkPermissions(P, {
+                ...context,
                 permissionLayers: M,
                 getAppState: () => {
-                  let B = n.getAppState();
+                  let B = context.getAppState();
                   return {
                     ...B,
                     toolPermissionContext: {
@@ -880,22 +906,22 @@ var kqo,
             if (N.behavior === "allow") {
               let B = uYt(A);
               return (
-                eTt(n, B),
+                eTt(context, B),
                 T(
-                  `Skipping auto mode classifier for ${e.name}: would be allowed in acceptEdits mode`,
+                  `Skipping auto mode classifier for ${tool.name}: would be allowed in acceptEdits mode`,
                 ),
                 G("tengu_auto_mode_decision", {
                   decision: We("allowed"),
-                  toolName: Ui(e.name),
+                  toolName: Ui(tool.name),
                   inProtectedNamespace: $V(),
                   chromeAutomode: d,
-                  agentMsgId: r.message.id,
+                  agentMsgId: assistantMessage.message.id,
                   confidence: We("high"),
                   fastPath: We("acceptEdits"),
-                  ...scr(e.name, t),
+                  ...scr(tool.name, input),
                 }),
                 g({
-                  updatedInput: N.updatedInput ?? t,
+                  updatedInput: N.updatedInput ?? input,
                   decisionReason: {
                     type: "mode",
                     mode: "auto",
@@ -908,38 +934,38 @@ var kqo,
             if (!lh(P)) ke(P);
             G("tengu_auto_mode_decision", {
               decision: We("fastpath_error"),
-              toolName: Ui(e.name),
+              toolName: Ui(tool.name),
               inProtectedNamespace: $V(),
               chromeAutomode: d,
-              agentMsgId: r.message.id,
+              agentMsgId: assistantMessage.message.id,
               fastPath: We("acceptEdits"),
               error: P instanceof Error ? P.name : "unknown",
-              ...scr(e.name, t),
+              ...scr(tool.name, input),
             });
           }
-        if (kqo.isAutoModeAllowlistedTool(e.name, t)) {
+        if (kqo.isAutoModeAllowlistedTool(tool.name, input)) {
           let P = uYt(A);
           return (
-            eTt(n, P),
-            T(`Skipping auto mode classifier for ${e.name}: tool is on the safe allowlist`),
+            eTt(context, P),
+            T(`Skipping auto mode classifier for ${tool.name}: tool is on the safe allowlist`),
             Iqo({
-              tool: e.name,
+              tool: tool.name,
               allowlisted: true,
               decision: "allowed",
               durationMs: 0,
             }),
             G("tengu_auto_mode_decision", {
               decision: We("allowed"),
-              toolName: Ui(e.name),
+              toolName: Ui(tool.name),
               inProtectedNamespace: $V(),
               chromeAutomode: d,
-              agentMsgId: r.message.id,
+              agentMsgId: assistantMessage.message.id,
               confidence: We("high"),
               fastPath: We("allowlist"),
-              ...scr(e.name, t),
+              ...scr(tool.name, input),
             }),
             g({
-              updatedInput: a.updatedInput ?? t,
+              updatedInput: a.updatedInput ?? input,
               decisionReason: {
                 type: "mode",
                 mode: "auto",
@@ -947,30 +973,30 @@ var kqo,
             })
           );
         }
-        let v = rrm() ? (n.sameTurnToolUses ?? []) : [],
-          C = z6n(e.name, t);
-        ull(i, o);
+        let v = rrm() ? (context.sameTurnToolUses ?? []) : [],
+          C = z6n(tool.name, input);
+        ull(i, toolUseID);
         let x;
         try {
           x = await Hyt(
-            v.length > 0 ? [...n.messages, ...v] : n.messages,
+            v.length > 0 ? [...context.messages, ...v] : context.messages,
             C,
-            n.options.tools,
-            Fr(n),
-            n.abortController.signal,
+            context.options.tools,
+            Fr(context),
+            context.abortController.signal,
             {
-              isSubagentLoop: aje(n.agentId),
-              recordPresumed: n.agentId === void 0,
+              isSubagentLoop: aje(context.agentId),
+              recordPresumed: context.agentId === void 0,
             },
           );
         } finally {
-          VMe(i, o);
+          VMe(i, toolUseID);
         }
         let I = x.unavailable ? "unavailable" : x.shouldBlock ? "blocked" : "allowed",
           k = x.usage && x.model ? eje(x.model, x.usage) : void 0;
         if (
           (Iqo({
-            tool: e.name,
+            tool: tool.name,
             allowlisted: false,
             decision: I,
             classifierModel: x.model,
@@ -984,13 +1010,13 @@ var kqo,
           }),
           G("tengu_auto_mode_decision", {
             decision: $e(I),
-            toolName: Ui(e.name),
+            toolName: Ui(tool.name),
             inProtectedNamespace: $V(),
             chromeAutomode: d,
-            ...scr(e.name, t),
+            ...scr(tool.name, input),
             stripAllBashFlag: vko(),
             originalDecisionReasonType: Oo(a.decisionReason?.type),
-            agentMsgId: r.message.id,
+            agentMsgId: assistantMessage.message.id,
             sameTurnSiblings: v.length,
             classifierModel: x.model,
             consecutiveDenials: x.shouldBlock ? A.consecutiveDenials + 1 : 0,
@@ -1032,10 +1058,10 @@ var kqo,
           x.shouldBlock)
         ) {
           if (x.transcriptTooLong) {
-            if (e.name === ss)
+            if (tool.name === ss)
               return {
                 behavior: "allow",
-                updatedInput: t,
+                updatedInput: input,
                 decisionReason: {
                   type: "mode",
                   mode: "auto",
@@ -1054,7 +1080,7 @@ var kqo,
               ),
               G("tengu_auto_mode_fallback_to_ask", {
                 reason: We("transcript_too_long"),
-                toolName: Ui(e.name),
+                toolName: Ui(tool.name),
               }),
               u === "dontAsk")
             )
@@ -1064,7 +1090,7 @@ var kqo,
                   type: "mode",
                   mode: "dontAsk",
                 },
-                message: icr(e.name),
+                message: icr(tool.name),
               };
             return {
               ...a,
@@ -1086,15 +1112,15 @@ var kqo,
                   classifier: "auto-mode",
                   reason: n2e,
                 },
-                message: vlc(e.name, x.model, x.httpStatus, x.errorKind),
+                message: vlc(tool.name, x.model, x.httpStatus, x.errorKind),
               }
             );
           let P = mkl(A);
-          (eTt(n, P),
+          (eTt(context, P),
             T(`Auto mode classifier blocked action: ${x.reason}`, {
               level: "warn",
             }));
-          let O = handleDenialLimitExceeded(P, x.reason, r, e, a, n);
+          let O = handleDenialLimitExceeded(P, x.reason, assistantMessage, tool, a, context);
           if (O) {
             if (u === "dontAsk")
               return {
@@ -1103,7 +1129,7 @@ var kqo,
                   type: "mode",
                   mode: "dontAsk",
                 },
-                message: icr(e.name),
+                message: icr(tool.name),
               };
             return O;
           }
@@ -1119,9 +1145,9 @@ var kqo,
         }
         let D = uYt(A);
         return (
-          eTt(n, D),
+          eTt(context, D),
           g({
-            updatedInput: a.updatedInput ?? t,
+            updatedInput: a.updatedInput ?? input,
             decisionReason: {
               type: "classifier",
               classifier: "auto-mode",
@@ -1130,14 +1156,14 @@ var kqo,
           })
         );
       }
-      let f = Fr(n);
+      let f = Fr(context);
       if (f.shouldAvoidPermissionPrompts) {
         let m = await runPermissionRequestHooksForHeadlessAgent(
-          e,
-          a.updatedInput ?? t,
-          o,
-          n,
-          Hqe(e, f),
+          tool,
+          a.updatedInput ?? input,
+          toolUseID,
+          context,
+          Hqe(tool, f),
           a.suggestions,
         );
         if (m) return m;
@@ -1147,7 +1173,7 @@ var kqo,
             type: "asyncAgent",
             reason: "Permission prompts are not available in this context",
           },
-          message: Hlc(e.name),
+          message: Hlc(tool.name),
         };
       }
     }

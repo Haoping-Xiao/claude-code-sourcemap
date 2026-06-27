@@ -60,10 +60,10 @@ function Ayf(e) {
   }
   return false;
 }
-function normalizeMessages(e) {
+function normalizeMessages(messages) {
   let t = 0;
-  for (let n = e.length - 1; n >= 0; n--) {
-    let r = e[n];
+  for (let n = messages.length - 1; n >= 0; n--) {
+    let r = messages[n];
     if (r.type === "assistant") {
       if (r.message?.stop_reason !== null) return t;
       for (let o of r.message?.content ?? [])
@@ -106,13 +106,13 @@ function OEl(e) {
   let t = e.message?.content;
   return Array.isArray(t) && t.length > 0 && t.every((n) => n.type === "tool_result");
 }
-function normalizeMessagesForAPI(e) {
-  if (e.type === "system") return true;
-  if (e.type === "assistant") {
-    let t = e.message?.stop_reason;
+function normalizeMessagesForAPI(messages) {
+  if (messages.type === "system") return true;
+  if (messages.type === "assistant") {
+    let t = messages.message?.stop_reason;
     return t === null || t === "tool_use";
   }
-  if (e.type === "user") return jzt(e);
+  if (messages.type === "user") return jzt(messages);
   return false;
 }
 function Gzt(e) {

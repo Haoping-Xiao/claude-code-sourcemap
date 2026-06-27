@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dHo] deps: Ye, aAn, f_, R6
 ((Z7a = R(lt(), 1)), (E9n = R(rt(), 1)), (KEe = R(se(), 1)), (w7p = /https?:\/\/\S+/));
-function WizardProvider(e) {
+function WizardProvider(t0) {
   let t = eXa.c(38),
     {
       steps: n,
@@ -16,7 +16,7 @@ function WizardProvider(e) {
       children: i,
       title: a,
       showStepCounter: l,
-    } = e,
+    } = t0,
     c;
   if (t[0] !== r) ((c = r === void 0 ? {} : r), (t[0] = r), (t[1] = c));
   else c = t[1];

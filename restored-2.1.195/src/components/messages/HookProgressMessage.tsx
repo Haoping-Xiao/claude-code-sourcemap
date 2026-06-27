@@ -23,9 +23,9 @@ s6e = class s6e extends Qsl.Component {
     return this.props.children;
   }
 };
-function HookProgressMessage(e) {
+function HookProgressMessage(t0) {
   let t = Zsl.c(22),
-    { hookEvent: n, lookups: r, toolUseID: o, isTranscriptMode: s } = e,
+    { hookEvent: n, lookups: r, toolUseID: o, isTranscriptMode: s } = t0,
     i;
   if (t[0] !== n || t[1] !== r.inProgressHookCounts || t[2] !== o)
     ((i = r.inProgressHookCounts.get(o)?.get(n) ?? 0),

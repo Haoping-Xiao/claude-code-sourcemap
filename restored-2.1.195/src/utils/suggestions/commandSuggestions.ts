@@ -121,9 +121,9 @@ rpm = {
   ultrareview: "agent",
   workflows: "agent",
 };
-function getCommandFuse(e) {
-  if (c6o?.commands === e) return c6o.fuse;
-  let t = e
+function getCommandFuse(commands) {
+  if (c6o?.commands === commands) return c6o.fuse;
+  let t = commands
       .filter((r) => !r.isHidden)
       .map((r) => {
         let o = r.name,
@@ -177,15 +177,19 @@ function getCommandFuse(e) {
     });
   return (
     (c6o = {
-      commands: e,
+      commands: commands,
       fuse: n,
     }),
     n
   );
 }
-function isCommandMetadata(e) {
+function isCommandMetadata(metadata) {
   return (
-    typeof e === "object" && e !== null && "name" in e && typeof e.name === "string" && "type" in e
+    typeof metadata === "object" &&
+    metadata !== null &&
+    "name" in metadata &&
+    typeof metadata.name === "string" &&
+    "type" in metadata
   );
 }
 function udr(e, t) {
@@ -245,14 +249,14 @@ function ipm(e) {
 function apm(e) {
   return `/${e} `;
 }
-function getCommandId(e) {
-  let t = e.name;
-  if (e.type === "prompt") {
-    if (e.source === "plugin" && e.pluginInfo?.repository)
-      return `${t}:${e.source}:${e.pluginInfo.repository}`;
-    return `${t}:${e.source}`;
+function getCommandId(cmd) {
+  let t = cmd.name;
+  if (cmd.type === "prompt") {
+    if (cmd.source === "plugin" && cmd.pluginInfo?.repository)
+      return `${t}:${cmd.source}:${cmd.pluginInfo.repository}`;
+    return `${t}:${cmd.source}`;
   }
-  return `${t}:${e.type}`;
+  return `${t}:${cmd.type}`;
 }
 function lpm(e, t) {
   if (!t || t.length === 0 || e === "") return;
@@ -276,35 +280,37 @@ function dpm(e) {
       return;
   }
 }
-function createCommandSuggestionItem(e, t, n, r) {
-  let o = xu(e),
+function createCommandSuggestionItem(cmd, matchedAlias, n, r) {
+  let o = xu(cmd),
     s = n ? ` (${n})` : "",
-    i = e.type === "prompt" && e.kind === "workflow",
+    i = cmd.type === "prompt" && cmd.kind === "workflow",
     l =
-      (t ? (e.menuDescription ?? e.description) : i ? e.description : yse(e)) +
-      (e.type === "prompt" && e.argNames?.length ? ` (arguments: ${e.argNames.join(", ")})` : "");
+      (matchedAlias ? (cmd.menuDescription ?? cmd.description) : i ? cmd.description : yse(cmd)) +
+      (cmd.type === "prompt" && cmd.argNames?.length
+        ? ` (arguments: ${cmd.argNames.join(", ")})`
+        : "");
   return {
-    id: getCommandId(e),
+    id: getCommandId(cmd),
     displayText: `/${o}${s}`,
     tag: i ? "dynamic workflow" : void 0,
     description: l,
-    metadata: e,
+    metadata: cmd,
     matchedAlias: n,
     query: r,
-    ...(t && {
-      kind: nyc(e),
-      sourceTag: dpm(e),
+    ...(matchedAlias && {
+      kind: nyc(cmd),
+      sourceTag: dpm(cmd),
     }),
   };
 }
-function generateCommandSuggestions(e, t) {
-  if (!f7e(e)) return [];
-  if (ipm(e)) return [];
-  t = EYt(t);
-  let n = e.slice(1).toLowerCase().trim(),
+function generateCommandSuggestions(input, commands) {
+  if (!f7e(input)) return [];
+  if (ipm(input)) return [];
+  commands = EYt(commands);
+  let n = input.slice(1).toLowerCase().trim(),
     r = cpm();
   if (n === "") {
-    let d = t.filter((A) => !A.isHidden && !Poe(A)),
+    let d = commands.filter((A) => !A.isHidden && !Poe(A)),
       p = [],
       f = d
         .filter((A) => A.type === "prompt")
@@ -341,9 +347,9 @@ function generateCommandSuggestions(e, t) {
     );
   }
   let o = (d) => xu(d).toLowerCase() === n || d.name.toLowerCase() === n,
-    s = t.find((d) => d.isHidden && o(d));
-  if (s && t.some((d) => !d.isHidden && o(d))) s = void 0;
-  let u = getCommandFuse(t)
+    s = commands.find((d) => d.isHidden && o(d));
+  if (s && commands.some((d) => !d.isHidden && o(d))) s = void 0;
+  let u = getCommandFuse(commands)
     .search(n)
     .filter((d) => !Poe(d.item.command))
     .map((d) => {
@@ -402,12 +408,20 @@ function generateCommandSuggestions(e, t) {
   }
   return u;
 }
-function applyCommandSuggestion(e, t, n, r, o, s) {
-  if (typeof e !== "string") {
-    let c = kyt(e.metadata);
+function applyCommandSuggestion(
+  suggestion,
+  shouldExecute,
+  commands,
+  onInputChange,
+  setCursorOffset,
+  onSubmit,
+) {
+  if (typeof suggestion !== "string") {
+    let c = kyt(suggestion.metadata);
     if (c) {
       let u = c.replacement;
-      if ((r(u), o(u.length), t && !c.partial)) s(u.trim(), true);
+      if ((onInputChange(u), setCursorOffset(u.length), shouldExecute && !c.partial))
+        onSubmit(u.trim(), true);
       return {
         newInput: u,
         reSuggest: c.partial,
@@ -415,18 +429,20 @@ function applyCommandSuggestion(e, t, n, r, o, s) {
     }
   }
   let i, a;
-  if (typeof e === "string") ((i = e), (a = t ? h6e(i, n) : void 0));
+  if (typeof suggestion === "string")
+    ((i = suggestion), (a = shouldExecute ? h6e(i, commands) : void 0));
   else {
-    if (!isCommandMetadata(e.metadata)) return null;
-    let c = e.matchedAlias;
-    ((i = c && fA(c, n) === e.metadata ? c : e.metadata.name), (a = e.metadata));
+    if (!isCommandMetadata(suggestion.metadata)) return null;
+    let c = suggestion.matchedAlias;
+    ((i = c && fA(c, commands) === suggestion.metadata ? c : suggestion.metadata.name),
+      (a = suggestion.metadata));
   }
   if (hk()) {
     if (a?.type === "prompt" && a.urlTemplate) {
       let c = `/${xu(a)}`;
       return (
-        r(c),
-        o(c.length),
+        onInputChange(c),
+        setCursorOffset(c.length),
         {
           newInput: c,
           reSuggest: true,
@@ -435,8 +451,8 @@ function applyCommandSuggestion(e, t, n, r, o, s) {
     }
   }
   let l = apm(i);
-  if ((r(l), o(l.length), t && a)) {
-    if (a.type !== "prompt" || (a.argNames ?? []).length === 0) s(l, true);
+  if ((onInputChange(l), setCursorOffset(l.length), shouldExecute && a)) {
+    if (a.type !== "prompt" || (a.argNames ?? []).length === 0) onSubmit(l, true);
   }
   return {
     newInput: l,

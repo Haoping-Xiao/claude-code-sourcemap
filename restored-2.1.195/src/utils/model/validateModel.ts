@@ -7,8 +7,8 @@
 function asl() {
   lCo.clear();
 }
-async function validateModel(e, t) {
-  let n = e.trim();
+async function validateModel(model, t) {
+  let n = model.trim();
   if (!n)
     return {
       valid: false,
@@ -65,28 +65,28 @@ async function validateModel(e, t) {
     return handleValidationError(r, n);
   }
 }
-function handleValidationError(e, t) {
-  if (e instanceof iUe) {
-    let r = get3PFallbackSuggestion(t),
+function handleValidationError(error, modelName) {
+  if (error instanceof iUe) {
+    let r = get3PFallbackSuggestion(modelName),
       o = r ? `. Try '${r}' instead` : "";
     return {
       valid: false,
-      error: `Model '${t}' not found${o}`,
+      error: `Model '${modelName}' not found${o}`,
       notFound: true,
     };
   }
-  if (e instanceof Fo) {
-    if (e instanceof sUe)
+  if (error instanceof Fo) {
+    if (error instanceof sUe)
       return {
         valid: false,
         error: "Authentication failed. Please check your API credentials.",
       };
-    if (e instanceof Hx)
+    if (error instanceof Hx)
       return {
         valid: false,
         error: "Network error. Please check your internet connection.",
       };
-    let r = e.error;
+    let r = error.error;
     if (
       r &&
       typeof r === "object" &&
@@ -98,22 +98,22 @@ function handleValidationError(e, t) {
     )
       return {
         valid: false,
-        error: `Model '${t}' not found`,
+        error: `Model '${modelName}' not found`,
         notFound: true,
       };
     return {
       valid: false,
-      error: `API error: ${e.message}`,
+      error: `API error: ${error.message}`,
     };
   }
   return {
     valid: false,
-    error: `Unable to validate model: ${e instanceof Error ? e.message : String(e)}`,
+    error: `Unable to validate model: ${error instanceof Error ? error.message : String(error)}`,
   };
 }
-function get3PFallbackSuggestion(e) {
+function get3PFallbackSuggestion(model) {
   if (td()) return;
-  let t = e.toLowerCase();
+  let t = model.toLowerCase();
   if (t.includes("fable-5") || t.includes("fable_5"))
     return Oe.ANTHROPIC_DEFAULT_OPUS_MODEL ?? Vp().opus48;
   if (t.includes("opus-4-8") || t.includes("opus_4_8")) return Vp().opus47;

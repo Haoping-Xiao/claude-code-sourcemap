@@ -18,9 +18,9 @@ XIm = new Set([
   "WebFetch",
   "WebSearch",
 ]);
-function TrustDialog(e) {
+function TrustDialog(t0) {
   let t = S$c.c(45),
-    { onDone: n, commands: r } = e,
+    { onDone: n, commands: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((o = bT("project")), (t[0] = o));
   else o = t[0];
@@ -369,23 +369,25 @@ function QIm(e) {
     hasTrustDialogAccepted: true,
   };
 }
-function _temp4(e) {
+function _temp4(command_0) {
   return (
-    e.type === "prompt" &&
-    (e.loadedFrom === "skills" || e.loadedFrom === "plugin") &&
-    (e.source === "projectSettings" || e.source === "localSettings" || e.source === "plugin") &&
-    e.allowedTools?.some(exm)
+    command_0.type === "prompt" &&
+    (command_0.loadedFrom === "skills" || command_0.loadedFrom === "plugin") &&
+    (command_0.source === "projectSettings" ||
+      command_0.source === "localSettings" ||
+      command_0.source === "plugin") &&
+    command_0.allowedTools?.some(exm)
   );
 }
 function exm(e) {
   return e === Co || e.startsWith(Co + "(");
 }
-function _temp2(e) {
+function _temp2(command) {
   return (
-    e.type === "prompt" &&
-    e.loadedFrom === "commands_DEPRECATED" &&
-    (e.source === "projectSettings" || e.source === "localSettings") &&
-    e.allowedTools?.some(nxm)
+    command.type === "prompt" &&
+    command.loadedFrom === "commands_DEPRECATED" &&
+    (command.source === "projectSettings" || command.source === "localSettings") &&
+    command.allowedTools?.some(nxm)
   );
 }
 function nxm(e) {

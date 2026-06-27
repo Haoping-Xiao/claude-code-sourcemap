@@ -57,13 +57,13 @@ Validation errors: ${u}`,
     manifest: a.success ? a.data : void 0,
   };
 }
-function loadPluginManifest(e, t) {
-  switch (e) {
+function loadPluginManifest(manifestPath, pluginName) {
+  switch (manifestPath) {
     case "plugin-json":
-      return `Plugin ${t.pluginName} has an invalid manifest file at ${t.manifestPath}.`;
+      return `Plugin ${pluginName.pluginName} has an invalid manifest file at ${pluginName.manifestPath}.`;
     case "skill-md":
-      return `Skill ${t.pluginName} has invalid plugin-manifest frontmatter at ${t.manifestPath}.`;
+      return `Skill ${pluginName.pluginName} has invalid plugin-manifest frontmatter at ${pluginName.manifestPath}.`;
     case "marketplace-entry":
-      return `Marketplace entry ${t.pluginName} has an invalid manifest.`;
+      return `Marketplace entry ${pluginName.pluginName} has an invalid manifest.`;
   }
 }

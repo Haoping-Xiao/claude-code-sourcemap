@@ -13,31 +13,31 @@ var vEn,
     }
     return;
   },
-  resolveRegion = async (e, t, n, r = {}) => {
-    let o = typeof e === "function" ? await e() : e,
-      s = typeof t === "function" ? await t() : t,
+  resolveRegion = async (_region, _parentRegion, credentialProviderLogger, r = {}) => {
+    let o = typeof _region === "function" ? await _region() : _region,
+      s = typeof _parentRegion === "function" ? await _parentRegion() : _parentRegion,
       i = await hZs.stsRegionDefaultResolver(r)();
-    return n?.debug?.("@aws-sdk/client-sts::resolveRegion", "accepting first of:", `${o} (credential provider clientConfig)`, `${s} (contextual client)`, `${i} (STS default: AWS_REGION, profile region, or us-east-1)`), o ?? s ?? i;
+    return credentialProviderLogger?.debug?.("@aws-sdk/client-sts::resolveRegion", "accepting first of:", `${o} (credential provider clientConfig)`, `${s} (contextual client)`, `${i} (STS default: AWS_REGION, profile region, or us-east-1)`), o ?? s ?? i;
   },
-  getDefaultRoleAssumer$1 = (e, t) => {
+  getDefaultRoleAssumer$1 = (stsOptions, STSClient) => {
     let n, r;
     return async (o, s) => {
       if (r = o, !n) {
         let {
-            logger: u = e?.parentClientConfig?.logger,
-            profile: d = e?.parentClientConfig?.profile,
+            logger: u = stsOptions?.parentClientConfig?.logger,
+            profile: d = stsOptions?.parentClientConfig?.profile,
             region: p,
-            requestHandler: f = e?.parentClientConfig?.requestHandler,
+            requestHandler: f = stsOptions?.parentClientConfig?.requestHandler,
             credentialProviderLogger: m,
-            userAgentAppId: g = e?.parentClientConfig?.userAgentAppId
-          } = e,
-          h = await resolveRegion(p, e?.parentClientConfig?.region, m, {
+            userAgentAppId: g = stsOptions?.parentClientConfig?.userAgentAppId
+          } = stsOptions,
+          h = await resolveRegion(p, stsOptions?.parentClientConfig?.region, m, {
             logger: u,
             profile: d
           }),
           y = !EZs(f);
-        n = new t({
-          ...e,
+        n = new STSClient({
+          ...stsOptions,
           userAgentAppId: g,
           profile: d,
           credentialDefaultProvider: () => async () => r,
@@ -67,25 +67,25 @@ var vEn,
       return vEn.setCredentialFeature(c, "CREDENTIALS_STS_ASSUME_ROLE", "i"), c;
     };
   },
-  getDefaultRoleAssumerWithWebIdentity$1 = (e, t) => {
+  getDefaultRoleAssumerWithWebIdentity$1 = (stsOptions, STSClient) => {
     let n;
     return async r => {
       if (!n) {
         let {
-            logger: l = e?.parentClientConfig?.logger,
-            profile: c = e?.parentClientConfig?.profile,
+            logger: l = stsOptions?.parentClientConfig?.logger,
+            profile: c = stsOptions?.parentClientConfig?.profile,
             region: u,
-            requestHandler: d = e?.parentClientConfig?.requestHandler,
+            requestHandler: d = stsOptions?.parentClientConfig?.requestHandler,
             credentialProviderLogger: p,
-            userAgentAppId: f = e?.parentClientConfig?.userAgentAppId
-          } = e,
-          m = await resolveRegion(u, e?.parentClientConfig?.region, p, {
+            userAgentAppId: f = stsOptions?.parentClientConfig?.userAgentAppId
+          } = stsOptions,
+          m = await resolveRegion(u, stsOptions?.parentClientConfig?.region, p, {
             logger: l,
             profile: c
           }),
           g = !EZs(d);
-        n = new t({
-          ...e,
+        n = new STSClient({
+          ...stsOptions,
           userAgentAppId: f,
           profile: c,
           region: m,

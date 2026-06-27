@@ -9,8 +9,8 @@
 function cOe(e) {
   return xZn(e.viewingAgentTaskId, e.tasks).teammate;
 }
-function getActiveAgentForInput(e) {
-  let { teammate: t, localAgent: n } = xZn(e.viewingAgentTaskId, e.tasks);
+function getActiveAgentForInput(appState) {
+  let { teammate: t, localAgent: n } = xZn(appState.viewingAgentTaskId, appState.tasks);
   if (t)
     return {
       type: "viewed",

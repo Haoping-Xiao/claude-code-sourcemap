@@ -41,14 +41,14 @@ function DWd(e) {
   if (r) t.backgroundColor = r;
   return t;
 }
-function colorToString(e) {
-  switch (e.type) {
+function colorToString(color) {
+  switch (color.type) {
     case "named":
-      return PWd[e.name];
+      return PWd[color.name];
     case "indexed":
-      return `ansi256(${e.index})`;
+      return `ansi256(${color.index})`;
     case "rgb":
-      return `rgb(${e.r},${e.g},${e.b})`;
+      return `rgb(${color.r},${color.g},${color.b})`;
     case "default":
       return;
   }

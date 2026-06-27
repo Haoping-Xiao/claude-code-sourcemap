@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RBo] deps: si, Ye, Yfe, uo, CH
 ((r2l = R(lt(), 1)), (oXt = R(rt(), 1)), (Sse = R(se(), 1)));
-function CapabilitiesSection(e) {
+function CapabilitiesSection(t0) {
   let t = o2l.c(9),
-    { serverToolsCount: n, serverPromptsCount: r, serverResourcesCount: o } = e,
+    { serverToolsCount: n, serverPromptsCount: r, serverResourcesCount: o } = t0,
     s;
   if (t[0] !== r || t[1] !== o || t[2] !== n) {
     if (((s = []), n > 0)) s.push("tools");

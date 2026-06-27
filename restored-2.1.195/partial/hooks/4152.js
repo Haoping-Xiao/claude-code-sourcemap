@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kal] deps: Ye, ql
 Ial = R(lt(), 1), dIo = R(se(), 1);
-function UserToolErrorMessage(e) {
+function UserToolErrorMessage(t0) {
   let t = Ral.c(19),
     {
       progressMessagesForMessage: n,
@@ -15,7 +15,7 @@ function UserToolErrorMessage(e) {
       param: s,
       verbose: i,
       isTranscriptMode: a
-    } = e;
+    } = t0;
   if (typeof s.content === "string" && s.content.includes(Jv)) {
     let c;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) c = cQ.jsx(qn, {

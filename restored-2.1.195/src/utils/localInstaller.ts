@@ -80,11 +80,11 @@ exec "${e}/node_modules/.bin/claude" "$@"`,
     );
   }
 }
-async function installOrUpdateClaudePackage(e, t) {
+async function installOrUpdateClaudePackage(channel, specificVersion) {
   try {
     if (!(await ensureLocalPackageEnvironment()))
       return (Le("update_apply", "update_apply_env_setup_failed"), "install_failed");
-    let n = t ? t : e === "stable" ? "stable" : "latest",
+    let n = specificVersion ? specificVersion : channel === "stable" ? "stable" : "latest",
       r = await Gr(
         "npm",
         [

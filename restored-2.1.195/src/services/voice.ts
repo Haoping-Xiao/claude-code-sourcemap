@@ -303,8 +303,8 @@ async function startRecording(e, t, n) {
   if ((await gTe("arecord")) && (await probeArecord()).ok) return eXf(e, t);
   return startSoxRecording(e, t, n);
 }
-function startSoxRecording(e, t, n) {
-  let r = n?.silenceDetection !== false,
+function startSoxRecording(onData, onEnd, options) {
+  let r = options?.silenceDetection !== false,
     o = [
       "-q",
       "--buffer",
@@ -329,18 +329,18 @@ function startSoxRecording(e, t, n) {
   return (
     (hTe = s),
     s.stdout?.on("data", (i) => {
-      e(i);
+      onData(i);
     }),
     s.stderr?.on("data", () => {}),
     s.on("close", () => {
-      ((hTe = null), t());
+      ((hTe = null), onEnd());
     }),
     s.on("error", (i) => {
       (T(`[voice] SoX rec spawn failed: ${i instanceof Error ? i.message : String(i)}`, {
         level: "error",
       }),
         (hTe = null),
-        t());
+        onEnd());
     }),
     true
   );

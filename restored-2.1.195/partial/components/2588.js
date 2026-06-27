@@ -6,11 +6,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module B_] deps: Ye
 Ozi = R(lt(), 1), slt = R(se(), 1);
-function getIcon(e) {
-  if (e.startsWith("file-")) return "+";
-  if (e.startsWith("mcp-resource-")) return mv;
-  if (e.startsWith("mcp-template")) return mv;
-  if (e.startsWith("agent-")) return "*";
+function getIcon(itemId) {
+  if (itemId.startsWith("file-")) return "+";
+  if (itemId.startsWith("mcp-resource-")) return mv;
+  if (itemId.startsWith("mcp-template")) return mv;
+  if (itemId.startsWith("agent-")) return "*";
   return "+";
 }
 function tKd(e, t, n = false) {

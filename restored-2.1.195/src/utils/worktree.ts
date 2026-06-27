@@ -54,17 +54,17 @@ function stripGitProgress(e) {
     )
     .trim();
 }
-function validateWorktreeSlug(e) {
-  if (e.length > Yic)
-    throw Error(`Invalid worktree name: must be ${Yic} characters or fewer (got ${e.length})`);
-  for (let t of e.split("/")) {
+function validateWorktreeSlug(slug) {
+  if (slug.length > Yic)
+    throw Error(`Invalid worktree name: must be ${Yic} characters or fewer (got ${slug.length})`);
+  for (let t of slug.split("/")) {
     if (t === "." || t === "..")
-      throw Error(`Invalid worktree name "${e}": must not contain "." or ".." path segments`);
+      throw Error(`Invalid worktree name "${slug}": must not contain "." or ".." path segments`);
     if (t.toLowerCase().replace(/\.+$/, "") === ".git")
-      throw Error(`Invalid worktree name "${e}": "${t}" is a reserved git directory name`);
+      throw Error(`Invalid worktree name "${slug}": "${t}" is a reserved git directory name`);
     if (!ltm.test(t))
       throw Error(
-        `Invalid worktree name "${e}": each "/"-separated segment must be non-empty and contain only letters, digits, dots, underscores, and dashes`,
+        `Invalid worktree name "${slug}": each "/"-separated segment must be non-empty and contain only letters, digits, dots, underscores, and dashes`,
       );
   }
 }
@@ -97,25 +97,25 @@ async function isWorktreeWriteDestUnsafe(e, t) {
   }
   return !1;
 }
-async function symlinkDirectories(e, t, n) {
+async function symlinkDirectories(repoRootPath, worktreePath, dirsToSymlink) {
   let r;
   try {
-    r = await eu.realpath(t);
+    r = await eu.realpath(worktreePath);
   } catch (o) {
-    T(`Skipping symlinkDirectories: realpath(${t}) failed: ${be(o)}`, {
+    T(`Skipping symlinkDirectories: realpath(${worktreePath}) failed: ${be(o)}`, {
       level: "warn",
     });
     return;
   }
-  for (let o of n) {
+  for (let o of dirsToSymlink) {
     if (Zic(o)) {
       T(`Skipping symlink for "${o}": path traversal or absolute path`, {
         level: "warn",
       });
       continue;
     }
-    let s = Bd.join(e, o),
-      i = Bd.join(t, o);
+    let s = Bd.join(repoRootPath, o),
+      i = Bd.join(worktreePath, o);
     if (await isWorktreeWriteDestUnsafe(i, r)) {
       T(`Skipping symlink for "${o}": destination escapes worktree via committed symlink`, {
         level: "warn",
@@ -150,14 +150,14 @@ function restoreWorktreeSession(e) {
 function generateTmuxSessionName(e, t) {
   return `${Bd.basename(e)}_${t}`.replace(/[/.]/g, "_");
 }
-function worktreesDir(e) {
-  return Bd.join(e, ".claude", "worktrees");
+function worktreesDir(repoRoot) {
+  return Bd.join(repoRoot, ".claude", "worktrees");
 }
 function tac(e) {
   return e.replaceAll("/", "+");
 }
-function worktreeBranchName(e) {
-  return `worktree-${tac(e)}`;
+function worktreeBranchName(slug) {
+  return `worktree-${tac(slug)}`;
 }
 function nac(e, t) {
   return Bd.join(worktreesDir(e), tac(t));
@@ -193,9 +193,9 @@ async function oac(e) {
     return null;
   }
 }
-async function getOrCreateWorktree(e, t, n) {
-  let r = nac(e, t),
-    o = worktreeBranchName(t),
+async function getOrCreateWorktree(repoRoot, slug, options) {
+  let r = nac(repoRoot, slug),
+    o = worktreeBranchName(slug),
     s = await mfn(r);
   if (s) {
     let g = await oac(r),
@@ -220,14 +220,14 @@ async function getOrCreateWorktree(e, t, n) {
     }
     if (g) {
       let h = await Gr(go(), ["remote"], {
-        cwd: e,
+        cwd: repoRoot,
       });
       if (h.code !== 0)
         throw Error(
           `Orphaned worktree dir at ${r} but \`git remote\` failed (${h.stderr.trim()}) \u2014 refusing to self-heal. Remove ${r} manually if it has no work to keep.`,
         );
       let y = await Gr(go(), ["rev-parse", "--verify", "--quiet", o], {
-        cwd: e,
+        cwd: repoRoot,
       });
       if (y.code !== 0 && y.stderr.trim().length > 0)
         throw Error(
@@ -235,7 +235,7 @@ async function getOrCreateWorktree(e, t, n) {
         );
       if (h.stdout.trim().length > 0 && y.code === 0) {
         let b = await Gr(go(), ["rev-list", "--max-count=1", o, "--not", "--remotes"], {
-          cwd: e,
+          cwd: repoRoot,
         });
         if (b.code !== 0)
           throw Error(
@@ -259,45 +259,49 @@ async function getOrCreateWorktree(e, t, n) {
       }
     }
   }
-  await eu.mkdir(worktreesDir(e), {
+  await eu.mkdir(worktreesDir(repoRoot), {
     recursive: !0,
   });
   let a = R8(),
     l,
     c = null;
-  if (n?.fromHead ?? (!n?.prNumber && Dr().worktree?.baseRef === "head")) {
+  if (options?.fromHead ?? (!options?.prNumber && Dr().worktree?.baseRef === "head")) {
     let { stdout: g, code: h } = await Gr(go(), ["rev-parse", "HEAD"], {
-      cwd: n?.fromCwd ?? e,
+      cwd: options?.fromCwd ?? repoRoot,
     });
     if (h !== 0)
       throw (
         Le("git_worktree_create", "git_worktree_create_revparse_failed"),
-        Error(`Failed to resolve HEAD in ${n?.fromCwd ?? e}: git rev-parse failed`)
+        Error(`Failed to resolve HEAD in ${options?.fromCwd ?? repoRoot}: git rev-parse failed`)
       );
     ((c = g.trim()), (l = c));
-  } else if (n?.prNumber) {
-    let { code: g, stderr: h } = await Gr(go(), ["fetch", "origin", `pull/${n.prNumber}/head`], {
-      cwd: e,
-      stdin: "ignore",
-      env: a,
-    });
+  } else if (options?.prNumber) {
+    let { code: g, stderr: h } = await Gr(
+      go(),
+      ["fetch", "origin", `pull/${options.prNumber}/head`],
+      {
+        cwd: repoRoot,
+        stdin: "ignore",
+        env: a,
+      },
+    );
     if (g !== 0)
       throw (
         Le("git_worktree_create", "git_worktree_create_pr_fetch_failed"),
         Error(
-          `Failed to fetch PR #${n.prNumber}: ${h.trim() || 'PR may not exist or the repository may not have a remote named "origin"'}`,
+          `Failed to fetch PR #${options.prNumber}: ${h.trim() || 'PR may not exist or the repository may not have a remote named "origin"'}`,
         )
       );
     l = "FETCH_HEAD";
   } else {
-    let [g, h] = await Promise.all([vD(), E0(e)]),
+    let [g, h] = await Promise.all([vD(), E0(repoRoot)]),
       y = g && !g.startsWith("-") ? g : "HEAD",
       b = `origin/${y}`,
       _ = h ? await Rae(h, `refs/remotes/origin/${y}`) : null;
     if (_) ((l = b), (c = _));
     else {
       let { code: S } = await Gr(go(), ["fetch", "origin", y], {
-        cwd: e,
+        cwd: repoRoot,
         stdin: "ignore",
         env: a,
       });
@@ -306,7 +310,7 @@ async function getOrCreateWorktree(e, t, n) {
   }
   if (!c) {
     let { stdout: g, code: h } = await Gr(go(), ["rev-parse", l], {
-      cwd: e,
+      cwd: repoRoot,
     });
     if (h !== 0)
       throw (
@@ -320,7 +324,7 @@ async function getOrCreateWorktree(e, t, n) {
   if (d?.length) p.push("--no-checkout");
   p.push("--no-track", "-B", o, r, l);
   let { code: f, stderr: m } = await Gr(go(), p, {
-    cwd: e,
+    cwd: repoRoot,
     env: {
       ...process.env,
       LC_ALL: "C",
@@ -333,17 +337,17 @@ async function getOrCreateWorktree(e, t, n) {
     if (h?.[1]) {
       let y = h[1];
       throw new WorktreeIsolationError(
-        `branch "${o}" for worktree "${t}" is already checked out in a worktree at ${y}. cd into that directory and run \`claude\`, remove it with \`git worktree remove ${y}\`, or pass a different --worktree name.`,
+        `branch "${o}" for worktree "${slug}" is already checked out in a worktree at ${y}. cd into that directory and run \`claude\`, remove it with \`git worktree remove ${y}\`, or pass a different --worktree name.`,
       );
     }
     if (/^fatal: .* already exists/m.test(g))
       throw new WorktreeIsolationError(
-        `worktree "${t}" already exists at ${r} but cannot be reused (${g}). Remove that directory (\`git worktree remove ${r}\` if it's a registered worktree, or \`rm -rf ${r}\` if it's a stray directory) or pass a different --worktree name.`,
+        `worktree "${slug}" already exists at ${r} but cannot be reused (${g}). Remove that directory (\`git worktree remove ${r}\` if it's a registered worktree, or \`rm -rf ${r}\` if it's a stray directory) or pass a different --worktree name.`,
       );
     if (await mfn(r))
       (await unlinkWorktreeReparsePoints(r),
         await Gr(go(), ["worktree", "remove", "--force", r], {
-          cwd: e,
+          cwd: repoRoot,
         }));
     throw new WorktreeIsolationError(`Failed to create worktree: ${g}`);
   }
@@ -351,7 +355,7 @@ async function getOrCreateWorktree(e, t, n) {
     let g = async (S) => {
         throw (
           await Gr(go(), ["worktree", "remove", "--force", r], {
-            cwd: e,
+            cwd: repoRoot,
           }),
           new WorktreeIsolationError(S)
         );
@@ -380,10 +384,10 @@ async function getOrCreateWorktree(e, t, n) {
     }
   );
 }
-async function copyWorktreeIncludeFiles(e, t) {
+async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
   let n;
   try {
-    n = await eu.readFile(Bd.join(e, ".worktreeinclude"), "utf-8");
+    n = await eu.readFile(Bd.join(repoRoot, ".worktreeinclude"), "utf-8");
   } catch {
     return [];
   }
@@ -396,7 +400,7 @@ async function copyWorktreeIncludeFiles(e, t) {
     go(),
     ["ls-files", "--others", "--ignored", "--exclude-standard", "--directory"],
     {
-      cwd: e,
+      cwd: repoRoot,
     },
   );
   if (o.code !== 0 || !o.stdout.trim()) return [];
@@ -432,7 +436,7 @@ async function copyWorktreeIncludeFiles(e, t) {
       go(),
       ["ls-files", "--others", "--ignored", "--exclude-standard", "--", ...c],
       {
-        cwd: e,
+        cwd: repoRoot,
       },
     );
     if (p.code === 0 && p.stdout.trim()) {
@@ -449,18 +453,18 @@ async function copyWorktreeIncludeFiles(e, t) {
   let u = [],
     d;
   try {
-    d = await eu.realpath(t);
+    d = await eu.realpath(worktreePath);
   } catch (p) {
     return (
-      T(`Skipping .worktreeinclude copy: realpath(${t}) failed: ${be(p)}`, {
+      T(`Skipping .worktreeinclude copy: realpath(${worktreePath}) failed: ${be(p)}`, {
         level: "warn",
       }),
       u
     );
   }
   for (let p of l) {
-    let f = Bd.join(e, p),
-      m = Bd.join(t, p);
+    let f = Bd.join(repoRoot, p),
+      m = Bd.join(worktreePath, p);
     try {
       if ((await eu.lstat(f)).isSymbolicLink()) {
         T(`Skipping symlink in .worktreeinclude: ${p}`, {
@@ -491,17 +495,17 @@ async function copyWorktreeIncludeFiles(e, t) {
   if (u.length > 0) T(`Copied ${u.length} files from .worktreeinclude: ${u.join(", ")}`);
   return u;
 }
-async function performPostCreationSetup(e, t) {
-  let n = await eu.realpath(t).catch(() => null),
+async function performPostCreationSetup(repoRoot, worktreePath) {
+  let n = await eu.realpath(worktreePath).catch(() => null),
     r = kG("localSettings"),
-    o = Bd.join(e, r);
+    o = Bd.join(repoRoot, r);
   try {
     if ((await eu.lstat(o)).isSymbolicLink())
       T(`Skipping symlinked settings.local.json: ${o}`, {
         level: "warn",
       });
     else {
-      let f = Bd.join(t, r);
+      let f = Bd.join(worktreePath, r);
       if (n == null || (await isWorktreeWriteDestUnsafe(f, n)))
         T("Skipping settings.local.json copy: destination escapes worktree via committed symlink", {
           level: "warn",
@@ -517,15 +521,15 @@ async function performPostCreationSetup(e, t) {
         level: "warn",
       });
   }
-  let s = Bd.join(e, ".husky"),
-    i = await E0(e),
+  let s = Bd.join(repoRoot, ".husky"),
+    i = await E0(repoRoot),
     a = i ? ((await HG(i)) ?? i) : null,
     l = a ? await gRt(a, "core", null, "hooksPath") : null,
     c = null;
   if (l) {
-    if (((c = Bd.isAbsolute(l) ? l : Bd.resolve(e, l)), l !== c)) {
+    if (((c = Bd.isAbsolute(l) ? l : Bd.resolve(repoRoot, l)), l !== c)) {
       let { code: p, stderr: f } = await Gr(go(), ["config", "core.hooksPath", c], {
-        cwd: t,
+        cwd: worktreePath,
       });
       if (p === 0) T(`Configured worktree to use hooks from main repository: ${c}`);
       else
@@ -535,8 +539,8 @@ async function performPostCreationSetup(e, t) {
     }
   }
   let d = Dr().worktree?.symlinkDirectories ?? [];
-  if (d.length > 0) await symlinkDirectories(e, t, d);
-  await copyWorktreeIncludeFiles(e, t);
+  if (d.length > 0) await symlinkDirectories(repoRoot, worktreePath, d);
+  await copyWorktreeIncludeFiles(repoRoot, worktreePath);
 }
 function parsePRReference(e) {
   let t = e.match(/^https?:\/\/[^/]+\/[^/]+\/[^/]+\/pull\/(\d+)\/?(?:[?#].*)?$/i);
@@ -573,27 +577,27 @@ async function createTmuxSessionForWorktree(e, t) {
     created: !0,
   };
 }
-async function killTmuxSession(e) {
-  let { code: t } = await $n("tmux", ["kill-session", "-t", e]);
+async function killTmuxSession(sessionName) {
+  let { code: t } = await $n("tmux", ["kill-session", "-t", sessionName]);
   return t === 0;
 }
-async function createWorktreeForSession(e, t, n, r) {
+async function createWorktreeForSession(sessionId, slug, tmuxSessionName, options) {
   if (!ad())
     throw Error(
       "Workspace trust not yet accepted. Run `claude` once in this directory and accept the trust dialog, then retry with --worktree.",
     );
-  validateWorktreeSlug(t);
-  let o = r?.fromCwd ?? $t(),
+  validateWorktreeSlug(slug);
+  let o = options?.fromCwd ?? $t(),
     s;
   if (Jte()) {
-    let i = await WYe(t);
+    let i = await WYe(slug);
     (T(`Created hook-based worktree at: ${i.worktreePath}`),
       (s = {
         originalCwd: o,
         worktreePath: i.worktreePath,
-        worktreeName: t,
-        sessionId: e,
-        tmuxSessionName: n,
+        worktreeName: slug,
+        sessionId: sessionId,
+        tmuxSessionName: tmuxSessionName,
         hookBased: !0,
       }));
   } else {
@@ -612,7 +616,7 @@ async function createWorktreeForSession(e, t, n, r) {
         worktreeBranch: u,
         headCommit: d,
         existed: p,
-      } = await getOrCreateWorktree(i, t, r),
+      } = await getOrCreateWorktree(i, slug, options),
       f;
     if (p) T(`Resuming existing worktree at: ${c}`);
     else
@@ -622,12 +626,12 @@ async function createWorktreeForSession(e, t, n, r) {
     s = {
       originalCwd: o,
       worktreePath: c,
-      worktreeName: t,
+      worktreeName: slug,
       worktreeBranch: u,
       originalBranch: a,
       originalHeadCommit: d,
-      sessionId: e,
-      tmuxSessionName: n,
+      sessionId: sessionId,
+      tmuxSessionName: tmuxSessionName,
       creationDurationMs: f,
       usedSparsePaths: (Dr().worktree?.sparsePaths?.length ?? 0) > 0,
     };
@@ -952,9 +956,9 @@ async function Jic(e, t) {
       )
     );
 }
-async function createAgentWorktree(e, t) {
-  if ((validateWorktreeSlug(e), Jte())) {
-    let l = await WYe(e);
+async function createAgentWorktree(slug, t) {
+  if ((validateWorktreeSlug(slug), Jte())) {
+    let l = await WYe(slug);
     (await Jic(l.worktreePath, !0), T(`Created hook-based agent worktree at: ${l.worktreePath}`));
     let c = await Gr(go(), ["rev-parse", "HEAD"], {
       cwd: l.worktreePath,
@@ -982,7 +986,7 @@ async function createAgentWorktree(e, t) {
     worktreeBranch: s,
     headCommit: i,
     existed: a,
-  } = await getOrCreateWorktree(r, e, {
+  } = await getOrCreateWorktree(r, slug, {
     ...t,
     fromCwd: n,
   });
@@ -996,8 +1000,8 @@ async function createAgentWorktree(e, t) {
           "lock",
           "--reason",
           l
-            ? `claude agent ${e} (pid ${process.pid} start ${l})`
-            : `claude agent ${e} (pid ${process.pid})`,
+            ? `claude agent ${slug} (pid ${process.pid} start ${l})`
+            : `claude agent ${slug} (pid ${process.pid})`,
           o,
         ],
         {
@@ -1017,9 +1021,9 @@ async function createAgentWorktree(e, t) {
     }
   );
 }
-async function SHt(e, t) {
+async function SHt(worktreePath, headCommit) {
   let n = await Gr(go(), ["status", "--porcelain"], {
-    cwd: e,
+    cwd: worktreePath,
   });
   if (n.code !== 0)
     return {
@@ -1028,13 +1032,13 @@ async function SHt(e, t) {
       gitError: !0,
     };
   let r = n.stdout.trim().length > 0;
-  if (!t)
+  if (!headCommit)
     return {
       dirty: r,
       commitsAhead: 0,
     };
-  let o = await Gr(go(), ["rev-list", "--count", `${t}..HEAD`], {
-    cwd: e,
+  let o = await Gr(go(), ["rev-list", "--count", `${headCommit}..HEAD`], {
+    cwd: worktreePath,
   });
   if (o.code !== 0)
     return {
@@ -1052,9 +1056,15 @@ async function unlockAgentWorktree(e, t) {
     cwd: t,
   });
 }
-async function removeAgentWorktree(e, t, n, r, o = "unknown") {
-  if (r) {
-    let d = await QHt(e);
+async function removeAgentWorktree(
+  worktreePath,
+  worktreeBranch,
+  gitRoot,
+  hookBased,
+  o = "unknown",
+) {
+  if (hookBased) {
+    let d = await QHt(worktreePath);
     if (d)
       (G("tengu_worktree_removed", {
         source: o,
@@ -1062,23 +1072,23 @@ async function removeAgentWorktree(e, t, n, r, o = "unknown") {
         commits: 0,
         hook_based: !0,
       }),
-        T(`Removed hook-based agent worktree at: ${e}`));
+        T(`Removed hook-based agent worktree at: ${worktreePath}`));
     else
-      T(`WorktreeRemove hook did not remove agent worktree, left at: ${e}`, {
+      T(`WorktreeRemove hook did not remove agent worktree, left at: ${worktreePath}`, {
         level: "warn",
       });
     return d;
   }
-  if (!n)
+  if (!gitRoot)
     return (
       T("Cannot remove agent worktree: no git root provided", {
         level: "error",
       }),
       !1
     );
-  await unlockAgentWorktree(e, n);
+  await unlockAgentWorktree(worktreePath, gitRoot);
   let s = await Gr(go(), ["status", "--porcelain"], {
-      cwd: e,
+      cwd: worktreePath,
     }),
     i =
       s.code === 0 && s.stdout.trim()
@@ -1091,7 +1101,7 @@ async function removeAgentWorktree(e, t, n, r, o = "unknown") {
   if (i > 0 && o !== "exit_tool" && o !== "exit_dialog" && o !== "job_delete_force")
     return (
       T(
-        `removeAgentWorktree: aborted ${o} removal \u2014 ${i} changed file(s) would be lost, kept ${e}`,
+        `removeAgentWorktree: aborted ${o} removal \u2014 ${i} changed file(s) would be lost, kept ${worktreePath}`,
         {
           level: "warn",
         },
@@ -1104,35 +1114,35 @@ async function removeAgentWorktree(e, t, n, r, o = "unknown") {
       }),
       !1
     );
-  await unlinkWorktreeReparsePoints(e);
-  let { code: a, stderr: l } = await Gr(go(), ["worktree", "remove", "--force", e], {
-    cwd: n,
+  await unlinkWorktreeReparsePoints(worktreePath);
+  let { code: a, stderr: l } = await Gr(go(), ["worktree", "remove", "--force", worktreePath], {
+    cwd: gitRoot,
   });
   if (
     a !== 0 &&
-    (await eu.lstat(e).then(
+    (await eu.lstat(worktreePath).then(
       () => !0,
       () => !1,
     ))
   )
     return (
-      T(`removeAgentWorktree: git worktree remove failed, kept ${e}: ${l.trim()}`, {
+      T(`removeAgentWorktree: git worktree remove failed, kept ${worktreePath}: ${l.trim()}`, {
         level: "warn",
       }),
       !1
     );
   if (
-    (T(`Removed agent worktree at: ${e}`),
+    (T(`Removed agent worktree at: ${worktreePath}`),
     G("tengu_worktree_removed", {
       source: o,
       changed_files: i,
       commits: 0,
     }),
-    !t)
+    !worktreeBranch)
   )
     return !0;
-  let { code: c, stderr: u } = await Gr(go(), ["branch", "-D", t], {
-    cwd: n,
+  let { code: c, stderr: u } = await Gr(go(), ["branch", "-D", worktreeBranch], {
+    cwd: gitRoot,
   });
   if (c !== 0)
     T(`Could not delete agent worktree branch: ${u}`, {
@@ -1178,13 +1188,13 @@ async function iac(e) {
       return n;
   return null;
 }
-async function aac(e, t) {
+async function aac(cutoffDate, t) {
   let [n, r] = await Promise.all([
     Gr(go(), ["--no-optional-locks", "status", "--porcelain"], {
-      cwd: e,
+      cwd: cutoffDate,
     }),
     Gr(go(), ["rev-list", "--max-count=1", "HEAD", "--not", "--remotes"], {
-      cwd: e,
+      cwd: cutoffDate,
     }),
   ]);
   if (n.code !== 0 || n.stdout.trim().length > 0) return !1;
@@ -1192,12 +1202,12 @@ async function aac(e, t) {
   if (r.stdout.trim().length === 0) return !0;
   let [o, s] = await Promise.all([
     Gr(go(), ["rev-parse", "HEAD"], {
-      cwd: e,
+      cwd: cutoffDate,
     }),
-    oac(e),
+    oac(cutoffDate),
   ]);
   if (o.code === 0 && s !== null && o.stdout.trim() === s) return !0;
-  return t !== null && (await ptm(e, t));
+  return t !== null && (await ptm(cutoffDate, t));
 }
 async function cleanupStaleAgentWorktrees(e) {
   let t = qf($t());
@@ -1263,7 +1273,7 @@ async function hasWorktreeChanges(e, t) {
   let { dirty: n, commitsAhead: r } = await SHt(e, t);
   return n || r > 0;
 }
-async function execIntoTmuxWorktree(e) {
+async function execIntoTmuxWorktree(args) {
   if (!ad())
     return {
       handled: !1,
@@ -1277,11 +1287,11 @@ async function execIntoTmuxWorktree(e) {
     };
   let n,
     r = !1;
-  for (let v = 0; v < e.length; v++) {
-    let C = e[v];
+  for (let v = 0; v < args.length; v++) {
+    let C = args[v];
     if (!C) continue;
     if (C === "-w" || C === "--worktree") {
-      let x = e[v + 1];
+      let x = args[v + 1];
       if (x && !x.startsWith("-")) n = x;
     } else if (C.startsWith("--worktree=")) n = C.slice(11);
     else if (C === "--tmux=classic") r = !0;
@@ -1351,12 +1361,12 @@ async function execIntoTmuxWorktree(e) {
   }
   let a = `${i}_${worktreeBranchName(n)}`.replace(/[/.]/g, "_"),
     l = [];
-  for (let v = 0; v < e.length; v++) {
-    let C = e[v];
+  for (let v = 0; v < args.length; v++) {
+    let C = args[v];
     if (!C) continue;
     if (C === "--tmux" || C === "--tmux=classic") continue;
     if (C === "-w" || C === "--worktree") {
-      let x = e[v + 1];
+      let x = args[v + 1];
       if (x && !x.startsWith("-")) v++;
       continue;
     }

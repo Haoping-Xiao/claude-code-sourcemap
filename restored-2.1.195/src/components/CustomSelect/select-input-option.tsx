@@ -10,7 +10,7 @@ function Czd(e, t, n, r) {
   let o = 2 + t + 2;
   return Math.max(1, e - o - n - r);
 }
-function SelectInputOption(e) {
+function SelectInputOption(t0) {
   let t = azi.c(102),
     {
       option: n,
@@ -37,7 +37,7 @@ function SelectInputOption(e) {
       onImagesSelectedChange: C,
       onSelectedImageIndexChange: x,
       extraChromeWidth: I,
-    } = e,
+    } = t0,
     k = g === void 0 ? false : g,
     D = y === void 0 ? false : y,
     P = v === void 0 ? 0 : v,

@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fXl] deps: Ye, lg
 ((dXl = R(lt(), 1)), (SA = R(se(), 1)));
-function SandboxDependenciesTab(e) {
+function SandboxDependenciesTab(t0) {
   let t = mXl.c(24),
-    { depCheck: n } = e,
+    { depCheck: n } = t0,
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = Vt()), (t[0] = r));
   else r = t[0];

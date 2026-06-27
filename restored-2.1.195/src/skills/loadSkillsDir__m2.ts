@@ -20,8 +20,8 @@ function B$(e) {
     .filter((t) => t !== "" && t !== ".")
     .join("/");
 }
-function getSkillsPath(e) {
-  let t = B$(e).toLowerCase();
+function getSkillsPath(source) {
+  let t = B$(source).toLowerCase();
   return (
     t === "claude.md" || t.startsWith("claude.md/") || t === ".claude" || t.startsWith(".claude/")
   );

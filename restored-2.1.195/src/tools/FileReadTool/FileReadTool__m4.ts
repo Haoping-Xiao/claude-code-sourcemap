@@ -88,10 +88,10 @@ async function fNl() {
     if (!wn(e)) throw e;
   }
 }
-async function isBlockedDevicePath(e) {
+async function isBlockedDevicePath(filePath) {
   let t;
   try {
-    t = await z$.readFile(`/proc/${e}/cmdline`, "utf8");
+    t = await z$.readFile(`/proc/${filePath}/cmdline`, "utf8");
   } catch {
     return true;
   }

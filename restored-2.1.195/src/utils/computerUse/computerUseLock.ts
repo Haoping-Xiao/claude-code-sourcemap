@@ -15,10 +15,13 @@ GFn = Dy({
     flags: pJ,
   },
 });
-function isComputerUseLock(e) {
-  if (typeof e !== "object" || e === null) return false;
+function isComputerUseLock(value) {
+  if (typeof value !== "object" || value === null) return false;
   return (
-    "sessionId" in e && typeof e.sessionId === "string" && "pid" in e && typeof e.pid === "number"
+    "sessionId" in value &&
+    typeof value.sessionId === "string" &&
+    "pid" in value &&
+    typeof value.pid === "number"
   );
 }
 function ipt() {

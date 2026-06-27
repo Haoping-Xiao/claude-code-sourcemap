@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ljo] deps: Xa, w4, Ye, Mne, m1, Ko
 ((lsr = R(lt(), 1)), (ijo = R(rt(), 1)), ($H = R(se(), 1)));
-function TaskStatusText(e) {
+function TaskStatusText(t0) {
   let t = cjo.c(4),
-    { status: n, label: r, suffix: o } = e,
+    { status: n, label: r, suffix: o } = t0,
     s = r ?? n,
     i =
       n === "completed"
@@ -32,9 +32,9 @@ function TaskStatusText(e) {
   else a = t[3];
   return a;
 }
-function ShellProgress(e) {
+function ShellProgress(t0) {
   let t = cjo.c(4),
-    { shell: n } = e;
+    { shell: n } = t0;
   switch (n.status) {
     case "completed": {
       let r;

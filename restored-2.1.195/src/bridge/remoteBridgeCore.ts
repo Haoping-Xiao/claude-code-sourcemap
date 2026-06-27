@@ -4,16 +4,16 @@
 // class=modified  jaccard=0.4224  score=0.5275  fileCov=0.6795
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function oauthHeaders(e) {
+function oauthHeaders(accessToken) {
   return {
-    Authorization: `Bearer ${e}`,
+    Authorization: `Bearer ${accessToken}`,
     "Content-Type": "application/json",
     "anthropic-version": Aum,
     "anthropic-client-platform": _x(),
     "User-Agent": dy(),
   };
 }
-async function initEnvLessBridgeCore(e) {
+async function initEnvLessBridgeCore(params) {
   let {
       baseUrl: t,
       orgUUID: n,
@@ -56,7 +56,7 @@ async function initEnvLessBridgeCore(e) {
       reattachSessionId: z,
       reattachSequenceNum: K,
       livePreviewPorts: Z,
-    } = e,
+    } = params,
     J = !!z,
     ne = await y3o(),
     oe = o();
@@ -774,16 +774,16 @@ async function initEnvLessBridgeCore(e) {
     Mr = Ci(kr);
   return kr;
 }
-async function withRetry(e, t, n) {
-  let r = n.init_retry_max_attempts;
+async function withRetry(fn, label, cfg) {
+  let r = cfg.init_retry_max_attempts;
   for (let o = 1; o <= r; o++) {
-    let s = await e();
+    let s = await fn();
     if (s !== null) return s;
     if (o < r) {
-      let i = n.init_retry_base_delay_ms * 2 ** (o - 1),
-        a = i * n.init_retry_jitter_fraction * (2 * Math.random() - 1),
-        l = Math.min(i + a, n.init_retry_max_delay_ms);
-      (T(`[remote-bridge] ${t} failed (attempt ${o}/${r}), retrying in ${Math.round(l)}ms`),
+      let i = cfg.init_retry_base_delay_ms * 2 ** (o - 1),
+        a = i * cfg.init_retry_jitter_fraction * (2 * Math.random() - 1),
+        l = Math.min(i + a, cfg.init_retry_max_delay_ms);
+      (T(`[remote-bridge] ${label} failed (attempt ${o}/${r}), retrying in ${Math.round(l)}ms`),
         await Nn(l));
     }
   }
@@ -816,20 +816,20 @@ async function gen(e, t, n, r) {
       }
     : s;
 }
-async function archiveSession(e, t, n, r, o) {
-  if (!n) return "no_token";
-  let s = oP(e);
+async function archiveSession(sessionId, baseUrl, accessToken, orgUUID, timeoutMs) {
+  if (!accessToken) return "no_token";
+  let s = oP(sessionId);
   try {
     let i = await po.post(
-      `${t}/v1/sessions/${s}/archive`,
+      `${baseUrl}/v1/sessions/${s}/archive`,
       {},
       {
         headers: {
-          ...oauthHeaders(n),
+          ...oauthHeaders(accessToken),
           "anthropic-beta": "ccr-byoc-2025-07-29",
-          "x-organization-uuid": r,
+          "x-organization-uuid": orgUUID,
         },
-        timeout: o,
+        timeout: timeoutMs,
         validateStatus: () => true,
       },
     );

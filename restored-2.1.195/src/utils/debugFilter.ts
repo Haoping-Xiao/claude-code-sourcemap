@@ -29,18 +29,18 @@ krs = class krs {
   }
 };
 Rrs = new krs();
-function extractDebugCategories(e) {
+function extractDebugCategories(message) {
   let t = [],
-    n = e.match(/^MCP server ["']([^"']+)["']/);
+    n = message.match(/^MCP server ["']([^"']+)["']/);
   if (n && n[1]) (t.push("mcp"), t.push(n[1].toLowerCase()));
   else {
-    let s = e.match(/^([^:[]+):/);
+    let s = message.match(/^([^:[]+):/);
     if (s && s[1]) t.push(s[1].trim().toLowerCase());
   }
-  let r = e.match(/^\[([^\]]+)]/);
+  let r = message.match(/^\[([^\]]+)]/);
   if (r && r[1]) t.push(r[1].trim().toLowerCase());
-  if (e.toLowerCase().includes("1p event:")) t.push("1p");
-  let o = e.match(/:\s*([^:]+?)(?:\s+(?:type|mode|status|event))?:/);
+  if (message.toLowerCase().includes("1p event:")) t.push("1p");
+  let o = message.match(/:\s*([^:]+?)(?:\s+(?:type|mode|status|event))?:/);
   if (o && o[1]) {
     let s = o[1].trim().toLowerCase();
     if (s.length < 30 && !s.includes(" ")) t.push(s);

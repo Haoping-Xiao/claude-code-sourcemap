@@ -59,8 +59,8 @@ function TLr(e, t) {
     errors: o,
   };
 }
-function parseRegQueryStdout(e, t = "Settings") {
-  let n = e.split(/\r?\n/),
+function parseRegQueryStdout(stdout, t = "Settings") {
+  let n = stdout.split(/\r?\n/),
     r = t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
     o = new RegExp(`^\\s+${r}\\s+REG_(?:EXPAND_)?SZ\\s+(.*)$`, "i");
   for (let s of n) {

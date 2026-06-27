@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cal] deps: Xa, np, Ye
 ((aal = R(lt(), 1)), (e_t = R(se(), 1)), (msf = new RegExp(`<${bhe}>[\\s\\S]*?</${bhe}>\\n*`)));
-function UserTextMessage(e) {
+function UserTextMessage(t0) {
   let t = dal.c(50),
-    { addMargin: n, param: r, verbose: o, planContent: s, isTranscriptMode: i, timestamp: a } = e;
+    { addMargin: n, param: r, verbose: o, planContent: s, isTranscriptMode: i, timestamp: a } = t0;
   if (typeof r.text !== "string" || !r.text || r.text.trim() === zw) return null;
   if (s) {
     let c;

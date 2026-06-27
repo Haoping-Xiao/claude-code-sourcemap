@@ -80,16 +80,16 @@ function rFd(e, t, n) {
     g = (e - p) ** 2 + (t - f) ** 2 + (n - m) ** 2;
   return (e - d) ** 2 + (t - d) ** 2 + (n - d) ** 2 < g ? u : a;
 }
-function applyTextStyles(e, t) {
-  let n = e;
-  if (t.inverse) n = oGe(n);
-  if (t.strikethrough) n = wt.strikethrough(n);
-  if (t.underline) n = wt.underline(n);
-  if (t.italic) n = wt.italic(n);
-  if (t.bold) n = wt.bold(n);
-  if (t.dim) n = wt.dim(n);
-  if (t.color) n = colorize(n, t.color, "foreground");
-  if (t.backgroundColor) n = colorize(n, t.backgroundColor, "background");
+function applyTextStyles(text, styles) {
+  let n = text;
+  if (styles.inverse) n = oGe(n);
+  if (styles.strikethrough) n = wt.strikethrough(n);
+  if (styles.underline) n = wt.underline(n);
+  if (styles.italic) n = wt.italic(n);
+  if (styles.bold) n = wt.bold(n);
+  if (styles.dim) n = wt.dim(n);
+  if (styles.color) n = colorize(n, styles.color, "foreground");
+  if (styles.backgroundColor) n = colorize(n, styles.backgroundColor, "background");
   return n;
 }
 function V_e(e, t) {
@@ -111,57 +111,58 @@ var zUd,
   p7r,
   oFd,
   sFd,
-  colorize = (e, t, n) => {
-    if (!t) return e;
-    if (t.startsWith("ansi:"))
-      switch (t.substring(5)) {
+  colorize = (str, color, type) => {
+    if (!color) return str;
+    if (color.startsWith("ansi:"))
+      switch (color.substring(5)) {
         case "black":
-          return n === "foreground" ? wt.black(e) : wt.bgBlack(e);
+          return type === "foreground" ? wt.black(str) : wt.bgBlack(str);
         case "red":
-          return n === "foreground" ? wt.red(e) : wt.bgRed(e);
+          return type === "foreground" ? wt.red(str) : wt.bgRed(str);
         case "green":
-          return n === "foreground" ? wt.green(e) : wt.bgGreen(e);
+          return type === "foreground" ? wt.green(str) : wt.bgGreen(str);
         case "yellow":
-          return n === "foreground" ? wt.yellow(e) : wt.bgYellow(e);
+          return type === "foreground" ? wt.yellow(str) : wt.bgYellow(str);
         case "blue":
-          return n === "foreground" ? wt.blue(e) : wt.bgBlue(e);
+          return type === "foreground" ? wt.blue(str) : wt.bgBlue(str);
         case "magenta":
-          return n === "foreground" ? wt.magenta(e) : wt.bgMagenta(e);
+          return type === "foreground" ? wt.magenta(str) : wt.bgMagenta(str);
         case "cyan":
-          return n === "foreground" ? wt.cyan(e) : wt.bgCyan(e);
+          return type === "foreground" ? wt.cyan(str) : wt.bgCyan(str);
         case "white":
-          return n === "foreground" ? wt.white(e) : wt.bgWhite(e);
+          return type === "foreground" ? wt.white(str) : wt.bgWhite(str);
         case "blackBright":
-          return n === "foreground" ? wt.blackBright(e) : wt.bgBlackBright(e);
+          return type === "foreground" ? wt.blackBright(str) : wt.bgBlackBright(str);
         case "redBright":
-          return n === "foreground" ? wt.redBright(e) : wt.bgRedBright(e);
+          return type === "foreground" ? wt.redBright(str) : wt.bgRedBright(str);
         case "greenBright":
-          return n === "foreground" ? wt.greenBright(e) : wt.bgGreenBright(e);
+          return type === "foreground" ? wt.greenBright(str) : wt.bgGreenBright(str);
         case "yellowBright":
-          return n === "foreground" ? wt.yellowBright(e) : wt.bgYellowBright(e);
+          return type === "foreground" ? wt.yellowBright(str) : wt.bgYellowBright(str);
         case "blueBright":
-          return n === "foreground" ? wt.blueBright(e) : wt.bgBlueBright(e);
+          return type === "foreground" ? wt.blueBright(str) : wt.bgBlueBright(str);
         case "magentaBright":
-          return n === "foreground" ? wt.magentaBright(e) : wt.bgMagentaBright(e);
+          return type === "foreground" ? wt.magentaBright(str) : wt.bgMagentaBright(str);
         case "cyanBright":
-          return n === "foreground" ? wt.cyanBright(e) : wt.bgCyanBright(e);
+          return type === "foreground" ? wt.cyanBright(str) : wt.bgCyanBright(str);
         case "whiteBright":
-          return n === "foreground" ? wt.whiteBright(e) : wt.bgWhiteBright(e);
+          return type === "foreground" ? wt.whiteBright(str) : wt.bgWhiteBright(str);
       }
-    if (t.startsWith("#")) return n === "foreground" ? wt.hex(t)(e) : wt.bgHex(t)(e);
-    if (t.startsWith("ansi256")) {
-      let r = sFd.exec(t);
-      if (!r) return e;
+    if (color.startsWith("#"))
+      return type === "foreground" ? wt.hex(color)(str) : wt.bgHex(color)(str);
+    if (color.startsWith("ansi256")) {
+      let r = sFd.exec(color);
+      if (!r) return str;
       let o = Number(r[1]);
-      return n === "foreground" ? wt.ansi256(o)(e) : wt.bgAnsi256(o)(e);
+      return type === "foreground" ? wt.ansi256(o)(str) : wt.bgAnsi256(o)(str);
     }
-    if (t.startsWith("rgb")) {
-      let r = oFd.exec(t);
-      if (!r) return e;
+    if (color.startsWith("rgb")) {
+      let r = oFd.exec(color);
+      if (!r) return str;
       let o = Number(r[1]),
         s = Number(r[2]),
         i = Number(r[3]);
-      return n === "foreground" ? wt.rgb(o, s, i)(e) : wt.bgRgb(o, s, i)(e);
+      return type === "foreground" ? wt.rgb(o, s, i)(str) : wt.bgRgb(o, s, i)(str);
     }
-    return e;
+    return str;
   };

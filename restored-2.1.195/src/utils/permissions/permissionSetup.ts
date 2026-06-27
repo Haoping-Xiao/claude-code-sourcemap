@@ -21,9 +21,9 @@ function Fqo(e) {
   }
   return e;
 }
-function findDangerousClassifierPermissions(e, t) {
+function findDangerousClassifierPermissions(rules, cliAllowedTools) {
   let n = [];
-  for (let r of e)
+  for (let r of rules)
     if (r.ruleBehavior === "allow" && C6e(r.ruleValue.toolName, r.ruleValue.ruleContent)) {
       let o = r.ruleValue.ruleContent
         ? `${r.ruleValue.toolName}(${r.ruleValue.ruleContent})`
@@ -35,7 +35,7 @@ function findDangerousClassifierPermissions(e, t) {
         sourceDisplay: Fqo(r.source),
       });
     }
-  for (let r of t) {
+  for (let r of cliAllowedTools) {
     let o = r.match(/^([^(]+)(?:\(([^)]*)\))?$/);
     if (o) {
       let s = o[1].trim(),
@@ -148,9 +148,9 @@ function removeDangerousPermissions(e, t, n = false) {
     });
   return o;
 }
-function stripDangerousPermissionsForAutoMode(e) {
+function stripDangerousPermissionsForAutoMode(context) {
   let t = [];
-  for (let [o, s] of Object.entries(e.alwaysAllowRules)) {
+  for (let [o, s] of Object.entries(context.alwaysAllowRules)) {
     if (!s) continue;
     for (let i of s) {
       let a = Ig(i);
@@ -163,10 +163,10 @@ function stripDangerousPermissionsForAutoMode(e) {
   }
   let n = findDangerousClassifierPermissions(t, []);
   if (n.length === 0)
-    return e.strippedDangerousRules !== void 0
-      ? e
+    return context.strippedDangerousRules !== void 0
+      ? context
       : {
-          ...e,
+          ...context,
           strippedDangerousRules: {},
         };
   for (let o of n)
@@ -174,14 +174,14 @@ function stripDangerousPermissionsForAutoMode(e) {
       `Ignoring dangerous permission ${o.ruleDisplay} from ${o.sourceDisplay} (bypasses classifier)`,
     );
   let r = {};
-  for (let [o, s] of Object.entries(e.strippedDangerousRules ?? {})) if (s) r[o] = [...s];
+  for (let [o, s] of Object.entries(context.strippedDangerousRules ?? {})) if (s) r[o] = [...s];
   for (let o of n) {
     let s = Pp(o.ruleValue),
       i = (r[o.source] ??= []);
     if (!i.includes(s)) i.push(s);
   }
   return {
-    ...removeDangerousPermissions(e, n, true),
+    ...removeDangerousPermissions(context, n, true),
     strippedDangerousRules: r,
   };
 }
@@ -203,36 +203,36 @@ function restoreDangerousPermissions(e) {
     strippedDangerousRules: void 0,
   };
 }
-function transitionPermissionMode(e, t, n, r) {
-  if (e === t) return n;
+function transitionPermissionMode(fromMode, toMode, context, r) {
+  if (fromMode === toMode) return context;
   if (
     (Ebe({
-      from: e,
-      to: t,
+      from: fromMode,
+      to: toMode,
       trigger: r,
     }),
-    Lge(e, t),
-    Asn(e, t),
-    e === "plan" && t !== "plan")
+    Lge(fromMode, toMode),
+    Asn(fromMode, toMode),
+    fromMode === "plan" && toMode !== "plan")
   )
     xK(true);
   {
-    if (t === "plan" && e !== "plan") return prepareContextForPlanMode(n);
-    let o = e === "auto" || (e === "plan" && (nO?.isAutoModeActive() ?? false)),
-      s = t === "auto";
+    if (toMode === "plan" && fromMode !== "plan") return prepareContextForPlanMode(context);
+    let o = fromMode === "auto" || (fromMode === "plan" && (nO?.isAutoModeActive() ?? false)),
+      s = toMode === "auto";
     if (s && !o) {
       if (!isAutoModeGateEnabled())
         throw Error("Cannot transition to auto mode: gate is not enabled");
-      (nO?.setAutoModeActive(true), (n = stripDangerousPermissionsForAutoMode(n)));
+      (nO?.setAutoModeActive(true), (context = stripDangerousPermissionsForAutoMode(context)));
     } else if (o && !s)
-      (nO?.setAutoModeActive(false), B2(true), (n = restoreDangerousPermissions(n)));
+      (nO?.setAutoModeActive(false), B2(true), (context = restoreDangerousPermissions(context)));
   }
-  if (e === "plan" && t !== "plan" && n.prePlanMode)
+  if (fromMode === "plan" && toMode !== "plan" && context.prePlanMode)
     return {
-      ...n,
+      ...context,
       prePlanMode: void 0,
     };
-  return n;
+  return context;
 }
 function setPermissionModeWithGuards(e, t, n, r) {
   if (e === "bypassPermissions") {
@@ -565,9 +565,9 @@ async function initializeToolPermissionContext({
     overlyBroadBashPermissions: I,
   };
 }
-function getAutoModeUnavailableNotification(e) {
+function getAutoModeUnavailableNotification(reason) {
   let t;
-  switch (e) {
+  switch (reason) {
     case "settings":
       t = "auto mode disabled by settings";
       break;
@@ -583,22 +583,22 @@ function getAutoModeUnavailableNotification(e) {
   }
   return t;
 }
-async function verifyAutoModeGateAccess(e, t) {
+async function verifyAutoModeGateAccess(currentContext, fastMode) {
   let n = await v7("tengu_auto_mode_config", {}),
     r = parseAutoModeEnabledState(n?.enabled),
     o = Vqo();
   if (!(nO?.isAutoModeCircuitBroken() ?? false))
     nO?.setAutoModeCircuitBroken(r === "disabled" || o);
   let s = As(),
-    i = !!n?.disableFastMode && (!!t || false),
+    i = !!n?.disableFastMode && (!!fastMode || false),
     a = a_e(s) && !i,
     l = false;
   if (r !== "disabled" && !o && a)
     l =
       r === "enabled" ||
       hasAutoModeOptInAnySource() ||
-      e.mode === "auto" ||
-      e.prePlanMode === "auto";
+      currentContext.mode === "auto" ||
+      currentContext.prePlanMode === "auto";
   let c = r !== "disabled" && !o && a;
   T(
     `[auto-mode] verifyAutoModeGateAccess: enabledState=${r} disabledBySettings=${o} model=${s} modelSupported=${a} disableFastModeBreakerFires=${i} carouselAvailable=${l} canEnterAuto=${c}`,
@@ -678,8 +678,10 @@ async function verifyAutoModeGateAccess(e, t) {
         }
       );
     },
-    g = e.mode === "auto",
-    h = e.mode === "plan" && (e.prePlanMode === "auto" || !!e.strippedDangerousRules);
+    g = currentContext.mode === "auto",
+    h =
+      currentContext.mode === "plan" &&
+      (currentContext.prePlanMode === "auto" || !!currentContext.strippedDangerousRules);
   if (!(g || h || u))
     return {
       updateContext: m,
@@ -691,7 +693,7 @@ async function verifyAutoModeGateAccess(e, t) {
     };
   return {
     updateContext: m,
-    notification: e.isAutoModeAvailable ? f : void 0,
+    notification: currentContext.isAutoModeAvailable ? f : void 0,
   };
 }
 function shouldDisableBypassPermissions() {
@@ -714,8 +716,8 @@ function getAutoModeUnavailableReason() {
   if (!a_e(As())) return "model";
   return null;
 }
-function parseAutoModeEnabledState(e) {
-  if (e === "enabled" || e === "disabled" || e === "opt-in") return e;
+function parseAutoModeEnabledState(value) {
+  if (value === "enabled" || value === "disabled" || value === "opt-in") return value;
   return frm;
 }
 function getAutoModeEnabledState() {
@@ -738,10 +740,10 @@ function hasAutoModeOptInAnySource() {
   if (nO?.getAutoModeFlagCli() ?? false) return true;
   return RG();
 }
-function createDisabledBypassPermissionsContext(e) {
-  let t = e;
-  if (e.mode === "bypassPermissions")
-    t = My(e, {
+function createDisabledBypassPermissionsContext(currentContext) {
+  let t = currentContext;
+  if (currentContext.mode === "bypassPermissions")
+    t = My(currentContext, {
       type: "setMode",
       mode: "default",
       destination: "session",
@@ -751,8 +753,8 @@ function createDisabledBypassPermissionsContext(e) {
     isBypassPermissionsModeAvailable: false,
   };
 }
-async function checkAndDisableBypassPermissions(e) {
-  if (!e.isBypassPermissionsModeAvailable) return;
+async function checkAndDisableBypassPermissions(currentContext) {
+  if (!currentContext.isBypassPermissionsModeAvailable) return;
   if (!(await shouldDisableBypassPermissions())) return;
   (T("bypassPermissions mode is being disabled by feature gate (async check)", {
     level: "warn",
@@ -765,22 +767,22 @@ function isDefaultPermissionModeAuto() {
 function shouldPlanUseAutoMode() {
   return RG() && isAutoModeGateEnabled() && OLr();
 }
-function prepareContextForPlanMode(e) {
-  let t = e.mode;
-  if (t === "plan") return e;
+function prepareContextForPlanMode(context) {
+  let t = context.mode;
+  if (t === "plan") return context;
   {
     let n = shouldPlanUseAutoMode();
     if (t === "auto") {
       if (n)
         return {
-          ...e,
+          ...context,
           prePlanMode: "auto",
         };
       return (
         nO?.setAutoModeActive(false),
         B2(true),
         {
-          ...restoreDangerousPermissions(e),
+          ...restoreDangerousPermissions(context),
           prePlanMode: "auto",
         }
       );
@@ -789,7 +791,7 @@ function prepareContextForPlanMode(e) {
       return (
         nO?.setAutoModeActive(true),
         {
-          ...stripDangerousPermissionsForAutoMode(e),
+          ...stripDangerousPermissionsForAutoMode(context),
           prePlanMode: t,
         }
       );
@@ -799,7 +801,7 @@ function prepareContextForPlanMode(e) {
       level: "info",
     }),
     {
-      ...e,
+      ...context,
       prePlanMode: t,
     }
   );

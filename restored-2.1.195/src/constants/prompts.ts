@@ -124,23 +124,23 @@ Before ending your turn, check your last paragraph. If it is a plan, an analysis
 Before running a command that changes system state \u2014 restarts, deletes, config edits \u2014 check that the evidence actually supports that specific action. A signal that pattern-matches to a known failure may have a different cause.`;
   return null;
 }
-function getLanguageSection(e) {
-  if (!e) return null;
+function getLanguageSection(languagePreference) {
+  if (!languagePreference) return null;
   return `# Language
-Always respond in ${e}. Use ${e} for all explanations, comments, and communications with the user. Technical terms and code identifiers should remain in their original form.
-Maintain full orthographic correctness for ${e}, including all required diacritical marks, accents, and special characters. Never substitute accented characters with their ASCII equivalents (e.g., never write "nao" for "n\xE3o", "fur" for "f\xFCr", or "loeschen" for "l\xF6schen").`;
+Always respond in ${languagePreference}. Use ${languagePreference} for all explanations, comments, and communications with the user. Technical terms and code identifiers should remain in their original form.
+Maintain full orthographic correctness for ${languagePreference}, including all required diacritical marks, accents, and special characters. Never substitute accented characters with their ASCII equivalents (e.g., never write "nao" for "n\xE3o", "fur" for "f\xFCr", or "loeschen" for "l\xF6schen").`;
 }
-function getOutputStyleSection(e) {
-  if (e === null) return null;
-  return `# Output Style: ${e.name}
-${e.prompt}`;
+function getOutputStyleSection(outputStyleConfig) {
+  if (outputStyleConfig === null) return null;
+  return `# Output Style: ${outputStyleConfig.name}
+${outputStyleConfig.prompt}`;
 }
 function oz(e) {
   return e.flatMap((t) => (Array.isArray(t) ? t.map((n) => `  - ${n}`) : [` - ${t}`]));
 }
-function getSimpleIntroSection(e) {
+function getSimpleIntroSection(outputStyleConfig) {
   return `
-You are an interactive agent that helps users ${e !== null ? 'according to your "Output Style" below, which describes how you should respond to user queries.' : "with software engineering tasks."} Use the instructions below and the tools available to you to assist the user.
+You are an interactive agent that helps users ${outputStyleConfig !== null ? 'according to your "Output Style" below, which describes how you should respond to user queries.' : "with software engineering tasks."} Use the instructions below and the tools available to you to assist the user.
 
 ${tqo}
 IMPORTANT: You must NEVER generate or guess URLs for the user unless you are confident that the URLs are for helping the user with programming. You may use URLs provided by the user in their messages or local files.`;
@@ -217,8 +217,8 @@ Examples of the kind of risky actions that warrant user confirmation:
 
 When you encounter an obstacle, do not use destructive actions as a shortcut to simply make it go away. For instance, try to identify root causes and fix underlying issues rather than bypassing safety checks (e.g. --no-verify). If you discover unexpected state like unfamiliar files, branches, or configuration, investigate before deleting or overwriting, as it may represent the user's in-progress work. For example, typically resolve merge conflicts rather than discarding changes; similarly, if a lock file exists, investigate what process holds it rather than deleting it. In short: only take risky actions carefully, and when in doubt, ask before acting. Follow both the spirit and letter of these instructions - measure twice, cut once.`;
 }
-function getUsingYourToolsSection(e) {
-  let t = [cC, s$].find((a) => e.has(a));
+function getUsingYourToolsSection(enabledTools) {
+  let t = [cC, s$].find((a) => enabledTools.has(a));
   if (LI()) {
     let a = [
       t
@@ -230,7 +230,7 @@ function getUsingYourToolsSection(e) {
 `);
   }
   let n = hC(),
-    r = e.has(Co),
+    r = enabledTools.has(Co),
     o = r ? Co : Ss,
     s = [Ds, ka, Wc, ...(n && r ? [] : [wu, qc])].join(", "),
     i = [
@@ -249,12 +249,15 @@ function getAgentToolSection(e) {
     ? `Calling ${ss} with subagent_type: "fork" creates a fork \u2014 it inherits your full conversation context, runs in the background, and keeps its tool output out of your context \u2014 so you can keep chatting with the user while it works. Reach for it when research or multi-step implementation work would otherwise fill your context with raw output you won't need again. Other subagent_type values (or omitting it) start fresh agents with no context. **If you ARE the fork** \u2014 execute directly; do not re-delegate.`
     : `Use the ${ss} tool with specialized agents when the task at hand matches the agent's description. Subagents are valuable for parallelizing independent queries or for protecting the main context window from excessive results, but they should not be used excessively when not needed. Importantly, avoid duplicating work that subagents are already doing - if you delegate research to a subagent, do not also perform the same searches yourself.`;
 }
-function getSessionSpecificGuidanceSection(e, t, n, r) {
+function getSessionSpecificGuidanceSection(enabledTools, skillToolCommands, n, r) {
   let o = RK(),
-    s = e.has(nE),
-    i = (o === void 0 ? t.length > 0 : o.length > 0) && s,
-    a = e.has(ss),
-    l = hC() && e.has(Co) ? `\`find\` or \`grep\` via the ${Co} tool` : `the ${wu} or ${qc}`,
+    s = enabledTools.has(nE),
+    i = (o === void 0 ? skillToolCommands.length > 0 : o.length > 0) && s,
+    a = enabledTools.has(ss),
+    l =
+      hC() && enabledTools.has(Co)
+        ? `\`find\` or \`grep\` via the ${Co} tool`
+        : `the ${wu} or ${qc}`,
     c = [
       Ir()
         ? null
@@ -271,7 +274,7 @@ function getSessionSpecificGuidanceSection(e, t, n, r) {
       !r &&
       i &&
       (o === void 0 || o.includes("schedule") || o.includes("routines")) &&
-      t.some((u) => xu(u) === "schedule")
+      skillToolCommands.some((u) => xu(u) === "schedule")
         ? at("tengu_orchid_mantis_v2", !1)
           ? 'Default: NO `/schedule` offer \u2014 most tasks just end. Offer ONLY when this turn\'s work left a named artifact with a future obligation you can quote verbatim: a flag/gate/experiment key with a stated ramp or cleanup date; a `.skip`/`xfail`/temp instrumentation with a written "remove after X" condition; a job ID with an ETA; a dated TODO. Quote the artifact in a one-line offer and derive timing from it \u2014 if no concrete date/ETA/condition exists in the work, skip; never invent or default a timeframe. NEVER offer for: unfinished scope ("do the rest" is not a follow-up \u2014 finish it now), anything doable in this PR, refactors/bugfixes/docs/renames/dep-bumps, or after the user signals done. At most once per session. Phrase the offer as: "Want me to `/schedule` \u2026 on <date from the artifact>?"'
           : at("tengu_orchid_mantis", !1)
@@ -326,47 +329,53 @@ function $tm() {
   if (t) T(`verify_prompt_arm_active source=${e ? "env" : "growthbook"}`);
   return t;
 }
-async function getSystemPrompt(e, t, n, r) {
+async function getSystemPrompt(tools, model, additionalWorkingDirectories, mcpClients) {
   if (iqo())
-    return r?.excludeDynamicSections
+    return mcpClients?.excludeDynamicSections
       ? []
       : [
           `CWD: ${$t()}
 Date: ${sSe()}`,
         ];
-  let o = ph(t),
-    s = mo(t),
+  let o = ph(model),
+    s = mo(model),
     i = o ? ":L" : "",
     a = $t(),
     [l, c] = await Promise.all([aC(a), qZn()]),
     u = Dr(),
-    d = new Set(e.map((y) => y.name)),
-    p = r?.excludeDynamicSections === !0,
+    d = new Set(tools.map((y) => y.name)),
+    p = mcpClients?.excludeDynamicSections === !0,
     f = oqo.isBriefEnabled() || Jxe(),
     m = [
-      Dk(`anti_verbosity${i}${f ? ":send_user_msg" : ""}`, () => ytm(t)),
-      Dk(`action_caution${i}`, () => _tm(t)),
+      Dk(`anti_verbosity${i}${f ? ":send_user_msg" : ""}`, () => ytm(model)),
+      Dk(`action_caution${i}`, () => _tm(model)),
       Dk("task_continuity", () => btm(s)),
-      Dk("fable_identity", () => (ICn(s) || C9(t) ? Stm : null)),
+      Dk("fable_identity", () => (ICn(s) || C9(model) ? Stm : null)),
       Dk("tool_param_json", () =>
-        o1i() || ((Mte(s) || C9(t)) && at("tengu_silent_harbor", !1)) ? Etm : null,
+        o1i() || ((Mte(s) || C9(model)) && at("tengu_silent_harbor", !1)) ? Etm : null,
       ),
-      Dk(`investigate_first:${uqo(t)}`, () => Xtm(t)),
+      Dk(`investigate_first:${uqo(model)}`, () => Xtm(model)),
       Dk(`session_guidance${i}${p ? ":sdk" : ""}:${G6()}`, () =>
         getSessionSpecificGuidanceSection(d, l, o, p),
       ),
-      ...(r?.excludeDynamicSections ? [] : [Dk(`memory${i}`, () => jNt(t))]),
-      ...(r?.excludeDynamicSections
-        ? [Dk("env_info_static", () => jtm(t, p))]
-        : [Dk("env_info_simple", () => computeSimpleEnvInfo(t, p, n))]),
+      ...(mcpClients?.excludeDynamicSections ? [] : [Dk(`memory${i}`, () => jNt(model))]),
+      ...(mcpClients?.excludeDynamicSections
+        ? [Dk("env_info_static", () => jtm(model, p))]
+        : [
+            Dk("env_info_simple", () =>
+              computeSimpleEnvInfo(model, p, additionalWorkingDirectories),
+            ),
+          ]),
       Dk("language", () => getLanguageSection(u.language)),
       Dk("output_style", () => getOutputStyleSection(c)),
       Dk("bg-session", () => Wtm()),
-      ...(r?.excludeDynamicSections ? [] : [Dk("scratchpad", () => getScratchpadInstructions())]),
+      ...(mcpClients?.excludeDynamicSections
+        ? []
+        : [Dk("scratchpad", () => getScratchpadInstructions())]),
       Dk("context_management", () => qtm),
       ...[],
       Dk("brief", () => Vtm()),
-      Dk(`focus_mode${i}`, () => Ytm(t)),
+      Dk(`focus_mode${i}`, () => Ytm(model)),
       Dk("reproduce_verify_workflow", () => ($tm() ? Otm : null)),
       Dk("act_dont_rederive", () => (Ntm() ? Btm : null)),
       Dk("heron_brook", () => Htm()),
@@ -380,14 +389,14 @@ Date: ${sSe()}`,
           getSimpleIntroSection(c),
           getSimpleSystemSection(),
           c === null || c.keepCodingInstructions === !0 ? getSimpleDoingTasksSection() : null,
-          getActionsSection(t),
+          getActionsSection(model),
           getUsingYourToolsSection(d),
           getSimpleToneAndStyleSection(),
         ]),
-    ...(r?.excludeDynamicSections ? [jNi(t)] : []),
+    ...(mcpClients?.excludeDynamicSections ? [jNi(model)] : []),
     ...(Qxe() ? [Oae] : []),
     ...g,
-    uac(t),
+    uac(model),
   ].filter((y) => y !== null);
 }
 function uac(e) {
@@ -425,21 +434,21 @@ function nqo(e) {
     );
   return [n.slice(2), t === -1 ? "" : e.slice(t + 1)];
 }
-async function computeEnvInfo(e, t) {
+async function computeEnvInfo(modelId, additionalWorkingDirectories) {
   let [n, r] = await Promise.all([cb(), cqo()]),
     o = "";
   {
-    let c = $h(e);
+    let c = $h(modelId);
     o = c
-      ? `You are powered by the model named ${c}. The exact model ID is ${e}.`
-      : `You are powered by the model ${e}.`;
+      ? `You are powered by the model named ${c}. The exact model ID is ${modelId}.`
+      : `You are powered by the model ${modelId}.`;
   }
   let s =
-      t && t.length > 0
-        ? `Additional working directories: ${t.join(", ")}
+      additionalWorkingDirectories && additionalWorkingDirectories.length > 0
+        ? `Additional working directories: ${additionalWorkingDirectories.join(", ")}
 `
         : "",
-    i = getKnowledgeCutoff(e),
+    i = getKnowledgeCutoff(modelId),
     a = i
       ? `
 
@@ -461,16 +470,16 @@ ${
 }</env>
 ${o}${a}`;
 }
-async function computeSimpleEnvInfo(e, t, n) {
+async function computeSimpleEnvInfo(modelId, additionalWorkingDirectories, n) {
   let [r, o] = await Promise.all([cb(), cqo()]),
     s = null;
   {
-    let d = $h(e);
+    let d = $h(modelId);
     s = d
-      ? `You are powered by the model named ${d}. The exact model ID is ${e}.`
-      : `You are powered by the model ${e}.`;
+      ? `You are powered by the model named ${d}. The exact model ID is ${modelId}.`
+      : `You are powered by the model ${modelId}.`;
   }
-  let i = getKnowledgeCutoff(e),
+  let i = getKnowledgeCutoff(modelId),
     a = i ? `Assistant knowledge cutoff is ${i}.` : null,
     l = $t(),
     c = Gm() !== null,
@@ -490,7 +499,7 @@ async function computeSimpleEnvInfo(e, t, n) {
       a,
       `The most recent Claude models are Fable 5 and the Claude 4.X family. Model IDs \u2014 Fable 5: '${rNe.fable}', Opus 4.8: '${rNe.opus}', Sonnet 4.6: '${rNe.sonnet}', Haiku 4.5: '${rNe.haiku}'. When building AI applications, default to the latest and most capable Claude models.`,
       "Claude Code is available as a CLI in the terminal, desktop app (Mac/Windows), web app (claude.ai/code), and IDE extensions (VS Code, JetBrains).",
-      t
+      additionalWorkingDirectories
         ? null
         : "Fast mode for Claude Code uses Claude Opus with faster output (it does not downgrade to a smaller model). It can be toggled with /fast and is available on Opus 4.8/4.7/4.6.",
     ].filter((d) => d !== null);
@@ -534,8 +543,8 @@ async function Gtm(e) {
   return ["# Environment", "You have been invoked in the following environment: ", ...oz(s)].join(`
 `);
 }
-function getKnowledgeCutoff(e) {
-  let t = mo(e);
+function getKnowledgeCutoff(modelId) {
+  let t = mo(modelId);
   if (t === "claude-fable-5" || t === "claude-mythos-5") return "January 2026";
   if (t === "claude-opus-4-8") return "January 2026";
   else if (t === "claude-opus-4-7") return "January 2026";

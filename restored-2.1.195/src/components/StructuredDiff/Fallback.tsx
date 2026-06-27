@@ -43,8 +43,8 @@ function r_p(e, t) {
     t,
   );
 }
-function transformLinesToObjects(e) {
-  return e.map((t) => {
+function transformLinesToObjects(lines) {
+  return lines.map((t) => {
     if (t.startsWith("+"))
       return {
         code: t.slice(1),
@@ -109,18 +109,21 @@ function i_p(e, t) {
     ignoreCase: false,
   });
 }
-function generateWordDiffElements(e, t, n, r, o) {
-  let { type: s, i, wordDiff: a, matchedLine: l, originalCode: c } = e;
+function generateWordDiffElements(item, width, maxWidth, dim, overrideTheme) {
+  let { type: s, i, wordDiff: a, matchedLine: l, originalCode: c } = item;
   if (!a || !l) return null;
   let u = s === "remove" ? c : l.originalCode,
     d = s === "remove" ? l.originalCode : c,
     p = i_p(u, d),
     f = u.length + d.length;
-  if (p.filter((v) => v.added || v.removed).reduce((v, C) => v + C.value.length, 0) / f > n_p || r)
+  if (
+    p.filter((v) => v.added || v.removed).reduce((v, C) => v + C.value.length, 0) / f > n_p ||
+    dim
+  )
     return null;
   let h = s === "add" ? "+" : "-",
     y = h.length,
-    b = Math.max(1, t - n - 1 - y),
+    b = Math.max(1, width - maxWidth - 1 - y),
     _ = [],
     S = [],
     A = 0;
@@ -175,16 +178,16 @@ function generateWordDiffElements(e, t, n, r, o) {
     let I = `${s}-${i}-${x}`,
       k =
         s === "add"
-          ? r
+          ? dim
             ? "diffAddedDimmed"
             : "diffAdded"
-          : r
+          : dim
             ? "diffRemovedDimmed"
             : "diffRemoved",
       D = x === 0 ? i : void 0,
-      P = (D !== void 0 ? D.toString().padStart(n) : " ".repeat(n)) + " ",
+      P = (D !== void 0 ? D.toString().padStart(maxWidth) : " ".repeat(maxWidth)) + " ",
       O = P.length + y + C,
-      L = Math.max(0, t - O);
+      L = Math.max(0, width - O);
     return Z8.jsxs(
       U,
       {
@@ -193,16 +196,16 @@ function generateWordDiffElements(e, t, n, r, o) {
           Z8.jsx(wI, {
             fromLeftEdge: true,
             children: Z8.jsxs(w, {
-              color: o ? "text" : void 0,
+              color: overrideTheme ? "text" : void 0,
               backgroundColor: k,
-              dimColor: r,
+              dimColor: dim,
               children: [P, h],
             }),
           }),
           Z8.jsxs(w, {
-            color: o ? "text" : void 0,
+            color: overrideTheme ? "text" : void 0,
             backgroundColor: k,
-            dimColor: r,
+            dimColor: dim,
             children: [v, " ".repeat(L)],
           }),
         ],
@@ -211,17 +214,17 @@ function generateWordDiffElements(e, t, n, r, o) {
     );
   });
 }
-function formatDiff(e, t, n, r, o) {
-  let s = Math.max(1, Math.floor(n)),
-    i = transformLinesToObjects(e),
+function formatDiff(lines, startingLineNumber, width, dim, overrideTheme) {
+  let s = Math.max(1, Math.floor(width)),
+    i = transformLinesToObjects(lines),
     a = s_p(i),
-    l = c_p(a, t),
+    l = c_p(a, startingLineNumber),
     c = Math.max(...l.map(({ i: d }) => d), 0),
     u = Math.max(c.toString().length + 1, 0);
   return l.flatMap((d) => {
     let { type: p, code: f, i: m, wordDiff: g, matchedLine: h } = d;
     if (g && h) {
-      let A = generateWordDiffElements(d, s, u, r, o);
+      let A = generateWordDiffElements(d, s, u, dim, overrideTheme);
       if (A !== null) return A;
     }
     let y = 2,
@@ -240,11 +243,11 @@ function formatDiff(e, t, n, r, o) {
           P = Math.max(0, s - D),
           O =
             p === "add"
-              ? r
+              ? dim
                 ? "diffAddedDimmed"
                 : "diffAdded"
               : p === "remove"
-                ? r
+                ? dim
                   ? "diffRemovedDimmed"
                   : "diffRemoved"
                 : void 0;
@@ -256,16 +259,16 @@ function formatDiff(e, t, n, r, o) {
               Z8.jsx(wI, {
                 fromLeftEdge: true,
                 children: Z8.jsxs(w, {
-                  color: o ? "text" : void 0,
+                  color: overrideTheme ? "text" : void 0,
                   backgroundColor: O,
-                  dimColor: r || p === "nochange",
+                  dimColor: dim || p === "nochange",
                   children: [I, k],
                 }),
               }),
               Z8.jsxs(w, {
-                color: o ? "text" : void 0,
+                color: overrideTheme ? "text" : void 0,
                 backgroundColor: O,
-                dimColor: r,
+                dimColor: dim,
                 children: [A, " ".repeat(P)],
               }),
             ],

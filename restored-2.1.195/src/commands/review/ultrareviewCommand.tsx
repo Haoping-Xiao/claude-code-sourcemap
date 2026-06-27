@@ -34,20 +34,20 @@ async function kWf(e, t, n, r, o, s) {
     );
 }
 var H9l,
-  call = async (e, t, n) => {
+  call = async (onDone, context, args) => {
     let r = dW("allow_remote_sessions", "Cloud sessions", "are");
     if (r)
       return (
-        e(r, {
+        onDone(r, {
           display: "system",
         }),
         null
       );
-    let { scopeArgs: o, applyFixes: s } = G2o(n),
+    let { scopeArgs: o, applyFixes: s } = G2o(args),
       i = await Xor(o);
     if (!i.ok)
       return (
-        e(i.error, {
+        onDone(i.error, {
           display: "system",
         }),
         null
@@ -69,7 +69,7 @@ var H9l,
   Run /usage-credits to request this from your admin.`
               : "";
         return (
-          e(`${l.message}${c}${u}`, {
+          onDone(`${l.message}${c}${u}`, {
             display: "system",
           }),
           null
@@ -83,11 +83,14 @@ var H9l,
           body: l.kind === "needs-confirm" ? l.body : void 0,
           scope: a,
           onProceed: async (c) => {
-            if ((await kWf(a, t, e, l.billingNote, s, c), !c.aborted && l.kind === "needs-confirm"))
+            if (
+              (await kWf(a, context, onDone, l.billingNote, s, c),
+              !c.aborted && l.kind === "needs-confirm")
+            )
               Yor();
           },
           onCancel: () =>
-            e("Ultrareview cancelled.", {
+            onDone("Ultrareview cancelled.", {
               display: "system",
             }),
         });

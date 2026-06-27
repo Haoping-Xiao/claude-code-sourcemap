@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.3456  score=0.5115  fileCov=0.5159
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function useVimInput(e) {
+function useVimInput(props) {
   let {
       value: t,
       onChange: n,
@@ -16,7 +16,7 @@ function useVimInput(e) {
       onHistoryUp: l,
       onHistoryDown: c,
       inputFilter: u,
-    } = e,
+    } = props,
     d = GQ.useRef(null),
     p = GQ.useRef(I$l()),
     [f, m] = GQ.useState("INSERT"),

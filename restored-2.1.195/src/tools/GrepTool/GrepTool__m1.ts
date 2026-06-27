@@ -20,10 +20,10 @@ function qvo(e, t, n = 0) {
     appliedLimit: s ? r : void 0,
   };
 }
-function formatLimitInfo(e, t) {
+function formatLimitInfo(appliedLimit, appliedOffset) {
   let n = [];
-  if (e !== void 0) n.push(`limit: ${e}`);
-  if (t) n.push(`offset: ${t}`);
+  if (appliedLimit !== void 0) n.push(`limit: ${appliedLimit}`);
+  if (appliedOffset) n.push(`offset: ${appliedOffset}`);
   return n.join(", ");
 }
 var Mef,

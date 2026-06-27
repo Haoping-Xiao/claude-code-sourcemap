@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Uhc] deps: Ed, Ye, Un, kt, $hc, vn
 ((Nhc = R(lt(), 1)), (odr = R(rt(), 1)), (rdr = R(se(), 1)));
-function Notifications(e) {
+function Notifications(t0) {
   let t = jhc.c(40),
     {
       apiKeyStatus: n,
@@ -16,7 +16,7 @@ function Notifications(e) {
       onChangeIsUpdating: i,
       isInputWrapped: a,
       hasStash: l,
-    } = e,
+    } = t0,
     c = a === void 0 ? !1 : a,
     u = l === void 0 ? !1 : l,
     d = kH(),

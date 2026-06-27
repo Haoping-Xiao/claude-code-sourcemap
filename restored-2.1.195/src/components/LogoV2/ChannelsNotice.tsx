@@ -200,14 +200,14 @@ function _temp() {
 function formatEntry(e) {
   return e.kind === "plugin" ? `plugin:${e.name}@${e.marketplace}` : `server:${e.name}`;
 }
-function findUnmatched(e, t) {
+function findUnmatched(entries, allowlist) {
   let n = ["enterprise", "user", "project", "local"],
     r = new Set();
   for (let l of n) for (let c of Object.keys(bT(l).servers)) r.add(c);
   let o = Object.keys(ex().plugins),
-    { entries: s, source: i } = t,
+    { entries: s, source: i } = allowlist,
     a = [];
-  for (let l of e) {
+  for (let l of entries) {
     if (l.kind === "server") {
       if (!r.has(l.name))
         a.push({

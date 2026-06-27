@@ -6,36 +6,36 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module e$e] deps: ft, Zf, ft, MMe, np, F8, dn, kt, Du, pre, Ire, Ryt, s8t, SAe, F8t, Vv, Il, je, Cp, At, q0, ys, uf, p6e, TIo, Yll, vn, co, __, Gy, CIo, $g, L7, q8t, I8, M8e, aS, II, u$, HO, bKn, acl
 ((g_t = require("crypto")), (Gif = new Set(["clear", "resume", "help", "exit", "feedback"])));
-async function initializeAgentMcpServers(e, t, n) {
-  if (!e.mcpServers?.length)
+async function initializeAgentMcpServers(agentDefinition, parentClients, n) {
+  if (!agentDefinition.mcpServers?.length)
     return {
-      clients: t,
+      clients: parentClients,
       agentClients: [],
       tools: [],
       cleanup: async () => {},
     };
   await wft();
-  let r = L_e(e.source),
+  let r = L_e(agentDefinition.source),
     o = null;
   if (VE("mcp") && !r) o = "strictPluginOnlyCustomization";
-  else if (zve() && e.source !== "flagSettings") o = "--strict-mcp-config";
+  else if (zve() && agentDefinition.source !== "flagSettings") o = "--strict-mcp-config";
   else if (lc("mcpAgentFrontmatter")) o = Tl() ? "--safe-mode" : "--bare";
   else if (da()) o = "remote mode";
   else if (Z1()) o = "enterprise MCP config";
   if (o)
     return (
       T(
-        `[Agent: ${e.agentType}] Skipping frontmatter MCP servers: blocked by ${o} (agent source: ${e.source})`,
+        `[Agent: ${agentDefinition.agentType}] Skipping frontmatter MCP servers: blocked by ${o} (agent source: ${agentDefinition.source})`,
         {
           level: "warn",
         },
       ),
       n?.(
-        e.mcpServers.flatMap((p) => (typeof p === "string" ? p : Object.keys(p))),
+        agentDefinition.mcpServers.flatMap((p) => (typeof p === "string" ? p : Object.keys(p))),
         o,
       ),
       {
-        clients: t,
+        clients: parentClients,
         agentClients: [],
         tools: [],
         cleanup: async () => {},
@@ -44,7 +44,7 @@ async function initializeAgentMcpServers(e, t, n) {
   let s = [],
     i = [],
     a = await Promise.all(
-      e.mcpServers.map(async (p) => {
+      agentDefinition.mcpServers.map(async (p) => {
         let f = null,
           m,
           g = false;
@@ -52,7 +52,7 @@ async function initializeAgentMcpServers(e, t, n) {
           if (((m = p), zve()))
             return (
               T(
-                `[Agent: ${e.agentType}] MCP server '${p}' skipped: string specs resolve from disk config, which --strict-mcp-config ignores`,
+                `[Agent: ${agentDefinition.agentType}] MCP server '${p}' skipped: string specs resolve from disk config, which --strict-mcp-config ignores`,
                 {
                   level: "warn",
                 },
@@ -62,7 +62,7 @@ async function initializeAgentMcpServers(e, t, n) {
             );
           if (((f = P4(p)), !f))
             return (
-              T(`[Agent: ${e.agentType}] MCP server not found: ${p}`, {
+              T(`[Agent: ${agentDefinition.agentType}] MCP server not found: ${p}`, {
                 level: "warn",
               }),
               null
@@ -71,23 +71,29 @@ async function initializeAgentMcpServers(e, t, n) {
           let _ = Object.entries(p);
           if (_.length !== 1)
             return (
-              T(`[Agent: ${e.agentType}] Invalid MCP server spec: expected exactly one key`, {
-                level: "warn",
-              }),
+              T(
+                `[Agent: ${agentDefinition.agentType}] Invalid MCP server spec: expected exactly one key`,
+                {
+                  level: "warn",
+                },
+              ),
               null
             );
           let [S, A] = _[0];
           if (mlt(S))
             return (
-              T(`[Agent: ${e.agentType}] Skipping reserved MCP server name '${S}' in frontmatter`, {
-                level: "warn",
-              }),
+              T(
+                `[Agent: ${agentDefinition.agentType}] Skipping reserved MCP server name '${S}' in frontmatter`,
+                {
+                  level: "warn",
+                },
+              ),
               null
             );
           if (A.type === "sse-ide" || A.type === "ws-ide")
             return (
               T(
-                `[Agent: ${e.agentType}] Skipping internal-only MCP transport '${A.type}' for '${S}' in frontmatter`,
+                `[Agent: ${agentDefinition.agentType}] Skipping internal-only MCP transport '${A.type}' for '${S}' in frontmatter`,
                 {
                   level: "warn",
                 },
@@ -106,9 +112,12 @@ async function initializeAgentMcpServers(e, t, n) {
         });
         if (h.length > 0)
           return (
-            T(`[Agent: ${e.agentType}] MCP server '${m}' blocked by managed settings MCP policy`, {
-              level: "warn",
-            }),
+            T(
+              `[Agent: ${agentDefinition.agentType}] MCP server '${m}' blocked by managed settings MCP policy`,
+              {
+                level: "warn",
+              },
+            ),
             s.push(m),
             null
           );
@@ -116,11 +125,16 @@ async function initializeAgentMcpServers(e, t, n) {
           b = [];
         if (y.type === "connected")
           ((b = await lP(y)),
-            T(`[Agent: ${e.agentType}] Connected to MCP server '${m}' with ${b.length} tools`));
+            T(
+              `[Agent: ${agentDefinition.agentType}] Connected to MCP server '${m}' with ${b.length} tools`,
+            ));
         else
-          T(`[Agent: ${e.agentType}] Failed to connect to MCP server '${m}': ${y.type}`, {
-            level: "warn",
-          });
+          T(
+            `[Agent: ${agentDefinition.agentType}] Failed to connect to MCP server '${m}': ${y.type}`,
+            {
+              level: "warn",
+            },
+          );
         return {
           client: y,
           tools: b,
@@ -144,24 +158,27 @@ async function initializeAgentMcpServers(e, t, n) {
         try {
           await p.cleanup();
         } catch (f) {
-          T(`[Agent: ${e.agentType}] Error cleaning up MCP server '${p.name}': ${f}`, {
-            level: "warn",
-          });
+          T(
+            `[Agent: ${agentDefinition.agentType}] Error cleaning up MCP server '${p.name}': ${f}`,
+            {
+              level: "warn",
+            },
+          );
         }
   };
   return {
-    clients: [...t, ...l],
+    clients: [...parentClients, ...l],
     agentClients: l,
     tools: u,
     cleanup: d,
   };
 }
-function isRecordableMessage(e) {
+function isRecordableMessage(msg) {
   return (
-    e.type === "assistant" ||
-    e.type === "user" ||
-    e.type === "progress" ||
-    (e.type === "system" && "subtype" in e && e.subtype === "compact_boundary")
+    msg.type === "assistant" ||
+    msg.type === "user" ||
+    msg.type === "progress" ||
+    (msg.type === "system" && "subtype" in msg && msg.subtype === "compact_boundary")
   );
 }
 function Jif(e) {
@@ -826,16 +843,16 @@ async function* runAgent({
     }
   }
 }
-function filterIncompleteToolCalls(e) {
+function filterIncompleteToolCalls(messages) {
   let t = new Set();
-  for (let n of e)
+  for (let n of messages)
     if (n?.type === "user") {
       let o = n.message.content;
       if (Array.isArray(o)) {
         for (let s of o) if (s.type === "tool_result" && s.tool_use_id) t.add(s.tool_use_id);
       }
     }
-  return e.filter((n) => {
+  return messages.filter((n) => {
     if (n?.type === "assistant") {
       let o = n.message.content;
       if (Array.isArray(o)) return !o.some((i) => i.type === "tool_use" && i.id && !t.has(i.id));

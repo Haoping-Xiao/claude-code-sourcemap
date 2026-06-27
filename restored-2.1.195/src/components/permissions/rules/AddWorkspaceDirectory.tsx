@@ -362,9 +362,9 @@ function PermissionDescription() {
   else t = e[0];
   return t;
 }
-function DirectoryDisplay(e) {
+function DirectoryDisplay(t0) {
   let t = NUt.c(5),
-    { path: n } = e,
+    { path: n } = t0,
     r;
   if (t[0] !== n)
     ((r = $v.jsx(w, {
@@ -390,9 +390,9 @@ function DirectoryDisplay(e) {
   else s = t[4];
   return s;
 }
-function DirectoryInput(e) {
+function DirectoryInput(t0) {
   let t = NUt.c(14),
-    { value: n, onChange: r, onSubmit: o, error: s, suggestions: i, selectedSuggestion: a } = e,
+    { value: n, onChange: r, onSubmit: o, error: s, suggestions: i, selectedSuggestion: a } = t0,
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((l = $v.jsx(w, {
@@ -461,9 +461,9 @@ function DirectoryInput(e) {
   return p;
 }
 function lKd() {}
-function AddWorkspaceDirectory(e) {
+function AddWorkspaceDirectory(t0) {
   let t = NUt.c(36),
-    { onAddDirectory: n, onCancel: r, permissionContext: o, directoryPath: s } = e,
+    { onAddDirectory: n, onCancel: r, permissionContext: o, directoryPath: s } = t0,
     [i, a] = GGe.useState(""),
     [l, c] = GGe.useState(null),
     u;

@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gHc] deps: ft, Fy, X0, Ye, kt, uo
 ((fHc = R(lt(), 1)), (x3 = R(se(), 1)));
-function isInClaudeFolder(e) {
-  let t = ds(e),
+function isInClaudeFolder(filePath) {
+  let t = ds(filePath),
     n = ds(`${yr()}/.claude`),
     r = ym(t),
     o = ym(n);

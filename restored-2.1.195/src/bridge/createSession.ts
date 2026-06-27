@@ -104,13 +104,13 @@ async function createBridgeSession({
     );
   return (xe("bridge_session_create"), D.id);
 }
-async function getBridgeSession(e, t) {
+async function getBridgeSession(sessionId, opts) {
   let { getClaudeAIOAuthTokens: n } = await Promise.resolve().then(() => (oo(), pU)),
     { getOrganizationUUID: r } = await Promise.resolve().then(() => (H0(), Int)),
     { getOauthConfig: o } = await Promise.resolve().then(() => (Rc(), _0t)),
     { getOAuthHeaders: s } = await Promise.resolve().then(() => (Cv(), sce)),
     { default: i } = await Promise.resolve().then(() => (Hp(), G0t)),
-    a = t?.getAccessToken?.() ?? n()?.accessToken;
+    a = opts?.getAccessToken?.() ?? n()?.accessToken;
   if (!a)
     return (
       T("[bridge] No access token for session fetch"),
@@ -129,8 +129,8 @@ async function getBridgeSession(e, t) {
       "anthropic-beta": "ccr-byoc-2025-07-29",
       "x-organization-uuid": l,
     },
-    u = oP(e),
-    d = `${t?.baseUrl ?? o().BASE_API_URL}/v1/sessions/${u}`;
+    u = oP(sessionId),
+    d = `${opts?.baseUrl ?? o().BASE_API_URL}/v1/sessions/${u}`;
   T(`[bridge] Fetching session ${u}`);
   let p;
   try {
@@ -156,13 +156,13 @@ async function getBridgeSession(e, t) {
   }
   return (xe("bridge_session_get"), p.data);
 }
-async function archiveBridgeSession(e, t) {
+async function archiveBridgeSession(sessionId, opts) {
   let { getClaudeAIOAuthTokens: n } = await Promise.resolve().then(() => (oo(), pU)),
     { getOrganizationUUID: r } = await Promise.resolve().then(() => (H0(), Int)),
     { getOauthConfig: o } = await Promise.resolve().then(() => (Rc(), _0t)),
     { getOAuthHeaders: s } = await Promise.resolve().then(() => (Cv(), sce)),
     { default: i } = await Promise.resolve().then(() => (Hp(), G0t)),
-    a = t?.getAccessToken?.() ?? n()?.accessToken;
+    a = opts?.getAccessToken?.() ?? n()?.accessToken;
   if (!a) {
     T("[bridge] No access token for session archive");
     return;
@@ -177,19 +177,19 @@ async function archiveBridgeSession(e, t) {
       "anthropic-beta": "ccr-byoc-2025-07-29",
       "x-organization-uuid": l,
     },
-    u = `${t?.baseUrl ?? o().BASE_API_URL}/v1/sessions/${e}/archive`;
-  T(`[bridge] Archiving session ${e}`);
+    u = `${opts?.baseUrl ?? o().BASE_API_URL}/v1/sessions/${sessionId}/archive`;
+  T(`[bridge] Archiving session ${sessionId}`);
   let d = await i.post(
     u,
     {},
     {
       headers: c,
-      timeout: t?.timeoutMs ?? 10000 /* 1e4 */,
+      timeout: opts?.timeoutMs ?? 10000 /* 1e4 */,
       validateStatus: (p) => p < 500,
     },
   );
   if (d.status === 200)
-    (T(`[bridge] Session ${e} archived successfully`), xe("bridge_session_archive"));
+    (T(`[bridge] Session ${sessionId} archived successfully`), xe("bridge_session_archive"));
   else {
     let p = _J(d.data);
     (T(`[bridge] Session archive failed with status ${d.status}${p ? `: ${p}` : ""}`),

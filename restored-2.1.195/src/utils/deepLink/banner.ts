@@ -259,19 +259,19 @@ gfm = zz.memo(function () {
   else he = t[46];
   return he;
 });
-function buildDeepLinkBanner(e) {
-  let t = [`This session was opened by an external deep link in ${vfm(e.cwd)}`];
-  if (e.repo) {
-    let n = e.lastFetch ? WK(e.lastFetch) : "never",
-      r = !e.lastFetch || Date.now() - e.lastFetch.getTime() > Tfm;
+function buildDeepLinkBanner(info) {
+  let t = [`This session was opened by an external deep link in ${vfm(info.cwd)}`];
+  if (info.repo) {
+    let n = info.lastFetch ? WK(info.lastFetch) : "never",
+      r = !info.lastFetch || Date.now() - info.lastFetch.getTime() > Tfm;
     t.push(
-      `Resolved ${e.repo} from local clones \xB7 last fetched ${n}${r ? " \u2014 CLAUDE.md may be stale" : ""}`,
+      `Resolved ${info.repo} from local clones \xB7 last fetched ${n}${r ? " \u2014 CLAUDE.md may be stale" : ""}`,
     );
   }
-  if (e.prefillLength)
+  if (info.prefillLength)
     t.push(
-      e.prefillLength > D6o
-        ? `The prompt below (${ou(e.prefillLength)} chars) was supplied by the link \u2014 scroll to review the entire prompt before pressing Enter.`
+      info.prefillLength > D6o
+        ? `The prompt below (${ou(info.prefillLength)} chars) was supplied by the link \u2014 scroll to review the entire prompt before pressing Enter.`
         : "The prompt below was supplied by the link \u2014 review carefully before pressing Enter.",
     );
   return t.join(`

@@ -8,14 +8,14 @@ function $Sf(e, t) {
   if (t === "policySettings") return !1;
   return e === "skills" || e === "commands_DEPRECATED" || e === "plugin";
 }
-function getSkillsPath(e, t) {
-  switch (e) {
+function getSkillsPath(source, dir) {
+  switch (source) {
     case "policySettings":
-      return rm.join(QC(), ".claude", t);
+      return rm.join(QC(), ".claude", dir);
     case "userSettings":
-      return rm.join(tr(), t);
+      return rm.join(tr(), dir);
     case "projectSettings":
-      return `.claude/${t}`;
+      return `.claude/${dir}`;
     case "plugin":
       return "plugin";
     default:
@@ -35,11 +35,11 @@ async function OSf(e) {
     return null;
   }
 }
-function parseHooksFromFrontmatter(e, t) {
-  if (!e.hooks) return;
-  let n = IG().safeParse(e.hooks);
+function parseHooksFromFrontmatter(frontmatter, skillName) {
+  if (!frontmatter.hooks) return;
+  let n = IG().safeParse(frontmatter.hooks);
   if (!n.success) {
-    T(`Invalid hooks in skill '${t}': ${n.error.message}`);
+    T(`Invalid hooks in skill '${skillName}': ${n.error.message}`);
     return;
   }
   return n.data;
@@ -52,44 +52,47 @@ function BSf(e) {
   if (t.length === 0 || t.every((n) => n === "**")) return;
   return t;
 }
-function parseSkillFrontmatterFields(e, t, n, r = "Skill") {
-  let o = AU(e.description, n),
-    s = o ?? ffe(t, r),
-    i = e["user-invocable"] === void 0 ? !0 : qst(e["user-invocable"]),
-    a = e.model,
+function parseSkillFrontmatterFields(frontmatter, markdownContent, resolvedName, r = "Skill") {
+  let o = AU(frontmatter.description, resolvedName),
+    s = o ?? ffe(markdownContent, r),
+    i = frontmatter["user-invocable"] === void 0 ? !0 : qst(frontmatter["user-invocable"]),
+    a = frontmatter.model,
     l;
   if (typeof a === "string" && a.trim().length > 0) {
     let d = a.trim();
     l = d === "inherit" ? void 0 : zo(d);
   }
-  let c = e.effort,
+  let c = frontmatter.effort,
     u = c !== void 0 ? TU(c) : void 0;
   if (c !== void 0 && u === void 0)
-    T(`Skill ${n} has invalid effort '${c}'. Valid options: ${xv.join(", ")} or an integer`);
+    T(
+      `Skill ${resolvedName} has invalid effort '${c}'. Valid options: ${xv.join(", ")} or an integer`,
+    );
   return {
-    displayName: e.name != null ? String(e.name) : void 0,
+    displayName: frontmatter.name != null ? String(frontmatter.name) : void 0,
     description: s,
     hasUserSpecifiedDescription: o !== null,
-    allowedTools: kQ(e["allowed-tools"]),
-    disallowedTools: kQ(e["disallowed-tools"] ?? e.disallowedTools),
-    argumentHint: e["argument-hint"] != null ? String(e["argument-hint"]) : void 0,
-    argumentNames: P2n(e.arguments),
-    whenToUse: e.when_to_use != null ? String(e.when_to_use) : void 0,
-    version: e.version != null ? String(e.version) : void 0,
+    allowedTools: kQ(frontmatter["allowed-tools"]),
+    disallowedTools: kQ(frontmatter["disallowed-tools"] ?? frontmatter.disallowedTools),
+    argumentHint:
+      frontmatter["argument-hint"] != null ? String(frontmatter["argument-hint"]) : void 0,
+    argumentNames: P2n(frontmatter.arguments),
+    whenToUse: frontmatter.when_to_use != null ? String(frontmatter.when_to_use) : void 0,
+    version: frontmatter.version != null ? String(frontmatter.version) : void 0,
     model: l,
-    disableModelInvocation: qst(e["disable-model-invocation"]),
+    disableModelInvocation: qst(frontmatter["disable-model-invocation"]),
     userInvocable: i,
-    hooks: parseHooksFromFrontmatter(e, n),
-    executionContext: e.context === "fork" ? "fork" : void 0,
-    agent: e.agent != null ? String(e.agent) : void 0,
+    hooks: parseHooksFromFrontmatter(frontmatter, resolvedName),
+    executionContext: frontmatter.context === "fork" ? "fork" : void 0,
+    agent: frontmatter.agent != null ? String(frontmatter.agent) : void 0,
     effort: u,
-    shell: Okn(e.shell, n),
+    shell: Okn(frontmatter.shell, resolvedName),
     createdBy:
-      e.created_by === "dream-proposal" || e.improved_by === "dream-proposal"
+      frontmatter.created_by === "dream-proposal" || frontmatter.improved_by === "dream-proposal"
         ? "dream-proposal"
         : void 0,
-    declaredFields: $kn(e),
-    fallback: C3e(e.fallback),
+    declaredFields: $kn(frontmatter),
+    fallback: C3e(frontmatter.fallback),
   };
 }
 function USf(e) {
@@ -365,9 +368,9 @@ async function zbt(e, t) {
 function dDo(e) {
   return /^skill\.md$/i.test(rm.basename(e));
 }
-function transformSkillFiles(e) {
+function transformSkillFiles(files) {
   let t = new Map();
-  for (let r of e) {
+  for (let r of files) {
     let o = rm.dirname(r.filePath),
       s = t.get(o) ?? [];
     (s.push(r), t.set(o, s));
@@ -406,10 +409,10 @@ function GSf(e, t) {
 function WSf(e) {
   return dDo(e.filePath) ? jSf(e.filePath, e.baseDir) : GSf(e.filePath, e.baseDir);
 }
-async function loadSkillsFromCommandsDir(e, t) {
+async function loadSkillsFromCommandsDir(cwd, t) {
   try {
     let [n, r] = await Promise.all([
-        _q("commands", e),
+        _q("commands", cwd),
         Promise.all(
           t.map((l) => {
             let c = rm.join(l, ".claude", "commands");
@@ -533,12 +536,12 @@ function JTl(e) {
     }
   });
 }
-async function discoverSkillDirsForPaths(e, t) {
+async function discoverSkillDirsForPaths(filePaths, cwd) {
   if (lc("skills")) return [];
   let n = qt(),
-    r = t.endsWith(rm.sep) ? t.slice(0, -1) : t,
+    r = cwd.endsWith(rm.sep) ? cwd.slice(0, -1) : cwd,
     o = [];
-  for (let s of e) {
+  for (let s of filePaths) {
     let i = rm.dirname(s);
     while (i.startsWith(r + rm.sep)) {
       let a = rm.join(i, ".claude", "skills");
@@ -562,28 +565,29 @@ async function discoverSkillDirsForPaths(e, t) {
 function QTl(e) {
   return `${e.type === "prompt" ? (e.skillRoot ?? "") : ""}\x00${e.name}`;
 }
-async function addSkillDirectories(e) {
+async function addSkillDirectories(dirs) {
   if (lc("skills") || !Om("projectSettings") || VE("skills")) {
     T("[skills] Dynamic skill discovery skipped: projectSettings disabled or plugin-only policy");
     return;
   }
-  if (e.length === 0) return;
+  if (dirs.length === 0) return;
   let t = new Set(yq().dynamicSkills.keys()),
-    n = await Promise.all(e.map((o) => zbt(o, "projectSettings")));
+    n = await Promise.all(dirs.map((o) => zbt(o, "projectSettings")));
   for (let o of n)
     for (let { skill: s } of o) if (s.type === "prompt") yq().dynamicSkills.set(QTl(s), s);
   let r = n.flat().length;
   if (r > 0) {
     let o = [...yq().dynamicSkills.keys()].filter((s) => !t.has(s));
     if (
-      (T(`[skills] Dynamically discovered ${r} skills from ${e.length} directories`), o.length > 0)
+      (T(`[skills] Dynamically discovered ${r} skills from ${dirs.length} directories`),
+      o.length > 0)
     )
       G("tengu_dynamic_skills_changed", {
         source: We("file_operation"),
         previousCount: t.size,
         newCount: yq().dynamicSkills.size,
         addedCount: o.length,
-        directoryCount: e.length,
+        directoryCount: dirs.length,
       });
   }
   fDo.emit();
@@ -595,14 +599,14 @@ function ZTl() {
     )
     .map(([, e]) => e);
 }
-function activateConditionalSkillsForPaths(e, t) {
+function activateConditionalSkillsForPaths(filePaths, cwd) {
   if ((yKt()?.conditionalSkills.size ?? 0) === 0) return [];
   let n = [];
   for (let [r, o] of yq().conditionalSkills) {
     if (o.type !== "prompt" || !o.paths || o.paths.length === 0) continue;
     let s = zTl.default().add(o.paths);
-    for (let i of e) {
-      let a = rm.isAbsolute(i) ? rm.relative(t, i) : i;
+    for (let i of filePaths) {
+      let a = rm.isAbsolute(i) ? rm.relative(cwd, i) : i;
       if (!a || a.startsWith("..") || rm.isAbsolute(a)) continue;
       if (s.ignores(a)) {
         (yq().dynamicSkills.set(QTl(o), o),

@@ -24,17 +24,17 @@ H_r = E_r.subscribe;
 rbr = Mi();
 yCt = rbr.subscribe;
 mrs = [];
-function stripProtoFields(e) {
+function stripProtoFields(metadata) {
   let t;
-  for (let n in e)
+  for (let n in metadata)
     if (n.startsWith("_PROTO_")) {
       if (t === void 0)
         t = {
-          ...e,
+          ...metadata,
         };
       delete t[n];
     }
-  return t ?? e;
+  return t ?? metadata;
 }
 function createAnalyticsState() {
   return {

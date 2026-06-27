@@ -252,15 +252,21 @@ ${r.trim()}`,
     t.trim()
   );
 }
-function getCompactUserSummaryMessage(e, t, n, r, o) {
+function getCompactUserSummaryMessage(
+  summary,
+  suppressFollowUpQuestions,
+  transcriptPath,
+  recentMessagesPreserved,
+  o,
+) {
   let i = `This session is being continued from a previous conversation that ran out of context. The summary below covers the earlier portion of the conversation.
 
-${Zcp(e)}`;
-  if (n)
+${Zcp(summary)}`;
+  if (transcriptPath)
     i += `
 
-If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: ${n}`;
-  if (r)
+If you need specific details from before compaction (like exact code snippets, error messages, or content you generated), read the full transcript at: ${transcriptPath}`;
+  if (recentMessagesPreserved)
     i += `
 
 Recent messages are preserved verbatim.`;
@@ -268,7 +274,7 @@ Recent messages are preserved verbatim.`;
     i += `
 
 Your REPL VM state has been cleared as part of this compaction. Variables defined in REPL calls before this point are no longer accessible \u2014 redefine any you still need.`;
-  if (t)
+  if (suppressFollowUpQuestions)
     return `${i}
 Continue the conversation from where it left off without asking the user any further questions. Resume directly \u2014 do not acknowledge the summary, do not recap what was happening, do not preface with "I'll continue" or similar. Pick up the last task as if the break never happened.`;
   return i;

@@ -4,8 +4,8 @@
 // class=modified  jaccard=0.5926  score=0.9737  fileCov=0.6023
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function initializeTeammateHooks(e, t, n) {
-  let { teamName: r, agentId: o, agentName: s } = n,
+function initializeTeammateHooks(setAppState, sessionId, teamInfo) {
+  let { teamName: r, agentId: o, agentName: s } = teamInfo,
     i = J4(r);
   if (!i) {
     T(`[TeammateInit] Team file not found for team: ${r}`);
@@ -19,7 +19,7 @@ function initializeTeammateHooks(e, t, n) {
       (T(
         `[TeammateInit] Applying team permission: ${u.toolName} allowed in ${u.path} (rule: ${d})`,
       ),
-        e((p) => ({
+        setAppState((p) => ({
           ...p,
           toolPermissionContext: My(p.toolPermissionContext, {
             type: "addRules",
@@ -42,8 +42,8 @@ function initializeTeammateHooks(e, t, n) {
   }
   (T(`[TeammateInit] Registering Stop hook for teammate ${s} to notify leader ${c}`),
     Wll(
-      e,
-      t,
+      setAppState,
+      sessionId,
       "Stop",
       "",
       async (u, d) => {

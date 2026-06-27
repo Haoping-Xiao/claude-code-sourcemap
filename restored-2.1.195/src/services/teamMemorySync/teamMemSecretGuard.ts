@@ -8,11 +8,11 @@
 ((VDa = require("fs/promises")),
   (gJ = require("path")),
   (hmo = ["team", "logs", "sessions", "proposals"]));
-function checkTeamMemSecrets(e, t) {
-  let n = $_e(e),
-    r = !n && Nqe() && zDa(e);
+function checkTeamMemSecrets(filePath, content) {
+  let n = $_e(filePath),
+    r = !n && Nqe() && zDa(filePath);
   if (!n && !r) return null;
-  let o = YJe(t);
+  let o = YJe(content);
   if (o.length === 0) return null;
   let s = o.map((i) => i.label).join(", ");
   if (n)

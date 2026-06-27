@@ -7,10 +7,10 @@
 // module exports: call
 // [unwrapped __esm module Enc] deps: dn, _nc, Lze
 Snc = R(se(), 1);
-var shouldFilterSuggestion = async (e, t) => {
-  let n = e.trim();
+var shouldFilterSuggestion = async (suggestion, promptId) => {
+  let n = suggestion.trim();
   if (n === "") {
-    let o = t.options.activeGoal;
+    let o = promptId.options.activeGoal;
     if (!o)
       return {
         type: "text",
@@ -28,7 +28,7 @@ ${HIl(o.lastReason)}`
     };
   }
   if (CQn(n)) {
-    let o = fSt(t);
+    let o = fSt(promptId);
     return {
       type: "text",
       value: o === null ? "No goal set" : `Goal cleared: ${o}`,
@@ -42,7 +42,7 @@ ${HIl(o.lastReason)}`
         value: `Goal condition is limited to ${uSt} characters (got ${n.length})`,
       }
     );
-  let r = pSt(n, t);
+  let r = pSt(n, promptId);
   if (r !== null)
     return {
       type: "text",

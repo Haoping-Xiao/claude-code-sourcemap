@@ -57,13 +57,13 @@ function S5e() {
 function mcp(e) {
   return e.includes("haiku");
 }
-function getTrackingKey(e, t) {
-  if (e === "compact") return "repl_main_thread";
-  for (let n of dcp) if (e.startsWith(n)) return t || e;
+function getTrackingKey(querySource, agentId) {
+  if (querySource === "compact") return "repl_main_thread";
+  for (let n of dcp) if (querySource.startsWith(n)) return agentId || querySource;
   return null;
 }
-function stripCacheControl(e) {
-  return e.map((t) => {
+function stripCacheControl(items) {
+  return items.map((t) => {
     if (!("cache_control" in t)) return t;
     let { cache_control: n, ...r } = t;
     return r;
@@ -156,9 +156,10 @@ function ycp(e) {
     return typeof o === "bigint" ? Number(o & 0xffffffffn) : o;
   });
 }
-function computePerToolHashes(e, t) {
+function computePerToolHashes(strippedTools, names) {
   let n = {};
-  for (let r = 0; r < e.length; r++) n[t[r] ?? `__idx_${r}`] = Sut(e[r]);
+  for (let r = 0; r < strippedTools.length; r++)
+    n[names[r] ?? `__idx_${r}`] = Sut(strippedTools[r]);
   return n;
 }
 function bcp(e) {
@@ -166,11 +167,11 @@ function bcp(e) {
   for (let n of e) t += mao(n)?.length ?? 0;
   return t;
 }
-function buildDiffableContent(e, t, n) {
-  let r = e.map((s) => s.text).join(`
+function buildDiffableContent(system, tools, model) {
+  let r = system.map((s) => s.text).join(`
 
 `),
-    o = t
+    o = tools
       .map((s) => {
         if (!("name" in s)) return "unknown";
         let i = "description" in s ? s.description : "",
@@ -182,18 +183,18 @@ function buildDiffableContent(e, t, n) {
       .sort().join(`
 
 `);
-  return `Model: ${n}
+  return `Model: ${model}
 
 === System Prompt ===
 
 ${r}
 
-=== Tools (${t.length}) ===
+=== Tools (${tools.length}) ===
 
 ${o}
 `;
 }
-function recordPromptState(e) {
+function recordPromptState(snapshot) {
   try {
     let {
         system: t,
@@ -212,7 +213,7 @@ function recordPromptState(e) {
         effortValue: m,
         extraBodyParams: g,
         messagesForAPI: h,
-      } = e,
+      } = snapshot,
       y = getTrackingKey(r, s);
     if (!y) return;
     let b = stripCacheControl(t).filter((de) => !Qla(de)),
@@ -375,27 +376,37 @@ function recordPromptState(e) {
     ke(t);
   }
 }
-async function checkResponseForCacheBreak(e, t, n, r, o, s, i) {
-  let a = getTrackingKey(e, o);
+async function checkResponseForCacheBreak(
+  querySource,
+  cacheReadTokens,
+  cacheCreationTokens,
+  messages,
+  agentId,
+  requestId,
+  i,
+) {
+  let a = getTrackingKey(querySource, agentId);
   if (!a) return;
   let l = V8.get(a);
   if (!l) return;
   if (mcp(l.model)) return;
   try {
     let c = l.prevCacheReadTokens;
-    l.prevCacheReadTokens = t;
-    let u = r.findLast((A) => A.type === "assistant"),
+    l.prevCacheReadTokens = cacheReadTokens;
+    let u = messages.findLast((A) => A.type === "assistant"),
       d = u ? Date.now() - new Date(u.timestamp).getTime() : null;
     if (c === null) return;
     let p = l.pendingChanges;
     if (l.cacheDeletionsPending) {
       ((l.cacheDeletionsPending = false),
-        T(`[PROMPT CACHE] cache deletion applied, cache read: ${c} \u2192 ${t} (expected drop)`),
+        T(
+          `[PROMPT CACHE] cache deletion applied, cache read: ${c} \u2192 ${cacheReadTokens} (expected drop)`,
+        ),
         (l.pendingChanges = null));
       return;
     }
-    let f = c - t;
-    if (t >= c * 0.95 || f < pcp) {
+    let f = c - cacheReadTokens;
+    if (cacheReadTokens >= c * 0.95 || f < pcp) {
       l.pendingChanges = null;
       return;
     }
@@ -481,24 +492,24 @@ async function checkResponseForCacheBreak(e, t, n, r, o, s, i) {
       toolsHash: l.toolsHash,
       is1hCacheTTL: l.is1hCacheTTL,
       queryDepth: l.queryDepth,
-      querySource: Bh(e),
+      querySource: Bh(querySource),
       model: l.model,
       globalCacheStrategy: l.globalCacheStrategy,
       callNumber: l.callCount,
       prevCacheReadTokens: c,
-      cacheReadTokens: t,
-      cacheCreationTokens: n,
+      cacheReadTokens: cacheReadTokens,
+      cacheCreationTokens: cacheCreationTokens,
       timeSinceLastAssistantMsg: d ?? -1,
       lastAssistantMsgOver5minAgo: g,
       lastAssistantMsgOver1hAgo: h,
       isCowork: Oe.CLAUDE_CODE_IS_COWORK,
       isDesktop: tca(),
-      requestId: s ?? "",
+      requestId: requestId ?? "",
       previousMessageId: i ?? "",
     });
     let b,
       _ = b ? `, diff: ${b}` : "",
-      S = `[PROMPT CACHE BREAK] ${y} [source=${e}, call #${l.callCount}, cache read: ${c} \u2192 ${t}, creation: ${n}${_}]`;
+      S = `[PROMPT CACHE BREAK] ${y} [source=${querySource}, call #${l.callCount}, cache read: ${c} \u2192 ${cacheReadTokens}, creation: ${cacheCreationTokens}${_}]`;
     (T(S, {
       level: "warn",
     }),

@@ -31,12 +31,12 @@ async function getOauthProfileFromApiKey() {
     else ke(o);
   }
 }
-async function getOauthProfileFromOauthToken(e) {
+async function getOauthProfileFromOauthToken(accessToken) {
   let t = `${$s().BASE_API_URL}/api/oauth/profile`;
   try {
     let n = await po.get(t, {
       headers: {
-        Authorization: `Bearer ${e}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       timeout: 10000 /* 1e4 */,

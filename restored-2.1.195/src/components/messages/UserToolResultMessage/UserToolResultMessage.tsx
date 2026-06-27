@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _ll] deps: ii, f4
 ((hll = R(lt(), 1)), (iif = new Set([j1])));
-function UserToolResultMessage(e) {
+function UserToolResultMessage(t0) {
   let t = bll.c(30),
     {
       param: n,
@@ -18,7 +18,7 @@ function UserToolResultMessage(e) {
       verbose: l,
       width: c,
       isTranscriptMode: u,
-    } = e,
+    } = t0,
     d = yll(n.tool_use_id, a, o);
   if (!d) return null;
   let p;

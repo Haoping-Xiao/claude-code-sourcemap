@@ -93,11 +93,11 @@ function O6e(e, t) {
   }
   return s;
 }
-async function findMarkdownFilesNative(e, t) {
+async function findMarkdownFilesNative(dir, signal) {
   let n = [],
     r = new Set();
   async function o(s) {
-    if (t.aborted) return;
+    if (signal.aborted) return;
     try {
       let i = await Mz.stat(s, {
         bigint: true,
@@ -120,7 +120,7 @@ async function findMarkdownFilesNative(e, t) {
         withFileTypes: true,
       });
       for (let a of i) {
-        if (t.aborted) break;
+        if (signal.aborted) break;
         let l = d2.join(s, a.name);
         try {
           if (a.isSymbolicLink())
@@ -144,21 +144,21 @@ async function findMarkdownFilesNative(e, t) {
       T(`Failed to read directory ${s}: ${a}`);
     }
   }
-  return (await o(e), n);
+  return (await o(dir), n);
 }
-async function loadMarkdownFiles(e) {
+async function loadMarkdownFiles(dir) {
   let t = ut("true"),
     n = AbortSignal.timeout(3000),
     r = null,
     o;
   try {
     o = t
-      ? await findMarkdownFilesNative(e, n)
-      : await Aue(["--files", "--hidden", "--follow", "--no-ignore", "--glob", "*.md"], e, n);
+      ? await findMarkdownFilesNative(dir, n)
+      : await Aue(["--files", "--hidden", "--follow", "--no-ignore", "--glob", "*.md"], dir, n);
   } catch (i) {
     if (Vo(i)) return [];
     if (i instanceof tOn)
-      return (T(`loadMarkdownFilesFromDir: ripgrep timed out scanning ${e}`), []);
+      return (T(`loadMarkdownFilesFromDir: ripgrep timed out scanning ${dir}`), []);
     throw i;
   }
   return (

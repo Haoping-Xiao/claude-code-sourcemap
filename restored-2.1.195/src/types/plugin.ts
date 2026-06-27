@@ -23,82 +23,82 @@ function fKi(e) {
     e.source.endsWith("@skills-dir")
   );
 }
-function getPluginErrorMessage(e) {
-  switch (e.type) {
+function getPluginErrorMessage(error) {
+  switch (error.type) {
     case "generic-error":
-      return e.error;
+      return error.error;
     case "path-not-found":
-      return `Path not found: ${e.path} (${e.component}${e.errno ? `, ${e.errno}` : ""})`;
+      return `Path not found: ${error.path} (${error.component}${error.errno ? `, ${error.errno}` : ""})`;
     case "path-traversal":
-      return `Path escapes plugin directory: ${e.path} (${e.component})`;
+      return `Path escapes plugin directory: ${error.path} (${error.component})`;
     case "git-auth-failed":
-      return `Git authentication failed (${e.authType}): ${e.gitUrl}`;
+      return `Git authentication failed (${error.authType}): ${error.gitUrl}`;
     case "git-timeout":
-      return `Git ${e.operation} timeout: ${e.gitUrl}`;
+      return `Git ${error.operation} timeout: ${error.gitUrl}`;
     case "network-error":
-      return `Network error: ${e.url}${e.details ? ` - ${e.details}` : ""}`;
+      return `Network error: ${error.url}${error.details ? ` - ${error.details}` : ""}`;
     case "manifest-parse-error":
-      return `Manifest parse error: ${e.parseError}`;
+      return `Manifest parse error: ${error.parseError}`;
     case "manifest-validation-error":
-      return `Manifest validation failed: ${e.validationErrors.join(", ")}`;
+      return `Manifest validation failed: ${error.validationErrors.join(", ")}`;
     case "plugin-not-found":
-      return `Plugin ${e.pluginId} not found in marketplace ${e.marketplace}`;
+      return `Plugin ${error.pluginId} not found in marketplace ${error.marketplace}`;
     case "marketplace-not-found":
-      return `Marketplace ${e.marketplace} not found`;
+      return `Marketplace ${error.marketplace} not found`;
     case "marketplace-load-failed":
-      return `Marketplace ${e.marketplace} failed to load: ${e.reason}`;
+      return `Marketplace ${error.marketplace} failed to load: ${error.reason}`;
     case "mcp-config-invalid":
-      return `MCP server ${e.serverName} invalid: ${e.validationError}`;
+      return `MCP server ${error.serverName} invalid: ${error.validationError}`;
     case "hook-load-failed":
-      return `Hook load failed: ${e.reason}`;
+      return `Hook load failed: ${error.reason}`;
     case "component-load-failed":
-      return `${e.component} load failed from ${e.path}: ${e.reason}`;
+      return `${error.component} load failed from ${error.path}: ${error.reason}`;
     case "mcpb-download-failed":
-      return `Failed to download MCPB from ${e.url}: ${e.reason}`;
+      return `Failed to download MCPB from ${error.url}: ${error.reason}`;
     case "mcpb-extract-failed":
-      return `Failed to extract MCPB ${e.mcpbPath}: ${e.reason}`;
+      return `Failed to extract MCPB ${error.mcpbPath}: ${error.reason}`;
     case "mcpb-invalid-manifest":
-      return `MCPB manifest invalid at ${e.mcpbPath}: ${e.validationError}`;
+      return `MCPB manifest invalid at ${error.mcpbPath}: ${error.validationError}`;
     case "lsp-config-invalid":
-      return `Plugin "${e.plugin}" has invalid LSP server config for "${e.serverName}": ${e.validationError}`;
+      return `Plugin "${error.plugin}" has invalid LSP server config for "${error.serverName}": ${error.validationError}`;
     case "lsp-server-start-failed":
-      return `Plugin "${e.plugin}" failed to start LSP server "${e.serverName}": ${e.reason}`;
+      return `Plugin "${error.plugin}" failed to start LSP server "${error.serverName}": ${error.reason}`;
     case "lsp-server-crashed":
-      if (e.signal)
-        return `Plugin "${e.plugin}" LSP server "${e.serverName}" crashed with signal ${e.signal}`;
-      return `Plugin "${e.plugin}" LSP server "${e.serverName}" crashed with exit code ${e.exitCode ?? "unknown"}`;
+      if (error.signal)
+        return `Plugin "${error.plugin}" LSP server "${error.serverName}" crashed with signal ${error.signal}`;
+      return `Plugin "${error.plugin}" LSP server "${error.serverName}" crashed with exit code ${error.exitCode ?? "unknown"}`;
     case "lsp-request-timeout":
-      return `Plugin "${e.plugin}" LSP server "${e.serverName}" timed out on ${e.method} request after ${e.timeoutMs}ms`;
+      return `Plugin "${error.plugin}" LSP server "${error.serverName}" timed out on ${error.method} request after ${error.timeoutMs}ms`;
     case "lsp-request-failed":
-      return `Plugin "${e.plugin}" LSP server "${e.serverName}" ${e.method} request failed: ${e.error}`;
+      return `Plugin "${error.plugin}" LSP server "${error.serverName}" ${error.method} request failed: ${error.error}`;
     case "marketplace-blocked-by-policy":
-      if (e.blockedByBlocklist)
-        return `Marketplace '${e.marketplace}' is blocked by enterprise policy`;
-      return `Marketplace '${e.marketplace}' is not in the allowed marketplace list`;
+      if (error.blockedByBlocklist)
+        return `Marketplace '${error.marketplace}' is blocked by enterprise policy`;
+      return `Marketplace '${error.marketplace}' is not in the allowed marketplace list`;
     case "dependency-unsatisfied": {
-      let t = xy("plugin install", e.dependency),
+      let t = xy("plugin install", error.dependency),
         n =
-          e.reason === "not-enabled"
+          error.reason === "not-enabled"
             ? "disabled \u2014 enable it or remove the dependency"
             : `not installed \u2014 ${t ? `run \`${t}\`, or ` : ""}check that its marketplace is added`;
-      return `Dependency "${e.dependency}" is ${n}`;
+      return `Dependency "${error.dependency}" is ${n}`;
     }
     case "dependency-version-unsatisfied":
-      return `Requires "${e.dependency}" ${e.required}, installed ${e.installed ?? "version unknown"}`;
+      return `Requires "${error.dependency}" ${error.required}, installed ${error.installed ?? "version unknown"}`;
     case "plugin-cache-miss":
-      return `Plugin "${e.plugin}" not cached at ${e.installPath} \u2014 run /plugins to refresh`;
+      return `Plugin "${error.plugin}" not cached at ${error.installPath} \u2014 run /plugins to refresh`;
     case "plugin-not-installed": {
-      let t = xy("plugin install", e.source, "--scope project");
-      return `Plugin "${e.plugin}" is enabled in project settings but isn't installed${t ? ` \u2014 run \`${t}\`` : " \u2014 install it at project scope (from /plugin or claude plugin install)"}`;
+      let t = xy("plugin install", error.source, "--scope project");
+      return `Plugin "${error.plugin}" is enabled in project settings but isn't installed${t ? ` \u2014 run \`${t}\`` : " \u2014 install it at project scope (from /plugin or claude plugin install)"}`;
     }
     case "autoupdate-blocked-by-pinner": {
-      let t = e.heldAt ? ` at ${e.heldAt}` : "",
-        n = e.blockedBy.join(", "),
+      let t = error.heldAt ? ` at ${error.heldAt}` : "",
+        n = error.blockedBy.join(", "),
         r =
-          e.disabledPinners.length > 0
-            ? ` (note: ${e.disabledPinners.join(", ")} ${e.disabledPinners.length === 1 ? "is" : "are"} currently disabled)`
+          error.disabledPinners.length > 0
+            ? ` (note: ${error.disabledPinners.join(", ")} ${error.disabledPinners.length === 1 ? "is" : "are"} currently disabled)`
             : "";
-      return `Autoupdate held "${e.plugin}"${t} \u2014 version constraint from ${n}${r}`;
+      return `Autoupdate held "${error.plugin}"${t} \u2014 version constraint from ${n}${r}`;
     }
   }
 }

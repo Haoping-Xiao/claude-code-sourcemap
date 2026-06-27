@@ -89,8 +89,8 @@ async function h7s() {
   }
   return new e(r);
 }
-function isFoundationModel(e) {
-  return e.startsWith("anthropic.");
+function isFoundationModel(modelId) {
+  return modelId.startsWith("anthropic.");
 }
 function hld(e) {
   if (!e.startsWith("arn:")) return e;
@@ -98,8 +98,8 @@ function hld(e) {
   if (t === -1) return e;
   return e.substring(t + 1);
 }
-function getBedrockRegionPrefix(e) {
-  let t = hld(e);
+function getBedrockRegionPrefix(modelId) {
+  let t = hld(modelId);
   for (let n of bDt) if (t.startsWith(`${n}.anthropic.`)) return n;
   return;
 }

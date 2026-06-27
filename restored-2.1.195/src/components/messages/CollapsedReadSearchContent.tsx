@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fIo] deps: Xa, Ye, ii, co, E5, Lyt, ql, lwo, kal
 ((Ral = R(lt(), 1)), (cQ = R(se(), 1)));
-function VerboseToolUse(e) {
+function VerboseToolUse(t0) {
   let t = rKn.c(49),
-    { content: n, tools: r, lookups: o, inProgressToolUseIDs: s, shouldAnimate: i, theme: a } = e,
+    { content: n, tools: r, lookups: o, inProgressToolUseIDs: s, shouldAnimate: i, theme: a } = t0,
     l,
     c,
     u,

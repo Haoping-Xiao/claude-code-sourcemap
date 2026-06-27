@@ -21,13 +21,13 @@ function DWe() {
     argv0: e.argv0,
   };
 }
-function isEagainError(e) {
-  return e.includes("os error 11") || e.includes("Resource temporarily unavailable");
+function isEagainError(stderr) {
+  return stderr.includes("os error 11") || stderr.includes("Resource temporarily unavailable");
 }
-function ripGrepRaw(e, t, n, r, o = false) {
+function ripGrepRaw(args, target, abortSignal, callback, o = false) {
   let { rgPath: s, rgArgs: i, argv0: a } = DWe(),
     l = o ? ["-j", "1"] : [],
-    c = [...i, ...l, ...e, t],
+    c = [...i, ...l, ...args, target],
     u = Vt() === "wsl" ? 60000 : 20000,
     d = parseInt(process.env.CLAUDE_CODE_GLOB_TIMEOUT_SECONDS || "", 10) || 0,
     p = d > 0 ? d * 1000 : u;
@@ -35,7 +35,7 @@ function ripGrepRaw(e, t, n, r, o = false) {
     let f = d2t.spawn(s, c, {
         argv0: a,
         cwd: $t(),
-        signal: n,
+        signal: abortSignal,
         windowsHide: true,
       }),
       m = "",
@@ -61,16 +61,17 @@ function ripGrepRaw(e, t, n, r, o = false) {
     return (
       f.on("close", (v, C) => {
         if (A) return;
-        if (((A = true), clearTimeout(S), clearTimeout(b), v === 0 || v === 1)) r(null, m, g);
+        if (((A = true), clearTimeout(S), clearTimeout(b), v === 0 || v === 1))
+          callback(null, m, g);
         else {
           let x = Error(`ripgrep exited with code ${v}${C ? ` (signal ${C})` : ""}`);
-          ((x.code = v ?? void 0), (x.signal = C ?? (_ ? "SIGTERM" : void 0)), r(x, m, g));
+          ((x.code = v ?? void 0), (x.signal = C ?? (_ ? "SIGTERM" : void 0)), callback(x, m, g));
         }
       }),
       f.on("error", (v) => {
         if (A) return;
         if (((A = true), clearTimeout(S), clearTimeout(b), v.code === "ENOENT")) Lna();
-        r(v, m, g);
+        callback(v, m, g);
       }),
       f
     );
@@ -81,21 +82,21 @@ function ripGrepRaw(e, t, n, r, o = false) {
     {
       cwd: $t(),
       maxBuffer: u2t,
-      signal: n,
+      signal: abortSignal,
       timeout: p,
       killSignal: "SIGKILL",
       windowsHide: true,
     },
-    r,
+    callback,
   );
 }
-async function ripGrepFileCount(e, t, n) {
+async function ripGrepFileCount(args, target, abortSignal) {
   let { rgPath: r, rgArgs: o, argv0: s } = DWe();
   return new Promise((i, a) => {
-    let l = d2t.spawn(r, [...o, ...e, t], {
+    let l = d2t.spawn(r, [...o, ...args, target], {
         argv0: s,
         cwd: $t(),
-        signal: n,
+        signal: abortSignal,
         windowsHide: true,
         stdio: ["ignore", "pipe", "ignore"],
       }),
@@ -122,7 +123,7 @@ async function ripGrepFileCount(e, t, n) {
       }));
   });
 }
-async function ripGrep(e, t, n) {
+async function ripGrep(args, target, abortSignal) {
   return (
     Rna().catch((r) => {
       ke(r);
@@ -154,9 +155,9 @@ async function ripGrep(e, t, n) {
           (T("rg EAGAIN error detected, retrying with single-threaded mode (-j 1)"),
             G("tengu_ripgrep_eagain_retry", {}),
             ripGrepRaw(
-              e,
-              t,
-              n,
+              args,
+              target,
+              abortSignal,
               (h, y, b) => {
                 s(h, y, b, true);
               },
@@ -193,7 +194,7 @@ async function ripGrep(e, t, n) {
             });
           else ke(i);
         if (p && g.length === 0) {
-          if (n.aborted && n.reason?.name !== "TimeoutError") {
+          if (abortSignal.aborted && abortSignal.reason?.name !== "TimeoutError") {
             o(new ru());
             return;
           }
@@ -207,7 +208,7 @@ async function ripGrep(e, t, n) {
         }
         r(g);
       };
-      ripGrepRaw(e, t, n, (i, a, l) => {
+      ripGrepRaw(args, target, abortSignal, (i, a, l) => {
         s(i, a, l, false);
       });
     })

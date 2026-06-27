@@ -9,13 +9,13 @@ qgm = /^[\w.-]+\/[\w.-]+$/;
 function linuxDesktopPath() {
   return Qse.join(Ore(), "applications", DESKTOP_FILE_NAME);
 }
-function linuxExecLine(e) {
-  return `Exec="${e}" --handle-uri %u`;
+function linuxExecLine(claudePath) {
+  return `Exec="${claudePath}" --handle-uri %u`;
 }
-function windowsCommandValue(e) {
-  return `"${e}" --handle-uri "%1"`;
+function windowsCommandValue(claudePath) {
+  return `"${claudePath}" --handle-uri "%1"`;
 }
-async function registerMacos(e) {
+async function registerMacos(claudePath) {
   let t = Qse.join(zen, "Contents");
   try {
     await lV.promises.rm(zen, {
@@ -57,7 +57,7 @@ async function registerMacos(e) {
 </dict>
 </plist>`;
   (await lV.promises.writeFile(Qse.join(t, "Info.plist"), n),
-    await lV.promises.symlink(e, _zo),
+    await lV.promises.symlink(claudePath, _zo),
     await $n(
       "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
       ["-R", zen],
@@ -67,14 +67,14 @@ async function registerMacos(e) {
     ),
     T(`Registered ${aV}:// protocol handler at ${zen}`));
 }
-async function registerLinux(e) {
+async function registerLinux(claudePath) {
   await lV.promises.mkdir(Qse.dirname(linuxDesktopPath()), {
     recursive: true,
   });
   let t = `[Desktop Entry]
 Name=${APP_NAME}
 Comment=Handle ${aV}:// deep links for Claude Code
-${linuxExecLine(e)}
+${linuxExecLine(claudePath)}
 Type=Application
 NoDisplay=true
 MimeType=x-scheme-handler/${aV};
@@ -92,11 +92,11 @@ MimeType=x-scheme-handler/${aV};
   }
   T(`Registered ${aV}:// protocol handler at ${linuxDesktopPath()}`);
 }
-async function registerWindows(e) {
+async function registerWindows(claudePath) {
   for (let t of [
     ["add", bzo, "/ve", "/d", `URL:${APP_NAME}`, "/f"],
     ["add", bzo, "/v", "URL Protocol", "/d", "", "/f"],
-    ["add", kSc, "/ve", "/d", windowsCommandValue(e), "/f"],
+    ["add", kSc, "/ve", "/d", windowsCommandValue(claudePath), "/f"],
   ]) {
     let { code: n } = await $n("reg", t, {
       useCwd: false,

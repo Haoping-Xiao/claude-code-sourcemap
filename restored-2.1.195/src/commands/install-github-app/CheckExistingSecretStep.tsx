@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
 ((MUl = R(lt(), 1)), ($Ul = R(rt(), 1)), (zL = R(se(), 1)));
-function CheckExistingSecretStep(e) {
+function CheckExistingSecretStep(t0) {
   let t = BUl.c(42),
     {
       useExistingSecret: n,
@@ -14,7 +14,7 @@ function CheckExistingSecretStep(e) {
       onToggleUseExistingSecret: o,
       onSecretNameChange: s,
       onSubmit: i,
-    } = e,
+    } = t0,
     [a, l] = UUl.useState(0),
     c = br(),
     [u] = na(),

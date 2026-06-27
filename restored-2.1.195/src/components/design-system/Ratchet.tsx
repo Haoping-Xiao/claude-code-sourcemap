@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _i] deps: oat
 K5i = R(rt(), 1);
-function Ratchet(e) {
+function Ratchet(t0) {
   let t = Y5i.c(10),
-    { children: n, lock: r } = e,
+    { children: n, lock: r } = t0,
     o = r === void 0 ? "always" : r,
     [s, i] = b0e(),
     { isVisible: a } = i,

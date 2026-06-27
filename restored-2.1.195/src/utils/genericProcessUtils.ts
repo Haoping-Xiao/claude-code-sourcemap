@@ -43,8 +43,8 @@ function sigtermThenKill(e, t) {
   }
   return false;
 }
-async function getAncestorPidsAsync(e, t = 10) {
-  let n = `pid=${String(e)}; for i in $(seq 1 ${t}); do ppid=$(ps -o ppid= -p $pid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; echo $ppid; pid=$ppid; done`,
+async function getAncestorPidsAsync(pid, t = 10) {
+  let n = `pid=${String(pid)}; for i in $(seq 1 ${t}); do ppid=$(ps -o ppid= -p $pid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; echo $ppid; pid=$ppid; done`,
     r = await Gr("sh", ["-c", n], {
       timeout: 3000,
     });
@@ -59,9 +59,9 @@ async function getAncestorPidsAsync(e, t = 10) {
     .map((o) => parseInt(o, 10))
     .filter((o) => !isNaN(o));
 }
-function getProcessCommand(e) {
+function getProcessCommand(pid) {
   try {
-    let n = `ps -o command= -p ${String(e)}`,
+    let n = `ps -o command= -p ${String(pid)}`,
       r = WFe(n, {
         timeout: 1000,
       });
@@ -145,8 +145,8 @@ async function Apd(e) {
     return;
   }
 }
-async function getAncestorCommandsAsync(e, t = 10) {
-  let n = `currentpid=${String(e)}; for i in $(seq 1 ${t}); do cmd=$(ps -o command= -p $currentpid 2>/dev/null); if [ -n "$cmd" ]; then printf '%s\\0' "$cmd"; fi; ppid=$(ps -o ppid= -p $currentpid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; currentpid=$ppid; done`,
+async function getAncestorCommandsAsync(pid, t = 10) {
+  let n = `currentpid=${String(pid)}; for i in $(seq 1 ${t}); do cmd=$(ps -o command= -p $currentpid 2>/dev/null); if [ -n "$cmd" ]; then printf '%s\\0' "$cmd"; fi; ppid=$(ps -o ppid= -p $currentpid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; currentpid=$ppid; done`,
     r = await Gr("sh", ["-c", n], {
       timeout: 3000,
     });

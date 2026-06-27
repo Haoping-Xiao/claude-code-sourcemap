@@ -28,8 +28,8 @@ KNf = Cn(async () => {
 function fjl() {
   return pjl.join(kI(), FLAGGED_PLUGINS_FILENAME);
 }
-function parsePluginsData(e) {
-  let t = Ft(e);
+function parsePluginsData(content) {
+  let t = Ft(content);
   if (
     typeof t !== "object" ||
     t === null ||
@@ -101,15 +101,15 @@ async function mjl() {
 function QEt() {
   return Fq ?? {};
 }
-async function addFlaggedPlugin(e) {
+async function addFlaggedPlugin(pluginId) {
   if (Fq === null) Fq = await Srr();
   let t = {
     ...Fq,
-    [e]: {
+    [pluginId]: {
       flaggedAt: new Date().toISOString(),
     },
   };
-  (await Err(t), T(`Flagged plugin: ${e}`));
+  (await Err(t), T(`Flagged plugin: ${pluginId}`));
 }
 async function hjl(e) {
   if (Fq === null) Fq = await Srr();

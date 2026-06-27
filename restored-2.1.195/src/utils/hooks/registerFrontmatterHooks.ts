@@ -6,22 +6,24 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module O6n] deps: Awo
 ((Xtf = ["stream_event", "stream_request_start", "response_length", ...Ewo]), (Jtf = new Set(Xtf)));
-function registerFrontmatterHooks(e, t, n, r, o = false) {
-  if (!n || Object.keys(n).length === 0) return;
+function registerFrontmatterHooks(setAppState, sessionId, hooks, sourceName, o = false) {
+  if (!hooks || Object.keys(hooks).length === 0) return;
   let s = 0;
   for (let i of GO) {
-    let a = n[i];
+    let a = hooks[i];
     if (!a || a.length === 0) continue;
     let l = i;
     if (o && i === "Stop")
       ((l = "SubagentStop"),
-        T(`Converting Stop hook to SubagentStop for ${r} (subagents trigger SubagentStop)`));
+        T(
+          `Converting Stop hook to SubagentStop for ${sourceName} (subagents trigger SubagentStop)`,
+        ));
     for (let c of a) {
       let u = c.matcher ?? "",
         d = c.hooks;
       if (!d || d.length === 0) continue;
-      for (let p of d) (e.add(t, l, u, p), s++);
+      for (let p of d) (setAppState.add(sessionId, l, u, p), s++);
     }
   }
-  if (s > 0) T(`Registered ${s} frontmatter hook(s) from ${r} for session ${t}`);
+  if (s > 0) T(`Registered ${s} frontmatter hook(s) from ${sourceName} for session ${sessionId}`);
 }

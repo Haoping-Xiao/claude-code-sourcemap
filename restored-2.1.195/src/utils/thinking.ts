@@ -51,11 +51,11 @@ function Lvi(e) {
     );
   return t.length > 0 ? t : void 0;
 }
-function modelSupportsThinking(e) {
-  let t = W9(e, "interleaved_thinking");
+function modelSupportsThinking(model) {
+  let t = W9(model, "interleaved_thinking");
   if (t !== void 0) return t;
-  let n = mo(e),
-    r = l_(e);
+  let n = mo(model),
+    r = l_(model);
   if (r === "foundry") return true;
   if (ZO(r)) return !n.includes("claude-3-");
   if (n === "claude-haiku-4-5" || n.includes("claude-3-")) return false;

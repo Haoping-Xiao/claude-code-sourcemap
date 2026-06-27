@@ -7,15 +7,15 @@
 // module exports: call
 // [unwrapped __esm module Yjo] deps: kt, Ye, vft, mE, Bs, vi, Ko
 ((AJt = R(lt(), 1)), (fYe = R(rt(), 1)), (Al = R(se(), 1)));
-async function call(e) {
-  if (!(await Tft())) return (e(FALLBACK_MESSAGE), null);
+async function call(onDone) {
+  if (!(await Tft())) return (onDone(FALLBACK_MESSAGE), null);
   let [n, r] = await Promise.all([Fre(), JDe()]);
-  if (!n.success) return (e(FALLBACK_MESSAGE), null);
+  if (!n.success) return (onDone(FALLBACK_MESSAGE), null);
   let o = n.data,
     s = r.success ? r.data : null;
   async function i(l) {
     if (l === "escape" || l === "defer") {
-      e("Privacy settings dialog dismissed", {
+      onDone("Privacy settings dialog dismissed", {
         display: "system",
       });
       return;
@@ -25,7 +25,7 @@ async function call(e) {
   async function a() {
     let l = await Fre();
     if (!l.success) {
-      e("Unable to retrieve updated privacy settings", {
+      onDone("Unable to retrieve updated privacy settings", {
         display: "system",
       });
       return;
@@ -33,7 +33,7 @@ async function call(e) {
     let c = l.data,
       u = c.grove_enabled ? "true" : "false";
     if (
-      (e(`"Help improve our AI models" set to ${u}.`),
+      (onDone(`"Help improve our AI models" set to ${u}.`),
       o.grove_enabled !== null && o.grove_enabled !== c.grove_enabled)
     )
       G("tengu_grove_policy_toggled", {

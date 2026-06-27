@@ -9,9 +9,9 @@
 function getSavingMessage() {
   return HL(["Got it.", "Good to know.", "Noted."]);
 }
-function UserMemoryInputMessage(e) {
+function UserMemoryInputMessage(t0) {
   let t = $il.c(10),
-    { text: n, addMargin: r } = e,
+    { text: n, addMargin: r } = t0,
     o;
   if (t[0] !== n) ((o = xl(n, "user-memory-input")), (t[0] = n), (t[1] = o));
   else o = t[1];

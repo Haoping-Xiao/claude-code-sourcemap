@@ -10,9 +10,15 @@ function hIm() {
     outcome: $e("abandoned"),
   });
 }
-function TranscriptModeFooter(e) {
+function TranscriptModeFooter(t0) {
   let t = Wtn.c(17),
-    { showAllInTranscript: n, virtualScroll: r, searchBadge: o, suppressShowAll: s, status: i } = e,
+    {
+      showAllInTranscript: n,
+      virtualScroll: r,
+      searchBadge: o,
+      suppressShowAll: s,
+      status: i,
+    } = t0,
     a = s === void 0 ? false : s,
     l = Uu("app:toggleTranscript", "Global", "ctrl+o"),
     c = Uu("transcript:toggleShowAll", "Transcript", "ctrl+e"),

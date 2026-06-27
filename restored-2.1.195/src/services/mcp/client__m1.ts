@@ -231,7 +231,7 @@ function Tfo(e, t, n) {
     }),
   });
 }
-function handleRemoteAuthFailure(e, t, n, r) {
+function handleRemoteAuthFailure(name, serverRef, transportType, r) {
   let o = r instanceof OQe,
     s = o ? r.issues[0] : void 0,
     i = s
@@ -239,28 +239,28 @@ function handleRemoteAuthFailure(e, t, n, r) {
       : void 0;
   return (
     G("tengu_mcp_server_needs_auth", {
-      transportType: $e(n),
+      transportType: $e(transportType),
       ...(o && {
         cause: We("discovery_schema"),
       }),
-      ...hde(t),
+      ...hde(serverRef),
     }),
     sn(
-      e,
+      name,
       `Authentication required for ${
         {
           sse: "SSE",
           http: "HTTP",
           "claudeai-proxy": "claude.ai proxy",
-        }[n]
+        }[transportType]
       } server`,
     ),
-    Rfo(e, t.type === "claudeai-proxy" ? t.id : void 0),
+    Rfo(name, serverRef.type === "claudeai-proxy" ? serverRef.id : void 0),
     It("mcp_connect", "mcp_connect_needs_auth"),
     {
-      name: e,
+      name: name,
       type: "needs-auth",
-      config: t,
+      config: serverRef,
       error: i,
     }
   );
@@ -337,7 +337,7 @@ function Cxp(e) {
     });
   };
 }
-function createClaudeAiProxyFetch(e) {
+function createClaudeAiProxyFetch(innerFetch) {
   return async (t, n) => {
     let r = async () => {
       await ch();
@@ -347,7 +347,7 @@ function createClaudeAiProxyFetch(e) {
       return (
         u.set("Authorization", `Bearer ${c.accessToken}`),
         {
-          response: await e(t, {
+          response: await innerFetch(t, {
             ...n,
             headers: u,
           }),
@@ -471,10 +471,10 @@ function KRa(e) {
     r = (e?.timeout !== void 0 && e.timeout >= 1000 ? e.timeout : void 0) ?? (t > 0 ? t : void 0);
   return r !== void 0 ? Math.min(Math.max(r, URa), VRa) : URa;
 }
-function wrapFetchWithTimeout(e, t) {
+function wrapFetchWithTimeout(baseFetch, t) {
   let n = KRa(t);
   return async (r, o) => {
-    if ((o?.method ?? "GET").toUpperCase() === "GET") return e(r, o);
+    if ((o?.method ?? "GET").toUpperCase() === "GET") return baseFetch(r, o);
     let i = new Headers(o?.headers);
     if (!i.has("accept")) i.set("accept", MCP_STREAMABLE_HTTP_ACCEPT);
     if (ZDt()) {
@@ -495,7 +495,7 @@ function wrapFetchWithTimeout(e, t) {
         once: true,
       });
     try {
-      return await e(r, {
+      return await baseFetch(r, {
         ...o,
         headers: i,
         signal: a.signal,
@@ -565,11 +565,11 @@ async function ST(e, t) {
   )
     mpt.cache.delete(e);
 }
-async function ensureConnectedClient(e) {
-  if (e.config.type === "sdk") return e;
-  let t = await aP(e.name, e.config);
+async function ensureConnectedClient(client) {
+  if (client.config.type === "sdk") return client;
+  let t = await aP(client.name, client.config);
   if (t.type !== "connected")
-    throw new mi(`MCP server "${e.name}" is not connected`, "MCP server not connected");
+    throw new mi(`MCP server "${client.name}" is not connected`, "MCP server not connected");
   return t;
 }
 function Lqe(e, t) {
@@ -640,14 +640,14 @@ async function Rre(e, t, n) {
     })
   ).content;
 }
-async function reconnectMcpServerImpl(e, t) {
+async function reconnectMcpServerImpl(name, config) {
   try {
-    (dye(), await ST(e, t));
-    let n = await aP(e, t);
+    (dye(), await ST(name, config));
+    let n = await aP(name, config);
     if (n.type === "needs-auth") {
-      sn(e, "Reconnect returned 'needs-auth'; retrying once after cache clear");
-      let u = kqe(e, t);
-      (aP.cache?.delete?.(u), (n = await aP(e, t)));
+      sn(name, "Reconnect returned 'needs-auth'; retrying once after cache clear");
+      let u = kqe(name, config);
+      (aP.cache?.delete?.(u), (n = await aP(name, config)));
     }
     if (n.type !== "connected")
       return (
@@ -658,7 +658,7 @@ async function reconnectMcpServerImpl(e, t) {
           commands: [],
         }
       );
-    if ((hGt(e), t.type === "http" || t.type === "sse")) await Rdo(e, t);
+    if ((hGt(name), config.type === "http" || config.type === "sse")) await Rdo(name, config);
     let r = !!n.capabilities?.resources,
       [o, s, i, a] = await Promise.all([
         lP(n),
@@ -671,15 +671,15 @@ async function reconnectMcpServerImpl(e, t) {
         It("mcp_reconnect", "mcp_reconnect_needs_auth_discovery"),
         {
           client: {
-            name: e,
+            name: name,
             type: "needs-auth",
-            config: t,
+            config: config,
           },
           tools: [],
           commands: [],
         }
       );
-    if (t.type === "claudeai-proxy") mdo(e);
+    if (config.type === "claudeai-proxy") mdo(name);
     let l = [...s, ...i],
       c = [];
     if (r) {
@@ -698,12 +698,12 @@ async function reconnectMcpServerImpl(e, t) {
   } catch (n) {
     return (
       Le("mcp_reconnect", "mcp_reconnect_failed"),
-      au(e, `Error during reconnection: ${be(n)}`),
+      au(name, `Error during reconnection: ${be(n)}`),
       {
         client: {
-          name: e,
+          name: name,
           type: "failed",
-          config: t,
+          config: config,
         },
         tools: [],
         commands: [],
@@ -739,13 +739,13 @@ async function JRa(e, t) {
     clearTimeout(n);
   }
 }
-async function getMcpToolsCommandsAndResources(e, t) {
+async function getMcpToolsCommandsAndResources(onConnectionAttempt, mcpConfigs) {
   let n = false,
-    r = Object.entries(t ?? (await M4()).servers),
+    r = Object.entries(mcpConfigs ?? (await M4()).servers),
     o = [];
   for (let h of r)
     if (mk(h[0]))
-      e({
+      onConnectionAttempt({
         client: {
           name: h[0],
           type: "disabled",
@@ -775,7 +775,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
     g = async ([h, y]) => {
       try {
         if (mk(h)) {
-          e({
+          onConnectionAttempt({
             client: {
               name: h,
               type: "disabled",
@@ -792,7 +792,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
         ) {
           if (y.type !== "claudeai-proxy" && y.pluginSource === void 0)
             sn(h, "Skipping connection (cached needs-auth)");
-          e({
+          onConnectionAttempt({
             client: {
               name: h,
               type: "needs-auth",
@@ -808,7 +808,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
           y.pluginSource !== void 0 &&
           (await $Ra(h, y))
         ) {
-          e({
+          onConnectionAttempt({
             client: {
               name: h,
               type: "failed",
@@ -823,7 +823,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
         }
         let b = await aP(h, y, f);
         if (b.type !== "connected") {
-          e({
+          onConnectionAttempt({
             client: b,
             tools: b.type === "needs-auth" ? XUn(h, y) : [],
             commands: [],
@@ -842,7 +842,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
                   _ ? v4(b) : Promise.resolve([]),
                 ]);
               if (b.discoveryAuthFailure) {
-                e({
+                onConnectionAttempt({
                   client: {
                     name: h,
                     type: "needs-auth",
@@ -857,7 +857,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
               let x = [...A, ...v],
                 I = [];
               if (_ && !n) ((n = true), I.push(QW, u5, xre));
-              e({
+              onConnectionAttempt({
                 client: b,
                 tools: [...S, ...I],
                 commands: x,
@@ -866,7 +866,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
               });
             } catch (_) {
               (au(h, `Error fetching tools/commands/resources: ${be(_)}`),
-                e({
+                onConnectionAttempt({
                   client: {
                     name: h,
                     type: "failed",
@@ -880,7 +880,7 @@ async function getMcpToolsCommandsAndResources(e, t) {
         );
       } catch (b) {
         (au(h, `Error fetching tools/commands/resources: ${be(b)}`),
-          e({
+          onConnectionAttempt({
             client: {
               name: h,
               type: "failed",
@@ -893,11 +893,11 @@ async function getMcpToolsCommandsAndResources(e, t) {
     };
   (await Promise.all([FRa(d, hpt(), g), FRa(p, a2n(), g)]), await Promise.all(m));
 }
-function prefetchAllMcpResources(e) {
+function prefetchAllMcpResources(mcpConfigs) {
   return new Promise((t) => {
     let n = 0,
       r = 0;
-    if (((n = Object.keys(e).length), n === 0)) {
+    if (((n = Object.keys(mcpConfigs).length), n === 0)) {
       t({
         clients: [],
         tools: [],
@@ -925,7 +925,7 @@ function prefetchAllMcpResources(e) {
             commands: i,
           }));
       }
-    }, e).catch((a) => {
+    }, mcpConfigs).catch((a) => {
       (au("prefetchAllMcpResources", `Failed to get MCP resources: ${be(a)}`),
         t({
           clients: [],
@@ -935,47 +935,47 @@ function prefetchAllMcpResources(e) {
     });
   });
 }
-async function transformResultContent(e, t, n, r = false) {
-  switch (e.type) {
+async function transformResultContent(resultContent, serverName, n, r = false) {
+  switch (resultContent.type) {
     case "text": {
       let o = {
         type: "text",
-        text: e.text,
+        text: resultContent.text,
       };
       if (r) {
-        let s = e._meta;
+        let s = resultContent._meta;
         if (s) o._meta = s;
       }
       return [o];
     }
     case "audio": {
-      let o = e;
+      let o = resultContent;
       return await persistBlobToTextBlock(
         Buffer.from(o.data, "base64"),
         o.mimeType,
-        t,
-        `[Audio from ${t}] `,
+        serverName,
+        `[Audio from ${serverName}] `,
       );
     }
     case "image": {
-      if (BRa(e.mimeType)) {
+      if (BRa(resultContent.mimeType)) {
         let { block: o } = await FM({
-          data: String(e.data),
-          mediaType: e.mimeType,
+          data: String(resultContent.data),
+          mediaType: resultContent.mimeType,
           limits: n,
         });
         return [o];
       }
       return await persistBlobToTextBlock(
-        Buffer.from(String(e.data), "base64"),
-        e.mimeType,
-        t,
-        `[Image from ${t}] `,
+        Buffer.from(String(resultContent.data), "base64"),
+        resultContent.mimeType,
+        serverName,
+        `[Image from ${serverName}] `,
       );
     }
     case "resource": {
-      let o = e.resource,
-        s = `[Resource from ${t} at ${o.uri}] `;
+      let o = resultContent.resource,
+        s = `[Resource from ${serverName} at ${o.uri}] `;
       if ("text" in o)
         return [
           {
@@ -997,11 +997,17 @@ async function transformResultContent(e, t, n, r = false) {
               text: s,
             });
           return (l.push(a), l);
-        } else return await persistBlobToTextBlock(Buffer.from(o.blob, "base64"), o.mimeType, t, s);
+        } else
+          return await persistBlobToTextBlock(
+            Buffer.from(o.blob, "base64"),
+            o.mimeType,
+            serverName,
+            s,
+          );
       return [];
     }
     case "resource_link": {
-      let o = e,
+      let o = resultContent,
         s = `[Resource link: ${o.name}] ${o.uri}`;
       if (o.description) s += ` (${o.description})`;
       return [
@@ -1015,20 +1021,20 @@ async function transformResultContent(e, t, n, r = false) {
       return [];
   }
 }
-async function persistBlobToTextBlock(e, t, n, r) {
-  let o = `mcp-${hc(n)}-blob-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    s = await fqe(e, t, o);
+async function persistBlobToTextBlock(bytes, mimeType, serverName, sourceDescription) {
+  let o = `mcp-${hc(serverName)}-blob-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    s = await fqe(bytes, mimeType, o);
   if ("error" in s)
     return [
       {
         type: "text",
-        text: `${r}Binary content (${t || "unknown type"}, ${e.length} bytes) could not be saved to disk: ${s.error}`,
+        text: `${sourceDescription}Binary content (${mimeType || "unknown type"}, ${bytes.length} bytes) could not be saved to disk: ${s.error}`,
       },
     ];
   return [
     {
       type: "text",
-      text: C3t(s.filepath, t, s.size, r),
+      text: C3t(s.filepath, mimeType, s.size, sourceDescription),
     },
   ];
 }
@@ -1048,22 +1054,24 @@ function fGt(e, t = 2) {
   }
   return typeof e;
 }
-async function transformMCPResult(e, t, n, r) {
-  if (e && typeof e === "object") {
-    if ("toolResult" in e)
+async function transformMCPResult(result, tool, name, r) {
+  if (result && typeof result === "object") {
+    if ("toolResult" in result)
       return {
-        content: String(e.toolResult),
+        content: String(result.toolResult),
         type: "toolResult",
       };
-    if ("structuredContent" in e && e.structuredContent !== void 0) {
-      let s = De(e.structuredContent),
-        i = fGt(e.structuredContent);
-      if ("content" in e && Array.isArray(e.content)) {
-        let a = e.content.filter(
+    if ("structuredContent" in result && result.structuredContent !== void 0) {
+      let s = De(result.structuredContent),
+        i = fGt(result.structuredContent);
+      if ("content" in result && Array.isArray(result.content)) {
+        let a = result.content.filter(
           (l) => l && typeof l === "object" && "type" in l && l.type !== "text",
         );
         if (a.length > 0) {
-          let l = (await Promise.all(a.map((c) => transformResultContent(c, n, r, true)))).flat();
+          let l = (
+            await Promise.all(a.map((c) => transformResultContent(c, name, r, true)))
+          ).flat();
           if (l.length > 0) {
             let c = [
               ...l,
@@ -1086,9 +1094,9 @@ async function transformMCPResult(e, t, n, r) {
         schema: i,
       };
     }
-    if ("content" in e && Array.isArray(e.content)) {
+    if ("content" in result && Array.isArray(result.content)) {
       let s = (
-        await Promise.all(e.content.map((i) => transformResultContent(i, n, r, true)))
+        await Promise.all(result.content.map((i) => transformResultContent(i, name, r, true)))
       ).flat();
       return {
         content: s,
@@ -1097,16 +1105,16 @@ async function transformMCPResult(e, t, n, r) {
       };
     }
   }
-  let o = `MCP server "${n}" tool "${t}": unexpected response format`;
-  throw (au(n, o), new mi(o, "MCP tool unexpected response format"));
+  let o = `MCP server "${name}" tool "${tool}": unexpected response format`;
+  throw (au(name, o), new mi(o, "MCP tool unexpected response format"));
 }
 function jRa(e) {
   if (!e || typeof e === "string") return false;
   return e.some((t) => t.type === "image");
 }
-async function processMCPResult(e, t, n, r, o = false) {
-  let { content: s, type: i, schema: a } = await transformMCPResult(e, t, n, r);
-  if (n === "ide") return s;
+async function processMCPResult(result, tool, name, r, o = false) {
+  let { content: s, type: i, schema: a } = await transformMCPResult(result, tool, name, r);
+  if (name === "ide") return s;
   if (o && !jRa(s)) return s;
   if (!(await Tlo(s))) return s;
   let l = g4t(s);
@@ -1130,7 +1138,7 @@ async function processMCPResult(e, t, n, r, o = false) {
       await h4t(s)
     );
   let c = Date.now(),
-    u = `mcp-${hc(n)}-${hc(t)}-${c}`,
+    u = `mcp-${hc(name)}-${hc(tool)}-${c}`,
     d = Uut(s),
     p = tFn() || at("tengu_mcp_singleton_unwrap", true),
     f = Array.isArray(d) ? d.length : void 0,

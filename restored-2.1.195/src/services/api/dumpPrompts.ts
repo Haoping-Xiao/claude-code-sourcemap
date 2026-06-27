@@ -16,8 +16,8 @@ function Hrl() {
 function Ftf(e) {
   return;
 }
-function getDumpPromptsPath(e) {
-  return L6n.join(tr(), "dump-prompts", `${e ?? Rt()}.jsonl`);
+function getDumpPromptsPath(agentIdOrSessionId) {
+  return L6n.join(tr(), "dump-prompts", `${agentIdOrSessionId ?? Rt()}.jsonl`);
 }
 function Gtf(e, t) {
   hwo.promises

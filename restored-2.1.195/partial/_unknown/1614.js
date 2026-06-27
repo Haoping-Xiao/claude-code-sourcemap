@@ -18,8 +18,8 @@ tgd = {
   info: gMt,
   debug: gMt
 }, Rdi = new WeakMap();
-function isAbortError(e) {
-  return typeof e === "object" && e !== null && ("name" in e && e.name === "AbortError" || "message" in e && String(e.message).includes("FetchRequestCanceledException"));
+function isAbortError(err) {
+  return typeof err === "object" && err !== null && ("name" in err && err.name === "AbortError" || "message" in err && String(err.message).includes("FetchRequestCanceledException"));
 }
 var Ddi,
   G4r = e => new TextDecoder("utf-8").decode(e),

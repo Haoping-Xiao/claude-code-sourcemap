@@ -43,7 +43,7 @@ function Pdf(e, t) {
     } else n.push(r);
   if (n.length > 0) e.persistPermissions(n);
 }
-function handleInteractivePermission(e) {
+function handleInteractivePermission(params) {
   let {
       ctx: t,
       description: n,
@@ -57,7 +57,7 @@ function handleInteractivePermission(e) {
       isResolved: u,
       onWin: d,
       onReprompt: p,
-    } = e,
+    } = params,
     { setClassifierApprovals: f } = t,
     m = a ? Qfl.randomUUID() : void 0,
     g,

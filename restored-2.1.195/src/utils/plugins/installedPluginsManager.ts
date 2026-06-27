@@ -121,12 +121,12 @@ function migrateToSinglePluginFile() {
     (PYt("migrate-single-file", r, true), (LYt = true));
   }
 }
-function cleanupLegacyCache(e) {
+function cleanupLegacyCache(v2Data) {
   let t = qt(),
     n = fOe();
   try {
     let r = new Set();
-    for (let s of Object.values(e.plugins)) for (let i of s) r.add(i.installPath);
+    for (let s of Object.values(v2Data.plugins)) for (let i of s) r.add(i.installPath);
     let o = t.readdirSync(n);
     for (let s of o) {
       if (!s.isDirectory()) continue;
@@ -241,13 +241,15 @@ function loadInstalledPluginsV2() {
     );
   }
 }
-function saveInstalledPluginsV2(e) {
+function saveInstalledPluginsV2(data) {
   let t = qt(),
     n = getInstalledPluginsFilePath();
   try {
     t.mkdirSync(kI());
-    let r = De(e, null, 2);
-    (oj(n, r), (ase = e), T(`Saved ${Object.keys(e.plugins).length} installed plugins to ${n}`));
+    let r = De(data, null, 2);
+    (oj(n, r),
+      (ase = data),
+      T(`Saved ${Object.keys(data.plugins).length} installed plugins to ${n}`));
   } catch (r) {
     throw (
       T(`Failed to save installed_plugins.json to ${n}: ${be(r)}`, {
@@ -258,16 +260,16 @@ function saveInstalledPluginsV2(e) {
     );
   }
 }
-function removePluginInstallation(e, t, n) {
+function removePluginInstallation(pluginId, scope, projectPath) {
   let r = loadInstalledPluginsFromDisk(),
-    o = r.plugins[e];
+    o = r.plugins[pluginId];
   if (!o) return;
   if (
-    ((r.plugins[e] = o.filter((s) => !(s.scope === t && s.projectPath === n))),
-    r.plugins[e].length === 0)
+    ((r.plugins[pluginId] = o.filter((s) => !(s.scope === scope && s.projectPath === projectPath))),
+    r.plugins[pluginId].length === 0)
   )
-    delete r.plugins[e];
-  (saveInstalledPluginsV2(r), T(`Removed installation for ${e} at scope ${t}`));
+    delete r.plugins[pluginId];
+  (saveInstalledPluginsV2(r), T(`Removed installation for ${pluginId} at scope ${scope}`));
 }
 function wRl(e) {
   if (e.length === 0) return;
@@ -315,22 +317,33 @@ function loadInstalledPluginsFromDisk() {
     );
   }
 }
-function updateInstallationPathOnDisk(e, t, n, r, o, s, i) {
+function updateInstallationPathOnDisk(
+  pluginId,
+  scope,
+  projectPath,
+  newPath,
+  newVersion,
+  gitCommitSha,
+  i,
+) {
   let a = loadInstalledPluginsFromDisk(),
-    l = a.plugins[e];
+    l = a.plugins[pluginId];
   if (!l) {
-    T(`Cannot update ${e} on disk: plugin not found in installed plugins`);
+    T(`Cannot update ${pluginId} on disk: plugin not found in installed plugins`);
     return;
   }
-  let c = l.find((u) => u.scope === t && u.projectPath === n);
+  let c = l.find((u) => u.scope === scope && u.projectPath === projectPath);
   if (c) {
-    if (((c.installPath = r), c.version !== void 0)) c.version = o;
+    if (((c.installPath = newPath), c.version !== void 0)) c.version = newVersion;
     if (i !== void 0) c.resolvedVersion = i;
     else delete c.resolvedVersion;
-    if (((c.lastUpdated = new Date().toISOString()), s !== void 0)) c.gitCommitSha = s;
+    if (((c.lastUpdated = new Date().toISOString()), gitCommitSha !== void 0))
+      c.gitCommitSha = gitCommitSha;
     let u = getInstalledPluginsFilePath();
-    (oj(u, De(a, null, 2)), (ase = null), T(`Updated ${e} on disk to version ${o} at ${r}`));
-  } else T(`Cannot update ${e} on disk: no installation for scope ${t}`);
+    (oj(u, De(a, null, 2)),
+      (ase = null),
+      T(`Updated ${pluginId} on disk to version ${newVersion} at ${newPath}`));
+  } else T(`Cannot update ${pluginId} on disk: no installation for scope ${scope}`);
 }
 function fxf() {
   Yze = null;
@@ -350,14 +363,14 @@ async function initializeVersionedPlugins() {
   let e = MYt();
   T(`Initialized versioned plugins system with ${Object.keys(e.plugins).length} plugins`);
 }
-function removeAllPluginsForMarketplace(e) {
-  if (!e)
+function removeAllPluginsForMarketplace(marketplaceName) {
+  if (!marketplaceName)
     return {
       orphanedPaths: [],
       removedPluginIds: [],
     };
   let t = loadInstalledPluginsFromDisk(),
-    n = `@${e}`,
+    n = `@${marketplaceName}`,
     r = new Set(),
     o = [];
   for (let s of Object.keys(t.plugins)) {
@@ -390,24 +403,24 @@ function Xze(e) {
   if (!n.some((o) => o.scope === "user" || o.scope === "managed")) return false;
   return jo().enabledPlugins?.[e] !== void 0;
 }
-function addInstalledPlugin(e, t, n = "user", r) {
+function addInstalledPlugin(pluginId, metadata, n = "user", projectPath) {
   let o = loadInstalledPluginsFromDisk(),
-    s = o.plugins[e] || [],
-    i = s.findIndex((d) => d.scope === n && d.projectPath === r),
+    s = o.plugins[pluginId] || [],
+    i = s.findIndex((d) => d.scope === n && d.projectPath === projectPath),
     a = i >= 0 && s[i]?.auto !== true,
-    l = t.auto === true && !a,
+    l = metadata.auto === true && !a,
     c = {
       scope: n,
-      installPath: t.installPath,
-      version: t.version,
-      installedAt: t.installedAt,
-      lastUpdated: t.lastUpdated,
-      gitCommitSha: t.gitCommitSha,
-      ...(t.resolvedVersion && {
-        resolvedVersion: t.resolvedVersion,
+      installPath: metadata.installPath,
+      version: metadata.version,
+      installedAt: metadata.installedAt,
+      lastUpdated: metadata.lastUpdated,
+      gitCommitSha: metadata.gitCommitSha,
+      ...(metadata.resolvedVersion && {
+        resolvedVersion: metadata.resolvedVersion,
       }),
-      ...(r && {
-        projectPath: r,
+      ...(projectPath && {
+        projectPath: projectPath,
       }),
       ...(l && {
         auto: true,
@@ -416,10 +429,10 @@ function addInstalledPlugin(e, t, n = "user", r) {
     u = i >= 0;
   if (u) s[i] = c;
   else s.push(c);
-  ((o.plugins[e] = s),
+  ((o.plugins[pluginId] = s),
     saveInstalledPluginsV2(o),
     (Yze = null),
-    T(`${u ? "Updated" : "Added"} installed plugin: ${e} (scope: ${n})`));
+    T(`${u ? "Updated" : "Added"} installed plugin: ${pluginId} (scope: ${n})`));
 }
 function xRl(e, t, n) {
   let r = loadInstalledPluginsFromDisk(),
@@ -430,16 +443,16 @@ function xRl(e, t, n) {
 async function ier(e) {
   return (await _Rt(e)) ?? void 0;
 }
-async function getPluginVersionFromManifest(e, t) {
+async function getPluginVersionFromManifest(pluginCachePath, pluginId) {
   let n = qt(),
-    r = lz.join(e, ".claude-plugin", "plugin.json");
+    r = lz.join(pluginCachePath, ".claude-plugin", "plugin.json");
   try {
     let o = await n.readFileBytes(r, 65537);
     if (o.length > 65536)
-      return (T(`Manifest for ${t} exceeds 64 KB, treating as unversioned`), "unknown");
+      return (T(`Manifest for ${pluginId} exceeds 64 KB, treating as unversioned`), "unknown");
     return Ft(o.toString("utf-8")).version || "unknown";
   } catch {
-    return (T(`Could not extract version from manifest for ${t}`), "unknown");
+    return (T(`Could not extract version from manifest for ${pluginId}`), "unknown");
   }
 }
 async function migrateFromEnabledPlugins() {

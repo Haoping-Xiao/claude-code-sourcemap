@@ -35,10 +35,10 @@ async function autoModeDefaultsHandler(e) {
 async function autoModeConfigHandler(e) {
   (xe("cli_auto_mode_config"), await L5c(e, iol(Ohe())));
 }
-async function autoModeCritiqueHandler(e, t) {
+async function autoModeCritiqueHandler(options, t) {
   let n = Ohe();
   if (!(ahr(n?.allow) || ahr(n?.soft_deny) || ahr(n?.hard_deny) || ahr(n?.environment))) {
-    (e.render(
+    (options.render(
       pve.jsx(V_, {
         children: pve.jsx(w, {
           children: `No custom auto mode rules found.
@@ -48,7 +48,7 @@ Run \`claude auto-mode defaults\` to see the default rules for reference.`,
         }),
       }),
     ),
-      await e.waitUntilExit());
+      await options.waitUntilExit());
     return;
   }
   let o = t.model ? zo(t.model) : As(),
@@ -59,7 +59,7 @@ Run \`claude auto-mode defaults\` to see the default rules for reference.`,
       formatRulesForCritique("soft_deny", n?.soft_deny ?? [], s.soft_deny) +
       formatRulesForCritique("hard_deny", n?.hard_deny ?? [], s.hard_deny) +
       formatRulesForCritique("environment", n?.environment ?? [], s.environment);
-  e.render(
+  options.render(
     pve.jsxs(w, {
       children: [
         "Analyzing your auto mode rules\u2026",
@@ -104,34 +104,34 @@ Please critique these custom rules.`,
   } catch (c) {
     return (
       Le("cli_auto_mode_critique", "cli_auto_mode_critique_query_failed"),
-      e.unmount(),
+      options.unmount(),
       ws("Failed to analyze rules: " + be(c))
     );
   }
   (xe("cli_auto_mode_critique"),
-    e.render(
+    options.render(
       pve.jsx(V_, {
         children: pve.jsx(w, {
           children: l,
         }),
       }),
     ),
-    await e.waitUntilExit());
+    await options.waitUntilExit());
 }
 function ahr(e) {
   return (e ?? []).some((t) => t !== Syt);
 }
-function formatRulesForCritique(e, t, n) {
-  let r = t.filter((a) => a !== Syt);
+function formatRulesForCritique(section, userRules, defaultRules) {
+  let r = userRules.filter((a) => a !== Syt);
   if (r.length === 0) return "";
-  let o = t.length !== r.length,
+  let o = userRules.length !== r.length,
     s = r.map((a) => "- " + a).join(`
 `),
-    i = n.map((a) => "- " + a).join(`
+    i = defaultRules.map((a) => "- " + a).join(`
 `);
   return (
     "## " +
-    e +
+    section +
     (o
       ? ` (custom rules added alongside the defaults)
 `

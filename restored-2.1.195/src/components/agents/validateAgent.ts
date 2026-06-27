@@ -6,39 +6,41 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xYl] deps: Ye, ps, Cc, Bs, Ko, wb, vH, i4o
 ((CYl = R(lt(), 1)), (nTe = R(se(), 1)));
-function validateAgentType(e) {
-  if (!e) return "Agent type is required";
-  if (!/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$/.test(e))
+function validateAgentType(agentType) {
+  if (!agentType) return "Agent type is required";
+  if (!/^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]$/.test(agentType))
     return "Agent type must start and end with alphanumeric characters and contain only letters, numbers, and hyphens";
-  if (e.length < 3) return "Agent type must be at least 3 characters long";
-  if (e.length > 50) return "Agent type must be less than 50 characters";
+  if (agentType.length < 3) return "Agent type must be at least 3 characters long";
+  if (agentType.length > 50) return "Agent type must be less than 50 characters";
   return null;
 }
-function validateAgent(e, t, n) {
+function validateAgent(agent, availableTools, existingAgents) {
   let r = [],
     o = [];
-  if (!e.agentType) r.push("Agent type is required");
+  if (!agent.agentType) r.push("Agent type is required");
   else {
-    let i = validateAgentType(e.agentType);
+    let i = validateAgentType(agent.agentType);
     if (i) r.push(i);
-    let a = n.find((l) => l.agentType === e.agentType && l.source !== e.source);
-    if (a) r.push(`Agent type "${e.agentType}" already exists in ${jsr(a.source)}`);
+    let a = existingAgents.find(
+      (l) => l.agentType === agent.agentType && l.source !== agent.source,
+    );
+    if (a) r.push(`Agent type "${agent.agentType}" already exists in ${jsr(a.source)}`);
   }
-  if (!e.whenToUse) r.push("Description (description) is required");
-  else if (e.whenToUse.length < 10)
+  if (!agent.whenToUse) r.push("Description (description) is required");
+  else if (agent.whenToUse.length < 10)
     o.push("Description should be more descriptive (at least 10 characters)");
-  else if (e.whenToUse.length > 5000) o.push("Description is very long (over 5000 characters)");
-  if (e.tools !== void 0 && !Array.isArray(e.tools)) r.push("Tools must be an array");
+  else if (agent.whenToUse.length > 5000) o.push("Description is very long (over 5000 characters)");
+  if (agent.tools !== void 0 && !Array.isArray(agent.tools)) r.push("Tools must be an array");
   else {
-    if (e.tools === void 0) o.push("Agent has access to all tools");
-    else if (e.tools.length === 0)
+    if (agent.tools === void 0) o.push("Agent has access to all tools");
+    else if (agent.tools.length === 0)
       o.push("No tools selected - agent will have very limited capabilities");
-    let i = voe(e, t, false);
+    let i = voe(agent, availableTools, false);
     if (i.invalidTools.length > 0) r.push(`Invalid tools: ${i.invalidTools.join(", ")}`);
     if (i.unavailableTools.length > 0)
       o.push(`Not available to subagents: ${i.unavailableTools.join(", ")}`);
   }
-  let s = e.getSystemPrompt();
+  let s = agent.getSystemPrompt();
   if (!s) r.push("System prompt is required");
   else if (s.length < 20) r.push("System prompt is too short (minimum 20 characters)");
   else if (s.length > 10000 /* 1e4 */)

@@ -41,8 +41,8 @@ function DGt(e) {
   if (hPa.has(r)) return;
   hPa.add(r), uPa(e);
 }
-async function resolvePluginHint(e) {
-  let t = e.value,
+async function resolvePluginHint(hint) {
+  let t = hint.value,
     {
       name: n,
       marketplace: r
@@ -58,7 +58,7 @@ async function resolvePluginHint(e) {
     pluginName: fS(o.entry),
     marketplaceName: r ?? "",
     pluginDescription: o.entry.description,
-    sourceCommand: e.sourceCommand
+    sourceCommand: hint.sourceCommand
   };
 }
 function _Pa(e) {

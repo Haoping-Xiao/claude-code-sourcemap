@@ -110,18 +110,18 @@
 function getMaxTaskOutputLength() {
   return Fue("TASK_MAX_OUTPUT_LENGTH", process.env.TASK_MAX_OUTPUT_LENGTH, dRo, uRo).effective;
 }
-function formatTaskOutput(e, t) {
+function formatTaskOutput(output, taskId) {
   let n = getMaxTaskOutputLength();
-  if (e.length <= n)
+  if (output.length <= n)
     return {
-      content: e,
+      content: output,
       wasTruncated: false,
     };
-  let o = `[Truncated. Full output: ${jm(t)}]
+  let o = `[Truncated. Full output: ${jm(taskId)}]
 
 `,
     s = n - o.length,
-    i = e.slice(-s);
+    i = output.slice(-s);
   return {
     content: o + i,
     wasTruncated: true,

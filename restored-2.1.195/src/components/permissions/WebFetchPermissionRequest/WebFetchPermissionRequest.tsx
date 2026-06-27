@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FHc] deps: ft, X0, dtn, WTe, Ye, Du
 ((BHc = R(lt(), 1)), (R3 = R(se(), 1)));
-function WebFetchPermissionRequest(e, t) {
-  switch (e) {
+function WebFetchPermissionRequest(t0, t) {
+  switch (t0) {
     case "yes":
       return {
         behavior: "allow",

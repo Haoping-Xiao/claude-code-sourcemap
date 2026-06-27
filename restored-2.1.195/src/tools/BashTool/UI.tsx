@@ -6,10 +6,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gq] deps: xF, uo
 AHl = R(rt(), 1);
-function BackgroundHint(e) {
+function BackgroundHint(t0) {
   let t = THl.c(10),
     n;
-  if (t[0] !== e) ((n = e === void 0 ? {} : e), (t[0] = e), (t[1] = n));
+  if (t[0] !== t0) ((n = t0 === void 0 ? {} : t0), (t[0] = t0), (t[1] = n));
   else n = t[1];
   let { onBackground: r } = n,
     o = $T(),

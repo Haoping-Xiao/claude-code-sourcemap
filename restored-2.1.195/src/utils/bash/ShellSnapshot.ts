@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aEe]
 ((qPa = require("os")), (FGt = require("path")));
-function createArgv0ShellFunction(e, t, n = [], r = []) {
+function createArgv0ShellFunction(funcName, argv0, n = [], r = []) {
   let o = n.length > 0 ? `${n.join(" ")} \${1+"$@"}` : '${1+"$@"}',
     s = Vt() === "windows",
     i = jGt.join(Sde(), s ? "claude.exe" : "claude"),
@@ -16,22 +16,22 @@ function createArgv0ShellFunction(e, t, n = [], r = []) {
         ? [
             "  local _cc_a",
             '  for _cc_a in ${1+"$@"}; do',
-            `    case "$_cc_a" in ${r.join("|")}) command ${e} \${1+"$@"}; return ;; esac`,
+            `    case "$_cc_a" in ${r.join("|")}) command ${funcName} \${1+"$@"}; return ;; esac`,
             "  done",
           ]
         : [];
   return [
-    `function ${e} {`,
+    `function ${funcName} {`,
     ...l,
     `  local _cc_bin="\${${Gmo}:-}"`,
     `  [[ -x $_cc_bin ]] || _cc_bin=${ja([a])}`,
-    `  if [[ ! -x $_cc_bin ]]; then command ${e} \${1+"$@"}; return; fi`,
+    `  if [[ ! -x $_cc_bin ]]; then command ${funcName} \${1+"$@"}; return; fi`,
     "  if [[ -n ${ZSH_VERSION:-} ]]; then",
-    `    ARGV0=${t} "$_cc_bin" ${o}`,
+    `    ARGV0=${argv0} "$_cc_bin" ${o}`,
     '  elif [[ "$OSTYPE" == "msys" ]] || [[ "$OSTYPE" == "cygwin" ]] || [[ "$OSTYPE" == "win32" ]]; then',
-    `    ARGV0=${t} "$_cc_bin" ${o}`,
+    `    ARGV0=${argv0} "$_cc_bin" ${o}`,
     "  else",
-    `    (exec -a ${t} "$_cc_bin" ${o})`,
+    `    (exec -a ${argv0} "$_cc_bin" ${o})`,
     "  fi",
     "}",
   ].join(`
@@ -82,12 +82,16 @@ function createFindGrepShellIntegration() {
 function K0p() {
   return null;
 }
-function getConfigFile(e) {
-  let t = e.includes("zsh") ? ".zshrc" : e.includes("bash") ? ".bashrc" : ".profile";
+function getConfigFile(shellPath) {
+  let t = shellPath.includes("zsh")
+    ? ".zshrc"
+    : shellPath.includes("bash")
+      ? ".bashrc"
+      : ".profile";
   return jGt.join(Q2n.homedir(), t);
 }
-function getUserSnapshotContent(e) {
-  let t = e.endsWith(".zshrc"),
+function getUserSnapshotContent(configFile) {
+  let t = configFile.endsWith(".zshrc"),
     n = "";
   if (t)
     n += `
@@ -212,17 +216,17 @@ ${a}
     o
   );
 }
-async function getSnapshotScript(e, t, n) {
-  let r = getConfigFile(e),
+async function getSnapshotScript(shellPath, snapshotFilePath, configFileExists) {
+  let r = getConfigFile(shellPath),
     o = r.endsWith(".zshrc"),
-    s = n
+    s = configFileExists
       ? getUserSnapshotContent(r)
       : !o
         ? 'echo "shopt -s expand_aliases" >> "$SNAPSHOT_FILE"'
         : "",
-    i = await getClaudeCodeSnapshotContent(e);
-  return `SNAPSHOT_FILE=${ja([t])}
-      ${n ? `source "${r}" < /dev/null` : "# No user config file to source"}
+    i = await getClaudeCodeSnapshotContent(shellPath);
+  return `SNAPSHOT_FILE=${ja([snapshotFilePath])}
+      ${configFileExists ? `source "${r}" < /dev/null` : "# No user config file to source"}
 
       # First, create/clear the snapshot file
       echo "# Snapshot file" >| "$SNAPSHOT_FILE"
@@ -282,13 +286,13 @@ var zPa,
   Gmo = "CLAUDE_CODE_EXECPATH",
   W0p = "CLAUDE_CODE_INVOKED_SKILLS",
   V0p,
-  createAndSaveSnapshot = async (e) => {
-    let t = e.includes("zsh") ? "zsh" : e.includes("bash") ? "bash" : "sh";
+  createAndSaveSnapshot = async (binShell) => {
+    let t = binShell.includes("zsh") ? "zsh" : binShell.includes("bash") ? "bash" : "sh";
     return (
-      T(`Creating shell snapshot for ${t} (${e})`),
+      T(`Creating shell snapshot for ${t} (${binShell})`),
       new Promise(async (n) => {
         try {
-          let r = getConfigFile(e);
+          let r = getConfigFile(binShell);
           T(`Looking for shell config file: ${r}`);
           let o = await ed(r);
           if (!o)
@@ -303,16 +307,16 @@ var zPa,
           await J2n.mkdir(a, {
             recursive: true,
           });
-          let c = await getSnapshotScript(e, l, o);
+          let c = await getSnapshotScript(binShell, l, o);
           (T(`Creating snapshot at: ${l}`),
             T(`Execution timeout: ${X2n}ms`),
             zPa.execFile(
-              e,
+              binShell,
               ["-c", "-l", c],
               {
                 env: {
                   ...(process.env.CLAUDE_CODE_DONT_INHERIT_ENV ? {} : DM()),
-                  SHELL: e,
+                  SHELL: binShell,
                   GIT_EDITOR: "true",
                   CLAUDECODE: "1",
                 },
@@ -330,8 +334,8 @@ var zPa,
                     T(`  - Error code: ${f?.code}`),
                     T(`  - Error signal: ${f?.signal}`),
                     T(`  - Error killed: ${f?.killed}`),
-                    T(`  - Shell path: ${e}`),
-                    T(`  - Config file: ${getConfigFile(e)}`),
+                    T(`  - Shell path: ${binShell}`),
+                    T(`  - Config file: ${getConfigFile(binShell)}`),
                     T(`  - Config file exists: ${o}`),
                     T(`  - Working directory: ${$t()}`),
                     T(`  - Claude home: ${tr()}`),

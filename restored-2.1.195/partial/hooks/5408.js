@@ -9,9 +9,9 @@ zmc = R(lt(), 1), ZN = R(se(), 1);
 function NTe(e) {
   return Vm(xc(e).replace(/\s+/g, " ").trim(), Bcm);
 }
-function toListItem(e) {
+function toListItem(task) {
   let t = [];
-  for (let n of Object.values(e)) {
+  for (let n of Object.values(task)) {
     let r = Ucm.has(n.status);
     switch (n.type) {
       case "local_agent":

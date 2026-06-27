@@ -18,8 +18,8 @@ function p$a(e, t) {
     else if (!t.includes(n)) return false;
   return true;
 }
-function isLinePrintingCommand(e, t) {
-  let n = oA(e);
+function isLinePrintingCommand(command, expressions) {
+  let n = oA(command);
   if (n[0] !== "sed") return false;
   let o = n.slice(1).filter((a) => a.startsWith("-") && a !== "--");
   if (
@@ -48,8 +48,8 @@ function isLinePrintingCommand(e, t) {
     }
   }
   if (!i) return false;
-  if (t.length === 0) return false;
-  for (let a of t) {
+  if (expressions.length === 0) return false;
+  for (let a of expressions) {
     let l = a.split(";");
     for (let c of l) if (!zRp(c.trim())) return false;
   }
@@ -59,17 +59,17 @@ function zRp(e) {
   if (!e) return false;
   return /^(?:\d+|\d+,\d+)?p$/.test(e);
 }
-function isSubstitutionCommand(e, t, n, r) {
-  let o = r?.allowFileWrites ?? false;
-  if (!o && n) return false;
-  let s = oA(e);
+function isSubstitutionCommand(command, expressions, hasFileArguments, options) {
+  let o = options?.allowFileWrites ?? false;
+  if (!o && hasFileArguments) return false;
+  let s = oA(command);
   if (s[0] !== "sed") return false;
   let a = s.slice(1).filter((y) => y.startsWith("-") && y !== "--"),
     l = ["-E", "--regexp-extended", "-r", "--posix"];
   if (o) l.push("-i", "--in-place");
   if (!p$a(a, l)) return false;
-  if (t.length !== 1) return false;
-  let c = t[0].trim();
+  if (expressions.length !== 1) return false;
+  let c = expressions[0].trim();
   if (!c.startsWith("s")) return false;
   let u = c.match(/^s\/(.*?)$/);
   if (!u) return false;
@@ -182,9 +182,9 @@ function YRp(e) {
   }
   return null;
 }
-function extractSedExpressions(e) {
+function extractSedExpressions(command) {
   let t = [],
-    n = oA(e);
+    n = oA(command);
   if (n[0] !== "sed") return t;
   let r = n.slice(1);
   if (r.some((o) => /^-e[wWe]/.test(o) || /^-w[eE]/.test(o)))
@@ -277,14 +277,14 @@ function u$a(e) {
   }
   return false;
 }
-function checkSedConstraints(e, t) {
-  let n = By(e.command),
+function checkSedConstraints(input, toolPermissionContext) {
+  let n = By(input.command),
     r;
   for (let o of n) {
     let s = g$a(o);
     if (s === null) continue;
-    let i = t.mode === "acceptEdits";
-    if (((r ??= Sgo(e, t)), r.behavior === "ask")) return r;
+    let i = toolPermissionContext.mode === "acceptEdits";
+    if (((r ??= Sgo(input, toolPermissionContext)), r.behavior === "ask")) return r;
     if (
       !Qpt(s, {
         allowFileWrites: i,

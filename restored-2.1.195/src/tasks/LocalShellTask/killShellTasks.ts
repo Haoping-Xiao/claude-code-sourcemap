@@ -4,14 +4,14 @@
 // class=modified  jaccard=0.3495  score=0.6293  fileCov=0.4401
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function killTask(e, t) {
+function killTask(taskId, setAppState) {
   let n,
     r = false;
   if (
-    (t.update(e, (o) => {
+    (setAppState.update(taskId, (o) => {
       if (o.status !== "running" || !vT(o)) return o;
       try {
-        (T(`LocalShellTask ${e} kill requested`),
+        (T(`LocalShellTask ${taskId} kill requested`),
           o.shellCommand?.kill(),
           o.shellCommand?.cleanup());
       } catch (s) {
@@ -36,11 +36,11 @@ function killTask(e, t) {
     }),
     n && !r)
   )
-    xf(e, "stopped", {
+    xf(taskId, "stopped", {
       toolUseId: n.toolUseId,
       summary: n.description,
     });
-  jy(e);
+  jy(taskId);
 }
 function vrl(e, t) {
   for (let n of Object.values(t.all())) {
@@ -53,10 +53,10 @@ function vrl(e, t) {
   }
   return false;
 }
-function killShellTasksForAgent(e, t) {
-  for (let [n, r] of Object.entries(t.all()))
-    if (vT(r) && r.agentId === e && r.status === "running")
-      (T(`killShellTasksForAgent: killing orphaned shell task ${n} (agent ${e} exiting)`),
-        killTask(n, t));
-  ALe((n) => n.agentId === e);
+function killShellTasksForAgent(agentId, getAppState) {
+  for (let [n, r] of Object.entries(getAppState.all()))
+    if (vT(r) && r.agentId === agentId && r.status === "running")
+      (T(`killShellTasksForAgent: killing orphaned shell task ${n} (agent ${agentId} exiting)`),
+        killTask(n, getAppState));
+  ALe((n) => n.agentId === agentId);
 }

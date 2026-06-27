@@ -47,21 +47,21 @@ async function Ofc(e, t) {
     });
   return n;
 }
-async function storeImage(e) {
-  if (e.type !== "image") return null;
+async function storeImage(content) {
+  if (content.type !== "image") return null;
   try {
     await mcm();
-    let t = $fc(e.id, e.mediaType || "image/png"),
+    let t = $fc(content.id, content.mediaType || "image/png"),
       n = await fur.open(t, "w", 384);
     try {
-      (await n.writeFile(e.content, {
+      (await n.writeFile(content.content, {
         encoding: "base64",
       }),
         await n.datasync());
     } finally {
       await n.close();
     }
-    return (T(`Stored image ${e.id} to ${t}`), t);
+    return (T(`Stored image ${content.id} to ${t}`), t);
   } catch (t) {
     return (T(`Failed to store image: ${t}`), null);
   }

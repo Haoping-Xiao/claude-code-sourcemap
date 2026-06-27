@@ -11,7 +11,7 @@ function dpr(e, t) {
 function Zhm() {
   Bc(0);
 }
-async function handlePromptSubmit(e) {
+async function handlePromptSubmit(params) {
   let {
       helpers: t,
       queryGuard: n,
@@ -34,7 +34,7 @@ async function handlePromptSubmit(e) {
       queuedCommands: _,
       uuid: S,
       skipSlashCommands: A,
-    } = e,
+    } = params,
     { setCursorOffset: v, clearBuffer: C, resetHistory: x } = t;
   if (_?.length) {
     (jKt(),
@@ -44,7 +44,7 @@ async function handlePromptSubmit(e) {
         messages: c,
         mainLoopModel: u,
         ideSelection: d,
-        querySource: e.querySource,
+        querySource: params.querySource,
         commands: o,
         queryGuard: n,
         setToolJSX: a,
@@ -58,13 +58,13 @@ async function handlePromptSubmit(e) {
         resetHistory: x,
         canUseTool: b,
         onInputChange: s,
-        deferSlashToEngine: e.deferSlashToEngine,
+        deferSlashToEngine: params.deferSlashToEngine,
       }));
     return;
   }
-  let I = e.input ?? "",
-    k = e.mode ?? "prompt",
-    D = e.pastedContents ?? {},
+  let I = params.input ?? "",
+    k = params.mode ?? "prompt",
+    D = params.pastedContents ?? {},
     P = new Set(jM(I).map((W) => W.id)),
     O = cv(D, (W) => W.type !== "image" || P.has(W.id)),
     L = Object.values(O).some(qze);
@@ -72,7 +72,7 @@ async function handlePromptSubmit(e) {
   if (k !== "bash" && !A && nir.includes(I.trim())) {
     if (o.find((V) => V.name === "exit"))
       handlePromptSubmit({
-        ...e,
+        ...params,
         input: "/exit",
       });
     else Zhm();
@@ -113,9 +113,9 @@ async function handlePromptSubmit(e) {
               shouldHidePromptInput: false,
               clearLocalJSX: true,
             }),
-            re && ee?.display !== "skip" && e.addNotification)
+            re && ee?.display !== "skip" && params.addNotification)
           )
-            e.addNotification({
+            params.addNotification({
               key: `immediate-${z.name}`,
               kind: "feedback",
               text: re,
@@ -159,17 +159,17 @@ async function handlePromptSubmit(e) {
       Le("prompt_queued", "mode_not_queueable");
       return;
     }
-    if (e.hasInterruptibleToolInProgress) {
-      T(`[interrupt] Aborting current turn: streamMode=${e.streamMode}`);
+    if (params.hasInterruptibleToolInProgress) {
+      T(`[interrupt] Aborting current turn: streamMode=${params.streamMode}`);
       let W = lL(u, g().effortValue);
       (G("tengu_cancel", {
         source: We("interrupt_on_submit"),
-        streamMode: Oo(e.streamMode),
+        streamMode: Oo(params.streamMode),
         ...(W && {
           effort_level: $e(W),
         }),
       }),
-        e.abortController?.abort(eP("interrupt")));
+        params.abortController?.abort(eP("interrupt")));
     }
     (j_({
       agentId: ls(),
@@ -178,8 +178,8 @@ async function handlePromptSubmit(e) {
       mode: k,
       pastedContents: L ? O : void 0,
       skipSlashCommands: A,
-      suppressWorkflowKeyword: e.suppressWorkflowKeyword,
-      inputSource: e.inputSource,
+      suppressWorkflowKeyword: params.suppressWorkflowKeyword,
+      inputSource: params.inputSource,
       uuid: S,
       origin: {
         kind: "human",
@@ -200,7 +200,7 @@ async function handlePromptSubmit(e) {
     mode: k,
     pastedContents: L ? O : void 0,
     skipSlashCommands: A,
-    suppressWorkflowKeyword: e.suppressWorkflowKeyword,
+    suppressWorkflowKeyword: params.suppressWorkflowKeyword,
     uuid: S,
     agentId: ls(),
     origin: {
@@ -209,12 +209,12 @@ async function handlePromptSubmit(e) {
   };
   (xe("prompt_submit"),
     await executeUserInput({
-      inputSource: e.inputSource ?? "typed",
+      inputSource: params.inputSource ?? "typed",
       queuedCommands: [q],
       messages: c,
       mainLoopModel: u,
       ideSelection: d,
-      querySource: e.querySource,
+      querySource: params.querySource,
       commands: o,
       queryGuard: n,
       setToolJSX: a,
@@ -228,10 +228,10 @@ async function handlePromptSubmit(e) {
       resetHistory: x,
       canUseTool: b,
       onInputChange: s,
-      deferSlashToEngine: e.deferSlashToEngine,
+      deferSlashToEngine: params.deferSlashToEngine,
     }));
 }
-async function executeUserInput(e) {
+async function executeUserInput(params) {
   let {
       messages: t,
       mainLoopModel: n,
@@ -250,13 +250,13 @@ async function executeUserInput(e) {
       canUseTool: g,
       queuedCommands: h,
       inputSource: y,
-    } = e,
+    } = params,
     b = Sl();
   c(b);
   function _() {
     return {
       ...a(t, [], b, n),
-      deferSlashToEngine: e.deferSlashToEngine,
+      deferSlashToEngine: params.deferSlashToEngine,
     };
   }
   try {
@@ -402,7 +402,7 @@ async function executeUserInput(e) {
                 kind: "auto-continuation",
               },
             });
-          else e.onInputChange(I);
+          else params.onInputChange(I);
       }),
     );
   } finally {

@@ -49,7 +49,7 @@ function Sr(e) {
   else r = t[9];
   return r;
 }
-function Select(e) {
+function Select(t0) {
   let t = IPn.c(86),
     {
       isDisabled: n,
@@ -72,7 +72,7 @@ function Select(e) {
       onImagePaste: _,
       pastedContents: S,
       onRemoveImage: A,
-    } = e,
+    } = t0,
     v = n === void 0 ? false : n,
     C = r === void 0 ? false : r,
     x = o === void 0 ? 5 : o,

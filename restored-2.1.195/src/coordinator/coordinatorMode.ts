@@ -15,10 +15,10 @@ function isCoordinatorMode() {
 function isCcrCoordinator() {
   return isCoordinatorMode() && false;
 }
-function matchSessionMode(e) {
-  if (!e) return;
+function matchSessionMode(sessionMode) {
+  if (!sessionMode) return;
   let t = isCoordinatorMode(),
-    n = e === "coordinator";
+    n = sessionMode === "coordinator";
   if (t === n) return;
   if (n) process.env.CLAUDE_CODE_COORDINATOR_MODE = "1";
   else delete process.env.CLAUDE_CODE_COORDINATOR_MODE;
@@ -29,7 +29,7 @@ function matchSessionMode(e) {
   }
   return (
     G("tengu_coordinator_mode_switched", {
-      to: $e(e),
+      to: $e(sessionMode),
     }),
     xe("coordinator_session_mode_match"),
     r
@@ -37,7 +37,7 @@ function matchSessionMode(e) {
       : "Exited coordinator mode to match resumed session."
   );
 }
-function getCoordinatorUserContext(e, t) {
+function getCoordinatorUserContext(mcpClients, scratchpadDir) {
   if (!isCoordinatorMode()) return {};
   let n = Oe.CLAUDE_CODE_SIMPLE
       ? [...(Su() ? [Co] : []), ...(q1() ? [Ss] : []), Ds, ka].sort()
@@ -54,16 +54,16 @@ function getCoordinatorUserContext(e, t) {
 `),
     s = `Workers spawned via the ${ss} tool have access to these tools:
 ${o}`;
-  if (e.length > 0) {
-    let i = e.map((a) => a.name).join(", ");
+  if (mcpClients.length > 0) {
+    let i = mcpClients.map((a) => a.name).join(", ");
     s += `
 
 Workers also have access to MCP tools from connected MCP servers: ${i}`;
   }
-  if (t && Zop())
+  if (scratchpadDir && Zop())
     s += `
 
-Scratchpad directory: ${t}
+Scratchpad directory: ${scratchpadDir}
 Workers can generally read and write here without permission prompts. Use this for durable cross-worker knowledge \u2014 prefer plain data and markdown files.`;
   return {
     workerToolsContext: s,

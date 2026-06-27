@@ -10,15 +10,15 @@
   (vTt = R(require("path"))),
   (GT = R(rt(), 1)),
   (ul = R(se(), 1)));
-function useIdeLogging(e) {
+function useIdeLogging(mcpClients) {
   Fgc.useEffect(() => {
-    if (!e.length) return;
-    let t = p5(e);
+    if (!mcpClients.length) return;
+    let t = p5(mcpClients);
     if (t)
       t.client.setNotificationHandler(qum(), (n) => {
         let { eventName: r, eventData: o } = n.params;
         G(`tengu_ide_${r}`, o);
       });
-  }, [e]);
+  }, [mcpClients]);
 }
 var Fgc, qum;

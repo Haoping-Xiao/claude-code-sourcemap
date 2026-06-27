@@ -6,14 +6,26 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _Tt] deps: ft, je, fn, ys
 ((fur = require("fs/promises")), (XZt = require("path")));
-function processTextPrompt(e, t, n, r, o, s, i, a, l, c, u) {
-  let d = typeof e === "string" ? e : e.find((_) => _.type === "text")?.text || "",
-    p = typeof e === "string" ? e : e.findLast((_) => _.type === "text")?.text || "";
+function processTextPrompt(
+  input,
+  imageContentBlocks,
+  imagePasteIds,
+  attachmentMessages,
+  uuid,
+  permissionMode,
+  isMeta,
+  a,
+  l,
+  c,
+  u,
+) {
+  let d = typeof input === "string" ? input : input.find((_) => _.type === "text")?.text || "",
+    p = typeof input === "string" ? input : input.findLast((_) => _.type === "text")?.text || "";
   if (p)
     Jc("user_prompt", {
       prompt_length: String(p.length),
       prompt: iFt(p),
-      "prompt.id": o,
+      "prompt.id": uuid,
     });
   let f = Bxl(d),
     m = Uxl(d),
@@ -37,45 +49,45 @@ function processTextPrompt(e, t, n, r, o, s, i, a, l, c, u) {
         interrupted_message_id: Hr(h),
       }),
     }),
-    t.length > 0)
+    imageContentBlocks.length > 0)
   ) {
     let _ =
-        typeof e === "string"
-          ? e.trim()
+        typeof input === "string"
+          ? input.trim()
             ? [
                 {
                   type: "text",
-                  text: e,
+                  text: input,
                 },
               ]
             : []
-          : e,
+          : input,
       S = Rn({
-        content: [..._, ...t],
-        uuid: s,
-        imagePasteIds: n.length > 0 ? n : void 0,
-        permissionMode: i,
+        content: [..._, ...imageContentBlocks],
+        uuid: permissionMode,
+        imagePasteIds: imagePasteIds.length > 0 ? imagePasteIds : void 0,
+        permissionMode: isMeta,
         isMeta: a || void 0,
         promptSource: c,
         origin: u,
       });
     if (u) dVo(S, u);
     return {
-      messages: [S, ...r],
+      messages: [S, ...attachmentMessages],
       shouldQuery: true,
     };
   }
   let b = Rn({
-    content: e,
-    uuid: s,
-    permissionMode: i,
+    content: input,
+    uuid: permissionMode,
+    permissionMode: isMeta,
     isMeta: a || void 0,
     promptSource: c,
     origin: u,
   });
   if (u) dVo(b, u);
   return {
-    messages: [b, ...r],
+    messages: [b, ...attachmentMessages],
     shouldQuery: true,
   };
 }

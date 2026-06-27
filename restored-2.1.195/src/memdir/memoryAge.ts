@@ -30,8 +30,8 @@ Important:
 function rop(e) {
   return Math.max(0, Math.floor((Date.now() - e) / 86400000));
 }
-function memoryFreshnessText(e) {
-  let t = rop(e);
+function memoryFreshnessText(mtimeMs) {
+  let t = rop(mtimeMs);
   if (t <= 1) return "";
   return (
     `This memory is ${t} days old. ` +
@@ -39,8 +39,8 @@ function memoryFreshnessText(e) {
     "claims about code behavior or file:line citations may be outdated. Verify against current code before asserting as fact."
   );
 }
-function memoryFreshnessNote(e) {
-  let t = memoryFreshnessText(e);
+function memoryFreshnessNote(mtimeMs) {
+  let t = memoryFreshnessText(mtimeMs);
   if (!t) return "";
   return `<system-reminder>${t}</system-reminder>
 `;

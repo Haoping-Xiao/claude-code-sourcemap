@@ -69,10 +69,10 @@ function loadManagedFileSettings(e) {
     errors: t,
   };
 }
-function handleFileSystemError(e, t) {
-  if (wn(e)) T(`Broken symlink or missing file encountered for settings.json at path: ${t}`);
+function handleFileSystemError(error, path) {
+  if (wn(error)) T(`Broken symlink or missing file encountered for settings.json at path: ${path}`);
   else
-    T(`settings file read failed at ${t}: ${e}`, {
+    T(`settings file read failed at ${path}: ${error}`, {
       level: "error",
     });
 }
@@ -235,8 +235,8 @@ function gLr(e, t, n) {
     };
   }
 }
-function getSettingsRootPathForSource(e, t) {
-  switch (e) {
+function getSettingsRootPathForSource(source, t) {
+  switch (source) {
     case "userSettings":
       return qO.resolve(tr());
     case "policySettings":
@@ -265,8 +265,8 @@ function CCe(e, t) {
       return t.flagPath;
   }
 }
-function getRelativeSettingsFilePathForSource(e) {
-  switch (e) {
+function getRelativeSettingsFilePathForSource(source) {
+  switch (source) {
     case "projectSettings":
       return qO.join(".claude", "settings.json");
     case "localSettings":

@@ -13,32 +13,32 @@ function ZEe(e, t) {
 function iMe(e) {
   return;
 }
-function fileHistoryMakeSnapshot(e, t) {
-  switch (t.kind) {
+function fileHistoryMakeSnapshot(updateFileHistoryState, messageId) {
+  switch (messageId.kind) {
     case "track":
       try {
-        let n = e.snapshots.at(-1);
-        if (!n) return e;
-        let r = (e.trackSequence ?? 0) + 1;
-        if (n.trackedFileBackups[t.trackingPath])
+        let n = updateFileHistoryState.snapshots.at(-1);
+        if (!n) return updateFileHistoryState;
+        let r = (updateFileHistoryState.trackSequence ?? 0) + 1;
+        if (n.trackedFileBackups[messageId.trackingPath])
           return {
-            ...e,
+            ...updateFileHistoryState,
             trackSequence: r,
           };
-        let o = e.trackedFiles.has(t.trackingPath)
-            ? e.trackedFiles
-            : new Set(e.trackedFiles).add(t.trackingPath),
+        let o = updateFileHistoryState.trackedFiles.has(messageId.trackingPath)
+            ? updateFileHistoryState.trackedFiles
+            : new Set(updateFileHistoryState.trackedFiles).add(messageId.trackingPath),
           s = {
             ...n,
             trackedFileBackups: {
               ...n.trackedFileBackups,
-              [t.trackingPath]: t.backup,
+              [messageId.trackingPath]: messageId.backup,
             },
           },
           i = {
-            ...e,
+            ...updateFileHistoryState,
             snapshots: (() => {
-              let a = e.snapshots.slice();
+              let a = updateFileHistoryState.snapshots.slice();
               return ((a[a.length - 1] = s), a);
             })(),
             trackedFiles: o,
@@ -46,65 +46,65 @@ function fileHistoryMakeSnapshot(e, t) {
           };
         return (
           FQa(i),
-          VVt(t.messageId, s, true).catch((a) => {
+          VVt(messageId.messageId, s, true).catch((a) => {
             ke(Error(`FileHistory: Failed to record snapshot: ${a}`));
           }),
           G("tengu_file_history_track_edit_success", {
-            isNewFile: t.isAddingFile,
-            version: t.backup.version,
+            isNewFile: messageId.isAddingFile,
+            version: messageId.backup.version,
           }),
-          T(`FileHistory: Tracked file modification for ${t.filePath}`),
+          T(`FileHistory: Tracked file modification for ${messageId.filePath}`),
           i
         );
       } catch (n) {
-        return (ke(n), G("tengu_file_history_track_edit_failed", {}), e);
+        return (ke(n), G("tengu_file_history_track_edit_failed", {}), updateFileHistoryState);
       }
     case "snapshot":
       try {
         let n = {
-            ...t.trackedFileBackups,
+            ...messageId.trackedFileBackups,
           },
-          r = e.snapshots.at(-1);
+          r = updateFileHistoryState.snapshots.at(-1);
         if (r)
-          for (let l of e.trackedFiles) {
+          for (let l of updateFileHistoryState.trackedFiles) {
             if (l in n) continue;
             let c = r.trackedFileBackups[l];
             if (c) n[l] = c;
           }
         let o = new Date(),
           s = {
-            messageId: t.messageId,
+            messageId: messageId.messageId,
             trackedFileBackups: n,
             timestamp: o,
           },
-          i = [...e.snapshots, s],
+          i = [...updateFileHistoryState.snapshots, s],
           a = {
-            ...e,
+            ...updateFileHistoryState,
             snapshots: i.length > UQa ? i.slice(-UQa) : i,
-            snapshotSequence: (e.snapshotSequence ?? 0) + 1,
+            snapshotSequence: (updateFileHistoryState.snapshotSequence ?? 0) + 1,
           };
         return (
           FQa(a),
-          lQp(e, a).catch(ke),
-          VVt(t.messageId, s, false).catch((l) => {
+          lQp(updateFileHistoryState, a).catch(ke),
+          VVt(messageId.messageId, s, false).catch((l) => {
             ke(Error(`FileHistory: Failed to record snapshot: ${l}`));
           }),
           T(
-            `FileHistory: Added snapshot for ${t.messageId}, tracking ${e.trackedFiles.size} files`,
+            `FileHistory: Added snapshot for ${messageId.messageId}, tracking ${updateFileHistoryState.trackedFiles.size} files`,
           ),
           G("tengu_file_history_snapshot_success", {
-            trackedFilesCount: e.trackedFiles.size,
+            trackedFilesCount: updateFileHistoryState.trackedFiles.size,
             snapshotCount: a.snapshots.length,
           }),
           a
         );
       } catch (n) {
-        return (ke(n), G("tengu_file_history_snapshot_failed", {}), e);
+        return (ke(n), G("tengu_file_history_snapshot_failed", {}), updateFileHistoryState);
       }
     case "touch":
       return {
-        ...e,
-        trackSequence: (e.trackSequence ?? 0) + 1,
+        ...updateFileHistoryState,
+        trackSequence: (updateFileHistoryState.trackSequence ?? 0) + 1,
       };
   }
 }
@@ -213,14 +213,14 @@ async function Z9e(e, t, n) {
     trackedFileBackups: o,
   });
 }
-async function fileHistoryRewind(e, t) {
+async function fileHistoryRewind(updateFileHistoryState, messageId) {
   if (!fileHistoryEnabled()) return;
-  let n = e();
+  let n = updateFileHistoryState();
   if (!n) return;
-  let r = n.snapshots.findLast((o) => o.messageId === t);
+  let r = n.snapshots.findLast((o) => o.messageId === messageId);
   if (!r)
     throw (
-      ke(Error(`FileHistory: Snapshot for ${t} not found`)),
+      ke(Error(`FileHistory: Snapshot for ${messageId} not found`)),
       G("tengu_file_history_rewind_failed", {
         trackedFilesCount: n.trackedFiles.size,
         snapshotFound: false,
@@ -228,9 +228,9 @@ async function fileHistoryRewind(e, t) {
       Error("The selected snapshot was not found")
     );
   try {
-    T(`FileHistory: [Rewind] Rewinding to snapshot for ${t}`);
+    T(`FileHistory: [Rewind] Rewinding to snapshot for ${messageId}`);
     let o = await applySnapshot(n, r);
-    (T(`FileHistory: [Rewind] Finished rewinding to ${t}`),
+    (T(`FileHistory: [Rewind] Finished rewinding to ${messageId}`),
       G("tengu_file_history_rewind_success", {
         trackedFilesCount: n.trackedFiles.size,
         filesChangedCount: o.length,
@@ -250,16 +250,16 @@ function fileHistoryCanRestore(e, t) {
   if (!fileHistoryEnabled()) return false;
   return e.snapshots.some((n) => n.messageId === t);
 }
-async function fileHistoryGetDiffStats(e, t) {
+async function fileHistoryGetDiffStats(state, messageId) {
   if (!fileHistoryEnabled()) return;
-  let n = e.snapshots.findLast((a) => a.messageId === t);
+  let n = state.snapshots.findLast((a) => a.messageId === messageId);
   if (!n) return;
   let r = await Promise.all(
-      Array.from(e.trackedFiles, async (a) => {
+      Array.from(state.trackedFiles, async (a) => {
         try {
           let l = YVt(a),
             c = n.trackedFileBackups[a],
-            u = c ? c.backupFileName : lTo(a, e);
+            u = c ? c.backupFileName : lTo(a, state);
           if (u === void 0)
             return (
               T("FileHistory: Error finding the backup file to apply", {
@@ -326,13 +326,13 @@ async function fileHistoryHasAnyChanges(e, t) {
     }
   return false;
 }
-async function applySnapshot(e, t) {
+async function applySnapshot(state, targetSnapshot) {
   let n = [];
-  for (let r of e.trackedFiles)
+  for (let r of state.trackedFiles)
     try {
       let o = YVt(r),
-        s = t.trackedFileBackups[r],
-        i = s ? s.backupFileName : lTo(r, e);
+        s = targetSnapshot.trackedFileBackups[r],
+        i = s ? s.backupFileName : lTo(r, state);
       if (i === void 0) {
         (T("FileHistory: Error finding the backup file to apply", {
           level: "error",
@@ -396,20 +396,20 @@ function oQp(e, t, n) {
   if (e.mtimeMs < t.mtimeMs) return false;
   return n();
 }
-async function computeDiffStatsForFile(e, t) {
+async function computeDiffStatsForFile(originalFile, backupFileName) {
   let n = [],
     r = 0,
     o = 0;
   try {
-    let s = t ? resolveBackupPath(t) : void 0,
-      [i, a] = await Promise.all([p8n(e), s ? p8n(s) : null]);
+    let s = backupFileName ? resolveBackupPath(backupFileName) : void 0,
+      [i, a] = await Promise.all([p8n(originalFile), s ? p8n(s) : null]);
     if (i === null && a === null)
       return {
         filesChanged: n,
         insertions: r,
         deletions: o,
       };
-    (n.push(e),
+    (n.push(originalFile),
       fLe(i ?? "", a ?? "").forEach((c) => {
         if (c.added) r += c.count || 0;
         if (c.removed) o += c.count || 0;
@@ -426,55 +426,55 @@ async function computeDiffStatsForFile(e, t) {
 function iQp(e, t) {
   return `${jQa.createHash("sha256").update(e).digest("hex").slice(0, 16)}@v${t}`;
 }
-function resolveBackupPath(e, t) {
+function resolveBackupPath(backupFileName, sessionId) {
   let n = tr();
-  return U6.join(n, "file-history", t || Rt(), e);
+  return U6.join(n, "file-history", sessionId || Rt(), backupFileName);
 }
-async function createBackup(e, t) {
-  if (e === null)
+async function createBackup(filePath, version) {
+  if (filePath === null)
     return {
       backupFileName: null,
-      version: t,
+      version: version,
       backupTime: new Date(),
     };
-  let n = iQp(e, t),
+  let n = iQp(filePath, version),
     r = resolveBackupPath(n),
     o;
   try {
-    o = await IH.stat(e);
+    o = await IH.stat(filePath);
   } catch (s) {
     if (wn(s))
       return {
         backupFileName: null,
-        version: t,
+        version: version,
         backupTime: new Date(),
       };
     throw s;
   }
   try {
-    await IH.copyFile(e, r);
+    await IH.copyFile(filePath, r);
   } catch (s) {
     if (!wn(s)) throw s;
     (await IH.mkdir(U6.dirname(r), {
       recursive: true,
     }),
-      await IH.copyFile(e, r));
+      await IH.copyFile(filePath, r));
   }
   return (
     await IH.chmod(r, o.mode),
     G("tengu_file_history_backup_file_created", {
-      version: t,
+      version: version,
       fileSize: o.size,
     }),
     {
       backupFileName: n,
-      version: t,
+      version: version,
       backupTime: new Date(),
     }
   );
 }
-async function restoreBackup(e, t) {
-  let n = resolveBackupPath(t),
+async function restoreBackup(filePath, backupFileName) {
+  let n = resolveBackupPath(backupFileName),
     r;
   try {
     r = await IH.stat(n);
@@ -489,15 +489,15 @@ async function restoreBackup(e, t) {
     throw o;
   }
   try {
-    await IH.copyFile(n, e);
+    await IH.copyFile(n, filePath);
   } catch (o) {
     if (!wn(o)) throw o;
-    (await IH.mkdir(U6.dirname(e), {
+    (await IH.mkdir(U6.dirname(filePath), {
       recursive: true,
     }),
-      await IH.copyFile(n, e));
+      await IH.copyFile(n, filePath));
   }
-  await IH.chmod(e, r.mode);
+  await IH.chmod(filePath, r.mode);
 }
 function lTo(e, t) {
   for (let n of t.snapshots) {
@@ -537,11 +537,11 @@ function fileHistoryRestoreStateFromLog(e, t) {
     snapshotSequence: n.length,
   });
 }
-async function copyFileHistoryForResume(e, t) {
+async function copyFileHistoryForResume(log, t) {
   if (!fileHistoryEnabled()) return;
-  let n = e.fileHistorySnapshots;
-  if (!n || e.messages.length === 0) return;
-  let o = e.messages.at(-1)?.sessionId;
+  let n = log.fileHistorySnapshots;
+  if (!n || log.messages.length === 0) return;
+  let o = log.messages.at(-1)?.sessionId;
   if (!o) {
     ke(Error("FileHistory: Failed to copy backups on restore (no previous session id)"));
     return;

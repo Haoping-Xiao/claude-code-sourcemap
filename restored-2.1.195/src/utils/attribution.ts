@@ -89,9 +89,9 @@ function rCl(e) {
   for (let t of KSs) if (e.includes(`<${t}>`)) return true;
   return false;
 }
-function countUserPromptsInMessages(e) {
+function countUserPromptsInMessages(messages) {
   let t = 0;
-  for (let n of e) {
+  for (let n of messages) {
     if (n.type !== "user") continue;
     let r = n.message?.content;
     if (!r) continue;
@@ -112,8 +112,8 @@ function countUserPromptsInMessages(e) {
   }
   return t;
 }
-function countUserPromptsFromEntries(e) {
-  let t = e.filter(
+function countUserPromptsFromEntries(entries) {
+  let t = entries.filter(
     (n) =>
       n.type === "user" &&
       !("isSidechain" in n && n.isSidechain) &&
@@ -134,9 +134,9 @@ async function oHf(e) {
     return (ke(s), null);
   }
 }
-function countMemoryFileAccessFromEntries(e) {
+function countMemoryFileAccessFromEntries(entries) {
   let t = 0;
-  for (let n of e) {
+  for (let n of entries) {
     if (n.type !== "assistant") continue;
     let r = n.message?.content;
     if (!Array.isArray(r)) continue;
@@ -178,12 +178,12 @@ async function aCl(e) {
 ${t}`
     : t;
 }
-async function getEnhancedPRAttribution(e, t) {
+async function getEnhancedPRAttribution(getAppState, t) {
   let n = Dr();
   if (n.attribution?.pr) return n.attribution.pr;
   if (n.includeCoAuthoredBy === false) return "";
   let r = `\uD83E\uDD16 Generated with [Claude Code](${L5e})`,
-    o = e();
+    o = getAppState();
   if ((T(`PR Attribution: appState.attribution exists: ${!!o.attribution}`), o.attribution)) {
     let m = o.attribution.fileStates,
       h = m instanceof Map ? m.size : Object.keys(m).length;

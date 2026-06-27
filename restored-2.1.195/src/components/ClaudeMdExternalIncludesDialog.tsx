@@ -22,9 +22,9 @@ function recordExternalIncludesDecision(e, t) {
       },
     ));
 }
-function ClaudeMdExternalIncludesDialog(e) {
+function ClaudeMdExternalIncludesDialog(t0) {
   let t = NMl.c(17),
-    { onDone: n, isStandaloneDialog: r, externalIncludes: o } = e,
+    { onDone: n, isStandaloneDialog: r, externalIncludes: o } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((s = []), (t[0] = s));
   else s = t[0];

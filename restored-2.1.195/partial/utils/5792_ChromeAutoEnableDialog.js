@@ -7,13 +7,13 @@
 // module exports: ChromeAutoEnableDialog
 // [unwrapped __esm module B$c] deps: kt, Ye, DHe, er, vn, vi
 O$c = R(lt(), 1), dmr = R(rt(), 1), lO = R(se(), 1);
-function Dialog(e) {
+function Dialog(t0) {
   let t = U$c.c(16),
     {
       onDone: n,
       isDontAskMode: r,
       isAutoMode: o
-    } = e,
+    } = t0,
     s = r === void 0 ? false : r,
     i = o === void 0 ? false : o,
     a;

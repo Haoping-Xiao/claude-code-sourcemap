@@ -71,37 +71,37 @@ function $sa(e) {
     stripped: n,
   };
 }
-function parseMemoryFileContent(e, t, n, r) {
-  let o = bh.extname(t).toLowerCase();
+function parseMemoryFileContent(rawContent, filePath, type, includeBasePath) {
+  let o = bh.extname(filePath).toLowerCase();
   if (o && !Pip.has(o))
     return (
-      T(`Skipping non-text file in @include: ${t}`),
+      T(`Skipping non-text file in @include: ${filePath}`),
       {
         info: null,
         includePaths: [],
       }
     );
-  let { content: s, paths: i } = Mip(e),
+  let { content: s, paths: i } = Mip(rawContent),
     a = s.includes("<!--"),
     l =
-      a || r !== void 0
+      a || includeBasePath !== void 0
         ? new b4({
             gfm: false,
           }).lex(s)
         : void 0,
     c = a && l ? $sa(l).content : s,
-    u = l && r !== void 0 ? Uip(l, r) : [],
+    u = l && includeBasePath !== void 0 ? Uip(l, includeBasePath) : [],
     d = c;
-  if (n === "AutoMem") d = FNt(c).content;
-  let p = d !== e;
+  if (type === "AutoMem") d = FNt(c).content;
+  let p = d !== rawContent;
   return {
     info: {
-      path: t,
-      type: n,
+      path: filePath,
+      type: type,
       content: d,
       globs: i,
       contentDiffersFromDisk: p,
-      rawContent: p ? e : void 0,
+      rawContent: p ? rawContent : void 0,
     },
     includePaths: u,
   };
@@ -116,13 +116,13 @@ function Nip(e) {
     rawContent: e,
   };
 }
-function handleMemoryFileReadError(e, t) {
-  let n = on(e);
+function handleMemoryFileReadError(error, filePath) {
+  let n = on(error);
   if (n === "ENOENT" || n === "EISDIR") return;
   if (n === "EACCES")
     G("tengu_claude_md_permission_error", {
       is_access_error: 1,
-      has_home_dir: t.includes(tr()) ? 1 : 0,
+      has_home_dir: filePath.includes(tr()) ? 1 : 0,
     });
 }
 async function Osa(e, t, n) {
@@ -319,9 +319,9 @@ function getLargeMemoryFiles(e) {
   let t = getMaxMemoryCharacterCount();
   return e.filter((n) => !isSyntheticMemoryPath(n.path) && Nsa(n.type) && n.content.length > t);
 }
-function filterInjectedMemoryFiles(e) {
-  if (!at("tengu_moth_copse", false)) return e;
-  return e.filter((n) => n.type !== "AutoMem");
+function filterInjectedMemoryFiles(files) {
+  if (!at("tengu_moth_copse", false)) return files;
+  return files.filter((n) => n.type !== "AutoMem");
 }
 async function getManagedAndUserConditionalRules(e, t) {
   let n = [],
@@ -431,11 +431,11 @@ var Rsa,
   Wv,
   Rso = "session_start",
   Lso = true,
-  getClaudeMds = (e, t) => {
+  getClaudeMds = (memoryFiles, filter) => {
     let n = [],
       r = at("tengu_paper_halyard", false);
-    for (let o of e) {
-      if (t && !t(o.type)) continue;
+    for (let o of memoryFiles) {
+      if (filter && !filter(o.type)) continue;
       if (r && (o.type === "Project" || o.type === "Local")) continue;
       if (o.content) {
         let s =

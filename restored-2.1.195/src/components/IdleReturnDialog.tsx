@@ -25,9 +25,9 @@ function Tmc(e, t) {
     estimatedTokens: a,
   };
 }
-function IdleReturnDialog(e) {
+function IdleReturnDialog(t0) {
   let t = Hmc.c(16),
-    { sessionAgeMinutes: n, estimatedTokens: r, onDone: o } = e,
+    { sessionAgeMinutes: n, estimatedTokens: r, onDone: o } = t0,
     s;
   if (t[0] !== n) ((s = Rcm(n)), (t[0] = n), (t[1] = s));
   else s = t[1];

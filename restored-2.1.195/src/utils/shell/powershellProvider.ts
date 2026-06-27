@@ -15,14 +15,14 @@ function buildPowerShellArgs() {
 function WGt(e) {
   return [...buildPowerShellArgs(), "-Command", e];
 }
-function encodePowerShellCommand(e) {
-  return Buffer.from(e, "utf16le").toString("base64");
+function encodePowerShellCommand(psCommand) {
+  return Buffer.from(psCommand, "utf16le").toString("base64");
 }
-function createPowerShellProvider(e) {
+function createPowerShellProvider(shellPath) {
   let t;
   return {
     type: "powershell",
-    shellPath: e,
+    shellPath: shellPath,
     detached: false,
     async buildExecCommand(n, r) {
       t = r.useSandbox ? r.sandboxTmpDir : void 0;
@@ -46,7 +46,7 @@ function createPowerShellProvider(e) {
       return {
         commandString: r.useSandbox
           ? [
-              `'${e.replace(/'/g, "'\\''")}'`,
+              `'${shellPath.replace(/'/g, "'\\''")}'`,
               ...buildPowerShellArgs(),
               "-EncodedCommand",
               encodePowerShellCommand(a),

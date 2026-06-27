@@ -37,8 +37,8 @@ function XOa(e) {
 function JOa(e) {
   return (e.file[0] === "/" && KOa.has(e.file.slice(1))) || YOa.some((t) => e.file.startsWith(t));
 }
-function downloadVersionFromArtifactory(e) {
-  let t = e.split(/[/\\]/),
+function downloadVersionFromArtifactory(version) {
+  let t = version.split(/[/\\]/),
     n = -1;
   for (let i = t.length - 1; i >= 0; i--)
     if (t[i] === "node_modules") {

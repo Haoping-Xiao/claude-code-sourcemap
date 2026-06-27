@@ -37,10 +37,10 @@ function sLa(e) {
     code: e.code || null,
   });
 }
-function deduplicateDiagnosticFiles(e) {
+function deduplicateDiagnosticFiles(allFiles) {
   let t = new Map(),
     n = [];
-  for (let r of e) {
+  for (let r of allFiles) {
     if (!t.has(r.uri))
       (t.set(r.uri, new Set()),
         n.push({
@@ -157,8 +157,9 @@ function resetAllLSPDiagnosticState() {
     Pre.clear(),
     EDe.clear());
 }
-function clearDeliveredDiagnosticsForFile(e) {
-  if (EDe.has(e)) (T(`LSP Diagnostics: Clearing delivered diagnostics for ${e}`), EDe.delete(e));
+function clearDeliveredDiagnosticsForFile(fileUri) {
+  if (EDe.has(fileUri))
+    (T(`LSP Diagnostics: Clearing delivered diagnostics for ${fileUri}`), EDe.delete(fileUri));
 }
 function d2n(e) {
   let t = 0;

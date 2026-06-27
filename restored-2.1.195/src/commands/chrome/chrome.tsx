@@ -16,9 +16,15 @@
       osPlatform: H.string().optional(),
     }),
   )));
-function ClaudeInChromeMenu(e) {
+function ClaudeInChromeMenu(t0) {
   let t = xXl.c(47),
-    { onDone: n, isExtensionInstalled: r, configEnabled: o, isClaudeAISubscriber: s, isWSL: i } = e,
+    {
+      onDone: n,
+      isExtensionInstalled: r,
+      configEnabled: o,
+      isClaudeAISubscriber: s,
+      isWSL: i,
+    } = t0,
     a = Ht(T8f),
     [l, c] = nHt.useState(0),
     [u, d] = nHt.useState(o ?? false),

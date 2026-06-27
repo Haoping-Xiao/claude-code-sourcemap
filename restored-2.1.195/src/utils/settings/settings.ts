@@ -226,19 +226,19 @@ ${r.join(`
       fatal: t,
     }));
 }
-function updateSettingsForSource(e, t) {
-  if (e === "policySettings" || e === "flagSettings")
+function updateSettingsForSource(source, settings) {
+  if (source === "policySettings" || source === "flagSettings")
     return {
       error: null,
     };
-  let n = getSettingsFilePathForSource(e);
+  let n = getSettingsFilePathForSource(source);
   if (!n)
     return {
       error: null,
     };
   try {
     qt().mkdirSync(jae.dirname(n));
-    let r = bLr(e, cj());
+    let r = bLr(source, cj());
     if (!r) {
       let i = null;
       try {
@@ -261,7 +261,7 @@ function updateSettingsForSource(e, t) {
           ((r = a), T(`Using raw settings from ${n} due to validation failure`));
       }
     }
-    let o = ZV(r || {}, t, (i, a, l, c) => {
+    let o = ZV(r || {}, settings, (i, a, l, c) => {
       if (a === void 0 && c && typeof l === "string") {
         delete c[l];
         return;
@@ -279,12 +279,12 @@ function updateSettingsForSource(e, t) {
 `,
         {
           encoding: "utf-8",
-          allowSymlink: e === "userSettings" || s,
-          checkParentDir: (e === "projectSettings" || e === "localSettings") && !s,
+          allowSymlink: source === "userSettings" || s,
+          checkParentDir: (source === "projectSettings" || source === "localSettings") && !s,
         },
       ),
       n_(),
-      e === "localSettings")
+      source === "localSettings")
     )
       ZTs(kG("localSettings"), yr()).then((i) => {
         if (!i.written) return;
@@ -309,7 +309,7 @@ function updateSettingsForSource(e, t) {
     ke(r);
   }
   try {
-    Fet.emit(e);
+    Fet.emit(source);
   } catch (r) {
     for (let o of r instanceof AggregateError ? r.errors : [r]) ke(o);
   }
@@ -317,8 +317,8 @@ function updateSettingsForSource(e, t) {
     error: null,
   };
 }
-function getManagedSettingsKeysForLogging(e) {
-  let t = _M().strip().parse(e),
+function getManagedSettingsKeysForLogging(settings) {
+  let t = _M().strip().parse(settings),
     n = ["permissions", "sandbox", "hooks"],
     r = [],
     o = {

@@ -6,30 +6,31 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HDc] deps: ft, Ed, GY, atr
 Ffr = R(rt(), 1);
-function useRateLimitWarningNotification(e) {
+function useRateLimitWarningNotification(model) {
   let t = TDc.c(30),
     { addNotification: n } = Li(),
     r = Wpe(),
     o = Ht(ECm),
     s;
-  if (t[0] !== r || t[1] !== e) ((s = xio(r, e)), (t[0] = r), (t[1] = e), (t[2] = s));
+  if (t[0] !== r || t[1] !== model) ((s = xio(r, model)), (t[0] = r), (t[1] = model), (t[2] = s));
   else s = t[2];
   let i = s,
     a;
-  if (t[3] !== r || t[4] !== o || t[5] !== e)
-    ((a = Iaa(r, e, o)), (t[3] = r), (t[4] = o), (t[5] = e), (t[6] = a));
+  if (t[3] !== r || t[4] !== o || t[5] !== model)
+    ((a = Iaa(r, model, o)), (t[3] = r), (t[4] = o), (t[5] = model), (t[6] = a));
   else a = t[6];
   let l = a,
     c;
-  if (t[7] !== r.rateLimitType || t[8] !== e)
-    ((c = r.rateLimitType === "overage" ? Caa(e) : null),
+  if (t[7] !== r.rateLimitType || t[8] !== model)
+    ((c = r.rateLimitType === "overage" ? Caa(model) : null),
       (t[7] = r.rateLimitType),
-      (t[8] = e),
+      (t[8] = model),
       (t[9] = c));
   else c = t[9];
   let u = c,
     d;
-  if (t[10] !== r || t[11] !== e) ((d = kio(r, e)), (t[10] = r), (t[11] = e), (t[12] = d));
+  if (t[10] !== r || t[11] !== model)
+    ((d = kio(r, model)), (t[10] = r), (t[11] = model), (t[12] = d));
   else d = t[12];
   let p = d,
     f = tve.useRef(null),

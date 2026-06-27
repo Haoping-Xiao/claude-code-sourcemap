@@ -4,14 +4,14 @@
 // class=modified  jaccard=0.227  score=0.4303  fileCov=0.3245
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function buildPrompt(e) {
+function buildPrompt(instruction) {
   return `# Batch: Parallel Work Orchestration
 
 You are orchestrating a large, parallelizable change across this codebase.
 
 ## User Instruction
 
-${e}
+${instruction}
 
 ## Phase 1: Research and Plan (Plan Mode)
 

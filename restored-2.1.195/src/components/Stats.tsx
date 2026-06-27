@@ -89,9 +89,9 @@ function zOl(e) {
   else d = t[7];
   return d;
 }
-function StatsContent(e) {
+function StatsContent(t0) {
   let t = mEt.c(50),
-    { allTimePromise: n, activeTimePromise: r, onClose: o } = e,
+    { allTimePromise: n, activeTimePromise: r, onClose: o } = t0,
     s = JF.use(n),
     i = JF.use(r),
     [a, l] = JF.useState("all"),
@@ -734,18 +734,18 @@ function OverviewTab({
     ],
   });
 }
-function generateFunFactoid(e, t) {
+function generateFunFactoid(stats, totalTokens) {
   let n = [];
-  if (t > 0) {
-    let o = gPf.filter((s) => t >= s.tokens);
+  if (totalTokens > 0) {
+    let o = gPf.filter((s) => totalTokens >= s.tokens);
     for (let s of o) {
-      let i = t / s.tokens;
+      let i = totalTokens / s.tokens;
       if (i >= 2) n.push(`You've used ~${Math.floor(i)}x more tokens than ${s.name}`);
       else n.push(`You've used the same number of tokens as ${s.name}`);
     }
   }
-  if (e.longestSession) {
-    let o = e.longestSession.duration / 60000;
+  if (stats.longestSession) {
+    let o = stats.longestSession.duration / 60000;
     for (let s of hPf) {
       let i = o / s.minutes;
       if (i >= 2) n.push(`Your longest session is ~${Math.floor(i)}x longer than ${s.name}`);
@@ -755,9 +755,9 @@ function generateFunFactoid(e, t) {
   let r = Math.floor(Math.random() * n.length);
   return n[r];
 }
-function ModelsTab(e) {
+function ModelsTab(t0) {
   let t = mEt.c(61),
-    { stats: n, dateRange: r, isLoading: o } = e,
+    { stats: n, dateRange: r, isLoading: o } = t0,
     { headerFocused: s, focusHeader: i } = tx(),
     [a, l] = JF.useState(0),
     { columns: c } = br(),
@@ -1220,16 +1220,16 @@ function HPf(e, t, n) {
   }
   return a;
 }
-async function handleScreenshot(e, t, n, r, o) {
+async function handleScreenshot(stats, activeTab, setStatus, r, o) {
   r("copying\u2026");
-  let s = renderStatsToAnsi(e, t, n),
+  let s = renderStatsToAnsi(stats, activeTab, setStatus),
     i = await OOl(s);
   (r(i.success ? "copied!" : "copy failed"), o.setTimeout(() => r(null), 2000));
 }
-function renderStatsToAnsi(e, t, n) {
+function renderStatsToAnsi(stats, activeTab, n) {
   let r = [];
-  if (n === "Overview") r.push(...renderOverviewToAnsi(e, t));
-  else r.push(...renderModelsToAnsi(e));
+  if (n === "Overview") r.push(...renderOverviewToAnsi(stats, activeTab));
+  else r.push(...renderModelsToAnsi(stats));
   while (r.length > 0 && Ja(r.at(-1)).trim() === "") r.pop();
   if (r.length > 0) {
     let o = r.at(-1),
@@ -1242,7 +1242,7 @@ function renderStatsToAnsi(e, t, n) {
   return r.join(`
 `);
 }
-function renderOverviewToAnsi(e, t) {
+function renderOverviewToAnsi(stats, t) {
   let n = [],
     r = O7(mW(wc("theme", "dark").value)),
     o = (y) => V_e(y, r.claude),
@@ -1256,14 +1256,14 @@ function renderOverviewToAnsi(e, t) {
         x = (_ + ":").padEnd(18);
       return A + o(b) + " ".repeat(C) + x + o(S);
     };
-  if (e.dailyActivity.length > 0)
+  if (stats.dailyActivity.length > 0)
     (n.push(
-      Z1o(e.dailyActivity, {
+      Z1o(stats.dailyActivity, {
         terminalWidth: 56,
       }),
     ),
       n.push(""));
-  let c = Object.entries(e.modelUsage).sort(
+  let c = Object.entries(stats.modelUsage).sort(
       ([, y], [, b]) => b.inputTokens + b.outputTokens - (y.inputTokens + y.outputTokens),
     ),
     u = c[0],
@@ -1273,31 +1273,33 @@ function renderOverviewToAnsi(e, t) {
     n.push(
       l(
         "Sessions",
-        ou(e.totalSessions),
+        ou(stats.totalSessions),
         "Longest session",
-        e.longestSession ? Yi(e.longestSession.duration) : "N/A",
+        stats.longestSession ? Yi(stats.longestSession.duration) : "N/A",
       ),
     ));
-  let p = `${e.streaks.currentStreak} ${e.streaks.currentStreak === 1 ? "day" : "days"}`,
-    f = `${e.streaks.longestStreak} ${e.streaks.longestStreak === 1 ? "day" : "days"}`;
+  let p = `${stats.streaks.currentStreak} ${stats.streaks.currentStreak === 1 ? "day" : "days"}`,
+    f = `${stats.streaks.longestStreak} ${stats.streaks.longestStreak === 1 ? "day" : "days"}`;
   n.push(l("Current streak", p, "Longest streak", f));
-  let m = `${e.activeDays}/${e.totalDays}`,
+  let m = `${stats.activeDays}/${stats.totalDays}`,
     g =
-      e.peakActivityHour !== null ? `${e.peakActivityHour}:00-${e.peakActivityHour + 1}:00` : "N/A";
+      stats.peakActivityHour !== null
+        ? `${stats.peakActivityHour}:00-${stats.peakActivityHour + 1}:00`
+        : "N/A";
   (n.push(l("Active days", m, "Peak hour", g)), n.push(""));
-  let h = generateFunFactoid(e, d);
-  return (n.push(o(h)), n.push(wt.gray(`Stats from the last ${e.totalDays} days`)), n);
+  let h = generateFunFactoid(stats, d);
+  return (n.push(o(h)), n.push(wt.gray(`Stats from the last ${stats.totalDays} days`)), n);
 }
-function renderModelsToAnsi(e) {
+function renderModelsToAnsi(stats) {
   let t = [],
-    n = Object.entries(e.modelUsage).sort(
+    n = Object.entries(stats.modelUsage).sort(
       ([, a], [, l]) => l.inputTokens + l.outputTokens - (a.inputTokens + a.outputTokens),
     );
   if (n.length === 0) return (t.push(wt.gray("No model usage data available")), t);
   let r = n[0],
     o = n.reduce((a, [, l]) => a + l.inputTokens + l.outputTokens, 0),
     s = XOl(
-      e.dailyModelTokens,
+      stats.dailyModelTokens,
       n.map(([a]) => a),
       80,
     );

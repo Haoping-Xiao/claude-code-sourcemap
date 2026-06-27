@@ -11,15 +11,15 @@ function eua() {
   return Qca;
 }
 var Qca = null;
-function logOperation(e, t) {
+function logOperation(operation, content) {
   let n = Rt(),
     r = {
       type: "queue-operation",
-      operation: e,
+      operation: operation,
       timestamp: new Date().toISOString(),
       sessionId: n,
-      ...(t !== void 0 && {
-        content: t,
+      ...(content !== void 0 && {
+        content: content,
       }),
     };
   Wao(r);
@@ -53,14 +53,14 @@ function tua(e) {
 `,
       );
 }
-function extractImagesFromValue(e, t) {
-  if (typeof e === "string") return [];
+function extractImagesFromValue(value, startId) {
+  if (typeof value === "string") return [];
   let n = [],
     r = 0;
-  for (let o of e)
+  for (let o of value)
     if (o.type === "image" && o.source.type === "base64")
       (n.push({
-        id: t + r,
+        id: startId + r,
         type: "image",
         content: o.source.data,
         mediaType: o.source.media_type,

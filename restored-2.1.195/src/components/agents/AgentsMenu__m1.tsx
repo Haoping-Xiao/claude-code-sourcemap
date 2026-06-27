@@ -25,9 +25,9 @@ async function Mtc() {
     isRunning: n,
   }));
 }
-function AgentsMenu(e) {
+function AgentsMenu(t0) {
   let t = bGo.c(41),
-    { server: n, onBack: r, onDone: o, refresh: s } = e,
+    { server: n, onBack: r, onDone: o, refresh: s } = t0,
     [i, a] = xYe.useState(false),
     [l, c] = xYe.useState(false),
     u;

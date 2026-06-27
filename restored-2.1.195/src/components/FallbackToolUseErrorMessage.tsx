@@ -49,9 +49,9 @@ var Jmo = 10;
 function sjn(e) {
   return e.replace(/<sandbox_violations>[\s\S]*?<\/sandbox_violations>/g, "");
 }
-function FallbackToolUseErrorMessage(e) {
+function FallbackToolUseErrorMessage(t0) {
   let t = yMa.c(24),
-    { result: n, verbose: r } = e,
+    { result: n, verbose: r } = t0,
     o,
     s,
     i,

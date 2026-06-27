@@ -27,7 +27,16 @@ function Pum(e, t) {
     displayName: xu(r),
   };
 }
-function useReplBridge(e, t, n, r, o, s, i, a) {
+function useReplBridge(
+  messages,
+  setMessages,
+  abortControllerRef,
+  commands,
+  mainLoopModel,
+  s,
+  i,
+  a,
+) {
   let l = ks(),
     c = bE.useRef(null),
     u = bE.useRef(void 0),
@@ -42,8 +51,8 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
     _ = bE.useRef(void 0),
     S = bE.useRef(void 0),
     A = Ho(),
-    v = bE.useRef(r);
-  v.current = r;
+    v = bE.useRef(commands);
+  v.current = commands;
   let C = bE.useRef(a);
   C.current = a;
   let x = (Z) => {
@@ -61,10 +70,10 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
         true
       );
     },
-    I = bE.useRef(o);
-  I.current = o;
-  let k = bE.useRef(e);
-  k.current = e;
+    I = bE.useRef(mainLoopModel);
+  I.current = mainLoopModel;
+  let k = bE.useRef(messages);
+  k.current = messages;
   let D = Dc(),
     P = $T(),
     { addNotification: O, removeNotification: L } = Li(),
@@ -75,7 +84,7 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
     q = Ht((Z) => Z.toolPermissionContext.mode),
     W = Ht((Z) => Z.fastMode),
     [V, Y] = bE.useState(() => process.env.CLAUDE_BG_SOURCE === "spare");
-  if (V && e.some(ESe)) Y(false);
+  if (V && messages.some(ESe)) Y(false);
   bE.useEffect(() => {
     if (vl() || V) return;
     G("tengu_bridge_repl_evaluated", {
@@ -117,7 +126,7 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
     bE.useEffect(() => {
       if (!N || B) return;
       z();
-    }, [N, B, o, q, W, z]),
+    }, [N, B, mainLoopModel, q, W, z]),
     bE.useEffect(() => {
       if (!M || vl() || V) return;
       let Z = B;
@@ -202,7 +211,7 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
             priority: "immediate",
           });
           let Ce = `Remote Control received a ${we} without a valid device signature (attestation: ${ye}) and will not execute it.`;
-          t((Ie) => {
+          setMessages((Ie) => {
             let Ve = Ie.at(-1);
             if (Ve?.type === "system" && Ve.subtype === "informational" && Ve.content === Ce)
               return Ie;
@@ -210,7 +219,7 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
           });
         });
       let re = false,
-        ee = e.length,
+        ee = messages.length,
         ce = Rt(),
         ae = em();
       if (_.current !== void 0 && _.current !== ce)
@@ -222,9 +231,9 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
           (_.current = void 0),
           S.current?.(),
           (S.current = void 0));
-      let de = b.current !== void 0 && e[0]?.uuid !== b.current;
+      let de = b.current !== void 0 && messages[0]?.uuid !== b.current;
       if (de) mlr();
-      let Ee = !de && y.current !== void 0 ? Math.min(y.current, e.length) : void 0,
+      let Ee = !de && y.current !== void 0 ? Math.min(y.current, messages.length) : void 0,
         me = false,
         pe = false;
       function ge() {
@@ -430,7 +439,9 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
                       }
                     },
                 onInterrupt() {
-                  (GOn(), T("[bridge:repl] Remote interrupt \u2192 onCancel()"), n.current());
+                  (GOn(),
+                    T("[bridge:repl] Remote interrupt \u2192 onCancel()"),
+                    abortControllerRef.current());
                 },
                 onSetModel(we) {
                   let Ce = we == null || we.trim().toLowerCase() === "default",
@@ -671,7 +682,8 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
                   );
                 },
                 onStateChange: He,
-                initialMessages: Ee !== void 0 ? e.slice(0, Ee) : e.length > 0 ? e : void 0,
+                initialMessages:
+                  Ee !== void 0 ? messages.slice(0, Ee) : messages.length > 0 ? messages : void 0,
                 getMessages: () => k.current,
                 initialName: $,
                 enableSessionPersistence: Z || cMe() || kVo(),
@@ -746,7 +758,7 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
                 })),
                 J)
               )
-                t((Ie) =>
+                setMessages((Ie) =>
                   Ie.some(
                     (Ve) => Ve.type === "system" && Ve.subtype === "bridge_status" && Ve.url === Ce,
                   )
@@ -847,19 +859,19 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
             (d.current = 0));
         }
       );
-    }, [M, B, V, A, t, O, L, z, l]),
+    }, [M, B, V, A, setMessages, O, L, z, l]),
     bE.useEffect(() => {
       if (!N) return;
       let Z = c.current;
       if (!Z) return;
-      if (d.current > e.length)
+      if (d.current > messages.length)
         T(
-          `[bridge:repl] Compaction detected: lastWrittenIndex=${d.current} > messages.length=${e.length}, clamping`,
+          `[bridge:repl] Compaction detected: lastWrittenIndex=${d.current} > messages.length=${messages.length}, clamping`,
         );
-      let J = Math.min(d.current, e.length),
+      let J = Math.min(d.current, messages.length),
         ne = [];
-      for (let oe = J; oe < e.length; oe++) {
-        let re = e[oe];
+      for (let oe = J; oe < messages.length; oe++) {
+        let re = messages[oe];
         if (
           re &&
           (re.type === "user" ||
@@ -868,8 +880,8 @@ function useReplBridge(e, t, n, r, o, s, i, a) {
         )
           ne.push(re);
       }
-      if (((d.current = e.length), ne.length > 0)) Z.writeMessages(ne);
-    }, [e, N]),
+      if (((d.current = messages.length), ne.length > 0)) Z.writeMessages(ne);
+    }, [messages, N]),
     bE.useEffect(() => {
       if (!N) return;
       let Z = () => {

@@ -15,12 +15,12 @@ function headlessProfilerStartTurn() {
   if ((cSt++, ATf(), oG().mark(`${MARK_PREFIX}turn_start`), SQn))
     T(`[headlessProfiler] Started turn ${cSt}`);
 }
-function headlessProfilerCheckpoint(e) {
+function headlessProfilerCheckpoint(name) {
   if (!Ir()) return;
   if (!SPo) return;
   let t = oG();
-  if ((t.mark(`${MARK_PREFIX}${e}`), SQn))
-    T(`[headlessProfiler] Checkpoint: ${e} at ${t.now().toFixed(1)}ms`);
+  if ((t.mark(`${MARK_PREFIX}${name}`), SQn))
+    T(`[headlessProfiler] Checkpoint: ${name} at ${t.now().toFixed(1)}ms`);
 }
 function logHeadlessProfilerTurn() {
   if (!Ir()) return;

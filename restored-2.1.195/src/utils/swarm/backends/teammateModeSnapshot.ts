@@ -11,8 +11,10 @@ function setCliTeammateModeOverride(e) {
 function getCliTeammateModeOverride() {
   return YGt;
 }
-function clearCliTeammateModeOverride(e) {
-  ((YGt = null), ($De = e), T(`[TeammateModeSnapshot] CLI override cleared, new mode: ${e}`));
+function clearCliTeammateModeOverride(newMode) {
+  ((YGt = null),
+    ($De = newMode),
+    T(`[TeammateModeSnapshot] CLI override cleared, new mode: ${newMode}`));
 }
 function hasTeammateModeSnapshot() {
   return $De !== null;

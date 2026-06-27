@@ -48,9 +48,9 @@ function tKo(e) {
     n = t?.type === "safetyCheck" && !t.classifierApprovable;
   return e.showAlwaysAllow && !n && !e.isAskCappedByOrg;
 }
-function FallbackPermissionRequest(e) {
+function FallbackPermissionRequest(t0) {
   let t = CHc.c(55),
-    { payload: n, answer: r } = e,
+    { payload: n, answer: r } = t0,
     o;
   if (t[0] !== n) ((o = tKo(n)), (t[0] = n), (t[1] = o));
   else o = t[1];

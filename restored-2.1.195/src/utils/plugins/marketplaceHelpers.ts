@@ -8,32 +8,32 @@
 ((nse = require("fs/promises")),
   (IYt = require("path")),
   (UIf = (Vko(), ro($ml)).clearPluginWorkflowCache));
-function formatFailureDetails(e, t) {
-  let r = e
+function formatFailureDetails(failures, includeReasons) {
+  let r = failures
       .slice(0, 2)
       .map((i) => {
         let a = i.reason || i.error || "unknown error";
-        return t ? `${i.name} (${a})` : i.name;
+        return includeReasons ? `${i.name} (${a})` : i.name;
       })
-      .join(t ? "; " : ", "),
-    o = e.length - 2,
+      .join(includeReasons ? "; " : ", "),
+    o = failures.length - 2,
     s = o > 0 ? ` and ${o} more` : "";
   return `${r}${s}`;
 }
-function getMarketplaceSourceDisplay(e) {
-  switch (e.source) {
+function getMarketplaceSourceDisplay(source) {
+  switch (source.source) {
     case "github":
-      return e.repo;
+      return source.repo;
     case "url":
-      return e.url;
+      return source.url;
     case "git":
-      return e.url;
+      return source.url;
     case "directory":
-      return e.path;
+      return source.path;
     case "file":
-      return e.path;
+      return source.path;
     case "settings":
-      return `settings:${e.name}`;
+      return `settings:${source.name}`;
     default:
       return "Unknown source";
   }
@@ -70,19 +70,19 @@ async function rse(e) {
     failures: n,
   };
 }
-function formatMarketplaceLoadingErrors(e, t) {
-  if (e.length === 0) return null;
-  if (t > 0)
+function formatMarketplaceLoadingErrors(failures, successCount) {
+  if (failures.length === 0) return null;
+  if (successCount > 0)
     return {
       type: "warning",
       message:
-        e.length === 1
-          ? `Warning: Failed to load marketplace '${e[0].name}': ${e[0].error}`
-          : `Warning: Failed to load ${e.length} marketplaces: ${zIf(e)}`,
+        failures.length === 1
+          ? `Warning: Failed to load marketplace '${failures[0].name}': ${failures[0].error}`
+          : `Warning: Failed to load ${failures.length} marketplaces: ${zIf(failures)}`,
     };
   return {
     type: "error",
-    message: `Failed to load all marketplaces. Errors: ${KIf(e)}`,
+    message: `Failed to load all marketplaces. Errors: ${KIf(failures)}`,
   };
 }
 function zIf(e) {
@@ -91,28 +91,28 @@ function zIf(e) {
 function KIf(e) {
   return e.map((t) => `${t.name}: ${t.error}`).join("; ");
 }
-function formatSourceForDisplay(e) {
-  switch (e.source) {
+function formatSourceForDisplay(source) {
+  switch (source.source) {
     case "github":
-      return `github:${e.repo}${e.ref ? `@${e.ref}` : ""}`;
+      return `github:${source.repo}${source.ref ? `@${source.ref}` : ""}`;
     case "url":
-      return e.url;
+      return source.url;
     case "git":
-      return `git:${e.url}${e.ref ? `@${e.ref}` : ""}`;
+      return `git:${source.url}${source.ref ? `@${source.ref}` : ""}`;
     case "npm":
-      return `npm:${e.package}`;
+      return `npm:${source.package}`;
     case "file":
-      return `file:${e.path}`;
+      return `file:${source.path}`;
     case "directory":
-      return `dir:${e.path}`;
+      return `dir:${source.path}`;
     case "hostPattern":
-      return `hostPattern:${e.hostPattern}`;
+      return `hostPattern:${source.hostPattern}`;
     case "pathPattern":
-      return `pathPattern:${e.pathPattern}`;
+      return `pathPattern:${source.pathPattern}`;
     case "skills-dir":
       return "skills-dir";
     case "settings":
-      return `settings:${e.name} (${e.plugins.length} ${bn(e.plugins.length, "plugin")})`;
+      return `settings:${source.name} (${source.plugins.length} ${bn(source.plugins.length, "plugin")})`;
     default:
       return "unknown source";
   }

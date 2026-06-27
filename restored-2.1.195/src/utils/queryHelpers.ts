@@ -4,24 +4,24 @@
 // class=modified  jaccard=0.2908  score=0.4517  fileCov=0.4495
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function isResultSuccessful(e, t = null) {
-  if (!e) return false;
-  if (e.type === "assistant") {
-    let n = EU(e.message.content);
+function isResultSuccessful(message, t = null) {
+  if (!message) return false;
+  if (message.type === "assistant") {
+    let n = EU(message.message.content);
     return n?.type === "text" || n?.type === "thinking" || n?.type === "redacted_thinking";
   }
-  if (e.type === "user") {
-    let n = e.message.content;
+  if (message.type === "user") {
+    let n = message.message.content;
     if (Array.isArray(n) && n.length > 0 && n.every((r) => "type" in r && r.type === "tool_result"))
       return true;
   }
   return t === "end_turn";
 }
-function* normalizeMessage(e, t) {
-  switch (e.type) {
+function* normalizeMessage(message, t) {
+  switch (message.type) {
     case "assistant": {
-      let n = e.supersedesUuids;
-      for (let r of mS([e])) {
+      let n = message.supersedesUuids;
+      for (let r of mS([message])) {
         if (!Koe(r)) continue;
         let o = n;
         n = void 0;
@@ -48,10 +48,10 @@ function* normalizeMessage(e, t) {
       return;
     }
     case "progress":
-      if (e.data.type === "agent_progress" || e.data.type === "skill_progress") {
-        let n = e.data.agentType,
-          r = e.data.description;
-        for (let o of mS([e.data.message]))
+      if (message.data.type === "agent_progress" || message.data.type === "skill_progress") {
+        let n = message.data.agentType,
+          r = message.data.description;
+        for (let o of mS([message.data.message]))
           switch (o.type) {
             case "assistant":
               if (!Koe(o)) break;
@@ -60,7 +60,7 @@ function* normalizeMessage(e, t) {
                 yield {
                   type: "assistant",
                   message: o.message,
-                  parent_tool_use_id: e.parentToolUseID,
+                  parent_tool_use_id: message.parentToolUseID,
                   session_id: Rt(),
                   uuid: o.uuid,
                   error: o.error,
@@ -83,7 +83,7 @@ function* normalizeMessage(e, t) {
               yield {
                 type: "user",
                 message: o.message,
-                parent_tool_use_id: e.parentToolUseID,
+                parent_tool_use_id: message.parentToolUseID,
                 session_id: Rt(),
                 uuid: o.uuid,
                 timestamp: o.timestamp,
@@ -101,25 +101,28 @@ function* normalizeMessage(e, t) {
               };
               break;
           }
-      } else if (e.data.type === "repl_tool_call")
+      } else if (message.data.type === "repl_tool_call")
         yield {
           type: "tool_progress",
-          tool_use_id: e.toolUseID,
+          tool_use_id: message.toolUseID,
           tool_name: "REPL",
-          parent_tool_use_id: e.parentToolUseID,
+          parent_tool_use_id: message.parentToolUseID,
           elapsed_time_seconds: 0,
           repl_call: {
-            inner_tool_name: e.data.toolName,
-            inner_tool_input: e.data.toolInput,
-            inner_tool_use_id: e.data.toolUseId,
-            phase: e.data.phase,
+            inner_tool_name: message.data.toolName,
+            inner_tool_input: message.data.toolInput,
+            inner_tool_use_id: message.data.toolUseId,
+            phase: message.data.phase,
           },
           session_id: Rt(),
-          uuid: e.uuid,
+          uuid: message.uuid,
         };
-      else if (e.data.type === "bash_progress" || e.data.type === "powershell_progress") {
+      else if (
+        message.data.type === "bash_progress" ||
+        message.data.type === "powershell_progress"
+      ) {
         if (!ut(process.env.CLAUDE_CODE_REMOTE) && !process.env.CLAUDE_CODE_CONTAINER_ID) break;
-        let n = e.parentToolUseID,
+        let n = message.parentToolUseID,
           r = Date.now(),
           o = rKt.get(n) || 0;
         if (r - o >= E_f) {
@@ -130,19 +133,19 @@ function* normalizeMessage(e, t) {
           (rKt.set(n, r),
             yield {
               type: "tool_progress",
-              tool_use_id: e.toolUseID,
-              tool_name: e.data.type === "bash_progress" ? "Bash" : "PowerShell",
-              parent_tool_use_id: e.parentToolUseID,
-              elapsed_time_seconds: e.data.elapsedTimeSeconds,
-              task_id: e.data.taskId,
+              tool_use_id: message.toolUseID,
+              tool_name: message.data.type === "bash_progress" ? "Bash" : "PowerShell",
+              parent_tool_use_id: message.parentToolUseID,
+              elapsed_time_seconds: message.data.elapsedTimeSeconds,
+              task_id: message.data.taskId,
               session_id: Rt(),
-              uuid: e.uuid,
+              uuid: message.uuid,
             });
         }
       }
       break;
     case "user":
-      for (let n of mS([e]))
+      for (let n of mS([message]))
         yield {
           type: "user",
           message: n.message,
@@ -202,9 +205,14 @@ async function* fHl(e, t, n, r) {
     }
   }
 }
-async function* handleOrphanedPermission(e, t, n, r) {
+async function* handleOrphanedPermission(
+  orphanedPermission,
+  tools,
+  mutableMessages,
+  processUserInputContext,
+) {
   let o = !Z3(),
-    { permissionResult: s, assistantMessage: i } = e,
+    { permissionResult: s, assistantMessage: i } = orphanedPermission,
     { toolUseID: a } = s;
   if (!a) {
     T(
@@ -234,9 +242,9 @@ async function* handleOrphanedPermission(e, t, n, r) {
     return;
   }
   let u = c.name;
-  if (!_l(t, u, r.options.toolAliases)) {
+  if (!_l(tools, u, processUserInputContext.options.toolAliases)) {
     T(
-      `handleOrphanedPermission: dropping orphaned permission for toolUseID=${a} \u2014 tool "${u}" not found in active tools (${t.length} available)`,
+      `handleOrphanedPermission: dropping orphaned permission for toolUseID=${a} \u2014 tool "${u}" not found in active tools (${tools.length} available)`,
       {
         level: "warn",
       },
@@ -257,7 +265,7 @@ async function* handleOrphanedPermission(e, t, n, r) {
     let b = s.updatedPermissions;
     if (Array.isArray(b))
       try {
-        (r.setToolPermissionContext((_) => T4(_, b)), Y8(b));
+        (processUserInputContext.setToolPermissionContext((_) => T4(_, b)), Y8(b));
       } catch (_) {
         T(`Orphaned permission for ${u}: malformed updatedPermissions ignored: ${_}`, {
           level: "warn",
@@ -273,16 +281,16 @@ async function* handleOrphanedPermission(e, t, n, r) {
     },
   });
   if (
-    !n.some(
+    !mutableMessages.some(
       (y) =>
         y.type === "assistant" &&
         Array.isArray(y.message.content) &&
         y.message.content.some((b) => b.type === "tool_use" && "id" in b && b.id === a),
     )
   ) {
-    if ((n.push(i), o)) await nz(n);
+    if ((mutableMessages.push(i), o)) await nz(mutableMessages);
   }
-  let g = $bt(i.message.content, t);
+  let g = $bt(i.message.content, tools);
   yield {
     ...i,
     session_id: Rt(),
@@ -291,10 +299,10 @@ async function* handleOrphanedPermission(e, t, n, r) {
       tool_use_meta: g,
     }),
   };
-  for await (let y of wLo([c], [i], f, r)) {
+  for await (let y of wLo([c], [i], f, processUserInputContext)) {
     if (tz(y)) continue;
     if (y.message) {
-      if ((n.push(y.message), o)) await nz(n);
+      if ((mutableMessages.push(y.message), o)) await nz(mutableMessages);
       yield {
         ...y.message,
         session_id: Rt(),
@@ -303,12 +311,12 @@ async function* handleOrphanedPermission(e, t, n, r) {
     }
   }
 }
-function extractReadFilesFromMessages(e, t, n = b_f) {
+function extractReadFilesFromMessages(messages, cwd, n = b_f) {
   let r = QU(n),
     o = new Map(),
     s = new Map(),
     i = new Map();
-  for (let a of e)
+  for (let a of messages)
     if (a.type === "assistant" && Array.isArray(a.message.content))
       for (let l of a.message.content) {
         if (l.type !== "tool_use") continue;
@@ -316,23 +324,23 @@ function extractReadFilesFromMessages(e, t, n = b_f) {
           if (l.name === Ds) {
             let c = l.input;
             if (typeof c?.file_path === "string" && c.offset === void 0 && c.limit === void 0)
-              o.set(l.id, ds(c.file_path, t));
+              o.set(l.id, ds(c.file_path, cwd));
           } else if (l.name === Wc) {
             let c = l.input;
             if (typeof c?.file_path === "string" && typeof c.content === "string")
               s.set(l.id, {
-                filePath: ds(c.file_path, t),
+                filePath: ds(c.file_path, cwd),
                 content: c.content,
               });
           } else if (l.name === ka) {
             let c = l.input;
-            if (typeof c?.file_path === "string") i.set(l.id, ds(c.file_path, t));
+            if (typeof c?.file_path === "string") i.set(l.id, ds(c.file_path, cwd));
           }
         } catch (c) {
           T(`extractReadFilesFromMessages: skipping malformed ${l.name} tool_use: ${c}`);
         }
       }
-  for (let a of e)
+  for (let a of messages)
     if (a.type === "user" && Array.isArray(a.message.content)) {
       for (let l of a.message.content)
         if (l.type === "tool_result" && l.tool_use_id) {

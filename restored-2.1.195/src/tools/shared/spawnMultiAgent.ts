@@ -36,13 +36,13 @@ function D0o(e) {
 async function Iff(e) {
   return (await $n(M6, ["has-session", "-t", e])).code === 0;
 }
-async function ensureSession(e) {
-  if (!(await Iff(e))) {
-    let n = await $n(M6, ["new-session", "-d", "-s", e]);
+async function ensureSession(sessionName) {
+  if (!(await Iff(sessionName))) {
+    let n = await $n(M6, ["new-session", "-d", "-s", sessionName]);
     if (n.code !== 0)
       throw (
         Le("subagent_launch", "subagent_teammate_tmux_session_failed"),
-        Error(`Failed to create tmux session '${e}': ${n.stderr || "Unknown error"}`)
+        Error(`Failed to create tmux session '${sessionName}': ${n.stderr || "Unknown error"}`)
       );
   }
 }
@@ -50,9 +50,9 @@ function Phl() {
   if (process.env[sht]) return process.env[sht];
   return dm() ? process.execPath : process.argv[1];
 }
-function buildInheritedCliFlags(e) {
+function buildInheritedCliFlags(options) {
   let t = [],
-    { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = e || {};
+    { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = options || {};
   if (n);
   else if (r === "bypassPermissions") t.push("--dangerously-skip-permissions");
   else if (r === "acceptEdits") t.push("--permission-mode acceptEdits");
@@ -160,10 +160,10 @@ function kff(e, t) {
   while (r.has(`${n}-${o}`.toLowerCase())) o++;
   return `${n}-${o}`;
 }
-async function handleSpawnSplitPane(e, t) {
-  let { setAppState: n, getAppState: r } = t,
-    { name: o, prompt: s, agent_type: i, cwd: a, plan_mode_required: l } = e,
-    c = P0o(e.model, r().mainLoopModel);
+async function handleSpawnSplitPane(input, context) {
+  let { setAppState: n, getAppState: r } = context,
+    { name: o, prompt: s, agent_type: i, cwd: a, plan_mode_required: l } = input,
+    c = P0o(input.model, r().mainLoopModel);
   if (!o || !s)
     throw (
       Le("subagent_launch", "subagent_teammate_missing_params"),
@@ -189,12 +189,12 @@ async function handleSpawnSplitPane(e, t) {
       planModeRequired: l,
       cwd: p,
     },
-    t.teammateColors,
+    context.teammateColors,
     async ({ sanitizedName: f, teammateId: m, teammateColor: g }, h, y) => {
       let b = await A$e();
-      if (b.needsIt2Setup && t.requestDialog) {
+      if (b.needsIt2Setup && context.requestDialog) {
         let L = await YPe(),
-          M = await t.requestDialog(x8n, {
+          M = await context.requestDialog(x8n, {
             tmuxAvailable: L,
           });
         if (M === "cancelled")
@@ -273,7 +273,7 @@ async function handleSpawnSplitPane(e, t) {
             },
           },
         })),
-        registerOutOfProcessTeammateTask(t.taskRegistry, {
+        registerOutOfProcessTeammateTask(context.taskRegistry, {
           teammateId: m,
           sanitizedName: f,
           teamName: d,
@@ -283,7 +283,7 @@ async function handleSpawnSplitPane(e, t) {
           paneId: S,
           insideTmux: _,
           backendType: b.backend.type,
-          toolUseId: t.toolUseId,
+          toolUseId: context.toolUseId,
           cwd: p,
         }),
         {
@@ -306,10 +306,10 @@ async function handleSpawnSplitPane(e, t) {
     },
   );
 }
-async function handleSpawnSeparateWindow(e, t) {
-  let { setAppState: n, getAppState: r } = t,
-    { name: o, prompt: s, agent_type: i, cwd: a, plan_mode_required: l } = e,
-    c = P0o(e.model, r().mainLoopModel);
+async function handleSpawnSeparateWindow(input, context) {
+  let { setAppState: n, getAppState: r } = context,
+    { name: o, prompt: s, agent_type: i, cwd: a, plan_mode_required: l } = input,
+    c = P0o(input.model, r().mainLoopModel);
   if (!o || !s)
     throw (
       Le("subagent_launch", "subagent_teammate_missing_params"),
@@ -335,7 +335,7 @@ async function handleSpawnSeparateWindow(e, t) {
       planModeRequired: l,
       cwd: p,
     },
-    t.teammateColors,
+    context.teammateColors,
     async ({ sanitizedName: f, teammateId: m, teammateColor: g }, h, y) => {
       let b = `teammate-${k8n(f)}`;
       await ensureSession(P6);
@@ -416,7 +416,7 @@ async function handleSpawnSeparateWindow(e, t) {
             },
           },
         })),
-        registerOutOfProcessTeammateTask(t.taskRegistry, {
+        registerOutOfProcessTeammateTask(context.taskRegistry, {
           teammateId: m,
           sanitizedName: f,
           teamName: d,
@@ -426,7 +426,7 @@ async function handleSpawnSeparateWindow(e, t) {
           paneId: S,
           insideTmux: !1,
           backendType: "tmux",
-          toolUseId: t.toolUseId,
+          toolUseId: context.toolUseId,
           cwd: p,
         }),
         {
@@ -450,7 +450,7 @@ async function handleSpawnSeparateWindow(e, t) {
   );
 }
 function registerOutOfProcessTeammateTask(
-  e,
+  setAppState,
   {
     teammateId: t,
     sanitizedName: n,
@@ -491,7 +491,7 @@ function registerOutOfProcessTeammateTask(
       lastReportedTokenCount: 0,
       pendingUserMessages: [],
     };
-  (e.register(g),
+  (setAppState.register(g),
     m.signal.addEventListener(
       "abort",
       () => {
@@ -502,10 +502,10 @@ function registerOutOfProcessTeammateTask(
       },
     ));
 }
-async function handleSpawnInProcess(e, t) {
-  let { setAppState: n, getAppState: r } = t,
-    { name: o, prompt: s, agent_type: i, plan_mode_required: a } = e,
-    l = P0o(e.model, r().mainLoopModel);
+async function handleSpawnInProcess(input, context) {
+  let { setAppState: n, getAppState: r } = context,
+    { name: o, prompt: s, agent_type: i, plan_mode_required: a } = input,
+    l = P0o(input.model, r().mainLoopModel);
   if (!o || !s)
     throw (
       Le("subagent_launch", "subagent_teammate_missing_params"),
@@ -529,7 +529,7 @@ async function handleSpawnInProcess(e, t) {
       planModeRequired: a,
       cwd: $t(),
     },
-    t.teammateColors,
+    context.teammateColors,
     async ({ sanitizedName: d, teammateId: p, teammateColor: f }, m) => {
       await $0o(u, p, {
         tmuxPaneId: "in-process",
@@ -537,7 +537,7 @@ async function handleSpawnInProcess(e, t) {
       });
       let g;
       if (i) {
-        let C = t.options.agentDefinitions.activeAgents.find((x) => x.agentType === i);
+        let C = context.options.agentDefinitions.activeAgents.find((x) => x.agentType === i);
         if (C && F6e(C)) g = C;
         T(`[handleSpawnInProcess] agent_type=${i}, found=${!!g}`);
       }
@@ -550,7 +550,7 @@ async function handleSpawnInProcess(e, t) {
         model: l,
       };
       await S9t(d, u);
-      let y = await $ht(h, t);
+      let y = await $ht(h, context);
       if (!y.ok)
         throw (
           Le("subagent_launch", "subagent_teammate_inprocess_failed"),
@@ -562,22 +562,22 @@ async function handleSpawnInProcess(e, t) {
           identity: y.identity,
           taskId: y.taskId,
           prompt: s,
-          description: e.description,
+          description: input.description,
           model: l,
           agentDefinition: g,
           teammateContext: y.teammateContext,
           toolUseContext: {
-            ...t,
+            ...context,
             messages: [],
           },
           abortController: y.abortController,
-          invokingRequestId: e.invokingRequestId,
+          invokingRequestId: input.invokingRequestId,
         }),
         T(`[handleSpawnInProcess] Started agent execution for ${p}`));
       let b = r().teamContext?.leadAgentId,
         _ = !b,
         S = b ?? pte(Hd, u),
-        A = _ ? t.teammateColors.assign(S) : void 0;
+        A = _ ? context.teammateColors.assign(S) : void 0;
       return (
         n((v) => {
           let C = v.teamContext?.teammates || {},
@@ -637,10 +637,10 @@ async function handleSpawnInProcess(e, t) {
     },
   );
 }
-async function handleSpawn(e, t, n) {
-  if (e.prompt && kF(e.prompt))
+async function handleSpawn(input, context, n) {
+  if (input.prompt && kF(input.prompt))
     throw (Le("subagent_launch", "subagent_teammate_protocol_frame_prompt"), Error(I9t));
-  if (U6e()) return handleSpawnInProcess(e, t);
+  if (U6e()) return handleSpawnInProcess(input, context);
   try {
     await A$e();
   } catch (o) {
@@ -649,11 +649,11 @@ async function handleSpawn(e, t, n) {
       T(`[handleSpawn] No pane backend available, falling back to in-process: ${be(o)}`),
       k0o(),
       Pff(n),
-      handleSpawnInProcess(e, t)
+      handleSpawnInProcess(input, context)
     );
   }
-  if (e.use_splitpane !== !1) return handleSpawnSplitPane(e, t);
-  return handleSpawnSeparateWindow(e, t);
+  if (input.use_splitpane !== !1) return handleSpawnSplitPane(input, context);
+  return handleSpawnSeparateWindow(input, context);
 }
 function Pff(e) {
   if (Dhl) return;

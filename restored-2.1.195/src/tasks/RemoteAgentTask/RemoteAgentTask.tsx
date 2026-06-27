@@ -40,16 +40,16 @@ function VZa(e) {
 function VQp(e) {
   return qQp.includes(e ?? "");
 }
-async function persistRemoteAgentMetadata(e) {
+async function persistRemoteAgentMetadata(meta) {
   try {
-    await OTo(e.taskId, e);
+    await OTo(meta.taskId, meta);
   } catch (t) {
     T(`persistRemoteAgentMetadata failed: ${String(t)}`);
   }
 }
-async function removeRemoteAgentMetadata(e) {
+async function removeRemoteAgentMetadata(taskId) {
   try {
-    await l9t(e);
+    await l9t(taskId);
   } catch (t) {
     T(`removeRemoteAgentMetadata failed: ${String(t)}`);
   }
@@ -68,12 +68,12 @@ async function Ipe({ allowBundle: e = false, cwd: t } = {}) {
     eligible: true,
   };
 }
-function formatPreconditionError(e) {
-  switch (e.type) {
+function formatPreconditionError(error) {
+  switch (error.type) {
     case "not_logged_in":
       return "Please run /login and sign in with your Claude.ai account (not Console).";
     case "not_in_git_repo":
-      return `Cloud agents require a git repository (checked: ${e.cwd}). Initialize git or run from a git repository.`;
+      return `Cloud agents require a git repository (checked: ${error.cwd}). Initialize git or run from a git repository.`;
     case "no_git_remote":
       return "Cloud agents require a GitHub remote. Add one with `git remote add origin REPO_URL`.";
     case "github_app_not_installed":
@@ -83,22 +83,27 @@ ${aWt}`;
       return "Cloud sessions are disabled by your organization's policy. Contact your organization admin to enable them.";
   }
 }
-function enqueueRemoteNotification(e, t, n, r, o) {
-  if (!MTo(e, r)) return;
-  if (n === "completed") xe("task_remote_agent");
-  else if (n === "failed") Le("task_remote_agent", "task_remote_agent_failed");
-  let s = n === "completed" ? "completed successfully" : n === "failed" ? "failed" : "was stopped",
-    i = o
+function enqueueRemoteNotification(taskId, title, status, setAppState, toolUseId) {
+  if (!MTo(taskId, setAppState)) return;
+  if (status === "completed") xe("task_remote_agent");
+  else if (status === "failed") Le("task_remote_agent", "task_remote_agent_failed");
+  let s =
+      status === "completed"
+        ? "completed successfully"
+        : status === "failed"
+          ? "failed"
+          : "was stopped",
+    i = toolUseId
       ? `
-<${YC}>${o}</${YC}>`
+<${YC}>${toolUseId}</${YC}>`
       : "",
-    a = jm(e),
+    a = jm(taskId),
     l = `<${Oc}>
-<${Dp}>${e}</${Dp}>${i}
+<${Dp}>${taskId}</${Dp}>${i}
 <${Qwe}>remote_agent</${Qwe}>
 <${pM}>${a}</${pM}>
-<${up}>${n}</${up}>
-<${Zu}>Remote task "${t}" ${s}</${Zu}>
+<${up}>${status}</${up}>
+<${Zu}>Remote task "${title}" ${s}</${Zu}>
 </${Oc}>`;
   Ad({
     value: l,
@@ -123,16 +128,16 @@ function MTo(e, t) {
     n
   );
 }
-function extractReviewFromLog(e) {
-  for (let o = e.length - 1; o >= 0; o--) {
-    let s = e[o];
+function extractReviewFromLog(log) {
+  for (let o = log.length - 1; o >= 0; o--) {
+    let s = log[o];
     if (s?.type === "system" && (s.subtype === "hook_progress" || s.subtype === "hook_response")) {
       let i = xl(s.stdout, IFe);
       if (i?.trim()) return i.trim();
     }
   }
-  for (let o = e.length - 1; o >= 0; o--) {
-    let s = e[o];
+  for (let o = log.length - 1; o >= 0; o--) {
+    let s = log[o];
     if (s?.type !== "assistant") continue;
     let i = zl(
         s.message.content,
@@ -142,7 +147,7 @@ function extractReviewFromLog(e) {
       a = xl(i, IFe);
     if (a?.trim()) return a.trim();
   }
-  let t = e
+  let t = log
       .filter(
         (o) =>
           o.type === "system" && (o.subtype === "hook_progress" || o.subtype === "hook_response"),
@@ -152,7 +157,7 @@ function extractReviewFromLog(e) {
     n = xl(t, IFe);
   if (n?.trim()) return n.trim();
   return (
-    e
+    log
       .filter((o) => o.type === "assistant")
       .map((o) =>
         zl(
@@ -216,9 +221,9 @@ function $To(e) {
     return;
   }
 }
-function enqueueRemoteReviewNotification(e, t, n, r) {
-  if (!MTo(e, n)) return;
-  let o = $To(t);
+function enqueueRemoteReviewNotification(taskId, reviewContent, setAppState, r) {
+  if (!MTo(taskId, setAppState)) return;
+  let o = $To(reviewContent);
   xe("task_remote_agent", {
     remote_task_type: We("ultrareview"),
     ...(o !== void 0 && {
@@ -226,14 +231,14 @@ function enqueueRemoteReviewNotification(e, t, n, r) {
     }),
   });
   let i = `<${Oc}>
-<${Dp}>${e}</${Dp}>
+<${Dp}>${taskId}</${Dp}>
 <${Qwe}>remote_agent</${Qwe}>
 <${up}>completed</${up}>
 <${Zu}>Cloud review completed</${Zu}>
 </${Oc}>
 The cloud review produced the following findings:
 
-${t}${
+${reviewContent}${
     r
       ? `
 
@@ -247,16 +252,16 @@ The user launched this review with --fix: apply these findings to the local work
     priority: "next",
   });
 }
-function enqueueUltraplanFailureNotification(e, t, n, r) {
-  if (!MTo(e, n)) return;
+function enqueueUltraplanFailureNotification(taskId, sessionId, reason, setAppState) {
+  if (!MTo(taskId, reason)) return;
   Le("task_remote_agent", "task_remote_agent_review_failed", {
     remote_task_type: We("ultrareview"),
-    reason: $e(t),
+    reason: $e(sessionId),
   });
-  let o = r ? `: ${r.replace(/[<>]/g, "").slice(0, 200)}` : "",
-    s = XQp[t] + o,
+  let o = setAppState ? `: ${setAppState.replace(/[<>]/g, "").slice(0, 200)}` : "",
+    s = XQp[sessionId] + o,
     i = `<${Oc}>
-<${Dp}>${e}</${Dp}>
+<${Dp}>${taskId}</${Dp}>
 <${Qwe}>remote_agent</${Qwe}>
 <${up}>failed</${up}>
 <${Zu}>Cloud review failed: ${s}</${Zu}>
@@ -274,8 +279,8 @@ function ZQp(e) {
   if (t.length > 0) return t;
   return extractTodoListFromLog(e);
 }
-function extractTodoListFromLog(e) {
-  let t = e.findLast(
+function extractTodoListFromLog(log) {
+  let t = log.findLast(
     (o) =>
       o.type === "assistant" &&
       o.message.content.some((s) => s.type === "tool_use" && s.name === qDe.name),
@@ -340,7 +345,7 @@ function oZp(e) {
     }
   return [...n.values(), ...t.values()];
 }
-function registerRemoteAgentTask(e) {
+function registerRemoteAgentTask(options) {
   let {
       remoteTaskType: t,
       session: n,
@@ -352,7 +357,7 @@ function registerRemoteAgentTask(e) {
       isUltraplan: l,
       isLongRunning: c,
       remoteTaskMetadata: u,
-    } = e,
+    } = options,
     d = iN("remote_agent");
   Iht(d);
   let p = {
@@ -394,14 +399,14 @@ function registerRemoteAgentTask(e) {
     cleanup: f,
   };
 }
-async function restoreRemoteAgentTasks(e) {
+async function restoreRemoteAgentTasks(context) {
   try {
-    await yl("task_remote_agent_restore", () => restoreRemoteAgentTasksImpl(e));
+    await yl("task_remote_agent_restore", () => restoreRemoteAgentTasksImpl(context));
   } catch (t) {
     T(`restoreRemoteAgentTasks failed: ${String(t)}`);
   }
 }
-async function restoreRemoteAgentTasksImpl(e) {
+async function restoreRemoteAgentTasksImpl(context) {
   let t = await NTo();
   if (t.length === 0) return;
   for (let n of t) {
@@ -437,10 +442,10 @@ async function restoreRemoteAgentTasksImpl(e) {
       pollStartedAt: Date.now(),
       remoteTaskMetadata: n.remoteTaskMetadata,
     };
-    (e.taskRegistry.register(o), Iht(n.taskId), startRemoteSessionPolling(n.taskId, e));
+    (context.taskRegistry.register(o), Iht(n.taskId), startRemoteSessionPolling(n.taskId, context));
   }
 }
-function startRemoteSessionPolling(e, t) {
+function startRemoteSessionPolling(taskId, context) {
   let n = true,
     r = 1000,
     o = 1800000,
@@ -452,7 +457,7 @@ function startRemoteSessionPolling(e, t) {
     u = async () => {
       if (!n) return;
       try {
-        let d = t.taskRegistry.get(e);
+        let d = context.taskRegistry.get(taskId);
         if (!d || d.status !== "running") return;
         let p = await lMe(d.sessionId, a);
         a = p.lastEventId;
@@ -470,14 +475,14 @@ function startRemoteSessionPolling(e, t) {
 `);
           if (I)
             YZa(
-              e,
+              taskId,
               I +
                 `
 `,
             );
         }
         if (p.sessionStatus === "archived") {
-          (t.taskRegistry.update(e, (I) =>
+          (context.taskRegistry.update(taskId, (I) =>
             I.status === "running"
               ? {
                   ...I,
@@ -486,9 +491,15 @@ function startRemoteSessionPolling(e, t) {
                 }
               : I,
           ),
-            enqueueRemoteNotification(e, d.title, "completed", t.taskRegistry, d.toolUseId),
-            jy(e),
-            removeRemoteAgentMetadata(e));
+            enqueueRemoteNotification(
+              taskId,
+              d.title,
+              "completed",
+              context.taskRegistry,
+              d.toolUseId,
+            ),
+            jy(taskId),
+            removeRemoteAgentMetadata(taskId));
           return;
         }
         let m =
@@ -496,7 +507,7 @@ function startRemoteSessionPolling(e, t) {
         if (m) {
           let I = await m(d.remoteTaskMetadata);
           if (I !== null) {
-            (t.taskRegistry.update(e, (k) =>
+            (context.taskRegistry.update(taskId, (k) =>
               k.status === "running"
                 ? {
                     ...k,
@@ -505,9 +516,9 @@ function startRemoteSessionPolling(e, t) {
                   }
                 : k,
             ),
-              enqueueRemoteNotification(e, I, "completed", t.taskRegistry, d.toolUseId),
-              jy(e),
-              removeRemoteAgentMetadata(e));
+              enqueueRemoteNotification(taskId, I, "completed", context.taskRegistry, d.toolUseId),
+              jy(taskId),
+              removeRemoteAgentMetadata(taskId));
             return;
           }
         }
@@ -570,7 +581,7 @@ function startRemoteSessionPolling(e, t) {
                 : "starting",
           x = false;
         if (
-          (t.taskRegistry.update(e, (I) => {
+          (context.taskRegistry.update(taskId, (I) => {
             if (I.status !== "running") return ((x = true), I);
             if (!f && (C === "running" || C === "starting")) return I;
             return {
@@ -591,12 +602,17 @@ function startRemoteSessionPolling(e, t) {
             let k = c ?? extractReviewFromLog(l),
               D = k ? JQp(k) : null;
             if (k && I === "completed" && D === null) {
-              (enqueueRemoteReviewNotification(e, k, t.taskRegistry, d.applyFixesOnComplete),
-                jy(e),
-                removeRemoteAgentMetadata(e));
+              (enqueueRemoteReviewNotification(
+                taskId,
+                k,
+                context.taskRegistry,
+                d.applyFixesOnComplete,
+              ),
+                jy(taskId),
+                removeRemoteAgentMetadata(taskId));
               return;
             }
-            t.taskRegistry.update(e, (O) => ({
+            context.taskRegistry.update(taskId, (O) => ({
               ...O,
               status: "failed",
             }));
@@ -608,36 +624,36 @@ function startRemoteSessionPolling(e, t) {
                   : v && !A
                     ? "poll_timeout"
                     : "no_review_output";
-            (enqueueUltraplanFailureNotification(e, P, t.taskRegistry, D ?? void 0),
-              jy(e),
-              removeRemoteAgentMetadata(e));
+            (enqueueUltraplanFailureNotification(taskId, P, context.taskRegistry, D ?? void 0),
+              jy(taskId),
+              removeRemoteAgentMetadata(taskId));
             return;
           }
-          (enqueueRemoteNotification(e, d.title, I, t.taskRegistry, d.toolUseId),
-            jy(e),
-            removeRemoteAgentMetadata(e));
+          (enqueueRemoteNotification(taskId, d.title, I, context.taskRegistry, d.toolUseId),
+            jy(taskId),
+            removeRemoteAgentMetadata(taskId));
           return;
         }
       } catch (d) {
-        (T(`Remote session poll failed for task ${e}: ${String(d)}`, {
+        (T(`Remote session poll failed for task ${taskId}: ${String(d)}`, {
           level: "error",
         }),
           (i = 0));
         try {
-          let p = t.taskRegistry.get(e);
+          let p = context.taskRegistry.get(taskId);
           if (p?.isRemoteReview && p.status === "running" && Date.now() - p.pollStartedAt > o) {
-            (t.taskRegistry.update(e, (f) => ({
+            (context.taskRegistry.update(taskId, (f) => ({
               ...f,
               status: "failed",
               endTime: Date.now(),
             })),
               enqueueUltraplanFailureNotification(
-                e,
+                taskId,
                 "poll_timeout_after_api_error",
-                t.taskRegistry,
+                context.taskRegistry,
               ),
-              jy(e),
-              removeRemoteAgentMetadata(e));
+              jy(taskId),
+              removeRemoteAgentMetadata(taskId));
             return;
           }
         } catch {}

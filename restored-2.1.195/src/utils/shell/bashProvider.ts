@@ -6,19 +6,19 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eMa]
 tRp = /(\d?&?>+[ \t]*)[Nn][Uu][Ll](?=\s|$|[|&;)\n])/g;
-function getDisableExtglobCommand(e) {
+function getDisableExtglobCommand(shellPath) {
   if (process.env.CLAUDE_CODE_SHELL_PREFIX)
     return "{ shopt -u extglob || setopt NO_EXTENDED_GLOB NO_BARE_GLOB_QUAL; } >/dev/null 2>&1 || true";
-  if (e.includes("bash")) return "shopt -u extglob 2>/dev/null || true";
-  else if (e.includes("zsh"))
+  if (shellPath.includes("bash")) return "shopt -u extglob 2>/dev/null || true";
+  else if (shellPath.includes("zsh"))
     return "setopt NO_EXTENDED_GLOB NO_BARE_GLOB_QUAL 2>/dev/null || true";
   return null;
 }
-async function createBashShellProvider(e, t) {
+async function createBashShellProvider(shellPath, options) {
   let n,
-    r = t?.skipSnapshot
+    r = options?.skipSnapshot
       ? Promise.resolve(void 0)
-      : KPa(e)
+      : KPa(shellPath)
           .then((i) => (xe("shell_snapshot_create"), ANn(i !== void 0), i))
           .catch((i) => {
             (T(`Failed to create shell snapshot: ${i}`),
@@ -26,12 +26,12 @@ async function createBashShellProvider(e, t) {
               ANn(false));
             return;
           });
-  if (!t?.skipSnapshot) YPa(e).catch(() => {});
+  if (!options?.skipSnapshot) YPa(shellPath).catch(() => {});
   let o,
     s = false;
   return {
     type: "bash",
-    shellPath: e,
+    shellPath: shellPath,
     detached: true,
     async buildExecCommand(i, a) {
       let l = await r;
@@ -66,7 +66,7 @@ async function createBashShellProvider(e, t) {
 :`);
       if (ut(process.env.CLAUDE_CODE_REMOTE))
         b.push('export BUN_OPTIONS="--smol${BUN_OPTIONS:+ $BUN_OPTIONS}"');
-      let S = getDisableExtglobCommand(e);
+      let S = getDisableExtglobCommand(shellPath);
       if (S) b.push(S);
       (b.push(`eval ${y}`), b.push(`pwd -P >| ${ja([f])}`));
       let A = b.join(" && ");

@@ -89,10 +89,10 @@ async function getInstalledPlugins() {
     t = Object.keys(e.plugins);
   return (T(`Found ${t.length} installed plugins`), t);
 }
-async function findMissingPlugins(e) {
+async function findMissingPlugins(enabledPlugins) {
   try {
     let t = await getInstalledPlugins(),
-      n = e.filter((s) => !t.includes(s));
+      n = enabledPlugins.filter((s) => !t.includes(s));
     return (
       await Promise.all(
         n.map(async (s) => {
@@ -120,7 +120,7 @@ async function findMissingPlugins(e) {
     return (ke(t), []);
   }
 }
-async function installSelectedPlugins(e, t, n = "user") {
+async function installSelectedPlugins(pluginsToInstall, onProgress, n = "user") {
   let r = n !== "user" ? $t() : void 0,
     o = KD(n),
     s = yn(o),
@@ -129,10 +129,10 @@ async function installSelectedPlugins(e, t, n = "user") {
     },
     a = [],
     l = [];
-  for (let c = 0; c < e.length; c++) {
-    let u = e[c];
+  for (let c = 0; c < pluginsToInstall.length; c++) {
+    let u = pluginsToInstall[c];
     if (!u) continue;
-    if (t) t(u, c + 1, e.length);
+    if (onProgress) onProgress(u, c + 1, pluginsToInstall.length);
     try {
       let d = await EL(u);
       if (!d) {

@@ -7,9 +7,9 @@
 // module exports: validateSessionRepository, validateGitState, toServerErrorType, toServerErrorReason, teleportToRemoteWithErrorHandling, teleportToRemote, teleportResumeCodeSession, teleportFromSessionsAPI, subscribeRemoteSessionToPR, processMessagesForTeleportResume, pollRemoteSessionEvents, interruptRemoteSession, checkOutTeleportedSessionBranch, awaitRemoteSessionResult, archiveRemoteSession
 // [unwrapped __esm module CTo] deps: kt, dn, Un, E8n, Lo, je, Bi, sa, sr, kv
 vht = require("fs/promises");
-function createTeleportResumeSystemMessage(e) {
-  if (e === null) return cc("Session resumed", "suggestion");
-  let t = e instanceof qb ? e.formattedMessage : e.message;
+function createTeleportResumeSystemMessage(branchError) {
+  if (branchError === null) return cc("Session resumed", "suggestion");
+  let t = branchError instanceof qb ? branchError.formattedMessage : branchError.message;
   return cc(`Session resumed without branch: ${t}`, "warning");
 }
 function createTeleportResumeUserMessage() {
@@ -18,11 +18,11 @@ function createTeleportResumeUserMessage() {
     isMeta: !0,
   });
 }
-async function generateTitleAndBranch(e, t) {
-  let n = Rs(e, 75),
+async function generateTitleAndBranch(description, signal) {
+  let n = Rs(description, 75),
     r = "claude/task";
   try {
-    let o = SESSION_TITLE_AND_BRANCH_PROMPT.replace("{description}", e),
+    let o = SESSION_TITLE_AND_BRANCH_PROMPT.replace("{description}", description),
       i = (
         await R$({
           systemPrompt: Sc([]),
@@ -43,7 +43,7 @@ async function generateTitleAndBranch(e, t) {
               additionalProperties: !1,
             },
           },
-          signal: t,
+          signal: signal,
           options: {
             querySource: "teleport_generate_title",
             agents: [],
@@ -100,16 +100,16 @@ async function validateGitState() {
       )
     );
 }
-async function fetchFromOrigin(e) {
-  let t = e ? ["fetch", "origin", `${e}:${e}`] : ["fetch", "origin"],
+async function fetchFromOrigin(branch) {
+  let t = branch ? ["fetch", "origin", `${branch}:${branch}`] : ["fetch", "origin"],
     n = R8(),
     { code: r, stderr: o } = await $n(go(), t, {
       env: n,
     });
   if (r !== 0)
-    if (e && o.includes("refspec")) {
-      T(`Specific branch fetch failed, trying to fetch ref: ${e}`);
-      let { code: s, stderr: i } = await $n(go(), ["fetch", "origin", e], {
+    if (branch && o.includes("refspec")) {
+      T(`Specific branch fetch failed, trying to fetch ref: ${branch}`);
+      let { code: s, stderr: i } = await $n(go(), ["fetch", "origin", branch], {
         env: n,
       });
       if (s !== 0)
@@ -121,28 +121,33 @@ async function fetchFromOrigin(e) {
         level: "error",
       });
 }
-async function ensureUpstreamIsSet(e) {
-  let { code: t } = await $n(go(), ["rev-parse", "--abbrev-ref", `${e}@{upstream}`]);
+async function ensureUpstreamIsSet(branchName) {
+  let { code: t } = await $n(go(), ["rev-parse", "--abbrev-ref", `${branchName}@{upstream}`]);
   if (t === 0) {
-    T(`Branch '${e}' already has upstream set`);
+    T(`Branch '${branchName}' already has upstream set`);
     return;
   }
-  let { code: n } = await $n(go(), ["rev-parse", "--verify", `origin/${e}`]);
+  let { code: n } = await $n(go(), ["rev-parse", "--verify", `origin/${branchName}`]);
   if (n === 0) {
-    T(`Setting upstream for '${e}' to 'origin/${e}'`);
-    let { code: r, stderr: o } = await $n(go(), ["branch", "--set-upstream-to", `origin/${e}`, e]);
-    if (r !== 0) T(`Failed to set upstream for '${e}': ${o}`);
-    else T(`Successfully set upstream for '${e}'`);
-  } else T(`Remote branch 'origin/${e}' does not exist, skipping upstream setup`);
+    T(`Setting upstream for '${branchName}' to 'origin/${branchName}'`);
+    let { code: r, stderr: o } = await $n(go(), [
+      "branch",
+      "--set-upstream-to",
+      `origin/${branchName}`,
+      branchName,
+    ]);
+    if (r !== 0) T(`Failed to set upstream for '${branchName}': ${o}`);
+    else T(`Successfully set upstream for '${branchName}'`);
+  } else T(`Remote branch 'origin/${branchName}' does not exist, skipping upstream setup`);
 }
-async function checkoutBranch(e) {
-  let { code: t, stderr: n } = await $n(go(), ["checkout", e]);
+async function checkoutBranch(branchName) {
+  let { code: t, stderr: n } = await $n(go(), ["checkout", branchName]);
   if (t !== 0) {
     T(`Local checkout failed, trying to checkout from origin: ${n}`);
-    let r = await $n(go(), ["checkout", "-b", e, "--track", `origin/${e}`]);
+    let r = await $n(go(), ["checkout", "-b", branchName, "--track", `origin/${branchName}`]);
     if (((t = r.code), (n = r.stderr), t !== 0)) {
       T(`Remote checkout with -b failed, trying without -b: ${n}`);
-      let o = await $n(go(), ["checkout", "--track", `origin/${e}`]);
+      let o = await $n(go(), ["checkout", "--track", `origin/${branchName}`]);
       ((t = o.code), (n = o.stderr));
     }
   }
@@ -150,12 +155,12 @@ async function checkoutBranch(e) {
     throw (
       G("tengu_teleport_error_branch_checkout_failed", {}),
       new qb(
-        `Failed to checkout branch '${e}': ${n}`,
-        wt.red(`Failed to checkout branch '${e}'
+        `Failed to checkout branch '${branchName}': ${n}`,
+        wt.red(`Failed to checkout branch '${branchName}'
 `),
       )
     );
-  await ensureUpstreamIsSet(e);
+  await ensureUpstreamIsSet(branchName);
 }
 async function getCurrentBranch() {
   let { stdout: e } = await $n(go(), ["branch", "--show-current"]);
@@ -164,17 +169,19 @@ async function getCurrentBranch() {
 function processMessagesForTeleportResume(e, t) {
   return [...n9t(e), createTeleportResumeUserMessage(), createTeleportResumeSystemMessage(t)];
 }
-async function checkOutTeleportedSessionBranch(e) {
+async function checkOutTeleportedSessionBranch(branch) {
   try {
     let t = await getCurrentBranch();
-    if ((T(`Current branch before teleport: '${t}'`), e)) {
-      if (!Uie(e))
+    if ((T(`Current branch before teleport: '${t}'`), branch)) {
+      if (!Uie(branch))
         throw new qb(
-          `Invalid branch name from cloud session: ${e}`,
+          `Invalid branch name from cloud session: ${branch}`,
           wt.red(`Invalid branch name from cloud session
 `),
         );
-      (T(`Switching to branch '${e}'...`), await fetchFromOrigin(e), await checkoutBranch(e));
+      (T(`Switching to branch '${branch}'...`),
+        await fetchFromOrigin(branch),
+        await checkoutBranch(branch));
       let r = await getCurrentBranch();
       T(`Branch after checkout: '${r}'`);
     } else T("No branch specified, staying on current branch");
@@ -191,10 +198,10 @@ async function checkOutTeleportedSessionBranch(e) {
     };
   }
 }
-async function validateSessionRepository(e) {
+async function validateSessionRepository(sessionData) {
   let t = await $O(),
     n = t ? `${t.owner}/${t.name}` : null,
-    r = e.session_context.sources.find((c) => c.type === "git_repository");
+    r = sessionData.session_context.sources.find((c) => c.type === "git_repository");
   if (!r?.url)
     return (
       T(
@@ -236,12 +243,12 @@ async function validateSessionRepository(e) {
     currentHost: t?.host,
   };
 }
-async function teleportResumeCodeSession(e, t) {
+async function teleportResumeCodeSession(sessionId, onProgress) {
   if (!Jl())
     throw Error("Cloud sessions are only available on the first-party Anthropic API provider.");
   let n = dW("allow_remote_sessions", "Cloud sessions", "are");
   if (n) throw new mi(n, "allow_remote_sessions policy denied");
-  T(`Resuming code session ID: ${e}`);
+  T(`Resuming code session ID: ${sessionId}`);
   try {
     let r = Ws()?.accessToken;
     if (!r)
@@ -261,8 +268,8 @@ async function teleportResumeCodeSession(e, t) {
         }),
         Error("Unable to get organization UUID for constructing session URL")
       );
-    t?.("validating");
-    let s = await b_e(e),
+    onProgress?.("validating");
+    let s = await b_e(sessionId),
       i = await validateSessionRepository(s);
     switch (i.status) {
       case "match":
@@ -270,19 +277,19 @@ async function teleportResumeCodeSession(e, t) {
         break;
       case "not_in_repo": {
         G("tengu_teleport_error_repo_not_in_git_dir_sessions_api", {
-          sessionId: Hr(e),
+          sessionId: Hr(sessionId),
         });
         let a =
           i.sessionHost && !$m(i.sessionHost) ? `${i.sessionHost}/${i.sessionRepo}` : i.sessionRepo;
         throw new qb(
-          `You must run claude --teleport ${e} from a checkout of ${a}.`,
-          wt.red(`You must run claude --teleport ${e} from a checkout of ${wt.bold(a)}.
+          `You must run claude --teleport ${sessionId} from a checkout of ${a}.`,
+          wt.red(`You must run claude --teleport ${sessionId} from a checkout of ${wt.bold(a)}.
 `),
         );
       }
       case "mismatch": {
         G("tengu_teleport_error_repo_mismatch_sessions_api", {
-          sessionId: Hr(e),
+          sessionId: Hr(sessionId),
         });
         let a =
             i.sessionHost &&
@@ -292,9 +299,9 @@ async function teleportResumeCodeSession(e, t) {
           l = a ? `${i.sessionHost}/${i.sessionRepo}` : i.sessionRepo,
           c = a ? `${i.currentHost}/${i.currentRepo}` : i.currentRepo;
         throw new qb(
-          `You must run claude --teleport ${e} from a checkout of ${l}.
+          `You must run claude --teleport ${sessionId} from a checkout of ${l}.
 This repo is ${c}.`,
-          wt.red(`You must run claude --teleport ${e} from a checkout of ${wt.bold(l)}.
+          wt.red(`You must run claude --teleport ${sessionId} from a checkout of ${wt.bold(l)}.
 This repo is ${wt.bold(c)}.
 `),
         );
@@ -310,12 +317,12 @@ This repo is ${wt.bold(c)}.
         throw Error(`Unhandled repo validation status: ${a}`);
       }
     }
-    return await teleportFromSessionsAPI(e, o, r, t, s);
+    return await teleportFromSessionsAPI(sessionId, o, r, onProgress, s);
   } catch (r) {
     if (r instanceof qb) throw r;
     let o = Zr(r);
     throw (
-      T(`Failed to resume teleport session ${e}: ${o.message}`, {
+      T(`Failed to resume teleport session ${sessionId}: ${o.message}`, {
         level: "error",
       }),
       G("tengu_teleport_resume_error", {
@@ -329,19 +336,19 @@ This repo is ${wt.bold(c)}.
     );
   }
 }
-async function handleTeleportPrerequisites(e, t) {
-  let n = vZa(await oTo(), t);
+async function handleTeleportPrerequisites(root, errorsToIgnore) {
+  let n = vZa(await oTo(), errorsToIgnore);
   if (n.size > 0)
     (G("tengu_teleport_errors_detected", {
       error_types: Array.from(n).join(","),
-      errors_ignored: Array.from(t).join(","),
+      errors_ignored: Array.from(errorsToIgnore).join(","),
     }),
       await new Promise((r) => {
-        e.render(
+        root.render(
           H8n.jsx(AH, {
             children: H8n.jsx(TT, {
               children: H8n.jsx(c8n, {
-                errorsToIgnore: t,
+                errorsToIgnore: errorsToIgnore,
                 onComplete: () => {
                   (G("tengu_teleport_errors_resolved", {
                     error_types: Array.from(n).join(","),
@@ -420,22 +427,22 @@ function toServerErrorReason(e) {
       return "other";
   }
 }
-async function teleportToRemoteWithErrorHandling(e, t) {
-  await handleTeleportPrerequisites(e, new Set(["needsGitStash"]));
+async function teleportToRemoteWithErrorHandling(root, description) {
+  await handleTeleportPrerequisites(root, new Set(["needsGitStash"]));
   let r,
     o,
     s,
     i = await teleportToRemote({
-      initialMessage: t.description,
-      initialMessageUuid: t.descriptionUuid,
-      signal: t.signal,
-      source: t.source,
-      branchName: t.branchName,
-      explicitRef: t.explicitRef,
-      permissionMode: t.permissionMode,
-      environmentVariables: t.environmentVariables,
-      poolId: t.poolId,
-      sessionGroupingId: t.sessionGroupingId,
+      initialMessage: description.description,
+      initialMessageUuid: description.descriptionUuid,
+      signal: description.signal,
+      source: description.source,
+      branchName: description.branchName,
+      explicitRef: description.explicitRef,
+      permissionMode: description.permissionMode,
+      environmentVariables: description.environmentVariables,
+      poolId: description.poolId,
+      sessionGroupingId: description.sessionGroupingId,
       allowBundle: !0,
       onBundleFail: (a, l) => {
         switch (l) {
@@ -470,31 +477,32 @@ ${a}
     };
   return {
     ok: !1,
-    failReason: r ?? (t.signal.aborted ? "aborted" : "unknown"),
+    failReason: r ?? (description.signal.aborted ? "aborted" : "unknown"),
     failMessage: o,
     failDetail: s,
   };
 }
-async function teleportFromSessionsAPI(e, t, n, r, o) {
+async function teleportFromSessionsAPI(sessionId, orgUUID, accessToken, onProgress, sessionData) {
   let s = Date.now();
   try {
-    (T(`[teleport] Starting fetch for session: ${e}`), r?.("fetching_logs"));
+    (T(`[teleport] Starting fetch for session: ${sessionId}`), onProgress?.("fetching_logs"));
     let i = Date.now(),
       a;
     if (cMe()) {
       let { readStoredTrustedDeviceToken: p } = await Promise.resolve().then(() => (SJ(), Qjn));
       a = await p();
     }
-    let l = await NQa(e, n, t, a);
+    let l = await NQa(sessionId, accessToken, orgUUID, a);
     if (l === null)
-      (T("[teleport] v2 endpoint returned null, trying session-ingress"), (l = await OQa(e, n, t)));
+      (T("[teleport] v2 endpoint returned null, trying session-ingress"),
+        (l = await OQa(sessionId, accessToken, orgUUID)));
     if ((T(`[teleport] Session logs fetched in ${Date.now() - i}ms`), l === null))
       throw Error("Failed to fetch session logs");
     let c = Date.now(),
       u = l.filter((p) => J5(p) && !p.isSidechain);
     (T(`[teleport] Filtered ${l.length} entries to ${u.length} messages in ${Date.now() - c}ms`),
-      r?.("fetching_branch"));
-    let d = o ? lkn(o) : void 0;
+      onProgress?.("fetching_branch"));
+    let d = sessionData ? lkn(sessionData) : void 0;
     if (d) T(`[teleport] Found branch: ${d}`);
     return (
       T(`[teleport] Total teleportFromSessionsAPI time: ${Date.now() - s}ms`),
@@ -509,12 +517,12 @@ async function teleportFromSessionsAPI(e, t, n, r, o) {
     if (po.isAxiosError(i) && i.response?.status === 404)
       throw (
         G("tengu_teleport_error_session_not_found_404", {
-          sessionId: Hr(e),
+          sessionId: Hr(sessionId),
         }),
         new qb(
-          `${e} not found.
+          `${sessionId} not found.
 Run /status in Claude Code to check your account.`,
-          `${e} not found.
+          `${sessionId} not found.
 ${wt.dim("Run /status in Claude Code to check your account.")}`,
         )
       );
@@ -532,14 +540,14 @@ function v8n() {
       : void 0)
   );
 }
-async function pollRemoteSessionEvents(e, t = null, n) {
+async function pollRemoteSessionEvents(sessionId, t = null, opts) {
   if (!Jl())
     throw Error("Cloud sessions are only available on the first-party Anthropic API provider.");
   await ch();
   let r = v8n();
   if (!r) throw Error("No access token for polling");
   let o = aH(r),
-    s = `${$s().BASE_API_URL}/v1/code/sessions/${e}/events`,
+    s = `${$s().BASE_API_URL}/v1/code/sessions/${sessionId}/events`,
     i = 50,
     a = [],
     l = t;
@@ -568,20 +576,20 @@ async function pollRemoteSessionEvents(e, t = null, n) {
     }
     if (!m.next_cursor) break;
   }
-  if (n?.skipMetadata)
+  if (opts?.skipMetadata)
     return {
       newEvents: a,
       lastEventId: l,
     };
   let c, u, d;
   try {
-    let p = await b_e(e, {
+    let p = await b_e(sessionId, {
       accessToken: r,
     });
     ((c = lkn(p)), (u = p.session_status));
   } catch (p) {
     ((d = be(p)),
-      T(`teleport: failed to fetch session ${e} metadata: ${p}`, {
+      T(`teleport: failed to fetch session ${sessionId} metadata: ${p}`, {
         level: "warn",
       }));
   }
@@ -732,24 +740,24 @@ function GZa(e, t, n) {
 function WZa(e, t) {
   return e === "v1alpha2" ? t?.session : t;
 }
-async function teleportToRemote(e) {
-  let { initialMessage: t, signal: n } = e,
-    r = e.cwd ?? $t(),
+async function teleportToRemote(options) {
+  let { initialMessage: t, signal: n } = options,
+    r = options.cwd ?? $t(),
     o = dW("allow_remote_sessions", "Cloud sessions", "are");
-  if (o) return (e.onCreateFail?.(o, "policy_denied"), null);
+  if (o) return (options.onCreateFail?.(o, "policy_denied"), null);
   if (!Jl())
     return (
-      e.onCreateFail?.(
+      options.onCreateFail?.(
         "Cloud sessions are only available on the first-party Anthropic API provider.",
         "not_first_party",
       ),
       null
     );
   try {
-    if (e.sessionGroupingId)
+    if (options.sessionGroupingId)
       return (
-        e.onCreateFail?.(
-          CZa(e)
+        options.onCreateFail?.(
+          CZa(options)
             ? "--project requires the new session-create endpoint, which isn't enabled for your account yet \u2014 no session was created."
             : "--project cannot be used on a GitHub-PR-bound create; it has no Project input \u2014 no session was created.",
           "project_not_enabled",
@@ -767,7 +775,7 @@ async function teleportToRemote(e) {
         (ut(process.env.CLAUDE_CODE_REMOTE)
           ? ` (in CCR: env=${process.env.CLAUDE_CODE_OAUTH_TOKEN ? "set" : "unset"}, fd=${process.env.CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR ? "set" : "unset"})`
           : "");
-      return (ke(Error(V)), e.onCreateFail?.(V, "no_access_token"), null);
+      return (ke(Error(V)), options.onCreateFail?.(V, "no_access_token"), null);
     }
     let a = await yj();
     if (!a) {
@@ -776,16 +784,16 @@ async function teleportToRemote(e) {
         (ut(process.env.CLAUDE_CODE_REMOTE)
           ? ` (in CCR: CLAUDE_CODE_ORGANIZATION_UUID=${process.env.CLAUDE_CODE_ORGANIZATION_UUID ? "set" : "unset"})`
           : "");
-      return (ke(Error(V)), e.onCreateFail?.(V, "no_org_uuid"), null);
+      return (ke(Error(V)), options.onCreateFail?.(V, "no_org_uuid"), null);
     }
     let l = {
-      ...e.environmentVariables,
+      ...options.environmentVariables,
     };
-    if ((delete l.CLAUDE_CODE_OAUTH_TOKEN, e.environmentId)) {
+    if ((delete l.CLAUDE_CODE_OAUTH_TOKEN, options.environmentId)) {
       let { url: V, headers: Y } = GZa("v1", i, a),
         z = null,
         K = null;
-      if (e.useBundle) {
+      if (options.useBundle) {
         let ee = await wTo(
           {
             oauthToken: i,
@@ -794,7 +802,7 @@ async function teleportToRemote(e) {
           },
           {
             signal: n,
-            baseRef: e.bundleBaseRef,
+            baseRef: options.bundleBaseRef,
           },
         );
         if (!ee.success) {
@@ -804,7 +812,7 @@ async function teleportToRemote(e) {
             }),
             ee.failReason !== "too_large")
           )
-            e.onBundleFail?.(ee.error, "bundle");
+            options.onBundleFail?.(ee.error, "bundle");
           return null;
         }
         ((K = ee.fileId),
@@ -814,11 +822,11 @@ async function teleportToRemote(e) {
             has_wip: ee.hasWip,
             reason: We("explicit_env_bundle"),
           }));
-      } else if (e.sourceUrl)
+      } else if (options.sourceUrl)
         z = {
           type: "git_repository",
-          url: e.sourceUrl,
-          revision: e.branchName,
+          url: options.sourceUrl,
+          revision: options.branchName,
         };
       else {
         let ee = await $O();
@@ -826,15 +834,15 @@ async function teleportToRemote(e) {
           z = {
             type: "git_repository",
             url: `https://${ee.host}/${ee.owner}/${ee.name}`,
-            revision: e.branchName,
+            revision: options.branchName,
           };
       }
-      let Z = e.title || e.description || "Remote task",
+      let Z = options.title || options.description || "Remote task",
         J = jZa({
           initialMessage: t,
-          initialMessageUuid: e.initialMessageUuid,
-          permissionMode: e.permissionMode,
-          ultraplan: e.ultraplan,
+          initialMessageUuid: options.initialMessageUuid,
+          permissionMode: options.permissionMode,
+          ultraplan: options.ultraplan,
         }),
         ne = {
           title: Z,
@@ -846,23 +854,23 @@ async function teleportToRemote(e) {
             }),
             outcomes: [],
             environment_variables: l,
-            ...(e.model && {
-              model: e.model,
+            ...(options.model && {
+              model: options.model,
             }),
-            ...(e.appendSystemPrompt && {
-              append_system_prompt: e.appendSystemPrompt,
+            ...(options.appendSystemPrompt && {
+              append_system_prompt: options.appendSystemPrompt,
             }),
-            ...(e.outputSchema && {
-              output_schema: e.outputSchema,
+            ...(options.outputSchema && {
+              output_schema: options.outputSchema,
             }),
           },
-          ...fWt(e.environmentId),
-          ...(e.tags && {
-            tags: e.tags,
+          ...fWt(options.environmentId),
+          ...(options.tags && {
+            tags: options.tags,
           }),
         };
       T(
-        `[teleportToRemote] explicit env ${e.environmentId}, ${Object.keys(l).length} env vars, ${K ? `bundle=${K}` : `source=${z?.url ?? "none"}@${e.branchName ?? "default"}`}`,
+        `[teleportToRemote] explicit env ${options.environmentId}, ${Object.keys(l).length} env vars, ${K ? `bundle=${K}` : `source=${z?.url ?? "none"}@${options.branchName ?? "default"}`}`,
       );
       let oe = await po.post(V, ne, {
         headers: Y,
@@ -884,8 +892,8 @@ async function teleportToRemote(e) {
           ke(Error(`[type=${ae(ce?.error?.type)},reason=${ae(ce?.error?.reason)}] ${ee}`));
         }
         return (
-          e.onCreateFail?.(
-            (e.sessionGroupingId && TTo(e.sessionGroupingId, ce?.error)) ||
+          options.onCreateFail?.(
+            (options.sessionGroupingId && TTo(options.sessionGroupingId, ce?.error)) ||
               ce?.error?.message ||
               `${oe.status} ${oe.statusText || ""}`.trim(),
             "create_request_failed",
@@ -908,7 +916,7 @@ async function teleportToRemote(e) {
               "CreateSession response missing session id",
             ),
           ),
-          e.onCreateFail?.(
+          options.onCreateFail?.(
             "Server returned a malformed session response (no session id)",
             "malformed_response",
           ),
@@ -917,14 +925,14 @@ async function teleportToRemote(e) {
       return (
         FZa(
           re.id,
-          e.source,
+          options.source,
           {
             project: !1,
             global: !1,
           },
           {
             endpoint: "v1",
-            grouped: e.sessionGroupingId != null,
+            grouped: options.sessionGroupingId != null,
           },
         ),
         {
@@ -933,7 +941,7 @@ async function teleportToRemote(e) {
         }
       );
     }
-    let c = e.poolId ?? jo()?.remote?.defaultEnvironmentId,
+    let c = options.poolId ?? jo()?.remote?.defaultEnvironmentId,
       u = qjn(c);
     T("[teleport] phase: env-select");
     let d = u ? [] : await Ure(i);
@@ -945,7 +953,7 @@ async function teleportToRemote(e) {
           T(`[teleportToRemote] auto-create env failed: ${be(V)}`, {
             level: "warn",
           }),
-          e.onBundleFail?.(
+          options.onBundleFail?.(
             "Could not create a cloud environment. Set one up at https://claude.ai/code/onboarding?magic=env-setup",
             "env_create",
           ),
@@ -958,7 +966,7 @@ async function teleportToRemote(e) {
     let p = c,
       f = p ? d.find((V) => V.environment_id === p) : void 0,
       m = d.find((V) => V.kind === "anthropic_cloud");
-    if (!u && e.useDefaultEnvironment && !f && !m) {
+    if (!u && options.useDefaultEnvironment && !f && !m) {
       if (
         (T(
           `No configured default or anthropic_cloud in env list (${d.length} envs); retrying fetchEnvironments`,
@@ -976,7 +984,7 @@ async function teleportToRemote(e) {
               level: "error",
             },
           ),
-          e.onCreateFail?.(V, "no_default_env"),
+          options.onCreateFail?.(V, "no_default_env"),
           null
         );
       }
@@ -985,7 +993,7 @@ async function teleportToRemote(e) {
     if (!g && !u)
       return (
         ke(Error("No environments available for session creation")),
-        e.onCreateFail?.("No environments available for session creation", "no_environments"),
+        options.onCreateFail?.("No environments available for session creation", "no_environments"),
         null
       );
     if (p && g) {
@@ -1001,28 +1009,29 @@ async function teleportToRemote(e) {
     let y = null,
       b = null,
       _ = null;
-    if (e.sourceUrl)
+    if (options.sourceUrl)
       y = {
         type: "git_repository",
-        url: e.sourceUrl,
-        revision: e.branchName,
+        url: options.sourceUrl,
+        revision: options.branchName,
       };
     T("[teleport] phase: branch-detect");
-    let S = y ? null : await $O(e.cwd),
+    let S = y ? null : await $O(options.cwd),
       A,
       v;
-    if (e.title && e.reuseOutcomeBranch) ((A = e.title), (v = e.reuseOutcomeBranch));
+    if (options.title && options.reuseOutcomeBranch)
+      ((A = options.title), (v = options.reuseOutcomeBranch));
     else {
-      let V = await generateTitleAndBranch(e.description || GQp(t) || "Background task", n);
-      ((A = e.title || V.title), (v = e.reuseOutcomeBranch || V.branchName));
+      let V = await generateTitleAndBranch(options.description || GQp(t) || "Background task", n);
+      ((A = options.title || V.title), (v = options.reuseOutcomeBranch || V.branchName));
     }
     let C = !1,
-      x = e.sourceUrl ? "explicit_source_url" : "no_git_at_all",
+      x = options.sourceUrl ? "explicit_source_url" : "no_git_at_all",
       I = Tu(r),
       k = u || g?.kind === "byoc",
-      D = e.allowBundle && !k && ut(process.env.CCR_FORCE_BUNDLE),
+      D = options.allowBundle && !k && ut(process.env.CCR_FORCE_BUNDLE),
       P =
-        e.allowBundle &&
+        options.allowBundle &&
         !k &&
         I !== null &&
         (ut(process.env.CCR_ENABLE_BUNDLE) || (await _U("tengu_ccr_bundle_seed_enabled")));
@@ -1037,13 +1046,13 @@ async function teleportToRemote(e) {
     if (!C && !P && S) C = !0;
     if (C && S) {
       let { host: V, owner: Y, name: z } = S,
-        K = e.branchName ?? (await vD()) ?? void 0;
+        K = options.branchName ?? (await vD()) ?? void 0;
       (T(`[teleportToRemote] Git source: ${V}/${Y}/${z}, revision: ${K ?? "none"}`),
         (y = {
           type: "git_repository",
           url: `https://${V}/${Y}/${z}`,
           revision: K,
-          ...(e.reuseOutcomeBranch && {
+          ...(options.reuseOutcomeBranch && {
             allow_unrestricted_git_push: !0,
           }),
         }),
@@ -1056,7 +1065,7 @@ async function teleportToRemote(e) {
           },
         }));
     }
-    if (!y && !k && e.explicitRef) {
+    if (!y && !k && options.explicitRef) {
       let V = D
           ? "CCR_FORCE_BUNDLE is set"
           : S
@@ -1064,8 +1073,8 @@ async function teleportToRemote(e) {
             : "no GitHub remote was detected in this directory",
         Y = P ? "be seeded from your local working tree" : "start with an empty sandbox";
       return (
-        e.onCreateFail?.(
-          `--ref ${e.explicitRef} cannot be honored: ${V}, so the session would ${Y} instead. ` +
+        options.onCreateFail?.(
+          `--ref ${options.explicitRef} cannot be honored: ${V}, so the session would ${Y} instead. ` +
             (S ? "Set up the GitHub integration at https://claude.ai/code, or " : "") +
             (P
               ? "drop --ref to seed from local HEAD."
@@ -1116,7 +1125,7 @@ async function teleportToRemote(e) {
             z = `Bundle upload failed: ${V.error}`;
           }
         }
-        return (e.onBundleFail?.(z, "bundle"), null);
+        return (options.onBundleFail?.(z, "bundle"), null);
       }
       ((_ = V.fileId),
         G("tengu_teleport_bundle_mode", {
@@ -1139,19 +1148,19 @@ async function teleportToRemote(e) {
           T(`[teleportToRemote] ${V} (byoc env, sourceReason=${x})`, {
             level: "error",
           }),
-          e.onCreateFail?.(V, "byoc_no_git_source"),
+          options.onCreateFail?.(V, "byoc_no_git_source"),
           null
         );
       }
       T("[teleportToRemote] No repository detected \u2014 session will have an empty sandbox");
     }
     let { url: O, headers: L } = GZa("v1", i, a),
-      M = e.ultraplan ? `ultraplan: ${A}` : A,
+      M = options.ultraplan ? `ultraplan: ${A}` : A,
       N = jZa({
         initialMessage: t,
-        initialMessageUuid: e.initialMessageUuid,
-        permissionMode: e.permissionMode,
-        ultraplan: e.ultraplan,
+        initialMessageUuid: options.initialMessageUuid,
+        permissionMode: options.permissionMode,
+        ultraplan: options.ultraplan,
       }),
       B = {
         title: M,
@@ -1162,26 +1171,26 @@ async function teleportToRemote(e) {
             seed_bundle_file_id: _,
           }),
           outcomes: b ? [b] : [],
-          model: e.model ?? As(),
-          ...(e.reuseOutcomeBranch && {
+          model: options.model ?? As(),
+          ...(options.reuseOutcomeBranch && {
             reuse_outcome_branches: !0,
           }),
-          ...(e.githubPr && {
-            github_pr: e.githubPr,
+          ...(options.githubPr && {
+            github_pr: options.githubPr,
           }),
           ...(Object.keys(l).length > 0 && {
             environment_variables: l,
           }),
-          ...(e.appendSystemPrompt && {
-            append_system_prompt: e.appendSystemPrompt,
+          ...(options.appendSystemPrompt && {
+            append_system_prompt: options.appendSystemPrompt,
           }),
-          ...(e.outputSchema && {
-            output_schema: e.outputSchema,
+          ...(options.outputSchema && {
+            output_schema: options.outputSchema,
           }),
         },
         ...fWt(h),
-        ...(e.tags && {
-          tags: e.tags,
+        ...(options.tags && {
+          tags: options.tags,
         }),
       };
     (T(`Creating session with payload: ${De(B, null, 2)}`), T("[teleport] phase: POST-sent"));
@@ -1240,9 +1249,9 @@ Response data: ${De($.data, null, 2)}`,
         ce = oe
           ? `The source anthropics/anthropic requires a monorepo environment, but "${g?.name ?? h}" was selected. Configure a monorepo environment, or run from a different repository.`
           : `The selected environment "${g?.name ?? h}" only accepts the Anthropic monorepo (anthropics/anthropic), but the source was ${ne}. Run this from a monorepo checkout, or select a different environment.`;
-      let ae = e.sessionGroupingId && TTo(e.sessionGroupingId, Y?.error);
+      let ae = options.sessionGroupingId && TTo(options.sessionGroupingId, Y?.error);
       return (
-        e.onCreateFail?.(ae || ce, "create_request_failed", {
+        options.onCreateFail?.(ae || ce, "create_request_failed", {
           status: $.status,
           serverType: toServerErrorType(z),
           serverReason: re,
@@ -1260,7 +1269,7 @@ Response data: ${De($.data, null, 2)}`,
             "CreateSession response missing session id",
           ),
         ),
-        e.onCreateFail?.(
+        options.onCreateFail?.(
           "Server returned a malformed session response (no session id)",
           "malformed_response",
         ),
@@ -1270,14 +1279,14 @@ Response data: ${De($.data, null, 2)}`,
       T(`Successfully created remote session: ${W.id}`),
       FZa(
         W.id,
-        e.source,
+        options.source,
         {
           project: y !== null && x !== "github_preflight_failed",
           global: _ === null,
         },
         {
           endpoint: "v1",
-          grouped: e.sessionGroupingId != null,
+          grouped: options.sessionGroupingId != null,
         },
       ),
       {
@@ -1295,7 +1304,7 @@ Response data: ${De($.data, null, 2)}`,
       });
     else ke(Rh(Zr(i), "Remote session create failed"));
     return (
-      e.onCreateFail?.(
+      options.onCreateFail?.(
         `Cloud session create failed: ${i.message}`,
         a ? "network_error" : "exception",
       ),
@@ -1303,11 +1312,12 @@ Response data: ${De($.data, null, 2)}`,
     );
   }
 }
-async function archiveRemoteSession(e, t = 1e4) {
-  if (!Jl()) return (T(`[archiveRemoteSession] ${e} skipped: non-first-party provider`), !1);
+async function archiveRemoteSession(sessionId, t = 1e4) {
+  if (!Jl())
+    return (T(`[archiveRemoteSession] ${sessionId} skipped: non-first-party provider`), !1);
   let n = v8n();
   if (!n) return !1;
-  let r = `${$s().BASE_API_URL}/v1/code/sessions/${e}/archive`;
+  let r = `${$s().BASE_API_URL}/v1/code/sessions/${sessionId}/archive`;
   try {
     let o = await po.post(
       r,
@@ -1319,11 +1329,11 @@ async function archiveRemoteSession(e, t = 1e4) {
       },
     );
     if (o.status === 200 || o.status === 409)
-      return (T(`[archiveRemoteSession] archived ${e}`), !0);
-    return (T(`[archiveRemoteSession] ${e} failed ${o.status}: ${De(o.data)}`), !1);
+      return (T(`[archiveRemoteSession] archived ${sessionId}`), !0);
+    return (T(`[archiveRemoteSession] ${sessionId} failed ${o.status}: ${De(o.data)}`), !1);
   } catch (o) {
     return (
-      T(`[archiveRemoteSession] ${e} failed: ${be(o)}`, {
+      T(`[archiveRemoteSession] ${sessionId} failed: ${be(o)}`, {
         level: "error",
       }),
       !1

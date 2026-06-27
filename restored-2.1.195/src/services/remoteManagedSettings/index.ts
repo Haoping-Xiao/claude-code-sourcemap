@@ -95,13 +95,13 @@ function getRemoteSettingsAuthHeaders() {
     error: "No authentication available",
   };
 }
-async function fetchWithRetry(e, t = {}) {
+async function fetchWithRetry(cachedChecksum, t = {}) {
   let n = await dMp();
   if (n) return n;
   let r = null,
     o = km() && !t.background ? 0 : aMp;
   for (let s = 1; s <= o + 1; s++) {
-    if (((r = await fetchRemoteManagedSettings(e)), r.success)) return r;
+    if (((r = await fetchRemoteManagedSettings(cachedChecksum)), r.success)) return r;
     if (r.skipRetry) return r;
     if (s > o) return r;
     let i = TJ(s);
@@ -109,7 +109,7 @@ async function fetchWithRetry(e, t = {}) {
   }
   return r;
 }
-async function fetchRemoteManagedSettings(e, t = !1) {
+async function fetchRemoteManagedSettings(cachedChecksum, t = !1) {
   let n;
   try {
     (await ch(), await oxe());
@@ -128,7 +128,7 @@ async function fetchRemoteManagedSettings(e, t = !1) {
         "Cache-Control": "no-cache",
         Pragma: "no-cache",
       };
-    if (e) s["If-None-Match"] = `"${e}"`;
+    if (cachedChecksum) s["If-None-Match"] = `"${cachedChecksum}"`;
     let i,
       a = km();
     if (a) {
@@ -157,7 +157,7 @@ async function fetchRemoteManagedSettings(e, t = !1) {
         {
           success: !0,
           settings: null,
-          checksum: e,
+          checksum: cachedChecksum,
         }
       );
     if (l.status === 204 || l.status === 404)
@@ -228,7 +228,7 @@ async function fetchRemoteManagedSettings(e, t = !1) {
           if (l && l !== n)
             return (
               G("tengu_remote_settings_401_force_refresh_retry", {}),
-              fetchRemoteManagedSettings(e, !0)
+              fetchRemoteManagedSettings(cachedChecksum, !0)
             );
         }
         return {
@@ -263,12 +263,12 @@ async function fetchRemoteManagedSettings(e, t = !1) {
     }
   }
 }
-async function saveSettings(e) {
+async function saveSettings(settings) {
   try {
     let t = Lfn(),
       n = await kft.open(t, "w", 384);
     try {
-      (await n.writeFile(De(e, null, 2), {
+      (await n.writeFile(De(settings, null, 2), {
         encoding: "utf-8",
       }),
         await n.datasync());

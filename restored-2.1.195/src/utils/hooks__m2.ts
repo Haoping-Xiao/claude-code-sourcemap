@@ -6,27 +6,35 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ric] deps: sp
 Mlr = require("crypto");
-async function* executePreToolHooks(e, t, n, r, o, s, i = lp) {
-  let a = r.getAppState(),
-    l = r.agentId ?? Rt();
+async function* executePreToolHooks(
+  toolName,
+  toolUseID,
+  toolInput,
+  toolUseContext,
+  permissionMode,
+  signal,
+  i = lp,
+) {
+  let a = toolUseContext.getAppState(),
+    l = toolUseContext.agentId ?? Rt();
   if (!M$("PreToolUse", a, l)) return;
-  T(`executePreToolHooks called for tool: ${e}`, {
+  T(`executePreToolHooks called for tool: ${toolName}`, {
     level: "verbose",
   });
   let c = {
-    ...Td(o, void 0, r),
+    ...Td(permissionMode, void 0, toolUseContext),
     hook_event_name: "PreToolUse",
-    tool_name: e,
-    tool_input: n,
-    tool_use_id: t,
+    tool_name: toolName,
+    tool_input: toolInput,
+    tool_use_id: toolUseID,
   };
   yield* TC({
     hookInput: c,
-    toolUseID: t,
-    matchQuery: e,
-    signal: s,
+    toolUseID: toolUseID,
+    matchQuery: toolName,
+    signal: signal,
     timeoutMs: i,
-    toolUseContext: r,
+    toolUseContext: toolUseContext,
   });
 }
 async function* Szt(e, t, n, r, o, s, i, a = lp, l) {
@@ -109,21 +117,30 @@ async function* tKt(e, t, n, r, o, s, i, a = lp) {
     toolUseContext: o,
   });
 }
-async function* executePermissionRequestHooks(e, t, n, r, o, s, i, a = lp) {
-  T(`executePermissionRequestHooks called for tool: ${e}`);
+async function* executePermissionRequestHooks(
+  toolName,
+  toolUseID,
+  toolInput,
+  toolUseContext,
+  permissionMode,
+  permissionSuggestions,
+  signal,
+  a = lp,
+) {
+  T(`executePermissionRequestHooks called for tool: ${toolName}`);
   let l = {
-    ...Td(o, void 0, r),
+    ...Td(permissionMode, void 0, toolUseContext),
     hook_event_name: "PermissionRequest",
-    tool_name: e,
-    tool_input: n,
-    permission_suggestions: s,
+    tool_name: toolName,
+    tool_input: toolInput,
+    permission_suggestions: permissionSuggestions,
   };
   yield* TC({
     hookInput: l,
-    toolUseID: t,
-    matchQuery: e,
-    signal: i,
+    toolUseID: toolUseID,
+    matchQuery: toolName,
+    signal: signal,
     timeoutMs: a,
-    toolUseContext: r,
+    toolUseContext: toolUseContext,
   });
 }

@@ -78,12 +78,14 @@ function createGetAppStateWithForkedToolScoping(e, t, n) {
     };
   };
 }
-async function prepareForkedCommandContext(e, t, n) {
-  let o = (await e.getPromptForCommand(t, n)).map((f) => (f.type === "text" ? f.text : "")).join(`
+async function prepareForkedCommandContext(command, args, context) {
+  let o = (await command.getPromptForCommand(args, context)).map((f) =>
+      f.type === "text" ? f.text : "",
+    ).join(`
 `),
-    s = wN(e.allowedTools ?? []),
-    i = wN(e.disallowedTools ?? []),
-    a = createGetAppStateWithForkedToolScoping(n.getAppState, s, i),
+    s = wN(command.allowedTools ?? []),
+    i = wN(command.disallowedTools ?? []),
+    a = createGetAppStateWithForkedToolScoping(context.getAppState, s, i),
     l = [
       ...(s.length === 0
         ? []
@@ -102,8 +104,8 @@ async function prepareForkedCommandContext(e, t, n) {
             },
           ]),
     ],
-    c = e.agent ?? "general-purpose",
-    u = n.options.agentDefinitions.activeAgents,
+    c = command.agent ?? "general-purpose",
+    u = context.options.agentDefinitions.activeAgents,
     d =
       u.find((f) => f.agentType === c) ?? u.find((f) => f.agentType === "general-purpose") ?? u[0];
   if (!d) throw Error("No agent available for forked execution");

@@ -57,37 +57,41 @@ function DZa() {
     throw Error("Files API is unavailable on third-party providers (data-residency)");
   if (T9("hipaa")) throw Error("Files API is unavailable for HIPAA-regulated organizations");
 }
-function logDebugError(e) {
-  T(`[files-api] ${e}`, {
+function logDebugError(message) {
+  T(`[files-api] ${message}`, {
     level: "error",
   });
 }
 function iAe(e) {
   T(`[files-api] ${e}`);
 }
-async function retryWithBackoff(e, t) {
+async function retryWithBackoff(operation, attemptFn) {
   let n = "";
   for (let r = 1; r <= S8n; r++) {
-    let o = await t(r);
+    let o = await attemptFn(r);
     if (o.done) return o.value;
-    if (((n = o.error || `${e} failed`), iAe(`${e} attempt ${r}/${S8n} failed: ${n}`), r < S8n)) {
+    if (
+      ((n = o.error || `${operation} failed`),
+      iAe(`${operation} attempt ${r}/${S8n} failed: ${n}`),
+      r < S8n)
+    ) {
       let s = CQp * Math.pow(2, r - 1);
-      (iAe(`Retrying ${e} in ${s}ms...`), await Nn(s));
+      (iAe(`Retrying ${operation} in ${s}ms...`), await Nn(s));
     }
   }
   throw Error(`${n} after ${S8n} attempts`);
 }
-async function downloadFile(e, t) {
+async function downloadFile(fileId, config) {
   DZa();
-  let r = `${t.baseUrl || getDefaultApiBaseUrl()}/v1/files/${e}/content`,
+  let r = `${config.baseUrl || getDefaultApiBaseUrl()}/v1/files/${fileId}/content`,
     o = {
-      Authorization: `Bearer ${t.oauthToken}`,
+      Authorization: `Bearer ${config.oauthToken}`,
       "anthropic-version": RZa,
       "anthropic-beta": kZa,
     };
   return (
-    iAe(`Downloading file ${e} from ${r}`),
-    retryWithBackoff(`Download file ${e}`, async () => {
+    iAe(`Downloading file ${fileId} from ${r}`),
+    retryWithBackoff(`Download file ${fileId}`, async () => {
       try {
         let s = await po.get(r, {
           headers: o,
@@ -97,15 +101,15 @@ async function downloadFile(e, t) {
         });
         if (s.status === 200)
           return (
-            iAe(`Downloaded file ${e} (${s.data.length} bytes)`),
+            iAe(`Downloaded file ${fileId} (${s.data.length} bytes)`),
             {
               done: true,
               value: Buffer.from(s.data),
             }
           );
-        if (s.status === 404) throw Error(`File not found: ${e}`);
+        if (s.status === 404) throw Error(`File not found: ${fileId}`);
         if (s.status === 401) throw Error("Authentication failed: invalid or missing API key");
-        if (s.status === 403) throw Error(`Access denied to file: ${e}`);
+        if (s.status === 403) throw Error(`Access denied to file: ${fileId}`);
         return {
           done: false,
           error: `status ${s.status}`,
@@ -120,20 +124,23 @@ async function downloadFile(e, t) {
     })
   );
 }
-function buildDownloadPath(e, t, n) {
-  let r = K5.normalize(n);
+function buildDownloadPath(basePath, sessionId, relativePath) {
+  let r = K5.normalize(relativePath);
   if (r.startsWith(".."))
-    return (logDebugError(`Invalid file path: ${n}. Path must not traverse above workspace`), null);
-  let o = K5.join(e, t, "uploads"),
-    i = [K5.join(e, t, "uploads") + K5.sep, K5.sep + "uploads" + K5.sep].find((l) =>
+    return (
+      logDebugError(`Invalid file path: ${relativePath}. Path must not traverse above workspace`),
+      null
+    );
+  let o = K5.join(basePath, sessionId, "uploads"),
+    i = [K5.join(basePath, sessionId, "uploads") + K5.sep, K5.sep + "uploads" + K5.sep].find((l) =>
       r.startsWith(l),
     ),
     a = i ? r.slice(i.length) : r;
   return K5.join(o, a);
 }
-async function downloadAndSaveFile(e, t) {
-  let { fileId: n, relativePath: r } = e,
-    o = buildDownloadPath($t(), t.sessionId, r);
+async function downloadAndSaveFile(attachment, config) {
+  let { fileId: n, relativePath: r } = attachment,
+    o = buildDownloadPath($t(), config.sessionId, r);
   if (!o)
     return {
       fileId: n,
@@ -142,7 +149,7 @@ async function downloadAndSaveFile(e, t) {
       error: `Invalid file path: ${r}`,
     };
   try {
-    let s = await downloadFile(n, t),
+    let s = await downloadFile(n, config),
       i = K5.dirname(o);
     return (
       await Tht.mkdir(i, {
@@ -184,38 +191,38 @@ async function LQp(e, t, n) {
   for (let l = 0; l < a; l++) i.push(s());
   return (await Promise.all(i), r);
 }
-async function downloadSessionFiles(e, t, n = RQp) {
-  if (e.length === 0) return [];
-  iAe(`Downloading ${e.length} file(s) for session ${t.sessionId}`);
+async function downloadSessionFiles(files, config, n = RQp) {
+  if (files.length === 0) return [];
+  iAe(`Downloading ${files.length} file(s) for session ${config.sessionId}`);
   let r = Date.now(),
-    o = await LQp(e, (a) => downloadAndSaveFile(a, t), n),
+    o = await LQp(files, (a) => downloadAndSaveFile(a, config), n),
     s = Date.now() - r,
     i = On(o, (a) => a.success);
-  if ((iAe(`Downloaded ${i}/${e.length} file(s) in ${s}ms`), i === e.length))
+  if ((iAe(`Downloaded ${i}/${files.length} file(s) in ${s}ms`), i === files.length))
     xe("api_files_download");
   else if (i > 0) It("api_files_download", "partial_failed");
   else Le("api_files_download", "all_failed");
   return o;
 }
-async function uploadFile(e, t, n, r) {
+async function uploadFile(filePath, relativePath, config, opts) {
   DZa();
-  let s = `${n.baseUrl || getDefaultApiBaseUrl()}/v1/files`,
+  let s = `${config.baseUrl || getDefaultApiBaseUrl()}/v1/files`,
     i = {
-      Authorization: `Bearer ${n.oauthToken}`,
+      Authorization: `Bearer ${config.oauthToken}`,
       "anthropic-version": RZa,
       "anthropic-beta": kZa,
     };
-  iAe(`Uploading file ${e} as ${t}`);
+  iAe(`Uploading file ${filePath} as ${relativePath}`);
   let a;
   try {
-    a = await Tht.readFile(e);
+    a = await Tht.readFile(filePath);
   } catch (f) {
     return (
       G("tengu_file_upload_failed", {
         error_type: We("file_read"),
       }),
       {
-        path: t,
+        path: relativePath,
         error: be(f),
         success: false,
       }
@@ -228,13 +235,13 @@ async function uploadFile(e, t, n, r) {
         error_type: We("file_too_large"),
       }),
       {
-        path: t,
+        path: relativePath,
         error: `File exceeds maximum size of ${IZa} bytes (actual: ${l})`,
         success: false,
       }
     );
   let c = `----FormBoundary${xZa.randomUUID()}`,
-    u = K5.basename(t),
+    u = K5.basename(relativePath),
     d = [];
   (d.push(
     Buffer.from(`--${c}\r
@@ -261,7 +268,7 @@ user_data\r
     ));
   let p = Buffer.concat(d);
   try {
-    return await retryWithBackoff(`Upload file ${t}`, async () => {
+    return await retryWithBackoff(`Upload file ${relativePath}`, async () => {
       try {
         let f = await po.post(s, p, {
           headers: {
@@ -270,7 +277,7 @@ user_data\r
             "Content-Length": p.length.toString(),
           },
           timeout: 120000,
-          signal: r?.signal,
+          signal: opts?.signal,
           validateStatus: (m) => m < 500,
         });
         if (f.status === 200 || f.status === 201) {
@@ -281,11 +288,11 @@ user_data\r
               error: "Upload succeeded but no file ID returned",
             };
           return (
-            iAe(`Uploaded file ${e} -> ${m} (${l} bytes)`),
+            iAe(`Uploaded file ${filePath} -> ${m} (${l} bytes)`),
             {
               done: true,
               value: {
-                path: t,
+                path: relativePath,
                 fileId: m,
                 size: l,
                 success: true,
@@ -332,7 +339,7 @@ user_data\r
   } catch (f) {
     if (f instanceof s8e)
       return {
-        path: t,
+        path: relativePath,
         error: f.message,
         success: false,
       };
@@ -341,16 +348,16 @@ user_data\r
         error_type: We("network"),
       }),
       {
-        path: t,
+        path: relativePath,
         error: be(f),
         success: false,
       }
     );
   }
 }
-function parseFileSpecs(e) {
+function parseFileSpecs(fileSpecs) {
   let t = [],
-    n = e.flatMap((r) => r.split(" ").filter(Boolean));
+    n = fileSpecs.flatMap((r) => r.split(" ").filter(Boolean));
   for (let r of n) {
     let o = r.indexOf(":");
     if (o === -1) continue;

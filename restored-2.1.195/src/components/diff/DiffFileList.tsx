@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SNo] deps: _i, Ye, Lo, oc, sr, vKe, LW, B_, Kut
 ((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));
-function DiffFileList(e) {
+function DiffFileList(t0) {
   let t = onr.c(36),
-    { files: n, selectedIndex: r } = e,
+    { files: n, selectedIndex: r } = t0,
     { columns: o } = br(),
     s;
   e: {
@@ -128,9 +128,9 @@ function DiffFileList(e) {
   else g = t[35];
   return g;
 }
-function FileItem(e) {
+function FileItem(t0) {
   let t = onr.c(14),
-    { file: n, isSelected: r, maxPathWidth: o } = e,
+    { file: n, isSelected: r, maxPathWidth: o } = t0,
     s;
   if (t[0] !== n.path || t[1] !== o) ((s = UV(n.path, o)), (t[0] = n.path), (t[1] = o), (t[2] = s));
   else s = t[2];

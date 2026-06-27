@@ -10,9 +10,9 @@ async function yao() {
   let e = Fjt.join(tr(), "session-env", Rt());
   return (await qt().mkdir(e), e);
 }
-async function getHookEnvFilePath(e, t) {
-  let n = e.toLowerCase();
-  return Fjt.join(await yao(), `${n}-hook-${t}.sh`);
+async function getHookEnvFilePath(hookEvent, hookIndex) {
+  let n = hookEvent.toLowerCase();
+  return Fjt.join(await yao(), `${n}-hook-${hookIndex}.sh`);
 }
 async function clearCwdEnvFiles() {
   try {

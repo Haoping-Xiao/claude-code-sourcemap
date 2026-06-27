@@ -179,8 +179,8 @@ function createBaseHookInput(e, t, n) {
     effort: a,
   };
 }
-function validateHookJson(e) {
-  let t = Ft(e),
+function validateHookJson(jsonString) {
+  let t = Ft(jsonString),
     n = XHt().safeParse(t);
   if (n.success)
     return (
@@ -242,13 +242,13 @@ async function persistHookOutput(e, t, n, r = zca) {
     s
   );
 }
-function parseHookOutput(e) {
-  let t = e.trim();
+function parseHookOutput(stdout) {
+  let t = stdout.trim();
   if (!t.startsWith("{"))
     return (
       T("Hook output does not start with {, treating as plain text"),
       {
-        plainText: e,
+        plainText: stdout,
       }
     );
   try {
@@ -299,7 +299,7 @@ ${De(
     return (
       T(r),
       {
-        plainText: e,
+        plainText: stdout,
         validationError: r,
       }
     );
@@ -307,13 +307,13 @@ ${De(
     return (
       T(`Failed to parse hook output as JSON: ${n}`),
       {
-        plainText: e,
+        plainText: stdout,
       }
     );
   }
 }
-function parseHttpHookOutput(e) {
-  let t = e.trim();
+function parseHttpHookOutput(body) {
+  let t = body.trim();
   if (t === "") {
     let n = XHt().safeParse({});
     if (n.success)
@@ -567,54 +567,67 @@ function processHookJSONOutput({
         }),
   };
 }
-async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
-  let p = t === "SessionStart" || t === "Setup" || t === "SessionEnd",
+async function execCommandHook(
+  hook,
+  hookEvent,
+  hookName,
+  jsonInput,
+  signal,
+  hookId,
+  hookIndex,
+  pluginRoot,
+  pluginId,
+  skillRoot,
+  forceSyncExecution,
+  requestPrompt,
+) {
+  let p = hookEvent === "SessionStart" || hookEvent === "Setup" || hookEvent === "SessionEnd",
     f = Date.now(),
     m,
     g = false,
     h = Vt() === "windows",
-    y = e.shell ?? XWe(),
+    y = hook.shell ?? XWe(),
     b = y === "powershell",
-    _ = e.args !== void 0;
-  if (_ && /\s/.test(e.command) && !/[\\/]/.test(e.command))
+    _ = hook.args !== void 0;
+  if (_ && /\s/.test(hook.command) && !/[\\/]/.test(hook.command))
     T(
-      `Hook command "${e.command}" has both "args" and whitespace in "command". Exec form treats "command" as a single executable name; move the rest into "args". Example: { "command": "node", "args": ["script.js"] }.`,
+      `Hook command "${hook.command}" has both "args" and whitespace in "command". Exec form treats "command" as a single executable name; move the rest into "args". Example: { "command": "node", "args": ["script.js"] }.`,
       {
         level: "warn",
       },
     );
   let S = h && !b && !_ ? (ge) => ge.replaceAll("\\", "/") : (ge) => ge,
     A = rc(),
-    v = e.command,
+    v = hook.command,
     C;
   for (let [ge, he] of [
-    ["CLAUDE_PLUGIN_ROOT", l || u],
-    ["CLAUDE_PLUGIN_DATA", l],
+    ["CLAUDE_PLUGIN_ROOT", pluginId || forceSyncExecution],
+    ["CLAUDE_PLUGIN_DATA", pluginId],
   ]) {
     if (he) continue;
     let ie = "${" + ge + "}";
-    if (!e.command.includes(ie) && !e.args?.some((He) => He.includes(ie))) continue;
-    let le = eTe(e);
+    if (!hook.command.includes(ie) && !hook.args?.some((He) => He.includes(ie))) continue;
+    let le = eTe(hook);
     throw Error(
-      u
+      forceSyncExecution
         ? `Hook command references \${${ge}} but only \${CLAUDE_PLUGIN_ROOT} is available for skill hooks (\${CLAUDE_PLUGIN_DATA} is plugin-only). Command: ${le}`
         : `Hook command references \${${ge}} but the hook is not associated with a plugin. This variable is only available in hooks defined in a plugin's hooks/hooks.json file, not in settings.json. Command: ${le}`,
     );
   }
-  if (l) {
-    if (!(await ed(l)))
+  if (pluginId) {
+    if (!(await ed(pluginId)))
       throw Error(
-        `Plugin directory does not exist: ${l}` +
-          (c ? ` (${c} \u2014 run /plugin to reinstall)` : ""),
+        `Plugin directory does not exist: ${pluginId}` +
+          (skillRoot ? ` (${skillRoot} \u2014 run /plugin to reinstall)` : ""),
       );
-    if (c) C = m$(c);
+    if (skillRoot) C = m$(skillRoot);
     if (!_) {
       if (b) {
-        let ge = S(l);
+        let ge = S(pluginId);
         v = v.replaceAll("${CLAUDE_PLUGIN_ROOT}", () => ge);
         let he = S(A);
-        if (((v = v.replaceAll("${CLAUDE_PROJECT_DIR}", () => he)), c)) {
-          let ie = S(Rue(c));
+        if (((v = v.replaceAll("${CLAUDE_PROJECT_DIR}", () => he)), skillRoot)) {
+          let ie = S(Rue(skillRoot));
           v = v.replaceAll("${CLAUDE_PLUGIN_DATA}", () => ie);
         }
       }
@@ -622,9 +635,9 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
     }
   }
   let x;
-  if (e.args !== void 0) {
-    let ge = l ?? u,
-      he = l && c ? c : void 0,
+  if (hook.args !== void 0) {
+    let ge = pluginId ?? forceSyncExecution,
+      he = pluginId && skillRoot ? skillRoot : void 0,
       ie = (le) => {
         if (!le.includes("${")) return le;
         if (((le = le.replaceAll("${CLAUDE_PROJECT_DIR}", () => A)), ge))
@@ -633,38 +646,41 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
         if (C) le = $Se(le, C);
         return le;
       };
-    x = [ie(e.command), e.args.map(ie)];
+    x = [ie(hook.command), hook.args.map(ie)];
   }
-  let I = eTe(e);
+  let I = eTe(hook);
   if (h && !b && !_) v = Bpn(v);
   let k =
       !b && !_ && process.env.CLAUDE_CODE_SHELL_PREFIX
         ? Z2n(process.env.CLAUDE_CODE_SHELL_PREFIX, v)
         : v,
-    D = e.timeout ? e.timeout * 1000 : lp,
+    D = hook.timeout ? hook.timeout * 1000 : lp,
     P = {
       ...DM(),
-      ...Upt(o),
+      ...Upt(signal),
       CLAUDE_PROJECT_DIR: S(A),
     },
     { columns: O, rows: L } = process.stdout;
   if (O) P.COLUMNS = String(O);
   if (L) P.LINES = String(L);
-  if (l) {
-    if (((P.CLAUDE_PLUGIN_ROOT = S(l)), c)) P.CLAUDE_PLUGIN_DATA = S(Rue(c));
+  if (pluginId) {
+    if (((P.CLAUDE_PLUGIN_ROOT = S(pluginId)), skillRoot)) P.CLAUDE_PLUGIN_DATA = S(Rue(skillRoot));
   }
-  if ((Object.assign(P, getAnthropicCredentialsForOfficialPluginHook(c)), C))
+  if ((Object.assign(P, getAnthropicCredentialsForOfficialPluginHook(skillRoot)), C))
     for (let [ge, he] of Object.entries(C)) {
       let ie = ge.replace(/[^A-Za-z0-9_]/g, "_").toUpperCase();
       P[`CLAUDE_PLUGIN_OPTION_${ie}`] = String(he);
     }
-  if (u) P.CLAUDE_PLUGIN_ROOT = S(u);
+  if (forceSyncExecution) P.CLAUDE_PLUGIN_ROOT = S(forceSyncExecution);
   if (
     !b &&
-    (t === "SessionStart" || t === "Setup" || t === "CwdChanged" || t === "FileChanged") &&
-    a !== void 0
+    (hookEvent === "SessionStart" ||
+      hookEvent === "Setup" ||
+      hookEvent === "CwdChanged" ||
+      hookEvent === "FileChanged") &&
+    pluginRoot !== void 0
   )
-    P.CLAUDE_ENV_FILE = await fca(t, a);
+    P.CLAUDE_ENV_FILE = await fca(hookEvent, pluginRoot);
   let M = $t(),
     N = (await ed(M)) ? M : yr();
   if (N !== M)
@@ -684,7 +700,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
     let ge = await d6();
     if (!ge)
       throw Error(
-        `Hook "${e.command}" has shell: 'powershell' but no PowerShell executable (pwsh or powershell) was found on PATH. Install PowerShell, or remove "shell": "powershell" to use bash.`,
+        `Hook "${hook.command}" has shell: 'powershell' but no PowerShell executable (pwsh or powershell) was found on PATH. Install PowerShell, or remove "shell": "powershell" to use bash.`,
       );
     $ = Nlr.spawn(ge, WGt(k), {
       env: P,
@@ -696,7 +712,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
     let ge = h ? Hhe() : null;
     if (h && !ge)
       throw Error(
-        `Hook "${e.command}" requires bash but Git Bash was not found. Install Git for Windows (https://git-scm.com/downloads/win), or add "shell": "powershell" to this hook's config.`,
+        `Hook "${hook.command}" requires bash but Git Bash was not found. Install Git for Windows (https://git-scm.com/downloads/win), or add "shell": "powershell" to this hook's config.`,
       );
     let he = h ? ge : true;
     if (h && ge) Npn(P, ge);
@@ -709,11 +725,11 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
     });
   }
   let q = new Tb(`hook_${$.pid}`, null),
-    W = rjn($, s, D, q),
+    W = rjn($, hookId, D, q),
     V = false,
     Y = false,
     z = !Ir() || _Ct();
-  if ((e.async || (e.asyncRewake && z)) && !d) {
+  if ((hook.async || (hook.asyncRewake && z)) && !requestPrompt) {
     let ge = `async_hook_${$.pid}`;
     T(`Hooks: Config-based async hook, backgrounding process ${ge}`);
     let he = (le) => {
@@ -724,7 +740,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
     $.stdin.on("error", he);
     try {
       ($.stdin.write(
-        r +
+        jsonInput +
           `
 `,
         "utf8",
@@ -737,19 +753,19 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
       ((Y = true),
       executeInBackground({
         processId: ge,
-        hookId: i,
+        hookId: hookIndex,
         shellCommand: W,
         asyncResponse: {
           async: true,
           asyncTimeout: D,
         },
-        hookEvent: t,
-        hookName: n,
+        hookEvent: hookEvent,
+        hookName: hookName,
         command: I,
-        asyncRewake: e.asyncRewake,
-        rewakeMessage: e.rewakeMessage,
-        rewakeSummary: e.rewakeSummary,
-        pluginId: c,
+        asyncRewake: hook.asyncRewake,
+        rewakeMessage: hook.rewakeMessage,
+        rewakeSummary: hook.rewakeSummary,
+        pluginId: skillRoot,
       }))
     )
       return {
@@ -776,19 +792,19 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
       ((ne = true), T(`Hooks: Checking first line for async: ${he}`));
       try {
         let ie = Ft(he);
-        if ((T(`Hooks: Parsed initial response: ${De(ie)}`), vme(ie) && !d)) {
+        if ((T(`Hooks: Parsed initial response: ${De(ie)}`), vme(ie) && !requestPrompt)) {
           let le = `async_hook_${$.pid}`;
           if (
             (T(`Hooks: Detected async hook, backgrounding process ${le}`),
             executeInBackground({
               processId: le,
-              hookId: i,
+              hookId: hookIndex,
               shellCommand: W,
               asyncResponse: ie,
-              hookEvent: t,
-              hookName: n,
+              hookEvent: hookEvent,
+              hookName: hookName,
               command: I,
-              pluginId: c,
+              pluginId: skillRoot,
             }))
           )
             ((V = true),
@@ -798,7 +814,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
                 output: J,
                 status: 0,
               }));
-        } else if (vme(ie) && d)
+        } else if (vme(ie) && requestPrompt)
           T("Hooks: Detected async hook but forceSyncExecution is true, waiting for completion");
         else T("Hooks: Initial response is not async, continuing normal processing");
       } catch (ie) {
@@ -810,9 +826,9 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
       ((Z += ge), (J += ge));
     }));
   let ee = DZn({
-      hookId: i,
-      hookName: n,
-      hookEvent: t,
+      hookId: hookIndex,
+      hookName: hookName,
+      hookEvent: hookEvent,
       getOutput: async () => ({
         stdout: K,
         stderr: Z,
@@ -832,7 +848,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
             he(ie);
           }),
             $.stdin.write(
-              r +
+              jsonInput +
                 `
 `,
               "utf8",
@@ -845,7 +861,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
     }),
     me = false;
   $.on("exit", () => {
-    if (!s.aborted) me = true;
+    if (!hookId.aborted) me = true;
   });
   let pe = new Promise((ge) => {
     let he = null;
@@ -857,7 +873,7 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
             stderr: Z,
             output: J,
             status: he,
-            aborted: s.aborted && !me,
+            aborted: hookId.aborted && !me,
           });
         }));
     });
@@ -865,8 +881,8 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
   try {
     if (p)
       In("info", "hook_spawn_started", {
-        hook_event_name: t,
-        index: a,
+        hook_event_name: hookEvent,
+        index: pluginRoot,
       });
     await Promise.race([de, Ee]);
     let ge = await Promise.race([re, pe, Ee]);
@@ -914,8 +930,8 @@ async function execCommandHook(e, t, n, r, o, s, i, a, l, c, u, d) {
   } finally {
     if (p)
       In("info", "hook_spawn_completed", {
-        hook_event_name: t,
-        index: a,
+        hook_event_name: hookEvent,
+        index: pluginRoot,
         duration_ms: Date.now() - f,
         exit_code: m,
         aborted: g,
@@ -948,23 +964,23 @@ function etm(e, t) {
     },
   );
 }
-function matchesPattern(e, t, n, r) {
-  if (!t || t === "*") return true;
-  if ((n ? /^[a-zA-Z0-9_|, -]+$/ : /^[a-zA-Z0-9_|]+$/).test(t))
-    return t
+function matchesPattern(matchQuery, matcher, n, r) {
+  if (!matcher || matcher === "*") return true;
+  if ((n ? /^[a-zA-Z0-9_|, -]+$/ : /^[a-zA-Z0-9_|]+$/).test(matcher))
+    return matcher
       .split(n ? /[|,]/ : "|")
       .map((i) => i.trim())
       .filter(Boolean)
       .flatMap((i) => omn(wD(i), r))
-      .includes(e);
+      .includes(matchQuery);
   try {
-    let s = new RegExp(t);
-    if (s.test(e)) return true;
-    for (let i of rmn(e)) if (s.test(i)) return true;
-    for (let i of smn(e, r)) if (s.test(i)) return true;
+    let s = new RegExp(matcher);
+    if (s.test(matchQuery)) return true;
+    for (let i of rmn(matchQuery)) if (s.test(i)) return true;
+    for (let i of smn(matchQuery, r)) if (s.test(i)) return true;
     return false;
   } catch {
-    return (T(`Invalid regex pattern in hook matcher: ${t}`), false);
+    return (T(`Invalid regex pattern in hook matcher: ${matcher}`), false);
   }
 }
 async function ntm(e, t) {
@@ -1100,77 +1116,77 @@ function hasHookForEvent(e, t, n) {
   if (t?.sessionHooks.get(n)?.hooks[e]) return true;
   return false;
 }
-async function getMatchingHooks(e, t, n, r, o) {
+async function getMatchingHooks(appState, sessionId, hookEvent, hookInput, tools) {
   try {
-    let s = otm(e, t, n),
+    let s = otm(appState, sessionId, hookEvent),
       i = void 0;
-    switch (r.hook_event_name) {
+    switch (hookInput.hook_event_name) {
       case "PreToolUse":
       case "PostToolUse":
       case "PostToolUseFailure":
       case "PermissionRequest":
       case "PermissionDenied":
-        i = r.tool_name;
+        i = hookInput.tool_name;
         break;
       case "UserPromptExpansion":
-        i = r.command_name;
+        i = hookInput.command_name;
         break;
       case "SessionStart":
-        i = r.source;
+        i = hookInput.source;
         break;
       case "Setup":
-        i = r.trigger;
+        i = hookInput.trigger;
         break;
       case "PreCompact":
       case "PostCompact":
-        i = r.trigger;
+        i = hookInput.trigger;
         break;
       case "Notification":
-        i = r.notification_type;
+        i = hookInput.notification_type;
         break;
       case "SessionEnd":
-        i = r.reason;
+        i = hookInput.reason;
         break;
       case "StopFailure":
-        i = r.error;
+        i = hookInput.error;
         break;
       case "SubagentStart":
-        i = r.agent_type;
+        i = hookInput.agent_type;
         break;
       case "SubagentStop":
-        i = r.agent_type;
+        i = hookInput.agent_type;
         break;
       case "TeammateIdle":
       case "TaskCreated":
       case "TaskCompleted":
         break;
       case "Elicitation":
-        i = r.mcp_server_name;
+        i = hookInput.mcp_server_name;
         break;
       case "ElicitationResult":
-        i = r.mcp_server_name;
+        i = hookInput.mcp_server_name;
         break;
       case "ConfigChange":
-        i = r.source;
+        i = hookInput.source;
         break;
       case "InstructionsLoaded":
-        i = r.load_reason;
+        i = hookInput.load_reason;
         break;
       case "FileChanged":
-        i = Nic.basename(r.file_path);
+        i = Nic.basename(hookInput.file_path);
         break;
       default:
         break;
     }
-    let a = Jem.has(r.hook_event_name);
-    for (let x of s) etm(n, x.matcher);
-    (T(`Getting matching hook commands for ${n} with query: ${i}`, {
+    let a = Jem.has(hookInput.hook_event_name);
+    for (let x of s) etm(hookEvent, x.matcher);
+    (T(`Getting matching hook commands for ${hookEvent} with query: ${i}`, {
       level: "verbose",
     }),
       T(`Found ${s.length} hook matchers in settings`, {
         level: "verbose",
       }));
-    let l = e?.toolPermissionContext.toolAliases,
+    let l = appState?.toolPermissionContext.toolAliases,
       u = (i ? s.filter((x) => !x.matcher || matchesPattern(i, x.matcher, a, l)) : s).flatMap(
         (x) => {
           let I = "pluginRoot" in x ? x.pluginRoot : void 0,
@@ -1254,7 +1270,7 @@ async function getMatchingHooks(e, t, n, r, o) {
             x.hook.type === "mcp_tool") &&
           x.hook.if,
       )
-        ? await ntm(r, o)
+        ? await ntm(hookInput, tools)
         : void 0,
       v = _.filter((x) => {
         if (
@@ -1270,7 +1286,7 @@ async function getMatchingHooks(e, t, n, r, o) {
         if (!A)
           return (
             T(
-              `Hook if condition "${I}" cannot be evaluated for non-tool event ${r.hook_event_name}`,
+              `Hook if condition "${I}" cannot be evaluated for non-tool event ${hookInput.hook_event_name}`,
             ),
             false
           );
@@ -1278,12 +1294,12 @@ async function getMatchingHooks(e, t, n, r, o) {
         return (T(`Skipping hook due to if condition "${I}" not matching`), false);
       }),
       C =
-        n === "SessionStart" || n === "Setup"
+        hookEvent === "SessionStart" || hookEvent === "Setup"
           ? v.filter((x) => {
               if (x.hook.type === "http")
                 return (
                   T(
-                    `Skipping HTTP hook ${x.hook.url} \u2014 HTTP hooks are not supported for ${n}`,
+                    `Skipping HTTP hook ${x.hook.url} \u2014 HTTP hooks are not supported for ${hookEvent}`,
                   ),
                   false
                 );
@@ -1303,28 +1319,28 @@ async function getMatchingHooks(e, t, n, r, o) {
     return [];
   }
 }
-function getPreToolHookBlockingMessage(e, t) {
-  return `${e} hook error: ${t.blockingError}`;
+function getPreToolHookBlockingMessage(hookName, blockingError) {
+  return `${hookName} hook error: ${blockingError.blockingError}`;
 }
-function getStopHookMessage(e) {
+function getStopHookMessage(blockingError) {
   return `Stop hook feedback:
-${e.blockingError}`;
+${blockingError.blockingError}`;
 }
-function getTeammateIdleHookMessage(e) {
+function getTeammateIdleHookMessage(blockingError) {
   return `TeammateIdle hook feedback:
-${e.blockingError}`;
+${blockingError.blockingError}`;
 }
-function getTaskCreatedHookMessage(e) {
+function getTaskCreatedHookMessage(blockingError) {
   return `TaskCreated hook feedback:
-${e.blockingError}`;
+${blockingError.blockingError}`;
 }
-function getTaskCompletedHookMessage(e) {
+function getTaskCompletedHookMessage(blockingError) {
   return `TaskCompleted hook feedback:
-${e.blockingError}`;
+${blockingError.blockingError}`;
 }
-function getUserPromptSubmitHookBlockingMessage(e) {
+function getUserPromptSubmitHookBlockingMessage(blockingError) {
   return `UserPromptSubmit operation blocked by hook:
-${e.blockingError}`;
+${blockingError.blockingError}`;
 }
 async function* executeHooks({
   hookInput: e,
@@ -2736,30 +2752,30 @@ function hasInstructionsLoadedHook() {
   if (t && t.length > 0) return true;
   return false;
 }
-function parseElicitationHookOutput(e, t) {
-  if (e.blocked && !e.succeeded)
+function parseElicitationHookOutput(result, expectedEventName) {
+  if (result.blocked && !result.succeeded)
     return {
       blockingError: {
-        blockingError: e.output || "Elicitation blocked by hook",
-        command: e.command,
+        blockingError: result.output || "Elicitation blocked by hook",
+        command: result.command,
       },
     };
-  if (!e.output.trim()) return {};
-  let n = e.output.trim();
+  if (!result.output.trim()) return {};
+  let n = result.output.trim();
   if (!n.startsWith("{")) return {};
   try {
     let r = XHt().parse(Ft(n));
     if (vme(r)) return {};
     if (!eO(r)) return {};
-    if (r.decision === "block" || e.blocked)
+    if (r.decision === "block" || result.blocked)
       return {
         blockingError: {
           blockingError: r.reason || "Elicitation blocked by hook",
-          command: e.command,
+          command: result.command,
         },
       };
     let o = r.hookSpecificOutput;
-    if (!o || o.hookEventName !== t) return {};
+    if (!o || o.hookEventName !== expectedEventName) return {};
     if (!o.action) return {};
     let i = {
       response: {
@@ -2771,17 +2787,17 @@ function parseElicitationHookOutput(e, t) {
       i.blockingError = {
         blockingError:
           r.reason ||
-          (t === "Elicitation"
+          (expectedEventName === "Elicitation"
             ? "Elicitation denied by hook"
             : "Elicitation result blocked by hook"),
-        command: e.command,
+        command: result.command,
       };
     return i;
   } catch {
     return {};
   }
 }
-async function executeStatusLineCommand(e, t, n = 5000, r = false) {
+async function executeStatusLineCommand(statusLineInput, signal, n = 5000, r = false) {
   if (Mj()) return;
   if (lc("statusLine")) return;
   if (shouldSkipHookDueToTrust()) {
@@ -2790,10 +2806,18 @@ async function executeStatusLineCommand(e, t, n = 5000, r = false) {
   }
   let o = nKe(jo()?.statusLine);
   if (!o || o.type !== "command") return;
-  let s = t || AbortSignal.timeout(n);
+  let s = signal || AbortSignal.timeout(n);
   try {
-    let i = De(e),
-      a = await execCommandHook(o, "StatusLine", "statusLine", i, Wqe(e), s, qYe.randomUUID());
+    let i = De(statusLineInput),
+      a = await execCommandHook(
+        o,
+        "StatusLine",
+        "statusLine",
+        i,
+        Wqe(statusLineInput),
+        s,
+        qYe.randomUUID(),
+      );
     if (a.aborted) return;
     let l = a.stderr.trim();
     if (l) T(`StatusLine [${o.command}] stderr: ${l}`);
@@ -2822,16 +2846,16 @@ async function executeStatusLineCommand(e, t, n = 5000, r = false) {
     return;
   }
 }
-async function executeFileSuggestionCommand(e, t, n = 5000) {
+async function executeFileSuggestionCommand(fileSuggestionInput, signal, n = 5000) {
   if (Mj()) return [];
   if (lc("fileSuggestion")) return [];
   if (shouldSkipHookDueToTrust())
     return (T("Skipping FileSuggestion command execution - workspace trust not accepted"), []);
   let r = Fer(jo()?.fileSuggestion);
   if (!r || r.type !== "command") return [];
-  let o = t || AbortSignal.timeout(n);
+  let o = signal || AbortSignal.timeout(n);
   try {
-    let s = De(e),
+    let s = De(fileSuggestionInput),
       i = {
         type: "command",
         command: r.command,
@@ -2841,7 +2865,7 @@ async function executeFileSuggestionCommand(e, t, n = 5000) {
         "FileSuggestion",
         "FileSuggestion",
         s,
-        Wqe(e),
+        Wqe(fileSuggestionInput),
         o,
         qYe.randomUUID(),
       );
@@ -2989,8 +3013,8 @@ function getTelemetryHookName(e, t) {
       return `${e}:${t}`;
   }
 }
-function getHookDefinitionsForTelemetry(e) {
-  return e.map(({ hook: t }) => {
+function getHookDefinitionsForTelemetry(matchedHooks) {
+  return matchedHooks.map(({ hook: t }) => {
     if (t.type === "command")
       return {
         type: "command",

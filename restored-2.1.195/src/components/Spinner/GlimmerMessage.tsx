@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aJa] deps: ZS, Ye, Pne
 ((wXp = R(lt(), 1)), (CXp = R(se(), 1)));
-function GlimmerMessage(e) {
+function GlimmerMessage(t0) {
   let t = lJa.c(102),
     {
       message: n,
@@ -17,7 +17,7 @@ function GlimmerMessage(e) {
       shimmerColor: a,
       stalledIntensity: l,
       thinkingIntensity: c,
-    } = e,
+    } = t0,
     u = l === void 0 ? 0 : l,
     d = c === void 0 ? 0 : c,
     p = GD(),

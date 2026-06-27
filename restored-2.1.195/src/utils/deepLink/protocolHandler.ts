@@ -66,11 +66,11 @@ function waitForUrlEvent(e) {
 }
 var Emr = null;
 var k1c = () => {};
-async function handleDeepLinkUri(e) {
-  T(`Handling deep link URI: ${e}`);
+async function handleDeepLinkUri(uri) {
+  T(`Handling deep link URI: ${uri}`);
   let t;
   try {
-    t = CSc(e);
+    t = CSc(uri);
   } catch (a) {
     let l = a instanceof Error ? a.message : String(a);
     return (console.error(`Deep link error: ${l}`), Le("deep_link_handle", "parse_failed"), 1);
@@ -112,23 +112,23 @@ async function handleUrlSchemeLaunch() {
     return null;
   }
 }
-async function resolveCwd(e) {
-  if (e.cwd)
+async function resolveCwd(action) {
+  if (action.cwd)
     return {
-      cwd: e.cwd,
+      cwd: action.cwd,
     };
-  if (e.repo) {
-    let t = Zfr(e.repo),
+  if (action.repo) {
+    let t = Zfr(action.repo),
       n = await emr(t);
     if (n[0])
       return (
-        T(`Resolved repo ${e.repo} \u2192 ${n[0]}`),
+        T(`Resolved repo ${action.repo} \u2192 ${n[0]}`),
         {
           cwd: n[0],
-          resolvedRepo: e.repo,
+          resolvedRepo: action.repo,
         }
       );
-    T(`No local clone found for repo ${e.repo}, falling back to home`);
+    T(`No local clone found for repo ${action.repo}, falling back to home`);
   }
   return {
     cwd: L1c.homedir(),

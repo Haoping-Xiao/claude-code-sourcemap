@@ -4,11 +4,11 @@
 // class=modified  jaccard=0.282  score=0.5756  fileCov=0.3561
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function userFacingName(e) {
-  if (!e) return "Update";
-  if (e.file_path?.startsWith(gS())) return "Updated plan";
-  if (e.edits != null) return "Update";
-  if (e.old_string === "") return "Create";
+function userFacingName(input) {
+  if (!input) return "Update";
+  if (input.file_path?.startsWith(gS())) return "Updated plan";
+  if (input.edits != null) return "Update";
+  if (input.old_string === "") return "Create";
   return "Update";
 }
 function gDo(e) {
@@ -25,7 +25,7 @@ function avl({ file_path: e }, { verbose: t }) {
 }
 function renderToolResultMessage(
   { filePath: e = "", structuredPatch: t, originalFile: n },
-  r,
+  _progressMessagesForMessage,
   { style: o, verbose: s },
 ) {
   if (!e) return null;
@@ -70,10 +70,10 @@ function cvl(e, t) {
     verbose: r,
   });
 }
-function renderToolUseErrorMessage(e, t) {
-  let { verbose: n } = t;
-  if (!n && typeof e === "string" && xl(e, "tool_use_error")) {
-    let r = xl(e, "tool_use_error");
+function renderToolUseErrorMessage(result, options) {
+  let { verbose: n } = options;
+  if (!n && typeof result === "string" && xl(result, "tool_use_error")) {
+    let r = xl(result, "tool_use_error");
     if (r?.includes("File has not been read yet"))
       return ON.jsx(qn, {
         children: ON.jsx(w, {
@@ -96,7 +96,7 @@ function renderToolUseErrorMessage(e, t) {
     });
   }
   return ON.jsx(AT, {
-    result: e,
+    result: result,
     verbose: n,
   });
 }

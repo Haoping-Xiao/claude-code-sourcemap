@@ -700,9 +700,9 @@ function DiscoverPlugins({
     ],
   });
 }
-function DiscoverPluginsKeyHint(e) {
+function DiscoverPluginsKeyHint(t0) {
   let t = YBo.c(12),
-    { hasSelection: n, canToggle: r, canView: o } = e,
+    { hasSelection: n, canToggle: r, canView: o } = t0,
     s;
   if (t[0] !== n)
     ((s =
@@ -779,9 +779,9 @@ function DiscoverPluginsKeyHint(e) {
   else u = t[11];
   return u;
 }
-function EmptyStateMessage(e) {
+function EmptyStateMessage(t0) {
   let t = YBo.c(7),
-    { reason: n } = e;
+    { reason: n } = t0;
   switch (n) {
     case "git-not-installed": {
       let r;

@@ -29,23 +29,26 @@ async function UNf() {
   }
   return n;
 }
-async function updatePlugin(e, t, n) {
+async function updatePlugin(pluginId, installations, n) {
   let r = false,
     o = false,
     s = null;
-  for (let { scope: i } of t)
+  for (let { scope: i } of installations)
     try {
-      let a = await YEt(e, i);
+      let a = await YEt(pluginId, i);
       if (a.success && !a.alreadyUpToDate && !a.skipped)
-        ((r = true), T(`Plugin autoupdate: updated ${e} from ${a.oldVersion} to ${a.newVersion}`));
+        ((r = true),
+          T(`Plugin autoupdate: updated ${pluginId} from ${a.oldVersion} to ${a.newVersion}`));
       else if (a.skipped) {
-        if ((T(`Plugin autoupdate: ${e} ${a.message}`), a.blockedBy && a.blockedBy.length > 0)) {
+        if (
+          (T(`Plugin autoupdate: ${pluginId} ${a.message}`), a.blockedBy && a.blockedBy.length > 0)
+        ) {
           let l = a.blockedBy.map((u) => Qo(u).name),
             c = a.blockedBy.filter((u) => n.has(u)).map((u) => Qo(u).name);
           s = {
             type: "autoupdate-blocked-by-pinner",
-            source: e,
-            plugin: Qo(e).name,
+            source: pluginId,
+            plugin: Qo(pluginId).name,
             heldAt: a.oldVersion,
             blockedBy: l,
             disabledPinners: c,
@@ -53,17 +56,17 @@ async function updatePlugin(e, t, n) {
         }
       } else if (!a.alreadyUpToDate)
         ((o = true),
-          T(`Plugin autoupdate: failed to update ${e}: ${a.message}`, {
+          T(`Plugin autoupdate: failed to update ${pluginId}: ${a.message}`, {
             level: "warn",
           }));
     } catch (a) {
       ((o = true),
-        T(`Plugin autoupdate: error updating ${e}: ${be(a)}`, {
+        T(`Plugin autoupdate: error updating ${pluginId}: ${be(a)}`, {
           level: "warn",
         }));
     }
   return {
-    updated: r ? e : null,
+    updated: r ? pluginId : null,
     blocked: s,
     failed: o,
   };

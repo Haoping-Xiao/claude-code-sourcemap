@@ -37,32 +37,32 @@ function aat(e, t, n) {
 }
 var EWi,
   FGd,
-  renderBorder = (e, t, n, r) => {
-    if (n.style.borderStyle) {
-      let o = Math.floor(n.yogaNode.getComputedWidth()),
-        s = Math.floor(n.yogaNode.getComputedHeight()),
+  renderBorder = (e, t, node, output) => {
+    if (node.style.borderStyle) {
+      let o = Math.floor(node.yogaNode.getComputedWidth()),
+        s = Math.floor(node.yogaNode.getComputedHeight()),
         i =
-          typeof n.style.borderStyle === "string"
-            ? (FGd[n.style.borderStyle] ?? EWi.default[n.style.borderStyle])
-            : n.style.borderStyle,
-        a = n.style.borderTopColor ?? n.style.borderColor,
-        l = n.style.borderBottomColor ?? n.style.borderColor,
-        c = n.style.borderLeftColor ?? n.style.borderColor,
-        u = n.style.borderRightColor ?? n.style.borderColor,
-        d = n.style.borderTopDimColor ?? n.style.borderDimColor,
-        p = n.style.borderBottomDimColor ?? n.style.borderDimColor,
-        f = n.style.borderLeftDimColor ?? n.style.borderDimColor,
-        m = n.style.borderRightDimColor ?? n.style.borderDimColor,
-        g = n.style.borderTop !== false,
-        h = n.style.borderBottom !== false,
-        y = n.style.borderLeft !== false,
-        b = n.style.borderRight !== false,
+          typeof node.style.borderStyle === "string"
+            ? (FGd[node.style.borderStyle] ?? EWi.default[node.style.borderStyle])
+            : node.style.borderStyle,
+        a = node.style.borderTopColor ?? node.style.borderColor,
+        l = node.style.borderBottomColor ?? node.style.borderColor,
+        c = node.style.borderLeftColor ?? node.style.borderColor,
+        u = node.style.borderRightColor ?? node.style.borderColor,
+        d = node.style.borderTopDimColor ?? node.style.borderDimColor,
+        p = node.style.borderBottomDimColor ?? node.style.borderDimColor,
+        f = node.style.borderLeftDimColor ?? node.style.borderDimColor,
+        m = node.style.borderRightDimColor ?? node.style.borderDimColor,
+        g = node.style.borderTop !== false,
+        h = node.style.borderBottom !== false,
+        y = node.style.borderLeft !== false,
+        b = node.style.borderRight !== false,
         _ = Math.max(0, o - (y ? 1 : 0) - (b ? 1 : 0)),
         S = g ? (y ? i.topLeft : "") + i.top.repeat(_) + (b ? i.topRight : "") : "",
-        A = Array.isArray(n.style.borderText)
-          ? n.style.borderText
-          : n.style.borderText
-            ? [n.style.borderText]
+        A = Array.isArray(node.style.borderText)
+          ? node.style.borderText
+          : node.style.borderText
+            ? [node.style.borderText]
             : [],
         v = A.find((M) => M.position === "top"),
         C = A.find((M) => M.position === "bottom"),
@@ -94,10 +94,10 @@ var EWi,
         O = aat(M, l, p) + N + aat(B, l, p);
       } else if (h) O = aat(P, l, p);
       let L = g ? 1 : 0;
-      if (x) r.write(e, t, x);
-      if (y) r.write(e, t + L, k);
-      if (b) r.write(e + o - 1, t + L, D);
-      if (O) r.write(e, t + s - 1, O);
+      if (x) output.write(e, t, x);
+      if (y) output.write(e, t + L, k);
+      if (b) output.write(e + o - 1, t + L, D);
+      if (O) output.write(e, t + s - 1, O);
     }
   },
   AWi;

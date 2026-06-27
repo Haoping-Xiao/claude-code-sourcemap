@@ -6,9 +6,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ULc] deps: ft, Ye, id, yde, uo, je, fn, gz
 ((NLc = R(lt(), 1)), (pvt = R(rt(), 1)));
-async function isBinaryInstalled(e) {
-  if (!e || !e.trim()) return (T("[binaryCheck] Empty command provided, returning false"), false);
-  let t = e.trim();
+async function isBinaryInstalled(command) {
+  if (!command || !command.trim())
+    return (T("[binaryCheck] Empty command provided, returning false"), false);
+  let t = command.trim();
   if (!oCm.test(t))
     return (T(`[binaryCheck] Rejected command with unsafe characters: '${t}'`), false);
   let n = FLc.get(t);

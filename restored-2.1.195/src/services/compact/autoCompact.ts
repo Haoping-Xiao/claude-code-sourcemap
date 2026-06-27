@@ -9,29 +9,29 @@ Tq = class Tq extends Error {};
 function Pwf(e) {
   return e instanceof Tq || K1(be(e)) || Xie(e, cZn) || Xie(e, bMo);
 }
-function autoCompactIfNeeded(e, t, n) {
-  let r = (e?.consecutiveFailures ?? 0) + 1;
+function autoCompactIfNeeded(messages, toolUseContext, cacheSafeParams) {
+  let r = (messages?.consecutiveFailures ?? 0) + 1;
   if (r >= Lkl)
     (T(
-      `autocompact: circuit breaker tripped after ${r} consecutive failures${t ? " (reactive path)" : ""} \u2014 skipping future attempts this session`,
+      `autocompact: circuit breaker tripped after ${r} consecutive failures${toolUseContext ? " (reactive path)" : ""} \u2014 skipping future attempts this session`,
       {
         level: "warn",
       },
     ),
       G("tengu_auto_compact_circuit_breaker", {
         consecutiveFailures: r,
-        ...(t && {
-          routedThroughReactive: t,
+        ...(toolUseContext && {
+          routedThroughReactive: toolUseContext,
         }),
-        ...(n && {
-          thresholdSource: $e(n),
+        ...(cacheSafeParams && {
+          thresholdSource: $e(cacheSafeParams),
         }),
       }));
   return {
     kind: "failed",
     consecutiveFailures: r,
-    routedThroughReactive: t,
-    thresholdSource: n,
+    routedThroughReactive: toolUseContext,
+    thresholdSource: cacheSafeParams,
   };
 }
 function Mwf(e, t, n, r = 0) {
@@ -69,15 +69,15 @@ function Mwf(e, t, n, r = 0) {
 function $wf() {
   return ut(process.env.CLAUDE_CODE_COLD_COMPACT);
 }
-async function shouldAutoCompact(e, t, n, r, o = 0) {
+async function shouldAutoCompact(messages, model, querySource, r, o = 0) {
   if (Gct(r)) return false;
   if (tLe(r)) return false;
   if (!pC()) return false;
-  if ($X() && !nLe(t, n)) return false;
-  let s = eA(e, rH(t)) - o,
-    i = rLe(s, t, n);
+  if ($X() && !nLe(model, querySource)) return false;
+  let s = eA(messages, rH(model)) - o,
+    i = rLe(s, model, querySource);
   return (
-    T(`autocompact: tokens=${s} level=${i.level} effectiveWindow=${are(t, n)}`),
+    T(`autocompact: tokens=${s} level=${i.level} effectiveWindow=${are(model, querySource)}`),
     i.level === "compact" || i.level === "blocked"
   );
 }

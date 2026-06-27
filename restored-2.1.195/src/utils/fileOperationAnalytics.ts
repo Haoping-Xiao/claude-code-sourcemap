@@ -12,14 +12,15 @@ function ief(e) {
 function aef(e) {
   return kh(Dvo.createHash("sha256").update(e).digest("hex"));
 }
-function logFileOperation(e) {
+function logFileOperation(params) {
   let t = {
-    operation: $e(e.operation),
-    tool: $e(e.tool),
-    filePathHash: ief(e.filePath),
+    operation: $e(params.operation),
+    tool: $e(params.tool),
+    filePathHash: ief(params.filePath),
   };
-  if (e.content !== void 0 && e.content.length <= lef) t.contentHash = aef(e.content);
-  if (e.type !== void 0) t.type = $e(e.type);
+  if (params.content !== void 0 && params.content.length <= lef)
+    t.contentHash = aef(params.content);
+  if (params.type !== void 0) t.type = $e(params.type);
   G("tengu_file_operation", t);
 }
 var Dvo,

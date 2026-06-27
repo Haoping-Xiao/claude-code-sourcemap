@@ -131,8 +131,8 @@ function tE(e) {
     );
   }
 }
-function convertToSandboxRuntimeConfig(e) {
-  let t = e.permissions || {},
+function convertToSandboxRuntimeConfig(settings) {
+  let t = settings.permissions || {},
     n = zee(),
     r = n.some(($) => $.sandbox?.network?.allowManagedDomainsOnly === true),
     o = n.some(($) => $.sandbox?.filesystem?.allowManagedReadPathsOnly === true),
@@ -148,7 +148,7 @@ function convertToSandboxRuntimeConfig(e) {
       }
     }
   else {
-    for (let $ of e.sandbox?.network?.allowedDomains || []) s.push($);
+    for (let $ of settings.sandbox?.network?.allowedDomains || []) s.push($);
     for (let $ of t.allow || []) {
       let q = MWe($);
       if (q.toolName === Sb && q.ruleContent?.startsWith("domain:"))
@@ -156,7 +156,7 @@ function convertToSandboxRuntimeConfig(e) {
     }
     for (let $ of sOn) s.push($);
   }
-  for (let $ of e.sandbox?.network?.deniedDomains || []) i.push($);
+  for (let $ of settings.sandbox?.network?.deniedDomains || []) i.push($);
   for (let $ of t.deny || []) {
     let q = MWe($);
     if (q.toolName === Sb && q.ruleContent?.startsWith("domain:"))
@@ -209,7 +209,7 @@ function convertToSandboxRuntimeConfig(e) {
     }
   }
   cct.length = 0;
-  let h = new Set([...(e.permissions?.additionalDirectories || []), ...c0()]),
+  let h = new Set([...(settings.permissions?.additionalDirectories || []), ...c0()]),
     y = ["HEAD", "objects", "refs"],
     b = ["hooks", "config"],
     _ = Vt() === "macos",
@@ -368,7 +368,7 @@ function convertToSandboxRuntimeConfig(e) {
         }
       : void 0,
     { rgPath: D, rgArgs: P, argv0: O } = DWe(),
-    L = e.sandbox?.ripgrep ?? {
+    L = settings.sandbox?.ripgrep ?? {
       command: D,
       args: P,
       argv0: O,
@@ -383,12 +383,12 @@ function convertToSandboxRuntimeConfig(e) {
         : {
             allowedDomains: s,
             deniedDomains: i,
-            allowUnixSockets: e.sandbox?.network?.allowUnixSockets,
-            allowAllUnixSockets: e.sandbox?.network?.allowAllUnixSockets,
-            allowLocalBinding: e.sandbox?.network?.allowLocalBinding,
-            allowMachLookup: e.sandbox?.network?.allowMachLookup,
-            httpProxyPort: e.sandbox?.network?.httpProxyPort,
-            socksProxyPort: e.sandbox?.network?.socksProxyPort,
+            allowUnixSockets: settings.sandbox?.network?.allowUnixSockets,
+            allowAllUnixSockets: settings.sandbox?.network?.allowAllUnixSockets,
+            allowLocalBinding: settings.sandbox?.network?.allowLocalBinding,
+            allowMachLookup: settings.sandbox?.network?.allowMachLookup,
+            httpProxyPort: settings.sandbox?.network?.httpProxyPort,
+            socksProxyPort: settings.sandbox?.network?.socksProxyPort,
           },
     B = {
       denyRead: u,
@@ -402,10 +402,10 @@ function convertToSandboxRuntimeConfig(e) {
   return {
     network: N,
     filesystem: B,
-    ignoreViolations: e.sandbox?.ignoreViolations,
+    ignoreViolations: settings.sandbox?.ignoreViolations,
     credentials: k,
-    enableWeakerNestedSandbox: bI() && fce() ? false : e.sandbox?.enableWeakerNestedSandbox,
-    enableWeakerNetworkIsolation: e.sandbox?.enableWeakerNetworkIsolation,
+    enableWeakerNestedSandbox: bI() && fce() ? false : settings.sandbox?.enableWeakerNestedSandbox,
+    enableWeakerNetworkIsolation: settings.sandbox?.enableWeakerNetworkIsolation,
     allowAppleEvents: [...n, yn("flagSettings"), Om("userSettings") ? yn("userSettings") : null]
       .map(($) => $?.sandbox?.allowAppleEvents)
       .find(($) => $ !== void 0),
@@ -638,17 +638,17 @@ async function Inp(e, t, n, r) {
     throw o;
   }
 }
-async function initialize(e) {
+async function initialize(sandboxAskCallback) {
   if (Hue) return Hue;
   if (!uOn()) return;
-  let t = e
+  let t = sandboxAskCallback
     ? async (n) => {
         if (shouldAllowManagedSandboxDomainsOnly())
           return (
             T(`[sandbox] Blocked network request to ${n.host} (allowManagedDomainsOnly)`),
             false
           );
-        return e(n);
+        return sandboxAskCallback(n);
       }
     : void 0;
   return (
@@ -697,12 +697,14 @@ async function xnp() {
     cS.reset()
   );
 }
-function addToExcludedCommands(e, t) {
+function addToExcludedCommands(command, permissionUpdates) {
   let n = yn("localSettings"),
     r = n?.sandbox?.excludedCommands || [],
-    o = e;
-  if (t) {
-    let s = t.filter((i) => i.type === "addRules" && i.rules.some((a) => a.toolName === Co));
+    o = command;
+  if (permissionUpdates) {
+    let s = permissionUpdates.filter(
+      (i) => i.type === "addRules" && i.rules.some((a) => a.toolName === Co),
+    );
     if (s.length > 0 && s[0].type === "addRules") {
       let i = s[0].rules.find((a) => a.toolName === Co);
       if (i?.ruleContent) o = gnp(i.ruleContent) || i.ruleContent;

@@ -31,10 +31,10 @@ function _5d() {
   };
   return e;
 }
-function logCustomBindingsLoadedOncePerDay(e, t) {
+function logCustomBindingsLoadedOncePerDay(userBindingCount, t) {
   let n = new Date().toISOString().slice(0, 10);
-  if (e.lastCustomBindingsLogDate === n) return;
-  ((e.lastCustomBindingsLogDate = n),
+  if (userBindingCount.lastCustomBindingsLogDate === n) return;
+  ((userBindingCount.lastCustomBindingsLogDate = n),
     G("tengu_custom_keybindings_loaded", {
       user_binding_count: t,
     }));
@@ -289,25 +289,25 @@ async function initializeKeybindingWatcher(e) {
     Ci(e),
     xe("keybinding_watcher_init"));
 }
-async function handleChange(e, t) {
+async function handleChange(path, t) {
   T(`[keybindings] Detected change to ${t}`);
   try {
-    let n = await loadKeybindings(e);
-    ((e.bindings = n.bindings),
-      (e.warnings = n.warnings),
-      e.changed.emit(n),
+    let n = await loadKeybindings(path);
+    ((path.bindings = n.bindings),
+      (path.warnings = n.warnings),
+      path.changed.emit(n),
       xe("keybinding_hot_reload"));
   } catch (n) {
     (T(`[keybindings] Error reloading: ${be(n)}`),
       It("keybinding_hot_reload", "keybinding_reload_failed"));
   }
 }
-function handleDelete(e, t) {
+function handleDelete(path, t) {
   T(`[keybindings] Detected deletion of ${t}`);
   let n = sQr();
-  ((e.bindings = n),
-    (e.warnings = []),
-    e.changed.emit({
+  ((path.bindings = n),
+    (path.warnings = []),
+    path.changed.emit({
       bindings: n,
       warnings: [],
     }));

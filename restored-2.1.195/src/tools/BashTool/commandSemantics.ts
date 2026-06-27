@@ -66,8 +66,8 @@ function Yvl(e, t, n, r) {
     message: s.message,
   };
 }
-var DEFAULT_SEMANTIC = (e, t, n) => ({
-    isError: e !== 0,
-    message: e !== 0 ? `Command failed with exit code ${e}` : void 0,
+var DEFAULT_SEMANTIC = (exitCode, _stdout, _stderr) => ({
+    isError: exitCode !== 0,
+    message: exitCode !== 0 ? `Command failed with exit code ${exitCode}` : void 0,
   }),
   BEf;

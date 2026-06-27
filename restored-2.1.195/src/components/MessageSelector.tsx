@@ -8,8 +8,8 @@
 // [unwrapped __esm module Ngc] deps: ft, ft, SC, QXn, loe, Rur, sVe, xur, GF, Zf, Ed, Ye, ag, rSe, id, Un, kt, Cre, cqe, a5, Yfe, Hur, uo, gq, pMe, IL, fd, Ld, er, Lo, je, BR, At, NE, sF, vn, bm, YZt, co, Ao, vM, DE, __, tA, y_, _a, q8t, xNt, HN
 ((bE = R(rt(), 1)), (Dme = R(se(), 1)));
 $gc = Promise.resolve();
-function isSummarizeOption(e) {
-  return e === "summarize" || e === "summarize_up_to";
+function isSummarizeOption(option) {
+  return option === "summarize" || option === "summarize_up_to";
 }
 function MessageSelector({
   messages: e,
@@ -507,8 +507,8 @@ ${le}`);
     ],
   });
 }
-function getRestoreOptionConversationText(e) {
-  switch (e) {
+function getRestoreOptionConversationText(option) {
+  switch (option) {
     case "summarize":
       return "Messages after this point will be summarized.";
     case "summarize_up_to":
@@ -566,9 +566,9 @@ function jum(e) {
   else c = t[10];
   return c;
 }
-function RestoreCodeConfirmation(e) {
+function RestoreCodeConfirmation(t0) {
   let t = Mur.c(15),
-    { diffStatsForRestore: n } = e;
+    { diffStatsForRestore: n } = t0;
   if (n === void 0) return;
   if (!n.filesChanged || !n.filesChanged[0]) {
     let a;
@@ -631,9 +631,9 @@ function RestoreCodeConfirmation(e) {
   else i = t[14];
   return i;
 }
-function UserMessageOption(e) {
+function UserMessageOption(t0) {
   let t = Mur.c(30),
-    { userMessage: n, color: r, dimColor: o, isCurrent: s, paddingRight: i } = e,
+    { userMessage: n, color: r, dimColor: o, isCurrent: s, paddingRight: i } = t0,
     { columns: a } = br();
   if (s) {
     let b;
@@ -833,9 +833,9 @@ function Wum(e, t, n) {
     deletions: a,
   };
 }
-function messagesAfterAreOnlySynthetic(e, t) {
-  for (let n = t + 1; n < e.length; n++) {
-    let r = e[n];
+function messagesAfterAreOnlySynthetic(messages, fromIndex) {
+  for (let n = fromIndex + 1; n < messages.length; n++) {
+    let r = messages[n];
     if (!r) continue;
     if (KAe(r)) continue;
     if (Sht(r)) continue;

@@ -100,11 +100,11 @@ function dgl(e) {
     taskId: e.taskId
   });
 }
-function InProcessTeammateDetailDialog(e) {
+function InProcessTeammateDetailDialog(t0) {
   let t = o0o.c(21),
     {
       taskId: n
-    } = e,
+    } = t0,
     r;
   if (t[0] !== n) r = i => i.tasks[n], t[0] = n, t[1] = r;else r = t[1];
   let o = dT(r);

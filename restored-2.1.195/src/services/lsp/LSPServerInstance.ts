@@ -17,14 +17,14 @@ function kkp(e, t) {
   }
   return n ?? null;
 }
-function createLSPServerInstance(e, t) {
-  if (t.restartOnCrash !== void 0)
+function createLSPServerInstance(name, config) {
+  if (config.restartOnCrash !== void 0)
     throw Error(
-      `LSP server '${e}': restartOnCrash is not yet implemented. Remove this field from the configuration.`,
+      `LSP server '${name}': restartOnCrash is not yet implemented. Remove this field from the configuration.`,
     );
-  if (t.shutdownTimeout !== void 0)
+  if (config.shutdownTimeout !== void 0)
     throw Error(
-      `LSP server '${e}': shutdownTimeout is not yet implemented. Remove this field from the configuration.`,
+      `LSP server '${name}': shutdownTimeout is not yet implemented. Remove this field from the configuration.`,
     );
   let { createLSPClient: n } = (LDa(), ro(RDa)),
     r = "stopped",
@@ -33,16 +33,16 @@ function createLSPServerInstance(e, t) {
     i = 0,
     a = 0,
     l = false,
-    c = n(e, (b) => {
+    c = n(name, (b) => {
       ((r = "error"), (s = b), a++, It("lsp_server_start", "lsp_server_crashed"));
     });
   async function u() {
     if (r === "running" || r === "starting") return;
-    let b = t.maxRestarts ?? 3;
+    let b = config.maxRestarts ?? 3;
     if (r === "error" && a > b) {
       if (!l)
         ((l = true),
-          (s = Error(`LSP server '${e}' exceeded max crash recovery attempts (${b})`)),
+          (s = Error(`LSP server '${name}' exceeded max crash recovery attempts (${b})`)),
           T(s.message, {
             level: "error",
           }),
@@ -52,21 +52,21 @@ function createLSPServerInstance(e, t) {
     let _;
     try {
       ((r = "starting"),
-        T(`Starting LSP server instance: ${e}`),
-        await c.start(t.command, t.args || [], {
-          env: t.env,
-          cwd: t.workspaceFolder,
+        T(`Starting LSP server instance: ${name}`),
+        await c.start(config.command, config.args || [], {
+          env: config.env,
+          cwd: config.workspaceFolder,
         }),
         c.onRequest(
           "workspace/configuration",
           (C) => (
             T(
-              `LSP: Received workspace/configuration request from ${e} for sections: ${C.items.map((x) => x.section ?? "<root>").join(", ")}`,
+              `LSP: Received workspace/configuration request from ${name} for sections: ${C.items.map((x) => x.section ?? "<root>").join(", ")}`,
             ),
-            C.items.map((x) => kkp(t.settings, x.section))
+            C.items.map((x) => kkp(config.settings, x.section))
           ),
         ));
-      let S = t.workspaceFolder || $t(),
+      let S = config.workspaceFolder || $t(),
         A = PDa.pathToFileURL(S).href,
         v = {
           processId: process.pid,
@@ -83,7 +83,7 @@ function createLSPServerInstance(e, t) {
               GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
             }.VERSION,
           },
-          initializationOptions: t.initializationOptions ?? {},
+          initializationOptions: config.initializationOptions ?? {},
           workspaceFolders: [
             {
               uri: A,
@@ -94,7 +94,7 @@ function createLSPServerInstance(e, t) {
           rootUri: A,
           capabilities: {
             workspace: {
-              configuration: t.settings != null,
+              configuration: config.settings != null,
               workspaceFolders: false,
             },
             textDocument: {
@@ -137,29 +137,29 @@ function createLSPServerInstance(e, t) {
             },
           },
         };
-      if (((_ = c.initialize(v)), t.startupTimeout !== void 0))
+      if (((_ = c.initialize(v)), config.startupTimeout !== void 0))
         await Dkp(
           _,
-          t.startupTimeout,
-          `LSP server '${e}' timed out after ${t.startupTimeout}ms during initialization`,
+          config.startupTimeout,
+          `LSP server '${name}' timed out after ${config.startupTimeout}ms during initialization`,
         );
       else await _;
-      if (((r = "running"), (o = new Date()), (a = 0), (l = false), t.settings != null))
+      if (((r = "running"), (o = new Date()), (a = 0), (l = false), config.settings != null))
         c.sendNotification("workspace/didChangeConfiguration", {
-          settings: t.settings,
+          settings: config.settings,
         }).catch((C) => {
-          T(`LSP: workspace/didChangeConfiguration push failed for ${e}: ${be(C)}`, {
+          T(`LSP: workspace/didChangeConfiguration push failed for ${name}: ${be(C)}`, {
             level: "warn",
           });
         });
-      (T(`LSP server instance started: ${e}`), xe("lsp_server_start"));
+      (T(`LSP server instance started: ${name}`), xe("lsp_server_start"));
     } catch (S) {
       throw (
         c.stop().catch(() => {}),
         _?.catch(() => {}),
         (r = "error"),
         (s = S),
-        T(`Failed to start LSP server '${e}': ${be(S)}`, {
+        T(`Failed to start LSP server '${name}': ${be(S)}`, {
           level: "error",
         }),
         Le("lsp_server_start", "lsp_server_start_failed"),
@@ -173,13 +173,13 @@ function createLSPServerInstance(e, t) {
       ((r = "stopping"),
         await c.stop(),
         (r = "stopped"),
-        T(`LSP server instance stopped: ${e}`),
+        T(`LSP server instance stopped: ${name}`),
         xe("lsp_server_stop"));
     } catch (b) {
       throw (
         (r = "error"),
         (s = b),
-        T(`Failed to stop LSP server '${e}': ${be(b)}`, {
+        T(`Failed to stop LSP server '${name}': ${be(b)}`, {
           level: "error",
         }),
         It("lsp_server_stop", "lsp_server_stop_failed"),
@@ -191,18 +191,18 @@ function createLSPServerInstance(e, t) {
     try {
       await d();
     } catch (_) {
-      let S = Error(`Failed to stop LSP server '${e}' during restart: ${be(_)}`);
+      let S = Error(`Failed to stop LSP server '${name}' during restart: ${be(_)}`);
       throw (
-        T(`Failed to stop LSP server '${e}' during restart: ${be(_)}`, {
+        T(`Failed to stop LSP server '${name}' during restart: ${be(_)}`, {
           level: "error",
         }),
         S
       );
     }
     i++;
-    let b = t.maxRestarts ?? 3;
+    let b = config.maxRestarts ?? 3;
     if (i > b) {
-      let _ = Error(`Max restart attempts (${b}) exceeded for server '${e}'`);
+      let _ = Error(`Max restart attempts (${b}) exceeded for server '${name}'`);
       throw (
         T(_.message, {
           level: "error",
@@ -214,7 +214,7 @@ function createLSPServerInstance(e, t) {
       await u();
     } catch (_) {
       let S = Error(
-        `Failed to start LSP server '${e}' during restart (attempt ${i}/${b}): ${be(_)}`,
+        `Failed to start LSP server '${name}' during restart (attempt ${i}/${b}): ${be(_)}`,
       );
       throw (
         T(S.message, {
@@ -230,11 +230,11 @@ function createLSPServerInstance(e, t) {
   async function m(b, _) {
     if (!f()) {
       let v = Error(
-        `Cannot send request to LSP server '${e}': server is ${r}${s ? `, last error: ${s.message}` : ""}`,
+        `Cannot send request to LSP server '${name}': server is ${r}${s ? `, last error: ${s.message}` : ""}`,
       );
       throw (
         T(
-          `Cannot send request to LSP server '${e}': server is ${r}${s ? `, last error: ${s.message}` : ""}`,
+          `Cannot send request to LSP server '${name}': server is ${r}${s ? `, last error: ${s.message}` : ""}`,
           {
             level: "error",
           },
@@ -252,7 +252,7 @@ function createLSPServerInstance(e, t) {
         if (typeof x === "number" && x === Rkp && v < gmo) {
           let k = Lkp * Math.pow(2, v);
           (T(
-            `LSP request '${b}' to '${e}' got ContentModified error, retrying in ${k}ms (attempt ${v + 1}/${gmo})\u2026`,
+            `LSP request '${b}' to '${name}' got ContentModified error, retrying in ${k}ms (attempt ${v + 1}/${gmo})\u2026`,
           ),
             await Nn(k));
           continue;
@@ -260,7 +260,7 @@ function createLSPServerInstance(e, t) {
         break;
       }
     let A = Object.assign(
-      Error(`LSP request '${b}' failed for server '${e}': ${S?.message ?? "unknown error"}`, {
+      Error(`LSP request '${b}' failed for server '${name}': ${S?.message ?? "unknown error"}`, {
         cause: S,
       }),
       {
@@ -276,9 +276,9 @@ function createLSPServerInstance(e, t) {
   }
   async function g(b, _) {
     if (!f()) {
-      let S = Error(`Cannot send notification to LSP server '${e}': server is ${r}`);
+      let S = Error(`Cannot send notification to LSP server '${name}': server is ${r}`);
       throw (
-        T(`Cannot send notification to LSP server '${e}': server is ${r}`, {
+        T(`Cannot send notification to LSP server '${name}': server is ${r}`, {
           level: "error",
         }),
         S
@@ -287,7 +287,7 @@ function createLSPServerInstance(e, t) {
     try {
       await c.sendNotification(b, _);
     } catch (S) {
-      let A = Error(`LSP notification '${b}' failed for server '${e}': ${be(S)}`);
+      let A = Error(`LSP notification '${b}' failed for server '${name}': ${be(S)}`);
       throw (
         T(A.message, {
           level: "error",
@@ -303,8 +303,8 @@ function createLSPServerInstance(e, t) {
     c.onRequest(b, _);
   }
   return {
-    name: e,
-    config: t,
+    name: name,
+    config: config,
     get state() {
       return r;
     },

@@ -11,15 +11,15 @@ function pCf(e) {
   if (t === n) return `page ${t}`;
   return `pages ${t}-${n}`;
 }
-async function readPDF(e) {
+async function readPDF(filePath) {
   try {
-    let r = (await qt().stat(e)).size;
+    let r = (await qt().stat(filePath)).size;
     if (r === 0)
       return {
         success: false,
         error: {
           reason: "empty",
-          message: `PDF file is empty: ${e}`,
+          message: `PDF file is empty: ${filePath}`,
         },
       };
     if (r > yUt)
@@ -30,13 +30,13 @@ async function readPDF(e) {
           message: `PDF file exceeds maximum allowed size of ${Ra(yUt)}.`,
         },
       };
-    let o = await lOe.readFile(e);
+    let o = await lOe.readFile(filePath);
     if (!o.subarray(0, 5).toString("ascii").startsWith("%PDF-"))
       return {
         success: false,
         error: {
           reason: "corrupted",
-          message: `File is not a valid PDF (missing %PDF- header): ${e}`,
+          message: `File is not a valid PDF (missing %PDF- header): ${filePath}`,
         },
       };
     let i = o.toString("base64");
@@ -45,7 +45,7 @@ async function readPDF(e) {
       data: {
         type: "pdf",
         file: {
-          filePath: e,
+          filePath: filePath,
           base64: i,
           originalSize: r,
         },
@@ -62,8 +62,8 @@ async function readPDF(e) {
     };
   }
 }
-async function getPDFPageCount(e) {
-  let { code: t, stdout: n } = await $n("pdfinfo", [e], {
+async function getPDFPageCount(filePath) {
+  let { code: t, stdout: n } = await $n("pdfinfo", [filePath], {
     timeout: 10000 /* 1e4 */,
     useCwd: false,
   });
@@ -85,16 +85,16 @@ async function isPdftoppmAvailable() {
   });
   return ((HZn = e === 0 || t.length > 0), HZn);
 }
-async function extractPDFPages(e, t) {
+async function extractPDFPages(filePath, options) {
   try {
-    let n = await lOe.open(e, fCf("linux")),
+    let n = await lOe.open(filePath, fCf("linux")),
       r = await n.stat().finally(() => n.close());
     if (!r.isFile())
       return {
         success: false,
         error: {
           reason: "corrupted",
-          message: `Path is not a regular file: ${e}`,
+          message: `Path is not a regular file: ${filePath}`,
         },
       };
     let o = r.size;
@@ -103,7 +103,7 @@ async function extractPDFPages(e, t) {
         success: false,
         error: {
           reason: "empty",
-          message: `PDF file is empty: ${e}`,
+          message: `PDF file is empty: ${filePath}`,
         },
       };
     if (o > FQr)
@@ -130,9 +130,9 @@ async function extractPDFPages(e, t) {
     });
     let l = OMo.join(a, "page"),
       c = ["-jpeg", "-r", "100"];
-    if (t?.firstPage) c.push("-f", String(t.firstPage));
-    if (t?.lastPage && t.lastPage !== 1 / 0) c.push("-l", String(t.lastPage));
-    c.push(e, l);
+    if (options?.firstPage) c.push("-f", String(options.firstPage));
+    if (options?.lastPage && options.lastPage !== 1 / 0) c.push("-l", String(options.lastPage));
+    c.push(filePath, l);
     let { code: u, stderr: d } = await $n("pdftoppm", c, {
       timeout: 120000,
       useCwd: false,
@@ -154,7 +154,7 @@ async function extractPDFPages(e, t) {
           success: false,
           error: {
             reason: "page_out_of_range",
-            message: `Requested ${pCf(t)} is outside the document (PDF has ${S} ${bn(S, "page")}). Use a range within 1-${S}, maximum ${Gce} pages per request (e.g. pages: "1-${A}").`,
+            message: `Requested ${pCf(options)} is outside the document (PDF has ${S} ${bn(S, "page")}). Use a range within 1-${S}, maximum ${Gce} pages per request (e.g. pages: "1-${A}").`,
           },
         };
       }
@@ -171,7 +171,7 @@ async function extractPDFPages(e, t) {
 `),
         _ = b[0] ?? "";
       if (
-        ((_.startsWith("I/O Error: ") && _.includes(`'${e}'`)) ||
+        ((_.startsWith("I/O Error: ") && _.includes(`'${filePath}'`)) ||
           _.startsWith("Permission Error: ")) &&
         !b.some((S) => /^(Command Line Error|Internal Error)(?: \(\d+\))?: /.test(S))
       )
@@ -205,7 +205,7 @@ async function extractPDFPages(e, t) {
       data: {
         type: "parts",
         file: {
-          filePath: e,
+          filePath: filePath,
           originalSize: o,
           outputDir: a,
           count: g,
@@ -213,7 +213,7 @@ async function extractPDFPages(e, t) {
       },
     };
   } catch (n) {
-    if (Vo(n) && n.path === e) throw n;
+    if (Vo(n) && n.path === filePath) throw n;
     return {
       success: false,
       error: {

@@ -168,8 +168,8 @@ function iol(e) {
     environment: Eyt(e?.environment, t.environment, n),
   };
 }
-function extractTaggedBullets(e) {
-  let t = Mwo.match(new RegExp(`<${e}>([\\s\\S]*?)</${e}>`));
+function extractTaggedBullets(tagName) {
+  let t = Mwo.match(new RegExp(`<${tagName}>([\\s\\S]*?)</${tagName}>`));
   if (!t) return [];
   let n = [];
   for (let r of (t[1] ?? "").split(`
@@ -209,33 +209,33 @@ async function qrl(e, t, n, r) {
 function getAutoModeClassifierErrorDumpPath() {
   return F8e.join(YU(), "auto-mode-classifier-errors", `${Rt()}.txt`);
 }
-async function dumpErrorPrompts(e, t, n, r) {
+async function dumpErrorPrompts(systemPrompt, userPrompt, error, contextInfo) {
   try {
     let o = getAutoModeClassifierErrorDumpPath();
     await U8e.mkdir(F8e.dirname(o), {
       recursive: !0,
     });
     let s = `=== ERROR ===
-${be(n)}
+${be(error)}
 
 === CONTEXT COMPARISON ===
 timestamp: ${new Date().toISOString()}
-model: ${r.model}
-mainLoopTokens: ${r.mainLoopTokens}
-classifierChars: ${r.classifierChars}
-classifierTokensEst: ${r.classifierTokensEst}
-transcriptEntries: ${r.transcriptEntries}
-messages: ${r.messages}
-delta (classifierEst - mainLoop): ${r.classifierTokensEst - r.mainLoopTokens}
+model: ${contextInfo.model}
+mainLoopTokens: ${contextInfo.mainLoopTokens}
+classifierChars: ${contextInfo.classifierChars}
+classifierTokensEst: ${contextInfo.classifierTokensEst}
+transcriptEntries: ${contextInfo.transcriptEntries}
+messages: ${contextInfo.messages}
+delta (classifierEst - mainLoop): ${contextInfo.classifierTokensEst - contextInfo.mainLoopTokens}
 
 === ACTION BEING CLASSIFIED ===
-${r.action}
+${contextInfo.action}
 
 === SYSTEM PROMPT ===
-${e}
+${systemPrompt}
 
 === USER PROMPT (transcript) ===
-${t}
+${userPrompt}
 `;
     return (
       await U8e.writeFile(o, s, "utf-8"),
@@ -312,10 +312,10 @@ function Vrl(e, t) {
   if (!t) return Rwo(e);
   return Rwo(e);
 }
-function buildTranscriptEntries(e, t, n = !0) {
+function buildTranscriptEntries(messages, t, n = !0) {
   let r = [],
     o = new Set(),
-    s = AAe() ? dnf(e) : null,
+    s = AAe() ? dnf(messages) : null,
     i = 0,
     a = null,
     l = (c) => {
@@ -331,7 +331,7 @@ function buildTranscriptEntries(e, t, n = !0) {
         });
       a = null;
     };
-  for (let c of e)
+  for (let c of messages)
     if (c.type === "attachment" && c.attachment.type === "queued_command") {
       let u =
         c.attachment.origin ??
@@ -490,28 +490,33 @@ function $wo(e) {
   }
   return t;
 }
-function toCompactBlock(e, t, n) {
-  if (e.type === "tool_use") {
-    let r = n.get(e.name);
+function toCompactBlock(block, role, lookup) {
+  if (block.type === "tool_use") {
+    let r = lookup.get(block.name);
     if (!r) return "";
-    let o = e.input ?? {},
+    let o = block.input ?? {},
       s = () => (AAe() && q6n() ? De(o) : o),
       i;
     try {
       i = r.toAutoClassifierInput(o) ?? s();
     } catch (l) {
-      (T(`toAutoClassifierInput failed for ${e.name}: ${be(l)}`),
+      (T(`toAutoClassifierInput failed for ${block.name}: ${be(l)}`),
         G("tengu_auto_mode_malformed_tool_input", {
-          toolName: e.name,
+          toolName: block.name,
         }),
         (i = s()));
     }
     if (i === "") return "";
     if (q6n()) {
-      let l = e.resultInfo
-          ? unf(e.resultInfo.isError, e.resultInfo.toolUseResult, r, e.resultInfo.toolDenialKind)
+      let l = block.resultInfo
+          ? unf(
+              block.resultInfo.isError,
+              block.resultInfo.toolUseResult,
+              r,
+              block.resultInfo.toolDenialKind,
+            )
           : void 0,
-        c = AAe() && e.name === "outcome" ? "[outcome]" : e.name;
+        c = AAe() && block.name === "outcome" ? "[outcome]" : block.name;
       return (
         kwo(
           f8t(
@@ -539,21 +544,21 @@ function toCompactBlock(e, t, n) {
 `).join(`
   `)
         : kwo(f8t(De(i)));
-    return `${e.name} ${a}
+    return `${block.name} ${a}
 `;
   }
-  if (e.type === "text")
+  if (block.type === "text")
     return q6n()
       ? kwo(
           f8t(
             De({
-              [t]: e.text,
+              [role]: block.text,
             }),
           ),
         ) +
           `
 `
-      : `${t === "user" ? "User" : "Assistant"}: ${e.text}
+      : `${role === "user" ? "User" : "Assistant"}: ${block.text}
 `;
   return "";
 }
@@ -726,8 +731,20 @@ function xnf(e) {
   if (U4e(e)) return [void 0, 2048];
   return [!1, 0];
 }
-async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
-  let d = l === "both" ? "xml_2stage" : l === "fast" ? "xml_fast" : "xml_thinking",
+async function classifyYoloActionXml(
+  prefixMessages,
+  systemPrompt,
+  userPrompt,
+  userContentBlocks,
+  model,
+  promptLengths,
+  signal,
+  dumpContextInfo,
+  mode,
+  c,
+  u,
+) {
+  let d = mode === "both" ? "xml_2stage" : mode === "fast" ? "xml_fast" : "xml_thinking",
     p,
     f,
     m,
@@ -747,14 +764,14 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
       count: 0,
     },
     v = Date.now(),
-    [C, x] = xnf(o),
+    [C, x] = xnf(model),
     I = [
       {
         type: "text",
         text: `<transcript>
 `,
       },
-      ...r,
+      ...userContentBlocks,
       {
         type: "text",
         text: `</transcript>
@@ -762,9 +779,9 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
       },
     ];
   try {
-    if (l !== "thinking") {
+    if (mode !== "thinking") {
       let z = Date.now(),
-        K = isUsingExternalPermissions(o, l),
+        K = isUsingExternalPermissions(model, mode),
         Z = [
           ...I,
           ...(K?.trim()
@@ -777,34 +794,34 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
             : []),
         ];
       ((h = {
-        model: o,
-        max_tokens: (l === "fast" ? 256 : 64) + x,
-        system: t,
+        model: model,
+        max_tokens: (mode === "fast" ? 256 : 64) + x,
+        system: systemPrompt,
         skipSystemPromptPrefix: !0,
         temperature: Zrl(),
         thinking: C,
         messages: [
-          ...e,
+          ...prefixMessages,
           {
             role: "user",
             content: Z,
           },
         ],
         maxRetries: W6n(),
-        ...(l !== "fast" && {
+        ...(mode !== "fast" && {
           stop_sequences: ["</block>"],
         }),
         querySource: "auto_mode",
-        extraBodyParams: Xrl(o),
+        extraBodyParams: Xrl(model),
       }),
         ({ raw: y, usage: p } = await Qrl(
-          i,
+          signal,
           h,
           {
             toolName: c,
-            classifierModel: o,
+            classifierModel: model,
             classifierStage: "xml_s1",
-            promptTokensEstimate: a.classifierTokensEst,
+            promptTokensEstimate: dumpContextInfo.classifierTokensEst,
           },
           xVt,
           b,
@@ -827,7 +844,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
         ne === !1)
       )
         return (
-          B8e("success", o, {
+          B8e("success", model, {
             classifierType: d,
             fallbackFrom: u,
             durationMs: f,
@@ -837,20 +854,20 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           {
             shouldBlock: !1,
             reason: "Allowed by fast classifier",
-            model: o,
+            model: model,
             usage: p,
             durationMs: f,
-            promptLengths: s,
+            promptLengths: promptLengths,
             stage: "fast",
             stage1RequestId: m,
             stage1MsgId: g,
           }
         );
-      if (l === "fast") {
+      if (mode === "fast") {
         if (ne === null) {
           let oe = Dwo(y);
           return (
-            B8e("parse_failure", o, {
+            B8e("parse_failure", model, {
               classifierType: d,
               fallbackFrom: u,
               failureKind: oe,
@@ -862,10 +879,10 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
               shouldBlock: !0,
               reason: tol("stage 1", oe, y.stop_reason),
               failureMode: oe,
-              model: o,
+              model: model,
               usage: p,
               durationMs: f,
-              promptLengths: s,
+              promptLengths: promptLengths,
               stage: "fast",
               stage1RequestId: m,
               stage1MsgId: g,
@@ -873,7 +890,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           );
         }
         return (
-          B8e("success", o, {
+          B8e("success", model, {
             classifierType: d,
             fallbackFrom: u,
             durationMs: f,
@@ -883,10 +900,10 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           {
             shouldBlock: !0,
             reason: zrl(J) ?? "Blocked by fast classifier",
-            model: o,
+            model: model,
             usage: p,
             durationMs: f,
-            promptLengths: s,
+            promptLengths: promptLengths,
             stage: "fast",
             stage1RequestId: m,
             stage1MsgId: g,
@@ -895,7 +912,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
       }
     }
     let k = Date.now(),
-      D = Cnf(o),
+      D = Cnf(model),
       P = [
         ...I,
         ...(D?.trim()
@@ -908,14 +925,14 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           : []),
       ],
       O = {
-        model: o,
+        model: model,
         max_tokens: 8192 + x,
-        system: t,
+        system: systemPrompt,
         skipSystemPromptPrefix: !0,
         temperature: Zrl(),
         thinking: C,
         messages: [
-          ...e,
+          ...prefixMessages,
           {
             role: "user",
             content: P,
@@ -923,16 +940,16 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
         ],
         maxRetries: W6n(),
         querySource: "auto_mode",
-        extraBodyParams: Xrl(o),
+        extraBodyParams: Xrl(model),
       },
       { raw: L, usage: M } = await Qrl(
-        i,
+        signal,
         O,
         {
           toolName: c,
-          classifierModel: o,
+          classifierModel: model,
           classifierStage: "xml_s2",
-          promptTokensEstimate: a.classifierTokensEst,
+          promptTokensEstimate: dumpContextInfo.classifierTokensEst,
         },
         kVt,
         _,
@@ -971,7 +988,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
     ) {
       let z = Dwo(L);
       return (
-        B8e("parse_failure", o, {
+        B8e("parse_failure", model, {
           classifierType: d,
           fallbackFrom: u,
           failureKind: z,
@@ -985,10 +1002,10 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           shouldBlock: !0,
           reason: tol("stage 2", z, L.stop_reason),
           failureMode: z,
-          model: o,
+          model: model,
           usage: Y,
           durationMs: V,
-          promptLengths: s,
+          promptLengths: promptLengths,
           stage: "thinking",
           stage1Usage: p,
           stage1DurationMs: f,
@@ -1002,7 +1019,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
       );
     }
     return (
-      B8e("success", o, {
+      B8e("success", model, {
         classifierType: d,
         fallbackFrom: u,
         durationMs: V,
@@ -1015,10 +1032,10 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
         thinking: Inf(q) ?? void 0,
         shouldBlock: W,
         reason: zrl(q) ?? "No reason provided",
-        model: o,
+        model: model,
         usage: Y,
         durationMs: V,
-        promptLengths: s,
+        promptLengths: promptLengths,
         stage: "thinking",
         stage1Usage: p,
         stage1DurationMs: f,
@@ -1032,10 +1049,10 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
     );
   } catch (k) {
     let D = Date.now() - v;
-    if (i.aborted)
+    if (signal.aborted)
       return (
         T("Auto mode classifier (XML): aborted by user"),
-        B8e("interrupted", o, {
+        B8e("interrupted", model, {
           classifierType: d,
           fallbackFrom: u,
           durationMs: D,
@@ -1047,10 +1064,10 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
         {
           shouldBlock: !0,
           reason: "Classifier request aborted",
-          model: o,
+          model: model,
           unavailable: !0,
           durationMs: D,
-          promptLengths: s,
+          promptLengths: promptLengths,
         }
       );
     let P = detectPromptTooLong(k);
@@ -1058,13 +1075,13 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
       level: "warn",
     });
     let O =
-        (await dumpErrorPrompts(zl(t), n, k, {
-          ...a,
-          model: o,
+        (await dumpErrorPrompts(zl(systemPrompt), userPrompt, k, {
+          ...dumpContextInfo,
+          model: model,
         })) ?? void 0,
       L = P ? void 0 : $nf(k);
     return (
-      B8e(P ? "transcript_too_long" : "error", o, {
+      B8e(P ? "transcript_too_long" : "error", model, {
         classifierType: d,
         fallbackFrom: u,
         durationMs: D,
@@ -1088,7 +1105,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           : p
             ? "Stage 2 classifier error - blocking based on stage 1 assessment (usually transient \u2014 retrying often succeeds)"
             : "Classifier unavailable - blocking for safety",
-        model: o,
+        model: model,
         unavailable: p === void 0,
         httpStatus: k instanceof Fo && typeof k.status === "number" ? k.status : void 0,
         errorKind: L,
@@ -1103,7 +1120,7 @@ async function classifyYoloActionXml(e, t, n, r, o, s, i, a, l, c, u) {
           stage1RequestId: m,
           stage1MsgId: g,
         }),
-        promptLengths: s,
+        promptLengths: promptLengths,
       }
     );
   }
@@ -1494,10 +1511,10 @@ function Onf(e) {
   }
   return !1;
 }
-function detectPromptTooLong(e) {
-  if (!(e instanceof Error)) return;
-  if (!e.message.toLowerCase().includes("prompt is too long")) return;
-  return Ljt(e.message);
+function detectPromptTooLong(error) {
+  if (!(error instanceof Error)) return;
+  if (!error.message.toLowerCase().includes("prompt is too long")) return;
+  return Ljt(error.message);
 }
 function z6n(e, t) {
   return {

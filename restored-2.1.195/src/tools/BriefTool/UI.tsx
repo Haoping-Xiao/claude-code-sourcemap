@@ -9,10 +9,10 @@ gmf = `In brief mode, plain assistant text is hidden from the user \u2014 only $
 function xyl() {
   return "";
 }
-function renderToolResultMessage(e, t, n) {
-  let r = (e.attachments?.length ?? 0) > 0;
-  if (!e.message && !r) return null;
-  if (n?.isTranscriptMode)
+function renderToolResultMessage(output, _progressMessages, options) {
+  let r = (output.attachments?.length ?? 0) > 0;
+  if (!output.message && !r) return null;
+  if (options?.isTranscriptMode)
     return MT.jsxs(U, {
       flexDirection: "row",
       marginTop: 1,
@@ -27,20 +27,20 @@ function renderToolResultMessage(e, t, n) {
         MT.jsxs(U, {
           flexDirection: "column",
           children: [
-            e.message
+            output.message
               ? MT.jsx(zg, {
-                  children: e.message,
+                  children: output.message,
                 })
               : null,
             MT.jsx(pzt, {
-              attachments: e.attachments,
+              attachments: output.attachments,
             }),
           ],
         }),
       ],
     });
-  if (n?.isBriefOnly) {
-    let o = e.sentAt ? Yzn(e.sentAt) : "";
+  if (options?.isBriefOnly) {
+    let o = output.sentAt ? Yzn(output.sentAt) : "";
     return MT.jsxs(U, {
       flexDirection: "column",
       marginTop: 1,
@@ -64,13 +64,13 @@ function renderToolResultMessage(e, t, n) {
         MT.jsxs(U, {
           flexDirection: "column",
           children: [
-            e.message
+            output.message
               ? MT.jsx(zg, {
-                  children: e.message,
+                  children: output.message,
                 })
               : null,
             MT.jsx(pzt, {
-              attachments: e.attachments,
+              attachments: output.attachments,
             }),
           ],
         }),
@@ -92,13 +92,13 @@ function renderToolResultMessage(e, t, n) {
       MT.jsxs(U, {
         flexDirection: "column",
         children: [
-          e.message
+          output.message
             ? MT.jsx(zg, {
-                children: e.message,
+                children: output.message,
               })
             : null,
           MT.jsx(pzt, {
-            attachments: e.attachments,
+            attachments: output.attachments,
           }),
         ],
       }),
@@ -124,7 +124,7 @@ function pzt(e) {
   else o = t[3];
   return o;
 }
-function _temp(e) {
+function _temp(att) {
   return MT.jsxs(
     U,
     {
@@ -132,18 +132,18 @@ function _temp(e) {
       children: [
         MT.jsxs(w, {
           dimColor: true,
-          children: [nt.pointerSmall, " ", e.isImage ? "[image]" : "[file]", " "],
+          children: [nt.pointerSmall, " ", att.isImage ? "[image]" : "[file]", " "],
         }),
         MT.jsx(w, {
-          children: kd(e.path),
+          children: kd(att.path),
         }),
         MT.jsxs(w, {
           dimColor: true,
-          children: [" (", Ra(e.size), ")"],
+          children: [" (", Ra(att.size), ")"],
         }),
       ],
     },
-    e.file_uuid ?? e.path,
+    att.file_uuid ?? att.path,
   );
 }
 var Iyl, MT;

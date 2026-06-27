@@ -180,7 +180,7 @@ function RUn(e, t) {
       };
   return n;
 }
-async function writeMcpjsonFile(e) {
+async function writeMcpjsonFile(config) {
   let t = NSe.join($t(), ".mcp.json"),
     n;
   try {
@@ -191,7 +191,7 @@ async function writeMcpjsonFile(e) {
   let r = `${t}.tmp.${process.pid}.${Date.now()}`,
     o = await oJ.open(r, "w", n ?? 420);
   try {
-    (await o.writeFile(De(e, null, 2), {
+    (await o.writeFile(De(config, null, 2), {
       encoding: "utf8",
     }),
       await o.datasync());
@@ -223,31 +223,31 @@ function sDe(e) {
 function DUn(e) {
   return "url" in e ? e.url : null;
 }
-function unwrapCcrProxyUrl(e) {
-  if (!wzr.some((t) => e.includes(t))) return e;
+function unwrapCcrProxyUrl(url) {
+  if (!wzr.some((t) => url.includes(t))) return url;
   try {
-    return new URL(e).searchParams.get("mcp_url") || e;
+    return new URL(url).searchParams.get("mcp_url") || url;
   } catch {
-    return e;
+    return url;
   }
 }
-function getMcpServerSignature(e, t) {
-  let n = LUn(e);
+function getMcpServerSignature(config, t) {
+  let n = LUn(config);
   if (n) {
     if (t?.includeEnv === false) return `stdio:${De(n)}`;
-    let s = Object.entries(e.env ?? {})
+    let s = Object.entries(config.env ?? {})
         .filter(([a]) => !ETp.has(a))
         .sort(([a], [l]) => (a < l ? -1 : a > l ? 1 : 0)),
       i = s.length > 0 ? `:${De(Object.fromEntries(s))}` : "";
     return `stdio:${De(n)}${i}`;
   }
-  let r = DUn(e);
+  let r = DUn(config);
   if (r) return `url:${unwrapCcrProxyUrl(r)}`;
   return null;
 }
-function dedupPluginMcpServers(e, t) {
+function dedupPluginMcpServers(pluginServers, manualServers) {
   let n = new Map();
-  for (let [i, a] of Object.entries(t)) {
+  for (let [i, a] of Object.entries(manualServers)) {
     let l = getMcpServerSignature(a, {
       includeEnv: false,
     });
@@ -256,7 +256,7 @@ function dedupPluginMcpServers(e, t) {
   let r = {},
     o = [],
     s = new Map();
-  for (let [i, a] of Object.entries(e)) {
+  for (let [i, a] of Object.entries(pluginServers)) {
     let l = getMcpServerSignature(a);
     if (l === null) {
       r[i] = a;
@@ -346,10 +346,10 @@ function suppressedConnectorsEqual(e, t) {
     )
   );
 }
-async function dedupClaudeAiMcpServers(e, t) {
+async function dedupClaudeAiMcpServers(claudeAiServers, manualServers) {
   let n = await hIn(),
     r = new Map();
-  for (let [i, a] of Object.entries(t)) {
+  for (let [i, a] of Object.entries(manualServers)) {
     if (isMcpServerDisabled(i)) continue;
     if ((a.type === "sse" || a.type === "http") && (bIn(i, a, n) || jwi(i, a, n))) continue;
     let l = getMcpServerSignature(a);
@@ -361,7 +361,7 @@ async function dedupClaudeAiMcpServers(e, t) {
   }
   let o = {},
     s = [];
-  for (let [i, a] of Object.entries(e)) {
+  for (let [i, a] of Object.entries(claudeAiServers)) {
     let l = getMcpServerSignature(a),
       c = l !== null ? r.get(l) : void 0;
     if (c !== void 0) {
@@ -482,17 +482,17 @@ function filterDynamicMcpServersByPolicy(e) {
     blocked: n,
   };
 }
-function expandEnvVars(e) {
+function expandEnvVars(config) {
   let t = [];
   function n(o) {
     let { expanded: s, missingVars: i } = gre(o);
     return (t.push(...i), s);
   }
   let r;
-  switch (e.type) {
+  switch (config.type) {
     case void 0:
     case "stdio": {
-      let o = e;
+      let o = config;
       r = {
         ...o,
         command: n(o.command),
@@ -504,7 +504,7 @@ function expandEnvVars(e) {
     case "sse":
     case "http":
     case "ws": {
-      let o = e;
+      let o = config;
       r = {
         ...o,
         url: n(o.url),
@@ -514,13 +514,13 @@ function expandEnvVars(e) {
     }
     case "sse-ide":
     case "ws-ide":
-      r = e;
+      r = config;
       break;
     case "sdk":
-      r = e;
+      r = config;
       break;
     case "claudeai-proxy":
-      r = e;
+      r = config;
       break;
   }
   return {
@@ -528,40 +528,42 @@ function expandEnvVars(e) {
     missingVars: Uo(t),
   };
 }
-async function addMcpConfig(e, t, n) {
-  if (e.match(/[^a-zA-Z0-9_-]/))
+async function addMcpConfig(name, config, scope) {
+  if (name.match(/[^a-zA-Z0-9_-]/))
     throw Error(
-      `Invalid name ${e}. Names can only contain letters, numbers, hyphens, and underscores.`,
+      `Invalid name ${name}. Names can only contain letters, numbers, hyphens, and underscores.`,
     );
-  if (bbe(e)) throw Error(`Cannot add MCP server "${e}": this name is reserved.`);
-  if (uke(e)) throw Error(`Cannot add MCP server "${e}": this name is reserved.`);
-  if (e === Met) throw Error(`Cannot add MCP server "${e}": this name is reserved.`);
+  if (bbe(name)) throw Error(`Cannot add MCP server "${name}": this name is reserved.`);
+  if (uke(name)) throw Error(`Cannot add MCP server "${name}": this name is reserved.`);
+  if (name === Met) throw Error(`Cannot add MCP server "${name}": this name is reserved.`);
   if (doesEnterpriseMcpConfigExist())
     throw Error(
       "Cannot add MCP server: enterprise MCP configuration is active and has exclusive control over MCP servers",
     );
-  let r = Nae().safeParse(t);
+  let r = Nae().safeParse(config);
   if (!r.success) {
     let s = r.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ");
     throw Error(`Invalid configuration: ${s}`);
   }
   let o = r.data;
-  if (isMcpServerDenied(e, o))
-    throw Error(`Cannot add MCP server "${e}": server is explicitly blocked by enterprise policy`);
-  if (!isMcpServerAllowedByPolicy(e, o))
-    throw Error(`Cannot add MCP server "${e}": not allowed by enterprise policy`);
-  switch (n) {
+  if (isMcpServerDenied(name, o))
+    throw Error(
+      `Cannot add MCP server "${name}": server is explicitly blocked by enterprise policy`,
+    );
+  if (!isMcpServerAllowedByPolicy(name, o))
+    throw Error(`Cannot add MCP server "${name}": not allowed by enterprise policy`);
+  switch (scope) {
     case "project": {
       let s = await readRawMcpJsonServersFromCwd();
-      if (Object.hasOwn(s, e)) throw Error(`MCP server ${e} already exists in .mcp.json`);
+      if (Object.hasOwn(s, name)) throw Error(`MCP server ${name} already exists in .mcp.json`);
       break;
     }
     case "user": {
-      if (Dt().mcpServers?.[e]) throw Error(`MCP server ${e} already exists in user config`);
+      if (Dt().mcpServers?.[name]) throw Error(`MCP server ${name} already exists in user config`);
       break;
     }
     case "local": {
-      if (Lg().mcpServers?.[e]) throw Error(`MCP server ${e} already exists in local config`);
+      if (Lg().mcpServers?.[name]) throw Error(`MCP server ${name} already exists in local config`);
       break;
     }
     case "dynamic":
@@ -571,10 +573,10 @@ async function addMcpConfig(e, t, n) {
     case "claudeai":
       throw Error("Cannot add MCP server to scope: claudeai");
   }
-  switch (n) {
+  switch (scope) {
     case "project": {
       let s = await readRawMcpJsonServersFromCwd();
-      s[e] = o;
+      s[name] = o;
       try {
         await writeMcpjsonFile({
           mcpServers: s,
@@ -592,7 +594,7 @@ async function addMcpConfig(e, t, n) {
         ...s,
         mcpServers: {
           ...s.mcpServers,
-          [e]: o,
+          [name]: o,
         },
       }));
       break;
@@ -602,22 +604,22 @@ async function addMcpConfig(e, t, n) {
         ...s,
         mcpServers: {
           ...s.mcpServers,
-          [e]: o,
+          [name]: o,
         },
       }));
       break;
     }
     default:
-      throw Error(`Cannot add MCP server to scope: ${n}`);
+      throw Error(`Cannot add MCP server to scope: ${scope}`);
   }
   xe("mcp_config_add");
 }
-async function removeMcpConfig(e, t) {
-  switch (t) {
+async function removeMcpConfig(name, scope) {
+  switch (scope) {
     case "project": {
       let n = await readRawMcpJsonServersFromCwd();
-      if (!Object.hasOwn(n, e)) throw Error(`No MCP server named "${e}" in .mcp.json`);
-      delete n[e];
+      if (!Object.hasOwn(n, name)) throw Error(`No MCP server named "${name}" in .mcp.json`);
+      delete n[name];
       try {
         await writeMcpjsonFile({
           mcpServers: n,
@@ -631,9 +633,9 @@ async function removeMcpConfig(e, t) {
       break;
     }
     case "user": {
-      if (!Dt().mcpServers?.[e]) throw Error(`No MCP server named "${e}" in user scope`);
+      if (!Dt().mcpServers?.[name]) throw Error(`No MCP server named "${name}" in user scope`);
       gn((r) => {
-        let { [e]: o, ...s } = r.mcpServers ?? {};
+        let { [name]: o, ...s } = r.mcpServers ?? {};
         return {
           ...r,
           mcpServers: s,
@@ -642,9 +644,9 @@ async function removeMcpConfig(e, t) {
       break;
     }
     case "local": {
-      if (!Lg().mcpServers?.[e]) throw Error(`No MCP server named "${e}" in local scope`);
+      if (!Lg().mcpServers?.[name]) throw Error(`No MCP server named "${name}" in local scope`);
       pH((r) => {
-        let { [e]: o, ...s } = r.mcpServers ?? {};
+        let { [name]: o, ...s } = r.mcpServers ?? {};
         return {
           ...r,
           mcpServers: s,
@@ -653,7 +655,7 @@ async function removeMcpConfig(e, t) {
       break;
     }
     default:
-      throw Error(`Cannot remove MCP server from scope: ${t}`);
+      throw Error(`Cannot remove MCP server from scope: ${scope}`);
   }
   xe("mcp_config_remove");
 }
@@ -674,7 +676,7 @@ async function readRawMcpJsonServersFromCwd() {
     throw Error(".mcp.json is malformed (not valid JSON, or mcpServers is not an object)");
   return n.data.mcpServers;
 }
-function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
+function getMcpConfigsByScope(scope, { expandVars: t = true } = {}) {
   if (da())
     return {
       servers: lF(),
@@ -685,12 +687,12 @@ function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
     user: "userSettings",
     local: "localSettings",
   };
-  if (e in n && !Om(n[e]))
+  if (scope in n && !Om(n[scope]))
     return {
       servers: lF(),
       errors: [],
     };
-  switch (e) {
+  switch (scope) {
     case "project": {
       let r = lF(),
         o = [],
@@ -713,7 +715,7 @@ function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
               o.push(...d));
           continue;
         }
-        if (c.mcpServers) Object.assign(r, RUn(c.mcpServers, e));
+        if (c.mcpServers) Object.assign(r, RUn(c.mcpServers, scope));
         if (u.length > 0) o.push(...u);
       }
       return {
@@ -736,7 +738,7 @@ function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
         scope: "user",
       });
       return {
-        servers: RUn(o?.mcpServers, e),
+        servers: RUn(o?.mcpServers, scope),
         errors: s,
       };
     }
@@ -755,7 +757,7 @@ function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
         scope: "local",
       });
       return {
-        servers: RUn(o?.mcpServers, e),
+        servers: RUn(o?.mcpServers, scope),
         errors: s,
       };
     }
@@ -784,7 +786,7 @@ function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
         };
       }
       return {
-        servers: RUn(o.mcpServers, e),
+        servers: RUn(o.mcpServers, scope),
         errors: s,
       };
     }
@@ -974,8 +976,8 @@ async function getConnectablePluginMcpServerNames(e = {}) {
   for (let [o, s] of Object.entries(n)) if (s.pluginSource !== void 0) r.add(o);
   return r;
 }
-function parseMcpConfig(e) {
-  let { configObject: t, expandVars: n, scope: r, filePath: o } = e,
+function parseMcpConfig(params) {
+  let { configObject: t, expandVars: n, scope: r, filePath: o } = params,
     s = H.object({
       mcpServers: H.record(H.string(), H.unknown()),
     }).safeParse(t);
@@ -1072,8 +1074,8 @@ function parseMcpConfig(e) {
     errors: i,
   };
 }
-function parseMcpConfigFromFilePath(e) {
-  let { filePath: t, expandVars: n, scope: r } = e,
+function parseMcpConfigFromFilePath(params) {
+  let { filePath: t, expandVars: n, scope: r } = params,
     o = qt(),
     s;
   try {
@@ -1166,8 +1168,8 @@ function shouldAllowManagedMcpServersOnly() {
 function areMcpConfigsAllSdkType(e) {
   return Object.values(e).every((t) => t.type === "sdk");
 }
-function areMcpConfigsAllowedWithEnterpriseMcpConfig(e) {
-  return Object.values(e).every((t) => t.type === "sdk" && t.name === "claude-vscode");
+function areMcpConfigsAllowedWithEnterpriseMcpConfig(configs) {
+  return Object.values(configs).every((t) => t.type === "sdk" && t.name === "claude-vscode");
 }
 function gdo(e) {
   return e === S7;
@@ -1181,13 +1183,13 @@ function vCa(e, t, n) {
   if (e.includes(t) === n) return e;
   return n ? [...e, t] : e.filter((o) => o !== t);
 }
-function setMcpServerEnabled(e, t) {
-  let n = gdo(e) && isMcpServerDisabled(e) === t;
+function setMcpServerEnabled(name, enabled) {
+  let n = gdo(name) && isMcpServerDisabled(name) === enabled;
   if (
     (pH((r) => {
-      if (gdo(e)) {
+      if (gdo(name)) {
         let i = r.enabledMcpServers || [],
-          a = vCa(i, e, t);
+          a = vCa(i, name, enabled);
         if (a === i) return r;
         return {
           ...r,
@@ -1195,7 +1197,7 @@ function setMcpServerEnabled(e, t) {
         };
       }
       let o = r.disabledMcpServers || [],
-        s = vCa(o, e, !t);
+        s = vCa(o, name, !enabled);
       if (s === o) return r;
       return {
         ...r,
@@ -1205,8 +1207,8 @@ function setMcpServerEnabled(e, t) {
     n)
   )
     G("tengu_builtin_mcp_toggle", {
-      serverName: e,
-      enabled: t,
+      serverName: name,
+      enabled: enabled,
     });
   xe("mcp_server_toggle");
 }

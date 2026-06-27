@@ -6,18 +6,18 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WTe] deps: iu, Ye, uo, QH, m0e
 ((wEc = R(lt(), 1)), (v7e = R(se(), 1)));
-function buildPermissionUpdates(e, t) {
+function buildPermissionUpdates(mode, allowedPrompts) {
   let n = [
     {
       type: "setMode",
-      mode: $x(e),
+      mode: $x(mode),
       destination: "session",
     },
   ];
-  if (SLe() && t && t.length > 0)
+  if (SLe() && allowedPrompts && allowedPrompts.length > 0)
     n.push({
       type: "addRules",
-      rules: t.map((r) => ({
+      rules: allowedPrompts.map((r) => ({
         toolName: r.tool,
         ruleContent: $ca(r.prompt),
       })),

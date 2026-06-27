@@ -15,34 +15,37 @@ function handleMarketplaceError(e, t) {
   }),
     ws(`${nt.cross} Failed to ${t}: ${be(e)}`));
 }
-function printValidationResult(e) {
+function printValidationResult(result) {
   let t = [];
-  if (e.errors.length > 0)
-    (t.push(`${nt.cross} Found ${e.errors.length} ${bn(e.errors.length, "error")}:`, ""),
-      e.errors.forEach((n) => {
+  if (result.errors.length > 0)
+    (t.push(`${nt.cross} Found ${result.errors.length} ${bn(result.errors.length, "error")}:`, ""),
+      result.errors.forEach((n) => {
         t.push(`  ${nt.pointer} ${n.path}: ${n.message}`);
       }),
       t.push(""));
-  if (e.warnings.length > 0)
-    (t.push(`${nt.warning} Found ${e.warnings.length} ${bn(e.warnings.length, "warning")}:`, ""),
-      e.warnings.forEach((n) => {
+  if (result.warnings.length > 0)
+    (t.push(
+      `${nt.warning} Found ${result.warnings.length} ${bn(result.warnings.length, "warning")}:`,
+      "",
+    ),
+      result.warnings.forEach((n) => {
         t.push(`  ${nt.pointer} ${n.path}: ${n.message}`);
       }),
       t.push(""));
   return t;
 }
-async function pluginValidateHandler(e, t, n) {
+async function pluginValidateHandler(manifestPath, options, n) {
   if (n.cowork) O2(true);
   let r,
     o = [];
   try {
-    if (((r = await bXt(t)), r.fileType === "plugin")) {
+    if (((r = await bXt(options)), r.fileType === "plugin")) {
       let c = Uz.dirname(r.filePath);
       if (Uz.basename(c) === ".claude-plugin") o = await Trr(Uz.dirname(c));
     }
   } catch (c) {
     if ((Le("cli_plugin_validate", "cli_plugin_validate_exception"), Vo(c)))
-      T(`Plugin validation failed for ${t}: ${be(c)}`, {
+      T(`Plugin validation failed for ${options}: ${be(c)}`, {
         level: "error",
       });
     else ke(c);
@@ -58,7 +61,7 @@ async function pluginValidateHandler(e, t, n) {
   else l.push(`${nt.cross} Validation failed`);
   if (s) xe("cli_plugin_validate");
   else It("cli_plugin_validate", "cli_plugin_validate_failed");
-  (e.render(
+  (manifestPath.render(
     Jp.jsx(V_, {
       children: Jp.jsx(w, {
         children: l.join(`
@@ -66,7 +69,7 @@ async function pluginValidateHandler(e, t, n) {
       }),
     }),
   ),
-    await e.waitUntilExit(),
+    await manifestPath.waitUntilExit(),
     process.exit(s ? 0 : 1));
 }
 async function pluginTagHandler(e, t, n) {
@@ -246,7 +249,7 @@ async function pluginInitHandler(e, t, n) {
   (r.push(`  ${S ? `Disable: ${S}. ` : "Disable: in /plugin. "}Remove: delete the directory.`),
     vZ(e, r, 0));
 }
-async function pluginListHandler(e, t) {
+async function pluginListHandler(options, t) {
   if (t.cowork) O2(true);
   G("tengu_plugin_list_command", {});
   let n = ex(),
@@ -480,7 +483,7 @@ async function pluginListHandler(e, t) {
       b.push(`  ${nt.pointer} ${A.source}: ${nt.cross} ${iS(A)}`, "");
   }
   xe("cli_plugin_list");
-  let S = await e();
+  let S = await options();
   (S.render(
     Jp.jsx(V_, {
       children: Jp.jsx(w, {
@@ -514,11 +517,11 @@ function Kam(e) {
   else s = t[3];
   return s;
 }
-async function marketplaceAddHandler(e, t, n) {
+async function marketplaceAddHandler(source, options, n) {
   if (n.cowork) O2(true);
   let r, o, s;
   try {
-    let a = await trr(t);
+    let a = await trr(options);
     if (!a)
       return (
         Le("cli_marketplace_add", "cli_marketplace_add_invalid_source"),
@@ -594,7 +597,7 @@ async function marketplaceAddHandler(e, t, n) {
       );
     }
   })();
-  (e.render(
+  (source.render(
     Jp.jsx(fNe.Suspense, {
       fallback: Jp.jsx(w, {
         children: "Adding marketplace\u2026",
@@ -604,10 +607,10 @@ async function marketplaceAddHandler(e, t, n) {
       }),
     }),
   ),
-    await e.waitUntilExit(),
+    await source.waitUntilExit(),
     process.exit(0));
 }
-async function marketplaceListHandler(e, t) {
+async function marketplaceListHandler(options, t) {
   if (t.cowork) O2(true);
   let n;
   try {
@@ -685,7 +688,7 @@ async function marketplaceListHandler(e, t) {
       })));
   }
   xe("cli_marketplace_list");
-  let s = await e();
+  let s = await options();
   (s.render(
     Jp.jsx(V_, {
       children: o,
@@ -748,25 +751,25 @@ function Qam(e) {
   else l = t[4];
   return l;
 }
-async function marketplaceUpdateHandler(e, t, n) {
+async function marketplaceUpdateHandler(name, options, n) {
   if (n.cowork) O2(true);
   let r, o;
-  if (t) {
-    r = `Updating marketplace: ${t}...`;
+  if (options) {
+    r = `Updating marketplace: ${options}...`;
     let s = [];
-    o = ise(t, (i) => {
+    o = ise(options, (i) => {
       s.push(i);
     })
       .then(
         () => (
           Ah(),
           G("tengu_marketplace_updated", {
-            marketplace_name: t,
+            marketplace_name: options,
           }),
           xe("cli_marketplace_update"),
           {
             messages: s,
-            success: `${nt.tick} Successfully updated marketplace: ${t}`,
+            success: `${nt.tick} Successfully updated marketplace: ${options}`,
           }
         ),
       )
@@ -788,14 +791,14 @@ async function marketplaceUpdateHandler(e, t, n) {
     }
     let i = Object.keys(s);
     if (i.length === 0) {
-      (e.render(
+      (name.render(
         Jp.jsx(V_, {
           children: Jp.jsx(w, {
             children: "No marketplaces configured",
           }),
         }),
       ),
-        await e.waitUntilExit(),
+        await name.waitUntilExit(),
         process.exit(0));
       return;
     }
@@ -821,7 +824,7 @@ async function marketplaceUpdateHandler(e, t, n) {
           ),
         )));
   }
-  (e.render(
+  (name.render(
     Jp.jsx(fNe.Suspense, {
       fallback: Jp.jsx(w, {
         children: r,
@@ -831,7 +834,7 @@ async function marketplaceUpdateHandler(e, t, n) {
       }),
     }),
   ),
-    await e.waitUntilExit(),
+    await name.waitUntilExit(),
     process.exit(0));
 }
 function elm(e) {
@@ -850,12 +853,12 @@ function elm(e) {
   else o = t[1];
   return o;
 }
-async function pluginInstallHandler(e, t, n) {
+async function pluginInstallHandler(plugin, options, n) {
   if (n.cowork) O2(true);
   let r = n.scope || "user";
   if (n.cowork && r !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(r)) ws(`Invalid scope: ${r}. Must be one of: ${JL.join(", ")}.`);
-  let { name: o, marketplace: s } = Qo(t);
+  let { name: o, marketplace: s } = Qo(options);
   G("tengu_plugin_install_command", {
     _PROTO_plugin_name: o,
     ...(s && {
@@ -863,26 +866,26 @@ async function pluginInstallHandler(e, t, n) {
     }),
     scope: r,
   });
-  let i = Spc(t, r, n.config).then((a) => (xe("cli_plugin_install"), a));
-  (e.render(
+  let i = Spc(options, r, n.config).then((a) => (xe("cli_plugin_install"), a));
+  (plugin.render(
     Jp.jsx(fNe.Suspense, {
       fallback: Jp.jsx(w, {
-        children: `Installing plugin "${t}"...`,
+        children: `Installing plugin "${options}"...`,
       }),
       children: Jp.jsx(elm, {
         promise: i,
       }),
     }),
   ),
-    await e.waitUntilExit(),
+    await plugin.waitUntilExit(),
     await ki(0));
 }
-async function pluginUninstallHandler(e, t, n) {
+async function pluginUninstallHandler(plugin, options, n) {
   if (n.cowork) O2(true);
   let r = n.scope || "user";
   if (n.cowork && r !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(r)) ws(`Invalid scope: ${r}. Must be one of: ${JL.join(", ")}.`);
-  let { name: o, marketplace: s } = Qo(t);
+  let { name: o, marketplace: s } = Qo(options);
   G("tengu_plugin_uninstall_command", {
     _PROTO_plugin_name: o,
     ...(s && {
@@ -890,16 +893,16 @@ async function pluginUninstallHandler(e, t, n) {
     }),
     scope: r,
   });
-  let i = await Apc(t, r, n.keepData, n.prune, n.yes);
+  let i = await Apc(options, r, n.keepData, n.prune, n.yes);
   (xe("cli_plugin_uninstall"),
-    e.render(
+    plugin.render(
       Jp.jsx(V_, {
         children: Jp.jsx(w, {
           children: n.prune ? i : `${nt.tick} ${i}`,
         }),
       }),
     ),
-    await e.waitUntilExit(),
+    await plugin.waitUntilExit(),
     process.exit(0));
 }
 async function pluginPruneHandler(e, t) {
@@ -926,7 +929,7 @@ async function pluginPruneHandler(e, t) {
     await e.waitUntilExit(),
     process.exit(0));
 }
-async function pluginEnableHandler(e, t, n) {
+async function pluginEnableHandler(plugin, options, n) {
   if (n.cowork) O2(true);
   let r;
   if (n.scope) {
@@ -935,7 +938,7 @@ async function pluginEnableHandler(e, t, n) {
   }
   if (n.cowork && r !== void 0 && r !== "user") ws("--cowork can only be used with user scope");
   if (n.cowork && r === void 0) r = "user";
-  let { name: o, marketplace: s } = Qo(t);
+  let { name: o, marketplace: s } = Qo(options);
   G("tengu_plugin_enable_command", {
     _PROTO_plugin_name: o,
     ...(s && {
@@ -945,27 +948,27 @@ async function pluginEnableHandler(e, t, n) {
   });
   let i;
   try {
-    if (((i = await zEt(t, r)), !i.success)) throw Error(i.message);
+    if (((i = await zEt(options, r)), !i.success)) throw Error(i.message);
     G("tengu_plugin_enabled_cli", {
-      ...e4(i.pluginId || t, R0()),
+      ...e4(i.pluginId || options, R0()),
       scope: Oo(i.scope),
     });
   } catch (a) {
-    return (Le("cli_plugin_enable", "cli_plugin_enable_failed"), dNe(a, "enable", t));
+    return (Le("cli_plugin_enable", "cli_plugin_enable_failed"), dNe(a, "enable", options));
   }
   (xe("cli_plugin_enable"),
-    e.render(
+    plugin.render(
       Jp.jsx(V_, {
         children: Jp.jsxs(w, {
           children: [nt.tick, " ", i.message],
         }),
       }),
     ),
-    await e.waitUntilExit());
+    await plugin.waitUntilExit());
 }
-async function pluginDisableHandler(e, t, n) {
-  if (n.all && t) ws("Cannot use --all with a specific plugin");
-  if (!n.all && !t) ws("Please specify a plugin name or use --all to disable all plugins");
+async function pluginDisableHandler(plugin, options, n) {
+  if (n.all && options) ws("Cannot use --all with a specific plugin");
+  if (!n.all && !options) ws("Please specify a plugin name or use --all to disable all plugins");
   if (n.cowork) O2(true);
   let r;
   if (n.all) {
@@ -979,7 +982,7 @@ async function pluginDisableHandler(e, t, n) {
     }
     if (n.cowork && o !== void 0 && o !== "user") ws("--cowork can only be used with user scope");
     if (n.cowork && o === void 0) o = "user";
-    let { name: s, marketplace: i } = Qo(t);
+    let { name: s, marketplace: i } = Qo(options);
     (G("tengu_plugin_disable_command", {
       _PROTO_plugin_name: s,
       ...(i && {
@@ -987,22 +990,22 @@ async function pluginDisableHandler(e, t, n) {
       }),
       scope: $e(o ?? "auto"),
     }),
-      (r = await vpc(t, o)));
+      (r = await vpc(options, o)));
   }
   (xe("cli_plugin_disable"),
-    e.render(
+    plugin.render(
       Jp.jsx(V_, {
         children: Jp.jsx(w, {
           children: r,
         }),
       }),
     ),
-    await e.waitUntilExit(),
+    await plugin.waitUntilExit(),
     process.exit(0));
 }
-async function pluginUpdateHandler(e, t) {
-  if (t.cowork) O2(true);
-  let { name: n, marketplace: r } = Qo(e);
+async function pluginUpdateHandler(plugin, options) {
+  if (options.cowork) O2(true);
+  let { name: n, marketplace: r } = Qo(plugin);
   G("tengu_plugin_update_command", {
     _PROTO_plugin_name: n,
     ...(r && {
@@ -1010,12 +1013,13 @@ async function pluginUpdateHandler(e, t) {
     }),
   });
   let o = "user";
-  if (t.scope) {
-    if (!UKe.includes(t.scope)) ws(`Invalid scope "${t.scope}". Valid scopes: ${UKe.join(", ")}`);
-    o = t.scope;
+  if (options.scope) {
+    if (!UKe.includes(options.scope))
+      ws(`Invalid scope "${options.scope}". Valid scopes: ${UKe.join(", ")}`);
+    o = options.scope;
   }
-  if (t.cowork && o !== "user") ws("--cowork can only be used with user scope");
-  await Cpc(e, o);
+  if (options.cowork && o !== "user") ws("--cowork can only be used with user scope");
+  await Cpc(plugin, o);
 }
 async function pluginDetailsHandler(e, t, n) {
   if (n.cowork) O2(true);

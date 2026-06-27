@@ -11,36 +11,36 @@ ypm = ve(() =>
     results: dt.string(),
   }),
 );
-function createSuggestionFromSource(e) {
-  switch (e.type) {
+function createSuggestionFromSource(source) {
+  switch (source.type) {
     case "file":
       return {
-        id: `file-${e.path}`,
-        displayText: e.displayText,
-        description: e.description,
+        id: `file-${source.path}`,
+        displayText: source.displayText,
+        description: source.description,
       };
     case "mcp_resource":
       return {
-        id: `mcp-resource-${e.server}__${e.uri}`,
-        displayText: e.displayText,
-        description: e.description,
+        id: `mcp-resource-${source.server}__${source.uri}`,
+        displayText: source.displayText,
+        description: source.description,
       };
     case "mcp_resource_template":
       return {
-        id: `mcp-template::${e.server}__${e.uriTemplate}`,
-        displayText: e.displayText,
-        description: e.description,
+        id: `mcp-template::${source.server}__${source.uriTemplate}`,
+        displayText: source.displayText,
+        description: source.description,
         metadata: {
-          replacement: y6o("@", e.displayText, true),
+          replacement: y6o("@", source.displayText, true),
           partial: true,
         },
       };
     case "agent":
       return {
-        id: `agent-${e.agentType}`,
-        displayText: e.displayText,
-        description: e.description,
-        color: e.color,
+        id: `agent-${source.agentType}`,
+        displayText: source.displayText,
+        description: source.description,
+        color: source.color,
       };
   }
 }
@@ -66,9 +66,12 @@ function Hpm(e, t, n = false) {
     return (ke(r), []);
   }
 }
-async function generateUnifiedSuggestions(e, t, n, r, o = false, s = {}) {
-  if (!t && !o) return [];
-  let [i, a] = await Promise.all([t7t(e, t, o), Promise.resolve(Hpm(r, t, o))]),
+async function generateUnifiedSuggestions(query, mcpResources, agents, r, o = false, s = {}) {
+  if (!mcpResources && !o) return [];
+  let [i, a] = await Promise.all([
+      t7t(query, mcpResources, o),
+      Promise.resolve(Hpm(r, mcpResources, o)),
+    ]),
     l = i.map((f) => ({
       type: "file",
       displayText: f.displayText,
@@ -77,7 +80,7 @@ async function generateUnifiedSuggestions(e, t, n, r, o = false, s = {}) {
       filename: byc.basename(f.displayText),
       score: f.metadata?.score,
     })),
-    c = Object.values(n)
+    c = Object.values(agents)
       .flat()
       .map((f) => ({
         type: "mcp_resource",
@@ -97,7 +100,7 @@ async function generateUnifiedSuggestions(e, t, n, r, o = false, s = {}) {
         uriTemplate: f.uriTemplate,
         name: f.name || f.uriTemplate,
       }));
-  if (!t) return [...l, ...c, ...u, ...a].slice(0, Ren).map(createSuggestionFromSource);
+  if (!mcpResources) return [...l, ...c, ...u, ...a].slice(0, Ren).map(createSuggestionFromSource);
   let d = [...c, ...u, ...a],
     p = [];
   for (let f of l)
@@ -135,7 +138,7 @@ async function generateUnifiedSuggestions(e, t, n, r, o = false, s = {}) {
           weight: 2,
         },
       ],
-    }).search(t, {
+    }).search(mcpResources, {
       limit: Ren,
     });
     for (let g of m) {

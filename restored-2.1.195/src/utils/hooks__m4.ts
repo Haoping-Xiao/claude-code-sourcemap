@@ -6,11 +6,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pic] deps: ft, KKt, ag, je, sp, _a, Mp
 Dic = require("crypto");
-async function executeWorktreeCreateHook(e) {
+async function executeWorktreeCreateHook(name) {
   let t = {
       ...Td(void 0),
       hook_event_name: "WorktreeCreate",
-      name: e,
+      name: name,
     },
     n = await Kk({
       hookInput: t,
@@ -53,7 +53,7 @@ function Vem(e) {
       .at(-1) ?? ""
   );
 }
-async function executeWorktreeRemoveHook(e) {
+async function executeWorktreeRemoveHook(worktreePath) {
   let t = CU()?.WorktreeRemove,
     n = U2()?.WorktreeRemove,
     r = N_() ? void 0 : eG()?.WorktreeRemove,
@@ -64,7 +64,7 @@ async function executeWorktreeRemoveHook(e) {
   let a = {
       ...Td(void 0),
       hook_event_name: "WorktreeRemove",
-      worktree_path: e,
+      worktree_path: worktreePath,
     },
     l = await Kk({
       hookInput: a,

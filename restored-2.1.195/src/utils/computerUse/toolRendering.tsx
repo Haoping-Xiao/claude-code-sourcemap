@@ -19,13 +19,13 @@ function QSe(e, t) {
 function dGt(e) {
   return e ? `(${e[0]}, ${e[1]})` : "";
 }
-function getComputerUseMCPRenderingOverrides(e) {
+function getComputerUseMCPRenderingOverrides(toolName) {
   return {
     userFacingName() {
-      return `Computer Use[${e}]`;
+      return `Computer Use[${toolName}]`;
     },
     renderToolUseMessage(t) {
-      switch (e) {
+      switch (toolName) {
         case "screenshot":
         case "left_mouse_down":
         case "left_mouse_up":
@@ -85,7 +85,7 @@ function getComputerUseMCPRenderingOverrides(e) {
     },
     renderToolResultMessage(t, n, { verbose: r }) {
       if (r || typeof t !== "object" || t === null) return null;
-      let o = JIp[e];
+      let o = JIp[toolName];
       if (!o) return null;
       return gfo.jsx(qn, {
         height: 1,

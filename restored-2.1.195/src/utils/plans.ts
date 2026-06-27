@@ -101,10 +101,10 @@ function S5o(e, t) {
 function ePl() {
   Zve().clear();
 }
-function getPlanFilePath(e) {
+function getPlanFilePath(agentId) {
   let t = L$e(Rt());
-  if (!e) return Lz.join(gS(), `${t}.md`);
-  return Lz.join(gS(), `${t}-agent-${e}.md`);
+  if (!agentId) return Lz.join(gS(), `${t}.md`);
+  return Lz.join(gS(), `${t}-agent-${agentId}.md`);
 }
 function bP(e) {
   let t = getPlanFilePath(e);
@@ -121,10 +121,10 @@ function bP(e) {
 function Osc(e) {
   return e.messages.find((t) => t.slug)?.slug;
 }
-async function copyPlanForResume(e, t) {
-  let n = Osc(e);
+async function copyPlanForResume(log, targetSessionId) {
+  let n = Osc(log);
   if (!n) return false;
-  let r = t ?? Rt();
+  let r = targetSessionId ?? Rt();
   S5o(r, n);
   let o = Lz.join(gS(), `${n}.md`);
   try {
@@ -136,14 +136,14 @@ async function copyPlanForResume(e, t) {
     }
     if (H0n() === null) return false;
     T(`Plan file missing during resume: ${o}. Attempting recovery.`);
-    let i = findFileSnapshotEntry(e.messages, "plan"),
+    let i = findFileSnapshotEntry(log.messages, "plan"),
       a = null;
     if (i && i.content.length > 0)
       ((a = i.content),
         T(`Plan recovered from file snapshot, ${a.length} chars`, {
           level: "info",
         }));
-    else if (((a = recoverPlanFromMessages(e)), a))
+    else if (((a = recoverPlanFromMessages(log)), a))
       T(`Plan recovered from message history, ${a.length} chars`, {
         level: "info",
       });
@@ -175,9 +175,9 @@ async function Nsc(e, t) {
     return (ke(a), false);
   }
 }
-function recoverPlanFromMessages(e) {
-  for (let t = e.messages.length - 1; t >= 0; t--) {
-    let n = e.messages[t];
+function recoverPlanFromMessages(log) {
+  for (let t = log.messages.length - 1; t >= 0; t--) {
+    let n = log.messages[t];
     if (!n) continue;
     if (n.type === "assistant") {
       let { content: r } = n.message;
@@ -203,16 +203,16 @@ function recoverPlanFromMessages(e) {
   }
   return null;
 }
-function findFileSnapshotEntry(e, t) {
-  for (let n = e.length - 1; n >= 0; n--) {
-    let r = e[n];
+function findFileSnapshotEntry(messages, key) {
+  for (let n = messages.length - 1; n >= 0; n--) {
+    let r = messages[n];
     if (
       r?.type === "system" &&
       "subtype" in r &&
       r.subtype === "file_snapshot" &&
       "snapshotFiles" in r
     )
-      return r.snapshotFiles.find((s) => s.key === t);
+      return r.snapshotFiles.find((s) => s.key === key);
   }
   return;
 }

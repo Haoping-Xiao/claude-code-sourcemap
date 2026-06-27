@@ -64,126 +64,127 @@ function g3d(e) {
       return 0;
   }
 }
-function applyPositionEdge(e, t, n) {
-  if (typeof n === "string") e.setPositionPercent(t, Number.parseInt(n, 10));
-  else if (typeof n === "number") e.setPosition(t, n);
-  else e.setPosition(t, Number.NaN);
+function applyPositionEdge(node, edge, n) {
+  if (typeof n === "string") node.setPositionPercent(edge, Number.parseInt(n, 10));
+  else if (typeof n === "number") node.setPosition(edge, n);
+  else node.setPosition(edge, Number.NaN);
 }
-var applyPositionStyles = (e, t) => {
-    if ("position" in t) e.setPositionType(d3d(t.position));
-    if ("top" in t) applyPositionEdge(e, 1, t.top);
-    if ("bottom" in t) applyPositionEdge(e, 3, t.bottom);
-    if ("left" in t) applyPositionEdge(e, 0, t.left);
-    if ("right" in t) applyPositionEdge(e, 2, t.right);
+var applyPositionStyles = (node, style) => {
+    if ("position" in style) node.setPositionType(d3d(style.position));
+    if ("top" in style) applyPositionEdge(node, 1, style.top);
+    if ("bottom" in style) applyPositionEdge(node, 3, style.bottom);
+    if ("left" in style) applyPositionEdge(node, 0, style.left);
+    if ("right" in style) applyPositionEdge(node, 2, style.right);
   },
-  applyOverflowStyles = (e, t) => {
-    let n = t.overflowY ?? t.overflow,
-      r = t.overflowX ?? t.overflow;
-    if (n === "scroll" || r === "scroll") e.setOverflow(2);
-    else if (n === "hidden" || r === "hidden") e.setOverflow(1);
-    else if ("overflow" in t || "overflowX" in t || "overflowY" in t) e.setOverflow(0);
+  applyOverflowStyles = (node, style) => {
+    let n = style.overflowY ?? style.overflow,
+      r = style.overflowX ?? style.overflow;
+    if (n === "scroll" || r === "scroll") node.setOverflow(2);
+    else if (n === "hidden" || r === "hidden") node.setOverflow(1);
+    else if ("overflow" in style || "overflowX" in style || "overflowY" in style)
+      node.setOverflow(0);
   },
-  applyMarginStyles = (e, t) => {
-    if ("margin" in t) e.setMargin(8, t.margin ?? 0);
-    if ("marginX" in t) e.setMargin(6, t.marginX ?? 0);
-    if ("marginY" in t) e.setMargin(7, t.marginY ?? 0);
-    if ("marginLeft" in t) {
-      let n = t.marginLeft;
-      if (n === "auto") e.setMarginAuto(4);
-      else e.setMargin(4, n || 0);
+  applyMarginStyles = (node, style) => {
+    if ("margin" in style) node.setMargin(8, style.margin ?? 0);
+    if ("marginX" in style) node.setMargin(6, style.marginX ?? 0);
+    if ("marginY" in style) node.setMargin(7, style.marginY ?? 0);
+    if ("marginLeft" in style) {
+      let n = style.marginLeft;
+      if (n === "auto") node.setMarginAuto(4);
+      else node.setMargin(4, n || 0);
     }
-    if ("marginRight" in t) {
-      let n = t.marginRight;
-      if (n === "auto") e.setMarginAuto(5);
-      else e.setMargin(5, n || 0);
+    if ("marginRight" in style) {
+      let n = style.marginRight;
+      if (n === "auto") node.setMarginAuto(5);
+      else node.setMargin(5, n || 0);
     }
-    if ("marginTop" in t) e.setMargin(1, t.marginTop || 0);
-    if ("marginBottom" in t) e.setMargin(3, t.marginBottom || 0);
+    if ("marginTop" in style) node.setMargin(1, style.marginTop || 0);
+    if ("marginBottom" in style) node.setMargin(3, style.marginBottom || 0);
   },
-  applyPaddingStyles = (e, t) => {
-    if ("padding" in t) e.setPadding(8, t.padding ?? 0);
-    if ("paddingX" in t) e.setPadding(6, t.paddingX ?? 0);
-    if ("paddingY" in t) e.setPadding(7, t.paddingY ?? 0);
-    if ("paddingLeft" in t) e.setPadding(0, t.paddingLeft || 0);
-    if ("paddingRight" in t) e.setPadding(2, t.paddingRight || 0);
-    if ("paddingTop" in t) e.setPadding(1, t.paddingTop || 0);
-    if ("paddingBottom" in t) e.setPadding(3, t.paddingBottom || 0);
+  applyPaddingStyles = (node, style) => {
+    if ("padding" in style) node.setPadding(8, style.padding ?? 0);
+    if ("paddingX" in style) node.setPadding(6, style.paddingX ?? 0);
+    if ("paddingY" in style) node.setPadding(7, style.paddingY ?? 0);
+    if ("paddingLeft" in style) node.setPadding(0, style.paddingLeft || 0);
+    if ("paddingRight" in style) node.setPadding(2, style.paddingRight || 0);
+    if ("paddingTop" in style) node.setPadding(1, style.paddingTop || 0);
+    if ("paddingBottom" in style) node.setPadding(3, style.paddingBottom || 0);
   },
-  applyFlexStyles = (e, t) => {
-    if ("flexGrow" in t) e.setFlexGrow(t.flexGrow ?? 0);
-    if ("flexShrink" in t) {
-      let n = t.flexShrink;
-      e.setFlexShrink(typeof n === "number" ? n : 1);
+  applyFlexStyles = (node, style) => {
+    if ("flexGrow" in style) node.setFlexGrow(style.flexGrow ?? 0);
+    if ("flexShrink" in style) {
+      let n = style.flexShrink;
+      node.setFlexShrink(typeof n === "number" ? n : 1);
     }
-    if ("flexWrap" in t) e.setFlexWrap(f3d(t.flexWrap));
-    if ("flexDirection" in t) e.setFlexDirection(m3d(t.flexDirection));
-    if ("flexBasis" in t) {
-      let n = t.flexBasis;
-      if (typeof n === "number") e.setFlexBasis(n);
-      else if (typeof n === "string") e.setFlexBasisPercent(Number.parseInt(n, 10));
-      else e.setFlexBasis(Number.NaN);
+    if ("flexWrap" in style) node.setFlexWrap(f3d(style.flexWrap));
+    if ("flexDirection" in style) node.setFlexDirection(m3d(style.flexDirection));
+    if ("flexBasis" in style) {
+      let n = style.flexBasis;
+      if (typeof n === "number") node.setFlexBasis(n);
+      else if (typeof n === "string") node.setFlexBasisPercent(Number.parseInt(n, 10));
+      else node.setFlexBasis(Number.NaN);
     }
-    if ("alignItems" in t) e.setAlignItems(k3i(t.alignItems, 4));
-    if ("alignSelf" in t) e.setAlignSelf(k3i(t.alignSelf, 0));
-    if ("justifyContent" in t) e.setJustifyContent(g3d(t.justifyContent));
+    if ("alignItems" in style) node.setAlignItems(k3i(style.alignItems, 4));
+    if ("alignSelf" in style) node.setAlignSelf(k3i(style.alignSelf, 0));
+    if ("justifyContent" in style) node.setJustifyContent(g3d(style.justifyContent));
   },
-  applyDimensionStyles = (e, t) => {
-    if ("width" in t) {
-      let n = t.width;
-      if (typeof n === "number") e.setWidth(n);
-      else if (typeof n === "string") e.setWidthPercent(Number.parseInt(n, 10));
-      else e.setWidthAuto();
+  applyDimensionStyles = (node, style) => {
+    if ("width" in style) {
+      let n = style.width;
+      if (typeof n === "number") node.setWidth(n);
+      else if (typeof n === "string") node.setWidthPercent(Number.parseInt(n, 10));
+      else node.setWidthAuto();
     }
-    if ("height" in t) {
-      let n = t.height;
-      if (typeof n === "number") e.setHeight(n);
-      else if (typeof n === "string") e.setHeightPercent(Number.parseInt(n, 10));
-      else e.setHeightAuto();
+    if ("height" in style) {
+      let n = style.height;
+      if (typeof n === "number") node.setHeight(n);
+      else if (typeof n === "string") node.setHeightPercent(Number.parseInt(n, 10));
+      else node.setHeightAuto();
     }
-    if ("minWidth" in t) {
-      let n = t.minWidth;
-      if (typeof n === "string") e.setMinWidthPercent(Number.parseInt(n, 10));
-      else e.setMinWidth(n ?? 0);
+    if ("minWidth" in style) {
+      let n = style.minWidth;
+      if (typeof n === "string") node.setMinWidthPercent(Number.parseInt(n, 10));
+      else node.setMinWidth(n ?? 0);
     }
-    if ("minHeight" in t) {
-      let n = t.minHeight;
-      if (typeof n === "string") e.setMinHeightPercent(Number.parseInt(n, 10));
-      else e.setMinHeight(n ?? 0);
+    if ("minHeight" in style) {
+      let n = style.minHeight;
+      if (typeof n === "string") node.setMinHeightPercent(Number.parseInt(n, 10));
+      else node.setMinHeight(n ?? 0);
     }
-    if ("maxWidth" in t) {
-      let n = t.maxWidth;
-      if (typeof n === "string") e.setMaxWidthPercent(Number.parseInt(n, 10));
-      else e.setMaxWidth(n);
+    if ("maxWidth" in style) {
+      let n = style.maxWidth;
+      if (typeof n === "string") node.setMaxWidthPercent(Number.parseInt(n, 10));
+      else node.setMaxWidth(n);
     }
-    if ("maxHeight" in t) {
-      let n = t.maxHeight;
-      if (typeof n === "string") e.setMaxHeightPercent(Number.parseInt(n, 10));
-      else e.setMaxHeight(n);
+    if ("maxHeight" in style) {
+      let n = style.maxHeight;
+      if (typeof n === "string") node.setMaxHeightPercent(Number.parseInt(n, 10));
+      else node.setMaxHeight(n);
     }
   },
   A3d = (e, t) => {
     if ("display" in t) e.setDisplay(p3d(t.display));
   },
-  applyBorderStyles = (e, t, n) => {
-    let r = n ?? t;
-    if ("borderStyle" in t) {
-      let o = t.borderStyle ? 1 : 0;
-      (e.setBorder(1, r.borderTop !== false ? o : 0),
-        e.setBorder(3, r.borderBottom !== false ? o : 0),
-        e.setBorder(0, r.borderLeft !== false ? o : 0),
-        e.setBorder(2, r.borderRight !== false ? o : 0));
+  applyBorderStyles = (node, style, resolvedStyle) => {
+    let r = resolvedStyle ?? style;
+    if ("borderStyle" in style) {
+      let o = style.borderStyle ? 1 : 0;
+      (node.setBorder(1, r.borderTop !== false ? o : 0),
+        node.setBorder(3, r.borderBottom !== false ? o : 0),
+        node.setBorder(0, r.borderLeft !== false ? o : 0),
+        node.setBorder(2, r.borderRight !== false ? o : 0));
     } else {
       let o = r.borderStyle ? 1 : 0;
-      if ("borderTop" in t) e.setBorder(1, t.borderTop === false ? 0 : o);
-      if ("borderBottom" in t) e.setBorder(3, t.borderBottom === false ? 0 : o);
-      if ("borderLeft" in t) e.setBorder(0, t.borderLeft === false ? 0 : o);
-      if ("borderRight" in t) e.setBorder(2, t.borderRight === false ? 0 : o);
+      if ("borderTop" in style) node.setBorder(1, style.borderTop === false ? 0 : o);
+      if ("borderBottom" in style) node.setBorder(3, style.borderBottom === false ? 0 : o);
+      if ("borderLeft" in style) node.setBorder(0, style.borderLeft === false ? 0 : o);
+      if ("borderRight" in style) node.setBorder(2, style.borderRight === false ? 0 : o);
     }
   },
-  applyGapStyles = (e, t) => {
-    if ("gap" in t) e.setGap(2, t.gap ?? 0);
-    if ("columnGap" in t) e.setGap(0, t.columnGap ?? 0);
-    if ("rowGap" in t) e.setGap(1, t.rowGap ?? 0);
+  applyGapStyles = (node, style) => {
+    if ("gap" in style) node.setGap(2, style.gap ?? 0);
+    if ("columnGap" in style) node.setGap(0, style.columnGap ?? 0);
+    if ("rowGap" in style) node.setGap(1, style.rowGap ?? 0);
   },
   v3d = (e, t = {}, n) => {
     (applyPositionStyles(e, t),

@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _Ec] deps: uo, rme, S_
 spr = R(rt(), 1);
-async function handleSwarmWorkerPermission(e) {
+async function handleSwarmWorkerPermission(params) {
   if (!el() || !X_t()) return null;
-  let { ctx: t, description: n, updatedInput: r, suggestions: o } = e,
+  let { ctx: t, description: n, updatedInput: r, suggestions: o } = params,
     s = r ?? t.input,
     i = null;
   if (i) return i;

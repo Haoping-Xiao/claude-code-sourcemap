@@ -59,10 +59,10 @@ async function nnm(e, t) {
     ).trim() || n
   );
 }
-async function toolToAPISchema(e, t) {
+async function toolToAPISchema(tool, options) {
   let n = fr(),
-    r = t.model ? Qtm(t.model) : void 0,
-    o = ph(t.model) ? "L:" : "",
+    r = options.model ? Qtm(options.model) : void 0,
+    o = ph(options.model) ? "L:" : "",
     s =
       (n === "vertex" && r?.eagerInputStreaming?.vertex) ||
       (n === "bedrock" && r?.eagerInputStreaming?.bedrock)
@@ -73,22 +73,25 @@ async function toolToAPISchema(e, t) {
       o +
       s +
       "" +
-      ("inputJSONSchema" in e && e.inputJSONSchema
-        ? `${e.name}:${onm(e.inputJSONSchema)}`
-        : e.name),
+      ("inputJSONSchema" in tool && tool.inputJSONSchema
+        ? `${tool.name}:${onm(tool.inputJSONSchema)}`
+        : tool.name),
     l = Uvi(),
     c = l.get(a);
   if (!c) {
     let d = at("tengu_tool_pear", false),
-      f = "inputJSONSchema" in e && e.inputJSONSchema ? e.inputJSONSchema : aOe(e.inputSchema);
-    if (!el()) f = tnm(e.name, f);
+      f =
+        "inputJSONSchema" in tool && tool.inputJSONSchema
+          ? tool.inputJSONSchema
+          : aOe(tool.inputSchema);
+    if (!el()) f = tnm(tool.name, f);
     if (
       ((c = {
-        name: e.name,
-        description: await nnm(e, t),
+        name: tool.name,
+        description: await nnm(tool, options),
         input_schema: f,
       }),
-      d && e.strict === true && t.model && j4e(t.model))
+      d && tool.strict === true && options.model && j4e(options.model))
     )
       c.strict = true;
     let m = process.env.CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING;
@@ -117,8 +120,8 @@ async function toolToAPISchema(e, t) {
       eager_input_streaming: true,
     }),
   };
-  if (t.deferLoading) u.defer_loading = true;
-  if (t.cacheControl) u.cache_control = t.cacheControl;
+  if (options.deferLoading) u.defer_loading = true;
+  if (options.cacheControl) u.cache_control = options.cacheControl;
   if (F4e()) {
     let d = new Set(["name", "description", "input_schema", "cache_control"]),
       p = Object.keys(u).filter((f) => !d.has(f));
@@ -137,35 +140,37 @@ async function toolToAPISchema(e, t) {
   }
   return u;
 }
-function logStripOnce(e) {
+function logStripOnce(stripped) {
   if (pac) return;
   ((pac = true),
-    T(`[betas] Stripped from tool schemas: [${e.join(", ")}] (experimental betas disabled)`));
+    T(
+      `[betas] Stripped from tool schemas: [${stripped.join(", ")}] (experimental betas disabled)`,
+    ));
 }
 function onm(e) {
   let t = fac.get(e);
   if (t === void 0) ((t = De(e)), fac.set(e, t));
   return t;
 }
-function logAPIPrefix(e) {
-  let [t] = splitSysPromptPrefix(e),
+function logAPIPrefix(systemPrompt) {
+  let [t] = splitSysPromptPrefix(systemPrompt),
     n = t?.text;
   G("tengu_sysprompt_block", {
     length: n?.length ?? 0,
     hash: n ? mac.createHash("sha256").update(n).digest("hex") : "",
   });
 }
-function splitSysPromptPrefix(e, t) {
+function splitSysPromptPrefix(systemPrompt, options) {
   let n = Qxe(),
-    r = e.findIndex((c) => c === Oae);
-  if (n && t?.skipGlobalCacheForSystemPrompt && r === -1) {
+    r = systemPrompt.findIndex((c) => c === Oae);
+  if (n && options?.skipGlobalCacheForSystemPrompt && r === -1) {
     G("tengu_sysprompt_using_tool_based_cache", {
-      promptBlockCount: e.length,
+      promptBlockCount: systemPrompt.length,
     });
     let c,
       u,
       d = [];
-    for (let m of e) {
+    for (let m of systemPrompt) {
       if (!m) continue;
       if (m === Oae) continue;
       if (m.startsWith("x-anthropic-billing-header")) c = m;
@@ -199,8 +204,8 @@ function splitSysPromptPrefix(e, t) {
         u,
         d = [],
         p = [];
-      for (let h = 0; h < e.length; h++) {
-        let y = e[h];
+      for (let h = 0; h < systemPrompt.length; h++) {
+        let y = systemPrompt[h];
         if (!y || y === Oae) continue;
         if (y.startsWith("x-anthropic-billing-header")) c = y;
         else if (Jkn.has(y)) u = y;
@@ -244,12 +249,12 @@ function splitSysPromptPrefix(e, t) {
       );
     } else
       G("tengu_sysprompt_missing_boundary_marker", {
-        promptBlockCount: e.length,
+        promptBlockCount: systemPrompt.length,
       });
   let o,
     s,
     i = [];
-  for (let c of e) {
+  for (let c of systemPrompt) {
     if (!c) continue;
     if (c.startsWith("x-anthropic-billing-header")) o = c;
     else if (Jkn.has(c)) s = c;
@@ -283,13 +288,13 @@ function ekl(e, t) {
 `),
   ].filter(Boolean);
 }
-function prependUserContext(e, t) {
-  if (Object.entries(t).length === 0) return e;
+function prependUserContext(messages, context) {
+  if (Object.entries(context).length === 0) return messages;
   return [
     Rn({
       content: `<system-reminder>
 As you answer the user's questions, you can use the following context:
-${Object.entries(t).map(
+${Object.entries(context).map(
   ([n, r]) => `# ${n}
 ${r}`,
 ).join(`
@@ -300,17 +305,22 @@ ${r}`,
 `,
       isMeta: true,
     }),
-    ...e,
+    ...messages,
   ];
 }
-async function logContextMetrics(e, t) {
+async function logContextMetrics(mcpConfigs, toolPermissionContext) {
   if (Rj()) return;
-  let [{ tools: n }, r, o, s] = await Promise.all([yGt(e), F$(t), uS(), hH()]),
+  let [{ tools: n }, r, o, s] = await Promise.all([
+      yGt(mcpConfigs),
+      F$(toolPermissionContext),
+      uS(),
+      hH(),
+    ]),
     i = s.gitStatus?.length ?? 0,
     a = o.claudeMd?.length ?? 0,
     l = i + a,
     c = $t(),
-    u = C8e(t),
+    u = C8e(toolPermissionContext),
     d = w8e(u, c),
     p = await nOn(c, AbortSignal.timeout(1000), d),
     f = 0,
@@ -347,12 +357,12 @@ async function logContextMetrics(e, t) {
     non_mcp_tools_tokens: y,
   });
 }
-function normalizeToolInput(e, t, n) {
-  switch (e.name) {
+function normalizeToolInput(tool, input, agentId) {
+  switch (tool.name) {
     case Ds: {
       try {
-        if (t === null || typeof t !== "object") return t;
-        let r = t,
+        if (input === null || typeof input !== "object") return input;
+        let r = input,
           o = r.offset;
         if (typeof o === "string") {
           let s = o.trim();
@@ -368,24 +378,24 @@ function normalizeToolInput(e, t, n) {
       } catch (r) {
         ke(Error(`normalizeToolInput Read.offset coercion failed: ${r}`));
       }
-      return t;
+      return input;
     }
     case jD: {
-      let r = bP(n),
-        o = _P(n);
+      let r = bP(agentId),
+        o = _P(agentId);
       return (
         H6n(),
         r !== null
           ? {
-              ...t,
+              ...input,
               plan: r,
               planFilePath: o,
             }
-          : t
+          : input
       );
     }
     case cl.name: {
-      let r = cl.inputSchema.parse(t),
+      let r = cl.inputSchema.parse(input),
         { command: o, timeout: s, description: i } = r,
         a = $t(),
         l = o.replace(`cd ${a} && `, "");
@@ -414,7 +424,7 @@ function normalizeToolInput(e, t, n) {
     }
     case xH.name: {
       let o = {
-        ...t,
+        ...input,
       };
       if ("old_str" in o) {
         if (!("old_string" in o)) o.old_string = o.old_str;
@@ -443,7 +453,7 @@ function normalizeToolInput(e, t, n) {
       };
     }
     case dA.name: {
-      let r = dA.inputSchema.parse(t),
+      let r = dA.inputSchema.parse(input),
         o = /\.(md|mdx)$/i.test(r.file_path);
       return {
         file_path: r.file_path,
@@ -451,7 +461,7 @@ function normalizeToolInput(e, t, n) {
       };
     }
     case U8: {
-      let r = t,
+      let r = input,
         o = r.task_id ?? r.agentId ?? r.bash_id,
         s = r.timeout ?? (typeof r.wait_up_to === "number" ? r.wait_up_to * 1000 : void 0);
       return {
@@ -461,7 +471,7 @@ function normalizeToolInput(e, t, n) {
       };
     }
     default:
-      return t;
+      return input;
   }
 }
 function Xlr(e) {
@@ -488,24 +498,24 @@ function Xlr(e) {
   }
   return e;
 }
-function normalizeToolInputForAPI(e, t) {
-  switch (e.name) {
+function normalizeToolInputForAPI(tool, input) {
+  switch (tool.name) {
     case jD: {
-      if (t && typeof t === "object" && ("plan" in t || "planFilePath" in t)) {
-        let { plan: n, planFilePath: r, ...o } = t;
+      if (input && typeof input === "object" && ("plan" in input || "planFilePath" in input)) {
+        let { plan: n, planFilePath: r, ...o } = input;
         return o;
       }
-      return t;
+      return input;
     }
     case xH.name: {
-      if (t && typeof t === "object" && "edits" in t) {
-        let { old_string: n, new_string: r, replace_all: o, ...s } = t;
+      if (input && typeof input === "object" && "edits" in input) {
+        let { old_string: n, new_string: r, replace_all: o, ...s } = input;
         return s;
       }
-      return t;
+      return input;
     }
     default:
-      return t;
+      return input;
   }
 }
 var mac,

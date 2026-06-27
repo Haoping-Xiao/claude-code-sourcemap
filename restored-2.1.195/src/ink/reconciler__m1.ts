@@ -29,30 +29,30 @@ function LXr(e, t) {
   if (e._holdsRawModeRef) ((e._holdsRawModeRef = false), B3i(t, -1));
   for (let n of e.childNodes) if (n.nodeName !== "#text") LXr(n, t);
 }
-function applyProp(e, t, n) {
-  if (t === "children") return;
-  if (t === "style") {
-    if ((SXr(e, n), e.yogaNode)) CXr(e.yogaNode, n);
+function applyProp(node, key, value) {
+  if (key === "children") return;
+  if (key === "style") {
+    if ((SXr(node, value), node.yogaNode)) CXr(node.yogaNode, value);
     return;
   }
-  if (t === "textStyles") {
-    e.textStyles = n;
+  if (key === "textStyles") {
+    node.textStyles = value;
     return;
   }
-  if (t === "accessibility") {
-    bXr(e, n);
+  if (key === "accessibility") {
+    bXr(node, value);
     return;
   }
-  if (HXr.has(t)) {
-    N3i(e, t, n);
+  if (HXr.has(key)) {
+    N3i(node, key, value);
     return;
   }
-  _Xr(e, t, n);
+  _Xr(node, key, value);
 }
-function getOwnerChain(e) {
+function getOwnerChain(fiber) {
   let t = [],
     n = new Set(),
-    r = e;
+    r = fiber;
   for (let o = 0; r && o < 50; o++) {
     if (n.has(r)) break;
     n.add(r);

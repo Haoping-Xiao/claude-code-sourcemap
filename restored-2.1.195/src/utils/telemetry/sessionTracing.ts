@@ -54,15 +54,15 @@ function bDe(e, t) {
   if (((t.ended = true), e === hDe && $3t?.getValue(e) === t)) $3t = void 0;
   if (dF().getValue(e) === t) qSe.enterWith(t.priorContext);
 }
-function createSpanAttributes(e, t = {}) {
+function createSpanAttributes(spanType, t = {}) {
   return {
     ...QGe(),
-    "span.type": e,
+    "span.type": spanType,
     ...t,
   };
 }
-function startInteractionSpan(e) {
-  let t = zSe() ? Xxa(e) : void 0,
+function startInteractionSpan(userPrompt) {
+  let t = zSe() ? Xxa(userPrompt) : void 0,
     n = dF();
   if (!f5()) {
     if (t) {
@@ -83,11 +83,11 @@ function startInteractionSpan(e) {
     return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   }
   let r = getTracer(),
-    s = ut(process.env.OTEL_LOG_USER_PROMPTS) ? e : "<REDACTED>";
+    s = ut(process.env.OTEL_LOG_USER_PROMPTS) ? userPrompt : "<REDACTED>";
   Qxa++;
   let i = createSpanAttributes("interaction", {
       user_prompt: s,
-      user_prompt_length: e.length,
+      user_prompt_length: userPrompt.length,
       "interaction.sequence": Qxa,
     }),
     a =
@@ -105,7 +105,7 @@ function startInteractionSpan(e) {
       a,
     );
   return (
-    Rxa(l, e),
+    Rxa(l, userPrompt),
     _De(hDe, {
       span: l,
       startTime: performance.now(),
@@ -141,11 +141,11 @@ function endInteractionSpan() {
     e.span.end(),
     bDe(hDe, e));
 }
-function startLLMRequestSpan(e, t, n, r, o) {
+function startLLMRequestSpan(model, newContext, messagesForAPI, fastMode, o) {
   let s = zSe()
       ? Gxa({
-          model: e,
-          querySource: n?.querySource,
+          model: model,
+          querySource: messagesForAPI?.querySource,
           messageId: void 0,
         })
       : void 0,
@@ -158,7 +158,7 @@ function startLLMRequestSpan(e, t, n, r, o) {
           span: d,
           startTime: performance.now(),
           attributes: {
-            model: e,
+            model: model,
           },
           perfettoSpanId: s,
           priorContext: i,
@@ -171,9 +171,9 @@ function startLLMRequestSpan(e, t, n, r, o) {
   let a = getTracer(),
     l = dF().getValue(bqe),
     c = createSpanAttributes("llm_request", {
-      model: e,
+      model: model,
       "gen_ai.system": "anthropic",
-      "gen_ai.request.model": e,
+      "gen_ai.request.model": model,
       "llm_request.context": l ? "tool" : Jdt(hDe) ? "interaction" : "standalone",
       speed: o ? "fast" : "normal",
     }),
@@ -184,13 +184,13 @@ function startLLMRequestSpan(e, t, n, r, o) {
       },
       i,
     );
-  if (n?.querySource) u.setAttribute("query_source", n.querySource);
-  if (t && !YY(t)) {
-    if (t.agentId) u.setAttribute("agent_id", t.agentId);
-    if (t.parentAgentId) u.setAttribute("parent_agent_id", t.parentAgentId);
+  if (messagesForAPI?.querySource) u.setAttribute("query_source", messagesForAPI.querySource);
+  if (newContext && !YY(newContext)) {
+    if (newContext.agentId) u.setAttribute("agent_id", newContext.agentId);
+    if (newContext.parentAgentId) u.setAttribute("parent_agent_id", newContext.parentAgentId);
   }
   return (
-    Lxa(u, n, r),
+    Lxa(u, messagesForAPI, fastMode),
     yDe.set(u, {
       span: u,
       startTime: performance.now(),
@@ -219,57 +219,58 @@ function $wp(e) {
   );
   return dg.trace.getSpanContext(t);
 }
-function endLLMRequestSpan(e, t) {
-  if (!e) return;
-  let n = yDe.get(e);
+function endLLMRequestSpan(span, metadata) {
+  if (!span) return;
+  let n = yDe.get(span);
   if (!n || n.ended) return;
   n.ended = true;
   let r = Math.max(0, Math.round(performance.now() - n.startTime));
   if (n.perfettoSpanId)
     Wxa(n.perfettoSpanId, {
-      ttftMs: t?.ttftMs,
+      ttftMs: metadata?.ttftMs,
       ttltMs: r,
-      promptTokens: t?.inputTokens,
-      outputTokens: t?.outputTokens,
-      cacheReadTokens: t?.cacheReadTokens,
-      cacheCreationTokens: t?.cacheCreationTokens,
-      success: t?.success,
-      error: t?.error,
-      requestSetupMs: t?.requestSetupMs,
-      attemptStartTimes: t?.attemptStartTimes,
-      requestId: t?.requestId,
-      clientRequestId: t?.clientRequestId,
+      promptTokens: metadata?.inputTokens,
+      outputTokens: metadata?.outputTokens,
+      cacheReadTokens: metadata?.cacheReadTokens,
+      cacheCreationTokens: metadata?.cacheCreationTokens,
+      success: metadata?.success,
+      error: metadata?.error,
+      requestSetupMs: metadata?.requestSetupMs,
+      attemptStartTimes: metadata?.attemptStartTimes,
+      requestId: metadata?.requestId,
+      clientRequestId: metadata?.clientRequestId,
     });
   if (!f5()) return;
   let o = {
     duration_ms: r,
   };
-  if (t) {
-    if (t.inputTokens !== void 0) o.input_tokens = t.inputTokens;
-    if (t.outputTokens !== void 0) o.output_tokens = t.outputTokens;
-    if (t.cacheReadTokens !== void 0) o.cache_read_tokens = t.cacheReadTokens;
-    if (t.cacheCreationTokens !== void 0) o.cache_creation_tokens = t.cacheCreationTokens;
-    if (t.success !== void 0) o.success = t.success;
-    if (t.statusCode !== void 0) o.status_code = t.statusCode;
-    if (t.error !== void 0) o.error = t.error;
-    if (t.attempt !== void 0) o.attempt = t.attempt;
-    if (t.hasToolCall !== void 0) o["response.has_tool_call"] = t.hasToolCall;
-    if (t.requestId !== void 0)
-      ((o.request_id = t.requestId), (o["gen_ai.response.id"] = t.requestId));
-    if (t.clientRequestId !== void 0) o.client_request_id = t.clientRequestId;
-    if (t.ttftMs !== void 0) o.ttft_ms = t.ttftMs;
-    Dxa(o, t);
+  if (metadata) {
+    if (metadata.inputTokens !== void 0) o.input_tokens = metadata.inputTokens;
+    if (metadata.outputTokens !== void 0) o.output_tokens = metadata.outputTokens;
+    if (metadata.cacheReadTokens !== void 0) o.cache_read_tokens = metadata.cacheReadTokens;
+    if (metadata.cacheCreationTokens !== void 0)
+      o.cache_creation_tokens = metadata.cacheCreationTokens;
+    if (metadata.success !== void 0) o.success = metadata.success;
+    if (metadata.statusCode !== void 0) o.status_code = metadata.statusCode;
+    if (metadata.error !== void 0) o.error = metadata.error;
+    if (metadata.attempt !== void 0) o.attempt = metadata.attempt;
+    if (metadata.hasToolCall !== void 0) o["response.has_tool_call"] = metadata.hasToolCall;
+    if (metadata.requestId !== void 0)
+      ((o.request_id = metadata.requestId), (o["gen_ai.response.id"] = metadata.requestId));
+    if (metadata.clientRequestId !== void 0) o.client_request_id = metadata.clientRequestId;
+    if (metadata.ttftMs !== void 0) o.ttft_ms = metadata.ttftMs;
+    Dxa(o, metadata);
   }
-  if ((n.span.setAttributes(o), t?.stopReason !== void 0))
-    (n.span.setAttribute("stop_reason", t.stopReason),
-      n.span.setAttribute("gen_ai.response.finish_reasons", [t.stopReason]));
-  if (t?.success === false)
+  if ((n.span.setAttributes(o), metadata?.stopReason !== void 0))
+    (n.span.setAttribute("stop_reason", metadata.stopReason),
+      n.span.setAttribute("gen_ai.response.finish_reasons", [metadata.stopReason]));
+  if (metadata?.success === false)
     n.span.setStatus({
       code: dg.SpanStatusCode.ERROR,
-      message: t.error,
+      message: metadata.error,
     });
-  if (t?.traceresponse) {
-    let s = $wp(t.traceresponse);
+  if (metadata?.traceresponse) {
+    let s = $wp(metadata.traceresponse);
     if (s)
       n.span.addLink({
         context: s,
@@ -280,8 +281,8 @@ function endLLMRequestSpan(e, t) {
   }
   n.span.end();
 }
-function startToolSpan(e, t, n, r, o) {
-  let s = zSe() ? qxa(e, n) : void 0,
+function startToolSpan(toolName, toolAttributes, toolInput, r, o) {
+  let s = zSe() ? qxa(toolName, toolInput) : void 0,
     i = dF();
   if (!f5()) {
     if (s) {
@@ -292,7 +293,7 @@ function startToolSpan(e, t, n, r, o) {
           startTime: performance.now(),
           attributes: {
             "span.type": "tool",
-            tool_name: e,
+            tool_name: toolName,
           },
           perfettoSpanId: s,
           priorContext: i,
@@ -304,8 +305,8 @@ function startToolSpan(e, t, n, r, o) {
   }
   let a = getTracer(),
     l = createSpanAttributes("tool", {
-      tool_name: e,
-      ...n,
+      tool_name: toolName,
+      ...toolInput,
     }),
     c = a.startSpan(
       "claude_code.tool",
@@ -314,11 +315,12 @@ function startToolSpan(e, t, n, r, o) {
       },
       i,
     );
-  if (t && !YY(t)) {
-    if (t.agentId) c.setAttribute("agent_id", t.agentId);
-    if (t.parentAgentId) c.setAttribute("parent_agent_id", t.parentAgentId);
+  if (toolAttributes && !YY(toolAttributes)) {
+    if (toolAttributes.agentId) c.setAttribute("agent_id", toolAttributes.agentId);
+    if (toolAttributes.parentAgentId)
+      c.setAttribute("parent_agent_id", toolAttributes.parentAgentId);
   }
-  if ((tka(c, o), r)) Pxa(c, e, r);
+  if ((tka(c, o), r)) Pxa(c, toolName, r);
   return (
     _De(bqe, {
       span: c,
@@ -453,17 +455,17 @@ function Qdt(e, t, n) {
   if (n !== void 0) s.result_tokens = n;
   (r.span.setAttributes(s), r.span.end(), bDe(bqe, r));
 }
-function addToolContentEvent(e, t) {
+function addToolContentEvent(eventName, attributes) {
   if (!f5() || !Rst()) return;
   let n = Jdt(bqe);
   if (!n) return;
   let r = {};
-  for (let [o, s] of Object.entries(t))
+  for (let [o, s] of Object.entries(attributes))
     if (typeof s === "string") {
       let { content: i, truncated: a } = iP(s);
       if (((r[o] = i), a)) ((r[`${o}_truncated`] = true), (r[`${o}_original_length`] = s.length));
     } else r[o] = s;
-  n.span.addEvent(e, r);
+  n.span.addEvent(eventName, r);
 }
 function dpo(e) {
   if (!f5()) return;
@@ -549,15 +551,15 @@ function uka(e, t) {
 function dka() {
   return mC() || ude();
 }
-function startHookSpan(e, t, n, r) {
+function startHookSpan(hookEvent, hookName, numHooks, hookDefinitions) {
   if (!dka()) return dg.trace.getActiveSpan() || getTracer().startSpan("dummy");
   let o = getTracer(),
     s = dF(),
-    { content: i } = iP(r),
+    { content: i } = iP(hookDefinitions),
     a = createSpanAttributes("hook", {
-      hook_event: e,
-      hook_name: t,
-      num_hooks: n,
+      hook_event: hookEvent,
+      hook_name: hookName,
+      num_hooks: numHooks,
       ...(sg() && {
         hook_definitions: i,
       }),

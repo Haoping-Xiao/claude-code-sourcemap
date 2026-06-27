@@ -83,8 +83,8 @@ function THf(e) {
   if (!r) return true;
   return !SHf.includes(r);
 }
-function detectBlockedSleepPattern(e) {
-  let t = By(e);
+function detectBlockedSleepPattern(command) {
+  let t = By(command);
   if (t.length === 0) return null;
   let n = t[0]?.trim() ?? "",
     r = /^sleep\s+(\d+(?:\.\d*)?)\s*$/.exec(n);
@@ -94,8 +94,8 @@ function detectBlockedSleepPattern(e) {
   let s = t.slice(1).join(" ").trim();
   return s ? `sleep ${o} followed by: ${s}` : `standalone sleep ${o}`;
 }
-async function applySedEdit(e, t, n) {
-  let { filePath: r, newContent: o } = e,
+async function applySedEdit(simulatedEdit, toolUseContext, parentMessage) {
+  let { filePath: r, newContent: o } = simulatedEdit,
     s = ds(r),
     i = i_(s),
     a = qt(),
@@ -117,13 +117,19 @@ Exit code 1`,
       };
     throw d;
   }
-  if (K_() && n) await eAe(t.getFileHistoryState, t.applyFileHistoryOp, s, n.uuid);
+  if (K_() && parentMessage)
+    await eAe(
+      toolUseContext.getFileHistoryState,
+      toolUseContext.applyFileHistoryOp,
+      s,
+      parentMessage.uuid,
+    );
   let u = oAs(s);
   return (
     await iCe(s, async () => {
       sCe(s, i);
       let d = await aCe(s, o, l, u);
-      t.readFileState.set(s, {
+      toolUseContext.readFileState.set(s, {
         content: o,
         timestamp: d,
         offset: void 0,

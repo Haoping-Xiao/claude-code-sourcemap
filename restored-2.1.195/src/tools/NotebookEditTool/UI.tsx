@@ -46,8 +46,8 @@ function onl(e, { verbose: t }) {
     verbose: t,
   });
 }
-function renderToolUseErrorMessage(e, { verbose: t }) {
-  if (!t && typeof e === "string" && xl(e, "tool_use_error"))
+function renderToolUseErrorMessage(result, { verbose: t }) {
+  if (!t && typeof result === "string" && xl(result, "tool_use_error"))
     return rR.jsx(qn, {
       children: rR.jsx(w, {
         color: "error",
@@ -55,7 +55,7 @@ function renderToolUseErrorMessage(e, { verbose: t }) {
       }),
     });
   return rR.jsx(AT, {
-    result: e,
+    result: result,
     verbose: t,
   });
 }

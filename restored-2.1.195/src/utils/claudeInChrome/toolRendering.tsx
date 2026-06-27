@@ -9,63 +9,66 @@
 ((l0a = require("url")), (eGt = new Map()));
 ICp = new RegExp(`^${z0e}\\(([^)]+)\\)$`);
 LCp = new Set(["image/png", "image/jpeg", "image/gif", "image/webp"]);
-function renderChromeToolUseMessage(e, t, n) {
-  let r = e.tabId;
+function renderChromeToolUseMessage(input, toolName, verbose) {
+  let r = input.tabId;
   if (typeof r === "number") QZr(r);
   let o = [];
-  switch (t) {
+  switch (toolName) {
     case "navigate":
-      if (typeof e.url === "string")
+      if (typeof input.url === "string")
         try {
-          let s = new URL(e.url);
+          let s = new URL(input.url);
           o.push(s.hostname);
         } catch {
-          o.push(Rs(e.url, 30));
+          o.push(Rs(input.url, 30));
         }
       break;
     case "find":
-      if (typeof e.query === "string") o.push(`pattern: ${Rs(e.query, 30)}`);
+      if (typeof input.query === "string") o.push(`pattern: ${Rs(input.query, 30)}`);
       break;
     case "computer":
-      if (typeof e.action === "string") {
-        let s = e.action;
+      if (typeof input.action === "string") {
+        let s = input.action;
         if (
           s === "left_click" ||
           s === "right_click" ||
           s === "double_click" ||
           s === "middle_click"
         ) {
-          if (typeof e.ref === "string") o.push(`${s} on ${e.ref}`);
-          else if (Array.isArray(e.coordinate)) o.push(`${s} at (${e.coordinate.join(", ")})`);
+          if (typeof input.ref === "string") o.push(`${s} on ${input.ref}`);
+          else if (Array.isArray(input.coordinate))
+            o.push(`${s} at (${input.coordinate.join(", ")})`);
           else o.push(s);
-        } else if (s === "type" && typeof e.text === "string") o.push(`type "${Rs(e.text, 15)}"`);
-        else if (s === "key" && typeof e.text === "string") o.push(`key ${e.text}`);
-        else if (s === "scroll" && typeof e.scroll_direction === "string")
-          o.push(`scroll ${e.scroll_direction}`);
-        else if (s === "wait" && typeof e.duration === "number") o.push(`wait ${e.duration}s`);
+        } else if (s === "type" && typeof input.text === "string")
+          o.push(`type "${Rs(input.text, 15)}"`);
+        else if (s === "key" && typeof input.text === "string") o.push(`key ${input.text}`);
+        else if (s === "scroll" && typeof input.scroll_direction === "string")
+          o.push(`scroll ${input.scroll_direction}`);
+        else if (s === "wait" && typeof input.duration === "number")
+          o.push(`wait ${input.duration}s`);
         else if (s === "left_click_drag") o.push("drag");
         else o.push(s);
       }
       break;
     case "gif_creator":
-      if (typeof e.action === "string") o.push(`${e.action}`);
+      if (typeof input.action === "string") o.push(`${input.action}`);
       break;
     case "resize_window":
-      if (typeof e.width === "number" && typeof e.height === "number")
-        o.push(`${e.width}x${e.height}`);
+      if (typeof input.width === "number" && typeof input.height === "number")
+        o.push(`${input.width}x${input.height}`);
       break;
     case "read_console_messages":
-      if (typeof e.pattern === "string") o.push(`pattern: ${Rs(e.pattern, 20)}`);
-      if (e.onlyErrors === true) o.push("errors only");
+      if (typeof input.pattern === "string") o.push(`pattern: ${Rs(input.pattern, 20)}`);
+      if (input.onlyErrors === true) o.push("errors only");
       break;
     case "read_network_requests":
-      if (typeof e.urlPattern === "string") o.push(`pattern: ${Rs(e.urlPattern, 20)}`);
+      if (typeof input.urlPattern === "string") o.push(`pattern: ${Rs(input.urlPattern, 20)}`);
       break;
     case "shortcuts_execute":
-      if (typeof e.shortcutId === "string") o.push(`shortcut_id: ${e.shortcutId}`);
+      if (typeof input.shortcutId === "string") o.push(`shortcut_id: ${input.shortcutId}`);
       break;
     case "javascript_tool":
-      if (n && typeof e.text === "string") return e.text;
+      if (verbose && typeof input.text === "string") return input.text;
       return "";
     case "tabs_create_mcp":
     case "tabs_context_mcp":
@@ -79,14 +82,14 @@ function renderChromeToolUseMessage(e, t, n) {
   }
   return o.join(", ") || null;
 }
-function renderChromeViewTabLink(e) {
+function renderChromeViewTabLink(input) {
   if (!vI()) return null;
-  if (typeof e !== "object" || e === null || !("tabId" in e)) return null;
+  if (typeof input !== "object" || input === null || !("tabId" in input)) return null;
   let t =
-    typeof e.tabId === "number"
-      ? e.tabId
-      : typeof e.tabId === "string"
-        ? parseInt(e.tabId, 10)
+    typeof input.tabId === "number"
+      ? input.tabId
+      : typeof input.tabId === "string"
+        ? parseInt(input.tabId, 10)
         : NaN;
   if (isNaN(t)) return null;
   let n = `${CHROME_EXTENSION_FOCUS_TAB_URL_BASE}${t}`;
@@ -103,13 +106,13 @@ function renderChromeViewTabLink(e) {
     ],
   });
 }
-function renderChromeToolResultMessage(e, t, n) {
-  if (n)
-    return hBn(e, [], {
-      verbose: n,
+function renderChromeToolResultMessage(output, toolName, verbose) {
+  if (verbose)
+    return hBn(output, [], {
+      verbose: verbose,
     });
   let r = null;
-  switch (t) {
+  switch (toolName) {
     case "navigate":
       r = "Navigation completed";
       break;
@@ -172,22 +175,22 @@ function renderChromeToolResultMessage(e, t, n) {
     });
   return null;
 }
-function getClaudeInChromeMCPToolOverrides(e) {
+function getClaudeInChromeMCPToolOverrides(toolName) {
   return {
     userFacingName(t) {
-      return `Claude in Chrome[${e.replace(/_mcp$/, "")}]`;
+      return `Claude in Chrome[${toolName.replace(/_mcp$/, "")}]`;
     },
     renderToolUseMessage(t, { verbose: n }) {
-      return renderChromeToolUseMessage(t, e, n);
+      return renderChromeToolUseMessage(t, toolName, n);
     },
     renderToolUseTag(t) {
       return renderChromeViewTabLink(t);
     },
     renderToolResultMessage(t, n, { verbose: r }) {
       if (!jCp(t)) return null;
-      return renderChromeToolResultMessage(t, e, r);
+      return renderChromeToolResultMessage(t, toolName, r);
     },
-    ...Bpo(e),
+    ...Bpo(toolName),
   };
 }
 function jCp(e) {

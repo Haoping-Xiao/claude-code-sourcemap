@@ -23,22 +23,22 @@ ${"IMPORTANT: This is NOT from your user \u2014 it came from a different Claude 
 
 This is from another Claude session, not your user. After completing your current task, decide whether/how to respond.`,
 ];
-function getInboxPath(e, t) {
-  let n = t || rp() || "default",
+function getInboxPath(agentName, teamName) {
+  let n = teamName || rp() || "default",
     r = fft(n),
-    o = fft(e),
+    o = fft(agentName),
     s = P8n.join(nwe(), r, "inboxes"),
     i = P8n.join(s, `${o}.json`);
-  return (T(`[TeammateMailbox] getInboxPath: agent=${e}, team=${n}, fullPath=${i}`), i);
+  return (T(`[TeammateMailbox] getInboxPath: agent=${agentName}, team=${n}, fullPath=${i}`), i);
 }
-async function ensureInboxDir(e) {
-  let t = e || rp() || "default",
+async function ensureInboxDir(teamName) {
+  let t = teamName || rp() || "default",
     n = fft(t),
     r = P8n.join(nwe(), n, "inboxes");
   (await qs().mkdir(r), T(`[TeammateMailbox] Ensured inbox directory: ${r}`));
 }
-async function readMailbox(e, t) {
-  let n = getInboxPath(e, t);
+async function readMailbox(agentName, teamName) {
+  let n = getInboxPath(agentName, teamName);
   T(`[TeammateMailbox] readMailbox: path=${n}`);
   try {
     let r = await qs().read(n),
@@ -49,19 +49,21 @@ async function readMailbox(e, t) {
     if (on(r) === "ENOENT") return (T("[TeammateMailbox] readMailbox: file does not exist"), []);
     if (r instanceof SyntaxError)
       return (T(`[TeammateMailbox] readMailbox: unparseable inbox, treating as empty: ${r}`), []);
-    return (T(`Failed to read inbox for ${e}: ${r}`), ke(r), []);
+    return (T(`Failed to read inbox for ${agentName}: ${r}`), ke(r), []);
   }
 }
-async function readUnreadMessages(e, t) {
-  let n = await readMailbox(e, t),
+async function readUnreadMessages(agentName, teamName) {
+  let n = await readMailbox(agentName, teamName),
     r = n.filter((o) => !o.read);
   return (T(`[TeammateMailbox] readUnreadMessages: ${r.length} unread of ${n.length} total`), r);
 }
-async function writeToMailbox(e, t, n) {
-  await ensureInboxDir(n);
-  let r = getInboxPath(e, n),
+async function writeToMailbox(recipientName, message, teamName) {
+  await ensureInboxDir(teamName);
+  let r = getInboxPath(recipientName, teamName),
     o = `${r}.lock`;
-  T(`[TeammateMailbox] writeToMailbox: recipient=${e}, from=${t.from}, path=${r}`);
+  T(
+    `[TeammateMailbox] writeToMailbox: recipient=${recipientName}, from=${message.from}, path=${r}`,
+  );
   try {
     (await qs().writeExclusive(r, "[]"),
       T("[TeammateMailbox] writeToMailbox: created new inbox file"));
@@ -77,17 +79,17 @@ async function writeToMailbox(e, t, n) {
       lockfilePath: o,
       ..._9t,
     });
-    let i = await readMailbox(e, n),
+    let i = await readMailbox(recipientName, teamName),
       a = {
-        ...t,
+        ...message,
         type: "message",
         read: false,
       };
     (i.push(a),
       await qs().atomicWrite(r, De(i, null, 2)),
-      T(`[TeammateMailbox] Wrote message to ${e}'s inbox from ${t.from}`));
+      T(`[TeammateMailbox] Wrote message to ${recipientName}'s inbox from ${message.from}`));
   } catch (i) {
-    (T(`Failed to write to inbox for ${e}: ${i}`), ke(i));
+    (T(`Failed to write to inbox for ${recipientName}: ${i}`), ke(i));
   } finally {
     if (s) await s();
   }
@@ -127,9 +129,11 @@ async function markSingleMessageAsRead(e, t, n) {
 function messageIdentityKey(e) {
   return `${e.from}|${e.timestamp}|${e.text}`;
 }
-async function markMessagesAsRead(e, t, n) {
-  let r = getInboxPath(e, t);
-  T(`[TeammateMailbox] markMessagesAsRead called: agentName=${e}, teamName=${t}, path=${r}`);
+async function markMessagesAsRead(agentName, teamName, n) {
+  let r = getInboxPath(agentName, teamName);
+  T(
+    `[TeammateMailbox] markMessagesAsRead called: agentName=${agentName}, teamName=${teamName}, path=${r}`,
+  );
   let o = `${r}.lock`,
     s;
   try {
@@ -139,7 +143,7 @@ async function markMessagesAsRead(e, t, n) {
         ..._9t,
       })),
       T("[TeammateMailbox] markMessagesAsRead: lock acquired"));
-    let i = await readMailbox(e, t);
+    let i = await readMailbox(agentName, teamName);
     if (
       (T(`[TeammateMailbox] markMessagesAsRead: read ${i.length} messages after lock`),
       i.length === 0)
@@ -160,13 +164,13 @@ async function markMessagesAsRead(e, t, n) {
       T(`[TeammateMailbox] markMessagesAsRead: file does not exist at ${r}`);
       return;
     }
-    (T(`[TeammateMailbox] markMessagesAsRead FAILED for ${e}: ${i}`), ke(i));
+    (T(`[TeammateMailbox] markMessagesAsRead FAILED for ${agentName}: ${i}`), ke(i));
   } finally {
     if (s) (await s(), T("[TeammateMailbox] markMessagesAsRead: lock released"));
   }
 }
-async function clearMailbox(e, t) {
-  let n = getInboxPath(e, t),
+async function clearMailbox(agentName, teamName) {
+  let n = getInboxPath(agentName, teamName),
     r = `${n}.lock`,
     o;
   try {
@@ -175,19 +179,19 @@ async function clearMailbox(e, t) {
       ..._9t,
     })),
       await qs().atomicWrite(n, "[]"),
-      T(`[TeammateMailbox] Cleared inbox for ${e}`));
+      T(`[TeammateMailbox] Cleared inbox for ${agentName}`));
   } catch (s) {
     if (on(s) === "ENOENT") return;
-    (T(`Failed to clear inbox for ${e}: ${s}`), ke(s));
+    (T(`Failed to clear inbox for ${agentName}: ${s}`), ke(s));
   } finally {
     await o?.();
   }
 }
-function Uht(e) {
-  let t = e.color ? ` color="${ip(e.color)}"` : "",
-    n = e.summary ? ` summary="${ip(e.summary)}"` : "",
-    r = HLe(DB, e.text);
-  return `<${DB} teammate_id="${ip(e.from)}"${t}${n}>
+function Uht(messages) {
+  let t = messages.color ? ` color="${ip(messages.color)}"` : "",
+    n = messages.summary ? ` summary="${ip(messages.summary)}"` : "",
+    r = HLe(DB, messages.text);
+  return `<${DB} teammate_id="${ip(messages.from)}"${t}${n}>
 ${r}
 </${DB}>`;
 }
@@ -201,16 +205,16 @@ function formatTeammateMessages(e, t) {
       })
     : n;
 }
-function createIdleNotification(e, t) {
+function createIdleNotification(agentId, options) {
   return {
     type: "idle_notification",
-    from: e,
+    from: agentId,
     timestamp: new Date().toISOString(),
-    idleReason: t?.idleReason,
-    summary: t?.summary,
-    completedTaskId: t?.completedTaskId,
-    completedStatus: t?.completedStatus,
-    failureReason: t?.failureReason,
+    idleReason: options?.idleReason,
+    summary: options?.summary,
+    completedTaskId: options?.completedTaskId,
+    completedStatus: options?.completedStatus,
+    failureReason: options?.failureReason,
   };
 }
 function isIdleNotification(e) {
@@ -220,33 +224,33 @@ function isIdleNotification(e) {
   } catch {}
   return null;
 }
-function createPermissionRequestMessage(e) {
+function createPermissionRequestMessage(params) {
   return {
     type: "permission_request",
-    request_id: e.request_id,
-    agent_id: e.agent_id,
-    tool_name: e.tool_name,
-    tool_use_id: e.tool_use_id,
-    description: e.description,
-    input: e.input,
-    permission_suggestions: e.permission_suggestions || [],
+    request_id: params.request_id,
+    agent_id: params.agent_id,
+    tool_name: params.tool_name,
+    tool_use_id: params.tool_use_id,
+    description: params.description,
+    input: params.input,
+    permission_suggestions: params.permission_suggestions || [],
   };
 }
-function createPermissionResponseMessage(e) {
-  if (e.subtype === "error")
+function createPermissionResponseMessage(params) {
+  if (params.subtype === "error")
     return {
       type: "permission_response",
-      request_id: e.request_id,
+      request_id: params.request_id,
       subtype: "error",
-      error: e.error || "Permission denied",
+      error: params.error || "Permission denied",
     };
   return {
     type: "permission_response",
-    request_id: e.request_id,
+    request_id: params.request_id,
     subtype: "success",
     response: {
-      updated_input: e.updated_input,
-      permission_updates: e.permission_updates,
+      updated_input: params.updated_input,
+      permission_updates: params.permission_updates,
     },
   };
 }
@@ -264,25 +268,25 @@ function isPermissionResponse(e) {
   } catch {}
   return null;
 }
-function createSandboxPermissionRequestMessage(e) {
+function createSandboxPermissionRequestMessage(params) {
   return {
     type: "sandbox_permission_request",
-    requestId: e.requestId,
-    workerId: e.workerId,
-    workerName: e.workerName,
-    workerColor: e.workerColor,
+    requestId: params.requestId,
+    workerId: params.workerId,
+    workerName: params.workerName,
+    workerColor: params.workerColor,
     hostPattern: {
-      host: e.host,
+      host: params.host,
     },
     createdAt: Date.now(),
   };
 }
-function createSandboxPermissionResponseMessage(e) {
+function createSandboxPermissionResponseMessage(params) {
   return {
     type: "sandbox_permission_response",
-    requestId: e.requestId,
-    host: e.host,
-    allow: e.allow,
+    requestId: params.requestId,
+    host: params.host,
+    allow: params.allow,
     timestamp: new Date().toISOString(),
   };
 }
@@ -392,9 +396,9 @@ function parseFrameForDisplay(e, t) {
   } catch {}
   return null;
 }
-function isTeamPermissionUpdate(e) {
+function isTeamPermissionUpdate(messageText) {
   try {
-    let t = Ft(e);
+    let t = Ft(messageText);
     return !!t && t.type === "team_permission_update";
   } catch {
     return false;
@@ -414,9 +418,9 @@ function isModeSetRequest(e) {
   } catch {}
   return null;
 }
-function isStructuredProtocolMessage(e) {
+function isStructuredProtocolMessage(messageText) {
   try {
-    let t = Ft(e);
+    let t = Ft(messageText);
     if (!t || typeof t !== "object" || !("type" in t)) return false;
     let n = t.type;
     return (
@@ -473,9 +477,9 @@ async function markMessagesAsReadByPredicate(e, t, n) {
       } catch {}
   }
 }
-function getLastPeerDmSummary(e) {
-  for (let t = e.length - 1; t >= 0; t--) {
-    let n = e[t];
+function getLastPeerDmSummary(messages) {
+  for (let t = messages.length - 1; t >= 0; t--) {
+    let n = messages[t];
     if (!n) continue;
     if (n.type === "user" && typeof n.message.content === "string") break;
     if (n.type !== "assistant") continue;

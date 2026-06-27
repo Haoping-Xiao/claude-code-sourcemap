@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DQa] deps: si, Ye, je, sa, Fy, vi, B_, Ko, EC
 ((X9e = R(rt(), 1)), (wk = R(se(), 1)));
-function TeleportError(e) {
+function TeleportError(t0) {
   let t = PQa.c(20),
-    { onComplete: n, errorsToIgnore: r } = e,
+    { onComplete: n, errorsToIgnore: r } = t0,
     o = r === void 0 ? zJp : r,
     [s, i] = qVt.useState(null),
     [a, l] = qVt.useState(false),

@@ -26,16 +26,16 @@ function EUn(e, t) {
 function AUn() {
   (m$.cache?.clear?.(), lTp.cache?.clear?.());
 }
-async function savePluginOptions(e, t, n) {
+async function savePluginOptions(pluginId, values, schema) {
   let r = {},
     o = {};
-  for (let [u, d] of Object.entries(t))
-    if (n[u]?.sensitive === true) o[u] = String(d);
+  for (let [u, d] of Object.entries(values))
+    if (schema[u]?.sensitive === true) o[u] = String(d);
     else r[u] = d;
   let s = new Set(Object.keys(o)),
     i = new Set(Object.keys(r)),
     a = await wl().mutate((u) => {
-      let d = u.pluginSecrets?.[e],
+      let d = u.pluginSecrets?.[pluginId],
         p = d ? CB(d, (m, g) => i.has(g)) : void 0,
         f = p && d && Object.keys(p).length !== Object.keys(d).length;
       if (Object.keys(o).length === 0 && !f) return u;
@@ -43,7 +43,7 @@ async function savePluginOptions(e, t, n) {
         ...u,
         pluginSecrets: {
           ...u.pluginSecrets,
-          [e]: {
+          [pluginId]: {
             ...p,
             ...o,
           },
@@ -51,7 +51,7 @@ async function savePluginOptions(e, t, n) {
       };
     });
   if (!a.success) {
-    let u = Error(`Failed to save sensitive plugin options for ${e} to secure storage`);
+    let u = Error(`Failed to save sensitive plugin options for ${pluginId} to secure storage`);
     throw (
       T(u.message, {
         level: "error",
@@ -63,13 +63,13 @@ async function savePluginOptions(e, t, n) {
     T(`Plugin secrets save warning: ${a.warning}`, {
       level: "warn",
     });
-  let l = jo().pluginConfigs?.[e]?.options ?? {},
+  let l = jo().pluginConfigs?.[pluginId]?.options ?? {},
     c = Object.keys(l).filter((u) => s.has(u));
   if (Object.keys(r).length > 0 || c.length > 0) {
     let u = Object.fromEntries(c.map((p) => [p, void 0])),
       d = io("userSettings", {
         pluginConfigs: {
-          [e]: {
+          [pluginId]: {
             options: {
               ...r,
               ...u,
@@ -79,24 +79,24 @@ async function savePluginOptions(e, t, n) {
       });
     if (d.error)
       throw (
-        T(`Failed to save plugin options for ${e} to settings.json: ${be(d.error)}`, {
+        T(`Failed to save plugin options for ${pluginId} to settings.json: ${be(d.error)}`, {
           level: "error",
         }),
-        Error(`Failed to save plugin options for ${e}: ${d.error.message}`)
+        Error(`Failed to save plugin options for ${pluginId}: ${d.error.message}`)
       );
   }
   AUn();
 }
-async function deletePluginOptions(e) {
-  if (jo().pluginConfigs?.[e]) {
+async function deletePluginOptions(pluginId) {
+  if (jo().pluginConfigs?.[pluginId]) {
     let n = {
-        [e]: void 0,
+        [pluginId]: void 0,
       },
       { error: r } = io("userSettings", {
         pluginConfigs: n,
       });
     if (r)
-      T(`deletePluginOptions: failed to clear settings.pluginConfigs[${e}]: ${r.message}`, {
+      T(`deletePluginOptions: failed to clear settings.pluginConfigs[${pluginId}]: ${r.message}`, {
         level: "warn",
       });
   }
@@ -105,8 +105,8 @@ async function deletePluginOptions(e) {
       !(
         await wl().mutate((r) => {
           if (!r.pluginSecrets) return r;
-          let o = `${e}/`,
-            s = Object.entries(r.pluginSecrets).filter(([i]) => i !== e && !i.startsWith(o));
+          let o = `${pluginId}/`,
+            s = Object.entries(r.pluginSecrets).filter(([i]) => i !== pluginId && !i.startsWith(o));
           if (s.length === Object.keys(r.pluginSecrets).length) return r;
           return {
             ...r,
@@ -115,11 +115,11 @@ async function deletePluginOptions(e) {
         })
       ).success
     )
-      T(`deletePluginOptions: failed to clear pluginSecrets for ${e} from keychain`, {
+      T(`deletePluginOptions: failed to clear pluginSecrets for ${pluginId} from keychain`, {
         level: "warn",
       });
   } catch (n) {
-    T(`deletePluginOptions: storage lock unavailable for ${e}: ${be(n)}`, {
+    T(`deletePluginOptions: storage lock unavailable for ${pluginId}: ${be(n)}`, {
       level: "warn",
     });
   }
@@ -179,10 +179,11 @@ function $Se(e, t) {
     return String(o);
   });
 }
-function substituteUserConfigInContent(e, t, n, r) {
-  return e.replace(/\$\{user_config\.([^}]+)\}/g, (o, s) => {
-    if (n[s]?.sensitive === true) return `[sensitive option '${s}' not available in skill content]`;
-    let i = t[s];
+function substituteUserConfigInContent(content, options, schema, r) {
+  return content.replace(/\$\{user_config\.([^}]+)\}/g, (o, s) => {
+    if (schema[s]?.sensitive === true)
+      return `[sensitive option '${s}' not available in skill content]`;
+    let i = options[s];
     if (i === void 0) return o;
     let a = String(i);
     return r ? r(a) : a;

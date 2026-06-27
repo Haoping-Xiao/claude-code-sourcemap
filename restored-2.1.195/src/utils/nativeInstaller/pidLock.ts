@@ -50,8 +50,8 @@ function x9e(e) {
     return null;
   }
 }
-function isLockActive(e) {
-  let t = x9e(e);
+function isLockActive(lockFilePath) {
+  let t = x9e(lockFilePath);
   if (!t) return false;
   let { pid: n, execPath: r } = t;
   if (!LVn(n)) return false;
@@ -62,7 +62,7 @@ function isLockActive(e) {
     );
   let o = qt();
   try {
-    let s = o.statSync(e);
+    let s = o.statSync(lockFilePath);
     if (Date.now() - s.mtimeMs > aKp) {
       if (!LVn(n)) return false;
     }
@@ -72,11 +72,11 @@ function isLockActive(e) {
 function cKp(e, t) {
   oj(e, De(t, null, 2));
 }
-async function tryAcquireLock(e, t) {
+async function tryAcquireLock(versionPath, lockFilePath) {
   let n = qt(),
-    r = Qqt.basename(e);
-  if (isLockActive(t)) {
-    let s = x9e(t);
+    r = Qqt.basename(versionPath);
+  if (isLockActive(lockFilePath)) {
+    let s = x9e(lockFilePath);
     return (T(`Cannot acquire lock for ${r} - held by PID ${s?.pid}`), null);
   }
   let o = {
@@ -86,12 +86,13 @@ async function tryAcquireLock(e, t) {
     acquiredAt: Date.now(),
   };
   try {
-    if ((cKp(t, o), x9e(t)?.pid !== process.pid)) return null;
+    if ((cKp(lockFilePath, o), x9e(lockFilePath)?.pid !== process.pid)) return null;
     return (
       T(`Acquired PID lock for ${r} (PID ${process.pid})`),
       () => {
         try {
-          if (x9e(t)?.pid === process.pid) (n.unlinkSync(t), T(`Released PID lock for ${r}`));
+          if (x9e(lockFilePath)?.pid === process.pid)
+            (n.unlinkSync(lockFilePath), T(`Released PID lock for ${r}`));
         } catch (i) {
           T(`Failed to release lock for ${r}: ${i}`);
         }
@@ -101,8 +102,8 @@ async function tryAcquireLock(e, t) {
     return (T(`Failed to acquire lock for ${r}: ${s}`), null);
   }
 }
-async function acquireProcessLifetimeLock(e, t) {
-  let n = await tryAcquireLock(e, t);
+async function acquireProcessLifetimeLock(versionPath, lockFilePath) {
+  let n = await tryAcquireLock(versionPath, lockFilePath);
   if (!n) return false;
   let r = () => {
     try {
@@ -144,13 +145,13 @@ function zza(e) {
   }
   return n;
 }
-function cleanupStaleLocks(e) {
+function cleanupStaleLocks(locksDir) {
   let t = qt(),
     n = 0;
   try {
-    let r = t.readdirStringSync(e).filter((o) => o.endsWith(".lock"));
+    let r = t.readdirStringSync(locksDir).filter((o) => o.endsWith(".lock"));
     for (let o of r) {
-      let s = Qqt.join(e, o);
+      let s = Qqt.join(locksDir, o);
       try {
         if (t.lstatSync(s).isDirectory())
           (t.rmSync(s, {

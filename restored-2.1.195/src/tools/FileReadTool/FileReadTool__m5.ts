@@ -86,9 +86,9 @@ function hzr() {
     else if (n > t.peakRssBytes) t.peakRssBytes = n;
   }
 }
-function isBlockedDevicePath(e) {
+function isBlockedDevicePath(filePath) {
   try {
-    let t = mzr.readFileSync(`/proc/${e}/statm`, "utf8"),
+    let t = mzr.readFileSync(`/proc/${filePath}/statm`, "utf8"),
       n = Number(t.split(" ")[1]);
     return Number.isFinite(n) ? n * v$d() : void 0;
   } catch {

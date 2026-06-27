@@ -5,15 +5,15 @@
 // note: low-confidence suggestion: node_modules/@smithy/core/dist-cjs/submodules/serde/index.js; 4 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Zmh,
-  expectLong = e => {
-    if (e === null || e === void 0) return;
-    if (Number.isInteger(e) && !Number.isNaN(e)) return e;
-    throw TypeError(`Expected integer, got ${typeof e}: ${e}`);
+  expectLong = value => {
+    if (value === null || value === void 0) return;
+    if (Number.isInteger(value) && !Number.isNaN(value)) return value;
+    throw TypeError(`Expected integer, got ${typeof value}: ${value}`);
   },
   hdi = e => expectSizedInt(e, 32),
-  expectSizedInt = (e, t) => {
-    let n = expectLong(e);
-    if (n !== void 0 && Omd(n, t) !== n) throw TypeError(`Expected ${t}-bit integer, got ${e}`);
+  expectSizedInt = (value, size) => {
+    let n = expectLong(value);
+    if (n !== void 0 && Omd(n, size) !== n) throw TypeError(`Expected ${size}-bit integer, got ${value}`);
     return n;
   },
   Omd = (e, t) => {
@@ -26,13 +26,13 @@ var Zmh,
         return Int8Array.of(e)[0];
     }
   },
-  expectString = e => {
-    if (e === null || e === void 0) return;
-    if (typeof e === "string") return e;
-    if (["boolean", "number", "bigint"].includes(typeof e)) return Bmd.warn(stackTraceWarning(`Expected string, got ${typeof e}: ${e}`)), String(e);
-    throw TypeError(`Expected string, got ${typeof e}: ${e}`);
+  expectString = value => {
+    if (value === null || value === void 0) return;
+    if (typeof value === "string") return value;
+    if (["boolean", "number", "bigint"].includes(typeof value)) return Bmd.warn(stackTraceWarning(`Expected string, got ${typeof value}: ${value}`)), String(value);
+    throw TypeError(`Expected string, got ${typeof value}: ${value}`);
   },
-  stackTraceWarning = e => String(TypeError(e).stack || e).split(`
+  stackTraceWarning = message => String(TypeError(message).stack || message).split(`
 `).slice(0, 5).filter(t => !t.includes("stackTraceWarning")).join(`
 `),
   Bmd;

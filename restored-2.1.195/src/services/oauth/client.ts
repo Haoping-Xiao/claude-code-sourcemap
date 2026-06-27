@@ -46,16 +46,24 @@ function buildAuthUrl({
   if (l) d.searchParams.append("login_method", l);
   return d.toString();
 }
-async function exchangeCodeForTokens(e, t, n, r, o = false, s, i) {
+async function exchangeCodeForTokens(
+  authorizationCode,
+  state,
+  codeVerifier,
+  port,
+  o = false,
+  expiresIn,
+  i,
+) {
   let a = {
     grant_type: "authorization_code",
-    code: e,
-    redirect_uri: o ? $s().MANUAL_REDIRECT_URL : `http://localhost:${r}/callback`,
+    code: authorizationCode,
+    redirect_uri: o ? $s().MANUAL_REDIRECT_URL : `http://localhost:${port}/callback`,
     client_id: i ?? $s().CLIENT_ID,
-    code_verifier: n,
-    state: t,
+    code_verifier: codeVerifier,
+    state: state,
   };
-  if (s !== void 0) a.expires_in = s;
+  if (expiresIn !== void 0) a.expires_in = expiresIn;
   let l = await po.post($s().TOKEN_URL, a, {
     headers: {
       "Content-Type": "application/json",
@@ -77,12 +85,12 @@ async function exchangeCodeForTokens(e, t, n, r, o = false, s, i) {
   return (G("tengu_oauth_token_exchange_success", {}), xe("oauth_token_exchange"), l.data);
 }
 async function refreshOAuthToken(
-  e,
+  refreshToken,
   { scopes: t, expiresIn: n, clientId: r, skipProfileFetch: o } = {},
 ) {
   let s = {
     grant_type: "refresh_token",
-    refresh_token: e,
+    refresh_token: refreshToken,
     client_id: r ?? $s().CLIENT_ID,
     scope: (Array.isArray(t) && t.length ? t : Aae).join(" "),
   };
@@ -96,7 +104,7 @@ async function refreshOAuthToken(
     });
     if (i.status !== 200) throw Error(`Token refresh failed: ${i.statusText}`);
     let a = i.data,
-      { access_token: l, refresh_token: c = e, expires_in: u } = a,
+      { access_token: l, refresh_token: c = refreshToken, expires_in: u } = a,
       d = Date.now() + u * 1000,
       p = parseScopes(a.scope);
     (G("tengu_oauth_token_refresh_success", {}), xe("oauth_token_refresh"));
@@ -188,10 +196,10 @@ async function revokeOAuthToken(e, t) {
       It("oauth_token_revoke", `http_${r ?? "network"}`));
   }
 }
-async function fetchAndStoreUserRoles(e) {
+async function fetchAndStoreUserRoles(accessToken) {
   let t = await po.get($s().ROLES_URL, {
     headers: {
-      Authorization: `Bearer ${e}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
   if (t.status !== 200)
@@ -221,11 +229,11 @@ async function fetchAndStoreUserRoles(e) {
     }),
     xe("oauth_fetch_roles"));
 }
-async function createAndStoreApiKey(e) {
+async function createAndStoreApiKey(accessToken) {
   try {
     let t = await po.post($s().API_KEY_URL, null, {
         headers: {
-          Authorization: `Bearer ${e}`,
+          Authorization: `Bearer ${accessToken}`,
         },
       }),
       n = t.data?.raw_key;
@@ -256,8 +264,8 @@ function isOAuthTokenExpired(e) {
   let t = 300000;
   return Date.now() + t >= e;
 }
-async function fetchProfileInfo(e) {
-  let t = await OIe(e),
+async function fetchProfileInfo(accessToken) {
+  let t = await OIe(accessToken),
     n = t?.organization?.organization_type,
     r = null;
   switch (n) {

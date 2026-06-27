@@ -261,24 +261,26 @@ async function exchangeJwtAuthGrant({
     else throw u;
   }
 }
-async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {}) {
+async function performCrossAppAccess(serverUrl, config, { preserveStepUpState: n = !1 } = {}) {
   let r = wl(),
     o = await r.readAsync();
   if (!o?.mcpOAuth) {
     xe("mcp_oauth_revoke");
     return;
   }
-  let s = wv(e, t),
+  let s = wv(serverUrl, config),
     i = o.mcpOAuth[s],
     a;
   if (i?.accessToken || i?.refreshToken)
     try {
-      let l = i.discoveryState?.authorizationServerUrl ?? t.url,
-        c = await qUn(e, l, t.oauth?.authServerMetadataUrl);
-      if (!c) (sn(e, "No OAuth metadata found"), (a = "no_metadata"));
+      let l = i.discoveryState?.authorizationServerUrl ?? config.url,
+        c = await qUn(serverUrl, l, config.oauth?.authServerMetadataUrl);
+      if (!c) (sn(serverUrl, "No OAuth metadata found"), (a = "no_metadata"));
       else {
         let u = "revocation_endpoint" in c ? c.revocation_endpoint : null;
-        if (!u) (sn(e, "Server does not support token revocation"), (a = "no_revocation_endpoint"));
+        if (!u)
+          (sn(serverUrl, "Server does not support token revocation"),
+            (a = "no_revocation_endpoint"));
         else {
           let d = String(u),
             p =
@@ -292,10 +294,10 @@ async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {})
               p && !p.includes("client_secret_basic") && p.includes("client_secret_post")
                 ? "client_secret_post"
                 : "client_secret_basic";
-          if ((sn(e, `Revoking tokens via ${d} (${f})`), i.refreshToken))
+          if ((sn(serverUrl, `Revoking tokens via ${d} (${f})`), i.refreshToken))
             try {
               await exchangeJwtAuthGrant({
-                serverName: e,
+                serverName: serverUrl,
                 endpoint: d,
                 token: i.refreshToken,
                 tokenTypeHint: "refresh_token",
@@ -305,12 +307,13 @@ async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {})
                 authMethod: f,
               });
             } catch (m) {
-              (sn(e, `Failed to revoke refresh token: ${be(m)}`), (a = "server_revoke_failed"));
+              (sn(serverUrl, `Failed to revoke refresh token: ${be(m)}`),
+                (a = "server_revoke_failed"));
             }
           if (i.accessToken)
             try {
               await exchangeJwtAuthGrant({
-                serverName: e,
+                serverName: serverUrl,
                 endpoint: d,
                 token: i.accessToken,
                 tokenTypeHint: "access_token",
@@ -320,14 +323,15 @@ async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {})
                 authMethod: f,
               });
             } catch (m) {
-              (sn(e, `Failed to revoke access token: ${be(m)}`), (a = "server_revoke_failed"));
+              (sn(serverUrl, `Failed to revoke access token: ${be(m)}`),
+                (a = "server_revoke_failed"));
             }
         }
       }
     } catch (l) {
-      (sn(e, `Failed to revoke tokens: ${be(l)}`), (a = "server_revoke_failed"));
+      (sn(serverUrl, `Failed to revoke tokens: ${be(l)}`), (a = "server_revoke_failed"));
     }
-  else sn(e, "No tokens to revoke");
+  else sn(serverUrl, "No tokens to revoke");
   try {
     if (n && i && (i.stepUpScope || i.discoveryState || i.clientId))
       (await r.mutate((l) => {
@@ -338,8 +342,8 @@ async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {})
           mcpOAuth: {
             ...l.mcpOAuth,
             [s]: {
-              serverName: e,
-              serverUrl: t.url,
+              serverName: serverUrl,
+              serverUrl: config.url,
               accessToken: "",
               refreshToken: void 0,
               expiresAt: void 0,
@@ -366,10 +370,10 @@ async function performCrossAppAccess(e, t, { preserveStepUpState: n = !1 } = {})
           },
         };
       }),
-        sn(e, "Preserved step-up auth state across revocation"));
-    else await zUn(e, t);
+        sn(serverUrl, "Preserved step-up auth state across revocation"));
+    else await zUn(serverUrl, config);
   } catch (l) {
-    (sn(e, `clear local tokens failed: ${be(l)}`), (a ??= "local_clear_failed"));
+    (sn(serverUrl, `clear local tokens failed: ${be(l)}`), (a ??= "local_clear_failed"));
   }
   if (a) It("mcp_oauth_revoke", a);
   else xe("mcp_oauth_revoke");

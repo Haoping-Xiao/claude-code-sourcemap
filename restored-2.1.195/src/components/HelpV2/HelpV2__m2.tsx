@@ -34,22 +34,22 @@ function mTt() {
     messagingSocketPath: n,
   };
 }
-function HelpV2(e) {
+function HelpV2(t0) {
   let t = {
     type: "system",
     subtype: "init",
-    cwd: e.cwd,
-    session_id: e.sessionId,
-    tools: e.tools.map((n) => KZt(n.name)),
-    mcp_servers: e.mcpClients.map((n) => ({
+    cwd: t0.cwd,
+    session_id: t0.sessionId,
+    tools: t0.tools.map((n) => KZt(n.name)),
+    mcp_servers: t0.mcpClients.map((n) => ({
       name: n.name,
       status: n.type,
     })),
-    model: e.model,
-    permissionMode: e.permissionMode,
-    slash_commands: e.commands.filter((n) => n.userInvocable !== false).map((n) => n.name),
-    apiKeySource: e.apiKeySource,
-    betas: e.betas,
+    model: t0.model,
+    permissionMode: t0.permissionMode,
+    slash_commands: t0.commands.filter((n) => n.userInvocable !== false).map((n) => n.name),
+    apiKeySource: t0.apiKeySource,
+    betas: t0.betas,
     claude_code_version: {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
       PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -59,33 +59,33 @@ function HelpV2(e) {
       BUILD_TIME: "2026-06-26T01:00:56Z",
       GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
     }.VERSION,
-    output_style: e.outputStyle,
-    agents: e.agents.map((n) => n.agentType),
-    skills: e.skills.filter((n) => n.userInvocable !== false).map((n) => n.name),
-    plugins: e.plugins.map((n) => ({
+    output_style: t0.outputStyle,
+    agents: t0.agents.map((n) => n.agentType),
+    skills: t0.skills.filter((n) => n.userInvocable !== false).map((n) => n.name),
+    plugins: t0.plugins.map((n) => ({
       name: n.name,
       path: n.path,
       source: n.source,
     })),
-    ...(e.pluginErrors.length > 0 && {
-      plugin_errors: e.pluginErrors.map((n) => ({
+    ...(t0.pluginErrors.length > 0 && {
+      plugin_errors: t0.pluginErrors.map((n) => ({
         ...n,
       })),
     }),
-    ...(e.pluginWarnings.length > 0 && {
-      plugin_warnings: e.pluginWarnings.map((n) => ({
+    ...(t0.pluginWarnings.length > 0 && {
+      plugin_warnings: t0.pluginWarnings.map((n) => ({
         ...n,
       })),
     }),
-    analytics_disabled: e.analyticsDisabled,
-    product_feedback_disabled: e.productFeedbackDisabled,
+    analytics_disabled: t0.analyticsDisabled,
+    product_feedback_disabled: t0.productFeedbackDisabled,
     uuid: Lfc.randomUUID(),
   };
-  if (e.memoryPaths)
+  if (t0.memoryPaths)
     t.memory_paths = {
-      ...e.memoryPaths,
+      ...t0.memoryPaths,
     };
-  return ((t.fast_mode_state = e.fastModeState), t);
+  return ((t.fast_mode_state = t0.fastModeState), t);
 }
 function pur(e, t) {
   Zc("init_emit_ms", performance.now() - t, t);

@@ -32,32 +32,32 @@ function wTt(e) {
   if ("enum" in e) return e.enum;
   return [];
 }
-function getEnumLabels(e) {
-  if ("oneOf" in e) return e.oneOf.map((t) => t.title);
-  if ("enum" in e) return ("enumNames" in e ? e.enumNames : void 0) ?? e.enum;
+function getEnumLabels(schema) {
+  if ("oneOf" in schema) return schema.oneOf.map((t) => t.title);
+  if ("enum" in schema) return ("enumNames" in schema ? schema.enumNames : void 0) ?? schema.enum;
   return [];
 }
 function Hen(e, t) {
   let n = wTt(e).indexOf(t);
   return n >= 0 ? (getEnumLabels(e)[n] ?? t) : t;
 }
-function getZodSchema(e) {
-  if (Pme(e)) {
-    let [t, ...n] = wTt(e);
+function getZodSchema(schema) {
+  if (Pme(schema)) {
+    let [t, ...n] = wTt(schema);
     if (!t) return H.never();
     return H.enum([t, ...n]);
   }
-  if (e.type === "string") {
+  if (schema.type === "string") {
     let t = H.string();
-    if (e.minLength !== void 0)
-      t = t.min(e.minLength, {
-        message: `Must be at least ${e.minLength} ${bn(e.minLength, "character")}`,
+    if (schema.minLength !== void 0)
+      t = t.min(schema.minLength, {
+        message: `Must be at least ${schema.minLength} ${bn(schema.minLength, "character")}`,
       });
-    if (e.maxLength !== void 0)
-      t = t.max(e.maxLength, {
-        message: `Must be at most ${e.maxLength} ${bn(e.maxLength, "character")}`,
+    if (schema.maxLength !== void 0)
+      t = t.max(schema.maxLength, {
+        message: `Must be at most ${schema.maxLength} ${bn(schema.maxLength, "character")}`,
       });
-    switch (e.format) {
+    switch (schema.format) {
       case "email":
         t = t.email({
           message: "Must be a valid email address, e.g. user@example.com",
@@ -82,37 +82,37 @@ function getZodSchema(e) {
     }
     return t;
   }
-  if (e.type === "number" || e.type === "integer") {
-    let t = e.type === "integer" ? "an integer" : "a number",
-      n = e.type === "integer",
+  if (schema.type === "number" || schema.type === "integer") {
+    let t = schema.type === "integer" ? "an integer" : "a number",
+      n = schema.type === "integer",
       r = (i) => (Number.isInteger(i) && !n ? `${i}.0` : String(i)),
       o =
-        e.minimum !== void 0 && e.maximum !== void 0
-          ? `Must be ${t} between ${r(e.minimum)} and ${r(e.maximum)}`
-          : e.minimum !== void 0
-            ? `Must be ${t} >= ${r(e.minimum)}`
-            : e.maximum !== void 0
-              ? `Must be ${t} <= ${r(e.maximum)}`
+        schema.minimum !== void 0 && schema.maximum !== void 0
+          ? `Must be ${t} between ${r(schema.minimum)} and ${r(schema.maximum)}`
+          : schema.minimum !== void 0
+            ? `Must be ${t} >= ${r(schema.minimum)}`
+            : schema.maximum !== void 0
+              ? `Must be ${t} <= ${r(schema.maximum)}`
               : `Must be ${t}`,
       s = H.coerce.number({
         error: o,
       });
-    if (e.type === "integer")
+    if (schema.type === "integer")
       s = s.int({
         message: o,
       });
-    if (e.minimum !== void 0)
-      s = s.min(e.minimum, {
+    if (schema.minimum !== void 0)
+      s = s.min(schema.minimum, {
         message: o,
       });
-    if (e.maximum !== void 0)
-      s = s.max(e.maximum, {
+    if (schema.maximum !== void 0)
+      s = s.max(schema.maximum, {
         message: o,
       });
     return s;
   }
-  if (e.type === "boolean") return H.coerce.boolean();
-  throw Error(`Unsupported schema: ${De(e)}`);
+  if (schema.type === "boolean") return H.coerce.boolean();
+  throw Error(`Unsupported schema: ${De(schema)}`);
 }
 function Sen(e, t) {
   let r = getZodSchema(t).safeParse(e);
@@ -126,8 +126,12 @@ function Sen(e, t) {
     error: r.error.issues.map((o) => o.message).join("; "),
   };
 }
-function isDateTimeSchema(e) {
-  return e.type === "string" && "format" in e && (e.format === "date" || e.format === "date-time");
+function isDateTimeSchema(schema) {
+  return (
+    schema.type === "string" &&
+    "format" in schema &&
+    (schema.format === "date" || schema.format === "date-time")
+  );
 }
 async function Xgc(e, t, n) {
   let r = Sen(e, t);

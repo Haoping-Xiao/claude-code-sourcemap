@@ -4,8 +4,9 @@
 // class=modified  jaccard=0.4644  score=0.7934  fileCov=0.5283
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function registerMcpAddCommand(e) {
-  e.command("add <name> <commandOrUrl> [args...]")
+function registerMcpAddCommand(mcp) {
+  mcp
+    .command("add <name> <commandOrUrl> [args...]")
     .description(
       `Add an MCP server to Claude Code.
 

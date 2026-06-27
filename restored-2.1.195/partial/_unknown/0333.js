@@ -4,9 +4,9 @@
 // class=partial  jaccard=0.099  score=0.7658  fileCov=0.1021
 // note: low-confidence suggestion: node_modules/zod-to-json-schema/dist/esm/zodToJsonSchema.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function zodToJsonSchema(e) {
-  let t = e.values,
-    r = Object.keys(e.values).filter(s => typeof t[t[s]] !== "number").map(s => t[s]),
+function zodToJsonSchema(schema) {
+  let t = schema.values,
+    r = Object.keys(schema.values).filter(s => typeof t[t[s]] !== "number").map(s => t[s]),
     o = Array.from(new Set(r.map(s => typeof s)));
   return {
     type: o.length === 1 ? o[0] === "string" ? "string" : "number" : ["string", "number"],

@@ -4,16 +4,16 @@
 // class=modified  jaccard=0.54  score=0.6539  fileCov=0.7562
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function oauthHeaders(e) {
+function oauthHeaders(accessToken) {
   return {
-    Authorization: `Bearer ${e}`,
+    Authorization: `Bearer ${accessToken}`,
     "Content-Type": "application/json",
     "anthropic-version": Sum,
     "User-Agent": dy(),
   };
 }
-async function createCodeSession(e, t, n, r, o, s, i, a) {
-  let l = `${e}/v1/code/sessions`,
+async function createCodeSession(baseUrl, accessToken, title, timeoutMs, tags, s, i, a) {
+  let l = `${baseUrl}/v1/code/sessions`,
     c = {
       cwd: i ?? $t(),
       ...(a && {
@@ -31,16 +31,16 @@ async function createCodeSession(e, t, n, r, o, s, i, a) {
     u = await po.post(
       l,
       {
-        title: n,
+        title: title,
         bridge: {},
-        ...(o?.length && {
-          tags: o,
+        ...(tags?.length && {
+          tags: tags,
         }),
         config: c,
       },
       {
-        headers: oauthHeaders(t),
-        timeout: r,
+        headers: oauthHeaders(accessToken),
+        timeout: timeoutMs,
         validateStatus: (p) => p < 500,
       },
     );
@@ -84,10 +84,16 @@ function Eum(e, t) {
   if (t?.includes("trusted device")) return "untrusted_device";
   return;
 }
-async function fetchRemoteCredentials(e, t, n, r, o) {
-  let s = `${t}/v1/code/sessions/${e}/bridge`,
-    i = oauthHeaders(n);
-  if (o) i["X-Trusted-Device-Token"] = o;
+async function fetchRemoteCredentials(
+  sessionId,
+  baseUrl,
+  accessToken,
+  timeoutMs,
+  trustedDeviceToken,
+) {
+  let s = `${baseUrl}/v1/code/sessions/${sessionId}/bridge`,
+    i = oauthHeaders(accessToken);
+  if (trustedDeviceToken) i["X-Trusted-Device-Token"] = trustedDeviceToken;
   let a;
   try {
     a = await po.post(
@@ -95,7 +101,7 @@ async function fetchRemoteCredentials(e, t, n, r, o) {
       {},
       {
         headers: i,
-        timeout: r,
+        timeout: timeoutMs,
         validateStatus: (d) => d < 500,
       },
     );

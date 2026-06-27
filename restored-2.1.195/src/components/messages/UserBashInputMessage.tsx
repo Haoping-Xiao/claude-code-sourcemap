@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ail] deps: Xa, Ye, es, co
 ((Sil = R(lt(), 1)), (Zyt = R(se(), 1)));
-function UserBashInputMessage(e) {
+function UserBashInputMessage(t0) {
   let t = Hil.c(8),
-    { param: n, addMargin: r } = e,
+    { param: n, addMargin: r } = t0,
     { text: o } = n,
     s;
   if (t[0] !== o) ((s = xl(o, "bash-input")), (t[0] = o), (t[1] = s));

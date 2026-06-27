@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zkn] deps: Ls
 b1d = [PKr, tNi, nNi], Jkn = new Set(b1d);
-function filterToolProgressMessages(e) {
-  return e.filter(t => t.data?.type !== "hook_progress");
+function filterToolProgressMessages(progressMessagesForMessage) {
+  return progressMessagesForMessage.filter(t => t.data?.type !== "hook_progress");
 }
 function Ql(e, t) {
   return e.name === t || (e.aliases?.includes(t) ?? false);

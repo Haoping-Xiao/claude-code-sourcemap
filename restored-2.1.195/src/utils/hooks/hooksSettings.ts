@@ -16,18 +16,18 @@
   load: () => Promise.resolve().then(() => (rKl(), nKl)),
 }),
   (Jjo = aVf));
-function getHookDisplayText(e) {
-  switch (e.type) {
+function getHookDisplayText(hook) {
+  switch (hook.type) {
     case "command":
-      return e.args ? [e.command, ...e.args].join(" ") : e.command;
+      return hook.args ? [hook.command, ...hook.args].join(" ") : hook.command;
     case "prompt":
-      return e.prompt;
+      return hook.prompt;
     case "agent":
-      return e.prompt;
+      return hook.prompt;
     case "http":
-      return e.url;
+      return hook.url;
     case "mcp_tool":
-      return `${e.server}/${e.tool}`;
+      return `${hook.server}/${hook.tool}`;
     case "callback":
       return "callback";
     case "function":
@@ -76,8 +76,8 @@ function iKl(e) {
         });
   return t;
 }
-function hookSourceDescriptionDisplayString(e) {
-  switch (e) {
+function hookSourceDescriptionDisplayString(source) {
+  switch (source) {
     case "userSettings":
       return "User settings (~/.claude/settings.json)";
     case "projectSettings":
@@ -91,11 +91,11 @@ function hookSourceDescriptionDisplayString(e) {
     case "builtinHook":
       return "Built-in hooks (registered internally by Claude Code)";
     default:
-      return e;
+      return source;
   }
 }
-function hookSourceHeaderDisplayString(e) {
-  switch (e) {
+function hookSourceHeaderDisplayString(source) {
+  switch (source) {
     case "userSettings":
       return "User Settings";
     case "projectSettings":
@@ -109,11 +109,11 @@ function hookSourceHeaderDisplayString(e) {
     case "builtinHook":
       return "Built-in Hooks";
     default:
-      return e;
+      return source;
   }
 }
-function hookSourceInlineDisplayString(e) {
-  switch (e) {
+function hookSourceInlineDisplayString(source) {
+  switch (source) {
     case "userSettings":
       return "User";
     case "projectSettings":
@@ -127,7 +127,7 @@ function hookSourceInlineDisplayString(e) {
     case "builtinHook":
       return "Built-in";
     default:
-      return e;
+      return source;
   }
 }
 function cKl(e, t, n) {

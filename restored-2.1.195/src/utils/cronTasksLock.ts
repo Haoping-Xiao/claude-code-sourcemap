@@ -33,9 +33,9 @@ async function wPc(e) {
   let n = QCm().safeParse(Ia(t, false));
   return n.success ? n.data : void 0;
 }
-async function tryCreateExclusive(e, t) {
-  let n = Ftn(t),
-    r = De(e);
+async function tryCreateExclusive(lock, dir) {
+  let n = Ftn(dir),
+    r = De(lock);
   try {
     return (
       await rie.writeFile(n, r, {
@@ -71,10 +71,10 @@ function jYo(e) {
       await releaseSchedulerLock(e);
     })));
 }
-async function tryAcquireSchedulerLock(e) {
-  let t = e?.dir;
+async function tryAcquireSchedulerLock(opts) {
+  let t = opts?.dir;
   await HPc(t ?? rc());
-  let n = e?.lockIdentity ?? Rt(),
+  let n = opts?.lockIdentity ?? Rt(),
     r = {
       sessionId: n,
       pid: process.pid,
@@ -84,13 +84,13 @@ async function tryAcquireSchedulerLock(e) {
   if (await tryCreateExclusive(r, t))
     return (
       (Utn = void 0),
-      jYo(e),
+      jYo(opts),
       T(`[ScheduledTasks] acquired scheduler lock (PID ${process.pid})`),
       true
     );
   let o = await wPc(t);
   if (o?.sessionId === n) {
-    if (o.pid !== process.pid) (await rie.writeFile(Ftn(t), De(r)), jYo(e));
+    if (o.pid !== process.pid) (await rie.writeFile(Ftn(t), De(r)), jYo(opts));
     return true;
   }
   if (o && zR(o.pid) && (await bv(o.pid, o.procStart))) {
@@ -101,13 +101,13 @@ async function tryAcquireSchedulerLock(e) {
   }
   if (o) T(`[ScheduledTasks] recovering stale scheduler lock from PID ${o.pid}`);
   if ((await rie.unlink(Ftn(t)).catch(() => {}), await tryCreateExclusive(r, t)))
-    return ((Utn = void 0), jYo(e), true);
+    return ((Utn = void 0), jYo(opts), true);
   return false;
 }
-async function releaseSchedulerLock(e) {
+async function releaseSchedulerLock(opts) {
   (Yfr?.(), (Yfr = void 0), (Utn = void 0));
-  let t = e?.dir,
-    n = e?.lockIdentity ?? Rt(),
+  let t = opts?.dir,
+    n = opts?.lockIdentity ?? Rt(),
     r = await wPc(t);
   if (!r || r.sessionId !== n) return;
   try {

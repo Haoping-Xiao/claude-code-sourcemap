@@ -25,8 +25,8 @@ function getPlatform() {
   }
   return `${e}-${t}`;
 }
-function getBinaryName(e) {
-  return e.startsWith("win32") ? "claude.exe" : "claude";
+function getBinaryName(platform) {
+  return platform.startsWith("win32") ? "claude.exe" : "claude";
 }
 function getBaseDirectories() {
   let e = getPlatform(),
@@ -79,9 +79,9 @@ async function LAo(e) {
     installPath: o,
   };
 }
-async function tryWithVersionLock(e, t, n = 0) {
+async function tryWithVersionLock(versionFilePath, callback, n = 0) {
   let r = getBaseDirectories(),
-    o = eVt(r, e);
+    o = eVt(r, versionFilePath);
   if (
     (await Ic.mkdir(r.locks, {
       recursive: true,
@@ -94,9 +94,9 @@ async function tryWithVersionLock(e, t, n = 0) {
       c = n > 0 ? 5000 : 500;
     while (i < a) {
       if (
-        await Vza(e, o, async () => {
+        await Vza(versionFilePath, o, async () => {
           try {
-            await t();
+            await callback();
           } catch (d) {
             throw (
               T(`Native installer version-lock callback failed: ${d}`, {
@@ -126,14 +126,14 @@ async function tryWithVersionLock(e, t, n = 0) {
         is_lifetime_lock: false,
         attempts: a,
       }),
-      logLockAcquisitionError(e, Error("Lock held by another process")),
+      logLockAcquisitionError(versionFilePath, Error("Lock held by another process")),
       false
     );
   }
   let s = null;
   try {
     try {
-      s = await Ay(e, {
+      s = await Ay(versionFilePath, {
         stale: RAo,
         retries: {
           retries: n,
@@ -153,13 +153,13 @@ async function tryWithVersionLock(e, t, n = 0) {
           is_pid_based: false,
           is_lifetime_lock: false,
         }),
-        logLockAcquisitionError(e, i),
+        logLockAcquisitionError(versionFilePath, i),
         false
       );
     }
     try {
       return (
-        await t(),
+        await callback(),
         G("tengu_version_lock_acquired", {
           is_pid_based: false,
           is_lifetime_lock: false,
@@ -178,16 +178,16 @@ async function tryWithVersionLock(e, t, n = 0) {
     if (s) await s();
   }
 }
-async function atomicMoveToInstallPath(e, t) {
-  await Ic.mkdir(Df.dirname(t), {
+async function atomicMoveToInstallPath(stagedBinaryPath, installPath) {
+  await Ic.mkdir(Df.dirname(installPath), {
     recursive: true,
   });
-  let n = `${t}.tmp.${process.pid}.${Date.now()}`;
+  let n = `${installPath}.tmp.${process.pid}.${Date.now()}`;
   try {
-    (await Ic.copyFile(e, n),
+    (await Ic.copyFile(stagedBinaryPath, n),
       await Ic.chmod(n, 493),
-      await Ic.rename(n, t),
-      T(`Atomically installed binary to ${t}`));
+      await Ic.rename(n, installPath),
+      T(`Atomically installed binary to ${installPath}`));
   } catch (r) {
     try {
       await Ic.unlink(n);
@@ -195,9 +195,9 @@ async function atomicMoveToInstallPath(e, t) {
     throw r;
   }
 }
-async function installVersionFromPackage(e, t) {
+async function installVersionFromPackage(stagingPath, installPath) {
   try {
-    let n = Df.join(e, "node_modules", "@anthropic-ai"),
+    let n = Df.join(stagingPath, "node_modules", "@anthropic-ai"),
       o = (await Ic.readdir(n)).find((i) => i.startsWith("claude-cli-native-"));
     if (!o)
       throw (
@@ -219,8 +219,8 @@ async function installVersionFromPackage(e, t) {
         Error("Native binary not found in staged package")
       );
     }
-    (await atomicMoveToInstallPath(s, t),
-      await Ic.rm(e, {
+    (await atomicMoveToInstallPath(s, installPath),
+      await Ic.rm(stagingPath, {
         recursive: true,
         force: true,
       }),
@@ -248,11 +248,11 @@ async function installVersionFromPackage(e, t) {
     throw n;
   }
 }
-async function installVersionFromBinary(e, t) {
+async function installVersionFromBinary(stagingPath, installPath) {
   try {
     let n = getPlatform(),
       r = getBinaryName(n),
-      o = Df.join(e, r);
+      o = Df.join(stagingPath, r);
     try {
       await Ic.stat(o);
     } catch {
@@ -264,8 +264,8 @@ async function installVersionFromBinary(e, t) {
         Error("Staged binary not found")
       );
     }
-    (await atomicMoveToInstallPath(o, t),
-      await Ic.rm(e, {
+    (await atomicMoveToInstallPath(o, installPath),
+      await Ic.rm(stagingPath, {
         recursive: true,
         force: true,
       }),
@@ -288,20 +288,20 @@ async function fKp(e, t, n) {
   if (n === "npm") await installVersionFromPackage(e, t);
   else await installVersionFromBinary(e, t);
 }
-async function performVersionUpdate(e, t) {
-  let { stagingPath: n, installPath: r } = await LAo(e),
+async function performVersionUpdate(version, forceReinstall) {
+  let { stagingPath: n, installPath: r } = await LAo(version),
     { executable: o } = getBaseDirectories(),
     s = ut("true") ? `${n}.${process.pid}.${Date.now()}` : n,
-    i = !(await tKa(e)) || t;
+    i = !(await tKa(version)) || forceReinstall;
   if (i) {
     T(
-      t
-        ? `Force reinstalling native installer version ${e}`
-        : `Downloading native installer version ${e}`,
+      forceReinstall
+        ? `Force reinstalling native installer version ${version}`
+        : `Downloading native installer version ${version}`,
     );
-    let l = await Gza(e, s);
+    let l = await Gza(version, s);
     await fKp(s, r, l);
-  } else T(`Version ${e} already installed, updating symlink`);
+  } else T(`Version ${version} already installed, updating symlink`);
   if ((await removeDirectoryIfEmpty(o), !(await updateSymlink(o, r)) && !(await k9e(o)))) {
     let l = false;
     try {
@@ -325,10 +325,10 @@ function mKp() {
     return (T(`getCanaryVersion: GB read failed, falling through: ${be(e)}`), null);
   }
 }
-async function updateLatest(e, t = false) {
+async function updateLatest(channelOrVersion, t = false) {
   let n = Date.now(),
     { executable: r } = getBaseDirectories(),
-    o = !/^v?\d+\.\d+\.\d+(-\S+)?$/.test(e),
+    o = !/^v?\d+\.\d+\.\d+(-\S+)?$/.test(channelOrVersion),
     { maxVersion: s, forceDowngradeEnabled: i } = await v9e(),
     a =
       i &&
@@ -348,8 +348,10 @@ async function updateLatest(e, t = false) {
         s,
         "native_update",
       ),
-    l = a ? s : await Jqt(e);
-  if ((T(`Checking for native installer update to version ${l}`), e === "latest" && !a)) {
+    l = a ? s : await Jqt(channelOrVersion);
+  if (
+    (T(`Checking for native installer update to version ${l}`), channelOrVersion === "latest" && !a)
+  ) {
     let d = mKp(),
       p = d && s && cH(d, s);
     if (d && cH(d, l) && !p) (T(`Native installer: canary ${d} active, overriding ${l}`), (l = d));
@@ -502,41 +504,41 @@ async function updateLatest(e, t = false) {
     }
   );
 }
-async function removeDirectoryIfEmpty(e) {
+async function removeDirectoryIfEmpty(path) {
   try {
-    (await Ic.rmdir(e), T(`Removed empty directory at ${e}`));
+    (await Ic.rmdir(path), T(`Removed empty directory at ${path}`));
   } catch (t) {
     let n = on(t);
     if (n !== "ENOTDIR" && n !== "ENOENT" && n !== "ENOTEMPTY")
-      T(`Could not remove directory at ${e}: ${t}`);
+      T(`Could not remove directory at ${path}: ${t}`);
   }
 }
-async function updateSymlink(e, t) {
+async function updateSymlink(symlinkPath, targetPath) {
   if (getPlatform().startsWith("win32"))
     try {
-      let i = Df.dirname(e);
+      let i = Df.dirname(symlinkPath);
       await Ic.mkdir(i, {
         recursive: true,
       });
       let a;
       try {
-        a = await Ic.stat(e);
+        a = await Ic.stat(symlinkPath);
       } catch {}
       if (a) {
         try {
-          let c = await Ic.stat(t);
+          let c = await Ic.stat(targetPath);
           if (a.size === c.size) return false;
         } catch {}
-        let l = `${e}.old.${Date.now()}`;
-        await Ic.rename(e, l);
+        let l = `${symlinkPath}.old.${Date.now()}`;
+        await Ic.rename(symlinkPath, l);
         try {
-          await Ic.copyFile(t, e);
+          await Ic.copyFile(targetPath, symlinkPath);
           try {
             await Ic.unlink(l);
           } catch {}
         } catch (c) {
           try {
-            await Ic.rename(l, e);
+            await Ic.rename(l, symlinkPath);
           } catch (u) {
             let d = Error(`Failed to restore old executable: ${u}`, {
               cause: c,
@@ -547,21 +549,21 @@ async function updateSymlink(e, t) {
         }
       } else
         try {
-          await Ic.copyFile(t, e);
+          await Ic.copyFile(targetPath, symlinkPath);
         } catch (l) {
-          if (wn(l)) throw Error(`Source file does not exist: ${t}`);
+          if (wn(l)) throw Error(`Source file does not exist: ${targetPath}`);
           throw l;
         }
       return true;
     } catch (i) {
       return (
-        T(`Failed to copy executable from ${t} to ${e}: ${i}`, {
+        T(`Failed to copy executable from ${targetPath} to ${symlinkPath}: ${i}`, {
           level: "error",
         }),
         false
       );
     }
-  let o = Df.dirname(e);
+  let o = Df.dirname(symlinkPath);
   try {
     (await Ic.mkdir(o, {
       recursive: true,
@@ -575,12 +577,12 @@ async function updateSymlink(e, t) {
       false
     );
   }
-  let s = `${e}.tmp.${process.pid}.${Date.now()}`;
+  let s = `${symlinkPath}.tmp.${process.pid}.${Date.now()}`;
   try {
     return (
-      await Ic.symlink(t, s),
-      await Ic.rename(s, e),
-      T(`Atomically updated symlink ${e} -> ${t}`),
+      await Ic.symlink(targetPath, s),
+      await Ic.rename(s, symlinkPath),
+      T(`Atomically updated symlink ${symlinkPath} -> ${targetPath}`),
       true
     );
   } catch (i) {
@@ -588,7 +590,7 @@ async function updateSymlink(e, t) {
       await Ic.unlink(s);
     } catch {}
     return (
-      T(`Failed to create symlink from ${e} to ${t}: ${i}`, {
+      T(`Failed to create symlink from ${symlinkPath} to ${targetPath}: ${i}`, {
         level: "error",
       }),
       false
@@ -686,18 +688,18 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ${g} && source ${g}`,
   else It("native_check_install", i[0]);
   return s;
 }
-function installLatest(e, t = false) {
-  if (t) return installLatestImpl(e, t);
+function installLatest(channelOrVersion, t = false) {
+  if (t) return installLatestImpl(channelOrVersion, t);
   if (PVn) return (T("installLatest: joining in-flight call"), PVn);
-  let n = installLatestImpl(e, t);
+  let n = installLatestImpl(channelOrVersion, t);
   PVn = n;
   let r = () => {
     PVn = null;
   };
   return (n.then(r, r), n);
 }
-async function installLatestImpl(e, t = false) {
-  let n = await updateLatest(e, t);
+async function installLatestImpl(channelOrVersion, t = false) {
+  let n = await updateLatest(channelOrVersion, t);
   if (!n.success)
     return {
       latestVersion: null,
@@ -812,14 +814,17 @@ async function lockCurrentVersion() {
     });
   }
 }
-function logLockAcquisitionError(e, t) {
-  T(`NON-FATAL: Lock acquisition failed for ${e} (expected in multi-process scenarios): ${be(t)}`, {
-    level: "error",
-  });
+function logLockAcquisitionError(versionPath, lockError) {
+  T(
+    `NON-FATAL: Lock acquisition failed for ${versionPath} (expected in multi-process scenarios): ${be(lockError)}`,
+    {
+      level: "error",
+    },
+  );
 }
-async function forceRemoveLock(e) {
+async function forceRemoveLock(versionFilePath) {
   let t = getBaseDirectories(),
-    n = eVt(t, e);
+    n = eVt(t, versionFilePath);
   try {
     (await Ic.unlink(n), T(`Force-removed lock file at ${n}`));
   } catch (r) {
@@ -1063,7 +1068,7 @@ async function cleanupShellAliases() {
   else xe("native_cleanup_aliases");
   return e;
 }
-async function manualRemoveNpmPackage(e) {
+async function manualRemoveNpmPackage(packageName) {
   try {
     let t = await Gr("npm", ["config", "get", "prefix"]);
     if (t.code !== 0 || !t.stdout)
@@ -1092,13 +1097,13 @@ async function manualRemoveNpmPackage(e) {
       if (await o(s, "bin symlink")) r = true;
     }
     if (r) {
-      T(`Successfully removed ${e} manually`);
+      T(`Successfully removed ${packageName} manually`);
       let s = getPlatform().startsWith("win32")
-        ? Df.join(n, "node_modules", e)
-        : Df.join(n, "lib", "node_modules", e);
+        ? Df.join(n, "node_modules", packageName)
+        : Df.join(n, "lib", "node_modules", packageName);
       return {
         success: true,
-        warning: `${e} executables removed, but node_modules directory was left intact for safety. You may manually delete it later at: ${s}`,
+        warning: `${packageName} executables removed, but node_modules directory was left intact for safety. You may manually delete it later at: ${s}`,
       };
     } else
       return {
@@ -1116,24 +1121,24 @@ async function manualRemoveNpmPackage(e) {
     );
   }
 }
-async function attemptNpmUninstall(e) {
-  let { code: t, stderr: n } = await Gr("npm", ["uninstall", "-g", e], {
+async function attemptNpmUninstall(packageName) {
+  let { code: t, stderr: n } = await Gr("npm", ["uninstall", "-g", packageName], {
     cwd: process.cwd(),
   });
   if (t === 0)
     return (
-      T(`Removed global npm installation of ${e}`),
+      T(`Removed global npm installation of ${packageName}`),
       {
         success: true,
       }
     );
   else if (n && !n.includes("npm ERR! code E404")) {
     if (n.includes("npm error code ENOTEMPTY")) {
-      (T(`Failed to uninstall global npm package ${e}: ${n}`, {
+      (T(`Failed to uninstall global npm package ${packageName}: ${n}`, {
         level: "error",
       }),
         T("Attempting manual removal due to ENOTEMPTY error"));
-      let r = await manualRemoveNpmPackage(e);
+      let r = await manualRemoveNpmPackage(packageName);
       if (r.success)
         return {
           success: true,
@@ -1142,16 +1147,16 @@ async function attemptNpmUninstall(e) {
       else if (r.error)
         return {
           success: false,
-          error: `Failed to remove global npm installation of ${e}: ${n}. Manual removal also failed: ${r.error}`,
+          error: `Failed to remove global npm installation of ${packageName}: ${n}. Manual removal also failed: ${r.error}`,
         };
     }
     return (
-      T(`Failed to uninstall global npm package ${e}: ${n}`, {
+      T(`Failed to uninstall global npm package ${packageName}: ${n}`, {
         level: "error",
       }),
       {
         success: false,
-        error: `Failed to remove global npm installation of ${e}: ${n}`,
+        error: `Failed to remove global npm installation of ${packageName}: ${n}`,
       }
     );
   }

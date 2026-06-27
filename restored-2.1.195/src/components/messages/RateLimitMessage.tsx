@@ -37,9 +37,9 @@ function getUpsellMessage({
   if (!c) return "/upgrade to increase your usage limit.";
   return "/upgrade or /usage-credits to finish what you\u2019re working on.";
 }
-function RateLimitMessage(e) {
+function RateLimitMessage(t0) {
   let t = Msl.c(32),
-    { text: n, onOpenRateLimitOptions: r } = e,
+    { text: n, onOpenRateLimitOptions: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((o = Di()), (t[0] = o));
   else o = t[0];

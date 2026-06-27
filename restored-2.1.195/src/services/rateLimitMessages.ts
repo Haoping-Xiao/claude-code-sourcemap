@@ -7,27 +7,27 @@
 function vaa(e) {
   return Jap.some((t) => e.startsWith(t));
 }
-function getRateLimitMessage(e, t) {
-  if (e.isUsingOverage) {
-    if (e.overageStatus === "allowed_warning")
+function getRateLimitMessage(limits, model) {
+  if (limits.isUsingOverage) {
+    if (limits.overageStatus === "allowed_warning")
       return {
         message: `You're close to your ${zB() ? "usage limit" : "usage credit limit"}`,
         severity: "warning",
       };
     return null;
   }
-  if (e.status === "rejected")
+  if (limits.status === "rejected")
     return {
-      message: Qap(e, t),
+      message: Qap(limits, model),
       severity: "error",
     };
-  if (e.status === "allowed_warning") {
-    if (e.utilization !== void 0 && e.utilization < 0.7) return null;
+  if (limits.status === "allowed_warning") {
+    if (limits.utilization !== void 0 && limits.utilization < 0.7) return null;
     let r = Di(),
       o = r === "team" || r === "enterprise",
       s = Lc()?.hasExtraUsageEnabled === !0;
     if (o && s && !eH()) return null;
-    let i = getEarlyWarningText(e);
+    let i = getEarlyWarningText(limits);
     if (i)
       return {
         message: i,
@@ -136,9 +136,9 @@ function Zap(e, t, n) {
   if (e.rateLimitType === "five_hour") return formatLimitReachedText("session limit", t, n);
   return null;
 }
-function getEarlyWarningText(e) {
+function getEarlyWarningText(limits) {
   let t = null;
-  switch (e.rateLimitType) {
+  switch (limits.rateLimitType) {
     case "seven_day":
       t = "weekly limit";
       break;
@@ -160,10 +160,10 @@ function getEarlyWarningText(e) {
     case void 0:
       return null;
   }
-  let n = e.utilization ? Math.floor(e.utilization * 100) : void 0,
-    r = e.rateLimitType === "overage" && zB(),
-    o = e.resetsAt && !r ? mee(e.resetsAt, !0) : void 0,
-    s = getWarningUpsellText(e.rateLimitType);
+  let n = limits.utilization ? Math.floor(limits.utilization * 100) : void 0,
+    r = limits.rateLimitType === "overage" && zB(),
+    o = limits.resetsAt && !r ? mee(limits.resetsAt, !0) : void 0,
+    s = getWarningUpsellText(limits.rateLimitType);
   if (n && o) {
     let a = `You've used ${n}% of your ${t} \xB7 resets ${o}`;
     return s ? `${a} \xB7 ${s}` : a;
@@ -172,7 +172,7 @@ function getEarlyWarningText(e) {
     let a = `You've used ${n}% of your ${t}`;
     return s ? `${a} \xB7 ${s}` : a;
   }
-  if (e.rateLimitType === "overage") t = zB() ? "usage limit" : "usage credit limit";
+  if (limits.rateLimitType === "overage") t = zB() ? "usage limit" : "usage credit limit";
   if (o) {
     let a = `Approaching ${t} \xB7 resets ${o}`;
     return s ? `${a} \xB7 ${s}` : a;
@@ -180,7 +180,7 @@ function getEarlyWarningText(e) {
   let i = `Approaching ${t}`;
   return s ? `${i} \xB7 ${s}` : i;
 }
-function getWarningUpsellText(e) {
+function getWarningUpsellText(rateLimitType) {
   let t = Di(),
     n = Lc()?.hasExtraUsageEnabled === !0,
     r = eH();
@@ -189,13 +189,13 @@ function getWarningUpsellText(e) {
       return r
         ? "Run /usage-credits to turn on extra usage for your org"
         : "Run /usage-credits to ask your admin for more";
-    if (n && e === "overage")
+    if (n && rateLimitType === "overage")
       return r
         ? "Run /usage-credits to raise the cap"
         : "Run /usage-credits to ask your admin for more";
     return null;
   }
-  if (e === "five_hour" && (t === "pro" || t === "max") && !FX())
+  if (rateLimitType === "five_hour" && (t === "pro" || t === "max") && !FX())
     return "/upgrade to keep using Claude Code";
   return null;
 }
@@ -230,13 +230,13 @@ function Iaa(e, t, n) {
     };
   return null;
 }
-function getUsingOverageText(e, t) {
-  let n = e.resetsAt ? mee(e.resetsAt, !0) : "",
+function getUsingOverageText(limits, t) {
+  let n = limits.resetsAt ? mee(limits.resetsAt, !0) : "",
     r = "";
-  if (e.rateLimitType === "five_hour") r = "session limit";
-  else if (e.rateLimitType === "seven_day") r = "weekly limit";
-  else if (e.rateLimitType === "seven_day_opus") r = "Opus limit";
-  else if (e.rateLimitType === "seven_day_sonnet") {
+  if (limits.rateLimitType === "five_hour") r = "session limit";
+  else if (limits.rateLimitType === "seven_day") r = "weekly limit";
+  else if (limits.rateLimitType === "seven_day_opus") r = "Opus limit";
+  else if (limits.rateLimitType === "seven_day_sonnet") {
     let a = Di();
     r = a === "pro" || a === "enterprise" ? "weekly limit" : "Sonnet limit";
   }
@@ -253,7 +253,7 @@ function getUsingOverageText(e, t) {
   let i = n && !o ? ` \xB7 Your ${r} resets ${n}` : "";
   return `You're now using ${s}${i}`;
 }
-function formatLimitReachedText(e, t, n) {
-  return `You've hit your ${e}${t}`;
+function formatLimitReachedText(limit, resetMessage, _model) {
+  return `You've hit your ${limit}${resetMessage}`;
 }
 var Cio, Jap;

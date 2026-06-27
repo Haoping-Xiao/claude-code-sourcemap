@@ -11,16 +11,16 @@ function sHe(e) {
   let t = nEf(e);
   return bDo ? t.toLowerCase() : t;
 }
-function detectSessionFileType(e) {
+function detectSessionFileType(filePath) {
   let t = tr(),
-    n = sHe(e),
+    n = sHe(filePath),
     r = sHe(t);
   if (!n.startsWith(r)) return null;
   if (n.includes("/projects/") && n.endsWith(".jsonl")) return "session_transcript";
   return null;
 }
-function detectSessionPatternType(e) {
-  let t = e.split(q$e.win32.sep).join(q$e.posix.sep);
+function detectSessionPatternType(pattern) {
+  let t = pattern.split(q$e.win32.sep).join(q$e.posix.sep);
   if (t.includes(".jsonl") || (t.includes("projects") && t.includes("*.jsonl")))
     return "session_transcript";
   return null;
@@ -29,9 +29,9 @@ function Sze(e) {
   if (lu()) return C7(e);
   return false;
 }
-function memoryScopeForPath(e) {
-  if (P7(e)) return "team";
-  if (Sze(e)) return "personal";
+function memoryScopeForPath(filePath) {
+  if (P7(filePath)) return "team";
+  if (Sze(filePath)) return "personal";
   return null;
 }
 function rEf(e) {
@@ -45,8 +45,8 @@ function Eze(e) {
   if (rEf(e)) return true;
   return false;
 }
-function isMemoryDirectory(e) {
-  let t = q$e.normalize(e),
+function isMemoryDirectory(dirPath) {
+  let t = q$e.normalize(dirPath),
     n = sHe(t);
   if (lu() && (n.includes("/agent-memory/") || n.includes("/agent-memory-local/"))) return true;
   if (cL() && $_e(t)) return true;
@@ -87,12 +87,12 @@ function gvl(e) {
   }
   return false;
 }
-function isAutoManagedMemoryPattern(e) {
-  if (detectSessionPatternType(e) !== null) return true;
+function isAutoManagedMemoryPattern(pattern) {
+  if (detectSessionPatternType(pattern) !== null) return true;
   if (
     lu() &&
-    (e.replaceAll("\\", "/").includes("agent-memory/") ||
-      e.replaceAll("\\", "/").includes("agent-memory-local/"))
+    (pattern.replaceAll("\\", "/").includes("agent-memory/") ||
+      pattern.replaceAll("\\", "/").includes("agent-memory-local/"))
   )
     return true;
   return false;

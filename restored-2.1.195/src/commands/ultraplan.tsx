@@ -58,15 +58,15 @@ function tsr(e) {
 function cWf(e) {
   return iWf(W2o[e]);
 }
-function buildUltraplanPrompt(e, t, n) {
+function buildUltraplanPrompt(blurb, seedPlan, n) {
   let r = [];
-  if (t) r.push("Here is a draft plan to refine:", "", t, "");
-  if ((r.push(cWf(n)), e)) r.push("", e);
+  if (seedPlan) r.push("Here is a draft plan to refine:", "", seedPlan, "");
+  if ((r.push(cWf(n)), blurb)) r.push("", blurb);
   return r.join(`
 `);
 }
-function startDetachedPoll(e, t, n, r, o, s) {
-  let i = $L(r, o),
+function startDetachedPoll(taskId, sessionId, url, getAppState, setAppState, s) {
+  let i = $L(getAppState, setAppState),
     a = Date.now(),
     l = !1,
     c = !1;
@@ -77,24 +77,24 @@ function startDetachedPoll(e, t, n, r, o, s) {
         rejectCount: d,
         executionTarget: p,
       } = await c9l(
-        t,
+        sessionId,
         sWf(),
         (f) => {
-          if (i.get(e)?.status !== "running") return;
+          if (i.get(taskId)?.status !== "running") return;
           if (f === "needs_input") G("tengu_ultraplan_awaiting_input", {});
           if (f === "plan_ready" && !c)
             ((c = !0),
               G("tengu_ultraplan_plan_ready", {
                 duration_ms: Date.now() - a,
               }),
-              s?.(mWf(n)),
+              s?.(mWf(url)),
               Ad({
-                value: `The cloud ultraplan session produced a plan and is waiting for approval. Tell the user to open ${n} to review it.`,
+                value: `The cloud ultraplan session produced a plan and is waiting for approval. Tell the user to open ${url} to review it.`,
                 mode: "task-notification",
                 agentId: ls(),
                 isMeta: !0,
               }));
-          i.update(e, (m) => {
+          i.update(taskId, (m) => {
             if (m.status !== "running") return m;
             let g = f === "running" ? void 0 : f;
             return m.ultraplanPhase === g
@@ -105,7 +105,7 @@ function startDetachedPoll(e, t, n, r, o, s) {
                 };
           });
         },
-        () => i.get(e)?.status !== "running",
+        () => i.get(taskId)?.status !== "running",
       );
       if (
         (G("tengu_ultraplan_approved", {
@@ -116,9 +116,9 @@ function startDetachedPoll(e, t, n, r, o, s) {
         }),
         p === "remote")
       ) {
-        if (i.get(e)?.status !== "running") return;
-        (l9t(e).catch((m) => T(`ultraplan meta delete failed: ${String(m)}`)),
-          i.update(e, (m) =>
+        if (i.get(taskId)?.status !== "running") return;
+        (l9t(taskId).catch((m) => T(`ultraplan meta delete failed: ${String(m)}`)),
+          i.update(taskId, (m) =>
             m.status !== "running"
               ? m
               : {
@@ -127,8 +127,8 @@ function startDetachedPoll(e, t, n, r, o, s) {
                   endTime: Date.now(),
                 },
           ),
-          o((m) =>
-            m.ultraplanSessionUrl === n
+          setAppState((m) =>
+            m.ultraplanSessionUrl === url
               ? {
                   ...m,
                   ultraplanSessionUrl: void 0,
@@ -137,7 +137,7 @@ function startDetachedPoll(e, t, n, r, o, s) {
           ),
           Ad({
             value: [
-              `Ultraplan approved \u2014 executing in Claude Code on the web. Follow along at: ${n}`,
+              `Ultraplan approved \u2014 executing in Claude Code on the web. Follow along at: ${url}`,
               "",
               "Results will land as a pull request when the cloud session finishes. There is nothing to do here.",
             ].join(`
@@ -146,20 +146,20 @@ function startDetachedPoll(e, t, n, r, o, s) {
             agentId: ls(),
           }));
       } else
-        o((f) => {
-          let m = f.tasks?.[e];
+        setAppState((f) => {
+          let m = f.tasks?.[taskId];
           if (!m || m.status !== "running") return f;
           return {
             ...f,
             ultraplanPendingChoice: {
               plan: u,
-              sessionId: t,
-              taskId: e,
+              sessionId: sessionId,
+              taskId: taskId,
             },
           };
         });
     } catch (u) {
-      if (i.get(e)?.status !== "running") return;
+      if (i.get(taskId)?.status !== "running") return;
       l = !0;
       let p = Date.now(),
         f = u instanceof eme ? u.eventStats : void 0;
@@ -174,7 +174,7 @@ function startDetachedPoll(e, t, n, r, o, s) {
         Ad({
           value: `Ultraplan terminated: ${be(u)}
 
-Session: ${n}`,
+Session: ${url}`,
           mode: "task-notification",
           agentId: ls(),
         }),
@@ -184,9 +184,9 @@ Session: ${n}`,
           agentId: ls(),
           isMeta: !0,
         }),
-        X5(t).catch((m) => T(`ultraplan archive failed: ${String(m)}`)),
-        o((m) =>
-          m.ultraplanSessionUrl === n
+        X5(sessionId).catch((m) => T(`ultraplan archive failed: ${String(m)}`)),
+        setAppState((m) =>
+          m.ultraplanSessionUrl === url
             ? {
                 ...m,
                 ultraplanSessionUrl: void 0,
@@ -195,7 +195,7 @@ Session: ${n}`,
         ));
     } finally {
       if (l)
-        i.update(e, (u) =>
+        i.update(taskId, (u) =>
           u.status !== "running"
             ? u
             : {
@@ -207,26 +207,26 @@ Session: ${n}`,
     }
   })();
 }
-function buildLaunchMessage(e) {
-  let t = e ? `${Roe} ` : "";
+function buildLaunchMessage(disconnectedBridge) {
+  let t = disconnectedBridge ? `${Roe} ` : "";
   return `${mv} ultraplan
 ${t}Starting Claude Code on the web\u2026`;
 }
-function buildSessionReadyMessage(e) {
-  return `${mv} ultraplan \xB7 Monitor progress in Claude Code on the web ${e}
+function buildSessionReadyMessage(url) {
+  return `${mv} ultraplan \xB7 Monitor progress in Claude Code on the web ${url}
 You can continue working \u2014 when the ${mv} fills, press \u2193 to view results`;
 }
 function mWf(e) {
   return `${BO} ultraplan ready \xB7 ${e}
 Press ${r9} to view results`;
 }
-function buildAlreadyActiveMessage(e) {
-  return e
-    ? `ultraplan: already polling. Open ${e} to check status, or wait for the plan to land here.`
+function buildAlreadyActiveMessage(url) {
+  return url
+    ? `ultraplan: already polling. Open ${url} to check status, or wait for the plan to land here.`
     : "ultraplan: already launching. Please wait for the session to start.";
 }
-async function stopUltraplan(e, t, n, r) {
-  (await a8e.kill(e, n, r),
+async function stopUltraplan(taskId, sessionId, setAppState, r) {
+  (await a8e.kill(taskId, setAppState, r),
     r((s) =>
       s.ultraplanSessionUrl || s.ultraplanPendingChoice || s.ultraplanLaunching
         ? {
@@ -237,7 +237,7 @@ async function stopUltraplan(e, t, n, r) {
           }
         : s,
     ));
-  let o = dS(t, process.env.SESSION_INGRESS_URL, {
+  let o = dS(sessionId, process.env.SESSION_INGRESS_URL, {
     from: "cli",
   });
   (Ad({
@@ -275,7 +275,7 @@ Session: ${o}`,
       isMeta: !0,
     }));
 }
-async function launchUltraplan(e) {
+async function launchUltraplan(opts) {
   let {
     arg: t,
     source: n,
@@ -286,7 +286,7 @@ async function launchUltraplan(e) {
     signal: a,
     disconnectedBridge: l,
     onStatusMessage: c,
-  } = e;
+  } = opts;
   if (!Us("allow_remote_sessions"))
     return (
       G("tengu_ultraplan_create_failed", {
@@ -336,7 +336,7 @@ async function launchUltraplan(e) {
     buildLaunchMessage(l)
   );
 }
-async function launchDetached(e) {
+async function launchDetached(opts) {
   let {
       arg: t,
       source: n,
@@ -345,7 +345,7 @@ async function launchDetached(e) {
       setAppState: s,
       signal: i,
       onStatusMessage: a,
-    } = e,
+    } = opts,
     l;
   try {
     let c = await Ipe({
@@ -366,7 +366,7 @@ ${b}`,
       });
       return;
     }
-    let u = e.promptIdentifier ?? esr(),
+    let u = opts.promptIdentifier ?? esr(),
       d = buildUltraplanPrompt(t, r, u),
       p,
       f,
@@ -478,11 +478,11 @@ var CCR_TERMS_URL = "https://code.claude.com/docs/en/claude-code-on-the-web",
   FoE,
   h9l,
   lWf,
-  call = async (e, t, n) => {
-    let r = OZn(n).trim();
+  call = async (onDone, context, args) => {
+    let r = OZn(args).trim();
     if (!Us("allow_remote_sessions"))
       return (
-        e(
+        onDone(
           poe({
             type: "policy_blocked",
           }),
@@ -496,32 +496,32 @@ var CCR_TERMS_URL = "https://code.claude.com/docs/en/claude-code-on-the-web",
       let a = await launchUltraplan({
         arg: r,
         source: "slash",
-        getAppState: t.getAppState,
-        setAppState: t.setAppState,
-        signal: t.abortController.signal,
+        getAppState: context.getAppState,
+        setAppState: context.setAppState,
+        signal: context.abortController.signal,
       });
       return (
-        e(a, {
+        onDone(a, {
           display: "system",
         }),
         null
       );
     }
-    let o = t.options.ultraplanSessionUrl,
-      { ultraplanLaunching: s } = t.getAppState();
+    let o = context.options.ultraplanSessionUrl,
+      { ultraplanLaunching: s } = context.getAppState();
     if (o || s)
       return (
         G("tengu_ultraplan_create_failed", {
           reason: We(o ? "already_polling" : "already_launching"),
         }),
-        e(buildAlreadyActiveMessage(o), {
+        onDone(buildAlreadyActiveMessage(o), {
           display: "system",
         }),
         null
       );
     let i = Dt().hasSeenUltraplanTerms ? void 0 : RAt().catch(() => null);
     return (
-      t.setAppState((a) => ({
+      context.setAppState((a) => ({
         ...a,
         ultraplanLaunchPending: {
           ultraplanArg: r,
@@ -529,7 +529,7 @@ var CCR_TERMS_URL = "https://code.claude.com/docs/en/claude-code-on-the-web",
           sourcePromise: i,
         },
       })),
-      e(void 0, {
+      onDone(void 0, {
         display: "skip",
       }),
       null

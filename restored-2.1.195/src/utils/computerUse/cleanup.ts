@@ -4,8 +4,8 @@
 // class=modified  jaccard=0.3771  score=0.7581  fileCov=0.4287
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function* cleanupComputerUseAfterTurn(e) {
-  let n = e.getAppState().computerUseMcpState?.hiddenDuringTurn,
+async function* cleanupComputerUseAfterTurn(ctx) {
+  let n = ctx.getAppState().computerUseMcpState?.hiddenDuringTurn,
     r = !!(n && n.size > 0),
     o = qFn();
   if (!r && !o) return;
@@ -24,7 +24,7 @@ async function* cleanupComputerUseAfterTurn(e) {
       c = XY(),
       u = setTimeout(c.resolve, STf);
     if ((await Promise.race([l, c.promise]).finally(() => clearTimeout(u)), !a)) s = !0;
-    QSe(e.setAppState, (d) =>
+    QSe(ctx.setAppState, (d) =>
       d?.hiddenDuringTurn === void 0
         ? d
         : {

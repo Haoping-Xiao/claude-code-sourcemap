@@ -18,8 +18,8 @@ gGo = ve(() =>
     createSessionOnStart: H.boolean().default(false),
   }).strict(),
 );
-async function call(e, t, n, r) {
-  let { intervalSeconds: o } = heartbeatWorkerSchema().parse(e);
+async function call(args, t, n, r) {
+  let { intervalSeconds: o } = heartbeatWorkerSchema().parse(args);
   n(`heartbeat worker started (interval=${o}s)`);
   while (!t.aborted) if ((await Nn(o * 1000, t), !t.aborted)) n("heartbeat");
 }

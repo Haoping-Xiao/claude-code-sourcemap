@@ -41,14 +41,14 @@ async function cNa(e, t) {
     xe("remote_managed_settings_security_check");
   return n;
 }
-async function checkManagedSettingsSecurity(e, t) {
-  if (!t || !g4n(Cft(t))) return "no_check_needed";
-  if (!N1a(e, t)) return "no_check_needed";
+async function checkManagedSettingsSecurity(cachedSettings, newSettings) {
+  if (!newSettings || !g4n(Cft(newSettings))) return "no_check_needed";
+  if (!N1a(cachedSettings, newSettings)) return "no_check_needed";
   if (!Ax()) return "no_check_needed";
-  if ((G("tengu_managed_settings_security_dialog_shown", {}), Xho)) return cNa(Xho, t);
+  if ((G("tengu_managed_settings_security_dialog_shown", {}), Xho)) return cNa(Xho, newSettings);
   if (Cu.has(process.stdout)) {
     let r = await sMp();
-    if (r) return cNa(r, t);
+    if (r) return cNa(r, newSettings);
   }
   let n = Cu.has(process.stdout);
   if (!n) x4n = true;
@@ -58,7 +58,7 @@ async function checkManagedSettingsSecurity(e, t) {
         k4n.jsx(AH, {
           children: k4n.jsx(TT, {
             children: k4n.jsx(h4n, {
-              settings: t,
+              settings: newSettings,
               onAccept: () => {
                 if (
                   (G("tengu_managed_settings_security_dialog_accepted", {}),

@@ -17,8 +17,8 @@
     }),
   )));
 var dJ = 1e6;
-function extensionForMimeType(e, t) {
-  let n = e?.toLowerCase();
+function extensionForMimeType(mimeType, t) {
+  let n = mimeType?.toLowerCase();
   if (n === "application/gzip" || n === "application/x-gzip") return "tar.gz";
   if (n === "application/zip") return "zip";
   if (t.endsWith(".tar.gz") || t.endsWith(".tgz")) return "tar.gz";

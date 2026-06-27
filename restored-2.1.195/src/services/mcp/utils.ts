@@ -65,8 +65,8 @@ function Odt(e, t) {
   };
   return (delete n[t], n);
 }
-function hashMcpConfig(e) {
-  let { scope: t, pluginSource: n, pluginPath: r, configError: o, ...s } = e,
+function hashMcpConfig(config) {
+  let { scope: t, pluginSource: n, pluginPath: r, configError: o, ...s } = config,
     i = s;
   if ((delete i.tools, i.type === "stdio" || (i.type === void 0 && "command" in i)))
     ((i.type = "stdio"), (i.args = i.args ?? []));
@@ -114,8 +114,8 @@ function DCa(e, t) {
     stale: n,
   };
 }
-function describeMcpConfigFilePath(e) {
-  switch (e) {
+function describeMcpConfigFilePath(scope) {
+  switch (scope) {
     case "user":
       return b0();
     case "project":
@@ -131,11 +131,11 @@ function describeMcpConfigFilePath(e) {
     case "agent":
       return "agent frontmatter";
     default:
-      return e;
+      return scope;
   }
 }
-function getScopeLabel(e) {
-  switch (e) {
+function getScopeLabel(scope) {
+  switch (scope) {
     case "local":
       return "Local config (private to you in this project)";
     case "project":
@@ -151,27 +151,27 @@ function getScopeLabel(e) {
     case "agent":
       return "Agent config (from agent frontmatter)";
     default:
-      return e;
+      return scope;
   }
 }
-function ensureConfigScope(e) {
-  if (!e) return "local";
-  if (!WRr().options.includes(e))
-    throw Error(`Invalid scope: ${e}. Must be one of: ${WRr().options.join(", ")}`);
-  return e;
+function ensureConfigScope(scope) {
+  if (!scope) return "local";
+  if (!WRr().options.includes(scope))
+    throw Error(`Invalid scope: ${scope}. Must be one of: ${WRr().options.join(", ")}`);
+  return scope;
 }
-function ensureTransport(e) {
-  if (!e) return "stdio";
-  if (e === "streamable-http") return "http";
-  if (e !== "stdio" && e !== "sse" && e !== "http")
+function ensureTransport(type) {
+  if (!type) return "stdio";
+  if (type === "streamable-http") return "http";
+  if (type !== "stdio" && type !== "sse" && type !== "http")
     throw Error(
-      `Invalid transport type: ${e}. Must be one of: stdio, sse, http (or streamable-http)`,
+      `Invalid transport type: ${type}. Must be one of: stdio, sse, http (or streamable-http)`,
     );
-  return e;
+  return type;
 }
-function parseHeaders(e) {
+function parseHeaders(headerArray) {
   let t = {};
-  for (let n of e) {
+  for (let n of headerArray) {
     let r = n.indexOf(":");
     if (r === -1)
       throw Error(`Invalid header format: "${n}". Expected format: "Header-Name: value"`);
@@ -189,21 +189,21 @@ function g3t(e) {
     return "approved";
   return "pending";
 }
-function getProjectMcpServerStatus(e) {
-  let t = g3t(e);
+function getProjectMcpServerStatus(serverName) {
+  let t = g3t(serverName);
   if (t !== "pending") return t;
   if (xCt() && uj() && Om("projectSettings")) return "approved";
   if (Ir() && Om("projectSettings")) return "approved";
   return "pending";
 }
-function getMcpServerScopeFromToolName(e) {
+function getMcpServerScopeFromToolName(toolName) {
   if (
     !gk({
-      name: e,
+      name: toolName,
     })
   )
     return null;
-  let t = eI(e);
+  let t = eI(toolName);
   if (!t) return null;
   let n = P4(t.serverName);
   if (!n && t.serverName.startsWith("claude_ai_")) return "claudeai";

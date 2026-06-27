@@ -4,9 +4,9 @@
 // class=modified (alt of src/tools/LSPTool/UI.tsx)  jaccard=0.2594  score=0.6648  fileCov=0.2984
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function LSPResultSummary(e) {
+function LSPResultSummary(t0) {
   let t = rbl.c(24),
-    { operation: n, resultCount: r, fileCount: o, content: s, verbose: i } = e,
+    { operation: n, resultCount: r, fileCount: o, content: s, verbose: i } = t0,
     a;
   if (t[0] !== n)
     ((a = Mgf[n] || {
@@ -127,35 +127,36 @@ function LSPResultSummary(e) {
 function obl() {
   return "LSP";
 }
-function renderToolUseMessage(e, { verbose: t }) {
-  if (!e.operation) return null;
+function renderToolUseMessage(input, { verbose: t }) {
+  if (!input.operation) return null;
   let n = [];
   if (
-    (e.operation === "goToDefinition" ||
-      e.operation === "findReferences" ||
-      e.operation === "hover" ||
-      e.operation === "goToImplementation") &&
-    e.filePath &&
-    e.line !== void 0 &&
-    e.character !== void 0
+    (input.operation === "goToDefinition" ||
+      input.operation === "findReferences" ||
+      input.operation === "hover" ||
+      input.operation === "goToImplementation") &&
+    input.filePath &&
+    input.line !== void 0 &&
+    input.character !== void 0
   ) {
-    let r = tbl(e.filePath, e.line - 1, e.character - 1),
-      o = t ? e.filePath : kd(e.filePath);
-    if (r) (n.push(`operation: "${e.operation}"`), n.push(`symbol: "${r}"`), n.push(`in: "${o}"`));
+    let r = tbl(input.filePath, input.line - 1, input.character - 1),
+      o = t ? input.filePath : kd(input.filePath);
+    if (r)
+      (n.push(`operation: "${input.operation}"`), n.push(`symbol: "${r}"`), n.push(`in: "${o}"`));
     else
-      (n.push(`operation: "${e.operation}"`),
+      (n.push(`operation: "${input.operation}"`),
         n.push(`file: "${o}"`),
-        n.push(`position: ${e.line}:${e.character}`));
+        n.push(`position: ${input.line}:${input.character}`));
     return n.join(", ");
   }
-  if ((n.push(`operation: "${e.operation}"`), e.filePath)) {
-    let r = t ? e.filePath : kd(e.filePath);
+  if ((n.push(`operation: "${input.operation}"`), input.filePath)) {
+    let r = t ? input.filePath : kd(input.filePath);
     n.push(`file: "${r}"`);
   }
   return n.join(", ");
 }
-function renderToolUseErrorMessage(e, { verbose: t }) {
-  if (!t && typeof e === "string" && xl(e, "tool_use_error"))
+function renderToolUseErrorMessage(result, { verbose: t }) {
+  if (!t && typeof result === "string" && xl(result, "tool_use_error"))
     return Lk.jsx(qn, {
       children: Lk.jsx(w, {
         color: "error",
@@ -163,7 +164,7 @@ function renderToolUseErrorMessage(e, { verbose: t }) {
       }),
     });
   return Lk.jsx(AT, {
-    result: e,
+    result: result,
     verbose: t,
   });
 }

@@ -4,19 +4,19 @@
 // class=modified  jaccard=0.2368  score=0.8415  fileCov=0.2478
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function getLogDisplayTitle(e, t) {
-  let n = e.firstPrompt?.startsWith(`<${Cae}>`),
-    r = e.firstPrompt ? FZe(e.firstPrompt) : "",
+function getLogDisplayTitle(log, defaultTitle) {
+  let n = log.firstPrompt?.startsWith(`<${Cae}>`),
+    r = log.firstPrompt ? FZe(log.firstPrompt) : "",
     o = r && !n,
     s =
-      e.agentName ||
-      e.customTitle ||
-      e.aiTitle ||
-      e.summary ||
+      log.agentName ||
+      log.customTitle ||
+      log.aiTitle ||
+      log.summary ||
       (o ? r : void 0) ||
-      t ||
+      defaultTitle ||
       (n ? "Autonomous session" : void 0) ||
-      (e.sessionId ? e.sessionId.slice(0, 8) : "") ||
+      (log.sessionId ? log.sessionId.slice(0, 8) : "") ||
       "";
   return Apn(s).trim();
 }
@@ -27,9 +27,9 @@ function PDu(e) {
   if (Tpn.length >= DDu) Tpn.shift();
   Tpn.push(e);
 }
-function attachErrorLogSink(e) {
+function attachErrorLogSink(newSink) {
   if (Nee !== null) return;
-  if (((Nee = e), WZe.length > 0)) {
+  if (((Nee = newSink), WZe.length > 0)) {
     let t = [...WZe];
     WZe.length = 0;
     for (let n of t)
@@ -102,9 +102,9 @@ function sn(e, t) {
     Nee.logMCPDebug(e, t);
   } catch {}
 }
-function captureAPIRequest(e, t) {
-  if (!t || !t.startsWith("repl_main_thread")) return;
-  let { messages: n, ...r } = e;
+function captureAPIRequest(params, querySource) {
+  if (!querySource || !querySource.startsWith("repl_main_thread")) return;
+  let { messages: n, ...r } = params;
   (xbr(r), Rbr(null));
 }
 var DDu = 100,

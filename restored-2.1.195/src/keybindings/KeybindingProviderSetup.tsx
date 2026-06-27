@@ -105,7 +105,7 @@ function XPp({ children: e }) {
     })
   );
 }
-function ChordInterceptor(e) {
+function ChordInterceptor(t0) {
   let t = Fho.c(28),
     {
       bindings: n,
@@ -116,7 +116,7 @@ function ChordInterceptor(e) {
       preDispatchRef: a,
       keyHandlerRegistry: l,
       children: c,
-    } = e,
+    } = t0,
     u;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((u = []), (t[0] = u));
   else u = t[0];

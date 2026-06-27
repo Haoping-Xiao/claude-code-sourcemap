@@ -4,13 +4,13 @@
 // class=modified  jaccard=0.2215  score=0.6281  fileCov=0.2549
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function importGithubToken(e) {
+async function importGithubToken(token) {
   let t;
   try {
     t = await Os.post(
       "/v1/code/github/import-token",
       {
-        token: e.reveal(),
+        token: token.reveal(),
       },
       {
         headers: {

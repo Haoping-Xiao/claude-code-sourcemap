@@ -29,10 +29,10 @@ function q9(e, t = false) {
   let n = t ? Qkd : Jkd;
   return n[e % n.length];
 }
-function modelSupportsThinking(e) {
-  let t = W9(e, "thinking");
+function modelSupportsThinking(model) {
+  let t = W9(model, "thinking");
   if (t !== void 0) return t;
-  return !mo(e).includes("claude-3-");
+  return !mo(model).includes("claude-3-");
 }
 function U4e(e) {
   let t = mo(e);
@@ -53,10 +53,10 @@ function U4e(e) {
   if (JB(t, "rejects_disabled_thinking")) return true;
   return ZO(l_(e));
 }
-function modelSupportsAdaptiveThinking(e) {
-  let t = W9(e, "adaptive_thinking");
+function modelSupportsAdaptiveThinking(model) {
+  let t = W9(model, "adaptive_thinking");
   if (t !== void 0) return t;
-  let n = mo(e);
+  let n = mo(model);
   if (
     n.includes("claude-3-") ||
     n === "claude-opus-4-0" ||
@@ -68,7 +68,7 @@ function modelSupportsAdaptiveThinking(e) {
   )
     return false;
   if (JB(n, "adaptive_thinking") || n === "claude-mythos-5") return true;
-  return ZO(l_(e));
+  return ZO(l_(model));
 }
 function Ule() {
   if (process.env.MAX_THINKING_TOKENS) return parseInt(process.env.MAX_THINKING_TOKENS, 10) > 0;

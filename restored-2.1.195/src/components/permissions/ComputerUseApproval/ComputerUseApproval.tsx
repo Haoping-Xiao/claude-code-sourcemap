@@ -29,9 +29,9 @@ function LAc(e) {
   else o = t[2];
   return o;
 }
-function ComputerUseTccPanel(e) {
+function ComputerUseTccPanel(t0) {
   let t = ypr.c(26),
-    { tccState: n, onDone: r } = e,
+    { tccState: n, onDone: r } = t0,
     o;
   if (t[0] !== n.accessibility || t[1] !== n.screenRecording) {
     if (((o = []), !n.accessibility)) {
@@ -179,9 +179,9 @@ function ComputerUseTccPanel(e) {
   else h = t[25];
   return h;
 }
-function ComputerUseAppListPanel(e) {
+function ComputerUseAppListPanel(t0) {
   let t = ypr.c(48),
-    { request: n, onDone: r } = e,
+    { request: n, onDone: r } = t0,
     o;
   if (t[0] !== n.apps) ((o = () => new Set(n.apps.flatMap(wym))), (t[0] = n.apps), (t[1] = o));
   else o = t[1];
@@ -458,10 +458,10 @@ function Hym(e) {
 function Tym(e) {
   return [e, true];
 }
-function _temp2(e) {
+function _temp2(a_2) {
   return {
-    bundleId: e.resolved?.bundleId ?? e.requestedName,
-    reason: e.resolved ? "user_denied" : "not_installed",
+    bundleId: a_2.resolved?.bundleId ?? a_2.requestedName,
+    reason: a_2.resolved ? "user_denied" : "not_installed",
   };
 }
 function wym(e) {

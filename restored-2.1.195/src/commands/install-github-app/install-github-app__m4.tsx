@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rFl] deps: mE, pz, Ye
 ((tFl = R(lt(), 1)), (Bq = R(se(), 1)));
-function InstallGitHubApp(e) {
+function InstallGitHubApp(props) {
   let t = oFl.c(12),
-    { repoUrl: n, onSubmit: r } = e,
+    { repoUrl: n, onSubmit: r } = props,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = {

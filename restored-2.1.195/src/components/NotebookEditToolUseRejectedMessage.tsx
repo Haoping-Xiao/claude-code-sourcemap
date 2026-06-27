@@ -12,9 +12,9 @@ Usage:
 - \`notebook_path\` must be an absolute path.
 - \`cell_id\` is the \`id\` attribute shown in the ${Ds} tool's \`<cell id="...">\` output. It is required for \`replace\` and \`delete\`.
 - \`edit_mode\` defaults to \`replace\`. Use \`insert\` to add a new cell after the cell with the given \`cell_id\` (or at the beginning of the notebook if \`cell_id\` is omitted) \u2014 \`cell_type\` is required when inserting. Use \`delete\` to remove the cell.`;
-function NotebookEditToolUseRejectedMessage(e) {
+function NotebookEditToolUseRejectedMessage(t0) {
   let t = Ztl.c(20),
-    { notebook_path: n, cell_id: r, new_source: o, cell_type: s, edit_mode: i, verbose: a } = e,
+    { notebook_path: n, cell_id: r, new_source: o, cell_type: s, edit_mode: i, verbose: a } = t0,
     l = i === void 0 ? "replace" : i,
     c = l === "delete" ? "delete" : `${l} cell in`,
     u;

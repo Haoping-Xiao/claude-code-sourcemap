@@ -28,9 +28,9 @@ function Vof(e) {
     cwdResetWarning: n,
   };
 }
-function AgentProgressLine(e) {
+function AgentProgressLine(t0) {
   let t = vil.c(34),
-    { content: n, verbose: r, timeoutMs: o } = e,
+    { content: n, verbose: r, timeoutMs: o } = t0,
     {
       stdout: s,
       stderr: i,

@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ntl] deps: Ye, Rm, Lo, Dpe, ys, Rd, s6n, sr, R6, AMe, Kut
 Rvo = R(lt(), 1), etl = require("path"), i6n = R(rt(), 1), bN = R(se(), 1);
-function parseSedEditCommand(e) {
-  let t = e.trim();
+function parseSedEditCommand(command) {
+  let t = command.trim();
   if (vjn(t)) return null;
   let r = hL()?.parse(t)?.children.filter(_ => _.type !== "comment") ?? [];
   if (r.length !== 1 || r[0].type !== "command" || r[0].children.some(_ => !ZZp.has(_.type))) return null;
@@ -87,20 +87,20 @@ function parseSedEditCommand(e) {
     extendedRegex: a
   };
 }
-function applySedSubstitution(e, t) {
+function applySedSubstitution(content, sedInfo) {
   let n = "";
-  if (t.flags.includes("g")) n += "g";
-  if (t.flags.includes("i") || t.flags.includes("I")) n += "i";
-  if (t.flags.includes("m") || t.flags.includes("M")) n += "m";
-  let r = t.pattern.replace(/\\\//g, "/");
-  if (!t.extendedRegex) r = r.replace(/\\\\/g, otl).replace(/\\\+/g, stl).replace(/\\\?/g, itl).replace(/\\\|/g, atl).replace(/\\\(/g, ltl).replace(/\\\)/g, ctl).replace(/\+/g, "\\+").replace(/\?/g, "\\?").replace(/\|/g, "\\|").replace(/\(/g, "\\(").replace(/\)/g, "\\)").replace(eef, "\\\\").replace(tef, "+").replace(nef, "?").replace(ref, "|").replace(oef, "(").replace(sef, ")");
+  if (sedInfo.flags.includes("g")) n += "g";
+  if (sedInfo.flags.includes("i") || sedInfo.flags.includes("I")) n += "i";
+  if (sedInfo.flags.includes("m") || sedInfo.flags.includes("M")) n += "m";
+  let r = sedInfo.pattern.replace(/\\\//g, "/");
+  if (!sedInfo.extendedRegex) r = r.replace(/\\\\/g, otl).replace(/\\\+/g, stl).replace(/\\\?/g, itl).replace(/\\\|/g, atl).replace(/\\\(/g, ltl).replace(/\\\)/g, ctl).replace(/\+/g, "\\+").replace(/\?/g, "\\?").replace(/\|/g, "\\|").replace(/\(/g, "\\(").replace(/\)/g, "\\)").replace(eef, "\\\\").replace(tef, "+").replace(nef, "?").replace(ref, "|").replace(oef, "(").replace(sef, ")");
   let s = `___ESCAPED_AMPERSAND_${rtl.randomBytes(8).toString("hex")}___`,
-    i = t.replacement.replace(/\\\//g, "/").replace(/\\&/g, s).replace(/&/g, "$$&").replace(new RegExp(s, "g"), "&");
+    i = sedInfo.replacement.replace(/\\\//g, "/").replace(/\\&/g, s).replace(/&/g, "$$&").replace(new RegExp(s, "g"), "&");
   try {
     let a = new RegExp(r, n);
-    return e.replace(a, i);
+    return content.replace(a, i);
   } catch {
-    return e;
+    return content;
   }
 }
 var rtl,

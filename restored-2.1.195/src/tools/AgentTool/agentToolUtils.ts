@@ -189,9 +189,9 @@ function voe(e, t, n = false, r = false, o = false, s = 0) {
     allowedAgentTypes: I,
   };
 }
-function countToolUses(e) {
+function countToolUses(messages) {
   let t = 0;
-  for (let n of e)
+  for (let n of messages)
     if (n.type === "assistant") {
       for (let r of n.message.content) if (r.type === "tool_use") t++;
     }
@@ -259,7 +259,12 @@ function Fnf(e) {
     ? t
     : void 0;
 }
-function finalizeAgentTool(e, t, n, { suppressTelemetry: r = false } = {}) {
+function finalizeAgentTool(
+  agentMessages,
+  agentId,
+  metadata,
+  { suppressTelemetry: r = false } = {},
+) {
   let {
       prompt: o,
       resolvedAgentModel: s,
@@ -270,13 +275,13 @@ function finalizeAgentTool(e, t, n, { suppressTelemetry: r = false } = {}) {
       agentDepth: u,
       source: d,
       pluginId: p,
-    } = n,
-    f = MI(e);
+    } = metadata,
+    f = MI(agentMessages);
   if (f === void 0) throw Error("No assistant messages found");
   let m = f.message.content.filter((_) => _.type === "text");
   if (m.length === 0)
-    for (let _ = e.length - 1; _ >= 0; _--) {
-      let S = e[_];
+    for (let _ = agentMessages.length - 1; _ >= 0; _--) {
+      let S = agentMessages[_];
       if (S.type !== "assistant") continue;
       let A = S.message.content.filter((v) => v.type === "text");
       if (A.length > 0) {
@@ -285,10 +290,10 @@ function finalizeAgentTool(e, t, n, { suppressTelemetry: r = false } = {}) {
       }
     }
   let g = cre(f.message.usage),
-    h = countToolUses(e),
+    h = countToolUses(agentMessages),
     y = Date.now() - a,
     b = new Set();
-  for (let _ of e) if (_.type === "assistant") b.add(_.message.id);
+  for (let _ of agentMessages) if (_.type === "assistant") b.add(_.message.id);
   if (!r) {
     G("tengu_agent_tool_completed", {
       agent_type: l,
@@ -329,7 +334,7 @@ function finalizeAgentTool(e, t, n, { suppressTelemetry: r = false } = {}) {
       });
   }
   return {
-    agentId: t,
+    agentId: agentId,
     agentType: l,
     content: m,
     resolvedModel: s,
@@ -337,7 +342,7 @@ function finalizeAgentTool(e, t, n, { suppressTelemetry: r = false } = {}) {
     totalTokens: g,
     totalToolUseCount: h,
     usage: f.message.usage,
-    toolStats: Fnf(e),
+    toolStats: Fnf(agentMessages),
   };
 }
 function jnf(e) {

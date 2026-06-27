@@ -60,8 +60,8 @@ async function isBranchOnOrigin(e, t) {
 function redactGitRemoteCredentials(e) {
   return e == null ? e : e.replace(/:\/\/[^/]*@/, "://***@");
 }
-function normalizeGitRemoteUrl(e) {
-  let t = e.trim();
+function normalizeGitRemoteUrl(url) {
+  let t = url.trim();
   if (!t) return null;
   let n = t.match(/^git@([^:]+):(.+?)(?:\.git)?$/);
   if (n && n[1] && n[2]) return `${n[1]}/${n[2]}`.toLowerCase();
@@ -558,9 +558,9 @@ var zTs,
     });
     return n === 0 && parseInt(t.trim(), 10) > 0;
   },
-  getIsClean = async (e) => {
+  getIsClean = async (options) => {
     let t = ["--no-optional-locks", "status", "--porcelain"];
-    if (e?.ignoreUntracked) t.push("-uno");
+    if (options?.ignoreUntracked) t.push("-uno");
     let { stdout: n } = await $n(gitExe(), t, {
       preserveOutputOnError: !1,
     });
@@ -606,9 +606,9 @@ var zTs,
     );
   },
   getWorktreeCount = async () => tRr(),
-  stashToCleanState = async (e) => {
+  stashToCleanState = async (message) => {
     try {
-      let t = e || `Claude Code auto-stash - ${new Date().toISOString()}`,
+      let t = message || `Claude Code auto-stash - ${new Date().toISOString()}`,
         { untracked: n } = await getFileStatus();
       if (n.length > 0) {
         let { code: o } = await $n(gitExe(), ["add", "--", ...n], {

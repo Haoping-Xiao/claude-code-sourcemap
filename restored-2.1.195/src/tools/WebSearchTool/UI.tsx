@@ -44,9 +44,9 @@ function renderToolUseMessage(
   }
   return o;
 }
-function renderToolUseProgressMessage(e) {
-  if (e.length === 0) return null;
-  let t = e.at(-1);
+function renderToolUseProgressMessage(progressMessages) {
+  if (progressMessages.length === 0) return null;
+  let t = progressMessages.at(-1);
   if (!t?.data) return null;
   let n = t.data;
   switch (n.type) {
@@ -68,12 +68,12 @@ function renderToolUseProgressMessage(e) {
       return null;
   }
 }
-function renderToolResultMessage(e) {
-  let t = e.searchCount ?? Cgf(e.results ?? []),
+function renderToolResultMessage(output) {
+  let t = output.searchCount ?? Cgf(output.results ?? []),
     n =
-      e.durationSeconds >= 1
-        ? `${Math.round(e.durationSeconds)}s`
-        : `${Math.round(e.durationSeconds * 1000)}ms`;
+      output.durationSeconds >= 1
+        ? `${Math.round(output.durationSeconds)}s`
+        : `${Math.round(output.durationSeconds * 1000)}ms`;
   return XAe.jsx(U, {
     justifyContent: "space-between",
     width: "100%",

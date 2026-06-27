@@ -5,9 +5,9 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-function BridgeToggle(e) {
+function BridgeToggle(t0) {
   let t = E3o.c(18),
-    { onDone: n, name: r, context: o } = e,
+    { onDone: n, name: r, context: o } = t0,
     s = Ho(),
     i = Ht(Xzf),
     a = Ht(Yzf),
@@ -192,9 +192,9 @@ function Yzf(e) {
 function Xzf(e) {
   return e.replBridgeConnected;
 }
-function BridgeDisconnectDialog(e) {
+function BridgeDisconnectDialog(t0) {
   let t = E3o.c(64),
-    { onDone: n } = e;
+    { onDone: n } = t0;
   Wh("bridge-disconnect-dialog");
   let r = Ho(),
     o = Ht(iKf),

@@ -54,8 +54,8 @@ function Hnl(e, t) {
 function Jvo(e, t) {
   return t ? IMe.posix.basename(e) : IMe.basename(e);
 }
-function NotebookEditPermissionRequest(e, t, n, r, o) {
-  if (e === xH) {
+function NotebookEditPermissionRequest(props, t, n, r, o) {
+  if (props === xH) {
     let c = xH.inputSchema.parse(t);
     return {
       title: "Edit file",
@@ -85,7 +85,7 @@ function NotebookEditPermissionRequest(e, t, n, r, o) {
       }),
     };
   }
-  if (e === dA) {
+  if (props === dA) {
     let c = dA.inputSchema.parse(t),
       u = "",
       d = false,
@@ -127,7 +127,7 @@ function NotebookEditPermissionRequest(e, t, n, r, o) {
       }),
     };
   }
-  if (e === oq) {
+  if (props === oq) {
     let c = oq.inputSchema.parse(t),
       u =
         c.edit_mode === "insert"
@@ -163,9 +163,9 @@ function NotebookEditPermissionRequest(e, t, n, r, o) {
       }),
     };
   }
-  let i = `${e.isReadOnly(t) ? "Read" : "Edit"} file`,
-    a = e.userFacingName(t),
-    l = e.renderToolUseMessage(t, {
+  let i = `${props.isReadOnly(t) ? "Read" : "Edit"} file`,
+    a = props.userFacingName(t),
+    l = props.renderToolUseMessage(t, {
       theme: n,
       verbose: true,
     });

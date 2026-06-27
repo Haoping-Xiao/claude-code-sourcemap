@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cNl] deps: Ye, xne, bEt, xoe
 ((aNl = R(lt(), 1)), (qOe = R(se(), 1)));
-function McpConfigErrorSection(e) {
+function McpConfigErrorSection(t0) {
   let t = ENo.c(38),
-    { scope: n, parsingErrors: r, warnings: o } = e,
+    { scope: n, parsingErrors: r, warnings: o } = t0,
     s = r.length > 0,
     i = o.length > 0;
   if (!s && !i) return null;

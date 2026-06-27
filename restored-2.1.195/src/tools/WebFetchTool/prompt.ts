@@ -23,17 +23,17 @@ ${
     : ""
 }${DESCRIPTION}`;
 }
-function makeSecondaryModelPrompt(e, t, n) {
+function makeSecondaryModelPrompt(markdownContent, prompt, isPreapprovedDomain) {
   return `
 Web page content:
 ---
-${e}
+${markdownContent}
 ---
 
-${t}
+${prompt}
 
 ${
-  n
+  isPreapprovedDomain
     ? "Provide a concise response based on the content above. Include relevant details, code examples, and documentation excerpts as needed."
     : `Provide a concise response based only on the content above. In your response:
  - Enforce a strict 125-character maximum for quotes from any source document. Open Source Software is ok as long as we respect the license.

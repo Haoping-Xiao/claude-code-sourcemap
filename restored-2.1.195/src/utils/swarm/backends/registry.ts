@@ -35,12 +35,14 @@ function registerTmuxBackend(e, t) {
   }
   Thl = e;
 }
-function registerITermBackend(e, t) {
-  if ((T(`[registry] registerITermBackend called, class=${e?.name || "undefined"}`), t)) {
-    t.ITermBackendClass = e;
+function registerITermBackend(backendClass, t) {
+  if (
+    (T(`[registry] registerITermBackend called, class=${backendClass?.name || "undefined"}`), t)
+  ) {
+    t.ITermBackendClass = backendClass;
     return;
   }
-  vhl = e;
+  vhl = backendClass;
 }
 function createTmuxBackend(e) {
   if (!e.TmuxBackendClass)

@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NOl] deps: dn, Bi, vn, Is, bUt, kv
 (($Ol = require("child_process")), (fEt = require("fs/promises")), (nNo = require("path")));
-async function processSessionFiles(e, t = {}) {
+async function processSessionFiles(sessionFiles, t = {}) {
   let { fromDate: n, toDate: r } = t,
     o = qt(),
     s = new Map(),
@@ -19,8 +19,8 @@ async function processSessionFiles(e, t = {}) {
     p = void 0,
     f = new Set(),
     m = 20;
-  for (let g = 0; g < e.length; g += m) {
-    let h = e.slice(g, g + m),
+  for (let g = 0; g < sessionFiles.length; g += m) {
+    let h = sessionFiles.slice(g, g + m),
       y = await Promise.all(
         h.map(async (b) => {
           try {

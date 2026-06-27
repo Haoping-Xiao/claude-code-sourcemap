@@ -66,39 +66,51 @@ function Sjn() {
 function KMa() {
   if (Kqe) (Kqe.abort(), (Kqe = null));
 }
-function getSuggestionSuppressReason(e) {
-  if (!e.promptSuggestionEnabled) return "disabled";
-  if (e.pendingWorkerRequest || e.pendingSandboxRequest) return "pending_permission";
-  if (e.elicitation.queue.length > 0) return "elicitation_active";
-  if (e.toolPermissionContext.mode === "plan") return "plan_mode";
+function getSuggestionSuppressReason(appState) {
+  if (!appState.promptSuggestionEnabled) return "disabled";
+  if (appState.pendingWorkerRequest || appState.pendingSandboxRequest) return "pending_permission";
+  if (appState.elicitation.queue.length > 0) return "elicitation_active";
+  if (appState.toolPermissionContext.mode === "plan") return "plan_mode";
   if (ck.status !== "allowed") return "rate_limit";
   return null;
 }
-async function tryGenerateSuggestion(e, t, n, r, o) {
-  if (e.signal.aborted) return (logSuggestionSuppressed("aborted", void 0, void 0, o), null);
-  if (On(t, (f) => f.type === "assistant") < 2)
-    return (logSuggestionSuppressed("early_conversation", void 0, void 0, o), null);
-  let i = MI(t);
+async function tryGenerateSuggestion(
+  abortController,
+  messages,
+  getAppState,
+  cacheSafeParams,
+  source,
+) {
+  if (abortController.signal.aborted)
+    return (logSuggestionSuppressed("aborted", void 0, void 0, source), null);
+  if (On(messages, (f) => f.type === "assistant") < 2)
+    return (logSuggestionSuppressed("early_conversation", void 0, void 0, source), null);
+  let i = MI(messages);
   if (i?.isApiErrorMessage)
-    return (logSuggestionSuppressed("last_response_error", void 0, void 0, o), null);
+    return (logSuggestionSuppressed("last_response_error", void 0, void 0, source), null);
   let a = getParentCacheSuppressReason(i);
-  if (a) return (logSuggestionSuppressed(a, void 0, void 0, o), null);
-  let l = n(),
+  if (a) return (logSuggestionSuppressed(a, void 0, void 0, source), null);
+  let l = getAppState(),
     c = getSuggestionSuppressReason(l);
-  if (c) return (logSuggestionSuppressed(c, void 0, void 0, o), null);
+  if (c) return (logSuggestionSuppressed(c, void 0, void 0, source), null);
   let u = _jn(),
-    { suggestion: d, generationRequestId: p } = await generateSuggestion(e, u, r);
-  if (e.signal.aborted) return (logSuggestionSuppressed("aborted", void 0, void 0, o), null);
-  if (!d) return (logSuggestionSuppressed("empty", void 0, u, o), null);
-  if (shouldFilterSuggestion(d, u, o)) return null;
+    { suggestion: d, generationRequestId: p } = await generateSuggestion(
+      abortController,
+      u,
+      cacheSafeParams,
+    );
+  if (abortController.signal.aborted)
+    return (logSuggestionSuppressed("aborted", void 0, void 0, source), null);
+  if (!d) return (logSuggestionSuppressed("empty", void 0, u, source), null);
+  if (shouldFilterSuggestion(d, u, source)) return null;
   return {
     suggestion: d,
     promptId: u,
     generationRequestId: p,
   };
 }
-async function executePromptSuggestion(e, t) {
-  if (!e.querySource?.startsWith("repl_main_thread")) return;
+async function executePromptSuggestion(context, t) {
+  if (!context.querySource?.startsWith("repl_main_thread")) return;
   let n = N7(),
     r = Js(),
     o = r && t?.tempo === "blocked" && !t.block;
@@ -108,12 +120,18 @@ async function executePromptSuggestion(e, t) {
   }
   Kqe = new AbortController();
   let s = Kqe,
-    i = g6(e);
+    i = g6(context);
   try {
-    let a = await tryGenerateSuggestion(s, e.messages, e.toolUseContext.getAppState, i, "cli");
+    let a = await tryGenerateSuggestion(
+      s,
+      context.messages,
+      context.toolUseContext.getAppState,
+      i,
+      "cli",
+    );
     if (!a) return;
     if (
-      (e.toolUseContext.setAppState((l) => ({
+      (context.toolUseContext.setAppState((l) => ({
         ...l,
         promptSuggestion: {
           text: a.suggestion,
@@ -127,7 +145,7 @@ async function executePromptSuggestion(e, t) {
     )
       LRp(a.suggestion, t?.needs).catch(ke);
     if ((!r || N7() === "focused") && fgo() && a.suggestion)
-      mgo(a.suggestion, e, e.toolUseContext.setAppState, false, i);
+      mgo(a.suggestion, context, context.toolUseContext.setAppState, false, i);
   } catch (a) {
     if (a instanceof Error && (a.name === "AbortError" || a.name === "APIUserAbortError")) {
       logSuggestionSuppressed("aborted", void 0, void 0, "cli");
@@ -149,16 +167,16 @@ async function LRp(e, t) {
     suggestedReply: e,
   });
 }
-function getParentCacheSuppressReason(e) {
-  if (!e) return null;
-  let t = e.message.usage,
+function getParentCacheSuppressReason(lastAssistantMessage) {
+  if (!lastAssistantMessage) return null;
+  let t = lastAssistantMessage.message.usage,
     n = t.input_tokens ?? 0,
     r = t.cache_creation_input_tokens ?? 0,
     o = t.output_tokens ?? 0;
   return n + r + o > DRp ? "cache_cold" : null;
 }
-async function generateSuggestion(e, t, n) {
-  let r = MRp[t],
+async function generateSuggestion(abortController, promptId, cacheSafeParams) {
+  let r = MRp[promptId],
     o = async () => ({
       behavior: "deny",
       message: "No tools needed for suggestion",
@@ -173,12 +191,12 @@ async function generateSuggestion(e, t, n) {
           content: r,
         }),
       ],
-      cacheSafeParams: n,
+      cacheSafeParams: cacheSafeParams,
       canUseTool: o,
       querySource: "prompt_suggestion",
       forkLabel: "prompt_suggestion",
       overrides: {
-        abortController: e,
+        abortController: abortController,
       },
       skipTranscript: true,
       skipCacheWrite: true,
@@ -217,10 +235,10 @@ async function generateSuggestion(e, t, n) {
     }
   );
 }
-function shouldFilterSuggestion(e, t, n) {
-  if (!e) return (logSuggestionSuppressed("empty", void 0, t, n), true);
-  let r = e.toLowerCase(),
-    o = e.trim().split(/\s+/).length,
+function shouldFilterSuggestion(suggestion, promptId, source) {
+  if (!suggestion) return (logSuggestionSuppressed("empty", void 0, promptId, source), true);
+  let r = suggestion.toLowerCase(),
+    o = suggestion.trim().split(/\s+/).length,
     s = [
       ["done", () => r === "done"],
       [
@@ -233,7 +251,7 @@ function shouldFilterSuggestion(e, t, n) {
           /\bsilence is\b|\bstay(s|ing)? silent\b/.test(r) ||
           /^\W*silence\W*$/.test(r),
       ],
-      ["meta_wrapped", () => /^\(.*\)$|^\[.*\]$/.test(e)],
+      ["meta_wrapped", () => /^\(.*\)$|^\[.*\]$/.test(suggestion)],
       [
         "error_message",
         () =>
@@ -243,12 +261,12 @@ function shouldFilterSuggestion(e, t, n) {
           r.startsWith("invalid api key") ||
           r.startsWith("image was too large"),
       ],
-      ["prefixed_label", () => /^\w+:\s/.test(e)],
+      ["prefixed_label", () => /^\w+:\s/.test(suggestion)],
       [
         "too_few_words",
         () => {
           if (o >= 2) return false;
-          if (e.startsWith("/")) return false;
+          if (suggestion.startsWith("/")) return false;
           return !new Set([
             "yes",
             "yeah",
@@ -271,9 +289,9 @@ function shouldFilterSuggestion(e, t, n) {
         },
       ],
       ["too_many_words", () => o > 12],
-      ["too_long", () => e.length >= 100],
-      ["multiple_sentences", () => /[.!?]\s+[A-Z]/.test(e)],
-      ["has_formatting", () => /[\n*]|\*\*/.test(e)],
+      ["too_long", () => suggestion.length >= 100],
+      ["multiple_sentences", () => /[.!?]\s+[A-Z]/.test(suggestion)],
+      ["has_formatting", () => /[\n*]|\*\*/.test(suggestion)],
       [
         "evaluative",
         () =>
@@ -285,23 +303,24 @@ function shouldFilterSuggestion(e, t, n) {
         "claude_voice",
         () =>
           /^(let me|i'll|i've|i'm|i can|i would|i think|i notice|here's|here is|here are|that's|this is|this will|you can|you should|you could|sure,|of course|certainly)/i.test(
-            e,
+            suggestion,
           ),
       ],
     ];
-  for (let [i, a] of s) if (a()) return (logSuggestionSuppressed(i, e, t, n), true);
+  for (let [i, a] of s)
+    if (a()) return (logSuggestionSuppressed(i, suggestion, promptId, source), true);
   return false;
 }
-function logSuggestionOutcome(e, t, n, r, o) {
-  let s = Math.round((t.length / (e.length || 1)) * 100) / 100,
-    i = t === e,
-    a = Math.max(0, Date.now() - n);
+function logSuggestionOutcome(suggestion, userInput, emittedAt, promptId, generationRequestId) {
+  let s = Math.round((userInput.length / (suggestion.length || 1)) * 100) / 100,
+    i = userInput === suggestion,
+    a = Math.max(0, Date.now() - emittedAt);
   G("tengu_prompt_suggestion", {
     source: We("sdk"),
     outcome: We(i ? "accepted" : "ignored"),
-    prompt_id: $e(r),
-    ...(o && {
-      generationRequestId: Hr(o),
+    prompt_id: $e(promptId),
+    ...(generationRequestId && {
+      generationRequestId: Hr(generationRequestId),
     }),
     ...(i && {
       timeToAcceptMs: a,
@@ -313,14 +332,14 @@ function logSuggestionOutcome(e, t, n, r, o) {
     ...false,
   });
 }
-function logSuggestionSuppressed(e, t, n, r) {
-  let o = n ?? _jn();
+function logSuggestionSuppressed(reason, suggestion, promptId, source) {
+  let o = promptId ?? _jn();
   G("tengu_prompt_suggestion", {
-    ...(r && {
-      source: $e(r),
+    ...(source && {
+      source: $e(source),
     }),
     outcome: We("suppressed"),
-    reason: e,
+    reason: reason,
     prompt_id: $e(o),
     ...false,
   });

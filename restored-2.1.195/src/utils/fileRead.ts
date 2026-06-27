@@ -34,10 +34,10 @@ function Dpn(e) {
       else n++;
   return t > n ? "CRLF" : "LF";
 }
-function readFileSyncWithMetadata(e) {
+function readFileSyncWithMetadata(filePath) {
   let t = qt(),
-    { resolvedPath: n, isSymlink: r } = jd(t, e);
-  if (r) T(`Reading through symlink: ${e} -> ${n}`);
+    { resolvedPath: n, isSymlink: r } = jd(t, filePath);
+  if (r) T(`Reading through symlink: ${filePath} -> ${n}`);
   let o = Lpn(n),
     s = t.readFileSync(n, {
       encoding: o,

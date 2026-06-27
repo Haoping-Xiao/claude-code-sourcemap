@@ -34,10 +34,13 @@ Qwf = Cn(
 function SZn() {
   return false;
 }
-async function withFixture(e, t, n) {
+async function withFixture(input, fixtureName, n) {
   if (!SZn()) return await n();
-  let r = fYt.createHash("sha1").update(De(e)).digest("hex").slice(0, 12),
-    o = xSt.join(process.env.CLAUDE_CODE_TEST_FIXTURES_ROOT ?? $t(), `fixtures/${t}-${r}.json`);
+  let r = fYt.createHash("sha1").update(De(input)).digest("hex").slice(0, 12),
+    o = xSt.join(
+      process.env.CLAUDE_CODE_TEST_FIXTURES_ROOT ?? $t(),
+      `fixtures/${fixtureName}-${r}.json`,
+    );
   try {
     return Ft(
       await pHe.readFile(o, {
@@ -60,10 +63,10 @@ async function withFixture(e, t, n) {
     s
   );
 }
-async function withVCR(e, t) {
+async function withVCR(messages, t) {
   if (!SZn()) return await t();
   let n = lk(
-      e.filter((i) => {
+      messages.filter((i) => {
         if (i.type === "attachment") return i.attachment.type !== "agent_listing_delta";
         if (i.type !== "user") return true;
         if (i.isMeta) return false;
@@ -124,8 +127,8 @@ function oCf(e) {
     r = WY(t, n);
   boe(r, n, t);
 }
-function mapMessages(e, t) {
-  return e.map((n) => {
+function mapMessages(messages, t) {
+  return messages.map((n) => {
     if (typeof n === "string") return t(n);
     return n.map((r) => {
       switch (r.type) {
@@ -188,19 +191,19 @@ function bZn(e, t) {
     return t(n, r, e);
   });
 }
-function mapAssistantMessage(e, t, n, r) {
+function mapAssistantMessage(message, t, index, uuid) {
   return {
-    uuid: r ?? `UUID-${n}`,
+    uuid: uuid ?? `UUID-${index}`,
     requestId: "REQUEST_ID",
-    timestamp: e.timestamp,
-    isApiErrorMessage: e.isApiErrorMessage,
-    apiError: e.apiError,
-    error: e.error,
-    errorDetails: e.errorDetails,
-    healsDistinctCarrier: e.healsDistinctCarrier,
+    timestamp: message.timestamp,
+    isApiErrorMessage: message.isApiErrorMessage,
+    apiError: message.apiError,
+    error: message.error,
+    errorDetails: message.errorDetails,
+    healsDistinctCarrier: message.healsDistinctCarrier,
     message: {
-      ...e.message,
-      content: e.message.content
+      ...message.message,
+      content: message.message.content
         .map((o) => {
           switch (o.type) {
             case "text":
@@ -276,13 +279,13 @@ async function* RMo(e, t) {
   }
   yield* n;
 }
-async function withTokenCountVCR(e, t, n) {
+async function withTokenCountVCR(messages, tools, n) {
   if (!SZn()) return await n();
   let r = $t().replace(/[^a-zA-Z0-9]/g, "-"),
     o = dehydrateValue(
       De({
-        messages: e,
-        tools: t,
+        messages: messages,
+        tools: tools,
       }),
     )
       .replaceAll(r, "[CWD_SLUG]")

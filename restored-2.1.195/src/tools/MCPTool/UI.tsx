@@ -17,8 +17,8 @@ function rSa(e, { verbose: t }) {
     })
     .join(", ");
 }
-function renderToolUseProgressMessage(e) {
-  let t = e.at(-1);
+function renderToolUseProgressMessage(progressMessagesForMessage) {
+  let t = progressMessagesForMessage.at(-1);
   if (!t?.data)
     return pS.jsx(qn, {
       height: 1,
@@ -74,8 +74,8 @@ function renderToolUseProgressMessage(e) {
     }),
   });
 }
-function renderToolResultMessage(e, t, { verbose: n, input: r }) {
-  let o = e;
+function renderToolResultMessage(output, _progressMessagesForMessage, { verbose: n, input: r }) {
+  let o = output;
   if (!n) {
     let c = trySlackSendCompact(o, r);
     if (c !== null)
@@ -197,10 +197,10 @@ function g_p(e, { maxChars: t, maxKeys: n }) {
   if (s.length === 0 || s.length > n) return null;
   return s;
 }
-function trySlackSendCompact(e, t) {
-  let n = e;
-  if (Array.isArray(e)) {
-    let c = e.find((u) => u.type === "text");
+function trySlackSendCompact(output, input) {
+  let n = output;
+  if (Array.isArray(output)) {
+    let c = output.find((u) => u.type === "text");
     n = c && "text" in c ? c.text : void 0;
   }
   if (typeof n !== "string" || !n.includes('"message_link"')) return null;
@@ -211,7 +211,7 @@ function trySlackSendCompact(e, t) {
   if (typeof o !== "string") return null;
   let s = h_p.exec(o);
   if (!s) return null;
-  let i = t,
+  let i = input,
     a = i?.channel_id ?? i?.channel ?? s[1],
     l = typeof a === "string" && a ? a : "slack";
   return {

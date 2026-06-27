@@ -21,8 +21,8 @@ function dUr(e) {
     n = Math.round((e % 60000) / 1000);
   return n > 0 ? `${t}m ${n}s` : `${t}m`;
 }
-function decodeJwtPayload(e) {
-  let n = (e.startsWith("sk-ant-si-") ? e.slice(10) : e).split(".");
+function decodeJwtPayload(token) {
+  let n = (token.startsWith("sk-ant-si-") ? token.slice(10) : token).split(".");
   if (n.length !== 3 || !n[1]) return null;
   try {
     return Ft(Buffer.from(n[1], "base64url").toString("utf8"));
@@ -30,8 +30,8 @@ function decodeJwtPayload(e) {
     return null;
   }
 }
-function decodeJwtExpiry(e) {
-  let t = decodeJwtPayload(e);
+function decodeJwtExpiry(token) {
+  let t = decodeJwtPayload(token);
   if (t !== null && typeof t === "object" && "exp" in t && typeof t.exp === "number") return t.exp;
   return null;
 }

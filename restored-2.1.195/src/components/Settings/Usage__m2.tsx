@@ -671,9 +671,9 @@ function Orf(e) {
   else d = t[14];
   return d;
 }
-function LimitBar(e) {
+function LimitBar(t0) {
   let t = lq.c(52),
-    { step: n, currency: r, onAction: o, onCancel: s } = e,
+    { step: n, currency: r, onAction: o, onCancel: s } = t0,
     { columns: i } = br(),
     a = Math.min(i - 6, 50),
     { usage: l, balance: c } = n,

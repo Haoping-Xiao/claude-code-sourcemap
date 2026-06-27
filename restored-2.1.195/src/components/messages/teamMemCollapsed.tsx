@@ -13,9 +13,9 @@ function val(e) {
     (e.teamMemoryWriteCount ?? 0) > 0
   );
 }
-function TeamMemCountParts(e) {
+function TeamMemCountParts(t0) {
   let t = Tal.c(23),
-    { message: n, isActiveGroup: r, hasPrecedingParts: o } = e,
+    { message: n, isActiveGroup: r, hasPrecedingParts: o } = t0,
     s = n.teamMemoryReadCount ?? 0,
     i = n.teamMemorySearchCount ?? 0,
     a = n.teamMemoryWriteCount ?? 0;

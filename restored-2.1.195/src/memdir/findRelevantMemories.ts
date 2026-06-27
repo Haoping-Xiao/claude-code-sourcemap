@@ -88,7 +88,7 @@ async function _0l(e, t, n, r, o = new Set(), s = Promise.resolve([])) {
     knowledge: g,
   };
 }
-async function selectRelevantMemories(e, t, n, r, o, s, i, a) {
+async function selectRelevantMemories(query, memories, signal, recentTools, o, s, i, a) {
   let l =
       a.length > 0
         ? `
@@ -97,11 +97,11 @@ Knowledge-index results for this query (select by id):
 ${DCf(a)}`
         : "",
     c = `Select memories relevant to:
-${e}${l}`,
+${query}${l}`,
     u =
       a.length > 0
         ? `Select memories relevant to:
-${e}
+${query}
 
 (${a.length} knowledge-index results were offered for this query)`
         : c,
@@ -121,7 +121,7 @@ ${e}
         ],
         skipSystemPromptPrefix: true,
         messages: [
-          ...r,
+          ...recentTools,
           {
             role: "user",
             content: [
@@ -163,11 +163,11 @@ ${e}
     if (!f || f.type !== "text") return d;
     let m = Ft(vG(f.text));
     return (
-      wla(n, t, u, f.text),
-      (n.lastUsage = {
+      wla(signal, memories, u, f.text),
+      (signal.lastUsage = {
         cacheReadInputTokens: p.usage.cache_read_input_tokens ?? 0,
         cacheCreationInputTokens: p.usage.cache_creation_input_tokens ?? 0,
-        turnCount: (r.length + 1) / 2,
+        turnCount: (recentTools.length + 1) / 2,
       }),
       xe("memory_recall_select"),
       {
@@ -176,7 +176,7 @@ ${e}
       }
     );
   } catch (p) {
-    if (((n.lastUsage = null), i.aborted)) return d;
+    if (((signal.lastUsage = null), i.aborted)) return d;
     return (
       It("memory_recall_select", "memory_recall_select_query_failed"),
       T(`[memdir] selectRelevantMemories failed: ${be(p)}`, {

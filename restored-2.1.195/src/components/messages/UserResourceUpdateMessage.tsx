@@ -6,12 +6,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zil] deps: ft, Ye, Un, uo, wr, vn, sr, Yil
 ((Jil = R(lt(), 1)), (iIo = R(se(), 1)));
-function parseUpdates(e) {
+function parseUpdates(text) {
   let t = [],
     n =
       /<mcp-resource-update\s+server="([^"]+)"\s+uri="([^"]+)"[^>]*>(?:[\s\S]*?<reason>([^<]+)<\/reason>)?/g,
     r;
-  while ((r = n.exec(e)) !== null)
+  while ((r = n.exec(text)) !== null)
     t.push({
       kind: "resource",
       server: r[1] ?? "",
@@ -20,7 +20,7 @@ function parseUpdates(e) {
     });
   let o =
     /<mcp-polling-update\s+type="([^"]+)"\s+server="([^"]+)"\s+tool="([^"]+)"[^>]*>(?:[\s\S]*?<reason>([^<]+)<\/reason>)?/g;
-  while ((r = o.exec(e)) !== null)
+  while ((r = o.exec(text)) !== null)
     t.push({
       kind: "polling",
       server: r[2] ?? "",
@@ -38,9 +38,9 @@ function isf(e) {
   if (e.length > 40) return e.slice(0, 39) + "\u2026";
   return e;
 }
-function UserResourceUpdateMessage(e) {
+function UserResourceUpdateMessage(t0) {
   let t = eal.c(12),
-    { addMargin: n, param: r } = e,
+    { addMargin: n, param: r } = t0,
     { text: o } = r,
     s,
     i,
@@ -75,7 +75,7 @@ function UserResourceUpdateMessage(e) {
   else u = t[11];
   return u;
 }
-function _temp(e, t) {
+function _temp(update, t) {
   return IAe.jsx(
     U,
     {
@@ -88,17 +88,17 @@ function _temp(e, t) {
           " ",
           IAe.jsxs(w, {
             dimColor: true,
-            children: [e.server, ":"],
+            children: [update.server, ":"],
           }),
           " ",
           IAe.jsx(w, {
             color: "suggestion",
-            children: e.kind === "resource" ? isf(e.target) : e.target,
+            children: update.kind === "resource" ? isf(update.target) : update.target,
           }),
-          e.reason &&
+          update.reason &&
             IAe.jsxs(w, {
               dimColor: true,
-              children: [" \xB7 ", e.reason],
+              children: [" \xB7 ", update.reason],
             }),
         ],
       }),

@@ -144,12 +144,22 @@ function createKeepAlivePulse(e, t) {
         (r = o));
   };
 }
-async function runHeadless(e, t, n, r, o, s, i, a, l) {
+async function runHeadless(
+  inputPrompt,
+  getAppState,
+  setAppState,
+  commands,
+  tools,
+  sdkMcpConfigs,
+  agents,
+  options,
+  l,
+) {
   if ((PLr(), DMe())) oNc();
   if (rnn()) DNc();
   function c(J) {
-    if ((v4n(J, n), sc()))
-      n((ne) => {
+    if ((v4n(J, setAppState), sc()))
+      setAppState((ne) => {
         let oe = T2r(ne.settings);
         return ne.fastMode === oe
           ? ne
@@ -187,14 +197,14 @@ async function runHeadless(e, t, n, r, o, s, i, a, l) {
       Bc(1));
     return;
   }
-  if (l.rewindFiles && e) {
+  if (l.rewindFiles && inputPrompt) {
     (process.stderr
       .write(`Error: --rewind-files is a standalone operation and cannot be used with a prompt
 `),
       Bc(1));
     return;
   }
-  sbr(typeof e !== "string");
+  sbr(typeof inputPrompt !== "string");
   let d = Date.now(),
     p,
     f = Boolean(l.sdkUrl) && process.env.CLAUDE_CODE_ENVIRONMENT_KIND !== "bridge";
@@ -206,7 +216,7 @@ async function runHeadless(e, t, n, r, o, s, i, a, l) {
 `));
   }
   m("connecting_transport");
-  let g = VLm(e, l);
+  let g = VLm(inputPrompt, l);
   if (l.sdkUrl || l.outputFormat === "stream-json") fwo(g);
   if (
     ut(process.env.CLAUDE_CODE_SDK_HAS_OAUTH_REFRESH) &&
@@ -222,7 +232,7 @@ async function runHeadless(e, t, n, r, o, s, i, a, l) {
       current: [],
     },
     y = {
-      current: s,
+      current: sdkMcpConfigs,
     },
     b = xo.getSandboxUnavailableReason();
   if (b) {
@@ -275,12 +285,12 @@ Error: sandbox required but unavailable: ${b}
       await xo.initialize(
         IUc(
           g.createSandboxAskCallback((J) =>
-            n((ne) => ({
+            setAppState((ne) => ({
               ...ne,
               toolPermissionContext: J(ne.toolPermissionContext),
             })),
           ),
-          () => t().toolPermissionContext,
+          () => getAppState().toolPermissionContext,
           () => h.current,
           () => y.current,
         ),
@@ -303,14 +313,14 @@ Error: sandbox required but unavailable: ${b}
     pa("before_loadInitialMessages", {
       once: true,
     }));
-  let _ = t(),
+  let _ = getAppState(),
     {
       messages: S,
       turnInterruptionState: A,
       supersededToolUseIds: v,
       deferredToolUse: C,
       agentSetting: x,
-    } = await loadInitialMessages(n, {
+    } = await loadInitialMessages(setAppState, {
       continue: l.continue,
       teleport: l.teleport,
       resume: l.resume,
@@ -327,12 +337,12 @@ Error: sandbox required but unavailable: ${b}
   if (I) g.prependUserMessage(I);
   if (!l.agent && !TO() && x) {
     let { agentDefinition: J } = VTe(x, void 0, {
-      activeAgents: a,
-      allAgents: a,
+      activeAgents: options,
+      allAgents: options,
     });
     if (J) {
       if (
-        (n((ne) => ({
+        (setAppState((ne) => ({
           ...ne,
           agent: J.agentType,
         })),
@@ -348,7 +358,7 @@ Error: sandbox required but unavailable: ${b}
   let k = w7e(S, _.mainLoopModel, (J) => S.push(cc(J, "warning"))),
     D = k ? C7e(S, k, Boolean(l.forkSession)) : void 0;
   if (D)
-    n((J) =>
+    setAppState((J) =>
       J.mainLoopModel === D
         ? J
         : {
@@ -380,7 +390,7 @@ Error: sandbox required but unavailable: ${b}
         Bc(1));
       return;
     }
-    let ne = t(),
+    let ne = getAppState(),
       oe = await handleRewindFiles(l.rewindFiles, ne, false);
     if (!oe.canRewind) {
       (process.stderr.write(`Error: ${oe.error || "Unexpected error"}
@@ -395,7 +405,7 @@ Error: sandbox required but unavailable: ${b}
   }
   let O = typeof l.resume === "string" && l.resume.trim().length > 0,
     L = Boolean(l.sdkUrl);
-  if (!e && !L && !C && !I) {
+  if (!inputPrompt && !L && !C && !I) {
     (process.stderr.write(
       O || l.continue
         ? `Error: No deferred tool marker found in the resumed session. Either the session was not deferred, the marker is stale (tool already ran), or it exceeds the tail-scan window. Provide a prompt to continue the conversation.
@@ -413,7 +423,7 @@ Error: sandbox required but unavailable: ${b}
     return;
   }
   let M = Woe(_.mcp.tools, _.toolPermissionContext),
-    N = [...s, ...M];
+    N = [...sdkMcpConfigs, ...M];
   y.current = N;
   let B = l.sdkUrl ? "stdio" : l.permissionPromptToolName,
     $ = (J) => {
@@ -423,7 +433,7 @@ Error: sandbox required but unavailable: ${b}
   g.onUserDialogParked = (J) => {
     iFc?.runClassifierSummaryForBlocked(J, g.sessionState);
   };
-  let q = getCanUseToolFn(B, g, () => t().mcp.tools, $);
+  let q = getCanUseToolFn(B, g, () => getAppState().mcp.tools, $);
   if (l.permissionPromptToolName) N = N.filter((J) => !Ql(J, l.permissionPromptToolName));
   if (ut(process.env.CLAUDE_CODE_RESUME_INTERRUPTED_TURN)) {
     let J = await g.restoredWorkerState,
@@ -474,7 +484,7 @@ Error: sandbox required but unavailable: ${b}
       });
     }
   } else if (S.length > 0) {
-    let J = $L(t, n);
+    let J = $L(getAppState, setAppState);
     (svt(S, J),
       a9t({
         abortController: new AbortController(),
@@ -482,7 +492,7 @@ Error: sandbox required but unavailable: ${b}
       }),
       Ctn({
         taskRegistry: J,
-        getMcpClients: () => t().mcp.clients,
+        getMcpClients: () => getAppState().mcp.clients,
       }));
   }
   (restoreDeclaredDialogKinds(await g.restoredWorkerState),
@@ -509,15 +519,15 @@ Error: sandbox required but unavailable: ${b}
   for await (let J of runHeadlessStreaming(
     g,
     _.mcp.clients,
-    o,
+    tools,
     N,
     S,
     q,
-    i,
-    t,
-    n,
-    r,
-    a,
+    agents,
+    getAppState,
+    setAppState,
+    commands,
+    options,
     l,
     A,
     v,
@@ -723,7 +733,23 @@ function findRewindAnchors(e, t) {
     precedingAssistantUuid: r,
   };
 }
-function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
+function runHeadlessStreaming(
+  structuredIO,
+  mcpClients,
+  commands,
+  tools,
+  initialMessages,
+  canUseTool,
+  sdkMcpConfigs,
+  getAppState,
+  setAppState,
+  agents,
+  options,
+  turnInterruptionState,
+  p,
+  f,
+  m,
+) {
   let g = false,
     h,
     y = false,
@@ -737,15 +763,15 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     I,
     k = 0,
     D = Sl(500),
-    P = e.outbound;
+    P = structuredIO.outbound;
   if (
     (x5e(() => {
       for (let Gn of VX()) P.enqueue(Gn);
     }),
-    d.outputFormat === "stream-json" && d.sessionMirror)
+    turnInterruptionState.outputFormat === "stream-json" && turnInterruptionState.sessionMirror)
   )
     r5o((Gn, cr) => {
-      e.write({
+      structuredIO.write({
         type: "transcript_mirror",
         filePath: Gn,
         entries: cr,
@@ -774,16 +800,16 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           (y = true),
           (h = void 0));
       let Gn = {};
-      for (let cr of Ubt(a())) if (wH(cr)) Gn[cr.type] = (Gn[cr.type] ?? 0) + 1;
+      for (let cr of Ubt(getAppState())) if (wH(cr)) Gn[cr.type] = (Gn[cr.type] ?? 0) + 1;
       In("info", "run_state_at_shutdown", {
         run_active: g,
         run_phase: S,
-        worker_status: e.sessionState.getState(),
-        internal_events_pending: e.internalEventsPending,
+        worker_status: structuredIO.sessionState.getState(),
+        internal_events_pending: structuredIO.internalEventsPending,
         bg_tasks: Gn,
       });
     }),
-    (e.sessionState.onPermissionModeChanged = (Gn) => {
+    (structuredIO.sessionState.onPermissionModeChanged = (Gn) => {
       if (
         Gn === "default" ||
         Gn === "acceptEdits" ||
@@ -810,7 +836,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       pendingLastEmittedEntry: null,
     },
     N;
-  if (d.enableAuthStatus)
+  if (turnInterruptionState.enableAuthStatus)
     N = LD.getInstance().subscribe((cr) => {
       P.enqueue({
         type: "auth_status",
@@ -834,7 +860,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       });
   };
   cLe.add(B);
-  let $ = o;
+  let $ = initialMessages;
   function q(Gn, cr) {
     let Lt = 0,
       En = 0,
@@ -858,10 +884,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       builtin_tool_calls: Lt - En - Sn,
     };
   }
-  let W = Obt(o, Kme.cwd(), V1);
+  let W = Obt(initialMessages, Kme.cwd(), V1);
   if (WRe()) {
-    let { frameUrls: Gn, artifactReadVersions: cr } = Kfr(o);
-    l((Lt) => ({
+    let { frameUrls: Gn, artifactReadVersions: cr } = Kfr(initialMessages);
+    setAppState((Lt) => ({
       ...Lt,
       frameUrls: Gn,
       artifactReadVersions: cr,
@@ -875,7 +901,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       bytes: W.calculatedSize,
     })));
   let V = new Map(),
-    Y = C$e(rZt() ?? Azt(o, r), Ife),
+    Y = C$e(rZt() ?? Azt(initialMessages, tools), Ife),
     z = QU(V1),
     K = [],
     Z = process.env.CLAUDE_CODE_RESUME_INTERRUPTED_TURN;
@@ -923,13 +949,16 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         }),
       };
     }),
-    ee = d.userSpecifiedModel;
+    ee = turnInterruptionState.userSpecifiedModel;
   eNa(() => {
     ee = void 0;
   });
   let ce =
-      d.thinkingConfig && d.thinkingConfig.type !== "disabled" ? d.thinkingConfig.display : void 0,
-    ae = d.thinkingConfig;
+      turnInterruptionState.thinkingConfig &&
+      turnInterruptionState.thinkingConfig.type !== "disabled"
+        ? turnInterruptionState.thinkingConfig.display
+        : void 0,
+    ae = turnInterruptionState.thinkingConfig;
   function de(Gn, cr) {
     let Lt = scc(Gn, bj(cr));
     if (($.push(...Lt), Oe.CLAUDE_CODE_REMOTE)) {
@@ -999,7 +1028,16 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               fo = "requestedSchema" in En.params ? En.params.requestedSchema : void 0,
               cs = "elicitationId" in En.params ? En.params.elicitationId : void 0,
               Gs = mFc(En.params._meta),
-              la = await e.handleElicitation(Lt, En.params.message, fo, Sn.signal, Jn, gr, cs, Gs),
+              la = await structuredIO.handleElicitation(
+                Lt,
+                En.params.message,
+                fo,
+                Sn.signal,
+                Jn,
+                gr,
+                cs,
+                Gs,
+              ),
               Fi = await G3t(Lt, la, Sn.signal, Jn, cs);
             return (
               G("tengu_mcp_elicitation_response", {
@@ -1061,7 +1099,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           );
         else Qn();
         let gr = xG(Lt);
-        l((fo) => ({
+        setAppState((fo) => ({
           ...fo,
           mcp: {
             ...fo.mcp,
@@ -1071,16 +1109,16 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       });
     }
   }
-  let we = a().mcp.clients;
+  let we = getAppState().mcp.clients;
   (He(we),
     ue(we),
-    c(() => {
-      let Gn = a().mcp.clients;
+    agents(() => {
+      let Gn = getAppState().mcp.clients;
       if (Gn === we) return;
       ((we = Gn), He(Gn), ue(Gn));
     }));
   async function Ce() {
-    let Gn = new Set(Object.keys(i)),
+    let Gn = new Set(Object.keys(sdkMcpConfigs)),
       cr = new Set(ge.map((gr) => gr.name)),
       Lt = Array.from(Gn).some((gr) => !cr.has(gr)),
       En = Array.from(cr).some((gr) => !Gn.has(gr)),
@@ -1091,10 +1129,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         if (!Gn.has(cs.name)) {
           if (cs.type === "connected") await cs.cleanup();
         }
-      let gr = await QRa(i, (cs, Gs) => e.sendMcpMessage(cs, Gs));
+      let gr = await QRa(sdkMcpConfigs, (cs, Gs) => structuredIO.sendMcpMessage(cs, Gs));
       ((ge = gr.clients), (he = gr.tools), (ie = gr.commands));
       let fo = Uo([...cr, ...Gn]);
-      (l((cs) => ({
+      (setAppState((cs) => ({
         ...cs,
         mcp: {
           ...cs.mcp,
@@ -1126,7 +1164,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     },
     Ve = ut(process.env.CLAUDE_CODE_REMOTE)
       ? Object.fromEntries(
-          a()
+          getAppState()
             .mcp.clients.filter(
               (Gn) =>
                 Gn.config.scope === "dynamic" &&
@@ -1137,18 +1175,18 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             .map((Gn) => [Gn.name, Gn.config]),
         )
       : {};
-  yJe(() => [...a().mcp.clients, ...ge, ...Ie.clients]);
-  let Ze = Array.isArray(n) ? n : [],
+  yJe(() => [...getAppState().mcp.clients, ...ge, ...Ie.clients]);
+  let Ze = Array.isArray(commands) ? commands : [],
     Be = false,
-    Me = Array.isArray(n)
+    Me = Array.isArray(commands)
       ? null
       : (async () => {
           let Gn = performance.now(),
-            cr = await n.catch((Lt) => (ke(Lt), []));
+            cr = await commands.catch((Lt) => (ke(Lt), []));
           if (!Be) Ze = cr;
           Zc("commands_deferred_join_ms", performance.now() - Gn, Gn);
         })(),
-    Ue = u,
+    Ue = options,
     tt,
     bt,
     Ke = (Gn) => {
@@ -1156,7 +1194,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           skillTools: Gn.skillTools,
         }),
         Lt = Woe(Ie.tools, Gn.toolPermissionContext),
-        En = oE(hYe([...r, ...he, ...Lt], cr, Gn.toolPermissionContext.mode), "name"),
+        En = oE(hYe([...tools, ...he, ...Lt], cr, Gn.toolPermissionContext.mode), "name"),
         Sn = TO();
       if (((bt = void 0), Sn)) {
         let Qn = Ue.find((gr) => gr.agentType === Sn);
@@ -1165,9 +1203,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           ((En = gr.resolvedTools), (bt = gr.allowedAgentTypes));
         }
       }
-      if (d.permissionPromptToolName) En = En.filter((Qn) => !Ql(Qn, d.permissionPromptToolName));
+      if (turnInterruptionState.permissionPromptToolName)
+        En = En.filter((Qn) => !Ql(Qn, turnInterruptionState.permissionPromptToolName));
       let Jn = Hsn();
-      if (Jn && !d.jsonSchema) {
+      if (Jn && !turnInterruptionState.jsonSchema) {
         let Qn = Lct(Jn);
         if ("tool" in Qn) En = [...En, Qn.tool];
       }
@@ -1177,9 +1216,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       ? process.env.CLAUDE_CODE_SYSTEM_PROMPT_GB_FEATURE
       : void 0,
     ct = () => {
-      if (!Et) return d.systemPrompt;
+      if (!Et) return turnInterruptionState.systemPrompt;
       let Gn = at(Et, "");
-      return typeof Gn === "string" && Gn.length > 0 ? Gn : d.systemPrompt;
+      return typeof Gn === "string" && Gn.length > 0 ? Gn : turnInterruptionState.systemPrompt;
     },
     Je = null,
     gt = false,
@@ -1225,14 +1264,14 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       let fo = await handleMcpSetServers(
         gr,
         {
-          configs: i,
+          configs: sdkMcpConfigs,
           clients: ge,
           tools: he,
           commands: ie,
         },
         Qn,
-        l,
-        a,
+        setAppState,
+        getAppState,
         Lt,
         En,
         cr,
@@ -1251,9 +1290,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             ]),
         );
       }
-      for (let cs of Object.keys(i)) delete i[cs];
+      for (let cs of Object.keys(sdkMcpConfigs)) delete sdkMcpConfigs[cs];
       if (
-        (Object.assign(i, fo.newSdkState.configs),
+        (Object.assign(sdkMcpConfigs, fo.newSdkState.configs),
         (ge = fo.newSdkState.clients),
         (he = fo.newSdkState.tools),
         (ie = fo.newSdkState.commands),
@@ -1292,7 +1331,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (fo.sdkServersChanged) {
         let cs = new Set(ge.map((la) => la.name)),
           Gs = Uo([...Jn, ...cs]);
-        l((la) => ({
+        setAppState((la) => ({
           ...la,
           mcp: {
             ...la.mcp,
@@ -1312,7 +1351,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     return ((jt = jt.then(Sn, Sn)), jt);
   }
   function Dn() {
-    let Gn = a(),
+    let Gn = getAppState(),
       cr = Gn.mcp.clients,
       Lt = oE([...Gn.mcp.tools, ...Ie.tools], "name"),
       En = new Set([...cr.map((Sn) => Sn.name), ...ge.map((Sn) => Sn.name)]);
@@ -1410,9 +1449,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
   if (!md())
     if (Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL) {
       ((ze =
-        d.outputFormat === "stream-json"
+        turnInterruptionState.outputFormat === "stream-json"
           ? (En) =>
-              void e.write({
+              void structuredIO.write({
                 type: "system",
                 subtype: "plugin_install",
                 status: En.status,
@@ -1451,11 +1490,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         }
       })();
     } else Tt = kickOffBackgroundPluginInstall(nn);
-  let Mt = a().mcp.clients.length,
-    Qt = waitForPendingMcpBeforeFirstCommand(a),
+  let Mt = getAppState().mcp.clients.length,
+    Qt = waitForPendingMcpBeforeFirstCommand(getAppState),
     Er = wUc(() => !g);
   async function pt() {
-    let { agentDefinitions: Gn } = await iTe(l);
+    let { agentDefinitions: Gn } = await iTe(setAppState);
     ((Ze = Ame(await mA(Kme.cwd()))), (Be = true));
     let cr = Ue.filter((Lt) => Lt.source === "flagSettings");
     ((Ue = [...Gn.allAgents, ...cr]),
@@ -1481,7 +1520,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (cs === void 0 || cs === "stdio" || cs === "sse" || cs === "http" || cs === "sdk")
         Sn[gr] = fo;
     }
-    for (let [gr, fo] of Object.entries(i))
+    for (let [gr, fo] of Object.entries(sdkMcpConfigs))
       if (fo.type === "sdk" && (!(gr in Sn) || Lt[gr]?.scope === "dynamic")) Sn[gr] = fo;
     let { response: Jn, sdkServersChanged: Qn } = await en(Sn, {
       authoritative: false,
@@ -1515,11 +1554,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
   }
   let ir = true,
     Rr = () => {
-      if (!ir || d.outputFormat !== "stream-json") return;
+      if (!ir || turnInterruptionState.outputFormat !== "stream-json") return;
       zv({
         type: "system",
         subtype: "commands_changed",
-        commands: oE([...Ze, ...a().mcp.commands], "name")
+        commands: oE([...Ze, ...getAppState().mcp.commands], "name")
           .filter((Gn) => Gn.userInvocable !== false)
           .map((Gn) => ({
             name: xu(Gn),
@@ -1549,7 +1588,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     lr = () => {
       let Gn = jb();
       if (Gn !== Pn)
-        (e.sessionState.notifyInternalMetadataChanged({
+        (structuredIO.sessionState.notifyInternalMetadataChanged({
           cumulative_cost_usd: Gn,
         }),
           (Pn = Gn));
@@ -1559,9 +1598,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (
         ((g = true),
         (S = void 0),
-        e.sessionState.notifyStateChanged("running"),
+        structuredIO.sessionState.notifyStateChanged("running"),
         qMa(),
-        e.resetStallWatchdog(),
+        structuredIO.resetStallWatchdog(),
         Er.stop(),
         Me)
       )
@@ -1679,7 +1718,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               if (
                 (la++,
                 k++,
-                e.sessionState.notifyTurnStarting(),
+                structuredIO.sessionState.notifyTurnStarting(),
                 Sn.mode !== "prompt" &&
                   Sn.mode !== "orphaned-permission" &&
                   Sn.mode !== "task-notification")
@@ -1699,7 +1738,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   };
               }
               let Xn = Yn.map((To) => To.uuid).filter((To) => To !== void 0);
-              if (d.replayUserMessages && Yn.length > 1) {
+              if (turnInterruptionState.replayUserMessages && Yn.length > 1) {
                 for (let To of Yn)
                   if (To.uuid && To.uuid !== Sn.uuid)
                     P.enqueue({
@@ -1729,17 +1768,17 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 }
                 wC("before_mcp_prewait");
                 let To = performance.now();
-                if (a().mcp.clients.length > Mt)
-                  await waitForPendingMcpBeforeFirstCommand(a, void 0, Mt > 0);
+                if (getAppState().mcp.clients.length > Mt)
+                  await waitForPendingMcpBeforeFirstCommand(getAppState, void 0, Mt > 0);
                 else await Qt;
                 (Zc("mcp_prewait_ms", performance.now() - To, To), wC("after_mcp_prewait"));
               }
-              let Jr = a(),
+              let Jr = getAppState(),
                 zr = mergeMcpClientLists(Jr.mcp.clients, ge, Ie.clients);
               He(zr);
               for (let To of zr) reregisterChannelHandlerAfterReconnect(To);
               let to = Ke(Jr);
-              for (let To of Xn) e.onCommandLifecycle?.(To, "started");
+              for (let To of Xn) structuredIO.onCommandLifecycle?.(To, "started");
               if (Sn.mode === "task-notification") {
                 let To = typeof Sn.value === "string" ? Sn.value : "",
                   ji = To.match(/<task-id>([^<]+)<\/task-id>/),
@@ -1777,7 +1816,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   });
               }
               let vs = Sn.value;
-              if (e instanceof kvt && Sn.mode === "prompt")
+              if (structuredIO instanceof kvt && Sn.mode === "prompt")
                 G("tengu_bridge_message_received", {
                   is_repl: false,
                 });
@@ -1806,7 +1845,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               (wC("before_ask"), jKt());
               let Da = Sn;
               if (Da.uuid !== void 0 && iua(Da.uuid)) {
-                e.onCommandLifecycle?.(Da.uuid, "completed");
+                structuredIO.onCommandLifecycle?.(Da.uuid, "completed");
                 continue;
               }
               let Qs =
@@ -1817,7 +1856,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       `
 `,
                     );
-              await CAn(Da.workload ?? d.workload, () =>
+              await CAn(Da.workload ?? turnInterruptionState.workload, () =>
                 SFn(Qs, async () => {
                   let To = false,
                     ji = false,
@@ -1846,18 +1885,19 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       verifiedSlackHumanTurn: Da.verifiedSlackHumanTurn,
                       cwd: Kme.cwd(),
                       tools: to,
-                      refreshTools: () => Ke(a()),
-                      refreshMcpClients: () => mergeMcpClientLists(a().mcp.clients, ge, Ie.clients),
-                      verbose: d.verbose,
+                      refreshTools: () => Ke(getAppState()),
+                      refreshMcpClients: () =>
+                        mergeMcpClientLists(getAppState().mcp.clients, ge, Ie.clients),
+                      verbose: turnInterruptionState.verbose,
                       mcpClients: zr,
                       thinkingConfig: ae,
-                      maxTurns: d.maxTurns,
-                      maxBudgetUsd: d.maxBudgetUsd,
-                      taskBudget: d.taskBudget,
-                      canUseTool: s,
+                      maxTurns: turnInterruptionState.maxTurns,
+                      maxBudgetUsd: turnInterruptionState.maxBudgetUsd,
+                      taskBudget: turnInterruptionState.taskBudget,
+                      canUseTool: canUseTool,
                       userSpecifiedModel: ee,
-                      fallbackModel: d.fallbackModel,
-                      jsonSchema: Hsn() ?? d.jsonSchema,
+                      fallbackModel: turnInterruptionState.fallbackModel,
+                      jsonSchema: Hsn() ?? turnInterruptionState.jsonSchema,
                       mutableMessages: $,
                       sessionEnvVars: V,
                       isolationLatch: Y,
@@ -1872,20 +1912,20 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         z.clear();
                       },
                       customSystemPrompt: ct(),
-                      appendSystemPrompt: d.appendSystemPrompt,
-                      planModeInstructions: d.planModeInstructions,
-                      appendSubagentSystemPrompt: d.appendSubagentSystemPrompt,
-                      toolAliases: d.toolAliases,
-                      excludeDynamicSections: d.excludeDynamicSections,
-                      getAppState: a,
-                      setAppState: l,
+                      appendSystemPrompt: turnInterruptionState.appendSystemPrompt,
+                      planModeInstructions: turnInterruptionState.planModeInstructions,
+                      appendSubagentSystemPrompt: turnInterruptionState.appendSubagentSystemPrompt,
+                      toolAliases: turnInterruptionState.toolAliases,
+                      excludeDynamicSections: turnInterruptionState.excludeDynamicSections,
+                      getAppState: getAppState,
+                      setAppState: setAppState,
                       abortController: I,
-                      replayUserMessages: d.replayUserMessages,
-                      includePartialMessages: d.includePartialMessages,
-                      forwardSubagentText: d.forwardSubagentText,
-                      onCommandLifecycle: e.onCommandLifecycle,
-                      sessionState: e.sessionState,
-                      requestDialog: _Ct() ? createPrintRequestDialog(e) : void 0,
+                      replayUserMessages: turnInterruptionState.replayUserMessages,
+                      includePartialMessages: turnInterruptionState.includePartialMessages,
+                      forwardSubagentText: turnInterruptionState.forwardSubagentText,
+                      onCommandLifecycle: structuredIO.onCommandLifecycle,
+                      sessionState: structuredIO.sessionState,
+                      requestDialog: _Ct() ? createPrintRequestDialog(structuredIO) : void 0,
                       agents: Ue,
                       allowedAgentTypes: bt,
                       orphanedPermission: Da.orphanedPermission,
@@ -1918,7 +1958,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         ot.message.model !== b
                       )
                         ((b = ot.message.model),
-                          e.sessionState.notifyMetadataChanged({
+                          structuredIO.sessionState.notifyMetadataChanged({
                             last_served_model: ot.message.model,
                           }));
                       if (ot.type === "result") {
@@ -1939,13 +1979,13 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                             (h = void 0));
                         if (ot.is_error)
                           reportTurnFailed(
-                            e.sessionState,
+                            structuredIO.sessionState,
                             ot.subtype === "success" ? ot.result : ot.errors[0],
                           );
                         for (let cn of VX()) P.enqueue(cn);
-                        let zt = a();
+                        let zt = getAppState();
                         if (Da.shouldQuery === false) {
-                          if (d.sessionMirror) await IC();
+                          if (turnInterruptionState.sessionMirror) await IC();
                           P.enqueue(ot);
                         } else if (
                           UUc({
@@ -1966,7 +2006,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                             emit: (cn) => P.enqueue(cn),
                           });
                         else {
-                          if (d.sessionMirror) await IC();
+                          if (turnInterruptionState.sessionMirror) await IC();
                           yXo({
                             message: ot,
                             held: C,
@@ -2009,7 +2049,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   }
                 }),
               );
-              for (let To of Xn) e.onCommandLifecycle?.(To, "completed");
+              for (let To of Xn) structuredIO.onCommandLifecycle?.(To, "completed");
               if (
                 (In("info", "cli_ask_turn_complete", {
                   should_query: Da.shouldQuery,
@@ -2019,7 +2059,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 vt(),
                 Je?.sendResult(),
                 cXo().snapshot(uXo(), {}).catch(ke),
-                d.promptSuggestions &&
+                turnInterruptionState.promptSuggestions &&
                   Da.shouldQuery !== false &&
                   !HT() &&
                   !ml(process.env.CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION))
@@ -2035,7 +2075,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   };
                   ((X.promise = (async () => {
                     try {
-                      let Se = await ugo(ji, $, a, us, "sdk");
+                      let Se = await ugo(ji, $, getAppState, us, "sdk");
                       if (!Se || ji.signal.aborted) return;
                       let qe = {
                           type: "prompt_suggestion",
@@ -2078,13 +2118,13 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           };
         do {
           for (let Xn of VX()) P.enqueue(Xn);
-          if ((await cr(), e.sessionState.getState() === "idle" && J8(V0) !== void 0))
-            e.sessionState.notifyStateChanged("running");
+          if ((await cr(), structuredIO.sessionState.getState() === "idle" && J8(V0) !== void 0))
+            structuredIO.sessionState.notifyStateChanged("running");
           S = "draining_commands";
           let Yn = la;
           (await nr(), lr(), (Jn = false));
           {
-            let Xn = a(),
+            let Xn = getAppState(),
               Jr = Ubt(Xn).filter((us) => wH(us) && us.type !== "in_process_teammate"),
               zr = J8(V0) !== void 0,
               to = Date.now(),
@@ -2115,7 +2155,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   process.stderr
                     .write(`Background tasks still running after ${Math.round(Da / 1000)}s; terminating. Set CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 to wait indefinitely.
 `));
-              (qUc(Jr, $L(a, l)), (Jn = true));
+              (qUc(Jr, $L(getAppState, setAppState)), (Jn = true));
             }
             if (((!To.swept && Jr.length > 0) || zr || vs) && !I?.signal.aborted) {
               if (((Jn = true), !zr)) {
@@ -2123,11 +2163,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   ((S = "waiting_for_agents"),
                   FUc({
                     inputClosed: A,
-                    currentState: e.sessionState.getState(),
+                    currentState: structuredIO.sessionState.getState(),
                     hasRunningBgTasks: Jr.some(zJ),
                   }))
                 )
-                  e.sessionState.notifyStateChanged("idle");
+                  structuredIO.sessionState.notifyStateChanged("idle");
                 (Lt(), await Nn(100));
               }
             }
@@ -2140,7 +2180,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           }),
           C.length > 0)
         ) {
-          if (d.sessionMirror) await IC();
+          if (turnInterruptionState.sessionMirror) await IC();
           if ((_Xo(C, (Yn) => P.enqueue(Yn)), M.pendingSuggestion)) {
             if ((P.enqueue(M.pendingSuggestion), M.pendingLastEmittedEntry))
               ((M.lastEmitted = {
@@ -2164,9 +2204,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           }),
             (y = true));
         try {
-          if (d.sessionMirror) await IC();
-          (reportTurnFailed(e.sessionState, be(Sn)),
-            await e.write({
+          if (turnInterruptionState.sessionMirror) await IC();
+          (reportTurnFailed(structuredIO.sessionState, be(Sn)),
+            await structuredIO.write({
               type: "result",
               subtype: "error_during_execution",
               duration_ms: 0,
@@ -2184,7 +2224,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             }));
         } catch {}
         (await Promise.race([
-          e.flushSessionState(),
+          structuredIO.flushSessionState(),
           Nn(5000, void 0, {
             unref: true,
           }),
@@ -2194,18 +2234,21 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         return;
       } finally {
         if (
-          ((S = "finally_flush"), await e.flushInternalEvents(), (S = "finally_post_flush"), !HT())
+          ((S = "finally_flush"),
+          await structuredIO.flushInternalEvents(),
+          (S = "finally_post_flush"),
+          !HT())
         )
           await Promise.race([
-            e.flushDeliveryAcks(),
+            structuredIO.flushDeliveryAcks(),
             Nn(5000, void 0, {
               unref: true,
             }),
           ]);
         if (!HT()) {
-          (e.sessionState.notifyStateChanged("idle"), lr());
+          (structuredIO.sessionState.notifyStateChanged("idle"), lr());
           for (let Sn of VX()) P.enqueue(Sn);
-          WMa(e.sessionState);
+          WMa(structuredIO.sessionState);
         }
         ((g = false), Er.start());
       }
@@ -2214,10 +2257,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         return;
       }
       {
-        let Jn = a().teamContext;
+        let Jn = getAppState().teamContext;
         if (Jn && wM(Jn))
           while (true) {
-            let fo = a();
+            let fo = getAppState();
             if (!(YPt(fo) || cje(fo.teamContext))) {
               T("[print.ts] No more active teammates, stopping poll");
               break;
@@ -2242,7 +2285,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     }),
                       T(`[print.ts] Removed ${Xn} from team file`),
                       await gft(la, Jr, Xn, "shutdown"),
-                      l((zr) => {
+                      setAppState((zr) => {
                         if (!zr.teamContext?.teammates) return zr;
                         if (!(Jr in zr.teamContext.teammates)) return zr;
                         let { [Jr]: to, ...vs } = zr.teamContext.teammates;
@@ -2291,9 +2334,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (A)
         if (
           await (async () => {
-            let Jn = a();
-            if (Q2r(Jn)) await Z2r(l, Jn);
-            let Qn = a();
+            let Jn = getAppState();
+            if (Q2r(Jn)) await Z2r(setAppState, Jn);
+            let Qn = getAppState();
             return cje(Qn.teamContext) || YPt(Qn);
           })()
         )
@@ -2320,7 +2363,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             _o(),
             N?.(),
             cLe.delete(B),
-            await Mfo([...a().mcp.clients, ...ge, ...Ie.clients]),
+            await Mfo([...getAppState().mcp.clients, ...ge, ...Ie.clients]),
             x5e(null));
           for (let Jn of VX()) P.enqueue(Jn);
           P.done();
@@ -2344,7 +2387,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       }),
       eo());
   function Kn(Gn) {
-    let cr = e.cancelPendingUserDialogs(LQ.kind, Gn);
+    let cr = structuredIO.cancelPendingUserDialogs(LQ.kind, Gn);
     if (cr > 0)
       In("info", "cli_user_dialog_implicit_cancel", {
         cancelled_count: cr,
@@ -2405,7 +2448,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         })
       )
         throw Error(`register_repo_root: ${cr.directory} is not a subdirectory of cwd`);
-      l((Jn) => ({
+      setAppState((Jn) => ({
         ...Jn,
         toolPermissionContext: My(Jn.toolPermissionContext, {
           type: "addDirectories",
@@ -2422,10 +2465,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       }
       if (cr.reload_skills) (W0(), wq(), KW(), rF.emit());
       if (cr.reload_plugins) {
-        (await Promise.race([Promise.allSettled([mXo()]), Nn(onn())]), await iTe(l));
+        (await Promise.race([Promise.allSettled([mXo()]), Nn(onn())]), await iTe(setAppState));
         let Jn = new Set(Object.keys(Ie.configs)),
           Qn = new Set(
-            a()
+            getAppState()
               .mcp.clients.filter((gr) => !Jn.has(gr.name))
               .map((gr) => gr.name),
           );
@@ -2481,10 +2524,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
   let So = new Set();
   if (f && p && p.kind !== "none" && Oe.CLAUDE_CODE_RESUME_INTERRUPTED_TURN)
     for (let Gn of f) So.add(Gn);
-  e.setUnexpectedResponseCallback(async (Gn) => {
+  structuredIO.setUnexpectedResponseCallback(async (Gn) => {
     await handleOrphanedPermissionResponse({
       message: Gn,
-      setAppState: l,
+      setAppState: setAppState,
       handledToolUseIds: So,
       onEnqueued: () => {
         eo();
@@ -2498,12 +2541,12 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     (async () => {
       if (Me) await Me;
       let Gn = false,
-        cr = o.some((Lt) => Lt.type !== "system") || XGl();
+        cr = initialMessages.some((Lt) => Lt.type !== "system") || XGl();
       (Zc("input_ready_ms", performance.now(), 0),
         uZa(),
         In("info", "cli_message_loop_started"),
         wC("stdin_listen_started"));
-      for await (let Lt of e.structuredInput) {
+      for await (let Lt of structuredIO.structuredInput) {
         let En = "uuid" in Lt ? Lt.uuid : void 0;
         if (
           En &&
@@ -2511,13 +2554,13 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           Lt.type !== "bash_command" &&
           Lt.type !== "control_response"
         )
-          e.onCommandLifecycle?.(En, "completed");
+          structuredIO.onCommandLifecycle?.(En, "completed");
         if (Lt.type === "control_request") {
           if (Lt.request.subtype === "interrupt") {
             if (I) I.abort(eP("remote-cancel"));
             (lzt({
-              taskRegistry: $L(a, l),
-              setAppState: l,
+              taskRegistry: $L(getAppState, setAppState),
+              setAppState: setAppState,
             }),
               M.abortController?.abort(),
               (M.abortController = null),
@@ -2551,7 +2594,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             if (xn) ((cr = true), jYe(xn));
             if (Lt.request.sdkMcpServers && Lt.request.sdkMcpServers.length > 0)
               for (let Yn of Lt.request.sdkMcpServers)
-                i[Yn] = {
+                sdkMcpConfigs[Yn] = {
                   type: "sdk",
                   name: Yn,
                 };
@@ -2562,19 +2605,19 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               Lt.request_id,
               Gn,
               P,
-              [...Ze, ...a().mcp.commands],
+              [...Ze, ...getAppState().mcp.commands],
               re,
               oe,
-              e,
-              !!d.enableAuthStatus,
-              d,
-              u,
-              a,
-              l,
+              structuredIO,
+              !!turnInterruptionState.enableAuthStatus,
+              turnInterruptionState,
+              options,
+              getAppState,
+              setAppState,
             );
             if (nr.restrictedAgentModel) me(nr.restrictedAgentModel);
-            if (d.promptSuggestions && Sjn())
-              l((Yn) => {
+            if (turnInterruptionState.promptSuggestions && Sjn())
+              setAppState((Yn) => {
                 if (Yn.promptSuggestionEnabled) return Yn;
                 return {
                   ...Yn,
@@ -2585,7 +2628,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             if (((Gn = true), TSe())) eo();
           } else if (Lt.request.subtype === "set_permission_mode") {
             let xn = Lt.request;
-            l((nr) => ({
+            setAppState((nr) => ({
               ...nr,
               toolPermissionContext: handleSetPermissionMode(
                 xn,
@@ -2608,11 +2651,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               if (
                 ((ee = Yn),
                 py(Yn),
-                l((to) => ({
+                setAppState((to) => ({
                   ...to,
                   mainLoopModelForSession: Yn,
                 })),
-                e.sessionState.notifyMetadataChanged({
+                structuredIO.sessionState.notifyMetadataChanged({
                   model: Yn,
                 }),
                 As() !== Xn || zo(Yn) !== zo(Jr ?? Xn))
@@ -2654,10 +2697,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             });
           else if (Lt.request.subtype === "get_context_usage")
             try {
-              let xn = a(),
+              let xn = getAppState(),
                 nr = await gEt({
                   messages: $,
-                  getAppState: a,
+                  getAppState: getAppState,
                   options: {
                     mainLoopModel: As(),
                     tools: Ke(xn),
@@ -2666,8 +2709,8 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       allAgents: Ue,
                     },
                     customSystemPrompt: ct(),
-                    appendSystemPrompt: d.appendSystemPrompt,
-                    excludeDynamicSections: d.excludeDynamicSections,
+                    appendSystemPrompt: turnInterruptionState.appendSystemPrompt,
+                    excludeDynamicSections: turnInterruptionState.excludeDynamicSections,
                   },
                 });
               Ut(Lt, {
@@ -2696,7 +2739,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               nr.client.transport.onmessage(xn.message);
             Ut(Lt);
           } else if (Lt.request.subtype === "rewind_files") {
-            let xn = a(),
+            let xn = getAppState(),
               nr = await handleRewindFiles(
                 Lt.request.user_message_id,
                 xn,
@@ -2713,11 +2756,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             });
           } else if (Lt.request.subtype === "rewind_conversation") {
             let xn = Lt.request.target_message_uuid,
-              nr = e.sessionState.getState() !== "idle";
+              nr = structuredIO.sessionState.getState() !== "idle";
             if (nr && Lt.request.interrupt_if_running && !TSe()) {
               (lzt({
-                taskRegistry: $L(a, l),
-                setAppState: l,
+                taskRegistry: $L(getAppState, setAppState),
+                setAppState: setAppState,
               }),
                 M.abortController?.abort(),
                 (M.abortController = null),
@@ -2725,9 +2768,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 (M.pendingSuggestion = null));
               let Yn = k,
                 Xn = Date.now() + 10000; /* 1e4 */
-              while (e.sessionState.getState() !== "idle" && k === Yn && Date.now() < Xn)
+              while (structuredIO.sessionState.getState() !== "idle" && k === Yn && Date.now() < Xn)
                 (I?.abort(eP("remote-cancel")), await Nn(20));
-              nr = k > Yn || e.sessionState.getState() !== "idle";
+              nr = k > Yn || structuredIO.sessionState.getState() !== "idle";
             }
             if (nr || TSe())
               Ut(Lt, {
@@ -2783,7 +2826,9 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         }
                       : void 0;
                   try {
-                    (await o5o(Qs, ji), await e.flushInternalEvents(), await LJt(Qs, ji));
+                    (await o5o(Qs, ji),
+                      await structuredIO.flushInternalEvents(),
+                      await LJt(Qs, ji));
                   } catch (us) {
                     ((To = false), ke(us));
                   }
@@ -2819,7 +2864,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 nr = await xn(
                   Lt.request.path,
                   Lt.request.max_bytes,
-                  a().toolPermissionContext,
+                  getAppState().toolPermissionContext,
                   Lt.request.encoding,
                 );
               Ut(Lt, nr);
@@ -2918,12 +2963,12 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           } else if (Lt.request.subtype === "reload_plugins")
             try {
               if (rnn()) await Promise.race([Promise.allSettled([MNc()]), Nn(onn())]);
-              let xn = await iTe(l),
+              let xn = await iTe(setAppState),
                 nr = Ue.filter((bs) => bs.source === "flagSettings");
               Ue = [...xn.agentDefinitions.allAgents, ...nr];
               let Yn = new Set(Object.keys(Ie.configs)),
                 Xn = new Set(
-                  a()
+                  getAppState()
                     .mcp.clients.filter((bs) => !Yn.has(bs.name))
                     .map((bs) => bs.name),
                 ),
@@ -2982,11 +3027,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               Fn(Lt, be(xn));
             }
           else if (Lt.request.subtype === "mcp_reconnect") {
-            let xn = a(),
+            let xn = getAppState(),
               { serverName: nr } = Lt.request,
               Yn =
                 P4(nr) ??
-                t.find((Xn) => Xn.name === nr)?.config ??
+                mcpClients.find((Xn) => Xn.name === nr)?.config ??
                 ge.find((Xn) => Xn.name === nr)?.config ??
                 Ie.clients.find((Xn) => Xn.name === nr)?.config ??
                 xn.mcp.clients.find((Xn) => Xn.name === nr)?.config ??
@@ -2997,7 +3042,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               let Xn = await iJ(nr, Yn),
                 Jr = xG(nr);
               if (
-                (l((zr) => ({
+                (setAppState((zr) => ({
                   ...zr,
                   mcp: {
                     ...zr.mcp,
@@ -3034,7 +3079,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               Yn = eI(xn);
             if (!Yn || !Yn.toolName) Fn(Lt, `Not a fully-qualified MCP tool name: ${xn}`);
             else {
-              let Xn = [...a().mcp.clients, ...ge, ...Ie.clients].find(
+              let Xn = [...getAppState().mcp.clients, ...ge, ...Ie.clients].find(
                 (Jr) => Jr.type === "connected" && hc(Jr.name) === Yn.serverName,
               );
               if (!Xn || Xn.type !== "connected")
@@ -3047,8 +3092,8 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 );
               else {
                 let Jr =
-                  [...a().mcp.tools, ...Ie.tools].find((zr) => Ql(zr, xn))?.mcpInfo?.toolName ??
-                  Yn.toolName;
+                  [...getAppState().mcp.tools, ...Ie.tools].find((zr) => Ql(zr, xn))?.mcpInfo
+                    ?.toolName ?? Yn.toolName;
                 (async () => {
                   if (D.signal.aborted) return;
                   let zr = Sl(),
@@ -3064,7 +3109,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       args: nr ?? {},
                       imageLimits: H8,
                       signal: zr.signal,
-                      setAppState: l,
+                      setAppState: setAppState,
                       requestDialog: void 0,
                     });
                     if (D.signal.aborted) return;
@@ -3082,7 +3127,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       });
                   } catch (vs) {
                     if (D.signal.aborted) return;
-                    if (vs instanceof Rqe) r2n(vs.serverName, l);
+                    if (vs instanceof Rqe) r2n(vs.serverName, setAppState);
                     let bs = vs instanceof Error ? vs.message : String(vs);
                     if (vs instanceof gpt)
                       bs = `MCP session expired for ${Yn.serverName} \u2014 send mcp_reconnect and retry mcp_call: ${bs}`;
@@ -3101,11 +3146,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               }
             }
           } else if (Lt.request.subtype === "mcp_toggle") {
-            let xn = a(),
+            let xn = getAppState(),
               { serverName: nr, enabled: Yn } = Lt.request,
               Xn =
                 P4(nr) ??
-                t.find((Jr) => Jr.name === nr)?.config ??
+                mcpClients.find((Jr) => Jr.name === nr)?.config ??
                 ge.find((Jr) => Jr.name === nr)?.config ??
                 Ie.clients.find((Jr) => Jr.name === nr)?.config ??
                 xn.mcp.clients.find((Jr) => Jr.name === nr)?.config ??
@@ -3113,10 +3158,12 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             if (!Xn) Fn(Lt, `Server not found: ${nr}`);
             else if (!Yn) {
               iqe(nr, false);
-              let Jr = [...t, ...ge, ...Ie.clients, ...xn.mcp.clients].find((to) => to.name === nr);
+              let Jr = [...mcpClients, ...ge, ...Ie.clients, ...xn.mcp.clients].find(
+                (to) => to.name === nr,
+              );
               if (Jr && Jr.type === "connected") await ST(nr, Xn);
               let zr = xG(nr);
-              (l((to) => ({
+              (setAppState((to) => ({
                 ...to,
                 mcp: {
                   ...to.mcp,
@@ -3142,7 +3189,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               let Jr = await iJ(nr, Xn),
                 zr = xG(nr);
               if (
-                (l((to) => ({
+                (setAppState((to) => ({
                   ...to,
                   mcp: {
                     ...to.mcp,
@@ -3193,7 +3240,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               );
             } else {
               let Xn = Yn.override;
-              l((zr) => {
+              setAppState((zr) => {
                 let to = zr.toolPermissionContext.mcpPermissionModeOverrides,
                   vs =
                     Xn === void 0
@@ -3211,11 +3258,11 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 };
               });
               let Jr =
-                t.some((zr) => zr.name === xn) ||
+                mcpClients.some((zr) => zr.name === xn) ||
                 ge.some((zr) => zr.name === xn) ||
-                Object.prototype.hasOwnProperty.call(i, xn) ||
+                Object.prototype.hasOwnProperty.call(sdkMcpConfigs, xn) ||
                 Ie.clients.some((zr) => zr.name === xn) ||
-                a().mcp.clients.some((zr) => zr.name === xn) ||
+                getAppState().mcp.clients.some((zr) => zr.name === xn) ||
                 P4(xn) !== null;
               Ut(
                 Lt,
@@ -3230,7 +3277,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               );
             }
           } else if (Lt.request.subtype === "channel_enable") {
-            let xn = a();
+            let xn = getAppState();
             handleChannelEnable(
               Lt.request_id,
               Lt.request.serverName,
@@ -3239,10 +3286,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             );
           } else if (Lt.request.subtype === "mcp_authenticate") {
             let { serverName: xn, redirectUri: nr } = Lt.request,
-              Yn = a(),
+              Yn = getAppState(),
               Xn =
                 P4(xn) ??
-                t.find((zr) => zr.name === xn)?.config ??
+                mcpClients.find((zr) => zr.name === xn)?.config ??
                 Yn.mcp.clients.find((zr) => zr.name === xn)?.config ??
                 null,
               Jr = Xn ? r6(xn, Xn) : null;
@@ -3334,7 +3381,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   if (Mo.has(xn)) return;
                   let Se = await iJ(xn, Xn),
                     qe = xG(xn);
-                  (l((ot) => ({
+                  (setAppState((ot) => ({
                     ...ot,
                     mcp: {
                       ...ot.mcp,
@@ -3480,10 +3527,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             }
           } else if (Lt.request.subtype === "mcp_clear_auth") {
             let { serverName: xn } = Lt.request,
-              nr = a(),
+              nr = getAppState(),
               Yn =
                 P4(xn) ??
-                t.find((Xn) => Xn.name === xn)?.config ??
+                mcpClients.find((Xn) => Xn.name === xn)?.config ??
                 nr.mcp.clients.find((Xn) => Xn.name === xn)?.config ??
                 null;
             if (!Yn) Fn(Lt, `Server not found: ${xn}`);
@@ -3494,7 +3541,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               await FSe(xn, Yn);
               let Xn = await iJ(xn, Yn),
                 Jr = xG(xn);
-              (l((zr) => ({
+              (setAppState((zr) => ({
                 ...zr,
                 mcp: {
                   ...zr.mcp,
@@ -3520,16 +3567,17 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               let Qs = PUc({
                 requestedAgent: Yn.agent,
                 agents: Ue,
-                systemPrompt: d.systemPrompt,
+                systemPrompt: turnInterruptionState.systemPrompt,
                 preAgentSystemPrompt: tt,
               });
               if (!Qs.ok) {
                 Fn(Lt, Qs.error);
                 continue;
               }
-              ((d.systemPrompt = Qs.systemPrompt), (tt = Qs.preAgentSystemPrompt));
+              ((turnInterruptionState.systemPrompt = Qs.systemPrompt),
+                (tt = Qs.preAgentSystemPrompt));
               let To = Qs.agentDefinition?.agentType;
-              l((ji) =>
+              setAppState((ji) =>
                 ji.agent === To
                   ? ji
                   : {
@@ -3565,12 +3613,12 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             if (vs !== xn || bs) {
               let Qs = bs ? zo(to) : vs;
               ((ee = bs ? to : vs),
-                l((ji) => ({
+                setAppState((ji) => ({
                   ...ji,
                   mainLoopModelForSession: Qs,
                 })));
               let To = Yn.model && !Jr ? String(Yn.model) : "model" in Yn && !Jr ? "default" : vs;
-              (e.sessionState.notifyMetadataChanged({
+              (structuredIO.sessionState.notifyMetadataChanged({
                 model: vs,
               }),
                 de(To, vs));
@@ -3583,7 +3631,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             if ("effortLevel" in Yn) {
               let Qs = Yn.effortLevel == null ? void 0 : TU(Yn.effortLevel);
               if (Yn.effortLevel == null || Qs !== void 0)
-                (l((To) =>
+                (setAppState((To) =>
                   To.effortValue === Qs
                     ? To
                     : {
@@ -3592,14 +3640,14 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       },
                 ),
                   Dj());
-              e.sessionState.notifyMetadataChanged({
+              structuredIO.sessionState.notifyMetadataChanged({
                 effort_level: Yn.effortLevel == null ? null : String(Yn.effortLevel),
               });
             }
             if ("ultracode" in Yn) {
               let Qs = Yn.ultracode === true;
               if (
-                (l((To) => {
+                (setAppState((To) => {
                   if (To.ultracode === Qs && (!Qs || To.effortValue === "xhigh")) return To;
                   return {
                     ...To,
@@ -3613,7 +3661,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             }
             Ut(Lt);
           } else if (Lt.request.subtype === "get_settings") {
-            let xn = a(),
+            let xn = getAppState(),
               nr = As(),
               Yn = Kw(nr) ? x7(nr, xn.effortValue) : void 0,
               Xn = LLr(),
@@ -3637,8 +3685,8 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             let { task_id: xn } = Lt.request;
             try {
               (await mbt(xn, {
-                taskRegistry: $L(a, l),
-                setAppState: l,
+                taskRegistry: $L(getAppState, setAppState),
+                setAppState: setAppState,
                 source: "user",
               }),
                 Ut(Lt, {}));
@@ -3649,7 +3697,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             }
           } else if (Lt.request.subtype === "background_tasks")
             try {
-              let xn = $L(a, l),
+              let xn = $L(getAppState, setAppState),
                 nr = Lt.request.tool_use_id;
               if (nr) {
                 let Yn = xJn(nr, xn);
@@ -3747,16 +3795,16 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         },
                       }
                     : await hUc({
-                        tools: Ke(a()),
-                        commands: [...Ze, ...a().mcp.commands],
-                        mcpClients: [...a().mcp.clients, ...ge, ...Ie.clients],
+                        tools: Ke(getAppState()),
+                        commands: [...Ze, ...getAppState().mcp.commands],
+                        mcpClients: [...getAppState().mcp.clients, ...ge, ...Ie.clients],
                         messages: $,
                         readFileState: W,
-                        getAppState: a,
-                        setAppState: l,
+                        getAppState: getAppState,
+                        setAppState: setAppState,
                         customSystemPrompt: ct(),
-                        appendSystemPrompt: d.appendSystemPrompt,
-                        excludeDynamicSections: d.excludeDynamicSections,
+                        appendSystemPrompt: turnInterruptionState.appendSystemPrompt,
+                        excludeDynamicSections: turnInterruptionState.excludeDynamicSections,
                         thinkingConfig: ae,
                         agents: Ue,
                       }),
@@ -3781,7 +3829,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   confirm: nr,
                   context: {
                     abortController: Sl(),
-                    taskRegistry: $L(a, l),
+                    taskRegistry: $L(getAppState, setAppState),
                   },
                 });
                 if (Yn.status === "launched") {
@@ -3831,8 +3879,8 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           } else if (Lt.request.subtype === "remote_control") {
             if (Lt.request.enabled) {
               if (Je && gt)
-                (e.setOnControlRequestSent(void 0),
-                  e.setOnControlRequestResolved(void 0),
+                (structuredIO.setOnControlRequestSent(void 0),
+                  structuredIO.setOnControlRequestResolved(void 0),
                   await Je.teardown(),
                   (Je = null),
                   (gt = false));
@@ -3848,8 +3896,8 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   let { initReplBridge: nr } = await Promise.resolve().then(() => (j8o(), F8o)),
                     Yn = await nr({
                       tags: [rtc],
-                      getTools: () => Ke(a()),
-                      getToolPermissionContext: () => a().toolPermissionContext,
+                      getTools: () => Ke(getAppState()),
+                      getToolPermissionContext: () => getAppState().toolPermissionContext,
                       async onInboundMessage(Xn) {
                         let Jr = st,
                           zr;
@@ -3908,7 +3956,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         }
                       },
                       onPermissionResponse(Xn) {
-                        return (e.injectControlResponse(Xn), true);
+                        return (structuredIO.injectControlResponse(Xn), true);
                       },
                       onInterrupt() {
                         I?.abort();
@@ -3928,7 +3976,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         }
                         ((ee = zr),
                           py(zr),
-                          l((to) => ({
+                          setAppState((to) => ({
                             ...to,
                             mainLoopModelForSession: zr ?? null,
                           })),
@@ -3963,10 +4011,10 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       (gt = false),
                       ewe(true),
                       (xt = $.length),
-                      e.setOnControlRequestSent((Xn) => {
+                      structuredIO.setOnControlRequestSent((Xn) => {
                         Yn.sendControlRequest(Xn);
                       }),
-                      e.setOnControlRequestResolved((Xn) => {
+                      structuredIO.setOnControlRequestResolved((Xn) => {
                         Yn.sendControlCancelRequest(Xn);
                       }),
                       Ut(Lt, {
@@ -3980,8 +4028,8 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               }
             } else {
               if (Je)
-                (e.setOnControlRequestSent(void 0),
-                  e.setOnControlRequestResolved(void 0),
+                (structuredIO.setOnControlRequestSent(void 0),
+                  structuredIO.setOnControlRequestResolved(void 0),
                   await Je.teardown({
                     reason: "remote_control_disabled",
                   }),
@@ -3993,13 +4041,14 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           } else Fn(Lt, `Unsupported control request subtype: ${Lt.request.subtype}`);
           continue;
         } else if (Lt.type === "control_response") {
-          if (d.replayUserMessages) P.enqueue(Lt);
+          if (turnInterruptionState.replayUserMessages) P.enqueue(Lt);
           continue;
         } else if (Lt.type === "keep_alive") continue;
         else if (Lt.type === "update_environment_variables") continue;
         else if (Lt.type === "assistant" || Lt.type === "system") {
           let xn = csr([Lt]);
-          if (($.push(...xn), Lt.type === "assistant" && d.replayUserMessages)) P.enqueue(Lt);
+          if (($.push(...xn), Lt.type === "assistant" && turnInterruptionState.replayUserMessages))
+            P.enqueue(Lt);
           continue;
         }
         if (Lt.type === "bash_command") {
@@ -4027,7 +4076,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               }),
               Lt.uuid)
             )
-              e.onCommandLifecycle?.(Lt.uuid, "completed");
+              structuredIO.onCommandLifecycle?.(Lt.uuid, "completed");
             continue;
           }
           P.enqueue({
@@ -4077,7 +4126,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   isReplay: true,
                 }));
             }
-            if (Lt.uuid) e.onCommandLifecycle?.(Lt.uuid, "completed");
+            if (Lt.uuid) structuredIO.onCommandLifecycle?.(Lt.uuid, "completed");
           })();
           (L.add(nr), nr.finally(() => L.delete(nr)));
           continue;
@@ -4094,7 +4143,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 runtime_dup: Yn,
               }),
               T(`Skipping duplicate user message: ${Lt.uuid}`),
-              d.replayUserMessages)
+              turnInterruptionState.replayUserMessages)
             ) {
               T(`Sending acknowledgment for duplicate user message: ${Lt.uuid}`);
               let Xn = TTt(Lt);
@@ -4111,15 +4160,15 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 }),
               });
             }
-            if (nr) e.onCommandLifecycle?.(Lt.uuid, "completed");
+            if (nr) structuredIO.onCommandLifecycle?.(Lt.uuid, "completed");
             if (TSe()) eo();
-            else if (!g) e.sessionState.notifyStateChanged("idle");
+            else if (!g) structuredIO.sessionState.notifyStateChanged("idle");
             continue;
           }
           uFc(Lt.uuid);
         }
         Kn("new_user_message");
-        let Jn = !(e instanceof kvt)
+        let Jn = !(structuredIO instanceof kvt)
             ? Lt.message.content
             : typeof Lt.message.content === "string"
               ? Cur(Lt.message.content)
@@ -4216,7 +4265,7 @@ function runHeadlessStreaming(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           _o(),
           N?.(),
           cLe.delete(B),
-          await Mfo([...a().mcp.clients, ...ge, ...Ie.clients]),
+          await Mfo([...getAppState().mcp.clients, ...ge, ...Ie.clients]),
           x5e(null));
         for (let Lt of VX()) P.enqueue(Lt);
         P.done();
@@ -4259,7 +4308,7 @@ async function waitForPendingMcpBeforeFirstCommand(e, t = 2000, n = false) {
     mcpNonBlocking: Vve(),
   });
 }
-function createCanUseToolWithPermissionPrompt(e) {
+function createCanUseToolWithPermissionPrompt(permissionPromptTool) {
   let t = async (n, r, o, s, i, a) => {
     let l = a ?? (await RL(n, r, o, s, i));
     if (l.behavior === "allow" || l.behavior === "deny") return l;
@@ -4283,7 +4332,7 @@ function createCanUseToolWithPermissionPrompt(e) {
           once: true,
         });
       }),
-      f = e.call(
+      f = permissionPromptTool.call(
         {
           tool_name: n.name,
           input: c,
@@ -4305,7 +4354,7 @@ function createCanUseToolWithPermissionPrompt(e) {
         },
       };
     let g = m,
-      h = e.mapToolResultToToolResultBlockParam(g.data, "1");
+      h = permissionPromptTool.mapToolResultToToolResultBlockParam(g.data, "1");
     if (
       !h.content ||
       !Array.isArray(h.content) ||
@@ -4316,20 +4365,21 @@ function createCanUseToolWithPermissionPrompt(e) {
       throw Error(
         'Permission prompt tool returned an invalid result. Expected a single text block param with type="text" and a string text value.',
       );
-    return Ivt(unn().parse(Ia(h.content[0].text)), e, c, o);
+    return Ivt(unn().parse(Ia(h.content[0].text)), permissionPromptTool, c, o);
   };
   return t;
 }
-function getCanUseToolFn(e, t, n, r) {
-  if (e === "stdio") return t.createCanUseTool(r);
-  if (!e) return async (s, i, a, l, c, u) => u ?? (await RL(s, i, a, l, c));
+function getCanUseToolFn(permissionPromptToolName, structuredIO, getMcpTools, onPermissionPrompt) {
+  if (permissionPromptToolName === "stdio")
+    return structuredIO.createCanUseTool(onPermissionPrompt);
+  if (!permissionPromptToolName) return async (s, i, a, l, c, u) => u ?? (await RL(s, i, a, l, c));
   let o = null;
   return async (s, i, a, l, c, u) => {
     if (!o) {
-      let d = n(),
-        p = d.find((f) => Ql(f, e));
+      let d = getMcpTools(),
+        p = d.find((f) => Ql(f, permissionPromptToolName));
       if (!p) {
-        let f = `Error: MCP tool ${e} (passed via --permission-prompt-tool) not found. Available MCP tools: ${d.map((m) => m.name).join(", ") || "none"}`;
+        let f = `Error: MCP tool ${permissionPromptToolName} (passed via --permission-prompt-tool) not found. Available MCP tools: ${d.map((m) => m.name).join(", ") || "none"}`;
         throw (
           process.stderr.write(`${f}
 `),
@@ -4338,7 +4388,7 @@ function getCanUseToolFn(e, t, n, r) {
         );
       }
       if (!p.inputJSONSchema) {
-        let f = `Error: tool ${e} (passed via --permission-prompt-tool) must be an MCP tool`;
+        let f = `Error: tool ${permissionPromptToolName} (passed via --permission-prompt-tool) must be an MCP tool`;
         throw (
           process.stderr.write(`${f}
 `),
@@ -4510,19 +4560,19 @@ async function dFc(e, t, n, r, o, s) {
   }
   return u;
 }
-async function handleRewindFiles(e, t, n) {
+async function handleRewindFiles(userMessageId, appState, setAppState) {
   if (!K_())
     return {
       canRewind: false,
       error: "File rewinding is not enabled.",
     };
-  if (!KVt(t.fileHistory, e))
+  if (!KVt(appState.fileHistory, userMessageId))
     return {
       canRewind: false,
       error: "No file checkpoint found for this message.",
     };
-  if (n) {
-    let r = await yht(t.fileHistory, e);
+  if (setAppState) {
+    let r = await yht(appState.fileHistory, userMessageId);
     return {
       canRewind: true,
       filesChanged: r?.filesChanged,
@@ -4531,7 +4581,7 @@ async function handleRewindFiles(e, t, n) {
     };
   }
   try {
-    await zVt(() => t.fileHistory, e);
+    await zVt(() => appState.fileHistory, userMessageId);
   } catch (r) {
     return {
       canRewind: false,
@@ -4542,84 +4592,86 @@ async function handleRewindFiles(e, t, n) {
     canRewind: true,
   };
 }
-function handleSetPermissionMode(e, t, n, r) {
-  if (e.mode === "bypassPermissions") {
+function handleSetPermissionMode(request, requestId, toolPermissionContext, output) {
+  if (request.mode === "bypassPermissions") {
     if (wU())
       return (
-        r.enqueue({
+        output.enqueue({
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: t,
+            request_id: requestId,
             error:
               "Cannot set permission mode to bypassPermissions because it is disabled by settings or configuration",
           },
         }),
-        n
+        toolPermissionContext
       );
-    if (!n.isBypassPermissionsModeAvailable)
+    if (!toolPermissionContext.isBypassPermissionsModeAvailable)
       return (
-        r.enqueue({
+        output.enqueue({
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: t,
+            request_id: requestId,
             error:
               "Cannot set permission mode to bypassPermissions because the session was not launched with --dangerously-skip-permissions",
           },
         }),
-        n
+        toolPermissionContext
       );
   }
-  if (e.mode === "auto" && !Zv()) {
+  if (request.mode === "auto" && !Zv()) {
     let o = Pz();
     return (
-      r.enqueue({
+      output.enqueue({
         type: "control_response",
         response: {
           subtype: "error",
-          request_id: t,
+          request_id: requestId,
           error: o
             ? `Cannot set permission mode to auto: ${HZ(o)}`
             : "Cannot set permission mode to auto",
         },
       }),
-      n
+      toolPermissionContext
     );
   }
   return (
-    r.enqueue({
+    output.enqueue({
       type: "control_response",
       response: {
         subtype: "success",
-        request_id: t,
+        request_id: requestId,
         response: {
-          mode: e.mode,
+          mode: request.mode,
         },
       },
     }),
     {
-      ...AZ(n.mode, e.mode, n),
-      mode: e.mode,
+      ...AZ(toolPermissionContext.mode, request.mode, toolPermissionContext),
+      mode: request.mode,
     }
   );
 }
-function handleChannelEnable(e, t, n, r) {
+function handleChannelEnable(requestId, serverName, connectionPool, output) {
   let o = (f) =>
-      r.enqueue({
+      output.enqueue({
         type: "control_response",
         response: {
           subtype: "error",
-          request_id: e,
+          request_id: requestId,
           error: f,
         },
       }),
-    s = n.find((f) => f.name === t && f.type === "connected");
-  if (!s || s.type !== "connected") return o(`server ${t} is not connected`);
+    s = connectionPool.find((f) => f.name === serverName && f.type === "connected");
+  if (!s || s.type !== "connected") return o(`server ${serverName} is not connected`);
   let i = s.config.pluginSource,
     a = i ? Qo(i) : void 0;
   if (!a?.marketplace)
-    return o(`server ${t} is not plugin-sourced; channel_enable requires a marketplace plugin`);
+    return o(
+      `server ${serverName} is not plugin-sourced; channel_enable requires a marketplace plugin`,
+    );
   let l = {
       kind: "plugin",
       name: a.name,
@@ -4628,19 +4680,19 @@ function handleChannelEnable(e, t, n, r) {
     c = MA(),
     u = c.some((f) => f.kind === "plugin" && f.name === l.name && f.marketplace === l.marketplace);
   if (!u) Mge([...c, l]);
-  let d = V_t(t, s.capabilities, i);
+  let d = V_t(serverName, s.capabilities, i);
   if (d.action === "skip") {
     if (!u) Mge(c);
     return o(d.reason);
   }
   let p = `${l.name}@${l.marketplace}`;
-  (sn(t, "Channel notifications registered"),
+  (sn(serverName, "Channel notifications registered"),
     G("tengu_mcp_channel_enable", {
       plugin: p,
     }),
     s.client.setNotificationHandler(G_t(), async (f) => {
       let { content: m, meta: g } = f.params;
-      (sn(t, `notifications/claude/channel: ${m.slice(0, 80)}`),
+      (sn(serverName, `notifications/claude/channel: ${m.slice(0, 80)}`),
         G("tengu_mcp_channel_message", {
           content_length: m.length,
           meta_key_count: Object.keys(g ?? {}).length,
@@ -4651,34 +4703,38 @@ function handleChannelEnable(e, t, n, r) {
         j_({
           mode: "prompt",
           agentId: ls(),
-          value: W_t(t, m, g),
+          value: W_t(serverName, m, g),
           priority: "next",
           isMeta: true,
           origin: {
             kind: "channel",
-            server: t,
+            server: serverName,
           },
           skipSlashCommands: true,
         }));
     }),
-    r.enqueue({
+    output.enqueue({
       type: "control_response",
       response: {
         subtype: "success",
-        request_id: e,
+        request_id: requestId,
         response: void 0,
       },
     }));
 }
-function reregisterChannelHandlerAfterReconnect(e) {
-  if (e.type !== "connected") return;
-  if (V_t(e.name, e.capabilities, e.config.pluginSource).action !== "register") return;
-  let n = p$e(e.name, MA()),
+function reregisterChannelHandlerAfterReconnect(connection) {
+  if (connection.type !== "connected") return;
+  if (
+    V_t(connection.name, connection.capabilities, connection.config.pluginSource).action !==
+    "register"
+  )
+    return;
+  let n = p$e(connection.name, MA()),
     r = n?.kind === "plugin" ? `${n.name}@${n.marketplace}` : void 0;
-  (sn(e.name, "Channel notifications re-registered after reconnect"),
-    e.client.setNotificationHandler(G_t(), async (o) => {
+  (sn(connection.name, "Channel notifications re-registered after reconnect"),
+    connection.client.setNotificationHandler(G_t(), async (o) => {
       let { content: s, meta: i } = o.params;
-      (sn(e.name, `notifications/claude/channel: ${s.slice(0, 80)}`),
+      (sn(connection.name, `notifications/claude/channel: ${s.slice(0, 80)}`),
         G("tengu_mcp_channel_message", {
           content_length: s.length,
           meta_key_count: Object.keys(i ?? {}).length,
@@ -4689,12 +4745,12 @@ function reregisterChannelHandlerAfterReconnect(e) {
         j_({
           mode: "prompt",
           agentId: ls(),
-          value: W_t(e.name, s, i),
+          value: W_t(connection.name, s, i),
           priority: "next",
           isMeta: true,
           origin: {
             kind: "channel",
-            server: e.name,
+            server: connection.name,
           },
           skipSlashCommands: true,
         }));
@@ -4748,17 +4804,17 @@ function pnn(e, t) {
 function pFc(e, t) {
   return false;
 }
-async function loadInitialMessages(e, t) {
+async function loadInitialMessages(setAppState, options) {
   let n = !Z3();
-  if (t.continue)
+  if (options.continue)
     try {
       G("tengu_continue_print", {});
       let { clearSessionCaches: r } = await Promise.resolve().then(() => (rKe(), QSt));
       r();
       let o = await vpe(void 0, void 0, {
-        forkSession: !!t.forkSession,
+        forkSession: !!options.forkSession,
       });
-      if (pFc(o, t.outputFormat))
+      if (pFc(o, options.outputFormat))
         return {
           messages: [],
         };
@@ -4775,7 +4831,7 @@ async function loadInitialMessages(e, t) {
               (ty(), ro(GSt));
             i.cache.clear?.();
             let l = await i($t());
-            e((c) => ({
+            setAppState((c) => ({
               ...c,
               agentDefinitions: {
                 ...l,
@@ -4785,16 +4841,16 @@ async function loadInitialMessages(e, t) {
             }));
           }
         }
-        if (!t.forkSession) {
+        if (!options.forkSession) {
           if (o.sessionId) {
             if ((PA(Fb(o.sessionId), "resume", o.fullPath ? q7e.dirname(o.fullPath) : null), n))
               await BQ();
           }
         }
         if (
-          (Qen(o, e),
+          (Qen(o, setAppState),
           Gse(
-            t.forkSession
+            options.forkSession
               ? {
                   ...o,
                   worktreeSession: void 0,
@@ -4804,7 +4860,7 @@ async function loadInitialMessages(e, t) {
                 }
               : o,
           ),
-          !t.forkSession && n && o.sessionId)
+          !options.forkSession && n && o.sessionId)
         )
           Hme();
         if (WNe) Z1e(WNe.isCoordinatorMode() ? "coordinator" : "normal");
@@ -4829,12 +4885,12 @@ async function loadInitialMessages(e, t) {
         }
       );
     }
-  if (t.teleport)
+  if (options.teleport)
     try {
       await tV();
       let r = qZt();
       if (r) throw Error(r);
-      if ((G("tengu_teleport_print", {}), typeof t.teleport !== "string"))
+      if ((G("tengu_teleport_print", {}), typeof options.teleport !== "string"))
         throw Error("No session ID provided for teleport");
       let { clearSessionCaches: o } = await Promise.resolve().then(() => (rKe(), QSt));
       o();
@@ -4845,7 +4901,7 @@ async function loadInitialMessages(e, t) {
         validateGitState: l,
       } = await Promise.resolve().then(() => (gP(), i9t));
       await l();
-      let c = await a(t.teleport),
+      let c = await a(options.teleport),
         { branchError: u } = await s(c.branch);
       return {
         messages: i(c.log, u),
@@ -4861,12 +4917,12 @@ async function loadInitialMessages(e, t) {
         }
       );
     }
-  if (t.resume) {
+  if (options.resume) {
     let r = "load_error",
       o = performance.now();
     try {
       G("tengu_resume_print", {});
-      let s = typeof t.resume === "string" ? t.resume.trim() : "",
+      let s = typeof options.resume === "string" ? options.resume.trim() : "",
         i = Uyr(s);
       if (!i && s) {
         let u = await OQ(s, {
@@ -4888,7 +4944,7 @@ async function loadInitialMessages(e, t) {
             pnn(
               `Error: --resume "${s}" matches ${u.length} sessions. Pass one of these session IDs to disambiguate:
 ${d}`,
-              t.outputFormat,
+              options.outputFormat,
             ),
             Bc(1),
             {
@@ -4907,7 +4963,7 @@ ${d}`,
             success: false,
             failure_reason: We("not_found_explicit_id"),
           }),
-          pnn(u, t.outputFormat),
+          pnn(u, options.outputFormat),
           Bc(1),
           {
             messages: [],
@@ -4915,31 +4971,31 @@ ${d}`,
         );
       }
       let { clearSessionCaches: a } = await Promise.resolve().then(() => (rKe(), QSt));
-      if ((a(), t.sdkUrl)) {
+      if ((a(), options.sdkUrl)) {
         let u = performance.now(),
           [, d] = await Promise.all([
-            (t.hydratePrefetch ?? Promise.resolve(null)).then(
+            (options.hydratePrefetch ?? Promise.resolve(null)).then(
               (p) => (aZa(p, u), l5o(i.sessionId, p, kmr())),
             ),
-            t.restoredWorkerState,
+            options.restoredWorkerState,
             cXo().restore(uXo()),
           ]);
         if ((Zc("resume_hydrate_ms", performance.now() - u, u), d?.external || d?.internal)) {
           if (
-            (e((p) => rpc(d.external ?? {})(opc(d.internal ?? {})(p))),
+            (setAppState((p) => rpc(d.external ?? {})(opc(d.internal ?? {})(p))),
             typeof d.external?.model === "string")
           ) {
             let p = d.external.model.trim().toLowerCase() === "default" ? Ey() : d.external.model;
             if (KS(p) || xa(p))
               (py(p),
-                e((f) => ({
+                setAppState((f) => ({
                   ...f,
                   mainLoopModel: p,
                 })));
           }
         }
       } else if (i.isUrl && i.ingressUrl && ut("true")) await s5o(i.sessionId, i.ingressUrl);
-      if (!t.forkSession) {
+      if (!options.forkSession) {
         let u = performance.now(),
           d = await Tpe(i.sessionId);
         if ((Zc("resume_live_check_ms", performance.now() - u, u), d))
@@ -4955,18 +5011,18 @@ ${d}`,
       }
       let l = performance.now(),
         c = await vpe(i.sessionId, i.jsonlFile || void 0, {
-          forkSession: !!t.forkSession,
+          forkSession: !!options.forkSession,
         });
       if (
         (Zc("resume_deserialize_ms", performance.now() - l - (rZa("hooks_init_ms") ?? 0), l),
         (r = "processing_error"),
-        pFc(c, t.outputFormat))
+        pFc(c, options.outputFormat))
       )
         return {
           messages: [],
         };
-      if (!c || (c.messages.length === 0 && (i.isUrl || t.sdkUrl || !c.sessionId)))
-        if (i.isUrl || t.sdkUrl) {
+      if (!c || (c.messages.length === 0 && (i.isUrl || options.sdkUrl || !c.sessionId)))
+        if (i.isUrl || options.sdkUrl) {
           let u = [];
           if (cMe()) {
             let f = process.env.CLAUDE_CODE_RESUME_FROM_SESSION;
@@ -4984,12 +5040,12 @@ ${d}`,
               }
           }
           let d = performance.now(),
-            p = await (t.sessionStartHooksPromise ??
+            p = await (options.sessionStartHooksPromise ??
               rve({
                 kind: "session-start",
                 source: "startup",
               }));
-          if ((Zc("hooks_init_ms", performance.now() - d, d), c?.sessionId && !t.forkSession))
+          if ((Zc("hooks_init_ms", performance.now() - d, d), c?.sessionId && !options.forkSession))
             (PA(Fb(c.sessionId), "resume", c.fullPath ? q7e.dirname(c.fullPath) : null), Gse(c));
           return {
             messages: [...u, ...Eht(u, p)],
@@ -5001,14 +5057,14 @@ ${d}`,
               success: false,
               failure_reason: We("not_found_explicit_id"),
             }),
-            pnn(`No conversation found with session ID: ${i.sessionId}`, t.outputFormat),
+            pnn(`No conversation found with session ID: ${i.sessionId}`, options.outputFormat),
             Bc(1),
             {
               messages: [],
             }
           );
-      if (t.resumeSessionAt) {
-        let u = c.messages.findIndex((d) => d.uuid === t.resumeSessionAt);
+      if (options.resumeSessionAt) {
+        let u = c.messages.findIndex((d) => d.uuid === options.resumeSessionAt);
         if (u < 0)
           return (
             G("tengu_session_resumed", {
@@ -5016,7 +5072,10 @@ ${d}`,
               success: false,
               failure_reason: We("processing_error"),
             }),
-            pnn(`No message found with message.uuid of: ${t.resumeSessionAt}`, t.outputFormat),
+            pnn(
+              `No message found with message.uuid of: ${options.resumeSessionAt}`,
+              options.outputFormat,
+            ),
             Bc(1),
             {
               messages: [],
@@ -5035,7 +5094,7 @@ ${d}`,
           let { getAgentDefinitionsWithOverrides: d, getActiveAgentsFromList: p } = (ty(), ro(GSt));
           d.cache.clear?.();
           let f = await d($t());
-          e((m) => ({
+          setAppState((m) => ({
             ...m,
             agentDefinitions: {
               ...f,
@@ -5045,14 +5104,14 @@ ${d}`,
           }));
         }
       }
-      if (!t.forkSession && c.sessionId) {
+      if (!options.forkSession && c.sessionId) {
         if ((PA(Fb(c.sessionId), "resume", c.fullPath ? q7e.dirname(c.fullPath) : null), n))
           await BQ();
       }
       if (
-        (Qen(c, e),
+        (Qen(c, setAppState),
         Gse(
-          t.forkSession
+          options.forkSession
             ? {
                 ...c,
                 worktreeSession: void 0,
@@ -5062,7 +5121,7 @@ ${d}`,
               }
             : c,
         ),
-        !t.forkSession && n && c.sessionId)
+        !options.forkSession && n && c.sessionId)
       )
         Hme();
       if (WNe) Z1e(WNe.isCoordinatorMode() ? "coordinator" : "normal");
@@ -5095,7 +5154,7 @@ ${d}`,
           ? `Failed to resume session: ${s.message}`
           : "Failed to resume session with --print mode";
       return (
-        pnn(a, t.outputFormat),
+        pnn(a, options.outputFormat),
         Bc(1),
         {
           messages: [],
@@ -5104,7 +5163,7 @@ ${d}`,
     }
   }
   return {
-    messages: await (t.sessionStartHooksPromise ??
+    messages: await (options.sessionStartHooksPromise ??
       rve({
         kind: "session-start",
         source: "startup",
@@ -5213,14 +5272,23 @@ function Lvt(e) {
     scope: "dynamic",
   };
 }
-async function handleMcpSetServers(e, t, n, r, o, s, i = false, a = false) {
+async function handleMcpSetServers(
+  servers,
+  sdkState,
+  dynamicState,
+  setAppState,
+  o,
+  s,
+  i = false,
+  a = false,
+) {
   let l = new Set(
       (o?.()?.mcp.clients ?? [])
-        .filter((D) => m3t(D.name) && !(D.name in n.configs))
+        .filter((D) => m3t(D.name) && !(D.name in dynamicState.configs))
         .map((D) => D.name),
     ),
     c = {},
-    u = CB(e, (D, P) => {
+    u = CB(servers, (D, P) => {
       if (!l.has(P)) return false;
       return ((c[P] = "Builtin server is CLI-owned; ignored"), true);
     });
@@ -5243,16 +5311,16 @@ async function handleMcpSetServers(e, t, n, r, o, s, i = false, a = false) {
   for (let [D, P] of Object.entries(g))
     if (P.type === "sdk") h[D] = P;
     else y[D] = P;
-  let b = new Set(Object.keys(t.configs)),
+  let b = new Set(Object.keys(sdkState.configs)),
     _ = new Set(Object.keys(h)),
     S = [],
     A = [],
     v = {
-      ...t.configs,
+      ...sdkState.configs,
     },
-    C = [...t.clients],
-    x = [...t.tools],
-    I = [...t.commands];
+    C = [...sdkState.clients],
+    x = [...sdkState.tools],
+    I = [...sdkState.commands];
   for (let D of b)
     if (!_.has(D)) {
       let P = C.find((L) => L.name === D);
@@ -5277,7 +5345,7 @@ async function handleMcpSetServers(e, t, n, r, o, s, i = false, a = false) {
       };
       ((C = [...C, O]), S.push(D));
     }
-  let k = await reconcileMcpServers(y, n, r, o, s, i, a);
+  let k = await reconcileMcpServers(y, dynamicState, setAppState, o, s, i, a);
   return {
     response: {
       added: [...S, ...k.response.added],

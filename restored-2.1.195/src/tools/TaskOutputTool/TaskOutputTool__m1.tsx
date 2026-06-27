@@ -4,31 +4,31 @@
 // class=modified (alt of src/tools/TaskOutputTool/TaskOutputTool.tsx)  jaccard=0.2157  score=0.6427  fileCov=0.2451
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function getTaskOutputData(e) {
+async function getTaskOutputData(task) {
   let t;
-  if (e.type === "local_bash") {
-    let o = e.shellCommand?.taskOutput;
+  if (task.type === "local_bash") {
+    let o = task.shellCommand?.taskOutput;
     if (o) {
       let s = await o.getStdout(),
         i = o.getStderr();
       t = [s, i].filter(Boolean).join(`
 `);
-    } else t = await fRo(e.id);
-  } else t = await fRo(e.id);
+    } else t = await fRo(task.id);
+  } else t = await fRo(task.id);
   let n = {
-    task_id: e.id,
-    task_type: e.type,
-    status: e.status,
-    description: e.description,
+    task_id: task.id,
+    task_type: task.type,
+    status: task.status,
+    description: task.description,
     output: t,
   };
-  if (e.type === "local_bash")
+  if (task.type === "local_bash")
     return {
       ...n,
-      exitCode: e.result?.code ?? null,
+      exitCode: task.result?.code ?? null,
     };
-  if (e.type === "local_agent") {
-    let r = e,
+  if (task.type === "local_agent") {
+    let r = task,
       o = r.result
         ? zl(
             r.result.content,
@@ -44,27 +44,27 @@ async function getTaskOutputData(e) {
       error: r.error,
     };
   }
-  if (e.type === "remote_agent")
+  if (task.type === "remote_agent")
     return {
       ...n,
-      prompt: e.command,
+      prompt: task.command,
     };
   return n;
 }
-async function waitForTaskCompletion(e, t, n, r) {
+async function waitForTaskCompletion(taskId, getAppState, timeoutMs, abortController) {
   let o = Date.now();
-  while (Date.now() - o < n) {
-    if (r?.signal.aborted) throw new ru();
-    let a = t().tasks?.[e];
+  while (Date.now() - o < timeoutMs) {
+    if (abortController?.signal.aborted) throw new ru();
+    let a = getAppState().tasks?.[taskId];
     if (!a) return null;
     if (a.status !== "running" && a.status !== "pending") return a;
     await Nn(100);
   }
-  return t().tasks?.[e] ?? null;
+  return getAppState().tasks?.[taskId] ?? null;
 }
-function TaskOutputResultDisplay(e) {
+function TaskOutputResultDisplay(t0) {
   let t = x_l.c(54),
-    { content: n, verbose: r, theme: o } = e,
+    { content: n, verbose: r, theme: o } = t0,
     s = r === void 0 ? false : r,
     i = Uu("app:toggleTranscript", "Global", "ctrl+o"),
     a;

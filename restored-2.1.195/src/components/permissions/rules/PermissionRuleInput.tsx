@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pzl] deps: Vl, Ye, $I, QH, zNo, lg, vf, dr, sr, vi, $jo
 ((uzl = R(lt(), 1)), (ime = R(se(), 1)));
-function PermissionRuleInput(e) {
+function PermissionRuleInput(t0) {
   let t = fzl.c(18),
-    { onCancel: n, onSubmit: r, ruleBehavior: o } = e,
+    { onCancel: n, onSubmit: r, ruleBehavior: o } = t0,
     [s, i] = Ojo.useState(""),
     [a, l] = Ojo.useState(0),
     c;

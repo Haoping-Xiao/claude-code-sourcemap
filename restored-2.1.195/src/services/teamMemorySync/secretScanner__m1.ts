@@ -33,16 +33,16 @@ function YJe(e) {
       });
   return t;
 }
-function redactSecrets(e) {
+function redactSecrets(content) {
   mis ??= yis(true);
   for (let t of mis)
-    e = e.replace(t.re, (n, r) => {
+    content = content.replace(t.re, (n, r) => {
       if (typeof r !== "string") return "[REDACTED]";
       let o = r.length >= 2 && (r[0] === '"' || r[0] === "'") && r.at(-1) === r[0] ? r[0] : "",
         s = n.lastIndexOf(r);
       return `${n.slice(0, s)}${o}[REDACTED]${o}${n.slice(s + r.length)}`;
     });
-  return e;
+  return content;
 }
 function Vge(e) {
   if (typeof e === "string") return redactSecrets(e);

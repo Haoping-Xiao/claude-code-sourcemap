@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
 ((VUl = R(lt(), 1)), (lBo = R(rt(), 1)), (fR = R(se(), 1)));
-function CreatingStep(e) {
+function CreatingStep(t0) {
   let t = YUl.c(10),
     {
       currentWorkflowInstallStep: n,
@@ -15,7 +15,7 @@ function CreatingStep(e) {
       secretName: s,
       skipWorkflow: i,
       selectedWorkflows: a,
-    } = e,
+    } = t0,
     l = i === void 0 ? false : i,
     c;
   if (t[0] !== r || t[1] !== s || t[2] !== a || t[3] !== l || t[4] !== o)

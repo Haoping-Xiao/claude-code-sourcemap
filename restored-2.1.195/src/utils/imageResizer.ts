@@ -11,9 +11,9 @@ H8 = {
   maxBase64Size: 5242880,
   targetRawSize: 3932160,
 };
-function classifyImageError(e) {
-  if (e instanceof Error) {
-    let n = e;
+function classifyImageError(error) {
+  if (error instanceof Error) {
+    let n = error;
     if (
       n.code === "MODULE_NOT_FOUND" ||
       n.code === "ERR_MODULE_NOT_FOUND" ||
@@ -23,7 +23,7 @@ function classifyImageError(e) {
     if (n.code === "EACCES" || n.code === "EPERM") return G8d;
     if (n.code === "ENOMEM") return o8i;
   }
-  let t = be(e);
+  let t = be(error);
   if (t.includes("Native image processor module not available")) return jQr;
   if (
     t.includes("unsupported image format") ||
@@ -81,28 +81,28 @@ function c8i(e) {
   for (let n = 0; n < e.length; n++) t = ((t << 5) + t + e.charCodeAt(n)) | 0;
   return t >>> 0;
 }
-async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
-  if (e.length === 0) throw new NU("Image file is empty (0 bytes)");
+async function maybeResizeAndDownsampleImageBuffer(imageBuffer, originalSize, ext, r) {
+  if (imageBuffer.length === 0) throw new NU("Image file is empty (0 bytes)");
   try {
     let o = await lbe(),
-      i = await o(e).metadata(),
-      a = i.format ?? n,
+      i = await o(imageBuffer).metadata(),
+      a = i.format ?? ext,
       l = a === "jpg" ? "jpeg" : a;
     if (!i.width || !i.height) {
-      let h = RGe(e);
+      let h = RGe(imageBuffer);
       if (h === void 0 || h.width > r.maxWidth || h.height > r.maxHeight)
         throw new NU(
           `Unable to resize image \u2014 could not verify image dimensions are within the ${r.maxWidth}x${r.maxHeight}px API limit.`,
         );
-      if (t > r.targetRawSize)
+      if (originalSize > r.targetRawSize)
         return (
           G("tengu_image_resize", {
             over_byte_limit: true,
             over_dimension_limit: false,
-            original_size_bytes: t,
+            original_size_bytes: originalSize,
           }),
           {
-            buffer: await o(e)
+            buffer: await o(imageBuffer)
               .jpeg({
                 quality: 80,
               })
@@ -111,16 +111,16 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
           }
         );
       return {
-        buffer: e,
+        buffer: imageBuffer,
         mediaType: l,
       };
     }
     let { width: c, height: u } = i,
       d = c,
       p = u;
-    if (t <= r.targetRawSize && d <= r.maxWidth && p <= r.maxHeight)
+    if (originalSize <= r.targetRawSize && d <= r.maxWidth && p <= r.maxHeight)
       return {
-        buffer: e,
+        buffer: imageBuffer,
         mediaType: l,
         dimensions: {
           originalWidth: c,
@@ -133,16 +133,16 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
       m = l === "png";
     if (
       (G("tengu_image_resize", {
-        over_byte_limit: t > r.targetRawSize,
+        over_byte_limit: originalSize > r.targetRawSize,
         over_dimension_limit: f,
-        original_size_bytes: t,
+        original_size_bytes: originalSize,
         original_width: c,
         original_height: u,
       }),
-      !f && t > r.targetRawSize)
+      !f && originalSize > r.targetRawSize)
     ) {
       if (m) {
-        let h = await o(e)
+        let h = await o(imageBuffer)
           .png({
             compressionLevel: 9,
             palette: true,
@@ -161,7 +161,7 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
           };
       }
       for (let h of [80, 60, 40, 20]) {
-        let y = await o(e)
+        let y = await o(imageBuffer)
           .jpeg({
             quality: h,
           })
@@ -182,7 +182,7 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
     if (d > r.maxWidth) ((p = Math.round((p * r.maxWidth) / d)), (d = r.maxWidth));
     if (p > r.maxHeight) ((d = Math.round((d * r.maxHeight) / p)), (p = r.maxHeight));
     T(`Resizing to ${d}x${p}`);
-    let g = await o(e)
+    let g = await o(imageBuffer)
       .resize(d, p, {
         fit: "inside",
         withoutEnlargement: true,
@@ -190,7 +190,7 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
       .toBuffer();
     if (g.length > r.targetRawSize) {
       if (m) {
-        let _ = await o(e)
+        let _ = await o(imageBuffer)
           .resize(d, p, {
             fit: "inside",
             withoutEnlargement: true,
@@ -213,7 +213,7 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
           };
       }
       for (let _ of [80, 60, 40, 20]) {
-        let S = await o(e)
+        let S = await o(imageBuffer)
           .resize(d, p, {
             fit: "inside",
             withoutEnlargement: true,
@@ -237,7 +237,7 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
       let h = Math.min(d, 1000),
         y = Math.round((p * h) / Math.max(d, 1));
       T("Still too large, compressing with JPEG");
-      let b = await o(e)
+      let b = await o(imageBuffer)
         .resize(h, y, {
           fit: "inside",
           withoutEnlargement: true,
@@ -280,14 +280,14 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
         level: "error",
       });
     G("tengu_image_resize_failed", {
-      original_size_bytes: t,
+      original_size_bytes: originalSize,
       error_type: s,
       error_message_hash: c8i(i),
       ...l8i(o),
     });
-    let l = hUt(e).slice(6),
-      c = Math.ceil((t * 4) / 3),
-      u = RGe(e);
+    let l = hUt(imageBuffer).slice(6),
+      c = Math.ceil((originalSize * 4) / 3),
+      u = RGe(imageBuffer);
     if (u === void 0)
       throw new NU(
         "Unable to resize image \u2014 image processing is unavailable and dimensions could not be read from the file header. " +
@@ -297,19 +297,19 @@ async function maybeResizeAndDownsampleImageBuffer(e, t, n, r) {
     if (c <= r.maxBase64Size && !d)
       return (
         G("tengu_image_resize_fallback", {
-          original_size_bytes: t,
+          original_size_bytes: originalSize,
           base64_size_bytes: c,
           error_type: s,
         }),
         {
-          buffer: e,
+          buffer: imageBuffer,
           mediaType: l,
         }
       );
     throw new NU(
       d
         ? `Unable to resize image \u2014 dimensions exceed the ${r.maxWidth}x${r.maxHeight}px limit and image processing failed. Please resize the image to reduce its pixel dimensions.`
-        : `Unable to resize image (${Ra(t)} raw, ${Ra(c)} base64). The image exceeds the ${Ra(r.maxBase64Size)} API limit and compression failed. Please resize the image manually or use a smaller image.`,
+        : `Unable to resize image (${Ra(originalSize)} raw, ${Ra(c)} base64). The image exceeds the ${Ra(r.maxBase64Size)} API limit and compression failed. Please resize the image manually or use a smaller image.`,
     );
   }
 }
@@ -392,22 +392,22 @@ async function u8i(e, t) {
     limits: t,
   });
 }
-async function compressImageBuffer(e, t, n) {
-  let r = n?.split("/")[1] || "jpeg",
+async function compressImageBuffer(imageBuffer, t, originalMediaType) {
+  let r = originalMediaType?.split("/")[1] || "jpeg",
     o = r === "jpg" ? "jpeg" : r;
   try {
     let s = await lbe(),
-      i = await s(e).metadata(),
+      i = await s(imageBuffer).metadata(),
       a = i.format || o,
-      l = e.length,
+      l = imageBuffer.length,
       c = {
-        imageBuffer: e,
+        imageBuffer: imageBuffer,
         metadata: i,
         format: a,
         maxBytes: t,
         originalSize: l,
       };
-    if (l <= t) return maybeResizeAndDownsampleImageBlock(e, a, l);
+    if (l <= t) return maybeResizeAndDownsampleImageBlock(imageBuffer, a, l);
     let u = await q8d(c, s);
     if (u) return u;
     if (a === "png") {
@@ -427,23 +427,23 @@ async function compressImageBuffer(e, t, n) {
       });
     if (
       (G("tengu_image_compress_failed", {
-        original_size_bytes: e.length,
+        original_size_bytes: imageBuffer.length,
         max_bytes: t,
         error_type: i,
         error_message_hash: c8i(a),
         ...l8i(s),
       }),
-      e.length <= t)
+      imageBuffer.length <= t)
     ) {
-      let l = hUt(e);
+      let l = hUt(imageBuffer);
       return {
-        base64: e.toString("base64"),
+        base64: imageBuffer.toString("base64"),
         mediaType: l,
-        originalSize: e.length,
+        originalSize: imageBuffer.length,
       };
     }
     throw new NU(
-      `Unable to compress image (${Ra(e.length)}) to fit within ${Ra(t)}. Please use a smaller image.`,
+      `Unable to compress image (${Ra(imageBuffer.length)}) to fit within ${Ra(t)}. Please use a smaller image.`,
     );
   }
 }
@@ -466,10 +466,10 @@ async function f8i(e, t) {
     },
   };
 }
-function maybeResizeAndDownsampleImageBlock(e, t, n) {
+function maybeResizeAndDownsampleImageBlock(imageBlock, t, n) {
   let r = t === "jpg" ? "jpeg" : t;
   return {
-    base64: e.toString("base64"),
+    base64: imageBlock.toString("base64"),
     mediaType: `image/${r}`,
     originalSize: n,
   };
@@ -550,16 +550,16 @@ async function Y8d(e, t) {
     .toBuffer();
   return maybeResizeAndDownsampleImageBlock(n, "jpeg", e.originalSize);
 }
-function createImageMetadataText(e, t) {
-  let { originalWidth: n, originalHeight: r, displayWidth: o, displayHeight: s } = e;
+function createImageMetadataText(dims, sourcePath) {
+  let { originalWidth: n, originalHeight: r, displayWidth: o, displayHeight: s } = dims;
   if (!n || !r || !o || !s || o <= 0 || s <= 0) {
-    if (t) return `[Image source: ${t}]`;
+    if (sourcePath) return `[Image source: ${sourcePath}]`;
     return null;
   }
   let i = n !== o || r !== s;
-  if (!i && !t) return null;
+  if (!i && !sourcePath) return null;
   let a = [];
-  if (t) a.push(`source: ${t}`);
+  if (sourcePath) a.push(`source: ${sourcePath}`);
   if (i) {
     let l = n / o;
     a.push(

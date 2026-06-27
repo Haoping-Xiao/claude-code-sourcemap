@@ -16,8 +16,9 @@ function QBo(e, t) {
     return `This plugin is loaded via --plugin-dir for this session with no marketplace backing \u2014 it cannot be ${n}. Drop the --plugin-dir flag to stop loading it, or \`claude plugin disable\` to turn it off.`;
   return `This plugin is loaded from ${fM(Ase.join(tr(), "skills"))}/ with no marketplace backing \u2014 it cannot be ${n}. Delete the directory to remove it; \`claude plugin disable\` to turn it off; edits there take effect after /reload-plugins.`;
 }
-function assertInstallableScope(e) {
-  if (!JL.includes(e)) throw Error(`Invalid scope "${e}". Must be one of: ${JL.join(", ")}`);
+function assertInstallableScope(scope) {
+  if (!JL.includes(scope))
+    throw Error(`Invalid scope "${scope}". Must be one of: ${JL.join(", ")}`);
 }
 function GEt(e) {
   return JL.includes(e);
@@ -25,10 +26,10 @@ function GEt(e) {
 function WEt(e) {
   return e === "project" || e === "local" ? yr() : void 0;
 }
-function isPluginEnabledAtProjectScope(e) {
+function isPluginEnabledAtProjectScope(pluginId) {
   let t = yn("projectSettings")?.enabledPlugins;
   if (!t) return !1;
-  let n = Une(Object.keys(t), e);
+  let n = Une(Object.keys(t), pluginId);
   return n !== void 0 && t[n] === !0;
 }
 function qEt(e) {
@@ -124,9 +125,9 @@ function grr(e) {
     projectPath: r[0].projectPath,
   };
 }
-async function installPluginOp(e, t = "user") {
+async function installPluginOp(plugin, t = "user") {
   assertInstallableScope(t);
-  let { name: n, marketplace: r } = Qo(e);
+  let { name: n, marketplace: r } = Qo(plugin);
   if (U0(r))
     return {
       success: !1,
@@ -137,7 +138,7 @@ async function installPluginOp(e, t = "user") {
     i,
     a = !1;
   if (r) {
-    let f = await EL(e);
+    let f = await EL(plugin);
     if (!f) {
       let g = (await om())[r];
       if (g && _H(g.source) && khe(r, g, f3()[r]?.autoUpdate))
@@ -146,7 +147,7 @@ async function installPluginOp(e, t = "user") {
             skipIfRecent: !0,
           }),
             (a = !0),
-            (f = await EL(e)));
+            (f = await EL(plugin)));
         } catch (h) {
           T(`Failed to refresh marketplace '${r}' before install; using cached data: ${be(h)}`, {
             level: "warn",
@@ -272,9 +273,9 @@ async function installPluginOp(e, t = "user") {
     scope: t,
   };
 }
-async function uninstallPluginOp(e, t = "user", n = !0) {
+async function uninstallPluginOp(plugin, t = "user", n = !0) {
   assertInstallableScope(t);
-  let { marketplace: r } = Qo(e);
+  let { marketplace: r } = Qo(plugin);
   if (U0(r))
     return {
       success: !1,
@@ -282,7 +283,7 @@ async function uninstallPluginOp(e, t = "user", n = !0) {
     };
   let { enabled: o, disabled: s } = await OT(),
     i = [...o, ...s],
-    a = J2l(e, i),
+    a = J2l(plugin, i),
     l = KD(t),
     c = yn(l),
     u,
@@ -290,21 +291,21 @@ async function uninstallPluginOp(e, t = "user", n = !0) {
   if (a) {
     let x = Object.keys(c?.enabledPlugins ?? {}),
       I = a.name.toLowerCase(),
-      k = e.includes("@");
+      k = plugin.includes("@");
     ((u =
-      x.find((D) => D === e || D === a.name || D.startsWith(`${a.name}@`)) ??
+      x.find((D) => D === plugin || D === a.name || D.startsWith(`${a.name}@`)) ??
       x.find((D) => {
         let P = D.toLowerCase();
-        return Y0e(D, e) || P === I || (!k && P.startsWith(`${I}@`));
+        return Y0e(D, plugin) || P === I || (!k && P.startsWith(`${I}@`));
       }) ??
-      (k ? e : a.name)),
+      (k ? plugin : a.name)),
       (d = a.name));
   } else {
-    let x = ONf(e);
+    let x = ONf(plugin);
     if (!x)
       return {
         success: !1,
-        message: `Plugin "${e}" not found in installed plugins`,
+        message: `Plugin "${plugin}" not found in installed plugins`,
       };
     ((u = x.pluginId), (d = x.pluginName));
   }
@@ -317,20 +318,20 @@ async function uninstallPluginOp(e, t = "user", n = !0) {
     let { scope: x } = grr(u);
     if (x !== t && m && m.length > 0) {
       if (x === "project") {
-        let I = xy("plugin disable", e, "--scope local");
+        let I = xy("plugin disable", plugin, "--scope local");
         return {
           success: !1,
-          message: `Plugin "${e}" is enabled at project scope (.claude/settings.json, shared with your team). To disable just for you${I ? `: ${I}` : ", use claude plugin disable with --scope local"}`,
+          message: `Plugin "${plugin}" is enabled at project scope (.claude/settings.json, shared with your team). To disable just for you${I ? `: ${I}` : ", use claude plugin disable with --scope local"}`,
         };
       }
       return {
         success: !1,
-        message: `Plugin "${e}" is installed in ${x} scope, not ${t}. Use --scope ${x} to uninstall.`,
+        message: `Plugin "${plugin}" is installed in ${x} scope, not ${t}. Use --scope ${x} to uninstall.`,
       };
     }
     return {
       success: !1,
-      message: `Plugin "${e}" is not installed in ${t} scope. Use --scope to specify the correct scope.`,
+      message: `Plugin "${plugin}" is not installed in ${t} scope. Use --scope to specify the correct scope.`,
     };
   }
   let h = g.installPath,
@@ -361,44 +362,44 @@ async function uninstallPluginOp(e, t = "user", n = !0) {
     reverseDependents: v.length > 0 ? v : void 0,
   };
 }
-async function setPluginEnabledOp(e, t, n, r) {
-  let o = t ? "enable" : "disable",
-    { marketplace: s } = Qo(e);
-  if (hKi(e) || s === JE || s === Bne) {
+async function setPluginEnabledOp(plugin, enabled, scope, r) {
+  let o = enabled ? "enable" : "disable",
+    { marketplace: s } = Qo(plugin);
+  if (hKi(plugin) || s === JE || s === Bne) {
     let S = "user",
-      A = e,
+      A = plugin,
       v;
     if (s === JE || s === Bne) {
       let D = await OT(),
         P = J2l(
-          e,
+          plugin,
           [...D.enabled, ...D.disabled].filter((L) => Qo(L.source).marketplace === s),
         );
       if (P) ((A = P.source), (v = P.manifest.defaultEnabled === !1));
       let O = Y2l(A);
-      if (((A = O?.pluginId ?? A), n)) {
-        if (yn(KD(n))?.enabledPlugins?.[A] === void 0 && O && r1e[O.scope] > r1e[n])
+      if (((A = O?.pluginId ?? A), scope)) {
+        if (yn(KD(scope))?.enabledPlugins?.[A] === void 0 && O && r1e[O.scope] > r1e[scope])
           return {
             success: !1,
-            message: `Plugin "${A}" is set at ${O.scope} scope (which overrides ${n}). Use --scope ${O.scope} or omit --scope to auto-detect.`,
+            message: `Plugin "${A}" is set at ${O.scope} scope (which overrides ${scope}). Use --scope ${O.scope} or omit --scope to auto-detect.`,
           };
-        S = n;
+        S = scope;
       } else S = O?.scope ?? "user";
     }
-    if (t && s === JE) {
+    if (enabled && s === JE) {
       if (!Uqe())
         return {
           success: !1,
           message: IGt(fM(Ase.join(tr(), "skills"))),
         };
     }
-    if (t && GI(A))
+    if (enabled && GI(A))
       return {
         success: !1,
         message: `Plugin "${A}" is blocked by your organization's policy and cannot be enabled`,
       };
     let C = KD(S),
-      x = t && (s === JE || s === Bne) && C === "userSettings" && v === !1 ? void 0 : t,
+      x = enabled && (s === JE || s === Bne) && C === "userSettings" && v === !1 ? void 0 : enabled,
       { error: I } = io(C, {
         enabledPlugins: {
           ...yn(C)?.enabledPlugins,
@@ -420,47 +421,47 @@ async function setPluginEnabledOp(e, t, n, r) {
       scope: S,
     };
   }
-  if (n) assertInstallableScope(n);
+  if (scope) assertInstallableScope(scope);
   let i,
     a,
-    l = Y2l(e);
-  if (n) {
-    if (((a = n), l)) i = l.pluginId;
-    else if (e.includes("@")) i = e;
+    l = Y2l(plugin);
+  if (scope) {
+    if (((a = scope), l)) i = l.pluginId;
+    else if (plugin.includes("@")) i = plugin;
     else
       return {
         success: !1,
-        message: `Plugin "${e}" not found in settings. Use plugin@marketplace format.`,
+        message: `Plugin "${plugin}" not found in settings. Use plugin@marketplace format.`,
       };
   } else if (l) ((i = l.pluginId), (a = l.scope));
-  else if (e.includes("@")) ((i = e), (a = "user"));
+  else if (plugin.includes("@")) ((i = plugin), (a = "user"));
   else
     return {
       success: !1,
-      message: `Plugin "${e}" not found in any editable settings scope. Use plugin@marketplace format.`,
+      message: `Plugin "${plugin}" not found in any editable settings scope. Use plugin@marketplace format.`,
     };
-  if (t && GI(i))
+  if (enabled && GI(i))
     return {
       success: !1,
       message: `Plugin "${i}" is blocked by your organization's policy and cannot be enabled`,
     };
   let c = KD(a),
     u = yn(c)?.enabledPlugins?.[i],
-    d = n && l && r1e[n] > r1e[l.scope];
-  if (n && u === void 0 && l && l.scope !== n && !d)
+    d = scope && l && r1e[scope] > r1e[l.scope];
+  if (scope && u === void 0 && l && l.scope !== scope && !d)
     return {
       success: !1,
-      message: `Plugin "${e}" is installed at ${l.scope} scope, not ${n}. Use --scope ${l.scope} or omit --scope to auto-detect.`,
+      message: `Plugin "${plugin}" is installed at ${l.scope} scope, not ${scope}. Use --scope ${l.scope} or omit --scope to auto-detect.`,
     };
-  let p = n && !d ? u === !0 : Ese().has(i);
-  if (t === p)
+  let p = scope && !d ? u === !0 : Ese().has(i);
+  if (enabled === p)
     return {
       success: !1,
       alreadyInGoalState: !0,
-      message: `Plugin "${e}" is already ${t ? "enabled" : "disabled"}${n ? ` at ${n} scope` : ""}`,
+      message: `Plugin "${plugin}" is already ${enabled ? "enabled" : "disabled"}${scope ? ` at ${scope} scope` : ""}`,
     };
   let f;
-  if (!t) {
+  if (!enabled) {
     let { enabled: S, disabled: A } = await OT(),
       v = ZPn(i, [...S, ...A]);
     if (v.length > 0) f = v;
@@ -478,7 +479,7 @@ async function setPluginEnabledOp(e, t, n, r) {
     }
   }
   let m = [];
-  if (t) {
+  if (enabled) {
     let { enabled: S, disabled: A } = await OT(),
       { closure: v, missing: C } = XKi(i, [...S, ...A]);
     if (C.length > 0) {
@@ -527,7 +528,7 @@ async function setPluginEnabledOp(e, t, n, r) {
   }
   let g = {
       ...yn(c)?.enabledPlugins,
-      [i]: t,
+      [i]: enabled,
       ...Object.fromEntries(m.map((S) => [S, !0])),
     },
     { error: h } = io(c, {
@@ -538,7 +539,7 @@ async function setPluginEnabledOp(e, t, n, r) {
       success: !1,
       message: `Failed to ${o} plugin: ${h.message}`,
     };
-  if ((Ah(), t)) (jPn([i, ...m]), xKi([i, ...m]));
+  if ((Ah(), enabled)) (jPn([i, ...m]), xKi([i, ...m]));
   let { name: y } = Qo(i),
     b = Eeo(f),
     _ =
@@ -588,15 +589,15 @@ ${n.join(`
     message: `Disabled ${t.length} ${bn(t.length, "plugin")}`,
   };
 }
-async function updatePluginOp(e, t) {
-  let { name: n, marketplace: r } = Qo(e);
+async function updatePluginOp(plugin, scope) {
+  let { name: n, marketplace: r } = Qo(plugin);
   if (U0(r))
     return {
       success: !1,
       message: QBo(r, "update"),
     };
   let o = r,
-    s = o ? `${n}@${o}` : e,
+    s = o ? `${n}@${o}` : plugin,
     i = BL(),
     a = Une(Object.keys(i.plugins), s);
   if (a) ((s = a), ({ marketplace: o } = Qo(s)));
@@ -609,7 +610,7 @@ async function updatePluginOp(e, t) {
         success: !1,
         message: `Plugin "${n}" is from marketplace "${o}", which is blocked by your organization's policy`,
         pluginId: s,
-        scope: t,
+        scope: scope,
       };
     if (b && (b.source === "github" || b.source === "git" || b.source === "url"))
       try {
@@ -629,7 +630,7 @@ async function updatePluginOp(e, t) {
       success: !1,
       message: `Plugin "${n}" not found`,
       pluginId: s,
-      scope: t,
+      scope: scope,
     };
   let { entry: d, marketplaceInstallLocation: p } = u;
   if (!l || l.length === 0)
@@ -637,26 +638,26 @@ async function updatePluginOp(e, t) {
       success: !1,
       message: `Plugin "${n}" is not installed`,
       pluginId: s,
-      scope: t,
+      scope: scope,
     };
-  let f = WEt(t),
-    m = l.filter((y) => y.scope === t),
+  let f = WEt(scope),
+    m = l.filter((y) => y.scope === scope),
     g = m.find((y) => y.projectPath === f);
   if (!g && m.length > 1)
     T(
-      `updatePluginOp: ${m.length} ${t}-scope installs, none match CWD '${f}'; updating '${m[0]?.projectPath}' only`,
+      `updatePluginOp: ${m.length} ${scope}-scope installs, none match CWD '${f}'; updating '${m[0]?.projectPath}' only`,
       {
         level: "warn",
       },
     );
   let h = g ?? m[0];
   if (!h) {
-    let y = f ? `${t} (${f})` : t;
+    let y = f ? `${scope} (${f})` : scope;
     return {
       success: !1,
       message: `Plugin "${n}" is not installed at scope ${y}`,
       pluginId: s,
-      scope: t,
+      scope: scope,
     };
   }
   return performPluginUpdate({
@@ -665,7 +666,7 @@ async function updatePluginOp(e, t) {
     entry: d,
     marketplaceInstallLocation: p,
     installation: h,
-    scope: t,
+    scope: scope,
     projectPath: h.projectPath,
     refreshWarning: c,
   });

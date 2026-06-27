@@ -4,11 +4,11 @@
 // class=modified  jaccard=0.4335  score=0.8369  fileCov=0.4735
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function createTokenizer(e) {
+function createTokenizer(options) {
   let t = "ground",
     n = "",
-    r = e?.x10Mouse ?? false,
-    o = e?.forOutput ?? false;
+    r = options?.x10Mouse ?? false,
+    o = options?.forOutput ?? false;
   return {
     feed(s) {
       let i = tokenize(s, t, n, false, r, o);
@@ -26,13 +26,13 @@ function createTokenizer(e) {
     },
   };
 }
-function tokenize(e, t, n, r, o, s) {
+function tokenize(input, initialState, initialBuffer, flush, x10Mouse, s) {
   let i = [],
     a = {
-      state: t,
+      state: initialState,
       buffer: "",
     },
-    l = n + e,
+    l = initialBuffer + input,
     c = 0,
     u = 0,
     d = 0,
@@ -83,11 +83,11 @@ function tokenize(e, t, n, r, o, s) {
         if (m === gW.CSI) ((a.state = "csi"), c++);
         else if (m === gW.OSC) ((a.state = "osc"), c++);
         else if (m === gW.DCS) ((a.state = "dcs"), c++);
-        else if (!o && m === gW.APC) ((a.state = "apc"), c++);
-        else if (!o && m === gW.PM) ((a.state = "pm"), c++);
-        else if (!o && (m === gW.SOS || m === 107)) ((a.state = "sos"), c++);
+        else if (!x10Mouse && m === gW.APC) ((a.state = "apc"), c++);
+        else if (!x10Mouse && m === gW.PM) ((a.state = "pm"), c++);
+        else if (!x10Mouse && (m === gW.SOS || m === 107)) ((a.state = "sos"), c++);
         else if (m === 79) ((a.state = "ss3"), c++);
-        else if (o && (m === 32 || m === 13 || m === 10 || m === 9))
+        else if (x10Mouse && (m === 32 || m === 13 || m === 10 || m === 9))
           (c++,
             i.push({
               type: "text",
@@ -95,7 +95,7 @@ function tokenize(e, t, n, r, o, s) {
             }),
             (a.state = "ground"),
             (u = c));
-        else if (o && YNt(m))
+        else if (x10Mouse && YNt(m))
           (i.push({
             type: "text",
             value: l.slice(d, c),
@@ -130,7 +130,7 @@ function tokenize(e, t, n, r, o, s) {
         break;
       case "csi":
         if (
-          o &&
+          x10Mouse &&
           m === 77 &&
           c - d === 2 &&
           (c + 1 >= l.length || l.charCodeAt(c + 1) >= 32) &&
@@ -164,7 +164,7 @@ function tokenize(e, t, n, r, o, s) {
     }
   }
   if (a.state === "ground") p();
-  else if (r) {
+  else if (flush) {
     let m = l.slice(d);
     if (m)
       i.push({

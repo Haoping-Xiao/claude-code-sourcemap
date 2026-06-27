@@ -53,7 +53,7 @@ function YZp() {
 function XZp(e) {
   return Ia(e);
 }
-function NotebookEditToolDiffInner(e) {
+function NotebookEditToolDiffInner(t0) {
   let t = Rvo.c(34),
     {
       notebook_path: n,
@@ -64,7 +64,7 @@ function NotebookEditToolDiffInner(e) {
       verbose: a,
       width: l,
       promise: c,
-    } = e,
+    } = t0,
     u = i === void 0 ? "replace" : i,
     d = i6n.use(c),
     p;

@@ -13,9 +13,9 @@ function xpc(e) {
     return 'Plugin name cannot contain path separators (/ or \\), ".." sequences, or be "."';
   return null;
 }
-function loadPluginLspServers(e) {
-  let { name: t, description: n, author: r } = e,
-    o = e.with ?? [],
+function loadPluginLspServers(plugin) {
+  let { name: t, description: n, author: r } = plugin,
+    o = plugin.with ?? [],
     s = [],
     i = {
       $schema: Pam,

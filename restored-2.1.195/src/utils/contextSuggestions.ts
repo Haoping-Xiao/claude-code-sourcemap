@@ -21,12 +21,12 @@ function h1l(e) {
     t
   );
 }
-function checkNearCapacity(e, t) {
-  if (e.percentage >= g1l)
-    t.push({
+function checkNearCapacity(data, suggestions) {
+  if (data.percentage >= g1l)
+    suggestions.push({
       severity: "warning",
-      title: `Context is ${e.percentage}% full`,
-      detail: e.isAutoCompactEnabled
+      title: `Context is ${data.percentage}% full`,
+      detail: data.isAutoCompactEnabled
         ? "Autocompact will trigger soon, which discards older messages. Use /compact now to control what gets kept."
         : Oe.DISABLE_COMPACT
           ? "Compaction is disabled."
@@ -43,65 +43,65 @@ function UPf(e, t) {
     if (s) t.push(s);
   }
 }
-function getLargeToolSuggestion(e, t, n) {
-  let r = gl(t);
-  switch (e) {
+function getLargeToolSuggestion(toolName, tokens, percent) {
+  let r = gl(tokens);
+  switch (toolName) {
     case Co:
     case Ss:
       return {
         severity: "warning",
-        title: `${e} results using ${r} tokens (${n.toFixed(0)}%)`,
+        title: `${toolName} results using ${r} tokens (${percent.toFixed(0)}%)`,
         detail:
-          e === Ss
+          toolName === Ss
             ? "Pipe output through Select-Object -First/-Last or Select-String to reduce result size. Avoid Get-Content on large files \u2014 use Read with offset/limit instead."
             : "Pipe output through head, tail, or grep to reduce result size. Avoid cat on large files \u2014 use Read with offset/limit instead.",
-        savingsTokens: Math.floor(t * 0.5),
+        savingsTokens: Math.floor(tokens * 0.5),
       };
     case Ds:
       return {
         severity: "info",
-        title: `Read results using ${r} tokens (${n.toFixed(0)}%)`,
+        title: `Read results using ${r} tokens (${percent.toFixed(0)}%)`,
         detail:
           "Use offset and limit parameters to read only the sections you need. Avoid re-reading entire files when you only need a few lines.",
-        savingsTokens: Math.floor(t * 0.3),
+        savingsTokens: Math.floor(tokens * 0.3),
       };
     case qc:
       return {
         severity: "info",
-        title: `Grep results using ${r} tokens (${n.toFixed(0)}%)`,
+        title: `Grep results using ${r} tokens (${percent.toFixed(0)}%)`,
         detail:
           "Add more specific patterns or use the glob or type parameter to narrow file types. Consider Glob for file discovery instead of Grep.",
-        savingsTokens: Math.floor(t * 0.3),
+        savingsTokens: Math.floor(tokens * 0.3),
       };
     case Sb:
       return {
         severity: "info",
-        title: `WebFetch results using ${r} tokens (${n.toFixed(0)}%)`,
+        title: `WebFetch results using ${r} tokens (${percent.toFixed(0)}%)`,
         detail:
           "Web page content can be very large. Consider extracting only the specific information needed.",
-        savingsTokens: Math.floor(t * 0.4),
+        savingsTokens: Math.floor(tokens * 0.4),
       };
     default:
-      if (n >= 20)
+      if (percent >= 20)
         return {
           severity: "info",
-          title: `${e} using ${r} tokens (${n.toFixed(0)}%)`,
+          title: `${toolName} using ${r} tokens (${percent.toFixed(0)}%)`,
           detail: "This tool is consuming a significant portion of context.",
-          savingsTokens: Math.floor(t * 0.2),
+          savingsTokens: Math.floor(tokens * 0.2),
         };
       return null;
   }
 }
-function checkReadResultBloat(e, t) {
-  if (!e.messageBreakdown) return;
-  let r = e.messageBreakdown.toolCallsByType.find((a) => a.name === Ds);
+function checkReadResultBloat(data, suggestions) {
+  if (!data.messageBreakdown) return;
+  let r = data.messageBreakdown.toolCallsByType.find((a) => a.name === Ds);
   if (!r) return;
   let o = r.callTokens + r.resultTokens,
-    s = (o / e.rawMaxTokens) * 100,
-    i = (r.resultTokens / e.rawMaxTokens) * 100;
+    s = (o / data.rawMaxTokens) * 100,
+    i = (r.resultTokens / data.rawMaxTokens) * 100;
   if (s >= m1l && o >= iNo) return;
   if (i >= $Pf && r.resultTokens >= iNo)
-    t.push({
+    suggestions.push({
       severity: "info",
       title: `File reads using ${gl(r.resultTokens)} tokens (${i.toFixed(0)}%)`,
       detail:
@@ -109,16 +109,16 @@ function checkReadResultBloat(e, t) {
       savingsTokens: Math.floor(r.resultTokens * 0.3),
     });
 }
-function checkMemoryBloat(e, t) {
-  let n = e.memoryFiles.reduce((o, s) => o + s.tokens, 0),
-    r = (n / e.rawMaxTokens) * 100;
+function checkMemoryBloat(data, suggestions) {
+  let n = data.memoryFiles.reduce((o, s) => o + s.tokens, 0),
+    r = (n / data.rawMaxTokens) * 100;
   if (r >= OPf && n >= NPf) {
-    let o = [...e.memoryFiles]
+    let o = [...data.memoryFiles]
       .sort((s, i) => i.tokens - s.tokens)
       .slice(0, 3)
       .map((s) => `${kd(s.path)} (${gl(s.tokens)})`)
       .join(", ");
-    t.push({
+    suggestions.push({
       severity: "info",
       title: `Memory files using ${gl(n)} tokens (${r.toFixed(0)}%)`,
       detail: `Largest: ${o}. Use /memory to review and prune stale entries.`,
@@ -126,9 +126,14 @@ function checkMemoryBloat(e, t) {
     });
   }
 }
-function checkAutoCompactDisabled(e, t) {
-  if (!e.isAutoCompactEnabled && !Oe.DISABLE_COMPACT && e.percentage >= 50 && e.percentage < g1l)
-    t.push({
+function checkAutoCompactDisabled(data, suggestions) {
+  if (
+    !data.isAutoCompactEnabled &&
+    !Oe.DISABLE_COMPACT &&
+    data.percentage >= 50 &&
+    data.percentage < g1l
+  )
+    suggestions.push({
       severity: "info",
       title: "Autocompact is disabled",
       detail:

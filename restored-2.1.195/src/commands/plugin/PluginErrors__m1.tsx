@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NKe] deps: Lo, je, At, vn, dr, KPn, _k, lE, $g, vfe, ZC
 m2l = require("path");
-async function formatErrorMessage(e) {
+async function formatErrorMessage(error) {
   let t = new Map();
-  for (let a of e) {
+  for (let a of error) {
     if (a.type !== "dependency-unsatisfied" || a.reason !== "not-found") continue;
     let l = t.get(a.dependency);
     if (!l) ((l = new Set()), t.set(a.dependency, l));

@@ -181,9 +181,9 @@ function Fjl(e) {
 function yUo(e) {
   return e === null ? "null" : Array.isArray(e) ? "array" : typeof e;
 }
-function detectManifestType(e) {
-  let t = _f.basename(e),
-    n = _f.basename(_f.dirname(e));
+function detectManifestType(filePath) {
+  let t = _f.basename(filePath),
+    n = _f.basename(_f.dirname(filePath));
   if (t === "plugin.json") return "plugin";
   if (t === "marketplace.json") return "marketplace";
   if (n === ".claude-plugin") return "plugin";
@@ -241,12 +241,12 @@ function l1e(e, t, n, r, o) {
     });
   }
 }
-function checkPathTraversal(e, t, n, r) {
+function checkPathTraversal(e, field, errors, hint) {
   if (e.includes(".."))
-    n.push({
-      path: t,
-      message: r
-        ? `Path contains "..": ${e}. ${r}`
+    errors.push({
+      path: field,
+      message: hint
+        ? `Path contains "..": ${e}. ${hint}`
         : `Path contains ".." which could be a path traversal attempt: ${e}`,
     });
 }
@@ -254,10 +254,10 @@ function marketplaceSourceHint(e) {
   let t = e.replace(/^(\.\.\/)+/, "");
   return `Plugin source paths are resolved relative to the marketplace root (the directory containing .claude-plugin/), not relative to marketplace.json. Use "${t !== e ? `./${t}` : "./plugins/my-plugin"}" instead of "${e}".`;
 }
-async function validatePluginManifest(e) {
+async function validatePluginManifest(filePath) {
   let t = [],
     n = [],
-    r = _f.resolve(e),
+    r = _f.resolve(filePath),
     o;
   try {
     o = await Gq.readFile(r, {
@@ -428,10 +428,10 @@ async function validatePluginManifest(e) {
     fileType: "plugin",
   };
 }
-async function validateMarketplaceManifest(e) {
+async function validateMarketplaceManifest(filePath) {
   let t = [],
     n = [],
-    r = _f.resolve(e),
+    r = _f.resolve(filePath),
     o;
   try {
     o = await Gq.readFile(r, {
@@ -688,10 +688,10 @@ async function validateMarketplaceManifest(e) {
     fileType: "marketplace",
   };
 }
-function validateComponentFile(e, t, n) {
+function validateComponentFile(filePath, content, fileType) {
   let r = [],
     o = [],
-    s = t.match(I_e);
+    s = content.match(I_e);
   if (!s)
     return (
       o.push({
@@ -703,8 +703,8 @@ function validateComponentFile(e, t, n) {
         success: true,
         errors: r,
         warnings: o,
-        filePath: e,
-        fileType: n,
+        filePath: filePath,
+        fileType: fileType,
       }
     );
   let i = s[1] || "",
@@ -715,14 +715,14 @@ function validateComponentFile(e, t, n) {
     return (
       r.push({
         path: "frontmatter",
-        message: `YAML frontmatter failed to parse: ${be(d)}. At runtime this ${n} loads with empty metadata (all frontmatter fields silently dropped).`,
+        message: `YAML frontmatter failed to parse: ${be(d)}. At runtime this ${fileType} loads with empty metadata (all frontmatter fields silently dropped).`,
       }),
       {
         success: false,
         errors: r,
         warnings: o,
-        filePath: e,
-        fileType: n,
+        filePath: filePath,
+        fileType: fileType,
       }
     );
   }
@@ -736,8 +736,8 @@ function validateComponentFile(e, t, n) {
         success: false,
         errors: r,
         warnings: o,
-        filePath: e,
-        fileType: n,
+        filePath: filePath,
+        fileType: fileType,
       }
     );
   let l = a;
@@ -751,7 +751,7 @@ function validateComponentFile(e, t, n) {
   } else
     o.push({
       path: "description",
-      message: `No description in frontmatter. A description helps users and Claude understand when to use this ${n}.`,
+      message: `No description in frontmatter. A description helps users and Claude understand when to use this ${fileType}.`,
     });
   if (l.name !== void 0 && l.name !== null && typeof l.name !== "string")
     r.push({
@@ -790,8 +790,8 @@ function validateComponentFile(e, t, n) {
     success: r.length === 0,
     errors: r,
     warnings: o,
-    filePath: e,
-    fileType: n,
+    filePath: filePath,
+    fileType: fileType,
   };
 }
 async function CBf(e) {
@@ -856,10 +856,10 @@ async function CBf(e) {
     fileType: "hooks",
   };
 }
-async function collectMarkdown(e, t) {
+async function collectMarkdown(dir, isSkillsDir) {
   let n;
   try {
-    n = await Gq.readdir(e, {
+    n = await Gq.readdir(dir, {
       withFileTypes: true,
     });
   } catch (o) {
@@ -867,21 +867,22 @@ async function collectMarkdown(e, t) {
     if (s === "ENOENT" || s === "ENOTDIR") return [];
     throw o;
   }
-  if (t) return n.filter((o) => o.isDirectory()).map((o) => _f.join(e, o.name, "SKILL.md"));
+  if (isSkillsDir)
+    return n.filter((o) => o.isDirectory()).map((o) => _f.join(dir, o.name, "SKILL.md"));
   let r = [];
   for (let o of n) {
-    let s = _f.join(e, o.name);
+    let s = _f.join(dir, o.name);
     if (o.isDirectory()) r.push(...(await collectMarkdown(s, false)));
     else if (o.isFile() && o.name.toLowerCase().endsWith(".md")) r.push(s);
   }
   return r;
 }
-async function validatePluginContents(e) {
+async function validatePluginContents(pluginDir) {
   let t = [],
     n = new Set(["claude.md", "claude.local.md"]),
     r = [];
   try {
-    r = await Gq.readdir(e, {
+    r = await Gq.readdir(pluginDir, {
       withFileTypes: true,
     });
   } catch {}
@@ -900,14 +901,14 @@ async function validatePluginContents(e) {
           message: `${i.name} at the plugin root is not loaded as project context. ${l}`,
         },
       ],
-      filePath: _f.join(e, i.name),
+      filePath: _f.join(pluginDir, i.name),
       fileType: "plugin",
     });
   }
   let o = [
-    ["skill", _f.join(e, "skills")],
-    ["agent", _f.join(e, "agents")],
-    ["command", _f.join(e, "commands")],
+    ["skill", _f.join(pluginDir, "skills")],
+    ["agent", _f.join(pluginDir, "agents")],
+    ["command", _f.join(pluginDir, "commands")],
   ];
   for (let [i, a] of o) {
     let l = await collectMarkdown(a, i === "skill");
@@ -937,7 +938,7 @@ async function validatePluginContents(e) {
       if (d.errors.length > 0 || d.warnings.length > 0) t.push(d);
     }
   }
-  let s = await CBf(_f.join(e, "hooks", "hooks.json"));
+  let s = await CBf(_f.join(pluginDir, "hooks", "hooks.json"));
   if (s.errors.length > 0 || s.warnings.length > 0) t.push(s);
   return t;
 }
@@ -980,8 +981,8 @@ async function gUo(e) {
     if (!c.success) e.success = false;
   }
 }
-async function validateManifest(e) {
-  let t = _f.resolve(e),
+async function validateManifest(filePath) {
+  let t = _f.resolve(filePath),
     n = null;
   try {
     n = await Gq.stat(t);
@@ -1011,11 +1012,11 @@ async function validateManifest(e) {
       fileType: "plugin",
     };
   }
-  switch (detectManifestType(e)) {
+  switch (detectManifestType(filePath)) {
     case "plugin":
-      return validatePluginManifest(e);
+      return validatePluginManifest(filePath);
     case "marketplace": {
-      let o = await validateMarketplaceManifest(e);
+      let o = await validateMarketplaceManifest(filePath);
       return (await gUo(o), o);
     }
     case "unknown": {
@@ -1025,7 +1026,7 @@ async function validateManifest(e) {
           }),
           s = Ft(o);
         if (Array.isArray(s.plugins)) {
-          let i = await validateMarketplaceManifest(e);
+          let i = await validateMarketplaceManifest(filePath);
           return (await gUo(i), i);
         }
       } catch (o) {
@@ -1043,7 +1044,7 @@ async function validateManifest(e) {
             fileType: "plugin",
           };
       }
-      return validatePluginManifest(e);
+      return validatePluginManifest(filePath);
     }
   }
 }

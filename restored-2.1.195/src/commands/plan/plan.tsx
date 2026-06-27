@@ -75,8 +75,8 @@ function Wqf(e) {
   else l = t[9];
   return l;
 }
-async function call(e, t, n) {
-  let { getAppState: r, setAppState: o } = t,
+async function call(onDone, context, args) {
+  let { getAppState: r, setAppState: o } = context,
     i = r().toolPermissionContext.mode,
     a = i !== "plan";
   if (a)
@@ -89,25 +89,26 @@ async function call(e, t, n) {
           destination: "session",
         }),
       })));
-  if (NA()) return (e(a ? "Enabled plan mode" : "Already in plan mode."), null);
+  if (NA()) return (onDone(a ? "Enabled plan mode" : "Already in plan mode."), null);
   if (a) {
-    let g = n.trim();
+    let g = args.trim();
     if (g && g !== "open")
       return (
-        e("Enabled plan mode", {
+        onDone("Enabled plan mode", {
           shouldQuery: true,
         }),
         null
       );
-    if (!jAt()) return (e("Enabled plan mode"), null);
+    if (!jAt()) return (onDone("Enabled plan mode"), null);
   }
   let l = bP(),
     c = _P();
-  if (!l) return (e(a ? "Enabled plan mode" : "Already in plan mode. No plan written yet."), null);
-  if (n.trim().split(/\s+/)[0] === "open") {
+  if (!l)
+    return (onDone(a ? "Enabled plan mode" : "Already in plan mode. No plan written yet."), null);
+  if (args.trim().split(/\s+/)[0] === "open") {
     let g = await yz(c);
-    if (g.error) e(g.error);
-    else e(`Opened plan in editor: ${c}`);
+    if (g.error) onDone(g.error);
+    else onDone(`Opened plan in editor: ${c}`);
     return null;
   }
   let d = $q(),
@@ -119,6 +120,6 @@ async function call(e, t, n) {
         editorName: p,
       }),
     );
-  return (e(m), null);
+  return (onDone(m), null);
 }
 var Pzl, Rse;

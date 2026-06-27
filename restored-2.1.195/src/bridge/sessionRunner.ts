@@ -13,10 +13,10 @@ function GYf(e, t) {
   if (r) return `${n} ${r}`;
   return n;
 }
-function extractActivities(e, t, n) {
+function extractActivities(line, sessionId, onDebug) {
   let r;
   try {
-    r = Ft(e);
+    r = Ft(line);
   } catch {
     return [];
   }
@@ -42,7 +42,7 @@ function extractActivities(e, t, n) {
             summary: f,
             timestamp: i,
           }),
-            n(`[bridge:activity] sessionId=${t} tool_use name=${d} ${VYf(p)}`));
+            onDebug(`[bridge:activity] sessionId=${sessionId} tool_use name=${d} ${VYf(p)}`));
         } else if (u.type === "text") {
           let d = u.text ?? "";
           if (d.length > 0)
@@ -51,7 +51,7 @@ function extractActivities(e, t, n) {
               summary: d.slice(0, 80),
               timestamp: i,
             }),
-              n(`[bridge:activity] sessionId=${t} text "${d.slice(0, 100)}"`));
+              onDebug(`[bridge:activity] sessionId=${sessionId} text "${d.slice(0, 100)}"`));
         }
       }
       break;
@@ -64,7 +64,7 @@ function extractActivities(e, t, n) {
           summary: "Session completed",
           timestamp: i,
         }),
-          n(`[bridge:activity] sessionId=${t} result subtype=success`));
+          onDebug(`[bridge:activity] sessionId=${sessionId} result subtype=success`));
       else if (a) {
         let c = o.errors?.[0] ?? `Error: ${a}`;
         (s.push({
@@ -72,8 +72,8 @@ function extractActivities(e, t, n) {
           summary: c,
           timestamp: i,
         }),
-          n(`[bridge:activity] sessionId=${t} result subtype=${a} error="${c}"`));
-      } else n(`[bridge:activity] sessionId=${t} result subtype=undefined`);
+          onDebug(`[bridge:activity] sessionId=${sessionId} result subtype=${a} error="${c}"`));
+      } else onDebug(`[bridge:activity] sessionId=${sessionId} result subtype=undefined`);
       break;
     }
     default:
@@ -81,9 +81,9 @@ function extractActivities(e, t, n) {
   }
   return s;
 }
-function extractUserMessageText(e) {
-  if (e.parent_tool_use_id != null || e.isSynthetic || e.isReplay) return;
-  let n = e.message?.content,
+function extractUserMessageText(msg) {
+  if (msg.parent_tool_use_id != null || msg.isSynthetic || msg.isReplay) return;
+  let n = msg.message?.content,
     r;
   if (typeof n === "string") r = n;
   else if (Array.isArray(n)) {
@@ -103,29 +103,29 @@ function VYf(e) {
   }
   return t.join(" ");
 }
-function createSessionSpawner(e) {
+function createSessionSpawner(deps) {
   return {
     spawn(t, n) {
       let r = Gir(t.sessionId),
         o;
-      if (e.debugFile) {
-        let y = e.debugFile.lastIndexOf(".");
-        if (y > 0) o = `${e.debugFile.slice(0, y)}-${r}${e.debugFile.slice(y)}`;
-        else o = `${e.debugFile}-${r}`;
-      } else if (e.verbose) o = eQt.join(qE(), `bridge-session-${r}.log`);
+      if (deps.debugFile) {
+        let y = deps.debugFile.lastIndexOf(".");
+        if (y > 0) o = `${deps.debugFile.slice(0, y)}-${r}${deps.debugFile.slice(y)}`;
+        else o = `${deps.debugFile}-${r}`;
+      } else if (deps.verbose) o = eQt.join(qE(), `bridge-session-${r}.log`);
       let s = null,
         i;
-      if (e.debugFile)
-        ((i = eQt.join(eQt.dirname(e.debugFile), `bridge-transcript-${r}.jsonl`)),
+      if (deps.debugFile)
+        ((i = eQt.join(eQt.dirname(deps.debugFile), `bridge-transcript-${r}.jsonl`)),
           (s = mtc.createWriteStream(i, {
             flags: "a",
           })),
           s.on("error", (y) => {
-            (e.onDebug(`[bridge:session] Transcript write error: ${y.message}`), (s = null));
+            (deps.onDebug(`[bridge:session] Transcript write error: ${y.message}`), (s = null));
           }),
-          e.onDebug(`[bridge:session] Transcript log: ${i}`));
+          deps.onDebug(`[bridge:session] Transcript log: ${i}`));
       let a = [
-          ...e.scriptArgs,
+          ...deps.scriptArgs,
           "--print",
           "--sdk-url",
           t.sdkUrl,
@@ -136,15 +136,15 @@ function createSessionSpawner(e) {
           "--output-format",
           "stream-json",
           "--replay-user-messages",
-          ...(e.verbose ? ["--verbose"] : []),
+          ...(deps.verbose ? ["--verbose"] : []),
           ...(o ? ["--debug-file", o] : []),
-          ...(e.permissionMode ? ["--permission-mode", e.permissionMode] : []),
+          ...(deps.permissionMode ? ["--permission-mode", deps.permissionMode] : []),
         ],
         l = {
-          ...e.env,
+          ...deps.env,
           CLAUDE_CODE_OAUTH_TOKEN: void 0,
           CLAUDE_CODE_ENVIRONMENT_KIND: "bridge",
-          ...(e.sandbox && {
+          ...(deps.sandbox && {
             CLAUDE_CODE_FORCE_SANDBOX: "1",
           }),
           CLAUDE_CODE_SESSION_ACCESS_TOKEN: t.accessToken,
@@ -154,20 +154,20 @@ function createSessionSpawner(e) {
           }),
         };
       if (
-        (e.onDebug(
+        (deps.onDebug(
           `[bridge:session] Spawning sessionId=${t.sessionId} sdkUrl=${t.sdkUrl} accessToken=${t.accessToken ? "present" : "MISSING"}`,
         ),
-        e.onDebug(`[bridge:session] Child args: ${a.join(" ")}`),
+        deps.onDebug(`[bridge:session] Child args: ${a.join(" ")}`),
         o)
       )
-        e.onDebug(`[bridge:session] Debug log: ${o}`);
-      let c = ftc.spawn(e.execPath, a, {
+        deps.onDebug(`[bridge:session] Debug log: ${o}`);
+      let c = ftc.spawn(deps.execPath, a, {
         cwd: n,
         stdio: ["pipe", "pipe", "pipe"],
         env: l,
         windowsHide: true,
       });
-      e.onDebug(`[bridge:session] sessionId=${t.sessionId} pid=${c.pid}`);
+      deps.onDebug(`[bridge:session] sessionId=${t.sessionId} pid=${c.pid}`);
       let u = [],
         d = null,
         p = [],
@@ -179,7 +179,7 @@ function createSessionSpawner(e) {
             input: c.stderr,
           })
           .on("line", (b) => {
-            if (e.verbose)
+            if (deps.verbose)
               process.stderr.write(
                 b +
                   `
@@ -200,16 +200,16 @@ function createSessionSpawner(e) {
                   `
 `,
               );
-            if ((e.onDebug(`[bridge:ws] sessionId=${t.sessionId} <<< ${Ugo(b)}`), e.verbose))
+            if ((deps.onDebug(`[bridge:ws] sessionId=${t.sessionId} <<< ${Ugo(b)}`), deps.verbose))
               process.stderr.write(
                 b +
                   `
 `,
               );
-            let _ = extractActivities(b, t.sessionId, e.onDebug);
+            let _ = extractActivities(b, t.sessionId, deps.onDebug);
             for (let S of _) {
               if (u.length >= UYf) u.shift();
-              (u.push(S), (d = S), e.onActivity?.(t.sessionId, S));
+              (u.push(S), (d = S), deps.onActivity?.(t.sessionId, S));
             }
             {
               let S;
@@ -219,8 +219,8 @@ function createSessionSpawner(e) {
               if (S && typeof S === "object") {
                 let A = S;
                 if (A.type === "control_request") {
-                  if (A.request?.subtype === "can_use_tool" && e.onPermissionRequest)
-                    e.onPermissionRequest(t.sessionId, S, t.accessToken);
+                  if (A.request?.subtype === "can_use_tool" && deps.onPermissionRequest)
+                    deps.onPermissionRequest(t.sessionId, S, t.accessToken);
                 } else if (A.type === "user" && !m && t.onFirstUserMessage) {
                   let v = extractUserMessageText(A);
                   if (v) ((m = true), t.onFirstUserMessage(v));
@@ -232,23 +232,23 @@ function createSessionSpawner(e) {
           (c.on("close", (b, _) => {
             if (s) (s.end(), (s = null));
             if (_ === "SIGTERM" || _ === "SIGINT")
-              (e.onDebug(
+              (deps.onDebug(
                 `[bridge:session] sessionId=${t.sessionId} interrupted signal=${_} pid=${c.pid}`,
               ),
                 y("interrupted"));
             else if (b === 0)
-              (e.onDebug(
+              (deps.onDebug(
                 `[bridge:session] sessionId=${t.sessionId} completed exit_code=0 pid=${c.pid}`,
               ),
                 y("completed"));
             else
-              (e.onDebug(
+              (deps.onDebug(
                 `[bridge:session] sessionId=${t.sessionId} failed exit_code=${b} pid=${c.pid}`,
               ),
                 y("failed"));
           }),
             c.on("error", (b) => {
-              (e.onDebug(`[bridge:session] sessionId=${t.sessionId} spawn error: ${b.message}`),
+              (deps.onDebug(`[bridge:session] sessionId=${t.sessionId} spawn error: ${b.message}`),
                 p.push(`spawn error: ${b.message}`),
                 y("failed"));
             }));
@@ -264,7 +264,7 @@ function createSessionSpawner(e) {
           },
           kill() {
             if (!c.killed)
-              (e.onDebug(
+              (deps.onDebug(
                 `[bridge:session] Sending SIGTERM to sessionId=${t.sessionId} pid=${c.pid}`,
               ),
                 c.kill("SIGTERM"));
@@ -272,14 +272,15 @@ function createSessionSpawner(e) {
           forceKill() {
             if (!f && c.pid)
               ((f = true),
-                e.onDebug(
+                deps.onDebug(
                   `[bridge:session] Sending SIGKILL to sessionId=${t.sessionId} pid=${c.pid}`,
                 ),
                 c.kill("SIGKILL"));
           },
           writeStdin(y) {
             if (c.stdin && !c.stdin.destroyed)
-              (e.onDebug(`[bridge:ws] sessionId=${t.sessionId} >>> ${Ugo(y)}`), c.stdin.write(y));
+              (deps.onDebug(`[bridge:ws] sessionId=${t.sessionId} >>> ${Ugo(y)}`),
+                c.stdin.write(y));
           },
           updateAccessToken(y) {
             ((h.accessToken = y),
@@ -293,7 +294,7 @@ function createSessionSpawner(e) {
                   `
 `,
               ),
-              e.onDebug(
+              deps.onDebug(
                 `[bridge:session] Sent token refresh via stdin for sessionId=${t.sessionId}`,
               ));
           },

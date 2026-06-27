@@ -12,14 +12,14 @@ function YNi() {
 function A0n(e) {
   return e.startsWith(FILE_UNCHANGED_STUB) || e.startsWith(KNi);
 }
-function renderPromptTemplate(e, t, n, r) {
-  if (ph(e))
+function renderPromptTemplate(lineFormat, maxSizeInstruction, offsetInstruction, r) {
+  if (ph(lineFormat))
     return `Reads a file from the local filesystem.
 
 - \`file_path\` must be an absolute path.
-- Reads up to ${fit} lines by default${n}.
+- Reads up to ${fit} lines by default${offsetInstruction}.
 ${r}
-${t}
+${maxSizeInstruction}
 - Reads images (PNG, JPG, \u2026) and presents them visually.${dit() ? ' Reads PDFs via the `pages` parameter (e.g. "1-5", max 20 pages/request; required for PDFs over 10 pages).' : ""} Reads Jupyter notebooks (.ipynb) as cells with outputs.
 - Reading a directory, a missing file, or an empty file returns an error or system reminder rather than content.${zNi}`;
   return `Reads a file from the local filesystem. You can access any file directly by using this tool.
@@ -27,9 +27,9 @@ Assume this tool is able to read all files on the machine. If the User provides 
 
 Usage:
 - The file_path parameter must be an absolute path, not a relative path
-- By default, it reads up to ${fit} lines starting from the beginning of the file${n}
+- By default, it reads up to ${fit} lines starting from the beginning of the file${offsetInstruction}
 ${r}
-${t}
+${maxSizeInstruction}
 - This tool allows Claude Code to read images (eg PNG, JPG, etc). When reading an image file the contents are presented visually as Claude Code is a multimodal LLM.${
     dit()
       ? `

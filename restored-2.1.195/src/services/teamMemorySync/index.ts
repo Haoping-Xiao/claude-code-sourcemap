@@ -52,9 +52,9 @@
       }).optional(),
     }),
   )));
-function getTeamMemorySyncEndpoint(e, t, n) {
+function getTeamMemorySyncEndpoint(repoSlug, t, n) {
   let r = n ? `&view=${n}` : "";
-  if (e === "team") return `/api/claude_code/team_memory?repo=${encodeURIComponent(t)}${r}`;
+  if (repoSlug === "team") return `/api/claude_code/team_memory?repo=${encodeURIComponent(t)}${r}`;
   return `/api/claude_code/memory?scope=user&repo=${encodeURIComponent(t)}${r}`;
 }
 function Swl(e) {
@@ -96,8 +96,8 @@ function BDo(e, t) {
     aborted: false,
   };
 }
-function hashContent(e) {
-  return "sha256:" + bwl.createHash("sha256").update(e, "utf8").digest("hex");
+function hashContent(content) {
+  return "sha256:" + bwl.createHash("sha256").update(content, "utf8").digest("hex");
 }
 function $Jn() {
   if (!_u()) return false;
@@ -129,12 +129,12 @@ function Hwl(e) {
     }),
   };
 }
-async function fetchTeamMemoryOnce(e, t) {
-  let n = z$e(e.scope);
+async function fetchTeamMemoryOnce(state, repoSlug) {
+  let n = z$e(state.scope);
   try {
     let r = {};
-    if (t) r["If-None-Match"] = `"${t.replaceAll('"', "")}"`;
-    let o = await Os.get(getTeamMemorySyncEndpoint(e.scope, e.repoSlug), {
+    if (repoSlug) r["If-None-Match"] = `"${repoSlug.replaceAll('"', "")}"`;
+    let o = await Os.get(getTeamMemorySyncEndpoint(state.scope, state.repoSlug), {
       refreshOAuth: true,
       headers: r,
       timeout: ODo,
@@ -156,7 +156,7 @@ async function fetchTeamMemoryOnce(e, t) {
         {
           success: true,
           notModified: true,
-          checksum: t ?? void 0,
+          checksum: repoSlug ?? void 0,
         }
       );
     if (s.status === 404) {
@@ -165,7 +165,7 @@ async function fetchTeamMemoryOnce(e, t) {
         T(`${n}: 404 (code=${l ?? "none"}): ${c ?? "no remote data"}`, {
           level: "debug",
         }),
-        (e.lastKnownChecksum = null),
+        (state.lastKnownChecksum = null),
         {
           success: true,
           isEmpty: true,
@@ -188,7 +188,7 @@ async function fetchTeamMemoryOnce(e, t) {
         }
       );
     let a = i.data.checksum || s.headers.etag?.replace(/^"|"$/g, "") || void 0;
-    if (a) e.lastKnownChecksum = a;
+    if (a) state.lastKnownChecksum = a;
     return (
       T(`${n}: fetched successfully (checksum: ${a ?? "none"})`, {
         level: "debug",
@@ -242,9 +242,9 @@ async function fetchTeamMemoryOnce(e, t) {
     }
   }
 }
-async function fetchTeamMemoryHashes(e) {
+async function fetchTeamMemoryHashes(state) {
   try {
-    let t = await Os.get(getTeamMemorySyncEndpoint(e.scope, e.repoSlug, "hashes"), {
+    let t = await Os.get(getTeamMemorySyncEndpoint(state.scope, state.repoSlug, "hashes"), {
       refreshOAuth: true,
       timeout: ODo,
       validateStatus: (i) => i === 200 || i === 404,
@@ -258,7 +258,7 @@ async function fetchTeamMemoryHashes(e) {
     let n = t.response;
     if (n.status === 404)
       return (
-        (e.lastKnownChecksum = null),
+        (state.lastKnownChecksum = null),
         {
           success: true,
           entryChecksums: {},
@@ -273,7 +273,7 @@ async function fetchTeamMemoryHashes(e) {
         error: "Server did not return entryChecksums (?view=hashes unsupported)",
         errorType: "parse",
       };
-    if (o) e.lastKnownChecksum = o;
+    if (o) state.lastKnownChecksum = o;
     return {
       success: true,
       version: r.success ? r.data.version : void 0,
@@ -329,8 +329,8 @@ async function yAf(e, t) {
   }
   return n;
 }
-function batchDeltaByBytes(e) {
-  let t = Object.keys(e).sort();
+function batchDeltaByBytes(delta) {
+  let t = Object.keys(delta).sort();
   if (t.length === 0) return [];
   let n = Buffer.byteLength('{"entries":{}}', "utf8"),
     r = (a, l) => Buffer.byteLength(De(a), "utf8") + Buffer.byteLength(De(l), "utf8") + 2,
@@ -338,24 +338,24 @@ function batchDeltaByBytes(e) {
     s = {},
     i = n;
   for (let a of t) {
-    let l = r(a, e[a]);
+    let l = r(a, delta[a]);
     if (i + l > mAf && Object.keys(s).length > 0) (o.push(s), (s = {}), (i = n));
-    ((s[a] = e[a]), (i += l));
+    ((s[a] = delta[a]), (i += l));
   }
   return (o.push(s), o);
 }
-async function uploadTeamMemory(e, t, n, r) {
-  let o = z$e(e.scope);
+async function uploadTeamMemory(state, repoSlug, entries, ifMatchChecksum) {
+  let o = z$e(state.scope);
   try {
     let s = {
       "Content-Type": "application/json",
     };
-    if (n) s["If-Match"] = `"${n.replaceAll('"', "")}"`;
+    if (entries) s["If-Match"] = `"${entries.replaceAll('"', "")}"`;
     let i = {
-      entries: t,
+      entries: repoSlug,
     };
-    if (r.length > 0) i.soft_delete_keys = [...r];
-    let a = await Os.put(getTeamMemorySyncEndpoint(e.scope, e.repoSlug), i, {
+    if (ifMatchChecksum.length > 0) i.soft_delete_keys = [...ifMatchChecksum];
+    let a = await Os.put(getTeamMemorySyncEndpoint(state.scope, state.repoSlug), i, {
       refreshOAuth: true,
       headers: s,
       timeout: ODo,
@@ -380,10 +380,10 @@ async function uploadTeamMemory(e, t, n, r) {
         }
       );
     let c = l.data?.checksum;
-    if (c) e.lastKnownChecksum = c;
-    let u = r.length > 0 ? `, soft-deleted ${r.length}` : "";
+    if (c) state.lastKnownChecksum = c;
+    let u = ifMatchChecksum.length > 0 ? `, soft-deleted ${ifMatchChecksum.length}` : "";
     return (
-      T(`${o}: uploaded ${Object.keys(t).length} entries${u} (checksum: ${c ?? "none"})`, {
+      T(`${o}: uploaded ${Object.keys(repoSlug).length} entries${u} (checksum: ${c ?? "none"})`, {
         level: "debug",
       }),
       {
@@ -422,9 +422,9 @@ async function uploadTeamMemory(e, t, n, r) {
     };
   }
 }
-async function readLocalTeamMemory(e, t) {
-  let n = z$e(e),
-    r = Swl(e),
+async function readLocalTeamMemory(maxEntries, t) {
+  let n = z$e(maxEntries),
+    r = Swl(maxEntries),
     o = {},
     s = new Set(),
     i = [],
@@ -439,13 +439,13 @@ async function readLocalTeamMemory(e, t) {
           let f = vze.join(u, p.name);
           if (p.isDirectory()) {
             let m = vze.relative(r, f).replaceAll("\\", "/");
-            if (ywl(e, m)) return;
+            if (ywl(maxEntries, m)) return;
             await l(f);
           } else if (p.isFile()) {
             if (p.name.startsWith(".") || !(p.name.endsWith(".md") || p.name.endsWith(".txt")))
               return;
             let m = vze.relative(r, f).replaceAll("\\", "/");
-            if (ywl(e, m)) return;
+            if (ywl(maxEntries, m)) return;
             s.add(m);
             try {
               let g = await VF.stat(f);
@@ -480,7 +480,7 @@ async function readLocalTeamMemory(e, t) {
       if (p !== "ENOENT" && p !== "EACCES" && p !== "EPERM") throw d;
     }
   }
-  if (await Ewl(e, r, n))
+  if (await Ewl(maxEntries, r, n))
     return {
       entries: {},
       diskKeys: new Set(),
@@ -498,7 +498,7 @@ async function readLocalTeamMemory(e, t) {
           level: "warn",
         },
       ),
-      e === "team")
+      maxEntries === "team")
     )
       G("tengu_team_mem_entries_capped", {
         total_entries: c.length,
@@ -521,13 +521,13 @@ async function readLocalTeamMemory(e, t) {
     skippedSecrets: i,
   };
 }
-async function writeRemoteEntriesToLocal(e, t, n) {
-  let r = z$e(e),
+async function writeRemoteEntriesToLocal(entries, t, n) {
+  let r = z$e(entries),
     o = await Promise.all(
       Object.entries(t).map(async ([c, u]) => {
         let d;
         try {
-          d = await Awl(e, c);
+          d = await Awl(entries, c);
         } catch (f) {
           if (f instanceof Yw)
             return (
@@ -554,7 +554,7 @@ async function writeRemoteEntriesToLocal(e, t, n) {
         try {
           let f = await VF.stat(d);
           if (f.size > Tze) {
-            if (e === "user")
+            if (entries === "user")
               return (
                 T(
                   `${r}: keeping oversized local "${c}" (${f.size} > ${Tze} bytes) \u2014 pinned out of push delta this session (fail safe)`,
@@ -575,7 +575,7 @@ async function writeRemoteEntriesToLocal(e, t, n) {
                 relPath: c,
                 outcome: "matched",
               };
-            if (e === "user") {
+            if (entries === "user") {
               let g = n.get(c);
               if (!(g !== void 0 && hashContent(m) === g))
                 return (
@@ -595,7 +595,7 @@ async function writeRemoteEntriesToLocal(e, t, n) {
           }
         } catch (f) {
           let m = on(f);
-          if (e === "user" && m !== void 0 && m !== "ENOENT" && m !== "ENOTDIR")
+          if (entries === "user" && m !== void 0 && m !== "ENOENT" && m !== "ENOTDIR")
             return (
               T(
                 `${r}: keeping unreadable local "${c}" (${m}) \u2014 pinned out of push delta this session (fail safe)`,
@@ -758,13 +758,13 @@ async function jDo(e, t) {
     e.pullPromise = null;
   }
 }
-async function pullTeamMemory(e, t) {
-  let n = t?.skipEtagCache ?? false,
+async function pullTeamMemory(state, options) {
+  let n = options?.skipEtagCache ?? false,
     r = Date.now(),
-    o = z$e(e.scope);
+    o = z$e(state.scope);
   if (!$Jn())
     return (
-      Zbt(e.scope, r, {
+      Zbt(state.scope, r, {
         success: false,
         errorType: "no_oauth",
       }),
@@ -776,9 +776,9 @@ async function pullTeamMemory(e, t) {
         error: "OAuth not available",
       }
     );
-  if (await Ewl(e.scope, Swl(e.scope), o))
+  if (await Ewl(state.scope, Swl(state.scope), o))
     return (
-      Zbt(e.scope, r, {
+      Zbt(state.scope, r, {
         success: false,
         errorType: "aborted",
       }),
@@ -791,12 +791,12 @@ async function pullTeamMemory(e, t) {
         error: "memory root escapes its canonical location \u2014 pull skipped (fail closed)",
       }
     );
-  let s = n ? null : e.lastKnownChecksum,
-    i = await yAf(e, s);
+  let s = n ? null : state.lastKnownChecksum,
+    i = await yAf(state, s);
   if (!i.success) {
-    if (e.scope === "team" && i.errorType === "forbidden") pJe("not-available");
+    if (state.scope === "team" && i.errorType === "forbidden") pJe("not-available");
     return (
-      Zbt(e.scope, r, {
+      Zbt(state.scope, r, {
         success: false,
         errorType: i.errorType,
         status: i.httpStatus,
@@ -819,8 +819,8 @@ async function pullTeamMemory(e, t) {
   }
   if (i.notModified)
     return (
-      (e.pulled = true),
-      Zbt(e.scope, r, {
+      (state.pulled = true),
+      Zbt(state.scope, r, {
         success: true,
         notModified: true,
       }),
@@ -834,16 +834,16 @@ async function pullTeamMemory(e, t) {
     );
   if (i.isEmpty) {
     if (
-      (e.serverChecksums.clear(),
-      e.tombstonedKeys.clear(),
-      e.keptDivergentHashes.clear(),
-      e.keptUnreadable.clear(),
-      (e.pulled = true),
-      e.scope === "team")
+      (state.serverChecksums.clear(),
+      state.tombstonedKeys.clear(),
+      state.keptDivergentHashes.clear(),
+      state.keptUnreadable.clear(),
+      (state.pulled = true),
+      state.scope === "team")
     )
       pJe(i.serverErrorCode === TAf ? "not-available" : "empty");
     return (
-      Zbt(e.scope, r, {
+      Zbt(state.scope, r, {
         success: true,
         serverErrorCode: i.serverErrorCode,
         serverMessage: i.serverMessage,
@@ -859,15 +859,15 @@ async function pullTeamMemory(e, t) {
   let a = i.data.content.entries,
     l = i.data.content.entryChecksums,
     c = i.data.content.deletedEntries ?? {};
-  e.tombstonedKeys = new Set(Object.keys(c));
-  let u = new Map(e.serverChecksums);
-  e.tombstonedPriorHashes = new Map();
-  for (let y of e.tombstonedKeys) {
+  state.tombstonedKeys = new Set(Object.keys(c));
+  let u = new Map(state.serverChecksums);
+  state.tombstonedPriorHashes = new Map();
+  for (let y of state.tombstonedKeys) {
     let b = u.get(y);
-    if (b !== void 0) e.tombstonedPriorHashes.set(y, b);
+    if (b !== void 0) state.tombstonedPriorHashes.set(y, b);
   }
-  if ((e.serverChecksums.clear(), l))
-    for (let [y, b] of Object.entries(l)) e.serverChecksums.set(y, b);
+  if ((state.serverChecksums.clear(), l))
+    for (let [y, b] of Object.entries(l)) state.serverChecksums.set(y, b);
   else
     T(
       `${o}: server response missing entryChecksums (pre-#283027 deploy) \u2014 next push will be full, not delta`,
@@ -880,17 +880,17 @@ async function pullTeamMemory(e, t) {
     unwrittenKeys: p,
     keptDivergentHashes: f,
     keptUnreadable: m,
-  } = await writeRemoteEntriesToLocal(e.scope, a, u);
-  ((e.keptDivergentHashes = f), (e.keptUnreadable = m));
-  let g = await AAf(e, c);
+  } = await writeRemoteEntriesToLocal(state.scope, a, u);
+  ((state.keptDivergentHashes = f), (state.keptUnreadable = m));
+  let g = await AAf(state, c);
   if (d > 0 || g > 0) {
     let { clearMemoryFileCaches: y } = await Promise.resolve().then(() => (dC(), Usa));
     y();
   }
-  for (let y of p) e.serverChecksums.delete(y);
-  e.pulled = true;
+  for (let y of p) state.serverChecksums.delete(y);
+  state.pulled = true;
   let h = Object.keys(a).length;
-  if (e.scope === "team") pJe(h > 0 ? "has-content" : "empty");
+  if (state.scope === "team") pJe(h > 0 ? "has-content" : "empty");
   return (
     T(
       `${o}: pulled ${d} files` +
@@ -900,7 +900,7 @@ async function pullTeamMemory(e, t) {
         level: "info",
       },
     ),
-    Zbt(e.scope, r, {
+    Zbt(state.scope, r, {
       success: true,
       filesWritten: d,
       filesReaped: g,
@@ -913,13 +913,13 @@ async function pullTeamMemory(e, t) {
     }
   );
 }
-async function pushTeamMemory(e) {
+async function pushTeamMemory(state) {
   let t = Date.now(),
-    n = z$e(e.scope),
+    n = z$e(state.scope),
     r = 0;
   if (!$Jn())
     return (
-      mfe(e.scope, t, {
+      mfe(state.scope, t, {
         success: false,
         errorType: "no_oauth",
       }),
@@ -930,12 +930,12 @@ async function pushTeamMemory(e) {
         errorType: "no_oauth",
       }
     );
-  if (e.scope === "team" && ACt() === "not-available")
+  if (state.scope === "team" && ACt() === "not-available")
     return (
       T(`${n}: push skipped: server marked not-available`, {
         level: "debug",
       }),
-      mfe(e.scope, t, {
+      mfe(state.scope, t, {
         success: false,
         errorType: "server_unavailable",
       }),
@@ -946,8 +946,8 @@ async function pushTeamMemory(e) {
         errorType: "server_unavailable",
       }
     );
-  if (e.scope === "user" && !e.pulled) {
-    let m = await jDo(e, {
+  if (state.scope === "user" && !state.pulled) {
+    let m = await jDo(state, {
       skipEtagCache: true,
     });
     if (!m.success) {
@@ -959,7 +959,7 @@ async function pushTeamMemory(e) {
             level: "warn",
           },
         ),
-        mfe(e.scope, t, {
+        mfe(state.scope, t, {
           success: false,
           errorType: g,
           status: m.httpStatus,
@@ -976,16 +976,16 @@ async function pushTeamMemory(e) {
       );
     }
   }
-  let o = await readLocalTeamMemory(e.scope, e.serverMaxEntries),
+  let o = await readLocalTeamMemory(state.scope, state.serverMaxEntries),
     s = o.entries,
     i = o.diskKeys,
     a = o.diskTrusted,
     l = o.skippedSecrets,
     c = [];
-  if (e.pulled && a) {
-    for (let m of e.serverChecksums.keys())
-      if (!i.has(m) && !e.keptUnreadable.has(m) && !e.keptDivergentHashes.has(m)) c.push(m);
-  } else if (e.pulled && !a)
+  if (state.pulled && a) {
+    for (let m of state.serverChecksums.keys())
+      if (!i.has(m) && !state.keptUnreadable.has(m) && !state.keptDivergentHashes.has(m)) c.push(m);
+  } else if (state.pulled && !a)
     T(`${n}: dir inaccessible \u2014 suppressing soft-delete`, {
       level: "warn",
     });
@@ -998,22 +998,22 @@ async function pushTeamMemory(e) {
           level: "warn",
         },
       ),
-      e.scope === "team")
+      state.scope === "team")
     )
       G("tengu_team_mem_secret_skipped", {
         file_count: l.length,
         rule_ids: l.map((g) => g.ruleId).join(","),
       });
-    else It(gfe[e.scope].conflict, "personal_memory_secret_skipped");
+    else It(gfe[state.scope].conflict, "personal_memory_secret_skipped");
   }
   let u = new Map();
   for (let [m, g] of Object.entries(s)) {
     let h = hashContent(g);
-    if (e.tombstonedKeys.has(m)) {
-      let y = e.tombstonedPriorHashes.get(m);
-      if (e.scope !== "user" || y === void 0 || y === h) {
-        if (e.scope === "user" && y === void 0)
-          It(gfe[e.scope].conflict, "unverified_tombstone_drop");
+    if (state.tombstonedKeys.has(m)) {
+      let y = state.tombstonedPriorHashes.get(m);
+      if (state.scope !== "user" || y === void 0 || y === h) {
+        if (state.scope === "user" && y === void 0)
+          It(gfe[state.scope].conflict, "unverified_tombstone_drop");
         continue;
       }
     }
@@ -1025,14 +1025,14 @@ async function pushTeamMemory(e) {
   for (let m = 0; m <= PJn; m++) {
     let g = {};
     for (let [v, C] of u) {
-      if (e.keptDivergentHashes.get(v) === C) continue;
-      if (e.keptUnreadable.has(v)) continue;
-      if (e.serverChecksums.get(v) !== C) g[v] = s[v];
+      if (state.keptDivergentHashes.get(v) === C) continue;
+      if (state.keptUnreadable.has(v)) continue;
+      if (state.serverChecksums.get(v) !== C) g[v] = s[v];
     }
     if (Object.keys(g).length === 0 && c.length === 0) {
-      if (!a) It(gfe[e.scope].conflict, "root_escape");
+      if (!a) It(gfe[state.scope].conflict, "root_escape");
       return (
-        mfe(e.scope, t, {
+        mfe(state.scope, t, {
           success: true,
           filesUploaded: p,
           ...(f > 0 && {
@@ -1057,7 +1057,7 @@ async function pushTeamMemory(e) {
     if (y.length === 0) y.push({});
     let b;
     for (let v = 0; v < y.length; v++) {
-      if (e.aborted || (e.scope === "user" && !Nqe()))
+      if (state.aborted || (state.scope === "user" && !Nqe()))
         return (
           T(
             `${n}: push aborted mid-flight (personal sync disabled) after ${v}/${y.length} batch(es)`,
@@ -1065,7 +1065,7 @@ async function pushTeamMemory(e) {
               level: "warn",
             },
           ),
-          mfe(e.scope, t, {
+          mfe(state.scope, t, {
             success: false,
             filesUploaded: p,
             errorType: "aborted",
@@ -1079,24 +1079,24 @@ async function pushTeamMemory(e) {
         );
       let C = y[v],
         x = v === 0 ? c : [];
-      if (((b = await uploadTeamMemory(e, C, e.lastKnownChecksum, x)), !b.success)) break;
+      if (((b = await uploadTeamMemory(state, C, state.lastKnownChecksum, x)), !b.success)) break;
       for (let I of Object.keys(C))
-        (e.serverChecksums.set(I, u.get(I)),
-          e.keptDivergentHashes.delete(I),
-          e.keptUnreadable.delete(I));
+        (state.serverChecksums.set(I, u.get(I)),
+          state.keptDivergentHashes.delete(I),
+          state.keptUnreadable.delete(I));
       if (((p += Object.keys(C).length), x.length > 0)) {
-        for (let I of x) e.serverChecksums.delete(I);
+        for (let I of x) state.serverChecksums.delete(I);
         ((f += x.length), (c.length = 0));
       }
     }
     if (((b = b), b.success)) {
-      if (e.scope === "team" && u.size > 0) pJe("has-content");
+      if (state.scope === "team" && u.size > 0) pJe("has-content");
       let v = f > 0 ? `${p} of ${u.size} files, soft-deleted ${f}` : `${p} of ${u.size} files`;
       return (
         T(y.length > 1 ? `${n}: pushed ${v} in ${y.length} batches` : `${n}: pushed ${v} (delta)`, {
           level: "info",
         }),
-        mfe(e.scope, t, {
+        mfe(state.scope, t, {
           success: true,
           filesUploaded: p,
           ...(f > 0 && {
@@ -1121,7 +1121,7 @@ async function pushTeamMemory(e) {
     }
     if (!b.conflict) {
       if (b.serverMaxEntries !== void 0)
-        ((e.serverMaxEntries = b.serverMaxEntries),
+        ((state.serverMaxEntries = b.serverMaxEntries),
           T(
             `${n}: learned server max_entries=${b.serverMaxEntries} from 413; next push will truncate to this`,
             {
@@ -1129,7 +1129,7 @@ async function pushTeamMemory(e) {
             },
           ));
       return (
-        mfe(e.scope, t, {
+        mfe(state.scope, t, {
           success: false,
           filesUploaded: p,
           ...(f > 0 && {
@@ -1166,7 +1166,7 @@ async function pushTeamMemory(e) {
         T(`${n}: giving up after ${PJn} conflict retries`, {
           level: "warn",
         }),
-        mfe(e.scope, t, {
+        mfe(state.scope, t, {
           success: false,
           filesUploaded: p,
           ...(f > 0 && {
@@ -1190,11 +1190,11 @@ async function pushTeamMemory(e) {
       T(`${n}: conflict (412), probing server hashes (attempt ${m + 1}/${PJn})`, {
         level: "info",
       }));
-    let _ = await fetchTeamMemoryHashes(e);
+    let _ = await fetchTeamMemoryHashes(state);
     if (!_.success) {
       let v = _.errorType === "parse" ? void 0 : _.errorType;
       return (
-        mfe(e.scope, t, {
+        mfe(state.scope, t, {
           success: false,
           filesUploaded: p,
           ...(f > 0 && {
@@ -1234,19 +1234,19 @@ async function pushTeamMemory(e) {
         }
       );
     }
-    let S = new Set(e.serverChecksums.keys()),
-      A = new Map(e.serverChecksums);
-    e.serverChecksums.clear();
+    let S = new Set(state.serverChecksums.keys()),
+      A = new Map(state.serverChecksums);
+    state.serverChecksums.clear();
     for (let [v, C] of Object.entries(_.entryChecksums))
-      if (S.has(v) || i.has(v)) e.serverChecksums.set(v, C);
-    if (e.scope === "user") {
+      if (S.has(v) || i.has(v)) state.serverChecksums.set(v, C);
+    if (state.scope === "user") {
       let v = 0;
       for (let [C, x] of u) {
         let I = A.get(C);
         if (I === void 0) continue;
-        if (_.entryChecksums[C] !== I && x === I) (e.keptDivergentHashes.set(C, x), v++);
+        if (_.entryChecksums[C] !== I && x === I) (state.keptDivergentHashes.set(C, x), v++);
       }
-      if (v > 0) It(gfe[e.scope].conflict, "conflict_probe_kept_divergent");
+      if (v > 0) It(gfe[state.scope].conflict, "conflict_probe_kept_divergent");
     }
     if (c.length > 0) {
       let v = c.filter((C) => {
@@ -1263,15 +1263,15 @@ async function pushTeamMemory(e) {
             level: "warn",
           },
         );
-        for (let I of x) e.serverChecksums.delete(I);
+        for (let I of x) state.serverChecksums.delete(I);
       }
       ((c.length = 0), c.push(...v));
     }
     for (let v of Object.keys(_.deletedEntries ?? {})) {
-      e.tombstonedKeys.add(v);
+      state.tombstonedKeys.add(v);
       let C = A.get(v);
-      if (C !== void 0) e.tombstonedPriorHashes.set(v, C);
-      if (e.scope !== "user") {
+      if (C !== void 0) state.tombstonedPriorHashes.set(v, C);
+      if (state.scope !== "user") {
         u.delete(v);
         continue;
       }
@@ -1279,11 +1279,11 @@ async function pushTeamMemory(e) {
       if (x === void 0) continue;
       if (C !== void 0 && x === C) u.delete(v);
       else if (C !== void 0);
-      else (u.delete(v), It(gfe[e.scope].conflict, "unverified_tombstone_drop"));
+      else (u.delete(v), It(gfe[state.scope].conflict, "unverified_tombstone_drop"));
     }
   }
   return (
-    mfe(e.scope, t, {
+    mfe(state.scope, t, {
       success: false,
       filesUploaded: p,
       ...(f > 0 && {

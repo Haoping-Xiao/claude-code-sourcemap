@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eE] deps: fH, Ye, LW
 ((Lzi = R(lt(), 1)), (olt = R(se(), 1)));
-function Dialog(e) {
+function Dialog(t0) {
   let t = Pzi.c(43),
     {
       title: n,
@@ -19,7 +19,7 @@ function Dialog(e) {
       hideBorder: c,
       inputGuide: u,
       isCancelActive: d,
-    } = e,
+    } = t0,
     p = a === void 0 ? "permission" : a,
     f = d === void 0 ? true : d,
     m = hbe.useRef(null),

@@ -124,9 +124,9 @@
     else v = n[20];
     return v;
   })));
-function FileWriteToolDiff(e) {
+function FileWriteToolDiff(t0) {
   let t = Vel.c(15),
-    { file_path: n, content: r, fileExists: o, oldContent: s } = e,
+    { file_path: n, content: r, fileExists: o, oldContent: s } = t0,
     { columns: i } = br(),
     a;
   e: {

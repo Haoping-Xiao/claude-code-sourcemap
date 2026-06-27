@@ -10,11 +10,11 @@ szl = R(lt(), 1), NAt = R(rt(), 1), lzl = R(se(), 1), izl = NAt.createContext({
   recordDenial: () => {},
   removeDenial: () => {}
 });
-function PermissionRuleDescription(e) {
+function PermissionRuleDescription(t0) {
   let t = czl.c(9),
     {
       ruleValue: n
-    } = e;
+    } = t0;
   switch (n.toolName) {
     case cl.name:
       if (n.ruleContent) {

@@ -14,12 +14,12 @@ function kpm(e, t, n) {
     r > 0 && o >= 0 && e.slice(0, o) + e.slice(n) === t && /^[a-z0-9_+-]*:$/.test(e.slice(o, n))
   );
 }
-function isPathMetadata(e) {
+function isPathMetadata(metadata) {
   return (
-    typeof e === "object" &&
-    e !== null &&
-    "type" in e &&
-    (e.type === "directory" || e.type === "file")
+    typeof metadata === "object" &&
+    metadata !== null &&
+    "type" in metadata &&
+    (metadata.type === "directory" || metadata.type === "file")
   );
 }
 function Yse(e, t, n) {
@@ -46,14 +46,21 @@ function A6o(e) {
   else if (r) return n === "bash" ? `${t}${a}` : `@${t}${a}`;
   else return t;
 }
-function applyShellSuggestion(e, t, n, r, o, s) {
-  let l = t.slice(0, n).lastIndexOf(" ") + 1,
+function applyShellSuggestion(
+  suggestion,
+  input,
+  cursorOffset,
+  onInputChange,
+  setCursorOffset,
+  completionType,
+) {
+  let l = input.slice(0, cursorOffset).lastIndexOf(" ") + 1,
     c;
-  if (s === "variable") c = "$" + e.displayText + " ";
-  else if (s === "command") c = e.displayText + " ";
-  else c = e.displayText;
-  let u = t.slice(0, l) + c + t.slice(n);
-  (r(u), o(l + c.length));
+  if (completionType === "variable") c = "$" + suggestion.displayText + " ";
+  else if (completionType === "command") c = suggestion.displayText + " ";
+  else c = suggestion.displayText;
+  let u = input.slice(0, l) + c + input.slice(cursorOffset);
+  (onInputChange(u), setCursorOffset(l + c.length));
 }
 function PTt(e, t, n, r, o, s) {
   let i = t.slice(0, n).match(r);
@@ -63,11 +70,11 @@ function PTt(e, t, n, r, o, s) {
     c = l + e.displayText + " " + t.slice(n);
   (o(c), s(l.length + e.displayText.length + 1));
 }
-async function generateBashSuggestions(e, t, n) {
+async function generateBashSuggestions(input, cursorOffset, n) {
   if (vl()) return [];
   try {
     if (hdr) hdr.abort();
-    return ((hdr = new AbortController()), await Qhc(e, t, hdr.signal, n));
+    return ((hdr = new AbortController()), await Qhc(input, cursorOffset, hdr.signal, n));
   } catch {
     return (G("tengu_shell_completion_failed", {}), []);
   }

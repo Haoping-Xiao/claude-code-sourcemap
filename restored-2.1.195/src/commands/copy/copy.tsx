@@ -119,19 +119,19 @@ async function SPl(e, t) {
     r
   );
 }
-async function copyOrWriteToFile(e, t) {
-  let n = await AI(e);
+async function copyOrWriteToFile(text, filename) {
+  let n = await AI(text);
   if (n) process.stdout.write(n);
   let r =
       hu(
-        e,
+        text,
         `
 `,
       ) + 1,
-    s = `Copied to clipboard (${e.length} characters, ${r} lines)`,
-    i = z0n(e);
+    s = `Copied to clipboard (${text.length} characters, ${r} lines)`,
+    i = z0n(text);
   try {
-    let a = await SPl(e, t),
+    let a = await SPl(text, filename),
       l = i
         ? `
 \u26A0 ${i}; the file below is unaffected`
@@ -159,9 +159,9 @@ function H0f(e, t) {
   }
   return r + "\u2026";
 }
-function CopyPicker(e) {
+function CopyPicker(t0) {
   let t = dPl.c(35),
-    { fullText: n, codeBlocks: r, messageAge: o, onDone: s } = e,
+    { fullText: n, codeBlocks: r, messageAge: o, onDone: s } = t0,
     i = mPl.useRef("full"),
     a = `${n.length} chars, ${
       hu(
@@ -399,18 +399,18 @@ var dPl,
   UQ,
   RESPONSE_FILENAME = "response.md",
   S0f = 20,
-  call = async (e, t, n) => {
-    let r = collectRecentAssistantTexts(t.messages);
-    if (r.length === 0) return (e("No assistant message to copy"), null);
+  call = async (onDone, context, args) => {
+    let r = collectRecentAssistantTexts(context.messages);
+    if (r.length === 0) return (onDone("No assistant message to copy"), null);
     let o = 0,
-      s = n?.trim();
+      s = args?.trim();
     if (s) {
       let c = Number(s);
       if (!Number.isInteger(c) || c < 1)
-        return (e(`Usage: /copy [N] where N is 1 (latest), 2, 3, \u2026 Got: ${s}`), null);
+        return (onDone(`Usage: /copy [N] where N is 1 (latest), 2, 3, \u2026 Got: ${s}`), null);
       if (c > r.length)
         return (
-          e(
+          onDone(
             `Only ${r.length} assistant ${r.length === 1 ? "message" : "messages"} available to copy`,
           ),
           null
@@ -427,12 +427,12 @@ var dPl,
         message_age: o,
       });
       let c = await copyOrWriteToFile(i, RESPONSE_FILENAME);
-      return (e(c), null);
+      return (onDone(c), null);
     }
     return UQ.jsx(CopyPicker, {
       fullText: i,
       codeBlocks: a,
       messageAge: o,
-      onDone: e,
+      onDone: onDone,
     });
   };

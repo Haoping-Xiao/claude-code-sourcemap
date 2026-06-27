@@ -13,22 +13,22 @@
 function iCm(e) {
   return SCe.has(e.toLowerCase());
 }
-function extractLspInfoFromManifest(e) {
-  if (!e) return null;
-  if (typeof e === "string")
+function extractLspInfoFromManifest(lspServers) {
+  if (!lspServers) return null;
+  if (typeof lspServers === "string")
     return (
       T("[lspRecommendation] Skipping string path lspServers (not readable from marketplace)"),
       null
     );
-  if (Array.isArray(e)) {
-    for (let t of e) {
+  if (Array.isArray(lspServers)) {
+    for (let t of lspServers) {
       if (typeof t === "string") continue;
       let n = qLc(t);
       if (n) return n;
     }
     return null;
   }
-  return qLc(e);
+  return qLc(lspServers);
 }
 function WLc(e) {
   return typeof e === "object" && e !== null;
@@ -79,9 +79,9 @@ async function getLspPluginsFromMarketplaces() {
   }
   return e;
 }
-async function getMatchingLspPlugins(e) {
+async function getMatchingLspPlugins(filePath) {
   if (cCm()) return (T("[lspRecommendation] Recommendations are disabled"), []);
-  let t = VLc.extname(e).toLowerCase();
+  let t = VLc.extname(filePath).toLowerCase();
   if (!t) return (T("[lspRecommendation] No file extension found"), []);
   T(`[lspRecommendation] Looking for LSP plugins for ${t}`);
   let n = await getLspPluginsFromMarketplaces(),
@@ -128,16 +128,16 @@ async function getMatchingLspPlugins(e) {
     }))
   );
 }
-function addToNeverSuggest(e) {
+function addToNeverSuggest(pluginId) {
   (gn((t) => {
     let n = t.lspRecommendationNeverPlugins ?? [];
-    if (n.includes(e)) return t;
+    if (n.includes(pluginId)) return t;
     return {
       ...t,
-      lspRecommendationNeverPlugins: [...n, e],
+      lspRecommendationNeverPlugins: [...n, pluginId],
     };
   }),
-    T(`[lspRecommendation] Added ${e} to never suggest`));
+    T(`[lspRecommendation] Added ${pluginId} to never suggest`));
 }
 function incrementIgnoredCount() {
   (gn((e) => {

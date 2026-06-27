@@ -455,7 +455,7 @@ function sTl(e, t, n, r = false) {
     }
   );
 }
-function checkPermissionMode(e, t, n = false) {
+function checkPermissionMode(input, parsed, n = false) {
   let r = $t(),
     o;
   if (n)
@@ -472,7 +472,7 @@ function checkPermissionMode(e, t, n = false) {
   let s = false,
     i,
     a = false;
-  for (let l of e.commands) {
+  for (let l of input.commands) {
     if (l.elementType !== "CommandAst") {
       ((s = true), (i = l.text));
       continue;
@@ -486,7 +486,7 @@ function checkPermissionMode(e, t, n = false) {
       let y = zm(l.name);
       if (i !== void 0) {
         let b = Mk(i),
-          _ = fJn(b, r, t, u);
+          _ = fJn(b, r, parsed, u);
         if (_)
           return {
             behavior: "deny",
@@ -549,11 +549,11 @@ function checkPermissionMode(e, t, n = false) {
     }
     for (let y of c) {
       if (h && cKt(y)) return mze(y);
-      let { allowed: b, resolvedPath: _, decisionReason: S } = uJn(y, r, t, u);
+      let { allowed: b, resolvedPath: _, decisionReason: S } = uJn(y, r, parsed, u);
       if (h && yct(_)) return mze(_);
       if (!b) {
         let A = zm(l.name),
-          v = Array.from(jj(t)),
+          v = Array.from(jj(parsed)),
           C = cJn(v),
           x =
             S?.type === "other" || S?.type === "safetyCheck"
@@ -576,7 +576,10 @@ function checkPermissionMode(e, t, n = false) {
               directories: [MB(_)],
               destination: "session",
             });
-        if ((u === "write" || u === "create") && (t.mode === "default" || t.mode === "plan"))
+        if (
+          (u === "write" || u === "create") &&
+          (parsed.mode === "default" || parsed.mode === "plan")
+        )
           I.push({
             type: "setMode",
             mode: "acceptEdits",
@@ -592,8 +595,8 @@ function checkPermissionMode(e, t, n = false) {
       }
     }
   }
-  if (e.nestedCommands)
-    for (let l of e.nestedCommands) {
+  if (input.nestedCommands)
+    for (let l of input.nestedCommands) {
       let { paths: c, operationType: u, hasUnvalidatablePathArg: d, optionalWrite: p } = rTl(l);
       if (d) {
         let m = zm(l.name);
@@ -613,11 +616,11 @@ function checkPermissionMode(e, t, n = false) {
       let f = zm(l.name) === "remove-item";
       for (let m of c) {
         if (f && cKt(m)) return mze(m);
-        let { allowed: g, resolvedPath: h, decisionReason: y } = uJn(m, r, t, u);
+        let { allowed: g, resolvedPath: h, decisionReason: y } = uJn(m, r, parsed, u);
         if (f && yct(h)) return mze(h);
         if (!g) {
           let b = zm(l.name),
-            _ = Array.from(jj(t)),
+            _ = Array.from(jj(parsed)),
             S = cJn(_),
             A =
               y?.type === "other" || y?.type === "safetyCheck"
@@ -640,7 +643,10 @@ function checkPermissionMode(e, t, n = false) {
                 directories: [MB(h)],
                 destination: "session",
               });
-          if ((u === "write" || u === "create") && (t.mode === "default" || t.mode === "plan"))
+          if (
+            (u === "write" || u === "create") &&
+            (parsed.mode === "default" || parsed.mode === "plan")
+          )
             v.push({
               type: "setMode",
               mode: "acceptEdits",
@@ -661,16 +667,20 @@ function checkPermissionMode(e, t, n = false) {
           message: `${zm(l.name)} appears inside a control-flow or chain statement where piped expression sources cannot be statically validated and requires manual approval`,
         };
     }
-  if (e.nestedCommands) {
-    for (let l of e.nestedCommands)
+  if (input.nestedCommands) {
+    for (let l of input.nestedCommands)
       if (l.redirections)
         for (let c of l.redirections) {
           if (c.isMerging) continue;
           if (!c.target) continue;
           if (Opt(c.target)) continue;
-          let { allowed: u, resolvedPath: d, decisionReason: p } = uJn(c.target, r, t, "create");
+          let {
+            allowed: u,
+            resolvedPath: d,
+            decisionReason: p,
+          } = uJn(c.target, r, parsed, "create");
           if (!u) {
-            let f = Array.from(jj(t)),
+            let f = Array.from(jj(parsed)),
               m = cJn(f),
               g =
                 p?.type === "other" || p?.type === "safetyCheck"
@@ -698,14 +708,14 @@ function checkPermissionMode(e, t, n = false) {
           }
         }
   }
-  if (e.redirections)
-    for (let l of e.redirections) {
+  if (input.redirections)
+    for (let l of input.redirections) {
       if (l.isMerging) continue;
       if (!l.target) continue;
       if (Opt(l.target)) continue;
-      let { allowed: c, resolvedPath: u, decisionReason: d } = uJn(l.target, r, t, "create");
+      let { allowed: c, resolvedPath: u, decisionReason: d } = uJn(l.target, r, parsed, "create");
       if (!c) {
-        let p = Array.from(jj(t)),
+        let p = Array.from(jj(parsed)),
           f = cJn(p),
           m =
             d?.type === "other" || d?.type === "safetyCheck"

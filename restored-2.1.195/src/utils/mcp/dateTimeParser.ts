@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K8o] deps: ft, EW, Ye, HVt
 _en = R(rt(), 1);
-async function parseNaturalLanguageDateTime(e, t, n) {
+async function parseNaturalLanguageDateTime(input, format, signal) {
   let r = new Date(),
     o = r.toISOString(),
     s = -r.getTimezoneOffset(),
@@ -27,7 +27,7 @@ async function parseNaturalLanguageDateTime(e, t, n) {
       'Examples of valid natural language: "tomorrow", "next Monday", "jan 1st 2025", "in 2 hours", "yesterday".',
     ]),
     p =
-      t === "date"
+      format === "date"
         ? "YYYY-MM-DD (date only, no time)"
         : `YYYY-MM-DDTHH:MM:SS${c} (full date-time with timezone)`,
     f = `Current context:
@@ -35,7 +35,7 @@ async function parseNaturalLanguageDateTime(e, t, n) {
 - Local timezone: ${c}
 - Day of week: ${u}
 
-User input: "${e}"
+User input: "${input}"
 
 Output format: ${p}
 
@@ -44,7 +44,7 @@ Parse the user's input into ISO 8601 format. Return ONLY the formatted string, o
     let m = await R$({
         systemPrompt: d,
         userPrompt: f,
-        signal: n,
+        signal: signal,
         options: {
           querySource: "mcp_datetime_parse",
           agents: [],
@@ -80,7 +80,7 @@ Parse the user's input into ISO 8601 format. Return ONLY the formatted string, o
       }
     );
   } catch (m) {
-    if (!n.aborted) (Le("mcp_elicitation_nl_datetime_parse", "haiku_error"), ke(m));
+    if (!signal.aborted) (Le("mcp_elicitation_nl_datetime_parse", "haiku_error"), ke(m));
     return {
       success: false,
       error: "Unable to parse date/time. Please enter in ISO 8601 format manually.",

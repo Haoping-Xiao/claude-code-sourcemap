@@ -35,9 +35,9 @@ function r$f(e) {
     },
   };
 }
-function DiffDialog(e) {
+function DiffDialog(t0) {
   let t = Q1l.c(98),
-    { messages: n, onDone: r } = e,
+    { messages: n, onDone: r } = t0,
     o = mNo(),
     s = C1l(n),
     [i, a] = wHe.useState("list"),

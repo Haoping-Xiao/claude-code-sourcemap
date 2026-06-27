@@ -157,12 +157,12 @@ function CZt() {
     };
   return e;
 }
-function saveGlobalConfig(e) {
+function saveGlobalConfig(updater) {
   let t = null;
   try {
     if (
       saveConfigWithLock(b0(), Cme, (r) => {
-        let o = e(r);
+        let o = updater(r);
         if (o === r) return r;
         return (
           (t = sNe({
@@ -190,7 +190,7 @@ function saveGlobalConfig(e) {
         G("tengu_config_auth_loss_prevented", {}));
       return;
     }
-    let o = e(r);
+    let o = updater(r);
     if (o === r) return;
     ((t = sNe({
       ...o,
@@ -209,11 +209,11 @@ function reportConfigCacheStats() {
     });
   ((TZt = 0), (Tcr = 0));
 }
-function migrateConfigFields(e) {
-  if ((delete e.showSpinnerTree, e.installMethod !== void 0)) return e;
-  let t = e,
+function migrateConfigFields(config) {
+  if ((delete config.showSpinnerTree, config.installMethod !== void 0)) return config;
+  let t = config,
     n = "unknown",
-    r = e.autoUpdates ?? true;
+    r = config.autoUpdates ?? true;
   switch (t.autoUpdaterStatus) {
     case "migrated":
       n = "local";
@@ -233,7 +233,7 @@ function migrateConfigFields(e) {
       break;
   }
   return {
-    ...e,
+    ...config,
     installMethod: n,
     autoUpdates: r,
   };
@@ -362,10 +362,10 @@ function getDaemonColdStart() {
   if (t !== void 0) return t;
   return asm?.daemonColdStartGbDefault() ?? "transient";
 }
-function getCustomApiKeyStatus(e) {
+function getCustomApiKeyStatus(truncatedApiKey) {
   let t = getGlobalConfig();
-  if (t.customApiKeyResponses?.approved?.includes(e)) return "approved";
-  if (t.customApiKeyResponses?.rejected?.includes(e)) return "rejected";
+  if (t.customApiKeyResponses?.approved?.includes(truncatedApiKey)) return "approved";
+  if (t.customApiKeyResponses?.rejected?.includes(truncatedApiKey)) return "rejected";
   return "new";
 }
 function Icr(e, t) {
@@ -394,16 +394,16 @@ function Icr(e, t) {
     n
   );
 }
-function saveConfigWithLock(e, t, n) {
-  let r = t(),
-    o = HS.dirname(e),
+function saveConfigWithLock(file, createDefault, mergeFn) {
+  let r = createDefault(),
+    o = HS.dirname(file),
     s = qt();
   s.mkdirSync(o);
   let i;
   try {
-    let a = `${e}.lock`,
+    let a = `${file}.lock`,
       l = Date.now();
-    i = ksi(e, {
+    i = ksi(file, {
       lockfilePath: a,
       onCompromised: (m) => {
         T(`Config lock compromised: ${m}`, {
@@ -417,9 +417,9 @@ function saveConfigWithLock(e, t, n) {
         G("tengu_config_lock_contention", {
           lock_time_ms: c,
         }));
-    if (oNe && e === b0())
+    if (oNe && file === b0())
       try {
-        let m = s.statSync(e);
+        let m = s.statSync(file);
         if (m.mtimeMs !== oNe.mtime || m.size !== oNe.size)
           G("tengu_config_stale_write", {
             read_mtime: oNe.mtime,
@@ -430,14 +430,14 @@ function saveConfigWithLock(e, t, n) {
       } catch (m) {
         if (on(m) !== "ENOENT") throw m;
       }
-    let u = getConfig(e, t),
+    let u = getConfig(file, createDefault),
       d = false;
-    if (e === b0()) {
+    if (file === b0()) {
       let m = p2.config;
       if (vcr && m) {
         let g = 0;
         try {
-          g = s.statSync(e).size;
+          g = s.statSync(file).size;
         } catch {}
         (T(
           "saveConfigWithLock: re-read hit a parse error; auto-repairing from cached config under lock. See GH #3117.",
@@ -466,11 +466,11 @@ function saveConfigWithLock(e, t, n) {
           false
         );
     }
-    let p = n(u);
+    let p = mergeFn(u);
     if (p === u && !d) return false;
     let f = cv(p, (m, g) => De(m) !== De(r[g]));
     try {
-      let m = HS.basename(e),
+      let m = HS.basename(file),
         g = getConfigBackupDir();
       try {
         s.mkdirSync(g);
@@ -488,7 +488,7 @@ function saveConfigWithLock(e, t, n) {
         S = !d && (Number.isNaN(_) || Date.now() - _ >= h);
       if (S) {
         let C = HS.join(g, `${m}.backup.${Date.now()}`);
-        s.copyFileSync(e, C);
+        s.copyFileSync(file, C);
       }
       let A = 5,
         v = S
@@ -509,7 +509,7 @@ function saveConfigWithLock(e, t, n) {
         });
     }
     return (
-      aRt(e, De(f, null, 2), {
+      aRt(file, De(f, null, 2), {
         encoding: "utf-8",
         mode: 384,
         allowSymlink: true,
@@ -539,9 +539,9 @@ function enableConfigs() {
 function getConfigBackupDir() {
   return HS.join(tr(), "backups");
 }
-function findMostRecentBackup(e) {
+function findMostRecentBackup(file) {
   let t = qt(),
-    n = HS.basename(e),
+    n = HS.basename(file),
     r = getConfigBackupDir();
   try {
     let i = t
@@ -551,7 +551,7 @@ function findMostRecentBackup(e) {
       .at(-1);
     if (i) return HS.join(r, i);
   } catch {}
-  let o = HS.dirname(e);
+  let o = HS.dirname(file);
   try {
     let i = t
       .readdirStringSync(o)
@@ -559,18 +559,18 @@ function findMostRecentBackup(e) {
       .sort()
       .at(-1);
     if (i) return HS.join(o, i);
-    let a = `${e}.backup`;
+    let a = `${file}.backup`;
     try {
       return (t.statSync(a), a);
     } catch {}
   } catch {}
   return null;
 }
-function getConfig(e, t, n) {
+function getConfig(file, createDefault, throwOnInvalid) {
   if (!BVo) throw Error("Config accessed before allowed.");
   let r = qt();
   try {
-    let o = r.readFileSync(e, {
+    let o = r.readFileSync(file, {
       encoding: "utf-8",
     });
     try {
@@ -578,44 +578,44 @@ function getConfig(e, t, n) {
       return (
         (vcr = false),
         {
-          ...t(),
+          ...createDefault(),
           ...s,
         }
       );
     } catch (s) {
       let i = s instanceof Error ? s.message : String(s);
-      throw new _B(i, e, t());
+      throw new _B(i, file, createDefault());
     }
   } catch (o) {
     let s = on(o);
     if (((vcr = o instanceof _B), s === "ENOENT")) {
-      let i = findMostRecentBackup(e);
+      let i = findMostRecentBackup(file);
       if (i)
         process.stderr.write(`
-Claude configuration file not found at: ${e}
+Claude configuration file not found at: ${file}
 A backup file exists at: ${i}
-You can manually restore it by running: cp "${i}" "${e}"
+You can manually restore it by running: cp "${i}" "${file}"
 
 `);
-      return t();
+      return createDefault();
     }
-    if (o instanceof _B && n) throw o;
+    if (o instanceof _B && throwOnInvalid) throw o;
     if (o instanceof _B) {
       (T(`Config file corrupted: ${o.message}`, {
         level: "error",
       }),
         process.stderr.write(`
-Claude configuration file at ${e} is corrupted: ${o.message}
+Claude configuration file at ${file} is corrupted: ${o.message}
 `));
       let i = 0;
       try {
-        let l = HS.basename(e),
+        let l = HS.basename(file),
           c = getConfigBackupDir();
         r.mkdirSync(c);
         let u = r.readdirStringSync(c).filter((m) => m.startsWith(`${l}.corrupted.`)),
           d,
           p = false,
-          f = r.readFileSync(e, {
+          f = r.readFileSync(file, {
             encoding: "utf-8",
           });
         i = f.length;
@@ -631,7 +631,7 @@ Claude configuration file at ${e} is corrupted: ${o.message}
           } catch {}
         if (!p)
           ((d = HS.join(c, `${l}.corrupted.${Date.now()}`)),
-            r.copyFileSync(e, d),
+            r.copyFileSync(file, d),
             T(`Corrupted config backed up to: ${d}`, {
               level: "error",
             }));
@@ -646,11 +646,11 @@ Claude configuration file at ${e} is corrupted: ${o.message}
           level: "error",
         });
       }
-      let a = findMostRecentBackup(e);
-      if (!RVo && !$Vo.has(e)) {
-        ($Vo.add(e), (RVo = true));
+      let a = findMostRecentBackup(file);
+      if (!RVo && !$Vo.has(file)) {
+        ($Vo.add(file), (RVo = true));
         try {
-          let l = e === b0() ? p2.config : null;
+          let l = file === b0() ? p2.config : null;
           G("tengu_config_parse_error", {
             file_size: i,
             had_cached_auth: l?.oauthAccount !== void 0 || l?.hasCompletedOnboarding === true,
@@ -662,14 +662,14 @@ Claude configuration file at ${e} is corrupted: ${o.message}
       }
       if (a)
         process.stderr.write(`A backup file exists at: ${a}
-You can manually restore it by running: cp "${a}" "${e}"
+You can manually restore it by running: cp "${a}" "${file}"
 
 `);
       else
         process.stderr.write(`
 `);
     }
-    return t();
+    return createDefault();
   }
 }
 function getRawCurrentProjectConfigEntry() {
@@ -683,14 +683,14 @@ function getCurrentProjectConfig() {
   if (typeof n.allowedTools === "string") n.allowedTools = Ia(n.allowedTools) ?? [];
   return n;
 }
-function saveCurrentProjectConfig(e) {
+function saveCurrentProjectConfig(updater) {
   let t = getProjectPathForConfig(),
     n = null;
   try {
     if (
       saveConfigWithLock(b0(), Cme, (o) => {
         let s = o.projects?.[t] ?? DEFAULT_PROJECT_CONFIG,
-          i = e(s);
+          i = updater(s);
         if (i === s) return o;
         return (
           (n = sNe({
@@ -722,7 +722,7 @@ function saveCurrentProjectConfig(e) {
       return;
     }
     let s = o.projects?.[t] ?? DEFAULT_PROJECT_CONFIG,
-      i = e(s);
+      i = updater(s);
     if (i === s) return;
     ((n = sNe({
       ...o,
@@ -859,12 +859,12 @@ function isAutoUpdaterDisabled() {
 function shouldSkipPluginAutoupdate() {
   return isAutoUpdaterDisabled() && !ut(process.env.FORCE_AUTOUPDATE_PLUGINS);
 }
-function formatAutoUpdaterDisabledReason(e) {
-  switch (e.type) {
+function formatAutoUpdaterDisabledReason(reason) {
+  switch (reason.type) {
     case "development":
       return "development build";
     case "env":
-      return `set by env: ${e.envVar}`;
+      return `set by env: ${reason.envVar}`;
     case "config":
       return "config";
   }
@@ -941,9 +941,9 @@ function recordFirstStartTime() {
     }));
   }
 }
-function getMemoryPath(e) {
+function getMemoryPath(memoryType) {
   let t = yr();
-  switch (e) {
+  switch (memoryType) {
     case "User":
       return HS.join(tr(), "CLAUDE.md");
     case "Local":

@@ -228,8 +228,8 @@ function tup(e, t, n) {
     step: Lca(t, n, e),
   };
 }
-async function compactViaReactive(e, t, n) {
-  let r = zjt(e),
+async function compactViaReactive(messages, context, customInstructions) {
+  let r = zjt(messages),
     o = r.length;
   if (o < 2)
     return (
@@ -243,23 +243,23 @@ async function compactViaReactive(e, t, n) {
         totalGroups: o,
       }
     );
-  let s = t.toolUseContext.abortController.signal,
+  let s = context.toolUseContext.abortController.signal,
     i = 1,
     a = 0,
     l = void 0,
     c,
     u = false,
     d = false;
-  if (n?.initialTokenGap !== void 0 && o > 3) {
+  if (customInstructions?.initialTokenGap !== void 0 && o > 3) {
     c = r.map((f) => qv(f));
-    let p = n.initialTokenGap - (c[o - 1] ?? 0);
+    let p = customInstructions.initialTokenGap - (c[o - 1] ?? 0);
     if (p > 0) {
       let f = Lca(c, o - 1, p);
       ((i = 1 + f),
         (l = {
           mode: "seeded",
           step: f,
-          tokenGap: n.initialTokenGap,
+          tokenGap: customInstructions.initialTokenGap,
         }));
     }
   }
@@ -304,7 +304,7 @@ async function compactViaReactive(e, t, n) {
       stepSize: l?.step,
       tokenGap: l?.tokenGap,
     });
-    let h = await eup(g, t, n?.customInstructions, u);
+    let h = await eup(g, context, customInstructions?.customInstructions, u);
     if (h.ok) {
       if (d)
         G("tengu_compact_credits_clamp_rescue", {

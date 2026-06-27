@@ -45,8 +45,8 @@ function c$e(e, t) {
   }
   return n !== null;
 }
-function getAssistantMessageFromError(e, t = "") {
-  switch (e) {
+function getAssistantMessageFromError(error, t = "") {
+  switch (error) {
     case "authentication_failed":
       return {
         state: "blocked",

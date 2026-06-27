@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DMo] deps: wpn, Sae, RF, jG, Lo, wr, fn, At, co, Jt
 ((fYt = require("crypto")), (pHe = require("fs/promises")), (xSt = require("path")));
-function hasThinkingBlocks(e) {
-  for (let t of e)
+function hasThinkingBlocks(messages) {
+  for (let t of messages)
     if (t.role === "assistant" && Array.isArray(t.content)) {
       for (let n of t.content)
         if (
@@ -20,8 +20,8 @@ function hasThinkingBlocks(e) {
     }
   return false;
 }
-function stripToolSearchFieldsFromMessages(e) {
-  return e.map((t) => {
+function stripToolSearchFieldsFromMessages(messages) {
+  return messages.map((t) => {
     if (!Array.isArray(t.content)) return t;
     let n = t.content.map((r) => {
       if (r.type === "tool_use") {
@@ -74,19 +74,19 @@ async function Ukl(e) {
     [],
   );
 }
-async function countMessagesTokensWithAPI(e, t, n) {
+async function countMessagesTokensWithAPI(messages, tools, n) {
   return (
-    (e = MMo(e)),
-    LMo(e, t, async () => {
+    (messages = MMo(messages)),
+    LMo(messages, tools, async () => {
       try {
         let r = n ?? As(),
           o = V9(r),
-          s = hasThinkingBlocks(e);
+          s = hasThinkingBlocks(messages);
         if (l_(r) === "bedrock")
           return countTokensWithBedrock({
             model: dp(r),
-            messages: e,
-            tools: t,
+            messages: messages,
+            tools: tools,
             betas: o,
             containsThinking: s,
           });
@@ -100,15 +100,15 @@ async function countMessagesTokensWithAPI(e, t, n) {
           c = await a.beta.messages.countTokens({
             model: dp(r),
             messages:
-              e.length > 0
-                ? e
+              messages.length > 0
+                ? messages
                 : [
                     {
                       role: "user",
                       content: "foo",
                     },
                   ],
-            tools: t,
+            tools: tools,
             ...(l.length > 0 && {
               betas: fI(l),
             }),
@@ -128,17 +128,17 @@ async function countMessagesTokensWithAPI(e, t, n) {
           }),
           km())
         )
-          return countTokensViaHaikuFallback(e, t).catch(() => null);
+          return countTokensViaHaikuFallback(messages, tools).catch(() => null);
         return null;
       }
     })
   );
 }
-async function countTokensViaHaikuFallback(e, t) {
+async function countTokensViaHaikuFallback(messages, tools) {
   return (
-    (e = MMo(e)),
-    LMo(e, t, async () => {
-      let n = hasThinkingBlocks(e),
+    (messages = MMo(messages)),
+    LMo(messages, tools, async () => {
+      let n = hasThinkingBlocks(messages),
         r = ut(process.env.CLAUDE_CODE_USE_VERTEX) && Yie(Fw()) === "global",
         o = ut(process.env.CLAUDE_CODE_USE_BEDROCK) && n,
         s = ut(process.env.CLAUDE_CODE_USE_VERTEX) && n,
@@ -149,7 +149,7 @@ async function countTokensViaHaikuFallback(e, t) {
           source: "count_tokens",
           agentContext: of(),
         }),
-        l = stripToolSearchFieldsFromMessages(e),
+        l = stripToolSearchFieldsFromMessages(messages),
         c =
           l.length > 0
             ? l
@@ -165,7 +165,7 @@ async function countTokensViaHaikuFallback(e, t) {
             model: dp(i),
             max_tokens: n ? Nkl : 1,
             messages: c,
-            tools: t.length > 0 ? t : void 0,
+            tools: tools.length > 0 ? tools : void 0,
             ...(d.length > 0 && {
               betas: fI(d),
             }),
@@ -191,14 +191,14 @@ function qv(e, t) {
   for (let r of e) n += roughTokenCountEstimationForMessage(r, t);
   return n;
 }
-function roughTokenCountEstimationForMessage(e, t) {
+function roughTokenCountEstimationForMessage(message, t) {
   if (
-    (e.type === "assistant" || e.type === "user" || e.type === "api_system") &&
-    e.message?.content
+    (message.type === "assistant" || message.type === "user" || message.type === "api_system") &&
+    message.message?.content
   )
-    return PRe(e.message?.content, t);
-  if (e.type === "attachment" && e.attachment) {
-    let n = AZn(e.attachment),
+    return PRe(message.message?.content, t);
+  if (message.type === "attachment" && message.attachment) {
+    let n = AZn(message.attachment),
       r = 0;
     for (let o of n) r += PRe(o.message.content, t);
     return r;

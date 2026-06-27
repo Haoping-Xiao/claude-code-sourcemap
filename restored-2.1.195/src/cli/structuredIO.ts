@@ -795,9 +795,23 @@ class StructuredIO {
 function rXo(e) {
   (console.error(e), process.exit(1));
 }
-async function executePermissionRequestHooksForSDK(e, t, n, r, o) {
-  let s = Fr(r).mode,
-    i = jAe(e.name, t, n, r, s, o, r.abortController.signal);
+async function executePermissionRequestHooksForSDK(
+  toolName,
+  toolUseID,
+  input,
+  toolUseContext,
+  suggestions,
+) {
+  let s = Fr(toolUseContext).mode,
+    i = jAe(
+      toolName.name,
+      toolUseID,
+      input,
+      toolUseContext,
+      s,
+      suggestions,
+      toolUseContext.abortController.signal,
+    );
   for await (let a of i)
     if (
       a.permissionRequestResult &&
@@ -806,14 +820,14 @@ async function executePermissionRequestHooksForSDK(e, t, n, r, o) {
     ) {
       let l = a.permissionRequestResult;
       if (l.behavior === "allow") {
-        let c = l.updatedInput || n;
+        let c = l.updatedInput || input;
         if (l.updatedInput) {
           let d = F_t(
-            await u$e(e, c, {
-              ...r,
-              toolUseId: t,
+            await u$e(toolName, c, {
+              ...toolUseContext,
+              toolUseId: toolUseID,
             }),
-            e.name,
+            toolName.name,
           );
           if (d)
             return d.behavior === "ask"
@@ -829,7 +843,7 @@ async function executePermissionRequestHooksForSDK(e, t, n, r, o) {
                 };
         }
         let u = l.updatedPermissions ?? [];
-        if (u.length > 0) (Y8(u), r.setToolPermissionContext((d) => T4(d, u)));
+        if (u.length > 0) (Y8(u), toolUseContext.setToolPermissionContext((d) => T4(d, u)));
         return {
           behavior: "allow",
           updatedInput: c,

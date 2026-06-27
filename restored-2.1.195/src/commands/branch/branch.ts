@@ -5,14 +5,14 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: deriveFirstPrompt, createFork, call, branchAndResume
-function deriveFirstPrompt(e) {
-  let t = e?.message?.content;
+function deriveFirstPrompt(firstUserMessage) {
+  let t = firstUserMessage?.message?.content;
   if (!t) return "Branched conversation";
   let n = typeof t === "string" ? t : t.find((r) => r.type === "text")?.text;
   if (!n) return "Branched conversation";
   return n.replace(/\s+/g, " ").trim().slice(0, 100).trimEnd() || "Branched conversation";
 }
-async function createFork(e, t, n) {
+async function createFork(customTitle, t, n) {
   let r = QLl.randomUUID(),
     o = Rt(),
     s = Jh(yr()),
@@ -44,7 +44,7 @@ async function createFork(e, t, n) {
       input: l,
       crlfDelay: 1 / 0,
     }),
-    p = new Set(e.map((S) => S.uuid)),
+    p = new Set(customTitle.map((S) => S.uuid)),
     f = new Map(),
     m = [],
     g = async () => {
@@ -79,7 +79,7 @@ async function createFork(e, t, n) {
     b = null,
     _ = [];
   try {
-    for (let S of e) {
+    for (let S of customTitle) {
       let A = f.get(S.uuid);
       if (!A) continue;
       let v =
@@ -168,8 +168,8 @@ async function createFork(e, t, n) {
     contentReplacementRecords: m,
   };
 }
-async function getUniqueForkName(e) {
-  let t = `${e} (Branch)`;
+async function getUniqueForkName(baseName) {
+  let t = `${baseName} (Branch)`;
   if (
     (
       await OQ(t, {
@@ -178,9 +178,9 @@ async function getUniqueForkName(e) {
     ).length === 0
   )
     return t;
-  let r = await OQ(`${e} (Branch`),
+  let r = await OQ(`${baseName} (Branch`),
     o = new Set([1]),
-    s = new RegExp(`^${wx(e)} \\(Branch(?: (\\d+))?\\)$`);
+    s = new RegExp(`^${wx(baseName)} \\(Branch(?: (\\d+))?\\)$`);
   for (let a of r) {
     let l = a.customTitle?.match(s);
     if (l)
@@ -189,9 +189,9 @@ async function getUniqueForkName(e) {
   }
   let i = 2;
   while (o.has(i)) i++;
-  return `${e} (Branch ${i})`;
+  return `${baseName} (Branch ${i})`;
 }
-async function rDl(e, t, n = {}) {
+async function rDl(onDone, context, n = {}) {
   let r = Rt(),
     o = Gg(r);
   try {
@@ -201,7 +201,7 @@ async function rDl(e, t, n = {}) {
         forkPath: a,
         serializedMessages: l,
         contentReplacementRecords: c,
-      } = await createFork(e.messages, n.customTitle, n.extraMessages),
+      } = await createFork(onDone.messages, n.customTitle, n.extraMessages),
       u = new Date(),
       d = deriveFirstPrompt(l.find((b) => b.type === "user")),
       p = i?.replace(/\s+/g, " ").trim() ?? (await getUniqueForkName(d)),
@@ -230,17 +230,17 @@ async function rDl(e, t, n = {}) {
       g = i ? ` "${p}"` : "",
       h = o ? ` ("${o}")` : "",
       y = `Branched conversation${g}. You are now in the new branch (session ${s}). Use /resume ${r}${h} to return to the original, or run \`claude -r ${r}\` in a new terminal.`;
-    if (e.resume)
-      (await e.resume(s, m, "fork"),
+    if (onDone.resume)
+      (await onDone.resume(s, m, "fork"),
         Zce(XE(), p, "user"),
-        t(y, {
+        context(y, {
           display: "system",
         }));
-    else t(`Branched conversation${g}. Resume with: /resume ${s}`);
+    else context(`Branched conversation${g}. Resume with: /resume ${s}`);
     return true;
   } catch (s) {
     let i = s instanceof Error ? s.message : "Unknown error occurred";
-    return (t(`Failed to branch conversation: ${i}`), false);
+    return (context(`Failed to branch conversation: ${i}`), false);
   }
 }
 async function call(e, t, n) {

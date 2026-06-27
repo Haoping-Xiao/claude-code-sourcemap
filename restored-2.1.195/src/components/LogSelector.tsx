@@ -34,13 +34,13 @@ function LGf(e, t, n) {
     after: c.replace(/\s+/g, " ").trimEnd() + (i < e.length ? "\u2026" : ""),
   };
 }
-function buildLogLabel(e, t, n) {
-  let { isGroupHeader: r = false, isChild: o = false, forkCount: s = 0 } = n || {},
+function buildLogLabel(log, maxLabelWidth, options) {
+  let { isGroupHeader: r = false, isChild: o = false, forkCount: s = 0 } = options || {},
     i = r && s > 0 ? vGf : o ? wGf : 0,
     a = r && s > 0 ? ` (+${s} other ${s === 1 ? "session" : "sessions"})` : "",
-    l = e.isSidechain ? " (sidechain)" : "",
-    c = t - i - l.length - a.length;
-  return `${NVl(DFe(e), c)}${l}${a}`;
+    l = log.isSidechain ? " (sidechain)" : "",
+    c = maxLabelWidth - i - l.length - a.length;
+  return `${NVl(DFe(log), c)}${l}${a}`;
 }
 function L2o(e, t) {
   let { isChild: n = false, showProjectPath: r = false } = t || {},
@@ -977,9 +977,9 @@ function LogSelector({
     }),
   });
 }
-function extractSearchableText(e) {
-  if (e.type !== "user" && e.type !== "assistant") return "";
-  let t = "message" in e ? e.message?.content : void 0;
+function extractSearchableText(message) {
+  if (message.type !== "user" && message.type !== "assistant") return "";
+  let t = "message" in message ? message.message?.content : void 0;
   if (!t) return "";
   if (typeof t === "string") return t;
   if (Array.isArray(t))

@@ -6,22 +6,22 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CBo] deps: si, Ye, ps, Cre, cqe, sr, Cc, mE, Bs, vi, f_, Ko, gKe, EC
 ((bse = R(rt(), 1)), (rd = R(se(), 1)));
-function getScopeHeading(e) {
-  switch (e) {
+function getScopeHeading(scope) {
+  switch (scope) {
     case "project":
       return {
         label: "Project MCPs",
-        path: cF(e),
+        path: cF(scope),
       };
     case "user":
       return {
         label: "User MCPs",
-        path: cF(e),
+        path: cF(scope),
       };
     case "local":
       return {
         label: "Local MCPs",
-        path: cF(e),
+        path: cF(scope),
       };
     case "enterprise":
       return {
@@ -41,7 +41,7 @@ function getScopeHeading(e) {
       };
     default:
       return {
-        label: e,
+        label: scope,
       };
   }
 }

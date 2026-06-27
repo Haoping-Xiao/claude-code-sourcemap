@@ -57,8 +57,12 @@ function kTl() {
     }),
   });
 }
-function renderToolResultMessage(e, t, { verbose: n, theme: r, tools: o, style: s }) {
-  let a = t.at(-1)?.data?.timeoutMs,
+function renderToolResultMessage(
+  content,
+  progressMessagesForMessage,
+  { verbose: n, theme: r, tools: o, style: s },
+) {
+  let a = progressMessagesForMessage.at(-1)?.data?.timeoutMs,
     {
       stdout: l,
       stderr: c,
@@ -66,7 +70,7 @@ function renderToolResultMessage(e, t, { verbose: n, theme: r, tools: o, style: 
       returnCodeInterpretation: d,
       isImage: p,
       backgroundTaskId: f,
-    } = e;
+    } = content;
   if (p)
     return $k.jsx(qn, {
       height: 1,

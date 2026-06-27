@@ -9,10 +9,10 @@ function isDevMode() {
     t = ["/build-ant/", "/build-ant-native/", "/build-external/", "/build-external-native/"];
   return e.some((n) => t.some((r) => n.includes(r)));
 }
-function buildDesktopDeepLink(e) {
+function buildDesktopDeepLink(sessionId) {
   let t = isDevMode() ? "claude-dev" : "claude",
     n = new URL(`${t}://resume`);
-  return (n.searchParams.set("session", e), n.toString());
+  return (n.searchParams.set("session", sessionId), n.toString());
 }
 async function isDesktopInstalled() {
   if (isDevMode()) return true;
@@ -64,10 +64,10 @@ async function getDesktopInstallStatus() {
     version: t,
   };
 }
-async function openDeepLink(e) {
-  T(`Opening deep link: ${e}`);
+async function openDeepLink(deepLinkUrl) {
+  T(`Opening deep link: ${deepLinkUrl}`);
   {
-    let { code: n } = await $n("xdg-open", [e]);
+    let { code: n } = await $n("xdg-open", [deepLinkUrl]);
     return n === 0;
   }
   return false;

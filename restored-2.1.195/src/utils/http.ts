@@ -224,16 +224,16 @@ function getAuthHeaders() {
     },
   };
 }
-async function withOAuth401Retry(e, t) {
+async function withOAuth401Retry(request, opts) {
   try {
-    return await e();
+    return await request();
   } catch (n) {
     if (!po.isAxiosError(n)) throw n;
     let r = n.response?.status;
     if (
       !(
         r === 401 ||
-        (t?.also403Revoked &&
+        (opts?.also403Revoked &&
           r === 403 &&
           typeof n.response?.data === "string" &&
           n.response.data.includes("OAuth token has been revoked"))
@@ -242,6 +242,6 @@ async function withOAuth401Retry(e, t) {
       throw n;
     let s = Ws()?.accessToken;
     if (!s) throw n;
-    return (await ZB(s), await e());
+    return (await ZB(s), await request());
   }
 }

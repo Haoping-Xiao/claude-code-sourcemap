@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zyc] deps: tC, zj, _i, Tc, Xge, Ye, N0e, ps, dn, kt, es, xjo, Ko, zX, NOe
 ((Jse = R(rt(), 1)), (Vz = R(se(), 1)));
-function ThinkingToggle(e) {
+function ThinkingToggle(t0) {
   let t = Kyc.c(25),
-    { currentValue: n, onSelect: r, onCancel: o, isMidConversation: s } = e,
+    { currentValue: n, onSelect: r, onCancel: o, isMidConversation: s } = t0,
     [i, a] = Yyc.useState(null),
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))

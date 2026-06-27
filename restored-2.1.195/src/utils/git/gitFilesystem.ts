@@ -34,9 +34,9 @@ async function resolveGitDir(e) {
 function isValidGitSha(e) {
   return /^[0-9a-f]{40}$/.test(e) || /^[0-9a-f]{64}$/.test(e);
 }
-async function readGitHead(e) {
+async function readGitHead(gitDir) {
   try {
-    let t = (await fY.readFile(mM.join(e, "HEAD"), "utf-8")).trim();
+    let t = (await fY.readFile(mM.join(gitDir, "HEAD"), "utf-8")).trim();
     if (t.startsWith("ref:")) {
       let n = t.slice(4).trim();
       if (n.startsWith("refs/heads/")) {
@@ -48,7 +48,7 @@ async function readGitHead(e) {
         };
       }
       if (!Uie(n)) return null;
-      let r = await resolveRef(e, n);
+      let r = await resolveRef(gitDir, n);
       return r
         ? {
             type: "detached",
@@ -359,12 +359,12 @@ async function getHeadForDir(e) {
   if (n.type === "branch") return resolveRef(t, `refs/heads/${n.name}`);
   return n.sha;
 }
-async function readWorktreeHeadSha(e) {
+async function readWorktreeHeadSha(worktreePath) {
   let t;
   try {
-    let r = (await fY.readFile(mM.join(e, ".git"), "utf-8")).trim();
+    let r = (await fY.readFile(mM.join(worktreePath, ".git"), "utf-8")).trim();
     if (!r.startsWith("gitdir:")) return null;
-    t = mM.resolve(e, r.slice(7).trim());
+    t = mM.resolve(worktreePath, r.slice(7).trim());
   } catch {
     return null;
   }

@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ahc] deps: Shc, Ye, es
 Xur = R(se(), 1);
-function TokenWarning(e) {
+function TokenWarning(t0) {
   let t = Hhc.c(13),
-    { tokenUsage: n, model: r } = e,
+    { tokenUsage: n, model: r } = t0,
     o = Ht(ydm),
     s;
   if (t[0] !== o || t[1] !== r || t[2] !== n)

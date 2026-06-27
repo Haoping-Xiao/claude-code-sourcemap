@@ -4,12 +4,12 @@
 // class=modified  jaccard=0.5618  score=0.9719  fileCov=0.5711
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function isAwsCredentialsProviderError(e) {
-  return e?.name === "CredentialsProviderError";
+function isAwsCredentialsProviderError(err) {
+  return err?.name === "CredentialsProviderError";
 }
-function isValidAwsStsOutput(e) {
-  if (!e || typeof e !== "object") return false;
-  let t = e;
+function isValidAwsStsOutput(obj) {
+  if (!obj || typeof obj !== "object") return false;
+  let t = obj;
   return (
     typeof t.AccessKeyId === "string" &&
     typeof t.SecretAccessKey === "string" &&

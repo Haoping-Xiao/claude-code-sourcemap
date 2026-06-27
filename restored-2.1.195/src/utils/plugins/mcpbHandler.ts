@@ -9,29 +9,29 @@
 function n6(e) {
   return e.endsWith(".mcpb") || e.endsWith(".dxt");
 }
-function isUrl(e) {
-  return e.startsWith("http://") || e.startsWith("https://");
+function isUrl(source) {
+  return source.startsWith("http://") || source.startsWith("https://");
 }
 function rTp(e) {
   return SUn.createHash("sha256").update(e).digest("hex").substring(0, 16);
 }
-function getMcpbCacheDir(e) {
-  return Hre.join(e, ".mcpb-cache");
+function getMcpbCacheDir(pluginPath) {
+  return Hre.join(pluginPath, ".mcpb-cache");
 }
-function getMetadataPath(e, t) {
-  let n = SUn.createHash("md5").update(t).digest("hex").substring(0, 8);
-  return Hre.join(e, `${n}.metadata.json`);
+function getMetadataPath(cacheDir, source) {
+  let n = SUn.createHash("md5").update(source).digest("hex").substring(0, 8);
+  return Hre.join(cacheDir, `${n}.metadata.json`);
 }
 function dCa(e, t) {
   return `${e}/${t}`;
 }
-function loadMcpServerUserConfig(e, t) {
+function loadMcpServerUserConfig(pluginId, serverName) {
   try {
-    let r = jo().pluginConfigs?.[e]?.mcpServers?.[t],
-      o = wl().read()?.pluginSecrets?.[dCa(e, t)];
+    let r = jo().pluginConfigs?.[pluginId]?.mcpServers?.[serverName],
+      o = wl().read()?.pluginSecrets?.[dCa(pluginId, serverName)];
     if (!r && !o) return null;
     return (
-      T(`Loaded user config for ${e}/${t} (settings + secureStorage)`),
+      T(`Loaded user config for ${pluginId}/${serverName} (settings + secureStorage)`),
       {
         ...r,
         ...o,
@@ -39,23 +39,23 @@ function loadMcpServerUserConfig(e, t) {
     );
   } catch (n) {
     return (
-      T(`Failed to load user config for ${e}/${t}: ${n}`, {
+      T(`Failed to load user config for ${pluginId}/${serverName}: ${n}`, {
         level: "error",
       }),
       null
     );
   }
 }
-async function saveMcpServerUserConfig(e, t, n, r) {
+async function saveMcpServerUserConfig(pluginId, serverName, config, schema) {
   try {
     let o = {},
       s = {};
-    for (let [f, m] of Object.entries(n))
-      if (r[f]?.sensitive === true) s[f] = String(m);
+    for (let [f, m] of Object.entries(config))
+      if (schema[f]?.sensitive === true) s[f] = String(m);
       else o[f] = m;
     let i = new Set(Object.keys(s)),
       a = new Set(Object.keys(o)),
-      l = dCa(e, t),
+      l = dCa(pluginId, serverName),
       c = 0,
       u = await wl().mutate((f) => {
         let m = f.pluginSecrets?.[l],
@@ -85,15 +85,15 @@ async function saveMcpServerUserConfig(e, t, n, r) {
       T(
         `saveMcpServerUserConfig: scrubbed ${c} stale non-sensitive key(s) from secureStorage for ${l}`,
       );
-    let d = jo().pluginConfigs?.[e]?.mcpServers?.[t] ?? {},
+    let d = jo().pluginConfigs?.[pluginId]?.mcpServers?.[serverName] ?? {},
       p = Object.keys(d).filter((f) => i.has(f));
     if (Object.keys(o).length > 0 || p.length > 0) {
       let f = Object.fromEntries(p.map((g) => [g, void 0])),
         m = io("userSettings", {
           pluginConfigs: {
-            [e]: {
+            [pluginId]: {
               mcpServers: {
-                [t]: {
+                [serverName]: {
                   ...o,
                   ...f,
                 },
@@ -104,26 +104,26 @@ async function saveMcpServerUserConfig(e, t, n, r) {
       if (m.error) throw m.error;
       if (p.length > 0)
         T(
-          `saveMcpServerUserConfig: scrubbed ${p.length} plaintext sensitive key(s) from settings.json for ${e}/${t}`,
+          `saveMcpServerUserConfig: scrubbed ${p.length} plaintext sensitive key(s) from settings.json for ${pluginId}/${serverName}`,
         );
     }
     T(
-      `Saved user config for ${e}/${t} (${Object.keys(o).length} non-sensitive, ${Object.keys(s).length} sensitive)`,
+      `Saved user config for ${pluginId}/${serverName} (${Object.keys(o).length} non-sensitive, ${Object.keys(s).length} sensitive)`,
     );
   } catch (o) {
     let s = Zr(o);
     throw (
-      T(`Failed to save user config for ${e}/${t}: ${s.message}`, {
+      T(`Failed to save user config for ${pluginId}/${serverName}: ${s.message}`, {
         level: "error",
       }),
-      Error(`Failed to save user configuration for ${e}/${t}: ${s.message}`)
+      Error(`Failed to save user configuration for ${pluginId}/${serverName}: ${s.message}`)
     );
   }
 }
-function validateUserConfig(e, t) {
+function validateUserConfig(values, schema) {
   let n = [];
-  for (let [r, o] of Object.entries(t)) {
-    let s = e[r];
+  for (let [r, o] of Object.entries(schema)) {
+    let s = values[r];
     if (o.required && (s === void 0 || s === "")) {
       n.push(`${o.title || r} is required but not provided`);
       continue;
@@ -151,24 +151,24 @@ function validateUserConfig(e, t) {
     errors: n,
   };
 }
-async function generateMcpConfig(e, t, n = {}) {
+async function generateMcpConfig(manifest, extractedPath, n = {}) {
   let { getMcpConfigForManifest: r } = await Promise.resolve().then(() => (ndo(), tdo)),
     o = await r({
-      manifest: e,
-      extensionPath: t,
+      manifest: manifest,
+      extensionPath: extractedPath,
       systemDirs: iCa(),
       userConfig: n,
       pathSeparator: "/",
     });
   if (!o) {
-    let s = Error(`Failed to generate MCP server configuration from manifest "${e.name}"`);
+    let s = Error(`Failed to generate MCP server configuration from manifest "${manifest.name}"`);
     throw (ke(s), s);
   }
   return o;
 }
-async function loadCacheMetadata(e, t) {
+async function loadCacheMetadata(cacheDir, source) {
   let n = qt(),
-    r = getMetadataPath(e, t);
+    r = getMetadataPath(cacheDir, source);
   try {
     let o = await n.readFile(r, {
       encoding: "utf-8",
@@ -188,54 +188,54 @@ async function sdo(e, t, n) {
   let r = getMetadataPath(e, t);
   (await qt().mkdir(e), await nqe.writeFile(r, De(n, null, 2), "utf-8"));
 }
-async function downloadMcpb(e, t, n) {
-  if ((T(`Downloading MCPB from ${e}`), n)) n(`Downloading ${e}...`);
+async function downloadMcpb(url, destPath, onProgress) {
+  if ((T(`Downloading MCPB from ${url}`), onProgress)) onProgress(`Downloading ${url}...`);
   let r = performance.now(),
     o = false;
   try {
-    let i = await (SFe(e) ? kSe.get : lb.get)(e, {
+    let i = await (SFe(url) ? kSe.get : lb.get)(url, {
         timeout: 120000,
         responseType: "arraybuffer",
         maxRedirects: 5,
         onDownloadProgress: (l) => {
-          if (l.total && n) {
+          if (l.total && onProgress) {
             let c = Math.round((l.loaded / l.total) * 100);
-            n(`Downloading... ${c}%`);
+            onProgress(`Downloading... ${c}%`);
           }
         },
       }),
       a = new Uint8Array(i.data);
     if (
-      (YD("mcpb", e, "success", performance.now() - r),
+      (YD("mcpb", url, "success", performance.now() - r),
       (o = true),
-      await nqe.writeFile(t, Buffer.from(a)),
-      T(`Downloaded ${a.length} bytes to ${t}`),
-      n)
+      await nqe.writeFile(destPath, Buffer.from(a)),
+      T(`Downloaded ${a.length} bytes to ${destPath}`),
+      onProgress)
     )
-      n("Download complete");
+      onProgress("Download complete");
     return a;
   } catch (s) {
-    if (!o) YD("mcpb", e, "failure", performance.now() - r, k8(s));
+    if (!o) YD("mcpb", url, "failure", performance.now() - r, k8(s));
     let i = be(s),
-      a = Error(`Failed to download MCPB file from ${e}: ${i}`);
+      a = Error(`Failed to download MCPB file from ${url}: ${i}`);
     throw (
-      T(`Failed to download MCPB file from ${e}: ${i}`, {
+      T(`Failed to download MCPB file from ${url}: ${i}`, {
         level: "error",
       }),
       a
     );
   }
 }
-async function extractMcpbContents(e, t, n, r) {
-  if (r) r("Extracting files...");
-  await qt().mkdir(t);
+async function extractMcpbContents(unzipped, extractPath, modes, onProgress) {
+  if (onProgress) onProgress("Extracting files...");
+  await qt().mkdir(extractPath);
   let o = 0,
-    s = Object.entries(e).filter(([a]) => !a.endsWith("/")),
+    s = Object.entries(unzipped).filter(([a]) => !a.endsWith("/")),
     i = s.length;
   for (let [a, l] of s) {
-    let c = Hre.join(t, a),
+    let c = Hre.join(extractPath, a),
       u = Hre.dirname(c);
-    if (u !== t) await qt().mkdir(u);
+    if (u !== extractPath) await qt().mkdir(u);
     if (
       a.endsWith(".json") ||
       a.endsWith(".js") ||
@@ -248,16 +248,17 @@ async function extractMcpbContents(e, t, n, r) {
       let f = new TextDecoder().decode(l);
       await nqe.writeFile(c, f, "utf-8");
     } else await nqe.writeFile(c, Buffer.from(l));
-    let p = n[a];
+    let p = modes[a];
     if (p && p & 73) await nqe.chmod(c, p & 511).catch(() => {});
-    if ((o++, r && o % 10 === 0)) r(`Extracted ${o}/${i} files`);
+    if ((o++, onProgress && o % 10 === 0)) onProgress(`Extracted ${o}/${i} files`);
   }
-  if ((T(`Extracted ${o} files to ${t}`), r)) r(`Extraction complete (${o} files)`);
+  if ((T(`Extracted ${o} files to ${extractPath}`), onProgress))
+    onProgress(`Extraction complete (${o} files)`);
 }
-async function checkMcpbChanged(e, t) {
+async function checkMcpbChanged(source, pluginPath) {
   let n = qt(),
-    r = getMcpbCacheDir(t),
-    o = await loadCacheMetadata(r, e);
+    r = getMcpbCacheDir(pluginPath),
+    o = await loadCacheMetadata(r, source);
   if (!o) return true;
   try {
     await n.stat(o.extractedPath);
@@ -269,8 +270,8 @@ async function checkMcpbChanged(e, t) {
       });
     return true;
   }
-  if (!isUrl(e)) {
-    let s = Hre.join(t, e),
+  if (!isUrl(source)) {
+    let s = Hre.join(pluginPath, source),
       i;
     try {
       i = await n.stat(s);
@@ -294,12 +295,19 @@ async function checkMcpbChanged(e, t) {
   }
   return false;
 }
-async function loadMcpbFile(e, t, n, r, o, s) {
+async function loadMcpbFile(
+  source,
+  pluginPath,
+  pluginId,
+  onProgress,
+  providedUserConfig,
+  forceConfigDialog,
+) {
   let i = qt(),
-    a = getMcpbCacheDir(t);
-  (await i.mkdir(a), T(`Loading MCPB from source: ${e}`));
-  let l = await loadCacheMetadata(a, e);
-  if (l && !(await checkMcpbChanged(e, t))) {
+    a = getMcpbCacheDir(pluginPath);
+  (await i.mkdir(a), T(`Loading MCPB from source: ${source}`));
+  let l = await loadCacheMetadata(a, source);
+  if (l && !(await checkMcpbChanged(source, pluginPath))) {
     T(`Using cached MCPB from ${l.extractedPath} (hash: ${l.contentHash})`);
     let S = Hre.join(l.extractedPath, "manifest.json"),
       A;
@@ -318,10 +326,10 @@ async function loadMcpbFile(e, t, n, r, o, s) {
       C = await rdo(v);
     if (C.user_config && Object.keys(C.user_config).length > 0) {
       let I = C.name,
-        k = loadMcpServerUserConfig(n, I),
-        D = o || k || {},
+        k = loadMcpServerUserConfig(pluginId, I),
+        D = providedUserConfig || k || {},
         P = validateUserConfig(D, C.user_config);
-      if (s || !P.valid)
+      if (forceConfigDialog || !P.valid)
         return {
           status: "needs-config",
           manifest: C,
@@ -331,7 +339,8 @@ async function loadMcpbFile(e, t, n, r, o, s) {
           existingConfig: k || {},
           validationErrors: P.valid ? [] : P.errors,
         };
-      if (o) await saveMcpServerUserConfig(n, I, o, C.user_config ?? {});
+      if (providedUserConfig)
+        await saveMcpServerUserConfig(pluginId, I, providedUserConfig, C.user_config ?? {});
       let O = await generateMcpConfig(C, l.extractedPath, D);
       return {
         manifest: C,
@@ -349,12 +358,12 @@ async function loadMcpbFile(e, t, n, r, o, s) {
     };
   }
   let c, u, d;
-  if (isUrl(e)) {
-    let S = SUn.createHash("md5").update(e).digest("hex").substring(0, 8);
-    ((u = Hre.join(a, `${S}.mcpb`)), (c = await downloadMcpb(e, u, r)));
+  if (isUrl(source)) {
+    let S = SUn.createHash("md5").update(source).digest("hex").substring(0, 8);
+    ((u = Hre.join(a, `${S}.mcpb`)), (c = await downloadMcpb(source, u, onProgress)));
   } else {
-    let S = Hre.join(t, e);
-    if (r) r(`Loading ${e}...`);
+    let S = Hre.join(pluginPath, source);
+    if (onProgress) onProgress(`Loading ${source}...`);
     try {
       ((c = await i.readFileBytes(S)), (u = S), (d = Math.floor((await i.stat(S)).mtimeMs)));
     } catch (A) {
@@ -371,7 +380,7 @@ async function loadMcpbFile(e, t, n, r, o, s) {
     }
   }
   let p = rTp(c);
-  if ((T(`MCPB content hash: ${p}`), r)) r("Extracting MCPB archive...");
+  if ((T(`MCPB content hash: ${p}`), onProgress)) onProgress("Extracting MCPB archive...");
   let f = await nde(Buffer.from(c)),
     m = ZLe(c),
     g = f["manifest.json"];
@@ -391,15 +400,16 @@ async function loadMcpbFile(e, t, n, r, o, s) {
   }
   let y = Hre.join(a, p);
   if (
-    (await extractMcpbContents(f, y, m, r), h.user_config && Object.keys(h.user_config).length > 0)
+    (await extractMcpbContents(f, y, m, onProgress),
+    h.user_config && Object.keys(h.user_config).length > 0)
   ) {
     let S = h.name,
-      A = loadMcpServerUserConfig(n, S),
-      v = o || A || {},
+      A = loadMcpServerUserConfig(pluginId, S),
+      v = providedUserConfig || A || {},
       C = validateUserConfig(v, h.user_config);
     if (!C.valid) {
       let k = {
-        source: e,
+        source: source,
         contentHash: p,
         extractedPath: y,
         cachedAt: new Date().toISOString(),
@@ -407,7 +417,7 @@ async function loadMcpbFile(e, t, n, r, o, s) {
         sourceMtimeMs: d,
       };
       return (
-        await sdo(a, e, k),
+        await sdo(a, source, k),
         {
           status: "needs-config",
           manifest: h,
@@ -419,11 +429,12 @@ async function loadMcpbFile(e, t, n, r, o, s) {
         }
       );
     }
-    if (o) await saveMcpServerUserConfig(n, S, o, h.user_config ?? {});
-    if (r) r("Generating MCP server configuration...");
+    if (providedUserConfig)
+      await saveMcpServerUserConfig(pluginId, S, providedUserConfig, h.user_config ?? {});
+    if (onProgress) onProgress("Generating MCP server configuration...");
     let x = await generateMcpConfig(h, y, v),
       I = {
-        source: e,
+        source: source,
         contentHash: p,
         extractedPath: y,
         cachedAt: new Date().toISOString(),
@@ -431,7 +442,7 @@ async function loadMcpbFile(e, t, n, r, o, s) {
         sourceMtimeMs: d,
       };
     return (
-      await sdo(a, e, I),
+      await sdo(a, source, I),
       {
         manifest: h,
         mcpConfig: x,
@@ -440,10 +451,10 @@ async function loadMcpbFile(e, t, n, r, o, s) {
       }
     );
   }
-  if (r) r("Generating MCP server configuration...");
+  if (onProgress) onProgress("Generating MCP server configuration...");
   let b = await generateMcpConfig(h, y),
     _ = {
-      source: e,
+      source: source,
       contentHash: p,
       extractedPath: y,
       cachedAt: new Date().toISOString(),
@@ -451,7 +462,7 @@ async function loadMcpbFile(e, t, n, r, o, s) {
       sourceMtimeMs: d,
     };
   return (
-    await sdo(a, e, _),
+    await sdo(a, source, _),
     T(`Successfully loaded MCPB: ${h.name} (extracted to ${y})`),
     {
       manifest: h,

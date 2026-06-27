@@ -11,50 +11,52 @@ function XJp(e) {
   if (!t) ((t = qZe(async (n, r, o) => await appendSessionLogImpl(e, n, r, o))), iTo.set(e, t));
   return t;
 }
-async function appendSessionLogImpl(e, t, n, r) {
+async function appendSessionLogImpl(sessionId, entry, url, headers) {
   for (let o = 1; o <= u8n; o++) {
     try {
-      let i = J9e.get(e),
+      let i = J9e.get(sessionId),
         a = {
-          ...r,
+          ...headers,
         };
       if (i) a["Last-Uuid"] = i;
-      let l = await po.put(n, t, {
+      let l = await po.put(url, entry, {
         headers: a,
         timeout: 30000,
         validateStatus: (c) => c < 500,
       });
       if (l.status === 200 || l.status === 201)
         return (
-          J9e.set(e, t.uuid),
-          T(`Successfully persisted session log entry for session ${e}`),
+          J9e.set(sessionId, entry.uuid),
+          T(`Successfully persisted session log entry for session ${sessionId}`),
           true
         );
       if (l.status === 409) {
         let c = l.headers["x-last-uuid"];
-        if (c === t.uuid)
+        if (c === entry.uuid)
           return (
-            J9e.set(e, t.uuid),
-            T(`Session entry ${t.uuid} already present on server, recovering from stale state`),
+            J9e.set(sessionId, entry.uuid),
+            T(`Session entry ${entry.uuid} already present on server, recovering from stale state`),
             In("info", "session_persist_recovered_from_409"),
             true
           );
         if (c)
-          (J9e.set(e, c),
-            T(`Session 409: adopting server lastUuid=${c} from header, retrying entry ${t.uuid}`));
+          (J9e.set(sessionId, c),
+            T(
+              `Session 409: adopting server lastUuid=${c} from header, retrying entry ${entry.uuid}`,
+            ));
         else {
-          let u = await fetchSessionLogsFromUrl(e, n, r),
+          let u = await fetchSessionLogsFromUrl(sessionId, url, headers),
             d = QJp(u);
           if (d)
-            (J9e.set(e, d),
+            (J9e.set(sessionId, d),
               T(
-                `Session 409: re-fetched ${u.length} entries, adopting lastUuid=${d}, retrying entry ${t.uuid}`,
+                `Session 409: re-fetched ${u.length} entries, adopting lastUuid=${d}, retrying entry ${entry.uuid}`,
               ));
           else {
             let f = l.data.error?.message || "Concurrent modification detected";
             return (
               T(
-                `Session persistence conflict: UUID mismatch for session ${e}, entry ${t.uuid}. ${f}`,
+                `Session persistence conflict: UUID mismatch for session ${sessionId}, entry ${entry.uuid}. ${f}`,
                 {
                   level: "error",
                 },
@@ -100,7 +102,7 @@ async function appendSessionLogImpl(e, t, n, r) {
   }
   return false;
 }
-async function appendSessionLog(e, t, n) {
+async function appendSessionLog(sessionId, entry, url) {
   let r = XS();
   if (!r)
     return (
@@ -112,9 +114,9 @@ async function appendSessionLog(e, t, n) {
     Authorization: `Bearer ${r}`,
     "Content-Type": "application/json",
   };
-  return XJp(e)(t, n, o);
+  return XJp(sessionId)(entry, url, o);
 }
-async function getSessionLogs(e, t) {
+async function getSessionLogs(sessionId, url) {
   let n = XS();
   if (!n)
     return (
@@ -125,27 +127,27 @@ async function getSessionLogs(e, t) {
   let r = {
       Authorization: `Bearer ${n}`,
     },
-    o = await fetchSessionLogsFromUrl(e, t, r);
+    o = await fetchSessionLogsFromUrl(sessionId, url, r);
   if (o && o.length > 0) {
     let s = o.at(-1);
-    if (s && "uuid" in s && s.uuid) J9e.set(e, s.uuid);
+    if (s && "uuid" in s && s.uuid) J9e.set(sessionId, s.uuid);
   }
   return o;
 }
-async function getSessionLogsViaOAuth(e, t, n) {
-  let r = `${$s().BASE_API_URL}/v1/session_ingress/session/${e}`;
+async function getSessionLogsViaOAuth(sessionId, accessToken, orgUUID) {
+  let r = `${$s().BASE_API_URL}/v1/session_ingress/session/${sessionId}`;
   T(`[session-ingress] Fetching session logs from: ${r}`);
   let o = {
-    ...aH(t),
-    "x-organization-uuid": n,
+    ...aH(accessToken),
+    "x-organization-uuid": orgUUID,
   };
-  return await fetchSessionLogsFromUrl(e, r, o);
+  return await fetchSessionLogsFromUrl(sessionId, r, o);
 }
-async function getTeleportEvents(e, t, n, r) {
-  let o = `${$s().BASE_API_URL}/v1/code/sessions/${e}/teleport-events`,
+async function getTeleportEvents(sessionId, accessToken, orgUUID, r) {
+  let o = `${$s().BASE_API_URL}/v1/code/sessions/${sessionId}/teleport-events`,
     s = {
-      ...aH(t),
-      "x-organization-uuid": n,
+      ...aH(accessToken),
+      "x-organization-uuid": orgUUID,
     };
   if (r) s["X-Trusted-Device-Token"] = r;
   T(`[teleport] Fetching events from: ${o}`);
@@ -176,7 +178,7 @@ async function getTeleportEvents(e, t, n, r) {
     }
     if (d.status === 404)
       return (
-        T(`[teleport] Session ${e} not found (page ${l})`),
+        T(`[teleport] Session ${sessionId} not found (page ${l})`),
         In("warn", "teleport_events_not_found"),
         It("api_teleport_events_fetch", "not_found"),
         l === 0 ? null : i
@@ -221,16 +223,21 @@ async function getTeleportEvents(e, t, n, r) {
     a = f;
   }
   if (l >= c)
-    (ke(Rh(Error(`Teleport events hit page cap (${c}) for ${e}`), `teleport_events_page_cap ${c}`)),
+    (ke(
+      Rh(
+        Error(`Teleport events hit page cap (${c}) for ${sessionId}`),
+        `teleport_events_page_cap ${c}`,
+      ),
+    ),
       In("warn", "teleport_events_page_cap"),
       It("api_teleport_events_fetch", "page_cap"));
   else xe("api_teleport_events_fetch");
-  return (T(`[teleport] Fetched ${i.length} events over ${l} page(s) for ${e}`), i);
+  return (T(`[teleport] Fetched ${i.length} events over ${l} page(s) for ${sessionId}`), i);
 }
-async function fetchSessionLogsFromUrl(e, t, n) {
+async function fetchSessionLogsFromUrl(sessionId, url, headers) {
   try {
-    let r = await po.get(t, {
-      headers: n,
+    let r = await po.get(url, {
+      headers: headers,
       timeout: 20000,
       validateStatus: (o) => o < 500,
       params: ut(process.env.CLAUDE_AFTER_LAST_COMPACT)
@@ -250,14 +257,14 @@ async function fetchSessionLogsFromUrl(e, t, n) {
         );
       let s = o.loglines;
       return (
-        T(`Fetched ${s.length} session logs for session ${e}`),
+        T(`Fetched ${s.length} session logs for session ${sessionId}`),
         xe("api_session_logs_fetch"),
         s
       );
     }
     if (r.status === 404)
       return (
-        T(`No existing logs for session ${e}`),
+        T(`No existing logs for session ${sessionId}`),
         In("warn", "session_get_no_logs_for_session"),
         xe("api_session_logs_fetch"),
         []

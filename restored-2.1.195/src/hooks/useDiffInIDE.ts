@@ -4,21 +4,21 @@
 // class=modified  jaccard=0.306  score=0.7892  fileCov=0.3332
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function computeEditsFromContents(e, t, n, r) {
-  let o = r === "single",
+function computeEditsFromContents(filePath, oldContent, newContent, editMode) {
+  let o = editMode === "single",
     s = yMe({
-      filePath: e,
-      oldContent: t,
-      newContent: n,
+      filePath: filePath,
+      oldContent: oldContent,
+      newContent: newContent,
       singleHunk: o,
     });
   if (s.length === 0) return [];
   if (o && s.length > 1) ke(Error(`Unexpected number of hunks: ${s.length}. Expected 1 hunk.`));
   return Lel(s);
 }
-async function showDiffInIDE(e, t, n, r) {
+async function showDiffInIDE(file_path, edits, toolUseContext, tabName) {
   let o = false,
-    s = ds(e),
+    s = ds(file_path),
     i = "";
   try {
     i = XC(s);
@@ -29,21 +29,22 @@ async function showDiffInIDE(e, t, n, r) {
     if (o) return;
     o = true;
     try {
-      await closeTabInIDE(r, l);
+      await closeTabInIDE(tabName, l);
     } catch (c) {
       T(`Failed to close diff tab in IDE: ${c instanceof Error ? c.message : String(c)}`, {
         level: "error",
       });
     }
-    (process.off("beforeExit", a), n.abortController.signal.removeEventListener("abort", a));
+    (process.off("beforeExit", a),
+      toolUseContext.abortController.signal.removeEventListener("abort", a));
   }
-  (n.abortController.signal.addEventListener("abort", a), process.on("beforeExit", a));
-  let l = p5(n.options.mcpClients);
+  (toolUseContext.abortController.signal.addEventListener("abort", a), process.on("beforeExit", a));
+  let l = p5(toolUseContext.options.mcpClients);
   try {
     let { updatedFile: c } = Evo({
       filePath: s,
       fileContents: i,
-      edits: t,
+      edits: edits,
     });
     if (!l || l.type !== "connected") throw Error("IDE client not available");
     let u = s,
@@ -56,7 +57,7 @@ async function showDiffInIDE(e, t, n, r) {
           old_file_path: u,
           new_file_path: u,
           new_file_contents: c,
-          tab_name: r,
+          tab_name: tabName,
         },
         l,
       ),
@@ -96,15 +97,15 @@ async function showDiffInIDE(e, t, n, r) {
     );
   }
 }
-async function closeTabInIDE(e, t) {
+async function closeTabInIDE(tabName, ideClient) {
   try {
-    if (!t || t.type !== "connected") throw Error("IDE client not available");
+    if (!ideClient || ideClient.type !== "connected") throw Error("IDE client not available");
     (await Rre(
       "close_tab",
       {
-        tab_name: e,
+        tab_name: tabName,
       },
-      t,
+      ideClient,
     ),
       xe("ide_close_diff_tab"));
   } catch (n) {
@@ -114,34 +115,34 @@ async function closeTabInIDE(e, t) {
       It("ide_close_diff_tab", "ide_close_diff_tab_failed"));
   }
 }
-function isClosedMessage(e) {
+function isClosedMessage(data) {
   return (
-    Array.isArray(e) &&
-    typeof e[0] === "object" &&
-    e[0] !== null &&
-    "type" in e[0] &&
-    e[0].type === "text" &&
-    "text" in e[0] &&
-    e[0].text === "TAB_CLOSED"
+    Array.isArray(data) &&
+    typeof data[0] === "object" &&
+    data[0] !== null &&
+    "type" in data[0] &&
+    data[0].type === "text" &&
+    "text" in data[0] &&
+    data[0].text === "TAB_CLOSED"
   );
 }
-function isRejectedMessage(e) {
+function isRejectedMessage(data) {
   return (
-    Array.isArray(e) &&
-    typeof e[0] === "object" &&
-    e[0] !== null &&
-    "type" in e[0] &&
-    e[0].type === "text" &&
-    "text" in e[0] &&
-    e[0].text === "DIFF_REJECTED"
+    Array.isArray(data) &&
+    typeof data[0] === "object" &&
+    data[0] !== null &&
+    "type" in data[0] &&
+    data[0].type === "text" &&
+    "text" in data[0] &&
+    data[0].text === "DIFF_REJECTED"
   );
 }
-function isSaveMessage(e) {
+function isSaveMessage(data) {
   return (
-    Array.isArray(e) &&
-    e[0]?.type === "text" &&
-    e[0].text === "FILE_SAVED" &&
-    typeof e[1].text === "string"
+    Array.isArray(data) &&
+    data[0]?.type === "text" &&
+    data[0].text === "FILE_SAVED" &&
+    typeof data[1].text === "string"
   );
 }
 var AYn;

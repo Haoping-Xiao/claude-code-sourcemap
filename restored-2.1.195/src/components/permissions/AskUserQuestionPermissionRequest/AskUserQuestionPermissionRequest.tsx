@@ -34,9 +34,9 @@ function YAc(e) {
   else s = t[4];
   return s;
 }
-function AskUserQuestionPermissionRequestBody(e) {
+function AskUserQuestionPermissionRequestBody(t0) {
   let t = Xzo.c(83),
-    { payload: n, answer: r, highlight: o } = e,
+    { payload: n, answer: r, highlight: o } = t0,
     s = n.questions,
     i = n.metadataSource,
     [a] = na(),

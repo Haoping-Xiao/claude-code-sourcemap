@@ -7,7 +7,7 @@
 // module exports: call
 // [unwrapped __esm module Yzl] deps: Xa, O0, jh, Ye, ps, kt, ZKe, je, vn, Bs, Ko, eE
 ((zzl = R(lt(), 1)), (lme = R(rt(), 1)), (bf = R(se(), 1)));
-async function call(e) {
+async function call(onDone) {
   let n = !Dt().hasVisitedPasses;
   if (n) {
     let r = vor();
@@ -22,7 +22,7 @@ async function call(e) {
       is_first_visit: n,
     }),
     Jzl.jsx(Kzl, {
-      onDone: e,
+      onDone: onDone,
     })
   );
 }

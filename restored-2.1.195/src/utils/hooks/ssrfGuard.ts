@@ -70,46 +70,46 @@ function Gpf(e) {
   }
   return null;
 }
-function ssrfGuardedLookup(e, t, n) {
-  let r = "all" in t && t.all === true,
-    o = d0o.isIP(e);
+function ssrfGuardedLookup(hostname, options, callback) {
+  let r = "all" in options && options.all === true,
+    o = d0o.isIP(hostname);
   if (o !== 0) {
-    if (Q_t(e)) {
-      n(ssrfError(e, e), "");
+    if (Q_t(hostname)) {
+      callback(ssrfError(hostname, hostname), "");
       return;
     }
     let s = o === 6 ? 6 : 4;
     if (r)
-      n(null, [
+      callback(null, [
         {
-          address: e,
+          address: hostname,
           family: s,
         },
       ]);
-    else n(null, e, s);
+    else callback(null, hostname, s);
     return;
   }
   Agl.lookup(
-    e,
+    hostname,
     {
       all: true,
     },
     (s, i) => {
       if (s) {
-        n(s, "");
+        callback(s, "");
         return;
       }
       for (let { address: c } of i)
         if (Q_t(c)) {
-          n(ssrfError(e, c), "");
+          callback(ssrfError(hostname, c), "");
           return;
         }
       let a = i[0];
       if (!a) {
-        n(
-          Object.assign(Error(`ENOTFOUND ${e}`), {
+        callback(
+          Object.assign(Error(`ENOTFOUND ${hostname}`), {
             code: "ENOTFOUND",
-            hostname: e,
+            hostname: hostname,
           }),
           "",
         );
@@ -117,25 +117,25 @@ function ssrfGuardedLookup(e, t, n) {
       }
       let l = a.family === 6 ? 6 : 4;
       if (r)
-        n(
+        callback(
           null,
           i.map((c) => ({
             address: c.address,
             family: c.family === 6 ? 6 : 4,
           })),
         );
-      else n(null, a.address, l);
+      else callback(null, a.address, l);
     },
   );
 }
-function ssrfError(e, t) {
+function ssrfError(hostname, address) {
   let n = Error(
-    `HTTP hook blocked: ${e} resolves to ${t} (private/link-local address). Loopback (127.0.0.1, ::1) is allowed for local dev.`,
+    `HTTP hook blocked: ${hostname} resolves to ${address} (private/link-local address). Loopback (127.0.0.1, ::1) is allowed for local dev.`,
   );
   return Object.assign(n, {
     code: "ERR_HTTP_HOOK_BLOCKED_ADDRESS",
-    hostname: e,
-    address: t,
+    hostname: hostname,
+    address: address,
   });
 }
 var Agl, d0o;

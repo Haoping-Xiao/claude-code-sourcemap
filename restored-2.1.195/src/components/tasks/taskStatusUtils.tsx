@@ -6,33 +6,33 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rjo] deps: Ye, ii, Rd
 l8l = R(se(), 1);
-function isTerminalStatus(e) {
-  return e === "completed" || e === "failed" || e === "killed";
+function isTerminalStatus(status) {
+  return status === "completed" || status === "failed" || status === "killed";
 }
-function getTaskStatusIcon(e, t) {
-  let { isIdle: n, awaitingApproval: r, hasError: o, shutdownRequested: s } = t ?? {};
+function getTaskStatusIcon(status, options) {
+  let { isIdle: n, awaitingApproval: r, hasError: o, shutdownRequested: s } = options ?? {};
   if (o) return nt.cross;
   if (r) return nt.questionMarkPrefix;
   if (s) return nt.warning;
-  if (e === "running") {
+  if (status === "running") {
     if (n) return nt.ellipsis;
     return nt.play;
   }
-  if (e === "completed") return nt.tick;
-  if (e === "failed" || e === "killed") return nt.cross;
-  if (e === "paused") return nt.hamburger;
+  if (status === "completed") return nt.tick;
+  if (status === "failed" || status === "killed") return nt.cross;
+  if (status === "paused") return nt.hamburger;
   return nt.bullet;
 }
-function getTaskStatusColor(e, t) {
-  let { isIdle: n, awaitingApproval: r, hasError: o, shutdownRequested: s } = t ?? {};
+function getTaskStatusColor(status, options) {
+  let { isIdle: n, awaitingApproval: r, hasError: o, shutdownRequested: s } = options ?? {};
   if (o) return "error";
   if (r) return "warning";
   if (s) return "warning";
   if (n) return "background";
-  if (e === "completed") return "success";
-  if (e === "failed") return "error";
-  if (e === "killed") return "warning";
-  if (e === "paused") return "warning";
+  if (status === "completed") return "success";
+  if (status === "failed") return "error";
+  if (status === "killed") return "warning";
+  if (status === "paused") return "warning";
   return "background";
 }
 function describeTeammateActivity(e) {
@@ -45,8 +45,10 @@ function describeTeammateActivity(e) {
     "working"
   );
 }
-function shouldHideTasksFooter(e) {
+function shouldHideTasksFooter(tasks) {
   return (
-    wH(e) && e.type !== "local_workflow" && !(Ozn() && (MF(e) || e.type === "in_process_teammate"))
+    wH(tasks) &&
+    tasks.type !== "local_workflow" &&
+    !(Ozn() && (MF(tasks) || tasks.type === "in_process_teammate"))
   );
 }

@@ -20,21 +20,21 @@ function Pkp(e) {
       return "Error";
   }
 }
-function formatDiagnosticsForAttachment(e) {
+function formatDiagnosticsForAttachment(params) {
   let t;
   try {
-    t = e.uri.startsWith("file://") ? BDa.fileURLToPath(e.uri) : e.uri;
+    t = params.uri.startsWith("file://") ? BDa.fileURLToPath(params.uri) : params.uri;
   } catch (r) {
     let o = Zr(r);
     (T(
-      `Failed to convert URI to file path: ${e.uri}. Error: ${o.message}. Using original URI as fallback.`,
+      `Failed to convert URI to file path: ${params.uri}. Error: ${o.message}. Using original URI as fallback.`,
       {
         level: "error",
       },
     ),
-      (t = e.uri));
+      (t = params.uri));
   }
-  let n = e.diagnostics.map((r) => ({
+  let n = params.diagnostics.map((r) => ({
     message: r.message,
     severity: Pkp(r.severity),
     range: {
@@ -57,8 +57,8 @@ function formatDiagnosticsForAttachment(e) {
     },
   ];
 }
-function registerLSPNotificationHandlers(e) {
-  let t = e.getAllServers(),
+function registerLSPNotificationHandlers(manager) {
+  let t = manager.getAllServers(),
     n = [],
     r = 0,
     o = new Map(),
@@ -100,7 +100,7 @@ function registerLSPNotificationHandlers(e) {
             ),
             u.version !== void 0)
           ) {
-            let f = e.getDocumentVersion(u.uri);
+            let f = manager.getDocumentVersion(u.uri);
             if (f !== void 0 && u.version < f) {
               T(
                 `LSP Diagnostics: Dropping stale publishDiagnostics from ${a} for ${u.uri} (server v${u.version} < current v${f})`,

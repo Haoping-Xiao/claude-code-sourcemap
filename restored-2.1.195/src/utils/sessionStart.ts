@@ -15,7 +15,7 @@ function Aut() {
   return ((Tao = void 0), e);
 }
 async function processSessionStartHooks(
-  e,
+  source,
   { sessionId: t, sessionTitle: n, agentType: r, model: o, forceSyncExecution: s } = {},
 ) {
   if (lc("hooks")) return [];
@@ -63,7 +63,7 @@ async function processSessionStartHooks(
       );
     }
   let d = r ?? TO();
-  for await (let p of qjt(e, t, n, d, o, void 0, void 0, s)) {
+  for await (let p of qjt(source, t, n, d, o, void 0, void 0, s)) {
     if (p.message) i.push(p.message);
     if (p.additionalContexts && p.additionalContexts.length > 0) a.push(...p.additionalContexts);
     if (p.initialUserMessage) Hao = p.initialUserMessage;
@@ -72,7 +72,7 @@ async function processSessionStartHooks(
     if (p.reloadSkills) u = true;
   }
   if (u) (W0(), KW(), rF.emit(), xe("hook_session_start_reload_skills"));
-  if (((Tao = e === "startup" || e === "resume" ? c : void 0), l.length > 0)) yca(l);
+  if (((Tao = source === "startup" || source === "resume" ? c : void 0), l.length > 0)) yca(l);
   if (a.length > 0) {
     let p = ai({
       type: "hook_additional_context",
@@ -85,7 +85,7 @@ async function processSessionStartHooks(
   }
   return i;
 }
-async function processSetupHooks(e, { forceSyncExecution: t } = {}) {
+async function processSetupHooks(trigger, { forceSyncExecution: t } = {}) {
   if (lc("hooks")) return [];
   let n = [],
     r = [];
@@ -107,7 +107,7 @@ async function processSetupHooks(e, { forceSyncExecution: t } = {}) {
         },
       );
     }
-  for await (let o of Vjt(e, void 0, void 0, t)) {
+  for await (let o of Vjt(trigger, void 0, void 0, t)) {
     if (o.message) n.push(o.message);
     if (o.additionalContexts && o.additionalContexts.length > 0) r.push(...o.additionalContexts);
   }

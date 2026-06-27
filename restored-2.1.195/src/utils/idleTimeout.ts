@@ -7,7 +7,7 @@
 // [unwrapped __esm module vUc] deps: ft, Yf
 ((AUc = require("async_hooks")), (HUc = require("path")));
 ((yLm = new AUc.AsyncLocalStorage()), (_Lm = new TUc()));
-function createIdleTimeoutManager(e) {
+function createIdleTimeoutManager(isIdle) {
   let t = process.env.CLAUDE_CODE_EXIT_AFTER_STOP_DELAY,
     n = t ? parseInt(t, 10) : null,
     r = n && !isNaN(n) && n > 0,
@@ -20,7 +20,7 @@ function createIdleTimeoutManager(e) {
         ((s = Date.now()),
           (o = setTimeout(() => {
             let i = Date.now() - s;
-            if (e() && i >= n) (T(`Exiting after ${n}ms of idle time`), Bc());
+            if (isIdle() && i >= n) (T(`Exiting after ${n}ms of idle time`), Bc());
           }, n)));
     },
     stop() {

@@ -16,11 +16,11 @@ function Xvm(e, t) {
   }
   return false;
 }
-function usePostCompactSurvey(e, t, n, r) {
+function usePostCompactSurvey(messages, isLoading, t0, t1) {
   let o = nRc.c(25),
-    s = n === void 0 ? false : n,
+    s = t0 === void 0 ? false : t0,
     i;
-  if (o[0] !== r) ((i = r === void 0 ? {} : r), (o[0] = r), (o[1] = i));
+  if (o[0] !== t1) ((i = t1 === void 0 ? {} : t1), (o[0] = t1), (o[1] = i));
   else i = o[1];
   let { enabled: a } = i,
     l = a === void 0 ? true : a,
@@ -63,7 +63,8 @@ function usePostCompactSurvey(e, t, n, r) {
   else ((C = o[5]), (x = o[6]));
   UNe.useEffect(C, x);
   let I;
-  if (o[7] !== e) ((I = new Set(e.filter(Qvm).map(Jvm))), (o[7] = e), (o[8] = I));
+  if (o[7] !== messages)
+    ((I = new Set(messages.filter(Qvm).map(Jvm))), (o[7] = messages), (o[8] = I));
   else I = o[8];
   let k = I,
     D,
@@ -73,21 +74,21 @@ function usePostCompactSurvey(e, t, n, r) {
     o[10] !== l ||
     o[11] !== c ||
     o[12] !== s ||
-    o[13] !== t ||
-    o[14] !== e ||
+    o[13] !== isLoading ||
+    o[14] !== messages ||
     o[15] !== S ||
     o[16] !== y
   )
     ((P = () => {
       if (!l) return;
-      if (y !== "closed" || t) return;
+      if (y !== "closed" || isLoading) return;
       if (s) return;
       if (c !== true) return;
       if (Fte()) return;
       if (!Us("allow_product_feedback")) return;
       if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return;
       if (f.current !== null) {
-        if (Xvm(e, f.current)) {
+        if (Xvm(messages, f.current)) {
           if (((f.current = null), Math.random() < Yvm)) S();
           return;
         }
@@ -95,13 +96,13 @@ function usePostCompactSurvey(e, t, n, r) {
       let L = Array.from(k).filter((M) => !p.current.has(M));
       if (L.length > 0) ((p.current = new Set(k)), (f.current = L.at(-1)));
     }),
-      (D = [l, k, y, t, s, c, e, S]),
+      (D = [l, k, y, isLoading, s, c, messages, S]),
       (o[9] = k),
       (o[10] = l),
       (o[11] = c),
       (o[12] = s),
-      (o[13] = t),
-      (o[14] = e),
+      (o[13] = isLoading),
+      (o[14] = messages),
       (o[15] = S),
       (o[16] = y),
       (o[17] = D),
@@ -132,27 +133,27 @@ function Jvm(e) {
 function Qvm(e) {
   return pA(e);
 }
-function _temp2(e, t) {
+function _temp2(appearanceId_0, selected) {
   (G("tengu_post_compact_survey_event", {
     event_type: We("responded"),
-    appearance_id: e,
-    response: $e(t),
+    appearance_id: appearanceId_0,
+    response: $e(selected),
   }),
     Jc("feedback_survey", {
       event_type: "responded",
-      appearance_id: e,
-      response: t,
+      appearance_id: appearanceId_0,
+      response: selected,
       survey_type: "post_compact",
     }));
 }
-function _temp(e) {
+function _temp(appearanceId) {
   (G("tengu_post_compact_survey_event", {
     event_type: We("appeared"),
-    appearance_id: e,
+    appearance_id: appearanceId,
   }),
     Jc("feedback_survey", {
       event_type: "appeared",
-      appearance_id: e,
+      appearance_id: appearanceId,
       survey_type: "post_compact",
     }));
 }

@@ -98,11 +98,11 @@ function ltn(e) {
     ],
   });
 }
-function generateShellSuggestionsLabel(e, t, n) {
-  let r = e.filter((p) => p.type === "addRules").flatMap((p) => p.rules || []),
+function generateShellSuggestionsLabel(suggestions, shellToolName, commandTransform) {
+  let r = suggestions.filter((p) => p.type === "addRules").flatMap((p) => p.rules || []),
     o = r.filter((p) => p.toolName === "Read"),
-    s = r.filter((p) => p.toolName === t),
-    i = e.filter((p) => p.type === "addDirectories").flatMap((p) => p.directories || []),
+    s = r.filter((p) => p.toolName === shellToolName),
+    i = suggestions.filter((p) => p.type === "addDirectories").flatMap((p) => p.directories || []),
     a = o.map((p) => p.ruleContent?.replace("/**", "") || "").filter((p) => p),
     l = Uo(
       s.flatMap((p) => {
@@ -111,7 +111,7 @@ function generateShellSuggestionsLabel(e, t, n) {
           p.ruleContent.endsWith(":*") || p.ruleContent.endsWith(" *")
             ? p.ruleContent.slice(0, -2)
             : p.ruleContent;
-        return n ? n(f) : f;
+        return commandTransform ? commandTransform(f) : f;
       }),
     ),
     c = i.length > 0,

@@ -135,8 +135,8 @@ function NKf(e) {
   }
   return t || n || QEs(e) || void 0;
 }
-function createFork(e, t, n, r) {
-  let o = e.transcript.filter((p) => !p.isSidechain);
+function createFork(customTitle, t, n, r) {
+  let o = customTitle.transcript.filter((p) => !p.isSidechain);
   if (o.length === 0) throw Error(`Session ${t} has no messages to fork`);
   if (n.upToMessageId) {
     let p = o.findIndex((f) => f.uuid === n.upToMessageId);
@@ -195,11 +195,11 @@ function createFork(e, t, n, r) {
       };
     u.push(S);
   }
-  if (e.contentReplacements.length > 0)
+  if (customTitle.contentReplacements.length > 0)
     u.push({
       type: "content-replacement",
       sessionId: l,
-      replacements: e.contentReplacements,
+      replacements: customTitle.contentReplacements,
       uuid: zJt.randomUUID(),
       timestamp: c,
     });

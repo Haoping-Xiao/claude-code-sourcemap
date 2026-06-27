@@ -59,17 +59,17 @@ async function GSe() {
     await qs().mkdir(lde());
   } catch {}
 }
-async function persistToolResult(e, t) {
-  let n = Array.isArray(e);
+async function persistToolResult(content, toolUseId) {
+  let n = Array.isArray(content);
   if (n) {
-    if (e.some((l) => l.type !== "text"))
+    if (content.some((l) => l.type !== "text"))
       return {
         error: "Cannot persist tool results containing non-text content",
       };
   }
   await GSe();
-  let r = T3t(t, n),
-    o = n ? De(e, null, 2) : e;
+  let r = T3t(toolUseId, n),
+    o = n ? De(content, null, 2) : content;
   try {
     (await qs().writeExclusive(r, o), T(`Persisted tool result to ${r} (${Ra(o.length)})`));
   } catch (a) {
@@ -92,17 +92,17 @@ async function persistToolResult(e, t) {
     hasMore: i,
   };
 }
-function buildLargeToolResultMessage(e) {
+function buildLargeToolResultMessage(result) {
   let t = `${PERSISTED_OUTPUT_TAG}
 `;
   return (
-    (t += `Output too large (${Ra(e.originalSize)}). Full output saved to: ${e.filepath}
+    (t += `Output too large (${Ra(result.originalSize)}). Full output saved to: ${result.filepath}
 
 `),
     (t += `Preview (first ${Ra(Gdt)}):
 `),
-    (t += e.preview),
-    (t += e.hasMore
+    (t += result.preview),
+    (t += result.hasMore
       ? `
 ...
 `
@@ -123,12 +123,12 @@ async function Wdt(e, t, n) {
 async function gIa(e, t, n, r) {
   return maybePersistLargeToolResult(e, t, mIa(t, n, r));
 }
-function isToolResultContentEmpty(e) {
-  if (!e) return true;
-  if (typeof e === "string") return e.trim() === "";
-  if (!Array.isArray(e)) return false;
-  if (e.length === 0) return true;
-  return e.every(
+function isToolResultContentEmpty(content) {
+  if (!content) return true;
+  if (typeof content === "string") return content.trim() === "";
+  if (!Array.isArray(content)) return false;
+  if (content.length === 0) return true;
+  return content.every(
     (t) =>
       typeof t === "object" &&
       "type" in t &&
@@ -137,29 +137,29 @@ function isToolResultContentEmpty(e) {
       (typeof t.text !== "string" || t.text.trim() === ""),
   );
 }
-async function maybePersistLargeToolResult(e, t, n) {
-  let r = e.content;
+async function maybePersistLargeToolResult(toolResultBlock, toolName, persistenceThreshold) {
+  let r = toolResultBlock.content;
   if (isToolResultContentEmpty(r))
     return (
       G("tengu_tool_empty_result", {
-        toolName: Ui(t),
+        toolName: Ui(toolName),
       }),
       {
-        ...e,
-        content: `(${t} completed with no output)`,
+        ...toolResultBlock,
+        content: `(${toolName} completed with no output)`,
       }
     );
-  if (!r) return e;
-  if (bIa(r)) return e;
+  if (!r) return toolResultBlock;
+  if (bIa(r)) return toolResultBlock;
   let o = SIa(r),
-    s = n ?? qca;
-  if (o <= s) return e;
-  let i = await persistToolResult(r, e.tool_use_id);
-  if (mDe(i)) return e;
+    s = persistenceThreshold ?? qca;
+  if (o <= s) return toolResultBlock;
+  let i = await persistToolResult(r, toolResultBlock.tool_use_id);
+  if (mDe(i)) return toolResultBlock;
   let a = buildLargeToolResultMessage(i);
   return (
     G("tengu_tool_result_persisted", {
-      toolName: Ui(t),
+      toolName: Ui(toolName),
       originalSizeBytes: i.originalSize,
       persistedSizeBytes: a.length,
       estimatedOriginalTokens: Math.ceil(i.originalSize / t4t),
@@ -167,7 +167,7 @@ async function maybePersistLargeToolResult(e, t, n) {
       thresholdUsed: s,
     }),
     {
-      ...e,
+      ...toolResultBlock,
       content: a,
     }
   );
@@ -201,9 +201,9 @@ function yIa(e) {
     replacements: new Map(e.replacements),
   };
 }
-function provisionContentReplacementState(e, t) {
+function provisionContentReplacementState(initialMessages, initialContentReplacements) {
   if (!at("tengu_hawthorn_steeple", false)) return;
-  if (e) return ZUn(e, t ?? []);
+  if (initialMessages) return ZUn(initialMessages, initialContentReplacements ?? []);
   return w3t();
 }
 function _vp(e) {
@@ -224,9 +224,9 @@ function SIa(e) {
   if (typeof e === "string") return e.length;
   return e.reduce((t, n) => t + (n.type === "text" ? n.text.length : 0), 0);
 }
-function buildToolNameMap(e) {
+function buildToolNameMap(messages) {
   let t = new Map();
-  for (let n of e) {
+  for (let n of messages) {
     if (n.type !== "assistant") continue;
     let r = n.message.content;
     if (!Array.isArray(r)) continue;
@@ -325,9 +325,9 @@ async function Tvp(e) {
     originalSize: t.originalSize,
   };
 }
-async function enforceToolResultBudget(e, t, n = new Set()) {
-  let r = EIa(e),
-    o = n.size > 0 ? buildToolNameMap(e) : void 0,
+async function enforceToolResultBudget(messages, state, n = new Set()) {
+  let r = EIa(messages),
+    o = n.size > 0 ? buildToolNameMap(messages) : void 0,
     s = (m) => o !== void 0 && n.has(o.get(m) ?? ""),
     i = Vca,
     a = new Map(),
@@ -335,19 +335,19 @@ async function enforceToolResultBudget(e, t, n = new Set()) {
     c = 0,
     u = 0;
   for (let m of r) {
-    let { mustReapply: g, frozen: h, fresh: y } = Evp(m, t);
+    let { mustReapply: g, frozen: h, fresh: y } = Evp(m, state);
     if ((g.forEach((x) => a.set(x.toolUseId, x.replacement)), (c += g.length), y.length === 0)) {
-      m.forEach((x) => t.seenIds.add(x.toolUseId));
+      m.forEach((x) => state.seenIds.add(x.toolUseId));
       continue;
     }
-    y.filter((x) => s(x.toolUseId)).forEach((x) => t.seenIds.add(x.toolUseId));
+    y.filter((x) => s(x.toolUseId)).forEach((x) => state.seenIds.add(x.toolUseId));
     let _ = y.filter((x) => !s(x.toolUseId)),
       S = h.reduce((x, I) => x + I.size, 0),
       A = _.reduce((x, I) => x + I.size, 0),
       v = S + A > i ? Avp(_, S, i) : [],
       C = new Set(v.map((x) => x.toolUseId));
     if (
-      (m.filter((x) => !C.has(x.toolUseId)).forEach((x) => t.seenIds.add(x.toolUseId)),
+      (m.filter((x) => !C.has(x.toolUseId)).forEach((x) => state.seenIds.add(x.toolUseId)),
       v.length === 0)
     )
       continue;
@@ -355,17 +355,17 @@ async function enforceToolResultBudget(e, t, n = new Set()) {
   }
   if (a.size === 0 && l.length === 0)
     return {
-      messages: e,
+      messages: messages,
       newlyReplaced: [],
     };
   let d = await Promise.all(l.map(async (m) => [m, await Tvp(m)])),
     p = [],
     f = 0;
   for (let [m, g] of d) {
-    if ((t.seenIds.add(m.toolUseId), g === null)) continue;
+    if ((state.seenIds.add(m.toolUseId), g === null)) continue;
     ((f += m.size),
       a.set(m.toolUseId, g.content),
-      t.replacements.set(m.toolUseId, g.content),
+      state.replacements.set(m.toolUseId, g.content),
       p.push({
         kind: "tool-result",
         toolUseId: m.toolUseId,
@@ -380,7 +380,7 @@ async function enforceToolResultBudget(e, t, n = new Set()) {
   }
   if (a.size === 0)
     return {
-      messages: e,
+      messages: messages,
       newlyReplaced: [],
     };
   if (p.length > 0)
@@ -394,7 +394,7 @@ async function enforceToolResultBudget(e, t, n = new Set()) {
         reapplied: c,
       }));
   return {
-    messages: Hvp(e, a),
+    messages: Hvp(messages, a),
     newlyReplaced: p,
   };
 }
@@ -424,8 +424,8 @@ function eFn(e, t, n) {
   if (!e) return;
   return ZUn(t, n, e.replacements);
 }
-function getFileSystemErrorMessage(e) {
-  let t = e;
+function getFileSystemErrorMessage(error) {
+  let t = error;
   if (t.code)
     switch (t.code) {
       case "ENOENT":
@@ -443,7 +443,7 @@ function getFileSystemErrorMessage(e) {
       default:
         return `${t.code}: ${t.message}`;
     }
-  return e.message;
+  return error.message;
 }
 var QUn,
   TOOL_RESULTS_SUBDIR = "tool-results",

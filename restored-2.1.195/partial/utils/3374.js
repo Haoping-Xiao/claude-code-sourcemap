@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ljn] deps: Ye, es
 bMa = R(lt(), 1), ajn = R(se(), 1);
-function BackgroundHint(e) {
+function BackgroundHint(t0) {
   let t = SMa.c(30),
     {
       output: n,
@@ -16,7 +16,7 @@ function BackgroundHint(e) {
       totalBytes: i,
       timeoutMs: a,
       verbose: l
-    } = e,
+    } = t0,
     c;
   if (t[0] !== r) c = Ja(r.trim()), t[0] = r, t[1] = c;else c = t[1];
   let u = c,

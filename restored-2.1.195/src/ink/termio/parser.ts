@@ -126,8 +126,8 @@ function xWd(e, t) {
       return null;
   }
 }
-function parseCSI(e) {
-  let t = e.slice(2);
+function parseCSI(rawSequence) {
+  let t = rawSequence.slice(2);
   if (t.length === 0) return null;
   let n = t.charCodeAt(t.length - 1),
     r = t.slice(0, -1),
@@ -339,12 +339,12 @@ function parseCSI(e) {
       ? p
       : {
           type: "unknown",
-          sequence: e,
+          sequence: rawSequence,
         };
   }
   return {
     type: "unknown",
-    sequence: e,
+    sequence: rawSequence,
   };
 }
 function RWd(e) {

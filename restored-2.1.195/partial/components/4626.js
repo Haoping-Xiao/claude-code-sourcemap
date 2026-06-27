@@ -28,7 +28,7 @@ function MOe(e) {
   }), t[9] = e, t[10] = r;else r = t[10];
   return r;
 }
-function Select(e) {
+function Select(t0) {
   let t = d1o.c(51),
     {
       isDisabled: n,
@@ -49,7 +49,7 @@ function Select(e) {
       onImagePaste: y,
       pastedContents: b,
       onRemoveImage: _
-    } = e,
+    } = t0,
     S = n === void 0 ? false : n,
     A = r === void 0 ? 5 : r,
     v;

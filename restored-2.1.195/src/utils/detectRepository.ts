@@ -84,8 +84,8 @@ function parseGitRemote(e) {
   }
   return null;
 }
-function parseGitHubRepository(e) {
-  let t = e.trim(),
+function parseGitHubRepository(input) {
+  let t = input.trim(),
     n = parseGitRemote(t);
   if (n) {
     if (!$m(n.host)) return null;

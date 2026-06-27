@@ -10,16 +10,16 @@
     hunks: new Map(),
     skippedLarge: new Set(),
   }));
-function isFileEditResult(e) {
-  if (!e || typeof e !== "object") return false;
-  let t = e,
+function isFileEditResult(result) {
+  if (!result || typeof result !== "object") return false;
+  let t = result,
     n = typeof t.filePath === "string",
     r = Array.isArray(t.structuredPatch) && t.structuredPatch.length > 0,
     o = t.type === "create" && typeof t.content === "string";
   return n && (r || o);
 }
-function isFileWriteOutput(e) {
-  return "type" in e && (e.type === "create" || e.type === "update");
+function isFileWriteOutput(result) {
+  return "type" in result && (result.type === "create" || result.type === "update");
 }
 function TMf(e) {
   let t = 0,
@@ -50,7 +50,7 @@ function w1l(e) {
     linesRemoved: n,
   };
 }
-function useTurnDiffs(e) {
+function useTurnDiffs(messages) {
   let t = Qtr.useRef({
     completedTurns: [],
     currentTurn: null,
@@ -59,13 +59,13 @@ function useTurnDiffs(e) {
   });
   return Qtr.useMemo(() => {
     let n = t.current;
-    if (e.length < n.lastProcessedIndex)
+    if (messages.length < n.lastProcessedIndex)
       ((n.completedTurns = []),
         (n.currentTurn = null),
         (n.lastProcessedIndex = 0),
         (n.lastTurnIndex = 0));
-    for (let o = n.lastProcessedIndex; o < e.length; o++) {
-      let s = e[o];
+    for (let o = n.lastProcessedIndex; o < messages.length; o++) {
+      let s = messages[o];
       if (!s || s.type !== "user") continue;
       if (
         !(
@@ -123,10 +123,10 @@ function useTurnDiffs(e) {
         }
       }
     }
-    n.lastProcessedIndex = e.length;
+    n.lastProcessedIndex = messages.length;
     let r = [...n.completedTurns];
     if (n.currentTurn && n.currentTurn.files.size > 0) (w1l(n.currentTurn), r.push(n.currentTurn));
     return r.reverse();
-  }, [e]);
+  }, [messages]);
 }
 var Qtr;

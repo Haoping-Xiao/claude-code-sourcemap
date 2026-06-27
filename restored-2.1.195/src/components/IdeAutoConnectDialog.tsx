@@ -15,9 +15,9 @@
   load: () => Promise.resolve().then(() => (qBl(), GBl)),
 }),
   (oBo = WOf));
-function IdeAutoConnectDialog(e) {
+function IdeAutoConnectDialog(t0) {
   let t = sBo.c(9),
-    { onComplete: n } = e,
+    { onComplete: n } = t0,
     r;
   if (t[0] !== n)
     ((r = async (u) => {
@@ -84,9 +84,9 @@ function KBl() {
   let e = Dt();
   return !uF() && e.autoConnectIde !== true && e.hasIdeAutoConnectDialogBeenShown !== true;
 }
-function IdeDisableAutoConnectDialog(e) {
+function IdeDisableAutoConnectDialog(t0) {
   let t = sBo.c(10),
-    { onComplete: n } = e,
+    { onComplete: n } = t0,
     r;
   if (t[0] !== n)
     ((r = () => {

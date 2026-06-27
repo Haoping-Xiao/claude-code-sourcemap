@@ -6,29 +6,29 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $jo] deps: Ye, RN
 ((czl = R(lt(), 1)), (ZHe = R(se(), 1)));
-function optionForPermissionSaveDestination(e) {
-  switch (e) {
+function optionForPermissionSaveDestination(saveDestination) {
+  switch (saveDestination) {
     case "localSettings":
       return {
         label: "Project settings (local)",
         description: `Saved in ${kG("localSettings")}`,
-        value: e,
+        value: saveDestination,
       };
     case "projectSettings":
       return {
         label: "Project settings",
         description: `Checked in at ${kG("projectSettings")}`,
-        value: e,
+        value: saveDestination,
       };
     case "userSettings":
       return {
         label: "User settings",
         description: "Saved in at ~/.claude/settings.json",
-        value: e,
+        value: saveDestination,
       };
   }
 }
-function AddPermissionRules(e) {
+function AddPermissionRules(t0) {
   let t = uzl.c(26),
     {
       onAddRules: n,
@@ -37,7 +37,7 @@ function AddPermissionRules(e) {
       ruleBehavior: s,
       initialContext: i,
       setToolPermissionContext: a,
-    } = e,
+    } = t0,
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((l = DRt.map(optionForPermissionSaveDestination)), (t[0] = l));

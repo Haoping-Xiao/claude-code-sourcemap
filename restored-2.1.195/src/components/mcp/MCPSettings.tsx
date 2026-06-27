@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xnr] deps: Ox, g$, uo, sr, Cc, mE, Bs, vi, B_, Ko
 ((i2l = R(lt(), 1)), (PHe = R(se(), 1)));
-function MCPSettings(e) {
+function MCPSettings(t0) {
   let t = a2l.c(76),
-    { onComplete: n } = e,
+    { onComplete: n } = t0,
     r = Ht(rNf),
     o = Ht(nNf),
     s = r.clients,

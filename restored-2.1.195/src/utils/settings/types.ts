@@ -969,13 +969,13 @@ function dLr(e) {
       })
   );
 }
-function isMcpServerNameEntry(e) {
-  return "serverName" in e && e.serverName !== void 0;
+function isMcpServerNameEntry(entry) {
+  return "serverName" in entry && entry.serverName !== void 0;
 }
-function isMcpServerCommandEntry(e) {
-  return "serverCommand" in e && e.serverCommand !== void 0;
+function isMcpServerCommandEntry(entry) {
+  return "serverCommand" in entry && entry.serverCommand !== void 0;
 }
-function isMcpServerUrlEntry(e) {
-  return "serverUrl" in e && e.serverUrl !== void 0;
+function isMcpServerUrlEntry(entry) {
+  return "serverUrl" in entry && entry.serverUrl !== void 0;
 }
 var c1u, agg, u1u, cmn, umn, d1u, TCe, Dws, p1u, _M, Pws;

@@ -163,9 +163,9 @@ dPf = {
       minutes: 480,
     },
   ]));
-function StatsContent(e) {
+function StatsContent(t0) {
   let t = QOl.c(27),
-    { onClose: n, context: r, defaultTab: o } = e,
+    { onClose: n, context: r, defaultTab: o } = t0,
     [s, i] = GOe.useState(o),
     [a, l] = GOe.useState(false),
     [c, u] = GOe.useState(false),

@@ -6,28 +6,28 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iia] deps: wr, fn, Fh, Un
 eap = new Set(["prompt_suggestion", "away_summary", "agent_summary", "memdir_aki_extract"]);
-function validateBoundedIntEnvVar(e, t, n, r) {
-  if (!t)
+function validateBoundedIntEnvVar(name, value, defaultValue, upperLimit) {
+  if (!value)
     return {
-      effective: n,
+      effective: defaultValue,
       status: "valid",
     };
-  let o = parseInt(t, 10);
+  let o = parseInt(value, 10);
   if (isNaN(o) || o <= 0) {
     let s = {
-      effective: n,
+      effective: defaultValue,
       status: "invalid",
-      message: `Invalid value "${t}" (using default: ${n})`,
+      message: `Invalid value "${value}" (using default: ${defaultValue})`,
     };
-    return (T(`${e} ${s.message}`), s);
+    return (T(`${name} ${s.message}`), s);
   }
-  if (o > r) {
+  if (o > upperLimit) {
     let s = {
-      effective: r,
+      effective: upperLimit,
       status: "capped",
-      message: `Capped from ${o} to ${r}`,
+      message: `Capped from ${o} to ${upperLimit}`,
     };
-    return (T(`${e} ${s.message}`), s);
+    return (T(`${name} ${s.message}`), s);
   }
   return {
     effective: o,

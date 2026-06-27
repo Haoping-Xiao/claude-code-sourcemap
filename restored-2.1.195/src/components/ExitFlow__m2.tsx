@@ -9,9 +9,9 @@
 function Q8f() {
   return HL(J8f) ?? "Goodbye!";
 }
-function ExitFlow(e) {
+function ExitFlow(t0) {
   let t = iJl.c(11),
-    { showWorktree: n, backgroundItems: r, onDone: o, onCancel: s } = e,
+    { showWorktree: n, backgroundItems: r, onDone: o, onCancel: s } = t0,
     i;
   if (t[0] !== o)
     ((i = async function (c) {

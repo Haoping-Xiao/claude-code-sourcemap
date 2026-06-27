@@ -54,14 +54,14 @@ async function checkLoginState() {
     token: new BGo(n),
   };
 }
-function errorMessage(e, t) {
-  switch (e.kind) {
+function errorMessage(err, codeUrl) {
+  switch (err.kind) {
     case "not_signed_in":
-      return `Login failed. Please visit ${t} and login using the GitHub App`;
+      return `Login failed. Please visit ${codeUrl} and login using the GitHub App`;
     case "invalid_token":
       return "GitHub rejected that token. Run `gh auth login` and try again.";
     case "server":
-      return `Server error (${e.status}). Try again in a moment.`;
+      return `Server error (${err.status}). Try again in a moment.`;
     case "network":
       return "Couldn't reach the server. Check your connection.";
   }

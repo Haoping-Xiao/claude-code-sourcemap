@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.394  score=0.692  fileCov=0.4778
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function MemoryFileSelector(e) {
+function MemoryFileSelector(t0) {
   let t = dBl.c(68),
-    { onSelect: n, onCancel: r } = e,
+    { onSelect: n, onCancel: r } = t0,
     o = hz.use(Wv()),
     s = JNo.join(tr(), "CLAUDE.md"),
     i = JNo.join(yr(), "CLAUDE.md"),

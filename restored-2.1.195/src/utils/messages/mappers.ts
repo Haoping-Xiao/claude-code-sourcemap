@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v8l] deps: Yyt, Ye, ps, ii, LL, es, i6e, Bs, vi, Ko, rjo, YHe
 ((H8l = R(lt(), 1)), (_E = R(se(), 1)));
-function toInternalMessages(e) {
-  return e.flatMap((t) => {
+function toInternalMessages(messages) {
+  return messages.flatMap((t) => {
     switch (t.type) {
       case "assistant":
         return [
@@ -130,8 +130,8 @@ function fJt(e) {
     }),
   };
 }
-function toSDKMessages(e, t) {
-  return e.flatMap((n) => {
+function toSDKMessages(messages, t) {
+  return messages.flatMap((n) => {
     switch (n.type) {
       case "assistant": {
         let r = u5f(n),

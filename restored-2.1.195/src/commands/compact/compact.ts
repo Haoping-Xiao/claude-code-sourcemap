@@ -72,21 +72,21 @@ ${c6(i)}`;
   },
 }),
   (qPl = B0f));
-async function compactViaReactive(e, t, n) {
-  (t.onCompactEvent?.({
+async function compactViaReactive(messages, context, customInstructions) {
+  (context.onCompactEvent?.({
     type: "compact_progress",
     event: {
       type: "hooks_start",
       hookType: "pre_compact",
     },
   }),
-    t.onCompactEvent?.({
+    context.onCompactEvent?.({
       type: "sdk_status",
       status: "compacting",
     }));
   let r = performance.now(),
     o,
-    s = qv(e),
+    s = qv(messages),
     i,
     a;
   try {
@@ -94,34 +94,39 @@ async function compactViaReactive(e, t, n) {
       RQ(
         {
           trigger: "manual",
-          customInstructions: n || null,
+          customInstructions: customInstructions || null,
         },
-        t.abortController.signal,
+        context.abortController.signal,
       ),
-      W0f(t, e),
+      W0f(context, messages),
     ]);
     uZn(l, (g) =>
-      t.onQueryEvent?.({
+      context.onQueryEvent?.({
         type: "notification",
         notification: g,
       }),
     );
-    let u = SMo(n, l.newCustomInstructions);
-    (t.onCompactEvent?.({
+    let u = SMo(customInstructions, l.newCustomInstructions);
+    (context.onCompactEvent?.({
       type: "stream_mode",
       mode: "requesting",
     }),
-      t.onQueryEvent?.({
+      context.onQueryEvent?.({
         type: "response_length",
         op: "reset",
       }),
-      t.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "compact_start",
         },
       }));
-    let d = await j0f(n, l.newCustomInstructions, e, t.abortController.signal);
+    let d = await j0f(
+      customInstructions,
+      l.newCustomInstructions,
+      messages,
+      context.abortController.signal,
+    );
     a = d.reuse;
     let p = await (
       d.hit
@@ -130,7 +135,7 @@ async function compactViaReactive(e, t, n) {
             startTime: r,
             cacheSafeParams: c,
           })
-        : yPo(e, c, {
+        : yPo(messages, c, {
             customInstructions: u,
             trigger: "manual",
             manualPrecomputeReuse: d.reuse,
@@ -166,7 +171,7 @@ async function compactViaReactive(e, t, n) {
     let f = p.result.boundaryMarker;
     if (f.subtype === "compact_boundary" && "compactMetadata" in f)
       i = f.compactMetadata.postTokens;
-    (hfe(void 0, t.setAppState), gut(), uS.cache.clear?.());
+    (hfe(void 0, context.setAppState), gut(), uS.cache.clear?.());
     let m =
       [l.userDisplayMessage, p.result.userDisplayMessage].filter(Boolean).join(`
 `) || void 0;
@@ -176,20 +181,20 @@ async function compactViaReactive(e, t, n) {
         ...p.result,
         userDisplayMessage: m,
       },
-      displayText: buildDisplayText(t, m),
+      displayText: buildDisplayText(context, m),
     };
   } catch (l) {
     throw ((o = l instanceof Error ? l.message : "reactive compaction failed"), l);
   } finally {
-    (t.onCompactEvent?.({
+    (context.onCompactEvent?.({
       type: "stream_mode",
       mode: "requesting",
     }),
-      t.onQueryEvent?.({
+      context.onQueryEvent?.({
         type: "response_length",
         op: "reset",
       }),
-      t.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "compact_end",
@@ -204,7 +209,7 @@ async function compactViaReactive(e, t, n) {
         error: o,
         precomputeReuse: a,
       }),
-      t.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "sdk_status",
         status: null,
         metadata: {
@@ -285,12 +290,12 @@ async function j0f(e, t, n, r) {
     }
   );
 }
-function buildDisplayText(e, t) {
+function buildDisplayText(context, userDisplayMessage) {
   let n = J8e("tip"),
     r = eC("app:toggleTranscript", "Global", "ctrl+o"),
     o = [
-      ...(e.options.verbose ? [] : [`(${r} to see full summary)`]),
-      ...(t ? [t] : []),
+      ...(context.options.verbose ? [] : [`(${r} to see full summary)`]),
+      ...(userDisplayMessage ? [userDisplayMessage] : []),
       ...(n ? [n] : []),
     ];
   return wt.dim(
@@ -322,13 +327,13 @@ async function W0f(e, t) {
     forkContextMessages: t,
   };
 }
-var call = async (e, t) => {
-  let { abortController: n } = t,
-    { messages: r } = t;
+var call = async (args, context) => {
+  let { abortController: n } = context,
+    { messages: r } = context;
   if (((r = Py(r)), r.length === 0)) throw Error("No messages to compact");
-  let o = e.trim();
+  let o = args.trim();
   try {
-    return await compactViaReactive(r, t, o);
+    return await compactViaReactive(r, context, o);
   } catch (s) {
     if (n.signal.aborted) throw new ru("Compaction canceled.");
     else if (Xie(s, CSt))

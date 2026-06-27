@@ -32,8 +32,8 @@ function generateActionsTable() {
     }),
   );
 }
-function inferContextFromAction(e) {
-  let t = e.split(":")[0];
+function inferContextFromAction(action) {
+  let t = action.split(":")[0];
   return (
     {
       app: "Global",

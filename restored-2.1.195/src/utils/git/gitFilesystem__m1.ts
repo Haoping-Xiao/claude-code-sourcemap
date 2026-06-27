@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module W0r] deps: vn
 vTs = require("fs");
-async function resolveRefInDir(e, t) {
-  let n = Buffer.from(t, "utf-8"),
+async function resolveRefInDir(dir, ref) {
+  let n = Buffer.from(ref, "utf-8"),
     r = n.length,
     o = q0r;
   if (o) q0r = null;
@@ -27,7 +27,7 @@ async function resolveRefInDir(e, t) {
     y = 0,
     b;
   try {
-    ((s = await ITs.open(xTs.join(e, "packed-refs"), "r")), (i = (await s.stat()).size), (l = i));
+    ((s = await ITs.open(xTs.join(dir, "packed-refs"), "r")), (i = (await s.stat()).size), (l = i));
     while (a < l) {
       if (
         ((c = a + Math.floor((l - a) / 2)),

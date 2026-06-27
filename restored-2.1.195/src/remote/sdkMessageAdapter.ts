@@ -24,33 +24,33 @@ function sgm(e) {
     error: e.error,
   };
 }
-function convertStreamEvent(e) {
+function convertStreamEvent(msg) {
   return {
     type: "stream_event",
-    event: e.event,
-    ...(e.ttft_ms !== void 0 && {
-      ttftMs: e.ttft_ms,
+    event: msg.event,
+    ...(msg.ttft_ms !== void 0 && {
+      ttftMs: msg.ttft_ms,
     }),
   };
 }
-function convertResultMessage(e) {
-  if (e.subtype === "success")
+function convertResultMessage(msg) {
+  if (msg.subtype === "success")
     return {
       type: "system",
       subtype: "informational",
       content: "Session completed successfully",
       level: "info",
-      uuid: e.uuid,
+      uuid: msg.uuid,
       timestamp: new Date().toISOString(),
     };
-  let t = e.errors.filter((n) => !n.startsWith("[ede_diagnostic]"));
+  let t = msg.errors.filter((n) => !n.startsWith("[ede_diagnostic]"));
   if (t.length === 0) return null;
   return {
     type: "system",
     subtype: "informational",
     content: Ja(t.join(", ")),
     level: "warning",
-    uuid: e.uuid,
+    uuid: msg.uuid,
     timestamp: new Date().toISOString(),
   };
 }
@@ -64,42 +64,42 @@ function lgm(e) {
     timestamp: new Date().toISOString(),
   };
 }
-function convertStatusMessage(e) {
-  if (!e.status) return null;
+function convertStatusMessage(msg) {
+  if (!msg.status) return null;
   return {
     type: "system",
     subtype: "informational",
     content:
-      e.status === "compacting" ? "Compacting conversation\u2026" : `Status: ${Ja(e.status)}`,
+      msg.status === "compacting" ? "Compacting conversation\u2026" : `Status: ${Ja(msg.status)}`,
     level: "info",
-    uuid: e.uuid,
+    uuid: msg.uuid,
     timestamp: new Date().toISOString(),
   };
 }
-function convertToolProgressMessage(e) {
+function convertToolProgressMessage(msg) {
   return {
     type: "system",
     subtype: "informational",
-    content: `Tool ${Ja(e.tool_name)} running for ${e.elapsed_time_seconds}s\u2026`,
+    content: `Tool ${Ja(msg.tool_name)} running for ${msg.elapsed_time_seconds}s\u2026`,
     level: "info",
-    uuid: e.uuid,
+    uuid: msg.uuid,
     timestamp: new Date().toISOString(),
-    toolUseID: e.tool_use_id,
+    toolUseID: msg.tool_use_id,
   };
 }
-function convertCompactBoundaryMessage(e) {
+function convertCompactBoundaryMessage(msg) {
   return {
     type: "system",
     subtype: "compact_boundary",
     content: "Conversation compacted",
     level: "info",
-    uuid: e.uuid,
+    uuid: msg.uuid,
     timestamp: new Date().toISOString(),
-    compactMetadata: fJt(e.compact_metadata),
+    compactMetadata: fJt(msg.compact_metadata),
   };
 }
-function convertSDKMessage(e, t) {
-  switch (e.type) {
+function convertSDKMessage(msg, opts) {
+  switch (msg.type) {
     case "control_request":
     case "control_response":
     case "control_cancel_request":
@@ -109,37 +109,37 @@ function convertSDKMessage(e, t) {
     case "assistant":
       return {
         type: "message",
-        message: sgm(e),
+        message: sgm(msg),
       };
     case "user": {
-      let n = e.message?.content,
+      let n = msg.message?.content,
         r = Array.isArray(n) && n.some((s) => s.type === "tool_result");
-      if (t?.convertToolResults && r)
+      if (opts?.convertToolResults && r)
         return {
           type: "message",
           message: Rn({
             content: n,
-            toolUseResult: e.tool_use_result,
-            uuid: e.uuid,
-            timestamp: e.timestamp,
+            toolUseResult: msg.tool_use_result,
+            uuid: msg.uuid,
+            timestamp: msg.timestamp,
           }),
         };
-      if (e.isSynthetic && !ez(e.origin))
+      if (msg.isSynthetic && !ez(msg.origin))
         return {
           type: "ignored",
         };
       let o =
         n === _N ||
         (Array.isArray(n) && n.some((s) => s.type === "text" && (s.text === _N || s.text === Jv)));
-      if ((t?.convertUserTextMessages || o) && !r) {
+      if ((opts?.convertUserTextMessages || o) && !r) {
         if (typeof n === "string" || Array.isArray(n))
           return {
             type: "message",
             message: Rn({
               content: n,
-              toolUseResult: e.tool_use_result,
-              uuid: e.uuid,
-              timestamp: e.timestamp,
+              toolUseResult: msg.tool_use_result,
+              uuid: msg.uuid,
+              timestamp: msg.timestamp,
             }),
           };
       }
@@ -150,14 +150,14 @@ function convertSDKMessage(e, t) {
     case "stream_event":
       return {
         type: "stream_event",
-        event: convertStreamEvent(e),
+        event: convertStreamEvent(msg),
       };
     case "result": {
-      if (e.subtype === "success")
+      if (msg.subtype === "success")
         return {
           type: "ignored",
         };
-      let n = convertResultMessage(e);
+      let n = convertResultMessage(msg);
       return n
         ? {
             type: "message",
@@ -168,20 +168,20 @@ function convertSDKMessage(e, t) {
           };
     }
     case "system":
-      if (e.subtype === "init")
+      if (msg.subtype === "init")
         return {
           type: "message",
-          message: lgm(e),
+          message: lgm(msg),
         };
-      if (e.subtype === "status") {
-        if (e.status === "requesting")
+      if (msg.subtype === "status") {
+        if (msg.status === "requesting")
           return {
             type: "stream_event",
             event: {
               type: "stream_request_start",
             },
           };
-        let n = convertStatusMessage(e);
+        let n = convertStatusMessage(msg);
         return n
           ? {
               type: "message",
@@ -191,122 +191,122 @@ function convertSDKMessage(e, t) {
               type: "ignored",
             };
       }
-      if (e.subtype === "compact_boundary")
+      if (msg.subtype === "compact_boundary")
         return {
           type: "message",
-          message: convertCompactBoundaryMessage(e),
+          message: convertCompactBoundaryMessage(msg),
         };
-      if (e.subtype === "model_refusal_fallback")
+      if (msg.subtype === "model_refusal_fallback")
         return {
           type: "message",
           message: {
             type: "system",
             subtype: "model_refusal_fallback",
-            content: Ja(e.content),
+            content: Ja(msg.content),
             level: "warning",
-            trigger: e.trigger,
-            direction: e.direction,
-            originalModel: e.original_model,
-            fallbackModel: e.fallback_model,
-            requestId: e.request_id,
-            apiRefusalCategory: e.api_refusal_category ?? null,
-            apiRefusalExplanation: e.api_refusal_explanation ?? null,
-            ...(e.retracted_message_uuids !== void 0 && {
-              retractedMessageUuids: e.retracted_message_uuids,
+            trigger: msg.trigger,
+            direction: msg.direction,
+            originalModel: msg.original_model,
+            fallbackModel: msg.fallback_model,
+            requestId: msg.request_id,
+            apiRefusalCategory: msg.api_refusal_category ?? null,
+            apiRefusalExplanation: msg.api_refusal_explanation ?? null,
+            ...(msg.retracted_message_uuids !== void 0 && {
+              retractedMessageUuids: msg.retracted_message_uuids,
             }),
-            ...(e.refused_user_message_uuid !== void 0 && {
-              refusedUserMessageUuid: e.refused_user_message_uuid,
+            ...(msg.refused_user_message_uuid !== void 0 && {
+              refusedUserMessageUuid: msg.refused_user_message_uuid,
             }),
             isMeta: false,
-            uuid: e.uuid,
+            uuid: msg.uuid,
             timestamp: new Date().toISOString(),
           },
         };
-      if (e.subtype === "model_fallback")
+      if (msg.subtype === "model_fallback")
         return {
           type: "message",
           message: {
             type: "system",
             subtype: "model_fallback",
-            content: Ja(e.content),
+            content: Ja(msg.content),
             level: "warning",
-            trigger: e.trigger,
-            originalModel: e.original_model,
-            fallbackModel: e.fallback_model,
+            trigger: msg.trigger,
+            originalModel: msg.original_model,
+            fallbackModel: msg.fallback_model,
             isMeta: false,
-            uuid: e.uuid,
+            uuid: msg.uuid,
             timestamp: new Date().toISOString(),
           },
         };
-      if (e.subtype === "model_consent_fallback")
+      if (msg.subtype === "model_consent_fallback")
         return {
           type: "message",
           message: {
             type: "system",
             subtype: "model_consent_fallback",
-            content: Ja(e.content),
+            content: Ja(msg.content),
             level: "warning",
-            choice: e.choice,
-            originalModel: e.original_model,
-            fallbackModel: e.fallback_model,
-            persistedAsDefault: e.persisted_as_default,
+            choice: msg.choice,
+            originalModel: msg.original_model,
+            fallbackModel: msg.fallback_model,
+            persistedAsDefault: msg.persisted_as_default,
             isMeta: false,
-            uuid: e.uuid,
+            uuid: msg.uuid,
             timestamp: new Date().toISOString(),
           },
         };
-      if (e.subtype === "informational")
+      if (msg.subtype === "informational")
         return {
           type: "message",
           message: {
             type: "system",
             subtype: "informational",
-            content: Ja(e.content),
-            level: e.level,
+            content: Ja(msg.content),
+            level: msg.level,
             isMeta: false,
-            uuid: e.uuid,
+            uuid: msg.uuid,
             timestamp: new Date().toISOString(),
-            ...(e.tool_use_id && {
-              toolUseID: e.tool_use_id,
+            ...(msg.tool_use_id && {
+              toolUseID: msg.tool_use_id,
             }),
-            ...(e.prevent_continuation && {
-              preventContinuation: e.prevent_continuation,
+            ...(msg.prevent_continuation && {
+              preventContinuation: msg.prevent_continuation,
             }),
           },
         };
-      if (e.subtype === "permission_denied") {
-        if (t?.convertToolResults)
+      if (msg.subtype === "permission_denied") {
+        if (opts?.convertToolResults)
           return {
             type: "ignored",
           };
-        let n = e.decision_reason
-          ? ` \u2014 ${e.decision_reason}`
-          : e.decision_reason_type
-            ? ` (${e.decision_reason_type})`
+        let n = msg.decision_reason
+          ? ` \u2014 ${msg.decision_reason}`
+          : msg.decision_reason_type
+            ? ` (${msg.decision_reason_type})`
             : "";
         return {
           type: "message",
           message: {
             type: "system",
             subtype: "informational",
-            content: Ja(`Permission denied: ${e.tool_name}${n}`),
+            content: Ja(`Permission denied: ${msg.tool_name}${n}`),
             level: "warning",
-            uuid: e.uuid,
+            uuid: msg.uuid,
             timestamp: new Date().toISOString(),
-            toolUseID: e.tool_use_id,
+            toolUseID: msg.tool_use_id,
           },
         };
       }
-      if (e.subtype === "local_command_output")
+      if (msg.subtype === "local_command_output")
         return {
           type: "message",
           message: dE({
-            content: Ja(e.content),
-            uuid: () => e.uuid,
+            content: Ja(msg.content),
+            uuid: () => msg.uuid,
           }),
         };
       return (
-        T(`[sdkMessageAdapter] Ignoring system message subtype: ${e.subtype}`),
+        T(`[sdkMessageAdapter] Ignoring system message subtype: ${msg.subtype}`),
         {
           type: "ignored",
         }
@@ -314,7 +314,7 @@ function convertSDKMessage(e, t) {
     case "tool_progress":
       return {
         type: "message",
-        message: convertToolProgressMessage(e),
+        message: convertToolProgressMessage(msg),
       };
     case "auth_status":
       return (
@@ -339,10 +339,10 @@ function convertSDKMessage(e, t) {
       );
     case "env_manager_log": {
       let n =
-        typeof e.data?.content === "string"
-          ? e.data.content
-          : typeof e.message === "string"
-            ? e.message
+        typeof msg.data?.content === "string"
+          ? msg.data.content
+          : typeof msg.message === "string"
+            ? msg.message
             : null;
       if (n === null)
         return (
@@ -367,7 +367,7 @@ function convertSDKMessage(e, t) {
     }
     default:
       return (
-        T(`[sdkMessageAdapter] Unknown message type: ${e.type}`),
+        T(`[sdkMessageAdapter] Unknown message type: ${msg.type}`),
         {
           type: "ignored",
         }

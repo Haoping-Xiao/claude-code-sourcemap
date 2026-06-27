@@ -4,12 +4,12 @@
 // class=modified  jaccard=0.404  score=0.7363  fileCov=0.4724
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function buildSummaryPrompt(e) {
+function buildSummaryPrompt(previousSummary) {
   return `Describe your most recent action in 3-5 words using present tense (-ing). Name the file or function, not the branch. Do not use tools.
 ${
-  e
+  previousSummary
     ? `
-Previous: "${e}" \u2014 say something NEW.
+Previous: "${previousSummary}" \u2014 say something NEW.
 `
     : ""
 }
@@ -23,9 +23,9 @@ Bad (too vague): "Investigating the issue"
 Bad (too long): "Reviewing full branch diff and AgentTool.tsx integration"
 Bad (branch name): "Analyzed adam/background-summary branch diff"`;
 }
-function startAgentSummarization(e, t, n, r, o, s = {}) {
+function startAgentSummarization(taskId, agentId, cacheSafeParams, setAppState, o, s = {}) {
   let i = s.intervalMs ?? Qtf,
-    { forkContextMessages: a, ...l } = n,
+    { forkContextMessages: a, ...l } = cacheSafeParams,
     c = null,
     u = null,
     d = !1,
@@ -34,11 +34,11 @@ function startAgentSummarization(e, t, n, r, o, s = {}) {
     m = !1;
   async function g() {
     if (d) return;
-    T(`[AgentSummary] Timer fired for agent ${t}`);
+    T(`[AgentSummary] Timer fired for agent ${agentId}`);
     try {
-      let b = r();
+      let b = setAppState();
       if (b.length < 3) {
-        T(`[AgentSummary] Skipping summary for ${e}: not enough messages (${b.length})`);
+        T(`[AgentSummary] Skipping summary for ${taskId}: not enough messages (${b.length})`);
         return;
       }
       let _ = Hwo(b),
@@ -46,7 +46,7 @@ function startAgentSummarization(e, t, n, r, o, s = {}) {
       if (S === f) {
         if (
           (T(
-            `[AgentSummary] Skipping summary for ${e}: transcript unchanged (${_.length} messages)`,
+            `[AgentSummary] Skipping summary for ${taskId}: transcript unchanged (${_.length} messages)`,
           ),
           !m)
         )
@@ -92,13 +92,13 @@ function startAgentSummarization(e, t, n, r, o, s = {}) {
       for (let x of C.messages) {
         if (x.type !== "assistant") continue;
         if (x.isApiErrorMessage) {
-          T(`[AgentSummary] Skipping API error message for ${e}`);
+          T(`[AgentSummary] Skipping API error message for ${taskId}`);
           continue;
         }
         let I = x.message.content.find((k) => k.type === "text");
         if (I?.type === "text" && I.text.trim()) {
           let k = I.text.trim();
-          (T(`[AgentSummary] Summary result for ${e}: ${k}`), (p = k), Url(e, k, o));
+          (T(`[AgentSummary] Summary result for ${taskId}: ${k}`), (p = k), Url(taskId, k, o));
           break;
         }
       }
@@ -113,7 +113,7 @@ function startAgentSummarization(e, t, n, r, o, s = {}) {
     u = setTimeout(g, i);
   }
   function y() {
-    if ((T(`[AgentSummary] Stopping summarization for ${e}`), (d = !0), u))
+    if ((T(`[AgentSummary] Stopping summarization for ${taskId}`), (d = !0), u))
       (clearTimeout(u), (u = null));
     if (c) (c.abort(), (c = null));
   }

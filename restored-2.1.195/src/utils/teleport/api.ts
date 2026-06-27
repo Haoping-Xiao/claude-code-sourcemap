@@ -11,11 +11,11 @@ function isTransientNetworkError(e) {
   if (e.response.status >= 500) return true;
   return false;
 }
-async function axiosGetWithRetry(e, t) {
+async function axiosGetWithRetry(url, config) {
   let n;
   for (let r = 0; r <= yzr; r++)
     try {
-      return await po.get(e, t);
+      return await po.get(url, config);
     } catch (o) {
       if (((n = o), !isTransientNetworkError(o))) throw o;
       if (r >= yzr) throw (T(`Teleport request failed after ${r + 1} attempts: ${be(o)}`), o);
@@ -109,22 +109,22 @@ async function fetchCodeSessionsFromSessionsAPI() {
     }
   });
 }
-function getOAuthHeaders(e) {
+function getOAuthHeaders(accessToken) {
   return {
-    Authorization: `Bearer ${e}`,
+    Authorization: `Bearer ${accessToken}`,
     "Content-Type": "application/json",
     "anthropic-version": "2023-06-01",
     "anthropic-client-platform": _x(),
   };
 }
-async function fetchSession(e, t) {
+async function fetchSession(sessionId, t) {
   if (!Jl())
     throw new qb(
       "Cloud sessions are only available on the first-party Anthropic API provider.",
       "Cloud sessions are only available on the first-party Anthropic API provider.",
     );
   let { accessToken: n } = t ?? (await prepareApiRequest()),
-    r = `${$s().BASE_API_URL}/v1/code/sessions/${e}`,
+    r = `${$s().BASE_API_URL}/v1/code/sessions/${sessionId}`,
     o = await po.get(r, {
       headers: getOAuthHeaders(n),
       timeout: 15000,
@@ -133,7 +133,7 @@ async function fetchSession(e, t) {
   if (o.status !== 200) {
     let i = o.data?.error?.message;
     if (o.status === 404) {
-      let a = `Session not found: ${e}`;
+      let a = `Session not found: ${sessionId}`;
       throw new qb(a, a);
     }
     if (o.status === 401)
@@ -145,7 +145,7 @@ async function fetchSession(e, t) {
     throw Error(i || `Failed to fetch session: ${o.status} ${o.statusText}`);
   }
   let s = o.data.response_shape ?? o.data.session;
-  if (!s?.id) throw Error(`Session not found: ${e}`);
+  if (!s?.id) throw Error(`Session not found: ${sessionId}`);
   return ccrSessionToResource(s);
 }
 function getBranchFromSession(e) {
@@ -232,15 +232,15 @@ async function sendBashCommandToRemoteSession(e, t, n) {
     "[sendBashCommandToRemoteSession]",
   );
 }
-async function updateSessionTitle(e, t) {
+async function updateSessionTitle(sessionId, title) {
   try {
     let { accessToken: n } = await prepareApiRequest(),
-      r = `${$s().BASE_API_URL}/v1/code/sessions/${e}`;
-    T(`[updateSessionTitle] Updating title for session ${e}: "${t}"`);
+      r = `${$s().BASE_API_URL}/v1/code/sessions/${sessionId}`;
+    T(`[updateSessionTitle] Updating title for session ${sessionId}: "${title}"`);
     let o = await po.put(
       r,
       {
-        title: t,
+        title: title,
       },
       {
         headers: getOAuthHeaders(n),
@@ -248,7 +248,7 @@ async function updateSessionTitle(e, t) {
       },
     );
     if (o.status === 200)
-      return (T(`[updateSessionTitle] Successfully updated title for session ${e}`), true);
+      return (T(`[updateSessionTitle] Successfully updated title for session ${sessionId}`), true);
     return (T(`[updateSessionTitle] Failed with status ${o.status}: ${De(o.data)}`), false);
   } catch (n) {
     return (T(`[updateSessionTitle] Error: ${be(n)}`), false);

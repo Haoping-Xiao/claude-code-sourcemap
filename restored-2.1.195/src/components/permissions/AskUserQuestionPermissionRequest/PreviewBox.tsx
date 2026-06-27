@@ -28,9 +28,9 @@ function $Ac(e) {
   else s = t[4];
   return s;
 }
-function PreviewBoxBody(e) {
+function PreviewBoxBody(t0) {
   let t = Yzo.c(37),
-    { content: n, maxLines: r, minHeight: o, minWidth: s, maxWidth: i, highlight: a } = e,
+    { content: n, maxLines: r, minHeight: o, minWidth: s, maxWidth: i, highlight: a } = t0,
     l = s === void 0 ? 40 : s,
     { columns: c } = br(),
     [u] = na(),

@@ -6,13 +6,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rSe] deps: ft, dn, Un, kt, F2t, N8, je, fn
 xop = (KWe(), ro(zWe));
-function parseAutoPercentage(e) {
-  if (!e.startsWith("auto:")) return null;
-  let t = e.slice(5),
+function parseAutoPercentage(value) {
+  if (!value.startsWith("auto:")) return null;
+  let t = value.slice(5),
     n = parseInt(t, 10);
   if (isNaN(n))
     return (
-      T(`Invalid ENABLE_TOOL_SEARCH value "${e}": expected auto:N where N is a number.`),
+      T(`Invalid ENABLE_TOOL_SEARCH value "${value}": expected auto:N where N is a number.`),
       null
     );
   return Math.max(0, Math.min(100, n));

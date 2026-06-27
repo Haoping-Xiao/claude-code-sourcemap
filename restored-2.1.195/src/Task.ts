@@ -11,8 +11,8 @@
   (Zsc = tNe.constants.O_NOFOLLOW ?? 0));
 Qsc = new Set();
 vlr = new Map();
-function isTerminalTaskStatus(e) {
-  return e === "completed" || e === "failed" || e === "killed";
+function isTerminalTaskStatus(status) {
+  return status === "completed" || status === "failed" || status === "killed";
 }
 function Hze(e) {
   for (let t of Object.values(e))

@@ -43,19 +43,19 @@ function Kfl(e) {
   }
   return t;
 }
-function truncateForPreview(e) {
+function truncateForPreview(input) {
   try {
-    let t = De(e);
+    let t = De(input);
     return t.length > 200 ? t.slice(0, 200) + "\u2026" : t;
   } catch {
     return "(unserializable)";
   }
 }
-function filterPermissionRelayClients(e, t) {
-  return e.filter(
+function filterPermissionRelayClients(clients, isInAllowlist) {
+  return clients.filter(
     (n) =>
       n.type === "connected" &&
-      t(n.name) &&
+      isInAllowlist(n.name) &&
       n.capabilities?.experimental?.["claude/channel"] !== void 0 &&
       n.capabilities?.experimental?.["claude/channel/permission"] !== void 0,
   );

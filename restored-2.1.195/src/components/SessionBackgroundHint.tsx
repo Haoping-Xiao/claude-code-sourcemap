@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I0c] deps: id, fp, Ld, aE
 ((v0c = R(lt(), 1)), (w0c = R(rt(), 1)));
-function SessionBackgroundHint(e) {
+function SessionBackgroundHint(t0) {
   let t = x0c.c(15),
-    { onBackgroundSession: n, isLoading: r } = e,
+    { onBackgroundSession: n, isLoading: r } = t0,
     o = Dc(),
     s = $T(),
     [i, a] = k0c.useState(false),

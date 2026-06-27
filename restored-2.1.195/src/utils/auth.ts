@@ -394,10 +394,10 @@ async function getApiKeyFromApiKeyHelper(e) {
     u_e.promise
   );
 }
-async function _runAndCache(e, t, n) {
+async function _runAndCache(isNonInteractiveSession, isCold, epoch) {
   try {
-    let r = await _executeApiKeyHelper(e);
-    if (n !== qot) return r;
+    let r = await _executeApiKeyHelper(isNonInteractiveSession);
+    if (epoch !== qot) return r;
     if (r !== null)
       z9 = {
         value: r,
@@ -405,14 +405,14 @@ async function _runAndCache(e, t, n) {
       };
     return r;
   } catch (r) {
-    if (n !== qot) return " ";
+    if (epoch !== qot) return " ";
     let o = r instanceof Error ? r.message : String(r);
     if (
       (console.error(wt.red(`apiKeyHelper failed: ${o}`)),
       T(`Error getting API key from apiKeyHelper: ${o}`, {
         level: "error",
       }),
-      !t && z9 && z9.value !== " ")
+      !isCold && z9 && z9.value !== " ")
     )
       return (
         (z9 = {
@@ -429,14 +429,14 @@ async function _runAndCache(e, t, n) {
       " "
     );
   } finally {
-    if (n === qot) u_e = null;
+    if (epoch === qot) u_e = null;
   }
 }
-async function _executeApiKeyHelper(e) {
+async function _executeApiKeyHelper(isNonInteractiveSession) {
   let t = getConfiguredApiKeyHelper();
   if (!t) return null;
   if (isApiKeyHelperFromProjectOrLocalSettings()) {
-    if (!ad() && !e) {
+    if (!ad() && !isNonInteractiveSession) {
       let s = Error(
         `Security: apiKeyHelper executed before workspace trust is confirmed. If you see this message, post in ${
           {
@@ -532,13 +532,13 @@ async function runAwsAuthRefresh() {
     );
   }
 }
-function refreshAwsAuth(e, t) {
+function refreshAwsAuth(awsAuthRefresh, t) {
   T("Running AWS auth refresh command");
   let n = LD.getInstance();
   return (
     n.startAuthentication(),
     new Promise((r) => {
-      let o = q9r.exec(e, {
+      let o = q9r.exec(awsAuthRefresh, {
         timeout: f0d,
         signal: t,
         windowsHide: true,
@@ -697,13 +697,13 @@ async function runGcpAuthRefresh() {
   } catch {}
   return refreshGcpAuth(e);
 }
-function refreshGcpAuth(e) {
+function refreshGcpAuth(gcpAuthRefresh) {
   T("Running GCP auth refresh command");
   let t = LD.getInstance();
   return (
     t.startAuthentication(),
     new Promise((n) => {
-      let r = q9r.exec(e, {
+      let r = q9r.exec(gcpAuthRefresh, {
         timeout: _0d,
         windowsHide: true,
       });
@@ -761,8 +761,8 @@ function prefetchAwsCredentialsAndBedRockInfoIfSafe() {
 function b0d(e) {
   return /^[a-zA-Z0-9-_]+$/.test(e);
 }
-async function saveApiKey(e) {
-  if (!b0d(e))
+async function saveApiKey(apiKey) {
+  if (!b0d(apiKey))
     throw Error(
       "Invalid API key format. API key must contain only alphanumeric characters, dashes, and underscores.",
     );
@@ -771,7 +771,7 @@ async function saveApiKey(e) {
   if (t) {
     let r = uye(),
       o = ile(),
-      s = Buffer.from(e, "utf-8").toString("hex"),
+      s = Buffer.from(apiKey, "utf-8").toString("hex"),
       i = `add-generic-password -U -a "${o}" -s "${r}" -X "${s}"
 `,
       a = await pv("security", ["-i"], {
@@ -792,12 +792,12 @@ async function saveApiKey(e) {
     }
     G("tengu_api_key_saved_to_keychain", {});
   } else G("tengu_api_key_saved_to_config", {});
-  let n = KB(e);
+  let n = KB(apiKey);
   (gn((r) => {
     let o = r.customApiKeyResponses?.approved ?? [];
     return {
       ...r,
-      primaryApiKey: t ? r.primaryApiKey : e,
+      primaryApiKey: t ? r.primaryApiKey : apiKey,
       customApiKeyResponses: {
         ...r.customApiKeyResponses,
         approved: o.includes(n) ? o : [...o, n],
@@ -833,22 +833,22 @@ async function Qvi() {
     });
   }
 }
-async function saveOAuthTokensIfNeeded(e) {
-  if (!hj(e.scopes))
+async function saveOAuthTokensIfNeeded(tokens) {
+  if (!hj(tokens.scopes))
     return (
       G("tengu_oauth_tokens_not_claude_ai", {}),
       {
         success: true,
       }
     );
-  if (!e.refreshToken || !e.expiresAt)
+  if (!tokens.refreshToken || !tokens.expiresAt)
     return (
       G("tengu_oauth_tokens_inference_only", {}),
       {
         success: true,
       }
     );
-  let { accessToken: t, refreshToken: n, expiresAt: r, scopes: o, clientId: s } = e,
+  let { accessToken: t, refreshToken: n, expiresAt: r, scopes: o, clientId: s } = tokens,
     i = wl(),
     a = i.name;
   try {
@@ -861,8 +861,8 @@ async function saveOAuthTokensIfNeeded(e) {
           refreshToken: n,
           expiresAt: r,
           scopes: o,
-          subscriptionType: e.subscriptionType ?? u?.subscriptionType ?? null,
-          rateLimitTier: e.rateLimitTier ?? u?.rateLimitTier ?? null,
+          subscriptionType: tokens.subscriptionType ?? u?.subscriptionType ?? null,
+          rateLimitTier: tokens.rateLimitTier ?? u?.rateLimitTier ?? null,
           clientId: s,
         },
       };
@@ -985,7 +985,7 @@ function noteAuthRecoveryOutcome(e) {
 function resetAuthFailureTracking() {
   r1t = null;
 }
-async function handleOAuth401ErrorImpl(e) {
+async function handleOAuth401ErrorImpl(failedAccessToken) {
   clearOAuthTokenCache();
   let t = await getClaudeAIOAuthTokensAsync();
   if (!t?.refreshToken) {
@@ -993,7 +993,7 @@ async function handleOAuth401ErrorImpl(e) {
     if (n)
       try {
         let o = await n();
-        if (o && o !== e)
+        if (o && o !== failedAccessToken)
           return (
             (process.env.CLAUDE_CODE_OAUTH_TOKEN = o),
             clearOAuthTokenCache(),
@@ -1021,7 +1021,7 @@ async function handleOAuth401ErrorImpl(e) {
     if (process.env.CLAUDE_CODE_OAUTH_TOKEN || b9())
       try {
         let o = (await wl().readAsync())?.claudeAiOauth;
-        if (o?.accessToken && o.accessToken !== e) {
+        if (o?.accessToken && o.accessToken !== failedAccessToken) {
           if (process.env.CLAUDE_CODE_OAUTH_TOKEN)
             process.env.CLAUDE_CODE_OAUTH_TOKEN = o.accessToken;
           if (b9()) (iee(o.accessToken), vCt(o.scopes));
@@ -1045,7 +1045,7 @@ async function handleOAuth401ErrorImpl(e) {
         if (
           (T(`OAuth 401 recovery: waiting up to ${o}ms for a rotated env token`),
           await waitForRotatedEnvToken({
-            failedAccessToken: e,
+            failedAccessToken: failedAccessToken,
             timeoutMs: o,
           }))
         ) {
@@ -1084,7 +1084,7 @@ async function handleOAuth401ErrorImpl(e) {
         setTimeout(() => process.exit(1), 2000));
     return false;
   }
-  if (t.accessToken !== e)
+  if (t.accessToken !== failedAccessToken)
     return (
       G("tengu_oauth_401_recovered_from_keychain", {}),
       xe("oauth_401_recovery"),
@@ -1093,7 +1093,7 @@ async function handleOAuth401ErrorImpl(e) {
       }),
       true
     );
-  return checkAndRefreshOAuthTokenIfNeeded(0, true, e);
+  return checkAndRefreshOAuthTokenIfNeeded(0, true, failedAccessToken);
 }
 async function readFreshOAuthAccessToken() {
   return (clearOAuthTokenCache(), (await getClaudeAIOAuthTokensAsync())?.accessToken);
@@ -1188,10 +1188,10 @@ function checkAndRefreshOAuthTokenIfNeededWithOutcome(e = 0, t = false, n) {
 function isExpectedOAuthRefreshError(e, { isDefaultFirstPartyClient: t }) {
   return NIe(e) || (!t && EUr(e)) || R_(e);
 }
-async function checkAndRefreshOAuthTokenIfNeededImpl(e, t, n) {
+async function checkAndRefreshOAuthTokenIfNeededImpl(retryCount, force, n) {
   await invalidateOAuthCacheIfDiskChanged();
   let o = await getClaudeAIOAuthTokensAsync();
-  if (!t) {
+  if (!force) {
     if (o && !ate(o.expiresAt)) return "not_needed";
     if (!o?.refreshToken) return "no_refresh_token";
   }
@@ -1203,7 +1203,7 @@ async function checkAndRefreshOAuthTokenIfNeededImpl(e, t, n) {
   let i = await getClaudeAIOAuthTokensAsync();
   if (!i?.refreshToken) return "no_refresh_token";
   if (i.accessToken !== s) return (G("tengu_oauth_token_refresh_race_resolved", {}), "refreshed");
-  if (!t && !ate(i.expiresAt)) return "not_needed";
+  if (!force && !ate(i.expiresAt)) return "not_needed";
   let a = BY();
   await qs().mkdir(a);
   let l;
@@ -1213,13 +1213,13 @@ async function checkAndRefreshOAuthTokenIfNeededImpl(e, t, n) {
       G("tengu_oauth_token_refresh_lock_acquired", {}));
   } catch (d) {
     if (d.code === "ELOCKED") {
-      if (e < 5)
+      if (retryCount < 5)
         return (
           G("tengu_oauth_token_refresh_lock_retry", {
-            retryCount: e + 1,
+            retryCount: retryCount + 1,
           }),
           await Nn(1000 + Math.random() * 1000),
-          checkAndRefreshOAuthTokenIfNeededImpl(e + 1, t, s)
+          checkAndRefreshOAuthTokenIfNeededImpl(retryCount + 1, force, s)
         );
       return (
         G("tengu_oauth_token_refresh_lock_retry_limit_reached", {
@@ -1246,7 +1246,7 @@ async function checkAndRefreshOAuthTokenIfNeededImpl(e, t, n) {
     if (!d?.refreshToken) return "no_refresh_token";
     if (((c = d.refreshToken), d.accessToken !== s))
       return (G("tengu_oauth_token_refresh_race_resolved", {}), "refreshed");
-    if (!t && !ate(d.expiresAt)) return "not_needed";
+    if (!force && !ate(d.expiresAt)) return "not_needed";
     (G("tengu_oauth_token_refresh_starting", {}),
       (u = Boolean((hj(d.scopes) || d.subscriptionType) && !d.clientId)));
     let p = u ? Uo([...Aae, ...cFe(d.scopes)]) : d.scopes,

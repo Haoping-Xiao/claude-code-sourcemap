@@ -40,7 +40,7 @@
     plugins: [],
     mcpServers: [],
   }));
-function LimitBar(e) {
+function LimitBar(t0) {
   let t = EKe.c(35),
     {
       title: n,
@@ -50,7 +50,7 @@ function LimitBar(e) {
       alwaysShowDateInReset: i,
       extraSubtext: a,
       subtextOverride: l,
-    } = e,
+    } = t0,
     c = s === void 0 ? true : s,
     u = i === void 0 ? false : i,
     { utilization: d, resets_at: p } = r;
@@ -693,9 +693,9 @@ function DDf(e) {
     alwaysShowDateInReset: true,
   };
 }
-function ExtraUsageSection(e) {
+function ExtraUsageSection(t0) {
   let t = EKe.c(22),
-    { extraUsage: n, maxWidth: r } = e,
+    { extraUsage: n, maxWidth: r } = t0,
     o = Di();
   if (!(o === "pro" || o === "max")) return false;
   if (!n.is_enabled) {

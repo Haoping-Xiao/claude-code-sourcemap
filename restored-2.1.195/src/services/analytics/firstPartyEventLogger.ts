@@ -88,7 +88,7 @@ async function logEventTo1PAwaitable(e, t = {}) {
 function oOd() {
   return "production";
 }
-function logGrowthBookExperimentTo1P(e) {
+function logGrowthBookExperimentTo1P(data) {
   if (!is1PEventLoggingEnabled()) return;
   if (!Wte || S3e("firstParty")) return;
   let t = oW(),
@@ -96,8 +96,8 @@ function logGrowthBookExperimentTo1P(e) {
     o = {
       event_type: "GrowthbookExperimentEvent",
       event_id: Mzr.randomUUID(),
-      experiment_id: e.experimentId,
-      variation_id: e.variationId,
+      experiment_id: data.experimentId,
+      variation_id: data.variationId,
       ...(t && {
         device_id: t,
       }),
@@ -107,14 +107,14 @@ function logGrowthBookExperimentTo1P(e) {
       ...(r && {
         organization_uuid: r,
       }),
-      ...(e.userAttributes && {
-        session_id: e.userAttributes.sessionId,
+      ...(data.userAttributes && {
+        session_id: data.userAttributes.sessionId,
         user_attributes: De({
-          appVersion: e.userAttributes.appVersion,
+          appVersion: data.userAttributes.appVersion,
         }),
       }),
-      ...(e.experimentMetadata && {
-        experiment_metadata: De(e.experimentMetadata),
+      ...(data.experimentMetadata && {
+        experiment_metadata: De(data.experimentMetadata),
       }),
       environment: oOd(),
     },

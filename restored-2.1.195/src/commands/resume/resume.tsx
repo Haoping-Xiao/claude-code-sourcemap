@@ -7,12 +7,12 @@
 // module exports: filterResumableSessions, call
 // [unwrapped __esm module O2o] deps: ft, Is, _a
 BVl = require("path");
-function resumeHelpMessage(e) {
-  switch (e.resultType) {
+function resumeHelpMessage(result) {
+  switch (result.resultType) {
     case "sessionNotFound":
-      return `Session ${wt.bold(e.arg)} was not found.`;
+      return `Session ${wt.bold(result.arg)} was not found.`;
     case "multipleMatches":
-      return `Found ${e.count} sessions matching ${wt.bold(e.arg)}. Please use /resume to pick a specific session.`;
+      return `Found ${result.count} sessions matching ${wt.bold(result.arg)}. Please use /resume to pick a specific session.`;
   }
 }
 function N2o(e) {
@@ -169,10 +169,10 @@ function filterResumableSessions(e, t) {
 var FVl,
   Az,
   E3,
-  call = async (e, t, n) => {
+  call = async (onDone, context, args) => {
     let r = async (c, u, d) => {
         if (await Tpe(c)) {
-          e(
+          onDone(
             "That session is still running as a background agent. Open `claude agents` to attach to it, or stop it there first to resume here.",
             {
               display: "user",
@@ -181,20 +181,20 @@ var FVl,
           return;
         }
         try {
-          (await t.resume?.(c, u, d),
-            e(void 0, {
+          (await context.resume?.(c, u, d),
+            onDone(void 0, {
               display: "skip",
             }));
         } catch (p) {
-          (ke(p), e(`Failed to resume: ${be(p)}`));
+          (ke(p), onDone(`Failed to resume: ${be(p)}`));
         }
       },
-      o = n?.trim();
+      o = args?.trim();
     if (!o)
       return E3.jsx(
         ResumeCommand,
         {
-          onDone: e,
+          onDone: onDone,
           onResume: r,
         },
         Date.now(),
@@ -205,7 +205,7 @@ var FVl,
       return E3.jsx(N2o, {
         message: "No conversations found to resume.",
         args: o,
-        onDone: () => e("No conversations found to resume."),
+        onDone: () => onDone("No conversations found to resume."),
       });
     let a = yD(o);
     if (a) {
@@ -241,7 +241,7 @@ var FVl,
         return E3.jsx(N2o, {
           message: u,
           args: o,
-          onDone: () => e(u),
+          onDone: () => onDone(u),
         });
       }
     }
@@ -252,6 +252,6 @@ var FVl,
     return E3.jsx(N2o, {
       message: l,
       args: o,
-      onDone: () => e(l),
+      onDone: () => onDone(l),
     });
   };

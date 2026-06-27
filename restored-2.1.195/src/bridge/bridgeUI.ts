@@ -22,9 +22,9 @@ async function NYf(e) {
     )
     .filter((n) => n.length > 0);
 }
-function createBridgeLogger(e) {
-  let t = e.write ?? ((B) => process.stdout.write(B)),
-    n = e.verbose,
+function createBridgeLogger(options) {
+  let t = options.write ?? ((B) => process.stdout.write(B)),
+    n = options.verbose,
     r = 0,
     o = "idle",
     s = "Ready",

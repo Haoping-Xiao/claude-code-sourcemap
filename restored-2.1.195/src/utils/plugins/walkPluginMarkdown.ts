@@ -14,7 +14,7 @@
     }),
   )),
   (u$o = new Set()));
-async function walkPluginMarkdown(e, t, n = {}) {
+async function walkPluginMarkdown(rootDir, onFile, n = {}) {
   let r = qt(),
     o = n.logLabel ?? "plugin",
     s = 0,
@@ -29,7 +29,7 @@ async function walkPluginMarkdown(e, t, n = {}) {
     if (++s > z0l) {
       if (!i)
         ((i = true),
-          T(`Stopping ${o} scan after ${z0l} directories (root=${e})`, {
+          T(`Stopping ${o} scan after ${z0l} directories (root=${rootDir})`, {
             level: "error",
           }));
       return;
@@ -39,7 +39,9 @@ async function walkPluginMarkdown(e, t, n = {}) {
       if (n.stopAtSkillDir && u.some((d) => d.isFile() && RIf.test(d.name))) {
         await Promise.all(
           u.map((d) =>
-            d.isFile() && d.name.toLowerCase().endsWith(".md") ? t(p$o.join(l, d.name), c) : void 0,
+            d.isFile() && d.name.toLowerCase().endsWith(".md")
+              ? onFile(p$o.join(l, d.name), c)
+              : void 0,
           ),
         );
         return;
@@ -48,7 +50,7 @@ async function walkPluginMarkdown(e, t, n = {}) {
         u.map((d) => {
           let p = p$o.join(l, d.name);
           if (d.isDirectory()) return a(p, [...c, d.name]);
-          if (d.isFile() && d.name.toLowerCase().endsWith(".md")) return t(p, c);
+          if (d.isFile() && d.name.toLowerCase().endsWith(".md")) return onFile(p, c);
           return;
         }),
       );
@@ -58,7 +60,7 @@ async function walkPluginMarkdown(e, t, n = {}) {
       });
     }
   }
-  await a(e, []);
+  await a(rootDir, []);
 }
 var p$o,
   RIf,

@@ -15,10 +15,10 @@ async function rum() {
     return false;
   }
 }
-function oauthHeaders(e, t, n) {
+function oauthHeaders(accessToken, t, n) {
   if (Vi()) return num;
   let r = {
-      sessionId: e,
+      sessionId: accessToken,
       baseUrl: t,
       getAuthHeaders: n
     },
@@ -56,7 +56,7 @@ function oauthHeaders(e, t, n) {
       let d = GBe();
       if (T(`[presence] terminal focus \u2192 ${d === void 0 ? "unknown" : d ? "focused" : "blurred"}`), d === true) a();
     });
-  T(`[presence] wired for session ${e}`);
+  T(`[presence] wired for session ${accessToken}`);
   let u = false;
   return {
     teardown() {

@@ -1326,9 +1326,9 @@ function Config({
                               }),
   });
 }
-function NotifChannelLabel(e) {
+function NotifChannelLabel(t0) {
   let t = N1o.c(4),
-    { value: n } = e;
+    { value: n } = t0;
   switch (n) {
     case "auto":
       return "Auto";

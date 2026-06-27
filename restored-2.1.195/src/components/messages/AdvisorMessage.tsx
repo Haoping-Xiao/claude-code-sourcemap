@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pyt] deps: Xa, lzn, Xol, Ye
 ((czn = R(rt(), 1)), (eCo = R(se(), 1)));
-function AdvisorMessage(e) {
+function AdvisorMessage(t0) {
   let t = Jol.c(30),
     {
       block: n,
@@ -16,7 +16,7 @@ function AdvisorMessage(e) {
       shouldAnimate: i,
       verbose: a,
       advisorModel: l,
-    } = e;
+    } = t0;
   if (n.type === "server_tool_use") {
     let d;
     if (t[0] !== n.input)

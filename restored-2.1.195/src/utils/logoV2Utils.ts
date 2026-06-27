@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UFo] deps: co
 ((BWl = new Set([_N, Jv])), (UWl = new WeakMap()));
-function getLayoutMode(e) {
-  if (e >= 70) return "horizontal";
+function getLayoutMode(columns) {
+  if (columns >= 70) return "horizontal";
   return "compact";
 }
 function jWl(e, t, n) {
@@ -35,9 +35,9 @@ function GWl(e, t, n) {
   let r = Math.max(rn(e), rn(t), rn(n), 20);
   return Math.min(r + 4, FWl);
 }
-function formatWelcomeMessage(e) {
-  if (!e || e.length > Wjf) return "Welcome back!";
-  return `Welcome back ${e}!`;
+function formatWelcomeMessage(username) {
+  if (!username || username.length > Wjf) return "Welcome back!";
+  return `Welcome back ${username}!`;
 }
 function h1e(e, t) {
   if (rn(e) <= t) return e;

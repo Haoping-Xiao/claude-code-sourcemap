@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YWl] deps: Tc, Ye, es, B_
 ((VWl = R(lt(), 1)), (VN = R(se(), 1)));
-function FeedColumn(e) {
+function FeedColumn(t0) {
   let t = XWl.c(10),
-    { feeds: n, maxWidth: r } = e,
+    { feeds: n, maxWidth: r } = t0,
     o;
   if (t[0] !== n) {
     let c = n.map(Vjf);

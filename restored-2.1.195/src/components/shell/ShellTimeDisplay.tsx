@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lEe] deps: eUt, Ye, d4t
 ((ijn = R(rt(), 1)), (_Ma = R(se(), 1)));
-function ShellTimeDisplay(e) {
+function ShellTimeDisplay(t0) {
   let t = bMa.c(10),
-    { elapsedTimeSeconds: n, timeoutMs: r } = e;
+    { elapsedTimeSeconds: n, timeoutMs: r } = t0;
   if (n === void 0 && !r) return null;
   let o;
   if (t[0] !== r)

@@ -6,11 +6,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A9e] deps: dn, er, je, fn, At, Bi, ys, vn, Jt
 ((Sgt = require("fs/promises")), (bgt = require("path")));
-function getShellConfigPaths(e) {
-  let t = e?.homedir ?? dAo.homedir(),
-    n = e?.env ?? process.env,
-    r = e?.platform ?? "linux",
-    o = e?.fileExists ?? _za.existsSync,
+function getShellConfigPaths(options) {
+  let t = options?.homedir ?? dAo.homedir(),
+    n = options?.env ?? process.env,
+    r = options?.platform ?? "linux",
+    o = options?.fileExists ?? _za.existsSync,
     s = n.ZDOTDIR || t,
     i =
       r === "darwin"

@@ -129,7 +129,7 @@ async function registerSession() {
     e.resolve();
   }
 }
-async function updatePidFile(e) {
+async function updatePidFile(patch) {
   let t = Tye.join(JPt(), `${process.pid}.json`),
     n = njr.then(async () => {
       try {
@@ -138,7 +138,7 @@ async function updatePidFile(e) {
           t,
           De({
             ...r,
-            ...e,
+            ...patch,
           }),
         );
       } catch (r) {

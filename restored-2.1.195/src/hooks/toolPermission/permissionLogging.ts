@@ -65,13 +65,13 @@ async function xgo(e, t, n, r) {
     }),
   };
 }
-function sourceToString(e) {
-  if (e.type === "classifier") return "classifier";
-  switch (e.type) {
+function sourceToString(source) {
+  if (source.type === "classifier") return "classifier";
+  switch (source.type) {
     case "hook":
       return "hook";
     case "user":
-      return e.permanent ? "user_permanent" : "user_temporary";
+      return source.permanent ? "user_permanent" : "user_temporary";
     case "user_abort":
       return "user_abort";
     case "user_reject":
@@ -102,30 +102,30 @@ function jLp(e, t, n) {
     permission_mode: $e(n),
   };
 }
-function logApprovalEvent(e, t, n, r, o) {
-  if (n === "config") {
+function logApprovalEvent(tool, messageId, source, waitMs, o) {
+  if (source === "config") {
     (G("tengu_tool_use_granted_in_config", {
-      ...nft(t, e.name, void 0),
+      ...nft(messageId, tool.name, void 0),
       ...o,
     }),
       xe("permission_auto_approve_config"));
     return;
   }
-  if (n.type === "classifier") {
+  if (source.type === "classifier") {
     G("tengu_tool_use_granted_by_classifier", {
-      ...nft(t, e.name, r),
+      ...nft(messageId, tool.name, waitMs),
       ...o,
     });
     return;
   }
-  switch (n.type) {
+  switch (source.type) {
     case "user":
       (G(
-        n.permanent
+        source.permanent
           ? "tengu_tool_use_granted_in_prompt_permanent"
           : "tengu_tool_use_granted_in_prompt_temporary",
         {
-          ...nft(t, e.name, r),
+          ...nft(messageId, tool.name, waitMs),
           ...o,
         },
       ),
@@ -133,9 +133,9 @@ function logApprovalEvent(e, t, n, r, o) {
       break;
     case "hook":
       (G("tengu_tool_use_granted_by_permission_hook", {
-        ...nft(t, e.name, r),
+        ...nft(messageId, tool.name, waitMs),
         ...o,
-        permanent: n.permanent,
+        permanent: source.permanent,
       }),
         xe("permission_auto_approve_hook"));
       break;
@@ -143,35 +143,35 @@ function logApprovalEvent(e, t, n, r, o) {
       break;
   }
 }
-function logRejectionEvent(e, t, n, r, o) {
-  if (n === "config") {
+function logRejectionEvent(tool, messageId, source, waitMs, o) {
+  if (source === "config") {
     (G("tengu_tool_use_denied_in_config", {
-      ...nft(t, e.name, void 0),
+      ...nft(messageId, tool.name, void 0),
       ...o,
     }),
       xe("permission_auto_deny_config"));
     return;
   }
   (G("tengu_tool_use_rejected_in_prompt", {
-    ...nft(t, e.name, r),
+    ...nft(messageId, tool.name, waitMs),
     ...o,
-    ...(n.type === "hook"
+    ...(source.type === "hook"
       ? {
           isHook: true,
         }
       : {
-          hasFeedback: n.type === "user_reject" ? n.hasFeedback : false,
+          hasFeedback: source.type === "user_reject" ? source.hasFeedback : false,
         }),
   }),
-    xe(n.type === "hook" ? "permission_auto_deny_hook" : "permission_user_deny"));
+    xe(source.type === "hook" ? "permission_auto_deny_hook" : "permission_user_deny"));
 }
-function logPermissionDecision(e, t, n) {
-  let { tool: r, input: o, toolUseContext: s, messageId: i, toolUseID: a, permissionMode: l } = e,
-    { decision: c, source: u } = t,
-    d = n !== void 0 ? Date.now() - n : void 0,
+function logPermissionDecision(ctx, args, permissionPromptStartTimeMs) {
+  let { tool: r, input: o, toolUseContext: s, messageId: i, toolUseID: a, permissionMode: l } = ctx,
+    { decision: c, source: u } = args,
+    d = permissionPromptStartTimeMs !== void 0 ? Date.now() - permissionPromptStartTimeMs : void 0,
     p = jLp(r, o, l);
-  if (t.decision === "accept") logApprovalEvent(r, i, t.source, d, p);
-  else logRejectionEvent(r, i, t.source, d, p);
+  if (args.decision === "accept") logApprovalEvent(r, i, args.source, d, p);
+  else logRejectionEvent(r, i, args.source, d, p);
   let f = u === "config" ? "config" : sourceToString(u);
   if (Igo(r.name)) xgo(r, o, c, f).then((g) => fCt()?.add(1, g));
   if (!s.toolDecisions) s.toolDecisions = {};

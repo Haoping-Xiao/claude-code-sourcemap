@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.4496  score=0.7093  fileCov=0.5512
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function useFeedbackSurvey(e, t, n, r = "session", o = false, s = false) {
+function useFeedbackSurvey(messages, isLoading, submitCount, r = "session", o = false, s = false) {
   let i = MC.useRef("unknown");
-  i.current = MI(e)?.message?.id || "unknown";
+  i.current = MI(messages)?.message?.id || "unknown";
   let [a, l] = MC.useState(() => ({
       timeLastShown: null,
       timeLastShownAtClock: null,
@@ -19,23 +19,23 @@ function useFeedbackSurvey(e, t, n, r = "session", o = false, s = false) {
     f = Dr().feedbackSurveyRate,
     m = ks(),
     g = MC.useRef(m.now()),
-    h = MC.useRef(n),
-    y = MC.useRef(n);
-  y.current = n;
-  let b = MC.useRef(e);
-  b.current = e;
+    h = MC.useRef(submitCount),
+    y = MC.useRef(submitCount);
+  y.current = submitCount;
+  let b = MC.useRef(messages);
+  b.current = messages;
   let _ = ofr(),
     S = MC.useRef(_);
   S.current = _;
   let A = MC.useRef(false),
     v = MC.useRef(null),
-    C = q0c(t),
+    C = q0c(isLoading),
     x = bSt(),
     I = MC.useMemo(() => {
-      let [ne] = pcr(e, 1).messages;
+      let [ne] = pcr(messages, 1).messages;
       if (!ne) return false;
       return /^[ \t]*\d{1,2}[.)][ \t]/m.test(ne);
-    }, [e]),
+    }, [messages]),
     k = MC.useCallback(
       (ne) => {
         let oe = Date.now(),
@@ -206,7 +206,7 @@ function useFeedbackSurvey(e, t, n, r = "session", o = false, s = false) {
     }, [c.onForModels, K]),
     J = MC.useMemo(() => {
       if (N !== "closed") return false;
-      if (t) return false;
+      if (isLoading) return false;
       if (!C) return false;
       if (x) return false;
       if (I) return false;
@@ -222,14 +222,15 @@ function useFeedbackSurvey(e, t, n, r = "session", o = false, s = false) {
         if (ne - a.timeLastShownAtClock < c.minTimeBetweenFeedbackMs) return false;
         if (
           a.submitCountAtLastAppearance !== null &&
-          n < a.submitCountAtLastAppearance + c.minUserTurnsBetweenFeedback
+          submitCount < a.submitCountAtLastAppearance + c.minUserTurnsBetweenFeedback
         )
           return false;
       } else {
         if (ne - g.current < c.minTimeBeforeFeedbackMs) return false;
-        if (n < h.current + c.minUserTurnsBeforeFeedback) return false;
+        if (submitCount < h.current + c.minUserTurnsBeforeFeedback) return false;
       }
-      if (v.current !== n) ((v.current = n), (A.current = Math.random() <= (f ?? c.probability)));
+      if (v.current !== submitCount)
+        ((v.current = submitCount), (A.current = Math.random() <= (f ?? c.probability)));
       if (!A.current) return false;
       let oe = Dt().feedbackSurveyState;
       if (oe?.lastShownTime) {
@@ -239,7 +240,7 @@ function useFeedbackSurvey(e, t, n, r = "session", o = false, s = false) {
     }, [
       m,
       N,
-      t,
+      isLoading,
       C,
       x,
       I,
@@ -249,7 +250,7 @@ function useFeedbackSurvey(e, t, n, r = "session", o = false, s = false) {
       a.timeLastShown,
       a.timeLastShownAtClock,
       a.submitCountAtLastAppearance,
-      n,
+      submitCount,
       c.minTimeBetweenFeedbackMs,
       c.minTimeBetweenGlobalFeedbackMs,
       c.minUserTurnsBetweenFeedback,

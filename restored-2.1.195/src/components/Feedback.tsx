@@ -517,10 +517,10 @@ function Feedback({
     }),
   });
 }
-function createGitHubIssueUrl(e, t, n, r) {
-  let o = xc(t),
+function createGitHubIssueUrl(feedbackId, title, description, errors) {
+  let o = xc(title),
     i = `**Bug Description**
-${xc(n)}
+${xc(description)}
 
 **Environment Info**
 - Platform: ${Oe.platform}
@@ -536,13 +536,13 @@ ${xc(n)}
         GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
       }.VERSION || "unknown"
     }
-- Feedback ID: ${e}
+- Feedback ID: ${feedbackId}
 
 **Errors**
 \`\`\`json
 `,
     a = "\n```\n",
-    l = De(r),
+    l = De(errors),
     c = `${HDl}/new?title=${encodeURIComponent(o)}&labels=user-reported,bug&body=`,
     u = `
 **Note:** Content was truncated.
@@ -575,7 +575,7 @@ ${xc(n)}
   if (_ >= b.length - 2) b = b.slice(0, _);
   return c + d + b + h + p + f;
 }
-async function generateTitle(e, t) {
+async function generateTitle(description, abortSignal) {
   try {
     let n = await R$({
         systemPrompt: Sc([
@@ -592,8 +592,8 @@ async function generateTitle(e, t) {
           "Your response will be directly used as the title of the Github issue, and as such should not contain any other commentary or explaination",
           'Examples of good titles include: "[Bug] Auto-Compact triggers to soon", "[Bug] Anthropic API Error: Missing Tool Result Block", "[Bug] Error: Invalid Model Name for Opus"',
         ]),
-        userPrompt: e,
-        signal: t,
+        userPrompt: description,
+        signal: abortSignal,
         options: {
           hasAppendSystemPrompt: !1,
           toolChoice: void 0,
@@ -605,8 +605,8 @@ async function generateTitle(e, t) {
         },
       }),
       r = n.message.content[0]?.type === "text" ? n.message.content[0].text : "Bug Report";
-    if (K1(r)) return gOo(e);
-    if (Bkf(r)) return gOo(e);
+    if (K1(r)) return gOo(description);
+    if (Bkf(r)) return gOo(description);
     return r;
   } catch (n) {
     if (lh(n))
@@ -614,7 +614,7 @@ async function generateTitle(e, t) {
         level: "debug",
       });
     else ke(n);
-    return gOo(e);
+    return gOo(description);
   }
 }
 function Bkf(e) {

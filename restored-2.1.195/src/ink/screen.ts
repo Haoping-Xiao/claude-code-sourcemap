@@ -235,45 +235,53 @@ function pGe(e, t, n) {
 function B3d(e, t) {
   return e.hyperlinkPool.intern(t);
 }
-function createScreen(e, t, n, r, o) {
-  if ((TI(e, "createScreen width"), TI(t, "createScreen height"), !Number.isInteger(e) || e < 0))
-    e = Math.max(0, Math.floor(e) || 0);
-  if (!Number.isInteger(t) || t < 0) t = Math.max(0, Math.floor(t) || 0);
-  let s = e * t,
+function createScreen(width, height, styles, charPool, hyperlinkPool) {
+  if (
+    (TI(width, "createScreen width"),
+    TI(height, "createScreen height"),
+    !Number.isInteger(width) || width < 0)
+  )
+    width = Math.max(0, Math.floor(width) || 0);
+  if (!Number.isInteger(height) || height < 0) height = Math.max(0, Math.floor(height) || 0);
+  let s = width * height,
     i = new ArrayBuffer(s << 3),
     a = new Int32Array(i),
     l = new BigInt64Array(i);
   return {
-    width: e,
-    height: t,
+    width: width,
+    height: height,
     cells: a,
     cells64: l,
-    charPool: r,
-    hyperlinkPool: o,
-    emptyStyleId: n.none,
+    charPool: charPool,
+    hyperlinkPool: hyperlinkPool,
+    emptyStyleId: styles.none,
     damage: void 0,
     noSelect: new Uint8Array(s),
-    softWrap: new Int32Array(t),
+    softWrap: new Int32Array(height),
   };
 }
-function resetScreen(e, t, n) {
-  if ((TI(t, "resetScreen width"), TI(n, "resetScreen height"), !Number.isInteger(t) || t < 0))
-    t = Math.max(0, Math.floor(t) || 0);
-  if (!Number.isInteger(n) || n < 0) n = Math.max(0, Math.floor(n) || 0);
-  let r = t * n;
-  if (e.cells64.length < r) {
+function resetScreen(screen, width, height) {
+  if (
+    (TI(width, "resetScreen width"),
+    TI(height, "resetScreen height"),
+    !Number.isInteger(width) || width < 0)
+  )
+    width = Math.max(0, Math.floor(width) || 0);
+  if (!Number.isInteger(height) || height < 0) height = Math.max(0, Math.floor(height) || 0);
+  let r = width * height;
+  if (screen.cells64.length < r) {
     let o = new ArrayBuffer(r << 3);
-    ((e.cells = new Int32Array(o)),
-      (e.cells64 = new BigInt64Array(o)),
-      (e.noSelect = new Uint8Array(r)));
+    ((screen.cells = new Int32Array(o)),
+      (screen.cells64 = new BigInt64Array(o)),
+      (screen.noSelect = new Uint8Array(r)));
   }
-  if (e.softWrap.length < n) e.softWrap = new Int32Array(n);
-  (e.cells64.fill(sLn, 0, r),
-    e.noSelect.fill(0, 0, r),
-    e.softWrap.fill(0, 0, n),
-    (e.width = t),
-    (e.height = n),
-    (e.damage = void 0));
+  if (screen.softWrap.length < height) screen.softWrap = new Int32Array(height);
+  (screen.cells64.fill(sLn, 0, r),
+    screen.noSelect.fill(0, 0, r),
+    screen.softWrap.fill(0, 0, height),
+    (screen.width = width),
+    (screen.height = height),
+    (screen.damage = void 0));
 }
 function J3i(e, t, n, r) {
   let { charPool: o, hyperlinkPool: s } = e,

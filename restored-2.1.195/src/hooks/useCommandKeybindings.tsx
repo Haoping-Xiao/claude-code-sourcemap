@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oEc] deps: Ed, hNe, HI, ps, id, dn, Un, kt, uo, tEc
 ((nEc = R(lt(), 1)), (rEc = R(rt(), 1)));
-function CommandKeybindingHandlers(e) {
+function CommandKeybindingHandlers(t0) {
   let t = sEc.c(8),
-    { onSubmit: n, isActive: r } = e,
+    { onSubmit: n, isActive: r } = t0,
     o = KE(),
     s = pbe(),
     i;

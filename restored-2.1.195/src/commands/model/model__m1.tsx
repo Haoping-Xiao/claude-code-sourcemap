@@ -427,35 +427,38 @@ function $6f(e) {
 var GJl,
   cTe,
   fme,
-  call = async (e, t, n) => {
-    if (((n = n?.trim() || ""), Iae.includes(n)))
+  call = async (onDone, _context, args) => {
+    if (((args = args?.trim() || ""), Iae.includes(args)))
       return (
         G("tengu_model_command_inline_help", {
-          args: n,
+          args: args,
         }),
         fme.jsx(D6f, {
-          onDone: e,
+          onDone: onDone,
         })
       );
-    if (_G.includes(n)) {
-      e("Run /model to open the model selection menu, or /model [modelName] to set the model.", {
-        display: "system",
-      });
+    if (_G.includes(args)) {
+      onDone(
+        "Run /model to open the model selection menu, or /model [modelName] to set the model.",
+        {
+          display: "system",
+        },
+      );
       return;
     }
-    if (n)
+    if (args)
       return (
         G("tengu_model_command_inline", {
-          args_hash: Dd(n),
-          args_length: n.length,
+          args_hash: Dd(args),
+          args_length: args.length,
         }),
         fme.jsx(L6f, {
-          args: n,
-          onDone: e,
+          args: args,
+          onDone: onDone,
         })
       );
     if (Ju()) {
-      e(
+      onDone(
         "Model picker shows local options in cloud sessions \u2014 pass a model name, e.g. /model sonnet",
         {
           display: "system",
@@ -464,7 +467,7 @@ var GJl,
       return;
     }
     return fme.jsx(ModelPickerWrapper, {
-      onDone: e,
-      hasConversationMessages: t.messages.length > 0,
+      onDone: onDone,
+      hasConversationMessages: _context.messages.length > 0,
     });
   };

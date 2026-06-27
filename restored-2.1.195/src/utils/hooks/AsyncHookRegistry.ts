@@ -190,8 +190,8 @@ async function checkForAsyncHookResponses() {
   if (o) (T("Invalidating session env cache after SessionStart hook completed"), Eut());
   return (T(`Hooks: checkForNewResponses returning ${e.length} responses`), e);
 }
-function removeDeliveredAsyncHooks(e) {
-  for (let t of e) {
+function removeDeliveredAsyncHooks(processIds) {
+  for (let t of processIds) {
     let n = Afe.get(t);
     if (n && n.responseAttachmentSent)
       (T(`Hooks: Removing delivered hook ${t}`), n.stopProgressInterval(), Afe.delete(t));

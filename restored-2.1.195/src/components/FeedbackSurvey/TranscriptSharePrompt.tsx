@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SRc] deps: Ye, uo, sr, yYo
 ((_Rc = R(lt(), 1)), (M7e = R(se(), 1)));
-function TranscriptSharePrompt(e) {
+function TranscriptSharePrompt(t0) {
   let t = ARc.c(13),
-    { onSelect: n, inputValue: r, setInputValue: o } = e,
+    { onSelect: n, inputValue: r, setInputValue: o } = t0,
     s;
   if (t[0] !== n)
     ((s = (d) => {

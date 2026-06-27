@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AHc] deps: Vl, Bs, Ko, _Hc, X0, Ye, ps, kt, Du, uo, u_, Lo, aE, Yf
 ((bHc = R(lt(), 1)), (SHc = require("path")), (RNe = R(rt(), 1)), (EE = R(se(), 1)));
-function PermissionPrompt(e) {
+function PermissionPrompt(t0) {
   let t = HHc.c(57),
-    { options: n, onSelect: r, onCancel: o, question: s, toolAnalyticsContext: i } = e,
+    { options: n, onSelect: r, onCancel: o, question: s, toolAnalyticsContext: i } = t0,
     a = s === void 0 ? "Do you want to proceed?" : s,
     l = Ho(),
     [c, u] = LNe.useState(""),

@@ -7,7 +7,7 @@
 // [unwrapped __esm module A1l] deps: Ye, y1l, oc, es, Ao, vf, sr, S1l, xoe
 ((Xtr = R(lt(), 1)), (Pi = R(se(), 1)));
 zPf = ["Project", "User", "Managed", "Plugin", "MCP", "Built-in"];
-function formatContextAsMarkdownTable(e, t) {
+function formatContextAsMarkdownTable(data, t) {
   let {
       categories: n,
       totalTokens: r,
@@ -21,7 +21,7 @@ function formatContextAsMarkdownTable(e, t) {
       messageBreakdown: d,
       systemTools: p,
       systemPromptSections: f,
-    } = e,
+    } = data,
     m = `## Context Usage
 
 `;

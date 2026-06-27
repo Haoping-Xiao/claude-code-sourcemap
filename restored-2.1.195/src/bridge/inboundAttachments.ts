@@ -5,12 +5,12 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveInboundAttachments, resolveAndPrepend, prependPathRefs, extractInboundAttachments
-function debug(e) {
-  T(`[bridge:inbound-attach] ${e}`);
+function debug(msg) {
+  T(`[bridge:inbound-attach] ${msg}`);
 }
-function extractInboundAttachments(e) {
-  if (typeof e !== "object" || e === null || !("file_attachments" in e)) return [];
-  let t = xum().safeParse(e.file_attachments);
+function extractInboundAttachments(msg) {
+  if (typeof msg !== "object" || msg === null || !("file_attachments" in msg)) return [];
+  let t = xum().safeParse(msg.file_attachments);
   return t.success ? t.data : [];
 }
 function kum(e) {
@@ -19,7 +19,7 @@ function kum(e) {
 function Rum() {
   return yen.join(tr(), "uploads", Rt());
 }
-async function resolveOne(e) {
+async function resolveOne(att) {
   let t = LN();
   if (!t) {
     debug("skip: no oauth token");
@@ -27,7 +27,7 @@ async function resolveOne(e) {
   }
   let n;
   try {
-    let a = `${czt()}/api/oauth/files/${encodeURIComponent(e.file_uuid)}/content`,
+    let a = `${czt()}/api/oauth/files/${encodeURIComponent(att.file_uuid)}/content`,
       l = await po.get(a, {
         headers: {
           Authorization: `Bearer ${t}`,
@@ -37,16 +37,16 @@ async function resolveOne(e) {
         validateStatus: () => true,
       });
     if (l.status !== 200) {
-      debug(`fetch ${e.file_uuid} failed: status=${l.status}`);
+      debug(`fetch ${att.file_uuid} failed: status=${l.status}`);
       return;
     }
     n = Buffer.from(l.data);
   } catch (a) {
-    debug(`fetch ${e.file_uuid} threw: ${a}`);
+    debug(`fetch ${att.file_uuid} threw: ${a}`);
     return;
   }
-  let r = kum(e.file_name),
-    o = (e.file_uuid.slice(0, 8) || Lgc.randomUUID().slice(0, 8)).replace(/[^a-zA-Z0-9_-]/g, "_"),
+  let r = kum(att.file_name),
+    o = (att.file_uuid.slice(0, 8) || Lgc.randomUUID().slice(0, 8)).replace(/[^a-zA-Z0-9_-]/g, "_"),
     s = Rum(),
     i = yen.join(s, `${o}-${r}`);
   try {
@@ -58,15 +58,15 @@ async function resolveOne(e) {
     debug(`write ${i} failed: ${a}`);
     return;
   }
-  return (debug(`resolved ${e.file_uuid} \u2192 ${i} (${n.length} bytes)`), i);
+  return (debug(`resolved ${att.file_uuid} \u2192 ${i} (${n.length} bytes)`), i);
 }
-async function resolveInboundAttachments(e) {
-  if (e.length === 0) return "";
-  if ((debug(`resolving ${e.length} attachment(s)`), !LN()))
+async function resolveInboundAttachments(attachments) {
+  if (attachments.length === 0) return "";
+  if ((debug(`resolving ${attachments.length} attachment(s)`), !LN()))
     return (debug("skip: no oauth token"), It("bridge_attachment_resolve", "no_token"), "");
-  let n = (await Promise.all(e.map(resolveOne))).filter((r) => r !== void 0);
+  let n = (await Promise.all(attachments.map(resolveOne))).filter((r) => r !== void 0);
   if (n.length === 0) return (Le("bridge_attachment_resolve", "all_failed"), "");
-  if (n.length < e.length) It("bridge_attachment_resolve", "partial_failed");
+  if (n.length < attachments.length) It("bridge_attachment_resolve", "partial_failed");
   else xe("bridge_attachment_resolve");
   return n.map((r) => `@"${r}"`).join(" ") + " ";
 }

@@ -6,17 +6,17 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VNo] deps: id, uo, Dgt, gz, S4n
 ((qNl = R(lt(), 1)), (Anr = R(rt(), 1)));
-function isSharedSettingSource(e) {
-  return e === "projectSettings" || e === "policySettings" || e === "command";
+function isSharedSettingSource(source) {
+  return source === "projectSettings" || source === "policySettings" || source === "command";
 }
 function Tnr(e) {
   return COe(e);
 }
-function generateFixSuggestion(e, t, n) {
-  let r = Tnr(t.source),
-    o = Tnr(n.source),
-    s = t.ruleValue.toolName;
-  if (e === "deny")
+function generateFixSuggestion(shadowType, shadowingRule, shadowedRule) {
+  let r = Tnr(shadowingRule.source),
+    o = Tnr(shadowedRule.source),
+    s = shadowingRule.ruleValue.toolName;
+  if (shadowType === "deny")
     return `Remove the "${s}" deny rule from ${r}, or remove the specific allow rule from ${o}`;
   return `Remove the "${s}" ask rule from ${r}, or remove the specific allow rule from ${o}`;
 }
@@ -60,11 +60,11 @@ function Q$f(e, t) {
     shadowType: "deny",
   };
 }
-function detectUnreachableRules(e, t) {
+function detectUnreachableRules(context, options) {
   let n = [],
-    r = bHe(e),
-    o = kHe(e),
-    s = cz(e);
+    r = bHe(context),
+    o = kHe(context),
+    s = cz(context);
   for (let i of r) {
     let a = Q$f(i, s);
     if (a.shadowed) {
@@ -78,7 +78,7 @@ function detectUnreachableRules(e, t) {
       });
       continue;
     }
-    let l = J$f(i, o, t);
+    let l = J$f(i, o, options);
     if (l.shadowed) {
       let c = Tnr(l.shadowedBy.source);
       n.push({

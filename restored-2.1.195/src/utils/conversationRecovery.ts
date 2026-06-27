@@ -11,13 +11,13 @@
   (fTo = require("path")),
   (dQp = ["interactive", "bg", "daemon", "daemon-worker"]));
 fQp = ["busy", "shell", "idle", "waiting"];
-function migrateLegacyAttachmentTypes(e) {
-  if (e.type !== "attachment") return e;
-  let t = e.attachment;
+function migrateLegacyAttachmentTypes(message) {
+  if (message.type !== "attachment") return message;
+  let t = message.attachment;
   if (EQp.has(t.type)) return null;
   if (t.type === "new_file")
     return {
-      ...e,
+      ...message,
       attachment: {
         ...t,
         type: "file",
@@ -26,7 +26,7 @@ function migrateLegacyAttachmentTypes(e) {
     };
   if (t.type === "new_directory")
     return {
-      ...e,
+      ...message,
       attachment: {
         ...t,
         type: "directory",
@@ -38,14 +38,14 @@ function migrateLegacyAttachmentTypes(e) {
       "filename" in t ? t.filename : "path" in t ? t.path : "skillDir" in t ? t.skillDir : void 0;
     if (n)
       return {
-        ...e,
+        ...message,
         attachment: {
           ...t,
           displayPath: bht.relative($t(), n),
         },
       };
   }
-  return e;
+  return message;
 }
 function HQp(e) {
   if (e.type !== "assistant" && e.type !== "user") return null;
@@ -157,18 +157,18 @@ function deserializeMessagesWithInterruptDetection(e, t, n, r) {
     throw (ke(o), o);
   }
 }
-function detectTurnInterruption(e) {
-  if (e.length === 0)
+function detectTurnInterruption(messages) {
+  if (messages.length === 0)
     return {
       kind: "none",
     };
-  let t = e.findLastIndex(
+  let t = messages.findLastIndex(
       (r) =>
         r.type !== "system" &&
         r.type !== "progress" &&
         !(r.type === "assistant" && r.isApiErrorMessage && r.message.stop_reason !== "refusal"),
     ),
-    n = t !== -1 ? e[t] : void 0;
+    n = t !== -1 ? messages[t] : void 0;
   if (!n)
     return {
       kind: "none",
@@ -189,7 +189,7 @@ function detectTurnInterruption(e) {
         kind: "none",
       };
     if (Sht(n)) {
-      if (isTerminalToolResult(n, e, t))
+      if (isTerminalToolResult(n, messages, t))
         return {
           kind: "none",
         };
@@ -204,7 +204,7 @@ function detectTurnInterruption(e) {
   }
   if (n.type === "attachment") {
     for (let r = t - 1; r >= 0; r--) {
-      let o = e[r];
+      let o = messages[r];
       if (
         o.type === "system" ||
         o.type === "progress" ||
@@ -231,7 +231,7 @@ function detectTurnInterruption(e) {
         return {
           kind: "none",
         };
-      if (o.type === "user" && Sht(o) && isTerminalToolResult(o, e, r))
+      if (o.type === "user" && Sht(o) && isTerminalToolResult(o, messages, r))
         return {
           kind: "none",
         };
@@ -250,14 +250,14 @@ function SZa(e) {
     n = typeof t === "string" ? t : t.length === 1 && t[0].type === "text" ? t[0].text : void 0;
   return n === _N || n === Jv;
 }
-function isTerminalToolResult(e, t, n) {
-  let r = e.message.content;
+function isTerminalToolResult(result, messages, resultIdx) {
+  let r = result.message.content;
   if (!Array.isArray(r)) return false;
   let o = r[0];
   if (o?.type !== "tool_result") return false;
   let s = o.tool_use_id;
-  for (let i = n - 1; i >= 0; i--) {
-    let a = t[i];
+  for (let i = resultIdx - 1; i >= 0; i--) {
+    let a = messages[i];
     if (a.type !== "assistant") continue;
     for (let l of a.message.content)
       if (l.type === "tool_use" && l.id === s)
@@ -267,8 +267,8 @@ function isTerminalToolResult(e, t, n) {
   }
   return false;
 }
-function restoreSkillStateFromMessages(e) {
-  for (let t of e) {
+function restoreSkillStateFromMessages(messages) {
+  for (let t of messages) {
     if (t.type !== "attachment") continue;
     if (t.attachment.type === "invoked_skills") {
       for (let n of t.attachment.skills)
@@ -386,12 +386,12 @@ function dropRetractedMessages(e) {
     });
   return n;
 }
-async function loadConversationForResume(e, t, n) {
+async function loadConversationForResume(source, sourceJsonlFile, n) {
   try {
     let r = null,
       o = null,
       s;
-    if (e === void 0) {
+    if (source === void 0) {
       let p = y8n(),
         f = new Set();
       try {
@@ -409,10 +409,12 @@ async function loadConversationForResume(e, t, n) {
           let h = qg(g);
           return !h || !f.has(h);
         }) ?? null;
-    } else if (t && typeof e === "string")
-      ((r = await rAe(e, t)), (s = r?.messages.at(-1)?.sessionId ?? r?.sessionId ?? e));
-    else if (typeof e === "string") ((r = (await rAe(e)) ?? (await wQp(e))), (s = e));
-    else r = e;
+    } else if (sourceJsonlFile && typeof source === "string")
+      ((r = await rAe(source, sourceJsonlFile)),
+        (s = r?.messages.at(-1)?.sessionId ?? r?.sessionId ?? source));
+    else if (typeof source === "string")
+      ((r = (await rAe(source)) ?? (await wQp(source))), (s = source));
+    else r = source;
     if (!r && !o) return (It("session_resume", "not_found"), null);
     if (r) {
       if (doe(r)) r = await sAe(r);
@@ -421,7 +423,7 @@ async function loadConversationForResume(e, t, n) {
       (JVt(r, !n.forkSession && s ? Fb(s) : void 0), (o = r.messages), ATo(o));
     }
     ((o = dropRetractedMessages(o)), restoreSkillStateFromMessages(o));
-    let i = r?.fullPath ?? t,
+    let i = r?.fullPath ?? sourceJsonlFile,
       a = i ? ((await HTo(i)) ?? void 0) : void 0,
       l = deserializeMessagesWithInterruptDetection(
         o,

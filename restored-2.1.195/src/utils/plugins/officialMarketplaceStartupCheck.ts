@@ -13,12 +13,12 @@ function CYo(e) {
   let t = Hfr.INITIAL_DELAY_MS * Math.pow(Hfr.BACKOFF_MULTIPLIER, e);
   return Math.min(t, Hfr.MAX_DELAY_MS);
 }
-function shouldRetryInstallation(e) {
-  if (!e.officialMarketplaceAutoInstallAttempted) return true;
-  if (e.officialMarketplaceAutoInstalled) return false;
-  let t = e.officialMarketplaceAutoInstallFailReason,
-    n = e.officialMarketplaceAutoInstallRetryCount || 0,
-    r = e.officialMarketplaceAutoInstallNextRetryTime,
+function shouldRetryInstallation(config) {
+  if (!config.officialMarketplaceAutoInstallAttempted) return true;
+  if (config.officialMarketplaceAutoInstalled) return false;
+  let t = config.officialMarketplaceAutoInstallFailReason,
+    n = config.officialMarketplaceAutoInstallRetryCount || 0,
+    r = config.officialMarketplaceAutoInstallNextRetryTime,
     o = Date.now();
   if (n >= Hfr.MAX_ATTEMPTS) return false;
   if (t === "policy_blocked") return false;

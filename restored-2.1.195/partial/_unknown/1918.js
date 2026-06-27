@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TEi]
 EEi = require("util"), AEi = R(require("process")), HEi = require("child_process"), lwd = EEi.promisify(HEi.execFile);
-async function runAppleScript(e, {
+async function runAppleScript(script, {
   humanReadableOutput: t = true,
   signal: n
 } = {}) {
@@ -16,7 +16,7 @@ async function runAppleScript(e, {
   if (n) o.signal = n;
   let {
     stdout: s
-  } = await cwd("osascript", ["-e", e, r], o);
+  } = await cwd("osascript", ["-e", script, r], o);
   return s.trim();
 }
 var vEi, wEi, pqr, cwd;

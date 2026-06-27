@@ -16,7 +16,7 @@ function F9f(e) {
     "the whole conversation instead of using the cache. Run /reload-plugins --force to apply."
   );
 }
-var call = async (e, t) => {
+var call = async (_args, context) => {
   if (NA()) {
     let u = await Ju().sendControlRequest({
         subtype: "reload_plugins",
@@ -30,14 +30,14 @@ ${lZ(u.error_count, "error")} during load. Run /doctor on the remote for details
       value: p,
     };
   }
-  let n = e
+  let n = _args
       .trim()
       .split(/\s+/)
       .some((u) => u === "--force" || u === "force"),
     r = await P7l({
-      model: t.options.mainLoopModel,
-      mcpClients: t.getAppState().mcp.clients,
-      dynamicMcpConfig: t.options.dynamicMcpConfig,
+      model: context.options.mainLoopModel,
+      mcpClients: context.getAppState().mcp.clients,
+      dynamicMcpConfig: context.options.dynamicMcpConfig,
     }),
     o = r.wouldInvalidateCache && !n;
   if (
@@ -54,11 +54,11 @@ ${lZ(u.error_count, "error")} during load. Run /doctor on the remote for details
         removed: r.mcpServersRemoved,
       }),
     };
-  let s = await iTe(t.setAppState),
+  let s = await iTe(context.setAppState),
     i = "",
     a = await MHe(s.errors);
   if (a.installed.length > 0)
-    ((i = `${rue(a.installed)} resolved`), (s = await iTe(t.setAppState)));
+    ((i = `${rue(a.installed)} resolved`), (s = await iTe(context.setAppState)));
   let c = `Reloaded: ${[lZ(s.enabled_count, "plugin"), lZ(s.command_count, "skill"), lZ(s.agent_count, "agent"), lZ(s.hook_count, "hook"), lZ(s.mcp_count, "plugin MCP server"), lZ(s.lsp_count, "plugin LSP server")].join(" \xB7 ")}${i}`;
   if (s.error_count > 0)
     c += `

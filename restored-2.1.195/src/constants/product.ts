@@ -24,21 +24,21 @@ function toInfraSessionId(e) {
   return "cse_" + e.slice(8);
 }
 var hlo;
-function isRemoteSessionStaging(e, t) {
-  return e?.includes("_staging_") === true || t?.includes("staging") === true;
+function isRemoteSessionStaging(sessionId, ingressUrl) {
+  return sessionId?.includes("_staging_") === true || ingressUrl?.includes("staging") === true;
 }
-function isRemoteSessionLocal(e, t) {
-  return e?.includes("_local_") === true || t?.includes("localhost") === true;
+function isRemoteSessionLocal(sessionId, ingressUrl) {
+  return sessionId?.includes("_local_") === true || ingressUrl?.includes("localhost") === true;
 }
 function CLAUDE_AI_BASE_URL(e, t) {
   if (isRemoteSessionLocal(e, t)) return "http://localhost:4000";
   if (isRemoteSessionStaging(e, t)) return "https://claude-ai.staging.ant.dev";
   return "https://claude.ai";
 }
-function getRemoteSessionUrl(e, t, n) {
+function getRemoteSessionUrl(sessionId, ingressUrl, n) {
   let { toCompatSessionId: r } = ro($ua),
-    o = r(e),
-    i = `${CLAUDE_AI_BASE_URL(o, t)}/code/${o}`;
+    o = r(sessionId),
+    i = `${CLAUDE_AI_BASE_URL(o, ingressUrl)}/code/${o}`;
   return n ? `${i}?${new URLSearchParams(n)}` : i;
 }
 var PRODUCT_URL = "https://claude.com/claude-code";

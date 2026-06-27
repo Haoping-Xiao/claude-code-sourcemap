@@ -13,9 +13,9 @@ function WMl(e) {
     description: n?.description ?? DEFAULT_OUTPUT_STYLE_DESCRIPTION,
   }));
 }
-function OutputStylePicker(e) {
+function OutputStylePicker(t0) {
   let t = qMl.c(26),
-    { initialStyle: n, onComplete: r, onCancel: o, isStandaloneCommand: s } = e,
+    { initialStyle: n, onComplete: r, onCancel: o, isStandaloneCommand: s } = t0,
     i;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((i = []), (t[0] = i));
   else i = t[0];

@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F6o] deps: ft, Ed, tC, rJt, gNo, M_c, _i, wOe, Ye, ps, dn, uo, er, Lo, es, uf, ggo, sa, Yf, sr, gDe, LW, B_, CH, RLe, $_c, SNo
 ((Xfm = R(lt(), 1)), (U6o = R(rt(), 1)), (N_c = R(se(), 1)));
-function PromptInputFooterLeftSide(e) {
+function PromptInputFooterLeftSide(t0) {
   let t = Idr.c(58),
     {
       exitMessage: n,
@@ -31,7 +31,7 @@ function PromptInputFooterLeftSide(e) {
       setHistoryQuery: A,
       historyFailedMatch: v,
       onOpenTasksDialog: C,
-    } = e,
+    } = t0,
     x = u === void 0 ? c : u,
     I = f === void 0 ? false : f,
     k = m === void 0 ? true : m;
@@ -917,18 +917,25 @@ function ModeIndicator({
     ],
   });
 }
-function getSpinnerHintParts(e, t, n, r, o, s) {
-  let i = o === "tasks" ? "hide tasks" : "show tasks",
-    a = r;
+function getSpinnerHintParts(
+  isLoading,
+  escShortcut,
+  todosShortcut,
+  killAgentsShortcut,
+  hasTaskItems,
+  expandedView,
+) {
+  let i = hasTaskItems === "tasks" ? "hide tasks" : "show tasks",
+    a = killAgentsShortcut;
   return [
-    ...(e && !s
+    ...(isLoading && !expandedView
       ? [
           li.jsx(
             w,
             {
               dimColor: true,
               children: li.jsx(ht, {
-                chord: t,
+                chord: escShortcut,
                 action: "interrupt",
                 format: {
                   keyCase: "lower",
@@ -946,7 +953,7 @@ function getSpinnerHintParts(e, t, n, r, o, s) {
             {
               dimColor: true,
               children: li.jsx(ht, {
-                chord: n,
+                chord: todosShortcut,
                 action: i,
                 format: {
                   keyCase: "lower",

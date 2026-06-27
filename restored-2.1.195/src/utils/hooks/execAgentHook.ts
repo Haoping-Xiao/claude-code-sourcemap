@@ -6,13 +6,22 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dic] deps: ft, kt, ZE, tP, U1, Vv, EAe, BE, Il, je, At, Rd, co, Ao, Jt, P5o
 lic = require("crypto");
-async function execAgentHook(e, t, n, r, o, s, i, a) {
-  let l = i || `hook-${M5o.randomUUID()}`,
-    c = s.agentId ? uk(s.agentId) : em(),
+async function execAgentHook(
+  hook,
+  hookName,
+  hookEvent,
+  jsonInput,
+  signal,
+  toolUseContext,
+  toolUseID,
+  _messages,
+) {
+  let l = toolUseID || `hook-${M5o.randomUUID()}`,
+    c = toolUseContext.agentId ? uk(toolUseContext.agentId) : em(),
     u = jd(qt(), c).resolvedPath,
     d = Date.now();
   try {
-    let p = klr(e.prompt, r);
+    let p = klr(hook.prompt, jsonInput);
     T(`Hooks: Processing agent hook with prompt: ${p}`);
     let m = [
       Rn({
@@ -20,9 +29,9 @@ async function execAgentHook(e, t, n, r, o, s, i, a) {
       }),
     ];
     T(`Hooks: Starting agent query with ${m.length} messages`);
-    let g = e.timeout ? e.timeout * 1000 : 60000,
+    let g = hook.timeout ? hook.timeout * 1000 : 60000,
       h = Sl(),
-      { signal: y, cleanup: b } = xL(o, {
+      { signal: y, cleanup: b } = xL(signal, {
         timeoutMs: g,
       }),
       _ = () => h.abort();
@@ -30,11 +39,11 @@ async function execAgentHook(e, t, n, r, o, s, i, a) {
     let S = h.signal;
     try {
       let A = aic(),
-        v = [...Uem(s.options.tools), A],
+        v = [...Uem(toolUseContext.options.tools), A],
         x =
-          n === "Stop" || n === "SubagentStop"
+          hookEvent === "Stop" || hookEvent === "SubagentStop"
             ? "You are verifying a stop condition in Claude Code. Your task is to verify that the agent completed the given plan."
-            : `You are evaluating a ${n} hook in Claude Code. Your task is to evaluate the condition described in the user message.`,
+            : `You are evaluating a ${hookEvent} hook in Claude Code. Your task is to evaluate the condition described in the user message.`,
         I = Sc([
           `${x} The conversation transcript is available at: ${u}
 You can read this file to analyze the conversation history if needed.
@@ -46,15 +55,15 @@ When done, return your result using the ${Ip} tool with:
 - ok: true if the condition is met
 - ok: false with reason if the condition is not met`,
         ]),
-        k = e.model ?? Fw(),
+        k = hook.model ?? Fw(),
         D = 50,
         P = Bu(`${Rlr}${M5o.randomUUID()}`),
         O = {
-          ...s,
+          ...toolUseContext,
           agentId: P,
           abortController: h,
           options: {
-            ...s.options,
+            ...toolUseContext.options,
             tools: v,
             mainLoopModel: k,
             isNonInteractiveSession: !0,
@@ -68,7 +77,7 @@ When done, return your result using the ${Ip} tool with:
             refreshMcpClients: void 0,
           },
           getAppState() {
-            let B = s.getAppState(),
+            let B = toolUseContext.getAppState(),
               $ = B.toolPermissionContext.alwaysAllowRules.session ?? [];
             return {
               ...B,
@@ -126,11 +135,11 @@ When done, return your result using the ${Ip} tool with:
             G("tengu_agent_stop_hook_max_turns", {
               durationMs: Date.now() - d,
               turnCount: M,
-              hookEvent: $e(n),
-              agentName: a,
+              hookEvent: $e(hookEvent),
+              agentName: _messages,
             }),
             {
-              hook: e,
+              hook: hook,
               outcome: "cancelled",
             }
           );
@@ -140,11 +149,11 @@ When done, return your result using the ${Ip} tool with:
             durationMs: Date.now() - d,
             turnCount: M,
             errorType: 1,
-            hookEvent: $e(n),
-            agentName: a,
+            hookEvent: $e(hookEvent),
+            agentName: _messages,
           }),
           {
-            hook: e,
+            hook: hook,
             outcome: "cancelled",
           }
         );
@@ -155,15 +164,15 @@ When done, return your result using the ${Ip} tool with:
           G("tengu_agent_stop_hook_blocking", {
             durationMs: Date.now() - d,
             turnCount: M,
-            hookEvent: $e(n),
-            agentName: a,
+            hookEvent: $e(hookEvent),
+            agentName: _messages,
           }),
           {
-            hook: e,
+            hook: hook,
             outcome: "blocking",
             blockingError: {
               blockingError: `Agent hook condition was not met: ${L.reason}`,
-              command: e.prompt,
+              command: hook.prompt,
             },
           }
         );
@@ -172,17 +181,17 @@ When done, return your result using the ${Ip} tool with:
         G("tengu_agent_stop_hook_success", {
           durationMs: Date.now() - d,
           turnCount: M,
-          hookEvent: $e(n),
-          agentName: a,
+          hookEvent: $e(hookEvent),
+          agentName: _messages,
         }),
         {
-          hook: e,
+          hook: hook,
           outcome: "success",
           message: ai({
             type: "hook_success",
-            hookName: t,
+            hookName: hookName,
             toolUseID: l,
-            hookEvent: n,
+            hookEvent: hookEvent,
             content: "",
           }),
         }
@@ -190,7 +199,7 @@ When done, return your result using the ${Ip} tool with:
     } catch (A) {
       if ((y.removeEventListener("abort", _), b(), S.aborted))
         return {
-          hook: e,
+          hook: hook,
           outcome: "cancelled",
         };
       throw A;
@@ -202,17 +211,17 @@ When done, return your result using the ${Ip} tool with:
       G("tengu_agent_stop_hook_error", {
         durationMs: Date.now() - d,
         errorType: 2,
-        hookEvent: $e(n),
-        agentName: a,
+        hookEvent: $e(hookEvent),
+        agentName: _messages,
       }),
       {
-        hook: e,
+        hook: hook,
         outcome: "non_blocking_error",
         message: ai({
           type: "hook_non_blocking_error",
-          hookName: t,
+          hookName: hookName,
           toolUseID: l,
-          hookEvent: n,
+          hookEvent: hookEvent,
           stderr: `Error executing agent hook: ${f}`,
           stdout: "",
           exitCode: 1,

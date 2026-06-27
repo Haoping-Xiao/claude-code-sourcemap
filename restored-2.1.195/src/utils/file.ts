@@ -134,10 +134,10 @@ async function aCe(e, t, n, r) {
     );
   return Math.floor(i.mtimeMs);
 }
-function detectFileEncoding(e) {
+function detectFileEncoding(filePath) {
   try {
     let t = qt(),
-      { resolvedPath: n } = jd(t, e);
+      { resolvedPath: n } = jd(t, filePath);
     return Lpn(n);
   } catch (t) {
     if (Vo(t) || Qie(t))
@@ -282,42 +282,42 @@ function aAs(e, t) {
   throw e;
 }
 function writeFileSyncAndFlush_DEPRECATED(
-  e,
-  t,
+  filePath,
+  content,
   n = {
     encoding: "utf-8",
   },
 ) {
   let r = qt(),
     o = n.allowSymlink ? 0 : Tf.constants.O_NOFOLLOW,
-    s = e,
+    s = filePath,
     i,
     a = !1;
   if (n.allowSymlink)
     try {
-      let u = r.readlinkSync(e);
-      ((s = Wf.isAbsolute(u) ? u : Wf.resolve(jd(r, Wf.dirname(e)).resolvedPath, u)),
-        T(`Writing through symlink: ${e} -> ${s}`));
+      let u = r.readlinkSync(filePath);
+      ((s = Wf.isAbsolute(u) ? u : Wf.resolve(jd(r, Wf.dirname(filePath)).resolvedPath, u)),
+        T(`Writing through symlink: ${filePath} -> ${s}`));
     } catch {}
   else {
     if (n.checkParentDir)
       try {
         Tf.closeSync(
           Tf.openSync(
-            Wf.dirname(e),
+            Wf.dirname(filePath),
             Tf.constants.O_RDONLY | Tf.constants.O_DIRECTORY | Tf.constants.O_NOFOLLOW,
           ),
         );
       } catch (u) {
         let d = on(u);
         if (d === "ELOOP" || d === "ENOTDIR")
-          throw new Uee(`Refusing to write into symlinked directory: ${Wf.dirname(e)}`);
+          throw new Uee(`Refusing to write into symlinked directory: ${Wf.dirname(filePath)}`);
       }
     try {
-      let u = r.lstatSync(e);
+      let u = r.lstatSync(filePath);
       if (u.isSymbolicLink())
         throw new Uee(
-          `Refusing to write through symlink: ${e}. Resolve the symlink and pass the real target path explicitly.`,
+          `Refusing to write through symlink: ${filePath}. Resolve the symlink and pass the real target path explicitly.`,
         );
       ((i = u.mode), (a = !0));
     } catch (u) {
@@ -346,7 +346,7 @@ function writeFileSyncAndFlush_DEPRECATED(
       p;
     try {
       if (
-        (Tf.writeFileSync(u, t, {
+        (Tf.writeFileSync(u, content, {
           encoding: n.encoding,
         }),
         a && i !== void 0)
@@ -376,7 +376,7 @@ function writeFileSyncAndFlush_DEPRECATED(
       });
     }
     if (d) throw p;
-    (T(`Temp file written successfully, size: ${t.length} bytes`),
+    (T(`Temp file written successfully, size: ${content.length} bytes`),
       T(`Renaming ${l} to ${s}`),
       r.renameSync(l, s),
       T(`File ${s} written atomically`));
@@ -404,7 +404,7 @@ function writeFileSyncAndFlush_DEPRECATED(
         throw u;
       }
       try {
-        Tf.writeFileSync(m, t, {
+        Tf.writeFileSync(m, content, {
           encoding: n.encoding,
         });
         try {

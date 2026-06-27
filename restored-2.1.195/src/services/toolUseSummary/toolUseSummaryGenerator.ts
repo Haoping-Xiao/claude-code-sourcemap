@@ -66,11 +66,11 @@ Label:`,
     );
   }
 }
-function truncateJson(e, t) {
+function truncateJson(value, maxLength) {
   try {
-    let n = De(e);
-    if (n.length <= t) return n;
-    return n.slice(0, t - 3) + "...";
+    let n = De(value);
+    if (n.length <= maxLength) return n;
+    return n.slice(0, maxLength - 3) + "...";
   } catch {
     return "[unable to serialize]";
   }

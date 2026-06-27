@@ -108,8 +108,8 @@ function Kap(e) {
   }
   return t.trimEnd();
 }
-function queryLoop(e) {
-  let t = e.flatMap((s) =>
+function queryLoop(params) {
+  let t = params.flatMap((s) =>
       !s.isApiErrorMessage && Array.isArray(s.message.content) ? s.message.content : [],
     ),
     n = Kap(

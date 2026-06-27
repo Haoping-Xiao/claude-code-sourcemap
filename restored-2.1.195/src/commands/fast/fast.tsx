@@ -5,9 +5,9 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, FastModePicker
-function FastModePicker(e) {
+function FastModePicker(t0) {
   let t = Uzl.c(32),
-    { onDone: n, unavailableReason: r } = e,
+    { onDone: n, unavailableReason: r } = t0,
     o = Ht(Xqf),
     { addNotification: s } = Li(),
     i = Ht(Yqf),
@@ -247,13 +247,19 @@ function Yqf(e) {
 function Xqf(e) {
   return e.mainLoopModel;
 }
-async function call(e, t, n) {
-  if (!sc()) return (e(lle() ?? "Fast mode is not available"), null);
+async function call(onDone, context, args) {
+  if (!sc()) return (onDone(lle() ?? "Fast mode is not available"), null);
   await Ynt();
-  let r = n?.trim().toLowerCase();
+  let r = args?.trim().toLowerCase();
   if (r === "on" || r === "off") {
-    let s = await Rsr(r === "on", t.getAppState, t.setAppState, "shortcut", t.onQueryEvent);
-    return (e(s), null);
+    let s = await Rsr(
+      r === "on",
+      context.getAppState,
+      context.setAppState,
+      "shortcut",
+      context.onQueryEvent,
+    );
+    return (onDone(s), null);
   }
   let o = lle();
   return (
@@ -261,7 +267,7 @@ async function call(e, t, n) {
       unavailable_reason: o ?? "",
     }),
     RC.jsx(FastModePicker, {
-      onDone: e,
+      onDone: onDone,
       unavailableReason: o,
     })
   );

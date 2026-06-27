@@ -19,9 +19,9 @@ function VoiceIndicator(e) {
   else n = t[1];
   return n;
 }
-function VoiceIndicatorImpl(e) {
+function VoiceIndicatorImpl(t0) {
   let t = kTt.c(3),
-    { voiceState: n } = e,
+    { voiceState: n } = t0,
     r = Ht(Cdm);
   switch (n) {
     case "recording": {

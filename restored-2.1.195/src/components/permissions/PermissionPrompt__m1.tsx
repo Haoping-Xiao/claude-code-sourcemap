@@ -60,9 +60,9 @@ function P_m(e) {
   }
   return `Yes, and add ${t.length} suggested permission rules`;
 }
-function PermissionPrompt(e) {
+function PermissionPrompt(t0) {
   let t = THc.c(42),
-    { payload: n, answer: r } = e,
+    { payload: n, answer: r } = t0,
     o;
   if (t[0] !== n) ((o = D_m(n)), (t[0] = n), (t[1] = o));
   else o = t[1];

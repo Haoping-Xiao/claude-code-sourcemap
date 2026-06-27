@@ -7,7 +7,7 @@
 // module exports: ThirdPartyModelUpgradeDialog
 // [unwrapped __esm module j$c] deps: kt, Ye, dn, VM, er, Cc, Bs, Fy, vi, Ko
 U$c = R(lt(), 1), pmr = R(rt(), 1), oie = R(se(), 1);
-function Dialog(e) {
+function Dialog(t0) {
   let t = G$c.c(27),
     {
       tierLabel: n,
@@ -15,7 +15,7 @@ function Dialog(e) {
       toName: o,
       toProviderId: s,
       onDone: i
-    } = e,
+    } = t0,
     a = `Newer ${n} model available`,
     l;
   if (t[0] !== i) l = () => i(false), t[0] = i, t[1] = l;else l = t[1];

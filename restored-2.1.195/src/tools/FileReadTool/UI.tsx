@@ -92,10 +92,10 @@ function qkl({ file_path: e }) {
     children: [" ", t],
   });
 }
-function renderToolResultMessage(e) {
-  switch (e.type) {
+function renderToolResultMessage(output) {
+  switch (output.type) {
     case "image": {
-      let { originalSize: t } = e.file,
+      let { originalSize: t } = output.file,
         n = Ra(t);
       return X_.jsx(qn, {
         height: 1,
@@ -105,7 +105,7 @@ function renderToolResultMessage(e) {
       });
     }
     case "notebook": {
-      let { cells: t } = e.file;
+      let { cells: t } = output.file;
       if (!t || t.length < 1)
         return X_.jsx(w, {
           color: "error",
@@ -126,7 +126,7 @@ function renderToolResultMessage(e) {
       });
     }
     case "pdf": {
-      let { originalSize: t } = e.file,
+      let { originalSize: t } = output.file,
         n = Ra(t);
       return X_.jsx(qn, {
         height: 1,
@@ -143,18 +143,18 @@ function renderToolResultMessage(e) {
             "Read ",
             X_.jsx(w, {
               bold: true,
-              children: e.file.count,
+              children: output.file.count,
             }),
             " ",
-            e.file.count === 1 ? "page" : "pages",
+            output.file.count === 1 ? "page" : "pages",
             " (",
-            Ra(e.file.originalSize),
+            Ra(output.file.originalSize),
             ")",
           ],
         }),
       });
     case "text": {
-      let { numLines: t } = e.file;
+      let { numLines: t } = output.file;
       return X_.jsx(qn, {
         height: 1,
         children: X_.jsxs(w, {
@@ -180,16 +180,16 @@ function renderToolResultMessage(e) {
       });
   }
 }
-function renderToolUseErrorMessage(e, { verbose: t }) {
-  if (!t && typeof e === "string") {
-    if (e.includes($B))
+function renderToolUseErrorMessage(result, { verbose: t }) {
+  if (!t && typeof result === "string") {
+    if (result.includes($B))
       return X_.jsx(qn, {
         children: X_.jsx(w, {
           color: "error",
           children: "File not found",
         }),
       });
-    if (xl(e, "tool_use_error"))
+    if (xl(result, "tool_use_error"))
       return X_.jsx(qn, {
         children: X_.jsx(w, {
           color: "error",
@@ -198,13 +198,13 @@ function renderToolUseErrorMessage(e, { verbose: t }) {
       });
   }
   return X_.jsx(AT, {
-    result: e,
+    result: result,
     verbose: t,
   });
 }
-function userFacingName(e) {
-  if (e?.file_path?.startsWith(gS())) return "Reading Plan";
-  if (e?.file_path && vZn(e.file_path)) return "Read agent output";
+function userFacingName(input) {
+  if (input?.file_path?.startsWith(gS())) return "Reading Plan";
+  if (input?.file_path && vZn(input.file_path)) return "Read agent output";
   return "Read";
 }
 function FMo(e) {

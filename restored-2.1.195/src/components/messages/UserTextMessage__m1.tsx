@@ -56,37 +56,37 @@ function MJt(e) {
     remaining: e.slice(n),
   };
 }
-function UserTextMessage(e) {
+function UserTextMessage(t0) {
   if (
-    e.startsWith("<bash-stdout") ||
-    e.startsWith("<bash-stderr") ||
-    e.startsWith("<local-command-stdout") ||
-    e.startsWith("<local-command-stderr") ||
-    e.startsWith(kFe) ||
-    e.startsWith(`<${DB} `) ||
-    e.startsWith(`<${DB}>`)
+    t0.startsWith("<bash-stdout") ||
+    t0.startsWith("<bash-stderr") ||
+    t0.startsWith("<local-command-stdout") ||
+    t0.startsWith("<local-command-stderr") ||
+    t0.startsWith(kFe) ||
+    t0.startsWith(`<${DB} `) ||
+    t0.startsWith(`<${DB}>`)
   )
     return true;
   if (
-    (e.startsWith(Vte) || e.startsWith(yoe)) &&
-    e.startsWith(
+    (t0.startsWith(Vte) || t0.startsWith(yoe)) &&
+    t0.startsWith(
       "<",
-      e.indexOf(`
+      t0.indexOf(`
 `) + 1,
     )
   )
     return true;
-  if (xl(e, Cae) !== null) return true;
+  if (xl(t0, Cae) !== null) return true;
   return (
-    e.includes("<bash-input>") ||
-    e.includes(`<${zC}>`) ||
-    e.includes("<user-memory-input>") ||
-    e.includes(`<${Oc}`) ||
-    e.includes("<mcp-resource-update") ||
-    e.includes("<mcp-polling-update") ||
-    e.includes(`<${bhe}>`) ||
-    e.includes(`<${BZe}`) ||
-    e.includes(`<${CFe}>`)
+    t0.includes("<bash-input>") ||
+    t0.includes(`<${zC}>`) ||
+    t0.includes("<user-memory-input>") ||
+    t0.includes(`<${Oc}`) ||
+    t0.includes("<mcp-resource-update") ||
+    t0.includes("<mcp-polling-update") ||
+    t0.includes(`<${bhe}>`) ||
+    t0.includes(`<${BZe}`) ||
+    t0.includes(`<${CFe}>`)
   );
 }
 function z4o(e) {

@@ -131,17 +131,17 @@ async function XZn(e, t) {
     throw s;
   }
 }
-async function createZipFromDirectory(e) {
+async function createZipFromDirectory(sourceDir) {
   let t = {};
-  await collectFilesForZip(e, "", t, new Set());
+  await collectFilesForZip(sourceDir, "", t, new Set());
   let { zipSync: r } = await Promise.resolve().then(() => (Y5e(), G4t)),
     o = r(t, {
       level: 6,
     });
-  return (T(`Created ZIP from ${e}: ${Object.keys(t).length} files, ${o.length} bytes`), o);
+  return (T(`Created ZIP from ${sourceDir}: ${Object.keys(t).length} files, ${o.length} bytes`), o);
 }
-async function collectFilesForZip(e, t, n, r) {
-  let o = t ? KF.join(e, t) : e,
+async function collectFilesForZip(baseDir, relativePath, files, visited) {
+  let o = relativePath ? KF.join(baseDir, relativePath) : baseDir,
     s;
   try {
     s = await NL.readdir(o);
@@ -154,11 +154,11 @@ async function collectFilesForZip(e, t, n, r) {
     });
     if (i.dev !== 0n || i.ino !== 0n) {
       let a = `${i.dev}:${i.ino}`;
-      if (r.has(a)) {
+      if (visited.has(a)) {
         T(`Skipping symlink cycle at ${o}`);
         return;
       }
-      r.add(a);
+      visited.add(a);
     }
   } catch {
     return;
@@ -166,7 +166,7 @@ async function collectFilesForZip(e, t, n, r) {
   for (let i of s) {
     if (i === ".git") continue;
     let a = KF.join(o, i),
-      l = t ? `${t}/${i}` : i,
+      l = relativePath ? `${relativePath}/${i}` : i,
       c;
     try {
       c = await NL.lstat(a);
@@ -174,11 +174,11 @@ async function collectFilesForZip(e, t, n, r) {
       continue;
     }
     if (c.isSymbolicLink()) continue;
-    if (c.isDirectory()) await collectFilesForZip(e, l, n, r);
+    if (c.isDirectory()) await collectFilesForZip(baseDir, l, files, visited);
     else if (c.isFile())
       try {
         let u = await NL.readFile(a);
-        n[l] = [
+        files[l] = [
           new Uint8Array(u),
           {
             os: 3,
@@ -190,22 +190,22 @@ async function collectFilesForZip(e, t, n, r) {
       }
   }
 }
-async function extractZipToDirectory(e, t) {
-  let n = await qt().readFileBytes(e),
+async function extractZipToDirectory(zipPath, targetDir) {
+  let n = await qt().readFileBytes(zipPath),
     r = await nde(n),
     o = ZLe(n);
-  await qt().mkdir(t);
+  await qt().mkdir(targetDir);
   for (let [s, i] of Object.entries(r)) {
     if (s.endsWith("/")) {
-      await qt().mkdir(KF.join(t, s));
+      await qt().mkdir(KF.join(targetDir, s));
       continue;
     }
-    let a = KF.join(t, s);
+    let a = KF.join(targetDir, s);
     (await qt().mkdir(KF.dirname(a)), await NL.writeFile(a, i));
     let l = o[s];
     if (l && l & 73) await NL.chmod(a, l & 511).catch(() => {});
   }
-  T(`Extracted ZIP to ${t}: ${Object.keys(r).length} entries`);
+  T(`Extracted ZIP to ${targetDir}: ${Object.keys(r).length} entries`);
 }
 async function JZn(e, t) {
   let n = await createZipFromDirectory(e);
@@ -219,8 +219,8 @@ function sRl(e) {
   let t = e.replace(/[^a-zA-Z0-9\-_]/g, "-");
   return KF.join("marketplaces", `${t}.json`);
 }
-function isMarketplaceSourceSupportedByZipCache(e) {
-  return ["github", "git", "url", "settings"].includes(e.source);
+function isMarketplaceSourceSupportedByZipCache(source) {
+  return ["github", "git", "url", "settings"].includes(source.source);
 }
 var y$o,
   NL,

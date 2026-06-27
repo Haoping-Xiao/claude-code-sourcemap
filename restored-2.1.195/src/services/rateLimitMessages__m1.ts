@@ -60,7 +60,7 @@ function kaa(e) {
 function f5e() {
   return p5e;
 }
-function getEarlyWarningText(e) {
+function getEarlyWarningText(limits) {
   let t = {};
   for (let [n, r] of [
     ["five_hour", "5h"],
@@ -68,8 +68,8 @@ function getEarlyWarningText(e) {
     ["seven_day_overage_included", "7d_oi"],
     ["overage", "overage"],
   ]) {
-    let o = e.get(`anthropic-ratelimit-unified-${r}-utilization`),
-      s = e.get(`anthropic-ratelimit-unified-${r}-reset`);
+    let o = limits.get(`anthropic-ratelimit-unified-${r}-utilization`),
+      s = limits.get(`anthropic-ratelimit-unified-${r}-reset`);
     if (o !== null && s !== null)
       t[n] = {
         utilization: Number(o),
@@ -179,27 +179,27 @@ function ulp(e, t) {
   }
   return null;
 }
-function getRateLimitMessage(e) {
-  let t = e.get("anthropic-ratelimit-unified-status") || "allowed",
-    n = e.get("anthropic-ratelimit-unified-reset"),
+function getRateLimitMessage(limits) {
+  let t = limits.get("anthropic-ratelimit-unified-status") || "allowed",
+    n = limits.get("anthropic-ratelimit-unified-reset"),
     r = n ? Number(n) : void 0,
-    o = e.get("anthropic-ratelimit-unified-fallback") === "available",
-    s = e.get("anthropic-ratelimit-unified-representative-claim"),
-    i = e.get("anthropic-ratelimit-unified-overage-status"),
-    a = e.get("anthropic-ratelimit-unified-overage-reset"),
+    o = limits.get("anthropic-ratelimit-unified-fallback") === "available",
+    s = limits.get("anthropic-ratelimit-unified-representative-claim"),
+    i = limits.get("anthropic-ratelimit-unified-overage-status"),
+    a = limits.get("anthropic-ratelimit-unified-overage-reset"),
     l = a ? Number(a) : void 0,
-    c = e.get("anthropic-ratelimit-unified-overage-disabled-reason"),
-    u = e.get("anthropic-ratelimit-unified-overage-in-use") === "true",
-    d = e.get("anthropic-ratelimit-unified-upgrade-paths"),
+    c = limits.get("anthropic-ratelimit-unified-overage-disabled-reason"),
+    u = limits.get("anthropic-ratelimit-unified-overage-in-use") === "true",
+    d = limits.get("anthropic-ratelimit-unified-upgrade-paths"),
     p = d ? d.split(",").map((A) => A.trim()) : void 0,
-    f = e.get("anthropic-ratelimit-unified-overage-period-monthly-utilization"),
+    f = limits.get("anthropic-ratelimit-unified-overage-period-monthly-utilization"),
     m = f ? Number(f) : NaN,
     g = Number.isFinite(m)
       ? {
           utilization: m,
         }
       : void 0,
-    h = e.get("anthropic-ratelimit-unified-overage-period-channel-utilization"),
+    h = limits.get("anthropic-ratelimit-unified-overage-period-channel-utilization"),
     y = h ? Number(h) : NaN,
     b = Number.isFinite(y)
       ? {
@@ -209,7 +209,7 @@ function getRateLimitMessage(e) {
     _ = t === "rejected" && (i === "allowed" || i === "allowed_warning"),
     S = t;
   if (t === "allowed" || t === "allowed_warning") {
-    let A = ulp(e, o);
+    let A = ulp(limits, o);
     if (A)
       return {
         ...A,
@@ -314,8 +314,8 @@ function R1n(e, t, n = !1) {
     k1n.forEach((a) => a(t, s.isUsingOverage === !0, n));
   }
 }
-function getLimitReachedText(e) {
-  if (!tut(bo()) || e.status !== 429) return;
+function getLimitReachedText(limits) {
+  if (!tut(bo()) || limits.status !== 429) return;
   try {
     let { status: t, isUsingOverage: n } = ck,
       r = p5e.five_hour?.utilization,
@@ -324,13 +324,13 @@ function getLimitReachedText(e) {
       i = {
         ...ck,
       };
-    if (e.headers) {
-      let l = wio(e.headers);
+    if (limits.headers) {
+      let l = wio(limits.headers);
       ((p5e = getEarlyWarningText(l)), (i = getRateLimitMessage(l)), Paa(l));
     }
     if (
       ((i.status = "rejected"),
-      Object.assign(i, Rio(e)),
+      Object.assign(i, Rio(limits)),
       (t !== "rejected" || n) &&
         !(t === "allowed" && !n && r === void 0 && o === void 0 && s === void 0))
     ) {

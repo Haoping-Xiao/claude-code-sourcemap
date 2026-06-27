@@ -11,7 +11,7 @@ function EEc(e, t) {
       })
     : De(t);
 }
-function useCanUseTool(e) {
+function useCanUseTool(setToolUseConfirmQueue) {
   let t = AEc.c(10),
     n = ks(),
     { recordDenial: r, getDenials: o, removeDenial: s } = BAt(),
@@ -29,7 +29,7 @@ function useCanUseTool(e) {
     t[5] !== r ||
     t[6] !== s ||
     t[7] !== c ||
-    t[8] !== e
+    t[8] !== setToolUseConfirmQueue
   )
     ((u = async (d, p, f, m, g, h) => {
       let y;
@@ -41,7 +41,7 @@ function useCanUseTool(e) {
         }
       }
       let b = new Promise((_) => {
-        let S = LYn(d, p, f, m, g, e, c);
+        let S = LYn(d, p, f, m, g, setToolUseConfirmQueue, c);
         if (S.resolveIfAborted(_)) return;
         return (h !== void 0 ? Promise.resolve(h) : lbt(d, p, f, m, g, i, c))
           .then(async (v) => {
@@ -195,7 +195,7 @@ function useCanUseTool(e) {
       (t[5] = r),
       (t[6] = s),
       (t[7] = c),
-      (t[8] = e),
+      (t[8] = setToolUseConfirmQueue),
       (t[9] = u));
   else u = t[9];
   return u;

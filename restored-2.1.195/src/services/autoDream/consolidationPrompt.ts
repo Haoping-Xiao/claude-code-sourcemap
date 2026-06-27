@@ -6,15 +6,15 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BIl] deps: Un, DPo
 rvf = [];
-function buildConsolidationPrompt(e, t, n, r = false) {
+function buildConsolidationPrompt(memoryRoot, transcriptDir, extra, r = false) {
   return `# Dream: Memory Consolidation
 
 You are performing a dream \u2014 a reflective pass over your memory files. Synthesize what you've learned recently into durable, well-organized memories so that future sessions can orient quickly.
 
-Memory directory: \`${e}\`
+Memory directory: \`${memoryRoot}\`
 ${P_e}
 
-Session transcripts: \`${t}\` (large JSONL files \u2014 grep narrowly, don't read whole files)
+Session transcripts: \`${transcriptDir}\` (large JSONL files \u2014 grep narrowly, don't read whole files)
 ${
   r
     ? `
@@ -38,7 +38,7 @@ Look for new information worth persisting. Sources in rough priority order:
 1. **Session logs** (\`logs/YYYY/MM/DD/<id>-<title>.md\`) \u2014 the append-only activity stream, one file per session. Read the most recent 1\u20133 days of sessions (the filename title tells you what each was about); each line is prefix-coded (\`>\` user, \`<\` assistant, \`.\` tool call)
 2. **Existing memories that drifted** \u2014 facts that contradict something you see in the codebase now
 3. **Transcript search** \u2014 if you need specific context (e.g., "what was the error message from yesterday's build failure?"), grep the JSONL transcripts for narrow terms:
-   \`grep -rn "<narrow term>" ${t}/ --include="*.jsonl" | tail -50\`
+   \`grep -rn "<narrow term>" ${transcriptDir}/ --include="*.jsonl" | tail -50\`
 
 Don't exhaustively read transcripts. Look only for things you already suspect matter.
 ${OIl()}
@@ -65,12 +65,12 @@ ${NIl()}
 ---
 
 Return a brief summary of what you consolidated, updated, or pruned. If nothing changed (memories are already tight), say so.${
-    n
+    extra
       ? `
 
 ## Additional context
 
-${n}`
+${extra}`
       : ""
   }`;
 }

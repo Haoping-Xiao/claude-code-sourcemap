@@ -5,9 +5,9 @@
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: loadSettingsFromFlag, loadSettingSourcesFromFlag, loadManagedSettingsFromFlag, eagerLoadSettings
-function loadSettingsFromFlag(e) {
+function loadSettingsFromFlag(settingsFile) {
   try {
-    let t = e.trim(),
+    let t = settingsFile.trim(),
       n = t.startsWith("{") && t.endsWith("}"),
       r;
     if (n) {
@@ -22,7 +22,7 @@ function loadSettingsFromFlag(e) {
       })),
         hbr(s));
     } else {
-      let { resolvedPath: o } = jd(qt(), e);
+      let { resolvedPath: o } = jd(qt(), settingsFile);
       try {
         bOc.readFileSync(o, "utf8");
       } catch (s) {
@@ -50,9 +50,9 @@ function loadManagedSettingsFromFlag(e) {
   }
   (bbr(t), n_());
 }
-function loadSettingSourcesFromFlag(e) {
+function loadSettingSourcesFromFlag(settingSourcesArg) {
   try {
-    let t = gvs(e);
+    let t = gvs(settingSourcesArg);
     (Pbr(t), n_());
   } catch (t) {
     if (t instanceof Error)

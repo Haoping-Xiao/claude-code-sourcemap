@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bac] deps: TM, lf, je, K0, dn, Dac, q8, lNn
 ((Mac = new Set()), ($ac = new Map()));
-function getExtraBodyParams(e) {
+function getExtraBodyParams(betaHeaders) {
   let t = process.env.CLAUDE_CODE_EXTRA_BODY,
     n = {};
   if (t)
@@ -25,8 +25,8 @@ function getExtraBodyParams(e) {
         level: "error",
       });
     }
-  if (e && e.length > 0) {
-    let r = fI(e);
+  if (betaHeaders && betaHeaders.length > 0) {
+    let r = fI(betaHeaders);
     if (n.anthropic_beta && Array.isArray(n.anthropic_beta)) {
       let o = n.anthropic_beta,
         s = r.filter((i) => !o.includes(i));
@@ -68,7 +68,7 @@ function getCacheControl({ scope: e, ttl: t } = {}) {
     }),
   };
 }
-function should1hCacheTTL(e) {
+function should1hCacheTTL(querySource) {
   if (ut(process.env.FORCE_PROMPT_CACHING_5M)) return false;
   if (
     ut(process.env.ENABLE_PROMPT_CACHING_1H) ||
@@ -83,7 +83,10 @@ function should1hCacheTTL(e) {
         allowlist: ["repl_main_thread*", "sdk", "auto_mode", "memdir_relevance"],
       }).allowlist ?? []),
       iSr(t));
-  return e !== void 0 && t.some((n) => (n.endsWith("*") ? e.startsWith(n.slice(0, -1)) : e === n));
+  return (
+    querySource !== void 0 &&
+    t.some((n) => (n.endsWith("*") ? querySource.startsWith(n.slice(0, -1)) : querySource === n))
+  );
 }
 function pnm(e, t, n) {
   if (e?.type !== "disabled") return e;
@@ -106,28 +109,28 @@ function pnm(e, t, n) {
     type: "disabled",
   };
 }
-function configureEffortParams(e, t, n, r, o) {
-  if (!Kw(o)) {
-    delete t.effort;
+function configureEffortParams(effortValue, outputConfig, extraBodyParams, betas, model) {
+  if (!Kw(model)) {
+    delete outputConfig.effort;
     return;
   }
-  if ("effort" in t) return;
-  if (e === void 0) r.push(Wnt);
-  else if (typeof e === "string") ((t.effort = e), r.push(Wnt));
+  if ("effort" in outputConfig) return;
+  if (effortValue === void 0) betas.push(Wnt);
+  else if (typeof effortValue === "string") ((outputConfig.effort = effortValue), betas.push(Wnt));
 }
-function configureTaskBudgetParams(e, t, n) {
-  if (!e || "task_budget" in t || !CM()) return;
+function configureTaskBudgetParams(taskBudget, outputConfig, betas) {
+  if (!taskBudget || "task_budget" in outputConfig || !CM()) return;
   if (
-    ((t.task_budget = {
+    ((outputConfig.task_budget = {
       type: "tokens",
-      total: e.total,
-      ...(e.remaining !== void 0 && {
-        remaining: e.remaining,
+      total: taskBudget.total,
+      ...(taskBudget.remaining !== void 0 && {
+        remaining: taskBudget.remaining,
       }),
     }),
-    !n.includes(lAn))
+    !betas.includes(lAn))
   )
-    n.push(lAn);
+    betas.push(lAn);
 }
 function gnm(e, t, n, r) {
   if (!e || "format" in t || !j4e(r) || !gle(r, "structured_outputs")) return;
@@ -158,8 +161,8 @@ function getAPIMetadata() {
     user_id: De(r),
   };
 }
-async function verifyApiKey(e, t) {
-  if (t) return true;
+async function verifyApiKey(apiKey, isNonInteractiveSession) {
+  if (isNonInteractiveSession) return true;
   try {
     let n = Fw(),
       r = V9(n),
@@ -167,7 +170,7 @@ async function verifyApiKey(e, t) {
         tcr(
           () =>
             G9({
-              apiKey: e,
+              apiKey: apiKey,
               maxRetries: 3,
               model: n,
               source: "verify_api_key",
@@ -287,18 +290,18 @@ function Fac(e) {
         },
       ];
 }
-function assistantMessageToMessageParam(e, t = false, n, r) {
+function assistantMessageToMessageParam(message, t = false, enablePromptCaching, querySource) {
   if (t)
-    if (typeof e.message.content === "string")
+    if (typeof message.message.content === "string")
       return {
         role: "assistant",
         content: [
           {
             type: "text",
-            text: e.message.content,
-            ...(n && {
+            text: message.message.content,
+            ...(enablePromptCaching && {
               cache_control: getCacheControl({
-                ttl: r,
+                ttl: querySource,
               }),
             }),
           },
@@ -307,16 +310,16 @@ function assistantMessageToMessageParam(e, t = false, n, r) {
     else
       return {
         role: "assistant",
-        content: e.message.content.map((o, s) => ({
+        content: message.message.content.map((o, s) => ({
           ...o,
-          ...(s === e.message.content.length - 1 &&
+          ...(s === message.message.content.length - 1 &&
           o.type !== "thinking" &&
           o.type !== "redacted_thinking" &&
           !Pj(o)
-            ? n
+            ? enablePromptCaching
               ? {
                   cache_control: getCacheControl({
-                    ttl: r,
+                    ttl: querySource,
                   }),
                 }
               : {}
@@ -325,7 +328,7 @@ function assistantMessageToMessageParam(e, t = false, n, r) {
       };
   return {
     role: "assistant",
-    content: e.message.content,
+    content: message.message.content,
   };
 }
 async function queryModelWithoutStreaming({
@@ -359,8 +362,8 @@ async function* ybt({
     yield* queryModel(e, t, n, r, o, s);
   });
 }
-function shouldDeferLspTool(e) {
-  if (!("isLsp" in e) || !e.isLsp) return false;
+function shouldDeferLspTool(tool) {
+  if (!("isLsp" in tool) || !tool.isLsp) return false;
   let t = kpt();
   return t.status === "pending" || t.status === "not-started";
 }
@@ -409,25 +412,32 @@ function Vac(e, t) {
     }
   );
 }
-async function* executeNonStreamingRequest(e, t, n, r, o, s) {
+async function* executeNonStreamingRequest(
+  clientOptions,
+  retryOptions,
+  paramsFromContext,
+  onAttempt,
+  captureRequest,
+  originatingRequestId,
+) {
   let i = bnm(),
     a = 0,
     l = tcr(
       () =>
         G9({
           maxRetries: 0,
-          model: e.model,
-          fetchOverride: e.fetchOverride,
-          source: e.source,
-          agentContext: e.agentContext,
+          model: clientOptions.model,
+          fetchOverride: clientOptions.fetchOverride,
+          source: clientOptions.source,
+          agentContext: clientOptions.agentContext,
         }),
       async (u, d, p) => {
         let f = Date.now(),
-          m = n(p);
-        r(d, f, m.max_tokens);
+          m = paramsFromContext(p);
+        onAttempt(d, f, m.max_tokens);
         let g = Dnm(m, Lnm);
-        (qac(g), o(g), a++);
-        let { headers: h } = Vac(e.llmSpan, a);
+        (qac(g), captureRequest(g), a++);
+        let { headers: h } = Vac(clientOptions.llmSpan, a);
         try {
           let y = await u.beta.messages
             .create(
@@ -436,7 +446,7 @@ async function* executeNonStreamingRequest(e, t, n, r, o, s) {
                 model: dp(g.model),
               },
               {
-                signal: t.signal,
+                signal: retryOptions.signal,
                 timeout: i,
                 ...(Object.keys(h).length > 0 && {
                   headers: h,
@@ -452,8 +462,8 @@ async function* executeNonStreamingRequest(e, t, n, r, o, s) {
           if (b)
             R1n(
               b,
-              t.model,
-              (Sy(t.model) || rU(t.model)) &&
+              retryOptions.model,
+              (Sy(retryOptions.model) || rU(retryOptions.model)) &&
                 (y.data.usage?.input_tokens ?? 0) +
                   (y.data.usage?.cache_read_input_tokens ?? 0) +
                   (y.data.usage?.cache_creation_input_tokens ?? 0) >
@@ -474,29 +484,29 @@ async function* executeNonStreamingRequest(e, t, n, r, o, s) {
           throw (
             In("error", "cli_nonstreaming_fallback_error"),
             G("tengu_nonstreaming_fallback_error", {
-              model: e.model,
+              model: clientOptions.model,
               error: y instanceof Error ? y.name : We("unknown"),
               attempt: d,
               timeout_ms: i,
-              request_id: s ?? "unknown",
+              request_id: originatingRequestId ?? "unknown",
             }),
             y
           );
         }
       },
       {
-        model: t.model,
-        fallbackModel: t.fallbackModel,
-        thinkingConfig: t.thinkingConfig,
+        model: retryOptions.model,
+        fallbackModel: retryOptions.fallbackModel,
+        thinkingConfig: retryOptions.thinkingConfig,
         ...(sc() && {
-          fastMode: t.fastMode,
+          fastMode: retryOptions.fastMode,
         }),
-        signal: t.signal,
-        initialConsecutive529Errors: t.initialConsecutive529Errors,
-        querySource: t.querySource,
+        signal: retryOptions.signal,
+        initialConsecutive529Errors: retryOptions.initialConsecutive529Errors,
+        querySource: retryOptions.querySource,
         isNonStreamingRequest: true,
-        onError: t.onApiError,
-        onRetryStatus: t.onRetryStatus,
+        onError: retryOptions.onApiError,
+        onRetryStatus: retryOptions.onRetryStatus,
       },
     ),
     c;
@@ -699,8 +709,8 @@ function Inm(e, t) {
     midConvFallback: a,
   };
 }
-async function* queryModel(e, t, n, r, o, s) {
-  let i = mo(s.model);
+async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal, options) {
+  let i = mo(options.model);
   if (
     !bo() &&
     (dte(i) || Qnt(i) || Znt(i)) &&
@@ -710,7 +720,7 @@ async function* queryModel(e, t, n, r, o, s) {
       })
     ).activated
   ) {
-    (G("tengu_off_switch_query", {}), yield G1n(Error(Qnt(i) ? g5e : m5e), s.model));
+    (G("tengu_off_switch_query", {}), yield G1n(Error(Qnt(i) ? g5e : m5e), options.model));
     return;
   }
   let a = null;
@@ -722,13 +732,13 @@ async function* queryModel(e, t, n, r, o, s) {
     });
   }
   if (a !== null) {
-    if (s.fallbackModel !== void 0)
+    if (options.fallbackModel !== void 0)
       throw (
         G("tengu_off_switch_query", {
           tier: We("per_model_block"),
           outcome: We("fallback"),
         }),
-        new NN(s.model, s.fallbackModel, "model_blocked")
+        new NN(options.model, options.fallbackModel, "model_blocked")
       );
     (G("tengu_off_switch_query", {
       tier: We("per_model_block"),
@@ -739,52 +749,52 @@ async function* queryModel(e, t, n, r, o, s) {
       }));
     return;
   }
-  let l = Snm(e),
-    c = Enm(e),
+  let l = Snm(messages),
+    c = Enm(messages),
     u =
-      fr() === "bedrock" && s.model.includes("application-inference-profile")
-        ? ((await DIe(dp(s.model))) ?? s.model)
-        : s.model;
+      fr() === "bedrock" && options.model.includes("application-inference-profile")
+        ? ((await DIe(dp(options.model))) ?? options.model)
+        : options.model;
   jp("query_tool_schema_build_start");
   let d =
-      s.querySource.startsWith("repl_main_thread") ||
-      s.querySource.startsWith("agent:") ||
-      s.querySource === "sdk" ||
-      s.querySource === "hook_agent",
-    p = jot(s.model, {
+      options.querySource.startsWith("repl_main_thread") ||
+      options.querySource.startsWith("agent:") ||
+      options.querySource === "sdk" ||
+      options.querySource === "hook_agent",
+    p = jot(options.model, {
       isAgenticQuery: d,
     });
-  if (n.type === "disabled" || !!s.fastMode) p = p.filter((En) => En !== RPt);
+  if (thinkingConfig.type === "disabled" || !!options.fastMode) p = p.filter((En) => En !== RPt);
   let f = mo(u);
   if (F6() && CM()) p.push(f2r);
   let m =
-      s.fallbackCreditCode !== void 0 &&
-      s.fallbackCreditMintModel !== void 0 &&
-      Cnm(s.fallbackCreditMintModel, s.model),
-    g = m ? s.fallbackCreditMintModel : void 0,
-    h = g ?? s.model,
-    y = d ? fel(s.advisorModel, h) : void 0,
-    b = await pYt(h, r, s.getToolPermissionContext, s.agents, "query"),
+      options.fallbackCreditCode !== void 0 &&
+      options.fallbackCreditMintModel !== void 0 &&
+      Cnm(options.fallbackCreditMintModel, options.model),
+    g = m ? options.fallbackCreditMintModel : void 0,
+    h = g ?? options.model,
+    y = d ? fel(options.advisorModel, h) : void 0,
+    b = await pYt(h, tools, options.getToolPermissionContext, options.agents, "query"),
     _ = new Set();
   if (b) {
-    for (let En of r) if (y4(En)) _.add(En.name);
+    for (let En of tools) if (y4(En)) _.add(En.name);
   }
-  if (b && _.size === 0 && !s.hasPendingMcpServers)
+  if (b && _.size === 0 && !options.hasPendingMcpServers)
     (T("Tool search disabled: no deferred tools available to search"), (b = false));
   let S;
   if (b) {
-    let En = xQ(e);
-    S = r.filter((Sn) => {
+    let En = xQ(messages);
+    S = tools.filter((Sn) => {
       if (!_.has(Sn.name)) return true;
       if (Ql(Sn, _h)) return true;
       return En.has(Sn.name);
     });
   } else
-    S = r.filter((En) => {
+    S = tools.filter((En) => {
       if (Ql(En, _h)) return false;
       return true;
     });
-  let A = l_(s.model),
+  let A = l_(options.model),
     v = b ? Dvi() : null;
   if (v && A !== "bedrock") {
     if (!p.includes(v)) p.push(v);
@@ -797,10 +807,10 @@ async function* queryModel(e, t, n, r, o, s) {
     D = await Promise.all(
       S.map((En) =>
         hZn(En, {
-          getToolPermissionContext: s.getToolPermissionContext,
-          tools: r,
-          agents: s.agents,
-          allowedAgentTypes: s.allowedAgentTypes,
+          getToolPermissionContext: options.getToolPermissionContext,
+          tools: tools,
+          agents: options.agents,
+          allowedAgentTypes: options.allowedAgentTypes,
           model: h,
           deferLoading: x(En),
         }),
@@ -813,13 +823,13 @@ async function* queryModel(e, t, n, r, o, s) {
   if (
     (jp("query_tool_schema_build_end"),
     G("tengu_api_before_normalize", {
-      preNormalizedMessageCount: e.length,
+      preNormalizedMessageCount: messages.length,
     }),
     jp("query_message_normalization_start"),
     g !== void 0)
   )
     G("tengu_fallback_credit_strip_as_mint_model", {});
-  let P = s.stickyBetas ?? u0(),
+  let P = options.stickyBetas ?? u0(),
     O = false;
   if (jBe(P, jY)) ((O = true), (p = p.filter((En) => En !== jY)));
   if (g !== void 0) {
@@ -838,8 +848,8 @@ async function* queryModel(e, t, n, r, o, s) {
       messagesPreNormalize: L,
       messagesForAPI: M,
       midConvFallback: N,
-    } = Inm(e, {
-      model: s.model,
+    } = Inm(messages, {
+      model: options.model,
       bodyModel: h,
       tools: S,
       betas: p,
@@ -860,31 +870,31 @@ async function* queryModel(e, t, n, r, o, s) {
     postNormalizedMessageCount: B.length,
   });
   let q = GXa(L);
-  ((t = Sc(
+  ((systemPrompt = Sc(
     [
-      IAn(q, s.agentContext),
+      IAn(q, options.agentContext),
       Qkn({
-        isNonInteractive: s.isNonInteractiveSession,
-        hasAppendSystemPrompt: s.hasAppendSystemPrompt,
+        isNonInteractive: options.isNonInteractiveSession,
+        hasAppendSystemPrompt: options.hasAppendSystemPrompt,
       }),
-      ...t,
+      ...systemPrompt,
       ...(y ? [hel] : []),
     ].filter(Boolean),
   )),
-    gac(t));
-  let W = s.enablePromptCaching ?? Uac(h),
-    V = should1hCacheTTL(s.querySource) ? "1h" : void 0;
+    gac(systemPrompt));
+  let W = options.enablePromptCaching ?? Uac(h),
+    V = should1hCacheTTL(options.querySource) ? "1h" : void 0;
   if (
-    YY(s.agentContext) &&
-    (s.querySource.startsWith("repl_main_thread") || s.querySource === "sdk")
+    YY(options.agentContext) &&
+    (options.querySource.startsWith("repl_main_thread") || options.querySource === "sdk")
   )
     __r(V === "1h" ? 3600000 : 300000);
-  let Y = Rnm(t, W, {
+  let Y = Rnm(systemPrompt, W, {
       skipGlobalCacheForSystemPrompt: I,
       cacheTtl: V,
     }),
     z = p.length > 0,
-    K = [...(s.extraToolSchemas ?? [])];
+    K = [...(options.extraToolSchemas ?? [])];
   if (y)
     K.push({
       type: "advisor_20260301",
@@ -892,7 +902,7 @@ async function* queryModel(e, t, n, r, o, s) {
       model: y,
     });
   let Z = [...D, ...K],
-    J = sc() && Fx() && !cle() && rg(h) && !!s.fastMode,
+    J = sc() && Fx() && !cle() && rg(h) && !!options.fastMode,
     ne = false;
   if (T0 && d && P9r() && (fqo?.isAutoModeActive() ?? false)) Wve(P, T0);
   if (((ne = T0 ? FBe(P, T0) : false), J)) Wve(P, Vnt);
@@ -901,27 +911,27 @@ async function* queryModel(e, t, n, r, o, s) {
   if (Anm()) Wve(P, fye);
   re = FBe(P, fye);
   let ee = (Bac(), ro(Nac)).createContextHintController({
-      querySource: s.querySource,
+      querySource: options.querySource,
       includeFirstPartyBetas: CM(),
       is529Error: TTe,
     }),
-    ce = x7(u, s.effortValue),
+    ce = x7(u, options.effortValue),
     ae = Kw(u) && ce !== void 0 ? x_e(ce) : void 0;
   if (WX()) {
     let En = Z.filter((Sn) => !("defer_loading" in Sn && Sn.defer_loading));
     oca({
       system: Y,
       toolSchemas: En,
-      querySource: s.querySource,
-      model: s.model,
-      agentId: s.agentId,
+      querySource: options.querySource,
+      model: options.model,
+      agentId: options.agentId,
       fastMode: oe,
       globalCacheStrategy: k,
       betas: fI(p),
       autoModeActive: ne,
       isUsingOverage: ck.isUsingOverage ?? false,
       is1hCacheTTL: V === "1h",
-      queryDepth: s.queryTracking?.depth,
+      queryDepth: options.queryTracking?.depth,
       cacheDiagnosis: re,
       effortValue: ce,
       extraBodyParams: getExtraBodyParams(),
@@ -930,15 +940,15 @@ async function* queryModel(e, t, n, r, o, s) {
   }
   let de = mC()
       ? {
-          systemPrompt: t.join(`
+          systemPrompt: systemPrompt.join(`
 
 `),
-          userSystemPrompt: s.userSystemPrompt,
-          querySource: s.querySource,
+          userSystemPrompt: options.userSystemPrompt,
+          querySource: options.querySource,
           tools: De(Z),
         }
       : void 0,
-    Ee = nka(s.model, s.agentContext, de, B, J),
+    Ee = nka(options.model, options.agentContext, de, B, J),
     me = performance.now(),
     pe = performance.now(),
     ge = 0,
@@ -958,20 +968,20 @@ async function* queryModel(e, t, n, r, o, s) {
   let Ve = [],
     Ze = false,
     Be = false;
-  if (s.fallbackCreditCode !== void 0 && !m)
+  if (options.fallbackCreditCode !== void 0 && !m)
     G("tengu_fallback_credit_skipped", {
       reason: We("backend_unknown_or_mismatch"),
-      mint_request_id: Hr(s.fallbackCreditMintRequestId),
-      mint_model: Cf(s.fallbackCreditMintModel),
-      model: Cf(s.model),
-      query_source: Gte(s.querySource),
+      mint_request_id: Hr(options.fallbackCreditMintRequestId),
+      mint_model: Cf(options.fallbackCreditMintModel),
+      model: Cf(options.model),
+      query_source: Gte(options.querySource),
     });
-  let Me = m ? s.fallbackCreditCode : void 0,
+  let Me = m ? options.fallbackCreditCode : void 0,
     Ue = (En) =>
-      (s.fallbackCreditCode ? En.split(s.fallbackCreditCode).join("[FCT_REDACTED]") : En).slice(
-        0,
-        600,
-      ),
+      (options.fallbackCreditCode
+        ? En.split(options.fallbackCreditCode).join("[FCT_REDACTED]")
+        : En
+      ).slice(0, 600),
     tt = false,
     bt = false,
     Ke = false,
@@ -983,12 +993,12 @@ async function* queryModel(e, t, n, r, o, s) {
       ((ct = true),
         G("tengu_fallback_credit_outcome", {
           outcome: $e(En),
-          mint_request_id: Hr(s.fallbackCreditMintRequestId),
-          mint_model: Cf(s.fallbackCreditMintModel),
+          mint_request_id: Hr(options.fallbackCreditMintRequestId),
+          mint_model: Cf(options.fallbackCreditMintModel),
           request_id: Hr(Sn),
           client_request_id: Hr(ye),
-          model: Cf(s.model),
-          query_source: Gte(s.querySource),
+          model: Cf(options.model),
+          query_source: Gte(options.querySource),
           ...(Jn !== null && {
             input_tokens: Jn.input_tokens,
             output_tokens: Jn.output_tokens,
@@ -1018,28 +1028,28 @@ async function* queryModel(e, t, n, r, o, s) {
         };
       (delete fo.output_config,
         configureEffortParams(ce, cs, fo, Sn, u),
-        configureTaskBudgetParams(s.taskBudget, cs, Sn),
-        gnm(s.outputFormat, cs, Sn, s.model));
-      let Gs = oIl(s.serverRefusalFallback, En.model, Sn, P);
+        configureTaskBudgetParams(options.taskBudget, cs, Sn),
+        gnm(options.outputFormat, cs, Sn, options.model));
+      let Gs = oIl(options.serverRefusalFallback, En.model, Sn, P);
       ((Ze = Gs.fallbacks !== void 0),
         iIl(
-          s.fallbackCreditLaneArmed === true || s.fallbackCreditCode !== void 0,
+          options.fallbackCreditLaneArmed === true || options.fallbackCreditCode !== void 0,
           Sn,
           P,
           Jn === "bedrock" ? fo : void 0,
         ),
         (Et = Sn.includes(o1)));
       let la = getMaxOutputTokensForModel(u),
-        Fi = Math.min(En?.maxTokensOverride || s.maxOutputTokensOverride || la, la),
+        Fi = Math.min(En?.maxTokensOverride || options.maxOutputTokensOverride || la, la),
         xn = ut(process.env.CLAUDE_CODE_DISABLE_THINKING),
-        nr = n.type !== "disabled" && !xn,
-        Yn = nr && CM() && QOt(u) ? n.display : void 0,
+        nr = thinkingConfig.type !== "disabled" && !xn,
+        Yn = nr && CM() && QOt(u) ? thinkingConfig.display : void 0,
         Xn = void 0;
       if (nr && D9r(u)) {
         let zt =
             ut(process.env.CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING) &&
             (f.includes("opus-4-6") || f.includes("sonnet-4-6")),
-          cn = aSr(s.model);
+          cn = aSr(options.model);
         if (cn !== void 0 ? cn === "adaptive" : Uot(u) && !zt)
           Xn = {
             type: "adaptive",
@@ -1047,7 +1057,8 @@ async function* queryModel(e, t, n, r, o, s) {
           };
         else {
           let Tr = wvi(u);
-          if (n.type === "enabled" && n.budgetTokens !== void 0) Tr = n.budgetTokens;
+          if (thinkingConfig.type === "enabled" && thinkingConfig.budgetTokens !== void 0)
+            Tr = thinkingConfig.budgetTokens;
           ((Tr = Math.min(Fi - 1, Tr)),
             (Xn = {
               budget_tokens: Tr,
@@ -1055,7 +1066,14 @@ async function* queryModel(e, t, n, r, o, s) {
               display: Yn,
             }));
         }
-      } else if (n.type === "disabled" && fr() === "firstParty" && !xn && D9r(u) && true && !U4e(u))
+      } else if (
+        thinkingConfig.type === "disabled" &&
+        fr() === "firstParty" &&
+        !xn &&
+        D9r(u) &&
+        true &&
+        !U4e(u)
+      )
         Xn = {
           type: "disabled",
         };
@@ -1064,7 +1082,7 @@ async function* queryModel(e, t, n, r, o, s) {
         if (zt !== -1) Sn.splice(zt, 1);
       }
       let Jr = Xn?.type === "enabled" || Xn?.type === "adaptive" || (Xn === void 0 && U4e(u)),
-        zr = s.toolChoice;
+        zr = options.toolChoice;
       if (zr?.type === "tool" && Jr)
         (T(
           `tool_choice {type:'tool', name:'${zr.name}'} demoted to auto: extended thinking is active`,
@@ -1075,7 +1093,7 @@ async function* queryModel(e, t, n, r, o, s) {
       let to = bac({
           hasThinking: nr,
         }),
-        vs = s.enablePromptCaching ?? Uac(g ?? En.model),
+        vs = options.enablePromptCaching ?? Uac(g ?? En.model),
         bs;
       if (sc() && Fx() && !cle() && rg(h) && !!En.fastMode) bs = "fast";
       if (oe && !Sn.includes(Vnt)) Sn.push(Vnt);
@@ -1094,15 +1112,21 @@ async function* queryModel(e, t, n, r, o, s) {
         T(
           `[API:client] SIMULATE_PROXY_USAGE: stripping ${Sn.length - us.length} beta headers from request (keeping ${fI(us).join(", ") || "none"}): ${fI(Sn).join(", ")}`,
         );
-      let X = !nr && LCn(u) ? (s.temperatureOverride ?? 1) : void 0;
+      let X = !nr && LCn(u) ? (options.temperatureOverride ?? 1) : void 0;
       Ve = fI(us);
       let Se = r1 !== null && z && (!ji || us.length > 0) && N9r(us).includes(r1);
       Be = Se && Zlr(B);
       let qe = {
-          model: dp(s.model),
-          messages: addCacheBreakpoints(Qac(B, Se), vs, V, s.skipCacheWrite, s.forkPointUuid),
+          model: dp(options.model),
+          messages: addCacheBreakpoints(
+            Qac(B, Se),
+            vs,
+            V,
+            options.skipCacheWrite,
+            options.forkPointUuid,
+          ),
           system: Y,
-          tools: rii(Z, s.model),
+          tools: rii(Z, options.model),
           tool_choice: zr,
           ...(z &&
             (!ji || us.length > 0) && {
@@ -1136,7 +1160,7 @@ async function* queryModel(e, t, n, r, o, s) {
               }
             : {}),
         },
-        ot = pnm(qe.thinking, s.querySource, !st);
+        ot = pnm(qe.thinking, options.querySource, !st);
       if (ot !== qe.thinking) ((st = true), (qe.thinking = ot));
       if (Uin(qe)) {
         try {
@@ -1152,23 +1176,23 @@ async function* queryModel(e, t, n, r, o, s) {
     };
   {
     let En = vt({
-        model: s.model,
-        thinkingConfig: n,
+        model: options.model,
+        thinkingConfig: thinkingConfig,
       }),
       Sn = En.messages.length,
       Jn = z ? (En.betas ?? []) : [],
       Qn = En.thinking?.type ?? "disabled",
       gr = ae;
-    s.getToolPermissionContext().then((fo) => {
+    options.getToolPermissionContext().then((fo) => {
       dkl({
-        model: s.model,
+        model: options.model,
         messagesLength: Sn,
-        temperature: s.temperatureOverride ?? 1,
+        temperature: options.temperatureOverride ?? 1,
         betas: Jn,
         permissionMode: fo.mode,
-        querySource: s.querySource,
-        messageClientPlatform: s.messageClientPlatform,
-        queryTracking: s.queryTracking,
+        querySource: options.querySource,
+        messageClientPlatform: options.messageClientPlatform,
+        queryTracking: options.queryTracking,
         thinkingType: Qn,
         effortValue: gr,
         fastMode: J,
@@ -1219,13 +1243,13 @@ async function* queryModel(e, t, n, r, o, s) {
             G("tengu_rotunda_pennant_strip", {
               shape: $e(Gs),
               non_streaming: Sn === "sync",
-              query_source: Gte(s.querySource),
+              query_source: Gte(options.querySource),
               sticky_scope:
-                s.stickyBetas === void 0
+                options.stickyBetas === void 0
                   ? We("session")
-                  : xM(s.querySource) === "main"
+                  : xM(options.querySource) === "main"
                     ? We("detached_main")
-                    : xM(s.querySource) === "subagent"
+                    : xM(options.querySource) === "subagent"
                       ? We("agent")
                       : We("aux"),
             }));
@@ -1263,7 +1287,7 @@ async function* queryModel(e, t, n, r, o, s) {
       F1n(En) || Vio(En) || P1n(En) !== void 0 || zio(En) || Yio(En) !== null || Kio(En) || j1n(En),
     Fn = (En) => {
       let Sn =
-          s.serverRefusalFallback !== void 0
+          options.serverRefusalFallback !== void 0
             ? (En.content ?? []).reduce((la, Fi, xn) => (TQn(Fi) ? xn : la), -1)
             : -1,
         Jn = En.stop_reason === "refusal",
@@ -1293,7 +1317,7 @@ async function* queryModel(e, t, n, r, o, s) {
           (cs.push(TPo(xn)),
           (Qn = xn),
           G("tengu_rotunda_pennant_materialized", {
-            armed: s.serverRefusalFallback !== void 0,
+            armed: options.serverRefusalFallback !== void 0,
             block_index: la,
             non_streaming: true,
           }),
@@ -1302,16 +1326,16 @@ async function* queryModel(e, t, n, r, o, s) {
           lYt({
             model: u,
             requestId: le || void 0,
-            querySource: s.querySource,
+            querySource: options.querySource,
             effort: ae,
             fastMode: un,
             attempt: ge,
             attribution: VU(
-              s.querySource,
-              s.spawnedBySkill,
-              s.activeSkill,
-              s.activeMcpServer,
-              s.activeMcpTool,
+              options.querySource,
+              options.spawnedBySkill,
+              options.activeSkill,
+              options.activeMcpServer,
+              options.activeMcpTool,
             ),
             serverFallbackHop: true,
           });
@@ -1322,11 +1346,11 @@ async function* queryModel(e, t, n, r, o, s) {
           text: zw,
           citations: [],
         });
-      let Gs = s.serverRefusalFallback !== void 0 ? NKt(En.usage) : void 0;
+      let Gs = options.serverRefusalFallback !== void 0 ? NKt(En.usage) : void 0;
       if (
         ((lr =
           Gs?.servedFallbackModel !== void 0 ||
-          (s.serverRefusalFallback !== void 0 && Qn !== void 0)),
+          (options.serverRefusalFallback !== void 0 && Qn !== void 0)),
         (eo = false),
         (Je = false),
         (Kn = Gs),
@@ -1349,10 +1373,12 @@ async function* queryModel(e, t, n, r, o, s) {
       let fo = Zoe(xb, Sn.usage);
       G("tengu_fallback_credit_minted", {
         request_id: Hr(le),
-        model: Cf(s.model),
+        model: Cf(options.model),
         fallback_target_model: Cf(
-          s.refusalFallbackModel ??
-            (s.serverRefusalFallback !== void 0 && !lr ? s.serverRefusalFallback.model : void 0),
+          options.refusalFallbackModel ??
+            (options.serverRefusalFallback !== void 0 && !lr
+              ? options.serverRefusalFallback.model
+              : void 0),
         ),
         token_length: Jn.length,
         input_tokens: fo.input_tokens,
@@ -1363,20 +1389,20 @@ async function* queryModel(e, t, n, r, o, s) {
         cache_creation_1h_input_tokens: fo.cache_creation?.ephemeral_1h_input_tokens ?? 0,
         service_tier: Oo(fo.service_tier),
         speed: Oo(fo.speed),
-        query_source: Gte(s.querySource),
-        ...(s.queryTracking && {
-          query_chain_id: Hr(s.queryTracking.chainId),
-          query_depth: s.queryTracking.depth,
+        query_source: Gte(options.querySource),
+        ...(options.queryTracking && {
+          query_chain_id: Hr(options.queryTracking.chainId),
+          query_depth: options.queryTracking.depth,
         }),
       });
     }
-    if (s.serverRefusalFallback !== void 0 && !eo) {
+    if (options.serverRefusalFallback !== void 0 && !eo) {
       let fo = En.lastHop?.model ?? En.iterations?.servedFallbackModel;
       if (fo !== void 0)
         ((eo = true),
           yield {
             type: "server_fallback",
-            fromModel: En.lastHop?.fromModel ?? s.model,
+            fromModel: En.lastHop?.fromModel ?? options.model,
             toModel: fo,
             reason: En.lastHop !== void 0 ? "refusal" : "sticky",
             apiRefusalCategory: En.lastHop?.category ?? null,
@@ -1389,14 +1415,16 @@ async function* queryModel(e, t, n, r, o, s) {
           });
     }
     let Qn =
-      s.refusalFallbackModel ??
-      (s.serverRefusalFallback !== void 0 && !lr ? s.serverRefusalFallback.model : void 0);
+      options.refusalFallbackModel ??
+      (options.serverRefusalFallback !== void 0 && !lr
+        ? options.serverRefusalFallback.model
+        : void 0);
     if (Sn.stop_reason === "refusal" && Qn !== void 0)
       return (
         yield {
           type: "fallback_request",
           trigger: "refusal",
-          originalModel: s.model,
+          originalModel: options.model,
           fallbackModel: Qn,
           requestId: le ?? null,
           apiRefusalCategory: Sn.stop_details?.category ?? null,
@@ -1405,11 +1433,11 @@ async function* queryModel(e, t, n, r, o, s) {
         },
         true
       );
-    let gr = h5e(Sn.stop_reason, Sn.stop_details, le, s.model);
+    let gr = h5e(Sn.stop_reason, Sn.stop_details, le, options.model);
     if (gr)
       (yield {
         type: "refusal_no_fallback",
-        originalModel: s.model,
+        originalModel: options.model,
         requestId: le ?? null,
         apiRefusalCategory: Sn.stop_details?.category ?? null,
         apiRefusalExplanation: Sn.stop_details?.explanation ?? null,
@@ -1423,16 +1451,16 @@ async function* queryModel(e, t, n, r, o, s) {
     rs = new Set(),
     js;
   try {
-    zXn("api_call", s.agentId);
+    zXn("api_call", options.agentId);
     e: for (;;) {
       let bs = function () {
           if (to !== null) (clearTimeout(to), (to = null));
-          if (vs) ((vs = false), s.onRetryStatus?.(null));
+          if (vs) ((vs = false), options.onRetryStatus?.(null));
           if (Jr !== null) (clearTimeout(Jr), (Jr = null));
           if (zr !== null) (clearTimeout(zr), (zr = null));
         },
         Da = function () {
-          if (!s.onRetryStatus || !Jn) return;
+          if (!options.onRetryStatus || !Jn) return;
           let us = Jn.lastAt,
             X = performance.now();
           ((to = setTimeout(() => {
@@ -1442,7 +1470,7 @@ async function* queryModel(e, t, n, r, o, s) {
               return;
             }
             ((vs = true),
-              s.onRetryStatus?.({
+              options.onRetryStatus?.({
                 kind: "stalled",
                 deadline: Date.now() + (nr - gqo),
               }));
@@ -1472,7 +1500,7 @@ async function* queryModel(e, t, n, r, o, s) {
                 }),
                 In("error", "cli_streaming_idle_timeout"),
                 G("tengu_streaming_idle_timeout", {
-                  model: s.model,
+                  model: options.model,
                   request_id: le ?? "unknown",
                   timeout_ms: Fi,
                   tier: We("event"),
@@ -1485,10 +1513,10 @@ async function* queryModel(e, t, n, r, o, s) {
           () =>
             G9({
               maxRetries: 0,
-              model: s.model,
-              fetchOverride: s.fetchOverride,
-              source: s.querySource,
-              agentContext: s.agentContext,
+              model: options.model,
+              fetchOverride: options.fetchOverride,
+              source: options.querySource,
+              agentContext: options.agentContext,
             }),
           async (us, X, Se) => {
             (gt("attempt_errored", le ?? null, null),
@@ -1500,18 +1528,18 @@ async function* queryModel(e, t, n, r, o, s) {
             let qe = vt(Se);
             if (
               (qac(qe),
-              vpn(qe, s.querySource),
+              vpn(qe, options.querySource),
               nZn(
                 {
                   ...qe,
                   stream: true,
                 },
-                s.querySource,
+                options.querySource,
               ),
               (Re = qe.max_tokens),
               jp("query_api_request_sent"),
-              T(`[API:timing] dispatching to ${l_(s.model)} model=${s.model}`),
-              !s.agentId)
+              T(`[API:timing] dispatching to ${l_(options.model)} model=${options.model}`),
+              !options.agentId)
             ) {
               if ((wC("api_request_sent"), X === 1 && !Dn)) ((Dn = performance.now()), pZa());
             }
@@ -1527,7 +1555,7 @@ async function* queryModel(e, t, n, r, o, s) {
                 },
               ),
                 G("tengu_api_slow_first_byte", {
-                  model: s.model,
+                  model: options.model,
                   provider: gj(),
                   attempt: X,
                   elapsed_ms: Math.round(Br),
@@ -1537,8 +1565,8 @@ async function* queryModel(e, t, n, r, o, s) {
             ye = zt.clientRequestId;
             let cn = zt.headers;
             if (
-              (s.queryTracking?.depth ?? 0) > 0 &&
-              (xM(s.querySource) !== "auxiliary" || s.querySource === "compact") &&
+              (options.queryTracking?.depth ?? 0) > 0 &&
+              (xM(options.querySource) !== "auxiliary" || options.querySource === "compact") &&
               fr() === "firstParty" &&
               _u() &&
               at("tengu_lantern_spool", false)
@@ -1547,7 +1575,7 @@ async function* queryModel(e, t, n, r, o, s) {
             if (
               ((Xo = false),
               !_o &&
-                xM(s.querySource) !== "auxiliary" &&
+                xM(options.querySource) !== "auxiliary" &&
                 fr() === "firstParty" &&
                 _u() &&
                 at("tengu_cedar_lattice", false))
@@ -1565,7 +1593,7 @@ async function* queryModel(e, t, n, r, o, s) {
                   stream: true,
                 },
                 {
-                  signal: o,
+                  signal: signal,
                   ...(Object.keys(cn).length > 0 && {
                     headers: cn,
                   }),
@@ -1582,29 +1610,29 @@ async function* queryModel(e, t, n, r, o, s) {
               hr !== void 0)
             )
               G("tengu_rotunda_pennant_credit_echoed", {
-                mint_request_id: Hr(s.fallbackCreditMintRequestId),
-                mint_model: Cf(s.fallbackCreditMintModel),
+                mint_request_id: Hr(options.fallbackCreditMintRequestId),
+                mint_model: Cf(options.fallbackCreditMintModel),
                 request_id: Hr(le),
                 client_request_id: Hr(ye),
-                model: Cf(s.model),
+                model: Cf(options.model),
                 token_length: hr.length,
-                query_source: Gte(s.querySource),
+                query_source: Gte(options.querySource),
               });
             return Tr.data;
           },
           {
-            model: s.model,
-            fallbackModel: s.fallbackModel,
-            thinkingConfig: n,
+            model: options.model,
+            fallbackModel: options.fallbackModel,
+            thinkingConfig: thinkingConfig,
             ...(sc()
               ? {
                   fastMode: J,
                 }
               : false),
-            signal: o,
+            signal: signal,
             initialConsecutive529Errors: Rr,
-            querySource: s.querySource,
-            onRetryStatus: s.onRetryStatus,
+            querySource: options.querySource,
+            onRetryStatus: options.onRetryStatus,
             onError: async (us) => {
               if (ne && F1n(us)) {
                 if (((ne = false), T0)) jie(P, T0);
@@ -1628,7 +1656,7 @@ async function* queryModel(e, t, n, r, o, s) {
                   return (
                     (_o = true),
                     G("tengu_dispatch_header_fallback", {
-                      model: Cf(s.model),
+                      model: Cf(options.model),
                       reason: qe ? We("5xx") : We("conn_err"),
                       status: Se !== void 0 ? yB(Se) : We("none"),
                       request_id: Hr(us instanceof Fo ? us.requestID : void 0),
@@ -1640,11 +1668,11 @@ async function* queryModel(e, t, n, r, o, s) {
                 return (
                   (B = _qo(B)),
                   G("tengu_advisor_strip_retry", {
-                    query_source: Bh(s.querySource) ?? "",
+                    query_source: Bh(options.querySource) ?? "",
                   }),
                   "retry:advisor-strip"
                 );
-              let X = sHn(us, s.model, s.querySource);
+              let X = sHn(us, options.model, options.querySource);
               if (X === aMt) return;
               if (X !== null) return X;
               {
@@ -1715,7 +1743,7 @@ async function* queryModel(e, t, n, r, o, s) {
                 if (Se) {
                   let qe = Se === "enabled" ? "adaptive" : "enabled";
                   return (
-                    lSr(s.model, qe),
+                    lSr(options.model, qe),
                     T(
                       `[thinking] model rejected thinking.type=${Se}; retrying with ${qe}. For Bedrock application-inference-profile ARNs with bearer-token auth, granting bedrock:GetInferenceProfile to the token avoids this round-trip.`,
                       {
@@ -1748,8 +1776,8 @@ async function* queryModel(e, t, n, r, o, s) {
                       },
                     ),
                     G("tengu_thinking_signature_strip_retry", {
-                      query_source: Bh(s.querySource) ?? "",
-                      model: s.model,
+                      query_source: Bh(options.querySource) ?? "",
+                      model: options.model,
                       stripped_signed_count: Se,
                       stripped_unsigned_count: qe,
                     }),
@@ -1775,7 +1803,7 @@ async function* queryModel(e, t, n, r, o, s) {
                 let Se = await ee?.onRequestError(us, B);
                 if (Se) {
                   if (((B = Se.messages), Se.clearedIds.size > 0))
-                    s.onHintCleared?.(Se.clearedIds, Se.clearedContent);
+                    options.onHintCleared?.(Se.clearedIds, Se.clearedContent);
                   return "retry:context-hint";
                 }
               }
@@ -1827,25 +1855,25 @@ async function* queryModel(e, t, n, r, o, s) {
         vs = false;
       Qs();
       let To = () => {
-          if (s.querySource !== "sdk" && s.keepPartialMessageOnAbort !== true) return;
+          if (options.querySource !== "sdk" && options.keepPartialMessageOnAbort !== true) return;
           if (jn) return;
           let us = Ln[jt.length];
           if (us?.type !== "text" || !us.text.trim() || !nn) return;
           return {
             message: {
               ...nn,
-              content: dZt([us], r, s.agentId, {
+              content: dZt([us], tools, options.agentId, {
                 requestId: le ?? void 0,
                 messageId: nn.id,
               }),
             },
             requestId: le ?? void 0,
             ...VU(
-              s.querySource,
-              s.spawnedBySkill,
-              s.activeSkill,
-              s.activeMcpServer,
-              s.activeMcpTool,
+              options.querySource,
+              options.spawnedBySkill,
+              options.activeSkill,
+              options.activeMcpServer,
+              options.activeMcpTool,
             ),
             type: "assistant",
             uuid: ZHt.randomUUID(),
@@ -1906,7 +1934,7 @@ async function* queryModel(e, t, n, r, o, s) {
                   stall_count: ot,
                   total_stall_time_ms: qe,
                   event_type: cn.type,
-                  model: s.model,
+                  model: options.model,
                   request_id: le ?? "unknown",
                 }));
           }
@@ -1916,7 +1944,7 @@ async function* queryModel(e, t, n, r, o, s) {
               T("Stream started - received first chunk"),
               T(`[API:timing] first byte after ${Math.round(performance.now() - pe)}ms`),
               jp("query_first_chunk_received"),
-              !s.agentId)
+              !options.agentId)
             )
               wC("first_chunk");
             (SIl(), (us = false));
@@ -1928,7 +1956,7 @@ async function* queryModel(e, t, n, r, o, s) {
                 (rs.add(Tr.index),
                 (Ln[Tr.index] = TPo(Tr)),
                 G("tengu_rotunda_pennant_materialized", {
-                  armed: s.serverRefusalFallback !== void 0,
+                  armed: options.serverRefusalFallback !== void 0,
                   block_index: Tr.index,
                   non_streaming: false,
                 }),
@@ -1937,20 +1965,20 @@ async function* queryModel(e, t, n, r, o, s) {
                 lYt({
                   model: u,
                   requestId: le || void 0,
-                  querySource: s.querySource,
+                  querySource: options.querySource,
                   effort: ae,
                   fastMode: un,
                   attempt: ge,
                   attribution: VU(
-                    s.querySource,
-                    s.spawnedBySkill,
-                    s.activeSkill,
-                    s.activeMcpServer,
-                    s.activeMcpTool,
+                    options.querySource,
+                    options.spawnedBySkill,
+                    options.activeSkill,
+                    options.activeMcpServer,
+                    options.activeMcpTool,
                   ),
                   serverFallbackHop: true,
                 });
-              if (s.serverRefusalFallback === void 0) continue;
+              if (options.serverRefusalFallback === void 0) continue;
               if (HQn(Tr.reason)) lr = true;
               if (nn !== void 0)
                 nn = {
@@ -2046,7 +2074,7 @@ async function* queryModel(e, t, n, r, o, s) {
                     ((ze = true),
                       T("[AdvisorTool] Advisor tool called"),
                       G("tengu_advisor_tool_call", {
-                        model: s.model,
+                        model: options.model,
                         advisor_model: y ?? "unknown",
                       }));
                   break;
@@ -2179,18 +2207,18 @@ async function* queryModel(e, t, n, r, o, s) {
               let Br = {
                 message: {
                   ...nn,
-                  content: dZt([Tr], r, s.agentId, {
+                  content: dZt([Tr], tools, options.agentId, {
                     requestId: le ?? void 0,
                     messageId: nn.id,
                   }),
                 },
                 requestId: le ?? void 0,
                 ...VU(
-                  s.querySource,
-                  s.spawnedBySkill,
-                  s.activeSkill,
-                  s.activeMcpServer,
-                  s.activeMcpTool,
+                  options.querySource,
+                  options.spawnedBySkill,
+                  options.activeSkill,
+                  options.activeMcpServer,
+                  options.activeMcpTool,
                 ),
                 type: "assistant",
                 uuid: ZHt.randomUUID(),
@@ -2214,7 +2242,7 @@ async function* queryModel(e, t, n, r, o, s) {
             }
             case "message_delta": {
               Hn = Zoe(Hn, cn.usage);
-              let Tr = s.serverRefusalFallback !== void 0 ? NKt(Hn) : void 0;
+              let Tr = options.serverRefusalFallback !== void 0 ? NKt(Hn) : void 0;
               if (Tr?.servedFallbackModel !== void 0) ((lr = true), (Hn = hqo(Hn, cn.usage)));
               let Br = HPo(cn.delta.stop_details);
               {
@@ -2225,11 +2253,11 @@ async function* queryModel(e, t, n, r, o, s) {
                 ((Je = true),
                   G("tengu_fallback_credit_minted", {
                     request_id: Hr(le),
-                    model: Cf(s.model),
+                    model: Cf(options.model),
                     fallback_target_model: Cf(
-                      s.refusalFallbackModel ??
-                        (s.serverRefusalFallback !== void 0 && !lr
-                          ? s.serverRefusalFallback.model
+                      options.refusalFallbackModel ??
+                        (options.serverRefusalFallback !== void 0 && !lr
+                          ? options.serverRefusalFallback.model
                           : void 0),
                     ),
                     token_length: Br.length,
@@ -2243,10 +2271,10 @@ async function* queryModel(e, t, n, r, o, s) {
                       Hn.cache_creation?.ephemeral_1h_input_tokens ?? 0,
                     service_tier: Oo(Hn.service_tier),
                     speed: Oo(Hn.speed),
-                    query_source: Gte(s.querySource),
-                    ...(s.queryTracking && {
-                      query_chain_id: Hr(s.queryTracking.chainId),
-                      query_depth: s.queryTracking.depth,
+                    query_source: Gte(options.querySource),
+                    ...(options.queryTracking && {
+                      query_chain_id: Hr(options.queryTracking.chainId),
+                      query_depth: options.queryTracking.depth,
                     }),
                   }));
               Mr = cn.delta.stop_reason;
@@ -2267,39 +2295,39 @@ async function* queryModel(e, t, n, r, o, s) {
                       Mr,
                     )
                   : WY(u, Hn),
-                nc = oi ? (s.serverRefusalFallback?.model ?? s.model) : s.model;
+                nc = oi ? (options.serverRefusalFallback?.model ?? options.model) : options.model;
               if (
                 ((kr += boe(
                   Pa,
                   Hn,
                   nc,
-                  s.querySource,
+                  options.querySource,
                   ae,
-                  s.spawnedBySkill,
-                  s.activeSkill,
-                  s.activeMcpServer,
-                  s.activeMcpTool,
+                  options.spawnedBySkill,
+                  options.activeSkill,
+                  options.activeMcpServer,
+                  options.activeMcpTool,
                 )),
                 Mr === "refusal")
               )
                 lYt({
                   model: u,
                   requestId: le || void 0,
-                  querySource: s.querySource,
+                  querySource: options.querySource,
                   effort: ae,
                   fastMode: un,
                   attempt: ge,
                   attribution: VU(
-                    s.querySource,
-                    s.spawnedBySkill,
-                    s.activeSkill,
-                    s.activeMcpServer,
-                    s.activeMcpTool,
+                    options.querySource,
+                    options.spawnedBySkill,
+                    options.activeSkill,
+                    options.activeMcpServer,
+                    options.activeMcpTool,
                   ),
                   serverFallbackHop: false,
                   stopDetails: cn.delta.stop_details ?? null,
                 });
-              if (s.serverRefusalFallback !== void 0) {
+              if (options.serverRefusalFallback !== void 0) {
                 let ca = js;
                 if (((js = void 0), ca !== void 0)) {
                   if (!eo)
@@ -2321,7 +2349,7 @@ async function* queryModel(e, t, n, r, o, s) {
                   ((eo = true),
                     yield {
                       type: "server_fallback",
-                      fromModel: s.model,
+                      fromModel: options.model,
                       toModel: Tr.servedFallbackModel,
                       reason: "sticky",
                       apiRefusalCategory: null,
@@ -2334,15 +2362,15 @@ async function* queryModel(e, t, n, r, o, s) {
                     });
               }
               let Qp =
-                s.refusalFallbackModel ??
-                (s.serverRefusalFallback !== void 0 && !lr
-                  ? s.serverRefusalFallback.model
+                options.refusalFallbackModel ??
+                (options.serverRefusalFallback !== void 0 && !lr
+                  ? options.serverRefusalFallback.model
                   : void 0);
               if (Mr === "refusal" && Qp !== void 0) {
                 yield {
                   type: "fallback_request",
                   trigger: "refusal",
-                  originalModel: s.model,
+                  originalModel: options.model,
                   fallbackModel: Qp,
                   requestId: le ?? null,
                   apiRefusalCategory: cn.delta.stop_details?.category ?? null,
@@ -2351,11 +2379,11 @@ async function* queryModel(e, t, n, r, o, s) {
                 };
                 return;
               }
-              let sd = h5e(Mr, cn.delta.stop_details, le, s.model);
+              let sd = h5e(Mr, cn.delta.stop_details, le, options.model);
               if (sd)
                 (yield {
                   type: "refusal_no_fallback",
-                  originalModel: s.model,
+                  originalModel: options.model,
                   requestId: le ?? null,
                   apiRefusalCategory: cn.delta.stop_details?.category ?? null,
                   apiRefusalExplanation: cn.delta.stop_details?.explanation ?? null,
@@ -2403,7 +2431,7 @@ async function* queryModel(e, t, n, r, o, s) {
                 : void 0),
             });
         }
-        if ((bs(), o.aborted && !Yn)) {
+        if ((bs(), signal.aborted && !Yn)) {
           gt("aborted", le ?? null, null);
           let cn = ji();
           if (cn) yield cn;
@@ -2411,7 +2439,7 @@ async function* queryModel(e, t, n, r, o, s) {
           if (hr) yield hr;
           if (ze)
             G("tengu_advisor_tool_interrupted", {
-              model: s.model,
+              model: options.model,
               advisor_model: y ?? "unknown",
             });
           return;
@@ -2424,7 +2452,7 @@ async function* queryModel(e, t, n, r, o, s) {
               request_id: le ?? "unknown",
               exit_delay_ms: cn,
               exit_path: We("clean"),
-              model: s.model,
+              model: options.model,
             }),
             (Xn = null),
             Error("Stream idle timeout - no chunks received")
@@ -2441,7 +2469,7 @@ async function* queryModel(e, t, n, r, o, s) {
               },
             ),
             G("tengu_stream_no_events", {
-              model: s.model,
+              model: options.model,
               request_id: le ?? "unknown",
             }),
             Error("Stream ended without receiving any events")
@@ -2456,16 +2484,16 @@ async function* queryModel(e, t, n, r, o, s) {
             G("tengu_streaming_stall_summary", {
               stall_count: ot,
               total_stall_time_ms: qe,
-              model: s.model,
+              model: options.model,
               request_id: le ?? "unknown",
             }));
         if (WX())
           sca(
-            s.querySource,
+            options.querySource,
             Hn.cache_read_input_tokens,
             Hn.cache_creation_input_tokens,
-            e,
-            s.agentId,
+            messages,
+            options.agentId,
             le,
             c,
           );
@@ -2473,8 +2501,8 @@ async function* queryModel(e, t, n, r, o, s) {
         if (zt)
           (R1n(
             zt.headers,
-            s.model,
-            (Sy(s.model) || rU(s.model)) &&
+            options.model,
+            (Sy(options.model) || rU(options.model)) &&
               Hn.input_tokens + Hn.cache_read_input_tokens + Hn.cache_creation_input_tokens > Pte,
           ),
             (Ne = zt.headers));
@@ -2492,7 +2520,7 @@ async function* queryModel(e, t, n, r, o, s) {
             }),
             In("error", "cli_streaming_idle_timeout"),
             G("tengu_streaming_idle_timeout", {
-              model: s.model,
+              model: options.model,
               request_id: le ?? "unknown",
               timeout_ms: us.idleMs,
               tier: We("byte"),
@@ -2510,11 +2538,11 @@ async function* queryModel(e, t, n, r, o, s) {
               exit_delay_ms: ca,
               exit_path: We("error"),
               error_name: us instanceof Error ? us.name : We("unknown"),
-              model: s.model,
+              model: options.model,
             }));
         }
         if (us instanceof tf) {
-          if (o.aborted) {
+          if (signal.aborted) {
             gt("aborted", le ?? null, null);
             let ca = ji();
             if (ca) yield ca;
@@ -2522,7 +2550,7 @@ async function* queryModel(e, t, n, r, o, s) {
             if (_p) yield _p;
             if ((T(`Streaming aborted by user: ${be(us)}`), ze))
               G("tengu_advisor_tool_interrupted", {
-                model: s.model,
+                model: options.model,
                 advisor_model: y ?? "unknown",
               });
             throw us;
@@ -2577,7 +2605,7 @@ async function* queryModel(e, t, n, r, o, s) {
                     },
                   ),
                   G("tengu_streaming_watchdog_retry", {
-                    model: Cf(s.model),
+                    model: Cf(options.model),
                     retry_attempt: ir,
                     request_id: Hr(le),
                     after_thinking_only: true,
@@ -2591,7 +2619,7 @@ async function* queryModel(e, t, n, r, o, s) {
                     },
                   ),
                   G("tengu_streaming_stale_connection_retry", {
-                    model: Cf(s.model),
+                    model: Cf(options.model),
                     error_code: Dio(X?.code ?? ""),
                     retry_attempt: ln,
                     request_id: Hr(le),
@@ -2603,13 +2631,13 @@ async function* queryModel(e, t, n, r, o, s) {
                 (kr += boe(
                   WY(u, Hn),
                   Hn,
-                  s.model,
-                  s.querySource,
+                  options.model,
+                  options.querySource,
                   ae,
-                  s.spawnedBySkill,
-                  s.activeSkill,
-                  s.activeMcpServer,
-                  s.activeMcpTool,
+                  options.spawnedBySkill,
+                  options.activeSkill,
+                  options.activeMcpServer,
+                  options.activeMcpTool,
                 )),
                 Gs)
               ) {
@@ -2628,7 +2656,7 @@ async function* queryModel(e, t, n, r, o, s) {
                   },
                 };
               }
-              if (((le = null), !ca)) await Nn(100 * ln, o);
+              if (((le = null), !ca)) await Nn(100 * ln, signal);
               continue e;
             }
             let C_ = Mr !== null,
@@ -2648,7 +2676,7 @@ async function* queryModel(e, t, n, r, o, s) {
             let Zy = bg || fo;
             if (
               (G("tengu_streaming_partial_finalized", {
-                model: Cf(s.model),
+                model: Cf(options.model),
                 blocks_yielded: jt.length,
                 has_output: Zy,
                 synthesized_stop_reason: $e(Xm),
@@ -2670,23 +2698,23 @@ async function* queryModel(e, t, n, r, o, s) {
               kr += boe(
                 WY(u, Hn),
                 Hn,
-                s.model,
-                s.querySource,
+                options.model,
+                options.querySource,
                 ae,
-                s.spawnedBySkill,
-                s.activeSkill,
-                s.activeMcpServer,
-                s.activeMcpTool,
+                options.spawnedBySkill,
+                options.activeSkill,
+                options.activeMcpServer,
+                options.activeMcpTool,
               );
             break e;
           }
           throw (
             G("tengu_streaming_fallback_to_non_streaming", {
-              model: s.model,
+              model: options.model,
               error: Br instanceof Error ? Br.name : H4(String(Br)),
               attemptNumber: ge,
               maxOutputTokens: Re,
-              thinkingType: $e(n.type),
+              thinkingType: $e(thinkingConfig.type),
               fallback_disabled: Tr,
               request_id: le ?? "unknown",
               fallback_cause: We("partial_yield"),
@@ -2704,7 +2732,7 @@ async function* queryModel(e, t, n, r, o, s) {
               },
             ),
             G("tengu_dispatch_header_fallback", {
-              model: Cf(s.model),
+              model: Cf(options.model),
               reason: We("body_phase"),
               request_id: Hr(le),
             }),
@@ -2722,7 +2750,7 @@ async function* queryModel(e, t, n, r, o, s) {
               },
             ),
             G("tengu_streaming_stale_connection_retry", {
-              model: s.model,
+              model: options.model,
               error_code: Dio(X.code),
               retry_attempt: ln,
               request_id: le ?? "unknown",
@@ -2730,7 +2758,7 @@ async function* queryModel(e, t, n, r, o, s) {
             Ie(),
             gt("attempt_errored", le ?? null, null),
             (le = null),
-            await Nn(100 * ln, o));
+            await Nn(100 * ln, signal));
           continue e;
         }
         if (Yn && !Qn && ir < pn) {
@@ -2739,7 +2767,7 @@ async function* queryModel(e, t, n, r, o, s) {
               level: "warn",
             }),
             G("tengu_streaming_watchdog_retry", {
-              model: s.model,
+              model: options.model,
               retry_attempt: ir,
               request_id: le ?? "unknown",
             }),
@@ -2754,21 +2782,21 @@ async function* queryModel(e, t, n, r, o, s) {
               kr += boe(
                 WY(u, Hn),
                 Hn,
-                s.model,
-                s.querySource,
+                options.model,
+                options.querySource,
                 ae,
-                s.spawnedBySkill,
-                s.activeSkill,
-                s.activeMcpServer,
-                s.activeMcpTool,
+                options.spawnedBySkill,
+                options.activeSkill,
+                options.activeMcpServer,
+                options.activeMcpTool,
               );
-            if (Rr < ecr && (bqo(s.querySource) || vTe())) {
+            if (Rr < ecr && (bqo(options.querySource) || vTe())) {
               if (
                 (T(`Mid-stream 529 before content \u2014 retrying streaming (${Rr}/${ecr})`, {
                   level: "warn",
                 }),
                 G("tengu_streaming_529_retry", {
-                  model: Cf(s.model),
+                  model: Cf(options.model),
                   retry_attempt: Rr,
                   request_id: Hr(le),
                 }),
@@ -2791,19 +2819,19 @@ async function* queryModel(e, t, n, r, o, s) {
                   },
                 };
               }
-              ((le = null), await Nn(TJ(Rr), o));
+              ((le = null), await Nn(TJ(Rr), signal));
               continue e;
             }
-            if (s.fallbackModel)
+            if (options.fallbackModel)
               throw (
                 G("tengu_api_opus_fallback_triggered", {
-                  original_model: Cf(s.model),
-                  fallback_model: Cf(s.fallbackModel),
+                  original_model: Cf(options.model),
+                  fallback_model: Cf(options.fallbackModel),
                   provider: gj(),
                   source: We("mid_stream"),
                 }),
                 It("api_request", "api_request_fallback_triggered"),
-                new NN(s.model, s.fallbackModel, "overloaded", us)
+                new NN(options.model, options.fallbackModel, "overloaded", us)
               );
           }
         }
@@ -2813,11 +2841,11 @@ async function* queryModel(e, t, n, r, o, s) {
               level: "error",
             }),
             G("tengu_streaming_fallback_to_non_streaming", {
-              model: s.model,
+              model: options.model,
               error: Br instanceof Error ? Br.name : H4(String(Br)),
               attemptNumber: ge,
               maxOutputTokens: Re,
-              thinkingType: $e(n.type),
+              thinkingType: $e(thinkingConfig.type),
               fallback_disabled: true,
               request_id: le ?? "unknown",
               fallback_cause: $e(ot),
@@ -2836,16 +2864,16 @@ async function* queryModel(e, t, n, r, o, s) {
           let ca = await ee?.onStreamFallback(B, le ?? void 0);
           if (ca) {
             if (((B = ca.messages), ca.clearedIds.size > 0))
-              s.onHintCleared?.(ca.clearedIds, ca.clearedContent);
+              options.onHintCleared?.(ca.clearedIds, ca.clearedContent);
           }
         }
-        if (s.onStreamingFallback) s.onStreamingFallback();
+        if (options.onStreamingFallback) options.onStreamingFallback();
         (G("tengu_streaming_fallback_to_non_streaming", {
-          model: s.model,
+          model: options.model,
           error: Br instanceof Error ? Br.name : H4(String(Br)),
           attemptNumber: ge,
           maxOutputTokens: Re,
-          thinkingType: $e(n.type),
+          thinkingType: $e(thinkingConfig.type),
           fallback_disabled: false,
           request_id: le ?? "unknown",
           fallback_cause: $e(ot),
@@ -2857,7 +2885,7 @@ async function* queryModel(e, t, n, r, o, s) {
           In("info", "cli_nonstreaming_fallback_started"),
           G("tengu_nonstreaming_fallback_started", {
             request_id: le ?? "unknown",
-            model: s.model,
+            model: options.model,
             fallback_cause: $e(ot),
           }),
           gt("attempt_errored", le ?? null, null),
@@ -2871,24 +2899,24 @@ async function* queryModel(e, t, n, r, o, s) {
           creditCode: nc,
         } = yield* executeNonStreamingRequest(
           {
-            model: s.model,
-            source: s.querySource,
-            agentContext: s.agentContext,
+            model: options.model,
+            source: options.querySource,
+            agentContext: options.agentContext,
             llmSpan: Ee,
           },
           {
-            model: s.model,
-            fallbackModel: s.fallbackModel,
-            thinkingConfig: n,
+            model: options.model,
+            fallbackModel: options.fallbackModel,
+            thinkingConfig: thinkingConfig,
             ...(sc() && {
               fastMode: J,
             }),
-            signal: o,
+            signal: signal,
             initialConsecutive529Errors: TTe(us) ? Rr : 0,
-            querySource: s.querySource,
-            onRetryStatus: s.onRetryStatus,
+            querySource: options.querySource,
+            onRetryStatus: options.onRetryStatus,
             onApiError: (ca) => {
-              let _p = sHn(ca, s.model, s.querySource);
+              let _p = sHn(ca, options.model, options.querySource);
               if (_p === aMt) return;
               if (_p !== null) return _p;
               return Nt(ca, "sync");
@@ -2899,13 +2927,13 @@ async function* queryModel(e, t, n, r, o, s) {
             ((ge = ca), (Re = bg));
           },
           (ca) => {
-            (vpn(ca, s.querySource), nZn(ca, s.querySource));
+            (vpn(ca, options.querySource), nZn(ca, options.querySource));
           },
           le,
         );
         ((le = Pa),
           G("tengu_nonstreaming_fallback_success", {
-            model: Cf(s.model),
+            model: Cf(options.model),
             request_id: Hr(Pa) ?? We("unknown"),
             originating_request_id: Hr(He) ?? We("unknown"),
             fallback_cause: $e(ot),
@@ -2916,7 +2944,7 @@ async function* queryModel(e, t, n, r, o, s) {
           sd = {
             message: {
               ...oi,
-              content: dZt(Qp.content, r, s.agentId, {
+              content: dZt(Qp.content, tools, options.agentId, {
                 requestId: le ?? void 0,
                 messageId: oi.id,
               }),
@@ -2924,11 +2952,11 @@ async function* queryModel(e, t, n, r, o, s) {
             },
             requestId: le ?? void 0,
             ...VU(
-              s.querySource,
-              s.spawnedBySkill,
-              s.activeSkill,
-              s.activeMcpServer,
-              s.activeMcpTool,
+              options.querySource,
+              options.spawnedBySkill,
+              options.activeSkill,
+              options.activeMcpServer,
+              options.activeMcpTool,
             ),
             type: "assistant",
             uuid: ZHt.randomUUID(),
@@ -2946,7 +2974,7 @@ async function* queryModel(e, t, n, r, o, s) {
       break e;
     }
   } catch (En) {
-    if ((gt(o.aborted ? "aborted" : "attempt_errored", le ?? null, null), En instanceof NN))
+    if ((gt(signal.aborted ? "aborted" : "attempt_errored", le ?? null, null), En instanceof NN))
       throw En;
     if (
       !fe &&
@@ -2961,15 +2989,15 @@ async function* queryModel(e, t, n, r, o, s) {
         }),
         (fe = true),
         ee?.strip(),
-        s.onStreamingFallback)
+        options.onStreamingFallback)
       )
-        s.onStreamingFallback();
+        options.onStreamingFallback();
       (G("tengu_streaming_fallback_to_non_streaming", {
-        model: s.model,
+        model: options.model,
         error: We("404_stream_creation"),
         attemptNumber: ge,
         maxOutputTokens: Re,
-        thinkingType: $e(n.type),
+        thinkingType: $e(thinkingConfig.type),
         request_id: Jn,
         fallback_cause: We("404_stream_creation"),
         any_stream_event_yielded: false,
@@ -2977,7 +3005,7 @@ async function* queryModel(e, t, n, r, o, s) {
         In("info", "cli_nonstreaming_fallback_started"),
         G("tengu_nonstreaming_fallback_started", {
           request_id: Hr(Jn),
-          model: Cf(s.model),
+          model: Cf(options.model),
           fallback_cause: We("404_stream_creation"),
         }),
         yield {
@@ -2991,22 +3019,22 @@ async function* queryModel(e, t, n, r, o, s) {
           creditCode: fo,
         } = yield* executeNonStreamingRequest(
           {
-            model: s.model,
-            source: s.querySource,
-            agentContext: s.agentContext,
+            model: options.model,
+            source: options.querySource,
+            agentContext: options.agentContext,
             llmSpan: Ee,
           },
           {
-            model: s.model,
-            fallbackModel: s.fallbackModel,
-            thinkingConfig: n,
+            model: options.model,
+            fallbackModel: options.fallbackModel,
+            thinkingConfig: thinkingConfig,
             ...(sc() && {
               fastMode: J,
             }),
-            signal: o,
-            onRetryStatus: s.onRetryStatus,
+            signal: signal,
+            onRetryStatus: options.onRetryStatus,
             onApiError: (la) => {
-              let Fi = sHn(la, s.model, s.querySource);
+              let Fi = sHn(la, options.model, options.querySource);
               if (Fi === aMt) return;
               if (Fi !== null) return Fi;
               return Nt(la, "sync");
@@ -3017,13 +3045,13 @@ async function* queryModel(e, t, n, r, o, s) {
             ((ge = la), (Re = xn));
           },
           (la) => {
-            (vpn(la, s.querySource), nZn(la, s.querySource));
+            (vpn(la, options.querySource), nZn(la, options.querySource));
           },
           Jn,
         );
         ((le = gr),
           G("tengu_nonstreaming_fallback_success", {
-            model: Cf(s.model),
+            model: Cf(options.model),
             request_id: Hr(gr) ?? We("unknown"),
             originating_request_id: Hr(He) ?? We("unknown"),
             fallback_cause: We("404_stream_creation"),
@@ -3034,7 +3062,7 @@ async function* queryModel(e, t, n, r, o, s) {
           Gs = {
             message: {
               ...Qn,
-              content: dZt(cs.content, r, s.agentId, {
+              content: dZt(cs.content, tools, options.agentId, {
                 requestId: le ?? void 0,
                 messageId: Qn.id,
               }),
@@ -3042,11 +3070,11 @@ async function* queryModel(e, t, n, r, o, s) {
             },
             requestId: le ?? void 0,
             ...VU(
-              s.querySource,
-              s.spawnedBySkill,
-              s.activeSkill,
-              s.activeMcpServer,
-              s.activeMcpTool,
+              options.querySource,
+              options.spawnedBySkill,
+              options.activeSkill,
+              options.activeMcpServer,
+              options.activeMcpTool,
             ),
             type: "assistant",
             uuid: ZHt.randomUUID(),
@@ -3063,7 +3091,7 @@ async function* queryModel(e, t, n, r, o, s) {
           level: "error",
         });
         let gr = Qn,
-          fo = s.model;
+          fo = options.model;
         if (Qn instanceof tO) ((gr = Qn.originalError), (fo = Qn.retryContext.model));
         if (gr instanceof tf) {
           Ie();
@@ -3085,25 +3113,25 @@ async function* queryModel(e, t, n, r, o, s) {
           requestId: cs,
           clientRequestId: ye,
           didFallBackToNonStreaming: fe,
-          queryTracking: s.queryTracking,
-          querySource: s.querySource,
-          messageClientPlatform: s.messageClientPlatform,
+          queryTracking: options.queryTracking,
+          querySource: options.querySource,
+          messageClientPlatform: options.messageClientPlatform,
           llmSpan: Ee,
           fastMode: un,
           previousRequestId: l,
           effort: ae,
-          agentContext: s.agentContext,
+          agentContext: options.agentContext,
           attribution: VU(
-            s.querySource,
-            s.spawnedBySkill,
-            s.activeSkill,
-            s.activeMcpServer,
-            s.activeMcpTool,
+            options.querySource,
+            options.spawnedBySkill,
+            options.activeSkill,
+            options.activeMcpServer,
+            options.activeMcpTool,
           ),
-          promptTooLongIsHandled: s.promptTooLongIsHandled,
+          promptTooLongIsHandled: options.promptTooLongIsHandled,
         }),
           yield G1n(gr, fo, {
-            messages: e,
+            messages: messages,
             messagesForAPI: B,
             requestId: cs,
           }),
@@ -3115,7 +3143,7 @@ async function* queryModel(e, t, n, r, o, s) {
         level: "error",
       });
       let Jn = En,
-        Qn = s.model;
+        Qn = options.model;
       if (En instanceof tO) ((Jn = En.originalError), (Qn = En.retryContext.model));
       if (Jn instanceof tf) {
         Ie();
@@ -3137,25 +3165,25 @@ async function* queryModel(e, t, n, r, o, s) {
         requestId: gr,
         clientRequestId: ye,
         didFallBackToNonStreaming: fe,
-        queryTracking: s.queryTracking,
-        querySource: s.querySource,
-        messageClientPlatform: s.messageClientPlatform,
+        queryTracking: options.queryTracking,
+        querySource: options.querySource,
+        messageClientPlatform: options.messageClientPlatform,
         llmSpan: Ee,
         fastMode: un,
         previousRequestId: l,
         effort: ae,
-        agentContext: s.agentContext,
+        agentContext: options.agentContext,
         attribution: VU(
-          s.querySource,
-          s.spawnedBySkill,
-          s.activeSkill,
-          s.activeMcpServer,
-          s.activeMcpTool,
+          options.querySource,
+          options.spawnedBySkill,
+          options.activeSkill,
+          options.activeMcpServer,
+          options.activeMcpTool,
         ),
-        promptTooLongIsHandled: s.promptTooLongIsHandled,
+        promptTooLongIsHandled: options.promptTooLongIsHandled,
       }),
         yield G1n(Jn, Qn, {
-          messages: e,
+          messages: messages,
           messagesForAPI: B,
           requestId: gr,
         }),
@@ -3164,8 +3192,8 @@ async function* queryModel(e, t, n, r, o, s) {
     }
   } finally {
     if (
-      (KXn("api_call", s.agentId),
-      gt(o.aborted ? "aborted" : "attempt_errored", le ?? null, null),
+      (KXn("api_call", options.agentId),
+      gt(signal.aborted ? "aborted" : "attempt_errored", le ?? null, null),
       Ie(),
       Te)
     ) {
@@ -3174,16 +3202,16 @@ async function* queryModel(e, t, n, r, o, s) {
         lYt({
           model: u,
           requestId: le || void 0,
-          querySource: s.querySource,
+          querySource: options.querySource,
           effort: ae,
           fastMode: un,
           attempt: ge,
           attribution: VU(
-            s.querySource,
-            s.spawnedBySkill,
-            s.activeSkill,
-            s.activeMcpServer,
-            s.activeMcpTool,
+            options.querySource,
+            options.spawnedBySkill,
+            options.activeSkill,
+            options.activeMcpServer,
+            options.activeMcpTool,
           ),
           serverFallbackHop: false,
           stopDetails: Te.message.stop_details ?? null,
@@ -3203,38 +3231,38 @@ async function* queryModel(e, t, n, r, o, s) {
       kr += boe(
         Jn,
         Hn,
-        Sn ? (s.serverRefusalFallback?.model ?? s.model) : s.model,
-        s.querySource,
+        Sn ? (options.serverRefusalFallback?.model ?? options.model) : options.model,
+        options.querySource,
         ae,
-        s.spawnedBySkill,
-        s.activeSkill,
-        s.activeMcpServer,
-        s.activeMcpTool,
+        options.spawnedBySkill,
+        options.activeSkill,
+        options.activeMcpServer,
+        options.activeMcpTool,
       );
     }
   }
   if (
     le &&
-    YY(s.agentContext) &&
-    (s.querySource.startsWith("repl_main_thread") || s.querySource === "sdk")
+    YY(options.agentContext) &&
+    (options.querySource.startsWith("repl_main_thread") || options.querySource === "sdk")
   )
     y_r(le);
   if (re && Tt)
     ica(Tt, {
       requestId: le,
       previousMessageId: c,
-      model: s.model,
+      model: options.model,
       is1hCacheTTL: V === "1h",
-      querySource: s.querySource,
-      queryDepth: s.queryTracking?.depth,
+      querySource: options.querySource,
+      queryDepth: options.queryTracking?.depth,
     });
   let Gn = B.length,
     cr = OX(B),
-    Lt = Rj() ? void 0 : pkl(B, s.model);
-  (s.getToolPermissionContext().then((En) => {
+    Lt = Rj() ? void 0 : pkl(B, options.model);
+  (options.getToolPermissionContext().then((En) => {
     fkl({
-      model: jt[0]?.message.model ?? nn?.model ?? s.model,
-      preNormalizedModel: s.model,
+      model: jt[0]?.message.model ?? nn?.model ?? options.model,
+      preNormalizedModel: options.model,
       usage: Hn,
       start: pe,
       startIncludingRetries: me,
@@ -3247,11 +3275,11 @@ async function* queryModel(e, t, n, r, o, s) {
       stopReason: Mr,
       ttftMs: en,
       didFallBackToNonStreaming: fe,
-      querySource: s.querySource,
-      messageClientPlatform: s.messageClientPlatform,
+      querySource: options.querySource,
+      messageClientPlatform: options.messageClientPlatform,
       headers: Ne,
       costUSD: kr,
-      queryTracking: s.queryTracking,
+      queryTracking: options.queryTracking,
       permissionMode: En.mode,
       newMessages: jt,
       requestContentTelemetry: Lt,
@@ -3263,13 +3291,13 @@ async function* queryModel(e, t, n, r, o, s) {
       previousRequestId: l,
       betas: Ve,
       effort: ae,
-      agentContext: s.agentContext,
+      agentContext: options.agentContext,
       attribution: VU(
-        s.querySource,
-        s.spawnedBySkill,
-        s.activeSkill,
-        s.activeMcpServer,
-        s.activeMcpTool,
+        options.querySource,
+        options.spawnedBySkill,
+        options.activeSkill,
+        options.activeMcpServer,
+        options.activeMcpTool,
       ),
     });
   }),
@@ -3373,20 +3401,20 @@ function aZn(e, t) {
     speed: t.speed,
   };
 }
-function addCacheBreakpoints(e, t, n, r = false, o) {
+function addCacheBreakpoints(messages, enablePromptCaching, querySource, r = false, newCacheEdits) {
   let s = (u) => {
       let d = u;
-      while (d >= 0 && e[d].type === "api_system") d--;
+      while (d >= 0 && messages[d].type === "api_system") d--;
       return d;
     },
-    i = s(e.length - 1);
+    i = s(messages.length - 1);
   if (r) i = s(i - 1);
   let a = new Set();
   if (i >= 0) a.add(i);
   let l = false;
   if (hSt()) {
-    if (o) {
-      let u = e.findLastIndex((d) => d.uuid === o);
+    if (newCacheEdits) {
+      let u = messages.findLastIndex((d) => d.uuid === newCacheEdits);
       if (u >= 0 && u <= i) {
         let d = r && u === i && CIl() ? s(u - 1) : u;
         if (d >= 0) (a.add(d), (l = true));
@@ -3398,21 +3426,21 @@ function addCacheBreakpoints(e, t, n, r = false, o) {
   }
   return (
     G("tengu_api_cache_breakpoints", {
-      totalMessageCount: e.length,
-      cachingEnabled: t,
+      totalMessageCount: messages.length,
+      cachingEnabled: enablePromptCaching,
       skipCacheWrite: r,
       forkPointPinned: l,
       markerCount: a.size,
     }),
-    e.map((u, d) => {
+    messages.map((u, d) => {
       let p = a.has(d);
-      if (u.type === "user") return hnm(u, p, t, n);
+      if (u.type === "user") return hnm(u, p, enablePromptCaching, querySource);
       if (u.type === "api_system")
         return {
           role: "system",
           content: u.message.content,
         };
-      return assistantMessageToMessageParam(u, p, t, n);
+      return assistantMessageToMessageParam(u, p, enablePromptCaching, querySource);
     })
   );
 }
@@ -3549,8 +3577,8 @@ function Dnm(e, t) {
     max_tokens: n,
   };
 }
-function getMaxOutputTokensForModel(e) {
-  let t = Xxe(e);
+function getMaxOutputTokensForModel(model) {
+  let t = Xxe(model);
   return Fue(
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS",
     process.env.CLAUDE_CODE_MAX_OUTPUT_TOKENS,

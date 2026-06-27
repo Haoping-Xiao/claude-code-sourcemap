@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A8l] deps: Yyt, Ye, ps, sr, Bs, vi, Ko
 ((S8l = R(lt(), 1)), (uw = R(se(), 1)));
-function ViewHookMode(e) {
+function ViewHookMode(t0) {
   let t = H8l.c(71),
-    { teammate: n, onDone: r, onKill: o, onBack: s, onForeground: i } = e,
+    { teammate: n, onDone: r, onKill: o, onBack: s, onForeground: i } = t0,
     [a] = na(),
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((l = F$(b1())), (t[0] = l));

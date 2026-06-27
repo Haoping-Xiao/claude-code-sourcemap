@@ -7,30 +7,30 @@
 // module exports: sendToUdsSocket, sendControlToUdsSocket, listLivePeerSessions, listAllLiveSessions, formatCrossSessionMessage, buildCrossSessionAttrs
 // [unwrapped __esm module Hpe]
 g8n = require("fs/promises");
-function parseAddress(e) {
-  if (e.startsWith("uds:"))
+function parseAddress(to) {
+  if (to.startsWith("uds:"))
     return {
       scheme: "uds",
-      target: e.slice(4),
+      target: to.slice(4),
     };
-  if (e.startsWith("bridge:"))
+  if (to.startsWith("bridge:"))
     return {
       scheme: "bridge",
-      target: e.slice(7),
+      target: to.slice(7),
     };
-  if (e.startsWith("/"))
+  if (to.startsWith("/"))
     return {
       scheme: "uds",
-      target: e,
+      target: to,
     };
-  if (e.startsWith("\\\\.\\pipe\\"))
+  if (to.startsWith("\\\\.\\pipe\\"))
     return {
       scheme: "uds",
-      target: e,
+      target: to,
     };
   return {
     scheme: "other",
-    target: e,
+    target: to,
   };
 }
 function nAe(e) {

@@ -49,10 +49,10 @@ function pBf(e) {
       return false;
   }
 }
-function validatePluginManifest(e, t) {
-  if (t === "policy" || t === "flag") return e;
-  if (t === "author") return e === "off" ? "user-invocable-only" : "off";
-  let n = uUo.indexOf(e);
+function validatePluginManifest(filePath, t) {
+  if (t === "policy" || t === "flag") return filePath;
+  if (t === "author") return filePath === "off" ? "user-invocable-only" : "off";
+  let n = uUo.indexOf(filePath);
   return uUo[(n + 1) % uUo.length];
 }
 function Rjl(e) {

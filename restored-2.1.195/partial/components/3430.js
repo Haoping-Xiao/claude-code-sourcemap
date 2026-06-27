@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v5] deps: O0, Ye
 P1a = R(lt(), 1), M1a = R(se(), 1);
-function PermissionRequestTitle(e) {
+function PermissionRequestTitle(t0) {
   let t = $1a.c(18),
     {
       title: n,
@@ -14,7 +14,7 @@ function PermissionRequestTitle(e) {
       color: o,
       requestSource: s,
       srPrefix: i
-    } = e,
+    } = t0,
     a = o === void 0 ? "permission" : o,
     l;
   e: switch (s?.type) {

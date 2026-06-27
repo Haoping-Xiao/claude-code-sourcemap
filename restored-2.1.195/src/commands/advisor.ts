@@ -16,12 +16,12 @@
   load: () => Promise.resolve().then(() => (NXl(), OXl)),
 }),
   (I4o = k8f));
-function jXl(e, t, n) {
+function jXl(args, context, n) {
   if (
     (G("tengu_advisor_command", {
-      advisor: e,
+      advisor: args,
     }),
-    e === "off")
+    args === "off")
   )
     return (
       n((a) =>
@@ -37,7 +37,7 @@ function jXl(e, t, n) {
       }),
       "Advisor disabled"
     );
-  let r = dp(e);
+  let r = dp(args);
   if (!j8n(r)) {
     let a = [...zht(), "off"].join(", ");
     return `${xP(r)} cannot be used as an advisor. Valid options: ${a}`;
@@ -54,12 +54,12 @@ function jXl(e, t, n) {
       advisorModel: r,
     }));
   let o = xP(r),
-    s = xP(t),
+    s = xP(context),
     i = `Advisor set to ${o}`;
-  if (!mMe(t))
+  if (!mMe(context))
     i += `
 Note: the current main model (${s}) does not support the advisor. It will activate when you switch to a supported main model.`;
-  else if (!S8e(t, r))
+  else if (!S8e(context, r))
     i += `
 Note: ${o} is less capable than the current main model (${s}), so the advisor will not activate. Choose a more capable advisor, or switch to a smaller main model.`;
   return i;

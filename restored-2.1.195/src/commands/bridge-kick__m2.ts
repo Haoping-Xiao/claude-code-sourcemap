@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gqc] deps: dn, kt, At, Is, QEe, Jt
 ((fqc = require("child_process")), (KZo = require("readline")));
-function call(e) {
-  return e === "heartbeat" || lce();
+function call(args) {
+  return args === "heartbeat" || lce();
 }
 function aNm(e) {
   let t = 0;

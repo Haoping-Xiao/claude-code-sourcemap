@@ -64,9 +64,9 @@ function h8o() {
     },
   };
 }
-function StatsProvider(e) {
+function StatsProvider(t0) {
   let t = smc.c(7),
-    { store: n, children: r } = e,
+    { store: n, children: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((o = h8o()), (t[0] = o));
   else o = t[0];

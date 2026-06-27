@@ -20,7 +20,7 @@ function _ff() {
     n = hhl;
   return ((hhl = t), n.then(() => e));
 }
-function getTmuxColorName(e) {
+function getTmuxColorName(color) {
   return {
     red: "red",
     blue: "blue",
@@ -30,7 +30,7 @@ function getTmuxColorName(e) {
     orange: "colour208",
     pink: "colour205",
     cyan: "cyan",
-  }[e];
+  }[color];
 }
 function i3(e) {
   let t = R9n(),

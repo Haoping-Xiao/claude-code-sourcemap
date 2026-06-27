@@ -30,29 +30,29 @@ function emf(e, t, n) {
   }
   return false;
 }
-async function stopTask(e, t) {
-  let { taskRegistry: n, setAppState: r, callerAgentId: o, killedBy: s = "user" } = t,
-    i = n.get(e);
-  if (!i) throw new W6e(`No task found with ID: ${e}`, "not_found");
+async function stopTask(taskId, context) {
+  let { taskRegistry: n, setAppState: r, callerAgentId: o, killedBy: s = "user" } = context,
+    i = n.get(taskId);
+  if (!i) throw new W6e(`No task found with ID: ${taskId}`, "not_found");
   if (i.status !== "running" && !azt(i))
-    throw new W6e(`Task ${e} is not running (status: ${i.status})`, "not_running");
+    throw new W6e(`Task ${taskId} is not running (status: ${i.status})`, "not_running");
   if (!Crl(o, i.agentId))
     throw new W6e(
-      `Task ${e} is owned by ${D6n(i.agentId)}; agent ${o} cannot stop it.`,
+      `Task ${taskId} is owned by ${D6n(i.agentId)}; agent ${o} cannot stop it.`,
       "not_owner",
     );
   let a = W0o(i.type);
   if (!a) throw new W6e(`Unsupported task type: ${i.type}`, "unsupported_type");
-  if (t.source === "user") ife(e, n);
+  if (context.source === "user") ife(taskId, n);
   let l = azt(i);
-  if ((await a.kill(e, n, r, s), l)) {
+  if ((await a.kill(taskId, n, r, s), l)) {
     let u = n.all();
     for (let d of Object.values(u))
       if (
         d.type === "local_agent" &&
-        d.id !== e &&
+        d.id !== taskId &&
         (d.status === "running" || azt(d)) &&
-        emf(d, i.agentId ?? e, u)
+        emf(d, i.agentId ?? taskId, u)
       ) {
         if (
           (n.update(d.id, (p) =>
@@ -67,7 +67,7 @@ async function stopTask(e, t) {
             toolUseId: d.toolUseId,
             summary: d.description,
           }),
-          t.source === "user")
+          context.source === "user")
         )
           ife(d.id, n);
         await a.kill(d.id, n, r, s);
@@ -76,7 +76,7 @@ async function stopTask(e, t) {
   if (vT(i)) {
     let u = false;
     if (
-      (n.update(e, (d) => {
+      (n.update(taskId, (d) => {
         if (d.notified) return d;
         return (
           (u = true),
@@ -88,21 +88,21 @@ async function stopTask(e, t) {
       }),
       u)
     )
-      xf(e, "stopped", {
+      xf(taskId, "stopped", {
         toolUseId: i.toolUseId,
         summary: i.description,
       });
   }
   if (vT(i) && i.agentId !== void 0 && o !== i.agentId)
     krl({
-      taskId: e,
+      taskId: taskId,
       toolUseId: i.toolUseId,
       description: i.description,
       ownerAgentId: i.agentId,
     });
   let c = vT(i) ? i.command : i.description;
   return {
-    taskId: e,
+    taskId: taskId,
     taskType: i.type,
     command: c,
   };

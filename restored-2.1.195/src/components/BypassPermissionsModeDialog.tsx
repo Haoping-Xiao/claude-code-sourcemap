@@ -7,9 +7,9 @@
 // module exports: BypassPermissionsModeDialog
 // [unwrapped __esm module k$c] deps: Eor, Ye, kt, Fy, RLe, FZt, yFo, bFo
 ((C$c = R(lt(), 1)), (I$c = R(rt(), 1)), (nK = R(se(), 1)));
-function BypassPermissionsModeDialog(e) {
+function BypassPermissionsModeDialog(t0) {
   let t = R$c.c(7),
-    { onAccept: n } = e,
+    { onAccept: n } = t0,
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = []), (t[0] = r));
   else r = t[0];

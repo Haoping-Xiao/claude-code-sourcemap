@@ -123,12 +123,12 @@ function U8t(e, t) {
   }
   return null;
 }
-function getCollapsibleToolInfo(e) {
-  if (e.type === "assistant") {
-    let t = e.message.content[0];
+function getCollapsibleToolInfo(msg) {
+  if (msg.type === "assistant") {
+    let t = msg.message.content[0];
     return t?.type === "tool_use" ? t.name : null;
   }
-  if (e.type === "grouped_tool_use") return e.toolName;
+  if (msg.type === "grouped_tool_use") return msg.toolName;
   return null;
 }
 function uEf(e, t) {
@@ -214,16 +214,18 @@ function ADo(e) {
   let t = e.message.content[0];
   return t?.type === "text" && Cvl(t.text);
 }
-function isPreToolHookSummary(e) {
-  return e.type === "system" && e.subtype === "stop_hook_summary" && e.hookLabel === "PreToolUse";
+function isPreToolHookSummary(msg) {
+  return (
+    msg.type === "system" && msg.subtype === "stop_hook_summary" && msg.hookLabel === "PreToolUse"
+  );
 }
-function shouldSkipMessage(e) {
-  if (e.type === "assistant") {
-    let t = e.message.content[0];
+function shouldSkipMessage(msg) {
+  if (msg.type === "assistant") {
+    let t = msg.message.content[0];
     if (t?.type === "thinking" || t?.type === "redacted_thinking") return true;
   }
-  if (e.type === "attachment") return true;
-  if (e.type === "system") return true;
+  if (msg.type === "attachment") return true;
+  if (msg.type === "system") return true;
   return false;
 }
 function fEf(e) {
@@ -353,29 +355,31 @@ function Tvl() {
       (e.gitOpBashCount = 0));
   return e;
 }
-function createCollapsedGroup(e) {
-  let t = e.messages[0],
-    n = e.readFilePaths.size > 0 ? e.readFilePaths.size : e.readOperationCount,
-    r = e.memoryReadFilePaths.size,
-    o = r + (e.relevantMemories?.length ?? 0),
-    s = e.teamMemoryReadFilePaths,
-    i = [...e.readFilePaths].filter((d) => !e.memoryReadFilePaths.has(d) && !(s?.has(d) ?? false)),
-    a = e.teamMemorySearchCount ?? 0,
-    l = e.teamMemoryReadFilePaths?.size ?? 0,
-    c = e.teamMemoryWriteCount ?? 0,
+function createCollapsedGroup(group) {
+  let t = group.messages[0],
+    n = group.readFilePaths.size > 0 ? group.readFilePaths.size : group.readOperationCount,
+    r = group.memoryReadFilePaths.size,
+    o = r + (group.relevantMemories?.length ?? 0),
+    s = group.teamMemoryReadFilePaths,
+    i = [...group.readFilePaths].filter(
+      (d) => !group.memoryReadFilePaths.has(d) && !(s?.has(d) ?? false),
+    ),
+    a = group.teamMemorySearchCount ?? 0,
+    l = group.teamMemoryReadFilePaths?.size ?? 0,
+    c = group.teamMemoryWriteCount ?? 0,
     u = {
       type: "collapsed_read_search",
-      searchCount: Math.max(0, e.searchCount - e.memorySearchCount - a),
+      searchCount: Math.max(0, group.searchCount - group.memorySearchCount - a),
       readCount: Math.max(0, n - r - l),
-      listCount: e.listCount,
+      listCount: group.listCount,
       replCount: 0,
-      memorySearchCount: e.memorySearchCount,
+      memorySearchCount: group.memorySearchCount,
       memoryReadCount: o,
-      memoryWriteCount: e.memoryWriteCount,
+      memoryWriteCount: group.memoryWriteCount,
       readFilePaths: i,
-      searchArgs: e.nonMemSearchArgs,
-      latestDisplayHint: e.latestDisplayHint,
-      messages: e.messages,
+      searchArgs: group.nonMemSearchArgs,
+      latestDisplayHint: group.latestDisplayHint,
+      messages: group.messages,
       displayMessage: t,
       uuid: `collapsed-${t.uuid}`,
       timestamp: t.timestamp,
@@ -384,22 +388,25 @@ function createCollapsedGroup(e) {
     ((u.teamMemorySearchCount = a),
     (u.teamMemoryReadCount = l),
     (u.teamMemoryWriteCount = c),
-    (e.mcpCallCount ?? 0) > 0)
+    (group.mcpCallCount ?? 0) > 0)
   )
-    ((u.mcpCallCount = e.mcpCallCount), (u.mcpServerNames = [...(e.mcpServerNames ?? [])]));
+    ((u.mcpCallCount = group.mcpCallCount), (u.mcpServerNames = [...(group.mcpServerNames ?? [])]));
   if (Ns()) {
-    if ((e.bashCount ?? 0) > 0)
-      ((u.bashCount = e.bashCount), (u.gitOpBashCount = e.gitOpBashCount));
-    if ((e.commits?.length ?? 0) > 0) u.commits = e.commits;
-    if ((e.pushes?.length ?? 0) > 0) u.pushes = e.pushes;
-    if ((e.branches?.length ?? 0) > 0) u.branches = e.branches;
-    if ((e.prs?.length ?? 0) > 0) u.prs = e.prs;
+    if ((group.bashCount ?? 0) > 0)
+      ((u.bashCount = group.bashCount), (u.gitOpBashCount = group.gitOpBashCount));
+    if ((group.commits?.length ?? 0) > 0) u.commits = group.commits;
+    if ((group.pushes?.length ?? 0) > 0) u.pushes = group.pushes;
+    if ((group.branches?.length ?? 0) > 0) u.branches = group.branches;
+    if ((group.prs?.length ?? 0) > 0) u.prs = group.prs;
   }
-  if (e.hookCount > 0)
-    ((u.hookTotalMs = e.hookTotalMs), (u.hookCount = e.hookCount), (u.hookInfos = e.hookInfos));
-  if (e.relevantMemories && e.relevantMemories.length > 0) u.relevantMemories = e.relevantMemories;
-  if (e.thoughtForMs > 0) u.thoughtForMs = e.thoughtForMs;
-  if (e.latestThinkingSummary !== void 0) u.latestThinkingSummary = e.latestThinkingSummary;
+  if (group.hookCount > 0)
+    ((u.hookTotalMs = group.hookTotalMs),
+      (u.hookCount = group.hookCount),
+      (u.hookInfos = group.hookInfos));
+  if (group.relevantMemories && group.relevantMemories.length > 0)
+    u.relevantMemories = group.relevantMemories;
+  if (group.thoughtForMs > 0) u.thoughtForMs = group.thoughtForMs;
+  if (group.latestThinkingSummary !== void 0) u.latestThinkingSummary = group.latestThinkingSummary;
   return u;
 }
 function Rvl(e, t) {
@@ -713,12 +720,12 @@ function wvl(e, t, n, r) {
   else i.otherToolCount = s;
   return i;
 }
-function getSearchReadSummaryText(e, t, n, r = 0, o, s = 0) {
+function getSearchReadSummaryText(searchCount, readCount, isActive, r = 0, memoryCounts, s = 0) {
   let i = [];
-  if (o) {
-    let { memorySearchCount: l, memoryReadCount: c, memoryWriteCount: u } = o;
+  if (memoryCounts) {
+    let { memorySearchCount: l, memoryReadCount: c, memoryWriteCount: u } = memoryCounts;
     if (c > 0) {
-      let d = n
+      let d = isActive
         ? i.length === 0
           ? "Recalling"
           : "recalling"
@@ -728,7 +735,7 @@ function getSearchReadSummaryText(e, t, n, r = 0, o, s = 0) {
       i.push(`${d} ${c} ${c === 1 ? "memory" : "memories"}`);
     }
     if (l > 0) {
-      let d = n
+      let d = isActive
         ? i.length === 0
           ? "Searching"
           : "searching"
@@ -738,35 +745,47 @@ function getSearchReadSummaryText(e, t, n, r = 0, o, s = 0) {
       i.push(`${d} memories`);
     }
     if (u > 0) {
-      let d = n ? (i.length === 0 ? "Writing" : "writing") : i.length === 0 ? "Wrote" : "wrote";
+      let d = isActive
+        ? i.length === 0
+          ? "Writing"
+          : "writing"
+        : i.length === 0
+          ? "Wrote"
+          : "wrote";
       i.push(`${d} ${u} ${u === 1 ? "memory" : "memories"}`);
     }
-    bvl(o, n, i);
+    bvl(memoryCounts, isActive, i);
   }
-  if (e > 0) {
-    let l = n
+  if (searchCount > 0) {
+    let l = isActive
       ? i.length === 0
         ? "Searching for"
         : "searching for"
       : i.length === 0
         ? "Searched for"
         : "searched for";
-    i.push(`${l} ${e} ${e === 1 ? "pattern" : "patterns"}`);
+    i.push(`${l} ${searchCount} ${searchCount === 1 ? "pattern" : "patterns"}`);
   }
-  if (t > 0) {
-    let l = n ? (i.length === 0 ? "Reading" : "reading") : i.length === 0 ? "Read" : "read";
-    i.push(`${l} ${t} ${t === 1 ? "file" : "files"}`);
+  if (readCount > 0) {
+    let l = isActive ? (i.length === 0 ? "Reading" : "reading") : i.length === 0 ? "Read" : "read";
+    i.push(`${l} ${readCount} ${readCount === 1 ? "file" : "files"}`);
   }
   if (s > 0) {
-    let l = n ? (i.length === 0 ? "Listing" : "listing") : i.length === 0 ? "Listed" : "listed";
+    let l = isActive
+      ? i.length === 0
+        ? "Listing"
+        : "listing"
+      : i.length === 0
+        ? "Listed"
+        : "listed";
     i.push(`${l} ${s} ${s === 1 ? "directory" : "directories"}`);
   }
   if (r > 0) {
-    let l = n ? "REPL'ing" : "REPL'd";
+    let l = isActive ? "REPL'ing" : "REPL'd";
     i.push(`${l} ${r} ${r === 1 ? "time" : "times"}`);
   }
   let a = i.join(", ");
-  return n ? `${a}\u2026` : a;
+  return isActive ? `${a}\u2026` : a;
 }
 function j9n(e) {
   if (e.length === 0) return;

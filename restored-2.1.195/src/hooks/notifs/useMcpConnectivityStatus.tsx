@@ -23,13 +23,13 @@ function qyl(e, t) {
   }
   e.exemptServers = n;
 }
-function useMcpConnectivityStatus(e, t, n) {
-  if (e === GW || e === Sb) return "web";
-  if (e === ide || e === aJ || e === Kue) return "connectors";
+function useMcpConnectivityStatus(t0, t, n) {
+  if (t0 === GW || t0 === Sb) return "web";
+  if (t0 === ide || t0 === aJ || t0 === Kue) return "connectors";
   if (t) {
     let r = n.includes(hc(t));
     if (Dmf.test(hc(t))) return "web";
-    let o = eI(e)?.toolName ?? e;
+    let o = eI(t0)?.toolName ?? t0;
     if (r && Lmf.has(o)) return "web";
     if (!r) return "connectors";
   }

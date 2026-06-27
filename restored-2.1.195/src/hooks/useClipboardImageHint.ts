@@ -14,15 +14,15 @@
   }));
 IDn = /\.(png|jpe?g|gif|webp)$/i;
 y8i = /^(?:[A-Za-z]:\\|\\\\)/;
-function useClipboardImageHint(e, t) {
+function useClipboardImageHint(isFocused, enabled) {
   let { addNotification: n } = Li(),
-    r = jat.useRef(e),
+    r = jat.useRef(isFocused),
     o = jat.useRef(0),
     s = jat.useRef(null),
     i = ks();
   jat.useEffect(() => {
     let a = r.current;
-    if (((r.current = e), !t || !e || a)) return;
+    if (((r.current = isFocused), !enabled || !isFocused || a)) return;
     if (s.current) s.current();
     return (
       (s.current = i.setTimeout(async () => {
@@ -43,7 +43,7 @@ function useClipboardImageHint(e, t) {
         if (s.current) (s.current(), (s.current = null));
       }
     );
-  }, [e, t, n, i]);
+  }, [isFocused, enabled, n, i]);
 }
 var jat,
   NOTIFICATION_KEY = "clipboard-image-hint",

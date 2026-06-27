@@ -7,7 +7,7 @@
 // module exports: call
 // [unwrapped __esm module bXl] deps: Ye, ps, lg, dr, Vl, hse, v5, MEt, eE, kP, fXl, gXl, yXl
 ((T4o = R(lt(), 1)), (EA = R(se(), 1)));
-async function call(e, t, n) {
+async function call(onDone, _context, args) {
   let o = jo().theme || "light",
     s = Vt();
   if (!xo.isSupportedPlatform()) {
@@ -16,7 +16,7 @@ async function call(e, t, n) {
           ? "Error: Sandboxing requires WSL2. WSL1 is not supported."
           : "Error: Sandboxing is currently only supported on macOS, Linux, and WSL2.",
       c = Io("error", o)(l);
-    return (e(c), null);
+    return (onDone(c), null);
   }
   let i = xo.checkDependencies();
   if (!xo.isPlatformInEnabledList()) {
@@ -24,7 +24,7 @@ async function call(e, t, n) {
       "error",
       o,
     )(`Error: Sandboxing is disabled for this platform (${s}) via the enabledPlatforms setting.`);
-    return (e(l), null);
+    return (onDone(l), null);
   }
   if (xo.areSandboxSettingsLockedByPolicy()) {
     let l = Io(
@@ -33,12 +33,12 @@ async function call(e, t, n) {
     )(
       "Error: Sandbox settings are overridden by a higher-priority configuration and cannot be changed locally.",
     );
-    return (e(l), null);
+    return (onDone(l), null);
   }
-  let a = n?.trim() || "";
+  let a = args?.trim() || "";
   if (!a)
     return AXl.jsx(_Xl, {
-      onComplete: e,
+      onComplete: onDone,
       depCheck: i,
     });
   if (a) {
@@ -52,17 +52,17 @@ async function call(e, t, n) {
         )(
           'Error: Please provide a command pattern to exclude (e.g., /sandbox exclude "npm run test:*")',
         );
-        return (e(g), null);
+        return (onDone(g), null);
       }
       let d = u.replace(/^["']|["']$/g, "");
       kro(d);
       let p = xg("localSettings"),
         f = p ? SXl.relative(CK(), p) : ".claude/settings.local.json",
         m = Io("success", o)(`Added "${d}" to excluded commands in ${f}`);
-      return (e(m), null);
+      return (onDone(m), null);
     } else {
       let u = Io("error", o)(`Error: Unknown subcommand "${c}". Available subcommand: exclude`);
-      return (e(u), null);
+      return (onDone(u), null);
     }
   }
   return null;

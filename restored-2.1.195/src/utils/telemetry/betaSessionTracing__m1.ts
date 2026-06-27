@@ -49,12 +49,12 @@ async function dwf(e, t, n) {
       await aYt.writeFile(t, n));
   }
 }
-function truncateContent(e, t, n) {
+function truncateContent(content, t, n) {
   let r = rkl();
   if (r.mode === "disabled") return;
   let o = De(t);
   if (r.mode === "file") {
-    let i = e === "api_request_body" ? "request" : "response",
+    let i = content === "api_request_body" ? "request" : "response",
       a = n.request_id ?? lMo.randomUUID(),
       l = /^[A-Za-z0-9_-]+$/.test(a) ? a : lMo.randomUUID(),
       c = tZn.join(r.dir, `${l}.${i}.json`);
@@ -63,7 +63,7 @@ function truncateContent(e, t, n) {
         level: "error",
       }),
     ),
-      Jc(e, {
+      Jc(content, {
         body_ref: c,
         body_length: String(Buffer.byteLength(o)),
         ...n,
@@ -71,7 +71,7 @@ function truncateContent(e, t, n) {
     return;
   }
   let s = o.length > nkl;
-  Jc(e, {
+  Jc(content, {
     body: s
       ? o.slice(0, nkl) +
         `

@@ -11,8 +11,8 @@ function oG() {
 function gee(e) {
   return e.toFixed(3);
 }
-function formatTimelineLine(e, t, n, r, o, s, i = "") {
-  let a = r ? ` | RSS: ${Ra(r.rss)}, Heap: ${Ra(r.heapUsed)}` : "";
-  return `[+${gee(e).padStart(o)}ms] (+${gee(t).padStart(s)}ms) ${n}${i}${a}`;
+function formatTimelineLine(totalMs, deltaMs, name, memory, totalPad, deltaPad, i = "") {
+  let a = memory ? ` | RSS: ${Ra(memory.rss)}, Heap: ${Ra(memory.heapUsed)}` : "";
+  return `[+${gee(totalMs).padStart(totalPad)}ms] (+${gee(deltaMs).padStart(deltaPad)}ms) ${name}${i}${a}`;
 }
 var dAr = null;

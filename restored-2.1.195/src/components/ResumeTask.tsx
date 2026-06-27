@@ -239,8 +239,8 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
     ],
   });
 }
-function determineErrorType(e) {
-  let t = e.toLowerCase();
+function determineErrorType(errorMessage) {
+  let t = errorMessage.toLowerCase();
   if (t.includes("fetch") || t.includes("network") || t.includes("timeout")) return "network";
   if (
     t.includes("auth") ||

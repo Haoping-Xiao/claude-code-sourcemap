@@ -7,9 +7,9 @@
 // module exports: TeleportRepoMismatchDialog
 // [unwrapped __esm module Q$c] deps: Ye, mE, vi, qNo
 ((X$c = R(lt(), 1)), (Evt = R(se(), 1)));
-function TeleportRepoMismatchDialog(e) {
+function TeleportRepoMismatchDialog(t0) {
   let t = Z$c.c(18),
-    { targetRepo: n, initialPaths: r, onSelectPath: o, onCancel: s } = e,
+    { targetRepo: n, initialPaths: r, onSelectPath: o, onCancel: s } = t0,
     [i, a] = hmr.useState(r),
     [l, c] = hmr.useState(null),
     [u, d] = hmr.useState(false),

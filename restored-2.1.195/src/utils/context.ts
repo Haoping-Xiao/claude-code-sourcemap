@@ -127,10 +127,10 @@ function Vkd(e) {
   if (typeof n !== "number" || !Number.isInteger(n) || n <= 0) return null;
   return n;
 }
-function getModelMaxOutputTokens(e) {
+function getModelMaxOutputTokens(model) {
   let t,
     n,
-    r = mo(e);
+    r = mo(model);
   if (r === "claude-fable-5" || r === "claude-mythos-5") ((t = 64000), (n = 128000));
   else if (r === "claude-opus-4-8") ((t = 64000), (n = 128000));
   else if (r === "claude-opus-4-7") ((t = 64000), (n = 128000));
@@ -152,7 +152,7 @@ function getModelMaxOutputTokens(e) {
   else ((t = Wkd), (n = qkd));
   let o = Vkd(r);
   if (o !== null) t = Math.min(o, n);
-  let s = bvi(e);
+  let s = bvi(model);
   if (s?.max_tokens && s.max_tokens >= 4096) ((n = s.max_tokens), (t = Math.min(t, n)));
   return {
     default: t,

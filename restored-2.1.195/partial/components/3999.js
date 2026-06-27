@@ -6,10 +6,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E8e] deps: Ye
 Bel = R(lt(), 1), Uel = R(se(), 1);
-function FileEditToolDiff(e) {
+function FileEditToolDiff(props) {
   let t = vvo.c(9),
     n;
-  if (t[0] !== e.edits || t[1] !== e.file_path || t[2] !== e.remoteOldContent || t[3] !== e.skipLocalRead) n = () => PZp(e.file_path, e.edits, e.remoteOldContent, e.skipLocalRead ?? false), t[0] = e.edits, t[1] = e.file_path, t[2] = e.remoteOldContent, t[3] = e.skipLocalRead, t[4] = n;else n = t[4];
+  if (t[0] !== props.edits || t[1] !== props.file_path || t[2] !== props.remoteOldContent || t[3] !== props.skipLocalRead) n = () => PZp(props.file_path, props.edits, props.remoteOldContent, props.skipLocalRead ?? false), t[0] = props.edits, t[1] = props.file_path, t[2] = props.remoteOldContent, t[3] = props.skipLocalRead, t[4] = n;else n = t[4];
   let [r] = Jht.useState(n),
     o;
   if (t[5] === Symbol.for("react.memo_cache_sentinel")) o = A8e.jsx(Q4, {
@@ -20,13 +20,13 @@ function FileEditToolDiff(e) {
     })
   }), t[5] = o;else o = t[5];
   let s;
-  if (t[6] !== r || t[7] !== e.file_path) s = A8e.jsx(Jht.Suspense, {
+  if (t[6] !== r || t[7] !== props.file_path) s = A8e.jsx(Jht.Suspense, {
     fallback: o,
     children: A8e.jsx(DZp, {
       promise: r,
-      file_path: e.file_path
+      file_path: props.file_path
     })
-  }), t[6] = r, t[7] = e.file_path, t[8] = s;else s = t[8];
+  }), t[6] = r, t[7] = props.file_path, t[8] = s;else s = t[8];
   return s;
 }
 function DZp(e) {

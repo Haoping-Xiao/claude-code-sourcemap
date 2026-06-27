@@ -15,13 +15,13 @@ _Pu = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 ((Fpn = Buffer.from('{"type":"attribution-snapshot"')),
   (TPu = Buffer.from('{"type":"system"')),
   (vPu = Buffer.from([iRt])));
-function expandPath(e, t) {
-  let n = t ?? $t() ?? qt().cwd();
-  if (typeof e !== "string") throw TypeError(`Path must be a string, received ${typeof e}`);
+function expandPath(path, baseDir) {
+  let n = baseDir ?? $t() ?? qt().cwd();
+  if (typeof path !== "string") throw TypeError(`Path must be a string, received ${typeof path}`);
   if (typeof n !== "string")
     throw TypeError(`Base directory must be a string, received ${typeof n}`);
-  if (e.includes("\x00") || n.includes("\x00")) throw Error("Path contains null bytes");
-  let r = e.trim();
+  if (path.includes("\x00") || n.includes("\x00")) throw Error("Path contains null bytes");
+  let r = path.trim();
   if (!r) return o_(MO.normalize(n));
   if (r === "~") return o_(Vpn.homedir());
   if (r.startsWith("~/")) return o_(MO.join(Vpn.homedir(), r.slice(2)));

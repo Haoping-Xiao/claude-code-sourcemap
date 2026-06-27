@@ -6,7 +6,19 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qhc] deps: Ed, Cc, adr, zj, Ye
 ((wS = R(rt(), 1)), (a6o = R(se(), 1)));
-function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
+function useHistorySearch(
+  onAcceptHistory,
+  currentInput,
+  onInputChange,
+  onCursorChange,
+  currentCursorOffset,
+  onModeChange,
+  currentMode,
+  isSearching,
+  setIsSearching,
+  setPastedContents,
+  currentPastedContents,
+) {
   let [d, p] = qT.useState(""),
     [f, m] = qT.useState(false),
     [g, h] = qT.useState(""),
@@ -21,7 +33,7 @@ function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
       if (I.current) (I.current.return(void 0), (I.current = void 0));
     }, []),
     O = qT.useCallback(() => {
-      (l(false),
+      (setIsSearching(false),
         p(""),
         m(false),
         h(""),
@@ -31,12 +43,19 @@ function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
         x(void 0),
         P(),
         k.current.clear());
-    }, [l, P]),
+    }, [setIsSearching, P]),
     L = qT.useCallback(
       async (z, K) => {
-        if (!a) return;
+        if (!isSearching) return;
         if (d.length === 0) {
-          (P(), k.current.clear(), x(void 0), m(false), n(g), r(y), s(_), c(A));
+          (P(),
+            k.current.clear(),
+            x(void 0),
+            m(false),
+            onInputChange(g),
+            onCursorChange(y),
+            onModeChange(_),
+            setPastedContents(A));
           return;
         }
         if (!z) (P(), (I.current = cZr()), k.current.clear());
@@ -54,25 +73,37 @@ function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
           if (oe !== -1 && !k.current.has(ne)) {
             (k.current.add(ne), x(J.value), m(false));
             let re = ek(ne);
-            (s(re), n(ne), c(J.value.pastedContents));
+            (onModeChange(re), onInputChange(ne), setPastedContents(J.value.pastedContents));
             let ce = BU(ne).toLowerCase().lastIndexOf(Z);
-            r(ce !== -1 ? ce : oe);
+            onCursorChange(ce !== -1 ? ce : oe);
             return;
           }
         }
       },
-      [a, d, P, n, r, s, c, g, y, _, A],
+      [
+        isSearching,
+        d,
+        P,
+        onInputChange,
+        onCursorChange,
+        onModeChange,
+        setPastedContents,
+        g,
+        y,
+        _,
+        A,
+      ],
     ),
     M = qT.useCallback(() => {
       (xe("history_search_open"),
-        l(true),
-        h(t),
-        b(o),
-        S(i),
-        v(u),
+        setIsSearching(true),
+        h(currentInput),
+        b(currentCursorOffset),
+        S(currentMode),
+        v(currentPastedContents),
         (I.current = cZr()),
         k.current.clear());
-    }, [l, t, o, i, u]),
+    }, [setIsSearching, currentInput, currentCursorOffset, currentMode, currentPastedContents]),
     N = qT.useCallback(() => {
       L(true);
     }, [L]),
@@ -81,16 +112,16 @@ function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
         xe("history_search_accept");
         let z = ek(C.display),
           K = BU(C.display);
-        (n(K), s(z), c(C.pastedContents));
-      } else c(A);
+        (onInputChange(K), onModeChange(z), setPastedContents(C.pastedContents));
+      } else setPastedContents(A);
       O();
-    }, [C, n, s, c, A, O]),
+    }, [C, onInputChange, onModeChange, setPastedContents, A, O]),
     $ = qT.useCallback(() => {
-      (n(g), r(y), c(A), O());
-    }, [n, r, c, g, y, A, O]),
+      (onInputChange(g), onCursorChange(y), setPastedContents(A), O());
+    }, [onInputChange, onCursorChange, setPastedContents, g, y, A, O]),
     q = qT.useCallback(() => {
       if (d.length === 0)
-        e({
+        onAcceptHistory({
           display: g,
           pastedContents: A,
         });
@@ -98,17 +129,17 @@ function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
         xe("history_search_execute");
         let z = ek(C.display),
           K = BU(C.display);
-        (s(z),
-          e({
+        (onModeChange(z),
+          onAcceptHistory({
             display: K,
             pastedContents: C.pastedContents,
           }));
       }
       O();
-    }, [d, C, e, s, g, A, O]);
+    }, [d, C, onAcceptHistory, onModeChange, g, A, O]);
   $r("history:search", M, {
     context: "Global",
-    isActive: lne() ? false : !a,
+    isActive: lne() ? false : !isSearching,
   });
   let W = qT.useMemo(
     () => ({
@@ -121,10 +152,10 @@ function useHistorySearch(e, t, n, r, o, s, i, a, l, c, u) {
   );
   No(W, {
     context: "HistorySearch",
-    isActive: a,
+    isActive: isSearching,
   });
   let V = (z) => {
-      if (!a) return;
+      if (!isSearching) return;
       if (z.key === "backspace" && d === "") (z.preventDefault(), $());
     },
     Y = qT.useRef(L);

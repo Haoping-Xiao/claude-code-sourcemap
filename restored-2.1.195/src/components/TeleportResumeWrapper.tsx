@@ -7,9 +7,9 @@
 // module exports: TeleportResumeWrapper
 // [unwrapped __esm module d6l] deps: _i, Cv, Ye, ps, nk, je, BR, es, Cc, mE, Bs, Ko, CH, sTo
 ((kse = R(rt(), 1)), (Hm = R(se(), 1)));
-function TeleportResumeWrapper(e) {
+function TeleportResumeWrapper(t0) {
   let t = p6l.c(30),
-    { onComplete: n, onCancel: r, onError: o, isEmbedded: s, source: i } = e,
+    { onComplete: n, onCancel: r, onError: o, isEmbedded: s, source: i } = t0,
     a = s === void 0 ? false : s,
     { resumeSession: l, isResuming: c, error: u, selectedSession: d } = a6l(i),
     p,

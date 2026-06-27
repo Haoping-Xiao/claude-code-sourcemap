@@ -28,8 +28,8 @@ function m0c() {
   let e = M2() ?? aj(yr());
   return ovt.join(e, Rt(), "mcp-tasks");
 }
-function getAgentMetadataPath(e) {
-  return ovt.join(m0c(), `mcp-task-${e}.meta.json`);
+function getAgentMetadataPath(agentId) {
+  return ovt.join(m0c(), `mcp-task-${agentId}.meta.json`);
 }
 async function h0c(e, t) {
   let n = getAgentMetadataPath(e);

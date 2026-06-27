@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Gzn] deps: si, Xa, Nht, np, Ye, uo, i6e, YI, OI, Q8, gm, AN, ql, VCo, WCo, Bzn
 ((Qyt = R(lt(), 1)), (_il = R(rt(), 1)), (Eh = R(se(), 1)), (KCo = `</${DB}>`));
-function getStatusColor(e) {
-  switch (e) {
+function getStatusColor(status) {
+  switch (status) {
     case "completed":
       return "success";
     case "failed":
@@ -18,9 +18,9 @@ function getStatusColor(e) {
       return "text";
   }
 }
-function UserAgentNotificationMessage(e) {
+function UserAgentNotificationMessage(t0) {
   let t = Sil.c(19),
-    { addMargin: n, param: r } = e,
+    { addMargin: n, param: r } = t0,
     { text: o } = r,
     s;
   if (t[0] !== o) ((s = xl(o, "summary")), (t[0] = o), (t[1] = s));

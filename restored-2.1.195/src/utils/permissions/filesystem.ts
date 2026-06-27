@@ -35,8 +35,8 @@ function normalizeCaseForComparison(e) {
     .replace(/\u0131/g, "i")
     .replace(/\u017f/g, "s");
 }
-function getClaudeSkillScope(e) {
-  let t = ds(e),
+function getClaudeSkillScope(filePath) {
+  let t = ds(filePath),
     n = normalizeCaseForComparison(t),
     r = [
       {
@@ -87,8 +87,8 @@ function fem() {
   if (Vt() === "wsl" && Vee()) e.push(Rl.join(NO, "managed-settings.json"));
   return e;
 }
-function isClaudeSettingsPath(e) {
-  let t = ds(e),
+function isClaudeSettingsPath(filePath) {
+  let t = ds(filePath),
     n = normalizeCaseForComparison(t);
   if (
     n.endsWith(`${Rl.sep}.claude${Rl.sep}settings.json`) ||
@@ -97,12 +97,16 @@ function isClaudeSettingsPath(e) {
     return true;
   return fem().some((r) => normalizeCaseForComparison(r) === n);
 }
-function isClaudeConfigFilePath(e) {
-  if (isClaudeSettingsPath(e)) return true;
+function isClaudeConfigFilePath(filePath) {
+  if (isClaudeSettingsPath(filePath)) return true;
   let t = Rl.join(yr(), ".claude", "commands"),
     n = Rl.join(yr(), ".claude", "agents"),
     r = Rl.join(yr(), ".claude", "skills");
-  return pathInWorkingPath(e, t) || pathInWorkingPath(e, n) || pathInWorkingPath(e, r);
+  return (
+    pathInWorkingPath(filePath, t) ||
+    pathInWorkingPath(filePath, n) ||
+    pathInWorkingPath(filePath, r)
+  );
 }
 function qsc(e) {
   let t = jAt();
@@ -190,7 +194,7 @@ function eNe(e, t) {
 function isUntrustedUncPath(e, t) {
   return Fc(e) && !qp(e) && !eNe(e, t);
 }
-function isDangerousFilePathToAutoEdit(e) {
+function isDangerousFilePathToAutoEdit(path) {
   let t = 0;
   for (let n of getResolvedWorkingDirPaths(yr())) {
     let r = ds(n).split(Rl.sep);
@@ -198,9 +202,9 @@ function isDangerousFilePathToAutoEdit(e) {
     let o = 0;
     while (
       o < r.length &&
-      o < e.length &&
-      (e[o] === r[o] ||
-        (o === 0 && /^[a-z]:$/i.test(e[o]) && e[o].toLowerCase() === r[o].toLowerCase()))
+      o < path.length &&
+      (path[o] === r[o] ||
+        (o === 0 && /^[a-z]:$/i.test(path[o]) && path[o].toLowerCase() === r[o].toLowerCase()))
     )
       o++;
     if (o === r.length) {
@@ -301,14 +305,14 @@ function Alr(e, t) {
   if (j0(e, true) && !qp(e) && !eNe(e, t)) return true;
   return false;
 }
-function checkPathSafetyForAutoEdit(e, t, n, r, o) {
+function checkPathSafetyForAutoEdit(path, precomputedPathsToCheck, n, r, o) {
   let s = n || r,
-    i = t ?? i_(e);
+    i = precomputedPathsToCheck ?? i_(path);
   for (let a of i)
     if (Alr(a, o))
       return {
         safe: false,
-        message: `Claude requested permissions to write to ${e}, which contains a suspicious Windows path pattern that requires manual approval.`,
+        message: `Claude requested permissions to write to ${path}, which contains a suspicious Windows path pattern that requires manual approval.`,
         classifierApprovable: false,
       };
   for (let a of i)
@@ -316,20 +320,20 @@ function checkPathSafetyForAutoEdit(e, t, n, r, o) {
       if (isClaudeSettingsPath(a))
         return {
           safe: false,
-          message: `Claude requested permissions to write to ${e}, but you haven't granted it yet.`,
+          message: `Claude requested permissions to write to ${path}, but you haven't granted it yet.`,
           classifierApprovable: true,
         };
     } else if (isClaudeConfigFilePath(a))
       return {
         safe: false,
-        message: `Claude requested permissions to write to ${e}, but you haven't granted it yet.`,
+        message: `Claude requested permissions to write to ${path}, but you haven't granted it yet.`,
         classifierApprovable: true,
       };
   for (let a of i)
     if (Sem(a, s, o))
       return {
         safe: false,
-        message: `Claude requested permissions to edit ${e} which is a sensitive file.`,
+        message: `Claude requested permissions to edit ${path} which is a sensitive file.`,
         classifierApprovable: true,
       };
   return {
@@ -351,14 +355,14 @@ function pathInAllowedWorkingPath(e, t, n) {
   );
 }
 function pathInWorkingPath(
-  e,
-  t,
+  path,
+  workingPath,
   { caseFold: n } = {
     caseFold: true,
   },
 ) {
-  let r = ds(e),
-    o = ds(t),
+  let r = ds(path),
+    o = ds(workingPath),
     s = r.replace(/^\/private\/var\//, "/var/").replace(/^\/private\/tmp(\/|$)/, "/tmp$1"),
     i = o.replace(/^\/private\/var\//, "/var/").replace(/^\/private\/tmp(\/|$)/, "/tmp$1"),
     a = n
@@ -368,8 +372,8 @@ function pathInWorkingPath(
   if (kae(a)) return false;
   return !Rl.posix.isAbsolute(a);
 }
-function rootPathForSource(e) {
-  switch (e) {
+function rootPathForSource(source) {
+  switch (source) {
     case "cliArg":
     case "command":
     case "session":
@@ -381,7 +385,7 @@ function rootPathForSource(e) {
     case "projectSettings":
     case "localSettings":
     case "flagSettings":
-      return a2e(e);
+      return a2e(source);
   }
 }
 function E5o(e) {
@@ -638,18 +642,18 @@ function checkReadNetworkPathSafety(e, t, n, r) {
       };
   return null;
 }
-function checkReadPermissionForTool(e, t, n) {
-  if (typeof e.getPath !== "function")
+function checkReadPermissionForTool(tool, input, toolPermissionContext) {
+  if (typeof tool.getPath !== "function")
     return {
       behavior: "ask",
-      message: `Claude requested permissions to use ${e.name}, but you haven't granted it yet.`,
+      message: `Claude requested permissions to use ${tool.name}, but you haven't granted it yet.`,
     };
-  let r = e.getPath(t),
+  let r = tool.getPath(input),
     o = i_(r),
-    s = checkReadNetworkPathSafety(e, t, n, o);
+    s = checkReadNetworkPathSafety(tool, input, toolPermissionContext, o);
   if (s) return s;
   for (let p of o) {
-    let f = matchingRuleForInput(p, n, "read", "deny");
+    let f = matchingRuleForInput(p, toolPermissionContext, "read", "deny");
     if (f)
       return {
         behavior: "deny",
@@ -661,7 +665,7 @@ function checkReadPermissionForTool(e, t, n) {
       };
   }
   for (let p of o) {
-    let f = matchingRuleForInput(p, n, "read", "ask");
+    let f = matchingRuleForInput(p, toolPermissionContext, "read", "ask");
     if (f)
       return {
         behavior: "ask",
@@ -673,31 +677,31 @@ function checkReadPermissionForTool(e, t, n) {
       };
   }
   let i =
-      n.mode === "plan"
+      toolPermissionContext.mode === "plan"
         ? {
-            ...n,
+            ...toolPermissionContext,
             mode: "default",
           }
-        : n,
-    a = checkWritePermissionForTool(e, t, i, o);
+        : toolPermissionContext,
+    a = checkWritePermissionForTool(tool, input, i, o);
   if (a.behavior === "allow") return a;
-  if (pathInAllowedWorkingPath(r, n, o))
+  if (pathInAllowedWorkingPath(r, toolPermissionContext, o))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "mode",
         mode: "default",
       },
     };
   let c = ds(r),
-    u = checkReadableInternalPath(c, t, o);
+    u = checkReadableInternalPath(c, input, o);
   if (u.behavior !== "passthrough") return u;
-  let d = matchingAllowRuleForAllPaths(o, n, "read");
+  let d = matchingAllowRuleForAllPaths(o, toolPermissionContext, "read");
   if (d)
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "rule",
         rule: d,
@@ -706,23 +710,23 @@ function checkReadPermissionForTool(e, t, n) {
   return {
     behavior: "ask",
     message: `Claude requested permissions to read from ${r}, but you haven't granted it yet.`,
-    suggestions: generateSuggestions(r, "read", n, o),
+    suggestions: generateSuggestions(r, "read", toolPermissionContext, o),
     decisionReason: {
       type: "workingDir",
       reason: "Path is outside allowed working directories",
     },
   };
 }
-function checkWritePermissionForTool(e, t, n, r) {
-  if (typeof e.getPath !== "function")
+function checkWritePermissionForTool(tool, input, toolPermissionContext, precomputedPathsToCheck) {
+  if (typeof tool.getPath !== "function")
     return {
       behavior: "ask",
-      message: `Claude requested permissions to use ${e.name}, but you haven't granted it yet.`,
+      message: `Claude requested permissions to use ${tool.name}, but you haven't granted it yet.`,
     };
-  let o = e.getPath(t),
-    s = r ?? i_(o);
+  let o = tool.getPath(input),
+    s = precomputedPathsToCheck ?? i_(o);
   for (let f of s) {
-    let m = matchingRuleForInput(f, n, "edit", "deny");
+    let m = matchingRuleForInput(f, toolPermissionContext, "edit", "deny");
     if (m)
       return {
         behavior: "deny",
@@ -755,7 +759,7 @@ function checkWritePermissionForTool(e, t, n, r) {
         classifierApprovable: false,
       },
     };
-  let a = (n.alwaysAllowRules.session ?? []).filter((f) => {
+  let a = (toolPermissionContext.alwaysAllowRules.session ?? []).filter((f) => {
       let m = Ig(f).ruleContent;
       return Tem(m) && !s.some((g) => bem(g, m ?? ""));
     }),
@@ -764,7 +768,7 @@ function checkWritePermissionForTool(e, t, n, r) {
         ? matchingAllowRuleForAllPaths(
             s,
             {
-              ...n,
+              ...toolPermissionContext,
               alwaysAllowRules: {
                 session: a,
               },
@@ -774,20 +778,20 @@ function checkWritePermissionForTool(e, t, n, r) {
         : null;
   if (
     l &&
-    n.mode !== "plan" &&
-    !s.some((f) => Alr(f, n.trustedNetworkDirectories)) &&
+    toolPermissionContext.mode !== "plan" &&
+    !s.some((f) => Alr(f, toolPermissionContext.trustedNetworkDirectories)) &&
     !s.some((f) => Bsc(f) > 1)
   )
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "rule",
         rule: l,
       },
     };
   for (let f of s) {
-    let m = matchingRuleForInput(f, n, "edit", "ask");
+    let m = matchingRuleForInput(f, toolPermissionContext, "edit", "ask");
     if (m)
       return {
         behavior: "ask",
@@ -798,11 +802,17 @@ function checkWritePermissionForTool(e, t, n, r) {
         },
       };
   }
-  let c = checkEditableInternalPath(i, t, s);
+  let c = checkEditableInternalPath(i, input, s);
   if (c.behavior !== "passthrough") return c;
-  let u = checkPathSafetyForAutoEdit(o, s, void 0, n.isRemoteMode, n.trustedNetworkDirectories);
+  let u = checkPathSafetyForAutoEdit(
+    o,
+    s,
+    void 0,
+    toolPermissionContext.isRemoteMode,
+    toolPermissionContext.trustedNetworkDirectories,
+  );
   if (!u.safe) {
-    let f = s.some((g) => Bsc(g) > 1 || Alr(g, n.trustedNetworkDirectories))
+    let f = s.some((g) => Bsc(g) > 1 || Alr(g, toolPermissionContext.trustedNetworkDirectories))
         ? null
         : getClaudeSkillScope(o),
       m = f
@@ -819,7 +829,7 @@ function checkWritePermissionForTool(e, t, n, r) {
               destination: "session",
             },
           ]
-        : generateSuggestions(o, "write", n, s);
+        : generateSuggestions(o, "write", toolPermissionContext, s);
     return {
       behavior: "ask",
       message: u.message,
@@ -831,7 +841,7 @@ function checkWritePermissionForTool(e, t, n, r) {
       },
     };
   }
-  if (n.mode === "plan")
+  if (toolPermissionContext.mode === "plan")
     return {
       behavior: "ask",
       message: `Cannot write to ${o} while in plan mode.`,
@@ -840,21 +850,21 @@ function checkWritePermissionForTool(e, t, n, r) {
         mode: "plan",
       },
     };
-  let d = pathInAllowedWorkingPath(o, n, s);
-  if (n.mode === "acceptEdits" && d)
+  let d = pathInAllowedWorkingPath(o, toolPermissionContext, s);
+  if (toolPermissionContext.mode === "acceptEdits" && d)
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "mode",
-        mode: n.mode,
+        mode: toolPermissionContext.mode,
       },
     };
-  let p = matchingAllowRuleForAllPaths(s, n, "edit");
+  let p = matchingAllowRuleForAllPaths(s, toolPermissionContext, "edit");
   if (p)
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "rule",
         rule: p,
@@ -863,7 +873,7 @@ function checkWritePermissionForTool(e, t, n, r) {
   return {
     behavior: "ask",
     message: `Claude requested permissions to write to ${o}, but you haven't granted it yet.`,
-    suggestions: generateSuggestions(o, "write", n, s),
+    suggestions: generateSuggestions(o, "write", toolPermissionContext, s),
     decisionReason: !d
       ? {
           type: "workingDir",
@@ -872,22 +882,27 @@ function checkWritePermissionForTool(e, t, n, r) {
       : void 0,
   };
 }
-function generateSuggestions(e, t, n, r) {
-  let o = !pathInAllowedWorkingPath(e, n, r);
-  if (t === "read" && o) {
-    let a = MB(e);
+function generateSuggestions(
+  filePath,
+  operationType,
+  toolPermissionContext,
+  precomputedPathsToCheck,
+) {
+  let o = !pathInAllowedWorkingPath(filePath, toolPermissionContext, precomputedPathsToCheck);
+  if (operationType === "read" && o) {
+    let a = MB(filePath);
     return i_(a)
       .map((u) => v5e(u, "session"))
       .filter((u) => u !== void 0);
   }
   let s =
-      n.mode === "plan" &&
-      (n.prePlanMode === "auto" ||
-        n.prePlanMode === "bypassPermissions" ||
-        n.prePlanMode === "acceptEdits" ||
-        n.prePlanMode === "dontAsk"),
-    i = (n.mode === "default" || n.mode === "plan") && !s;
-  if (t === "write" || t === "create") {
+      toolPermissionContext.mode === "plan" &&
+      (toolPermissionContext.prePlanMode === "auto" ||
+        toolPermissionContext.prePlanMode === "bypassPermissions" ||
+        toolPermissionContext.prePlanMode === "acceptEdits" ||
+        toolPermissionContext.prePlanMode === "dontAsk"),
+    i = (toolPermissionContext.mode === "default" || toolPermissionContext.mode === "plan") && !s;
+  if (operationType === "write" || operationType === "create") {
     let a = i
       ? [
           {
@@ -898,7 +913,7 @@ function generateSuggestions(e, t, n, r) {
         ]
       : [];
     if (o) {
-      let l = MB(e),
+      let l = MB(filePath),
         c = i_(l);
       a.push({
         type: "addDirectories",
@@ -956,13 +971,13 @@ function untypeDenyReasonForAskPropagation(e) {
     reason: e.reason,
   };
 }
-function checkEditableInternalPath(e, t, n) {
-  if (n && n.length > 0) return Jsc(n, checkEditableInternalPath, t);
-  let r = Rl.normalize(e);
+function checkEditableInternalPath(absolutePath, input, n) {
+  if (n && n.length > 0) return Jsc(n, checkEditableInternalPath, input);
+  let r = Rl.normalize(absolutePath);
   if (qsc(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Plan files for current session are allowed for writing",
@@ -971,7 +986,7 @@ function checkEditableInternalPath(e, t, n) {
   if (gem(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Workflow script files for current session are allowed for writing",
@@ -980,7 +995,7 @@ function checkEditableInternalPath(e, t, n) {
   if (Vsc(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Scratchpad files for current session are allowed for writing",
@@ -989,7 +1004,7 @@ function checkEditableInternalPath(e, t, n) {
   if (Ksc(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Job tmp/ subtree for current bg session is allowed for writing",
@@ -998,7 +1013,7 @@ function checkEditableInternalPath(e, t, n) {
   if (r.endsWith(".md") && N3e(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Agent memory files are allowed for writing",
@@ -1017,7 +1032,7 @@ function checkEditableInternalPath(e, t, n) {
   if (!Ikn() && r.endsWith(".md") && fNt(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "auto memory files are allowed for writing",
@@ -1026,7 +1041,7 @@ function checkEditableInternalPath(e, t, n) {
   if (r === Rl.join(yr(), ".claude", "launch.json"))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Preview launch config is allowed for writing",
@@ -1048,9 +1063,9 @@ function checkEditableInternalPath(e, t, n) {
     message: "",
   };
 }
-function checkReadableInternalPath(e, t, n) {
-  if (n && n.length > 0) return Jsc(n, checkReadableInternalPath, t);
-  let r = Rl.normalize(e);
+function checkReadableInternalPath(absolutePath, input, n) {
+  if (n && n.length > 0) return Jsc(n, checkReadableInternalPath, input);
+  let r = Rl.normalize(absolutePath);
   if (C7(r) && bD())
     return {
       behavior: "deny",
@@ -1064,7 +1079,7 @@ function checkReadableInternalPath(e, t, n) {
   if (hem(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Project directory files are allowed for reading",
@@ -1073,7 +1088,7 @@ function checkReadableInternalPath(e, t, n) {
   if (qsc(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Plan files for current session are allowed for reading",
@@ -1084,7 +1099,7 @@ function checkReadableInternalPath(e, t, n) {
   if (r === o || r.startsWith(s))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Tool result files are allowed for reading",
@@ -1093,7 +1108,7 @@ function checkReadableInternalPath(e, t, n) {
   if (Vsc(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Scratchpad files for current session are allowed for reading",
@@ -1102,7 +1117,7 @@ function checkReadableInternalPath(e, t, n) {
   if (Ksc(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Job tmp/ subtree for current bg session is allowed for reading",
@@ -1112,7 +1127,7 @@ function checkReadableInternalPath(e, t, n) {
   if (r.startsWith(i))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Project temp directory files are allowed for reading",
@@ -1121,7 +1136,7 @@ function checkReadableInternalPath(e, t, n) {
   if (N3e(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Agent memory files are allowed for reading",
@@ -1130,7 +1145,7 @@ function checkReadableInternalPath(e, t, n) {
   if (fNt(r))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "auto memory files are allowed for reading",
@@ -1140,7 +1155,7 @@ function checkReadableInternalPath(e, t, n) {
   if (r === a.slice(0, -1) || r.startsWith(a))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Task files are allowed for reading",
@@ -1150,7 +1165,7 @@ function checkReadableInternalPath(e, t, n) {
   if (r === l.slice(0, -1) || r.startsWith(l))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Team files are allowed for reading",
@@ -1160,7 +1175,7 @@ function checkReadableInternalPath(e, t, n) {
   if (r.startsWith(c))
     return {
       behavior: "allow",
-      updatedInput: t,
+      updatedInput: input,
       decisionReason: {
         type: "other",
         reason: "Bundled skill reference files are allowed for reading",

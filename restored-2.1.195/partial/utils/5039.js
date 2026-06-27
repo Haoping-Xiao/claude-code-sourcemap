@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WAt] deps: ft, vf, dr, pQ
 sKl = require("path");
-function groupHooksByEventAndMatcher(e, t) {
+function groupHooksByEventAndMatcher(appState, toolNames) {
   let n = {
       PreToolUse: {},
       PostToolUse: {},
@@ -39,8 +39,8 @@ function groupHooksByEventAndMatcher(e, t) {
       FileChanged: {},
       MessageDisplay: {}
     },
-    r = Dsr(t);
-  iKl(e).forEach(s => {
+    r = Dsr(toolNames);
+  iKl(appState).forEach(s => {
     let i = n[s.event];
     if (i) {
       let a = r[s.event].matcherMetadata !== void 0 ? s.matcher || "" : "";

@@ -17,12 +17,12 @@ function getNativeModule() {
   }
   return sDn;
 }
-function sharp(e) {
+function sharp(input) {
   let t = [];
   async function n(o) {
     let s = getNativeModule();
     if (!s) throw Error("Native image processor module not available");
-    let i = await s.processImage(e);
+    let i = await s.processImage(input);
     if (o) for (let a of t) a(i);
     return i;
   }

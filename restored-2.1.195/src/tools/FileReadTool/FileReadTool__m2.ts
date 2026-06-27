@@ -4,8 +4,8 @@
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0135  score=0.173  fileCov=0.0145
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function isBlockedDevicePath(e, t) {
-  let n = await mlm(e, t);
+async function isBlockedDevicePath(filePath, t) {
+  let n = await mlm(filePath, t);
   if (n.startsWith("<")) return n;
   let r = await glm(n);
   if (r === void 0) return plm;

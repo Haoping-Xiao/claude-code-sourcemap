@@ -35,15 +35,15 @@
     license: (e) => typeof e === "string",
     keywords: (e) => Array.isArray(e) && e.every((t) => typeof t === "string"),
   }));
-function extractClaudeCodeHints(e, t) {
-  if (!e.includes("<claude-code-hint"))
+function extractClaudeCodeHints(output, command) {
+  if (!output.includes("<claude-code-hint"))
     return {
       hints: [],
-      stripped: e,
+      stripped: output,
     };
-  let n = Ykp(t),
+  let n = Ykp(command),
     r = [],
-    o = e.replace(aPa, (i) => {
+    o = output.replace(aPa, (i) => {
       let a = Kkp(i),
         l = Number(a.v),
         c = a.type,
@@ -63,7 +63,7 @@ function extractClaudeCodeHints(e, t) {
       );
     }),
     s =
-      r.length > 0 || o !== e
+      r.length > 0 || o !== output
         ? o.replace(
             /\n{3,}/g,
             `

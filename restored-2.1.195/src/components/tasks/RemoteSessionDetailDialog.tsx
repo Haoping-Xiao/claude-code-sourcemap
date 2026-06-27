@@ -6,11 +6,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module H1e] deps: ft, np, co, KI, CLo
 w8l = require("crypto");
-function formatToolUseSummary(e, t, n) {
-  if (e === jD) return "Review the plan in Claude Code on the web";
-  if (!t || typeof t !== "object") return e;
-  if (e === mf && "questions" in t) {
-    let r = t.questions;
+function formatToolUseSummary(name, input, n) {
+  if (name === jD) return "Review the plan in Claude Code on the web";
+  if (!input || typeof input !== "object") return name;
+  if (name === mf && "questions" in input) {
+    let r = input.questions;
     if (Array.isArray(r) && r[0] && typeof r[0] === "object") {
       let o =
         "question" in r[0] && typeof r[0].question === "string" && r[0].question
@@ -24,16 +24,16 @@ function formatToolUseSummary(e, t, n) {
       }
     }
   }
-  for (let r of Object.values(t))
+  for (let r of Object.values(input))
     if (typeof r === "string" && r.trim()) {
       let o = r.replace(/\s+/g, " ").trim();
-      return `${e} ${Rs(o, n)}`;
+      return `${name} ${Rs(o, n)}`;
     }
-  return e;
+  return name;
 }
-function UltraplanSessionDetail(e) {
+function UltraplanSessionDetail(t0) {
   let t = usr.c(78),
-    { session: n, onDone: r, onBack: o, onKill: s } = e,
+    { session: n, onDone: r, onBack: o, onKill: s } = t0,
     i = n.status === "running" || n.status === "pending",
     a = n.ultraplanPhase,
     l = i ? (a ? d5f[a] : "running") : n.status,
@@ -438,21 +438,21 @@ function m5f(e) {
   else p = t[14];
   return p;
 }
-function reviewCountsLine(e) {
-  let t = e.reviewProgress;
-  if (!t) return e.status === "completed" ? "done" : "setting up";
+function reviewCountsLine(session) {
+  let t = session.reviewProgress;
+  if (!t) return session.status === "completed" ? "done" : "setting up";
   let n = t.bugsVerified,
     r = t.bugsRefuted ?? 0;
-  if (e.status === "completed") {
+  if (session.status === "completed") {
     let o = [`${n} ${bn(n, "finding")}`];
     if (r > 0) o.push(`${r} refuted`);
     return o.join(" \xB7 ");
   }
   return ajo(t.stage, t.bugsFound, n, r);
 }
-function ReviewSessionDetail(e) {
+function ReviewSessionDetail(t0) {
   let t = usr.c(57),
-    { session: n, onDone: r, onBack: o, onKill: s } = e,
+    { session: n, onDone: r, onBack: o, onKill: s } = t0,
     i = n.status === "completed",
     a = n.status === "running" || n.status === "pending",
     [l, c] = aYe.useState(false),

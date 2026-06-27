@@ -14,20 +14,20 @@ function isKairosCronEnabled() {
 function isDurableCronEnabled() {
   return T7("tengu_kairos_cron_durable", true, Coa);
 }
-function buildCronCreateDescription(e) {
-  return e
+function buildCronCreateDescription(durableEnabled) {
+  return durableEnabled
     ? "Schedule a prompt to run at a future time \u2014 either recurring on a cron schedule, or once at a specific time. Pass durable: true to persist to .claude/scheduled_tasks.json; otherwise session-only."
     : "Schedule a prompt to run at a future time within this Claude session \u2014 either recurring on a cron schedule, or once at a specific time.";
 }
-function buildCronCreatePrompt(e) {
-  let t = e
+function buildCronCreatePrompt(durableEnabled) {
+  let t = durableEnabled
       ? `## Durability
 
 By default (durable: false) the job lives only in this Claude session \u2014 nothing is written to disk, and the job is gone when Claude exits. Pass durable: true to write to .claude/scheduled_tasks.json so the job survives restarts. Only use durable: true when the user explicitly asks for the task to persist ("keep doing this every day", "set this up permanently"). Most "remind me in 5 minutes" / "check back in an hour" requests should stay session-only.`
       : `## Session-only
 
 Jobs live only in this Claude session \u2014 nothing is written to disk, and the job is gone when Claude exits.`,
-    n = e
+    n = durableEnabled
       ? "Durable jobs persist to .claude/scheduled_tasks.json and survive session restarts \u2014 on next launch they resume automatically. One-shot durable tasks that were missed while the REPL was closed are surfaced for catch-up. Session-only jobs die with the process. "
       : "";
   return `Schedule a prompt to be enqueued at a future time. Use for both recurring schedules and one-shot reminders.
@@ -73,13 +73,13 @@ Recurring tasks auto-expire after ${DEFAULT_MAX_AGE_DAYS} days \u2014 they fire 
 
 Returns a job ID you can pass to ${CRON_DELETE_TOOL_NAME}.`;
 }
-function buildCronDeletePrompt(e) {
-  return e
+function buildCronDeletePrompt(durableEnabled) {
+  return durableEnabled
     ? `Cancel a cron job previously scheduled with ${CRON_CREATE_TOOL_NAME}. Removes it from .claude/scheduled_tasks.json (durable jobs) or the in-memory session store (session-only jobs).`
     : `Cancel a cron job previously scheduled with ${CRON_CREATE_TOOL_NAME}. Removes it from the in-memory session store.`;
 }
-function buildCronListPrompt(e) {
-  return e
+function buildCronListPrompt(durableEnabled) {
+  return durableEnabled
     ? `List all cron jobs scheduled via ${CRON_CREATE_TOOL_NAME}, both durable (.claude/scheduled_tasks.json) and session-only.`
     : `List all cron jobs scheduled via ${CRON_CREATE_TOOL_NAME} in this session.`;
 }

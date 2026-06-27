@@ -165,20 +165,20 @@ function kOu(e) {
     return false;
   }
 }
-function validateOfficialNameSource(e, t) {
-  let n = e.toLowerCase();
+function validateOfficialNameSource(name, source) {
+  let n = name.toLowerCase();
   if (!QRr.has(n)) return null;
-  if (t.source === "github") {
-    let r = t.repo || "";
+  if (source.source === "github") {
+    let r = source.repo || "";
     if (!r.toLowerCase().startsWith(`${OFFICIAL_GITHUB_ORG}/`) || r.split("/").includes(".."))
-      return `The name '${e}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${OFFICIAL_GITHUB_ORG}/' can use this name.`;
+      return `The name '${name}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${OFFICIAL_GITHUB_ORG}/' can use this name.`;
     return null;
   }
-  if (t.source === "git" && t.url) {
-    if (kOu(t.url)) return null;
-    return `The name '${e}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${OFFICIAL_GITHUB_ORG}/' can use this name.`;
+  if (source.source === "git" && source.url) {
+    if (kOu(source.url)) return null;
+    return `The name '${name}' is reserved for official Anthropic marketplaces. Only repositories from 'github.com/${OFFICIAL_GITHUB_ORG}/' can use this name.`;
   }
-  return `The name '${e}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${OFFICIAL_GITHUB_ORG}' organization.`;
+  return `The name '${name}' is reserved for official Anthropic marketplaces and can only be used with GitHub sources from the '${OFFICIAL_GITHUB_ORG}' organization.`;
 }
 function eLt(e) {
   return typeof e === "string" && e.startsWith("./");

@@ -77,21 +77,21 @@ claude ${o}--resume ${n}
         (c4n = true));
     } catch {}
 }
-function forceExit(e) {
+function forceExit(exitCode) {
   if (XDe !== void 0) (clearTimeout(XDe), (XDe = void 0));
   try {
     Cu.get(process.stdout)?.drainStdin();
   } catch {}
   try {
-    process.exit(e);
+    process.exit(exitCode);
   } catch (t) {
     process.kill(process.pid, "SIGKILL");
   }
   throw Error("unreachable");
 }
-function gracefulShutdownSync(e = 0, t = "other", n) {
+function gracefulShutdownSync(e = 0, t = "other", options) {
   ((process.exitCode = e),
-    (vho = gracefulShutdown(e, t, n)
+    (vho = gracefulShutdown(e, t, options)
       .catch((r) => {
         (T(`Graceful shutdown failed: ${r}`, {
           level: "error",
@@ -222,9 +222,9 @@ function resetShutdownState() {
 function getPendingShutdownForTesting() {
   return vho;
 }
-async function gracefulShutdown(e = 0, t = "other", n) {
+async function gracefulShutdown(e = 0, t = "other", options) {
   if (pVe) return;
-  if (((pVe = true), n?.suppressResumeHint)) c4n = true;
+  if (((pVe = true), options?.suppressResumeHint)) c4n = true;
   let { executeSessionEndHooks: r, getSessionEndHookTimeoutMs: o } = await Promise.resolve().then(
       () => (sp(), _1a),
     ),
@@ -262,7 +262,7 @@ async function gracefulShutdown(e = 0, t = "other", n) {
   } catch {}
   try {
     await r(t, {
-      ...n,
+      ...options,
       signal: AbortSignal.timeout(s),
     });
   } catch {}
@@ -276,11 +276,11 @@ async function gracefulShutdown(e = 0, t = "other", n) {
       scope: We("session_end"),
       last_request_id: Hr(a),
     });
-  if ((await fVe(), n?.finalMessage))
+  if ((await fVe(), options?.finalMessage))
     try {
       bEe.writeSync(
         2,
-        n.finalMessage +
+        options.finalMessage +
           `
 `,
       );

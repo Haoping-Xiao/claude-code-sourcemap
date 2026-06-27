@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A_c] deps: OTt, _i, Ye, uo, S_, je, PM, b_c
 Nen = R(rt(), 1);
-function HistorySearchInput(e) {
+function HistorySearchInput(t0) {
   let t = H_c.c(12),
-    { value: n, onChange: r, historyFailedMatch: o } = e,
+    { value: n, onChange: r, historyFailedMatch: o } = t0,
     s = o ? "no matching prompt:" : "search prompts:",
     i;
   if (t[0] !== s)

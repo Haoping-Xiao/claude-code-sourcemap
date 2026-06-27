@@ -18,10 +18,10 @@ async function detectPythonPackageManager() {
 async function hff() {
   return (await $n("which", ["it2"])).code === 0;
 }
-async function installIt2(e) {
-  T(`[it2Setup] Installing it2 using ${e}`);
+async function installIt2(packageManager) {
+  T(`[it2Setup] Installing it2 using ${packageManager}`);
   let t;
-  switch (e) {
+  switch (packageManager) {
     case "uvx":
       t = await Gr("uv", ["tool", "install", "it2"], {
         cwd: K6t.homedir(),
@@ -50,11 +50,11 @@ async function installIt2(e) {
       T(`[it2Setup] Failed to install it2: ${n}`, {
         level: "error",
       }),
-      Le("swarm_iterm2_it2_install", `${e}_install_failed`),
+      Le("swarm_iterm2_it2_install", `${packageManager}_install_failed`),
       {
         success: !1,
         error: n,
-        packageManager: e,
+        packageManager: packageManager,
       }
     );
   }
@@ -63,7 +63,7 @@ async function installIt2(e) {
     xe("swarm_iterm2_it2_install"),
     {
       success: !0,
-      packageManager: e,
+      packageManager: packageManager,
     }
   );
 }
@@ -127,13 +127,13 @@ function markIt2SetupComplete() {
     })),
       T("[it2Setup] Marked it2 setup as complete"));
 }
-function setPreferTmuxOverIterm2(e) {
-  if (Dt().preferTmuxOverIterm2 !== e)
+function setPreferTmuxOverIterm2(prefer) {
+  if (Dt().preferTmuxOverIterm2 !== prefer)
     (gn((n) => ({
       ...n,
-      preferTmuxOverIterm2: e,
+      preferTmuxOverIterm2: prefer,
     })),
-      T(`[it2Setup] Set preferTmuxOverIterm2 = ${e}`));
+      T(`[it2Setup] Set preferTmuxOverIterm2 = ${prefer}`));
 }
 function uhl() {
   return Dt().preferTmuxOverIterm2 === !0;

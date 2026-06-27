@@ -17,8 +17,8 @@ Ia = Object.assign(
     cache: uvs.cache,
   },
 );
-function getSettingSourceName(e) {
-  switch (e) {
+function getSettingSourceName(source) {
+  switch (source) {
     case "userSettings":
       return "user";
     case "projectSettings":
@@ -31,8 +31,8 @@ function getSettingSourceName(e) {
       return "managed";
   }
 }
-function getSourceDisplayName(e) {
-  switch (e) {
+function getSourceDisplayName(source) {
+  switch (source) {
     case "userSettings":
       return "User";
     case "projectSettings":
@@ -51,8 +51,8 @@ function getSourceDisplayName(e) {
       return "MCP";
   }
 }
-function getSettingSourceDisplayNameLowercase(e) {
-  switch (e) {
+function getSettingSourceDisplayNameLowercase(source) {
+  switch (source) {
     case "userSettings":
       return "user settings";
     case "projectSettings":
@@ -75,8 +75,8 @@ function getSettingSourceDisplayNameLowercase(e) {
       return "MCP server policy";
   }
 }
-function getSettingSourceDisplayNameCapitalized(e) {
-  switch (e) {
+function getSettingSourceDisplayNameCapitalized(source) {
+  switch (source) {
     case "userSettings":
       return "User settings";
     case "projectSettings":
@@ -99,9 +99,9 @@ function getSettingSourceDisplayNameCapitalized(e) {
       return "MCP server policy";
   }
 }
-function parseSettingSourcesFlag(e) {
-  if (e === "") return [];
-  let t = e.split(",").map((r) => r.trim()),
+function parseSettingSourcesFlag(flag) {
+  if (flag === "") return [];
+  let t = flag.split(",").map((r) => r.trim()),
     n = [];
   for (let r of t)
     switch (r) {

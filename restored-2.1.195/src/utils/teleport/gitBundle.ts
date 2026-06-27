@@ -57,20 +57,20 @@ async function UZa(e) {
     inPackCount: r,
   };
 }
-async function _bundleWithFallback(e, t, n, r, o, s) {
-  let i = r ? ["refs/seed/stash"] : [],
+async function _bundleWithFallback(gitRoot, bundlePath, maxBytes, hasStash, signal, s) {
+  let i = hasStash ? ["refs/seed/stash"] : [],
     a = (_) =>
-      Gr(go(), ["bundle", "create", t, _, ...i], {
-        cwd: e,
-        abortSignal: o,
+      Gr(go(), ["bundle", "create", bundlePath, _, ...i], {
+        cwd: gitRoot,
+        abortSignal: signal,
       }),
-    { sizeBytes: l, inPackCount: c } = await BZa(e, o),
-    u = l !== null && l > n,
-    d = l !== null && l > 3 * n,
-    p = d && ((l !== null && l > 100 * n) || (c !== null && c > 5000000));
+    { sizeBytes: l, inPackCount: c } = await BZa(gitRoot, signal),
+    u = l !== null && l > maxBytes,
+    d = l !== null && l > 3 * maxBytes,
+    p = d && ((l !== null && l > 100 * maxBytes) || (c !== null && c > 5000000));
   if (u)
     T(
-      `[gitBundle] size-pack ${(l / 1024 / 1024).toFixed(0)}MB > ${(n / 1024 / 1024).toFixed(0)}MB cap; skipping --all${d ? " and HEAD" : ""}${p ? " and squashed" : ""}`,
+      `[gitBundle] size-pack ${(l / 1024 / 1024).toFixed(0)}MB > ${(maxBytes / 1024 / 1024).toFixed(0)}MB cap; skipping --all${d ? " and HEAD" : ""}${p ? " and squashed" : ""}`,
     );
   if (!u) {
     let _ = await a("--all");
@@ -80,15 +80,15 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
         error: `git bundle create --all failed (${_.code}): ${_.stderr.slice(0, 200)}`,
         failReason: "git_error",
       };
-    let { size: S } = await vht.stat(t);
-    if (S <= n)
+    let { size: S } = await vht.stat(bundlePath);
+    if (S <= maxBytes)
       return {
         ok: true,
         size: S,
         scope: "all",
       };
     T(
-      `[gitBundle] --all bundle is ${(S / 1024 / 1024).toFixed(1)}MB (> ${(n / 1024 / 1024).toFixed(0)}MB), retrying HEAD-only`,
+      `[gitBundle] --all bundle is ${(S / 1024 / 1024).toFixed(1)}MB (> ${(maxBytes / 1024 / 1024).toFixed(0)}MB), retrying HEAD-only`,
     );
   }
   if (!d) {
@@ -99,8 +99,8 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
         error: `git bundle create HEAD failed (${_.code}): ${_.stderr.slice(0, 200)}`,
         failReason: "git_error",
       };
-    let { size: S } = await vht.stat(t);
-    if (S <= n)
+    let { size: S } = await vht.stat(bundlePath);
+    if (S <= maxBytes)
       return {
         ok: true,
         size: S,
@@ -114,14 +114,14 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
       error: "Repo is too large to bundle. Please setup GitHub on https://claude.ai/code",
       failReason: "too_large",
     };
-  let f = r ? "refs/seed/stash^{tree}" : "HEAD^{tree}",
+  let f = hasStash ? "refs/seed/stash^{tree}" : "HEAD^{tree}",
     m = [];
   if (s) {
     let [_, S] = await Promise.all(
       [f, `${s}^{tree}`].map((v) =>
         Gr(go(), ["rev-parse", v], {
-          cwd: e,
-          abortSignal: o,
+          cwd: gitRoot,
+          abortSignal: signal,
         }),
       ),
     );
@@ -133,8 +133,8 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
         failReason: "no_changes",
       };
     let A = await Gr(go(), ["commit-tree", `${s}^{tree}`, "-m", "seed-base"], {
-      cwd: e,
-      abortSignal: o,
+      cwd: gitRoot,
+      abortSignal: signal,
     });
     if (A.code === 0) m = ["-p", A.stdout.trim()];
     else
@@ -143,8 +143,8 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
       );
   }
   let g = await Gr(go(), ["commit-tree", f, ...m, "-m", "seed"], {
-    cwd: e,
-    abortSignal: o,
+    cwd: gitRoot,
+    abortSignal: signal,
   });
   if (g.code !== 0)
     return {
@@ -154,11 +154,11 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
     };
   let h = g.stdout.trim();
   await Gr(go(), ["update-ref", "refs/seed/root", h], {
-    cwd: e,
+    cwd: gitRoot,
   });
-  let y = await Gr(go(), ["bundle", "create", t, "refs/seed/root"], {
-    cwd: e,
-    abortSignal: o,
+  let y = await Gr(go(), ["bundle", "create", bundlePath, "refs/seed/root"], {
+    cwd: gitRoot,
+    abortSignal: signal,
   });
   if (y.code !== 0)
     return {
@@ -166,8 +166,8 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
       error: `git bundle create refs/seed/root failed (${y.code}): ${y.stderr.slice(0, 200)}`,
       failReason: "git_error",
     };
-  let { size: b } = await vht.stat(t);
-  if (b <= n)
+  let { size: b } = await vht.stat(bundlePath);
+  if (b <= maxBytes)
     return {
       ok: true,
       size: b,
@@ -179,8 +179,8 @@ async function _bundleWithFallback(e, t, n, r, o, s) {
     failReason: "too_large",
   };
 }
-async function createAndUploadGitBundle(e, t) {
-  let n = t?.cwd ?? $t(),
+async function createAndUploadGitBundle(config, opts) {
+  let n = opts?.cwd ?? $t(),
     r = Tu(n);
   if (!r)
     return (
@@ -211,7 +211,7 @@ async function createAndUploadGitBundle(e, t) {
     );
   let s = await Gr(go(), ["stash", "create"], {
       cwd: r,
-      abortSignal: t?.signal,
+      abortSignal: opts?.signal,
     }),
     i = s.code === 0 ? s.stdout.trim() : "",
     a = i !== "";
@@ -247,7 +247,7 @@ async function createAndUploadGitBundle(e, t) {
   let l = Jst("ccr-seed", ".bundle");
   try {
     let c = NZa(),
-      u = await _bundleWithFallback(r, l, c, a, t?.signal, t?.baseRef);
+      u = await _bundleWithFallback(r, l, c, a, opts?.signal, opts?.baseRef);
     if (!u.ok)
       return (
         T(`[gitBundle] ${u.error}`),
@@ -262,8 +262,8 @@ async function createAndUploadGitBundle(e, t) {
           failReason: u.failReason,
         }
       );
-    let d = await $Za(l, "_source_seed.bundle", e, {
-      signal: t?.signal,
+    let d = await $Za(l, "_source_seed.bundle", config, {
+      signal: opts?.signal,
     });
     if (!d.success)
       return (

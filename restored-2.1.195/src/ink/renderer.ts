@@ -13,7 +13,7 @@
     scan: 0,
     calls: 0,
   }));
-function createRenderer(e, t) {
+function createRenderer(node, stylePool) {
   let n,
     r = hGe();
   return (o) => {
@@ -22,17 +22,17 @@ function createRenderer(e, t) {
       d = i.screen,
       p = d.charPool,
       f = d.hyperlinkPool,
-      m = e.yogaNode?.getComputedHeight(),
-      g = e.yogaNode?.getComputedWidth(),
+      m = node.yogaNode?.getComputedHeight(),
+      g = node.yogaNode?.getComputedWidth(),
       h = m === void 0 || !Number.isFinite(m) || m < 0,
       y = g === void 0 || !Number.isFinite(g) || g < 0;
-    if (!e.yogaNode || h || y) {
-      if (e.yogaNode && (h || y))
+    if (!node.yogaNode || h || y) {
+      if (node.yogaNode && (h || y))
         T(
-          `Invalid yoga dimensions: width=${g}, height=${m}, childNodes=${e.childNodes.length}, terminalWidth=${l}, terminalRows=${c}`,
+          `Invalid yoga dimensions: width=${g}, height=${m}, childNodes=${node.childNodes.length}, terminalWidth=${l}, terminalRows=${c}`,
         );
       return {
-        screen: Y7(l, 0, t, p, f),
+        screen: Y7(l, 0, stylePool, p, f),
         viewport: {
           width: l,
           height: c,
@@ -44,8 +44,8 @@ function createRenderer(e, t) {
         },
       };
     }
-    let b = Math.floor(e.yogaNode.getComputedWidth()),
-      _ = Math.floor(e.yogaNode.getComputedHeight()),
+    let b = Math.floor(node.yogaNode.getComputedWidth()),
+      _ = Math.floor(node.yogaNode.getComputedHeight()),
       S = o.altScreen ? c : _;
     if (o.altScreen && _ > c)
       T(
@@ -55,18 +55,18 @@ function createRenderer(e, t) {
           level: "warn",
         },
       );
-    let A = d ?? Y7(b, S, t, p, f);
+    let A = d ?? Y7(b, S, stylePool, p, f);
     if (n) n.reset(b, S, A);
     else
       n = new Q_e({
         width: b,
         height: S,
-        stylePool: t,
+        stylePool: stylePool,
         screen: A,
       });
     (DWi(r), (r.overlayActive = o.overlayActive));
     let v = K4i();
-    yGe(e, n, r, {
+    yGe(node, n, r, {
       prevScreen: v || o.prevFrameContaminated ? void 0 : u,
     });
     let C = n.get(),

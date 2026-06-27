@@ -18,21 +18,21 @@ function M9t(e) {
 function Eel(e) {
   return e.replaceAll(AMPERSAND_TOKEN, "&").replaceAll(DOLLAR_TOKEN, "$");
 }
-function countLinesChanged(e, t, n) {
+function countLinesChanged(patch, newFileContent, n) {
   let r = 0,
     o = 0;
-  if (e.length === 0 && n) r = (n.match(/\n/g)?.length ?? 0) + 1;
+  if (patch.length === 0 && n) r = (n.match(/\n/g)?.length ?? 0) + 1;
   else
-    ((r = e.reduce((s, i) => s + On(i.lines, (a) => a.startsWith("+")), 0)),
-      (o = e.reduce((s, i) => s + On(i.lines, (a) => a.startsWith("-")), 0)));
+    ((r = patch.reduce((s, i) => s + On(i.lines, (a) => a.startsWith("+")), 0)),
+      (o = patch.reduce((s, i) => s + On(i.lines, (a) => a.startsWith("-")), 0)));
   (esn(r, o),
     lsn()?.add(r, {
       type: "added",
-      model: t,
+      model: newFileContent,
     }),
     lsn()?.add(o, {
       type: "removed",
-      model: t,
+      model: newFileContent,
     }),
     G("tengu_file_changed", {
       lines_added: r,

@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.2964  score=0.4646  fileCov=0.4501
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function MCPServerDesktopImportDialog(e) {
+function MCPServerDesktopImportDialog(t0) {
   let t = pdc.c(36),
-    { servers: n, scope: r, onDone: o } = e,
+    { servers: n, scope: r, onDone: o } = t0,
     s;
   if (t[0] !== n) ((s = Object.keys(n)), (t[0] = n), (t[1] = s));
   else s = t[1];

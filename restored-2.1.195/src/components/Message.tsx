@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ell] deps: Ye, co, rll, fIo, ill, gll, _ll
 ((bll = R(lt(), 1)), (u_t = R(se(), 1)));
-function MessageImpl(e) {
+function MessageImpl(t0) {
   let t = uKn.c(108),
     {
       message: n,
@@ -28,7 +28,7 @@ function MessageImpl(e) {
       isUserContinuation: b,
       latestBashOutputUUID: _,
       disableDisplayOverride: S,
-    } = e,
+    } = t0,
     A = b === void 0 ? false : b;
   switch (n.type) {
     case "attachment": {
@@ -531,7 +531,7 @@ function cif(e) {
       return;
   }
 }
-function AssistantMessageBlock(e) {
+function AssistantMessageBlock(t0) {
   let t = uKn.c(62),
     {
       param: n,
@@ -552,7 +552,7 @@ function AssistantMessageBlock(e) {
       messageUuid: y,
       apiMessageId: b,
       isFirstTextBlock: _,
-    } = e,
+    } = t0,
     S;
   if (t[0] !== b || t[1] !== n.type)
     ((S = (v) => (n.type === "text" && b !== void 0 ? v.displayedMessageContent[b] : void 0)),

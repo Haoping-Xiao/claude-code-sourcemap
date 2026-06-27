@@ -447,11 +447,11 @@ async function ykf(e) {
     forkContextMessages: t,
   };
 }
-async function call(e, t, n) {
-  let r = n?.trim();
+async function call(onDone, context, args) {
+  let r = args?.trim();
   if (!r)
     return (
-      e("Usage: /btw <your question>", {
+      onDone("Usage: /btw <your question>", {
         display: "system",
       }),
       null
@@ -463,8 +463,8 @@ async function call(e, t, n) {
     })),
     H_.jsx(BtwSideQuestion, {
       question: r,
-      context: t,
-      onDone: e,
+      context: context,
+      onDone: onDone,
     })
   );
 }

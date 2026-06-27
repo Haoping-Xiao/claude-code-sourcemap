@@ -38,55 +38,55 @@ async function App(e) {
       `DECSTBM: ${$Rn ? "enabled" : "gated"} (TMUX=${process.env.TMUX ? "set" : "unset"} ZELLIJ=${process.env.ZELLIJ != null ? "set" : "unset"} TERM_PROGRAM=${process.env.TERM_PROGRAM ?? "unset"} TERM=${process.env.TERM ?? "unset"})`,
     ));
 }
-function processKeysInBatch(e, t, n, r) {
+function processKeysInBatch(app, items, _unused1, _unused2) {
   if (
-    t.some(
+    items.some(
       (s) =>
         (s.kind === "key" && s.sequence !== X3e && s.sequence !== Nke) ||
         (s.kind === "mouse" && !((s.button & 32) !== 0 && (s.button & 3) === 3)),
     )
   )
     Tge();
-  let o = b4i(e.jediTermInput, t, performance.now(), e.emitJediTermScrollBug);
-  AGd(e, o);
+  let o = b4i(app.jediTermInput, items, performance.now(), app.emitJediTermScrollBug);
+  AGd(app, o);
   for (let s of o) {
     if (s.kind === "response") {
       if (s.response.type === "themeNotify") {
         WUi();
         continue;
       }
-      e.querier?.onResponse(s.response);
+      app.querier?.onResponse(s.response);
       continue;
     }
     if (s.kind === "mouse") {
-      if (e.props.getMouseMode?.() === "scroll" && (s.button & 3) === 0) continue;
-      bGd(e, s);
+      if (app.props.getMouseMode?.() === "scroll" && (s.button & 3) === 0) continue;
+      bGd(app, s);
       continue;
     }
     let i = s.sequence;
     if (i === X3e) {
-      e.handleTerminalFocus(true);
+      app.handleTerminalFocus(true);
       let a = new Pit("terminalfocus");
-      e.internal_eventEmitter.emit("terminalfocus", a);
+      app.internal_eventEmitter.emit("terminalfocus", a);
       continue;
     }
     if (i === Nke) {
-      if ((e.handleTerminalFocus(false), e.props.selection.isDragging))
-        (eat(e.props.selection), e.props.onSelectionChange());
+      if ((app.handleTerminalFocus(false), app.props.selection.isDragging))
+        (eat(app.props.selection), app.props.onSelectionChange());
       let a = new Pit("terminalblur");
-      e.internal_eventEmitter.emit("terminalblur", a);
+      app.internal_eventEmitter.emit("terminalblur", a);
       continue;
     }
     if (!Sit()) LYr(true);
     if (s.name === "z" && s.ctrl && oJr()) {
-      e.handleSuspend();
+      app.handleSuspend();
       continue;
     }
-    if (!s.isPasted) e.handleInput(i);
-    if (s.isPasted) e.props.dispatchPasteEvent(s.sequence ?? "");
+    if (!s.isPasted) app.handleInput(i);
+    if (s.isPasted) app.props.dispatchPasteEvent(s.sequence ?? "");
     else if (s.name === "wheelup" || s.name === "wheeldown" || s.name === "mouse") {
-      if (s.name !== "mouse") e.props.dispatchWheelEvent(s);
-    } else e.props.dispatchKeyboardEvent(s);
+      if (s.name !== "mouse") app.props.dispatchWheelEvent(s);
+    } else app.props.dispatchKeyboardEvent(s);
   }
 }
 function bGd(e, t) {

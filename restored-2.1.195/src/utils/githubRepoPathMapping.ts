@@ -101,11 +101,11 @@ async function SMc(e, t) {
     return false;
   }
 }
-function removePathFromRepo(e, t) {
+function removePathFromRepo(repo, pathToRemove) {
   let n = Dt(),
-    r = e.toLowerCase(),
+    r = repo.toLowerCase(),
     o = n.githubRepoPaths?.[r] ?? [],
-    s = o.filter((a) => a !== t);
+    s = o.filter((a) => a !== pathToRemove);
   if (s.length === o.length) return;
   let i = {
     ...n.githubRepoPaths,
@@ -116,6 +116,6 @@ function removePathFromRepo(e, t) {
     ...a,
     githubRepoPaths: i,
   })),
-    T(`Removed ${t} from tracked paths for repo ${r}`));
+    T(`Removed ${pathToRemove} from tracked paths for repo ${r}`));
 }
 var _Mc;

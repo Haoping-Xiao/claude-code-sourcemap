@@ -92,8 +92,8 @@ function Act(e, t) {
   }
   return null;
 }
-function formatLocalTime(e, t) {
-  return new Date(2000, 0, 1, t, e).toLocaleTimeString("en-US", {
+function formatLocalTime(minute, hour) {
+  return new Date(2000, 0, 1, hour, minute).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "2-digit",
   });
@@ -109,10 +109,10 @@ function cop(e, t) {
     })
   );
 }
-function cronToHuman(e, t) {
-  let n = t?.utc ?? false,
-    r = e.trim().split(/\s+/);
-  if (r.length !== 5) return e;
+function cronToHuman(cron, opts) {
+  let n = opts?.utc ?? false,
+    r = cron.trim().split(/\s+/);
+  if (r.length !== 5) return cron;
   let [o, s, i, a, l] = r;
   if (s === "*" && i === "*" && a === "*" && l === "*") {
     if (o === "*") return "Every minute";
@@ -134,7 +134,7 @@ function cronToHuman(e, t) {
       g = m === 0 ? "" : ` at :${m.toString().padStart(2, "0")}`;
     return f === 1 ? `Every hour${g}` : `Every ${f} hours${g}`;
   }
-  if (!o.match(/^\d+$/) || !s.match(/^\d+$/)) return e;
+  if (!o.match(/^\d+$/) || !s.match(/^\d+$/)) return cron;
   let u = parseInt(o, 10),
     d = parseInt(s, 10),
     p = n ? cop : formatLocalTime;
@@ -150,7 +150,7 @@ function cronToHuman(e, t) {
     if (m) return `Every ${m} at ${p(u, d)}`;
   }
   if (i === "*" && a === "*" && l === "1-5") return `Weekdays at ${p(u, d)}`;
-  return e;
+  return cron;
 }
 function Hct(e) {
   let t = e.trim();

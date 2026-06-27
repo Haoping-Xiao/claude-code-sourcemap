@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.2531  score=0.4146  fileCov=0.3939
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ConfirmStep(e) {
+function ConfirmStep(t0) {
   let t = RYl.c(88),
-    { tools: n, existingAgents: r, onSave: o, onSaveAndEdit: s, error: i } = e,
+    { tools: n, existingAgents: r, onSave: o, onSaveAndEdit: s, error: i } = t0,
     { goBack: a, wizardData: l } = Eu(),
     c;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -444,11 +444,11 @@ function e9f(e, t) {
     t,
   );
 }
-function _temp(e) {
-  if (e === void 0) return "All tools";
-  if (e.length === 0) return "None";
-  if (e.length === 1) return e[0] || "None";
-  if (e.length === 2) return e.join(" and ");
-  return `${e.slice(0, -1).join(", ")}, and ${e.at(-1)}`;
+function _temp(toolNames) {
+  if (toolNames === void 0) return "All tools";
+  if (toolNames.length === 0) return "None";
+  if (toolNames.length === 1) return toolNames[0] || "None";
+  if (toolNames.length === 2) return toolNames.join(" and ");
+  return `${toolNames.slice(0, -1).join(", ")}, and ${toolNames.at(-1)}`;
 }
 var RYl, Xp;

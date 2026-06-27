@@ -7,19 +7,19 @@
 function WHf(e) {
   return GHf.includes(e);
 }
-function validateCommandForMode(e, t) {
-  let n = A5(e),
+function validateCommandForMode(cmd, toolPermissionContext) {
+  let n = A5(cmd),
     [r] = n.split(/\s+/);
   if (!r)
     return {
       behavior: "passthrough",
       message: "Base command not found",
     };
-  if (t.mode === "acceptEdits" && WHf(r))
+  if (toolPermissionContext.mode === "acceptEdits" && WHf(r))
     return {
       behavior: "allow",
       updatedInput: {
-        command: e,
+        command: cmd,
       },
       decisionReason: {
         type: "mode",
@@ -28,24 +28,24 @@ function validateCommandForMode(e, t) {
     };
   return {
     behavior: "passthrough",
-    message: `No mode-specific handling for '${r}' in ${t.mode} mode`,
+    message: `No mode-specific handling for '${r}' in ${toolPermissionContext.mode} mode`,
   };
 }
-function checkPermissionMode(e, t) {
-  if (t.mode === "bypassPermissions")
+function checkPermissionMode(input, toolPermissionContext) {
+  if (toolPermissionContext.mode === "bypassPermissions")
     return {
       behavior: "passthrough",
       message: "Bypass mode is handled in main permission flow",
     };
-  if (t.mode === "dontAsk")
+  if (toolPermissionContext.mode === "dontAsk")
     return {
       behavior: "passthrough",
       message: "DontAsk mode is handled in main permission flow",
     };
-  let n = By(e.command),
+  let n = By(input.command),
     r = false;
   for (let o of n) {
-    let s = validateCommandForMode(o, t);
+    let s = validateCommandForMode(o, toolPermissionContext);
     if (s.behavior === "ask" || s.behavior === "deny") return s;
     if (s.behavior === "passthrough")
       return {
@@ -57,10 +57,10 @@ function checkPermissionMode(e, t) {
   if (r)
     return {
       behavior: "allow",
-      updatedInput: e,
+      updatedInput: input,
       decisionReason: {
         type: "mode",
-        mode: t.mode,
+        mode: toolPermissionContext.mode,
       },
     };
   return {

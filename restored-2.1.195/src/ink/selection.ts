@@ -209,37 +209,37 @@ function VXr(e, t) {
     end: r !== 0 ? r >>> 16 : e.width,
   };
 }
-function findPlainTextUrlAt(e, t, n) {
-  if (n < 0 || n >= e.height) return;
-  let r = e.width,
-    o = t;
+function findPlainTextUrlAt(screen, col, row) {
+  if (row < 0 || row >= screen.height) return;
+  let r = screen.width,
+    o = col;
   if (o > 0) {
-    let v = Fj(e, o, n);
+    let v = Fj(screen, o, row);
     if (v && v.width === 2) o -= 1;
   }
   if (o < 0 || o >= r) return;
-  let s = e.softWrap,
-    i = VXr(e, n),
+  let s = screen.softWrap,
+    i = VXr(screen, row),
     a,
     l,
     c = o >= i.start && o < i.end;
   if (c) ((a = i.start), (l = i.end - 1));
   else if (o >= i.end) ((a = i.end), (l = r - 1));
   else ((a = 0), (l = i.start - 1));
-  let u = qXr(e, n, o, a, l);
+  let u = qXr(screen, row, o, a, l);
   if (!u) return;
   let d = u.text,
     p = o - u.lo,
-    f = n,
+    f = row,
     m = u.hi,
-    g = n,
+    g = row,
     h = u.lo;
   if (c) {
-    while (f + 1 < e.height) {
+    while (f + 1 < screen.height) {
       let v = s[f + 1];
       if (v === 0 || m + 1 !== v >>> 16 || (v & Xit) !== 0) break;
-      let C = VXr(e, f + 1),
-        x = qXr(e, f + 1, C.start, C.start, C.end - 1);
+      let C = VXr(screen, f + 1),
+        x = qXr(screen, f + 1, C.start, C.start, C.end - 1);
       if (!x) break;
       ((d += x.text), f++, (m = x.hi));
     }
@@ -247,8 +247,8 @@ function findPlainTextUrlAt(e, t, n) {
       let v = s[g],
         C = v >>> 16;
       if (v === 0 || h !== lLn(v) || C === 0 || (v & Xit) !== 0) break;
-      let x = VXr(e, g - 1),
-        I = qXr(e, g - 1, C - 1, x.start, C - 1);
+      let x = VXr(screen, g - 1),
+        I = qXr(screen, g - 1, C - 1, x.start, C - 1);
       if (!I) break;
       ((d = I.text + d), (p += I.text.length), g--, (h = I.lo));
     }
@@ -265,7 +265,7 @@ function findPlainTextUrlAt(e, t, n) {
   }
   if (b < 0) return;
   if (_ === d.length && m + 1 < r) {
-    if (Fj(e, m + 1, f)?.char === "\u2026") return;
+    if (Fj(screen, m + 1, f)?.char === "\u2026") return;
   }
   let S = d.slice(b, _),
     A = {

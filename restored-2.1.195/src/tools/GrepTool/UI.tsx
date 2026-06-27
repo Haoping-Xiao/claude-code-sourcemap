@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Otl] deps: fn, Yf, Is, q9t, tre
 QJ = require("path");
-function SearchResultSummary(e) {
+function SearchResultSummary(t0) {
   let t = Ntl.c(26),
-    { count: n, countLabel: r, secondaryCount: o, secondaryLabel: s, content: i, verbose: a } = e,
+    { count: n, countLabel: r, secondaryCount: o, secondaryLabel: s, content: i, verbose: a } = t0,
     l;
   if (t[0] !== n)
     ((l = XI.jsxs(w, {
@@ -121,9 +121,9 @@ function renderToolUseMessage({ pattern: e, path: t }, { verbose: n }) {
   if (t) r.push(`path: "${n ? t : kd(t)}"`);
   return r.join(", ");
 }
-function renderToolUseErrorMessage(e, { verbose: t }) {
-  if (!t && typeof e === "string" && xl(e, "tool_use_error")) {
-    if (xl(e, "tool_use_error")?.includes($B))
+function renderToolUseErrorMessage(result, { verbose: t }) {
+  if (!t && typeof result === "string" && xl(result, "tool_use_error")) {
+    if (xl(result, "tool_use_error")?.includes($B))
       return XI.jsx(qn, {
         children: XI.jsx(w, {
           color: "error",
@@ -138,7 +138,7 @@ function renderToolUseErrorMessage(e, { verbose: t }) {
     });
   }
   return XI.jsx(AT, {
-    result: e,
+    result: result,
     verbose: t,
   });
 }
@@ -151,7 +151,7 @@ function renderToolResultMessage(
     numLines: o,
     numMatches: s,
   },
-  i,
+  _progressMessagesForMessage,
   { verbose: a },
 ) {
   if (e === "content")

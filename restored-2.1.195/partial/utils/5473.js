@@ -39,13 +39,13 @@ function O6o(e) {
 function Rfm(e) {
   return e.tasks;
 }
-function AgentPill(e) {
+function AgentPill(t0) {
   let t = $6o.c(8),
     {
       selected: n,
       onClick: r,
       children: o
-    } = e,
+    } = t0,
     [s, i] = m_c.useState(false),
     a = n || s,
     l;

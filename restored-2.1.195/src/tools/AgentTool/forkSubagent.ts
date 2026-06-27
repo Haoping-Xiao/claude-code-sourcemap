@@ -39,27 +39,30 @@ function isInForkChild(e) {
     return n.some((r) => r.type === "text" && r.text.includes(`<${bhe}>`));
   });
 }
-function buildForkedMessages(e, t) {
+function buildForkedMessages(directive, assistantMessage) {
   let n = {
-      ...t,
+      ...assistantMessage,
       uuid: Boa.randomUUID(),
       message: {
-        ...t.message,
-        content: [...t.message.content],
+        ...assistantMessage.message,
+        content: [...assistantMessage.message.content],
       },
     },
-    r = t.message.content.filter((i) => i.type === "tool_use");
+    r = assistantMessage.message.content.filter((i) => i.type === "tool_use");
   if (r.length === 0)
     return (
-      T(`No tool_use blocks found in assistant message for fork directive: ${e.slice(0, 50)}...`, {
-        level: "error",
-      }),
+      T(
+        `No tool_use blocks found in assistant message for fork directive: ${directive.slice(0, 50)}...`,
+        {
+          level: "error",
+        },
+      ),
       [
         Rn({
           content: [
             {
               type: "text",
-              text: buildChildMessage(e),
+              text: buildChildMessage(directive),
             },
           ],
         }),
@@ -80,7 +83,7 @@ function buildForkedMessages(e, t) {
         ...o,
         {
           type: "text",
-          text: buildChildMessage(e),
+          text: buildChildMessage(directive),
         },
       ],
     });
@@ -103,8 +106,8 @@ Guidelines (your directive may override any of these):
 
 ${Z0t}${e}`;
 }
-function buildWorktreeNotice(e, t) {
-  return `You've inherited the conversation context above from a parent agent working in ${e}. You are operating in an isolated git worktree at ${t} \u2014 same repository, same relative file structure, separate working copy. Paths in the inherited context refer to the parent's working directory; translate them to your worktree root. Re-read files before editing if the parent may have modified them since they appear in the context. Your changes stay in this worktree and will not affect the parent's files.`;
+function buildWorktreeNotice(parentCwd, worktreeCwd) {
+  return `You've inherited the conversation context above from a parent agent working in ${parentCwd}. You are operating in an isolated git worktree at ${worktreeCwd} \u2014 same repository, same relative file structure, separate working copy. Paths in the inherited context refer to the parent's working directory; translate them to your worktree root. Re-read files before editing if the parent may have modified them since they appear in the context. Your changes stay in this worktree and will not affect the parent's files.`;
 }
 var Boa,
   isp = "tengu_copper_fox",

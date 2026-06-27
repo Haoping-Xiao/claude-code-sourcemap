@@ -7,9 +7,9 @@
 // module exports: DevChannelsDialog
 // [unwrapped __esm module D$c] deps: kt, Ye, Yp, dr, Fy, vi
 ((R$c = R(lt(), 1)), (umr = R(rt(), 1)), (ove = R(se(), 1)));
-function DevChannelsDialog(e) {
+function DevChannelsDialog(t0) {
   let t = P$c.c(13),
-    { channels: n, onAccept: r } = e,
+    { channels: n, onAccept: r } = t0,
     o;
   if (t[0] !== r)
     ((o = function (m) {

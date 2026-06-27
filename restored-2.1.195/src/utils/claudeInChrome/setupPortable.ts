@@ -13,17 +13,17 @@ cBo = {
 function x1f() {
   return [PROD_EXTENSION_ID];
 }
-async function detectExtensionInstallationPortable(e, t) {
-  if (e.length === 0)
+async function detectExtensionInstallationPortable(browserPaths, log) {
+  if (browserPaths.length === 0)
     return (
-      t?.("[Claude in Chrome] No browser paths to check"),
+      log?.("[Claude in Chrome] No browser paths to check"),
       {
         isInstalled: false,
         browser: null,
       }
     );
   let n = x1f();
-  for (let { browser: r, path: o } of e) {
+  for (let { browser: r, path: o } of browserPaths) {
     let s = [];
     try {
       s = await uBo.readdir(o, {
@@ -37,14 +37,14 @@ async function detectExtensionInstallationPortable(e, t) {
       .filter((a) => a.isDirectory())
       .filter((a) => a.name === "Default" || a.name.startsWith("Profile "))
       .map((a) => a.name);
-    if (i.length > 0) t?.(`[Claude in Chrome] Found ${r} profiles: ${i.join(", ")}`);
+    if (i.length > 0) log?.(`[Claude in Chrome] Found ${r} profiles: ${i.join(", ")}`);
     for (let a of i)
       for (let l of n) {
         let c = LFl.join(o, a, "Extensions", l);
         try {
           return (
             await uBo.readdir(c),
-            t?.(`[Claude in Chrome] Extension ${l} found in ${r} ${a}`),
+            log?.(`[Claude in Chrome] Extension ${l} found in ${r} ${a}`),
             {
               isInstalled: true,
               browser: r,
@@ -54,7 +54,7 @@ async function detectExtensionInstallationPortable(e, t) {
       }
   }
   return (
-    t?.("[Claude in Chrome] Extension not found in any browser"),
+    log?.("[Claude in Chrome] Extension not found in any browser"),
     {
       isInstalled: false,
       browser: null,

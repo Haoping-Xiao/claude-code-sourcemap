@@ -18,12 +18,12 @@ function Dxm(e) {
     }),
   );
 }
-async function logSkillsLoaded(e, t, n) {
-  let r = await mA(e),
+async function logSkillsLoaded(cwd, contextWindowTokens, n) {
+  let r = await mA(cwd),
     o = evl(),
     s = new Set(o),
     i = [...r, ...o],
-    a = qWe(t, n);
+    a = qWe(contextWindowTokens, n);
   for (let l of i) {
     if (l.type !== "prompt") continue;
     if (l.source === "builtin") continue;

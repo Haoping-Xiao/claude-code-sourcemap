@@ -6,11 +6,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U9o] deps: Ed, kt, yde, uo, je, Mm, At, vn, eer, vYt, A5e, tpc, _Gt, nDe, B9o, Arr, Xh, gz
 jZt = R(rt(), 1);
-function externalMetadataToAppState(e) {
+function externalMetadataToAppState(metadata) {
   return t => {
     let n = t.toolPermissionContext;
-    if (typeof e.permission_mode === "string") {
-      let o = jO(e.permission_mode);
+    if (typeof metadata.permission_mode === "string") {
+      let o = jO(metadata.permission_mode);
       try {
         if (n = {
           ...AZ(n.mode, o, n),
@@ -20,12 +20,12 @@ function externalMetadataToAppState(e) {
         T(`[externalMetadataToAppState] transitionPermissionMode rejected restored mode '${o}': ${Zr(s).message}`);
       }
     }
-    let r = _am.safeParse(e.post_turn_summary);
+    let r = _am.safeParse(metadata.post_turn_summary);
     return {
       ...t,
       toolPermissionContext: n,
-      ...(typeof e.is_ultraplan_mode === "boolean" && {
-        isUltraplanMode: e.is_ultraplan_mode
+      ...(typeof metadata.is_ultraplan_mode === "boolean" && {
+        isUltraplanMode: metadata.is_ultraplan_mode
       }),
       ...(r.success && {
         postTurnSummary: r.data

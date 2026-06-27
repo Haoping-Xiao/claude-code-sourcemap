@@ -13,25 +13,25 @@ function aor(e) {
   let n = computeSearchText(e).toLowerCase();
   return (UWl.set(e, n), n);
 }
-function computeSearchText(e) {
+function computeSearchText(msg) {
   let t = "";
-  switch (e.type) {
+  switch (msg.type) {
     case "user": {
-      let o = e.message.content;
+      let o = msg.message.content;
       if (typeof o === "string") t = BWl.has(o) ? "" : o;
       else {
         let s = [];
         for (let i of o)
           if (i.type === "text") {
             if (!BWl.has(i.text)) s.push(i.text);
-          } else if (i.type === "tool_result") s.push(toolResultSearchText(e.toolUseResult));
+          } else if (i.type === "tool_result") s.push(toolResultSearchText(msg.toolUseResult));
         t = s.join(`
 `);
       }
       break;
     }
     case "assistant": {
-      let o = e.message.content;
+      let o = msg.message.content;
       if (Array.isArray(o))
         t = o.flatMap((s) => {
           if (s.type === "text") return [s.text];
@@ -42,15 +42,15 @@ function computeSearchText(e) {
       break;
     }
     case "attachment": {
-      if (e.attachment.type === "relevant_memories")
-        t = e.attachment.memories.map((o) => o.content).join(`
+      if (msg.attachment.type === "relevant_memories")
+        t = msg.attachment.memories.map((o) => o.content).join(`
 `);
       else if (
-        e.attachment.type === "queued_command" &&
-        e.attachment.commandMode !== "task-notification" &&
-        !e.attachment.isMeta
+        msg.attachment.type === "queued_command" &&
+        msg.attachment.commandMode !== "task-notification" &&
+        !msg.attachment.isMeta
       ) {
-        let o = e.attachment.prompt;
+        let o = msg.attachment.prompt;
         t =
           typeof o === "string"
             ? o
@@ -60,8 +60,8 @@ function computeSearchText(e) {
       break;
     }
     case "collapsed_read_search": {
-      if (e.relevantMemories)
-        t = e.relevantMemories.map((o) => o.content).join(`
+      if (msg.relevantMemories)
+        t = msg.relevantMemories.map((o) => o.content).join(`
 `);
       break;
     }
@@ -78,9 +78,9 @@ function computeSearchText(e) {
   }
   return n;
 }
-function toolUseSearchText(e) {
-  if (!e || typeof e !== "object") return "";
-  let t = e,
+function toolUseSearchText(input) {
+  if (!input || typeof input !== "object") return "";
+  let t = input,
     n = [];
   for (let r of [
     "command",

@@ -32,8 +32,12 @@ async function TLm(e, t) {
     await XZn(Rmr.join(n, o), r);
   }
 }
-async function readMarketplaceJsonContent(e) {
-  let t = [Rmr.join(e, ".claude-plugin", "marketplace.json"), Rmr.join(e, "marketplace.json"), e];
+async function readMarketplaceJsonContent(dir) {
+  let t = [
+    Rmr.join(dir, ".claude-plugin", "marketplace.json"),
+    Rmr.join(dir, "marketplace.json"),
+    dir,
+  ];
   for (let n of t)
     try {
       return await fXo.readFile(n, "utf-8");

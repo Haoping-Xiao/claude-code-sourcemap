@@ -39,11 +39,11 @@ function Slo(e, t) {
   let r = hc(t);
   return e.filter((o) => hc(o.name) === r);
 }
-function ensureConnectedClient(e, t) {
-  let [n] = Slo(e, t);
+function ensureConnectedClient(client, t) {
+  let [n] = Slo(client, t);
   if (!n)
     throw new mi(
-      `Server "${t}" not found. Available servers: ${e.map((r) => r.name).join(", ")}`,
+      `Server "${t}" not found. Available servers: ${client.map((r) => r.name).join(", ")}`,
       "MCP server not found",
     );
   if (n.type !== "connected")

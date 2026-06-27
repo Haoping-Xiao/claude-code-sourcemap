@@ -46,13 +46,13 @@ function startQueryProfile() {
     bIl++,
     queryCheckpoint("query_user_input_received"));
 }
-function queryCheckpoint(e) {
+function queryCheckpoint(name) {
   if (!FKt) return;
   let t = oG();
   if (
-    (t.mark(e),
-    IPo.set(e, process.memoryUsage()),
-    e === "query_first_chunk_received" && CPo === null)
+    (t.mark(name),
+    IPo.set(name, process.memoryUsage()),
+    name === "query_first_chunk_received" && CPo === null)
   ) {
     let n = t.getEntriesByType("mark");
     if (n.length > 0) CPo = n.at(-1)?.startTime ?? 0;
@@ -62,13 +62,13 @@ function endQueryProfile() {
   if (!FKt) return;
   queryCheckpoint("query_profile_end");
 }
-function getSlowWarning(e, t) {
-  if (t === "query_user_input_received") return "";
-  if (e > 1000) return " \u26A0\uFE0F  VERY SLOW";
-  if (e > 100) return " \u26A0\uFE0F  SLOW";
-  if (t.includes("git_status") && e > 50) return " \u26A0\uFE0F  git status";
-  if (t.includes("tool_schema") && e > 50) return " \u26A0\uFE0F  tool schemas";
-  if (t.includes("client_creation") && e > 50) return " \u26A0\uFE0F  client creation";
+function getSlowWarning(deltaMs, name) {
+  if (name === "query_user_input_received") return "";
+  if (deltaMs > 1000) return " \u26A0\uFE0F  VERY SLOW";
+  if (deltaMs > 100) return " \u26A0\uFE0F  SLOW";
+  if (name.includes("git_status") && deltaMs > 50) return " \u26A0\uFE0F  git status";
+  if (name.includes("tool_schema") && deltaMs > 50) return " \u26A0\uFE0F  tool schemas";
+  if (name.includes("client_creation") && deltaMs > 50) return " \u26A0\uFE0F  client creation";
   return "";
 }
 function getQueryProfileReport() {
@@ -113,7 +113,7 @@ function getQueryProfileReport() {
 `)
   );
 }
-function getPhaseSummary(e, t) {
+function getPhaseSummary(marks, baselineTime) {
   let n = [
       {
         name: "Context loading",
@@ -156,7 +156,7 @@ function getPhaseSummary(e, t) {
         end: "query_tool_execution_end",
       },
     ],
-    r = new Map(e.map((i) => [i.name, i.startTime - t])),
+    r = new Map(marks.map((i) => [i.name, i.startTime - baselineTime])),
     o = [];
   (o.push(""), o.push("PHASE BREAKDOWN:"));
   for (let i of n) {

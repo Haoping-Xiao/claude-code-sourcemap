@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AKl] deps: Ye, WAt, sr, Vl, vi, B_, Ko
 ((SKl = R(lt(), 1)), (gYe = R(se(), 1)));
-function ViewHookMode(e) {
+function ViewHookMode(t0) {
   let t = HKl.c(45),
-    { selectedHook: n, eventSupportsMatcher: r, onCancel: o } = e,
+    { selectedHook: n, eventSupportsMatcher: r, onCancel: o } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((s = Th.jsx(ht, {
@@ -233,8 +233,8 @@ function ViewHookMode(e) {
   else I = t[44];
   return I;
 }
-function getContentFieldLabel(e) {
-  switch (e.type) {
+function getContentFieldLabel(config) {
+  switch (config.type) {
     case "command":
       return "Command";
     case "prompt":

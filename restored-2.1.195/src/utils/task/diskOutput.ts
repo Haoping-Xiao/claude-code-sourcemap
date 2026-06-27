@@ -272,9 +272,9 @@ async function EHl(e, t, n = eic) {
     };
   }
 }
-async function getTaskOutput(e, t = eic) {
+async function getTaskOutput(taskId, t = eic) {
   try {
-    let { content: n, bytesTotal: r, bytesRead: o } = await vx(jm(e), t);
+    let { content: n, bytesTotal: r, bytesRead: o } = await vx(jm(taskId), t);
     if (r > o)
       return `[${Math.round((r - o) / 1024)}KB of earlier output omitted]
 ${n}`;

@@ -14,7 +14,7 @@ function svt(e, t) {
     ke(n);
   }
 }
-function extractTodoListFromLog(e) {
+function extractTodoListFromLog(log) {
   let t = [],
     n = new Map(),
     r = new Set(),
@@ -23,7 +23,7 @@ function extractTodoListFromLog(e) {
     i = new Map(),
     a = new Set(),
     l = new Set();
-  for (let c of e)
+  for (let c of log)
     if (c.type === "assistant") {
       let u = c.message.content;
       if (!Array.isArray(u)) continue;
@@ -111,10 +111,10 @@ function Avm(e) {
   return e.map((t) => (iYo(t) && typeof t.text === "string" ? t.text : "")).join(`
 `);
 }
-function enqueueUltraplanFailureNotification({ asyncAgents: e, notifiedTaskIds: t }, n) {
+function enqueueUltraplanFailureNotification({ asyncAgents: e, notifiedTaskIds: t }, sessionId) {
   let r = 0;
   for (let o of e.values()) {
-    if (t.has(o.agentId) || n.get(o.agentId)) continue;
+    if (t.has(o.agentId) || sessionId.get(o.agentId)) continue;
     r++;
     let s = o.outputFile
       ? `

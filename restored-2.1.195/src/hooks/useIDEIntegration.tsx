@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module T0c] deps: azo, EW, Ye, HVt, uo, ii, LL, je, co, DE, __, Hoe, Jt, qJ, cAe, hN, J_t, hP, xF, bk, Mp, Sj, YI, sbt
 ((cYo = require("crypto")), (ONe = R(rt(), 1)));
-function useIDEIntegration(e) {
+function useIDEIntegration(t0) {
   let t = v0c.c(7),
     {
       autoConnectIdeFlag: n,
@@ -14,7 +14,7 @@ function useIDEIntegration(e) {
       setDynamicMcpConfig: o,
       setShowIdeOnboarding: s,
       setIDEInstallationState: i,
-    } = e,
+    } = t0,
     a,
     l;
   if (t[0] !== n || t[1] !== r || t[2] !== o || t[3] !== i || t[4] !== s)

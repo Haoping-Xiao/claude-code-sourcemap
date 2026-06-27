@@ -9,26 +9,26 @@ cec = Symbol.for("mcp.completable");
 (function (e) {
   e.Completable = "McpCompletable";
 })(lec || (lec = {}));
-function validatePermissionRule(e) {
+function validatePermissionRule(rule) {
   let t = [];
-  if (e.length === 0)
+  if (rule.length === 0)
     return {
       isValid: false,
       warnings: ["Tool name cannot be empty"],
     };
-  if (e.length > 128)
+  if (rule.length > 128)
     return {
       isValid: false,
-      warnings: [`Tool name exceeds maximum length of 128 characters (current: ${e.length})`],
+      warnings: [`Tool name exceeds maximum length of 128 characters (current: ${rule.length})`],
     };
-  if (e.includes(" ")) t.push("Tool name contains spaces, which may cause parsing issues");
-  if (e.includes(",")) t.push("Tool name contains commas, which may cause parsing issues");
-  if (e.startsWith("-") || e.endsWith("-"))
+  if (rule.includes(" ")) t.push("Tool name contains spaces, which may cause parsing issues");
+  if (rule.includes(",")) t.push("Tool name contains commas, which may cause parsing issues");
+  if (rule.startsWith("-") || rule.endsWith("-"))
     t.push("Tool name starts or ends with a dash, which may cause parsing issues in some contexts");
-  if (e.startsWith(".") || e.endsWith("."))
+  if (rule.startsWith(".") || rule.endsWith("."))
     t.push("Tool name starts or ends with a dot, which may cause parsing issues in some contexts");
-  if (!FKf.test(e)) {
-    let n = e
+  if (!FKf.test(rule)) {
+    let n = rule
       .split("")
       .filter((r) => !/[A-Za-z0-9._-]/.test(r))
       .filter((r, o, s) => s.indexOf(r) === o);

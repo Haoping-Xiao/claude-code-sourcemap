@@ -53,14 +53,14 @@ function sXe(e, t) {
   if (!Number.isFinite(t)) throw TypeError(`Invalid ${e} input`);
   return t;
 }
-function checkDomainBlocklist(e, t, n = {}) {
+function checkDomainBlocklist(domain, t, n = {}) {
   let r;
   try {
     r = JSON.parse(oK.decode(t));
   } catch {}
   if (!B3(r)) throw new oXe("JWT Claims Set must be a top-level JSON object");
   let { typ: o } = n;
-  if (o && (typeof e.typ !== "string" || wGc(e.typ) !== wGc(o)))
+  if (o && (typeof domain.typ !== "string" || wGc(domain.typ) !== wGc(o)))
     throw new H2('unexpected "typ" JWT header value', r, "typ", "check_failed");
   let { requiredClaims: s = [], issuer: i, subject: a, audience: l, maxTokenAge: c } = n,
     u = [...s];

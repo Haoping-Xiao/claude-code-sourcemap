@@ -33,7 +33,14 @@ async function Xdm(e, t) {
     ((p7e = null), (ldr = 0), (i6o = void 0));
   }
 }
-function useArrowKeyHistory(e, t, n, r, o, s) {
+function useArrowKeyHistory(
+  onSetInput,
+  currentInput,
+  pastedContents,
+  setCursorOffset,
+  currentMode,
+  s,
+) {
   let [i, a] = wS.useState(0),
     [l, c] = wS.useState(null),
     u = wS.useRef(0),
@@ -50,21 +57,24 @@ function useArrowKeyHistory(e, t, n, r, o, s) {
     C = wS.useRef(0),
     x = wS.useRef(false),
     I = wS.useRef(0),
-    k = wS.useRef(t),
-    D = wS.useRef(n),
-    P = wS.useRef(o),
+    k = wS.useRef(currentInput),
+    D = wS.useRef(pastedContents),
+    P = wS.useRef(currentMode),
     O = wS.useRef(s);
-  ((k.current = t), (D.current = n), (P.current = o), (O.current = s));
+  ((k.current = currentInput),
+    (D.current = pastedContents),
+    (P.current = currentMode),
+    (O.current = s));
   let L = wS.useCallback(
       (Y, z, K, Z) => {
         ((S.current = Y),
-          e(Y, z, K),
-          r(Z === "end" ? Y.length : 0),
+          onSetInput(Y, z, K),
+          setCursorOffset(Z === "end" ? Y.length : 0),
           (k.current = Y),
           (D.current = K),
           (P.current = z));
       },
-      [e, r],
+      [onSetInput, setCursorOffset],
     ),
     M = wS.useCallback(
       (Y, z) => {
@@ -225,7 +235,7 @@ function useArrowKeyHistory(e, t, n, r, o, s) {
   return {
     historyIndex: i,
     historyTotal: l,
-    historyEdited: i > 0 && t !== S.current,
+    historyEdited: i > 0 && currentInput !== S.current,
     setHistoryIndex: a,
     onHistoryUp: $,
     onHistoryDown: q,

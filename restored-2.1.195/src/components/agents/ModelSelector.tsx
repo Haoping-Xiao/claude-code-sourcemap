@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module i4o] deps: si, Ye, IL, sr, Coe
 ((gYl = R(lt(), 1)), (hYl = R(rt(), 1)), (zq = R(se(), 1)), (zAt = ["automatic", ...Ky]));
-function ModelSelector(e) {
+function ModelSelector(t0) {
   let t = yYl.c(11),
-    { initialModel: n, onComplete: r, onCancel: o } = e,
+    { initialModel: n, onComplete: r, onCancel: o } = t0,
     s;
   if (t[0] !== n) {
     e: {

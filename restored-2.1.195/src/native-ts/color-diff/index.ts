@@ -25,8 +25,8 @@ function _L(e) {
     a: 0,
   };
 }
-function detectColorMode(e) {
-  if (e.includes("ansi")) return "ansi";
+function detectColorMode(theme) {
+  if (theme.includes("ansi")) return "ansi";
   return wt.level >= 3 ? "truecolor" : "color256";
 }
 function Byp(e, t, n) {
@@ -67,16 +67,16 @@ function Uyp(e, t, n, r) {
   }
   return o + tco;
 }
-function defaultSyntaxThemeName(e) {
-  if (e.includes("ansi")) return "ansi";
-  if (e.includes("dark")) return "Monokai Extended";
+function defaultSyntaxThemeName(themeName) {
+  if (themeName.includes("ansi")) return "ansi";
+  if (themeName.includes("dark")) return "Monokai Extended";
   return "GitHub";
 }
-function buildTheme(e, t) {
-  let n = e.includes("dark"),
-    r = e.includes("ansi"),
-    o = e.includes("daltonized"),
-    s = t === "truecolor";
+function buildTheme(themeName, mode) {
+  let n = themeName.includes("dark"),
+    r = themeName.includes("ansi"),
+    o = themeName.includes("daltonized"),
+    s = mode === "truecolor";
   if (r)
     return {
       addLine: xSe,
@@ -182,9 +182,9 @@ function Mba(e, t) {
       return t.foreground;
   }
 }
-function detectLanguage(e, t) {
-  let n = fBn.basename(e),
-    r = fBn.extname(e).slice(1),
+function detectLanguage(filePath, firstLine) {
+  let n = fBn.basename(filePath),
+    r = fBn.extname(filePath).slice(1),
     o = bi(n, "."),
     s = xba.get(n) ?? xba.get(o);
   if (s) {
@@ -195,8 +195,8 @@ function detectLanguage(e, t) {
     let i = I4(r);
     if (i) return i;
   }
-  if (t) {
-    let i = t.startsWith("\uFEFF") ? t.slice(1) : t;
+  if (firstLine) {
+    let i = firstLine.startsWith("\uFEFF") ? firstLine.slice(1) : firstLine;
     if (i.startsWith("#!")) {
       if (i.includes("bash") || i.includes("/sh")) return I4("bash");
       if (i.includes("python")) return I4("python");
@@ -209,10 +209,11 @@ function detectLanguage(e, t) {
   }
   return null;
 }
-function scopeColor(e, t, n) {
-  if (!e) return n.foreground;
-  if (e === "keyword" && jyp.has(t.trim())) return n.scopes.get("_storage") ?? n.foreground;
-  return n.scopes.get(e) ?? n.scopes.get(bi(e, ".")) ?? n.foreground;
+function scopeColor(scope, text, theme) {
+  if (!scope) return theme.foreground;
+  if (scope === "keyword" && jyp.has(text.trim()))
+    return theme.scopes.get("_storage") ?? theme.foreground;
+  return theme.scopes.get(scope) ?? theme.scopes.get(bi(scope, ".")) ?? theme.foreground;
 }
 function Oba(e, t, n, r) {
   if (typeof e === "string") {
@@ -229,30 +230,30 @@ function Oba(e, t, n, r) {
   let o = e.scope ?? e.kind ?? n;
   for (let s of e.children) Oba(s, t, o, r);
 }
-function hasRootNode(e) {
+function hasRootNode(emitter) {
   return (
-    typeof e === "object" &&
-    e !== null &&
-    "rootNode" in e &&
-    typeof e.rootNode === "object" &&
-    e.rootNode !== null &&
-    "children" in e.rootNode
+    typeof emitter === "object" &&
+    emitter !== null &&
+    "rootNode" in emitter &&
+    typeof emitter.rootNode === "object" &&
+    emitter.rootNode !== null &&
+    "children" in emitter.rootNode
   );
 }
-function highlightLine(e, t, n) {
+function highlightLine(state, line, theme) {
   let r =
-    t +
+    line +
     `
 `;
-  if (!e.lang) return [[pBn(n), r]];
+  if (!state.lang) return [[pBn(theme), r]];
   let o;
   try {
     o = Nyp().highlight(r, {
-      language: e.lang,
+      language: state.lang,
       ignoreIllegals: true,
     });
   } catch {
-    return [[pBn(n), r]];
+    return [[pBn(theme), r]];
   }
   if (!hasRootNode(o.emitter)) {
     if (!kba)
@@ -262,10 +263,10 @@ function highlightLine(e, t, n) {
             `color-diff: hljs emitter shape mismatch (keys: ${Object.keys(o.emitter).join(",")}). Syntax highlighting disabled.`,
           ),
         ));
-    return [[pBn(n), r]];
+    return [[pBn(theme), r]];
   }
   let s = [];
-  return (Oba(o.emitter.rootNode, n, void 0, s), s);
+  return (Oba(o.emitter.rootNode, theme, void 0, s), s);
 }
 function Rba(e) {
   let t = [],

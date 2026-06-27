@@ -9,9 +9,9 @@
 function L0e(e) {
   return (e.match(/\r\n|\r|\n/g) || []).length;
 }
-function formatPastedTextRef(e, t) {
-  if (t === 0) return `[Pasted text #${e}]`;
-  return `[Pasted text #${e} +${t} lines]`;
+function formatPastedTextRef(id, numLines) {
+  if (numLines === 0) return `[Pasted text #${id}]`;
+  return `[Pasted text #${id} +${numLines} lines]`;
 }
 function KDn(e) {
   return `[Image #${e}]`;

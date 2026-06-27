@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GAc] deps: si, Ye, uo, QOe, aE, y3, sr, mE, Bs, LW, Ko, vMe, PWt, UAc, _pr
 ((FAc = R(lt(), 1)), (itn = R(rt(), 1)), (w_ = R(se(), 1)));
-function SubmitQuestionsView(e) {
+function SubmitQuestionsView(t0) {
   let t = WAc.c(24),
     {
       questions: n,
@@ -15,7 +15,7 @@ function SubmitQuestionsView(e) {
       allQuestionsAnswered: s,
       permissionResult: i,
       onFinalResponse: a,
-    } = e,
+    } = t0,
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((l = GP.jsx(qh, {

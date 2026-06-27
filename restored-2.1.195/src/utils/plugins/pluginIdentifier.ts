@@ -43,9 +43,9 @@ function ceo(e) {
 function wKi(e, t) {
   return t === Bne && IKd.has(e);
 }
-function scopeToSettingSource(e) {
-  if (e === "managed") throw Error("Cannot install plugins to managed scope");
-  return xKd[e];
+function scopeToSettingSource(scope) {
+  if (scope === "managed") throw Error("Cannot install plugins to managed scope");
+  return xKd[scope];
 }
 function FPn(e) {
   return leo[e];

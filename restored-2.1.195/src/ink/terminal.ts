@@ -142,12 +142,12 @@ function $7r() {
     Oe.WT_SESSION == null
   );
 }
-function writeDiffToTerminal(e, t, n = false, r) {
+function writeDiffToTerminal(terminal, diff, n = false, r) {
   let o = r !== void 0 && r > 1 ? r - 1 : void 0;
-  if (t.length === 0) return;
+  if (diff.length === 0) return;
   let s = !n,
     i = s ? hBt : "";
-  for (let a of t)
+  for (let a of diff)
     switch (a.type) {
       case "stdout":
         i += a.content;
@@ -183,7 +183,7 @@ function writeDiffToTerminal(e, t, n = false, r) {
   if (s) i += Oit;
   if (s4i) return;
   try {
-    e.stdout.write(i);
+    terminal.stdout.write(i);
   } catch (a) {
     if (l4d() && (i4i(a) === "EIO" || i4i(a) === "EPIPE")) {
       s4i = true;

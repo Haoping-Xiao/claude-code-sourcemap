@@ -7,9 +7,9 @@
 // module exports: formatWorkspaceFolders, call, IDE_CONNECTION_TIMEOUT_MS, IDECommandFlow
 // [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi
 ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
-function IDEScreen(e) {
+function IDEScreen(t0) {
   let t = J7t.c(39),
-    { availableIDEs: n, unavailableIDEs: r, selectedIDE: o, onClose: s, onSelect: i } = e,
+    { availableIDEs: n, unavailableIDEs: r, selectedIDE: o, onClose: s, onSelect: i } = t0,
     a;
   if (t[0] !== o?.port) ((a = o?.port?.toString() ?? "None"), (t[0] = o?.port), (t[1] = a));
   else a = t[1];
@@ -219,21 +219,21 @@ function zOf(e, t) {
     t,
   );
 }
-function _temp2(e) {
-  return e.name === "VS Code" || e.name === "Visual Studio Code";
+function _temp2(ide_2) {
+  return ide_2.name === "VS Code" || ide_2.name === "Visual Studio Code";
 }
 function YOf(e, t) {
   return ((e[t.name] = (e[t.name] || 0) + 1), e);
 }
-async function findCurrentIDE(e, t) {
-  let n = t?.ide;
+async function findCurrentIDE(availableIDEs, dynamicMcpConfig) {
+  let n = dynamicMcpConfig?.ide;
   if (!n || (n.type !== "sse-ide" && n.type !== "ws-ide")) return null;
-  for (let r of e) if (r.url === n.url) return r;
+  for (let r of availableIDEs) if (r.url === n.url) return r;
   return null;
 }
-function IDEOpenSelection(e) {
+function IDEOpenSelection(t0) {
   let t = J7t.c(18),
-    { availableIDEs: n, onSelectIDE: r, onDone: o } = e,
+    { availableIDEs: n, onSelectIDE: r, onDone: o } = t0,
     s;
   if (t[0] !== n[0]?.port) ((s = n[0]?.port?.toString() ?? ""), (t[0] = n[0]?.port), (t[1] = s));
   else s = t[1];
@@ -305,9 +305,9 @@ function QOf(e) {
     value: e.port.toString(),
   };
 }
-function RunningIDESelector(e) {
+function RunningIDESelector(t0) {
   let t = J7t.c(15),
-    { runningIDEs: n, onSelectIDE: r, onDone: o } = e,
+    { runningIDEs: n, onSelectIDE: r, onDone: o } = t0,
     [s, i] = Oq.useState(n[0] ?? ""),
     a;
   if (t[0] !== r)
@@ -390,22 +390,22 @@ function t1f(e) {
   else ((o = t[2]), (s = t[3]));
   return (Oq.useEffect(o, s), null);
 }
-async function call(e, t, n) {
+async function call(onDone, context, args) {
   G("tengu_ext_ide_command", {});
   let {
     options: { dynamicMcpConfig: r },
     onChangeDynamicMcpConfig: o,
-  } = t;
-  if (n?.trim() === "open") {
+  } = context;
+  if (args?.trim() === "open") {
     let c = Gm(),
       u = c ? c.worktreePath : $t(),
       p = (await pFn(true)).filter((f) => f.isValid);
-    if (p.length === 0) return (e("No IDEs with Claude Code extension detected."), null);
+    if (p.length === 0) return (onDone("No IDEs with Claude Code extension detected."), null);
     return _A.jsx(IDEOpenSelection, {
       availableIDEs: p,
       onSelectIDE: async (f) => {
         if (!f) {
-          e("No IDE selected.");
+          onDone("No IDE selected.");
           return;
         }
         let m = gxa(f.name),
@@ -415,38 +415,42 @@ async function call(e, t, n) {
           if (h !== 0 && !Pnr.basename(g).startsWith("code")) ({ code: h } = await $n("code", [u]));
           if (h === 0)
             (xe("ide_open_project"),
-              e(`Opened ${c ? "worktree" : "project"} in ${wt.bold(f.name)}`));
+              onDone(`Opened ${c ? "worktree" : "project"} in ${wt.bold(f.name)}`));
           else
             (Le("ide_open_project", "ide_open_project_failed"),
-              e(`Failed to open in ${f.name}. Try opening manually: ${u}`));
+              onDone(`Failed to open in ${f.name}. Try opening manually: ${u}`));
         } else if (cFn())
-          e(`Please open the ${c ? "worktree" : "project"} manually in ${wt.bold(f.name)}: ${u}`);
+          onDone(
+            `Please open the ${c ? "worktree" : "project"} manually in ${wt.bold(f.name)}: ${u}`,
+          );
         else
-          e(`Please open the ${c ? "worktree" : "project"} manually in ${wt.bold(f.name)}: ${u}`);
+          onDone(
+            `Please open the ${c ? "worktree" : "project"} manually in ${wt.bold(f.name)}: ${u}`,
+          );
       },
       onDone: () => {
-        e("Exited without opening IDE", {
+        onDone("Exited without opening IDE", {
           display: "system",
         });
       },
     });
   }
   let s = await pFn(true);
-  if (s.length === 0 && t.onInstallIDEExtension && !uF()) {
+  if (s.length === 0 && context.onInstallIDEExtension && !uF()) {
     let c = await Qdo(),
       u = (d) => {
-        if (t.onInstallIDEExtension)
-          if ((t.onInstallIDEExtension(d), kre(d)))
-            e(`Installed plugin to ${wt.bold(yk(d))}
+        if (context.onInstallIDEExtension)
+          if ((context.onInstallIDEExtension(d), kre(d)))
+            onDone(`Installed plugin to ${wt.bold(yk(d))}
 Please ${wt.bold("restart your IDE")} completely for it to take effect`);
-          else e(`Installed extension to ${wt.bold(yk(d))}`);
+          else onDone(`Installed extension to ${wt.bold(yk(d))}`);
       };
     if (c.length > 1)
       return _A.jsx(RunningIDESelector, {
         runningIDEs: c,
         onSelectIDE: u,
         onDone: () => {
-          e("No IDE selected.", {
+          onDone("No IDE selected.", {
             display: "system",
           });
         },
@@ -466,7 +470,7 @@ Please ${wt.bold("restart your IDE")} completely for it to take effect`);
     currentIDE: l,
     dynamicMcpConfig: r,
     onChangeDynamicMcpConfig: o,
-    onDone: e,
+    onDone: onDone,
   });
 }
 function IDECommandFlow({

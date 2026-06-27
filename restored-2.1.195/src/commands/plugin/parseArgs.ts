@@ -7,8 +7,8 @@
 // module exports: getPluginArgumentCompletions
 // [unwrapped __esm module w7l] deps: PEt, xrr
 v7l = R(se(), 1);
-async function parsePluginArgs(e, t) {
-  if (e.length === 0)
+async function parsePluginArgs(args, t) {
+  if (args.length === 0)
     return ZAt(
       [
         {
@@ -39,8 +39,8 @@ async function parsePluginArgs(e, t) {
       ],
       t,
     );
-  let n = e[0]?.toLowerCase();
-  if (e.length === 1)
+  let n = args[0]?.toLowerCase();
+  if (args.length === 1)
     switch (n) {
       case "enable":
       case "disable":
@@ -78,8 +78,8 @@ async function parsePluginArgs(e, t) {
       default:
         return [];
     }
-  if (e.length === 2 && (n === "marketplace" || n === "market")) {
-    let r = e[1]?.toLowerCase();
+  if (args.length === 2 && (n === "marketplace" || n === "market")) {
+    let r = args[1]?.toLowerCase();
     if (r === "remove" || r === "rm" || r === "update") {
       let o = await wP(),
         s = Object.entries(o)

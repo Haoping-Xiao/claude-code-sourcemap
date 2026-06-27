@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cjl] deps: Ye, uo, Ao, sr, G1o
 ((vjl = R(lt(), 1)), (MP = R(se(), 1)));
-function UnifiedInstalledCell(e) {
+function UnifiedInstalledCell(t0) {
   let t = Ijl.c(181),
-    { item: n, isSelected: r, health: o } = e,
+    { item: n, isSelected: r, health: o } = t0,
     [s] = na();
   if (n.type === "plugin") {
     let _, S;

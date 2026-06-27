@@ -34,9 +34,9 @@ function main() {
   let e = process.env.CLAUDE_CODE_ENTRYPOINT;
   return e === "sdk-ts" || e === "sdk-py" || e === "sdk-cli";
 }
-function initializeEntrypoint(e) {
+function initializeEntrypoint(isNonInteractive) {
   if (process.env.CLAUDE_CODE_ENTRYPOINT) {
-    if (process.env.CLAUDE_CODE_ENTRYPOINT === "cli" && e)
+    if (process.env.CLAUDE_CODE_ENTRYPOINT === "cli" && isNonInteractive)
       process.env.CLAUDE_CODE_ENTRYPOINT = "sdk-cli";
     return;
   }
@@ -50,7 +50,7 @@ function initializeEntrypoint(e) {
     process.env.CLAUDE_CODE_ENTRYPOINT = "claude-code-github-action";
     return;
   }
-  process.env.CLAUDE_CODE_ENTRYPOINT = e ? "sdk-cli" : "cli";
+  process.env.CLAUDE_CODE_ENTRYPOINT = isNonInteractive ? "sdk-cli" : "cli";
 }
 function dbs(e) {
   let t = e.indexOf("--"),

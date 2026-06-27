@@ -12,14 +12,14 @@ async function cym() {
   for (let n of e) t.set(n.name, n.type === "prompt" ? (n.contentHash ?? "") : "");
   return t;
 }
-function handleChange(e) {
-  let t = e?.stabilityThreshold ?? nym,
-    n = e?.pollInterval ?? rym,
-    r = e?.reloadDebounce ?? oym,
-    o = e?.chokidarInterval ?? sym,
-    s = e?.getFingerprint ?? cym,
-    i = e?.now ?? Date.now,
-    a = e?.lastInteractionTime ?? Ex,
+function handleChange(path) {
+  let t = path?.stabilityThreshold ?? nym,
+    n = path?.pollInterval ?? rym,
+    r = path?.reloadDebounce ?? oym,
+    o = path?.chokidarInterval ?? sym,
+    s = path?.getFingerprint ?? cym,
+    i = path?.now ?? Date.now,
+    a = path?.lastInteractionTime ?? Ex,
     l = Mi(),
     c = rF.subscribe(() => l.emit()),
     u = null,

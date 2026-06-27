@@ -122,10 +122,10 @@ function Fx() {
   if (!sc()) return !1;
   return getFastModeUnavailableReason() === null;
 }
-function getDisabledReasonMessage(e, t) {
-  switch (e) {
+function getDisabledReasonMessage(disabledReason, authType) {
+  switch (disabledReason) {
     case "free":
-      return t === "oauth"
+      return authType === "oauth"
         ? "Fast mode requires a paid subscription"
         : "Fast mode unavailable during evaluation. Please purchase credits.";
     case "preference":
@@ -228,21 +228,21 @@ function getFastModeRuntimeState() {
   }
   return Knt;
 }
-function triggerFastModeCooldown(e, t) {
+function triggerFastModeCooldown(resetTimestamp, reason) {
   if (!sc()) return;
   ((Knt = {
     status: "cooldown",
-    resetAt: e,
-    reason: t,
+    resetAt: resetTimestamp,
+    reason: reason,
   }),
     (A2r = !1));
-  let n = e - Date.now();
-  (T(`Fast mode cooldown triggered (${t}), duration ${Math.round(n / 1000)}s`),
+  let n = resetTimestamp - Date.now();
+  (T(`Fast mode cooldown triggered (${reason}), duration ${Math.round(n / 1000)}s`),
     G("tengu_fast_mode_fallback_triggered", {
       cooldown_duration_ms: n,
-      cooldown_reason: $e(t),
+      cooldown_reason: $e(reason),
     }),
-    yoi.emit(e, t));
+    yoi.emit(resetTimestamp, reason));
 }
 function zIe() {
   Knt = {
@@ -264,8 +264,8 @@ function handleFastModeRejectedByAPI() {
     })),
     w2r.emit(!1));
 }
-function getOverageDisabledMessage(e) {
-  switch (e) {
+function getOverageDisabledMessage(reason) {
+  switch (reason) {
     case "out_of_credits":
       return "Fast mode disabled \xB7 usage credits exhausted";
     case "org_level_disabled":
@@ -292,14 +292,14 @@ function PPt(e) {
     e === "org_level_disabled_until" || e === "org_spend_cap_reached" || e === "out_of_credits"
   );
 }
-function handleFastModeOverageRejection(e) {
-  let t = getOverageDisabledMessage(e);
+function handleFastModeOverageRejection(reason) {
+  let t = getOverageDisabledMessage(reason);
   if (
-    (T(`Fast mode overage rejection: ${e ?? "unknown"} \u2014 ${t}`),
+    (T(`Fast mode overage rejection: ${reason ?? "unknown"} \u2014 ${t}`),
     G("tengu_fast_mode_overage_rejected", {
-      overage_disabled_reason: e ?? "unknown",
+      overage_disabled_reason: reason ?? "unknown",
     }),
-    !PPt(e))
+    !PPt(reason))
   )
     (io("userSettings", {
       fastMode: void 0,
@@ -319,16 +319,16 @@ function QB(e, t) {
   if (n) return "on";
   return "off";
 }
-async function fetchFastModeStatus(e) {
+async function fetchFastModeStatus(auth) {
   let t = `${$s().BASE_API_URL}/api/claude_code_penguin_mode`,
     n =
-      "accessToken" in e
+      "accessToken" in auth
         ? {
-            Authorization: `Bearer ${e.accessToken}`,
+            Authorization: `Bearer ${auth.accessToken}`,
             "anthropic-beta": kw,
           }
         : {
-            "x-api-key": e.apiKey,
+            "x-api-key": auth.apiKey,
           };
   return (
     await po.get(t, {

@@ -36,12 +36,12 @@ function createSubcommandRoot() {
     patchConsole: false,
   });
 }
-async function setupTokenHandler(e) {
+async function setupTokenHandler(root) {
   G("tengu_setup_token_command", {});
   let t = !eS(),
     { ConsoleOAuthFlow: n } = await Promise.resolve().then(() => (WVt(), RQa));
   (await new Promise((r) => {
-    e.render(
+    root.render(
       QN.jsx(AH, {
         onChangeAppState: DTe,
         children: QN.jsx(TT, {
@@ -84,7 +84,7 @@ async function setupTokenHandler(e) {
       }),
     );
   }),
-    e.unmount(),
+    root.unmount(),
     xe("cli_setup_token"),
     process.exit(0));
 }
@@ -105,13 +105,13 @@ function wam(e) {
   else r = t[1];
   return r;
 }
-async function doctorHandler(e) {
+async function doctorHandler(root) {
   (G("tengu_doctor_command", {}),
     await oV({
       hasDynamicMcpConfig: false,
     }),
     await new Promise((t) => {
-      e.render(
+      root.render(
         QN.jsx(AH, {
           children: QN.jsx(TT, {
             children: QN.jsx(nXt, {
@@ -127,11 +127,11 @@ async function doctorHandler(e) {
         }),
       );
     }),
-    e.unmount(),
+    root.unmount(),
     xe("cli_doctor"),
     process.exit(0));
 }
-async function installHandler(e, t) {
+async function installHandler(target, options) {
   if (Oe.DISABLE_UPDATES)
     (process.stdout
       .write(`Updates are disabled by your administrator. Contact your IT team to get the latest version.
@@ -142,8 +142,8 @@ async function installHandler(e, t) {
   let { install: r } = await Promise.resolve().then(() => (upc(), cpc));
   await new Promise((o) => {
     let s = [];
-    if (e) s.push(e);
-    if (t.force) s.push("--force");
+    if (target) s.push(target);
+    if (options.force) s.push("--force");
     r.call(
       (i) => {
         if ((o(), i.includes("failed"))) Le("cli_install", "cli_install_failed");

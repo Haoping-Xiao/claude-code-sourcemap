@@ -37,10 +37,10 @@
     "FailedToOpenSocket",
   ])),
   (que = new Set(["ECONNRESET", "EPIPE", "ConnectionClosed", "StreamSuspended"])));
-function startsWithApiErrorPrefix(e) {
+function startsWithApiErrorPrefix(text) {
   return (
-    e.startsWith(API_ERROR_MESSAGE_PREFIX) ||
-    e.startsWith(`Please run /login \xB7 ${API_ERROR_MESSAGE_PREFIX}`)
+    text.startsWith(API_ERROR_MESSAGE_PREFIX) ||
+    text.startsWith(`Please run /login \xB7 ${API_ERROR_MESSAGE_PREFIX}`)
   );
 }
 function hSe(e) {
@@ -185,16 +185,16 @@ function Clp() {
 function Uaa() {
   return ut(process.env.CLAUDE_CODE_REMOTE);
 }
-function logToolUseToolResultMismatch(e, t, n) {
+function logToolUseToolResultMismatch(toolUseId, messages, messagesForAPI) {
   try {
     let r = -1;
-    for (let u = 0; u < n.length; u++) {
-      let d = n[u];
+    for (let u = 0; u < messagesForAPI.length; u++) {
+      let d = messagesForAPI[u];
       if (!d) continue;
       let p = d.message.content;
       if (Array.isArray(p)) {
         for (let f of p)
-          if (f.type === "tool_use" && "id" in f && f.id === e) {
+          if (f.type === "tool_use" && "id" in f && f.id === toolUseId) {
             r = u;
             break;
           }
@@ -202,14 +202,14 @@ function logToolUseToolResultMismatch(e, t, n) {
       if (r !== -1) break;
     }
     let o = -1;
-    for (let u = 0; u < t.length; u++) {
-      let d = t[u];
+    for (let u = 0; u < messages.length; u++) {
+      let d = messages[u];
       if (!d) continue;
       if (d.type === "assistant" && "message" in d) {
         let p = d.message.content;
         if (Array.isArray(p)) {
           for (let f of p)
-            if (f.type === "tool_use" && "id" in f && f.id === e) {
+            if (f.type === "tool_use" && "id" in f && f.id === toolUseId) {
               o = u;
               break;
             }
@@ -218,8 +218,8 @@ function logToolUseToolResultMismatch(e, t, n) {
       if (o !== -1) break;
     }
     let s = [];
-    for (let u = r + 1; u < n.length; u++) {
-      let d = n[u];
+    for (let u = r + 1; u < messagesForAPI.length; u++) {
+      let d = messagesForAPI[u];
       if (!d) continue;
       let p = d.message.content;
       if (Array.isArray(p))
@@ -236,8 +236,8 @@ function logToolUseToolResultMismatch(e, t, n) {
       else if (typeof p === "string") s.push(`${d.message.role}:string_content`);
     }
     let i = [];
-    for (let u = o + 1; u < t.length; u++) {
-      let d = t[u];
+    for (let u = o + 1; u < messages.length; u++) {
+      let d = messages[u];
       if (!d) continue;
       switch (d.type) {
         case "user":
@@ -285,39 +285,39 @@ function logToolUseToolResultMismatch(e, t, n) {
       },
       l = 0,
       c = 0;
-    for (let u of n) {
+    for (let u of messagesForAPI) {
       let d = u.message.content;
       if (!Array.isArray(d)) continue;
       for (let p of d) {
-        if (p.type === "tool_use" && p.id === e) l++;
-        if (p.type === "tool_result" && p.tool_use_id === e) c++;
+        if (p.type === "tool_use" && p.id === toolUseId) l++;
+        if (p.type === "tool_result" && p.tool_use_id === toolUseId) c++;
       }
     }
     G("tengu_tool_use_tool_result_mismatch_error", {
-      toolUseId: Hr(e),
+      toolUseId: Hr(toolUseId),
       normalizedSequence: s.join(", "),
       preNormalizedSequence: i.join(", "),
-      normalizedMessageCount: n.length,
-      originalMessageCount: t.length,
+      normalizedMessageCount: messagesForAPI.length,
+      originalMessageCount: messages.length,
       normalizedToolUseIndex: r,
       originalToolUseIndex: o,
-      offendingMessageBlocks: a(n[r]),
-      followingMessageBlocks: r === -1 ? "<none>" : a(n[r + 1]),
+      offendingMessageBlocks: a(messagesForAPI[r]),
+      followingMessageBlocks: r === -1 ? "<none>" : a(messagesForAPI[r + 1]),
       toolUseOccurrences: l,
       toolResultOccurrences: c,
     });
   } catch (r) {}
 }
-function isValidAPIMessage(e) {
+function isValidAPIMessage(value) {
   return (
-    typeof e === "object" &&
-    e !== null &&
-    "content" in e &&
-    "model" in e &&
-    "usage" in e &&
-    Array.isArray(e.content) &&
-    typeof e.model === "string" &&
-    typeof e.usage === "object"
+    typeof value === "object" &&
+    value !== null &&
+    "content" in value &&
+    "model" in value &&
+    "usage" in value &&
+    Array.isArray(value.content) &&
+    typeof value.model === "string" &&
+    typeof value.usage === "object"
   );
 }
 function F1n(e) {
@@ -417,38 +417,41 @@ function G1n(e, t, n) {
   if (o) r.requestId = o;
   return r;
 }
-function getAssistantMessageFromError(e, t, n) {
-  if (e instanceof DK || (e instanceof Hx && e.message.toLowerCase().includes("timeout")))
+function getAssistantMessageFromError(error, model, options) {
+  if (
+    error instanceof DK ||
+    (error instanceof Hx && error.message.toLowerCase().includes("timeout"))
+  )
     return jl({
       content: API_TIMEOUT_ERROR_MESSAGE,
       error: "server_error",
     });
-  if (e instanceof eut || e instanceof NU)
+  if (error instanceof eut || error instanceof NU)
     return jl({
       content: getImageTooLargeErrorMessage(),
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
-  if (e instanceof Error && e.message.includes(CUSTOM_OFF_SWITCH_MESSAGE))
+  if (error instanceof Error && error.message.includes(CUSTOM_OFF_SWITCH_MESSAGE))
     return jl({
       content: CUSTOM_OFF_SWITCH_MESSAGE,
       error: "rate_limit",
     });
-  if (e instanceof Error && e.message.includes(g5e))
+  if (error instanceof Error && error.message.includes(g5e))
     return jl({
       content: g5e,
       error: "rate_limit",
     });
-  if (e instanceof Fo && e.status === 429) {
+  if (error instanceof Fo && error.status === 429) {
     let s = tut(bo()),
-      i = kaa(e),
-      a = Rio(e),
+      i = kaa(error),
+      a = Rio(error),
       l =
         s &&
-        tH(t) &&
+        tH(model) &&
         (i?.rateLimitType === "seven_day_overage_included" || a.errorCode === "credits_required");
     if (s && i && !l) {
-      let m = Iio(i, t);
+      let m = Iio(i, model);
       if (m)
         return jl({
           content: m,
@@ -459,30 +462,30 @@ function getAssistantMessageFromError(e, t, n) {
         error: "rate_limit",
       });
     }
-    if (s && Mio(e.message) && !cJe()) (D_r(!0), G("tengu_1m_credits_clamp_activated", {}));
+    if (s && Mio(error.message) && !cJe()) (D_r(!0), G("tengu_1m_credits_clamp_activated", {}));
     if (l) {
       let m =
-          e.headers?.get?.("anthropic-ratelimit-unified-overage-disabled-reason") ??
+          error.headers?.get?.("anthropic-ratelimit-unified-overage-disabled-reason") ??
           a.overageDisabledReason ??
           Dt().cachedExtraUsageDisabledReason,
         g = i?.rateLimitType === "seven_day_overage_included";
       return jl({
         content: Rlp(m, g),
         error: "rate_limit",
-        errorDetails: e.message,
+        errorDetails: error.message,
       });
     }
-    if (s && Mio(e.message)) {
+    if (s && Mio(error.message)) {
       let m = Ir()
         ? "turn on usage credits at claude.ai/settings/usage, or use --model to switch to standard context"
         : "run /usage-credits to turn them on, or /model to switch to standard context";
       return jl({
         content: `${API_ERROR_MESSAGE_PREFIX}: Usage credits required for 1M context \xB7 ${m}`,
         error: "rate_limit",
-        errorDetails: e.message,
+        errorDetails: error.message,
       });
     }
-    let c = e.message.replace(/^429\s+/, ""),
+    let c = error.message.replace(/^429\s+/, ""),
       u;
     try {
       let m = Ft(c),
@@ -490,7 +493,7 @@ function getAssistantMessageFromError(e, t, n) {
       if (typeof g === "string") u = g;
     } catch {}
     let d = u || c;
-    if (s && e.headers?.get?.("anthropic-ratelimit-unified-overage-disabled-reason"))
+    if (s && error.headers?.get?.("anthropic-ratelimit-unified-overage-disabled-reason"))
       return jl({
         content: d,
         error: "rate_limit",
@@ -504,100 +507,102 @@ function getAssistantMessageFromError(e, t, n) {
       error: "rate_limit",
     });
   }
-  if (Oio(e) || Djt(e))
+  if (Oio(error) || Djt(error))
     return jl({
       content: PROMPT_TOO_LONG_ERROR_MESSAGE,
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
-  if (e instanceof Error && /maximum of \d+ PDF pages/.test(e.message))
+  if (error instanceof Error && /maximum of \d+ PDF pages/.test(error.message))
     return jl({
       content: getPdfTooLargeErrorMessage(),
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
-  if (e instanceof Error && e.message.includes("The PDF specified is password protected"))
+  if (error instanceof Error && error.message.includes("The PDF specified is password protected"))
     return jl({
       content: getPdfPasswordProtectedErrorMessage(),
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
-  if (e instanceof Error && e.message.includes("The PDF specified was not valid"))
+  if (error instanceof Error && error.message.includes("The PDF specified was not valid"))
     return jl({
       content: getPdfInvalidErrorMessage(),
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("image exceeds") &&
-    e.message.includes("maximum")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("image exceeds") &&
+    error.message.includes("maximum")
   )
     return jl({
       content: getImageTooLargeErrorMessage(),
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("image dimensions exceed") &&
-    e.message.includes("many-image")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("image dimensions exceed") &&
+    error.message.includes("many-image")
   )
     return jl({
       content: Ir()
         ? "An image in the conversation exceeds the dimension limit for many-image requests (2000px). Start a new session with fewer images."
         : "An image in the conversation exceeds the dimension limit for many-image requests (2000px). Run /compact to remove old images from context, or start a new session.",
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
-  if (Pjt(e)) {
+  if (Pjt(error)) {
     let s = Ir()
       ? "change or unset the advisorModel setting (or the --advisor flag)"
       : "run /advisor to change or disable the advisor";
     return jl({
-      content: `${API_ERROR_MESSAGE_PREFIX}: ${e.message.replace(/^400\s+/, "")} \xB7 The configured advisor model is not compatible with this request model \u2014 ${s}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${error.message.replace(/^400\s+/, "")} \xB7 The configured advisor model is not compatible with this request model \u2014 ${s}`,
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
   }
   {
-    let s = P1n(e);
-    if (s && e instanceof Error)
+    let s = P1n(error);
+    if (s && error instanceof Error)
       return jl({
         content: lut(s.kind),
         error: "invalid_request",
-        errorDetails: e.message,
+        errorDetails: error.message,
       });
   }
-  if (F1n(e))
+  if (F1n(error))
     return jl({
       content: "Auto mode is unavailable for your plan",
       error: "invalid_request",
     });
-  if (e instanceof Fo && e.status === 413) {
-    if (e.message.toLowerCase().includes("context window"))
+  if (error instanceof Fo && error.status === 413) {
+    if (error.message.toLowerCase().includes("context window"))
       return jl({
         content: PROMPT_TOO_LONG_ERROR_MESSAGE,
         error: "invalid_request",
-        errorDetails: e.message,
+        errorDetails: error.message,
       });
     return jl({
       content: getRequestTooLargeErrorMessage(),
       error: "invalid_request",
-      errorDetails: `request_too_large: ${e.message}`,
+      errorDetails: `request_too_large: ${error.message}`,
     });
   }
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("`tool_use` ids were found without `tool_result` blocks immediately after")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes(
+      "`tool_use` ids were found without `tool_result` blocks immediately after",
+    )
   ) {
-    if (n?.messages && n?.messagesForAPI) {
-      let s = e.message.match(/toolu_[A-Za-z0-9_]+/),
+    if (options?.messages && options?.messagesForAPI) {
+      let s = error.message.match(/toolu_[A-Za-z0-9_]+/),
         i = s ? s[0] : null;
-      if (i) logToolUseToolResultMismatch(i, n.messages, n.messagesForAPI);
+      if (i) logToolUseToolResultMismatch(i, options.messages, options.messagesForAPI);
     }
     {
       let i = Ir() ? "" : " Run /rewind to recover the conversation.";
@@ -608,38 +613,42 @@ function getAssistantMessageFromError(e, t, n) {
     }
   }
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("unexpected `tool_use_id` found in `tool_result`")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("unexpected `tool_use_id` found in `tool_result`")
   )
     G("tengu_unexpected_tool_result", {});
-  if (e instanceof Fo && e.status === 400 && e.message.includes("`tool_use` ids must be unique")) {
+  if (
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("`tool_use` ids must be unique")
+  ) {
     G("tengu_duplicate_tool_use_id", {});
     let s = Ir() ? "" : " Run /rewind to recover the conversation.";
     return jl({
       content: `API Error: 400 duplicate tool_use ID in conversation history.${s}`,
       error: "invalid_request",
-      errorDetails: e.message,
+      errorDetails: error.message,
     });
   }
   if (
     bo() &&
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.toLowerCase().includes("invalid model name") &&
-    (dte(mo(t)) || t === "opus")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.toLowerCase().includes("invalid model name") &&
+    (dte(mo(model)) || model === "opus")
   )
     return jl({
       content:
         "Claude Opus is not available with the Claude Pro plan. If you have updated your subscription plan recently, run /logout and /login for the plan to take effect.",
       error: "invalid_request",
     });
-  if (Nio(e))
+  if (Nio(error))
     return jl({
       content: CREDIT_BALANCE_TOO_LOW_ERROR_MESSAGE,
       error: "billing_error",
     });
-  if (e instanceof Fo && e.status === 400 && O1n(e)) {
+  if (error instanceof Fo && error.status === 400 && O1n(error)) {
     let { source: s } = Ty();
     if (s === "ANTHROPIC_API_KEY" && process.env.ANTHROPIC_API_KEY && !bo()) {
       let i = WE();
@@ -651,7 +660,7 @@ function getAssistantMessageFromError(e, t, n) {
       });
     }
   }
-  if (e instanceof Error && e.message.toLowerCase().includes("x-api-key")) {
+  if (error instanceof Error && error.message.toLowerCase().includes("x-api-key")) {
     if (Uaa())
       return jl({
         error: "authentication_failed",
@@ -671,24 +680,28 @@ function getAssistantMessageFromError(e, t, n) {
           : INVALID_API_KEY_ERROR_MESSAGE,
     });
   }
-  if (e instanceof Fo && e.status === 403 && e.message.includes("OAuth token has been revoked"))
+  if (
+    error instanceof Fo &&
+    error.status === 403 &&
+    error.message.includes("OAuth token has been revoked")
+  )
     return jl({
       error: "authentication_failed",
       content: getTokenRevokedErrorMessage(),
     });
   if (
-    e instanceof Fo &&
-    (e.status === 401 || e.status === 403) &&
-    e.message.includes("OAuth authentication is currently not allowed for this organization")
+    error instanceof Fo &&
+    (error.status === 401 || error.status === 403) &&
+    error.message.includes("OAuth authentication is currently not allowed for this organization")
   )
     return jl({
       error: "oauth_org_not_allowed",
       content: Clp(),
     });
   if (
-    e instanceof Fo &&
-    e.status === 403 &&
-    e.message.toLowerCase().includes("api key authentication is disabled")
+    error instanceof Fo &&
+    error.status === 403 &&
+    error.message.toLowerCase().includes("api key authentication is disabled")
   ) {
     let { source: s } = Ty();
     if (s === "ANTHROPIC_API_KEY" && Oe.ANTHROPIC_API_KEY)
@@ -707,13 +720,13 @@ function getAssistantMessageFromError(e, t, n) {
         content: Tlp,
       });
   }
-  if (e instanceof Fo && (e.status === 401 || e.status === 403)) {
+  if (error instanceof Fo && (error.status === 401 || error.status === 403)) {
     if (Uaa())
       return jl({
         error: "authentication_failed",
         content: CCR_AUTH_ERROR_MESSAGE,
       });
-    let s = sut(e);
+    let s = sut(error);
     return jl({
       error: "authentication_failed",
       content: Ir()
@@ -723,60 +736,60 @@ function getAssistantMessageFromError(e, t, n) {
   }
   if (
     ut(process.env.CLAUDE_CODE_USE_BEDROCK) &&
-    e instanceof Error &&
-    e.message.toLowerCase().includes("model id")
+    error instanceof Error &&
+    error.message.toLowerCase().includes("model id")
   ) {
     let s = Faa(),
-      i = get3PModelFallbackSuggestion(t);
+      i = get3PModelFallbackSuggestion(model);
     return jl({
       content: i
-        ? `${API_ERROR_MESSAGE_PREFIX} (${t}): ${e.message}.${s ? ` Try ${s} to switch to ${i}.` : ` Try switching to ${i}.`}`
-        : `${API_ERROR_MESSAGE_PREFIX} (${t}): ${e.message}.${s ? ` Run ${s} to pick a different model.` : ""}`,
+        ? `${API_ERROR_MESSAGE_PREFIX} (${model}): ${error.message}.${s ? ` Try ${s} to switch to ${i}.` : ` Try switching to ${i}.`}`
+        : `${API_ERROR_MESSAGE_PREFIX} (${model}): ${error.message}.${s ? ` Run ${s} to pick a different model.` : ""}`,
       error: "model_not_found",
     });
   }
-  if (e instanceof Fo && e.status === 404) {
+  if (error instanceof Fo && error.status === 404) {
     let s = Faa(),
-      i = get3PModelFallbackSuggestion(t);
+      i = get3PModelFallbackSuggestion(model);
     return jl({
       content: i
-        ? `The model ${t} is not available on your ${fr()} deployment. ${s ? `Try ${s} to switch to ${i}` : `Try switching to ${i}`}, or ask your admin to enable this model.`
-        : `There's an issue with the selected model (${t}). It may not exist or you may not have access to it.${s ? ` Run ${s} to pick a different model.` : ""}`,
+        ? `The model ${model} is not available on your ${fr()} deployment. ${s ? `Try ${s} to switch to ${i}` : `Try switching to ${i}`}, or ask your admin to enable this model.`
+        : `There's an issue with the selected model (${model}). It may not exist or you may not have access to it.${s ? ` Run ${s} to pick a different model.` : ""}`,
       error: "model_not_found",
     });
   }
   let r = Baa();
-  if (e instanceof Error && e.message.includes(REPEATED_529_ERROR_MESSAGE))
+  if (error instanceof Error && error.message.includes(REPEATED_529_ERROR_MESSAGE))
     return jl({
       content: `${API_ERROR_MESSAGE_PREFIX}: ${REPEATED_529_ERROR_MESSAGE}. The API is at capacity \u2014 this is usually temporary. Try again in a moment.${r}`,
       error: "server_error",
     });
-  if (e instanceof Fo && typeof e.status === "number" && e.status >= 500) {
-    let s = sut(e).replace(/[.!?\u2026]+$/, "");
+  if (error instanceof Fo && typeof error.status === "number" && error.status >= 500) {
+    let s = sut(error).replace(/[.!?\u2026]+$/, "");
     return jl({
       content: `${API_ERROR_MESSAGE_PREFIX}: ${s}. This is a server-side issue, usually temporary \u2014 try again in a moment.${r}`,
       error: "server_error",
     });
   }
-  if (e instanceof Hx)
+  if (error instanceof Hx)
     return jl({
-      content: `${API_ERROR_MESSAGE_PREFIX}: ${sut(e)}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${sut(error)}`,
       error: "server_error",
     });
-  if (e instanceof Fo)
+  if (error instanceof Fo)
     return jl({
-      content: `${API_ERROR_MESSAGE_PREFIX}: ${sut(e)}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${sut(error)}`,
       error: "unknown",
     });
-  let o = tF(e);
+  let o = tF(error);
   if (o && (que.has(o.code) || out.has(o.code)))
     return jl({
       content: `${API_ERROR_MESSAGE_PREFIX}: Connection to the API was lost (${o.code}). This is usually temporary \u2014 try again.`,
       error: "server_error",
     });
-  if (e instanceof Error)
+  if (error instanceof Error)
     return jl({
-      content: `${API_ERROR_MESSAGE_PREFIX}: ${e.message}`,
+      content: `${API_ERROR_MESSAGE_PREFIX}: ${error.message}`,
       error: "unknown",
     });
   return jl({
@@ -788,9 +801,9 @@ function Faa() {
   if (!Ir()) return "/model";
   return Q2() === "sdk-cli" ? "--model" : void 0;
 }
-function get3PModelFallbackSuggestion(e) {
+function get3PModelFallbackSuggestion(model) {
   if (td()) return;
-  let t = e.toLowerCase();
+  let t = model.toLowerCase();
   if (t.includes("fable-5") || t.includes("fable_5"))
     return Oe.ANTHROPIC_DEFAULT_OPUS_MODEL ?? Vp().opus48;
   if (t.includes("opus-4-8") || t.includes("opus_4_8")) return Vp().opus47;
@@ -801,141 +814,172 @@ function get3PModelFallbackSuggestion(e) {
   if (t.includes("sonnet-4-5") || t.includes("sonnet_4_5")) return Vp().sonnet40;
   return;
 }
-function classifyAPIError(e) {
-  if (e instanceof Error && e.message === "Request was aborted.") return "aborted";
+function classifyAPIError(error) {
+  if (error instanceof Error && error.message === "Request was aborted.") return "aborted";
   if (
-    e instanceof DK ||
-    (e instanceof Hx && e.message.toLowerCase().includes("timeout")) ||
-    (e instanceof Error && e.message.startsWith("Stream idle timeout"))
+    error instanceof DK ||
+    (error instanceof Hx && error.message.toLowerCase().includes("timeout")) ||
+    (error instanceof Error && error.message.startsWith("Stream idle timeout"))
   )
     return "api_timeout";
-  if (e instanceof Error && e.message.includes(REPEATED_529_ERROR_MESSAGE)) return "repeated_529";
+  if (error instanceof Error && error.message.includes(REPEATED_529_ERROR_MESSAGE))
+    return "repeated_529";
   if (
-    e instanceof Error &&
-    (e.message.includes(CUSTOM_OFF_SWITCH_MESSAGE) || e.message.includes(g5e))
+    error instanceof Error &&
+    (error.message.includes(CUSTOM_OFF_SWITCH_MESSAGE) || error.message.includes(g5e))
   )
     return "capacity_off_switch";
-  if (e instanceof Fo && e.status === 429) return "rate_limit";
-  if (e instanceof Fo && (e.status === 529 || e.message?.includes('"type":"overloaded_error"')))
+  if (error instanceof Fo && error.status === 429) return "rate_limit";
+  if (
+    error instanceof Fo &&
+    (error.status === 529 || error.message?.includes('"type":"overloaded_error"'))
+  )
     return "server_overload";
   if (
-    e instanceof Error &&
-    (e.message.toLowerCase().includes(PROMPT_TOO_LONG_ERROR_MESSAGE.toLowerCase()) || Djt(e))
+    error instanceof Error &&
+    (error.message.toLowerCase().includes(PROMPT_TOO_LONG_ERROR_MESSAGE.toLowerCase()) ||
+      Djt(error))
   )
     return "prompt_too_long";
-  if (e instanceof Error && /maximum of \d+ PDF pages/.test(e.message)) return "pdf_too_large";
-  if (e instanceof Error && e.message.includes("The PDF specified is password protected"))
+  if (error instanceof Error && /maximum of \d+ PDF pages/.test(error.message))
+    return "pdf_too_large";
+  if (error instanceof Error && error.message.includes("The PDF specified is password protected"))
     return "pdf_password_protected";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("image exceeds") &&
-    e.message.includes("maximum")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("image exceeds") &&
+    error.message.includes("maximum")
   )
     return "image_too_large";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("image dimensions exceed") &&
-    e.message.includes("many-image")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("image dimensions exceed") &&
+    error.message.includes("many-image")
   )
     return "image_too_large";
-  if (e instanceof Fo && e.status === 400 && e.message.includes("Could not process image"))
+  if (
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("Could not process image")
+  )
     return "image_unprocessable";
-  if (e instanceof Fo && e.status === 413)
-    return e.message.toLowerCase().includes("context window")
+  if (error instanceof Fo && error.status === 413)
+    return error.message.toLowerCase().includes("context window")
       ? "prompt_too_long"
       : "request_too_large";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("`tool_use` ids were found without `tool_result` blocks immediately after")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes(
+      "`tool_use` ids were found without `tool_result` blocks immediately after",
+    )
   )
     return "tool_use_mismatch";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes("unexpected `tool_use_id` found in `tool_result`")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("unexpected `tool_use_id` found in `tool_result`")
   )
     return "unexpected_tool_result";
-  if (e instanceof Fo && e.status === 400 && e.message.includes("`tool_use` ids must be unique"))
+  if (
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("`tool_use` ids must be unique")
+  )
     return "duplicate_tool_use_id";
-  if (e instanceof Fo && e.status === 400 && e.message.toLowerCase().includes("invalid model name"))
+  if (
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.toLowerCase().includes("invalid model name")
+  )
     return "invalid_model";
   if (
-    e instanceof Fo &&
-    e.status === 404 &&
-    e.message.includes("not_found_error") &&
-    e.message.includes('"model: ')
+    error instanceof Fo &&
+    error.status === 404 &&
+    error.message.includes("not_found_error") &&
+    error.message.includes('"model: ')
   )
     return "model_not_found";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    /invalid `?signature`? in `?thinking`? block/i.test(e.message)
+    error instanceof Fo &&
+    error.status === 400 &&
+    /invalid `?signature`? in `?thinking`? block/i.test(error.message)
   )
     return "invalid_thinking_signature";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    (e.message.includes("text content blocks must be non-empty") ||
-      e.message.includes("text content blocks must contain non-whitespace text"))
+    error instanceof Fo &&
+    error.status === 400 &&
+    (error.message.includes("text content blocks must be non-empty") ||
+      error.message.includes("text content blocks must contain non-whitespace text"))
   )
     return "empty_text_block";
-  if (e instanceof Fo && e.status === 400 && e.message.includes("diagnostics.previous_message_id"))
+  if (
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes("diagnostics.previous_message_id")
+  )
     return "previous_message_id_invalid";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.includes(".tool_use_id") &&
-    e.message.includes("String should match pattern")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.includes(".tool_use_id") &&
+    error.message.includes("String should match pattern")
   )
     return "tool_use_id_invalid";
-  if (e instanceof Fo && e.status === 400 && e.message.includes("Grammar compilation"))
+  if (error instanceof Fo && error.status === 400 && error.message.includes("Grammar compilation"))
     return "grammar_compile_error";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
-    e.message.toLowerCase().includes("request body is not valid json")
+    error instanceof Fo &&
+    error.status === 400 &&
+    error.message.toLowerCase().includes("request body is not valid json")
   )
     return "request_body_invalid_json";
   if (
-    e instanceof Error &&
-    e.message.toLowerCase().includes(CREDIT_BALANCE_TOO_LOW_ERROR_MESSAGE.toLowerCase())
+    error instanceof Error &&
+    error.message.toLowerCase().includes(CREDIT_BALANCE_TOO_LOW_ERROR_MESSAGE.toLowerCase())
   )
     return "credit_balance_low";
   if (
-    e instanceof Error &&
-    (e.message.toLowerCase().includes("x-api-key") ||
-      e.message.toLowerCase().includes("not a valid api key for this workspace"))
+    error instanceof Error &&
+    (error.message.toLowerCase().includes("x-api-key") ||
+      error.message.toLowerCase().includes("not a valid api key for this workspace"))
   )
     return "invalid_api_key";
-  if (e instanceof Fo && e.status === 403 && e.message.includes("OAuth token has been revoked"))
+  if (
+    error instanceof Fo &&
+    error.status === 403 &&
+    error.message.includes("OAuth token has been revoked")
+  )
     return "token_revoked";
   if (
-    e instanceof Fo &&
-    (e.status === 401 || e.status === 403) &&
-    e.message.includes("OAuth authentication is currently not allowed for this organization")
+    error instanceof Fo &&
+    (error.status === 401 || error.status === 403) &&
+    error.message.includes("OAuth authentication is currently not allowed for this organization")
   )
     return "oauth_org_not_allowed";
-  if (e instanceof Fo && (e.status === 401 || e.status === 403)) return "auth_error";
+  if (error instanceof Fo && (error.status === 401 || error.status === 403)) return "auth_error";
   if (
     ut(process.env.CLAUDE_CODE_USE_BEDROCK) &&
-    e instanceof Error &&
-    e.message.toLowerCase().includes("model id")
+    error instanceof Error &&
+    error.message.toLowerCase().includes("model id")
   )
     return "bedrock_model_access";
-  if (e instanceof Error && e.message.includes("Output blocked by content filtering policy"))
-    return "output_content_filtered";
-  if (e instanceof nf) return "wif_credential_error";
   if (
-    e instanceof Error &&
-    e.message.toLowerCase().includes("domains are not accessible to our user agent")
+    error instanceof Error &&
+    error.message.includes("Output blocked by content filtering policy")
+  )
+    return "output_content_filtered";
+  if (error instanceof nf) return "wif_credential_error";
+  if (
+    error instanceof Error &&
+    error.message.toLowerCase().includes("domains are not accessible to our user agent")
   )
     return "webfetch_domain_blocked";
-  if (e instanceof Error) {
-    let n = e.message.toLowerCase();
-    if (O1n(e)) return "org_disabled";
+  if (error instanceof Error) {
+    let n = error.message.toLowerCase();
+    if (O1n(error)) return "org_disabled";
     if (n.includes("updated our consumer terms")) return "terms_not_accepted";
     if (
       n.includes("web search is not enabled for this organization") ||
@@ -944,41 +988,42 @@ function classifyAPIError(e) {
       return "feature_not_enabled_for_org";
     if (/reached your specified[\w\s-]*?usage limits/.test(n)) return "usage_cap_reached";
   }
-  if (j1n(e)) return "system_role_unsupported";
+  if (j1n(error)) return "system_role_unsupported";
   if (
-    e instanceof Fo &&
-    e.status === 400 &&
+    error instanceof Fo &&
+    error.status === 400 &&
     /`?(thinking|redacted_thinking)`?\s+(or\s+`?redacted_thinking`?\s+)?blocks?\s+.{0,60}cannot be modified/i.test(
-      e.message,
+      error.message,
     )
   )
     return "thinking_blocks_modified";
-  if (e instanceof Fo) {
-    let n = e.status;
+  if (error instanceof Fo) {
+    let n = error.status;
     if (n >= 500) return "server_error";
     if (n >= 400) return "client_error";
   }
-  if (e instanceof Hx) {
-    if (tF(e)?.isSSLError) return "ssl_cert_error";
+  if (error instanceof Hx) {
+    if (tF(error)?.isSSLError) return "ssl_cert_error";
     return "connection_error";
   }
-  let t = tF(e);
+  let t = tF(error);
   if (t && (que.has(t.code) || out.has(t.code))) return "connection_error";
   return "unknown";
 }
-function categorizeRetryableAPIError(e) {
-  if (e.status === 529 || e.message?.includes('"type":"overloaded_error"')) return "overloaded";
-  if (e.status === 429) return "rate_limit";
-  if (e.status === 401 || e.status === 403) return "authentication_failed";
-  if (e.status !== void 0 && e.status >= 408) return "server_error";
+function categorizeRetryableAPIError(error) {
+  if (error.status === 529 || error.message?.includes('"type":"overloaded_error"'))
+    return "overloaded";
+  if (error.status === 429) return "rate_limit";
+  if (error.status === 401 || error.status === 403) return "authentication_failed";
+  if (error.status !== void 0 && error.status >= 408) return "server_error";
   return "unknown";
 }
-function getErrorMessageIfRefusal(e, t, n, r) {
-  if (e !== "refusal") return;
-  let o = t?.explanation?.trimEnd() ?? null;
+function getErrorMessageIfRefusal(stopReason, model, n, r) {
+  if (stopReason !== "refusal") return;
+  let o = model?.explanation?.trimEnd() ?? null;
   G("tengu_refusal_api_response", {
     has_explanation: Boolean(o),
-    category: t?.category ? $e(Zct(t.category)) : void 0,
+    category: model?.category ? $e(Zct(model.category)) : void 0,
     request_id: Hr(n) || void 0,
   });
   let s = 400,
@@ -992,7 +1037,7 @@ function getErrorMessageIfRefusal(e, t, n, r) {
         ? "Try rephrasing the request in a new session or change your model."
         : "Double press esc to edit your last message, or try a different model with /model.",
       m = p ? `Learn more: ${u5e}` : Jct,
-      g = Qct(t?.category)
+      g = Qct(model?.category)
         ? `${l}'s safeguards flagged this message (https://www.anthropic.com/legal/aup). ${daa}`
         : `${l}'s safeguards flagged this message (https://www.anthropic.com/legal/aup). This sometimes happens with safe, normal conversations.`;
     c = `${API_ERROR_MESSAGE_PREFIX}: ${g} Claude Code can't respond to this request with ${l}.
@@ -1005,11 +1050,11 @@ ${m}`;
       f = p
         ? "Try rephrasing the request in a new session or change your model."
         : "Please double press esc to edit your last message or start a new session for Claude Code to assist with a different task.",
-      m = t?.category;
-    if (t?.category === "cyber" && td()) {
+      m = model?.category;
+    if (model?.category === "cyber" && td()) {
       let g = p ? `Learn more: ${u5e}` : Jct,
         h = r != null ? wp(r) : "This model";
-      c = `${API_ERROR_MESSAGE_PREFIX}: ${h}'s safeguards flagged this message for a cybersecurity topic. If your work requires this access, you can apply for an exemption: ${laa(t.explanation)}
+      c = `${API_ERROR_MESSAGE_PREFIX}: ${h}'s safeguards flagged this message for a cybersecurity topic. If your work requires this access, you can apply for an exemption: ${laa(model.explanation)}
 
 ${f}
 
@@ -1042,7 +1087,7 @@ Request ID: ${n}`
   return (
     (d.requestId = n ?? void 0),
     (d.message.stop_reason = "refusal"),
-    (d.message.stop_details = t ?? null),
+    (d.message.stop_details = model ?? null),
     d
   );
 }

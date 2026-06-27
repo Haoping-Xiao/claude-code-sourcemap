@@ -48,15 +48,15 @@ async function tryAcquireConsolidationLock() {
   if (parseInt(r.trim(), 10) !== process.pid) return null;
   return t ?? 0;
 }
-async function rollbackConsolidationLock(e) {
+async function rollbackConsolidationLock(priorMtime) {
   let t = j0o();
   try {
-    if (e === 0) {
+    if (priorMtime === 0) {
       await a3.unlink(t);
       return;
     }
     await a3.writeFile(t, "");
-    let n = e / 1000;
+    let n = priorMtime / 1000;
     await a3.utimes(t, n, n);
   } catch (n) {
     T(`[autoDream] rollback failed: ${be(n)} \u2014 next trigger delayed to minHours`);

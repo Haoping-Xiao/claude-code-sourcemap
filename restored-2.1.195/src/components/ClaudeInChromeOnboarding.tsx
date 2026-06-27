@@ -7,9 +7,9 @@
 // module exports: ClaudeInChromeOnboarding
 // [unwrapped __esm module $$c] deps: Ye, Yp, Fy, vi
 ((P$c = R(lt(), 1)), (GNe = R(se(), 1)));
-function ClaudeInChromeOnboarding(e) {
+function ClaudeInChromeOnboarding(t0) {
   let t = O$c.c(21),
-    { onDone: n } = e,
+    { onDone: n } = t0,
     [r, o] = dmr.useState(false),
     s,
     i;

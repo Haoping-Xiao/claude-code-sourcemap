@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l7l] deps: Cc, Bs, Ko, wb, vH, l4o
 ((i7l = R(lt(), 1)), (L1e = R(se(), 1)));
-function TypeStep(e) {
+function TypeStep(_props) {
   let t = c7l.c(15),
     { goNext: n, goBack: r, updateWizardData: o, wizardData: s } = Eu(),
     [i, a] = qsr.useState(s.agentType || ""),

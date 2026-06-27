@@ -18,9 +18,9 @@ function nam(e) {
   }
   return be(e).replace(/\s+/g, " ").trim();
 }
-async function checkMcpServerHealth(e, t) {
+async function checkMcpServerHealth(name, server) {
   try {
-    let n = await aP(e, t);
+    let n = await aP(name, server);
     if (n.type === "connected") {
       if (n.capabilities.tools)
         try {
@@ -96,14 +96,14 @@ async function mcpServeHandler({ debug: e, verbose: t }) {
     );
   }
 }
-async function mcpRemoveHandler(e, t, n) {
-  let r = P4(t),
+async function mcpRemoveHandler(name, options, n) {
+  let r = P4(options),
     o = async () => {
       if (r && (r.type === "sse" || r.type === "http"))
         try {
-          (await zUn(t, r), await KCa(t, r));
+          (await zUn(options, r), await KCa(options, r));
         } catch (a) {
-          T(`mcp remove: secure-storage cleanup for "${t}" failed: ${be(a)}`, {
+          T(`mcp remove: secure-storage cleanup for "${options}" failed: ${be(a)}`, {
             level: "warn",
           });
         }
@@ -113,45 +113,45 @@ async function mcpRemoveHandler(e, t, n) {
     if (n.scope) {
       let a = Ndt(n.scope);
       (await my("tengu_mcp_delete", {
-        name: t,
+        name: options,
         scope: $e(a),
       }),
-        await PUn(t, a),
+        await PUn(options, a),
         await o(),
         (s = a));
     } else {
       let a = Lg(),
         l = Dt(),
         c = await xdt().catch(() => ({})),
-        u = Object.hasOwn(c, t),
+        u = Object.hasOwn(c, options),
         d = [];
-      if (a.mcpServers?.[t]) d.push("local");
+      if (a.mcpServers?.[options]) d.push("local");
       if (u) d.push("project");
-      if (l.mcpServers?.[t]) d.push("user");
+      if (l.mcpServers?.[options]) d.push("user");
       if (d.length === 0) {
         let p = [
           ...Object.keys(a.mcpServers ?? {}),
           ...Object.keys(c),
           ...Object.keys(l.mcpServers ?? {}),
         ];
-        return (await Qu("cli_mcp_remove", "cli_mcp_remove_not_found"), yg(C9o(t, Uo(p))));
+        return (await Qu("cli_mcp_remove", "cli_mcp_remove_not_found"), yg(C9o(options, Uo(p))));
       } else if (d.length === 1) {
         let p = d[0];
         (await my("tengu_mcp_delete", {
-          name: t,
+          name: options,
           scope: $e(p),
         }),
-          await PUn(t, p),
+          await PUn(options, p),
           await o(),
           (s = p));
       } else {
-        (process.stderr.write(`MCP server "${t}" exists in multiple scopes:
+        (process.stderr.write(`MCP server "${options}" exists in multiple scopes:
 `),
           d.forEach((f) => {
             process.stderr.write(`  - ${h3t(f)} (${cF(f)})
 `);
           }));
-        let p = d.map((f) => xy("mcp remove", t, `-s ${f}`)).filter((f) => f !== null);
+        let p = d.map((f) => xy("mcp remove", options, `-s ${f}`)).filter((f) => f !== null);
         if (p.length > 0)
           (process.stderr.write(`
 To remove from a specific scope, use:
@@ -171,8 +171,8 @@ Specify a scope with -s to remove from a specific one.
     return (await Qu("cli_mcp_remove", "cli_mcp_remove_failed"), yg(be(a)));
   }
   await uv("cli_mcp_remove");
-  let i = n.scope ? t : `"${t}"`;
-  (e.render(
+  let i = n.scope ? options : `"${options}"`;
+  (name.render(
     TS.jsx(V_, {
       children: TS.jsxs(U, {
         flexDirection: "column",
@@ -187,7 +187,7 @@ Specify a scope with -s to remove from a specific one.
       }),
     }),
   ),
-    await e.waitUntilExit());
+    await name.waitUntilExit());
 }
 function Qdc(e) {
   let t = new Map(),
@@ -324,7 +324,7 @@ async function mcpListHandler(e) {
     await e.waitUntilExit(),
     await ki(0));
 }
-async function mcpGetHandler(e, t) {
+async function mcpGetHandler(name, t) {
   (await my("tengu_mcp_get", {
     name: t,
   }),
@@ -407,7 +407,7 @@ async function mcpGetHandler(e, t) {
     p = `To remove this server, edit ${cF(s.scope)}`;
   if (p) (c.push(""), c.push(p));
   (await uv("cli_mcp_get"),
-    e.render(
+    name.render(
       TS.jsx(V_, {
         children: TS.jsx(w, {
           children: c.join(`
@@ -415,14 +415,14 @@ async function mcpGetHandler(e, t) {
         }),
       }),
     ),
-    await e.waitUntilExit(),
+    await name.waitUntilExit(),
     await ki(0));
 }
-async function mcpAddJsonHandler(e, t, n, r) {
+async function mcpAddJsonHandler(name, json, options, r) {
   let o, s;
   try {
     o = Ndt(r.scope);
-    let i = Ia(n, false);
+    let i = Ia(options, false);
     if (i === null)
       T("mcp add-json: user-provided JSON was empty, invalid, or null", {
         level: "error",
@@ -442,7 +442,7 @@ async function mcpAddJsonHandler(e, t, n, r) {
         ? await _3t()
         : void 0;
     if (
-      (await BSe(t, i, o),
+      (await BSe(json, i, o),
       (s = i && typeof i === "object" && "type" in i ? String(i.type || "stdio") : "stdio"),
       s === "streamable-http")
     )
@@ -457,7 +457,7 @@ async function mcpAddJsonHandler(e, t, n, r) {
       typeof i.url === "string"
     ) {
       let u = await b3t(
-        t,
+        json,
         {
           type: i.type === "sse" ? "sse" : "http",
           url: i.url,
@@ -478,18 +478,18 @@ async function mcpAddJsonHandler(e, t, n, r) {
     return (await Qu("cli_mcp_add_json", "cli_mcp_add_json_failed"), yg(be(i)));
   }
   (await uv("cli_mcp_add_json"),
-    e.render(
+    name.render(
       TS.jsx(V_, {
         children: TS.jsxs(w, {
-          children: ["Added ", s, " MCP server ", t, " to ", o, " config"],
+          children: ["Added ", s, " MCP server ", json, " to ", o, " config"],
         }),
       }),
     ),
-    await e.waitUntilExit());
+    await name.waitUntilExit());
 }
-async function mcpAddFromDesktopHandler(e) {
+async function mcpAddFromDesktopHandler(options) {
   try {
-    let t = Ndt(e.scope),
+    let t = Ndt(options.scope),
       n = Vt();
     await my("tengu_mcp_add", {
       scope: $e(t),

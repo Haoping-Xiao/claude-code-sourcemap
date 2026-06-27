@@ -11,8 +11,8 @@ function Klp(e) {
     .sort()
     .join(",");
 }
-function maybeInvalidateCache(e) {
-  let t = Klp(e);
+function maybeInvalidateCache(deferredTools) {
+  let t = Klp(deferredTools);
   if (eao !== t)
     (T("ToolSearchTool: cache invalidated - deferred tools changed"),
       J1n.cache.clear?.(),

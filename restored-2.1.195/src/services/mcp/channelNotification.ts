@@ -36,10 +36,10 @@ function Rdf(e, t) {
   for (let o of e) (t(o) ? n : r).push(o);
   return [n, r];
 }
-function getEffectiveChannelAllowlist(e) {
-  if (e)
+function getEffectiveChannelAllowlist(sub) {
+  if (sub)
     return {
-      entries: e,
+      entries: sub,
       source: "org",
     };
   return {
@@ -54,12 +54,14 @@ function isChannelsPolicyBlocked(e) {
   }
   return e !== null && e.channelsEnabled !== true;
 }
-function findChannelEntry(e, t) {
-  let n = e.split(":");
-  return t.find((r) => (r.kind === "server" ? e === r.name : n[0] === "plugin" && n[1] === r.name));
+function findChannelEntry(serverName, channels) {
+  let n = serverName.split(":");
+  return channels.find((r) =>
+    r.kind === "server" ? serverName === r.name : n[0] === "plugin" && n[1] === r.name,
+  );
 }
-function gateChannelServer(e, t, n) {
-  if (!t?.experimental?.["claude/channel"])
+function gateChannelServer(serverName, capabilities, pluginSource) {
+  if (!capabilities?.experimental?.["claude/channel"])
     return {
       action: "skip",
       kind: "capability",
@@ -84,15 +86,15 @@ function gateChannelServer(e, t, n) {
       kind: "policy",
       reason: "channels not enabled by org policy (set channelsEnabled: true in managed settings)",
     };
-  let o = findChannelEntry(e, MA());
+  let o = findChannelEntry(serverName, MA());
   if (!o)
     return {
       action: "skip",
       kind: "session",
-      reason: `server ${e} not in --channels list for this session`,
+      reason: `server ${serverName} not in --channels list for this session`,
     };
   if (o.kind === "plugin") {
-    let s = n ? Qo(n).marketplace : void 0;
+    let s = pluginSource ? Qo(pluginSource).marketplace : void 0;
     if (s !== o.marketplace)
       return {
         action: "skip",

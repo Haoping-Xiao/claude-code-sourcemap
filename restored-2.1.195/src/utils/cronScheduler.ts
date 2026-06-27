@@ -21,7 +21,7 @@ function isRecurringTaskAged(e, t, n) {
   if (n === 0) return false;
   return Boolean(e.recurring && !e.permanent && t - e.createdAt >= n);
 }
-function createCronScheduler(e) {
+function createCronScheduler(options) {
   let {
       onFire: t,
       isLoading: n,
@@ -34,7 +34,7 @@ function createCronScheduler(e) {
       isKilled: c,
       filter: u,
       getExtraTasks: d,
-    } = e,
+    } = options,
     p =
       i || a
         ? {
@@ -264,12 +264,12 @@ function createCronScheduler(e) {
     },
   };
 }
-function buildMissedTaskNotification(e) {
-  let t = e.length > 1,
+function buildMissedTaskNotification(missed) {
+  let t = missed.length > 1,
     n = `The following one-shot scheduled task${t ? "s were" : " was"} missed while Claude was not running. ${t ? "They have" : "It has"} already been removed from .claude/scheduled_tasks.json.
 
 Do NOT execute ${t ? "these prompts" : "this prompt"} yet. First use the AskUserQuestion tool to ask whether to run ${t ? "each one" : "it"} now. Only execute if the user confirms.`,
-    r = e.map((o) => {
+    r = missed.map((o) => {
       let s = `[${r$(o.cron)}, created ${new Date(o.createdAt).toLocaleString()}]`,
         i = (o.prompt.match(/`+/g) ?? []).reduce((l, c) => Math.max(l, c.length), 0),
         a = "`".repeat(Math.max(3, i + 1));

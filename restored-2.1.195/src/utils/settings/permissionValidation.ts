@@ -72,22 +72,22 @@ function amn(e) {
     examples: ["mcp__puppeteer__*", "mcp__github__get_*"],
   };
 }
-function validatePermissionRule(e, t) {
-  if (!e || e.trim() === "")
+function validatePermissionRule(rule, t) {
+  if (!rule || rule.trim() === "")
     return {
       valid: false,
       error: "Permission rule cannot be empty",
     };
-  let n = aLr(e, "("),
-    r = aLr(e, ")");
+  let n = aLr(rule, "("),
+    r = aLr(rule, ")");
   if (n !== r)
     return {
       valid: false,
       error: "Mismatched parentheses",
       suggestion: "Ensure all opening parentheses have matching closing parentheses",
     };
-  if (l1u(e)) {
-    let a = e.substring(0, e.indexOf("("));
+  if (l1u(rule)) {
+    let a = rule.substring(0, rule.indexOf("("));
     if (!a)
       return {
         valid: false,
@@ -101,10 +101,10 @@ function validatePermissionRule(e, t) {
       examples: [`${a}`, `${a}(some-pattern)`],
     };
   }
-  let o = Ig(e),
+  let o = Ig(rule),
     s = eI(o.toolName);
   if (s) {
-    if (o.ruleContent !== void 0 || aLr(e, "(") > 0)
+    if (o.ruleContent !== void 0 || aLr(rule, "(") > 0)
       return {
         valid: false,
         error: "MCP rules do not support patterns in parentheses",

@@ -16,9 +16,9 @@ Onr = Cn(async (e, t) => {
   }));
 }, NFl);
 if (!(Onr.cache instanceof Map)) Onr.cache = new Map();
-function getErrorKey(e) {
-  let t = "plugin" in e ? e.plugin : "no-plugin";
-  return `${e.type}:${e.source}:${t}`;
+function getErrorKey(error) {
+  let t = "plugin" in error ? error.plugin : "no-plugin";
+  return `${error.type}:${error.source}:${t}`;
 }
 function GFl(e, t) {
   if (t.length === 0) return;
@@ -50,7 +50,7 @@ function WFl(e, t) {
     };
   });
 }
-function useManageMCPConnections(e, t = false) {
+function useManageMCPConnections(dynamicMcpConfig, t = false) {
   let n = da(),
     r = Dc(),
     o = Ht((P) => P.authVersion),
@@ -573,8 +573,8 @@ function useManageMCPConnections(e, t = false) {
               errors: [],
               warnings: [],
             }
-          : await rJ(e),
-        { configs: N, blocked: B } = Pdt(e),
+          : await rJ(dynamicMcpConfig),
+        { configs: N, blocked: B } = Pdt(dynamicMcpConfig),
         $ = {
           ...O,
           ...N,
@@ -596,7 +596,7 @@ function useManageMCPConnections(e, t = false) {
               timeoutMs: 12000,
             }));
         for (let W of B) {
-          let V = e?.[W];
+          let V = dynamicMcpConfig?.[W];
           if (V) ST(W, V).catch(() => {});
         }
       } else f.current = null;
@@ -642,7 +642,7 @@ function useManageMCPConnections(e, t = false) {
     P().catch((O) => {
       au("useManageMCPConnections", `Failed to initialize servers as pending: ${be(O)}`);
     });
-  }, [t, e, l, I, a, i]),
+  }, [t, dynamicMcpConfig, l, I, a, i]),
     kC.useEffect(() => {
       if (n) return;
       let P = false;
@@ -663,12 +663,12 @@ function useManageMCPConnections(e, t = false) {
               errors: [],
               warnings: [],
             }
-          : await rJ(e);
+          : await rJ(dynamicMcpConfig);
         if (P) return;
         (GFl(l, N), WFl(l, B));
         let $ = {
             ...M,
-            ...Pdt(e).configs,
+            ...Pdt(dynamicMcpConfig).configs,
           },
           q = CB($, (K, Z) => mk(Z));
         Dqe(x, q).catch((K) => {
@@ -800,7 +800,7 @@ function useManageMCPConnections(e, t = false) {
           P = true;
         }
       );
-    }, [t, e, x, l, o, I, a, i]),
+    }, [t, dynamicMcpConfig, x, l, o, I, a, i]),
     kC.useEffect(() => {
       let P = u.current;
       return () => {
@@ -823,7 +823,10 @@ function useManageMCPConnections(e, t = false) {
             config: L.config,
           });
           try {
-            let B = e?.[P] ?? (t ? void 0 : (await rJ(e)).servers[P]) ?? L.config;
+            let B =
+              dynamicMcpConfig?.[P] ??
+              (t ? void 0 : (await rJ(dynamicMcpConfig)).servers[P]) ??
+              L.config;
             if (D4(P, B))
               throw (RKe(P), Error(`MCP server ${P} is blocked by enterprise managed policy`));
             if (L.type === "connected") L.client.onclose = void 0;
@@ -840,7 +843,7 @@ function useManageMCPConnections(e, t = false) {
           d.current.delete(P);
         }
       },
-      [r, C, x, e, t],
+      [r, C, x, dynamicMcpConfig, t],
     ),
     D = kC.useCallback(
       async (P) => {
@@ -858,7 +861,10 @@ function useManageMCPConnections(e, t = false) {
           };
           return (C(N), N);
         } else {
-          let M = e?.[P] ?? (t ? void 0 : (await rJ(e)).servers[P]) ?? O.config;
+          let M =
+            dynamicMcpConfig?.[P] ??
+            (t ? void 0 : (await rJ(dynamicMcpConfig)).servers[P]) ??
+            O.config;
           if (D4(P, M))
             throw (RKe(P), Error(`MCP server ${P} is blocked by enterprise managed policy`));
           (iqe(P, true),
@@ -871,15 +877,15 @@ function useManageMCPConnections(e, t = false) {
           return (x(N), N.client);
         }
       },
-      [r, C, x, e, t],
+      [r, C, x, dynamicMcpConfig, t],
     );
   return {
     reconnectMcpServer: k,
     toggleMcpServer: D,
   };
 }
-function getTransportDisplayName(e) {
-  switch (e) {
+function getTransportDisplayName(type) {
+  switch (type) {
     case "http":
       return "HTTP";
     case "ws":

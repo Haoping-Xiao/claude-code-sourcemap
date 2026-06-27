@@ -4,17 +4,17 @@
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0279  score=0.3776  fileCov=0.0292
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function executePreCompactHooks(e, t, n = lp) {
+async function executePreCompactHooks(compactData, signal, n = lp) {
   let r = {
       ...Td(void 0),
       hook_event_name: "PreCompact",
-      trigger: e.trigger,
-      custom_instructions: e.customInstructions,
+      trigger: compactData.trigger,
+      custom_instructions: compactData.customInstructions,
     },
     o = await Kk({
       hookInput: r,
-      matchQuery: e.trigger,
-      signal: t,
+      matchQuery: compactData.trigger,
+      signal: signal,
       timeoutMs: n,
     });
   if (o.length === 0) return {};
@@ -51,17 +51,17 @@ async function executePreCompactHooks(e, t, n = lp) {
     }),
   };
 }
-async function executePostCompactHooks(e, t, n = lp) {
+async function executePostCompactHooks(compactData, signal, n = lp) {
   let r = {
       ...Td(void 0),
       hook_event_name: "PostCompact",
-      trigger: e.trigger,
-      compact_summary: e.compactSummary,
+      trigger: compactData.trigger,
+      compact_summary: compactData.compactSummary,
     },
     o = await Kk({
       hookInput: r,
-      matchQuery: e.trigger,
-      signal: t,
+      matchQuery: compactData.trigger,
+      signal: signal,
       timeoutMs: n,
     });
   if (o.length === 0) return {};

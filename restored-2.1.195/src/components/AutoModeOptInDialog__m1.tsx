@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LJl] deps: np, dn, kt, lT, DD, EHe
 kJl = `Usage: /model <name>. Available: ${hye.join(", ")}, default, or a full model ID.`;
-function AutoModeOptInDialog(e) {
+function AutoModeOptInDialog(t0) {
   let t = DJl.c(23),
-    { kind: n, model: r, effort: o, onConfirm: s, onCancel: i } = e,
+    { kind: n, model: r, effort: o, onConfirm: s, onCancel: i } = t0,
     a = Ho(),
     l = n === "model",
     c = l ? "Switch model?" : "Change effort level?",

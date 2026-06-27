@@ -30,70 +30,70 @@ function $Xn(e) {
   if (e.agentId) return zEl(e, e.agentId);
   return Oh() || (wf() ? "teammate" : Hd);
 }
-async function handleMessage(e, t, n, r) {
-  let o = r.getAppState(),
+async function handleMessage(recipientName, content, summary, context) {
+  let o = context.getAppState(),
     s = rp(o.teamContext);
   if (!s)
     return {
       data: {
         success: false,
-        message: `No agent named '${e}' is currently addressable. Spawn a new one or use the agent ID.`,
+        message: `No agent named '${recipientName}' is currently addressable. Spawn a new one or use the agent ID.`,
       },
     };
-  if (e !== Hd) {
-    if (!Object.values(o.teamContext?.teammates ?? {}).some((u) => u.name === e)) {
+  if (recipientName !== Hd) {
+    if (!Object.values(o.teamContext?.teammates ?? {}).some((u) => u.name === recipientName)) {
       let u = await hoe(s);
-      if (u !== null && !u.members.some((d) => d.name === e))
+      if (u !== null && !u.members.some((d) => d.name === recipientName))
         return {
           data: {
             success: false,
-            message: `No teammate named '${e}' is currently on team '${s}'. Spawn one with ${ss}({name: '${e}'}) \u2014 or message the lead to do so.`,
+            message: `No teammate named '${recipientName}' is currently on team '${s}'. Spawn one with ${ss}({name: '${recipientName}'}) \u2014 or message the lead to do so.`,
           },
         };
     }
   }
-  let i = $Xn(r),
+  let i = $Xn(context),
     a = Sv();
   await fg(
-    e,
+    recipientName,
     {
       from: i,
-      text: t,
-      summary: n,
+      text: content,
+      summary: summary,
       timestamp: new Date().toISOString(),
       color: a,
     },
     s,
   );
-  let l = Iyf(o, e);
+  let l = Iyf(o, recipientName);
   return {
     data: {
       success: true,
-      message: `Message sent to ${e}'s inbox`,
+      message: `Message sent to ${recipientName}'s inbox`,
       routing: {
         sender: i,
         senderColor: a,
-        target: `@${e}`,
+        target: `@${recipientName}`,
         targetColor: l,
-        summary: n,
-        content: t,
+        summary: summary,
+        content: content,
       },
     },
   };
 }
-async function handleShutdownRequest(e, t, n) {
-  let r = n.getAppState(),
+async function handleShutdownRequest(targetName, reason, context) {
+  let r = context.getAppState(),
     o = rp(r.teamContext),
-    s = $Xn(n),
-    i = nrt("shutdown", e),
+    s = $Xn(context),
+    i = nrt("shutdown", targetName),
     a = jht({
       requestId: i,
       from: s,
-      reason: t,
+      reason: reason,
     });
   return (
     await fg(
-      e,
+      targetName,
       {
         from: s,
         text: De(a),
@@ -105,14 +105,14 @@ async function handleShutdownRequest(e, t, n) {
     {
       data: {
         success: true,
-        message: `Shutdown request sent to ${e}. Request ID: ${i}`,
+        message: `Shutdown request sent to ${targetName}. Request ID: ${i}`,
         request_id: i,
-        target: e,
+        target: targetName,
       },
     }
   );
 }
-async function handleShutdownApproval(e, t) {
+async function handleShutdownApproval(requestId, context) {
   let n = rp(),
     r = PD(),
     o = Oh() || "teammate";
@@ -126,7 +126,7 @@ async function handleShutdownApproval(e, t) {
     }
   }
   let a = JTo({
-    requestId: e,
+    requestId: requestId,
     from: o,
     paneId: s,
     backendType: i,
@@ -145,7 +145,7 @@ async function handleShutdownApproval(e, t) {
     i === "in-process")
   ) {
     if ((T(`[SendMessageTool] In-process teammate ${o} approving shutdown - signaling abort`), r)) {
-      let l = t.getAppState(),
+      let l = context.getAppState(),
         c = uAe(r, l.tasks);
       if (c?.abortController)
         (c.abortController.abort(),
@@ -154,7 +154,7 @@ async function handleShutdownApproval(e, t) {
     }
   } else {
     if (r) {
-      let l = t.getAppState(),
+      let l = context.getAppState(),
         c = uAe(r, l.tasks);
       if (c?.abortController)
         return (
@@ -164,7 +164,7 @@ async function handleShutdownApproval(e, t) {
             data: {
               success: true,
               message: `Shutdown approved (fallback path). Agent ${o} is now exiting.`,
-              request_id: e,
+              request_id: requestId,
             },
           }
         );
@@ -177,17 +177,17 @@ async function handleShutdownApproval(e, t) {
     data: {
       success: true,
       message: `Shutdown approved. Sent confirmation to team-lead. Agent ${o} is now exiting.`,
-      request_id: e,
+      request_id: requestId,
     },
   };
 }
-async function handleShutdownRejection(e, t) {
+async function handleShutdownRejection(requestId, reason) {
   let n = rp(),
     r = Oh() || "teammate",
     o = QTo({
-      requestId: e,
+      requestId: requestId,
       from: r,
-      reason: t,
+      reason: reason,
     });
   return (
     await fg(
@@ -203,13 +203,13 @@ async function handleShutdownRejection(e, t) {
     {
       data: {
         success: true,
-        message: `Shutdown rejected. Reason: "${t}". Continuing to work.`,
-        request_id: e,
+        message: `Shutdown rejected. Reason: "${reason}". Continuing to work.`,
+        request_id: requestId,
       },
     }
   );
 }
-async function handlePlanApproval(e, t, n, r) {
+async function handlePlanApproval(recipientName, requestId, context, r) {
   let o = r.getAppState(),
     s = o.teamContext?.teamName;
   if (!wM(o.teamContext))
@@ -220,17 +220,17 @@ async function handlePlanApproval(e, t, n, r) {
     a = i === "plan" ? "default" : i,
     l = {
       type: "plan_approval_response",
-      requestId: t,
+      requestId: requestId,
       approved: true,
-      ...(n !== void 0 && {
-        feedback: n,
+      ...(context !== void 0 && {
+        feedback: context,
       }),
       timestamp: new Date().toISOString(),
       permissionMode: a,
     };
   return (
     await fg(
-      e,
+      recipientName,
       {
         from: Hd,
         text: De(l),
@@ -241,14 +241,14 @@ async function handlePlanApproval(e, t, n, r) {
     {
       data: {
         success: true,
-        message: `Plan approved for ${e}. They will receive the approval and can proceed with implementation.`,
-        request_id: t,
+        message: `Plan approved for ${recipientName}. They will receive the approval and can proceed with implementation.`,
+        request_id: requestId,
       },
     }
   );
 }
-async function handlePlanRejection(e, t, n, r) {
-  let o = r.getAppState(),
+async function handlePlanRejection(recipientName, requestId, feedback, context) {
+  let o = context.getAppState(),
     s = o.teamContext?.teamName;
   if (!wM(o.teamContext))
     throw new SendMessagePreconditionError(
@@ -256,14 +256,14 @@ async function handlePlanRejection(e, t, n, r) {
     );
   let i = {
     type: "plan_approval_response",
-    requestId: t,
+    requestId: requestId,
     approved: false,
-    feedback: n,
+    feedback: feedback,
     timestamp: new Date().toISOString(),
   };
   return (
     await fg(
-      e,
+      recipientName,
       {
         from: Hd,
         text: De(i),
@@ -274,8 +274,8 @@ async function handlePlanRejection(e, t, n, r) {
     {
       data: {
         success: true,
-        message: `Plan rejected for ${e} with feedback: "${n}"`,
-        request_id: t,
+        message: `Plan rejected for ${recipientName} with feedback: "${feedback}"`,
+        request_id: requestId,
       },
     }
   );

@@ -6,23 +6,23 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jun] deps: Fun
 gIr = R(require("process"));
-function baseUnset(e, t, n, r) {
-  if (!Bb(e)) return e;
-  t = wK(t, e);
+function baseUnset(object, path, n, r) {
+  if (!Bb(object)) return object;
+  path = wK(path, object);
   var o = -1,
-    s = t.length,
+    s = path.length,
     i = s - 1,
-    a = e;
+    a = object;
   while (a != null && ++o < s) {
-    var l = DV(t[o]),
+    var l = DV(path[o]),
       c = n;
-    if (l === "__proto__" || l === "constructor" || l === "prototype") return e;
+    if (l === "__proto__" || l === "constructor" || l === "prototype") return object;
     if (o != i) {
       var u = a[l];
-      if (c = r ? r(u, l, a) : void 0, c === void 0) c = Bb(u) ? u : Nve(t[o + 1]) ? [] : {};
+      if (c = r ? r(u, l, a) : void 0, c === void 0) c = Bb(u) ? u : Nve(path[o + 1]) ? [] : {};
     }
     pwe(a, l, c), a = a[l];
   }
-  return e;
+  return object;
 }
 var Ifs;

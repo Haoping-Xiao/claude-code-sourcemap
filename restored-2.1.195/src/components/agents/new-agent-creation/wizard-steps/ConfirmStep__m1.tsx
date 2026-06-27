@@ -29,9 +29,9 @@ function xJp(e) {
   if (e.pinHaiku) t.ANTHROPIC_DEFAULT_HAIKU_MODEL = e.pinHaiku;
   return t;
 }
-function ConfirmStep(e) {
+function ConfirmStep(t0) {
   let t = ZJa.c(29),
-    { onComplete: n } = e,
+    { onComplete: n } = t0,
     { goBack: r, wizardData: o } = Eu(),
     [s, i] = eQa.useState(null),
     a;

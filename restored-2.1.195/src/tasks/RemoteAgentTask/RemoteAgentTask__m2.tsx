@@ -114,16 +114,16 @@ function c1m(e) {
   } catch {}
   return null;
 }
-async function startRemoteSessionPolling(e, t, n) {
+async function startRemoteSessionPolling(taskId, context, n) {
   let r = Date.now() + n,
     o = null,
     s = 0,
     i = [],
     a = "";
   while (Date.now() < r) {
-    if (t.aborted) throw Error("aborted");
+    if (context.aborted) throw Error("aborted");
     try {
-      let l = await lMe(e, o);
+      let l = await lMe(taskId, o);
       if (((o = l.lastEventId), (s = 0), l.sessionStatus === "archived")) {
         if (l.newEvents.length > 0) i.push(...l.newEvents);
         return w8n(i) ?? `{"error":"${x5c}"}`;
@@ -142,7 +142,7 @@ async function startRemoteSessionPolling(e, t, n) {
         if (c) return c;
       }
     } catch (l) {
-      if (t.aborted) throw l;
+      if (context.aborted) throw l;
       if (!xst(l)) throw new prn("poll_api_error", be(l));
       if (++s >= i1m)
         throw new prn(
@@ -150,7 +150,7 @@ async function startRemoteSessionPolling(e, t, n) {
           "lost connection to the cloud session after repeated retries",
         );
     }
-    await Nn(o1m, t);
+    await Nn(o1m, context);
   }
   throw new prn("poll_timeout", `cloud session exceeded ${Math.round(n / 60000)} minutes`);
 }

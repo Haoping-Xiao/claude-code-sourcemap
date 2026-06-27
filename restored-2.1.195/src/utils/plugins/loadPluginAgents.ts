@@ -49,23 +49,31 @@ async function pLl(e, t, n, r, o, s) {
     i
   );
 }
-async function loadAgentFromFile(e, t, n, r, o, s, i) {
+async function loadAgentFromFile(
+  filePath,
+  pluginName,
+  namespace,
+  sourceName,
+  pluginPath,
+  pluginManifest,
+  loadedPaths,
+) {
   let a = qt();
-  if (fee(a, e, i)) return null;
+  if (fee(a, filePath, loadedPaths)) return null;
   try {
-    let l = await a.readFile(e, {
+    let l = await a.readFile(filePath, {
         encoding: "utf-8",
       }),
-      { frontmatter: c, content: u } = Bm(l, e, {
+      { frontmatter: c, content: u } = Bm(l, filePath, {
         normalizeKeys: true,
       }),
-      d = (c.name != null ? String(c.name) : void 0) || fLl.basename(e).replace(/\.md$/, ""),
-      f = [t, ...n, d].join(":"),
+      d = (c.name != null ? String(c.name) : void 0) || fLl.basename(filePath).replace(/\.md$/, ""),
+      f = [pluginName, ...namespace, d].join(":"),
       m =
         AU(c.description, f) ??
         AU(c.when_to_use, f) ??
         AU(c["when-to-use"], f) ??
-        `Agent from ${t} plugin`,
+        `Agent from ${pluginName} plugin`,
       g = TOe(c.tools),
       h = kQ(c.skills),
       y = c.color,
@@ -78,29 +86,29 @@ async function loadAgentFromFile(e, t, n, r, o, s, i) {
     let S = c.background,
       A = S === "true" || S === true ? true : void 0,
       v = vre(u.trim(), {
-        path: o,
-        source: r,
+        path: pluginPath,
+        source: sourceName,
       });
-    if (s.userConfig) v = HUn(v, m$(r), s.userConfig);
+    if (pluginManifest.userConfig) v = HUn(v, m$(sourceName), pluginManifest.userConfig);
     let C = c.memory,
       x;
     if (C !== void 0)
       if (dLl.includes(C)) x = C;
       else
         T(
-          `Plugin agent file ${e} has invalid memory value '${C}'. Valid options: ${dLl.join(", ")}`,
+          `Plugin agent file ${filePath} has invalid memory value '${C}'. Valid options: ${dLl.join(", ")}`,
         );
     let k = c.isolation === "worktree" ? "worktree" : void 0,
       D = c.effort,
       P = D !== void 0 ? TU(D) : void 0;
     if (D !== void 0 && P === void 0)
       T(
-        `Plugin agent file ${e} has invalid effort '${D}'. Valid options: ${xv.join(", ")} or an integer`,
+        `Plugin agent file ${filePath} has invalid effort '${D}'. Valid options: ${xv.join(", ")} or an integer`,
       );
     for (let N of ["permissionMode", "hooks", "mcpServers"])
       if (c[N] !== void 0)
         T(
-          `Plugin agent file ${e} sets ${N}, which is ignored for plugin agents. Use .claude/agents/ for this level of control.`,
+          `Plugin agent file ${filePath} sets ${N}, which is ignored for plugin agents. Use .claude/agents/ for this level of control.`,
           {
             level: "warn",
           },
@@ -108,7 +116,7 @@ async function loadAgentFromFile(e, t, n, r, o, s, i) {
     let O = c.maxTurns,
       L = Mkn(O);
     if (O !== void 0 && L === void 0)
-      T(`Plugin agent file ${e} has invalid maxTurns '${O}'. Must be a positive integer.`);
+      T(`Plugin agent file ${filePath} has invalid maxTurns '${O}'. Must be a positive integer.`);
     let M = c.disallowedTools !== void 0 ? TOe(c.disallowedTools) : void 0;
     if (lu() && x && g !== void 0) {
       let N = new Set(g);
@@ -141,7 +149,7 @@ async function loadAgentFromFile(e, t, n, r, o, s, i) {
       color: y,
       model: _,
       filename: d,
-      plugin: r,
+      plugin: sourceName,
       ...(A && {
         background: A,
       }),
@@ -160,7 +168,7 @@ async function loadAgentFromFile(e, t, n, r, o, s, i) {
     };
   } catch (l) {
     return (
-      T(`Failed to load agent from ${e}: ${l}`, {
+      T(`Failed to load agent from ${filePath}: ${l}`, {
         level: "error",
       }),
       null

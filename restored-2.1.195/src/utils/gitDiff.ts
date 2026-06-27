@@ -148,15 +148,15 @@ function uef(e) {
     perFileStats: s,
   };
 }
-function parseGitDiff(e) {
+function parseGitDiff(stdout) {
   let t = new Map(),
     n = new Set();
-  if (!e.trim())
+  if (!stdout.trim())
     return {
       hunks: t,
       skippedLarge: n,
     };
-  let r = e.split(/^diff --git /m).filter(Boolean);
+  let r = stdout.split(/^diff --git /m).filter(Boolean);
   for (let o of r) {
     if (t.size + n.size >= Mvo) break;
     let s = o.indexOf(`
@@ -225,14 +225,14 @@ async function isInTransientGitState() {
     )
   ).some(Boolean);
 }
-async function getDiffRef(e) {
+async function getDiffRef(gitRoot) {
   let [t, n] = await Promise.all([ub(), vD()]);
   if (!t || t === "HEAD" || t === n) return null;
   if (n.startsWith("-")) return null;
   let r = {
       timeout: nyt,
       preserveOutputOnError: false,
-      abortSignal: e,
+      abortSignal: gitRoot,
     },
     o = "";
   for (let i of [n, `origin/${n}`]) {
@@ -254,7 +254,7 @@ async function getDiffRef(e) {
     baseBranch: n,
   };
 }
-async function fetchUntrackedFiles(e, t) {
+async function fetchUntrackedFiles(maxFiles, t) {
   let { stdout: n, code: r } = await $n(
     go(),
     ["--no-optional-locks", "ls-files", "--others", "--exclude-standard", "--full-name"],
@@ -274,7 +274,7 @@ async function fetchUntrackedFiles(e, t) {
     .filter(Boolean);
   if (o.length === 0) return null;
   let s = new Map();
-  for (let i of o.slice(0, e))
+  for (let i of o.slice(0, maxFiles))
     s.set(i, {
       added: 0,
       removed: 0,
@@ -294,10 +294,10 @@ function c6n(e) {
     linesRemoved: parseInt(t[3] ?? "0", 10),
   };
 }
-async function fetchSingleFileGitDiff(e) {
-  let t = Tu(HMe.dirname(e));
+async function fetchSingleFileGitDiff(absoluteFilePath) {
+  let t = Tu(HMe.dirname(absoluteFilePath));
   if (!t) return null;
-  let n = HMe.relative(t, e).split(HMe.sep).join("/"),
+  let n = HMe.relative(t, absoluteFilePath).split(HMe.sep).join("/"),
     r = oRr(),
     { code: o } = await Gr(go(), ["--no-optional-locks", "ls-files", "--error-unmatch", "--", n], {
       cwd: t,
@@ -316,7 +316,7 @@ async function fetchSingleFileGitDiff(e) {
       repository: r,
     };
   }
-  let s = await generateSyntheticDiff(n, e);
+  let s = await generateSyntheticDiff(n, absoluteFilePath);
   if (!s) return null;
   return {
     ...s,
@@ -358,10 +358,10 @@ async function gef(e) {
   if (s === 0 && o.trim()) return o.trim();
   return "HEAD";
 }
-async function generateSyntheticDiff(e, t) {
+async function generateSyntheticDiff(gitPath, absoluteFilePath) {
   try {
-    if (!Xpn(t, ptl)) return null;
-    let r = (await l6n.readFile(t, "utf-8")).split(`
+    if (!Xpn(absoluteFilePath, ptl)) return null;
+    let r = (await l6n.readFile(absoluteFilePath, "utf-8")).split(`
 `);
     if (r.length > 0 && r.at(-1) === "") r.pop();
     let o = r.length,
@@ -370,7 +370,7 @@ async function generateSyntheticDiff(e, t) {
       i = `@@ -0,0 +1,${o} @@
 ${s}`;
     return {
-      filename: e,
+      filename: gitPath,
       status: "added",
       additions: o,
       deletions: 0,

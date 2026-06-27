@@ -46,13 +46,13 @@
       plural: "callees",
     },
   }));
-function renderToolUseMessage(e, t) {
+function renderToolUseMessage(input, t) {
   let n = dbl.pathToFileURL(t).href,
     r = {
-      line: e.line - 1,
-      character: e.character - 1,
+      line: input.line - 1,
+      character: input.character - 1,
     };
-  switch (e.operation) {
+  switch (input.operation) {
     case "goToDefinition":
       return {
         method: "textDocument/definition",
@@ -99,7 +99,7 @@ function renderToolUseMessage(e, t) {
       return {
         method: "workspace/symbol",
         params: {
-          query: e.query ?? "",
+          query: input.query ?? "",
         },
       };
     case "goToImplementation":

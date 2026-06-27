@@ -6,41 +6,41 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pyr] deps: Cyr, Ton, OBe
 Wwt = t6c;
-function equalObjects(e, t, n, r, o, s) {
-  var i = n & n6c,
-    a = Wwt(e),
+function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
+  var i = bitmask & n6c,
+    a = Wwt(object),
     l = a.length,
-    c = Wwt(t),
+    c = Wwt(other),
     u = c.length;
   if (l != u && !i) return false;
   var d = l;
   while (d--) {
     var p = a[d];
-    if (!(i ? p in t : o6c.call(t, p))) return false;
+    if (!(i ? p in other : o6c.call(other, p))) return false;
   }
-  var f = s.get(e),
-    m = s.get(t);
-  if (f && m) return f == t && m == e;
+  var f = stack.get(object),
+    m = stack.get(other);
+  if (f && m) return f == other && m == object;
   var g = true;
-  s.set(e, t), s.set(t, e);
+  stack.set(object, other), stack.set(other, object);
   var h = i;
   while (++d < l) {
     p = a[d];
-    var y = e[p],
-      b = t[p];
-    if (r) var _ = i ? r(b, y, p, t, e, s) : r(y, b, p, e, t, s);
-    if (!(_ === void 0 ? y === b || o(y, b, n, r, s) : _)) {
+    var y = object[p],
+      b = other[p];
+    if (customizer) var _ = i ? customizer(b, y, p, other, object, stack) : customizer(y, b, p, object, other, stack);
+    if (!(_ === void 0 ? y === b || equalFunc(y, b, bitmask, customizer, stack) : _)) {
       g = false;
       break;
     }
     h || (h = p == "constructor");
   }
   if (g && !h) {
-    var S = e.constructor,
-      A = t.constructor;
-    if (S != A && "constructor" in e && "constructor" in t && !(typeof S == "function" && S instanceof S && typeof A == "function" && A instanceof A)) g = false;
+    var S = object.constructor,
+      A = other.constructor;
+    if (S != A && "constructor" in object && "constructor" in other && !(typeof S == "function" && S instanceof S && typeof A == "function" && A instanceof A)) g = false;
   }
-  return s.delete(e), s.delete(t), g;
+  return stack.delete(object), stack.delete(other), g;
 }
 var n6c = 1,
   r6c,

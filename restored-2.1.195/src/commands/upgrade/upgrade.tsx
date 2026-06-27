@@ -16,7 +16,7 @@ sQl = {
   },
   load: () => Promise.resolve().then(() => (oQl(), nQl)),
 };
-async function call(e, t) {
+async function call(onDone, context) {
   try {
     if (bo()) {
       let s = Ws(),
@@ -32,7 +32,7 @@ async function call(e, t) {
       if (i)
         return (
           setTimeout(
-            e,
+            onDone,
             0,
             "You are already on the highest Max subscription plan. For additional usage, run /login to switch to an API usage-billed account.",
           ),
@@ -49,23 +49,23 @@ async function call(e, t) {
       startingMessage:
         "Starting new login following /upgrade. Exit with Ctrl-C to use existing account.",
       onDone: async (s) => {
-        let i = await NMe(t, s, {
+        let i = await NMe(context, s, {
           previousAccount: o,
         });
-        e(
+        onDone(
           s
             ? i.bridgeDisconnected
               ? `Login successful. ${Roe}`
               : "Login successful"
             : "Login interrupted",
-          s ? Uyt(t, i) : void 0,
+          s ? Uyt(context, i) : void 0,
         );
       },
     });
   } catch (n) {
     (ke(n),
       setTimeout(
-        e,
+        onDone,
         0,
         "Failed to open browser. Please visit https://claude.ai/upgrade/max to upgrade.",
       ));

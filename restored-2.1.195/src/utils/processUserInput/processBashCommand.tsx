@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: processBashCommand
-async function processBashCommand(e, t, n, r) {
+async function processBashCommand(inputString, precedingInputBlocks, attachmentMessages, context) {
   let o = q1() && mur() === "powershell",
     s = Dr().respondToBashCommands ?? true;
   G("tengu_input_bash", {
@@ -14,31 +14,31 @@ async function processBashCommand(e, t, n, r) {
   });
   let i = Rn({
       content: Y6({
-        inputString: `<bash-input>${e}</bash-input>`,
-        precedingInputBlocks: t,
+        inputString: `<bash-input>${inputString}</bash-input>`,
+        precedingInputBlocks: precedingInputBlocks,
       }),
     }),
     a,
     l = d8o.randomUUID(),
-    { emitToolProgress: c } = n;
+    { emitToolProgress: c } = attachmentMessages;
   (c?.({
     kind: "bash_mode_progress",
     toolUseId: l,
-    input: e,
+    input: inputString,
     progress: null,
-    verbose: n.options.verbose,
+    verbose: attachmentMessages.options.verbose,
   }),
-    r({
+    context({
       jsx: t7e.jsx(QZt, {
-        input: e,
+        input: inputString,
         progress: null,
-        verbose: n.options.verbose,
+        verbose: attachmentMessages.options.verbose,
       }),
       shouldHidePromptInput: false,
     }));
   try {
     let u = {
-        ...n,
+        ...attachmentMessages,
         toolUseId: `${l}:inner`,
         setToolJSX: (A) => {
           a = A?.jsx;
@@ -49,17 +49,17 @@ async function processBashCommand(e, t, n, r) {
         (c?.({
           kind: "bash_mode_progress",
           toolUseId: l,
-          input: e,
+          input: inputString,
           progress: A.data,
-          verbose: n.options.verbose,
+          verbose: attachmentMessages.options.verbose,
         }),
-          r({
+          context({
             jsx: t7e.jsxs(t7e.Fragment, {
               children: [
                 t7e.jsx(QZt, {
-                  input: e,
+                  input: inputString,
                   progress: A.data,
-                  verbose: n.options.verbose,
+                  verbose: attachmentMessages.options.verbose,
                 }),
                 a,
               ],
@@ -75,7 +75,7 @@ async function processBashCommand(e, t, n, r) {
         p
           ? await p.call(
               {
-                command: e,
+                command: inputString,
                 dangerouslyDisableSandbox: true,
               },
               u,
@@ -85,7 +85,7 @@ async function processBashCommand(e, t, n, r) {
             )
           : await cl.call(
               {
-                command: e,
+                command: inputString,
                 dangerouslyDisableSandbox: true,
               },
               u,
@@ -106,7 +106,11 @@ async function processBashCommand(e, t, n, r) {
       ),
       b = typeof y.content === "string" ? y.content : g.stdout,
       _ = b.startsWith(dDe) ? b : ec(b),
-      S = s && !g.interrupted && !g.backgroundTaskId && !n.abortController.signal.aborted;
+      S =
+        s &&
+        !g.interrupted &&
+        !g.backgroundTaskId &&
+        !attachmentMessages.abortController.signal.aborted;
     return {
       messages: [
         ...(S ? [] : [Doe()]),
@@ -130,7 +134,7 @@ async function processBashCommand(e, t, n, r) {
           ],
           shouldQuery: false,
         };
-      let p = s && !n.abortController.signal.aborted;
+      let p = s && !attachmentMessages.abortController.signal.aborted;
       return {
         messages: [
           ...(p ? [] : [Doe()]),
@@ -142,7 +146,7 @@ async function processBashCommand(e, t, n, r) {
         shouldQuery: p,
       };
     }
-    let d = s && !n.abortController.signal.aborted;
+    let d = s && !attachmentMessages.abortController.signal.aborted;
     return {
       messages: [
         ...(d ? [] : [Doe()]),
@@ -158,7 +162,7 @@ async function processBashCommand(e, t, n, r) {
       kind: "clear",
       toolUseId: l,
     }),
-      r(null));
+      context(null));
   }
 }
 var d8o, t7e;

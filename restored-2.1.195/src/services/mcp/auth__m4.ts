@@ -240,7 +240,7 @@ function cFl({ onSuccess: e, onCancel: t }) {
     })
   );
 }
-function performMCPOAuthFlow(e) {
+function performMCPOAuthFlow(serverName) {
   let t = aFl.c(25),
     {
       oauthStatus: n,
@@ -251,7 +251,7 @@ function performMCPOAuthFlow(e) {
       setCursorOffset: a,
       textInputColumns: l,
       onSubmitCode: c,
-    } = e;
+    } = serverName;
   switch (n.state) {
     case "starting": {
       let u;

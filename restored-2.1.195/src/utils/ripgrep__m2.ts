@@ -24,8 +24,8 @@ function execFileNoThrow(
     input: n.input,
   });
 }
-function ripGrep(e) {
-  return on(e) === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" || e?.isMaxBuffer === true;
+function ripGrep(args) {
+  return on(args) === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" || args?.isMaxBuffer === true;
 }
 function m$u(e, t) {
   if (e.shortMessage) return e.shortMessage;

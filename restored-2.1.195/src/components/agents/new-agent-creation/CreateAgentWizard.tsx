@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module d7l] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, d4o
 ((c7l = R(lt(), 1)), (qsr = R(rt(), 1)), (wz = R(se(), 1)));
-function CreateAgentWizard(e) {
+function CreateAgentWizard(t0) {
   let t = p7l.c(17),
-    { tools: n, existingAgents: r, onComplete: o, onCancel: s } = e,
+    { tools: n, existingAgents: r, onComplete: o, onCancel: s } = t0,
     i;
   if (t[0] !== r)
     ((i = () =>

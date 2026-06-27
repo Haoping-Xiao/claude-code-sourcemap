@@ -100,8 +100,8 @@ function SVo(e) {
   }
   return e;
 }
-function computeChecksum(e) {
-  let t = SVo(e),
+function computeChecksum(restrictions) {
+  let t = SVo(restrictions),
     n = De(t);
   return `sha256:${kcc.createHash("sha256").update(n).digest("hex")}`;
 }
@@ -122,10 +122,10 @@ function Vom() {
   if (bo() && Ws()?.accessToken) return "oauth";
   return e ? "api_key" : "oauth";
 }
-async function fetchWithRetry(e) {
+async function fetchWithRetry(cachedChecksum) {
   let t = null;
   for (let n = 1; n <= hVo + 1; n++) {
-    if (((t = await fetchPolicyLimits(e)), (t.attempts = n), t.success)) return t;
+    if (((t = await fetchPolicyLimits(cachedChecksum)), (t.attempts = n), t.success)) return t;
     if (t.skipRetry) return t;
     if (n > hVo) return t;
     let r = TJ(n);
@@ -133,7 +133,7 @@ async function fetchWithRetry(e) {
   }
   return t;
 }
-async function fetchPolicyLimits(e) {
+async function fetchPolicyLimits(cachedChecksum) {
   let t;
   try {
     t = await qCn();
@@ -152,7 +152,7 @@ async function fetchPolicyLimits(e) {
         ...n.headers,
         "User-Agent": dy(),
       };
-    if (e) o["If-None-Match"] = `"${e}"`;
+    if (cachedChecksum) o["If-None-Match"] = `"${cachedChecksum}"`;
     let s = await po.get(r, {
       headers: o,
       timeout: Uom,
@@ -164,7 +164,7 @@ async function fetchPolicyLimits(e) {
         {
           success: true,
           response: null,
-          etag: e,
+          etag: cachedChecksum,
         }
       );
     if (s.status === 404)
@@ -227,10 +227,10 @@ async function fetchPolicyLimits(e) {
     }
   }
 }
-async function saveCachedRestrictions(e) {
+async function saveCachedRestrictions(restrictions) {
   try {
     let t = Ske();
-    (await XYe.writeFile(t, De(e, null, 2), {
+    (await XYe.writeFile(t, De(restrictions, null, 2), {
       encoding: "utf-8",
       mode: 384,
     }),

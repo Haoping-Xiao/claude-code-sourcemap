@@ -6,14 +6,14 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BYl] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
 ((OYl = R(lt(), 1)), (Gsr = R(rt(), 1)), (Kq = R(se(), 1)));
-async function generateAgent(e, t, n, r) {
+async function generateAgent(userPrompt, model, existingIdentifiers, abortSignal) {
   let o =
-      n.length > 0
+      existingIdentifiers.length > 0
         ? `
 
-IMPORTANT: The following identifiers already exist and must NOT be used: ${n.join(", ")}`
+IMPORTANT: The following identifiers already exist and must NOT be used: ${existingIdentifiers.join(", ")}`
         : "",
-    s = `Create an agent configuration based on this request: "${e}".${o}
+    s = `Create an agent configuration based on this request: "${userPrompt}".${o}
   Return ONLY the JSON object, no other text.`,
     i = Rn({
       content: s,
@@ -29,10 +29,10 @@ IMPORTANT: The following identifiers already exist and must NOT be used: ${n.joi
           type: "disabled",
         },
         tools: [],
-        signal: r,
+        signal: abortSignal,
         options: {
           getToolPermissionContext: async () => b1(),
-          model: t,
+          model: model,
           toolChoice: void 0,
           agents: [],
           isNonInteractiveSession: false,

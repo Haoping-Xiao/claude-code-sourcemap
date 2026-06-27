@@ -4,8 +4,8 @@
 // class=partial  jaccard=0.0993  score=0.399  fileCov=0.1167
 // note: low-confidence suggestion: src/tools/shared/spawnMultiAgent.ts; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-async function registerOutOfProcessTeammateTask(e) {
-  let t = await Moe(e);
+async function registerOutOfProcessTeammateTask(setAppState) {
+  let t = await Moe(setAppState);
   return t?.taskKind === "in_process_teammate" ? t : null;
 }
 async function buildInheritedCliFlags({

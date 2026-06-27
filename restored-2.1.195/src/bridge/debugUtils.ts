@@ -20,16 +20,16 @@ function Ugo(e) {
   if (t.length <= Bjn) return t;
   return t.slice(0, Bjn) + `... (${t.length} chars)`;
 }
-function debugBody(e) {
-  let t = typeof e === "string" ? e : De(e),
+function debugBody(data) {
+  let t = typeof data === "string" ? data : De(data),
     n = redactSecrets(t);
   if (n.length <= Bjn) return n;
   return n.slice(0, Bjn) + `... (${n.length} chars)`;
 }
-function describeAxiosError(e) {
-  let t = be(e);
-  if (e && typeof e === "object" && "response" in e) {
-    let n = e.response;
+function describeAxiosError(err) {
+  let t = be(err);
+  if (err && typeof err === "object" && "response" in err) {
+    let n = err.response;
     if (n?.data && typeof n.data === "object") {
       let r = n.data,
         o =
@@ -70,12 +70,12 @@ function _J(e) {
     return e.error.message;
   return;
 }
-function logBridgeSkip(e, t, n) {
-  if (t) T(t);
+function logBridgeSkip(reason, debugMsg, v2) {
+  if (debugMsg) T(debugMsg);
   G("tengu_bridge_repl_skipped", {
-    reason: e,
-    ...(n !== void 0 && {
-      v2: n,
+    reason: reason,
+    ...(v2 !== void 0 && {
+      v2: v2,
     }),
   });
 }

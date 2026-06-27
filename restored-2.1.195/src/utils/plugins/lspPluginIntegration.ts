@@ -17,69 +17,69 @@ function qxp(e, t) {
   if (o.startsWith("..") || ADe.resolve(o) === o) return null;
   return r;
 }
-async function loadPluginLspServers(e, t = []) {
+async function loadPluginLspServers(plugin, t = []) {
   let n = {},
-    r = ADe.join(e.path, ".lsp.json");
+    r = ADe.join(plugin.path, ".lsp.json");
   try {
     let o = await Nfo.readFile(r, "utf-8"),
       s = Ft(o),
       i = H.record(H.string(), Det()).safeParse(s);
     if (i.success) Object.assign(n, i.data);
     else {
-      let a = `LSP config validation failed for .lsp.json in plugin ${e.name}: ${i.error.message}`;
+      let a = `LSP config validation failed for .lsp.json in plugin ${plugin.name}: ${i.error.message}`;
       (T(a, {
         level: "error",
       }),
         t.push({
           type: "lsp-config-invalid",
-          plugin: e.name,
+          plugin: plugin.name,
           serverName: ".lsp.json",
           validationError: i.error.message,
-          source: e.repository,
+          source: plugin.repository,
         }));
     }
   } catch (o) {
     if (!wn(o)) {
       let s =
         o instanceof Error
-          ? `Failed to read/parse .lsp.json in plugin ${e.name}: ${o.message}`
-          : `Failed to read/parse .lsp.json file in plugin ${e.name}`;
+          ? `Failed to read/parse .lsp.json in plugin ${plugin.name}: ${o.message}`
+          : `Failed to read/parse .lsp.json file in plugin ${plugin.name}`;
       (T(s, {
         level: "error",
       }),
         t.push({
           type: "lsp-config-invalid",
-          plugin: e.name,
+          plugin: plugin.name,
           serverName: ".lsp.json",
           validationError:
             o instanceof Error ? `Failed to parse JSON: ${o.message}` : "Failed to parse JSON file",
-          source: e.repository,
+          source: plugin.repository,
         }));
     }
   }
-  if (e.manifest.lspServers) {
-    let o = await loadLspServersFromManifest(e.manifest.lspServers, e, t);
+  if (plugin.manifest.lspServers) {
+    let o = await loadLspServersFromManifest(plugin.manifest.lspServers, plugin, t);
     if (o) Object.assign(n, o);
   }
   return Object.keys(n).length > 0 ? n : void 0;
 }
-async function loadLspServersFromManifest(e, t, n) {
+async function loadLspServersFromManifest(declaration, pluginPath, pluginName) {
   let r = {},
-    o = Array.isArray(e) ? e : [e];
+    o = Array.isArray(declaration) ? declaration : [declaration];
   for (let s of o)
     if (typeof s === "string") {
-      let i = qxp(t.path, s);
+      let i = qxp(pluginPath.path, s);
       if (!i) {
-        let a = `Security: Path traversal attempt blocked in plugin ${t.name}: ${s}`;
+        let a = `Security: Path traversal attempt blocked in plugin ${pluginPath.name}: ${s}`;
         (T(a, {
           level: "error",
         }),
-          n.push({
+          pluginName.push({
             type: "lsp-config-invalid",
-            plugin: t.name,
+            plugin: pluginPath.name,
             serverName: s,
             validationError: "Invalid path: must be relative and within plugin directory",
-            source: t.repository,
+            source: pluginPath.repository,
           }));
         continue;
       }
@@ -89,35 +89,35 @@ async function loadLspServersFromManifest(e, t, n) {
           c = H.record(H.string(), Det()).safeParse(l);
         if (c.success) Object.assign(r, c.data);
         else {
-          let u = `LSP config validation failed for ${s} in plugin ${t.name}: ${c.error.message}`;
+          let u = `LSP config validation failed for ${s} in plugin ${pluginPath.name}: ${c.error.message}`;
           (T(u, {
             level: "error",
           }),
-            n.push({
+            pluginName.push({
               type: "lsp-config-invalid",
-              plugin: t.name,
+              plugin: pluginPath.name,
               serverName: s,
               validationError: c.error.message,
-              source: t.repository,
+              source: pluginPath.repository,
             }));
         }
       } catch (a) {
         let l =
           a instanceof Error
-            ? `Failed to read/parse LSP config from ${s} in plugin ${t.name}: ${a.message}`
-            : `Failed to read/parse LSP config file ${s} in plugin ${t.name}`;
+            ? `Failed to read/parse LSP config from ${s} in plugin ${pluginPath.name}: ${a.message}`
+            : `Failed to read/parse LSP config file ${s} in plugin ${pluginPath.name}`;
         (T(l, {
           level: "error",
         }),
-          n.push({
+          pluginName.push({
             type: "lsp-config-invalid",
-            plugin: t.name,
+            plugin: pluginPath.name,
             serverName: s,
             validationError:
               a instanceof Error
                 ? `Failed to parse JSON: ${a.message}`
                 : "Failed to parse JSON file",
-            source: t.repository,
+            source: pluginPath.repository,
           }));
       }
     } else
@@ -125,37 +125,37 @@ async function loadLspServersFromManifest(e, t, n) {
         let l = Det().safeParse(a);
         if (l.success) r[i] = l.data;
         else {
-          let c = `LSP config validation failed for inline server "${i}" in plugin ${t.name}: ${l.error.message}`;
+          let c = `LSP config validation failed for inline server "${i}" in plugin ${pluginPath.name}: ${l.error.message}`;
           (T(c, {
             level: "error",
           }),
-            n.push({
+            pluginName.push({
               type: "lsp-config-invalid",
-              plugin: t.name,
+              plugin: pluginPath.name,
               serverName: i,
               validationError: l.error.message,
-              source: t.repository,
+              source: pluginPath.repository,
             }));
         }
       }
   return Object.keys(r).length > 0 ? r : void 0;
 }
-function resolvePluginLspEnvironment(e, t, n, r) {
+function resolvePluginLspEnvironment(config, plugin, userConfig, _errors) {
   let o = [],
     s = (l) => {
-      let c = vre(l, t);
-      if (n) c = $Se(c, n);
+      let c = vre(l, plugin);
+      if (userConfig) c = $Se(c, userConfig);
       let { expanded: u, missingVars: d } = gre(c);
       return (o.push(...d), u);
     },
     i = {
-      ...e,
+      ...config,
     };
   if (i.command) i.command = s(i.command);
   if (i.args) i.args = i.args.map((l) => s(l));
   let a = {
-    CLAUDE_PLUGIN_ROOT: t.path,
-    CLAUDE_PLUGIN_DATA: Rue(t.source),
+    CLAUDE_PLUGIN_ROOT: plugin.path,
+    CLAUDE_PLUGIN_DATA: Rue(plugin.source),
     CLAUDE_PROJECT_DIR: rc(),
     ...(i.env || {}),
   };
@@ -197,14 +197,14 @@ function p2n(e) {
   }
   return t;
 }
-function addPluginScopeToLspServers(e, t) {
+function addPluginScopeToLspServers(servers, pluginName) {
   let n = {};
-  for (let [r, o] of Object.entries(e)) {
-    let s = `plugin:${t}:${r}`;
+  for (let [r, o] of Object.entries(servers)) {
+    let s = `plugin:${pluginName}:${r}`;
     n[s] = {
       ...o,
       scope: "dynamic",
-      source: t,
+      source: pluginName,
     };
   }
   return n;

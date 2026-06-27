@@ -529,9 +529,9 @@ function BHo(e) {
   else v = t[22];
   return v;
 }
-function SpinnerModeGlyph(e) {
+function SpinnerModeGlyph(t0) {
   let t = NHo.c(2),
-    { mode: n } = e;
+    { mode: n } = t0;
   switch (n) {
     case "tool-input":
     case "tool-use":

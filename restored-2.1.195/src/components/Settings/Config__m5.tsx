@@ -10,7 +10,7 @@ oRf = new Map([
   ["autoUpdatesChannel", "/channel"],
   ["showExternalIncludesDialog", "/config (External CLAUDE.md row)"],
 ]);
-function NotifChannelLabel(e) {
+function NotifChannelLabel(t0) {
   let t = v7t.c(46),
     {
       title: n,
@@ -26,7 +26,7 @@ function NotifChannelLabel(e) {
       initialHeaderFocused: p,
       contentHeight: f,
       navFromContent: m,
-    } = e,
+    } = t0,
     g = p === void 0 ? true : p,
     h = m === void 0 ? false : m,
     { columns: y } = br(),

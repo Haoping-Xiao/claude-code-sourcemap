@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.172  score=0.3117  fileCov=0.2772
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ModelPicker(e) {
+function ModelPicker(t0) {
   let t = h1o.c(102),
     {
       initial: n,
@@ -16,7 +16,7 @@ function ModelPicker(e) {
       showFastModeNotice: l,
       headerText: c,
       skipSettingsWrite: u,
-    } = e,
+    } = t0,
     d = Ho(),
     p = n === null ? NO_PREFERENCE : n,
     [f, m] = $Oe.useState(p),

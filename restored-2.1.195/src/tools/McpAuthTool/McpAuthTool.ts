@@ -22,28 +22,28 @@ function XUn(e, t) {
   if (Ir()) return [];
   return [createMcpAuthTool(e, t), lvp(e)];
 }
-function createMcpAuthTool(e, t) {
-  let n = svp(t),
-    r = t.type ?? "stdio",
+function createMcpAuthTool(serverName, config) {
+  let n = svp(config),
+    r = config.type ?? "stdio",
     o = n ? `${r} at ${n}` : r,
     s =
-      `The \`${e}\` MCP server (${o}) is installed but requires authentication. ` +
+      `The \`${serverName}\` MCP server (${o}) is installed but requires authentication. ` +
       "Call this tool to start the OAuth flow \u2014 you'll receive an authorization URL to share with the user. " +
       "Once the user completes authorization in their browser, the server's real tools will become available automatically.";
   return {
-    name: i9(e, "authenticate"),
+    name: i9(serverName, "authenticate"),
     isMcp: true,
     mcpInfo: {
-      serverName: e,
+      serverName: serverName,
       toolName: "authenticate",
     },
     isEnabled: () => true,
     isConcurrencySafe: () => false,
     isReadOnly: () => false,
-    toAutoClassifierInput: () => e,
-    userFacingName: () => `${e} - authenticate (MCP)`,
+    toAutoClassifierInput: () => serverName,
+    userFacingName: () => `${serverName} - authenticate (MCP)`,
     maxResultSizeChars: 10000 /* 1e4 */,
-    renderToolUseMessage: () => `Authenticate ${e} MCP server`,
+    renderToolUseMessage: () => `Authenticate ${serverName} MCP server`,
     async description() {
       return s;
     },
@@ -60,19 +60,19 @@ function createMcpAuthTool(e, t) {
       };
     },
     async call(i, a) {
-      let l = r6(e, t);
+      let l = r6(serverName, config);
       if (l.kind === "claudeai-proxy")
         return {
           data: {
             status: "unsupported",
-            message: `This is a claude.ai MCP connector. Ask the user to run /mcp and select "${e}" to authenticate.`,
+            message: `This is a claude.ai MCP connector. Ask the user to run /mcp and select "${serverName}" to authenticate.`,
           },
         };
       if (l.kind === "unsupported-transport")
         return {
           data: {
             status: "unsupported",
-            message: `Server "${e}" uses ${r} transport which does not support OAuth from this tool. Ask the user to run /mcp and authenticate manually.`,
+            message: `Server "${serverName}" uses ${r} transport which does not support OAuth from this tool. Ask the user to run /mcp and authenticate manually.`,
           },
         };
       if (l.kind === "anthropic-hosted")
@@ -87,39 +87,39 @@ function createMcpAuthTool(e, t) {
           c = f;
         }),
         { setAppState: d } = a,
-        p = sJ(e, l.config, (f) => c?.(f), void 0, {
+        p = sJ(serverName, l.config, (f) => c?.(f), void 0, {
           skipBrowserOpen: true,
         });
-      (Udt(e, p),
+      (Udt(serverName, p),
         p
           .then(async () => {
             JUn();
-            let f = await iJ(e, t),
-              m = xG(e);
+            let f = await iJ(serverName, config),
+              m = xG(serverName);
             (d((g) => ({
               ...g,
               mcp: {
                 ...g.mcp,
-                clients: g.mcp.clients.map((h) => (h.name === e ? f.client : h)),
+                clients: g.mcp.clients.map((h) => (h.name === serverName ? f.client : h)),
                 tools: [...bL(g.mcp.tools, (h) => h.name?.startsWith(m)), ...f.tools],
                 commands: [...bL(g.mcp.commands, (h) => h.name?.startsWith(m)), ...f.commands],
                 resources: f.resources
                   ? {
                       ...g.mcp.resources,
-                      [e]: f.resources,
+                      [serverName]: f.resources,
                     }
                   : g.mcp.resources,
               },
             })),
-              sn(e, `OAuth complete, reconnected with ${f.tools.length} tool(s)`));
+              sn(serverName, `OAuth complete, reconnected with ${f.tools.length} tool(s)`));
           })
           .catch((f) => {
-            au(e, `OAuth flow failed after tool-triggered start: ${be(f)}`);
+            au(serverName, `OAuth flow failed after tool-triggered start: ${be(f)}`);
           }));
       try {
         let f = await Promise.race([u, p.then(() => null)]);
         if (f) {
-          let m = i9(e, "complete_authentication"),
+          let m = i9(serverName, "complete_authentication"),
             g = ivp(f),
             h = ovp()
               ? `
@@ -132,7 +132,7 @@ If the browser shows a connection error on the redirect page, ask the user to pa
             data: {
               status: "auth_url",
               authUrl: f,
-              message: `Ask the user to open this URL in their browser to authorize the ${e} MCP server:
+              message: `Ask the user to open this URL in their browser to authorize the ${serverName} MCP server:
 
 ${f}
 
@@ -143,14 +143,14 @@ Once they complete the flow, the server's tools will become available automatica
         return {
           data: {
             status: "auth_url",
-            message: `Authentication completed silently for ${e}. The server's tools should now be available.`,
+            message: `Authentication completed silently for ${serverName}. The server's tools should now be available.`,
           },
         };
       } catch (f) {
         return {
           data: {
             status: "error",
-            message: `Failed to start OAuth flow for ${e}: ${be(f)}. Ask the user to run /mcp and authenticate manually.`,
+            message: `Failed to start OAuth flow for ${serverName}: ${be(f)}. Ask the user to run /mcp and authenticate manually.`,
           },
         };
       }

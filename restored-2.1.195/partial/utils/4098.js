@@ -4,10 +4,10 @@
 // class=partial  jaccard=0.2421  score=0.3856  fileCov=0.3943
 // note: low-confidence suggestion: src/components/LogoV2/Clawd.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function Clawd(e) {
+function Clawd(t0) {
   let t = hCo.c(26),
     n;
-  if (t[0] !== e) n = e === void 0 ? {} : e, t[0] = e, t[1] = n;else n = t[1];
+  if (t[0] !== t0) n = t0 === void 0 ? {} : t0, t[0] = t0, t[1] = n;else n = t[1];
   let {
       pose: r
     } = n,
@@ -74,11 +74,11 @@ function Clawd(e) {
   }), t[23] = m, t[24] = u, t[25] = h;else h = t[25];
   return h;
 }
-function AppleTerminalClawd(e) {
+function AppleTerminalClawd(t0) {
   let t = hCo.c(10),
     {
       pose: n
-    } = e,
+    } = t0,
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) r = kL.jsx(w, {
     color: "clawd_body",

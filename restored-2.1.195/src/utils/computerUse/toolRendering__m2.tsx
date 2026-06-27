@@ -137,7 +137,7 @@ function s0a(e) {
     url: n.href,
   };
 }
-async function getComputerUseMCPRenderingOverrides(e) {
+async function getComputerUseMCPRenderingOverrides(toolName) {
   let t = nGt;
   if (!t) return;
   try {
@@ -166,7 +166,7 @@ async function getComputerUseMCPRenderingOverrides(e) {
               ? r[0].text
               : void 0;
         if (!o) return;
-        return Ft(o).availableTabs?.find((i) => i.tabId === e)?.url;
+        return Ft(o).availableTabs?.find((i) => i.tabId === toolName)?.url;
       })(),
       kCp,
       "queryTabUrl bridge call",

@@ -183,14 +183,14 @@ async function loadStatsCache() {
     return (T(`Failed to load stats cache: ${be(t)}`), Y1o());
   }
 }
-async function saveStatsCache(e) {
+async function saveStatsCache(cache) {
   let t = AOl();
   try {
     let n = tr();
     await qs().mkdir(n);
-    let r = De(e, null, 2);
+    let r = De(cache, null, 2);
     (await qs().atomicWrite(t, r, 384),
-      T(`Stats cache saved successfully (lastComputedDate: ${e.lastComputedDate})`));
+      T(`Stats cache saved successfully (lastComputedDate: ${cache.lastComputedDate})`));
   } catch (n) {
     T(`Failed to save stats cache: ${be(n)}`, {
       level: "error",
@@ -278,8 +278,8 @@ function X1o(e, t, n) {
     totalSpeculationTimeSavedMs: e.totalSpeculationTimeSavedMs + t.totalSpeculationTimeSavedMs,
   };
 }
-function toDateString(e) {
-  let n = e.toISOString().split("T")[0];
+function toDateString(date) {
+  let n = date.toISOString().split("T")[0];
   if (!n) throw Error("Invalid ISO date string");
   return n;
 }

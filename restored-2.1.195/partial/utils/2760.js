@@ -21,8 +21,8 @@ function qWe(e, t = Ora) {
 function $2t(e) {
   return e.whenToUse ? `${e.description} - ${e.whenToUse}` : e.description;
 }
-function formatCommandsWithinBudget(e) {
-  return e.type === "prompt" && e.source === "bundled";
+function formatCommandsWithinBudget(commands) {
+  return commands.type === "prompt" && commands.source === "bundled";
 }
 function Nra(e, t, n, r, o = Ora) {
   let s = qWe(t, o),

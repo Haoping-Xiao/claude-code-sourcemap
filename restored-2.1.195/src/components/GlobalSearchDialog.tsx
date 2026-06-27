@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Y2o] deps: sYe, tC, Ye, kt, uo, Zor, er, Vl, vi
 ((z2o = R(lt(), 1)), (A1e = R(rt(), 1)), (sx = R(se(), 1)));
-function GlobalSearchDialog(e) {
+function GlobalSearchDialog(t0) {
   let t = nsr.c(24),
-    { subtitle: n, body: r, scope: o, onProceed: s, onCancel: i } = e;
+    { subtitle: n, body: r, scope: o, onProceed: s, onCancel: i } = t0;
   Wh("ultrareview-launch");
   let [a] = nme.useState(wWf),
     [l, c] = nme.useState(!1),

@@ -73,14 +73,14 @@ function mir(e) {
     r = $h(n) ?? n;
   return `\u26A0 ${t.modelName.replace(/^Claude /, "")} remaps to ${r}. CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP=1 opts out`;
 }
-function getModelDeprecationWarning(e) {
-  if (!e) return null;
-  let t = fir(e);
+function getModelDeprecationWarning(modelId) {
+  if (!modelId) return null;
+  let t = fir(modelId);
   if (!t.isDeprecated) return null;
   if (t.remappedTo) {
     let n = O_(),
       r = $h(n) ?? n;
-    return `\u26A0 ${e.trim()} is automatically remapped to ${r} (${t.remappedTo}). Set CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP=1 to keep the requested model.`;
+    return `\u26A0 ${modelId.trim()} is automatically remapped to ${r} (${t.remappedTo}). Set CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP=1 to keep the requested model.`;
   }
   if (t.retirementDate) {
     let n = new Date(t.retirementDate),

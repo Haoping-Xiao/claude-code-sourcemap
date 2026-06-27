@@ -354,24 +354,24 @@ async function ATl(e) {
   if (!t.valid) return true;
   return (await ETl(t, e)).some(({ element: r }) => zm(r.name) === "git");
 }
-async function checkDynamicCommandName(e, t) {
+async function checkDynamicCommandName(parsed, t) {
   let n = Fr(t),
-    r = uKt(e.command),
+    r = uKt(parsed.command),
     o = {
-      ...e,
+      ...parsed,
       command: r,
     };
   if (!r)
     return {
       behavior: "allow",
-      updatedInput: e,
+      updatedInput: parsed,
       decisionReason: {
         type: "other",
         reason: "Empty command is safe",
       },
     };
   let s = await iEe(r),
-    i = STl(e, n);
+    i = STl(parsed, n);
   if (i.behavior === "deny") return i;
   let { matchingDenyRules: a, matchingAskRules: l } = gze(o, n, "prefix");
   if (a[0] !== void 0)
@@ -722,7 +722,7 @@ async function checkDynamicCommandName(e, t) {
   if (aJn(r, s))
     d.push({
       behavior: "allow",
-      updatedInput: e,
+      updatedInput: parsed,
       decisionReason: {
         type: "other",
         reason: "Command is read-only and safe to execute",
@@ -845,7 +845,7 @@ async function checkDynamicCommandName(e, t) {
     }
     return {
       behavior: "allow",
-      updatedInput: e,
+      updatedInput: parsed,
       decisionReason: {
         type: "other",
         reason: "All pipeline commands are individually allowed",

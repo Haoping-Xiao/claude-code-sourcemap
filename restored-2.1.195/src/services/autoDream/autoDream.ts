@@ -179,7 +179,7 @@ ${c.map((P) => `- ${P}`).join(`
     }
   };
 }
-function makeDreamProgressWatcher(e, t) {
+function makeDreamProgressWatcher(taskId, setAppState) {
   return (n) => {
     if (n.type !== "assistant") return;
     let r = "",
@@ -204,13 +204,13 @@ function makeDreamProgressWatcher(e, t) {
         }
       }
     syl(
-      e,
+      taskId,
       {
         text: r.trim(),
         toolUseCount: o,
       },
       s.filter(qKt),
-      t,
+      setAppState,
     );
   };
 }

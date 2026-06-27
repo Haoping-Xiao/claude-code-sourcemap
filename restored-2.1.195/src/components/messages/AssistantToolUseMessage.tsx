@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FCo] deps: Xa, Ye
 ((eil = R(lt(), 1)), (FMe = R(se(), 1)));
-function AssistantToolUseMessage(e) {
+function AssistantToolUseMessage(t0) {
   let t = nil.c(180),
     {
       param: n,
@@ -21,7 +21,7 @@ function AssistantToolUseMessage(e) {
       inProgressToolCallCount: d,
       lookups: p,
       isTranscriptMode: f,
-    } = e,
+    } = t0,
     m = br(),
     [g] = na(),
     h = dT(Tof),
@@ -674,11 +674,11 @@ function Hof(e) {
 function Tof(e) {
   return e.pendingWorkerRequest;
 }
-function renderToolUseMessage(e, t, { theme: n, verbose: r, commands: o }) {
-  let s = Pae(t);
+function renderToolUseMessage(tool, input, { theme: n, verbose: r, commands: o }) {
+  let s = Pae(input);
   if (s !== null) return s;
   try {
-    return e.renderToolUseMessage(t, {
+    return tool.renderToolUseMessage(input, {
       theme: n,
       verbose: r,
       commands: o,
@@ -687,8 +687,8 @@ function renderToolUseMessage(e, t, { theme: n, verbose: r, commands: o }) {
     return (
       ke(
         Rh(
-          Error(`Error rendering tool use message for ${e.name}: ${i}`),
-          `Error rendering tool use message (mcp=${e.name.startsWith("mcp__")})`,
+          Error(`Error rendering tool use message for ${tool.name}: ${i}`),
+          `Error rendering tool use message (mcp=${tool.name.startsWith("mcp__")})`,
         ),
       ),
       ""
@@ -696,21 +696,21 @@ function renderToolUseMessage(e, t, { theme: n, verbose: r, commands: o }) {
   }
 }
 function renderToolUseProgressMessage(
-  e,
-  t,
-  n,
-  r,
-  o,
+  tool,
+  tools,
+  lookups,
+  toolUseID,
+  progressMessagesForMessage,
   { verbose: s, inProgressToolCallCount: i, isTranscriptMode: a },
-  l,
+  terminalSize,
 ) {
-  let c = o.filter((u) => u.data.type !== "hook_progress");
+  let c = progressMessagesForMessage.filter((u) => u.data.type !== "hook_progress");
   try {
     let u =
-      e.renderToolUseProgressMessage?.(c, {
-        tools: t,
+      tool.renderToolUseProgressMessage?.(c, {
+        tools: tools,
         verbose: s,
-        terminalSize: l,
+        terminalSize: terminalSize,
         inProgressToolCallCount: i ?? 1,
         isTranscriptMode: a,
       }) ?? null;
@@ -719,8 +719,8 @@ function renderToolUseProgressMessage(
         sR.jsx(s6e, {
           children: sR.jsx(Mzn, {
             hookEvent: "PreToolUse",
-            lookups: n,
-            toolUseID: r,
+            lookups: lookups,
+            toolUseID: toolUseID,
             verbose: s,
             isTranscriptMode: a,
           }),
@@ -732,23 +732,23 @@ function renderToolUseProgressMessage(
     return (
       ke(
         Rh(
-          Error(`Error rendering tool use progress message for ${e.name}: ${u}`),
-          `Error rendering tool use progress message (mcp=${e.name.startsWith("mcp__")})`,
+          Error(`Error rendering tool use progress message for ${tool.name}: ${u}`),
+          `Error rendering tool use progress message (mcp=${tool.name.startsWith("mcp__")})`,
         ),
       ),
       null
     );
   }
 }
-function renderToolUseQueuedMessage(e) {
+function renderToolUseQueuedMessage(tool) {
   try {
-    return e.renderToolUseQueuedMessage?.();
+    return tool.renderToolUseQueuedMessage?.();
   } catch (t) {
     return (
       ke(
         Rh(
-          Error(`Error rendering tool use queued message for ${e.name}: ${t}`),
-          `Error rendering tool use queued message (mcp=${e.name.startsWith("mcp__")})`,
+          Error(`Error rendering tool use queued message for ${tool.name}: ${t}`),
+          `Error rendering tool use queued message (mcp=${tool.name.startsWith("mcp__")})`,
         ),
       ),
       null

@@ -7,9 +7,9 @@
 // module exports: hasIdeOnboardingDialogBeenShown, IdeOnboardingDialog
 // [unwrapped __esm module gDe] deps: Ye
 ((txa = R(lt(), 1)), (iFn = R(se(), 1)));
-function IdeOnboardingDialog(e) {
+function IdeOnboardingDialog(t0) {
   let t = nxa.c(22),
-    { onDone: n, installationStatus: r } = e;
+    { onDone: n, installationStatus: r } = t0;
   dwp();
   let o;
   if (t[0] !== n)

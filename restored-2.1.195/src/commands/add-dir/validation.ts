@@ -7,17 +7,17 @@
 // [unwrapped __esm module ql] deps: Ye, WLn
 ((qJr = R(lt(), 1)), (X5i = R(rt(), 1)), (VJr = R(rt(), 1)), (tbe = R(se(), 1)));
 zJr = X5i.createContext(false);
-async function validateDirectoryForWorkspace(e, t) {
-  if (!e)
+async function validateDirectoryForWorkspace(directoryPath, permissionContext) {
+  if (!directoryPath)
     return {
       resultType: "emptyPath",
     };
-  let n = oUt.resolve(ds(e));
+  let n = oUt.resolve(ds(directoryPath));
   try {
     if (!(await Q5i.stat(n)).isDirectory())
       return {
         resultType: "notADirectory",
-        directoryPath: e,
+        directoryPath: directoryPath,
         absolutePath: n,
       };
   } catch (s) {
@@ -25,12 +25,12 @@ async function validateDirectoryForWorkspace(e, t) {
     if (i === "ENOENT" || i === "ENOTDIR" || i === "EACCES" || i === "EPERM")
       return {
         resultType: "pathNotFound",
-        directoryPath: e,
+        directoryPath: directoryPath,
         absolutePath: n,
       };
     throw s;
   }
-  let r = jj(t),
+  let r = jj(permissionContext),
     o = yr();
   for (let s of r)
     if (
@@ -40,7 +40,7 @@ async function validateDirectoryForWorkspace(e, t) {
     )
       return {
         resultType: "alreadyInWorkingDirectory",
-        directoryPath: e,
+        directoryPath: directoryPath,
         workingDir: s,
         isExactMatch: oUt.resolve(s) === n,
         isOriginalCwd: s === o,
@@ -50,29 +50,29 @@ async function validateDirectoryForWorkspace(e, t) {
     absolutePath: n,
   };
 }
-function addDirHelpMessage(e) {
-  switch (e.resultType) {
+function addDirHelpMessage(result) {
+  switch (result.resultType) {
     case "emptyPath":
       return "Please provide a directory path.";
     case "pathNotFound":
-      return `Path ${wt.bold(e.absolutePath)} was not found.`;
+      return `Path ${wt.bold(result.absolutePath)} was not found.`;
     case "notADirectory": {
-      let t = oUt.dirname(e.absolutePath);
-      return `${wt.bold(e.directoryPath)} is not a directory. Did you mean to add the parent directory ${wt.bold(t)}?`;
+      let t = oUt.dirname(result.absolutePath);
+      return `${wt.bold(result.directoryPath)} is not a directory. Did you mean to add the parent directory ${wt.bold(t)}?`;
     }
     case "alreadyInWorkingDirectory": {
-      let t = wt.bold(e.directoryPath);
-      if (e.isExactMatch)
-        return e.isOriginalCwd
+      let t = wt.bold(result.directoryPath);
+      if (result.isExactMatch)
+        return result.isOriginalCwd
           ? `${t} is already the current working directory.`
           : `${t} is already added as a working directory.`;
-      let n = e.isOriginalCwd
+      let n = result.isOriginalCwd
         ? "the current working directory"
         : "the additional working directory";
-      return `${t} is already accessible within ${n} ${wt.bold(e.workingDir)}.`;
+      return `${t} is already accessible within ${n} ${wt.bold(result.workingDir)}.`;
     }
     case "success":
-      return `Added ${wt.bold(e.absolutePath)} as a working directory.`;
+      return `Added ${wt.bold(result.absolutePath)} as a working directory.`;
   }
 }
 var Q5i, oUt;

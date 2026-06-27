@@ -6,21 +6,21 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z_c] deps: si, Ye, IL, Mp, sA
 ((Y6o = R(lt(), 1)), (E7e = R(se(), 1)));
-function isIdleNotification(e) {
+function isIdleNotification(value) {
   try {
-    return Ft(e)?.type === "idle_notification";
+    return Ft(value)?.type === "idle_notification";
   } catch {
     return false;
   }
 }
-function createOverflowNotificationMessage(e) {
+function createOverflowNotificationMessage(count) {
   return `<${Oc}>
-<${Zu}>+${e} more tasks completed</${Zu}>
+<${Zu}>+${count} more tasks completed</${Zu}>
 <${up}>completed</${up}>
 </${Oc}>`;
 }
-function processQueuedCommands(e) {
-  let t = e.filter((a) => typeof a.value !== "string" || !isIdleNotification(a.value)),
+function processQueuedCommands(queuedCommands) {
+  let t = queuedCommands.filter((a) => typeof a.value !== "string" || !isIdleNotification(a.value)),
     n = t.filter((a) => a.mode === "task-notification"),
     r = t.filter((a) => a.mode !== "task-notification");
   if (n.length <= J6o) return [...r, ...n];

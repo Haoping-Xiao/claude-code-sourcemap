@@ -61,9 +61,9 @@
 function Dio(e) {
   return que.has(e) ? kh(e) : We("other");
 }
-function extractConnectionErrorDetails(e) {
-  if (!e || typeof e !== "object") return null;
-  let t = e,
+function extractConnectionErrorDetails(error) {
+  if (!error || typeof error !== "object") return null;
+  let t = error,
     n = 5,
     r = 0;
   while (t && r < n) {
@@ -93,18 +93,18 @@ function flp(e) {
   let t = extractConnectionErrorDetails(e);
   return t !== null && out.has(t.code);
 }
-function getSSLErrorHint(e) {
-  let t = extractConnectionErrorDetails(e);
+function getSSLErrorHint(error) {
+  let t = extractConnectionErrorDetails(error);
   if (!t?.isSSLError) return null;
   return `SSL certificate error (${t.code}). If you are behind a corporate proxy or TLS-intercepting firewall, set NODE_EXTRA_CA_CERTS to your CA bundle path, or ask IT to allowlist *.anthropic.com. Run /doctor for details.`;
 }
-function sanitizeMessageHTML(e) {
-  if (e.includes("<!DOCTYPE html") || e.includes("<html")) {
-    let t = e.match(/<title>([^<]+)<\/title>/);
+function sanitizeMessageHTML(message) {
+  if (message.includes("<!DOCTYPE html") || message.includes("<html")) {
+    let t = message.match(/<title>([^<]+)<\/title>/);
     if (t && t[1]) return t[1].trim();
     return "";
   }
-  return e;
+  return message;
 }
 function mlp(e) {
   let t = e.message;
@@ -135,8 +135,8 @@ function Maa(e) {
   }
   return null;
 }
-function formatAPIError(e) {
-  let t = extractConnectionErrorDetails(e);
+function formatAPIError(error) {
+  let t = extractConnectionErrorDetails(error);
   if (t) {
     let { code: r, isSSLError: o } = t;
     if (r === "ETIMEDOUT")
@@ -163,17 +163,17 @@ function formatAPIError(e) {
           return `Unable to connect to API: SSL error (${r})`;
       }
   }
-  if (e.message === "Connection error.") {
+  if (error.message === "Connection error.") {
     if (t?.code) return `Unable to connect to API (${t.code})`;
     return "Unable to connect to API. Check your internet connection";
   }
-  if (!e.message) return Maa(e) ?? `API error (status ${e.status ?? "unknown"})`;
-  if (e.message.includes('{"')) {
-    let r = Maa(e);
-    if (r) return e.status ? `${e.status} ${r}` : r;
+  if (!error.message) return Maa(error) ?? `API error (status ${error.status ?? "unknown"})`;
+  if (error.message.includes('{"')) {
+    let r = Maa(error);
+    if (r) return error.status ? `${error.status} ${r}` : r;
   }
-  let n = mlp(e);
-  return n !== e.message && n.length > 0 ? n : e.message;
+  let n = mlp(error);
+  return n !== error.message && n.length > 0 ? n : error.message;
 }
 function Pio(e) {
   let t = (s) => e.headers?.get?.(s) ?? void 0,

@@ -55,7 +55,7 @@ function sanitizeKeytermsForHeader(e) {
   }
   return n.join(",");
 }
-async function connectVoiceStream(e, t) {
+async function connectVoiceStream(callbacks, options) {
   await ch();
   let n = Ws();
   if (!n?.accessToken) return (T("[voice_stream] No OAuth token available"), null);
@@ -71,7 +71,7 @@ async function connectVoiceStream(e, t) {
       channels: "1",
       endpointing_ms: "300",
       utterance_end_ms: "1000",
-      language: t?.language ?? "en",
+      language: options?.language ?? "en",
       use_conversation_engine: "true",
       ...(o && {
         forward_interims: "typed",
@@ -86,8 +86,8 @@ async function connectVoiceStream(e, t) {
     "x-app": "cli",
     "anthropic-client-platform": _x(),
   };
-  if (t?.keyterms?.length) {
-    let x = sanitizeKeytermsForHeader(t.keyterms);
+  if (options?.keyterms?.length) {
+    let x = sanitizeKeytermsForHeader(options.keyterms);
     if (x) a["x-config-keyterms"] = x;
   }
   let l = HY(),
@@ -130,7 +130,7 @@ async function connectVoiceStream(e, t) {
                 if ((clearTimeout(I), clearTimeout(k), (y = null), (b = null), S)) {
                   T(`[voice_stream] Promoting unreported interim before ${D} resolve`);
                   let P = S;
-                  ((S = ""), e.onTranscript(P, true));
+                  ((S = ""), callbacks.onTranscript(P, true));
                 }
                 (T(`[voice_stream] Finalize resolved via ${D}`), x(D));
               }),
@@ -168,14 +168,14 @@ async function connectVoiceStream(e, t) {
         P7f,
         u,
       )),
-      e.onReady(_));
+      callbacks.onReady(_));
   });
   let S = "";
   function A(x) {
     if (!S) return;
     T(`[voice_stream] Promoting unreported interim to final (${x})`);
     let I = S;
-    ((S = ""), e.onTranscript(I, true));
+    ((S = ""), callbacks.onTranscript(I, true));
   }
   (u.on("message", (x) => {
     let I = x.toString();
@@ -191,24 +191,25 @@ async function connectVoiceStream(e, t) {
       case "TranscriptText": {
         let D = k.data;
         if ((T(`[voice_stream] ${k.type} (${String(D?.length ?? 0)} chars)`), m)) b?.();
-        if (D) ((S = D), e.onTranscript(D, false));
+        if (D) ((S = D), callbacks.onTranscript(D, false));
         break;
       }
       case "TranscriptEndpoint": {
         T(`[voice_stream] TranscriptEndpoint received (${String(S.length)} chars pending)`);
         let D = S;
-        if (((S = ""), D)) e.onTranscript(D, true);
+        if (((S = ""), D)) callbacks.onTranscript(D, true);
         if (m) y?.("post_closestream_endpoint");
         break;
       }
       case "TranscriptError": {
         let D = k.description ?? k.error_code ?? "unknown transcription error";
-        if ((T(`[voice_stream] TranscriptError: ${D}`), A("TranscriptError"), !g)) e.onError(D);
+        if ((T(`[voice_stream] TranscriptError: ${D}`), A("TranscriptError"), !g))
+          callbacks.onError(D);
         break;
       }
       case "error": {
         let D = k.message ?? `unstructured error frame (keys: ${Object.keys(k).join(", ")})`;
-        if ((T(`[voice_stream] Server error: ${D}`), A("server error"), !g)) e.onError(D);
+        if ((T(`[voice_stream] Server error: ${D}`), A("server error"), !g)) callbacks.onError(D);
         break;
       }
       default:
@@ -220,7 +221,7 @@ async function connectVoiceStream(e, t) {
       if ((T(`[voice_stream] WebSocket closed: code=${String(x)} reason="${k}"`), (p = false), d))
         (clearInterval(d), (d = null));
       if ((A("ws close"), y?.("ws_close"), !g && !h && x !== 1000 && x !== 1005))
-        e.onError(
+        callbacks.onError(
           `Connection closed: code ${String(x)}${k ? ` \u2014 ${k}` : ""}`,
           f
             ? void 0
@@ -228,7 +229,7 @@ async function connectVoiceStream(e, t) {
                 connectFailureCode: `ws_closed_${rar(x, 1000, 4999)}`,
               },
         );
-      e.onClose();
+      callbacks.onClose();
     }));
   let v = console,
     C = v.error;
@@ -250,7 +251,7 @@ async function connectVoiceStream(e, t) {
         g)
       )
         return;
-      e.onError(`WebSocket upgrade rejected with HTTP ${String(k)}`, {
+      callbacks.onError(`WebSocket upgrade rejected with HTTP ${String(k)}`, {
         fatal: k >= 400 && k < 500,
         connectFailureCode:
           I.headers["cf-mitigated"] !== void 0
@@ -270,7 +271,7 @@ async function connectVoiceStream(e, t) {
         A("ws error"),
         !g)
       )
-        e.onError(
+        callbacks.onError(
           `Voice stream connection error: ${x.message}`,
           f
             ? void 0

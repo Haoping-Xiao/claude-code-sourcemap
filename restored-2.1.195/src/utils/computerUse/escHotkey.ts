@@ -11,9 +11,9 @@ lRa = class lRa extends Error {
   }
 };
 ((cRa = iRa), (uRa = aRa));
-function registerEscHotkey(e) {
+function registerEscHotkey(onEscape) {
   if (uGt) return true;
-  if (!U4().hotkey.registerEscape(e))
+  if (!U4().hotkey.registerEscape(onEscape))
     return (
       T("[cu-esc] registerEscape returned false", {
         level: "warn",

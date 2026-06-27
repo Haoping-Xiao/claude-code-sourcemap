@@ -73,25 +73,25 @@ function $jf(e) {
     ((t = new Set(e.filter((n) => n.renderGroupedToolUse).map((n) => n.name))), LWl.set(e, t));
   return t;
 }
-function getToolUseInfo(e) {
-  if (e.type === "assistant" && e.message.content[0]?.type === "tool_use") {
-    let t = e.message.content[0];
+function getToolUseInfo(msg) {
+  if (msg.type === "assistant" && msg.message.content[0]?.type === "tool_use") {
+    let t = msg.message.content[0];
     return {
-      messageId: e.message.id,
+      messageId: msg.message.id,
       toolUseId: t.id,
       toolName: t.name,
     };
   }
   return null;
 }
-function applyGrouping(e, t, n = false) {
+function applyGrouping(messages, tools, n = false) {
   if (n)
     return {
-      messages: e,
+      messages: messages,
     };
-  let r = $jf(t),
+  let r = $jf(tools),
     o = new Map();
-  for (let u of e) {
+  for (let u of messages) {
     if (u.type !== "assistant") continue;
     let d = u.message.content[0];
     if (d?.type !== "tool_use" || !r.has(d.name)) continue;
@@ -111,17 +111,17 @@ function applyGrouping(e, t, n = false) {
     }
   if (s.size === 0)
     return {
-      messages: e,
+      messages: messages,
     };
   let a = new Map();
-  for (let u of e)
+  for (let u of messages)
     if (u.type === "user") {
       for (let d of u.message.content)
         if (d.type === "tool_result" && i.has(d.tool_use_id)) a.set(d.tool_use_id, u);
     }
   let l = [],
     c = new Set();
-  for (let u of e) {
+  for (let u of messages) {
     let d = getToolUseInfo(u);
     if (d) {
       let p = `${d.messageId}:${d.toolName}`,

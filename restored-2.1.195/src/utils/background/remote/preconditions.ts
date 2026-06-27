@@ -29,7 +29,7 @@ async function _ft(e) {
   });
   return r === 0 && n.trim() === "true";
 }
-async function checkGithubAppInstalled(e, t, n) {
+async function checkGithubAppInstalled(owner, repo, signal) {
   try {
     let r = Ws()?.accessToken;
     if (!r)
@@ -40,23 +40,23 @@ async function checkGithubAppInstalled(e, t, n) {
     let o = await yj();
     if (!o)
       return (T("checkGithubAppInstalled: No org UUID found, assuming app not installed"), false);
-    let s = `${$s().BASE_API_URL}/api/oauth/organizations/${o}/code/repos/${e}/${t}`,
+    let s = `${$s().BASE_API_URL}/api/oauth/organizations/${o}/code/repos/${owner}/${repo}`,
       i = {
         ...aH(r),
         "x-organization-uuid": o,
       };
-    T(`Checking GitHub app installation for ${e}/${t}`);
+    T(`Checking GitHub app installation for ${owner}/${repo}`);
     let a = await po.get(s, {
       headers: i,
       timeout: 15000,
-      signal: n,
+      signal: signal,
     });
     if (a.status === 200) {
       if (a.data.status) {
         let l = a.data.status.app_installed;
-        return (T(`GitHub app ${l ? "is" : "is not"} installed on ${e}/${t}`), l);
+        return (T(`GitHub app ${l ? "is" : "is not"} installed on ${owner}/${repo}`), l);
       }
-      return (T(`GitHub app is not installed on ${e}/${t} (status is null)`), false);
+      return (T(`GitHub app is not installed on ${owner}/${repo} (status is null)`), false);
     }
     return (T(`checkGithubAppInstalled: Unexpected response status ${a.status}`), false);
   } catch (r) {
@@ -64,7 +64,9 @@ async function checkGithubAppInstalled(e, t, n) {
       let o = r.response?.status;
       if (o && o >= 400 && o < 500)
         return (
-          T(`checkGithubAppInstalled: Got ${o} error, app likely not installed on ${e}/${t}`),
+          T(
+            `checkGithubAppInstalled: Got ${o} error, app likely not installed on ${owner}/${repo}`,
+          ),
           false
         );
     }
@@ -98,8 +100,8 @@ async function checkGithubTokenSynced() {
     return (T(`checkGithubTokenSynced error: ${be(e)}`), false);
   }
 }
-async function checkRepoForRemoteAccess(e, t) {
-  if (await checkGithubAppInstalled(e, t))
+async function checkRepoForRemoteAccess(owner, repo) {
+  if (await checkGithubAppInstalled(owner, repo))
     return {
       hasAccess: true,
       method: "github-app",

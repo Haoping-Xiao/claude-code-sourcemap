@@ -32,9 +32,9 @@ function dhl() {
   if (process.env[sht]) return process.env[sht];
   return dm() ? process.execPath : process.argv[1];
 }
-function buildInheritedCliFlags(e) {
+function buildInheritedCliFlags(options) {
   let t = [],
-    { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = e || {};
+    { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = options || {};
   if (n);
   else if (r === "bypassPermissions") t.push("--dangerously-skip-permissions");
   else if (r === "acceptEdits") t.push("--permission-mode acceptEdits");

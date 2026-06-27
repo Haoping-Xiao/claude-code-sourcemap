@@ -177,8 +177,8 @@ function _ne(e, t) {
   }
   return false;
 }
-function getRootNode(e) {
-  let t = e;
+function getRootNode(node) {
+  let t = node;
   while (t) {
     if (t.focusManager) return t;
     t = t.parentNode;

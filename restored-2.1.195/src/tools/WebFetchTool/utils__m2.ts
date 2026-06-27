@@ -92,17 +92,17 @@ async function getFrameShareStatus(e, t) {
     shared: n.data.shared,
   };
 }
-async function getWithPermittedRedirects(e, t) {
-  let n = await gfl(e, "artifact_webfetch_read", t);
+async function getWithPermittedRedirects(url, signal) {
+  let n = await gfl(url, "artifact_webfetch_read", signal);
   if (n.err !== null) return n;
   let { ver: r, assetToken: o } = n,
     { title: s, perm: i } = n.data,
     a = i?.role === "owner" ? "owner" : "reader",
-    l = `${e.slug}.frame.${e.env === "staging" ? "staging." : ""}claudeusercontent.com`,
+    l = `${url.slug}.frame.${url.env === "staging" ? "staging." : ""}claudeusercontent.com`,
     c;
   try {
     c = await lb.get(`https://${l}/_f/${r}/?__frame_t=${encodeURIComponent(o)}`, {
-      signal: t,
+      signal: signal,
       timeout: 30000,
       responseType: "arraybuffer",
       maxRedirects: 0,

@@ -33,11 +33,11 @@ function Zum() {
   else i = e[4];
   return i;
 }
-function formatDateDisplay(e, t) {
+function formatDateDisplay(isoValue, schema) {
   try {
-    let n = new Date(e);
-    if (Number.isNaN(n.getTime())) return e;
-    if (("format" in t ? t.format : void 0) === "date-time")
+    let n = new Date(isoValue);
+    if (Number.isNaN(n.getTime())) return isoValue;
+    if (("format" in schema ? schema.format : void 0) === "date-time")
       return n.toLocaleDateString("en-US", {
         weekday: "short",
         year: "numeric",
@@ -47,7 +47,7 @@ function formatDateDisplay(e, t) {
         minute: "2-digit",
         timeZoneName: "short",
       });
-    let o = e.split("-");
+    let o = isoValue.split("-");
     if (o.length === 3)
       return new Date(Number(o[0]), Number(o[1]) - 1, Number(o[2])).toLocaleDateString("en-US", {
         weekday: "short",
@@ -55,9 +55,9 @@ function formatDateDisplay(e, t) {
         month: "short",
         day: "numeric",
       });
-    return e;
+    return isoValue;
   } catch {
-    return e;
+    return isoValue;
   }
 }
 function Bur(e) {

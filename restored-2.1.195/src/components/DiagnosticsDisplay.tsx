@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.3867  score=0.6312  fileCov=0.4995
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function DiagnosticsDisplay(e) {
+function DiagnosticsDisplay(t0) {
   let t = iil.c(13),
-    { attachment: n, verbose: r, isTranscriptMode: o } = e;
+    { attachment: n, verbose: r, isTranscriptMode: o } = t0;
   if (n.files.length === 0) return null;
   let s;
   if (t[0] !== n.files) ((s = n.files.reduce(kof, 0)), (t[0] = n.files), (t[1] = s));
@@ -68,7 +68,7 @@ function DiagnosticsDisplay(e) {
     return d;
   }
 }
-function _temp3(e, t) {
+function _temp3(file_0, fileIndex) {
   return z6.jsxs(
     lil.Fragment,
     {
@@ -82,26 +82,26 @@ function _temp3(e, t) {
                 bold: true,
                 children: ail.relative(
                   $t(),
-                  e.uri.replace("file://", "").replace("_claude_fs_right:", ""),
+                  file_0.uri.replace("file://", "").replace("_claude_fs_right:", ""),
                 ),
               }),
               " ",
               z6.jsx(w, {
                 dimColor: true,
-                children: e.uri.startsWith("file://")
+                children: file_0.uri.startsWith("file://")
                   ? "(file://)"
-                  : e.uri.startsWith("_claude_fs_right:")
+                  : file_0.uri.startsWith("_claude_fs_right:")
                     ? "(claude_fs_right)"
-                    : `(${bi(e.uri, ":")})`,
+                    : `(${bi(file_0.uri, ":")})`,
               }),
               ":",
             ],
           }),
         }),
-        e.diagnostics.map(xof),
+        file_0.diagnostics.map(xof),
       ],
     },
-    t,
+    fileIndex,
   );
 }
 function xof(e, t) {

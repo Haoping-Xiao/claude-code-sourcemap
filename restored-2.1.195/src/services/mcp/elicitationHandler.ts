@@ -17,29 +17,29 @@ gka = class gka extends Error {
 function Bwp(e) {
   return e.mode === "url" ? "url" : "form";
 }
-function findElicitationInQueue(e, t, n) {
-  return e.findIndex(
+function findElicitationInQueue(queue, serverName, elicitationId) {
+  return queue.findIndex(
     (r) =>
-      r.serverName === t &&
+      r.serverName === serverName &&
       r.params.mode === "url" &&
       "elicitationId" in r.params &&
-      r.params.elicitationId === n,
+      r.params.elicitationId === elicitationId,
   );
 }
-function registerElicitationHandler(e, t, n, r) {
+function registerElicitationHandler(client, serverName, setAppState, r) {
   try {
-    (e.setRequestHandler(uhe, async (o, s) => {
+    (client.setRequestHandler(uhe, async (o, s) => {
       if (r) r.pendingElicitations++;
-      sn(t, `Received elicitation request: ${De(o)}`);
+      sn(serverName, `Received elicitation request: ${De(o)}`);
       let i = Bwp(o.params);
       G("tengu_mcp_elicitation_shown", {
         mode: $e(i),
       });
       try {
-        let a = await runElicitationHooks(t, o.params, s.signal);
+        let a = await runElicitationHooks(serverName, o.params, s.signal);
         if (a)
           return (
-            sn(t, `Elicitation resolved by hook: ${De(a)}`),
+            sn(serverName, `Elicitation resolved by hook: ${De(a)}`),
             G("tengu_mcp_elicitation_response", {
               mode: $e(i),
               action: $e(a.action),
@@ -63,13 +63,13 @@ function registerElicitationHandler(e, t, n, r) {
                   actionLabel: "Skip confirmation",
                 }
               : void 0;
-            (n((g) => ({
+            (setAppState((g) => ({
               ...g,
               elicitation: {
                 queue: [
                   ...g.elicitation.queue,
                   {
-                    serverName: t,
+                    serverName: serverName,
                     requestId: s.requestId,
                     params: o.params,
                     signal: s.signal,
@@ -90,12 +90,12 @@ function registerElicitationHandler(e, t, n, r) {
                 once: true,
               }));
           });
-        sn(t, `Elicitation response: ${De(u)}`);
-        let d = await runElicitationResultHooks(t, u, s.signal, i, l);
+        sn(serverName, `Elicitation response: ${De(u)}`);
+        let d = await runElicitationResultHooks(serverName, u, s.signal, i, l);
         return (xe("mcp_elicitation_handle"), d);
       } catch (a) {
         return (
-          au(t, `Elicitation error: ${a}`),
+          au(serverName, `Elicitation error: ${a}`),
           Le("mcp_elicitation_handle", "handler_error"),
           {
             action: "cancel",
@@ -105,17 +105,17 @@ function registerElicitationHandler(e, t, n, r) {
         if (r) (r.pendingElicitations--, (r.lastElicitationClosedAt = Date.now()));
       }
     }),
-      e.setNotificationHandler(Dkt, (o) => {
+      client.setNotificationHandler(Dkt, (o) => {
         let { elicitationId: s } = o.params;
-        (sn(t, `Received elicitation completion notification: ${s}`),
+        (sn(serverName, `Received elicitation completion notification: ${s}`),
           cJ({
-            message: `MCP server "${t}" confirmed elicitation ${s} complete`,
+            message: `MCP server "${serverName}" confirmed elicitation ${s} complete`,
             notificationType: "elicitation_complete",
           }));
         let i = false;
         if (
-          (n((a) => {
-            let l = findElicitationInQueue(a.elicitation.queue, t, s);
+          (setAppState((a) => {
+            let l = findElicitationInQueue(a.elicitation.queue, serverName, s);
             if (l === -1) return a;
             i = true;
             let c = [...a.elicitation.queue];
@@ -134,22 +134,22 @@ function registerElicitationHandler(e, t, n, r) {
           }),
           !i)
         )
-          sn(t, `Ignoring completion notification for unknown elicitation: ${s}`);
+          sn(serverName, `Ignoring completion notification for unknown elicitation: ${s}`);
       }));
   } catch {
     return;
   }
 }
-async function runElicitationHooks(e, t, n) {
+async function runElicitationHooks(serverName, params, signal) {
   try {
-    let r = t.mode === "url" ? "url" : "form",
-      o = "url" in t ? t.url : void 0,
-      s = "elicitationId" in t ? t.elicitationId : void 0,
+    let r = params.mode === "url" ? "url" : "form",
+      o = "url" in params ? params.url : void 0,
+      s = "elicitationId" in params ? params.elicitationId : void 0,
       { elicitationResponse: i, blockingError: a } = await W3t({
-        serverName: e,
-        message: t.message,
-        requestedSchema: "requestedSchema" in t ? t.requestedSchema : void 0,
-        signal: n,
+        serverName: serverName,
+        message: params.message,
+        requestedSchema: "requestedSchema" in params ? params.requestedSchema : void 0,
+        signal: signal,
         mode: r,
         url: o,
         elicitationId: s,
@@ -165,24 +165,24 @@ async function runElicitationHooks(e, t, n) {
       };
     return;
   } catch (r) {
-    au(e, `Elicitation hook error: ${r}`);
+    au(serverName, `Elicitation hook error: ${r}`);
     return;
   }
 }
-async function runElicitationResultHooks(e, t, n, r, o) {
+async function runElicitationResultHooks(serverName, result, signal, mode, elicitationId) {
   try {
     let { elicitationResultResponse: s, blockingError: i } = await q3t({
-      serverName: e,
-      action: t.action,
-      content: t.content,
-      signal: n,
-      mode: r,
-      elicitationId: o,
+      serverName: serverName,
+      action: result.action,
+      content: result.content,
+      signal: signal,
+      mode: mode,
+      elicitationId: elicitationId,
     });
     if (i)
       return (
         cJ({
-          message: `Elicitation response for server "${e}": decline`,
+          message: `Elicitation response for server "${serverName}": decline`,
           notificationType: "elicitation_response",
         }),
         {
@@ -192,24 +192,24 @@ async function runElicitationResultHooks(e, t, n, r, o) {
     let a = s
       ? {
           action: s.action,
-          content: s.content ?? t.content,
+          content: s.content ?? result.content,
         }
-      : t;
+      : result;
     return (
       cJ({
-        message: `Elicitation response for server "${e}": ${a.action}`,
+        message: `Elicitation response for server "${serverName}": ${a.action}`,
         notificationType: "elicitation_response",
       }),
       a
     );
   } catch (s) {
     return (
-      au(e, `ElicitationResult hook error: ${s}`),
+      au(serverName, `ElicitationResult hook error: ${s}`),
       cJ({
-        message: `Elicitation response for server "${e}": ${t.action}`,
+        message: `Elicitation response for server "${serverName}": ${result.action}`,
         notificationType: "elicitation_response",
       }),
-      t
+      result
     );
   }
 }

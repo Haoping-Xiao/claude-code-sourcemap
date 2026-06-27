@@ -43,12 +43,12 @@ var _po = null,
 function Jwp(e) {
   return e.scope === "project" || e.scope === "local";
 }
-async function getMcpHeadersFromHelper(e, t) {
-  if (!t.headersHelper) return null;
-  if ("scope" in t && Jwp(t) && !Ir()) {
+async function getMcpHeadersFromHelper(serverName, config) {
+  if (!config.headersHelper) return null;
+  if ("scope" in config && Jwp(config) && !Ir()) {
     if (!ad()) {
       let o = Error(
-        `Security: headersHelper for MCP server '${e}' executed before workspace trust is confirmed. If you see this message, post in ${
+        `Security: headersHelper for MCP server '${serverName}' executed before workspace trust is confirmed. If you see this message, post in ${
           {
             ISSUES_EXPLAINER:
               "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -70,19 +70,21 @@ async function getMcpHeadersFromHelper(e, t) {
     }
   }
   let n =
-    "pluginPath" in t && typeof t.pluginPath === "string" && $ka.isAbsolute(t.pluginPath)
-      ? t.pluginPath
+    "pluginPath" in config &&
+    typeof config.pluginPath === "string" &&
+    $ka.isAbsolute(config.pluginPath)
+      ? config.pluginPath
       : void 0;
   try {
-    sn(e, "Executing headersHelper to get dynamic headers");
-    let r = await Gr(t.headersHelper, [], {
+    sn(serverName, "Executing headersHelper to get dynamic headers");
+    let r = await Gr(config.headersHelper, [], {
       shell: true,
       timeout: 10000 /* 1e4 */,
       cwd: n,
       env: {
         ...process.env,
-        CLAUDE_CODE_MCP_SERVER_NAME: e,
-        CLAUDE_CODE_MCP_SERVER_URL: t.url,
+        CLAUDE_CODE_MCP_SERVER_NAME: serverName,
+        CLAUDE_CODE_MCP_SERVER_URL: config.url,
         ...(n && {
           CLAUDE_PLUGIN_ROOT: n,
         }),
@@ -91,7 +93,7 @@ async function getMcpHeadersFromHelper(e, t) {
     if (r.code !== 0 || !r.stdout)
       throw (
         Le("mcp_headers_helper", "exec_failed"),
-        Error(`headersHelper for MCP server '${e}' did not return a valid value`)
+        Error(`headersHelper for MCP server '${serverName}' did not return a valid value`)
       );
     let o = r.stdout.trim(),
       s;
@@ -104,7 +106,7 @@ async function getMcpHeadersFromHelper(e, t) {
       throw (
         Le("mcp_headers_helper", "non_object"),
         Error(
-          `headersHelper for MCP server '${e}' must return a JSON object with string key-value pairs`,
+          `headersHelper for MCP server '${serverName}' must return a JSON object with string key-value pairs`,
         )
       );
     for (let [i, a] of Object.entries(s))
@@ -112,18 +114,18 @@ async function getMcpHeadersFromHelper(e, t) {
         throw (
           Le("mcp_headers_helper", "non_string_value"),
           Error(
-            `headersHelper for MCP server '${e}' returned non-string value for key "${i}": ${typeof a}`,
+            `headersHelper for MCP server '${serverName}' returned non-string value for key "${i}": ${typeof a}`,
           )
         );
     return (
-      sn(e, `Successfully retrieved ${Object.keys(s).length} headers from headersHelper`),
+      sn(serverName, `Successfully retrieved ${Object.keys(s).length} headers from headersHelper`),
       xe("mcp_headers_helper"),
       s
     );
   } catch (r) {
     return (
-      au(e, `Error getting headers from headersHelper: ${be(r)}`),
-      T(`Error getting MCP headers from headersHelper for server '${e}': ${be(r)}`, {
+      au(serverName, `Error getting headers from headersHelper: ${be(r)}`),
+      T(`Error getting MCP headers from headersHelper for server '${serverName}': ${be(r)}`, {
         level: "error",
       }),
       null

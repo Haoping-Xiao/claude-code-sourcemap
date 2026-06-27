@@ -12,10 +12,10 @@
     MAX_FILE_COUNT: 1e5,
     MAX_COMPRESSION_RATIO: 50,
   }));
-function getSystemDirectories(e) {
-  let t = e?.platform ?? Vt(),
-    n = e?.homedir ?? sCa.homedir(),
-    r = e?.env ?? process.env,
+function getSystemDirectories(options) {
+  let t = options?.platform ?? Vt(),
+    n = options?.homedir ?? sCa.homedir(),
+    r = options?.env ?? process.env,
     o = {
       HOME: n,
       DESKTOP: tqe.join(n, "Desktop"),

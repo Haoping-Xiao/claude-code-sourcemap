@@ -19,7 +19,7 @@ NOf = {
     return "pause-memory";
   }
 }, tBo = NOf;
-function Select(e) {
+function Select(t0) {
   let t = DBl.c(14),
     {
       commands: n,
@@ -28,7 +28,7 @@ function Select(e) {
       title: s,
       onCancel: i,
       emptyMessage: a
-    } = e,
+    } = t0,
     {
       headerFocused: l,
       focusHeader: c

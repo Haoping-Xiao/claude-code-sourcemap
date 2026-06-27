@@ -20,12 +20,12 @@ function hZp(e, t) {
   if (e === "plan" || e === "dontAsk") return "default";
   return e;
 }
-async function spawnInProcessTeammate(e, t) {
-  let { name: n, teamName: r, prompt: o, color: s, planModeRequired: i, model: a } = e,
-    { taskRegistry: l } = t,
+async function spawnInProcessTeammate(config, context) {
+  let { name: n, teamName: r, prompt: o, color: s, planModeRequired: i, model: a } = config,
+    { taskRegistry: l } = context,
     c = pte(n, r),
     u = iN("in_process_teammate"),
-    d = e.resumableAgentId ?? rM(n);
+    d = config.resumableAgentId ?? rM(n);
   T(`[spawnInProcessTeammate] Spawning ${c} (taskId: ${u})`);
   try {
     let p = Sl(),
@@ -49,17 +49,17 @@ async function spawnInProcessTeammate(e, t) {
         abortController: p,
       });
     if (zSe()) bFn(c, n, f);
-    let h = e.description ?? `${o.substring(0, 50)}${o.length > 50 ? "..." : ""}`,
+    let h = config.description ?? `${o.substring(0, 50)}${o.length > 50 ? "..." : ""}`,
       y = {
-        ...LT(u, "in_process_teammate", h, t.toolUseId),
+        ...LT(u, "in_process_teammate", h, context.toolUseId),
         type: "in_process_teammate",
         status: "running",
         identity: m,
-        prompt: e.description ?? o,
+        prompt: config.description ?? o,
         model: a,
         abortController: p,
         awaitingPlanApproval: false,
-        permissionMode: e.permissionMode ?? hZp(Fr(t).mode, i),
+        permissionMode: config.permissionMode ?? hZp(Fr(context).mode, i),
         isIdle: false,
         shutdownRequested: false,
         lastReportedToolCount: 0,
@@ -67,7 +67,7 @@ async function spawnInProcessTeammate(e, t) {
         pendingUserMessages: [],
       };
     l.register(y);
-    let b = t.getAppState(),
+    let b = context.getAppState(),
       _ = b.agentNameRegistry.get(n);
     if (_ !== d) {
       let S = _ !== void 0 ? b.tasks[_] : void 0,
@@ -78,13 +78,13 @@ async function spawnInProcessTeammate(e, t) {
             Object.values(b.tasks).some(
               (C) => uE(C) && C.status === "running" && C.identity.resumableAgentId === _,
             ))
-            ? t.agentLifecycle.allocateName(n)
+            ? context.agentLifecycle.allocateName(n)
             : n;
       if (v !== n)
         T(
           `[spawnInProcessTeammate] name "${n}" already routes to live ${_}; registry entry uses "${v}" instead`,
         );
-      t.agentLifecycle.registerName(v, d);
+      context.agentLifecycle.registerName(v, d);
     }
     return (
       T(`[spawnInProcessTeammate] Registered ${c} in AppState`),
@@ -111,14 +111,14 @@ async function spawnInProcessTeammate(e, t) {
     );
   }
 }
-function killInProcessTeammate(e, t, n) {
+function killInProcessTeammate(taskId, setAppState, n) {
   let r = false,
     o = null,
     s = null,
     i,
     a;
   if (
-    (t.update(e, (l) => {
+    (setAppState.update(taskId, (l) => {
       if (l.status !== "running") return l;
       return (
         (o = l.identity.teamName),
@@ -156,12 +156,12 @@ function killInProcessTeammate(e, t, n) {
     });
   if (o && s) m9t(o, s);
   if (r)
-    (jy(e),
-      xf(e, "stopped", {
+    (jy(taskId),
+      xf(taskId, "stopped", {
         toolUseId: i,
         summary: a,
       }),
-      setTimeout((l, c) => l.evictTerminal(c), Oht, t, e));
+      setTimeout((l, c) => l.evictTerminal(c), Oht, setAppState, taskId));
   if (s) _qe(s);
   return (xe("swarm_in_process_kill"), r);
 }

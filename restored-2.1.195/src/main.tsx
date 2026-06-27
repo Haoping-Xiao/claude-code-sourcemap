@@ -3586,8 +3586,8 @@ async function logTenguInit({
   }
 }
 async function DZo(e) {}
-function maybeActivateBrief(e) {
-  let t = e.brief,
+function maybeActivateBrief(options) {
+  let t = options.brief,
     n = Oe.CLAUDE_CODE_BRIEF;
   if (!t && !n) return;
   let { isBriefEntitled: r } = (l3(), ro(CQ)),
@@ -3604,9 +3604,9 @@ function N1m() {
     A1,
   );
 }
-function extractTeammateOptions(e) {
-  if (typeof e !== "object" || e === null) return {};
-  let t = e,
+function extractTeammateOptions(options) {
+  if (typeof options !== "object" || options === null) return {};
+  let t = options,
     n = t.teammateMode;
   return {
     agentId: typeof t.agentId === "string" ? t.agentId : void 0,

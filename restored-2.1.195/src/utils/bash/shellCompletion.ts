@@ -9,9 +9,9 @@ BTe = R(rt(), 1);
 function LTt(e) {
   return "'" + e[0].replaceAll("'", `'"'"'`) + "'";
 }
-function getCompletionTypeFromPrefix(e) {
-  if (e.startsWith("$")) return "variable";
-  if (e.includes("/") || e.startsWith("~") || e.startsWith(".")) return "file";
+function getCompletionTypeFromPrefix(prefix) {
+  if (prefix.startsWith("$")) return "variable";
+  if (prefix.includes("/") || prefix.startsWith("~") || prefix.startsWith(".")) return "file";
   return "command";
 }
 function Zdm(e, t) {
@@ -31,21 +31,21 @@ function Zdm(e, t) {
     completionType: a !== "command" ? a : i ? "command" : "file",
   };
 }
-function getBashCompletionCommand(e, t) {
-  if (t === "variable") {
-    let n = e.slice(1);
+function getBashCompletionCommand(prefix, completionType) {
+  if (completionType === "variable") {
+    let n = prefix.slice(1);
     return `compgen -v ${LTt([n])} 2>/dev/null`;
-  } else if (t === "file")
-    return `compgen -f ${LTt([e])} 2>/dev/null | head -${l6o} | while IFS= read -r f; do [ -d "$f" ] && echo "$f/" || echo "$f "; done`;
-  else return `compgen -c ${LTt([e])} 2>/dev/null`;
+  } else if (completionType === "file")
+    return `compgen -f ${LTt([prefix])} 2>/dev/null | head -${l6o} | while IFS= read -r f; do [ -d "$f" ] && echo "$f/" || echo "$f "; done`;
+  else return `compgen -c ${LTt([prefix])} 2>/dev/null`;
 }
-function getZshCompletionCommand(e, t) {
-  if (t === "variable") {
-    let n = e.slice(1);
+function getZshCompletionCommand(prefix, completionType) {
+  if (completionType === "variable") {
+    let n = prefix.slice(1);
     return `print -rl -- \${(k)parameters[(I)${LTt([n])}*]} 2>/dev/null`;
-  } else if (t === "file")
-    return `for f in ${LTt([e])}*(N[1,${l6o}]); do [[ -d "$f" ]] && echo "$f/" || echo "$f "; done`;
-  else return `print -rl -- \${(k)commands[(I)${LTt([e])}*]} 2>/dev/null`;
+  } else if (completionType === "file")
+    return `for f in ${LTt([prefix])}*(N[1,${l6o}]); do [[ -d "$f" ]] && echo "$f/" || echo "$f "; done`;
+  else return `print -rl -- \${(k)commands[(I)${LTt([prefix])}*]} 2>/dev/null`;
 }
 async function npm(e, t, n, r, o) {
   let s;
@@ -75,17 +75,17 @@ async function npm(e, t, n, r, o) {
       },
     }));
 }
-async function getShellCompletions(e, t, n, r) {
+async function getShellCompletions(input, cursorOffset, abortSignal, r) {
   let o = Egt();
   if (o !== "bash" && o !== "zsh") return [];
   try {
-    let { prefix: s, completionType: i } = Zdm(e, t);
+    let { prefix: s, completionType: i } = Zdm(input, cursorOffset);
     if (!s) return [];
-    return (await npm(o, s, i, n, r)).map((l) => ({
+    return (await npm(o, s, i, abortSignal, r)).map((l) => ({
       ...l,
       metadata: {
         ...l.metadata,
-        inputSnapshot: e,
+        inputSnapshot: input,
       },
     }));
   } catch (s) {

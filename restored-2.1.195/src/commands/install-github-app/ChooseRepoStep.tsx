@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qUl] deps: CH, Ye
 ((GUl = R(lt(), 1)), (aBo = R(se(), 1)));
-function ChooseRepoStep(e) {
+function ChooseRepoStep(t0) {
   let t = VUl.c(52),
     {
       currentRepo: n,
@@ -15,7 +15,7 @@ function ChooseRepoStep(e) {
       onRepoUrlChange: s,
       onSubmit: i,
       onToggleUseCurrentRepo: a,
-    } = e,
+    } = t0,
     [l, c] = lBo.useState(0),
     [u, d] = lBo.useState(false),
     f = br().columns,

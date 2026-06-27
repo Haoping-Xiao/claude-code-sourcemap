@@ -182,14 +182,14 @@ function vZp(e, t, n) {
     r
   );
 }
-function addToTotalSessionCost(e, t, n, r, o, s, i, a, l) {
-  let c = vZp(e, t, n);
-  i_r(e, c, n);
+function addToTotalSessionCost(cost, usage, model, r, o, s, i, a, l) {
+  let c = vZp(cost, usage, model);
+  i_r(cost, c, model);
   let u = xM(r),
     d = {
-      model: n,
+      model: model,
       ...(sc() &&
-        t.speed === "fast" && {
+        usage.speed === "fast" && {
           speed: "fast",
         }),
       ...(u && {
@@ -200,25 +200,25 @@ function addToTotalSessionCost(e, t, n, r, o, s, i, a, l) {
       }),
       ...ylt(r, VU(r, s, i, a, l)),
     };
-  (q_r()?.add(e, d),
-    dJe()?.add(t.input_tokens, {
+  (q_r()?.add(cost, d),
+    dJe()?.add(usage.input_tokens, {
       ...d,
       type: "input",
     }),
-    dJe()?.add(t.output_tokens, {
+    dJe()?.add(usage.output_tokens, {
       ...d,
       type: "output",
     }),
-    dJe()?.add(t.cache_read_input_tokens ?? 0, {
+    dJe()?.add(usage.cache_read_input_tokens ?? 0, {
       ...d,
       type: "cacheRead",
     }),
-    dJe()?.add(t.cache_creation_input_tokens ?? 0, {
+    dJe()?.add(usage.cache_creation_input_tokens ?? 0, {
       ...d,
       type: "cacheCreation",
     }));
-  let p = e;
-  for (let f of gel(t)) {
+  let p = cost;
+  for (let f of gel(usage)) {
     let m = WY(f.model, f);
     (G("tengu_advisor_tool_token_usage", {
       advisor_model: f.model,

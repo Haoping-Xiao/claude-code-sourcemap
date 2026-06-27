@@ -26,9 +26,9 @@ function H_m(e) {
       };
   }
 }
-function EnterPlanModePermissionRequest(e) {
+function EnterPlanModePermissionRequest(t0) {
   let t = fHc.c(11),
-    { payload: n, answer: r } = e,
+    { payload: n, answer: r } = t0,
     o = Ht(T_m),
     s;
   if (t[0] !== r || t[1] !== o)

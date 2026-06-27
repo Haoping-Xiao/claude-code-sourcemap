@@ -53,17 +53,17 @@ async function* J8t(e, t, n, r = lp, o) {
     getAppState: o,
   });
 }
-async function executeSessionEndHooks(e, t) {
-  let { getAppState: n, setAppState: r, signal: o } = t || {},
+async function executeSessionEndHooks(reason, options) {
+  let { getAppState: n, setAppState: r, signal: o } = options || {},
     s = {
       ...Td(void 0),
       hook_event_name: "SessionEnd",
-      reason: e,
+      reason: reason,
     },
     i = await Kk({
       getAppState: n,
       hookInput: s,
-      matchQuery: e,
+      matchQuery: reason,
       signal: o,
       timeoutMs: Plr,
     });

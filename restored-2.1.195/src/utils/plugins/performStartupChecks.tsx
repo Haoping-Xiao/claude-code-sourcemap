@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4044  score=1  fileCov=0.4044
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function performStartupChecks(e) {
+async function performStartupChecks(setAppState) {
   if ((T("performStartupChecks called"), !ad())) {
     T("Trust not accepted for current directory - skipping plugin installations");
     return;
@@ -13,7 +13,7 @@ async function performStartupChecks(e) {
     if ((T("Starting background plugin installations"), await ser()))
       (gOe(),
         PI("performStartupChecks: seed marketplaces changed"),
-        e((n) => {
+        setAppState((n) => {
           if (n.plugins.needsRefresh) return n;
           return {
             ...n,
@@ -23,7 +23,7 @@ async function performStartupChecks(e) {
             },
           };
         }));
-    await _Dc(e);
+    await _Dc(setAppState);
   } catch (t) {
     T(`Error initiating background plugin installations: ${t}`);
   }

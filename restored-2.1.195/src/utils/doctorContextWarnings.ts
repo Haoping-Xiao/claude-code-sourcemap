@@ -24,11 +24,11 @@ async function checkClaudeMdFiles() {
     threshold: t,
   };
 }
-async function checkAgentDescriptions(e) {
-  if (!e) return null;
-  let t = Y7t(e);
+async function checkAgentDescriptions(agentInfo) {
+  if (!agentInfo) return null;
+  let t = Y7t(agentInfo);
   if (t <= xKe) return null;
-  let n = e.activeAgents
+  let n = agentInfo.activeAgents
       .filter((o) => o.source !== "built-in")
       .map((o) => {
         let s = `${o.agentType}: ${o.whenToUse}`;
@@ -49,8 +49,8 @@ async function checkAgentDescriptions(e) {
     threshold: xKe,
   };
 }
-async function checkUnreachableRules(e) {
-  let t = await e(),
+async function checkUnreachableRules(getToolPermissionContext) {
+  let t = await getToolPermissionContext(),
     n = xo.isSandboxingEnabled() && xo.isAutoAllowBashIfSandboxedEnabled(),
     r = vnr(t, {
       sandboxAutoAllowEnabled: n,

@@ -75,9 +75,9 @@ function Wel(e) {
   else f = t[14];
   return f;
 }
-function Highlighted(e) {
+function Highlighted(t0) {
   let t = Cvo.c(8),
-    { codeWithSpaces: n, language: r } = e,
+    { codeWithSpaces: n, language: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((o = GDe()), (t[0] = o));
   else o = t[0];

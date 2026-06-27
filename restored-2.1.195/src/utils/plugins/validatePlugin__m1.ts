@@ -206,8 +206,8 @@ async function Crr(e, t) {
 function EXt(e, t) {
   return t === void 0 ? `${e.pluginName} ${e.version}` : t.replaceAll("%s", e.version);
 }
-async function validateMarketplaceManifest(e) {
-  let t = rx.resolve(e),
+async function validateMarketplaceManifest(filePath) {
+  let t = rx.resolve(filePath),
     n;
   try {
     n = await SXt.stat(t);

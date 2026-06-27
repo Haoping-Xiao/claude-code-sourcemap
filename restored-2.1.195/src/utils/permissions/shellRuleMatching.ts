@@ -28,10 +28,10 @@ function Wca(e) {
   while (r >= 0 && t[r] === "\\") (n++, r--);
   return n % 2 === 0;
 }
-function matchWildcardPattern(e, t, n = false, r = false) {
-  let o = e.trim(),
+function matchWildcardPattern(pattern, command, n = false, r = false) {
+  let o = pattern.trim(),
     s = r ? o.replace(/[ \t]+/g, " ") : o,
-    i = r ? t.replace(/[ \t]+/g, " ") : t,
+    i = r ? command.replace(/[ \t]+/g, " ") : command,
     a = "",
     l = 0;
   while (l < s.length) {
@@ -60,31 +60,31 @@ function matchWildcardPattern(e, t, n = false, r = false) {
   let m = "s" + (n ? "i" : "");
   return new RegExp(`^${p}$`, m).test(i);
 }
-function parsePermissionRule(e) {
-  let t = Qjt(e);
+function parsePermissionRule(permissionRule) {
+  let t = Qjt(permissionRule);
   if (t !== null)
     return {
       type: "prefix",
       prefix: t,
     };
-  if (Mao(e))
+  if (Mao(permissionRule))
     return {
       type: "wildcard",
-      pattern: e,
+      pattern: permissionRule,
     };
   return {
     type: "exact",
-    command: e,
+    command: permissionRule,
   };
 }
-function suggestionForExactCommand(e, t) {
+function suggestionForExactCommand(toolName, command) {
   return [
     {
       type: "addRules",
       rules: [
         {
-          toolName: e,
-          ruleContent: t,
+          toolName: toolName,
+          ruleContent: command,
         },
       ],
       behavior: "allow",

@@ -16,7 +16,7 @@
   load: () => Promise.resolve().then(() => j7l),
 }),
   (G7l = V9f));
-async function captureMemoryDiagnostics(e, t = 0) {
+async function captureMemoryDiagnostics(trigger, t = 0) {
   let n = process.memoryUsage(),
     r = Xsr.getHeapStatistics(),
     o = process.resourceUsage(),
@@ -55,7 +55,7 @@ async function captureMemoryDiagnostics(e, t = 0) {
   return {
     timestamp: new Date().toISOString(),
     sessionId: Rt(),
-    trigger: e,
+    trigger: trigger,
     dumpNumber: t,
     uptimeSeconds: s,
     memoryUsage: {

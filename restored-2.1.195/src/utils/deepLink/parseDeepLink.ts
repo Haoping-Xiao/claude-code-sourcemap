@@ -45,18 +45,18 @@ function yzo(e) {
   if (t.length > TSc) throw Error(`Deep link query exceeds ${TSc} characters (got ${t.length})`);
   return t;
 }
-function parseDeepLink(e) {
-  let t = e.startsWith(`${aV}://`)
-    ? e
-    : e.startsWith(`${aV}:`)
-      ? e.replace(`${aV}:`, `${aV}://`)
+function parseDeepLink(uri) {
+  let t = uri.startsWith(`${aV}://`)
+    ? uri
+    : uri.startsWith(`${aV}:`)
+      ? uri.replace(`${aV}:`, `${aV}://`)
       : null;
-  if (!t) throw Error(`Invalid deep link: expected ${aV}:// scheme, got "${e}"`);
+  if (!t) throw Error(`Invalid deep link: expected ${aV}:// scheme, got "${uri}"`);
   let n;
   try {
     n = new URL(t);
   } catch {
-    throw Error(`Invalid deep link URL: "${e}"`);
+    throw Error(`Invalid deep link URL: "${uri}"`);
   }
   if (n.hostname !== "open") throw Error(`Unknown deep link action: "${n.hostname}"`);
   let r = n.searchParams.get("cwd") ?? void 0,

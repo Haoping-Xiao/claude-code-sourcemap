@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uil] deps: Ye, Pqe, Lo, sr, ql
 ((iil = R(lt(), 1)), (ail = require("path")), (lil = R(rt(), 1)), (z6 = R(se(), 1)));
-function ShutdownRequestDisplay(e) {
+function ShutdownRequestDisplay(t0) {
   let t = GCo.c(5),
-    { request: n } = e,
+    { request: n } = t0,
     r = `Shutdown request from ${n.from}`,
     o;
   if (t[0] !== n.reason)
@@ -37,9 +37,9 @@ function ShutdownRequestDisplay(e) {
   else s = t[4];
   return s;
 }
-function ShutdownRejectedDisplay(e) {
+function ShutdownRejectedDisplay(t0) {
   let t = GCo.c(6),
-    { response: n } = e,
+    { response: n } = t0,
     r = `Shutdown rejected by ${n.from}`,
     o;
   if (t[0] !== n.reason)
@@ -90,12 +90,12 @@ function dil(e) {
     });
   return null;
 }
-function getShutdownMessageSummary(e) {
-  let t = Qv(w9t(), e);
+function getShutdownMessageSummary(content) {
+  let t = Qv(w9t(), content);
   if (t) return `[Shutdown Request from ${t.from}]${t.reason ? ` ${t.reason}` : ""}`;
-  let n = Qv(pAe(), e);
+  let n = Qv(pAe(), content);
   if (n) return `[Shutdown Approved] ${n.from} is now exiting`;
-  let r = Qv($8n(), e);
+  let r = Qv($8n(), content);
   if (r) return `[Shutdown Rejected] ${r.from}: ${r.reason}`;
   return null;
 }

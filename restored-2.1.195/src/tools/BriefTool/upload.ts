@@ -7,8 +7,8 @@
 // module exports: uploadBriefAttachment, escapeContentDispositionFilename
 // [unwrapped __esm module wQ] deps: Rc, oo, Ls
 _yl = require("os");
-function guessMimeType(e) {
-  let t = V7n.extname(e).toLowerCase();
+function guessMimeType(filename) {
+  let t = V7n.extname(filename).toLowerCase();
   return imf[t] ?? "application/octet-stream";
 }
 function escapeContentDispositionFilename(e) {
@@ -17,16 +17,16 @@ function escapeContentDispositionFilename(e) {
     .replaceAll("\\", "\\\\")
     .replaceAll('"', '\\"');
 }
-function debug(e) {
-  T(`[brief:upload] ${e}`);
+function debug(msg) {
+  T(`[brief:upload] ${msg}`);
 }
 function lmf() {
   return lfe() ?? process.env.ANTHROPIC_BASE_URL ?? $s().BASE_API_URL;
 }
-async function uploadBriefAttachment(e, t, n) {
-  if (!n.replBridgeEnabled) return;
-  if (t > Syl) {
-    (debug(`skip ${e}: ${t} bytes exceeds ${Syl} limit`),
+async function uploadBriefAttachment(fullPath, size, ctx) {
+  if (!ctx.replBridgeEnabled) return;
+  if (size > Syl) {
+    (debug(`skip ${fullPath}: ${size} bytes exceeds ${Syl} limit`),
       It("bridge_attachment_upload", "too_large"));
     return;
   }
@@ -37,13 +37,13 @@ async function uploadBriefAttachment(e, t, n) {
   }
   let o;
   try {
-    o = await Ayl.readFile(e);
+    o = await Ayl.readFile(fullPath);
   } catch (d) {
-    (debug(`read failed for ${e}: ${d}`), It("bridge_attachment_upload", "read_failed"));
+    (debug(`read failed for ${fullPath}: ${d}`), It("bridge_attachment_upload", "read_failed"));
     return;
   }
   let i = `${lmf()}/api/oauth/file_upload`,
-    a = V7n.basename(e),
+    a = V7n.basename(fullPath),
     l = guessMimeType(a),
     c = `----FormBoundary${Eyl.randomUUID()}`,
     u = Buffer.concat([
@@ -65,11 +65,11 @@ Content-Type: ${l}\r
         "Content-Length": u.length.toString(),
       },
       timeout: smf,
-      signal: n.signal,
+      signal: ctx.signal,
       validateStatus: () => true,
     });
     if (d.status !== 201) {
-      debug(`upload failed for ${e}: status=${d.status} body=${De(d.data).slice(0, 200)}`);
+      debug(`upload failed for ${fullPath}: status=${d.status} body=${De(d.data).slice(0, 200)}`);
       let f = d.status,
         m =
           f === 401
@@ -88,17 +88,17 @@ Content-Type: ${l}\r
     }
     let p = cmf().safeParse(d.data);
     if (!p.success) {
-      (debug(`unexpected response shape for ${e}: ${p.error.message}`),
+      (debug(`unexpected response shape for ${fullPath}: ${p.error.message}`),
         It("bridge_attachment_upload", "bad_response"));
       return;
     }
     return (
-      debug(`uploaded ${e} \u2192 ${p.data.file_uuid} (${t} bytes)`),
+      debug(`uploaded ${fullPath} \u2192 ${p.data.file_uuid} (${size} bytes)`),
       xe("bridge_attachment_upload"),
       p.data.file_uuid
     );
   } catch (d) {
-    (debug(`upload threw for ${e}: ${d}`),
+    (debug(`upload threw for ${fullPath}: ${d}`),
       It("bridge_attachment_upload", po.isCancel(d) ? "aborted" : "network_error"));
     return;
   }

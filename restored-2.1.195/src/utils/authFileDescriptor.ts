@@ -7,36 +7,36 @@
 // [unwrapped __esm module db] deps: Pw, At
 (($7s = require("async_hooks")), (uI = require("fs/promises")));
 kld = new $7s.AsyncLocalStorage();
-function maybePersistTokenForSubprocesses(e, t, n) {
+function maybePersistTokenForSubprocesses(path, token, tokenName) {
   if (!ut(process.env.CLAUDE_CODE_REMOTE)) return;
   try {
     (YSn.mkdirSync(CCR_TOKEN_DIR, {
       recursive: true,
       mode: 448,
     }),
-      YSn.writeFileSync(e, t, {
+      YSn.writeFileSync(path, token, {
         encoding: "utf8",
         mode: 384,
       }),
-      T(`Persisted ${n} to ${e} for subprocess access`));
+      T(`Persisted ${tokenName} to ${path} for subprocess access`));
   } catch (r) {
-    T(`Failed to persist ${n} to disk (non-fatal): ${be(r)}`, {
+    T(`Failed to persist ${tokenName} to disk (non-fatal): ${be(r)}`, {
       level: "error",
     });
   }
 }
-function readTokenFromWellKnownFile(e, t) {
+function readTokenFromWellKnownFile(path, tokenName) {
   try {
     let r = qt()
-      .readFileSync(e, {
+      .readFileSync(path, {
         encoding: "utf8",
       })
       .trim();
     if (!r) return null;
-    return (T(`Read ${t} from well-known file ${e}`), r);
+    return (T(`Read ${tokenName} from well-known file ${path}`), r);
   } catch (n) {
     if (!wn(n))
-      T(`Failed to read ${t} from ${e}: ${be(n)}`, {
+      T(`Failed to read ${tokenName} from ${path}: ${be(n)}`, {
         level: "debug",
       });
     return null;

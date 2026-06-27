@@ -14,8 +14,8 @@
   load: () => Promise.resolve().then(() => (r8l(), t8l)),
 }),
   (o8l = o5f));
-function isLocalAgent(e) {
-  return typeof e === "object" && e !== null && "type" in e && e.type === "local_agent";
+function isLocalAgent(task) {
+  return typeof task === "object" && task !== null && "type" in task && task.type === "local_agent";
 }
 function tjo(e) {
   return (
@@ -38,15 +38,15 @@ function njo(e) {
     evictAfter: AC(e.status) ? Date.now() + i8l : void 0,
   };
 }
-function enterTeammateView(e, t) {
+function enterTeammateView(taskId, setAppState) {
   (G("tengu_transcript_view_enter", {}),
-    t((n) => {
-      let r = n.tasks[e],
+    setAppState((n) => {
+      let r = n.tasks[taskId],
         o = n.viewingAgentTaskId,
         s = o !== void 0 ? n.tasks[o] : void 0,
-        i = o !== void 0 && o !== e && tjo(s),
+        i = o !== void 0 && o !== taskId && tjo(s),
         a = tjo(r) && ((isLocalAgent(r) && !r.retain) || r.evictAfter !== void 0),
-        l = n.viewingAgentTaskId !== e || n.viewSelectionMode !== "viewing-agent";
+        l = n.viewingAgentTaskId !== taskId || n.viewSelectionMode !== "viewing-agent";
       if (!a && !l && !i) return n;
       let c = n.tasks;
       if (i || a) {
@@ -58,7 +58,7 @@ function enterTeammateView(e, t) {
         )
           c[o] = njo(s);
         if (a)
-          c[e] = isLocalAgent(r)
+          c[taskId] = isLocalAgent(r)
             ? {
                 ...r,
                 retain: true,
@@ -71,15 +71,15 @@ function enterTeammateView(e, t) {
       }
       return {
         ...n,
-        viewingAgentTaskId: e,
+        viewingAgentTaskId: taskId,
         viewSelectionMode: "viewing-agent",
         tasks: c,
       };
     }));
 }
-function exitTeammateView(e) {
+function exitTeammateView(setAppState) {
   (G("tengu_transcript_view_exit", {}),
-    e((t) => {
+    setAppState((t) => {
       let n = t.viewingAgentTaskId,
         r = {
           ...t,

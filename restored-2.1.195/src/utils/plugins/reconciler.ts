@@ -29,7 +29,7 @@ function MYo(e, t, n) {
     upToDate: s,
   };
 }
-async function reconcileMarketplaces(e) {
+async function reconcileMarketplaces(opts) {
   let t = f3();
   if (Object.keys(t).length === 0)
     return {
@@ -66,7 +66,7 @@ async function reconcileMarketplaces(e) {
     s = [],
     i = [];
   for (let u of o) {
-    if (e?.skip?.(u.name, u.source)) {
+    if (opts?.skip?.(u.name, u.source)) {
       s.push(u.name);
       continue;
     }
@@ -86,7 +86,7 @@ async function reconcileMarketplaces(e) {
     );
     for (let u = 0; u < i.length; u++) {
       let { name: d, source: p, action: f } = i[u];
-      e?.onProgress?.({
+      opts?.onProgress?.({
         type: "installing",
         name: d,
         action: f,
@@ -97,7 +97,7 @@ async function reconcileMarketplaces(e) {
         let m = await yOe(p);
         if (f === "install") a.push(d);
         else l.push(d);
-        e?.onProgress?.({
+        opts?.onProgress?.({
           type: "installed",
           name: d,
           alreadyMaterialized: m.alreadyMaterialized,
@@ -108,7 +108,7 @@ async function reconcileMarketplaces(e) {
           name: d,
           error: g,
         }),
-          e?.onProgress?.({
+          opts?.onProgress?.({
             type: "failed",
             name: d,
             error: g,

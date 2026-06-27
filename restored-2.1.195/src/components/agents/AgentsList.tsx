@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AYl] deps: iu, si, uo, Ye, ps, IL, ty, y3, f_, VAt, i4o, a4o, l4o, c4o
 ((aZ = R(rt(), 1)), (Pse = R(se(), 1)));
-function AgentsList(e) {
+function AgentsList(t0) {
   let t = XAt.c(75),
     {
       source: n,
@@ -16,7 +16,7 @@ function AgentsList(e) {
       onSelect: i,
       onCreateNew: a,
       changes: l,
-    } = e,
+    } = t0,
     [c, u] = YAt.useState(null),
     [d, p] = YAt.useState(!!a),
     { headerFocused: f, focusHeader: m } = tx(),

@@ -23,7 +23,7 @@ hs = Object.assign(Znf, {
   Node: erf,
   Group: trf,
 });
-function AgentProgressLine(e) {
+function AgentProgressLine(t0) {
   let t = Nol.c(32),
     {
       agentType: n,
@@ -39,7 +39,7 @@ function AgentProgressLine(e) {
       isAsync: p,
       lastToolInfo: f,
       hideType: m,
-    } = e,
+    } = t0,
     g = p === void 0 ? false : p,
     h = m === void 0 ? false : m,
     y = g && d,

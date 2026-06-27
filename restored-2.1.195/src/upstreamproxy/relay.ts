@@ -129,20 +129,20 @@ function vlm(e, t, n) {
     ctx: n,
   };
 }
-async function startUpstreamProxyRelay(e) {
-  let t = "Basic " + Buffer.from(`${e.sessionId}:${e.token}`).toString("base64"),
-    n = `Bearer ${e.token}`,
+async function startUpstreamProxyRelay(opts) {
+  let t = "Basic " + Buffer.from(`${opts.sessionId}:${opts.token}`).toString("base64"),
+    n = `Bearer ${opts.token}`,
     r = {
       ...Elm,
-      ...e.limits,
+      ...opts.limits,
     },
-    o = startBunRelay(e.wsUrl, t, n, r, {
-      statusProvider: e.statusProvider,
+    o = startBunRelay(opts.wsUrl, t, n, r, {
+      statusProvider: opts.statusProvider,
       failures: [],
     });
   return (T(`[agent-proxy] relay listening on 127.0.0.1:${o.port}`), o);
 }
-function startBunRelay(e, t, n, r, o) {
+function startBunRelay(wsUrl, authHeader, wsAuthHeader, r, o) {
   let s = [],
     i = Bun.listen({
       hostname: "127.0.0.1",
@@ -192,9 +192,9 @@ function startBunRelay(e, t, n, r, o) {
             },
             c,
             l,
-            e,
-            t,
-            n,
+            wsUrl,
+            authHeader,
+            wsAuthHeader,
           );
         },
         drain(a) {
@@ -627,17 +627,17 @@ X-Agent-Proxy-Client-Process: ${e.clientProcess}\r
   for (let o of e.pending) X9o(t, o);
   ((e.pending = []), (e.pendingBytes = 0), efc(e));
 }
-function openTunnel(e, t, n, r, o) {
+function openTunnel(sock, st, connectLine, wsUrl, authHeader) {
   let s = {
       "Content-Type": "application/proto",
-      Authorization: o,
+      Authorization: authHeader,
     },
-    i = new globalThis.WebSocket(n, {
+    i = new globalThis.WebSocket(connectLine, {
       headers: s,
-      proxy: h9(n),
+      proxy: h9(connectLine),
       tls: HY() || void 0,
     });
-  ((i.binaryType = "arraybuffer"), (t.ws = i), (t.wsOpen = false), (t.wsMeta = void 0));
+  ((i.binaryType = "arraybuffer"), (st.ws = i), (st.wsOpen = false), (st.wsMeta = void 0));
   let a = () => {
       i.onopen = i.onmessage = i.onerror = i.onclose = null;
       try {
@@ -645,49 +645,49 @@ function openTunnel(e, t, n, r, o) {
       } catch {}
     },
     l = (c) => {
-      if (t.closed) return;
-      if (t.openTimer) (clearTimeout(t.openTimer), (t.openTimer = void 0));
-      if ((a(), t.wsAttempt++, t.wsAttempt < t.limits.openMaxAttempts)) {
-        let u = t.limits.openBackoffBaseMs * 2 ** (t.wsAttempt - 1);
+      if (st.closed) return;
+      if (st.openTimer) (clearTimeout(st.openTimer), (st.openTimer = void 0));
+      if ((a(), st.wsAttempt++, st.wsAttempt < st.limits.openMaxAttempts)) {
+        let u = st.limits.openBackoffBaseMs * 2 ** (st.wsAttempt - 1);
         (T(
-          `[agent-proxy] ws open failed (${c}); retry ${t.wsAttempt}/${t.limits.openMaxAttempts - 1} in ${u}ms`,
+          `[agent-proxy] ws open failed (${c}); retry ${st.wsAttempt}/${st.limits.openMaxAttempts - 1} in ${u}ms`,
         ),
-          (t.openTimer = setTimeout(openTunnel, u, e, t, n, r, o)));
+          (st.openTimer = setTimeout(openTunnel, u, sock, st, connectLine, wsUrl, authHeader)));
         return;
       }
       (T(`[agent-proxy] ws open failed (${c}); attempts exhausted`),
-        (t.closed = true),
+        (st.closed = true),
         Le("agent_proxy_request", "agent_proxy_request_ws_error"),
         e7e(
-          e,
+          sock,
           502,
           "Bad Gateway",
-          `could not open the WebSocket tunnel to the CCR agent-proxy (${c.slice(0, 120)}) after ${t.limits.openMaxAttempts} attempts`,
+          `could not open the WebSocket tunnel to the CCR agent-proxy (${c.slice(0, 120)}) after ${st.limits.openMaxAttempts} attempts`,
         ),
-        e.end(),
+        sock.end(),
         PTe(
-          t.ctx,
+          st.ctx,
           "ws_open_failed",
-          `tunnel open failed after ${t.limits.openMaxAttempts} attempts: ${c.slice(0, 120)}`,
-          t.connectLine.split(" ")[1],
+          `tunnel open failed after ${st.limits.openMaxAttempts} attempts: ${c.slice(0, 120)}`,
+          st.connectLine.split(" ")[1],
         ),
-        MTe(t));
+        MTe(st));
     };
-  ((t.failOrRetry = l),
-    (t.openTimer = setTimeout($lm, t.limits.openTimeoutMs, t)),
+  ((st.failOrRetry = l),
+    (st.openTimer = setTimeout($lm, st.limits.openTimeoutMs, st)),
     (i.onopen = () => {
-      if (t.closed) return;
-      if (t.openTimer) (clearTimeout(t.openTimer), (t.openTimer = void 0));
-      ((t.failOrRetry = void 0),
-        (t.wsOpen = true),
-        (t.wsMeta = {
+      if (st.closed) return;
+      if (st.openTimer) (clearTimeout(st.openTimer), (st.openTimer = void 0));
+      ((st.failOrRetry = void 0),
+        (st.wsOpen = true),
+        (st.wsMeta = {
           v2: false,
           openedAt: Date.now(),
         }),
-        nfc(e, t, i),
+        nfc(sock, st, i),
         i.send(Jpc(ylm, Xpc)),
-        rfc(t, i, r),
-        (t.pinger = setInterval(Mlm, hlm, i)));
+        rfc(st, i, wsUrl),
+        (st.pinger = setInterval(Mlm, hlm, i)));
     }),
     (i.onerror = (c) => {
       let u = "message" in c ? String(c.message) : "websocket error";

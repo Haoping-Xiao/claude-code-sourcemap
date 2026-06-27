@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module b8t] deps: Lyt, ql
 ((jol = R(lt(), 1)), (Zwo = R(se(), 1)));
-function CompactSummary(e) {
+function CompactSummary(t0) {
   let t = Gol.c(24),
-    { message: n, screen: r } = e,
+    { message: n, screen: r } = t0,
     o = r === "transcript",
     s;
   if (t[0] !== n) ((s = P$(n) || ""), (t[0] = n), (t[1] = s));

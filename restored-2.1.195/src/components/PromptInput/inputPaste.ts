@@ -24,8 +24,8 @@ function Omm(e, t, n = false) {
     placeholderContent: a,
   };
 }
-function formatTruncatedTextRef(e, t) {
-  return `[...Truncated text #${e} +${t} lines...]`;
+function formatTruncatedTextRef(id, numLines) {
+  return `[...Truncated text #${id} +${numLines} lines...]`;
 }
 function abc(e, t) {
   if (e.length <= ibc)

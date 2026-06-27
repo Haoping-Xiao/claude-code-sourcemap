@@ -21,13 +21,13 @@ function hzi(e, t, n, r = true) {
     i
   );
 }
-function useExitOnCtrlCD(e, t) {
+function useExitOnCtrlCD(useKeybindingsHook, onInterrupt) {
   let { exit: n } = TW(),
     [r, o] = F0e.useState({
       pending: false,
       keyName: null,
     }),
-    s = F0e.useMemo(() => t ?? n, [t, n]),
+    s = F0e.useMemo(() => onInterrupt ?? n, [onInterrupt, n]),
     i = Jj(),
     a = Uu("app:interrupt", "Global", "Ctrl-C"),
     l = Uu("app:exit", "Global", "Ctrl-D"),
@@ -50,9 +50,9 @@ function useExitOnCtrlCD(e, t) {
       s,
     ),
     f = F0e.useCallback(() => {
-      if (e?.()) return;
+      if (useKeybindingsHook?.()) return;
       d();
-    }, [d, e]),
+    }, [d, useKeybindingsHook]),
     m = F0e.useCallback(() => {
       p();
     }, [p]);

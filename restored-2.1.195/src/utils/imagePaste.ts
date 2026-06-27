@@ -134,10 +134,10 @@ function h8i(e) {
     return e.slice(1, -1);
   return e;
 }
-function stripBackslashEscapes(e) {
-  if (Vt() === "wsl" && y8i.test(e)) return e;
+function stripBackslashEscapes(path) {
+  if (Vt() === "wsl" && y8i.test(path)) return path;
   let r = `__DOUBLE_BACKSLASH_${m8i.randomBytes(8).toString("hex")}__`;
-  return e.replaceAll("\\\\", r).replace(/\\(.)/g, "$1").replace(new RegExp(r, "g"), "\\");
+  return path.replaceAll("\\\\", r).replace(/\\(.)/g, "$1").replace(new RegExp(r, "g"), "\\");
 }
 function GQr(e) {
   let t = h8i(e.trim()),
@@ -150,8 +150,8 @@ function Z8d(e) {
   if (IDn.test(n)) return n;
   return null;
 }
-async function tryReadImageFromPath(e, t) {
-  let n = Z8d(e);
+async function tryReadImageFromPath(text, t) {
+  let n = Z8d(text);
   if (!n) return null;
   let r = n;
   if (Vt() === "wsl" && y8i.test(r)) r = await new I0e(process.env.WSL_DISTRO_NAME).toLocalPath(r);

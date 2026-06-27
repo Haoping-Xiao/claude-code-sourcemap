@@ -30,7 +30,7 @@ function COf(e, t, n) {
   if (e === "subl") return [`${t}:${n}`];
   return [t];
 }
-function openFileInExternalEditor(e, t) {
+function openFileInExternalEditor(filePath, line) {
   let n = $q();
   if (!n) return false;
   let r = n.split(" "),
@@ -38,7 +38,7 @@ function openFileInExternalEditor(e, t) {
     s = r.slice(1),
     i = QNo(n);
   if (i) {
-    let c = COf(i, e, t),
+    let c = COf(i, filePath, line),
       u = {
         detached: true,
         stdio: "ignore",
@@ -58,7 +58,7 @@ function openFileInExternalEditor(e, t) {
   }
   let a = Cu.get(process.stdout);
   if (!a) return false;
-  let l = t && vOf.test(Rnr.basename(o));
+  let l = line && vOf.test(Rnr.basename(o));
   a.enterAlternateScreen();
   try {
     let c = {
@@ -66,7 +66,7 @@ function openFileInExternalEditor(e, t) {
       },
       u;
     {
-      let d = [...s, ...(l ? [`+${t}`, e] : [e])];
+      let d = [...s, ...(l ? [`+${line}`, filePath] : [filePath])];
       u = Lnr.spawnSync(o, d, c);
     }
     if (u.error)

@@ -4,19 +4,19 @@
 // class=modified  jaccard=0.1246  score=0.2258  fileCov=0.2176
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function applySettingsChange(e, t) {
+function applySettingsChange(source, setAppState) {
   let n = Dr();
-  if ((T(`Settings changed from ${e}, updating app state`), e === "localSettings")) Yho();
+  if ((T(`Settings changed from ${source}, updating app state`), source === "localSettings")) Yho();
   let r = Cut();
   (Rke(),
     w5(),
-    t((o) => {
+    setAppState((o) => {
       let s = MWt(o.toolPermissionContext, r);
-      ((s = Kho(s, o.settings.permissions?.additionalDirectories, Iut(), e)), (s = zho(s, r)));
+      ((s = Kho(s, o.settings.permissions?.additionalDirectories, Iut(), source)), (s = zho(s, r)));
       let i = Kpt();
       if (o.settings.effortLevel !== n.effortLevel) Dj();
       let l =
-        e === "policySettings" &&
+        source === "policySettings" &&
         (De(o.settings.allowedMcpServers) !== De(n.allowedMcpServers) ||
           De(o.settings.deniedMcpServers) !== De(n.deniedMcpServers) ||
           o.settings.disableClaudeAiConnectors !== n.disableClaudeAiConnectors);

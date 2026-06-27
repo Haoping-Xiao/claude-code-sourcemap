@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gXl] deps: Ye, Is
 ((mXl = R(lt(), 1)), (Jy = R(se(), 1)));
-function SandboxOverridesTab(e) {
+function SandboxOverridesTab(t0) {
   let t = H4o.c(5),
-    { onComplete: n } = e,
+    { onComplete: n } = t0,
     r = xo.isSandboxingEnabled(),
     o = xo.areSandboxSettingsLockedByPolicy() || xo.areUnsandboxedCommandsForbiddenByPolicy(),
     s = xo.areUnsandboxedCommandsAllowed();
@@ -70,9 +70,9 @@ function SandboxOverridesTab(e) {
   else i = t[4];
   return i;
 }
-function OverridesSelect(e) {
+function OverridesSelect(t0) {
   let t = H4o.c(24),
-    { onComplete: n, currentMode: r } = e,
+    { onComplete: n, currentMode: r } = t0,
     [o] = na(),
     { headerFocused: s, focusHeader: i } = tx(),
     a;

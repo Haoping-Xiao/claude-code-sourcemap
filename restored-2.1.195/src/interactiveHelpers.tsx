@@ -121,7 +121,15 @@ function cO(e, t, n) {
 async function F7e(e, t) {
   (e.render(t), gmr(), await e.waitUntilExit(), await ki(0));
 }
-async function showSetupScreens(e, t, n, r, o, s, i) {
+async function showSetupScreens(
+  root,
+  permissionMode,
+  allowDangerouslySkipPermissions,
+  commands,
+  claudeInChrome,
+  devChannels,
+  i,
+) {
   let a = null;
   if (Js() || Oe.CLAUDE_BRIDGE_REATTACH_SESSION)
     return (
@@ -129,7 +137,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
       Mst(),
       iL().catch((p) => ke(Zr(p))),
       hH(),
-      (a = await q$c(e)),
+      (a = await q$c(root)),
       e3(),
       gzn(),
       setImmediate(() => fTt()),
@@ -158,7 +166,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     c = true;
     let { Onboarding: p } = await Promise.resolve().then(() => (zMc(), VMc));
     await cO(
-      e,
+      root,
       (f) =>
         hw.jsx(p, {
           onDone: () => {
@@ -175,9 +183,9 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     if (!ad()) {
       u = true;
       let { TrustDialog: p } = await Promise.resolve().then(() => (A$c(), E$c));
-      await cO(e, (f) =>
+      await cO(root, (f) =>
         hw.jsx(p, {
-          commands: r,
+          commands: commands,
           onDone: f,
         }),
       );
@@ -198,10 +206,10 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
           ke(Zr(f));
       }
     } else iL().catch((p) => ke(Zr(p)));
-    if ((hH(), (a = await q$c(e)), await $so())) {
+    if ((hH(), (a = await q$c(root)), await $so())) {
       let p = Uct(await Wv(true)),
         { ClaudeMdExternalIncludesDialog: f } = await Promise.resolve().then(() => (_1o(), UMl));
-      await cO(e, (m) =>
+      await cO(root, (m) =>
         hw.jsx(f, {
           onDone: m,
           isStandaloneDialog: true,
@@ -219,7 +227,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
   if ((setImmediate(() => fTt()), await Tft())) {
     let { GroveDialog: p } = await Promise.resolve().then(() => (Yjo(), eKl));
     if (
-      (await cO(e, (m) =>
+      (await cO(root, (m) =>
         hw.jsx(p, {
           showIfAlreadyViewed: false,
           location: c ? "onboarding" : "policy_update_modal",
@@ -242,7 +250,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     if (p().status === "not_started") {
       let { ProTrialStartScreen: f } = await Promise.resolve().then(() => (w$c(), v$c));
       (G("tengu_pro_trial_start_screen_shown", {}),
-        await cO(e, (m) =>
+        await cO(root, (m) =>
           hw.jsx(f, {
             onDone: m,
           }),
@@ -253,7 +261,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     let { resolvePowerupDiscoveryArm: p } = await Promise.resolve().then(() => (Eor(), R5l));
     if (p() === "step") {
       let { PowerupDiscoveryStep: f } = await Promise.resolve().then(() => (k$c(), x$c));
-      await cO(e, (m) =>
+      await cO(root, (m) =>
         hw.jsx(f, {
           onDone: m,
         }),
@@ -265,7 +273,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     if (xZt(p) === "new") {
       let { ApproveApiKey: m } = await Promise.resolve().then(() => (p7o(), PMc));
       await cO(
-        e,
+        root,
         (g) =>
           hw.jsx(m, {
             customApiKeyTruncated: p,
@@ -278,31 +286,31 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     }
   }
   try {
-    await Sxm(e);
+    await Sxm(root);
   } catch (p) {
     ke(p);
   }
   try {
-    await Axm(e);
+    await Axm(root);
   } catch (p) {
     ke(p);
   }
   try {
-    await Exm(e);
+    await Exm(root);
   } catch (p) {
     ke(p);
   }
-  if ((t === "bypassPermissions" || n) && !uj()) {
+  if ((permissionMode === "bypassPermissions" || allowDangerouslySkipPermissions) && !uj()) {
     let { BypassPermissionsModeDialog: p } = await Promise.resolve().then(() => (D$c(), L$c));
-    await cO(e, (f) =>
+    await cO(root, (f) =>
       hw.jsx(p, {
         onAccept: f,
       }),
     );
   }
-  if (t === "auto" && !RG()) {
+  if (permissionMode === "auto" && !RG()) {
     let { AutoModeOptInDialog: p } = await Promise.resolve().then(() => (Edr(), C6o));
-    await cO(e, (f) =>
+    await cO(root, (f) =>
       hw.jsx(p, {
         onAccept: f,
         onDecline: () => Bc(1),
@@ -310,8 +318,8 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
       }),
     );
   }
-  if (MA().length > 0 || (s?.length ?? 0) > 0) await _U("tengu_harbor");
-  if (s && s.length > 0) {
+  if (MA().length > 0 || (devChannels?.length ?? 0) > 0) await _U("tengu_harbor");
+  if (devChannels && devChannels.length > 0) {
     let [{ isChannelsEnabled: p }, { isChannelsPolicyBlocked: f }, { getSettingsForSource: m }] =
       await Promise.all([
         Promise.resolve().then(() => (j_t(), Gfl)),
@@ -321,7 +329,7 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
     if (!p() || fr() !== "firstParty" || f(m("policySettings")))
       (Mge([
         ...MA(),
-        ...s.map((g) => ({
+        ...devChannels.map((g) => ({
           ...g,
           dev: true,
         })),
@@ -329,13 +337,13 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
         Dsn(true));
     else {
       let { DevChannelsDialog: g } = await Promise.resolve().then(() => ($$c(), M$c));
-      await cO(e, (h) =>
+      await cO(root, (h) =>
         hw.jsx(g, {
-          channels: s,
+          channels: devChannels,
           onAccept: () => {
             (Mge([
               ...MA(),
-              ...s.map((y) => ({
+              ...devChannels.map((y) => ({
                 ...y,
                 dev: true,
               })),
@@ -347,9 +355,9 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
       );
     }
   }
-  if (o && !Dt().hasCompletedClaudeInChromeOnboarding) {
+  if (claudeInChrome && !Dt().hasCompletedClaudeInChromeOnboarding) {
     let { ClaudeInChromeOnboarding: p } = await Promise.resolve().then(() => (B$c(), N$c));
-    await cO(e, (f) =>
+    await cO(root, (f) =>
       hw.jsx(p, {
         onDone: f,
       }),
@@ -384,11 +392,11 @@ async function showSetupScreens(e, t, n, r, o, s, i) {
           (d = Dt().claudeInChromeDefaultEnabled === true));
       else if (g) {
         let { ChromeAutoEnableDialog: v } = await Promise.resolve().then(() => (j$c(), F$c));
-        d = await cO(e, (C) =>
+        d = await cO(root, (C) =>
           hw.jsx(v, {
             onDone: C,
-            isDontAskMode: t === "dontAsk",
-            isAutoMode: t === "auto",
+            isDontAskMode: permissionMode === "dontAsk",
+            isAutoMode: permissionMode === "auto",
           }),
         );
       } else
@@ -595,9 +603,9 @@ async function Axm(e) {
         }));
   if (l) (G("tengu_vertex_upgrade_relaunch", {}), await K$c(e));
 }
-function getRenderContext(e) {
+function getRenderContext(exitOnCtrlC) {
   let t = 0,
-    n = lN(e);
+    n = lN(exitOnCtrlC);
   if (n.stdin) G("tengu_stdin_interactive", {});
   let r = new t7o(),
     o = h8o();

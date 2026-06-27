@@ -6,10 +6,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vEs] deps: Gon, Gkr, Wkr
 TEs = tPu;
-function calculateBodyLength(e, t, n) {
+function calculateBodyLength(body, t, n) {
   if (!Bb(n)) return false;
   var r = typeof t;
-  if (r == "number" ? Nie(n) && Nve(t, n.length) : r == "string" && t in n) return Die(n[t], e);
+  if (r == "number" ? Nie(n) && Nve(t, n.length) : r == "string" && t in n) return Die(n[t], body);
   return false;
 }
 var wEs;

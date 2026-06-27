@@ -9,27 +9,35 @@ function isSlashCommandBlockedByEndedByModel(e, t) {
   if (!t) return false;
   return !(e && e.type !== "prompt" && Gif.has(e.name));
 }
-async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
+async function executeForkedSlashCommand(
+  command,
+  args,
+  context,
+  precedingInputBlocks,
+  setToolJSX,
+  canUseTool,
+  i = [],
+) {
   let a = rM(),
     { sanitizedName: l, skillNameHash: c } = Elt({
-      rawName: e.name,
-      canonicalName: e.name,
-      isMcp: e.loadedFrom === "mcp",
-      isBuiltIn: mQ().has(e.name),
-      isBundled: e.source === "bundled",
+      rawName: command.name,
+      canonicalName: command.name,
+      isMcp: command.loadedFrom === "mcp",
+      isBuiltIn: mQ().has(command.name),
+      isBundled: command.source === "bundled",
       isOfficial:
-        e.source === "plugin" &&
-        !!e.pluginInfo?.repository &&
-        zD(Qo(e.pluginInfo.repository).marketplace),
+        command.source === "plugin" &&
+        !!command.pluginInfo?.repository &&
+        zD(Qo(command.pluginInfo.repository).marketplace),
     });
   G("tengu_slash_command_forked", {
     command_name: l,
     ...c,
-    _PROTO_skill_name: e.name,
+    _PROTO_skill_name: command.name,
     invocation_trigger: We("user-slash"),
-    ...Hbe(e.source, e.loadedFrom, e.kind, e.createdBy),
-    ...L8e(e.source, e.name),
-    ...(e.pluginInfo && Tbe(e.pluginInfo)),
+    ...Hbe(command.source, command.loadedFrom, command.kind, command.createdBy),
+    ...L8e(command.source, command.name),
+    ...(command.pluginInfo && Tbe(command.pluginInfo)),
   });
   let {
       skillContent: u,
@@ -37,10 +45,10 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
       contextLayers: p,
       baseAgent: f,
       promptMessages: m,
-    } = await K8t(e, t, n),
-    g = p.length > 0 ? [...(n.permissionLayers ?? []), ...p] : n.permissionLayers;
+    } = await K8t(command, args, context),
+    g = p.length > 0 ? [...(context.permissionLayers ?? []), ...p] : context.permissionLayers;
   m.push(...i);
-  let h = e.getEffort?.(t) ?? e.effort,
+  let h = command.getEffort?.(args) ?? command.effort,
     y =
       h !== void 0
         ? {
@@ -48,10 +56,10 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
             effort: h,
           }
         : f;
-  T(`Executing forked slash command /${e.name} with agent ${y.agentType}`);
+  T(`Executing forked slash command /${command.name} with agent ${y.agentType}`);
   let b = [],
     _ = [],
-    S = `forked-command-${e.name}`,
+    S = `forked-command-${command.name}`,
     A = 0,
     v = (k) => (
       A++,
@@ -63,7 +71,7 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
           prompt: u,
           agentId: a,
           agentType: y.agentType,
-          description: e.description,
+          description: command.description,
         },
         parentToolUseID: S,
         toolUseID: `${S}-${A}`,
@@ -72,16 +80,16 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
       }
     ),
     C = () => {
-      (o({
+      (setToolJSX({
         jsx: KMe(_, {
-          tools: n.options.tools,
+          tools: context.options.tools,
           verbose: false,
         }),
         shouldHidePromptInput: false,
         shouldContinueAnimation: true,
         showSpinner: true,
       }),
-        n.emitToolProgress?.({
+        context.emitToolProgress?.({
           kind: "agent_progress",
           toolUseId: S,
           progressMessages: [..._],
@@ -93,16 +101,16 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
       agentDefinition: y,
       promptMessages: m,
       toolUseContext: {
-        ...n,
+        ...context,
         getAppState: d,
         permissionLayers: g,
       },
-      canUseTool: s,
+      canUseTool: canUseTool,
       isAsync: false,
       querySource: "agent:custom",
-      spawnedBySkill: t$e(e),
-      model: e.model,
-      availableTools: n.options.tools,
+      spawnedBySkill: t$e(command),
+      model: command.model,
+      availableTools: context.options.tools,
     })) {
       if (
         k.type === "api_metrics" ||
@@ -115,7 +123,7 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
       if (k.type === "assistant") {
         let P = h1n(k);
         if (P > 0)
-          n.onQueryEvent?.({
+          context.onQueryEvent?.({
             type: "response_length",
             op: "add",
             delta: P,
@@ -129,21 +137,21 @@ async function executeForkedSlashCommand(e, t, n, r, o, s, i = []) {
       }
     }
   } finally {
-    (o(null),
-      n.emitToolProgress?.({
+    (setToolJSX(null),
+      context.emitToolProgress?.({
         kind: "clear",
         toolUseId: S,
       }));
   }
   let x = h_t(b, "Command completed");
   return (
-    T(`Forked slash command /${e.name} completed with agent ${a}`),
+    T(`Forked slash command /${command.name} completed with agent ${a}`),
     {
       messages: [
         Rn({
           content: Y6({
-            inputString: `/${xu(e)} ${t}`.trim(),
-            precedingInputBlocks: r,
+            inputString: `/${xu(command)} ${args}`.trim(),
+            precedingInputBlocks: precedingInputBlocks,
           }),
         }),
         Rn({
@@ -153,7 +161,7 @@ ${x}
         }),
       ],
       shouldQuery: false,
-      command: e,
+      command: command,
       resultText: x,
     }
   );
@@ -161,11 +169,22 @@ ${x}
 function looksLikeCommand(e) {
   return !/[^a-zA-Z0-9:\-_]/.test(e);
 }
-async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
+async function processSlashCommand(
+  inputString,
+  precedingInputBlocks,
+  imageContentBlocks,
+  attachmentMessages,
+  context,
+  setToolJSX,
+  uuid,
+  isAlreadyProcessing,
+  canUseTool,
+  c,
+) {
   function u() {
     let Z = g_t.randomUUID();
     _Je(Z);
-    let J = lL(o.options.mainLoopModel, gg(o));
+    let J = lL(context.options.mainLoopModel, gg(context));
     return (
       G("tengu_input_prompt", {
         ...(c && {
@@ -176,39 +195,39 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
         }),
       }),
       Jc("user_prompt", {
-        prompt_length: String(e.length),
-        prompt: iFt(e),
+        prompt_length: String(inputString.length),
+        prompt: iFt(inputString),
         "prompt.id": Z,
       }),
       {
         messages: [
           Rn({
             content: Y6({
-              inputString: e,
-              precedingInputBlocks: t,
+              inputString: inputString,
+              precedingInputBlocks: precedingInputBlocks,
             }),
-            uuid: i,
+            uuid: uuid,
             promptSource: c,
           }),
-          ...r,
+          ...attachmentMessages,
         ],
         shouldQuery: true,
       }
     );
   }
-  let d = JMe(e);
+  let d = JMe(inputString);
   if (!d) {
-    if ((G("tengu_input_slash_missing", {}), o.options.isNonInteractiveSession)) return u();
+    if ((G("tengu_input_slash_missing", {}), context.options.isNonInteractiveSession)) return u();
     Le("cmd_dispatch", "cmd_parse_failed");
     let Z = "Commands are in the form `/command [args]`";
     return {
       messages: [
         Doe(),
-        ...r,
+        ...attachmentMessages,
         Rn({
           content: Y6({
             inputString: Z,
-            precedingInputBlocks: t,
+            precedingInputBlocks: precedingInputBlocks,
           }),
         }),
       ],
@@ -220,25 +239,25 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
     { isMcp: m } = d,
     g = false;
   if (hk()) {
-    let Z = szn(p, o.options.commands);
+    let Z = szn(p, context.options.commands);
     if (Z) ((p = Z.commandName), (f = Z.args));
     else if (p.includes("://")) g = true;
   }
-  let h = fA(p, o.options.commands);
+  let h = fA(p, context.options.commands);
   if (h && !Ik(h)) h = void 0;
   if (!h && !m && f.trim()) {
     let Z = f.trimStart(),
       J = Z.search(/\s/),
       ne = J === -1 ? Z : Z.slice(0, J),
       oe = `${p}:${ne}`,
-      re = fA(oe, o.options.commands);
+      re = fA(oe, context.options.commands);
     if (re) ((h = re), (p = oe), (f = J === -1 ? "" : Z.slice(J + 1).trimStart()));
   }
   let y;
   if (h && !Poe(h)) {
     let Z = _Kn(h, f);
     if (Z) {
-      let J = fA(Z.targetName, o.options.commands);
+      let J = fA(Z.targetName, context.options.commands);
       if (J && Ik(J)) ((h = J), (p = Z.targetName), (f = Z.remainingArgs));
       else if (h.name === woe) {
         let ne = nzn();
@@ -260,7 +279,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       (await qt().stat(`/${p}`), (Z = true));
     } catch {}
     if ((looksLikeCommand(p) || g) && !Z) {
-      if (o.options.isNonInteractiveSession && mQ().has(p)) {
+      if (context.options.isNonInteractiveSession && mQ().has(p)) {
         let oe = `/${p} isn't available in this environment.`;
         return (
           G("tengu_input_slash_invalid", {
@@ -280,7 +299,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       }
       let J = Npe(
         p,
-        o.options.commands
+        context.options.commands
           .filter((oe) => !oe.isHidden && !Poe(oe) && Ik(oe))
           .map((oe) => ({
             name: xu(oe),
@@ -298,10 +317,10 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       }),
         Le("cmd_dispatch", "cmd_unknown"));
       let ne = J ? `Unknown command: /${p}. Did you mean /${J}?` : `Unknown command: /${p}`;
-      if (o.options.isNonInteractiveSession)
+      if (context.options.isNonInteractiveSession)
         return {
           messages: [
-            ...r,
+            ...attachmentMessages,
             nw(`/${p}${f ? ` ${f}` : ""}`),
             nw(`<local-command-stdout>${ne}</local-command-stdout>`),
           ],
@@ -310,7 +329,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
         };
       return {
         messages: [
-          ...r,
+          ...attachmentMessages,
           cc(ne, "warning"),
           ...(f ? [cc(`Args from unknown skill: ${f}`, "warning")] : []),
         ],
@@ -326,8 +345,8 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
         : b || (h.type === "prompt" && (h.source === "bundled" || h.source === "builtin"))
           ? "builtin"
           : "custom",
-    C = h.isSensitive && f.trim() ? `/${p} ***` : e;
-  if (!(o.deferSlashToEngine?.(h) ?? false)) {
+    C = h.isSensitive && f.trim() ? `/${p} ***` : inputString;
+  if (!(context.deferSlashToEngine?.(h) ?? false)) {
     let Z = g_t.randomUUID();
     (_Je(Z),
       Jc("user_prompt", {
@@ -350,7 +369,17 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       nextInput: B,
       submitNextInput: $,
       engineDeferredSlash: q,
-    } = await getMessagesForSlashCommand(p, f, s, o, t, n, a, l, i),
+    } = await getMessagesForSlashCommand(
+      p,
+      f,
+      setToolJSX,
+      context,
+      precedingInputBlocks,
+      imageContentBlocks,
+      isAlreadyProcessing,
+      canUseTool,
+      uuid,
+    ),
     { sanitizedName: W, skillNameHash: V } = Elt({
       rawName: p,
       canonicalName: M.name,
@@ -410,7 +439,13 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
     typeof I[1].message.content === "string" &&
     I[1].message.content.startsWith("Unknown command:")
   ) {
-    if (!(e.startsWith("/var") || e.startsWith("/tmp") || e.startsWith("/private")))
+    if (
+      !(
+        inputString.startsWith("/var") ||
+        inputString.startsWith("/tmp") ||
+        inputString.startsWith("/private")
+      )
+    )
       (G("tengu_input_slash_invalid", {
         input_length: p.length,
         had_suggestion: false,
@@ -486,15 +521,25 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
     engineDeferredSlash: q,
   };
 }
-async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
-  let c = h6e(e, r.options.commands),
-    u = cSs(Y8t().has(e) ? e : "custom");
+async function getMessagesForSlashCommand(
+  commandName,
+  args,
+  setToolJSX,
+  context,
+  precedingInputBlocks,
+  imageContentBlocks,
+  _isAlreadyProcessing,
+  canUseTool,
+  uuid,
+) {
+  let c = h6e(commandName, context.options.commands),
+    u = cSs(Y8t().has(commandName) ? commandName : "custom");
   if (!Ik(c)) {
     Le(u, "cmd_policy_disabled");
-    let d = `/${e} isn't available in this session.`;
-    if (r.options.isNonInteractiveSession)
+    let d = `/${commandName} isn't available in this session.`;
+    if (context.options.isNonInteractiveSession)
       return {
-        messages: [nw(ZMe(c, t)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
+        messages: [nw(ZMe(c, args)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
         shouldQuery: false,
         command: c,
         resultText: d,
@@ -507,10 +552,10 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
     };
   }
   if (Poe(c)) {
-    if ((Le(u, "cmd_skill_override_off"), r.options.isNonInteractiveSession)) {
+    if ((Le(u, "cmd_skill_override_off"), context.options.isNonInteractiveSession)) {
       let p = `Skill "${c.name}" is disabled via skillOverrides. Remove the override from your settings to run it.`;
       return {
-        messages: [nw(ZMe(c, t)), nw(`<local-command-stdout>${p}</local-command-stdout>`)],
+        messages: [nw(ZMe(c, args)), nw(`<local-command-stdout>${p}</local-command-stdout>`)],
         shouldQuery: false,
         command: c,
         resultText: p,
@@ -518,7 +563,10 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
     }
     let d = `Skill "${c.name}" is disabled via skillOverrides. Re-enable it in /skills or remove the override from your settings to run it.`;
     return {
-      messages: [cc(d, "warning"), ...(t ? [cc(`Args from disabled skill: ${t}`, "warning")] : [])],
+      messages: [
+        cc(d, "warning"),
+        ...(args ? [cc(`Args from disabled skill: ${args}`, "warning")] : []),
+      ],
       shouldQuery: false,
       command: c,
       resultText: d,
@@ -526,12 +574,12 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
   }
   if (c.type === "prompt" && c.userInvocable !== false) x6n(c.name);
   if (c.type === "prompt" && c.pluginInfo) Zj(c.pluginInfo.repository);
-  if (!r.deferSlashToEngine?.(c))
+  if (!context.deferSlashToEngine?.(c))
     icl({
       commandName: c.name,
-      agentId: r.agentId,
-      isNonInteractiveSession: Boolean(r.options.isNonInteractiveSession),
-      setAppState: r.setAppState,
+      agentId: context.agentId,
+      isNonInteractiveSession: Boolean(context.options.isNonInteractiveSession),
+      setAppState: context.setAppState,
     });
   if (c.userInvocable === false)
     return (
@@ -540,23 +588,23 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
         messages: [
           Rn({
             content: Y6({
-              inputString: `/${e}`,
-              precedingInputBlocks: o,
+              inputString: `/${commandName}`,
+              precedingInputBlocks: precedingInputBlocks,
             }),
           }),
           Rn({
-            content: `This skill can only be invoked by Claude, not directly by users. Ask Claude to use the "${e}" skill for you.`,
+            content: `This skill can only be invoked by Claude, not directly by users. Ask Claude to use the "${commandName}" skill for you.`,
           }),
         ],
         shouldQuery: false,
         command: c,
       }
     );
-  if (c.type === "local-jsx" && r.options.isNonInteractiveSession) {
+  if (c.type === "local-jsx" && context.options.isNonInteractiveSession) {
     Le(u, "cmd_local_jsx_headless");
     let d = `/${xu(c)} opens an interactive panel and isn't available in this environment. Run it from the Claude Code terminal instead.`;
     return {
-      messages: [nw(ZMe(c, t)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
+      messages: [nw(ZMe(c, args)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
       shouldQuery: false,
       command: c,
       resultText: d,
@@ -591,15 +639,15 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
                     ? y
                       ? h
                       : [
-                          nw(ZMe(c, t)),
+                          nw(ZMe(c, args)),
                           nw(`<local-command-stdout>${m}</local-command-stdout>`),
                           ...h,
                         ]
                     : [
                         Rn({
                           content: Y6({
-                            inputString: ZMe(c, t),
-                            precedingInputBlocks: o,
+                            inputString: ZMe(c, args),
+                            precedingInputBlocks: precedingInputBlocks,
                           }),
                         }),
                         m
@@ -622,28 +670,28 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
               m.call(
                 f,
                 {
-                  ...r,
-                  canUseTool: a,
+                  ...context,
+                  canUseTool: canUseTool,
                 },
-                t,
-                e,
+                args,
+                commandName,
               ),
             )
             .then((m) => {
               if (m == null) return;
               if (p) return;
-              n({
+              setToolJSX({
                 jsx: m,
                 shouldHidePromptInput: true,
                 showSpinner: false,
                 isLocalJSXCommand: true,
-                isImmediate: YMe(c, t),
+                isImmediate: YMe(c, args),
               });
             })
             .catch((m) => {
               if ((ke(m), Le(u, "cmd_local_jsx_threw"), p)) return;
               ((p = true),
-                n({
+                setToolJSX({
                   jsx: null,
                   shouldHidePromptInput: false,
                   clearLocalJSX: true,
@@ -656,12 +704,12 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
             });
         });
       case "local": {
-        if (r.deferSlashToEngine?.(c)) {
-          let f = `/${xu(c)} ${t}`.trim(),
+        if (context.deferSlashToEngine?.(c)) {
+          let f = `/${xu(c)} ${args}`.trim(),
             m = Rn({
               content: Y6({
                 inputString: f,
-                precedingInputBlocks: o,
+                precedingInputBlocks: precedingInputBlocks,
               }),
             });
           return {
@@ -674,16 +722,16 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
             },
           };
         }
-        let d = c.isSensitive && t.trim() ? "***" : t,
+        let d = c.isSensitive && args.trim() ? "***" : args,
           p = Rn({
             content: Y6({
               inputString: ZMe(c, d),
-              precedingInputBlocks: o,
+              precedingInputBlocks: precedingInputBlocks,
             }),
           });
         try {
           let f = Doe(),
-            g = await (await c.load()).call(t, r);
+            g = await (await c.load()).call(args, context);
           if ((xe(u), g.type === "skip"))
             return {
               messages: [],
@@ -751,14 +799,30 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
       case "prompt": {
         if (!(c.isMcp && c.loadedFrom !== "mcp")) aFt(c.name, c, "user-slash");
         try {
-          let d = await runUserPromptExpansionHook(c, t, r);
+          let d = await runUserPromptExpansionHook(c, args, context);
           if ("blocked" in d) return (Le(u, "cmd_hook_blocked"), d.blocked);
-          if (c.getEffort?.(t) !== void 0 && !r.options.isNonInteractiveSession) Dj();
+          if (c.getEffort?.(args) !== void 0 && !context.options.isNonInteractiveSession) Dj();
           if (c.context === "fork") {
-            let f = await executeForkedSlashCommand(c, t, r, o, n, a ?? RL, d.hookMessages);
+            let f = await executeForkedSlashCommand(
+              c,
+              args,
+              context,
+              precedingInputBlocks,
+              setToolJSX,
+              canUseTool ?? RL,
+              d.hookMessages,
+            );
             return (xe(u), f);
           }
-          let p = await getMessagesForPromptSlashCommand(c, t, r, o, s, l, d.hookMessages);
+          let p = await getMessagesForPromptSlashCommand(
+            c,
+            args,
+            context,
+            precedingInputBlocks,
+            imageContentBlocks,
+            uuid,
+            d.hookMessages,
+          );
           return (xe(u), p);
         } catch (d) {
           if (d instanceof ru)
@@ -768,8 +832,8 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
                 messages: [
                   Rn({
                     content: Y6({
-                      inputString: ZMe(c, t),
-                      precedingInputBlocks: o,
+                      inputString: ZMe(c, args),
+                      precedingInputBlocks: precedingInputBlocks,
                     }),
                   }),
                   gQ({
@@ -786,8 +850,8 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
               messages: [
                 Rn({
                   content: Y6({
-                    inputString: ZMe(c, t),
-                    precedingInputBlocks: o,
+                    inputString: ZMe(c, args),
+                    precedingInputBlocks: precedingInputBlocks,
                   }),
                 }),
                 Rn({
@@ -810,7 +874,7 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
             Rn({
               content: Y6({
                 inputString: d.message,
-                precedingInputBlocks: o,
+                precedingInputBlocks: precedingInputBlocks,
               }),
             }),
           ],
@@ -824,23 +888,31 @@ async function getMessagesForSlashCommand(e, t, n, r, o, s, i, a, l) {
 function ZMe(e, t) {
   return n$e(xu(e), t);
 }
-function formatSkillLoadingMetadata(e, t = "loading") {
-  return [`<${zC}>${e}</${zC}>`, `<${rj}>${e}</${rj}>`, "<skill-format>true</skill-format>"].join(`
+function formatSkillLoadingMetadata(skillName, t = "loading") {
+  return [
+    `<${zC}>${skillName}</${zC}>`,
+    `<${rj}>${skillName}</${rj}>`,
+    "<skill-format>true</skill-format>",
+  ].join(`
 `);
 }
-function formatSlashCommandLoadingMetadata(e, t) {
+function formatSlashCommandLoadingMetadata(commandName, args) {
   return [
-    `<${zC}>${e}</${zC}>`,
-    `<${rj}>/${e}</${rj}>`,
-    t ? `<command-args>${t}</command-args>` : null,
+    `<${zC}>${commandName}</${zC}>`,
+    `<${rj}>/${commandName}</${rj}>`,
+    args ? `<command-args>${args}</command-args>` : null,
   ].filter(Boolean).join(`
 `);
 }
-function formatCommandLoadingMetadata(e, t) {
-  if (e.userInvocable !== false) return formatSlashCommandLoadingMetadata(e.name, t);
-  if (e.loadedFrom === "skills" || e.loadedFrom === "plugin" || e.loadedFrom === "mcp")
-    return formatSkillLoadingMetadata(e.name, e.progressMessage);
-  return formatSlashCommandLoadingMetadata(e.name, t);
+function formatCommandLoadingMetadata(command, args) {
+  if (command.userInvocable !== false) return formatSlashCommandLoadingMetadata(command.name, args);
+  if (
+    command.loadedFrom === "skills" ||
+    command.loadedFrom === "plugin" ||
+    command.loadedFrom === "mcp"
+  )
+    return formatSkillLoadingMetadata(command.name, command.progressMessage);
+  return formatSlashCommandLoadingMetadata(command.name, args);
 }
 async function runUserPromptExpansionHook(e, t, n) {
   let r = [],
@@ -911,26 +983,34 @@ Original prompt: ${o}`;
     hookMessages: r,
   };
 }
-async function processPromptSlashCommand(e, t, n, r, o = []) {
-  let s = fA(e, n);
-  if (!s) throw new NK(`Unknown command: ${e}`);
+async function processPromptSlashCommand(commandName, args, commands, context, o = []) {
+  let s = fA(commandName, commands);
+  if (!s) throw new NK(`Unknown command: ${commandName}`);
   if (s.type !== "prompt")
     throw Error(
-      `Unexpected ${s.type} command. Expected 'prompt' command. Use /${e} directly in the main conversation.`,
+      `Unexpected ${s.type} command. Expected 'prompt' command. Use /${commandName} directly in the main conversation.`,
     );
-  return getMessagesForPromptSlashCommand(s, t, r, [], o);
+  return getMessagesForPromptSlashCommand(s, args, context, [], o);
 }
-async function getMessagesForPromptSlashCommand(e, t, n, r = [], o = [], s, i = []) {
-  if (Gv() && !n.agentId) {
-    let b = formatCommandLoadingMetadata(e, t),
-      _ = [`Skill "/${e.name}" is available for workers.`];
-    if (e.description) _.push(`Description: ${e.description}`);
-    if (e.whenToUse) _.push(`When to use: ${e.whenToUse}`);
-    let S = e.allowedTools ?? [];
+async function getMessagesForPromptSlashCommand(
+  command,
+  args,
+  context,
+  r = [],
+  o = [],
+  uuid,
+  i = [],
+) {
+  if (Gv() && !context.agentId) {
+    let b = formatCommandLoadingMetadata(command, args),
+      _ = [`Skill "/${command.name}" is available for workers.`];
+    if (command.description) _.push(`Description: ${command.description}`);
+    if (command.whenToUse) _.push(`When to use: ${command.whenToUse}`);
+    let S = command.allowedTools ?? [];
     if (S.length > 0)
       _.push(`This skill grants workers additional tool permissions: ${S.join(", ")}`);
     _.push(`
-Instruct a worker to use this skill by including "Use the /${e.name} skill" in your Agent prompt. The worker has access to the Skill tool and will receive the skill's content and permissions when it invokes it.`);
+Instruct a worker to use this skill by including "Use the /${command.name} skill" in your Agent prompt. The worker has access to the Skill tool and will receive the skill's content and permissions when it invokes it.`);
     let A = [
       {
         type: "text",
@@ -942,7 +1022,7 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
       messages: [
         Rn({
           content: b,
-          uuid: s,
+          uuid: uuid,
         }),
         Rn({
           content: A,
@@ -950,34 +1030,40 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
         }),
       ],
       shouldQuery: true,
-      disallowedTools: wN(e.disallowedTools ?? []),
-      model: e.model,
-      effort: e.getEffort?.(t) ?? e.effort,
-      command: e,
+      disallowedTools: wN(command.disallowedTools ?? []),
+      model: command.model,
+      effort: command.getEffort?.(args) ?? command.effort,
+      command: command,
     };
   }
-  let a = await e.getPromptForCommand(t, n),
-    l = !VE("hooks") || L_e(e.source);
-  if (e.hooks && l) {
+  let a = await command.getPromptForCommand(args, context),
+    l = !VE("hooks") || L_e(command.source);
+  if (command.hooks && l) {
     let b = Rt();
-    Kll(n.setAppState, b, e.hooks, e.name, e.type === "prompt" ? e.skillRoot : void 0);
+    Kll(
+      context.setAppState,
+      b,
+      command.hooks,
+      command.name,
+      command.type === "prompt" ? command.skillRoot : void 0,
+    );
   }
-  let c = e.source ? `${e.source}:${e.name}` : e.name,
+  let c = command.source ? `${command.source}:${command.name}` : command.name,
     u = a.filter((b) => b.type === "text").map((b) => b.text).join(`
 
 `);
-  PCt(e.name, c, u, n.agentId ?? null);
-  let d = Jll(e.name);
+  PCt(command.name, c, u, context.agentId ?? null);
+  let d = Jll(command.name);
   if (d)
-    n.applyAttributionOp({
+    context.applyAttributionOp({
       kind: "recordVerification",
       method: d,
     });
-  n.options.activeSkill = t$e(e);
-  let p = formatCommandLoadingMetadata(e, t),
-    f = wN(e.allowedTools ?? []),
-    m = wN(e.disallowedTools ?? []);
-  if (m.length > 0) yKn(n.setToolPermissionContext, m, "union");
+  context.options.activeSkill = t$e(command);
+  let p = formatCommandLoadingMetadata(command, args),
+    f = wN(command.allowedTools ?? []),
+    m = wN(command.disallowedTools ?? []);
+  if (m.length > 0) yKn(context.setToolPermissionContext, m, "union");
   let g = o.length > 0 || r.length > 0 ? [...o, ...r, ...a] : a,
     h = await mKn(
       g6e(
@@ -985,17 +1071,17 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
           .filter((b) => b.type === "text")
           .map((b) => b.text)
           .join(" "),
-        n,
+        context,
         null,
         [],
         {
           now: () => new Date().toISOString(),
           uuid: () => g_t.randomUUID(),
         },
-        n.messages,
+        context.messages,
         "repl_main_thread",
         {
-          planSlugSeed: t,
+          planSlugSeed: args,
         },
       ),
     );
@@ -1003,7 +1089,7 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
     messages: [
       Rn({
         content: p,
-        uuid: s,
+        uuid: uuid,
       }),
       Rn({
         content: g,
@@ -1014,15 +1100,15 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
       ai({
         type: "command_permissions",
         allowedTools: f,
-        model: e.model,
+        model: command.model,
       }),
     ],
     shouldQuery: true,
     allowedTools: f,
     disallowedTools: m,
-    model: e.model,
-    effort: e.getEffort?.(t) ?? e.effort,
-    command: e,
+    model: command.model,
+    effort: command.getEffort?.(args) ?? command.effort,
+    command: command,
   };
 }
 var g_t, Gif;

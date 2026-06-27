@@ -26,11 +26,11 @@ $pf = Dy({
 function Opf() {
   return `perm-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 }
-function createPermissionRequest(e) {
-  let t = e.teamName || rp(),
-    n = e.workerId || PD(),
-    r = e.workerName || Oh(),
-    o = e.workerColor || Sv();
+function createPermissionRequest(params) {
+  let t = params.teamName || rp(),
+    n = params.workerId || PD(),
+    r = params.workerName || Oh(),
+    o = params.workerColor || Sv();
   if (!t) throw Error("Team name is required for permission requests");
   if (!n) throw Error("Worker ID is required for permission requests");
   if (!r) throw Error("Worker name is required for permission requests");
@@ -40,11 +40,11 @@ function createPermissionRequest(e) {
     workerName: r,
     workerColor: o,
     teamName: t,
-    toolName: e.toolName,
-    toolUseId: e.toolUseId,
-    description: e.description,
-    input: e.input,
-    permissionSuggestions: e.permissionSuggestions || [],
+    toolName: params.toolName,
+    toolUseId: params.toolUseId,
+    description: params.description,
+    input: params.input,
+    permissionSuggestions: params.permissionSuggestions || [],
     createdAt: Date.now(),
   };
 }
@@ -58,39 +58,39 @@ function X_t() {
     t = PD();
   return !!e && !!t && !Npf();
 }
-async function getLeaderName(e) {
-  let t = e || rp();
+async function getLeaderName(teamName) {
+  let t = teamName || rp();
   if (!t) return null;
   let n = await hoe(t);
   if (!n) return (T(`[PermissionSync] Team file not found for team: ${t}`), null);
   return n.members.find((o) => o.agentId === n.leadAgentId)?.name || Hd;
 }
-async function sendPermissionRequestViaMailbox(e) {
-  let t = await getLeaderName(e.teamName);
+async function sendPermissionRequestViaMailbox(request) {
+  let t = await getLeaderName(request.teamName);
   if (!t)
     return (T("[PermissionSync] Cannot send permission request: leader name not found"), false);
   try {
     let n = zTo({
-      request_id: e.id,
-      agent_id: e.workerName,
-      tool_name: e.toolName,
-      tool_use_id: e.toolUseId,
-      description: e.description,
-      input: e.input,
-      permission_suggestions: e.permissionSuggestions,
+      request_id: request.id,
+      agent_id: request.workerName,
+      tool_name: request.toolName,
+      tool_use_id: request.toolUseId,
+      description: request.description,
+      input: request.input,
+      permission_suggestions: request.permissionSuggestions,
     });
     return (
       await fg(
         t,
         {
-          from: e.workerName,
+          from: request.workerName,
           text: De(n),
           timestamp: new Date().toISOString(),
-          color: e.workerColor,
+          color: request.workerColor,
         },
-        e.teamName,
+        request.teamName,
       ),
-      T(`[PermissionSync] Sent permission request ${e.id} to leader ${t} via mailbox`),
+      T(`[PermissionSync] Sent permission request ${request.id} to leader ${t} via mailbox`),
       true
     );
   } catch (n) {
@@ -101,21 +101,21 @@ async function sendPermissionRequestViaMailbox(e) {
     );
   }
 }
-async function sendPermissionResponseViaMailbox(e, t, n, r) {
-  let o = r || rp();
+async function sendPermissionResponseViaMailbox(workerName, resolution, requestId, teamName) {
+  let o = teamName || rp();
   if (!o)
     return (T("[PermissionSync] Cannot send permission response: team name not found"), false);
   try {
     let s = KTo({
-      request_id: n,
-      subtype: t.decision === "approved" ? "success" : "error",
-      error: t.feedback,
-      updated_input: t.updatedInput,
-      permission_updates: t.permissionUpdates,
+      request_id: requestId,
+      subtype: resolution.decision === "approved" ? "success" : "error",
+      error: resolution.feedback,
+      updated_input: resolution.updatedInput,
+      permission_updates: resolution.permissionUpdates,
     });
     return (
       await fg(
-        e,
+        workerName,
         {
           from: Hd,
           text: De(s),
@@ -123,7 +123,9 @@ async function sendPermissionResponseViaMailbox(e, t, n, r) {
         },
         o,
       ),
-      T(`[PermissionSync] Sent permission response for ${n} to worker ${e} via mailbox`),
+      T(
+        `[PermissionSync] Sent permission response for ${requestId} to worker ${workerName} via mailbox`,
+      ),
       true
     );
   } catch (s) {
@@ -137,8 +139,8 @@ async function sendPermissionResponseViaMailbox(e, t, n, r) {
 function generateSandboxRequestId() {
   return `sandbox-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
 }
-async function sendSandboxPermissionRequestViaMailbox(e, t, n) {
-  let r = n || rp();
+async function sendSandboxPermissionRequestViaMailbox(host, requestId, teamName) {
+  let r = teamName || rp();
   if (!r)
     return (
       T("[PermissionSync] Cannot send sandbox permission request: team name not found"),
@@ -163,11 +165,11 @@ async function sendSandboxPermissionRequestViaMailbox(e, t, n) {
     );
   try {
     let l = YTo({
-      requestId: t,
+      requestId: requestId,
       workerId: s,
       workerName: i,
       workerColor: a,
-      host: e,
+      host: host,
     });
     return (
       await fg(
@@ -181,7 +183,7 @@ async function sendSandboxPermissionRequestViaMailbox(e, t, n) {
         r,
       ),
       T(
-        `[PermissionSync] Sent sandbox permission request ${t} for host ${e} to leader ${o} via mailbox`,
+        `[PermissionSync] Sent sandbox permission request ${requestId} for host ${host} to leader ${o} via mailbox`,
       ),
       xe("swarm_sandbox_permission_request"),
       true
@@ -195,8 +197,14 @@ async function sendSandboxPermissionRequestViaMailbox(e, t, n) {
     );
   }
 }
-async function sendSandboxPermissionResponseViaMailbox(e, t, n, r, o) {
-  let s = o || rp();
+async function sendSandboxPermissionResponseViaMailbox(
+  workerName,
+  requestId,
+  host,
+  allow,
+  teamName,
+) {
+  let s = teamName || rp();
   if (!s)
     return (
       T("[PermissionSync] Cannot send sandbox permission response: team name not found"),
@@ -204,13 +212,13 @@ async function sendSandboxPermissionResponseViaMailbox(e, t, n, r, o) {
     );
   try {
     let i = XTo({
-      requestId: t,
-      host: n,
-      allow: r,
+      requestId: requestId,
+      host: host,
+      allow: allow,
     });
     return (
       await fg(
-        e,
+        workerName,
         {
           from: Hd,
           text: De(i),
@@ -219,7 +227,7 @@ async function sendSandboxPermissionResponseViaMailbox(e, t, n, r, o) {
         s,
       ),
       T(
-        `[PermissionSync] Sent sandbox permission response for ${t} (host: ${n}, allow: ${r}) to worker ${e} via mailbox`,
+        `[PermissionSync] Sent sandbox permission response for ${requestId} (host: ${host}, allow: ${allow}) to worker ${workerName} via mailbox`,
       ),
       true
     );

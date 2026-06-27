@@ -57,22 +57,24 @@ function toAgentInfos(e) {
 function isBuiltInAgent(e) {
   return e.source === "built-in";
 }
-function isCustomAgent(e) {
-  return e.source !== "built-in" && e.source !== "plugin";
+function isCustomAgent(agent) {
+  return agent.source !== "built-in" && agent.source !== "plugin";
 }
 function isPluginAgent(e) {
   return e.source === "plugin";
 }
-function getActiveAgentsFromList(e) {
-  let t = e.filter((u) => u.source === "built-in"),
-    n = e.filter((u) => u.source === "plugin"),
-    r = e.filter((u) => u.source === "userSettings"),
+function getActiveAgentsFromList(allAgents) {
+  let t = allAgents.filter((u) => u.source === "built-in"),
+    n = allAgents.filter((u) => u.source === "plugin"),
+    r = allAgents.filter((u) => u.source === "userSettings"),
     s = [
-      ...e.filter((u) => u.source === "projectSettings" && u.fromAdditionalDirectory),
-      ...e.filter((u) => u.source === "projectSettings" && !u.fromAdditionalDirectory).sort(WSt),
+      ...allAgents.filter((u) => u.source === "projectSettings" && u.fromAdditionalDirectory),
+      ...allAgents
+        .filter((u) => u.source === "projectSettings" && !u.fromAdditionalDirectory)
+        .sort(WSt),
     ],
-    i = e.filter((u) => u.source === "policySettings"),
-    a = e.filter((u) => u.source === "flagSettings"),
+    i = allAgents.filter((u) => u.source === "policySettings"),
+    a = allAgents.filter((u) => u.source === "flagSettings"),
     l = [t, n, r, s, a, i],
     c = new Map();
   for (let u of l) for (let d of u) c.set(d.agentType, d);
@@ -90,32 +92,32 @@ function filterAgentsByMcpRequirements(e, t) {
 function clearAgentDefinitionsCache() {
   (getAgentDefinitionsWithOverrides.cache?.clear?.(), _q.cache?.clear?.(), ZZn());
 }
-function getParseError(e) {
-  let { name: t, description: n } = e;
+function getParseError(frontmatter) {
+  let { name: t, description: n } = frontmatter;
   if (!t || typeof t !== "string") return 'Missing required "name" field in frontmatter';
   if (t.startsWith("-")) return 'Invalid "name": names must not start with "-"';
   if (!n || typeof n !== "string") return 'Missing required "description" field in frontmatter';
   return "Unknown parsing error";
 }
-function parseHooksFromFrontmatter(e, t) {
-  if (!e.hooks) return;
-  let n = IG().safeParse(e.hooks);
+function parseHooksFromFrontmatter(frontmatter, agentType) {
+  if (!frontmatter.hooks) return;
+  let n = IG().safeParse(frontmatter.hooks);
   if (!n.success) {
-    T(`Invalid hooks in agent '${t}': ${n.error.message}`);
+    T(`Invalid hooks in agent '${agentType}': ${n.error.message}`);
     return;
   }
   return n.data;
 }
-function parseAgentFromJson(e, t, n = "flagSettings") {
+function parseAgentFromJson(name, definition, n = "flagSettings") {
   try {
-    if (e.startsWith("-"))
+    if (name.startsWith("-"))
       return (
-        T(`Agent '${e}' has an invalid name: names must not start with '-'`, {
+        T(`Agent '${name}' has an invalid name: names must not start with '-'`, {
           level: "error",
         }),
         null
       );
-    let r = CLl().parse(t),
+    let r = CLl().parse(definition),
       o = TOe(r.tools);
     if (lu() && r.memory && o !== void 0) {
       let l = new Set(o);
@@ -124,7 +126,7 @@ function parseAgentFromJson(e, t, n = "flagSettings") {
     let s = r.disallowedTools !== void 0 ? TOe(r.disallowedTools) : void 0,
       i = r.prompt;
     return {
-      agentType: e,
+      agentType: name,
       whenToUse: r.description,
       ...(o !== void 0 && {
         tools: o,
@@ -139,7 +141,7 @@ function parseAgentFromJson(e, t, n = "flagSettings") {
             `
 
 ` +
-            B3e(e, r.memory)
+            B3e(name, r.memory)
           );
         return i;
       },
@@ -183,16 +185,16 @@ function parseAgentFromJson(e, t, n = "flagSettings") {
   } catch (r) {
     let o = r instanceof Error ? r.message : String(r);
     return (
-      T(`Error parsing agent '${e}' from JSON: ${o}`, {
+      T(`Error parsing agent '${name}' from JSON: ${o}`, {
         level: "error",
       }),
       null
     );
   }
 }
-function parseAgentsFromJson(e, t = "flagSettings") {
+function parseAgentsFromJson(agentsJson, t = "flagSettings") {
   try {
-    let n = jxf().parse(e);
+    let n = jxf().parse(agentsJson);
     return Object.entries(n)
       .map(([r, o]) => parseAgentFromJson(r, o, t))
       .filter((r) => r !== null);
@@ -206,88 +208,96 @@ function parseAgentsFromJson(e, t = "flagSettings") {
     );
   }
 }
-function parseAgentFromMarkdown(e, t, n, r, o) {
+function parseAgentFromMarkdown(filePath, baseDir, frontmatter, content, source) {
   try {
-    let { name: s, description: i } = n;
+    let { name: s, description: i } = frontmatter;
     if (!s || typeof s !== "string") return null;
     if (s.startsWith("-"))
       return (
-        T(`Agent file ${e} has invalid name '${s}': names must not start with '-'`, {
+        T(`Agent file ${filePath} has invalid name '${s}': names must not start with '-'`, {
           level: "error",
         }),
         null
       );
-    if ((w3e("agent", n), !i || typeof i !== "string"))
-      return (T(`Agent file ${e} is missing required 'description' in frontmatter`), null);
+    if ((w3e("agent", frontmatter), !i || typeof i !== "string"))
+      return (T(`Agent file ${filePath} is missing required 'description' in frontmatter`), null);
     i = i.replaceAll(
       "\\n",
       `
 `,
     );
-    let { color: a, model: l } = n,
+    let { color: a, model: l } = frontmatter,
       c;
     if (typeof l === "string" && l.trim().length > 0) {
       let W = l.trim();
       c = W.toLowerCase() === "inherit" ? "inherit" : W;
     }
-    let u = n.background;
+    let u = frontmatter.background;
     if (u !== void 0 && u !== "true" && u !== "false" && u !== true && u !== false)
       T(
-        `Agent file ${e} has invalid background value '${u}'. Must be 'true', 'false', or omitted.`,
+        `Agent file ${filePath} has invalid background value '${u}'. Must be 'true', 'false', or omitted.`,
       );
     let d = u === "true" || u === true ? true : void 0,
       p = ["user", "project", "local"],
-      f = n.memory,
+      f = frontmatter.memory,
       m;
     if (f !== void 0)
       if (p.includes(f)) m = f;
-      else T(`Agent file ${e} has invalid memory value '${f}'. Valid options: ${p.join(", ")}`);
+      else
+        T(`Agent file ${filePath} has invalid memory value '${f}'. Valid options: ${p.join(", ")}`);
     let g = ["worktree", "remote"],
-      h = n.isolation,
+      h = frontmatter.isolation,
       y;
     if (h !== void 0)
       if (g.includes(h)) y = h;
-      else T(`Agent file ${e} has invalid isolation value '${h}'. Valid options: ${g.join(", ")}`);
-    let b = n.effort,
+      else
+        T(
+          `Agent file ${filePath} has invalid isolation value '${h}'. Valid options: ${g.join(", ")}`,
+        );
+    let b = frontmatter.effort,
       _ = b !== void 0 ? TU(b) : void 0;
     if (b !== void 0 && _ === void 0)
-      T(`Agent file ${e} has invalid effort '${b}'. Valid options: ${xv.join(", ")} or an integer`);
-    let S = n.permissionMode,
+      T(
+        `Agent file ${filePath} has invalid effort '${b}'. Valid options: ${xv.join(", ")} or an integer`,
+      );
+    let S = frontmatter.permissionMode,
       A = S && yM.includes(S);
     if (S && !A) {
-      let W = `Agent file ${e} has invalid permissionMode '${S}'. Valid options: ${yM.join(", ")}`;
+      let W = `Agent file ${filePath} has invalid permissionMode '${S}'. Valid options: ${yM.join(", ")}`;
       T(W);
     }
-    let v = n.maxTurns,
+    let v = frontmatter.maxTurns,
       C = Mkn(v);
     if (v !== void 0 && C === void 0)
-      T(`Agent file ${e} has invalid maxTurns '${v}'. Must be a positive integer.`);
-    let x = vLl.basename(e, ".md"),
-      I = TOe(n.tools);
+      T(`Agent file ${filePath} has invalid maxTurns '${v}'. Must be a positive integer.`);
+    let x = vLl.basename(filePath, ".md"),
+      I = TOe(frontmatter.tools);
     if (lu() && m && I !== void 0) {
       let W = new Set(I);
       for (let V of [Wc, ka, Ds]) if (!W.has(V)) I = [...I, V];
     }
-    let k = n.disallowedTools,
+    let k = frontmatter.disallowedTools,
       D = k !== void 0 ? TOe(k) : void 0,
-      P = kQ(n.skills),
-      O = n.initialPrompt,
+      P = kQ(frontmatter.skills),
+      O = frontmatter.initialPrompt,
       L = typeof O === "string" && O.trim() ? O : void 0,
-      M = n.mcpServers,
+      M = frontmatter.mcpServers,
       N;
     if (Array.isArray(M))
       N = M.map((W) => {
         let V = wLl().safeParse(W);
         if (V.success) return V.data;
         return (
-          T(`Agent file ${e} has invalid mcpServers item: ${De(W)}. Error: ${V.error.message}`),
+          T(
+            `Agent file ${filePath} has invalid mcpServers item: ${De(W)}. Error: ${V.error.message}`,
+          ),
           null
         );
       }).filter((W) => W !== null);
-    let B = parseHooksFromFrontmatter(n, s),
-      $ = r.trim();
+    let B = parseHooksFromFrontmatter(frontmatter, s),
+      $ = content.trim();
     return {
-      baseDir: t,
+      baseDir: baseDir,
       agentType: s,
       whenToUse: i,
       ...(I !== void 0 && {
@@ -322,7 +332,7 @@ function parseAgentFromMarkdown(e, t, n, r, o) {
         }
         return $;
       },
-      source: o,
+      source: source,
       filename: x,
       ...(a &&
         typeof a === "string" &&
@@ -354,7 +364,7 @@ function parseAgentFromMarkdown(e, t, n, r, o) {
   } catch (s) {
     let i = s instanceof Error ? s.message : String(s);
     return (
-      T(`Error parsing agent from ${e}: ${i}`, {
+      T(`Error parsing agent from ${filePath}: ${i}`, {
         level: "error",
       }),
       null

@@ -5,7 +5,7 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initReplBridge
-async function initReplBridge(e) {
+async function initReplBridge(options) {
   let {
     getToolPermissionContext: t,
     getTools: n,
@@ -33,7 +33,7 @@ async function initReplBridge(e) {
     reattachSessionId: x,
     reattachSequenceNum: I,
     enableSessionPersistence: k,
-  } = e ?? {};
+  } = options ?? {};
   (ylo(IVo), bft(iVe));
   let D = 0,
     P = {

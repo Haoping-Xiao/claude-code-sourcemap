@@ -6,20 +6,20 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qdt] deps: Un, kt, db, fh, uDe, je, At, es, sr, K0
 HIa = require("path");
-function renderToolUseMessage(e) {
-  if (!e.uri || !e.server) return null;
-  return `Read resource "${e.uri}" from server "${e.server}"`;
+function renderToolUseMessage(input) {
+  if (!input.uri || !input.server) return null;
+  return `Read resource "${input.uri}" from server "${input.server}"`;
 }
 function userFacingName() {
   return "readMcpResource";
 }
-function renderToolResultMessage(e, t, { verbose: n }) {
-  if (e?.error)
+function renderToolResultMessage(output, _progressMessagesForMessage, { verbose: n }) {
+  if (output?.error)
     return Vdt.jsx(J1, {
-      content: e.error,
+      content: output.error,
       verbose: n,
     });
-  if (!e || !e.contents || e.contents.length === 0)
+  if (!output || !output.contents || output.contents.length === 0)
     return Vdt.jsx(U, {
       justifyContent: "space-between",
       overflowX: "hidden",
@@ -32,7 +32,7 @@ function renderToolResultMessage(e, t, { verbose: n }) {
         }),
       }),
     });
-  let r = De(e, null, 2);
+  let r = De(output, null, 2);
   return Vdt.jsx(J1, {
     content: r,
     verbose: n,

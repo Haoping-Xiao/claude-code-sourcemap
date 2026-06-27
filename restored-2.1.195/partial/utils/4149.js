@@ -78,8 +78,8 @@ function u6e(e) {
 function xsf(e) {
   return e.settings?.prUrlTemplate;
 }
-function deriveReviewState(e) {
-  switch (e) {
+function deriveReviewState(isDraft) {
+  switch (isDraft) {
     case "approved":
       return "success";
     case "changes_requested":

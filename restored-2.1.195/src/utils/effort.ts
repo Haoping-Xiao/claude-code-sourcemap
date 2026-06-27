@@ -225,9 +225,9 @@ function RM(e, t) {
 function lL(e, t) {
   return Kw(e) ? RM(e, t) : void 0;
 }
-function getEffortSuffix(e, t) {
-  if (t === void 0) return "";
-  let n = x7(e, t);
+function getEffortSuffix(model, effortValue) {
+  if (effortValue === void 0) return "";
+  let n = x7(model, effortValue);
   if (n === void 0) return "";
   return ` with ${dce(x_e(n))} effort`;
 }
@@ -238,8 +238,8 @@ function x_e(e) {
   if (typeof e === "string") return uce(e) ? e : "high";
   return "high";
 }
-function getEffortLevelDescription(e) {
-  switch (e) {
+function getEffortLevelDescription(level) {
+  switch (level) {
     case "low":
       return "Quick, straightforward implementation with minimal overhead";
     case "medium":
@@ -252,10 +252,10 @@ function getEffortLevelDescription(e) {
       return `Maximum capability with deepest reasoning. ${TNt}`;
   }
 }
-function getEffortValueDescription(e) {
-  if (typeof e === "string") {
-    let t = getEffortLevelDescription(e);
-    if (e === "high" && Aye() && at("tengu_slate_finch", !1))
+function getEffortValueDescription(value) {
+  if (typeof value === "string") {
+    let t = getEffortLevelDescription(value);
+    if (value === "high" && Aye() && at("tengu_slate_finch", !1))
       return `${t} \xB7 burns fastest \u2014 medium handles most tasks`;
     return t;
   }

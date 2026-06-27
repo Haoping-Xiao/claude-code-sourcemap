@@ -35,10 +35,10 @@ function jem() {
 function Gem(e) {
   return e.replace(/[\r\n\x00]/g, "");
 }
-function interpolateEnvVars(e, t) {
-  let n = e.replace(/\$\{([A-Z_][A-Z0-9_]*)\}|\$([A-Z_][A-Z0-9_]*)/g, (r, o, s) => {
+function interpolateEnvVars(value, allowedEnvVars) {
+  let n = value.replace(/\$\{([A-Z_][A-Z0-9_]*)\}|\$([A-Z_][A-Z0-9_]*)/g, (r, o, s) => {
     let i = o ?? s;
-    if (!t.has(i))
+    if (!allowedEnvVars.has(i))
       return (
         T(`Hooks: env var $${i} not in allowedEnvVars, skipping interpolation`, {
           level: "warn",
@@ -49,11 +49,11 @@ function interpolateEnvVars(e, t) {
   });
   return Gem(n);
 }
-async function execHttpHook(e, t, n, r, o = lp) {
+async function execHttpHook(hook, _hookEvent, jsonInput, signal, o = lp) {
   let s = jem();
   if (s.allowedUrls !== void 0) {
-    if (!s.allowedUrls.some((u) => d3t(e.url, u))) {
-      let u = `HTTP hook blocked: ${e.url} does not match any pattern in allowedHttpHookUrls`;
+    if (!s.allowedUrls.some((u) => d3t(hook.url, u))) {
+      let u = `HTTP hook blocked: ${hook.url} does not match any pattern in allowedHttpHookUrls`;
       return (
         T(u, {
           level: "warn",
@@ -66,26 +66,26 @@ async function execHttpHook(e, t, n, r, o = lp) {
       );
     }
   }
-  let i = e.timeout ? e.timeout * 1000 : o,
-    { signal: a, cleanup: l } = xL(r, {
+  let i = hook.timeout ? hook.timeout * 1000 : o,
+    { signal: a, cleanup: l } = xL(signal, {
       timeoutMs: i,
     });
   try {
     let c = {
       "Content-Type": "application/json",
     };
-    if (e.headers) {
-      let m = e.allowedEnvVars ?? [],
+    if (hook.headers) {
+      let m = hook.allowedEnvVars ?? [],
         g = s.allowedEnvVars !== void 0 ? m.filter((y) => s.allowedEnvVars.includes(y)) : m,
         h = new Set(g);
-      for (let [y, b] of Object.entries(e.headers)) c[y] = interpolateEnvVars(b, h);
+      for (let [y, b] of Object.entries(hook.headers)) c[y] = interpolateEnvVars(b, h);
     }
     let u = await Fem(),
-      d = !u && ID() !== void 0 && !g9(e.url);
-    if (u) T(`Hooks: HTTP hook POST to ${e.url} (via sandbox proxy :${u.port})`);
-    else if (d) T(`Hooks: HTTP hook POST to ${e.url} (via env-var proxy)`);
-    else T(`Hooks: HTTP hook POST to ${e.url}`);
-    let p = await lb.post(e.url, n, {
+      d = !u && ID() !== void 0 && !g9(hook.url);
+    if (u) T(`Hooks: HTTP hook POST to ${hook.url} (via sandbox proxy :${u.port})`);
+    else if (d) T(`Hooks: HTTP hook POST to ${hook.url} (via env-var proxy)`);
+    else T(`Hooks: HTTP hook POST to ${hook.url}`);
+    let p = await lb.post(hook.url, jsonInput, {
       headers: c,
       signal: a,
       responseType: "text",

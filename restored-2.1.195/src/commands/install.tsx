@@ -17,9 +17,9 @@ function getInstallationPath() {
   if (e) return lpc.join(t, ".local", "bin", "claude.exe").replaceAll("/", "\\");
   return "~/.local/bin/claude";
 }
-function SetupNotes(e) {
+function SetupNotes(t0) {
   let t = ipc.c(5),
-    { messages: n } = e;
+    { messages: n } = t0;
   if (n.length === 0) return null;
   let r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))

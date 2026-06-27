@@ -138,8 +138,8 @@ function hBf(e) {
     t,
   );
 }
-async function checkIfLocalPlugin(e, t) {
-  let r = (await G$(t))?.plugins.find((o) => o.name === e);
+async function checkIfLocalPlugin(pluginName, marketplaceName) {
+  let r = (await G$(marketplaceName))?.plugins.find((o) => o.name === pluginName);
   if (r && typeof r.source === "string")
     return `Local plugins cannot be updated remotely. To update, modify the source at: ${r.source}`;
   return null;

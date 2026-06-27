@@ -7,9 +7,9 @@
 // [unwrapped __esm module Cde] deps: kt, je, At, Jt
 ((IDp = ["session_ingress_token", "environment_secret", "access_token", "secret", "token"]),
   (xDp = new RegExp(`"(${IDp.join("|")})"\\s*:\\s*"([^"]*)"`, "g")));
-function describeAxiosError(e) {
-  if (!e || typeof e !== "object") return;
-  let t = "error" in e ? e.error : e;
+function describeAxiosError(err) {
+  if (!err || typeof err !== "object") return;
+  let t = "error" in err ? err.error : err;
   if (t && typeof t === "object" && "reason" in t && typeof t.reason === "string") return t.reason;
   return;
 }

@@ -46,21 +46,21 @@ ${s.extracted_content}
     r
   );
 }
-async function buildTranscriptEntries(e, t, n, r) {
+async function buildTranscriptEntries(messages, t, n, r) {
   let o = {
-    parentUuid: e.parent_message_uuid ?? null,
+    parentUuid: messages.parent_message_uuid ?? null,
     isSidechain: false,
-    uuid: e.uuid,
-    timestamp: e.created_at,
+    uuid: messages.uuid,
+    timestamp: messages.created_at,
     cwd: t,
     userType: "external",
     sessionId: n,
     version: "claude-export-import",
   };
-  if (e.sender === "human") {
+  if (messages.sender === "human") {
     let i = [],
       a = [];
-    for (let u of e.files ?? []) {
+    for (let u of messages.files ?? []) {
       let d = r[u.file_uuid];
       if (!d) continue;
       let p = oX(Buffer.from(d));
@@ -90,7 +90,7 @@ async function buildTranscriptEntries(e, t, n, r) {
         a.push(`@"${gV.join(t, "files", f)}"`);
       }
     }
-    let l = S1m(e, a),
+    let l = S1m(messages, a),
       c =
         i.length > 0
           ? l.trim().length > 0
@@ -112,7 +112,7 @@ async function buildTranscriptEntries(e, t, n, r) {
       },
     };
   }
-  let s = e.content
+  let s = messages.content
     .filter((i) => i.type === "text" && typeof i.text === "string")
     .map((i) => ({
       type: "text",
@@ -124,7 +124,7 @@ async function buildTranscriptEntries(e, t, n, r) {
     type: "assistant",
     requestId: void 0,
     message: {
-      id: e.uuid,
+      id: messages.uuid,
       type: "message",
       role: "assistant",
       model: "claude-export-import",
@@ -134,7 +134,7 @@ async function buildTranscriptEntries(e, t, n, r) {
           : [
               {
                 type: "text",
-                text: e.text,
+                text: messages.text,
                 citations: [],
               },
             ],

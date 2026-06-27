@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.4062  score=0.9521  fileCov=0.4147
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function MailboxProvider(e) {
+function MailboxProvider(t0) {
   let t = Y1a.c(3),
-    { children: n } = e,
+    { children: n } = t0,
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = new jho()), (t[0] = r));
   else r = t[0];

@@ -18,9 +18,9 @@ Eym = {
   filesystem: "can read/write any file",
   system_settings: "can change system settings",
 };
-function It2SetupPrompt(e) {
+function It2SetupPrompt(t0) {
   let t = zTe.c(58),
-    { onDone: n, tmuxAvailable: r } = e,
+    { onDone: n, tmuxAvailable: r } = t0,
     [o, s] = YTt.useState("initial"),
     [i, a] = YTt.useState(null),
     [l, c] = YTt.useState(null),

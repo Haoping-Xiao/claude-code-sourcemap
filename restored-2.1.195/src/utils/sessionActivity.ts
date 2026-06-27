@@ -99,10 +99,10 @@ function bLo(e) {
 function sHl() {
   return Zzt()?.mainLoopRefcount ?? 0;
 }
-function startSessionActivity(e, t) {
+function startSessionActivity(reason, t) {
   let n = ZAl();
   if ((n.refcount++, t === void 0)) (n.mainLoopRefcount++, yLo?.(n.mainLoopRefcount));
-  if ((n.activeReasons.set(e, (n.activeReasons.get(e) ?? 0) + 1), n.refcount === 1)) {
+  if ((n.activeReasons.set(reason, (n.activeReasons.get(reason) ?? 0) + 1), n.refcount === 1)) {
     if (
       ((n.oldestActivityStartedAt = Date.now()),
       n.activityCallback !== null && n.heartbeatTimer === null)

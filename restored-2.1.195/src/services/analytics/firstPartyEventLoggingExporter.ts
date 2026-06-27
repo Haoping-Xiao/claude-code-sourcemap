@@ -544,14 +544,14 @@ class FirstPartyEventLoggingExporter {
     await Promise.all(this.pendingExports);
   }
 }
-function getAxiosErrorContext(e) {
-  if (!po.isAxiosError(e)) return be(e);
+function getAxiosErrorContext(error) {
+  if (!po.isAxiosError(error)) return be(error);
   let t = [],
-    n = e.response?.headers?.["request-id"];
+    n = error.response?.headers?.["request-id"];
   if (n) t.push(`request-id=${n}`);
-  if (e.response?.status) t.push(`status=${e.response.status}`);
-  if (e.code) t.push(`code=${e.code}`);
-  if (e.message) t.push(e.message);
+  if (error.response?.status) t.push(`status=${error.response.status}`);
+  if (error.code) t.push(`code=${error.code}`);
+  if (error.message) t.push(error.message);
   return t.join(", ");
 }
 var mke,

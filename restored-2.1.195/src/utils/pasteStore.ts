@@ -39,36 +39,36 @@ function j8i(e) {
 function G8i(e, t) {
   return (jDn.set(e, t), storePastedText(e, t));
 }
-async function storePastedText(e, t) {
+async function storePastedText(hash, content) {
   try {
     let n = qs(),
       r = sZr();
     await n.mkdir(r);
-    let o = j8i(e);
-    if ((await n.write(o, t, 384), jDn.delete(e), Vce.has(e)))
-      ((wUt -= Vce.get(e).length), Vce.delete(e));
-    (T(`Stored paste ${e} to ${o}`), xe("paste_store"));
+    let o = j8i(hash);
+    if ((await n.write(o, content, 384), jDn.delete(hash), Vce.has(hash)))
+      ((wUt -= Vce.get(hash).length), Vce.delete(hash));
+    (T(`Stored paste ${hash} to ${o}`), xe("paste_store"));
   } catch (n) {
-    (jDn.delete(e),
-      y6d(e, t),
+    (jDn.delete(hash),
+      y6d(hash, content),
       T(`Failed to store paste: ${n}`),
       It("paste_store", "paste_store_write_failed"));
   }
 }
-async function retrievePastedText(e) {
-  let t = jDn.get(e);
+async function retrievePastedText(hash) {
+  let t = jDn.get(hash);
   if (t !== void 0) return t;
-  let n = Vce.get(e);
+  let n = Vce.get(hash);
   if (n !== void 0) return n;
   try {
-    let r = j8i(e);
+    let r = j8i(hash);
     return await qs().read(r);
   } catch (r) {
-    if (!wn(r)) T(`Failed to retrieve paste ${e}: ${r}`);
+    if (!wn(r)) T(`Failed to retrieve paste ${hash}: ${r}`);
     return null;
   }
 }
-async function cleanupOldPastes(e) {
+async function cleanupOldPastes(cutoffDate) {
   let t = qs(),
     n = sZr(),
     r;
@@ -77,7 +77,7 @@ async function cleanupOldPastes(e) {
   } catch {
     return;
   }
-  let o = e.getTime();
+  let o = cutoffDate.getTime();
   for (let s of r) {
     if (!s.endsWith(".txt")) continue;
     let i = GDn.join(n, s);

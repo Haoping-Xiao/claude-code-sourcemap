@@ -4,13 +4,13 @@
 // class=modified  jaccard=0.687  score=0.87  fileCov=0.7656
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function validateBridgeId(e, t) {
-  if (!e || !MYf.test(e)) throw Error(`Invalid ${t}: contains unsafe characters`);
-  return e;
+function validateBridgeId(id, label) {
+  if (!id || !MYf.test(id)) throw Error(`Invalid ${label}: contains unsafe characters`);
+  return id;
 }
-function createBridgeApiClient(e) {
+function createBridgeApiClient(deps) {
   function t(a) {
-    e.onDebug?.(a);
+    deps.onDebug?.(a);
   }
   let n = 0,
     r = 100;
@@ -20,15 +20,15 @@ function createBridgeApiClient(e) {
         "Content-Type": "application/json",
         "anthropic-version": "2023-06-01",
         "anthropic-beta": y2r.header,
-        "x-environment-runner-version": e.runnerVersion,
+        "x-environment-runner-version": deps.runnerVersion,
         "User-Agent": dy(),
       },
-      c = await e.getTrustedDeviceToken?.();
+      c = await deps.getTrustedDeviceToken?.();
     if (c) l["X-Trusted-Device-Token"] = c;
     return l;
   }
   function s() {
-    let a = e.getAccessToken();
+    let a = deps.getAccessToken();
     if (!a) throw Error(Z8e);
     return a;
   }
@@ -36,8 +36,8 @@ function createBridgeApiClient(e) {
     let c = s(),
       u = await a(c);
     if (u.status !== 401) return u;
-    if (!e.onAuth401) return (t(`[bridge:api] ${l}: 401 received, no refresh handler`), u);
-    if ((t(`[bridge:api] ${l}: 401 received, attempting token refresh`), await e.onAuth401(c))) {
+    if (!deps.onAuth401) return (t(`[bridge:api] ${l}: 401 received, no refresh handler`), u);
+    if ((t(`[bridge:api] ${l}: 401 received, attempting token refresh`), await deps.onAuth401(c))) {
       t(`[bridge:api] ${l}: Token refreshed, retrying request`);
       let p = s(),
         f = await a(p);
@@ -55,7 +55,7 @@ function createBridgeApiClient(e) {
           let l = await i(
             async (c) =>
               po.post(
-                `${e.baseUrl}/v1/environments/bridge`,
+                `${deps.baseUrl}/v1/environments/bridge`,
                 {
                   machine_name: a.machineName,
                   directory: a.dir,
@@ -105,7 +105,7 @@ function createBridgeApiClient(e) {
       validateBridgeId(a, "environmentId");
       let d = n;
       n = 0;
-      let p = await po.get(`${e.baseUrl}/v1/environments/${a}/work/poll`, {
+      let p = await po.get(`${deps.baseUrl}/v1/environments/${a}/work/poll`, {
         headers: await o(l),
         params:
           u !== void 0
@@ -137,7 +137,7 @@ function createBridgeApiClient(e) {
         validateBridgeId(l, "workId"),
         t(`[bridge:api] POST .../work/${l}/ack`));
       let u = await po.post(
-        `${e.baseUrl}/v1/environments/${a}/work/${l}/ack`,
+        `${deps.baseUrl}/v1/environments/${a}/work/${l}/ack`,
         {},
         {
           headers: await o(c),
@@ -155,7 +155,7 @@ function createBridgeApiClient(e) {
       let u = await i(
         async (d) =>
           po.post(
-            `${e.baseUrl}/v1/environments/${a}/work/${l}/stop`,
+            `${deps.baseUrl}/v1/environments/${a}/work/${l}/stop`,
             {
               force: c,
             },
@@ -174,7 +174,7 @@ function createBridgeApiClient(e) {
       (validateBridgeId(a, "environmentId"), t(`[bridge:api] DELETE /v1/environments/bridge/${a}`));
       let l = await i(
         async (c) =>
-          po.delete(`${e.baseUrl}/v1/environments/bridge/${a}`, {
+          po.delete(`${deps.baseUrl}/v1/environments/bridge/${a}`, {
             headers: await o(c),
             timeout: 10000 /* 1e4 */,
             validateStatus: (u) => u < 500,
@@ -189,7 +189,7 @@ function createBridgeApiClient(e) {
       let l = await i(
         async (c) =>
           po.post(
-            `${e.baseUrl}/v1/sessions/${a}/archive`,
+            `${deps.baseUrl}/v1/sessions/${a}/archive`,
             {},
             {
               headers: await o(c),
@@ -216,7 +216,7 @@ function createBridgeApiClient(e) {
           let c = await i(
             async (u) =>
               po.post(
-                `${e.baseUrl}/v1/environments/${a}/bridge/reconnect`,
+                `${deps.baseUrl}/v1/environments/${a}/bridge/reconnect`,
                 {
                   session_id: l,
                 },
@@ -239,7 +239,7 @@ function createBridgeApiClient(e) {
         validateBridgeId(l, "workId"),
         t(`[bridge:api] POST .../work/${l}/heartbeat`));
       let u = await po.post(
-        `${e.baseUrl}/v1/environments/${a}/work/${l}/heartbeat`,
+        `${deps.baseUrl}/v1/environments/${a}/work/${l}/heartbeat`,
         {},
         {
           headers: await o(c),
@@ -257,7 +257,7 @@ function createBridgeApiClient(e) {
     },
     async sendPermissionResponseEvent(a, l, c) {
       validateBridgeId(a, "sessionId");
-      let { url: u, body: d } = zjn(e.baseUrl, a, [l], e.useCcrV2Routing?.() ?? false);
+      let { url: u, body: d } = zjn(deps.baseUrl, a, [l], deps.useCcrV2Routing?.() ?? false);
       t(`[bridge:api] POST ${u} type=${l.type}`);
       let p = await po.post(u, d, {
         headers: await o(c),
@@ -271,24 +271,25 @@ function createBridgeApiClient(e) {
     },
   };
 }
-function handleErrorStatus(e, t, n, r) {
-  if (e === 200 || e === 204) return;
-  let o = _J(t),
-    s = extractErrorTypeFromData(t);
-  switch (e) {
+function handleErrorStatus(status, data, context, r) {
+  if (status === 200 || status === 204) return;
+  let o = _J(data),
+    s = extractErrorTypeFromData(data);
+  switch (status) {
     case 401:
-      throw new Qq(`${n}: Authentication failed (401)${o ? `: ${o}` : ""}. ${Z8e}`, 401, s);
+      throw new Qq(`${context}: Authentication failed (401)${o ? `: ${o}` : ""}. ${Z8e}`, 401, s);
     case 403:
       throw new Qq(
         isExpiredErrorType(s)
           ? "Remote Control session expired."
-          : `${n}: Access denied (403)${o ? `: ${o}` : ""}. Check your organization permissions.`,
+          : `${context}: Access denied (403)${o ? `: ${o}` : ""}. Check your organization permissions.`,
         403,
         s,
       );
     case 404:
       throw new Qq(
-        o ?? `${n}: Not found (404). Remote Control may not be available for this organization.`,
+        o ??
+          `${context}: Not found (404). Remote Control may not be available for this organization.`,
         404,
         s,
       );
@@ -297,30 +298,32 @@ function handleErrorStatus(e, t, n, r) {
     case 429: {
       let i = Ujn(typeof r?.["retry-after"] === "string" ? r["retry-after"] : void 0);
       throw Object.assign(
-        Error(`${n}: Rate limited (429). Polling too frequently.`),
+        Error(`${context}: Rate limited (429). Polling too frequently.`),
         i !== void 0
           ? {
-              status: e,
+              status: status,
               retryAfterMs: i,
             }
           : {
-              status: e,
+              status: status,
             },
       );
     }
     default:
-      throw Object.assign(Error(`${n}: Failed with status ${e}${o ? `: ${o}` : ""}`), {
-        status: e,
+      throw Object.assign(Error(`${context}: Failed with status ${status}${o ? `: ${o}` : ""}`), {
+        status: status,
       });
   }
 }
-function isExpiredErrorType(e) {
-  if (!e) return false;
-  return e.includes("expired") || e.includes("lifetime");
+function isExpiredErrorType(errorType) {
+  if (!errorType) return false;
+  return errorType.includes("expired") || errorType.includes("lifetime");
 }
-function isSuppressible403(e) {
-  if (e.status !== 403) return false;
-  return e.message.includes("external_poll_sessions") || e.message.includes("environments:manage");
+function isSuppressible403(err) {
+  if (err.status !== 403) return false;
+  return (
+    err.message.includes("external_poll_sessions") || err.message.includes("environments:manage")
+  );
 }
 function stc(e) {
   if (e instanceof Qq) return e.status === 401 ? "auth_failed" : "http_error";
@@ -330,16 +333,16 @@ function stc(e) {
   }
   return "request_failed";
 }
-function extractErrorTypeFromData(e) {
-  if (e && typeof e === "object") {
+function extractErrorTypeFromData(data) {
+  if (data && typeof data === "object") {
     if (
-      "error" in e &&
-      e.error &&
-      typeof e.error === "object" &&
-      "type" in e.error &&
-      typeof e.error.type === "string"
+      "error" in data &&
+      data.error &&
+      typeof data.error === "object" &&
+      "type" in data.error &&
+      typeof data.error.type === "string"
     )
-      return e.error.type;
+      return data.error.type;
   }
   return;
 }

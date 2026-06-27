@@ -122,7 +122,7 @@ async function Vxm() {
       return null;
   }
 }
-async function launchInTerminal(e, t) {
+async function launchInTerminal(claudePath, action) {
   let n = await Vxm();
   if (!n)
     return (
@@ -133,27 +133,27 @@ async function launchInTerminal(e, t) {
     );
   T(`Launching in terminal: ${n.name} (${n.command})`);
   let r = ["--deep-link-origin"];
-  if (t.repo) {
-    if ((r.push(`--deep-link-repo=${t.repo}`), t.lastFetchMs !== void 0))
-      r.push(`--deep-link-last-fetch=${t.lastFetchMs}`);
+  if (action.repo) {
+    if ((r.push(`--deep-link-repo=${action.repo}`), action.lastFetchMs !== void 0))
+      r.push(`--deep-link-last-fetch=${action.lastFetchMs}`);
   }
-  if (t.query) r.push(`--prefill=${t.query}`);
+  if (action.query) r.push(`--prefill=${action.query}`);
   switch ("linux") {
     case "darwin":
-      return launchMacosTerminal(n, e, r, t);
+      return launchMacosTerminal(n, claudePath, r, action);
     case "linux":
-      return launchLinuxTerminal(n, e, r, t);
+      return launchLinuxTerminal(n, claudePath, r, action);
     case "win32":
-      return launchWindowsTerminal(n, e, t);
+      return launchWindowsTerminal(n, claudePath, action);
     default:
       return false;
   }
 }
-async function launchMacosTerminal(e, t, n, r) {
-  let { cwd: o } = r;
-  switch (e.command) {
+async function launchMacosTerminal(terminal, claudePath, claudeArgs, cwd) {
+  let { cwd: o } = cwd;
+  switch (terminal.command) {
     case "iTerm": {
-      let s = S1c(t, r),
+      let s = S1c(claudePath, cwd),
         i = `tell application "iTerm"
   if running then
     create window with default profile
@@ -171,7 +171,7 @@ end tell`,
       break;
     }
     case "Terminal": {
-      let s = S1c(t, r),
+      let s = S1c(claudePath, cwd),
         i = `tell application "Terminal"
   do script ${E1c(s)}
   activate
@@ -182,9 +182,9 @@ end tell`,
       return a === 0;
     }
     case "Ghostty": {
-      let s = ["-na", e.command, "--args", "--window-save-state=never"];
+      let s = ["-na", terminal.command, "--args", "--window-save-state=never"];
       if (o) s.push(`--working-directory=${o}`);
-      s.push("-e", t, ...Hvt(r));
+      s.push("-e", claudePath, ...Hvt(cwd));
       let { code: i } = await $n("open", s, {
         useCwd: false,
       });
@@ -192,9 +192,9 @@ end tell`,
       break;
     }
     case "Alacritty": {
-      let s = ["-na", e.command, "--args"];
+      let s = ["-na", terminal.command, "--args"];
       if (o) s.push("--working-directory", o);
-      s.push("-e", t, ...n);
+      s.push("-e", claudePath, ...claudeArgs);
       let { code: i } = await $n("open", s, {
         useCwd: false,
       });
@@ -202,9 +202,9 @@ end tell`,
       break;
     }
     case "kitty": {
-      let s = ["-na", e.command, "--args"];
+      let s = ["-na", terminal.command, "--args"];
       if (o) s.push("--directory", o);
-      s.push(t, ...n);
+      s.push(claudePath, ...claudeArgs);
       let { code: i } = await $n("open", s, {
         useCwd: false,
       });
@@ -212,9 +212,9 @@ end tell`,
       break;
     }
     case "WezTerm": {
-      let s = ["-na", e.command, "--args", "start"];
+      let s = ["-na", terminal.command, "--args", "start"];
       if (o) s.push("--cwd", o);
-      s.push("--", t, ...n);
+      s.push("--", claudePath, ...claudeArgs);
       let { code: i } = await $n("open", s, {
         useCwd: false,
       });
@@ -223,94 +223,94 @@ end tell`,
     }
   }
   return (
-    T(`Failed to launch ${e.name}, falling back to Terminal.app`),
+    T(`Failed to launch ${terminal.name}, falling back to Terminal.app`),
     launchMacosTerminal(
       {
         name: "Terminal.app",
         command: "Terminal",
       },
-      t,
-      n,
-      r,
+      claudePath,
+      claudeArgs,
+      cwd,
     )
   );
 }
-async function launchLinuxTerminal(e, t, n, r) {
-  let { cwd: o } = r,
+async function launchLinuxTerminal(terminal, claudePath, claudeArgs, cwd) {
+  let { cwd: o } = cwd,
     s,
     i;
-  switch (e.name) {
+  switch (terminal.name) {
     case "gnome-terminal":
-      ((s = o ? [`--working-directory=${o}`, "--"] : ["--"]), s.push(t, ...n));
+      ((s = o ? [`--working-directory=${o}`, "--"] : ["--"]), s.push(claudePath, ...claudeArgs));
       break;
     case "konsole":
-      ((s = o ? ["--workdir", o, "-e"] : ["-e"]), s.push(t, ...n));
+      ((s = o ? ["--workdir", o, "-e"] : ["-e"]), s.push(claudePath, ...claudeArgs));
       break;
     case "kitty":
-      ((s = o ? ["--directory", o] : []), s.push(t, ...n));
+      ((s = o ? ["--directory", o] : []), s.push(claudePath, ...claudeArgs));
       break;
     case "wezterm":
-      ((s = o ? ["start", "--cwd", o, "--"] : ["start", "--"]), s.push(t, ...n));
+      ((s = o ? ["start", "--cwd", o, "--"] : ["start", "--"]), s.push(claudePath, ...claudeArgs));
       break;
     case "alacritty":
-      ((s = o ? ["--working-directory", o, "-e"] : ["-e"]), s.push(t, ...n));
+      ((s = o ? ["--working-directory", o, "-e"] : ["-e"]), s.push(claudePath, ...claudeArgs));
       break;
     case "ghostty":
-      ((s = o ? [`--working-directory=${o}`, "-e"] : ["-e"]), s.push(t, ...Hvt(r)));
+      ((s = o ? [`--working-directory=${o}`, "-e"] : ["-e"]), s.push(claudePath, ...Hvt(cwd)));
       break;
     case "xfce4-terminal":
     case "mate-terminal":
-      ((s = o ? [`--working-directory=${o}`, "-x"] : ["-x"]), s.push(t, ...n));
+      ((s = o ? [`--working-directory=${o}`, "-x"] : ["-x"]), s.push(claudePath, ...claudeArgs));
       break;
     case "tilix":
-      ((s = o ? [`--working-directory=${o}`, "-e"] : ["-e"]), s.push(t, ...Hvt(r)));
+      ((s = o ? [`--working-directory=${o}`, "-e"] : ["-e"]), s.push(claudePath, ...Hvt(cwd)));
       break;
     default:
-      ((s = ["-e", t, ...Hvt(r)]), (i = o));
+      ((s = ["-e", claudePath, ...Hvt(cwd)]), (i = o));
       break;
   }
-  return spawnDetached(e.command, s, {
+  return spawnDetached(terminal.command, s, {
     cwd: i,
   });
 }
-async function launchWindowsTerminal(e, t, n) {
+async function launchWindowsTerminal(terminal, claudePath, claudeArgs) {
   let r = [],
-    o = Hvt(n),
-    s = n.cwd;
-  switch (e.name) {
+    o = Hvt(claudeArgs),
+    s = claudeArgs.cwd;
+  switch (terminal.name) {
     case "Windows Terminal": {
       let i = (a) => a.replaceAll(";", "\\;");
       if (s) r.push("-d", i(s));
-      r.push("--", i(t), ...o);
+      r.push("--", i(claudePath), ...o);
       break;
     }
     case "PowerShell": {
-      r.push("-NoExit", "-Command", `& ${Xxm(t)} ${o.join(" ")}`);
+      r.push("-NoExit", "-Command", `& ${Xxm(claudePath)} ${o.join(" ")}`);
       break;
     }
     default: {
-      let i = `${A1c(t)} ${o.map(A1c).join(" ")}`;
+      let i = `${A1c(claudePath)} ${o.map(A1c).join(" ")}`;
       r.push("/d", "/v:off", "/s", "/k", `"${i}"`);
       break;
     }
   }
-  return spawnDetached(e.command, r, {
-    windowsVerbatimArguments: e.name === "Command Prompt",
-    cwd: n.cwd,
+  return spawnDetached(terminal.command, r, {
+    windowsVerbatimArguments: terminal.name === "Command Prompt",
+    cwd: claudeArgs.cwd,
   });
 }
-async function spawnDetached(e, t, n = {}) {
+async function spawnDetached(command, args, n = {}) {
   let r = (o) =>
     new Promise((s) => {
       let i = (l) => {
-          (T(`Failed to spawn ${e}: ${l.message}`, {
+          (T(`Failed to spawn ${command}: ${l.message}`, {
             level: "error",
           }),
             s(false));
         },
         a;
       try {
-        a = H1c.spawn(e, t, {
+        a = H1c.spawn(command, args, {
           detached: true,
           stdio: "ignore",
           windowsHide: false,

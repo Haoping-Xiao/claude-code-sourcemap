@@ -98,46 +98,47 @@ function bOm() {
     sawOutputTokens: false,
   };
 }
-function trackDatadogEvent(e, t) {
-  let n = bZo(t, "event:"),
-    r = n ? t.slice(n[0], n[1]).trim() : null;
+function trackDatadogEvent(eventName, properties) {
+  let n = bZo(properties, "event:"),
+    r = n ? properties.slice(n[0], n[1]).trim() : null;
   if (r === "content_block_delta") {
-    WWc(e, t);
+    WWc(eventName, properties);
     return;
   }
   if (r !== null && r !== "message_start" && r !== "message_delta") return;
   if (r === null) {
-    if (!t.includes('"usage"')) {
-      if (t.includes('"content_block_delta"')) WWc(e, t);
+    if (!properties.includes('"usage"')) {
+      if (properties.includes('"content_block_delta"')) WWc(eventName, properties);
       return;
     }
   }
-  let o = bZo(t, "data:");
+  let o = bZo(properties, "data:");
   if (!o) return;
   let s;
   try {
-    s = JSON.parse(t.slice(o[0], o[1]).trim());
+    s = JSON.parse(properties.slice(o[0], o[1]).trim());
   } catch {
     return;
   }
   let i = AOm().safeParse(s);
   if (!i.success) return;
   if (i.data.type === "message_start" && i.data.message?.usage) {
-    (zWc(e.usage, i.data.message.usage), (e.seen = true));
+    (zWc(eventName.usage, i.data.message.usage), (eventName.seen = true));
     return;
   }
   if (i.data.type === "content_block_delta" && i.data.delta) {
     let a = i.data.delta;
-    e.estOutputChars +=
+    eventName.estOutputChars +=
       (a.text?.length ?? 0) + (a.partial_json?.length ?? 0) + (a.thinking?.length ?? 0);
     return;
   }
   if (i.data.type === "message_delta" && i.data.usage) {
     if (i.data.usage.output_tokens !== void 0)
-      ((e.usage.output_tokens = i.data.usage.output_tokens), (e.sawOutputTokens = true));
+      ((eventName.usage.output_tokens = i.data.usage.output_tokens),
+        (eventName.sawOutputTokens = true));
     if (i.data.usage.server_tool_use !== void 0)
-      e.usage.server_tool_use = i.data.usage.server_tool_use;
-    e.seen = true;
+      eventName.usage.server_tool_use = i.data.usage.server_tool_use;
+    eventName.seen = true;
   }
 }
 function WWc(e, t) {

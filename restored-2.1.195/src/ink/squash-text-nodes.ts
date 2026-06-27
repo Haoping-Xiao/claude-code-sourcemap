@@ -6,27 +6,27 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K_e]
 ((Cy = new WeakMap()), (wBt = new WeakMap()));
-function squashTextNodesToSegments(e, t = {}, n, r = []) {
-  let o = e.textStyles
+function squashTextNodesToSegments(node, t = {}, inheritedHyperlink, r = []) {
+  let o = node.textStyles
     ? {
         ...t,
-        ...e.textStyles,
+        ...node.textStyles,
       }
     : t;
-  for (let s of e.childNodes) {
+  for (let s of node.childNodes) {
     if (s === void 0) continue;
     if (s.nodeName === "#text") {
       if (s.nodeValue.length > 0)
         r.push({
           text: s.nodeValue,
           styles: o,
-          hyperlink: n,
+          hyperlink: inheritedHyperlink,
         });
     } else if (s.nodeName === "ink-text" || s.nodeName === "ink-virtual-text")
-      squashTextNodesToSegments(s, o, n, r);
+      squashTextNodesToSegments(s, o, inheritedHyperlink, r);
     else if (s.nodeName === "ink-link") {
       let i = s.attributes.href;
-      squashTextNodesToSegments(s, o, i || n, r);
+      squashTextNodesToSegments(s, o, i || inheritedHyperlink, r);
     }
   }
   return r;

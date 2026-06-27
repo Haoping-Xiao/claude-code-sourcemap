@@ -118,8 +118,8 @@ async function fIn(e) {
     sn("xaa", `clearIdpClientSecret(${t}) failed: ${be(n)}`);
   }
 }
-async function discoverOidc(e) {
-  let t = e.endsWith("/") ? e : e + "/",
+async function discoverOidc(idpIssuer) {
+  let t = idpIssuer.endsWith("/") ? idpIssuer : idpIssuer + "/",
     n = new URL(".well-known/openid-configuration", t),
     r = await fetch(n, {
       ...kg({
@@ -143,8 +143,8 @@ async function discoverOidc(e) {
     throw Error(`XAA IdP: refusing non-HTTPS token endpoint: ${s.data.token_endpoint}`);
   return s.data;
 }
-function jwtExp(e) {
-  let t = e.split(".");
+function jwtExp(jwt) {
+  let t = jwt.split(".");
   if (t.length !== 3) return;
   try {
     let n = Ft(Buffer.from(t[1], "base64url").toString("utf-8"));
@@ -153,14 +153,14 @@ function jwtExp(e) {
     return;
   }
 }
-function waitForCallback(e, t, n, r) {
+function waitForCallback(port, expectedState, abortSignal, onListening) {
   let o = null,
     s = null,
     i = null,
     a = () => {
       if ((o?.removeAllListeners(), o?.on("error", () => {}), o?.close(), (o = null), s))
         (clearTimeout(s), (s = null));
-      if (n && i) (n.removeEventListener("abort", i), (i = null));
+      if (abortSignal && i) (abortSignal.removeEventListener("abort", i), (i = null));
     };
   return new Promise((l, c) => {
     let u = false,
@@ -172,12 +172,12 @@ function waitForCallback(e, t, n, r) {
         if (u) return;
         ((u = true), a(), c(f));
       };
-    if (n) {
-      if (((i = () => p(Error("XAA IdP: login cancelled"))), n.aborted)) {
+    if (abortSignal) {
+      if (((i = () => p(Error("XAA IdP: login cancelled"))), abortSignal.aborted)) {
         i();
         return;
       }
-      n.addEventListener("abort", i, {
+      abortSignal.addEventListener("abort", i, {
         once: true,
       });
     }
@@ -206,7 +206,7 @@ function waitForCallback(e, t, n, r) {
           p(Error(`XAA IdP: ${b}${_ ? ` \u2014 ${_}` : ""}`)));
         return;
       }
-      if (y !== t) {
+      if (y !== expectedState) {
         (m.writeHead(400, {
           "Content-Type": "text/html",
         }),
@@ -249,17 +249,19 @@ function waitForCallback(e, t, n, r) {
       o.on("error", (f) => {
         if (f.code === "EADDRINUSE") {
           let m =
-            Vt() === "windows" ? `netstat -ano | findstr :${e}` : `lsof -ti:${e} -sTCP:LISTEN`;
+            Vt() === "windows"
+              ? `netstat -ano | findstr :${port}`
+              : `lsof -ti:${port} -sTCP:LISTEN`;
           p(
             Error(
-              `XAA IdP: callback port ${e} is already in use. Run \`${m}\` to find the holder.`,
+              `XAA IdP: callback port ${port} is already in use. Run \`${m}\` to find the holder.`,
             ),
           );
         } else p(Error(`XAA IdP: callback server failed: ${f.message}`));
       }),
-      o.listen(e, "127.0.0.1", () => {
+      o.listen(port, "127.0.0.1", () => {
         try {
-          r();
+          onListening();
         } catch (f) {
           p(Zr(f));
         }
@@ -269,20 +271,20 @@ function waitForCallback(e, t, n, r) {
       s.unref());
   });
 }
-async function acquireIdpIdToken(e) {
+async function acquireIdpIdToken(opts) {
   return yl("mcp_xaa_idp_login", async () => {
-    let { idpIssuer: t, idpClientId: n } = e,
+    let { idpIssuer: t, idpClientId: n } = opts,
       r = await Q4e(t);
     if (r) return (sn("xaa", `Using cached id_token for ${t}`), r);
     sn("xaa", `No cached id_token for ${t}; starting OIDC login`);
     let o = await discoverOidc(t),
-      s = e.callbackPort ?? (await pIn()),
+      s = opts.callbackPort ?? (await pIn()),
       i = T1t(s),
       a = Dwi.randomBytes(32).toString("base64url"),
       l = {
         client_id: n,
-        ...(e.idpClientSecret && {
-          client_secret: e.idpClientSecret,
+        ...(opts.idpClientSecret && {
+          client_secret: opts.idpClientSecret,
         }),
       },
       { authorizationUrl: c, codeVerifier: u } = await H8r(t, {
@@ -292,8 +294,8 @@ async function acquireIdpIdToken(e) {
         scope: "openid",
         state: a,
       }),
-      d = await waitForCallback(s, a, e.abortSignal, () => {
-        if ((e.onAuthorizationUrl(c.toString()), !e.skipBrowserOpen))
+      d = await waitForCallback(s, a, opts.abortSignal, () => {
+        if ((opts.onAuthorizationUrl(c.toString()), !opts.skipBrowserOpen))
           (sn("xaa", "Opening browser to IdP authorization endpoint"), ac(c.toString()));
       }),
       p = await xwi(t, {

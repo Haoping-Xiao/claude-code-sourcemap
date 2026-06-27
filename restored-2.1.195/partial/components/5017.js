@@ -6,12 +6,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gzl] deps: si, Mg, _i, Ye, ps, RN, T6t, QH, Bs, vi, Ko
 fzl = R(lt(), 1), Ojo = R(rt(), 1), Vq = R(se(), 1);
-function Select(e) {
+function Select(t0) {
   let t = hzl.c(32),
     {
       onHeaderFocusChange: n,
       onStateChange: r
-    } = e,
+    } = t0,
     {
       headerFocused: o,
       focusHeader: s

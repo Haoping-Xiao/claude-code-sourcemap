@@ -14,30 +14,30 @@ RAe = {
   baseDir: "built-in",
   getSystemPrompt: pif,
 };
-function hasProgressMessage(e) {
-  if (!("message" in e)) return false;
-  let t = e.message;
+function hasProgressMessage(data) {
+  if (!("message" in data)) return false;
+  let t = data.message;
   return t != null && typeof t === "object" && "type" in t;
 }
 function wll(e) {
   let t = e.data.message.message.content[0];
   return t?.type === "tool_use" || t?.type === "tool_result";
 }
-function getSearchOrReadInfo(e, t, n) {
-  if (!hasProgressMessage(e.data)) return null;
-  let r = e.data.message;
-  if (r.type === "assistant") return U8t(r.message.content[0], t);
+function getSearchOrReadInfo(progressMessage, tools, toolUseByID) {
+  if (!hasProgressMessage(progressMessage.data)) return null;
+  let r = progressMessage.data.message;
+  if (r.type === "assistant") return U8t(r.message.content[0], tools);
   if (r.type === "user") {
     let o = r.message.content[0];
     if (o?.type === "tool_result") {
-      let s = n.get(o.tool_use_id);
-      if (s) return U8t(s, t);
+      let s = toolUseByID.get(o.tool_use_id);
+      if (s) return U8t(s, tools);
     }
   }
   return null;
 }
-function processProgressMessages(e, t, n) {
-  return e
+function processProgressMessages(messages, tools, isAgentRunning) {
+  return messages
     .filter((l) => hasProgressMessage(l.data) && l.data.message.type !== "user")
     .map((l) => ({
       type: "original",
@@ -56,9 +56,9 @@ function processProgressMessages(e, t, n) {
     o = null;
   }
 }
-function AgentPromptDisplay(e) {
+function AgentPromptDisplay(t0) {
   let t = dKn.c(3),
-    { prompt: n, dim: r } = e,
+    { prompt: n, dim: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = ia.jsx(w, {
@@ -191,11 +191,11 @@ function Sif(e) {
   return hasProgressMessage(e.data);
 }
 function renderToolResultMessage(
-  e,
-  t,
+  data,
+  progressMessagesForMessage,
   { tools: n, verbose: r, theme: o, isTranscriptMode: s = false },
 ) {
-  let i = e;
+  let i = data;
   if (i.status === "remote_launched")
     return ia.jsx(U, {
       flexDirection: "column",
@@ -213,8 +213,8 @@ function renderToolResultMessage(
         }),
       }),
     });
-  if (e.status === "async_launched") {
-    let { prompt: h } = e;
+  if (data.status === "async_launched") {
+    let { prompt: h } = data;
     return ia.jsxs(U, {
       flexDirection: "column",
       children: [
@@ -260,7 +260,7 @@ function renderToolResultMessage(
       ],
     });
   }
-  if (e.status !== "completed") return null;
+  if (data.status !== "completed") return null;
   let {
       totalDurationMs: a,
       totalToolUseCount: l,
@@ -268,7 +268,7 @@ function renderToolResultMessage(
       usage: u,
       content: d,
       prompt: p,
-    } = e,
+    } = data,
     m = `Done (${[l === 1 ? "1 tool use" : `${l} tool uses`, ou(c) + " tokens", Yi(a)].join(" \xB7 ")})`,
     g = dE({
       content: m,
@@ -293,7 +293,7 @@ function renderToolResultMessage(
       s
         ? ia.jsx(p4t, {
             children: ia.jsx(yif, {
-              progressMessages: t,
+              progressMessages: progressMessagesForMessage,
               tools: n,
               verbose: r,
             }),
@@ -379,7 +379,7 @@ function kll(e, t) {
   });
 }
 function renderToolUseProgressMessage(
-  e,
+  progressMessages,
   {
     tools: t,
     verbose: n,
@@ -388,7 +388,7 @@ function renderToolUseProgressMessage(
     isTranscriptMode: s = false,
   },
 ) {
-  if (!e.length)
+  if (!progressMessages.length)
     return ia.jsx(qn, {
       height: 1,
       children: ia.jsx(w, {
@@ -399,11 +399,13 @@ function renderToolUseProgressMessage(
   let i = (o ?? 1) * mif + gif,
     a = !s && r && r.rows && r.rows < i,
     l = () => {
-      let y = On(e, (S) => {
+      let y = On(progressMessages, (S) => {
           if (!hasProgressMessage(S.data)) return false;
           return S.data.message.message.content.some((v) => v.type === "tool_use");
         }),
-        b = e.findLast((S) => hasProgressMessage(S.data) && S.data.message.type === "assistant"),
+        b = progressMessages.findLast(
+          (S) => hasProgressMessage(S.data) && S.data.message.type === "assistant",
+        ),
         _ = null;
       if (b?.data.message.type === "assistant") {
         let S = b.data.message.message.usage;
@@ -447,7 +449,7 @@ function renderToolUseProgressMessage(
       }),
     });
   }
-  let c = processProgressMessages(e, t, true),
+  let c = processProgressMessages(progressMessages, t, true),
     u = s ? c : c.slice(-Hll),
     d = s ? [] : c.slice(0, Math.max(0, c.length - Hll)),
     p = On(d, (y) => {
@@ -456,7 +458,7 @@ function renderToolUseProgressMessage(
       if (!hasProgressMessage(b)) return false;
       return b.message.message.content.some((_) => _.type === "tool_use");
     }),
-    f = e[0]?.data,
+    f = progressMessages[0]?.data,
     m = f && hasProgressMessage(f) ? f.prompt : void 0;
   if (u.length === 0 && !(s && m))
     return ia.jsx(qn, {
@@ -467,7 +469,7 @@ function renderToolUseProgressMessage(
       }),
     });
   let { lookups: g, inProgressToolUseIDs: h } = j8t(
-    e.filter((y) => hasProgressMessage(y.data)).map((y) => y.data),
+    progressMessages.filter((y) => hasProgressMessage(y.data)).map((y) => y.data),
   );
   return ia.jsx(qn, {
     children: ia.jsxs(U, {
@@ -578,9 +580,9 @@ function Aif(e) {
     tokens: r,
   };
 }
-function renderGroupedAgentToolUse(e, t) {
-  let { shouldAnimate: n, tools: r, addMargin: o = true } = t,
-    s = e.map(({ param: p, isResolved: f, isError: m, progressMessages: g, result: h }) => {
+function renderGroupedAgentToolUse(toolUses, options) {
+  let { shouldAnimate: n, tools: r, addMargin: o = true } = options,
+    s = toolUses.map(({ param: p, isResolved: f, isError: m, progressMessages: g, result: h }) => {
       let y = Aif(g),
         b = extractLastToolInfo(g, r),
         _ = EIo().safeParse(p.input),
@@ -621,8 +623,8 @@ function renderGroupedAgentToolUse(e, t) {
         name: L,
       };
     }),
-    i = e.some((p) => !p.isResolved),
-    a = e.some((p) => p.isError),
+    i = toolUses.some((p) => !p.isResolved),
+    a = toolUses.some((p) => p.isError),
     l = !i,
     c = s.length > 0 && s.every((p) => p.agentType === s[0]?.agentType),
     u = c && s[0]?.agentType !== "Agent" ? s[0]?.agentType : null,
@@ -647,7 +649,7 @@ function renderGroupedAgentToolUse(e, t) {
                       children: [
                         ia.jsx(w, {
                           bold: true,
-                          children: e.length,
+                          children: toolUses.length,
                         }),
                         " background agents launched",
                         " ",
@@ -665,7 +667,7 @@ function renderGroupedAgentToolUse(e, t) {
                       children: [
                         ia.jsx(w, {
                           bold: true,
-                          children: e.length,
+                          children: toolUses.length,
                         }),
                         " ",
                         u ? `${u} agents` : "agents",
@@ -677,7 +679,7 @@ function renderGroupedAgentToolUse(e, t) {
                       "Running ",
                       ia.jsx(w, {
                         bold: true,
-                        children: e.length,
+                        children: toolUses.length,
                       }),
                       " ",
                       u ? `${u} agents` : "agents",
@@ -727,9 +729,9 @@ function SIo(e) {
   if (!e?.subagent_type) return;
   return JEe(e.subagent_type);
 }
-function extractLastToolInfo(e, t) {
+function extractLastToolInfo(progressMessages, tools) {
   let n = new Map();
-  for (let i of e) {
+  for (let i of progressMessages) {
     if (!hasProgressMessage(i.data)) continue;
     if (i.data.message.type === "assistant") {
       for (let a of i.data.message.message.content) if (a.type === "tool_use") n.set(a.id, a);
@@ -737,11 +739,11 @@ function extractLastToolInfo(e, t) {
   }
   let r = 0,
     o = 0;
-  for (let i = e.length - 1; i >= 0; i--) {
-    let a = e[i];
+  for (let i = progressMessages.length - 1; i >= 0; i--) {
+    let a = progressMessages[i];
     if (!hasProgressMessage(a.data)) continue;
     if (!wll(a)) continue;
-    let l = getSearchOrReadInfo(a, t, n);
+    let l = getSearchOrReadInfo(a, tools, n);
     if (l && (l.isSearch || l.isRead)) {
       if (a.data.message.type === "user") {
         if (l.isSearch) r++;
@@ -750,7 +752,7 @@ function extractLastToolInfo(e, t) {
     } else break;
   }
   if (r + o >= 2) return pKn(r, o, true);
-  let s = e.findLast((i) => {
+  let s = progressMessages.findLast((i) => {
     if (!hasProgressMessage(i.data)) return false;
     let a = i.data.message;
     return a.type === "user" && a.message.content.some((l) => l.type === "tool_result");
@@ -760,7 +762,7 @@ function extractLastToolInfo(e, t) {
     if (i?.type === "tool_result") {
       let a = n.get(i.tool_use_id);
       if (a) {
-        let l = _l(t, a.name);
+        let l = _l(tools, a.name);
         if (!l) return a.name;
         let c = a.input,
           u = l.inputSchema.safeParse(c),

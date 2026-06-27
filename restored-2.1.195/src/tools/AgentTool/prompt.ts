@@ -4,8 +4,8 @@
 // class=modified  jaccard=0.1046  score=0.2166  fileCov=0.1683
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function getToolsDescription(e) {
-  let { tools: t, disallowedTools: n } = e,
+function getToolsDescription(agent) {
+  let { tools: t, disallowedTools: n } = agent,
     r = t && t.length > 0,
     o = n && n.length > 0;
   if (r && o) {
@@ -22,9 +22,9 @@ function jhl(e, t) {
     r = (t && e.whenToUseLean) || e.whenToUse;
   return `- ${e.agentType}: ${r} (Tools: ${n})`;
 }
-async function getPrompt(e, t, n) {
+async function getPrompt(agentDefinitions, isCoordinator, allowedAgentTypes) {
   let r = DX(),
-    o = r && (n ?? !0),
+    o = r && (allowedAgentTypes ?? !0),
     s = o
       ? `
 
@@ -123,7 +123,7 @@ The agent starts with no context from this conversation, so the prompt briefs it
 </commentary>
 </example>
 `,
-    c = ph(e),
+    c = ph(agentDefinitions),
     u = "Available agent types are listed in <system-reminder> messages in the conversation.",
     d =
       Di() === "pro"
@@ -136,7 +136,7 @@ The agent starts with no context from this conversation, so the prompt briefs it
 Available agent types are listed in <system-reminder> messages in the conversation.${d}
 
 ${o ? `When using the ${ss} tool, specify a subagent_type to select an agent: \`"fork"\` forks yourself (the fork inherits your full conversation context and always runs on your model \u2014 a \`model\` override is ignored); any other type \u2014 or omitting it \u2014 starts a fresh agent (general-purpose by default).` : `When using the ${ss} tool, specify a subagent_type parameter to select which agent type to use. If omitted, the general-purpose agent is used.`}`;
-  if (t) return p;
+  if (isCoordinator) return p;
   let f = hC() && Su() ? "`grep` via the Bash tool" : `the ${qc} tool`,
     m = o
       ? ""

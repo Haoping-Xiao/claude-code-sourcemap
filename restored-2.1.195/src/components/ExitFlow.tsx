@@ -12,17 +12,17 @@
 function t6f() {
   return HL(e6f) ?? "Goodbye!";
 }
-async function ExitFlow(e) {
-  if (Js()) return (e(), SHe(), null);
+async function ExitFlow(t0) {
+  if (Js()) return (t0(), SHe(), null);
   let t = Gm() !== null,
     n = Ker();
   if (t || n.length > 0)
     return lJl.jsx(tir, {
       showWorktree: t,
       backgroundItems: n,
-      onDone: e,
-      onCancel: () => e(),
+      onDone: t0,
+      onCancel: () => t0(),
     });
-  return (e(t6f()), await ki(0, "prompt_input_exit"), null);
+  return (t0(t6f()), await ki(0, "prompt_input_exit"), null);
 }
 var lJl, e6f;

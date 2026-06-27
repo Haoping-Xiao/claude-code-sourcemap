@@ -6,22 +6,22 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $_l] deps: ql, Ye, es
 XAe = R(se(), 1);
-function makeToolSchema(e) {
+function makeToolSchema(input) {
   return {
     type: "web_search_20250305",
     name: "web_search",
-    allowed_domains: e.allowed_domains,
-    blocked_domains: e.blocked_domains,
+    allowed_domains: input.allowed_domains,
+    blocked_domains: input.blocked_domains,
     max_uses: 8,
   };
 }
-function makeOutputFromSearchResponse(e, t, n) {
+function makeOutputFromSearchResponse(result, query, durationSeconds) {
   let r = [],
     o = "",
     s = true,
     i = 0,
     a = 0;
-  for (let l of e) {
+  for (let l of result) {
     if (l.type === "server_tool_use") {
       if ((i++, s)) {
         if (((s = false), o.trim().length > 0)) r.push(o.trim());
@@ -53,9 +53,9 @@ function makeOutputFromSearchResponse(e, t, n) {
   }
   if (o.length) r.push(o.trim());
   return {
-    query: t,
+    query: query,
     results: r,
-    durationSeconds: n,
+    durationSeconds: durationSeconds,
     searchCount: Math.max(i, a),
   };
 }

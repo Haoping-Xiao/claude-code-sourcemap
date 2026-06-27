@@ -7,14 +7,24 @@
 // module exports: setup, isRemoteCoworkEntrypointExempted, isDesktopEntrypointExempted
 // [unwrapped __esm module Bdc] deps: er, je
 ((Jcr = require("fs/promises")), ($dc = require("os")), (Odc = require("path")));
-async function setup(e, t, n, r, o, s, i, a, l) {
+async function setup(
+  cwd,
+  permissionMode,
+  allowDangerouslySkipPermissions,
+  worktreeEnabled,
+  worktreeName,
+  tmuxEnabled,
+  customSessionId,
+  worktreePRNumber,
+  messagingSocketPath,
+) {
   In("info", "setup_started");
   let c = process.version.match(/^v(\d+)\./)?.[1];
   if (!c || parseInt(c) < 18)
     (console.error(wt.bold.red("Error: Claude Code requires Node.js version 18 or higher.")),
       process.exit(1));
-  if (i) PA(Fb(i), "startup_custom_id");
-  if (!md() || l !== void 0);
+  if (customSessionId) PA(Fb(customSessionId), "startup_custom_id");
+  if (!md() || messagingSocketPath !== void 0);
   if (process.env.CLAUDE_BG_BACKEND === "daemon") {
     let { startRendezvousServer: g } = await Promise.resolve().then(() => (Oze(), qQn));
     g();
@@ -54,10 +64,10 @@ async function setup(e, t, n, r, o, s, i, a, l) {
     }
   }
   try {
-    Uy(e);
+    Uy(cwd);
   } catch (g) {
     (process.stderr.write(
-      wt.red(`Error: Can't access working directory ${wt.bold(e)}: ${be(g)}
+      wt.red(`Error: Can't access working directory ${wt.bold(cwd)}: ${be(g)}
 `),
     ),
       sv("setcwd"),
@@ -73,19 +83,19 @@ async function setup(e, t, n, r, o, s, i, a, l) {
     !da())
   ) {
     let g = performance.now();
-    (hca(e), Zc("setup_file_watcher_ms", performance.now() - g, g));
+    (hca(cwd), Zc("setup_file_watcher_ms", performance.now() - g, g));
   }
   let d = performance.now();
-  if (r) {
+  if (worktreeEnabled) {
     let g = Jte(),
       h = await cb();
     if (!g && !h)
       (process.stderr.write(
-        wt.red(`Error: Can only use --worktree in a git repository, but ${wt.bold(e)} is not a git repository. Configure a WorktreeCreate hook in settings.json to use --worktree with other VCS systems.
+        wt.red(`Error: Can only use --worktree in a git repository, but ${wt.bold(cwd)} is not a git repository. Configure a WorktreeCreate hook in settings.json to use --worktree with other VCS systems.
 `),
       ),
         process.exit(1));
-    let y = a ? `pr-${a}` : (o ?? L$e()),
+    let y = worktreePRNumber ? `pr-${worktreePRNumber}` : (worktreeName ?? L$e()),
       b;
     if (h) {
       let S = qf($t());
@@ -96,13 +106,13 @@ async function setup(e, t, n, r, o, s, i, a, l) {
         ),
           process.exit(1));
       if (HRt($t())) (In("info", "worktree_resolved_to_main_repo"), process.chdir(S), Uy(S));
-      b = s ? Vlr(S, VYe(y)) : void 0;
-    } else b = s ? Vlr($t(), VYe(y)) : void 0;
+      b = tmuxEnabled ? Vlr(S, VYe(y)) : void 0;
+    } else b = tmuxEnabled ? Vlr($t(), VYe(y)) : void 0;
     let _;
     try {
       _ = await xzt(Rt(), y, b, {
-        prNumber: a,
-        fromCwd: e,
+        prNumber: worktreePRNumber,
+        fromCwd: cwd,
       });
     } catch (S) {
       (process.stderr.write(
@@ -114,9 +124,9 @@ async function setup(e, t, n, r, o, s, i, a, l) {
     }
     if (
       (G("tengu_worktree_created", {
-        tmux_enabled: s,
+        tmux_enabled: tmuxEnabled,
       }),
-      s && b)
+      tmuxEnabled && b)
     ) {
       let S = await Q5o(b, _.worktreePath);
       if (S.created)
@@ -181,7 +191,7 @@ To attach: ${wt.bold(`tmux attach -t ${b}`)}`),
     let g = performance.now();
     (await UGl(Dt().lastReleaseNotesSeen), Zc("setup_release_notes_ms", performance.now() - g, g));
   }
-  if (t === "bypassPermissions" || n) {
+  if (permissionMode === "bypassPermissions" || allowDangerouslySkipPermissions) {
     if (
       typeof process.getuid === "function" &&
       process.getuid() === 0 &&

@@ -190,11 +190,11 @@ function hcn(e, t, n) {
     ...Zi.normalizeParams(n)
   });
 }
-function intersection(e, t) {
+function intersection(left, right) {
   return new Uls({
     type: "intersection",
-    left: e,
-    right: t
+    left: left,
+    right: right
   });
 }
 function HZc(e, t, n) {
@@ -284,21 +284,21 @@ function ucn(e) {
 function xZc(e) {
   return YH(ucn(e));
 }
-function _default(e, t) {
+function _default(innerType, defaultValue) {
   return new zls({
     type: "default",
-    innerType: e,
+    innerType: innerType,
     get defaultValue() {
-      return typeof t === "function" ? t() : t;
+      return typeof defaultValue === "function" ? defaultValue() : defaultValue;
     }
   });
 }
-function prefault(e, t) {
+function prefault(innerType, defaultValue) {
   return new Yls({
     type: "prefault",
-    innerType: e,
+    innerType: innerType,
     get defaultValue() {
-      return typeof t === "function" ? t() : t;
+      return typeof defaultValue === "function" ? defaultValue() : defaultValue;
     }
   });
 }
@@ -338,11 +338,11 @@ function rcs(e) {
     innerType: e
   });
 }
-function templateLiteral(e, t) {
+function templateLiteral(parts, params) {
   return new ocs({
     type: "template_literal",
-    parts: e,
-    ...Zi.normalizeParams(t)
+    parts: parts,
+    ...Zi.normalizeParams(params)
   });
 }
 function ics(e) {

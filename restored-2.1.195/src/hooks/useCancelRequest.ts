@@ -17,7 +17,7 @@ function kzo(e) {
     (e.type === "in_process_teammate" && e.status === "running")
   );
 }
-function CancelRequestHandler(e) {
+function CancelRequestHandler(props) {
   let {
       onCancel: t,
       onAgentsKilled: n,
@@ -32,7 +32,7 @@ function CancelRequestHandler(e) {
       inputMode: d,
       isInputEmpty: p,
       getInFlightMessageId: f,
-    } = e,
+    } = props,
     m = Dc(),
     g = Ho(),
     h = $T(),

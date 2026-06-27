@@ -4,12 +4,12 @@
 // class=partial  jaccard=0.248  score=0.3126  fileCov=0.5456
 // note: low-confidence suggestion: src/commands/install-github-app/WarningsStep.tsx; dir inferred from dep-graph -> utils; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function WarningsStep(e) {
+function WarningsStep(t0) {
   let t = bFl.c(9),
     {
       warnings: n,
       onContinue: r
-    } = e,
+    } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) o = {
     context: "Confirmation"
@@ -69,23 +69,23 @@ function WarningsStep(e) {
   }), t[7] = i, t[8] = u;else u = t[8];
   return u;
 }
-function _temp2(e, t) {
+function _temp2(warning, index) {
   return Wk.jsxs(U, {
     flexDirection: "column",
     marginBottom: 1,
     children: [Wk.jsx(w, {
       color: "warning",
       bold: true,
-      children: e.title
+      children: warning.title
     }), Wk.jsx(w, {
-      children: e.message
-    }), e.instructions.length > 0 && Wk.jsx(U, {
+      children: warning.message
+    }), warning.instructions.length > 0 && Wk.jsx(U, {
       flexDirection: "column",
       marginLeft: 2,
       marginTop: 1,
-      children: e.instructions.map(E1f)
+      children: warning.instructions.map(E1f)
     })]
-  }, t);
+  }, index);
 }
 function E1f(e, t) {
   return Wk.jsx(iE, {

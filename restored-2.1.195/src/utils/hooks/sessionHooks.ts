@@ -57,24 +57,24 @@ function hKn(e, t) {
 function W8t(e, t, n, r, o, s, i) {
   removeFunctionHook(e, t, n, r, o, s, i);
 }
-function addFunctionHook(e, t, n, r, o, s, i) {
-  let a = i?.id || `function-hook-${Date.now()}-${Math.random()}`,
+function addFunctionHook(setAppState, sessionId, event, matcher, callback, errorMessage, options) {
+  let a = options?.id || `function-hook-${Date.now()}-${Math.random()}`,
     l = {
       type: "function",
       id: a,
-      timeout: i?.timeout || 5000,
-      callback: o,
-      errorMessage: s,
+      timeout: options?.timeout || 5000,
+      callback: callback,
+      errorMessage: errorMessage,
     };
-  return (removeFunctionHook(e, t, n, r, l), a);
+  return (removeFunctionHook(setAppState, sessionId, event, matcher, l), a);
 }
-function removeFunctionHook(e, t, n, r, o, s, i) {
-  (e((a) => {
-    let l = a.sessionHooks.get(t) ?? {
+function removeFunctionHook(setAppState, sessionId, event, hookId, o, s, i) {
+  (setAppState((a) => {
+    let l = a.sessionHooks.get(sessionId) ?? {
         hooks: {},
       },
-      c = l.hooks[n] || [],
-      u = c.findIndex((f) => f.matcher === r && f.skillRoot === i),
+      c = l.hooks[event] || [],
+      u = c.findIndex((f) => f.matcher === hookId && f.skillRoot === i),
       d;
     if (u >= 0) {
       d = [...c];
@@ -105,7 +105,7 @@ function removeFunctionHook(e, t, n, r, o, s, i) {
       d = [
         ...c,
         {
-          matcher: r,
+          matcher: hookId,
           skillRoot: i,
           hooks: [
             {
@@ -117,24 +117,24 @@ function removeFunctionHook(e, t, n, r, o, s, i) {
       ];
     let p = {
       ...l.hooks,
-      [n]: d,
+      [event]: d,
     };
     return (
-      a.sessionHooks.set(t, {
+      a.sessionHooks.set(sessionId, {
         hooks: p,
       }),
       a
     );
   }),
-    T(`Added session hook for event ${n} in session ${t}`));
+    T(`Added session hook for event ${event} in session ${sessionId}`));
 }
-function removeSessionHook(e, t, n, r) {
-  (e((o) => {
-    let s = o.sessionHooks.get(t);
+function removeSessionHook(setAppState, sessionId, event, hook) {
+  (setAppState((o) => {
+    let s = o.sessionHooks.get(sessionId);
     if (!s) return o;
-    let a = (s.hooks[n] || [])
+    let a = (s.hooks[event] || [])
         .map((c) => {
-          let u = c.hooks.filter((d) => !hKn(d.hook, r));
+          let u = c.hooks.filter((d) => !hKn(d.hook, hook));
           return u.length > 0
             ? {
                 ...c,
@@ -147,21 +147,21 @@ function removeSessionHook(e, t, n, r) {
         a.length > 0
           ? {
               ...s.hooks,
-              [n]: a,
+              [event]: a,
             }
           : {
               ...s.hooks,
             };
-    if (a.length === 0) delete l[n];
+    if (a.length === 0) delete l[event];
     return (
-      o.sessionHooks.set(t, {
+      o.sessionHooks.set(sessionId, {
         ...s,
         hooks: l,
       }),
       o
     );
   }),
-    T(`Removed session hook for event ${n} in session ${t}`));
+    T(`Removed session hook for event ${event} in session ${sessionId}`));
 }
 function Gll(e) {
   return e.map((t) => ({
@@ -225,8 +225,9 @@ function zll(e, t, n, r, o) {
     }
   return;
 }
-function clearSessionHooks(e, t) {
-  (e((n) => (n.sessionHooks.delete(t), n)), T(`Cleared all session hooks for session ${t}`));
+function clearSessionHooks(setAppState, sessionId) {
+  (setAppState((n) => (n.sessionHooks.delete(sessionId), n)),
+    T(`Cleared all session hooks for session ${sessionId}`));
 }
 function f6e(e) {
   return {

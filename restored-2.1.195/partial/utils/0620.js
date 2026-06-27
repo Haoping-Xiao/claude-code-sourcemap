@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iEs] deps: ZXe, Mie
 sEs = $Du;
-function isPlainObject(e) {
-  if (!hD(e) || LV(e) != objectTag) return false;
-  var t = jJe(e);
+function isPlainObject(value) {
+  if (!hD(value) || LV(value) != objectTag) return false;
+  var t = jJe(value);
   if (t === null) return true;
   var n = UDu.call(t, "constructor") && t.constructor;
   return typeof n == "function" && n instanceof n && aEs.call(n) == FDu;

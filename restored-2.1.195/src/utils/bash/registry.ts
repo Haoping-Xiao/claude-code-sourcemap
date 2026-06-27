@@ -6,13 +6,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BPa] deps: wPa, IPa, kPa, LPa, PPa, $Pa, NPa
 $mo = [xPa, OPa, RPa, vPa, CPa, MPa, DPa];
-async function loadFigSpec(e) {
-  if (!e || e.includes("/") || e.includes("\\")) return null;
-  if (e.includes("..")) return null;
-  if (e.startsWith("-") && e !== "-") return null;
+async function loadFigSpec(command) {
+  if (!command || command.includes("/") || command.includes("\\")) return null;
+  if (command.includes("..")) return null;
+  if (command.startsWith("-") && command !== "-") return null;
   if (gG() && dm()) return null;
   try {
-    let t = await import(`@withfig/autocomplete/build/${e}.js`);
+    let t = await import(`@withfig/autocomplete/build/${command}.js`);
     return t.default || t;
   } catch {
     return null;

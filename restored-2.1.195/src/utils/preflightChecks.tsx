@@ -66,9 +66,9 @@ async function checkEndpoints() {
     );
   }
 }
-function PreflightStep(e) {
+function PreflightStep(t0) {
   let t = kMc.c(14),
-    { onSuccess: n } = e,
+    { onSuccess: n } = t0,
     [r, o] = Svt.useState(null),
     [s, i] = Svt.useState(true),
     a = Pd(1000) && s,

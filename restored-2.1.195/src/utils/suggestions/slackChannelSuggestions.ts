@@ -7,8 +7,8 @@
 function myc(e) {
   return e.find((t) => t.type === "connected" && t.name.includes("slack"));
 }
-async function fetchChannels(e, t) {
-  let n = myc(e);
+async function fetchChannels(clients, query) {
+  let n = myc(clients);
   if (!n || n.type !== "connected") return [];
   try {
     let o = (
@@ -16,7 +16,7 @@ async function fetchChannels(e, t) {
         {
           name: SLACK_SEARCH_TOOL,
           arguments: {
-            query: t,
+            query: query,
             limit: 20,
             channel_types: "public_channel,private_channel",
           },
@@ -86,15 +86,15 @@ function Epm(e, t) {
       ((n = s), (r = o.length));
   return n;
 }
-async function getSlackChannelSuggestions(e, t) {
-  if (!t) return [];
-  let n = Spm(t),
-    r = t.toLowerCase(),
+async function getSlackChannelSuggestions(clients, searchToken) {
+  if (!searchToken) return [];
+  let n = Spm(searchToken),
+    r = searchToken.toLowerCase(),
     o = DTt.get(n) ?? Epm(n, r);
   if (!o)
     if (ddr === n && ken) o = await ken;
     else {
-      ((ddr = n), (ken = fetchChannels(e, n)), (o = await ken), DTt.set(n, o));
+      ((ddr = n), (ken = fetchChannels(clients, n)), (o = await ken), DTt.set(n, o));
       let s = pdr.size;
       for (let i of o) pdr.add(i);
       if (pdr.size !== s) (dyc++, pyc.emit());

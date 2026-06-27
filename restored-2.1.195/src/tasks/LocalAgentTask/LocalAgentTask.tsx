@@ -17,43 +17,47 @@ function J6n() {
 function Gwo(e) {
   return e.latestInputTokens + e.cumulativeOutputTokens;
 }
-function updateProgressFromMessage(e, t, n, r) {
-  if (t.type === "progress" && t.data.type === "repl_tool_call" && t.data.phase === "start") {
-    let { toolName: s, toolInput: i } = t.data,
-      a = r ? Aze(s, i, r) : void 0;
+function updateProgressFromMessage(tracker, message, resolveActivityDescription, tools) {
+  if (
+    message.type === "progress" &&
+    message.data.type === "repl_tool_call" &&
+    message.data.phase === "start"
+  ) {
+    let { toolName: s, toolInput: i } = message.data,
+      a = tools ? Aze(s, i, tools) : void 0;
     if (
-      (e.recentActivities.push({
+      (tracker.recentActivities.push({
         toolName: s,
         input: i,
-        activityDescription: n?.(s, i),
+        activityDescription: resolveActivityDescription?.(s, i),
         isSearch: a?.isSearch,
         isRead: a?.isRead,
       }),
-      e.recentActivities.length > Pvl)
+      tracker.recentActivities.length > Pvl)
     )
-      e.recentActivities.shift();
+      tracker.recentActivities.shift();
     return;
   }
-  if (t.type !== "assistant") return;
-  let o = t.message.usage;
-  ((e.latestInputTokens =
+  if (message.type !== "assistant") return;
+  let o = message.message.usage;
+  ((tracker.latestInputTokens =
     o.input_tokens + (o.cache_creation_input_tokens ?? 0) + (o.cache_read_input_tokens ?? 0)),
-    (e.cumulativeOutputTokens += o.output_tokens));
-  for (let s of t.message.content) {
+    (tracker.cumulativeOutputTokens += o.output_tokens));
+  for (let s of message.message.content) {
     if (s.type !== "tool_use") continue;
-    if ((e.toolUseCount++, s.name === Ip)) continue;
+    if ((tracker.toolUseCount++, s.name === Ip)) continue;
     if (s.name === Fm) continue;
     let i = s.input,
-      a = r ? Aze(s.name, i, r) : void 0;
-    e.recentActivities.push({
+      a = tools ? Aze(s.name, i, tools) : void 0;
+    tracker.recentActivities.push({
       toolName: s.name,
       input: i,
-      activityDescription: n?.(s.name, i),
+      activityDescription: resolveActivityDescription?.(s.name, i),
       isSearch: a?.isSearch,
       isRead: a?.isRead,
     });
   }
-  while (e.recentActivities.length > Pvl) e.recentActivities.shift();
+  while (tracker.recentActivities.length > Pvl) tracker.recentActivities.shift();
 }
 function g8t(e) {
   return {
@@ -82,8 +86,8 @@ function IDo(e, t) {
   if (t.park && (e.keepaliveReasons?.size ?? 0) > 0) return;
   return Date.now() + nfe;
 }
-function isLocalAgentTask(e) {
-  return typeof e === "object" && e !== null && "type" in e && e.type === "local_agent";
+function isLocalAgentTask(task) {
+  return typeof task === "object" && task !== null && "type" in task && task.type === "local_agent";
 }
 function isPanelAgentTask(e, t) {
   if (!e) return;
@@ -272,16 +276,16 @@ function IJn(e, t) {
       agentId: ls(),
     });
 }
-function killAsyncAgent(e, t, n = "user") {
-  let r = t.get(e);
+function killAsyncAgent(taskId, setAppState, n = "user") {
+  let r = setAppState.get(taskId);
   if (isLocalAgentTask(r) && sw(r) && !r.notified) {
     let s = r.result;
     enqueueAgentNotification({
-      taskId: e,
+      taskId: taskId,
       description: r.description,
       status: "killed",
       killedBy: n,
-      taskRegistry: t,
+      taskRegistry: setAppState,
       finalMessage: s
         ? s.content.map((i) => i.text).join(`
 `)
@@ -299,7 +303,7 @@ function killAsyncAgent(e, t, n = "user") {
   }
   let o = false;
   if (
-    (t.update(e, (s) => {
+    (setAppState.update(taskId, (s) => {
       if (s.status !== "running" && !sw(s)) return s;
       return (
         (o = true),
@@ -321,12 +325,13 @@ function killAsyncAgent(e, t, n = "user") {
     }),
     o)
   )
-    (IJn(e, t), jy(e));
+    (IJn(taskId, setAppState), jy(taskId));
 }
-function killAllRunningAgentTasks(e, t, n = "user") {
-  for (let [r, o] of Object.entries(e)) if (isLocalAgentTask(o) && sw(o)) killAsyncAgent(r, t, n);
-  for (let [r, o] of Object.entries(e))
-    if (o.type === "local_agent" && o.status === "running") killAsyncAgent(r, t, n);
+function killAllRunningAgentTasks(tasks, setAppState, n = "user") {
+  for (let [r, o] of Object.entries(tasks))
+    if (isLocalAgentTask(o) && sw(o)) killAsyncAgent(r, setAppState, n);
+  for (let [r, o] of Object.entries(tasks))
+    if (o.type === "local_agent" && o.status === "running") killAsyncAgent(r, setAppState, n);
 }
 function Iyt(e, t) {
   t.update(e, (n) => {

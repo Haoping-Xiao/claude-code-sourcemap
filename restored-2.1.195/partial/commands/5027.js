@@ -4,11 +4,11 @@
 // class=partial  jaccard=0.2023  score=0.4924  fileCov=0.2556
 // note: low-confidence suggestion: src/components/FastIcon.tsx; dir inferred from dep-graph -> commands; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
-function FastIcon(e) {
+function FastIcon(t0) {
   let t = Nzl.c(2),
     {
       cooldown: n
-    } = e;
+    } = t0;
   if (n) {
     let o;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) o = Fjo.jsx(w, {

@@ -22,10 +22,10 @@ function getAvailableUpgrade() {
     };
   return null;
 }
-function getUpgradeMessage(e) {
+function getUpgradeMessage(context) {
   let t = getAvailableUpgrade();
   if (!t) return null;
-  switch (e) {
+  switch (context) {
     case "warning":
       return `/model ${t.alias}`;
     case "tip":

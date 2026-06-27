@@ -312,23 +312,23 @@ function rWi(e, t) {
   for (let r = 0; r < e.width; r++) n += Z3i(e, r, t) ?? " ";
   return n.trimEnd();
 }
-function fullResetSequence_CAUSES_FLICKER(e, t, n, r, o, s) {
-  let i = r ? 0 : Math.min(o, Math.max(0, e.screen.height - e.viewport.height + 1)),
+function fullResetSequence_CAUSES_FLICKER(frame, reason, stylePool, debug, o, s) {
+  let i = debug ? 0 : Math.min(o, Math.max(0, frame.screen.height - frame.viewport.height + 1)),
     a = new uJr(
       {
         x: 0,
         y: i,
       },
-      e.viewport.width,
+      frame.viewport.width,
     );
   return (
-    oWi(a, e, i, e.screen.height, n),
+    oWi(a, frame, i, frame.screen.height, stylePool),
     [
       {
         type: "clearTerminal",
-        reason: t,
-        altScreen: r,
-        viewportRows: e.viewport.height,
+        reason: reason,
+        altScreen: debug,
+        viewportRows: frame.viewport.height,
         debug: s,
       },
       ...a.diff,
@@ -379,21 +379,21 @@ function oWi(e, t, n, r, o) {
   }
   return (GBt(e.diff, o, s, o.none), d0e(e.diff, i, void 0), e);
 }
-function writeCellWithStyleStr(e, t, n) {
-  let r = t.width === 1 ? Math.max(2, rn(t.char)) : 1,
-    o = e.cursor.x,
-    s = e.viewportWidth;
+function writeCellWithStyleStr(screen, cell, styleStr) {
+  let r = cell.width === 1 ? Math.max(2, rn(cell.char)) : 1,
+    o = screen.cursor.x,
+    s = screen.viewportWidth;
   if (r >= 2 && o < s) {
-    let l = t.char.length > 2 ? s : s + 1;
+    let l = cell.char.length > 2 ? s : s + 1;
     if (o + r >= l) return false;
   }
-  let i = e.diff;
-  if (n.length > 0)
+  let i = screen.diff;
+  if (styleStr.length > 0)
     i.push({
       type: "styleStr",
-      str: n,
+      str: styleStr,
     });
-  let a = r >= 3 || (r === 2 && CGd(t.char));
+  let a = r >= 3 || (r === 2 && CGd(cell.char));
   if (a && o + 1 < s)
     (i.push({
       type: "cursorTo",
@@ -410,7 +410,7 @@ function writeCellWithStyleStr(e, t, n) {
   if (
     (i.push({
       type: "stdout",
-      content: t.char,
+      content: cell.char,
     }),
     a)
   )
@@ -418,8 +418,8 @@ function writeCellWithStyleStr(e, t, n) {
       type: "cursorTo",
       col: o + r + 1,
     });
-  if (o >= s) ((e.cursor.x = r), e.cursor.y++);
-  else e.cursor.x = o + r;
+  if (o >= s) ((screen.cursor.x = r), screen.cursor.y++);
+  else screen.cursor.x = o + r;
   return true;
 }
 function bLn(e, t, n) {

@@ -28,13 +28,13 @@ function Yel(e) {
     data: t[2],
   };
 }
-function buildImageToolResult(e, t) {
-  let n = Yel(e);
+function buildImageToolResult(stdout, toolUseID) {
+  let n = Yel(stdout);
   if (!n) return null;
   let r = oX(Buffer.from(n.data, "base64"));
   if (r === null) return null;
   return {
-    tool_use_id: t,
+    tool_use_id: toolUseID,
     type: "tool_result",
     content: [
       {
@@ -48,11 +48,11 @@ function buildImageToolResult(e, t) {
     ],
   };
 }
-async function resizeShellImageOutput(e, t, n, r) {
-  let o = e;
-  if (t) {
-    if ((n ?? (await J8n.stat(t)).size) > FZp) return null;
-    o = await J8n.readFile(t, "utf8");
+async function resizeShellImageOutput(stdout, outputFilePath, outputFileSize, r) {
+  let o = stdout;
+  if (outputFilePath) {
+    if ((outputFileSize ?? (await J8n.stat(outputFilePath)).size) > FZp) return null;
+    o = await J8n.readFile(outputFilePath, "utf8");
   }
   let s = Yel(o);
   if (!s) return null;
@@ -61,30 +61,30 @@ async function resizeShellImageOutput(e, t, n, r) {
     l = await x0e(i, i.length, a, r);
   return `data:image/${l.mediaType};base64,${l.buffer.toString("base64")}`;
 }
-function formatOutput(e) {
-  let t = B9t(e);
+function formatOutput(content) {
+  let t = B9t(content);
   if (t)
     return {
       totalLines: 1,
-      truncatedContent: e,
+      truncatedContent: content,
       isImage: t,
     };
   let n = Npt();
-  if (e.length <= n)
+  if (content.length <= n)
     return {
       totalLines:
         hu(
-          e,
+          content,
           `
 `,
         ) + 1,
-      truncatedContent: e,
+      truncatedContent: content,
       isImage: t,
     };
-  let r = e.slice(0, n),
+  let r = content.slice(0, n),
     o =
       hu(
-        e,
+        content,
         `
 `,
         n,
@@ -95,7 +95,7 @@ function formatOutput(e) {
   return {
     totalLines:
       hu(
-        e,
+        content,
         `
 `,
       ) + 1,
@@ -103,11 +103,11 @@ function formatOutput(e) {
     isImage: t,
   };
 }
-function resetCwdIfOutsideProject(e) {
+function resetCwdIfOutsideProject(toolPermissionContext) {
   let t = $t(),
     n = yr(),
     r = Brs();
-  if (r || (t !== n && !JU(t, e))) {
+  if (r || (t !== n && !JU(t, toolPermissionContext))) {
     try {
       Uy(n);
     } catch {
@@ -121,5 +121,5 @@ var J8n,
   Q8n = 25,
   UZp,
   FZp = 20971520,
-  stdErrAppendShellResetMessage = (e) => `${e.trim()}
+  stdErrAppendShellResetMessage = (stderr) => `${stderr.trim()}
 Shell cwd was reset to ${$t()}`;

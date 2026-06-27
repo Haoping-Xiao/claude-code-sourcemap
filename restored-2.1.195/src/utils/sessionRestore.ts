@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.207  score=0.3407  fileCov=0.3453
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function extractTodosFromTranscript(e) {
-  for (let t = e.length - 1; t >= 0; t--) {
-    let n = e[t];
+function extractTodosFromTranscript(messages) {
+  for (let t = messages.length - 1; t >= 0; t--) {
+    let n = messages[t];
     if (n?.type !== "assistant") continue;
     let r = n.message.content.find((i) => i.type === "tool_use" && i.name === s$);
     if (!r || r.type !== "tool_use") continue;
@@ -58,13 +58,13 @@ function Zen(e, t) {
     color: t === "default" ? void 0 : t,
   };
 }
-function restoreAgentFromSession(e, t, n) {
-  if (t)
+function restoreAgentFromSession(agentSetting, currentAgentDefinition, agentDefinitions) {
+  if (currentAgentDefinition)
     return {
-      agentDefinition: t,
+      agentDefinition: currentAgentDefinition,
       agentType: void 0,
     };
-  if (!e)
+  if (!agentSetting)
     return (
       kK(void 0),
       CNe(void 0),
@@ -73,10 +73,12 @@ function restoreAgentFromSession(e, t, n) {
         agentType: void 0,
       }
     );
-  let r = n.activeAgents.find((o) => o.agentType === e);
+  let r = agentDefinitions.activeAgents.find((o) => o.agentType === agentSetting);
   if (!r)
     return (
-      T(`Resumed session had agent "${e}" but it is no longer available. Using default behavior.`),
+      T(
+        `Resumed session had agent "${agentSetting}" but it is no longer available. Using default behavior.`,
+      ),
       kK(void 0),
       CNe(void 0),
       {
@@ -346,45 +348,48 @@ function FEc(e) {
   }
   (Uy(t.originalCwd), _D($t()), mY(), bS()?.refreshGitBranch?.());
 }
-async function processResumedConversation(e, t, n) {
+async function processResumedConversation(result, opts, context) {
   let r;
-  if (((r = n.modeApi?.matchSessionMode(e.mode)), r)) e.messages.push(cc(r, "warning"));
-  if (!t.forkSession) {
-    let h = t.sessionIdOverride ?? e.sessionId;
+  if (((r = context.modeApi?.matchSessionMode(result.mode)), r))
+    result.messages.push(cc(r, "warning"));
+  if (!opts.forkSession) {
+    let h = opts.sessionIdOverride ?? result.sessionId;
     if (h)
-      (PA(Fb(h), "resume", t.transcriptPath ? OEc.dirname(t.transcriptPath) : null),
+      (PA(Fb(h), "resume", opts.transcriptPath ? OEc.dirname(opts.transcriptPath) : null),
         await Xen(),
         await BQ(),
         G8n(h));
-  } else if (e.contentReplacements?.length) await Uze(e.contentReplacements);
+  } else if (result.contentReplacements?.length) await Uze(result.contentReplacements);
   if (
     (Gse(
-      t.forkSession
+      opts.forkSession
         ? {
-            ...e,
+            ...result,
             worktreeSession: void 0,
             bridgeSessionId: void 0,
             bridgeLastSeq: void 0,
             bridgeDialogKinds: void 0,
           }
-        : e,
+        : result,
     ),
-    !t.forkSession)
+    !opts.forkSession)
   )
-    (ttn(e.worktreeSession), Hme());
+    (ttn(result.worktreeSession), Hme());
   let { agentDefinition: o, agentType: s } = restoreAgentFromSession(
-      e.agentSetting,
-      n.mainThreadAgentDefinition,
-      n.agentDefinitions,
+      result.agentSetting,
+      context.mainThreadAgentDefinition,
+      context.agentDefinitions,
     ),
-    i = await qhm(e.permissionMode, n.permissionModeCliSet);
-  if (t.forkSession) etn(e.messages);
-  let a = w7e(e.messages, n.initialState.mainLoopModel, (h) => e.messages.push(cc(h, "warning"))),
-    l = a ? C7e(e.messages, a, t.forkSession) : void 0,
+    i = await qhm(result.permissionMode, context.permissionModeCliSet);
+  if (opts.forkSession) etn(result.messages);
+  let a = w7e(result.messages, context.initialState.mainLoopModel, (h) =>
+      result.messages.push(cc(h, "warning")),
+    ),
+    l = a ? C7e(result.messages, a, opts.forkSession) : void 0,
     c;
   if (i) {
     let { transitionPermissionMode: h } = await Promise.resolve().then(() => (__(), T6n)),
-      y = n.initialState.toolPermissionContext;
+      y = context.initialState.toolPermissionContext;
     try {
       c = {
         ...h(y.mode, i, y),
@@ -394,45 +399,47 @@ async function processResumedConversation(e, t, n) {
       T(`[sessionRestore] transitionPermissionMode rejected restored mode '${i}': ${b}`);
     }
   }
-  Z1e(n.modeApi?.isCoordinatorMode() ? "coordinator" : "normal");
-  let u = t.includeAttribution ? Whm(e) : void 0,
-    d = Zen(e.agentName, e.agentColor),
-    p = n.initialState.standaloneAgentContext
+  Z1e(context.modeApi?.isCoordinatorMode() ? "coordinator" : "normal");
+  let u = opts.includeAttribution ? Whm(result) : void 0,
+    d = Zen(result.agentName, result.agentColor),
+    p = context.initialState.standaloneAgentContext
       ? {
           ...d,
-          ...n.initialState.standaloneAgentContext,
+          ...context.initialState.standaloneAgentContext,
         }
       : d;
   JY(p?.name);
-  let f = await Xhm(!!r, n.currentCwd, n.cliAgents, n.agentDefinitions),
-    m = n.initialState.initialMessage;
+  let f = await Xhm(!!r, context.currentCwd, context.cliAgents, context.agentDefinitions),
+    m = context.initialState.initialMessage;
   if (
     Oe.CLAUDE_CODE_RESUME_INTERRUPTED_TURN &&
-    e.turnInterruptionState?.kind === "interrupted_prompt" &&
-    Y1(e.turnInterruptionState.message.origin)
+    result.turnInterruptionState?.kind === "interrupted_prompt" &&
+    Y1(result.turnInterruptionState.message.origin)
   )
     (T("[sessionRestore] Auto-resuming interrupted turn for bg crash-respawn"),
-      t9t(e.messages, e.turnInterruptionState.message),
+      t9t(result.messages, result.turnInterruptionState.message),
       (m = {
-        message: e.turnInterruptionState.message,
+        message: result.turnInterruptionState.message,
       }));
-  let g = n.initialState;
+  let g = context.initialState;
   return (
-    (Bzo(), ro(Nzo)).restoreGoalFromTranscript(e.messages, (h) => {
+    (Bzo(), ro(Nzo)).restoreGoalFromTranscript(result.messages, (h) => {
       g = h(g);
     }),
     {
-      messages: e.messages.filter((h) => !(h.type === "system" && h.subtype === "bridge_status")),
-      fileHistorySnapshots: e.fileHistorySnapshots,
-      contentReplacements: e.contentReplacements,
-      agentName: e.agentName,
-      agentColor: e.agentColor === "default" ? void 0 : e.agentColor,
+      messages: result.messages.filter(
+        (h) => !(h.type === "system" && h.subtype === "bridge_status"),
+      ),
+      fileHistorySnapshots: result.fileHistorySnapshots,
+      contentReplacements: result.contentReplacements,
+      agentName: result.agentName,
+      agentColor: result.agentColor === "default" ? void 0 : result.agentColor,
       restoredAgentDef: o,
       initialState: {
         ...g,
         initialMessage: m,
-        ...(!t.forkSession &&
-          e.bridgeSessionId &&
+        ...(!opts.forkSession &&
+          result.bridgeSessionId &&
           !(g.replBridgeEnabled && !g.replBridgeOutboundOnly) && {
             replBridgeEnabled: !0,
             replBridgeOutboundOnly: !1,

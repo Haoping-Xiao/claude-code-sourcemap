@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.3597  score=0.5358  fileCov=0.5226
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function AsyncAgentDetailDialog(e) {
+function AsyncAgentDetailDialog(t0) {
   let t = d8l.c(63),
-    { agent: n, onDone: r, onKillAgent: o, onBack: s, killAllAgentsShortcut: i } = e,
+    { agent: n, onDone: r, onKillAgent: o, onBack: s, killAllAgentsShortcut: i } = t0,
     [a] = na(),
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((l = F$(b1())), (t[0] = l));

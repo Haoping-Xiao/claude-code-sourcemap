@@ -8,11 +8,11 @@ function Abe(e, t) {
   let n = t ? `${e}@${t.toLowerCase()}` : e;
   return eFt(n);
 }
-function getTelemetryPluginScope(e, t, n) {
-  if (t === FKd) return "default-bundle";
-  if (zD(t)) return "official";
-  if (t !== void 0 && JRt.has(t.toLowerCase())) return "community";
-  if (n?.has(e)) return "org";
+function getTelemetryPluginScope(name, marketplace, managedNames) {
+  if (marketplace === FKd) return "default-bundle";
+  if (zD(marketplace)) return "official";
+  if (marketplace !== void 0 && JRt.has(marketplace.toLowerCase())) return "community";
+  if (managedNames?.has(name)) return "org";
   return "user-local";
 }
 function Q0e(e) {
@@ -81,10 +81,11 @@ function Elt({
     skillNameHash: GKd(t, i),
   };
 }
-function getEnabledVia(e, t, n) {
-  if (e.isBuiltin) return "default-enable";
-  if (t?.has(e.name)) return "org-policy";
-  if (n.some((r) => e.path.startsWith(r.endsWith(meo.sep) ? r : r + meo.sep))) return "seed-mount";
+function getEnabledVia(plugin, managedNames, seedDirs) {
+  if (plugin.isBuiltin) return "default-enable";
+  if (managedNames?.has(plugin.name)) return "org-policy";
+  if (seedDirs.some((r) => plugin.path.startsWith(r.endsWith(meo.sep) ? r : r + meo.sep)))
+    return "seed-mount";
   return "user-install";
 }
 function WKd(e, t, n = null) {
@@ -160,12 +161,12 @@ function OKi(e, t) {
       ke(r);
     }
 }
-function logPluginsEnabledForSession(e, t, n) {
+function logPluginsEnabledForSession(plugins, managedNames, seedDirs) {
   let r = sg(),
     o = Dt().numStartups,
     s = Date.now(),
     i = [];
-  for (let a of e) {
+  for (let a of plugins) {
     let { marketplace: l } = Qo(a.repository),
       c = rFt(a.repository);
     if (!c) i.push(a.repository);
@@ -175,8 +176,8 @@ function logPluginsEnabledForSession(e, t, n) {
             sessionsSinceLastUse: 0,
             daysSinceLastUse: 0,
           },
-      p = getTelemetryPluginScope(a.name, l, t),
-      f = getEnabledVia(a, t, n),
+      p = getTelemetryPluginScope(a.name, l, managedNames),
+      f = getEnabledVia(a, managedNames, seedDirs),
       m = (a.skillsPath ? 1 : 0) + (a.skillsPaths?.length ?? 0),
       g = (a.commandsPath ? 1 : 0) + (a.commandsPaths?.length ?? 0),
       h = (a.agentsPath ? 1 : 0) + (a.agentsPaths?.length ?? 0),
@@ -202,7 +203,7 @@ function logPluginsEnabledForSession(e, t, n) {
       safe_mode: String(Tl()),
     }),
       G("tengu_plugin_enabled_for_session", {
-        ...x8(a.name, l, t),
+        ...x8(a.name, l, managedNames),
         enabled_via: $e(f),
         skill_path_count: m,
         command_path_count: g,
@@ -225,8 +226,8 @@ function logPluginsEnabledForSession(e, t, n) {
   }
   if (i.length > 0) jPn(i);
 }
-function classifyPluginCommandError(e) {
-  let t = String(e?.message ?? e);
+function classifyPluginCommandError(error) {
+  let t = String(error?.message ?? error);
   if (
     /ENOTFOUND|ECONNREFUSED|EAI_AGAIN|ETIMEDOUT|ECONNRESET|network|Could not resolve|Connection refused|timed out/i.test(
       t,
@@ -238,8 +239,8 @@ function classifyPluginCommandError(e) {
   if (/invalid|malformed|schema|validation|parse error/i.test(t)) return "validation";
   return "unknown";
 }
-function logPluginLoadErrors(e, t, n) {
-  for (let r of e) {
+function logPluginLoadErrors(errors, managedNames, n) {
+  for (let r of errors) {
     let { name: o, marketplace: s } = Qo(r.source),
       i = "plugin" in r && r.plugin ? r.plugin : o;
     G("tengu_plugin_load_failed", {
@@ -252,7 +253,7 @@ function logPluginLoadErrors(e, t, n) {
         r.errno && {
           errno: r.errno,
         }),
-      ...x8(i, s, t),
+      ...x8(i, s, managedNames),
     });
   }
 }

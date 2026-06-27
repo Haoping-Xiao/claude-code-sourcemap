@@ -110,8 +110,8 @@ function isTeamLead(e) {
   if (!t) return true;
   return false;
 }
-function hasActiveInProcessTeammates(e) {
-  for (let t of Object.values(e.tasks))
+function hasActiveInProcessTeammates(appState) {
+  for (let t of Object.values(appState.tasks))
     if (t.type === "in_process_teammate" && t.status === "running") return true;
   return false;
 }

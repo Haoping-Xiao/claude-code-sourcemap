@@ -174,68 +174,68 @@ async function mct(e) {
       }
     : parseForSecurityFromAst(e, t);
 }
-function parseForSecurityFromAst(e, t) {
-  if (noo.test(e))
+function parseForSecurityFromAst(cmd, root) {
+  if (noo.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains lone surrogate",
       differential: true,
     };
-  if (too.test(e))
+  if (too.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains control characters",
       differential: true,
     };
-  if (Hrp.test(e))
+  if (Hrp.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains Unicode whitespace",
       differential: true,
     };
-  if (roo.test(e))
+  if (roo.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains backslash-escaped whitespace",
       differential: true,
     };
-  if (EOn.test(e))
+  if (EOn.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains zsh ~[ dynamic directory syntax",
       differential: true,
     };
-  if (AOn.test(e))
+  if (AOn.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains zsh =cmd equals expansion",
       differential: true,
     };
-  if (ioo.test(e))
+  if (ioo.test(cmd))
     return {
       kind: "too-complex",
       reason: "Contains zsh <N-M> numeric-range glob",
       differential: true,
     };
-  if (Trp.test(wrp(e)))
+  if (Trp.test(wrp(cmd)))
     return {
       kind: "too-complex",
       reason: "Contains brace with quote character (expansion obfuscation)",
       differential: true,
     };
-  if (e.trim() === "")
+  if (cmd.trim() === "")
     return {
       kind: "simple",
       commands: [],
       bareAssignmentNames: [],
     };
-  if (t === wue)
+  if (root === wue)
     return {
       kind: "too-complex",
       reason: "Parser aborted (timeout, resource limit, or over-length)",
       nodeType: "PARSE_ABORT",
     };
-  let r = Buffer.from(e, "utf8"),
+  let r = Buffer.from(cmd, "utf8"),
     o = (c) => c === 32 || c === 9 || c === 10 || c === 13 || c === 59 || c === 38,
     s = (c, u) => {
       let d = c;
@@ -248,7 +248,7 @@ function parseForSecurityFromAst(e, t) {
       }
       return d;
     },
-    i = t.children
+    i = root.children
       .filter((c) => c !== null)
       .map((c) => [c.startIndex, c.endIndex])
       .sort((c, u) => c[0] - u[0]),
@@ -266,8 +266,8 @@ function parseForSecurityFromAst(e, t) {
       kind: "too-complex",
       reason: "Parser did not consume trailing input",
     };
-  let l = Crp(t);
-  if (l.kind === "too-complex" && l.nodeType !== "ERROR" && hra(t))
+  let l = Crp(root);
+  if (l.kind === "too-complex" && l.nodeType !== "ERROR" && hra(root))
     return {
       ...l,
       nodeType: "ERROR",
@@ -291,74 +291,75 @@ function Crp(e) {
     bareAssignmentNames: r,
   };
 }
-function collectCommands(e, t, n, r) {
-  if (e.type === "command") {
-    let o = walkCommand(e, [], t, n, r);
+function collectCommands(node, commands, varScope, r) {
+  if (node.type === "command") {
+    let o = walkCommand(node, [], commands, varScope, r);
     if (o.kind !== "simple") return o;
-    return (t.push(...o.commands), null);
+    return (commands.push(...o.commands), null);
   }
-  if (e.type === "redirected_statement") return walkRedirectedStatement(e, t, n, r);
-  if (e.type === "comment") return null;
-  if (pra.has(e.type)) {
-    let o = e.type === "pipeline",
+  if (node.type === "redirected_statement")
+    return walkRedirectedStatement(node, commands, varScope, r);
+  if (node.type === "comment") return null;
+  if (pra.has(node.type)) {
+    let o = node.type === "pipeline",
       s = false;
     if (!o) {
-      for (let c of e.children)
+      for (let c of node.children)
         if (c && (c.type === "||" || c.type === "&")) {
           s = true;
           break;
         }
     }
-    let i = s ? new Map(n) : null,
-      a = o ? new Map(n) : n,
+    let i = s ? new Map(varScope) : null,
+      a = o ? new Map(varScope) : varScope,
       l = null;
-    for (let c of e.children) {
+    for (let c of node.children) {
       if (!c) continue;
       if (Gro.has(c.type)) {
         if (c.type === "||" || c.type === "|" || c.type === "|&" || c.type === "&") {
           if (c.type === "||") {
             l ??= new Set();
-            for (let p of n.keys()) l.add(p);
-            let d = i ?? n;
+            for (let p of varScope.keys()) l.add(p);
+            let d = i ?? varScope;
             a = new Map(d);
-            for (let [p, f] of n) if (d.get(p) !== f) a.set(p, VAR_PLACEHOLDER);
-            for (let p of d.keys()) if (!n.has(p)) a.set(p, VAR_PLACEHOLDER);
-          } else a = new Map(i ?? n);
+            for (let [p, f] of varScope) if (d.get(p) !== f) a.set(p, VAR_PLACEHOLDER);
+            for (let p of d.keys()) if (!varScope.has(p)) a.set(p, VAR_PLACEHOLDER);
+          } else a = new Map(i ?? varScope);
         } else if (l !== null) {
-          for (let d of l) n.set(d, VAR_PLACEHOLDER);
-          ((l = null), (a = n));
+          for (let d of l) varScope.set(d, VAR_PLACEHOLDER);
+          ((l = null), (a = varScope));
         }
         continue;
       }
-      let u = collectCommands(c, t, a, r);
+      let u = collectCommands(c, commands, a, r);
       if (u) return u;
     }
-    if (l !== null) for (let c of l) n.set(c, VAR_PLACEHOLDER);
-    if (o) H2t(n, a);
+    if (l !== null) for (let c of l) varScope.set(c, VAR_PLACEHOLDER);
+    if (o) H2t(varScope, a);
     return null;
   }
-  if (e.type === "negated_command") {
-    let o = t.length;
-    for (let s of e.children) {
+  if (node.type === "negated_command") {
+    let o = commands.length;
+    for (let s of node.children) {
       if (!s) continue;
       if (s.type === "!") continue;
-      let i = collectCommands(s, t, n, r);
+      let i = collectCommands(s, commands, varScope, r);
       if (i) return i;
     }
-    if (t.length === o)
-      t.push({
+    if (commands.length === o)
+      commands.push({
         argv: ["true"],
         envVars: [],
         redirects: [],
-        text: e.text,
+        text: node.text,
       });
     return null;
   }
-  if (e.type === "declaration_command") {
-    let o = t.length,
-      s = new Map(n),
+  if (node.type === "declaration_command") {
+    let o = commands.length,
+      s = new Map(varScope),
       i = [];
-    for (let a of e.children) {
+    for (let a of node.children) {
       if (!a) continue;
       switch (a.type) {
         case "export":
@@ -373,7 +374,7 @@ function collectCommands(e, t, n, r) {
         case "raw_string":
         case "string":
         case "concatenation": {
-          let l = walkArgument(a, t, s, r);
+          let l = walkArgument(a, commands, s, r);
           if (typeof l !== "string") return l;
           if (/^[+-].*m/.test(l))
             return {
@@ -420,7 +421,7 @@ function collectCommands(e, t, n, r) {
                 let d = u.endsWith("+"),
                   p = d ? u.slice(0, -1) : u;
                 (jro(
-                  n,
+                  varScope,
                   {
                     name: p,
                     value: l.slice(c + 1),
@@ -436,9 +437,9 @@ function collectCommands(e, t, n, r) {
           break;
         }
         case "variable_assignment": {
-          let l = walkVariableAssignment(a, t, s, r);
+          let l = walkVariableAssignment(a, commands, s, r);
           if ("kind" in l) return l;
-          (jro(n, l, o > 0), r.push(l.name), i.push(`${l.name}=${l.value}`));
+          (jro(varScope, l, o > 0), r.push(l.name), i.push(`${l.name}=${l.value}`));
           break;
         }
         case "variable_name": {
@@ -461,18 +462,18 @@ function collectCommands(e, t, n, r) {
       }
     }
     return (
-      t.push({
+      commands.push({
         argv: i,
         envVars: [],
         redirects: [],
-        text: e.text,
+        text: node.text,
       }),
       null
     );
   }
-  if (e.type === "variable_assignment") {
-    let o = t.length,
-      s = walkVariableAssignment(e, t, n, r);
+  if (node.type === "variable_assignment") {
+    let o = commands.length,
+      s = walkVariableAssignment(node, commands, varScope, r);
     if ("kind" in s) return s;
     if (Zro(s.name))
       return {
@@ -486,13 +487,13 @@ function collectCommands(e, t, n, r) {
         reason: `${s.name} has integer attribute \u2014 assignment arith-evals RHS, executing subscript command substitution`,
         nodeType: "variable_assignment",
       };
-    return (jro(n, s, o > 0), r.push(s.name), null);
+    return (jro(varScope, s, o > 0), r.push(s.name), null);
   }
-  if (e.type === "for_statement") {
-    if (bI()) return tooComplex(e);
+  if (node.type === "for_statement") {
+    if (bI()) return tooComplex(node);
     let o = null,
       s = null;
-    for (let l of e.children) {
+    for (let l of node.children) {
       if (!l) continue;
       if (l.type === "variable_name") o = l.text;
       else if (l.type === "do_group") s = l;
@@ -504,45 +505,46 @@ function collectCommands(e, t, n, r) {
         };
       else if (l.type === "for" || l.type === "in" || l.type === ";") continue;
       else if (l.type === "command_substitution") {
-        let c = aoo(l, t, n, r);
+        let c = aoo(l, commands, varScope, r);
         if (c) return c;
       } else {
-        let c = walkArgument(l, t, n, r);
+        let c = walkArgument(l, commands, varScope, r);
         if (typeof c !== "string") return c;
       }
     }
-    if (o === null || s === null) return tooComplex(e);
+    if (o === null || s === null) return tooComplex(node);
     if (o === "PS4" || o === "IFS" || Zro(o) || moo.has(o) || Wro.has(o) || Era.has(o))
       return {
         kind: "too-complex",
         reason: `${o} as loop variable bypasses assignment validation`,
         nodeType: "for_statement",
       };
-    let i = n.get(o);
+    let i = varScope.get(o);
     if (i !== void 0 && !Bp(i))
       return {
         kind: "too-complex",
         reason: `for-loop variable '${o}' would overwrite tracked literal ${JSON.stringify(i.slice(0, 40))}; post-loop value cannot be statically determined`,
         nodeType: "for_statement",
       };
-    (n.delete(o), r.push(o));
-    let a = new Map(n);
+    (varScope.delete(o), r.push(o));
+    let a = new Map(varScope);
     (Fro(a, s), a.delete(o));
     for (let l of s.children) {
       if (!l) continue;
       if (l.type === "do" || l.type === "done" || l.type === ";") continue;
-      let c = collectCommands(l, t, a, r);
+      let c = collectCommands(l, commands, a, r);
       if (c) return c;
     }
-    return (H2t(n, a), null);
+    return (H2t(varScope, a), null);
   }
-  if (e.type === "if_statement" || e.type === "while_statement") {
-    if (e.type === "while_statement" && bI()) return tooComplex(e);
+  if (node.type === "if_statement" || node.type === "while_statement") {
+    if (node.type === "while_statement" && bI()) return tooComplex(node);
     let o = null,
       s = null;
-    if (e.type === "while_statement") ((o = new Set(n.keys())), (s = new Map(n)), Fro(n, e));
+    if (node.type === "while_statement")
+      ((o = new Set(varScope.keys())), (s = new Map(varScope)), Fro(varScope, node));
     let i = false;
-    for (let a of e.children) {
+    for (let a of node.children) {
       if (!a) continue;
       if (
         a.type === "if" ||
@@ -559,99 +561,99 @@ function collectCommands(e, t, n, r) {
         continue;
       }
       if (a.type === "do_group") {
-        let d = new Map(n);
+        let d = new Map(varScope);
         Fro(d, a);
         for (let p of a.children) {
           if (!p) continue;
           if (p.type === "do" || p.type === "done" || p.type === ";") continue;
-          let f = collectCommands(p, t, d, r);
+          let f = collectCommands(p, commands, d, r);
           if (f) return f;
         }
-        H2t(n, d);
+        H2t(varScope, d);
         continue;
       }
       if (a.type === "elif_clause" || a.type === "else_clause") {
-        let d = new Map(n);
+        let d = new Map(varScope);
         for (let p of a.children) {
           if (!p) continue;
           if (p.type === "elif" || p.type === "else" || p.type === "then" || p.type === ";")
             continue;
-          let f = collectCommands(p, t, d, r);
+          let f = collectCommands(p, commands, d, r);
           if (f) return f;
         }
-        H2t(n, d);
+        H2t(varScope, d);
         continue;
       }
-      let l = new Map(n),
-        c = t.length,
-        u = collectCommands(a, t, l, r);
+      let l = new Map(varScope),
+        c = commands.length,
+        u = collectCommands(a, commands, l, r);
       if (u) return u;
       if (!i) {
         for (let [d, p] of l) {
-          let f = (s ?? n).get(d);
+          let f = (s ?? varScope).get(d);
           if (f !== void 0 && !Bp(f) && p !== f)
             return {
               kind: "too-complex",
               reason: `'${d}' was tracked as literal '${f}' but condition may modify it (||/pipeline/unset/&&-short-circuit) \u2014 cannot prove downstream value`,
-              nodeType: e.type,
+              nodeType: node.type,
             };
-          n.set(d, p);
+          varScope.set(d, p);
         }
-        for (let d of n.keys())
+        for (let d of varScope.keys())
           if (!l.has(d)) {
-            let p = (s ?? n).get(d);
+            let p = (s ?? varScope).get(d);
             if (p !== void 0 && !Bp(p))
               return {
                 kind: "too-complex",
                 reason: `'${d}' was tracked as literal '${p}' but condition may unset it (&&-short-circuit) \u2014 cannot prove downstream value`,
-                nodeType: e.type,
+                nodeType: node.type,
               };
-            n.set(d, VAR_PLACEHOLDER);
+            varScope.set(d, VAR_PLACEHOLDER);
           }
-        for (let d = c; d < t.length; d++) {
-          let p = t[d];
+        for (let d = c; d < commands.length; d++) {
+          let p = commands[d];
           if (p?.argv[0] === "read") {
             for (let m of p.argv.slice(1))
               if (!m.startsWith("-") && /^[A-Za-z_][A-Za-z0-9_]*$/.test(m)) {
-                let g = n.get(m);
+                let g = varScope.get(m);
                 if (g !== void 0 && !Bp(g))
                   return {
                     kind: "too-complex",
                     reason: `'read ${m}' in condition may not execute (||/pipeline/subshell); cannot prove it overwrites tracked literal '${g}'`,
-                    nodeType: e.type,
+                    nodeType: node.type,
                   };
-                n.set(m, VAR_PLACEHOLDER);
+                varScope.set(m, VAR_PLACEHOLDER);
               }
-            let f = n.get("REPLY");
+            let f = varScope.get("REPLY");
             if (f !== void 0 && !Bp(f))
               return {
                 kind: "too-complex",
                 reason: `'read' in condition may write stdin to REPLY; cannot prove it overwrites tracked literal '${f}'`,
-                nodeType: e.type,
+                nodeType: node.type,
               };
-            n.set("REPLY", VAR_PLACEHOLDER);
+            varScope.set("REPLY", VAR_PLACEHOLDER);
           }
         }
-      } else H2t(n, l);
+      } else H2t(varScope, l);
     }
     if (o !== null) {
-      for (let a of [...n.keys()]) if (!o.has(a)) n.delete(a);
+      for (let a of [...varScope.keys()]) if (!o.has(a)) varScope.delete(a);
     }
     return null;
   }
-  if (e.type === "subshell") {
-    let o = new Map(n);
-    for (let s of e.children) {
+  if (node.type === "subshell") {
+    let o = new Map(varScope);
+    for (let s of node.children) {
       if (!s) continue;
       if (s.type === "(" || s.type === ")") continue;
-      let i = collectCommands(s, t, o, r);
+      let i = collectCommands(s, commands, o, r);
       if (i) return i;
     }
     return null;
   }
-  if (e.type === "test_command") {
+  if (node.type === "test_command") {
     let o = ["[["];
-    for (let s of e.children) {
+    for (let s of node.children) {
       if (!s) continue;
       if (s.type === "[[" || s.type === "]]" || s.type === "[" || s.type === "]") {
         if (s.text === "")
@@ -662,24 +664,24 @@ function collectCommands(e, t, n, r) {
           };
         continue;
       }
-      let i = walkTestExpr(s, o, t, n, r);
+      let i = walkTestExpr(s, o, commands, varScope, r);
       if (i) return i;
     }
     return (
-      t.push({
+      commands.push({
         argv: o,
         envVars: [],
         redirects: [],
-        text: e.text,
+        text: node.text,
       }),
       null
     );
   }
-  if (e.type === "unset_command") {
+  if (node.type === "unset_command") {
     let o = [],
       s = false,
       i = false;
-    for (let a of e.children) {
+    for (let a of node.children) {
       if (!a) continue;
       switch (a.type) {
         case "unset":
@@ -694,10 +696,10 @@ function collectCommands(e, t, n, r) {
               reason: `'unset' targets shell variable ${a.text} (exec-influencing / integer-attr / IFS / PS4)`,
               nodeType: "unset_command",
             };
-          n.set(a.text, "");
+          varScope.set(a.text, "");
           break;
         case "word": {
-          let l = walkArgument(a, t, n, r);
+          let l = walkArgument(a, commands, varScope, r);
           if (typeof l !== "string") return l;
           if (l.startsWith("-")) {
             if (i) return tooComplex(a);
@@ -714,7 +716,7 @@ function collectCommands(e, t, n, r) {
               reason: `'unset' targets shell variable ${l} (exec-influencing / integer-attr / IFS / PS4)`,
               nodeType: "unset_command",
             };
-          n.set(l, "");
+          varScope.set(l, "");
           break;
         }
         default:
@@ -722,26 +724,26 @@ function collectCommands(e, t, n, r) {
       }
     }
     return (
-      t.push({
+      commands.push({
         argv: o,
         envVars: [],
         redirects: [],
-        text: e.text,
+        text: node.text,
       }),
       null
     );
   }
-  return tooComplex(e);
+  return tooComplex(node);
 }
-function walkTestExpr(e, t, n, r, o) {
-  switch (e.type) {
+function walkTestExpr(node, argv, innerCommands, varScope, o) {
+  switch (node.type) {
     case "unary_expression":
     case "binary_expression":
     case "negated_expression":
     case "parenthesized_expression": {
-      for (let s of e.children) {
+      for (let s of node.children) {
         if (!s) continue;
-        let i = walkTestExpr(s, t, n, r, o);
+        let i = walkTestExpr(s, argv, innerCommands, varScope, o);
         if (i) return i;
       }
       return null;
@@ -758,18 +760,18 @@ function walkTestExpr(e, t, n, r, o) {
     case "<":
     case ">":
     case "=~":
-      return (t.push(e.text), null);
+      return (argv.push(node.text), null);
     case "regex":
     case "extglob_pattern":
-      if (/\$[({[\w#?!*@$'"+~^=-]|`|[<>]\(/.test(e.text))
+      if (/\$[({[\w#?!*@$'"+~^=-]|`|[<>]\(/.test(node.text))
         return {
           kind: "too-complex",
-          reason: `[[ ]] ${e.type} contains expansion / command / process substitution`,
-          nodeType: e.type,
+          reason: `[[ ]] ${node.type} contains expansion / command / process substitution`,
+          nodeType: node.type,
           differential: true,
         };
-      if (e.type === "regex") {
-        let s = e.text,
+      if (node.type === "regex") {
+        let s = node.text,
           i = 0,
           a = 0;
         while (a < s.length) {
@@ -796,31 +798,31 @@ function walkTestExpr(e, t, n, r, o) {
           return {
             kind: "too-complex",
             reason: "[[ ]] regex has unbalanced parentheses (parser desync)",
-            nodeType: e.type,
+            nodeType: node.type,
             differential: true,
           };
       }
-      return (t.push(e.text), null);
+      return (argv.push(node.text), null);
     default: {
-      let s = walkArgument(e, n, r, o);
+      let s = walkArgument(node, innerCommands, varScope, o);
       if (typeof s !== "string") return s;
       if (/]].*[;\n&|<>]/s.test(s))
         return {
           kind: "too-complex",
           reason:
             "[[ ]] quoted operand contains `]]` + command separator \u2014 possible parser quote-state desync",
-          nodeType: e.type,
+          nodeType: node.type,
         };
-      return (t.push(s), null);
+      return (argv.push(s), null);
     }
   }
 }
-function walkRedirectedStatement(e, t, n, r) {
+function walkRedirectedStatement(node, commands, varScope, r) {
   let o = [],
     s = null,
     i = [],
     a = [];
-  for (let u of e.children) {
+  for (let u of node.children) {
     if (!u) continue;
     if (u.type === "file_redirect") i.push(u);
     else if (u.type === "heredoc_redirect") a.push(u);
@@ -837,7 +839,7 @@ function walkRedirectedStatement(e, t, n, r) {
   }
   if (!s) {
     for (let u of i) {
-      let d = walkFileRedirect(u, t, n, r);
+      let d = walkFileRedirect(u, commands, varScope, r);
       if ("kind" in d) return d;
       o.push(d);
     }
@@ -846,41 +848,41 @@ function walkRedirectedStatement(e, t, n, r) {
       if (d) return d;
     }
     return (
-      t.push({
+      commands.push({
         argv: [],
         envVars: [],
         redirects: o,
-        text: e.text,
+        text: node.text,
       }),
       null
     );
   }
-  let l = t.length,
+  let l = commands.length,
     c;
   if (s.type === "list") {
     let u = s.children;
     if (u.length === 3 && u[0] && u[1]?.type === "&&" && u[2]) {
-      let d = collectCommands(u[0], t, n, r);
+      let d = collectCommands(u[0], commands, varScope, r);
       if (d) return d;
-      c = new Map(n);
-      let p = collectCommands(u[2], t, n, r);
+      c = new Map(varScope);
+      let p = collectCommands(u[2], commands, varScope, r);
       if (p) return p;
     } else {
-      let d = collectCommands(s, t, n, r);
+      let d = collectCommands(s, commands, varScope, r);
       if (d) return d;
-      c = n;
+      c = varScope;
     }
   } else if (pra.has(s.type)) {
-    let u = collectCommands(s, t, n, r);
+    let u = collectCommands(s, commands, varScope, r);
     if (u) return u;
-    c = n;
+    c = varScope;
   } else {
-    c = new Map(n);
-    let u = collectCommands(s, t, n, r);
+    c = new Map(varScope);
+    let u = collectCommands(s, commands, varScope, r);
     if (u) return u;
   }
   for (let u of i) {
-    let d = walkFileRedirect(u, t, c, r);
+    let d = walkFileRedirect(u, commands, c, r);
     if ("kind" in d) return d;
     o.push(d);
   }
@@ -889,68 +891,68 @@ function walkRedirectedStatement(e, t, n, r) {
     if (d) return d;
   }
   if (o.length > 0)
-    if (t.length > l) {
-      let u = t.at(-1);
+    if (commands.length > l) {
+      let u = commands.at(-1);
       if (u) u.redirects.push(...o);
     } else
-      t.push({
+      commands.push({
         argv: [],
         envVars: [],
         redirects: o,
-        text: e.text,
+        text: node.text,
       });
   return null;
 }
-function walkFileRedirect(e, t, n, r) {
+function walkFileRedirect(node, innerCommands, varScope, r) {
   let o = null,
     s = null,
     i;
   {
-    let a = e.startIndex;
-    for (let l of e.children) {
+    let a = node.startIndex;
+    for (let l of node.children) {
       if (!l) continue;
       if (l.startIndex > a) {
-        let c = Buffer.from(e.text, "utf8")
-          .subarray(a - e.startIndex, l.startIndex - e.startIndex)
+        let c = Buffer.from(node.text, "utf8")
+          .subarray(a - node.startIndex, l.startIndex - node.startIndex)
           .toString("utf8");
         if (!/^(?:[ \t]|\\\n)*$/.test(c))
           return {
             kind: "too-complex",
             reason:
               "Redirect has unparsed bytes between children \u2014 parser dropped content that shell will see",
-            nodeType: e.type,
+            nodeType: node.type,
           };
       }
       a = l.endIndex;
     }
-    if (a < e.endIndex) {
-      let l = Buffer.from(e.text, "utf8")
-        .subarray(a - e.startIndex)
+    if (a < node.endIndex) {
+      let l = Buffer.from(node.text, "utf8")
+        .subarray(a - node.startIndex)
         .toString("utf8");
       if (!/^(?:[ \t]|\\\n)*$/.test(l))
         return {
           kind: "too-complex",
           reason:
             "Redirect has unparsed trailing bytes \u2014 parser dropped content that shell will see",
-          nodeType: e.type,
+          nodeType: node.type,
         };
     }
   }
-  for (let a of e.children) {
+  for (let a of node.children) {
     if (!a) continue;
     if (a.type === "file_descriptor") i = Number(a.text);
     else if (a.type === "variable_name")
       return {
         kind: "too-complex",
         reason: `Redirect uses {${a.text}} fd-variable assignment \u2014 modifies shell variable as side effect`,
-        nodeType: e.type,
+        nodeType: node.type,
       };
     else if (a.type in sra) o = sra[a.type] ?? null;
     else if (s !== null)
       return {
         kind: "too-complex",
         reason: "Redirect has multiple targets \u2014 post-redirect args swallowed",
-        nodeType: e.type,
+        nodeType: node.type,
       };
     else if (a.type === "word" || a.type === "number") {
       if (a.children.length > 0) return tooComplex(a);
@@ -967,11 +969,11 @@ function walkFileRedirect(e, t, n, r) {
       );
     } else if (a.type === "raw_string") s = Ara(a.text);
     else if (a.type === "string") {
-      let l = walkString(a, t, n, r);
+      let l = walkString(a, innerCommands, varScope, r);
       if (typeof l !== "string") return l;
       s = l;
     } else if (a.type === "concatenation") {
-      let l = walkArgument(a, t, n, r);
+      let l = walkArgument(a, innerCommands, varScope, r);
       if (typeof l !== "string") return l;
       if (/(?:^|[^\\])(?:\\\\)*[`$]/.test(a.text))
         return {
@@ -987,13 +989,13 @@ function walkFileRedirect(e, t, n, r) {
     return {
       kind: "too-complex",
       reason: "Unrecognized redirect shape",
-      nodeType: e.type,
+      nodeType: node.type,
     };
   if (Bp(s))
     return {
       kind: "too-complex",
       reason: "Redirect target contains $(cmd) output \u2014 path is runtime-determined",
-      nodeType: e.type,
+      nodeType: node.type,
     };
   if (
     s.includes(`
@@ -1002,26 +1004,26 @@ function walkFileRedirect(e, t, n, r) {
     return {
       kind: "too-complex",
       reason: "Redirect target contains newline \u2014 potential path traversal",
-      nodeType: e.type,
+      nodeType: node.type,
     };
   if (s.startsWith("!"))
     return {
       kind: "too-complex",
       reason: "Redirect target starts with ! \u2014 zsh clobber or history expansion",
-      nodeType: e.type,
+      nodeType: node.type,
     };
   if (s.startsWith("="))
     return {
       kind: "too-complex",
       reason: "Redirect target starts with = \u2014 zsh expands to PATH binary",
-      nodeType: e.type,
+      nodeType: node.type,
     };
   if (o === ">&" && !/^[A-Za-z0-9./_-]+$/.test(s))
     return {
       kind: "too-complex",
       reason:
         "bash `>&` applies a second word-expansion pass to its target \u2014 path cannot be statically validated",
-      nodeType: e.type,
+      nodeType: node.type,
     };
   return {
     op: o,
@@ -1029,11 +1031,11 @@ function walkFileRedirect(e, t, n, r) {
     fd: i,
   };
 }
-function walkHeredocRedirect(e) {
+function walkHeredocRedirect(node) {
   let t = null,
     n = null,
     r = false;
-  for (let s of e.children) {
+  for (let s of node.children) {
     if (!s) continue;
     if (s.type === "heredoc_start") t = s.text;
     else if (s.type === "heredoc_body") n = s;
@@ -1324,11 +1326,11 @@ function krp(e, t, n, r) {
   }
   return (r.push(...s), null);
 }
-function walkCommand(e, t, n, r, o) {
+function walkCommand(node, extraRedirects, innerCommands, varScope, o) {
   let s = [],
     i = [],
-    a = [...t];
-  for (let u of e.children) {
+    a = [...extraRedirects];
+  for (let u of node.children) {
     if (!u) continue;
     switch (u.type) {
       case "variable_assignment": {
@@ -1341,7 +1343,7 @@ function walkCommand(e, t, n, r, o) {
               nodeType: "variable_assignment",
             };
         }
-        let d = walkVariableAssignment(u, n, r, o);
+        let d = walkVariableAssignment(u, innerCommands, varScope, o);
         if ("kind" in d) return d;
         if (wra(d.name, d.value))
           return {
@@ -1361,7 +1363,7 @@ function walkCommand(e, t, n, r, o) {
           if (d.type === "simple_expansion" || d.type === "expansion") return tooComplex(d);
           if ((d.type === "string" || d.type === "concatenation") && Hra(d)) return tooComplex(d);
         }
-        let p = walkArgument(d, n, r, o);
+        let p = walkArgument(d, innerCommands, varScope, o);
         if (typeof p !== "string") return p;
         s.push(p);
         break;
@@ -1372,7 +1374,7 @@ function walkCommand(e, t, n, r, o) {
       case "string":
       case "concatenation":
       case "arithmetic_expansion": {
-        let d = walkArgument(u, n, r, o);
+        let d = walkArgument(u, innerCommands, varScope, o);
         if (typeof d !== "string") return d;
         if (/^--?[\nA-Za-z0-9_]/.test(d) && Bp(d))
           return {
@@ -1384,19 +1386,19 @@ function walkCommand(e, t, n, r, o) {
         break;
       }
       case "simple_expansion": {
-        let d = resolveSimpleExpansion(u, r, false);
+        let d = resolveSimpleExpansion(u, varScope, false);
         if (typeof d !== "string") return d;
         s.push(d);
         break;
       }
       case "file_redirect": {
-        let d = walkFileRedirect(u, n, r, o);
+        let d = walkFileRedirect(u, innerCommands, varScope, o);
         if ("kind" in d) return d;
         a.push(d);
         break;
       }
       case "herestring_redirect": {
-        let d = xrp(u, n, r, o);
+        let d = xrp(u, innerCommands, varScope, o);
         if (d) return d;
         break;
       }
@@ -1405,7 +1407,7 @@ function walkCommand(e, t, n, r, o) {
     }
   }
   {
-    let u = krp(s, i, r, o);
+    let u = krp(s, i, varScope, o);
     if (u) return u;
   }
   let l = (u, d) =>
@@ -1413,11 +1415,11 @@ function walkCommand(e, t, n, r, o) {
         ? `'${u.replaceAll("'", "'\\''")}'`
         : u,
     c =
-      /\$[A-Za-z_]/.test(e.text) ||
-      e.text.includes(`
+      /\$[A-Za-z_]/.test(node.text) ||
+      node.text.includes(`
 `)
         ? [...i.map((u) => `${u.name}=${l(u.value)}`), ...s.map((u, d) => l(u, d))].join(" ")
-        : e.text;
+        : node.text;
   return {
     kind: "simple",
     commands: [
@@ -1441,64 +1443,64 @@ function aoo(e, t, n, r) {
   }
   return null;
 }
-function walkArgument(e, t, n, r) {
-  if (!e)
+function walkArgument(node, innerCommands, varScope, r) {
+  if (!node)
     return {
       kind: "too-complex",
       reason: "Null argument node",
     };
-  switch (e.type) {
+  switch (node.type) {
     case "word": {
-      if (qro.test(e.text))
+      if (qro.test(node.text))
         return {
           kind: "too-complex",
           reason: "Word contains brace expansion syntax",
           nodeType: "word",
           differential: true,
         };
-      if (Vro.test(e.text) || zro.test(e.text))
+      if (Vro.test(node.text) || zro.test(node.text))
         return {
           kind: "too-complex",
           reason: "Brace body contains backslash-escaped brace",
           nodeType: "word",
           differential: true,
         };
-      if (ooo.test(e.text))
+      if (ooo.test(node.text))
         return {
           kind: "too-complex",
           reason: "Word contains unescaped ` or $ \u2014 parser missed expansion",
           nodeType: "word",
           differential: true,
         };
-      if (soo.test(e.text))
+      if (soo.test(node.text))
         return {
           kind: "too-complex",
           reason: "Word contains unescaped quote \u2014 parser absorbed quote into brace-body word",
           nodeType: "word",
         };
-      return e.text.replace(/\\(.)/g, "$1");
+      return node.text.replace(/\\(.)/g, "$1");
     }
     case "number":
-      if (e.children.length > 0)
+      if (node.children.length > 0)
         return {
           kind: "too-complex",
           reason: "Number node contains expansion (NN# arithmetic base syntax)",
-          nodeType: e.children[0]?.type,
+          nodeType: node.children[0]?.type,
         };
-      return e.text;
+      return node.text;
     case "raw_string":
-      return Ara(e.text);
+      return Ara(node.text);
     case "string":
-      return walkString(e, t, n, r);
+      return walkString(node, innerCommands, varScope, r);
     case "concatenation": {
-      if (qro.test(e.text))
+      if (qro.test(node.text))
         return {
           kind: "too-complex",
           reason: "Brace expansion",
           nodeType: "concatenation",
           differential: true,
         };
-      if (Vro.test(e.text) || zro.test(e.text))
+      if (Vro.test(node.text) || zro.test(node.text))
         return {
           kind: "too-complex",
           reason: "Brace body contains backslash-escaped brace",
@@ -1507,9 +1509,9 @@ function walkArgument(e, t, n, r) {
         };
       let o = "",
         s = false,
-        i = e.startIndex;
-      for (let a = 0; a < e.children.length; a++) {
-        let l = e.children[a];
+        i = node.startIndex;
+      for (let a = 0; a < node.children.length; a++) {
+        let l = node.children[a];
         if (!l) continue;
         if (l.startIndex > i)
           return {
@@ -1521,8 +1523,8 @@ function walkArgument(e, t, n, r) {
         if (((i = l.endIndex), l.type === "word" && l.text.includes("{"))) s = true;
         if (
           (l.type === "simple_expansion" || l.type === "expansion") &&
-          (e.children[a + 1]?.text.startsWith("[") ||
-            /^:[a-zA-Z&]/.test(e.children[a + 1]?.text ?? ""))
+          (node.children[a + 1]?.text.startsWith("[") ||
+            /^:[a-zA-Z&]/.test(node.children[a + 1]?.text ?? ""))
         )
           return {
             kind: "too-complex",
@@ -1530,7 +1532,7 @@ function walkArgument(e, t, n, r) {
             nodeType: "concatenation",
             differential: true,
           };
-        let c = walkArgument(l, t, n, r);
+        let c = walkArgument(l, innerCommands, varScope, r);
         if (typeof c !== "string") return c;
         o += c;
       }
@@ -1557,27 +1559,27 @@ function walkArgument(e, t, n, r) {
       return o;
     }
     case "arithmetic_expansion": {
-      let o = walkArithmetic(e);
+      let o = walkArithmetic(node);
       if (o) return o;
       return VAR_PLACEHOLDER;
     }
     case "simple_expansion":
-      return resolveSimpleExpansion(e, n, false);
+      return resolveSimpleExpansion(node, varScope, false);
     default:
-      return tooComplex(e);
+      return tooComplex(node);
   }
 }
-function walkString(e, t, n, r) {
+function walkString(node, innerCommands, varScope, r) {
   let o = "",
     s = -1,
     i = false,
     a = false,
     l = false;
-  for (let c of e.children) {
+  for (let c of node.children) {
     if (!c) continue;
     if (s !== -1 && c.startIndex > s) {
-      let u = Buffer.from(e.text, "utf8")
-        .subarray(s - e.startIndex, c.startIndex - e.startIndex)
+      let u = Buffer.from(node.text, "utf8")
+        .subarray(s - node.startIndex, c.startIndex - node.startIndex)
         .toString("utf8");
       if (u.includes("`"))
         return {
@@ -1597,7 +1599,7 @@ function walkString(e, t, n, r) {
         ((o += c.text.replace(/\\\n/g, "").replace(/\\([$`"\\])/g, "$1")), (a = true));
         break;
       case ira: {
-        let u = e.children[e.children.indexOf(c) + 1];
+        let u = node.children[node.children.indexOf(c) + 1];
         if (u?.type === "string_content") {
           if (u.text.startsWith("["))
             return {
@@ -1643,16 +1645,16 @@ function walkString(e, t, n, r) {
           ((o += p), (a = true));
           break;
         }
-        let d = aoo(c, t, n, r);
+        let d = aoo(c, innerCommands, varScope, r);
         if (d) return d;
         ((o += CMDSUB_PLACEHOLDER), (i = true));
         break;
       }
       case "simple_expansion": {
-        let u = resolveSimpleExpansion(c, n, true);
+        let u = resolveSimpleExpansion(c, varScope, true);
         if (typeof u !== "string") return u;
         {
-          let d = e.children[e.children.indexOf(c) + 1],
+          let d = node.children[node.children.indexOf(c) + 1],
             p = c.children.some((f) => f?.type === "special_variable_name");
           if (
             d?.type === "string_content" &&
@@ -1685,10 +1687,10 @@ function walkString(e, t, n, r) {
   }
   if (i) {
     if ([...o.replaceAll(CMDSUB_PLACEHOLDER, "").replaceAll(VAR_PLACEHOLDER, "")].length <= 1)
-      return tooComplex(e);
+      return tooComplex(node);
   }
-  if (!a && !i && !l && e.text.length > 2) {
-    let c = e.text.slice(1, -1);
+  if (!a && !i && !l && node.text.length > 2) {
+    let c = node.text.slice(1, -1);
     if (c.includes("`") || c.includes("$("))
       return {
         kind: "too-complex",
@@ -1700,8 +1702,8 @@ function walkString(e, t, n, r) {
   }
   return o;
 }
-function walkArithmetic(e) {
-  for (let t of e.children) {
+function walkArithmetic(node) {
+  for (let t of node.children) {
     if (!t) continue;
     if (t.children.length === 0) {
       if (!Lrp.test(t.text))
@@ -1727,9 +1729,9 @@ function walkArithmetic(e) {
   }
   return null;
 }
-function extractSafeCatHeredoc(e) {
+function extractSafeCatHeredoc(subNode) {
   let t = null;
-  for (let o of e.children) {
+  for (let o of subNode.children) {
     if (!o) continue;
     if (o.type === "$(" || o.type === ")") continue;
     if (o.type === "redirected_statement" && t === null) t = o;
@@ -1759,26 +1761,26 @@ function extractSafeCatHeredoc(e) {
   if (/\bsystem\s*\(/.test(r)) return "DANGEROUS";
   return r;
 }
-function walkVariableAssignment(e, t, n, r) {
+function walkVariableAssignment(node, innerCommands, varScope, r) {
   let o = null,
     s = "",
     i = false;
-  for (let a of e.children) {
+  for (let a of node.children) {
     if (!a) continue;
     if (a.type === "variable_name") o = a.text;
     else if (a.type === "=" || a.type === "+=") {
       i = a.type === "+=";
       continue;
     } else if (a.type === "command_substitution") {
-      let l = aoo(a, t, n, r);
+      let l = aoo(a, innerCommands, varScope, r);
       if (l) return l;
       s = CMDSUB_PLACEHOLDER;
     } else if (a.type === "simple_expansion") {
-      let l = resolveSimpleExpansion(a, n, true);
+      let l = resolveSimpleExpansion(a, varScope, true);
       if (typeof l !== "string") return l;
       s = l;
     } else {
-      let l = walkArgument(a, t, n, r);
+      let l = walkArgument(a, innerCommands, varScope, r);
       if (typeof l !== "string") return l;
       s = l;
     }
@@ -1834,10 +1836,10 @@ function walkVariableAssignment(e, t, n, r) {
     isAppend: i,
   };
 }
-function resolveSimpleExpansion(e, t, n) {
+function resolveSimpleExpansion(node, varScope, insideString) {
   let r = null,
     o = false;
-  for (let i of e.children) {
+  for (let i of node.children) {
     if (i?.type === "variable_name") {
       r = i.text;
       break;
@@ -1847,30 +1849,31 @@ function resolveSimpleExpansion(e, t, n) {
       break;
     }
   }
-  if (r === null) return tooComplex(e);
-  let s = t.get(r);
+  if (r === null) return tooComplex(node);
+  let s = varScope.get(r);
   if (s !== void 0) {
-    if (Era.has(r)) return n && Wro.has(r) && r !== "BASHPID" ? VAR_PLACEHOLDER : tooComplex(e);
+    if (Era.has(r))
+      return insideString && Wro.has(r) && r !== "BASHPID" ? VAR_PLACEHOLDER : tooComplex(node);
     if (Bp(s)) {
-      if (!n) return tooComplex(e);
+      if (!insideString) return tooComplex(node);
       return s;
     }
-    if (!n) {
-      if (s === "") return tooComplex(e);
-      if (ora.test(s)) return tooComplex(e);
+    if (!insideString) {
+      if (s === "") return tooComplex(node);
+      if (ora.test(s)) return tooComplex(node);
     }
     return s;
   }
   if (r === "HOME") {
     let i = dra.homedir();
-    if (!n && (i === "" || ora.test(i))) return tooComplex(e);
+    if (!insideString && (i === "" || ora.test(i))) return tooComplex(node);
     return i;
   }
-  if (n) {
+  if (insideString) {
     if (Wro.has(r)) return VAR_PLACEHOLDER;
     if (o && (Erp.has(r) || /^[0-9]+$/.test(r))) return VAR_PLACEHOLDER;
   }
-  return tooComplex(e);
+  return tooComplex(node);
 }
 function Fro(e, t) {
   T2t(t, e);
@@ -2132,16 +2135,16 @@ function Tra(e, t) {
   }
   return null;
 }
-function tooComplex(e) {
+function tooComplex(node) {
   return {
     kind: "too-complex",
     reason:
-      e.type === "ERROR"
+      node.type === "ERROR"
         ? "Parse error"
-        : mra.has(e.type)
-          ? `Contains ${e.type}`
-          : `Contains shell syntax (${e.type}) that cannot be statically analyzed`,
-    nodeType: e.type,
+        : mra.has(node.type)
+          ? `Contains ${node.type}`
+          : `Contains shell syntax (${node.type}) that cannot be statically analyzed`,
+    nodeType: node.type,
   };
 }
 function vra(e) {
@@ -2161,9 +2164,9 @@ function Zro(e) {
 function kRe(e) {
   return Zro(e) || e === "IFS" || e === "PS4" || e === "PROMPT4" || moo.has(e);
 }
-function checkSemantics(e) {
+function checkSemantics(commands) {
   let t = null;
-  for (let n of e) {
+  for (let n of commands) {
     let r = n.argv;
     for (;;) {
       let a = r[0]?.replace(/^.*[\\/]/, ""),

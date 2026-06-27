@@ -29,9 +29,9 @@ function xEf(e) {
       .pop() ?? "";
   return IEf.some((n) => n.test(t));
 }
-function startStallWatchdog(e, t, n, r, o) {
-  if (n === "monitor") return () => {};
-  let s = jm(e),
+function startStallWatchdog(taskId, description, kind, toolUseId, agentId) {
+  if (kind === "monitor") return () => {};
+  let s = jm(taskId),
     i = 0,
     a = Date.now(),
     l = false,
@@ -51,13 +51,13 @@ function startStallWatchdog(e, t, n, r, o) {
                 return;
               }
               ((l = true), clearInterval(c));
-              let p = r
+              let p = toolUseId
                   ? `
-<${YC}>${r}</${YC}>`
+<${YC}>${toolUseId}</${YC}>`
                   : "",
-                f = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" appears to be waiting for interactive input`,
+                f = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${description}" appears to be waiting for interactive input`,
                 m = `<${Oc}>
-<${Dp}>${e}</${Dp}>${p}
+<${Dp}>${taskId}</${Dp}>${p}
 <${pM}>${s}</${pM}>
 <${Zu}>${ec(f)}</${Zu}>
 </${Oc}>
@@ -69,7 +69,7 @@ The command is likely blocked on an interactive prompt. Stop this task and re-ru
                 value: m,
                 mode: "task-notification",
                 priority: "next",
-                agentId: o ?? ls(),
+                agentId: agentId ?? ls(),
               }),
                 xe("task_local_shell_stall_detected"));
             },
@@ -86,10 +86,19 @@ The command is likely blocked on an interactive prompt. Stop this task and re-ru
     }
   );
 }
-function enqueueShellNotification(e, t, n, r, o, s, i = "bash", a) {
+function enqueueShellNotification(
+  taskId,
+  description,
+  status,
+  exitCode,
+  setAppState,
+  toolUseId,
+  i = "bash",
+  agentId,
+) {
   let l = false;
   if (
-    (o.update(e, (f) => {
+    (setAppState.update(taskId, (f) => {
       if (f.notified) return f;
       return (
         (l = true),
@@ -102,43 +111,43 @@ function enqueueShellNotification(e, t, n, r, o, s, i = "bash", a) {
     !l)
   )
     return;
-  if (n === "completed") xe("task_local_shell");
-  else if (n === "failed") Le("task_local_shell", "task_local_shell_failed");
-  o.abortSpeculation();
+  if (status === "completed") xe("task_local_shell");
+  else if (status === "failed") Le("task_local_shell", "task_local_shell_failed");
+  setAppState.abortSpeculation();
   let c;
   if (i === "monitor")
-    switch (n) {
+    switch (status) {
       case "completed":
-        c = `Monitor "${t}" stream ended`;
+        c = `Monitor "${description}" stream ended`;
         break;
       case "failed":
-        c = `Monitor "${t}" script failed${r !== void 0 ? ` (exit ${r})` : ""}`;
+        c = `Monitor "${description}" script failed${exitCode !== void 0 ? ` (exit ${exitCode})` : ""}`;
         break;
       case "killed":
-        c = `Monitor "${t}" stopped`;
+        c = `Monitor "${description}" stopped`;
         break;
     }
   else
-    switch (n) {
+    switch (status) {
       case "completed":
-        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" completed${r !== void 0 ? ` (exit code ${r})` : ""}`;
+        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${description}" completed${exitCode !== void 0 ? ` (exit code ${exitCode})` : ""}`;
         break;
       case "failed":
-        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" failed${r !== void 0 ? ` with exit code ${r}` : ""}`;
+        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${description}" failed${exitCode !== void 0 ? ` with exit code ${exitCode}` : ""}`;
         break;
       case "killed":
-        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${t}" was stopped`;
+        c = `${BACKGROUND_BASH_SUMMARY_PREFIX}"${description}" was stopped`;
         break;
     }
-  let u = jm(e),
-    d = s
+  let u = jm(taskId),
+    d = toolUseId
       ? `
-<${YC}>${s}</${YC}>`
+<${YC}>${toolUseId}</${YC}>`
       : "",
     p = `<${Oc}>
-<${Dp}>${e}</${Dp}>${d}
+<${Dp}>${taskId}</${Dp}>${d}
 <${pM}>${u}</${pM}>
-<${up}>${n}</${up}>
+<${up}>${status}</${up}>
 <${Zu}>${ec(c)}</${Zu}>
 </${Oc}>`;
   if (
@@ -146,12 +155,12 @@ function enqueueShellNotification(e, t, n, r, o, s, i = "bash", a) {
       value: p,
       mode: "task-notification",
       priority: "next",
-      agentId: a ?? ls(),
+      agentId: agentId ?? ls(),
     }),
-    a !== void 0)
+    agentId !== void 0)
   )
-    xf(e, n === "killed" ? "stopped" : n, {
-      toolUseId: s,
+    xf(taskId, status === "killed" ? "stopped" : status, {
+      toolUseId: toolUseId,
       summary: c,
       outputFile: u,
     });
@@ -225,8 +234,8 @@ async function E$e(e, t) {
     }
   );
 }
-function spawnShellTask(e, t) {
-  let { taskId: n, command: r, description: o, toolUseId: s, kind: i, agentId: a } = e,
+function spawnShellTask(input, context) {
+  let { taskId: n, command: r, description: o, toolUseId: s, kind: i, agentId: a } = input,
     l = {
       ...LT(n, "local_bash", o, s),
       type: "local_bash",
@@ -234,17 +243,17 @@ function spawnShellTask(e, t) {
       command: r,
       cwd: $t(),
       completionStatusSentInAttachment: false,
-      shellCommand: e.shellCommand,
-      lastReportedTotalLines: e.lastReportedTotalLines,
+      shellCommand: input.shellCommand,
+      lastReportedTotalLines: input.lastReportedTotalLines,
       isBackgrounded: true,
       agentId: a !== void 0 ? Bu(a) : void 0,
       kind: i,
     };
-  (t.register(l),
-    e.shellCommand.result.then(async (c) => {
-      await kJn(e.shellCommand);
+  (context.register(l),
+    input.shellCommand.result.then(async (c) => {
+      await kJn(input.shellCommand);
       let u = c.interrupted ? "killed" : "completed";
-      t.update(n, (f) =>
+      context.update(n, (f) =>
         f.notified
           ? f
           : {
@@ -258,9 +267,9 @@ function spawnShellTask(e, t) {
               endTime: Date.now(),
             },
       );
-      let d = a !== void 0 ? t.get(a) : void 0,
+      let d = a !== void 0 ? context.get(a) : void 0,
         p = El(d) && (d.status === "running" || sw(d));
-      (enqueueShellNotification(n, o, u, c.code, t, s, i, p ? Bu(a) : void 0), jy(n));
+      (enqueueShellNotification(n, o, u, c.code, context, s, i, p ? Bu(a) : void 0), jy(n));
     }));
 }
 function yJn(e, t, n) {

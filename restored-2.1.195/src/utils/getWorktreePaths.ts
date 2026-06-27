@@ -9,10 +9,10 @@
   (IH = require("fs/promises")),
   (U6 = require("path")),
   (GQa = require("util")));
-async function getWorktreePaths(e) {
+async function getWorktreePaths(cwd) {
   let t = Date.now(),
     { stdout: n, code: r } = await Gr(go(), ["worktree", "list", "--porcelain"], {
-      cwd: e,
+      cwd: cwd,
       preserveOutputOnError: false,
     }),
     o = Date.now() - t;
@@ -37,7 +37,7 @@ async function getWorktreePaths(e) {
     worktree_count: s.length,
     success: true,
   });
-  let i = s.find((l) => e === l || e.startsWith(l + zQa.sep)),
+  let i = s.find((l) => cwd === l || cwd.startsWith(l + zQa.sep)),
     a = s.filter((l) => l !== i).sort((l, c) => l.localeCompare(c));
   return i ? [i, ...a] : a;
 }

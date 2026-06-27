@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.206  score=0.3257  fileCov=0.359
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ManagedSettingsSecurityDialog(e) {
+function ManagedSettingsSecurityDialog(t0) {
   let t = U1a.c(20),
-    { settings: n, onAccept: r, onReject: o } = e,
+    { settings: n, onAccept: r, onReject: o } = t0,
     s = Cft(n),
     i = B1a(s),
     a;

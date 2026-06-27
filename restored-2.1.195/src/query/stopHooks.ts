@@ -144,38 +144,50 @@ async function* Ixl(e, t, n, r, o) {
   });
   if (Js() || o === "sdk") await vc(f, 60000, "classifier write timed out").catch(() => {});
 }
-async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
+async function* handleStopHooks(
+  messagesForQuery,
+  assistantMessages,
+  systemPrompt,
+  userContext,
+  systemContext,
+  toolUseContext,
+  querySource,
+  stopHookActive,
+  l,
+  c,
+) {
   let u = Date.now(),
     d = {
-      messages: [...e, ...t],
-      systemPrompt: n,
-      userContext: r,
-      systemContext: o,
-      toolUseContext: s,
-      querySource: i,
+      messages: [...messagesForQuery, ...assistantMessages],
+      systemPrompt: systemPrompt,
+      userContext: userContext,
+      systemContext: systemContext,
+      toolUseContext: toolUseContext,
+      querySource: querySource,
       stickyBetas: l,
     };
-  if (i.startsWith("repl_main_thread") || i === "sdk") XQn(g6(d));
-  if ((yield* Ixl(c, d.messages, t, s, i), !md())) {
+  if (querySource.startsWith("repl_main_thread") || querySource === "sdk") XQn(g6(d));
+  if ((yield* Ixl(c, d.messages, assistantMessages, toolUseContext, querySource), !md())) {
     if (!ml(process.env.CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION)) YMa(d, c?.lastResult);
-    if (!s.agentId && Ckn()) Gvf.executeExtractMemories(d, s.appendSystemMessage);
-    if (!s.agentId) KIl(d, s.appendSystemMessage);
+    if (!toolUseContext.agentId && Ckn())
+      Gvf.executeExtractMemories(d, toolUseContext.appendSystemMessage);
+    if (!toolUseContext.agentId) KIl(d, toolUseContext.appendSystemMessage);
   }
-  if (!s.agentId)
+  if (!toolUseContext.agentId)
     try {
-      yield* tOe(s);
+      yield* tOe(toolUseContext);
     } catch {}
   let p = null;
   if (
-    (i.startsWith("repl_main_thread") || i === "sdk") &&
+    (querySource.startsWith("repl_main_thread") || querySource === "sdk") &&
     vxl.isBriefEnabled() &&
     !ut(process.env.DISABLE_BRIEF_MODE_STOP_HOOK) &&
-    !s.agentId &&
-    s.options.tools.some((y) => Ql(y, Bze.BRIEF_TOOL_NAME))
+    !toolUseContext.agentId &&
+    toolUseContext.options.tools.some((y) => Ql(y, Bze.BRIEF_TOOL_NAME))
   )
     try {
-      let y = Cxl(e),
-        b = e.slice(y + 1),
+      let y = Cxl(messagesForQuery),
+        b = messagesForQuery.slice(y + 1),
         S =
           b.some(
             (v) =>
@@ -186,7 +198,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
                   (C.name === Bze.BRIEF_TOOL_NAME || C.name === Bze.LEGACY_BRIEF_TOOL_NAME),
               ),
           ) ||
-          t.some((v) =>
+          assistantMessages.some((v) =>
             v.message.content.some(
               (C) =>
                 C.type === "tool_use" &&
@@ -215,11 +227,11 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
     }
   let f = null,
     m = null;
-  if (s.options.requiresStructuredOutput && xM(i) !== "auxiliary")
+  if (toolUseContext.options.requiresStructuredOutput && xM(querySource) !== "auxiliary")
     try {
-      let y = Cxl(e),
-        b = e.slice(y + 1),
-        _ = Lxl([...b, ...t], Ip),
+      let y = Cxl(messagesForQuery),
+        b = messagesForQuery.slice(y + 1),
+        _ = Lxl([...b, ...assistantMessages], Ip),
         S =
           !_ &&
           b.some(
@@ -247,14 +259,14 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
     if (p) y.push(p);
     if (f) y.push(f);
     if (m) y.push(m);
-    let b = s.getAppState(),
-      _ = Fr(s).mode,
+    let b = toolUseContext.getAppState(),
+      _ = Fr(toolUseContext).mode,
       S = b.activeGoal;
     if (S) {
-      let M = s.taskRegistry.all();
+      let M = toolUseContext.taskRegistry.all();
       if (Hze(M) || JQn(M)) {
         if (((h = dSt(b, Rt()).find((N) => N.prompt === S.condition)), h))
-          (s.sessionHooksRegistry.remove(Rt(), "Stop", h),
+          (toolUseContext.sessionHooksRegistry.remove(Rt(), "Stop", h),
             T("[goal] evaluation deferred \u2014 background work still running"));
       }
     }
@@ -266,7 +278,16 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
           ? M
           : void 0;
       },
-      v = OAe(_, s.abortController.signal, void 0, a, s.agentId, s, d.messages, s.agentType),
+      v = OAe(
+        _,
+        toolUseContext.abortController.signal,
+        void 0,
+        stopHookActive,
+        toolUseContext.agentId,
+        toolUseContext,
+        d.messages,
+        toolUseContext.agentType,
+      ),
       C = "",
       x = 0,
       I = false,
@@ -296,8 +317,8 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
               if ((N.stdout && N.stdout.trim()) || (N.stderr && N.stderr.trim())) D = true;
               let B = A(M.hook);
               if (N.hookEvent === "Stop" && B) {
-                s.sessionHooksRegistry.remove(Rt(), "Stop", B);
-                let $ = s.getAppState().activeGoal;
+                toolUseContext.sessionHooksRegistry.remove(Rt(), "Stop", B);
+                let $ = toolUseContext.getAppState().activeGoal;
                 if ($?.condition === B.prompt) {
                   let q = $.iterations + 1,
                     W = Date.now() - $.setAt,
@@ -344,7 +365,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
                         tokens: V,
                       }),
                       xe("goal_met"),
-                      s.sessionState?.notifyMetadataChanged({
+                      toolUseContext.sessionState?.notifyMetadataChanged({
                         goal: {
                           condition: B.prompt,
                           set_at: $.setAt,
@@ -370,7 +391,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
         });
         (y.push(N), yield N, (D = true));
         let B = A(M.hook),
-          $ = s.getAppState().activeGoal;
+          $ = toolUseContext.getAppState().activeGoal;
         if (B && $?.condition === B.prompt)
           (yield {
             type: "active_goal",
@@ -389,7 +410,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
         else P.push(M.blockingError.blockingError);
       }
       if (M.additionalContexts && M.additionalContexts.length > 0) {
-        let N = s.agentId ? "SubagentStop" : "Stop",
+        let N = toolUseContext.agentId ? "SubagentStop" : "Stop",
           B = ai({
             type: "hook_additional_context",
             content: M.additionalContexts,
@@ -409,11 +430,11 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
             toolUseID: C,
             hookEvent: "Stop",
           }));
-      if (s.abortController.signal.aborted)
+      if (toolUseContext.abortController.signal.aborted)
         return (
           G("tengu_pre_stop_hooks_cancelled", {
-            queryChainId: Hr(s.queryTracking?.chainId),
-            queryDepth: s.queryTracking?.depth,
+            queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+            queryDepth: toolUseContext.queryTracking?.depth,
           }),
           yield gQ({
             toolUse: false,
@@ -427,7 +448,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
     if (x > 0) {
       if ((yield Rxl(x, L, P, I, k, D, "suggestion", C, void 0, void 0, O), P.length > 0)) {
         let M = eC("app:toggleTranscript", "Global", "ctrl+o");
-        if (!a)
+        if (!stopHookActive)
           yield {
             type: "notification",
             notification: {
@@ -458,7 +479,17 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
         V = yF(),
         z = (await W4(V)).filter((Z) => Z.status === "in_progress" && Z.owner === M);
       for (let Z of z) {
-        let J = Z6e(Z.id, Z.subject, Z.description, M, N, _, s.abortController.signal, void 0, s);
+        let J = Z6e(
+          Z.id,
+          Z.subject,
+          Z.description,
+          M,
+          N,
+          _,
+          toolUseContext.abortController.signal,
+          void 0,
+          toolUseContext,
+        );
         for await (let ne of J) {
           if (ne.message) {
             if (ne.message.type === "progress" && ne.message.toolUseID) W = ne.message.toolUseID;
@@ -481,14 +512,14 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
                 toolUseID: W,
                 hookEvent: "TaskCompleted",
               }));
-          if (s.abortController.signal.aborted)
+          if (toolUseContext.abortController.signal.aborted)
             return {
               blockingErrors: [],
               preventContinuation: true,
             };
         }
       }
-      let K = oYt(M, N, _, s.abortController.signal, void 0, s);
+      let K = oYt(M, N, _, toolUseContext.abortController.signal, void 0, toolUseContext);
       for await (let Z of K) {
         if (Z.message) {
           if (Z.message.type === "progress" && Z.message.toolUseID) W = Z.message.toolUseID;
@@ -511,7 +542,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
               toolUseID: W,
               hookEvent: "TeammateIdle",
             }));
-        if (s.abortController.signal.aborted)
+        if (toolUseContext.abortController.signal.aborted)
           return {
             blockingErrors: [],
             preventContinuation: true,
@@ -537,8 +568,8 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
     let b = Date.now() - u;
     (G("tengu_stop_hook_error", {
       duration: b,
-      queryChainId: Hr(s.queryTracking?.chainId),
-      queryDepth: s.queryTracking?.depth,
+      queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+      queryDepth: toolUseContext.queryTracking?.depth,
     }),
       yield cc(`Stop hook failed: ${be(y)}`, "warning"));
     let _ = [];
@@ -550,7 +581,7 @@ async function* handleStopHooks(e, t, n, r, o, s, i, a, l, c) {
       preventContinuation: false,
     };
   } finally {
-    if (h) s.sessionHooksRegistry.add(Rt(), "Stop", "", h);
+    if (h) toolUseContext.sessionHooksRegistry.add(Rt(), "Stop", "", h);
     if (g) Le("hook_stop_handler", "hook_stop_handler_failed");
     else xe("hook_stop_handler");
   }

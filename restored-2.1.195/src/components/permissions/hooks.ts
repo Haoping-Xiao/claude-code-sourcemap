@@ -261,7 +261,7 @@ function b7n(e, t) {
       }),
   });
 }
-function usePermissionRequestLogging(e, t, n) {
+function usePermissionRequestLogging(toolUseConfirm, unaryEvent, n) {
   let {
       ctx: r,
       description: o,
@@ -269,8 +269,8 @@ function usePermissionRequestLogging(e, t, n) {
       awaitAutomatedChecksBeforeDialog: i,
       bridgeCallbacks: a,
       channelCallbacks: l,
-    } = e,
-    { resolve: c, isResolved: u, claim: d } = t,
+    } = toolUseConfirm,
+    { resolve: c, isResolved: u, claim: d } = unaryEvent,
     p = r.toolUseContext.requestDialog;
   if (p === void 0) return;
   let f = p,

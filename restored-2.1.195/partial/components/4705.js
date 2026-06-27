@@ -12,9 +12,9 @@ function VL(e, t) {
     level: "info"
   });
 }
-function _temp(e, t) {
-  if (e.config.type === "claudeai-proxy") return t(e.name);
-  return e.config.type !== "sse-ide" && e.config.type !== "ws-ide";
+function _temp(client, t) {
+  if (client.config.type === "claudeai-proxy") return t(client.name);
+  return client.config.type !== "sse-ide" && client.config.type !== "ws-ide";
 }
 function GNl(e, t) {
   return On(e, n => n.type === "needs-auth" && _temp(n, t));

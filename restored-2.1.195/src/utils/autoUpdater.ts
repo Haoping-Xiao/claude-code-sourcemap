@@ -116,9 +116,9 @@ function HVn(e) {
   }
   return null;
 }
-function shouldSkipVersion(e) {
-  let t = HVn(e);
-  if (t) T(`Skipping update to ${e}: ${t}`);
+function shouldSkipVersion(targetVersion) {
+  let t = HVn(targetVersion);
+  if (t) T(`Skipping update to ${targetVersion}: ${t}`);
   return t !== null;
 }
 function getLockFilePath() {
@@ -266,8 +266,8 @@ async function checkGlobalInstallPermissions() {
     );
   }
 }
-async function getLatestVersion(e) {
-  let t = e === "stable" ? "stable" : "latest",
+async function getLatestVersion(channel) {
+  let t = channel === "stable" ? "stable" : "latest",
     n = await Gr(
       "npm",
       [
@@ -364,14 +364,14 @@ async function getNpmDistTags() {
     );
   }
 }
-async function getLatestVersionFromGcs(e) {
+async function getLatestVersionFromGcs(channel) {
   if (Vi()) return null;
   let t = 0;
   try {
     let n = await yVn(
       (r) => (
         t++,
-        kSe.get(`${Pzp}/${e}`, {
+        kSe.get(`${Pzp}/${channel}`, {
           timeout: Aza,
           responseType: "text",
           signal: r,
@@ -381,7 +381,7 @@ async function getLatestVersionFromGcs(e) {
         attempts: Hza,
         timeoutMs: Aza,
         onRetry: (r, o) => {
-          T(`Failed to fetch ${e} from GCS on attempt ${r}/${Hza}, retrying: ${o}`);
+          T(`Failed to fetch ${channel} from GCS on attempt ${r}/${Hza}, retrying: ${o}`);
         },
       },
     );
@@ -391,7 +391,7 @@ async function getLatestVersionFromGcs(e) {
   } catch (n) {
     return (
       Le("update_check", "update_check_gcs_failed"),
-      T(`Failed to fetch ${e} from GCS after ${t} attempt(s): ${n}`),
+      T(`Failed to fetch ${channel} from GCS after ${t} attempt(s): ${n}`),
       null
     );
   }
@@ -431,7 +431,7 @@ async function Dza() {
 function xgt() {
   return Tgt;
 }
-async function installGlobalPackage(e) {
+async function installGlobalPackage(specificVersion) {
   if (!(await acquireLock()))
     return (
       It("update_apply", "update_apply_lock_contention"),
@@ -490,7 +490,7 @@ To fix this issue:
           status: "install_failed",
         }
       );
-    let n = e
+    let n = specificVersion
         ? `${
             {
               ISSUES_EXPLAINER:
@@ -502,7 +502,7 @@ To fix this issue:
               BUILD_TIME: "2026-06-26T01:00:56Z",
               GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
             }.PACKAGE_URL
-          }@${e}`
+          }@${specificVersion}`
         : {
             ISSUES_EXPLAINER:
               "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -595,7 +595,7 @@ To fix this issue:
         c = o.length === 0 ? "not_attempted" : i === 0 ? "restored" : "partial";
       if (l === "warning_only") {
         let d = await Nzp(),
-          p = e ? T9e.parse(e)?.version : void 0,
+          p = specificVersion ? T9e.parse(specificVersion)?.version : void 0,
           f,
           m = !1;
         for (let g of d) {

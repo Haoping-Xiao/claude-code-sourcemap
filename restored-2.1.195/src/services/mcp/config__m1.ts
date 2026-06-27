@@ -36,11 +36,11 @@ function ukn(e) {
     return false;
   return wzr.some((s) => n.pathname.includes(s));
 }
-function unwrapCcrProxyUrl(e) {
-  if (!ukn(e)) return false;
+function unwrapCcrProxyUrl(url) {
+  if (!ukn(url)) return false;
   let t;
   try {
-    t = new URL(e);
+    t = new URL(url);
   } catch {
     return false;
   }

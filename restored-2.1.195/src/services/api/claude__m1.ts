@@ -77,14 +77,17 @@ function pel(e, t) {
   if (n === void 0 || r === void 0) return true;
   return n <= r;
 }
-function queryModel(e, t) {
-  if (!F6() || !e) return;
-  let n = dp(zo(e));
-  if (!mMe(t)) {
-    if ((T(`[AdvisorTool] Skipping advisor - base model ${t} does not support advisor`), !uel))
+function queryModel(messages, systemPrompt) {
+  if (!F6() || !messages) return;
+  let n = dp(zo(messages));
+  if (!mMe(systemPrompt)) {
+    if (
+      (T(`[AdvisorTool] Skipping advisor - base model ${systemPrompt} does not support advisor`),
+      !uel)
+    )
       ((uel = true),
         console.warn(
-          `Warning: Advisor disabled \u2014 base model '${t}' isn't in the advisor capability table. Switch to a public model alias (opus, sonnet, fable) or set CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL=1.`,
+          `Warning: Advisor disabled \u2014 base model '${systemPrompt}' isn't in the advisor capability table. Switch to a public model alias (opus, sonnet, fable) or set CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL=1.`,
         ));
     return;
   }
@@ -92,9 +95,9 @@ function queryModel(e, t) {
     T(`[AdvisorTool] Skipping advisor - ${n} is not a valid advisor model`);
     return;
   }
-  if (!S8e(t, n)) {
+  if (!S8e(systemPrompt, n)) {
     T(
-      `[AdvisorTool] Skipping advisor - ${n} cannot advise ${t} (advisor must be at least as capable as the base model)`,
+      `[AdvisorTool] Skipping advisor - ${n} cannot advise ${systemPrompt} (advisor must be at least as capable as the base model)`,
     );
     return;
   }

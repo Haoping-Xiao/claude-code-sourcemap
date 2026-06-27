@@ -25,26 +25,26 @@ function lDe(e) {
   }
   return t;
 }
-function partiallySanitizeUnicode(e) {
-  let t = e,
+function partiallySanitizeUnicode(prompt) {
+  let t = prompt,
     n = "",
     r = 0,
     o = 10;
   while (t !== n && r < o) ((n = t), (t = t.normalize("NFKC")), (t = lDe(t)), r++);
   if (r >= o)
     throw Error(
-      `Unicode sanitization reached maximum iterations (${o}) for input: ${e.slice(0, 100)}`,
+      `Unicode sanitization reached maximum iterations (${o}) for input: ${prompt.slice(0, 100)}`,
     );
   return t;
 }
-function recursivelySanitizeUnicode(e) {
-  if (typeof e === "string") return partiallySanitizeUnicode(e);
-  if (Array.isArray(e)) return e.map(recursivelySanitizeUnicode);
-  if (e !== null && typeof e === "object") {
+function recursivelySanitizeUnicode(value) {
+  if (typeof value === "string") return partiallySanitizeUnicode(value);
+  if (Array.isArray(value)) return value.map(recursivelySanitizeUnicode);
+  if (value !== null && typeof value === "object") {
     let t = {};
-    for (let [n, r] of Object.entries(e))
+    for (let [n, r] of Object.entries(value))
       t[recursivelySanitizeUnicode(n)] = recursivelySanitizeUnicode(r);
     return t;
   }
-  return e;
+  return value;
 }

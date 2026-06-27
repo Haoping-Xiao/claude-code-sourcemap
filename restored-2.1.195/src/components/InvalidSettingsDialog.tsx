@@ -7,9 +7,9 @@
 // module exports: InvalidSettingsDialog
 // [unwrapped __esm module _7o] deps: kt, Yp, ft, y8o, S4, cur, ZS, S6, Qtn, dn, Un, vft, w9o, C5, uTt, yzn, Rnt, dC, Ld, er, je, yMc, wr, fn, At, Vtn, vn, OMe, u7o, Ls, Xh, Gre, Dgt, dr, Ote
 ((fmr = require("fs")), (hw = R(se(), 1)));
-function InvalidSettingsDialog(e) {
+function InvalidSettingsDialog(t0) {
   let t = X$c.c(21),
-    { settingsErrors: n, onContinue: r, onFix: o, onExit: s } = e,
+    { settingsErrors: n, onContinue: r, onFix: o, onExit: s } = t0,
     i;
   if (t[0] !== r || t[1] !== s || t[2] !== o)
     ((i = function (S) {

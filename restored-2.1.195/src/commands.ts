@@ -8,11 +8,11 @@
 function getBuiltinCommands() {
   return qQt();
 }
-async function getSkills(e) {
+async function getSkills(cwd) {
   let t = null;
   try {
     let [n, r] = await Promise.all([
-        yze(e).catch((i) => {
+        yze(cwd).catch((i) => {
           if (gd(i))
             T(`Skill directory commands failed to load (${i.code}), continuing without them`, {
               level: "error",
@@ -59,9 +59,9 @@ async function getSkills(e) {
     );
   }
 }
-function meetsAvailabilityRequirement(e) {
-  if (!e.availability) return true;
-  for (let t of e.availability)
+function meetsAvailabilityRequirement(cmd) {
+  if (!cmd.availability) return true;
+  for (let t of cmd.availability)
     switch (t) {
       case "claude-ai":
         if (bo()) return true;
@@ -268,10 +268,10 @@ function getSkillToolCommands(e) {
       !!e.whenToUse)
   );
 }
-function isBridgeSafeCommand(e) {
-  if (e.type === "local-jsx") return false;
-  if (e.type === "prompt") return true;
-  return BRIDGE_SAFE_COMMANDS.has(e);
+function isBridgeSafeCommand(cmd) {
+  if (cmd.type === "local-jsx") return false;
+  if (cmd.type === "prompt") return true;
+  return BRIDGE_SAFE_COMMANDS.has(cmd);
 }
 function findBridgeFallback(e) {
   if (e.type !== "local-jsx") return;
@@ -352,11 +352,11 @@ function filterSkillCommandsByAllowlist(e, t) {
   if (t === void 0) return e;
   return e.filter((n) => t.some((r) => Zoc(n, r) || n.name.endsWith(`:${r}`)));
 }
-function getCommand(e, t) {
-  let n = findCommand(e, t);
+function getCommand(commandName, commands) {
+  let n = findCommand(commandName, commands);
   if (!n)
     throw ReferenceError(
-      `Command ${e} not found. Available commands: ${t
+      `Command ${commandName} not found. Available commands: ${commands
         .map((r) => {
           let o = xu(r);
           return r.aliases ? `${o} (aliases: ${r.aliases.join(", ")})` : o;
@@ -366,16 +366,17 @@ function getCommand(e, t) {
     );
   return n;
 }
-function formatDescriptionWithSource(e) {
-  if (e.type !== "prompt") return e.description;
-  if (e.kind === "workflow") return `${e.description} (dynamic workflow)`;
-  if (e.source === "plugin") {
-    let t = e.pluginInfo?.pluginManifest;
-    if (t) return `(${fS(t)}) ${e.description}`;
-    return `${e.description} (plugin)`;
+function formatDescriptionWithSource(cmd) {
+  if (cmd.type !== "prompt") return cmd.description;
+  if (cmd.kind === "workflow") return `${cmd.description} (dynamic workflow)`;
+  if (cmd.source === "plugin") {
+    let t = cmd.pluginInfo?.pluginManifest;
+    if (t) return `(${fS(t)}) ${cmd.description}`;
+    return `${cmd.description} (plugin)`;
   }
-  if (e.source === "builtin" || e.source === "mcp" || e.source === "bundled") return e.description;
-  return `${e.description} (${wG(e.source)})`;
+  if (cmd.source === "builtin" || cmd.source === "mcp" || cmd.source === "bundled")
+    return cmd.description;
+  return `${cmd.description} (${wG(cmd.source)})`;
 }
 function toSlashCommands(e) {
   return e

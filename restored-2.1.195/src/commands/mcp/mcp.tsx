@@ -8,9 +8,9 @@
 // [unwrapped __esm module xrr] deps: si, Cc, Bs, B_, MEt, eE, kP, O0, Ye, ps, uo, w8, At, vq, _k, gHe, lE, NKe, dr, sr, E2l, N2l, F2l, K2l, ojl, Bjl, cUo, Qjl, n4l
 ((AXt = R(lt(), 1)), (UT = R(rt(), 1)), (oa = R(se(), 1)));
 VBf = new Set(["git-auth-failed", "git-timeout", "network-error"]);
-function MCPToggle(e) {
+function MCPToggle(t0) {
   let t = s4l.c(7),
-    { action: n, target: r, onComplete: o } = e,
+    { action: n, target: r, onComplete: o } = t0,
     s = Ht(uUf),
     i = ZOe(),
     a = krr.useRef(false),
@@ -65,29 +65,29 @@ function cUf(e) {
 function uUf(e) {
   return e.mcp.clients;
 }
-async function call(e, t, n) {
-  if (n) {
-    let r = /^(\S+)\s*(.*)$/.exec(n.trim()),
+async function call(onDone, _context, args) {
+  if (args) {
+    let r = /^(\S+)\s*(.*)$/.exec(args.trim()),
       o = r?.[1] ?? "",
       s = r?.[2] ?? "";
     if (o === "no-redirect")
       return HXt.jsx(Jnr, {
-        onComplete: e,
+        onComplete: onDone,
       });
     if (o === "reconnect" && s)
       return HXt.jsx(kBo, {
         serverName: s,
-        onComplete: e,
+        onComplete: onDone,
       });
     if (o === "enable" || o === "disable")
       return HXt.jsx(MCPToggle, {
         action: o,
         target: s || "all",
-        onComplete: e,
+        onComplete: onDone,
       });
   }
   return HXt.jsx(Jnr, {
-    onComplete: e,
+    onComplete: onDone,
   });
 }
 var s4l, krr, HXt;

@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Csr] deps: cDe
 Cqf = /[\x00-\x1f\x7f-\x9f\u061c\u2028\u2029\u202a-\u202e\u2066-\u2069\p{Co}\p{Cn}]/gu;
-function WorkspaceTab(e) {
+function WorkspaceTab(t0) {
   let t = Azl.c(23),
     {
       onExit: n,
@@ -14,7 +14,7 @@ function WorkspaceTab(e) {
       onRequestAddDirectory: o,
       onRequestRemoveDirectory: s,
       onHeaderFocusChange: i,
-    } = e,
+    } = t0,
     { headerFocused: a, focusHeader: l } = tx(),
     c,
     u;

@@ -14,10 +14,10 @@ var K7a = V7a();
 Object.keys(K7a).forEach(function (e) {
   uHo[e] = K7a[e];
 });
-async function sendNotification(e, t) {
+async function sendNotification(notif, terminal) {
   let n = wc("preferredNotifChannel", "auto").value;
-  await cJ(e);
-  let r = await sendToChannel(n, e, t);
+  await cJ(notif);
+  let r = await sendToChannel(n, notif, terminal);
   if (r === "error") Le("notification_show", "send_failed");
   else xe("notification_show");
   G("tengu_notification_method_used", {
@@ -27,20 +27,20 @@ async function sendNotification(e, t) {
     attacher_term: fy()?.terminal ?? null,
   });
 }
-async function sendToChannel(e, t, n) {
-  let r = t.title || X7a;
+async function sendToChannel(channel, opts, terminal) {
+  let r = opts.title || X7a;
   try {
-    switch (e) {
+    switch (channel) {
       case "auto":
-        return sendAuto(t, n);
+        return sendAuto(opts, terminal);
       case "iterm2":
-        return (n.notifyITerm2(t), "iterm2");
+        return (terminal.notifyITerm2(opts), "iterm2");
       case "iterm2_with_bell":
-        return (n.notifyITerm2(t), n.notifyBell(), "iterm2_with_bell");
+        return (terminal.notifyITerm2(opts), terminal.notifyBell(), "iterm2_with_bell");
       case "kitty":
         return (
-          n.notifyKitty({
-            ...t,
+          terminal.notifyKitty({
+            ...opts,
             title: r,
             id: J7a(),
           }),
@@ -48,14 +48,14 @@ async function sendToChannel(e, t, n) {
         );
       case "ghostty":
         return (
-          n.notifyGhostty({
-            ...t,
+          terminal.notifyGhostty({
+            ...opts,
             title: r,
           }),
           "ghostty"
         );
       case "terminal_bell":
-        return (n.notifyBell(), "terminal_bell");
+        return (terminal.notifyBell(), "terminal_bell");
       case "notifications_disabled":
         return "disabled";
       default:
@@ -65,19 +65,19 @@ async function sendToChannel(e, t, n) {
     return "error";
   }
 }
-async function sendAuto(e, t) {
-  let n = e.title || X7a;
+async function sendAuto(opts, terminal) {
+  let n = opts.title || X7a;
   switch (fy()?.terminal ?? Oe.terminal) {
     case "Apple_Terminal": {
-      if (await isAppleTerminalBellDisabled()) return (t.notifyBell(), "terminal_bell");
+      if (await isAppleTerminalBellDisabled()) return (terminal.notifyBell(), "terminal_bell");
       return "no_method_available";
     }
     case "iTerm.app":
-      return (t.notifyITerm2(e), "iterm2");
+      return (terminal.notifyITerm2(opts), "iterm2");
     case "kitty":
       return (
-        t.notifyKitty({
-          ...e,
+        terminal.notifyKitty({
+          ...opts,
           title: n,
           id: J7a(),
         }),
@@ -85,8 +85,8 @@ async function sendAuto(e, t) {
       );
     case "ghostty":
       return (
-        t.notifyGhostty({
-          ...e,
+        terminal.notifyGhostty({
+          ...opts,
           title: n,
         }),
         "ghostty"

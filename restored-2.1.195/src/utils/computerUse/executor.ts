@@ -33,9 +33,9 @@ async function readClipboardViaPbpaste() {
   if (t !== 0) throw Error(`pbpaste exited with code ${t}`);
   return e;
 }
-async function writeClipboardViaPbcopy(e) {
+async function writeClipboardViaPbcopy(text) {
   let { code: t } = await $n("pbcopy", [], {
-    input: e,
+    input: text,
     useCwd: false,
   });
   if (t !== 0) throw Error(`pbcopy exited with code ${t}`);
@@ -64,7 +64,7 @@ async function zIp(e, t, n) {
     await bRa(e, r);
   }
 }
-async function typeViaClipboard(e, t) {
+async function typeViaClipboard(input, text) {
   let n;
   try {
     n = await readClipboardViaPbpaste();
@@ -72,9 +72,9 @@ async function typeViaClipboard(e, t) {
     T("[computer-use] pbpaste before paste failed; proceeding without restore");
   }
   try {
-    if ((await writeClipboardViaPbcopy(t), (await readClipboardViaPbpaste()) !== t))
+    if ((await writeClipboardViaPbcopy(text), (await readClipboardViaPbpaste()) !== text))
       throw Error("Clipboard write did not round-trip.");
-    (await e.keys(["command", "v"]), await Nn(100));
+    (await input.keys(["command", "v"]), await Nn(100));
   } finally {
     if (typeof n === "string")
       try {

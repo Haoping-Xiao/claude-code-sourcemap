@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module y5l] deps: Tc, Ye
 ((g5l = R(lt(), 1)), (zFo = R(se(), 1)));
-function MessageTimestamp(e) {
+function MessageTimestamp(t0) {
   let t = _5l.c(10),
-    { message: n, isTranscriptMode: r, showMessageTimestamps: o } = e,
+    { message: n, isTranscriptMode: r, showMessageTimestamps: o } = t0,
     s = o === void 0 ? false : o;
   if (!(n.timestamp && n.type === "assistant" && (s || (r && n.message.content.some(r4f)))))
     return null;

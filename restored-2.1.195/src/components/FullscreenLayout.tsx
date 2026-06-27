@@ -81,11 +81,11 @@ function cVl(e) {
     }
   );
 }
-function countUnseenAssistantTurns(e, t) {
+function countUnseenAssistantTurns(messages, dividerIndex) {
   let n = 0,
     r = false;
-  for (let o = t; o < e.length; o++) {
-    let s = e[o];
+  for (let o = dividerIndex; o < messages.length; o++) {
+    let s = messages[o];
     if (s.type === "progress") continue;
     if (s.type === "assistant" && !J3f(s)) continue;
     let i = s.type === "assistant";
@@ -111,7 +111,7 @@ function uVl(e, t) {
     count: Math.max(1, o),
   };
 }
-function FullscreenLayout(e) {
+function FullscreenLayout(t0) {
   let t = tYe.c(78),
     {
       scrollable: n,
@@ -126,7 +126,7 @@ function FullscreenLayout(e) {
       hideSticky: d,
       newMessageCount: p,
       onPillClick: f,
-    } = e,
+    } = t0,
     m = o === void 0 ? 0 : o,
     g = u === void 0 ? false : u,
     h = d === void 0 ? false : d,
@@ -752,9 +752,9 @@ function tGf(e) {
   else ne = t[44];
   return ne;
 }
-function NewMessagesPill(e) {
+function NewMessagesPill(t0) {
   let t = tYe.c(13),
-    { count: n, onClick: r } = e,
+    { count: n, onClick: r } = t0,
     [o, s] = oy.useState(false),
     i = Uu("scroll:bottom", "Scroll", "ctrl+end"),
     a;
@@ -809,9 +809,9 @@ function NewMessagesPill(e) {
   else f = t[12];
   return f;
 }
-function StickyPromptHeader(e) {
+function StickyPromptHeader(t0) {
   let t = tYe.c(8),
-    { text: n, onClick: r } = e,
+    { text: n, onClick: r } = t0,
     [o, s] = oy.useState(false),
     i = o ? "userMessageBackgroundHover" : "userMessageBackground",
     a,

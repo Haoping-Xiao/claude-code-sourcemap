@@ -119,16 +119,16 @@ function P_f(e, t) {
   if (i !== s && i !== void 0) n.is_backgrounded = i;
   return Object.keys(n).length > 0 ? n : null;
 }
-function registerTask(e, t) {
+function registerTask(task, setAppState) {
   let n = false;
   if (
-    (t((r) => {
-      let o = r.tasks[e.id];
+    (setAppState((r) => {
+      let o = r.tasks[task.id];
       n = o !== void 0;
       let s =
         o && "retain" in o
           ? {
-              ...e,
+              ...task,
               retain: o.retain,
               startTime: o.startTime,
               diskLoaded: o.diskLoaded,
@@ -138,12 +138,12 @@ function registerTask(e, t) {
               parentAgentId: o.parentAgentId,
               spawnDepth: o.spawnDepth,
             }
-          : e;
+          : task;
       return {
         ...r,
         tasks: {
           ...r.tasks,
-          [e.id]: s,
+          [task.id]: s,
         },
       };
     }),
@@ -153,14 +153,14 @@ function registerTask(e, t) {
   zv({
     type: "system",
     subtype: "task_started",
-    task_id: e.id,
-    tool_use_id: e.toolUseId,
-    description: e.description,
-    subagent_type: "agentType" in e ? e.agentType : void 0,
-    task_type: e.type,
-    workflow_name: "workflowName" in e ? e.workflowName : void 0,
-    prompt: "prompt" in e ? e.prompt : void 0,
-    skip_transcript: e.skipTranscript,
+    task_id: task.id,
+    tool_use_id: task.toolUseId,
+    description: task.description,
+    subagent_type: "agentType" in task ? task.agentType : void 0,
+    task_type: task.type,
+    workflow_name: "workflowName" in task ? task.workflowName : void 0,
+    prompt: "prompt" in task ? task.prompt : void 0,
+    skip_transcript: task.skipTranscript,
   });
 }
 function $_f(e, t) {
@@ -193,11 +193,11 @@ function Ubt(e) {
   let t = e.tasks ?? {};
   return Object.values(t).filter((n) => n.status === "running");
 }
-async function generateTaskAttachments(e) {
+async function generateTaskAttachments(state) {
   let t = [],
     n = {},
     r = [];
-  for (let o of Object.values(e)) {
+  for (let o of Object.values(state)) {
     if (o.notified)
       switch (o.status) {
         case "completed":
@@ -221,11 +221,11 @@ async function generateTaskAttachments(e) {
     evictedTaskIds: r,
   };
 }
-function applyTaskOffsetsAndEvictions(e, t, n) {
-  let r = Object.keys(t);
-  if (r.length === 0 && n.length === 0) return;
+function applyTaskOffsetsAndEvictions(setAppState, updatedTaskOffsets, evictedTaskIds) {
+  let r = Object.keys(updatedTaskOffsets);
+  if (r.length === 0 && evictedTaskIds.length === 0) return;
   let o = [];
-  e((s) => {
+  setAppState((s) => {
     let i = false,
       a = {
         ...s.tasks,
@@ -235,11 +235,11 @@ function applyTaskOffsetsAndEvictions(e, t, n) {
       if (d?.status === "running")
         ((a[u] = {
           ...d,
-          outputOffset: t[u],
+          outputOffset: updatedTaskOffsets[u],
         }),
           (i = true));
     }
-    for (let u of n) {
+    for (let u of evictedTaskIds) {
       let d = a[u];
       if (!d || !AC(d.status) || !d.notified) continue;
       if ("retain" in d && (d.evictAfter ?? 1 / 0) > Date.now()) continue;

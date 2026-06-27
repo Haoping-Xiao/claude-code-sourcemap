@@ -300,16 +300,16 @@ function oic(e) {
     }
   return true;
 }
-function createFailedCommand(e) {
+function createFailedCommand(preSpawnError) {
   let t = new Tb(iN("local_bash"), null);
   return {
     status: "completed",
     result: Promise.resolve({
       code: 1,
       stdout: "",
-      stderr: e,
+      stderr: preSpawnError,
       interrupted: false,
-      preSpawnError: e,
+      preSpawnError: preSpawnError,
     }),
     taskOutput: t,
     background() {

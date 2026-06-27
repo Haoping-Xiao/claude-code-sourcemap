@@ -4,12 +4,12 @@
 // class=modified  jaccard=0.4636  score=0.5723  fileCov=0.7095
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function fetchOfficialMarketplaceFromGcs(e, t) {
-  let n = ose.resolve(t),
-    r = ose.resolve(e);
+async function fetchOfficialMarketplaceFromGcs(installLocation, marketplacesCacheDir) {
+  let n = ose.resolve(marketplacesCacheDir),
+    r = ose.resolve(installLocation);
   if (r !== n && !r.startsWith(n + ose.sep))
     return (
-      T(`fetchOfficialMarketplaceFromGcs: refusing path outside cache dir: ${e}`, {
+      T(`fetchOfficialMarketplaceFromGcs: refusing path outside cache dir: ${installLocation}`, {
         level: "error",
       }),
       null
@@ -26,7 +26,7 @@ async function fetchOfficialMarketplaceFromGcs(e, t) {
       timeout: 10000 /* 1e4 */,
     });
     if (((i = String(c.data).trim()), !i)) throw Error("latest pointer returned empty body");
-    let u = ose.join(e, ".gcs-sha");
+    let u = ose.join(installLocation, ".gcs-sha");
     if (
       (await W$.readFile(u, "utf8").then(
         (_) => _.trim(),
@@ -42,7 +42,7 @@ async function fetchOfficialMarketplaceFromGcs(e, t) {
     a = f.length;
     let m = await nde(f),
       g = ZLe(f),
-      h = `${e}.staging`;
+      h = `${installLocation}.staging`;
     (await W$.rm(h, {
       recursive: true,
       force: true,
@@ -63,21 +63,21 @@ async function fetchOfficialMarketplaceFromGcs(e, t) {
       if (C && C & 73) await W$.chmod(v, C & 511).catch(() => {});
     }
     await W$.writeFile(ose.join(h, ".gcs-sha"), i);
-    let y = `${e}.backup`;
+    let y = `${installLocation}.backup`;
     await W$.rm(y, {
       recursive: true,
       force: true,
     }).catch(() => {});
     let b = false;
     try {
-      (await W$.rename(e, y), (b = true));
+      (await W$.rename(installLocation, y), (b = true));
     } catch (_) {
       if (on(_) !== "ENOENT") throw _;
     }
     try {
-      await W$.rename(h, e);
+      await W$.rename(h, installLocation);
     } catch (_) {
-      if (b) await W$.rename(y, e).catch(() => {});
+      if (b) await W$.rename(y, installLocation).catch(() => {});
       throw _;
     }
     return (

@@ -4,24 +4,24 @@
 // class=modified (alt of src/ink/selection.ts)  jaccard=0.0353  score=0.5927  fileCov=0.0362
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function findPlainTextUrlAt(e) {
-  while (e.length > 0) {
-    let t = e.at(-1);
+function findPlainTextUrlAt(screen) {
+  while (screen.length > 0) {
+    let t = screen.at(-1);
     if (".,;:!?".includes(t)) {
-      e = e.slice(0, -1);
+      screen = screen.slice(0, -1);
       continue;
     }
     let n = irf[t];
     if (!n) break;
     let r = 0,
       o = 0;
-    for (let s of e)
+    for (let s of screen)
       if (s === n) r++;
       else if (s === t) o++;
-    if (o > r) e = e.slice(0, -1);
+    if (o > r) screen = screen.slice(0, -1);
     else break;
   }
-  return e;
+  return screen;
 }
 function Q8e(e) {
   let t = rsl.c(9),

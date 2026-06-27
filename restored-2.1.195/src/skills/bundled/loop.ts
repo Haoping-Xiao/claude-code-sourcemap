@@ -64,7 +64,7 @@ function JEm() {
 2. Briefly confirm: what's scheduled, the cron expression, the human-readable cadence, that recurring tasks auto-expire after ${ire} days, and that the user can cancel sooner with ${m4} (include the job ID).${Pwc()}
 3. **Then immediately execute the parsed prompt now** \u2014 don't wait for the first cron fire. If it's a slash command, invoke it via the Skill tool; otherwise act on it directly.`;
 }
-function buildPrompt(e) {
+function buildPrompt(args) {
   return `# /loop \u2014 schedule a recurring prompt
 
 Parse the input below into \`[interval] <prompt\u2026>\` and schedule it with ${DI}.
@@ -110,7 +110,7 @@ Supported suffixes: \`s\` (seconds, rounded up to nearest minute, min 1), \`m\` 
 
 ## Input
 
-${e}`;
+${args}`;
 }
 function ZEm() {
   return `Usage: /loop [interval] <prompt>

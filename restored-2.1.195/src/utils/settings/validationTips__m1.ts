@@ -4,15 +4,15 @@
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.1053  score=0.7165  fileCov=0.1099
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function getValidationTip(e) {
-  let t = f1u.find((r) => r.matches(e));
+function getValidationTip(context) {
+  let t = f1u.find((r) => r.matches(context));
   if (!t) return null;
   let n = {
     ...t.tip,
   };
-  if (e.code === "invalid_value" && e.enumValues && !n.suggestion)
-    n.suggestion = `Valid values: ${e.enumValues.map((r) => `"${r}"`).join(", ")}`;
-  if (!n.docLink && e.path) n.docLink = m1u[bi(e.path, ".")];
+  if (context.code === "invalid_value" && context.enumValues && !n.suggestion)
+    n.suggestion = `Valid values: ${context.enumValues.map((r) => `"${r}"`).join(", ")}`;
+  if (!n.docLink && context.path) n.docLink = m1u[bi(context.path, ".")];
   return n;
 }
 var DOCUMENTATION_BASE = "https://code.claude.com/docs/en",

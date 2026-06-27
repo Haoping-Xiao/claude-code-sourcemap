@@ -72,7 +72,7 @@ async function Ymo() {
 function mMa() {
   Kmo.cache?.clear?.();
 }
-async function exec(e, t, n, r) {
+async function exec(command, abortSignal, shellType, options) {
   let {
       timeout: o,
       onProgress: s,
@@ -82,9 +82,9 @@ async function exec(e, t, n, r) {
       onStdout: c,
       sessionEnvVars: u,
       effortLevel: d,
-    } = r ?? {},
+    } = options ?? {},
     p = o || oRp,
-    f = await lRp[n](),
+    f = await lRp[shellType](),
     m = Math.floor(Math.random() * 65536)
       .toString(16)
       .padStart(4, "0"),
@@ -101,7 +101,7 @@ async function exec(e, t, n, r) {
           },
         ));
   }
-  let { commandString: h, cwdFilePath: y } = await f.buildExecCommand(e, {
+  let { commandString: h, cwdFilePath: y } = await f.buildExecCommand(command, {
       id: m,
       sandboxTmpDir: g,
       useSandbox: a ?? false,
@@ -133,17 +133,17 @@ async function exec(e, t, n, r) {
       );
     _ = B;
   }
-  if (t.aborted) return gMa();
+  if (abortSignal.aborted) return gMa();
   let A = f.shellPath,
-    v = a && n === "powershell",
+    v = a && shellType === "powershell",
     C = v ? "/bin/sh" : A;
   if (bI()) {
-    let N = await mct(e);
+    let N = await mct(command);
     RKr(
       N.kind === "simple"
         ? N.commands.map((B) => B.text).join(`
 `)
-        : e,
+        : command,
     );
   }
   if (a) {
@@ -171,11 +171,11 @@ async function exec(e, t, n, r) {
       };
     }
     if (g && !process.env.CLAUDE_TMPDIR) process.env.CLAUDE_TMPDIR = g;
-    b = await xo.wrapWithSandbox(b, C, N, t);
+    b = await xo.wrapWithSandbox(b, C, N, abortSignal);
   }
   let x = v ? "/bin/sh" : A,
     I = v ? ["-c", b] : f.getSpawnArgs(b),
-    k = await f.getEnvironmentOverrides(e, u),
+    k = await f.getEnvironmentOverrides(command, u),
     D = !!c,
     P = iN("local_bash"),
     O = new Tb(P, s ?? null, !D);
@@ -195,7 +195,7 @@ async function exec(e, t, n, r) {
     let N = dMa.spawn(x, I, {
         env: {
           ...DM(),
-          SHELL: n === "bash" ? A : void 0,
+          SHELL: shellType === "bash" ? A : void 0,
           GIT_EDITOR: "true",
           ...k,
           ...Upt({
@@ -209,18 +209,18 @@ async function exec(e, t, n, r) {
         detached: f.detached,
         windowsHide: true,
       }),
-      B = rjn(N, t, p, O, l),
+      B = rjn(N, abortSignal, p, O, l),
       $ = B3t("claude_code.bash.subprocess", {
         spanType: "bash.subprocess",
         attrs: {
-          "shell.type": n,
-          command_length: e.length,
+          "shell.type": shellType,
+          command_length: command.length,
           timeout_ms: p,
-          command: iP(e).content,
+          command: iP(command).content,
         },
       });
     if ($) {
-      let W = GPa(e).catch(() => []);
+      let W = GPa(command).catch(() => []);
       B.result
         .then(async (V) => {
           let Y = await W;
@@ -298,8 +298,8 @@ async function exec(e, t, n, r) {
     return (O.clear(), T(`Shell exec error: ${be(N)}`), tjn(be(N)));
   }
 }
-function setCwd(e, t) {
-  let n = njn.isAbsolute(e) ? e : njn.resolve(t || qt().cwd(), e),
+function setCwd(path, relativeTo) {
+  let n = njn.isAbsolute(path) ? path : njn.resolve(relativeTo || qt().cwd(), path),
     r;
   try {
     r = qt().realpathSync(n);

@@ -45,11 +45,11 @@
       }),
     ]),
   )));
-function parsePermissionUpdates(e) {
-  if (!Array.isArray(e)) return [];
+function parsePermissionUpdates(raw) {
+  if (!Array.isArray(raw)) return [];
   let t = nbt(),
     n = [];
-  for (let r of e) {
+  for (let r of raw) {
     let o = t.safeParse(r);
     if (o.success) n.push(o.data);
     else
@@ -59,12 +59,13 @@ function parsePermissionUpdates(e) {
   }
   return n;
 }
-function registerPermissionCallback(e) {
-  (rbt.set(e.requestId, e),
-    T(`[SwarmPermissionPoller] Registered callback for request ${e.requestId}`));
+function registerPermissionCallback(callback) {
+  (rbt.set(callback.requestId, callback),
+    T(`[SwarmPermissionPoller] Registered callback for request ${callback.requestId}`));
 }
-function unregisterPermissionCallback(e) {
-  (rbt.delete(e), T(`[SwarmPermissionPoller] Unregistered callback for request ${e}`));
+function unregisterPermissionCallback(requestId) {
+  (rbt.delete(requestId),
+    T(`[SwarmPermissionPoller] Unregistered callback for request ${requestId}`));
 }
 function Wgl(e) {
   return rbt.has(e);
@@ -72,46 +73,46 @@ function Wgl(e) {
 function qgl() {
   (rbt.clear(), z6t.clear());
 }
-function processMailboxPermissionResponse(e) {
-  let t = rbt.get(e.requestId);
+function processMailboxPermissionResponse(params) {
+  let t = rbt.get(params.requestId);
   if (!t)
     return (
-      T(`[SwarmPermissionPoller] No callback registered for mailbox response ${e.requestId}`),
+      T(`[SwarmPermissionPoller] No callback registered for mailbox response ${params.requestId}`),
       false
     );
   if (
     (T(
-      `[SwarmPermissionPoller] Processing mailbox response for request ${e.requestId}: ${e.decision}`,
+      `[SwarmPermissionPoller] Processing mailbox response for request ${params.requestId}: ${params.decision}`,
     ),
-    rbt.delete(e.requestId),
-    e.decision === "approved")
+    rbt.delete(params.requestId),
+    params.decision === "approved")
   ) {
-    let n = parsePermissionUpdates(e.permissionUpdates),
-      r = e.updatedInput;
+    let n = parsePermissionUpdates(params.permissionUpdates),
+      r = params.updatedInput;
     t.onAllow(r, n);
-  } else t.onReject(e.feedback);
+  } else t.onReject(params.feedback);
   return true;
 }
-function registerSandboxPermissionCallback(e) {
-  (z6t.set(e.requestId, e),
-    T(`[SwarmPermissionPoller] Registered sandbox callback for request ${e.requestId}`));
+function registerSandboxPermissionCallback(callback) {
+  (z6t.set(callback.requestId, callback),
+    T(`[SwarmPermissionPoller] Registered sandbox callback for request ${callback.requestId}`));
 }
 function zgl(e) {
   return z6t.has(e);
 }
-function processSandboxPermissionResponse(e) {
-  let t = z6t.get(e.requestId);
+function processSandboxPermissionResponse(params) {
+  let t = z6t.get(params.requestId);
   if (!t)
     return (
-      T(`[SwarmPermissionPoller] No sandbox callback registered for request ${e.requestId}`),
+      T(`[SwarmPermissionPoller] No sandbox callback registered for request ${params.requestId}`),
       false
     );
   return (
     T(
-      `[SwarmPermissionPoller] Processing sandbox response for request ${e.requestId}: allow=${e.allow}`,
+      `[SwarmPermissionPoller] Processing sandbox response for request ${params.requestId}: allow=${params.allow}`,
     ),
-    z6t.delete(e.requestId),
-    t.resolve(e.allow),
+    z6t.delete(params.requestId),
+    t.resolve(params.allow),
     true
   );
 }

@@ -280,8 +280,8 @@ async function getWatchTargets() {
     realpathToCanonical: n,
   };
 }
-function settingSourceToConfigChangeSource(e) {
-  switch (e) {
+function settingSourceToConfigChangeSource(source) {
+  switch (source) {
     case "userSettings":
       return "user_settings";
     case "projectSettings":

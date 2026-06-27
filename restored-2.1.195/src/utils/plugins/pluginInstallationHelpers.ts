@@ -9,15 +9,24 @@
 function ORl() {
   return new Date().toISOString();
 }
-function validatePathWithinBase(e, t) {
-  let n = xq.resolve(e, t),
-    r = xq.resolve(e) + xq.sep;
-  if (!n.startsWith(r) && n !== xq.resolve(e))
-    throw Error(`Path traversal detected: "${t}" would escape the base directory`);
+function validatePathWithinBase(basePath, relativePath) {
+  let n = xq.resolve(basePath, relativePath),
+    r = xq.resolve(basePath) + xq.sep;
+  if (!n.startsWith(r) && n !== xq.resolve(basePath))
+    throw Error(`Path traversal detected: "${relativePath}" would escape the base directory`);
   return n;
 }
-async function cacheAndRegisterPlugin(e, t, n = "user", r, o, s, i, a) {
-  let l = typeof t.source === "string" && o ? o : t.source,
+async function cacheAndRegisterPlugin(
+  pluginId,
+  entry,
+  n = "user",
+  projectPath,
+  localSourcePath,
+  s,
+  i,
+  a,
+) {
+  let l = typeof entry.source === "string" && localSourcePath ? localSourcePath : entry.source,
     c =
       s &&
       typeof l === "object" &&
@@ -29,15 +38,15 @@ async function cacheAndRegisterPlugin(e, t, n = "user", r, o, s, i, a) {
           }
         : l,
     u = await USt(c, {
-      manifest: t,
-      containmentRoot: typeof t.source === "string" && o ? a : void 0,
+      manifest: entry,
+      containmentRoot: typeof entry.source === "string" && localSourcePath ? a : void 0,
     }),
-    d = o || u.path,
+    d = localSourcePath || u.path,
     p = s?.sha ?? u.gitCommitSha ?? (await ier(d)),
     f = ORl(),
-    m = await lse(e, t.source, u.manifest, d, t.version, s?.sha ?? u.gitCommitSha),
-    g = s && (u.manifest.version || t.version) ? `${m}-${s.sha.substring(0, 12)}` : m,
-    h = BN(e, g),
+    m = await lse(pluginId, entry.source, u.manifest, d, entry.version, s?.sha ?? u.gitCommitSha),
+    g = s && (u.manifest.version || entry.version) ? `${m}-${s.sha.substring(0, 12)}` : m,
+    h = BN(pluginId, g),
     y = u.path;
   if (u.path !== h) {
     (await qt().mkdir(xq.dirname(h)),
@@ -57,11 +66,11 @@ async function cacheAndRegisterPlugin(e, t, n = "user", r, o, s, i, a) {
   }
   let b = await cer(y);
   if (b.error)
-    T(`Plugin dependency install warning for ${e}: ${b.error}`, {
+    T(`Plugin dependency install warning for ${pluginId}: ${b.error}`, {
       level: "warn",
     });
   if (az()) {
-    let _ = SOe(e, g);
+    let _ = SOe(pluginId, g);
     (await JZn(y, _), (y = _));
   }
   if (s && u.manifest.version && s.version !== u.manifest.version)
@@ -73,7 +82,7 @@ async function cacheAndRegisterPlugin(e, t, n = "user", r, o, s, i, a) {
     );
   return (
     C$o(
-      e,
+      pluginId,
       {
         version: g,
         installedAt: f,
@@ -88,7 +97,7 @@ async function cacheAndRegisterPlugin(e, t, n = "user", r, o, s, i, a) {
         }),
       },
       n,
-      r,
+      projectPath,
     ),
     {
       path: y,

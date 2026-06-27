@@ -41,20 +41,32 @@ function collectStrings(node, set) {
   }
 }
 
-// 从语句数组提取命名顶层声明 -> [{name, strings:Set}]
+// 提取函数参数名 (仅简单 Identifier 参数; 解构/默认值跳过为 null 占位以保持位置)
+function paramNames(fnNode) {
+  if (!fnNode || !fnNode.params) return [];
+  return fnNode.params.map((p) => (p && p.type === "Identifier" ? p.name : null));
+}
+function fnOf(node) {
+  if (!node) return null;
+  if (node.type === "FunctionDeclaration" || node.type === "FunctionExpression" || node.type === "ArrowFunctionExpression") return node;
+  return null;
+}
+
+// 从语句数组提取命名顶层声明 -> [{name, strings:Set, params:[..]}]
 function declsFromBody(body) {
   const out = [];
   for (let stmt of body) {
     if (stmt.type === "ExportNamedDeclaration" && stmt.declaration) stmt = stmt.declaration;
     else if (stmt.type === "ExportDefaultDeclaration" && stmt.declaration) stmt = stmt.declaration;
     if (stmt.type === "FunctionDeclaration" && stmt.id) {
-      const s = new Set(); collectStrings(stmt.body, s); out.push({ name: stmt.id.name, strings: s });
+      const s = new Set(); collectStrings(stmt.body, s); out.push({ name: stmt.id.name, strings: s, params: paramNames(stmt) });
     } else if (stmt.type === "ClassDeclaration" && stmt.id) {
-      const s = new Set(); collectStrings(stmt.body, s); out.push({ name: stmt.id.name, strings: s });
+      const s = new Set(); collectStrings(stmt.body, s); out.push({ name: stmt.id.name, strings: s, params: [] });
     } else if (stmt.type === "VariableDeclaration") {
       for (const d of stmt.declarations) {
         if (d.id && d.id.type === "Identifier" && d.init) {
-          const s = new Set(); collectStrings(d.init, s); out.push({ name: d.id.name, strings: s });
+          const s = new Set(); collectStrings(d.init, s);
+          out.push({ name: d.id.name, strings: s, params: paramNames(fnOf(d.init)) });
         }
       }
     }
@@ -90,6 +102,7 @@ const VALID = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 function isValidName(n) { return VALID.test(n) && n.length >= 2 && n.length <= 60; }
 
 const auto = {};
+const autoParams = {};
 let modules = 0, mapped = 0;
 for (const [modVar, m] of Object.entries(report)) {
   if (!m.match) continue; // app 与 vendor 匹配都做命名对齐 (2.1.88 的 node_modules 是真实有名源码)
@@ -138,22 +151,37 @@ for (const [modVar, m] of Object.entries(report)) {
   }
 
   const renameMap = {};
+  const paramMap = {}; // minifiedDeclName -> { oldParam: newParam }
   const usedTargets = new Set();
   for (const [md, best] of bestForMod) {
     const od = best.od;
-    // 互为最佳 + (>=2 共享 或 (>=1 且 有长串))
+    // 互为最佳 + (>=2 共享 或 (>=1 且 有长串/全局唯一))
     const mutual = bestForOrig.get(od)?.md === md;
     const strong = best.c >= 2 || (best.c >= 1 && (best.longHit || best.uniqHit));
     if (!mutual || !strong) continue;
-    if (md.name === od.name || !isValidName(od.name)) continue;
-    if (usedTargets.has(od.name)) continue;
-    if (md.name.length > od.name.length + 4) { /* 允许 */ }
-    renameMap[md.name] = od.name;
-    usedTargets.add(od.name);
+    if (!isValidName(od.name)) continue;
+    if (md.name !== od.name && !usedTargets.has(od.name)) {
+      renameMap[md.name] = od.name;
+      usedTargets.add(od.name);
+    }
+    // 参数名按位对齐 (参数位置稳定; 仅两侧均为简单 Identifier 且不同名时)
+    const pm = {};
+    const n = Math.min(md.params.length, od.params.length);
+    const seen = new Set();
+    for (let i = 0; i < n; i++) {
+      const o = md.params[i], nw = od.params[i];
+      if (o && nw && o !== nw && isValidName(nw) && !seen.has(nw) && !(o in pm)) { pm[o] = nw; seen.add(nw); }
+    }
+    if (Object.keys(pm).length) paramMap[md.name] = pm;
   }
   if (Object.keys(renameMap).length) { auto[modVar] = renameMap; mapped += Object.keys(renameMap).length; }
+  if (Object.keys(paramMap).length) { autoParams[modVar] = paramMap; }
   modules++;
 }
 
 writeFileSync(OUT, JSON.stringify(auto, null, 0));
-console.log(`[09] processed ${modules} matched modules; produced ${mapped} auto-renames across ${Object.keys(auto).length} modules -> ${OUT}`);
+const OUTP = process.env.AUTO_PARAM_RENAMES || `work/${VERSION}/auto-param-renames.json`;
+writeFileSync(OUTP, JSON.stringify(autoParams, null, 0));
+let pcount = 0; for (const k in autoParams) for (const f in autoParams[k]) pcount += Object.keys(autoParams[k][f]).length;
+console.log(`[09] processed ${modules} matched modules; produced ${mapped} decl-renames across ${Object.keys(auto).length} modules -> ${OUT}`);
+console.log(`[09] produced ${pcount} param-renames across ${Object.keys(autoParams).length} modules -> ${OUTP}`);

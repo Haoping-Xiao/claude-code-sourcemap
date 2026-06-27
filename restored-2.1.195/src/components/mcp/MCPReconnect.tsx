@@ -10,9 +10,9 @@
   (_3 = R(rt(), 1)),
   (uc = R(se(), 1)),
   (e2l = ["project", "local", "user", "enterprise", "agent"]));
-function MCPReconnect(e) {
+function MCPReconnect(t0) {
   let t = r2l.c(25),
-    { serverName: n, onComplete: r } = e,
+    { serverName: n, onComplete: r } = t0,
     [o] = na(),
     s = Dc(),
     i = LEt(),

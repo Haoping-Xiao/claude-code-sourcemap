@@ -18,32 +18,38 @@ function _vl(e, t) {
     r = n?.file_path ?? n?.path;
   return r !== void 0 && P7(r);
 }
-function appendTeamMemorySummaryParts(e, t, n) {
-  let r = e.teamMemoryReadCount ?? 0,
-    o = e.teamMemorySearchCount ?? 0,
-    s = e.teamMemoryWriteCount ?? 0;
+function appendTeamMemorySummaryParts(memoryCounts, isActive, parts) {
+  let r = memoryCounts.teamMemoryReadCount ?? 0,
+    o = memoryCounts.teamMemorySearchCount ?? 0,
+    s = memoryCounts.teamMemoryWriteCount ?? 0;
   if (r > 0) {
-    let i = t
-      ? n.length === 0
+    let i = isActive
+      ? parts.length === 0
         ? "Recalling"
         : "recalling"
-      : n.length === 0
+      : parts.length === 0
         ? "Recalled"
         : "recalled";
-    n.push(`${i} ${r} team ${r === 1 ? "memory" : "memories"}`);
+    parts.push(`${i} ${r} team ${r === 1 ? "memory" : "memories"}`);
   }
   if (o > 0) {
-    let i = t
-      ? n.length === 0
+    let i = isActive
+      ? parts.length === 0
         ? "Searching"
         : "searching"
-      : n.length === 0
+      : parts.length === 0
         ? "Searched"
         : "searched";
-    n.push(`${i} team memories`);
+    parts.push(`${i} team memories`);
   }
   if (s > 0) {
-    let i = t ? (n.length === 0 ? "Writing" : "writing") : n.length === 0 ? "Wrote" : "wrote";
-    n.push(`${i} ${s} team ${s === 1 ? "memory" : "memories"}`);
+    let i = isActive
+      ? parts.length === 0
+        ? "Writing"
+        : "writing"
+      : parts.length === 0
+        ? "Wrote"
+        : "wrote";
+    parts.push(`${i} ${s} team ${s === 1 ? "memory" : "memories"}`);
   }
 }

@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h7l] deps: si, Xa, Ye, uo, rme, es, sr, g0, B_, gm, kP
 ((Vsr = R(lt(), 1)), (CJt = R(rt(), 1)), (NH = R(se(), 1)));
-function AgentsMenu(e) {
+function AgentsMenu(t0) {
   let t = p4o.c(215),
-    { tools: n, onExit: r } = e,
+    { tools: n, onExit: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = tc.jsx(vb, {
@@ -1019,17 +1019,17 @@ function m9f(e) {
 function g9f(e) {
   return e.source === "flagSettings";
 }
-function _temp8(e) {
-  return e.source === "localSettings";
+function _temp8(a_3) {
+  return a_3.source === "localSettings";
 }
-function _temp7(e) {
-  return e.source === "policySettings";
+function _temp7(a_2) {
+  return a_2.source === "policySettings";
 }
-function _temp6(e) {
-  return e.source === "projectSettings";
+function _temp6(a_1) {
+  return a_1.source === "projectSettings";
 }
-function _temp5(e) {
-  return e.source === "userSettings";
+function _temp5(a_0) {
+  return a_0.source === "userSettings";
 }
 function S9f(e) {
   return e.source === "built-in";

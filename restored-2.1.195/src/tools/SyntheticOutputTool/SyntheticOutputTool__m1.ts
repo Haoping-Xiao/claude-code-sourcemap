@@ -21,20 +21,20 @@ function Lct(e) {
   let n = buildSyntheticOutputTool(e);
   return (Aoa.set(e, n), n);
 }
-function buildSyntheticOutputTool(e) {
+function buildSyntheticOutputTool(jsonSchema) {
   try {
     let t = new Hoa.Ajv({
       allErrors: true,
     });
-    if (!t.validateSchema(e))
+    if (!t.validateSchema(jsonSchema))
       return {
         error: t.errorsText(t.errors),
       };
-    let r = t.compile(e);
+    let r = t.compile(jsonSchema);
     return {
       tool: {
         ...Xoo,
-        inputJSONSchema: e,
+        inputJSONSchema: jsonSchema,
         async call(o) {
           if (!r(o)) {
             let i = r.errors?.map((l) => `${l.instancePath || "root"}: ${l.message}`).join(", "),

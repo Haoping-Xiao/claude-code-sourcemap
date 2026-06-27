@@ -10,12 +10,12 @@ sL = class sL extends Error {
     super(e ?? "Unauthorized");
   }
 };
-function validateUrl(e) {
+function validateUrl(url) {
   let t;
   try {
-    t = new URL(e);
+    t = new URL(url);
   } catch (n) {
-    throw Error(`Invalid URL format: ${e}`);
+    throw Error(`Invalid URL format: ${url}`);
   }
   if (t.protocol !== "http:" && t.protocol !== "https:")
     throw Error(`Invalid URL protocol: must use http:// or https://, got ${t.protocol}`);

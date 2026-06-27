@@ -6,16 +6,22 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vbl] deps: ql, Ye
 cfe = R(se(), 1);
-async function countWorktreeChanges(e, t) {
-  let n = await $n(go(), ["-C", e, "status", "--porcelain"]);
+async function countWorktreeChanges(worktreePath, originalHeadCommit) {
+  let n = await $n(go(), ["-C", worktreePath, "status", "--porcelain"]);
   if (n.code !== 0) return null;
   let r = On(
     n.stdout.split(`
 `),
     (i) => i.trim() !== "",
   );
-  if (!t) return null;
-  let o = await $n(go(), ["-C", e, "rev-list", "--count", `${t}..HEAD`]);
+  if (!originalHeadCommit) return null;
+  let o = await $n(go(), [
+    "-C",
+    worktreePath,
+    "rev-list",
+    "--count",
+    `${originalHeadCommit}..HEAD`,
+  ]);
   if (o.code !== 0) return null;
   let s = parseInt(o.stdout.trim(), 10) || 0;
   return {

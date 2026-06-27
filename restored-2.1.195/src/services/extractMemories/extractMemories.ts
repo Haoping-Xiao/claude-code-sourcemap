@@ -61,18 +61,18 @@ function qTf(e, t) {
   if (!n) return e.some(LIl);
   return false;
 }
-function denyAutoMemTool(e, t) {
+function denyAutoMemTool(tool, reason) {
   return (
-    T(`[autoMem] denied ${e.name}: ${t}`),
+    T(`[autoMem] denied ${tool.name}: ${reason}`),
     G("tengu_auto_mem_tool_denied", {
-      tool_name: Ui(e.name),
+      tool_name: Ui(tool.name),
     }),
     {
       behavior: "deny",
-      message: t,
+      message: reason,
       decisionReason: {
         type: "other",
-        reason: t,
+        reason: reason,
       },
     }
   );
@@ -131,7 +131,7 @@ async function zTf(e) {
 function isAllowedAutoMemWritePath(e) {
   return e.endsWith(".md") && fNt(e);
 }
-function createAutoMemCanUseTool(e) {
+function createAutoMemCanUseTool(memoryDir) {
   return async (t, n, r) => {
     if (bD())
       return denyAutoMemTool(t, "Memory is paused. Run /pause-memory to resume automemory.");
@@ -168,7 +168,7 @@ function createAutoMemCanUseTool(e) {
       let i = t.name === Co;
       return denyAutoMemTool(
         t,
-        `Only read-only shell commands and ${i ? "rm" : "Remove-Item"} with all paths inside ${e} are permitted in this context (${i ? "ls, find, grep, cat, stat, wc, head, tail, and similar" : "Get-ChildItem, Get-Content, Select-Object -First/-Last, and similar"})`,
+        `Only read-only shell commands and ${i ? "rm" : "Remove-Item"} with all paths inside ${memoryDir} are permitted in this context (${i ? "ls, find, grep, cat, stat, wc, head, tail, and similar" : "Get-ChildItem, Get-Content, Select-Object -First/-Last, and similar"})`,
       );
     }
     if ((t.name === ka || t.name === Wc) && "file_path" in n) {
@@ -182,13 +182,13 @@ function createAutoMemCanUseTool(e) {
     let o = Su() ? Co : Ss;
     return denyAutoMemTool(
       t,
-      `only ${Ds}, ${qc}, ${wu}, read-only ${o}, and ${ka}/${Wc} within ${e} are allowed`,
+      `only ${Ds}, ${qc}, ${wu}, read-only ${o}, and ${ka}/${Wc} within ${memoryDir} are allowed`,
     );
   };
 }
-function getWrittenFilePath(e) {
-  if (e.type !== "tool_use" || (e.name !== ka && e.name !== Wc)) return;
-  let t = e.input;
+function getWrittenFilePath(block) {
+  if (block.type !== "tool_use" || (block.name !== ka && block.name !== Wc)) return;
+  let t = block.input;
   if (typeof t === "object" && t !== null && "file_path" in t) {
     let n = t.file_path;
     return typeof n === "string" ? n : void 0;

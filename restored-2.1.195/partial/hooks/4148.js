@@ -17,8 +17,8 @@ function Sal(e, t) {
     color: deriveReviewState(e.reviewState)
   };
 }
-function deriveReviewState(e) {
-  switch (e) {
+function deriveReviewState(isDraft) {
+  switch (isDraft) {
     case "approved":
       return "success";
     case "changes_requested":

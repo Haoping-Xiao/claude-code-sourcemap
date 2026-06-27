@@ -105,33 +105,33 @@ async function SetModelAndClose(e) {
     );
   }
 }
-function ModelPickerWrapper(e, t, n, r) {
+function ModelPickerWrapper(t0, t, n, r) {
   let o = t().fastMode;
   if (
     (Wie(),
     n((a) => ({
       ...a,
-      mainLoopModel: e,
+      mainLoopModel: t0,
       mainLoopModelForSession: null,
     })),
     r)
   )
-    _7t(e);
+    _7t(t0);
   xe("model_switch");
-  let s = `Set model to ${wt.bold(xP(e))}${r ? " and saved as your default for new sessions" : " for this session only"}`,
+  let s = `Set model to ${wt.bold(xP(t0))}${r ? " and saved as your default for new sessions" : " for this session only"}`,
     i = void 0;
   if (sc()) {
-    if ((zIe(), !rg(e) && o))
+    if ((zIe(), !rg(t0) && o))
       (n((a) => ({
         ...a,
         fastMode: false,
       })),
         (i = false));
-    else if (rg(e) && o) ((s += " \xB7 Fast mode ON"), (i = true));
+    else if (rg(t0) && o) ((s += " \xB7 Fast mode ON"), (i = true));
   }
-  if (xOe(e, i === true, nT())) s += " \xB7 Draws from usage credits";
+  if (xOe(t0, i === true, nT())) s += " \xB7 Draws from usage credits";
   if (i === false) s += " \xB7 Fast mode OFF";
-  return ((s += zOo(e)), s);
+  return ((s += zOo(t0)), s);
 }
 function _7t(e) {
   (io("userSettings", {
@@ -155,8 +155,8 @@ function KOo(e) {
   let t = e.toLowerCase();
   return !ure() && !nT() && t.includes("opus") && t.includes("[1m]");
 }
-function isSonnet1mUnavailable(e) {
-  let t = e.toLowerCase();
+function isSonnet1mUnavailable(model) {
+  let t = model.toLowerCase();
   return !uSe() && (t.includes("sonnet[1m]") || t.includes("sonnet-4-6[1m]"));
 }
 function xP(e) {
@@ -171,11 +171,11 @@ function XOo(e, t, n, r) {
   if (o === 0 || o === r) return false;
   return Zer(e) !== Zer(n ?? t);
 }
-function ShowModelAndClose(e, t = (n) => n) {
-  let n = xP(e.mainLoopModel),
-    r = e.effortValue !== void 0 ? ` (effort: ${e.effortValue})` : "";
-  if (e.mainLoopModelForSession)
-    return `Current model: ${t(xP(e.mainLoopModelForSession))} (session override from plan mode)
+function ShowModelAndClose(t0, t = (n) => n) {
+  let n = xP(t0.mainLoopModel),
+    r = t0.effortValue !== void 0 ? ` (effort: ${t0.effortValue})` : "";
+  if (t0.mainLoopModelForSession)
+    return `Current model: ${t(xP(t0.mainLoopModelForSession))} (session override from plan mode)
 Base model: ${n}${r}`;
   return `Current model: ${n}${r}`;
 }

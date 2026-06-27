@@ -750,85 +750,85 @@ function BackgroundTasksDialog({
     }),
   });
 }
-function toListItem(e) {
-  switch (e.type) {
+function toListItem(task) {
+  switch (task.type) {
     case "local_bash":
       return {
-        id: e.id,
+        id: task.id,
         type: "local_bash",
-        label: e.kind === "monitor" ? e.description : e.command,
-        status: e.status,
-        task: e,
+        label: task.kind === "monitor" ? task.description : task.command,
+        status: task.status,
+        task: task,
       };
     case "remote_agent":
       return {
-        id: e.id,
+        id: task.id,
         type: "remote_agent",
-        label: e.title,
-        status: e.status,
-        task: e,
+        label: task.title,
+        status: task.status,
+        task: task,
       };
     case "local_agent":
       return {
-        id: e.id,
+        id: task.id,
         type: "local_agent",
-        label: e.description,
-        status: e.status,
-        task: e,
+        label: task.description,
+        status: task.status,
+        task: task,
       };
     case "in_process_teammate":
       return {
-        id: e.id,
+        id: task.id,
         type: "in_process_teammate",
-        label: `@${e.identity.agentName}`,
-        status: e.status,
-        task: e,
+        label: `@${task.identity.agentName}`,
+        status: task.status,
+        task: task,
       };
     case "local_workflow":
       return {
-        id: e.id,
+        id: task.id,
         type: "local_workflow",
-        label: e.summary ?? e.description,
-        status: e.status,
-        task: e,
+        label: task.summary ?? task.description,
+        status: task.status,
+        task: task,
       };
     case "monitor_mcp":
       return {
-        id: e.id,
+        id: task.id,
         type: "monitor_mcp",
-        label: e.description,
-        status: e.status,
-        task: e,
+        label: task.description,
+        status: task.status,
+        task: task,
       };
     case "monitor_ws":
       return {
-        id: e.id,
+        id: task.id,
         type: "monitor_ws",
-        label: e.description,
-        status: e.status,
-        task: e,
+        label: task.description,
+        status: task.status,
+        task: task,
       };
     case "mcp_task":
       return {
-        id: e.id,
+        id: task.id,
         type: "mcp_task",
-        label: e.description,
-        status: e.status,
-        task: e,
+        label: task.description,
+        status: task.status,
+        task: task,
       };
     case "dream":
       return {
-        id: e.id,
+        id: task.id,
         type: "dream",
-        label: e.description,
-        status: e.status,
-        task: e,
+        label: task.description,
+        status: task.status,
+        task: task,
       };
   }
 }
-function Item(e) {
+function Item(t0) {
   let t = Ejo.c(14),
-    { item: n, isSelected: r } = e,
+    { item: n, isSelected: r } = t0,
     { columns: o } = br(),
     s = Math.max(30, o - 26),
     i;

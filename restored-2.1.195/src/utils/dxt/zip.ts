@@ -11,19 +11,19 @@ function odo(e) {
   if (yUn.isAbsolute(t)) return false;
   return true;
 }
-function validateZipFile(e, t, n = oCa) {
-  t.fileCount++;
+function validateZipFile(file, state, n = oCa) {
+  state.fileCount++;
   let r;
-  if (t.fileCount > n.MAX_FILE_COUNT)
-    r = `Archive contains too many files: ${t.fileCount} (max: ${n.MAX_FILE_COUNT})`;
-  if (!odo(e.name))
-    r = `Unsafe file path detected: "${e.name}". Path traversal or absolute paths are not allowed.`;
-  let o = e.originalSize || 0;
+  if (state.fileCount > n.MAX_FILE_COUNT)
+    r = `Archive contains too many files: ${state.fileCount} (max: ${n.MAX_FILE_COUNT})`;
+  if (!odo(file.name))
+    r = `Unsafe file path detected: "${file.name}". Path traversal or absolute paths are not allowed.`;
+  let o = file.originalSize || 0;
   if (o > n.MAX_FILE_SIZE)
-    r = `File "${e.name}" is too large: ${Math.round(o / 1024 / 1024)}MB (max: ${Math.round(n.MAX_FILE_SIZE / 1024 / 1024)}MB)`;
-  if (((t.totalUncompressedSize += o), t.totalUncompressedSize > n.MAX_TOTAL_SIZE))
-    r = `Archive total size is too large: ${Math.round(t.totalUncompressedSize / 1024 / 1024)}MB (max: ${Math.round(n.MAX_TOTAL_SIZE / 1024 / 1024)}MB)`;
-  let s = t.totalUncompressedSize / t.compressedSize;
+    r = `File "${file.name}" is too large: ${Math.round(o / 1024 / 1024)}MB (max: ${Math.round(n.MAX_FILE_SIZE / 1024 / 1024)}MB)`;
+  if (((state.totalUncompressedSize += o), state.totalUncompressedSize > n.MAX_TOTAL_SIZE))
+    r = `Archive total size is too large: ${Math.round(state.totalUncompressedSize / 1024 / 1024)}MB (max: ${Math.round(n.MAX_TOTAL_SIZE / 1024 / 1024)}MB)`;
+  let s = state.totalUncompressedSize / state.compressedSize;
   if (s > n.MAX_COMPRESSION_RATIO)
     r = `Suspicious compression ratio detected: ${s.toFixed(1)}:1 (max: ${n.MAX_COMPRESSION_RATIO}:1). This may be a zip bomb.`;
   return r
@@ -35,15 +35,15 @@ function validateZipFile(e, t, n = oCa) {
         isValid: true,
       };
 }
-async function unzipFile(e, t = oCa) {
+async function unzipFile(zipData, t = oCa) {
   let { unzipSync: n } = await Promise.resolve().then(() => (Y5e(), G4t)),
     o = {
       fileCount: 0,
       totalUncompressedSize: 0,
-      compressedSize: e.length,
+      compressedSize: zipData.length,
       errors: [],
     },
-    s = n(new Uint8Array(e), {
+    s = n(new Uint8Array(zipData), {
       filter: (i) => {
         let a = validateZipFile(i, o, t);
         if (!a.isValid) throw Error(a.error);

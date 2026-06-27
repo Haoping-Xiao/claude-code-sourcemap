@@ -79,10 +79,10 @@ function z0n(e) {
   if (!E1.hasOsc52ClipboardUtf8Bug() || !OBd(e)) return null;
   return "VS Code 1.123/1.124 will mojibake this paste \u2014 update to \u22651.125";
 }
-async function tmuxLoadBuffer(e) {
+async function tmuxLoadBuffer(text) {
   if (!process.env.TMUX) return false;
   let t = {
-      input: e,
+      input: text,
       useCwd: false,
       timeout: 2000,
     },
@@ -96,17 +96,17 @@ async function tmuxLoadBuffer(e) {
     o.code === 0
   );
 }
-async function setClipboard(e) {
-  let t = OYr.Buffer.from(e, "utf8").toString("base64");
-  if (!XNt()) copyNative(e);
-  await tmuxLoadBuffer(e);
+async function setClipboard(text) {
+  let t = OYr.Buffer.from(text, "utf8").toString("base64");
+  if (!XNt()) copyNative(text);
+  await tmuxLoadBuffer(text);
   let n = BYr(),
     r = XNt(),
     o = `${l8}]52;c;${t}${$M}`,
     s = n === "tmux" ? "raw+dcs" : n === "screen" ? "dcs" : "raw";
   if (
     (T(
-      `clipboard: setClipboard mux=${n ?? "none"} ssh=${r} native=${!r} predicted=${getClipboardPath()} emit=${s} bytes=${e.length}`,
+      `clipboard: setClipboard mux=${n ?? "none"} ssh=${r} native=${!r} predicted=${getClipboardPath()} emit=${s} bytes=${text.length}`,
     ),
     n === "tmux")
   )
@@ -114,9 +114,9 @@ async function setClipboard(e) {
   if (n === "screen") return Qx(o);
   return QS(wy.CLIPBOARD, "c", t);
 }
-function copyNative(e) {
+function copyNative(text) {
   let t = {
-    input: e,
+    input: text,
     useCwd: false,
     timeout: 2000,
   };
@@ -127,7 +127,7 @@ function copyNative(e) {
     case "linux":
       if (typeof sne !== "string")
         UYr().then(() => {
-          if (typeof sne === "string") copyNative(e);
+          if (typeof sne === "string") copyNative(text);
         });
       else if (sne === "wl-copy") ($n("wl-copy", [], t), $n("wl-copy", ["--primary"], t));
       else if (sne === "xclip")
@@ -190,10 +190,10 @@ async function QNt(e = "clipboard") {
       return "";
   }
 }
-function parseOSC(e) {
-  let t = e.indexOf(";"),
-    n = t >= 0 ? e.slice(0, t) : e,
-    r = t >= 0 ? e.slice(t + 1) : "",
+function parseOSC(content) {
+  let t = content.indexOf(";"),
+    n = t >= 0 ? content.slice(0, t) : content,
+    r = t >= 0 ? content.slice(t + 1) : "",
     o = parseInt(n, 10);
   if (o === wy.SET_TITLE_AND_ICON)
     return {
@@ -252,7 +252,7 @@ function parseOSC(e) {
     };
   return {
     type: "unknown",
-    sequence: `\x1B]${e}`,
+    sequence: `\x1B]${content}`,
   };
 }
 function LUi(e) {
@@ -276,9 +276,9 @@ function LUi(e) {
   }
   return null;
 }
-function parseTabStatus(e) {
+function parseTabStatus(data) {
   let t = {};
-  for (let [n, r] of FBd(e))
+  for (let [n, r] of FBd(data))
     switch (n) {
       case "indicator":
         t.indicator = r === "" ? null : LUi(r);
@@ -328,16 +328,17 @@ function jBd(e) {
 function eGe() {
   return false;
 }
-function tabStatus(e) {
+function tabStatus(fields) {
   let t = [],
     n = (r) =>
       r.type === "rgb"
         ? `#${[r.r, r.g, r.b].map((o) => o.toString(16).padStart(2, "0")).join("")}`
         : "";
-  if ("indicator" in e) t.push(`indicator=${e.indicator ? n(e.indicator) : ""}`);
-  if ("status" in e)
-    t.push(`status=${e.status?.replaceAll("\\", "\\\\").replaceAll(";", "\\;") ?? ""}`);
-  if ("statusColor" in e) t.push(`status-color=${e.statusColor ? n(e.statusColor) : ""}`);
+  if ("indicator" in fields) t.push(`indicator=${fields.indicator ? n(fields.indicator) : ""}`);
+  if ("status" in fields)
+    t.push(`status=${fields.status?.replaceAll("\\", "\\\\").replaceAll(";", "\\;") ?? ""}`);
+  if ("statusColor" in fields)
+    t.push(`status-color=${fields.statusColor ? n(fields.statusColor) : ""}`);
   return QS(wy.TAB_STATUS, t.join(";"));
 }
 function NUi(e) {

@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gIo] deps: AW, Ye, UX, dzn
 ((Gal = R(lt(), 1)), (a_t = R(se(), 1)), (jal = `learn more: ${u5e}`));
-function teamMemSavedPart(e) {
-  let t = e.teamCount ?? 0;
+function teamMemSavedPart(message) {
+  let t = message.teamCount ?? 0;
   if (t === 0) return null;
   return {
     segment: `${t} team ${t === 1 ? "memory" : "memories"}`,

@@ -64,10 +64,10 @@ function w3o(e) {
 function fKf(e, t) {
   return;
 }
-function extractServerMessage(e) {
-  if (typeof e === "string") return e;
-  if (e && typeof e === "object") {
-    let t = e;
+function extractServerMessage(data) {
+  if (typeof data === "string") return data;
+  if (data && typeof data === "object") {
+    let t = data;
     if (typeof t.message === "string") return t.message;
     if (
       typeof t.error === "object" &&
@@ -97,13 +97,13 @@ function gKf(e) {
       error: `${n}${t}`,
     }));
 }
-function logMCPErrorImpl(e, t) {
-  T(`MCP server "${e}" ${t}`, {
+function logMCPErrorImpl(serverName, error) {
+  T(`MCP server "${serverName}" ${error}`, {
     level: "error",
   });
-  let n = getMCPLogsPath(e),
+  let n = getMCPLogsPath(serverName),
     o = {
-      error: t instanceof Error ? t.stack || t.message : String(t),
+      error: error instanceof Error ? error.stack || error.message : String(error),
       timestamp: new Date().toISOString(),
       sessionId: Rt(),
       cwd: qt().cwd(),

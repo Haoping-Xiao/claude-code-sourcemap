@@ -6,20 +6,20 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bLc] deps: ft, KKt, ag, id, je, At, _a, hLc
 yLc = require("fs"), kYo = R(rt(), 1);
-function usePromptsFromClaudeInChrome(e, t) {
+function usePromptsFromClaudeInChrome(mcpClients, toolPermissionMode) {
   let n = SLc.c(6);
   ktn.useRef(void 0);
   let r;
-  if (n[0] !== e) r = [e], n[0] = e, n[1] = r;else r = n[1];
+  if (n[0] !== mcpClients) r = [mcpClients], n[0] = mcpClients, n[1] = r;else r = n[1];
   ktn.useEffect(qwm, r);
   let o, s;
-  if (n[2] !== e || n[3] !== t) o = () => {
-    let i = Vwm(e);
+  if (n[2] !== mcpClients || n[3] !== toolPermissionMode) o = () => {
+    let i = Vwm(mcpClients);
     if (!i) return;
     Rre("set_permission_mode", {
-      mode: t === "bypassPermissions" ? "skip_all_permission_checks" : "ask"
+      mode: toolPermissionMode === "bypassPermissions" ? "skip_all_permission_checks" : "ask"
     }, i).then(Wwm).catch(Gwm);
-  }, s = [e, t], n[2] = e, n[3] = t, n[4] = o, n[5] = s;else o = n[4], s = n[5];
+  }, s = [mcpClients, toolPermissionMode], n[2] = mcpClients, n[3] = toolPermissionMode, n[4] = o, n[5] = s;else o = n[4], s = n[5];
   ktn.useEffect(o, s);
 }
 function Gwm(e) {

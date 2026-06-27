@@ -137,8 +137,8 @@ ${e}`,
     throw l;
   }
 }
-function extractSideQuestionResponse(e) {
-  let t = e.flatMap((r) => (r.type === "assistant" ? r.message.content : []));
+function extractSideQuestionResponse(messages) {
+  let t = messages.flatMap((r) => (r.type === "assistant" ? r.message.content : []));
   if (t.length > 0) {
     let r = zl(
       t,
@@ -158,7 +158,7 @@ function extractSideQuestionResponse(e) {
         synthetic: true,
       };
   }
-  let n = e.find(KLl);
+  let n = messages.find(KLl);
   if (n)
     return {
       response: `(API error: ${n.error.formatted})`,

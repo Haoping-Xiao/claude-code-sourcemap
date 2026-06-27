@@ -24,8 +24,8 @@ function Rqf(e) {
   else s = t[3];
   return s;
 }
-function getRuleBehaviorLabel(e) {
-  switch (e) {
+function getRuleBehaviorLabel(ruleBehavior) {
+  switch (ruleBehavior) {
     case "allow":
       return "allowed";
     case "deny":
@@ -34,9 +34,9 @@ function getRuleBehaviorLabel(e) {
       return "ask";
   }
 }
-function RuleDetails(e) {
+function RuleDetails(t0) {
   let t = FAt.c(29),
-    { rule: n, onDelete: r, onCancel: o } = e,
+    { rule: n, onDelete: r, onCancel: o } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((s = {
@@ -294,7 +294,7 @@ function Pqf(e) {
   else I = t[30];
   return I;
 }
-function PermissionRulesTab(e) {
+function PermissionRulesTab(t0) {
   let t = FAt.c(27),
     n,
     r,
@@ -305,8 +305,8 @@ function PermissionRulesTab(e) {
     l,
     c,
     u;
-  if (t[0] !== e) {
-    let { tab: m, getRulesOptions: g, handleToolSelect: h, ...y } = e;
+  if (t[0] !== t0) {
+    let { tab: m, getRulesOptions: g, handleToolSelect: h, ...y } = t0;
     ((u = m), (o = h), (s = y), (r = U), (a = "column"), (l = u === "allow" ? 0 : void 0));
     let b;
     if (t[10] === Symbol.for("react.memo_cache_sentinel"))
@@ -327,7 +327,7 @@ function PermissionRulesTab(e) {
     else c = t[12];
     ((n = Pqf),
       (i = g(u, s.searchQuery)),
-      (t[0] = e),
+      (t[0] = t0),
       (t[1] = n),
       (t[2] = r),
       (t[3] = o),
@@ -379,9 +379,9 @@ function PermissionRulesTab(e) {
   else f = t[26];
   return f;
 }
-function PermissionRuleList(e) {
+function PermissionRuleList(t0) {
   let t = FAt.c(119),
-    { onExit: n, initialTab: r, onRetryDenials: o } = e,
+    { onExit: n, initialTab: r, onRetryDenials: o } = t0,
     { getDenials: s, removeDenial: i } = BAt(),
     a;
   if (t[0] !== s) ((a = s()), (t[0] = s), (t[1] = a));

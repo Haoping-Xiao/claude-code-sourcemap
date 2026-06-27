@@ -216,8 +216,8 @@ function getPatchForEdits(e, t) {
   if (n === e) throw Error("Original and edited file match exactly. Failed to apply edit.");
   return n;
 }
-function getSnippetForTwoFileDiff(e, t) {
-  let n = but("file.txt", "file.txt", e, t, void 0, void 0, {
+function getSnippetForTwoFileDiff(fileAContents, fileBContents) {
+  let n = but("file.txt", "file.txt", fileAContents, fileBContents, void 0, void 0, {
     context: 8,
     timeout: W8n,
   });

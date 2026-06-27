@@ -47,13 +47,13 @@ function usePluginRecommendationBase() {
   else l = e[5];
   return l;
 }
-async function installPluginAndNotify(e, t, n, r, o) {
+async function installPluginAndNotify(pluginId, pluginName, keyPrefix, addNotification, install) {
   try {
-    let s = await EL(e);
-    if (!s) throw Error(`Plugin ${e} not found in marketplace`);
-    (await o(s),
-      r({
-        key: `${n}-installed`,
+    let s = await EL(pluginId);
+    if (!s) throw Error(`Plugin ${pluginId} not found in marketplace`);
+    (await install(s),
+      addNotification({
+        key: `${keyPrefix}-installed`,
         kind: "feedback",
         jsx: Ptn.jsxs(w, {
           color: "success",
@@ -62,7 +62,7 @@ async function installPluginAndNotify(e, t, n, r, o) {
               status: "success",
               withSpace: true,
             }),
-            t,
+            pluginName,
             " installed \xB7 restart to apply",
           ],
         }),
@@ -71,14 +71,14 @@ async function installPluginAndNotify(e, t, n, r, o) {
       }),
       xe("plugin_recommendation_install"));
   } catch (s) {
-    (T(`Failed to install plugin ${e}: ${s instanceof Error ? s.message : String(s)}`, {
+    (T(`Failed to install plugin ${pluginId}: ${s instanceof Error ? s.message : String(s)}`, {
       level: "error",
     }),
-      r({
-        key: `${n}-install-failed`,
+      addNotification({
+        key: `${keyPrefix}-install-failed`,
         jsx: Ptn.jsxs(w, {
           color: "error",
-          children: ["Failed to install ", t],
+          children: ["Failed to install ", pluginName],
         }),
         priority: "immediate",
         timeoutMs: 5000,

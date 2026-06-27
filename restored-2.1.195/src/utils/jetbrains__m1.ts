@@ -6,10 +6,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sFn] deps: nJe, XIa
 mqe = iwp;
-function buildCommonPluginDirectoryPaths(e) {
+function buildCommonPluginDirectoryPaths(ideName) {
   let t = x3t.homedir(),
     n = [],
-    r = JIa[e.toLowerCase()];
+    r = JIa[ideName.toLowerCase()];
   if (!r) return n;
   let o = process.env.APPDATA || eN.join(t, "AppData", "Roaming"),
     s = process.env.LOCALAPPDATA || eN.join(t, "AppData", "Local");
@@ -20,21 +20,21 @@ function buildCommonPluginDirectoryPaths(e) {
           eN.join(t, "Library", "Application Support", "JetBrains"),
           eN.join(t, "Library", "Application Support"),
         ),
-        e.toLowerCase() === "androidstudio")
+        ideName.toLowerCase() === "androidstudio")
       )
         n.push(eN.join(t, "Library", "Application Support", "Google"));
       break;
     case "win32":
       if (
         (n.push(eN.join(o, "JetBrains"), eN.join(s, "JetBrains"), eN.join(o)),
-        e.toLowerCase() === "androidstudio")
+        ideName.toLowerCase() === "androidstudio")
       )
         n.push(eN.join(s, "Google"));
       break;
     case "linux":
       n.push(eN.join(t, ".config", "JetBrains"), eN.join(t, ".local", "share", "JetBrains"));
       for (let i of r) n.push(eN.join(t, "." + i));
-      if (e.toLowerCase() === "androidstudio") n.push(eN.join(t, ".config", "Google"));
+      if (ideName.toLowerCase() === "androidstudio") n.push(eN.join(t, ".config", "Google"));
       break;
     default:
       break;

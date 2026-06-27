@@ -79,22 +79,22 @@ async function parseCommand(e) {
     return null;
   }
 }
-async function parseCommandRaw(e) {
-  if (!e) return null;
-  if (e.length > nra)
+async function parseCommandRaw(command) {
+  if (!command) return null;
+  if (command.length > nra)
     return (
       G("tengu_tree_sitter_parse_abort", {
-        cmdLength: e.length,
+        cmdLength: command.length,
         panic: false,
       }),
       PARSE_ABORTED
     );
   try {
-    let t = hL().parse(e);
+    let t = hL().parse(command);
     if (t === null)
       return (
         G("tengu_tree_sitter_parse_abort", {
-          cmdLength: e.length,
+          cmdLength: command.length,
           panic: false,
         }),
         PARSE_ABORTED
@@ -103,48 +103,48 @@ async function parseCommandRaw(e) {
   } catch {
     return (
       G("tengu_tree_sitter_parse_abort", {
-        cmdLength: e.length,
+        cmdLength: command.length,
         panic: true,
       }),
       PARSE_ABORTED
     );
   }
 }
-function findCommandNode(e, t) {
-  let { type: n, children: r } = e;
-  if (Uro.has(n)) return e;
-  if (n === "variable_assignment" && t)
-    return t.children.find((o) => Uro.has(o.type) && o.startIndex > e.startIndex) ?? null;
+function findCommandNode(node, parent) {
+  let { type: n, children: r } = node;
+  if (Uro.has(n)) return node;
+  if (n === "variable_assignment" && parent)
+    return parent.children.find((o) => Uro.has(o.type) && o.startIndex > node.startIndex) ?? null;
   if (n === "pipeline") {
     for (let o of r) {
-      let s = findCommandNode(o, e);
+      let s = findCommandNode(o, node);
       if (s) return s;
     }
     return null;
   }
   if (n === "redirected_statement") return r.find((o) => Uro.has(o.type)) ?? null;
   for (let o of r) {
-    let s = findCommandNode(o, e);
+    let s = findCommandNode(o, node);
     if (s) return s;
   }
   return null;
 }
-function extractEnvVars(e) {
-  if (!e || e.type !== "command") return [];
+function extractEnvVars(commandNode) {
+  if (!commandNode || commandNode.type !== "command") return [];
   let t = [];
-  for (let n of e.children)
+  for (let n of commandNode.children)
     if (n.type === "variable_assignment") t.push(n.text);
     else if (n.type === "command_name" || n.type === "word") break;
   return t;
 }
-function extractCommandArguments(e) {
-  if (e.type === "declaration_command") {
-    let r = e.children[0];
+function extractCommandArguments(commandNode) {
+  if (commandNode.type === "declaration_command") {
+    let r = commandNode.children[0];
     return r && mrp.has(r.text) ? [r.text] : [];
   }
   let t = [],
     n = false;
-  for (let r of e.children) {
+  for (let r of commandNode.children) {
     if (r.type === "variable_assignment") continue;
     if (r.type === "command_name" || (!n && r.type === "word")) {
       n = true;

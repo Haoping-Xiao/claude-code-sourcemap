@@ -27,12 +27,12 @@ Just writing a response in text is not visible to others on your team - you MUST
 
 The user interacts primarily with the team lead. Your work is coordinated through the task system and teammate messaging.
 `;
-function createInProcessCanUseTool(e, t, n, r) {
+function createInProcessCanUseTool(identity, abortController, onPermissionWaitMs, r) {
   return async (o, s, i, a, l, c) => {
     let u = c ?? (await lbt(o, s, i, a, l, void 0, r));
     if (u.behavior !== "ask") return u;
     let d = u.updatedInput ?? s;
-    if (t.signal.aborted)
+    if (abortController.signal.aborted)
       return {
         behavior: "ask",
         message: AQ,
@@ -67,13 +67,13 @@ function createInProcessCanUseTool(e, t, n, r) {
           permissionMode: p.mode,
         });
       if (b) return b;
-      if (t.signal.aborted)
+      if (abortController.signal.aborted)
         return {
           behavior: "ask",
           message: AQ,
         };
       let _ = await f();
-      if (t.signal.aborted)
+      if (abortController.signal.aborted)
         return {
           behavior: "ask",
           message: AQ,
@@ -92,11 +92,11 @@ function createInProcessCanUseTool(e, t, n, r) {
           );
         });
       } finally {
-        n(Date.now() - S);
+        onPermissionWaitMs(Date.now() - S);
       }
     }
     let m = await f();
-    if (t.signal.aborted)
+    if (abortController.signal.aborted)
       return {
         behavior: "ask",
         message: AQ,
@@ -108,10 +108,10 @@ function createInProcessCanUseTool(e, t, n, r) {
         input: d,
         description: m,
         permissionSuggestions: u.suggestions,
-        workerId: e.agentId,
-        workerName: e.agentName,
-        workerColor: e.color,
-        teamName: e.teamName,
+        workerId: identity.agentId,
+        workerName: identity.agentName,
+        workerColor: identity.color,
+        teamName: identity.teamName,
       });
       (T7n({
         requestId: h.id,
@@ -182,10 +182,10 @@ function createInProcessCanUseTool(e, t, n, r) {
               }
           },
           cff,
-          t,
+          abortController,
           _,
           g,
-          e,
+          identity,
           h,
         ),
         b = () => {
@@ -195,17 +195,17 @@ function createInProcessCanUseTool(e, t, n, r) {
               message: AQ,
             }));
         };
-      t.signal.addEventListener("abort", b, {
+      abortController.signal.addEventListener("abort", b, {
         once: true,
       });
       function _() {
-        (clearInterval(y), Ggl(h.id), t.signal.removeEventListener("abort", b));
+        (clearInterval(y), Ggl(h.id), abortController.signal.removeEventListener("abort", b));
       }
     });
   };
 }
-function updateTaskState(e, t, n) {
-  n.update(e, (r) => (r.type === "in_process_teammate" ? t(r) : r));
+function updateTaskState(taskId, updater, setAppState) {
+  setAppState.update(taskId, (r) => (r.type === "in_process_teammate" ? updater(r) : r));
 }
 async function dff(e, t, n, r) {
   await fg(
@@ -223,36 +223,36 @@ async function Zgl(e, t, n, r) {
   let o = E9t(e, r);
   await dff(e, De(o), t, n);
 }
-function findAvailableTask(e) {
-  let t = new Set(e.filter((n) => n.status !== "completed").map((n) => n.id));
-  return e.find((n) => {
+function findAvailableTask(tasks) {
+  let t = new Set(tasks.filter((n) => n.status !== "completed").map((n) => n.id));
+  return tasks.find((n) => {
     if (n.status !== "pending") return false;
     if (n.owner) return false;
     return n.blockedBy.every((r) => !t.has(r));
   });
 }
-function formatTaskAsPrompt(e) {
-  let t = `Complete all open tasks. Start with task #${e.id}: 
+function formatTaskAsPrompt(task) {
+  let t = `Complete all open tasks. Start with task #${task.id}: 
 
- ${e.subject}`;
-  if (e.description)
+ ${task.subject}`;
+  if (task.description)
     t += `
 
-${e.description}`;
+${task.description}`;
   return t;
 }
-async function tryClaimNextTask(e, t) {
+async function tryClaimNextTask(taskListId, agentName) {
   try {
-    let n = await W4(e),
+    let n = await W4(taskListId),
       r = findAvailableTask(n);
     if (!r) return;
-    let o = await vOa(e, r.id, t);
+    let o = await vOa(taskListId, r.id, agentName);
     if (!o.success) {
       T(`[inProcessRunner] Failed to claim task #${r.id}: ${o.reason}`);
       return;
     }
     return (
-      await hEe(e, r.id, {
+      await hEe(taskListId, r.id, {
         status: "in_progress",
       }),
       T(`[inProcessRunner] Claimed task #${r.id}: ${r.subject}`),
@@ -263,27 +263,37 @@ async function tryClaimNextTask(e, t) {
     return;
   }
 }
-async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
-  T(`[inProcessRunner] ${e.agentName} starting poll loop (abort=${t.signal.aborted})`);
+async function waitForNextPromptOrShutdown(
+  identity,
+  abortController,
+  taskId,
+  getAppState,
+  setAppState,
+  taskListId,
+  i,
+) {
+  T(
+    `[inProcessRunner] ${identity.agentName} starting poll loop (abort=${abortController.signal.aborted})`,
+  );
   let l = Date.now(),
     c = 0;
-  while (!t.signal.aborted) {
+  while (!abortController.signal.aborted) {
     if (c > 0) await Nn(500);
     c++;
-    let u = r(),
-      d = u.tasks[n];
+    let u = getAppState(),
+      d = u.tasks[taskId];
     if (d && d.type === "in_process_teammate" && d.pendingUserMessages.length > 0) {
       let m = d.pendingUserMessages[0];
       return (
         updateTaskState(
-          n,
+          taskId,
           (g) => ({
             ...g,
             pendingUserMessages: g.pendingUserMessages.slice(1),
           }),
-          o,
+          setAppState,
         ),
-        T(`[inProcessRunner] ${e.agentName} found pending user message (poll #${c})`),
+        T(`[inProcessRunner] ${identity.agentName} found pending user message (poll #${c})`),
         {
           type: "new_message",
           message: m.text,
@@ -296,19 +306,22 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
       return {
         type: "aborted",
       };
-    if ((d?.type === "in_process_teammate" && d.awaitingPlanApproval) || u.viewingAgentTaskId === n)
+    if (
+      (d?.type === "in_process_teammate" && d.awaitingPlanApproval) ||
+      u.viewingAgentTaskId === taskId
+    )
       l = Date.now();
-    if (t.signal.aborted)
+    if (abortController.signal.aborted)
       return (
-        T(`[inProcessRunner] ${e.agentName} aborted while waiting (poll #${c})`),
+        T(`[inProcessRunner] ${identity.agentName} aborted while waiting (poll #${c})`),
         {
           type: "aborted",
         }
       );
     if (i) continue;
-    T(`[inProcessRunner] ${e.agentName} poll #${c}: checking mailbox`);
+    T(`[inProcessRunner] ${identity.agentName} poll #${c}: checking mailbox`);
     try {
-      let m = await dAe(e.agentName, e.teamName),
+      let m = await dAe(identity.agentName, identity.teamName),
         g = -1,
         h = null;
       for (let A = 0; A < m.length; A++) {
@@ -326,9 +339,9 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
           v = On(m.slice(0, g), (C) => !C.read);
         return (
           T(
-            `[inProcessRunner] ${e.agentName} received shutdown request from ${h?.from} (prioritized over ${v} unread messages)`,
+            `[inProcessRunner] ${identity.agentName} received shutdown request from ${h?.from} (prioritized over ${v} unread messages)`,
           ),
-          await b9t(e.agentName, e.teamName, A),
+          await b9t(identity.agentName, identity.teamName, A),
           {
             type: "shutdown_request",
             request: h,
@@ -348,23 +361,23 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
         for (let A of y) {
           let v = Wht(A.text);
           if (v && A.from === Hd) {
-            if (knl(n, v, o))
+            if (knl(taskId, v, setAppState))
               (T(
-                `[inProcessRunner] ${e.agentName} applied lead plan_approval_response: approved=${v.approved}`,
+                `[inProcessRunner] ${identity.agentName} applied lead plan_approval_response: approved=${v.approved}`,
               ),
                 (_ = x9t(v)));
             else
               T(
-                `[inProcessRunner] ${e.agentName} ignoring stale plan_approval_response (not awaiting approval)`,
+                `[inProcessRunner] ${identity.agentName} ignoring stale plan_approval_response (not awaiting approval)`,
               );
             continue;
           }
           let C = qht(A.text);
           if (C && A.from === Hd) {
             let x = owo(C.mode);
-            (T(`[inProcessRunner] ${e.agentName} applying lead mode_set_request: ${x}`),
+            (T(`[inProcessRunner] ${identity.agentName} applying lead mode_set_request: ${x}`),
               updateTaskState(
-                n,
+                taskId,
                 (I) =>
                   I.permissionMode === x
                     ? I
@@ -372,18 +385,18 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
                         ...I,
                         permissionMode: x,
                       },
-                o,
+                setAppState,
               ),
-              await Mht(e.teamName, e.agentName, x));
+              await Mht(identity.teamName, identity.agentName, x));
           } else
             T(
-              `[inProcessRunner] ${e.agentName} dropping protocol frame from ${A.from}: ${A.text.substring(0, 80)}`,
+              `[inProcessRunner] ${identity.agentName} dropping protocol frame from ${A.from}: ${A.text.substring(0, 80)}`,
               {
                 level: "warn",
               },
             );
         }
-        await f8e(e.agentName, e.teamName, y);
+        await f8e(identity.agentName, identity.teamName, y);
       }
       if (_)
         return {
@@ -394,8 +407,8 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
       let S = b.find((A) => A.from === Hd) ?? b[0];
       if (S)
         return (
-          T(`[inProcessRunner] ${e.agentName} received new message from ${S.from}`),
-          await b9t(e.agentName, e.teamName, S),
+          T(`[inProcessRunner] ${identity.agentName} received new message from ${S.from}`),
+          await b9t(identity.agentName, identity.teamName, S),
           {
             type: "new_message",
             message: S.text,
@@ -405,9 +418,9 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
           }
         );
     } catch (m) {
-      T(`[inProcessRunner] ${e.agentName} poll error: ${m}`);
+      T(`[inProcessRunner] ${identity.agentName} poll error: ${m}`);
     }
-    let f = await tryClaimNextTask(s, e.agentName);
+    let f = await tryClaimNextTask(taskListId, identity.agentName);
     if (f)
       return {
         type: "new_message",
@@ -416,13 +429,15 @@ async function waitForNextPromptOrShutdown(e, t, n, r, o, s, i) {
       };
   }
   return (
-    T(`[inProcessRunner] ${e.agentName} exiting poll loop (abort=${t.signal.aborted}, polls=${c})`),
+    T(
+      `[inProcessRunner] ${identity.agentName} exiting poll loop (abort=${abortController.signal.aborted}, polls=${c})`,
+    ),
     {
       type: "aborted",
     }
   );
 }
-async function runInProcessTeammate(e) {
+async function runInProcessTeammate(config) {
   let {
       identity: t,
       taskId: n,
@@ -442,7 +457,7 @@ async function runInProcessTeammate(e) {
       resumeMessages: h,
       resumeReplacementState: y,
       initialFrom: b,
-    } = e,
+    } = config,
     { setAppState: _, taskRegistry: S } = a,
     A = Ade(n);
   T(`[inProcessRunner] Starting agent loop for ${t.agentId}`);
@@ -944,9 +959,9 @@ ${V}`);
     );
   }
 }
-function startInProcessTeammate(e) {
-  let t = e.identity.agentId;
-  runInProcessTeammate(e).catch((n) => {
+function startInProcessTeammate(config) {
+  let t = config.identity.agentId;
+  runInProcessTeammate(config).catch((n) => {
     T(`[inProcessRunner] Unhandled error in ${t}: ${n}`);
   });
 }

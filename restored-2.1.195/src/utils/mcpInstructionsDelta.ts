@@ -14,18 +14,18 @@ function o0l(e) {
     .map((n) => n.id);
   return t.length > 0 ? t : void 0;
 }
-function getMcpInstructionsDelta(e, t, n) {
+function getMcpInstructionsDelta(mcpClients, messages, clientSideInstructions) {
   let r = new Set(),
     o = 0,
     s = 0;
-  for (let d of t) {
+  for (let d of messages) {
     if (d.type !== "attachment") continue;
     if ((o++, d.attachment.type !== "mcp_instructions_delta")) continue;
     s++;
     for (let p of d.attachment.addedNames) r.add(p);
     for (let p of d.attachment.removedNames) r.delete(p);
   }
-  let i = e.filter((d) => d.type === "connected"),
+  let i = mcpClients.filter((d) => d.type === "connected"),
     a = new Set(i.map((d) => d.name)),
     l = new Map();
   for (let d of i)
@@ -35,7 +35,7 @@ function getMcpInstructionsDelta(e, t, n) {
         `## ${d.name}
 ${d.instructions}`,
       );
-  for (let d of n) {
+  for (let d of clientSideInstructions) {
     if (!a.has(d.serverName)) continue;
     let p = l.get(d.serverName);
     l.set(
@@ -63,8 +63,8 @@ ${d.block}`,
       addedCount: c.length,
       removedCount: u.length,
       priorAnnouncedCount: r.size,
-      clientSideCount: n.length,
-      messagesLength: t.length,
+      clientSideCount: clientSideInstructions.length,
+      messagesLength: messages.length,
       attachmentCount: o,
       midCount: s,
     }),

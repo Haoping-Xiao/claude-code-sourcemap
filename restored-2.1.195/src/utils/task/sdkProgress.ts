@@ -35,21 +35,21 @@ Prior tool calls may carry a harness-authored "outcome" annotation: ` +
 ((lol = /\r\n?|[\u2028\u2029\u0085\v\f]/g), (gnf = /[\p{Cf}\p{Default_Ignorable_Code_Point}]/gu));
 hnf = /[\u2028\u2029\u0085]/g;
 Snf = /[^a-zA-Z0-9._-]/g;
-function emitTaskProgress(e) {
+function emitTaskProgress(params) {
   zv({
     type: "system",
     subtype: "task_progress",
-    task_id: e.taskId,
-    tool_use_id: e.toolUseId,
-    description: e.description,
-    subagent_type: e.subagentType,
+    task_id: params.taskId,
+    tool_use_id: params.toolUseId,
+    description: params.description,
+    subagent_type: params.subagentType,
     usage: {
-      total_tokens: e.totalTokens,
-      tool_uses: e.toolUses,
-      duration_ms: Date.now() - e.startTime,
+      total_tokens: params.totalTokens,
+      tool_uses: params.toolUses,
+      duration_ms: Date.now() - params.startTime,
     },
-    last_tool_name: e.lastToolName,
-    summary: e.summary,
-    workflow_progress: e.workflowProgress,
+    last_tool_name: params.lastToolName,
+    summary: params.summary,
+    workflow_progress: params.workflowProgress,
   });
 }

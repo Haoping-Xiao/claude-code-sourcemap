@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jko] deps: je, At, D6e
 Aml = require("crypto"), Y_t = require("fs/promises"), e7n = require("path");
-function toolUseSearchText(e) {
-  if (typeof e !== "object" || e === null) return "";
-  let t = e;
+function toolUseSearchText(input) {
+  if (typeof input !== "object" || input === null) return "";
+  let t = input;
   for (let n of ["command", "file_path", "path", "pattern", "query", "prompt"]) {
     let r = t[n];
     if (typeof r === "string") return $a(r.replace(/\s+/g, " ").trim(), 60);

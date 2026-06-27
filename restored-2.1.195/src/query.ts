@@ -16,8 +16,8 @@ function ewf() {
   let e = Oe.CLAUDE_CODE_FABLE_BRIDGE_DIALOG_TIMEOUT_MS;
   return e !== void 0 && e > 0 ? e : 60000;
 }
-function* yieldMissingToolResultBlocks(e, t, n, r) {
-  for (let o of e) {
+function* yieldMissingToolResultBlocks(assistantMessages, errorMessage, n, r) {
+  for (let o of assistantMessages) {
     let s = o.message.content.filter((i) => i.type === "tool_use");
     for (let i of s) {
       if (r?.has(i.id)) continue;
@@ -25,12 +25,12 @@ function* yieldMissingToolResultBlocks(e, t, n, r) {
         content: [
           {
             type: "tool_result",
-            content: t,
+            content: errorMessage,
             is_error: !0,
             tool_use_id: i.id,
           },
         ],
-        toolUseResult: t,
+        toolUseResult: errorMessage,
         sourceToolAssistantUUID: o.uuid,
         now: n?.now,
         uuidFn: n?.uuid,
@@ -131,8 +131,8 @@ function Sfe(e, t, n) {
     .markApiFailure(r, XE(), n.error, K8(n) ?? n.errorDetails ?? "")
     .catch(() => {});
 }
-function isWithheldMaxOutputTokens(e) {
-  return e?.type === "assistant" && e.apiError === "max_output_tokens";
+function isWithheldMaxOutputTokens(msg) {
+  return msg?.type === "assistant" && msg.apiError === "max_output_tokens";
 }
 function swf(e, t) {
   let r = [
@@ -187,7 +187,7 @@ async function* CN(e) {
   }
   return n;
 }
-async function* queryLoop(e, t) {
+async function* queryLoop(params, consumedCommandUuids) {
   let {
       systemPrompt: n,
       userContext: r,
@@ -199,15 +199,15 @@ async function* queryLoop(e, t) {
       maxTurns: c,
       skipCacheWrite: u,
       forkPointUuid: d,
-    } = e,
-    p = e.deps ?? $xl(),
-    f = nwf(Py(e.messages)),
+    } = params,
+    p = params.deps ?? $xl(),
+    f = nwf(Py(params.messages)),
     m = {
-      messages: e.messages,
-      toolUseContext: e.toolUseContext,
-      maxOutputTokensOverride: e.maxOutputTokensOverride,
+      messages: params.messages,
+      toolUseContext: params.toolUseContext,
+      maxOutputTokensOverride: params.maxOutputTokensOverride,
       compactTracking: void 0,
-      stopHookActive: e.stopHookActive ?? !1,
+      stopHookActive: params.stopHookActive ?? !1,
       stopHookBlockingCount: 0,
       maxOutputTokensRecoveryCount: 0,
       hasAttemptedReactiveCompact: !1,
@@ -230,7 +230,7 @@ async function* queryLoop(e, t) {
     v,
     C = !1,
     x = Array.isArray(i) ? i : i !== void 0 ? [i] : [],
-    I = nq(e.toolUseContext),
+    I = nq(params.toolUseContext),
     k = [I, ...x.filter(($) => $ !== I)],
     D = 0,
     P,
@@ -238,7 +238,7 @@ async function* queryLoop(e, t) {
     L = a.startsWith("repl_main_thread") || a === "sdk",
     M = xM(a),
     N =
-      e.stickyBetas ??
+      params.stickyBetas ??
       (M === "main" || M === void 0 ? void 0 : M === "subagent" ? Fie() : RR(u0())),
     B = M === "main" || M === void 0;
   while (!0) {
@@ -371,10 +371,10 @@ async function* queryLoop(e, t) {
           queryChainId: ee,
           queryDepth: re.depth,
         }),
-        e.taskBudget)
+        params.taskBudget)
       ) {
         let Er = dio(ce);
-        h = Math.max(0, (h ?? e.taskBudget.total) - Er);
+        h = Math.max(0, (h ?? params.taskBudget.total) - Er);
       }
       ae = oio(p.uuid(), ge.consecutiveRapidRefills);
       for (let Er of oMo(Ne)) yield Er;
@@ -740,7 +740,7 @@ async function* queryLoop(e, t) {
                   ce = Ujt(ce, Fn, xi);
                 },
                 querySource: a,
-                keepPartialMessageOnAbort: e.keepPartialMessageOnAbort,
+                keepPartialMessageOnAbort: params.keepPartialMessageOnAbort,
                 spawnedBySkill: l,
                 activeSkill: $.options.activeSkill,
                 activeMcpServer: $.options.activeMcpServer,
@@ -767,9 +767,9 @@ async function* queryLoop(e, t) {
                 agentId: $.agentId,
                 agentContext: $.agentContext,
                 onRetryStatus: $.onRetryStatus,
-                ...(e.taskBudget && {
+                ...(params.taskBudget && {
                   taskBudget: {
-                    total: e.taskBudget.total,
+                    total: params.taskBudget.total,
                     ...(h !== void 0 && {
                       remaining: h,
                     }),
@@ -1775,9 +1775,9 @@ async function* queryLoop(e, t) {
             ze,
           );
         if (Pn) {
-          if (e.taskBudget) {
+          if (params.taskBudget) {
             let Ut = dio(ce);
-            h = Math.max(0, (h ?? e.taskBudget.total) - Ut);
+            h = Math.max(0, (h ?? params.taskBudget.total) - Ut);
           }
           for (let Ut of oMo(Pn)) yield Ut;
           let Kn = PAe(Pn);
@@ -2340,7 +2340,7 @@ async function* queryLoop(e, t) {
     if (kr.length > 0) {
       for (let Ne of kr)
         if (Ne.uuid)
-          (t.push(Ne.uuid),
+          (consumedCommandUuids.push(Ne.uuid),
             yield {
               type: "command_lifecycle",
               uuid: Ne.uuid,

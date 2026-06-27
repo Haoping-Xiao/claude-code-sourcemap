@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ynr] deps: Ye, Ox, sr, Cc, vKe, lJ, vi
 ((s2l = R(lt(), 1)), (Knr = R(rt(), 1)), (DH = R(se(), 1)));
-function MCPToolListView(e) {
+function MCPToolListView(t0) {
   let t = i2l.c(24),
-    { server: n, onSelectTool: r, onBack: o } = e,
+    { server: n, onSelectTool: r, onBack: o } = t0,
     s = Ht(Q1f),
     i;
   e: {

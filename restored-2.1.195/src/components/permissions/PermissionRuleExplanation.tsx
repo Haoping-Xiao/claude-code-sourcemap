@@ -23,81 +23,86 @@ function CEc(e) {
   }
   return;
 }
-function stringsForDecisionReason(e, t, n) {
-  if (!e) return null;
-  if (e.type === "classifier") {
-    if (e.classifier === "auto-mode")
+function stringsForDecisionReason(reason, toolType, n) {
+  if (!reason) return null;
+  if (reason.type === "classifier") {
+    if (reason.classifier === "auto-mode")
       return {
-        reasonString: `Auto mode classifier requires confirmation for this ${t}.
-${e.reason}`,
+        reasonString: `Auto mode classifier requires confirmation for this ${toolType}.
+${reason.reason}`,
         configString: void 0,
         themeColor: "error",
       };
     return {
-      reasonString: `Classifier ${wt.bold(e.classifier)} requires confirmation for this ${t}.
-${e.reason}`,
+      reasonString: `Classifier ${wt.bold(reason.classifier)} requires confirmation for this ${toolType}.
+${reason.reason}`,
       configString: void 0,
     };
   }
-  if (e.type === "subcommandResults") {
-    let r = CEc(e);
+  if (reason.type === "subcommandResults") {
+    let r = CEc(reason);
     if (r)
       return stringsForDecisionReason(
         {
           type: "rule",
           rule: r,
         },
-        t,
+        toolType,
         n,
       );
-    for (let o of e.reasons.values())
+    for (let o of reason.reasons.values())
       if (o.behavior === "ask" || o.behavior === "passthrough") {
-        let s = stringsForDecisionReason(o.decisionReason, t, n);
+        let s = stringsForDecisionReason(o.decisionReason, toolType, n);
         if (s) return s;
       }
   }
-  switch (e.type) {
+  switch (reason.type) {
     case "rule": {
-      let r = wt.bold(Pp(e.rule.ruleValue));
-      if (n === "auto" && e.rule.ruleBehavior === "ask" && e.rule.source !== "policySettings")
+      let r = wt.bold(Pp(reason.rule.ruleValue));
+      if (
+        n === "auto" &&
+        reason.rule.ruleBehavior === "ask" &&
+        reason.rule.source !== "policySettings"
+      )
         return {
-          reasonString: `Ask rule ${r} overrides auto mode for this ${t}.`,
+          reasonString: `Ask rule ${r} overrides auto mode for this ${toolType}.`,
           configString: "/permissions to let auto mode decide",
         };
       return {
-        reasonString: `Permission rule ${r} requires confirmation for this ${t}.`,
-        configString: e.rule.source === "policySettings" ? void 0 : "/permissions to update rules",
+        reasonString: `Permission rule ${r} requires confirmation for this ${toolType}.`,
+        configString:
+          reason.rule.source === "policySettings" ? void 0 : "/permissions to update rules",
       };
     }
     case "hook": {
-      let r = e.reason
+      let r = reason.reason
           ? `:
-${e.reason}`
+${reason.reason}`
           : ".",
-        o = e.hookSource ? ` ${wt.dim(`[${e.hookSource}]`)}` : "";
+        o = reason.hookSource ? ` ${wt.dim(`[${reason.hookSource}]`)}` : "";
       return {
-        reasonString: `Hook ${wt.bold(e.hookName)} requires confirmation for this ${t}${r}${o}`,
-        configString: `${bhm(e.hookSource)} to update hooks`,
+        reasonString: `Hook ${wt.bold(reason.hookName)} requires confirmation for this ${toolType}${r}${o}`,
+        configString: `${bhm(reason.hookSource)} to update hooks`,
       };
     }
     case "safetyCheck":
     case "other":
       return {
-        reasonString: e.reason,
+        reasonString: reason.reason,
         configString: void 0,
       };
     case "workingDir":
       return {
-        reasonString: e.reason,
+        reasonString: reason.reason,
         configString: "/permissions to update rules",
       };
     default:
       return null;
   }
 }
-function PermissionRuleExplanation(e) {
+function PermissionRuleExplanation(t0) {
   let t = wEc.c(12),
-    { permissionResult: n, toolType: r } = e,
+    { permissionResult: n, toolType: r } = t0,
     o = Ht(Shm),
     s = n?.decisionReason,
     i;

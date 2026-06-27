@@ -7,11 +7,12 @@
 // [unwrapped __esm module UX] deps: ft, wr, Rd, k0, Oot, Ao, c5e, Ls, Fh
 Jct = `Send feedback with /feedback or learn more: ${u5e}`;
 daa = `They may flag safe, normal content as well. ${Vap}`;
-function isBase64ImageBlock(e) {
-  if (typeof e !== "object" || e === null) return false;
-  if (!("type" in e) || e.type !== "image") return false;
-  if (!("source" in e) || typeof e.source !== "object" || e.source === null) return false;
-  let t = e.source;
+function isBase64ImageBlock(block) {
+  if (typeof block !== "object" || block === null) return false;
+  if (!("type" in block) || block.type !== "image") return false;
+  if (!("source" in block) || typeof block.source !== "object" || block.source === null)
+    return false;
+  let t = block.source;
   return "type" in t && t.type === "base64" && "data" in t && typeof t.data === "string";
 }
 function Yap(e) {
@@ -19,8 +20,8 @@ function Yap(e) {
   if (!("type" in e) || e.type !== "tool_result") return false;
   return "content" in e && Array.isArray(e.content);
 }
-function validateImagesForAPI(e, t, n, r) {
-  let o = e.source.data.length;
+function validateImagesForAPI(messages, t, n, r) {
+  let o = messages.source.data.length;
   if (o > n)
     (G("tengu_image_api_validation_failed", {
       base64_size_bytes: o,

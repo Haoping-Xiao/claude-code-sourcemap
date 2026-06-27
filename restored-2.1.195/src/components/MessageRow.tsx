@@ -6,15 +6,15 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S5l] deps: Tc, Ye
 ((_5l = R(lt(), 1)), (KFo = R(se(), 1)));
-function hasContentAfterIndex(e, t, n, r) {
-  for (let o = t + 1; o < e.length; o++) {
-    let s = e[o];
+function hasContentAfterIndex(messages, index, tools, streamingToolUseIDs) {
+  for (let o = index + 1; o < messages.length; o++) {
+    let s = messages[o];
     if (s?.type === "assistant") {
       let i = s.message.content[0];
       if (i?.type === "thinking" || i?.type === "redacted_thinking") continue;
       if (i?.type === "tool_use") {
-        if (Aze(i.name, i.input, n).isCollapsible) continue;
-        if (r.has(i.id)) continue;
+        if (Aze(i.name, i.input, tools).isCollapsible) continue;
+        if (streamingToolUseIDs.has(i.id)) continue;
       }
       return true;
     }
@@ -24,13 +24,13 @@ function hasContentAfterIndex(e, t, n, r) {
     }
     if (s?.type === "grouped_tool_use") {
       let i = s.messages[0]?.message.content[0]?.input;
-      if (Aze(s.toolName, i, n).isCollapsible) continue;
+      if (Aze(s.toolName, i, tools).isCollapsible) continue;
     }
     return true;
   }
   return false;
 }
-function MessageRowImpl(e) {
+function MessageRowImpl(t0) {
   let t = E5l.c(73),
     {
       message: n,
@@ -49,7 +49,7 @@ function MessageRowImpl(e) {
       columns: g,
       isLoading: h,
       lookups: y,
-    } = e,
+    } = t0,
     b = d === "transcript",
     _ = n.type === "grouped_tool_use",
     S = n.type === "collapsed_read_search",
@@ -285,19 +285,19 @@ function i4f(e, t) {
   let n = jHe(e);
   return !!n && t.has(n);
 }
-function allToolsResolved(e, t) {
-  if (e.type === "grouped_tool_use")
-    return e.messages.every((r) => {
+function allToolsResolved(msg, resolvedToolUseIDs) {
+  if (msg.type === "grouped_tool_use")
+    return msg.messages.every((r) => {
       let o = r.message.content[0];
-      return o?.type === "tool_use" && t.has(o.id);
+      return o?.type === "tool_use" && resolvedToolUseIDs.has(o.id);
     });
-  if (e.type === "collapsed_read_search") return i_t(e).every((o) => t.has(o));
-  if (e.type === "assistant") {
-    let r = e.message.content[0];
-    if (r?.type === "server_tool_use") return t.has(r.id);
+  if (msg.type === "collapsed_read_search") return i_t(msg).every((o) => resolvedToolUseIDs.has(o));
+  if (msg.type === "assistant") {
+    let r = msg.message.content[0];
+    if (r?.type === "server_tool_use") return resolvedToolUseIDs.has(r.id);
   }
-  let n = jHe(e);
-  return !n || t.has(n);
+  let n = jHe(msg);
+  return !n || resolvedToolUseIDs.has(n);
 }
 function l4f(e, t) {
   if (e.message !== t.message) return false;

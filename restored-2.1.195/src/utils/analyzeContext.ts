@@ -4,18 +4,18 @@
 // class=modified  jaccard=0.5229  score=0.8859  fileCov=0.5606
 // note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function countTokensWithFallback(e, t) {
+async function countTokensWithFallback(messages, tools) {
   try {
-    let n = await P5e(e, t);
+    let n = await P5e(messages, tools);
     if (n !== null) return n;
-    T(`countTokensWithFallback: API returned null, trying haiku fallback (${t.length} tools)`);
+    T(`countTokensWithFallback: API returned null, trying haiku fallback (${tools.length} tools)`);
   } catch (n) {
     (T(`countTokensWithFallback: API failed: ${be(n)}`), ke(n));
   }
   try {
-    let n = await vMo(e, t);
+    let n = await vMo(messages, tools);
     if (n === null)
-      T(`countTokensWithFallback: haiku fallback also returned null (${t.length} tools)`);
+      T(`countTokensWithFallback: haiku fallback also returned null (${tools.length} tools)`);
     return n;
   } catch (n) {
     return (
@@ -26,22 +26,22 @@ async function countTokensWithFallback(e, t) {
     );
   }
 }
-async function countToolDefinitionTokens(e, t, n, r) {
+async function countToolDefinitionTokens(tools, getToolPermissionContext, agentInfo, model) {
   let o = await Promise.all(
-      e.map((i) =>
+      tools.map((i) =>
         hZn(i, {
-          getToolPermissionContext: t,
-          tools: e,
-          agents: n?.activeAgents ?? [],
-          model: r,
+          getToolPermissionContext: getToolPermissionContext,
+          tools: tools,
+          agents: agentInfo?.activeAgents ?? [],
+          model: model,
         }),
       ),
     ),
     s = await countTokensWithFallback([], o);
   if (s === null || s === 0) {
-    let i = e.map((a) => a.name).join(", ");
+    let i = tools.map((a) => a.name).join(", ");
     T(
-      `countToolDefinitionTokens returned ${s} for ${e.length} tools: ${i.slice(0, 100)}${i.length > 100 ? "..." : ""}`,
+      `countToolDefinitionTokens returned ${s} for ${tools.length} tools: ${i.slice(0, 100)}${i.length > 100 ? "..." : ""}`,
     );
   }
   return s ?? 0;
@@ -164,8 +164,8 @@ async function Fwf() {
     memoryFileDetails: t,
   };
 }
-async function countBuiltInToolTokens(e, t, n, r, o) {
-  let s = e.filter((h) => !h.isMcp);
+async function countBuiltInToolTokens(tools, getToolPermissionContext, agentInfo, model, messages) {
+  let s = tools.filter((h) => !h.isMcp);
   if (s.length < 1)
     return {
       builtInToolTokens: 0,
@@ -175,19 +175,28 @@ async function countBuiltInToolTokens(e, t, n, r, o) {
     };
   let { isToolSearchEnabled: i } = await Promise.resolve().then(() => (GX(), TMo)),
     { isDeferredTool: a } = await Promise.resolve().then(() => (LX(), fso)),
-    l = await i(r ?? "", e, t, n?.activeAgents ?? [], "analyzeBuiltIn"),
+    l = await i(
+      model ?? "",
+      tools,
+      getToolPermissionContext,
+      agentInfo?.activeAgents ?? [],
+      "analyzeBuiltIn",
+    ),
     c = s.filter((h) => !a(h)),
     u = s.filter((h) => a(h)),
-    d = c.length > 0 ? await countToolDefinitionTokens(c, t, n, r) : 0,
+    d =
+      c.length > 0
+        ? await countToolDefinitionTokens(c, getToolPermissionContext, agentInfo, model)
+        : 0,
     p = [],
     f = [],
     m = 0,
     g = 0;
   if (u.length > 0 && l) {
     let h = new Set();
-    if (o) {
+    if (messages) {
       let b = new Set(u.map((_) => _.name));
-      for (let _ of o)
+      for (let _ of messages)
         if (_.type === "assistant") {
           for (let S of _.message.content)
             if (
@@ -200,7 +209,9 @@ async function countBuiltInToolTokens(e, t, n, r, o) {
               h.add(S.name);
         }
     }
-    let y = await Promise.all(u.map((b) => countToolDefinitionTokens([b], t, n, r)));
+    let y = await Promise.all(
+      u.map((b) => countToolDefinitionTokens([b], getToolPermissionContext, agentInfo, model)),
+    );
     for (let [b, _] of u.entries()) {
       let S = Math.max(0, (y[b] || 0) - pZn),
         A = h.has(_.name);
@@ -216,7 +227,7 @@ async function countBuiltInToolTokens(e, t, n, r, o) {
         m += S;
     }
   } else if (u.length > 0) {
-    let h = await countToolDefinitionTokens(u, t, n, r);
+    let h = await countToolDefinitionTokens(u, getToolPermissionContext, agentInfo, model);
     return {
       builtInToolTokens: d + h,
       deferredBuiltinDetails: [],
@@ -253,10 +264,10 @@ async function Gwf(e, t, n) {
     },
   };
 }
-async function countSkillTokens(e, t, n, r) {
+async function countSkillTokens(tools, getToolPermissionContext, agentInfo, r) {
   try {
     let o = await VWe($t()),
-      s = Dkl(e);
+      s = Dkl(tools);
     if (!s)
       return {
         skillTokens: 0,
@@ -266,7 +277,7 @@ async function countSkillTokens(e, t, n, r) {
           skillFrontmatter: [],
         },
       };
-    let i = await countToolDefinitionTokens([s], t, n),
+    let i = await countToolDefinitionTokens([s], getToolPermissionContext, agentInfo),
       a = rH(r),
       l = o.map((u) => {
         let d = u.type === "prompt" ? u.source : "plugin",
@@ -301,10 +312,10 @@ async function countSkillTokens(e, t, n, r) {
     );
   }
 }
-async function countMcpToolTokens(e, t, n, r, o) {
-  let s = e.filter((b) => b.isMcp),
+async function countMcpToolTokens(tools, getToolPermissionContext, agentInfo, model, messages) {
+  let s = tools.filter((b) => b.isMcp),
     i = [],
-    a = await countToolDefinitionTokens(s, t, n, r),
+    a = await countToolDefinitionTokens(s, getToolPermissionContext, agentInfo, model),
     l = Math.max(0, (a || 0) - pZn),
     c = await Promise.all(
       s.map(async (b) =>
@@ -312,9 +323,9 @@ async function countMcpToolTokens(e, t, n, r, o) {
           De({
             name: b.name,
             description: await b.prompt({
-              getToolPermissionContext: t,
-              tools: e,
-              agents: n?.activeAgents ?? [],
+              getToolPermissionContext: getToolPermissionContext,
+              tools: tools,
+              agents: agentInfo?.activeAgents ?? [],
             }),
             input_schema: b.inputJSONSchema ?? {},
           }),
@@ -325,11 +336,17 @@ async function countMcpToolTokens(e, t, n, r, o) {
     d = c.map((b) => Math.round((b / u) * l)),
     { isToolSearchEnabled: p } = await Promise.resolve().then(() => (GX(), TMo)),
     { isDeferredTool: f } = await Promise.resolve().then(() => (LX(), fso)),
-    m = await p(r, e, t, n?.activeAgents ?? [], "analyzeMcp"),
+    m = await p(
+      model,
+      tools,
+      getToolPermissionContext,
+      agentInfo?.activeAgents ?? [],
+      "analyzeMcp",
+    ),
     g = new Set();
-  if (m && o) {
+  if (m && messages) {
     let b = new Set(s.map((_) => _.name));
-    for (let _ of o)
+    for (let _ of messages)
       if (_.type === "assistant") {
         for (let S of _.message.content)
           if (
@@ -403,21 +420,21 @@ function zwf(e, t) {
     } else t.assistantMessageTokens += o;
   }
 }
-function processUserMessage(e, t, n) {
-  if (typeof e.message.content === "string") {
-    let r = If(e.message.content);
-    t.userMessageTokens += r;
+function processUserMessage(msg, breakdown, toolUseIdToName) {
+  if (typeof msg.message.content === "string") {
+    let r = If(msg.message.content);
+    breakdown.userMessageTokens += r;
     return;
   }
-  for (let r of e.message.content) {
+  for (let r of msg.message.content) {
     let o = De(r),
       s = If(o);
     if ("type" in r && r.type === "tool_result") {
-      t.toolResultTokens += s;
+      breakdown.toolResultTokens += s;
       let i = "tool_use_id" in r ? r.tool_use_id : void 0,
-        a = (i ? n.get(i) : void 0) || "unknown";
-      t.toolResultsByType.set(a, (t.toolResultsByType.get(a) || 0) + s);
-    } else t.userMessageTokens += s;
+        a = (i ? toolUseIdToName.get(i) : void 0) || "unknown";
+      breakdown.toolResultsByType.set(a, (breakdown.toolResultsByType.get(a) || 0) + s);
+    } else breakdown.userMessageTokens += s;
   }
 }
 function Ywf(e, t) {
@@ -427,7 +444,7 @@ function Ywf(e, t) {
   let o = e.attachment.type || "unknown";
   t.attachmentsByType.set(o, (t.attachmentsByType.get(o) || 0) + r);
 }
-async function approximateMessageTokens(e, t) {
+async function approximateMessageTokens(messages, t) {
   let n = {
       totalTokens: 0,
       toolCallTokens: 0,
@@ -440,7 +457,7 @@ async function approximateMessageTokens(e, t) {
       attachmentsByType: new Map(),
     },
     r = new Map();
-  for (let s of e)
+  for (let s of messages)
     if (s.type === "assistant") {
       for (let i of s.message.content)
         if ("type" in i && i.type === "tool_use") {
@@ -449,14 +466,14 @@ async function approximateMessageTokens(e, t) {
           if (a) r.set(a, l);
         }
     }
-  for (let s of e)
+  for (let s of messages)
     if (s.type === "assistant") zwf(s, n);
     else if (s.type === "user") processUserMessage(s, n, r);
     else if (s.type === "attachment") Ywf(s, n);
   let o = t
     ? 0
     : await countTokensWithFallback(
-        lk(e).map((s) => {
+        lk(messages).map((s) => {
           if (s.type === "assistant")
             return {
               role: "assistant",
@@ -468,26 +485,38 @@ async function approximateMessageTokens(e, t) {
       );
   return ((n.totalTokens = o ?? 0), n);
 }
-async function analyzeContextUsage(e, t, n, r, o, s, i, a, l, c, u) {
+async function analyzeContextUsage(
+  messages,
+  model,
+  getToolPermissionContext,
+  tools,
+  agentDefinitions,
+  terminalWidth,
+  toolUseContext,
+  mainThreadAgentDefinition,
+  originalMessages,
+  c,
+  u,
+) {
   let d = VR({
-      permissionMode: (await n()).mode,
-      mainLoopModel: t,
+      permissionMode: (await getToolPermissionContext()).mode,
+      mainLoopModel: model,
     }),
     p = pC() ? c : void 0,
     { window: f, source: m } = A4(d, p),
-    g = await DL(r, d, void 0, {
+    g = await DL(tools, d, void 0, {
       excludeDynamicSections: u,
     }),
     h = Z5({
-      mainThreadAgentDefinition: a,
-      toolUseContext: i ?? {
+      mainThreadAgentDefinition: mainThreadAgentDefinition,
+      toolUseContext: toolUseContext ?? {
         options: {},
       },
-      customSystemPrompt: i?.options.customSystemPrompt,
+      customSystemPrompt: toolUseContext?.options.customSystemPrompt,
       defaultSystemPrompt: g,
-      appendSystemPrompt: i?.options.appendSystemPrompt,
+      appendSystemPrompt: toolUseContext?.options.appendSystemPrompt,
     }),
-    y = l ?? e,
+    y = originalMessages ?? messages,
     b = Kct(y),
     _ =
       b && b.input_tokens + b.cache_creation_input_tokens + b.cache_read_input_tokens > 0
@@ -508,19 +537,19 @@ async function analyzeContextUsage(e, t, n, r, o, s, i, a, l, c, u) {
       { slashCommandTokens: q, commandInfo: W },
       V,
     ] = await Promise.all([
-      Uwf(h, u && i?.options.customSystemPrompt === void 0),
+      Uwf(h, u && toolUseContext?.options.customSystemPrompt === void 0),
       Fwf(),
-      countBuiltInToolTokens(r, n, o, d, e),
-      countMcpToolTokens(r, n, o, d, e),
-      Vwf(o),
-      Gwf(r, n, o),
-      approximateMessageTokens(e, S !== null),
+      countBuiltInToolTokens(tools, getToolPermissionContext, agentDefinitions, d, messages),
+      countMcpToolTokens(tools, getToolPermissionContext, agentDefinitions, d, messages),
+      Vwf(agentDefinitions),
+      Gwf(tools, getToolPermissionContext, agentDefinitions),
+      approximateMessageTokens(messages, S !== null),
     ]),
-    z = (await countSkillTokens(r, n, o, d)).skillInfo,
+    z = (await countSkillTokens(tools, getToolPermissionContext, agentDefinitions, d)).skillInfo,
     K = z.skillFrontmatter.reduce((Et, ct) => Et + ct.tokens, 0),
     Z = V.totalTokens + C,
     J = pC(),
-    ne = J ? are(t, p) - lia : void 0,
+    ne = J ? are(model, p) - lia : void 0,
     oe = [];
   if (A > 0)
     oe.push({
@@ -615,7 +644,7 @@ async function analyzeContextUsage(e, t, n, r, o, s, i, a, l, c, u) {
     color: "promptBorder",
   });
   let pe = S ?? Ee,
-    ge = s && s < 80,
+    ge = terminalWidth && terminalWidth < 80,
     he = f >= 1000000 /* 1e6 */ ? (ge ? 5 : 20) : ge ? 5 : 10,
     ie = f >= 1000000 /* 1e6 */ ? 10 : ge ? 5 : 10,
     le = he * ie,

@@ -13,7 +13,7 @@ async function rec(e, t) {
   let r = n.filePath.replace(/\.jsonl$/, "");
   return Mir.join(r, "subagents");
 }
-async function getAgentTranscriptPath(e) {
+async function getAgentTranscriptPath(agentId) {
   let t = [];
   async function n(r) {
     let o;
@@ -33,20 +33,20 @@ async function getAgentTranscriptPath(e) {
         });
       } else if (s.isDirectory()) await n(Mir.join(r, s.name));
   }
-  return (await n(e), t);
+  return (await n(agentId), t);
 }
-function hasVisibleAssistantContent(e) {
+function hasVisibleAssistantContent(message) {
   let t = [],
     n = 10,
-    r = e.length,
+    r = message.length,
     o = 0;
   while (o < r) {
-    let s = e.indexOf(10, o);
+    let s = message.indexOf(10, o);
     if (s === -1) s = r;
     let i = o;
-    while (i < s && e[i] <= 32) i++;
+    while (i < s && message[i] <= 32) i++;
     if (((o = s + 1), i >= s)) continue;
-    let a = e.toString("utf-8", i, s);
+    let a = message.toString("utf-8", i, s);
     try {
       let l = Ft(a),
         c = l.type;
@@ -76,10 +76,10 @@ async function sec(e, t) {
   if (!n) return [];
   return (await getAgentTranscriptPath(n)).map((o) => o.agentId);
 }
-async function getAgentMetadataPath(e, t, n) {
-  if (!FS(e)) return [];
+async function getAgentMetadataPath(agentId, t, n) {
+  if (!FS(agentId)) return [];
   if (!t) return [];
-  let r = await rec(e, n?.dir);
+  let r = await rec(agentId, n?.dir);
   if (!r) return [];
   let s = (await getAgentTranscriptPath(r)).find((l) => l.agentId === t);
   if (!s) return [];

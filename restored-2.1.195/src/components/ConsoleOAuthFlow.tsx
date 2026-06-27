@@ -463,7 +463,7 @@ function qJp(e) {
   else s = t[3];
   return s;
 }
-function OAuthStatusMessage(e) {
+function OAuthStatusMessage(t0) {
   let t = rTo.c(85),
     {
       oauthStatus: n,
@@ -483,7 +483,7 @@ function OAuthStatusMessage(e) {
       setOAuthStatus: h,
       setLoginWithClaudeAi: y,
       onAuthSuccess: b,
-    } = e;
+    } = t0;
   switch (n.state) {
     case "idle": {
       let _ = o

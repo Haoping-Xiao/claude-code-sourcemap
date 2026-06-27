@@ -6,14 +6,14 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Val]
 qal = ["Baked", "Brewed", "Churned", "Cogitated", "Cooked", "Crunched", "Saut\xE9ed", "Worked"];
-function getPillLabel(e) {
-  let t = e[0];
+function getPillLabel(tasks) {
+  let t = tasks[0];
   if (!t) return null;
-  let n = e.length;
-  if (e.every((r) => r.type === t.type))
+  let n = tasks.length;
+  if (tasks.every((r) => r.type === t.type))
     switch (t.type) {
       case "local_bash": {
-        let r = On(e, (i) => i.type === "local_bash" && i.kind === "monitor"),
+        let r = On(tasks, (i) => i.type === "local_bash" && i.kind === "monitor"),
           o = n - r,
           s = [];
         if (o > 0) s.push(o === 1 ? "1 shell" : `${o} shells`);
@@ -21,8 +21,9 @@ function getPillLabel(e) {
         return s.join(", ");
       }
       case "in_process_teammate": {
-        let r = new Set(e.map((o) => (o.type === "in_process_teammate" ? o.identity.teamName : "")))
-          .size;
+        let r = new Set(
+          tasks.map((o) => (o.type === "in_process_teammate" ? o.identity.teamName : "")),
+        ).size;
         return r === 1 ? "1 team" : `${r} teams`;
       }
       case "local_agent":
@@ -37,7 +38,7 @@ function getPillLabel(e) {
             default:
               return `${mv} ultraplan`;
           }
-        if (e.every((r) => r.type === "remote_agent" && r.remoteTaskType === "remote-workflow"))
+        if (tasks.every((r) => r.type === "remote_agent" && r.remoteTaskType === "remote-workflow"))
           return n === 1
             ? `${mv} 1 remote dynamic workflow`
             : `${mv} ${n} remote dynamic workflows`;

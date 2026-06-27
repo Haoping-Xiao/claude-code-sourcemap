@@ -44,14 +44,14 @@ async function kyc(e, t, n, r) {
     }
   );
 }
-function canCycleToAuto(e) {
+function canCycleToAuto(ctx) {
   {
     let t = Zv(),
       n = v6o(),
-      r = !!e.isAutoModeAvailable && t && !n;
+      r = !!ctx.isAutoModeAvailable && t && !n;
     if (!r)
       T(
-        `[auto-mode] canCycleToAuto=false: ctx.isAutoModeAvailable=${e.isAutoModeAvailable} isAutoModeGateEnabled=${t} dismissed=${n} reason=${Pz()}`,
+        `[auto-mode] canCycleToAuto=false: ctx.isAutoModeAvailable=${ctx.isAutoModeAvailable} isAutoModeGateEnabled=${t} dismissed=${n} reason=${Pz()}`,
       );
     return r;
   }
@@ -60,18 +60,18 @@ function canCycleToAuto(e) {
 function v6o() {
   return Boolean(Dt().autoModeOptInDismissed) && !ROe();
 }
-function getNextPermissionMode(e, t) {
-  switch (e.mode) {
+function getNextPermissionMode(toolPermissionContext, _teamContext) {
+  switch (toolPermissionContext.mode) {
     case "default":
       return "acceptEdits";
     case "acceptEdits":
       return "plan";
     case "plan":
-      if (e.isBypassPermissionsModeAvailable) return "bypassPermissions";
-      if (canCycleToAuto(e)) return "auto";
+      if (toolPermissionContext.isBypassPermissionsModeAvailable) return "bypassPermissions";
+      if (canCycleToAuto(toolPermissionContext)) return "auto";
       return "default";
     case "bypassPermissions":
-      if (canCycleToAuto(e)) return "auto";
+      if (canCycleToAuto(toolPermissionContext)) return "auto";
       return "default";
     case "dontAsk":
       return "default";

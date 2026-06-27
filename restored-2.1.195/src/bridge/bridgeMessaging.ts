@@ -46,26 +46,28 @@ function lTe(e) {
   return e.filter((t) => typeof t === "string" && t.length > 0 && t.length <= 64).slice(0, 32);
 }
 var xJt = 32;
-function isSDKMessage(e) {
-  return e !== null && typeof e === "object" && "type" in e && typeof e.type === "string";
-}
-function isSDKControlResponse(e) {
+function isSDKMessage(value) {
   return (
-    e !== null &&
-    typeof e === "object" &&
-    "type" in e &&
-    e.type === "control_response" &&
-    "response" in e
+    value !== null && typeof value === "object" && "type" in value && typeof value.type === "string"
   );
 }
-function isSDKControlRequest(e) {
+function isSDKControlResponse(value) {
   return (
-    e !== null &&
-    typeof e === "object" &&
-    "type" in e &&
-    e.type === "control_request" &&
-    "request_id" in e &&
-    "request" in e
+    value !== null &&
+    typeof value === "object" &&
+    "type" in value &&
+    value.type === "control_response" &&
+    "response" in value
+  );
+}
+function isSDKControlRequest(value) {
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    "type" in value &&
+    value.type === "control_request" &&
+    "request_id" in value &&
+    "request" in value
   );
 }
 function isEligibleBridgeMessage(e) {
@@ -90,43 +92,51 @@ function mJl(e) {
   if (!n) return;
   return FZe(n) || void 0;
 }
-function handleIngressMessage(e, t, n, r, o, s) {
+function handleIngressMessage(
+  data,
+  recentPostedUUIDs,
+  recentInboundUUIDs,
+  onInboundMessage,
+  onPermissionResponse,
+  onControlRequest,
+) {
   try {
-    let i = oir(Ft(e));
+    let i = oir(Ft(data));
     if (isSDKControlResponse(i)) {
-      (T("[bridge:repl] Ingress message type=control_response"), o?.(i));
+      (T("[bridge:repl] Ingress message type=control_response"), onPermissionResponse?.(i));
       return;
     }
     if (isSDKControlRequest(i)) {
-      (T(`[bridge:repl] Inbound control_request subtype=${i.request.subtype}`), s?.(i));
+      (T(`[bridge:repl] Inbound control_request subtype=${i.request.subtype}`),
+        onControlRequest?.(i));
       return;
     }
     if (!isSDKMessage(i)) return;
     let a = "uuid" in i && typeof i.uuid === "string" ? i.uuid : void 0;
-    if (a && t.has(a)) {
+    if (a && recentPostedUUIDs.has(a)) {
       T(`[bridge:repl] Ignoring echo: type=${i.type} uuid=${a}`);
       return;
     }
-    if (a && n.has(a)) {
+    if (a && recentInboundUUIDs.has(a)) {
       T(`[bridge:repl] Ignoring re-delivered inbound: type=${i.type} uuid=${a}`);
       return;
     }
     if (
       (T(`[bridge:repl] Ingress message type=${i.type}${a ? ` uuid=${a}` : ""}`), i.type === "user")
     ) {
-      if (a) n.add(a);
+      if (a) recentInboundUUIDs.add(a);
       (G("tengu_bridge_message_received", {
         is_repl: true,
       }),
         xe("bridge_message_receive"),
-        r?.(i));
+        onInboundMessage?.(i));
     } else T(`[bridge:repl] Ignoring non-user inbound message: type=${i.type}`);
   } catch (i) {
     (T(`[bridge:repl] Failed to parse ingress message: ${be(i)}`),
       Le("bridge_message_receive", "bridge_message_receive_parse_failed"));
   }
 }
-function handleServerControlRequest(e, t) {
+function handleServerControlRequest(request, handlers) {
   let {
     transport: n,
     sessionId: r,
@@ -147,18 +157,18 @@ function handleServerControlRequest(e, t) {
     onMcpOauthCallbackUrl: b,
     onMcpReconnect: _,
     onMcpStatus: S,
-  } = t;
+  } = handlers;
   if (!n) {
     T("[bridge:repl] Cannot respond to control_request: transport not configured");
     return;
   }
   let A;
-  if (o && e.request.subtype !== "initialize") {
+  if (o && request.request.subtype !== "initialize") {
     A = {
       type: "control_response",
       response: {
         subtype: "error",
-        request_id: e.request_id,
+        request_id: request.request_id,
         error: OUTBOUND_ONLY_ERROR,
       },
     };
@@ -167,13 +177,15 @@ function handleServerControlRequest(e, t) {
       session_id: r,
     };
     (n.write(C),
-      T(`[bridge:repl] Rejected ${e.request.subtype} (outbound-only) request_id=${e.request_id}`));
+      T(
+        `[bridge:repl] Rejected ${request.request.subtype} (outbound-only) request_id=${request.request_id}`,
+      ));
     return;
   }
-  switch (e.request.subtype) {
+  switch (request.request.subtype) {
     case "initialize": {
       try {
-        let C = lTe(e.request.supportedDialogKinds);
+        let C = lTe(request.request.supportedDialogKinds);
         if (C.length > 0) a?.(C);
       } catch (C) {
         T(`[bridge:repl] dialog-kind capture failed; acking initialize anyway: ${be(C)}`);
@@ -182,7 +194,7 @@ function handleServerControlRequest(e, t) {
         type: "control_response",
         response: {
           subtype: "success",
-          request_id: e.request_id,
+          request_id: request.request_id,
           response: {
             commands: [],
             agents: [],
@@ -198,13 +210,13 @@ function handleServerControlRequest(e, t) {
       break;
     }
     case "set_model": {
-      let C = l?.(e.request.model);
+      let C = l?.(request.request.model);
       if (C && !C.ok)
         A = {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: C.error,
           },
         };
@@ -213,23 +225,23 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
           },
         };
       break;
     }
     case "set_max_thinking_tokens":
-      (c?.(e.request.max_thinking_tokens, e.request.thinking_display),
+      (c?.(request.request.max_thinking_tokens, request.request.thinking_display),
         (A = {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
           },
         }));
       break;
     case "set_permission_mode": {
-      let C = u?.(e.request.mode) ?? {
+      let C = u?.(request.request.mode) ?? {
         ok: false,
         error:
           "set_permission_mode is not supported in this context (onSetPermissionMode callback not registered)",
@@ -239,7 +251,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
           },
         };
       else
@@ -247,14 +259,14 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: C.error,
           },
         };
       break;
     }
     case "rename_session": {
-      let C = d?.(e.request.title) ?? {
+      let C = d?.(request.request.title) ?? {
         ok: false,
         error:
           "rename_session is not supported in this context (onRenameSession callback not registered)",
@@ -264,7 +276,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
           },
         };
       else
@@ -272,14 +284,14 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: C.error,
           },
         };
       break;
     }
     case "set_color": {
-      let C = p?.(e.request.color) ?? {
+      let C = p?.(request.request.color) ?? {
         ok: false,
         error: "set_color is not supported in this context (onSetColor callback not registered)",
       };
@@ -288,7 +300,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
           },
         };
       else
@@ -296,7 +308,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: C.error,
           },
         };
@@ -308,19 +320,19 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error:
               "file_suggestions is not supported in this context (onFileSuggestions callback not registered)",
           },
         };
         break;
       }
-      f(e.request.query)
+      f(request.request.query)
         .then((C) => ({
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
             response: {
               suggestions: C,
             },
@@ -330,7 +342,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: be(C),
           },
         }))
@@ -341,7 +353,7 @@ function handleServerControlRequest(e, t) {
           };
           (n.write(x),
             T(
-              `[bridge:repl] Sent control_response for file_suggestions request_id=${e.request_id} result=${C.response.subtype}`,
+              `[bridge:repl] Sent control_response for file_suggestions request_id=${request.request_id} result=${C.response.subtype}`,
             ));
         });
       return;
@@ -352,19 +364,19 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error:
               "read_file is not supported in this context (onReadFile callback not registered)",
           },
         };
         break;
       }
-      m(e.request.path, e.request.max_bytes, e.request.encoding)
+      m(request.request.path, request.request.max_bytes, request.request.encoding)
         .then((C) => ({
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
             response: C,
           },
         }))
@@ -372,7 +384,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: be(C),
           },
         }))
@@ -383,7 +395,7 @@ function handleServerControlRequest(e, t) {
           };
           (n.write(x),
             T(
-              `[bridge:repl] Sent control_response for read_file request_id=${e.request_id} result=${C.response.subtype}`,
+              `[bridge:repl] Sent control_response for read_file request_id=${request.request_id} result=${C.response.subtype}`,
             ));
         });
       return;
@@ -394,7 +406,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error:
               "get_context_usage is not supported in this context (onGetContextUsage callback not registered)",
           },
@@ -406,7 +418,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
             response: {
               ...C,
             },
@@ -416,7 +428,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: be(C),
           },
         }))
@@ -427,7 +439,7 @@ function handleServerControlRequest(e, t) {
           };
           (n.write(x),
             T(
-              `[bridge:repl] Sent control_response for get_context_usage request_id=${e.request_id} result=${C.response.subtype}`,
+              `[bridge:repl] Sent control_response for get_context_usage request_id=${request.request_id} result=${C.response.subtype}`,
             ));
         });
       return;
@@ -438,7 +450,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error:
               "get_usage is not supported in this context (onGetUsage callback not registered)",
           },
@@ -450,7 +462,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
             response: {
               ...C,
             },
@@ -460,7 +472,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: be(C),
           },
         }))
@@ -471,7 +483,7 @@ function handleServerControlRequest(e, t) {
           };
           (n.write(x),
             T(
-              `[bridge:repl] Sent control_response for get_usage request_id=${e.request_id} result=${C.response.subtype}`,
+              `[bridge:repl] Sent control_response for get_usage request_id=${request.request_id} result=${C.response.subtype}`,
             ));
         });
       return;
@@ -481,7 +493,7 @@ function handleServerControlRequest(e, t) {
         type: "control_response",
         response: {
           subtype: "success",
-          request_id: e.request_id,
+          request_id: request.request_id,
           response: {
             mcpServers: S?.() ?? [],
           },
@@ -491,7 +503,7 @@ function handleServerControlRequest(e, t) {
     case "mcp_authenticate":
     case "mcp_oauth_callback_url":
     case "mcp_reconnect": {
-      let C = e.request,
+      let C = request.request,
         { subtype: x, serverName: I } = C,
         k =
           C.subtype === "mcp_authenticate"
@@ -504,7 +516,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: `${x} is not supported in this context (callback not registered)`,
           },
         };
@@ -515,7 +527,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
             response: D ?? {},
           },
         }))
@@ -523,7 +535,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "error",
-            request_id: e.request_id,
+            request_id: request.request_id,
             error: be(D),
           },
         }))
@@ -534,7 +546,7 @@ function handleServerControlRequest(e, t) {
           };
           (n.write(P),
             T(
-              `[bridge:repl] Sent control_response for ${x} request_id=${e.request_id} result=${D.response.subtype}`,
+              `[bridge:repl] Sent control_response for ${x} request_id=${request.request_id} result=${D.response.subtype}`,
             ));
         });
       return;
@@ -545,7 +557,7 @@ function handleServerControlRequest(e, t) {
           type: "control_response",
           response: {
             subtype: "success",
-            request_id: e.request_id,
+            request_id: request.request_id,
           },
         }));
       break;
@@ -554,8 +566,8 @@ function handleServerControlRequest(e, t) {
         type: "control_response",
         response: {
           subtype: "error",
-          request_id: e.request_id,
-          error: `REPL bridge does not handle control_request subtype: ${e.request.subtype}`,
+          request_id: request.request_id,
+          error: `REPL bridge does not handle control_request subtype: ${request.request.subtype}`,
         },
       };
   }
@@ -565,10 +577,10 @@ function handleServerControlRequest(e, t) {
   };
   (n.write(v),
     T(
-      `[bridge:repl] Sent control_response for ${e.request.subtype} request_id=${e.request_id} result=${A.response.subtype}`,
+      `[bridge:repl] Sent control_response for ${request.request.subtype} request_id=${request.request_id} result=${A.response.subtype}`,
     ));
 }
-function makeResultMessage(e) {
+function makeResultMessage(sessionId) {
   return {
     type: "result",
     subtype: "success",
@@ -584,7 +596,7 @@ function makeResultMessage(e) {
     },
     modelUsage: {},
     permission_denials: [],
-    session_id: e,
+    session_id: sessionId,
     uuid: kJt.randomUUID(),
   };
 }

@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bKl] deps: Ye, WAt, Vl, vi, B_, Ko
 ((yKl = R(lt(), 1)), (mYe = R(se(), 1)));
-function SelectMatcherMode(e) {
+function SelectMatcherMode(t0) {
   let t = SKl.c(26),
     {
       selectedEvent: n,
@@ -15,7 +15,7 @@ function SelectMatcherMode(e) {
       eventDescription: s,
       onSelect: i,
       onCancel: a,
-    } = e,
+    } = t0,
     l;
   if (t[0] !== o || t[1] !== r || t[2] !== n) {
     let g;

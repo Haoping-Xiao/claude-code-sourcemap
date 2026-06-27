@@ -20,8 +20,8 @@ function nkm() {
 function rkm() {
   Isn(void 0);
 }
-async function handleSpawnInProcess(e) {
-  let t = e?.existingTeamName || nkm(),
+async function handleSpawnInProcess(input) {
+  let t = input?.existingTeamName || nkm(),
     n = t ?? sessionTeamName(Rt()),
     r = pte(Hd, n),
     o = goe(n);

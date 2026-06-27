@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qjl] deps: si, Ye, bUo
 ((Yjl = R(lt(), 1)), (Xjl = R(rt(), 1)), (SUo = R(se(), 1)));
-function ValidatePlugin(e) {
+function ValidatePlugin(t0) {
   let t = Zjl.c(5),
-    { onComplete: n, path: r } = e,
+    { onComplete: n, path: r } = t0,
     o,
     s;
   if (t[0] !== n || t[1] !== r)

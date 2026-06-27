@@ -17,9 +17,9 @@
     sep: ZUc,
   } = XUc.posix));
 SXo = tFc(Oe.CLAUDE_STAGE_FILE_ROOT);
-async function exec(e) {
-  let { command: t } = e,
-    n = e.cwd ?? $t(),
+async function exec(command) {
+  let { command: t } = command,
+    n = command.cwd ?? $t(),
     { file: r, args: o } =
       mur() === "powershell"
         ? {
@@ -36,7 +36,7 @@ async function exec(e) {
       code: a,
       error: l,
     } = await Gr(r, o, {
-      abortSignal: e.abortSignal,
+      abortSignal: command.abortSignal,
       cwd: n,
       preserveOutputOnError: true,
     }),

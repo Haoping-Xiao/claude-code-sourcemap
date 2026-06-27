@@ -606,34 +606,34 @@ function resetModelStrings() {
 function resetModelStringsForTestingOnly() {
   resetModelStrings();
 }
-function setMeter(e, t) {
-  ((Bt.meter = e),
-    (Bt.sessionCounter = t("claude_code.session.count", {
+function setMeter(meter, createCounter) {
+  ((Bt.meter = meter),
+    (Bt.sessionCounter = createCounter("claude_code.session.count", {
       description: "Count of CLI sessions started",
     })),
-    (Bt.locCounter = t("claude_code.lines_of_code.count", {
+    (Bt.locCounter = createCounter("claude_code.lines_of_code.count", {
       description:
         "Count of lines of code modified, with the 'type' attribute indicating whether lines were added or removed and the 'model' attribute indicating which model made the change",
     })),
-    (Bt.prCounter = t("claude_code.pull_request.count", {
+    (Bt.prCounter = createCounter("claude_code.pull_request.count", {
       description: "Number of pull requests created",
     })),
-    (Bt.commitCounter = t("claude_code.commit.count", {
+    (Bt.commitCounter = createCounter("claude_code.commit.count", {
       description: "Number of git commits created",
     })),
-    (Bt.costCounter = t("claude_code.cost.usage", {
+    (Bt.costCounter = createCounter("claude_code.cost.usage", {
       description: "Cost of the Claude Code session",
       unit: "USD",
     })),
-    (Bt.tokenCounter = t("claude_code.token.usage", {
+    (Bt.tokenCounter = createCounter("claude_code.token.usage", {
       description: "Number of tokens used",
       unit: "tokens",
     })),
-    (Bt.codeEditToolDecisionCounter = t("claude_code.code_edit_tool.decision", {
+    (Bt.codeEditToolDecisionCounter = createCounter("claude_code.code_edit_tool.decision", {
       description:
         "Count of code editing tool permission decisions (accept/reject) for Edit, Write, and NotebookEdit tools",
     })),
-    (Bt.activeTimeCounter = t("claude_code.active_time.total", {
+    (Bt.activeTimeCounter = createCounter("claude_code.active_time.total", {
       description: "Total active time in seconds",
       unit: "s",
     })));

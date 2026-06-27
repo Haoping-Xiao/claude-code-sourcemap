@@ -80,8 +80,8 @@ class ExitPlanModeScanner {
     };
   }
 }
-async function pollForApprovedExitPlanMode(e, t, n, r) {
-  let o = Date.now() + t,
+async function pollForApprovedExitPlanMode(sessionId, timeoutMs, onPhaseChange, shouldStop) {
+  let o = Date.now() + timeoutMs,
     s = new ExitPlanModeScanner(),
     i = {
       eventsReceived: 0,
@@ -92,10 +92,10 @@ async function pollForApprovedExitPlanMode(e, t, n, r) {
     l = 0,
     c = "running";
   while (Date.now() < o) {
-    if (r()) throw Error("poll stopped by caller");
+    if (shouldStop()) throw Error("poll stopped by caller");
     let p, f;
     try {
-      let y = await lMe(e, a);
+      let y = await lMe(sessionId, a);
       if (((p = y.newEvents), (a = y.lastEventId), (f = y.sessionStatus), (l = 0), p.length > 0)) {
         let b = Date.now();
         ((i.eventsReceived += p.length), (i.firstEventAt ??= b), (i.lastEventAt = b));
@@ -156,10 +156,10 @@ async function pollForApprovedExitPlanMode(e, t, n, r) {
       );
     let g = (f === "idle" || f === "requires_action") && p.length === 0,
       h = s.hasPendingPlan ? "plan_ready" : g ? "needs_input" : "running";
-    if (h !== c) (T(`[ultraplan] phase ${c} \u2192 ${h}`), (c = h), n(h));
+    if (h !== c) (T(`[ultraplan] phase ${c} \u2192 ${h}`), (c = h), onPhaseChange(h));
     await Nn(a9l);
   }
-  let u = Math.round(t / 60000),
+  let u = Math.round(timeoutMs / 60000),
     d = u === 1 ? "minute" : "minutes";
   throw new eme(
     s.everSeenPending
@@ -185,8 +185,8 @@ function eWf(e) {
   if (r === -1) return null;
   return t.slice(r + n.length).trimEnd();
 }
-function extractApprovedPlan(e) {
-  let t = u9l(e),
+function extractApprovedPlan(content) {
+  let t = u9l(content),
     n = [
       `## Approved Plan (edited by user):
 `,

@@ -66,9 +66,9 @@ function $Vf(e) {
       .sort((n, r) => n.serverName.localeCompare(r.serverName))
   );
 }
-function ToolSelector(e) {
+function ToolSelector(t0) {
   let t = bYl.c(69),
-    { tools: n, initialTools: r, onComplete: o, onCancel: s } = e,
+    { tools: n, initialTools: r, onComplete: o, onCancel: s } = t0,
     i;
   if (t[0] !== n)
     ((i = Nwo({

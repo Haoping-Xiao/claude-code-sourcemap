@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U8l] deps: kt, fn, At, sa, pq, U6t, $7
 ((dsr = require("fs/promises")), (gJt = require("path")));
-function Dialog(e) {
+function Dialog(t0) {
   let t = F8l.c(49),
-    { script: n, defaultName: r, onDone: o } = e,
+    { script: n, defaultName: r, onDone: o } = t0,
     { columns: s } = br(),
     [i, a] = lYe.useState(r),
     [l, c] = lYe.useState(r.length),

@@ -14,26 +14,35 @@ iZt = ve(() =>
       .optional(),
   }),
 );
-async function execPromptHook(e, t, n, r, o, s, i, a) {
-  let l = a || `hook-${lic.randomUUID()}`,
-    c = n === "Stop" || n === "SubagentStop";
+async function execPromptHook(
+  hook,
+  hookName,
+  hookEvent,
+  jsonInput,
+  signal,
+  toolUseContext,
+  messages,
+  toolUseID,
+) {
+  let l = toolUseID || `hook-${lic.randomUUID()}`,
+    c = hookEvent === "Stop" || hookEvent === "SubagentStop";
   try {
     let u = c
         ? `Based on the conversation transcript above, has the following stopping condition been satisfied? Answer based on transcript evidence only.
 
-Condition: ${e.prompt}`
-        : e.prompt,
-      d = klr(u, r);
+Condition: ${hook.prompt}`
+        : hook.prompt,
+      d = klr(u, jsonInput);
     T(`Hooks: Processing prompt hook with prompt: ${d}`);
     let p = Rn({
         content: d,
       }),
-      f = e.model ?? Fw(),
-      m = (_) => (i && i.length > 0 ? [...Bem(i, f, _), p] : [p]),
+      f = hook.model ?? Fw(),
+      m = (_) => (messages && messages.length > 0 ? [...Bem(messages, f, _), p] : [p]),
       g = m();
     T(`Hooks: Querying model with ${g.length} messages`);
-    let h = e.timeout ? e.timeout * 1000 : 30000,
-      { signal: y, cleanup: b } = xL(o, {
+    let h = hook.timeout ? hook.timeout * 1000 : 30000,
+      { signal: y, cleanup: b } = xL(signal, {
         timeoutMs: h,
       });
     try {
@@ -67,7 +76,7 @@ Always include a "reason" field.`,
             signal: y,
             options: {
               async getToolPermissionContext() {
-                return Fr(s);
+                return Fr(toolUseContext);
               },
               model: f,
               toolChoice: void 0,
@@ -77,8 +86,8 @@ Always include a "reason" field.`,
               querySource: "hook_prompt",
               promptTooLongIsHandled: true,
               mcpTools: [],
-              agentId: s.agentId,
-              agentContext: s.agentContext,
+              agentId: toolUseContext.agentId,
+              agentContext: toolUseContext.agentContext,
               stickyBetas: RR(u0()),
               outputFormat: {
                 type: "json_schema",
@@ -102,7 +111,7 @@ Always include a "reason" field.`,
             },
           }),
         v = await A(g);
-      if (hSe(v) && i && i.length > 0)
+      if (hSe(v) && messages && messages.length > 0)
         (G("tengu_hook_prompt_too_long_retry", {
           evaluatorModel: f,
         }),
@@ -116,13 +125,13 @@ Always include a "reason" field.`,
             level: "error",
           }),
           {
-            hook: e,
+            hook: hook,
             outcome: "non_blocking_error",
             message: ai({
               type: "hook_non_blocking_error",
-              hookName: t,
+              hookName: hookName,
               toolUseID: l,
-              hookEvent: n,
+              hookEvent: hookEvent,
               stderr: `Hook evaluator API error: ${D}`,
               stdout: "",
               exitCode: 1,
@@ -137,13 +146,13 @@ Always include a "reason" field.`,
         return (
           T(`Hooks: error parsing response as JSON: ${x}`),
           {
-            hook: e,
+            hook: hook,
             outcome: "non_blocking_error",
             message: ai({
               type: "hook_non_blocking_error",
-              hookName: t,
+              hookName: hookName,
               toolUseID: l,
-              hookEvent: n,
+              hookEvent: hookEvent,
               stderr: "JSON validation failed",
               stdout: x,
               exitCode: 1,
@@ -155,13 +164,13 @@ Always include a "reason" field.`,
         return (
           T(`Hooks: model response does not conform to expected schema: ${k.error.message}`),
           {
-            hook: e,
+            hook: hook,
             outcome: "non_blocking_error",
             message: ai({
               type: "hook_non_blocking_error",
-              hookName: t,
+              hookName: hookName,
               toolUseID: l,
-              hookEvent: n,
+              hookEvent: hookEvent,
               stderr: `Schema validation failed: ${k.error.message}`,
               stdout: x,
               exitCode: 1,
@@ -173,15 +182,15 @@ Always include a "reason" field.`,
           return (
             T(`Hooks: Prompt hook condition judged impossible: ${k.data.reason}`),
             {
-              hook: e,
+              hook: hook,
               outcome: "success",
               impossible: true,
               stopReason: k.data.reason,
               message: ai({
                 type: "hook_success",
-                hookName: t,
+                hookName: hookName,
                 toolUseID: l,
-                hookEvent: n,
+                hookEvent: hookEvent,
                 content: "",
               }),
             }
@@ -189,13 +198,13 @@ Always include a "reason" field.`,
         return (
           T(`Hooks: Prompt hook condition was not met: ${k.data.reason}`),
           {
-            hook: e,
+            hook: hook,
             outcome: "blocking",
             blockingError: {
-              blockingError: `[${e.prompt}]: ${k.data.reason}`,
-              command: e.prompt,
+              blockingError: `[${hook.prompt}]: ${k.data.reason}`,
+              command: hook.prompt,
             },
-            preventContinuation: !c && e.continueOnBlock !== true,
+            preventContinuation: !c && hook.continueOnBlock !== true,
             stopReason: k.data.reason,
           }
         );
@@ -203,14 +212,14 @@ Always include a "reason" field.`,
       return (
         T(`Hooks: Prompt hook condition was met: ${k.data.reason}`),
         {
-          hook: e,
+          hook: hook,
           outcome: "success",
           stopReason: k.data.reason,
           message: ai({
             type: "hook_success",
-            hookName: t,
+            hookName: hookName,
             toolUseID: l,
-            hookEvent: n,
+            hookEvent: hookEvent,
             content: "",
           }),
         }
@@ -218,7 +227,7 @@ Always include a "reason" field.`,
     } catch (_) {
       if ((b(), y.aborted))
         return {
-          hook: e,
+          hook: hook,
           outcome: "cancelled",
         };
       throw _;
@@ -228,13 +237,13 @@ Always include a "reason" field.`,
     return (
       T(`Hooks: Prompt hook error: ${d}`),
       {
-        hook: e,
+        hook: hook,
         outcome: "non_blocking_error",
         message: ai({
           type: "hook_non_blocking_error",
-          hookName: t,
+          hookName: hookName,
           toolUseID: l,
-          hookEvent: n,
+          hookEvent: hookEvent,
           stderr: `Error executing prompt hook: ${d}`,
           stdout: "",
           exitCode: 1,

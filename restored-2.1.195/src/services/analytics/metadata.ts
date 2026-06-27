@@ -34,11 +34,11 @@ function sg() {
 function Rst() {
   return ut(process.env.OTEL_LOG_TOOL_CONTENT);
 }
-function isAnalyticsToolDetailsLoggingEnabled(e, t) {
+function isAnalyticsToolDetailsLoggingEnabled(mcpServerType, mcpServerBaseUrl) {
   if (process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent") return true;
-  if (e === "claudeai-proxy") return true;
-  if (t && pOi(t)) return true;
-  if (t && X9(t)) return true;
+  if (mcpServerType === "claudeai-proxy") return true;
+  if (mcpServerBaseUrl && pOi(mcpServerBaseUrl)) return true;
+  if (mcpServerBaseUrl && X9(mcpServerBaseUrl)) return true;
   return false;
 }
 function fke(e, t) {
@@ -68,10 +68,15 @@ function fkn(e) {
     mcpToolName: r,
   };
 }
-function extractSkillName(e, t, n) {
-  if (e !== "Skill") return;
-  if (typeof t === "object" && t !== null && "skill" in t && typeof t.skill === "string")
-    return t.skill;
+function extractSkillName(toolName, input, n) {
+  if (toolName !== "Skill") return;
+  if (
+    typeof input === "object" &&
+    input !== null &&
+    "skill" in input &&
+    typeof input.skill === "string"
+  )
+    return input.skill;
   return;
 }
 function Rzr(e, t) {
@@ -121,29 +126,30 @@ function nNt(e, t, n) {
   if (l) r.subagent_type = l;
   return r;
 }
-function truncateToolInputValue(e, t = 0) {
-  if (typeof e === "string") {
-    if (e.length > B$d) return `${e.slice(0, U$d)}\u2026[${e.length} chars]`;
-    return e;
+function truncateToolInputValue(value, t = 0) {
+  if (typeof value === "string") {
+    if (value.length > B$d) return `${value.slice(0, U$d)}\u2026[${value.length} chars]`;
+    return value;
   }
-  if (typeof e === "number" || typeof e === "boolean" || e === null || e === void 0) return e;
+  if (typeof value === "number" || typeof value === "boolean" || value === null || value === void 0)
+    return value;
   if (t >= F$d) return "<nested>";
-  if (Array.isArray(e)) {
-    let n = e.slice(0, dkn).map((r) => truncateToolInputValue(r, t + 1));
-    if (e.length > dkn) n.push(`\u2026[${e.length} items]`);
+  if (Array.isArray(value)) {
+    let n = value.slice(0, dkn).map((r) => truncateToolInputValue(r, t + 1));
+    if (value.length > dkn) n.push(`\u2026[${value.length} items]`);
     return n;
   }
-  if (typeof e === "object") {
-    let n = Object.entries(e).filter(([o]) => !o.startsWith("_")),
+  if (typeof value === "object") {
+    let n = Object.entries(value).filter(([o]) => !o.startsWith("_")),
       r = n.slice(0, dkn).map(([o, s]) => [o, truncateToolInputValue(s, t + 1)]);
     if (n.length > dkn) r.push(["\u2026", `${n.length} keys`]);
     return Object.fromEntries(r);
   }
-  return String(e);
+  return String(value);
 }
-function extractToolInputForTelemetry(e) {
+function extractToolInputForTelemetry(input) {
   if (!sg()) return;
-  let t = truncateToolInputValue(e),
+  let t = truncateToolInputValue(input),
     n = De(t);
   if (n.length > yOi) n = n.slice(0, yOi) + "\u2026[truncated]";
   return n;
@@ -339,7 +345,7 @@ async function mkn(e = {}) {
     }),
   };
 }
-function to1PEventFormat(e, t, n = {}) {
+function to1PEventFormat(metadata, userMetadata, n = {}) {
   let {
       envContext: r,
       processMetrics: o,
@@ -352,7 +358,7 @@ function to1PEventFormat(e, t, n = {}) {
       subscriptionType: d,
       parentAgentId: p,
       ...f
-    } = e,
+    } = metadata,
     m = {
       platform: r.platform,
       platform_raw: r.platformRaw,
@@ -411,8 +417,8 @@ function to1PEventFormat(e, t, n = {}) {
   if (f.parentSessionId) g.parent_session_id = f.parentSessionId;
   if (f.agentType) g.agent_type = f.agentType;
   if (f.teamName) g.team_name = f.teamName;
-  if (t.githubActionsMetadata) {
-    let y = t.githubActionsMetadata;
+  if (userMetadata.githubActionsMetadata) {
+    let y = userMetadata.githubActionsMetadata;
     m.github_actions_metadata = {
       actor_id: y.actorId,
       repository_id: y.repositoryId,
@@ -420,10 +426,10 @@ function to1PEventFormat(e, t, n = {}) {
     };
   }
   let h;
-  if (t.accountUuid || t.organizationUuid)
+  if (userMetadata.accountUuid || userMetadata.organizationUuid)
     h = {
-      account_uuid: t.accountUuid,
-      organization_uuid: t.organizationUuid,
+      account_uuid: userMetadata.accountUuid,
+      organization_uuid: userMetadata.organizationUuid,
     };
   return {
     env: m,

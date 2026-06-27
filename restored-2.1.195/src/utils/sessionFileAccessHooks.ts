@@ -73,9 +73,9 @@ function isMemoryFileAccess(e, t) {
   if (n && (Sze(n) || P7(n))) return true;
   return false;
 }
-async function handleSessionFileAccess(e, t, n) {
-  if (e.hook_event_name !== "PostToolUse") return {};
-  let r = JAf(e.tool_name, e.tool_input),
+async function handleSessionFileAccess(input, _toolUseID, _signal) {
+  if (input.hook_event_name !== "PostToolUse") return {};
+  let r = JAf(input.tool_name, input.tool_input),
     o = WPt.getStore(),
     s = o ? G2r(o) : void 0,
     i = s
@@ -87,14 +87,14 @@ async function handleSessionFileAccess(e, t, n) {
     G("tengu_transcript_accessed", {
       ...i,
     });
-  let a = tCl(e.tool_name, e.tool_input);
+  let a = tCl(input.tool_name, input.tool_input);
   if (a && Sze(a))
     switch (
       (G("tengu_memdir_accessed", {
-        tool: e.tool_name,
+        tool: input.tool_name,
         ...i,
       }),
-      e.tool_name)
+      input.tool_name)
     ) {
       case Ds:
         G("tengu_memdir_file_read", {
@@ -117,10 +117,10 @@ async function handleSessionFileAccess(e, t, n) {
   if (a && P7(a))
     switch (
       (G("tengu_team_mem_accessed", {
-        tool: e.tool_name,
+        tool: input.tool_name,
         ...i,
       }),
-      e.tool_name)
+      input.tool_name)
     ) {
       case Ds:
         G("tengu_team_mem_file_read", {
@@ -138,7 +138,7 @@ async function handleSessionFileAccess(e, t, n) {
         });
         break;
     }
-  if (a && (e.tool_name === ka || e.tool_name === Wc) && P7(a)) {
+  if (a && (input.tool_name === ka || input.tool_name === Wc) && P7(a)) {
     let l = await swl(a, cT());
     if (l !== null)
       return (
@@ -153,7 +153,7 @@ async function handleSessionFileAccess(e, t, n) {
         }
       );
   }
-  if (a && (e.tool_name === ka || e.tool_name === Wc)) {
+  if (a && (input.tool_name === ka || input.tool_name === Wc)) {
     let l = await nwl(a);
     if (l !== null)
       return (

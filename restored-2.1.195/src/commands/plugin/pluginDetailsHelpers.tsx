@@ -16,19 +16,19 @@ function crr(e) {
     ["LSP Servers", e.lspServers ?? []],
   ].filter(([, n]) => n.length > 0);
 }
-function extractGitHubRepo(e) {
+function extractGitHubRepo(plugin) {
   if (
-    e.entry.source &&
-    typeof e.entry.source === "object" &&
-    "source" in e.entry.source &&
-    e.entry.source.source === "github" &&
-    typeof e.entry.source === "object" &&
-    "repo" in e.entry.source
+    plugin.entry.source &&
+    typeof plugin.entry.source === "object" &&
+    "source" in plugin.entry.source &&
+    plugin.entry.source.source === "github" &&
+    typeof plugin.entry.source === "object" &&
+    "repo" in plugin.entry.source
   )
-    return e.entry.source.repo;
+    return plugin.entry.source.repo;
   return null;
 }
-function buildPluginDetailsMenuOptions(e, t) {
+function buildPluginDetailsMenuOptions(hasHomepage, githubRepo) {
   let n = [
     {
       label: "Install for you (user scope)",
@@ -43,12 +43,12 @@ function buildPluginDetailsMenuOptions(e, t) {
       action: "install-local",
     },
   ];
-  if (e)
+  if (hasHomepage)
     n.push({
       label: "Open homepage",
       action: "homepage",
     });
-  if (t)
+  if (githubRepo)
     n.push({
       label: "View on GitHub",
       action: "github",
@@ -61,9 +61,9 @@ function buildPluginDetailsMenuOptions(e, t) {
     n
   );
 }
-function PluginSelectionKeyHint(e) {
+function PluginSelectionKeyHint(t0) {
   let t = BEt.c(12),
-    { hasSelection: n, canToggle: r, canView: o } = e,
+    { hasSelection: n, canToggle: r, canView: o } = t0,
     s;
   if (t[0] !== n)
     ((s =

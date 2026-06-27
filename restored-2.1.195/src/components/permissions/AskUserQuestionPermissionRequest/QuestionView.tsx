@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UAc] deps: si, _i, Ye, ps, V9t, QOe, aE, y3, Bs, LW, Ko, Mg, PWt, OAc, _pr
 ((I3 = R(rt(), 1)), (eh = R(se(), 1)));
-function QuestionView(e) {
+function QuestionView(t0) {
   let t = FAc.c(59),
     {
       question: n,
@@ -28,7 +28,7 @@ function QuestionView(e) {
       onImagePaste: b,
       pastedContents: _,
       onRemoveImage: S,
-    } = e,
+    } = t0,
     A = a === void 0 ? false : a,
     v = Ht(Gym) === "plan",
     C = Sd(),

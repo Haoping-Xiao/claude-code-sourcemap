@@ -7,11 +7,11 @@
 function BTo() {
   return "inherit";
 }
-function getAgentModel(e, t, n, r, o) {
+function getAgentModel(agentModel, parentModel, toolSpecifiedModel, permissionMode, o) {
   let s = () =>
       VR({
-        permissionMode: r ?? "default",
-        mainLoopModel: t,
+        permissionMode: permissionMode ?? "default",
+        mainLoopModel: parentModel,
         exceeds200kTokens: false,
       }),
     i = (p, f = p) => {
@@ -27,7 +27,7 @@ function getAgentModel(e, t, n, r, o) {
     if (!xa(p)) return i(a);
     return p;
   }
-  let l = PSn(t),
+  let l = PSn(parentModel),
     c = (p, f) => {
       if (l && l_(p) === "bedrock") {
         if (PSn(f)) return p;
@@ -35,16 +35,16 @@ function getAgentModel(e, t, n, r, o) {
       }
       return p;
     };
-  if (n) {
-    if (n === "inherit") return s();
-    if (QZa(n, t)) return t;
-    let p = c(JZa(zo(n)), n);
-    if (!xa(p)) return i(n, p);
+  if (toolSpecifiedModel) {
+    if (toolSpecifiedModel === "inherit") return s();
+    if (QZa(toolSpecifiedModel, parentModel)) return parentModel;
+    let p = c(JZa(zo(toolSpecifiedModel)), toolSpecifiedModel);
+    if (!xa(p)) return i(toolSpecifiedModel, p);
     return p;
   }
-  let u = e ?? BTo();
+  let u = agentModel ?? BTo();
   if (u === "inherit") return s();
-  if (QZa(u, t)) return t;
+  if (QZa(u, parentModel)) return parentModel;
   let d = c(JZa(zo(u)), u);
   if (!xa(d)) return i(u, d);
   return d;
@@ -77,10 +77,10 @@ function QZa(e, t) {
       return false;
   }
 }
-function getAgentModelDisplay(e) {
-  if (!e) return "Inherit from parent (default)";
-  if (e === "inherit") return "Inherit from parent";
-  return Cx(e);
+function getAgentModelDisplay(model) {
+  if (!model) return "Inherit from parent (default)";
+  if (model === "inherit") return "Inherit from parent";
+  return Cx(model);
 }
 function getAgentModelOptions() {
   let e = [];

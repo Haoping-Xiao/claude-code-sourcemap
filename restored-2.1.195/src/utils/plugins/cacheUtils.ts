@@ -13,11 +13,11 @@ function GIf() {
 function Ah() {
   (GIf(), W0(), wq(), woo(), KW());
 }
-async function markPluginVersionOrphaned(e) {
+async function markPluginVersionOrphaned(versionPath) {
   try {
-    await nse.writeFile(b$o(e), `${Date.now()}`, "utf-8");
+    await nse.writeFile(b$o(versionPath), `${Date.now()}`, "utf-8");
   } catch (t) {
-    T(`Failed to write .orphaned_at: ${e}: ${t}`);
+    T(`Failed to write .orphaned_at: ${versionPath}: ${t}`);
   }
 }
 async function cleanupOrphanedPluginVersionsInBackground() {
@@ -48,13 +48,13 @@ async function cleanupOrphanedPluginVersionsInBackground() {
 function b$o(e) {
   return IYt.join(e, ORPHANED_AT_FILENAME);
 }
-async function removeOrphanedAtMarker(e) {
-  let t = b$o(e);
+async function removeOrphanedAtMarker(versionPath) {
+  let t = b$o(versionPath);
   try {
     await nse.unlink(t);
   } catch (n) {
     if (on(n) === "ENOENT") return;
-    T(`Failed to remove .orphaned_at: ${e}: ${n}`);
+    T(`Failed to remove .orphaned_at: ${versionPath}: ${n}`);
   }
 }
 function getInstalledVersionPaths() {
@@ -67,48 +67,48 @@ function getInstalledVersionPaths() {
     return (T(`Failed to load installed plugins: ${e}`), null);
   }
 }
-async function processOrphanedPluginVersion(e, t) {
-  let n = b$o(e),
+async function processOrphanedPluginVersion(versionPath, now) {
+  let n = b$o(versionPath),
     r;
   try {
     r = (await nse.stat(n)).mtimeMs;
   } catch (o) {
     if (on(o) === "ENOENT") {
-      await markPluginVersionOrphaned(e);
+      await markPluginVersionOrphaned(versionPath);
       return;
     }
-    T(`Failed to stat orphaned marker: ${e}: ${o}`);
+    T(`Failed to stat orphaned marker: ${versionPath}: ${o}`);
     return;
   }
-  if (t - r > jIf) {
+  if (now - r > jIf) {
     try {
-      if (await HYt(e)) {
-        T(`Skipping orphan cleanup, in use by live session: ${e}`);
+      if (await HYt(versionPath)) {
+        T(`Skipping orphan cleanup, in use by live session: ${versionPath}`);
         return;
       }
     } catch (o) {
-      T(`Failed to check ${e} for live users, skipping cleanup: ${o}`);
+      T(`Failed to check ${versionPath} for live users, skipping cleanup: ${o}`);
       return;
     }
     try {
-      await nse.rm(e, {
+      await nse.rm(versionPath, {
         recursive: true,
         force: true,
       });
     } catch (o) {
-      T(`Failed to delete orphaned version: ${e}: ${o}`);
+      T(`Failed to delete orphaned version: ${versionPath}: ${o}`);
     }
   }
 }
-async function removeIfEmpty(e) {
-  if ((await QZn(e)).length === 0)
+async function removeIfEmpty(dirPath) {
+  if ((await QZn(dirPath)).length === 0)
     try {
-      await nse.rm(e, {
+      await nse.rm(dirPath, {
         recursive: true,
         force: true,
       });
     } catch (t) {
-      T(`Failed to remove empty dir: ${e}: ${t}`);
+      T(`Failed to remove empty dir: ${dirPath}: ${t}`);
     }
 }
 async function QZn(e) {

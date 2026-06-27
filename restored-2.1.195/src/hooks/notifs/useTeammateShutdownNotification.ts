@@ -14,11 +14,11 @@ function BDc(e) {
 function TCm(e, t) {
   return makeSpawnNotif(BDc(e) + 1);
 }
-function makeSpawnNotif(e) {
+function makeSpawnNotif(count) {
   return {
     key: "teammate-spawn",
     kind: "event",
-    text: e === 1 ? "1 teammate started" : `${e} teammates started`,
+    text: count === 1 ? "1 teammate started" : `${count} teammates started`,
     priority: "low",
     timeoutMs: 5000,
     fold: TCm,
@@ -27,11 +27,11 @@ function makeSpawnNotif(e) {
 function vCm(e, t) {
   return makeShutdownNotif(BDc(e) + 1);
 }
-function makeShutdownNotif(e) {
+function makeShutdownNotif(count) {
   return {
     key: "teammate-shutdown",
     kind: "event",
-    text: e === 1 ? "1 teammate shut down" : `${e} teammates shut down`,
+    text: count === 1 ? "1 teammate shut down" : `${count} teammates shut down`,
     priority: "low",
     timeoutMs: 5000,
     fold: vCm,

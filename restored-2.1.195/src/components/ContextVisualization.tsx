@@ -57,9 +57,9 @@ function Ytr(e) {
   else a = t[8];
   return a;
 }
-function ContextVisualization(e) {
+function ContextVisualization(t0) {
   let t = Xtr.c(116),
-    { data: n, isRemote: r, collapseDetailSections: o } = e,
+    { data: n, isRemote: r, collapseDetailSections: o } = t0,
     s = r === void 0 ? false : r,
     i = o === void 0 ? false : o,
     {

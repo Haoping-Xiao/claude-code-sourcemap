@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vKl] deps: Ye, WAt, vi, Ko, gKe
 ((HKl = R(lt(), 1)), (Th = R(se(), 1)));
-function HooksConfigMenu(e) {
+function HooksConfigMenu(t0) {
   let t = wKl.c(102),
-    { toolNames: n, onExit: r } = e,
+    { toolNames: n, onExit: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = {

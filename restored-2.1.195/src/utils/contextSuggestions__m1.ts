@@ -5,9 +5,9 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
-function getLargeToolSuggestion(e) {
+function getLargeToolSuggestion(toolName) {
   let t = JPl.c(52),
-    { onDone: n, context: r } = e,
+    { onDone: n, context: r } = toolName,
     o = Ht(Y0f),
     s = kH(),
     i;

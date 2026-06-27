@@ -9,16 +9,16 @@ function renameSystemReminder(e) {
   let t = Ner(e);
   return aw(`The user named this session "${t}". This may indicate the session's focus or intent.`);
 }
-async function call(e, t) {
+async function call(onDone, context) {
   if (wf())
     return {
       message:
         "Cannot rename: This session is a teammate. Teammate names are set by the team leader.",
     };
-  let n = !e || e.trim() === "",
+  let n = !onDone || onDone.trim() === "",
     r;
   if (n) {
-    let o = await pAt(t.messages, t.abortController.signal, {
+    let o = await pAt(context.messages, context.abortController.signal, {
       preferFork: true,
     });
     if (!o)
@@ -26,10 +26,10 @@ async function call(e, t) {
         message: "Could not generate a name: no conversation context yet. Usage: /rename <name>",
       };
     r = o;
-  } else r = e.trim();
+  } else r = onDone.trim();
   return (
     await lHe(r, "user"),
-    t.setAppState((o) =>
+    context.setAppState((o) =>
       qer(o, {
         name: r,
       }),

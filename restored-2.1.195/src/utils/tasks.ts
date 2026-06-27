@@ -123,18 +123,18 @@ async function HOa(e, t) {
     if (r) await r();
   }
 }
-async function getTask(e, t) {
-  let n = mft(e, t);
+async function getTask(taskListId, taskId) {
+  let n = mft(taskListId, taskId);
   try {
     let r = await qs().read(n),
       o = Ft(r),
       s = UDp().safeParse(o);
     if (!s.success)
-      return (T(`[Tasks] Task ${t} failed schema validation: ${s.error.message}`), null);
+      return (T(`[Tasks] Task ${taskId} failed schema validation: ${s.error.message}`), null);
     return s.data;
   } catch (r) {
     if (on(r) === "ENOENT") return null;
-    if ((T(`[Tasks] Failed to read task ${t}: ${be(r)}`), !(r instanceof SyntaxError))) ke(r);
+    if ((T(`[Tasks] Failed to read task ${taskId}: ${be(r)}`), !(r instanceof SyntaxError))) ke(r);
     return null;
   }
 }
@@ -227,24 +227,24 @@ async function Vgo(e) {
   } catch {}
   return t;
 }
-async function claimTask(e, t, n, r = {}) {
-  let o = mft(e, t);
-  if (!(await getTask(e, t)))
+async function claimTask(taskListId, taskId, claimantAgentId, r = {}) {
+  let o = mft(taskListId, taskId);
+  if (!(await getTask(taskListId, taskId)))
     return {
       success: false,
       reason: "task_not_found",
     };
-  if (r.checkAgentBusy) return claimTaskWithBusyCheck(e, t, n);
+  if (r.checkAgentBusy) return claimTaskWithBusyCheck(taskListId, taskId, claimantAgentId);
   let i;
   try {
     i = await Ay(o, pWt);
-    let a = await getTask(e, t);
+    let a = await getTask(taskListId, taskId);
     if (!a)
       return {
         success: false,
         reason: "task_not_found",
       };
-    if (a.owner && a.owner !== n)
+    if (a.owner && a.owner !== claimantAgentId)
       return {
         success: false,
         reason: "already_claimed",
@@ -256,7 +256,7 @@ async function claimTask(e, t, n, r = {}) {
         reason: "already_resolved",
         task: a,
       };
-    let l = await W4(e),
+    let l = await W4(taskListId),
       c = new Set(l.filter((p) => p.status !== "completed").map((p) => p.id)),
       u = a.blockedBy.filter((p) => c.has(p));
     if (u.length > 0)
@@ -268,13 +268,13 @@ async function claimTask(e, t, n, r = {}) {
       };
     return {
       success: true,
-      task: await TOa(e, t, {
-        owner: n,
+      task: await TOa(taskListId, taskId, {
+        owner: claimantAgentId,
       }),
     };
   } catch (a) {
     return (
-      T(`[Tasks] Failed to claim task ${t}: ${be(a)}`),
+      T(`[Tasks] Failed to claim task ${taskId}: ${be(a)}`),
       ke(a),
       {
         success: false,
@@ -285,19 +285,19 @@ async function claimTask(e, t, n, r = {}) {
     if (i) await i();
   }
 }
-async function claimTaskWithBusyCheck(e, t, n) {
-  let r = await Vgo(e),
+async function claimTaskWithBusyCheck(taskListId, taskId, claimantAgentId) {
+  let r = await Vgo(taskListId),
     o;
   try {
     o = await Ay(r, pWt);
-    let s = await W4(e),
-      i = s.find((d) => d.id === t);
+    let s = await W4(taskListId),
+      i = s.find((d) => d.id === taskId);
     if (!i)
       return {
         success: false,
         reason: "task_not_found",
       };
-    if (i.owner && i.owner !== n)
+    if (i.owner && i.owner !== claimantAgentId)
       return {
         success: false,
         reason: "already_claimed",
@@ -318,7 +318,9 @@ async function claimTaskWithBusyCheck(e, t, n) {
         task: i,
         blockedByTasks: l,
       };
-    let c = s.filter((d) => d.status !== "completed" && d.owner === n && d.id !== t);
+    let c = s.filter(
+      (d) => d.status !== "completed" && d.owner === claimantAgentId && d.id !== taskId,
+    );
     if (c.length > 0)
       return {
         success: false,
@@ -328,13 +330,13 @@ async function claimTaskWithBusyCheck(e, t, n) {
       };
     return {
       success: true,
-      task: await hEe(e, t, {
-        owner: n,
+      task: await hEe(taskListId, taskId, {
+        owner: claimantAgentId,
       }),
     };
   } catch (s) {
     return (
-      T(`[Tasks] Failed to claim task ${t} with busy check: ${be(s)}`),
+      T(`[Tasks] Failed to claim task ${taskId} with busy check: ${be(s)}`),
       ke(s),
       {
         success: false,
@@ -345,15 +347,17 @@ async function claimTaskWithBusyCheck(e, t, n) {
     if (o) await o();
   }
 }
-async function unassignTeammateTasks(e, t, n, r) {
-  let s = (await W4(e)).filter((l) => l.status !== "completed" && (l.owner === t || l.owner === n));
+async function unassignTeammateTasks(teamName, teammateId, teammateName, reason) {
+  let s = (await W4(teamName)).filter(
+    (l) => l.status !== "completed" && (l.owner === teammateId || l.owner === teammateName),
+  );
   for (let l of s)
-    await hEe(e, l.id, {
+    await hEe(teamName, l.id, {
       owner: void 0,
       status: "pending",
     });
-  if (s.length > 0) T(`[Tasks] Unassigned ${s.length} task(s) from ${n}`);
-  let a = `${n} ${r === "terminated" ? "was terminated" : "has shut down"}.`;
+  if (s.length > 0) T(`[Tasks] Unassigned ${s.length} task(s) from ${teammateName}`);
+  let a = `${teammateName} ${reason === "terminated" ? "was terminated" : "has shut down"}.`;
   if (s.length > 0) {
     let l = s.map((c) => `#${c.id} "${c.subject}"`).join(", ");
     a += ` ${s.length} task(s) were unassigned: ${l}. Use TaskList to check availability and TaskUpdate with owner to reassign them to idle teammates.`;

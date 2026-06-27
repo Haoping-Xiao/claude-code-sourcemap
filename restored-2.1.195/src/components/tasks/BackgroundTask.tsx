@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h8l] deps: Ye
 ((cjo = R(lt(), 1)), (iYe = R(se(), 1)));
-function BackgroundTask(e) {
+function BackgroundTask(t0) {
   let t = y8l.c(107),
-    { task: n, maxActivityWidth: r } = e,
+    { task: n, maxActivityWidth: r } = t0,
     o = r ?? 40;
   switch (n.type) {
     case "local_bash": {

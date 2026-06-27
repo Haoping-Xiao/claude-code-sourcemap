@@ -260,8 +260,8 @@ async function nBf(e) {
   }
   return t;
 }
-function getBaseFileNames(e, t) {
-  (T(`Failed to read plugin components from ${e}: ${be(t)}`, {
+function getBaseFileNames(dirPath, t) {
+  (T(`Failed to read plugin components from ${dirPath}: ${be(t)}`, {
     level: "error",
   }),
     ke(Zr(t)));

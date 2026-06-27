@@ -46,11 +46,11 @@ async function tYf(e, t) {
 function nYf() {
   return Promise.resolve(void 0);
 }
-async function getAgentMetadataPath(e, t, n, r, o = 60000) {
+async function getAgentMetadataPath(agentId, t, n, r, o = 60000) {
   if (!FS(t)) return;
   let s = pZ(n),
     i = await vc(
-      e.load({
+      agentId.load({
         projectKey: s,
         sessionId: t,
       }),
@@ -79,11 +79,11 @@ async function getAgentMetadataPath(e, t, n, r, o = 60000) {
     if (
       (await tYf(p, v_.join(a, ".credentials.json")),
       await eYf(v_.join(u ?? mHt.homedir(), ".claude.json"), v_.join(a, ".claude.json")),
-      e.listSubkeys)
+      agentId.listSubkeys)
     ) {
       let f = v_.join(l, t),
         m = await vc(
-          e.listSubkeys({
+          agentId.listSubkeys({
             projectKey: s,
             sessionId: t,
           }),
@@ -104,7 +104,7 @@ async function getAgentMetadataPath(e, t, n, r, o = 60000) {
           continue;
         }
         let y = await vc(
-          e.load({
+          agentId.load({
             projectKey: s,
             sessionId: t,
             subpath: g,
@@ -141,7 +141,7 @@ async function getAgentMetadataPath(e, t, n, r, o = 60000) {
     throw (await $ir(a), l);
   }
 }
-function isLegacyProgressEntry(e, t, n, r) {
+function isLegacyProgressEntry(entry, t, n, r) {
   let {
       systemPrompt: o,
       settings: s,
@@ -149,7 +149,7 @@ function isLegacyProgressEntry(e, t, n, r) {
       settingSources: a,
       sandbox: l,
       ...c
-    } = e ?? {},
+    } = entry ?? {},
     u,
     d,
     p;

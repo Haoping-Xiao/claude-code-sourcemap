@@ -247,11 +247,11 @@ function getOpusPlanOption() {
     description: "Use Opus in plan mode, Sonnet otherwise",
   };
 }
-function getModelFamilyInfo(e, t) {
+function getModelFamilyInfo(model, t) {
   let n = bio(Uw());
-  if (n !== "opus" && n !== "sonnet") return e;
+  if (n !== "opus" && n !== "sonnet") return model;
   let r = n === "opus" && nT();
-  if (e.some((i) => i.value === n || (r && i.value === `${n}[1m]`))) return e;
+  if (model.some((i) => i.value === n || (r && i.value === `${n}[1m]`))) return model;
   let o = bo(),
     s;
   if (n === "sonnet") {
@@ -280,7 +280,7 @@ function getModelFamilyInfo(e, t) {
       };
     }
   }
-  return (e.splice(e.findIndex((i) => i.value === null) + 1, 0, s), e);
+  return (model.splice(model.findIndex((i) => i.value === null) + 1, 0, s), model);
 }
 function Oap(e = false) {
   if (bo()) {

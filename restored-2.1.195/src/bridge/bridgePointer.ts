@@ -5,17 +5,17 @@
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeBridgePointer, readBridgePointerAcrossWorktrees, readBridgePointer, getBridgePointerPath, clearBridgePointer, BRIDGE_POINTER_TTL_MS
-function getBridgePointerPath(e) {
-  return Vir.join(PO(), LE(e), "bridge-pointer.json");
+function getBridgePointerPath(dir) {
+  return Vir.join(PO(), LE(dir), "bridge-pointer.json");
 }
-async function writeBridgePointer(e, t) {
-  let n = getBridgePointerPath(e);
+async function writeBridgePointer(dir, pointer) {
+  let n = getBridgePointerPath(dir);
   try {
     return (
       await yme.mkdir(Vir.dirname(n), {
         recursive: true,
       }),
-      await yme.writeFile(n, De(t), "utf8"),
+      await yme.writeFile(n, De(pointer), "utf8"),
       T(`[bridge:pointer] wrote ${n}`),
       true
     );
@@ -28,8 +28,8 @@ async function writeBridgePointer(e, t) {
     );
   }
 }
-async function readBridgePointer(e) {
-  let t = getBridgePointerPath(e),
+async function readBridgePointer(dir) {
+  let t = getBridgePointerPath(dir),
     n,
     r;
   try {
@@ -41,14 +41,14 @@ async function readBridgePointer(e) {
   if (!o.success)
     return (
       T(`[bridge:pointer] invalid schema, clearing: ${t}`),
-      await clearBridgePointer(e),
+      await clearBridgePointer(dir),
       null
     );
   let s = Math.max(0, Date.now() - r);
   if (s > BRIDGE_POINTER_TTL_MS)
     return (
       T(`[bridge:pointer] stale (>4h mtime), clearing: ${t}`),
-      await clearBridgePointer(e),
+      await clearBridgePointer(dir),
       null
     );
   return {
@@ -56,18 +56,18 @@ async function readBridgePointer(e) {
     ageMs: s,
   };
 }
-async function readBridgePointerAcrossWorktrees(e) {
-  let t = await readBridgePointer(e);
+async function readBridgePointerAcrossWorktrees(dir) {
+  let t = await readBridgePointer(dir);
   if (t)
     return {
       pointer: t,
-      dir: e,
+      dir: dir,
     };
-  let n = await e9(e);
+  let n = await e9(dir);
   if (n.length <= 1) return null;
   if (n.length > _tc)
     return (T(`[bridge:pointer] ${n.length} worktrees exceeds fanout cap ${_tc}, skipping`), null);
-  let r = LE(e),
+  let r = LE(dir),
     o = n.filter((a) => LE(a) !== r),
     s = await Promise.all(
       o.map(async (a) => {
@@ -85,8 +85,8 @@ async function readBridgePointerAcrossWorktrees(e) {
   if (i) T(`[bridge:pointer] fanout found pointer in worktree ${i.dir} (ageMs=${i.pointer.ageMs})`);
   return i;
 }
-async function clearBridgePointer(e) {
-  let t = getBridgePointerPath(e);
+async function clearBridgePointer(dir) {
+  let t = getBridgePointerPath(dir);
   try {
     (await yme.unlink(t), T(`[bridge:pointer] cleared ${t}`));
   } catch (n) {

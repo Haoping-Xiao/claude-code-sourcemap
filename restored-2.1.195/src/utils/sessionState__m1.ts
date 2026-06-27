@@ -12,13 +12,14 @@ function wTc() {
 async function CTc() {
   return [];
 }
-function notifySessionStateChanged(e) {
-  let { state: t, tempo: n } = $bm(e.worker_status),
-    r = e.config?.sources?.find((a) => a.type === "git_repository")?.url,
-    o = e.title ?? "",
-    s = e.worker_status === "requires_action" ? e.external_metadata?.pending_action : void 0,
+function notifySessionStateChanged(state) {
+  let { state: t, tempo: n } = $bm(state.worker_status),
+    r = state.config?.sources?.find((a) => a.type === "git_repository")?.url,
+    o = state.title ?? "",
+    s =
+      state.worker_status === "requires_action" ? state.external_metadata?.pending_action : void 0,
     i =
-      e.worker_status === "requires_action"
+      state.worker_status === "requires_action"
         ? s?.tool_name === mf
           ? kYn(s.input).text
           : s?.tool_name === Xx
@@ -42,12 +43,12 @@ function notifySessionStateChanged(e) {
     template: "remote",
     respawnFlags: [],
     name: o || void 0,
-    intent: o || e.id,
-    sessionId: e.id,
+    intent: o || state.id,
+    sessionId: state.id,
     cwd: r ?? "remote",
     originCwd: r ?? "remote",
-    createdAt: e.created_at,
-    updatedAt: e.last_event_at ?? e.created_at,
+    createdAt: state.created_at,
+    updatedAt: state.last_event_at ?? state.created_at,
     firstTerminalAt: null,
     backend: "remote",
   };

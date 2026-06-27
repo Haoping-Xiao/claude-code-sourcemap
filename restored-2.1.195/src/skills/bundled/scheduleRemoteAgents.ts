@@ -23,9 +23,9 @@ Examples:
   /loop 1h /standup 1
   /loop check the deploy          (defaults to ${ZTt})
   /loop check the deploy every 20m`;
-function taggedIdToUUID(e) {
-  if (!e.startsWith("mcpsrv_")) return null;
-  let r = e.slice(7).slice(2),
+function taggedIdToUUID(taggedId) {
+  if (!taggedId.startsWith("mcpsrv_")) return null;
+  let r = taggedId.slice(7).slice(2),
     o = 0n;
   for (let i of r) {
     let a = BASE58.indexOf(i);
@@ -35,9 +35,9 @@ function taggedIdToUUID(e) {
   let s = o.toString(16).padStart(32, "0");
   return `${s.slice(0, 8)}-${s.slice(8, 12)}-${s.slice(12, 16)}-${s.slice(16, 20)}-${s.slice(20, 32)}`;
 }
-function getConnectedClaudeAIConnectors(e) {
+function getConnectedClaudeAIConnectors(mcpClients) {
   let t = [];
-  for (let n of e) {
+  for (let n of mcpClients) {
     if (n.type !== "connected") continue;
     if (n.config.type !== "claudeai-proxy") continue;
     let r = taggedIdToUUID(n.config.id);
@@ -57,20 +57,20 @@ function sAm(e) {
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
 }
-function formatConnectorsInfo(e) {
-  if (e.length === 0)
+function formatConnectorsInfo(connectors) {
+  if (connectors.length === 0)
     return "No connected MCP connectors found. The user may need to connect servers at https://claude.ai/customize/connectors";
   let t = ["Connected connectors (available for routines):"];
-  for (let n of e) {
+  for (let n of connectors) {
     let r = sAm(n.name);
     t.push(`- ${n.name} (connector_uuid: ${n.uuid}, name: ${r}, url: ${n.url})`);
   }
   return t.join(`
 `);
 }
-function formatSetupNotes(e) {
+function formatSetupNotes(notes) {
   return `\u26A0 Heads-up:
-${e.map((n) => `- ${n}`).join(`
+${notes.map((n) => `- ${n}`).join(`
 `)}`;
 }
 async function aAm() {
@@ -80,7 +80,7 @@ async function aAm() {
   if (!t) return null;
   return `https://${t.host}/${t.owner}/${t.name}`;
 }
-function buildPrompt(e) {
+function buildPrompt(opts) {
   let {
       userTimezone: t,
       nowUtcIso: n,
@@ -93,7 +93,7 @@ function buildPrompt(e) {
       setupNotes: c,
       needsGitHubAccessReminder: u,
       userArgs: d,
-    } = e,
+    } = opts,
     p =
       d && c.length > 0
         ? `

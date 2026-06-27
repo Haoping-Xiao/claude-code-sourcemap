@@ -21,12 +21,12 @@ function Eml(e) {
     started: n,
   };
 }
-function parseAgentFromMarkdown(e) {
-  if (!e) return "{}";
+function parseAgentFromMarkdown(filePath) {
+  if (!filePath) return "{}";
   let t = {},
     n = ["schema", "model", "effort", "isolation", "agentType"];
   for (let o of n) {
-    let s = e[o];
+    let s = filePath[o];
     if (s === void 0 || typeof s === "function") continue;
     t[o] = s;
   }

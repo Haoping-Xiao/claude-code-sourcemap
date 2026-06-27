@@ -11,7 +11,7 @@ async function startMCPServer(e, t, n) {
     o = new oFe();
   await r.connect(o);
 }
-function Udc(e, t) {
+function Udc(cwd, debug) {
   XTl(pDo());
   let n = QU(V1),
     r = new mhe(
@@ -71,8 +71,8 @@ function Udc(e, t) {
           mcpClients: [],
           mcpResources: {},
           isNonInteractiveSession: true,
-          debug: e,
-          verbose: t,
+          debug: cwd,
+          verbose: debug,
           agentDefinitions: {
             activeAgents: [],
             allAgents: [],

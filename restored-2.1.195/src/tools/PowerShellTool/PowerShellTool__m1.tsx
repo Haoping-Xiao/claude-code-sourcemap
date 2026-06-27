@@ -56,9 +56,9 @@ async function isAutobackgroundingAllowed(e) {
   let n = zm(t);
   return !TSf.includes(n);
 }
-function detectBlockedSleepPattern(e) {
+function detectBlockedSleepPattern(command) {
   let t =
-      e
+      command
         .trim()
         .split(/[;|&\r\n]/)[0]
         ?.trim() ?? "",
@@ -66,7 +66,7 @@ function detectBlockedSleepPattern(e) {
   if (!n) return null;
   let r = parseFloat(n[1]);
   if (r < Q8n) return null;
-  let o = e
+  let o = command
     .trim()
     .slice(t.length)
     .replace(/^[\s;|&]+/, "");

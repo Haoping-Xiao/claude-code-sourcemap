@@ -15,15 +15,15 @@ function isBetaTracingEnabled() {
     return false;
   return Ir() || at("tengu_trace_lantern", false);
 }
-function truncateContent(e, t = Iwp) {
-  if (e.length <= t)
+function truncateContent(content, t = Iwp) {
+  if (content.length <= t)
     return {
-      content: e,
+      content: content,
       truncated: false,
     };
   return {
     content:
-      e.slice(0, t) +
+      content.slice(0, t) +
       `
 
 [TRUNCATED - Content exceeds 60KB limit]`,
@@ -45,10 +45,10 @@ function epo(e) {
     /^<system-reminder>\n?([\s\S]*?)\n?<\/system-reminder>$/.exec(e.trim())?.[1]?.trim() || null
   );
 }
-function formatMessagesForContext(e, t) {
+function formatMessagesForContext(messages, t) {
   let n = [],
     r = [];
-  for (let o of e) {
+  for (let o of messages) {
     if (o.type === "api_system") {
       r.push(o.message.content);
       continue;
@@ -86,55 +86,58 @@ ${De(i.content)}`);
     systemReminders: r,
   };
 }
-function addBetaInteractionAttributes(e, t) {
+function addBetaInteractionAttributes(span, userPrompt) {
   if (!isBetaTracingEnabled() || !Ydt()) return;
   let { content: n, truncated: r } = truncateContent(`[USER PROMPT]
-${t}`);
-  e.setAttributes({
+${userPrompt}`);
+  span.setAttributes({
     new_context: n,
     ...(r && {
       new_context_truncated: true,
-      new_context_original_length: t.length,
+      new_context_original_length: userPrompt.length,
     }),
   });
 }
-function addBetaLLMRequestAttributes(e, t, n) {
+function addBetaLLMRequestAttributes(span, newContext, messagesForAPI) {
   if (!isBetaTracingEnabled()) return;
-  if (t?.systemPrompt) {
-    let r = xwp(t.systemPrompt),
-      o = t.systemPrompt.slice(0, 500);
-    if ((e.setAttribute("system_prompt_hash", r), Ydt()))
-      e.setAttribute("system_prompt_preview", o);
-    if ((e.setAttribute("system_prompt_length", t.systemPrompt.length), Ydt() && !D3t.has(r))) {
+  if (newContext?.systemPrompt) {
+    let r = xwp(newContext.systemPrompt),
+      o = newContext.systemPrompt.slice(0, 500);
+    if ((span.setAttribute("system_prompt_hash", r), Ydt()))
+      span.setAttribute("system_prompt_preview", o);
+    if (
+      (span.setAttribute("system_prompt_length", newContext.systemPrompt.length),
+      Ydt() && !D3t.has(r))
+    ) {
       D3t.add(r);
-      let { content: s, truncated: i } = truncateContent(t.systemPrompt);
+      let { content: s, truncated: i } = truncateContent(newContext.systemPrompt);
       Jc("system_prompt", {
         system_prompt_hash: r,
         system_prompt: s,
-        system_prompt_length: String(t.systemPrompt.length),
+        system_prompt_length: String(newContext.systemPrompt.length),
         ...(i && {
           system_prompt_truncated: "true",
         }),
       });
     }
   }
-  if (t?.userSystemPrompt && Ydt()) {
+  if (newContext?.userSystemPrompt && Ydt()) {
     let r = Rt();
     if (Cxa !== r) {
       Cxa = r;
-      let { content: o, truncated: s } = truncateContent(t.userSystemPrompt);
-      e.setAttributes({
+      let { content: o, truncated: s } = truncateContent(newContext.userSystemPrompt);
+      span.setAttributes({
         user_system_prompt: o,
         ...(s && {
           user_system_prompt_truncated: true,
-          user_system_prompt_original_length: t.userSystemPrompt.length,
+          user_system_prompt_original_length: newContext.userSystemPrompt.length,
         }),
       });
     }
   }
-  if (t?.tools)
+  if (newContext?.tools)
     try {
-      let o = Ft(t.tools).map((s) => {
+      let o = Ft(newContext.tools).map((s) => {
         let i = De(s),
           a = npo(i);
         return {
@@ -143,7 +146,7 @@ function addBetaLLMRequestAttributes(e, t, n) {
           json: i,
         };
       });
-      (e.setAttribute(
+      (span.setAttribute(
         "tools",
         De(
           o.map(({ name: s, hash: i }) => ({
@@ -152,7 +155,7 @@ function addBetaLLMRequestAttributes(e, t, n) {
           })),
         ),
       ),
-        e.setAttribute("tools_count", o.length));
+        span.setAttribute("tools_count", o.length));
       for (let { name: s, hash: i, json: a } of o)
         if (!D3t.has(`tool_${i}`)) {
           D3t.add(`tool_${i}`);
@@ -167,22 +170,22 @@ function addBetaLLMRequestAttributes(e, t, n) {
           });
         }
     } catch {
-      e.setAttribute("tools_parse_error", true);
+      span.setAttribute("tools_parse_error", true);
     }
-  if (n && n.length > 0 && t?.querySource) {
-    let r = t.querySource,
+  if (messagesForAPI && messagesForAPI.length > 0 && newContext?.querySource) {
+    let r = newContext.querySource,
       o = tpo.get(r),
       s = 0;
     if (o) {
-      let c = n[o.index];
+      let c = messagesForAPI[o.index];
       if (c && Ixa(c) === o.hash) s = o.index + 1;
     }
-    let i = n.slice(s).filter((c) => c.type === "user" || c.type === "api_system");
+    let i = messagesForAPI.slice(s).filter((c) => c.type === "user" || c.type === "api_system");
     if (i.length > 0) {
       let c = Ydt(),
         { contextParts: u, systemReminders: d } = formatMessagesForContext(i, c);
-      if ((e.setAttribute("new_context_message_count", i.length), d.length > 0))
-        e.setAttribute("system_reminders_count", d.length);
+      if ((span.setAttribute("new_context_message_count", i.length), d.length > 0))
+        span.setAttribute("system_reminders_count", d.length);
       if (u.length > 0 && c) {
         let p = u.join(`
 
@@ -190,7 +193,7 @@ function addBetaLLMRequestAttributes(e, t, n) {
 
 `),
           { content: f, truncated: m } = truncateContent(p);
-        e.setAttributes({
+        span.setAttributes({
           new_context: f,
           ...(m && {
             new_context_truncated: true,
@@ -205,7 +208,7 @@ function addBetaLLMRequestAttributes(e, t, n) {
 
 `),
           { content: f, truncated: m } = truncateContent(p);
-        e.setAttributes({
+        span.setAttributes({
           system_reminders: f,
           ...(m && {
             system_reminders_truncated: true,
@@ -214,8 +217,8 @@ function addBetaLLMRequestAttributes(e, t, n) {
         });
       }
     }
-    let a = n.length - 1,
-      l = n[a];
+    let a = messagesForAPI.length - 1,
+      l = messagesForAPI[a];
     if (l)
       tpo.set(r, {
         index: a,
@@ -223,24 +226,24 @@ function addBetaLLMRequestAttributes(e, t, n) {
       });
   }
 }
-function addBetaLLMResponseAttributes(e, t) {
-  if (!isBetaTracingEnabled() || !Ydt() || !t) return;
-  if (t.modelOutput !== void 0) {
-    let { content: n, truncated: r } = truncateContent(t.modelOutput);
-    if (((e["response.model_output"] = n), r))
-      ((e["response.model_output_truncated"] = true),
-        (e["response.model_output_original_length"] = t.modelOutput.length));
+function addBetaLLMResponseAttributes(endAttributes, metadata) {
+  if (!isBetaTracingEnabled() || !Ydt() || !metadata) return;
+  if (metadata.modelOutput !== void 0) {
+    let { content: n, truncated: r } = truncateContent(metadata.modelOutput);
+    if (((endAttributes["response.model_output"] = n), r))
+      ((endAttributes["response.model_output_truncated"] = true),
+        (endAttributes["response.model_output_original_length"] = metadata.modelOutput.length));
   }
 }
-function addBetaToolInputAttributes(e, t, n) {
+function addBetaToolInputAttributes(span, toolName, toolInput) {
   if (!isBetaTracingEnabled() || !sg()) return;
-  let { content: r, truncated: o } = truncateContent(`[TOOL INPUT: ${t}]
-${n}`);
-  e.setAttributes({
+  let { content: r, truncated: o } = truncateContent(`[TOOL INPUT: ${toolName}]
+${toolInput}`);
+  span.setAttributes({
     tool_input: r,
     ...(o && {
       tool_input_truncated: true,
-      tool_input_original_length: n.length,
+      tool_input_original_length: toolInput.length,
     }),
   });
 }

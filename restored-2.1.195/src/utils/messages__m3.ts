@@ -4,9 +4,9 @@
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0097  score=0.7227  fileCov=0.0097
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function buildMessageLookups(e) {
-  if (e.type !== "user") return false;
-  let t = e.message?.content;
+function buildMessageLookups(normalizedMessages) {
+  if (normalizedMessages.type !== "user") return false;
+  let t = normalizedMessages.message?.content;
   if (typeof t === "string") return $El.some((n) => t.startsWith(n));
   if (!Array.isArray(t)) return false;
   return (

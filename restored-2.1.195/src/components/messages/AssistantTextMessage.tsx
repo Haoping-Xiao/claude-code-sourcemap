@@ -333,9 +333,9 @@ function RCo(e) {
     }
   }
 }
-function AssistantTextMessage(e) {
+function AssistantTextMessage(t0) {
   let t = D8t.c(23),
-    { text: n, verbose: r, addMargin: o } = e,
+    { text: n, verbose: r, addMargin: o } = t0,
     { columns: s } = br(),
     i = J5i(),
     a = n === Eb ? `${Eb}: Please wait a moment and try again.` : n,

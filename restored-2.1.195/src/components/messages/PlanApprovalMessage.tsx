@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bzn] deps: Ye, YI, R6
 ((fil = R(lt(), 1)), (a6e = R(se(), 1)));
-function PlanApprovalRequestDisplay(e) {
+function PlanApprovalRequestDisplay(t0) {
   let t = qCo.c(8),
-    { request: n } = e,
+    { request: n } = t0,
     r = `Plan Approval Request from ${n.from}`,
     o;
   if (t[0] !== n.planContent)
@@ -48,9 +48,9 @@ function PlanApprovalRequestDisplay(e) {
   else i = t[7];
   return i;
 }
-function PlanApprovalResponseDisplay(e) {
+function PlanApprovalResponseDisplay(t0) {
   let t = qCo.c(12),
-    { response: n, senderName: r } = e;
+    { response: n, senderName: r } = t0;
   if (n.approved) {
     let l = `\u2713 Plan Approved by ${r}`,
       c;
@@ -142,10 +142,10 @@ function Uzn(e, t) {
     });
   return null;
 }
-function getPlanApprovalSummary(e) {
-  let t = Qv(T9t(), e);
+function getPlanApprovalSummary(content) {
+  let t = Qv(T9t(), content);
   if (t) return `[Plan Approval Request from ${t.from}]`;
-  let n = Qv(v9t(), e);
+  let n = Qv(v9t(), content);
   if (n)
     if (n.approved)
       return n.feedback
@@ -154,13 +154,13 @@ function getPlanApprovalSummary(e) {
     else return `[Plan Rejected] ${n.feedback || "Please revise your plan"}`;
   return null;
 }
-function getIdleNotificationSummary(e) {
+function getIdleNotificationSummary(msg) {
   let t = ["Agent idle"];
-  if (e.completedTaskId) {
-    let n = e.completedStatus || "completed";
-    t.push(`Task ${e.completedTaskId} ${n}`);
+  if (msg.completedTaskId) {
+    let n = msg.completedStatus || "completed";
+    t.push(`Task ${msg.completedTaskId} ${n}`);
   }
-  if (e.summary) t.push(`Last DM: ${e.summary}`);
+  if (msg.summary) t.push(`Last DM: ${msg.summary}`);
   return t.join(" \xB7 ");
 }
 function gil(e) {

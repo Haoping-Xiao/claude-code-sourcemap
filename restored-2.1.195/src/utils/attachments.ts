@@ -19,61 +19,78 @@ function getTodoReminderMode() {
   if (e !== void 0) return e;
   return at("tengu_soft_slate_nudge", "baseline") === "off" ? "off" : "baseline";
 }
-async function getAttachments(e, t, n, r, o, s, i) {
-  let a = Gh(t.options.mainLoopModel);
+async function getAttachments(
+  input,
+  toolUseContext,
+  ideSelection,
+  queuedCommands,
+  messages,
+  querySource,
+  options,
+) {
+  let a = Gh(toolUseContext.options.mainLoopModel);
   if (
     ut(process.env.CLAUDE_CODE_DISABLE_ATTACHMENTS) ||
     Oe.CLAUDE_CODE_SIMPLE ||
-    t.options.bareFork
+    toolUseContext.options.bareFork
   )
-    return [...(await getQueuedCommandAttachments(r, a)), ...getAgentListingDeltaAttachment(t, o)];
+    return [
+      ...(await getQueuedCommandAttachments(queuedCommands, a)),
+      ...getAgentListingDeltaAttachment(toolUseContext, messages),
+    ];
   let l = Sl(),
     c = setTimeout((_) => _.abort(), 1000, l),
     u = {
-      ...t,
+      ...toolUseContext,
       abortController: l,
     },
-    d = !t.agentId,
-    p = e
+    d = !toolUseContext.agentId,
+    p = input
       ? [
-          maybe("at_mentioned_files", () => processAtMentionedFiles(e, u)),
-          maybe("mcp_resources", () => processMcpResourceAttachments(e, u)),
+          maybe("at_mentioned_files", () => processAtMentionedFiles(input, u)),
+          maybe("mcp_resources", () => processMcpResourceAttachments(input, u)),
           maybe("agent_mentions", () =>
-            Promise.resolve(processAgentMentions(e, t.options.agentDefinitions.activeAgents)),
+            Promise.resolve(
+              processAgentMentions(input, toolUseContext.options.agentDefinitions.activeAgents),
+            ),
           ),
         ]
       : [],
     f = await Promise.all(p),
     m = (() => {
       let _;
-      return () => (_ ??= EH() ? gIf(o, t) : fIf(o, t));
+      return () => (_ ??= EH() ? gIf(messages, toolUseContext) : fIf(messages, toolUseContext));
     })(),
     g = [
-      maybe("queued_commands", () => getQueuedCommandAttachments(r, a)),
-      maybe("date_change", () => Promise.resolve(getDateChangeAttachments(o))),
-      maybe("ultrathink_effort", () => Promise.resolve(getUltrathinkEffortAttachment(e))),
+      maybe("queued_commands", () => getQueuedCommandAttachments(queuedCommands, a)),
+      maybe("date_change", () => Promise.resolve(getDateChangeAttachments(messages))),
+      maybe("ultrathink_effort", () => Promise.resolve(getUltrathinkEffortAttachment(input))),
       maybe("deferred_tools_delta", () =>
         Promise.resolve(
           getDeferredToolsDeltaAttachment(
-            t.options.tools,
-            t.options.mainLoopModel,
-            o,
+            toolUseContext.options.tools,
+            toolUseContext.options.mainLoopModel,
+            messages,
             {
               callSite: d ? "attachments_main" : "attachments_subagent",
-              querySource: s,
+              querySource: querySource,
             },
-            t.options.mcpClients.filter((_) => _.type === "pending").map((_) => _.name),
+            toolUseContext.options.mcpClients
+              .filter((_) => _.type === "pending")
+              .map((_) => _.name),
           ),
         ),
       ),
-      maybe("agent_listing_delta", () => Promise.resolve(getAgentListingDeltaAttachment(t, o))),
+      maybe("agent_listing_delta", () =>
+        Promise.resolve(getAgentListingDeltaAttachment(toolUseContext, messages)),
+      ),
       maybe("mcp_instructions_delta", () =>
         Promise.resolve(
           getMcpInstructionsDeltaAttachment(
-            t.options.mcpClients,
-            t.options.tools,
-            t.options.mainLoopModel,
-            o,
+            toolUseContext.options.mcpClients,
+            toolUseContext.options.tools,
+            toolUseContext.options.mainLoopModel,
+            messages,
           ),
         ),
       ),
@@ -81,28 +98,36 @@ async function getAttachments(e, t, n, r, o, s, i) {
       maybe("nested_memory", () => oIf(u)),
       maybe("dynamic_skill", () => getDynamicSkillAttachments(u)),
       maybe("skill_listing", () => getSkillListingAttachments(u)),
-      maybe("plan_mode", () => getPlanModeAttachments(e, o, t, i)),
-      maybe("plan_mode_exit", () => getPlanModeExitAttachment(o, t)),
-      maybe("auto_mode", () => WCf(o, t)),
-      maybe("auto_mode_exit", () => qCf(o, t)),
+      maybe("plan_mode", () => getPlanModeAttachments(input, messages, toolUseContext, options)),
+      maybe("plan_mode_exit", () => getPlanModeExitAttachment(messages, toolUseContext)),
+      maybe("auto_mode", () => WCf(messages, toolUseContext)),
+      maybe("auto_mode_exit", () => qCf(messages, toolUseContext)),
       maybe("todo_reminders", m),
       ...(Jzr() !== null
         ? [
             maybe("tool_search_usage_reminder", () =>
-              getToolSearchUsageReminderAttachments(o, t, async () => (await m()).length > 0),
+              getToolSearchUsageReminderAttachments(
+                messages,
+                toolUseContext,
+                async () => (await m()).length > 0,
+              ),
             ),
           ]
         : []),
       ...(el()
         ? [
-            maybe("teammate_mailbox", async () => bIf(t)),
-            maybe("team_context", async () => getTeamContextAttachment(o ?? [])),
+            maybe("teammate_mailbox", async () => bIf(toolUseContext)),
+            maybe("team_context", async () => getTeamContextAttachment(messages ?? [])),
           ]
         : []),
-      maybe("agent_pending_messages", async () => getAgentPendingMessageAttachments(t)),
-      maybe("critical_system_reminder", () => Promise.resolve(YCf(t))),
+      maybe("agent_pending_messages", async () =>
+        getAgentPendingMessageAttachments(toolUseContext),
+      ),
+      maybe("critical_system_reminder", () => Promise.resolve(YCf(toolUseContext))),
       maybe("total_tokens_reminder", () =>
-        Promise.resolve(e === null ? AIf(o ?? [], t.options.mainLoopModel) : []),
+        Promise.resolve(
+          input === null ? AIf(messages ?? [], toolUseContext.options.mainLoopModel) : [],
+        ),
       ),
     ],
     h = d
@@ -111,28 +136,38 @@ async function getAttachments(e, t, n, r, o, s, i) {
             ? [
                 maybe("workflow_keyword_request", () =>
                   Promise.resolve(
-                    i?.isRegularUserPrompt && !i.suppressWorkflowKeyword && Fkn()
-                      ? zCf(i.preExpansionInput ?? e)
+                    options?.isRegularUserPrompt && !options.suppressWorkflowKeyword && Fkn()
+                      ? zCf(options.preExpansionInput ?? input)
                       : [],
                   ),
                 ),
                 maybe("ultra_effort_enter", () =>
-                  Promise.resolve(i?.isRegularUserPrompt ? KCf(o, t) : []),
+                  Promise.resolve(
+                    options?.isRegularUserPrompt ? KCf(messages, toolUseContext) : [],
+                  ),
                 ),
               ]
             : []),
-          maybe("ide_selection", async () => getSelectedLinesFromIDE(n, t)),
-          maybe("ide_opened_file", async () => getOpenedFileFromIDE(n, t)),
+          maybe("ide_selection", async () => getSelectedLinesFromIDE(ideSelection, toolUseContext)),
+          maybe("ide_opened_file", async () => getOpenedFileFromIDE(ideSelection, toolUseContext)),
           maybe("output_style", () => getOutputStyleAttachment()),
-          maybe("diagnostics", async () => uIf(t)),
-          maybe("lsp_diagnostics", async () => getLSPDiagnosticAttachments(t)),
-          maybe("unified_tasks", async () => yIf(t)),
+          maybe("diagnostics", async () => uIf(toolUseContext)),
+          maybe("lsp_diagnostics", async () => getLSPDiagnosticAttachments(toolUseContext)),
+          maybe("unified_tasks", async () => yIf(toolUseContext)),
           maybe("async_hook_responses", async () => getAsyncHookResponseAttachments()),
-          maybe("memory_update", () => Promise.resolve(getMemoryUpdateAttachments(t))),
+          maybe("memory_update", () => Promise.resolve(getMemoryUpdateAttachments(toolUseContext))),
           maybe("token_usage", async () =>
-            Promise.resolve(EIf(o ?? [], t.options.mainLoopModel, t.options.autoCompactWindow)),
+            Promise.resolve(
+              EIf(
+                messages ?? [],
+                toolUseContext.options.mainLoopModel,
+                toolUseContext.options.autoCompactWindow,
+              ),
+            ),
           ),
-          maybe("budget_usd", async () => Promise.resolve(TIf(t.options.maxBudgetUsd))),
+          maybe("budget_usd", async () =>
+            Promise.resolve(TIf(toolUseContext.options.maxBudgetUsd)),
+          ),
           maybe("output_token_usage", async () => Promise.resolve(HIf())),
         ]
       : [],
@@ -142,7 +177,7 @@ async function getAttachments(e, t, n, r, o, s, i) {
     [...f.flat(), ...y.flat(), ...b.flat()].filter((_) => _ !== void 0 && _ !== null)
   );
 }
-async function maybe(e, t) {
+async function maybe(label, t) {
   let n = Date.now();
   try {
     let r = await t(),
@@ -150,7 +185,7 @@ async function maybe(e, t) {
     if (Math.random() < 0.05) {
       let s = r.filter((i) => i !== void 0 && i !== null).reduce((i, a) => i + De(a).length, 0);
       G("tengu_attachment_compute_duration", {
-        label: e,
+        label: label,
         duration_ms: o,
         attachment_size_bytes: s,
         attachment_count: r.length,
@@ -161,21 +196,21 @@ async function maybe(e, t) {
     let o = Date.now() - n;
     if (Math.random() < 0.05)
       G("tengu_attachment_compute_duration", {
-        label: e,
+        label: label,
         duration_ms: o,
         error: true,
       });
     if (r instanceof NU)
-      T(`Attachment image resize failed in ${e}: ${r.message}`, {
+      T(`Attachment image resize failed in ${label}: ${r.message}`, {
         level: "error",
       });
     else ke(r);
-    return (rG(`Attachment error in ${e}`, r), []);
+    return (rG(`Attachment error in ${label}`, r), []);
   }
 }
-async function getQueuedCommandAttachments(e, t) {
-  if (!e) return [];
-  let n = e.filter((r) => BCf.has(r.mode));
+async function getQueuedCommandAttachments(queuedCommands, t) {
+  if (!queuedCommands) return [];
+  let n = queuedCommands.filter((r) => BCf.has(r.mode));
   return Promise.all(
     n.map(async (r) => {
       let o = await FCf(r.pastedContents, t),
@@ -257,11 +292,11 @@ async function FCf(e, t) {
     }),
   );
 }
-function getPlanModeAttachmentTurnCount(e) {
+function getPlanModeAttachmentTurnCount(messages) {
   let t = 0,
     n = false;
-  for (let r = e.length - 1; r >= 0; r--) {
-    let o = e[r];
+  for (let r = messages.length - 1; r >= 0; r--) {
+    let o = messages[r];
     if (o?.type === "user" && !o.isMeta && !P0l(o.message.content)) t++;
     else if (
       o?.type === "attachment" &&
@@ -287,13 +322,14 @@ function jCf(e) {
   }
   return t;
 }
-async function getPlanModeAttachments(e, t, n, r) {
+async function getPlanModeAttachments(messages, toolUseContext, n, r) {
   if (Fr(n).mode !== "plan") return [];
-  if (t && t.length > 0) {
-    let { turnCount: u, foundPlanModeAttachment: d } = getPlanModeAttachmentTurnCount(t);
+  if (toolUseContext && toolUseContext.length > 0) {
+    let { turnCount: u, foundPlanModeAttachment: d } =
+      getPlanModeAttachmentTurnCount(toolUseContext);
     if (d && u < PLAN_MODE_ATTACHMENT_CONFIG.TURNS_BETWEEN_ATTACHMENTS) return [];
   }
-  L$e(Rt(), r?.planSlugSeed ?? e ?? void 0);
+  L$e(Rt(), r?.planSlugSeed ?? messages ?? void 0);
   let s = _P(n.agentId),
     i = bP(n.agentId),
     a = [];
@@ -304,7 +340,9 @@ async function getPlanModeAttachments(e, t, n, r) {
     }),
       xK(false));
   let c =
-    (jCf(t ?? []) + 1) % PLAN_MODE_ATTACHMENT_CONFIG.FULL_REMINDER_EVERY_N_ATTACHMENTS === 1
+    (jCf(toolUseContext ?? []) + 1) %
+      PLAN_MODE_ATTACHMENT_CONFIG.FULL_REMINDER_EVERY_N_ATTACHMENTS ===
+    1
       ? "full"
       : "sparse";
   return (
@@ -334,9 +372,9 @@ async function getPlanModeExitAttachment(e, t) {
     },
   ];
 }
-function getAutoModeAttachmentTurnCount(e) {
-  for (let t = e.length - 1; t >= 0; t--) {
-    let n = e[t];
+function getAutoModeAttachmentTurnCount(messages) {
+  for (let t = messages.length - 1; t >= 0; t--) {
+    let n = messages[t];
     if (n?.type !== "attachment") continue;
     if (n.attachment.type === "auto_mode") return true;
     if (n.attachment.type === "auto_mode_exit") return false;
@@ -378,8 +416,8 @@ function getDateChangeAttachments(e) {
     },
   ];
 }
-function getUltrathinkEffortAttachment(e) {
-  if (!B4e() || !e || !kvi(e)) return [];
+function getUltrathinkEffortAttachment(input) {
+  if (!B4e() || !input || !kvi(input)) return [];
   return (
     G("tengu_ultrathink", {}),
     [
@@ -474,19 +512,19 @@ function getDeferredToolsDeltaAttachment(e, t, n, r, o) {
     },
   ];
 }
-function getAgentListingDeltaAttachment(e, t) {
-  if (!e.options.tools.some((p) => Ql(p, ss))) return [];
-  let { activeAgents: n, allowedAgentTypes: r } = e.options.agentDefinitions,
+function getAgentListingDeltaAttachment(toolUseContext, messages) {
+  if (!toolUseContext.options.tools.some((p) => Ql(p, ss))) return [];
+  let { activeAgents: n, allowedAgentTypes: r } = toolUseContext.options.agentDefinitions,
     o = new Set();
-  for (let p of e.options.tools) {
+  for (let p of toolUseContext.options.tools) {
     let f = iDe(p);
     if (f) o.add(f);
   }
-  let s = Fr(e),
+  let s = Fr(toolUseContext),
     i = _$e(c$o(n, [...o]), s, ss);
   if (r) i = i.filter((p) => r.includes(p.agentType));
   let a = new Set();
-  for (let p of t ?? []) {
+  for (let p of messages ?? []) {
     if (p.type !== "attachment") continue;
     if (p.attachment.type !== "agent_listing_delta") continue;
     for (let f of p.attachment.addedTypes) a.add(f);
@@ -498,7 +536,7 @@ function getAgentListingDeltaAttachment(e, t) {
   for (let p of a) if (!l.has(p)) u.push(p);
   if (c.length === 0 && u.length === 0) return [];
   (c.sort((p, f) => p.agentType.localeCompare(f.agentType)), u.sort());
-  let d = ph(e.options.mainLoopModel);
+  let d = ph(toolUseContext.options.mainLoopModel);
   return [
     {
       type: "agent_listing_delta",
@@ -552,27 +590,28 @@ async function getOutputStyleAttachment() {
     },
   ];
 }
-async function getSelectedLinesFromIDE(e, t) {
-  if (e?.source === "diff" && e.text)
+async function getSelectedLinesFromIDE(ideSelection, toolUseContext) {
+  if (ideSelection?.source === "diff" && ideSelection.text)
     return [
       {
         type: "selected_lines_in_diff",
-        lineCount: e.lineCount,
-        content: e.text,
+        lineCount: ideSelection.lineCount,
+        content: ideSelection.text,
       },
     ];
-  let n = R3t(t.options.mcpClients);
-  if (!n || e?.lineStart === void 0 || !e.text || !e.filePath) return [];
-  if (kSt(e.filePath, Fr(t))) return [];
+  let n = R3t(toolUseContext.options.mcpClients);
+  if (!n || ideSelection?.lineStart === void 0 || !ideSelection.text || !ideSelection.filePath)
+    return [];
+  if (kSt(ideSelection.filePath, Fr(toolUseContext))) return [];
   return [
     {
       type: "selected_lines_in_ide",
       ideName: n,
-      lineStart: e.lineStart,
-      lineEnd: e.lineStart + e.lineCount - 1,
-      filename: e.filePath,
-      content: e.text,
-      displayPath: Nk.relative($t(), e.filePath),
+      lineStart: ideSelection.lineStart,
+      lineEnd: ideSelection.lineStart + ideSelection.lineCount - 1,
+      filename: ideSelection.filePath,
+      content: ideSelection.text,
+      displayPath: Nk.relative($t(), ideSelection.filePath),
     },
   ];
 }
@@ -601,15 +640,15 @@ function getDirectoriesToProcess(e, t) {
     }
   );
 }
-function isInstructionsMemoryType(e) {
-  return e === "User" || e === "Project" || e === "Local" || e === "Managed";
+function isInstructionsMemoryType(type) {
+  return type === "User" || type === "Project" || type === "Local" || type === "Managed";
 }
-function memoryFilesToAttachments(e, t, n) {
+function memoryFilesToAttachments(memoryFiles, toolUseContext, triggerFilePath) {
   let r = [],
     o = Sjt();
-  for (let s of e) {
-    if (t.loadedNestedMemoryPaths?.[s.path]) continue;
-    if (!t.readFileState.has(s.path)) {
+  for (let s of memoryFiles) {
+    if (toolUseContext.loadedNestedMemoryPaths?.[s.path]) continue;
+    if (!toolUseContext.readFileState.has(s.path)) {
       if (
         (r.push({
           type: "nested_memory",
@@ -617,11 +656,11 @@ function memoryFilesToAttachments(e, t, n) {
           content: s,
           displayPath: Nk.relative($t(), s.path),
         }),
-        t.loadedNestedMemoryPaths)
+        toolUseContext.loadedNestedMemoryPaths)
       )
-        t.loadedNestedMemoryPaths[s.path] = true;
+        toolUseContext.loadedNestedMemoryPaths[s.path] = true;
       if (
-        (t.readFileState.set(s.path, {
+        (toolUseContext.readFileState.set(s.path, {
           content: s.contentDiffersFromDisk ? (s.rawContent ?? s.content) : s.content,
           timestamp: Date.now(),
           offset: void 0,
@@ -634,7 +673,7 @@ function memoryFilesToAttachments(e, t, n) {
         let i = s.globs ? "path_glob_match" : s.parent ? "include" : "nested_traversal";
         o5e(s.path, s.type, i, {
           globs: s.globs,
-          triggerFilePath: n,
+          triggerFilePath: triggerFilePath,
           parentFilePath: s.parent,
         });
       }
@@ -642,52 +681,52 @@ function memoryFilesToAttachments(e, t, n) {
   }
   return r;
 }
-async function getNestedMemoryAttachmentsForFile(e, t, n) {
+async function getNestedMemoryAttachmentsForFile(filePath, toolUseContext, appState) {
   if (Oe.CLAUDE_CODE_DISABLE_CLAUDE_MDS) return [];
   let r = [];
   try {
-    if (!JU(e, n.toolPermissionContext)) return r;
+    if (!JU(filePath, appState.toolPermissionContext)) return r;
     let o = new Set(),
       s = yr(),
-      i = await Pso(e, o);
-    r.push(...memoryFilesToAttachments(i, t, e));
-    let { nestedDirs: a, cwdLevelDirs: l } = getDirectoriesToProcess(e, s),
+      i = await Pso(filePath, o);
+    r.push(...memoryFilesToAttachments(i, toolUseContext, filePath));
+    let { nestedDirs: a, cwdLevelDirs: l } = getDirectoriesToProcess(filePath, s),
       c = at("tengu_paper_halyard", false);
     for (let u of a) {
-      let d = (await bjt(u, e, o)).filter(
+      let d = (await bjt(u, filePath, o)).filter(
         (p) => !c || (p.type !== "Project" && p.type !== "Local"),
       );
-      r.push(...memoryFilesToAttachments(d, t, e));
+      r.push(...memoryFilesToAttachments(d, toolUseContext, filePath));
     }
     for (let u of l) {
-      let d = (await Mso(u, e, o)).filter(
+      let d = (await Mso(u, filePath, o)).filter(
         (p) => !c || (p.type !== "Project" && p.type !== "Local"),
       );
-      r.push(...memoryFilesToAttachments(d, t, e));
+      r.push(...memoryFilesToAttachments(d, toolUseContext, filePath));
     }
   } catch (o) {
     ke(o);
   }
   return r;
 }
-async function getOpenedFileFromIDE(e, t) {
-  if (!e?.filePath || e.text) return [];
-  let n = Fr(t);
-  if (kSt(e.filePath, n)) return [];
+async function getOpenedFileFromIDE(ideSelection, toolUseContext) {
+  if (!ideSelection?.filePath || ideSelection.text) return [];
+  let n = Fr(toolUseContext);
+  if (kSt(ideSelection.filePath, n)) return [];
   return [
-    ...(await getNestedMemoryAttachmentsForFile(e.filePath, t, {
+    ...(await getNestedMemoryAttachmentsForFile(ideSelection.filePath, toolUseContext, {
       toolPermissionContext: n,
     })),
     {
       type: "opened_file_in_ide",
-      filename: e.filePath,
+      filename: ideSelection.filePath,
     },
   ];
 }
-async function processAtMentionedFiles(e, t) {
-  let n = extractAtMentionedFiles(e);
+async function processAtMentionedFiles(input, toolUseContext) {
+  let n = extractAtMentionedFiles(input);
   if (n.length === 0) return [];
-  let r = Fr(t);
+  let r = Fr(toolUseContext);
   return (
     await Promise.all(
       n.map(async (s) => {
@@ -733,7 +772,7 @@ async function processAtMentionedFiles(e, t) {
           } catch {}
           let u = await generateFileAttachment(
             c,
-            t,
+            toolUseContext,
             "tengu_at_mention_extracting_filename_success",
             "tengu_at_mention_extracting_filename_error",
             "at-mention",
@@ -755,13 +794,13 @@ async function processAtMentionedFiles(e, t) {
     )
   ).filter(Boolean);
 }
-function processAgentMentions(e, t) {
-  let n = extractAgentMentions(e);
+function processAgentMentions(input, agents) {
+  let n = extractAgentMentions(input);
   if (n.length === 0) return [];
   return n
     .map((o) => {
       let s = o.replace("agent-", ""),
-        i = t.find((a) => a.agentType === s);
+        i = agents.find((a) => a.agentType === s);
       if (!i)
         return (
           G("tengu_at_mention_agent_not_found", {}),
@@ -785,10 +824,10 @@ function processAgentMentions(e, t) {
     })
     .filter((o) => o !== null);
 }
-async function processMcpResourceAttachments(e, t) {
-  let n = extractMcpResourceMentions(e);
+async function processMcpResourceAttachments(input, toolUseContext) {
+  let n = extractMcpResourceMentions(input);
   if (n.length === 0) return [];
-  let r = t.options.mcpClients || [];
+  let r = toolUseContext.options.mcpClients || [];
   return (
     await Promise.all(
       n.map(async (s) => {
@@ -814,7 +853,7 @@ async function processMcpResourceAttachments(e, t) {
               }),
               null
             );
-          let d = (t.options.mcpResources?.[i] || []).find((p) => p.uri === l);
+          let d = (toolUseContext.options.mcpResources?.[i] || []).find((p) => p.uri === l);
           if (!d)
             return (
               G("tengu_at_mention_mcp_resource_error", {}),
@@ -873,14 +912,14 @@ async function processMcpResourceAttachments(e, t) {
     )
   ).filter((s) => s !== null);
 }
-async function getChangedFiles(e) {
-  let t = VRe(e.readFileState);
+async function getChangedFiles(toolUseContext) {
+  let t = VRe(toolUseContext.readFileState);
   if (t.length === 0) return [];
-  let n = Fr(e),
+  let n = Fr(toolUseContext),
     o = (
       await Promise.all(
         t.map(async (i) => {
-          let a = e.readFileState.get(i);
+          let a = toolUseContext.readFileState.get(i);
           if (!a) return null;
           if (a.offset !== void 0 || a.limit !== void 0) return null;
           let l = ds(i);
@@ -890,8 +929,8 @@ async function getChangedFiles(e) {
             let u = {
               file_path: l,
             };
-            if (!(await Vg.validateInput(u, e)).result) return null;
-            let p = await Vg.call(u, e);
+            if (!(await Vg.validateInput(u, toolUseContext)).result) return null;
+            let p = await Vg.call(u, toolUseContext);
             if (p.data.type === "text") {
               if (p.data.file.truncatedByTokenCap === true) return null;
               if (Uue(a, p.data.file.content)) return null;
@@ -905,7 +944,7 @@ async function getChangedFiles(e) {
             }
             if (p.data.type === "image")
               try {
-                let f = await GMo(l, void 0, void 0, Gh(e.options.mainLoopModel));
+                let f = await GMo(l, void 0, void 0, Gh(toolUseContext.options.mainLoopModel));
                 return {
                   type: "edited_image_file",
                   filename: l,
@@ -928,7 +967,7 @@ async function getChangedFiles(e) {
               }
             return null;
           } catch (c) {
-            if (wn(c)) e.readFileState.delete(i);
+            if (wn(c)) toolUseContext.readFileState.delete(i);
             return null;
           }
         }),
@@ -963,20 +1002,28 @@ async function oIf(e) {
   }
   return ((t.length = 0), o);
 }
-async function getRelevantMemoryAttachments(e, t, n, r, o, s, i) {
-  let a = extractAgentMentions(e).flatMap((h) => {
+async function getRelevantMemoryAttachments(
+  input,
+  agents,
+  readFileState,
+  recentTools,
+  signal,
+  alreadySurfaced,
+  i,
+) {
+  let a = extractAgentMentions(input).flatMap((h) => {
       let y = h.replace("agent-", ""),
-        b = t.find((_) => _.agentType === y);
+        b = agents.find((_) => _.agentType === y);
       return b?.memory ? [cit(y, b.memory)] : [];
     }),
     l = a.length > 0 ? a : [mm()],
-    c = iIf(i, o),
+    c = iIf(i, signal),
     u = Promise.resolve([]);
-  await dwl(o);
+  await dwl(signal);
   let p = (
       await Promise.all(
         l.map((h, y) =>
-          _0l(e, h, n, o, s, y === 0 ? c : u).catch(() => ({
+          _0l(input, h, readFileState, signal, alreadySurfaced, y === 0 ? c : u).catch(() => ({
             memories: [],
             knowledge: [],
           })),
@@ -984,9 +1031,9 @@ async function getRelevantMemoryAttachments(e, t, n, r, o, s, i) {
       )
     )
       .flatMap((h) => h.memories)
-      .filter((h) => !r.has(h.path) && !s.has(h.path))
+      .filter((h) => !recentTools.has(h.path) && !alreadySurfaced.has(h.path))
       .slice(0, 5),
-    f = await readMemoriesForSurfacing(p, o),
+    f = await readMemoriesForSurfacing(p, signal),
     m = [],
     g = [...f, ...m];
   if (g.length === 0) return [];
@@ -1007,10 +1054,10 @@ async function iIf(e, t) {
     return [];
   }
 }
-function collectSurfacedMemories(e) {
+function collectSurfacedMemories(messages) {
   let t = new Set(),
     n = 0;
-  for (let r of e)
+  for (let r of messages)
     if (r.type === "attachment" && r.attachment.type === "relevant_memories")
       for (let o of r.attachment.memories) (t.add(o.path), (n += o.content.length));
   return {
@@ -1018,12 +1065,12 @@ function collectSurfacedMemories(e) {
     totalBytes: n,
   };
 }
-async function readMemoriesForSurfacing(e, t) {
+async function readMemoriesForSurfacing(selected, signal) {
   return (
     await Promise.all(
-      e.map(async ({ path: r, mtimeMs: o }) => {
+      selected.map(async ({ path: r, mtimeMs: o }) => {
         try {
-          let s = await mSt(r, 0, ZMo, S0l, t, {
+          let s = await mSt(r, 0, ZMo, S0l, signal, {
               truncateOnByteLimit: true,
             }),
             i = s.totalLines > ZMo || s.truncatedByBytes,
@@ -1055,30 +1102,30 @@ function memoryHeader(e, t) {
 Memory: ${e}:`
     : `Memory: ${e}:`;
 }
-function startRelevantMemoryPrefetch(e, t, n, r) {
-  let o = t.memorySelector;
-  if (!o || t.agentId || !lu() || !at("tengu_moth_copse", false) || aIf.has(n)) return;
-  let s = e.findLast((f) => f.type === "user" && !f.isMeta);
+function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
+  let o = toolUseContext.memorySelector;
+  if (!o || toolUseContext.agentId || !lu() || !at("tengu_moth_copse", false) || aIf.has(n)) return;
+  let s = messages.findLast((f) => f.type === "user" && !f.isMeta);
   if (!s) return;
   let i = P$(s);
   if (!i || !/\s/.test(i.trim())) return;
-  let a = collectSurfacedMemories(e);
+  let a = collectSurfacedMemories(messages);
   if (a.totalBytes >= RELEVANT_MEMORIES_CONFIG.MAX_SESSION_BYTES) return;
-  let l = c$(t.abortController),
+  let l = c$(toolUseContext.abortController),
     c = Date.now(),
     u = r && {
       ...r,
       toolUseContext: {
-        ...t,
+        ...toolUseContext,
         abortController: l,
       },
-      forkContextMessages: [...e],
+      forkContextMessages: [...messages],
     },
     d = getRelevantMemoryAttachments(
       i,
-      t.options.agentDefinitions.activeAgents,
+      toolUseContext.options.agentDefinitions.activeAgents,
       o,
-      t.readFileState,
+      toolUseContext.readFileState,
       l.signal,
       a.paths,
       u,
@@ -1142,9 +1189,9 @@ function filterDuplicateMemoryAttachments(e, t) {
     })
     .filter((n) => n !== null);
 }
-async function getDynamicSkillAttachments(e) {
+async function getDynamicSkillAttachments(toolUseContext) {
   let t = [],
-    n = e.dynamicSkillDirTriggers;
+    n = toolUseContext.dynamicSkillDirTriggers;
   if (n && n.length > 0) {
     let r = await Promise.all(
       n.map(async (o) => {
@@ -1228,24 +1275,24 @@ function computeSkillListingDelta(e, t) {
     isInitial: s,
   };
 }
-async function getSkillListingAttachments(e) {
+async function getSkillListingAttachments(toolUseContext) {
   if (N2()) return [];
   if (OCf?.isSkillsAsToolsEnabled()) return [];
-  if (!e.options.tools.some((u) => Ql(u, nE))) return [];
+  if (!toolUseContext.options.tools.some((u) => Ql(u, nE))) return [];
   let t = rc(),
     n = await aC(t),
-    r = AYt(e.getMcp().commands),
+    r = AYt(toolUseContext.getMcp().commands),
     o = EYt(r.length > 0 ? yQ(oE([...n, ...r], "name")) : n);
-  if (e.agentId === void 0) o = Due(o, RK());
-  let s = computeSkillListingDelta(e.agentId, o);
+  if (toolUseContext.agentId === void 0) o = Due(o, RK());
+  let s = computeSkillListingDelta(toolUseContext.agentId, o);
   if (s === null) return [];
   let { newSkills: i, isInitial: a } = s;
   T(`Sending ${i.length} skills via attachment (${a ? "initial" : "dynamic"})`);
-  let l = nH(e.options.mainLoopModel, OS());
+  let l = nH(toolUseContext.options.mainLoopModel, OS());
   return [
     {
       type: "skill_listing",
-      content: Too(i, l, (u) => P8e(u.name), rH(e.options.mainLoopModel)),
+      content: Too(i, l, (u) => P8e(u.name), rH(toolUseContext.options.mainLoopModel)),
       skillCount: i.length,
       isInitial: a,
       names: i.map((u) => u.name),
@@ -1320,8 +1367,8 @@ async function uIf(e) {
     ]
   );
 }
-async function getLSPDiagnosticAttachments(e) {
-  if (!e.options.tools.some((t) => Ql(t, Co) || Ql(t, Ss))) return [];
+async function getLSPDiagnosticAttachments(toolUseContext) {
+  if (!toolUseContext.options.tools.some((t) => Ql(t, Co) || Ql(t, Ss))) return [];
   T("LSP Diagnostics: getLSPDiagnosticAttachments called");
   try {
     let t = iLa();
@@ -1345,19 +1392,36 @@ async function getLSPDiagnosticAttachments(e) {
     return (ke(Error(`Failed to get LSP diagnostic attachments: ${n.message}`)), []);
   }
 }
-async function* getAttachmentMessages(e, t, n, r, o, s, i, a) {
-  let l = await getAttachments(e, t, n, r, s, i, a);
+async function* getAttachmentMessages(
+  input,
+  toolUseContext,
+  ideSelection,
+  queuedCommands,
+  messages,
+  querySource,
+  options,
+  a,
+) {
+  let l = await getAttachments(
+    input,
+    toolUseContext,
+    ideSelection,
+    queuedCommands,
+    querySource,
+    options,
+    a,
+  );
   if (l.length === 0) return;
   G("tengu_attachments", {
     attachment_types: l.map((c) => c.type),
   });
-  for (let c of l) yield createAttachmentMessage(c, o);
+  for (let c of l) yield createAttachmentMessage(c, messages);
 }
-async function tryGetPDFReference(e) {
-  let t = Nk.parse(e).ext.toLowerCase();
+async function tryGetPDFReference(filename) {
+  let t = Nk.parse(filename).ext.toLowerCase();
   if (!pit(t)) return null;
   try {
-    let [n, r] = await Promise.all([qt().stat(e), TZn(e)]),
+    let [n, r] = await Promise.all([qt().stat(filename), TZn(filename)]),
       o = r ?? Math.ceil(n.size / 102400);
     if (o > wDn)
       return (
@@ -1368,37 +1432,44 @@ async function tryGetPDFReference(e) {
         }),
         {
           type: "pdf_reference",
-          filename: e,
+          filename: filename,
           pageCount: o,
           fileSize: n.size,
-          displayPath: Nk.relative($t(), e),
+          displayPath: Nk.relative($t(), filename),
         }
       );
   } catch {}
   return null;
 }
-async function generateFileAttachment(e, t, n, r, o, s) {
-  let { offset: i, limit: a } = s ?? {};
-  if (kSt(e, Fr(t))) return null;
-  if (o === "at-mention" && !Xpn(e, jSe().maxSizeBytes)) {
-    let c = Nk.parse(e).ext.toLowerCase();
+async function generateFileAttachment(
+  filename,
+  toolUseContext,
+  successEventName,
+  errorEventName,
+  mode,
+  options,
+) {
+  let { offset: i, limit: a } = options ?? {};
+  if (kSt(filename, Fr(toolUseContext))) return null;
+  if (mode === "at-mention" && !Xpn(filename, jSe().maxSizeBytes)) {
+    let c = Nk.parse(filename).ext.toLowerCase();
     if (!pit(c))
       try {
-        let u = await qt().stat(e);
+        let u = await qt().stat(filename);
         return (
           G("tengu_attachment_file_too_large", {
             size_bytes: u.size,
-            mode: o,
+            mode: mode,
           }),
           null
         );
       } catch {}
   }
-  if (o === "at-mention") {
-    let c = await tryGetPDFReference(e);
+  if (mode === "at-mention") {
+    let c = await tryGetPDFReference(filename);
     if (c)
       return (
-        G(n, {}),
+        G(successEventName, {}),
         x1({
           mentionType: "file",
           success: true,
@@ -1406,29 +1477,29 @@ async function generateFileAttachment(e, t, n, r, o, s) {
         c
       );
   }
-  let l = t.readFileState.get(e);
-  if (l && o === "at-mention")
+  let l = toolUseContext.readFileState.get(filename);
+  if (l && mode === "at-mention")
     try {
-      let c = await FFe(e);
+      let c = await FFe(filename);
       if (
         !l.isPartialView &&
         l.timestamp <= c &&
         c === l.timestamp &&
         (l.content !== "" || (l.contentLength ?? 0) === 0)
       ) {
-        if ((G(n, {}), o === "at-mention"))
+        if ((G(successEventName, {}), mode === "at-mention"))
           x1({
             mentionType: "file",
             success: true,
           });
         return {
           type: "already_read_file",
-          filename: e,
-          displayPath: Nk.relative($t(), e),
+          filename: filename,
+          displayPath: Nk.relative($t(), filename),
           content: {
             type: "text",
             file: {
-              filePath: e,
+              filePath: filename,
               content: l.content,
               numLines:
                 hu(
@@ -1450,39 +1521,39 @@ async function generateFileAttachment(e, t, n, r, o, s) {
     } catch {}
   try {
     let c = {
-      file_path: e,
+      file_path: filename,
       offset: i,
       limit: a,
     };
     async function u() {
-      if (o === "compact")
+      if (mode === "compact")
         return {
           type: "compact_file_reference",
-          filename: e,
-          displayPath: Nk.relative($t(), e),
+          filename: filename,
+          displayPath: Nk.relative($t(), filename),
         };
-      if (kSt(e, Fr(t))) return null;
+      if (kSt(filename, Fr(toolUseContext))) return null;
       try {
         let p = {
-            file_path: e,
+            file_path: filename,
             offset: i ?? 1,
             limit: fit,
           },
-          f = await Vg.call(p, t);
-        if ((G(n, {}), o === "at-mention"))
+          f = await Vg.call(p, toolUseContext);
+        if ((G(successEventName, {}), mode === "at-mention"))
           x1({
             mentionType: "file",
             success: true,
           });
         return {
           type: "file",
-          filename: e,
+          filename: filename,
           content: f.data,
           truncated: true,
-          displayPath: Nk.relative($t(), e),
+          displayPath: Nk.relative($t(), filename),
         };
       } catch {
-        if ((G(r, {}), o === "at-mention"))
+        if ((G(errorEventName, {}), mode === "at-mention"))
           x1({
             mentionType: "file",
             success: false,
@@ -1490,27 +1561,27 @@ async function generateFileAttachment(e, t, n, r, o, s) {
         return null;
       }
     }
-    if (!(await Vg.validateInput(c, t)).result) return null;
+    if (!(await Vg.validateInput(c, toolUseContext)).result) return null;
     try {
-      let p = await Vg.call(c, t);
+      let p = await Vg.call(c, toolUseContext);
       if (p.data.type === "text" && p.data.file.truncatedByTokenCap === true) return await u();
-      if ((G(n, {}), o === "at-mention"))
+      if ((G(successEventName, {}), mode === "at-mention"))
         x1({
           mentionType: "file",
           success: true,
         });
       return {
         type: "file",
-        filename: e,
+        filename: filename,
         content: p.data,
-        displayPath: Nk.relative($t(), e),
+        displayPath: Nk.relative($t(), filename),
       };
     } catch (p) {
       if (p instanceof ade || p instanceof WKt) return await u();
       throw p;
     }
   } catch {
-    if ((G(r, {}), o === "at-mention"))
+    if ((G(errorEventName, {}), mode === "at-mention"))
       x1({
         mentionType: "file",
         success: false,
@@ -1532,13 +1603,13 @@ function createAttachmentMessage(
     timestamp: (e.type === "queued_command" && e.timestamp) || t.now(),
   };
 }
-function getTodoReminderTurnCounts(e) {
+function getTodoReminderTurnCounts(messages) {
   let t = -1,
     n = -1,
     r = 0,
     o = 0;
-  for (let s = e.length - 1; s >= 0; s--) {
-    let i = e[s];
+  for (let s = messages.length - 1; s >= 0; s--) {
+    let i = messages[s];
     if (i?.type === "assistant") {
       if (VZn(i)) continue;
       if (
@@ -1580,13 +1651,13 @@ async function fIf(e, t) {
   }
   return [];
 }
-function getTaskReminderTurnCounts(e) {
+function getTaskReminderTurnCounts(messages) {
   let t = -1,
     n = -1,
     r = 0,
     o = 0;
-  for (let s = e.length - 1; s >= 0; s--) {
-    let i = e[s];
+  for (let s = messages.length - 1; s >= 0; s--) {
+    let i = messages[s];
     if (i?.type === "assistant") {
       if (VZn(i)) continue;
       if (
@@ -1789,12 +1860,12 @@ async function bIf(e) {
   if (!el()) return [];
   return [];
 }
-function getTeamContextAttachment(e) {
+function getTeamContextAttachment(messages) {
   let t = rp(),
     n = PD(),
     r = Oh();
   if (!t || !n) return [];
-  if (e.some((l) => l.type === "assistant")) return [];
+  if (messages.some((l) => l.type === "assistant")) return [];
   let s = tr(),
     i = `${s}/teams/${t}/config.json`,
     a = `${s}/tasks/${t}/`;

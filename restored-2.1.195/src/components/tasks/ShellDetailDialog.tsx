@@ -35,9 +35,9 @@ async function D8l(e) {
     };
   }
 }
-function ShellDetailDialog(e) {
+function ShellDetailDialog(t0) {
   let t = pjo.c(61),
-    { shell: n, onDone: r, onKillShell: o, onBack: s } = e,
+    { shell: n, onDone: r, onKillShell: o, onBack: s } = t0,
     { columns: i } = br(),
     a;
   if (t[0] !== n) ((a = () => D8l(n)), (t[0] = n), (t[1] = a));
@@ -307,9 +307,9 @@ function ShellDetailDialog(e) {
   else ne = t[60];
   return ne;
 }
-function ShellOutputContent(e) {
+function ShellOutputContent(t0) {
   let t = pjo.c(19),
-    { outputPromise: n, columns: r } = e,
+    { outputPromise: n, columns: r } = t0,
     { content: o, bytesTotal: s } = T1e.use(n);
   if (!o) {
     let g;
@@ -387,14 +387,14 @@ function ShellOutputContent(e) {
   else m = t[18];
   return m;
 }
-function _temp2(e, t) {
+function _temp2(line_0, i_1) {
   return T_.jsx(
     w,
     {
       wrap: "truncate-end",
-      children: e,
+      children: line_0,
     },
-    t,
+    i_1,
   );
 }
 var pjo,

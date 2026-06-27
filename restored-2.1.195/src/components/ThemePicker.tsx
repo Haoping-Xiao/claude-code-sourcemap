@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4334  score=0.6034  fileCov=0.6061
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ThemePicker(e) {
+function ThemePicker(t0) {
   let t = xMl.c(88),
     {
       onThemeSelect: n,
@@ -15,7 +15,7 @@ function ThemePicker(e) {
       skipExitHandling: a,
       onCancel: l,
       onCustomTheme: c,
-    } = e,
+    } = t0,
     u = r === void 0 ? false : r,
     d = o === void 0 ? "" : o,
     p = s === void 0 ? false : s,

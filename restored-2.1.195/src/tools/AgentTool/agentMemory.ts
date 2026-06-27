@@ -10,7 +10,7 @@ function WNi(e) {
   let t = e.replace(/[^a-zA-Z0-9\-_]/g, "-");
   return t === "" ? "unknown" : t;
 }
-function getLocalAgentMemoryDir(e) {
+function getLocalAgentMemoryDir(dirName) {
   if (process.env.CLAUDE_CODE_REMOTE_MEMORY_DIR)
     return (
       SI.join(
@@ -18,14 +18,14 @@ function getLocalAgentMemoryDir(e) {
         "projects",
         LE(qf(rc()) ?? rc()),
         "agent-memory-local",
-        e,
+        dirName,
       ) + SI.sep
     );
-  return SI.join($t(), ".claude", "agent-memory-local", e) + SI.sep;
+  return SI.join($t(), ".claude", "agent-memory-local", dirName) + SI.sep;
 }
-function getAgentMemoryDir(e, t) {
-  let n = WNi(e);
-  switch (t) {
+function getAgentMemoryDir(agentType, scope) {
+  let n = WNi(agentType);
+  switch (scope) {
     case "project":
       return SI.join($t(), ".claude", "agent-memory", n) + SI.sep;
     case "local":
@@ -34,8 +34,8 @@ function getAgentMemoryDir(e, t) {
       return SI.join(ace(), "agent-memory", n) + SI.sep;
   }
 }
-function isAgentMemoryPath(e) {
-  let t = SI.normalize(e),
+function isAgentMemoryPath(absolutePath) {
+  let t = SI.normalize(absolutePath),
     n = ace(),
     r = null,
     o = SI.join(n, "agent-memory") + SI.sep;
@@ -53,8 +53,8 @@ function isAgentMemoryPath(e) {
   }
   return r !== null && !H3e(t, r);
 }
-function getMemoryScopeDisplay(e) {
-  switch (e) {
+function getMemoryScopeDisplay(memory) {
+  switch (memory) {
     case "user":
       return `User (${SI.join(ace(), "agent-memory")}/)`;
     case "project":
@@ -65,9 +65,9 @@ function getMemoryScopeDisplay(e) {
       return "None";
   }
 }
-function loadAgentMemoryPrompt(e, t) {
+function loadAgentMemoryPrompt(agentType, scope) {
   let n;
-  switch (t) {
+  switch (scope) {
     case "user":
       n =
         "- Since this memory is user-scope, keep learnings general since they apply across all projects";
@@ -81,7 +81,7 @@ function loadAgentMemoryPrompt(e, t) {
         "- Since this memory is local-scope (not checked into version control), tailor your memories to this project and machine";
       break;
   }
-  let r = getAgentMemoryDir(e, t);
+  let r = getAgentMemoryDir(agentType, scope);
   Pke(r);
   let o = process.env.CLAUDE_COWORK_MEMORY_EXTRA_GUIDELINES;
   return UNi({

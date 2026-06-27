@@ -298,9 +298,9 @@ function Xal(e) {
   else d = t[55];
   return d;
 }
-function getPreToolHookBlockingMessage(e) {
+function getPreToolHookBlockingMessage(hookName) {
   let t = WMe.c(51),
-    { message: n, addMargin: r, verbose: o, isTranscriptMode: s } = e,
+    { message: n, addMargin: r, verbose: o, isTranscriptMode: s } = hookName,
     {
       hookCount: i,
       hookInfos: a,

@@ -4,87 +4,87 @@
 // class=modified  jaccard=0.6233  score=0.719  fileCov=0.8241
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function formatErrorMessage(e) {
-  switch (e.type) {
+function formatErrorMessage(error) {
+  switch (error.type) {
     case "path-not-found":
-      return `${e.component} path not found: ${e.path}`;
+      return `${error.component} path not found: ${error.path}`;
     case "path-traversal":
-      return `${e.component} path escapes plugin directory: ${e.path}`;
+      return `${error.component} path escapes plugin directory: ${error.path}`;
     case "git-auth-failed":
-      return `Git ${e.authType.toUpperCase()} authentication failed for ${e.gitUrl}`;
+      return `Git ${error.authType.toUpperCase()} authentication failed for ${error.gitUrl}`;
     case "git-timeout":
-      return `Git ${e.operation} timed out for ${e.gitUrl}`;
+      return `Git ${error.operation} timed out for ${error.gitUrl}`;
     case "network-error":
-      return `Network error accessing ${e.url}${e.details ? `: ${e.details}` : ""}`;
+      return `Network error accessing ${error.url}${error.details ? `: ${error.details}` : ""}`;
     case "manifest-parse-error":
-      return `Failed to parse manifest at ${e.manifestPath}: ${e.parseError}`;
+      return `Failed to parse manifest at ${error.manifestPath}: ${error.parseError}`;
     case "manifest-validation-error":
-      return `Invalid manifest at ${e.manifestPath}: ${e.validationErrors.join(", ")}`;
+      return `Invalid manifest at ${error.manifestPath}: ${error.validationErrors.join(", ")}`;
     case "plugin-not-found":
-      return `Plugin "${e.pluginId}" not found in marketplace "${e.marketplace}"`;
+      return `Plugin "${error.pluginId}" not found in marketplace "${error.marketplace}"`;
     case "marketplace-not-found":
-      return `Marketplace "${e.marketplace}" not found`;
+      return `Marketplace "${error.marketplace}" not found`;
     case "marketplace-load-failed":
-      return `Failed to load marketplace "${e.marketplace}": ${e.reason}`;
+      return `Failed to load marketplace "${error.marketplace}": ${error.reason}`;
     case "mcp-config-invalid":
-      return `Invalid MCP server config for "${e.serverName}": ${e.validationError}`;
+      return `Invalid MCP server config for "${error.serverName}": ${error.validationError}`;
     case "hook-load-failed":
-      return `Failed to load hooks from ${e.hookPath}: ${e.reason}`;
+      return `Failed to load hooks from ${error.hookPath}: ${error.reason}`;
     case "component-load-failed":
-      return `Failed to load ${e.component} from ${e.path}: ${e.reason}`;
+      return `Failed to load ${error.component} from ${error.path}: ${error.reason}`;
     case "mcpb-download-failed":
-      return `Failed to download MCPB from ${e.url}: ${e.reason}`;
+      return `Failed to download MCPB from ${error.url}: ${error.reason}`;
     case "mcpb-extract-failed":
-      return `Failed to extract MCPB ${e.mcpbPath}: ${e.reason}`;
+      return `Failed to extract MCPB ${error.mcpbPath}: ${error.reason}`;
     case "mcpb-invalid-manifest":
-      return `MCPB manifest invalid at ${e.mcpbPath}: ${e.validationError}`;
+      return `MCPB manifest invalid at ${error.mcpbPath}: ${error.validationError}`;
     case "marketplace-blocked-by-policy":
-      return e.blockedByBlocklist
-        ? `Marketplace "${e.marketplace}" is blocked by enterprise policy`
-        : `Marketplace "${e.marketplace}" is not in the allowed marketplace list`;
+      return error.blockedByBlocklist
+        ? `Marketplace "${error.marketplace}" is blocked by enterprise policy`
+        : `Marketplace "${error.marketplace}" is not in the allowed marketplace list`;
     case "dependency-unsatisfied":
-      return e.reason === "not-enabled"
-        ? `Dependency "${e.dependency}" is disabled`
-        : `Dependency "${e.dependency}" is not installed`;
+      return error.reason === "not-enabled"
+        ? `Dependency "${error.dependency}" is disabled`
+        : `Dependency "${error.dependency}" is not installed`;
     case "dependency-version-unsatisfied":
-      return `Requires "${e.dependency}" ${e.required}, installed ${e.installed ?? "version unknown"}`;
+      return `Requires "${error.dependency}" ${error.required}, installed ${error.installed ?? "version unknown"}`;
     case "lsp-config-invalid":
-      return `Invalid LSP server config for "${e.serverName}": ${e.validationError}`;
+      return `Invalid LSP server config for "${error.serverName}": ${error.validationError}`;
     case "lsp-server-start-failed":
-      return `LSP server "${e.serverName}" failed to start: ${e.reason}`;
+      return `LSP server "${error.serverName}" failed to start: ${error.reason}`;
     case "lsp-server-crashed":
-      return e.signal
-        ? `LSP server "${e.serverName}" crashed with signal ${e.signal}`
-        : `LSP server "${e.serverName}" crashed with exit code ${e.exitCode ?? "unknown"}`;
+      return error.signal
+        ? `LSP server "${error.serverName}" crashed with signal ${error.signal}`
+        : `LSP server "${error.serverName}" crashed with exit code ${error.exitCode ?? "unknown"}`;
     case "lsp-request-timeout":
-      return `LSP server "${e.serverName}" timed out on ${e.method} after ${e.timeoutMs}ms`;
+      return `LSP server "${error.serverName}" timed out on ${error.method} after ${error.timeoutMs}ms`;
     case "lsp-request-failed":
-      return `LSP server "${e.serverName}" ${e.method} failed: ${e.error}`;
+      return `LSP server "${error.serverName}" ${error.method} failed: ${error.error}`;
     case "plugin-cache-miss":
-      return `Plugin "${e.plugin}" not cached at ${e.installPath}`;
+      return `Plugin "${error.plugin}" not cached at ${error.installPath}`;
     case "plugin-not-installed":
-      return `Plugin "${e.plugin}" is enabled in project settings but isn't installed here`;
+      return `Plugin "${error.plugin}" is enabled in project settings but isn't installed here`;
     case "autoupdate-blocked-by-pinner": {
-      let n = e.heldAt ? ` at ${e.heldAt}` : "",
+      let n = error.heldAt ? ` at ${error.heldAt}` : "",
         r =
-          e.disabledPinners.length > 0
-            ? ` (${e.disabledPinners.join(", ")} ${e.disabledPinners.length === 1 ? "is" : "are"} disabled)`
+          error.disabledPinners.length > 0
+            ? ` (${error.disabledPinners.join(", ")} ${error.disabledPinners.length === 1 ? "is" : "are"} disabled)`
             : "";
-      return `Autoupdate held${n} \u2014 version constraint from ${e.blockedBy.join(", ")}${r}`;
+      return `Autoupdate held${n} \u2014 version constraint from ${error.blockedBy.join(", ")}${r}`;
     }
     case "generic-error":
-      return e.error;
+      return error.error;
   }
-  return iS(e);
+  return iS(error);
 }
-function getErrorGuidance(e) {
-  switch (e.type) {
+function getErrorGuidance(error) {
+  switch (error.type) {
     case "path-not-found":
       return "Check that the path in your manifest or marketplace config is correct";
     case "path-traversal":
       return 'Paths in plugin.json must not use ".." to reference files outside the plugin directory';
     case "git-auth-failed":
-      return e.authType === "ssh"
+      return error.authType === "ssh"
         ? "Configure SSH keys or use HTTPS URL instead"
         : "Configure credentials or use SSH URL instead";
     case "git-timeout":
@@ -95,17 +95,17 @@ function getErrorGuidance(e) {
     case "manifest-validation-error":
       return "Check manifest file follows the required schema";
     case "plugin-not-found":
-      return `Plugin may not exist in marketplace "${e.marketplace}"`;
+      return `Plugin may not exist in marketplace "${error.marketplace}"`;
     case "marketplace-not-found":
-      return e.availableMarketplaces.length > 0
-        ? `Available marketplaces: ${e.availableMarketplaces.join(", ")}`
+      return error.availableMarketplaces.length > 0
+        ? `Available marketplaces: ${error.availableMarketplaces.join(", ")}`
         : "Add the marketplace first using /plugin marketplace add";
     case "mcp-config-invalid":
       return "Check MCP server configuration in .mcp.json or manifest";
     case "hook-load-failed":
       return "Check hooks.json file syntax and structure";
     case "component-load-failed":
-      return `Check ${e.component} directory structure and file permissions`;
+      return `Check ${error.component} directory structure and file permissions`;
     case "mcpb-download-failed":
       return "Check your internet connection and URL accessibility";
     case "mcpb-extract-failed":
@@ -113,17 +113,17 @@ function getErrorGuidance(e) {
     case "mcpb-invalid-manifest":
       return "Contact the plugin author about the invalid manifest";
     case "marketplace-blocked-by-policy":
-      if (e.blockedByBlocklist)
+      if (error.blockedByBlocklist)
         return "This marketplace source is explicitly blocked by your administrator";
-      return e.allowedSources.length > 0
-        ? `Allowed sources: ${e.allowedSources.join(", ")}`
+      return error.allowedSources.length > 0
+        ? `Allowed sources: ${error.allowedSources.join(", ")}`
         : "Contact your administrator to configure allowed marketplace sources";
     case "dependency-unsatisfied":
-      return e.reason === "not-enabled"
-        ? `Enable "${e.dependency}" or uninstall "${e.plugin}"`
-        : `Install "${e.dependency}" or uninstall "${e.plugin}"`;
+      return error.reason === "not-enabled"
+        ? `Enable "${error.dependency}" or uninstall "${error.plugin}"`
+        : `Install "${error.dependency}" or uninstall "${error.plugin}"`;
     case "dependency-version-unsatisfied":
-      return `Update "${e.dependency}" to satisfy ${e.required}, or uninstall "${e.plugin}"`;
+      return `Update "${error.dependency}" to satisfy ${error.required}, or uninstall "${error.plugin}"`;
     case "lsp-config-invalid":
       return "Check LSP server configuration in the plugin manifest";
     case "lsp-server-start-failed":
@@ -134,24 +134,24 @@ function getErrorGuidance(e) {
     case "plugin-cache-miss":
       return "Run /plugins to refresh the plugin cache";
     case "plugin-not-installed": {
-      let n = xy("plugin install", e.source, "--scope project");
+      let n = xy("plugin install", error.source, "--scope project");
       return n
         ? `Run \`${n}\` to install it for this project`
         : "Install it at project scope to fix this";
     }
     case "autoupdate-blocked-by-pinner": {
-      let n = e.disabledPinners.length > 0 ? e.disabledPinners[0] : e.blockedBy[0];
+      let n = error.disabledPinners.length > 0 ? error.disabledPinners[0] : error.blockedBy[0];
       return n
-        ? `Update or uninstall "${n}" to unblock${e.disabledPinners.length > 0 ? " (it is currently disabled)" : ""}`
+        ? `Update or uninstall "${n}" to unblock${error.disabledPinners.length > 0 ? " (it is currently disabled)" : ""}`
         : null;
     }
     case "marketplace-load-failed":
-      return e.reason === "cache-miss"
+      return error.reason === "cache-miss"
         ? "Run /reload-plugins to refresh the marketplace cache"
         : null;
     case "generic-error":
       return null;
   }
-  let t = e;
+  let t = error;
   return null;
 }

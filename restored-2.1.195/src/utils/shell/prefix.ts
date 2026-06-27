@@ -39,9 +39,18 @@ function elc(e, t) {
   );
   return n;
 }
-async function getCommandPrefixImpl(e, t, n, r, o, s, i, a) {
-  if (a) {
-    let d = a(e);
+async function getCommandPrefixImpl(
+  command,
+  abortSignal,
+  isNonInteractiveSession,
+  toolName,
+  policySpec,
+  eventName,
+  querySource,
+  preCheck,
+) {
+  if (preCheck) {
+    let d = preCheck(command);
     if (d !== null) return d;
   }
   let l,
@@ -63,22 +72,22 @@ async function getCommandPrefixImpl(e, t, n, r, o, s, i, a) {
         else console.warn(wt.yellow(`\u26A0\uFE0F  ${h}`));
       },
       10000 /* 1e4 */,
-      r,
-      n,
+      toolName,
+      isNonInteractiveSession,
     );
     let d = await R$({
       systemPrompt: Sc([
-        `Your task is to process ${r} commands that an AI coding agent wants to run.
+        `Your task is to process ${toolName} commands that an AI coding agent wants to run.
 
-${o}`,
+${policySpec}`,
       ]),
-      userPrompt: `Command: ${e}`,
-      signal: t,
+      userPrompt: `Command: ${command}`,
+      signal: abortSignal,
       options: {
         enablePromptCaching: true,
-        querySource: i,
+        querySource: querySource,
         agents: [],
-        isNonInteractiveSession: n,
+        isNonInteractiveSession: isNonInteractiveSession,
         hasAppendSystemPrompt: false,
         mcpTools: [],
         agentContext: of(),
@@ -93,14 +102,14 @@ ${o}`,
             ? (d.message.content.find((m) => m.type === "text")?.text ?? "none")
             : "none";
     if (K1(f))
-      (G(s, {
+      (G(eventName, {
         success: false,
         error: We("API error"),
         durationMs: p,
       }),
         (u = null));
     else if (f === "command_injection_detected")
-      (G(s, {
+      (G(eventName, {
         success: false,
         error: We("command_injection_detected"),
         durationMs: p,
@@ -109,7 +118,7 @@ ${o}`,
           commandPrefix: null,
         }));
     else if (f === "git" || Pnm.has(f.toLowerCase()))
-      (G(s, {
+      (G(eventName, {
         success: false,
         error: We("dangerous_shell_prefix"),
         durationMs: p,
@@ -118,7 +127,7 @@ ${o}`,
           commandPrefix: null,
         }));
     else if (f === "none")
-      (G(s, {
+      (G(eventName, {
         success: false,
         error: We('prefix "none"'),
         durationMs: p,
@@ -126,8 +135,8 @@ ${o}`,
         (u = {
           commandPrefix: null,
         }));
-    else if (!e.startsWith(f))
-      (G(s, {
+    else if (!command.startsWith(f))
+      (G(eventName, {
         success: false,
         error: We("command did not start with prefix"),
         durationMs: p,
@@ -136,7 +145,7 @@ ${o}`,
           commandPrefix: null,
         }));
     else
-      (G(s, {
+      (G(eventName, {
         success: true,
         durationMs: p,
       }),

@@ -4,26 +4,26 @@
 // class=modified  jaccard=0.5118  score=0.8598  fileCov=0.5584
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function readFileInRange(e, t = 0, n, r, o, s) {
-  o?.throwIfAborted();
-  let i = s?.truncateOnByteLimit ?? false,
-    a = await RQn.stat(e);
+async function readFileInRange(filePath, t = 0, maxLines, maxBytes, signal, options) {
+  signal?.throwIfAborted();
+  let i = options?.truncateOnByteLimit ?? false,
+    a = await RQn.stat(filePath);
   if (a.isDirectory())
-    throw Object.assign(Error(`EISDIR: illegal operation on a directory, read '${e}'`), {
+    throw Object.assign(Error(`EISDIR: illegal operation on a directory, read '${filePath}'`), {
       code: "EISDIR",
       errno: -21,
       syscall: "read",
-      path: e,
+      path: filePath,
     });
   if (a.isFile() && a.size < LTf) {
-    if (!i && r !== void 0 && a.size > r) throw new WKt(a.size, r);
-    let l = await RQn.readFile(e, {
+    if (!i && maxBytes !== void 0 && a.size > maxBytes) throw new WKt(a.size, maxBytes);
+    let l = await RQn.readFile(filePath, {
       encoding: "utf8",
-      signal: o,
+      signal: signal,
     });
-    return DTf(l, a.size, a.mtimeMs, t, n, i ? r : void 0);
+    return DTf(l, a.size, a.mtimeMs, t, maxLines, i ? maxBytes : void 0);
   }
-  return OTf(e, t, n, r, i, o);
+  return OTf(filePath, t, maxLines, maxBytes, i, signal);
 }
 function DTf(e, t, n, r, o, s) {
   let i = e.charCodeAt(0) === 65279;

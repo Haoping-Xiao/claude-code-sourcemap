@@ -45,8 +45,8 @@ function TNe(e, t) {
     errors: e.errors + t.errors,
   };
 }
-function convertFileNameToDate(e) {
-  let t = bi(e, ".").replace(/T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z/, "T$1:$2:$3.$4Z");
+function convertFileNameToDate(filename) {
+  let t = bi(filename, ".").replace(/T(\d{2})-(\d{2})-(\d{2})-(\d{3})Z/, "T$1:$2:$3.$4Z");
   return new Date(t);
 }
 async function bSc(e, t, n) {

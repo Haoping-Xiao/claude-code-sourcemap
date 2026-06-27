@@ -551,8 +551,8 @@ function Bkd(e) {
   if (!dvi()) return false;
   return lvi(e) && lvi(fr());
 }
-function buildFetch(e, t) {
-  let n = e ?? globalThis.fetch,
+function buildFetch(fetchOverride, source) {
+  let n = fetchOverride ?? globalThis.fetch,
     r = fr(),
     o = pvi(r);
   return async (s, i) => {
@@ -567,7 +567,7 @@ function buildFetch(e, t) {
         f = a.get(CLIENT_REQUEST_ID_HEADER);
       if (
         (T(
-          `[API REQUEST] ${new URL(p).pathname}${f ? ` ${CLIENT_REQUEST_ID_HEADER}=${f}` : ""} source=${t ?? "unknown"}`,
+          `[API REQUEST] ${new URL(p).pathname}${f ? ` ${CLIENT_REQUEST_ID_HEADER}=${f}` : ""} source=${source ?? "unknown"}`,
         ),
         HUe() === "verbose")
       )

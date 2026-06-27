@@ -33,26 +33,34 @@ function vcl(e, t) {
   }
   return false;
 }
-async function executeForkedSkill(e, t, n, r, o, s, i) {
+async function executeForkedSkill(
+  command,
+  commandName,
+  args,
+  context,
+  canUseTool,
+  parentMessage,
+  onProgress,
+) {
   let a = Date.now(),
     l = rM(),
-    c = mQ().has(t),
-    u = wcl(e),
-    d = e.source === "bundled",
+    c = mQ().has(commandName),
+    u = wcl(command),
+    d = command.source === "bundled",
     { sanitizedName: p, skillNameHash: f } = Elt({
-      rawName: t,
-      canonicalName: e.name,
-      isMcp: e.loadedFrom === "mcp",
+      rawName: commandName,
+      canonicalName: command.name,
+      isMcp: command.loadedFrom === "mcp",
       isBuiltIn: c,
       isBundled: d,
       isOfficial: u,
     }),
-    m = r.queryTracking?.depth ?? 0,
+    m = context.queryTracking?.depth ?? 0,
     g = m > 0 ? "nested-skill" : "claude-proactive",
-    h = r.agentId;
+    h = context.agentId;
   (G("tengu_skill_tool_invocation", {
     command_name: p,
-    _PROTO_skill_name: t,
+    _PROTO_skill_name: commandName,
     ...f,
     execution_context: We("fork"),
     invocation_trigger: $e(g),
@@ -60,26 +68,26 @@ async function executeForkedSkill(e, t, n, r, o, s, i) {
     ...(h && {
       parent_agent_id: Hr(h),
     }),
-    ...Hbe(e.source, e.loadedFrom, e.kind, e.createdBy),
-    ...L8e(e.source, t),
-    attribution_shown: o8t(e.source, t) !== null,
-    skill_content_chars: e.contentLength,
+    ...Hbe(command.source, command.loadedFrom, command.kind, command.createdBy),
+    ...L8e(command.source, commandName),
+    attribution_shown: o8t(command.source, commandName) !== null,
+    skill_content_chars: command.contentLength,
     ...false,
-    ...(e.pluginInfo && {
-      ...Tbe(e.pluginInfo),
-      plugin_name: u ? e.pluginInfo.pluginManifest.name : "third-party",
-      plugin_repository: u ? e.pluginInfo.repository : "third-party",
+    ...(command.pluginInfo && {
+      ...Tbe(command.pluginInfo),
+      plugin_name: u ? command.pluginInfo.pluginManifest.name : "third-party",
+      plugin_repository: u ? command.pluginInfo.repository : "third-party",
     }),
   }),
-    aFt(t, e, g));
+    aFt(commandName, command, g));
   let {
       modifiedGetAppState: y,
       contextLayers: b,
       baseAgent: _,
       promptMessages: S,
       skillContent: A,
-    } = await K8t(e, n || "", r),
-    v = e.getEffort?.(n || "") ?? e.effort,
+    } = await K8t(command, args || "", context),
+    v = command.getEffort?.(args || "") ?? command.effort,
     C =
       v !== void 0
         ? {
@@ -88,45 +96,46 @@ async function executeForkedSkill(e, t, n, r, o, s, i) {
           }
         : _,
     x = [];
-  T(`SkillTool executing forked skill ${t} with agent ${C.agentType}`);
+  T(`SkillTool executing forked skill ${commandName} with agent ${C.agentType}`);
   try {
     for await (let D of o3({
       agentDefinition: C,
       promptMessages: S,
       toolUseContext: {
-        ...r,
+        ...context,
         getAppState: y,
-        permissionLayers: b.length > 0 ? [...(r.permissionLayers ?? []), ...b] : r.permissionLayers,
+        permissionLayers:
+          b.length > 0 ? [...(context.permissionLayers ?? []), ...b] : context.permissionLayers,
       },
-      canUseTool: o,
+      canUseTool: canUseTool,
       isAsync: false,
       querySource: "agent:custom",
-      spawnedBySkill: t$e(e),
-      model: e.model,
-      availableTools: r.options.tools,
+      spawnedBySkill: t$e(command),
+      model: command.model,
+      availableTools: context.options.tools,
       override: {
         agentId: l,
       },
     })) {
       if (D.type === "api_metrics") {
-        i?.(D);
+        onProgress?.(D);
         continue;
       }
       if (D.type === "set_in_progress_tool_use_ids" || D.type === "spinner_mode") continue;
-      if ((x.push(D), (D.type === "assistant" || D.type === "user") && i)) {
+      if ((x.push(D), (D.type === "assistant" || D.type === "user") && onProgress)) {
         let P = mS([D]);
         for (let O of P)
           if (O.message.content.some((M) => M.type === "tool_use" || M.type === "tool_result"))
-            i({
+            onProgress({
               type: "progress",
-              toolUseID: `skill_${s.message.id}`,
+              toolUseID: `skill_${parentMessage.message.id}`,
               data: {
                 message: O,
                 type: "skill_progress",
                 prompt: A,
                 agentId: l,
                 agentType: C.agentType,
-                description: e.description,
+                description: command.description,
               },
             });
       }
@@ -135,12 +144,12 @@ async function executeForkedSkill(e, t, n, r, o, s, i) {
     x.length = 0;
     let k = Date.now() - a;
     return (
-      T(`SkillTool forked skill ${t} completed in ${k}ms`),
+      T(`SkillTool forked skill ${commandName} completed in ${k}ms`),
       xe("skill_invoke"),
       {
         data: {
           success: true,
-          commandName: t,
+          commandName: commandName,
           status: "forked",
           agentId: l,
           result: I,

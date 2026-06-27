@@ -7,14 +7,14 @@
 // [unwrapped __esm module yVl] deps: Mql, Ye, m0e, v2o, je, At, vn, co, UFo
 ((Am = R(rt(), 1)), (Ise = R(se(), 1)), (dVl = new WeakMap()));
 pVl = new WeakMap();
-function filterForBriefTool(e, t, n) {
-  let r = new Set(t),
+function filterForBriefTool(messages, briefToolNames, n) {
+  let r = new Set(briefToolNames),
     o = new Set(n),
     s = new Set(),
     i = [],
     a = 0;
-  for (let c = 0; c < e.length; c++) {
-    let u = e[c],
+  for (let c = 0; c < messages.length; c++) {
+    let u = messages[c],
       d = u.message?.content[0];
     if (u.type === "user" && d?.type !== "tool_result" && (!u.isMeta || ez(u.origin))) a++;
     else if (
@@ -28,7 +28,7 @@ function filterForBriefTool(e, t, n) {
     i[c] = a;
   }
   let l = new Set();
-  return e.filter((c, u) => {
+  return messages.filter((c, u) => {
     if (c.type === "system") return true;
     let d = c.message?.content[0];
     if (c.type === "assistant") {
@@ -153,29 +153,36 @@ function nYe(e) {
   else u = t[5];
   return u;
 }
-function shouldRenderStatically(e, t, n, r, o, s) {
-  if (o === "transcript") return true;
-  switch (e.type) {
+function shouldRenderStatically(
+  message,
+  streamingToolUseIDs,
+  inProgressToolUseIDs,
+  siblingToolUseIDs,
+  screen,
+  lookups,
+) {
+  if (screen === "transcript") return true;
+  switch (message.type) {
     case "attachment":
     case "user":
     case "assistant": {
-      if (e.type === "assistant") {
-        let a = e.message.content[0];
-        if (a?.type === "server_tool_use") return s.resolvedToolUseIDs.has(a.id);
+      if (message.type === "assistant") {
+        let a = message.message.content[0];
+        if (a?.type === "server_tool_use") return lookups.resolvedToolUseIDs.has(a.id);
       }
-      let i = jHe(e);
+      let i = jHe(message);
       if (!i) return true;
-      if (t.has(i)) return false;
-      if (n.has(i)) return false;
-      if (CVl(i, "PostToolUse", s)) return false;
-      return wZa(r, s.resolvedToolUseIDs);
+      if (streamingToolUseIDs.has(i)) return false;
+      if (inProgressToolUseIDs.has(i)) return false;
+      if (CVl(i, "PostToolUse", lookups)) return false;
+      return wZa(siblingToolUseIDs, lookups.resolvedToolUseIDs);
     }
     case "system":
       return true;
     case "grouped_tool_use":
-      return e.messages.every((a) => {
+      return message.messages.every((a) => {
         let l = a.message.content[0];
-        return l?.type === "tool_use" && s.resolvedToolUseIDs.has(l.id);
+        return l?.type === "tool_use" && lookups.resolvedToolUseIDs.has(l.id);
       });
     case "collapsed_read_search":
       return false;

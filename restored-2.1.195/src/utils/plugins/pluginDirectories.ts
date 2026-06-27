@@ -65,8 +65,8 @@ async function $ra(e) {
     human: Ra(n),
   };
 }
-async function deletePluginDataDir(e) {
-  let t = M2t(e);
+async function deletePluginDataDir(pluginId) {
+  let t = M2t(pluginId);
   try {
     await _ct.rm(t, {
       recursive: true,

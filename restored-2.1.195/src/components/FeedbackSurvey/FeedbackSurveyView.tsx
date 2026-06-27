@@ -23,7 +23,7 @@ function hYo(e, t = false) {
   if (e === "4") return t;
   return e === "0" || e === "1" || e === "2" || e === "3";
 }
-function FeedbackSurveyView(e) {
+function FeedbackSurveyView(t0) {
   let t = hRc.c(25),
     {
       onSelect: n,
@@ -33,7 +33,7 @@ function FeedbackSurveyView(e) {
       messageBold: i,
       mountDelayMs: a,
       showNotSure: l,
-    } = e,
+    } = t0,
     c = s === void 0 ? DEFAULT_MESSAGE : s,
     u = i === void 0 ? true : i,
     d = l === void 0 ? false : l,

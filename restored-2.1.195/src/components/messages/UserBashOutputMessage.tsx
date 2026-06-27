@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qzn] deps: Ko, ql, kLe, ljn, Ye
 ((vil = R(lt(), 1)), (TN = R(se(), 1)), (Til = /(?:^|\n)(Shell cwd was reset to .+)$/));
-function UserBashOutputMessage(e) {
+function UserBashOutputMessage(t0) {
   let t = wil.c(10),
-    { content: n, verbose: r } = e,
+    { content: n, verbose: r } = t0,
     o;
   if (t[0] !== n) {
     let d = xl(n, "bash-stdout") ?? "";

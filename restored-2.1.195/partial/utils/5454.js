@@ -35,9 +35,9 @@ function nyc(e) {
   if (e.type === "prompt") return "skill";
   return rpm[e.name] ?? "action";
 }
-function generateCommandSuggestions(e) {
-  if (e.type !== "prompt") return "builtin";
-  switch (e.source) {
+function generateCommandSuggestions(input) {
+  if (input.type !== "prompt") return "builtin";
+  switch (input.source) {
     case "builtin":
       return "builtin";
     case "bundled":

@@ -1123,9 +1123,9 @@ function Esf(e) {
   if (e.summary) return true;
   return !(Qv(pAe(), e.text) || Qv(h8e(), e.text));
 }
-function TaskStatusMessage(e) {
+function TaskStatusMessage(t0) {
   let t = t_t.c(4),
-    { attachment: n } = e;
+    { attachment: n } = t0;
   if (Ozn() && n.status === "killed") return null;
   if (el() && n.taskType === "in_process_teammate") {
     let o;
@@ -1148,9 +1148,9 @@ function TaskStatusMessage(e) {
   else r = t[3];
   return r;
 }
-function GenericTaskStatus(e) {
+function GenericTaskStatus(t0) {
   let t = t_t.c(6),
-    { attachment: n } = e,
+    { attachment: n } = t0,
     r =
       n.status === "completed"
         ? "completed in background"
@@ -1197,9 +1197,9 @@ function GenericTaskStatus(e) {
   else i = t[5];
   return i;
 }
-function TeammateTaskStatus(e) {
+function TeammateTaskStatus(t0) {
   let t = t_t.c(13),
-    { attachment: n } = e,
+    { attachment: n } = t0,
     r;
   if (t[0] !== n.taskId) ((r = (d) => d.tasks[n.taskId]), (t[0] = n.taskId), (t[1] = r));
   else r = t[1];

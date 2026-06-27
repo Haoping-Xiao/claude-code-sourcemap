@@ -16,9 +16,9 @@ vUl = {
   },
   load: () => Promise.resolve().then(() => (hVn(), rAo)),
 };
-function WorkflowMultiselectDialog(e) {
+function WorkflowMultiselectDialog(t0) {
   let t = CUl.c(14),
-    { onSubmit: n, defaultSelections: r } = e,
+    { onSubmit: n, defaultSelections: r } = t0,
     [o, s] = IUl.useState(false),
     i;
   if (t[0] !== n)

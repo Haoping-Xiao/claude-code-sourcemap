@@ -53,10 +53,10 @@ function nRf(e) {
     .map((n) => n.charAt(0).toUpperCase() + n.slice(1).toLowerCase())
     .join(" ");
 }
-function teammateModelDisplayString(e) {
-  if (e === void 0) return bj(nzt());
-  if (e === null) return "Default (leader's model)";
-  return bj(e);
+function teammateModelDisplayString(value) {
+  if (value === void 0) return bj(nzt());
+  if (value === null) return "Default (leader's model)";
+  return bj(value);
 }
 function Config(e) {
   let {

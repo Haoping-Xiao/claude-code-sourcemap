@@ -69,9 +69,9 @@ function Yto() {
     `srt-win.exe not found. Set SRT_WIN_PATH or build with \`cargo build --release --manifest-path vendor/srt-win-src/Cargo.toml\`. Looked in: ${[e, ...r].filter(Boolean).join(", ")}`,
   );
 }
-function parseArgs(e) {
-  if (e.groupSid) return ["--group-sid", e.groupSid];
-  return ["--name", e.groupName ?? e$n];
+function parseArgs(args) {
+  if (args.groupSid) return ["--group-sid", args.groupSid];
+  return ["--name", args.groupName ?? e$n];
 }
 function $Qd(e) {
   let t = Yto(),

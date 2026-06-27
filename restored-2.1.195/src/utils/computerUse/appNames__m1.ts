@@ -4,11 +4,11 @@
 // class=modified (alt of src/utils/computerUse/appNames.ts)  jaccard=0.1177  score=0.815  fileCov=0.1209
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function isUserFacingPath(e, t) {
-  if (ixp.some((n) => e.startsWith(n))) return true;
-  if (t) {
-    let n = t.endsWith("/") ? `${t}Applications/` : `${t}/Applications/`;
-    if (e.startsWith(n)) return true;
+function isUserFacingPath(path, homeDir) {
+  if (ixp.some((n) => path.startsWith(n))) return true;
+  if (homeDir) {
+    let n = homeDir.endsWith("/") ? `${homeDir}Applications/` : `${homeDir}/Applications/`;
+    if (path.startsWith(n)) return true;
   }
   return false;
 }

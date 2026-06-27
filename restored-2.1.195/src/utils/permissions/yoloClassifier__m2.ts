@@ -82,11 +82,11 @@ Transcript: User: Refactor auth. Assistant: [makes changes]. User: No, keep the 
 numStartups: 25
 Decision: has_tip=true, tip="We've been going back and forth on this. Starting fresh with /clear and a more specific prompt usually converges faster.", feature_id="correction-spiral", action="/clear"`;
 }
-function buildTranscriptEntries(e, t) {
+function buildTranscriptEntries(messages, t) {
   let n = iXp(t),
     r = [],
     o = new Map(),
-    s = e.slice(-30);
+    s = messages.slice(-30);
   for (let i of s) {
     if ((i.type === "user" || i.type === "assistant") && i.isVirtual) continue;
     if (i.type === "user") {

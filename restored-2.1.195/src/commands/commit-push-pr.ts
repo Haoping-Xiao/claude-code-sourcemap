@@ -18,7 +18,7 @@
   load: () => Promise.resolve().then(() => (UPl(), NPl)),
 }),
   (FPl = O0f));
-function getPromptContent(e, t, n) {
+function getPromptContent(defaultBranch, prAttribution, n) {
   let { commit: r, pr: o } = wze(),
     s = c6(r),
     i = c6(n ?? o),
@@ -38,7 +38,7 @@ function getPromptContent(e, t, n) {
 - \`git status\`: !\`git status\`
 - \`git diff HEAD\`: !\`git diff HEAD\`
 - \`git branch --show-current\`: !\`git branch --show-current\`
-- \`git diff ${e}...HEAD\`: !\`git diff ${e}...HEAD\`
+- \`git diff ${defaultBranch}...HEAD\`: !\`git diff ${defaultBranch}...HEAD\`
 - \`gh pr view --json number\`: !\`${Su() ? "gh pr view --json number 2>/dev/null || true" : 'gh pr view --json number 2>$null; if (-not $?) { "" }'}\`
 
 ## Git Safety Protocol
@@ -52,10 +52,10 @@ function getPromptContent(e, t, n) {
 
 ## Your task
 
-Analyze all changes that will be included in the pull request, making sure to look at all relevant commits (NOT just the latest commit, but ALL commits that will be included in the pull request from the git diff ${e}...HEAD output above).
+Analyze all changes that will be included in the pull request, making sure to look at all relevant commits (NOT just the latest commit, but ALL commits that will be included in the pull request from the git diff ${defaultBranch}...HEAD output above).
 
 Based on the above changes:
-1. Create a new branch if on ${e} (use SAFEUSER from context above for the branch name prefix, falling back to whoami if SAFEUSER is empty, e.g., \`username/feature-name\`)
+1. Create a new branch if on ${defaultBranch} (use SAFEUSER from context above for the branch name prefix, falling back to whoami if SAFEUSER is empty, e.g., \`username/feature-name\`)
 2. Create a single commit with an appropriate message${s ? ", ending with the attribution text shown in the example below" : ""}:
 ${
   Su()

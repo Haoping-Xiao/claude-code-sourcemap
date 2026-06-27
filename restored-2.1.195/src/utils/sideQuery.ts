@@ -14,7 +14,7 @@ function Q7p(e) {
   let r = n.find((o) => o.type === "text");
   return r?.type === "text" ? r.text : "";
 }
-async function sideQuery(e) {
+async function sideQuery(opts) {
   let {
       model: t,
       system: n,
@@ -32,7 +32,7 @@ async function sideQuery(e) {
       stop_sequences: m,
       extraBodyParams: g,
       onFetchAttempt: h,
-    } = e,
+    } = opts,
     y = of(),
     b = await G9({
       maxRetries: l,
@@ -99,7 +99,7 @@ async function sideQuery(e) {
       type: "enabled",
       budget_tokens: Math.min(f, a - 1),
     };
-  let k = F9e(e.querySource) ? "1h" : void 0;
+  let k = F9e(opts.querySource) ? "1h" : void 0;
   if (k === "1h" && CM() && !_.includes(J2e)) _.push(J2e);
   let D = k ? x.map((V) => WXa(V, k)) : x,
     P = k
@@ -152,7 +152,7 @@ async function sideQuery(e) {
     (KJe(L),
       G("tengu_lone_surrogate_sanitized", {
         source: We("sideQuery"),
-        querySource: e.querySource,
+        querySource: opts.querySource,
       }));
   }
   let M = performance.now(),
@@ -175,7 +175,7 @@ async function sideQuery(e) {
   return (
     G("tengu_api_success", {
       requestId: Hr(B),
-      querySource: e.querySource,
+      querySource: opts.querySource,
       model: O,
       inputTokens: N.usage.input_tokens,
       outputTokens: N.usage.output_tokens,
@@ -184,7 +184,7 @@ async function sideQuery(e) {
       durationMsIncludingRetries: Math.max(0, Math.round($ - M)),
       stop_reason: Oo(N.stop_reason) ?? void 0,
       timeSinceLastApiCallMs: W !== null ? Math.max(0, Math.round(q - W)) : void 0,
-      ...nFt(e.querySource, VU(e.querySource, void 0, void 0)),
+      ...nFt(opts.querySource, VU(opts.querySource, void 0, void 0)),
     }),
     aCt(q),
     N

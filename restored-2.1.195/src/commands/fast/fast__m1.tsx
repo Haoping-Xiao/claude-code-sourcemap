@@ -78,11 +78,11 @@ function jjo() {
     color: "warning",
   };
 }
-function applyFastMode(e, t) {
+function applyFastMode(enable, setAppState) {
   if (
     (zIe(),
     io("userSettings", {
-      fastMode: e ? true : void 0,
+      fastMode: enable ? true : void 0,
     }),
     NA())
   )
@@ -90,8 +90,8 @@ function applyFastMode(e, t) {
       ?.sendControlRequest({
         subtype: "apply_flag_settings",
         settings: {
-          fastMode: e ? true : null,
-          ...(e && {
+          fastMode: enable ? true : null,
+          ...(enable && {
             model: Q2e(),
           }),
         },
@@ -100,13 +100,13 @@ function applyFastMode(e, t) {
   if (
     (k1e(
       {
-        fastMode: e,
+        fastMode: enable,
       },
-      t,
+      setAppState,
     ),
-    e)
+    enable)
   )
-    t((n) => {
+    setAppState((n) => {
       if (rg(n.mainLoopModel)) return n;
       let r = Q2e(),
         o = zo(r) === zo(Uw());
@@ -117,17 +117,17 @@ function applyFastMode(e, t) {
       };
     });
 }
-async function handleFastModeShortcut(e, t, n, r, o) {
+async function handleFastModeShortcut(enable, getAppState, setAppState, r, o) {
   let s = lle();
   if (s) return `Fast mode unavailable: ${s}`;
-  let { mainLoopModel: i } = t();
+  let { mainLoopModel: i } = getAppState();
   if (
-    (applyFastMode(e, n),
+    (applyFastMode(enable, setAppState),
     G("tengu_fast_mode_toggled", {
-      enabled: e,
+      enabled: enable,
       source: $e(r),
     }),
-    e)
+    enable)
   ) {
     let a = x1e(true),
       l = !rg(i) ? ` \xB7 model set to ${FG()}` : "",

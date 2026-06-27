@@ -16,9 +16,9 @@ The listing is not recursive. Each entry carries its own \`uri\`; subdirectories
 
 Only usable against a server that has declared support for directory listing; other servers return an error.
 `;
-function renderToolUseMessage(e) {
-  if (!e.uri || !e.server) return null;
-  return `List directory resource "${e.uri}" from server "${e.server}"`;
+function renderToolUseMessage(input) {
+  if (!input.uri || !input.server) return null;
+  return `List directory resource "${input.uri}" from server "${input.server}"`;
 }
 function uIa() {
   return "readMcpResourceDir";

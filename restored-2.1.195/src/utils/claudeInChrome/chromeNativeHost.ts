@@ -9,15 +9,15 @@
 ((iTt = require("util")),
   ($sm = new Set(["bridge_status", "error_type", "tool_name"])),
   (Kcc = ["ask", "skip_all_permission_checks", "follow_a_plan"]));
-function log(e, ...t) {
+function log(message, ...t) {
   if (Jcc) {
     let n = new Date().toISOString(),
       r = t.length > 0 ? " " + De(t) : "",
-      o = `[${n}] [Claude Chrome Native Host] ${e}${r}
+      o = `[${n}] [Claude Chrome Native Host] ${message}${r}
 `;
     f2.appendFile(Jcc, o).catch(() => {});
   }
-  console.error(`[Claude Chrome Native Host] ${e}`, ...t);
+  console.error(`[Claude Chrome Native Host] ${message}`, ...t);
 }
 function sendChromeMessage(e) {
   let t = Buffer.from(e, "utf-8"),

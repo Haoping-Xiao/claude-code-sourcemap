@@ -94,8 +94,8 @@ lDp = Ahe(async (e) => {
 }, 30000);
 cDp = /^https:\/\/([\w.-]+)\/([\w.-]+)\/([\w.-]+)\/pull\/(\d+)\b/;
 K$a = /rate limit/i;
-function gitCmdRe(e, t = "") {
-  return new RegExp(`\\bgit(?:\\s+-[cC]\\s+\\S+|\\s+--\\S+=\\S+)*\\s+${e}\\b${t}`);
+function gitCmdRe(subcmd, t = "") {
+  return new RegExp(`\\bgit(?:\\s+-[cC]\\s+\\S+|\\s+--\\S+=\\S+)*\\s+${subcmd}\\b${t}`);
 }
 function Ojn(e) {
   let t = e.match($jn);
@@ -131,50 +131,50 @@ function lOa(e, t) {
   }
   return;
 }
-function detectGitOperation(e, t) {
+function detectGitOperation(command, output) {
   let n = {},
-    r = bDp.test(e);
-  if (dOa.test(e) || r) {
-    let s = Bgo(t);
+    r = bDp.test(command);
+  if (dOa.test(command) || r) {
+    let s = Bgo(output);
     if (s)
       n.commit = {
         sha: s,
-        kind: r ? "cherry-picked" : /--amend\b/.test(e) ? "amended" : "committed",
+        kind: r ? "cherry-picked" : /--amend\b/.test(command) ? "amended" : "committed",
       };
   }
-  if (Pjn.test(e)) {
-    let s = (e.split(Pjn)[1] ?? "").split(/[&|;\n]/)[0] ?? "";
+  if (Pjn.test(command)) {
+    let s = (command.split(Pjn)[1] ?? "").split(/[&|;\n]/)[0] ?? "";
     if (!/(?:^|\s)(?:-n|--dry-run)(?=\s|$)/.test(s)) {
-      let i = HDp(t);
+      let i = HDp(output);
       if (i)
         n.push = {
           branch: i,
         };
     }
   }
-  if (SDp.test(e) && /(Fast-forward|Merge made by)/.test(t)) {
-    let s = lOa(e, "merge");
+  if (SDp.test(command) && /(Fast-forward|Merge made by)/.test(output)) {
+    let s = lOa(command, "merge");
     if (s)
       n.branch = {
         ref: s,
         action: "merged",
       };
   }
-  if (EDp.test(e) && /Successfully rebased/.test(t)) {
-    let s = lOa(e, "rebase");
+  if (EDp.test(command) && /Successfully rebased/.test(output)) {
+    let s = lOa(command, "rebase");
     if (s)
       n.branch = {
         ref: s,
         action: "rebased",
       };
   }
-  let o = pOa.find((s) => s.re.test(e))?.action;
+  let o = pOa.find((s) => s.re.test(command))?.action;
   if (o === "merged") {
-    if (/--disable-auto\b/.test(e)) o = "auto-merge-disabled";
-    else if (/--auto\b/.test(e)) o = "auto-merge-enabled";
-  } else if (o === "ready" && /--undo\b/.test(e)) o = "draft";
+    if (/--disable-auto\b/.test(command)) o = "auto-merge-disabled";
+    else if (/--auto\b/.test(command)) o = "auto-merge-enabled";
+  } else if (o === "ready" && /--undo\b/.test(command)) o = "draft";
   if (o) {
-    let s = Ljn(t);
+    let s = Ljn(output);
     if (s)
       n.pr = {
         number: s.prNumber,
@@ -182,7 +182,7 @@ function detectGitOperation(e, t) {
         action: o,
       };
     else {
-      let i = TDp(t);
+      let i = TDp(output);
       if (i)
         n.pr = {
           number: i,
@@ -192,59 +192,64 @@ function detectGitOperation(e, t) {
   }
   return n;
 }
-function trackGitOperations(e, t, n) {
-  if (t !== 0) return;
-  if (dOa.test(e)) {
+function trackGitOperations(command, exitCode, stdout) {
+  if (exitCode !== 0) return;
+  if (dOa.test(command)) {
     if (
       (G("tengu_git_operation", {
         operation: We("commit"),
       }),
-      e.match(/--amend\b/))
+      command.match(/--amend\b/))
     )
       G("tengu_git_operation", {
         operation: We("commit_amend"),
       });
     W_r()?.add(1);
   }
-  if (Pjn.test(e))
+  if (Pjn.test(command))
     (G("tengu_git_operation", {
       operation: We("push"),
     }),
       tVe.emit());
-  let o = pOa.find((l) => l.re.test(e));
+  let o = pOa.find((l) => l.re.test(command));
   if (o)
     (G("tengu_git_operation", {
       operation: o.op,
     }),
       tVe.emit());
-  if ((o?.action === "merged" && !/(?:--auto|--disable-auto)\b/.test(e)) || o?.action === "closed")
+  if (
+    (o?.action === "merged" && !/(?:--auto|--disable-auto)\b/.test(command)) ||
+    o?.action === "closed"
+  )
     Wbr(true);
   if (o?.action === "created") {
-    if ((YBe()?.add(1), n)) {
-      let l = Ljn(n);
+    if ((YBe()?.add(1), stdout)) {
+      let l = Ljn(stdout);
       if (l) Djn(l);
     }
   }
-  let s = e.match(ADp);
+  let s = command.match(ADp);
   if (s?.[1]) uOa(s[1]).catch(() => {});
-  else if (Pjn.test(e) && !o) uOa().catch(() => {});
-  if (e.match(/\bglab\s+mr\s+create\b/)) {
+  else if (Pjn.test(command) && !o) uOa().catch(() => {});
+  if (command.match(/\bglab\s+mr\s+create\b/)) {
     if (
       (G("tengu_git_operation", {
         operation: We("pr_create"),
       }),
       YBe()?.add(1),
       tVe.emit(),
-      n)
+      stdout)
     ) {
-      let l = Ljn(n);
+      let l = Ljn(stdout);
       if (l) Djn(l);
     }
   }
   let i =
-      e.match(/\bcurl\b/) &&
-      (e.match(/-X\s*POST\b/i) || e.match(/--request\s*=?\s*POST\b/i) || e.match(/\s-d\s/)),
-    a = e.match(/https?:\/\/[^\s'"]*\/(pulls|pull-requests|merge[-_]requests)(?!\/\d)/i);
+      command.match(/\bcurl\b/) &&
+      (command.match(/-X\s*POST\b/i) ||
+        command.match(/--request\s*=?\s*POST\b/i) ||
+        command.match(/\s-d\s/)),
+    a = command.match(/https?:\/\/[^\s'"]*\/(pulls|pull-requests|merge[-_]requests)(?!\/\d)/i);
   if (i && a) {
     if (
       (G("tengu_git_operation", {
@@ -252,9 +257,9 @@ function trackGitOperations(e, t, n) {
       }),
       YBe()?.add(1),
       tVe.emit(),
-      n)
+      stdout)
     ) {
-      let l = Ljn(n);
+      let l = Ljn(stdout);
       if (l) Djn(l);
     }
   }

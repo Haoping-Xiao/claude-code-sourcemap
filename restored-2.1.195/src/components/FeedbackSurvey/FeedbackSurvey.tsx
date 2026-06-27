@@ -29,7 +29,7 @@
       label: "Don't ask again",
     },
   ]));
-function FeedbackSurvey(e) {
+function FeedbackSurvey(t0) {
   let t = _Yo.c(33),
     {
       state: n,
@@ -46,7 +46,7 @@ function FeedbackSurvey(e) {
       memoryEvaluation: f,
       showNotSure: m,
       transcriptBundlePath: g,
-    } = e,
+    } = t0,
     h = m === void 0 ? false : m;
   if (n === "closed") return null;
   if (n === "pending") {

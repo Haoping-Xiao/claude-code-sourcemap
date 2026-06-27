@@ -104,7 +104,7 @@ async function SCm(e = new Set()) {
   }
   return t;
 }
-async function performBackgroundPluginInstallations(e) {
+async function performBackgroundPluginInstallations(setAppState) {
   T("performBackgroundPluginInstallations called");
   try {
     let t = f3(),
@@ -112,7 +112,7 @@ async function performBackgroundPluginInstallations(e) {
       r = MYo(t, n),
       o = [...r.missing, ...r.sourceChanged.map((a) => a.name)];
     if (
-      (e((a) => ({
+      (setAppState((a) => ({
         ...a,
         plugins: {
           ...a.plugins,
@@ -132,13 +132,13 @@ async function performBackgroundPluginInstallations(e) {
       onProgress: (a) => {
         switch (a.type) {
           case "installing":
-            OYo(e, a.name, "installing");
+            OYo(setAppState, a.name, "installing");
             break;
           case "installed":
-            OYo(e, a.name, "installed");
+            OYo(setAppState, a.name, "installed");
             break;
           case "failed":
-            OYo(e, a.name, "failed", a.error);
+            OYo(setAppState, a.name, "failed", a.error);
             break;
         }
       },
@@ -160,13 +160,13 @@ async function performBackgroundPluginInstallations(e) {
           `Auto-refreshing plugins (installed: ${s.installed.length}, stale-refreshed: ${i.size})`,
         ));
       try {
-        await iTe(e);
+        await iTe(setAppState);
       } catch (a) {
         (T(`Auto-refresh failed, falling back to needsRefresh: ${a}`, {
           level: "error",
         }),
           PI("performBackgroundPluginInstallations: auto-refresh failed"),
-          e((l) => {
+          setAppState((l) => {
             if (l.plugins.needsRefresh) return l;
             return {
               ...l,
@@ -182,7 +182,7 @@ async function performBackgroundPluginInstallations(e) {
     } else if (s.updated.length > 0)
       (gOe(),
         PI("performBackgroundPluginInstallations: marketplaces reconciled"),
-        e((a) => {
+        setAppState((a) => {
           if (a.plugins.needsRefresh) return a;
           return {
             ...a,

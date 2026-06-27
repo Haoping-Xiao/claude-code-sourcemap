@@ -542,9 +542,9 @@ function Zpm(e) {
 function efm(e) {
   return e.tasks;
 }
-function Item(e) {
+function Item(t0) {
   let t = $Tt.c(16),
-    { isSelected: n, isViewed: r, labelWidth: o, moreAbove: s, onClick: i } = e,
+    { isSelected: n, isViewed: r, labelWidth: o, moreAbove: s, onClick: i } = t0,
     [a, l] = xZ.useState(false),
     c = n || a ? nt.pointer + " " : "  ",
     u = r ? gc : nt.circle,

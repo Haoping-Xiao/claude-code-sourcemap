@@ -6,19 +6,24 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fyl] deps: ZE, tP, Rd, co, Ao, Jt
 Uyl = require("crypto");
-function runPostToolUseHooks(e, t, n, r) {
-  if (e !== ka && e !== Wc) return null;
-  if (typeof n !== "object" || n === null || !("file_path" in n) || typeof n.file_path !== "string")
+function runPostToolUseHooks(toolUseContext, tool, toolUseID, messageId) {
+  if (toolUseContext !== ka && toolUseContext !== Wc) return null;
+  if (
+    typeof toolUseID !== "object" ||
+    toolUseID === null ||
+    !("file_path" in toolUseID) ||
+    typeof toolUseID.file_path !== "string"
+  )
     return null;
   try {
-    let o = ds(n.file_path),
-      s = r.get(o);
+    let o = ds(toolUseID.file_path),
+      s = messageId.get(o);
     if (!s || s.offset !== void 0 || s.limit !== void 0) return null;
     let i = Fee(o);
     if (i <= s.timestamp) return null;
     let a = Bee(o);
     if (
-      (r.set(o, {
+      (messageId.set(o, {
         content: a.content,
         timestamp: i,
         offset: void 0,
@@ -28,7 +33,7 @@ function runPostToolUseHooks(e, t, n, r) {
     )
       return null;
     return (
-      T(`PostToolUse hook modified ${o} after ${e} \u2014 re-synced readFileState`, {
+      T(`PostToolUse hook modified ${o} after ${toolUseContext} \u2014 re-synced readFileState`, {
         level: "info",
       }),
       ai({
@@ -36,8 +41,8 @@ function runPostToolUseHooks(e, t, n, r) {
         content: [
           `PostToolUse hook modified ${o} after your edit (likely a formatter). Your next Edit will not fail with a stale-file error, but if its old_string targets a region the hook reformatted, Read the file first.`,
         ],
-        hookName: `PostToolUse:${e}`,
-        toolUseID: t,
+        hookName: `PostToolUse:${toolUseContext}`,
+        toolUseID: tool,
         hookEvent: "PostToolUse",
       })
     );

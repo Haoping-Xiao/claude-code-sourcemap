@@ -291,7 +291,7 @@ function isTrackedClaudeInChromeTabId(e) {
 function SKd() {
   dlt.clear();
 }
-async function openInChrome(e) {
+async function openInChrome(url) {
   let t = Vt(),
     n = await detectAvailableBrowser();
   if (!n)
@@ -303,19 +303,19 @@ async function openInChrome(e) {
   let r = CHROMIUM_BROWSERS[n];
   switch (t) {
     case "macos": {
-      let { code: o } = await $n("open", ["-a", r.macos.appName, e]);
+      let { code: o } = await $n("open", ["-a", r.macos.appName, url]);
       if (o === 0) return (xe("chrome_open_url"), true);
       return (Le("chrome_open_url", "exec_failed"), false);
     }
     case "windows": {
-      let { code: o } = await $n("rundll32", ["url,OpenURL", e]);
+      let { code: o } = await $n("rundll32", ["url,OpenURL", url]);
       if (o === 0) return (xe("chrome_open_url"), true);
       return (Le("chrome_open_url", "exec_failed"), false);
     }
     case "wsl":
     case "linux": {
       for (let o of r.linux.binaries) {
-        let { code: s } = await $n(o, [e]);
+        let { code: s } = await $n(o, [url]);
         if (s === 0) return (xe("chrome_open_url"), true);
       }
       return (Le("chrome_open_url", "exec_failed"), false);

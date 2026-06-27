@@ -257,18 +257,23 @@ function yyf() {
   for (let n = 0; n < 8; n++) t += TASK_ID_ALPHABET[e[n] % TASK_ID_ALPHABET.length];
   return t;
 }
-function registerMainSessionTask(e, t, n, r) {
+function registerMainSessionTask(
+  description,
+  setAppState,
+  mainThreadAgentDefinition,
+  existingAbortController,
+) {
   let o = yyf();
   ZAe(o, uk(Bu(o)));
-  let s = r ?? Sl(),
-    i = n ?? hyf,
+  let s = existingAbortController ?? Sl(),
+    i = mainThreadAgentDefinition ?? hyf,
     a = {
-      ...LT(o, "local_agent", e),
+      ...LT(o, "local_agent", description),
       type: "local_agent",
       status: "running",
       agentId: o,
       ownerAgentId: ls(),
-      prompt: e,
+      prompt: description,
       selectedAgent: i,
       agentType: "main-session",
       abortController: s,
@@ -281,10 +286,10 @@ function registerMainSessionTask(e, t, n, r) {
       diskLoaded: false,
     };
   return (
-    T(`[LocalMainSessionTask] Registering task ${o} with description: ${e}`),
-    t.register(a),
+    T(`[LocalMainSessionTask] Registering task ${o} with description: ${description}`),
+    setAppState.register(a),
     T(
-      `[LocalMainSessionTask] After registration, task ${o} exists in state: ${t.get(o) !== void 0}`,
+      `[LocalMainSessionTask] After registration, task ${o} exists in state: ${setAppState.get(o) !== void 0}`,
     ),
     {
       taskId: o,
@@ -292,12 +297,12 @@ function registerMainSessionTask(e, t, n, r) {
     }
   );
 }
-function completeMainSessionTask(e, t, n) {
-  let r = t ? "completed" : "failed",
+function completeMainSessionTask(taskId, success, setAppState) {
+  let r = success ? "completed" : "failed",
     o,
     s;
   if (
-    (n.update(e, (i) => {
+    (setAppState.update(taskId, (i) => {
       if (i.status !== "running") return i;
       return (
         (o = i.toolUseId),
@@ -310,24 +315,25 @@ function completeMainSessionTask(e, t, n) {
         }
       );
     }),
-    n.updateTranscript(e, (i) => ({
+    setAppState.updateTranscript(taskId, (i) => ({
       ...i,
       messages: i.messages.length ? [i.messages.at(-1)] : [],
     })),
-    jy(e),
+    jy(taskId),
     s === void 0)
   )
     return;
-  if (t) xe("task_main_session");
+  if (success) xe("task_main_session");
   else Le("task_main_session", "task_main_session_failed");
-  xf(e, r, {
+  xf(taskId, r, {
     toolUseId: o,
     summary: s,
   });
 }
-function isMainSessionTask(e) {
-  if (typeof e !== "object" || e === null || !("type" in e) || !("agentType" in e)) return false;
-  return e.type === "local_agent" && e.agentType === "main-session";
+function isMainSessionTask(task) {
+  if (typeof task !== "object" || task === null || !("type" in task) || !("agentType" in task))
+    return false;
+  return task.type === "local_agent" && task.agentType === "main-session";
 }
 function startBackgroundSession({
   messages: e,

@@ -5,9 +5,9 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: AutoModeOptInDialog, AUTO_MODE_DESCRIPTION
-function AutoModeOptInDialog(e) {
+function AutoModeOptInDialog(t0) {
   let t = Lyc.c(25),
-    { onAccept: n, onDecline: r, declineExits: o } = e,
+    { onAccept: n, onDecline: r, declineExits: o } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((s = []), (t[0] = s));
   else s = t[0];

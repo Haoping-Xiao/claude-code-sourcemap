@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vl] deps: si, fH, _i, $Ge, Kce, Tc, Ye, PUt, g0, gm, APn, xZr, TPn, uzi, gzi
 ((IPn = R(lt(), 1)), (One = R(rt(), 1)), (Zl = R(se(), 1)));
-function useShortcutDisplay(e, t, n) {
+function useShortcutDisplay(action, context, fallback) {
   let r = KE(),
-    o = r?.getDisplayText(e, t),
+    o = r?.getDisplayText(action, context),
     s = o === void 0,
     i = r ? "action_not_found" : "no_context",
     a = xPn.useRef(false);
@@ -17,15 +17,15 @@ function useShortcutDisplay(e, t, n) {
       if (s && !a.current)
         ((a.current = true),
           G("tengu_keybinding_fallback_used", {
-            action: e,
-            context: $e(t),
-            fallback: n,
+            action: action,
+            context: $e(context),
+            fallback: fallback,
             reason: $e(i),
           }));
-    }, [s, e, t, n, i]),
+    }, [s, action, context, fallback, i]),
     s)
   )
-    return n;
+    return fallback;
   return o === null ? "" : o;
 }
 var xPn;

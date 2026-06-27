@@ -9,7 +9,7 @@
 function G0o(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "dream";
 }
-function registerDreamTask(e, t) {
+function registerDreamTask(setAppState, opts) {
   let n = iN("dream"),
     r = {
       ...LT(n, "dream", "dreaming"),
@@ -17,13 +17,13 @@ function registerDreamTask(e, t) {
       status: "running",
       skipTranscript: true,
       phase: "starting",
-      sessionsReviewing: t.sessionsReviewing,
+      sessionsReviewing: opts.sessionsReviewing,
       filesTouched: [],
       turns: [],
-      abortController: t.abortController,
-      priorMtime: t.priorMtime,
+      abortController: opts.abortController,
+      priorMtime: opts.priorMtime,
     };
-  return (e.register(r), n);
+  return (setAppState.register(r), n);
 }
 function syl(e, t, n, r) {
   r.update(e, (o) => {

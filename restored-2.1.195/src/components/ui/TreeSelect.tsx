@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LVl] deps: Ye, ps, LL, wpe, es, _a, Cc, Bs, Ko, CH, qXt
 ((kVl = R(lt(), 1)), (Nor = R(rt(), 1)), (S3 = R(se(), 1)));
-function TreeSelect(e) {
+function TreeSelect(t0) {
   let t = DVl.c(48),
     {
       nodes: n,
@@ -24,7 +24,7 @@ function TreeSelect(e) {
       getParentPrefix: m,
       getChildPrefix: g,
       onUpFromFirstItem: h,
-    } = e,
+    } = t0,
     y = l === void 0 ? "expanded" : l,
     b = c === void 0 ? false : c,
     _ = u === void 0 ? false : u,

@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.2051  score=0.2885  fileCov=0.415
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function RemoteEnvironmentDialog(e) {
+function RemoteEnvironmentDialog(t0) {
   let t = n3o.c(28),
-    { onDone: n } = e,
+    { onDone: n } = t0,
     [r, o] = uTe.useState("loading"),
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((s = []), (t[0] = s));
@@ -201,7 +201,7 @@ function JJl(e) {
     value: t,
   };
 }
-function MultipleEnvironmentsContent(e) {
+function MultipleEnvironmentsContent(t0) {
   let t = n3o.c(24),
     {
       targets: n,
@@ -211,7 +211,7 @@ function MultipleEnvironmentsContent(e) {
       loadingState: i,
       onSelect: a,
       onCancel: l,
-    } = e,
+    } = t0,
     c;
   if (t[0] !== o)
     ((c = o && o !== "localSettings" ? ` (from ${wG(o)} settings)` : ""), (t[0] = o), (t[1] = c));

@@ -17,10 +17,10 @@ function jzn(e) {
     )
   );
 }
-function wrapCommandText(e) {
+function wrapCommandText(raw) {
   for (let o of D8n)
-    if (e.endsWith(o)) {
-      e = e.slice(0, -o.length);
+    if (raw.endsWith(o)) {
+      raw = raw.slice(0, -o.length);
       break;
     }
   for (let o of [
@@ -29,8 +29,8 @@ function wrapCommandText(e) {
     `${yoe}:
 `,
   ])
-    if (e.startsWith(o) && e.startsWith(`<${DB} `, o.length)) {
-      e = e.slice(o.length);
+    if (raw.startsWith(o) && raw.startsWith(`<${DB} `, o.length)) {
+      raw = raw.slice(o.length);
       break;
     }
   let t = new RegExp(
@@ -39,27 +39,27 @@ function wrapCommandText(e) {
     ),
     n = [],
     r = 0;
-  while (r < e.length) {
+  while (r < raw.length) {
     t.lastIndex = r;
-    let o = t.exec(e);
+    let o = t.exec(raw);
     if (!o)
       return {
         messages: n,
-        unparsed: e.slice(r),
+        unparsed: raw.slice(r),
       };
     let s = r + o[0].length,
       i = -1,
-      a = e.length;
-    for (let c = e.indexOf(KCo, s); c !== -1; c = e.indexOf(KCo, c + 1)) {
+      a = raw.length;
+    for (let c = raw.indexOf(KCo, s); c !== -1; c = raw.indexOf(KCo, c + 1)) {
       let u = c + KCo.length;
-      while (u < e.length && /\s/.test(e.charAt(u))) u++;
-      if (((t.lastIndex = u), u === e.length || t.test(e))) {
+      while (u < raw.length && /\s/.test(raw.charAt(u))) u++;
+      if (((t.lastIndex = u), u === raw.length || t.test(raw))) {
         ((i = c), (a = u));
         break;
       }
     }
-    if (i === -1) i = e.length;
-    let l = e.slice(s, i).trim();
+    if (i === -1) i = raw.length;
+    let l = raw.slice(s, i).trim();
     (n.push({
       teammateId: TLe(o[1] ?? ""),
       color: o[2] ? TLe(o[2]) : void 0,

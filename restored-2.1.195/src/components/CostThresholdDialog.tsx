@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bmc] deps: Fy, vi
 ((ymc = R(lt(), 1)), (A8o = R(se(), 1)));
-function CostThresholdDialog(e) {
+function CostThresholdDialog(t0) {
   let t = Smc.c(7),
-    { onDone: n } = e,
+    { onDone: n } = t0,
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((r = n7e.jsxs(U, {

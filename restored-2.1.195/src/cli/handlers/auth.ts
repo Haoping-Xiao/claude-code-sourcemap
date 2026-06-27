@@ -18,13 +18,13 @@ async function pKa(e) {
   } catch {}
   process.exit(1);
 }
-async function installOAuthTokens(e) {
+async function installOAuthTokens(tokens) {
   await ggt({
     clearOnboarding: !1,
     preserveInProcessTokens: !0,
     preserveNonAnthropicAuth: !0,
   });
-  let t = e.profile ?? (await OIe(e.accessToken));
+  let t = tokens.profile ?? (await OIe(tokens.accessToken));
   if (t?.account && t.organization)
     Cnt({
       accountUuid: t.account.uuid,
@@ -41,40 +41,40 @@ async function installOAuthTokens(e) {
       seatTier: t.organization.seat_tier ?? null,
       profileFetchedAt: Date.now(),
     });
-  else if (e.tokenAccount)
+  else if (tokens.tokenAccount)
     Cnt({
-      accountUuid: e.tokenAccount.uuid,
-      emailAddress: e.tokenAccount.emailAddress,
-      organizationUuid: e.tokenAccount.organizationUuid,
+      accountUuid: tokens.tokenAccount.uuid,
+      emailAddress: tokens.tokenAccount.emailAddress,
+      organizationUuid: tokens.tokenAccount.organizationUuid,
     });
   ZGe({
     action: "login",
     success: !0,
     authMethod: "oauth",
   });
-  let n = await jle(e);
+  let n = await jle(tokens);
   if ((dU(), process.env.CLAUDE_CODE_OAUTH_TOKEN))
     if (n.success) delete process.env.CLAUDE_CODE_OAUTH_TOKEN;
-    else process.env.CLAUDE_CODE_OAUTH_TOKEN = e.accessToken;
-  if (TCt()) iee(n.success ? null : e.accessToken);
+    else process.env.CLAUDE_CODE_OAUTH_TOKEN = tokens.accessToken;
+  if (TCt()) iee(n.success ? null : tokens.accessToken);
   if (n.warning)
     G("tengu_oauth_storage_warning", {
       warning: n.warning,
     });
   if (
-    (await yUr(e.accessToken).catch((r) =>
+    (await yUr(tokens.accessToken).catch((r) =>
       T(String(r), {
         level: "error",
       }),
     ),
-    hj(e.scopes))
+    hj(tokens.scopes))
   )
     await rza().catch((r) =>
       T(String(r), {
         level: "error",
       }),
     );
-  else if (!(await _Ur(e.accessToken)))
+  else if (!(await _Ur(tokens.accessToken)))
     throw Error(
       "Unable to create API key. The server accepted the request but did not return a key.",
     );
@@ -216,7 +216,7 @@ ${
     (f.close(), p.cleanup());
   }
 }
-async function authStatus(e, t) {
+async function authStatus(opts, t) {
   let { source: n, hasToken: r } = aI(),
     { source: o } = Ty(),
     s = !!process.env.ANTHROPIC_API_KEY && !nv(),
@@ -266,12 +266,12 @@ async function authStatus(e, t) {
     });
   }
   (xe("cli_auth_status"),
-    e.render(
+    opts.render(
       Pgt.jsx(V_, {
         children: d,
       }),
     ),
-    await e.waitUntilExit(),
+    await opts.waitUntilExit(),
     process.exit(c ? 0 : 1));
 }
 async function authLogout(e) {

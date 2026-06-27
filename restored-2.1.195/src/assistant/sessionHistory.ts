@@ -42,9 +42,9 @@ async function Gbc(e, t, n) {
     hasMore: i !== null,
   };
 }
-async function fetchLatestEvents(e, t = Wdr, n) {
+async function fetchLatestEvents(ctx, t = Wdr, n) {
   let r = await Gbc(
-    e,
+    ctx,
     {
       limit: t,
       sort_order: "desc",
@@ -56,13 +56,13 @@ async function fetchLatestEvents(e, t = Wdr, n) {
     else xe("assistant_history_load");
   return r;
 }
-async function fetchOlderEvents(e, t, n = Wdr) {
+async function fetchOlderEvents(ctx, beforeId, n = Wdr) {
   return Gbc(
-    e,
+    ctx,
     {
       limit: n,
       sort_order: "desc",
-      cursor: t,
+      cursor: beforeId,
     },
     "fetchOlderEvents",
   );

@@ -6,13 +6,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h7n] deps: sr
 ((Agl = require("dns")), (d0o = require("net")));
-async function ssrfError(e, t) {
-  let n = new URL(e),
+async function ssrfError(hostname, address) {
+  let n = new URL(hostname),
     r = n.hostname.replace(/^\[|\]$/g, "");
   if (wgl.isIP(r))
     return {
-      url: e,
-      tls: t.tls,
+      url: hostname,
+      tls: address.tls,
     };
   let o;
   try {
@@ -28,15 +28,15 @@ async function ssrfError(e, t) {
       throw new y7n(
         `${r} resolves to ${a}, which is in a private, link-local, or cloud-metadata range`,
       );
-  if (t.proxy)
+  if (address.proxy)
     return {
-      url: e,
-      tls: t.tls,
+      url: hostname,
+      tls: address.tls,
     };
   if (n.protocol === "wss:")
     return {
-      url: e,
-      tls: t.tls,
+      url: hostname,
+      tls: address.tls,
     };
   let s = o.find((a) => a.family === 4) ?? o[0],
     i = n.host;
@@ -47,7 +47,7 @@ async function ssrfError(e, t) {
       headers: {
         Host: i,
       },
-      tls: t.tls,
+      tls: address.tls,
     }
   );
 }

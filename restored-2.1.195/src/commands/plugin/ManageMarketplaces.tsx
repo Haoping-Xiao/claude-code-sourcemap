@@ -871,9 +871,9 @@ function ManageMarketplaces({
     ],
   });
 }
-function ManageMarketplacesKeyHints(e) {
+function ManageMarketplacesKeyHints(t0) {
   let t = njl.c(18),
-    { exitState: n, hasPendingActions: r } = e;
+    { exitState: n, hasPendingActions: r } = t0;
   if (n.pending) {
     let d;
     if (t[0] !== n.keyName)

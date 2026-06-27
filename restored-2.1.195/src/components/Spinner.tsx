@@ -29,7 +29,7 @@ function wH(e) {
   if ("isBackgrounded" in e && e.isBackgrounded === false) return false;
   return true;
 }
-function SpinnerWithVerb(e) {
+function SpinnerWithVerb(props) {
   let t = FVt.c(15),
     {
       mode: n,
@@ -42,7 +42,7 @@ function SpinnerWithVerb(e) {
       turnEffort: c,
       retryStatus: u,
       defaultVerb: d,
-    } = RMa(e.agentId),
+    } = RMa(props.agentId),
     p = Ht(QXp),
     f = Ht(JXp),
     m = Oe.CLAUDE_CODE_BRIEF;
@@ -69,12 +69,12 @@ function SpinnerWithVerb(e) {
     t[8] !== o ||
     t[9] !== r ||
     t[10] !== s ||
-    t[11] !== e ||
+    t[11] !== props ||
     t[12] !== u ||
     t[13] !== c
   )
     ((g = $f.jsx(SpinnerWithVerbInner, {
-      ...e,
+      ...props,
       mode: n,
       overrideMessage: r,
       overrideColor: o,
@@ -94,7 +94,7 @@ function SpinnerWithVerb(e) {
       (t[8] = o),
       (t[9] = r),
       (t[10] = s),
-      (t[11] = e),
+      (t[11] = props),
       (t[12] = u),
       (t[13] = c),
       (t[14] = g));
@@ -275,9 +275,9 @@ function SpinnerWithVerbInner({
     ],
   });
 }
-function BriefSpinner(e) {
+function BriefSpinner(t0) {
   let t = FVt.c(34),
-    { mode: n, overrideMessage: r } = e,
+    { mode: n, overrideMessage: r } = t0,
     o = G_(),
     s = Sd(),
     i;

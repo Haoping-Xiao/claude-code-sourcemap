@@ -12,13 +12,13 @@ function Aef(e, t) {
   let n = lGe(e, t).height;
   return e.endsWith(oyt) ? n - 1 : n;
 }
-function FileWriteToolCreatedMessage(e) {
+function FileWriteToolCreatedMessage(t0) {
   let t = f6n.c(31),
     {
       filePath: n,
       content: r,
       verbose: o
-    } = e,
+    } = t0,
     {
       columns: s
     } = br(),
@@ -76,8 +76,8 @@ function FileWriteToolCreatedMessage(e) {
   }), t[27] = S, t[28] = A, t[29] = h, t[30] = v;else v = t[30];
   return v;
 }
-function userFacingName(e) {
-  if (e?.file_path?.startsWith(gS())) return "Updated plan";
+function userFacingName(input) {
+  if (input?.file_path?.startsWith(gS())) return "Updated plan";
   return "Write";
 }
 function Ctl({
@@ -158,7 +158,7 @@ function Tef(e) {
   }), t[17] = d, t[18] = p, t[19] = f;else f = t[19];
   return f;
 }
-function WriteRejectionBody(e) {
+function WriteRejectionBody(t0) {
   let t = f6n.c(8),
     {
       promise: n,
@@ -167,7 +167,7 @@ function WriteRejectionBody(e) {
       createFallback: s,
       style: i,
       verbose: a
-    } = e,
+    } = t0,
     l = syt.use(n);
   if (l.type === "create") return s;
   if (l.type === "error") {
@@ -229,17 +229,17 @@ async function wef(e, t) {
     };
   }
 }
-function renderToolUseErrorMessage(e, {
+function renderToolUseErrorMessage(result, {
   verbose: t
 }) {
-  if (!t && typeof e === "string" && xl(e, "tool_use_error")) return uA.jsx(qn, {
+  if (!t && typeof result === "string" && xl(result, "tool_use_error")) return uA.jsx(qn, {
     children: uA.jsx(w, {
       color: "error",
       children: "Error writing file"
     })
   });
   return uA.jsx(AT, {
-    result: e,
+    result: result,
     verbose: t
   });
 }
@@ -249,7 +249,7 @@ function renderToolResultMessage({
   structuredPatch: n,
   type: r,
   originalFile: o
-}, s, {
+}, _progressMessagesForMessage, {
   style: i,
   verbose: a
 }) {

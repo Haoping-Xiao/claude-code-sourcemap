@@ -7,13 +7,13 @@
 // [unwrapped __esm module KBt] deps: je, p8, hWi, aGe, K_e, HWi, bW, gGe, Jke, iXr, mJr, IBt
 HLn = new Uint32Array(0);
 yGe = vLn;
-function createNode(e, t) {
-  if (e.nodeName === "#text") return e.nodeValue;
-  let n = e.accessibility;
+function createNode(nodeName, t) {
+  if (nodeName.nodeName === "#text") return nodeName.nodeValue;
+  let n = nodeName.accessibility;
   if (n?.hidden) return "";
-  if (e.isHidden || e.yogaNode?.getDisplay() === 1) return "";
+  if (nodeName.isHidden || nodeName.yogaNode?.getDisplay() === 1) return "";
   let r = "";
-  if (n?.label !== void 0) r = n.label;else if (e.nodeName === "ink-text" || e.nodeName === "ink-virtual-text" || e.nodeName === "ink-link") for (let o of e.childNodes) r += createNode(o, n?.role ?? t);else if (e.nodeName === "ink-box" || e.nodeName === "ink-root") r = sWd(e, n?.role ?? t);
+  if (n?.label !== void 0) r = n.label;else if (nodeName.nodeName === "ink-text" || nodeName.nodeName === "ink-virtual-text" || nodeName.nodeName === "ink-link") for (let o of nodeName.childNodes) r += createNode(o, n?.role ?? t);else if (nodeName.nodeName === "ink-box" || nodeName.nodeName === "ink-root") r = sWd(nodeName, n?.role ?? t);
   if (n?.state) {
     let o = Object.keys(n.state).filter(s => n.state[s]);
     if (o.length > 0) r = `(${o.join(", ")}) ${r}`;

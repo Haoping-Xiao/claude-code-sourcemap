@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lil] deps: si, np, Ye, co
 ((kil = R(lt(), 1)), (Vpe = R(se(), 1)));
-function UserLocalCommandOutputMessage(e) {
+function UserLocalCommandOutputMessage(t0) {
   let t = Vzn.c(2),
-    { content: n } = e,
+    { content: n } = t0,
     r;
   if (t[0] !== n) {
     let o = xl(n, "local-command-stdout"),
@@ -38,9 +38,9 @@ function UserLocalCommandOutputMessage(e) {
   if (r.length === 0) return null;
   return r;
 }
-function IndentedContent(e) {
+function IndentedContent(t0) {
   let t = Vzn.c(5),
-    { children: n } = e;
+    { children: n } = t0;
   if (n.startsWith(`${mv} `) || n.startsWith(`${BO} `)) {
     let s;
     if (t[0] !== n)
@@ -80,9 +80,9 @@ function IndentedContent(e) {
   else o = t[4];
   return o;
 }
-function CloudLaunchContent(e) {
+function CloudLaunchContent(t0) {
   let t = Vzn.c(19),
-    { children: n } = e,
+    { children: n } = t0,
     r = n[0],
     o,
     s,

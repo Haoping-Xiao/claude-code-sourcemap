@@ -27,8 +27,8 @@ function J0c() {
 function Q0c() {
   return false;
 }
-function hasMemoryFileRead(e) {
-  for (let t of e) {
+function hasMemoryFileRead(messages) {
+  for (let t of messages) {
     if (t.type !== "assistant") continue;
     let n = t.message.content;
     if (!Array.isArray(n)) continue;
@@ -41,15 +41,15 @@ function hasMemoryFileRead(e) {
   return false;
 }
 function useMemorySurvey(
-  e,
-  t,
+  messages,
+  isLoading,
   n = false,
   { enabled: r = true, otherSurveyActive: o = false } = {},
 ) {
   let s = nD.useRef(new Set()),
     i = nD.useRef(false),
-    a = nD.useRef(e);
-  a.current = e;
+    a = nD.useRef(messages);
+  a.current = messages;
   let l = Ht((D) => D.lastMemoryEvaluation),
     [c, u] = nD.useState(null),
     d = nD.useRef(null),
@@ -131,29 +131,29 @@ function useMemorySurvey(
       onTranscriptPromptShown: y,
       onTranscriptSelect: b,
     }),
-    k = nD.useMemo(() => MI(e), [e]);
+    k = nD.useMemo(() => MI(messages), [messages]);
   return (
     nD.useEffect(() => {
-      if (e.length === 0) {
+      if (messages.length === 0) {
         ((i.current = false), s.current.clear());
         return;
       }
-      if (_ !== "closed" || t || n) return;
+      if (_ !== "closed" || isLoading || n) return;
       if (o) return;
       if (!r || Q0c() || !J0c()) return;
       if (!k || s.current.has(k.uuid)) return;
       let D = zl(k.message.content, " ");
       if (!qvm.test(D)) return;
-      if ((s.current.add(k.uuid), !i.current)) i.current = hasMemoryFileRead(e);
+      if ((s.current.add(k.uuid), !i.current)) i.current = hasMemoryFileRead(messages);
       if (!i.current) return;
       if (X0c() || Math.random() < Y0c()) v();
-    }, [r, o, _, t, n, k, e, v]),
+    }, [r, o, _, isLoading, n, k, messages, v]),
     nD.useEffect(() => {
-      if (e.length === 0) {
+      if (messages.length === 0) {
         ((d.current = null), u(null));
         return;
       }
-      if (_ !== "closed" || t || n) return;
+      if (_ !== "closed" || isLoading || n) return;
       if (o) return;
       if (!r || !Q0c() || !J0c()) return;
       if (!k || !l) return;
@@ -166,7 +166,7 @@ function useMemorySurvey(
       if (!i.current) return;
       if (D.classification !== "harmed" && !X0c() && Math.random() >= Y0c()) return;
       ((d.current = D), u(D), v());
-    }, [r, o, _, t, n, k, l, e.length, v]),
+    }, [r, o, _, isLoading, n, k, l, messages.length, v]),
     {
       state: _,
       lastResponse: S,

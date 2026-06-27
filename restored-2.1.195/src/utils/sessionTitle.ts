@@ -37,9 +37,9 @@ function vFo(e, t) {
 function JGl(e) {
   return e.find(xut);
 }
-function extractConversationText(e) {
+function extractConversationText(messages) {
   let t = [];
-  for (let r of e) {
+  for (let r of messages) {
     if (r.type !== "user" && r.type !== "assistant") continue;
     if ("isMeta" in r && r.isMeta) continue;
     if ("origin" in r && !YW(r.origin)) continue;
@@ -53,8 +53,8 @@ function extractConversationText(e) {
 `);
   return n.length > YGl ? n.slice(-YGl) : n;
 }
-async function generateSessionTitle(e, t) {
-  let n = e.trim();
+async function generateSessionTitle(description, signal) {
+  let n = description.trim();
   if (n.length < J2f) return null;
   let r = Dr().language,
     o = r
@@ -81,7 +81,7 @@ ${o}`,
             additionalProperties: false,
           },
         },
-        signal: t,
+        signal: signal,
         options: {
           querySource: "generate_session_title",
           agents: [],

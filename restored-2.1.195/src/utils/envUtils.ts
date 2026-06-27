@@ -60,10 +60,10 @@ function qH() {
 function Ors() {
   return Nsn("--bare") ? "restart without --bare" : "unset CLAUDE_CODE_SIMPLE";
 }
-function parseEnvVars(e) {
+function parseEnvVars(rawEnvArgs) {
   let t = {};
-  if (e)
-    for (let n of e) {
+  if (rawEnvArgs)
+    for (let n of rawEnvArgs) {
       let [r, ...o] = n.split("=");
       if (!r || o.length === 0)
         throw Error(

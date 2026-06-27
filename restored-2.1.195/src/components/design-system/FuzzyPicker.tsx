@@ -321,7 +321,7 @@ function FuzzyPicker({
     }),
   });
 }
-function List(e) {
+function List(t0) {
   let t = B6l.c(36),
     {
       visible: n,
@@ -336,7 +336,7 @@ function List(e) {
       marked: d,
       onItemClick: p,
       onItemHover: f,
-    } = e;
+    } = t0;
   if (n.length === 0) {
     let _;
     if (t[0] !== u)

@@ -6,13 +6,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lJ] deps: si, Ye
 exa = R(lt(), 1), gqe = R(se(), 1);
-function generateWordDiffElements(e) {
+function generateWordDiffElements(item) {
   let t = txa.c(10),
     {
       added: n,
       removed: r,
       bold: o
-    } = e;
+    } = item;
   if (n === 0 && r === 0) return null;
   let s;
   if (t[0] !== n || t[1] !== o) s = n > 0 && iFn.jsxs(w, {

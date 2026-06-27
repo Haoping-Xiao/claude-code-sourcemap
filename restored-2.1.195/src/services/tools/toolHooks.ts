@@ -4,25 +4,46 @@
 // class=modified  jaccard=0.5296  score=0.7633  fileCov=0.6337
 // note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function* runPostToolUseHooks(e, t, n, r, o, s, i, a, l, c) {
-  if (w$e(t)) return;
-  if (e.options.bareFork) return;
+async function* runPostToolUseHooks(
+  toolUseContext,
+  tool,
+  toolUseID,
+  messageId,
+  toolInput,
+  toolResponse,
+  requestId,
+  mcpServerType,
+  mcpServerBaseUrl,
+  c,
+) {
+  if (w$e(tool)) return;
+  if (toolUseContext.options.bareFork) return;
   let u = Date.now();
   try {
-    let d = Fr(e).mode;
-    for await (let p of Szt(t.name, n, o, s, e, d, e.abortController.signal, void 0, c))
+    let d = Fr(toolUseContext).mode;
+    for await (let p of Szt(
+      tool.name,
+      toolUseID,
+      toolInput,
+      toolResponse,
+      toolUseContext,
+      d,
+      toolUseContext.abortController.signal,
+      void 0,
+      c,
+    ))
       try {
         if (p.message?.type === "attachment" && p.message.attachment.type === "hook_cancelled") {
           (G("tengu_post_tool_hooks_cancelled", {
-            toolName: Ui(t.name),
-            queryChainId: Hr(e.queryTracking?.chainId),
-            queryDepth: e.queryTracking?.depth,
+            toolName: Ui(tool.name),
+            queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+            queryDepth: toolUseContext.queryTracking?.depth,
           }),
             yield {
               message: ai({
                 type: "hook_cancelled",
-                hookName: `PostToolUse:${t.name}`,
-                toolUseID: n,
+                hookName: `PostToolUse:${tool.name}`,
+                toolUseID: toolUseID,
                 hookEvent: "PostToolUse",
               }),
             });
@@ -39,8 +60,8 @@ async function* runPostToolUseHooks(e, t, n, r, o, s, i, a, l, c) {
           yield {
             message: ai({
               type: "hook_blocking_error",
-              hookName: `PostToolUse:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUse:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUse",
               blockingError: p.blockingError,
             }),
@@ -49,7 +70,7 @@ async function* runPostToolUseHooks(e, t, n, r, o, s, i, a, l, c) {
           yield {
             updatedToolOutput: p.updatedToolOutput,
           };
-        if (p.updatedMCPToolOutput !== void 0 && gk(t))
+        if (p.updatedMCPToolOutput !== void 0 && gk(tool))
           yield {
             updatedToolOutput: p.updatedMCPToolOutput,
           };
@@ -58,8 +79,8 @@ async function* runPostToolUseHooks(e, t, n, r, o, s, i, a, l, c) {
             message: ai({
               type: "hook_stopped_continuation",
               message: p.stopReason || "Execution stopped by PostToolUse hook",
-              hookName: `PostToolUse:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUse:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUse",
             }),
           };
@@ -70,69 +91,92 @@ async function* runPostToolUseHooks(e, t, n, r, o, s, i, a, l, c) {
             message: ai({
               type: "hook_additional_context",
               content: p.additionalContexts,
-              hookName: `PostToolUse:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUse:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUse",
             }),
           };
       } catch (f) {
         let m = Date.now() - u;
         (G("tengu_post_tool_hook_error", {
-          messageID: Hr(r),
-          toolName: Ui(t.name),
-          isMcp: t.isMcp ?? false,
+          messageID: Hr(messageId),
+          toolName: Ui(tool.name),
+          isMcp: tool.isMcp ?? false,
           duration: m,
-          queryChainId: Hr(e.queryTracking?.chainId),
-          queryDepth: e.queryTracking?.depth,
-          ...(a && {
-            mcpServerType: $e(a),
+          queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+          queryDepth: toolUseContext.queryTracking?.depth,
+          ...(mcpServerType && {
+            mcpServerType: $e(mcpServerType),
           }),
-          ...(i && {
-            requestId: Hr(i),
+          ...(requestId && {
+            requestId: Hr(requestId),
           }),
         }),
           yield {
             message: ai({
               type: "hook_error_during_execution",
               content: YAe(f),
-              hookName: `PostToolUse:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUse:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUse",
             }),
           });
       }
   } catch (d) {
     if (lh(d)) {
-      if (e.abortController.signal.aborted) throw d;
+      if (toolUseContext.abortController.signal.aborted) throw d;
       (T("PostToolUse hook timed out (per-hook abort)"),
         G("tengu_sdk_hook_callback_timeout", {
           hookEvent: We("PostToolUse"),
-          toolName: Ui(t.name),
+          toolName: Ui(tool.name),
         }));
       return;
     }
     ke(d);
   }
 }
-async function* runPostToolUseFailureHooks(e, t, n, r, o, s, i, a, l, c, u) {
-  if (w$e(t)) return;
-  if (e.options.bareFork) return;
+async function* runPostToolUseFailureHooks(
+  toolUseContext,
+  tool,
+  toolUseID,
+  messageId,
+  processedInput,
+  error,
+  isInterrupt,
+  requestId,
+  mcpServerType,
+  mcpServerBaseUrl,
+  u,
+) {
+  if (w$e(tool)) return;
+  if (toolUseContext.options.bareFork) return;
   let d = Date.now();
   try {
-    let p = Fr(e).mode;
-    for await (let f of Ezt(t.name, n, o, s, e, i, p, e.abortController.signal, void 0, u))
+    let p = Fr(toolUseContext).mode;
+    for await (let f of Ezt(
+      tool.name,
+      toolUseID,
+      processedInput,
+      error,
+      toolUseContext,
+      isInterrupt,
+      p,
+      toolUseContext.abortController.signal,
+      void 0,
+      u,
+    ))
       try {
         if (f.message?.type === "attachment" && f.message.attachment.type === "hook_cancelled") {
           (G("tengu_post_tool_failure_hooks_cancelled", {
-            toolName: Ui(t.name),
-            queryChainId: Hr(e.queryTracking?.chainId),
-            queryDepth: e.queryTracking?.depth,
+            toolName: Ui(tool.name),
+            queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+            queryDepth: toolUseContext.queryTracking?.depth,
           }),
             yield {
               message: ai({
                 type: "hook_cancelled",
-                hookName: `PostToolUseFailure:${t.name}`,
-                toolUseID: n,
+                hookName: `PostToolUseFailure:${tool.name}`,
+                toolUseID: toolUseID,
                 hookEvent: "PostToolUseFailure",
               }),
             });
@@ -149,8 +193,8 @@ async function* runPostToolUseFailureHooks(e, t, n, r, o, s, i, a, l, c, u) {
           yield {
             message: ai({
               type: "hook_blocking_error",
-              hookName: `PostToolUseFailure:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUseFailure:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUseFailure",
               blockingError: f.blockingError,
             }),
@@ -160,93 +204,102 @@ async function* runPostToolUseFailureHooks(e, t, n, r, o, s, i, a, l, c, u) {
             message: ai({
               type: "hook_additional_context",
               content: f.additionalContexts,
-              hookName: `PostToolUseFailure:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUseFailure:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUseFailure",
             }),
           };
       } catch (m) {
         let g = Date.now() - d;
         (G("tengu_post_tool_failure_hook_error", {
-          messageID: Hr(r),
-          toolName: Ui(t.name),
-          isMcp: t.isMcp ?? false,
+          messageID: Hr(messageId),
+          toolName: Ui(tool.name),
+          isMcp: tool.isMcp ?? false,
           duration: g,
-          queryChainId: Hr(e.queryTracking?.chainId),
-          queryDepth: e.queryTracking?.depth,
-          ...(l && {
-            mcpServerType: $e(l),
+          queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+          queryDepth: toolUseContext.queryTracking?.depth,
+          ...(mcpServerType && {
+            mcpServerType: $e(mcpServerType),
           }),
-          ...(a && {
-            requestId: Hr(a),
+          ...(requestId && {
+            requestId: Hr(requestId),
           }),
         }),
           yield {
             message: ai({
               type: "hook_error_during_execution",
               content: YAe(m),
-              hookName: `PostToolUseFailure:${t.name}`,
-              toolUseID: n,
+              hookName: `PostToolUseFailure:${tool.name}`,
+              toolUseID: toolUseID,
               hookEvent: "PostToolUseFailure",
             }),
           });
       }
   } catch (p) {
     if (lh(p)) {
-      if (e.abortController.signal.aborted) T("PostToolUseFailure hook cancelled (parent abort)");
+      if (toolUseContext.abortController.signal.aborted)
+        T("PostToolUseFailure hook cancelled (parent abort)");
       else
         (T("PostToolUseFailure hook timed out (per-hook abort)"),
           G("tengu_sdk_hook_callback_timeout", {
             hookEvent: We("PostToolUseFailure"),
-            toolName: Ui(t.name),
+            toolName: Ui(tool.name),
           }));
       return;
     }
     ke(p);
   }
 }
-async function resolveHookPermissionDecision(e, t, n, r, o, s, i) {
-  if (w$e(t))
+async function resolveHookPermissionDecision(
+  hookPermissionResult,
+  tool,
+  input,
+  toolUseContext,
+  canUseTool,
+  assistantMessage,
+  toolUseID,
+) {
+  if (w$e(tool))
     return {
       decision: {
         behavior: "allow",
-        updatedInput: n,
+        updatedInput: input,
       },
-      input: n,
+      input: input,
     };
-  let a = t.requiresUserInteraction?.(),
-    l = r.requireCanUseTool;
-  if (e?.behavior === "deny")
+  let a = tool.requiresUserInteraction?.(),
+    l = toolUseContext.requireCanUseTool;
+  if (hookPermissionResult?.behavior === "deny")
     return (
-      T(`Hook denied tool use for ${t.name}`),
+      T(`Hook denied tool use for ${tool.name}`),
       {
-        decision: e,
-        input: n,
+        decision: hookPermissionResult,
+        input: input,
       }
     );
-  if (e?.behavior !== "allow" && e?.behavior !== "ask")
+  if (hookPermissionResult?.behavior !== "allow" && hookPermissionResult?.behavior !== "ask")
     return {
-      decision: await o(t, n, r, s, i),
-      input: n,
+      decision: await canUseTool(tool, input, toolUseContext, assistantMessage, toolUseID),
+      input: input,
     };
-  let c = e.behavior,
-    u = e.updatedInput ?? n,
-    d = a && e.updatedInput !== void 0;
+  let c = hookPermissionResult.behavior,
+    u = hookPermissionResult.updatedInput ?? input,
+    d = a && hookPermissionResult.updatedInput !== void 0;
   if (c === "allow" && ((a && !d) || l))
     return (
-      T(`Hook approved tool use for ${t.name}, but canUseTool is required`),
+      T(`Hook approved tool use for ${tool.name}, but canUseTool is required`),
       {
-        decision: await o(t, u, r, s, i),
+        decision: await canUseTool(tool, u, toolUseContext, assistantMessage, toolUseID),
         input: u,
       }
     );
-  let p = await u$e(t, u, {
-    ...r,
-    toolUseId: i,
+  let p = await u$e(tool, u, {
+    ...toolUseContext,
+    toolUseId: toolUseID,
   });
   if (p?.behavior === "deny")
     return (
-      T(`Hook returned '${c}' for ${t.name}, but deny rule overrides: ${p.message}`),
+      T(`Hook returned '${c}' for ${tool.name}, but deny rule overrides: ${p.message}`),
       {
         decision: p,
         input: u,
@@ -255,10 +308,10 @@ async function resolveHookPermissionDecision(e, t, n, r, o, s, i) {
   if (p?.behavior === "ask")
     return (
       T(
-        `Hook returned '${c}' for ${t.name}, but ask rule/safety check requires full permission pipeline`,
+        `Hook returned '${c}' for ${tool.name}, but ask rule/safety check requires full permission pipeline`,
       ),
       {
-        decision: await o(t, u, r, s, i),
+        decision: await canUseTool(tool, u, toolUseContext, assistantMessage, toolUseID),
         input: u,
       }
     );
@@ -266,27 +319,50 @@ async function resolveHookPermissionDecision(e, t, n, r, o, s, i) {
     return (
       T(
         d
-          ? `Hook satisfied user interaction for ${t.name} via updatedInput`
-          : `Hook approved tool use for ${t.name}, bypassing permission prompt`,
+          ? `Hook satisfied user interaction for ${tool.name} via updatedInput`
+          : `Hook approved tool use for ${tool.name}, bypassing permission prompt`,
       ),
       {
-        decision: e,
+        decision: hookPermissionResult,
         input: u,
       }
     );
   return {
-    decision: await o(t, u, r, s, i, e),
+    decision: await canUseTool(
+      tool,
+      u,
+      toolUseContext,
+      assistantMessage,
+      toolUseID,
+      hookPermissionResult,
+    ),
     input: u,
   };
 }
-async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
-  if (w$e(t)) return;
-  if (e.options.bareFork) return;
+async function* runPreToolUseHooks(
+  toolUseContext,
+  tool,
+  processedInput,
+  toolUseID,
+  messageId,
+  requestId,
+  mcpServerType,
+  mcpServerBaseUrl,
+) {
+  if (w$e(tool)) return;
+  if (toolUseContext.options.bareFork) return;
   let l = Date.now(),
     c,
     u = false;
   try {
-    for await (let d of bzt(t.name, r, n, e, Fr(e).mode, e.abortController.signal))
+    for await (let d of bzt(
+      tool.name,
+      toolUseID,
+      processedInput,
+      toolUseContext,
+      Fr(toolUseContext).mode,
+      toolUseContext.abortController.signal,
+    ))
       try {
         if (
           d.message &&
@@ -300,7 +376,7 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
           };
         if (d.blockingError) {
           u = true;
-          let p = tRo(`PreToolUse:${t.name}`, d.blockingError);
+          let p = tRo(`PreToolUse:${tool.name}`, d.blockingError);
           yield {
             type: "hookPermissionResult",
             hookPermissionResult: {
@@ -308,18 +384,18 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
               message: p,
               decisionReason: {
                 type: "hook",
-                hookName: `PreToolUse:${t.name}`,
+                hookName: `PreToolUse:${tool.name}`,
                 reason: p,
               },
             },
           };
         }
         if (d.updatedInput !== void 0) {
-          let p = t.inputSchema.safeParse(d.updatedInput),
+          let p = tool.inputSchema.safeParse(d.updatedInput),
             f = p.success ? [] : p.error.issues.filter((m) => m.code !== "unrecognized_keys");
           if (!p.success && f.length > 0) {
             let m = new ol.ZodError(f),
-              g = `PreToolUse hook for ${t.name} returned updatedInput that failed schema validation: ${Y6e(t.name, m)}`;
+              g = `PreToolUse hook for ${tool.name} returned updatedInput that failed schema validation: ${Y6e(tool.name, m)}`;
             (T(g, {
               level: "warn",
             }),
@@ -331,7 +407,7 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
                   message: g,
                   decisionReason: {
                     type: "hook",
-                    hookName: `PreToolUse:${t.name}`,
+                    hookName: `PreToolUse:${tool.name}`,
                     hookSource: d.hookSource,
                     reason: g,
                   },
@@ -358,13 +434,13 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
             (T(`Hook result has permissionBehavior=${d.permissionBehavior}`),
             d.permissionBehavior === "defer")
           ) {
-            c = d.hookSource || `PreToolUse:${t.name}`;
+            c = d.hookSource || `PreToolUse:${tool.name}`;
             continue;
           }
           if (d.permissionBehavior === "deny") u = true;
           let p = {
             type: "hook",
-            hookName: `PreToolUse:${t.name}`,
+            hookName: `PreToolUse:${tool.name}`,
             hookSource: d.hookSource,
             reason: d.hookPermissionDecisionReason,
           };
@@ -385,7 +461,7 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
                 updatedInput: d.updatedInput,
                 message:
                   d.hookPermissionDecisionReason ||
-                  `Hook PreToolUse:${t.name} ${Z0o(d.permissionBehavior)} this tool`,
+                  `Hook PreToolUse:${tool.name} ${Z0o(d.permissionBehavior)} this tool`,
                 decisionReason: p,
               },
             };
@@ -396,7 +472,7 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
                 behavior: d.permissionBehavior,
                 message:
                   d.hookPermissionDecisionReason ||
-                  `Hook PreToolUse:${t.name} ${Z0o(d.permissionBehavior)} this tool`,
+                  `Hook PreToolUse:${tool.name} ${Z0o(d.permissionBehavior)} this tool`,
                 decisionReason: p,
               },
             };
@@ -413,25 +489,25 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
               message: ai({
                 type: "hook_additional_context",
                 content: d.additionalContexts,
-                hookName: `PreToolUse:${t.name}`,
-                toolUseID: r,
+                hookName: `PreToolUse:${tool.name}`,
+                toolUseID: toolUseID,
                 hookEvent: "PreToolUse",
               }),
             },
           };
-        if (e.abortController.signal.aborted) {
+        if (toolUseContext.abortController.signal.aborted) {
           (G("tengu_pre_tool_hooks_cancelled", {
-            toolName: Ui(t.name),
-            queryChainId: Hr(e.queryTracking?.chainId),
-            queryDepth: e.queryTracking?.depth,
+            toolName: Ui(tool.name),
+            queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+            queryDepth: toolUseContext.queryTracking?.depth,
           }),
             yield {
               type: "message",
               message: {
                 message: ai({
                   type: "hook_cancelled",
-                  hookName: `PreToolUse:${t.name}`,
-                  toolUseID: r,
+                  hookName: `PreToolUse:${tool.name}`,
+                  toolUseID: toolUseID,
                   hookEvent: "PreToolUse",
                 }),
               },
@@ -445,17 +521,17 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
         ke(p);
         let f = Date.now() - l;
         (G("tengu_pre_tool_hook_error", {
-          messageID: Hr(o),
-          toolName: Ui(t.name),
-          isMcp: t.isMcp ?? false,
+          messageID: Hr(messageId),
+          toolName: Ui(tool.name),
+          isMcp: tool.isMcp ?? false,
           duration: f,
-          queryChainId: Hr(e.queryTracking?.chainId),
-          queryDepth: e.queryTracking?.depth,
-          ...(i && {
-            mcpServerType: $e(i),
+          queryChainId: Hr(toolUseContext.queryTracking?.chainId),
+          queryDepth: toolUseContext.queryTracking?.depth,
+          ...(mcpServerType && {
+            mcpServerType: $e(mcpServerType),
           }),
-          ...(s && {
-            requestId: Hr(s),
+          ...(requestId && {
+            requestId: Hr(requestId),
           }),
         }),
           yield {
@@ -464,8 +540,8 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
               message: ai({
                 type: "hook_error_during_execution",
                 content: YAe(p),
-                hookName: `PreToolUse:${t.name}`,
-                toolUseID: r,
+                hookName: `PreToolUse:${tool.name}`,
+                toolUseID: toolUseID,
                 hookEvent: "PreToolUse",
               }),
             },
@@ -476,12 +552,13 @@ async function* runPreToolUseHooks(e, t, n, r, o, s, i, a) {
       }
   } catch (d) {
     if (lh(d)) {
-      if (e.abortController.signal.aborted) T("PreToolUse hook cancelled (parent abort)");
+      if (toolUseContext.abortController.signal.aborted)
+        T("PreToolUse hook cancelled (parent abort)");
       else
         (T("PreToolUse hook timed out (per-hook abort)"),
           G("tengu_sdk_hook_callback_timeout", {
             hookEvent: We("PreToolUse"),
-            toolName: Ui(t.name),
+            toolName: Ui(tool.name),
           }));
     } else ke(d);
     yield {

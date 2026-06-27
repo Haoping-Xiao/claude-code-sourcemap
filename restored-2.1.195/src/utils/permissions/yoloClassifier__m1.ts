@@ -71,20 +71,20 @@ function YXa(e, t, n) {
       Le("tips_context_reception_score", "tips_context_reception_request_failed"));
   });
 }
-async function classifyYoloActionXml(e, t, n) {
-  let r = kHo(e, t);
+async function classifyYoloActionXml(prefixMessages, systemPrompt, userPrompt) {
+  let r = kHo(prefixMessages, systemPrompt);
   if (r.length === 0) {
     N9n({
       outcome: "no_transcript",
-      featureId: n.tip.featureId,
-      classifierLogId: n.classifierLogId,
+      featureId: userPrompt.tip.featureId,
+      classifierLogId: userPrompt.classifierLogId,
     });
     return;
   }
   let o = `<tip_shown>
-Feature: ${n.tip.featureId}
-Tip: ${n.tip.tip}
-Suggested action: ${n.tip.action ?? "(none)"}
+Feature: ${userPrompt.tip.featureId}
+Tip: ${userPrompt.tip.tip}
+Suggested action: ${userPrompt.tip.action ?? "(none)"}
 </tip_shown>`,
     s = Date.now(),
     i = await yN({
@@ -130,20 +130,20 @@ ${r}
   if (!c) {
     (N9n({
       outcome: "parse_failure",
-      featureId: n.tip.featureId,
-      classifierLogId: n.classifierLogId,
+      featureId: userPrompt.tip.featureId,
+      classifierLogId: userPrompt.classifierLogId,
       durationMs: a,
     }),
       Le("tips_context_reception_score", "tips_context_reception_parse_failed"));
     return;
   }
   (T(
-    `[context-tips] reception: feature=${n.tip.featureId} acted_on=${c.acted_on} reception=${c.reception}`,
+    `[context-tips] reception: feature=${userPrompt.tip.featureId} acted_on=${c.acted_on} reception=${c.reception}`,
   ),
     N9n({
       outcome: "scored",
-      featureId: n.tip.featureId,
-      classifierLogId: n.classifierLogId,
+      featureId: userPrompt.tip.featureId,
+      classifierLogId: userPrompt.classifierLogId,
       receptionClassifierLogId: i.id,
       actedOn: c.acted_on,
       reception: c.reception,

@@ -52,35 +52,35 @@ async function Zwf(e, t, n, r) {
     )
   ).reduce((i, a) => i + a, 0);
 }
-async function isToolSearchEnabled(e, t, n, r, o) {
-  let s = On(t, (l) => l.isMcp);
+async function isToolSearchEnabled(model, tools, getToolPermissionContext, agents, source) {
+  let s = On(tools, (l) => l.isMcp);
   function i(l, c, u, d) {
     G("tengu_tool_search_mode_decision", {
       enabled: l,
       mode: $e(c),
       reason: u,
-      checkedModel: e,
+      checkedModel: model,
       mcpToolCount: s,
       mcpNonBlocking: Vve(),
       userType: "external",
       ...d,
     });
   }
-  if (!CX(e))
+  if (!CX(model))
     return (
       T(
-        `Tool search disabled for model '${e}': model does not support tool_reference blocks. This feature is available on Claude Sonnet 4+, Opus 4+, Haiku 4.5+, and newer models.`,
+        `Tool search disabled for model '${model}': model does not support tool_reference blocks. This feature is available on Claude Sonnet 4+, Opus 4+, Haiku 4.5+, and newer models.`,
       ),
       i(false, "standard", "model_unsupported"),
       false
     );
-  if (!gle(e, "tool_search_server") || !gle(e, "tool_search"))
+  if (!gle(model, "tool_search_server") || !gle(model, "tool_search"))
     return (
-      T(`Tool search disabled: Foundry deployment for '${e}' does not support tool search.`),
+      T(`Tool search disabled: Foundry deployment for '${model}' does not support tool search.`),
       i(false, "standard", "foundry_deployment_unsupported"),
       false
     );
-  if (!isToolSearchToolAvailable(t))
+  if (!isToolSearchToolAvailable(tools))
     return (
       T(
         "Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).",
@@ -93,15 +93,19 @@ async function isToolSearchEnabled(e, t, n, r, o) {
     case "tst":
       return (i(true, a, "tst_enabled"), true);
     case "tst-auto": {
-      let { enabled: l, debugDescription: c, metrics: u } = await checkAutoThreshold(t, n, r, e);
+      let {
+        enabled: l,
+        debugDescription: c,
+        metrics: u,
+      } = await checkAutoThreshold(tools, getToolPermissionContext, agents, model);
       if (l)
         return (
-          T(`Auto tool search enabled: ${c}` + (o ? ` [source: ${o}]` : "")),
+          T(`Auto tool search enabled: ${c}` + (source ? ` [source: ${source}]` : "")),
           i(true, a, "auto_above_threshold", u),
           true
         );
       return (
-        T(`Auto tool search disabled: ${c}` + (o ? ` [source: ${o}]` : "")),
+        T(`Auto tool search disabled: ${c}` + (source ? ` [source: ${source}]` : "")),
         i(false, a, "auto_below_threshold", u),
         false
       );
@@ -110,26 +114,26 @@ async function isToolSearchEnabled(e, t, n, r, o) {
       return (i(false, a, "standard_mode"), false);
   }
 }
-function isToolReferenceBlock(e) {
-  return typeof e === "object" && e !== null && "type" in e && e.type === "tool_reference";
+function isToolReferenceBlock(obj) {
+  return typeof obj === "object" && obj !== null && "type" in obj && obj.type === "tool_reference";
 }
-function isToolReferenceWithName(e) {
-  return isToolReferenceBlock(e) && "tool_name" in e && typeof e.tool_name === "string";
+function isToolReferenceWithName(obj) {
+  return isToolReferenceBlock(obj) && "tool_name" in obj && typeof obj.tool_name === "string";
 }
-function isToolResultBlockWithContent(e) {
+function isToolResultBlockWithContent(obj) {
   return (
-    typeof e === "object" &&
-    e !== null &&
-    "type" in e &&
-    e.type === "tool_result" &&
-    "content" in e &&
-    Array.isArray(e.content)
+    typeof obj === "object" &&
+    obj !== null &&
+    "type" in obj &&
+    obj.type === "tool_result" &&
+    "content" in obj &&
+    Array.isArray(obj.content)
   );
 }
-function extractDiscoveredToolNames(e) {
+function extractDiscoveredToolNames(messages) {
   let t = new Set(),
     n = 0;
-  for (let r of e) {
+  for (let r of messages) {
     if (r.type === "system" && r.subtype === "compact_boundary") {
       let s = r.compactMetadata?.preCompactDiscoveredTools;
       if (s) {
@@ -153,14 +157,14 @@ function extractDiscoveredToolNames(e) {
     );
   return t;
 }
-function getDeferredToolsDelta(e, t, n, r) {
+function getDeferredToolsDelta(tools, messages, scanContext, r) {
   let o = new Set(),
     s = new Set(),
     i = [],
     a = 0,
     l = 0,
     c = new Set();
-  for (let S of t) {
+  for (let S of messages) {
     if (S.type !== "attachment") continue;
     if ((a++, c.add(S.attachment.type), S.attachment.type !== "deferred_tools_delta")) continue;
     l++;
@@ -172,9 +176,9 @@ function getDeferredToolsDelta(e, t, n, r) {
     for (let v of S.attachment.removedNames) o.delete(v);
     if (S.attachment.pendingMcpServers !== void 0) i = S.attachment.pendingMcpServers;
   }
-  let u = e.filter(y4),
+  let u = tools.filter(y4),
     d = new Set(u.map((S) => S.name)),
-    p = new Set(e.map((S) => S.name)),
+    p = new Set(tools.map((S) => S.name)),
     f = u.filter((S) => !o.has(S.name)),
     m = u.filter((S) => !s.has(S.name)),
     g = f.filter((S) => s.has(S.name)).map((S) => S.name),
@@ -197,11 +201,11 @@ function getDeferredToolsDelta(e, t, n, r) {
       pendingCount: y.length,
       lastPendingCount: i.length,
       priorAnnouncedCount: o.size,
-      messagesLength: t.length,
+      messagesLength: messages.length,
       attachmentCount: a,
       dtdCount: l,
-      callSite: $e(n?.callSite ?? "unknown"),
-      querySource: Bh(n?.querySource) ?? "unknown",
+      callSite: $e(scanContext?.callSite ?? "unknown"),
+      querySource: Bh(scanContext?.querySource) ?? "unknown",
       attachmentTypesSeen: [...c].sort().join(","),
     }),
     {
@@ -226,10 +230,10 @@ function summarizeByServerPrefix(e) {
     .map(([n, r]) => (r > 1 ? `${n} (${r})` : n))
     .join(", ");
 }
-async function checkAutoThreshold(e, t, n, r) {
-  let o = await Qwf(e, t, n, r);
+async function checkAutoThreshold(tools, getToolPermissionContext, agents, model) {
+  let o = await Qwf(tools, getToolPermissionContext, agents, model);
   if (o !== null) {
-    let a = Mkl(r);
+    let a = Mkl(model);
     return {
       enabled: o >= a,
       debugDescription: `${o} tokens (threshold: ${a}, ${CMo()}% of context)`,
@@ -239,8 +243,8 @@ async function checkAutoThreshold(e, t, n, r) {
       },
     };
   }
-  let s = await Zwf(e, t, n, r),
-    i = getAutoToolSearchCharThreshold(r);
+  let s = await Zwf(tools, getToolPermissionContext, agents, model),
+    i = getAutoToolSearchCharThreshold(model);
   return {
     enabled: s >= i,
     debugDescription: `${s} chars (threshold: ${i}, ${CMo()}% of context) (char fallback)`,

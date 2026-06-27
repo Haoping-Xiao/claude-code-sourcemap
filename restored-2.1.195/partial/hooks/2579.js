@@ -9,12 +9,12 @@ F0e = R(rt(), 1);
 function ig(e, t, n) {
   return hzi(No, t, e, n);
 }
-function useExitOnCtrlCD(e, t, n = true) {
+function useExitOnCtrlCD(useKeybindingsHook, onInterrupt, n = true) {
   let {
     handleInterrupt: r,
     handleExit: o,
     exitState: s
-  } = DZr(t, e);
+  } = DZr(onInterrupt, useKeybindingsHook);
   return {
     entries: _zi.useMemo(() => n ? [{
       action: "app:interrupt",

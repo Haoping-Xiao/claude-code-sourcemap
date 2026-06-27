@@ -9,9 +9,9 @@ function Wfc({ isNonInteractive: e, isMeta: t, callerSource: n }) {
   if (t) return "system";
   return n ?? "typed";
 }
-function BashModeProgress(e) {
+function BashModeProgress(t0) {
   let t = qfc.c(8),
-    { input: n, progress: r, verbose: o } = e,
+    { input: n, progress: r, verbose: o } = t0,
     s = `<bash-input>${n}</bash-input>`,
     i;
   if (t[0] !== s)

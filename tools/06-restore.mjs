@@ -74,6 +74,13 @@ function mergedRenames(name) {
   if (!a && !b) return undefined;
   return { ...(a || {}), ...(b || {}) }; // 手工覆盖自动
 }
+// 自动参数名对齐 (09 产物): { moduleVar: { minifiedDeclName: { oldParam: newParam } } }
+let PARAM_RENAMES = {};
+const PARAM_RENAMES_PATH = process.env.AUTO_PARAM_RENAMES || `work/${VERSION}/auto-param-renames.json`;
+if (existsSync(PARAM_RENAMES_PATH)) {
+  try { PARAM_RENAMES = JSON.parse(readFileSync(PARAM_RENAMES_PATH, "utf-8")); } catch {}
+  console.log(`[06] loaded auto param-renames for ${Object.keys(PARAM_RENAMES).length} modules from ${PARAM_RENAMES_PATH}`);
+}
 
 // ── helpers ───────────────────────────────────────────────────────────────
 
@@ -233,7 +240,28 @@ function removeDeadExportObjects(ast) {
   });
 }
 
-async function deobfuscate(content, { pretty, structural = true, extraRenames = null }) {
+// 函数参数名按位重命名 (函数作用域内安全应用)
+function applyParamRenames(ast, paramRenames) {
+  traverse(ast, {
+    Function(path) {
+      let key = null;
+      if (path.node.type === "FunctionDeclaration" && path.node.id) key = path.node.id.name;
+      else if (path.parentPath.isVariableDeclarator() && path.parent.id && path.parent.id.type === "Identifier") key = path.parent.id.name;
+      if (!key) return;
+      const pm = paramRenames[key];
+      if (!pm) return;
+      for (const [op, np] of Object.entries(pm)) {
+        if (RESERVED.has(np)) continue;
+        const b = path.scope.getBinding(op);
+        if (b && b.kind === "param" && !path.scope.getBinding(np)) {
+          try { path.scope.rename(op, np); } catch {}
+        }
+      }
+    },
+  });
+}
+
+async function deobfuscate(content, { pretty, structural = true, extraRenames = null, paramRenames = null }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
   // 合并 displayName 恢复 (不覆盖已有的 _t 导出名)
@@ -258,6 +286,9 @@ async function deobfuscate(content, { pretty, structural = true, extraRenames = 
   }
   // 先解开 __esm/__commonJS 包裹: 让导出 local 上升到 Program 作用域, 提升重命名命中率
   try { unwrapEsm(ast); } catch { /* keep wrapped */ }
+
+  // 参数名按位恢复 (在改函数名之前: 此时函数名仍是 minified, 与 paramRenames 键一致)
+  if (paramRenames) { try { applyParamRenames(ast, paramRenames); } catch {} }
 
   // 模块内作用域重命名 (导出 local -> 原始导出名)
   let renamed = 0;
@@ -372,7 +403,7 @@ for (const [target, list] of byTarget) {
       m.vendor ? nVendor++ : nUnchanged++;
     } else {
       const pretty = !m.vendor; // app 文件用 prettier, vendor 用 babel 输出
-      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: mergedRenames(name) });
+      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: mergedRenames(name), paramRenames: PARAM_RENAMES[name] });
       if (!r.ok) nParseFail++;
       nRenamed += r.renamed;
       const clsLabel = m.vendor ? "vendor" : m.class;
@@ -443,7 +474,7 @@ for (const { name, m } of standalone) {
   else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
   if (inf) note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
-  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: mergedRenames(name) });
+  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: mergedRenames(name), paramRenames: PARAM_RENAMES[name] });
   if (!r.ok) nParseFail++;
   nRenamed += r.renamed;
   const rel = `${dir}/${idBase}.js`;

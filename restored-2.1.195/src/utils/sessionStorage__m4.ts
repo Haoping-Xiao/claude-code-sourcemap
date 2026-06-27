@@ -249,18 +249,18 @@ async function loc(e) {
     await DC.unlink(n).catch(() => {});
   }
 }
-async function getAgentMetadataPath(e) {
-  if (!e.transcriptPath) return;
-  let t = uk(Bu(e.agentId));
-  if (t === e.transcriptPath) return;
+async function getAgentMetadataPath(agentId) {
+  if (!agentId.transcriptPath) return;
+  let t = uk(Bu(agentId.agentId));
+  if (t === agentId.transcriptPath) return;
   let n = (r) => r.replace(/\.jsonl$/, ".meta.json");
-  (await DC.stat(n(e.transcriptPath)),
+  (await DC.stat(n(agentId.transcriptPath)),
     await DC.mkdir(Fse.dirname(t), {
       recursive: true,
     }));
   for (let [r, o] of [
-    [t, e.transcriptPath],
-    [n(t), n(e.transcriptPath)],
+    [t, agentId.transcriptPath],
+    [n(t), n(agentId.transcriptPath)],
   ])
     (await DC.unlink(r).catch(() => {}), await DC.symlink(o, r));
 }
@@ -332,12 +332,12 @@ function moc(e) {
   let t = new Set(Hw().map((n) => n.id));
   for (let n of e) if (!t.has(n.id)) (Rge(n), t.add(n.id));
 }
-function extractAgentIdsFromMessages(e) {
+function extractAgentIdsFromMessages(messages) {
   let t = new Map();
   if (!aoc()) return t;
   let n = (i) => (El(i) ? i.parentAgentId : "agentId" in i ? i.agentId : void 0),
     r = new Map();
-  for (let i of Object.values(e)) {
+  for (let i of Object.values(messages)) {
     if (i.status !== "running" && i.status !== "pending") continue;
     let a = n(i);
     if (a !== void 0) {
@@ -376,7 +376,7 @@ function extractAgentIdsFromMessages(e) {
       for (let c of r.get(i.id) ?? []) l = s(c, a) && l;
       return l;
     };
-  for (let i of Object.values(e)) {
+  for (let i of Object.values(messages)) {
     if (!(El(i) ? i.parentAgentId === void 0 : vT(i) ? i.agentId === void 0 : M6t(i))) continue;
     let l = [],
       c = s(i, l);

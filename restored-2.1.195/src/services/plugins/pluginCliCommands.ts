@@ -4,18 +4,22 @@
 // class=modified  jaccard=0.2016  score=0.2756  fileCov=0.4291
 // note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function handlePluginCommandError(e, t, n) {
-  let r = lX(e);
-  if (r === "unknown") ke(e);
+function handlePluginCommandError(error, command, plugin) {
+  let r = lX(error);
+  if (r === "unknown") ke(error);
   else
-    T(`Plugin command "${t}" failed: ${be(e)}`, {
+    T(`Plugin command "${command}" failed: ${be(error)}`, {
       level: "error",
     });
-  let o = n ? `${t} plugin "${n}"` : t === "disable-all" ? "disable all plugins" : `${t} plugins`;
-  console.error(`${nt.cross} Failed to ${o}: ${be(e)}`);
-  let s = n ? e4(n, R0()) : {};
+  let o = plugin
+    ? `${command} plugin "${plugin}"`
+    : command === "disable-all"
+      ? "disable all plugins"
+      : `${command} plugins`;
+  console.error(`${nt.cross} Failed to ${o}: ${be(error)}`);
+  let s = plugin ? e4(plugin, R0()) : {};
   (G("tengu_plugin_command_failed", {
-    command: $e(t),
+    command: $e(command),
     error_category: $e(r),
     ...s,
   }),
@@ -84,18 +88,18 @@ async function Lam(e, t) {
     ` \u2014 run /plugin configure ${e} in Claude Code, or pass --config KEY=VALUE.`
   );
 }
-async function installPlugin(e, t = "user", n) {
+async function installPlugin(plugin, t = "user", n) {
   try {
-    let r = await Q2l(e, t);
+    let r = await Q2l(plugin, t);
     if (!r.success) throw Error(r.message);
     G("tengu_plugin_installed_cli", {
-      ...e4(r.pluginId || e, R0()),
+      ...e4(r.pluginId || plugin, R0()),
       scope: $e(r.scope || t),
       install_source: We("cli-explicit"),
     });
     let o = "";
     try {
-      o = await Lam(r.pluginId || e, n);
+      o = await Lam(r.pluginId || plugin, n);
     } catch (s) {
       let i = be(s);
       if (
@@ -111,7 +115,7 @@ async function installPlugin(e, t = "user", n) {
 ${o}`
       : r.message;
   } catch (r) {
-    handlePluginCommandError(r, "install", e);
+    handlePluginCommandError(r, "install", plugin);
   }
 }
 async function Epc(e) {
@@ -119,12 +123,12 @@ async function Epc(e) {
     { enabled: n, disabled: r } = await mp();
   return zKi(BL().plugins, [...n, ...r], e, t);
 }
-async function uninstallPlugin(e, t = "user", n = false, r = false, o = false) {
+async function uninstallPlugin(plugin, t = "user", n = false, r = false, o = false) {
   try {
-    let s = await OHe(e, t, !n);
+    let s = await OHe(plugin, t, !n);
     if (!s.success) throw Error(s.message);
     G("tengu_plugin_uninstalled_cli", {
-      ...e4(s.pluginId || e, R0()),
+      ...e4(s.pluginId || plugin, R0()),
       scope: $e(s.scope || t),
     });
     let i = false;
@@ -150,7 +154,7 @@ async function uninstallPlugin(e, t = "user", n = false, r = false, o = false) {
 ${c}`;
     }
   } catch (s) {
-    handlePluginCommandError(s, "uninstall", e);
+    handlePluginCommandError(s, "uninstall", plugin);
   }
 }
 async function Hpc(e = "user", { dryRun: t = false, yes: n = false } = {}) {
@@ -219,19 +223,19 @@ async function Dam() {
     e.close();
   }
 }
-async function disablePlugin(e, t) {
+async function disablePlugin(plugin, scope) {
   try {
-    let n = await KEt(e, t);
+    let n = await KEt(plugin, scope);
     if (!n.success) throw Error(n.message);
     return (
       G("tengu_plugin_disabled_cli", {
-        ...e4(n.pluginId || e, R0()),
+        ...e4(n.pluginId || plugin, R0()),
         scope: Oo(n.scope),
       }),
       `${nt.tick} ${n.message}`
     );
   } catch (n) {
-    handlePluginCommandError(n, "disable", e);
+    handlePluginCommandError(n, "disable", plugin);
   }
 }
 async function disableAllPlugins() {
@@ -243,11 +247,11 @@ async function disableAllPlugins() {
     handlePluginCommandError(e, "disable-all");
   }
 }
-async function updatePluginCli(e, t) {
+async function updatePluginCli(plugin, scope) {
   try {
-    $i(`Checking for updates for plugin "${e}" at ${t} scope\u2026
+    $i(`Checking for updates for plugin "${plugin}" at ${scope} scope\u2026
 `);
-    let n = await YEt(e, t);
+    let n = await YEt(plugin, scope);
     if (!n.success) throw Error(n.message);
     if (
       ($i(`${nt.tick} ${n.message}
@@ -255,13 +259,13 @@ async function updatePluginCli(e, t) {
       !n.alreadyUpToDate && !n.skipped)
     )
       G("tengu_plugin_updated_cli", {
-        ...e4(n.pluginId || e, R0()),
+        ...e4(n.pluginId || plugin, R0()),
         old_version: n.oldVersion || "unknown",
         new_version: n.newVersion || "unknown",
       });
     (xe("cli_plugin_update"), await ki(0));
   } catch (n) {
-    handlePluginCommandError(n, "update", e);
+    handlePluginCommandError(n, "update", plugin);
   }
 }
 var bpc;

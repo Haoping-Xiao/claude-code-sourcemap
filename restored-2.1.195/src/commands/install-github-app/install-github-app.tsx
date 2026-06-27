@@ -7,7 +7,7 @@
 // module exports: call
 // [unwrapped __esm module EFl] deps: si, lJ, Ko, R6, Ye, ps
 ((bFl = R(lt(), 1)), (Wk = R(se(), 1)));
-function InstallGitHubApp(e) {
+function InstallGitHubApp(props) {
   let [t] = eZ.useState(() => lI()),
     [n, r] = eZ.useState({
       ...A1f,
@@ -18,7 +18,7 @@ function InstallGitHubApp(e) {
   (ig(),
     No(
       {
-        "confirm:no": () => e.onDone("Installation cancelled by user"),
+        "confirm:no": () => props.onDone("Installation cancelled by user"),
       },
       {
         context: "Settings",
@@ -518,7 +518,7 @@ function InstallGitHubApp(e) {
     },
     C = async (I) => {
       if (I === "exit") {
-        e.onDone("Installation cancelled by user");
+        props.onDone("Installation cancelled by user");
         return;
       }
       if (
@@ -540,7 +540,7 @@ function InstallGitHubApp(e) {
     };
   function x(I) {
     if ((I.preventDefault(), n.step === "success")) G("tengu_install_github_app_completed", {});
-    e.onDone(
+    props.onDone(
       n.step === "success"
         ? n.appOnlyInstall
           ? "GitHub App installed!"
@@ -577,7 +577,7 @@ For manual setup instructions, see: ${Vfe}`,
     case "setup-actions-prompt":
       return qN.jsx(pFl, {
         onSelect: v,
-        onCancel: () => e.onDone("Installation cancelled by user"),
+        onCancel: () => props.onDone("Installation cancelled by user"),
       });
     case "check-existing-workflow":
       return qN.jsx(nFl, {

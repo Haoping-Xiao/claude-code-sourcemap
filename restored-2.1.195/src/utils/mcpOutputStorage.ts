@@ -11,14 +11,14 @@ function isSubagentTruncationPromptEnabled() {
   let e = process.env.MCP_TRUNCATION_PROMPT_OVERRIDE;
   return e ? e !== "legacy" : at("tengu_mcp_subagent_prompt", !1);
 }
-function getFormatDescription(e, t) {
-  switch (e) {
+function getFormatDescription(type, schema) {
+  switch (type) {
     case "toolResult":
       return "Plain text";
     case "structuredContent":
-      return t ? `JSON with schema: ${t}` : "JSON";
+      return schema ? `JSON with schema: ${schema}` : "JSON";
     case "contentArray":
-      return t ? `JSON array with schema: ${t}` : "JSON array";
+      return schema ? `JSON array with schema: ${schema}` : "JSON array";
   }
 }
 function getLargeOutputInstructions(e, t, n, r, o) {
@@ -64,18 +64,18 @@ REQUIREMENTS FOR SUMMARIZATION/ANALYSIS/REVIEW:
 `
   );
 }
-function wvp(e, t, n) {
-  let r = t
-      ? `- If you receive truncation warnings when reading the file ("[N lines truncated]"), reduce the chunk size until you have read 100% of the content without truncation ***DO NOT PROCEED UNTIL YOU HAVE DONE THIS***. Bash output is limited to ${t.toLocaleString()} chars.
+function wvp(rawOutputPath, contentLength, formatDescription) {
+  let r = contentLength
+      ? `- If you receive truncation warnings when reading the file ("[N lines truncated]"), reduce the chunk size until you have read 100% of the content without truncation ***DO NOT PROCEED UNTIL YOU HAVE DONE THIS***. Bash output is limited to ${contentLength.toLocaleString()} chars.
 `
       : `- If you receive truncation warnings when reading the file, reduce the chunk size until you have read 100% of the content without truncation.
 `,
-    o = n
+    o = formatDescription
       ? `- Note: this file's lines are too long for Read's offset/limit chunking. If a shell tool is available, slice by character range (e.g. python read()[A:B], dd, or cut -c) instead.
 `
       : "";
   return (
-    `- You MUST read the content from the file at ${e} in sequential chunks until 100% of the content has been read.
+    `- You MUST read the content from the file at ${rawOutputPath} in sequential chunks until 100% of the content has been read.
 ` +
     o +
     r +
@@ -84,9 +84,9 @@ function wvp(e, t, n) {
 `
   );
 }
-function extensionForMimeType(e) {
-  if (!e) return "bin";
-  switch (bi(e, ";").trim().toLowerCase()) {
+function extensionForMimeType(mimeType) {
+  if (!mimeType) return "bin";
+  switch (bi(mimeType, ";").trim().toLowerCase()) {
     case "application/pdf":
       return "pdf";
     case "application/json":
@@ -135,9 +135,9 @@ function extensionForMimeType(e) {
       return "bin";
   }
 }
-function isBinaryContentType(e) {
-  if (!e) return !1;
-  let t = bi(e, ";").trim().toLowerCase();
+function isBinaryContentType(contentType) {
+  if (!contentType) return !1;
+  let t = bi(contentType, ";").trim().toLowerCase();
   if (t.startsWith("text/")) return !1;
   if (t.endsWith("+json") || t === "application/json") return !1;
   if (t.endsWith("+xml") || t === "application/xml") return !1;
@@ -145,12 +145,12 @@ function isBinaryContentType(e) {
   if (t === "application/x-www-form-urlencoded") return !1;
   return !0;
 }
-async function persistBinaryContent(e, t, n) {
+async function persistBinaryContent(bytes, mimeType, persistId) {
   await GSe();
-  let r = extensionForMimeType(t),
-    o = HIa.join(lde(), `${n}.${r}`);
+  let r = extensionForMimeType(mimeType),
+    o = HIa.join(lde(), `${persistId}.${r}`);
   try {
-    await qs().writeBytes(o, e);
+    await qs().writeBytes(o, bytes);
   } catch (s) {
     let i = Zr(s);
     return (
@@ -164,18 +164,18 @@ async function persistBinaryContent(e, t, n) {
   }
   return (
     G("tengu_binary_content_persisted", {
-      mimeType: t ?? "unknown",
-      sizeBytes: e.length,
+      mimeType: mimeType ?? "unknown",
+      sizeBytes: bytes.length,
       ext: r,
     }),
     {
       filepath: o,
-      size: e.length,
+      size: bytes.length,
       ext: r,
     }
   );
 }
-function getBinaryBlobSavedMessage(e, t, n, r) {
-  return `${r}Binary content (${t || "unknown type"}, ${Ra(n)}) saved to ${e}`;
+function getBinaryBlobSavedMessage(filepath, mimeType, size, sourceDescription) {
+  return `${sourceDescription}Binary content (${mimeType || "unknown type"}, ${Ra(size)}) saved to ${filepath}`;
 }
 var HIa;

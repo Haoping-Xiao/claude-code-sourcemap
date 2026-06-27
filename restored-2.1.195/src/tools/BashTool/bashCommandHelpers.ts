@@ -11,14 +11,22 @@ JJn = {
     return ((vCl = e), (XJn = BHf(e)), XJn);
   },
 };
-async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
+async function segmentedCommandPermissionResult(
+  input,
+  segments,
+  bashToolHasPermissionFn,
+  checkers,
+  o,
+  s,
+  i,
+) {
   let a = new Map();
-  for (let f = 0; f < t.length; f++) {
-    let m = t[f].trim();
+  for (let f = 0; f < segments.length; f++) {
+    let m = segments[f].trim();
     if (!m) {
-      let h = n[f],
-        y = await r({
-          ...e,
+      let h = bashToolHasPermissionFn[f],
+        y = await checkers({
+          ...input,
           command: h,
         });
       a.set(
@@ -27,7 +35,7 @@ async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
           ? {
               behavior: "allow",
               updatedInput: {
-                ...e,
+                ...input,
                 command: h,
               },
               decisionReason: {
@@ -39,8 +47,8 @@ async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
       );
       continue;
     }
-    let g = await r({
-      ...e,
+    let g = await checkers({
+      ...input,
       command: m,
     });
     a.set(m, g);
@@ -58,7 +66,7 @@ async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
     };
   }
   if (
-    t.filter((f) => {
+    segments.filter((f) => {
       let m = f.trim();
       return o.isNormalizedCdCommand(m);
     }).length > 1
@@ -92,14 +100,14 @@ async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
         (m = s.some((h) => o.isNormalizedGitCommand(h.text))));
     else {
       ((f = false), (m = false));
-      for (let h of t)
+      for (let h of segments)
         for (let y of By(h)) {
           let b = y.trim();
           if (o.isNormalizedCdCommand(b)) f = true;
           if (o.isNormalizedGitCommand(b)) m = true;
         }
     }
-    if (m && (s ? xjn(s, $t()) : ZGt(e.command))) {
+    if (m && (s ? xjn(s, $t()) : ZGt(input.command))) {
       let h = {
         type: "other",
         reason:
@@ -114,7 +122,7 @@ async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
     }
     if (f && m) {
       let h = [];
-      for (let b of t) for (let _ of By(b)) h.push(_.trim());
+      for (let b of segments) for (let _ of By(b)) h.push(_.trim());
       if (!(i ? await i(h) : false)) {
         let b = {
           type: "other",
@@ -133,7 +141,7 @@ async function segmentedCommandPermissionResult(e, t, n, r, o, s, i) {
   if (Array.from(a.values()).every((f) => f.behavior === "allow"))
     return {
       behavior: "allow",
-      updatedInput: e,
+      updatedInput: input,
       decisionReason: {
         type: "subcommandResults",
         reasons: a,
@@ -157,21 +165,35 @@ async function FHf(e) {
   if (!e.includes(">")) return e;
   return (await JJn.parse(e))?.withoutOutputRedirections() ?? e;
 }
-async function checkCommandOperatorPermissions(e, t, n, r, o, s) {
-  let i = r && r !== wue ? nPo(e.command, r) : await JJn.parse(e.command);
+async function checkCommandOperatorPermissions(
+  input,
+  bashToolHasPermissionFn,
+  checkers,
+  astRoot,
+  o,
+  s,
+) {
+  let i = astRoot && astRoot !== wue ? nPo(input.command, astRoot) : await JJn.parse(input.command);
   if (!i)
     return {
       behavior: "passthrough",
       message: "Failed to parse command",
     };
-  return bashToolCheckCommandOperatorPermissions(e, t, n, i, o, s);
+  return bashToolCheckCommandOperatorPermissions(input, bashToolHasPermissionFn, checkers, i, o, s);
 }
-async function bashToolCheckCommandOperatorPermissions(e, t, n, r, o, s) {
-  let i = r.getTreeSitterAnalysis();
+async function bashToolCheckCommandOperatorPermissions(
+  input,
+  bashToolHasPermissionFn,
+  checkers,
+  parsed,
+  o,
+  s,
+) {
+  let i = parsed.getTreeSitterAnalysis();
   if (
     i
       ? i.compoundStructure.hasSubshell || i.compoundStructure.hasCommandGroup
-      : By(e.command).length > 1
+      : By(input.command).length > 1
   ) {
     let u = {
       type: "other",
@@ -184,12 +206,12 @@ async function bashToolCheckCommandOperatorPermissions(e, t, n, r, o, s) {
       decisionReason: u,
     };
   }
-  let l = r.getPipeSegments();
+  let l = parsed.getPipeSegments();
   if (l.length <= 1)
     return {
       behavior: "passthrough",
       message: "No pipes found in command",
     };
   let c = await Promise.all(l.map((u) => FHf(u)));
-  return segmentedCommandPermissionResult(e, c, l, t, n, o, s);
+  return segmentedCommandPermissionResult(input, c, l, bashToolHasPermissionFn, checkers, o, s);
 }

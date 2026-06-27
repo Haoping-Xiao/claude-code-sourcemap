@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _1o] deps: kt, Ye, er, Fy, vi
 ((NMl = R(lt(), 1)), (BMl = R(rt(), 1)), (Dfe = R(se(), 1)));
-function ChannelDowngradeDialog(e) {
+function ChannelDowngradeDialog(t0) {
   let t = FMl.c(17),
-    { currentVersion: n, onChoice: r } = e,
+    { currentVersion: n, onChoice: r } = t0,
     o;
   if (t[0] !== r)
     ((o = function (h) {

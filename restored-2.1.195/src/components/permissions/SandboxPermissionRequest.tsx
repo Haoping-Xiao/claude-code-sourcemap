@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RLc] deps: Y4
 xfr = R(rt(), 1);
-function SandboxPermissionRequest(e) {
+function SandboxPermissionRequest(t0) {
   let t = LLc.c(22),
-    { hostPattern: n, onUserResponse: r } = e,
+    { hostPattern: n, onUserResponse: r } = t0,
     { host: o } = n,
     s;
   if (t[0] !== r)

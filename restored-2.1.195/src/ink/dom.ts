@@ -44,9 +44,9 @@ function b3i(e, t) {
     for (let c of o.childNodes) if (s3d(c)) r(c, a);
   }
 }
-var createNode = (e) => {
+var createNode = (nodeName) => {
     let n = {
-      nodeName: e,
+      nodeName: nodeName,
       attributes: {},
       childNodes: [],
       textStyles: void 0,
@@ -77,13 +77,13 @@ var createNode = (e) => {
       hasAbsoluteDescendant: void 0,
       parentNode: void 0,
       yogaNode:
-        e !== "ink-virtual-text" && e !== "ink-link" && e !== "ink-progress"
+        nodeName !== "ink-virtual-text" && nodeName !== "ink-link" && nodeName !== "ink-progress"
           ? GFi.Node.create()
           : void 0,
       style: {},
     };
-    if (e === "ink-text") n.yogaNode?.setMeasureFunc(r3d.bind(null, n));
-    else if (e === "ink-raw-ansi") n.yogaNode?.setMeasureFunc(o3d.bind(null, n));
+    if (nodeName === "ink-text") n.yogaNode?.setMeasureFunc(r3d.bind(null, n));
+    else if (nodeName === "ink-raw-ansi") n.yogaNode?.setMeasureFunc(o3d.bind(null, n));
     return n;
   },
   tLn = (e, t) => {

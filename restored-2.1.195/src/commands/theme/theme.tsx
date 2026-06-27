@@ -11,9 +11,9 @@
   (Tz = R(rt(), 1)),
   (Nf = R(se(), 1)),
   (cqf = NRr + NRr));
-function ThemePickerCommand(e) {
+function ThemePickerCommand(t0) {
   let t = G6l.c(25),
-    { onDone: n } = e,
+    { onDone: n } = t0,
     [r, o] = na(),
     { customThemes: s } = jke(),
     i;

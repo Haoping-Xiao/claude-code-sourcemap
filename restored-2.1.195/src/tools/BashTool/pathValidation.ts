@@ -16,11 +16,11 @@ function Xqe(e, t, n) {
     suggestions: [],
   };
 }
-function checkDangerousRemovalPaths(e, t, n, r, o) {
-  let s = Zpt[e],
-    i = s(t),
-    { resolvedPath: a } = jd(qt(), n),
-    l = a === n ? [n] : [n, a],
+function checkDangerousRemovalPaths(command, args, cwd, r, o) {
+  let s = Zpt[command],
+    i = s(args),
+    { resolvedPath: a } = jd(qt(), cwd),
+    l = a === cwd ? [cwd] : [cwd, a],
     c = Uo(
       [...l, ...(r ? jj(r) : [])].flatMap((u) => {
         let { resolvedPath: d } = jd(qt(), u);
@@ -29,7 +29,7 @@ function checkDangerousRemovalPaths(e, t, n, r, o) {
     );
   for (let u of i) {
     let d = LR(u),
-      p = H5.isAbsolute(d) ? d : H5.resolve(n, d),
+      p = H5.isAbsolute(d) ? d : H5.resolve(cwd, d),
       f = p;
     for (let h = ""; h !== f; ) {
       h = f;
@@ -39,17 +39,17 @@ function checkDangerousRemovalPaths(e, t, n, r, o) {
     let m = f !== p;
     if (o && m && !H5.isAbsolute(d) && /[\\/]\*$/.test(p))
       return Xqe(
-        e,
-        `Dangerous ${e} operation detected: '${p}'
+        command,
+        `Dangerous ${command} operation detected: '${p}'
 
 This command changes directories before the removal, so the relative glob target cannot be statically resolved. This requires explicit approval and cannot be auto-allowed by permission rules.`,
         `on statically-unresolvable target: ${p}`,
       );
     let g = f;
     if (!H5.isAbsolute(d)) {
-      let h = /[\\/]$/.test(n) ? n : n + H5.sep;
+      let h = /[\\/]$/.test(cwd) ? cwd : cwd + H5.sep;
       if (f.startsWith(h)) g = f.slice(h.length);
-      else if (f === n) g = "";
+      else if (f === cwd) g = "";
     }
     if (
       m &&
@@ -58,14 +58,14 @@ This command changes directories before the removal, so the relative glob target
         d.startsWith("~") ||
         /^[\\/]{2}/.test(d) ||
         (!H5.isAbsolute(d) && /(^|[\\/])\.\.([\\/]|$)/.test(d) && /[\\/]\*$/.test(p)) ||
-        (e === "rmdir" &&
+        (command === "rmdir" &&
           /[\\/]\*$/.test(p) &&
-          t.some((h) => /^--p/.test(h) || /^-[a-z]*p/.test(h))) ||
+          args.some((h) => /^--p/.test(h) || /^-[a-z]*p/.test(h))) ||
         (!H5.isAbsolute(d) && /\*[\\/]+$/.test(d) && /[\\/]\*$/.test(p)))
     )
       return Xqe(
-        e,
-        `Dangerous ${e} operation detected: '${p}'
+        command,
+        `Dangerous ${command} operation detected: '${p}'
 
 This command's removal target cannot be statically resolved to a directory. This requires explicit approval and cannot be auto-allowed by permission rules.`,
         `on statically-unresolvable target: ${p}`,
@@ -79,16 +79,16 @@ This command's removal target cannot be statically resolved to a directory. This
       for (let y of h) {
         if (yct(y))
           return Xqe(
-            e,
-            `Dangerous ${e} operation detected: '${p}'
+            command,
+            `Dangerous ${command} operation detected: '${p}'
 
 This command would remove a critical system directory. This requires explicit approval and cannot be auto-allowed by permission rules.`,
             `on critical path: ${p}`,
           );
         if ((m ? c : l).some((_) => dL(_, y)))
           return Xqe(
-            e,
-            `Dangerous ${e} operation detected: '${p}'
+            command,
+            `Dangerous ${command} operation detected: '${p}'
 
 This command would remove a workspace directory (the working directory, an additional working directory, or one of their parent directories). This requires explicit approval and cannot be auto-allowed by permission rules.`,
             `on working directory or its ancestor: ${p}`,
@@ -102,8 +102,8 @@ This command would remove a workspace directory (the working directory, an addit
         y = On(g.split(/[\\/]+/), (b) => /[*?[]/.test(b));
       if (h + y > 1)
         return Xqe(
-          e,
-          `Dangerous ${e} operation detected: '${p}'
+          command,
+          `Dangerous ${command} operation detected: '${p}'
 
 This command's glob pattern traverses directories that cannot be statically enumerated. This requires explicit approval and cannot be auto-allowed by permission rules.`,
           `on statically-unresolvable target: ${p}`,
@@ -112,7 +112,7 @@ This command's glob pattern traverses directories that cannot be statically enum
   }
   return {
     behavior: "passthrough",
-    message: `No dangerous removals detected for ${e} command`,
+    message: `No dangerous removals detected for ${command} command`,
   };
 }
 function S$a(e) {
@@ -176,13 +176,13 @@ function Ego(e) {
     return n;
   };
 }
-function parsePatternCommand(e, t, n = []) {
+function parsePatternCommand(args, flagsWithArgs, n = []) {
   let r = [],
     o = false,
     s = false,
     i = false;
-  for (let a = 0; a < e.length; a++) {
-    let l = e[a];
+  for (let a = 0; a < args.length; a++) {
+    let l = args[a];
     if (l === void 0 || l === null) continue;
     if (!s && !i && l === "--") {
       s = true;
@@ -193,11 +193,11 @@ function parsePatternCommand(e, t, n = []) {
         u = c >= 0 ? l.slice(0, c) : l;
       if (["-e", "--regexp", "-f", "--file"].includes(u)) {
         if (((o = true), u === "-f" || u === "--file")) {
-          let d = c >= 0 ? l.slice(c + 1) : e[a + 1];
+          let d = c >= 0 ? l.slice(c + 1) : args[a + 1];
           if (d) r.push(d);
         }
       }
-      if (t.has(u) && c < 0) a++;
+      if (flagsWithArgs.has(u) && c < 0) a++;
       continue;
     }
     if (i && !s) {
@@ -223,23 +223,30 @@ function E$a(e, t) {
     if (r.length === 2 && r[0] === "-" && e.startsWith(r) && e !== r) return e.slice(2);
   return;
 }
-function validateCommandPaths(e, t, n, r, o, s) {
-  let i = Zpt[e],
-    a = i(t),
-    l = s ?? Jqe[e];
+function validateCommandPaths(
+  command,
+  args,
+  cwd,
+  toolPermissionContext,
+  compoundCommandHasCd,
+  operationTypeOverride,
+) {
+  let i = Zpt[command],
+    a = i(args),
+    l = operationTypeOverride ?? Jqe[command];
   if (l !== "read" && a.some((d) => Bp(d)))
     return {
       behavior: "ask",
-      message: `${e} target contains command-substitution or untracked-variable output \u2014 the path is runtime-determined and cannot be validated`,
+      message: `${command} target contains command-substitution or untracked-variable output \u2014 the path is runtime-determined and cannot be validated`,
       decisionReason: {
         type: "other",
-        reason: `${e} path argument is runtime-determined`,
+        reason: `${command} path argument is runtime-determined`,
         bashMissKind: "shell-expansion",
       },
     };
-  let c = nLp[e];
-  if (c && !c(t)) {
-    if (e === "cd")
+  let c = nLp[command];
+  if (c && !c(args)) {
+    if (command === "cd")
       return {
         behavior: "ask",
         message: `cd with two or more directory arguments requires manual approval. zsh's "cd OLD NEW" form substitutes OLD\u2192NEW in $PWD, producing a target path that cannot be statically validated.`,
@@ -251,15 +258,15 @@ function validateCommandPaths(e, t, n, r, o, s) {
       };
     return {
       behavior: "ask",
-      message: `${e} with flags requires manual approval to ensure path safety. For security, Claude Code cannot automatically validate ${e} commands that use flags, as some flags like --target-directory=PATH can bypass path validation.`,
+      message: `${command} with flags requires manual approval to ensure path safety. For security, Claude Code cannot automatically validate ${command} commands that use flags, as some flags like --target-directory=PATH can bypass path validation.`,
       decisionReason: {
         type: "other",
-        reason: `${e} command with flags requires manual approval`,
+        reason: `${command} command with flags requires manual approval`,
         bashMissKind: "flag-validation",
       },
     };
   }
-  if (o && l !== "read")
+  if (compoundCommandHasCd && l !== "read")
     return {
       behavior: "ask",
       message:
@@ -273,14 +280,19 @@ function validateCommandPaths(e, t, n, r, o, s) {
     };
   let u;
   for (let d of a) {
-    let { allowed: p, resolvedPath: f, decisionReason: m, isInWorkingDir: g } = P2t(d, n, r, l);
+    let {
+      allowed: p,
+      resolvedPath: f,
+      decisionReason: m,
+      isInWorkingDir: g,
+    } = P2t(d, cwd, toolPermissionContext, l);
     if (!p) {
-      let h = Array.from(jj(r)),
+      let h = Array.from(jj(toolPermissionContext)),
         y = boo(h),
         b =
           m?.type === "other" || m?.type === "safetyCheck"
             ? m.reason
-            : `${e} in '${f}' was blocked. For security, Claude Code may only ${tLp[e]} the allowed working directories for this session: ${y}.`;
+            : `${command} in '${f}' was blocked. For security, Claude Code may only ${tLp[command]} the allowed working directories for this session: ${y}.`;
       if (m?.type === "rule")
         return {
           behavior: "deny",
@@ -305,20 +317,20 @@ function validateCommandPaths(e, t, n, r, o, s) {
   if (u) return u;
   return {
     behavior: "passthrough",
-    message: `Path validation passed for ${e} command`,
+    message: `Path validation passed for ${command} command`,
   };
 }
-function createPathChecker(e, t) {
+function createPathChecker(command, operationTypeOverride) {
   return (n, r, o, s) => {
-    let i = validateCommandPaths(e, n, r, o, s, t);
+    let i = validateCommandPaths(command, n, r, o, s, operationTypeOverride);
     if (i.behavior === "deny") return i;
-    if (e === "rm" || e === "rmdir") {
-      let a = checkDangerousRemovalPaths(e, n, r, o, s);
+    if (command === "rm" || command === "rmdir") {
+      let a = checkDangerousRemovalPaths(command, n, r, o, s);
       if (a.behavior !== "passthrough") return a;
     }
     if (i.behavior === "passthrough") return i;
     if (i.behavior === "ask") {
-      let a = t ?? Jqe[e],
+      let a = operationTypeOverride ?? Jqe[command],
         l = [];
       if (i.blockedPath)
         if (a === "read") {
@@ -351,8 +363,8 @@ function createPathChecker(e, t) {
 function oLp(e) {
   return oA(e);
 }
-function validateSinglePathCommand(e, t, n, r) {
-  let o = A5(e),
+function validateSinglePathCommand(cmd, cwd, toolPermissionContext, compoundCommandHasCd) {
+  let o = A5(cmd),
     s = oLp(o);
   if (s.length === 0)
     return {
@@ -367,7 +379,7 @@ function validateSinglePathCommand(e, t, n, r) {
       message: `Command '${l}' is not a path-restricted command`,
     };
   let c = l === "sed" && Qpt(o) ? "read" : void 0;
-  return createPathChecker(l, c)(a, t, n, r);
+  return createPathChecker(l, c)(a, cwd, toolPermissionContext, compoundCommandHasCd);
 }
 function iLp(e, t, n, r) {
   let o = stripWrappersFromArgv(e.argv);
@@ -391,8 +403,13 @@ function T$a(e) {
   let t = e.replace(/^.*[\\/]/, "");
   return t === "rm" || t === "rmdir" ? t : e;
 }
-function validateOutputRedirections(e, t, n, r) {
-  if (r && e.length > 0)
+function validateOutputRedirections(
+  redirections,
+  cwd,
+  toolPermissionContext,
+  compoundCommandHasCd,
+) {
+  if (compoundCommandHasCd && redirections.length > 0)
     return {
       behavior: "ask",
       message:
@@ -404,11 +421,15 @@ function validateOutputRedirections(e, t, n, r) {
         bashMissKind: "cd-compound-redirect",
       },
     };
-  for (let { target: o } of e) {
+  for (let { target: o } of redirections) {
     if (o === "/dev/null") continue;
-    let { allowed: s, resolvedPath: i, decisionReason: a } = P2t(o, t, n, "create");
+    let {
+      allowed: s,
+      resolvedPath: i,
+      decisionReason: a,
+    } = P2t(o, cwd, toolPermissionContext, "create");
     if (!s) {
-      let l = Array.from(jj(n)),
+      let l = Array.from(jj(toolPermissionContext)),
         c = boo(l),
         u =
           a?.type === "other" || a?.type === "safetyCheck"
@@ -442,8 +463,15 @@ function validateOutputRedirections(e, t, n, r) {
     message: "No unsafe redirections found",
   };
 }
-function checkPathConstraints(e, t, n, r, o, s) {
-  if (!s && />>\s*>\s*\(|>\s*>\s*\(|<\s*\(/.test(e.command))
+function checkPathConstraints(
+  input,
+  cwd,
+  toolPermissionContext,
+  compoundCommandHasCd,
+  astRedirects,
+  astCommands,
+) {
+  if (!astCommands && />>\s*>\s*\(|>\s*>\s*\(|<\s*\(/.test(input.command))
     return {
       behavior: "ask",
       message:
@@ -454,12 +482,12 @@ function checkPathConstraints(e, t, n, r, o, s) {
         bashMissKind: "process-substitution",
       },
     };
-  let i = o ? lLp(o) : void 0,
+  let i = astRedirects ? lLp(astRedirects) : void 0,
     {
       redirections: a,
       hasDangerousRedirection: l,
       dangerousRedirectionReason: c,
-    } = i ?? vde(e.command);
+    } = i ?? vde(input.command);
   if (l) {
     let m;
     if (i !== void 0) {
@@ -474,15 +502,15 @@ function checkPathConstraints(e, t, n, r, o, s) {
           });
         if (!y.target.startsWith("~"))
           b.push({
-            path: H5.resolve(t, y.target),
+            path: H5.resolve(cwd, y.target),
             cwdIndependent: H5.isAbsolute(y.target),
           });
         for (let S of b) {
           let A = i_(S.path);
           for (let v of A) {
-            let C = Fv(v, n, "edit", "deny");
+            let C = Fv(v, toolPermissionContext, "edit", "deny");
             if (C !== null) {
-              if (S.cwdIndependent || !r)
+              if (S.cwdIndependent || !compoundCommandHasCd)
                 return {
                   behavior: "deny",
                   message: `Output redirection to '${v}' was blocked by a deny rule.`,
@@ -542,18 +570,18 @@ function checkPathConstraints(e, t, n, r, o, s) {
     }
     return;
   }
-  let p = validateOutputRedirections(a, t, n, r),
+  let p = validateOutputRedirections(a, cwd, toolPermissionContext, compoundCommandHasCd),
     f = d(p);
   if (f) return f;
-  if (s)
-    for (let m of s) {
-      let g = d(iLp(m, t, n, r));
+  if (astCommands)
+    for (let m of astCommands) {
+      let g = d(iLp(m, cwd, toolPermissionContext, compoundCommandHasCd));
       if (g) return g;
     }
   else {
-    let m = By(e.command);
+    let m = By(input.command);
     for (let g of m) {
-      let h = d(validateSinglePathCommand(g, t, n, r));
+      let h = d(validateSinglePathCommand(g, cwd, toolPermissionContext, compoundCommandHasCd));
       if (h) return h;
     }
   }
@@ -674,8 +702,8 @@ function dLp(e) {
   }
   return t < e.length ? t : -1;
 }
-function stripWrappersFromArgv(e) {
-  let t = e;
+function stripWrappersFromArgv(argv) {
+  let t = argv;
   for (;;) {
     let n = t[0]?.replace(/^.*[\\/]/, ""),
       r =

@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.4017  score=0.6511  fileCov=0.5119
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function refreshActivePlugins(e) {
+async function refreshActivePlugins(setAppState) {
   (T("refreshActivePlugins: clearing all plugin caches"), vRl(), Ah(), Mtl());
   let t = await OT();
   mMa();
@@ -31,7 +31,7 @@ async function refreshActivePlugins(e) {
     u = l.reduce((g, h) => g + h, 0),
     d = c.reduce((g, h) => g + h, 0),
     p = [...a, ...p2n(o)];
-  (e((g) => ({
+  (setAppState((g) => ({
     ...g,
     plugins: {
       ...g.plugins,
@@ -86,10 +86,10 @@ async function refreshActivePlugins(e) {
     }
   );
 }
-function mergePluginErrors(e, t) {
-  let n = e.filter((s) => s.source === "lsp-manager" || s.source.startsWith("plugin:")),
-    r = new Set(t.map(errorKey));
-  return [...n.filter((s) => !r.has(errorKey(s))), ...t];
+function mergePluginErrors(existing, fresh) {
+  let n = existing.filter((s) => s.source === "lsp-manager" || s.source.startsWith("plugin:")),
+    r = new Set(fresh.map(errorKey));
+  return [...n.filter((s) => !r.has(errorKey(s))), ...fresh];
 }
 function errorKey(e) {
   return e.type === "generic-error"

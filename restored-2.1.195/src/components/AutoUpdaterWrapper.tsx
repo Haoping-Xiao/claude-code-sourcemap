@@ -10,9 +10,9 @@
   (fhc = require("path")),
   (IZ = R(rt(), 1)),
   (Wz = R(se(), 1)));
-function AutoUpdaterWrapper(e) {
+function AutoUpdaterWrapper(t0) {
   let t = hhc.c(13),
-    { isUpdating: n, onChangeIsUpdating: r, showSuccessMessage: o, verbose: s } = e,
+    { isUpdating: n, onChangeIsUpdating: r, showSuccessMessage: o, verbose: s } = t0,
     [i, a] = Ien.useState(null),
     [l, c] = Ien.useState(null),
     u,

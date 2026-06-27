@@ -13,10 +13,10 @@ async function h0f(e, t, n) {
     null
   );
 }
-async function call(e, t) {
+async function call(onDone, context) {
   if (wf())
     return "Cannot set color: This session is a teammate. Teammate colors are assigned by the team leader.";
-  let n = e?.trim() ?? "",
+  let n = onDone?.trim() ?? "",
     r = n === "" ? Ky[Math.floor(Math.random() * Ky.length)] : n.toLowerCase(),
     o = g0f.includes(r);
   if (!o && !Ky.includes(r)) {
@@ -28,12 +28,12 @@ async function call(e, t) {
     a = o ? "default" : r,
     l = o ? void 0 : r;
   (await i7t(s, a, i),
-    t.setAppState((d) =>
+    context.setAppState((d) =>
       qer(d, {
         color: l,
       }),
     ));
-  let c = t.getAppState(),
+  let c = context.getAppState(),
     u = c.agent ? c.agentDefinitions.activeAgents.find((d) => d.agentType === c.agent) : void 0;
   return (
     DPn(

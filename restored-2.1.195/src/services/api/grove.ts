@@ -60,18 +60,18 @@ async function isQualifiedForGrove() {
     );
   return (T("Grove: Using fresh cached config"), n.grove_enabled);
 }
-async function fetchAndStoreGroveConfig(e) {
+async function fetchAndStoreGroveConfig(accountId) {
   try {
     let t = await JDe();
     if (!t.success) return;
     let n = t.data.grove_enabled,
-      r = Dt().groveConfigCache?.[e];
+      r = Dt().groveConfigCache?.[accountId];
     if (r?.grove_enabled === n && Date.now() - r.timestamp <= I1a) return;
     gn((o) => ({
       ...o,
       groveConfigCache: {
         ...o.groveConfigCache,
-        [e]: {
+        [accountId]: {
           grove_enabled: n,
           timestamp: Date.now(),
         },

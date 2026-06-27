@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bs] deps: Ye
 nzi = R(lt(), 1), rzi = R(rt(), 1), HPn = R(rt(), 1), BGe = R(se(), 1);
-function Select(e) {
+function Select(t0) {
   let t = IZr.c(42),
     {
       isFocused: n,
@@ -20,7 +20,7 @@ function Select(e) {
       declareCursor: u,
       onClick: d,
       onHoverChange: p
-    } = e,
+    } = t0,
     f = r === void 0 ? false : r,
     m = l === void 0 ? true : l,
     g = c === void 0 ? false : c,

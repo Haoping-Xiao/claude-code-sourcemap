@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module s7l] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
 ((r7l = R(lt(), 1)), (Wsr = R(rt(), 1)), (H3 = R(se(), 1)));
-function ToolsStep(e) {
+function ToolsStep(t0) {
   let t = i7l.c(10),
-    { tools: n } = e,
+    { tools: n } = t0,
     { goNext: r, goBack: o, updateWizardData: s, wizardData: i } = Eu(),
     a;
   if (t[0] !== r || t[1] !== s)

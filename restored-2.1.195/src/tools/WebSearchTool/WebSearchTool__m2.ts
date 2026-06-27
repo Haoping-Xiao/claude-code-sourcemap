@@ -18,18 +18,18 @@ function Ljr(e) {
   let t = e.replace(/\[(1|2)m\]/gi, "");
   return `${Rjr() ?? "unknown-foundry-resource"}::${t}`;
 }
-function makeToolSchema(e) {
-  let t = e.match(vfd)?.[1];
+function makeToolSchema(input) {
+  let t = input.match(vfd)?.[1];
   if (t) {
     let r = t.split(",").map((o) => o.trim());
     if (r.every((o) => tii.test(o))) return r;
   }
-  let n = e.match(wfd)?.[1];
+  let n = input.match(wfd)?.[1];
   if (n) {
     let r = n.split(/[,\s]+/).filter((o) => o !== "and" && tii.test(o));
     return r.length > 0 ? r : null;
   }
-  if (Cfd.test(e)) return ["web_search"];
+  if (Cfd.test(input)) return ["web_search"];
   return null;
 }
 function Djr(e, t) {

@@ -63,13 +63,13 @@ async function ejf(e) {
     return null;
   }
 }
-async function generateSessionName(e, t, n) {
+async function generateSessionName(messages, signal, n) {
   if (n?.preferFork && at("tengu_rename_full_session_fork", false) && hMo()) {
-    let o = await ejf(t);
+    let o = await ejf(signal);
     if (o) return o;
-    if (t.aborted) return null;
+    if (signal.aborted) return null;
   }
-  let r = Qrr(e);
+  let r = Qrr(messages);
   if (!r) return null;
   try {
     let o = await R$({
@@ -92,7 +92,7 @@ ${r}
             additionalProperties: false,
           },
         },
-        signal: t,
+        signal: signal,
         options: {
           querySource: "rename_generate_name",
           agents: [],

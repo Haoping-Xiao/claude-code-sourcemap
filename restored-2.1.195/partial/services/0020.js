@@ -7,8 +7,8 @@
 // [unwrapped __esm module MBe] deps: PBe, Pes, $es
 Oes = nM ? nM.toStringTag : void 0;
 LV = xVc;
-function isBlob(e) {
-  var t = typeof e;
-  return e != null && (t == "object" || t == "function");
+function isBlob(value) {
+  var t = typeof value;
+  return value != null && (t == "object" || t == "function");
 }
 var Bb;

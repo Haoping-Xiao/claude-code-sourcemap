@@ -42,32 +42,32 @@ function shouldOfferTerminalSetup() {
     Oe.terminal === "zed"
   );
 }
-async function setupTerminal(e) {
+async function setupTerminal(theme) {
   let t = "";
   switch (Oe.terminal) {
     case "Apple_Terminal":
-      t = await enableOptionAsMetaForTerminal(e);
+      t = await enableOptionAsMetaForTerminal(theme);
       break;
     case "vscode":
-      ((t = await installBindingsForVSCodeTerminal("VSCode", e)),
-        (t += await JQr("VSCode", e)),
-        (t += await installVSCodeGpuAccelerationOff("VSCode", e)));
+      ((t = await installBindingsForVSCodeTerminal("VSCode", theme)),
+        (t += await JQr("VSCode", theme)),
+        (t += await installVSCodeGpuAccelerationOff("VSCode", theme)));
       break;
     case "cursor":
-      ((t = await installBindingsForVSCodeTerminal("Cursor", e)),
-        (t += await JQr("Cursor", e)),
-        (t += await installVSCodeGpuAccelerationOff("Cursor", e)));
+      ((t = await installBindingsForVSCodeTerminal("Cursor", theme)),
+        (t += await JQr("Cursor", theme)),
+        (t += await installVSCodeGpuAccelerationOff("Cursor", theme)));
       break;
     case "windsurf":
-      ((t = await installBindingsForVSCodeTerminal("Devin Desktop", e)),
-        (t += await JQr("Devin Desktop", e)),
-        (t += await installVSCodeGpuAccelerationOff("Devin Desktop", e)));
+      ((t = await installBindingsForVSCodeTerminal("Devin Desktop", theme)),
+        (t += await JQr("Devin Desktop", theme)),
+        (t += await installVSCodeGpuAccelerationOff("Devin Desktop", theme)));
       break;
     case "alacritty":
-      t = await installBindingsForAlacritty(e);
+      t = await installBindingsForAlacritty(theme);
       break;
     case "zed":
-      t = await installBindingsForZed(e);
+      t = await installBindingsForZed(theme);
       break;
     case null:
       break;
@@ -133,7 +133,7 @@ function markBackslashReturnUsed() {
       hasUsedBackslashReturn: true,
     }));
 }
-async function call(e, t, n) {
+async function call(onDone, context, _args) {
   if (
     Dne.platform() === "darwin" &&
     process.env.__CFBundleIdentifier === "com.googlecode.iterm2" &&
@@ -142,16 +142,16 @@ async function call(e, t, n) {
       Oe.terminal === "screen" ||
       Oe.terminal === null)
   ) {
-    let s = `${await enableITerm2ClipboardAccess(t.options.theme)}Shift+Enter is natively supported in iTerm2.
+    let s = `${await enableITerm2ClipboardAccess(context.options.theme)}Shift+Enter is natively supported in iTerm2.
 
 No configuration needed. Just use Shift+Enter to add newlines.${RDn()}`;
-    return (e(s), null);
+    return (onDone(s), null);
   }
   if (Oe.terminal && Oe.terminal in PDn) {
     let o = `Shift+Enter is natively supported in ${PDn[Oe.terminal]}.
 
 No configuration needed. Just use Shift+Enter to add newlines.${RDn()}`;
-    return (e(o), null);
+    return (onDone(o), null);
   }
   if (!shouldOfferTerminalSetup()) {
     let o = Oe.terminal || "your current terminal",
@@ -177,10 +177,10 @@ ${i}   \u2022 IDE: VSCode, Cursor, Devin Desktop, Zed
 3. Return to tmux/screen - settings will persist
 
 ${wt.dim("Note: iTerm2, WezTerm, Ghostty, Kitty, Warp, and Windows Terminal support Shift+Enter natively.")}${a}${RDn()}`;
-    return (e(l), null);
+    return (onDone(l), null);
   }
-  let r = await setupTerminal(t.options.theme);
-  return (e(r + RDn()), null);
+  let r = await setupTerminal(context.options.theme);
+  return (onDone(r + RDn()), null);
 }
 function rZr(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
@@ -333,9 +333,9 @@ async function installVSCodeGpuAccelerationOff(e, t) {
     );
   }
 }
-async function installBindingsForVSCodeTerminal(e = "VSCode", t) {
+async function installBindingsForVSCodeTerminal(e = "VSCode", theme) {
   if (isVSCodeRemoteSSH())
-    return `${Io("warning", t)(`Cannot install keybindings from a remote ${e} session.`)}${Ha}${Ha}${e} keybindings must be installed on your local machine, not the remote server.${Ha}${Ha}To install the Shift+Enter keybinding:${Ha}1. Open ${e} on your local machine (not connected to remote)${Ha}2. Open the Command Palette (Cmd/Ctrl+Shift+P) \u2192 "Preferences: Open Keyboard Shortcuts (JSON)"${Ha}3. Add this keybinding (the file must be a JSON array):${Ha}${Ha}${wt.dim(`[
+    return `${Io("warning", theme)(`Cannot install keybindings from a remote ${e} session.`)}${Ha}${Ha}${e} keybindings must be installed on your local machine, not the remote server.${Ha}${Ha}To install the Shift+Enter keybinding:${Ha}1. Open ${e} on your local machine (not connected to remote)${Ha}2. Open the Command Palette (Cmd/Ctrl+Shift+P) \u2192 "Preferences: Open Keyboard Shortcuts (JSON)"${Ha}3. Add this keybinding (the file must be a JSON array):${Ha}${Ha}${wt.dim(`[
   {
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
@@ -367,7 +367,7 @@ async function installBindingsForVSCodeTerminal(e = "VSCode", t) {
       try {
         await CI.copyFile(r, d);
       } catch {
-        return `${Io("warning", t)(`Error backing up existing ${e} terminal keybindings. Bailing out.`)}${Ha}${wt.dim(`See ${FU(r)}`)}${Ha}${wt.dim(`Backup path: ${FU(d)}`)}${Ha}`;
+        return `${Io("warning", theme)(`Error backing up existing ${e} terminal keybindings. Bailing out.`)}${Ha}${wt.dim(`See ${FU(r)}`)}${Ha}${wt.dim(`Backup path: ${FU(d)}`)}${Ha}`;
       }
     }
     let a = {
@@ -382,15 +382,15 @@ async function installBindingsForVSCodeTerminal(e = "VSCode", t) {
     if (l) {
       let u = wt.dim(`See ${FU(r)}`);
       if (l.args?.text === a.args.text)
-        return `${Io("success", t)(`${e} terminal Shift+Enter key binding already configured`)}${Ha}${u}${Ha}`;
-      return `${Io("warning", t)(`${e} already has a Shift+Enter terminal binding with different args; leaving it as-is.`)}${Ha}${u}${Ha}`;
+        return `${Io("success", theme)(`${e} terminal Shift+Enter key binding already configured`)}${Ha}${u}${Ha}`;
+      return `${Io("warning", theme)(`${e} already has a Shift+Enter terminal binding with different args; leaving it as-is.`)}${Ha}${u}${Ha}`;
     }
     let c = pvs(o, a);
     return (
       await CI.writeFile(r, c, {
         encoding: "utf-8",
       }),
-      `${Io("success", t)(`Installed ${e} terminal Shift+Enter key binding`)}${Ha}${wt.dim(`See ${FU(r)}`)}${Ha}`
+      `${Io("success", theme)(`Installed ${e} terminal Shift+Enter key binding`)}${Ha}${wt.dim(`See ${FU(r)}`)}${Ha}`
     );
   } catch (o) {
     throw (
@@ -404,21 +404,21 @@ async function installBindingsForVSCodeTerminal(e = "VSCode", t) {
     );
   }
 }
-async function enableOptionAsMetaForProfile(e) {
+async function enableOptionAsMetaForProfile(profileName) {
   let { code: t } = await $n("/usr/libexec/PlistBuddy", [
     "-c",
-    `Add :'Window Settings':'${e}':useOptionAsMetaKey bool true`,
+    `Add :'Window Settings':'${profileName}':useOptionAsMetaKey bool true`,
     qat(),
   ]);
   if (t !== 0) {
     let { code: n } = await $n("/usr/libexec/PlistBuddy", [
       "-c",
-      `Set :'Window Settings':'${e}':useOptionAsMetaKey true`,
+      `Set :'Window Settings':'${profileName}':useOptionAsMetaKey true`,
       qat(),
     ]);
     if (n !== 0)
       return (
-        T(`Failed to enable Option as Meta key for Terminal.app profile: ${e}`, {
+        T(`Failed to enable Option as Meta key for Terminal.app profile: ${profileName}`, {
           level: "error",
         }),
         false
@@ -426,21 +426,21 @@ async function enableOptionAsMetaForProfile(e) {
   }
   return true;
 }
-async function disableAudioBellForProfile(e) {
+async function disableAudioBellForProfile(profileName) {
   let { code: t } = await $n("/usr/libexec/PlistBuddy", [
     "-c",
-    `Add :'Window Settings':'${e}':Bell bool false`,
+    `Add :'Window Settings':'${profileName}':Bell bool false`,
     qat(),
   ]);
   if (t !== 0) {
     let { code: n } = await $n("/usr/libexec/PlistBuddy", [
       "-c",
-      `Set :'Window Settings':'${e}':Bell false`,
+      `Set :'Window Settings':'${profileName}':Bell false`,
       qat(),
     ]);
     if (n !== 0)
       return (
-        T(`Failed to disable audio bell for Terminal.app profile: ${e}`, {
+        T(`Failed to disable audio bell for Terminal.app profile: ${profileName}`, {
           level: "error",
         }),
         false
@@ -448,7 +448,7 @@ async function disableAudioBellForProfile(e) {
   }
   return true;
 }
-async function enableOptionAsMetaForTerminal(e) {
+async function enableOptionAsMetaForTerminal(theme) {
   let t = (PEs() ?? 0) >= 27;
   try {
     if (!(await C8i()))
@@ -481,9 +481,9 @@ async function enableOptionAsMetaForTerminal(e) {
         "Failed to enable Option as Meta key or disable audio bell for any Terminal.app profile",
       );
     (await $n("killall", ["cfprefsd"]), Wat());
-    let p = [Io("success", e)("Configured Terminal.app settings:")];
-    if (!t) p.push(Io("success", e)('- Enabled "Use Option as Meta key"'));
-    p.push(Io("success", e)("- Switched to visual bell"));
+    let p = [Io("success", theme)("Configured Terminal.app settings:")];
+    if (!t) p.push(Io("success", theme)('- Enabled "Use Option as Meta key"'));
+    p.push(Io("success", theme)("- Switched to visual bell"));
     let f = t
       ? wt.dim("Shift+Return will now enter a newline.")
       : wt.dim("Option+Enter will now enter a newline.");
@@ -502,7 +502,7 @@ async function enableOptionAsMetaForTerminal(e) {
     else throw Error(`${o} No backup was available to restore from.`);
   }
 }
-async function installBindingsForAlacritty(e) {
+async function installBindingsForAlacritty(theme) {
   let n = [],
     r = process.env.XDG_CONFIG_HOME;
   if (r) n.push(UU.join(r, "alacritty", "alacritty.toml"));
@@ -530,13 +530,13 @@ async function installBindingsForAlacritty(e) {
   try {
     if (i) {
       if (s.includes('mods = "Shift"') && s.includes('key = "Return"'))
-        return `${Io("success", e)("Alacritty Shift+Enter key binding already configured")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}`;
+        return `${Io("success", theme)("Alacritty Shift+Enter key binding already configured")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}`;
       let l = Vat.randomBytes(4).toString("hex"),
         c = `${o}.${l}.bak`;
       try {
         await CI.copyFile(o, c);
       } catch {
-        return `${Io("warning", e)("Error backing up existing Alacritty config. Bailing out.")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}${wt.dim(`Backup path: ${FU(c)}`)}${Ha}`;
+        return `${Io("warning", theme)("Error backing up existing Alacritty config. Bailing out.")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}${wt.dim(`Backup path: ${FU(c)}`)}${Ha}`;
       }
     } else
       await CI.mkdir(UU.dirname(o), {
@@ -560,7 +560,7 @@ chars = "\\u001B\\r"
       await CI.writeFile(o, a, {
         encoding: "utf-8",
       }),
-      `${Io("success", e)("Installed Alacritty Shift+Enter key binding")}${Ha}${Io("success", e)("You may need to restart Alacritty for changes to take effect")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}`
+      `${Io("success", theme)("Installed Alacritty Shift+Enter key binding")}${Ha}${Io("success", theme)("You may need to restart Alacritty for changes to take effect")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}`
     );
   } catch (a) {
     throw (
@@ -571,7 +571,7 @@ chars = "\\u001B\\r"
     );
   }
 }
-async function installBindingsForZed(e) {
+async function installBindingsForZed(theme) {
   let t = UU.join(Dne.homedir(), ".config", "zed"),
     n = UU.join(t, "keymap.json");
   try {
@@ -590,13 +590,13 @@ async function installBindingsForZed(e) {
     }
     if (o) {
       if (r.includes("shift-enter"))
-        return `${Io("success", e)("Zed Shift+Enter key binding already configured")}${Ha}${wt.dim(`See ${FU(n)}`)}${Ha}`;
+        return `${Io("success", theme)("Zed Shift+Enter key binding already configured")}${Ha}${wt.dim(`See ${FU(n)}`)}${Ha}`;
       let i = Vat.randomBytes(4).toString("hex"),
         a = `${n}.${i}.bak`;
       try {
         await CI.copyFile(n, a);
       } catch {
-        return `${Io("warning", e)("Error backing up existing Zed keymap. Bailing out.")}${Ha}${wt.dim(`See ${FU(n)}`)}${Ha}${wt.dim(`Backup path: ${FU(a)}`)}${Ha}`;
+        return `${Io("warning", theme)("Error backing up existing Zed keymap. Bailing out.")}${Ha}${wt.dim(`See ${FU(n)}`)}${Ha}${wt.dim(`Backup path: ${FU(a)}`)}${Ha}`;
       }
     }
     let s;
@@ -621,7 +621,7 @@ async function installBindingsForZed(e) {
           encoding: "utf-8",
         },
       ),
-      `${Io("success", e)("Installed Zed Shift+Enter key binding")}${Ha}${wt.dim(`See ${FU(n)}`)}${Ha}`
+      `${Io("success", theme)("Installed Zed Shift+Enter key binding")}${Ha}${wt.dim(`See ${FU(n)}`)}${Ha}`
     );
   } catch (r) {
     throw (

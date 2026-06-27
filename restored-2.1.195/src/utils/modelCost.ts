@@ -68,10 +68,10 @@ function L2r(e, t) {
   if (s) return s;
   return (trackUnknownModelCost(e, n), Z2e[mo(Uw())] ?? k2r);
 }
-function trackUnknownModelCost(e, t) {
+function trackUnknownModelCost(model, shortName) {
   (G("tengu_unknown_model_cost", {
-    model: e,
-    shortName: t,
+    model: model,
+    shortName: shortName,
   }),
     nsn());
 }

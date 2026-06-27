@@ -60,8 +60,8 @@ function wwf(e) {
     };
   return e;
 }
-function stripImagesFromMessages(e) {
-  return e.map((t) => {
+function stripImagesFromMessages(messages) {
+  return messages.map((t) => {
     if (t.type === "attachment") {
       let s = wwf(t.attachment);
       return s === t.attachment
@@ -314,7 +314,19 @@ function SMo(e, t) {
 
 ${t}`;
 }
-async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c, u) {
+async function compactConversation(
+  messages,
+  context,
+  cacheSafeParams,
+  suppressFollowUpQuestions,
+  customInstructions,
+  s = false,
+  recompactionInfo,
+  a = false,
+  l,
+  c,
+  u,
+) {
   let d = s ? "compact_auto" : "compact_manual",
     p,
     f,
@@ -324,39 +336,39 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
       spanType: "compaction",
       attrs: {
         trigger: s ? "auto" : "manual",
-        message_count: e.length,
+        message_count: messages.length,
       },
     });
   try {
-    if (e.length === 0)
+    if (messages.length === 0)
       throw (Le(d, "compact_not_enough_messages"), Error(ERROR_MESSAGE_NOT_ENOUGH_MESSAGES));
-    f = eA(e);
-    let y = t.getAppState();
-    (Hut(Fr(t), "summary"),
-      t.onCompactEvent?.({
+    f = eA(messages);
+    let y = context.getAppState();
+    (Hut(Fr(context), "summary"),
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "hooks_start",
           hookType: "pre_compact",
         },
       }),
-      t.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "sdk_status",
         status: "compacting",
       }));
     let b = await RQ(
       {
         trigger: s ? "auto" : "manual",
-        customInstructions: o ?? null,
+        customInstructions: customInstructions ?? null,
       },
-      t.abortController.signal,
+      context.abortController.signal,
     );
     (uZn(b, c, {
       suppressNotification: s,
     }),
-      (o = SMo(o, b.newCustomInstructions)));
+      (customInstructions = SMo(customInstructions, b.newCustomInstructions)));
     let _ = b.userDisplayMessage;
-    (t.onCompactEvent?.({
+    (context.onCompactEvent?.({
       type: "stream_mode",
       mode: "requesting",
     }),
@@ -364,7 +376,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
         type: "response_length",
         op: "reset",
       }),
-      t.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "compact_start",
@@ -372,12 +384,12 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
         },
       }));
     let S = !a && at("tengu_compact_cache_prefix", true),
-      A = bNn(o),
+      A = bNn(customInstructions),
       v = Rn({
         content: A,
       }),
-      C = e,
-      x = n,
+      C = messages,
+      x = cacheSafeParams,
       I,
       k,
       D = 0;
@@ -387,7 +399,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
           messages: C,
           summaryRequest: v,
           appState: y,
-          context: t,
+          context: context,
           preCompactTokenCount: f,
           cacheSafeParams: x,
           stripNonEssential: a,
@@ -447,29 +459,35 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
         Le(d, "compact_api_error"),
         Error(k)
       );
-    let P = mjt(t.readFileState);
-    if ((t.readFileState.clear(), t.loadedNestedMemoryPaths))
-      for (let Ee of Object.keys(t.loadedNestedMemoryPaths)) delete t.loadedNestedMemoryPaths[Ee];
-    y5e(t.memorySelector);
+    let P = mjt(context.readFileState);
+    if ((context.readFileState.clear(), context.loadedNestedMemoryPaths))
+      for (let Ee of Object.keys(context.loadedNestedMemoryPaths))
+        delete context.loadedNestedMemoryPaths[Ee];
+    y5e(context.memorySelector);
     let [O, L] = await Promise.all([
-        createPostCompactFileAttachments(P, t, mQn),
-        createAsyncAgentAttachmentsIfNeeded(t),
+        createPostCompactFileAttachments(P, context, mQn),
+        createAsyncAgentAttachmentsIfNeeded(context),
       ]),
       M = [...O, ...L],
-      N = createPlanAttachmentIfNeeded(t.agentId);
+      N = createPlanAttachmentIfNeeded(context.agentId);
     if (N) M.push(N);
-    let B = await _Qn(t);
+    let B = await _Qn(context);
     if (B) M.push(B);
-    let $ = createSkillAttachmentIfNeeded(t.agentId);
+    let $ = createSkillAttachmentIfNeeded(context.agentId);
     if ($) M.push($);
-    for (let Ee of $Ae(t.options.tools, t.options.mainLoopModel, [], {
+    for (let Ee of $Ae(context.options.tools, context.options.mainLoopModel, [], {
       callSite: "compact_full",
     }))
       M.push(ai(Ee));
-    for (let Ee of Z$e(t, [])) M.push(ai(Ee));
-    for (let Ee of kze(t.options.mcpClients, t.options.tools, t.options.mainLoopModel, []))
+    for (let Ee of Z$e(context, [])) M.push(ai(Ee));
+    for (let Ee of kze(
+      context.options.mcpClients,
+      context.options.tools,
+      context.options.mainLoopModel,
+      [],
+    ))
       M.push(ai(Ee));
-    t.onCompactEvent?.({
+    context.onCompactEvent?.({
       type: "compact_progress",
       event: {
         type: "hooks_start",
@@ -477,17 +495,17 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
       },
     });
     let q = await z8("compact", {
-        model: t.options.mainLoopModel,
+        model: context.options.mainLoopModel,
       }),
       W = Math.round(performance.now() - g),
-      V = MKt(s ? "auto" : "manual", f ?? 0, e.at(-1)?.uuid),
-      Y = xQ(e);
+      V = MKt(s ? "auto" : "manual", f ?? 0, messages.at(-1)?.uuid),
+      Y = xQ(messages);
     if (Y.size > 0) V.compactMetadata.preCompactDiscoveredTools = [...Y].sort();
     let z = em(),
-      K = LI() && Y2t(t.getReplContexts(), t.agentId),
+      K = LI() && Y2t(context.getReplContexts(), context.agentId),
       Z = [
         Rn({
-          content: Kjt(k, r, z, void 0, K),
+          content: Kjt(k, suppressFollowUpQuestions, z, void 0, K),
           isCompactSummary: true,
           isVisibleInTranscriptOnly: true,
         }),
@@ -496,26 +514,27 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
       ne = qv([V, ...Z, ...M, ...q]);
     ((V.compactMetadata.postTokens = ne), (V.compactMetadata.durationMs = W), (m = ne));
     let oe = lre(I),
-      re = Bh(i?.querySource ?? t.options.querySource) ?? "unknown",
-      ee = lL(t.options.mainLoopModel, gg(t));
+      re = Bh(recompactionInfo?.querySource ?? context.options.querySource) ?? "unknown",
+      ee = lL(context.options.mainLoopModel, gg(context));
     if (
       (G("tengu_compact", {
         preCompactTokenCount: f,
         stripNonEssential: a,
         postCompactTokenCount: J,
         truePostCompactTokenCount: ne,
-        autoCompactThreshold: i?.autoCompactThreshold ?? -1,
-        willRetriggerNextTurn: i !== void 0 && ne >= i.autoCompactThreshold,
+        autoCompactThreshold: recompactionInfo?.autoCompactThreshold ?? -1,
+        willRetriggerNextTurn:
+          recompactionInfo !== void 0 && ne >= recompactionInfo.autoCompactThreshold,
         isAutoCompact: s,
         ...(ee && {
           effort_level: $e(ee),
         }),
         querySource: re,
-        queryChainId: t.queryTracking?.chainId ?? "",
-        queryDepth: t.queryTracking?.depth ?? -1,
-        isRecompactionInChain: i?.isRecompactionInChain ?? false,
-        turnsSincePreviousCompact: i?.turnsSincePreviousCompact ?? -1,
-        previousCompactTurnId: i?.previousCompactTurnId ?? "",
+        queryChainId: context.queryTracking?.chainId ?? "",
+        queryDepth: context.queryTracking?.depth ?? -1,
+        isRecompactionInChain: recompactionInfo?.isRecompactionInChain ?? false,
+        turnsSincePreviousCompact: recompactionInfo?.turnsSincePreviousCompact ?? -1,
+        previousCompactTurnId: recompactionInfo?.previousCompactTurnId ?? "",
         compactionInputTokens: oe?.input_tokens,
         compactionOutputTokens: oe?.output_tokens,
         compactionCacheReadTokens: oe?.cache_read_input_tokens ?? 0,
@@ -529,7 +548,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
         promptCacheSharingEnabled: S,
         ...(() => {
           try {
-            return eNn(Z1n(e));
+            return eNn(Z1n(messages));
           } catch (Ee) {
             return (ke(Ee), {});
           }
@@ -537,9 +556,9 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
       }),
       WX())
     )
-      Bjt(i?.querySource ?? "compact", t.agentId);
-    if (y3e(i?.querySource)) (aJe(), lSt());
-    t.onCompactEvent?.({
+      Bjt(recompactionInfo?.querySource ?? "compact", context.agentId);
+    if (y3e(recompactionInfo?.querySource)) (aJe(), lSt());
+    context.onCompactEvent?.({
       type: "compact_progress",
       event: {
         type: "hooks_start",
@@ -551,7 +570,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
           trigger: s ? "auto" : "manual",
           compactSummary: k,
         },
-        t.abortController.signal,
+        context.abortController.signal,
       ),
       de = [_, ae.userDisplayMessage].filter(Boolean).join(`
 `);
@@ -576,7 +595,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
     throw y;
   } finally {
     if (
-      (t.onCompactEvent?.({
+      (context.onCompactEvent?.({
         type: "stream_mode",
         mode: "requesting",
       }),
@@ -584,7 +603,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
         type: "response_length",
         op: "reset",
       }),
-      t.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "compact_end",
@@ -615,7 +634,7 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
         Sqe(h, p);
       h.end();
     }
-    t.onCompactEvent?.({
+    context.onCompactEvent?.({
       type: "sdk_status",
       status: null,
       metadata: {
@@ -627,38 +646,47 @@ async function compactConversation(e, t, n, r, o, s = false, i, a = false, l, c,
     });
   }
 }
-async function partialCompactConversation(e, t, n, r, o, s = "from", i, a) {
+async function partialCompactConversation(
+  allMessages,
+  pivotIndex,
+  context,
+  cacheSafeParams,
+  userFeedback,
+  s = "from",
+  i,
+  a,
+) {
   let l,
     c,
     u,
     d = performance.now();
   try {
-    let p = s === "up_to" ? e.slice(0, t) : e.slice(t),
+    let p = s === "up_to" ? allMessages.slice(0, pivotIndex) : allMessages.slice(pivotIndex),
       f =
         s === "up_to"
-          ? e
-              .slice(t)
+          ? allMessages
+              .slice(pivotIndex)
               .filter(
                 (oe) =>
                   oe.type !== "progress" && !pA(oe) && !(oe.type === "user" && oe.isCompactSummary),
               )
-          : e.slice(0, t).filter((oe) => oe.type !== "progress");
+          : allMessages.slice(0, pivotIndex).filter((oe) => oe.type !== "progress");
     if (p.length === 0)
       throw Error(
         s === "up_to"
           ? "Nothing to summarize before the selected message."
           : "Nothing to summarize after the selected message.",
       );
-    let m = eA(e);
+    let m = eA(allMessages);
     ((c = m),
-      n.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "hooks_start",
           hookType: "pre_compact",
         },
       }),
-      n.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "sdk_status",
         status: "compacting",
       }));
@@ -667,17 +695,17 @@ async function partialCompactConversation(e, t, n, r, o, s = "from", i, a) {
         trigger: "manual",
         customInstructions: null,
       },
-      n.abortController.signal,
+      context.abortController.signal,
     );
     uZn(g, i);
     let h;
-    if (g.newCustomInstructions && o)
+    if (g.newCustomInstructions && userFeedback)
       h = `${g.newCustomInstructions}
 
-User context: ${o}`;
+User context: ${userFeedback}`;
     else if (g.newCustomInstructions) h = g.newCustomInstructions;
-    else if (o) h = `User context: ${o}`;
-    (n.onCompactEvent?.({
+    else if (userFeedback) h = `User context: ${userFeedback}`;
+    (context.onCompactEvent?.({
       type: "stream_mode",
       mode: "requesting",
     }),
@@ -685,7 +713,7 @@ User context: ${o}`;
         type: "response_length",
         op: "reset",
       }),
-      n.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "compact_start",
@@ -700,14 +728,14 @@ User context: ${o}`;
         direction: $e(s),
         messagesSummarized: p.length,
       },
-      S = s === "up_to" ? p : e,
+      S = s === "up_to" ? p : allMessages,
       A =
         s === "up_to"
           ? {
-              ...r,
+              ...cacheSafeParams,
               forkContextMessages: p,
             }
-          : r,
+          : cacheSafeParams,
       v,
       C,
       x = 0;
@@ -716,8 +744,8 @@ User context: ${o}`;
         ((v = await streamCompactSummary({
           messages: S,
           summaryRequest: b,
-          appState: n.getAppState(),
-          context: n,
+          appState: context.getAppState(),
+          context: context,
           preCompactTokenCount: m,
           cacheSafeParams: A,
           onResponseLength: a,
@@ -771,29 +799,35 @@ User context: ${o}`;
         Le("compact_partial", "compact_partial_api_error"),
         Error(C)
       );
-    let I = mjt(n.readFileState);
-    if ((n.readFileState.clear(), n.loadedNestedMemoryPaths))
-      for (let oe of Object.keys(n.loadedNestedMemoryPaths)) delete n.loadedNestedMemoryPaths[oe];
-    y5e(n.memorySelector);
+    let I = mjt(context.readFileState);
+    if ((context.readFileState.clear(), context.loadedNestedMemoryPaths))
+      for (let oe of Object.keys(context.loadedNestedMemoryPaths))
+        delete context.loadedNestedMemoryPaths[oe];
+    y5e(context.memorySelector);
     let [k, D] = await Promise.all([
-        createPostCompactFileAttachments(I, n, mQn, f),
-        createAsyncAgentAttachmentsIfNeeded(n),
+        createPostCompactFileAttachments(I, context, mQn, f),
+        createAsyncAgentAttachmentsIfNeeded(context),
       ]),
       P = [...k, ...D],
-      O = createPlanAttachmentIfNeeded(n.agentId);
+      O = createPlanAttachmentIfNeeded(context.agentId);
     if (O) P.push(O);
-    let L = await _Qn(n);
+    let L = await _Qn(context);
     if (L) P.push(L);
-    let M = createSkillAttachmentIfNeeded(n.agentId);
+    let M = createSkillAttachmentIfNeeded(context.agentId);
     if (M) P.push(M);
-    for (let oe of $Ae(n.options.tools, n.options.mainLoopModel, f, {
+    for (let oe of $Ae(context.options.tools, context.options.mainLoopModel, f, {
       callSite: "compact_partial",
     }))
       P.push(ai(oe));
-    for (let oe of Z$e(n, f)) P.push(ai(oe));
-    for (let oe of kze(n.options.mcpClients, n.options.tools, n.options.mainLoopModel, f))
+    for (let oe of Z$e(context, f)) P.push(ai(oe));
+    for (let oe of kze(
+      context.options.mcpClients,
+      context.options.tools,
+      context.options.mainLoopModel,
+      f,
+    ))
       P.push(ai(oe));
-    n.onCompactEvent?.({
+    context.onCompactEvent?.({
       type: "compact_progress",
       event: {
         type: "hooks_start",
@@ -801,11 +835,11 @@ User context: ${o}`;
       },
     });
     let N = await z8("compact", {
-        model: n.options.mainLoopModel,
+        model: context.options.mainLoopModel,
       }),
       B = OX([v]),
       $ = lre(v),
-      q = lL(n.options.mainLoopModel, gg(n));
+      q = lL(context.options.mainLoopModel, gg(context));
     G("tengu_partial_compact", {
       preCompactTokenCount: m,
       postCompactTokenCount: B,
@@ -815,7 +849,7 @@ User context: ${o}`;
         effort_level: $e(q),
       }),
       direction: $e(s),
-      hasUserFeedback: !!o,
+      hasUserFeedback: !!userFeedback,
       trigger: We("message_selector"),
       compactionInputTokens: $?.input_tokens,
       compactionOutputTokens: $?.output_tokens,
@@ -824,14 +858,14 @@ User context: ${o}`;
     });
     let W =
         s === "up_to"
-          ? e.slice(0, t).findLast((oe) => oe.type !== "progress")?.uuid
+          ? allMessages.slice(0, pivotIndex).findLast((oe) => oe.type !== "progress")?.uuid
           : f.at(-1)?.uuid,
-      V = MKt("manual", m ?? 0, W, o, p.length),
-      Y = xQ(e);
+      V = MKt("manual", m ?? 0, W, userFeedback, p.length),
+      Y = xQ(allMessages);
     if (Y.size > 0) V.compactMetadata.preCompactDiscoveredTools = [...Y].sort();
     V.compactMetadata.durationMs = Math.round(performance.now() - d);
     let z = em(),
-      K = LI() && Y2t(n.getReplContexts(), n.agentId),
+      K = LI() && Y2t(context.getReplContexts(), context.agentId),
       Z = [
         Rn({
           content: Kjt(C, false, z, void 0, K),
@@ -840,7 +874,7 @@ User context: ${o}`;
             ? {
                 summarizeMetadata: {
                   messagesSummarized: p.length,
-                  userContext: o,
+                  userContext: userFeedback,
                   direction: s,
                 },
               }
@@ -849,10 +883,10 @@ User context: ${o}`;
               }),
         }),
       ];
-    if (WX()) Bjt(n.options.querySource ?? "compact", n.agentId);
+    if (WX()) Bjt(context.options.querySource ?? "compact", context.agentId);
     (aJe(),
       lSt(),
-      n.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "hooks_start",
@@ -864,14 +898,14 @@ User context: ${o}`;
         trigger: "manual",
         compactSummary: C,
       },
-      n.abortController.signal,
+      context.abortController.signal,
     );
     ((u = qv([V, ...Z, ...f, ...P, ...N])), (V.compactMetadata.postTokens = u));
     let ne = s === "up_to" ? (Z.at(-1)?.uuid ?? V.uuid) : V.uuid;
     return (
       xe("compact_partial"),
       {
-        boundaryMarker: _Po(V, ne, f, e),
+        boundaryMarker: _Po(V, ne, f, allMessages),
         summaryMessages: Z,
         messagesToKeep: f,
         attachments: P,
@@ -889,7 +923,7 @@ User context: ${o}`;
       p
     );
   } finally {
-    (n.onCompactEvent?.({
+    (context.onCompactEvent?.({
       type: "stream_mode",
       mode: "requesting",
     }),
@@ -897,7 +931,7 @@ User context: ${o}`;
         type: "response_length",
         op: "reset",
       }),
-      n.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "compact_progress",
         event: {
           type: "compact_end",
@@ -911,7 +945,7 @@ User context: ${o}`;
         postTokens: u,
         error: l,
       }),
-      n.onCompactEvent?.({
+      context.onCompactEvent?.({
         type: "sdk_status",
         status: null,
         metadata: {
@@ -923,13 +957,13 @@ User context: ${o}`;
       }));
   }
 }
-function addErrorNotificationIfNeeded(e, t) {
+function addErrorNotificationIfNeeded(error, context) {
   if (
-    !Xie(e, ERROR_MESSAGE_USER_ABORT) &&
-    !Xie(e, ERROR_MESSAGE_NOT_ENOUGH_MESSAGES) &&
-    !be(e).startsWith(abt)
+    !Xie(error, ERROR_MESSAGE_USER_ABORT) &&
+    !Xie(error, ERROR_MESSAGE_NOT_ENOUGH_MESSAGES) &&
+    !be(error).startsWith(abt)
   )
-    (t?.({
+    (context?.({
       key: "error-compacting-conversation",
       text: "Error compacting conversation",
       priority: "immediate",
@@ -1205,22 +1239,22 @@ async function streamCompactSummary({
     clearInterval(c);
   }
 }
-async function createPostCompactFileAttachments(e, t, n, r = []) {
+async function createPostCompactFileAttachments(readFileState, toolUseContext, maxFiles, r = []) {
   let o = collectReadToolFilePaths(r),
-    s = Object.entries(e)
+    s = Object.entries(readFileState)
       .map(([l, c]) => ({
         filename: l,
         ...c,
       }))
-      .filter((l) => !Lwf(l.filename, t.agentId) && !o.has(ds(l.filename)))
+      .filter((l) => !Lwf(l.filename, toolUseContext.agentId) && !o.has(ds(l.filename)))
       .sort((l, c) => c.timestamp - l.timestamp)
-      .slice(0, n),
+      .slice(0, maxFiles),
     i = await Promise.all(
       s.map(async (l) => {
         let c = await dZn(
           l.filename,
           {
-            ...t,
+            ...toolUseContext,
             fileReadingLimits: {
               maxTokens: Hwf,
             },
@@ -1240,18 +1274,18 @@ async function createPostCompactFileAttachments(e, t, n, r = []) {
     return false;
   });
 }
-function createPlanAttachmentIfNeeded(e) {
-  let t = bP(e);
+function createPlanAttachmentIfNeeded(agentId) {
+  let t = bP(agentId);
   if (!t) return null;
-  let n = _P(e);
+  let n = _P(agentId);
   return ai({
     type: "plan_file_reference",
     planFilePath: n,
     planContent: t,
   });
 }
-function createSkillAttachmentIfNeeded(e) {
-  let t = Zbr(e);
+function createSkillAttachmentIfNeeded(agentId) {
+  let t = Zbr(agentId);
   if (t.size === 0) return null;
   let n = 0,
     r = Array.from(t.values())
@@ -1288,12 +1322,12 @@ async function _Qn(e) {
     }),
   });
 }
-async function createAsyncAgentAttachmentsIfNeeded(e) {
-  let t = e.getAppState();
+async function createAsyncAgentAttachmentsIfNeeded(context) {
+  let t = context.getAppState();
   return Object.values(t.tasks)
     .filter((r) => r.type === "local_agent")
     .flatMap((r) => {
-      if (r.retrieved || r.status === "pending" || r.agentId === e.agentId) return [];
+      if (r.retrieved || r.status === "pending" || r.agentId === context.agentId) return [];
       return [
         ai({
           type: "task_status",
@@ -1307,16 +1341,16 @@ async function createAsyncAgentAttachmentsIfNeeded(e) {
       ];
     });
 }
-function collectReadToolFilePaths(e) {
+function collectReadToolFilePaths(messages) {
   let t = new Set();
-  for (let r of e) {
+  for (let r of messages) {
     if (r.type !== "user" || !Array.isArray(r.message.content)) continue;
     for (let o of r.message.content)
       if (o.type === "tool_result" && typeof o.content === "string" && A0n(o.content))
         t.add(o.tool_use_id);
   }
   let n = new Set();
-  for (let r of e) {
+  for (let r of messages) {
     if (r.type !== "assistant" || !Array.isArray(r.message.content)) continue;
     for (let o of r.message.content) {
       if (o.type !== "tool_use" || o.name !== Ds || t.has(o.id)) continue;

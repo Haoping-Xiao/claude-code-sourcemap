@@ -72,9 +72,9 @@ function formatTokenEstimate(e) {
   if (e < 20) return "< 20";
   return `~${formatTokens(Math.round(e / 10) * 10)}`;
 }
-function formatRelativeTime(e, t = {}) {
+function formatRelativeTime(date, t = {}) {
   let { style: n = "narrow", numeric: r = "always", now: o = new Date() } = t,
-    s = e.getTime() - o.getTime(),
+    s = date.getTime() - o.getTime(),
     i = Math.trunc(s / 1000),
     a = [
       {
@@ -150,9 +150,9 @@ function formatLogMetadata(e) {
   if (e.prNumber) n.push(e.prRepository ? `${e.prRepository}#${e.prNumber}` : `#${e.prNumber}`);
   return n.join(" \xB7 ");
 }
-function formatResetTime(e, t = false, n = true, r = false) {
-  if (!e) return;
-  let o = new Date(e * 1000),
+function formatResetTime(timestampInSeconds, t = false, n = true, r = false) {
+  if (!timestampInSeconds) return;
+  let o = new Date(timestampInSeconds * 1000),
     s = new Date(),
     i = o.getMinutes(),
     a = (o.getTime() - s.getTime()) / 3600000;

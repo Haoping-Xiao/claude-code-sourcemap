@@ -451,9 +451,9 @@ function WelcomeV2() {
   else S = e[35];
   return S;
 }
-function AppleTerminalWelcomeV2(e) {
+function AppleTerminalWelcomeV2(t0) {
   let t = N9o.c(44),
-    { theme: n, welcomeMessage: r } = e;
+    { theme: n, welcomeMessage: r } = t0;
   if (["light", "light-daltonized", "light-ansi"].includes(n)) {
     let x;
     if (t[0] !== r)

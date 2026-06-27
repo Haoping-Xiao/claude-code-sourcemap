@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BBl] deps: _i, Ye, rBo
 ((OBl = R(lt(), 1)), (ZQ = R(se(), 1)));
-function HelpV2(e) {
+function HelpV2(t0) {
   let t = UBl.c(44),
-    { onClose: n, commands: r } = e,
+    { onClose: n, commands: r } = t0,
     o = br(),
     { rows: s, columns: i } = bb(o),
     a = s,

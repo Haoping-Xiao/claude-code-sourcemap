@@ -41,20 +41,22 @@ async function h6f(e) {
   let t = e.options.tools || [];
   return cir(e.messages, t);
 }
-async function call(e, t, n) {
-  let r = await h6f(t),
-    o = n.trim();
+async function call(onDone, context, args) {
+  let r = await h6f(context),
+    o = args.trim();
   if (o) {
     try {
       let l = await lir(o, r);
-      (xe("export_file"), e(`Conversation exported to: ${l}`));
+      (xe("export_file"), onDone(`Conversation exported to: ${l}`));
     } catch (l) {
       (Le("export_file", "write_failed"),
-        e(`Failed to export conversation: ${l instanceof Error ? l.message : "Unknown error"}`));
+        onDone(
+          `Failed to export conversation: ${l instanceof Error ? l.message : "Unknown error"}`,
+        ));
     }
     return null;
   }
-  let s = extractFirstPrompt(t.messages),
+  let s = extractFirstPrompt(context.messages),
     i = g6f(new Date()),
     a;
   if (s) {
@@ -65,7 +67,7 @@ async function call(e, t, n) {
     content: r,
     defaultFilename: a,
     onDone: (l) => {
-      e(l.message);
+      onDone(l.message);
     },
   });
 }

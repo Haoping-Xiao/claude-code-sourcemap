@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q$a] deps: Bi, _0, Mx
 Pgo = new Map();
-function deriveReviewState(e, t) {
-  if (e) return "draft";
-  switch (t) {
+function deriveReviewState(isDraft, reviewDecision) {
+  if (isDraft) return "draft";
+  switch (reviewDecision) {
     case "APPROVED":
       return "approved";
     case "CHANGES_REQUESTED":

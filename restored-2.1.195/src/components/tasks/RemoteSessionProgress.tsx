@@ -6,19 +6,19 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f8l] deps: Yyt, Ye, ps, ii, LL, es, co, Bs, vi, Ko, eIo, rjo, YHe
 ((d8l = R(lt(), 1)), (AS = R(se(), 1)));
-function formatReviewStageCounts(e, t, n, r) {
-  if (!e) return `${t} found \xB7 ${n} verified`;
-  if (e === "synthesizing") {
-    let o = [`${n} verified`];
-    if (r > 0) o.push(`${r} refuted`);
+function formatReviewStageCounts(stage, found, verified, refuted) {
+  if (!stage) return `${found} found \xB7 ${verified} verified`;
+  if (stage === "synthesizing") {
+    let o = [`${verified} verified`];
+    if (refuted > 0) o.push(`${refuted} refuted`);
     return (o.push("deduping"), o.join(" \xB7 "));
   }
-  if (e === "verifying") {
-    let o = [`${t} found`, `${n} verified`];
-    if (r > 0) o.push(`${r} refuted`);
+  if (stage === "verifying") {
+    let o = [`${found} found`, `${verified} verified`];
+    if (refuted > 0) o.push(`${refuted} refuted`);
     return o.join(" \xB7 ");
   }
-  return t > 0 ? `${t} found` : "finding";
+  return found > 0 ? `${found} found` : "finding";
 }
 function ojo(e) {
   let t = lsr.c(5),
@@ -54,9 +54,9 @@ function sjo(e, t, n) {
   else if (e > r.current && t !== o.current) ((r.current += 1), (o.current = t));
   return r.current;
 }
-function ReviewRainbowLine(e) {
+function ReviewRainbowLine(t0) {
   let t = lsr.c(20),
-    { session: n } = e,
+    { session: n } = t0,
     r = G_(),
     o = Sd(),
     s;
@@ -186,9 +186,9 @@ function ReviewRainbowLine(e) {
   else x = t[19];
   return x;
 }
-function RemoteSessionProgress(e) {
+function RemoteSessionProgress(t0) {
   let t = lsr.c(11),
-    { session: n } = e;
+    { session: n } = t0;
   if (n.isRemoteReview) {
     let a;
     if (t[0] !== n)

@@ -235,7 +235,7 @@ async function Jor() {
     }
   }
 }
-async function launchRemoteReview(e, t, n, r) {
+async function launchRemoteReview(args, context, billingNote, r) {
   let o = r?.invocation ?? "/code-review ultra",
     s = (I) => ({
       launched: false,
@@ -299,7 +299,7 @@ ${k}`);
     b,
     _,
     S;
-  if (e.mode === "pr") {
+  if (args.mode === "pr") {
     let I = await $O();
     if (!I)
       return (
@@ -311,13 +311,13 @@ ${k}`);
     ((p = await Y5({
       initialMessage: null,
       source: "ultrareview",
-      description: `ultrareview: ${I.owner}/${I.name}#${e.prNumber}`,
-      signal: t.abortController.signal,
-      branchName: `refs/pull/${e.prNumber}/head`,
+      description: `ultrareview: ${I.owner}/${I.name}#${args.prNumber}`,
+      signal: context.abortController.signal,
+      branchName: `refs/pull/${args.prNumber}/head`,
       environmentId: a,
       tags: ["ultrareview"],
       environmentVariables: {
-        BUGHUNTER_PR_NUMBER: e.prNumber,
+        BUGHUNTER_PR_NUMBER: args.prNumber,
         BUGHUNTER_REPOSITORY: `${I.owner}/${I.name}`,
         ...d,
       },
@@ -325,10 +325,10 @@ ${k}`);
         ((h = k), (y = $e(D)), (b = P?.status), (_ = Oo(P?.serverType)), (S = Oo(P?.serverReason)));
       },
     })),
-      (f = `/ultrareview ${e.prNumber}`),
-      (m = `${I.owner}/${I.name}#${e.prNumber}`));
+      (f = `/ultrareview ${args.prNumber}`),
+      (m = `${I.owner}/${I.name}#${args.prNumber}`));
   } else {
-    let { headBranch: I, baseBranch: k, mergeBaseSha: D, diffStat: P } = e;
+    let { headBranch: I, baseBranch: k, mergeBaseSha: D, diffStat: P } = args;
     g = P;
     let O, L;
     if (
@@ -336,7 +336,7 @@ ${k}`);
         initialMessage: null,
         source: "ultrareview",
         description: `ultrareview: ${I}`,
-        signal: t.abortController.signal,
+        signal: context.abortController.signal,
         useBundle: true,
         bundleBaseRef: D,
         environmentId: a,
@@ -396,14 +396,14 @@ ${k}`);
       remoteTaskType: "ultrareview",
       session: p,
       command: f,
-      context: t,
+      context: context,
       isRemoteReview: true,
       applyFixesOnComplete: r?.applyFixesOnComplete,
     }).taskId;
   G("tengu_review_remote_launched", {});
   let v = xpe(p.id),
-    C = n.trim()
-      ? `${n.trim()}
+    C = billingNote.trim()
+      ? `${billingNote.trim()}
 `
       : "",
     x = g

@@ -23,8 +23,8 @@ function readAutoModeEnabledState() {
 function ELe(e, t, n) {
   return;
 }
-function setupVscodeSdkMcp(e, t) {
-  let n = e.find((r) => r.name === "claude-vscode");
+function setupVscodeSdkMcp(sdkClients, t) {
+  let n = sdkClients.find((r) => r.name === "claude-vscode");
   if (n && n.type === "connected") {
     ((Kca = n),
       n.client.setNotificationHandler(Oao(), async (s) => {

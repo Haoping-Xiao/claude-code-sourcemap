@@ -40,7 +40,7 @@ function initializePerfettoTracing() {
   let e = process.env.CLAUDE_CODE_PERFETTO_TRACE;
   T(`[Perfetto] initializePerfettoTracing called, env value: ${e}`);
 }
-function emitProcessMetadata(e) {
+function emitProcessMetadata(agentInfo) {
   if (!s6) return;
   if (
     (opo.push({
@@ -48,10 +48,10 @@ function emitProcessMetadata(e) {
       cat: "__metadata",
       ph: "M",
       ts: 0,
-      pid: e.processId,
+      pid: agentInfo.processId,
       tid: 0,
       args: {
-        name: e.agentName,
+        name: agentInfo.agentName,
       },
     }),
     opo.push({
@@ -59,23 +59,23 @@ function emitProcessMetadata(e) {
       cat: "__metadata",
       ph: "M",
       ts: 0,
-      pid: e.processId,
-      tid: e.threadId,
+      pid: agentInfo.processId,
+      tid: agentInfo.threadId,
       args: {
-        name: e.agentName,
+        name: agentInfo.agentName,
       },
     }),
-    e.parentAgentId)
+    agentInfo.parentAgentId)
   )
     opo.push({
       name: "parent_agent",
       cat: "__metadata",
       ph: "M",
       ts: 0,
-      pid: e.processId,
+      pid: agentInfo.processId,
       tid: 0,
       args: {
-        parent_agent_id: e.parentAgentId,
+        parent_agent_id: agentInfo.parentAgentId,
       },
     });
 }
@@ -97,7 +97,7 @@ function _qe(e) {
   if (!s6) return;
   (yFn.delete(e), ipo.delete(e));
 }
-function startLLMRequestPerfettoSpan(e) {
+function startLLMRequestPerfettoSpan(args) {
   if (!s6) return "";
   let t = _Fn(),
     n = P3t();
@@ -108,11 +108,11 @@ function startLLMRequestPerfettoSpan(e) {
       startTime: VSe(),
       agentInfo: n,
       args: {
-        model: e.model,
-        prompt_tokens: e.promptTokens,
-        message_id: e.messageId,
-        is_speculative: e.isSpeculative ?? false,
-        query_source: e.querySource,
+        model: args.model,
+        prompt_tokens: args.promptTokens,
+        message_id: args.messageId,
+        is_speculative: args.isSpeculative ?? false,
+        query_source: args.querySource,
       },
     }),
     tN.push({
@@ -127,24 +127,24 @@ function startLLMRequestPerfettoSpan(e) {
     t
   );
 }
-function endLLMRequestPerfettoSpan(e, t) {
-  if (!s6 || !e) return;
-  let n = SL.get(e);
+function endLLMRequestPerfettoSpan(spanId, metadata) {
+  if (!s6 || !spanId) return;
+  let n = SL.get(spanId);
   if (!n) return;
   let r = VSe(),
     o = r - n.startTime,
-    s = t.promptTokens ?? n.args.prompt_tokens,
-    i = t.ttftMs,
-    a = t.ttltMs,
-    l = t.outputTokens,
-    c = t.cacheReadTokens,
+    s = metadata.promptTokens ?? n.args.prompt_tokens,
+    i = metadata.ttftMs,
+    a = metadata.ttltMs,
+    l = metadata.outputTokens,
+    c = metadata.cacheReadTokens,
     u = i !== void 0 && s !== void 0 && i > 0 ? Math.round((s / (i / 1000)) * 100) / 100 : void 0,
     d = a !== void 0 && i !== void 0 ? a - i : void 0,
     p = d !== void 0 && l !== void 0 && d > 0 ? Math.round((l / (d / 1000)) * 100) / 100 : void 0,
     f =
       c !== void 0 && s !== void 0 && s > 0 ? Math.round((c / s) * 10000 /* 1e4 */) / 100 : void 0,
-    m = t.requestSetupMs,
-    g = t.attemptStartTimes,
+    m = metadata.requestSetupMs,
+    g = metadata.attemptStartTimes,
     h = {
       ...n.args,
       ttft_ms: i,
@@ -152,12 +152,12 @@ function endLLMRequestPerfettoSpan(e, t) {
       prompt_tokens: s,
       output_tokens: l,
       cache_read_tokens: c,
-      cache_creation_tokens: t.cacheCreationTokens,
-      message_id: t.messageId ?? n.args.message_id,
-      request_id: t.requestId,
-      client_request_id: t.clientRequestId,
-      success: t.success ?? true,
-      error: t.error,
+      cache_creation_tokens: metadata.cacheCreationTokens,
+      message_id: metadata.messageId ?? n.args.message_id,
+      request_id: metadata.requestId,
+      client_request_id: metadata.clientRequestId,
+      success: metadata.success ?? true,
+      error: metadata.error,
       duration_ms: o / 1000,
       request_setup_ms: m,
       itps: u,
@@ -274,7 +274,7 @@ function endLLMRequestPerfettoSpan(e, t) {
     tid: n.agentInfo.threadId,
     args: h,
   }),
-    SL.delete(e));
+    SL.delete(spanId));
 }
 function qxa(e, t) {
   if (!s6) return "";
@@ -327,7 +327,7 @@ function Vxa(e, t) {
   }),
     SL.delete(e));
 }
-function startUserInputPerfettoSpan(e) {
+function startUserInputPerfettoSpan(context) {
   if (!s6) return "";
   let t = _Fn(),
     n = P3t();
@@ -338,7 +338,7 @@ function startUserInputPerfettoSpan(e) {
       startTime: VSe(),
       agentInfo: n,
       args: {
-        context: e,
+        context: context,
       },
     }),
     tN.push({
@@ -389,7 +389,7 @@ function Yxa(e, t, n) {
     args: n,
   });
 }
-function startInteractionPerfettoSpan(e) {
+function startInteractionPerfettoSpan(userPrompt) {
   if (!s6) return "";
   let t = _Fn(),
     n = P3t();
@@ -400,7 +400,7 @@ function startInteractionPerfettoSpan(e) {
       startTime: VSe(),
       agentInfo: n,
       args: {
-        user_prompt_length: e?.length,
+        user_prompt_length: userPrompt?.length,
       },
     }),
     tN.push({

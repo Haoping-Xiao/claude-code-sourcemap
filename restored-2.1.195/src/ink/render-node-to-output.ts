@@ -181,8 +181,8 @@ function tWd(e, t, n) {
   return t;
 }
 function renderNodeToOutput(
-  e,
-  t,
+  node,
+  output,
   n,
   {
     offsetX: r = 0,
@@ -192,19 +192,19 @@ function renderNodeToOutput(
     inheritedBackgroundColor: a,
   },
 ) {
-  let { yogaNode: l } = e;
+  let { yogaNode: l } = node;
   if (l) {
     if (l.getDisplay() === 1) {
-      if (e.dirty) {
-        let _ = Cy.get(e);
+      if (node.dirty) {
+        let _ = Cy.get(node);
         if (_)
-          (t.clear({
+          (output.clear({
             x: Math.floor(_.x),
             y: Math.floor(_.y),
             width: Math.floor(_.width),
             height: Math.floor(_.height),
           }),
-            zBt(e),
+            zBt(node),
             (n.layoutShifted = true));
       }
       return;
@@ -214,12 +214,12 @@ function renderNodeToOutput(
       d = o + u,
       p = l.getComputedWidth(),
       f = l.getComputedHeight();
-    if (d < 0 && e.style.position === "absolute") d = 0;
-    let m = Cy.get(e);
+    if (d < 0 && node.style.position === "absolute") d = 0;
+    let m = Cy.get(node);
     if (
-      !e.dirty &&
+      !node.dirty &&
       !i &&
-      e.pendingScrollDelta === void 0 &&
+      node.pendingScrollDelta === void 0 &&
       m &&
       m.x === c &&
       m.y === d &&
@@ -231,53 +231,54 @@ function renderNodeToOutput(
         S = Math.floor(d),
         A = Math.floor(p),
         v = Math.floor(f);
-      if ((t.blit(s, _, S, A, v), e.style.position === "absolute")) n.absoluteRectsCur.push(m);
-      PWi(e, t, n, s, _, S, A, v);
+      if ((output.blit(s, _, S, A, v), node.style.position === "absolute"))
+        n.absoluteRectsCur.push(m);
+      PWi(node, output, n, s, _, S, A, v);
       return;
     }
     let g = m !== void 0 && (m.x !== c || m.y !== d || m.width !== p || m.height !== f);
     if (g) n.layoutShifted = true;
-    if (m && (e.dirty || g))
-      t.clear(
+    if (m && (node.dirty || g))
+      output.clear(
         {
           x: Math.floor(m.x),
           y: Math.floor(m.y),
           width: Math.floor(m.width),
           height: Math.floor(m.height),
         },
-        e.style.position === "absolute",
+        node.style.position === "absolute",
       );
-    let h = wBt.get(e),
+    let h = wBt.get(node),
       y = h !== void 0;
     if (y) {
       n.layoutShifted = true;
       for (let _ of h)
-        t.clear({
+        output.clear({
           x: Math.floor(_.x),
           y: Math.floor(_.y),
           width: Math.floor(_.width),
           height: Math.floor(_.height),
         });
-      wBt.delete(e);
+      wBt.delete(node);
     }
-    if (f === 0 && oWd(e, l)) {
-      Cy.set(e, {
+    if (f === 0 && oWd(node, l)) {
+      Cy.set(node, {
         x: c,
         y: d,
         width: p,
         height: f,
         top: u,
       });
-      for (let _ of e.childNodes) if (_.nodeName !== "#text") MWi(_, c, d);
-      e.dirty = false;
+      for (let _ of node.childNodes) if (_.nodeName !== "#text") MWi(_, c, d);
+      node.dirty = false;
       return;
     }
-    if (e.nodeName === "ink-raw-ansi") {
-      let _ = e.attributes.rawText;
-      if (_) t.write(c, d, _);
-    } else if (e.nodeName === "ink-text") {
+    if (node.nodeName === "ink-raw-ansi") {
+      let _ = node.attributes.rawText;
+      if (_) output.write(c, d, _);
+    } else if (node.nodeName === "ink-text") {
       let _ = KRn(
-          e,
+          node,
           a
             ? {
                 backgroundColor: a,
@@ -286,8 +287,8 @@ function renderNodeToOutput(
         ),
         S = _.map((A) => A.text).join("");
       if (S.length > 0) {
-        let A = Math.min(gWi(l), t.width - c),
-          v = e.style.textWrap ?? "wrap",
+        let A = Math.min(gWi(l), output.width - c),
+          v = node.style.textWrap ?? "wrap",
           C = v === "wrap-stream" || WBt(S) > A,
           x,
           I;
@@ -317,22 +318,22 @@ function renderNodeToOutput(
             if (k.hyperlink) D = TLn(D, k.hyperlink);
             return D;
           }).join("");
-        ((x = tWd(e, x, I)), t.write(c, d, x, I));
+        ((x = tWd(node, x, I)), output.write(c, d, x, I));
       }
-    } else if (e.nodeName === "ink-box") {
-      let _ = e.style.backgroundColor ?? a;
-      if (e.style.noSelect) {
+    } else if (node.nodeName === "ink-box") {
+      let _ = node.style.backgroundColor ?? a;
+      if (node.style.noSelect) {
         let P = Math.floor(c),
-          O = e.style.noSelect === "from-left-edge";
-        t.noSelect({
+          O = node.style.noSelect === "from-left-edge";
+        output.noSelect({
           x: O ? 0 : P,
           y: Math.floor(d),
           width: O ? P + Math.floor(p) : Math.floor(p),
           height: Math.floor(f),
         });
       }
-      let S = e.style.overflowX ?? e.style.overflow,
-        A = e.style.overflowY ?? e.style.overflow,
+      let S = node.style.overflowX ?? node.style.overflow,
+        A = node.style.overflowY ?? node.style.overflow,
         v = S === "hidden" || S === "scroll",
         C = A === "hidden" || A === "scroll",
         x = A === "scroll",
@@ -344,7 +345,7 @@ function renderNodeToOutput(
           O = v ? c + l.getComputedWidth() - l.getComputedBorder(2) : void 0;
         ((k = C ? d + l.getComputedBorder(1) : void 0),
           (D = C ? d + l.getComputedHeight() - l.getComputedBorder(3) : void 0),
-          t.clip({
+          output.clip({
             x1: P,
             x2: O,
             y1: k,
@@ -354,57 +355,61 @@ function renderNodeToOutput(
       if (x) {
         let P = l.getComputedPadding(1),
           O = Math.max(0, (D ?? d + f) - (k ?? d) - P - l.getComputedPadding(3)),
-          L = e.childNodes.find((pe) => pe.yogaNode),
+          L = node.childNodes.find((pe) => pe.yogaNode),
           M = L?.yogaNode,
           N = M?.getComputedHeight() ?? 0,
-          B = e.scrollHeight ?? N,
-          $ = e.scrollViewportHeight ?? O;
-        ((e.scrollHeight = N), (e.scrollViewportHeight = O), (e.scrollViewportTop = (k ?? d) + P));
+          B = node.scrollHeight ?? N,
+          $ = node.scrollViewportHeight ?? O;
+        ((node.scrollHeight = N),
+          (node.scrollViewportHeight = O),
+          (node.scrollViewportTop = (k ?? d) + P));
         let q = Math.max(0, N - O);
-        if (e.scrollAnchor) {
-          let pe = e.scrollAnchor.el.yogaNode?.getComputedTop();
+        if (node.scrollAnchor) {
+          let pe = node.scrollAnchor.el.yogaNode?.getComputedTop();
           if (pe != null)
-            ((e.scrollTop = pe + e.scrollAnchor.offset), (e.pendingScrollDelta = void 0));
-          e.scrollAnchor = void 0;
+            ((node.scrollTop = pe + node.scrollAnchor.offset), (node.pendingScrollDelta = void 0));
+          node.scrollAnchor = void 0;
         }
-        let W = e.scrollTop ?? 0,
-          V = e.attributes.stickyScroll,
-          Y = e.stickyScroll ?? Boolean(V),
-          z = Y ? B : Math.max(e.scrollHeightHwm ?? 0, B);
-        e.scrollHeightHwm = Y ? void 0 : Math.max(z, N);
+        let W = node.scrollTop ?? 0,
+          V = node.attributes.stickyScroll,
+          Y = node.stickyScroll ?? Boolean(V),
+          z = Y ? B : Math.max(node.scrollHeightHwm ?? 0, B);
+        node.scrollHeightHwm = Y ? void 0 : Math.max(z, N);
         let K = Math.max(0, z - $),
           Z = N >= B,
-          J = e.attributes.followGrowth !== false;
-        if ((Y || (V !== false && J && Z && W >= K)) && (e.pendingScrollDelta ?? 0) >= 0) {
+          J = node.attributes.followGrowth !== false;
+        if ((Y || (V !== false && J && Z && W >= K)) && (node.pendingScrollDelta ?? 0) >= 0) {
           if (
-            ((e.scrollTop = q), (e.pendingScrollDelta = void 0), e.stickyScroll === false && W >= K)
+            ((node.scrollTop = q),
+            (node.pendingScrollDelta = void 0),
+            node.stickyScroll === false && W >= K)
           ) {
             if (q - W > 3)
               T(
                 `render-node-to-output: positional follow re-enabled sticky (scrollTop=${W} prevMax=${K} \u2192 newMax=${q}, prevH=${B} \u2192 ${N})`,
               );
-            e.stickyScroll = true;
+            node.stickyScroll = true;
           }
         }
-        let oe = e.scrollTop ?? 0,
-          re = e.pendingScrollDelta,
-          ee = e.scrollClampMin,
-          ce = e.scrollClampMax,
+        let oe = node.scrollTop ?? 0,
+          re = node.pendingScrollDelta,
+          ee = node.scrollClampMin,
+          ce = node.scrollClampMax,
           ae = ee !== void 0 && ce !== void 0;
         if (re !== void 0 && re !== 0) {
           let ge = ae && ((re < 0 && oe < ee) || (re > 0 && oe > ce)) ? Math.min(4, O >> 3) : O,
             he = T1().useAdaptiveDrain,
-            ie = he ? JGd(e, re, ge) : QGd(e, re, ge);
-          ((oe += ie), CWi(ie, e.pendingScrollDelta ?? 0, he ? "adaptive" : "proportional"));
-        } else if (re === 0) e.pendingScrollDelta = void 0;
+            ie = he ? JGd(node, re, ge) : QGd(node, re, ge);
+          ((oe += ie), CWi(ie, node.pendingScrollDelta ?? 0, he ? "adaptive" : "proportional"));
+        } else if (re === 0) node.pendingScrollDelta = void 0;
         let de = Math.max(0, Math.min(oe, q)),
           Ee = ae ? Math.max(ee, Math.min(de, ce)) : de;
-        if (((e.scrollTop = de), de !== oe)) e.pendingScrollDelta = void 0;
-        if (e.pendingScrollDelta !== void 0) n.scrollDrainNode = e;
+        if (((node.scrollTop = de), de !== oe)) node.pendingScrollDelta = void 0;
+        if (node.pendingScrollDelta !== void 0) n.scrollDrainNode = node;
         de = Ee;
-        let me = de - (e.scrollTopRendered ?? de);
+        let me = de - (node.scrollTopRendered ?? de);
         if (me !== 0) {
-          let pe = e.scrollViewportTop ?? 0;
+          let pe = node.scrollViewportTop ?? 0;
           n.followScroll = {
             delta: me,
             viewportLeft: Math.floor(c),
@@ -413,7 +418,7 @@ function renderNodeToOutput(
             viewportBottom: pe + O - 1,
           };
         }
-        if (((e.scrollTopRendered = de), L && M)) {
+        if (((node.scrollTopRendered = de), L && M)) {
           let pe = c + M.getComputedLeft(),
             ge = d + M.getComputedTop() - de,
             he = Cy.get(L),
@@ -424,7 +429,7 @@ function renderNodeToOutput(
               Ve = Ie + O - 1;
             if (
               Math.floor(c) <= 0 &&
-              Math.floor(c + p) >= t.width &&
+              Math.floor(c + p) >= output.width &&
               m?.y === d &&
               m.height === f &&
               O > 0 &&
@@ -447,23 +452,27 @@ function renderNodeToOutput(
           if (ie && we) {
             let { top: Ce, bottom: Ie, delta: Ve } = ie,
               Ze = Math.floor(p);
-            (t.blit(s, Math.floor(c), Ce, Ze, Ie - Ce + 1), t.shift(Ce, Ie, Ve));
+            (output.blit(s, Math.floor(c), Ce, Ze, Ie - Ce + 1), output.shift(Ce, Ie, Ve));
             let Be = Ve > 0 ? Ie - Ve + 1 : Ce,
               Me = Ve > 0 ? Ie : Ce - Ve - 1;
-            (t.clear({
+            (output.clear({
               x: Math.floor(c),
               y: Be,
               width: Ze,
               height: Me - Be + 1,
             }),
-              t.clip({
+              output.clip({
                 x1: void 0,
                 x2: void 0,
                 y1: Be,
                 y2: Me + 1,
               }));
             let Ue = L.dirty ? new Set(L.childNodes.filter((bt) => bt.dirty)) : null;
-            if ((vJr(L, t, n, pe, ge, y, void 0, Be - ge, Me + 1 - ge, _, true), t.unclip(), Ue)) {
+            if (
+              (vJr(L, output, n, pe, ge, y, void 0, Be - ge, Me + 1 - ge, _, true),
+              output.unclip(),
+              Ue)
+            ) {
               let bt = Be - ge,
                 Ke = Me + 1 - ge,
                 Et = " ".repeat(Ze),
@@ -495,7 +504,7 @@ function renderNodeToOutput(
                     let Mr = Math.max(kr, ie.top),
                       fe = Math.min(kr + Hn.height, Je ?? ie.bottom + 1);
                     if (Mr < fe)
-                      t.write(
+                      output.write(
                         Math.floor(c),
                         Mr,
                         Array(fe - Mr).fill(Et).join(`
@@ -508,20 +517,20 @@ function renderNodeToOutput(
                   Je ??= nn;
                   let Hn = Array(Ln - nn).fill(Et).join(`
 `);
-                  (t.write(Math.floor(c), nn, Hn),
-                    t.clip({
+                  (output.write(Math.floor(c), nn, Hn),
+                    output.clip({
                       x1: void 0,
                       x2: void 0,
                       y1: nn,
                       y2: Ln,
                     }),
-                    renderNodeToOutput(st, t, n, {
+                    renderNodeToOutput(st, output, n, {
                       offsetX: pe,
                       offsetY: ge,
                       prevScreen: void 0,
                       inheritedBackgroundColor: _,
                     }),
-                    t.unclip());
+                    output.unclip());
                 }
               }
             }
@@ -534,26 +543,26 @@ function renderNodeToOutput(
               if (Ke >= Et) continue;
               let ct = Array(Et - Ke).fill(tt).join(`
 `);
-              (t.write(Math.floor(c), Ke, ct),
-                t.clip({
+              (output.write(Math.floor(c), Ke, ct),
+                output.clip({
                   x1: void 0,
                   x2: void 0,
                   y1: Ke,
                   y2: Et,
                 }),
-                vJr(L, t, n, pe, ge, y, void 0, Ke - ge, Et - ge, _, true),
-                t.unclip());
+                vJr(L, output, n, pe, ge, y, void 0, Ke - ge, Et - ge, _, true),
+                output.unclip());
             }
           } else {
             let Ce = he && he.y !== ge;
             if (Ce && k !== void 0 && D !== void 0)
-              t.clear({
+              output.clear({
                 x: Math.floor(c),
                 y: Math.floor(k),
                 width: Math.floor(p),
                 height: Math.floor(D - k),
               });
-            vJr(L, t, n, pe, ge, y, Ce || g ? void 0 : s, de, de + O, _);
+            vJr(L, output, n, pe, ge, y, Ce || g ? void 0 : s, de, de + O, _);
           }
           (Cy.set(L, {
             x: pe,
@@ -564,8 +573,8 @@ function renderNodeToOutput(
             (L.dirty = false));
         }
       } else {
-        let P = e.style.backgroundColor;
-        if (P || e.style.opaque) {
+        let P = node.style.backgroundColor;
+        if (P || node.style.opaque) {
           let O = l.getComputedBorder(0),
             L = l.getComputedBorder(2),
             M = l.getComputedBorder(1),
@@ -581,14 +590,14 @@ function renderNodeToOutput(
                 : q,
               V = Array($).fill(W).join(`
 `);
-            t.write(c + O, d + M, V);
+            output.write(c + O, d + M, V);
           }
         }
-        LWi(e, t, n, c, d, y, P || e.style.opaque ? void 0 : s, _);
+        LWi(node, output, n, c, d, y, P || node.style.opaque ? void 0 : s, _);
       }
-      if (I) t.unclip();
-      AWi(c, d, e, t);
-    } else if (e.nodeName === "ink-root") LWi(e, t, n, c, d, y, s, a);
+      if (I) output.unclip();
+      AWi(c, d, node, output);
+    } else if (node.nodeName === "ink-root") LWi(node, output, n, c, d, y, s, a);
     let b = {
       x: c,
       y: d,
@@ -596,8 +605,8 @@ function renderNodeToOutput(
       height: f,
       top: u,
     };
-    if ((Cy.set(e, b), e.style.position === "absolute")) n.absoluteRectsCur.push(b);
-    e.dirty = false;
+    if ((Cy.set(node, b), node.style.position === "absolute")) n.absoluteRectsCur.push(b);
+    node.dirty = false;
   }
 }
 function nWd(e, t, n) {

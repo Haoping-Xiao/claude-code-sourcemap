@@ -81,8 +81,8 @@ Jhl = ti({
     });
   },
 });
-function readLiteMetadata(e, t, n) {
-  let { head: r, tail: o, mtime: s, size: i } = t,
+function readLiteMetadata(filePath, fileSize, buf) {
+  let { head: r, tail: o, mtime: s, size: i } = fileSize,
     a = r.indexOf(`
 `),
     l = a >= 0 ? r.slice(0, a) : r;
@@ -103,7 +103,7 @@ function readLiteMetadata(e, t, n) {
   let f = c || Kb(o, "lastPrompt") || Kb(o, "summary") || u;
   if (!f) return null;
   let m = Kb(o, "gitBranch") || EG(r, "gitBranch") || void 0,
-    g = EG(r, "cwd") || n || void 0,
+    g = EG(r, "cwd") || buf || void 0,
     h = o
       .split(
         `
@@ -112,7 +112,7 @@ function readLiteMetadata(e, t, n) {
       .findLast((b) => b.includes('"type":"tag"') && b.includes('"tag":"')),
     y = h ? Kb(h, "tag") || void 0 : void 0;
   return {
-    sessionId: e,
+    sessionId: filePath,
     summary: f,
     lastModified: s,
     fileSize: i,

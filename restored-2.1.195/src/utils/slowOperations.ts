@@ -34,9 +34,9 @@ Zss = Din;
 function m7c() {
   return f7c;
 }
-function jsonStringify(e, t, n) {
-  using r = gy`JSON.stringify(${e})`;
-  return JSON.stringify(e, t, n);
+function jsonStringify(value, replacer, space) {
+  using r = gy`JSON.stringify(${value})`;
+  return JSON.stringify(value, replacer, space);
 }
 function tis(e) {
   return (
@@ -58,32 +58,37 @@ function nis(e) {
 function qge(e) {
   return JSON.parse(e);
 }
-function clone(e, t) {
-  using n = gy`structuredClone(${e})`;
-  return structuredClone(e, t);
+function clone(value, options) {
+  using n = gy`structuredClone(${value})`;
+  return structuredClone(value, options);
 }
-function writeFileSync_DEPRECATED(e, t, n) {
-  using r = gy`fs.writeFileSync(${e}, ${t})`;
-  if (n !== null && typeof n === "object" && "flush" in n && n.flush === !0) {
-    let s = typeof n === "object" && "encoding" in n ? n.encoding : void 0,
-      i = typeof n === "object" && "mode" in n ? n.mode : void 0,
+function writeFileSync_DEPRECATED(filePath, data, options) {
+  using r = gy`fs.writeFileSync(${filePath}, ${data})`;
+  if (
+    options !== null &&
+    typeof options === "object" &&
+    "flush" in options &&
+    options.flush === !0
+  ) {
+    let s = typeof options === "object" && "encoding" in options ? options.encoding : void 0,
+      i = typeof options === "object" && "mode" in options ? options.mode : void 0,
       a;
     try {
-      ((a = Wge.openSync(e, "w", i)),
-        Wge.writeFileSync(a, t, {
+      ((a = Wge.openSync(filePath, "w", i)),
+        Wge.writeFileSync(a, data, {
           encoding: s ?? void 0,
         }),
         Wge.fsyncSync(a));
     } finally {
       if (a !== void 0) Wge.closeSync(a);
     }
-  } else Wge.writeFileSync(e, t, n);
+  } else Wge.writeFileSync(filePath, data, options);
 }
 var Wge,
   C8m,
   f7c,
   gy,
-  jsonParse = (e, t) => {
-    using n = gy`JSON.parse(${e})`;
-    return typeof t > "u" ? JSON.parse(e) : JSON.parse(e, t);
+  jsonParse = (text, reviver) => {
+    using n = gy`JSON.parse(${text})`;
+    return typeof reviver > "u" ? JSON.parse(text) : JSON.parse(text, reviver);
   };

@@ -20,28 +20,28 @@ function WTo(e, t, n) {
     messages: JPe(r.messages, t),
   }));
 }
-function injectUserMessageToTeammate(e, t, n, r) {
-  let o = n.get(e);
+function injectUserMessageToTeammate(taskId, message, setAppState, r) {
+  let o = setAppState.get(taskId);
   if (!o || AC(o.status)) {
-    T(`Dropping message for teammate task ${e}: task status is "${o?.status}"`);
+    T(`Dropping message for teammate task ${taskId}: task status is "${o?.status}"`);
     return;
   }
-  (n.update(e, (s) => ({
+  (setAppState.update(taskId, (s) => ({
     ...s,
     pendingUserMessages: [
       ...s.pendingUserMessages,
       {
-        text: t,
+        text: message,
         origin: r,
       },
     ],
   })),
-    n.updateTranscript(e, (s) => ({
+    setAppState.updateTranscript(taskId, (s) => ({
       ...s,
       messages: JPe(
         s.messages,
         Rn({
-          content: t,
+          content: message,
           origin: r,
         }),
       ),

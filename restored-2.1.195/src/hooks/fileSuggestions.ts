@@ -77,28 +77,34 @@ async function normalizeGitPathsAsync(e, t, n) {
   }
   return r;
 }
-async function mergeUntrackedIntoNormalizedCache(e, t) {
+async function mergeUntrackedIntoNormalizedCache(normalizedUntracked, t) {
   if (t.length === 0) return;
-  if (!e.fileIndex) return;
+  if (!normalizedUntracked.fileIndex) return;
   let n = await getDirectoryNamesAsync(t),
-    r = [...e.cachedTrackedFiles, ...e.cachedConfigFiles, ...e.cachedTrackedDirs, ...t, ...n],
+    r = [
+      ...normalizedUntracked.cachedTrackedFiles,
+      ...normalizedUntracked.cachedConfigFiles,
+      ...normalizedUntracked.cachedTrackedDirs,
+      ...t,
+      ...n,
+    ],
     o = pathListSignature(r);
-  if (o === e.loadedMergedSignature) {
+  if (o === normalizedUntracked.loadedMergedSignature) {
     T("[FileIndex] skipped index rebuild \u2014 merged paths unchanged");
     return;
   }
-  if (await e.fileIndex.loadFromFileListAsync(r).done)
-    ((e.loadedMergedSignature = o),
+  if (await normalizedUntracked.fileIndex.loadFromFileListAsync(r).done)
+    ((normalizedUntracked.loadedMergedSignature = o),
       T(
-        `[FileIndex] rebuilt index with ${e.cachedTrackedFiles.length} tracked + ${t.length} untracked files`,
+        `[FileIndex] rebuilt index with ${normalizedUntracked.cachedTrackedFiles.length} tracked + ${t.length} untracked files`,
       ));
 }
-async function loadRipgrepIgnorePatterns(e, t, n) {
-  let r = `${t}:${n}`;
-  if (e.ignorePatternsCacheKey === r) return e.ignorePatternsCache;
+async function loadRipgrepIgnorePatterns(repoRoot, cwd, n) {
+  let r = `${cwd}:${n}`;
+  if (repoRoot.ignorePatternsCacheKey === r) return repoRoot.ignorePatternsCache;
   let o = qt(),
     s = [".ignore", ".rgignore"],
-    i = Uo([t, n]),
+    i = Uo([cwd, n]),
     a = qDl.default(),
     l = !1,
     c = i.flatMap((p) => s.map((f) => jN.join(p, f))),
@@ -116,7 +122,7 @@ async function loadRipgrepIgnorePatterns(e, t, n) {
     (a.add(f), (l = !0), T(`[FileIndex] loaded ignore patterns from ${c[p]}`));
   }
   let d = l ? a : null;
-  return ((e.ignorePatternsCache = d), (e.ignorePatternsCacheKey = r), d);
+  return ((repoRoot.ignorePatternsCache = d), (repoRoot.ignorePatternsCacheKey = r), d);
 }
 async function filterIgnoredAsync(e, t) {
   let n = [],
@@ -127,9 +133,9 @@ async function filterIgnoredAsync(e, t) {
   }
   return n;
 }
-async function getFilesUsingGit(e, t, n) {
+async function getFilesUsingGit(abortSignal, respectGitignore, n) {
   let r = Date.now(),
-    o = e.cacheGeneration;
+    o = abortSignal.cacheGeneration;
   T("[FileIndex] getFilesUsingGit called");
   let s = Tu($t());
   if (!s) return (T("[FileIndex] not a git repo, returning null"), null);
@@ -138,7 +144,7 @@ async function getFilesUsingGit(e, t, n) {
       a = Date.now(),
       l = await Gr(go(), ["-c", "core.quotepath=false", "ls-files", "--recurse-submodules"], {
         timeout: 5000,
-        abortSignal: t,
+        abortSignal: respectGitignore,
         cwd: s,
       });
     if ((T(`[FileIndex] git ls-files (tracked) took ${Date.now() - a}ms`), l.code !== 0))
@@ -148,7 +154,7 @@ async function getFilesUsingGit(e, t, n) {
         ),
         null
       );
-    let c = e.normalizedTrackedInputs,
+    let c = abortSignal.normalizedTrackedInputs,
       u,
       d = null;
     if (
@@ -156,9 +162,9 @@ async function getFilesUsingGit(e, t, n) {
       c.repoRoot === s &&
       c.cwd === i &&
       c.rawStdout === l.stdout &&
-      e.cachedTrackedFiles.length > 0
+      abortSignal.cachedTrackedFiles.length > 0
     )
-      ((u = e.cachedTrackedFiles),
+      ((u = abortSignal.cachedTrackedFiles),
         T("[FileIndex] skipped path normalization \u2014 raw git paths unchanged"));
     else {
       let f = l.stdout
@@ -169,7 +175,7 @@ async function getFilesUsingGit(e, t, n) {
         )
         .filter(Boolean);
       u = await normalizeGitPathsAsync(f, s, i);
-      let m = await loadRipgrepIgnorePatterns(e, s, i);
+      let m = await loadRipgrepIgnorePatterns(abortSignal, s, i);
       if (m) {
         let g = u.length;
         ((u = await filterIgnoredAsync(m, u)),
@@ -181,10 +187,10 @@ async function getFilesUsingGit(e, t, n) {
         rawStdout: l.stdout,
       };
     }
-    if (o !== e.cacheGeneration)
+    if (o !== abortSignal.cacheGeneration)
       return (T("[FileIndex] discarding refresh results \u2014 cache was reset mid-refresh"), u);
-    if (d !== null) e.normalizedTrackedInputs = d;
-    e.cachedTrackedFiles = u;
+    if (d !== null) abortSignal.normalizedTrackedInputs = d;
+    abortSignal.cachedTrackedFiles = u;
     let p = Date.now() - r;
     if (
       (T(`[FileIndex] git ls-files: ${u.length} tracked files in ${p}ms`),
@@ -194,18 +200,18 @@ async function getFilesUsingGit(e, t, n) {
         untracked_count: 0,
         duration_ms: p,
       }),
-      !e.untrackedFetchPromise)
+      !abortSignal.untrackedFetchPromise)
     ) {
       let f = n
           ? ["-c", "core.quotepath=false", "ls-files", "--others", "--exclude-standard"]
           : ["-c", "core.quotepath=false", "ls-files", "--others"],
-        m = e.cacheGeneration;
-      e.untrackedFetchPromise = Gr(go(), f, {
+        m = abortSignal.cacheGeneration;
+      abortSignal.untrackedFetchPromise = Gr(go(), f, {
         timeout: 1e4,
         cwd: s,
       })
         .then(async (g) => {
-          if (m !== e.cacheGeneration) return;
+          if (m !== abortSignal.cacheGeneration) return;
           if (g.code === 0) {
             let h = g.stdout
                 .trim()
@@ -215,7 +221,7 @@ async function getFilesUsingGit(e, t, n) {
                 )
                 .filter(Boolean),
               y = await normalizeGitPathsAsync(h, s, i),
-              b = await loadRipgrepIgnorePatterns(e, s, i);
+              b = await loadRipgrepIgnorePatterns(abortSignal, s, i);
             if (b && y.length > 0) {
               let _ = y.length;
               ((y = await filterIgnoredAsync(b, y)),
@@ -223,7 +229,7 @@ async function getFilesUsingGit(e, t, n) {
             }
             return (
               T(`[FileIndex] background untracked fetch: ${y.length} files`),
-              mergeUntrackedIntoNormalizedCache(e, y)
+              mergeUntrackedIntoNormalizedCache(abortSignal, y)
             );
           }
         })
@@ -231,7 +237,7 @@ async function getFilesUsingGit(e, t, n) {
           T(`[FileIndex] background untracked fetch failed: ${g}`);
         })
         .finally(() => {
-          e.untrackedFetchPromise = null;
+          abortSignal.untrackedFetchPromise = null;
         });
     }
     return u;
@@ -264,9 +270,9 @@ function zDl(e, t, n, r) {
 async function o0f(e) {
   return (await Promise.all(XDl.map((n) => _q(n, e)))).flatMap((n) => n.map((r) => r.filePath));
 }
-async function getProjectFiles(e, t, n) {
+async function getProjectFiles(abortSignal, respectGitignore, n) {
   T(`[FileIndex] getProjectFiles called, respectGitignore=${n}`);
-  let r = await getFilesUsingGit(e, t, n);
+  let r = await getFilesUsingGit(abortSignal, respectGitignore, n);
   if (r !== null) return (T(`[FileIndex] using git ls-files result (${r.length} files)`), r);
   T("[FileIndex] git ls-files returned null, falling back to ripgrep");
   let o = Date.now(),
@@ -292,7 +298,7 @@ async function getProjectFiles(e, t, n) {
       "!.sl/",
     ];
     if (!n) u.push("--no-ignore-vcs");
-    a = await Aue(u, s, t);
+    a = await Aue(u, s, respectGitignore);
   }
   let l = a.map((u) => jN.relative(s, u)),
     c = Date.now() - o;
@@ -414,7 +420,7 @@ async function u0f() {
     );
   }
 }
-async function generateFileSuggestions(e, t, n = !1) {
+async function generateFileSuggestions(partialPath, t, n = !1) {
   if (vl()) {
     if (!t && !n) return [];
     return d0f(t);
@@ -429,17 +435,17 @@ async function generateFileSuggestions(e, t, n = !1) {
   }
   if (t === "" || t === "." || t === "./") {
     let s = await u0f();
-    return (startBackgroundCacheRefresh(e), s.slice(0, AOo).map(jer));
+    return (startBackgroundCacheRefresh(partialPath), s.slice(0, AOo).map(jer));
   }
   let o = Date.now();
   try {
-    let s = e.fileListRefreshPromise !== null;
-    startBackgroundCacheRefresh(e);
+    let s = partialPath.fileListRefreshPromise !== null;
+    startBackgroundCacheRefresh(partialPath);
     let i = t,
       a = "." + jN.sep;
     if (t.startsWith(a)) i = t.substring(2);
     if (i.startsWith("~")) i = ds(i);
-    let l = e.fileIndex ? a0f(e.fileIndex, i) : [],
+    let l = partialPath.fileIndex ? a0f(partialPath.fileIndex, i) : [],
       c = Date.now() - o;
     return (
       T(

@@ -25,13 +25,13 @@ function getTeamDir(e) {
 function getTeamFilePath(e) {
   return Dht.join(getTeamDir(e), "config.json");
 }
-function readTeamFile(e) {
+function readTeamFile(teamName) {
   try {
-    let t = Pht.readFileSync(getTeamFilePath(e), "utf-8");
+    let t = Pht.readFileSync(getTeamFilePath(teamName), "utf-8");
     return Ft(t);
   } catch (t) {
     if (on(t) === "ENOENT") return null;
-    return (T(`[TeammateTool] Failed to read team file for ${e}: ${be(t)}`), null);
+    return (T(`[TeammateTool] Failed to read team file for ${teamName}: ${be(t)}`), null);
   }
 }
 async function readTeamFileAsync(e) {
@@ -111,84 +111,91 @@ async function writeTeamFileAsync(e, t) {
   }),
     await Rpe.writeFile(getTeamFilePath(e), De(t, null, 2)));
 }
-function removeTeammateFromTeamFile(e, t) {
-  let n = t.agentId || t.name;
+function removeTeammateFromTeamFile(teamName, identifier) {
+  let n = identifier.agentId || identifier.name;
   if (!n) return (T("[TeammateTool] removeTeammateFromTeamFile called with no identifier"), false);
-  let r = readTeamFile(e);
+  let r = readTeamFile(teamName);
   if (!r)
     return (
-      T(`[TeammateTool] Cannot remove teammate ${n}: failed to read team file for "${e}"`),
+      T(`[TeammateTool] Cannot remove teammate ${n}: failed to read team file for "${teamName}"`),
       false
     );
   let o = r.members.length;
   if (
     ((r.members = r.members.filter((s) => {
-      if (t.agentId && s.agentId === t.agentId) return false;
-      if (t.name && s.name === t.name) return false;
+      if (identifier.agentId && s.agentId === identifier.agentId) return false;
+      if (identifier.name && s.name === identifier.name) return false;
       return true;
     })),
     r.members.length === o)
   )
-    return (T(`[TeammateTool] Teammate ${n} not found in team file for "${e}"`), false);
-  return (f9t(e, r), T(`[TeammateTool] Removed teammate from team file: ${n}`), true);
+    return (T(`[TeammateTool] Teammate ${n} not found in team file for "${teamName}"`), false);
+  return (f9t(teamName, r), T(`[TeammateTool] Removed teammate from team file: ${n}`), true);
 }
-function addHiddenPaneId(e, t) {
-  let n = readTeamFile(e);
+function addHiddenPaneId(teamName, paneId) {
+  let n = readTeamFile(teamName);
   if (!n) return false;
   let r = n.hiddenPaneIds ?? [];
-  if (!r.includes(t))
-    (r.push(t),
+  if (!r.includes(paneId))
+    (r.push(paneId),
       (n.hiddenPaneIds = r),
-      f9t(e, n),
-      T(`[TeammateTool] Added ${t} to hidden panes for team ${e}`));
+      f9t(teamName, n),
+      T(`[TeammateTool] Added ${paneId} to hidden panes for team ${teamName}`));
   return true;
 }
-function removeHiddenPaneId(e, t) {
-  let n = readTeamFile(e);
+function removeHiddenPaneId(teamName, paneId) {
+  let n = readTeamFile(teamName);
   if (!n) return false;
   let r = n.hiddenPaneIds ?? [],
-    o = r.indexOf(t);
+    o = r.indexOf(paneId);
   if (o !== -1)
     (r.splice(o, 1),
       (n.hiddenPaneIds = r),
-      f9t(e, n),
-      T(`[TeammateTool] Removed ${t} from hidden panes for team ${e}`));
+      f9t(teamName, n),
+      T(`[TeammateTool] Removed ${paneId} from hidden panes for team ${teamName}`));
   return true;
 }
-function removeMemberFromTeam(e, t) {
-  let n = readTeamFile(e);
+function removeMemberFromTeam(teamName, tmuxPaneId) {
+  let n = readTeamFile(teamName);
   if (!n) return false;
-  let r = n.members.findIndex((o) => o.tmuxPaneId === t);
+  let r = n.members.findIndex((o) => o.tmuxPaneId === tmuxPaneId);
   if (r === -1) return false;
   if ((n.members.splice(r, 1), n.hiddenPaneIds)) {
-    let o = n.hiddenPaneIds.indexOf(t);
+    let o = n.hiddenPaneIds.indexOf(tmuxPaneId);
     if (o !== -1) n.hiddenPaneIds.splice(o, 1);
   }
-  return (f9t(e, n), T(`[TeammateTool] Removed member with pane ${t} from team ${e}`), true);
-}
-function removeMemberByAgentId(e, t) {
-  let n = readTeamFile(e);
-  if (!n) return false;
-  let r = n.members.findIndex((o) => o.agentId === t);
-  if (r === -1) return false;
   return (
-    n.members.splice(r, 1),
-    f9t(e, n),
-    T(`[TeammateTool] Removed member ${t} from team ${e}`),
+    f9t(teamName, n),
+    T(`[TeammateTool] Removed member with pane ${tmuxPaneId} from team ${teamName}`),
     true
   );
 }
-async function setMemberMode(e, t, n) {
+function removeMemberByAgentId(teamName, agentId) {
+  let n = readTeamFile(teamName);
+  if (!n) return false;
+  let r = n.members.findIndex((o) => o.agentId === agentId);
+  if (r === -1) return false;
+  return (
+    n.members.splice(r, 1),
+    f9t(teamName, n),
+    T(`[TeammateTool] Removed member ${agentId} from team ${teamName}`),
+    true
+  );
+}
+async function setMemberMode(teamName, memberName, mode) {
   try {
-    await updateTeamFile(e, (r) => {
-      let o = r.members.find((s) => s.name === t);
+    await updateTeamFile(teamName, (r) => {
+      let o = r.members.find((s) => s.name === memberName);
       if (!o)
         return (
-          T(`[TeammateTool] Cannot set member mode: member ${t} not found in team ${e}`),
+          T(
+            `[TeammateTool] Cannot set member mode: member ${memberName} not found in team ${teamName}`,
+          ),
           false
         );
-      if (o.mode === n) return false;
-      ((o.mode = n), T(`[TeammateTool] Set member ${t} in team ${e} to mode: ${n}`));
+      if (o.mode === mode) return false;
+      ((o.mode = mode),
+        T(`[TeammateTool] Set member ${memberName} in team ${teamName} to mode: ${mode}`));
     });
   } catch (r) {
     T(`[TeammateTool] Cannot set member mode: ${be(r)}`);
@@ -200,41 +207,45 @@ async function syncTeammateMode(e, t) {
     r = Oh();
   if (n && r) await setMemberMode(n, r, e);
 }
-async function setMultipleMemberModes(e, t) {
+async function setMultipleMemberModes(teamName, modeUpdates) {
   try {
-    await updateTeamFile(e, (n) => {
-      let r = new Map(t.map((s) => [s.memberName, s.mode])),
+    await updateTeamFile(teamName, (n) => {
+      let r = new Map(modeUpdates.map((s) => [s.memberName, s.mode])),
         o = false;
       for (let s of n.members) {
         let i = r.get(s.name);
         if (i !== void 0 && s.mode !== i) ((o = true), (s.mode = i));
       }
       if (!o) return false;
-      T(`[TeammateTool] Set ${t.length} member modes in team ${e}`);
+      T(`[TeammateTool] Set ${modeUpdates.length} member modes in team ${teamName}`);
     });
   } catch (n) {
     T(`[TeammateTool] Cannot set member modes: ${be(n)}`);
   }
 }
-async function setMemberActive(e, t, n) {
+async function setMemberActive(teamName, memberName, isActive) {
   try {
-    await updateTeamFile(e, (r) => {
-      let o = r.members.find((s) => s.name === t);
+    await updateTeamFile(teamName, (r) => {
+      let o = r.members.find((s) => s.name === memberName);
       if (!o)
         return (
-          T(`[TeammateTool] Cannot set member active: member ${t} not found in team ${e}`),
+          T(
+            `[TeammateTool] Cannot set member active: member ${memberName} not found in team ${teamName}`,
+          ),
           false
         );
-      if (o.isActive === n) return false;
-      ((o.isActive = n),
-        T(`[TeammateTool] Set member ${t} in team ${e} to ${n ? "active" : "idle"}`));
+      if (o.isActive === isActive) return false;
+      ((o.isActive = isActive),
+        T(
+          `[TeammateTool] Set member ${memberName} in team ${teamName} to ${isActive ? "active" : "idle"}`,
+        ));
     });
   } catch (r) {
     T(`[TeammateTool] Cannot set member active: ${be(r)}`);
   }
 }
-async function destroyWorktree(e) {
-  let t = Dht.join(e, ".git"),
+async function destroyWorktree(worktreePath) {
+  let t = Dht.join(worktreePath, ".git"),
     n = null;
   try {
     let o = (await Rpe.readFile(t, "utf-8")).trim().match(/^gitdir:\s*(.+)$/);
@@ -245,27 +256,27 @@ async function destroyWorktree(e) {
     }
   } catch {}
   if (n) {
-    let r = await Gr(go(), ["worktree", "remove", "--force", e], {
+    let r = await Gr(go(), ["worktree", "remove", "--force", worktreePath], {
       cwd: n,
     });
     if (r.code === 0) {
-      T(`[TeammateTool] Removed worktree via git: ${e}`);
+      T(`[TeammateTool] Removed worktree via git: ${worktreePath}`);
       return;
     }
     if (r.stderr?.includes("not a working tree")) {
-      T(`[TeammateTool] Worktree already removed: ${e}`);
+      T(`[TeammateTool] Worktree already removed: ${worktreePath}`);
       return;
     }
     T(`[TeammateTool] git worktree remove failed, falling back to rm: ${r.stderr}`);
   }
   try {
-    (await Rpe.rm(e, {
+    (await Rpe.rm(worktreePath, {
       recursive: true,
       force: true,
     }),
-      T(`[TeammateTool] Removed worktree directory manually: ${e}`));
+      T(`[TeammateTool] Removed worktree directory manually: ${worktreePath}`));
   } catch (r) {
-    T(`[TeammateTool] Failed to remove worktree ${e}: ${be(r)}`);
+    T(`[TeammateTool] Failed to remove worktree ${worktreePath}: ${be(r)}`);
   }
 }
 function registerTeamForSessionCleanup(e) {
@@ -282,8 +293,8 @@ async function cleanupSessionTeams() {
       e.clear());
   });
 }
-async function killOrphanedTeammatePanes(e) {
-  let t = readTeamFile(e);
+async function killOrphanedTeammatePanes(teamName) {
+  let t = readTeamFile(teamName);
   if (!t) return;
   let n = t.members.filter(
     (a) => a.name !== Hd && a.tmuxPaneId && a.backendType && u9t(a.backendType),
@@ -304,15 +315,15 @@ async function killOrphanedTeammatePanes(e) {
     }),
   );
 }
-async function cleanupTeamDirectories(e) {
+async function cleanupTeamDirectories(teamName) {
   return yl("swarm_team_cleanup", async () => {
-    let t = readTeamFile(e),
+    let t = readTeamFile(teamName),
       n = [];
     if (t) {
       for (let o of t.members) if (o.worktreePath) n.push(o.worktreePath);
     }
     for (let o of n) await destroyWorktree(o);
-    let r = getTeamDir(e);
+    let r = getTeamDir(teamName);
     try {
       (await Rpe.rm(r, {
         recursive: true,

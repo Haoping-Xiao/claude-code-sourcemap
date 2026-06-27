@@ -88,9 +88,9 @@ ${n}
     return this.#e;
   }
 }
-async function isBlockedDevicePath(e) {
+async function isBlockedDevicePath(filePath) {
   try {
-    let t = await $ar.readFile(`/proc/${e}/stat`, "utf-8"),
+    let t = await $ar.readFile(`/proc/${filePath}/stat`, "utf-8"),
       n = t.lastIndexOf(")"),
       r = t.slice(n + 2).split(" "),
       o = Number(r[19]);

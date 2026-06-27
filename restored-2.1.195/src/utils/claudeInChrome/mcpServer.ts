@@ -225,13 +225,13 @@ function getChromeBridgeUrl() {
 function Bsm() {
   return ut(process.env.USE_LOCAL_OAUTH) || ut(process.env.LOCAL_BRIDGE);
 }
-function createChromeContext(e) {
+function createChromeContext(env) {
   let t = new Xcc(),
     n = getChromeBridgeUrl();
   t.info(`Bridge URL: ${n}`);
   let r,
     o = !1,
-    s = e?.CLAUDE_CHROME_PERMISSION_MODE ?? process.env.CLAUDE_CHROME_PERMISSION_MODE,
+    s = env?.CLAUDE_CHROME_PERMISSION_MODE ?? process.env.CLAUDE_CHROME_PERMISSION_MODE,
     i;
   if (s)
     if (Osm(s)) i = s;

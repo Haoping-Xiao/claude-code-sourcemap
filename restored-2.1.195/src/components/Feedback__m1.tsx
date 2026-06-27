@@ -309,14 +309,14 @@ function sOo(e) {
     ke(Error(t));
   }
 }
-async function submitFeedback(e, t) {
+async function submitFeedback(data, signal) {
   if (Vi())
     return {
       success: !1,
     };
   let n = 0;
   try {
-    let r = qSt(e, cOo, uOo);
+    let r = qSt(data, cOo, uOo);
     if (((n = r.length), n > aOo))
       return {
         success: !1,
@@ -329,7 +329,7 @@ async function submitFeedback(e, t) {
           "Content-Type": "application/json",
         },
         timeout: 30000,
-        signal: t,
+        signal: signal,
       }),
     );
     if (!o.ok)

@@ -119,22 +119,43 @@ Original prompt: ${C}`;
   if ((Zc("prompt_submit_hooks_ms", performance.now() - I, I), x)) await $lr(x);
   return (jp("query_hooks_end"), v);
 }
-async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m, g, h, y, b, _) {
+async function processUserInputBase(
+  input,
+  mode,
+  setToolJSX,
+  context,
+  pastedContents,
+  ideSelection,
+  messages,
+  uuid,
+  isAlreadyProcessing,
+  querySource,
+  canUseTool,
+  permissionMode,
+  skipSlashCommands,
+  bridgeOrigin,
+  isMeta,
+  skipAttachments,
+  preExpansionInput,
+  y,
+  b,
+  _,
+) {
   let S = Wfc({
-      isNonInteractive: r.options.isNonInteractiveSession,
-      isMeta: m,
+      isNonInteractive: context.options.isNonInteractiveSession,
+      isMeta: isMeta,
       callerSource: y,
     }),
     A = null,
     v = [],
     C = [],
-    x = Gh(r.options.mainLoopModel),
-    I = e;
-  if (typeof e === "string") A = e;
-  else if (e.length > 0) {
+    x = Gh(context.options.mainLoopModel),
+    I = input;
+  if (typeof input === "string") A = input;
+  else if (input.length > 0) {
     jp("query_image_processing_start");
     let Y = [];
-    for (let K of e)
+    for (let K of input)
       if (K.type === "image") {
         let Z = await u8i(K, x);
         if (Z.dimensions) {
@@ -148,9 +169,9 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
     if (z?.type === "text") ((A = z.text), (v = Y.slice(0, -1)));
     else v = Y;
   }
-  if (A === null && t !== "prompt") throw Error(`Mode: ${t} requires a string input.`);
-  let k = o ? Object.values(o).filter(qze) : [],
-    D = o ? await Ofc(o, r.setAppState) : new Map();
+  if (A === null && mode !== "prompt") throw Error(`Mode: ${mode} requires a string input.`);
+  let k = pastedContents ? Object.values(pastedContents).filter(qze) : [],
+    D = pastedContents ? await Ofc(pastedContents, context.setAppState) : new Map();
   jp("query_pasted_image_processing_start");
   let P = await Promise.all(
       k.map(async (Y) => {
@@ -186,22 +207,22 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
     } else if (Z) C.push(`[Image source: ${Z}]`);
   }
   jp("query_pasted_image_processing_end");
-  let M = p,
-    N = r,
+  let M = skipSlashCommands,
+    N = context,
     B = A;
-  if (f && A !== null && A.startsWith("/")) {
+  if (bridgeOrigin && A !== null && A.startsWith("/")) {
     let Y = JMe(A),
       z = Y?.commandName;
     if (hk()) {
       if (z) {
-        let Z = szn(z, r.options.commands);
+        let Z = szn(z, context.options.commands);
         if (Z) z = Z.commandName;
       }
     }
-    let K = z ? fA(z, r.options.commands) : void 0;
+    let K = z ? fA(z, context.options.commands) : void 0;
     if (K) {
       let Z = Y ? _Kn(K, Y.args) : void 0,
-        J = Z ? fA(Z.targetName, r.options.commands) : void 0,
+        J = Z ? fA(Z.targetName, context.options.commands) : void 0,
         ne =
           Z && J && Ik(J)
             ? {
@@ -220,10 +241,10 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
               ? `/${re.name}${ne.args ? ` ${ne.args}` : ""}`
               : A.replace(/^\/\S+/, `/${re.name}`)),
             (N = {
-              ...r,
+              ...context,
               options: {
-                ...r.options,
-                commands: [re, ...r.options.commands],
+                ...context.options,
+                commands: [re, ...context.options.commands],
               },
             }));
         else {
@@ -234,7 +255,7 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
             messages: [
               Rn({
                 content: A,
-                uuid: a,
+                uuid: uuid,
                 origin: _,
               }),
               nw(`<local-command-stdout>${ee}</local-command-stdout>`),
@@ -248,21 +269,32 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
   }
   if (
     tme() &&
-    t === "prompt" &&
-    !r.options.isNonInteractiveSession &&
+    mode === "prompt" &&
+    !context.options.isNonInteractiveSession &&
     A !== null &&
     !M &&
     !A.startsWith("/") &&
-    !r.options.ultraplanSessionUrl &&
-    !r.getAppState().ultraplanLaunching &&
-    h0l(h ?? A)
+    !context.options.ultraplanSessionUrl &&
+    !context.getAppState().ultraplanLaunching &&
+    h0l(preExpansionInput ?? A)
   ) {
     G("tengu_ultraplan_keyword", {});
     let Y = OZn(A).trim(),
       { processSlashCommand: z } = await Promise.resolve().then(() => (e$e(), z8t)),
-      K = await z(`/ultraplan ${Y}`, v, O, [], r, n, a, l, u, S);
+      K = await z(
+        `/ultraplan ${Y}`,
+        v,
+        O,
+        [],
+        context,
+        setToolJSX,
+        uuid,
+        isAlreadyProcessing,
+        canUseTool,
+        S,
+      );
     return (
-      r.setAppState((Z) =>
+      context.setAppState((Z) =>
         Z.ultraplanLaunchPending
           ? {
               ...Z,
@@ -276,31 +308,31 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
       gur(K, C)
     );
   }
-  if (A !== null && t === "bash") {
+  if (A !== null && mode === "bash") {
     let { processBashCommand: Y } = await Promise.resolve().then(() => (zfc(), Vfc));
-    return gur(await Y(A, v, r, n), C);
+    return gur(await Y(A, v, context, setToolJSX), C);
   }
-  let $ = !g && (t !== "prompt" || M || !A?.startsWith("/")),
+  let $ = !skipAttachments && (mode !== "prompt" || M || !A?.startsWith("/")),
     q = hur.randomUUID();
   _Je(q);
-  let W = t === "prompt" && !m;
+  let W = mode === "prompt" && !isMeta;
   jp("query_attachment_loading_start");
   let V = $
     ? await mKn(
         g6e(
           A,
-          r,
-          s ?? null,
+          context,
+          ideSelection ?? null,
           [],
           {
             now: () => new Date().toISOString(),
             uuid: () => hur.randomUUID(),
           },
-          i,
-          c,
+          messages,
+          querySource,
           {
             isRegularUserPrompt: W,
-            preExpansionInput: h,
+            preExpansionInput: preExpansionInput,
             suppressWorkflowKeyword: b,
           },
         ),
@@ -308,10 +340,10 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
     : [];
   if ((jp("query_attachment_loading_end"), B !== null && !M && B.startsWith("/"))) {
     let { processSlashCommand: Y } = await Promise.resolve().then(() => (e$e(), z8t)),
-      z = await Y(B, v, O, V, N, n, a, l, u, S);
+      z = await Y(B, v, O, V, N, setToolJSX, uuid, isAlreadyProcessing, canUseTool, S);
     return gur(z, C);
   }
-  if (A !== null && t === "prompt") {
+  if (A !== null && mode === "prompt") {
     let Y = A.trim(),
       z = V.find((K) => K.attachment.type === "agent_mention");
     if (z) {
@@ -324,7 +356,22 @@ async function processUserInputBase(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m,
       });
     }
   }
-  return gur(jfc(I, O, L, V, q, a, d, m, lL(r.options.mainLoopModel, gg(r)), S, _), C);
+  return gur(
+    jfc(
+      I,
+      O,
+      L,
+      V,
+      q,
+      uuid,
+      permissionMode,
+      isMeta,
+      lL(context.options.mainLoopModel, gg(context)),
+      S,
+      _,
+    ),
+    C,
+  );
 }
 function gur(e, t) {
   if (t.length > 0)

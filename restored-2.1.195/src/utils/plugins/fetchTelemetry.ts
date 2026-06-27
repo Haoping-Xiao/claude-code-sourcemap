@@ -22,23 +22,23 @@ function KKd(e) {
   let r = t.toLowerCase();
   return zKd.has(r) ? r : "other";
 }
-function isOfficialRepo(e) {
-  return e.includes(`anthropics/${xI}`);
+function isOfficialRepo(urlOrSpec) {
+  return urlOrSpec.includes(`anthropics/${xI}`);
 }
-function logPluginFetch(e, t, n, r, o) {
+function logPluginFetch(source, urlOrSpec, outcome, durationMs, errorKind) {
   G("tengu_plugin_remote_fetch", {
-    source: $e(e),
-    host: t ? KKd(t) : "unknown",
-    is_official: e === "plugin_catalog" || (t ? isOfficialRepo(t) : false),
-    outcome: $e(n),
-    duration_ms: Math.round(r),
-    ...(o && {
-      error_kind: o,
+    source: $e(source),
+    host: urlOrSpec ? KKd(urlOrSpec) : "unknown",
+    is_official: source === "plugin_catalog" || (urlOrSpec ? isOfficialRepo(urlOrSpec) : false),
+    outcome: $e(outcome),
+    duration_ms: Math.round(durationMs),
+    ...(errorKind && {
+      error_kind: errorKind,
     }),
   });
 }
-function classifyFetchError(e) {
-  let t = String(e?.message ?? e);
+function classifyFetchError(error) {
+  let t = String(error?.message ?? error);
   if (/ENOTFOUND|ECONNREFUSED|EAI_AGAIN|Could not resolve host|Connection refused/i.test(t))
     return "dns_or_refused";
   if (/ETIMEDOUT|timed out|timeout/i.test(t)) return "timeout";

@@ -15,7 +15,7 @@ YDf = {
   9608: 1,
 };
 ((QDf = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), (ZDf = ePf()));
-async function copyAnsiToClipboard(e, t) {
+async function copyAnsiToClipboard(ansiText, options) {
   try {
     let n = nNo.join(qE(), "screenshots");
     await fEt.mkdir(n, {
@@ -24,7 +24,7 @@ async function copyAnsiToClipboard(e, t) {
     });
     let r = nNo.join(n, `screenshot-${Date.now()}.png`),
       { ansiToPng: o } = await Promise.resolve().then(() => (MOl(), POl)),
-      s = o(e, t);
+      s = o(ansiText, options);
     await fEt.writeFile(r, s);
     let i;
     try {
@@ -55,10 +55,10 @@ async function copyAnsiToClipboard(e, t) {
     );
   }
 }
-async function copyPngToClipboard(e) {
+async function copyPngToClipboard(pngPath) {
   let t = Vt();
   if (t === "macos") {
-    let r = `set the clipboard to (read (POSIX file "${e.replaceAll("\\", "\\\\").replaceAll('"', '\\"')}") as \xABclass PNGf\xBB)`,
+    let r = `set the clipboard to (read (POSIX file "${pngPath.replaceAll("\\", "\\\\").replaceAll('"', '\\"')}") as \xABclass PNGf\xBB)`,
       o = await Gr("osascript", ["-e", r], {
         timeout: 5000,
       });
@@ -73,7 +73,7 @@ async function copyPngToClipboard(e) {
     };
   }
   if (t === "linux") {
-    if ((await rPf("xclip", ["-selection", "clipboard", "-t", "image/png", "-i", e])) === 0)
+    if ((await rPf("xclip", ["-selection", "clipboard", "-t", "image/png", "-i", pngPath])) === 0)
       return {
         success: true,
         message: "Screenshot copied to clipboard",
@@ -84,7 +84,7 @@ async function copyPngToClipboard(e) {
     };
   }
   if (t === "windows") {
-    let n = `Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::SetImage([System.Drawing.Image]::FromFile(${Fat(e, "the screenshot temp path (override with CLAUDE_CODE_TMPDIR)")}))`,
+    let n = `Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::SetImage([System.Drawing.Image]::FromFile(${Fat(pngPath, "the screenshot temp path (override with CLAUDE_CODE_TMPDIR)")}))`,
       r = await Gr("powershell", ["-NoProfile", "-Command", n], {
         timeout: 5000,
       });

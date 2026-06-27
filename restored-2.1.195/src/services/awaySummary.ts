@@ -55,7 +55,7 @@ async function IRp(e) {
   }),
     xe("ccr_recap_generate"));
 }
-async function generateAwaySummary(e) {
+async function generateAwaySummary(messages) {
   let t = Tde();
   if (!t)
     return (
@@ -65,7 +65,7 @@ async function generateAwaySummary(e) {
       }
     );
   let n = new AbortController();
-  e.addEventListener("abort", () => n.abort(), {
+  messages.addEventListener("abort", () => n.abort(), {
     once: true,
   });
   try {
@@ -93,7 +93,7 @@ async function generateAwaySummary(e) {
       skipCacheWrite: true,
       skipTranscript: true,
     });
-    if (e.aborted)
+    if (messages.aborted)
       return {
         kind: "aborted",
       };
@@ -113,7 +113,7 @@ async function generateAwaySummary(e) {
           kind: "failed",
         };
   } catch (r) {
-    if (e.aborted)
+    if (messages.aborted)
       return {
         kind: "aborted",
       };

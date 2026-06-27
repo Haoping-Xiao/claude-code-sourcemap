@@ -18,8 +18,8 @@ function oKt(e) {
     () => {},
   );
 }
-function getOverlayPath(e) {
-  return HP.join(YU(), "speculation", String(process.pid), e);
+function getOverlayPath(id) {
+  return HP.join(YU(), "speculation", String(process.pid), id);
 }
 function Nbt(e, t) {
   return {
@@ -31,17 +31,17 @@ function Nbt(e, t) {
     },
   };
 }
-async function copyOverlayToMain(e, t, n) {
+async function copyOverlayToMain(overlayPath, writtenPaths, cwd) {
   let r = !0,
     o;
   try {
-    o = await PN.realpath(n);
+    o = await PN.realpath(cwd);
   } catch {
     return !1;
   }
-  for (let s of t) {
-    let i = HP.join(e, s),
-      a = HP.join(n, s);
+  for (let s of writtenPaths) {
+    let i = HP.join(overlayPath, s),
+      a = HP.join(cwd, s);
     try {
       try {
         if ((await PN.lstat(i)).isSymbolicLink()) {
@@ -88,34 +88,34 @@ async function copyOverlayToMain(e, t, n) {
   }
   return r;
 }
-function logSpeculation(e, t, n, r, o, s, i) {
+function logSpeculation(id, outcome, startTime, suggestionLength, messages, boundary, extras) {
   G("tengu_speculation", {
-    speculation_id: e,
-    outcome: $e(t),
-    duration_ms: Date.now() - n,
-    suggestion_length: r,
-    tools_executed: countToolsInMessages(o),
-    completed: s !== null,
-    boundary_type: s?.type,
-    boundary_tool: getBoundaryTool(s),
-    boundary_detail: I_f(s),
-    ...i,
+    speculation_id: id,
+    outcome: $e(outcome),
+    duration_ms: Date.now() - startTime,
+    suggestion_length: suggestionLength,
+    tools_executed: countToolsInMessages(messages),
+    completed: boundary !== null,
+    boundary_type: boundary?.type,
+    boundary_tool: getBoundaryTool(boundary),
+    boundary_detail: I_f(boundary),
+    ...extras,
   });
 }
-function countToolsInMessages(e) {
-  let t = e
+function countToolsInMessages(messages) {
+  let t = messages
     .filter(kLo)
     .flatMap((n) => n.message.content)
     .filter((n) => typeof n === "object" && n !== null && "type" in n);
   return On(t, (n) => n.type === "tool_result" && !n.is_error);
 }
-function getBoundaryTool(e) {
-  if (!e) return;
-  switch (e.type) {
+function getBoundaryTool(boundary) {
+  if (!boundary) return;
+  switch (boundary.type) {
     case "bash":
     case "edit":
     case "denied_tool":
-      return e.toolName;
+      return boundary.toolName;
     case "complete":
       return;
   }
@@ -136,7 +136,7 @@ function I_f(e) {
 function kLo(e) {
   return e.type === "user" && "message" in e && Array.isArray(e.message.content);
 }
-function prepareMessagesForInjection(e) {
+function prepareMessagesForInjection(messages) {
   let t = (s) =>
       typeof s === "object" &&
       s !== null &&
@@ -144,7 +144,7 @@ function prepareMessagesForInjection(e) {
       typeof s.tool_use_id === "string",
     n = (s) => !s.is_error && !(typeof s.content === "string" && s.content.includes(Jv)),
     r = new Set(
-      e
+      messages
         .filter(kLo)
         .flatMap((s) => s.message.content)
         .filter(t)
@@ -157,7 +157,7 @@ function prepareMessagesForInjection(e) {
       !(s.type === "tool_use" && !r.has(s.id)) &&
       !(s.type === "tool_result" && !r.has(s.tool_use_id)) &&
       !(s.type === "text" && (s.text === _N || s.text === Jv));
-  return e
+  return messages
     .map((s) => {
       if (!("message" in s) || !Array.isArray(s.message.content)) return s;
       let i = s.message.content.filter(o);
@@ -205,32 +205,38 @@ function ILo(e) {
 function fgo() {
   return (T("[Speculation] enabled=false"), !1);
 }
-async function generatePipelinedSuggestion(e, t, n, r, o) {
+async function generatePipelinedSuggestion(
+  context,
+  suggestionText,
+  speculatedMessages,
+  setAppState,
+  parentAbortController,
+) {
   try {
-    let s = e.toolUseContext.getAppState(),
+    let s = context.toolUseContext.getAppState(),
       i = cgo(s);
     if (i) {
       b$(`pipeline_${i}`);
       return;
     }
     let a = {
-        ...e,
+        ...context,
         messages: [
-          ...e.messages,
+          ...context.messages,
           Rn({
-            content: t,
+            content: suggestionText,
           }),
-          ...n,
+          ...speculatedMessages,
         ],
       },
-      l = c$(o);
+      l = c$(parentAbortController);
     if (l.signal.aborted) return;
     let c = _jn(),
       { suggestion: u, generationRequestId: d } = await dgo(l, c, g6(a));
     if (l.signal.aborted) return;
     if (pgo(u, c)) return;
     (T(`[Speculation] Pipelined suggestion: "${u.slice(0, 50)}..."`),
-      cze(r, () => ({
+      cze(setAppState, () => ({
         pipelinedSuggestion: {
           text: u,
           promptId: c,
@@ -242,11 +248,11 @@ async function generatePipelinedSuggestion(e, t, n, r, o) {
     T(`[Speculation] Pipelined suggestion failed: ${be(s)}`);
   }
 }
-async function startSpeculation(e, t, n, r = !1, o) {
+async function startSpeculation(suggestionText, context, setAppState, r = !1, cacheSafeParams) {
   if (!fgo()) return;
-  abortSpeculation(n);
+  abortSpeculation(setAppState);
   let s = gHl.randomUUID().slice(0, 8),
-    i = c$(t.toolUseContext.abortController);
+    i = c$(context.toolUseContext.abortController);
   if (i.signal.aborted) return;
   let a = Date.now(),
     l = {
@@ -266,9 +272,9 @@ async function startSpeculation(e, t, n, r = !1, o) {
     return;
   }
   let p = {
-    current: t,
+    current: context,
   };
-  (n((f) => ({
+  (setAppState((f) => ({
     ...f,
     speculation: {
       status: "active",
@@ -278,7 +284,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
       messagesRef: l,
       writtenPathsRef: c,
       boundary: null,
-      suggestionLength: e.length,
+      suggestionLength: suggestionText.length,
       toolUseCount: 0,
       isPipelined: r,
       contextRef: p,
@@ -289,25 +295,25 @@ async function startSpeculation(e, t, n, r = !1, o) {
     let f = await dk({
       promptMessages: [
         Rn({
-          content: e,
+          content: suggestionText,
         }),
       ],
-      cacheSafeParams: o ?? g6(t),
+      cacheSafeParams: cacheSafeParams ?? g6(context),
       skipTranscript: !0,
       canUseTool: async (m, g) => {
         let h = T_f.has(m.name),
           y = v_f.has(m.name);
         if (h || y) {
-          let _ = Bbt(m, g, Fr(t.toolUseContext));
+          let _ = Bbt(m, g, Fr(context.toolUseContext));
           if (_) return Nbt(_.message, "speculation_network_path");
         }
         if (h) {
-          let { mode: _, isBypassPermissionsModeAvailable: S } = Fr(t.toolUseContext);
+          let { mode: _, isBypassPermissionsModeAvailable: S } = Fr(context.toolUseContext);
           if (!(_ === "acceptEdits" || _ === "bypassPermissions" || (_ === "plan" && S))) {
             T(`[Speculation] Stopping at file edit: ${m.name}`);
             let v = "file_path" in g ? g.file_path : void 0;
             return (
-              cze(n, () => ({
+              cze(setAppState, () => ({
                 boundary: {
                   type: "edit",
                   toolName: m.name,
@@ -390,7 +396,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
           if ("run_in_background" in g && g.run_in_background === !0)
             return (
               T(`[Speculation] Stopping at backgrounded ${m.name}: ${_.slice(0, 50)}`),
-              cze(n, () => ({
+              cze(setAppState, () => ({
                 boundary: {
                   type: "bash",
                   toolName: m.name,
@@ -416,7 +422,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
           if (!_ || !A)
             return (
               T(`[Speculation] Stopping at ${m.name}: ${_.slice(0, 50) || "missing command"}`),
-              cze(n, () => ({
+              cze(setAppState, () => ({
                 boundary: {
                   type: "bash",
                   toolName: m.name,
@@ -445,7 +451,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
             "",
         ).slice(0, 200);
         return (
-          cze(n, () => ({
+          cze(setAppState, () => ({
             boundary: {
               type: "denied_tool",
               toolName: m.name,
@@ -470,7 +476,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
           if (kLo(m)) {
             let g = On(m.message.content, (h) => h.type === "tool_result" && !h.is_error);
             if (g > 0)
-              cze(n, (h) => ({
+              cze(setAppState, (h) => ({
                 toolUseCount: h.toolUseCount + g,
               }));
           }
@@ -478,7 +484,7 @@ async function startSpeculation(e, t, n, r = !1, o) {
       },
     });
     if (i.signal.aborted) return;
-    (cze(n, () => ({
+    (cze(setAppState, () => ({
       boundary: {
         type: "complete",
         completedAt: Date.now(),
@@ -486,26 +492,26 @@ async function startSpeculation(e, t, n, r = !1, o) {
       },
     })),
       T(`[Speculation] Complete: ${countToolsInMessages(l.current)} tools`),
-      generatePipelinedSuggestion(p.current, e, l.current, n, i));
+      generatePipelinedSuggestion(p.current, suggestionText, l.current, setAppState, i));
   } catch (f) {
     if ((i.abort(), f instanceof Error && f.name === "AbortError")) {
-      (oKt(u), ILo(n));
+      (oKt(u), ILo(setAppState));
       return;
     }
     (oKt(u),
       ke(f instanceof Error ? f : Error("Speculation failed")),
-      logSpeculation(s, "error", a, e.length, l.current, null, {
+      logSpeculation(s, "error", a, suggestionText.length, l.current, null, {
         error_type: f instanceof Error ? f.name : "Unknown",
         error_message: be(f).slice(0, 200),
         error_phase: We("start"),
         is_pipelined: r,
       }),
       Le("prompt_suggestion_speculate", "start_failed"),
-      ILo(n));
+      ILo(setAppState));
   }
 }
-async function acceptSpeculation(e, t, n) {
-  if (e.status !== "active") return null;
+async function acceptSpeculation(state, setAppState, cleanMessageCount) {
+  if (state.status !== "active") return null;
   let {
       id: r,
       messagesRef: o,
@@ -514,16 +520,16 @@ async function acceptSpeculation(e, t, n) {
       startTime: a,
       suggestionLength: l,
       isPipelined: c,
-    } = e,
+    } = state,
     u = o.current,
     d = getOverlayPath(r),
     p = Date.now();
-  if ((i(), n > 0)) await copyOverlayToMain(d, s.current, CK());
+  if ((i(), cleanMessageCount > 0)) await copyOverlayToMain(d, s.current, CK());
   oKt(d);
-  let f = e.boundary,
+  let f = state.boundary,
     m = Math.min(p, f?.completedAt ?? 1 / 0) - a;
   if (
-    (t((g) => {
+    (setAppState((g) => {
       if (g.speculation.status === "active" && g.speculation.boundary)
         ((f = g.speculation.boundary), (m = Math.min(p, f.completedAt ?? 1 / 0) - a));
       return {
@@ -574,8 +580,8 @@ async function acceptSpeculation(e, t, n) {
     }
   );
 }
-function abortSpeculation(e, t = "user_typed") {
-  e((n) => {
+function abortSpeculation(setAppState, t = "user_typed") {
+  setAppState((n) => {
     if (n.speculation.status !== "active") return n;
     let {
       id: r,
@@ -601,10 +607,16 @@ function abortSpeculation(e, t = "user_typed") {
     );
   });
 }
-async function handleSpeculationAccept(e, t, n, r, o) {
+async function handleSpeculationAccept(
+  speculationState,
+  speculationSessionTimeSavedMs,
+  setAppState,
+  input,
+  deps,
+) {
   try {
-    let { setMessages: s, readFileState: i, cwd: a } = o;
-    n((y) => {
+    let { setMessages: s, readFileState: i, cwd: a } = deps;
+    setAppState((y) => {
       if (y.promptSuggestion.text === null && y.promptSuggestion.promptId === null) return y;
       return {
         ...y,
@@ -617,32 +629,32 @@ async function handleSpeculationAccept(e, t, n, r, o) {
         },
       };
     });
-    let l = e.messagesRef.current,
+    let l = speculationState.messagesRef.current,
       c = prepareMessagesForInjection(l),
       u = Rn({
-        content: r,
+        content: input,
         promptSource: "suggestion_accepted",
       });
     s((y) => [...y, u]);
-    let d = await acceptSpeculation(e, n, c.length),
+    let d = await acceptSpeculation(speculationState, setAppState, c.length),
       p = d?.boundary?.type === "complete";
     if (!p) {
       let y = c.findLastIndex((b) => b.type !== "assistant");
       c = c.slice(0, y + 1);
     }
     let f = d?.timeSavedMs ?? 0,
-      m = t + f,
+      m = speculationSessionTimeSavedMs + f,
       g = k_f(c, d?.boundary ?? null, f, m);
     s((y) => [...y, ...c]);
     let h = Obt(c, a, V1);
     if (((i.current = Bct(i.current, h)), g)) s((y) => [...y, g]);
     if (
       (T(`[Speculation] ${d?.boundary?.type ?? "incomplete"}, injected ${c.length} messages`),
-      p && e.pipelinedSuggestion)
+      p && speculationState.pipelinedSuggestion)
     ) {
-      let { text: y, promptId: b, generationRequestId: _ } = e.pipelinedSuggestion;
+      let { text: y, promptId: b, generationRequestId: _ } = speculationState.pipelinedSuggestion;
       (T(`[Speculation] Promoting pipelined suggestion: "${y.slice(0, 50)}..."`),
-        n((A) => ({
+        setAppState((A) => ({
           ...A,
           promptSuggestion: {
             text: y,
@@ -653,16 +665,16 @@ async function handleSpeculationAccept(e, t, n, r, o) {
           },
         })));
       let S = {
-        ...e.contextRef.current,
+        ...speculationState.contextRef.current,
         messages: [
-          ...e.contextRef.current.messages,
+          ...speculationState.contextRef.current.messages,
           Rn({
-            content: r,
+            content: input,
           }),
           ...c,
         ],
       };
-      startSpeculation(y, S, n, !0);
+      startSpeculation(y, S, setAppState, !0);
     }
     return {
       queryRequired: !p,
@@ -671,22 +683,22 @@ async function handleSpeculationAccept(e, t, n, r, o) {
     return (
       ke(s instanceof Error ? s : Error("handleSpeculationAccept failed")),
       logSpeculation(
-        e.id,
+        speculationState.id,
         "error",
-        e.startTime,
-        e.suggestionLength,
-        e.messagesRef.current,
-        e.boundary,
+        speculationState.startTime,
+        speculationState.suggestionLength,
+        speculationState.messagesRef.current,
+        speculationState.boundary,
         {
           error_type: s instanceof Error ? s.name : "Unknown",
           error_message: be(s).slice(0, 200),
           error_phase: We("accept"),
-          is_pipelined: e.isPipelined,
+          is_pipelined: speculationState.isPipelined,
         },
       ),
       Le("prompt_suggestion_speculate", "accept_failed"),
-      oKt(getOverlayPath(e.id)),
-      ILo(n),
+      oKt(getOverlayPath(speculationState.id)),
+      ILo(setAppState),
       {
         queryRequired: !0,
       }

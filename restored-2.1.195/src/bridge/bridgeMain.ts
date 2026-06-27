@@ -19,19 +19,31 @@ function Htc() {
   if (dm() || !process.argv[1]) return [];
   return [process.argv[1]];
 }
-function safeSpawn(e, t, n) {
+function safeSpawn(spawner, opts, dir) {
   try {
-    return e.spawn(t, n);
+    return spawner.spawn(opts, dir);
   } catch (r) {
     let o = be(r);
     return (ke(Rh(Error(`Session spawn failed: ${o}`), "Session spawn failed")), o);
   }
 }
-async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
+async function runBridgeLoop(
+  config,
+  environmentId,
+  environmentSecret,
+  api,
+  spawner,
+  logger,
+  signal,
+  a = JYf,
+  initialSessionId,
+  getAccessToken,
+  u,
+) {
   let d = new AbortController();
-  if (i.aborted) d.abort();
+  if (signal.aborted) d.abort();
   else
-    i.addEventListener("abort", () => d.abort(), {
+    signal.addEventListener("abort", () => d.abort(), {
       once: true,
     });
   let p = d.signal,
@@ -47,7 +59,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     v = [],
     C = new Set(),
     x = new Map(),
-    I = l ? oP(l) : void 0;
+    I = initialSessionId ? oP(initialSessionId) : void 0;
   if (I && u) x.set(I, new Set([u]));
   let k = 0,
     D = new Map(),
@@ -61,7 +73,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         le = y.get(he);
       if (!ie || !le) continue;
       try {
-        (await r.heartbeatWork(t, ie, le), (me = true));
+        (await api.heartbeatWork(environmentId, ie, le), (me = true));
       } catch (He) {
         if (
           (T(`[bridge:heartbeat] Failed for sessionId=${he} workId=${ie}: ${be(He)}`),
@@ -79,16 +91,16 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       }
     }
     for (let he of ge) {
-      s.logVerbose(`Session ${he} token expired \u2014 re-queuing via bridge/reconnect`);
+      logger.logVerbose(`Session ${he} token expired \u2014 re-queuing via bridge/reconnect`);
       try {
-        (await r.reconnectSession(t, he),
+        (await api.reconnectSession(environmentId, he),
           T(`[bridge:heartbeat] Re-queued sessionId=${he} via bridge/reconnect`));
       } catch (ie) {
         if (dGo(ie)) {
           T(`[bridge:heartbeat] reconnectSession(${he}) skipped \u2014 resource gone: ${be(ie)}`);
           continue;
         }
-        (s.logError(`Failed to refresh session ${he} token: ${be(ie)}`),
+        (logger.logError(`Failed to refresh session ${he} token: ${be(ie)}`),
           T(`[bridge:heartbeat] reconnectSession(${he}) failed: ${be(ie)}`, {
             level: "error",
           }));
@@ -99,16 +111,16 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     return me ? "ok" : "failed";
   }
   let L = new Set(),
-    M = c
+    M = getAccessToken
       ? NSn({
-          getAccessToken: c,
+          getAccessToken: getAccessToken,
           onRefresh: (me, pe) => {
             let ge = f.get(me);
             if (!ge) return;
             if (L.has(me))
-              (s.logVerbose(`Refreshing session ${me} token via bridge/reconnect`),
-                r.reconnectSession(t, me).catch((he) => {
-                  (s.logError(`Failed to refresh session ${me} token: ${be(he)}`),
+              (logger.logVerbose(`Refreshing session ${me} token via bridge/reconnect`),
+                api.reconnectSession(environmentId, me).catch((he) => {
+                  (logger.logError(`Failed to refresh session ${me} token: ${be(he)}`),
                     T(`[bridge:token] reconnectSession(${me}) failed: ${be(he)}`, {
                       level: "error",
                     }));
@@ -133,25 +145,25 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     J = false;
   if (
     (T(
-      `[bridge:work] Starting poll loop spawnMode=${e.spawnMode} maxSessions=${e.maxSessions} environmentId=${t}`,
+      `[bridge:work] Starting poll loop spawnMode=${config.spawnMode} maxSessions=${config.maxSessions} environmentId=${environmentId}`,
     ),
     In("info", "bridge_loop_started", {
-      max_sessions: e.maxSessions,
-      spawn_mode: e.spawnMode,
+      max_sessions: config.maxSessions,
+      spawn_mode: config.spawnMode,
     }),
-    s.printBanner(e, t),
-    s.updateSessionCount(0, e.maxSessions, e.spawnMode),
-    l)
+    logger.printBanner(config, environmentId),
+    logger.updateSessionCount(0, config.maxSessions, config.spawnMode),
+    initialSessionId)
   )
-    s.setAttached(l);
+    logger.setAttached(initialSessionId);
   function ne() {
-    s.updateSessionCount(f.size, e.maxSessions, e.spawnMode);
+    logger.updateSessionCount(f.size, config.maxSessions, config.spawnMode);
     for (let [He, ye] of f) {
       let ue = ye.currentActivity;
-      if (ue) s.updateSessionActivity(h.get(He) ?? He, ue);
+      if (ue) logger.updateSessionActivity(h.get(He) ?? He, ue);
     }
     if (f.size === 0) {
-      if (!Z) ((Z = true), s.updateIdleStatus());
+      if (!Z) ((Z = true), logger.updateIdleStatus());
       return;
     }
     Z = false;
@@ -160,7 +172,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     if (!ge) return;
     let he = pe.currentActivity;
     if (!he || he.type === "result" || he.type === "error") {
-      if (e.maxSessions > 1) s.refreshDisplay();
+      if (config.maxSessions > 1) logger.refreshDisplay();
       return;
     }
     let ie = Yi(Date.now() - ge),
@@ -168,7 +180,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         .filter((He) => He.type === "tool_start")
         .slice(-5)
         .map((He) => He.summary);
-    s.updateSessionStatus(me, ie, he, le);
+    logger.updateSessionStatus(me, ie, he, le);
   }
   function oe() {
     (re(), ne(), (K = setInterval(ne, QYf)));
@@ -181,7 +193,8 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       let ie = g.get(me);
       (f.delete(me), m.delete(me), g.delete(me), y.delete(me), b.get(me)?.stop(), b.delete(me));
       let le = h.get(me) ?? me;
-      if ((h.delete(me), s.removeSession(le), C.delete(le), le === I && u)) x.set(le, new Set([u]));
+      if ((h.delete(me), logger.removeSession(le), C.delete(le), le === I && u))
+        x.set(le, new Set([u]));
       else x.delete(le);
       (D.delete(me), L.delete(me), M?.cancel(me), P.wake());
       let He = Date.now() - pe;
@@ -196,7 +209,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           status: he,
           duration_ms: He,
         }),
-        s.clearStatus(),
+        logger.clearStatus(),
         re());
       let ye =
           ge.lastStderr.length > 0
@@ -206,13 +219,13 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         ue;
       switch (he) {
         case "completed":
-          s.logSessionComplete(me, He);
+          logger.logSessionComplete(me, He);
           break;
         case "failed":
           if (!p.aborted)
             if (
               ((ue = ye ?? "Process exited with error"),
-              s.logSessionFailed(me, ue),
+              logger.logSessionFailed(me, ue),
               !ye || ue.includes("transport closed"))
             )
               T(`Bridge session failed: ${ue}`, {
@@ -221,29 +234,29 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             else ke(Rh(Error(`Bridge session failed: ${ue}`), "Bridge session failed"));
           break;
         case "interrupted":
-          s.logVerbose(`Session ${me} interrupted`);
+          logger.logVerbose(`Session ${me} interrupted`);
           break;
       }
       if (he !== "interrupted" && ie)
-        (_.add(ie), $(stopWorkWithRetry(r, t, ie, s, a.stopWorkBaseDelayMs)));
+        (_.add(ie), $(stopWorkWithRetry(api, environmentId, ie, logger, a.stopWorkBaseDelayMs)));
       let we = he === "failed" && !p.aborted && !J;
       if (we) A.add(me);
       let Ce = S.get(me);
       if (Ce)
         if ((S.delete(me), we)) {
           if (
-            (s.logStatus(`kept worktree ${Ce.worktreePath} \xB7 session crashed`),
+            (logger.logStatus(`kept worktree ${Ce.worktreePath} \xB7 session crashed`),
             ue?.includes("transport closed"))
           )
             v.push(Ce.worktreePath);
-        } else $(uGo(Ce, s));
+        } else $(uGo(Ce, logger));
       if (he !== "interrupted" && !p.aborted)
-        if (e.spawnMode !== "single-session") {
+        if (config.spawnMode !== "single-session") {
           if (he === "completed")
             $(
-              r
+              api
                 .archiveSession(le)
-                .catch((Ie) => s.logVerbose(`Failed to archive session ${me}: ${be(Ie)}`)),
+                .catch((Ie) => logger.logVerbose(`Failed to archive session ${me}: ${be(Ie)}`)),
             );
           T(`[bridge:session] Session ${he}, returning to idle (multi-session mode)`);
         } else {
@@ -254,25 +267,26 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       if (!p.aborted) oe();
     };
   }
-  if (!l) oe();
+  if (!initialSessionId) oe();
   function ce() {
     let me = A.size;
-    s.logStatus(
+    logger.logStatus(
       me > 0
         ? `${me} ${bn(me, "session")} ended while this machine was offline \u2014 the environment was cleaned up on the server and can't be resumed.`
         : "This environment was cleaned up while the machine was offline and can't be resumed.",
     );
     let pe = Uo(v);
-    if (pe.length > 0) s.logStatus(`Your work is safe \u2014 worktrees kept: ${pe.join(", ")}`);
-    s.logStatus("Run `claude remote-control` to start a fresh environment.");
+    if (pe.length > 0)
+      logger.logStatus(`Your work is safe \u2014 worktrees kept: ${pe.join(", ")}`);
+    logger.logStatus("Run `claude remote-control` to start a fresh environment.");
   }
   while (!p.aborted) {
     let me = U1e();
     try {
-      let pe = await r.pollForWork(t, n, p, me.reclaim_older_than_ms);
+      let pe = await api.pollForWork(environmentId, environmentSecret, p, me.reclaim_older_than_ms);
       if (V !== null || Y !== null) {
         let ye = Date.now() - (V ?? Y ?? Date.now());
-        (s.logReconnected(ye),
+        (logger.logReconnected(ye),
           T(`[bridge:poll] Reconnected after ${Yi(ye)}`),
           G("tengu_bridge_reconnected", {
             disconnected_ms: ye,
@@ -280,7 +294,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           (Z = false));
       }
       if (((q = 0), (W = 0), (V = null), (Y = null), (z = null), !pe)) {
-        if (f.size >= e.maxSessions) {
+        if (f.size >= config.maxSessions) {
           let ue = me.multisession_poll_interval_ms_at_capacity;
           if (me.non_exclusive_heartbeat_interval_ms > 0) {
             G("tengu_bridge_heartbeat_mode_entered", {
@@ -290,7 +304,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             let we = ue > 0 ? Date.now() + ue : null,
               Ce = "ok",
               Ie = 0;
-            while (!p.aborted && f.size >= e.maxSessions && (we === null || Date.now() < we)) {
+            while (!p.aborted && f.size >= config.maxSessions && (we === null || Date.now() < we)) {
               let Ze = U1e();
               if (Ze.non_exclusive_heartbeat_interval_ms <= 0) break;
               let Be = P.signal();
@@ -305,7 +319,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                 ? Ce
                 : p.aborted
                   ? "shutdown"
-                  : f.size < e.maxSessions
+                  : f.size < config.maxSessions
                     ? "capacity_changed"
                     : we !== null && Date.now() >= we
                       ? "poll_due"
@@ -339,7 +353,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         }
         continue;
       }
-      let he = f.size >= e.maxSessions;
+      let he = f.size >= config.maxSessions;
       if (_.has(pe.id)) {
         if ((T(`[bridge:work] Skipping already-completed workId=${pe.id}`), he)) {
           let ye = P.signal();
@@ -357,10 +371,10 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       } catch (ye) {
         let ue = be(ye);
         if (
-          (s.logError(`Failed to decode work secret for workId=${pe.id}: ${ue}`),
+          (logger.logError(`Failed to decode work secret for workId=${pe.id}: ${ue}`),
           G("tengu_bridge_work_secret_failed", {}),
           _.add(pe.id),
-          $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)),
+          $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)),
           he)
         ) {
           let we = P.signal();
@@ -375,7 +389,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       let le = async () => {
           T(`[bridge:work] Acknowledging workId=${pe.id}`);
           try {
-            await r.acknowledgeWork(t, pe.id, ie.session_ingress_token);
+            await api.acknowledgeWork(environmentId, pe.id, ie.session_ingress_token);
           } catch (ye) {
             T(`[bridge:work] Acknowledge failed workId=${pe.id}: ${be(ye)}`);
           }
@@ -385,14 +399,14 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         case "healthcheck":
           (await le(),
             T("[bridge:work] Healthcheck received"),
-            s.logVerbose("Healthcheck received"));
+            logger.logVerbose("Healthcheck received"));
           break;
         case "session": {
           let ye = pe.data.id;
           try {
             Jq(ye, "session_id");
           } catch {
-            (await le(), s.logError(`Invalid session_id received: ${ye}`));
+            (await le(), logger.logError(`Invalid session_id received: ${ye}`));
             break;
           }
           let ue = f.get(ye);
@@ -406,9 +420,9 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
               await le());
             break;
           }
-          if (f.size >= e.maxSessions) {
+          if (f.size >= config.maxSessions) {
             T(
-              `[bridge:work] At capacity (${f.size}/${e.maxSessions}), cannot spawn new session for workId=${pe.id}`,
+              `[bridge:work] At capacity (${f.size}/${config.maxSessions}), cannot spawn new session for workId=${pe.id}`,
             );
             break;
           }
@@ -418,7 +432,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             Ie = false,
             Ve;
           if (ie.use_code_sessions === true || ut(process.env.CLAUDE_BRIDGE_USE_CCR_V2)) {
-            Ce = tQt(e.apiBaseUrl, ye);
+            Ce = tQt(config.apiBaseUrl, ye);
             for (let st = 1; st <= 2; st++)
               try {
                 ((Ve = await Wir(Ce, ie.session_ingress_token)),
@@ -441,7 +455,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                     break;
                   continue;
                 }
-                (s.logError(`CCR v2 worker registration failed for session ${ye}: ${vt}`),
+                (logger.logError(`CCR v2 worker registration failed for session ${ye}: ${vt}`),
                   Le("bridge_register_worker", "request_failed"));
                 let { kind: jt, status: en } = $A(xt);
                 if (jt !== "other" && ((en ?? 0) < 500 || en === 503))
@@ -449,13 +463,14 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                     level: "error",
                   });
                 else ke(Error(`registerWorker failed: ${vt}`));
-                (_.add(pe.id), $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
+                (_.add(pe.id),
+                  $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)));
               }
             if (!Ie) break;
-          } else Ce = ytc(e.sessionIngressUrl, ye);
-          let { spawnMode: Ze, dir: Be } = e,
+          } else Ce = ytc(config.sessionIngressUrl, ye);
+          let { spawnMode: Ze, dir: Be } = config,
             Me = 0;
-          if (Ze === "worktree" && (l === void 0 || !iGo(ye, l))) {
+          if (Ze === "worktree" && (initialSessionId === void 0 || !iGo(ye, initialSessionId))) {
             let st = Date.now();
             try {
               let xt = await M6e(`bridge-${Gir(ye)}`);
@@ -471,12 +486,12 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                 T(`[bridge:session] Created worktree for sessionId=${ye} at ${xt.worktreePath}`));
             } catch (xt) {
               let vt = be(xt);
-              (s.logError(`Failed to create worktree for session ${ye}: ${vt}`),
+              (logger.logError(`Failed to create worktree for session ${ye}: ${vt}`),
                 T(`Worktree creation failed for session ${ye}: ${vt}`, {
                   level: "error",
                 }),
                 _.add(pe.id),
-                $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
+                $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)));
               break;
             }
           }
@@ -485,7 +500,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             tt = ++k;
           D.set(ye, tt);
           let bt = safeSpawn(
-            o,
+            spawner,
             {
               sessionId: ye,
               sdkUrl: Ce,
@@ -496,24 +511,24 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
                 if (C.has(Ue)) return;
                 C.add(Ue);
                 let xt = a7f(st);
-                (s.setSessionTitle(Ue, xt),
+                (logger.setSessionTitle(Ue, xt),
                   T(`[bridge:title] derived title for ${Ue}: ${xt}`),
                   Promise.resolve()
                     .then(() => (nOe(), Dze))
                     .then(async ({ getBridgeSession: vt, updateBridgeSessionTitle: jt }) => {
                       let en = await vt(Ue, {
-                        baseUrl: e.apiBaseUrl,
+                        baseUrl: config.apiBaseUrl,
                       });
                       if (en === null || D.get(ye) !== tt) return;
                       let Dn = x.get(Ue);
                       if (en.title && !Dn?.has(en.title)) {
-                        (s.setSessionTitle(Ue, en.title),
+                        (logger.setSessionTitle(Ue, en.title),
                           T(`[bridge:title] remote rename for ${Ue}: ${en.title}`));
                         return;
                       }
                       (x.set(Ue, (Dn ?? new Set()).add(xt)),
                         await jt(Ue, xt, {
-                          baseUrl: e.apiBaseUrl,
+                          baseUrl: config.apiBaseUrl,
                         }));
                     })
                     .catch((vt) =>
@@ -526,16 +541,17 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             Be,
           );
           if (typeof bt === "string") {
-            s.logError(`Failed to spawn session ${ye}: ${bt}`);
+            logger.logError(`Failed to spawn session ${ye}: ${bt}`);
             let st = S.get(ye);
             if (st)
               (S.delete(ye),
                 $(
-                  uGo(st, s, {
+                  uGo(st, logger, {
                     force: true,
                   }),
                 ));
-            (_.add(pe.id), $(stopWorkWithRetry(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
+            (_.add(pe.id),
+              $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)));
             break;
           }
           let Ke = bt,
@@ -560,29 +576,29 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             y.set(ye, ie.session_ingress_token),
             h.set(ye, Ue));
           let ct = Date.now();
-          (m.set(ye, ct), s.logSessionStart(ye, `Session ${ye}`));
+          (m.set(ye, ct), logger.logSessionStart(ye, `Session ${ye}`));
           let Je = Gir(ye),
             gt;
-          if (e.debugFile) {
-            let st = e.debugFile.lastIndexOf(".");
-            if (st > 0) gt = `${e.debugFile.slice(0, st)}-${Je}${e.debugFile.slice(st)}`;
-            else gt = `${e.debugFile}-${Je}`;
-          } else if (e.verbose) gt = G1e.join(qE(), `bridge-session-${Je}.log`);
-          if (gt) s.logVerbose(`Debug log: ${gt}`);
+          if (config.debugFile) {
+            let st = config.debugFile.lastIndexOf(".");
+            if (st > 0) gt = `${config.debugFile.slice(0, st)}-${Je}${config.debugFile.slice(st)}`;
+            else gt = `${config.debugFile}-${Je}`;
+          } else if (config.verbose) gt = G1e.join(qE(), `bridge-session-${Je}.log`);
+          if (gt) logger.logVerbose(`Debug log: ${gt}`);
           if (
-            (s.addSession(
+            (logger.addSession(
               Ue,
-              dS(Ue, e.sessionIngressUrl, {
+              dS(Ue, config.sessionIngressUrl, {
                 from: "cli",
               }),
             ),
             oe(),
-            s.setAttached(Ue),
-            l7f(Ue, e.apiBaseUrl)
+            logger.setAttached(Ue),
+            l7f(Ue, config.apiBaseUrl)
               .then((st) => {
                 if (st && D.get(ye) === tt && !C.has(Ue)) {
                   if (
-                    (s.setSessionTitle(Ue, st),
+                    (logger.setSessionTitle(Ue, st),
                     T(`[bridge:title] server title for ${Ue}: ${st}`),
                     !x.get(Ue)?.has(st))
                   )
@@ -615,11 +631,11 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     } catch (pe) {
       if (p.aborted) break;
       if (pe instanceof Qq) {
-        if (((J = true), pe.status !== 401 && ZJt(pe.errorType))) s.logStatus(Atc(pe.message));
+        if (((J = true), pe.status !== 401 && ZJt(pe.errorType))) logger.logStatus(Atc(pe.message));
         else if (tGo(pe)) T(`[bridge:work] Suppressed 403 error: ${pe.message}`);
         else if (dGo(pe) && A.size > 0) ce();
         else
-          (s.logError(pe.message),
+          (logger.logError(pe.message),
             T(`[bridge:work] Fatal bridge error: ${pe.message}`, {
               level: "error",
             }));
@@ -650,7 +666,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         if (((z = he), !V)) V = he;
         let ie = he - V;
         if (ie >= a.connGiveUpMs) {
-          (s.logError(`Server unreachable for ${Math.round(ie / 60000)} minutes, giving up.`),
+          (logger.logError(`Server unreachable for ${Math.round(ie / 60000)} minutes, giving up.`),
             G("tengu_bridge_poll_give_up", {
               error_type: We("connection"),
               elapsed_ms: ie,
@@ -665,10 +681,10 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         ((Y = null), (W = 0), (q = q ? Math.min(q * 2, a.connCapMs) : a.connInitialMs));
         let le = pGo(q);
         if (
-          (s.logVerbose(
+          (logger.logVerbose(
             `Connection error, retrying in ${rQt(le)} (${Math.round(ie / 1000)}s elapsed): ${ge}`,
           ),
-          s.updateReconnectingStatus(rQt(le), Yi(ie)),
+          logger.updateReconnectingStatus(rQt(le), Yi(ie)),
           U1e().non_exclusive_heartbeat_interval_ms > 0)
         )
           await O();
@@ -689,7 +705,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         if (((z = he), !Y)) Y = he;
         let ie = he - Y;
         if (ie >= a.generalGiveUpMs) {
-          (s.logError(`Persistent errors for ${Math.round(ie / 60000)} minutes, giving up.`),
+          (logger.logError(`Persistent errors for ${Math.round(ie / 60000)} minutes, giving up.`),
             G("tengu_bridge_poll_give_up", {
               error_type: We("general"),
               elapsed_ms: ie,
@@ -704,10 +720,10 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
         ((V = null), (q = 0), (W = W ? Math.min(W * 2, a.generalCapMs) : a.generalInitialMs));
         let le = pGo(W);
         if (
-          (s.logVerbose(
+          (logger.logVerbose(
             `Poll failed, retrying in ${rQt(le)} (${Math.round(ie / 1000)}s elapsed): ${ge}`,
           ),
-          s.updateReconnectingStatus(rQt(le), Yi(ie)),
+          logger.updateReconnectingStatus(rQt(le), Yi(ie)),
           U1e().non_exclusive_heartbeat_interval_ms > 0)
         )
           await O();
@@ -715,7 +731,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       }
     }
   }
-  (re(), s.clearStatus());
+  (re(), logger.clearStatus());
   let ae = Date.now() - N;
   (G("tengu_bridge_shutdown", {
     active_sessions: f.size,
@@ -726,11 +742,11 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       loop_duration_ms: ae,
     }));
   let de = new Set(f.keys());
-  if (l && ![...A].some((me) => iGo(me, l))) de.add(l);
+  if (initialSessionId && ![...A].some((me) => iGo(me, initialSessionId))) de.add(initialSessionId);
   let Ee = new Map(h);
   if (f.size > 0) {
     (T(`[bridge:shutdown] Shutting down ${f.size} active session(s)`),
-      s.logStatus(`Shutting down ${f.size} active session(s)\u2026`));
+      logger.logStatus(`Shutting down ${f.size} active session(s)\u2026`));
     let me = new Map(g);
     for (let [ge, he] of f.entries())
       (T(`[bridge:shutdown] Sending SIGTERM to sessionId=${ge}`), he.kill());
@@ -746,23 +762,25 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       let ge = [...S.values()];
       (S.clear(),
         T(`[bridge:shutdown] Cleaning up ${ge.length} worktree(s)`),
-        await Promise.allSettled(ge.map((he) => uGo(he, s))));
+        await Promise.allSettled(ge.map((he) => uGo(he, logger))));
     }
     await Promise.allSettled(
       [...me.entries()].map(([ge, he]) =>
-        r
-          .stopWork(t, he, true)
-          .catch((ie) => s.logVerbose(`Failed to stop work ${he} for session ${ge}: ${be(ie)}`)),
+        api
+          .stopWork(environmentId, he, true)
+          .catch((ie) =>
+            logger.logVerbose(`Failed to stop work ${he} for session ${ge}: ${be(ie)}`),
+          ),
       ),
     );
   }
   if (B.size > 0) await Promise.allSettled([...B]);
-  if (e.preserveOnShutdown && !J) {
-    (s.logStatus(
+  if (config.preserveOnShutdown && !J) {
+    (logger.logStatus(
       "Environment preserved. Restart `claude remote-control` to reconnect existing sessions.",
     ),
       T(
-        `[bridge:shutdown] Skipping archive+deregister to allow resume (env ${t}, spawnMode ${e.spawnMode})`,
+        `[bridge:shutdown] Skipping archive+deregister to allow resume (env ${environmentId}, spawnMode ${config.spawnMode})`,
       ));
     return;
   }
@@ -770,36 +788,42 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     (T(`[bridge:shutdown] Archiving ${de.size} session(s)`),
       await Promise.allSettled(
         [...de].map((me) =>
-          r
+          api
             .archiveSession(Ee.get(me) ?? oP(me))
-            .catch((pe) => s.logVerbose(`Failed to archive session ${me}: ${be(pe)}`)),
+            .catch((pe) => logger.logVerbose(`Failed to archive session ${me}: ${be(pe)}`)),
         ),
       ));
   try {
-    (await r.deregisterEnvironment(t),
+    (await api.deregisterEnvironment(environmentId),
       T("[bridge:shutdown] Environment deregistered, bridge offline"),
-      s.logVerbose("Environment deregistered."));
+      logger.logVerbose("Environment deregistered."));
   } catch (me) {
-    s.logVerbose(`Failed to deregister environment: ${be(me)}`);
+    logger.logVerbose(`Failed to deregister environment: ${be(me)}`);
   }
-  if (e.preserveOnShutdown) {
+  if (config.preserveOnShutdown) {
     let { clearBridgePointer: me } = await Promise.resolve().then(() => (j1e(), F1e));
-    await me(e.dir);
+    await me(config.dir);
   }
-  s.logVerbose("Environment offline.");
+  logger.logVerbose("Environment offline.");
 }
-function isConnectionError(e) {
-  if (e && typeof e === "object" && "code" in e && typeof e.code === "string" && e7f.has(e.code))
+function isConnectionError(err) {
+  if (
+    err &&
+    typeof err === "object" &&
+    "code" in err &&
+    typeof err.code === "string" &&
+    e7f.has(err.code)
+  )
     return true;
   return false;
 }
-function isServerError(e) {
+function isServerError(err) {
   return (
-    !!e &&
-    typeof e === "object" &&
-    "code" in e &&
-    typeof e.code === "string" &&
-    e.code === "ERR_BAD_RESPONSE"
+    !!err &&
+    typeof err === "object" &&
+    "code" in err &&
+    typeof err.code === "string" &&
+    err.code === "ERR_BAD_RESPONSE"
   );
 }
 function pGo(e) {
@@ -808,23 +832,23 @@ function pGo(e) {
 function rQt(e) {
   return e >= 1000 ? `${(e / 1000).toFixed(1)}s` : `${Math.round(e)}ms`;
 }
-async function stopWorkWithRetry(e, t, n, r, o = 1000) {
+async function stopWorkWithRetry(api, environmentId, workId, logger, o = 1000) {
   for (let i = 1; i <= 3; i++)
     try {
-      (await e.stopWork(t, n, false),
-        T(`[bridge:work] stopWork succeeded for workId=${n} on attempt ${i}/3`),
+      (await api.stopWork(environmentId, workId, false),
+        T(`[bridge:work] stopWork succeeded for workId=${workId} on attempt ${i}/3`),
         xe("bridge_work_stop"));
       return;
     } catch (a) {
       if (a instanceof Qq) {
         if (tGo(a))
-          (T(`[bridge:work] Suppressed stopWork 403 for ${n}: ${a.message}`),
+          (T(`[bridge:work] Suppressed stopWork 403 for ${workId}: ${a.message}`),
             It("bridge_work_stop", "fatal_403"));
         else if (dGo(a))
-          (T(`[bridge:work] stopWork skipped for ${n} \u2014 environment gone: ${a.message}`),
+          (T(`[bridge:work] stopWork skipped for ${workId} \u2014 environment gone: ${a.message}`),
             It("bridge_work_stop", "env_gone"));
         else
-          (r.logError(`Failed to stop work ${n}: ${a.message}`),
+          (logger.logError(`Failed to stop work ${workId}: ${a.message}`),
             Le("bridge_work_stop", "fatal_403"));
         In("error", "bridge_stop_work_failed", {
           attempts: i,
@@ -835,10 +859,12 @@ async function stopWorkWithRetry(e, t, n, r, o = 1000) {
       let l = be(a);
       if (i < 3) {
         let c = pGo(o * Math.pow(2, i - 1));
-        (r.logVerbose(`Failed to stop work ${n} (attempt ${i}/3), retrying in ${rQt(c)}: ${l}`),
+        (logger.logVerbose(
+          `Failed to stop work ${workId} (attempt ${i}/3), retrying in ${rQt(c)}: ${l}`,
+        ),
           await Nn(c));
       } else
-        (r.logError(`Failed to stop work ${n} after 3 attempts: ${l}`),
+        (logger.logError(`Failed to stop work ${workId} after 3 attempts: ${l}`),
           In("error", "bridge_stop_work_failed", {
             attempts: 3,
           }),
@@ -876,15 +902,16 @@ async function uGo(e, t, n) {
     t.logStatus(`removed worktree ${e.worktreePath}`);
   else t.logStatus(`worktree removal failed, kept: ${e.worktreePath}`);
 }
-function parseSpawnValue(e) {
-  if (e === "session") return "single-session";
-  if (e === "same-dir") return "same-dir";
-  if (e === "worktree") return "worktree";
-  return `--spawn requires one of: ${t7f.join(", ")} (got: ${e ?? "<missing>"})`;
+function parseSpawnValue(raw) {
+  if (raw === "session") return "single-session";
+  if (raw === "same-dir") return "same-dir";
+  if (raw === "worktree") return "worktree";
+  return `--spawn requires one of: ${t7f.join(", ")} (got: ${raw ?? "<missing>"})`;
 }
-function parseCapacityValue(e) {
-  let t = e === void 0 ? NaN : parseInt(e, 10);
-  if (isNaN(t) || t < 1) return `--capacity requires a positive integer (got: ${e ?? "<missing>"})`;
+function parseCapacityValue(raw) {
+  let t = raw === void 0 ? NaN : parseInt(raw, 10);
+  if (isNaN(t) || t < 1)
+    return `--capacity requires a positive integer (got: ${raw ?? "<missing>"})`;
   return t;
 }
 function o7f(e) {
@@ -893,7 +920,7 @@ function o7f(e) {
     return `--preview-port requires an integer in [1024, 65535] (got: ${e ?? "<missing>"})`;
   return t;
 }
-function parseArgs(e) {
+function parseArgs(args) {
   let t = false,
     n = false,
     r,
@@ -908,29 +935,29 @@ function parseArgs(e) {
     p = false,
     f = false,
     m = [];
-  for (let h = 0; h < e.length; h++) {
-    let y = e[h];
+  for (let h = 0; h < args.length; h++) {
+    let y = args[h];
     if (y === "--help" || y === "-h") a = true;
     else if (y === "--verbose" || y === "-v") t = true;
     else if (y === "--sandbox") n = true;
     else if (y === "--no-sandbox") n = false;
-    else if (y === "--debug-file" && h + 1 < e.length) r = G1e.resolve(e[++h]);
+    else if (y === "--debug-file" && h + 1 < args.length) r = G1e.resolve(args[++h]);
     else if (y.startsWith("--debug-file=")) r = G1e.resolve(y.slice(13));
-    else if (y === "--permission-mode" && h + 1 < e.length) o = e[++h];
+    else if (y === "--permission-mode" && h + 1 < args.length) o = args[++h];
     else if (y.startsWith("--permission-mode=")) o = y.slice(18);
-    else if (y === "--name" && h + 1 < e.length) s = e[++h];
+    else if (y === "--name" && h + 1 < args.length) s = args[++h];
     else if (y.startsWith("--name=")) s = y.slice(7);
-    else if (y === "--remote-control-session-name-prefix" && h + 1 < e.length) i = e[++h];
+    else if (y === "--remote-control-session-name-prefix" && h + 1 < args.length) i = args[++h];
     else if (y.startsWith("--remote-control-session-name-prefix=")) i = y.slice(37);
     else if (y === "--spawn" || y.startsWith("--spawn=")) {
       if (l !== void 0) return g("--spawn may only be specified once");
-      let b = y.startsWith("--spawn=") ? y.slice(8) : e[++h],
+      let b = y.startsWith("--spawn=") ? y.slice(8) : args[++h],
         _ = parseSpawnValue(b);
       if (_ === "single-session" || _ === "same-dir" || _ === "worktree") l = _;
       else return g(_);
     } else if (y === "--capacity" || y.startsWith("--capacity=")) {
       if (c !== void 0) return g("--capacity may only be specified once");
-      let b = y.startsWith("--capacity=") ? y.slice(11) : e[++h],
+      let b = y.startsWith("--capacity=") ? y.slice(11) : args[++h],
         _ = parseCapacityValue(b);
       if (typeof _ === "number") c = _;
       else return g(_);
@@ -938,7 +965,7 @@ function parseArgs(e) {
     else if (y === "--no-create-session-in-dir") u = false;
     else if (y === "--enable-live-preview") f = true;
     else if (y === "--preview-port" || y.startsWith("--preview-port=")) {
-      let b = y.startsWith("--preview-port=") ? y.slice(15) : e[++h],
+      let b = y.startsWith("--preview-port=") ? y.slice(15) : args[++h],
         _ = o7f(b);
       if (typeof _ === "number") m.push(_);
       else return g(_);
@@ -1062,8 +1089,8 @@ async function l7f(e, t) {
     )?.title || void 0
   );
 }
-async function bridgeMain(e) {
-  let t = parseArgs(e);
+async function bridgeMain(args) {
+  let t = parseArgs(args);
   if (t.help) {
     await s7f();
     return;
@@ -1511,8 +1538,8 @@ Spawn mode for this project:
   }
   process.exit(0);
 }
-async function runBridgeHeadless(e, t) {
-  let { dir: n, log: r } = e;
+async function runBridgeHeadless(opts, signal) {
+  let { dir: n, log: r } = opts;
   process.chdir(n);
   let { setOriginalCwd: o, setCwdState: s } = await Promise.resolve().then(() => (ft(), twe));
   (o(n), s(n));
@@ -1536,7 +1563,7 @@ async function runBridgeHeadless(e, t) {
     throw new BridgeHeadlessPermanentError(
       `Workspace not trusted: ${n}. Run \`claude\` in that directory first to accept the trust dialog.`,
     );
-  if (!e.getAccessToken()) throw Error(Myt);
+  if (!opts.getAccessToken()) throw Error(Myt);
   let { getBridgeBaseUrl: f } = await Promise.resolve().then(() => (wQ(), V0o)),
     m = f();
   if (m.startsWith("http://") && !m.includes("localhost") && !m.includes("127.0.0.1"))
@@ -1550,7 +1577,7 @@ async function runBridgeHeadless(e, t) {
       findGitRoot: b,
     } = await Promise.resolve().then(() => (sa(), Sfn)),
     { hasWorktreeCreateHook: _ } = await Promise.resolve().then(() => (P3e(), jKr));
-  if (e.spawnMode === "worktree") {
+  if (opts.spawnMode === "worktree") {
     if (!(_() || b(n) !== null))
       throw new BridgeHeadlessPermanentError(
         `Worktree mode requires a git repository or WorktreeCreate hooks. Directory ${n} has neither.`,
@@ -1586,10 +1613,10 @@ async function runBridgeHeadless(e, t) {
       machineName: v,
       branch: S,
       gitRepoUrl: A,
-      maxSessions: e.capacity,
-      spawnMode: e.spawnMode,
+      maxSessions: opts.capacity,
+      spawnMode: opts.spawnMode,
       verbose: false,
-      sandbox: e.sandbox,
+      sandbox: opts.sandbox,
       bridgeId: C,
       workerType: "claude_code",
       environmentId: oQt.randomUUID(),
@@ -1599,7 +1626,7 @@ async function runBridgeHeadless(e, t) {
     },
     D = eGo({
       baseUrl: m,
-      getAccessToken: e.getAccessToken,
+      getAccessToken: opts.getAccessToken,
       runnerVersion: {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
         PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -1610,7 +1637,7 @@ async function runBridgeHeadless(e, t) {
         GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
       }.VERSION,
       onDebug: r,
-      onAuth401: e.onAuth401,
+      onAuth401: opts.onAuth401,
       getTrustedDeviceToken: _6,
       useCcrV2Routing: Cht,
     }),
@@ -1629,26 +1656,26 @@ async function runBridgeHeadless(e, t) {
       scriptArgs: Htc(),
       env: process.env,
       verbose: false,
-      sandbox: e.sandbox,
-      permissionMode: e.permissionMode,
+      sandbox: opts.sandbox,
+      permissionMode: opts.permissionMode,
       onDebug: r,
     }),
     M = createHeadlessBridgeLogger(r);
   M.printBanner(k, P);
   let N;
-  if (e.createSessionOnStart) {
+  if (opts.createSessionOnStart) {
     let { createBridgeSession: $ } = await Promise.resolve().then(() => (nOe(), Dze));
     try {
       let q = await $({
         environmentId: P,
-        title: e.name,
+        title: opts.name,
         events: [],
         gitRepoUrl: A,
         branch: S,
-        signal: t,
+        signal: signal,
         baseUrl: m,
-        getAccessToken: e.getAccessToken,
-        permissionMode: e.permissionMode,
+        getAccessToken: opts.getAccessToken,
+        permissionMode: opts.permissionMode,
         tags: [Fir],
       });
       if (q) ((N = q), r(`created initial session ${q}`));
@@ -1689,27 +1716,27 @@ async function runBridgeHeadless(e, t) {
         B.unref?.());
   }
   try {
-    await runBridgeLoop(k, P, O, D, L, M, t, void 0, N, async () => e.getAccessToken());
+    await runBridgeLoop(k, P, O, D, L, M, signal, void 0, N, async () => opts.getAccessToken());
   } finally {
     if (B) clearInterval(B);
   }
 }
-function createHeadlessBridgeLogger(e) {
+function createHeadlessBridgeLogger(log) {
   let t = () => {};
   return {
     printBanner: (n, r) =>
-      e(
+      log(
         `registered environmentId=${r} dir=${n.dir} spawnMode=${n.spawnMode} capacity=${n.maxSessions}`,
       ),
-    logSessionStart: (n, r) => e(`session start ${n}`),
-    logSessionComplete: (n, r) => e(`session complete ${n} (${r}ms)`),
-    logSessionFailed: (n, r) => e(`session failed ${n}: ${r}`),
-    logStatus: e,
-    logVerbose: e,
-    logError: (n) => e(`error: ${n}`),
-    logReconnected: (n) => e(`reconnected after ${n}ms`),
-    addSession: (n, r) => e(`session attached ${n}`),
-    removeSession: (n) => e(`session detached ${n}`),
+    logSessionStart: (n, r) => log(`session start ${n}`),
+    logSessionComplete: (n, r) => log(`session complete ${n} (${r}ms)`),
+    logSessionFailed: (n, r) => log(`session failed ${n}: ${r}`),
+    logStatus: log,
+    logVerbose: log,
+    logError: (n) => log(`error: ${n}`),
+    logReconnected: (n) => log(`reconnected after ${n}ms`),
+    addSession: (n, r) => log(`session attached ${n}`),
+    removeSession: (n) => log(`session detached ${n}`),
     updateIdleStatus: t,
     updateReconnectingStatus: t,
     updateSessionStatus: t,

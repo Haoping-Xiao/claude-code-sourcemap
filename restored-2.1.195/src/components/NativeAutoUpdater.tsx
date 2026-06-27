@@ -6,18 +6,23 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ihc] deps: kt, Du, J8o, Ye, uo, FEe, er, je, MPe, fn, kgt, A9e, BJ, LOe, gm
 ((Q8o = require("path")), (Gz = R(rt(), 1)), (WT = R(se(), 1)));
-function getErrorType(e) {
-  if (e.includes("timeout")) return "timeout";
-  if (e.includes("Checksum mismatch")) return "checksum_mismatch";
-  if (e.includes("ENOENT") || e.includes("not found")) return "not_found";
-  if (e.includes("EACCES") || e.includes("permission")) return "permission_denied";
-  if (e.includes("ENOSPC")) return "disk_full";
-  if (e.includes("npm")) return "npm_error";
-  if (e.includes("network") || e.includes("ECONNREFUSED") || e.includes("ENOTFOUND"))
-    return "network_error";
-  let t = e.toLowerCase();
+function getErrorType(errorMessage) {
+  if (errorMessage.includes("timeout")) return "timeout";
+  if (errorMessage.includes("Checksum mismatch")) return "checksum_mismatch";
+  if (errorMessage.includes("ENOENT") || errorMessage.includes("not found")) return "not_found";
+  if (errorMessage.includes("EACCES") || errorMessage.includes("permission"))
+    return "permission_denied";
+  if (errorMessage.includes("ENOSPC")) return "disk_full";
+  if (errorMessage.includes("npm")) return "npm_error";
   if (
-    e.includes("ENOEXEC") ||
+    errorMessage.includes("network") ||
+    errorMessage.includes("ECONNREFUSED") ||
+    errorMessage.includes("ENOTFOUND")
+  )
+    return "network_error";
+  let t = errorMessage.toLowerCase();
+  if (
+    errorMessage.includes("ENOEXEC") ||
     t.includes("exec format error") ||
     t.includes("bad cpu type") ||
     t.includes("cannot execute binary") ||
@@ -34,9 +39,9 @@ function getErrorType(e) {
   )
     return "av_quarantine";
   if (
-    e.includes("EXDEV") ||
-    e.includes("EEXIST") ||
-    e.includes("EBUSY") ||
+    errorMessage.includes("EXDEV") ||
+    errorMessage.includes("EEXIST") ||
+    errorMessage.includes("EBUSY") ||
     t.includes("rename") ||
     t.includes("move failed") ||
     t.includes("cross-device")

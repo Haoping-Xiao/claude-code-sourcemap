@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MDc] deps: ft, Zf, uo, fut, vn, Eue
 $tn = R(rt(), 1);
-function useIDEStatusIndicator(e) {
+function useIDEStatusIndicator(t0) {
   let t = $Dc.c(20),
-    { ideSelection: n, mcpClients: r, ideInstallationStatus: o } = e,
+    { ideSelection: n, mcpClients: r, ideInstallationStatus: o } = t0,
     { addNotification: s, removeNotification: i } = Li(),
     { status: a, ideName: l } = xdr(r),
     c;

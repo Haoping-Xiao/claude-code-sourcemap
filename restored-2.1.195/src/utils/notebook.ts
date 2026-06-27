@@ -21,9 +21,9 @@ function xvo(e) {
     { truncatedContent: n } = Xel(t);
   return n;
 }
-function extractImage(e) {
+function extractImage(data) {
   for (let t of ["image/png", "image/jpeg"]) {
-    let n = e[t];
+    let n = data[t];
     if (typeof n !== "string") continue;
     let r = n.replace(/\s/g, "");
     if (oX(Buffer.from(r, "base64")) === null) return;
@@ -34,44 +34,44 @@ function extractImage(e) {
   }
   return;
 }
-function processOutput(e) {
-  switch (e.output_type) {
+function processOutput(output) {
+  switch (output.output_type) {
     case "stream":
       return {
-        output_type: e.output_type,
-        text: xvo(e.text),
+        output_type: output.output_type,
+        text: xvo(output.text),
       };
     case "execute_result":
     case "display_data":
       return {
-        output_type: e.output_type,
-        text: xvo(e.data?.["text/plain"]),
-        image: e.data && extractImage(e.data),
+        output_type: output.output_type,
+        text: xvo(output.data?.["text/plain"]),
+        image: output.data && extractImage(output.data),
       };
     case "error":
       return {
-        output_type: e.output_type,
-        text: xvo(`${e.ename}: ${e.evalue}
-${e.traceback.join(`
+        output_type: output.output_type,
+        text: xvo(`${output.ename}: ${output.evalue}
+${output.traceback.join(`
 `)}`),
       };
   }
 }
-function processCell(e, t, n, r) {
-  let o = e.id ?? `cell-${t}`,
+function processCell(cell, index, codeLanguage, includeLargeOutputs) {
+  let o = cell.id ?? `cell-${index}`,
     s = {
-      cellType: e.cell_type,
-      source: Array.isArray(e.source) ? e.source.join("") : e.source,
-      execution_count: e.cell_type === "code" ? e.execution_count || void 0 : void 0,
+      cellType: cell.cell_type,
+      source: Array.isArray(cell.source) ? cell.source.join("") : cell.source,
+      execution_count: cell.cell_type === "code" ? cell.execution_count || void 0 : void 0,
       cell_id: o,
     };
-  if (e.cell_type === "code") s.language = n;
-  if (e.cell_type === "code" && e.outputs?.length) {
-    let i = e.outputs.map(processOutput);
-    if (!r && GZp(i)) {
+  if (cell.cell_type === "code") s.language = codeLanguage;
+  if (cell.cell_type === "code" && cell.outputs?.length) {
+    let i = cell.outputs.map(processOutput);
+    if (!includeLargeOutputs && GZp(i)) {
       let a = Su()
-        ? `${Co} with: cat <notebook_path> | jq '.cells[${t}].outputs'`
-        : `${Ss} with: Get-Content <notebook_path> | ConvertFrom-Json | Select-Object -ExpandProperty cells | Select-Object -Index ${t} | Select-Object -ExpandProperty outputs`;
+        ? `${Co} with: cat <notebook_path> | jq '.cells[${index}].outputs'`
+        : `${Ss} with: Get-Content <notebook_path> | ConvertFrom-Json | Select-Object -ExpandProperty cells | Select-Object -Index ${index} | Select-Object -ExpandProperty outputs`;
       s.outputs = [
         {
           output_type: "stream",
@@ -82,13 +82,13 @@ function processCell(e, t, n, r) {
   }
   return s;
 }
-function cellContentToToolResult(e) {
+function cellContentToToolResult(cell) {
   let t = [];
-  if (e.cellType !== "code") t.push(`<cell_type>${e.cellType}</cell_type>`);
-  if (e.language !== "python" && e.cellType === "code")
-    t.push(`<language>${e.language}</language>`);
+  if (cell.cellType !== "code") t.push(`<cell_type>${cell.cellType}</cell_type>`);
+  if (cell.language !== "python" && cell.cellType === "code")
+    t.push(`<language>${cell.language}</language>`);
   return {
-    text: `<cell id="${e.cell_id}">${t.join("")}${e.source}</cell id="${e.cell_id}">`,
+    text: `<cell id="${cell.cell_id}">${t.join("")}${cell.source}</cell id="${cell.cell_id}">`,
     type: "text",
   };
 }
@@ -116,8 +116,8 @@ function KZp(e) {
     n = e.outputs?.flatMap(zZp);
   return [t, ...(n ?? [])];
 }
-async function readNotebook(e, t) {
-  let n = ds(e),
+async function readNotebook(notebookPath, cellId) {
+  let n = ds(notebookPath),
     o = (await qt().readFileBytes(n)).toString("utf-8"),
     s;
   try {
@@ -132,9 +132,9 @@ async function readNotebook(e, t) {
       'Notebook file is not a valid Jupyter notebook (top-level "cells" must be an array of cell objects).',
     );
   let i = s.metadata?.language_info?.name ?? "python";
-  if (t) {
-    let a = s.cells.find((l) => l.id === t);
-    if (!a) throw Error(`Cell with ID "${t}" not found in notebook`);
+  if (cellId) {
+    let a = s.cells.find((l) => l.id === cellId);
+    if (!a) throw Error(`Cell with ID "${cellId}" not found in notebook`);
     return [processCell(a, s.cells.indexOf(a), i, true)];
   }
   return s.cells.map((a, l) => processCell(a, l, i, false));

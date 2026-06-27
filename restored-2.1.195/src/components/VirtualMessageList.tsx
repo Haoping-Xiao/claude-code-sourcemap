@@ -24,20 +24,20 @@ function w2o(e) {
   let n = computeStickyPromptText(e);
   return (pVl.set(e, n), n);
 }
-function computeStickyPromptText(e) {
+function computeStickyPromptText(msg) {
   let t = null;
-  if (e.type === "user") {
-    if (e.isMeta || e.isVisibleInTranscriptOnly) return null;
-    let r = e.message.content[0];
+  if (msg.type === "user") {
+    if (msg.isMeta || msg.isVisibleInTranscriptOnly) return null;
+    let r = msg.message.content[0];
     if (r?.type !== "text") return null;
     t = r.text;
   } else if (
-    e.type === "attachment" &&
-    e.attachment.type === "queued_command" &&
-    e.attachment.commandMode !== "task-notification" &&
-    !e.attachment.isMeta
+    msg.type === "attachment" &&
+    msg.attachment.type === "queued_command" &&
+    msg.attachment.commandMode !== "task-notification" &&
+    !msg.attachment.isMeta
   ) {
-    let r = e.attachment.prompt;
+    let r = msg.attachment.prompt;
     t =
       typeof r === "string"
         ? r

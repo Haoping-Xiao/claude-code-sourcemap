@@ -8,8 +8,8 @@
 ((SQn = ut(process.env.CLAUDE_CODE_PROFILE_STARTUP)),
   (rIl = Math.random() < ETf),
   (SPo = SQn || rIl));
-function getErrorMessageIfRefusal(e) {
-  return e === "refusal" || e === "sticky";
+function getErrorMessageIfRefusal(stopReason) {
+  return stopReason === "refusal" || stopReason === "sticky";
 }
 function HTf(e) {
   return e === "refusal" || e === "sticky" ? e : "other";
@@ -40,9 +40,9 @@ function iIl(e, t, n, r) {
       r.anthropic_beta = [...o, o1.header];
   }
 }
-function logToolUseToolResultMismatch(e) {
-  if (typeof e !== "object" || e === null) return;
-  let t = e.fallback_credit_token;
+function logToolUseToolResultMismatch(toolUseId) {
+  if (typeof toolUseId !== "object" || toolUseId === null) return;
+  let t = toolUseId.fallback_credit_token;
   return typeof t === "string" && t.length > 0 && t.length <= 2048 ? t : void 0;
 }
 function TPo(e) {

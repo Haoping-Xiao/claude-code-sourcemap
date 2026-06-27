@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.3426  score=0.8581  fileCov=0.3631
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function validateManifest(e) {
+async function validateManifest(manifestJson) {
   let { McpbManifestSchema: t } = await Promise.resolve().then(() => (ndo(), tdo)),
-    n = t.safeParse(e);
+    n = t.safeParse(manifestJson);
   if (!n.success) {
     let r = n.error.flatten(),
       o = [
@@ -19,10 +19,10 @@ async function validateManifest(e) {
   }
   return n.data;
 }
-async function parseAndValidateManifestFromText(e) {
+async function parseAndValidateManifestFromText(manifestText) {
   let t;
   try {
-    t = Ft(e);
+    t = Ft(manifestText);
   } catch (n) {
     throw Error(`Invalid JSON in manifest.json: ${be(n)}`);
   }

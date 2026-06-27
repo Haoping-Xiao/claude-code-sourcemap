@@ -4,8 +4,8 @@
 // class=modified  jaccard=0.6256  score=0.823  fileCov=0.7228
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function registerMcpXaaIdpCommand(e) {
-  let t = e.command("xaa").description("Manage the XAA (SEP-990) IdP connection");
+function registerMcpXaaIdpCommand(mcp) {
+  let t = mcp.command("xaa").description("Manage the XAA (SEP-990) IdP connection");
   (t
     .command("setup")
     .description("Configure the IdP connection (one-time setup for all XAA-enabled servers)")

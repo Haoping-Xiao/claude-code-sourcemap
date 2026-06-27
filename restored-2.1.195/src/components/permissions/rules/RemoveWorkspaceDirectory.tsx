@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _zl] deps: EJt, Ye, Vl, gm, kP
 ((hzl = R(lt(), 1)), (I1e = R(rt(), 1)), (ame = R(se(), 1)));
-function RemoveWorkspaceDirectory(e) {
+function RemoveWorkspaceDirectory(t0) {
   let t = bzl.c(15),
     {
       directoryPath: n,
@@ -14,7 +14,7 @@ function RemoveWorkspaceDirectory(e) {
       onCancel: o,
       permissionContext: s,
       setPermissionContext: i,
-    } = e,
+    } = t0,
     a;
   if (t[0] !== n || t[1] !== r || t[2] !== s || t[3] !== i)
     ((a = () => {

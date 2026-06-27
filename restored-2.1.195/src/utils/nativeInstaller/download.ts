@@ -10,18 +10,18 @@ var Oza = () => {};
 function vAo(e, t) {
   return SFe(e) ? kSe.get(e, t) : lb.get(e, t);
 }
-async function getLatestVersionFromBinaryRepo(e = "latest", t, n) {
+async function getLatestVersionFromBinaryRepo(e = "latest", baseUrl, authConfig) {
   let r = Date.now(),
     o = 0;
   try {
     let s = await yVn(
         (a) => (
           o++,
-          vAo(`${t}/${e}`, {
+          vAo(`${baseUrl}/${e}`, {
             timeout: Nza,
             responseType: "text",
             signal: a,
-            ...n,
+            ...authConfig,
           })
         ),
         {
@@ -58,32 +58,32 @@ async function getLatestVersionFromBinaryRepo(e = "latest", t, n) {
         platform: Z9(iKp()),
         channel: $e(e),
       }));
-    let c = Error(`Failed to fetch version from ${t}/${e} after ${o} attempt(s): ${a}`);
+    let c = Error(`Failed to fetch version from ${baseUrl}/${e} after ${o} attempt(s): ${a}`);
     throw (
-      T(`Failed to fetch version from ${t}/${e} after ${o} attempt(s): ${a}`, {
+      T(`Failed to fetch version from ${baseUrl}/${e} after ${o} attempt(s): ${a}`, {
         level: "error",
       }),
       c
     );
   }
 }
-async function getLatestVersion(e) {
-  if (/^v?\d+\.\d+\.\d+(-\S+)?$/.test(e)) {
-    let n = e.startsWith("v") ? e.slice(1) : e;
+async function getLatestVersion(channelOrVersion) {
+  if (/^v?\d+\.\d+\.\d+(-\S+)?$/.test(channelOrVersion)) {
+    let n = channelOrVersion.startsWith("v") ? channelOrVersion.slice(1) : channelOrVersion;
     if (/^99\.99\./.test(n))
       throw Error(`Version ${n} is not available for installation. Use 'stable' or 'latest'.`);
     return n;
   }
-  let t = e;
+  let t = channelOrVersion;
   if (t !== "stable" && t !== "latest" && t !== "rc")
-    throw Error(`Invalid channel: ${e}. Use 'latest' or 'stable'`);
-  if (t === "rc") throw Error(`Invalid channel: ${e}. Use 'stable' or 'latest'`);
+    throw Error(`Invalid channel: ${channelOrVersion}. Use 'latest' or 'stable'`);
+  if (t === "rc") throw Error(`Invalid channel: ${channelOrVersion}. Use 'stable' or 'latest'`);
   return getLatestVersionFromBinaryRepo(t, jza);
 }
 function nKp() {
   return Number(process.env.CLAUDE_CODE_STALL_TIMEOUT_MS_FOR_TESTING) || eKp;
 }
-async function downloadAndVerifyBinary(e, t, n, r = {}) {
+async function downloadAndVerifyBinary(binaryUrl, expectedChecksum, binaryPath, r = {}) {
   let o,
     s = false;
   for (let i = 1; i <= AAo; i++) {
@@ -97,7 +97,7 @@ async function downloadAndVerifyBinary(e, t, n, r = {}) {
       };
     try {
       u();
-      let d = await vAo(e, {
+      let d = await vAo(binaryUrl, {
         timeout: tKp,
         responseType: "arraybuffer",
         signal: a.signal,
@@ -111,8 +111,9 @@ async function downloadAndVerifyBinary(e, t, n, r = {}) {
         f = Uza.createHash("sha256");
       f.update(p);
       let m = f.digest("hex");
-      if (m !== t) throw Error(`Checksum mismatch: expected ${t}, got ${m}`);
-      return (await xVn.writeFile(n, p), await xVn.chmod(n, 493), s);
+      if (m !== expectedChecksum)
+        throw Error(`Checksum mismatch: expected ${expectedChecksum}, got ${m}`);
+      return (await xVn.writeFile(binaryPath, p), await xVn.chmod(binaryPath, 493), s);
     } catch (d) {
       c();
       let p = dM(d),
@@ -131,9 +132,9 @@ async function downloadAndVerifyBinary(e, t, n, r = {}) {
   }
   throw o ?? Error("Download failed after all retries");
 }
-async function downloadVersionFromBinaryRepo(e, t, n, r) {
+async function downloadVersionFromBinaryRepo(version, stagingPath, baseUrl, authConfig) {
   let o = qt();
-  await o.rm(t, {
+  await o.rm(stagingPath, {
     recursive: true,
     force: true,
   });
@@ -143,10 +144,10 @@ async function downloadVersionFromBinaryRepo(e, t, n, r) {
   let a;
   try {
     a = (
-      await vAo(`${n}/${e}/manifest.json`, {
+      await vAo(`${baseUrl}/${version}/manifest.json`, {
         timeout: 10000 /* 1e4 */,
         responseType: "json",
-        ...r,
+        ...authConfig,
       })
     ).data;
   } catch (f) {
@@ -160,7 +161,7 @@ async function downloadVersionFromBinaryRepo(e, t, n, r) {
         is_timeout: TAo(f),
         platform: Z9(s),
       }),
-      T(`Failed to fetch manifest from ${n}/${e}/manifest.json: ${g}`, {
+      T(`Failed to fetch manifest from ${baseUrl}/${version}/manifest.json: ${g}`, {
         level: "error",
       }),
       f
@@ -172,16 +173,16 @@ async function downloadVersionFromBinaryRepo(e, t, n, r) {
       Le("update_download", "update_download_platform_not_found"),
       G("tengu_binary_platform_not_found", {}),
       Error(
-        `Native binaries for ${s} are not available on this release channel (version ${e} ships: ${Object.keys(a.platforms).sort().join(", ")}).`,
+        `Native binaries for ${s} are not available on this release channel (version ${version} ships: ${Object.keys(a.platforms).sort().join(", ")}).`,
       )
     );
   let c = l.checksum,
     u = RVn(s),
-    d = `${n}/${e}/${s}/${u}`;
-  await o.mkdir(t);
-  let p = Fza.join(t, u);
+    d = `${baseUrl}/${version}/${s}/${u}`;
+  await o.mkdir(stagingPath);
+  let p = Fza.join(stagingPath, u);
   try {
-    let f = await downloadAndVerifyBinary(d, c, p, r || {}),
+    let f = await downloadAndVerifyBinary(d, c, p, authConfig || {}),
       m = Date.now() - i;
     if (f) It("update_download", "update_download_checksum_retry");
     else xe("update_download");

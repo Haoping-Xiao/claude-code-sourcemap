@@ -9,8 +9,17 @@ cme = {
   FOLDER_NAME: ".claude",
   AGENTS_DIR: "agents",
 };
-function formatAgentAsMarkdown(e, t, n, r, o, s, i, a) {
-  let l = t
+function formatAgentAsMarkdown(
+  agentType,
+  whenToUse,
+  tools,
+  systemPrompt,
+  color,
+  model,
+  memory,
+  effort,
+) {
+  let l = whenToUse
       .replaceAll("\\", "\\\\")
       .replaceAll('"', '\\"')
       .replaceAll(
@@ -19,39 +28,39 @@ function formatAgentAsMarkdown(e, t, n, r, o, s, i, a) {
         "\\\\n",
       ),
     u =
-      n === void 0 || (n.length === 1 && n[0] === "*")
+      tools === void 0 || (tools.length === 1 && tools[0] === "*")
         ? ""
         : `
-tools: ${n.join(", ")}`,
-    d = s
+tools: ${tools.join(", ")}`,
+    d = model
       ? `
-model: ${s}`
+model: ${model}`
       : "",
     p =
-      a !== void 0
+      effort !== void 0
         ? `
-effort: ${a}`
+effort: ${effort}`
         : "",
-    f = o
+    f = color
       ? `
-color: ${o}`
+color: ${color}`
       : "",
-    m = i
+    m = memory
       ? `
-memory: ${i}`
+memory: ${memory}`
       : "";
   return `---
-name: "${e}"
+name: "${agentType}"
 description: "${l}"${u}${d}${p}${f}${m}
 ---
 
-${r}
+${systemPrompt}
 `;
 }
-function getAgentDirectoryPath(e) {
-  switch (e) {
+function getAgentDirectoryPath(location) {
+  switch (location) {
     case "flagSettings":
-      throw Error(`Cannot get directory path for ${e} agents`);
+      throw Error(`Cannot get directory path for ${location} agents`);
     case "userSettings":
       return Lse.join(tr(), cme.AGENTS_DIR);
     case "projectSettings":
@@ -74,12 +83,12 @@ function o4o(e) {
   let t = getAgentDirectoryPath(e.source);
   return Lse.join(t, `${e.agentType}.md`);
 }
-function getActualAgentFilePath(e) {
-  if (e.source === "built-in") return "Built-in";
-  if (e.source === "plugin") throw Error("Cannot get file path for plugin agents");
-  let t = e.filename || e.agentType;
-  if (e.baseDir) return Lse.join(e.baseDir, `${t}.md`);
-  let n = getAgentDirectoryPath(e.source);
+function getActualAgentFilePath(agent) {
+  if (agent.source === "built-in") return "Built-in";
+  if (agent.source === "plugin") throw Error("Cannot get file path for plugin agents");
+  let t = agent.filename || agent.agentType;
+  if (agent.baseDir) return Lse.join(agent.baseDir, `${t}.md`);
+  let n = getAgentDirectoryPath(agent.source);
   return Lse.join(n, `${t}.md`);
 }
 function aYl(e) {
@@ -87,26 +96,46 @@ function aYl(e) {
   let t = iYl(e.source);
   return Lse.join(t, `${e.agentType}.md`);
 }
-function getActualRelativeAgentFilePath(e) {
-  if (Sh(e)) return "Built-in";
-  if (sfe(e)) return `Plugin: ${e.plugin || "Unknown"}`;
-  if (e.source === "flagSettings") return "CLI argument";
-  let t = iYl(e.source),
-    n = e.filename || e.agentType;
+function getActualRelativeAgentFilePath(agent) {
+  if (Sh(agent)) return "Built-in";
+  if (sfe(agent)) return `Plugin: ${agent.plugin || "Unknown"}`;
+  if (agent.source === "flagSettings") return "CLI argument";
+  let t = iYl(agent.source),
+    n = agent.filename || agent.agentType;
   return Lse.join(t, `${n}.md`);
 }
 async function LVf(e) {
   let t = getAgentDirectoryPath(e);
   return (await qt().mkdir(t), t);
 }
-async function saveAgentToFile(e, t, n, r, o, s = true, i, a, l, c) {
-  if (e === "built-in") throw Error("Cannot save built-in agents");
-  await LVf(e);
+async function saveAgentToFile(
+  source,
+  agentType,
+  whenToUse,
+  tools,
+  systemPrompt,
+  s = true,
+  color,
+  model,
+  memory,
+  effort,
+) {
+  if (source === "built-in") throw Error("Cannot save built-in agents");
+  await LVf(source);
   let u = o4o({
-      source: e,
-      agentType: t,
+      source: source,
+      agentType: agentType,
     }),
-    d = formatAgentAsMarkdown(t, n, r, o, i, a, l, c);
+    d = formatAgentAsMarkdown(
+      agentType,
+      whenToUse,
+      tools,
+      systemPrompt,
+      color,
+      model,
+      memory,
+      effort,
+    );
   try {
     await pYl(u, d, s ? "wx" : "w");
   } catch (p) {
@@ -114,24 +143,24 @@ async function saveAgentToFile(e, t, n, r, o, s = true, i, a, l, c) {
     throw p;
   }
 }
-async function updateAgentFile(e, t) {
-  if (e.source === "built-in") throw Error("Cannot update built-in agents");
-  let n = getActualAgentFilePath(e),
+async function updateAgentFile(agent, newWhenToUse) {
+  if (agent.source === "built-in") throw Error("Cannot update built-in agents");
+  let n = getActualAgentFilePath(agent),
     r = await qAt.readFile(n, "utf-8"),
     { frontmatter: o, content: s } = Bm(r, n),
     i = {
       ...o,
     };
-  if ("tools" in t) {
-    let a = t.tools;
+  if ("tools" in newWhenToUse) {
+    let a = newWhenToUse.tools;
     if (a === void 0 || (a.length === 1 && a[0] === "*")) delete i.tools;
     else i.tools = a.join(", ");
   }
-  if ("color" in t)
-    if (t.color) i.color = t.color;
+  if ("color" in newWhenToUse)
+    if (newWhenToUse.color) i.color = newWhenToUse.color;
     else delete i.color;
-  if ("model" in t)
-    if (t.model) i.model = t.model;
+  if ("model" in newWhenToUse)
+    if (newWhenToUse.model) i.model = newWhenToUse.model;
     else delete i.model;
   await pYl(
     n,
@@ -140,9 +169,9 @@ ${Pkn(i)}---
 ${s}`,
   );
 }
-async function deleteAgentFromFile(e) {
-  if (e.source === "built-in") throw Error("Cannot delete built-in agents");
-  let t = getActualAgentFilePath(e);
+async function deleteAgentFromFile(agent) {
+  if (agent.source === "built-in") throw Error("Cannot delete built-in agents");
+  let t = getActualAgentFilePath(agent);
   try {
     await qAt.unlink(t);
   } catch (n) {

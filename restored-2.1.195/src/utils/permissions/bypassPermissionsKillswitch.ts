@@ -43,13 +43,13 @@ function dsl() {
     );
   }, []);
 }
-async function checkAndDisableAutoModeIfNeeded(e, t, n, r) {
+async function checkAndDisableAutoModeIfNeeded(toolPermissionContext, setAppState, fastMode, r) {
   {
     if (pCo) return;
     pCo = true;
-    let { updateContext: o, notification: s } = await v8t(e, n);
+    let { updateContext: o, notification: s } = await v8t(toolPermissionContext, fastMode);
     if (
-      (t((i) => {
+      (setAppState((i) => {
         let a = o(i.toolPermissionContext),
           l =
             a === i.toolPermissionContext

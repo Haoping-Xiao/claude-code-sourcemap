@@ -101,66 +101,66 @@ function c3o(e, t = false) {
     null
   );
 }
-function setEffortValue(e) {
-  let t = Tke(e);
+function setEffortValue(effortValue) {
+  let t = Tke(effortValue);
   if (NA() && t === void 0)
     return {
-      message: `${e} is session-scoped and won't reach the remote process. Use low, medium, high, or xhigh instead.`,
+      message: `${effortValue} is session-scoped and won't reach the remote process. Use low, medium, high, or xhigh instead.`,
     };
   let n = c3o(t),
-    r = wNt(e);
+    r = wNt(effortValue);
   if (r)
     return {
       message: `Failed to set effort level: ${r.message}`,
     };
   G("tengu_effort_command", {
-    effort: e,
+    effort: effortValue,
   });
   let o = Ju() ? void 0 : k3e();
-  if (o !== void 0 && o !== e) {
+  if (o !== void 0 && o !== effortValue) {
     let c = process.env.CLAUDE_CODE_EFFORT_LEVEL;
     if (t === void 0)
       return {
-        message: `Not applied: CLAUDE_CODE_EFFORT_LEVEL=${c} overrides effort this session, and ${dce(e)} is session-only (nothing saved)`,
+        message: `Not applied: CLAUDE_CODE_EFFORT_LEVEL=${c} overrides effort this session, and ${dce(effortValue)} is session-only (nothing saved)`,
         effortUpdate: {
-          value: e,
+          value: effortValue,
           ultracode: false,
         },
       };
     return {
-      message: `CLAUDE_CODE_EFFORT_LEVEL=${c} overrides this session \u2014 clear it and ${dce(e)} takes over`,
+      message: `CLAUDE_CODE_EFFORT_LEVEL=${c} overrides this session \u2014 clear it and ${dce(effortValue)} takes over`,
       effortUpdate: {
-        value: e,
+        value: effortValue,
         ultracode: false,
       },
     };
   }
-  let s = bKr(e),
+  let s = bKr(effortValue),
     i = t !== void 0 ? " (saved as your default for new sessions)" : " (this session only)",
-    a = Gkn(e, As()),
+    a = Gkn(effortValue, As()),
     l = a
       ? `
 ${a}`
       : "";
   return {
-    message: `Set effort level to ${dce(e)}${i}: ${s}${n ?? ""}${l}`,
+    message: `Set effort level to ${dce(effortValue)}${i}: ${s}${n ?? ""}${l}`,
     effortUpdate: {
-      value: e,
+      value: effortValue,
       ultracode: false,
     },
   };
 }
-function showCurrentEffort(e, t, n) {
-  if (Xte(t, e, n))
+function showCurrentEffort(appStateEffort, model, n) {
+  if (Xte(model, appStateEffort, n))
     return {
       message:
         "Current effort level: ultracode (xhigh + dynamic workflow orchestration; this session only)",
     };
   let r = Ju() ? void 0 : k3e(),
-    o = R3e(t) ? void 0 : e,
+    o = R3e(model) ? void 0 : appStateEffort,
     s = r === null ? void 0 : (r ?? o);
   if (s === void 0) {
-    let a = RM(t, e);
+    let a = RM(model, appStateEffort);
     return {
       message: `Effort level: auto (currently ${dce(a)})`,
     };
@@ -233,14 +233,14 @@ function nzf() {
     },
   };
 }
-function executeEffort(e) {
-  let t = e.toLowerCase();
+function executeEffort(args) {
+  let t = args.toLowerCase();
   if (t === "auto" || t === "unset") return unsetEffortLevel();
   if (t === "ultracode") return nzf();
-  let n = zst(e);
+  let n = zst(args);
   if (!n)
     return {
-      message: `Invalid argument: ${e}. Valid options are: ${yir(As())}`,
+      message: `Invalid argument: ${args}. Valid options are: ${yir(As())}`,
     };
   return setEffortValue(n);
 }
@@ -958,24 +958,24 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
     }),
   });
 }
-async function call(e, t, n) {
-  if (((n = n?.trim() || ""), _G.includes(n))) {
-    e(getEffortHelpText());
+async function call(onDone, _context, args) {
+  if (((args = args?.trim() || ""), _G.includes(args))) {
+    onDone(getEffortHelpText());
     return;
   }
-  if (n === "current" || n === "status")
+  if (args === "current" || args === "status")
     return Ga.jsx(rzf, {
-      onDone: e,
+      onDone: onDone,
     });
-  let r = t.messages.length > 0;
-  if (!n)
+  let r = _context.messages.length > 0;
+  if (!args)
     return Ga.jsx(Izf, {
-      onDone: e,
+      onDone: onDone,
       hasConversationMessages: r,
     });
   return Ga.jsx(izf, {
-    args: n,
-    onDone: e,
+    args: args,
+    onDone: onDone,
     hasConversationMessages: r,
   });
 }

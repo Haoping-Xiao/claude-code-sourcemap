@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Uvo] deps: _i, Ye, ql, T4t
 ((htl = R(lt(), 1)), (DF = R(se(), 1)));
-function FileEditToolUseRejectedMessage(e) {
+function FileEditToolUseRejectedMessage(t0) {
   let t = _tl.c(38),
     {
       file_path: n,
@@ -17,7 +17,7 @@ function FileEditToolUseRejectedMessage(e) {
       content: a,
       style: l,
       verbose: c,
-    } = e,
+    } = t0,
     { columns: u } = br(),
     d;
   if (t[0] !== r)

@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X0] deps: Ye, PWt
 O1a = R(lt(), 1), hVe = R(se(), 1);
-function extractDangerousSettings(e) {
-  if (!e) return {
+function extractDangerousSettings(settings) {
+  if (!settings) return {
     shellSettings: {},
     envVars: {},
     hasHooks: false,
@@ -15,26 +15,26 @@ function extractDangerousSettings(e) {
   };
   let t = {};
   for (let s of qzi) {
-    let i = e[s],
+    let i = settings[s],
       a;
     if (typeof i === "string") a = i;else if (i !== null && typeof i === "object" && "command" in i && typeof i.command === "string") a = i.command;
     if (a !== void 0 && a.length > 0) t[s] = a;
   }
   let n = {};
-  if (e.env && typeof e.env === "object") for (let [s, i] of Object.entries(e.env)) {
+  if (settings.env && typeof settings.env === "object") for (let [s, i] of Object.entries(settings.env)) {
     if (i === void 0) continue;
     let a = String(i);
     if (a.length > 0 && !ilt.has(s.toUpperCase())) n[s] = a;
   }
-  let r = e.hooks !== void 0 && e.hooks !== null && typeof e.hooks === "object" && Object.keys(e.hooks).length > 0,
-    o = typeof e.claudeMd === "string" && e.claudeMd.length > 0;
+  let r = settings.hooks !== void 0 && settings.hooks !== null && typeof settings.hooks === "object" && Object.keys(settings.hooks).length > 0,
+    o = typeof settings.claudeMd === "string" && settings.claudeMd.length > 0;
   return {
     shellSettings: t,
     envVars: n,
     hasHooks: r,
-    hooks: r ? e.hooks : void 0,
+    hooks: r ? settings.hooks : void 0,
     hasClaudeMd: o,
-    claudeMd: o ? e.claudeMd : void 0
+    claudeMd: o ? settings.claudeMd : void 0
   };
 }
 function g4n(e) {

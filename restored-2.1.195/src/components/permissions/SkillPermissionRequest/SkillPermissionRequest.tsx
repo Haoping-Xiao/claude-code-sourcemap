@@ -71,9 +71,9 @@ function U_m(e) {
   if (!e.showAlwaysAllow) return false;
   return e.skill.indexOf(" ") > 0;
 }
-function SkillPermissionRequest(e) {
+function SkillPermissionRequest(props) {
   let t = BHc.c(51),
-    { payload: n, answer: r } = e,
+    { payload: n, answer: r } = props,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((o = yr()), (t[0] = o));
   else o = t[0];

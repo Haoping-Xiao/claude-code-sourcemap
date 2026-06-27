@@ -31,11 +31,11 @@ jra = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturd
 function eSe(e) {
   return $On.join(e ?? rc(), dop);
 }
-async function readCronTasks(e) {
+async function readCronTasks(dir) {
   let t = qt(),
     n;
   try {
-    n = await t.readFile(eSe(e), {
+    n = await t.readFile(eSe(dir), {
       encoding: "utf-8",
     });
   } catch (i) {

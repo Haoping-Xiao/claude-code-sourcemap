@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NNi] deps: UNt, Uh, MM
 p0n = require("path");
-function truncateEntrypointContent(e) {
-  let t = e.trim(),
+function truncateEntrypointContent(raw) {
+  let t = raw.trim(),
     n = t.split(`
 `),
     r = n.length,
@@ -52,20 +52,20 @@ function truncateEntrypointContent(e) {
     wasByteTruncated: i,
   };
 }
-async function ensureMemoryDirExists(e) {
+async function ensureMemoryDirExists(memoryDir) {
   let t = qt();
   try {
-    await t.mkdir(e);
+    await t.mkdir(memoryDir);
   } catch (n) {
     let r = on(n);
-    T(`ensureMemoryDirExists failed for ${e}: ${r ?? String(n)}`, {
+    T(`ensureMemoryDirExists failed for ${memoryDir}: ${r ?? String(n)}`, {
       level: "debug",
     });
   }
 }
-function logMemoryDirCounts(e, t) {
+function logMemoryDirCounts(memoryDir, baseMetadata) {
   qt()
-    .readdir(e)
+    .readdir(memoryDir)
     .then(
       (r) => {
         let o = 0,
@@ -74,17 +74,17 @@ function logMemoryDirCounts(e, t) {
           if (i.isFile()) o++;
           else if (i.isDirectory()) s++;
         G("tengu_memdir_loaded", {
-          ...t,
+          ...baseMetadata,
           total_file_count: o,
           total_subdir_count: s,
         });
       },
       () => {
-        G("tengu_memdir_loaded", t);
+        G("tengu_memdir_loaded", baseMetadata);
       },
     );
 }
-function buildMemoryLines(e, t, n, r = !1, o = !1) {
+function buildMemoryLines(displayName, memoryDir, extraGuidelines, r = !1, o = !1) {
   let s = r
     ? [
         "## How to save memories",
@@ -116,10 +116,10 @@ function buildMemoryLines(e, t, n, r = !1, o = !1) {
         "- Do not write duplicate memories. First check if there is an existing memory you can update before writing a new one.",
       ];
   return [
-    `# ${e}`,
+    `# ${displayName}`,
     "",
-    t
-      ? `You have a persistent, file-based memory system at \`${t}\`. ${P_e}`
+    memoryDir
+      ? `You have a persistent, file-based memory system at \`${memoryDir}\`. ${P_e}`
       : `You have a persistent, file-based memory system. The directory path is provided in your session context. ${P_e}`,
     "",
     "You should build up this memory system over time so that future conversations can have a complete picture of who the user is, how they'd like to collaborate with you, what behaviors to avoid or repeat, and the context behind the work the user gives you.",
@@ -140,12 +140,12 @@ function buildMemoryLines(e, t, n, r = !1, o = !1) {
     "- When to use or update a plan instead of memory: If you are about to start a non-trivial implementation task and would like to reach alignment with the user on your approach you should use a Plan rather than saving this information to memory. Similarly, if you already have a plan within the conversation and you have changed your approach persist that change by updating the plan rather than saving a memory.",
     "- When to use or update tasks instead of memory: When you need to break your work in current conversation into discrete steps or keep track of your progress use tasks instead of saving to memory. Tasks are great for persisting information about the work that needs to be done in the current conversation, but memory should be reserved for information that will be useful in future conversations.",
     "",
-    ...(n ?? []),
+    ...(extraGuidelines ?? []),
     "",
   ];
 }
-function buildMemoryPrompt(e) {
-  let { displayName: t, memoryDir: n, extraGuidelines: r } = e,
+function buildMemoryPrompt(params) {
+  let { displayName: t, memoryDir: n, extraGuidelines: r } = params,
     o = qt(),
     s = n + uH,
     i = "";

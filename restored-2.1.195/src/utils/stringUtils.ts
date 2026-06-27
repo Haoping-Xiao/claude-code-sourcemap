@@ -121,9 +121,9 @@ function jK(e) {
 function nae(e) {
   return e.replaceAll("\u3000", " ");
 }
-function safeJoinLines(e, t = ",", n = uis) {
+function safeJoinLines(lines, t = ",", n = uis) {
   let o = "";
-  for (let s of e) {
+  for (let s of lines) {
     let i = o ? t : "",
       a = i + s;
     if (o.length + a.length <= n) o += a;

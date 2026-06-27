@@ -29,8 +29,8 @@ jYf = {
   NotebookEditTool: "Editing notebook",
   LSP: "LSP",
 };
-function decodeWorkSecret(e) {
-  let t = Buffer.from(e, "base64url").toString("utf-8"),
+function decodeWorkSecret(secret) {
+  let t = Buffer.from(secret, "base64url").toString("utf-8"),
     n = Ft(t);
   if (!n || typeof n !== "object" || !("version" in n) || n.version !== 1)
     throw Error(
@@ -42,12 +42,12 @@ function decodeWorkSecret(e) {
   if (typeof r.api_base_url !== "string") throw Error("Invalid work secret: missing api_base_url");
   return n;
 }
-function buildSdkUrl(e, t) {
-  let n = e.includes("localhost") || e.includes("127.0.0.1"),
+function buildSdkUrl(apiBaseUrl, sessionId) {
+  let n = apiBaseUrl.includes("localhost") || apiBaseUrl.includes("127.0.0.1"),
     r = n ? "ws" : "wss",
     o = n ? "v2" : "v1",
-    s = e.replace(/^https?:\/\//, "").replace(/\/+$/, "");
-  return `${r}://${s}/${o}/session_ingress/ws/${t}`;
+    s = apiBaseUrl.replace(/^https?:\/\//, "").replace(/\/+$/, "");
+  return `${r}://${s}/${o}/session_ingress/ws/${sessionId}`;
 }
 function iGo(e, t) {
   if (e === t) return true;
@@ -55,16 +55,16 @@ function iGo(e, t) {
     r = t.slice(t.lastIndexOf("_") + 1);
   return n.length >= 4 && n === r;
 }
-function buildCCRv2SdkUrl(e, t) {
-  return `${e.replace(/\/+$/, "")}/v1/code/sessions/${t}`;
+function buildCCRv2SdkUrl(apiBaseUrl, sessionId) {
+  return `${apiBaseUrl.replace(/\/+$/, "")}/v1/code/sessions/${sessionId}`;
 }
-async function registerWorker(e, t) {
+async function registerWorker(sessionUrl, accessToken) {
   let n = await po.post(
-      `${e}/worker/register`,
+      `${sessionUrl}/worker/register`,
       {},
       {
         headers: {
-          Authorization: `Bearer ${t}`,
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
           "anthropic-version": "2023-06-01",
         },

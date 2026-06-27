@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VCo] deps: AN, Ye, YI, E8e, R6, WCo, Bzn
 ((qCo = R(lt(), 1)), (AP = R(se(), 1)));
-function UserImageMessage(e) {
+function UserImageMessage(t0) {
   let t = hil.c(12),
-    { imageId: n, addMargin: r } = e,
+    { imageId: n, addMargin: r } = t0,
     o = dT((f) => (n !== void 0 ? (f.storedImagePaths.get(n) ?? null) : null)) ?? null,
     s = dT((f) => (n !== void 0 ? (f.imageDescriptions.get(n) ?? null) : null)) ?? null,
     i = n ? `[Image #${n}]` : "[Image]",

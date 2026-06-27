@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n4l] deps: si, Ye, je, At, vrr, sr
 ((Zjl = R(lt(), 1)), (e4l = R(rt(), 1)), (EUo = R(se(), 1)));
-function MarketplaceList(e) {
+function MarketplaceList(t0) {
   let t = AXt.c(4),
-    { onComplete: n } = e,
+    { onComplete: n } = t0,
     r,
     o;
   if (t[0] !== n)
@@ -137,7 +137,7 @@ function WBf() {
   else t = e[0];
   return t;
 }
-function getExtraMarketplaceSourceInfo(e) {
+function getExtraMarketplaceSourceInfo(name) {
   let t = [],
     n = [
       {
@@ -154,48 +154,48 @@ function getExtraMarketplaceSourceInfo(e) {
       },
     ];
   for (let { source: s, scope: i } of n)
-    if (yn(s)?.extraKnownMarketplaces?.[e])
+    if (yn(s)?.extraKnownMarketplaces?.[name])
       t.push({
         source: s,
         scope: i,
       });
   let r = yn("policySettings"),
-    o = Boolean(r?.extraKnownMarketplaces?.[e]);
+    o = Boolean(r?.extraKnownMarketplaces?.[name]);
   return {
     editableSources: t,
     isInPolicy: o,
   };
 }
-function buildMarketplaceAction(e) {
-  let { editableSources: t, isInPolicy: n } = getExtraMarketplaceSourceInfo(e);
+function buildMarketplaceAction(name) {
+  let { editableSources: t, isInPolicy: n } = getExtraMarketplaceSourceInfo(name);
   if (t.length > 0)
     return {
       kind: "remove-extra-marketplace",
-      name: e,
+      name: name,
       sources: t,
     };
   if (n)
     return {
       kind: "managed-only",
-      name: e,
+      name: name,
     };
   return {
     kind: "navigate",
     tab: "marketplaces",
     viewState: {
       type: "manage-marketplaces",
-      targetMarketplace: e,
+      targetMarketplace: name,
       action: "remove",
     },
   };
 }
-function buildPluginAction(e) {
+function buildPluginAction(pluginName) {
   return {
     kind: "navigate",
     tab: "installed",
     viewState: {
       type: "manage-plugins",
-      targetPlugin: e,
+      targetPlugin: pluginName,
       action: "uninstall",
     },
   };
@@ -206,15 +206,24 @@ function Irr(e) {
   if (e.type === "marketplace-not-found") return true;
   return false;
 }
-function getPluginNameFromError(e) {
-  if ("pluginId" in e && e.pluginId) return e.pluginId;
-  if ("plugin" in e && e.plugin) return e.plugin;
-  if (e.source.includes("@")) return bi(e.source, "@");
+function getPluginNameFromError(error) {
+  if ("pluginId" in error && error.pluginId) return error.pluginId;
+  if ("plugin" in error && error.plugin) return error.plugin;
+  if (error.source.includes("@")) return bi(error.source, "@");
   return;
 }
-function buildErrorRows(e, t, n, r, o, s, i, a) {
+function buildErrorRows(
+  failedMarketplaces,
+  extraMarketplaceErrors,
+  pluginLoadingErrors,
+  otherErrors,
+  brokenInstalledMarketplaces,
+  transientErrors,
+  pluginScopes,
+  a,
+) {
   let l = [];
-  for (let d of s) {
+  for (let d of transientErrors) {
     let p = "pluginId" in d ? d.pluginId : "plugin" in d ? d.plugin : void 0;
     l.push({
       label: p ?? d.source,
@@ -226,7 +235,7 @@ function buildErrorRows(e, t, n, r, o, s, i, a) {
     });
   }
   let c = new Set();
-  for (let d of e) {
+  for (let d of failedMarketplaces) {
     c.add(d.name);
     let p = buildMarketplaceAction(d.name),
       f = getExtraMarketplaceSourceInfo(d.name),
@@ -242,7 +251,7 @@ function buildErrorRows(e, t, n, r, o, s, i, a) {
       scope: m,
     });
   }
-  for (let d of t) {
+  for (let d of extraMarketplaceErrors) {
     let p = "marketplace" in d ? d.marketplace : d.source;
     if (c.has(p)) continue;
     c.add(p);
@@ -260,7 +269,7 @@ function buildErrorRows(e, t, n, r, o, s, i, a) {
       scope: g,
     });
   }
-  for (let d of o) {
+  for (let d of brokenInstalledMarketplaces) {
     if (c.has(d.name)) continue;
     (c.add(d.name),
       l.push({
@@ -273,7 +282,7 @@ function buildErrorRows(e, t, n, r, o, s, i, a) {
       }));
   }
   let u = new Set();
-  for (let d of n) {
+  for (let d of pluginLoadingErrors) {
     let p = getPluginNameFromError(d);
     if (p && u.has(p)) continue;
     if (p) u.add(p);
@@ -291,7 +300,7 @@ function buildErrorRows(e, t, n, r, o, s, i, a) {
       scope: m,
     });
   }
-  for (let d of r)
+  for (let d of otherErrors)
     l.push({
       label: d.source,
       message: a1e(d),
@@ -300,7 +309,7 @@ function buildErrorRows(e, t, n, r, o, s, i, a) {
         kind: "none",
       },
     });
-  for (let d of i) {
+  for (let d of pluginScopes) {
     let p = "plugin" in d ? d.plugin : d.source;
     if (u.has(p)) continue;
     u.add(p);
@@ -340,9 +349,9 @@ function KBf(e, t) {
     if (Object.keys(o).length > 0) io(n, o);
   }
 }
-function ErrorsTabContent(e) {
+function ErrorsTabContent(t0) {
   let t = AXt.c(26),
-    { setViewState: n, setActiveTab: r, markPluginsChanged: o } = e,
+    { setViewState: n, setActiveTab: r, markPluginsChanged: o } = t0,
     s = Ht(oUf),
     i = Ht(rUf),
     a = Ht(nUf),
@@ -692,8 +701,8 @@ function rUf(e) {
 function oUf(e) {
   return e.plugins.errors;
 }
-function getInitialViewState(e) {
-  switch (e.type) {
+function getInitialViewState(parsedCommand) {
+  switch (parsedCommand.type) {
     case "help":
       return {
         type: "help",
@@ -701,33 +710,33 @@ function getInitialViewState(e) {
     case "validate":
       return {
         type: "validate",
-        path: e.path,
+        path: parsedCommand.path,
       };
     case "eval":
       return {
         type: "eval",
-        target: e.target,
+        target: parsedCommand.target,
       };
     case "tag":
       return {
         type: "tag",
-        path: e.path,
-        push: e.push,
-        dryRun: e.dryRun,
-        force: e.force,
-        unknownFlag: e.unknownFlag,
+        path: parsedCommand.path,
+        push: parsedCommand.push,
+        dryRun: parsedCommand.dryRun,
+        force: parsedCommand.force,
+        unknownFlag: parsedCommand.unknownFlag,
       };
     case "install":
-      if (e.marketplace)
+      if (parsedCommand.marketplace)
         return {
           type: "browse-marketplace",
-          targetMarketplace: e.marketplace,
-          targetPlugin: e.plugin,
+          targetMarketplace: parsedCommand.marketplace,
+          targetPlugin: parsedCommand.plugin,
         };
-      if (e.plugin)
+      if (parsedCommand.plugin)
         return {
           type: "discover-plugins",
-          targetPlugin: e.plugin,
+          targetPlugin: parsedCommand.plugin,
         };
       return {
         type: "discover-plugins",
@@ -739,52 +748,52 @@ function getInitialViewState(e) {
     case "uninstall":
       return {
         type: "manage-plugins",
-        targetPlugin: e.plugin,
+        targetPlugin: parsedCommand.plugin,
         action: "uninstall",
       };
     case "enable":
       return {
         type: "manage-plugins",
-        targetPlugin: e.plugin,
+        targetPlugin: parsedCommand.plugin,
         action: "enable",
       };
     case "disable":
       return {
         type: "manage-plugins",
-        targetPlugin: e.plugin,
+        targetPlugin: parsedCommand.plugin,
         action: "disable",
       };
     case "configure":
       return {
         type: "manage-plugins",
-        targetPlugin: e.plugin,
+        targetPlugin: parsedCommand.plugin,
         action: "configure",
       };
     case "list":
       return {
         type: "plugin-list",
-        filter: e.filter,
+        filter: parsedCommand.filter,
       };
     case "marketplace":
-      if (e.action === "list")
+      if (parsedCommand.action === "list")
         return {
           type: "marketplace-list",
         };
-      if (e.action === "add")
+      if (parsedCommand.action === "add")
         return {
           type: "add-marketplace",
-          initialValue: e.target,
+          initialValue: parsedCommand.target,
         };
-      if (e.action === "remove")
+      if (parsedCommand.action === "remove")
         return {
           type: "manage-marketplaces",
-          targetMarketplace: e.target,
+          targetMarketplace: parsedCommand.target,
           action: "remove",
         };
-      if (e.action === "update")
+      if (parsedCommand.action === "update")
         return {
           type: "manage-marketplaces",
-          targetMarketplace: e.target,
+          targetMarketplace: parsedCommand.target,
           action: "update",
         };
       return {
@@ -797,9 +806,9 @@ function getInitialViewState(e) {
       };
   }
 }
-function getInitialTab(e) {
-  if (e.type === "manage-plugins") return "installed";
-  if (e.type === "manage-marketplaces") return "marketplaces";
+function getInitialTab(viewState) {
+  if (viewState.type === "manage-plugins") return "installed";
+  if (viewState.type === "manage-marketplaces") return "marketplaces";
   return "discover";
 }
 function PluginSettings({

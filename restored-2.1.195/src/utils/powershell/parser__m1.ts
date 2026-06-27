@@ -32,25 +32,25 @@ function RDe(e, t, n) {
 function $re(e) {
   return e.replace(/[\u2013\u2014\u2015]/g, "-");
 }
-function toUtf16LeBase64(e) {
-  if (typeof Buffer !== "undefined") return Buffer.from(e, "utf16le").toString("base64");
+function toUtf16LeBase64(text) {
+  if (typeof Buffer !== "undefined") return Buffer.from(text, "utf16le").toString("base64");
   let t = [];
-  for (let n = 0; n < e.length; n++) {
-    let r = e.charCodeAt(n);
+  for (let n = 0; n < text.length; n++) {
+    let r = text.charCodeAt(n);
     t.push(r & 255, (r >> 8) & 255);
   }
   return btoa(t.map((n) => String.fromCharCode(n)).join(""));
 }
-function buildParseScript(e) {
-  return `$EncodedCommand = '${typeof Buffer !== "undefined" ? Buffer.from(e, "utf8").toString("base64") : btoa(new TextEncoder().encode(e).reduce((n, r) => n + String.fromCharCode(r), ""))}'
+function buildParseScript(command) {
+  return `$EncodedCommand = '${typeof Buffer !== "undefined" ? Buffer.from(command, "utf8").toString("base64") : btoa(new TextEncoder().encode(command).reduce((n, r) => n + String.fromCharCode(r), ""))}'
 ${EPa}`;
 }
 function p6(e) {
   if (e === void 0 || e === null) return [];
   return Array.isArray(e) ? e : [e];
 }
-function mapStatementType(e) {
-  switch (e) {
+function mapStatementType(rawType) {
+  switch (rawType) {
     case "PipelineAst":
       return "PipelineAst";
     case "PipelineChainAst":
@@ -83,8 +83,8 @@ function mapStatementType(e) {
       return "UnknownStatementAst";
   }
 }
-function mapElementType(e, t) {
-  switch (e) {
+function mapElementType(rawType, expressionType) {
+  switch (rawType) {
     case "ScriptBlockExpressionAst":
       return "ScriptBlock";
     case "SubExpressionAst":
@@ -105,15 +105,15 @@ function mapElementType(e, t) {
     case "ParenExpressionAst":
       return "SubExpression";
     case "CommandExpressionAst":
-      if (t) return mapElementType(t);
+      if (expressionType) return mapElementType(expressionType);
       return "Other";
     default:
       return "Other";
   }
 }
-function classifyCommandName(e) {
-  if (/^[A-Za-z]+-[A-Za-z][A-Za-z0-9_]*$/.test(e)) return "cmdlet";
-  if (/[.\\/]/.test(e)) return "application";
+function classifyCommandName(name) {
+  if (/^[A-Za-z]+-[A-Za-z][A-Za-z0-9_]*$/.test(name)) return "cmdlet";
+  if (/[.\\/]/.test(name)) return "application";
   return "unknown";
 }
 function j2n(e) {
@@ -125,8 +125,8 @@ function j2n(e) {
   if (n === "") return e;
   return n;
 }
-function transformCommandAst(e) {
-  let t = p6(e.commandElements),
+function transformCommandAst(raw) {
+  let t = p6(raw.commandElements),
     n = "",
     r = [],
     o = [],
@@ -166,37 +166,37 @@ function transformCommandAst(e) {
       nameType: a,
       elementType: "CommandAst",
       args: r,
-      text: $re(e.text),
+      text: $re(raw.text),
       elementTypes: o,
       ...(i && {
         children: s,
       }),
     },
-    c = p6(e.redirections);
+    c = p6(raw.redirections);
   if (c.length > 0) l.redirections = c.map(transformRedirection);
   return l;
 }
-function transformExpressionElement(e) {
-  let t = e.type === "ParenExpressionAst" ? "ParenExpressionAst" : "CommandExpressionAst",
-    n = [mapElementType(e.type, e.expressionType)];
+function transformExpressionElement(raw) {
+  let t = raw.type === "ParenExpressionAst" ? "ParenExpressionAst" : "CommandExpressionAst",
+    n = [mapElementType(raw.type, raw.expressionType)];
   return {
-    name: $re(e.text),
+    name: $re(raw.text),
     nameType: "unknown",
     elementType: t,
     args: [],
-    text: $re(e.text),
+    text: $re(raw.text),
     elementTypes: n,
   };
 }
-function transformRedirection(e) {
-  if (e.type === "MergingRedirectionAst")
+function transformRedirection(raw) {
+  if (raw.type === "MergingRedirectionAst")
     return {
       operator: "2>&1",
       target: "",
       isMerging: true,
     };
-  let t = e.append ?? false,
-    n = e.fromStream ?? "Output",
+  let t = raw.append ?? false,
+    n = raw.fromStream ?? "Output",
     r;
   if (t)
     switch (n) {
@@ -224,16 +224,16 @@ function transformRedirection(e) {
     }
   return {
     operator: r,
-    target: e.locationText ?? "",
+    target: raw.locationText ?? "",
     isMerging: false,
   };
 }
-function transformStatement(e) {
-  let t = mapStatementType(e.type),
+function transformStatement(raw) {
+  let t = mapStatementType(raw.type),
     n = [],
     r = [];
-  if (e.elements) {
-    for (let l of p6(e.elements))
+  if (raw.elements) {
+    for (let l of p6(raw.elements))
       if (l.type === "CommandAst") {
         n.push(transformCommandAst(l));
         for (let c of p6(l.redirections)) r.push(transformRedirection(c));
@@ -242,32 +242,32 @@ function transformStatement(e) {
         for (let c of p6(l.redirections)) r.push(transformRedirection(c));
       }
     let a = new Set(r.map((l) => `${l.operator}\x00${l.target}`));
-    for (let l of p6(e.redirections)) {
+    for (let l of p6(raw.redirections)) {
       let c = transformRedirection(l),
         u = `${c.operator}\x00${c.target}`;
       if (!a.has(u)) (a.add(u), r.push(c));
     }
   } else {
     n.push({
-      name: $re(e.text),
+      name: $re(raw.text),
       nameType: "unknown",
       elementType: "CommandExpressionAst",
       args: [],
-      text: $re(e.text),
+      text: $re(raw.text),
     });
-    for (let a of p6(e.redirections)) r.push(transformRedirection(a));
+    for (let a of p6(raw.redirections)) r.push(transformRedirection(a));
   }
   let o,
-    s = p6(e.nestedCommands);
+    s = p6(raw.nestedCommands);
   if (s.length > 0) o = s.map(transformCommandAst);
   let i = {
     statementType: t,
     commands: n,
     redirections: r,
-    text: $re(e.text),
+    text: $re(raw.text),
     nestedCommands: o,
   };
-  if (e.securityPatterns) i.securityPatterns = e.securityPatterns;
+  if (raw.securityPatterns) i.securityPatterns = raw.securityPatterns;
   return i;
 }
 function y0p(e) {
@@ -286,26 +286,26 @@ function y0p(e) {
   if (e.hasBackgroundJob) t.hasBackgroundJob = true;
   return t;
 }
-async function parsePowerShellCommandImpl(e) {
-  let t = Buffer.byteLength(e, "utf8");
+async function parsePowerShellCommandImpl(command) {
+  let t = Buffer.byteLength(command, "utf8");
   if (t > wmo)
     return (
       T(`PowerShell parser: command too long (${t} bytes, max ${wmo})`),
       RDe(
-        e,
+        command,
         `Command too long for parsing (${t} bytes). Maximum supported length is ${wmo} bytes.`,
         "CommandTooLong",
       )
     );
-  if (/`u\{[0-9A-Fa-f]/.test(e))
+  if (/`u\{[0-9A-Fa-f]/.test(command))
     return RDe(
-      e,
+      command,
       "PowerShell `u{HEX} codepoint escape is runtime-resolved and cannot be statically validated.",
       "UnicodeCodepointEscape",
     );
   let n = await d6();
-  if (!n) return RDe(e, "PowerShell is not available", "NoPowerShell");
-  let r = buildParseScript(e),
+  if (!n) return RDe(command, "PowerShell is not available", "NoPowerShell");
+  let r = buildParseScript(command),
     s = ["-NoProfile", "-NonInteractive", "-NoLogo", "-EncodedCommand", toUtf16LeBase64(r)],
     i = e0p(),
     a = r0p(i),
@@ -341,18 +341,18 @@ async function parsePowerShellCommandImpl(e) {
       `PowerShell parser: ${p ? `failed to spawn pwsh: ${p}` : d ? `pwsh timed out after ${i}ms` : `pwsh exited ${u}: ${c}`} (attempt ${m + 1})`,
     );
   }
-  if (p) return RDe(e, `Failed to spawn PowerShell: ${p}`, "PwshSpawnError");
-  if (d) return RDe(e, `pwsh timed out after ${i}ms (2 attempts)`, "PwshTimeout");
+  if (p) return RDe(command, `Failed to spawn PowerShell: ${p}`, "PwshSpawnError");
+  if (d) return RDe(command, `pwsh timed out after ${i}ms (2 attempts)`, "PwshTimeout");
   if (u !== 0)
     return (
       T(`PowerShell parser: pwsh exited with code ${u}, stderr: ${c}`),
-      RDe(e, `pwsh exited with code ${u}: ${c}`, "PwshError")
+      RDe(command, `pwsh exited with code ${u}: ${c}`, "PwshError")
     );
   let f = l.trim();
   if (!f)
     return (
       T("PowerShell parser: empty stdout from pwsh"),
-      RDe(e, "No output from PowerShell parser", "EmptyOutput")
+      RDe(command, "No output from PowerShell parser", "EmptyOutput")
     );
   try {
     let m = Ft(f);
@@ -360,7 +360,7 @@ async function parsePowerShellCommandImpl(e) {
   } catch {
     return (
       T(`PowerShell parser: invalid JSON output: ${f.slice(0, 200)}`),
-      RDe(e, "Invalid JSON from PowerShell parser", "InvalidJson")
+      RDe(command, "Invalid JSON from PowerShell parser", "InvalidJson")
     );
   }
 }
@@ -432,7 +432,7 @@ function Opt(e) {
 function NGt(e) {
   return S0p(e).filter((t) => !t.isMerging && !Opt(t.target));
 }
-function deriveSecurityFlags(e) {
+function deriveSecurityFlags(parsed) {
   let t = {
     hasSubExpressions: false,
     hasScriptBlocks: false,
@@ -440,7 +440,7 @@ function deriveSecurityFlags(e) {
     hasExpandableStrings: false,
     hasMemberInvocations: false,
     hasAssignments: false,
-    hasStopParsing: e.hasStopParsing,
+    hasStopParsing: parsed.hasStopParsing,
   };
   function n(r) {
     if (!r.elementTypes) return;
@@ -460,7 +460,7 @@ function deriveSecurityFlags(e) {
           break;
       }
   }
-  for (let r of e.statements) {
+  for (let r of parsed.statements) {
     if (r.statementType === "AssignmentStatementAst") t.hasAssignments = true;
     for (let o of r.commands) n(o);
     if (r.nestedCommands) for (let o of r.nestedCommands) n(o);
@@ -471,7 +471,7 @@ function deriveSecurityFlags(e) {
       if (r.securityPatterns.hasScriptBlocks) t.hasScriptBlocks = true;
     }
   }
-  for (let r of e.variables)
+  for (let r of parsed.variables)
     if (r.isSplatted) {
       t.hasSplatting = true;
       break;

@@ -22,9 +22,9 @@
     minute: "2-digit",
   }),
   (rIo = new Map()));
-function HighlightedThinkingText(e) {
+function HighlightedThinkingText(t0) {
   let t = Xzn.c(28),
-    { text: n, useBriefLayout: r, timestamp: o } = e,
+    { text: n, useBriefLayout: r, timestamp: o } = t0,
     s = Wil(),
     i = s?.isQueued ?? false,
     a = typeof n === "object";

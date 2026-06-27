@@ -34,14 +34,14 @@ function Def(e) {
     relativePattern: i,
   };
 }
-async function glob(e, t, { limit: n, offset: r }, o, s) {
-  let i = t,
-    a = e;
-  if (QJ.isAbsolute(e)) {
-    let { baseDir: b, relativePattern: _ } = Def(e);
+async function glob(filePattern, cwd, { limit: n, offset: r }, abortSignal, toolPermissionContext) {
+  let i = cwd,
+    a = filePattern;
+  if (QJ.isAbsolute(filePattern)) {
+    let { baseDir: b, relativePattern: _ } = Def(filePattern);
     if (b) ((i = b), (a = _));
   }
-  let l = w8e(C8e(s), i),
+  let l = w8e(C8e(toolPermissionContext), i),
     c = ut(process.env.CLAUDE_CODE_GLOB_NO_IGNORE || "true"),
     u = ut(process.env.CLAUDE_CODE_GLOB_HIDDEN || "true"),
     d = [
@@ -57,7 +57,7 @@ async function glob(e, t, { limit: n, offset: r }, o, s) {
   let p = null,
     f,
     m = false;
-  f = await Aue(d, i, o);
+  f = await Aue(d, i, abortSignal);
   let g = f.map((b) => (QJ.isAbsolute(b) ? b : QJ.join(i, b))),
     h = m || g.length > r + n;
   return {

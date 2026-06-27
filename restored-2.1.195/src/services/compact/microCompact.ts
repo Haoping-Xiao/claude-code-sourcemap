@@ -51,18 +51,18 @@ hcp = new Set([
   "content",
   "cache_control",
 ]);
-function calculateToolResultTokens(e) {
-  if (!e.content) return 0;
-  if (typeof e.content === "string") return If(e.content);
-  return e.content.reduce((t, n) => {
+function calculateToolResultTokens(block) {
+  if (!block.content) return 0;
+  if (typeof block.content === "string") return If(block.content);
+  return block.content.reduce((t, n) => {
     if (n.type === "text") return t + If(n.text);
     else if (n.type === "image" || n.type === "document") return t + Acp;
     return t;
   }, 0);
 }
-function estimateMessageTokens(e) {
+function estimateMessageTokens(messages) {
   let t = [];
-  for (let n of e)
+  for (let n of messages)
     if (n.type === "assistant" && Array.isArray(n.message.content)) {
       for (let r of n.message.content) if (r.type === "tool_use" && Hcp.has(r.name)) t.push(r.id);
     }
@@ -136,8 +136,8 @@ function Ujt(e, t, n) {
       : r;
   });
 }
-async function maybeTimeBasedMicrocompact(e, t, n) {
-  let { keepSet: r, tokensSaved: o, candidates: s } = hao(e, n.keepRecent);
+async function maybeTimeBasedMicrocompact(messages, querySource, n) {
+  let { keepSet: r, tokensSaved: o, candidates: s } = hao(messages, n.keepRecent);
   if (o < gao) return null;
   let i = new Set(s.map((c) => c.tool_use_id)),
     a = new Map();
@@ -145,7 +145,7 @@ async function maybeTimeBasedMicrocompact(e, t, n) {
     let u = c.content ? await n.persist?.(c.content, c.tool_use_id) : null;
     a.set(c.tool_use_id, u ?? TIME_BASED_MC_CLEARED_MESSAGE);
   }
-  let l = Ujt(e, i, a);
+  let l = Ujt(messages, i, a);
   if (
     (G("tengu_time_based_microcompact", {
       toolsCleared: i.size,
@@ -159,9 +159,9 @@ async function maybeTimeBasedMicrocompact(e, t, n) {
       `[KEEP-RECENT MC] context_hint trigger, cleared ${i.size} tool results (~${o} tokens), kept last ${r.size}`,
     ),
     gut(),
-    WX() && t)
+    WX() && querySource)
   )
-    aca(t);
+    aca(querySource);
   return {
     messages: l,
     tokensSaved: o,

@@ -15,26 +15,26 @@
   "message_rated",
 ])),
   (JRm = new Set(["can_use_tool", "request_user_dialog", "elicitation"])));
-function permissionPromptToolResultToPermissionDecision(e, t, n, r) {
+function permissionPromptToolResultToPermissionDecision(result, tool, input, toolUseContext) {
   let o = {
     type: "permissionPromptTool",
-    permissionPromptToolName: t.name,
-    toolResult: e,
+    permissionPromptToolName: tool.name,
+    toolResult: result,
   };
-  if (e.behavior === "allow") {
-    let s = e.updatedPermissions;
-    if (s) (r.setToolPermissionContext((a) => T4(a, s)), Y8(s));
-    let i = Object.keys(e.updatedInput).length > 0 ? e.updatedInput : n;
+  if (result.behavior === "allow") {
+    let s = result.updatedPermissions;
+    if (s) (toolUseContext.setToolPermissionContext((a) => T4(a, s)), Y8(s));
+    let i = Object.keys(result.updatedInput).length > 0 ? result.updatedInput : input;
     return {
-      ...e,
+      ...result,
       updatedInput: i,
       decisionReason: o,
     };
-  } else if (e.behavior === "deny" && e.interrupt)
-    (T(`SDK permission prompt deny+interrupt: tool=${t.name} message=${e.message}`),
-      r.abortController.abort());
+  } else if (result.behavior === "deny" && result.interrupt)
+    (T(`SDK permission prompt deny+interrupt: tool=${tool.name} message=${result.message}`),
+      toolUseContext.abortController.abort());
   return {
-    ...e,
+    ...result,
     decisionReason: o,
     decideLocation: "ask-path",
   };

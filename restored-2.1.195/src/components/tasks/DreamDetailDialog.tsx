@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module b8l] deps: Ye, es, i6e, sr, Xa, ljo, h8l, YHe
 ((y8l = R(lt(), 1)), (jT = R(se(), 1)));
-function DreamDetailDialog(e) {
+function DreamDetailDialog(t0) {
   let t = S8l.c(75),
-    { task: n, onDone: r, onBack: o, onKill: s } = e,
+    { task: n, onDone: r, onBack: o, onKill: s } = t0,
     i = sQ(n.startTime, n.status === "running", 1000, 0, n.endTime),
     a;
   if (t[0] !== r)

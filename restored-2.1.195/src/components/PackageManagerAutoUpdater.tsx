@@ -40,9 +40,9 @@ function cdm(e, t) {
       return "your package manager update command";
   }
 }
-function PackageManagerAutoUpdater(e) {
+function PackageManagerAutoUpdater(t0) {
   let t = dhc.c(37),
-    { isUpdating: n, onChangeIsUpdating: r, showSuccessMessage: o, verbose: s } = e,
+    { isUpdating: n, onChangeIsUpdating: r, showSuccessMessage: o, verbose: s } = t0,
     i = Ht(ddm),
     a = Ho(),
     [l, c] = IZ.useState(Vur),

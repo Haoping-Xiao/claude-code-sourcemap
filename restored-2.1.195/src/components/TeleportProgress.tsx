@@ -5,9 +5,9 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: teleportWithProgress, TeleportProgress
-function TeleportProgress(e) {
+function TeleportProgress(t0) {
   let t = WFc.c(16),
-    { currentStep: n, sessionId: r } = e,
+    { currentStep: n, sessionId: r } = t0,
     [o, s] = Kf(100),
     i = Math.floor(s / 100) % kXo.length,
     a;

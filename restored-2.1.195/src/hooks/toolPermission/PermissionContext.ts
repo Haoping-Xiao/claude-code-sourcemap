@@ -61,17 +61,25 @@ function RYn(e) {
     },
   };
 }
-function createPermissionContext(e, t, n, r, o, s, i) {
-  let a = r.message.id,
-    l = Fr(n).mode;
+function createPermissionContext(
+  tool,
+  input,
+  toolUseContext,
+  assistantMessage,
+  toolUseID,
+  setToolPermissionContext,
+  queueOps,
+) {
+  let a = assistantMessage.message.id,
+    l = Fr(toolUseContext).mode;
   function c(d, p) {
     O$a(
       {
-        tool: e,
-        input: p?.input ?? t,
-        toolUseContext: n,
+        tool: tool,
+        input: p?.input ?? input,
+        toolUseContext: toolUseContext,
         messageId: a,
-        toolUseID: o,
+        toolUseID: toolUseID,
         permissionMode: l,
       },
       d,
@@ -79,34 +87,38 @@ function createPermissionContext(e, t, n, r, o, s, i) {
     );
   }
   let u = {
-    tool: e,
-    input: t,
-    toolUseContext: n,
-    assistantMessage: r,
+    tool: tool,
+    input: input,
+    toolUseContext: toolUseContext,
+    assistantMessage: assistantMessage,
     messageId: a,
-    toolUseID: o,
-    setClassifierApprovals: i,
+    toolUseID: toolUseID,
+    setClassifierApprovals: queueOps,
     permissionMode: l,
     logDecision: c,
     logCancelled() {
       G("tengu_tool_use_cancelled", {
         messageID: Hr(a),
-        toolName: Ui(e.name),
+        toolName: Ui(tool.name),
       });
     },
     persistPermissions(d) {
       if (d.length === 0) return false;
-      return (Y8(d), s(T4(Fr(n), d)), d.some((p) => Pao(p.destination)));
+      return (
+        Y8(d),
+        setToolPermissionContext(T4(Fr(toolUseContext), d)),
+        d.some((p) => Pao(p.destination))
+      );
     },
     setModeFromBridge(d) {
-      return Zpe(d, Fr(n), n.setToolPermissionContext);
+      return Zpe(d, Fr(toolUseContext), toolUseContext.setToolPermissionContext);
     },
     resolveIfAborted(d) {
-      if (!n.abortController.signal.aborted) return false;
+      if (!toolUseContext.abortController.signal.aborted) return false;
       return (this.logCancelled(), d(this.cancelAndAbort(void 0, true)), true);
     },
     cancelAndAbort(d, p, f) {
-      let m = !!n.agentId,
+      let m = !!toolUseContext.agentId,
         g = d ? `${m ? DYn : o_t}${d}` : m ? AQ : d6e,
         h = m ? g : d$e(g);
       if (
@@ -117,8 +129,8 @@ function createPermissionContext(e, t, n, r, o, s, i) {
           isSubagent: m,
         })
       )
-        (T(`Aborting: tool=${e.name} isAbort=${p} hasFeedback=${!!d} isSubagent=${m}`),
-          n.abortController.abort());
+        (T(`Aborting: tool=${tool.name} isAbort=${p} hasFeedback=${!!d} isSubagent=${m}`),
+          toolUseContext.abortController.abort());
       return {
         behavior: "ask",
         message: h,
@@ -127,18 +139,26 @@ function createPermissionContext(e, t, n, r, o, s, i) {
     },
     ...{},
     async runHooks(d, p, f, m) {
-      for await (let g of jAe(e.name, o, t, n, d, p, n.abortController.signal))
+      for await (let g of jAe(
+        tool.name,
+        toolUseID,
+        input,
+        toolUseContext,
+        d,
+        p,
+        toolUseContext.abortController.signal,
+      ))
         if (g.permissionRequestResult) {
           let h = g.permissionRequestResult;
           if (h.behavior === "allow") {
-            let y = h.updatedInput ?? f ?? t;
+            let y = h.updatedInput ?? f ?? input;
             if (h.updatedInput) {
               let b = F_t(
-                await u$e(e, y, {
-                  ...n,
-                  toolUseId: o,
+                await u$e(tool, y, {
+                  ...toolUseContext,
+                  toolUseId: toolUseID,
                 }),
-                e.name,
+                tool.name,
               );
               if (b?.behavior === "deny")
                 return (
@@ -179,8 +199,8 @@ function createPermissionContext(e, t, n, r, o, s, i) {
               ),
               h.interrupt)
             )
-              (T(`Hook interrupt: tool=${e.name} hookMessage=${h.message}`),
-                n.abortController.abort());
+              (T(`Hook interrupt: tool=${tool.name} hookMessage=${h.message}`),
+                toolUseContext.abortController.abort());
             return this.buildDeny(h.message || "Permission denied by hook", {
               type: "hook",
               hookName: "PermissionRequest",
@@ -231,7 +251,7 @@ function createPermissionContext(e, t, n, r, o, s, i) {
             permissionPromptStartTimeMs: m,
           },
         ));
-      let b = e.inputsEquivalent ? !e.inputsEquivalent(t, d) : false,
+      let b = tool.inputsEquivalent ? !tool.inputsEquivalent(input, d) : false,
         _ = f?.trim();
       return this.buildAllow(d, {
         userModified: b,

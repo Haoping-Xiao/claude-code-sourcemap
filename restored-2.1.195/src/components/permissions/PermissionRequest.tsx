@@ -145,9 +145,9 @@ function lKo(e) {
   else b = t[13];
   return b;
 }
-function PermissionRequest(e) {
+function PermissionRequest(t0) {
   let t = mtn.c(4),
-    { dialogId: n, message: r } = e;
+    { dialogId: n, message: r } = t0;
   ben(r, "permission_prompt");
   let o = Dyt(),
     s,

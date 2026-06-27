@@ -73,26 +73,26 @@ function Enr(e) {
   else i = t[7];
   return i;
 }
-function _temp3(e, t) {
+function _temp3(pair, index) {
   return Mq.jsxs(
     U,
     {
       flexDirection: "column",
       marginBottom: 1,
       children: [
-        e.suggestion &&
+        pair.suggestion &&
           Mq.jsx(w, {
             dimColor: true,
             wrap: "wrap",
-            children: e.suggestion,
+            children: pair.suggestion,
           }),
-        e.docLink &&
+        pair.docLink &&
           Mq.jsx(qL, {
-            url: e.docLink,
+            url: pair.docLink,
           }),
       ],
     },
-    `suggestion-pair-${t}`,
+    `suggestion-pair-${index}`,
   );
 }
 function q$f(e, t) {
@@ -124,10 +124,10 @@ function V$f(e, t) {
   if (e.path && !t.path) return 1;
   return (e.path || "").localeCompare(t.path || "");
 }
-function _temp(e, t) {
-  let n = t.file || "(file not specified)";
-  if (!e[n]) e[n] = [];
-  return (e[n].push(t), e);
+function _temp(acc, error) {
+  let n = error.file || "(file not specified)";
+  if (!acc[n]) acc[n] = [];
+  return (acc[n].push(error), acc);
 }
 function K$f(e) {
   if (!e.path) return null;

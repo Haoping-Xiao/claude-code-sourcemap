@@ -62,9 +62,9 @@ async function DIf(e, t, n) {
     r.sort((s, i) => s.filePath.localeCompare(i.filePath))
   );
 }
-function transformPluginSkillFiles(e) {
+function transformPluginSkillFiles(files) {
   let t = new Map();
-  for (let r of e) {
+  for (let r of files) {
     let o = Bk.dirname(r.filePath),
       s = t.get(o) ?? [];
     (s.push(r), t.set(o, s));
@@ -102,25 +102,25 @@ async function K0l(
   return c;
 }
 function createPluginCommand(
-  e,
-  t,
-  n,
-  r,
-  o,
-  s,
+  commandName,
+  file,
+  sourceName,
+  pluginManifest,
+  pluginPath,
+  isSkill,
   i = {
     isSkillMode: !1,
   },
 ) {
   try {
-    let { frontmatter: a, content: l } = t,
-      c = AU(a.description, e),
-      u = c ?? ffe(l, s ? "Plugin skill" : "Plugin command"),
-      p = Bk.dirname(t.filePath),
+    let { frontmatter: a, content: l } = file,
+      c = AU(a.description, commandName),
+      u = c ?? ffe(l, isSkill ? "Plugin skill" : "Plugin command"),
+      p = Bk.dirname(file.filePath),
       f = (N) => {
         let B = vre(N, {
-          path: o,
-          source: n,
+          path: pluginPath,
+          source: sourceName,
         });
         if (i.isSkillMode) B = B.replace(/\$\{CLAUDE_SKILL_DIR\}/g, () => p);
         return B;
@@ -149,21 +149,21 @@ function createPluginCommand(
       k = I !== void 0 ? TU(I) : void 0;
     if (I !== void 0 && k === void 0)
       T(
-        `Plugin command ${e} has invalid effort '${I}'. Valid options: ${xv.join(", ")} or an integer`,
+        `Plugin command ${commandName} has invalid effort '${I}'. Valid options: ${xv.join(", ")} or an integer`,
       );
     let D = qst(a["disable-model-invocation"]),
       P = a["user-invocable"],
       O = P === void 0 ? !0 : qst(P),
-      L = Okn(a.shell, e),
+      L = Okn(a.shell, commandName),
       M;
-    if ((s || i.isSkillMode) && a.hooks) {
+    if ((isSkill || i.isSkillMode) && a.hooks) {
       let N = IG().safeParse(a.hooks);
       if (N.success) M = N.data;
-      else T(`Invalid hooks in plugin skill '${e}': ${N.error.message}`);
+      else T(`Invalid hooks in plugin skill '${commandName}': ${N.error.message}`);
     }
     return {
       type: "prompt",
-      name: e,
+      name: commandName,
       description: u,
       hasUserSpecifiedDescription: c !== null,
       allowedTools: h,
@@ -181,33 +181,33 @@ function createPluginCommand(
       declaredFields: $kn(a),
       contentLength: l.length,
       source: "plugin",
-      loadedFrom: s || i.isSkillMode ? "plugin" : void 0,
+      loadedFrom: isSkill || i.isSkillMode ? "plugin" : void 0,
       hooks: M,
-      skillRoot: (s || i.isSkillMode) && M ? o : void 0,
+      skillRoot: (isSkill || i.isSkillMode) && M ? pluginPath : void 0,
       pluginInfo: {
-        pluginManifest: r,
-        repository: n,
+        pluginManifest: pluginManifest,
+        repository: sourceName,
       },
       isHidden: !O,
-      progressMessage: s || i.isSkillMode ? "loading" : "running",
+      progressMessage: isSkill || i.isSkillMode ? "loading" : "running",
       userFacingName() {
-        return v || e;
+        return v || commandName;
       },
       async getPromptForCommand(N, B) {
         let $ = i.isSkillMode
-          ? `Base directory for this skill: ${Bk.dirname(t.filePath)}
+          ? `Base directory for this skill: ${Bk.dirname(file.filePath)}
 
 ${l}`
           : l;
         if (
           (($ = Rpt($, N, !0, _, c6)),
           ($ = vre($, {
-            path: o,
-            source: n,
+            path: pluginPath,
+            source: sourceName,
           })),
-          r.userConfig)
+          pluginManifest.userConfig)
         )
-          $ = HUn($, m$(n), r.userConfig, c6);
+          $ = HUn($, m$(sourceName), pluginManifest.userConfig, c6);
         if (i.isSkillMode) $ = $.replace(/\$\{CLAUDE_SKILL_DIR\}/g, p);
         if (
           (($ = $.replace(/\$\{CLAUDE_SESSION_ID\}/g, Rt())),
@@ -234,7 +234,7 @@ ${l}`
                 };
               },
             },
-            `/${e}`,
+            `/${commandName}`,
             L,
           );
         return [
@@ -247,7 +247,7 @@ ${l}`
     };
   } catch (a) {
     return (
-      T(`Failed to create command from ${t.filePath}: ${a}`, {
+      T(`Failed to create command from ${file.filePath}: ${a}`, {
         level: "error",
       }),
       null
@@ -257,10 +257,17 @@ ${l}`
 function KZn() {
   Vze.cache?.clear?.();
 }
-async function loadSkillsFromDirectory(e, t, n, r, o, s) {
+async function loadSkillsFromDirectory(
+  skillsPath,
+  pluginName,
+  sourceName,
+  pluginManifest,
+  pluginPath,
+  loadedPaths,
+) {
   let i = qt(),
     a = [],
-    l = Bk.join(e, "SKILL.md"),
+    l = Bk.join(skillsPath, "SKILL.md"),
     c = null;
   try {
     c = await i.readFile(l, {
@@ -276,23 +283,23 @@ async function loadSkillsFromDirectory(e, t, n, r, o, s) {
       );
   }
   if (c !== null) {
-    if (fee(i, l, s)) return a;
+    if (fee(i, l, loadedPaths)) return a;
     try {
       let { frontmatter: d, content: p } = Bm(c, l, {
           normalizeKeys: !0,
         }),
-        m = ((typeof d.name === "string" ? d.name.trim() : "") || Bk.basename(e)).replace(
+        m = ((typeof d.name === "string" ? d.name.trim() : "") || Bk.basename(skillsPath)).replace(
           /[^a-zA-Z0-9_-]/g,
           "-",
         ),
-        g = `${t}:${m}`,
+        g = `${pluginName}:${m}`,
         h = {
           filePath: l,
           baseDir: Bk.dirname(l),
           frontmatter: d,
           content: rHe(l, p),
         },
-        y = createPluginCommand(g, h, n, r, o, !0, {
+        y = createPluginCommand(g, h, sourceName, pluginManifest, pluginPath, !0, {
           isSkillMode: !0,
         });
       if (y)
@@ -309,10 +316,10 @@ async function loadSkillsFromDirectory(e, t, n, r, o, s) {
   }
   let u;
   try {
-    u = await i.readdir(e);
+    u = await i.readdir(skillsPath);
   } catch (d) {
     if (!wn(d))
-      T(`Failed to load skills from directory ${e}: ${d}`, {
+      T(`Failed to load skills from directory ${skillsPath}: ${d}`, {
         level: "error",
       });
     return a;
@@ -321,7 +328,7 @@ async function loadSkillsFromDirectory(e, t, n, r, o, s) {
     await Promise.all(
       u.map(async (d) => {
         if (!d.isDirectory() && !d.isSymbolicLink()) return;
-        let p = Bk.join(e, d.name),
+        let p = Bk.join(skillsPath, d.name),
           f = Bk.join(p, "SKILL.md"),
           m;
         try {
@@ -335,19 +342,19 @@ async function loadSkillsFromDirectory(e, t, n, r, o, s) {
             });
           return;
         }
-        if (fee(i, f, s)) return;
+        if (fee(i, f, loadedPaths)) return;
         try {
           let { frontmatter: g, content: h } = Bm(m, f, {
               normalizeKeys: !0,
             }),
-            y = `${t}:${d.name.replace(/[^a-zA-Z0-9_-]/g, "-")}`,
+            y = `${pluginName}:${d.name.replace(/[^a-zA-Z0-9_-]/g, "-")}`,
             b = {
               filePath: f,
               baseDir: Bk.dirname(f),
               frontmatter: g,
               content: rHe(f, h),
             },
-            _ = createPluginCommand(y, b, n, r, o, !0, {
+            _ = createPluginCommand(y, b, sourceName, pluginManifest, pluginPath, !0, {
               isSkillMode: !0,
             });
           if (_)

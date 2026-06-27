@@ -7,12 +7,12 @@
 // [unwrapped __esm module Jkr]
 ((gPu = /^(?:\s*<[a-z][\w-]*[\s>]|\[Request interrupted by user[^\]]*\])/),
   (hPu = /<command-name>(.*?)<\/command-name>/));
-async function getWorktreePathsPortable(e) {
+async function getWorktreePathsPortable(cwd) {
   let t = JZe("git");
   if (t === null) return [];
   try {
     let { stdout: n } = await yPu(t, ["worktree", "list", "--porcelain"], {
-      cwd: e,
+      cwd: cwd,
       timeout: 5000,
       windowsHide: true,
     });

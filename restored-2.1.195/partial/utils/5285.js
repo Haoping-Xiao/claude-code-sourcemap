@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vic] deps: ft, $S, sp, _a, pQ
 Dlr = require("crypto");
-function BackgroundTask(e) {
+function BackgroundTask(t0) {
   let t = [];
-  for (let n of Object.values(e)) {
+  for (let n of Object.values(t0)) {
     if (!wH(n)) continue;
     let r = {
       id: n.id,

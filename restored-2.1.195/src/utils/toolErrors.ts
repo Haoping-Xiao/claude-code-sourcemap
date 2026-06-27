@@ -33,11 +33,11 @@ function fzt(e) {
       return e.reason;
   }
 }
-function formatError(e) {
-  if (e instanceof ru) return e.message || Jv;
-  if (!(e instanceof Error)) return String(e);
+function formatError(error) {
+  if (error instanceof ru) return error.message || Jv;
+  if (!(error instanceof Error)) return String(error);
   let n =
-    getErrorParts(e)
+    getErrorParts(error)
       .filter(Boolean)
       .join(
         `
@@ -55,11 +55,12 @@ function formatError(e) {
 
 ${s}`;
 }
-function getErrorParts(e) {
-  if (e instanceof oM) return [`Exit code ${e.code}`, e.interrupted ? Jv : "", e.stderr, e.stdout];
-  let t = [e.message];
-  if ("stderr" in e && typeof e.stderr === "string") t.push(e.stderr);
-  if ("stdout" in e && typeof e.stdout === "string") t.push(e.stdout);
+function getErrorParts(error) {
+  if (error instanceof oM)
+    return [`Exit code ${error.code}`, error.interrupted ? Jv : "", error.stderr, error.stdout];
+  let t = [error.message];
+  if ("stderr" in error && typeof error.stderr === "string") t.push(error.stderr);
+  if ("stdout" in error && typeof error.stdout === "string") t.push(error.stdout);
   return t;
 }
 function jyl(e) {
@@ -70,12 +71,12 @@ function jyl(e) {
     return r === 0 ? o : `${String(t)}.${o}`;
   }, "");
 }
-function formatZodValidationError(e, t) {
-  let n = t.issues
+function formatZodValidationError(toolName, error) {
+  let n = error.issues
       .filter((a) => a.code === "invalid_type" && a.message.includes("received undefined"))
       .map((a) => jyl(a.path)),
-    r = t.issues.filter((a) => a.code === "unrecognized_keys").flatMap((a) => a.keys),
-    o = t.issues
+    r = error.issues.filter((a) => a.code === "unrecognized_keys").flatMap((a) => a.keys),
+    o = error.issues
       .filter((a) => a.code === "invalid_type" && !a.message.includes("received undefined"))
       .map((a) => {
         let l = a,
@@ -87,7 +88,7 @@ function formatZodValidationError(e, t) {
           received: u,
         };
       }),
-    s = t.message,
+    s = error.message,
     i = [];
   if (n.length > 0) {
     let a = n.map((l) => `The required parameter \`${l}\` is missing`);
@@ -105,7 +106,7 @@ function formatZodValidationError(e, t) {
     i.push(...a);
   }
   if (i.length > 0)
-    s = `${e} failed due to the following ${i.length > 1 ? "issues" : "issue"}:
+    s = `${toolName} failed due to the following ${i.length > 1 ? "issues" : "issue"}:
 ${i.join(`
 `)}`;
   return s;

@@ -10,17 +10,17 @@ function Hoo(e) {
     n = WWe();
   return t.length > n ? t.slice(0, n - 1) + "\u2026" : t;
 }
-function formatCommandDescription(e) {
-  let t = xu(e);
-  if (e.name !== t && e.type === "prompt" && e.source === "plugin")
-    T(`Skill prompt: showing "${e.name}" (userFacingName="${t}")`);
-  return `- ${e.name}: ${Hoo(e)}`;
+function formatCommandDescription(cmd) {
+  let t = xu(cmd);
+  if (cmd.name !== t && cmd.type === "prompt" && cmd.source === "plugin")
+    T(`Skill prompt: showing "${cmd.name}" (userFacingName="${t}")`);
+  return `- ${cmd.name}: ${Hoo(cmd)}`;
 }
-function formatCommandsWithinBudget(e, t, n, r) {
-  if (e.length === 0) return "";
-  let o = qWe(t, r),
+function formatCommandsWithinBudget(commands, contextWindowTokens, n, r) {
+  if (commands.length === 0) return "";
+  let o = qWe(contextWindowTokens, r),
     s = new Set(),
-    i = e.map((h, y) => {
+    i = commands.map((h, y) => {
       if (Zbe(h) === "name-only")
         return (
           s.add(y),
@@ -39,15 +39,15 @@ function formatCommandsWithinBudget(e, t, n, r) {
     return i.map((h) => h.full).join(`
 `);
   T(
-    `Skill listing over budget: ${e.length} skills, ${a} chars > ${o} budget \u2014 descriptions will be truncated. Run /doctor for details.`,
+    `Skill listing over budget: ${commands.length} skills, ${a} chars > ${o} budget \u2014 descriptions will be truncated. Run /doctor for details.`,
     {
       level: "warn",
     },
   );
   let l = new Set(s),
     c = [];
-  for (let h = 0; h < e.length; h++) {
-    let y = e[h];
+  for (let h = 0; h < commands.length; h++) {
+    let y = commands[h];
     if (y.type === "prompt" && y.source === "bundled") l.add(h);
     else if (!s.has(h)) c.push(y);
   }
@@ -57,28 +57,28 @@ function formatCommandsWithinBudget(e, t, n, r) {
     return i.map((h) => h.full).join(`
 `);
   if (n) {
-    let h = e.map((C, x) => x).filter((C) => !l.has(C)),
-      y = (C) => rn(e[C].name) + 2,
+    let h = commands.map((C, x) => x).filter((C) => !l.has(C)),
+      y = (C) => rn(commands[C].name) + 2,
       b = (C) => rn(i[C].full),
-      _ = e.reduce((C, x, I) => C + (l.has(I) ? b(I) : y(I)), 0) + (e.length - 1),
+      _ = commands.reduce((C, x, I) => C + (l.has(I) ? b(I) : y(I)), 0) + (commands.length - 1),
       S = o - _,
       A = new Set(),
-      v = h.slice().sort((C, x) => n(e[x]) - n(e[C]));
+      v = h.slice().sort((C, x) => n(commands[x]) - n(commands[C]));
     for (let C of v) {
       let x = b(C) - y(C);
       if (x <= S) (A.add(C), (S -= x));
     }
-    return e.map((C, x) => (l.has(x) || A.has(x) ? i[x].full : `- ${C.name}`)).join(`
+    return commands.map((C, x) => (l.has(x) || A.has(x) ? i[x].full : `- ${C.name}`)).join(`
 `);
   }
   let p = c.reduce((h, y) => h + rn(y.name) + 4, 0) + (c.length - 1),
     f = d - p,
     m = Math.floor(f / c.length);
   if (m < Aoo)
-    return e.map((h, y) => (l.has(y) ? i[y].full : `- ${h.name}`)).join(`
+    return commands.map((h, y) => (l.has(y) ? i[y].full : `- ${h.name}`)).join(`
 `);
   let g = On(c, (h) => rn(Hoo(h)) > m);
-  return e.map((h, y) => {
+  return commands.map((h, y) => {
     if (l.has(y)) return i[y].full;
     let b = Hoo(h);
     return `- ${h.name}: ${$a(b, m)}`;

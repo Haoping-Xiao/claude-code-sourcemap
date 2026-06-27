@@ -7,12 +7,12 @@
 // module exports: AutoDefaultNudgeDialog
 // [unwrapped __esm module MPc] deps: ft, gq, ft, rSe, id, uo, yC, pMe, WW, F2t, qYo, N8, je, bm, co, oje
 yvt = R(rt(), 1), rIm = (KWe(), ro(zWe));
-function AutoModeOptInDialog(e) {
+function AutoModeOptInDialog(t0) {
   let t = $Pc.c(18),
     {
       currentMode: n,
       onDone: r
-    } = e,
+    } = t0,
     o,
     s;
   if (t[0] !== n) o = () => {

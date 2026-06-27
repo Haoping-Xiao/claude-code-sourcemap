@@ -40,10 +40,10 @@ function iFt(e) {
 function MKi() {
   return Oe.OTEL_LOG_ASSISTANT_RESPONSES ?? Oe.OTEL_LOG_USER_PROMPTS;
 }
-async function logOTelEvent(e, t = {}) {
+async function logOTelEvent(eventName, t = {}) {
   let n = {
       ...QGe(),
-      "event.name": e,
+      "event.name": eventName,
       "event.timestamp": new Date().toISOString(),
       "event.sequence": BKd++,
     },
@@ -56,7 +56,7 @@ async function logOTelEvent(e, t = {}) {
     i = {
       timestamp: s,
       observedTimestamp: s,
-      body: `claude_code.${e}`,
+      body: `claude_code.${eventName}`,
       attributes: n,
     },
     a = z_r();
@@ -66,7 +66,7 @@ async function logOTelEvent(e, t = {}) {
   }
   if (!K_r(i) && !PKi)
     ((PKi = true),
-      T(`[3P telemetry] Event dropped (no event logger initialized): ${e}`, {
+      T(`[3P telemetry] Event dropped (no event logger initialized): ${eventName}`, {
         level: "warn",
       }));
 }

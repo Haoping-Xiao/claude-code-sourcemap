@@ -44,31 +44,31 @@ function isMarketplaceSourceDeclaredByPolicy(e, t) {
   if (r && getMarketplaceSourceDisplay(t, r)) return true;
   return n?.strictKnownMarketplaces?.some((o) => tPa(t, o)) ?? false;
 }
-function getMarketplaceSourceDisplay(e, t) {
-  if (e.source !== t.source) return false;
-  switch (e.source) {
+function getMarketplaceSourceDisplay(source, t) {
+  if (source.source !== t.source) return false;
+  switch (source.source) {
     case "url":
-      return M2n(e.url) === M2n(t.url);
+      return M2n(source.url) === M2n(t.url);
     case "github":
       return (
-        e.repo === t.repo &&
-        (e.ref || void 0) === (t.ref || void 0) &&
-        (e.path || void 0) === (t.path || void 0)
+        source.repo === t.repo &&
+        (source.ref || void 0) === (t.ref || void 0) &&
+        (source.path || void 0) === (t.path || void 0)
       );
     case "git":
       return (
-        JDa(e.url) === JDa(t.url) &&
-        (e.ref || void 0) === (t.ref || void 0) &&
-        (e.path || void 0) === (t.path || void 0)
+        JDa(source.url) === JDa(t.url) &&
+        (source.ref || void 0) === (t.ref || void 0) &&
+        (source.path || void 0) === (t.path || void 0)
       );
     case "npm":
-      return e.package === t.package;
+      return source.package === t.package;
     case "file":
-      return e.path === t.path;
+      return source.path === t.path;
     case "directory":
-      return e.path === t.path;
+      return source.path === t.path;
     case "settings":
-      return e.name === t.name && L_(e.plugins, t.plugins);
+      return source.name === t.name && L_(source.plugins, t.plugins);
     default:
       return false;
   }
@@ -236,13 +236,13 @@ function Fkp(e, t) {
   }
   return false;
 }
-function isSourceAllowedByPolicy(e) {
+function isSourceAllowedByPolicy(source) {
   let t = getBlockedMarketplaces();
   if (t === null) return false;
   return t.some((n) => {
-    if (n.source === "hostPattern") return ZDa(e, n);
-    if (n.source === "pathPattern") return ePa(e, n);
-    return Fkp(e, n);
+    if (n.source === "hostPattern") return ZDa(source, n);
+    if (n.source === "pathPattern") return ePa(source, n);
+    return Fkp(source, n);
   });
 }
 function _H(e) {

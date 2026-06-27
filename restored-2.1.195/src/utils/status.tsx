@@ -11,8 +11,8 @@ function OVn(e) {
 function rKa() {
   return [];
 }
-function buildIDEProperties(e, t = null, n) {
-  let r = e?.find((o) => o.name === "ide");
+function buildIDEProperties(mcpClients, t = null, theme) {
+  let r = mcpClients?.find((o) => o.name === "ide");
   if (t) {
     let o = yk(t.ideType),
       s = kre(t.ideType) ? "plugin" : "extension";
@@ -22,7 +22,7 @@ function buildIDEProperties(e, t = null, n) {
           label: "IDE",
           value: dKa.jsxs(w, {
             children: [
-              Io("error", n)(nt.cross),
+              Io("error", theme)(nt.cross),
               " Error installing ",
               o,
               " ",
@@ -72,13 +72,13 @@ function buildIDEProperties(e, t = null, n) {
       return [
         {
           label: "IDE",
-          value: `${Io("error", n)(nt.cross)} Not connected to ${o}`,
+          value: `${Io("error", theme)(nt.cross)} Not connected to ${o}`,
         },
       ];
   }
   return [];
 }
-function buildMcpProperties(e = [], t) {
+function buildMcpProperties(e = [], theme) {
   let n = e.filter((s) => s.name !== "ide");
   if (!n.length) return [];
   let r = {
@@ -107,15 +107,15 @@ function buildMcpProperties(e = [], t) {
         break;
     }
   let o = [];
-  if (r.connected) o.push(Io("success", t)(`${r.connected} connected`));
-  if (r.needsAuth) o.push(Io("warning", t)(`${r.needsAuth} need auth`));
-  if (r.pending) o.push(Io("inactive", t)(`${r.pending} pending`));
-  if (r.disabled) o.push(Io("inactive", t)(`${r.disabled} disabled`));
-  if (r.failed) o.push(Io("error", t)(`${r.failed} failed`));
+  if (r.connected) o.push(Io("success", theme)(`${r.connected} connected`));
+  if (r.needsAuth) o.push(Io("warning", theme)(`${r.needsAuth} need auth`));
+  if (r.pending) o.push(Io("inactive", theme)(`${r.pending} pending`));
+  if (r.disabled) o.push(Io("inactive", theme)(`${r.disabled} disabled`));
+  if (r.failed) o.push(Io("error", theme)(`${r.failed} failed`));
   return [
     {
       label: "MCP servers",
-      value: `${o.join(", ")} ${Io("inactive", t)("\xB7 /mcp")}`,
+      value: `${o.join(", ")} ${Io("inactive", theme)("\xB7 /mcp")}`,
     },
   ];
 }

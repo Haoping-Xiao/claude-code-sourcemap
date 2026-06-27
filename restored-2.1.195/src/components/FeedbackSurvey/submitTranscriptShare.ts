@@ -4,7 +4,7 @@
 // class=modified  jaccard=0.1218  score=0.1979  fileCov=0.2407
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-async function submitTranscriptShare(e, t, n) {
+async function submitTranscriptShare(messages, trigger, appearanceId) {
   if (Vi())
     return (
       Le("feedback_transcript_share", "essential_traffic_only"),
@@ -26,8 +26,8 @@ async function submitTranscriptShare(e, t, n) {
     T("Collecting transcript for sharing", {
       level: "info",
     });
-    let o = lk(e),
-      s = _5o(e),
+    let o = lk(messages),
+      s = _5o(messages),
       [i, a] = await Promise.all([blr(s), yet()]),
       l;
     try {
@@ -63,7 +63,7 @@ async function submitTranscriptShare(e, t, n) {
 `),
       u = {
         ...Vge({
-          trigger: t,
+          trigger: trigger,
           version: {
             ISSUES_EXPLAINER:
               "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -83,7 +83,7 @@ async function submitTranscriptShare(e, t, n) {
       },
       d = qSt(u, Ovm, Nvm, {
         extraOuterFields: {
-          appearance_id: n,
+          appearance_id: appearanceId,
         },
       });
     if (r === "bundle") {

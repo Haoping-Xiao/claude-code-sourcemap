@@ -125,21 +125,23 @@ var qec,
   gHt,
   Y3o,
   X3o,
-  extractActivities = async (e, t, n, r) => {
-    let { tasks: o, maxConcurrent: s } = X3o().parse(e),
+  extractActivities = async (line, sessionId, onDebug, r) => {
+    let { tasks: o, maxConcurrent: s } = X3o().parse(line),
       { initializeErrorLogSink: i } = await Promise.resolve().then(() => (VJt(), kir)),
       { initializeAnalyticsSink: a } = await Promise.resolve().then(() => (ZSe(), dpt));
     if ((i(), a(), !r.getAccessToken()))
-      (n("scheduled worker: not authed \u2014 run `claude auth login`"), process.exit(1));
+      (onDebug("scheduled worker: not authed \u2014 run `claude auth login`"), process.exit(1));
     let { query: l } = await Promise.resolve().then(() => (Wec(), Gec));
-    if ((n(`scheduled worker started tasks=${o.length} maxConcurrent=${s}`), o.length === 0)) {
+    if (
+      (onDebug(`scheduled worker started tasks=${o.length} maxConcurrent=${s}`), o.length === 0)
+    ) {
       let A = setInterval(() => {}, 60000);
       (await new Promise((v) => {
-        if (t.aborted) {
+        if (sessionId.aborted) {
           v();
           return;
         }
-        t.addEventListener("abort", () => v(), {
+        sessionId.addEventListener("abort", () => v(), {
           once: true,
         });
       }),
@@ -152,7 +154,7 @@ var qec,
     function p(A) {
       let v = c.reduce((C, x) => (x.task.id === A.id ? C + 1 : C), 0);
       if (v >= A.maxQueued) {
-        n(`task=${A.id} dropped (queue full: ${v}/${A.maxQueued})`);
+        onDebug(`task=${A.id} dropped (queue full: ${v}/${A.maxQueued})`);
         return;
       }
       (c.push({
@@ -198,7 +200,7 @@ var qec,
       f,
       p,
     );
-    t.addEventListener("abort", () => {
+    sessionId.addEventListener("abort", () => {
       clearInterval(b);
       for (let A of u) A.abort();
       (d?.(), (d = null));
@@ -209,7 +211,7 @@ var qec,
         C = new AbortController();
       (u.add(C), m.add(v.id), h());
       let x = setTimeout((I) => I.abort(), Math.min(v.runTimeoutMinutes, zec) * 60000, C);
-      n(`task=${v.id} start cron='${v.cron}' dir='${v.directory}'`);
+      onDebug(`task=${v.id} start cron='${v.cron}' dir='${v.directory}'`);
       try {
         let I = l({
           prompt: v.prompt,
@@ -229,30 +231,30 @@ var qec,
             settingSources: ["user", "project", "local"],
             pathToClaudeCodeExecutable: process.execPath,
             abortController: C,
-            stderr: (k) => n(`[${v.id}] ${k.trimEnd()}`),
+            stderr: (k) => onDebug(`[${v.id}] ${k.trimEnd()}`),
             workload: rrt,
           },
         });
         for await (let k of I)
           if (k.type === "result")
-            n(
+            onDebug(
               `task=${v.id} result subtype=${k.subtype} duration=${k.duration_ms}ms cost=$${k.total_cost_usd.toFixed(4)}`,
             );
       } catch (I) {
-        n(`task=${v.id} threw: ${I}`);
+        onDebug(`task=${v.id} threw: ${I}`);
       } finally {
         (clearTimeout(x), u.delete(C), m.delete(v.id), h());
       }
     }
-    while (!t.aborted) {
-      while (_.size < s && c.length > 0 && !t.aborted) {
+    while (!sessionId.aborted) {
+      while (_.size < s && c.length > 0 && !sessionId.aborted) {
         let A = c.shift(),
           v = S(A).finally(() => {
             (_.delete(v), d?.(), (d = null));
           });
         _.add(v);
       }
-      if (t.aborted) break;
+      if (sessionId.aborted) break;
       if (c.length === 0 || _.size >= s)
         await new Promise((A) => {
           d = A;

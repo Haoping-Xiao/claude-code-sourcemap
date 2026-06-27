@@ -45,7 +45,7 @@ function MQf(e) {
 function jQt(e) {
   return typeof e === "string" ? e : "";
 }
-function extractToolStats(e) {
+function extractToolStats(log) {
   let t = {},
     n = {},
     r = 0,
@@ -66,7 +66,7 @@ function extractToolStats(e) {
     b = false,
     _ = false,
     S = null;
-  for (let A of e.messages) {
+  for (let A of log.messages) {
     let v = A.timestamp;
     if (A.type === "assistant" && A.message) {
       if (v) S = v;
@@ -198,14 +198,14 @@ function extractToolStats(e) {
 function $Qf(e) {
   return !Number.isNaN(e.created.getTime()) && !Number.isNaN(e.modified.getTime());
 }
-function logToSessionMeta(e) {
-  let t = extractToolStats(e),
-    n = qg(e) || "unknown",
-    r = e.created.toISOString(),
-    o = Math.round((e.modified.getTime() - e.created.getTime()) / 1000 / 60),
+function logToSessionMeta(log) {
+  let t = extractToolStats(log),
+    n = qg(log) || "unknown",
+    r = log.created.toISOString(),
+    o = Math.round((log.modified.getTime() - log.created.getTime()) / 1000 / 60),
     s = 0,
     i = 0;
-  for (let a of e.messages) {
+  for (let a of log.messages) {
     if (a.type === "assistant") i++;
     if (a.type === "user" && a.message) {
       let l = a.message.content,
@@ -223,7 +223,7 @@ function logToSessionMeta(e) {
   }
   return {
     session_id: n,
-    project_path: e.projectPath || "",
+    project_path: log.projectPath || "",
     start_time: r,
     duration_minutes: o,
     user_message_count: s,
@@ -234,8 +234,8 @@ function logToSessionMeta(e) {
     git_pushes: t.gitPushes,
     input_tokens: t.inputTokens,
     output_tokens: t.outputTokens,
-    first_prompt: e.firstPrompt || "",
-    summary: e.summary,
+    first_prompt: log.firstPrompt || "",
+    summary: log.summary,
     user_interruptions: t.userInterruptions,
     user_response_times: t.userResponseTimes,
     tool_errors: t.toolErrors,
@@ -265,15 +265,15 @@ function deduplicateSessionBranches(e) {
   }
   return [...t.values()];
 }
-function formatTranscriptForFacets(e) {
+function formatTranscriptForFacets(log) {
   let t = [],
-    n = logToSessionMeta(e);
+    n = logToSessionMeta(log);
   (t.push(`Session: ${n.session_id.slice(0, 8)}`),
     t.push(`Date: ${n.start_time}`),
     t.push(`Project: ${n.project_path}`),
     t.push(`Duration: ${n.duration_minutes} min`),
     t.push(""));
-  for (let r of e.messages)
+  for (let r of log.messages)
     if (r.type === "user" && r.message) {
       let o = r.message.content;
       if (typeof o === "string") t.push(`[User]: ${o.slice(0, 500)}`);
@@ -314,14 +314,14 @@ async function UQf(e) {
     return e.slice(0, 2000);
   }
 }
-async function formatTranscriptWithSummarization(e) {
-  let t = formatTranscriptForFacets(e);
+async function formatTranscriptWithSummarization(log) {
+  let t = formatTranscriptForFacets(log);
   if (t.length <= 30000) return t;
   let n = 25000,
     r = [];
   for (let a = 0; a < t.length; a += n) r.push(t.slice(a, a + n));
   let o = await Promise.all(r.map(UQf)),
-    s = logToSessionMeta(e);
+    s = logToSessionMeta(log);
   return (
     [
       `Session: ${s.session_id.slice(0, 8)}`,
@@ -414,9 +414,9 @@ async function qQf(e) {
     ke(t);
   }
 }
-async function extractFacetsFromAPI(e, t) {
+async function extractFacetsFromAPI(log, sessionId) {
   try {
-    let n = await formatTranscriptWithSummarization(e),
+    let n = await formatTranscriptWithSummarization(log),
       r = `${FACET_EXTRACTION_PROMPT}${n}
 
 RESPOND WITH ONLY A VALID JSON OBJECT matching this schema:
@@ -453,7 +453,7 @@ RESPOND WITH ONLY A VALID JSON OBJECT matching this schema:
     if (!isValidSessionFacets(a)) return null;
     return {
       ...a,
-      session_id: t,
+      session_id: sessionId,
     };
   } catch (n) {
     return (
@@ -631,17 +631,17 @@ function aggregateData(e, t) {
     n
   );
 }
-async function generateSectionInsight(e, t) {
+async function generateSectionInsight(section, dataContext) {
   try {
     let n = await hbt({
         systemPrompt: Sc([]),
         userPrompt:
-          e.prompt +
+          section.prompt +
           `
 
 DATA:
 ` +
-          t,
+          dataContext,
         signal: new AbortController().signal,
         options: {
           model: RQf(),
@@ -650,7 +650,7 @@ DATA:
           isNonInteractiveSession: true,
           hasAppendSystemPrompt: false,
           mcpTools: [],
-          maxOutputTokensOverride: e.maxTokens,
+          maxOutputTokensOverride: section.maxTokens,
           agentContext: of(),
         },
       }),
@@ -660,41 +660,41 @@ DATA:
       if (o)
         try {
           return {
-            name: e.name,
+            name: section.name,
             result: Ft(o[0]),
           };
         } catch {
           return {
-            name: e.name,
+            name: section.name,
             result: null,
           };
         }
     }
     return {
-      name: e.name,
+      name: section.name,
       result: null,
     };
   } catch (n) {
     return (
-      ke(Error(`${e.name} failed: ${Zr(n).message}`)),
+      ke(Error(`${section.name} failed: ${Zr(n).message}`)),
       {
-        name: e.name,
+        name: section.name,
         result: null,
       }
     );
   }
 }
-async function generateParallelInsights(e, t) {
-  let n = Array.from(t.values())
+async function generateParallelInsights(data, facets) {
+  let n = Array.from(facets.values())
       .slice(0, 50)
       .map((b) => `- ${b.brief_summary} (${b.outcome}, ${b.claude_helpfulness})`).join(`
 `),
-    r = Array.from(t.values())
+    r = Array.from(facets.values())
       .filter((b) => b.friction_detail)
       .slice(0, 20)
       .map((b) => `- ${b.friction_detail}`).join(`
 `),
-    o = Array.from(t.values())
+    o = Array.from(facets.values())
       .flatMap((b) => b.user_instructions_to_claude || [])
       .slice(0, 15)
       .map((b) => `- ${b}`).join(`
@@ -702,23 +702,23 @@ async function generateParallelInsights(e, t) {
     i =
       De(
         {
-          sessions: e.total_sessions,
-          analyzed: e.sessions_with_facets,
-          date_range: e.date_range,
-          messages: e.total_messages,
-          hours: Math.round(e.total_duration_hours),
-          commits: e.git_commits,
-          top_tools: Object.entries(e.tool_counts)
+          sessions: data.total_sessions,
+          analyzed: data.sessions_with_facets,
+          date_range: data.date_range,
+          messages: data.total_messages,
+          hours: Math.round(data.total_duration_hours),
+          commits: data.git_commits,
+          top_tools: Object.entries(data.tool_counts)
             .sort((b, _) => _[1] - b[1])
             .slice(0, 8),
-          top_goals: Object.entries(e.goal_categories)
+          top_goals: Object.entries(data.goal_categories)
             .sort((b, _) => _[1] - b[1])
             .slice(0, 8),
-          outcomes: e.outcomes,
-          satisfaction: e.satisfaction,
-          friction: e.friction,
-          success: e.success,
-          languages: e.languages,
+          outcomes: data.outcomes,
+          satisfaction: data.satisfaction,
+          friction: data.friction,
+          success: data.success,
+          languages: data.languages,
         },
         null,
         2,
@@ -809,14 +809,15 @@ ${m}`,
   if (y.result) l.at_a_glance = y.result;
   return l;
 }
-function escapeHtmlWithBold(e) {
-  return ip(e).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+function escapeHtmlWithBold(text) {
+  return ip(text).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 }
-function generateBarChart(e, t, n = 6, r) {
+function generateBarChart(data, color, n = 6, fixedOrder) {
   let o;
-  if (r) o = r.filter((i) => i in e && (e[i] ?? 0) > 0).map((i) => [i, e[i] ?? 0]);
+  if (fixedOrder)
+    o = fixedOrder.filter((i) => i in data && (data[i] ?? 0) > 0).map((i) => [i, data[i] ?? 0]);
   else
-    o = Object.entries(e)
+    o = Object.entries(data)
       .sort((i, a) => a[1] - i[1])
       .slice(0, n);
   if (o.length === 0) return '<p class="empty">No data</p>';
@@ -826,14 +827,14 @@ function generateBarChart(e, t, n = 6, r) {
       c = DQf[i] || i.replaceAll("_", " ").replace(/\b\w/g, (u) => u.toUpperCase());
     return `<div class="bar-row">
         <div class="bar-label">${ip(c)}</div>
-        <div class="bar-track"><div class="bar-fill" style="width:${l}%;background:${t}"></div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:${l}%;background:${color}"></div></div>
         <div class="bar-value">${a}</div>
       </div>`;
   }).join(`
 `);
 }
-function generateResponseTimeHistogram(e) {
-  if (e.length === 0) return '<p class="empty">No response time data</p>';
+function generateResponseTimeHistogram(times) {
+  if (times.length === 0) return '<p class="empty">No response time data</p>';
   let t = {
     "2-10s": 0,
     "10-30s": 0,
@@ -843,7 +844,7 @@ function generateResponseTimeHistogram(e) {
     "5-15m": 0,
     ">15m": 0,
   };
-  for (let r of e)
+  for (let r of times)
     if (r < 10) t["2-10s"] = (t["2-10s"] ?? 0) + 1;
     else if (r < 30) t["10-30s"] = (t["10-30s"] ?? 0) + 1;
     else if (r < 60) t["30s-1m"] = (t["30s-1m"] ?? 0) + 1;
@@ -863,8 +864,8 @@ function generateResponseTimeHistogram(e) {
   }).join(`
 `);
 }
-function generateTimeOfDayChart(e) {
-  if (e.length === 0) return '<p class="empty">No time data</p>';
+function generateTimeOfDayChart(messageHours) {
+  if (messageHours.length === 0) return '<p class="empty">No time data</p>';
   let t = [
       {
         label: "Morning (6-12)",
@@ -884,7 +885,7 @@ function generateTimeOfDayChart(e) {
       },
     ],
     n = {};
-  for (let i of e) n[i] = (n[i] || 0) + 1;
+  for (let i of messageHours) n[i] = (n[i] || 0) + 1;
   let r = t.map((i) => ({
       label: i.label,
       count: i.range.reduce((a, l) => a + (n[l] || 0), 0),
@@ -905,7 +906,7 @@ function ZQf(e) {
   for (let n of e) t[n] = (t[n] || 0) + 1;
   return De(t);
 }
-function generateHtmlReport(e, t) {
+function generateHtmlReport(data, insights) {
   let n = (I) => {
       if (!I) return "";
       return I.split(
@@ -927,7 +928,7 @@ function generateHtmlReport(e, t) {
       }).join(`
 `);
     },
-    r = t.at_a_glance,
+    r = insights.at_a_glance,
     o = r
       ? `
     <div class="at-a-glance">
@@ -941,7 +942,7 @@ function generateHtmlReport(e, t) {
     </div>
     `
       : "",
-    s = t.project_areas?.areas || [],
+    s = insights.project_areas?.areas || [],
     i =
       s.length > 0
         ? `
@@ -963,7 +964,7 @@ function generateHtmlReport(e, t) {
     </div>
     `
         : "",
-    a = t.interaction_style,
+    a = insights.interaction_style,
     l = a?.narrative
       ? `
     <h2 id="section-usage">How You Use Claude Code</h2>
@@ -973,7 +974,7 @@ function generateHtmlReport(e, t) {
     </div>
     `
       : "",
-    c = t.what_works,
+    c = insights.what_works,
     u =
       c?.impressive_workflows && c.impressive_workflows.length > 0
         ? `
@@ -993,7 +994,7 @@ function generateHtmlReport(e, t) {
     </div>
     `
         : "",
-    d = t.friction_analysis,
+    d = insights.friction_analysis,
     p =
       d?.categories && d.categories.length > 0
         ? `
@@ -1014,7 +1015,7 @@ function generateHtmlReport(e, t) {
     </div>
     `
         : "",
-    f = t.suggestions,
+    f = insights.suggestions,
     m = f
       ? `
     ${
@@ -1115,7 +1116,7 @@ function generateHtmlReport(e, t) {
     }
     `
       : "",
-    g = t.on_the_horizon,
+    g = insights.on_the_horizon,
     h =
       g?.opportunities && g.opportunities.length > 0
         ? `
@@ -1200,7 +1201,7 @@ function generateHtmlReport(e, t) {
     }
     `
         : "",
-    S = t.fun_ending,
+    S = insights.fun_ending,
     A = S?.headline
       ? `
     <div class="fun-ending">
@@ -1360,7 +1361,7 @@ function generateHtmlReport(e, t) {
       }
     }
     // Timezone selector for time of day chart (data is from our own analytics, not user input)
-    const rawHourCounts = ${ZQf(e.message_hours)};
+    const rawHourCounts = ${ZQf(data.message_hours)};
     function updateHourHistogram(offsetFromPT) {
       const periods = [
         { label: "Morning (6-12)", range: [6,7,8,9,10,11] },
@@ -1539,7 +1540,7 @@ function generateHtmlReport(e, t) {
 <body>
   <div class="container">
     <h1>Claude Code Insights</h1>
-    <p class="subtitle">${e.total_messages.toLocaleString()} messages across ${e.total_sessions} sessions${e.total_sessions_scanned && e.total_sessions_scanned > e.total_sessions ? ` (${e.total_sessions_scanned.toLocaleString()} total)` : ""} | ${e.date_range.start} to ${e.date_range.end}</p>
+    <p class="subtitle">${data.total_messages.toLocaleString()} messages across ${data.total_sessions} sessions${data.total_sessions_scanned && data.total_sessions_scanned > data.total_sessions ? ` (${data.total_sessions_scanned.toLocaleString()} total)` : ""} | ${data.date_range.start} to ${data.date_range.end}</p>
 
     ${o}
 
@@ -1555,11 +1556,11 @@ function generateHtmlReport(e, t) {
     </nav>
 
     <div class="stats-row">
-      <div class="stat"><div class="stat-value">${e.total_messages.toLocaleString()}</div><div class="stat-label">Messages</div></div>
-      <div class="stat"><div class="stat-value">+${e.total_lines_added.toLocaleString()}/-${e.total_lines_removed.toLocaleString()}</div><div class="stat-label">Lines</div></div>
-      <div class="stat"><div class="stat-value">${e.total_files_modified}</div><div class="stat-label">Files</div></div>
-      <div class="stat"><div class="stat-value">${e.days_active}</div><div class="stat-label">Days</div></div>
-      <div class="stat"><div class="stat-value">${e.messages_per_day}</div><div class="stat-label">Msgs/Day</div></div>
+      <div class="stat"><div class="stat-value">${data.total_messages.toLocaleString()}</div><div class="stat-label">Messages</div></div>
+      <div class="stat"><div class="stat-value">+${data.total_lines_added.toLocaleString()}/-${data.total_lines_removed.toLocaleString()}</div><div class="stat-label">Lines</div></div>
+      <div class="stat"><div class="stat-value">${data.total_files_modified}</div><div class="stat-label">Files</div></div>
+      <div class="stat"><div class="stat-value">${data.days_active}</div><div class="stat-label">Days</div></div>
+      <div class="stat"><div class="stat-value">${data.messages_per_day}</div><div class="stat-label">Msgs/Day</div></div>
     </div>
 
     ${i}
@@ -1567,22 +1568,22 @@ function generateHtmlReport(e, t) {
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">What You Wanted</div>
-        ${generateBarChart(e.goal_categories, "#2563eb")}
+        ${generateBarChart(data.goal_categories, "#2563eb")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Top Tools Used</div>
-        ${generateBarChart(e.tool_counts, "#0891b2")}
+        ${generateBarChart(data.tool_counts, "#0891b2")}
       </div>
     </div>
 
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">Languages</div>
-        ${generateBarChart(e.languages, "#10b981")}
+        ${generateBarChart(data.languages, "#10b981")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Session Types</div>
-        ${generateBarChart(e.session_types || {}, "#8b5cf6")}
+        ${generateBarChart(data.session_types || {}, "#8b5cf6")}
       </div>
     </div>
 
@@ -1591,9 +1592,9 @@ function generateHtmlReport(e, t) {
     <!-- Response Time Distribution -->
     <div class="chart-card" style="margin: 24px 0;">
       <div class="chart-title">User Response Time Distribution</div>
-      ${generateResponseTimeHistogram(e.user_response_times)}
+      ${generateResponseTimeHistogram(data.user_response_times)}
       <div style="font-size: 12px; color: #64748b; margin-top: 8px;">
-        Median: ${e.median_response_time.toFixed(1)}s &bull; Average: ${e.avg_response_time.toFixed(1)}s
+        Median: ${data.median_response_time.toFixed(1)}s &bull; Average: ${data.avg_response_time.toFixed(1)}s
       </div>
     </div>
 
@@ -1601,7 +1602,7 @@ function generateHtmlReport(e, t) {
     <div class="chart-card" style="margin: 24px 0;">
       <div class="chart-title">Multi-Clauding (Parallel Sessions)</div>
       ${
-        e.multi_clauding.overlap_events === 0
+        data.multi_clauding.overlap_events === 0
           ? `
         <p style="font-size: 14px; color: #64748b; padding: 8px 0;">
           No parallel session usage detected. You typically work with one Claude Code session at a time.
@@ -1610,15 +1611,15 @@ function generateHtmlReport(e, t) {
           : `
         <div style="display: flex; gap: 24px; margin: 12px 0;">
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">${e.multi_clauding.overlap_events}</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">${data.multi_clauding.overlap_events}</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Overlap Events</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">${e.multi_clauding.sessions_involved}</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">${data.multi_clauding.sessions_involved}</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Sessions Involved</div>
           </div>
           <div style="text-align: center;">
-            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">${e.total_messages > 0 ? Math.round((100 * e.multi_clauding.user_messages_during) / e.total_messages) : 0}%</div>
+            <div style="font-size: 24px; font-weight: 700; color: #7c3aed;">${data.total_messages > 0 ? Math.round((100 * data.multi_clauding.user_messages_during) / data.total_messages) : 0}%</div>
             <div style="font-size: 11px; color: #64748b; text-transform: uppercase;">Of Messages</div>
           </div>
         </div>
@@ -1645,11 +1646,11 @@ function generateHtmlReport(e, t) {
           </select>
           <input type="number" id="custom-offset" placeholder="UTC offset" style="display: none; width: 80px; font-size: 12px; padding: 4px; border-radius: 4px; border: 1px solid #e2e8f0;">
         </div>
-        ${generateTimeOfDayChart(e.message_hours)}
+        ${generateTimeOfDayChart(data.message_hours)}
       </div>
       <div class="chart-card">
         <div class="chart-title">Tool Errors Encountered</div>
-        ${Object.keys(e.tool_error_categories).length > 0 ? generateBarChart(e.tool_error_categories, "#dc2626") : '<p class="empty">No tool errors</p>'}
+        ${Object.keys(data.tool_error_categories).length > 0 ? generateBarChart(data.tool_error_categories, "#dc2626") : '<p class="empty">No tool errors</p>'}
       </div>
     </div>
 
@@ -1658,11 +1659,11 @@ function generateHtmlReport(e, t) {
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">What Helped Most (Claude's Capabilities)</div>
-        ${generateBarChart(e.success, "#16a34a")}
+        ${generateBarChart(data.success, "#16a34a")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Outcomes</div>
-        ${generateBarChart(e.outcomes, "#8b5cf6", 6, XQf)}
+        ${generateBarChart(data.outcomes, "#8b5cf6", 6, XQf)}
       </div>
     </div>
 
@@ -1671,11 +1672,11 @@ function generateHtmlReport(e, t) {
     <div class="charts-row">
       <div class="chart-card">
         <div class="chart-title">Primary Friction Types</div>
-        ${generateBarChart(e.friction, "#dc2626")}
+        ${generateBarChart(data.friction, "#dc2626")}
       </div>
       <div class="chart-card">
         <div class="chart-title">Inferred Satisfaction (model-estimated)</div>
-        ${generateBarChart(e.satisfaction, "#eab308", 6, YQf)}
+        ${generateBarChart(data.satisfaction, "#eab308", 6, YQf)}
       </div>
     </div>
 
@@ -1759,7 +1760,7 @@ async function nZf() {
   }
   return (r.sort((o, s) => s.mtime - o.mtime), r);
 }
-async function generateUsageReport(e) {
+async function generateUsageReport(options) {
   let t,
     n = await nZf(),
     r = n.length,
@@ -1937,9 +1938,9 @@ ${t}
 Want to dig into any section or try one of the suggestions?
 </message>`;
 }
-function isValidSessionFacets(e) {
-  if (!e || typeof e !== "object") return false;
-  let t = e;
+function isValidSessionFacets(obj) {
+  if (!obj || typeof obj !== "object") return false;
+  let t = obj;
   return (
     typeof t.underlying_goal === "string" &&
     typeof t.outcome === "string" &&

@@ -4,9 +4,9 @@
 // class=modified  jaccard=0.2748  score=0.4046  fileCov=0.4615
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function ContextSuggestions(e) {
+function ContextSuggestions(t0) {
   let t = _1l.c(5),
-    { suggestions: n } = e;
+    { suggestions: n } = t0;
   if (n.length === 0) return null;
   let r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))

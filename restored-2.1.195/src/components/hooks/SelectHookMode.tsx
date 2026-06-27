@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hKl] deps: si, Ye, sr, Vl, vi
 ((mKl = R(lt(), 1)), (KN = R(se(), 1)));
-function SelectHookMode(e) {
+function SelectHookMode(t0) {
   let t = yKl.c(20),
     {
       selectedEvent: n,
@@ -15,7 +15,7 @@ function SelectHookMode(e) {
       hookEventMetadata: s,
       onSelect: i,
       onCancel: a,
-    } = e,
+    } = t0,
     l = s.matcherMetadata !== void 0 ? `${n} - Matcher: ${r || "(all)"}` : n;
   if (o.length === 0) {
     let m, g;

@@ -87,10 +87,12 @@ function S6n(e, t, n = null) {
       .trim()
   );
 }
-function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
-  switch (e.type) {
+function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
+  switch (token.type) {
     case "blockquote": {
-      let l = (e.tokens ?? []).map((u) => formatToken(u, t, 0, null, null, s, false, a)).join(""),
+      let l = (token.tokens ?? [])
+          .map((u) => formatToken(u, theme, 0, null, null, s, false, a))
+          .join(""),
         c = wt.dim(Kvs);
       return l
         .split(SP)
@@ -98,37 +100,41 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
         .join(SP);
     }
     case "code": {
-      let l = e.lang ?? "",
+      let l = token.lang ?? "",
         c = l.match(/^[\w.+#-]+/)?.[0] ?? "",
         u = s && l && s.supportsLanguage(l) ? l : s && c && s.supportsLanguage(c) ? c : "plaintext",
         d = l && !s?.supportsLanguage(l) ? wt.dim(l) + SP : "";
-      if (!s) return d + e.text + SP;
+      if (!s) return d + token.text + SP;
       return (
         d +
-        s.highlight(e.text, {
+        s.highlight(token.text, {
           language: u,
         }) +
         SP
       );
     }
     case "codespan":
-      return Io("permission", t)(e.text);
+      return Io("permission", theme)(token.text);
     case "em":
       return wt.italic(
-        (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, o, s, i, a)).join(""),
+        (token.tokens ?? []).map((l) => formatToken(l, theme, 0, null, o, s, i, a)).join(""),
       );
     case "strong":
-      return wt.bold((e.tokens ?? []).map((l) => formatToken(l, t, 0, null, o, s, i, a)).join(""));
+      return wt.bold(
+        (token.tokens ?? []).map((l) => formatToken(l, theme, 0, null, o, s, i, a)).join(""),
+      );
     case "del": {
-      let l = (e.tokens ?? []).map((c) => formatToken(c, t, 0, null, o, s, i, a)).join("");
+      let l = (token.tokens ?? []).map((c) => formatToken(c, theme, 0, null, o, s, i, a)).join("");
       return u4i() && wt.level > 0 ? wt.strikethrough(l) : `~~${l}~~`;
     }
     case "heading":
-      switch (e.depth) {
+      switch (token.depth) {
         case 1:
           return (
             wt.bold.italic.underline(
-              (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join(""),
+              (token.tokens ?? [])
+                .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+                .join(""),
             ) +
             SP +
             SP
@@ -136,7 +142,9 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
         case 2:
           return (
             wt.bold(
-              (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join(""),
+              (token.tokens ?? [])
+                .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+                .join(""),
             ) +
             SP +
             SP
@@ -144,7 +152,9 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
         default:
           return (
             wt.bold(
-              (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join(""),
+              (token.tokens ?? [])
+                .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+                .join(""),
             ) +
             SP +
             SP
@@ -153,71 +163,81 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
     case "hr":
       return "---";
     case "image": {
-      if (!e.text && !e.title) return e.href;
-      let l = e.text ? `${e.text} ` : "",
-        c = e.title ? ` "${e.title}"` : "";
-      return `${l}(${e.href}${c})`;
+      if (!token.text && !token.title) return token.href;
+      let l = token.text ? `${token.text} ` : "",
+        c = token.title ? ` "${token.title}"` : "";
+      return `${l}(${token.href}${c})`;
     }
     case "link": {
-      let l = e.title ? ` ("${e.title}")` : "";
-      if (e.href.startsWith("mailto:")) {
-        let p = e.href.replace(/^mailto:/, "");
-        return (e.text && e.text !== p ? `${e.text} (${p})` : p) + l;
+      let l = token.title ? ` ("${token.title}")` : "";
+      if (token.href.startsWith("mailto:")) {
+        let p = token.href.replace(/^mailto:/, "");
+        return (token.text && token.text !== p ? `${token.text} (${p})` : p) + l;
       }
-      let c = a ? rtf(e.href) : e.href,
-        u = (e.tokens ?? []).map((p) => formatToken(p, t, 0, null, e, s, false, a)).join(""),
+      let c = a ? rtf(token.href) : token.href,
+        u = (token.tokens ?? [])
+          .map((p) => formatToken(p, theme, 0, null, token, s, false, a))
+          .join(""),
         d = Ja(u);
-      if (d && d !== e.href)
+      if (d && d !== token.href)
         return (
           sP(c, u, {
-            themeName: t,
+            themeName: theme,
             supportsHyperlinks: a,
           }) + l
         );
       return (
-        sP(c, e.href, {
-          themeName: t,
+        sP(c, token.href, {
+          themeName: theme,
           supportsHyperlinks: a,
         }) + l
       );
     }
     case "list":
-      return e.items
-        .map((l, c) => formatToken(l, t, n, e.ordered ? e.start + c : null, e, s, false, a))
+      return token.items
+        .map((l, c) =>
+          formatToken(l, theme, n, token.ordered ? token.start + c : null, token, s, false, a),
+        )
         .join("");
     case "list_item":
-      return (e.tokens ?? [])
+      return (token.tokens ?? [])
         .map((l) => {
-          let c = formatToken(l, t, n + 1, r, e, s, false, a);
+          let c = formatToken(l, theme, n + 1, r, token, s, false, a);
           if (l.type === "code" || l.type === "blockquote" || l.type === "hr") return c;
           return `${"  ".repeat(n)}${c}`;
         })
         .join("");
     case "paragraph":
       return (
-        (e.tokens ?? []).map((l) => formatToken(l, t, 0, null, null, s, false, a)).join("") + SP
+        (token.tokens ?? [])
+          .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+          .join("") + SP
       );
     case "space":
       return SP;
     case "br":
       return SP;
     case "text":
-      if (o?.type === "link") return e.text;
+      if (o?.type === "link") return token.text;
       if (o?.type === "list_item") {
-        let l = e.tokens
-            ? e.tokens.map((p) => formatToken(p, t, n, r, e, s, true, a)).join("")
-            : Pnl(linkifyIssueReferences(e.text, t, a)),
+        let l = token.tokens
+            ? token.tokens.map((p) => formatToken(p, theme, n, r, token, s, true, a)).join("")
+            : Pnl(linkifyIssueReferences(token.text, theme, a)),
           c = r === null ? "-" : `${dtf(n, r)}.`,
-          u = o.tokens?.[0] === e,
+          u = o.tokens?.[0] === token,
           d = o.task && u ? `[${o.checked ? "x" : " "}] ` : "";
         return `${c} ${d}${l}${SP}`;
       }
-      return i ? Pnl(linkifyIssueReferences(e.text, t, a)) : linkifyIssueReferences(e.text, t, a);
+      return i
+        ? Pnl(linkifyIssueReferences(token.text, theme, a))
+        : linkifyIssueReferences(token.text, theme, a);
     case "table": {
       let c = function (p) {
-          return Ja(p?.map((f) => formatToken(f, t, 0, null, null, s, false, a)).join("") ?? "");
+          return Ja(
+            p?.map((f) => formatToken(f, theme, 0, null, null, s, false, a)).join("") ?? "",
+          );
         },
-        l = e,
+        l = token,
         u = l.header.map((p, f) => {
           let m = rn(c(p.tokens));
           for (let g of l.rows) {
@@ -230,7 +250,8 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
       return (
         l.header.forEach((p, f) => {
           let m =
-              p.tokens?.map((b) => formatToken(b, t, 0, null, null, s, false, a)).join("") ?? "",
+              p.tokens?.map((b) => formatToken(b, theme, 0, null, null, s, false, a)).join("") ??
+              "",
             g = c(p.tokens),
             h = u[f],
             y = l.align?.[f];
@@ -247,8 +268,9 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
           ((d += "| "),
             p.forEach((f, m) => {
               let g =
-                  f.tokens?.map((_) => formatToken(_, t, 0, null, null, s, false, a)).join("") ??
-                  "",
+                  f.tokens
+                    ?.map((_) => formatToken(_, theme, 0, null, null, s, false, a))
+                    .join("") ?? "",
                 h = c(f.tokens),
                 y = u[m],
                 b = l.align?.[m];
@@ -260,13 +282,13 @@ function formatToken(e, t, n = 0, r = null, o = null, s = null, i = false, a = v
       );
     }
     case "escape":
-      return e.text;
+      return token.text;
     case "html":
-      return e.text;
+      return token.text;
     case "def":
       return "";
   }
-  return e.raw;
+  return token.raw;
 }
 function rtf(e) {
   if (!/^file:/i.test(e)) return e;
@@ -356,11 +378,11 @@ function atf(e) {
   if (n.length > 0 && !n.at(-1)?.trim()) n.pop();
   return n;
 }
-function linkifyIssueReferences(e, t, n = vI()) {
-  if (!n) return e;
+function linkifyIssueReferences(text, t, n = vI()) {
+  if (!n) return text;
   let r = sRr(),
     o = r && !ntf.has(r) ? r : JH;
-  return e.replace(
+  return text.replace(
     ttf,
     (s, i, a, l) =>
       i +

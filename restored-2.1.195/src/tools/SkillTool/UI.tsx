@@ -21,8 +21,8 @@ function bcl(e, t) {
   let n = e.message.content.find((r) => r.type === "tool_use" && r.name === t);
   return n && n.type === "tool_use" ? n.id : void 0;
 }
-function renderToolResultMessage(e) {
-  if ("status" in e && e.status === "forked")
+function renderToolResultMessage(output) {
+  if ("status" in output && output.status === "forked")
     return JI.jsx(qn, {
       height: 1,
       children: JI.jsx(w, {
@@ -32,11 +32,11 @@ function renderToolResultMessage(e) {
       }),
     });
   let t = ["Successfully loaded skill"];
-  if ("allowedTools" in e && e.allowedTools && e.allowedTools.length > 0) {
-    let n = e.allowedTools.length;
+  if ("allowedTools" in output && output.allowedTools && output.allowedTools.length > 0) {
+    let n = output.allowedTools.length;
     t.push(`${n} ${bn(n, "tool")} allowed`);
   }
-  if ("model" in e && e.model) t.push(e.model);
+  if ("model" in output && output.model) t.push(output.model);
   return JI.jsx(qn, {
     height: 1,
     children: JI.jsx(w, {
@@ -55,8 +55,8 @@ function renderToolUseMessage({ skill: e }, { commands: t }) {
     i = o8t(o?.type === "prompt" ? o.source : void 0, r);
   return i ? `${s} \xB7 by ${i}` : s;
 }
-function renderToolUseProgressMessage(e, { tools: t, verbose: n }) {
-  if (!e.length)
+function renderToolUseProgressMessage(progressMessages, { tools: t, verbose: n }) {
+  if (!progressMessages.length)
     return JI.jsx(qn, {
       height: 1,
       children: JI.jsx(w, {
@@ -64,9 +64,9 @@ function renderToolUseProgressMessage(e, { tools: t, verbose: n }) {
         children: INITIALIZING_TEXT,
       }),
     });
-  let r = n ? e : e.slice(-raf),
-    o = e.length - r.length,
-    { inProgressToolUseIDs: s } = j8t(e.map((i) => i.data));
+  let r = n ? progressMessages : progressMessages.slice(-raf),
+    o = progressMessages.length - r.length,
+    { inProgressToolUseIDs: s } = j8t(progressMessages.map((i) => i.data));
   return JI.jsx(qn, {
     children: JI.jsxs(U, {
       flexDirection: "column",

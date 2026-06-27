@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZWl] deps: Ye, LW, YWl
 ((XWl = R(lt(), 1)), (JWl = R(rt(), 1)), (mAt = R(se(), 1)));
-function createWhatsNewFeed(e) {
-  let t = e.map((r) => ({
+function createWhatsNewFeed(releaseNotes) {
+  let t = releaseNotes.map((r) => ({
       text: r,
     })),
     n = "Check the Claude Code changelog for updates";
@@ -18,8 +18,8 @@ function createWhatsNewFeed(e) {
     emptyMessage: "Check the Claude Code changelog for updates",
   };
 }
-function createProjectOnboardingFeed(e) {
-  let n = e
+function createProjectOnboardingFeed(steps) {
+  let n = steps
       .filter(({ isEnabled: o }) => o)
       .sort((o, s) => Number(o.isComplete) - Number(s.isComplete))
       .map(({ text: o, isComplete: s }) => ({

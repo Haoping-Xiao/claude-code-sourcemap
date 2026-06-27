@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yXl] deps: Ye, lg, Vl, hse, kP
 ((H4o = R(lt(), 1)), (BP = R(se(), 1)));
-function SandboxSettings(e) {
+function SandboxSettings(t0) {
   let t = T4o.c(29),
-    { onComplete: n, depCheck: r } = e,
+    { onComplete: n, depCheck: r } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = xo.isSandboxingEnabled()), (t[0] = o));
@@ -245,7 +245,7 @@ function SandboxSettings(e) {
   else V = t[28];
   return V;
 }
-function SandboxModeTab(e) {
+function SandboxModeTab(t0) {
   let t = T4o.c(19),
     {
       showSocketWarning: n,
@@ -254,7 +254,7 @@ function SandboxModeTab(e) {
       noSandboxHint: s,
       onSelect: i,
       onComplete: a,
-    } = e,
+    } = t0,
     { headerFocused: l, focusHeader: c } = tx(),
     u;
   if (t[0] !== n)

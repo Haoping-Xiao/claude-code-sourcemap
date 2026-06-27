@@ -38,14 +38,16 @@ Your plain text output is NOT visible to other agents \u2014 to communicate, you
 }
 var BEl = "Send a message to another agent";
 var FEl = () => {};
-function renderToolUseMessage(e) {
-  if (typeof e.message !== "object" || e.message === null) return null;
-  if (e.message.type === "plan_approval_response")
-    return e.message.approve ? `approve plan from: ${e.to}` : `reject plan from: ${e.to}`;
+function renderToolUseMessage(input) {
+  if (typeof input.message !== "object" || input.message === null) return null;
+  if (input.message.type === "plan_approval_response")
+    return input.message.approve
+      ? `approve plan from: ${input.to}`
+      : `reject plan from: ${input.to}`;
   return null;
 }
-function renderToolResultMessage(e, t, { verbose: n }) {
-  let r = typeof e === "string" ? Ft(e) : e;
+function renderToolResultMessage(content, _progressMessages, { verbose: n }) {
+  let r = typeof content === "string" ? Ft(content) : content;
   if ("routing" in r && r.routing) return null;
   if ("request_id" in r && "target" in r) return null;
   return GRo.jsx(qn, {

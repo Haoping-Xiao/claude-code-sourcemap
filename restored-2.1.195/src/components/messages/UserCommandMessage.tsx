@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xil] deps: qzn, co, OI
 ((wil = R(lt(), 1)), (Iil = R(se(), 1)));
-function UserCommandMessage(e) {
+function UserCommandMessage(t0) {
   let t = kil.c(19),
-    { addMargin: n, param: r } = e,
+    { addMargin: n, param: r } = t0,
     { text: o } = r,
     s;
   if (t[0] !== o) ((s = xl(o, zC)), (t[0] = o), (t[1] = s));

@@ -248,9 +248,9 @@ function oVf() {
   else a = e[6];
   return a;
 }
-function GroveDialog(e) {
+function GroveDialog(t0) {
   let t = AJt.c(35),
-    { showIfAlreadyViewed: n, location: r, onDone: o } = e,
+    { showIfAlreadyViewed: n, location: r, onDone: o } = t0,
     [s, i] = fYe.useState(null),
     [a, l] = fYe.useState(null),
     c,
@@ -473,9 +473,9 @@ function GroveDialog(e) {
   else k = t[34];
   return k;
 }
-function PrivacySettingsDialog(e) {
+function PrivacySettingsDialog(t0) {
   let t = AJt.c(20),
-    { settings: n, domainExcluded: r, onDone: o } = e,
+    { settings: n, domainExcluded: r, onDone: o } = t0,
     [s, i] = fYe.useState(n.grove_enabled),
     a;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((a = []), (t[0] = a));

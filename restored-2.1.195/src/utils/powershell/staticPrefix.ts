@@ -10,30 +10,31 @@ function $_m(e) {
     for (let r of n.commands) if (r.elementType === "CommandAst") t.push(r);
   return t;
 }
-async function extractPrefixFromElement(e) {
-  if (e.nameType === "application") return null;
-  let t = e.name;
+async function extractPrefixFromElement(cmd) {
+  if (cmd.nameType === "application") return null;
+  let t = cmd.name;
   if (!t) return null;
   if (!/^[A-Za-z0-9_+-]+$/.test(t)) return null;
   if (aTl.has(t.toLowerCase())) return null;
-  if (e.nameType === "cmdlet") return t;
-  if (e.elementTypes?.[0] !== "StringConstant") return null;
-  for (let i = 0; i < e.args.length; i++) {
-    let a = e.elementTypes[i + 1];
+  if (cmd.nameType === "cmdlet") return t;
+  if (cmd.elementTypes?.[0] !== "StringConstant") return null;
+  for (let i = 0; i < cmd.args.length; i++) {
+    let a = cmd.elementTypes[i + 1];
     if (a !== "StringConstant" && a !== "Parameter") return null;
   }
   let n = t.toLowerCase(),
     r = await DDe(n),
-    o = await q2n(t, e.args, r),
+    o = await q2n(t, cmd.args, r),
     s = 0;
   for (let i of o.split(" ").slice(1)) {
     if (i.includes("\\")) return null;
-    while (s < e.args.length) {
-      let a = e.args[s];
+    while (s < cmd.args.length) {
+      let a = cmd.args[s];
       if (a === i) break;
       if (a.startsWith("-")) {
         if (
-          (s++, r?.options && s < e.args.length && e.args[s] !== i && !e.args[s].startsWith("-"))
+          (s++,
+          r?.options && s < cmd.args.length && cmd.args[s] !== i && !cmd.args[s].startsWith("-"))
         ) {
           let l = a.toLowerCase();
           if (
@@ -45,7 +46,7 @@ async function extractPrefixFromElement(e) {
       }
       return null;
     }
-    if (s >= e.args.length) return null;
+    if (s >= cmd.args.length) return null;
     s++;
   }
   if (!o.includes(" ") && (r?.subcommands?.length || Gqe[n])) return null;

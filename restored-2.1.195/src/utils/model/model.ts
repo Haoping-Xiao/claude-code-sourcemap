@@ -651,9 +651,9 @@ function Foi(e) {
   if (fr() === "foundry") return !0;
   return !1;
 }
-function yAn(e) {
+function yAn(modelInput) {
   let t = $Ie();
-  switch (e) {
+  switch (modelInput) {
     case "opus":
       return YIe(t);
     case "sonnet":
@@ -687,26 +687,26 @@ function getFableDeclineFallbackModel() {
   }
   return null;
 }
-function firstPartyNameToCanonical(e) {
-  if (((e = e.toLowerCase()), e.includes("claude-fable-5"))) return "claude-fable-5";
-  if (e.includes("claude-mythos-5")) return "claude-mythos-5";
-  if (e.includes("claude-opus-4-8")) return "claude-opus-4-8";
-  if (e.includes("claude-opus-4-7")) return "claude-opus-4-7";
-  if (e.includes("claude-opus-4-6")) return "claude-opus-4-6";
-  if (e.includes("claude-opus-4-5")) return "claude-opus-4-5";
-  if (e.includes("claude-opus-4-1")) return "claude-opus-4-1";
-  if (/claude-opus-4(?!-\d(?!\d))/.test(e)) return "claude-opus-4-0";
-  if (e.includes("claude-sonnet-4-6")) return "claude-sonnet-4-6";
-  if (e.includes("claude-sonnet-4-5")) return "claude-sonnet-4-5";
-  if (/claude-sonnet-4(?!-\d(?!\d))/.test(e)) return "claude-sonnet-4-0";
-  if (e.includes("claude-haiku-4-5")) return "claude-haiku-4-5";
-  if (e.includes("claude-3-7-sonnet")) return "claude-3-7-sonnet";
-  if (e.includes("claude-3-5-sonnet")) return "claude-3-5-sonnet";
-  if (e.includes("claude-3-5-haiku")) return "claude-3-5-haiku";
-  if (e.includes("claude-3-opus")) return "claude-3-opus";
-  if (e.includes("claude-3-sonnet")) return "claude-3-sonnet";
-  if (e.includes("claude-3-haiku")) return "claude-3-haiku";
-  return e.replace(/-\d{8}$/, "");
+function firstPartyNameToCanonical(name) {
+  if (((name = name.toLowerCase()), name.includes("claude-fable-5"))) return "claude-fable-5";
+  if (name.includes("claude-mythos-5")) return "claude-mythos-5";
+  if (name.includes("claude-opus-4-8")) return "claude-opus-4-8";
+  if (name.includes("claude-opus-4-7")) return "claude-opus-4-7";
+  if (name.includes("claude-opus-4-6")) return "claude-opus-4-6";
+  if (name.includes("claude-opus-4-5")) return "claude-opus-4-5";
+  if (name.includes("claude-opus-4-1")) return "claude-opus-4-1";
+  if (/claude-opus-4(?!-\d(?!\d))/.test(name)) return "claude-opus-4-0";
+  if (name.includes("claude-sonnet-4-6")) return "claude-sonnet-4-6";
+  if (name.includes("claude-sonnet-4-5")) return "claude-sonnet-4-5";
+  if (/claude-sonnet-4(?!-\d(?!\d))/.test(name)) return "claude-sonnet-4-0";
+  if (name.includes("claude-haiku-4-5")) return "claude-haiku-4-5";
+  if (name.includes("claude-3-7-sonnet")) return "claude-3-7-sonnet";
+  if (name.includes("claude-3-5-sonnet")) return "claude-3-5-sonnet";
+  if (name.includes("claude-3-5-haiku")) return "claude-3-5-haiku";
+  if (name.includes("claude-3-opus")) return "claude-3-opus";
+  if (name.includes("claude-3-sonnet")) return "claude-3-sonnet";
+  if (name.includes("claude-3-haiku")) return "claude-3-haiku";
+  return name.replace(/-\d{8}$/, "");
 }
 function getCanonicalName(e) {
   let t = Hnt(e);
@@ -754,10 +754,10 @@ function isOpus1mMergeEnabled() {
   if (bo() && Di() === null) return !1;
   return !0;
 }
-function renderModelSetting(e) {
-  if (e === "opusplan") return "Opus Plan";
-  if (v0(e)) return renderModelName(parseUserSpecifiedModel(e));
-  return renderModelName(e);
+function renderModelSetting(setting) {
+  if (setting === "opusplan") return "Opus Plan";
+  if (v0(setting)) return renderModelName(parseUserSpecifiedModel(setting));
+  return renderModelName(setting);
 }
 function getModelSourceAnnotation() {
   if (r_() !== void 0) return "";
@@ -820,10 +820,10 @@ function renderModelName(e) {
   if (n) return n;
   return e;
 }
-function getPublicModelName(e) {
-  let t = getPublicModelDisplayName(e);
+function getPublicModelName(model) {
+  let t = getPublicModelDisplayName(model);
   if (t) return `Claude ${t}`;
-  return `Claude (${e})`;
+  return `Claude (${model})`;
 }
 function parseUserSpecifiedModel(e) {
   let t = e.trim(),
@@ -880,18 +880,18 @@ function isLegacyOpusFirstParty(e) {
 function isLegacyModelRemapEnabled() {
   return !ut(process.env.CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP);
 }
-function modelDisplayString(e) {
-  if (e === null) {
+function modelDisplayString(model) {
+  if (model === null) {
     if (bo()) return `Default (${getClaudeAiUserDefaultModelDescription()})`;
     return `Default (${getDefaultMainLoopModel()})`;
   }
-  let t = parseUserSpecifiedModel(e);
-  return e === t ? t : `${e} (${t})`;
+  let t = parseUserSpecifiedModel(model);
+  return model === t ? t : `${model} (${t})`;
 }
-function getMarketingNameForModel(e) {
+function getMarketingNameForModel(modelId) {
   if (fr() === "foundry") return;
-  let t = e.toLowerCase().includes("[1m]"),
-    n = getCanonicalName(e);
+  let t = modelId.toLowerCase().includes("[1m]"),
+    n = getCanonicalName(modelId);
   if (n === "claude-fable-5") return "Fable 5";
   if (n === "claude-mythos-5") return "Mythos 5";
   if (n === "claude-opus-4-8") return t ? "Opus 4.8 (1M context)" : "Opus 4.8";

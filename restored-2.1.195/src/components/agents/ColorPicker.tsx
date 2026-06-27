@@ -6,9 +6,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mYl] deps: si, Ye, ps, IL, M7, tQ, ty, kpe, Coe, AN, VAt
 ((s4o = R(lt(), 1)), (lm = R(se(), 1)));
-function ColorPicker(e) {
+function ColorPicker(t0) {
   let t = gYl.c(17),
-    { agentName: n, currentColor: r, onConfirm: o } = e,
+    { agentName: n, currentColor: r, onConfirm: o } = t0,
     s = r === void 0 ? "automatic" : r,
     i;
   if (t[0] !== s) ((i = zAt.findIndex((y) => y === s)), (t[0] = s), (t[1] = i));
