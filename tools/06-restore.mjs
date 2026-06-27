@@ -84,6 +84,23 @@ function extractRenames(content) {
 
 const RESERVED = new Set(["default","this","arguments","null","true","false","var","let","const","function","return","new","typeof","in","of","class"]);
 
+// 从 `IDENT.displayName="Name"` 模式恢复真实名 (React 组件等)。-> {local: Name}
+function extractDisplayNames(code) {
+  const map = {};
+  const re = /\b([A-Za-z_$][A-Za-z0-9_$]*)\.displayName\s*=\s*"([^"\\]{1,60})"/g;
+  let m;
+  while ((m = re.exec(code)) !== null) {
+    const local = m[1];
+    let name = m[2].trim();
+    // 规范化为合法标识符
+    name = name.replace(/[^A-Za-z0-9_$]+/g, "_").replace(/^[^A-Za-z_$]+/, "");
+    if (!name || name.length < 2) continue;
+    if (local === name) continue;
+    if (!(local in map)) map[local] = name;
+  }
+  return map;
+}
+
 // 解开 bundler 的 __esm 惰性包裹: `var NAME = E(()=>{ <deps-init>; <real> })`
 // -> 直接展开 <real> 到顶层, 并把开头的依赖初始化调用(ft();Zf();...)收进注释。
 // 仅在精确匹配该模式时处理; 失败则原样返回。便于阅读(还原树非用于重组)。
@@ -197,6 +214,10 @@ function removeDeadExportObjects(ast) {
 async function deobfuscate(content, { pretty, structural = true }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
+  // 合并 displayName 恢复 (不覆盖已有的 _t 导出名)
+  for (const [local, name] of Object.entries(extractDisplayNames(code))) {
+    if (!(local in renames)) renames[local] = name;
+  }
   if (structural) code = await wakaru(code);
   let ast;
   try {
